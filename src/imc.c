@@ -1,10 +1,10 @@
 /* IMC2 Freedom Client - Developed by Mud Domain.
  *
- * Copyright (C)2004 by Roger Libiez ( Samson )
- * Contributions by Johnathan Walker ( Xorith ), Copyright (C)2004
- * Additional contributions by Jesse Defer ( Garil ), Copyright (C)2004
- * Additional contributions by Rogel, Copyright (C)2004
- * Comments and suggestions welcome: imc@imc2.intermud.us
+ * Copyright ©2004 by Roger Libiez ( Samson )
+ * Contributions by Johnathan Walker ( Xorith ), Copyright ©2004
+ * Additional contributions by Jesse Defer ( Garil ), Copyright ©2004
+ * Additional contributions by Rogel, Copyright ©2004
+ * Comments and suggestions welcome: http://www.mudbytes.net/index.php?a=forum&f=31
  * License terms are available in the imc2freedom.license file.
  */
 
@@ -793,6 +793,8 @@ void imc_delete_reminfo( REMOTEINFO * p )
    IMCSTRFREE( p->network );
    IMCSTRFREE( p->path );
    IMCSTRFREE( p->url );
+   IMCSTRFREE( p->port );
+   IMCSTRFREE( p->host );
    IMCDISPOSE( p );
 }
 
@@ -1688,6 +1690,7 @@ PFUN( imc_recv_tell )
          IMC_RREPLY_NAME( vic ) = IMCSTRALLOC( imcgetname( q->from ) );
       }
    }
+
    /*
     * Tell social 
     */
@@ -1949,12 +1952,53 @@ PFUN( imc_recv_chanwhoreply )
    return;
 }
 
+char *get_local_chanwho( IMC_CHANNEL *c )
+{
+   DESCRIPTOR_DATA *d;
+   CHAR_DATA *person;
+   static char buf[IMC_BUFF_SIZE];
+   int count = 0, col = 0;
+
+   snprintf( buf, IMC_BUFF_SIZE, "The following people are listening to %s on %s:\r\n\r\n",
+      c->local_name, this_imcmud->localname );
+
+   for( d = first_descriptor; d; d = d->next )
+   {
+      person = d->original ? d->original : d->character;
+
+      if( !person )
+         continue;
+
+      if( IMCISINVIS( person ) )
+         continue;
+
+      if( !imc_hasname( IMC_LISTEN( person ), c->local_name ) )
+         continue;
+
+      snprintf( buf + strlen( buf ), IMC_BUFF_SIZE - strlen( buf ), "%-15s", CH_IMCNAME( person ) );
+      count++;
+      if( ++col % 3 == 0 )
+      {
+         col = 0;
+         snprintf( buf + strlen( buf ), IMC_BUFF_SIZE - strlen( buf ), "%s", "\r\n" );
+      }
+   }
+   if( col != 0 )
+      snprintf( buf + strlen( buf ), IMC_BUFF_SIZE - strlen( buf ), "%s", "\r\n" );
+   /*
+    * Send no response to a broadcast request if nobody is listening. 
+    */
+   if( count == 0 )
+      imcstrlcat( buf, "Nobody\r\n", IMC_BUFF_SIZE );
+   else
+      imcstrlcat( buf, "\r\n", IMC_BUFF_SIZE );
+   return buf;
+}
+
 PFUN( imc_recv_chanwho )
 {
    IMC_PACKET *p;
    IMC_CHANNEL *c;
-   DESCRIPTOR_DATA *d;
-   CHAR_DATA *person;
    char buf[IMC_BUFF_SIZE], lvl[SMST], channel[SMST], lname[SMST];
    int level;
 
@@ -1975,40 +2019,13 @@ PFUN( imc_recv_chanwho )
       snprintf( buf, IMC_BUFF_SIZE, "Channel %s is above your permission level on %s\r\n", lname, this_imcmud->localname );
    else
    {
-      int count = 0, col = 0;
+      char cwho[IMC_BUFF_SIZE];
 
-      snprintf( buf, IMC_BUFF_SIZE, "The following people are listening to %s on %s:\r\n\r\n", lname,
-                this_imcmud->localname );
-      for( d = first_descriptor; d; d = d->next )
-      {
-         person = d->original ? d->original : d->character;
+      imcstrlcpy( cwho, get_local_chanwho( c ), IMC_BUFF_SIZE );
 
-         if( !person )
-            continue;
-
-         if( IMCISINVIS( person ) )
-            continue;
-
-         if( !imc_hasname( IMC_LISTEN( person ), c->local_name ) )
-            continue;
-
-         snprintf( buf + strlen( buf ), IMC_BUFF_SIZE - strlen( buf ), "%-15s", CH_IMCNAME( person ) );
-         count++;
-         if( ++col % 3 == 0 )
-         {
-            col = 0;
-            snprintf( buf + strlen( buf ), IMC_BUFF_SIZE - strlen( buf ), "%s", "\r\n" );
-         }
-      }
-      if( col != 0 )
-         snprintf( buf + strlen( buf ), IMC_BUFF_SIZE - strlen( buf ), "%s", "\r\n" );
-      /*
-       * Send no response to a broadcast request if nobody is listening. 
-       */
-      if( count == 0 && !strcasecmp( q->to, "*" ) )
+      if( ( !cwho || !strcasecmp( cwho, "" ) || !strcasecmp( cwho, "Nobody" ) ) && !strcasecmp( q->to, "*" ) )
          return;
-      else if( count == 0 )
-         imcstrlcat( buf, "Nobody\r\n", IMC_BUFF_SIZE );
+      imcstrlcpy( buf, cwho, IMC_BUFF_SIZE );
    }
 
    p = imc_newpacket( "*", "ice-chan-whoreply", q->from );
@@ -3220,7 +3237,7 @@ void imc_process_authentication( char *packet )
 
       if( !pw || pw[0] == '\0' )
       {
-         imclog( "SHA256 Authentication failure: No auth_value was returned by %s.", rname );
+         imclog( "SHA-256 Authentication failure: No auth_value was returned by %s.", rname );
          imc_shutdown( FALSE );
          return;
       }
@@ -3347,7 +3364,7 @@ bool imc_read_socket( void )
 
          begin = 0;
       }
-      else if( nRead == 0 && this_imcmud->desc == IMC_ONLINE )
+      else if( nRead == 0 && this_imcmud->state == IMC_ONLINE )
       {
          if( !begin )
             break;
@@ -3357,7 +3374,7 @@ bool imc_read_socket( void )
       }
       else if( iErr == EAGAIN )
          break;
-      else
+      else if( nRead == -1 )
       {
          imclog( "%s: Descriptor error on #%d: %s", __FUNCTION__, this_imcmud->desc, strerror( iErr ) );
          return FALSE;
@@ -3431,8 +3448,22 @@ void imc_loop( void )
 
    if( FD_ISSET( this_imcmud->desc, &in_set ) )
    {
-      if( !imc_read_socket(  ) )
+      if( !imc_read_socket( ) )
       {
+         if( this_imcmud->inbuf && this_imcmud->inbuf[0] != '\0' )
+         {
+            if( imc_read_buffer( ) )
+            {
+               if( !strcasecmp( this_imcmud->incomm, "SHA-256 authentication is required." ) )
+               {
+                  imclog( "%s", "Unable to reconnect using standard authentication, trying SHA-256." );
+                  this_imcmud->sha256pass = TRUE;
+                  imc_save_config();
+               }
+               else
+                  imclog( "Buffer contents: %s", this_imcmud->incomm );
+            }
+         }
          FD_CLR( this_imcmud->desc, &out_set );
          imc_shutdown( TRUE );
          return;
@@ -3804,7 +3835,7 @@ void imc_freechardata( CHAR_DATA * ch )
       IMCDISPOSE( ign );
    }
    for( x = 0; x < MAX_IMCTELLHISTORY; x++ )
-      IMCDISPOSE( IMCTELLHISTORY( ch, x ) );
+      IMCSTRFREE( IMCTELLHISTORY( ch, x ) );
    IMCSTRFREE( IMC_LISTEN( ch ) );
    IMCSTRFREE( IMC_DENY( ch ) );
    IMCSTRFREE( IMC_RREPLY( ch ) );
@@ -7196,6 +7227,8 @@ IMC_CMD( imcchanwho )
    imc_addtopacket( p, "channel=%s", c->name );
    imc_addtopacket( p, "lname=%s", c->local_name ? c->local_name : c->name );
    imc_write_packet( p );
+
+   imc_printf( ch, "~G%s", get_local_chanwho( c ) );
    return;
 }
 
