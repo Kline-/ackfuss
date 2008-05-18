@@ -276,7 +276,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "%2d ", ch->lvl2[cnt] );
    fprintf( fp, "\n" );
    fprintf( fp, "Adeptlevel   " );
-   fprintf( fp, "%2d\n ", ch->adept_level );
+   fprintf( fp, "%2d\n", ch->adept_level );
 
 
    fprintf( fp, "Trust        %d\n", ch->trust );
