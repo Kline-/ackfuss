@@ -1,0 +1,121 @@
+#MOB
+Revision     7
+Name         male centaur~
+ShortDescr   a male centaur~
+LongDescr    A male centaur is here.
+~
+Description  The centaur, a mix of horse (back legs) and human (head; arms; torso) is 
+large, and responsible for the supply of food to the tribe, via hunting.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        47
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       10143
+Note         0
+Room         4434
+HpManaMove   2182 2702 667 705 100 100
+Gold         2186
+Balance      0
+Exp          649705
+Act          4194373
+AffectedBy   41088
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    300
+Hitroll      0
+Damroll      0
+Armor        -71
+Wimpy        0
+Deaf         0
+Vnum         9625
+Affect  92   3 -40  17          0
+Affect   6   8  -5  24          0
+Affect   6   8   5  18          0
+Affect  81  11   0   0       8192
+Affect  84   1   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         shield oak~
+ShortDescr   an oak shield~
+Description  An oak shield has been left here.~
+Vnum         9623
+ExtraFlags   1
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        46
+Timer        0
+Cost         24299
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         cloak~
+ShortDescr   a standard issue cloak~
+Description  You see a standard issue cloak here.~
+Vnum         3028
+ExtraFlags   0
+WearFlags    5
+WearLoc      3
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        28
+Timer        0
+Cost         8410
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         hat~
+ShortDescr   a beaten, shapeless hat~
+Description  A beaten, shapeless hat
+~
+Vnum         7516
+ExtraFlags   0
+WearFlags    17
+WearLoc      6
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        42
+Timer        0
+Cost         16254
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         a chicken feather~
+ShortDescr   a Chicken Feather~
+Description  A chicken feather lays here discarded
+~
+Vnum         7517
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     3
+Weight       1
+Level        41
+Timer        0
+Cost         16810
+Values       19 9 9 43
+Spell 3      'energy drain'
+End
+
+#END

@@ -1,0 +1,81 @@
+#MOB
+Revision     7
+Name         White Rook~
+ShortDescr   The White Rook~
+LongDescr    The White Rook is here stomping around.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        56
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       5364
+Note         0
+Room         7619
+HpManaMove   2084 2779 466 840 100 100
+Gold         1354
+Balance      0
+Exp          1964132
+Act          4194307
+AffectedBy   8192
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        -82
+Wimpy        0
+Deaf         0
+Vnum         10007
+Affect  92   6 -40  17          0
+Affect  15   4   1   6          0
+Affect  81   3   0   0       8192
+End
+
+#OBJECT
+Nest         0
+Name         reboot eq~
+ShortDescr   last boot's reboot eq~
+Description  A large pile of precious items is here.
+~
+Vnum         18202
+ExtraFlags   0
+WearFlags    16385
+WearLoc      17
+ClassFlags   1
+ItemType     9
+Weight       30
+Level        36
+Timer        0
+Cost         13320
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         prism~
+ShortDescr   a Prism~
+Description  A small crystal prism, about the length of your hand.
+~
+Vnum         7533
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     3
+Weight       1
+Level        41
+Timer        0
+Cost         16810
+Values       10 9 9 70
+Spell 3      'mass invis'
+End
+
+#END

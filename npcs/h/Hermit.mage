@@ -1,0 +1,100 @@
+#MOB
+Revision     7
+Name         hermit mage~
+ShortDescr   the hermit~
+LongDescr    A mage-turned hermit crouches here, wanting to be alone.
+~
+Description  This mage decided that company was something he could do without.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        39
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       1379
+Note         0
+Room         9829
+HpManaMove   294 1437 525 585 100 100
+Gold         184
+Balance      0
+Exp          62814
+Act          4194305
+AffectedBy   9744
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    350
+Hitroll      0
+Damroll      0
+Armor        -18
+Wimpy        0
+Deaf         0
+Vnum         9807
+Affect  29   2   1  24       1024
+Affect  29   2  -1  18       1024
+Affect  92   1 -40  17          0
+Affect   6   5  -4  24          0
+Affect   6   5   4  18          0
+Affect  81   8   0   0       8192
+End
+
+#OBJECT
+Nest         0
+Name         book~
+ShortDescr   the book of peace~
+Description  Someone has dropped a strange looking book here.~
+Vnum         9806
+ExtraFlags   1
+WearFlags    16835
+WearLoc      -1
+ClassFlags   1
+ItemType     13
+Weight       2
+Level        37
+Timer        0
+Cost         13320
+Values       0 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         knife~
+ShortDescr   a sharp kitchen knife~
+Description  Someone has left a very sharp knife here.~
+Vnum         9808
+ExtraFlags   1
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       3
+Level        33
+Timer        0
+Cost         10890
+Values       0 6 16 1
+End
+
+#OBJECT
+Nest         0
+Name         amulet brown~
+ShortDescr   a brown amulet~
+Description  Someone has left a brown amulet here.~
+Vnum         9807
+ExtraFlags   1
+WearFlags    5
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        30
+Timer        0
+Cost         7830
+Values       6 0 0 0
+End
+
+#END

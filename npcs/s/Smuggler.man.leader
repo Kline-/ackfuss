@@ -1,0 +1,39 @@
+#MOB
+Revision     7
+Name         smuggler man leader~
+ShortDescr   the smuggler leader~
+LongDescr    A powerful looking man leaps at you as you enter.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        6
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       12579
+Note         0
+Room         3301
+HpManaMove   1 108 90 90 100 100
+Gold         962
+Balance      0
+Exp          1
+Act          4194339
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         3506
+End
+
+#END

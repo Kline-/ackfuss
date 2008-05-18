@@ -1,0 +1,101 @@
+#MOB
+Revision     7
+Name         taert intel n1~
+ShortDescr   Taert~
+LongDescr    Taert, bulging muscles and all, is here.
+ 
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        60
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       144942
+Note         0
+Room         3020
+HpManaMove   597 3127 14 840 100 100
+Gold         3033
+Balance      0
+Exp          6246432
+Act          4194305
+AffectedBy   8320
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    500
+Hitroll      0
+Damroll      0
+Armor        65
+Wimpy        0
+Deaf         0
+Vnum         36
+Affect  84   0   0   0        128
+Affect  81   7   0   0       8192
+Affect   6   1  -7  24          0
+Affect   6   1   7  18          0
+End
+
+#OBJECT
+Nest         0
+Name         gauntlets~
+ShortDescr   flaming Gauntlets~
+Description  A huge pair of flaming gauntlets.
+~
+Vnum         7513
+ExtraFlags   0
+WearFlags    129
+WearLoc      9
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        36
+Timer        0
+Cost         12600
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         nightie~
+ShortDescr   a Nightie~
+Description  A flimsy, transluscent nightie
+~
+Vnum         7514
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        39
+Timer        0
+Cost         17160
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         disk~
+ShortDescr   the Disks of Mishikal~
+Description  A set of thin platinum plates with writing on them
+~
+Vnum         7519
+ExtraFlags   0
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         30316
+Values       7 0 0 0
+End
+
+#END

@@ -1,0 +1,39 @@
+#MOB
+Revision     7
+Name         White Pawn~
+ShortDescr   The White Pawn~
+LongDescr    The White Pawn is here on duty.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        47
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       12593
+Note         0
+Room         3301
+HpManaMove   1 2065 300 705 100 100
+Gold         0
+Balance      0
+Exp          184655
+Act          4194307
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         10011
+End
+
+#END

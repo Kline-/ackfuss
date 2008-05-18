@@ -1,0 +1,45 @@
+#MOB
+Revision     7
+Name         poet prisoner~
+ShortDescr   William~
+LongDescr    A balding man is here reciting verse.
+~
+Description  Despite his large forehead, he has a suprisingly large amount of hair.
+Including a ridiculous goatee.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        17
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       27002
+Note         0
+Room         3142
+HpManaMove   333 422 118 255 100 100
+Gold         171
+Balance      0
+Exp          1266
+Act          4194305
+AffectedBy   8320
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         3550
+Affect   6   6  -2  24          0
+Affect   6   6   2  18          0
+Affect  81   7   0   0       8192
+Affect  84   1   0   0        128
+End
+
+#END

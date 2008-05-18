@@ -1,0 +1,44 @@
+Welcome to Ack!Mud 4.3.1!!
+
+Now that you've successfully untarred the mud, you'll want to do a few
+things to help you along.  In the /src dir, there are some adjustments you
+will want to make:  The config.h file contains user customizable strings,
+take a look.
+
+Also, you'll need to determine if you are no a Free BSD system, or a generic
+*nix OS.  There are seperate Makefiles and startup scripts for each.  Be
+sure to copy the appropriate version for your OS into the main filenames,
+for example, on a Linux system:
+cp Makefile.unix Makefile
+cp startup.new startup.unix
+
+Edit the port number in your startup.new script for the port you want to use
+for your mud.
+
+If you are familiar with the IMC config file, you may hand edit it, or you
+can configure it once online.  If you do not currently have an IMC hub
+connection, email webkeep@ackmud.nuc.net to receive a connection.
+
+Once you have edited config.h, and copied the appropriate OS version files,
+cd to your ackmud/src dir, and type make.  You should get a clean make, with
+no errors _or_ warnings...if not, please let Zenithar know of any problems.
+Once your make is complete, again from the /src dir, type:
+./startup.new &
+
+You will get a message, hit return.  Your mud should now be running!
+Telnet to the address and port of your mud, and connect with the name
+Creator and hit return when it asks for a password if you are running a
+non-bsd system, or use Creatorbsd and the password creator if you are on a
+bsd OS.  This is the admin pfile, and should only be used to create your own
+admin character.  Once you have successfully logged in, create another ( new
+) character, log them in, then with the Creator char, type setc
+<yournewcharname> war 84, then type imtlset <yournewcharname> +all, then
+type setc <newchar> war 85.  At this point, the Creator pfile is no longer
+required, and should be deleted from the shell to avoid security problems.
+
+Enjoy ack 4.3.1, please be sure to notify Zenithar with any errors/bugs, and
+consider both our web site: http://ackmud.nuc.net  and the ack-admin mailing
+list ( ack-admin@ackmud.nuc.net ) as sources of information.
+
+Zenithar
+Zenithar@ackmud.nuc.net

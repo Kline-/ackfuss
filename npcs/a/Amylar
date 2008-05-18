@@ -1,0 +1,413 @@
+#MOB
+Revision     7
+Name         Amylar~
+ShortDescr   Amylar~
+LongDescr    Amylar the Forger is here, quenching fresh steel
+~
+Description  A burly dwarf with tree-trunk arms, Amylar can lift horses with ease.
+It's the easiest way to shoe them.  He reminds you gently, 'All dwarves must
+look to the other side of the tool in times of war.'  You wonder what he means.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        72
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       9819
+Note         0
+Room         10008
+HpManaMove   3103 5163 5 1080 100 100
+Gold         3330
+Balance      0
+Exp          9591997
+Act          4194307
+AffectedBy   12416
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        -194
+Wimpy        0
+Deaf         0
+Vnum         7508
+Affect  84   3   0   0        128
+Affect   6   5  -9  24          0
+Affect   6   5   9  18          0
+Affect  79 455 -50   1       4096
+Affect  81   2   0   0       8192
+End
+
+#OBJECT
+Nest         0
+Name         griffon's Mane Helmet~
+ShortDescr   griffon's Mane Helmet~
+Description  A sturdy helmet with the plume of a griffons' mane
+~
+Vnum         7538
+ExtraFlags   8192
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        15
+Timer        0
+Cost         1890
+Values       4 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         gloves~
+ShortDescr   gloves~
+Description  A pair of sturdy gloves has been left here.
+~
+Vnum         7537
+ExtraFlags   8192
+WearFlags    129
+WearLoc      9
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        14
+Timer        0
+Cost         1960
+Values       4 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         shield~
+ShortDescr   shield~
+Description  A sturdy shield has been left here.
+~
+Vnum         7536
+ExtraFlags   8192
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        6
+Timer        0
+Cost         396
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots of Dwarvenkind~
+ShortDescr   boots of Dwarvenkind~
+Description  Sturdy boots have been left here.
+~
+Vnum         7535
+ExtraFlags   8192
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        13
+Timer        0
+Cost         1820
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         nightie~
+ShortDescr   a Nightie~
+Description  A flimsy, transluscent nightie
+~
+Vnum         7514
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        40
+Timer        0
+Cost         16000
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         gauntlets~
+ShortDescr   flaming Gauntlets~
+Description  A huge pair of flaming gauntlets.
+~
+Vnum         7513
+ExtraFlags   0
+WearFlags    129
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        36
+Timer        0
+Cost         13690
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10023
+ExtraFlags   1024
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         28620
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect your souls~
+Vnum         10024
+ExtraFlags   1024
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        55
+Timer        0
+Cost         29700
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect your souls~
+Vnum         10024
+ExtraFlags   1024
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        54
+Timer        0
+Cost         29700
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         black Crown~
+ShortDescr   black Crown~
+Description  The Gleaming Black Crown~
+Vnum         10062
+ExtraFlags   512
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        57
+Timer        0
+Cost         36366
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         White Crown~
+ShortDescr   the White Crown~
+Description  The Gleaming White Crown~
+Vnum         10003
+ExtraFlags   1024
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        61
+Timer        0
+Cost         37210
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10064
+ExtraFlags   512
+WearFlags    16385
+WearLoc      17
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         28080
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      8
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        52
+Timer        0
+Cost         24804
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         black Crown~
+ShortDescr   black Crown~
+Description  The Gleaming Black Crown~
+Vnum         10062
+ExtraFlags   512
+WearFlags    17
+WearLoc      6
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        66
+Timer        0
+Cost         38610
+Values       10 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         White Crown~
+ShortDescr   the White Crown~
+Description  The Gleaming White Crown~
+Vnum         10003
+ExtraFlags   1024
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        71
+Timer        0
+Cost         55451
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Kite Shield~
+ShortDescr   a Kite Shield.~
+Description  A Kite Shield has been left here~
+Vnum         10050
+ExtraFlags   1024
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        51
+Timer        0
+Cost         26520
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Corgi Dog~
+ShortDescr   the Corgi Dog~
+Description  A Viscious Corgi Dog is barking here~
+Vnum         10001
+ExtraFlags   512
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       1
+Level        68
+Timer        0
+Cost         46240
+Values       0 12 27 10
+End
+
+#OBJECT
+Nest         0
+Name         Kite Shield~
+ShortDescr   a Kite Shield.~
+Description  A Kite Shield has been left here~
+Vnum         10050
+ExtraFlags   1024
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        51
+Timer        0
+Cost         22500
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10023
+ExtraFlags   1024
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        54
+Timer        0
+Cost         31482
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect your souls~
+Vnum         10024
+ExtraFlags   1024
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         28080
+Values       7 0 0 0
+End
+
+#END

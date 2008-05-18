@@ -1,0 +1,44 @@
+#MOB
+Revision     7
+Name         rock worm rockworm~
+ShortDescr   a RockWorm~
+LongDescr    A RockWorm slithers about here, looking well-fed.
+~
+Description  This RockWorm is about 5 feet in length, and looks to have swallowed plenty
+of rocks today.  Traditionally, RockWorms were left my some powerful guardian,
+in order to protect some hidden lair.  RockWorms are also noted for their
+incredible lack of intelligence, and their habit of fighting all intruders
+to the death!
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        76
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       1346
+Note         0
+Room         3301
+HpManaMove   1 4601 1075 1140 100 100
+Gold         6509
+Balance      0
+Exp          1
+Act          4341797
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    -400
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         410
+End
+
+#END

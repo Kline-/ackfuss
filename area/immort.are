@@ -1,0 +1,1552 @@
+#AREA
+Plane of the Gods~
+Q 16
+K immrooms~
+L @@W{@@R IMM@@W }@@N~
+N 26
+I 130 130
+V 1000 1049
+X 0
+F 15
+U You hear the screams of the Dead within your head.~
+O stephen~
+R stephen all universe gods~
+W stephen universe gods~
+S Title not shown on area list.
+#ROOMS
+#1025
+Creators Room~
+This Room is for creators to talk in.~
+25100 11
+S
+#1043
+Coder's Information Booth~
+You are in a small, inter-dimensional room within the mud.
+Looking around, it seems like other realities have broken through
+the barriers surrounding the realms of SoE.  In one corner of the room
+you are able to see strange particles of energy whizzing back and forth,
+~
+25608 11
+D3
+~
+~
+0 -1 1040
+S
+#1042
+The Coder's Conference Room~
+No description~
+25612 11
+D2
+~
+~
+0 -1 1040
+S
+#1041
+Computer Lab~
+No description~
+24588 11
+D1
+~
+~
+0 -1 1040
+S
+#1049
+The Center Of The Universe~
+This is the center of the universe.
+~
+16392 11
+D0
+~
+~
+0 -1 1022
+D1
+~
+~
+0 -1 1010
+D2
+~
+~
+0 -1 1013
+S
+#1040
+Coder's Admin Area~
+No description~
+8200 11
+D0
+~
+~
+0 -1 1042
+D1
+~
+~
+0 -1 1043
+D2
+~
+~
+0 -1 1013
+D3
+~
+~
+0 -1 1041
+S
+#1022
+The Clan Leader's Room~
+This large room is used by Immortals, and Clan Leaders.  
+It is provided so that the rules and guidelines for clans and their
+equipment, followers and conduct can be displayed, discussed or decided.
+~
+17420 11
+D0
+~
+~
+0 0 3012
+S
+#1030
+The Little Boy's Room~
+This is the little boys room, where the little Gods go when they need
+to answer the call of nature.
+ 
+~
+12 11
+S
+#1021
+The Chat Room~
+This is a chat room... or something.  I'll do something nice with it later, ok?
+~
+4 11
+S
+#1018
+Maharet's Parlour.~
+As soon as you walk into this room you notice the smell of a soft perfume,
+reminding you of better days, but somehow tainted with a tang, of something
+undiscernable. Then you suddenly notice what it is. The smell of death, the
+smell of blood. But somehow, in this place, that taint seems enthralling,
+holding a certain romance. You try to pretend that the large vial of blood on
+the red marble table does not exist as you take in the comfy-looking plush
+cushions in one corner of the room, and the massage table in the other (the
+massage oil looks suspiciously red too). Looks like the favoured of Maharet
+get good treatment here. The crowning glory to this room is the slave,
+patiently waiting with a silver tray, willing to dispense or do anything his
+great mistress commands. He has an unearthly look, even if he is outwardly
+human. The eyes are pure gold, and stare into space. He moves with the grace
+of a panther however, and will guard his deity of vampires for all eternity.
+ 
+~
+25610 11
+D2
+~
+~
+0 -1 1006
+S
+#1001
+@@yModel Home Entrance@@N~
+@@yYou stand in the Medievia Model Home. Pictures of flowers in vases are on
+the wall, and fine china vases are displayed inside a small glass display case
+which seperates the Entrance and the Kitchen. The Kitchen is to the South, and
+the Street is to the north.@@N
+~
+17420 11
+D0
+~
+~
+0 -1 3016
+D2
+The Bedroom!.
+~
+~
+0 -1 1002
+S
+#1002
+@@yModel Home Kitchen@@N~
+@@yYou stand in the Model Home's Kitchen, which has cutesy ceramic tea pots
+painted with butterflies, and spotlessly clean appliances. A @@apamphlet@@N
+@@yon one shelf says the total price for this home, with it's flags, and also
+notes that homes are made your way, complete with your own descriptions and
+such. A door leads north to the Entrance, and west to the Bedroom.@@N
+~
+17420 11
+D0
+Stephen's Quarters.
+~
+~
+0 -1 1001
+D3
+~
+~
+0 -1 1007
+E
+pamphlet~
+@@yThis house would cost a total of 845 Quest Points, because it had three
+no_mob flags, one no_recall, three no_teleport, one private, and three safe.
+The most basic house would only cost 100 quest points, for three rooms. Please
+see "help house" for more information on houses. And remember, houses are made
+to suit, so they are made however YOU want them, and that includes
+descriptions, and extra's like this pamphlet. Thanks for shopping with
+@@aShades of Evil Real Estate@@y.@@N
+~
+S
+#1003
+The Easy Room (tm)~
+The Easy Room (tm) is, as it's name suggests, a relaxed kind of place.
+Everywhere you look in the seemingly endless room, you see large cushions,
+chairs, couches and bean bags.  A variety of music plays quietly in the
+background. A small bar is in the corner of the room, containing anything
+you desire. You feel at home here.
+A doorway leads south.
+~
+25614 11
+S
+#1004
+The Passage~
+You are standing in a passage within the Halls of the Immortals.
+Doorways stand to the south and west, and the passage continues to the east.
+~
+25612 11
+D1
+A junction within the Halls of the Immortals.
+~
+~
+0 -1 1005
+D2
+The Immortal Rest Room.
+~
+~
+0 -1 1017
+S
+#1005
+The Junction~
+You are standing in a junction within the Halls of the Immortals.
+Exits lead off to the north, east, south and west. 
+~
+25612 11
+D0
+The Passage.
+~
+~
+0 -1 1006
+D1
+The Entry Point.
+~
+~
+16 -1 1015
+D2
+The Passage.
+~
+~
+0 -1 1008
+D3
+The Passage.
+~
+~
+0 -1 1004
+S
+#1006
+The Passage~
+You are standing in a passage within the Halls of the Immortals.
+Exits lead off to the east, south and west. You smell smoke coming from the
+west, and occasional swearing.
+~
+25612 11
+D0
+~
+~
+0 -1 1018
+D1
+A Spare room.
+~
+~
+0 -1 1014
+D2
+The Junction.
+~
+~
+0 -1 1005
+S
+#1007
+@@yModel Home Bedroom@@N~
+@@yYou sit down on the model home's bed, and wonder vaguely if they make
+uncomfortable beds just for Model Home showings. A radio in the corner plays
+Kenny G. music, and you wonder how many years in jail you'd get for killing
+whoever set the station. A large mirror is on one wall, and you take a moment
+to check yourself out. While the tacky decoration isn't exactly what you'd
+want in a house, the layout is superb and, if you were in charge of decoration
+and stuff, you know that this could be a magnificent house. Perhaps you should
+buy one?@@N
+~
+26124 11
+D1
+~
+~
+0 -1 1002
+S
+#1008
+The Passage~
+You are standing in a passage within the Halls of the Immortals. Exits lead
+north, east and south. To the east, you can sense a feeling of balance and
+inner peace.
+~
+25612 11
+D0
+The Junction.
+~
+~
+0 -1 1005
+D1
+~
+~
+0 -1 1024
+D2
+The Hallway.
+~
+~
+0 -1 1009
+S
+#1009
+The Hallway~
+You are standing in the Grand Hall of the Immortals.  The high, domed
+ceiling displays large paintings of the Gods of the world.  You are especially
+impressed by a striking portrait of Furey.  Exits lead off in all the main
+directions.
+~
+25612 11
+D0
+The Passage.
+~
+~
+0 -1 1008
+D1
+The Builders' room.
+~
+~
+0 -1 1010
+D2
+The Meeting Room.
+~
+~
+0 -1 1011
+D3
+Administration.
+~
+~
+0 -1 1013
+S
+#1010
+The Builders' Room~
+You are in a grand room within the Halls of the Immortals.  It's purpose
+is to allow Builder Immortals to meet with each other and the God of this land
+in order to work out details, etc of their latest construction.
+There is a door to the west.
+~
+25612 11
+D3
+The Hallway.
+~
+~
+0 -1 1009
+S
+#1011
+The Meating Room~
+You are in the Immortal's Meeting Room.  A large circular table almost
+fills this room.  Strong, comfortable chairs surround the table.  This room
+obviously looks like it gets used a lot!
+A doorway stands in the north wall, and an archway leads east.
+~
+25612 11
+D0
+The Hallway.
+~
+~
+0 -1 1009
+D1
+The Immortal's Bar.
+~
+~
+0 -1 1012
+S
+#1012
+The Immortal's Bar~
+This large room is totally orientated towards the relaxation of it's
+Immortal clientele's needs.  A large bar stands here, with well-worn stalls
+lining it.  Tables litter the rest of the room.  You find it hard to see
+deep into this room, due to the amount of hazy smoke there is floating around.
+An archway stands in the western wall.
+~
+25612 11
+D3
+The Meeting Room.
+~
+~
+0 -1 1011
+S
+#1013
+Administration~
+This room is used to house (yet another) notice board.
+It should be used for Immortal matters, concerning rules, etc.
+~
+17412 11
+D0
+~
+~
+0 -1 1040
+D1
+The Hallway.
+~
+~
+0 -1 1009
+D3
+~
+~
+16 -1 1023
+D5
+~
+~
+0 -1 3056
+S
+#1014
+Stimpy's palace of delights~
+You are in small room, covered with think red carpet.  Impressive looking
+paintings cover the walls, whilst the sound of The Cranberries floats
+through the room, filling your mind with emotion.
+~
+25612 11
+D3
+The Passage.
+~
+~
+0 -1 1006
+S
+#1015
+The Entry Point~
+The Entry Point serves as a gateway between the mortal and immortal realms.
+This room is bare, except for the door leading off west.  When Immortals tire
+of the mortal realms, they will often return to the Halls of the Immortals
+through this room.  A large, swirling spindle of energy glows fiercely in the
+exact centre of this room - looks like this is where an Immortal will appear!
+The magical force preventing recall within the Halls feels weaker here.
+~
+16396 11
+D3
+The Junction.
+~
+~
+16 -1 1005
+S
+#1016
+Bash's Room~
+The bright and cheery fireplace in the far wall lends a particularly warm
+and inviting glow to this room.  The thick, soft fur blankets on the floor
+add to this impression.  Piles of soft cushions line the walls, mute testimony
+to the Master of the House's dislike for furniture.
+~
+9740 11
+S
+#1017
+Immortal's Rest Room~
+This is the grandest room within the Halls of the Immortals, and also one
+of the most frequented.  Chairs, bean bags and long, comfortable benches fill
+this room.  This is the ideal place for Immortals to rest when not occupied.
+A doorway stands in the north wall of this room.
+~
+9228 11
+D0
+The Passage.
+~
+~
+0 -1 1004
+S
+#1000
+Forest Path~
+You are on an overgrown path. Your senses suggest that maybe it is not a good   idea to continue. To the south a faint light can be seen.
+~
+4 3
+S
+#1019
+The Builders' Room~
+You are in a small room, completely encapsulated, away from all the troubles
+of the realms of Ack.  You notice that the walls and floor are constructed
+from finest marble.  Large, soft benches line the walls, providing ample
+seating for the many mortal builders who are allowed to visit this room. It
+seems as if this room's sole purpose is to allow the Immortals of these realms
+to leave messages and guidelines for their mortals to take notice of.
+~
+12 11
+S
+#1020
+The Floating Room~
+This plain, simple room is constructed from a strange, see-through material,
+which allows you to see the strange landscape beyond.  Eerie clouds of pure
+energy wash around the room,  causing it to gently rock back and forth.
+To the East, a glowing portal leads to the Temple of Midgaard.
+~
+17438 11
+S
+#1023
+The Reception Chamber.~
+You have entered a smal, square room, constructed of finest marble.
+Everywhere you look, you can see your reflection beaming back at you.  To
+the east, you can see a magical-looking doorway, with important looking
+rooms behind it.  Below you, you can see the thinking room.
+~
+16392 11
+D1
+~
+~
+16 -1 1013
+D5
+~
+~
+0 0 3085
+S
+#1024
+Reimbursement BoardRoom~
+@@NHere is a room where the IMM's can bring players to be reimbursed.
+Please post @@Rall@@N reimbursements you make on the board, stating @@gwho@@N
+was reimbursed and @@gwhy@@N.
+~
+8 11
+D3
+~
+~
+0 -1 1008
+S
+#1026
+Hawkeye's Room~
+@@eThis Room Belongs to the Immortal, @@dHawkeye.@@N
+It is a large, open room, with no exits anywhere.
+Scattered here & there are many, many chairs & couches...ahstrays, too.
+In this room, smoking is allowed...
+There is also a small sign on Hawkeyes Immortal desk.
+~
+16526 11
+D5
+~
+~
+1 -1 3001
+E
+sign~
+JAC + AMH (In My Heart Forever)
+I will always miss you.
+~
+S
+#1027
+Odie's Room~
+There is no life, truth, intelligence nor substance in matter. All is
+ infinite mind and its infinite manifestation, for God is all in all, Sprit
+in immortal truth: matter is mortal error.  Spirit is the real and eternal;
+matter is the unreal and temporal. Spirit is God and man is His image and
+likeness.  Therefore man is not material, he is spiritual.
+
+~
+14 11
+S
+#0
+#MOBILES
+#1026
+fairy godmother~
+the Fairy Godmother~
+Stephen's Fairy Godmother floats here, looking cute.
+~
+The Fairy Godmother, sent by Stephen to spread joy and happiness throughout
+the land, is an old, frail-looking lady, with hair as white as snow.
+The kind smile on her face tells you that she means you no harm, and is
+just here to say hello, and maybe help you along your way.
+~
+3 1581704 1000 S
+68 2
+-500 100 100
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1000
+Quartermaster~
+~
+~
+~
+1 0 0 S
+1 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1004
+Grand Master of Thieves~
+~
+~
+~
+1 0 0 S
+8 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1005
+Bok-Choi~
+~
+~
+~
+1 0 0 S
+9 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1006
+Bashinator~
+~
+~
+~
+1 0 0 S
+3 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1007
+Emperor's Guard~
+~
+~
+~
+1 0 0 S
+7 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1008
+Emperor Hirohito~
+~
+~
+~
+1 0 0 S
+8 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1009
+Wazir~
+~
+~
+~
+1 0 0 S
+34 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1010
+Godzilla~
+~
+~
+~
+1 0 0 S
+14 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1011
+Dim-Mak~
+~
+~
+~
+1 0 0 S
+4 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1012
+Concubine~
+~
+~
+~
+1 0 0 S
+10 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1013
+Ginsu Chef~
+~
+~
+~
+1 0 0 S
+6 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1014
+Sony VCR~
+~
+~
+~
+1 0 0 S
+9 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1015
+vermin~
+~
+~
+~
+1 0 0 S
+3 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1016
+T'ian-Lung~
+~
+~
+~
+1 0 0 S
+2 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1017
+Tsaburi Matsumoto~
+~
+~
+~
+1 0 0 S
+11 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1018
+Lizard~
+~
+~
+~
+1 0 0 S
+2 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1019
+Manticore~
+~
+~
+~
+1 0 0 S
+15 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1020
+Pet Tiger~
+~
+~
+~
+1 0 0 S
+5 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1021
+Shogun~
+~
+~
+~
+1 0 0 S
+6 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1022
+Ninja~
+~
+~
+~
+1 0 0 S
+3 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1023
+Buddha~
+~
+~
+~
+1 0 0 S
+12 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1024
+Musashi~
+~
+~
+~
+1 0 0 S
+8 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1025
+Bupu~
+Bupu the Gully-Dwarf~
+A little bundle of refuse is busy lapping from a puddle here.~
+~
+1 0 0 S
+79 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1001
+zeus bartender~
+Zeus the bartender~
+The Great Lord Zeus stands here, waiting to take your order.
+~
+Zeus looks disgruntled to say the least at his demotion to bartender!  Maybe
+it'll teach him not to load Tiamat into recall, eh?
+~
+1 8380 900 S
+82 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1002
+slave~
+The peculiar living massage table~
+The incredible living massage table of Maharet stands here.
+~
+~
+3 640 0 S
+81 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1003
+dealer~
+~
+~
+~
+1 0 0 S
+5 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1027
+Eagle Knight~
+~
+~
+~
+1 0 0 S
+8 1
+0 0 0
+! 0 0 0 7 8 0 0
+| 0 0 0 0 0 0 0
+#1028
+earth elemental~
+@@bEarth Elemental@@N~
+@@Na huge man-like form made of @@bEarth@@N towers over you.
+~
+~
+262145 552 0 S
+55 0
+-800 350 250
+! 7 0 0 7 22542 0 0
+| 0 0 0 0 0 0 0
+#1029
+iron golem~
+@@dIron @@gGolem@@N~
+@@Na towering mass of @@dmetal@@N peers into your soul.@@N~
+~
+1 680 0 S
+62 0
+-1100 400 260
+! 0 0 0 7 155150 0 0
+| 0 0 0 0 0 0 0
+#1030
+soul thief~
+@@dSoul @@lThief@@N~
+~
+~
+327681 98986 0 S
+67 1
+-950 280 290
+! 0 0 0 7 24078 0 0
+| 0 0 0 0 0 0 0
+#1031
+holy avenger~
+@@aHoly @@WAvenger@@N~
+@@WA majestic Avenger stands before you.@@N~
+~
+3145729 8936 0 S
+55 1
+-1100 250 300
+! 0 0 0 7 155150 0 16
+| 0 0 0 0 0 0 0
+#1032
+Diamond Golem~
+@@WD@@yi@@Wa@@ym@@Wo@@yn@@Wd @@g Golem@@N~
+@@yA shimmering tower of @@adiamond @@yglitters before you.@@N~
+~
+3145729 535208 0 S
+77 1
+-1450 450 200
+! 0 0 0 7 24078 0 16
+| 0 0 0 0 0 0 0
+#1033
+Algeroth~
+@@dAlgeroth@@N~
+@@dAlgeroth@@N The Lord of Darkness@@N~
+~
+12811 1599656 -1000 S
+120 1
+-700 600 800
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1034
+familiar~
+A familiar~
+~
+~
+1 0 0 S
+17 1
+0 0 0
+! 5 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1035
+Clan~
+@@dClan Enforcer@@N~
+@@dClan Enforcer@@N
+~
+~
+17174539 1632504 0 S
+124 1
+-2500 1000 1000
+! 3 0 0 7 415886 0 16
+| 0 0 0 0 0 0 0
+#1036
+elemental~
+~
+~
+~
+3 2176 0 S
+118 1
+-1600 1000 750
+! 0 0 0 7 397214 0 4
+| 0 0 0 0 0 0 0
+#1037
+pegasus~
+@@WA @@mMagestic @@WPegasus@@N~
+@@WA @@mMagestic @@WPegasus@@W stands here, wings folded.@@N
+~
+~
+134217729 1573544 0 S
+61 1
+-1200 350 350
+! 0 0 0 7 154638 0 80
+| 0 0 0 0 0 0 0
+#1038
+nightmare~
+@@WA @@eDemonic @@dNightmare@@N~
+@@WA @@eDemonic @@dNightmare @@Wglowers at you evilly.@@N
+~
+~
+134217729 1573544 0 S
+59 1
+-1200 350 350
+! 0 0 0 7 154638 0 48
+| 0 0 0 0 0 0 0
+#1039
+beast~
+@@WAn @@lElemental @@aBeast@@N~
+@@WAn @@lElemental @@aBeast@@N gazes into your eyes.@@N
+~
+~
+134217729 1573544 0 S
+58 1
+-1200 350 350
+! 0 0 0 7 153614 0 144
+| 0 0 0 0 0 0 0
+#1040
+devourer~
+@@WAn @@rIntellect @@bDevourer@@N~
+@@WAn @@rIntellect @@bDevourer@@W peers into your thoughts.@@N
+~
+~
+134283265 1573544 0 S
+59 1
+-1200 350 350
+! 0 0 0 7 153614 0 144
+| 0 0 0 0 0 0 0
+#1041
+shadow~
+@@WA @@dShadow @@RHound@@N~
+@@WA @@dShadow @@RHound @@Wgrowls at you fiercely!@@N
+~
+~
+134283265 1573544 0 S
+58 1
+-1200 350 350
+! 0 0 0 7 153614 0 48
+| 0 0 0 0 0 0 0
+#0
+#OBJECTS
+#1012
+board~
+Creators Board~
+Creators Board~
+27 0 0 1
+200 85 85 1012 0 0 0 0 0 0
+1
+L
+1
+#1047
+test~
+~
+~
+9 0 0 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#1048
+Coder's Board~
+The Coder's Board~
+The Coder's Board~
+27 0 0 1
+50 81 81 1048 0 0 0 0 0 0
+1
+L
+1
+#1000
+spindle~
+a glowing spindle of energy~
+The glowing spindle of light dances madly before your eyes! 
+~
+7 65 0 1
+3001 1 1 0 0 0 0 0 0 0
+1
+L
+1
+#1028
+board~
+the Board~
+The Clan Leaders' Board floats before you.
+~
+27 0 0 1
+0 1 1 1028 0 0 0 0 0 0
+1
+L
+1
+#1027
+board~
+Odies Personal Board~
+Odies Personal Board~
+27 0 0 1
+360 0 0 1027 0 0 0 0 0 0
+0
+L
+1
+#1009
+globe~
+a shimmering globe~
+A shimmering globe lies here~
+11 0 8421376 1
+1 5076 0 0 0 0 0 0 0 0
+1
+L
+1
+#1018
+oil~
+some vanilla scented massage oil~
+Oil is on the ground here.
+~
+13 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#1022
+banana~
+a small, ripe banana~
+A curved, yellow fruit lies here~
+5 16384 8421376 1
+0 0 0 12 0 0 0 0 0 0
+1
+L
+1
+#1013
+board~
+the board~
+The Administration Board is Here.~
+27 0 0 1
+28 81 81 1013 0 0 0 0 0 0
+1
+L
+1
+#1008
+melon~
+a ripe and juicy msama melon~
+A melon lies squished here~
+13 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#1001
+ale tankard~
+a tankard of Abbot's Ale~
+A tankard of Abbot's Ale has been dropped here.
+~
+17 0 8388608 1
+4 4 3 0 0 0 0 0 0 0
+5
+L
+1
+#1002
+beer glass~
+a glass of beer~
+A tall, sleek glass of golden beer has been left here.
+~
+17 0 8388608 1
+4 4 1 0 0 0 0 0 0 0
+5
+L
+1
+#1003
+red wine~
+a glass of red wine~
+A glass of fairly high quality red wine has been left on the floor.
+~
+17 0 8388608 1
+4 4 2 0 0 0 0 0 0 0
+5
+L
+1
+#1004
+whisky scotch~
+a measure of scotch~
+A small measure of Scotch has been dropped here.
+~
+17 0 8388608 1
+4 4 5 0 0 0 0 0 0 0
+5
+L
+1
+#1005
+local mixture~
+a glass of the local boiling, lethal mixture~
+Someone has left a glass containing the local mixture here.  It is smoking.
+~
+17 0 8388608 1
+4 4 8 0 0 0 0 0 0 0
+5
+L
+1
+#1006
+vial~
+a vial of warm, viscous, vermillion blood~
+Someone has left a huge glass of blood here, spilling all over your nice armour.
+~
+13 2 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#1007
+block~
+a block of something resembling an oxo cube.
+~
+~
+13 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#1020
+board~
+the Builder's Board~
+A huge bulletin board is here, holding Building Information.
+~
+27 0 0 1
+20 81 81 1020 0 0 0 0 0 0
+1
+L
+1
+#1021
+board~
+the Immortal's Board~
+A huge notice board, covered in notes is here, ready to hold your message.~
+27 0 0 1
+14 81 81 1021 0 0 0 0 0 0
+1
+L
+1
+#1010
+bed~
+a large bed~
+A tempting looking bed is here, almost filling the room.
+~
+12 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+10000
+L
+1
+#1019
+helm~
+spiked barbed devil horns~
+Some sheeps horns lie in the dust here.
+~
+9 2 8388616 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+19 6
+L
+1
+#1023
+test sphere~
+a sphere~
+A sphere is here.
+~
+1 0 8650752 16537
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#1024
+stabber~
+@@Wthe @@yr@@Ra@@ci@@mn@@Gb@@Ro@@Ww@@ys@@ct@@Ra@@Gb@@Wb@@ye@@cr@@g~
+The Fabled dagger of death lies here awaiting its next owner.
+
+~
+5 -32704 8421376 22463
+0 0 0 11 0 0 0 0 0 0
+1
+A
+18 10
+A
+19 10
+A
+17 -50
+A
+23 -15
+L
+1
+#1025
+board~
+the @@BBuilders' Board@@g~
+The @@BBuilders' Board@@g floats before you.
+~
+27 64 0 1
+31 1 1 1020 0 0 0 0 0 0
+-31072
+L
+1
+#1026
+globe~
+a small globe~
+A globe showing the various realms of Ack lies here.
+~
+11 192 8421376 1
+3 1019 0 0 0 0 0 0 0 0
+1
+L
+1
+#1029
+genevieve~
+a @@Rfoxy @@cpicture @@Gof @@mMinerva@@N~
+~
+4 4161 8421376 1
+0 0 0 -1 0 0 0 0 0 0
+1
+A
+19 10
+A
+18 10
+A
+17 -50
+A
+2 5
+L
+1
+#1011
+reimb Board~
+reimb Board~
+The Bulletin Board for posting Reimbursements hangs here.~
+27 0 0 1
+15 81 81 1011 0 0 0 0 0 0
+5000
+L
+1
+#1014
+Pamphlet~
+house Pamphlet~
+~
+1 0 0 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#1015
+pants leggings legs~
+~
+~
+1 0 0 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#1016
+legs leggings pants ~
+@@yLeggings @@lof Dragon@@eFyre@@N~
+Eternal flames from a long-dead Dragon's breath lie here...
+~
+9 0 9437184 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+13 200
+A
+18 30
+A
+19 30
+A
+12 200
+A
+16 0
+A
+5 7
+A
+17 -250
+L
+120
+#1017
+sunray1~
+@@bThe first @@ysunray@@N~
+@@bThe first @@ysunray@@b from Aztlan's Pendant glows with power@@N~
+29 1048577 8388608 1
+1027 1018 1031 0 0 0 0 0 0 0
+1
+L
+1
+#1030
+bloody~
+@@dThe @@Rbloody @@dgloves@@N~
+@@dThe gloves rumoured to have been worn by a murderer!@@N~
+9 262160 8392704 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+18 50
+A
+19 50
+A
+17 -500
+A
+13 375
+A
+12 375
+L
+50
+#1031
+hand mentall~
+@@gSevered @@BHand @@gof @@BDeicide@@N~
+Here Lies a severed hand...~
+5 262145 8421376 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+3 0
+A
+4 0
+A
+2 0
+A
+18 0
+A
+19 30
+A
+17 -250
+A
+12 200
+A
+13 247
+A
+1 8
+L
+80
+#1032
+smoof~
+@@yGolden Earrings@@N~
+~
+9 1441792 8388672 16385
+0 0 0 0 0 0 0 0 0 0
+1
+A
+1 9
+A
+2 3
+A
+3 6
+A
+12 600
+A
+13 400
+A
+18 45
+A
+19 55
+A
+17 -500
+L
+80
+#1033
+cloak unique~
+@@eLeviathans @@dBlack Cloak@@N~
+There is a big, black cloak here...~
+9 17039363 8388736 1
+0 0 0 0 0 0 0 0 0 0
+2
+A
+12 400
+A
+13 400
+A
+17 -500
+A
+18 50
+A
+19 50
+A
+1 5
+A
+3 5
+A
+4 5
+A
+0 0
+E
+~
+~
+L
+80
+#1034
+pants~
+~
+~
+9 1441792 9437184 24475
+0 0 0 0 0 0 0 0 0 0
+1
+A
+17 -10000
+A
+18 1000
+A
+19 1000
+A
+24 -9000
+A
+23 -2000
+L
+80
+#1035
+treasure hawkeye hey wow~
+@@yHawkeyes Treasure....~
+@@yHEY!! Its Hawkeyes Treasure!! I win!! woohoo!~
+13 16386 8388608 1
+0 0 0 0 0 0 0 0 0 0
+0
+L
+1
+#1049
+uni~
+~
+~
+9 0 8650752 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+17 -25536
+A
+13 -25536
+A
+19 25536
+L
+1
+#1036
+explosion~
+~
+~
+4 0 8421376 1
+0 0 0 -1 0 0 0 0 0 0
+1
+L
+120
+#1037
+Guiness Stout~
+a tall glass of Guiness~
+A tall glass of Guiness Stout looks -- strong~
+17 0 0 1
+0 0 4 0 0 0 0 0 0 0
+1
+L
+1
+#1038
+Edible Panties~
+delicious Edible Panties~
+Some delicious edible panties are waiting for you~
+9 0 8519680 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+0 200
+A
+12 200
+L
+85
+#1046
+cookie~
+a @@bchocolate@@d chip@@N @@ycookie@@N~
+~
+10 128 8388608 1
+120 28 28 28 0 0 0 0 0 0
+1
+L
+1
+#0
+#SHOPS
+1001 1 9 17 19 23 1000 10 0 23
+0
+#RESETS
+M 0 1001 1 1012 
+G 0 1001 0 
+G 0 1002 0 
+G 0 1003 0 
+G 0 1004 0 
+G 0 1005 0 
+M 0 1002 1 1018 (null)
+
+O 0 1020 0 1010 (null)
+
+O 0 1013 0 1013 (null)
+
+O 0 1010 0 1014 (null)
+
+M 0 1026 1 1003 (null)
+
+O 0 1025 0 1019 
+
+O 0 3135 0 1020 
+
+O 0 1028 0 1022 (null)
+
+O 0 1048 0 1049 (null)
+
+O 0 1048 0 1043 (null)
+
+O 0 1011 0 1024 (null)
+
+O 0 1012 0 1025 (null)
+
+M 0 1002 1 1018 (null)
+
+O 0 9000 0 1026 (null)
+
+S
+#SPECIALS
+M 1026 spec_stephen
+M 1035 spec_breath_acid
+S
+#OBJFUNS
+O 1024 objfun_cast_fight
+S
+#$

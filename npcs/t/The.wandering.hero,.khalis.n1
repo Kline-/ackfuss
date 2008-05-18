@@ -1,0 +1,41 @@
+#MOB
+Revision     7
+Name         The wandering Hero, Khalis n1~
+ShortDescr   ~
+LongDescr    An ancient and powerful warrior stands here prepared to slay evil.~
+Description  He looks young but you can tell my his rusted platemail that he has to be over 200 hundred years old.                                                  Suddenly he says, 'Thy best be on thee way, evil is afoot and methinks your behind'. And with a pious grin he departs.       Don't even think of messing with Kharlis the wandering dwarven hero!~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        39
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       490
+Note         0
+Room         4409
+HpManaMove   1040 1593 481 585 100 100
+Gold         92
+Balance      0
+Exp          88164
+Act          7479309
+AffectedBy   10940
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        -18
+Wimpy        0
+Deaf         0
+Vnum         902
+Affect  92   1 -40  17          0
+Affect   6   5  -4  24          0
+Affect   6   5   4  18          0
+End
+
+#END

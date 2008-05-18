@@ -1,0 +1,155 @@
+#MOB
+Revision     7
+Name         lorianne bartender~
+ShortDescr   Lorianne the bartender~
+LongDescr    Lorianne the bartender kicks her heels here.
+~
+Description  Tall and slender and graceful, this lady has a piercing glare about her, I
+wouldnt mess if I were you.
+~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        73
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       12476
+Note         0
+Room         3712
+HpManaMove   2033 4496 263 1095 100 100
+Gold         4631
+Balance      0
+Exp          8962499
+Act          4195843
+AffectedBy   8736
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -1
+Hitroll      0
+Damroll      0
+Armor        -149
+Wimpy        0
+Deaf         0
+Vnum         9214
+Affect   6   6  -9  24          0
+Affect   6   6   9  18          0
+End
+
+#OBJECT
+Nest         0
+Name         oshite staff~
+ShortDescr   an O'Shite Staff~
+Description  An ornate staff lies here. Clasp it in times of need calling, 'O'Shite! Get me outa here!'~
+Vnum         9219
+ExtraFlags   8257
+WearFlags    16385
+WearLoc      17
+ClassFlags   1
+ItemType     4
+Weight       1
+Level        16
+Timer        0
+Cost         2992
+Values       40 2 2 103
+Spell 3      'word of recall'
+End
+
+#OBJECT
+Nest         0
+Name         vapor barrier~
+ShortDescr   a vapor barrier~
+Description  Someone has left a vapor barrier here. Wise choice.~
+Vnum         9217
+ExtraFlags   8192
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     17
+Weight       1
+Level        0
+Timer        0
+Cost         10
+Values       30 30 8 0
+End
+
+#OBJECT
+Nest         0
+Name         mug rivengut~
+ShortDescr   a mug of rivengut~
+Description  A mug of rivengut has been left here.~
+Vnum         9216
+ExtraFlags   8192
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     17
+Weight       1
+Level        0
+Timer        0
+Cost         10
+Values       10 10 4 0
+End
+
+#OBJECT
+Nest         0
+Name         disk~
+ShortDescr   the Disks of Mishikal~
+Description  A set of thin platinum plates with writing on them
+~
+Vnum         7519
+ExtraFlags   0
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        54
+Timer        0
+Cost         29160
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         gauntlets~
+ShortDescr   flaming Gauntlets~
+Description  A huge pair of flaming gauntlets.
+~
+Vnum         7513
+ExtraFlags   0
+WearFlags    129
+WearLoc      9
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        36
+Timer        0
+Cost         11988
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         nightie~
+ShortDescr   a Nightie~
+Description  A flimsy, transluscent nightie
+~
+Vnum         7514
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        39
+Timer        0
+Cost         15210
+Values       6 0 0 0
+End
+
+#END

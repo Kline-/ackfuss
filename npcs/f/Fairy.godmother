@@ -1,0 +1,120 @@
+#MOB
+Revision     7
+Name         fairy godmother~
+ShortDescr   the Fairy Godmother~
+LongDescr    Stephen's Fairy Godmother floats here, looking cute.
+~
+Description  The Fairy Godmother, sent by Stephen to spread joy and happiness throughout
+the land, is an old, frail-looking lady, with hair as white as snow.
+The kind smile on her face tells you that she means you no harm, and is
+just here to say hello, and maybe help you along your way.
+~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        90
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       11652
+Note         0
+Room         7536
+HpManaMove   5751 5913 1308 1350 100 100
+Gold         1557
+Balance      0
+Exp          59483656
+Act          4194307
+AffectedBy   1581704
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        -210
+Wimpy        0
+Deaf         0
+Vnum         1026
+Affect  92   1 -40  17          0
+Affect   2   6 -20  17          0
+Affect   6   0 -11  24          0
+Affect   6   0  11  18          0
+End
+
+#OBJECT
+Nest         0
+Name         staff armageddon~
+ShortDescr   the Staff of Armageddon~
+Description  A long staff of whirling colours floats here.~
+Vnum         16819
+ExtraFlags   67
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     4
+Weight       1
+Level        76
+Timer        0
+Cost         65219
+Values       666 12 12 45
+Spell 3      'faerie fire'
+End
+
+#OBJECT
+Nest         0
+Name         leggings~
+ShortDescr   a pair of elven leggings ~
+Description  A pair of elven leggings have been left here.~
+Vnum         9208
+ExtraFlags   0
+WearFlags    33
+WearLoc      7
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        69
+Timer        0
+Cost         46920
+Values       10 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         elven shield~
+ShortDescr   a finely crafted elven shield~
+Description  A finely crafted elven shield is resting here.~
+Vnum         9207
+ExtraFlags   0
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        67
+Timer        0
+Cost         44220
+Values       10 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         elven shield~
+ShortDescr   a finely crafted elven shield~
+Description  A finely crafted elven shield is resting here.~
+Vnum         9207
+ExtraFlags   0
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        67
+Timer        0
+Cost         49379
+Values       9 0 0 0
+End
+
+#END

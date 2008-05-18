@@ -1,0 +1,61 @@
+#MOB
+Revision     7
+Name         elder trioch~
+ShortDescr   Trioch the elder~
+LongDescr    Trioch the Elder is here, looking wise, and old.
+~
+Description  Trioch, although now a real antique, holds absolute power over Kiess.  Not
+many people listen to what he says, of course, but when he commands his
+personal guards to get something done, they usually manage to do so!
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        74
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       25915
+Note         0
+Room         1716
+HpManaMove   2976 5801 54 1110 100 100
+Gold         5043
+Balance      0
+Exp          14831048
+Act          4194315
+AffectedBy   8884
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    800
+Hitroll      0
+Damroll      0
+Armor        -131
+Wimpy        0
+Deaf         0
+Vnum         104
+End
+
+#OBJECT
+Nest         0
+Name         masque of the King~
+ShortDescr   masque of the King~
+Description  A beautiful golden helmet rests here, glowing softly.
+~
+Vnum         1704
+ExtraFlags   1
+WearFlags    32769
+WearLoc      18
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        69
+Timer        0
+Cost         48300
+Values       10 0 0 0
+End
+
+#END

@@ -1,0 +1,40 @@
+#MOB
+Revision     7
+Name         impee king chieftain~
+ShortDescr   Impee, chieftain of the Hulas~
+LongDescr    A large tribal man stands here, and attacks you as you enter.
+~
+Description  He looks like he will take great pleasure in killing you.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        19
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       6733
+Note         0
+Room         3301
+HpManaMove   1 629 243 285 100 100
+Gold         0
+Balance      0
+Exp          1
+Act          4194339
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         18223
+End
+
+#END

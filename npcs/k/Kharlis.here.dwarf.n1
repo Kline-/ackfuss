@@ -1,0 +1,60 @@
+#MOB
+Revision     7
+Name         Kharlis here dwarf n1~
+ShortDescr   Kharlis the Hero of the Dwarves~
+LongDescr    An ancient and powerful warrior stands here prepared to slay evil.~
+Description  He looks young but you can tell my his rusted platemail that he has to be over 200 hundred years old.                                                  Suddenly he says, 'Thy best be on thee way, evil is afoot and methinks your behind'. And with a pious grin he departs.       Don't even think of messing with Kharlis the wandering dwarven hero!~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        39
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       434
+Note         0
+Room         9704
+HpManaMove   1482 1572 517 585 100 100
+Gold         341
+Balance      0
+Exp          37604
+Act          7479309
+AffectedBy   10940
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        -18
+Wimpy        0
+Deaf         0
+Vnum         902
+Affect   6   5   4  18          0
+Affect   6   5  -4  24          0
+Affect  92   2 -40  17          0
+End
+
+#OBJECT
+Nest         0
+Name         hammer kharlis~
+ShortDescr   the Hammer of Kharlis~
+Description  The legendary hammer of Kharlis himself lies here awaiting a supreme being to possess it.~
+Vnum         901
+ExtraFlags   1283
+WearFlags    24577
+WearLoc      16
+Objfun       objfun_cast_fight~
+ClassFlags   1
+ItemType     5
+Weight       1
+Level        39
+Timer        0
+Cost         13338
+Values       20 7 20 7
+End
+
+#END

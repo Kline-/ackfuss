@@ -1,0 +1,455 @@
+#MOB
+Revision     7
+Name         blacksmith man~
+ShortDescr   the blacksmith~
+LongDescr    A dirty man stands here.
+~
+Description  As you look at him, he wipes his blackened hands on his apron,
+and smiles warmly at you/
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        25
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       10588
+Note         0
+Room         186
+HpManaMove   520 697 270 375 100 100
+Gold         398
+Balance      0
+Exp          11732
+Act          4194307
+AffectedBy   168
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    300
+Hitroll      0
+Damroll      0
+Armor        25
+Wimpy        0
+Deaf         0
+Vnum         3526
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      0
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        14
+Timer        0
+Cost         2156
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        13
+Timer        0
+Cost         1560
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots~
+ShortDescr   a pair of standard Kiess issue boots~
+Description  You see a pair of standard Kiess issue boots here.~
+Vnum         109
+ExtraFlags   0
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        16
+Timer        0
+Cost         2992
+Values       4 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         cape~
+ShortDescr   a standard Kiess issue cape~
+Description  You see a standard Kiess issue cape here.~
+Vnum         112
+ExtraFlags   0
+WearFlags    1025
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        17
+Timer        0
+Cost         2601
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         cloak~
+ShortDescr   a standard Kiess issue cloak~
+Description  You see a Kiess standard issue cloak here.~
+Vnum         106
+ExtraFlags   0
+WearFlags    5
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        16
+Timer        0
+Cost         2160
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sleeves~
+ShortDescr   a pair of standard Kiess issue sleeves~
+Description  You see a pair of standard Kiess issue sleeves here.~
+Vnum         111
+ExtraFlags   0
+WearFlags    257
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        18
+Timer        0
+Cost         3240
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots~
+ShortDescr   a pair of standard Kiess issue boots~
+Description  You see a pair of standard Kiess issue boots here.~
+Vnum         109
+ExtraFlags   0
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        17
+Timer        0
+Cost         2992
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard Kiess issue vest~
+Description  You see a standard Kiess issue vest here.~
+Vnum         104
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        18
+Timer        0
+Cost         3762
+Values       4 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helmet~
+ShortDescr   a standard Kiess issue helmet~
+Description  You see a standard Kiess issue helmet here.~
+Vnum         107
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        17
+Timer        0
+Cost         2890
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a standard Kiess issue sword~
+Description  You see a standard Kiess issue sword here.~
+Vnum         101
+ExtraFlags   64
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        16
+Timer        0
+Cost         2400
+Values       0 4 11 3
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard Kiess issue vest~
+Description  You see a standard Kiess issue vest here.~
+Vnum         104
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        15
+Timer        0
+Cost         2475
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         ring blue~
+ShortDescr   a blue city guard ring~
+Description  You see a blue ring with a strange symbol on the floor.~
+Vnum         115
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        15
+Timer        0
+Cost         2100
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings~
+ShortDescr   a pair of standard Kiess issue leggings~
+Description  You see a pair of standard Kiess issue leggings here.~
+Vnum         108
+ExtraFlags   0
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        15
+Timer        0
+Cost         2475
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a standard Kiess issue sword~
+Description  You see a standard Kiess issue sword here.~
+Vnum         101
+ExtraFlags   64
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        15
+Timer        0
+Cost         2250
+Values       0 4 7 3
+End
+
+#OBJECT
+Nest         0
+Name         shield~
+ShortDescr   a standard Kiess issue shield~
+Description  You see a standard Kiess issue shield here.~
+Vnum         105
+ExtraFlags   0
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        15
+Timer        0
+Cost         2400
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         cloak~
+ShortDescr   a standard Kiess issue cloak~
+Description  You see a Kiess standard issue cloak here.~
+Vnum         106
+ExtraFlags   0
+WearFlags    5
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        15
+Timer        0
+Cost         2250
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         ring blue~
+ShortDescr   a blue city guard ring~
+Description  You see a blue ring with a strange symbol on the floor.~
+Vnum         115
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        16
+Timer        0
+Cost         2560
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings~
+ShortDescr   a pair of standard Kiess issue leggings~
+Description  You see a pair of standard Kiess issue leggings here.~
+Vnum         108
+ExtraFlags   0
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        15
+Timer        0
+Cost         2560
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a standard Kiess issue sword~
+Description  You see a standard Kiess issue sword here.~
+Vnum         101
+ExtraFlags   64
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        14
+Timer        0
+Cost         1638
+Values       0 4 7 3
+End
+
+#OBJECT
+Nest         0
+Name         gloves~
+ShortDescr   a pair of standard Kiess issue gloves~
+Description  You see a pair of standard Kiess issue gloves here.~
+Vnum         110
+ExtraFlags   0
+WearFlags    129
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        15
+Timer        0
+Cost         2400
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         belt~
+ShortDescr   a standard Kiess issue belt~
+Description  You see a standard Kiess issue belt here.~
+Vnum         113
+ExtraFlags   0
+WearFlags    2049
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        16
+Timer        0
+Cost         2560
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer~
+ShortDescr   a standard Kiess issue bracer~
+Description  You see a standard Kiess issue bracer here.~
+Vnum         114
+ExtraFlags   0
+WearFlags    4097
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        16
+Timer        0
+Cost         2560
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer~
+ShortDescr   a standard Kiess issue bracer~
+Description  You see a standard Kiess issue bracer here.~
+Vnum         114
+ExtraFlags   0
+WearFlags    4097
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        16
+Timer        0
+Cost         2550
+Values       5 0 0 0
+End
+
+#END

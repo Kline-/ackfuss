@@ -1,0 +1,39 @@
+#MOB
+Revision     7
+Name         ernie~
+ShortDescr   A Rubber Chicken~
+LongDescr    A funky rubber chicken, with pieces falling off.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        40
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       7593
+Note         0
+Room         3301
+HpManaMove   1 1896 456 600 100 100
+Gold         10
+Balance      0
+Exp          1
+Act          4194343
+AffectedBy   0
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    700
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         7522
+End
+
+#END

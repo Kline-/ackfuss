@@ -1,0 +1,83 @@
+#MOB
+Revision     7
+Name         elf priestess woman~
+ShortDescr   an elven priestess~
+LongDescr    A beautiful elven priestess walks by you quickly, smiling shyly.
+~
+Description  This elven priestess is one of the many surface elves who worship
+ the Dark Maiden.
+~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        34
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       17837
+Note         0
+Room         3638
+HpManaMove   1306 1353 -170 510 100 100
+Gold         133
+Balance      0
+Exp          53672
+Act          4325385
+AffectedBy   8320
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    900
+Hitroll      0
+Damroll      0
+Armor        -6
+Wimpy        0
+Deaf         0
+Vnum         3517
+Affect  92   1 -40  17          0
+Affect   6   5  -4  24          0
+Affect   6   5   4  18          0
+Affect  81   6   0   0       8192
+End
+
+#OBJECT
+Nest         0
+Name         earring ruby~
+ShortDescr   a pair of ruby earrings~
+Description  A pair of ruby earrings lie here, glittering in the sun.
+~
+Vnum         3529
+ExtraFlags   0
+WearFlags    65537
+WearLoc      19
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        24
+Timer        0
+Cost         5184
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         earring ruby~
+ShortDescr   a pair of ruby earrings~
+Description  A pair of ruby earrings lie here, glittering in the sun.
+~
+Vnum         3529
+ExtraFlags   0
+WearFlags    65537
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        25
+Timer        0
+Cost         5625
+Values       6 0 0 0
+End
+
+#END

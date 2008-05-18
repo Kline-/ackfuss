@@ -1,0 +1,38 @@
+#MOB
+Revision     7
+Name         Monk n1~
+ShortDescr   An Old Dusty Monk~
+LongDescr    ~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        76
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       348
+Note         0
+Room         3301
+HpManaMove   1 5144 16 1140 100 100
+Gold         0
+Balance      0
+Exp          5076522
+Act          4349955
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         18100
+End
+
+#END

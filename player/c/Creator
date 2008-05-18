@@ -1,0 +1,360 @@
+#PLAYER
+Revision     15
+Name         Creator~
+ShortDescr   ~
+LongDescr    ~
+Description  ~
+Prompt       < @@r%t @@W>@@N~
+Sex          1
+LoginSex     1
+Class        4
+Race         8
+Level        85
+Sentence     25
+Invis        85
+Incog		 0
+m/c          85 85 85 85 85 
+Remort       80 80 80 80 80 
+Adeptlevel    1
+ Trust        0
+Wizbit       0
+Played       6146919
+Note         852596192
+Room         3001
+HpManaMove   6059 6059 1427 1427 8250 8250
+Money 8 2 0 2 0 0 1 1 1 
+BankMoney 8 0 0 0 0 0 0 0 110 
+Exp          0
+Act          153160
+Config       2152
+AffectedBy   0
+Position     7
+Practice     2477
+SavingThrow  18
+Alignment    -799
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         5449477
+Generation   0
+Clan         0
+Order        4 2 0 3 1
+Index	   2 4 1 3 0
+Mkills	   77
+Mkilled	   4
+Pkills	   7
+Pkilled	   0
+Password     ~
+Bamfin       appears in a flash of smoke!~
+Bamfout      smiles, and is gone!~
+Roomenter    glides in from~
+Roomexit     glides quietly~
+Title         I am all.~
+Immskll     wizhelp creator ) finger alist alink mpcr mpstat halls lhunt sstat cset whoname clutchinfo advance setclass doggy togbuild togleader isnoop trust deathmatc deathmatch resetpassword iscore iwhere fights allow iban deny freeze reboo reboot hotreboo hotreboot shutdow shutdown users wizify wizlock imtlset force log mload monitor mset noemote nopray notell oload oset owhere pardon peace purge iquest restore rset silence sla slay snoop sset transfer at bamfin bamfout echo goto holylight invis memory mfind mfindlev mstat mwhere ofind ostat recho return rstat slookup switch immtalk : reward setcouncil resetgain ~
+Whoname      W    Da Boss   ~
+Monitor	   7833
+Host         192.168.1.100~
+Failures     0
+LastLogin    Sun May 18 22:24:33 2008
+~
+HiCol	   l~
+DimCol	   B~
+TermRows    25
+TermColumns    80
+Email   not set~
+EmailValid    0
+AssistMsg     '@@eBANZAI!!@@N $N must be assisted!!@@N'~
+Alias_Name0 <none>~
+Alias0      <none>~
+Alias_Name1 <none>~
+Alias1      <none>~
+Alias_Name2 <none>~
+Alias2      <none>~
+Alias_Name3 <none>~
+Alias3      <none>~
+Alias_Name4 <none>~
+Alias4      <none>~
+Alias_Name5 <none>~
+Alias5      <none>~
+colors
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+AttrPerm     13 13 13 13 13
+AttrMod      0 0 0 0 0
+AttrMax      22 22 22 22 22
+Bloodlust    100
+Bloodlustmax   1000
+Vamplevel      20
+Vampexp       8
+Vampskillnum  0
+Vampskillmax  30
+Vampbloodline 1
+Vamppracs     30
+Hasexpfix     1
+Questpoints   637
+RecallVnum    18300
+GainMana      1427
+GainHp        6059
+GainMove      8250
+RulerRank    2
+Condition    0 48 10
+Pagelen      100
+Pflags       9728
+Skill        99 'reserved'
+Skill        99 'acid blast'
+Skill        99 'armor'
+Skill        99 'animate'
+Skill        99 'bad breath'
+Skill        99 'bark skin'
+Skill        99 'bless'
+Skill        99 'blindness'
+Skill        99 'bloody tears'
+Skill        99 'burning hands'
+Skill        99 'call lightning'
+Skill        99 'calm'
+Skill        99 'cause critical'
+Skill        99 'cause light'
+Skill        99 'cause serious'
+Skill        99 'change sex'
+Skill        99 'charm person'
+Skill        99 'chill touch'
+Skill        99 'continual light'
+Skill        99 'control weather'
+Skill        99 'create food'
+Skill        99 'create spring'
+Skill        99 'create water'
+Skill        99 'cure blindness'
+Skill        99 'cure critical'
+Skill        99 'cure light'
+Skill        99 'cure poison'
+Skill        99 'cure serious'
+Skill        99 'curse'
+Skill        99 'detect evil'
+Skill        99 'detect hidden'
+Skill        99 'detect invis'
+Skill        99 'detect magic'
+Skill        99 'detect poison'
+Skill        99 'detect undead'
+Skill        99 'detection'
+Skill        99 'dimension blade'
+Skill        99 'dispel evil'
+Skill        99 'dispel magic'
+Skill        99 'earthquake'
+Skill        99 'ego whip'
+Skill        99 'enchant weapon'
+Skill        99 'energy drain'
+Skill        99 'enhance weapon'
+Skill        99 'faerie fire'
+Skill        99 'faerie fog'
+Skill        99 'fighting trance'
+Skill        99 'fireball'
+Skill        99 'fire blade'
+Skill        99 'flamestrike'
+Skill        99 'flare'
+Skill        99 'fly'
+Skill        99 'gate'
+Skill        99 'giant strength'
+Skill        99 'harm'
+Skill        99 'heal'
+Skill        99 'hypnosis'
+Skill        99 'identify'
+Skill        99 'infravision'
+Skill        99 'influx'
+Skill        99 'invis'
+Skill        99 'know alignment'
+Skill        99 'know weakness'
+Skill        99 'know critical'
+Skill        99 'know item'
+Skill        99 'laser bolt'
+Skill        99 'lightning bolt'
+Skill        99 'locate object'
+Skill        99 'magic missile'
+Skill        99 'mass invis'
+Skill        99 'mind flail'
+Skill        99 'mystic armour'
+Skill        99 'nerve fire'
+Skill        99 'night vision'
+Skill        99 'pass door'
+Skill        99 'phase'
+Skill        99 'poison'
+Skill        99 'produce food'
+Skill        99 'protection'
+Skill        99 'refresh'
+Skill        99 'remove curse'
+Skill        99 'sanctuary'
+Skill        99 'seal room'
+Skill        99 'see magic'
+Skill        99 'sense evil'
+Skill        99 'shade'
+Skill        99 'shield'
+Skill        99 'shocking grasp'
+Skill        99 'sight'
+Skill        99 'sleep'
+Skill        99 'stalker'
+Skill        99 'stone skin'
+Skill        99 'suffocate'
+Skill        99 'summon'
+Skill        99 'teleport'
+Skill        99 'travel'
+Skill        99 'vampire bite'
+Skill        99 'ventriloquate'
+Skill        99 'warcry'
+Skill        99 'weaken'
+Skill        99 'beacon'
+Skill        99 'portal'
+Skill        99 'window'
+Skill        99 'word of recall'
+Skill        99 'hellspawn'
+Skill        99 'planergy'
+Skill        99 'visit'
+Skill        99 'barrier'
+Skill        99 'phobia'
+Skill        99 'mind bolt'
+Skill        99 'mindflame'
+Skill        99 'chain lightning'
+Skill        99 'static'
+Skill        99 'cloak:absorption'
+Skill        99 'cloak:reflection'
+Skill        99 'cloak:flaming'
+Skill        99 'cloak:darkness'
+Skill        99 'cloak:adept'
+Skill        99 'cloak:regeneration'
+Skill        99 'acid breath'
+Skill        99 'fire breath'
+Skill        99 'frost breath'
+Skill        99 'gas breath'
+Skill        99 'lightning breath'
+Skill        99 'blood leach'
+Skill        99 'appraise'
+Skill        99 'bash'
+Skill        99 'beserk'
+Skill        99 'climb'
+Skill        99 'dirt'
+Skill        99 'nodisarm'
+Skill        99 'notrip'
+Skill        99 'smash'
+Skill        99 'trip'
+Skill        99 'circle'
+Skill        99 'backstab'
+Skill        99 'disarm'
+Skill        99 'dodge'
+Skill        99 'dualwield'
+Skill        99 'enhanced damage'
+Skill        99 'feed'
+Skill        99 'find doors'
+Skill        99 'fourth attack'
+Skill        99 'headbutt'
+Skill        99 'hide'
+Skill        99 'hunt'
+Skill        99 'kick'
+Skill        99 'knee'
+Skill        99 'martial arts'
+Skill        99 'parry'
+Skill        99 'peek'
+Skill        99 'pick lock'
+Skill        99 'punch'
+Skill        99 'rescue'
+Skill        99 'second attack'
+Skill        99 'shadowform'
+Skill        99 'shield block'
+Skill        99 'sneak'
+Skill        99 'stake'
+Skill        99 'steal'
+Skill        99 'stun'
+Skill        99 'third attack'
+Skill        99 'disguise'
+Skill        99 'instruct'
+Skill        99 'frenzy'
+Skill        99 'imprint'
+Skill        99 'emotion control'
+Skill        99 'general purpose'
+Skill        99 'high explosive'
+Skill        99 'deflect weapon'
+Skill        99 'black hand'
+Skill        99 'throwing needle'
+Skill        99 'morale'
+Skill        99 'leadership'
+Skill        99 'Ice Bolt'
+Skill        99 'water elemental'
+Skill        99 'skeleton'
+Skill        99 'poison weapon'
+Skill        99 'embrace'
+Skill        99 'mesmerise'
+Skill        99 'ethereal travel'
+Skill        99 'adrenaline'
+Skill        99 'throwing star'
+Skill        99 'adrenaline bonus'
+Skill        99 'fire elemental'
+Skill        99 'rune:fire'
+Skill        99 'rune:shock'
+Skill        99 'rune:poison'
+Skill        99 'healing light'
+Skill        99 'withering shadow'
+Skill        99 'mana flare'
+Skill        99 'mana drain'
+Skill        99 'cage'
+Skill        99 'room dispel'
+Skill        99 'soul net'
+Skill        99 'condense soul'
+Skill        99 'blood walk'
+Skill        99 'restoration'
+Skill        99 'infuse'
+Skill        99 'fifth attack'
+Skill        99 'sixth attack'
+Skill        99 'scent'
+Skill        99 'holy light'
+Skill        99 'target'
+Skill        99 'charge'
+Skill        99 'scout'
+Skill        99 'mount'
+Skill        99 'divine intervention'
+Skill        99 'holy armor'
+Skill        99 'unit tactics'
+Skill        99 'earth elemental'
+Skill        99 'iron golem'
+Skill        99 'diamond golem'
+Skill        99 'soul thief'
+Skill        99 'holy avenger'
+Skill        99 'heat armor'
+Skill        99 'Retributive Strike'
+Skill        99 'Lava Burst'
+Skill        99 'fireshield'
+Skill        99 'iceshield'
+Skill        99 'shockshield'
+Skill        99 'shadowshield'
+Skill        99 'thoughtshield'
+Skill        99 'Rage:wolven strength'
+Skill        99 'Rage:sharpened claws'
+Skill        99 'Rage:disregard for pain'
+Skill        99 'Enraged'
+Skill        99 'tribal claw'
+Skill        99 'mark'
+Skill        99 'bloodsign'
+Skill        99 'bloodsense'
+Skill        99 'summon pegasus'
+Skill        99 'summon nightmare'
+Skill        99 'summon beast'
+Skill        99 'summon devourer'
+Skill        99 'summon shadow'
+Skill        99 'creature bond'
+Skill        99 'corrupt bond'
+IMCPerm      5
+IMCFlags     256
+IMCDeny      0
+End
+
+#END

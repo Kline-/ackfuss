@@ -1,0 +1,1044 @@
+#AREA
+@@lS@@do@@eE @@WMud University@@N~
+Q 16
+K soeuniversity~
+L @@W{@@r 1  5@@W}@@N~
+N 88
+I 1 5
+V 20100 20149
+X 0
+F 1
+U @@WAn @@eannoying @@yschoolbell@@W echos through the halls.@@N~
+O aliaser~
+R aliaser spade isis~
+W aliaser spade isis~
+M No bad room spells allowed.
+#ROOMS
+#20127
+Haunted Room~
+@@N This dim room is @@RHAUNTED!@@N Some little ghosts are trying to sneak up
+on you. Perhaps you should eliminate them before you continue @@GEAST.@@N
+~
+8 11
+D0
+~
+~
+0 -1 20126
+D1
+~
+~
+0 -1 20125
+S
+#20126
+@@NLittle @@rTroll @@NHome~
+@@NAs you enter this @@bDIM @@N little room, you see some wimpy little
+@@rTROLLS@@N that think @@RYOU'LL @@Nmake a good dinner! Better take care of
+them and get their equipment first. When you are done, go @@rSOUTH @@N to
+continue.
+~
+8 11
+D2
+~
+~
+0 -1 20127
+D4
+~
+~
+0 -1 20124
+S
+#20125
+Graduation Day!!!~
+@@eCONGRATULATIONS! @@N You've completed mud school and are now ready to begin
+exploring this land. You'll learn many more skills along the way, but you now
+have a good basic education. Other information may be found in the help system
+-- type help at your prompt. Also, make polite and good use of the newbie and
+question channels. Your final exercise is to eliminate the wraith who is
+holding your @@ldiploma!@@N
+~
+16396 1
+D0
+~
+~
+0 -1 20124
+D2
+~
+~
+0 -1 3717
+D3
+~
+~
+0 0 20127
+S
+#20124
+@@RDim Little Dungeon@@N~
+@@N In this dim little @@lDungeon@@N you see some crazed skeletons that you
+might be able to take on. Remember, @@eCON <MOB NAME>@@N before you attack!
+@@lIF YOU DON'T HAVE A @@eNEWBIE RIBBON OF FREE SPEECH@@l GO BACK AND GET ONE
+FIRST! @@N When you are done here, go @@rDOWN@@N to continue.
+~
+8 11
+D1
+~
+~
+0 -1 20123
+D2
+~
+~
+0 -1 20125
+D5
+~
+~
+0 -1 20126
+S
+#20123
+@@gLesson VII : COMBAT~
+@@NCOOL!! Now we get to kill some stuff! First, though, You need to realize
+that as a young adventurer, You are not powerful enough to kill everything, so
+we have given You a helpful command called @@rconsider@@N.  You use this by
+typing @@rcon @@m<mob name>@@N.  It will give You information on how powerful
+the mob is in relation to your self. You should use this command anytime You
+are not sure how powerful a mob is, so that You may judge your ability to
+defeat it. Also, You need to keep in mind that some mobs are @@caggressive@@N,
+meaning that they might attack you! To make sure that You can survive this,
+You should rest periodically, to regenerate both hit points and mana.. If You
+have not already, type @@rconfig +prompt@@N, then type @@rprompt all@@N.  This
+will show You how healthy You are. Now, if You need to rest, You may rest or
+sleep before going @@rWEST@@N to the Combat Hall!
+~
+8 11
+D0
+~
+~
+0 0 20128
+D3
+~
+~
+0 -1 20124
+S
+#20122
+Lesson V: Rules Part V~
+@@NFooled you!!  This isn't a rule, it's a way to learn more about anything in
+the mud..ASK :) We have provided two specific communication channels for this
+purpose: @@rnewbie@@N, and @@rquestion@@N. Everyone was a newbie once, and
+most will be happy to answer any questions you may have.
+Go @@rDOWN@@N to continue..
+~
+8 11
+D0
+~
+~
+0 -1 20121
+D5
+~
+~
+0 0 20128
+S
+#20121
+Lesson V: Rules Part IV~
+@@NNow, while there are other rules in the game, we will not burden you with
+them right now.  Basically, be polite and considerate of other players, and
+you will not get into trouble. This applies double when you are talking or
+dealing with ANY @@mimmortal@@N. We pride ourselves on ensuring that our
+@@mImmortal Team@@N is the fairest and most honest of any mud you will find.
+it is our goal to make this mud fun for all! However, there may be times when
+@@mimmortals@@N ask or tell you to do something...do not argue, do not whine,
+please just do it. If you feel that what they are doing or saying is unfair,
+then you may politely suggest it to them. If they have the time, they will
+explain the situation to you.  If they do NOT have the time, then please
+accept their directives, and realize that we have immortal rules, too, and all
+@@mImmortals@@N follow them to the letter. Finally, please realize that being
+an @@mimmortal@@N is much more than just having godlike powers.. it carries a
+huge amount of responsiblity, and @@mImmortals@@N are ALWAYS busy completing
+tasks to make this mud a better place, maybe building a cool new area, coding
+some really awesome stuff, or other immortal type stuff. If you have repeated
+problems with a specific immortal, please ask to speak with a @@lCreator@@N,
+and they will evaluate the situation, and give you their judgement.
+Type @@rSOUTH@@N to continue :)
+~
+8 11
+D1
+~
+~
+0 -1 20120
+D2
+~
+~
+0 -1 20122
+S
+#20120
+Lesson V: Rules Part III~
+@@NOkay, another rule: Do not attack mobs that other players are already fighting
+unless you have their permission.  This is called kill stealing, and is
+considerd very rude.  Depending on the player you do it too, they might kill
+you for the fun of it, or hire a @@eMercenary@@N Mob to hunt you down and
+kill you!
+TYPE @@rWEST@@N to continue..
+~
+8 11
+D1
+~
+~
+0 -1 20119
+D3
+~
+~
+0 -1 20121
+S
+#20115
+Lesson IV: Items and Equipment (Part II)~
+@@N Now you know how to @@cGET@@N, and how to @@cDROP@@N, you might want to know how to
+wear items.  To do this, type @@cWEAR@@N [item].  There should be a pair
+of X-Ray specs on the floor.  Just like in real life, they don't give you
+X-Ray vision.  But, these will give you a little bit of armor, so you
+should want them.  First, @@cGET@@N them.  Now, @@cWEAR@@N them.  This
+is all there is to it.  You can use this for weapons, armor, wands, and
+anything else that you can @@cWEAR@@N.  Continue WEST.
+~
+8 11
+D3
+~
+~
+0 -1 20116
+D5
+~
+~
+0 -1 20114
+S
+#20112
+Lesson III: Communication (Channel Uses)~
+@@NHere is a list of channels is of TO TO ALL CHANNELS@@N and what they are for.
+@@eAUCTION@@N - This is a very special channel used for selling and buying
+equipment with other players.  LOOK @@eAUCTION@@N to learn how to use it.
+@@rGOSSIP@@N - This channel is for basic chit-chat with other players.
+@@rMUSIC@@N - This is a channel where people often quote song lyrics.
+@@lLOG@@N - This channel shows what is logged to file, not much use for you.
+@@rNEWBIE@@N - This channel is specifically meant for new players, like you.
+@@rQUESTION@@N - This channel is used to ask game-specific questions.
+@@rSHOUT@@N - This broadcasts a message to the entire MUD.
+@@rYELL@@N - This broadcasts a message to players in your area.
+@@rCLAN@@N - Used for when you join a @@rCLAN@@N to speak with memebers.
+@@rRACE@@N - Used to cummunicate with others of your species.
+@@rFLAME@@N - When you feel like bashing somebody, this is the channel.
+@@rZZZ@@N - This channel is for sleeping players only.
+@@lINFO@@N - Gives @@lINFO@@N about death, level increases and such. (Listen Only)
+@@rHERMIT@@N - Turns off all channels if turned off.
+@@rBEEP@@N - Sends a 'BEEP' sounds with a message to other players.
+@@rTELL@@N - This is a special channel that can not be turned off.  This is
+for private messages to one player.  Continue east.
+~
+8 11
+D1
+~
+~
+0 -1 20113
+D5
+~
+~
+0 -1 20111
+E
+auction~
+These are the auction commands:
+To auction an item off: AUCTION [item] [starting price]
+To Bid on an item: AUCTION bid [amount of bid]
+To find out what the item does that is being auctioned, type AUCTION.
+~
+S
+#20111
+Lesson III: Communication~
+@@NThe basis of communication are things called @@cCHANNELS@@N.  Each channel
+has a specific usage.  There is a channel for your race, one for your
+clan (if you join one), and others.  Here I will tell you how to
+toggle your channels, and in @@NThe next room, you will learn what each
+of @@NThe channels is specifically meant for.
+@@NThe first thing you should do is @@rCHAN +HERMIT@@N.  This option will make
+it so that your channels become active.  @@rCHAN -HERMIT@@N will turn all
+of your channels off.  To toggle a channel, just @@rCHAN +[channel]@@N and
+to turn it off, just @@rCHAN -[channel]@@N.  Now to learn @@NThe channels, go
+@@rUP@@N. (Note: To speak on a channel, type @@NThe channel name followed by
+your message.  Except for @@NThe auction channel).
+~
+8 11
+D3
+~
+~
+0 -1 20110
+D4
+~
+~
+0 -1 20112
+S
+#20110
+End of Lesson II~
+@@NNow that you know how to move around, configure yourself, and
+that you can see the world in colour, you need to know how to
+@@ccommunicate@@N with other players.  Moving @@rEAST@@N, you will learn
+how this is done.
+~
+8 11
+D1
+~
+~
+0 -1 20111
+D2
+~
+~
+0 -1 20108
+S
+#20108
+Lesson II: Configuration~
+@@NNow you will learn to customize this MUD to suit _YOUR_ tastes.
+First is the command @@rCONFIG@@N.  Typing this will show what your current
+configuaration is.  To change one of these options, you just type
+@@rconfig -[option]@@N, to turn it off, or @@rconfig +[option]@@N to turn it on.
+For information on what the options are, type @@rHELP@@N @@rCONFIG@@N.
+NOTE: @@rconfig +COLOUR, +AUTOEXIT, +COMBINE, and +PROMPT @@Nare very useful.
+Go @@rNORTH@@N to continue.
+~
+8 11
+D0
+~
+~
+0 -1 20110
+D1
+~
+~
+0 -1 20107
+S
+#20104
+@@NLesson I: @@cMovement@@N (part 3)~
+@@NNow that you have mastered moving, perhaps you should know what your
+options are.  If you want a list of exits from a room, you can type
+@@rEXITS@@N.  This shows you all VISIBLE directions you can go.  (Hidden exits
+such as doors and secret passages, are not shown).  This is useful for
+navigating the mud.  Also, if you do not wish to type exit in every room,
+you can configure autoexit to the on setting, but that is the next lesson.
+Please move @@rEAST@@N to continue.
+~
+8 11
+D1
+~
+~
+0 -1 20105
+D2
+~
+~
+0 -1 20103
+S
+#20103
+@@NLesson I: @@cMovement@@N (part 2)~
+@@NVery good, student!  You are definatly catching on!  Keep this up, and
+you will graduate in no time!  Part two of this lesson deals with how to
+move without typing out the whole words.  Instead of typing @@rNORTH@@N to go
+north, you may simply type N.  To go up, use U.  And so forth.  The
+first letter of the direction will work, as well as using the whole word.
+To continue, move @@rNORTH@@N (or @@rN@@N).
+~
+8 11
+D0
+~
+~
+0 -1 20104
+D4
+~
+~
+0 -1 20102
+S
+#20102
+@@NLesson I: @@cMovement@@N~
+@@cMovement@@N is the simplest action in a MUD.  Generally, there are six
+directions in which you can move.  These are North, East, South, West,
+Up, and Down.  To move in one of these directions, type the word.
+Example: To move north, type NORTH and to move up, type UP.
+To continue your lesson, go @@rDOWN@@N from here.
+~
+8 11
+D1
+~
+~
+0 -1 20101
+D5
+~
+~
+0 -1 20103
+S
+#20101
+@@lS@@do@@eE@@N School of Higher Mudding~
+@@NWelcome, student, to the @@lS@@do@@eE@@N School of Higher Mudding.  Your first
+lesson beings by moving west.  To accomplish this, simply type the word
+@@rWEST@@N and away you go!
+NOTE: If you need a lesson repeated, type @@rLOOK@@N and it will be done.
+~
+8 11
+D2
+~
+~
+0 -1 20100
+D3
+~
+~
+0 -1 20102
+S
+#20100
+@@NWelcome to the @@lShades@@N @@dof@@N @@eEvil@@N!!~
+@@N:-:-:-: @@RIMPORTANT@@N :-:-:-:
+If you are a new player, type @@rNORTH@@N, press return.
+ 
+@@NThis is the entrance to the @@lShades@@N @@dof@@N @@eEvil@@N School of Higher Mudding.
+Here, you will learn the basics of movement, configuration,
+combat, as well as get some equipment to get you started on
+your new career as an @@mAdventurer@@N!! TO enter the school,
+@@rNORTH@@N.
+To visit the @@eHalls of Combat@@N, open the @@cdoor@@N, @@rSOUTH@@N.
+If you wish to return to @@lMidgaard@@N, @@rRECALL@@N.
+If you wish to set up your @@eColour @@Ngo @@rEast@@N
+~
+28 11
+D0
+~
+~
+0 -1 20101
+D1
+~
+~
+0 -1 20117
+D2
+~
+~
+0 0 3757
+S
+#20105
+@@NLesson I: @@cMovement@@N (part 4)~
+@@NHere is where you will learn about @@cDOORS@@N and @@cLOCKS@@N.  @@cDOORS@@N are simply
+directions in which you can move, but are not available until you @@rOPEN@@N
+the door first.  Monsters can't @@rOPEN@@N doors, and it is many an adventurer
+that has been saved by closing a door on an angry monster.  To @@rOPEN@@N a door,
+all you have to do is type @@rOPEN@@N followed by the direction in which the door
+is located.  Example:  @@rOPEN@@N @@rD@@N will @@rOPEN@@N a door leading DOWN.  To @@rCLOSE@@N a
+door that is OPEN, just type @@rCLOSE@@N followed by the direction in which the
+door is located.  Example: @@rCLOSE@@N E will @@rCLOSE@@N the door to the EAST.
+I really hope that you have been paying attention to this lesson.  Why?
+Because, to leave this room, you have to get by the door that is @@rUP@@N to
+continue.  If you don't, you will most likely starve.
+~
+8 11
+D3
+~
+~
+0 -1 20104
+D4
+~
+~
+1 -1 20106
+S
+#20106
+Lesson I: Movement (part 5)~
+@@NYou have reached the end of your lesson on movement.  Congrats! But @@NYou
+have one last thing to learn about doors... @@cLocks@@N!  Right now, there is
+a DOOR to the NORTH.  @@NYou can try to @@rOPEN@@N it, but it it locked.
+@@NYou must have a KEY.  It just so happens, that there should be a @@mKEY@@N
+on the floor in this room. (If not, wait a few minutes, there will be one soon
+.  Type @@rGET KEY@@N, this will take the KEY@@N, so @@NYou can @@rUNLOCK@@N
+the door.  Once @@NYou have the KEY@@N, type @@rUNLOCK@@N @@rN@@N to
+@@rUNLOCK@@N the door to the north.  Now, @@NYou can @@rOPEN@@N the door,
+(@@rOPEN N@@N, remember?) and go on to your next lesson. @@mOnce you have
+opened the door, please type @@rDROP KEY@@m to leave it for the next newbie :
+@@N
+~
+8 11
+D0
+~
+~
+1 20114 20107
+D5
+~
+~
+1 -1 20105
+S
+#20107
+End of Lesson I~
+@@NCongrats, student.  You have passed the first course in the SoE
+School of Higher Mudding.  You don't know how proud of you I am.
+However, now the courses will get a little more difficult.
+If you will just head @@rWEST@@N from here, you can begin your next lesson.
+~
+8 11
+D2
+~
+~
+1 20114 20106
+D3
+~
+~
+0 -1 20108
+S
+#20109
+Lesson II: Configuration (Colour)~
+@@NAbout now you might ask yourself if this whole MUD thing is worth it.
+After all, it is all in Black and White...
+Not anymore! In order to get @@ccolour@@N, you must first @@rconfig +COLOUR@@N.
+After that, type COLOUR to see what your current colours are set at.
+This will also show you your available colours.  (Note, this MUD was
+written with Brittish code, so it is spelled COLOUR instead of COLOR).
+To learn how to change colors, type COLOUR@@N.  When you finish changing
+all of your colours, continue @@rnorth@@N.
+~
+12 11
+S
+#20113
+Prayer~
+@@NThis is your last lesson in communication.  It is called @@cPrayer@@N.  Praying
+is useful for when you need assistance in a matter that no mortal can handle.
+Such as getting stuck in an area with no escape, finding a bug, or just when
+you have personal business with an @@mIMM@@N (or Immortal).  Immortals are the
+backbone of the mud.  These are normal people, just like you, who have
+special commands that allow them to create, change, and destroy anything
+in the mud.  If you want to send a message to the Immortals, type:
+@@rPRAY@@N [Message].  You can try it right now.  Just type:
+@@rPRAY@@N I am new here, and learning how to use pray.
+What happens from there depends on what immortals are online.  You might
+get a few words of encouragement, you might get something special, you
+might get scolded, or nothing at all.  Now you may continue @@rNORTH@@N to lesson
+four.
+~
+8 11
+D0
+~
+~
+0 -1 20114
+D3
+~
+~
+0 -1 20112
+S
+#20114
+Lesson IV: Items and Equipment~
+@@NIn this lesson, I will teach you how to use equipment and items.
+First thing you need to know is @@cGET@@N. The @@cGET@@N command will take an
+item off of the floor, and put it in your inventory.  You can try
+that right now.  There should be a bag on the ground.  (If not, wait
+for a fewmoments, and one will appear).  Type @@cGET@@N BAG.  This will
+take the bag off of the floor, and you will have it in your inventory.
+Once you have the bag, type @@cINV@@N (short for @@cINVENTORY@@N).  You should see
+the bag.  Now type @@cDROP@@N BAG.  This takes the bag out of your inventory,
+and puts it on the floor.  But, you want this bag, so @@cGET@@N BAG again, and
+continue up.
+~
+8 11
+D2
+~
+~
+0 -1 20113
+D4
+~
+~
+0 -1 20115
+S
+#20116
+Lesson IV: Items and Equipment (Part III)~
+@@NNow you are wearing your specs, and have your bag in the inventory,
+you can learn a few other commands with items.  @@cREMOVE@@N is one important
+command.  You can use it to stop using an item.  Try to @@cREMOVE@@N your
+specs by typing @@cREMOVE@@N SPECS.  You should now have them in your inventory.
+Now, to learn @@cPUT@@N.  This command is used for containers, like your
+bag. Let's practice the @@cPUT @@Wcommand, @@cPUT @@Wyour specs into 
+your bag, you do this by typing @@cPUT @@Wspecs bag. To get it 
+or another item out of a container type @@cGET @@Wspecs bag, (Or
+Whatever container you are using).
+Now go @@rWEST@@N for the final lesson!
+~
+8 11
+D1
+~
+~
+0 -1 20115
+D3
+~
+~
+0 -1 20118
+S
+#20117
+@@eColour @@rHelp@@a!!@@N~
+@@WHere you will learn how to set your colour. First Things first
+you have to type is config +colour, Now to setup your colours
+you must type colour help. Here you will get a list of congfigurations
+you can add colour to. To add colour to lets say, umm Gossip channel, 
+you would type Colour gossip (Whatever The Colour is). And so on till
+you finish setting all the configurations you wish too. Once your done
+type look to see if you can see any colour what so ever. If you can't
+see colour go through these steps again, and if you still can't see 
+colour make sure your screen is set for ansi, if it is and you are still
+experiencing difficulty type Pray HELP COLOUR and a GoD will come and 
+try to guide you through the setup.
+To continue Through the @@ySchool @@Wgo back to the @@rWest@@W.
+~
+8 11
+D3
+~
+~
+0 -1 20100
+S
+#20118
+Lesson V: Rules~
+@@NOkay, now for the no fun part.  We have certain @@crules@@N that all
+mortals must follow in this mud.  Every rule has it's reason, and we expect
+each and every one of you to follow them.  First and foremost, we demand that
+there be no cussing swearing, or obscene acts or language on any public
+channel.  While we don't like this rule, we are forced to follow it due to the
+Internet Indecency Act, since our server is located in the United States. In
+protest of this law, you will find a free gift from us..a Ribbon Proclaiming
+Free Speech!  We ask that if you agree that this law violates your 1st
+Amendment rights of free speech please e-mail or write your congressperson
+expressing your views.  Thanks!!
+Go @@rDOWN@@N to continue...
+~
+8 11
+D1
+~
+~
+0 -1 20116
+D5
+~
+~
+0 -1 20119
+S
+#20119
+Lesson V: Rules Part II~
+@@NOkay..some more rules: Do not attack or steal from players unless you and
+the other player is @@epkok@@N.. that means you have permission to kill and
+steal from players.  If you do try it, you will become @@RWANTED@@N, which is
+not a good thing, since high level mobs will hunt you down and kill you! You
+may ask an @@mImmortal@@N to become pkok when you are higher level, but
+remember that it will NEVER be removed, even if you grovel!  A very important
+decision..choose wisely..
+Type @@rWEST@@N for your next lesson...
+~
+8 11
+D3
+~
+~
+0 -1 20120
+D4
+~
+~
+0 -1 20118
+S
+#20128
+@@gLesson VI: Gain & Worth@@N~
+@@NIn the next few rooms you will learn how to Fight Mobs, and as you kill mobs you will gain @@yexperience@@N.  Gaining levels is @@eNOT @@Nautomatic, once you get enough @@yexperience @@Nto gain a level, you must go to a @@aTrainer @@Nand type @@yGain @@N<@@y3@@N-@@yletter Class Abbreviation@@N>.  Eg. @@aGain Mag @@N- will gain one level in Mage if you have enough @@yexperience@@N.  
+ 
+In @@lS@@do@@eE @@Nwe have a Multi-Class System in which you may gain levels in each Class rather than choosing only One Class.  However in order to save your character, your @@aPrimary Class @@Nmust be Level 2.
+ 
+@@NYou can type @@aWORTH @@Nto see if you have attained enough @@yexperience @@Nfor your next level.  The @@aWorth @@NCommand displays a list of any classes you can level in as well as the @@eCost @@Nin @@yexperience @@Nto gain in it, and the @@eDifference @@Nbetween that @@eCost @@Nand your @@eCurrent @@yexperience@@N.
+ 
+@@NThere are two @@aTrainers @@Nnear Recall in @@eMidgaard@@N.  The First is from @@yRecall@@N Up, North, West.  Here you can @@eGain @@Nlevels as well as @@eTrain @@Nyour Attributes.  The 2nd @@aTrainer@@N is from @@yRecall @@NUp, North, East.  Here you can also @@eGain @@Nlevels as well as @@ePractice @@NNew Spells/Skills.
+ 
+Go @@rSOUTH @@Nto continue..
+~
+1032 11
+D2
+~
+~
+0 -1 20123
+D4
+~
+~
+0 -1 20122
+S
+#0
+#MOBILES
+#20104
+Ghost~
+@@YA Pale Ghost@@N~
+@@NA pale little @@gGhost @@Nis sneaking up on you!
+~
+This little ghost doesn't look too tough to you!
+~
+3 0 0 S
+2 1
+0 -4 -3
+! 3 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#20103
+troll~
+@@NA stubby little @@rtroll@@N~
+@@NA stubby little @@rtroll @@N thinks he'll eat YOU for dinner!
+~
+~
+3 0 0 S
+4 1
+0 -10 -6
+! 2 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#20102
+sales man salesman~
+@@WA@@a peksy @@lSalesman@@N~
+~
+~
+67 0 0 S
+3 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#20101
+wraith~
+@@NA Small @@gWraith@@N~
+@@NThis little @@gwraith @@N is all that stands between you and graduation!~
+This guy looks like he would kill his own mother for a cigarette.  He
+is punk incarnate.  Better not get too close to him, unless you want to
+put him out of his misery.
+~
+67 0 0 S
+6 1
+0 0 0
+! 2 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#20100
+Skeleton~
+A @@RShambling Skeleton@@N~
+@@bA disorganized @@GSkeleton @@b is shambling toward you!@@N   
+~
+These little, disorganized skeletons don't look too hard. Maybe they will help
+train new players in the art of combat.
+~
+16777283 0 0 S
+3 1
+-25 -5 2
+! 3 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#0
+#OBJECTS
+#20100
+mace~
+a Spiff New Mace~
+A brand new mace lies on the ground, still glossy and polished.
+~
+5 0 8421376 1
+0 2 3 7 0 0 0 0 0 0
+1
+A
+18 10
+A
+19 10
+L
+1
+#20101
+knife~
+a Ginsoo Knife~
+A knife that can cut an aluminum can without dulling is dropped here.
+~
+5 0 8421376 1
+0 2 4 11 0 0 0 0 0 0
+1
+A
+18 1
+A
+19 1
+L
+1
+#20102
+sword~
+a stainless steel sword~
+A sword made from cheap steel lies here, reflecting light.
+~
+5 0 8421376 1
+0 4 6 3 0 0 0 0 0 0
+1
+A
+18 1
+A
+19 1
+L
+1
+#20103
+jacket~
+@@NA shabby @@lskeleton's @@Njacket~
+@@N A shabby @@lskeleton's @@Njacket lies here, waiting for you to take it~
+9 0 8650752 1
+9 0 0 0 0 0 0 0 0 0
+5
+L
+1
+#20104
+shield~
+@@BA @@RTiny @@BShield@@N~
+@@BYou see a @@RTiny Shield @@B that may help protect you from minimal damage ~
+9 0 8421376 1
+10 0 0 0 0 0 0 0 0 0
+1
+A
+19 1
+A
+18 1
+A
+17 -10
+A
+24 -2
+L
+1
+#20105
+necklace~
+@@NA @@yGolden @@NNecklace~
+@@NThis @@ygolden @@necklace @@ePROVES @@Nyou completed your schooling~
+9 0 8388736 1
+3 0 0 0 0 0 0 0 0 0
+1
+A
+17 -5
+A
+18 1
+A
+19 1
+A
+12 10
+L
+1
+#20106
+hat~
+@@bA Ghost's Hat@@N~
+A hat from a Ghost might be a good thing to have~
+9 0 8388616 1
+11 0 0 0 0 0 0 0 0 0
+1
+A
+17 -5
+A
+18 1
+A
+19 1
+L
+1
+#20107
+pants~
+@@mTattered Pants@@N~
+@@NThese skeletons left some @@mtattered pants@@N for you to wear
+~
+9 0 9437184 1
+10 0 0 0 0 0 0 0 0 0
+1
+A
+17 -10
+L
+1
+#20108
+garter~
+ivory lace garter~
+A ring of ivory lace and satin rests here.
+~
+9 0 9437184 1
+5 0 0 0 0 0 0 0 0 0
+1
+L
+20
+#20109
+gloves~
+@@BSkeleton's @@lGloves@@N~
+@@NWhen you put these @@lskeleton's gloves@@N on, your fingers turn to @@gbone@@N~
+9 0 8392704 1
+10 0 0 0 0 0 0 0 0 0
+1
+A
+19 1
+A
+18 1
+L
+1
+#20110
+sleeves~
+@@bGhostly Sleeves@@N~
+@@R A pair of Ghostly Sleeves are here... maybe they can protect you~
+9 0 8390656 1
+11 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#20111
+cape~
+a @@yHaunted@@N Cape~
+@@N Maybe you should tie this @@yHaunted@@N Cape around your neck~
+9 0 8454144 1
+9 0 0 0 0 0 0 0 0 0
+1
+A
+17 -5
+L
+1
+#20112
+belt~
+@@NA @@bDusty @@eJewelled @@NBelt~
+@@NA dusty little @@rjewelled @@Nbelt for your waist~
+9 0 8519680 1
+9 0 0 0 0 0 0 0 0 0
+1
+A
+17 -5
+A
+18 2
+L
+1
+#20113
+bracelet~
+@@rA friendship bracelet@@N~
+A bracelet made from colored string sits here in a pile.
+~
+9 0 8390656 1
+10 0 0 0 0 0 0 0 0 0
+1
+A
+18 2
+A
+19 3
+A
+17 -5
+L
+1
+#20114
+key~
+@@WA SKeLeToN KeY@@N~
+A small, boney key lies here.
+~
+18 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#20115
+diploma~
+@@pA SoESHM Diploma@@N~
+A paper proclaiming graduation from SoE School for Higher Mudding is here.
+~
+1 64 8421376 1
+0 0 -1 0 0 0 0 0 0 0
+1
+A
+19 1
+A
+18 1
+A
+5 1
+A
+4 1
+L
+1
+#20116
+firefly fly~
+@@yA firefly@@N~
+A firefly buzzes around the room.
+~
+1 67 8388608 1
+0 0 -1 0 0 0 0 0 0 0
+1
+A
+24 -1
+A
+17 -1
+L
+1
+#20117
+x-ray Xray specs~
+@@dX@@c-Ray@@G Specs@@N~
+@@NA pair of plastic specs with swirling lenses lies here.@@N
+~
+9 0 8388624 1
+10 0 0 0 0 0 0 0 0 0
+1
+A
+13 10
+A
+12 10
+L
+1
+#20118
+clip-on clipon earring~
+@@NA @@eGlowing @@rGlittering @@pEarring@@N~
+@@NA small @@pearring @@eGlowss@@N here, maybe you should get it~
+9 0 8388672 1
+2 0 0 0 0 0 0 0 0 0
+1
+A
+18 2
+L
+1
+#20119
+bag clue~
+@@Na @@aclue@@N bag.~
+@@NA @@aclue @@Nbag lies here, waiting for you to take it.
+~
+15 0 8388608 1
+20 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#0
+#RESETS
+D 0 20105 4 1 (null)
+
+D 0 20106 5 1 (null)
+
+O 0 20114 0 20106 (null)
+
+D 0 20106 0 2 (null)
+
+D 0 20107 2 1 (null)
+
+O 0 20119 0 20114 (null)
+
+O 0 20117 0 20115 (null)
+
+O 0 20119 0 20114 (null)
+
+O 0 20117 0 20116 (null)
+
+O 0 20117 0 20116 (null)
+
+O 0 20117 0 20116 (null)
+
+O 0 20119 0 20114 (null)
+
+M 0 20101 1 20125 (null)
+
+E 0 20118 0 19 (null)
+
+E 0 20105 0 4 (null)
+
+E 0 20105 0 3 (null)
+
+G 0 20115 0 (null)
+
+M 0 20103 5 20126 (null)
+
+E 0 20112 0 13 (null)
+
+G 0 20104 0 (null)
+
+M 0 20104 5 20127 (null)
+
+E 0 20110 0 10 (null)
+
+E 0 20106 0 6 (null)
+
+E 0 20111 0 12 (null)
+
+M 0 20100 4 20124 (null)
+
+E 0 20107 0 7 (null)
+
+E 0 20109 0 9 (null)
+
+M 0 20100 4 20124 (null)
+
+G 0 20103 0 (null)
+
+G 0 20109 0 (null)
+
+G 0 20107 0 (null)
+
+O 0 20113 0 20123 (null)
+
+O 0 3009 0 20118 (null)
+
+O 0 3009 0 20118 (null)
+
+O 0 20100 4 20119 (null)
+
+S
+#$

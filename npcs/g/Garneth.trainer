@@ -1,0 +1,86 @@
+#MOB
+Revision     7
+Name         garneth trainer~
+ShortDescr   Garneth the Gnomish Trainer~
+LongDescr    Garneth stands here, waiting to train your attributes.
+~
+Description  Garneth has the skills only taught in the olden days, the skills he learnt
+when he was a boy are no longer taught to all, and have long since been 
+forgotten by most.  Without his skills, however, the gnome race would never
+be able to train and increase their powers, and luckily for this township,
+Garneth has thought well enough in advance to have three apprentices so 
+his skills can live on.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        88
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       14889
+Note         0
+Room         3009
+HpManaMove   3340 6725 671 1320 100 100
+Gold         1570
+Balance      0
+Exp          2954004
+Act          4194307
+AffectedBy   8872
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        -195
+Wimpy        0
+Deaf         0
+Vnum         6005
+Affect   6  18 -11  24          0
+Affect   6  18  11  18          0
+Affect  84   4   0   0        128
+Affect  92   4 -40  17          0
+Affect  81   0   0   0       8192
+End
+
+#OBJECT
+Nest         0
+Name         velvet green cloak~
+ShortDescr   a dark green velvet cloak~
+Description  A dark green piece of velvet has been discarded here.~
+Vnum         6019
+ExtraFlags   0
+WearFlags    1025
+WearLoc      12
+ClassFlags   1
+ItemType     9
+Weight       4
+Level        81
+Timer        0
+Cost         66420
+Values       10 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sword long~
+ShortDescr   a long sword~
+Description  A long sword has been left here.~
+Vnum         3022
+ExtraFlags   8192
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       8
+Level        10
+Timer        0
+Cost         900
+Values       0 3 6 3
+End
+
+#END

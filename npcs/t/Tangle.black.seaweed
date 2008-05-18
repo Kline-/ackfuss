@@ -1,0 +1,371 @@
+#MOB
+Revision     7
+Name         tangle black seaweed~
+ShortDescr   a forest of seaweed~
+LongDescr    A large tangle of black seaweed looms here.
+~
+Description  The seaweed looks black and slimy. There are numerous fish and dead animals
+caught up in the fronds, and it seems to reach towards you as if it does not
+like you invading its waters!
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        31
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       9793
+Note         0
+Room         3106
+HpManaMove   525 1025 361 465 100 100
+Gold         420
+Balance      0
+Exp          44306
+Act          4194375
+AffectedBy   12424
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        -17
+Wimpy        0
+Deaf         0
+Vnum         4221
+Affect  79  27  -4   1       4096
+Affect   6   9  -3  24          0
+Affect   6   9   3  18          0
+Affect  84   4   0   0        128
+Affect  81   9   0   0       8192
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        28
+Timer        0
+Cost         8019
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        28
+Timer        0
+Cost         7290
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        28
+Timer        0
+Cost         7840
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      0
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        14
+Timer        0
+Cost         2002
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        15
+Timer        0
+Cost         2100
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a standard issue sword~
+Description  You see a standard issue sword here.~
+Vnum         3037
+ExtraFlags   64
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        13
+Timer        0
+Cost         1680
+Values       0 3 10 3
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a standard issue sword~
+Description  You see a standard issue sword here.~
+Vnum         3037
+ExtraFlags   64
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        28
+Timer        0
+Cost         7560
+Values       0 6 14 3
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        28
+Timer        0
+Cost         7840
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        28
+Timer        0
+Cost         7560
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         6552
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer~
+ShortDescr   a standard issue bracer~
+Description  You see a standard issue bracer here.~
+Vnum         3017
+ExtraFlags   0
+WearFlags    4097
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        28
+Timer        0
+Cost         7290
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        27
+Timer        0
+Cost         7560
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        28
+Timer        0
+Cost         7830
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         8316
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        29
+Timer        0
+Cost         7830
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        28
+Timer        0
+Cost         8410
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         7290
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a standard issue sword~
+Description  You see a standard issue sword here.~
+Vnum         3037
+ExtraFlags   64
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        29
+Timer        0
+Cost         8700
+Values       0 6 14 3
+End
+
+#END

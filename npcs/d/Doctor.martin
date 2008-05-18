@@ -1,0 +1,39 @@
+#MOB
+Revision     7
+Name         doctor martin~
+ShortDescr   Doctor Martin, the cobbler~
+LongDescr    A man is here trying to make a pair of boots, you just pissed him off.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        16
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       25789
+Note         0
+Room         3301
+HpManaMove   1 472 240 240 100 100
+Gold         2150
+Balance      0
+Exp          1
+Act          4194339
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         18227
+End
+
+#END

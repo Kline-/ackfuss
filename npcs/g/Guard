@@ -1,0 +1,114 @@
+#MOB
+Revision     7
+Name         guard~
+ShortDescr   a cityguard~
+LongDescr    A Kiess cityguard stands here, looking out for criminals.
+~
+Description  He looks pretty powerful, capable of protecting himself.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        19
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       13262
+Note         0
+Room         6156
+HpManaMove   536 536 285 285 100 100
+Gold         69
+Balance      0
+Exp          1917
+Act          4194311
+AffectedBy   8320
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    900
+Hitroll      0
+Damroll      0
+Armor        25
+Wimpy        0
+Deaf         0
+Vnum         134
+Affect   6   8  -2  24          0
+Affect   6   8   2  18          0
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a standard Kiess issue sword~
+Description  You see a standard Kiess issue sword here.~
+Vnum         101
+ExtraFlags   64
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        17
+Timer        0
+Cost         2448
+Values       0 6 9 3
+End
+
+#OBJECT
+Nest         0
+Name         cape~
+ShortDescr   a standard Kiess issue cape~
+Description  You see a standard Kiess issue cape here.~
+Vnum         112
+ExtraFlags   0
+WearFlags    1025
+WearLoc      12
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        17
+Timer        0
+Cost         2601
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         belt~
+ShortDescr   a standard Kiess issue belt~
+Description  You see a standard Kiess issue belt here.~
+Vnum         113
+ExtraFlags   0
+WearFlags    2049
+WearLoc      13
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        16
+Timer        0
+Cost         2448
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer~
+ShortDescr   a standard Kiess issue bracer~
+Description  You see a standard Kiess issue bracer here.~
+Vnum         114
+ExtraFlags   0
+WearFlags    4097
+WearLoc      15
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        18
+Timer        0
+Cost         3078
+Values       4 0 0 0
+End
+
+#END

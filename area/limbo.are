@@ -1,0 +1,1778 @@
+#AREA
+{None } Diku         Limbo~
+Q 16
+K none~
+L {?? ??}~
+N 24
+I 0 0
+V 1 20
+X 0
+F 10
+U @@WAn @@yAngel @@Wsings a @@mhymn@@N.~
+O diku~
+R diku gozer sammael~
+W diku gozer sammael~
+S Title not shown on area list.
+#HELPS
+-1 ackmud~
+~
+0 assist~
+@@yASSIST@@g is a command that allows you to assist any member of your group
+in combat.  ASSIST by itself will attempt to have you assist your leader
+first, then each member of your group, in group order.
+Syntax:  assist <target>
+         assist
+
+~
+0 cybertown~
+@@yCybertown@@g is a VERY cool website!  Go check it out at:
+
+	http://www.cybertown.com
+Cybertown is a virtual city, online, built through the use of multiple 
+webpages.  It really is well worth the time to explore...while you're
+there, be sure to drop into Cyberlich's apartment at Beyond Cybertown
+Colony, building #3, apart. #69.  Also, be sure to check out the various
+links to the SoE homepage that Cybertown supports.  We think you'll
+be @@RGREATLY@@g impressed.  We are!
+~
+0 multi multiclass~
+Ack! Mud now supports players having more than one class.
+Eg, a player may chose to be Mage/Conjuerer or Thief/Warrior.
+WHO and SCORE now report the levels gained.  A ' - ' character means that
+the specified class is not available, eg:
+Mag:23 Cle: - Thi: - , etc.  This means that player can advance in Mage levels,
+but not in Cleric or Thief.
+Skills and spells become available when ANY class' level meets the minimum
+level required to use it.  The max level of the player is not used.
+When casting spells, like above, the maximum level of THE CLASS THAT HAS ACCESS
+TO THAT SPELL is used.  This way a char who is Mag:2 and War:50 won't be able
+to cast 50th level Mage spells.
+
+Level gain is no longer automatic.  The GAIN command must now be used instead,
+to advance in the specified class.  See 'HELP GAIN' for more details.
+~
+0 boards~
+There are now a number of _main_ boards on the game:
+INFO Board - 5 rooms west of Midgaard Temple, this is used to hold rules and
+	     general information.  Only Immortals can write on this board.
+IDEA Board - In Midgaard Temple, this is inteneded to be used by players to
+	     leave ideas for the mud.
+
+There is also a board for players to use, for personal messages, etc.  It is
+located 4 rooms west, 2 rooms south of Midgaard Temple.
+To use the boards, you must be in a room with one :)
+Type: WRITE <header> to leave a message, with the specified header/title.
+      WRITE to:<name> to leave a private message.
+      READ <number> to read a message.
+To find out what messages are on a board, simply look at it.
+There are also several other boards in the game, for clan and race use, as
+well as various other use.
+~
+0 bank~
+The BANK command allows you to carry out financial transactions with the bank 
+of your choice.  All banks in the game respect a player's balance, meaning
+you can use any bank you find.  
+Usage: BANK [ balance | deposit | withdraw ]
+BANK                 with no argument displays usage information.
+BANK BALANCE         reports your current bank balance.
+BANK DEPOSIT  <gold> deposits a specified amount of gold into your account.
+BANK WITHDRAW <gold> withdraws a specified amount of gold.
+Needless to say, you must have the specified amount of gold in your account or
+inventory before you can deposit or withdraw it.
+The banking system has been introduced as a measure to work alongside the new
+limit on the amount of gold that a player can carry.  Eg:  How many people can
+explore and fight, whilst carrying thousands of gold coins?
+~
+0 note mail~
+Intermud Mail System!!!!
+The main command is @@rNOTE@@N..all commands listed are preceded by it
+@@yTo Write:@@N
+to (name) - sets who note is going to
+subject   - lets you write a subject
+write     - place you in editor to begin writing note
+edit      - also places you in editor to write note
+post      - posts your note to the player you are writing to
+@@yTo Read:@@N
+list      - lists all letters your have recieved, both old and new
+read #    - readds the message number specified
+remove #  - giving the number of which note, removes it from the list
+
+@@GExamples!!!!@@N
+If you were writing a letter to @@eCyberlich@@N this is how you would do it
+note to cyberlich
+note subject hi
+note write (or edit) -then write message, exit editor
+note post
+Cyberlich would then type
+note list
+note read # of message
+note remove # of message to delete it
+@@eALL note and mail commands must be done at a postmaster!!@@N
+~
+1 crusade crusades~
+Crusades are auto quests that random mobs, depending on the average level of
+the players logged on at the time. You must find the mob that stole the item,
+get the item, and return it to the mob that wants it back.
+Some questions you can ask on the crusade channel:
+where are you?
+where is the thief?
+~
+1 zmud client~
+For those of you that haven't already, we recommend downloading a mud client
+from the Internet.  @@lShades @@dof @@eEvil@@N recommends zmud, which can be
+found at http://www.rt66.com/ zugg/zmud.html . For those of you that already
+have zmud--here is a tip from Zugg himself :) Zmud sets the default color
+scheme to bright, which unfortunatly swapps our colours around.  Reset the
+color scheme in zmud to dim, and they will appear as we want them.
+~
+0 dirt~
+DIRT is a combat skill.  The player will attempt to kick dirt into the target's
+eyes, causing (very) temporary blindness, which affects the target's combat
+abilities.
+~
+0 chwere~
+CWHERE tells you the location of any fellow clan members, where ever they are
+in the game.  You must belong to a clan to use this command.
+~
+0 adapt~
+ADAPT allows you to have a weapon adapted for your use, if it's level is higher
+than yours.  Adapt can only be used when in the room with a NPC that offers
+his/her services for adapting.  Typing ADAPT with no argument reports the cost
+of having a weapon adapted.
+Once the weapon has been adapted, it's damage will have been lowered in line
+with the decrease in the weapon's level to your's.  Any affects on the weapon
+(Eg affects HITROLL) will be heavily reduced, and probably cancelled.
+If, once a weapon has been adapted, it's attributes indicate it will cause NO
+damage, it will crumble into dust, and you will lose it.  
+~
+0 heal~
+HEAL reports which spells you are able to buy, along with the cost.  This can
+only be done if with a NPC which offers spells - usually healers.
+HEAL followed by a single character 'buys' that spell.
+Eg: HEAL H  buys a heal spell.
+All spells are only cast on the buyer.  No one else.
+~
+0 gain~
+GAIN increases one of your levels.  Level gain is no longer automatic, due
+to the 'semi' multiclass system.  Typing GAIN with no argument will report
+which levels you are able to gain in, and the cost to do so (in xp).
+Typing GAIN with the 3-letter abreviation for a class will advance your level
+in the given class, if you can level in it, and if you have enough xp.
+Eg: GAIN thi    will advance your thief level, if you are able to level thief.
+See also:MULTI WORTH TRAIN
+~
+0 TRAIN~
+Syntax: train <'str'|'int'|'wis'|'dex'|'con'>
+TRAIN increases one of your attributes.  When you start the game, your
+character has slightly random attributes.  The maximum value for each
+attribute depends on your race and class.
+It costs four practice to train an attribute, except that it costs
+only three practice to train your prime attribute.
+The best attributes to train first are WIS and CON.  WIS gives you more
+practice when you gain a level.  CON gives you more hit points.
+In the long run, your character will be most powerful if you train
+WIS and CON both to 18 before practising or training anything else.
+Train now reports the cost in practice points to increase an attribute.
+It is also possible to spend practices on hit points or mana points.
+~
+0 PRAY~
+Syntax: pray     <message>
+Pray sends a message to *ALL* immortals on the game, even if they are wizinvis.
+Eg: PRAY i'm stuck in a no-exit, no recall room - help!
+WARNING: Un-necessary use of this channel will result in your ability to use
+	 it being removed!
+~
+-1 RLIST~
+RLIST reports details about the different races in these Realms.
+~
+0 SCAN~
+SCAN reports the (seen) characters or mobiles surrounding the player.
+Scan tells you the direction and the people situation that way, if any.
+Useful for checking about you in unknown circumstances.
+~
+0 AUCTION GOSSIP . NEWBIE QUESTION ANSWER SHOUT YELL FLAME ZZZ MUSIC~
+Syntax: auction  <message>      Syntax: gossip   <message>
+Syntax: newbie   <message>      Syntax: question <message>
+Syntax: answer   <message>      Syntax: shout    <message>
+Syntax: yell     <message>      Syntax: zzz      <message>
+Syntax: flame    <message>      Syntax: race     <message>
+Syntax: clan     <message>      syntax: music    <message>
+These commands send messages through communication channels to other players.
+SHOUT sends a message to all awake players in the world.  To curb excessive
+shouting, SHOUT imposes a three-second delay on the shouter.
+MUSIC, AUCTION, GOSSIP, NEWBIE, and QUESTION and ANSWER also send messages 
+to all interested players.  '.' is a synonym for GOSSIP.  The QUESTION and 
+ANSWER commands both use the same 'question' channel
+FLAME is similar to auction, gossip, etc, but is intended for moaning about
+life, players, etc.  ZZZ may only be used when sleeping.
+YELL sends a message to all awake players within your area.
+RACE sends a message to members of your own race.  CLAN sends a message to
+those in your clan.
+You can use the CHANNELS command to hear, or not hear, any of these channels.
+
+~
+0 bad breath~
+Bad breath is an offensive spell, causing slightly more damage than the
+
+'magic missile' spell.
+~
+0 influx~
+When successfully cast, this will heal all players in the room.
+~
+0 warcry~
+WARCRY is a Warrior-only spell, which acts the same as the 'bless' spell.
+~
+0 pemote~
+PEMOTE acts in the same way as emote, except that where emote adds your name
+before the argument, PEMOTE adds you name PLUS the characters 's
+Eg PEMOTE feeling rather annoyed with Immortals         would be shown as:
+Stephen's feeling rather annoyed with Immortals.
+~
+0 alias~
+The ALIAS command allows you configure the six alias 'slots'.  An alias
+takes the form of a name, and the alias.  To set up a new alias, type:
+ALIAS <slot_number> <name> <alias>		For example:
+ALIAS 2 ban emote turns into a banana and splits...
+Now, whenever you type 'ban' the mud checks through the command table.  If
+your input wasn't found, it then checks your alias.  Upon matching 'ban'
+it issues the alias to the interpreter function, along with any argument
+you typed after the alias name.  For example, you can define an alias:
+ALIAS 1 ff cast 'faerie fire'   and then use it on mobs by typing:
+ff <target_name>.  So typing 'ff stephen' will cause the mud to interpret
+cast faerie fire stephen.
+To show what aliases are set, type ALIAS with no arguements.
+To clear an alias, type 'ALIAS <number> clear'.
+~
+0 colour color~
+Firstly, please note the spelling: coloUr.  This is an English mud, so we
+use English spellings :)
+The mud now supports "ansi" colour.  Use the config command to turn on
+or off this option.  The COLOUR command allows you to set uo what colours
+you see different things in.  Please note:  The list of things you can
+configure WILL be expanding!
+To find out what colours are available, type 'COLOUR HELP'.
+~
+0 worth~
+WORTH simply displays a list of any classes you are able to level in,
+along with the cost in exp to gain in it, and the difference between that
+cost and your current exp.
+~
+0 tongue~
+TONGUE is equivalent to SAY, except that only players of your race will
+understand what you say.  Anyone else will see gibberish!  Note that the
+RACE command will tell to ALL members of your race (who are on the channel)
+even if they aren't in the same room as you.
+~
+82 halls~
+HALLS is a command which will transfer you, the immortal to the Entry Point,
+situated within the Halls of the Immortals.  It is similar to recall, except
+that there are no limitations on use if fighting, etc.  
+~
+0 guild~
+GUILD is similar to RECALL in use, except that it transfers you (if possible)
+to your Guild room, in the Player's Rooms, west of the Temple.  They provide
+an easy way to gain entrance to a Guild Room.  If fighting, the same penalties
+stand as for recall.
+~
+0 donate~
+DONATE allows you to transfer a piece of equipment in your inventory
+to the "Donation Room", situated close to your race's Temple.
+~
+0 diagnose~
+DIAGNOSE allows you to check on the condition of a player or mob.
+The condition is shown on a scale 5(best) to 1(worst) 
+~
+0 law wanted lawless~
+@@lShades @@dof @@eEvil@@N system of laws and punishments:
+  Within the game, the major cities of the realm have a system of enforcing
+rules of player behavior, by having certain players known to the realm as
+being WANTED.  The system is simple, once you understand it's perspective.
+
+  The civilized states of the realm enforce peaceful interaction between
+citizens of the various states.  Killing and stealing from other citizens is
+considered unlawful, and anyone that falls under the protection of the Law is
+protected by these actions.
+
+  There are three states that a citizen can have: Civilized, Wanted, and
+Lawless.  Citizens that are Civilized are protected within the legal system
+from being attacked by other citizens, and also from having things stolen from
+them. If a Civilized citizen is attacked or stolen from, the Law will label
+the attacker with Wanted, and deal with them accordingly.  In addition, if a
+Civilized citizen breaks the Laws of the Realm, they also will be Wanted.
+
+  Wanted citizens are no longer protected under the Law, and Civilized
+citizens are authorized to kill or steal from them.  In addition, non-player
+characters will interact with them violently.
+
+  If you wish to become Lawless, this will your protection under the Law.
+However, both actors in an interaction must be Lawless for the Law to ignore
+their actions between each other.  If a Lawless attacks someone Civilized, the
+Law will seek retribution on the Lawless.  If a Civilized citizen attacks a
+Lawless, the Law doesn't protect the Lawless, it punishes the Civilized by
+making them Wanted.  To become a Lawless, you may request a PKOK flag from an
+Immortal.  Once you have chosen to be Lawless, the Law will never again place
+you under its protection.
+
+  Many hidden and unknown events in the game may take the protection of the
+Law away from you, either permanently, or temporarily.  Some of these are
+obvious, some not so obvious. A few of these events may even make you Persecuted,
+which has several unforseen circumstances.
+
+  When you become WANTED, either from breaking a law or other actions, you are
+given a sentence based on your crime.  Sentences may only be reduced by
+sacrificing valuable objects to the Law, by using the command sacrifice
+<object> judge.  The judge will examine your sacrifice, and reduce your
+sentence appropriately.
+
+  The Law is omnicient in some ways, and becoming Wanted or Lawless may have
+some unforseen repercussions, so consider your actions well before commiting
+to them!
+
+~
+0 imm immortal immortals~
+Due to some past events where common sense was overlooked
+it was brought to the attentions of the immortals that there is a
+problem in mortal/immortal relations.
+The way the immortal team is run here is very leniant and laid back, much
+less strict then those upon other Multi-User Domains. The point that
+is trying to be made is simply to respect those who do rule upon the realms.
+This has not been a wide spread problem but one that needed to be
+addressed. Those immortals who you are aware that multi-play with mort
+characters as well, remember that they are seperate entities in the realms.
+All characters deserve respect....wether they be friend or foe.
+Remember that anyone being rude or distasteful to not only immortals
+but ALSO other morts will be dealt with accordingly.
+~
+0 EXPERIENCE LEVEL XP~
+Your character advances in power by gaining experience.  The amount of exp
+you need to gain a level is determined by your race.  To gain a level, use
+the GAIN command.
+You gain experience by:
+    Being part of a group that kills a monster,
+    or by killing monsters on your own.
+You lose experience by:
+    Fleeing from combat
+    Recalling out of combat
+    Being the target of certain spells
+    Dying
+The experience you get from a kill depends on several things: how many players
+are in your group; your level versus the level of the monster; your alignment
+versus the monster's alignment; how many of this monster have been killed
+lately; and some random variation.
+~
+0 REMORT~
+@@aREMORT@@W
+Shades of Evil's remort policy is as follows:
+        When you have attained 70th level in @@ytwo@@W classes, you may add
+        @@yone@@W of the five remort classes to your character.
+        When you have attained 70th level in that new class, and have
+        attained 80th level in @@yall@@W five basic classes, you may add
+        a @@ysecond@@W remort class.
+
+        When you have attained 80th level in all classes, including the
+        two remort classes, you will become an @@gAdept@@W.
+When you are ready to remort, type gain <first three letters of new class>.
+
+Remort classes are:
+        -@@cKnight@@W
+        -@@pSorcerer@@W
+        -@@GNecromancer@@W
+        -@@gMonk@@W
+        -@@dAssassin@@W
+~
+0 DEATH~
+When your character dies, your corpse is magically transported to the 
+Morgue of Moribound - an establishment which serves all the realms of this 
+land.  You are given a new body to use, and placed in the lands of 
+Moribound.
+The only task you must complete is to get to your corpse is find your way to
+the morgue - a task set as a rather sick joke by the morgue's management.
+
+Any spells which were affecting you are canceled by death.
+Following and groups are not affected by death.
+You lose HALF of the experience points you have.
+Corpses decay after time, and the objects inside corpses decay with them.
+Only the player who died may take items from his/her/it's corpse.
+~
+0 NEWBIE~
+As a new player to Shades of Evil, there are several things that you will 
+need to know.  First off, it's important to understand that this is a  
+multiclass mud...you are, right now, a member of 5 classes.  When it comes
+time to level your character, you can find the guildmasters in the players
+area, west of the temple/recall.  Type help GAIN to find out about 
+leveling your character.
+
+Here are some important helps that you need to read:
+	HELP COLOUR
+	COLOUR HELP
+	HELP DEATH
+	HELP TRAIN
+	WORTH
+
+Here's a couple more things about Shades of Evil that are handy to know:
+	Recalls are free, just type "recall"
+	There is no rent here, just "save" and "quit"
+	There are NO DEATHTRAPS on SoE...we hate them.
+	There ARE item level limits...it's the only way we have right now
+	  to control item flow among characters.
+	Your colors are completely configurable, read COLOUR HELP.
+	-and, last by not least-
+	The Immortals are here to help you!  Ask them questions! (Politely!)
+~
+0 QP QUESTPOINTS~
+Quest Points
+Quest points are used to reward players for completing quests, helping
+mortals or anything else that the Gods can think of :)
+
+        QP's     What you can get
+        ----     ----------------
+         4       Transfer -         in case you get lost in a norecall area.
+        10       Corpse Retrieval - For those with the PKOK flag, when
+                                    they cannot find their corpse
+        25       EQU Rename -       Rename a piece of your equ to something
+                                    unique.
+       100       Player House -     A house is created for you in the MUD.
+                                    Type "Help House".
+       *50       Unique Equipment - An immortal will make you a peice of
+                                    equipment that is unique to your
+                                    character. See "Help Unique" for details.
+~
+0 VAMPIRE~
+@@dVampires, creatures of legend?  Perhaps....perhaps not.
+Centuries ago, there were four creatures that decended upon the world.
+These creatures were called Methuselahs.  Their evil was spread to
+others of the world, by shear force of will, leaving those newly 
+initiated "Nosferatu" without a clue as to their new nature...what they
+were, how they became that way, why they lust...
+For generations, the will of the Methuselah was obeyed to the letter,
+until they disappeared from the world, taking the children that they
+initiated, and those children's children, with them.  Nothing was
+left for the Nosferatu to study from, no information, no divine "truth".
+Centuries later, it is believed that the Methuselah have returned,
+spreading their evil anew.  Reports have been told worldwide of a Chapel
+where their evil is felt...the wind in the spires of the Chapel whispers
+the word "m e t h u s e l a h".
+Legend has it that the spirits of the original Methuselah haunt
+the halls of this Chapel, waiting to take control of mortal (immortal?)
+bodies, and walk the world once again....@@g
+~
+-1 other~
+.
+			--OTHER--
+The following commands are available:
+!               save            quit            practice
+train           cast            gain            heal
+bank            newbie
+For more detailed help, type "HELP <command>".
+~
+-1 combat~
+.
+			--COMBAT--
+The following commands are available:
+kill            flee            kick            rescue
+disarm          backstab        dirt            bash
+trip            assist
+For more detailed help, type "HELP <command>".
+~
+-1 communication~
+.
+			--COMMUNICATION--
+The following commands are available:
+auction         gossip          newbie          question
+answer          flame           zzz             shout
+yell            pemote          emote           pose
+say             tell            bug             idea
+typo            read            write           clan
+race            music           tongue          pray
+
+For more detailed help, type "HELP <command>".
+~
+-1 information~
+.
+			--INFORMATION/CONFIGURATION--
+The following commands are available:
+help            credits         areas           commands
+socials         report          score           scan
+diagnose        time            weather         where
+who             players         config          description
+password        title           wizlist         slist
+spells          autoexit        autoloot        autosac
+brief           blank           combine         prompt
+pagelength      wimpy           rlist           clist
+cwhere	        colour	        worth           alias
+remort	  questpoints     vampire
+~
+-1 objects~
+.
+			--OBJECTS--
+The following commands are available:
+get             put             drop            give
+sacrifice       wear            wield           hold
+donate          recite          quaff           zap
+brandish        lock            unlock          open
+close           pick            inventory       equipment
+look            compare         eat             drink
+fill            list            buy             sell
+value           adapt
+For more detailed help, type "HELP <command>".
+~
+-1 group~
+.
+
+
+			--GROUP--
+The following commands are available:
+follow          group           gtell           split     whogroup
+assist
+For more detailed help, type "HELP <command>".
+~
+-1 movement~
+.        
+			--MOVEMENT--
+The following commands are available:
+north           east            south           west
+up              down            exits           recall (or /)
+
+For more detailed help, type "HELP <command>".
+
+
+~
+-1 SUMMARY~
+The help pages for ACK! MUD have been updated, rewritten and reformatted.
+The following topics now have sub-pages, and then sub-sub-pages!
+These are the main sub-pages available:
+	MOVEMENT        GROUP           OBJECTS
+	INFORMATION     COMMUNICATION   COMBAT
+	OTHER
+And also, other help pages of interest:
+
+	DAMAGE          DEATH           EXPERIENCE 
+	NEWS            TICK            WIZLIST 
+	CHANGES         THANKS          BOARDS
+	MULTI           GAIN
+So, to view the list of GROUP related commands, type "HELP GROUP".
+   Or, to view the help page for Damage, type "HELP DAMAGE".
+~
+-1 THANKS~
+This help page is used to offer thanks to those players who have kindly
+helped out in some way with the mud, be it areas, socials, ideas, whatever.
+(If you think your name should be here, please tell Stephen.)
+   OSCOELA         (socials)       BASH            (socials, areas)
+   REQUIEM         (areas)         MINERVA         (socials)
+   WILDCARD        (socials)       THALEN          (OLC, everything)
+   SENSEI          (area)                          
+~
+82 IMMRULES~
+*******************************************************************
+**** THESE ARE A BASIC, RUSHED-OFF SET OF RULES FOR IMMORTALS  ****
+**** YOU WILL BE EXPECTED TO UNDERSTAND AND ABIDE BY THEM!!!!  ****
+*******************************************************************
+
+Below follows a simple list of what you should and SHOULDN'T be doing,
+whilst you are playing as an Immortal on SoE. Some muds have suffered
+negative publicity via newsgroups. this is NOT something we wish to see
+happening here :)
+DON'T:
+------
+a) KILL PLAYERS - there are many ways, ALL of which are logged.  
+b) HARRASS PLAYERS - by:
+			  i) Changing their title with MSET 
+			 ii) Changing sex/class/etc 
+			iii) ATTACKING with SWITCH or FORCE 
+			 iv) Changing mobs that are fighting players.
+			  v) Misuse of channels.. emote/say/gossip/ etc
+c) Misuse OLOAD and MLOAD to give players an unfair advantage in terms
+   of equipment, or exp (from killing mobiles).
+d) Misuse MSET and OSET to change the values on an item (to enhance eq)
+   or to make high level mobs easy kills (to enhance exp).  Changing the stats
+   on a Player shouldn't be done, either.
+Basically, try to avoid doing stuff that players might not like at all.
+Of course, misunderstandings will arise, but matters will be helped if
+you haven't done anything to them, are polite, and don't simply fly off
+the handle and freeze them.  FREEZE should only be used in really extreme
+circumstances, not just as a way of expressing your anger.
+(BTW, nearly all commands that could be used in ways 
+ that would be considered violating these rules ARE logged.)
+DO:
+---
+a) Be HELPFUL to players whenever possible.  If you're just sitting around
+   talking to a friend, then you're not too busy to help a player.
+   (Building *is* considered a good reason not to be helpful, but it would
+    be nice if you could inform the player, instead of ignoring them.)
+b) Be NEUTRAL - i.e. try not to play an evil or ultra-good char.  Players,
+   especially newbies, will be more likely to stay if immortals are FAIR.
+   For example, roleplaying Satan when an immortal would not be a Good Thing.
+There are probably many, many more things that should be kept in mind. 
+
+Remember that holding Immortal status on SoE is *NOT* your given right.
+This may sound very heavy-handed, but remember these rules are meant more as
+suggestions rather than rules.  If multiple complaints are made against
+an immortal, the rules WILL be used, however.
+
+Ultimately, the purpose of having a set of rules is to ensure ALL players
+here get treated fairly, and equally.  Immortal giving hand-outs to their
+buddies, and acting like idiots does nothing but damage the Mud and lose
+unhappy players.
+
+ALSO:
+-----
+
+Sadly, it seems that extra "rules" are required.  As above, these are 
+really guidelines, but could possibly be used against you more forcefully
+if there is cause for complaint.
+i) [Added to "Don't: Harrass Players] Harrassing players includes being
+downright unhelpful, or patronising.  If someone complains about something,
+try to *HELP* them.  Don't simply say "Well, you're wrong".  Be _nice_ !
+ii) On a similar theme, if someone complains about an area (especially one
+you have built) then try to understand their position.  Yeah, it's easy to
+tell them to "just go somewhere else and kill stuff" as an Immortal.  Think
+how YOU would like it if that's how you were treated when playing your
+mortal character.
+iii) "Misuse of channels" INCLUDES the echo command.  Don't get nasty with
+players over echo.  Just poke fun instead. :)  Again, put yourself in THEIR
+place, and take a moment to think how you would like it.
+~
+-1 BUILD_test~
+Gratz.  The help facility for builders now works.
+Bye Bye.
+~
+81 IMOTD~
+@@a[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]
+|                 @@mImmortal Message of the Day@@a                   |
+[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]
+@@y
+    * Please Note:
+@@b
+    o "HELP IMMRULES" is mandatory reading for ALL Immortals.
+    o If someone wishes to be PKOK, comfirm it with them first.
+      (i.e. explain the PKOK flag will never be removed, etc.)
+    o Please don't give away the identities of Wizinvis Gods!
+@@y
+    * Reminder:
+@@b
+    o Remember that Immortals of higher level than you are
+      technically senior to you but we must treall ALL IMMs with
+      respect, especially whilst inhabiting your mort.
+    o Reimbs are no no longer given, except for extreme circumstances.
+      o New Quest Point System.  For More Info, Type:
+           o  'help uniques'
+           o  'help uq'  OR  'help unique-rules'
+@@r
+    o WE NO LONGER BUILD ON THIS MUD..LOG ON TO PORT @@e6969@@r INSTEAD!
+ @@mFinally, you are all doing a great job, keep up the good work!
+@@a[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]-[]@@N
+~
+-1 build_bmotd~
+-=-=-=-=-=-=-=-=-=-=- Builder's Message of the Day -=-=-=-=-=-=-=-=-=-=-
+
+@@yChanges:@@g Setting details for mobs and rooms has changed.  Typing
+'x' will now list not just the flags set, but those that are not.  To toggle
+a flag (or set the room sector) enter it's name.
+Also, to edit a string, (rooms and mobs) type 'edit <string>' eg edit long.
+@@yBuilders' Board:@@g This is situated west from Midgaard Altar.  Please be
+sure to check this regularly.  Now we have a (very simple) help editor, any
+urgent news can be placed here, in the BMOTD.
+
+@@RMouse@@g is now the Immortal in charge of building, area theme and 
+linking. If you have any queries, please consult him if possible before
+coming to another Immortal.  
+-=-=-=-=-=-=-=-=-=-=-=-=- Updated: 7th October -=-=-=-=-=-=-=-=-=-=-=-=-
+~
+-1 NEWUN~
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+			Welcome New Player!
+
+		-=-=-=-=-=-=-=-=-=-
+As a new player, you're advised to check out Mudschool, where you will start
+off in the game.  You'll be able to get hold off some basic equipment, as
+well some experience points!  Remember, you must get to level 2, in order
+to be able to save your character.
+ Type WORTH to see how much experience points are needed to gain a level.
+If you've played Merc Muds before, type 'HELP CHANGES' to see what makes
+this different.
+^MTHIS IS VERY IMPORTANT: TYPE CHAN +HERMIT and CONFIG +COLOUR right away!
+^MThis will make sure you hear all the channels, and see in colour :)
+@@eNOTE: @@aWE HAVE AN FTP SITE WITH @@yHELP DOCUMENTS@@a, TYPE HELP FTP@@N.
+LOOK IN THE /PUB/PLAYERS DIR FOR SOME MAPS, AND SOME HELP INFO.
+~
+-1 MOTD~
+@@RS@@mhades of @@RE@@mvil's
+                           @@aMessage of the Day@@N
+           If you don't read it you can miss imporant information.
+@@yNOTE:   @@RPlayer Killing and Stealing are taken very seriously here.
+        You are responsible for knowing the consequences of your actions,
+	      no longer will pardons be given due to agressive behavior.
+            PKOK rules and coding ARE NOW in affect, loot code included.
+              @@eNO PARDONS EXCEPT UNDER EXTREME CIRCUMSTANCES!!!@@N
+@@yNOTE:   @@bOver or mis-use of the pray command will get you no_prayed
+        This can be pretty nasty when you REALLY need help. Just think of
+        the boy who cried wolf.
+
+@@yNOTE:   @@bWe now have a public access FTP site. FTP to SOE.NUC.NET !!!
+@@YNOTE:      @@eNO MORE REIMS!!!@@N Code has been added that now saves
+              your corpse. @@eNO reims will be given for dropped items
+              lost items do to fighting, OR pieces!!!!@@N
+              DO NOT count in imms reimbursing you for anything but MAJOR
+              pfile problems.
+              Asking for immortal attention runs the risk of losing one or
+              two of your prize possesions, so do it wisely, and only
+              in great need.
+@@gIMPORTANT:      @@NOur IMM team here works very hard to keep the MUD growing and
+                interesting.  Disrespect of those IMMs will not be  tolerated.
+                     Pleae read 'help imm' for more information
+@@e!-!-!-!-!-!   NEW CUSSING POLICY  !-!-!-!-!-!-!
+@@aFirst time: Warning@@N
+@@rSecond Time:  Character is Stripped of all Items..NO REIMB@@N
+@@RThird Time: Automatic Character Deletion...NO REIMB@@N
+
+Cussing WILL NOT BE ALLOWED@@N
+ @@rT@@Ghere is a new board located up from dump, for posting of bug
+	 bug problems, character problems, and other situations which call
+	 for an immortal.@@N
+@@e    NOTE: A new way of storing and tracking gains and losses in your
+mana, hitroll, armor class, moves, hitpoints and damroll has been added.
+While you may not like the change at first, in the long run they are 
+good for the mud.
+
+~
+-1 greeting4~
+Diku Mud was created by Hans Henrik St{rfeldt, Katja Nyboe,
+	  Tom Madsen, Michael Seifert, and Sebastian Hammer.
+
+	     MERC modifications by: Furey, Hatchet, Kahn
+
+	   ACK! Mud2.0: Stephen, Thalen.  Screen: Cyberlich
+
+               Ack!Mud 4.0 (beta) : Zenithar, with help from
+               Altrag, Ramias, Flar, Spectrum and Universe.
+
+    Welcome to 
+                   @@d S H A D E S @@e -=@@dof@@e=- @@d E V I L 
+@@l
+     Creators:  Cyberlich, Zenithar, Oderus, Myrtle, Freyja, Edge, and 
+Stimpy
+@@a
+          Homepage:  http://www.nuc.net/-shadeweb/ ( where - is a tilde)
+@@g
+Welcome to Shades of Evil.  Enter your name please:@@N ~
+-1 greeting3~
+.
+       Diku Mud was created by Hans Henrik St{rfeldt, Katja Nyboe,
+	  Tom Madsen, Michael Seifert, and Sebastian Hammer.
+	     MERC modifications by: Furey, Hatchet, Kahn
+	   ACK! Mud2.0: Stephen, Thalen.  Screen: Cyberlich
+               Ack!Mud 4.0 (beta) : Zenithar, with help from
+                 Altrag, Ramias, Flar, Spectrum and Universe.
+@@m
+ /*/* /*   /*  /*/*  /*/*   /*/*/*  /*/*      /*/*/* /*    /* /*/*/* /*
+/*    /*   /* /*  /* /*  /* /*     /*         /*     /*    /*   /*   /*
+/*/*  /*/*//* /*/*/* /*  /* /*/*   /*/* @@e  O@@m   /*/*    /*  /*    /*   /*
+   /* /*   /* /*  /* /*  /* /*        /* @@e  F@@m  /*      /*  /*    /*   /*
+   /* /*   /* /*  /* /*  /* /*        /*      /*       /*/*     /*   /*
+/*/*  /*   /* /*  /* /*/*   /*/*/* /*/*       /*/*/*    /*    /*/*/* /*/*/*
+@@l
+@@y
+       "You were made of wood, and cried that no one understood.
+	  But i had splinters in my fingers." @@y- Buffalo Tom
+        @@l
+          Homepage:  http://www.nuc.net/-shadeweb/ @@g (where - is a tilde)
+
+By what name do you wish to be known? @@N~
+-1 greeting2~
+.      Diku Mud was created by Hans Henrik St{rfeldt, Katja Nyboe,
+	  Tom Madsen, Michael Seifert, and Sebastian Hammer.
+	     MERC modifications by: Furey, Hatchet, Kahn
+	   ACK! Mud2.0: Stephen, Thalen.  Screen: Cyberlich
+	   ACK! Mud2.0: Stephen, Thalen.  Screen: Cyberlich
+               Ack!Mud 4.0 (beta) : Zenithar, with help from
+                 Altrag, Ramias, Flar, Spectrum and Universe.
+
+           Welcome to @@e-=@@dSHADES@@e of@@d EVIL@@e=-@@d
+
+                  @@l         /
+                     O@@a=====@@l|@@d===============@@l>
+                  @@l         \@@g
+
+     brought to you by:
+        @@N Cyberlich, Zenithar, Oderus, Myrtle, Mouse, Freyja and Stimpy
+   @@m Homepage:  http://www.nuc.net/-shadeweb/ (where - is a tilde)
+  SoE is proud to be the -@@eOfficial Public Release site@@g- of Ack! MUD
+By What Name Do You Wish To Be Known? @@N~
+-1 greeting1~
+.      Diku Mud was created by Hans Henrik St{rfeldt, Katja Nyboe,
+	  Tom Madsen, Michael Seifert, and Sebastian Hammer.
+	     MERC modifications by: Furey, Hatchet, Kahn
+	   ACK! Mud2.0: Stephen, Thalen.  Screen: Cyberlich
+               Ack!Mud 4.0 (beta) : Zenithar, with help from
+                 Altrag, Ramias, Flar, Spectrum and Universe.
+
+@@d     Perhaps once, in any given man's lifetime, he encounters
+          an experience that shakes the very foundations
+   @@e                           of
+    @@d                       his soul, 
+      which opens a rift deep within him, exposing that which
+               he may not even have known existed.
+                       The question is,
+ will he turn from this inexplicable darkness, or will he stare into
+           the abyss of his newly found soul, into the
+
+       @@e               -=@@dSHADES@@e of@@d EVIL@@e=-@@g
+
+ @@m        Homepage:  http://www.nuc.net/-shadeweb/ @@g (where - is a
+tilde)
+
+
+Who do you think you are?!? @@N~
+-1 GREETING0~
+@@g       Diku Mud was created by Hans Henrik St{rfeldt, Katja Nyboe,
+            Tom Madsen, Michael Seifert and Sebastian Hammer.
+             MERC Modifications made by: Furey, Hatchet, Kahn@@k
+)
+)                               @@RX*. 
+@@a                              @@p  |  @@a 
+@@a      .         .      @@d/\      @@a.@@p|@@a          .          .     @@RO  @@Wa 
+@@a                *    @@d.'  `.   @@p  |@@a.     .     *             @@ROOO@@W&&& 
+@@a               .    @@d/      \  @@p  +@@d________________        @@Wa@@ROOOOO@@W&&&&
+@@a      |            @@d`.@@l+-''-+@@d.' .' `.^^^^^^^^\^^^^^\.    @@W&&&&@@ROOO@@W&&&
+@@a     -*-   . .       @@l|u--.| @@d /     \@@l'''''''|'''''|   @@W&&&&&&&@@ROO@@W  @@d'
+@@a      |              @@l|   u|@@d.'       `.@@l" "  |" " "|    @@d'''''      
+@@a   :            .    @@l|.u-.@@d/ _..---.._ \@@l    |     |       @@a. @@R*.
+@@a  -*-            *   @@l|    @@d'-@@l|U U U U|@@d-'____L_____L_  @@a.     @@p|    @@a.
+@@a   :         .   .   @@l|.-u.| |..---..|@@d //// ////// /\       @@p+
+@@a         . *         @@l|u   | |       |@@d// /// // ///==\     / \
+@@a           :         @@l|.--u| |..---..|@@d//////'\////====\   /   \ 
+@@a     .               @@l| u  | |       |@@d''''/\  @@l|@@d''@@l|++++@@l| @@a.@@d`+'''+'  @@a.
+                     @@l|.--u| |..---..|u u|u | |u ||||||   |  U|
+                  @@d/''''/-\--@@l|       @@l|===|  |u|==|++++@@l|   |   |
+@@g         aaa      @@l|===| _ | |..---..|u u|u | |u ||@@bHH@@l||U'U'U'U'|
+@@g    aaa&&&&&&aa   @@l|===|||||_|       |===|_.|u|_.|+@@bHH@@l+|_/_/_/_/@@gaa
+@@gaa&&&&&&&&&&&&&&a @@l|''|''''\---/'-.._|--.---------.'''`.__ _.@@g&&&&&&a
+@@d  ''''''    '''    @@m\_\\ \  \/' //\  ','|  ___  | |`.   :||  @@d''''
+@@g    @@g                a@@m\`| `   _//  | / _| || |  | `.'  ,''|
+@@gaaa @@g  aaaa       a&&&&@@m\| \  //'   |  // \`| |  `.'  .' | |
+@@g&&&&&a&&&&&&a      ''''' @@m\\`//| | \ \//   \`  .-'  .' | '/
+@@g&&&&&&&&&&&&&&&a          @@m\// |.`  ` ' /'  :-'   .'|  '/ @@gaa
+@@d''''' ''''''@@g         a&&&@@m|   \\ |   // .'    .'| |  |@@g&&&&&&a
+@@d      ''@@g           a&&&&&&&@@m\   | `| ''.'     .' | ' /@@g&&&&&&&&&a
+@@k)
+)
+)              @@mAck!Mud @@W2.2, @@cModified @@gMerc2.2 @@cby: @@gStimpy, Thalen
+                    @@mAck!Mud @@W4.3 @@cby @@mZenithar@@c, with help from
+                @@gSpectrum, Altrag, Ramias, Universe, and others@@N
+                            @@cScreen: @@gMichlotixlan @@N
+                    @@mAck!Mud @@cHome Page@@W: @@ahttp://ackmud.nuc.net@@N
+@@k)
+)
+@@NWhat is your name?@@N
+~
+-1 WIZLIST~
+@@g________________________________________________________________
+
+                      @@WGods of @@RS@@mhades of @@RE@@mvil
+@@g________________________________________________________________
+
+
+ 
+
+
+@@bCreators -     @@yCyberlich, Zenithar, Mouse, Oderus, Freyja, Mrytle
+
+@@bClan Lord -       @@yOderus
+ 
+@@bHead Builder - @@yMouse            
+
+@@bHead Coder -   @@yZenithar
+
+@@bWebmaster -    @@yHyper
+
+@@bApostles -   @@yBoris, Sammael
+
+@@g________________________________________________________________@@N
+
+
+~
+-1 dm~
+********** DEATHMATCH HAS STARTED ********** 
+
+
+Rules: 
+
+
+a) Kill everyone!
+
+
+b) There are no other rules (:
+
+
+ 
+
+
+Please remember that your player file does NOT save in 
+
+
+DeathMatches... you won't lose anything...
+
+
+ 
+
+
+Now.... good luck, adventurer... slay some for me!
+
+
+~
+0 CWHERE CDONATE HOME~
+@@yCWHERE@@g shows the current locations of all clan members who are 
+
+
+currently in the game.  Syntax:  cwhere
+
+
+
+@@yCDONATE@@g donates a piece of equipment to your clan Headquarters.  Then, 
+
+
+other members of your clan will be able to get the equ that you donate.
+
+
+Syntax:  cdonate <item>
+
+
+
+@@yHOME@@g is a recall that takes you directly to your clan Headquarters.  
+
+
+Some clan Headquarters do not have a regular enterance...so you HAVE to 
+
+
+'home' there to get there :)  Syntax:  home 
+
+
+~
+0 CLAN LEAVE~
+@@yCLAN@@g is a communication channel, allowing you to talk with everyone on
+
+
+Shades of Evil who is in your clan.  Syntax:  clan <whaterver you want to 
+
+
+say> 
+
+
+see also @@mclan_boss clan_diplomat clan_treasurer clan_leader clan_armourers@@N
+
+
+Note: once in a clan, you can leave the clan by typing leave
+
+
+~
+0 ACCEPT BANISH MAKE~
+@@yACCEPT@@g allows the clan leader to accept a new member into his/her clan.
+
+
+Syntax:  accept <target>
+
+
+
+@@yBANISH@@g allows the clan leader to banish a member from his/her clan.
+
+
+Syntax:  banish <target>
+
+
+
+@@yMAKE@@g allows the clan leader to create one of the pre-made clan equ for
+
+
+a member of their clan.  Syntax:  make <clan_eq_#> <target>
+
+
+~
+0 CLAN~
+@@yCLAN@@g
+
+This is a help file on clans; what they are, what they do, and how they do
+it :)
+
+First, Clans are groups of characters who help each other out on Shades of
+Evil.  Undoubtedly, there will be some clan rivalry, but, hopefully, this
+will not become too extreme :)  For you, the player, to join a clan, you
+need to get ahold of the clan leader of the clan you want to join...he
+or she can accept you into the clan -- if they decide you belong in the 
+fold.
+
+
+
+Clan commands:
+
+	@@yCWHERE	CDONATE	HOME	CLAN	LEAVE@@g
+
+Clan Job commands ( Armourer, Diplomat, Leader, Treasurer, and Boss):
+
+	@@yACCEPT	BANISH	MAKE	CTOGGLE	NEGOTIATE@@g	
+
+See the help files on the above commands for more info.	
+
+~
+0 clan-eq~
+This is a help page for Clan Leaders devloping new equipment for their clan.
+If you are not involved with this process, then there's not much here to
+interest you.
+
+If you are developing Clan Equipment, please note that you _must_ follow
+these guidelines, if you wish your equipment to be considered legal.  You
+will NOT be allowed to load any illegal equipment using the 'MAKE' command.
+
+Each Clan may have 4 Pieces of equipment.  Each must be of different wear
+locations.  You may not make staffs, wands, pills, scrolls, etc.  The only
+equipment you can make are weapons, containers, or armor.
+
+You have 'points' that you may distribute among the objects you make.
+For 2 of the objects, you will have 20 points.  For the other 2, you will 10
+
+Points are used to 'buy' stats on the object as follows:
+
+ +--------++------+------+------+------+------+------+------+
+
+ | Points || Mana | Move |  HPs |  DAM |  HIT |  -AC | Stat |
+
+ +--------++------+------+------+------+------+------+------+
+
+ |        ||      |      |      |      |      |      |      |
+
+ |    1   ||   2  |    5 |   2  |      |      |      |      |
+
+ |    2   ||   4  |   10 |   4  |   1  |      |  -5  |      |
+
+ |    3   ||   6  |   15 |   6  |      |   1  |      |      |
+
+ |    4   ||   8  |   20 |   8  |      |      |      |      |
+
+ |    5   ||  10  |   25 |  10  |   2  |      |  -10 |      |
+
+ |    6   ||  12  |   30 |  12  |      |      |      |      |
+
+ |    7   ||  14  |   35 |  14  |      |   2  |      |      |
+
+ |    8   ||  16  |   40 |  16  |      |      |  -15 |      |
+
+ |    9   ||  18  |   45 |  18  |   3  |      |      |      |
+
+ |   10   ||  20  |   50 |  20  |      |      |      |      |
+
+ |   11   ||  22  |   55 |  22  |      |      |      |      |
+
+ |   12   ||  24  |   60 |  24  |      |   3  |  -20 |      |
+
+ |   13   ||  26  |   65 |  26  |      |      |      |      |
+
+ |   14   ||  28  |   70 |  28  |   4  |      |      |      |
+
+ |   15   ||  30  |   75 |  30  |      |      |      |   1  |
+
+ |   16   ||  32  |   80 |  32  |      |      |      |      |
+
+ |   17   ||  34  |   85 |  34  |      |      |  -25 |      |
+
+ |   18   ||  36  |   90 |  36  |      |      |      |      |
+
+ |   19   ||  38  |   95 |  38  |      |   4  |      |      |
+
+ |   20   ||  40  |  100 |  40  |   5  |      |      |      |
+
+ |        ||      |      |      |      |      |      |      |
+
+ +--------++------+------+------+------+------+------+------+
+
+
+So, to 'buy' An -20 AC affect would cost 12 points.  It doesn't mean you
+get ALL the entries for a given price!
+
+Limitation:   You can only have a maximum of 3 different affects on each
+              object.
+
+
+If you think your objects are legal, contact Stephen, who will check them.
+If he agrees they are valid, they will be added to your clan equipment, and
+leaders of your clan will be able to load them for their members.
+
+~
+0 $~
+#ROOMS
+#8
+Banking Room~
+This small room is home to a large counter stretching across the room, with a
+
+
+ single reinforced glass window set into it.  This is the bank, magically
+
+
+linked to the other banks within the realms.
+
+
+~
+0 11
+D3
+~
+~
+0 -1 11
+S
+#5
+The Depths of Hell~
+You are in a sea of red-hot Lava.  Wherever you look, you see yourself
+
+
+surrounded by the burning rock.  The sky above you is red too, with huge
+
+
+yellow flames flashing across it.
+
+
+It looks like you're, well, screwed.
+
+
+~
+25918 8
+S
+#14
+Protectorate Clan Donation Room~
+The room os for clan members to donate equipment to other people that might need it.
+
+
+~
+8 11
+D3
+~
+~
+0 -1 10
+S
+#12
+End of the Passage~
+You are standing at the end of a short passage.  To the South, you can see the
+
+
+ gleaming brightness of the Grand Hall, while to the west you can see the
+
+
+Protectorate recovery room.
+
+
+~
+8 11
+D2
+~
+~
+0 -1 11
+D3
+~
+~
+0 -1 13
+S
+#11
+A small passage~
+You are in a small passage within the headquarters of Protectorate.To the
+
+
+south
+
+
+ you can see the Grand Hall, whilst the passage continues to the North.
+
+
+~
+8 11
+D0
+~
+~
+0 -1 12
+D1
+~
+~
+0 -1 8
+D2
+~
+~
+0 -1 10
+D3
+~
+~
+0 -1 9
+S
+#10
+Protectorate Clan House~
+~
+12 11
+D0
+~
+~
+0 -1 11
+D1
+~
+~
+0 -1 14
+D3
+~
+~
+0 -1 6
+S
+#1
+@@RS@@mhades of @@RE@@mvil's @@RJ@@mail @@RC@@mell@@N~
+Unfortunately you have been transferred to jail for breaking one of our rules.
+
+
+We are very laid back here but certain things must be adhered to. As you look
+
+
+around this cold, damp, bleak looking cell, take some time to reflect on your
+
+
+crime and, hopefully, with an apology and repentance you'll be able to again
+
+
+enjoy our wonderful Realm.
+
+
+~
+156956 1
+S
+#2
+Limbo~
+You are floating in a formless void, detached from all sensation of physical
+
+ matter, surrounded by swirling glowing light, which fades into the relative
+
+ darkness around you without any trace of edges or shadow.
+
+
+   There is a "No Tipping" notice pinned to the darkness.
+
+
+~
+1052 11
+E
+dropping~
+There are steaming puff-droppings here.~
+S
+#3
+The Church of Love~
+You are standing outside what looks to be a strange church.  Strange
+
+ because it is floating happily in limbo, out of harm's way.  The building
+
+ itself is constructed out of purest marble.  Huge gold pillars support
+
+ the grand entranceway, which leads inside, to the East.  Under your feet,
+
+ you notice a thick, red carpet leading from inside the church, past you to
+
+ the West.  
+
+
+~
+1032 1
+D1
+The Church.
+
+
+~
+~
+0 -1 4
+S
+#4
+Inside the Church of Love~
+You are standing inside a truely grand building.  The walls are built out
+
+
+of finest marble, with huge, solid gold columns reach up towards the
+
+
+massive, domed roof.  Small white doves line the coving round the roof, and
+
+
+gently seranade you with their song.
+
+
+~
+8 1
+D3
+Outside.
+
+
+~
+~
+0 -1 3
+S
+#6
+Protectorate Board Room~
+This is a small, oblong room, with a low curving ceiling.  Along one of the
+
+
+ longer walls is the Protectorate Bulletin Board, listing clan information,
+
+
+hit lists and general chit-chat.  In the wall behind you is a door leading
+
+
+back out into the Grand Hall.
+
+
+~
+4 11
+D1
+~
+~
+0 -1 10
+S
+#7
+Stephen's Office~
+This enormous rooms acts as Stephen's Office.  As Immortal Sponsor of the
+
+
+PulpDog Clan, he has final overall say in the policies and decisions made by
+
+
+the clan.  He is also very powerful, and able to silence those who might dare
+
+
+to rise against him.
+
+
+ 
+
+
+Before you, a gleaming marble desk is home to piles of paper, as well as a
+
+
+small framed photograph.  Hanging from the walls are framed portraits of
+
+
+various Immortals - Kahn, Hatchet included.
+
+
+~
+24596 11
+E
+photograph~
+The photograph shows a young woman with dark hair curled up on a bed looking VERY cute!~
+E
+photo~
+The photograph shows a young woman with dark hair curled up on a bed looking VERY cute!~
+S
+#9
+The Entrance to the Protectorate Clan~
+You are in a circular-shaped room, with a stained-glass window high above you.
+
+
+ To the east is the rooms and passages that constitute the Protectorate clan
+
+
+HQ.
+
+
+~
+8 11
+D1
+~
+~
+0 -1 11
+S
+#13
+The Clan Healers Room~
+~
+8 11
+D1
+~
+~
+0 -1 12
+S
+#0
+#MOBILES
+#4
+banker~
+The old Banker~
+The old Banker ~
+He looks big, mean, and scared of PulpDog members holding him up.
+
+
+~
+32779 128 900 S
+76 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#1
+Puff~
+Puff~
+Puff the Fractal Dragon is here, contemplating a higher reality.
+
+
+~
+~
+1 0 1000 S
+32 2
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#2
+elvis~
+Elvis~
+Elvis, King of rock and roll stands here, looking damn funky!
+
+
+~
+Such people as you do not look at kings.
+
+
+~
+3145731 0 1000 S
+80 1
+-100 50 50
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#6
+doggy~
+a whinging doggy~
+A whinging doggy is here, yapping and snapping at your heels.
+
+
+~
+Looks kinda like a person.  Better put it out of it's misery!!
+
+
+~
+3 0 1000 S
+13 0
+200 -5 -5
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#3
+Fishie~
+A cute li'l goldfish.~
+A cute li'l goldfish sinks its fangs into you!~
+~
+1 8320 -1000 S
+57 2
+0 6 60
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#5
+Healer~
+The old healer~
+The old healer~
+~
+12291 0 0 S
+10 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#7
+jailrat~
+@@bA rat@@N~
+@@bA rat with wicked looking @@yteeth@@b scurries around@@N
+
+
+~
+~
+262149 32808 0 S
+14 1
+-100 10 10
+! 2 0 0 7 870400 0 0
+| 0 0 0 0 0 0 0
+#8
+@@gBones@@N~
+@@gBones@@N~
+@@gA pile of bones rattles in the corner@@N
+
+
+~
+~
+278609 131072 0 S
+15 1
+0 0 0
+! 7 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#0
+#OBJECTS
+#7
+belt skulls~
+the belt of skulls~
+A belt of small skulls lies before you~
+16 0 8519680 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#8
+shield~
+the Shield of Darkness~
+A dull black shield lies before you~
+16 0 8421376 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#6
+dagger~
+@@Ra Bloody PulpDog Dagger@@g~
+A Bloody PulpDog Dagger lies here, gleaming~
+5 256 8421376 129
+0 0 0 11 0 0 0 0 0 0
+1
+A
+19 2
+A
+18 2
+L
+10
+#9
+fountain spring~
+the Spring of Life~
+A larg spring flows from the ground~
+25 0 0 1
+0 0 0 0 0 0 0 0 0 0
+10000
+L
+1
+#17
+Key~
+a key~
+A key made from solid Gold~
+13 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#2
+coin gold~
+a gold coin~
+One miserable gold coin.~
+20 0 8388608 1
+1 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#3
+coins gold~
+%d gold coins~
+A pile of gold coins.~
+20 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#10
+Corpse~
+corpse of %s~
+The corpse of %s is lying here.~
+23 0 0 1
+0 0 0 1 0 0 0 0 0 0
+100
+L
+1
+#11
+Corpse~
+corpse of %s~
+The corpse of %s is lying here.~
+24 0 0 1
+0 0 0 1 0 0 0 0 0 0
+100
+L
+1
+#12
+head~
+head of %s~
+The severed head of %s is lying here.~
+19 0 8388608 1
+10 0 0 0 0 0 0 0 0 0
+5
+L
+1
+#13
+heart~
+heart of %s~
+The torn-out heart of %s is lying here.~
+19 0 8388608 1
+16 0 0 0 0 0 0 0 0 0
+2
+L
+1
+#14
+arm~
+arm of %s~
+The sliced-off arm of %s is lying here.~
+19 0 8388608 1
+20 0 0 0 0 0 0 0 0 0
+5
+L
+1
+#15
+leg~
+leg of %s~
+The sliced-off leg of %s is lying here.~
+19 0 8388608 1
+20 0 0 0 0 0 0 0 0 0
+5
+L
+1
+#16
+sloppy brain~
+sloppy brain~
+The sloppy brain of %s has plopped out here.
+
+
+~
+13 0 0 1
+5 0 0 1 0 0 0 0 0 0
+1
+L
+1
+#20
+mushroom~
+a Magic Mushroom~
+A delicious magic mushroom is here.~
+19 0 8388608 1
+5 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#18
+ball light~
+a bright ball of light~
+A bright ball of light shimmers in the air.~
+1 0 8388608 1
+0 0 -1 0 0 0 0 0 0 0
+1
+L
+1
+#19
+spring~
+a magical spring~
+A magical spring flows from the ground here.~
+25 64 0 1
+0 0 0 0 0 0 0 0 0 0
+5000
+L
+1
+#91
+board~
+a board~
+The Clan Board is here.~
+27 0 0 1
+28 1 1 91 0 0 0 0 0 0
+10000
+L
+1
+#4
+board~
+the Bulletin Board~
+The Clan Protectorate Board~
+27 0 0 1
+30 0 0 4 0 0 0 0 0 0
+10000
+L
+1
+#1
+bathtub tub joke~
+a large white bathtub~
+A practical joke from Kyrie to Myst lies here.~
+12 0 8388608 1
+3 0 0 0 0 0 0 0 0 0
+55
+E
+this~
+bathtub is large enough for three people... too bad its broke.~
+E
+bathtub~
+This bathtub is large enough for three people... too bad its broke.~
+L
+1
+#5
+board~
+the PulpDog Board~
+The PulpDog Notice Board is here for visitors to use...
+
+
+~
+27 0 0 1
+28 0 0 5 0 0 0 0 0 0
+1
+L
+1
+#51
+shield~
+Protectorate Battle Shield~
+Protectorate Battle Shield~
+9 -12615678 8421376 1
+0 0 0 0 0 0 0 0 0 0
+2
+A
+19 10
+A
+18 10
+A
+17 -50
+A
+12 30
+A
+13 25
+A
+14 10
+L
+25
+#52
+helm~
+protectorate Helm~
+The Protectorate Helm~
+9 -32766 8388616 1033
+0 0 0 0 0 0 0 0 0 0
+4
+A
+13 15
+A
+14 10
+A
+12 30
+A
+17 -30
+A
+24 15
+A
+18 5
+A
+19 5
+L
+40
+#53
+sleeves~
+protectorate Sleeves~
+The Protectorare Sleeves~
+9 -12615678 8389632 16401
+0 0 0 0 0 0 0 0 0 0
+2
+A
+13 50
+A
+12 50
+A
+18 15
+A
+19 13
+L
+55
+#0
+#RESETS
+O 0 9 0 10 (null)
+
+O 0 4 0 6 (null)
+
+M 0 4 1 8 (null)
+
+M 0 5 1 13 (null)
+
+S
+#SPECIALS
+M 2 spec_rewield
+M 3 spec_thief
+M 5 spec_cast_adept
+M 7 spec_poison
+S
+#$

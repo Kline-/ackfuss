@@ -1,0 +1,95 @@
+#MOB
+Revision     7
+Name         cityguard guard~
+ShortDescr   the cityguard~
+LongDescr    A cityguard stands here.
+~
+Description  A big, strong, helpful, trustworthy guard.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        29
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       12472
+Note         0
+Room         7578
+HpManaMove   745 957 231 435 100 100
+Gold         959
+Balance      0
+Exp          42077
+Act          4194305
+AffectedBy   128
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        -11
+Wimpy        0
+Deaf         0
+Vnum         3060
+Affect  84   4   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      0
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        27
+Timer        0
+Cost         7290
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        27
+Timer        0
+Cost         7020
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         8624
+Values       6 0 0 0
+End
+
+#END

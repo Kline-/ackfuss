@@ -1,0 +1,482 @@
+#MOB
+Revision     7
+Name         famine~
+ShortDescr   Famine~
+LongDescr    Famine is standing here, looking rather hungry.
+~
+Description  This skeletal figure stands at about 7 feet in height, and is dressed in
+ragged clothing.  It stares at you mournfully through sorrowful eyes, filling
+you with a sense of pity.
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        52
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       27497
+Note         0
+Room         3621
+HpManaMove   1262 2933 3 765 100 100
+Gold         5693
+Balance      0
+Exp          315577
+Act          4194371
+AffectedBy   4648
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        -95
+Wimpy        0
+Deaf         0
+Vnum         16815
+Affect  79 167 -24   1       4096
+End
+
+#OBJECT
+Nest         0
+Name         strange white facemask~
+ShortDescr   a strange white facemask~
+Description  A strange white facemask is lying on the floor here.
+~
+Vnum         16814
+ExtraFlags   1
+WearFlags    32769
+WearLoc      18
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        49
+Timer        0
+Cost         24500
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         staff famine~
+ShortDescr   the Staff of Famine~
+Description  A long withered staff is lying here.
+~
+Vnum         16815
+ExtraFlags   82
+WearFlags    16385
+WearLoc      17
+ClassFlags   1
+ItemType     4
+Weight       3
+Level        50
+Timer        0
+Cost         27500
+Values       55 10 10 28
+Spell 3      'cure serious'
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        27
+Timer        0
+Cost         7290
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        28
+Timer        0
+Cost         6804
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        27
+Timer        0
+Cost         6760
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      2
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        28
+Timer        0
+Cost         8120
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         7560
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         gloves~
+ShortDescr   a pair of standard issue gloves~
+Description  You see a pair of standard issue gloves here.~
+Vnum         3024
+ExtraFlags   0
+WearFlags    129
+WearLoc      9
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         6561
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      0
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        13
+Timer        0
+Cost         1690
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        14
+Timer        0
+Cost         1820
+Values       4 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         prism~
+ShortDescr   a Prism~
+Description  A small crystal prism, about the length of your hand.
+~
+Vnum         7533
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     3
+Weight       1
+Level        39
+Timer        0
+Cost         16720
+Values       10 9 9 70
+Spell 3      'mass invis'
+End
+
+#OBJECT
+Nest         0
+Name         prism~
+ShortDescr   a Prism~
+Description  A small crystal prism, about the length of your hand.
+~
+Vnum         7533
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     3
+Weight       1
+Level        40
+Timer        0
+Cost         16400
+Values       11 10 10 70
+Spell 3      'mass invis'
+End
+
+#OBJECT
+Nest         0
+Name         pantera fang~
+ShortDescr   pantera's fang~
+Description  Pantera's fang has been left here.~
+Vnum         9553
+ExtraFlags   65
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       10
+Level        8
+Timer        0
+Cost         720
+Values       0 4 5 11
+End
+
+#OBJECT
+Nest         0
+Name         bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10064
+ExtraFlags   512
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        54
+Timer        0
+Cost         28620
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         25281
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         hooked claw~
+ShortDescr   a hooked claw~
+Description  A curved chitanous claw lies here, sharp at one end, bloody at another.~
+Vnum         3523
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        20
+Timer        0
+Cost         3420
+Values       0 4 9 11
+End
+
+#OBJECT
+Nest         0
+Name         hooked claw~
+ShortDescr   a hooked claw~
+Description  A curved chitanous claw lies here, sharp at one end, bloody at another.~
+Vnum         3523
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        22
+Timer        0
+Cost         5324
+Values       0 4 11 11
+End
+
+#OBJECT
+Nest         0
+Name         bone bony armor~
+ShortDescr   bony armor~
+Description  The hollowed out torso of some exoskeletoned creature lies here to feed the flies.~
+Vnum         3524
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       20
+Level        42
+Timer        0
+Cost         19866
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         hooked claw~
+ShortDescr   a hooked claw~
+Description  A curved chitanous claw lies here, sharp at one end, bloody at another.~
+Vnum         3523
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        20
+Timer        0
+Cost         3990
+Values       0 4 12 11
+End
+
+#OBJECT
+Nest         0
+Name         hooked claw~
+ShortDescr   a hooked claw~
+Description  A curved chitanous claw lies here, sharp at one end, bloody at another.~
+Vnum         3523
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        21
+Timer        0
+Cost         4200
+Values       0 3 13 11
+End
+
+#OBJECT
+Nest         0
+Name         bone bony armor~
+ShortDescr   bony armor~
+Description  The hollowed out torso of some exoskeletoned creature lies here to feed the flies.~
+Vnum         3524
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       20
+Level        43
+Timer        0
+Cost         20812
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bone bony armor~
+ShortDescr   bony armor~
+Description  The hollowed out torso of some exoskeletoned creature lies here to feed the flies.~
+Vnum         3524
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       20
+Level        42
+Timer        0
+Cost         16254
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         hooked claw~
+ShortDescr   a hooked claw~
+Description  A curved chitanous claw lies here, sharp at one end, bloody at another.~
+Vnum         3523
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        21
+Timer        0
+Cost         4410
+Values       0 5 10 11
+End
+
+#OBJECT
+Nest         0
+Name         hammer dwarven~
+ShortDescr   a dwarven hammer~
+Description  ~
+Vnum         3516
+ExtraFlags   64
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       10
+Level        39
+Timer        0
+Cost         14040
+Values       0 7 18 7
+End
+
+#END

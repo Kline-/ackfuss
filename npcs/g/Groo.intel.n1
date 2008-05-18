@@ -1,0 +1,521 @@
+#MOB
+Revision     7
+Name         groo intel n1~
+ShortDescr   Groo~
+LongDescr    Groo the wanderer is here, looking for a fray!! 
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        63
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       202630
+Note         0
+Room         10008
+HpManaMove   1228 2337 384 795 100 100
+Gold         8944
+Balance      0
+Exp          5024800
+Act          4325385
+AffectedBy   128
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        58
+Wimpy        0
+Deaf         0
+Vnum         1200
+Affect  84   1   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         blue crystal staff~
+ShortDescr   blue Crystal Staff~
+Description  A beautiful staff made entirely of blue crystal.
+~
+Vnum         7527
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     4
+Weight       1
+Level        57
+Timer        0
+Cost         32480
+Values       30 3 3 56
+Spell 3      'heal'
+End
+
+#OBJECT
+Nest         0
+Name         Bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10023
+ExtraFlags   1024
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        54
+Timer        0
+Cost         26244
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         White Crown~
+ShortDescr   the White Crown~
+Description  The Gleaming White Crown~
+Vnum         10003
+ExtraFlags   1024
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        60
+Timer        0
+Cost         36000
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10023
+ExtraFlags   1024
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         30316
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         blue crystal staff~
+ShortDescr   blue Crystal Staff~
+Description  A beautiful staff made entirely of blue crystal.
+~
+Vnum         7527
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     4
+Weight       1
+Level        57
+Timer        0
+Cost         29241
+Values       31 4 4 56
+Spell 3      'heal'
+End
+
+#OBJECT
+Nest         0
+Name         a chicken feather~
+ShortDescr   a Chicken Feather~
+Description  A chicken feather lays here discarded
+~
+Vnum         7517
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     3
+Weight       1
+Level        41
+Timer        0
+Cost         16810
+Values       20 9 9 43
+Spell 3      'energy drain'
+End
+
+#OBJECT
+Nest         0
+Name         blue crystal staff~
+ShortDescr   blue Crystal Staff~
+Description  A beautiful staff made entirely of blue crystal.
+~
+Vnum         7527
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     4
+Weight       1
+Level        58
+Timer        0
+Cost         30798
+Values       29 3 3 56
+Spell 3      'heal'
+End
+
+#OBJECT
+Nest         0
+Name         disk~
+ShortDescr   the Disks of Mishikal~
+Description  A set of thin platinum plates with writing on them
+~
+Vnum         7519
+ExtraFlags   0
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        55
+Timer        0
+Cost         29160
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         earring ruby~
+ShortDescr   a pair of ruby earrings~
+Description  A pair of ruby earrings lie here, glittering in the sun.
+~
+Vnum         3529
+ExtraFlags   0
+WearFlags    65537
+WearLoc      19
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        23
+Timer        0
+Cost         5060
+Values       4 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         hat~
+ShortDescr   a beaten, shapeless hat~
+Description  A beaten, shapeless hat
+~
+Vnum         7516
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        41
+Timer        0
+Cost         18040
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         a chicken feather~
+ShortDescr   a Chicken Feather~
+Description  A chicken feather lays here discarded
+~
+Vnum         7517
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     3
+Weight       1
+Level        40
+Timer        0
+Cost         16400
+Values       20 10 10 43
+Spell 3      'energy drain'
+End
+
+#OBJECT
+Nest         0
+Name         black Crown~
+ShortDescr   black Crown~
+Description  The Gleaming Black Crown~
+Vnum         10062
+ExtraFlags   512
+WearFlags    17
+WearLoc      6
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        57
+Timer        0
+Cost         29241
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect your souls~
+Vnum         10024
+ExtraFlags   1024
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         25281
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Kite Shield~
+ShortDescr   a Kite Shield.~
+Description  A Kite Shield has been left here~
+Vnum         10050
+ExtraFlags   1024
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        51
+Timer        0
+Cost         29744
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10064
+ExtraFlags   512
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        54
+Timer        0
+Cost         32670
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        55
+Timer        0
+Cost         30800
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10064
+ExtraFlags   512
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        54
+Timer        0
+Cost         25758
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         30899
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10023
+ExtraFlags   1024
+WearFlags    16385
+WearLoc      17
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         28620
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect your souls~
+Vnum         10024
+ExtraFlags   1024
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         28080
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Kite Shield~
+ShortDescr   a Kite Shield.~
+Description  A Kite Shield has been left here~
+Vnum         10050
+ExtraFlags   1024
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        52
+Timer        0
+Cost         29744
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10023
+ExtraFlags   1024
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        54
+Timer        0
+Cost         28090
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect your souls~
+Vnum         10024
+ExtraFlags   1024
+WearFlags    65
+WearLoc      8
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         24804
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Sharpened Crucifix~
+ShortDescr   a Sharpened Crucifix~
+Description  The Sharpened Crucufix has been left here~
+Vnum         10056
+ExtraFlags   512
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       1
+Level        55
+Timer        0
+Cost         30240
+Values       0 9 25 11
+End
+
+#OBJECT
+Nest         0
+Name         Bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10023
+ExtraFlags   1024
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         24804
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect your souls~
+Vnum         10024
+ExtraFlags   1024
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         27560
+Values       9 0 0 0
+End
+
+#END

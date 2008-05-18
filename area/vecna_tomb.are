@@ -1,0 +1,3409 @@
+#AREA
+@@dThe Tomb of @@mVecna @@dthe @@RLich@@N~
+Q 16
+K vecna~
+L @@W{@@mRM @@lAD@@W}@@N~
+N 137
+I 90 120
+V 20600 20799
+X 0
+F 15
+U @@dA @@mchill@@d runs up your spine.@@N~
+O cyberlich~
+R cyberlich~
+W cyberlich~
+#HELPS
+1 'healing light'~
+~
+1 'mana flare'~
+Mana flare causes a fountain of mana to flood the room, doubling your normal
+mana regeneration rate.
+~
+1 mana flare~
+NEW HELP.  DELETE THIS LINE FIRST!~
+1 mana drain~
+~
+1 'mana drain'~
+Mana drain is a room affect spell that causes anyone in the room to LOSE mana
+instead of gaining it like normal. Be careful casting this spell, as the
+Immortals closely monitor it's use, and punish anyone using it in a way that
+can hurt newbies.
+~
+1 leadership~
+~
+1 morale~
+As a worthy knight, you have added benefits when in a group.  Morale will add
+to the damage any of your group members can do.
+~
+1 adrenaline~
+The ability to utilize adrenaline surges enhances your damage in combat
+whenever you take a strong hit.  Multiple hits add additional affects!.
+~
+1 frenzy~
+Frenzy is a skill that let's you go into a fighting frenzy.  You will take
+some damage, but will attempt to hit every enemy in the room!
+~
+1 ethereal~
+Ethereal travel is a way to enter the Ethereal plane, a non-material realm that spans our material plane.
+~
+1 runes~
+Runes are magical effects that you can place in the room you are in.  They
+have varying affects. Experiment!  They are one use spells..once triggered,
+they dissapear.
+NOTE: Runes are triggered by the next to enter the room.
+NOTE: @@eDO NOT CAST RUNES OR BAD AREA AFFECTS IN NEWBIE AREAS!!!@@N
+~
+1 cage~
+The cage spell is similar to seal room, but things CAN enter, just not leave.
+~
+0 $~
+#ROOMS
+#20689
+The Final Crypt, Vecna's Lair~
+@@gThe construction of this room seems familiar, the only difference stabbing
+your vision being the gleam of platinum veins purifying the alabaster marble.
+It is, in reality, a simple alcove, probably that which Vecna uses to stay
+watch over his personal crypt.
+~
+24649 11
+D0
+~
+~
+0 -1 20687
+S
+#20688
+The Final Crypt, Vecna's Lair~
+@@gThe white marble here is bathed in an angelic light, descending upon the
+scene from the ceiling above, which exudes the golden light.  Basking in the
+beautiful rays is the white marble, ever present here, in this Final Crypt of
+the ever-dead.
+~
+24584 11
+D1
+~
+~
+0 -1 20687
+S
+#20686
+The Final Crypt, Vecna's Lair~
+@@gThis culdesac of a room is adorned in the finest, pure with marble,
+streaked with veins of purest gold and silver.  Devoid of dust, or other
+detritus, the area purveys an aura of cleanliness.
+~
+0 11
+D3
+~
+~
+0 -1 20687
+S
+#20687
+The Final Crypt, Vecna's Lair~
+@@gLarge pillars continue to line the east and west walls, defining a
+throughway north and south.  The entire crypt is of the purest white marble,
+coursing veins of darkened blood, dark streaks through the beautiful stones.
+
+~
+24649 11
+D0
+~
+~
+0 -1 20685
+D1
+~
+~
+0 -1 20686
+D2
+~
+~
+0 -1 20689
+D3
+~
+~
+0 -1 20688
+D5
+~
+~
+257 -1 20691
+S
+#20673
+The Chute~
+@@gIn the center of the east wall is a gaping hole, formed into the likeness
+of a vicious mouth, the gullet of which leads down in the vast darkness below
+Retched breath issues from the gaping maw.  On the south wall, more of the
+portentious @@mcarvings@@g.
+~
+24653 11
+D0
+~
+~
+0 -1 20671
+D1
+~
+~
+0 -1 20674
+E
+carvings~
+@@gAnother well-known form of divination was necromancy, the conjuring of the
+dead, of which King Saul was culpable when he visited the witch at Endor (1
+Sam 28:3-25).  Since divination was closely associated with magic in all it's
+forms, biblical writers roundly condemned it (see Lev 19:26,31).
+~
+S
+#20672
+The Ancient Crypt~
+@@gThis southeast corner of the Ancient Crypt is much as the other parts of it
+Thickly settled with dust, containing the ever-present smell of fear and death
+This certainly is the haunting place of the lesser Liches.  @@mCarvings@@g
+along the east wall tell more of the story.
+~
+24649 11
+D0
+~
+~
+0 -1 20669
+D3
+~
+~
+0 -1 20671
+E
+carvings~
+@@gLikewise, Hoshea, the last king of the northern kingdom, led Israel away
+from God to pursue the worhip of foreign gods and engage in occultic practices.
+They set up sacred stones and Asherah poles, they worshiped idols, imitated
+the nations around them, worshiped Baal; they sacrificed their sons and their
+daughters in the fire, and they practiced divination and sorcery.  The
+biblical writer interprets their actions as selling "themselves to do evil in
+the eyes of the Lord, provoking him to anger."  As a result, the Lord removed
+Israel from his presence (2 Kings 17:7-23)
+~
+S
+#20671
+The Ancient Crypt~
+@@gThis central part along the southern end of the Ancient Crypt is blanketed,
+as well, by the ever thick, undisturbed dust.
+~
+24649 11
+D0
+~
+~
+0 -1 20668
+D1
+~
+~
+0 -1 20672
+D2
+~
+~
+0 -1 20673
+D3
+~
+~
+0 -1 20670
+S
+#20670
+The Ancient Vault~
+@@gThis southwest corner of the Ancient Vault holds more of the @@mcarvings@@g
+upon the west wall.  The ever present dust lies thickly undisturbed.
+~
+24649 11
+D0
+~
+~
+0 -1 20667
+D1
+~
+~
+0 -1 20671
+E
+carvings~
+Manasseh, one of the kings of Judah, was guilty in the eyes of the chronicler
+for breaking the occult prohibitions of the Torah.  He worshiped the Canaanite
+gods, practiced astrology or a form of astral religion ("bowed down to all the
+starry host and worshiped them"), "sacrificed his sons in the fire in the
+Valley of Ben Hinnom, practiced sorcery, divination, and witchcraft, and
+consulted mediums and spiritists" (2 Chron 33:1-6).  The chronicler concludes,
+"He did much evil in the eyes of the Lord provoking him to anger."
+~
+S
+#20666
+The Ancient Vault~
+@@gAll along the north wall, inlaid into the marble with thick gold, are
+@@mcarvings@@g meant to last millenia.  About the floor lies the thick dust,
+undisturbed for long years.
+~
+24649 11
+D2
+~
+~
+0 -1 20669
+D3
+~
+~
+0 -1 20665
+E
+carvings~
+@@gLet no one be found among you who sacrifices his son or daughter in the
+fire, who practicies divination or sorcery, interprets omens, engages in
+witchcraft, or casts spells, or who is a medium or spiritist or who consults
+the dead.  Anyone who does these things is detestable to the Lord, and because
+of these detestable practices the Lord your God will drive out those nations
+before you.  (Deut 18:10-12)
+~
+S
+#20669
+The Ancient Vault~
+@@gAnother settlement for the evil, thick dust...along the floors and even
+drifted up upon the walls slightly.  This time in the east wall,
+@@mcarvings@@g beg to be read.
+~
+24649 11
+D0
+~
+~
+0 -1 20666
+D2
+~
+~
+0 0 20672
+D3
+~
+~
+0 -1 20668
+E
+carvings~
+@@gIn the Old Testament Levitical law the goat demons also appear.  Israel was
+prohibited from offering sacrifices to goat idols.  The law states: "They must
+no longer offer any of their sacrifices to the goat idols to whom they
+prostitute themselves." (Lev 17:7a).  Rehoboam violated this statute when he
+set up "high places" and "appointed his own priests for the high places and
+for the goat and calf idols he had made" (2 Chron 11:15).  In both of these
+instances demonic involvement in pagan cults is reaffirmed.
+~
+S
+#20668
+The Ancient Vault~
+@@gMarking the center of this Ancient Crypt is a small @@mcross@@g of pure
+black granite, set in the floor within a block of purest white marble.  The
+everpresent settled dust lies blanketed over everything in sight.  Somewhere,
+some creature mumbles something to itself, an anticipitory tone in it's
+deepset voice.
+~
+24649 11
+D0
+~
+~
+0 -1 20665
+D1
+~
+~
+0 -1 20669
+D2
+~
+~
+0 0 20671
+D3
+~
+~
+0 -1 20667
+E
+cross~
+@@gEtched into the black cross, and set with white marble, are the following
+words:  @@WRain, rain on my face, It hasn't stopped raining for days, My world is
+a flood, Slowly I become one with the mud.  But if I can't swim after forty
+days, and my mind is crushed by the crashing waves, Lift me up so high that I
+cannot fall, Lift me up - When I'm falling.  Lift me up - I'm weak and I'm
+dying.  Lift me up - I need you to hold me.  Lift me up - I need you to hold
+me.  Lift me up - Keep me from drowning again.
+~
+S
+#20667
+The Ancient Vault~
+@@gNo skeletons adorn the room here, in fact, nothing but the everpresent
+dust carpet, as elsewhere within the Vault.  Perhaps considered adornment,
+however, is the consistent smell of fear, as much a part of the Vault as the
+walls, the floor, the ceiling.  Here as well, lie inlaid on the west wall, are
+more of the everpresent @@mcarvings@@g in the wall.
+~
+24649 11
+D0
+~
+~
+0 -1 20664
+D1
+~
+~
+0 -1 20668
+D2
+~
+~
+0 -1 20670
+E
+carvings~
+@@gIn a similar way the Isaianic prophecy of the desolation of Babylon
+predicts that it will become a haunt for "goat spirits" and other sorts of
+demons (Is 13:21).  As in Isaiah 34:14, the Greek Old Testament uses the word
+daimonia ("demons") to translate some of the Hebrew words here for wild
+animals.  These are a strong connection between wild animals and evil spirits
+thoughout antiquity.  The "goat demon" was thought to be in the form of a
+shaggy he-goat.
+~
+S
+#20664
+The Ancient Vault~
+@@gAgain, the thick dust coats everything, even the poor @@mchap@@g, who died
+along the west wall.  Fear is so thick as to be an odor borne upon the stale
+air.  Some @@mcarvings@@g are etched into the west wall here.
+~
+24649 11
+D1
+~
+~
+0 -1 20665
+D2
+~
+~
+0 -1 20667
+E
+carvings~
+@@gIn Isaiah 34:14, the spooky and terrifying place of desolation is portrayed
+as being inhabited by wild animals and other demonic spirits.  This passage
+speaks of Edom becoming a den for jackals and an enclosure for hyenas.  It
+then goes on to say "demons" (daimonia) "phantoms" and "goat spirirts," as
+well as "Lilith, will haunt this place."
+~
+E
+chap~
+@@gThis guy died, it appears, while gouging great scratches into the west wall
+perhaps trying to escape something horribly fearsome.  He lies facedown, half
+propped up against the west wall.
+~
+S
+#20648
+A Pillar~
+@@gThe last @@lpillar@@g on the south end of the vast Crypt is in close
+proximity.  Unsettled air, bringing noxious fumes and choking dust washes upon
+you from the south.
+~
+24649 11
+D0
+~
+~
+0 -1 20644
+D1
+~
+~
+0 -1 20649
+D2
+~
+~
+0 -1 20651
+D3
+~
+~
+0 -1 20647
+E
+pillar~
+@@lThis is the last pillar to the south in the westward series of pillars.  It is unremarkable except for various gougings in the stone.@@g~
+S
+#20649
+Near the Terminus~
+@@gThis area is along the center aisle, between the series of pillars.
+Unsettled air moves toward you from the south, bringing waves of nausiating
+stench, as well as thick, chocking dust.
+~
+24649 11
+D0
+~
+~
+0 -1 20645
+D1
+~
+~
+0 -1 20650
+D2
+~
+~
+0 0 20652
+D3
+~
+~
+0 -1 20648
+S
+#20650
+A Pillar~
+@@gThe wall here runs diagonally northeast and southwest.  One of the massive
+@@lpillars@@g is here, mere feet from the wall.
+~
+24649 11
+D0
+~
+~
+0 -1 20646
+D3
+~
+~
+0 -1 20649
+E
+pillars~
+@@lAnother of the ten foot diameter pillars.  This one is of dark grey marble, otherwise unremarkable.@@g~
+S
+#20646
+A Pillar~
+@@gThis marble @@lpillar@@g lies within mere feet of the southwest/northeast
+diagonal wall.  The dirt floor here is well trod, near to the terminus at the
+south end of the huge Vault.
+~
+24649 11
+D0
+~
+~
+0 -1 20640
+D2
+~
+~
+0 -1 20650
+D3
+~
+~
+0 -1 20645
+E
+pillar~
+@@lThere is nothing remarkable about this pillar.@@g~
+S
+#20645
+Between the Pillars~
+@@gOnce again, you stand in the aisle between the two series of @@lpillars@@g.
+Detected to the north is a distinct movement, accompanied by a sound not
+unlike that of a clawed hand, digging itself up from beneath the hardpacked
+dirt floor.
+~
+24649 11
+D0
+~
+~
+0 -1 20639
+D1
+~
+~
+0 -1 20646
+D2
+~
+~
+0 0 20649
+D3
+~
+~
+0 -1 20644
+E
+pillars~
+@@lNothing of unusual aspect can be detected of the pillars to the east and the west, do to your current location.@@g~
+S
+#20627
+Between the Pillars~
+@@gOnce again in the openness of the center of the crypt, the claustrophobic
+feelings of the surrounding darkness strikes like a hammer in the pit of your
+bowels.  At least the @@lpillars@@g to the east and the west would provide
+some relief from this feeling of encroaching doom.@@g
+~
+24649 11
+D0
+~
+~
+0 -1 20721
+D1
+~
+~
+0 -1 20628
+D2
+~
+~
+0 0 20633
+D3
+~
+~
+0 -1 20626
+E
+pillars~
+@@lYou cannot make out any of the details of the pillars to the east and the west from this distance.@@g~
+S
+#20628
+A Pillar~
+@@gAnother majestic @@lpillar@@g is here, stretching up into the darkness
+above.  A @@lskeleton@@g lies here, propped up against the pillar for all
+eternity.@@g
+~
+24649 11
+D0
+~
+~
+0 -1 20722
+D1
+~
+~
+0 -1 20629
+D2
+~
+~
+0 0 20634
+D3
+~
+~
+0 -1 20627
+E
+skeleton~
+@@lThis skeleton lies here against the pillar, composed in his death.  There is no obvious cause for his death, for all you can tell, the guy died of old age.@@g~
+E
+skeleten~
+@@lThis skeleton lies here composed in death.  There is no obvious cause for his death, for all you can tell, the guy might have died from old age.@@g~
+E
+pillar~
+@@lThis pillar is a little different from the rest, but only in the fact that it's smooth surface is marred with missing chunks, as if it has been struck several times, perhaps during combat.@@g~
+S
+#20629
+An Eastern Corridor~
+@@gA @@lcorridor@@g leads off to the east here, into confining darkness.  Your
+light glistens off the smooth @@lpillar@@g to the west of here.
+~
+24649 11
+D0
+~
+~
+0 -1 20723
+D1
+~
+~
+0 -1 20656
+D2
+~
+~
+0 0 20635
+D3
+~
+~
+0 -1 20628
+E
+corridor~
+@@lLooking eastward, you see nothing down the dark corridor.  A vast, overpoweringly cold evil presence washes over you in waves, coming from the east.  Something horrible lies in that direction.@@g~
+E
+pillar~
+@@lThe pillar to the west bears scorch marks on the eastward facing side.@@g~
+S
+#20721
+Between the Pillars~
+@@gNear the center of the huge vault, an oppresive feeling permeates your very
+bones.  Once again, the intense desire to find the safety of the walls nearly
+overwhelms you.  You're light-source reveals @@lpillars@@g to the east and the
+west.  Somewhere beyond those pillars, you know, stand the walls of the crypt.
+~
+24649 11
+D0
+~
+~
+0 -1 20615
+D1
+~
+~
+0 -1 20722
+D2
+~
+~
+0 0 20627
+D3
+~
+~
+0 -1 20720
+E
+pillars~
+@@lFrom where you now stand, you have great difficulty making out any details of the pillars to the east and the west.@@g~
+S
+#20720
+A Pillar~
+@@gAnother @@lpillar@@g, this one the third from the north in the westernmost
+series of pillars.  Some of the @@learth@@g here has been dug up, leaving a
+@@lhole@@g in the floor.
+~
+24649 11
+D0
+~
+~
+0 -1 20614
+D1
+~
+~
+0 -1 20721
+D2
+~
+~
+0 0 20626
+D3
+~
+~
+0 -1 20719
+E
+hole~
+@@dThe hole that has been dug here is about six feet deep, four feet wide, and six feet long...just about right for a grave of a mid-sized human.@@g~
+E
+earth~
+@@bThis dirt is very fine, and has a greyish/brown appearance to it.@@g~
+E
+pillar~
+@@lThis solid pillar is about 10 feet in diameter, and runs up into the blackness above, hopefully helping to support the ceiling.@@g~
+S
+#20719
+Wandering in the Crypt~
+@@gDirt and dust sift from somewhere above, filling the air with a choking
+thickness.  The smell of death permeates the air, bringing with it unpleasant
+memories of undead creatures fought in the recent past.
+~
+24649 11
+D0
+~
+~
+0 -1 20613
+D1
+~
+~
+0 -1 20720
+D2
+~
+~
+0 0 20625
+D3
+~
+~
+0 -1 20718
+S
+#20718
+Along the West Wall~
+@@gWithin the safe proximity of the Western wall, you pause, collecting your
+wits.  Nothing is revealed by your light-source, to the north, nor the east,
+nor the west.  A presence, however, is strongly felt...an evil presence.  With
+your back against the wall, you wait for it, smelling your own fear.
+~
+24649 11
+D0
+~
+~
+0 -1 20612
+D1
+~
+~
+0 -1 20719
+D2
+~
+~
+0 0 20624
+S
+#20617
+Along the Eastern Wall~
+@@gThis part of the crypt is relatively secluded, nestled as it is between the
+easternmost row of @@lpillars@@g, and the eastern wall.  There are some faint
+@@lscratchings@@g on the wall here.
+~
+24649 11
+D0
+~
+~
+0 -1 20611
+D2
+~
+~
+0 0 20723
+D3
+~
+~
+0 -1 20616
+E
+message~
+@@R...vast evil within this place...go now!, as I must...bleeding@@g~
+E
+scratchings~
+@@lLooking a little closer at the scratchings on the wall, you notice that they appear to be arranged in some sort of order.  Yes, studying them, you see that they are letters, and you learn the @@gmessage@@l that the letters hold....@@g~
+E
+pillars~
+@@lYou cannot discern any of the details of the pillar to the west of here.@@g~
+S
+#20616
+A Pillar~
+@@gStanding near one of the massive marbel @@lpillars@@g, you peer off into
+the darkness...looking for whatever it is that's scratching on something made
+of stone, somewhere off to the south.  Choking on floating dust, you wonder if
+coming here was such an incredibly wise move.
+~
+24649 11
+D0
+~
+~
+0 -1 20610
+D1
+~
+~
+0 -1 20617
+D2
+~
+~
+0 0 20722
+D3
+~
+~
+0 -1 20615
+S
+#20615
+Between the Pillars~
+@@gThe space between the massive @@lPillars@@g of the crypt is oppresively
+empty.  To the east and the west, your light-source reflects from more of the
+thick pillars.  You feel the intense need to be away from this dreadful
+openness, desiring the (safety?) of the walls.
+~
+24649 11
+D0
+~
+~
+0 -1 20609
+D1
+~
+~
+0 -1 20616
+D2
+~
+~
+0 0 20721
+D3
+~
+~
+0 -1 20614
+E
+pillars~
+@@lFrom where you stand, all you can see of the pillars is the barest reflection from your light-source.@@g~
+S
+#20614
+A Pillar~
+@@gThis is the second @@lpillar@@g from the north in the westernmost series of
+north and south running pillars.  Somewhere in the darkness above, you feel
+sure that the pillar makes contact with an unseen ceiling.
+~
+24649 11
+D0
+~
+~
+0 -1 20608
+D1
+~
+~
+0 -1 20615
+D2
+~
+~
+0 0 20720
+D3
+~
+~
+0 -1 20613
+E
+pillar~
+@@lThere is nothing out of the ordinary with this ten foot diameter pillar, except for it's solidness and smooth surface.@@g~
+S
+#20612
+Along the West Wall~
+@@gHere is the junction where the diagonal west wall turns from running
+northeast to running directly south.  The darkness is immense, and the wall in
+close proximity is a comfort, compared to the opennes of the center of the
+crypt.
+~
+24649 11
+D1
+~
+~
+0 -1 20613
+D2
+~
+~
+0 -1 20718
+S
+#20613
+Within the Crypt~
+@@gAway now from the walls of the crypt, you look up only to find the ceiling
+lost in the dust ridden blackness.  Something, you are sure, moves in the
+blackness around you.@@g
+~
+24649 11
+D0
+~
+~
+0 -1 20607
+D1
+~
+~
+0 -1 20614
+D2
+~
+~
+0 0 20719
+D3
+~
+~
+0 -1 20612
+S
+#20607
+By the West Wall~
+@@gThe west wall of the crypt continues to run diagonally northeast and
+southwest here.  Some @@lbones@@g lie scattered in a jumble.
+~
+24649 11
+D1
+~
+~
+0 -1 20608
+D2
+~
+~
+0 -1 20613
+E
+bones~
+@@lThese bones appear to be those of some adventurer who was fool-heardy enough to explore this crypt alone.  His death was obviously obtained by some crushing blow to the head, as the skull is crushed in such a manner the it lies in seven or eight pieces.@@g~
+S
+#20608
+A Pillar~
+@@gHere is the northernmost @@lpillar@@g in the westernmost series of pillars.
+Thick dust motes hang uneasily in the air.
+~
+24649 11
+D0
+~
+~
+0 -1 20605
+D1
+~
+~
+0 -1 20609
+D2
+~
+~
+0 0 20614
+D3
+~
+~
+0 -1 20607
+E
+pillar~
+@@lUpon closer inspection, you notice that the dirt all around the base of this pillar has been disturbed, as if someone was digging along the base, then thought better of the exploit.@@g~
+S
+#20609
+Between the Pillars~
+@@gYou stand now in the darkness somewhere in the center of the crypt.  To the
+east and the west, you can barely see some of the vaulted @@lpillars@@g that
+support the ceiling of this massive chamber.
+~
+24649 11
+D0
+~
+~
+0 -1 20604
+D1
+~
+~
+0 -1 20610
+D2
+~
+~
+0 0 20615
+D3
+~
+~
+0 -1 20608
+E
+pillars~
+@@lTwo pillars can be seen from here, one to the east, and one to the west.  Both are too far away to discern any of their details.@@g~
+S
+#20611
+Within the Crypt~
+@@gThe diagonal wall running northwest from here turns directly south,
+creating a "corner" in the overall shape of the huge crypt.  Off to the west,
+you're light-source barely illuminates a @@lpillar@@g in the darkness.
+~
+24649 11
+D2
+~
+~
+0 0 20617
+D3
+~
+~
+0 -1 20610
+E
+pillar~
+@@lTo the west, you can see one of the supporting pillars within the crypt.  From this distance, you cannot make out any of it's detail.@@g~
+S
+#20621
+The Cottage~
+@@gIn the center of this small clearing is a peasants cottage, looking rather
+abandoned in it's decay.  The cottage lies on the north part of the clearing,
+and a @@mwoodpile@@g stacked next to it is almost as large.  A henhouse near the
+rear of the cottage stands open, and empty.
+~
+4 2
+D0
+~
+~
+0 -1 20622
+D1
+~
+~
+0 -1 20620
+D2
+~
+~
+0 -1 20623
+E
+woodpile~
+@@GThe woodpile is stacked very high next to the cottage, reaching almost to
+it's eaves.  The wood was obviously chopped several years ago, betrayed by
+it's grey, weathered appearance.@@g
+~
+S
+#20620
+The Woods to the East of the Cottage~
+@@gThis wooded area is of light density.  Birds flit from branch to branch,
+and the scampering of squirrels and chipmunks is appearant.  The sweat scent
+of the outdoors puts you at ease.
+~
+0 3
+D0
+~
+~
+0 -1 20619
+D3
+~
+~
+0 -1 20621
+S
+#20619
+Within the Darkening Wood~
+@@gThe woods begin to darken here, as you travel progressively northward.  A strange sense begins to fill you, as you notice the typical forest noises begin to fade from range of hearing...you have left the woodland creatures somewhere to the south.~
+4 3
+D0
+~
+~
+0 -1 20618
+D2
+~
+~
+0 -1 20620
+S
+#20618
+Within the Darkening Wood~
+@@gThe woods here are dark, indeed.  @@gThe farther north you travel in @@gThe woods,
+@@gThe more @@gThe essence of foreboding steals your nerves.  Northward, through @@gThe
+low hanging bows, you spy a clearing, a grey @@mstructure@@g centered within.
+~
+0 3
+D0
+~
+~
+0 -1 20600
+D2
+~
+~
+0 -1 20619
+E
+structure~
+@@GThe structure to the north appears to be a grey dome, centered in the
+clearing ahead, with a circular tower attached to the southwest edge of the
+dome.@@g
+~
+S
+#20600
+The Geodesic Dome~
+@@gYou stumble out into a clearing, some one hundred feet across.  In the center
+of the clearing is a largish geodesic grey @@mdome@@g, with a similar colour @@mtower@@g
+attached, at the base, to the southwest corner of the dome.  An oppresive
+feeling permeates the air of the clearing, and not a sound is to be heard, not
+that of animal, bird, nor insect.  Standing on the south side of the strange,
+grey building, @@gYou see a doorway opening into the structure.  Just a @@mdoorway@@g,
+no door, no gate...just a black opening into the building.
+~
+4 2
+D0
+~
+~
+0 -1 20601
+D2
+~
+~
+0 -1 20618
+E
+doorway~
+@@GThis black maw which leads into the Geodesic Dome appears to be a simple
+gateway into the building.  However, to attempt to look inside the dome is as
+looking into another universe.  A stifling fear nearly overcomes you, a pit in
+the depth of your stomach, an unnatural tingling in your spine.  You suddenly
+realize that this feeling is purely childish, shrug, and smile sheepishly at
+yourself.@@g
+~
+E
+tower~
+@@GThis tall, grey tower stands some fifty feet or so tall.  Spaced in
+diagonal intervals up the wall are slender windows, which probably double as
+arrow slits in times of trouble.  The space inside the windows looks
+absolutely, and unnaturally dark.@@g
+~
+E
+dome~
+@@GThis wide based dome dominates most of the clearing.  It is made of grey
+stone.  The only break in the smooth wall is that of the entrance of the
+building.  Just peering at the doorway perveys a sense of foreboding and dread
+@@g
+~
+E
+door~
+This black maw which leads into the Geodesic Dome appears to be a simple gateway into the building.  However, to attempt to look inside the dome is as looking into another universe.  A stifling fear nearly overcomes you, a pit in the depth of your stomach, an unnatural tingling in your spine.  You suddenly realize that this feeling is purely childish, shrug, an smile sheepishly at yourself.~
+E
+~
+~
+S
+#20601
+Inside the Geodesic Dome~
+@@gSwallowing your fears, you have stepped inside of the Geodesic Dome.  The
+inside of the dome is as grey as the outside, with no windows whatsoever, and
+no light except that which you have brought with you.  The floor is of the
+same colour marble as the rounded walls, and the rounded ceiling.  No pillar
+or other supporting device hold the dome in place, you surmise that it must
+hold itself through superior architecture.
+~
+13 11
+D2
+~
+~
+0 -1 20600
+D3
+~
+~
+0 -1 20716
+S
+#20716
+Inside the Tower~
+@@gNow inside the tower on the southwest side of the building, you see that the
+tower itself is dominated by a wide marble @@mstaircase@@g that ascends to the top
+of the tower, and descends somewhere into a great blackness, amid scufflings
+and various wanderings about.  Thin windows pierce the rounded wall of the
+tower, spaced evenly along the length of the upward staircase.
+~
+13 11
+D1
+~
+~
+0 -1 20601
+D4
+~
+~
+0 -1 20717
+D5
+~
+~
+0 -1 20602
+E
+staircase~
+@@GThe marble staircase is made of the same grey marble as the rest of the structure, and is approximatly ten feet wide as it curves to the right as it ascends, and to the left as it descends.@@g~
+E
+stairs~
+The marble staircase is made of the same grey marble as the rest of the structure, and is approximatly ten feet wide as it curves to the right as it ascends, and to the left as it descends.~
+S
+#20717
+The Top of the Grey Tower~
+@@gYou stand now on the landing at the top of the Grey Tower.  More of the thin
+windows pierce the rounded walls, one in each direction, north, @@msouth@@g, east,
+and west.
+~
+9 11
+D5
+~
+~
+0 -1 20716
+E
+~
+~
+E
+south~
+@@GLooking out the southern-most window, you see the clearing before the entrance to the Dome.  As before, the clearing looks completely deserted, and bereft of any movement or noise.@@g~
+S
+#20622
+Inside the Cottage~
+@@gFrom the inside, it appears that the cottage was once a very comfortable
+small home.  A @@mfireplace@@g stands against the back wall, with an old wooden
+rocking @@mchair@@g in front of it.  A cooking @@mpot@@g stands in the ashes within the
+fireplace.
+~
+12 11
+D2
+~
+~
+0 -1 20621
+E
+fireplace~
+@@GThis old fireplace, made of brownstone, is soot stained and was obviously
+once well used.@@g
+~
+E
+chair~
+@@GWalking around toward the front of the chair, to examine it a little closer, the side view of a @@gskeleton@@G comes into view, sitting comfortably within the chair.  The chair itself looks very frail in it's age, and might fall apart if disturbed.@@g~
+E
+skeleton~
+@@GThe skeleton is obviously that of a very old man, who probably died
+comfortably before his fire on some windy night.@@g
+~
+E
+pot~
+@@GThis old cooking pot, resting in the ashes of a fire that burned out years ago, contains the last meal the old man ate, or, at least, the hardened remnents of that meal.@@g~
+S
+#20623
+The Woods~
+@@g The woods here are a delighful light green, and peaceful.  A slow breeze passes through the trees above, the branches whispering to you in some foreign tongue.~
+4 2
+D0
+~
+~
+0 -1 20621
+D2
+~
+~
+0 0 7350
+S
+#20602
+At the Bottom of the Staircase~
+@@gThe staircase ends in it's descent at a landing, forty or so feet below the
+ground level of the tower.  The grey marble here appears almost black.  To the
+south, a simple @@marchway@@g leads to the unknown.  That which issues from your
+light source does not penetrate the utter blackness under the archway.
+~
+9 11
+D2
+~
+~
+0 -1 20603
+D4
+~
+~
+0 -1 20716
+E
+archway~
+@@lThe archway looks as if it contains the blackness within, which strives to spill out into the harmony of this world.  You feel that stepping into the archway would mean sure death, or, at least, entrance into a realm from which you would not possilby be able to return, sane.@@g~
+S
+#20603
+Within the Crypt~
+@@gIn this open area of grey stone and blackness, you feel removed from the
+natural world, as you have known it.  The stones of the walls have been marred
+with hideous @@lscratchings,@@g and disturbed dust motes drift through the air.  To
+the south, you sense movement, and discern shapes moving in the darkness.
+~
+24649 11
+D2
+~
+~
+0 -1 20604
+E
+scratchings~
+@@lExamining these scratchings in the wall a little closer, you notice that one gouge in the wall contains small scraps of torn flesh.@@g~
+S
+#20604
+Into the Crypt~
+@@gThe east and west walls widen to the south here.  The issue from your
+light-source barely illuminates a series of @@lpillars@@g which begin their
+southward course to the southeast and southwest.  Your keen hearing discerns
+the unorganized movement of many creatures in the area.
+~
+24649 11
+D0
+~
+~
+0 -1 20603
+D1
+~
+~
+0 -1 20606
+D2
+~
+~
+0 0 20609
+D3
+~
+~
+0 -1 20605
+E
+pillars~
+@@lFrom this distance, you cannot make out any details of the pillars.@@g~
+S
+#20605
+Inside the Crypt~
+@@gWalking along the diagonal wall, which runs northeast and southwest, you
+notice the beginning of the series of @@lpillars@@g, directly to the south of
+here.  Do you continue on in the safety of the proximity of the wall, or dare
+the open area in the center of the large crypt?
+~
+24649 11
+D1
+~
+~
+0 -1 20604
+D2
+~
+~
+0 0 20608
+E
+pillars~
+@@lTo the south of here is the northernmost pillar in the westward series.  You are too distant from the pillar to make out any real detail.@@g~
+S
+#20606
+In the Crypt~
+@@gYou traverse the crypt along the diagonal wall which runs northwest and
+southeast from here.  To the south, the easternmost series of @@lpillars@@g
+begins, with the northernmost pillar.
+~
+24649 11
+D2
+~
+~
+0 -1 20610
+D3
+~
+~
+0 -1 20604
+E
+pillars~
+@@lYou are too far away from the northernmost pillar in the eastern series to make out any details.@@g~
+S
+#20610
+A Pillar~
+@@gHere, a thick, marble @@lpillar@@g reaches up to the ceiling, lost in the
+darkness.  @@lScratches@@g mark the base of the pillar, all along it's
+circumferance.
+~
+24649 11
+D0
+~
+~
+0 -1 20606
+D1
+~
+~
+0 -1 20611
+D2
+~
+~
+0 0 20616
+D3
+~
+~
+0 -1 20609
+E
+pillar~
+@@lThis thick pillar, approximatly ten feet in diamater, reaches up into the blackness of the ceiling.  It is made of smooth marble, with @@gscratches@@l all around the base.@@g~
+E
+scratches~
+@@lThe gouges in the pillar are anywhere from an inch thick and several feet long, to a half inch thick and a foot long.  The scratches are found side by side, four at a time, as if some horrendous beast, out of hatred or torture, took out it's clawlide aggression on the stone.@@g~
+S
+#20722
+A Pillar~
+@@gYou stand at the base of another of the @@lpillars@@g.  Thick dust sifts
+from above, as it does elsewhere within the crypt.  Looking east, your
+light-source barely illuminates the eastern wall of the crypt.
+~
+24649 11
+D0
+~
+~
+0 -1 20616
+D1
+~
+~
+0 -1 20723
+D2
+~
+~
+0 0 20628
+D3
+~
+~
+0 -1 20721
+E
+pillars~
+@@lThis pillar, like all the others within the crypt, is about ten feet in diameter, and stretches up into the darkness to the ceiling, unseen.@@g~
+S
+#20723
+By the East Wall~
+@@gStanding along the eastern wall of the great crypt, you feel what probably
+is the closest thing to comfort that can be felt here, in close proximity with
+the wall.  To the west, you can discern a @@lpillar@@g, just barely within the
+radius of your light.
+~
+24649 11
+D0
+~
+~
+0 -1 20617
+D2
+~
+~
+0 -1 20629
+D3
+~
+~
+0 -1 20722
+E
+pillar~
+@@lFrom this distance, you cannot make out any of the details of the pillar to the west.@@g~
+S
+#20626
+A Pillar~
+@@gHere stands another of the grand @@lpillars@@g.  You had hoped that the
+proximity to something solid would help stay off the encroaching blackness,
+but, alas, it helps none at all.
+~
+24649 11
+D0
+~
+~
+0 -1 20720
+D1
+~
+~
+0 -1 20627
+D2
+~
+~
+0 0 20632
+D3
+~
+~
+0 -1 20625
+E
+pillars~
+@@lThere is nothing to distinguish this pillar from any of the others in the huge crypt.@@g~
+S
+#20625
+Within the Crypt~
+@@gThis wide open area brings with it a feeling of being compressed by the
+darkness.  To the east, your illumination glistens off one of the smooth
+@@lpillars@@g within the crypt.@@g
+~
+24649 11
+D0
+~
+~
+0 -1 20719
+D1
+~
+~
+0 -1 20626
+D2
+~
+~
+0 0 20631
+D3
+~
+~
+0 -1 20624
+E
+pillars~
+@@lFrom this standpoint, you cannot make out any of the details of the pillar to the east.@@g~
+S
+#20624
+Along the West Wall~
+@@gYou stand now along the west wall of the vast crypt.  Again, you have found
+a place where the thick dust sifts down from somewhere high overhead, in the
+darkness.  Strange scuffling, and scratching noises are to be heard to the
+north, east, and south.
+~
+24649 11
+D0
+~
+~
+0 -1 20718
+D1
+~
+~
+0 -1 20625
+D2
+~
+~
+0 -1 20630
+S
+#20630
+Along the West Wall~
+@@gOddly, where you stand now, you feel not an iota of fear, or oppression.
+Also, you notice that the dust here lies thickly on the dirt floor.  No foul
+undead beast has stood where you now stand, at least for quite some time.  On
+the wall, you notice a small @@lplaque@@g, set in bas-relief into the marble
+wall.
+~
+16396 11
+D0
+~
+~
+0 -1 20624
+D1
+~
+~
+0 -1 20631
+D2
+~
+~
+0 0 20636
+D3
+~
+~
+257 -1 20690
+E
+plaque~
+@@aCharles Thomas McCorkle, Rest Forever In Peace.@@g~
+S
+#20631
+Within the Crypt~
+@@gYou are drawn westward, to the comfort of the wall, away from this almost
+overwhelming feeling of being crushed by blackness.  You feel the need to move
+either to the wall to the west, or to the @@lpillar@@g to the east.
+~
+24649 11
+D0
+~
+~
+0 -1 20625
+D1
+~
+~
+0 -1 20632
+D2
+~
+~
+0 0 20637
+D3
+~
+~
+0 -1 20630
+E
+pillar~
+@@lThe pillar to the east glistens menacingly with the glow from your illumination.@@g~
+S
+#20632
+A Pillar~
+@@gA @@lPillar@@g rises from the floor here, helping to support the ceiling
+high overhead.  The strong stench of death assails your nostrils from
+somewhere to the east.
+~
+24649 11
+D0
+~
+~
+0 -1 20626
+D1
+~
+~
+0 -1 20633
+D2
+~
+~
+0 0 20638
+D3
+~
+~
+0 -1 20631
+E
+pillar~
+@@lThere is nothing about this pillar to distinguish it from any of the others.  It's grey marble is smooth, and extremely cold to the touch.@@g~
+S
+#20633
+Between the Pillars~
+@@gStanding roughly in the center of the great Crypt, you hear all about you
+menacing scuffles and scrapings.  To the east and the west are more of the
+great supporting @@lpillars@@g.  Faintly, off to the north, you detect a pair
+of glowing points, some six feet from the floor, phospherescant purple, their
+colour.
+~
+24649 11
+D0
+~
+~
+0 -1 20627
+D1
+~
+~
+0 -1 20634
+D2
+~
+~
+0 0 20639
+D3
+~
+~
+0 -1 20632
+E
+pillars~
+@@lFrom your vantage point, evenly between the two pillars, your illumination does not provide adequate light to detect specifics about the pillars.@@g~
+S
+#20634
+A Pillar~
+@@gOne of the magnificent @@lpillars@@g stands in this space, helping to
+support the ceiling in the darkness.  Noting twitterings in the darkness above
+you inpect the area above your head, but can discern nothing in the vast
+gloominess.
+~
+24649 11
+D0
+~
+~
+0 -1 20628
+D1
+~
+~
+0 -1 20635
+D2
+~
+~
+0 0 20640
+D3
+~
+~
+0 -1 20633
+E
+pillars~
+@@lThis pillar stands resolutely among the others, identical except for the colour of it's marble, being solidly black, and reflecting none of the issue from your illumination.@@g~
+S
+#20635
+Along the East Wall~
+@@gYou stand now between the eastern series of @@lpillars@@g, and the east
+wall.  To the north of you is the eastward spawning corridor, from which a
+cold hatred emerges.
+~
+24649 11
+D0
+~
+~
+0 -1 20629
+D2
+~
+~
+0 -1 20641
+D3
+~
+~
+0 -1 20634
+E
+pillars~
+@@lYou can descern nothing special about the pillar to the west from your current location.@@g~
+S
+#20641
+The East Wall Begins to Slope Southwestward~
+@@gYou stand now deep within the Crypt, roughly in the southeast corner of the
+open area.  The cold walls here in the southeast corner of the crypt offer no
+comfort, yet still, you struggle, bracing yourself to wander more near to the
+center depths of the Tombs.
+~
+16457 11
+D0
+~
+~
+0 -1 20635
+D3
+~
+~
+0 -1 20640
+S
+#20640
+A Pillar~
+@@gHere, the eastern series of @@lpillars@@g begins to merge with the eastern
+wall, as the wall slopes southwest, instead of due south.  Darkness and cold
+beat heavily upon your senses, dulling them to points uncomfortable to men.
+~
+24649 11
+D0
+~
+~
+0 -1 20634
+D1
+~
+~
+0 -1 20641
+D2
+~
+~
+0 0 20646
+D3
+~
+~
+0 -1 20639
+E
+pillars~
+@@lThis pillar, approximatly ten feet in diameter, confers a rock solid presence.  It's pure marble reaches up into the darkness above.@@g~
+S
+#20639
+Between the Pillars~
+@@gThis open space becomes very disconcerting...you have come nearly
+acquainted with the visual and audial signs of something lurking beyond the
+@@lpillars@@g.
+~
+24649 11
+D0
+~
+~
+0 -1 20633
+D1
+~
+~
+0 -1 20640
+D2
+~
+~
+0 0 20645
+D3
+~
+~
+0 -1 20638
+E
+pillars~
+@@lYou're light source does not produce enough issue to discern details on the pillars to the east and the west.@@g~
+S
+#20638
+A Pillar~
+@@gSomething odd...the @@lpillar@@g in this area is of white marble, unlike
+the predomination of grey, or even the occasional black.  Somehow, the white,
+found in the surrounding blackness, creates an even eerier feeling than the
+others.  You would prefer to see things stay just the way you have grown
+accostumed.
+~
+24649 11
+D0
+~
+~
+0 -1 20632
+D1
+~
+~
+0 -1 20639
+D2
+~
+~
+0 0 20644
+D3
+~
+~
+0 -1 20637
+E
+pillar~
+@@lThis white pillar is indeed odd, as you examine it closer, you discover that it isn't even of the same stone found in the other pillars.  This pillar is made of something else entirely...perhaps even some kind of metal.@@g~
+S
+#20637
+Within the Crypt~
+@@gThe openness of the Vault puts you on edge.  With a short mumble to
+whatever God you mumble to, you plunge onward, noticing, briefly, a pair of
+glowing eyes, staring at you from the darkness to the south.  Glowing, no,
+smoldering in a deep @@Rcrimson@@g.
+~
+24649 11
+D0
+~
+~
+0 -1 20631
+D1
+~
+~
+0 -1 20638
+D2
+~
+~
+0 0 20643
+D3
+~
+~
+0 -1 20636
+E
+crimson~
+@@RCrimson, like the colour of old blood.@@g~
+S
+#20636
+Along the West Wall~
+@@gThe cold stone of the west wall lies to your back, as you take a quick
+breather, given the opportunity to at least feel that something is not
+stealing upon you from behind.  Sifting dust dries your nostrils, and a
+rotting stench floats upon the stale air.
+~
+24649 11
+D0
+~
+~
+0 -1 20630
+D1
+~
+~
+0 -1 20637
+D2
+~
+~
+0 -1 20642
+S
+#20642
+Along the West Wall~
+@@gThe west wall makes an abrupt turn to the southeast from here.  Obviously,
+you've come near to the point where the southern end of the Crypt begins to
+terminate.  Alas, you think to yourself, this wretched place DOES have an end!
+None too soon...
+~
+24649 11
+D0
+~
+~
+0 -1 20636
+D1
+~
+~
+0 -1 20643
+S
+#20643
+Out in the Open~
+@@gSomething creaks above, within the darkest reaches of the Vault over head,
+and the floor vibrates, mumbling an Ode to the Dead within these walls.
+Something strikes you as amiss, tho you cannot quite place your finger on it.
+~
+24649 11
+D0
+~
+~
+0 -1 20637
+D1
+~
+~
+0 -1 20644
+D2
+~
+~
+0 0 20647
+D3
+~
+~
+0 -1 20642
+S
+#20644
+A Pillar~
+@@gStanding beside a smooth, cold @@lpillar@@g, a chill runs down your spine,
+and hits deep in your bowels.  From hence no determination can be made, an
+unexplainable panic nearly overwhelms you.  Perhaps the close proximity of the
+cold, thick with dust air?  Or perhaps simply the presense felt within this
+Vault is a touch stronger here than elsewhere?
+~
+24649 11
+D0
+~
+~
+0 -1 20638
+D1
+~
+~
+0 -1 20645
+D2
+~
+~
+0 0 20648
+D3
+~
+~
+0 -1 20643
+E
+pillar~
+@@lLooking closely at the pillar, you notice that small holds have been dug in the stone.  Looking up, into the blackness above, you see that the holds continue upward along the pillars length...@@g~
+S
+#20647
+By the Southwest Wall~
+@@gThe southwest wall runs diagonally northwest and southeast here.  From the
+south, you detect a strong, pungent odor, and a slight breeze, carrying the
+dust up from the floor and into your face.
+~
+24649 11
+D0
+~
+~
+0 -1 20643
+D1
+~
+~
+0 -1 20648
+S
+#20651
+Dais at the Southern End~
+@@gThis dias at the southern end of the vault is a raised platform, devoid of
+feature, made of the purest black marble.  No stirrings of the dust, as
+experienced to the north, can be felt here.
+~
+24649 11
+D0
+~
+~
+0 -1 20648
+D1
+~
+~
+0 -1 20652
+D2
+~
+~
+0 0 20653
+S
+#20652
+Dais at the Southern End~
+@@gThis dais at the southern end of the vault is a raised platform, devoid of
+feature, made of the purest black marble.  No stirrings of the dust, as
+experienced to the north, can be felt here.
+~
+24649 11
+D0
+~
+~
+0 -1 20649
+D2
+~
+~
+0 -1 20654
+D3
+~
+~
+0 -1 20651
+S
+#20654
+One More Step Up~
+@@gAnothar step up, this section of the Dias is bare, save for the southeast
+corner, where some digging has been done.  The trench, as you can see it, does
+not run deep, only a foot or so.  It runs from the west, and empties into a
+rivulet, leading down in the southeast corner.
+~
+24649 11
+D0
+~
+~
+0 -1 20652
+D3
+~
+~
+0 -1 20653
+S
+#20653
+The Altar~
+@@gA vast, grey, marble @@laltar@@g lies about four feet from the back wall.
+Behind the altar, you see an archway, leading into desolute blackness.  A
+Trench has been dug here, in the marble floor, leading off to the east.
+~
+24649 11
+D0
+~
+~
+0 -1 20651
+D1
+~
+~
+0 -1 20654
+D2
+~
+~
+0 -1 20655
+E
+altar~
+@@lThe altar is covered with a thick layer of dried blood.  Obviously, it has been used for sacrifice.  A drainage brace runs around the edges of the altar, to the eastern end of the altar where a small spout encourages liquid to drop into the trench.@@g~
+S
+#20655
+Behind the Altar~
+@@gOn the north end of this small room is an archway, leading back out into
+the vast Crypt.  This cold little room seems to be designed simply as the
+resting place of the Guardian of the Crypt.
+~
+24649 11
+D0
+~
+~
+0 -1 20653
+D2
+~
+~
+385 -1 20692
+S
+#20656
+The Eastern Corridor~
+@@gNo creature has disturbed this place in quite some time.  Far ahead, to the
+east, two glistening eyes stare, disregardingly.  They change in colour, from
+crimson, to magenta, to firey red, to cold blue.  They await.
+~
+24653 11
+D1
+~
+~
+0 -1 20658
+D3
+~
+~
+0 -1 20629
+S
+#20658
+The Inner Vault~
+@@gSuddenly, the cold air of the huge Vault becomes a hot, dry, nauseating
+stench.  Utterly dark, the fear pushes in on you.  Ahead, you know, as you can
+see it's glistening orbs, awaits the death that walks.
+~
+24633 11
+D0
+~
+~
+0 -1 20657
+D1
+~
+~
+0 0 20662
+D2
+~
+~
+0 0 20659
+D3
+~
+~
+0 -1 20656
+S
+#20657
+The Inner Vault~
+@@gThis northwest corner of the Inner Vault bears you no relent from the
+suffering of your fearful soul.
+~
+24633 11
+D1
+~
+~
+0 -1 20660
+D2
+~
+~
+0 -1 20658
+S
+#20660
+The Inner Vault~
+@@gJust to the south, right at the edge of your illumination, stands the
+creature with the glowing eyes.  It regards you casually, assessing, measuring
+then returns it's gaze back from hence it came.
+~
+24633 11
+D2
+~
+~
+0 -1 20662
+D3
+~
+~
+0 -1 20657
+S
+#20662
+The Inner Vault~
+@@gEtched into the floor is a circle, bearing magical script, runes, glyphs,
+and symbols beyond comprehension and understanding.  Unbearably hot, this
+place seeks only to imbed itself permanently into the soul.
+~
+24633 11
+D0
+~
+~
+0 -1 20660
+D2
+~
+~
+0 -1 20661
+D3
+~
+~
+0 -1 20658
+D5
+~
+~
+0 -1 20663
+S
+#20661
+The Inner Vault~
+@@gJust to the north, right at the edge of your illumination, stands the
+creature with the glowing eyes.  It regards you casually, assessing, measuring
+then returns it's gaze back from hence it came.
+~
+24633 11
+D0
+~
+~
+0 -1 20662
+D3
+~
+~
+0 -1 20659
+S
+#20659
+The Inner Vault~
+@@gThis southwest corner of the Inner Vault offers no solace for the weary, no
+rest for the meager.  The heat radiates from the marble walls, unbearable in
+it's own right, oppresive when combined with the terrible darkness, and the
+choking dust.
+~
+24633 11
+D0
+~
+~
+0 -1 20658
+D1
+~
+~
+0 -1 20661
+S
+#20663
+The Ancient Vault~
+@@gDust has long since settled thickly upon the floor here, undisturbed and
+inches thick.  The air is heavily stale, unmoving.  Unbearably cold, a close
+wrapping within cloak and coat helps to fight off the chill and lonliness.
+Inlaid into the east wall are a set of @@mcarvings@@g.
+
+~
+24653 11
+D2
+~
+~
+0 -1 20665
+E
+carvings~
+@@gIn Ephesians Paul was at pains to point out that people cannot respond to
+life's decisions neutrally.  They are deeply affected by a set of evil,
+determining influences.  These influences led people on a path that is
+directed toward death - life apart from God.  In Ephesians 2:2-3, Paul
+described these influences in terms of the environment ("the age of this
+world"), an inner inclination toward evil ("the flesh") and a supernaturally
+powerful opponent ("the ruler of the kingdom of the air, the spirit").
+~
+S
+#20665
+The Ancient Vault~
+@@gThick dust, disturbed by tromping boots, floats up from the floor,
+previously undisturbed.  A long dead @@mskeleton@@g rests here, jaw propped
+open in a silent scream.  More of the portentious @@mcarvings@@g lie
+etched into the wall.
+~
+24649 11
+D0
+~
+~
+0 -1 20663
+D1
+~
+~
+0 0 20666
+D2
+~
+~
+0 0 20668
+D3
+~
+~
+0 -1 20664
+E
+carvings~
+@@gThe Old Testament also ascribes names to some evil spirits.  Lilith is a
+demon who will inhabit Edom after it experiences God's desolating judgement
+(IS 34:14).  Although this is the only time Lilith is mentioned in the Old
+Testament, she was a well-known evil spirit in Mesopotamia.  She also figured
+prominantly in later noncanonical Jewish texts, as, for example, in a Jewish
+targum, which records the following prayer: "May the Lord bless you in all your
+deeds and protect you from the demons of the night and from anything that
+frightens and from demons evening and morning, from evil spirits and phantoms
+"
+~
+E
+skeleton~
+@@gSitting up against the wall here, this poor fellow died in either pure
+agony, or pure horror.  The jaw is open in silent scream.  Death visited long
+ago, as evidenced by the thick layer of dust long since settled on the
+fellow's old bones.@@g
+~
+S
+#20674
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trampled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20663
+D1
+~
+~
+0 -1 20678
+D2
+~
+~
+0 -1 20680
+D3
+~
+~
+0 -1 20675
+S
+#20678
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trapled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20679
+D1
+~
+~
+0 -1 20674
+D2
+~
+~
+0 -1 20676
+D3
+~
+~
+0 -1 20675
+S
+#20675
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trampled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20674
+D1
+~
+~
+0 -1 20679
+D2
+~
+~
+0 -1 20681
+D3
+~
+~
+0 -1 20678
+S
+#20680
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trapled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20681
+D1
+~
+~
+0 -1 20674
+S
+#20679
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trapled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20681
+D1
+~
+~
+0 -1 20677
+D2
+~
+~
+0 -1 20678
+D3
+~
+~
+0 -1 20675
+S
+#20676
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trampled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20677
+D1
+~
+~
+0 -1 20682
+D2
+~
+~
+0 -1 20677
+D3
+~
+~
+0 -1 20678
+S
+#20681
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trapled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20679
+D1
+~
+~
+0 -1 20680
+D2
+~
+~
+0 -1 20682
+D3
+~
+~
+0 -1 20675
+S
+#20682
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trapled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20677
+D1
+~
+~
+0 -1 20676
+D2
+~
+~
+0 -1 20681
+D3
+~
+~
+0 -1 20683
+S
+#20677
+In a Confining Blackness~
+@@gThis small marble room is enshrouded in darkness.  Archways lead in all
+directions, north, south, east and west.  The dust here is heavily trampled
+with aimless meanderings.
+~
+24649 11
+D0
+~
+~
+0 -1 20679
+D1
+~
+~
+0 -1 20682
+D2
+~
+~
+0 -1 20676
+D3
+~
+~
+0 -1 20676
+S
+#20683
+Atop the Descending Stairs~
+@@gThis small room is distinguished by the large, wide staircase going down to
+the east.  Of pure, midnight marble, the walls glisten with your illumination.
+The stairs, also, are of the same purest midnight marble.  Fear, cold,
+desolation, and a rank stench waft up the stairs.
+
+~
+16461 11
+D1
+~
+~
+0 -1 20684
+S
+#20684
+The Final Crypt~
+@@gPillars line the east and west walls, descending southward into darker and
+darker space.  Pure evil permeates the air here.  All are made of the purest
+white marble, with streaks of black marble veigned through the beautiful stone
+Perfectly clean, the floors, walls, and pillars glisten from your illumination.
+
+
+~
+24653 11
+D2
+~
+~
+0 -1 20685
+D3
+~
+~
+0 -1 20683
+S
+#20685
+The Final Crypt, Vecna's Lair~
+@@gLarge pillars continue to line the east and west walls, defining a throughway north and south.  The entire Crypt is of the purest white marble, couring viens of darkened blood, dark streaks through the beautiful stone.~
+24649 11
+D0
+~
+~
+0 -1 20684
+D2
+~
+~
+0 -1 20687
+S
+#20690
+@@gThe Unused Storage Chamber@@N~
+@@dThis very small chamber appears to have been unused for millenia.  While once originally a store room, there seems to be nothing lying around, other than a few clumps of shadows, and some broken weapons.@@N
+~
+24 11
+D1
+~
+~
+257 -1 20630
+S
+#20691
+@@mA small chamber@@N~
+@@lThis very small room is dominated by a set of large @@dObsidian gates@@l, embossed by Hieroglyphics of @@eTwo Horned Man-Beasts@@l in many scenes.@@N
+~
+0 11
+D4
+~
+~
+257 -1 20687
+S
+#20692
+Hidden Chamber~
+Mounds of sacred earth, piled behind the alter. Magic and sacred, the life of
+the creatures of the crypt.
+~
+221260 11
+D0
+~
+~
+385 -1 20655
+S
+#0
+#MOBILES
+#20625
+Sex Slave~
+@@mA @@aS@@me@@ax @@mS@@al@@ma@@av@@me@@a!@@g~
+~
+~
+1 0 0 S
+3 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#20624
+Vecna The Lich~
+@@lVecna The Lich@@g~
+@@lVecna The Lich purveys the area, resplendant in all his grand glory.@@g
+~
+~
+16990265 1075944 0 S
+117 1
+-1950 800 800
+! 0 0 14 7 32760 33554624 80
+| 0 0 0 0 0 0 0
+#20622
+King Saul The Lich~
+@@lKing Saul The Lich@@g~
+@@lKing Saul The Lich stands sentinel here, detestable unto the Lord.@@g
+~
+~
+147515 1059512 0 S
+105 1
+-1200 666 700
+! 8 0 14 7 32526 96 48
+| 0 0 0 0 0 0 0
+#20621
+Hoshea The Lich~
+@@lHoshea The Lich@@g~
+@@lHoshea The Lich stands here, detestable unto the Lord.@@g
+~
+~
+147577 25274 0 S
+105 1
+-999 666 666
+! 0 0 14 7 30990 96 144
+| 0 0 0 0 0 0 0
+#20620
+Manasseh The Lich~
+@@lManasseh The Lich@@g~
+@@lManasseh The Lich stands here, detestable unto the Lord.@@g
+~
+~
+147577 1059578 0 S
+107 1
+-999 666 666
+! 0 0 14 7 14 96 144
+| 0 0 0 0 0 0 0
+#20619
+Rehoboam the Lich~
+@@lRehoboam The Lich@@g~
+@@lRehoboam The Lich stands here, detestable unto the Lord.@@g
+~
+~
+147577 1073340 0 S
+101 1
+-990 466 560
+! 0 0 14 7 32526 96 48
+| 0 0 0 0 0 0 0
+#20615
+A Presence~
+@@lA Presence@@g~
+@@lA Presence is felt stirring the balance.@@g
+~
+~
+147561 624298 0 S
+86 1
+-666 190 190
+! 0 0 14 7 14 2112 16
+| 0 0 0 0 0 0 0
+#20614
+Fiend~
+@@lA Fiend@@g~
+@@lA Fiend rests casually, waiting for you to bring your life-force to it.@@g
+~
+~
+147561 117432 0 S
+102 1
+-1100 399 450
+! 3 0 14 7 16478 0 0
+| 0 0 0 0 0 0 0
+#20613
+Shadowen~
+@@lA Shadowen@@g~
+@@lA Shadowen floats here, fire brimming between it's fingertips.@@g
+~
+~
+147561 1574586 0 S
+91 1
+-650 175 175
+! 0 0 14 7 14 2144 16
+| 0 0 0 0 0 0 0
+#20612
+Walking Corpse~
+@@lA Walking Corpse@@g~
+@@lA Walking Corpse sniffs the air for living tissue.@@g
+~
+~
+147561 3768 0 S
+102 1
+-901 366 399
+! 3 0 14 7 14838 0 0
+| 0 0 0 0 0 0 0
+#20611
+Skeletal Legion~
+@@lA Skeletal Legion@@g~
+@@lA Skeletal Legion stares coldly into the blackness.@@g
+~
+~
+409705 16440 0 S
+88 1
+-810 180 180
+! 0 0 14 7 6526 0 8
+| 0 0 0 0 0 0 0
+#20608
+Wight~
+@@lA Wight@@g~
+@@lA Wight glances about, looking for something to tear the arms from.@@g
+~
+~
+278625 17080 0 S
+93 1
+-700 200 400
+! 3 0 14 7 11638 0 0
+| 0 0 0 0 0 0 0
+#20605
+Spectre~
+@@lA Spectre@@g~
+@@lA Spectre stands here, lantern in hand, guarding an open grave.@@g
+~
+~
+16419 698 0 S
+78 1
+-600 300 250
+! 0 0 14 7 19470 96 16
+| 0 0 0 0 0 0 0
+#20604
+Ghast~
+@@lA Ghast@@g~
+@@lA Ghast lurks here, waiting for his next prey@@g.
+~
+~
+278625 17024 0 S
+87 1
+-270 119 119
+! 3 0 14 7 10742 0 0
+| 0 0 0 0 0 0 0
+#20603
+zombie~
+@@lA Zombie@@g~
+@@lA Zombie stands here, looking about for something bloody to munch on.@@g
+~
+~
+278625 640 0 S
+99 1
+-600 270 332
+! 3 0 14 7 17526 0 0
+| 0 0 0 0 0 0 0
+#20602
+Ghoul~
+@@lA Ghoul@@g~
+@@lA Ghoul walks here on lurching legs.@@g
+~
+~
+278625 656 0 S
+66 1
+-330 112 112
+! 3 0 14 7 15366 0 0
+| 0 0 0 0 0 0 0
+#20600
+sentinel~
+@@lSentinel@@N~
+@@lThe Sentinel stands here resolutely@@N
+~
+~
+1065003 760 0 S
+111 1
+-700 280 300
+! 6 0 14 7 24078 2112 144
+| 0 0 0 0 0 0 0
+#20601
+Wraith~
+A @@lWraith@@g~
+@@lA Wraith floats here, hissing his blackness at you.@@g
+~
+~
+81985 1671864 0 S
+83 1
+-500 220 245
+! 3 0 14 7 7174 0 0
+| 0 0 0 0 0 0 0
+#20606
+Banshee~
+@@lA Banshee@@g~
+@@lA Banshee floats in the blackness, wailing hideously@@g.
+~
+~
+213097 673454 0 S
+99 2
+-850 380 400
+! 0 0 14 7 22926 34944 16
+| 0 0 0 0 0 0 0
+#20607
+Ghost~
+@@lA Ghost@@g~
+@@lA ghost floats here, contemplating what evil he can do.@@g
+~
+~
+213097 1574570 0 S
+87 1
+-200 131 131
+! 8 0 14 7 23694 1052672 8
+| 0 0 0 0 0 0 0
+#20609
+Groaning Spirit~
+@@lA Groaning Spirit@@g~
+@@lA Groaning Spirit wails with pure hatred of the living.@@g
+~
+~
+213097 1680122 0 S
+96 1
+-770 390 666
+! 0 0 14 7 30734 4489220 16
+| 0 0 0 0 0 0 0
+#20610
+Nosferatu~
+@@lA Nosferatu@@g~
+@@lA Nosferatu callously assesses the situation. @@N
+~
+~
+8405089 1673898 0 S
+103 1
+-880 366 410
+! 3 0 14 7 22878 3145792 16
+| 0 0 0 0 0 0 0
+#20616
+Guardian of the Crypt~
+@@lThe Guardian of the Crypt@@g~
+@@lThe Guardian of the Crypt stands here resolutly.@@g
+~
+~
+147515 1173246 0 S
+115 1
+-1000 666 666
+! 7 0 14 7 31230 8388704 80
+| 0 0 0 0 0 0 0
+#20617
+A God Among the Dead~
+@@lA God Among the Dead@@g~
+@@lA God Among the Dead simply stands here, waiting.@@g
+~
+~
+131115 1091320 -1000 S
+105 1
+-1100 500 560
+! 8 0 14 7 31790 192 16
+| 0 0 0 0 0 0 0
+#20618
+Floating Death~
+@@lFloating Death@@g~
+@@lFloating Death hangs in the air here, gaunt, glaring at you with death's
+head aglow.@@g
+~
+~
+213113 1575612 0 S
+106 1
+-1150 666 666
+! 0 0 14 7 23310 64 16
+| 0 0 0 0 0 0 0
+#20623
+Whispering Spirit~
+@@lA Whispering Spirit@@g~
+@@lA Whispering Spirit floats here.@@g
+~
+~
+147561 590506 0 S
+95 1
+-880 600 500
+! 3 0 14 7 32126 0 0
+| 0 0 0 0 0 0 0
+#20626
+silent one~
+@@dThe shadowy guardian@@N~
+A large silent form stands here, watching your actions closely.
+~
+~
+20201539 109290 0 S
+106 1
+-1100 666 780
+! 0 0 14 7 399374 0 16
+| 0 0 0 0 0 0 0
+#20627
+keeper earth~
+@@NThe @@dKeeper @@Nof @@GEarth@@N~
+@@bThe keeper of divine elements guards his post.@@N 
+~
+~
+99 16616 0 S
+120 1
+-2000 900 700
+! 0 0 0 7 393230 0 80
+| 0 0 0 0 0 0 0
+#0
+#OBJECTS
+#20620
+Speech Ribbon~
+@@lA Ribbon Proclaiming Free Speech@@g~
+@@lA Ribbon Proclaiming Free Speech lies here.@@g
+~
+9 0 8389632 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+13 50
+A
+19 7
+A
+18 7
+A
+17 -30
+L
+10
+#20619
+skull vecna~
+@@mThe Skull of Vecna@@g~
+@@mThe Skull of Vecna lies here, glowing in dark, evil light.@@G
+~
+1 262144 8421376 3611
+0 0 -1 0 0 0 0 0 0 0
+1
+A
+17 -150
+A
+13 166
+A
+12 166
+A
+19 15
+A
+18 20
+L
+80
+#20618
+coat vecna~
+@@mThe Invulnerable Coat of Vecna@@g~
+@@mThe Invulnerable Coat of Vecna lies here, waiting for one worthy enough to wear it.@@g
+~
+9 262150 8650752 1775
+0 0 0 0 0 0 0 0 0 0
+15
+A
+17 -175
+A
+20 -10
+A
+24 -30
+A
+13 150
+A
+12 175
+A
+19 20
+A
+18 20
+L
+80
+#20617
+Darksword Lich~
+the @@WDarksword @@mof the @@WLich@@g~
+The Darksword of the Lich lies here.~
+5 262150 8421376 5523
+0 0 0 11 0 0 0 0 0 0
+22
+A
+17 -166
+A
+9 15
+A
+13 -100
+A
+12 -200
+A
+19 27
+A
+18 27
+L
+72
+#20613
+leggings presence~
+@@mLeggings of Presence@@g~
+@@mA set of leggings, intangible by the mere senses is here.@@g
+~
+9 20 9437184 3
+0 0 0 0 0 0 0 0 0 0
+15
+A
+12 70
+A
+24 -15
+A
+18 8
+A
+19 11
+A
+17 -120
+L
+80
+#20612
+Fiend Boots~
+@@mBoots of the Fiend@@g~
+@@mThese fiendish boots walk around, waiting for someone to step in them.@@g
+~
+9 262676 10485760 97
+0 0 0 0 0 0 0 0 0 0
+10
+A
+19 23
+A
+18 18
+A
+13 130
+L
+65
+#20611
+Shadowen's Coat~
+@@mShadowen's Coat@@g~
+@@mA Coat of the finest, black chainmail lies here, feathery in weight.@@g
+~
+9 516 8650752 16513
+0 0 0 0 0 0 0 0 0 0
+10
+A
+19 13
+A
+18 13
+A
+13 75
+A
+12 75
+A
+17 -150
+L
+80
+#20610
+ring black marble~
+@@mA Ring of Black Marble@@g~
+@@mA Ring of Black Marble lies here, vibrating softly.@@g
+~
+9 262164 8396800 3
+0 0 0 0 0 0 0 0 0 0
+1
+A
+13 133
+A
+19 20
+A
+18 22
+L
+50
+#20607
+Wight Claws~
+@@mClaws of the Wight@@g~
+@@mA pair of Wight Claws lies in the dirt here.@@g
+~
+9 262160 8392704 257
+0 0 0 0 0 0 0 0 0 0
+15
+A
+20 -10
+A
+17 -35
+A
+19 19
+A
+18 17
+L
+25
+#20604
+Spectre Lantern~
+@@lA Spectre's Lantern@@g~
+@@lA Lantern sits on the floor here, glowing with an evil light.@@g
+~
+1 262161 8421376 133
+0 0 -1 0 0 0 0 0 0 0
+10
+A
+19 14
+A
+18 16
+A
+12 95
+L
+10
+#20603
+Ghast Trousers~
+@@lGhast's Trousers@@g~
+@@A pair of Ghast's Trousers lie here in a pile.@@g
+~
+9 16 9437184 1
+0 0 0 0 0 0 0 0 0 0
+10
+A
+20 -10
+A
+19 13
+A
+18 8
+A
+13 100
+A
+2 4
+L
+80
+#20602
+Zombie Earring~
+@@lA Zombie's Earring@@g~
+@@lA Zombie's Earring lies here in the dust.@@g
+~
+9 262160 8388672 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+19 10
+A
+18 17
+A
+1 2
+A
+17 -25
+L
+5
+#20601
+Bone Bracer~
+@@mBone Bracer@@g~
+@@mA bracer, made of bone, lies here@@g.~
+9 16 8390656 1
+0 0 0 0 0 0 0 0 0 0
+5
+A
+22 -10
+A
+19 13
+A
+18 5
+A
+1 3
+L
+80
+#20600
+cloak wraith~
+@@mCloak of the Wraith@@g~
+@@mThe Cloak of the Wraith lies here, unused.@@g~
+9 16 8388736 1
+0 0 0 0 0 0 0 0 0 0
+10
+A
+19 11
+A
+18 11
+A
+17 -50
+A
+5 2
+L
+80
+#20605
+Banshee Veil~
+@@mA Veil of the Banshee@@g~
+@@mA Veil of the Banshee seemingly floats on the air here.@@g
+~
+9 262160 8388624 3083
+0 0 0 0 0 0 0 0 0 0
+2
+A
+17 -180
+A
+24 -15
+A
+19 17
+A
+18 15
+L
+30
+#20606
+Ghost Aura~
+@@lAura of the Ghost@@g~
+@@lAn evilly luminescent Aura floats above the ground here.@@g
+~
+9 84 8454144 145
+0 0 0 0 0 0 0 0 0 0
+1
+A
+12 83
+A
+17 -75
+A
+21 -15
+A
+23 -15
+A
+24 -15
+L
+80
+#20608
+Spirit Sash~
+@@mA Spirit Sash@@g~
+@@mA Spirit Sash lies here, belonging in the posession of the dead.@@g
+~
+9 262704 8519680 4097
+0 0 0 0 0 0 0 0 0 0
+5
+A
+12 150
+A
+18 22
+A
+19 24
+L
+60
+#20609
+shield skeletal legion~
+@@mA Shield of the Skeletal Legion@@g~
+@@mA Shield of the Skeletal Legion bears the Death Head symbol of the Ancient Ones.@@g
+~
+9 532 8421376 147
+0 0 0 0 0 0 0 0 0 0
+22
+A
+5 4
+A
+18 11
+A
+19 13
+A
+23 -10
+A
+24 -10
+A
+21 -10
+A
+17 -75
+L
+80
+#20614
+armplate guardian~
+@@mArmplate of the Guardian@@g~
+@@mA massive armplate, bearing the symbol of the Ancient Ones, lies here.@@g
+~
+9 532 8389632 273
+0 0 0 0 0 0 0 0 0 0
+16
+A
+18 15
+A
+19 15
+A
+9 15
+A
+13 100
+A
+17 -90
+L
+80
+#20615
+crown lich~
+@@gThe @@mCrown @@gof the @@mLich@@g~
+@@gThe @@mCrown @@gof the @@mLich @@g floats in midair, radiating pure evil.@@g
+~
+9 264724 8388616 401
+0 0 0 0 0 0 0 0 0 0
+1
+A
+18 27
+A
+19 26
+A
+12 166
+A
+13 166
+A
+24 -20
+L
+70
+#20616
+Ebony Death~
+@@mEbony Death@@g~
+@@mAn ebony dagger lies here, ready to visit a black death upon the unwilling.@@g
+~
+5 532 8421376 257
+0 0 0 11 0 0 0 0 0 0
+22
+A
+12 100
+A
+18 15
+A
+19 15
+A
+17 -75
+L
+80
+#20621
+stake jeweled~
+@@eA @@yJ@@ee@@yw@@ee@@yl @@eE@@yn@@ec@@yr@@eu@@ys@@et@@ye@@ed @@yS@@et@@ya@@ek@@ye@@g~
+@@eA @@yJ@@ee@@yw@@ee@@yl @@eE@@yn@@ec@@yr@@eu@@ys@@et@@ye@@ed @@yS@@et@@ya@@ek@@ye lies here, looking for a vampire!@@g
+~
+13 3072 8421376 2049
+0 0 0 0 0 0 0 0 0 0
+1
+L
+60
+#20626
+vial~
+@@GA small vial of Cyberlich's phlegm@@g~
+@@GA small vial of Cyberlich's phlegm lies here.@@g
+~
+9 16 8388736 1
+0 0 0 0 0 0 0 0 0 0
+1
+A
+24 -15
+A
+23 -15
+A
+22 -15
+A
+21 -15
+A
+20 -15
+A
+17 -50
+A
+18 10
+A
+19 10
+L
+1
+#20627
+hilt~
+a broken hilt of an ancient sword~
+An ancient sword hilt lies here, with a socket for a huge gem centered
+majestically just beneath the guard.
+~
+29 0 8388608 1
+0 20628 20629 0 0 0 0 0 0 0
+1
+L
+60
+#20628
+blade~
+a rune covered sword blade~
+The shiny blade to a broken sword lies here, missing a hilt.
+~
+29 0 8388608 1
+20627 0 20629 0 0 0 0 0 0 0
+1
+L
+60
+#20629
+sword~
+an incomplete sword~
+A mostly complete sword lies here, hilt and all, only missing a gem to
+complete it's power!
+~
+29 0 8388608 1
+0 20630 20631 0 0 0 0 0 0 0
+1
+L
+75
+#20630
+emerald gem~
+a glittering emerald~
+An evilly glowing emerald lies here, seemingly enchanted with great power.
+~
+29 64 8388608 1
+20629 0 20631 0 0 0 0 0 0 0
+1
+L
+80
+#20631
+ancient~
+@@GThe Sword of the Ancients@@N~
+@@NAn incredibly evil runed sword lies here, the @@remerald@@N in it's hilt
+glowing brilliantly.
+~
+5 262672 8421376 257
+0 0 0 3 0 0 0 0 0 0
+35
+A
+18 31
+A
+19 31
+A
+17 -220
+A
+13 220
+L
+80
+#20622
+gate~
+@@WAn @@dObsidian @@RGate@@N~
+@@WAn intricately embossed @@dObsidian @@RGate @@Wstands before you, begging for more attention.@@N~
+14 65536 0 1
+9 0 4950 0 0 0 0 0 0 0
+1
+L
+10
+#0
+#RESETS
+M 0 20600 1 20602   (null)
+
+M 0 20601 1 20610   (null)
+
+E 0 20600 0 3   (null)
+
+M 0 20602 1 20608   (null)
+
+E 0 20601 0 14   (null)
+
+M 0 20603 1 20614   (null)
+
+E 0 20602 0 19   (null)
+
+M 0 20604 1 20616   (null)
+
+E 0 20603 0 7   (null)
+
+M 0 20605 1 20720   (null)
+
+E 0 20604 0 17   (null)
+
+M 0 20606 1 20722   (null)
+
+E 0 20605 0 18   (null)
+
+M 0 20607 1 20626   (null)
+
+E 0 20606 0 12   (null)
+
+M 0 20608 1 20632   (null)
+
+E 0 20607 0 9   (null)
+
+M 0 20601 2 20609   (null)
+
+M 0 20602 2 20615   (null)
+
+M 0 20603 2 20721   (null)
+
+M 0 20604 2 20627   (null)
+
+M 0 20606 2 20633   (null)
+
+M 0 20609 1 20634   (null)
+
+E 0 20608 0 13   (null)
+
+M 0 20609 2 20629   (null)
+
+M 0 20610 1 20640   (null)
+
+M 0 20610 2 20639   (null)
+
+M 0 20611 1 20638   (null)
+
+E 0 20609 0 11   (null)
+
+M 0 20611 2 20637   (null)
+
+E 0 20609 0 11   (null)
+
+M 0 20612 1 20644   (null)
+
+E 0 20610 0 1   (null)
+
+M 0 20612 2 20645   (null)
+
+M 0 20613 1 20646   (null)
+
+E 0 20611 0 5   (null)
+
+M 0 20614 1 20650   (null)
+
+E 0 20612 0 8   (null)
+
+M 0 20614 2 20649   (null)
+
+M 0 20615 1 20648   (null)
+
+E 0 20613 0 7   (null)
+
+M 0 20616 1 20655   (null)
+
+E 0 20614 0 10   (null)
+
+G 0 20628 0   (null)
+
+M 0 20617 1 20662   (null)
+
+E 0 20615 0 6   (null)
+
+M 0 20601 3 20607   (null)
+
+M 0 20602 3 20613   (null)
+
+M 0 20603 3 20719   (null)
+
+M 0 20604 3 20625   (null)
+
+M 0 20606 3 20631   (null)
+
+M 0 20607 3 20643   (null)
+
+M 0 20608 3 20647   (null)
+
+M 0 20609 3 20642   (null)
+
+M 0 20610 3 20636   (null)
+
+M 0 20601 4 20611   (null)
+
+M 0 20602 4 20617   (null)
+
+M 0 20603 4 20723   (null)
+
+M 0 20604 4 20629   (null)
+
+M 0 20606 4 20635   (null)
+
+M 0 20608 4 20641   (null)
+
+M 0 20618 1 20665   (null)
+
+E 0 20616 0 16   (null)
+
+M 0 20619 1 20671   (null)
+
+M 0 20620 1 20672   (null)
+
+M 0 20621 1 20670   (null)
+
+M 0 20622 1 20673   (null)
+
+M 0 20623 1 20674   (null)
+
+M 0 20623 2 20675   (null)
+
+M 0 20623 3 20676   (null)
+
+M 0 20623 4 20677   (null)
+
+M 0 20623 5 20678   (null)
+
+M 0 20623 6 20679   (null)
+
+M 0 20623 7 20680   (null)
+
+M 0 20623 8 20681   (null)
+
+M 0 20623 9 20682   (null)
+
+M 0 20624 1 20687   (null)
+
+G 0 20630 0   (null)
+
+E 0 20619 0 17   (null)
+
+E 0 20618 0 5   (null)
+
+E 0 20617 0 16   (null)
+
+D 0 20630 3 1   (null)
+
+M 0 20626 1 20690   (null)
+
+G 0 20627 0   (null)
+
+D 0 20691 4 1   (null)
+
+O 0 20622 0 20691   (null)
+
+D 0 20687 5 1   (null)
+
+D 0 20655 2 1   (null)
+
+D 0 20692 0 1   (null)
+
+M 0 20627 1 20692  (null)
+
+S
+#SPECIALS
+M 20624 spec_breath_acid
+S
+#OBJFUNS
+O 20631 objfun_healing
+S
+#$

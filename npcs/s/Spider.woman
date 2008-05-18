@@ -1,0 +1,39 @@
+#MOB
+Revision     7
+Name         spider woman~
+ShortDescr   the spider woman~
+LongDescr    A beautiful spider woman smiles warmly at you.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        14
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       916
+Note         0
+Room         3301
+HpManaMove   1 348 142 210 100 100
+Gold         0
+Balance      0
+Exp          501
+Act          4194307
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         3508
+End
+
+#END

@@ -1,0 +1,41 @@
+#MOB
+Revision     7
+Name         sparrow~
+ShortDescr   a sparrow~
+LongDescr    A sparrow grubs down on a worm here.
+~
+Description  He looks wimpy.  You feel comfortable that you can kill him, especially since
+he is leashed up, and you are not.
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        3
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       19999
+Note         0
+Room         3048
+HpManaMove   49 49 45 45 100 100
+Gold         6
+Balance      0
+Exp          110
+Act          4194435
+AffectedBy   0
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         3703
+End
+
+#END

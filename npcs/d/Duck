@@ -1,0 +1,40 @@
+#MOB
+Revision     7
+Name         duck~
+ShortDescr   the duck~
+LongDescr    A duck is here, quacking happily.
+~
+Description  The duck is quite fat.  It looks like it is enjoying life.
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        5
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       24727
+Note         0
+Room         3016
+HpManaMove   95 95 34 75 100 100
+Gold         23
+Balance      0
+Exp          459
+Act          4194305
+AffectedBy   0
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        88
+Wimpy        0
+Deaf         0
+Vnum         3124
+End
+
+#END

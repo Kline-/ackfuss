@@ -1,0 +1,42 @@
+#MOB
+Revision     7
+Name         eel~
+ShortDescr   A giant eel~
+LongDescr    A Giant eel swims about, looking for prey. 
+~
+Description  The eel is hard to make out, but seems to have been changed in some strange way.
+It appears to be composed of pieces of smaller, less powerful eels.
+The gleam in it's eyes tells you that it is looking forward to lunch!!!!
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        71
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       22482
+Note         0
+Room         3301
+HpManaMove   1 5198 893 1065 100 100
+Gold         161
+Balance      0
+Exp          375093
+Act          4194341
+AffectedBy   0
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -500
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         401
+End
+
+#END

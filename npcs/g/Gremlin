@@ -1,0 +1,39 @@
+#MOB
+Revision     7
+Name         gremlin~
+ShortDescr   a gremlin~
+LongDescr    A small mischevious creature tries to escape your attention.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        9
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       4884
+Note         0
+Room         3301
+HpManaMove   1 182 135 135 100 100
+Gold         2214
+Balance      0
+Exp          1
+Act          4194405
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    -1000
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         3563
+End
+
+#END

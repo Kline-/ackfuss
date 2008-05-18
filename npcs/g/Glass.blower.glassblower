@@ -1,0 +1,188 @@
+#MOB
+Revision     7
+Name         glass blower glassblower~
+ShortDescr   the glassblower~
+LongDescr    A glassblower stands here, looking for glass to blow.
+~
+Description  He looks pretty strange.  Don't ask.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        21
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       14485
+Note         0
+Room         6136
+HpManaMove   572 572 254 315 100 100
+Gold         388
+Balance      0
+Exp          5098
+Act          4194311
+AffectedBy   8192
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    600
+Hitroll      0
+Damroll      0
+Armor        38
+Wimpy        0
+Deaf         0
+Vnum         126
+End
+
+#OBJECT
+Nest         0
+Name         glass bottle~
+ShortDescr   a small glass bottle~
+Description  A small glass bottle has been left here.~
+Vnum         141
+ExtraFlags   8192
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     17
+Weight       5
+Level        0
+Timer        0
+Cost         11
+Values       100 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sword small~
+ShortDescr   a small sword~
+Description  A small sword lies here.~
+Vnum         3021
+ExtraFlags   0
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       3
+Level        7
+Timer        0
+Cost         560
+Values       0 3 5 11
+End
+
+#OBJECT
+Nest         0
+Name         leather panties~
+ShortDescr   pair of leather panties~
+Description  These seeminly leather panties are missing the crotch !~
+Vnum         6113
+ExtraFlags   0
+WearFlags    2049
+WearLoc      -1
+ClassFlags   1
+ItemType     19
+Weight       1
+Level        5
+Timer        0
+Cost         180
+Values       50 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         elf whip small~
+ShortDescr   a small leather whip~
+Description  This little whip hardly looks like it would hurt that much *ponder*.
+~
+Vnum         6112
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       1
+Level        3
+Timer        0
+Cost         40
+Values       0 5 4 4
+End
+
+#OBJECT
+Nest         0
+Name         brassiere bra leather~
+ShortDescr   a leather brassiere~
+Description  A supple leather brassiere, you wonder about the metal spikes.
+~
+Vnum         6111
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        5
+Timer        0
+Cost         264
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leather panties~
+ShortDescr   pair of leather panties~
+Description  These seeminly leather panties are missing the crotch !~
+Vnum         6113
+ExtraFlags   0
+WearFlags    2049
+WearLoc      -1
+ClassFlags   1
+ItemType     19
+Weight       1
+Level        4
+Timer        0
+Cost         160
+Values       50 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         elf whip small~
+ShortDescr   a small leather whip~
+Description  This little whip hardly looks like it would hurt that much *ponder*.
+~
+Vnum         6112
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       1
+Level        4
+Timer        0
+Cost         132
+Values       0 5 5 4
+End
+
+#OBJECT
+Nest         0
+Name         brassiere bra leather~
+ShortDescr   a leather brassiere~
+Description  A supple leather brassiere, you wonder about the metal spikes.
+~
+Vnum         6111
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        3
+Timer        0
+Cost         132
+Values       5 0 0 0
+End
+
+#END

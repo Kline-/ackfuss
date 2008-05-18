@@ -1,0 +1,212 @@
+#AREA
+@@WThe Arena@@N~
+Q 16
+K arena~
+L @@W{@@r 1 10@@W}@@N~
+N 52
+I 1 10
+V 300 309
+X 0
+F 15
+U You hear the screams of the Dead within your head.~
+O hero~
+R hero~
+W hero~
+B Currently building area.
+M No bad room spells allowed.
+#ROOMS
+#307
+In a cell~
+No description~
+0 11
+D3
+~
+~
+0 -1 302
+S
+#306
+Kitchen~
+No description~
+0 11
+D2
+~
+~
+0 -1 305
+S
+#305
+Mess Hall~
+No description~
+0 11
+D0
+~
+~
+0 -1 306
+D3
+~
+~
+0 -1 304
+S
+#304
+Combat Ground~
+No description~
+0 11
+D1
+~
+~
+0 -1 305
+D3
+~
+~
+0 -1 303
+S
+#303
+Training Camp~
+No description~
+0 11
+D0
+~
+~
+0 -1 301
+D1
+~
+~
+0 -1 304
+S
+#302
+Cells~
+No description~
+0 11
+D1
+~
+~
+0 -1 307
+D2
+~
+~
+0 -1 301
+S
+#300
+The Preparation Room~
+You are standing in a small square room.  The walls are lined with benches and
+the benches are lined with gladiators waiting for their turn to fight to the
+death in the arena to the west.
+~
+0 11
+D1
+~
+~
+0 0 301
+D3
+~
+~
+0 0 3726
+E
+benches~
+The benches are strongly constructed from oak.~
+E
+~
+~
+S
+#301
+Training Camp~
+No description~
+0 11
+D0
+~
+~
+0 -1 302
+D2
+~
+~
+0 -1 303
+D3
+~
+~
+0 0 300
+S
+#0
+#MOBILES
+#300
+gladiator~
+gladiator~
+A large, well trained gladiator is preparing here.
+~
+This guy really is a huge killing machine perhaps you should walk away.
+
+~
+19 0 0 S
+6 1
+100 -10 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#301
+rat~
+rat~
+A large rat is scurring about here.~
+~
+1 0 -10 S
+6 0
+100 -100 -100
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#302
+borg~
+Borg~
+Borg.
+~
+The big borgy bastard.
+~
+23 0 1000 S
+11 0
+-50 25 20
+! 0 0 0 7 20612 0 0
+| 0 0 0 0 0 0 0
+#0
+#OBJECTS
+#301
+shield~
+shield~
+A large flaming shield~
+9 0 8421376 1
+0 0 0 0 0 0 0 0 0 0
+10
+A
+17 -7
+L
+1
+#300
+breast plate~
+breastplate~
+A breast plate~
+9 0 8650752 1
+500 10 10 10 0 0 0 0 0 0
+1
+A
+19 2
+A
+18 2
+E
+~
+~
+E
+~
+~
+E
+~
+~
+L
+1
+#0
+#RESETS
+M 0 301 2 301 (null)
+
+M 0 300 10 300 (null)
+
+G 0 300 0 (null)
+
+O 0 301 0 307 (null)
+
+M 0 302 30 301 (null)
+
+S
+#$

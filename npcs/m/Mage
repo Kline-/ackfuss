@@ -1,0 +1,40 @@
+#MOB
+Revision     7
+Name         mage~
+ShortDescr   A quiet mage~
+LongDescr    A mage wanders by, muttering to itself.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        20
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       8798
+Note         0
+Room         3142
+HpManaMove   568 568 168 300 100 100
+Gold         93
+Balance      0
+Exp          873
+Act          4194305
+AffectedBy   128
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         7546
+Affect  84   5   0   0        128
+End
+
+#END

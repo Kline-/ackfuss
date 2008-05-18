@@ -1,0 +1,4402 @@
+#AREA
+@@dC@@mr@@pi@@Wm@@gs@@po@@mn @@gCastle@@N~
+Q 16
+K crimson_castle~
+L @@N{@@dA@@mD@@pE@@WP@@gT@@N}~
+N 146
+I 1 1
+V 11300 11449
+X 0
+F 5
+U @@dThe time has arrived..let us wade in the glory of the @@mm@@pi@@Ws@@gt@@d...@@N~
+O fripp~
+R Aenima fripp~
+W Aenima fripp~
+#ROOMS
+#11300
+@@dThe @@mHidden @@dPassage@@N~
+@@dThe halls open further to reveal a long, narrow passage that extends about
+fifteen feet into a eerie silence and a complete darkness.  You hold up your
+@@ylight@@d and see a large spiral staircase leading up into a newly revealed
+section of the tower that you never noticed in past visits to this area.  The
+steps seem to be composed of a smooth cut @@Rruby@@d that are anchored by
+metal posts.  You proceed up the staircase and look up into a large vertical
+tunnel that must extend high into the cavern.  As you squint you notice some
+flickering @@mmagenta@@d lights from high up into the tunnel.@@N
+~
+139276 11
+D2
+~
+~
+0 -1 8488
+D4
+~
+~
+0 -1 11301
+S
+#11301
+@@dT@@mo@@pw@@We@@gr @@dS@@mt@@pa@@Wi@@gr@@Wc@@pa@@ms@@de@@N~
+@@dYou continue up the dark stairwell as with each step the @@Rruby@@d on the
+stairs seems to sparkle brighter in the small amount of light that seeps into
+the tunnel.  The @@ylights@@d from above seem to flicker on and off more
+frequently as with greater intensity.  Holding your light high in the air, you
+continue further.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11302
+D5
+~
+~
+0 -1 11300
+S
+#11302
+@@dT@@mo@@pw@@We@@gr @@dS@@mt@@pa@@Wi@@gr@@Wc@@pa@@ms@@de@@N~
+@@dYou continue up the dark stairwell as with each step the @@Rruby@@d on the
+stairs seems to sparkle brighter in the small amount of light that seeps into
+the tunnel.  The @@ylights@@d from above seem to flicker on and off more
+frequently as with greater intensity.  Holding your light high in the air, you
+continue further.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11303
+D5
+~
+~
+0 -1 11301
+S
+#11303
+@@dT@@mo@@pw@@We@@gr @@dS@@mt@@pa@@Wi@@gr@@Wc@@pa@@ms@@de@@N~
+@@dYou continue up the dark stairwell as with each step the @@Rruby@@d on the
+stairs seems to sparkle brighter in the small amount of light that seeps into
+the tunnel.  The @@ylights@@d from above seem to flicker on and off more
+frequently as with greater intensity.  Holding your light high in the air, you
+continue further.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11304
+D5
+~
+~
+0 -1 11302
+S
+#11304
+@@dT@@mo@@pw@@We@@gr @@dS@@mt@@pa@@Wi@@gr@@Wc@@pa@@ms@@de@@N~
+@@dYou continue up the dark stairwell as with each step the @@Rruby@@d on the
+stairs seems to sparkle brighter in the small amount of light that seeps into
+the tunnel.  The @@ylights@@d from above seem to flicker on and off more
+frequently as with greater intensity.  Holding your light high in the air, you
+continue further.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11305
+D5
+~
+~
+0 -1 11303
+S
+#11305
+@@dT@@mo@@pw@@We@@gr @@dS@@mt@@pa@@Wi@@gr@@Wc@@pa@@ms@@de@@N~
+@@dYou continue up the dark stairwell as with each step the @@Rruby@@d on the
+stairs seems to sparkle brighter in the small amount of light that seeps into
+the tunnel.  The @@ylights@@d from above seem to flicker on and off more
+frequently as with greater intensity.  Holding your light high in the air, you
+continue further.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11306
+D5
+~
+~
+0 -1 11304
+S
+#11306
+@@dT@@mo@@pw@@We@@gr @@dS@@mt@@pa@@Wi@@gr@@Wc@@pa@@ms@@de@@N~
+@@dYou continue up the dark stairwell as with each step the @@Rruby@@d on the
+stairs seems to sparkle brighter in the small amount of light that seeps into
+the tunnel.  The @@ylights@@d from above seem to flicker on and off more
+frequently as with greater intensity.  Holding your light high in the air, you
+continue further.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11307
+D5
+~
+~
+0 -1 11305
+S
+#11307
+@@dT@@mo@@pw@@We@@gr @@dS@@mt@@pa@@Wi@@gr@@Wc@@pa@@ms@@de@@N~
+@@dYou continue up the dark stairwell as with each step the @@Rruby@@d on the
+stairs seems to sparkle brighter in the small amount of light that seeps into
+the tunnel.  The @@ylights@@d from above seem to flicker on and off more
+frequently as with greater intensity.  Holding your light high in the air, you
+continue further.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11308
+D5
+~
+~
+0 -1 11306
+S
+#11308
+@@dT@@mo@@pw@@We@@gr @@dS@@mt@@pa@@Wi@@gr@@Wc@@pa@@ms@@de@@N~
+@@dYou continue up the dark stairwell as with each step the @@Rruby@@d on the
+stairs seems to sparkle brighter in the small amount of light that seeps into
+the tunnel.  The @@ylights@@d from above seem to flicker on and off more
+frequently as with greater intensity.  Holding your light high in the air, you
+continue further.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11309
+D5
+~
+~
+0 -1 11307
+S
+#11309
+@@dT@@mh@@pe @@WT@@go@@pp@@N~
+@@dThe top of this everlasting staircase is a room that is like the inside of
+a sphere, completely round in all directions.  There are four
+@@Gs@@et@@ya@@Bi@@dn@@le@@ed@@d glass window on all four directional sides of
+the room.@@N
+~
+139276 11
+D0
+~
+~
+225 11302 11310
+S
+#11310
+@@dB@@me@@pf@@Wo@@gr@@pe @@dT@@mh@@pe @@dC@@ma@@ps@@Wt@@gl@@pe@@N~
+@@dEmerging from the doorway you find you are on the floor of a whole new
+cavern.  It seems that what appeared to be the upper part of the tower was
+just the tunnel with the stairway leading here.  This cavern is smaller than
+the one that the tower is based in.  Ahead in the northern part of the cave is
+a large castle composed completely of @@mg@@ge@@pm@@Ws@@mt@@po@@gn@@me@@ps@@d
+@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11311
+S
+#11311
+@@dT@@mh@@pe @@dM@@ma@@pz@@We @@go@@pf @@dM@@mi@@ps@@gt@@N~
+@@dHeading towards the castle you become trapped in a maze of @@pmist@@d.  All
+you exits vanished behind you and you only see patches of @@mfog@@d which
+prevent any clear vision.  You can still see @@ylights@@d in all directions,
+though you can not tell where they come from.  The ground is a @@Bsapphire@@d
+color although what you stand on feels just like @@bdirt@@d.  The mist which
+prevents vision is so @@Bthick@@d that with a swipe of your hand you can
+actually part the @@pfog@@d and see a bit of what is ahead of you, although
+all you see after that is more @@mm@@pi@@Ws@@gt@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11312
+D1
+~
+~
+0 -1 11311
+D2
+~
+~
+0 -1 11311
+D3
+~
+~
+0 -1 11311
+D4
+~
+~
+0 -1 11311
+D5
+~
+~
+0 -1 11311
+S
+#11312
+@@dT@@mh@@pe @@dM@@ma@@pz@@We @@go@@pf @@dM@@mi@@ps@@gt@@N~
+@@dHeading towards the castle you become trapped in a maze of @@pmist@@d.  All
+you exits vanished behind you and you only see patches of @@mfog@@d which
+prevent any clear vision.  You can still see @@ylights@@d in all directions,
+though you can not tell where they come from.  The ground is a @@Bsapphire@@d
+color although what you stand on feels just like @@bdirt@@d.  The mist which
+prevents vision is so @@Bthick@@d that with a swipe of your hand you can
+actually part the @@pfog@@d and see a bit of what is ahead of you, although
+all you see after that is more @@mm@@pi@@Ws@@gt@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11312
+D1
+~
+~
+0 -1 11312
+D2
+~
+~
+0 -1 11311
+D3
+~
+~
+0 -1 11312
+D4
+~
+~
+0 -1 11312
+D5
+~
+~
+0 -1 11313
+S
+#11313
+@@dT@@mh@@pe @@dM@@ma@@pz@@We @@go@@pf @@dM@@mi@@ps@@gt@@N~
+@@dHeading towards the castle you become trapped in a maze of @@pmist@@d.  All
+you exits vanished behind you and you only see patches of @@mfog@@d which
+prevent any clear vision.  You can still see @@ylights@@d in all directions,
+though you can not tell where they come from.  The ground is a @@Bsapphire@@d
+color although what you stand on feels just like @@bdirt@@d.  The mist which
+prevents vision is so @@Bthick@@d that with a swipe of your hand you can
+actually part the @@pfog@@d and see a bit of what is ahead of you, although
+all you see after that is more @@mm@@pi@@Ws@@gt@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11314
+D1
+~
+~
+0 -1 11313
+D2
+~
+~
+0 -1 11313
+D3
+~
+~
+0 -1 11313
+D4
+~
+~
+0 -1 11312
+D5
+~
+~
+0 -1 11313
+S
+#11314
+@@dT@@mh@@pe @@dM@@ma@@pz@@We @@go@@pf @@dM@@mi@@ps@@gt@@N~
+@@dYou continue parting the mist with your hands and waving your shield back
+and forth in the air until you finally come to a wall with a doorway.@@N
+~
+139276 11
+D0
+~
+~
+385 -1 11315
+D2
+~
+~
+0 -1 11313
+S
+#11315
+@@dT@@mh@@pe @@dC@@ma@@ps@@Wt@@gl@@pe @@dD@@mo@@po@@Wr@@gs@@N~
+@@dThe doors to the north lead into the castle.  They appear to be solid steel
+doors with two large carvings of giant beasts on each.  There is a tiny
+keyhole in the dead center of them, but no key you have seems to fit.@@N
+~
+139272 11
+D0
+~
+~
+225 11305 11318
+D1
+~
+~
+0 -1 11317
+D3
+~
+~
+0 -1 11316
+S
+#11316
+@@dA Small Cave@@N~
+@@dA small cave off to the side of the path to the castle is what you find
+yourself in.  The walls are slick and the air has a cool dampness to it.  In
+the corner you see three @@Rred@@d eyes stare at you with an evil intent.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11315
+S
+#11317
+@@dA Small Cave@@N~
+@@dA small cave off to the side of the path to the castle is what you find
+yourself in.  The walls are slick and the air has a cool dampness to it.  In
+the corner you see three @@Rred@@d eyes stare at you with an evil intent.@@N
+~
+139272 11
+D3
+~
+~
+0 -1 11315
+S
+#11318
+@@dI@@mn@@ps@@Wi@@gd@@pe @@dT@@mh@@pe @@dC@@ma@@ps@@Wt@@gl@@pe@@N~
+@@dThe castle entrance is made of a small arched hallway and it quickly opens
+into a great hall where a great party can be seen.  Many creatures are dancing
+on the ballroom floor dressed in extravagent evening wear.  There are hordes
+of table set along the walls of the large room and a giant, royal table
+plastered with food and decorations.@@N
+~
+139276 11
+D0
+~
+~
+0 -1 11319
+D2
+~
+~
+225 11305 11315
+D5
+~
+tomb~
+1 -1 11440
+S
+#11319
+@@dB@@me@@ph@@Wi@@gn@@pd @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou are a few feet behind the large ballroom dance floor in the center of
+the grand hall of the C@@mr@@pi@@Wm@@gs@@po@@mn@@d Castle.  Many dark
+creatures dance the night away having a grand old time.  Of the few that even
+notice you standing there, they seem to give you no mind and continue on.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11320
+D1
+~
+~
+0 0 11350
+D2
+~
+~
+0 -1 11318
+D3
+~
+~
+0 0 11346
+S
+#11320
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11321
+D1
+~
+~
+0 0 11349
+D2
+~
+~
+0 -1 11319
+D3
+~
+~
+0 0 11345
+S
+#11321
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11322
+D1
+~
+~
+0 0 11348
+D2
+~
+~
+0 -1 11320
+D3
+~
+~
+0 0 11344
+S
+#11322
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11323
+D1
+~
+~
+0 0 11347
+D2
+~
+~
+0 -1 11321
+D3
+~
+~
+0 0 11343
+S
+#11323
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11324
+D1
+~
+~
+0 -1 11331
+D2
+~
+~
+0 -1 11322
+D3
+~
+~
+0 -1 11329
+S
+#11324
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139276 11
+D0
+~
+~
+0 -1 11325
+D2
+~
+~
+0 -1 11323
+S
+#11325
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  The one who prance nude seem to tease and taunt the
+king of the castle who sit in his throne behind a pair of thin gates to the
+north.@@N
+~
+139272 11
+D0
+~
+~
+225 11322 11326
+D1
+~
+~
+0 -1 11328
+D2
+~
+~
+0 -1 11324
+D3
+~
+~
+0 -1 11327
+S
+#11326
+@@dJ@@mu@@pz@@Wa@@gm@@p'@@ms @@dChambers@@N~
+@@dOpening the grand doors you enter Juzam's new chambers.  He immediately
+attacks you as you enter and you quickly notice he is not nearly as strong as
+he was in your first encounter when he resided in the tower.  You make quick
+work of him and his @@pthrone@@d glows ever so softly..@@N
+~
+139272 11
+D2
+~
+~
+225 11322 11325
+S
+#11327
+@@dS@@mh@@pa@@Wd@@go@@pw@@m'@@ps @@dP@@mo@@ps@@gt@@N~
+@@dThis is the small post of the nether shadow, born and bred for one purpose.
+To protect the lord of the tower.  They serve no other existance and by
+bearing a piece of the key to the @@mL@@po@@Wr@@gd@@m'@@ps@@d, he keeps
+unwanted mobiles from bothering his master.@@N
+~
+139276 11
+D1
+~
+~
+0 -1 11325
+S
+#11328
+@@dS@@mh@@pa@@Wd@@go@@pw@@m'@@ps @@dP@@mo@@ps@@gt@@N~
+@@dThis is the small post of the nether shadow, born and bred for one purpose.
+To protect the lord of the tower.  They serve no other existance and by
+bearing a piece of the key to the @@mL@@po@@Wr@@gd@@m'@@ps@@d, he keeps
+unwanted mobiles from bothering his master.@@N
+~
+139276 11
+D3
+~
+~
+0 -1 11325
+S
+#11329
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11323
+D2
+~
+~
+0 -1 11343
+D3
+~
+~
+0 -1 11330
+S
+#11330
+@@dA@@ms@@pi@@Wd@@ge @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou step aside from the @@gballroom@@d floor, and wander over to where the
+elegant banquet tables are set up.  The are covered in @@psatin@@d coverings,
+and vases which contain hundreds of @@Rroses@@d seem to be made of pure
+@@gd@@ci@@la@@gm@@ao@@ln@@cd@@d.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11329
+D2
+~
+~
+0 -1 11338
+D3
+~
+curtain~
+1 -1 11351
+S
+#11331
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11332
+D2
+~
+~
+0 -1 11347
+D3
+~
+~
+0 -1 11323
+S
+#11332
+@@dA@@ms@@pi@@Wd@@ge @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou step aside from the @@gballroom@@d floor, and wander over to where the
+elegant banquet tables are set up.  The are covered in @@psatin@@d coverings,
+and vases which contain hundreds of @@Rroses@@d seem to be made of pure
+@@gd@@ci@@la@@gm@@ao@@ln@@cd@@d.@@N
+~
+139272 11
+D1
+~
+curtain~
+1 -1 11352
+D2
+~
+~
+0 -1 11333
+D3
+~
+~
+0 -1 11331
+S
+#11333
+@@dA@@ms@@pi@@Wd@@ge @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou step aside from the @@gballroom@@d floor, and wander over to where the
+elegant banquet tables are set up.  The are covered in @@psatin@@d coverings,
+and vases which contain hundreds of @@Rroses@@d seem to be made of pure
+@@gd@@ci@@la@@gm@@ao@@ln@@cd@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11332
+D2
+~
+~
+0 -1 11334
+D3
+~
+~
+0 0 11347
+S
+#11334
+@@dA@@ms@@pi@@Wd@@ge @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou step aside from the @@gballroom@@d floor, and wander over to where the
+elegant banquet tables are set up.  The are covered in @@psatin@@d coverings,
+and vases which contain hundreds of @@Rroses@@d seem to be made of pure
+@@gd@@ci@@la@@gm@@ao@@ln@@cd@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11333
+D2
+~
+~
+0 -1 11335
+D3
+~
+~
+0 0 11348
+S
+#11335
+@@dA@@ms@@pi@@Wd@@ge @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou step aside from the @@gballroom@@d floor, and wander over to where the
+elegant banquet tables are set up.  The are covered in @@psatin@@d coverings,
+and vases which contain hundreds of @@Rroses@@d seem to be made of pure
+@@gd@@ci@@la@@gm@@ao@@ln@@cd@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11334
+D2
+~
+~
+0 -1 11336
+D3
+~
+~
+0 0 11349
+S
+#11336
+@@dB@@me@@ph@@Wi@@gn@@pd @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou are a few feet behind the large ballroom dance floor in the center of
+the grand hall of the C@@mr@@pi@@Wm@@gs@@po@@mn@@d Castle.  Many dark
+creatures dance the night away having a grand old time.  Of the few that even
+notice you standing there, they seem to give you no mind and continue on.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11335
+D1
+~
+curtain~
+1 -1 11354
+D2
+~
+~
+0 -1 11337
+D3
+~
+~
+0 0 11350
+S
+#11337
+@@dS@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr@@p'@@ms @@dL@@ma@@pi@@gr@@N~
+@@dThis is just a small hallow dug out into the wall just large enough for a
+man or two to fit inside.  Someone appears to have chiseled out the walls so
+the gazer can stare out into the open night and marvel at the stars.@@N
+~
+139276 11
+D0
+~
+~
+0 -1 11336
+S
+#11338
+@@dA@@ms@@pi@@Wd@@ge @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou step aside from the @@gballroom@@d floor, and wander over to where the
+elegant banquet tables are set up.  The are covered in @@psatin@@d coverings,
+and vases which contain hundreds of @@Rroses@@d seem to be made of pure
+@@gd@@ci@@la@@gm@@ao@@ln@@cd@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11330
+D1
+~
+~
+0 0 11343
+D2
+~
+~
+0 -1 11339
+S
+#11339
+@@dA@@ms@@pi@@Wd@@ge @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou step aside from the @@gballroom@@d floor, and wander over to where the
+elegant banquet tables are set up.  The are covered in @@psatin@@d coverings,
+and vases which contain hundreds of @@Rroses@@d seem to be made of pure
+@@gd@@ci@@la@@gm@@ao@@ln@@cd@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11338
+D1
+~
+~
+0 0 11344
+D2
+~
+~
+0 -1 11340
+S
+#11340
+@@dA@@ms@@pi@@Wd@@ge @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou step aside from the @@gballroom@@d floor, and wander over to where the
+elegant banquet tables are set up.  The are covered in @@psatin@@d coverings,
+and vases which contain hundreds of @@Rroses@@d seem to be made of pure
+@@gd@@ci@@la@@gm@@ao@@ln@@cd@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11339
+D1
+~
+~
+0 0 11345
+D2
+~
+~
+0 -1 11341
+S
+#11341
+@@dB@@me@@ph@@Wi@@gn@@pd @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou are a few feet behind the large ballroom dance floor in the center of
+the grand hall of the C@@mr@@pi@@Wm@@gs@@po@@mn@@d Castle.  Many dark
+creatures dance the night away having a grand old time.  Of the few that even
+notice you standing there, they seem to give you no mind and continue on.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11340
+D1
+~
+~
+0 -1 11346
+D2
+~
+~
+0 -1 11342
+D3
+~
+curtain~
+1 -1 11353
+S
+#11342
+@@dS@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr@@p'@@ms @@dL@@ma@@pi@@gr@@N~
+@@dThis is just a small hallow dug out into the wall just large enough for a
+man or two to fit inside.  Someone appears to have chiseled out the walls so
+the gazer can stare out into the open night and marvel at the stars.@@N
+~
+139276 11
+D0
+~
+~
+0 -1 11341
+S
+#11343
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11329
+D1
+~
+~
+0 -1 11322
+D2
+~
+~
+0 -1 11344
+D3
+~
+~
+0 -1 11338
+S
+#11344
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11343
+D1
+~
+~
+0 -1 11321
+D2
+~
+~
+0 -1 11345
+D3
+~
+~
+0 -1 11339
+S
+#11345
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11344
+D1
+~
+~
+0 -1 11320
+D2
+~
+~
+0 -1 11346
+D3
+~
+~
+0 -1 11340
+S
+#11346
+@@dB@@me@@ph@@Wi@@gn@@pd @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou are a few feet behind the large ballroom dance floor in the center of
+the grand hall of the C@@mr@@pi@@Wm@@gs@@po@@mn@@d Castle.  Many dark
+creatures dance the night away having a grand old time.  Of the few that even
+notice you standing there, they seem to give you no mind and continue on.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11345
+D1
+~
+~
+0 -1 11319
+D3
+~
+~
+0 0 11341
+S
+#11347
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11331
+D1
+~
+~
+0 -1 11333
+D2
+~
+~
+0 -1 11348
+D3
+~
+~
+0 -1 11322
+S
+#11348
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11347
+D1
+~
+~
+0 -1 11334
+D2
+~
+~
+0 -1 11349
+D3
+~
+~
+0 -1 11321
+S
+#11349
+@@dT@@mh@@pe @@gBallroom @@dD@@ma@@pn@@Wc@@ge @@dF@@ml@@po@@Wo@@gr@@N~
+@@dThe dance @@gfloor@@d is made of a polished white marble and has a thin
+plastic like coating layered on top to prevent loss of grip while dancing.
+Dancers stride along on the dance floor, some humaniod, some monstrous.  Some
+bear clothes, some don't.  Suddenly you like this place.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11348
+D1
+~
+~
+0 -1 11335
+D2
+~
+~
+0 -1 11350
+D3
+~
+~
+0 -1 11320
+S
+#11350
+@@dB@@me@@ph@@Wi@@gn@@pd @@dThe @@gBallroom @@dF@@ml@@po@@Wo@@gr@@N~
+@@dYou are a few feet behind the large ballroom dance floor in the center of
+the grand hall of the C@@mr@@pi@@Wm@@gs@@po@@mn@@d Castle.  Many dark
+creatures dance the night away having a grand old time.  Of the few that even
+notice you standing there, they seem to give you no mind and continue on.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11349
+D1
+~
+~
+0 -1 11336
+D3
+~
+~
+0 -1 11319
+S
+#11351
+@@dA T@@mu@@pn@@Wn@@ge@@pl@@N~
+@@dYou find yourself in a small tunnel which seems to have once been a hallway
+hallway, but the walls have crumbled and fragments of brick lie on the floor
+@@N
+~
+139276 11
+D1
+~
+opening~
+1 -1 11330
+D3
+~
+~
+0 0 11363
+S
+#11352
+@@dA T@@mu@@pn@@Wn@@ge@@pl@@N~
+@@dYou find yourself in a small tunnel which seems to have once been a hallway
+hallway, but the walls have crumbled and fragments of brick lie on the floor
+@@N
+~
+139276 11
+D1
+~
+~
+0 0 11384
+D3
+~
+opening~
+1 -1 11332
+S
+#11354
+@@dA T@@mu@@pn@@Wn@@ge@@pl@@N~
+@@dYou find yourself in a small tunnel which seems to have once been a hallway
+hallway, but the walls have crumbled and fragments of brick lie on the floor
+@@N
+~
+139276 11
+D1
+~
+~
+0 -1 11376
+D3
+~
+opening~
+1 -1 11336
+S
+#11353
+@@dA T@@mu@@pn@@Wn@@ge@@pl@@N~
+@@dYou find yourself in a small tunnel which seems to have once been a hallway
+hallway, but the walls have crumbled and fragments of brick lie on the floor
+@@N
+~
+139276 11
+D1
+~
+opening~
+1 -1 11341
+D3
+~
+~
+0 -1 11355
+S
+#11355
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11356
+D1
+~
+~
+0 -1 11353
+S
+#11356
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11357
+D2
+~
+~
+0 -1 11355
+S
+#11357
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11358
+D2
+~
+~
+0 -1 11356
+S
+#11358
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11363
+D2
+~
+~
+0 -1 11357
+D3
+~
+~
+0 -1 11359
+S
+#11359
+@@dP@@ma@@ps@@Ws@@ga@@pg@@me@@N~
+@@dThis tiny passage leads south back towards where the front wall of the
+castle would be.  Nothing special is here.  All the room is is a square hall
+which leads north and south.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11358
+D2
+~
+~
+0 -1 11360
+S
+#11360
+@@dP@@ma@@ps@@Ws@@ga@@pg@@me@@N~
+@@dThis tiny passage leads south back towards where the front wall of the
+castle would be.  Nothing special is here.  All the room is is a square hall
+which leads north and south.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11359
+D2
+~
+~
+0 -1 11361
+S
+#11361
+@@dP@@ma@@ps@@Ws@@ga@@pg@@me@@N~
+@@dThis tiny passage leads south back towards where the front wall of the
+castle would be.  Nothing special is here.  All the room is is a square hall
+which leads north and south.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11360
+D2
+~
+~
+0 -1 11362
+S
+#11362
+@@dG@@mr@@pa@@Wn@@gd @@dD@@mo@@po@@Wr@@gs@@N~
+@@dThe passage opens into a large cavern with a pair of grand doors to the
+south.  The doors are at least 300 feet high and made of solid @@Wsilver@@d
+and @@bbronze@@d.  Carvings and inscriptions are decorated all over the
+massive doors and the only thing that doesn't look magestic is a small
+@@bsign@@d stuck into the ground right before the doors.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11361
+E
+sign~
+@@dAnd yet, another path will open on the next @@ymoon@@d..@@N
+~
+S
+#11363
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11364
+D1
+~
+~
+0 -1 11351
+D2
+~
+~
+0 -1 11358
+S
+#11364
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11369
+D2
+~
+~
+0 -1 11363
+D3
+~
+~
+0 -1 11365
+S
+#11365
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11364
+D3
+~
+~
+0 -1 11366
+S
+#11366
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11367
+D1
+~
+~
+0 -1 11365
+S
+#11367
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11368
+D2
+~
+~
+0 -1 11366
+S
+#11368
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D2
+~
+~
+0 -1 11367
+S
+#11369
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11370
+D2
+~
+~
+0 -1 11364
+S
+#11370
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11371
+D3
+~
+~
+0 -1 11369
+S
+#11371
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11372
+D2
+~
+~
+0 -1 11370
+S
+#11372
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11373
+D2
+~
+~
+0 -1 11371
+S
+#11373
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D1
+~
+~
+0 0 11401
+D2
+~
+~
+0 -1 11372
+D3
+~
+~
+0 -1 11374
+S
+#11374
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11373
+D2
+~
+~
+0 -1 11375
+S
+#11375
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11374
+S
+#11376
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11377
+D3
+~
+~
+0 -1 11354
+S
+#11377
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11378
+D2
+~
+~
+0 -1 11376
+S
+#11378
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11379
+D2
+~
+~
+0 -1 11377
+S
+#11379
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11384
+D1
+~
+~
+0 -1 11380
+D2
+~
+~
+0 -1 11378
+S
+#11380
+@@dP@@ma@@ps@@Ws@@ga@@pg@@me@@N~
+@@dThis tiny passage leads south back towards where the front wall of the
+castle would be.  Nothing special is here.  All the room is is a square hall
+which leads north and south.@@N
+~
+139272 11
+D2
+~
+~
+0 -1 11381
+D3
+~
+~
+0 -1 11379
+S
+#11381
+@@dP@@ma@@ps@@Ws@@ga@@pg@@me@@N~
+@@dThis tiny passage leads south back towards where the front wall of the
+castle would be.  Nothing special is here.  All the room is is a square hall
+which leads north and south.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11380
+D2
+~
+~
+0 -1 11382
+S
+#11382
+@@dP@@ma@@ps@@Ws@@ga@@pg@@me@@N~
+@@dThis tiny passage leads south back towards where the front wall of the
+castle would be.  Nothing special is here.  All the room is is a square hall
+which leads north and south.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11381
+D2
+~
+~
+0 -1 11383
+S
+#11383
+@@dG@@mr@@pa@@Wn@@gd @@dD@@mo@@po@@Wr@@gs@@N~
+@@dThe passage opens into a large cavern with a pair of grand doors to the
+south.  The doors are at least 300 feet high and made of solid @@Wsilver@@d
+and @@bbronze@@d.  Carvings and inscriptions are decorated all over the
+massive doors and the only thing that doesn't look magestic is a small
+@@bsign@@d stuck into the ground right before the doors.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11382
+E
+sign~
+@@dAnd yet, another path will open on the next @@ymoon@@d..@@N
+~
+S
+#11384
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11385
+D2
+~
+~
+0 -1 11379
+D3
+~
+~
+0 -1 11352
+S
+#11385
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11390
+D1
+~
+~
+0 -1 11386
+D2
+~
+~
+0 -1 11384
+S
+#11386
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11387
+D3
+~
+~
+0 -1 11385
+S
+#11387
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11388
+D3
+~
+~
+0 -1 11386
+S
+#11388
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11389
+D2
+~
+~
+0 -1 11387
+S
+#11389
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D2
+~
+~
+0 -1 11388
+S
+#11390
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D2
+~
+~
+0 -1 11385
+D3
+~
+~
+0 -1 11391
+S
+#11391
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11392
+D1
+~
+~
+0 -1 11390
+S
+#11392
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11393
+D2
+~
+~
+0 -1 11391
+S
+#11393
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11394
+D2
+~
+~
+0 -1 11392
+S
+#11394
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11395
+D2
+~
+~
+0 -1 11393
+D3
+~
+~
+0 -1 11397
+S
+#11395
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D2
+~
+~
+0 -1 11396
+D3
+~
+~
+0 -1 11394
+S
+#11396
+@@dD@@me@@ps@@We@@gr@@pt@@me@@dd H@@ma@@pl@@Wl@@gs@@N~
+@@dYou brush away @@Wcobwebs@@d and start to head down this old hallway. No
+light at all reaches here, and the light you carry starts to dim by some
+mysterious force.  The passage is damp and you breath in the misty air.  The
+smell makes you gag as you wonder who or what died in here and was left to rot
+away.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11395
+S
+#11397
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11412
+D1
+~
+~
+0 -1 11394
+D3
+~
+~
+0 -1 11398
+S
+#11398
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11397
+D3
+~
+~
+0 -1 11399
+S
+#11399
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11435
+D1
+~
+~
+0 -1 11398
+D3
+~
+~
+0 -1 11400
+S
+#11400
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11399
+D3
+~
+~
+0 -1 11401
+S
+#11401
+@@dA@@mn@@pc@@Wi@@ge@@pn@@mt@@d H@@ma@@pl@@Wl@@gs@@N~
+@@dThe ancient halls around the main past of the castle are dusty and old, but
+the walls still hold up and the floor is perfectly clean somehow. @@mviolet@@d
+torches illuminate the halls.  You feel something sharp pierce into your foot,
+and you look closer to the floor to see it is made of solid
+@@ad@@gi@@ca@@lm@@go@@ln@@ad@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11402
+D1
+~
+~
+0 -1 11400
+D3
+~
+~
+0 -1 11373
+S
+#11412
+@@dS@@mt@@pa@@Wi@@gr@@pc@@ma@@gs@@pe @@dTo The B@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThis is a small rusty old metal set of stairs which leads up to the north
+into the barrack for the castle stormguards.  The walls are covered with a
+slimy substance and there is just a small flickering light up ahead.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11413
+D2
+~
+~
+0 -1 11397
+S
+#11413
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11414
+D1
+~
+~
+0 0 11421
+D2
+~
+~
+0 -1 11412
+D3
+~
+~
+0 0 11418
+S
+#11414
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11415
+D1
+~
+~
+0 0 11420
+D2
+~
+~
+0 -1 11413
+D3
+~
+~
+0 0 11417
+D5
+~
+secret~
+1 -1 11441
+S
+#11415
+@@dC@@ma@@ps@@Wt@@gl@@pe @@dJ@@ma@@pi@@Wl@@gs@@N~
+@@dThese are the old, dusty jail cells for the castle where the crimson lords
+keep the traitors and the enemies of the realm.  There is a small dusty bunk
+which looks like it probually hasn't been used in ages.  The cell doors are
+wide open and the lock is completely broken.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11419
+D2
+~
+~
+0 -1 11414
+D3
+~
+~
+0 -1 11416
+S
+#11416
+@@dC@@ma@@ps@@Wt@@gl@@pe @@dJ@@ma@@pi@@Wl@@gs@@N~
+@@dThese are the old, dusty jail cells for the castle where the crimson lords
+keep the traitors and the enemies of the realm.  There is a small dusty bunk
+which looks like it probually hasn't been used in ages.  The cell doors are
+wide open and the lock is completely broken.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11415
+D2
+~
+~
+0 -1 11417
+S
+#11417
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11416
+D1
+~
+~
+0 -1 11414
+D2
+~
+~
+0 -1 11418
+S
+#11418
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11417
+D1
+~
+~
+0 -1 11413
+S
+#11419
+@@dC@@ma@@ps@@Wt@@gl@@pe @@dJ@@ma@@pi@@Wl@@gs@@N~
+@@dThese are the old, dusty jail cells for the castle where the crimson lords
+keep the traitors and the enemies of the realm.  There is a small dusty bunk
+which looks like it probually hasn't been used in ages.  The cell doors are
+wide open and the lock is completely broken.@@N
+~
+139272 11
+D2
+~
+~
+0 -1 11420
+D3
+~
+~
+0 -1 11415
+S
+#11420
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11419
+D2
+~
+~
+0 -1 11421
+D3
+~
+~
+0 -1 11414
+S
+#11421
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11420
+D3
+~
+~
+0 -1 11413
+S
+#11402
+@@dS@@mt@@pa@@Wi@@gr@@pc@@ma@@gs@@pe @@dTo The B@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThis is a small rusty old metal set of stairs which leads up to the north
+into the barrack for the castle stormguards.  The walls are covered with a
+slimy substance and there is just a small flickering light up ahead.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11403
+D2
+~
+~
+0 -1 11401
+S
+#11403
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11404
+D1
+~
+~
+0 -1 11411
+D2
+~
+~
+0 -1 11402
+D3
+~
+~
+0 0 11408
+S
+#11404
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11405
+D1
+~
+~
+0 -1 11410
+D2
+~
+~
+0 -1 11403
+D3
+~
+~
+0 0 11407
+D5
+~
+secret~
+1 -1 11442
+S
+#11405
+@@dC@@ma@@ps@@Wt@@gl@@pe @@dJ@@ma@@pi@@Wl@@gs@@N~
+@@dThese are the old, dusty jail cells for the castle where the crimson lords
+keep the traitors and the enemies of the realm.  There is a small dusty bunk
+which looks like it probually hasn't been used in ages.  The cell doors are
+wide open and the lock is completely broken.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11409
+D2
+~
+~
+0 -1 11404
+D3
+~
+~
+0 -1 11406
+S
+#11406
+@@dC@@ma@@ps@@Wt@@gl@@pe @@dJ@@ma@@pi@@Wl@@gs@@N~
+@@dThese are the old, dusty jail cells for the castle where the crimson lords
+keep the traitors and the enemies of the realm.  There is a small dusty bunk
+which looks like it probually hasn't been used in ages.  The cell doors are
+wide open and the lock is completely broken.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11405
+D2
+~
+~
+0 -1 11407
+S
+#11407
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11406
+D1
+~
+~
+0 -1 11404
+D2
+~
+~
+0 -1 11408
+S
+#11408
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11407
+D1
+~
+~
+0 -1 11403
+S
+#11409
+@@dC@@ma@@ps@@Wt@@gl@@pe @@dJ@@ma@@pi@@Wl@@gs@@N~
+@@dThese are the old, dusty jail cells for the castle where the crimson lords
+keep the traitors and the enemies of the realm.  There is a small dusty bunk
+which looks like it probually hasn't been used in ages.  The cell doors are
+wide open and the lock is completely broken.@@N
+~
+139272 11
+D2
+~
+~
+0 0 11410
+D3
+~
+~
+0 -1 11405
+S
+#11410
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11409
+D2
+~
+~
+0 0 11411
+D3
+~
+~
+0 -1 11404
+S
+#11411
+@@BSt@@lor@@cmg@@aua@@grd @@dB@@ma@@pr@@Wr@@ga@@pc@@mk@@ds@@N~
+@@dThe walls are lined with bunks and small tables and chairs are pushed up
+against the sides.  Juzam must treat his guards well as their uniforms are
+made of pure steel, but decorated in silk and satin fringe, with gold and
+silver etchings in the armor.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11410
+D3
+~
+~
+0 -1 11403
+S
+#11422
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11423
+S
+#11423
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11424
+D5
+~
+~
+0 -1 11422
+S
+#11424
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11425
+D5
+~
+~
+0 -1 11423
+S
+#11425
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11426
+D5
+~
+~
+0 -1 11424
+S
+#11426
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11427
+D5
+~
+~
+0 -1 11425
+S
+#11427
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11428
+D5
+~
+~
+0 -1 11426
+S
+#11428
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11429
+D5
+~
+~
+0 -1 11427
+S
+#11429
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D4
+~
+~
+0 -1 11430
+D5
+~
+~
+0 -1 11428
+S
+#11430
+@@dT@@mh@@pe @@dL@@ma@@pd@@Wd@@ge@@pr@@N~
+@@dThis large ladder with @@aaquamarine@@d steps looks vaguely like the spiral
+staircases in the tower section of c@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@d  The
+ladder leads up a large square shaft with occasional flat pieces of marble
+jetting out from the walls to where you can step on and rest.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11431
+D5
+~
+~
+0 -1 11429
+S
+#11431
+@@dG@@mr@@pa@@gn@@Wd @@dD@@mo@@po@@Wr@@gs@@N~
+@@dTo the north lie a pair of grand marble doors with large inscriptions
+carved into the stone surface.  You see a giant keyhole and none of the other
+keys from the tower seem to fit.@@N
+~
+139276 11
+D0
+~
+~
+225 11317 11432
+D1
+~
+~
+0 -1 11434
+D2
+~
+~
+0 -1 11430
+D3
+~
+~
+0 -1 11433
+S
+#11432
+@@dT@@mh@@pe @@dT@@mr@@pu@@We @@dL@@mo@@pr@@Wd@@g'@@ps @@dT@@mh@@pr@@Wo@@gn@@pe@@N~
+@@dAfter your long battle through gruesome ugly powerful blood-hungry fiends
+and monsters, you successfully reach the true lair of @@dJ@@mu@@pz@@Wa@@gm@@d,
+the dark lord of the evil realm of the crimson empire.  He sees you out of the
+corner of his eye and just as suddenly jumps up removing two large hammers
+from their holsters and positions himself in a ready stance for battle.@@N
+~
+131080 11
+D2
+~
+~
+225 11317 11431
+S
+#11433
+@@dT@@mh@@pe @@dC@@ma@@pg@@ge @@dR@@mo@@po@@gm@@N~
+@@dYou enter a small opening in the wall which was completely dark, no light
+could be seen.  You feel your way along the walls and emerge into a large cage
+with a @@ghuge@@d beast.  The beast eyes you carefully and starts to
+@@fblur@@N@@d...Suddenly you feel the breath of something on your back but you
+turn to find no one.@@N
+~
+139272 11
+D1
+~
+~
+0 -1 11431
+S
+#11434
+@@dT@@mh@@pe @@dC@@ma@@pg@@ge @@dR@@mo@@po@@gm@@N~
+@@dYou enter a small opening in the wall which was completely dark, no light
+could be seen.  You feel your way along the walls and emerge into a large cage
+with a @@ghuge@@d beast.  The beast eyes you carefully and starts to
+@@fblur@@N@@d...Suddenly you feel the breath of something on your back but you
+turn to find no one.@@N
+~
+139272 11
+D3
+~
+~
+0 -1 11431
+S
+#11435
+@@dT@@mh@@pe @@dS@@mh@@pr@@Wi@@gn@@pe @@mO@@df @@mT@@ph@@We @@dM@@mi@@ps@@gt@@N~
+@@d  "She's in love with herself"
+ "She likes the dark"
+ 
+  "On her milk white neck"
+ "The Devil's mark"
+ 
+  "It's all Hallows Eve"
+ "The moon is full"
+ 
+  "Will she trick or treat"
+ "I bet she will"
+~
+140302 11
+D0
+~
+~
+0 -1 11436
+D2
+~
+~
+0 -1 11399
+S
+#11436
+@@dW@@ma@@pl@@Wk@@gw@@pa@@my@@N~
+@@dYou march forth into the walkway that leads to the chambers of Lim-Dul, the
+reigning prince of C@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11437
+D2
+~
+~
+0 -1 11435
+S
+#11437
+@@dW@@ma@@pl@@Wk@@gw@@pa@@my@@N~
+@@dYou march forth into the walkway that leads to the chambers of Lim-Dul, the
+reigning prince of C@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11437
+D2
+~
+~
+0 -1 11438
+S
+#11438
+@@dW@@ma@@pl@@Wk@@gw@@pa@@my@@N~
+@@dYou march forth into the walkway that leads to the chambers of Lim-Dul, the
+reigning prince of C@@mr@@pi@@Wm@@gs@@po@@mn@@d.@@N
+~
+139272 11
+D0
+~
+~
+0 -1 11439
+S
+#11439
+@@dL@@mi@@pm@@W-@@dD@@mu@@pl@@d'@@ms @@dC@@mh@@pa@@Wm@@gb@@pe@@mr@@ds@@N~
+@@dThis is the large throne room of the prince of crimson.  The walls are
+decorated in large banners and drapestries hang up and down the walls in a
+half circle fashion.  A ten foot pyramid of stairs leads up to where the
+prince's throne is perched, which turns out the be next to a pair of large
+@@ms@@gt@@pa@@Wi@@mn@@pe@@gd @@dglass windows.@@N
+~
+131592 11
+D2
+~
+~
+0 -1 11438
+S
+#11440
+@@dT@@mh@@pe @@dT@@mo@@pm@@Wb@@gs@@N~
+@@dYou stumble in through the opening into a small dank room that was dug out
+from the earth.  The walls are jagged and a foul stench almost forces you to
+hold your nose shut.  You hold up your light and rotting corpses scatter the
+ground, decaying peacefully..@@N
+~
+139276 11
+D4
+~
+~
+1 -1 11318
+S
+#11441
+@@dT@@mr@@pe@@Wa@@gs@@pu@@mr@@de R@@mo@@po@@gm@@N~
+@@dYou move aside a bunk to find a small crack which you chip away at until it
+is large enough for you to fit through.  The room you find is a dusty storage
+room where the stormguards keep all the treasures they find or loot.@@N
+~
+139276 11
+D4
+~
+~
+1 -1 11414
+S
+#11442
+@@dT@@mr@@pe@@Wa@@gs@@pu@@mr@@de R@@mo@@po@@gm@@N~
+@@dYou move aside a bunk to find a small crack which you chip away at until it
+is large enough for you to fit through.  The room you find is a dusty storage
+room where the stormguards keep all the treasures they find or loot.@@N
+~
+139276 11
+D4
+~
+~
+1 -1 11404
+S
+#11443
+@@dE@@mv@@pi@@gl@@N~
+@@dYou have stumbled upon the dwelling of pure evil.  These are the forces
+which are the true powers of crimson.  Destroy them and free the realm..@@N
+~
+139276 11
+S
+#0
+#MOBILES
+#11300
+guard guardian tower~
+@@dT@@mh@@pe @@dT@@mo@@pw@@We@@gr @@dG@@mu@@pa@@Wr@@gd@@pi@@ma@@dn@@N~
+@@dThe guardian of the t@@mo@@pw@@We@@gr@@d halts your progress..@@N
+~
+~
+36700195 16488 0 S
+128 1
+-1700 900 400
+! 6 0 0 7 148110 0 48
+| 0 0 0 0 0 0 0
+#11301
+Ixtochel~
+@@dI@@mx@@pt@@Wo@@gc@@ph@@me@@dl@@N~
+@@dThe castle guardian clutches the castle key tightly in his hands..@@N
+~
+~
+65539 26816 0 S
+129 1
+-1750 800 600
+! 6 0 0 7 155662 8683520 16
+| 0 0 0 0 0 0 0
+#11302
+tower demon~
+@@dA T@@mo@@pw@@we@@gr @@dDemon@@N~
+@@dA crimson demon of the tower sneaks up on you..@@N
+~
+~
+302055457 639210 -1000 S
+125 0
+-1500 700 700
+! 2 0 0 7 221198 0 80
+| 0 0 0 0 0 0 0
+#11303
+Grastrou Beast~
+@@dG@@Wr@@ga@@Ws@@dt@@Wr@@go@@Wu @@gBeast@@N~
+@@dA dark grastrou beast lies in the shadows..@@N
+~
+~
+268500995 18664 0 S
+132 1
+-1500 750 650
+! 7 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11304
+Grastrou Beast~
+@@dG@@Wr@@ga@@Ws@@dt@@Wr@@go@@Wu @@gBeast@@N~
+@@dA dark grastrou beast lies in the shadows..@@N
+~
+~
+268500995 18664 0 S
+134 1
+-1500 750 650
+! 0 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11449
+Lord Dark~
+@@dJ@@mu@@pz@@Wa@@gm@@m, @@gHigh @@mKing @@pof @@dC@@mr@@pi@@Wm@@gs@@po@@mn@@N~
+@@dEvil reigns and the lord of the tower retakes his throne..@@N
+~
+~
+36765715 551656 -1000 S
+139 0
+-2500 1000 1000
+! 1 0 0 7 1047182 51380480 48
+| 0 0 0 0 0 0 0
+#11305
+healer seduction~
+@@dS@@me@@pd@@gu@@Wc@@gt@@pi@@mo@@dn@@N~
+@@dSeduction herself cleanses your soul with her silky hands..@@N
+~
+~
+268703235 1065152 0 S
+121 2
+0 0 0
+! 1 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#11306
+lim dul limdul lim-dul~
+@@dL@@mi@@pm@@W-@@dD@@mu@@pl@@N~
+@@dLim-Dul, prince of the crimson realm, prepares armageddon..@@N
+~
+~
+65571 26856 0 S
+135 0
+-2500 1000 850
+! 6 0 0 7 417806 50331648 144
+| 0 0 0 0 0 0 0
+#11307
+paladin~
+@@BThe @@aP@@ga@@ll@@ca@@gd@@ai@@ln @@gof @@yLucrezia@@N~
+@@dThe Paladin of Lucrezia has been corrupted by the dark side..@@N
+~
+~
+36896793 27388 -1000 S
+139 2
+-2000 1000 700
+! 7 0 0 7 948622 6488064 144
+| 0 0 0 0 0 0 0
+#11308
+displacer beast~
+@@dD@@WD@@di@@Wi@@ds@@Ws@@dp@@Wp@@dl@@Wl@@da@@Wa@@dc@@Wc@@de@@We@@dr@@Wr @@dB@@WB@@de@@We@@da@@Wa@@ds@@Ws@@dt@@Wt@@N~
+@@dA large cat-like beast with two tails growls at you..@@N
+~
+~
+65571 84202 0 S
+131 0
+-1875 900 700
+! 2 0 0 7 155662 32768 16
+| 0 0 0 0 0 0 0
+#11309
+displacer beast~
+@@dD@@WD@@di@@Wi@@ds@@Ws@@dp@@Wp@@dl@@Wl@@da@@Wa@@dc@@Wc@@de@@We@@dr@@Wr @@dB@@WB@@de@@We@@da@@Wa@@ds@@Ws@@dt@@Wt@@N~
+@@dA large cat-like beast with two tails growls at you..@@N
+~
+~
+65571 84202 0 S
+132 0
+-1875 900 700
+! 0 0 0 7 155662 32768 16
+| 0 0 0 0 0 0 0
+#11310
+displacer beast~
+@@dD@@WD@@di@@Wi@@ds@@Ws@@dp@@Wp@@dl@@Wl@@da@@Wa@@dc@@Wc@@de@@We@@dr@@Wr @@dB@@WB@@de@@We@@da@@Wa@@ds@@Ws@@dt@@Wt@@N~
+@@dA large cat-like beast with two tails growls at you..@@N
+~
+~
+65571 18664 0 S
+131 0
+-1875 900 700
+! 0 0 0 7 155662 32768 16
+| 0 0 0 0 0 0 0
+#11311
+displacer beast~
+@@dD@@WD@@di@@Wi@@ds@@Ws@@dp@@Wp@@dl@@Wl@@da@@Wa@@dc@@Wc@@de@@We@@dr@@Wr @@dB@@WB@@de@@We@@da@@Wa@@ds@@Ws@@dt@@Wt@@N~
+@@dA large cat-like beast with two tails growls at you..@@N
+~
+~
+65571 18664 0 S
+130 0
+-1875 900 700
+! 0 0 0 7 155662 32768 16
+| 0 0 0 0 0 0 0
+#11312
+Evil~
+@@dE@@mv@@pi@@gl@@N~
+@@dE@@mv@@pi@@gl@@N
+~
+~
+305594411 1698558 -1000 S
+139 1
+-2500 1000 1000
+! 9 0 0 7 948414 67108862 48
+| 0 0 0 0 0 0 0
+#11313
+Evil~
+@@dE@@mv@@pi@@gl@@N~
+@@dE@@mv@@pi@@gl@@N
+~
+~
+305594411 1698558 -1000 S
+142 1
+-2500 1000 1000
+! 0 0 0 7 948414 67108862 48
+| 0 0 0 0 0 0 0
+#11314
+Evil~
+@@dE@@mv@@pi@@gl@@N~
+@@dE@@mv@@pi@@gl@@N
+~
+~
+305594411 1698558 -1000 S
+140 1
+-2500 1000 1000
+! 0 0 0 7 948414 67108862 48
+| 0 0 0 0 0 0 0
+#11315
+mirage~
+@@dJ@@mu@@pz@@Wa@@gm@@N~
+@@dJuzam is here, although he doesnt seem the same to you..@@N
+~
+~
+268435491 26856 -1000 S
+118 0
+-1999 899 899
+! 2 0 0 7 679950 0 56
+| 0 0 0 0 0 0 0
+#11316
+nether shadow~
+@@dA @@mN@@ge@@pt@@Wh@@me@@gr @@dShadow@@N~
+@@dA nether shadow is here with a part of the darkness..@@N
+~
+~
+33554435 18624 -1000 S
+124 1
+-1789 789 789
+! 0 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11317
+nether shadow~
+@@dA @@mN@@ge@@pt@@Wh@@me@@gr @@dShadow@@N~
+@@dA nether shadow is here with a part of the darkness..@@N
+~
+~
+33554435 18624 -1000 S
+125 1
+-1789 789 789
+! 0 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11318
+stargazer~
+@@dS@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr@@N~
+@@dA S@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr is here awaiting his fate..@@N
+~
+~
+35 18664 0 S
+125 1
+-1600 900 400
+! 2 0 0 7 24590 0 16
+| 0 0 0 0 0 0 0
+#11319
+stargazer~
+@@dS@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr@@N~
+@@dA S@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr is here awaiting his fate..@@N
+~
+~
+35 18664 0 S
+130 1
+-1600 900 400
+! 0 0 0 7 24590 0 16
+| 0 0 0 0 0 0 0
+#11320
+whirlwind~
+@@dW@@mh@@pi@@gr@@pl@@mw@@pi@@gn@@pd@@N~
+@@dA deadly whirlwind spins and spins..@@N
+~
+~
+33 1073388 0 S
+133 2
+-1400 1000 500
+! 9 0 0 7 24582 0 80
+| 0 0 0 0 0 0 0
+#11321
+whirlwind~
+@@dW@@mh@@pi@@gr@@pl@@mw@@pi@@gn@@pd@@N~
+@@dA deadly whirlwind spins and spins..@@N
+~
+~
+33 1073388 0 S
+135 2
+-1400 1000 500
+! 0 0 0 7 24582 0 80
+| 0 0 0 0 0 0 0
+#11322
+Omega~
+@@dThe @@BW@@li@@cn@@ad @@RO@@em@@ge@@eg@@Ra@@N~
+@@dThe @@BW@@li@@cn@@ad @@ROmega @@dfollows the biddings of its master..@@N
+~
+~
+448765723 1632488 0 S
+125 1
+-2500 1000 1000
+! 6 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11323
+sentinel~
+@@RO@@Wm@@Rega @@dS@@Wh@@dadow S@@We@@dntinel@@N~
+@@dA Shadow Sentinel scampers around waiting to ambush you..@@N
+~
+~
+3145781 92908 0 S
+129 1
+-2100 920 820
+! 7 0 0 7 417806 0 80
+| 0 0 0 0 0 0 0
+#11324
+sentinel~
+@@RO@@Wm@@Rega @@dS@@Wh@@dadow S@@We@@dntinel@@N~
+@@dA Shadow Sentinel scampers around waiting to ambush you..@@N
+~
+~
+3145781 92908 0 S
+135 1
+-2100 920 820
+! 0 0 0 7 417806 0 80
+| 0 0 0 0 0 0 0
+#11325
+jester~
+@@dA @@mC@@pa@@Ws@@gt@@pl@@me @@dJ@@me@@ps@@Wt@@ge@@pr@@N~
+@@dThe @@mL@@po@@Wr@@gd@@m'@@ps@@d jester dances around in a fool's way..@@N
+~
+~
+268435457 581824 0 S
+130 1
+-1500 700 700
+! 9 0 0 7 24590 2097152 16
+| 0 0 0 0 0 0 0
+#11326
+jester~
+@@dA @@mC@@pa@@Ws@@gt@@pl@@me @@dJ@@me@@ps@@Wt@@ge@@pr@@N~
+@@dThe @@mL@@po@@Wr@@gd@@m'@@ps@@d jester dances around in a fool's way..@@N
+~
+~
+268435457 581824 0 S
+126 1
+-1500 700 700
+! 0 0 0 7 24590 2097152 16
+| 0 0 0 0 0 0 0
+#11327
+servant~
+@@dThe @@mL@@po@@Wr@@gd@@m'@@ps @@dSe@@Wr@@gv@@Wa@@dnt@@N~
+(Darkness) @@dA servant of the lord keeps his watch..@@N
+~
+~
+17 1099840 0 S
+128 1
+-1500 800 800
+! 7 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11328
+servant~
+@@dThe @@mL@@po@@Wr@@gd@@m'@@ps @@dSe@@Wr@@gv@@Wa@@dnt@@N~
+(Darkness) @@dA servant of the lord keeps his watch..@@N
+~
+~
+17 1099840 0 S
+132 1
+-1500 800 800
+! 0 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11329
+dancer exotic~
+@@dC@@mr@@pi@@Wm@@gs@@po@@mn @@RE@@ex@@yo@@Wt@@gic@@N~
+(Sexy) @@dAn exotic dancer for the lord taunts you with her curves..@@N
+~
+@@d  A naked woman wearing nothing but a long slightly transparent scarf
+around her neck.  The scarf rolls around her nude body in the slight breeze.
+She has long @@yblond@@d hair to compliment her beautiful @@mviolet@@d eyes.
+She notices you and starts to dance while drawing closer and closer while you
+eyes quickly glide down her body her away from her face to 'other' things. She
+presses up against your body and the feeling sends a chill down your spine You
+look up to see her bear fangs and try to sink them into your neck.  Your lust
+for her may have been your downfall.@@N
+~
+268451881 49384 0 S
+120 2
+-1250 900 500
+! 2 0 0 7 24582 50331648 80
+| 0 0 0 0 0 0 0
+#11330
+Celestial~
+@@dC@@mr@@pi@@Wm@@gs@@po@@mn @@yCeles@@gtial@@N~
+(Power) @@dThe celestial of the castle wanders the halls..@@N
+~
+~
+33619985 1108200 1000 S
+135 2
+-1600 600 600
+! 5 0 0 7 155662 525312 16
+| 0 0 0 0 0 0 0
+#11331
+omega crimson captain guard stormguard~
+@@RThe @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@RO@@em@@ye@@Wg@@ga@@N~
+@@dThe Captain of the Castle Stormguards patrols the area..@@N
+~
+~
+310509593 1108200 0 S
+140 1
+-2250 950 950
+! 9 0 0 7 423950 32768 144
+| 0 0 0 0 0 0 0
+#11332
+captain storm guard stormguard~
+@@dS@@mt@@po@@wr@@gm@@Wg@@pu@@ma@@dr@@md @@dC@@ma@@pp@@Wt@@ga@@pi@@mn@@N~
+@@dA stormguard captain wanders the halls guarding the castle.@@N
+~
+~
+33685521 18664 0 S
+133 1
+-1999 899 899
+! 0 0 0 7 155790 0 16
+| 0 0 0 0 0 0 0
+#11333
+captain storm guard stormguard~
+@@dS@@mt@@po@@wr@@gm@@Wg@@pu@@ma@@dr@@md @@dC@@ma@@pp@@Wt@@ga@@pi@@mn@@N~
+@@dA stormguard captain wanders the halls guarding the castle.@@N
+~
+~
+33685521 26856 0 S
+132 1
+-1999 899 899
+! 0 0 0 7 155790 0 16
+| 0 0 0 0 0 0 0
+#11334
+crimson guard storm stormguard~
+@@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
+@@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
+~
+~
+3276809 1622252 0 S
+129 1
+-1600 600 600
+! 6 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11335
+guard storm stormguard~
+@@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
+@@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
+~
+~
+3276809 1622252 0 S
+132 1
+-1600 600 600
+! 0 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11336
+guard storm stormguard~
+@@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
+@@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
+~
+~
+3276809 1622252 0 S
+128 1
+-1600 600 600
+! 0 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11337
+guard storm stormguard~
+@@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
+@@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
+~
+~
+3276809 1622252 0 S
+128 1
+-1600 600 600
+! 0 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11338
+guard storm stormguard~
+@@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
+@@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
+~
+~
+3276809 1622252 0 S
+132 1
+-1600 600 600
+! 0 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11339
+guard storm stormguard~
+@@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
+@@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
+~
+~
+3276809 1622252 0 S
+129 1
+-1600 600 600
+! 0 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11341
+delphi~
+@@dD@@me@@pl@@dphi@@N~
+@@dDelphi wanders the halls looking to pick a fight..@@N
+~
+~
+33554451 116930 0 S
+136 1
+-2000 900 900
+! 7 0 0 7 155662 4194304 80
+| 0 0 0 0 0 0 0
+#11340
+clurven~
+@@BC@@gl@@Bu@@Brven@@N~
+@@BC@@gl@@Burven @@dwanders the halls of the castle..@@N
+~
+~
+3 84202 0 S
+137 1
+-2000 950 950
+! 9 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11342
+secret~
+@@dA Dark Secret@@N~
+@@dOne of the dark secrets of your soul..@@N
+~
+~
+33554435 92386 0 S
+139 1
+-2000 950 950
+! 9 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11343
+name Beta~
+@@dB@@ye@@dta@@N~
+@@dThe second coming, B@@ye@@dta is here scouting the castle..@@N
+~
+~
+131091 84034 0 S
+138 1
+-2000 950 950
+! 2 0 0 7 155662 0 128
+| 0 0 0 0 0 0 0
+#11344
+impoyx~
+@@pI@@mm@@gpoyx@@N~
+@@dThe castle spirit, Impoyx, haunts the halls..@@N
+~
+~
+33554435 90306 0 S
+134 1
+-2500 900 700
+! 0 0 0 7 417806 0 80
+| 0 0 0 0 0 0 0
+#11345
+Hartryx~
+@@dH@@Ra@@ertryx@@N~
+@@dImpoyx's living brother, Hartryx, searches to recieve eternal rest..@@N
+~
+~
+33554435 90178 0 S
+142 1
+-2500 1000 700
+! 0 0 0 7 417806 0 80
+| 0 0 0 0 0 0 0
+#11346
+Ztur~
+@@cZtur@@N~
+@@dThe dead founder of the Stormguards, Ztur..@@N
+~
+~
+3 84162 0 S
+139 1
+-2200 1000 1000
+! 0 0 0 7 417806 1183744 0
+| 0 0 0 0 0 0 0
+#11347
+Bogardan~
+@@RB@@eo@@Rg@@ea@@Rrdan@@N~
+@@dBogardan the ancient executioner dawns a black hood..@@N
+~
+~
+3 84034 0 S
+137 1
+-1500 1000 1000
+! 0 0 0 7 155662 0 144
+| 0 0 0 0 0 0 0
+#11349
+auroch~
+@@yA@@dur@@go@@dch@@N~
+@@dThe king of the crypts of crimson, @@yA@@dur@@go@@dch...@@N
+~
+~
+33619987 84162 0 S
+137 2
+-1900 999 999
+! 0 0 0 7 155662 0 16
+| 0 0 0 0 0 0 0
+#11348
+Soldelvi~
+@@dS@@mo@@pl@@gd@@delvi@@N~
+@@dCrimson's dark queen, @@dS@@mo@@pl@@gd@@delvi@@d stands alert..@@N
+~
+~
+42008595 84162 0 S
+138 2
+-1900 999 999
+! 0 0 0 7 423950 0 16
+| 0 0 0 0 0 0 0
+#11350
+dancer~
+@@gBallroom @@dD@@ma@@pn@@Wc@@ge@@pr@@N~
+@@dA ballroom dancer is here doing an intricate dance on the floor..@@N
+~
+~
+33685513 24768 0 S
+132 1
+-1700 800 700
+! 1 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11351
+dancer~
+@@gBallroom @@dD@@ma@@pn@@Wc@@ge@@pr@@N~
+@@dA ballroom dancer is here doing an intricate dance on the floor..@@N
+~
+~
+33685513 24768 0 S
+135 1
+-1700 800 700
+! 0 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11352
+guard storm stormguard~
+@@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
+@@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
+~
+~
+3276809 1622252 0 S
+129 1
+-1600 900 900
+! 0 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11353
+guard storm stormguard~
+@@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
+@@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
+~
+~
+3276809 1622252 0 S
+130 1
+-1600 900 900
+! 0 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#11354
+skeleton~
+@@gS@@Wh@@ga@@Wm@@gb@@Wl@@gi@@Wn@@gg @@dS@@mk@@pe@@Wl@@ge@@pt@@mo@@dn@@N~
+@@dA skeleton replaces bones that break away..@@N
+~
+~
+280117301 1624298 0 S
+127 1
+-1700 800 800
+! 6 0 0 7 155662 0 80
+| 0 0 0 0 0 0 0
+#0
+#OBJECTS
+#11300
+cloak~
+@@dThe C@@mr@@pi@@Wm@@gs@@po@@mn @@dCloak@@N~
+@@dA small cloak of the @@mm@@pi@@Ws@@gt@@d lies here peacefully..@@N~
+15 12714128 8388608 1
+500 0 0 0 0 0 0 0 0 0
+0
+L
+80
+#11301
+death crimson~
+@@dC@@mr@@pi@@Wm@@gs@@po@@mn @@dD@@me@@pa@@Wt@@gh@@N~
+@@mSome small patches of fog cover a long, thin dagger.@@N~
+5 20 8421376 433
+0 0 0 11 0 0 0 0 0 0
+3
+A
+18 40
+A
+19 40
+L
+120
+#11302
+key~
+@@dThe C@@ma@@ps@@Wt@@gl@@pe @@dKey@@N~
+@@dThe key to the great crimson castle..@@N~
+18 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+0
+L
+100
+#11303
+left~
+@@dThe @@gLeft @@dPiece@@N~
+@@dThe left piece to a key..@@N~
+29 0 8388608 1
+0 11304 11305 0 0 0 0 0 0 0
+10
+L
+10
+#11304
+right~
+@@dThe @@gRight @@dPiece@@N~
+@@dThe right piece to a key..@@N~
+29 0 8388608 1
+11303 0 11305 0 0 0 0 0 0 0
+10
+L
+10
+#11305
+The Gate Key~
+@@dThe @@mM@@pi@@Ws@@gt @@dKey@@N~
+@@dThe key to the castle gates lie here gracefully..@@N~
+18 128 8388608 1
+0 0 0 0 0 0 0 0 0 0
+5
+L
+100
+#11449
+throne~
+@@dLord J@@mu@@pz@@Wa@@gm@@p'@@ms @@dThrone@@N~
+~
+14 0 0 1
+9 0 11422 0 0 0 0 0 0 0
+5000
+L
+80
+#11306
+Juzam's Hammer~
+@@dThe @@WH@@da@@gm@@Wm@@ge@@dr @@dof @@dJ@@mu@@pz@@Wa@@gm@@N~
+@@dA hammer useful only to Juzam.@@N~
+5 33558545 8421376 1
+0 0 0 6 0 0 0 0 0 0
+1
+L
+100
+#11307
+ring ruby~
+@@dA @@RR@@eu@@Rb@@ey@@d Ring Of The @@mM@@pi@@Ws@@gt@@N~
+@@dA ring of pure @@Rruby@@d engraved with a single @@ge@@ey@@ge@@d..@@N~
+9 2576 8396800 77321
+0 0 0 0 0 0 0 0 0 0
+4
+A
+17 -240
+A
+18 36
+A
+19 35
+A
+13 200
+A
+12 125
+A
+1 2
+A
+2 2
+A
+5 1
+L
+120
+#11308
+boots~
+@@dThe D@@ma@@pr@@Wk @@gL@@Wo@@pr@@md@@W'@@ds Boots@@N~
+@@dBoots of an evil power fills the room with large shadows..@@N~
+9 2576 10485760 353
+0 0 0 0 0 0 0 0 0 0
+10
+A
+17 -250
+A
+18 38
+A
+19 37
+A
+24 -10
+A
+13 100
+L
+120
+#11310
+corpse~
+@@dA @@gHero's @@RRotting @@dCorpse@@N~
+@@dThe corpse of a hero who met his fate lies here...@@N~
+23 0 0 1
+0 0 0 0 0 0 0 0 0 0
+0
+L
+120
+#11311
+corpse~
+@@dA @@gHero's @@RRotting @@dCorpse@@N~
+@@dThe corpse of a hero who met his fate lies here...@@N~
+23 0 0 1
+0 0 0 0 0 0 0 0 0 0
+0
+L
+120
+#11312
+will juzam~
+@@dJ@@mu@@pz@@Wa@@gm@@p'@@ms @@dW@@mi@@pl@@gl@@N~
+The will of Juzam, lord of the darkness..~
+2 16 8421376 1
+120 636 600 647 0 0 0 0 0 0
+0
+L
+120
+#11313
+mask~
+@@dM@@ma@@ps@@gk @@dof the D@@me@@pm@@Wo@@gn@@N~
+A small mask that seems like a tight fit..~
+9 2576 8388624 1153
+0 0 0 0 0 0 0 0 0 0
+3
+A
+17 -200
+A
+13 100
+A
+18 30
+A
+19 25
+A
+24 -10
+E
+mask~
+Peek-A-Boo...I see you!
+~
+L
+115
+#11314
+hammer lucrezia~
+@@dLu@@mcr@@pez@@Wia@@g's @@dDark @@RSle@@edg@@geh@@eam@@Rmer@@N~
+@@dThe dark @@Rsledgehammer@@d of a corrupted paladin..@@N~
+5 33819152 8421376 417
+0 0 0 6 0 0 0 0 0 0
+20
+A
+17 -150
+A
+18 29
+A
+19 29
+A
+13 200
+A
+21 -7
+A
+20 -7
+A
+24 -7
+A
+12 -50
+L
+80
+#11315
+right seal~
+@@dThe @@BRight @@dSeal@@N~
+A piece of the seal..~
+29 0 8388608 1
+0 11316 11317 0 0 0 0 0 0 0
+1
+L
+10
+#11316
+left seal~
+@@dThe @@mLeft@@d Seal@@N~
+A piece of the seal..~
+29 0 8388608 1
+11315 0 11317 0 0 0 0 0 0 0
+1
+L
+10
+#11317
+seal~
+@@dThe @@REvil @@gS@@We@@ga@@Wl @@dof J@@mu@@pz@@Wa@@gm@@N~
+A seal of the purest evil, the darkest urges..~
+14 6672 8421376 1
+9 0 11326 0 0 0 0 0 0 0
+10
+A
+17 -300
+A
+18 40
+A
+19 40
+A
+13 -1000
+A
+12 -1000
+L
+120
+#11318
+sphere ruby~
+@@dJ@@mu@@pz@@Wa@@gm@@p'@@ms @@RR@@eu@@Rb@@ey @@gS@@pp@@mhe@@pr@@ge@@N~
+@@dThe sphere of evil's dwelling...@@N~
+14 65680 8388608 1
+9 0 11443 0 0 0 0 0 0 0
+30
+L
+120
+#11319
+evil eye~
+@@dThe @@mE@@pv@@Wi@@gl @@mE@@py@@me @@dof @@RArmageddon@@N~
+An evil eye with unbelievable powers..~
+4 4096 8421376 1
+120 15 15 647 0 0 0 0 0 0
+10
+A
+17 -1
+A
+19 1
+A
+18 1
+A
+13 1
+A
+12 1
+A
+24 -1
+A
+14 1
+L
+120
+#11320
+fire cracker firecracker~
+@@dC@@mr@@pi@@Wm@@gs@@po@@mn @@RFi@@ere@@yc@@gr@@ya@@eck@@Rer@@N~
+@@dA small @@Rfirecracker@@d looks tiny but deadly..@@N~
+2 0 8388608 1
+140 200 203 204 0 0 0 0 0 0
+0
+L
+80
+#11321
+scroll of death~
+@@dS@@mc@@pr@@Wo@@gl@@pl @@dof @@RDeath@@N~
+@@dA scroll fitting for a @@mpainful@@R death@@d lies here..@@N~
+2 0 8388608 1
+140 17 33 38 0 0 0 0 0 0
+0
+L
+80
+#11322
+darkness~
+@@dDarkness@@N~
+Darkness is here waiting to unlock evil..~
+18 16 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+80
+#11323
+darkness~
+@@dDarkness@@N~
+Darkness is here waiting to unlock evil..~
+18 16 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+80
+#11324
+rune~
+@@d[@@m=@@g|@@m=@@d]@@N~
+@@NA magical @@yrune@@N lies in the dirt..~
+31 0 8388608 1
+-1 0 10 8 0 0 0 0 0 0
+1
+L
+10
+#11325
+bomb~
+@@R<@@e{@@y(@@g*@@y)@@e}@@R>@@N~
+@@NA small bomb is here ready to @@R@@fE@@e@@fX@@y@@fP@@g@@fL@@y@@fO@@e@@fD@@R@@fE@@N..~
+2 16 8388608 1
+140 200 201 202 0 0 0 0 0 0
+50
+L
+80
+#11397
+ruby~
+@@dA @@eC@@dr@@ea@@dc@@ek@@de@@ed @@RRuby@@N~
+A small cracked ruby lies in the dust..~
+29 0 8388608 1
+0 11398 11399 0 0 0 0 0 0 0
+1
+L
+10
+#11398
+shard~
+@@dA@@m Shard @@dof @@pAmethyst@@N~
+A small shard of amthyst~
+29 0 8388608 1
+11397 0 11399 0 0 0 0 0 0 0
+1
+L
+10
+#11399
+facet~
+@@dA@@g Facet @@dof @@pAmethyst @@dand @@RRuby@@N~
+A tiny shining facet lies on the floor~
+29 0 8388608 1
+0 11402 11427 0 0 0 0 0 0 0
+1
+L
+10
+#11400
+diamond~
+@@dA @@cD@@gi@@aa@@Wm@@lo@@gn@@ad @@yStar@@N~
+A small diamond..~
+29 0 8388608 1
+0 11401 11402 0 0 0 0 0 0 0
+1
+L
+10
+#11401
+marble~
+@@dA @@gSmall @@gC@@Wo@@dl@@Wu@@gm@@Wn @@do@@Wf @@gM@@Wa@@dr@@Wb@@gl@@de@@N~
+~
+29 0 8388608 1
+11400 0 11402 0 0 0 0 0 0 0
+1
+L
+10
+#11402
+crystal ball~
+@@dC@@lr@@ay@@Ws@@gtal @@yBall@@N~
+A tiny clear ball..~
+29 0 8388608 1
+11399 0 11427 0 0 0 0 0 0 0
+1
+L
+10
+#11403
+arrowhead~
+@@dA@@Wn @@bA@@dr@@br@@Wo@@dw@@bh@@de@@Wa@@bd@@N~
+A tiny stone arrowhead..~
+29 0 8388608 1
+0 11404 11405 0 0 0 0 0 0 0
+1
+L
+10
+#11404
+broken glass~
+@@gSome @@WB@@gr@@dok@@ge@@Wn @@gGlass@@N~
+A tiny piece of broken glass..@@N~
+29 0 8388608 1
+11403 0 11405 0 0 0 0 0 0 0
+1
+L
+10
+#11405
+charm~
+@@yA @@RT@@ei@@Rn@@ey @@yCharm@@N~
+A tiny charm..~
+29 0 8388608 1
+0 11408 11428 0 0 0 0 0 0 0
+1
+L
+10
+#11406
+emerald~
+@@GA G@@rl@@gi@@Gt@@rt@@ge@@Gr@@ri@@gn@@Gg @@GE@@rm@@We@@gr@@Wa@@rl@@Gd@@N~
+A tiny sparkling @@remerald@@N~
+29 0 8388608 1
+0 11407 11408 0 0 0 0 0 0 0
+1
+L
+10
+#11407
+onyx~
+@@dA @@WShard @@dof @@WO@@dn@@Wy@@dx@@N~
+~
+29 0 8388608 1
+11406 0 11408 0 0 0 0 0 0 0
+1
+L
+10
+#11408
+gemstone~
+@@gA @@RP@@mr@@le@@cc@@ei@@po@@Bu@@ls @@gGemstone@@N~
+A precious metal lies in the dust~
+29 0 8388608 1
+11405 0 11428 0 0 0 0 0 0 0
+1
+L
+10
+#11409
+circle~
+@@dA @@WM@@ge@@Wt@@ga@@Wl @@dC@@ei@@yrc@@el@@de@@N~
+A small metal circle~
+29 0 8388608 1
+0 11410 11411 0 0 0 0 0 0 0
+1
+L
+10
+#11410
+topaz~
+@@lSome @@aT@@co@@gp@@ca@@az@@N~
+A small chunk of topaz..~
+29 0 8388608 1
+11409 0 11411 0 0 0 0 0 0 0
+1
+L
+10
+#11411
+ring~
+@@lA @@aS@@cm@@ga@@cl@@al @@yRing@@N~
+A tiny ring which fits the puzzle..~
+29 0 8388608 1
+0 11414 11429 0 0 0 0 0 0 0
+1
+L
+10
+#11412
+pearls~
+@@gS@@Wo@@gme @@gP@@We@@garls@@N~
+A small round pearl lies here~
+29 0 8388608 1
+0 11413 11414 0 0 0 0 0 0 0
+1
+L
+10
+#11326
+air charm~
+@@dAn @@BA@@li@@cr @@mC@@ph@@ga@@pr@@mm@@N~
+@@dSomeone dropped a @@ysparkling @@Ba@@li@@cr @@mc@@ph@@ga@@pr@@mm@@d..@@N~
+11 1048577 8421376 1
+2 11322 100 0 0 0 0 0 0 0
+15
+L
+120
+#11413
+sea shell seashell~
+@@gA @@WS@@le@@aa@@gs@@lh@@We@@al@@gl@@N~
+A tiny seashell lies here dripping wet~
+29 0 8388608 1
+11412 0 11414 0 0 0 0 0 0 0
+1
+L
+10
+#11414
+locket~
+@@yA @@eRare @@yL@@Wo@@gck@@We@@yt@@N~
+Lockets..lockets..everywhere...~
+29 0 8388608 1
+11411 0 11429 0 0 0 0 0 0 0
+1
+L
+10
+#11415
+gold~
+@@gSome @@dFools @@yGo@@Wl@@gd@@N~
+A tiny chunk of fools gold lies here..~
+29 0 8388608 1
+0 11416 11417 0 0 0 0 0 0 0
+1
+L
+10
+#11416
+bloodstone~
+@@dBl@@Roo@@eds@@Wto@@gne@@N~
+Caught unders wheels roll...oh the bleeding of me..~
+29 0 8388608 1
+11415 0 11417 0 0 0 0 0 0 0
+1
+L
+10
+#11417
+insignia~
+@@dC@@mr@@pi@@Wm@@gs@@po@@mn @@RInsignia@@N~
+A tiny emblem of the mist lies here~
+29 0 8388608 1
+0 11420 11430 0 0 0 0 0 0 0
+1
+L
+10
+#11418
+moonstone~
+@@gMo@@Wo@@ynSt@@Wo@@gne@@N~
+A small luner rock lies on the ground..~
+29 0 8388608 1
+0 11419 11420 0 0 0 0 0 0 0
+1
+L
+10
+#11419
+comet~
+@@eA @@RTiny @@bC@@Ro@@em@@be@@Rt@@N~
+A chunk of meteor is stuck in the ground..~
+29 0 8388608 1
+11418 0 11420 0 0 0 0 0 0 0
+1
+L
+10
+#11420
+rock~
+@@dR@@yo@@bc@@Wk@@N~
+A rock.  Just a rock.~
+29 0 8388608 1
+0 11417 11430 0 0 0 0 0 0 0
+1
+L
+10
+#11421
+opal~
+@@gW@@Wh@@gite O@@Wp@@gal@@N~
+Some small chunks of white opal?~
+29 0 8388608 1
+0 11422 11423 0 0 0 0 0 0 0
+1
+L
+10
+#11422
+silver~
+@@WS@@gi@@Wlver@@N~
+Some small chunks of silver here sparkle in the sun..~
+29 0 8388608 1
+11421 0 11423 0 0 0 0 0 0 0
+1
+L
+10
+#11423
+crest~
+@@dThe G@@mu@@pa@@Wr@@gd@@ps @@dCrest@@N~
+A small crest of the crimson guards..~
+29 0 8388608 1
+0 11426 11431 0 0 0 0 0 0 0
+1
+L
+10
+#11424
+bronze~
+@@bB@@yr@@go@@bnze@@N~
+A small @@bbronze@@N chunk is here..~
+29 0 8388608 1
+0 11425 11426 0 0 0 0 0 0 0
+1
+L
+10
+#11425
+turquoise~
+@@cT@@au@@gr@@aq@@cuoise@@N~
+A small piece of turquoise...~
+29 0 8388608 1
+11424 0 11426 0 0 0 0 0 0 0
+1
+L
+10
+#11426
+earring~
+@@gA @@yJ@@ce@@yw@@ce@@yl@@cl@@ye@@cd @@gEarring@@N~
+A small earring made out of tiny jewels..~
+29 0 8388608 1
+11423 0 11431 0 0 0 0 0 0 0
+1
+L
+10
+#11427
+necklace~
+@@dA @@gNec@@Wk@@dl@@gace@@N~
+A small necklace bites the dust..~
+29 0 8388608 1
+0 11428 11432 0 0 0 0 0 0 0
+1
+L
+10
+#11428
+bracelet~
+@@dB@@gr@@Wa@@dcelet@@y of @@cJ@@ge@@aw@@Be@@ll@@gs@@N~
+A tiny bracelet of pure gemstones~
+29 0 8388608 1
+11427 0 11432 0 0 0 0 0 0 0
+1
+L
+10
+#11429
+glove~
+@@RG@@ge@@en@@Rji @@dG@@Rl@@dove@@N~
+A powerful glove lies in the dirt..~
+29 0 8388608 1
+11434 0 11435 0 0 0 0 0 0 0
+1
+L
+10
+#11430
+belt~
+@@dA @@dN@@Ba@@lg@@aa@@c'@@gs @@yBelt@@N~
+The small belt that belongs to the sea naga..~
+29 0 8388608 1
+0 11431 11433 0 0 0 0 0 0 0
+1
+L
+10
+#11431
+facemask~
+@@dJ@@mu@@pz@@Wa@@gm@@p'@@ms @@dFacemask@@N~
+A facemask from Juzam himself...~
+29 0 8388608 1
+11430 0 11433 0 0 0 0 0 0 0
+1
+L
+10
+#11432
+shield~
+@@dAn @@RE@@ev@@Ril @@dS@@Rh@@ei@@deld@@N~
+A shield of pure evil..~
+29 0 8388608 1
+0 11433 11434 0 0 0 0 0 0 0
+1
+L
+10
+#11433
+sash~
+@@dD@@me@@pm@@Wo@@gn @@ySash@@N~
+A tiny sash which fits about your waist nicely..~
+29 0 8388608 1
+11432 0 11434 0 0 0 0 0 0 0
+1
+L
+10
+#11434
+armour~
+@@dC@@mr@@pi@@Wm@@gs@@po@@mn @@dA@@Wr@@gm@@dour@@N~
+Some sturdy armour lies here..~
+29 0 8388608 1
+0 11429 11436 0 0 0 0 0 0 0
+1
+L
+10
+#11435
+sash~
+@@dS@@ma@@ps@@gh @@Wof @@dAl@@mex@@pan@@Wdr@@gia@@N~
+The almight sash of Alexandria..why is it on the ground..~
+9 4194321 8454144 18033
+0 0 0 0 0 0 0 0 0 0
+10
+A
+17 -275
+A
+18 40
+A
+19 40
+A
+13 300
+A
+12 300
+A
+21 -20
+A
+20 -20
+A
+24 -20
+L
+120
+#11436
+Stealth~
+@@dS@@mt@@pe@@ga@@pl@@mt@@dh@@N~
+@@dA stealthy weapon lies on the ground...or does it?..@@N~
+5 37751317 8421376 369
+0 0 0 11 0 0 0 0 0 0
+15
+A
+17 -250
+A
+18 50
+A
+19 50
+A
+13 300
+A
+12 300
+A
+24 -30
+E
+stealth~
+(c) 1997 Geoff Kroeger~
+L
+120
+#11309
+hood~
+@@dE@@Rx@@me@@dcutioner's @@dH@@Ro@@mo@@dd@@N~
+@@WThe hood of an @@de@@Rx@@me@@dcutioner@@W..@@N~
+9 2577 8388624 1
+0 0 0 0 0 0 0 0 0 0
+25
+A
+17 -240
+A
+18 35
+A
+19 35
+A
+24 -10
+A
+13 200
+A
+1 3
+A
+3 -1
+L
+120
+#11327
+Fury~
+@@dC@@mr@@pi@@Wm@@gs@@po@@mn @@RF@@eu@@yr@@gy@@N~
+@@dThe fury of the retributive staff of crimson..@@N~
+4 0 8421376 1
+0 0 0 -1 0 0 0 0 0 0
+0
+L
+120
+#11328
+bone~
+@@gBone@@N~
+@@gA small bone from a skeleton..@@N~
+1 2704 8421376 1561
+0 0 0 0 0 0 0 0 0 0
+4
+A
+18 25
+A
+19 28
+A
+13 50
+A
+17 -125
+A
+24 -5
+A
+23 -5
+L
+100
+#0
+#RESETS
+M 0 11300 1 11300 (null)
+
+G 0 11415 0 (null)
+
+G 0 11398 0 (null)
+
+E 0 11301 0 16 (null)
+
+G 0 11300 0 (null)
+
+M 0 11301 1 11309 (null)
+
+G 0 11425 0 (null)
+
+G 0 11401 0 (null)
+
+E 0 11302 0 20 (null)
+
+D 0 11309 0 2 (null)
+
+M 0 11302 4 11304 (null)
+
+D 0 11314 0 1 (null)
+
+D 0 11318 2 2 (null)
+
+D 0 11315 0 2 (null)
+
+M 0 11304 1 11316 (null)
+
+G 0 11303 0 (null)
+
+M 0 11303 1 11317 (null)
+
+G 0 11304 0 (null)
+
+O 0 11449 0 11326 (null)
+
+D 0 11432 2 2 (null)
+
+D 0 11431 0 2 (null)
+
+M 0 11449 1 11432 (null)
+
+G 0 11327 0 (null)
+
+G 0 11406 0 (null)
+
+G 0 11397 0 (null)
+
+G 0 11324 0 (null)
+
+G 0 11318 0 (null)
+
+E 0 11313 0 18 (null)
+
+G 0 11312 0 (null)
+
+E 0 11308 0 8 (null)
+
+E 0 11306 0 21 (null)
+
+E 0 11306 0 16 (null)
+
+M 0 11305 1 11435 (null)
+
+M 0 11306 1 11439 (null)
+
+G 0 11421 0 (null)
+
+G 0 11410 0 (null)
+
+G 0 11325 0 (null)
+
+E 0 11307 0 2 (null)
+
+E 0 11307 0 1 (null)
+
+O 0 11310 0 11440 (null)
+
+O 0 11311 0 11440 (null)
+
+M 0 11307 1 11319 (null)
+
+E 0 11314 0 16 (null)
+
+M 0 11308 1 11433 (null)
+
+G 0 11315 0 (null)
+
+M 0 11309 1 11434 (null)
+
+G 0 11316 0 (null)
+
+M 0 11310 1 11434 (null)
+
+M 0 11311 1 11433 (null)
+
+M 0 11312 1 11443 (null)
+
+M 0 11313 1 11443 (null)
+
+G 0 11319 0 (null)
+
+M 0 11314 1 11443 (null)
+
+M 0 11315 1 11326 (null)
+
+O 0 11320 0 11441 (null)
+
+M 0 11316 1 11327 (null)
+
+G 0 11323 0 (null)
+
+M 0 11317 1 11328 (null)
+
+G 0 11322 0 (null)
+
+D 0 11325 0 2 (null)
+
+D 0 11326 2 2 (null)
+
+M 0 11318 1 11342 (null)
+
+M 0 11319 1 11337 (null)
+
+M 0 11320 2 11362 (null)
+
+M 0 11321 2 11383 (null)
+
+O 0 11326 0 11432 (null)
+
+M 0 11324 3 11429 (null)
+
+M 0 11323 3 11426 (null)
+
+O 0 11321 0 11442 (null)
+
+M 0 11326 4 11323 (null)
+
+M 0 11325 2 11319 (null)
+
+M 0 11327 3 11343 (null)
+
+M 0 11328 4 11347 (null)
+
+M 0 11329 3 11322 (null)
+
+M 0 11331 1 11399 (null)
+
+M 0 11332 2 11369 (null)
+
+M 0 11333 2 11390 (null)
+
+M 0 11334 4 11357 (null)
+
+M 0 11335 4 11378 (null)
+
+M 0 11336 4 11372 (null)
+
+M 0 11337 4 11393 (null)
+
+M 0 11338 4 11404 (null)
+
+M 0 11339 4 11414 (null)
+
+M 0 11341 1 11366 (null)
+
+G 0 11400 0 (null)
+
+M 0 11340 1 11387 (null)
+
+G 0 11413 0 (null)
+
+M 0 11342 1 11374 (null)
+
+G 0 11403 0 (null)
+
+M 0 11343 1 11395 (null)
+
+G 0 11418 0 (null)
+
+M 0 11344 1 11402 (null)
+
+G 0 11409 0 (null)
+
+M 0 11345 1 11412 (null)
+
+G 0 11412 0 (null)
+
+O 0 11416 0 11442 (null)
+
+O 0 11404 0 11441 (null)
+
+M 0 11346 1 11362 (null)
+
+G 0 11422 0 (null)
+
+M 0 11349 1 11424 (null)
+
+G 0 11407 0 (null)
+
+M 0 11348 1 11427 (null)
+
+G 0 11424 0 (null)
+
+M 0 11350 5 11320 (null)
+
+M 0 11351 5 11323 (null)
+
+M 0 11330 2 11338 (null)
+
+M 0 11352 5 11404 (null)
+
+M 0 11353 5 11414 (null)
+
+M 0 11354 3 11399 (null)
+
+E 0 11328 0 0 (null)
+
+M 0 11347 1 11383 (null)
+
+G 0 11419 0 (null)
+
+E 0 11309 0 6 (null)
+
+S
+#SPECIALS
+M 11300 spec_breath_any
+M 11301 spec_cast_cadaver
+M 11305 spec_cast_adept
+M 11306 spec_breath_any
+M 11307 spec_cast_cadaver
+M 11312 spec_breath_any
+M 11313 spec_cast_undead
+M 11314 spec_undead
+M 11320 spec_poison
+M 11322 spec_poison
+M 11329 spec_cast_mage
+M 11334 spec_mino_guard
+M 11341 spec_breath_any
+M 11347 spec_undead
+M 11348 spec_breath_any
+M 11354 spec_undead
+S
+#OBJFUNS
+O 11308 objfun_regen
+O 11314 objfun_cast_fight
+O 11436 objfun_flaming
+S
+#$

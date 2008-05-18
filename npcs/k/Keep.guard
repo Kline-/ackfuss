@@ -1,0 +1,41 @@
+#MOB
+Revision     7
+Name         keep guard~
+ShortDescr   a keep guard~
+LongDescr    A stern-faced youth patrols here, guarding the innocent.
+~
+Description  He seems to be your basic generic guard type, little brains, but plenty of
+brawns to keep you in line.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        14
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       11435
+Note         0
+Room         3301
+HpManaMove   1 390 28 210 100 100
+Gold         0
+Balance      0
+Exp          808
+Act          4194317
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    500
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         3543
+End
+
+#END

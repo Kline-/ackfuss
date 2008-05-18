@@ -1,0 +1,170 @@
+/***************************************************************************
+ *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
+ *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
+ *                                                                         *
+ *  Merc Diku Mud improvments copyright (C) 1992, 1993 by Michael          *
+ *  Chastain, Michael Quan, and Mitchell Tse.                              *
+ *                                                                         *
+ *  Ack 2.2 improvements copyright (C) 1994 by Stephen Dooley              *
+ *                                                                         *
+ *  In order to use any part of this Merc Diku Mud, you must comply with   *
+ *  both the original Diku license in 'license.doc' as well the Merc       *
+ *  license in 'license.txt'.  In particular, you may not remove either of *
+ *  these copyright notices.                                               *
+ *                                                                         *
+ *       _/          _/_/_/     _/    _/     _/    ACK! MUD is modified    *
+ *      _/_/        _/          _/  _/       _/    Merc2.0/2.1/2.2 code    *
+ *     _/  _/      _/           _/_/         _/    (c)Stephen Zepp 1998    *
+ *    _/_/_/_/      _/          _/  _/             Version #: 4.3          *
+ *   _/      _/      _/_/_/     _/    _/     _/                            *
+ *                                                                         *
+ *                        http://ackmud.nuc.net/                           *
+ *                        zenithar@ackmud.nuc.net                          *
+ *  Much time and thought has gone into this software and you are          *
+ *  benefitting.  We hope that you share your changes too.  What goes      *
+ *  around, comes around.                                                  *
+ ***************************************************************************/
+
+ This file file describes the license requirements for using the Ack!Mud code
+ base.
+
+ --All previous licenses ( merc and diku ) apply, and must be followed.
+ --Login screens must contain all info required in previous licenses, plus
+   the taglines given at the bottom of this file.
+ --as per the diku license, no profit may be made by anyone using this code
+   base.
+ --Ackmud specific code segments may me freely copied, distributed, or
+   modified as long as the terms of all appropriate licenses are met.
+ --Ackmud, Ack!Mud, and ACK!MUD are copyrighted when dealing with internet
+   multi-player online games.
+
+REQUIRED DIKU LOGIN TEXT:
+ 
+@@g       Diku Mud was created by Hans Henrik St{rfeldt, Katja Nyboe,
+            Tom Madsen, Michael Seifert and Sebastian Hammer.
+             MERC Modifications made by: Furey, Hatchet, Kahn@@k
+)@@N
+
+REQUIRED ACKMUD LOGIN TEXT:
+
+@@k)
+)
+)              @@mAck!Mud @@W2.2, @@cModified @@gMerc2.2 @@cby: @@gStimpy, Thalen
+                    @@mAck!Mud @@W4.3 @@cby @@mZenithar@@c, with help from
+                @@gSpectrum, Altrag, Ramias, Universe, and others@@N
+                            @@cScreen: @@gMichlotixlan @@N
+                    @@mAck!Mud @@cHome Page@@W: @@ahttp://ackmud.nuc.net@@N
+@@k)
+)
+
+Please note that the formatting of this text may be modified according to
+placement, color, etc., as long as the information contained is not changed.
+
+
+Helps to include in your ceiling.are ( or appropriate help area ):
+
+
+-1 money coin coins currency~
+@@bcopper@@N Bit : base unit
+@@Wsilver@@N Moon:  5 bits
+@@ygold@@N Crown : 20 bits
+@@lelectrum@@N Crescent : 50 bits
+@@amithril@@N Pentacle : 100 bits
+@@mmalachite@@N Karant : 200 bits
+@@debony@@N Mark : 500 bits
+@@pRoyal Sunburst@@N : 1000 bits  
+~
+-1 diku~
+@@k)@@N                    Original game idea, concept, and design:
+          Katja Nyboe               [Superwoman] (katz@freja.diku.dk)
+          Tom Madsen              [Stormbringer] (noop@freja.diku.dk)
+          Hans Henrik Staerfeldt           [God] (bombman@freja.diku.dk)
+          Michael Seifert                 [Papi] (seifert@freja.diku.dk)
+          Sebastian Hammer               [Quinn] (quinn@freja.diku.dk)
+                     Additional contributions from:
+Michael Curran  - the player title collection and additional locations.
+Ragnar Loenn    - the bulletin board.
+Bill Wisner     - for being the first to successfully port the game,
+                  uncovering several old bugs, uh, inconsistencies,
+                  in the process.
+And: Mads Haar and Stephan Dahl for additional locations.
+Developed at: DIKU -- The Department of Computer Science
+                      at the University of Copenhagen.
+~
+-1 ack ackmud~
+@@N-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+@@k)
+)@@N
+         Ack!Mud 2.0 is Copyright (C)1995/6 Stimpy & Thalen
+         Ack!Mud 4.3 is Copyright (C)1998 by Stephen Zepp
+@@k)@@N
+            Ack!Mud 4.3 by Zenithar, with mucho help from:
+             Ramias, Altrag, Spectrum, Flar, and Universe
+@@k)@@N
+ Ack! Mud is a deriative of Merc Muds, which are deriatives of Diku Muds.
+ In order to run this code, you must observe the conditions of use
+ of Merc and Diku.
+@@k)@@N
+ Conditions of use for Ack!Mud are as follows:
+ - Must retain copyright messages in all code.
+ - Stimpy, Thalen and Zenithar must be credited on greeting screen.
+@@k)@@N
+ Thanks to:
+ ...Maharet, Requiem and Rupert from the original Ack! for all their help.
+ ...SoE for provding the official site for Ack!Mud
+ ...The guys&gals at Diku and Merc for writing the original code  (:
+        To contact Zenithar, E-Mail zenithar@ackmud.nuc.net
+@@k)@@N
+                   Visit the Ack!Mud Home page at:
+                      http://ackmud.nuc.net
+@@k)@@N
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
+~
+-1 prompt~
+@@NSyntax: prompt
+Syntax: prompt all
+Syntax: prompt <%*>
+ 
+PROMPT without an argument will turn your prompt on or off.
+ 
+PROMPT ALL will give you the standard "<hits mana moves>" prompt.
+ 
+PROMPT <%*> where "<%*>" are the various variables you may set for yourself.
+ 
+        %h :  Display your current hits.
+        %H :  Display your maximum hits.
+        %m :  Display your current mana.
+        %M :  Display your maximum mana.
+        %v :  Display your current moves.
+        %V :  Display your maximum moves.
+        %x :  Display your current experience points.
+        %g :  Display your current total gold held.
+        %a :  Display your current alignment.
+        %r :  Display current room name.
+        %R :  Display current room vnum  (IMMORTALs Only!).
+        %z :  Display area name  (IMMORTALs Only!)
+        %p :  Display moonphase.
+        %F :  Display current form.
+        %c :  Carriage-return.
+        %t :  Display mud-time.
+        %i :  Display whether or not your are invis or visible.
+        %s :  Display your current Stance.
+        %w :  Display experience still needed in a certain class.  Follow with 
+              the 2 letter class identifier used in the who output.
+              EXAMPLE: %wMa will give exp still needed for your next mage level.
+        %W :  same as above, but shows total exp needed for that class. 
+        %! :  current hitroll
+        %+ :  current damroll
+        %* :  current ac
+ 
+Example:  prompt <%hhp %mmn %vmv>
+ 
+  Will give you a prompt that looks like "<10hp 10mn 10mv>"
+  (Here, we assume 10 is what your character has..)
+ 
+  You may ask around for the best prompt forms, as others may have found one that they like, or experiment on your own and see what works for you.  Remember, you can put color in your prompts.. make certain numbers stand out.
+~ 
+
+
+
+

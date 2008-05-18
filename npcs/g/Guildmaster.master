@@ -1,0 +1,284 @@
+#MOB
+Revision     7
+Name         guildmaster master~
+ShortDescr   the guildmaster~
+LongDescr    Your guildmaster is standing here.
+~
+Description  You are in no doubt that this guildmaster is truly close to your god; he has
+a peaceful, loving look. You notice that he is surrounded by a white aura.
+You sense that he could destroy your mind with the slightest thought.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        102
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       15113
+Note         0
+Room         3785
+HpManaMove   6438 11694 1495 1515 100 100
+Gold         7270
+Balance      0
+Exp          203150081
+Act          4195331
+AffectedBy   8320
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        -239
+Wimpy        0
+Deaf         0
+Vnum         1106
+Affect  81  11   0   0       8192
+Affect   6   4 -12  24          0
+Affect   6   4  12  18          0
+End
+
+#OBJECT
+Nest         0
+Name         Staff of Magius~
+ShortDescr   the Staff of Magius~
+Description  A beautiful staff, it's tip a crystal held in a dragon's claw.
+~
+Vnum         7532
+ExtraFlags   0
+WearFlags    1
+WearLoc      0
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        49
+Timer        0
+Cost         23520
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ankh~
+ShortDescr   ankh~
+Description  The symbol of immortality rests just out of your reach.
+~
+Vnum         1713
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     4
+Weight       1
+Level        82
+Timer        0
+Cost         73953
+Values       81 11 11 60
+Spell 3      'influx'
+End
+
+#OBJECT
+Nest         0
+Name         ankh~
+ShortDescr   ankh~
+Description  The symbol of immortality rests just out of your reach.
+~
+Vnum         1713
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     4
+Weight       1
+Level        81
+Timer        0
+Cost         73062
+Values       80 11 11 60
+Spell 3      'influx'
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        25
+Timer        0
+Cost         6250
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        25
+Timer        0
+Cost         7436
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helmet~
+ShortDescr   a standard issue helmet~
+Description  You see a standard issue helmet here.~
+Vnum         3027
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        26
+Timer        0
+Cost         7150
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         cloak brown~
+ShortDescr   a brown cloak~
+Description  Someone has left a brown cloak here.~
+Vnum         9802
+ExtraFlags   1
+WearFlags    5
+WearLoc      3
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        44
+Timer        0
+Cost         21780
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings brown~
+ShortDescr   brown leggings~
+Description  Someone has left some brown leggings here.~
+Vnum         9804
+ExtraFlags   1
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        43
+Timer        0
+Cost         20812
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest brown~
+ShortDescr   a brown vest~
+Description  Someone has left a brown vest here.~
+Vnum         9805
+ExtraFlags   1
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        30
+Timer        0
+Cost         8990
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         26244
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Kite shield~
+ShortDescr   a Kite Shield~
+Description  A Kite Shield has been left here~
+Vnum         10065
+ExtraFlags   512
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         31482
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         belt leather~
+ShortDescr   a leather belt~
+Description  A strong, leather belt has been left here.~
+Vnum         9613
+ExtraFlags   0
+WearFlags    2049
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        56
+Timer        0
+Cost         31360
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         stone hammer~
+ShortDescr   a stone hammer~
+Description  A large stone hammer has been left here.~
+Vnum         9612
+ExtraFlags   0
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       3
+Level        55
+Timer        0
+Cost         26730
+Values       0 10 24 7
+End
+
+#END

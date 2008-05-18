@@ -1,0 +1,124 @@
+#PLAYER
+Revision     15
+Name         CreatorBSD~
+ShortDescr   ~
+LongDescr    ~
+Description  ~
+Prompt       <%hhp %mm %vmv> ~
+Sex          1
+LoginSex     1
+Class        3
+Race         13
+Level        85
+Sentence     0
+Invis        0
+Incog		 0
+m/c          85 85 85 85 85 
+Remort       85 85 85 85 85 
+Adeptlevel   -1
+ Trust        0
+Wizbit       0
+Played       303
+Note         0
+Room         3700
+HpManaMove   2209 2209 1126 1126 6078 6078
+Money 8 0 0 0 0 0 0 0 0 
+BankMoney 8 0 0 0 0 0 0 0 0 
+Exp          0
+Act          0
+Config       2408
+AffectedBy   0
+Position     7
+Practice     2588
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Generation   0
+Clan         0
+Order        3 2 1 0 4
+Index	   3 2 1 0 4
+Mkills	   0
+Mkilled	   0
+Pkills	   0
+Pkilled	   0
+Password     $1$CreatorB$XTZd7KD970aTGQ01RJpvY.~
+Bamfin       ~
+Bamfout      ~
+Roomenter    ~
+Roomexit     ~
+Title         King of Da Mud!~
+Immskll     wizhelp creator ) sedit alist alink mpcr mpstat halls lhunt sstat cset whoname sysdata clutchinfo advance setclass doggy togbuild togleader isnoop trust deathmatc deathmatch resetpasswd iscore iwhere fights allow iban deny freeze reboo reboot hotreboo hotreboot shutdow shutdown users wizify wizlock imtlset for force log mload monitor areasave mset mgive noemote nopray notell oload oset owhere pardon peace purge iquest restore silence slay snoop sset transfer transdm at bamfin bamfout echo goto holylight invis memory mfind mfindlev mstat mwhere ofind ostat recho return rstat slookup switch immtalk : reward setcouncil resetgain exlist vlist olmsg ofindlev prename scheck immbrand otype owear findreset rinfo rsockets rconnect rdisconnect rignore imc rchanset icommand isetup ~
+Whoname      W    Da Boss   ~
+Monitor	   0
+Host         Unknown!~
+Failures     0
+LastLogin    Fri Jun 12 12:18:02 1998
+~
+IMC	   0
+IMCAllow     0
+IMCDeny      0
+ICEListen    ~
+HiCol	   y~
+DimCol	   b~
+TermRows    25
+TermColumns    80
+Email   not set~
+EmailValid    0
+AssistMsg     '@@eBANZAI!!@@N $N must be assisted!!@@N'~
+Alias_Name0 <none>~
+Alias0      <none>~
+Alias_Name1 <none>~
+Alias1      <none>~
+Alias_Name2 <none>~
+Alias2      <none>~
+Alias_Name3 <none>~
+Alias3      <none>~
+Alias_Name4 <none>~
+Alias4      <none>~
+Alias_Name5 <none>~
+Alias5      <none>~
+colors
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+AttrPerm     13 13 13 13 13
+AttrMod      0 0 0 0 0
+AttrMax      23 8 11 17 18
+Bloodlust    24
+Bloodlustmax   0
+Vamplevel      0
+Vampexp       0
+Vampskillnum  0
+Vampskillmax  0
+Vampbloodline 0
+Vamppracs     0
+Hasexpfix     1
+Questpoints   0
+RecallVnum    3001
+GainMana      1126
+GainHp        2209
+GainMove      6078
+RulerRank    0
+Condition    0 47 46
+Pagelen      20
+Pflags       0
+Skill        101 'stone skin'
+End
+
+#END

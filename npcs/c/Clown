@@ -1,0 +1,65 @@
+#MOB
+Revision     7
+Name         clown~
+ShortDescr   the clown~
+LongDescr    A stupid-looking clown staggers about the room, trying to be funny.
+~
+Description  The clown is wearing brightly coloured clothes, which are far to big for
+him, as are the shoes on his feet, which look like they could be used as
+flippers!  His face is painted red and yellow, and a fake smile is painted
+around his mouth.  Working here, he neeeds it.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        23
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       26681
+Note         0
+Room         300
+HpManaMove   839 839 232 345 100 100
+Gold         59
+Balance      0
+Exp          4685
+Act          4194433
+AffectedBy   41088
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    500
+Hitroll      0
+Damroll      0
+Armor        32
+Wimpy        0
+Deaf         0
+Vnum         9447
+Affect   6   8  -2  24          0
+Affect   6   8   2  18          0
+Affect  81  11   0   0       8192
+Affect  84   5   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         breast plate~
+ShortDescr   breastplate~
+Description  A breast plate~
+Vnum         300
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        5
+Timer        0
+Cost         396
+Values       5 10 10 10
+End
+
+#END

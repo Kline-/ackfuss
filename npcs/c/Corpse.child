@@ -1,0 +1,46 @@
+#MOB
+Revision     7
+Name         corpse child~
+ShortDescr   corpse of a young child~
+LongDescr    The swaying corpse of a young child stands here, trying to comprehend.
+~
+Description  This poor creature appears to once have been a sweet, innocent child.
+The large, open gash across her white neck tells you that she should be dead,
+but this thing in front of you proves you wrong.  
+~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        80
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       4627
+Note         0
+Room         1119
+HpManaMove   3969 5638 276 1200 100 100
+Gold         307
+Balance      0
+Exp          15748416
+Act          4210819
+AffectedBy   640
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -1000
+Hitroll      0
+Damroll      0
+Armor        -150
+Wimpy        0
+Deaf         0
+Vnum         416
+Affect  92   6 -40  17          0
+Affect  84   3   0   0        128
+Affect   6   2  -9  24          0
+Affect   6   2   9  18          0
+End
+
+#END

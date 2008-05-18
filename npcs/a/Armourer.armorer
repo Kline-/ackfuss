@@ -1,0 +1,350 @@
+#MOB
+Revision     7
+Name         armourer armorer~
+ShortDescr   the armourer~
+LongDescr    An armourer stands here.
+~
+Description  An old but very strong armourer, he has made more armours in his
+lifetime than you have ever seen.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        81
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       26926
+Note         0
+Room         6016
+HpManaMove   5395 5854 620 1215 100 100
+Gold         1585
+Balance      0
+Exp          1839859
+Act          4194307
+AffectedBy   128
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -1000
+Hitroll      0
+Damroll      0
+Armor        -219
+Wimpy        0
+Deaf         0
+Vnum         3004
+Affect  84   5   0   0        128
+Affect   6   5 -10  24          0
+Affect   6   5  10  18          0
+End
+
+#OBJECT
+Nest         0
+Name         jerkin scale mail~
+ShortDescr   a scale mail jerkin~
+Description  A scale mail jerkin is lying on the ground.~
+Vnum         3072
+ExtraFlags   8192
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       20
+Level        9
+Timer        0
+Cost         1000
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         coif scale mail~
+ShortDescr   a scale mail coif~
+Description  A scale mail coif is lying on the ground.~
+Vnum         3073
+ExtraFlags   8192
+WearFlags    17
+WearLoc      6
+ClassFlags   1
+ItemType     9
+Weight       4
+Level        5
+Timer        0
+Cost         360
+Values       3 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         skirt scale mail~
+ShortDescr   a long scale mail skirt~
+Description  A long scale mail skirt is lying on the ground.~
+Vnum         3074
+ExtraFlags   8192
+WearFlags    33
+WearLoc      7
+ClassFlags   1
+ItemType     9
+Weight       20
+Level        6
+Timer        0
+Cost         330
+Values       4 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots reinforced~
+ShortDescr   a pair of reinforced boots~
+Description  A pair of reinforced boots lies here.~
+Vnum         3075
+ExtraFlags   8192
+WearFlags    65
+WearLoc      8
+ClassFlags   1
+ItemType     9
+Weight       6
+Level        13
+Timer        0
+Cost         1690
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         gloves reinforced~
+ShortDescr   a pair of reinforced gloves~
+Description  A pair of reinforced gloves is lying on the ground.~
+Vnum         3076
+ExtraFlags   8192
+WearFlags    129
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        7
+Timer        0
+Cost         480
+Values       4 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sleeves scale mail~
+ShortDescr   a pair of scale mail sleeves~
+Description  A pair of scale mail sleeves is lying on the ground.~
+Vnum         3077
+ExtraFlags   8192
+WearFlags    257
+WearLoc      10
+ClassFlags   1
+ItemType     9
+Weight       8
+Level        15
+Timer        0
+Cost         2475
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         shield small metal~
+ShortDescr   a small metal shield~
+Description  A small metal shield is lying on the ground.~
+Vnum         3097
+ExtraFlags   8192
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        10
+Timer        0
+Cost         990
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         suit leather studded armour~
+ShortDescr   a suit of studded leather armour~
+Description  A small suit of studded leather armour has been left here to rot.~
+Vnum         6003
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        33
+Timer        0
+Cost         9504
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sleeves studded leather~
+ShortDescr   a pair of studded leather sleeves~
+Description  A pair of studded leather sleeves have been left here.~
+Vnum         6013
+ExtraFlags   0
+WearFlags    257
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        33
+Timer        0
+Cost         11220
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings studded leather~
+ShortDescr   a pair of studded leather leggings~
+Description  A pair of studded leather leggings have been left here.~
+Vnum         6014
+ExtraFlags   0
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        32
+Timer        0
+Cost         10230
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         gloves studded leather~
+ShortDescr   a pair of studded leather gloves~
+Description  A pair of studded leather gloves have been left here.~
+Vnum         6015
+ExtraFlags   0
+WearFlags    129
+WearLoc      9
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        33
+Timer        0
+Cost         12342
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots studded leather~
+ShortDescr   a pair of studded leather boots~
+Description  A pair of studded leather boots have been left here.~
+Vnum         6016
+ExtraFlags   0
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        31
+Timer        0
+Cost         10571
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leather cap~
+ShortDescr   a leather cap~
+Description  A leather cap has been left here.~
+Vnum         6025
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        32
+Timer        0
+Cost         11253
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         belt studded leather~
+ShortDescr   a studded leather belt~
+Description  A belt of studded leather rests here.~
+Vnum         6030
+ExtraFlags   0
+WearFlags    2049
+WearLoc      13
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        31
+Timer        0
+Cost         9610
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer studded leather~
+ShortDescr   a studded leather bracer~
+Description  A studded leather bracer rests here.~
+Vnum         6033
+ExtraFlags   0
+WearFlags    4097
+WearLoc      15
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        33
+Timer        0
+Cost         10890
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer studded leather~
+ShortDescr   a studded leather bracer~
+Description  A studded leather bracer rests here.~
+Vnum         6033
+ExtraFlags   0
+WearFlags    4097
+WearLoc      14
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        32
+Timer        0
+Cost         10560
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         shield leather studded~
+ShortDescr   a studded leather shield~
+Description  A shield made of studded leather rests here.~
+Vnum         6037
+ExtraFlags   0
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        33
+Timer        0
+Cost         10560
+Values       5 0 0 0
+End
+
+#END

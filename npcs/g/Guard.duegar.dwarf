@@ -1,0 +1,64 @@
+#MOB
+Revision     7
+Name         guard duegar dwarf~
+ShortDescr   a duegar guard~
+LongDescr    A short stocky patrolman eyes you suspiciously.
+~
+Description  He's dirty and grimy.  The only reason he is a guard is because he's too old
+to work the mines.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        50
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       12952
+Note         0
+Room         7581
+HpManaMove   2204 2204 750 750 100 100
+Gold         94
+Balance      0
+Exp          597499
+Act          6291465
+AffectedBy   128
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -750
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         18251
+Affect  92   8 -40  17          0
+Affect  84   4   0   0        128
+Affect   6   6  -6  24          0
+Affect   6   6   6  18          0
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a longsword~
+Description  A well-used longsword lays discarded here.
+~
+Vnum         7531
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       1
+Level        26
+Timer        0
+Cost         6318
+Values       0 6 14 3
+End
+
+#END

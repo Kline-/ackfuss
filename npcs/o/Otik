@@ -1,0 +1,85 @@
+#MOB
+Revision     7
+Name         Otik~
+ShortDescr   Otik Sandeth~
+LongDescr    Otik Sandeth stands here, pinching coins
+~
+Description  A slightly balding middle aged man with a rather round belly stands here
+polishing a glass proudly.  You might notice a rather fierce pride
+showing through...Otik KNOWS his ale is the best in the Realm.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        38
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       2245
+Note         0
+Room         7618
+HpManaMove   1567 1863 526 570 100 100
+Gold         20
+Balance      0
+Exp          31263
+Act          4194307
+AffectedBy   8320
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        -18
+Wimpy        0
+Deaf         0
+Vnum         7531
+Affect  92   6 -40  17          0
+Affect   6   9  -4  24          0
+Affect   6   9   4  18          0
+Affect  81  12   0   0       8192
+Affect  84   2   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         Ale Tankard~
+ShortDescr   an Ale Tankard~
+Description  An Ale Tankard has been left here...obviously empty.
+~
+Vnum         7502
+ExtraFlags   8192
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     17
+Weight       1
+Level        0
+Timer        0
+Cost         10
+Values       20 20 4 0
+End
+
+#OBJECT
+Nest         0
+Name         spiced potatoes~
+ShortDescr   spiced Potatoes~
+Description  A sizzling skilet of spiced potatoes.
+~
+Vnum         7698
+ExtraFlags   8192
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     19
+Weight       1
+Level        0
+Timer        0
+Cost         9
+Values       40 0 0 0
+End
+
+#END

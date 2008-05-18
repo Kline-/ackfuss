@@ -1,0 +1,40 @@
+#MOB
+Revision     7
+Name         kird ape king~
+ShortDescr   the kird ape king~
+LongDescr    A giant ape sits here eating ants.
+~
+Description  Hes big, hes powerful, his name isn't Lowie.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        32
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       12775
+Note         0
+Room         3301
+HpManaMove   1 1270 480 480 100 100
+Gold         5763
+Balance      0
+Exp          1
+Act          4194355
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         6136
+End
+
+#END

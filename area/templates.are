@@ -1,0 +1,351 @@
+#AREA
+Quest Object Templates~
+Q 16
+K none ~
+L { QUEST }~
+N 1
+I 1 1
+V 66 165
+X 0
+F 15
+U Dominia moans in yearning for Zenithar's touch.~
+O dominia~
+R gods ~
+W gods ~
+S Title not shown on area list.
+#ROOMS
+#66
+New room~
+No description~
+4 11
+D1
+~
+~
+0 -1 67
+S
+#67
+Stevie's Living Room~
+@@k).....................@@W@@f\@@N@@y/\@@W@@f/@@N         \br
+@@k).....................@@y<@@k..@@y>@@N              \br
+@@k).....................@@W@@f/@@N@@y\/@@W@@f\@@N           \br
+@@k)......................@@G/@@G\               \br
+@@k).....................@@G/@@k..@@G\              \br
+@@k).....................@@G/@@k.@@l@@f+@@N@@G\             \br
+@@k)....................@@G/@@k.@@y*@@k..@@G\            \br
+@@k)...................@@G/@@k..@@e.@@k..@@y.@@G\           \br
+@@k).................................@@G/@@k.@@W.@@k...@@l.@@G\          \br
+@@k)................................@@G/@@k.@@l*@@k...@@r@@f+@@N@@k..@@G\         \br
+@@k)...............................@@G/@@k.@@W@@f+@@N@@k...@@R*@@k....@@G\        \br
+@@k)...............................@@G/@@k.@@l@@f+@@N@@k.@@r@@f+@@N@@k..@@y*@@k..@@G\       \br
+@@k)..............................@@G/@@k.@@a@@f+@@N@@k..@@l*@@k..@@r.@@k.@@l@@f+@@N@@k@@G\      \br
+@@k).............................@@G/@@k...@@W*@@k.@@r*@@k....@@y*@@k.@@a@@f+@@k@@G\     \br
+@@k)............................@@G^^^^^^^^^^^^^^^^^^       \br
+@@k)....................................@@b||                  \br
+@@k)....................................@@b||@@N                  \br
+~
+0 11
+D0
+~
+~
+0 -1 68
+D3
+~
+~
+0 -1 66
+S
+#68
+New room~
+No description~
+0 11
+D2
+~
+~
+0 -1 67
+S
+#0
+#MOBILES
+#66
+delvar~
+@@lDelvar @@dIron@@bFist@@N~
+@@lDelvar @@dIron@@bFist@@N, Singer of Dwarven Songs
+~
+~
+24117257 544 0 S
+62 1
+0 0 0
+! 3 0 2 7 80370 0 16
+| 0 0 0 0 0 16 0
+#67
+silverleaf~
+@@gSilver@@GLeaf @@WHalfmoon@@N~
+@@gSilver@@GLeaf @@WHalfmoon@@N, of The GoldenStar Elves
+~
+~
+24117257 33312 0 S
+58 1
+0 0 0
+! 4 0 3 7 2 6283264 16
+| 1024 0 0 0 0 0 0
+#69
+morganth~
+@@mMorganth @@dthe Mysterious@@N~
+@@mMorganth @@dthe Mysterious@@N, Follower of Magic
+~
+~
+24117257 1049148 0 S
+59 1
+0 0 0
+! 0 0 0 7 0 1022 48
+| 1 32 0 0 0 1 32
+#0
+#OBJECTS
+#66
+zenithars yinyang~
+@@mZenithar's @@pYin@@mYang@@N~
+@@mZenithar's @@psymbol @@Gof interdependence.@@N~
+16 0 8388608 1
+4 4 400 4000 0 0 0 0 0 0
+1
+L
+3
+#67
+cyberlichs soggy socks~
+@@dCyberlich's @@GSoggy @@bSocks@@N~
+@@GThese are the very same @@bsocks @@Gthat saw @@dCyber @@Gall through the war.@@N~
+16 0 8388608 1
+3 3 300 3000 0 0 0 0 0 0
+1
+L
+3
+#68
+dominias black soul~
+@@RDominia's @@dBlack @@WSoul@@N~
+@@RDominia's @@dBlack @@WSoul @@Genvelops you.@@N~
+16 0 8388608 1
+3 3 300 3000 0 0 0 0 0 0
+1
+E
+dom~
+~
+L
+3
+#69
+stimpys djgpp compiler~
+@@lStimpy's @@gDJGPP Compiler@@N~
+@@GThe very first @@gcompiler @@lStimpy @@Gever used.@@N~
+16 0 8388608 1
+1 1 100 1000 0 0 0 0 0 0
+1
+L
+3
+#70
+thalens olc~
+@@eThalen's @@dOLC@@N~
+@@eThalen's @@dOnline Compiler @@Gused to dynamically build areas.@@N~
+16 0 8388608 1
+1 1 100 1000 0 0 0 0 0 0
+1
+L
+3
+#71
+spectrums ice~
+@@cSpectrum's @@aICE@@N~
+@@cSpectrum's @@aIntegrated Customization Engine @@Gused for intermud communication.@@N~
+16 0 8388608 1
+2 2 200 2000 0 0 0 0 0 0
+1
+L
+3
+#72
+altrags map~
+@@bAltrag's @@dMap@@N~
+@@bAltrag's @@dMap @@Gshows you were you've been.@@N~
+16 0 8388608 1
+2 2 200 2000 0 0 0 0 0 0
+1
+L
+3
+#73
+present~
+@@NA brightly wrapped Christmas Present@@N~
+A Christmas Present wrapped in red and green paper, with a golden bow.@@N~
+32 0 8388608 1
+0 0 0 0 0 0 74 20 0 0
+1
+L
+1
+#74
+intmob code~
+@@WA very long file titled "Int Mob Code, TOP SECRET!!"@@N~
+@@WA .c file containing several hundred lines of code.@@N
+~
+8 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#75
+azurite ring~
+@@lA@@Bz@@lu@@Br@@li@@Bt@@le@@N Ring~
+A ring with an opaque @@lm@@Bo@@lt@@Bt@@ll@@Be@@ld @@Bdeep blue@@N stone.
+~
+9 1 8396800 3
+0 0 0 0 0 0 0 0 0 0
+1
+A
+1 5
+L
+55
+#76
+banded agate ring~
+@@bB@@Ba@@Rn@@gd@@be@@Bd@@N Agate Ring~
+A ring with @@bbrown@@N, @@Bblue@@N, @@Rred@@N, and @@gwhite@@N stripes.
+~
+9 2 8396800 5
+0 0 0 0 0 0 0 0 0 0
+1
+A
+2 5
+L
+55
+#77
+blue quartz amulet~
+@@aBlue@@N Quartz Amulet~
+An amulet with a transparent pale @@ablue@@N stone.
+~
+9 4 8388736 9
+0 0 0 0 0 0 0 0 0 0
+1
+A
+3 5
+L
+55
+#78
+eye agate amulet~
+@@dE@@gy@@be @@BA@@Gg@@da@@gt@@be@@N Amulet~
+An amulet with concentric rings of @@dgray@@N, @@gwhite@@N, @@bbrown@@N,
+@@Bblue@@N, and @@Ggreen@@N
+~
+9 32 8388736 17
+0 0 0 0 0 0 0 0 0 0
+1
+A
+4 5
+L
+55
+#79
+halo of sneakiness~
+halo of @@dSneakiness@@N~
+A @@dshadowy @@Nhalo.
+~
+9 64 8388609 33
+0 0 0 0 0 0 0 0 0 0
+1
+A
+5 5
+L
+55
+#80
+morganths aura~
+@@mMorganth's @@gAura@@N~
+A @@msticky@@N looking @@gaura@@N.
+~
+9 128 8388610 65
+0 0 0 0 0 0 0 0 0 0
+1
+A
+6 1
+L
+55
+#0
+#RESETS
+M 0 66 1 66 (null)
+
+E 0 3097 0 17 (null)
+
+E 0 3074 0 7 (null)
+
+E 0 3076 0 9 (null)
+
+E 0 3075 0 8 (null)
+
+E 0 3077 0 10 (null)
+
+E 0 3072 0 5 (null)
+
+E 0 3073 0 6 (null)
+
+E 0 9626 0 16 (null)
+
+M 0 67 1 67 (null)
+
+E 0 9212 0 5 (null)
+
+E 0 9223 0 4 (null)
+
+E 0 9235 0 12 (null)
+
+E 0 9202 0 3 (null)
+
+E 0 9210 0 10 (null)
+
+E 0 9209 0 15 (null)
+
+E 0 9209 0 14 (null)
+
+E 0 9208 0 7 (null)
+
+E 0 9207 0 17 (null)
+
+E 0 9205 0 16 (null)
+
+E 0 9203 0 13 (null)
+
+E 0 9201 0 8 (null)
+
+M 0 69 1 68 (null)
+
+E 0 80 0 0 (null)
+
+E 0 79 0 0 (null)
+
+E 0 78 0 4 (null)
+
+E 0 77 0 3 (null)
+
+E 0 76 0 1 (null)
+
+E 0 75 0 2 (null)
+
+E 0 6025 0 6 (null)
+
+E 0 6013 0 10 (null)
+
+E 0 6033 0 15 (null)
+
+E 0 6033 0 14 (null)
+
+E 0 6015 0 9 (null)
+
+E 0 6030 0 13 (null)
+
+E 0 6003 0 5 (null)
+
+E 0 6014 0 7 (null)
+
+E 0 6016 0 8 (null)
+
+E 0 6004 0 0 (null)
+
+E 0 1305 0 16 (null)
+
+E 0 6035 0 17 (null)
+
+E 0 6021 0 12 (null)
+
+E 0 6017 0 18 (null)
+
+E 0 6018 0 19 (null)
+
+S
+#$

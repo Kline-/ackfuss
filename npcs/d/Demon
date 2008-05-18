@@ -1,0 +1,39 @@
+#MOB
+Revision     7
+Name         demon~
+ShortDescr   A demon~
+LongDescr    A black-skinned, red-eyed demon
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        28
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       3394
+Note         0
+Room         3301
+HpManaMove   1 1045 420 420 100 100
+Gold         2666
+Balance      0
+Exp          1
+Act          4194337
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         7517
+End
+
+#END

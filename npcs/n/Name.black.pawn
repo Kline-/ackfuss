@@ -1,0 +1,79 @@
+#MOB
+Revision     7
+Name         name Black Pawn~
+ShortDescr   The Black Pawn~
+LongDescr    The Black Pawn is here on duty.~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        54
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       13057
+Note         0
+Room         7581
+HpManaMove   1909 2923 790 810 100 100
+Gold         243
+Balance      0
+Exp          1664333
+Act          4194307
+AffectedBy   0
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -1000
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         10051
+Affect  92   2 -40  17          0
+Affect   6   8  -6  24          0
+Affect   6   8   6  18          0
+End
+
+#OBJECT
+Nest         0
+Name         Staff of Magius~
+ShortDescr   the Staff of Magius~
+Description  A beautiful staff, it's tip a crystal held in a dragon's claw.
+~
+Vnum         7532
+ExtraFlags   0
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        48
+Timer        0
+Cost         20736
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         hunter's bow~
+ShortDescr   a Hunter's Bow~
+Description  A beautiful bow, made from bull's horns.
+~
+Vnum         7528
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       1
+Level        20
+Timer        0
+Cost         4200
+Values       0 7 12 11
+End
+
+#END

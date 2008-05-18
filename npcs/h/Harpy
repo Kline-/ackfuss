@@ -1,0 +1,42 @@
+#MOB
+Revision     7
+Name         harpy~
+ShortDescr   the vicious harpy~
+LongDescr    A vicious harpy flaps her wings as she screams hatred at you.
+~
+Description  The harpy looks back at you, her beady eyes burning with hatred and malice.
+With an unhuman scream of anger she leaps at you, claws poised to rend the
+flesh from your body.
+~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        31
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       887
+Note         0
+Room         3301
+HpManaMove   1 989 465 465 100 100
+Gold         1421
+Balance      0
+Exp          1
+Act          4194419
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    -1000
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         16804
+End
+
+#END

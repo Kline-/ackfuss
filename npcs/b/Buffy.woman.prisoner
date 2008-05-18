@@ -1,0 +1,39 @@
+#MOB
+Revision     7
+Name         buffy woman prisoner~
+ShortDescr   Buffy, Niko's prisoner~
+LongDescr    A blonde woman is here, chained to the wall cursing.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        24
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       11394
+Note         0
+Room         3301
+HpManaMove   1 900 1 360 100 100
+Gold         0
+Balance      0
+Exp          52
+Act          4194307
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         3567
+End
+
+#END

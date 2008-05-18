@@ -1,0 +1,206 @@
+#MOB
+Revision     7
+Name         deinonychus dino~
+ShortDescr   the Deinonychus~
+LongDescr    A small, man-sized Deinonychus darts about, getting ready to attack.
+~
+Description  The Deiononychus, due to it's small size, is an excellent fighter.  It looks
+almost intelligent.  It stares at you for a moment, before continuing to dart
+around you.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        69
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       5000
+Note         0
+Room         3033
+HpManaMove   4327 5346 1023 1035 100 100
+Gold         199
+Balance      0
+Exp          3125682
+Act          4194509
+AffectedBy   8192
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -300
+Hitroll      0
+Damroll      0
+Armor        -130
+Wimpy        0
+Deaf         0
+Vnum         5008
+Affect  92   6 -40  17          0
+Affect  81   2   0   0       8192
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        27
+Timer        0
+Cost         6760
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        27
+Timer        0
+Cost         7290
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         7722
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         gloves~
+ShortDescr   a pair of standard issue gloves~
+Description  You see a pair of standard issue gloves here.~
+Vnum         3024
+ExtraFlags   0
+WearFlags    129
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        28
+Timer        0
+Cost         8624
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        28
+Timer        0
+Cost         6804
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        28
+Timer        0
+Cost         8624
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sword~
+ShortDescr   a standard issue sword~
+Description  You see a standard issue sword here.~
+Vnum         3037
+ExtraFlags   64
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       5
+Level        28
+Timer        0
+Cost         6804
+Values       0 7 16 3
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        26
+Timer        0
+Cost         7020
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helmet~
+ShortDescr   a standard issue helmet~
+Description  You see a standard issue helmet here.~
+Vnum         3027
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         6561
+Values       6 0 0 0
+End
+
+#END

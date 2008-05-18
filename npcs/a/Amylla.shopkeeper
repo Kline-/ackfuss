@@ -1,0 +1,332 @@
+#MOB
+Revision     7
+Name         amylla shopkeeper~
+ShortDescr   Amylla Goldeneyes~
+LongDescr    Amylla Goldeneyes bakes her way through the day's order here.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        68
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       4960
+Note         0
+Room         10060
+HpManaMove   2444 3488 965 1020 100 100
+Gold         1020
+Balance      0
+Exp          4885192
+Act          4194435
+AffectedBy   41640
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -1
+Hitroll      0
+Damroll      0
+Armor        -127
+Wimpy        0
+Deaf         0
+Vnum         9215
+Affect  84   3   0   0        128
+Affect   6  11  -8  24          0
+Affect   6  11   8  18          0
+Affect  92   2 -40  17          0
+End
+
+#OBJECT
+Nest         0
+Name         blueberry muffin~
+ShortDescr   a blueberry muffin~
+Description  A scrumptious blueberry muffin tempts you here.~
+Vnum         9215
+ExtraFlags   8192
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     19
+Weight       1
+Level        0
+Timer        0
+Cost         11
+Values       50 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         chocolate donut~
+ShortDescr   a chocolate donut~
+Description  A yummy chocolate donut beckons to you.~
+Vnum         9214
+ExtraFlags   8192
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     19
+Weight       1
+Level        0
+Timer        0
+Cost         11
+Values       40 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         black Crown~
+ShortDescr   black Crown~
+Description  The Gleaming Black Crown~
+Vnum         10062
+ExtraFlags   512
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        66
+Timer        0
+Cost         38610
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Kite Shield~
+ShortDescr   a Kite Shield.~
+Description  A Kite Shield has been left here~
+Vnum         10050
+ExtraFlags   1024
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         27560
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10064
+ExtraFlags   512
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         30316
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         25272
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        52
+Timer        0
+Cost         29733
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10064
+ExtraFlags   512
+WearFlags    16385
+WearLoc      17
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        52
+Timer        0
+Cost         29744
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        53
+Timer        0
+Cost         30888
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bible~
+ShortDescr   the Bible~
+Description  The Bible has been left here~
+Vnum         10064
+ExtraFlags   512
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        52
+Timer        0
+Cost         24336
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         pair shoes priest~
+ShortDescr   a Pair Of Priests~
+Description  A Pair of Priests are here to protect you souls~
+Vnum         10061
+ExtraFlags   512
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        52
+Timer        0
+Cost         30316
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Kite shield~
+ShortDescr   a Kite Shield~
+Description  A Kite Shield has been left here~
+Vnum         10065
+ExtraFlags   512
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        51
+Timer        0
+Cost         26010
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Kite shield~
+ShortDescr   a Kite Shield~
+Description  A Kite Shield has been left here~
+Vnum         10065
+ExtraFlags   512
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        52
+Timer        0
+Cost         26520
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Kite shield~
+ShortDescr   a Kite Shield~
+Description  A Kite Shield has been left here~
+Vnum         10065
+ExtraFlags   512
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        50
+Timer        0
+Cost         26950
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         Broad Sword~
+ShortDescr   a Steel Broadsword~
+Description  A Steel Broadsword has been dropped here
+~
+Vnum         10060
+ExtraFlags   512
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       1
+Level        51
+Timer        0
+Cost         23409
+Values       0 8 24 3
+End
+
+#OBJECT
+Nest         0
+Name         Kite shield~
+ShortDescr   a Kite Shield~
+Description  A Kite Shield has been left here~
+Vnum         10065
+ExtraFlags   512
+WearFlags    513
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        50
+Timer        0
+Cost         22491
+Values       8 0 0 0
+End
+
+#END

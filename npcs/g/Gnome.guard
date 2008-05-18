@@ -1,0 +1,458 @@
+#MOB
+Revision     7
+Name         gnome guard~
+ShortDescr   the gnome guard~
+LongDescr    The gnome guard wanders around the tunnels ensuring that no trouble is about.
+~
+Description  The gnome guard is scarred from battles with kobolds and goblins.  His armour
+is simple and small to fit his torso, but stands up well to the battles he
+encounters.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        33
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       13870
+Note         0
+Room         3015
+HpManaMove   1121 1346 495 495 100 100
+Gold         1128
+Balance      0
+Exp          92547
+Act          4194373
+AffectedBy   33416
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        -91
+Wimpy        0
+Deaf         0
+Vnum         6012
+Affect  84   1   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         suit leather studded armour~
+ShortDescr   a suit of studded leather armour~
+Description  A small suit of studded leather armour has been left here to rot.~
+Vnum         6003
+ExtraFlags   0
+WearFlags    9
+WearLoc      5
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        31
+Timer        0
+Cost         9300
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         sleeves studded leather~
+ShortDescr   a pair of studded leather sleeves~
+Description  A pair of studded leather sleeves have been left here.~
+Vnum         6013
+ExtraFlags   0
+WearFlags    257
+WearLoc      10
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        31
+Timer        0
+Cost         9610
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings studded leather~
+ShortDescr   a pair of studded leather leggings~
+Description  A pair of studded leather leggings have been left here.~
+Vnum         6014
+ExtraFlags   0
+WearFlags    33
+WearLoc      7
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        31
+Timer        0
+Cost         9900
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         gloves studded leather~
+ShortDescr   a pair of studded leather gloves~
+Description  A pair of studded leather gloves have been left here.~
+Vnum         6015
+ExtraFlags   0
+WearFlags    129
+WearLoc      9
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        30
+Timer        0
+Cost         9900
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots studded leather~
+ShortDescr   a pair of studded leather boots~
+Description  A pair of studded leather boots have been left here.~
+Vnum         6016
+ExtraFlags   0
+WearFlags    65
+WearLoc      8
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        31
+Timer        0
+Cost         10560
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leather cap~
+ShortDescr   a leather cap~
+Description  A leather cap has been left here.~
+Vnum         6025
+ExtraFlags   0
+WearFlags    17
+WearLoc      6
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        31
+Timer        0
+Cost         9920
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         belt studded leather~
+ShortDescr   a studded leather belt~
+Description  A belt of studded leather rests here.~
+Vnum         6030
+ExtraFlags   0
+WearFlags    2049
+WearLoc      13
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        31
+Timer        0
+Cost         8370
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer studded leather~
+ShortDescr   a studded leather bracer~
+Description  A studded leather bracer rests here.~
+Vnum         6033
+ExtraFlags   0
+WearFlags    4097
+WearLoc      14
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        32
+Timer        0
+Cost         11253
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer studded leather~
+ShortDescr   a studded leather bracer~
+Description  A studded leather bracer rests here.~
+Vnum         6033
+ExtraFlags   0
+WearFlags    4097
+WearLoc      15
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        30
+Timer        0
+Cost         8700
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         shield leather studded~
+ShortDescr   a studded leather shield~
+Description  A shield made of studded leather rests here.~
+Vnum         6037
+ExtraFlags   0
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        30
+Timer        0
+Cost         9570
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         horn~
+ShortDescr   a Unicorn's Horn~
+Description  A forcibly-removed Unicorn's Horn.  yuck!~
+Vnum         7526
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     3
+Weight       5
+Level        33
+Timer        0
+Cost         10560
+Values       61 10 10 2
+Spell 3      'armor'
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        26
+Timer        0
+Cost         6760
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        26
+Timer        0
+Cost         6500
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer~
+ShortDescr   a standard issue bracer~
+Description  You see a standard issue bracer here.~
+Vnum         3017
+ExtraFlags   0
+WearFlags    4097
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        25
+Timer        0
+Cost         6240
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      0
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        26
+Timer        0
+Cost         6318
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        26
+Timer        0
+Cost         6318
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         7020
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helmet~
+ShortDescr   a standard issue helmet~
+Description  You see a standard issue helmet here.~
+Vnum         3027
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        25
+Timer        0
+Cost         6500
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         short sword~
+ShortDescr   a short sword~
+Description  A short sword has been left to rust here.~
+Vnum         6002
+ExtraFlags   0
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       4
+Level        30
+Timer        0
+Cost         9570
+Values       0 6 16 3
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        25
+Timer        0
+Cost         5616
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        26
+Timer        0
+Cost         6750
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        27
+Timer        0
+Cost         7722
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         cloak~
+ShortDescr   a standard issue cloak~
+Description  You see a standard issue cloak here.~
+Vnum         3028
+ExtraFlags   0
+WearFlags    5
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        26
+Timer        0
+Cost         6875
+Values       6 0 0 0
+End
+
+#END

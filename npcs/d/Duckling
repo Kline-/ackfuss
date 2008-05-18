@@ -1,0 +1,40 @@
+#MOB
+Revision     7
+Name         duckling~
+ShortDescr   the duckling~
+LongDescr    A duckling is swimming around in the pond.
+~
+Description  The duckling is adorable, it looks most of all like a tiny furball.
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        4
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       17763
+Note         0
+Room         9556
+HpManaMove   74 74 58 60 100 100
+Gold         48
+Balance      0
+Exp          531
+Act          4194305
+AffectedBy   512
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        88
+Wimpy        0
+Deaf         0
+Vnum         3122
+End
+
+#END

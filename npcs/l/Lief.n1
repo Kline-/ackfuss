@@ -1,0 +1,176 @@
+#MOB
+Revision     7
+Name         Lief n1~
+ShortDescr   Lief the WoodCarver~
+LongDescr    Lief, the Woodcarver of Sithehenn
+~
+Description  A short and burly little man, he stares at you with distant trance like eyes.
+Appearing to be more dwarvish then human you can help but wonder where did the
+city find a guy like this. In his hands he carries his most prized possesions,
+which he sells. The little tinker games that the children of Sithehen came to
+love and adore.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        60
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       533
+Note         0
+Room         3004
+HpManaMove   3616 3848 900 900 100 100
+Gold         526
+Balance      0
+Exp          930336
+Act          4194319
+AffectedBy   8576
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    0
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         6509
+Affect  45  12  78  17        256
+Affect  92   5 -40  17          0
+Affect   6  11  -7  24          0
+Affect   6  11   7  18          0
+Affect  81  15   0   0       8192
+Affect  84   2   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        28
+Timer        0
+Cost         9251
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        29
+Timer        0
+Cost         7056
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        29
+Timer        0
+Cost         8410
+Values       7 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         bracer~
+ShortDescr   a standard issue bracer~
+Description  You see a standard issue bracer here.~
+Vnum         3017
+ExtraFlags   0
+WearFlags    4097
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        28
+Timer        0
+Cost         7560
+Values       6 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         banner~
+ShortDescr   a war banner~
+Description  A war banner is on the floor here.~
+Vnum         3015
+ExtraFlags   65
+WearFlags    1
+WearLoc      -1
+ClassFlags   1
+ItemType     1
+Weight       1
+Level        28
+Timer        0
+Cost         8120
+Values       0 0 -1 0
+End
+
+#OBJECT
+Nest         0
+Name         ring signet~
+ShortDescr   a city guard signet ring~
+Description  You see a ring with a strange symbol on the floor.~
+Vnum         3016
+ExtraFlags   64
+WearFlags    3
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        28
+Timer        0
+Cost         6804
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         vest~
+ShortDescr   a standard issue vest~
+Description  You see a standard issue vest here.~
+Vnum         3034
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        28
+Timer        0
+Cost         7047
+Values       5 0 0 0
+End
+
+#END

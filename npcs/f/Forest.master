@@ -1,0 +1,59 @@
+#MOB
+Revision     7
+Name         forest master~
+ShortDescr   The Forestmaster~
+LongDescr    The Forestmaster~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          2
+Class        0
+Race         0
+Level        34
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       7859
+Note         0
+Room         9462
+HpManaMove   998 1214 510 510 100 100
+Gold         446
+Balance      0
+Exp          36084
+Act          4194307
+AffectedBy   8320
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    1000
+Hitroll      0
+Damroll      0
+Armor        -6
+Wimpy        0
+Deaf         0
+Vnum         7527
+Affect  81  12   0   0       8192
+Affect  84   4   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         horn~
+ShortDescr   a Unicorn's Horn~
+Description  A forcibly-removed Unicorn's Horn.  yuck!~
+Vnum         7526
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     3
+Weight       5
+Level        32
+Timer        0
+Cost         9504
+Values       60 9 9 2
+Spell 3      'armor'
+End
+
+#END

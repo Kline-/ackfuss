@@ -1,0 +1,40 @@
+#MOB
+Revision     7
+Name         driller killer~
+ShortDescr   driller killer~
+LongDescr    Driller Killer, the mean puppet stands here, waiting to kill you.  Run!?!?
+~
+Description  Driller Killer is a small doll, but has a large, sharp head.
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        46
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       4473
+Note         0
+Room         3301
+HpManaMove   1 2240 41 690 100 100
+Gold         3922
+Balance      0
+Exp          1
+Act          4194359
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    -900
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         4404
+End
+
+#END

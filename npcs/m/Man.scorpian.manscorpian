@@ -1,0 +1,41 @@
+#MOB
+Revision     7
+Name         man scorpian manscorpian~
+ShortDescr   a manscorpian~
+LongDescr    A Manscorpian is here, out on patrol.
+~
+Description  The manscorpian, as its name suggests, is a mix of scorpian (lower body) and
+of man (upper body).  It looks pretty big, and pretty angry to see you!
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        53
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       2072
+Note         0
+Room         3301
+HpManaMove   1 2752 246 795 100 100
+Gold         0
+Balance      0
+Exp          223
+Act          4194405
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    -230
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         9629
+End
+
+#END

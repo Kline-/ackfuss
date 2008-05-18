@@ -1,0 +1,440 @@
+#MOB
+Revision     7
+Name         king charles~
+ShortDescr   the ex-king~
+LongDescr    A regal looking man stands here.
+~
+Description  Looking closer, you realise that he is the Ex-King of Kiess.  He looks old,
+and bored with life.  He also looks bloody large!
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        86
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       2570
+Note         0
+Room         9725
+HpManaMove   4053 5813 1180 1290 100 100
+Gold         864
+Balance      0
+Exp          38549640
+Act          4194311
+AffectedBy   8832
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    500
+Hitroll      0
+Damroll      0
+Armor        -203
+Wimpy        0
+Deaf         0
+Vnum         122
+Affect  92   8 -40  17          0
+Affect   6   1 -10  24          0
+Affect   6   1  10  18          0
+End
+
+#OBJECT
+Nest         0
+Name         stone shield~
+ShortDescr   a stone shield~
+Description  A strong-looking stone shield has been dropped here.~
+Vnum         9611
+ExtraFlags   0
+WearFlags    513
+WearLoc      11
+ClassFlags   1
+ItemType     9
+Weight       4
+Level        53
+Timer        0
+Cost         29160
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         belt leather~
+ShortDescr   a leather belt~
+Description  A strong, leather belt has been left here.~
+Vnum         9613
+ExtraFlags   0
+WearFlags    2049
+WearLoc      13
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        53
+Timer        0
+Cost         27560
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         breast breastplate plate emerald~
+ShortDescr   an emerald breastplate~
+Description  Someone has left an emerald breastplate lying here.~
+Vnum         9615
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        64
+Timer        0
+Cost         36288
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helm emerald~
+ShortDescr   an emerald helm~
+Description  Someone has left an emerald helm lying here.~
+Vnum         9616
+ExtraFlags   0
+WearFlags    17
+WearLoc      6
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        64
+Timer        0
+Cost         45056
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots emerald~
+ShortDescr   a pair of emerald boots~
+Description  Someone has left a pair of emerald boots here.~
+Vnum         9617
+ExtraFlags   0
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        63
+Timer        0
+Cost         42284
+Values       10 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings emerald~
+ShortDescr   emerald leggings~
+Description  Someone has left some emerald leggings here.~
+Vnum         9618
+ExtraFlags   0
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        63
+Timer        0
+Cost         35721
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         breast breastplate plate emerald~
+ShortDescr   an emerald breastplate~
+Description  Someone has left an emerald breastplate lying here.~
+Vnum         9615
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        64
+Timer        0
+Cost         44352
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helm emerald~
+ShortDescr   an emerald helm~
+Description  Someone has left an emerald helm lying here.~
+Vnum         9616
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        65
+Timer        0
+Cost         42250
+Values       10 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots emerald~
+ShortDescr   a pair of emerald boots~
+Description  Someone has left a pair of emerald boots here.~
+Vnum         9617
+ExtraFlags   0
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        64
+Timer        0
+Cost         45760
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings emerald~
+ShortDescr   emerald leggings~
+Description  Someone has left some emerald leggings here.~
+Vnum         9618
+ExtraFlags   0
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        64
+Timer        0
+Cost         41600
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         breast breastplate plate emerald~
+ShortDescr   an emerald breastplate~
+Description  Someone has left an emerald breastplate lying here.~
+Vnum         9615
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        63
+Timer        0
+Cost         40320
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helm emerald~
+ShortDescr   an emerald helm~
+Description  Someone has left an emerald helm lying here.~
+Vnum         9616
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        65
+Timer        0
+Cost         39204
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots emerald~
+ShortDescr   a pair of emerald boots~
+Description  Someone has left a pair of emerald boots here.~
+Vnum         9617
+ExtraFlags   0
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        63
+Timer        0
+Cost         35721
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings emerald~
+ShortDescr   emerald leggings~
+Description  Someone has left some emerald leggings here.~
+Vnum         9618
+ExtraFlags   0
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        64
+Timer        0
+Cost         38025
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         breast breastplate plate emerald~
+ShortDescr   an emerald breastplate~
+Description  Someone has left an emerald breastplate lying here.~
+Vnum         9615
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        64
+Timer        0
+Cost         40320
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helm emerald~
+ShortDescr   an emerald helm~
+Description  Someone has left an emerald helm lying here.~
+Vnum         9616
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        63
+Timer        0
+Cost         40320
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots emerald~
+ShortDescr   a pair of emerald boots~
+Description  Someone has left a pair of emerald boots here.~
+Vnum         9617
+ExtraFlags   0
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        64
+Timer        0
+Cost         39690
+Values       8 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings emerald~
+ShortDescr   emerald leggings~
+Description  Someone has left some emerald leggings here.~
+Vnum         9618
+ExtraFlags   0
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        64
+Timer        0
+Cost         45760
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         breast breastplate plate emerald~
+ShortDescr   an emerald breastplate~
+Description  Someone has left an emerald breastplate lying here.~
+Vnum         9615
+ExtraFlags   0
+WearFlags    9
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       5
+Level        64
+Timer        0
+Cost         37440
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         helm emerald~
+ShortDescr   an emerald helm~
+Description  Someone has left an emerald helm lying here.~
+Vnum         9616
+ExtraFlags   0
+WearFlags    17
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       3
+Level        64
+Timer        0
+Cost         44352
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         boots emerald~
+ShortDescr   a pair of emerald boots~
+Description  Someone has left a pair of emerald boots here.~
+Vnum         9617
+ExtraFlags   0
+WearFlags    65
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        63
+Timer        0
+Cost         38440
+Values       9 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         leggings emerald~
+ShortDescr   emerald leggings~
+Description  Someone has left some emerald leggings here.~
+Vnum         9618
+ExtraFlags   0
+WearFlags    33
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        64
+Timer        0
+Cost         40320
+Values       8 0 0 0
+End
+
+#END

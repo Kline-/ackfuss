@@ -1,0 +1,95 @@
+#MOB
+Revision     7
+Name         guard gnome~
+ShortDescr   a snirfneblin guard~
+LongDescr    A short gnomish guard stands here, guarding a pair of gates.
+~
+Description  ~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        16
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       8556
+Note         0
+Room         3506
+HpManaMove   337 386 140 240 100 100
+Gold         314
+Balance      0
+Exp          4492
+Act          4194315
+AffectedBy   8832
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    500
+Hitroll      0
+Damroll      0
+Armor        40
+Wimpy        0
+Deaf         0
+Vnum         3559
+Affect  81   8   0   0       8192
+Affect  84   2   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         bandana~
+ShortDescr   a pirate bandana~
+Description  A pirate's bandana has been left here.~
+Vnum         1602
+ExtraFlags   0
+WearFlags    17
+WearLoc      6
+ClassFlags   1
+ItemType     9
+Weight       2
+Level        16
+Timer        0
+Cost         2805
+Values       5 0 0 0
+End
+
+#OBJECT
+Nest         0
+Name         cutlass~
+ShortDescr   a small pirate cutlass~
+Description  A small pirate cutlass has been left here.~
+Vnum         1601
+ExtraFlags   0
+WearFlags    8193
+WearLoc      16
+ClassFlags   1
+ItemType     5
+Weight       3
+Level        10
+Timer        0
+Cost         1000
+Values       0 5 7 3
+End
+
+#OBJECT
+Nest         0
+Name         cutlass~
+ShortDescr   a small pirate cutlass~
+Description  A small pirate cutlass has been left here.~
+Vnum         1601
+ExtraFlags   0
+WearFlags    8193
+WearLoc      -1
+ClassFlags   1
+ItemType     5
+Weight       3
+Level        10
+Timer        0
+Cost         990
+Values       0 5 6 3
+End
+
+#END

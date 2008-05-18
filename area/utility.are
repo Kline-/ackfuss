@@ -1,0 +1,2301 @@
+#AREA
+@@W{@@eNONE!@@W} @@mSYSTEM@@N       @@eDO NOT USE!@@N~
+Q 16
+K none~
+L {?? ??}~
+N 42
+I 0 0
+V 30 40
+X 0
+F 15
+U You hear the screams of the Dead within your head.~
+O stephen~
+R stephen~
+W stephen~
+S Title not shown on area list.
+#HELPS
+-1 build_shops~
+BUILD HELP : SHOPS
+------------------
+
+Shops are basically mobiles with a few extras.  To make a shop, simply create
+a mobile, and set the 'shopspec' part of the mobile.
+
+trade0 - trade4 are the item types that the monile will buy or sell.
+If you don't want 5 different item types bought/sold, leave some entries blank.
+
+profbuy is the profit the shopkeeper makes when you buy an item.  100 = 100% =
+no profit.  150 = 150% = a fifty percent increae in price.
+
+profsell is the loss you make when selling.  100 = 100% = no loss.  50 = 50% =
+you only get half the item's price from the shopkeeper.
+
+profbuy should be no smaller than 100
+profsell should be no larger than 100
+
+openhour is the time the shop is 'open'
+closehour is the time the shop is 'shut'
+
+For a 24-hr shop, set openhour to 0 and closehour to 23.
+~
+-1 build_doors~
+BUILD HELP : DOORS
+------------------
+
+Uh-oh.  I don't know exactly _how_ doors are handled by the builder.  I'm
+still working this one out myself.  As far as i know, this method seems to
+work:
+
+set the door as type door, and as closed, locked or pickproof, as needed.
+Add a reset to close/lock the door.
+
+Make sure you set both sides of the door.
+~
+-1 build_specials~
+BUILD HELP : SPECIAL FUNCTIONS
+------------------------------
+
+Special Functions (spec_funs) can be attached to mobiles in order to increase
+the things they can do.
++=======================+===============================================+
+| Spec_Fun		|		Description			|
++-----------------------+-----------------------------------------------+
+| spec_breath_any	| Casts any fire breath.			|
+| spec_breath_acid	| Casts acid breath.				|
+| spec_breath_fire	| Casts fire breath.				|
+| spec_breath_frost	| Casts frost breath.				|
+| spec_breath_lightning	| Casts lightning breath.			|
+| spec_cast_adept	| Casts healing spells.				|
+| spec_cast_cleric	| Offensive spells.				|
+| spec_cast_judge	| Used to be for Judge Dread - Offensive.	|
+| spec_cast_mage	| Offensive spells.				|
+| spec_cast_undead	| Offensive spells.				|
+| spec_executioner	| For executioners only.			|
+| spec_fido		| Eats corpses left lying around.		|
+| spec_janitor		| Clears up objects on the floor.		|
+| spec_guard		| Attacks wanted players.			|
+| spec_mayor		| DON'T USE.					|
+| spec_posion		| Bites players, poisoning them.		|
+| spec_thief		| Steals gold from players.			|
+| spec_policeman	| Same as spec_guard.				|	
+| spec_cast_cadaver	| DON'T USE.					|
+| spec_undead		| Like spec_cast_undead; summons undead mobs.	|
+| spec_rewield		| Will wield best weapon available in room/inv.	|
+| spec_bigtime		| High level offensive spells.			|
++=======================+===============================================+
+~
+-1 build_extra~
+BUILD HELP : EXTRA DESCRIPTIONS
+-------------------------------
+
+Extra descriptions consist of a keyword, and a string.  When the player
+'examines' the keyword, the string will be displayed.
+
+Extra Descriptions enable you to add more detail to your rooms and objects.
+~
+-1 build_editor~
+BUILD HELP : USING THE EDITOR
+-----------------------------
+
+Using the editor, it is possible to edit any strings you need.  The most 
+common of these will be room descriptions.
+
+To enter the editor, enter '$edit' as the string.  So, in Redit mode:
+'desc $edit'  will allow you to edit the room's description.
+
+To format the string, type '.f'
+To see what other options are available, type '.h'
+To finish editing a string, type '.'
+~
+-1 build_oaff~
+OBJECT AFFECTED_BY FLAGS:
+
+None		Str		Dex		Int		Wis
+Con		Sex		Age		Height		Weight
+Mana		Hit		Move		Gold		Exp
+AC		HitRoll		DamRoll		Saving_Para	Saving_rod
+Saving_Petri	Saving_Breath	Saving_Spell
+~
+-1 build_loc~
+OBJECT WEAR LOCATIONS:
+
+None		Light		Finger_1	Finger_2	Neck_1
+Neck_2		Body		Head		Legs		Feet
+Hands		Arms		Shield		About		Waist
+Wrist_L		Wrist_R		Wield		Hold		Face
+Ear		Clutch
+~
+-1 build_owear~
+OBJECT WEAR FLAGS:
+
+Take		Finger		Neck		Body		Head
+Legs		Feet		Hands		Arms		Shield
+About		Waist		Wrist		Hold		Face
+Ear		Clutch
+~
+-1 build_oflags~
+OBJECT FLAGS:
+
+Glow		Hum		Dark		Lock		Evil
+Invis		Magic		NoDrop		Bless		Anti_Good
+Anti_Evil	Anti_Neutral	NoRemove	Inventory	NoSave
+~
+-1 build_otypes~
+OBJECT TYPES:
++===============+=======================================================+
+| Object Type	|			Description			|
++---------------+-------------------------------------------------------+
+| LIGHT		| Object provides light for the room it is held in.	|
+| SCROLL	| 3-spells, affects one target.				| 
+| WAND		| One spell, usually aggresive; one target.		|
+| STAFF		| One spell, affects each character in room.		|
+| WEAPON	| Can be wielded, and used in combat.			|
+| TREASURE	| Item is treasure, usually jewels, etc.		|
+| ARMOR		| Can be worn to protect the player.			|
+| POTION	| Can be quaffed to affect the user only. (no_save)	|
+| CLUTCH	| Reserved for special objects.  Ask before using!	|
+| FURNITURE	| Players may rest on these objects.			|
+| TRASH		| Object doesn't really do anything at all :)		|
+| CONTAINER	| Can be used to put items in.				|
+| DRINK_CON	| Drink Container.					|
+| KEY		| Opens a certain door. (no_save)			|
+| FOOD		| Object may be eaten.					|
+| MONEY		| Object is converted to GP when picked up.		|
+| BOAT		| Can be used to cross water.				|
+| CORPSE	| Object is a corpse...					|
+| FOUNTAIN	| Players may drink from this.				|
+| PILL		| Like a potion, but eaten.				|
+| BOARD		| Bulletin Board.  Ask before using, please!		|
++===============+=======================================================+
+~
+-1 build_maff~
+MOB AFFECTED_BY FLAGS:
+
+Blind		Invisible	Detect_Evil	Detect_Invis
+Detect_Magic	Detect_Hidden	Sanctuary	Faerie_Fire
+Infrared	Curse		Poison		Protection
+Sneak		Hide		Sleep		Flying
+Pass_Door	Anti_Magic	Detect_Undead
+
+*Anti_Magic protects the Mobile from magical attacks.
+~
+-1 build_mflags~
+MOBILE (ACT) FLAGS:
++===============+=======================================================+
+| Act Flag	|			Description			|
++---------------+-------------------------------------------------------+
+| IS_NPC	| Auto-set for Mobiles.					|
+| SENTINEL	| The Mobile will stay in the room it is loaded into.	|
+| SCAVENGER	| Will pick up any objects lying on the floor.		|
+| REMEMBER	| Will attack the last player to try and kill it.	|
+| NO_FLEE	| Players are unable to flee from this Mobile.		|
+| AGGRESSIVE	| Attacks any players that it encounters.		|
+| STAY_AREA	| Will not leave the area it was loaded into.		|
+| WIMPY		| Wimps out of fights.					|
+| PET		| Is a Pet.  (Don't use!)				|
+| TRAIN		| Can train players.					|
+| PRACTICE	| Players can practice skills/spells at this Mobile	|
+| MERCENARY	| Will assassinate players for a price.			|
+| HEAL		| Mobile sells heals and other spells.			|
+| ADAPT		| Will adapt weapon levels for players.			|
+| UNDEAD	| Mob is undead; may be summoned by spec_undead.	|	
+| BANK		| Offers banking services to players.			|
+| NO_BODY	| Has no solid body; can't bs.			        |
+| HUNTER	| Hunts anyone who attacks it, or it attacks.		|
++===============+=======================================================+
+~
+-1 build_rexit~
+EXIT FLAGS:
++===============+=======================================================+
+| Door Type	| 			Description			|
++---------------+-------------------------------------------------------+
+| DOOR		| This exit is a door.					|
+| CLOSED	| This exit can be closed.				|
+| LOCKED	| This exit can be locked.				|
+| CLIMB		| Climb skill or fly spell required to use this exit.	|
+| IMMORTAL	| Only Immortal players may use this exit.		|
+| PICKPROOF	| The lock on this exit cannot be picked.		|
++===============+=======================================================+
+~
+-1 build_rsector~
+SECTOR TYPES:
++===============+===============+	+===============+===============+
+| Sector Type	| Movement Loss	|	| Sector Type	| Movement Loss	|
++---------------+---------------+	+---------------+---------------+
+| INSIDE	|        1	|	| WATER_SWIM	|        4	|
+| CITY		|        2	|	| WATER_NOSWIM	|        1	|
+| FIELD		|        2	|	| UNUSED	|        6	|
+| FOREST	|        3	|	| AIR		|       10	|
+| HILLS		|        4	|	| DESERT	|        6	|
+| MOUNTAIN	|        6	|	+===============+===============+	+===============+===============+
+
+*WATER_NOSWIM Sectors require a boat, or a 'fly' spell.
+*AIR Sectors require the player to be affected by 'fly'.
+~
+-1 build_rflags~
+ROOM FLAGS:   ( * = To be added! )
++===============+============================================================+
+| Flag Name	|			Description			     |
++---------------+------------------------------------------------------------+
+| DARK		| The Room is dark - a light source is needed to see.	     |
+| REGEN		| Players will regenerate HPs, mana and movement faster.     |
+| NO_MOB	| No mobiles may enter the room.			     |
+| INDOORS	| The room is indoors; players see no weather messages.	     |
+| *NO_MAGIC	| Players may not cast spells here.			     |
+| HOT		| Players lose HPs due to the heat.			     |
+| COLD		| Players lose Hps due to the cold.			     |
+| *PK		| Players may Pkill here without being flagged.		     |
+| *QUIET	| Players may not talk in this room.			     |
+| PRIVATE	| The room holds only two players maximum.		     |
+| SAFE		| Players are safe from attack here.			     |
+| SOLITARY	| Only one player is allowed into the room at a time.	     |
+| PET_SHOP	| Room is a Pet_shop.  Please don't use this flag!	     |
+| NO_RECALL	| Players may not recall or use the home command here.	     |
+| NO_TELEPORT   | Players using teleport cannot appear in this room.	     |
++===============+============================================================+
+~
+-1 build_strings~
+BUILD HELP : STRINGS
+--------------------
+
+STRINGS are collections of characters: i.e. words or sentences.
+The most visible parts of an area are the descriptions on mobiles, objects, 
+and especially rooms.  Please try and bear some thought to how these will
+look, especially for mobiles and objects that may end up out of their intended
+positions.  Room descriptions should be neutral, and not too short, where
+possible.
+~
+-1 build_flags~
+BULD HELP : FLAGS
+-----------------
+
+Flags are used to represent many different values.  Becasue of the way they are
+implemented, this means a saving in space.  One integer can store MANY different
+flags.  For the use of ther builder, a flag is a certain type of attribute, 
+that can be either on or off; true or flase; yes or no.
+For example, rooms use flags to store such information as 'dark', 'no_recall',
+'indoors' etc.  When a new object, room or mobile is created, some flags will
+be set my default.  In order to set it to be whatver you wish, you will need
+to set the flags properly.
+~
+-1 build_building~
+BUILD HELP : BUILDING
+---------------------
+
+BUILDING is a term used to refer to adding Rooms, Mobiles or Objects to the
+mud, whilst still playing it, allowing possibly instant inclusion of the
+rooms/mobs/objects into gameplay.
+
+The builder allows to you to add new mobiles, rooms or objects.  It is up to
+you how they look and act.  You have complete control over how your area looks.
+Bear in mind that if you make objects that are too powerful, you may be asked
+to tone them down in power.  If this does not happen, then an Immortal will
+have to do it.... 
+
+You should decide a level range for your area, and build your mobs ABOVE that
+range.  It is usually wise to check with a Creator about the theme of your
+area, AND the level range.
+~
+-1 build_resets~
+BUILD HELP : RESETS
+-------------------
+
+Each area typically consists of Rooms, Objects and Mobiles.  Rooms 'appear'
+almost automatically, but for your objects and mobiles to be loaded requires
+the use of RESETS.  Using the builder, you can add resets to rooms, to do such
+operations as loading mobiles, equiping mobiles with objects, randomising
+exits, etc.
+~
+-1 build_vnums~
+BUILD HELP : VNUMS
+------------------
+
+"VNUMS" stands for "Virtual Numbers".  They are arbitary numbers used to identify either Rooms, Objects or Mobiles on the mud.  Each object, room and
+mobile must have a unique vnum, for their type.  That is, you can't have two
+mobiles with the same vnum, but you could have a mobile and an object using the
+same vnum.  Think of each of the three "users" of vnums as being completely
+sperate:  Mobile vnums have to be unique, but only for mobs.  Object vnums must
+also be unique, but also only for objects.  Room vnums must be unique, but only
+for rooms.  
+
+Each area consists of: rooms, mobiles and objects, principally.  Each area has
+a vnum range associated with it.  So, for example, the range is vnums 100 to 199
+(Kiess area).  There are rooms with vnums 101 - 195, objects with vnums 
+101 - 143, and mobiles with vnums 101 - 135.  It is normal to use consecutive
+vnums starting at the lowest vnum, for all objects, rooms and mobiles in an area.  Please try to conform to this usage of vnums!
+~
+-1 build_mobiles~
+BUILD HELP : MOBILES
+--------------------
+
+The following information is need for each mobile:
+NAME	Keywords for the Mobile.
+SHORT	The short description of the mobile.
+LONG    The long description, used on 'LOOK'.
+DESC	The Mobile's description.
+SPEC	Any SPECial functions the Mobile uses.
+SEX	The Mobile's gender.
+LEVEL	The Mobile's level.
+ALIGN	The Mobile's alignment.
+AFF	Flags determining what spells, etc the Mobile is affected by.
+ACT	Flags determining how the Mobile acts, eg: Scavenger, Hunter, etc.
+HR_MOD	HitRoll Modifier.
+DR_MOD	DamRoll Modifier.
+AC_MOD	ArmorClass Modifier.
+SHOP	Shop information.  See 'HELP shops'.
+~
+-1 build_rooms~
+BUILD HELP : ROOMS
+------------------
+
+The following information is needed for each room:
+NAME	The name of the room, eg "The Temple of Midgaard"
+DESC    The description
+FLAGS	Flags which determine the room's attributes, eg no_recall, dark, etc.
+SECTOR	The kind of terrain, eg city, field, hills, etc.
+DOOR	Information about exits, etc.  See 'HELP doors'.
+EXTRA	Extra descriptions - see 'HELP extra'
+~
+-1 build_objects~
+BUILD HELP : OBJECTS
+--------------------
+
+The following information is needed for each object:
+NAME	The name(s) that it is referenced by, from commands like give, etc.
+SHORT   The short description, used when getting or wielding, for example.
+LONG    The long description - seen when object is on the floor.
+EXTRA   Flags used to set special properties for the object.
+WEAR    Flags which determine where the object can be worn, if at all.
+AFF     Affects, such as HitRoll + 5, mana +50. etc.
+WEIGHT  The weight of the object - 1:light 5:heavy 10:Very Heavy!
+TYPE    The item type for the object, eg weapon, armor or fountain.
+ED      Extra description - see 'HELP extra'
+~
+-1 build_summary~
+BUILD HELP : SUMMARY
+--------------------
+
++===========================================+===========================+
+|           	BASICS  	            |          	OTHERS          |
++-------------------------------------------+---------------------------+
+| Objects	Rooms		Vnums       |	Editor		Doors   |
+| Mobiles	Resets		Building    |	Extra		Shops   |
+| Flags		Strings		            |   Specials		|
++-------------------------------------------+---------------------------+
+|				COMMANDS	                        |
++-----------------------------------------------------------------------+
+| Goto		List		X		Showarea	Showmob |
+| Showroom	Showobject	Showresets	Findarea	Findmob |
+| Findmobroom	Findroom	Findobject	Set		Stop    |
+| Dig		Addobject	Addmob		Addreset	Delroom |
+| Delobject	Delreset	Delmobile	Forcereset	Redit   |
+| Oedit		Medit		Nedit		Setvnum		Values  |
+| Liquids	Weapons		Spells	                                |
++-----------------------------------------------------------------------+
+|				FLAGS					|
++-----------------------------------------------------------------------+
+| Rflags	Rsector		Rexit		Mflags		Maff	|
+| Otypes	Oflags		Owear		Oloc		Oaff	|
++=======================================================================+
+~
+-1 build_spells~
+BUILD HELP : SPELLS
+-------------------
+
+The SPELLS command displays information about spells.
+Syntax:  SPELLS [ ign | off | def | slf | obj | all ]
+
+Depending on the argument, the SPELLS command display information about spells.
+ign : Spells that ignore target (earthquake, mindflame, etc)
+off : Offensive spells (will start combat)
+def : Defensive spells (won't)
+slf : Defensive spells that can only affect the caster
+obj : Object related spells
+all : List all spells.
+
+This will show the name, and the SLOT NUMBER, which is used by magical items
+to determine what spells thay have.
+~
+-1 build_weapons~
+BUILD HELP : WEAPONS
+--------------------
+
+The WEAPONS command displays the weapon numbers.
+Syntax:  WEAPONS
+
+For objects of type WEAPON, the last value (value3) determines which sort of
+weapon it is - hit, crush, slash, etc.  This command displays a numbered list
+of the weapon types.  Note:  For backstabbing weapons, the weapon type must be
+11 (pierce).
+~
+-1 build_liquids~
+BUILD HELP : LIQUIDS
+--------------------
+
+The LIQUIDS command shows the liquid numbers.
+Syntax:  LIQUIDS
+
+This will display a numbered list of liquids.  Liquids are used for drink containers and fountains.
+~
+-1 build_values~
+BUILD HELP : VALUES
+-------------------
+
+The VALUES command displays information about different object types.
+Syntax:  VALUES <object_type>
+
+Each object used has a TYPE: armor, weapon, fountain, staff, etc.  For each
+object, there are four values (value0 to value3) for each object, which
+determine how the object works or is used.  To find out what the four values
+mean for a given object type, use the values command.
+For example, typing 'VALUES container' will display:
+
+[0] Weight capacity
+[1] FLAGS: 1:closeable 2:pickproof 4:closed 8:locked
+[2] Key Vnum
+[3] Unused
+~
+-1 build_setvnum~
+BUILD HELP : SETVNUM
+--------------------
+
+The SETVNUM command allows you to select which vnum you are working on.
+Syntax SETVNUM <vnum>
+
+This will set the vnum of the room, object or mobile that you are currently
+working on.
+~
+-1 build_nedit~
+BUILD HELP : NEDIT
+------------------
+
+The NEDIT command places you in No EDITing mode.
+Syntax:  NEDIT
+
+This sets your editing mode to nothing.  
+~
+-1 build_oedit~
+BUILD HELP : OEDIT
+------------------
+
+The OEDIT command places you in Object EDITing mode.
+Syntax:  OEDIT [object-vnum]
+
+This will allow you to edit onformation concerning objects.  To set which object
+you wish to work on, either enter an object-vnum after OEDIT, or use the SETVNUM
+command.  Anything you type will be checked to see if it applies to mobiles,
+and if so, the value, flag or string specified will be set.
+~
+-1 build_medit~
+BUILD HELP : MEDIT
+------------------
+
+The MEDIT command places you in Mobile EDITing mode.
+Syntax:  MEDIT [mob-vnum]
+
+This will allow you to edit information concerning mobiles.  To set which mobile
+you wish to work on, either enter a mob-vnum after MEDIT, or use the SETVNUM
+command.  Anything you type will be checked to see if it applies to mobiles,
+and if so, the value, flag or string specified will be set.
+~
+-1 build_redit~
+BUILD HELP : REDIT
+------------------
+
+The REDIT command places you in Room EDITing mode.
+Syntax:  REDIT
+
+This will allow you to edit information concerning rooms.  The room you are
+working on is ALWAYS the room your character is currently in.
+Anything you type will be checked to see if it applies to rooms, and if so, 
+the value, flag or string will be set.
+~
+-1 build_forcereset~
+BUILD HELP : FORCERESET
+-----------------------
+
+The FORCERESET command allows you to execute all resets within the current area.
+Syntax:  FORCERESET
+
+This will read through each reset, and if applicable, will load objects or mobs,
+equip mobs, set door states, etc.  BE WARNED!  Any aggressive mobiles that are
+loaded are just that - aggressive!  In other words you'll be a valid target, 
+even if you are in building mode.
+~
+-1 build_delmobile~
+BUILD HELP : DELMOBILE
+----------------------
+
+The DELMOBILE command allows you to delete a mobile from an area.
+Syntax:  DELMOBILE <mob-vnum>
+
+This will flag the mob with the specified mob-vnum to be deleted.  You will
+need to enter DELMOBILE OK in order for it to be actually deleted.
+~
+-1 build_delreset~
+BUILD HELP : DELRESET
+---------------------
+
+The DELRESET command allows you to remove resets from a room.
+Syntax:  DELRESET <reset-number>
+
+This will delete reset-number from the reset list in the current room.
+To find out the number for each reset, type SHOWRESETS.
+~
+-1 build_delobject~
+BUILD HELP : DELOBJECT
+----------------------
+
+The DELOBJECT allows you to delete an object.
+Syntax:  DELOBJECT <obj-vnum>
+
+If an object is found with the specified vnum in the current area, it will be
+flagged for deletion, and you will be asked to enter DELOBJECT OK in order for
+it to be actually deleted.
+~
+-1 build_delroom~
+BUILD HELP : DELROOM
+--------------------
+
+The DELROOM command allows you to delete a room.
+Syntax:  DELROOM <room-vnum>
+
+If the room-vnum is found in your current area, and no one is currently in it,
+the room will be flagged for deletion, and you will be asked to enter DELROOM OK
+to actually delete it.
+~
+-1 build_addreset~
+BUILD HELP : ADDRESET
+---------------------
+
+The ADDRESET command adds a new entry to the reset list.
+
+Syntax: ADDRESET  mob <mob-vnum> <limit>
+Load the mob with mob-vnum into the present room.  Don't load more than limit.
+EG: ADDRESET mob 1010 1
+
+Syntax:  ADDRESET obj <obj-vnum>
+Load the object with obj-vnum into the present room.
+EG: ADDRESET obj 1020
+
+Syntax:  ADDRESET equip <mob-vnum> <obj-vnum> <location>
+Make the mob with mob-vnum wear the object with obj-vnum in location.                  EG: ADDRESET equip 1010 1020 wield
+
+Syntax:  ADDRESET give <mob-vnum> <obj-vnum>
+Give the mob with mob-vnum the object with obj-vnum.
+EG:  ADDRESET give 1010 1021                  
+
+Syntax:  ADDRESET door <direction> <state>
+Set the flag specified by state to the door in a certain direction.
+EG:  ADDRESET door n closed
+
+Syntax:  ADDRESET rand <num-dirs>
+Randomise the first num-dirs exits in the room.  Exits are number 0 (North), 
+1 (East), 2 (South), 3 (West), 4 (Up), and 5 (Down).  
+EG:  ADDRESET rand 3
+
+Syntax:  ADDRESET message <text>
+Adds an auto-message to the room, which is displayed periodically.
+EG:  ADDRESET message You hear the screams of the Ogre Kings.
+~
+-1 build_addmob~
+BUILD HELP : ADDMOB
+-------------------
+
+The ADDMOB command allows you to create new mobiles within the current area.
+Syntax:  ADDMOB <mob-vnum> <name>
+
+This will add a new mobile into the area, with the specified vnum and name(s).
+This will not happen if there is already a mobile with the vnum you supply.
+~
+-1 build_addobject~
+BUILD HELP : ADDOBJECT
+----------------------
+
+The ADDOBJECT command allows you to create new objects within the current area.
+Syntax:  ADDOBJECT <object-vnum> <name>
+
+This will add a new object with the specified vnum, and with the specified
+name (which you can always change later).  The object will not be added if
+there is already an object with the vnum you supply.
+~
+-1 build_dig~
+BUILD HELP : DIG
+----------------
+
+The DIG command allows you to add a room to an area.
+Syntax:  DIG <direction> <room-vnum>
+
+This will add an exit in the direction given,  to the room you are currently in,
+connected to a new room, which will have the vnum specified.  There are two
+obvious limitations:  There can't already be a door in the direction you give,
+or a room that already has the vnum you give.
+~
+-1 build_stop~
+BUILD HELP : STOP
+-----------------
+
+Typing STOP will cause you to leave the Builder.
+~
+-1 build_set~
+BUILD HELP : SET
+----------------
+
+Set allows you to set some value, string or flag, depending upon which editing
+mode you are currently in.  It is not really needed any more, as you can drop
+the 'SET' part of the command now.  Eg: SET level 100 (when editing mobs) could
+be entered as 'level 100' instead.
+
+Typing 'SET' on it's own displays the values, flags or strings you can set.
+~
+-1 build_findobject~
+BUILD HELP : FINDOBJECT
+-----------------------
+
+The FINDOBJECT command displays certain object vnums.
+Syntax:  FINDOBJECT <string>
+
+You will be shown a list of any objects that contain the string within their
+short description.  Typing 'ALL' for the string will list all the objects.
+This command will only show details of objects in your current area.
+~
+-1 build_findroom~
+BUILD HELP : FINDROOM
+----------------------
+
+The FINDROOM command allows to find certain rooms.
+Syntax:  FINDROOM <string>
+
+You will be shown a list of any rooms, which contain the string in their name.
+If you enter 'ALL' as the string, you will be shown a list of all the rooms
+in the area you are in.
+~
+-1 build_findmobroom~
+BUILD HELP : FINDMOBROOM
+------------------------
+
+The FINDMOBROOM command allows you to find which room a mob is loaded into.
+Syntax:  FINDMOBROOM <mob-vnum>
+
+You will be shown a list of any rooms that the mob referenced is loaded in.
+~
+-1 build_findmob~
+BUILD HELP : FINDMOB
+--------------------
+
+The FINDMOB command allows you to find the vnum of a given mobile.
+Syntax:  FINDMOB <mob-name | ALL >
+
+If a mob-name is supllied, the vnums of any mobiles whose names match that
+given will be displayed.  If ALL is entered, then all the mobiles will
+be displayed.  This command only shows the vnums for mobiles in the same
+area as you.
+~
+-1 build_findarea~
+BUILD HELP : FINDAREA
+---------------------
+
+The FINDAREA command allows you find certain areas.
+Syntax:  FINDAREA <string>
+
+You will be shown a list of all the area titles containing the string.
+~
+-1 build_showresets~
+BUILD HELP : SHOWRESETS
+-----------------------
+
+The SHOWRESETS command displays any resets for the room you are currently in.
+Syntax:  SHOWRESETS
+~
+-1 build_showroom~
+BUILD HELP : SHOWROOM
+---------------------
+
+The SHOWROOM command displays details about the room you are currently in.
+Sytnax:  SHOWROOM
+~
+-1 show_showobject~
+BUILD HELP : SHOWOBJECT
+-----------------------
+
+The SHOWOBJECT command displays various details about a given object.
+Syntax:  SHOWOBJECT <object-vnum>
+~
+-1 build_showmob~
+BUILD HELP : SHOWMOB
+--------------------
+
+SHOWMOB displays various details about a given mob.
+Sytntax:  SHOWMOB <mob-vnum>
+~
+-1 build_showarea~
+BUILD HELP : SHOWAREA
+---------------------
+
+The SHOWAREA command displays various details about the area, Ranging from the
+owner, to the minimum and maximum vnums allowed.  
+~
+-1 build_x~
+BUILD HELP : LIST | X
+---------------------
+
+The LIST command has two purposes.  Firstly, it shows you details about the
+Room, Mobile or Object you are currently working on.  Secondly, it allows
+you find out which flags you can set for objects.
+Syntax:  LIST [flags-name]
+
+If you type just LIST on its own, you will be shown details of your current
+room, mobile or object.  If you want to see a list of flags (in wide format,
+rather than the long format used when you screw up) type LIST HELP.
+
+The lists of flags you can display vary according to which editing mode you are
+in.  This is basically because there is a list of FLAGS for each mode, etc...
+
+X may be used in place of LIST.
+~
+-1 build_list~
+BUILD HELP : LIST | X
+---------------------
+
+The LIST command has two purposes.  Firstly, it shows you details about the
+Room, Mobile or Object you are currently working on.  Secondly, it allows
+you find out which flags you can set for objects.
+Syntax:  LIST [flags-name]
+
+If you type just LIST on its own, you will be shown details of your current
+room, mobile or object.  If you want to see a list of flags (in wide format,
+rather than the long format used when you screw up) type LIST HELP.
+
+The lists of flags you can display vary according to which editing mode you are
+in.  This is basically because there is a list of FLAGS for each mode, etc...
+
+X may be used in place of LIST.
+~
+-1 build_goto~
+BUILD HELP : GOTO
+-----------------
+
+The GOTO command allows you to goto either a room or a mob.
+Sytntax:    [For Rooms]   GOTO <room-vnum>
+            [For  Mobs]   GOTO <mob-name>
+
+At Present, the builder's goto command simply calls the Immortal's goto.
+This will be changed shortly, to reduce the chance of abuse.
+~
+-1 shelp_outline~
+*******************************************************************************
+       Name: 		
+    Classes:
+   Duration:
+   Modifies:
+       Type:
+Description:
+*******************************************************************************
+~
+-1 shelp_outline~
+*******************************************************************************
+       Name: 		
+    Classes:
+   Duration:
+   Modifies:
+       Type:
+Description:
+*******************************************************************************
+~
+-1 shelp_ego_whip~
+*******************************************************************************
+       Name: Ego Whip 		
+    Classes: Psionicist(25)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to mentally assualt the victim's
+             ego, thus causing damage.
+*******************************************************************************
+~
+-1 shelp_physic crush~
+*******************************************************************************
+       Name: Physic Crush		
+    Classes: Psionicist(19)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to try and crush the victim's
+             will, causing damage doing so.
+*******************************************************************************
+~
+-1 shelp_physic thrust~
+*******************************************************************************
+       Name: Physic Thrust		
+    Classes: Psionicist(7)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to thrust negative energy into
+             the victim's mind, to cause damage.
+*******************************************************************************
+~
+-1 shelp_mind flail~
+*******************************************************************************
+       Name: Mind Flail		
+    Classes: Psionicist(6)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to attack an enemy's mind.
+*******************************************************************************
+~
+-1 shelp_know item~
+*******************************************************************************
+       Name: Know Item		
+    Classes: Psionicist(9)
+   Duration: Permanent
+   Modifies: N/A
+       Type: N/A
+Description: This spell, when cast on an object, provides the caster with
+             knowledge about that object.
+*******************************************************************************
+~
+-1 shelp_hypnosis~
+*******************************************************************************
+       Name: Hypnosis 		
+    Classes: Psionicist(17)
+   Duration: 3 + ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to attempt to hypnotise his/her
+             victim, who will then follow all orders given.
+*******************************************************************************
+~
+-1 shelp_calm~
+*******************************************************************************
+       Name: Calm		
+    Classes: Psionicist(52)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to produce a calm feeling in all
+             enemies present, causing them to stop fighting.  Of course,
+             this won't stop them attacking again should they wish!
+*******************************************************************************
+~
+-1 shelp_know_critical~
+*******************************************************************************
+       Name: Know Critical		
+    Classes: Psionicist(28)
+   Duration: 2-5 (Cast Level baded)
+   Modifies: Damroll
+       Type: Defensive - Self
+Description: This spell allows the caster to know the points on his/her
+             enemy's that will inflicy greater damage.
+*******************************************************************************
+~
+-1 shelp_know_weakness~
+*******************************************************************************
+       Name: Know Weakness		
+    Classes: Psionicist(18)
+   Duration: 2-5 (Cast Level based)
+   Modifies: HitRoll
+       Type: Defensive - Self
+Description: This spell allows the caster to know his/her enemy's weaknesses,
+             thus providing a greater chance of striking it.
+*******************************************************************************
+~
+-1 shelp_fire blade~
+*******************************************************************************
+       Name: Fire Blade		
+    Classes: Psionicist(50)
+   Duration: 2 + ( Cast Level / 20 )
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to magically produce a blade
+             of fire, which he/she will automatically wield.  The blade may
+             not be removed, due to the way the caster maintains it's
+             existence. 
+*******************************************************************************
+~
+-1 shelp_detection~
+*******************************************************************************
+       Name: Detection		
+    Classes: Psionicist(22)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell, when invoked with an object the caster wishes to
+             find, provides him/her with the locations of the object.
+*******************************************************************************
+~
+-1 shelp_see magic~
+*******************************************************************************
+       Name: See Magic		
+    Classes: Psionicist(7)
+   Duration: 6 + ( Cast Level / 4 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to see the aura surrounding any
+             magical items.
+*******************************************************************************
+~
+-1 shelp_animate~
+*******************************************************************************
+       Name: Animate		
+    Classes: Cleric(46)
+   Duration: Perment
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to attempt to animate a corpse.
+             The zombie created will have no knowledge of it's past life, 
+             or similar characteristics, but will retain any equipment or
+             other items it was carrying.
+*******************************************************************************
+~
+-1 shelp_produce food~
+*******************************************************************************
+       Name: Produce Food		
+    Classes: Psionicist(24)
+   Duration: Permanent
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to magically create a small bundle
+             of food.
+*******************************************************************************
+~
+-1 shelp_dimension blade~
+*******************************************************************************
+       Name: Dimension Blade		
+    Classes: Psionicist(41) 
+   Duration: Permanent
+   Modifies: Object's HitRoll and DamRoll
+       Type: N/A
+Description: This spell allows the caster to make the specified weapon more
+             lethal, by switching one of it's dimensions into another phase.
+             Sometimes, the weapon may not survive the process, and will 
+             shatter into tiny pieces.
+*******************************************************************************
+~
+-1 shelp_phase~
+*******************************************************************************
+       Name: Phase		
+    Classes: Psionicist(45)
+   Duration: 3 + ( Cast Level / 20 )
+   Modifies: Armor Class
+       Type: Defensive - Self
+Description: This spell switches part of the caster's body into a different
+             plane of existence, allowing him/her to pass through closed
+             doors, as well as providing an Armor Class bonus.
+*******************************************************************************
+~
+-1 shelp_fighting trance~
+*******************************************************************************
+       Name: Fighting Trance		
+    Classes: Psionicist(60) 
+   Duration: 6 + ( Cast Level / 20 )
+   Modifies: HitRoll, DamRoll, Armor Class, Saving Throws
+       Type: Defensive - Self
+Description: This potent power allows the caster to focus him/herself on
+             combat, providing bonuses to HitRoll, DamRoll and Saving
+             Throws.  This increased combat ability also effectively
+             provides an Armor Class bonus to the caster.
+*******************************************************************************
+~
+-1 shelp_nerve fire~
+*******************************************************************************
+       Name: Nerve Fire		
+    Classes: Psionicist(60)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell affects all non-friendly beings in the current
+             location, causing their nervous system to heat up briefly.
+*******************************************************************************
+~
+-1 shelp_mind bolt~
+*******************************************************************************
+       Name: Mind Bolt		
+    Classes: Psionicist(12)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to strike the victim's mind with
+             small, intense bursts of energy.  The number of bolts striking
+             the victim is determined by the Cast Level.
+
+             Cast Level            Number of Bolts
+             ----------            ---------------
+              below 20                   One
+              20 to 34                   Two
+              35 to 49                   Three
+              50 to 65                   Four
+              above 65                   Five
+
+*******************************************************************************
+~
+-1 shelp_bloody tears~
+*******************************************************************************
+       Name: Bloody Tears		
+    Classes: Psionicist(26)
+   Duration: 2 + ( Cast Level / 4 )
+   Modifies: HitRoll
+       Type: Offensive
+Description: This spell causes the victim's eyes to start bleeding suddenly,
+             rendering him/her blind for a short while.
+*******************************************************************************
+~
+-1 shelp_enhance weapon~
+*******************************************************************************
+       Name: Enhance Weapon		
+    Classes: Psionicst(40)
+   Duration: 3 + ( level / 4 )
+   Modifies: Weapon HitRoll and DamRoll
+       Type: N/A
+Description: This spell allows the caster to transfer energy into a weapon,
+             giving it HitRoll and DamRoll bonuses.
+*******************************************************************************
+~
+-1 shelp_suffocate~
+*******************************************************************************
+       Name: Suffocate		
+    Classes: Psionicist(46)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to manipulate the victim's
+             body, causing a tightening of the throat.
+*******************************************************************************
+~
+-1 shelp_sense evil~
+*******************************************************************************
+       Name: Sense Evil		
+    Classes: Psionicist(10)
+   Duration: 5 + ( Cast Level / 10 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to sense if any beings encountered
+             are of evil alignment.
+*******************************************************************************
+~
+-1 shelp_chain lightning~
+*******************************************************************************
+       Name: Chain Lightning		
+    Classes: Mage(65)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to produce a powerful bolt of
+             energy from his/her fingertip.  The bolt will proceed to fly
+             through the current location, striking all present randomly.
+             The bolt will then either vanish, or return to strike the
+             caster!  Each time a victim is struck, the bolt's energy is
+             reduced, as is it's ability to damage.
+*******************************************************************************
+~
+-1 shelp_mindflame~
+*******************************************************************************
+       Name: Mindflame		
+    Classes: Psionicist(35)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell causes the caster to emit a blast of searing mental
+             energy, which cause all those present to suffer the effects of
+             having their very minds burnt.
+*******************************************************************************
+~
+-1 shelp_phobia~
+*******************************************************************************
+       Name: Phobia		
+    Classes: Psionicist(10)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell enables the caster to produces horrific nightmare
+             images into the victim's mind.  This sudden mental attack may
+             either just cause damage due to the shock, or cause the victim
+             to attempt to flee in wild panic.
+*******************************************************************************
+~
+-1 shelp_static~
+*******************************************************************************
+       Name: Static		
+    Classes: Psionicist(20)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spells allows the caster to transfer kinetic (movement)
+             energy to static electricity, which is then directed towards
+             the victim, to cause damage.
+*******************************************************************************
+~
+-1 shelp_barrier~
+*******************************************************************************
+       Name: Barrier		
+    Classes: Psionicist(8)
+   Duration: 4 + ( Cast Level / 20 )
+   Modifies: Armor Class
+       Type: Defensive - Self
+Description: This spell allows the caster to magically produce a mental
+             barrier around him/her, which gives limited protection from
+             attacks.
+*******************************************************************************
+~
+-1 shelp_visit~
+*******************************************************************************
+       Name: Visit		
+    Classes: Psionicist(32)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to attempt to transfer him/herself
+             to the target.  Note that this spell only works for fellow
+             characters, and not NPCs.
+*******************************************************************************
+~
+-1 shelp_planergy~
+*******************************************************************************
+       Name: Planergy		
+    Classes: Psionicist(5)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to summon alien energy to come
+             forth, and engulf the victim.  The energy summoned is determined
+             by the level of the caster:
+             Level:		Plane:		Energy:
+              <  8 		Fire            Flames
+              9-17		Sun             Heat Ray
+             18-26		Magma 		Lava
+	     27-35		Radiance	Light
+             36-44		Lightning	Lightning
+	     34-53		Salt		Dehydration
+	     54-62		Ash		Cold
+	     63-71		Positive	Energy
+	      > 72		Negative	Energy
+             NOTE: The damage increases with each new Plane.
+*******************************************************************************
+~
+-1 shelp_hellspawn~
+*******************************************************************************
+       Name: HellSpawn		
+    Classes: Mage(43)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to invoke demonic powers to
+             strike the target.
+*******************************************************************************
+~
+-1 shelp_word of recall~
+*******************************************************************************
+       Name: Word of Recall		
+    Classes: Priest(66)
+   Duration: N/A
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster assured recall, even under extreme
+             circumstances, by reinforcing the usual recall ability with 
+             his/her magical abilities.
+*******************************************************************************
+~
+-1 shelp_weaken~
+*******************************************************************************
+       Name: Weaken		
+    Classes: Cleric(20)
+   Duration: 1 + ( Cast Level / 16 )
+   Modifies: Strength
+       Type: Offensive
+Description: This spell causes the caster to force the target to feel very
+             weak, suffering a Strength penalty as a result.
+*******************************************************************************
+~
+-1 shelp_ventriloquate~
+*******************************************************************************
+       Name: Ventriloquate		
+    Classes: Mage(3)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to throw his/her voice onto a
+             being in the same room.  To use the spell correctly, the caster
+             must specify a target, and the message to be given.
+*******************************************************************************
+~
+-1 shelp_teleport~
+*******************************************************************************
+       Name: Teleport		
+    Classes: Mage(40)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell causes the caster to randomly teleport to a new
+             location somewhere in the realms.  The caster has no control
+             other where he/she ends up!
+*******************************************************************************
+~
+-1 shelp_summon~
+*******************************************************************************
+       Name: Summon		
+    Classes: Mage(35)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to attempt to summon a specified
+             character to the current location.  Range is unimportant.
+*******************************************************************************
+~
+-1 shelp_stone skin~
+*******************************************************************************
+       Name: Stone Skin		
+    Classes: Mage(36)
+   Duration: N/A
+   Modifies: Armor Class
+       Type: Defensive - Self
+Description: This spell allows the caster to cause his/her skin to harden,
+             until it looks like stone.  Because of the increased protection
+             this provides, the caster gains an Armor Class bonus.
+*******************************************************************************
+~
+-1 shelp_sleep~
+*******************************************************************************
+       Name: Sleep		
+    Classes: Mage(9)
+   Duration: 4 + ( Cast Level / 15 )
+   Modifies: N/A
+       Type: Offensive
+Description: If successfully cast, this spell allows the caster to force
+             the victim into a deep, trance-like sleep.  The victim may not
+             be woken by normal means, save for combat, or the spell running
+             it's duration.
+*******************************************************************************
+~
+-1 shelp_shocking grasp~
+*******************************************************************************
+       Name: Shocking Grasp		
+    Classes: Mage(5)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell causes an electrical charge to accumulate in the
+             caster's hands.  This can be directed at an enemy by touch.
+*******************************************************************************
+~
+-1 shelp_shield~
+*******************************************************************************
+       Name: Shield		
+    Classes: Mage(9)
+   Duration: 4 + ( Cast Level / 5 )
+   Modifies: Armor Class
+       Type: Defensive
+Description: This spell allows the caster to create a magical, invisible
+             shield about the target, providing an Armor Class bonus.
+*******************************************************************************
+~
+-1 shelp_sanctuary~
+*******************************************************************************
+       Name: Sanctuary		
+    Classes: Cleric(12)
+   Duration: 5 + ( Cast Level / 20 )
+   Modifies: N/A
+       Type: Defensive
+Description: This spell surrounds the target with a glowing white aura,
+             which serves to protect the target from any damage sustained.
+*******************************************************************************
+~
+-1 shelp_remove curse~
+*******************************************************************************
+       Name: Remove Curse		
+    Classes: Mage(36), Cleric(27)
+   Duration: Permanent
+   Modifies: HitRoll
+       Type: Defensive
+Description: This spell allows the caster to remove any affects of a curse
+             spell placed upon the target, negating the HitRoll penalty in
+             the process.
+*******************************************************************************
+~
+-1 shelp_refresh~
+*******************************************************************************
+       Name: Refresh		
+    Classes: Cleric(11)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to transfer some magical energy
+             to movement energy, which is supplied to the target.
+*******************************************************************************
+~
+-1 shelp_protection~
+*******************************************************************************
+       Name: Protection from Evil		
+    Classes: Mage(9), Cleric(12)
+   Duration: 8 + ( Cast Level / 5 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell surrounds the caster with an invisible shield of
+             energy of energy, helping to protect against any evil beings
+             the caster might encounter.
+*******************************************************************************
+~
+-1 shelp_poison~
+*******************************************************************************
+       Name: Posion		
+    Classes: Cleric(31)
+   Duration: 12 + ( Cast Level / 10 )
+   Modifies: Strength
+       Type: Offensive
+Description: This spell enables the caster to poison the victim, resulting
+             in a drop in the victim's Strength score.
+*******************************************************************************
+~
+-1 shelp_pass door~
+*******************************************************************************
+       Name: Pass Door		
+    Classes: Mage(46)
+   Duration: 2 + ( Cast Level / 20 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster's body and belongings to become
+             phased into a different plane.  Whilst phased, the caster is
+             able to move through closed doors easily.  The phased part of
+             the caster is at all times safe.
+*******************************************************************************
+~
+-1 shelp_mass invis~
+*******************************************************************************
+       Name: Mass Invisibilty		
+    Classes: Mage(60)
+   Duration: 4 + ( Cast Level / 5 )
+   Modifies: N/A
+       Type: Defensive
+Description: This spell enables the caster to make everyone in the present
+             location invisible.
+*******************************************************************************
+~
+-1 shelp_magic missile~
+*******************************************************************************
+       Name: Magic Missile		
+    Classes: Mage(3)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to unleash tiny, magically darts
+             of magical energy, which will strike the target.  For higher
+             level casters, the ability to produce more than one such missile
+             becomes possible.
+*******************************************************************************
+~
+-1 shelp_locate object~
+*******************************************************************************
+       Name: Locate Object		
+    Classes: Mage(16), Cleric(30)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell is used by the caster to find the position of the
+             specified object.  General terms such as 'sword' may be given,
+             but this will result in an almost overwhelming burst of 
+             information being provided to the caster!
+*******************************************************************************
+~
+-1 shelp_lightning bolt~
+*******************************************************************************
+       Name: Lightning Bolt		
+    Classes: Mage(24)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell enables the caster to unleash a powerful bolt of
+             energy from his/her fingertips, which strikes the victim in
+             the form of a bolt of lightning.
+*******************************************************************************
+~
+-1 shelp_know alignment~
+*******************************************************************************
+       Name: Know Alignment		
+    Classes: Cleric(13)
+   Duration: N/A
+   Modifies: N/A
+       Type: Defensive
+Description: This spell enables the caster to know the alignment of the
+             victim.
+*******************************************************************************
+~
+-1 shelp_invis~
+*******************************************************************************
+       Name: Invisibility		
+    Classes: Mage(17)
+   Duration: 4 + ( Cast Level / 5 )
+   Modifies: N/A
+       Type: Defensive
+Description: This spell causes the target to become invisible to other beings,
+             but can still be detected by the use of a detect magic spell. 
+*******************************************************************************
+~
+-1 shelp_infravision~
+*******************************************************************************
+       Name: Infravision		
+    Classes: Mage(20)
+   Duration: 4 + ( Cast Level / 3 )
+   Modifies: N/A
+       Type: Defensive
+Description: This spell enables the target to see better in darkness, 
+             without the use of any external light source.
+*******************************************************************************
+~
+-1 shelp_identify~
+*******************************************************************************
+       Name: Identify		
+    Classes: Mage(9)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell, when cast upon an object reveals the the caster it's
+             characteristics - object type, and other information.
+*******************************************************************************
+~
+-1 shelp_influx~
+*******************************************************************************
+       Name: Influx		
+    Classes: Cleric(65)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: With this spell, the caster floods the room with positive
+             energy, partially restoring the Hit Points of all beings
+             present in the same location.
+*******************************************************************************
+~
+-1 shelp_heal~
+*******************************************************************************
+       Name: Heal		
+    Classes: Cleric(75)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spells results in the target's Hit Points being virtually
+             restored, as well as healing any diseases or posions.
+*******************************************************************************
+~
+-1 shelp_harm~
+*******************************************************************************
+       Name: Harm		
+    Classes: Cleric(74)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell causes a dramatic loss in Hit Points of the victim,
+             as well as him/her being infected with a disease.
+*******************************************************************************
+~
+-1 shelp_giant strength~
+*******************************************************************************
+       Name: Giant Strength		
+    Classes: Mage(18)
+   Duration: 2 + ( Cast Level / 4 )
+   Modifies: Strength
+       Type: Defensive
+Description: This spell summons forth the power of the Great Giants into
+             the target, resulting in a Strength bonus.
+*******************************************************************************
+~
+-1 shelp_gate~
+*******************************************************************************
+       Name: Gate		
+    Classes: None at Present!
+   Duration: Permanent
+   Modifies: N/A
+       Type: N/A
+Description: To Be Decided.
+*******************************************************************************
+~
+-1 shelp_fly~
+*******************************************************************************
+       Name: Fly		
+    Classes: Mage(24)
+   Duration: 3 + ( Cast Level / 6 )
+   Modifies: N/A
+       Type: Defensive
+Description: This spell causes the target to float off the floor, making
+             movement over land and water effortless.  It also enables
+             entrance to certain parts of the sky...
+*******************************************************************************
+~
+-1 shelp_faerie fog~
+*******************************************************************************
+       Name: Faerie Fog		
+    Classes: Priest(14)
+   Duration: N/A
+   Modifies: N/A
+       Type: Defensive
+Description: This spell creates a billowing cloud of purple fog, which
+             reveals any hidden or invisible beings in the location.
+*******************************************************************************
+~
+-1 shelp_faerie fire~
+*******************************************************************************
+       Name: Faerie Fire		
+    Classes: Mage(3)
+   Duration: 5 + (Cast Level / 4)
+   Modifies: Armor Class
+       Type: Defensive
+Description: This spell engulfs the victim's body, making it easy for those
+             figting the victim to see him/her, effectively raising the
+             victim's Armor Class.
+*******************************************************************************
+~
+-1 shelp_flamestrike~
+*******************************************************************************
+       Name: Flamestrike		
+    Classes: Cleric(54)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to call forth a vertically-moving
+             jet of flame to briefly engulf the target.
+*******************************************************************************
+~
+-1 shelp_fireball~
+*******************************************************************************
+       Name: Fireball		
+    Classes: Mage(28)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to project a ball of flame from
+             their hand, to strike down the target.
+*******************************************************************************
+~
+-1 shelp_energy drain~
+*******************************************************************************
+       Name: Energy Drain 		
+    Classes: Mage(80)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to drain HitPoints, Mana Points
+             and Experience Points from the target, whilst gaining in Hit
+             Points Him/Herself.
+*******************************************************************************
+~
+-1 shelp_encumber~
+*******************************************************************************
+       Name: Encumber		
+    Classes: Cleric(18)
+   Duration: 5 + ( Cast Level / 16 )
+   Modifies: Armour Class
+       Type: Offensive
+Description: This spell causes the victim to feel weighted down, suffering
+             a penalty to their Armor Class.
+*******************************************************************************
+~
+-1 shelp_enchant weapon~
+*******************************************************************************
+       Name: Enchant Weapon		
+    Classes: Mage(39)
+   Duration: Permanent
+   Modifies: Object HitRoll, Object DamRoll
+       Type: N/A
+Description: This spell allows the caster to convert a normal, non-magic
+             weapon to a magically enchanted one, resulting in bonuses to
+             the wielder's attack rolls.
+*******************************************************************************
+~
+-1 shelp_earthquake~
+*******************************************************************************
+       Name: Earthquake		
+    Classes: Cleric(78)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell summons a mini-earthquake to strike the caster's
+             location, causing damage to all those affected.
+*******************************************************************************
+~
+-1 shelp_dispel evil~
+*******************************************************************************
+       Name: Dispel Evil		
+    Classes: Cleric(63)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell is used by the caster, to ask his/her God to strike
+             against an evil being.  Remember that the Gods do not take
+             lightly such requests from evil spellcasters!
+*******************************************************************************
+~
+-1 shelp_dispel magic~
+*******************************************************************************
+       Name: Dispel Magic		
+    Classes: Mage(28), Cleric(26)
+   Duration: N/A
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to attempt to remove the affects
+             of certain spells from the victim.  Due to the effort involved,
+             it becomes progressively difficult to remove further affects
+             for each single use of this spell.
+*******************************************************************************
+~
+-1 shelp_detect undead~
+*******************************************************************************
+       Name: Detect Undead		
+    Classes: Mage(8)
+   Duration: 5 + ( Cast Level / 6 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to sense if a being is undead.
+*******************************************************************************
+~
+-1 shelp_detect poison~
+*******************************************************************************
+       Name: Detect Posion		
+    Classes: Cleric(10)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to determine if drink or food
+             is poisoned.  It can only be cast upon items.
+*******************************************************************************
+~
+-1 shelp_detect magic~
+*******************************************************************************
+       Name: Detect Magic		
+    Classes: Mage(7), Cleric(7)
+   Duration: 6 + ( Cast Level / 4 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spells allows the caster to detect magical affects.
+*******************************************************************************
+~
+-1 shelp_detect invis~
+*******************************************************************************
+       Name: Detect Invisibility		
+    Classes: Mage(19)
+   Duration: 6 + ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to see any invisible beings, 
+             providing they are of similar level to the caster, or lower.
+*******************************************************************************
+~
+-1 shelp_detect hidden~
+*******************************************************************************
+       Name: Detect Hidden		
+    Classes: Mage(17), Cleric(16)
+   Duration: 4 + ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to be aware of any hiding beings in
+             the current location.  This spell does not reveal who is hiding,
+             however, just the fact that someone is.
+*******************************************************************************
+~
+-1 shelp_detect evil~
+*******************************************************************************
+       Name: Detect Evil		
+    Classes: Mage(12), Cleric(8)
+   Duration: 5 + ( Cast Level / 10 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to recognize evil beings, who will
+             appear to be surrounded by a red aura.
+*******************************************************************************
+~
+-1 shelp_curse~
+*******************************************************************************
+       Name: Curse		
+    Classes: Mage(35), Cleric(26)
+   Duration: 2 * ( Cast Level / 8 )
+   Modifies: HitRoll, Saving Roll
+       Type: Offensive
+Description: This spell casts a curse upon the victim, reducing their chances
+             of the victim striking thier enemies, whilst making it easy for
+             them to be attacked.  Cursed players may not recall to their
+             temple.
+*******************************************************************************
+~
+-1 shelp_cure serious~
+*******************************************************************************
+       Name: Cure Serious		
+    Classes: Cleric(41)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to cure serious wounds of the
+             target.
+*******************************************************************************
+~
+-1 shelp_cure poison~
+*******************************************************************************
+       Name: Cure Poison		
+    Classes: Cleric(32)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to remove any traces of poison
+             from the victim's body.
+*******************************************************************************
+~
+-1 shelp_cure light~
+*******************************************************************************
+       Name: Cure Light		
+    Classes: Cleric(5)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to cure light wounds of the
+             target.
+*******************************************************************************
+~
+-1 shelp_cure critical~
+*******************************************************************************
+       Name: Cure Critical		
+    Classes: Cleric(59)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to cure critical wounds of the
+             target.
+*******************************************************************************
+~
+-1 shelp_cure blindness~
+*******************************************************************************
+       Name: Cure Blindness		
+    Classes: Cleric(28)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spells allows the caster to remove any affects of a
+             blindness spell, or similiar.
+*******************************************************************************
+~
+-1 shelp_create water~
+*******************************************************************************
+       Name: Create Water		
+    Classes: Cleric(9)
+   Duration: Permanent
+   Modifies: N/A
+       Type: N/A
+Description: This spell is cast upon an object.  If the object is able to hold
+             liquids, and is empty, it will be magically filled with water.
+*******************************************************************************
+~
+-1 shelp_create spring~
+*******************************************************************************
+       Name: Create Spring		
+    Classes: Cleric(65)
+   Duration: Cast Level
+   Modifies: N/A
+       Type: N/A
+Description: This spell causes a magically spring to appear.
+*******************************************************************************
+~
+-1 shelp_create food~
+*******************************************************************************
+       Name: Create Food		
+    Classes: Cleric(26)
+   Duration: Permanent
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to magically produce some food, in
+             the form of a mushroom.
+*******************************************************************************
+~
+-1 shelp_control weather~
+*******************************************************************************
+       Name: Control Weather		
+    Classes: Mage(58), Cleric(79)
+   Duration: N/A
+   Modifies: Weather Conditions
+       Type: N/A
+Description: This spells allows the caster to make the weather conditions
+             either 'better' or 'worse'.
+*******************************************************************************
+~
+-1 shelp_continual light~
+*******************************************************************************
+       Name: Continual Light		
+    Classes: Mage(11), Cleric(27)
+   Duration: Permanent
+   Modifies: N/A
+       Type: N/A
+Description: This spell allows the caster to magically produce a small, 
+             glowing ball of light.
+*******************************************************************************
+~
+-1 shelp_colour spray~
+*******************************************************************************
+       Name: Colour Spray 		
+    Classes: Mage(7)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell causes a rainbow-coloured array of colours to shoot
+             out, causing injury to the specified target.
+*******************************************************************************
+~
+-1 shelp_chill touch~
+*******************************************************************************
+       Name: Chill Touch		
+    Classes: Mage(8)
+   Duration: 3
+   Modifies: Strength
+       Type: Offensive
+Description: This spells causes a blue glow to encompass the caster's hand.
+             This energy can then be used to strike at a given foe, who will
+             be reduced in strength, as well as suffering damage.
+*******************************************************************************
+~
+-1 shelp_charm person~
+*******************************************************************************
+       Name: Charm Person 		
+    Classes: Mage(7), Cleric(15)
+   Duration: 3 + ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Offensive
+Description: This spells allows the caster to attempt to charm the victim. 
+             if the spell succeeds, the victim will treat the caster as a
+             trusted friend, and obey any reasonable order they are given.
+	     Remember that it is normal to hold the master responsible for
+             any orders the victims carry out.
+*******************************************************************************
+~
+-1 shelp_change sex~
+*******************************************************************************
+       Name: Change Sex 		
+    Classes: Mage(66)
+   Duration: 5 + ( Cast Level / 10 )
+   Modifies: Gender
+       Type: Defensive
+Description: This spell, although not offensive, is not considered to be
+             completely harmless by it's victims.  Upon casting of this spell,
+             the victim will appear to be of a different gender to all those
+             who that they encounter.
+*******************************************************************************
+~
+-1 shelp_cause serious~
+*******************************************************************************
+       Name: Cause Serious		
+    Classes: Cleric(40)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Offensive
+Description: This spell inflicts serious wounds to the victim.
+*******************************************************************************
+~
+-1 shelp_cause critical~
+*******************************************************************************
+       Name: Cause Critical		
+    Classes: Cleric(58)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Offensive
+Description: This spell causes critical injuries to the victim.
+*******************************************************************************
+~
+-1 shelp_cause light~
+*******************************************************************************
+       Name: Cause Light		
+    Classes: Cleric(4)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Offensive
+Description: This spell causes light injuries to the victim.
+*******************************************************************************
+~
+-1 shelp_call lightning~
+*******************************************************************************
+       Name: Call Lightning 		
+    Classes: Cleric(36)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell can only be used outdoors, in bad weather.  It
+             allows the caster to call bolts of lightning, which strike all
+             non-friendly characters in that location.
+*******************************************************************************
+~
+-1 shelp_burning hands~
+*******************************************************************************
+       Name: Burning Hands 		
+    Classes: Mage(6)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell causes a jet of flame to shoot from the caster's
+             hands, which strike the target.
+*******************************************************************************
+~
+-1 shelp_blindness~
+*******************************************************************************
+       Name: Blindness		
+    Classes: Mage(16)
+   Duration: 1 + ( Cast Level / 4 )
+   Modifies: HitRoll
+       Type: Offensive
+Description: This spell causes blindness in the recipient, affecting their
+             ability to strike their foes.
+*******************************************************************************
+~
+-1 shelp_bless~
+*******************************************************************************
+       Name: Bless		
+    Classes: Cleric(8)
+   Duration: 6 + ( Cast Level / 6 )
+   Modifies: HitRoll & Saving Spell
+     Damage: N/A
+       Type: Defensive
+Description: This spell allows the caster to raise the morale of the 
+             recipient, giving a bonus to their combat abilities.
+*******************************************************************************
+~
+-1 shelp_bark skin~
+*******************************************************************************
+       Name: Bark Skin 		
+    Classes: Cleric(20)
+   Duration: 3 + ( Cast Level / 12 )
+   Modifies: Armor Class
+       Type: Defensive - Self
+Description: This spell causes the caster's skin to harden, until it looks
+             like wood, providing an Armor Class bonus.
+*******************************************************************************
+~
+-1 shelp_bad breath~
+*******************************************************************************
+       Name: Bad Breath 		
+    Classes: Mage(4)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: The caster expells a blast of bad breath, which strikes the
+             victim.
+*******************************************************************************
+~
+-1 shelp_armor~
+*******************************************************************************
+       Name: Armor		
+    Classes: Mage(3)
+   Duration: 24
+   Modifies: Armor Class
+       Type: Defensive
+Description: This spell creates a magical field of force, which protects as
+             if it were physical armor.  It does not hinder the player in
+             any way, and will last for it's duration, unless dispelled.
+*******************************************************************************
+~
+-1 shelp_acid blast~
+*******************************************************************************
+       Name: Acid Blast		
+    Classes: Mage(50)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell conjures forth a blast of acid to strike the victim.
+*******************************************************************************
+~
+-1 shelp_summary~
+*******************************************************************************
+sHelp is a command that provides help pages for the various skills and spells
+offered to all the classes within the game.  Unlike the 'help' command, you
+can abbreviate the skill or spell you are looking for, eg: 'shelp arm' will
+display the help page for the armor spell.
+
+For spells, the following information is shown:
+       Name: The name of the spell
+    Classes: Which classes have access to this spell, and at what level 
+   Duration: The time (in ticks) that the spell lasts for                                  
+   Modifies: What (if any) modifies the spell offers
+       Type: What type of spell, eg: Offensive (starts fights) or defensive
+Description: A brief description of the spell
+
+For skills, the same information is shown as for spells, except for the
+'type' field.
+*******************************************************************************
+~
+-1 shelp_outline~
+*******************************************************************************
+       Name: 		
+    Classes:
+   Duration:
+   Modifies:
+       Type:
+Description:
+*******************************************************************************
+~
+0 $~
+#ROOMS
+#32
+@@RThe READ THIS DESCRIPTION room.@@g~
+@@RBEFORE YOU RECALL, PLEASE READ THE REST OF THIS DESCRIPTION!!! @@y There
+have been many changes to the mud.  You have been transferred to this room,
+because your playerfile was last saved BEFORE these changes came into force.
+The major change has been in the skills and spells.  There is no longer such
+an overlap between classes.  Now, each class ONLY gets skills or spells the
+they "should" have.  Now, for some of you, this is not going to help much, i
+know.  But, the old way skills/spells were organized, was from before we went
+multiclass.  The change reflects the fact that classes should have specific
+abilities.  There's not really much point in being a multiclass mud, if each
+class has all the other's abilities. There are new spells and skills.  Many
+old ones have been changed a LOT. Because of this, you will find that you are
+no longer practiced in _any_ skill or spell. Before you totally panic, you
+should also note that your number of practices has been increased in line with
+the number of skills/spells lost.  There should also be a surplus, for you to
+use as you like.
+ In your inventory, you should also find a token, which will allow you to ask
+an Immortal to set the order of your classes.  Instead of being race-based,
+you now select the order of classes for your character, best -> worst.
+ Another new feature is the 'SHELP' command, which gives help for spells.
+(And soon, skills.)
+Lots of other things about the mud have been changed or tweaked.  More detailed information
+will (hopefully) made available.
+Thanks for reading this.   
+ 
+Stephen
+~
+12 11
+S
+#30
+The Utility Room~
+This room serves no purpose at present.
+This area is used to hold some mobs and objects for some new spells, and
+a few other things.  I'll add something here soon.
+There is a test exit going up to test the climb skill.
+~
+4 11
+D3
+~
+~
+0 -1 33
+D4
+~
+~
+0 -1 31
+S
+#31
+New room~
+No description~
+0 11
+D0
+~
+~
+0 -1 32
+D5
+~
+~
+0 -1 30
+S
+#33
+Test Room #2~
+This is a little test for an area I have in mind.
+Not hard to work out, I hope :P
+~
+0 11
+D1
+~
+~
+0 -1 30
+S
+#37
+The BattleField of Orcs~
+You are suddenly WITHIN the portrait showing the Orc battle!
+All around you, you can hear the blood-curdling cries of women and children,
+as the Orcs rampage through the land, slaying all humans they see.
+~
+4 2
+S
+#0
+#MOBILES
+#36
+taert intel~
+Taert~
+Taert, bulging muscles and all, is here.
+ 
+~
+~
+1 1572864 500 S
+61 1
+-50 0 20
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#32
+A Dark Stalker~
+the Dark Stalker~
+A Dark Stalker stands here, searching for it's prey.
+~
+The Dark Stalker is a product of the Dark Powers.  It's only purpose in life
+is to search out it's victim, and try and kill it.
+It looks dark, powerful, and ready to kill.
+~
+65553 1049090 -900 S
+49 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#30
+zombie~
+the Zombie~
+A rotting Zombie stands before you, smelling slightly.
+~
+The Zombie looks like it has just been animated.  This doesn't stop it
+also looking like a bad road accident.
+~
+3 0 -400 S
+6 0
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#31
+zombie~
+the zombie~
+A hideous zombie stands before you.
+~
+The Zombie looks freshly animated.  Looking closer you almost recognise it.
+~
+16385 0 -400 S
+1 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#33
+wizard oz~
+the wizard of oz~
+The Wizard of Oz is waiting here. 
+~
+You see a long beared wacky mage standing here. His head seems swollen with
+pride and he looks at you as if you were insects for him to experiment on.
+~
+11 1573032 0 S
+65 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#34
+tate sugar intel~
+Tate~
+The sweet-looking Tate is here.
+~
+~
+1 1572864 300 S
+51 1
+-50 22 22
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#35
+lyle intel~
+Lyle~
+Lyle, the second most bravest adventurer in the world, cowers here.
+~
+~
+1 1572864 300 S
+63 1
+-20 40 12
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#0
+#OBJECTS
+#33
+window magic~
+a magical window~
+A magical window floats before you.  Where does it look?
+~
+7 64 0 1
+0 0 0 0 0 0 0 0 0 0
+200
+L
+1
+#32
+token~
+a token you should EXAMINE~
+~
+13 4224 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+E
+token~
+Thank you for looking at this token.
+Due to the changes made to the mud, it is now possible for players (i.e. you )
+to select the order of your classes, from Best to Worst
+~
+L
+1
+#31
+fireblade fire blade~
+a FireBlade~
+A FireBlade lies here.
+~
+5 12484 8421376 1
+0 0 0 3 0 0 0 0 0 0
+1
+A
+13 -75
+A
+18 13
+A
+19 11
+L
+1
+#30
+foode bundle~
+a small bundle of food~
+A small bundle of food lies here.
+~
+19 64 8388608 1
+5 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#35
+beacon~
+a magical beacon~
+A magical beacon floats gently before you.
+~
+6 64 8388608 1
+0 0 0 0 0 0 0 0 0 0
+5
+L
+1
+#34
+portal~
+a magical portal~
+A large portal silently spins before you.
+~
+7 0 0 1
+0 0 0 0 0 0 0 0 0 0
+200
+L
+1
+#36
+picture portrait orc orcs~
+a huge Portrait~
+A huge Portrait hangs here, showing hundreds of Orcs in battle~
+13 0 0 1
+9 0 37 0 0 0 0 0 0 0
+1
+L
+1
+#37
+soul potion~
+@@eA Soul potion@@N~
+@@NA flask filled with an @@devil dark liquid@@N lies here, screaming faintly.
+@@N
+~
+10 688 8388608 1
+70 632 616 618 0 0 0 0 0 0
+1
+L
+70
+#38
+soul figurine~
+@@da small, living figurine@@N~
+A small living figurine lies here, groaning in agony.@@N
+~
+28 512 8421376 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+70
+#0
+#OBJFUNS
+O 37 objfun_soul_moan
+O 38 objfun_soul_moan
+S
+#$

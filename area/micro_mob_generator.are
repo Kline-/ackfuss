@@ -1,0 +1,222 @@
+#AREA
+Body Generator~
+Q 16
+K none~
+L {?? ??}~
+N 99
+I 0 0
+V 22431 22499
+X 0
+F 15
+U You hear the screams of the Dead within your head.~
+O hephaestus~
+R hepheastus hephaestus~
+W hepheastus hephaestus~
+S Title not shown on area list.
+#ROOMS
+#22438
+@@lChamber Repop@@N~
+No description~
+24584 11
+D0
+~
+~
+0 -1 22432
+D1
+~
+~
+0 -1 5737
+D2
+~
+~
+0 -1 5721
+D3
+~
+~
+0 -1 5780
+D4
+~
+~
+0 -1 5782
+D5
+~
+~
+0 -1 5735
+S
+#22437
+@@lChamber Repop@@N~
+No description~
+24584 11
+D0
+~
+~
+0 -1 5721
+D1
+~
+~
+0 -1 5728
+D2
+~
+~
+0 -1 22432
+D3
+~
+~
+0 -1 5732
+D4
+~
+~
+0 -1 5781
+D5
+~
+~
+0 -1 5729
+S
+#22436
+New room~
+No description~
+4 11
+S
+#22435
+New room~
+No description~
+4 11
+S
+#22434
+@@lChamber Repop@@N~
+No description~
+24588 11
+D0
+~
+~
+0 -1 5616
+D1
+~
+~
+0 -1 5720
+D2
+~
+~
+0 -1 5729
+D3
+~
+~
+0 -1 5695
+D4
+~
+~
+0 -1 22432
+D5
+~
+~
+0 -1 5786
+S
+#22433
+@@lChamber Repop@@N~
+No description~
+24584 11
+D0
+~
+~
+0 -1 5718
+D1
+~
+~
+0 -1 5724
+D2
+~
+~
+0 -1 5788
+D3
+~
+~
+0 -1 5723
+D4
+~
+~
+0 -1 5712
+D5
+~
+~
+0 -1 22432
+S
+#22432
+@@lChamber Repop@@N~
+No description~
+24584 11
+D0
+~
+~
+0 -1 22437
+D2
+~
+~
+0 -1 22438
+D4
+~
+~
+0 -1 22433
+D5
+~
+~
+0 -1 22434
+S
+#22431
+@@GGOLF COURSE GENERAL REPOP@@N~
+@@eThe rooms 22341-22499 are in use! (it doesnt much look like it, but they
+are)@@N
+~
+24584 11
+D0
+~
+~
+0 -1 5635
+D1
+~
+~
+0 -1 5640
+D2
+~
+~
+0 -1 5637
+D3
+~
+~
+0 -1 5638
+D4
+~
+~
+0 -1 5644
+D5
+~
+~
+0 -1 5633
+S
+#0
+#RESETS
+M 0 5610 4 22431 (null)
+
+M 0 5611 3 22431 (null)
+
+M 0 5612 2 22431 (null)
+
+M 0 5613 2 22431 (null)
+
+M 0 5630 1 22432 (null)
+
+G 0 5601 0 (null)
+
+M 0 5631 3 22432 (null)
+
+E 0 5617 0 16 (null)
+
+M 0 5635 3 22432 (null)
+
+M 0 5638 3 22432 (null)
+
+M 0 5633 3 22432 (null)
+
+M 0 5632 3 22432 (null)
+
+S
+#$

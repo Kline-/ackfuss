@@ -1,0 +1,187 @@
+#AREA
+@@W{@@eNONE!@@W} @@mSYSTEM@@N         @@eDO NOT USE!!!@@N~
+Q 16
+K none~
+L {?? ??}~
+N 14
+I 0 0
+V 50 65
+X 0
+F 15
+U You hear the screams of the Dead within your head.~
+O warbeast~
+R stephen warbeast~
+W stephen oderus warbeast~
+B Currently building area.
+S Title not shown on area list.
+#ROOMS
+#52
+The Courtyard~
+You are in a large courtyard, built beneath the land.  Small torches flicker
+around the room, casting their bright light into every nook and cranny.
+The Floor is paved here, whilst there are a few sturdy-looking wooden
+supports holding the ceiling in place.
+~
+1036 11
+S
+#0
+#MOBILES
+#50
+cogline~
+Cogline~
+An elderly-looking Cleric stands here, ready to serve.
+~
+He is here to serve you.
+~
+3 0 1000 S
+71 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#51
+beaver~
+A small cute and fuzzy beaver~
+A beaver with red hair languishes in the sun here.
+~
+~
+3 40 -1 S
+80 1
+0 0 0
+! 0 0 0 7 0 0 0
+| 0 0 0 0 0 0 0
+#0
+#OBJECTS
+#55
+fountain~
+the fountain~
+A majestic marble fountain flows here.~
+25 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+10000
+L
+1
+#56
+board~
+the board~
+The Clan Board is firmly fixed to the wall.~
+27 0 0 1
+28 1 1 1543 0 0 0 0 0 0
+1
+L
+1
+#57
+tome~
+the Tome of the Ancients~
+An antique spellbook lies here radiating power.~
+9 1 8421376 1
+0 0 0 0 0 0 0 0 0 0
+3
+A
+3 2
+A
+4 2
+A
+12 50
+L
+1
+#58
+Armour~
+bMX body Armour~
+~
+9 4 8650752 0
+0 0 0 0 0 0 0 0 0 0
+1
+A
+13 1000
+A
+17 -500
+A
+12 1000
+A
+18 100
+A
+19 100
+L
+81
+#50
+katana~
+Protectorate Crysblade~
+Protectorate Crysblade~
+5 -12615616 8421376 385
+20 0 0 1 0 0 0 0 0 0
+10
+A
+18 9
+A
+19 9
+A
+12 20
+A
+13 20
+L
+20
+#54
+leggings~
+Protectorate Leggings~
+Protectorate Leggings~
+9 0 9437184 1
+0 0 0 0 0 0 0 0 0 0
+5
+A
+18 10
+A
+19 10
+A
+17 -40
+A
+12 50
+A
+13 50
+L
+70
+#60
+Madness~
+@@dThe @@RBeast's @@dMadness @@N~
+A blade of pure @@RRage~
+5 4673 8421376 24475
+0 0 5 11 0 0 0 0 0 0
+5
+A
+18 500
+A
+19 500
+A
+1 5
+A
+4 10
+A
+17 -500
+A
+3 5
+A
+2 5
+A
+14 100
+A
+8 0
+A
+13 100
+A
+12 100
+A
+20 -100
+A
+21 -100
+A
+22 -100
+A
+23 -100
+A
+24 -100
+L
+81
+#0
+#SPECIALS
+M 50 spec_cast_adept
+S
+#$

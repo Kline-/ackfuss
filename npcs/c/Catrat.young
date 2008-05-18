@@ -1,0 +1,41 @@
+#MOB
+Revision     7
+Name         catrat young~
+ShortDescr   a young catrat~
+LongDescr    A young catrat is here.
+~
+Description  This catrat is a young male.  Catrats are a cross between a cat and a rat,
+as their name suggests.  Needless to say, they are most ugly.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        9
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       12925
+Note         0
+Room         3246
+HpManaMove   180 187 135 135 100 100
+Gold         7
+Balance      0
+Exp          454
+Act          4194447
+AffectedBy   0
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    -300
+Hitroll      0
+Damroll      0
+Armor        75
+Wimpy        0
+Deaf         0
+Vnum         9601
+End
+
+#END

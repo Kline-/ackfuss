@@ -1,0 +1,40 @@
+#MOB
+Revision     7
+Name         cat~
+ShortDescr   an alley cat~
+LongDescr    An alley cat hisses at you.
+~
+Description  The alley cat is half starved and more than a little feral.
+~
+Prompt       <%h %m %v>~
+Sex          1
+Class        0
+Race         0
+Level        6
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       26943
+Note         0
+Room         3301
+HpManaMove   1 125 25 90 100 100
+Gold         0
+Balance      0
+Exp          253
+Act          4194305
+AffectedBy   0
+Position     5
+Practice     21
+SavingThrow  0
+Alignment    -200
+Hitroll      0
+Damroll      0
+Armor        100
+Wimpy        0
+Deaf         0
+Vnum         3066
+End
+
+#END

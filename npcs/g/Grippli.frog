@@ -1,0 +1,83 @@
+#MOB
+Revision     7
+Name         grippli frog~
+ShortDescr   the Grippli~
+LongDescr    A small, frog like humanoid hops around, looking for insects to munch on.
+~
+Description  The Grappli hopping about you is a small, intelligent forg-like humanoid.
+It seems to be occupied looking for insects to eat, rather than trying to eat
+you, like most of the other inhabitants of the Isle.
+~
+Prompt       <%h %m %v>~
+Sex          0
+Class        0
+Race         0
+Level        53
+Sentence     0
+Invis        0
+m/c          -1 -1 -1 -1 -1 
+Trust        0
+Wizbit       0
+Played       13172
+Note         0
+Room         7510
+HpManaMove   2738 3545 527 795 100 100
+Gold         1782
+Balance      0
+Exp          853631
+Act          4194445
+AffectedBy   41600
+Position     7
+Practice     21
+SavingThrow  0
+Alignment    300
+Hitroll      0
+Damroll      0
+Armor        -62
+Wimpy        0
+Deaf         0
+Vnum         5012
+Affect  81  16   0   0       8192
+Affect  84   2   0   0        128
+End
+
+#OBJECT
+Nest         0
+Name         blue crystal staff~
+ShortDescr   blue Crystal Staff~
+Description  A beautiful staff made entirely of blue crystal.
+~
+Vnum         7527
+ExtraFlags   0
+WearFlags    16385
+WearLoc      -1
+ClassFlags   1
+ItemType     4
+Weight       1
+Level        54
+Timer        0
+Cost         26235
+Values       31 5 5 56
+Spell 3      'heal'
+End
+
+#OBJECT
+Nest         0
+Name         gauntlets~
+ShortDescr   flaming Gauntlets~
+Description  A huge pair of flaming gauntlets.
+~
+Vnum         7513
+ExtraFlags   0
+WearFlags    129
+WearLoc      -1
+ClassFlags   1
+ItemType     9
+Weight       1
+Level        35
+Timer        0
+Cost         12250
+Values       6 0 0 0
+End
+
+#END
