@@ -4985,7 +4985,7 @@ void do_prompt( CHAR_DATA * ch, char *argument )
    }
 
    if( !strcmp( argument, "all" ) )
-      strcpy( buf, "<%hhp %mm %vmv> " );
+      strcpy( buf, "@@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N" );
    else
    {
       if( strlen( argument ) > 200 )
