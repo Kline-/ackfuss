@@ -220,6 +220,10 @@ void imclog( const char *format, ... )
 
    snprintf( buf2, LGST, "IMC: %s", buf );
 
+   #if defined(IMCACK)
+    monitor_chan(buf2,MONITOR_IMC);
+   #endif
+
    strtime = ctime( &imc_time );
    strtime[strlen( strtime ) - 1] = '\0';
    fprintf( stderr, "%s :: %s\n", strtime, buf2 );
@@ -239,6 +243,10 @@ void imcbug( const char *format, ... )
    va_end( ap );
 
    snprintf( buf2, LGST, "***BUG*** IMC: %s", buf );
+
+   #if defined(IMCACK)
+    monitor_chan(buf2,MONITOR_IMC);
+   #endif
 
    strtime = ctime( &imc_time );
    strtime[strlen( strtime ) - 1] = '\0';
@@ -6002,7 +6010,7 @@ IMC_CMD( imctell )
 
       imc_to_char( "Usage: imctell user@mud <message>\r\n", ch );
       imc_to_char( "Usage: imctell [on]/[off]\r\n\r\n", ch );
-      imc_printf( ch, "&cThe last %d things you were told:\r\n", MAX_IMCTELLHISTORY );
+      imc_printf( ch, "~cThe last %d things you were told:\r\n", MAX_IMCTELLHISTORY );
 
       for( x = 0; x < MAX_IMCTELLHISTORY; x++ )
       {

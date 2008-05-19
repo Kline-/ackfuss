@@ -140,6 +140,13 @@ const struct class_type remort_table[MAX_CLASS] = {
     ""},
 
    {
+    "Mon", "Monk", APPLY_CON, "Con", 0,
+    /*
+     * guild_room ->
+     */ 0, 0, 0, 0, 2, 3, TRUE,
+    ""},
+
+   {
     "Ass", "Assassin", APPLY_DEX, "Dex", 0,
     /*
      * guild room -> 
@@ -159,13 +166,6 @@ const struct class_type remort_table[MAX_CLASS] = {
      * guild room -> 
      */ 0, 0, 0, 0, 2, 3, TRUE,
     ""},
-
-   {
-    "Mon", "Monk", APPLY_CON, "Con", 0,
-    /*
-     * guild_room -> 
-     */ 0, 0, 0, 0, 2, 3, TRUE,
-    ""}
 };
 
 
