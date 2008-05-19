@@ -5391,7 +5391,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
          if( ( ch->lvl[cnt] != -1 || numclasses < race_table[ch->race].classes ) && ch->lvl[cnt] < ( LEVEL_HERO - 1 ) )
          {
             any = TRUE;
-            cost = exp_to_level( ch, cnt, ( ch->pcdata )->index[cnt] );
+            cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
 
             sprintf( buf, "%s : %d Exp.\n\r", class_table[cnt].who_name, cost );
             send_to_char( buf, ch );
@@ -5509,7 +5509,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
          cost = exp_to_level_adept( ch );
    }
    else
-      cost = exp_to_level( ch, c, ( ch->pcdata->index[c] ) );
+      cost = exp_to_level( ch, c, ( ch->pcdata->order[c] ) );
 
    if( vamp )
    {
@@ -6073,7 +6073,7 @@ void do_worth( CHAR_DATA * ch, char *argument )
       if( ( ch->lvl[cnt] != -1 || numclasses < race_table[ch->race].classes ) && ch->lvl[cnt] < LEVEL_HERO - 1 )
       {
          any = TRUE;
-         cost = exp_to_level( ch, cnt, ( ch->pcdata )->index[cnt] );
+         cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
 
          sprintf( buf, "%-14s  %9d %9d.\n\r", class_table[cnt].who_name, cost, UMAX( 0, cost - ch->exp ) );
          send_to_char( buf, ch );

@@ -2575,7 +2575,6 @@ void do_mset( CHAR_DATA * ch, char *argument )
       int cnt;
       int class[MAX_CLASS];
       int parity[MAX_CLASS];
-      int index[MAX_CLASS];
       int foo;
       bool ok = TRUE;
       char arg[MAX_STRING_LENGTH];
@@ -2608,7 +2607,6 @@ void do_mset( CHAR_DATA * ch, char *argument )
             if( !str_cmp( arg, class_table[foo].who_name ) )
             {
                class[cnt] = foo;
-               index[foo] = ( cnt );
                parity[foo] = 1;
                break;
             }
@@ -2633,10 +2631,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
        * Copy classes to pcdata 
        */
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
-      {
-         victim->pcdata->order[cnt] = class[cnt];
-         victim->pcdata->index[cnt] = index[cnt];
-      }
+       victim->pcdata->order[cnt] = class[cnt];
 
       send_to_char( "Your classes have been re-ordered.\n\r", victim );
       send_to_char( "Done.\n\r", ch );

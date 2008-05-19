@@ -1291,7 +1291,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             else if( remort == TRUE )
                cost = exp_to_level( ch, cl_index, 5 );
             else
-               cost = exp_to_level( ch, cl_index, ( ch->pcdata )->index[cl_index] );
+               cost = exp_to_level( ch, cl_index, ch->pcdata->order[cl_index] );
             sprintf( buf2, "%d", UMAX( 0, cost - ch->exp ) );
             i = buf2;
             break;
@@ -1402,7 +1402,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             else if( remort == TRUE )
                cost = exp_to_level( ch, cl_index, 5 );
             else
-               cost = exp_to_level( ch, cl_index, ( ch->pcdata )->index[cl_index] );
+               cost = exp_to_level( ch, cl_index, ch->pcdata->order[cl_index] );
             sprintf( buf2, "%d", UMAX( 0, cost ) );
             i = buf2;
             break;
@@ -2506,7 +2506,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
    {
       sh_int classes[MAX_CLASS];
       sh_int parity[MAX_CLASS];  /* Nowt to do with parity really */
-      sh_int index[MAX_CLASS];
       char arg[MAX_STRING_LENGTH];
       int cnt;
       int foo;
@@ -2530,7 +2529,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             if( !str_cmp( arg, class_table[foo].who_name ) )
             {
                classes[cnt] = foo;
-               index[foo] = cnt;
                parity[foo] = 1;
                break;
             }
@@ -2561,10 +2559,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
        * Copy classes across to pcdata 
        */
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
-      {
-         ch->pcdata->order[cnt] = classes[cnt];
-         ch->pcdata->index[cnt] = index[cnt];
-      }
+       ch->pcdata->order[cnt] = classes[cnt];
 
       d->connected = CON_MENU;
       if( !IS_SET( d->check, CHECK_CLASS ) )
