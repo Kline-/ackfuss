@@ -4093,3 +4093,22 @@ void message_update( void )
    }
    return;
 }
+
+bool char_exists( char *argument )
+{
+ FILE *fp;
+ char buf[MAX_STRING_LENGTH];
+ bool found = FALSE;
+
+ fclose( fpReserve );
+ sprintf( buf, "%s%s%s%s", PLAYER_DIR, initial( argument ), "/", capitalize( argument ) );
+
+ if( ( fp = fopen( buf, "r" ) ) != NULL )
+ {
+  found = TRUE;
+  fclose( fp );
+ }
+
+ fpReserve = fopen( NULL_FILE, "r" );
+ return found;
+}
