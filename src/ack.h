@@ -1399,6 +1399,7 @@ char *fread_string args( ( FILE * fp ) );
 void fread_to_eol args( ( FILE * fp ) );
 char *fsave_to_eol args( ( FILE * fp ) );
 char *fread_word args( ( FILE * fp ) );
+bool char_exists args( ( char *argument ) );
 
 /* void *  alloc_mem       args( ( int sMem ) );
 void    check_freed     args( ( unsigned int first, unsigned int last) );
