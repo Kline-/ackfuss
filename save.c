@@ -686,7 +686,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    ch->name = str_dup( name );
    ch->prompt = str_dup( "" );
    ch->old_prompt = str_dup( "" );
-   ch->prompt = str_dup( "TYPE HELP PROMPT " );
+   ch->prompt = str_dup( "@@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N" );
    ch->last_note = 0;
    if( is_npc )
       ch->act = ACT_IS_NPC;
