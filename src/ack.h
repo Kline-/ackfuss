@@ -783,7 +783,6 @@ struct pc_data
    int pflags;
    char *lastlogin;
    sh_int order[MAX_CLASS];   /* Class Order */
-   sh_int index[MAX_CLASS];   /* the order of each class! */
    int monitor;   /* monitor channel for imms */
    int vamp_level;   /* were level */
    int vamp_bloodlust_max;

@@ -16,9 +16,9 @@ Incog		 0
 m/c          85 85 85 85 85 
 Remort       80 80 80 80 80 
 Adeptlevel    1
- Trust        0
+Trust        0
 Wizbit       0
-Played       6146919
+Played       6146965
 Note         852596192
 Room         3001
 HpManaMove   6059 6059 1427 1427 8250 8250
@@ -40,7 +40,6 @@ Deaf         5449477
 Generation   0
 Clan         0
 Order        4 2 0 3 1
-Index	   2 4 1 3 0
 Mkills	   77
 Mkilled	   4
 Pkills	   7
@@ -56,7 +55,7 @@ Whoname      W    Da Boss   ~
 Monitor	   7833
 Host         192.168.1.100~
 Failures     0
-LastLogin    Sun May 18 22:24:33 2008
+LastLogin    Mon May 19 01:27:18 2008
 ~
 HiCol	   l~
 DimCol	   B~
@@ -354,7 +353,6 @@ Skill        99 'creature bond'
 Skill        99 'corrupt bond'
 IMCPerm      5
 IMCFlags     256
-IMCDeny      0
 End
 
 #END
