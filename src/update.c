@@ -79,6 +79,8 @@ void alarm_update(  )
 {
    extern int ssm_dup_count;
    extern int ssm_loops;
+   char *strtime;
+   char buf[MSL];
 
    ssm_dup_count = 0;
    ssm_loops = 0;
@@ -87,7 +89,10 @@ void alarm_update(  )
    if( abort_threshold == BOOT_DB_ABORT_THRESHOLD )
    {
       abort_threshold = RUNNING_ABORT_THRESHOLD;
-      fprintf( stderr, "Used %d user CPU seconds.\n", last_checkpoint );
+      strtime = ctime( &current_time );
+      strtime[strlen( strtime ) - 1] = '\0';
+      sprintf( buf, "Used %d user CPU seconds.\n", last_checkpoint );
+      fprintf( stderr, "%s :: %s\n", strtime, buf );
    }
 }
 

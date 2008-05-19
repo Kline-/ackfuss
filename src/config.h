@@ -198,8 +198,8 @@
  * We'll define a range of possible vnums here - easier to expand (:
  */
 
-#define OBJ_VNUM_QUEST_MIN		18181
-#define OBJ_VNUM_QUEST_MAX		18192 /* more to follow, up to 18199  */
+#define OBJ_VNUM_QUEST_MIN		66
+#define OBJ_VNUM_QUEST_MAX		72
 
 
 #define PULSE_PER_SECOND             8
