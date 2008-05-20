@@ -2564,24 +2564,6 @@ bool item_has_apply( CHAR_DATA * ch, int bit )
    return FALSE;
 }
 
-/* This is for immrotal authorized skills. Enables imms to set which skillks lower imms may use. handy for abuse control --Flar 
-*/
-bool authorized( CHAR_DATA * ch, char *skllnm )
-{
-
-   char buf[MAX_STRING_LENGTH];
-
-   if( ( !IS_NPC( ch ) && str_infix( skllnm, ch->pcdata->immskll ) ) || IS_NPC( ch ) )
-   {
-      sprintf( buf, "Sorry, you are not authorized to use %s.\n\r", skllnm );
-      send_to_char( buf, ch );
-      return FALSE;
-   }
-
-   return TRUE;
-
-}
-
 
 /* For new spells, etc, eg Polymorph.  Transfer a PC to safe room, then
    'switches' them into the given mob.  The mob is placed into the 

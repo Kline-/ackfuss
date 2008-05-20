@@ -106,42 +106,6 @@ void do_wizhelp( CHAR_DATA * ch, char *argument )
    return;
 }
 
-/*
-void do_wizhelp( CHAR_DATA *ch, char *argument )
-{
-    CHAR_DATA *rch;
-    char       buf  [ MAX_STRING_LENGTH ];
-    char       buf1 [ MAX_STRING_LENGTH ];
-    int        cmd;
-    int        col;
-
-    rch = get_char( ch );
-    
-    if ( !authorized( rch, "wizhelp" ) )
-        return;
-
-    buf1[0] = '\0';
-    col     = 0;
-
-    for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
-    {
-        if ( cmd_table[cmd].level < LEVEL_HERO
-	    || str_infix( cmd_table[cmd].name, rch->pcdata->immskll ) )
-	    continue;
-	sprintf( buf, "%-10s", cmd_table[cmd].name );
-	strcat( buf1, buf );
-	if ( ++col % 8 == 0 )
-	    strcat( buf1, "\n\r" );
-    }
- 
-    if ( col % 8 != 0 )
-	strcat( buf1, "\n\r" );
-    send_to_char( buf1, ch );
-    return;
-}
-
-*/
-
 void do_bamfin( CHAR_DATA * ch, char *argument )
 {
    if( !IS_NPC( ch ) )
@@ -5324,178 +5288,6 @@ void do_togcouncil( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_imtlset( CHAR_DATA * ch, char *argument )
-{
-
-   CHAR_DATA *rch;
-   CHAR_DATA *victim;
-   char arg1[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char *buf2;
-   char *buf3 = NULL;
-   char *skill;
-   int cmd;
-   int col = 0;
-   int i = 0;
-
-   rch = get_char( ch );
-
-   if( !authorized( rch, "imtlset" ) )
-      return;
-
-   argument = one_argument( argument, arg1 );
-
-   if( arg1[0] == '\0' )
-   {
-      send_to_char( "Syntax: imtlset <victim> +|- <immortal skill>\n\r", ch );
-      send_to_char( "or:     imtlset <victim> +|- all\n\r", ch );
-      send_to_char( "or:     imtlset <victim>\n\r", ch );
-      return;
-   }
-
-   if( !( victim = get_char_world( rch, arg1 ) ) )
-   {
-      send_to_char( "They aren't here.\n\r", ch );
-      return;
-   }
-
-   if( IS_NPC( victim ) )
-   {
-      send_to_char( "Not on NPC's.\n\r", ch );
-      return;
-   }
-
-   if( get_trust( rch ) <= get_trust( victim ) && rch != victim )
-   {
-      send_to_char( "You may not imtlset your peer nor your superior.\n\r", ch );
-      return;
-   }
-
-   if( ( rch == victim ) && ( rch->level != MAX_LEVEL ) )
-   {
-      send_to_char( "You may not set your own immortal skills.\n\r", ch );
-      return;
-   }
-
-   if( argument[0] == '+' || argument[0] == '-' )
-   {
-      buf[0] = '\0';
-      smash_tilde( argument );
-      if( argument[0] == '+' )
-      {
-         argument++;
-         if( !str_cmp( "all", argument ) )
-
-         {
-            for( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
-            {
-               if( cmd_table[cmd].level > get_trust( rch ) )
-                  continue;
-               if( cmd_table[cmd].level <= victim->level && cmd_table[cmd].level >= LEVEL_HERO )
-               {
-                  strcat( buf, cmd_table[cmd].name );
-                  strcat( buf, " " );
-               }
-            }
-         }
-         else
-         {
-            if( victim->pcdata->immskll )
-               strcat( buf, victim->pcdata->immskll );
-            while( isspace( *argument ) )
-               argument++;
-            for( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
-            {
-               if( cmd_table[cmd].level > get_trust( rch ) )
-                  continue;
-               if( !str_cmp( argument, cmd_table[cmd].name ) )
-                  break;
-            }
-            if( cmd_table[cmd].name[0] == '\0' )
-            {
-               send_to_char( "That is not an immskill.\n\r", ch );
-               return;
-            }
-            if( !str_infix( argument, victim->pcdata->immskll ) )
-            {
-               send_to_char( "That skill has already been set.\n\r", ch );
-               return;
-            }
-            strcat( buf, argument );
-            strcat( buf, " " );
-         }
-      }
-
-      if( argument[0] == '-' )
-      {
-         argument++;
-         one_argument( argument, arg1 );
-         if( !str_cmp( "all", arg1 ) )
-         {
-            free_string( victim->pcdata->immskll );
-            victim->pcdata->immskll = str_dup( "" );
-            send_to_char( "All immskills have been deleted.\n\r", ch );
-            return;
-         }
-         else if( arg1 )
-         {
-            /*
-             * Cool great imtlset <victim> - <skill> code...
-             * Idea from Canth (phule@xs4all.nl)
-             * Code by Vego (v942429@si.hhs.nl)
-             * Still needs memory improvements.... (I think)
-             */
-            buf2 = str_dup( victim->pcdata->immskll );
-            buf3 = buf2;
-            if( ( skill = strstr( buf2, arg1 ) ) == NULL )
-            {
-               send_to_char( "That person doesn't have that immskill", ch );
-               return;
-            }
-            else
-            {
-               while( buf2 != skill )
-                  buf[i++] = *( buf2++ );
-               while( !isspace( *( buf2++ ) ) );
-               buf[i] = '\0';
-               strcat( buf, buf2 );
-            }
-         }
-         else
-         {
-            send_to_char( "That's not an immskill\n\r", ch );
-            return;
-         }
-      }
-
-      free_string( buf3 );
-      skill = buf2 = buf3 = NULL;
-      free_string( victim->pcdata->immskll );
-      victim->pcdata->immskll = str_dup( buf );
-   }
-
-   sprintf( buf, "Immortal skills set for %s:\n\r", victim->name );
-   send_to_char( buf, ch );
-   buf1[0] = '\0';
-   for( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
-   {
-      if( cmd_table[cmd].level < LEVEL_HERO || str_infix( cmd_table[cmd].name, victim->pcdata->immskll ) )
-         continue;
-
-      sprintf( buf, "%-10s", cmd_table[cmd].name );
-      strcat( buf1, buf );
-      if( ++col % 8 == 0 )
-         strcat( buf1, "\n\r" );
-   }
-
-   if( col % 8 != 0 )
-      strcat( buf1, "\n\r" );
-   send_to_char( buf1, ch );
-
-   return;
-
-}
 void do_gain_stat_reset( CHAR_DATA * ch, char *argument )
 {
    CHAR_DATA *victim;
@@ -5504,9 +5296,6 @@ void do_gain_stat_reset( CHAR_DATA * ch, char *argument )
 
 
    rch = get_char( ch );
-
-   if( !authorized( rch, "resetgain" ) )
-      return;
 
    if( argument[0] == '\0' )
    {
@@ -5593,9 +5382,6 @@ void do_for( CHAR_DATA * ch, char *argument )
    int i;
 
    extern bool disable_timer_abort;
-
-   if( !authorized( ch, "for" ) )
-      return;
 
    disable_timer_abort = TRUE;
 

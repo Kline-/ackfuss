@@ -217,7 +217,6 @@ static void walk_pcdata( PC_DATA * p )
    touch( p->title );
    touch( p->room_enter );
    touch( p->room_exit );
-   touch( p->immskll );
    touch( p->host );
    touch( p->who_name );
    touch( p->header );
