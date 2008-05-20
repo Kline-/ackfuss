@@ -1014,12 +1014,19 @@ void load_mobiles( FILE * fp )
 {
    MOB_INDEX_DATA *pMobIndex;
    BUILD_DATA_LIST *pList;
+   char buf[MSL];
 
    for( ;; )
    {
       sh_int vnum;
       char letter;
       int iHash;
+
+      if( area_load == NULL )
+      {
+       bug( "Load_mobiles: no #AREA seen yet.", 0 );
+       exit( 1 );
+      }
 
       letter = fread_letter( fp );
       if( letter != '#' )
@@ -1031,6 +1038,12 @@ void load_mobiles( FILE * fp )
       vnum = fread_number( fp );
       if( vnum == 0 )
          break;
+
+      if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
+      {
+       sprintf(buf,"Load_mobiles: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       log_string(buf);
+      }
 
       fBootDb = FALSE;
       if( get_mob_index( vnum ) != NULL )
@@ -1143,12 +1156,19 @@ void load_objects( FILE * fp )
    OBJ_INDEX_DATA *pObjIndex;
    BUILD_DATA_LIST *pList;
    sh_int looper;
+   char buf[MSL];
 
    for( ;; )
    {
       sh_int vnum;
       char letter;
       int iHash;
+
+      if( area_load == NULL )
+      {
+       bug( "Load_objects: no #AREA seen yet.", 0 );
+       exit( 1 );
+      }
 
       letter = fread_letter( fp );
       if( letter != '#' )
@@ -1160,6 +1180,12 @@ void load_objects( FILE * fp )
       vnum = fread_number( fp );
       if( vnum == 0 )
          break;
+
+      if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
+      {
+       sprintf(buf,"Load_objects: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       log_string(buf);
+      }
 
       fBootDb = FALSE;
       if( get_obj_index( vnum ) != NULL )
