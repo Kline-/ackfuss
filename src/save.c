@@ -339,7 +339,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "Roomenter    %s~\n", ch->pcdata->room_enter );
       fprintf( fp, "Roomexit     %s~\n", ch->pcdata->room_exit );
       fprintf( fp, "Title        %s~\n", ch->pcdata->title );
-      fprintf( fp, "Immskll     %s~\n", ch->pcdata->immskll );
       /*
        * We add a '*' to preserve leading spaces... strip * on load 
        */
@@ -617,7 +616,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->room_enter = str_dup( "" );
       ch->pcdata->room_exit = str_dup( "" );
       ch->pcdata->title = str_dup( "" );
-      ch->pcdata->immskll = str_dup( "" );
       ch->pcdata->perm_str = 13;
       ch->pcdata->perm_int = 13;
       ch->pcdata->perm_wis = 13;
@@ -1136,7 +1134,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'I':
-            SKEY( "Immskll", ch->pcdata->immskll, fread_string( fp ) );
             KEY( "Incog", ch->incog, fread_number( fp ) );
             KEY( "Invis", ch->invis, fread_number( fp ) );
 #ifdef IMC

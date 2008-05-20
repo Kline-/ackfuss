@@ -746,7 +746,6 @@ struct pc_data
    char *room_exit;
    char *bamfout;
    char *title;
-   char *immskll;
    char *host; /* Used to tell PC last login site */
    sh_int failures;  /* Failed logins */
    sh_int clan;   /* will be used to denote clan membership */
@@ -1529,7 +1528,6 @@ bool is_number args( ( char *arg ) );
 bool IS_SWITCHED args( ( CHAR_DATA * ch ) );
 bool is_shielded args( ( CHAR_DATA * ch, sh_int shield_type ) );
 void remove_shield args( ( CHAR_DATA * ch, MAGIC_SHIELD * shield ) );
-bool authorized args( ( CHAR_DATA * ch, char *skllnm ) );
 bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
 
 

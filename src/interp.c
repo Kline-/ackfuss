@@ -657,8 +657,6 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"wizlock", do_wizlock, POS_DEAD, L_GOD, LOG_ALWAYS,
     C_TYPE_IMM, C_SHOW_ALWAYS},
-   {"imtlset", do_imtlset, POS_DEAD, L_GOD, LOG_ALWAYS,
-    C_TYPE_IMM, C_SHOW_ALWAYS},
    {"for", do_for, POS_DEAD, L_GOD, LOG_ALWAYS,
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"force", do_force, POS_DEAD, L_DEI, LOG_ALWAYS,

@@ -16,7 +16,7 @@ Incog		 0
 m/c          85 85 85 85 85 
 Remort       85 85 85 85 85 
 Adeptlevel   -1
- Trust        0
+Trust        0
 Wizbit       0
 Played       303
 Note         0
@@ -50,7 +50,6 @@ Bamfout      ~
 Roomenter    ~
 Roomexit     ~
 Title         King of Da Mud!~
-Immskll     wizhelp creator ) sedit alist alink mpcr mpstat halls lhunt sstat cset whoname sysdata clutchinfo advance setclass doggy togbuild togleader isnoop trust deathmatc deathmatch resetpasswd iscore iwhere fights allow iban deny freeze reboo reboot hotreboo hotreboot shutdow shutdown users wizify wizlock imtlset for force log mload monitor areasave mset mgive noemote nopray notell oload oset owhere pardon peace purge iquest restore silence slay snoop sset transfer transdm at bamfin bamfout echo goto holylight invis memory mfind mfindlev mstat mwhere ofind ostat recho return rstat slookup switch immtalk : reward setcouncil resetgain exlist vlist olmsg ofindlev prename scheck immbrand otype owear findreset rinfo rsockets rconnect rdisconnect rignore imc rchanset icommand isetup ~
 Whoname      W    Da Boss   ~
 Monitor	   0
 Host         Unknown!~

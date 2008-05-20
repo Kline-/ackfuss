@@ -261,7 +261,6 @@ void pcd_free_destructor( PC_DATA * pcdat )
    free_string( pcdat->room_enter );
    free_string( pcdat->room_exit );
    free_string( pcdat->bamfout );
-   free_string( pcdat->immskll );
    free_string( pcdat->title );
    free_string( pcdat->host );
    free_string( pcdat->header );
