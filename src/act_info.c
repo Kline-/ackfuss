@@ -1347,6 +1347,16 @@ void do_score( CHAR_DATA * ch, char *argument )
 
       buf2[0] = '\0';
 
+      sprintf( buf2, "@@WClass Order:@@y " );
+      for( cnt = 0; cnt < MAX_CLASS; cnt++ )
+      {
+         sprintf( buf, "%s ", class_table[ch->pcdata->order[cnt]].who_name );
+         safe_strcat( MAX_STRING_LENGTH, buf2, buf );
+      }
+      sprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+      send_to_char( buf, ch );
+
+      buf2[0] = '\0';
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       {
          sprintf( buf, "@@c%s", class_table[cnt].who_name );
@@ -1354,7 +1364,7 @@ void do_score( CHAR_DATA * ch, char *argument )
          if( ch->lvl[cnt] != -1 )
             sprintf( buf, ":@@W%2d ", ch->lvl[cnt] );
          else
-            sprintf( buf, "@@c:%s ", " 0" );
+            sprintf( buf, "@@c:@@W%s ", " 0" );
          safe_strcat( MAX_STRING_LENGTH, buf2, buf );
       }
    }

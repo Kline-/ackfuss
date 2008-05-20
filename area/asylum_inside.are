@@ -16,8 +16,10 @@ W loren~
 #16002
 @@WThe Administrator's Chambers@@N~
 @@WApparently, someone was looking for something here..the room is a shambles, desk torn apart and @@gpapers@@N and @@bbooks@@N scattered everywhere.
-Off in the corner, another pile of lumber has been stacked.
-~
+
+Off in the corner, another pile of lumber has been stacked.
+
+~
 8 11
 D1
 ~
@@ -26,25 +28,34 @@ D1
 E
 books~
 Many tombs of the insanities of man, and the needs of the emotionally
-disturbed lie scattered about.@@N
-~
+
+disturbed lie scattered about.@@N
+
+~
 E
 papers~
 @@WSearching through the papers, the only thing of any interest you find is a
-@@gpage@@N torn out of an ancient book.@@N
-~
+
+@@gpage@@N torn out of an ancient book.@@N
+
+~
 E
 page~
 <. .. .. is summonable, but only after great preperation, and the sacrifice of..>
-<. .. ... ..#X#XX#X can bring the summoner great power, but demands the souls of many to enhance...>
-~
+
+<. .. ... ..#X#XX#X can bring the summoner great power, but demands the souls of many to enhance...>
+
+~
 S
 #16001
 @@WThe Secretary's Room@@N~
 @@WA very old and rotten wooden @@ydesk@@N has been left here, apparently abandoned by
-it's original owner. @@WA few piles of lumber have recently been placed to one
-side, apparently to rework the @@ydesk@@N into @@WA suitable work area.
-~
+
+it's original owner. @@WA few piles of lumber have recently been placed to one
+
+side, apparently to rework the @@ydesk@@N into @@WA suitable work area.
+
+~
 8 11
 D1
 ~
@@ -57,17 +68,23 @@ D3
 E
 desk~
 @@NSearching the desk, you notice nothing of any value.  However, a slight
- @@Gslime@@N appears to have been smeared all over the drawers.  It appears
-fresh.
-~
+
+ @@Gslime@@N appears to have been smeared all over the drawers.  It appears
+
+fresh.
+
+~
 S
 #16000
 The Entryway~
 @@gDark shadows veil deeper darkness, as you catch a glimpse of eyes peering
-at you.  While this building seems to have been forgotten, recent construction
-seems to have been performed. It appears as if the Asylum is back in business.
 
-~
+at you.  While this building seems to have been forgotten, recent construction
+
+seems to have been performed. It appears as if the Asylum is back in business.
+
+
+~
 12 11
 D0
 ~
@@ -85,11 +102,16 @@ S
 #16003
 A Marble Arch~
 @@NYour footsteps echo loudly down a long hallway as you step through the arch
-Many doors can be seen to the east and west, each appearing unused for quite
-some time.
- 
-@@bLayers upon layers of dust cover the marble of the floor here, disturbed only by tracks of human footsteps, and something....else.@@N
-~
+
+Many doors can be seen to the east and west, each appearing unused for quite
+
+some time.
+
+ 
+
+@@bLayers upon layers of dust cover the marble of the floor here, disturbed only by tracks of human footsteps, and something....else.@@N
+
+~
 8 11
 D0
 ~
@@ -102,18 +124,26 @@ D2
 E
 tracks~
 @@aYou can tell that several humanoids have traversed these hallways in the
-recent past.  You also wonder what sort of creature would leave a large set of
-3-toed paw marks, every 10 feet or so.  Either something VERY large, or
-something with an unusual method of walking.
-@@N
-~
+
+recent past.  You also wonder what sort of creature would leave a large set of
+
+3-toed paw marks, every 10 feet or so.  Either something VERY large, or
+
+something with an unusual method of walking.
+
+@@N
+
+~
 S
 #16004
 A Hallway@@N~
 The marble is ancient and cracked in several places. The wooden frame of the
-doors around you is mostly rotted, and apparently covered with a dark
-substance in several places.
-~
+
+doors around you is mostly rotted, and apparently covered with a dark
+
+substance in several places.
+
+~
 8 11
 D0
 ~
@@ -130,15 +160,20 @@ D2
 E
 substance~
 @@GSlimy streaks of a gelatinous substance have been left staining the wooden
-frames of the doors, as if a large creature had carelessly brushed against
-them.@@N
-~
+
+frames of the doors, as if a large creature had carelessly brushed against
+
+them.@@N
+
+~
 S
 #16005
 The Cafeteria~
 @@WSeveral tables are carlessly strewn about, apparently abandoned from the
-time when the @@mAsylum@@N had many patients.@@N
-~
+
+time when the @@mAsylum@@N had many patients.@@N
+
+~
 8 11
 D0
 ~
@@ -152,7 +187,8 @@ S
 #16006
 @@WThe Cafeteria@@N~
 The dust in this section of the cafeteria is very disturbed, and the stacked chairs against the wall show that someone is attempting to clean up the Cafeteria for future use.@@N
-~
+
+~
 8 11
 D1
 ~
@@ -166,8 +202,10 @@ S
 #16007
 The Buffet Line~
 @@NA wooden table, almost 15 feet long contains many bowls and trays of dust
-and refuse, obviously remains of decade old food for the inmates.
-~
+
+and refuse, obviously remains of decade old food for the inmates.
+
+~
 8 11
 D2
 ~
@@ -181,9 +219,12 @@ S
 #16008
 The Buffet Line~
 @@NThis portion of the line has been recently cleaned up, and no dust appears
-on the floor. Several bowls are filled with a mush that while appearing
-unappetizing, would at least be nourishing.
-~
+
+on the floor. Several bowls are filled with a mush that while appearing
+
+unappetizing, would at least be nourishing.
+
+~
 8 11
 D0
 ~
@@ -197,9 +238,12 @@ S
 #16009
 The @@mAsylum@@N Kitchen~
 @@WThe kitchen has recently been readied for the preperation of food.
-Utensils line the walls, and cooking bowls and pots are stacked near the large
-oven.
-~
+
+Utensils line the walls, and cooking bowls and pots are stacked near the large
+
+oven.
+
+~
 0 11
 D3
 ~
@@ -209,8 +253,10 @@ S
 #16010
 The Hallway~
 @@WThe @@bdust@@N on the marble shows heavy tracks to the north and south, and
-a somewhat less used path goes to the west.
-~
+
+a somewhat less used path goes to the west.
+
+~
 8 11
 D0
 ~
@@ -228,8 +274,10 @@ S
 #16011
 The Recreation Room~
 @@WApparently some sort of recreation room for the @@einmates@@N, this room stores many games of the sort that would occupy the time of the mentally impaired.
- 
-~
+
+ 
+
+~
 8 11
 D0
 ~
@@ -247,9 +295,12 @@ S
 #16012
 The Recreation Room~
 @@WA few uncomfortable looking chairs are placed in a circle here.
-@@gPictures@@W obviously drawn by @@einmates@@N line the walls.  Several
-@@gbooks@@W lie scattered about.
-~
+
+@@gPictures@@W obviously drawn by @@einmates@@N line the walls.  Several
+
+@@gbooks@@W lie scattered about.
+
+~
 8 11
 D2
 ~
@@ -262,25 +313,34 @@ D3
 E
 pictures~
 As you would expect, the pictures are very...unusual.  The products of
-deformed minds, they depict various strange and unusual scenes.
-~
+
+deformed minds, they depict various strange and unusual scenes.
+
+~
 E
 books~
 Coloring books, picture books, Simple stories.  However, in one book, you come
-accross an unusual @@rpassage:@@N
-~
+
+accross an unusual @@rpassage:@@N
+
+~
 E
 passage~
 @@WI've hidden this note in the hopes that The Adminstrator will never find it, but that someone not a part of this evil @@mAsylum@@N may.  BEWARE!!!! 
-The staff of this nightmarish institution are not what they seem. I dream of strange things at night:  Nurses with frog eyes, Therapists with slimy skin, and evil experiements gone insane in the bowels of this evil structure.  The Administrator MUST be stopped!@@N
-@@NXylanor
-~
+
+The staff of this nightmarish institution are not what they seem. I dream of strange things at night:  Nurses with frog eyes, Therapists with slimy skin, and evil experiements gone insane in the bowels of this evil structure.  The Administrator MUST be stopped!@@N
+
+@@NXylanor
+
+~
 S
 #16013
 The Recreation Room~
 @@WA small desk stands here, completely empty.  More pictures line the walls, the
-proud efforts of the hopelessly insane.
-~
+
+proud efforts of the hopelessly insane.
+
+~
 8 11
 D1
 ~
@@ -294,9 +354,12 @@ S
 #16014
 The Recreation Room~
 @@WThis corner of the recreation area is rather empty.  No pictures line the
-walls, no chairs or rugs are here.  However, you do notice a pair of shackles
-on the wall, with darkened @@Rstains@@W on them.
-~
+
+walls, no chairs or rugs are here.  However, you do notice a pair of shackles
+
+on the wall, with darkened @@Rstains@@W on them.
+
+~
 8 11
 D0
 ~
@@ -310,8 +373,10 @@ S
 #16015
 The Hallway~
 @@WSome slight depressions have been pressed into the marble of the floor, most
-likely from ages of @@einmates@@N being led about the @@mAsylum@@N.
-~
+
+likely from ages of @@einmates@@N being led about the @@mAsylum@@N.
+
+~
 8 11
 D0
 ~
@@ -325,9 +390,12 @@ S
 #16016
 The Northern Arch~
 @@WThe marble hallway ends in another arch.
- 
-@@aYou can hear an occasional wail of a miserable @@einmate@@a from the east.@@N
-~
+
+ 
+
+@@aYou can hear an occasional wail of a miserable @@einmate@@a from the east.@@N
+
+~
 8 11
 D1
 ~
@@ -345,8 +413,10 @@ S
 #16017
 @@WThe @@eInmate's @@WRooms@@N~
 @@WSeveral locked rooms line this hallway, the homes of past and present
-victims of this instiution.
-~
+
+victims of this instiution.
+
+~
 8 11
 D0
 ~
@@ -368,7 +438,8 @@ S
 #16018
 A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
-~
+
+~
 90201 11
 D0
 ~
@@ -378,7 +449,8 @@ S
 #16019
 A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
-~
+
+~
 90201 11
 D2
 ~
@@ -388,8 +460,10 @@ S
 #16020
 @@WThe @@eInmate's @@WRooms@@N~
 @@WSeveral locked rooms line this hallway, the homes of past and present
-victims of this instiution.
-~
+
+victims of this instiution.
+
+~
 8 11
 D0
 ~
@@ -411,7 +485,8 @@ S
 #16021
 A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
-~
+
+~
 90201 11
 D2
 ~
@@ -421,7 +496,8 @@ S
 #16022
 A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
-~
+
+~
 90201 11
 D0
 ~
@@ -431,8 +507,10 @@ S
 #16023
 @@WThe @@eInmate's @@WRooms@@N~
 @@WSeveral locked rooms line this hallway, the homes of past and present
-victims of this instiution.
-~
+
+victims of this instiution.
+
+~
 8 11
 D0
 ~
@@ -450,7 +528,8 @@ S
 #16024
 A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
-~
+
+~
 90201 11
 D2
 ~
@@ -460,7 +539,8 @@ S
 #16025
 A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
-~
+
+~
 90201 11
 D0
 ~
@@ -470,10 +550,14 @@ S
 #16026
 The Surgery~
 @@WThe @@mAsylum@@W surgery seems to be the most complete portion of the
-Institution's remodelling.  Cots are organized into rows, medical items of all
-sorts are lined neatly on tables. Apparently, the heart of The Administrator's
-Project has something to do with medical research.
-~
+
+Institution's remodelling.  Cots are organized into rows, medical items of all
+
+sorts are lined neatly on tables. Apparently, the heart of The Administrator's
+
+Project has something to do with medical research.
+
+~
 12 11
 D0
 ~
@@ -491,9 +575,12 @@ S
 #16027
 The Infirmary~
 @@WCots lined up in neat rows fill this small alcove, ready to handle sick
-@@einmates@@W. As would be expected, restraints are attached to the cots,
-better to deal with insane patients.
-~
+
+@@einmates@@W. As would be expected, restraints are attached to the cots,
+
+better to deal with insane patients.
+
+~
 8 11
 D0
 ~
@@ -507,10 +594,14 @@ S
 #16028
 The Infirmary~
 @@WMore cots line the walls in the northern portion of this alcove.  Counting
-them quickly, it appears as if there are at least 2 cots for each @@einmate@@W
-that you have seen so far, which seems rather excessive for normal health
-maintainence.
-~
+
+them quickly, it appears as if there are at least 2 cots for each @@einmate@@W
+
+that you have seen so far, which seems rather excessive for normal health
+
+maintainence.
+
+~
 8 11
 D2
 ~
@@ -520,8 +611,10 @@ S
 #16029
 The Surgeon's Office~
 @@WThis office is most modern, with medical @@gcharts@@W, @@gsculptures@@W,
-and various @@gtextbooks@@W on the @@bbookshelf @@Won the far wall.@@N
-~
+
+and various @@gtextbooks@@W on the @@bbookshelf @@Won the far wall.@@N
+
+~
 8 11
 D1
 ~
@@ -530,24 +623,32 @@ D1
 E
 charts~
 Pictures of the anatomy of several humanoid races, and some animals, line the
-walls.
-~
+
+walls.
+
+~
 E
 sculptures~
 Skulls, arms, body cavities, and hands are included in this collection.  In
-addition, there is also a small model of a frog.
-~
+
+addition, there is also a small model of a frog.
+
+~
 E
 textbooks~
 Many texts and tomes of a medical nature adorn the office.  Of a more
-interesting note, an ancient magical tome relating to transforming people into
-mythical demons, and experimenting on summoning devils is also here.
-~
+
+interesting note, an ancient magical tome relating to transforming people into
+
+mythical demons, and experimenting on summoning devils is also here.
+
+~
 S
 #16030
 @@dA dark stairwell@@N~
 @@dThe stairwell leads down into the depths of the @@mAsylum@@d.@@N
-~
+
+~
 13 11
 D5
 ~
@@ -560,7 +661,8 @@ S
 inmate~
 @@WAn @@eimprisoned Inmate@@N~
 @@WAn @@einmate @@Wof the @@mAsylum@@N lies here looking miserable.@@N
-~
+
+~
 ~
 36700163 65536 250 S
 57 1
@@ -571,7 +673,8 @@ inmate~
 chef cook~
 @@WThe @@mAsylum @@NChef~
 @@WA Chef is busily preparing mush for the @@einmates@@N.
-~
+
+~
 ~
 36700163 168 -750 S
 73 1
@@ -592,7 +695,8 @@ instructor~
 inmate~
 @@WAn @@eimprisoned Inmate@@N~
 @@WAn @@einmate @@Wof the @@mAsylum@@N lies here looking miserable.@@N
-~
+
+~
 ~
 36700163 65536 250 S
 60 1
@@ -603,7 +707,8 @@ inmate~
 inmate~
 @@WAn @@eimprisoned Inmate@@N~
 @@WAn @@einmate @@Wof the @@mAsylum@@N lies here looking miserable.@@N
-~
+
+~
 ~
 36700163 65536 250 S
 57 1
@@ -614,7 +719,8 @@ inmate~
 inmate~
 @@WAn @@eimprisoned Inmate@@N~
 @@WAn @@einmate @@Wof the @@mAsylum@@N lies here looking miserable.@@N
-~
+
+~
 ~
 36700163 65536 250 S
 58 1
@@ -625,7 +731,8 @@ inmate~
 inmate~
 @@WAn @@eimprisoned Inmate@@N~
 @@WAn @@einmate @@Wof the @@mAsylum@@N lies here looking miserable.@@N
-~
+
+~
 ~
 36700163 65536 250 S
 61 1
@@ -636,7 +743,8 @@ inmate~
 inmate~
 @@WAn @@eimprisoned Inmate@@N~
 @@WAn @@einmate @@Wof the @@mAsylum@@N lies here looking miserable.@@N
-~
+
+~
 ~
 36700163 65536 250 S
 63 1
@@ -647,7 +755,8 @@ inmate~
 monitor~
 @@WAn @@mAsylum @@RMonitor@@N~
 @@WAn @@mAsylum@@R Monitor @@W ensures obedience within the Institution.@@N
-~
+
+~
 ~
 3145801 32936 -500 S
 76 1
@@ -658,7 +767,8 @@ monitor~
 therapist~
 @@WAn @@mAsylum @@aTherapist@@N~
 @@WA pretty @@atherapist @@Wsmiles at you.@@N
-~
+
+~
 ~
 3145737 16552 -500 S
 72 2
@@ -669,7 +779,8 @@ therapist~
 surgeon~
 @@WThe @@mAsylum @@eSurgeon@@N~
 @@WA tall and evil looking man stares at you with interest.@@N
-~
+
+~
 ~
 36700171 66218 -1000 S
 79 1
@@ -682,7 +793,8 @@ surgeon~
 ring turquoise~
 @@NA @@aTurquoise @@yRing@@N~
 @@WA small @@rturquoise @@yring@@N glitters here in the light.@@N
-~
+
+~
 9 0 8396800 1
 0 0 0 0 0 0 0 0 0 0
 1
@@ -702,7 +814,8 @@ L
 cleaver~
 @@WA Viscious cleaver@@N~
 @@WA razor-edged cleaver lies here.@@N
-~
+
+~
 5 2 8421376 257
 0 0 0 3 0 0 0 0 0 0
 10
@@ -716,7 +829,8 @@ L
 rod~
 the rod of discipline~
 A nasty ribbed rod lies here.
-~
+
+~
 9 8388688 8421376 257
 0 0 0 0 0 0 0 0 0 0
 15
@@ -738,7 +852,8 @@ L
 spectacles~
 a pair of @@mspectacles@@N~
 A small pair of @@mspectacles@@N is almost crushed by your foot!@@N
-~
+
+~
 9 0 8388624 1
 0 0 0 0 0 0 0 0 0 0
 1
@@ -756,7 +871,8 @@ L
 key cell cellkey~
 @@WAn @@mAsylum@@N Cell Key@@N~
 @@WA small stone key lies here.@@N
-~
+
+~
 18 0 8388608 1
 0 0 0 0 0 0 0 0 0 0
 1
@@ -766,8 +882,10 @@ L
 jerkin~
 @@WA @@bLeather @@Wand @@rturquoise @@WJerkin@@N~
 @@WA @@bleather@@W jerkin, studded with @@rturquoise@@W plates lies here in a
-heap.@@N
-~
+
+heap.@@N
+
+~
 9 66 8650752 4113
 0 0 0 0 0 0 0 0 0 0
 14
@@ -791,7 +909,8 @@ L
 enforcer~
 @@WA @@rTurquoise @@REnforcer@@N~
 @@WA spiked mace with @@rturquoise bands@@N has been left here.
-~
+
+~
 5 4194324 8421376 257
 0 0 0 8 0 0 0 0 0 0
 22
@@ -809,7 +928,8 @@ L
 scalpel~
 @@WA @@eSurgeon's @@WScalpel@@N~
 @@WA razor sharp scalpel lies here, begging to draw @@Rblood@@N.
-~
+
+~
 5 33554452 8421376 257
 0 0 0 11 0 0 0 0 0 0
 5
@@ -844,7 +964,8 @@ L
 circle~
 @@WA @@mThaumatergic @@aCircle@@N~
 @@WA pulsing @@acircle@@W floats in mid air.@@N
-~
+
+~
 1 161 8388608 3593
 0 0 -1 0 0 0 0 0 0 0
 1
@@ -870,8 +991,10 @@ L
 E
 bookshelf~
 Noting something unusual, you may want to examine the bookshelf a little
-closer.
-~
+
+closer.
+
+~
 L
 10
 #0
