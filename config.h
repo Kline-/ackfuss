@@ -199,7 +199,7 @@
  */
 
 #define OBJ_VNUM_QUEST_MIN		66
-#define OBJ_VNUM_QUEST_MAX		72
+#define OBJ_VNUM_QUEST_MAX		80
 
 
 #define PULSE_PER_SECOND             8
