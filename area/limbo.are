@@ -5,7 +5,7 @@ K none~
 L @@e[@@RSYSTEM@@e]@@N~
 N 24
 I 0 0
-V 1 65
+V 1 100
 X 0
 F 10
 U @@WAn @@yAngel @@Wsings a @@mhymn@@N.~
@@ -20,11 +20,14 @@ This small room is home to a large counter stretching across the room, with a
 
 
 
+
  single reinforced glass window set into it.  This is the bank, magically
 
 
 
+
 linked to the other banks within the realms.
+
 
 
 
@@ -41,7 +44,9 @@ You are in a sea of red-hot Lava.  Wherever you look, you see yourself
 
 
 
+
 surrounded by the burning rock.  The sky above you is red too, with huge
+
 
 
 
@@ -49,7 +54,9 @@ yellow flames flashing across it.
 
 
 
+
 It looks like you're, well, screwed.
+
 
 
 
@@ -59,6 +66,7 @@ S
 #14
 Protectorate Clan Donation Room~
 The room os for clan members to donate equipment to other people that might need it.
+
 
 
 
@@ -75,11 +83,14 @@ You are standing at the end of a short passage.  To the South, you can see the
 
 
 
+
  gleaming brightness of the Grand Hall, while to the west you can see the
 
 
 
+
 Protectorate recovery room.
+
 
 
 
@@ -100,11 +111,14 @@ You are in a small passage within the headquarters of Protectorate.To the
 
 
 
+
 south
 
 
 
+
  you can see the Grand Hall, whilst the passage continues to the North.
+
 
 
 
@@ -150,7 +164,9 @@ Unfortunately you have been transferred to jail for breaking one of our rules.
 
 
 
+
 We are very laid back here but certain things must be adhered to. As you look
+
 
 
 
@@ -158,11 +174,14 @@ around this cold, damp, bleak looking cell, take some time to reflect on your
 
 
 
+
 crime and, hopefully, with an apology and repentance you'll be able to again
 
 
 
+
 enjoy our wonderful Realm.
+
 
 
 
@@ -174,14 +193,18 @@ Limbo~
 You are floating in a formless void, detached from all sensation of physical
 
 
+
  matter, surrounded by swirling glowing light, which fades into the relative
+
 
 
  darkness around you without any trace of edges or shadow.
 
 
 
+
    There is a "No Tipping" notice pinned to the darkness.
+
 
 
 
@@ -196,19 +219,25 @@ The Church of Love~
 You are standing outside what looks to be a strange church.  Strange
 
 
+
  because it is floating happily in limbo, out of harm's way.  The building
+
 
 
  itself is constructed out of purest marble.  Huge gold pillars support
 
 
+
  the grand entranceway, which leads inside, to the East.  Under your feet,
+
 
 
  you notice a thick, red carpet leading from inside the church, past you to
 
 
+
  the West.  
+
 
 
 
@@ -216,6 +245,7 @@ You are standing outside what looks to be a strange church.  Strange
 1032 1
 D1
 The Church.
+
 
 
 
@@ -229,7 +259,9 @@ You are standing inside a truely grand building.  The walls are built out
 
 
 
+
 of finest marble, with huge, solid gold columns reach up towards the
+
 
 
 
@@ -237,7 +269,9 @@ massive, domed roof.  Small white doves line the coving round the roof, and
 
 
 
+
 gently seranade you with their song.
+
 
 
 
@@ -245,6 +279,7 @@ gently seranade you with their song.
 8 1
 D3
 Outside.
+
 
 
 
@@ -258,7 +293,9 @@ This is a small, oblong room, with a low curving ceiling.  Along one of the
 
 
 
+
  longer walls is the Protectorate Bulletin Board, listing clan information,
+
 
 
 
@@ -266,7 +303,9 @@ hit lists and general chit-chat.  In the wall behind you is a door leading
 
 
 
+
 back out into the Grand Hall.
+
 
 
 
@@ -283,7 +322,9 @@ This enormous rooms acts as Stephen's Office.  As Immortal Sponsor of the
 
 
 
+
 PulpDog Clan, he has final overall say in the policies and decisions made by
+
 
 
 
@@ -291,7 +332,9 @@ the clan.  He is also very powerful, and able to silence those who might dare
 
 
 
+
 to rise against him.
+
 
 
 
@@ -299,7 +342,9 @@ to rise against him.
 
 
 
+
 Before you, a gleaming marble desk is home to piles of paper, as well as a
+
 
 
 
@@ -307,7 +352,9 @@ small framed photograph.  Hanging from the walls are framed portraits of
 
 
 
+
 various Immortals - Kahn, Hatchet included.
+
 
 
 
@@ -326,11 +373,14 @@ You are in a circular-shaped room, with a stained-glass window high above you.
 
 
 
+
  To the east is the rooms and passages that constitute the Protectorate clan
 
 
 
+
 HQ.
+
 
 
 
@@ -360,6 +410,7 @@ He looks big, mean, and scared of PulpDog members holding him up.
 
 
 
+
 ~
 32779 128 900 S
 75 1
@@ -370,6 +421,7 @@ He looks big, mean, and scared of PulpDog members holding him up.
 Puff~
 Puff~
 Puff the Fractal Dragon is here, contemplating a higher reality.
+
 
 
 
@@ -387,14 +439,16 @@ Elvis, King of rock and roll stands here, looking damn funky!
 
 
 
+
 ~
 Such people as you do not look at kings.
 
 
 
+
 ~
 3145731 0 1000 S
-80 1
+81 1
 -100 50 50
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -405,14 +459,16 @@ A whinging doggy is here, yapping and snapping at your heels.
 
 
 
+
 ~
 Looks kinda like a person.  Better put it out of it's misery!!
 
 
 
+
 ~
 3 0 1000 S
-13 0
+12 0
 200 -5 -5
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -422,7 +478,7 @@ A cute li'l goldfish.~
 A cute li'l goldfish sinks its fangs into you!~
 ~
 1 8320 -1000 S
-57 2
+56 2
 0 6 60
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -432,7 +488,7 @@ The old healer~
 The old healer~
 ~
 12291 0 0 S
-9 1
+8 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -440,6 +496,7 @@ The old healer~
 jailrat~
 @@bA rat@@N~
 @@bA rat with wicked looking @@yteeth@@b scurries around@@N
+
 
 
 
@@ -457,6 +514,7 @@ jailrat~
 
 
 
+
 ~
 ~
 278609 131072 0 S
@@ -468,6 +526,7 @@ jailrat~
 taert intel~
 Taert~
 Taert, bulging muscles and all, is here.
+
 
 
 
@@ -483,16 +542,20 @@ A Dark Stalker~
 the Dark Stalker~
 A Dark Stalker stands here, searching for it's prey.
 
+
 ~
 The Dark Stalker is a product of the Dark Powers.  It's only purpose in life
 
+
 is to search out it's victim, and try and kill it.
+
 
 It looks dark, powerful, and ready to kill.
 
+
 ~
 65553 1049090 -900 S
-49 1
+48 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -501,14 +564,17 @@ zombie~
 the Zombie~
 A rotting Zombie stands before you, smelling slightly.
 
+
 ~
 The Zombie looks like it has just been animated.  This doesn't stop it
 
+
 also looking like a bad road accident.
+
 
 ~
 3 0 -400 S
-6 0
+7 0
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -517,8 +583,10 @@ zombie~
 the zombie~
 A hideous zombie stands before you.
 
+
 ~
 The Zombie looks freshly animated.  Looking closer you almost recognise it.
+
 
 ~
 16385 0 -400 S
@@ -531,14 +599,17 @@ wizard oz~
 the wizard of oz~
 The Wizard of Oz is waiting here.
 
+
 ~
 You see a long beared wacky mage standing here. His head seems swollen with
 
+
 pride and he looks at you as if you were insects for him to experiment on.
+
 
 ~
 11 1573032 0 S
-65 1
+64 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -546,6 +617,7 @@ pride and he looks at you as if you were insects for him to experiment on.
 tate sugar intel~
 Tate~
 The sweet-looking Tate is here.
+
 
 ~
 ~
@@ -558,6 +630,7 @@ The sweet-looking Tate is here.
 lyle intel~
 Lyle~
 Lyle, the second most bravest adventurer in the world, cowers here.
+
 
 ~
 ~
@@ -573,9 +646,10 @@ Squishingont stands here, looking lumpy.~
 Bkla;dkhglkhjg
 
 
+
 ~
 3 0 0 S
-57 1
+58 1
 -356 39 47
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -586,9 +660,10 @@ Mr. Bumpy is here looking for left socks to eat.~
 Blah blah blah blah *burp* blah blah blah
 
 
+
 ~
 131081 0 0 S
-68 1
+67 1
 0 45 43
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -599,9 +674,10 @@ The ugly closet monster is here! and hes gonna eat you!~
 Blah blah blah
 
 
+
 ~
 33 0 0 S
-67 1
+68 1
 -450 12 69
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -611,12 +687,14 @@ cute little kitty cat~
 A cute little kitty cat sits here licking itself.~
 Descriptive-type stuff...
 
+
  
+
 
 
 ~
 1 0 0 S
-21 1
+20 1
 -267 120 23
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -627,9 +705,10 @@ A little bird sits here on the railing.. how cute.~
 This cute littlwe bird couldnt hurt a flea...
 
 
+
 ~
 3 524416 0 S
-95 1
+94 1
 -247 120 150
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -639,11 +718,13 @@ the fat guy~
 A big slimy fat man is here.~
 Man.. does this guy reek. he looks even worse than he smells. You really didnt
 
+
 think ear-wax was supposed to run.
+
 
 ~
 2051 0 0 S
-74 1
+73 1
 -350 45 38
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -652,10 +733,13 @@ REally Annoying kid ~
 the little brat~
 An annoying little kid
 
+
 ~
 This little brat must belon gto the ppl who own this house.. this kid makes
 
+
 you glad you never had any of your own.
+
 
 
 ~
@@ -670,10 +754,11 @@ blah~
 Cuper blah 
 
 
+
 ~
 Oh blah~
 1 0 0 S
-5 1
+4 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -682,8 +767,10 @@ cogline~
 Cogline~
 An elderly-looking Cleric stands here, ready to serve.
 
+
 ~
 He is here to serve you.
+
 
 ~
 3 0 1000 S
@@ -696,6 +783,7 @@ beaver~
 A small cute and fuzzy beaver~
 A beaver with red hair languishes in the sun here.
 
+
 ~
 ~
 3 40 -1 S
@@ -703,6 +791,42 @@ A beaver with red hair languishes in the sun here.
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+#66
+delvar~
+@@lDelvar @@dIron@@bFist@@N~
+@@lDelvar @@dIron@@bFist@@N, Singer of Dwarven Songs
+
+~
+~
+24117257 544 0 S
+62 1
+0 0 0
+! 3 0 2 7 80370 0 16
+| 0 0 0 0 0 16 0
+#67
+silverleaf~
+@@gSilver@@GLeaf @@WHalfmoon@@N~
+@@gSilver@@GLeaf @@WHalfmoon@@N, of The GoldenStar Elves
+
+~
+~
+24117257 33312 0 S
+58 1
+0 0 0
+! 4 0 3 7 2 6283264 16
+| 1024 0 0 0 0 0 0
+#69
+morganth~
+@@mMorganth @@dthe Mysterious@@N~
+@@mMorganth @@dthe Mysterious@@N, Follower of Magic
+
+~
+~
+24117257 1049148 0 S
+59 1
+0 0 0
+! 0 0 0 7 0 1022 48
+| 1 32 0 0 0 1 32
 #0
 #OBJECTS
 #7
@@ -833,6 +957,7 @@ The sloppy brain of %s has plopped out here.
 
 
 
+
 ~
 13 0 0 1
 5 0 0 1 0 0 0 0 0 0
@@ -903,6 +1028,7 @@ L
 board~
 the PulpDog Board~
 The PulpDog Notice Board is here for visitors to use...
+
 
 
 
@@ -1050,6 +1176,7 @@ window magic~
 a magical window~
 A magical window floats before you.  Where does it look?
 
+
 ~
 7 64 0 1
 0 0 0 0 0 0 0 0 0 0
@@ -1067,9 +1194,12 @@ E
 token~
 Thank you for looking at this token.
 
+
 Due to the changes made to the mud, it is now possible for players (i.e. you )
 
+
 to select the order of your classes, from Best to Worst
+
 
 ~
 L
@@ -1078,6 +1208,7 @@ L
 fireblade fire blade~
 a FireBlade~
 A FireBlade lies here.
+
 
 ~
 5 12484 8421376 1
@@ -1096,6 +1227,7 @@ foode bundle~
 a small bundle of food~
 A small bundle of food lies here.
 
+
 ~
 19 64 8388608 1
 5 0 0 0 0 0 0 0 0 0
@@ -1107,6 +1239,7 @@ beacon~
 a magical beacon~
 A magical beacon floats gently before you.
 
+
 ~
 6 64 8388608 1
 0 0 0 0 0 0 0 0 0 0
@@ -1117,6 +1250,7 @@ L
 portal~
 a magical portal~
 A large portal silently spins before you.
+
 
 ~
 7 0 0 1
@@ -1138,7 +1272,9 @@ soul potion~
 @@eA Soul potion@@N~
 @@NA flask filled with an @@devil dark liquid@@N lies here, screaming faintly.
 
+
 @@N
+
 
 ~
 10 688 8388608 1
@@ -1150,6 +1286,7 @@ L
 soul figurine~
 @@da small, living figurine@@N~
 A small living figurine lies here, groaning in agony.@@N
+
 
 ~
 28 512 8421376 1
@@ -1286,16 +1423,178 @@ A
 24 -100
 L
 81
+#66
+zenithars yinyang~
+@@mZenithar's @@pYin@@mYang@@N~
+@@mZenithar's @@psymbol @@Gof interdependence.@@N~
+16 0 8388608 1
+4 4 400 4000 0 0 0 0 0 0
+1
+L
+3
+#67
+cyberlichs soggy socks~
+@@dCyberlich's @@GSoggy @@bSocks@@N~
+@@GThese are the very same @@bsocks @@Gthat saw @@dCyber @@Gall through the war.@@N~
+16 0 8388608 1
+3 3 300 3000 0 0 0 0 0 0
+1
+L
+3
+#68
+dominias black soul~
+@@RDominia's @@dBlack @@WSoul@@N~
+@@RDominia's @@dBlack @@WSoul @@Genvelops you.@@N~
+16 0 8388608 1
+3 3 300 3000 0 0 0 0 0 0
+1
+E
+dom~
+~
+L
+3
+#69
+stimpys djgpp compiler~
+@@lStimpy's @@gDJGPP Compiler@@N~
+@@GThe very first @@gcompiler @@lStimpy @@Gever used.@@N~
+16 0 8388608 1
+1 1 100 1000 0 0 0 0 0 0
+1
+L
+3
+#70
+thalens olc~
+@@eThalen's @@dOLC@@N~
+@@eThalen's @@dOnline Compiler @@Gused to dynamically build areas.@@N~
+16 0 8388608 1
+1 1 100 1000 0 0 0 0 0 0
+1
+L
+3
+#71
+spectrums ice~
+@@cSpectrum's @@aICE@@N~
+@@cSpectrum's @@aIntegrated Customization Engine @@Gused for intermud communication.@@N~
+16 0 8388608 1
+2 2 200 2000 0 0 0 0 0 0
+1
+L
+3
+#72
+altrags map~
+@@bAltrag's @@dMap@@N~
+@@bAltrag's @@dMap @@Gshows you were you've been.@@N~
+16 0 8388608 1
+2 2 200 2000 0 0 0 0 0 0
+1
+L
+3
+#73
+present~
+@@NA brightly wrapped Christmas Present@@N~
+A Christmas Present wrapped in red and green paper, with a golden bow.@@N~
+32 0 8388608 1
+0 0 0 0 0 0 74 20 0 0
+1
+L
+1
+#74
+intmob code~
+@@WA very long file titled "Int Mob Code, TOP SECRET!!"@@N~
+@@WA .c file containing several hundred lines of code.@@N
+
+~
+8 0 8388608 1
+0 0 0 0 0 0 0 0 0 0
+1
+L
+1
+#75
+azurite ring~
+@@lA@@Bz@@lu@@Br@@li@@Bt@@le@@N Ring~
+A ring with an opaque @@lm@@Bo@@lt@@Bt@@ll@@Be@@ld @@Bdeep blue@@N stone.
+
+~
+9 1 8396800 3
+0 0 0 0 0 0 0 0 0 0
+1
+A
+1 5
+L
+55
+#76
+banded agate ring~
+@@bB@@Ba@@Rn@@gd@@be@@Bd@@N Agate Ring~
+A ring with @@bbrown@@N, @@Bblue@@N, @@Rred@@N, and @@gwhite@@N stripes.
+
+~
+9 2 8396800 5
+0 0 0 0 0 0 0 0 0 0
+1
+A
+2 5
+L
+55
+#77
+blue quartz amulet~
+@@aBlue@@N Quartz Amulet~
+An amulet with a transparent pale @@ablue@@N stone.
+
+~
+9 4 8388736 9
+0 0 0 0 0 0 0 0 0 0
+1
+A
+3 5
+L
+55
+#78
+eye agate amulet~
+@@dE@@gy@@be @@BA@@Gg@@da@@gt@@be@@N Amulet~
+An amulet with concentric rings of @@dgray@@N, @@gwhite@@N, @@bbrown@@N,
+
+@@Bblue@@N, and @@Ggreen@@N
+
+~
+9 32 8388736 17
+0 0 0 0 0 0 0 0 0 0
+1
+A
+4 5
+L
+55
+#79
+halo of sneakiness~
+halo of @@dSneakiness@@N~
+A @@dshadowy @@Nhalo.
+
+~
+9 64 8388609 33
+0 0 0 0 0 0 0 0 0 0
+1
+A
+5 5
+L
+55
+#80
+morganths aura~
+@@mMorganth's @@gAura@@N~
+A @@msticky@@N looking @@gaura@@N.
+
+~
+9 128 8388610 65
+0 0 0 0 0 0 0 0 0 0
+1
+A
+6 1
+L
+55
 #0
 #RESETS
 O 0 9 0 10 (null)
-
 O 0 4 0 6 (null)
-
 M 0 4 1 8 (null)
-
 M 0 5 1 13 (null)
-
 S
 #SPECIALS
 M 2 spec_rewield
