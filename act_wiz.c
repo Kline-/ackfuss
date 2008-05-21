@@ -928,7 +928,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    }
 
    sprintf( buf, "Carry number: %d.  Carry weight: %4.2f.   @@aQuest Points@@W: @@y%3d\n\r",
-            victim->carry_number, victim->carry_weight, victim->quest_points );
+            victim->carry_number, victim->carry_weight, IS_NPC(victim) ? 0 : victim->pcdata->quest_points );
    strcat( buf1, buf );
 
    sprintf( buf, "Age: %d.  Played: %d.  Timer: %d.  Act: %d.\n\r",
@@ -5092,7 +5092,7 @@ void do_reward( CHAR_DATA * ch, char *argument )
    sprintf( buf, "@@NYou have rewarded @@r%s  @@y%3d @@aQuest Points@@N!!!\n\r", victim->name, value );
    send_to_char( buf, ch );
 
-   victim->quest_points += value;
+   victim->pcdata->quest_points += value;
    return;
 }
 

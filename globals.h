@@ -583,3 +583,8 @@ DECLARE_DO_FUN( do_howl );
 DECLARE_DO_FUN( do_tribe );
 DECLARE_DO_FUN( do_scent );
 DECLARE_DO_FUN( do_imprint );
+
+/*
+ * ACK!FUSS Continual Improvements -Kline
+ */
+DECLARE_DO_FUN( do_statraise );

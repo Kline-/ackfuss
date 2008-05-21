@@ -844,7 +844,7 @@ void do_give( CHAR_DATA * ch, char *argument )
                   {
                      sprintf( buf, "You receive %d quest points!\n\r", obj->value[0] );
                      send_to_char( buf, ch );
-                     ch->quest_points += obj->value[0];
+                     ch->pcdata->quest_points += obj->value[0];
                   }
 
                   if( obj->value[2] > 0 )

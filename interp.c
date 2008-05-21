@@ -545,6 +545,13 @@ const struct cmd_type cmd_table[] = {
    {"rulers", do_rulers, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_INFO, C_SHOW_ALWAYS},
 
+   /*
+    * ACK!FUSS Continual Additions -Kline
+    */
+
+   {"statraise", do_statraise, POS_RESTING, 0, LOG_NORMAL,
+    C_TYPE_ACTION, C_SHOW_ALWAYS},
+
 
    /*
     *    Vampyre and REMORT SKILLS Zen
