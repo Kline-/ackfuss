@@ -382,7 +382,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "Vampbloodline %d\n", ch->pcdata->vamp_bloodline );
       fprintf( fp, "Vamppracs     %d\n", ch->pcdata->vamp_pracs );
       fprintf( fp, "Hasexpfix     %d\n", ch->pcdata->has_exp_fix );
-      fprintf( fp, "Questpoints   %d\n", ch->quest_points );
+      fprintf( fp, "Questpoints   %d\n", ch->pcdata->quest_points );
       fprintf( fp, "RecallVnum    %d\n", ch->pcdata->recall_vnum );
       fprintf( fp, "GainMana      %d\n", ch->pcdata->mana_from_gain );
       fprintf( fp, "GainHp        %d\n", ch->pcdata->hp_from_gain );
@@ -646,7 +646,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->valid_email = FALSE;
       ch->pcdata->email_address = str_dup( "not set" );
       ch->pcdata->assist_msg = str_dup( "'@@eBANZAI!!@@N $N must be assisted!!@@N'" );
-      ch->quest_points = 0;
+      ch->pcdata->quest_points = 0;
       for( foo = 0; foo < MAX_CLASS; foo++ )
          ch->lvl2[foo] = -1;
       ch->adept_level = -1;
@@ -1241,7 +1241,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'Q':
-            KEY( "Questpoints", ch->quest_points, fread_number( fp ) );
+            KEY( "Questpoints", ch->pcdata->quest_points, fread_number( fp ) );
             break;
 
          case 'R':

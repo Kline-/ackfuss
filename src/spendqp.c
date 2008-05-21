@@ -311,7 +311,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             qp_cost++;
          if( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
             qp_cost++;
-         if( ch->quest_points < qp_cost )
+         if( ch->pcdata->quest_points < qp_cost )
          {
             send_to_char( "You don't have enough quest points!\n\r", ch );
             for( i = 0; i < 5; i++ )
@@ -355,7 +355,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             ch->pcdata->pedit_string[1] = str_dup( "none" );
             free_string( ch->pcdata->pedit_state );
             ch->pcdata->pedit_state = str_dup( "none" );
-            ch->quest_points -= qp_cost;
+            ch->pcdata->quest_points -= qp_cost;
             do_save( ch, "" );
             {
                BRAND_DATA *brand;
@@ -386,7 +386,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          char *parse = ch->pcdata->pedit_string[0];
          char word1[MSL];
          assistbuf[0] = '\0';
-         if( ch->quest_points < 3 )
+         if( ch->pcdata->quest_points < 3 )
          {
             send_to_char( "You do not have enough quest points!\n\r", ch );
             for( i = 0; i < 5; i++ )
@@ -430,7 +430,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          free_string( ch->pcdata->pedit_state );
          ch->pcdata->pedit_state = str_dup( "none" );
          send_to_char( "Done!\n\r", ch );
-         ch->quest_points -= 3;
+         ch->pcdata->quest_points -= 3;
          do_save( ch, "" );
          {
             BRAND_DATA *brand;
@@ -464,7 +464,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( ch->quest_points < 10 )
+      if( ch->pcdata->quest_points < 10 )
       {
          send_to_char( "You don't have enough quest points. Cost is 10 qp.\n\r", ch );
          return;
@@ -480,14 +480,14 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          char_to_room( ch, location );
          do_look( ch, "" );
          act( "$n steps into the room from a @@apulsating @@mvortex@@N.", ch, NULL, NULL, TO_ROOM );
-         ch->quest_points -= 10;
+         ch->pcdata->quest_points -= 10;
          do_save( ch, "" );
          return;
       }
    }
    if( !str_cmp( arg1, "home" ) )
    {
-      if( ch->quest_points < 50 )
+      if( ch->pcdata->quest_points < 50 )
       {
          send_to_char( "You don't have enough quest points. Cost is 50 qp.\n\r", ch );
          return;
@@ -508,7 +508,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          {
 
             ch->pcdata->recall_vnum = ch->in_room->vnum;
-            ch->quest_points -= 50;
+            ch->pcdata->quest_points -= 50;
             do_save( ch, "" );
             send_to_char( "You know call this room your home, and will recall here!\n\r", ch );
             return;
@@ -518,7 +518,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "corpse" ) )
    {
-      if( ch->quest_points < 10 )
+      if( ch->pcdata->quest_points < 10 )
       {
          send_to_char( "You don't have enough quest points. Cost is 10 qp.\n\r", ch );
          return;
@@ -551,7 +551,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          {
             act( "Couldn't find it.", ch, NULL, NULL, TO_CHAR );
          }
-         ch->quest_points -= 10;
+         ch->pcdata->quest_points -= 10;
          do_save( ch, "" );
          return;
       }
@@ -827,4 +827,130 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
    send_to_char( "Huh?  Type 'help letter' for usage.\n\r", ch );
    return;
+}
+
+void do_statraise(CHAR_DATA *ch, char *argument)
+{
+ int cost = 5;
+ int statcap = 30;
+ char buf[MSL];
+
+ if( IS_NPC(ch) ) /* Not on mobs */
+  return;
+
+ if( argument[0] == '\0' ) /* No arg supplied, show the syntax */
+ {
+  send_to_char("Syntax is: statraise <str/int/wis/dex/con>\n\r",ch);
+  return;
+ }
+ if( !str_cmp(argument,"str") ) /* Matches on 's', 'st', 'str' */
+ {
+  if( ch->pcdata->max_str >= statcap )
+  {
+   sprintf(buf,"You can not raise your Str any further. The limit is %d.\n\r",statcap);
+   send_to_char(buf,ch);
+   return;
+  }
+  cost *= ch->pcdata->max_str; /* Take base cost (5) mult by current value */
+  if( ch->pcdata->quest_points < cost )
+  {
+   sprintf(buf,"It costs %d QP to raise your Str, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   send_to_char(buf,ch);
+   return;
+  }
+  ch->pcdata->max_str++;
+  ch->pcdata->quest_points -= cost;
+  sprintf(buf,"You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_str,ch->pcdata->quest_points);
+  send_to_char(buf,ch);
+  return;
+ }
+ else if( !str_cmp(argument,"int") ) /* Matches on 'i', 'in', 'int' */
+ {
+  if( ch->pcdata->max_int >= statcap )
+  {
+   sprintf(buf,"You can not raise your Int any further. The limit is %d.\n\r",statcap);
+   send_to_char(buf,ch);
+   return;
+  }
+  cost *= ch->pcdata->max_int; /* Take base cost (5) mult by current value */
+  if( ch->pcdata->quest_points < cost )
+  {
+   sprintf(buf,"It costs %d QP to raise your Int, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   send_to_char(buf,ch);
+   return;
+  }
+  ch->pcdata->max_int++;
+  ch->pcdata->quest_points -= cost;
+  sprintf(buf,"You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_int,ch->pcdata->quest_points);
+  send_to_char(buf,ch);
+  return;
+ }
+ else if( !str_cmp(argument,"wis") ) /* Matches on 'w', 'wi', 'wis' */
+ {
+  if( ch->pcdata->max_wis >= statcap )
+  {
+   sprintf(buf,"You can not raise your Wis any further. The limit is %d.\n\r",statcap);
+   send_to_char(buf,ch);
+   return;
+  }
+  cost *= ch->pcdata->max_wis; /* Take base cost (5) mult by current value */
+  if( ch->pcdata->quest_points < cost )
+  {
+   sprintf(buf,"It costs %d QP to raise your Wis, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   send_to_char(buf,ch);
+   return;
+  }
+  ch->pcdata->max_wis++;
+  ch->pcdata->quest_points -= cost;
+  sprintf(buf,"You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_wis,ch->pcdata->quest_points);
+  send_to_char(buf,ch);
+  return;
+ }
+ else if( !str_cmp(argument,"dex") ) /* Matches on 'd', 'de', 'dex' */
+ {
+  if( ch->pcdata->max_dex >= statcap )
+  {
+   sprintf(buf,"You can not raise your Dex any further. The limit is %d.\n\r",statcap);
+   send_to_char(buf,ch);
+   return;
+  }
+  cost *= ch->pcdata->max_dex; /* Take base cost (5) mult by current value */
+  if( ch->pcdata->quest_points < cost )
+  {
+   sprintf(buf,"It costs %d QP to raise your Dex, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   send_to_char(buf,ch);
+   return;
+  }
+  ch->pcdata->max_dex++;
+  ch->pcdata->quest_points -= cost;
+  sprintf(buf,"You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_dex,ch->pcdata->quest_points);
+  send_to_char(buf,ch);
+  return;
+ }
+ else if( !str_cmp(argument,"con") ) /* Matches on 'c', 'co', 'con' */
+ {
+  if( ch->pcdata->max_con >= statcap )
+  {
+   sprintf(buf,"You can not raise your Con any further. The limit is %d.\n\r",statcap);
+   send_to_char(buf,ch);
+   return;
+  }
+  cost *= ch->pcdata->max_con; /* Take base cost (5) mult by current value */
+  if( ch->pcdata->quest_points < cost )
+  {
+   sprintf(buf,"It costs %d QP to raise your Con, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   send_to_char(buf,ch);
+   return;
+  }
+  ch->pcdata->max_con++;
+  ch->pcdata->quest_points -= cost;
+  sprintf(buf,"You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_con,ch->pcdata->quest_points);
+  send_to_char(buf,ch);
+  return;
+ }
+ else /* Invalid argument, display syntax */
+ {
+  send_to_char("Syntax is: statraise <str/int/wis/dex/con>\n\r",ch);
+  return;
+ }
 }
