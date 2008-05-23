@@ -273,7 +273,7 @@ const struct race_type race_table[MAX_RACE] = {
     TRUE},
    {
     "Drw", "Drow", 9201, 0,
-    16, 23, 16, 23, 12,
+    18, 23, 16, 23, 15,
     RACE_MOD_STRONG_MAGIC | RACE_MOD_SLOW_HEAL | RACE_MOD_DARKNESS,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
      TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
@@ -289,7 +289,7 @@ const struct race_type race_table[MAX_RACE] = {
 
    {
     "Lam", "Lamia", 3001, 0,
-    21, 15, 14, 23, 17,
+    22, 17, 16, 23, 17,
     RACE_MOD_LARGE | RACE_MOD_IMMUNE_POISON | RACE_MOD_TAIL,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
      TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
@@ -305,7 +305,7 @@ const struct race_type race_table[MAX_RACE] = {
 
    {
     "Drc", "Dracon", 3001, 0,
-    23, 23, 12, 9, 23,
+    23, 23, 15, 11, 23,
     RACE_MOD_STRONG_MAGIC | RACE_MOD_TOUGH_SKIN | RACE_MOD_SLOW_HEAL | RACE_MOD_LARGE | RACE_MOD_TAIL |
     RACE_MOD_RESIST_SPELL,
     {TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, FALSE, FALSE, TRUE,
@@ -354,7 +354,7 @@ const struct race_type race_table[MAX_RACE] = {
 
    {
     "Sde", "Sidhe", 3001, 0,
-    13, 22, 17, 23, 15,
+    16, 22, 18, 23, 16,
     RACE_MOD_STRONG_MAGIC | RACE_MOD_TINY | RACE_MOD_RESIST_SPELL,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
      TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
