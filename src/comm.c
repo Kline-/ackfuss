@@ -279,6 +279,11 @@ int init_socket( int port )
    sa.sin_family = AF_INET;
    sa.sin_port = htons( port );
 
+   /* Uncomment the below if your server requires IP_Binding
+    * and fill it in with the address they give you --Kline
+    */
+   /* sa.sin_addr.s_addr = inet_addr("127.0.0.1"); */
+
    if( bind( fd, ( struct sockaddr * )&sa, sizeof( sa ) ) < 0 )
    {
       perror( "Init_socket: bind" );
