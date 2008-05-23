@@ -360,7 +360,7 @@ struct shop_data
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    SHOP_DATA *next;  /* Next shop in list            */
    SHOP_DATA *prev;  /* Prev shop in list    */
-   sh_int keeper; /* Vnum of shop keeper mob      */
+   int keeper; /* Vnum of shop keeper mob      */
    sh_int buy_type[MAX_TRADE];   /* Item types shop will buy     */
    sh_int profit_buy;   /* Cost multiplier for buying   */
    sh_int profit_sell;  /* Cost multiplier for selling  */
@@ -383,7 +383,7 @@ struct class_type
    sh_int attr_prime;   /* Prime attribute              */
    char *attr; /* Prime          */
    sh_int weapon; /* First weapon                 */
-   sh_int guild;  /* Vnum of guild room           */
+   int guild;  /* Vnum of guild room           */
    sh_int skill_adept;  /* Maximum skill level          */
    sh_int thac0_00;  /* Thac0 for level  0           */
    sh_int thac0_32;  /* Thac0 for level 32           */
@@ -399,7 +399,7 @@ struct race_type
    char race_name[4];   /* Three letter name for race */
    char *race_title; /* Full race name */
    sh_int recall; /* Race's recall location */
-   sh_int race_room; /* vnum of race-only room */
+   int race_room; /* vnum of race-only room */
    sh_int race_str;  /* max_str to use for race */
    sh_int race_int;
    sh_int race_wis;
@@ -540,7 +540,7 @@ struct mob_index_data
    char *short_descr;
    char *long_descr;
    char *description;
-   sh_int vnum;
+   int vnum;
    sh_int count;
    sh_int killed;
    sh_int sex;
@@ -790,7 +790,7 @@ struct pc_data
    sh_int quest_points;
 
    char *ignore_list[MAX_IGNORES];  /* Ignore this person */
-   sh_int recall_vnum;
+   int recall_vnum;
    int mana_from_gain;  /* saves non-item oriented mana total */
    int hp_from_gain; /* same for hitpoints */
    int move_from_gain;
@@ -899,7 +899,7 @@ struct obj_index_data
    sh_int level;
    char *short_descr;
    char *description;
-   sh_int vnum;
+   int vnum;
    int item_type;
    int extra_flags;
    int wear_flags;
@@ -975,7 +975,7 @@ struct exit_data
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    EXIT_DATA *next;
    ROOM_INDEX_DATA *to_room;
-   sh_int vnum;
+   int vnum;
    sh_int exit_info;
    sh_int key;
    char *keyword;
@@ -1200,7 +1200,7 @@ struct room_index_data
    char *description;
    char *auto_message;  /* If != NULL, send_to_room each tick */
    sh_int block_timer;
-   sh_int vnum;
+   int vnum;
    int room_flags;
    sh_int light;
    sh_int sector_type;

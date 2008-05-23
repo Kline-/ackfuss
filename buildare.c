@@ -1020,7 +1020,7 @@ void build_arealist( CHAR_DATA * ch, char *argument )
    sprintf( msg, "%s", "Areas of " mudnamecolor ":\n\r" );
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
    {
-      sprintf( buf, "%12s [%5d to %5d] %s\n\r", capitalize( pArea->owner ), pArea->min_vnum, pArea->max_vnum, pArea->name );
+      sprintf( buf, "%12s [%8d to %8d] %s\n\r", capitalize( pArea->owner ), pArea->min_vnum, pArea->max_vnum, pArea->name );
       stop_counter++;
       if( stop_counter > 40 )
       {
