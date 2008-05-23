@@ -2038,11 +2038,11 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
       return;
    }
 
-   ch->pcdata->max_str = number_range(1,(race_table[ch->race].race_str-5));
-   ch->pcdata->max_int = number_range(1,(race_table[ch->race].race_int-5));
-   ch->pcdata->max_wis = number_range(1,(race_table[ch->race].race_wis-5));
-   ch->pcdata->max_dex = number_range(1,(race_table[ch->race].race_dex-5));
-   ch->pcdata->max_con = number_range(1,(race_table[ch->race].race_con-5));
+   ch->pcdata->max_str = number_range(3,(race_table[ch->race].race_str-5));
+   ch->pcdata->max_int = number_range(3,(race_table[ch->race].race_int-5));
+   ch->pcdata->max_wis = number_range(3,(race_table[ch->race].race_wis-5));
+   ch->pcdata->max_dex = number_range(3,(race_table[ch->race].race_dex-5));
+   ch->pcdata->max_con = number_range(3,(race_table[ch->race].race_con-5));
 
    sprintf( menu, "\n\rCharacter Creation: Attributes.\n\r\n\r" );
    strcat( menu, "There is no way to increase your MAX attributes, so choose wisely!\n\r" );
@@ -2459,8 +2459,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           argument++;
           if( !str_prefix(argument,"str") )
           {
-           if( ch->pcdata->max_str <= 1 )
-            write_to_buffer(d,"You must have at least 1 Str.",0);
+           if( ch->pcdata->max_str <= 3 )
+            write_to_buffer(d,"You must have at least 3 Str.",0);
            else
            {
             ch->pcdata->max_str--;
@@ -2469,8 +2469,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           }
           if( !str_prefix(argument,"int") )
           {
-           if( ch->pcdata->max_int <= 1 )
-            write_to_buffer(d,"You must have at least 1 Int.",0);
+           if( ch->pcdata->max_int <= 3 )
+            write_to_buffer(d,"You must have at least 3 Int.",0);
            else
            {
             ch->pcdata->max_int--;
@@ -2479,8 +2479,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           }
           if( !str_prefix(argument,"wis") )
           {
-           if( ch->pcdata->max_wis <= 1 )
-            write_to_buffer(d,"You must have at least 1 Wis.",0);
+           if( ch->pcdata->max_wis <= 3 )
+            write_to_buffer(d,"You must have at least 3 Wis.",0);
            else
            {
             ch->pcdata->max_wis--;
@@ -2489,8 +2489,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           }
           if( !str_prefix(argument,"dex") )
           {
-           if( ch->pcdata->max_dex <= 1 )
-            write_to_buffer(d,"You must have at least 1 Dex.",0);
+           if( ch->pcdata->max_dex <= 3 )
+            write_to_buffer(d,"You must have at least 3 Dex.",0);
            else
            {
             ch->pcdata->max_dex--;
@@ -2499,8 +2499,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           }
           if( !str_prefix(argument,"con") )
           {
-           if( ch->pcdata->max_con <= 1 )
-            write_to_buffer(d,"You must have at least 1 Con.",0);
+           if( ch->pcdata->max_con <= 3 )
+            write_to_buffer(d,"You must have at least 3 Con.",0);
            else
            {
             ch->pcdata->max_con--;
