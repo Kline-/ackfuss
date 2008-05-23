@@ -832,8 +832,13 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 void do_statraise(CHAR_DATA *ch, char *argument)
 {
  int cost = 5;
- int statcap = 30;
+ int statcap = 25;
  char buf[MSL];
+
+ /* Note, you'll need to edit your stat tables in const.c
+  * to give bonuses past 25 for each stat, based on whatever
+  * limit you set in this function --Kline
+  */
 
  if( IS_NPC(ch) ) /* Not on mobs */
   return;
@@ -843,7 +848,7 @@ void do_statraise(CHAR_DATA *ch, char *argument)
   send_to_char("Syntax is: statraise <str/int/wis/dex/con>\n\r",ch);
   return;
  }
- if( !str_cmp(argument,"str") ) /* Matches on 's', 'st', 'str' */
+ if( !str_prefix(argument,"str") ) /* Matches on 's', 'st', 'str' */
  {
   if( ch->pcdata->max_str >= statcap )
   {
@@ -858,13 +863,14 @@ void do_statraise(CHAR_DATA *ch, char *argument)
    send_to_char(buf,ch);
    return;
   }
-  ch->pcdata->max_str++;
+  ch->pcdata->max_str++; /* Raise the actual cap */
+  ch->pcdata->perm_str++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
   sprintf(buf,"You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_str,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
- else if( !str_cmp(argument,"int") ) /* Matches on 'i', 'in', 'int' */
+ else if( !str_prefix(argument,"int") ) /* Matches on 'i', 'in', 'int' */
  {
   if( ch->pcdata->max_int >= statcap )
   {
@@ -879,13 +885,14 @@ void do_statraise(CHAR_DATA *ch, char *argument)
    send_to_char(buf,ch);
    return;
   }
-  ch->pcdata->max_int++;
+  ch->pcdata->max_int++; /* Raise the actual cap */
+  ch->pcdata->perm_int++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
   sprintf(buf,"You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_int,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
- else if( !str_cmp(argument,"wis") ) /* Matches on 'w', 'wi', 'wis' */
+ else if( !str_prefix(argument,"wis") ) /* Matches on 'w', 'wi', 'wis' */
  {
   if( ch->pcdata->max_wis >= statcap )
   {
@@ -900,13 +907,14 @@ void do_statraise(CHAR_DATA *ch, char *argument)
    send_to_char(buf,ch);
    return;
   }
-  ch->pcdata->max_wis++;
+  ch->pcdata->max_wis++; /* Raise the actual cap */
+  ch->pcdata->perm_wis++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
   sprintf(buf,"You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_wis,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
- else if( !str_cmp(argument,"dex") ) /* Matches on 'd', 'de', 'dex' */
+ else if( !str_prefix(argument,"dex") ) /* Matches on 'd', 'de', 'dex' */
  {
   if( ch->pcdata->max_dex >= statcap )
   {
@@ -921,13 +929,14 @@ void do_statraise(CHAR_DATA *ch, char *argument)
    send_to_char(buf,ch);
    return;
   }
-  ch->pcdata->max_dex++;
+  ch->pcdata->max_dex++; /* Raise the actual cap */
+  ch->pcdata->perm_dex++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
   sprintf(buf,"You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_dex,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
- else if( !str_cmp(argument,"con") ) /* Matches on 'c', 'co', 'con' */
+ else if( !str_prefix(argument,"con") ) /* Matches on 'c', 'co', 'con' */
  {
   if( ch->pcdata->max_con >= statcap )
   {
@@ -942,7 +951,8 @@ void do_statraise(CHAR_DATA *ch, char *argument)
    send_to_char(buf,ch);
    return;
   }
-  ch->pcdata->max_con++;
+  ch->pcdata->max_con++; /* Raise the actual cap */
+  ch->pcdata->perm_con++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
   sprintf(buf,"You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_con,ch->pcdata->quest_points);
   send_to_char(buf,ch);
