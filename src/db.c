@@ -1018,7 +1018,7 @@ void load_mobiles( FILE * fp )
 
    for( ;; )
    {
-      sh_int vnum;
+      int vnum;
       char letter;
       int iHash;
 
@@ -1160,7 +1160,7 @@ void load_objects( FILE * fp )
 
    for( ;; )
    {
-      sh_int vnum;
+      int vnum;
       char letter;
       int iHash;
 
@@ -1487,6 +1487,7 @@ void load_rooms( FILE * fp )
    BUILD_DATA_LIST *pList;
    MONEY_TYPE *room_treasure;
    sh_int cnt;
+   char buf[MSL];
 
    if( area_load == NULL )
    {
@@ -1496,7 +1497,7 @@ void load_rooms( FILE * fp )
 
    for( ;; )
    {
-      sh_int vnum;
+      int vnum;
       char letter;
       int door;
       int iHash;
@@ -1509,8 +1510,15 @@ void load_rooms( FILE * fp )
       }
 
       vnum = fread_number( fp );
+
       if( vnum == 0 )
          break;
+
+      if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
+      {
+       sprintf(buf,"Load_rooms: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       log_string(buf);
+      }
 
       fBootDb = FALSE;
       if( get_room_index( vnum ) != NULL )

@@ -44,8 +44,8 @@
 #define MAX_STRING_LENGTH        8192
 #define MSL			MAX_STRING_LENGTH
 #define MAX_INPUT_LENGTH          640
-#define MAX_AREAS                 200
-#define MAX_VNUM 32767
+#define MAX_AREAS                 1000
+#define MAX_VNUM 16777216
 
 #define BOOT_DB_ABORT_THRESHOLD			  25
 #define RUNNING_ABORT_THRESHOLD			  10
