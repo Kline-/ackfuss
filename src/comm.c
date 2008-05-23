@@ -1897,6 +1897,21 @@ bool write_to_descriptor( int desc, char *txt, int length )
    return TRUE;
 }
 
+void show_stotal_to( DESCRIPTOR_DATA * d )
+{
+ CHAR_DATA *ch = d->character;
+ char buf[MSL];
+ 
+ sprintf( buf, "Str: [%d/%d]  Int: [%d/%d]  Wis: [%d/%d]  Dex: [%d/%d]  Con: [%d/%d]  Total: [%d/%d]",
+  ch->pcdata->max_str, race_table[ch->race].race_str, ch->pcdata->max_int, race_table[ch->race].race_int, ch->pcdata->max_wis,
+  race_table[ch->race].race_wis, ch->pcdata->max_dex, race_table[ch->race].race_dex, ch->pcdata->max_con, race_table[ch->race].race_con,
+ (ch->pcdata->max_str + ch->pcdata->max_int + ch->pcdata->max_wis + ch->pcdata->max_dex + ch->pcdata->max_con), MAX_TOT_STATS );
+
+ write_to_buffer(d,buf,0);
+
+ return;
+}
+
 void show_menu_to( DESCRIPTOR_DATA * d )
 {
    CHAR_DATA *ch = d->character;
@@ -1917,7 +1932,7 @@ void show_menu_to( DESCRIPTOR_DATA * d )
 
    strcat( menu, "        3. Roll Attributes.  Currently:" );
    if( IS_SET( d->check, CHECK_STATS ) )
-      sprintf( buf, "\n\r        Max_Str:%d.  Max_Int:%d.  Max_Wis:%d.\n\r        Max_Dex:%d.  Max_Con:%d.\n\r",
+      sprintf( buf, "\n\r        Str: [%d]  Int: [%d]  Wis: [%d]\n\r        Dex: [%d]  Con: [%d]\n\r",
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
    else
       sprintf( buf, "Not Set.\n\r" );
@@ -2009,7 +2024,6 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
 void show_amenu_to( DESCRIPTOR_DATA * d )
 {
    CHAR_DATA *ch = d->character;
-   char buf[MAX_STRING_LENGTH];
    char menu[MAX_STRING_LENGTH];
 
    /*
@@ -2024,35 +2038,21 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
       return;
    }
 
-   for( ;; )
-   {
-      ch->pcdata->max_str = UMIN( 22, ( race_table[ch->race].race_str + number_range( -3, 3 ) ) );
-      ch->pcdata->max_str = UMIN( 22, ch->pcdata->max_str );
-      ch->pcdata->max_int = UMIN( 22, ( race_table[ch->race].race_int + number_range( -3, 3 ) ) );
-      ch->pcdata->max_int = UMIN( 22, ch->pcdata->max_int );
-      ch->pcdata->max_dex = UMIN( 22, ( race_table[ch->race].race_dex + number_range( -3, 3 ) ) );
-      ch->pcdata->max_dex = UMIN( 22, ch->pcdata->max_dex );
-      ch->pcdata->max_con = UMIN( 22, ( race_table[ch->race].race_con + number_range( -3, 3 ) ) );
-      ch->pcdata->max_con = UMIN( 22, ch->pcdata->max_con );
-      ch->pcdata->max_wis = UMIN( 22, ( race_table[ch->race].race_wis + number_range( -3, 3 ) ) );
-      ch->pcdata->max_wis = UMIN( 22, ch->pcdata->max_wis );
-
-      if( ( ch->pcdata->max_str + ch->pcdata->max_int + ch->pcdata->max_wis
-            + ch->pcdata->max_dex + ch->pcdata->max_con ) < 91 )
-         break;   /* Prevent 'super' characters! */
-   }
+   ch->pcdata->max_str = number_range(1,(race_table[ch->race].race_str-5));
+   ch->pcdata->max_int = number_range(1,(race_table[ch->race].race_int-5));
+   ch->pcdata->max_wis = number_range(1,(race_table[ch->race].race_wis-5));
+   ch->pcdata->max_dex = number_range(1,(race_table[ch->race].race_dex-5));
+   ch->pcdata->max_con = number_range(1,(race_table[ch->race].race_con-5));
 
    sprintf( menu, "\n\rCharacter Creation: Attributes.\n\r\n\r" );
-   strcat( menu, "This option rolls a new set of MAX attributes.\n\r" );
    strcat( menu, "There is no way to increase your MAX attributes, so choose wisely!\n\r" );
-   strcat( menu, "Current Attributes:  (Just Rolled)\n\r" );
+   strcat( menu, "Current Attributes:\n\r" );
+   write_to_buffer(d,menu,0);
 
-   sprintf( buf, "Max_Str:%d.  Max_Int:%d.  Max_Wis:%d.  Max_Dex:%d.  Max_Con:%d.\n\r",
-            ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
-   strcat( menu, buf );
-   strcat( menu, "\n\rPlease Select: (A)ccept, return to menu, (H)help stats, or (R)eroll: " );
+   show_stotal_to(d);
 
-   write_to_buffer( d, menu, 0 );
+   write_to_buffer( d, "\n\rPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): ",0);
+
    return;
 }
 
@@ -2066,7 +2066,7 @@ void show_ahelp_menu_to( DESCRIPTOR_DATA * d )
    strcat( menu, "Wis affects how many practices you get, your mana, and your saving against spells.\n\r" );
    strcat( menu, "Dex affects your ac, how many items you can carry, and your ability to dodge.\n\r" );
    strcat( menu, "Con affects how many hitpoints you gain per level.\n\r" );
-   strcat( menu, "\n\rPlease Select: (A)ccept, return to menu, (H)help stats, or (R)eroll: " );
+   strcat( menu, "\n\rPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): " );
 
    write_to_buffer( d, menu, 0 );
    return;
@@ -2450,25 +2450,160 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
    if( d->connected == CON_GET_STATS )
    {
+      int total = (ch->pcdata->max_str + ch->pcdata->max_int + ch->pcdata->max_wis + ch->pcdata->max_dex + ch->pcdata->max_con);
+      char buf[MSL];
+
       switch ( argument[0] )
       {
+         case '-':
+          argument++;
+          if( !str_prefix(argument,"str") )
+          {
+           if( ch->pcdata->max_str <= 1 )
+            write_to_buffer(d,"You must have at least 1 Str.",0);
+           else
+           {
+            ch->pcdata->max_str--;
+            show_stotal_to(d);
+           }
+          }
+          if( !str_prefix(argument,"int") )
+          {
+           if( ch->pcdata->max_int <= 1 )
+            write_to_buffer(d,"You must have at least 1 Int.",0);
+           else
+           {
+            ch->pcdata->max_int--;
+            show_stotal_to(d);
+           }
+          }
+          if( !str_prefix(argument,"wis") )
+          {
+           if( ch->pcdata->max_wis <= 1 )
+            write_to_buffer(d,"You must have at least 1 Wis.",0);
+           else
+           {
+            ch->pcdata->max_wis--;
+            show_stotal_to(d);
+           }
+          }
+          if( !str_prefix(argument,"dex") )
+          {
+           if( ch->pcdata->max_dex <= 1 )
+            write_to_buffer(d,"You must have at least 1 Dex.",0);
+           else
+           {
+            ch->pcdata->max_dex--;
+            show_stotal_to(d);
+           }
+          }
+          if( !str_prefix(argument,"con") )
+          {
+           if( ch->pcdata->max_con <= 1 )
+            write_to_buffer(d,"You must have at least 1 Con.",0);
+           else
+           {
+            ch->pcdata->max_con--;
+            show_stotal_to(d);
+           }
+          }
+          break;
+         case '+':
+          argument++;
+          if( !str_prefix(argument,"str") )
+          {
+           if( ch->pcdata->max_str >= race_table[ch->race].race_str )
+            write_to_buffer(d,"Your Str is already at max.",0);
+           else if( total >= MAX_TOT_STATS )
+           {
+            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            write_to_buffer(d,buf,0);
+           }
+           else
+           {
+            ch->pcdata->max_str++;
+            show_stotal_to(d);
+           }
+          }
+          if( !str_prefix(argument,"int") )
+          {
+           if( ch->pcdata->max_int >= race_table[ch->race].race_int )
+            write_to_buffer(d,"Your Int is already at max.",0);
+           else if( total >= MAX_TOT_STATS )
+           {
+            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            write_to_buffer(d,buf,0);
+           }
+           else
+           {
+            ch->pcdata->max_int++;
+            show_stotal_to(d);
+           }
+          }
+          if( !str_prefix(argument,"wis") )
+          {
+           if( ch->pcdata->max_wis >= race_table[ch->race].race_wis )
+            write_to_buffer(d,"Your Wis is already at max.",0);
+           else if( total >= MAX_TOT_STATS )
+           {
+            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            write_to_buffer(d,buf,0);
+           }
+           else
+           {
+            ch->pcdata->max_wis++;
+            show_stotal_to(d);
+           }
+          }
+          if( !str_prefix(argument,"dex") )
+          {
+           if( ch->pcdata->max_dex >= race_table[ch->race].race_dex )
+            write_to_buffer(d,"Your Dex is already at max.",0);
+           else if( total >= MAX_TOT_STATS )
+           {
+            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            write_to_buffer(d,buf,0);
+           }
+           else
+           {
+            ch->pcdata->max_dex++;
+            show_stotal_to(d);
+           }
+          }
+          if( !str_prefix(argument,"con") )
+          {
+           if( ch->pcdata->max_con >= race_table[ch->race].race_con )
+            write_to_buffer(d,"Your Con is already at max.",0);
+           else if( total >= MAX_TOT_STATS )
+           {
+            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            write_to_buffer(d,buf,0);
+           }
+           else
+           {
+            ch->pcdata->max_con++;
+            show_stotal_to(d);
+           }
+          }
+          break;
          case 'A':
          case 'a':
-            if( !IS_SET( d->check, CHECK_STATS ) )
-               SET_BIT( d->check, CHECK_STATS );
-            d->connected = CON_MENU;
-            show_menu_to( d );
-            break;
-         case 'R':
-         case 'r':
-            show_amenu_to( d );
-            break;
+          if( total < MAX_TOT_STATS )
+           write_to_buffer(d,"Please finish allocating your stats first.",0);
+          else
+          {
+           if( !IS_SET( d->check, CHECK_STATS ) )
+            SET_BIT( d->check, CHECK_STATS );
+           d->connected = CON_MENU;
+           show_menu_to( d );
+          }
+          break;
          case 'H':
          case 'h':
             show_ahelp_menu_to( d );
             break;
          default:
-            write_to_buffer( d, "Enter A or R, or H for stat help:", 0 );
+            write_to_buffer( d, "n\rPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): ", 0 );
             break;
       }
       return;

@@ -1364,6 +1364,7 @@ void load_messages args( ( void ) );
 void close_socket args( ( DESCRIPTOR_DATA * dclose ) );
 void show_menu_to args( ( DESCRIPTOR_DATA * d ) ); /* Main */
 void show_amenu_to args( ( DESCRIPTOR_DATA * d ) );   /* Attributes */
+void show_stotal_to args( ( DESCRIPTOR_DATA * d ) );  /* Attribute Totals */
 void show_rmenu_to args( ( DESCRIPTOR_DATA * d ) );   /* Race */
 void show_smenu_to args( ( DESCRIPTOR_DATA * d ) );   /* Sex */
 void show_cmenu_to args( ( DESCRIPTOR_DATA * d ) );   /* Class */
