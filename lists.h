@@ -195,5 +195,5 @@ do { \
   (item)->next = (freelist); \
   (item)->is_free = TRUE; /* This sets is_free flag */ \
   (freelist) = (item); \
-  if (freelist##_destructor) freelist##_destructor(item); \
+  if( freelist##_destructor != NULL ) freelist##_destructor(item); \
 } while(0)
