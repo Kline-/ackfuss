@@ -1757,22 +1757,6 @@ As a worthy knight, you have added benefits when in a group.  Morale will add
 to the damage any of your group members can do.
 
 ~
-1 adrenaline~
-The ability to utilize adrenaline surges enhances your damage in combat
-
-whenever you take a strong hit.  Multiple hits add additional affects!.
-
-~
-1 frenzy~
-Frenzy is a skill that let's you go into a fighting frenzy.  You will take
-
-some damage, but will attempt to hit every enemy in the room!
-
-~
-1 ethereal~
-Ethereal travel is a way to enter the Ethereal plane, a non-material realm that spans our material plane.
-
-~
 1 runes~
 Runes are magical effects that you can place in the room you are in.  They
 
@@ -1783,10 +1767,6 @@ they dissapear.
 NOTE: Runes are triggered by the next to enter the room.
 
 NOTE: @@eDO NOT CAST RUNES OR BAD AREA AFFECTS IN NEWBIE AREAS!!!@@N
-
-~
-1 cage~
-The cage spell is similar to seal room, but things CAN enter, just not leave.
 
 ~
 1 house~
@@ -1893,40 +1873,6 @@ purchase a home.
 CHANGE: Locks cost 15, not 85 QP
 
 ~
-1 soul~
-~
-1 apostle apostles~
-@@aApostles@@W
-
-
-
-Apostles are traditionally the intermediaries between mortals and the elder
-
-Gods.
-
-
-
-Here in the Realm you may contact an Apostle with questions you cannot get
-
-answered from other mortals or for reimbursements, remorting, passing along
-
-of messages, etc.  Simply send a tell to an Apostle and then be patient in
-
-case they are busy.
-
-
-
-Do not use the pray channel.  Again, this is for emergencies only when you
-
-need a God and cannot see any visible ones.  If Gods are invisible it usually
-
-means they are coding for the mud so please contact Apostles first.
-
-
-
-Tip - Type "who imm" to see which IMMs are on.
-
-~
 1 order charmies charmed~
 The number of charmed creatures you can control is based on your intelligence,
 
@@ -1955,130 +1901,100 @@ and you must go to where you were killed...
 @@eONCE PKOK ALWAYS PKOK!!!@@N
 
 ~
-1 seal seal_room web cage~
-Seal room and cage are spells used for the purpose of literally sealing a room
-
-either to keep pcs and npcs in or out. There are both positive and negative
-
-affects to those spells. There are limits though.
-
-
-
-@@eDO NOT CAST SEAL IN TOWN!!!!!@@N
-
-@@eDO NOT CAST SEAL IN A NEWBIE PRONE AREA!!!!@@N
-
-ANYONE seen doing one of these two things or anything else of not common sense will be PUNISHED!!!
-
-~
--1 money coin coins currency~
+0 MONEY COIN COINS CURRENCY~
 @@bcopper@@N Bit : base unit
-
 @@Wsilver@@N Moon:  5 bits
-
 @@ygold@@N Crown : 20 bits
-
 @@lelectrum@@N Crescent : 50 bits
-
 @@amithril@@N Pentacle : 100 bits
-
 @@mmalachite@@N Karant : 200 bits
-
 @@debony@@N Mark : 500 bits
-
 @@pRoyal Sunburst@@N : 1000 bits  
+~
+0 PROMPT~
+Your prompt allows you to customize the way you view this world by allowing
+only certain features or by color (type help color). They are as follows:
 
+        %I :  Current Health (%)
+        %h :  Current Health
+        %H :  Max Health
+        %J :  Current Mana (%)
+        %m :  Current Mana
+        %M :  Max Mana
+        %K :  Current Move (%)
+        %v :  Current Move
+        %V :  Max Move
+        %x :  Experience
+        %g :  Money
+        %a :  Alignment
+        %r :  Room name
+        %s :  Stance
+        %c :  Newline
+        %t :  MUD time
+        %i :  Visibility
+        %w :  Follow with 2 letter class abbr, ie: Th for Thief shows EXP TNL
+        %! :  Hitroll
+        %+ :  Damroll
+        %* :  AC
+
+        Immortal Only:
+
+        %R :  Room vnum
+        %z :  Area name
+ 
+The command "prompt all" will set your prompt to the example below.
+To disable seeing a prompt, use config -prompt.
+ 
+Example: PROMPT @@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N
+Will set your prompt to "@@g<@@d[@@W100@@d] [@@e10@@RH @@l100@@BM @@r100@@GV@@d]@@g>@@N"
 ~
 -1 diku~
 .                    Original game idea, concept, and design:
-
           Katja Nyboe               [Superwoman] (katz@freja.diku.dk)
-
           Tom Madsen              [Stormbringer] (noop@freja.diku.dk)
-
           Hans Henrik Staerfeldt           [God] (bombman@freja.diku.dk)
-
           Michael Seifert                 [Papi] (seifert@freja.diku.dk)
-
           Sebastian Hammer               [Quinn] (quinn@freja.diku.dk)
 
                      Additional contributions from:
-
 Michael Curran  - the player title collection and additional locations.
-
 Ragnar Loenn    - the bulletin board.
-
 Bill Wisner     - for being the first to successfully port the game,
-
                   uncovering several old bugs, uh, inconsistencies,
-
                   in the process.
-
 And: Mads Haar and Stephan Dahl for additional locations.
-
 Developed at: DIKU -- The Department of Computer Science
-
                       at the University of Copenhagen.
-
 ~
 -1 ack ackmud~
 @@N-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
 @@k)
-
 )@@N
-
          Ack!Mud 2.0 is Copyright (C)1995/6 Stimpy & Thalen
-
          Ack!Mud 4.3 is Copyright (C)1998 by Stephen Zepp
-
 @@k)@@N
-
             Ack!Mud 4.3 by Zenithar, with mucho help from:
-
              Ramias, Altrag, Spectrum, Flar, and Universe
-
 @@k)@@N
-
  Ack! Mud is a deriative of Merc Muds, which are deriatives of Diku Muds.
-
  In order to run this code, you must observe the conditions of use
-
  of Merc and Diku.
-
 @@k)@@N
-
  Conditions of use for Ack!Mud are as follows:
-
  - Must retain copyright messages in all code.
-
  - Stimpy, Thalen and Zenithar must be credited on greeting screen.
-
 @@k)@@N
-
  Thanks to:
-
  ...Maharet, Requiem and Rupert from the original Ack! for all their help.
-
  ...SoE for provding the official site for Ack!Mud
-
  ...The guys&gals at Diku and Merc for writing the original code  (:
-
         To contact Zenithar, E-Mail zenithar@ackmud.nuc.net
-
 @@k)@@N
-
                    Visit the Ack!Mud Home page at:
-
                       http://ackmud.nuc.net
-
 @@k)@@N
-
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 
-
 ~
--1 ack~
-NEW HELP.  DELETE THIS LINE FIRST!~
 -1 build_shops~
 BUILD HELP : SHOPS
 

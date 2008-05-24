@@ -1301,121 +1301,6 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             i = buf2;
             break;
          }
-         case 'W':
-         {
-            sh_int cl_index = -1;
-            int cost;
-            bool remort = FALSE, adept = FALSE;
-            ++str;
-            switch ( *str )
-            {
-               default:
-                  sprintf( buf2, "%s", "BadClass" );
-                  i = buf2;
-                  break;
-               case 'm':
-               case 'M':
-               {
-                  ++str;
-                  if( ( *str == 'a' ) || ( *str == 'A' ) )
-                  {
-                     cl_index = 0;
-                     break;
-                  }
-                  else if( ( *str == 'o' ) || ( *str == 'O' ) )
-                  {
-                     cl_index = 4;
-                     remort = TRUE;
-                     break;
-                  }
-                  else
-                  {
-                     sprintf( buf2, "%s", "BadClass" );
-                     i = buf2;
-                     break;
-                  }
-               }
-
-               case 'c':
-               case 'C':
-                  ++str;
-                  cl_index = 1;
-                  break;
-               case 't':
-               case 'T':
-                  ++str;
-                  cl_index = 2;
-                  break;
-               case 'w':
-               case 'W':
-                  ++str;
-                  cl_index = 3;
-                  break;
-               case 'p':
-               case 'P':
-                  ++str;
-                  cl_index = 4;
-                  break;
-               case 's':
-               case 'S':
-                  ++str;
-                  cl_index = 0;
-                  remort = TRUE;
-                  break;
-               case 'a':
-               case 'A':
-               {
-                  ++str;
-                  if( ( *str == 's' ) || ( *str == 'S' ) )
-                  {
-                     cl_index = 1;
-                     remort = TRUE;
-                     break;
-                  }
-                  else if( ( *str == 'd' ) || ( *str == 'D' ) )
-                  {
-                     cl_index = 0;
-                     adept = TRUE;
-                     break;
-                  }
-                  else
-                  {
-                     sprintf( buf2, "%s", "BadClass" );
-                     i = buf2;
-                     break;
-                  }
-               }
-
-               case 'k':
-               case 'K':
-                  ++str;
-                  cl_index = 2;
-                  remort = TRUE;
-                  break;
-               case 'n':
-               case 'N':
-                  ++str;
-                  cl_index = 3;
-                  remort = TRUE;
-                  break;
-
-            }
-            if( cl_index < 0 )
-               break;
-            if( adept == TRUE )
-               cost = exp_to_level_adept( ch );
-            else if( remort == TRUE )
-               cost = exp_to_level( ch, cl_index, 5 );
-            else
-               cost = exp_to_level( ch, cl_index, ch->pcdata->order[cl_index] );
-            sprintf( buf2, "%d", UMAX( 0, cost ) );
-            i = buf2;
-            break;
-         }
-         case 'h':
-            sprintf( buf2, "%d", ch->hit );
-            i = buf2;
-            break;
          case '!':
             sprintf( buf2, "%d", GET_HITROLL( ch ) );
             i = buf2;
@@ -1428,8 +1313,16 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             sprintf( buf2, "%d", GET_AC( ch ) );
             i = buf2;
             break;
+         case 'h':
+            sprintf( buf2, "%d", ch->hit );
+            i = buf2;
+            break;
          case 'H':
             sprintf( buf2, "%d", ch->max_hit );
+            i = buf2;
+            break;
+         case 'I':
+            sprintf( buf2, ".0%f%%", (float)((ch->hit / ch->max_hit) * 100) );
             i = buf2;
             break;
          case 'm':
@@ -1440,12 +1333,20 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             sprintf( buf2, "%d", ch->max_mana );
             i = buf2;
             break;
+         case 'J':
+            sprintf( buf2, "%.0f%%", (float)((ch->mana / ch->max_mana) * 100) );
+            i = buf2;
+            break;
          case 'v':
             sprintf( buf2, "%d", ch->move );
             i = buf2;
             break;
          case 'V':
             sprintf( buf2, "%d", ch->max_move );
+            i = buf2;
+            break;
+         case 'K':
+            sprintf( buf2, "%.0f%%", (float)((ch->move / ch->max_move) * 100) );
             i = buf2;
             break;
          case 'x':
