@@ -14,222 +14,89 @@ R ~
 W ~
 S Title not shown on area list.
 #HELPS
--1 ackmud~
-~
-0 assist~
+0 ASSIST~
 @@yASSIST@@g is a command that allows you to assist any member of your group
-
 in combat.  ASSIST by itself will attempt to have you assist your leader
-
 first, then each member of your group, in group order.
-
 Syntax:  assist <target>
-
          assist
-
-
 ~
-0 cybertown~
-@@yCybertown@@g is a VERY cool website!  Go check it out at:
-
-
-	http://www.cybertown.com
-
-Cybertown is a virtual city, online, built through the use of multiple 
-
-webpages.  It really is well worth the time to explore...while you're
-
-there, be sure to drop into Cyberlich's apartment at Beyond Cybertown
-
-Colony, building #3, apart. #69.  Also, be sure to check out the various
-
-links to the SoE homepage that Cybertown supports.  We think you'll
-
-be @@RGREATLY@@g impressed.  We are!
-
-~
-0 multi multiclass~
-Ack! Mud now supports players having more than one class.
-
-Eg, a player may chose to be Mage/Conjuerer or Thief/Warrior.
-
-WHO and SCORE now report the levels gained.  A ' - ' character means that
-
-the specified class is not available, eg:
-
-Mag:23 Cle: - Thi: - , etc.  This means that player can advance in Mage levels,
-
-but not in Cleric or Thief.
-
-Skills and spells become available when ANY class' level meets the minimum
-
-level required to use it.  The max level of the player is not used.
-
-When casting spells, like above, the maximum level of THE CLASS THAT HAS ACCESS
-
-TO THAT SPELL is used.  This way a char who is Mag:2 and War:50 won't be able
-
-to cast 50th level Mage spells.
-
-
-Level gain is no longer automatic.  The GAIN command must now be used instead,
-
-to advance in the specified class.  See 'HELP GAIN' for more details.
-
-~
-0 boards~
-There are now a number of _main_ boards on the game:
-
-INFO Board - 5 rooms west of Midgaard Temple, this is used to hold rules and
-
-	     general information.  Only Immortals can write on this board.
-
-IDEA Board - In Midgaard Temple, this is inteneded to be used by players to
-
-	     leave ideas for the mud.
-
-
-There is also a board for players to use, for personal messages, etc.  It is
-
-located 4 rooms west, 2 rooms south of Midgaard Temple.
-
-To use the boards, you must be in a room with one :)
+0 BOARD BOARDS NOTE NOTES READ WRITE~
+To use boards, you must be in a room with one :)
 
 Type: WRITE <header> to leave a message, with the specified header/title.
-
       WRITE to:<name> to leave a private message.
-
       READ <number> to read a message.
 
 To find out what messages are on a board, simply look at it.
-
-There are also several other boards in the game, for clan and race use, as
-
-well as various other use.
-
 ~
-0 bank~
+0 BANK~
 The BANK command allows you to carry out financial transactions with the bank 
-
 of your choice.  All banks in the game respect a player's balance, meaning
-
 you can use any bank you find.  
 
 Usage: BANK [ balance | deposit | withdraw ]
-
 BANK                 with no argument displays usage information.
-
 BANK BALANCE         reports your current bank balance.
-
 BANK DEPOSIT  <gold> deposits a specified amount of gold into your account.
-
 BANK WITHDRAW <gold> withdraws a specified amount of gold.
 
 Needless to say, you must have the specified amount of gold in your account or
-
 inventory before you can deposit or withdraw it.
-
 The banking system has been introduced as a measure to work alongside the new
-
 limit on the amount of gold that a player can carry.  Eg:  How many people can
-
 explore and fight, whilst carrying thousands of gold coins?
-
 ~
-0 note mail~
-Intermud Mail System!!!!
-
+0 LETTER LETTERS MAIL~
 The main command is @@rNOTE@@N..all commands listed are preceded by it
-
 @@yTo Write:@@N
-
 to (name) - sets who note is going to
-
 subject   - lets you write a subject
-
 write     - place you in editor to begin writing note
-
 edit      - also places you in editor to write note
-
 post      - posts your note to the player you are writing to
 
 @@yTo Read:@@N
-
 list      - lists all letters your have recieved, both old and new
-
 read #    - readds the message number specified
-
 remove #  - giving the number of which note, removes it from the list
 
-
 @@GExamples!!!!@@N
-
-If you were writing a letter to @@eCyberlich@@N this is how you would do it
+If you were writing a letter to @@eCyberlich@@N this is how you would do it:
 
 note to cyberlich
-
 note subject hi
-
 note write (or edit) -then write message, exit editor
-
 note post
 
 Cyberlich would then type
-
 note list
-
 note read # of message
-
 note remove # of message to delete it
 
 @@eALL note and mail commands must be done at a postmaster!!@@N
-
 ~
-1 crusade crusades~
+0 CRUSADE CRUSADES~
 Crusades are auto quests that random mobs, depending on the average level of
-
 the players logged on at the time. You must find the mob that stole the item,
-
 get the item, and return it to the mob that wants it back.
 
 Some questions you can ask on the crusade channel:
 
+what mob?
+who was the thief?
+who is the thief?
+what item?
 where are you?
-
+who stole the item?
 where is the thief?
-
 ~
-1 zmud client~
-For those of you that haven't already, we recommend downloading a mud client
-
-from the Internet.  @@lShades @@dof @@eEvil@@N recommends zmud, which can be
-
-found at http://www.rt66.com/ zugg/zmud.html . For those of you that already
-
-have zmud--here is a tip from Zugg himself :) Zmud sets the default color
-
-scheme to bright, which unfortunatly swapps our colours around.  Reset the
-
-color scheme in zmud to dim, and they will appear as we want them.
-
-~
-0 dirt~
-DIRT is a combat skill.  The player will attempt to kick dirt into the target's
-
-eyes, causing (very) temporary blindness, which affects the target's combat
-
-abilities.
-
-~
-0 chwere~
+0 CWHERE~
 CWHERE tells you the location of any fellow clan members, where ever they are
-
 in the game.  You must belong to a clan to use this command.
-
 ~
 0 adapt~
 ADAPT allows you to have a weapon adapted for your use, if it's level is higher
-
 than yours.  Adapt can only be used when in the room with a NPC that offers
 
 his/her services for adapting.  Typing ADAPT with no argument reports the cost
