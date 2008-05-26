@@ -2140,10 +2140,10 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          corpse->timer = number_range( 3, 6 );
          corpse->level = ch->level; /* for animate spell */
          /*
-          * Takes a mob 2 rl hours to gain full gold. 
+          * Takes a mob 8 rl hours to gain full gold. 
           */
          lifetime = current_time - ( ch->logon );
-         gold = 5 * ( ch->level ) * ( UMIN( 100, lifetime * 100 / ( 2 * 3600 ) ) ) / 100;
+         gold = 5 * ( ch->level ) * ( UMIN( 100, lifetime * 100 / ( 8 * 3600 ) ) ) / 100;
          /*
           * Then take from 1/5 of maximum (i.e. level) to maximum gold. 
           */

@@ -1343,19 +1343,6 @@ void char_update( void )
          save_time = ch->save_time;
       }
 
-      if( ( !IS_NPC( ch ) ) && ( ch->pcdata->has_exp_fix == 0 ) && ( ch->level > 1 ) )
-      {
-         send_to_char( "@@eWE HAVE CHANGED THE EXP SYSTEM. YOUR EXP HAS BEEN RESET TO 0.@@N\n\r", ch );
-         send_to_char
-            ( "@@ePLEASE CONACT AN IMMORTAL, AND YOU WILL BE ADVANCED ONE CLASS, UNLESS YOU ARE A NEW CHARACTER.@@N\n\r",
-              ch );
-         send_to_char( "@@mTHANK YOU!!!!@@N  NOTE: DO NOT ATTEMPT TO ABUSE THIS--WE ARE KEEPING TRACK!\n\r", ch );
-         ch->pcdata->has_exp_fix = 1;
-         ch->exp = 0;
-      }
-      else if( !IS_NPC( ch ) )
-         ch->pcdata->has_exp_fix = 1;
-
       if( ( IS_NPC( ch ) ) && ( ch->hit < -15 ) )
          raw_kill( ch, "" );
 

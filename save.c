@@ -381,7 +381,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "Vampskillmax  %d\n", ch->pcdata->vamp_skill_max );
       fprintf( fp, "Vampbloodline %d\n", ch->pcdata->vamp_bloodline );
       fprintf( fp, "Vamppracs     %d\n", ch->pcdata->vamp_pracs );
-      fprintf( fp, "Hasexpfix     %d\n", ch->pcdata->has_exp_fix );
       fprintf( fp, "Questpoints   %d\n", ch->pcdata->quest_points );
       fprintf( fp, "RecallVnum    %d\n", ch->pcdata->recall_vnum );
       fprintf( fp, "GainMana      %d\n", ch->pcdata->mana_from_gain );
@@ -630,7 +629,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->mkills = 0;
       ch->pcdata->mkilled = 0;
       ch->pcdata->pflags = 0;
-      ch->pcdata->has_exp_fix = 0;
       ch->pcdata->recall_vnum = 3001;
       ch->pcdata->mana_from_gain = -1;
       ch->pcdata->hp_from_gain = -1;
@@ -1106,7 +1104,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 	    {  */
             SKEY( "Host", ch->pcdata->host, fread_string( fp ) );
 /*            }  */
-            KEY( "Hasexpfix", ch->pcdata->has_exp_fix, fread_number( fp ) );
 
 
             if( !str_cmp( word, "HiCol" ) )
