@@ -60,7 +60,12 @@ void auction_update args( ( void ) );
 void rooms_update args( ( void ) );
 void remember_attack args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void quest_update args( ( void ) );
-
+/*
+ * IMC2 keeps quietly losing sync to the server. Going to let
+ * it run the keepalive routine so I can stay connected. --Kline
+ */
+void imc_delete_reminfo args(( REMOTEINFO * p ));
+void imc_request_keepalive args(( void ));
 
 int abort_threshold = BOOT_DB_ABORT_THRESHOLD;
 bool disable_timer_abort = FALSE;
@@ -996,6 +1001,7 @@ void weather_update( void )
    DESCRIPTOR_DATA *d;
    int diff;
    sh_int x, y;
+   REMOTEINFO *r, *rnext;
 
    buf[0] = '\0';
    buf2[0] = '\0';
@@ -1042,6 +1048,13 @@ void weather_update( void )
             for( y = 1; y < MAX_CLAN; y++ )
                politics_data.daily_negotiate_table[x][y] = FALSE;
          clean_donate_rooms(  );
+         monitor_chan("Mud list is being refreshed.",MONITOR_IMC);
+         for( r = first_rinfo; r; r = rnext )
+         {
+          rnext = r->next;
+          imc_delete_reminfo( r );
+         }
+         imc_request_keepalive(  );
          break;
    }
    switch ( time_info.moon++ )
