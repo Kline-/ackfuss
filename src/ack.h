@@ -786,7 +786,6 @@ struct pc_data
    int vamp_bloodline;
    int vamp_exp;
    int vamp_pracs;
-   sh_int has_exp_fix;
    sh_int quest_points;
 
    char *ignore_list[MAX_IGNORES];  /* Ignore this person */
