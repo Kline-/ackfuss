@@ -2385,7 +2385,7 @@ void reset_area( AREA_DATA * pArea )
                if( has_obj )
                   break;
 
-               obj = create_object( pObjIndex, number_fuzzy( level ) );
+               obj = create_object( pObjIndex, level > 1 ? number_fuzzy( level ) : level );
             }
             obj_to_char( obj, mob );
             if( pReset->command == 'E' )

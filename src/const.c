@@ -188,8 +188,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_NONE,   /* weak */
     REALM_NONE,   /* resist */
     REALM_NONE,   /* suscept */
-    TRUE /* player race */
-    },
+    TRUE, /* player race */
+    TRUE /* carries money */
+   },
 
    {
     "Hlf", "Halfling", 3001, 0,
@@ -205,7 +206,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_NONE,
     REALM_MIND | REALM_ACID | REALM_FIRE | REALM_COLD | REALM_HOLY,
     REALM_NONE,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Dwf", "Dwarf", 3001, 0,
@@ -222,7 +225,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_ACID,
     REALM_ACID | REALM_FIRE | REALM_HOLY | REALM_POISON,
     REALM_NONE,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Elf", "Elf", 9201, 0,
@@ -238,7 +243,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_DRAIN | REALM_ACID,
     REALM_MIND,
     REALM_DRAIN,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Gno", "Gnome", 6015, 0,
@@ -254,7 +261,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_IMPACT | REALM_ACID,
     REALM_MIND,
     REALM_ACID,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Ogr", "Ogre", 3430, 0,
@@ -270,7 +279,10 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_MIND | REALM_SOUND,
     REALM_NONE,
     REALM_MIND,
-    TRUE},
+    TRUE,
+    TRUE
+   },
+
    {
     "Drw", "Drow", 9201, 0,
     18, 23, 16, 23, 15,
@@ -285,7 +297,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_HOLY | REALM_LIGHT,
     REALM_DRAIN,
     REALM_HOLY,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Lam", "Lamia", 3001, 0,
@@ -301,7 +315,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_MIND | REALM_FIRE,
     REALM_NONE,
     REALM_MIND | REALM_FIRE | REALM_HOLY,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Drc", "Dracon", 3001, 0,
@@ -318,7 +334,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_COLD | REALM_MIND,
     REALM_FIRE | REALM_SHOCK | REALM_ACID,
     REALM_MIND | REALM_SHOCK,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Cen", "Centaur", 3001, 0,
@@ -334,7 +352,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_FIRE | REALM_ACID,
     REALM_MIND | REALM_SHOCK | REALM_GAS,
     REALM_FIRE,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Ttn", "Titan", 3001, 0,
@@ -350,7 +370,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_DRAIN | REALM_GAS,
     REALM_MIND,
     REALM_NONE,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Sde", "Sidhe", 3001, 0,
@@ -366,7 +388,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_FIRE | REALM_GAS | REALM_DRAIN,
     REALM_MIND | REALM_SHOCK,
     REALM_IMPACT | REALM_FIRE,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Min", "Minotaur", 3001, 0,
@@ -382,7 +406,10 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_SHOCK | REALM_COLD,
     REALM_NONE,
     REALM_COLD,
-    TRUE},
+    TRUE,
+    TRUE
+   },
+
    {
     "Trl", "Troll", 3001, 0,
     22, 15, 15, 20, 23,
@@ -397,7 +424,10 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_LIGHT | REALM_FIRE | REALM_HOLY,
     REALM_IMPACT,
     REALM_LIGHT | REALM_FIRE,
-    TRUE},
+    TRUE,
+    TRUE
+   },
+
    {
     "Und", "Undead", 3001, 0,
     23, 15, 15, 19, 23,
@@ -412,7 +442,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_LIGHT | REALM_HOLY,
     REALM_DRAIN | REALM_POISON,
     REALM_LIGHT | REALM_HOLY,
-    FALSE},
+    TRUE,
+    TRUE
+   },
 
    {
     "Gar", "Gargoyle", 3001, 0,
@@ -428,7 +460,9 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_COLD | REALM_MIND | REALM_ACID,
     REALM_FIRE | REALM_SHOCK | REALM_MIND,
     REALM_COLD | REALM_ACID,
-    TRUE},
+    TRUE,
+    TRUE
+   },
 
 };
 
