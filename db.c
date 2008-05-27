@@ -2268,7 +2268,7 @@ void reset_area( AREA_DATA * pArea )
                break;
             }
 
-            obj = create_object( pObjIndex, number_fuzzy( level ) );
+            obj = create_object( pObjIndex, level > 1 ? number_fuzzy( level ) : level );
 
 
             obj_to_room( obj, pRoomIndex );
@@ -2308,7 +2308,7 @@ void reset_area( AREA_DATA * pArea )
             }
 
 
-            obj = create_object( pObjIndex, number_fuzzy( obj_to->level ) );
+            obj = create_object( pObjIndex, obj_to->level > 1 ? number_fuzzy( obj_to->level ) : obj_to->level );
 
             obj_to_obj( obj, obj_to );
 
@@ -2367,7 +2367,7 @@ void reset_area( AREA_DATA * pArea )
                      break;
                }
 
-               obj = create_object( pObjIndex, olevel );
+               obj = create_object( pObjIndex, olevel > 1 ? number_fuzzy( olevel ) : olevel );
                SET_BIT( obj->extra_flags, ITEM_INVENTORY );
             }
             else
