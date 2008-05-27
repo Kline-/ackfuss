@@ -2153,6 +2153,12 @@ void make_corpse( CHAR_DATA * ch, char *argument )
           */
          gold += ch->gold;
 
+         /*
+          * Not everybody is rich. --Kline
+          */
+         if( !race_table[ch->race].has_money )
+          gold = 0;
+
          if( gold > 0 )
          {
             join_money( round_money( gold, TRUE ), corpse->money );
