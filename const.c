@@ -443,7 +443,7 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_DRAIN | REALM_POISON,
     REALM_LIGHT | REALM_HOLY,
     TRUE,
-    TRUE
+    FALSE
    },
 
    {
@@ -461,7 +461,7 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_FIRE | REALM_SHOCK | REALM_MIND,
     REALM_COLD | REALM_ACID,
     TRUE,
-    TRUE
+    FALSE
    },
 
    {
@@ -497,7 +497,7 @@ const struct race_type race_table[MAX_RACE] = {
     REALM_MIND | REALM_DRAIN,
     REALM_NONE,
     TRUE,
-    TRUE
+    FALSE
    },
 
    {
