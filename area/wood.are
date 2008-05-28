@@ -779,7 +779,7 @@ The Guinea-pig guardian of the burrow awaits death here.
 131091 535168 0 S
 81 1
 0 100 50
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #7307
 ram~
@@ -790,7 +790,7 @@ The sacred holy ram lies here, sleeping and unaware.
 3 657408 0 S
 8 1
 0 0 0
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #7306
 Lordly Healer~
@@ -812,7 +812,7 @@ A giant spider hangs on his web here.
 3 0 0 S
 9 1
 0 0 0
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #7304
 shapeshifter~
@@ -822,7 +822,7 @@ A small sniffing shapeshifter cringes in one corner.~
 1 0 0 S
 10 0
 0 0 0
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #7303
 hermit~
@@ -831,7 +831,7 @@ A grumpy looking hermit shakes a stick at you.
 ~
 ~
 3 0 50 S
-37 1
+38 1
 0 0 2
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -844,7 +844,7 @@ A rotting tree approaches you.
 1 0 -100 S
 10 1
 -10 1 0
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #7301
 wolverine~
@@ -853,9 +853,9 @@ A nasty vicious wolverine is rooting for food here.
 ~
 ~
 3 0 0 S
-36 1
+35 1
 -40 15 25
-! 0 0 0 7 16644 0 0
+! 0 0 19 7 16644 0 0
 | 0 0 0 0 0 0 0
 #7300
 ghost~
@@ -866,7 +866,7 @@ The ghost of the dead adventurer rises from the ground and attacks!
 35 0 -50 S
 28 1
 0 0 0
-! 0 0 0 7 2 0 0
+! 0 0 14 7 2 0 0
 | 0 0 0 0 0 0 0
 #7309
 mister mystoffeles~
@@ -875,7 +875,7 @@ A Strange cat lies here doing conjuring tricks.
 ~
 ~
 133651 1081474 0 S
-81 1
+82 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0

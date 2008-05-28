@@ -135,7 +135,7 @@ This guy really is a huge killing machine perhaps you should walk away.
 
 ~
 19 0 0 S
-6 1
+5 1
 100 -10 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -147,7 +147,7 @@ A large rat is scurring about here.~
 1 0 -10 S
 6 0
 100 -100 -100
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #302
 borg~
@@ -159,7 +159,7 @@ The big borgy bastard.
 23 0 1000 S
 11 0
 -50 25 20
-! 0 0 0 7 20612 0 0
+! 0 0 19 7 20612 0 0
 | 0 0 0 0 0 0 0
 #0
 #OBJECTS

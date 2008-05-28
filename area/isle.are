@@ -1667,7 +1667,7 @@ The Tyrannosaurus stands many times taller than you, and looks to weigh at
 33554557 32768 -600 S
 77 2
 -65 75 200
-! 0 0 0 7 540678 0 0
+! 0 0 19 7 540678 0 0
 | 0 0 0 0 0 0 0
 #5002
 triceratops triccie dino~
@@ -1679,9 +1679,9 @@ The Triceratops is the largest of the horn-faced dinosaurs.  The huge front
 two great horns jutting from it provide an ample form of attack.
 ~
 134217929 0 -400 S
-79 1
+78 1
 -120 60 50
-! 0 0 0 7 16386 0 0
+! 0 0 19 7 16386 0 0
 | 0 0 0 0 0 0 0
 #5003
 stegosaurus stego dino~
@@ -1696,7 +1696,7 @@ The Stegosaurus looks fairly harmless, but also pretty large; eight feet of
 69 0 100 S
 75 1
 -120 50 40
-! 0 0 0 7 1038 0 0
+! 0 0 19 7 1038 0 0
 | 0 0 0 0 0 0 0
 #5004
 pterandon peri dino~
@@ -1709,9 +1709,9 @@ The Pterandon, big brother of the Pteradactyl, has a four-foot long beak, which
 quite the opposite.
 ~
 134217821 524288 -300 S
-64 2
+65 2
 -150 150 40
-! 0 0 0 7 16384 0 0
+! 0 0 19 7 16384 0 0
 | 0 0 0 0 0 0 0
 #5005
 lambeosaurus lamb dino~
@@ -1723,9 +1723,9 @@ The Lambeosaurus has a flat snout and a large crest on it's head.  It looks
 mouse would look at a cat.
 ~
 193 98432 300 S
-63 1
+64 1
 -100 5 10
-! 0 0 0 7 2 0 0
+! 0 0 19 7 2 0 0
 | 0 0 0 0 0 0 0
 #5006
 elasmosaurus lassie dino~
@@ -1736,9 +1736,9 @@ The Elasmosaurus looks like a huge snake.  Short fins protrude from it's thick
 body.  It looks menacing, and seems to be sizing you up for a meal.
 ~
 103 0 -400 S
-76 2
+77 2
 -100 150 15
-! 0 0 0 7 81934 0 0
+! 0 0 19 7 81934 0 0
 | 0 0 0 0 0 0 0
 #5007
 diplodicos dippy dino~
@@ -1751,7 +1751,7 @@ The Diplodocus doesn't look fully grown.  Standing taller than a Tyrannosurus
 203 0 200 S
 78 2
 -110 100 200
-! 0 0 0 7 2 0 0
+! 0 0 19 7 2 0 0
 | 0 0 0 0 0 0 0
 #5008
 deinonychus dino~
@@ -1765,7 +1765,7 @@ The Deiononychus, due to it's small size, is an excellent fighter.  It looks
 77 0 -300 S
 68 1
 -90 300 40
-! 0 0 0 7 393230 0 0
+! 0 0 19 7 393230 0 0
 | 0 0 0 0 0 0 0
 #5009
 paleocinthus dino~
@@ -1779,7 +1779,7 @@ The Paleocinthus has side spikes, and a smallish head.  It's large, spiked
 69 0 250 S
 66 1
 -200 40 50
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #5010
 sea seahag hag~
@@ -1792,7 +1792,7 @@ The old Hag looks very old, and very hungry.  She licks her lips as she looks
 make you feel more like chucking than falling into a trance.
 ~
 15 640 -900 S
-93 2
+92 2
 -200 100 80
 ! 0 0 0 7 6 0 80
 | 0 0 0 0 0 0 0
@@ -1808,7 +1808,7 @@ The Grappli hopping about you is a small, intelligent forg-like humanoid.
 141 33280 300 S
 57 0
 -75 50 35
-! 0 0 0 7 6 0 0
+! 0 0 19 7 6 0 0
 | 0 0 0 0 0 0 0
 #5012
 grippli frog~
@@ -1822,7 +1822,7 @@ The Grappli hopping about you is a small, intelligent forg-like humanoid.
 141 33280 300 S
 49 0
 -10 2 3
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #5013
 grippli frog~
@@ -1834,9 +1834,9 @@ The Grappli hopping about you is a small, intelligent forg-like humanoid.
 you, like most of the other inhabitants of the Isle.
 ~
 141 33280 300 S
-56 0
+57 0
 -5 3 1
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #5014
 druid getafix~

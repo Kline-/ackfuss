@@ -96,7 +96,7 @@ void alarm_update(  )
       abort_threshold = RUNNING_ABORT_THRESHOLD;
       strtime = ctime( &current_time );
       strtime[strlen( strtime ) - 1] = '\0';
-      sprintf( buf, "Used %d user CPU seconds.\n", last_checkpoint );
+      sprintf( buf, "Used %d user CPU seconds.", last_checkpoint );
       fprintf( stderr, "%s :: %s\n", strtime, buf );
    }
 }

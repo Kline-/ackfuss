@@ -1903,9 +1903,9 @@ A swirling lost soul tries to drag you into back into the pit.
 ~
 ~
 99 0 -1000 S
-62 0
+61 0
 100 -50 -50
-! 0 0 0 7 0 0 0
+! 0 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
 #16848
 boy~
@@ -1925,7 +1925,7 @@ A shapely acolyte smiles enticingly at you through blood red lips.
 ~
 ~
 75 25212 -1000 S
-94 2
+95 2
 -1400 650 460
 ! 0 0 0 7 29710 0 0
 | 0 0 0 0 0 0 0
@@ -1942,7 +1942,7 @@ Armageddon stands at nearly 20 feet, and is undoubtedly the most fearsome
 123 25321 0 S
 104 0
 -1500 700 700
-! 0 0 0 7 30734 0 16
+! 0 0 17 7 30734 0 16
 | 0 0 0 0 0 0 0
 #16817
 giant bee~
@@ -1954,9 +1954,9 @@ This giant bee is about 4 feet long, with a wicked-looking barbed stinger that
 looks like it could turn you into a kabab!  Better be careful...
 ~
 131177 524840 0 S
-81 1
+82 1
 -600 190 180
-! 0 0 0 7 24578 0 8
+! 0 0 19 7 24578 0 8
 | 0 0 0 0 0 0 0
 #16816
 queen giant bee~
@@ -1967,9 +1967,9 @@ This is the queen of the giant bees.  She is about 6 feet long, and her
 stinger looks poised to strike.  Maybe now would be a good time to retreat?
 ~
 107 524840 0 S
-103 2
+104 2
 -1200 700 180
-! 0 0 0 7 26638 0 16
+! 0 0 19 7 26638 0 16
 | 0 0 0 0 0 0 0
 #16815
 age~
@@ -2010,9 +2010,9 @@ The harpy looks back at you, her beady eyes burning with hatred and malice.
 flesh from your body.
 ~
 134217851 524800 -500 S
-82 2
+81 2
 -900 300 300
-! 0 0 0 7 24590 65536 0
+! 0 0 18 7 24590 65536 0
 | 0 0 0 0 0 0 0
 #16809
 the legionaire god~
@@ -2041,7 +2041,7 @@ Standing at nearly 7 feet tall, and clad in glowing red armor, The
 death magic, and NOBODY can stand against me and live!'
 ~
 67 640 -1 S
-108 1
+107 1
 -1250 700 700
 ! 0 0 0 7 24590 256 0
 | 0 0 0 0 0 0 0
@@ -2055,7 +2055,7 @@ This wizen old man hobbles along the road, seemingly on the verge of collaps.
 appraising look of a weapons expert...Maybe he is more than he seems?
 ~
 193 0 0 S
-11 1
+12 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2072,7 +2072,7 @@ The huge form of the troll hulks over you, howling with rage.  "How DARE you
 111 512 -500 S
 97 1
 -1300 500 390
-! 0 0 0 7 26638 0 8
+! 0 0 13 7 26638 0 8
 | 0 0 0 0 0 0 0
 #16851
 pit fiend~
@@ -2083,7 +2083,7 @@ The pit fiend stands here, waiting to take your soul.
 123 16968 -1000 S
 107 1
 -1500 700 700
-! 0 0 0 7 30750 0 0
+! 0 0 16 7 30750 0 0
 | 0 0 0 0 0 0 0
 #16852
 imp~
@@ -2092,9 +2092,9 @@ A small green imp stands here, preserving combat trophies.
 ~
 ~
 73 286780 -666 S
-97 1
+98 1
 -1500 620 500
-! 0 0 0 7 29710 0 16
+! 0 0 16 7 29710 0 16
 | 0 0 0 0 0 0 0
 #16857
 doorman~
@@ -2103,7 +2103,7 @@ The doorman is standing here, welcoming visitors.
 ~
 ~
 67 0 0 S
-9 1
+10 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2114,7 +2114,7 @@ A guardian of clan DarkBlade is standing here, glaring at you.
 ~
 ~
 1 0 0 S
-26 1
+27 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2125,7 +2125,7 @@ A kind healer stands here, tending to your wounds.
 ~
 ~
 4163 128 1000 S
-28 1
+29 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2150,7 +2150,7 @@ dark heart of the wood~
 11 56 0 S
 102 1
 -900 400 430
-! 0 0 0 7 24582 524288 0
+! 0 0 17 7 24582 524288 0
 | 0 0 0 0 0 0 0
 #16801
 rainbow dragon~
@@ -2162,7 +2162,7 @@ rainbow dragon~
 132619 540732 500 S
 110 1
 -1100 700 700
-! 0 0 0 7 30990 0 16
+! 0 0 8 7 30990 0 16
 | 0 0 0 0 0 0 0
 #16803
 the krakken~
@@ -2173,7 +2173,7 @@ the KrakKen~
 131113 107134 0 S
 91 1
 -1350 500 400
-! 0 0 0 7 30734 0 16
+! 0 0 19 7 30734 0 16
 | 0 0 0 0 0 0 0
 #16805
 paladia mors~
@@ -2182,9 +2182,9 @@ paladia mors~
 ~
 ~
 131083 533052 0 S
-105 1
+106 1
 -1300 500 500
-! 0 0 0 7 28686 0 0
+! 0 0 8 7 28686 0 0
 | 0 0 0 0 0 0 0
 #16806
 chromium elder dragon~
@@ -2195,7 +2195,7 @@ The statue of the @@aChromium@@N Elder Dragon, is here.
 11 8764 0 S
 109 1
 -1500 500 500
-! 0 0 0 7 29710 0 0
+! 0 0 8 7 29710 0 0
 | 0 0 0 0 0 0 0
 #16807
 arcades sabbath edler dragon statue~
@@ -2207,7 +2207,7 @@ The statue of the Elder Dragon known as @@dAr@@Wcad@@des
 131083 8828 0 S
 100 1
 -1400 620 610
-! 0 0 0 7 29710 0 16
+! 0 0 8 7 29710 0 16
 | 0 0 0 0 0 0 0
 #16808
 Vaevictus Asmadi~
@@ -2216,9 +2216,9 @@ The statue of @@dVae@@Gvic@@Rtus As@@Gma@@ddi@@N, the Elder Dragon, looms powerf
 ~
 ~
 131083 25148 0 S
-107 1
+106 1
 -1450 660 600
-! 0 0 0 7 29710 0 16
+! 0 0 8 7 29710 0 16
 | 0 0 0 0 0 0 0
 #16810
 nicol bolas~
@@ -2227,9 +2227,9 @@ A statue of the most feared Elder Dragon, @@dNic@@aol @@dBo@@clas@@N
 ~
 ~
 131083 8764 0 S
-113 1
+112 1
 -1500 700 630
-! 0 0 0 7 31758 0 0
+! 0 0 8 7 31758 0 0
 | 0 0 0 0 0 0 0
 #0
 #OBJECTS

@@ -375,12 +375,13 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    }
 
 
-   if( !IS_NPC( victim ) )
+   if( !IS_NPC( victim ) || IS_IMMORTAL(ch) )
    {
       /*
-       * Then show what race they are (about time this added ;) 
+       * Then show what race they are (about time this added ;)
+       * Imms should see mob races, too. <3 Builders! --Kline
        */
-      sprintf( buf2, "(%s) ", race_table[victim->race].race_name );
+      sprintf( buf2, "[%s] ", race_table[victim->race].race_name );
       safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
    }
 
@@ -4627,11 +4628,12 @@ void do_race_list( CHAR_DATA * ch, char *argument )
    {
       if( IS_IMMORTAL( ch ) )
       {
-         sprintf( buf, "   %3d   %5d    %5s     %9s %2d %s %s\n\r",
+         sprintf( buf, "   %3d   %5d    %5s     %9s %2d %s %5s %4s\n\r",
                   iRace, race_table[iRace].recall,
                   race_table[iRace].race_name, race_table[iRace].race_title,
                   race_table[iRace].classes, race_table[iRace].comment,
-                  ( race_table[iRace].player_allowed == TRUE ? "@@aPlayer@@N" : "@@eNPC ONLY@@N" ) );
+                  ( race_table[iRace].player_allowed == TRUE ? "@@aOpen@@N" : "@@eNPC @@N" ),
+                  ( race_table[iRace].has_money == TRUE ? "@@aMoney@@N" : "@@eNONE@@N" ) );
          send_to_char( buf, ch );
       }
 

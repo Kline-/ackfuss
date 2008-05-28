@@ -869,7 +869,7 @@ A newlywed bride stands here, trying to fake a headache.
 She is very pretty, and looks annoyed at having to honeymoon here.
 ~
 7 0 500 S
-23 2
+24 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -894,7 +894,7 @@ The manager is a short fellow, the kind of person you take an instant dislike
 to.  You notice his trousers are undone.
 ~
 7 0 -250 S
-41 1
+40 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -918,9 +918,9 @@ A clockwork fish swims about here.
 It is made from various pieces of dolls and puppets.  Uh-oh...
 ~
 5 4 -600 S
-35 0
+36 0
 0 2 2
-! 0 0 0 7 0 0 0
+! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
 #4405
 cook~
@@ -944,7 +944,7 @@ Driller Killer is a small doll, but has a large, sharp head.
 3145783 32778 -900 S
 49 0
 -20 8 8
-! 0 0 0 7 6286 1052672 0
+! 0 0 19 7 6286 1052672 0
 | 0 0 0 0 0 0 0
 #4403
 puppet master puppetmaster~
@@ -954,7 +954,7 @@ The Puppetmaster stands here, looking damn evil.
 He is scared, and old.  However, he's still bigger than you!
 ~
 3145767 136 -900 S
-56 0
+55 0
 -150 0 100
 ! 0 0 0 7 14 0 68
 | 0 0 0 0 0 0 0
@@ -968,7 +968,7 @@ The puppet is giant by puppet dimensions, but still smaller than you.
 3145761 0 -400 S
 45 0
 0 0 0
-! 0 0 0 7 2054 0 0
+! 0 0 19 7 2054 0 0
 | 0 0 0 0 0 0 0
 #4401
 puppet~
@@ -980,7 +980,7 @@ The puppet looks like a normal puppet, except it is walking around!!!!!!
 3145761 0 -200 S
 43 0
 0 75 10
-! 0 0 0 7 2054 0 0
+! 0 0 19 7 2054 0 0
 | 0 0 0 0 0 0 0
 #4400
 guard puppet~
@@ -990,9 +990,9 @@ A puppet is here, as if on guard.
 It is a plain looking puppet, except is looks very evil.
 ~
 3145763 0 -700 S
-47 0
+46 0
 -100 100 0
-! 0 0 0 7 6158 0 4
+! 0 0 19 7 6158 0 4
 | 0 0 0 0 0 0 0
 #0
 #OBJECTS

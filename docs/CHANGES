@@ -1,0 +1,22 @@
+4.3.3 - 24 May 08:
+ Minor helpfile updates.
+ Removed some duplicate code in bust_a_prompt() and added some new options.
+ GCC4 fix in PUT_FREE; things compile cleanly once again!
+ Updated max vnums to ~1.6bil. It can probably go higher, but really, do people need more?
+ Removed rolling for stats from char creation. You now assign your own stats up to racial maximums.
+ Added a commented block to comm.c for IP binding if it's ever needed.
+ Removed quest_points from ch_data, moved everything to utilize the unused one in pc_data.
+ Added statraise to raise permenant stats based on a request from Jawzith at the forums.
+ Consolidated helps and system areas.
+ Added checks in load_objects(), load_mobiles(), and load_rooms() to log if a vnum is out of range for the area it is in when loaded.
+ Removed the silly immskll struct, commands should be handled via trust, not imtlset (now gone).
+ Updated default prompt and 'prompt all' to something more user friendly.
+ Added char_exists() func for future use to see if a pfile is valid.
+4.3.2 - 21 May 08:
+ Fixed race_table to properly correlate preferred class order between values.
+ Updated user CPU seconds logging to match the rest of the log.
+ Default quest item ranges are now correct out of the box.
+ Removed references of pcdata->index as it seemed to be a duplicate of pcdata->order to hold class orders. Updated the base Creator pfiles along with this.
+ Fixed a minor color issue in IMC, and hooked it to ACK!MUD monitor system.
+ Properly re-ordered remorts to better reflect base classes.
+ Updated the IMC2 client to IMC2 Freedom CL-2.1a.

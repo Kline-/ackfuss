@@ -51,12 +51,12 @@ D0
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3304
 D1
 Moribund.
 ~
 ~
-0 -1 3304
+0 -1 3303
 D2
 Moribund.
 ~
@@ -87,7 +87,7 @@ D0
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3306
 D1
 Moribund.
 ~
@@ -97,17 +97,17 @@ D2
 Moribund.
 ~
 ~
-0 -1 3306
+0 -1 3303
 D3
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D4
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D5
 Moribund.
 ~
@@ -124,27 +124,27 @@ D0
 Moribund.
 ~
 ~
-0 -1 3304
+0 -1 3305
 D1
 Moribund.
 ~
 ~
-0 -1 3304
-D2
-Moribund.
-~
-~
 0 -1 3303
-D3
+D2
 The Morgue!
 ~
 ~
 0 -1 3300
+D3
+Moribund.
+~
+~
+0 -1 3304
 D4
 Moribund.
 ~
 ~
-0 -1 3305
+0 -1 3304
 D5
 Moribund.
 ~
@@ -196,7 +196,7 @@ D0
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D1
 Moribund.
 ~
@@ -206,17 +206,17 @@ D2
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D3
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D4
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D5
 Moribund.
 ~
@@ -285,7 +285,7 @@ A Pesky Gremlin stands here, looking for someone to hurt.~
 2069 1605632 -900 S
 1 1
 200 0 0
-! 0 0 0 7 8226 2 0
+! 0 0 19 7 8226 2 0
 | 0 0 0 0 0 0 0
 #3301
 will willo wisp~
@@ -296,9 +296,9 @@ As you look closer, you realise it is swamp gas.  You sense an evil force at
 work, as it whips round your body, as if a hungry snake.
 ~
 3 524416 -900 S
-26 0
+25 0
 40 16 19
-! 0 0 0 7 0 0 0
+! 0 0 17 7 0 0 0
 | 0 0 0 0 0 0 0
 #3300
 cadaver~
@@ -310,9 +310,9 @@ Cadaver is a long dead adventurer, forever doomed to summon forth other
 newly dead players into his home, Moribund.
 ~
 3 524288 -200 S
-79 1
+80 1
 100 50 50
-! 0 0 0 7 0 0 0
+! 0 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
 #0
 #OBJECTS

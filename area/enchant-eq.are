@@ -1,11 +1,11 @@
 #AREA
-Item Enchantments vnums..do not use.~
+Item Enchantment Vnums~
 Q 16
 K none~
-L @@W{@@eNONE!@@W}@@N~
+L @@e[@@RSYSTEM@@e]@@N~
 N 157
 I 130 130
-V 4800 4899
+V 101 200
 X 0
 F 15
 U You hear the screams of the Dead within your head.~
@@ -14,14 +14,14 @@ R Zenithar titania~
 W Zenithar titania~
 S Title not shown on area list.
 #ROOMS
-#4800
+#101
 New room~
 No description~
 4 11
 S
 #0
 #OBJECTS
-#4800
+#101
 diamond~
 @@WA @@aglittering @@ydiamond@@N~
 @@WA small diamond with a @@lmagical @@Waura lies here.@@N~
@@ -30,7 +30,7 @@ diamond~
 1
 L
 10
-#4801
+#102
 matrix~
 @@WA @@aSpell @@lMatrix@@N~
 @@WA @@lmagical @@amatrix@@W floats in front of you!@@N~
@@ -39,7 +39,7 @@ matrix~
 1
 L
 10
-#4802
+#103
 amethyst~
 @@WA @@aglittering @@mamethyst@@N~
 @@WAn @@mamethyst@@W with a @@lmagical@@W aura lies here.@@N~
@@ -48,7 +48,7 @@ amethyst~
 1
 L
 10
-#4803
+#104
 ruby~
 @@WA @@aglittering @@Rruby@@N~
 @@WA @@Rruby @@Wwith a @@lmagical @@Waura lies here.@@N~
@@ -57,7 +57,7 @@ ruby~
 1
 L
 10
-#4804
+#105
 sapphire~
 @@WA @@aglittering @@lsapphire@@N~
 @@WA @@lsapphire @@Wwith a @@lmagical@@W aura lies here.@@N~
@@ -66,7 +66,7 @@ sapphire~
 1
 L
 10
-#4805
+#106
 bloodstone~
 @@WA @@aglittering @@ebloodstone@@N~
 @@WA @@ebloodstone @@Wwith a @@lmagical @@Waura lies here.@@N~
@@ -75,7 +75,7 @@ bloodstone~
 1
 L
 10
-#4806
+#107
 onyx~
 @@WA @@aglittering @@donyx@@N~
 @@WAn @@donyx @@Wwith a @@lmagical @@Waura lies here.@@N~
@@ -84,7 +84,7 @@ onyx~
 1
 L
 10
-#4807
+#108
 garnet~
 @@WA @@aglittering @@pgarnet@@N~
 @@WA @@pgarnet @@Wwith a @@lmagical @@Waura lies here.@@N~
@@ -93,52 +93,7 @@ garnet~
 1
 L
 10
-#4809
-sigil str~
-@@WA @@y<@@e!@@y>@@N~
-@@WA @@ypulsating @@esigil@@W lies here.@@N~
-31 8192 8388608 1
-1 2 1 0 0 0 0 0 0 0
-1
-L
-10
-#4810
-sigil int~
-@@WA @@y<@@r*@@y>@@N~
-@@WA @@ypulsating @@esigil@@W lies here.@@N~
-31 8192 8388608 1
-3 2 1 0 0 0 0 0 0 0
-1
-L
-10
-#4811
-sigil wis~
-@@WA @@y<@@a^@@y>@@N~
-@@WA @@ypulsating @@esigil@@W lies here.@@N~
-31 8192 8388608 1
-4 2 1 0 0 0 0 0 0 0
-1
-L
-10
-#4812
-sigil dex~
-@@WA @@y<@@l|@@y>@@N~
-@@WA @@ypulsating @@esigil@@W lies here.@@N~
-31 8192 8388608 1
-2 2 1 0 0 0 0 0 0 0
-1
-L
-10
-#4813
-sigil con~
-@@WA @@y<@@pO@@y>@@N~
-@@WA @@ypulsating @@esigil@@W lies here.@@N~
-31 8192 8388608 1
-5 2 1 0 0 0 0 0 0 0
-1
-L
-10
-#4808
+#109
 rune~
 @@WA @@R^^@@W*@@R^^@@N~
 @@WA @@lmystical @@rrune@@W lies here.@@N~
@@ -147,7 +102,52 @@ rune~
 1
 L
 10
-#4814
+#110
+sigil str~
+@@WA @@y<@@e!@@y>@@N~
+@@WA @@ypulsating @@esigil@@W lies here.@@N~
+31 8192 8388608 1
+1 2 1 0 0 0 0 0 0 0
+1
+L
+10
+#111
+sigil int~
+@@WA @@y<@@r*@@y>@@N~
+@@WA @@ypulsating @@esigil@@W lies here.@@N~
+31 8192 8388608 1
+3 2 1 0 0 0 0 0 0 0
+1
+L
+10
+#112
+sigil wis~
+@@WA @@y<@@a^@@y>@@N~
+@@WA @@ypulsating @@esigil@@W lies here.@@N~
+31 8192 8388608 1
+4 2 1 0 0 0 0 0 0 0
+1
+L
+10
+#113
+sigil dex~
+@@WA @@y<@@l|@@y>@@N~
+@@WA @@ypulsating @@esigil@@W lies here.@@N~
+31 8192 8388608 1
+2 2 1 0 0 0 0 0 0 0
+1
+L
+10
+#114
+sigil con~
+@@WA @@y<@@pO@@y>@@N~
+@@WA @@ypulsating @@esigil@@W lies here.@@N~
+31 8192 8388608 1
+5 2 1 0 0 0 0 0 0 0
+1
+L
+10
+#115
 rune~
 @@W{@@y-@@r||@@y-@@W}@@N~
 @@WA @@lmystical @@rrune @@Wlies here.@@N~
@@ -156,7 +156,7 @@ rune~
 1
 L
 10
-#4815
+#116
 rune~
 @@W{@@y-@@d[]@@y-@@W}@@N~
 @@WA @@lmystical @@rrune @@Wlies here.@@N~
@@ -165,7 +165,7 @@ rune~
 1
 L
 10
-#4816
+#117
 rune~
 @@W{@@y-@@e..@@y-@@W}@@N~
 @@WA @@lmystical @@rrune @@Wlies here.@@N~
@@ -174,7 +174,7 @@ rune~
 1
 L
 10
-#4817
+#118
 rune~
 @@e-@@d.@@e^@@d.@@e-@@N~
 @@WA @@lmystical @@rrune @@Wlies here.@@N~

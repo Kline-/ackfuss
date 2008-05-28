@@ -14,12 +14,62 @@ R ~
 W ~
 S Title not shown on area list.
 #HELPS
+0 ADAPT~
+ADAPT allows you to have a weapon adapted for your use, if it's level is higher
+than yours.  Adapt can only be used when in the room with a NPC that offers
+his/her services for adapting.  Typing ADAPT with no argument reports the cost
+of having a weapon adapted.
+
+Once the weapon has been adapted, its damage will have been lowered in line
+with the decrease in the weapon's level to your's.  Any affects on the weapon
+(Eg affects HITROLL) will be heavily reduced, and probably cancelled.
+
+If, once a weapon has been adapted, it's attributes indicate it will cause NO
+damage, it will crumble into dust, and you will lose it.
+~
+0 ALIAS~
+The ALIAS command allows you configure the six alias 'slots'.  An alias
+takes the form of a name, and the alias.  To set up a new alias, type:
+ALIAS <slot_number> <name> <alias>              For example:
+ALIAS 2 ban emote turns into a banana and splits...
+Now, whenever you type 'ban' the mud checks through the command table.  If
+your input wasn't found, it then checks your alias.  Upon matching 'ban'
+it issues the alias to the interpreter function, along with any argument
+you typed after the alias name.  For example, you can define an alias:
+ALIAS 1 ff cast 'faerie fire'   and then use it on mobs by typing:
+ff <target_name>.  So typing 'ff stephen' will cause the mud to interpret
+cast faerie fire stephen.
+To show what aliases are set, type ALIAS with no arguements.
+To clear an alias, type 'ALIAS <number> clear'.
+~
 0 ASSIST~
 @@yASSIST@@g is a command that allows you to assist any member of your group
 in combat.  ASSIST by itself will attempt to have you assist your leader
 first, then each member of your group, in group order.
 Syntax:  assist <target>
          assist
+~
+0 AUCTION GOSSIP . NEWBIE QUESTION ANSWER SHOUT YELL FLAME ZZZ MUSIC~
+Syntax: auction  <message>      Syntax: gossip   <message>
+Syntax: newbie   <message>      Syntax: question <message>
+Syntax: answer   <message>      Syntax: shout    <message>
+Syntax: yell     <message>      Syntax: zzz      <message>
+Syntax: flame    <message>      Syntax: race     <message>
+Syntax: clan     <message>      syntax: music    <message>
+
+These commands send messages through communication channels to other players.
+SHOUT sends a message to all awake players in the world.  To curb excessive
+shouting, SHOUT imposes a three-second delay on the shouter.
+MUSIC, AUCTION, GOSSIP, NEWBIE, and QUESTION and ANSWER also send messages
+to all interested players.  '.' is a synonym for GOSSIP.  The QUESTION and
+ANSWER commands both use the same 'question' channel
+FLAME is similar to auction, gossip, etc, but is intended for moaning about
+life, players, etc.  ZZZ may only be used when sleeping.
+YELL sends a message to all awake players within your area.
+RACE sends a message to members of your own race.  CLAN sends a message to
+those in your clan.
+
+You can use the CHANNELS command to hear, or not hear, any of these channels.
 ~
 0 BOARD BOARDS NOTE NOTES READ WRITE~
 To use boards, you must be in a room with one :)
@@ -46,6 +96,137 @@ inventory before you can deposit or withdraw it.
 The banking system has been introduced as a measure to work alongside the new
 limit on the amount of gold that a player can carry.  Eg:  How many people can
 explore and fight, whilst carrying thousands of gold coins?
+~
+0 COLOR~
+The mud now supports "ansi" colour.  Use the config command to turn on
+or off this option.  The COLOR command allows you to set uo what colors
+you see different things in.  Please note:  The list of things you can
+configure WILL be expanding!
+
+To find out what colours are available, type 'COLOR HELP'.
+To learn how to use available colors, type 'COLIST'.
+~
+0 CRUSADE CRUSADES~
+Crusades are auto quests that random mobs, depending on the average level of
+the players logged on at the time. You must find the mob that stole the item,
+get the item, and return it to the mob that wants it back.
+
+Some questions you can ask on the crusade channel:
+
+what mob?
+who was the thief?
+who is the thief?
+what item?
+where are you?
+who stole the item?
+where is the thief?
+~
+0 CWHERE~
+CWHERE tells you the location of any fellow clan members, where ever they are
+in the game.  You must belong to a clan to use this command.
+~
+0 DIAGNOSE~
+DIAGNOSE allows you to check on the condition of a player or mob.
+The condition is shown on a scale 5(best) to 1(worst)
+~
+0 DONATE~
+DONATE allows you to transfer a piece of equipment in your inventory
+to the "Donation Room", situated close to your race's Temple.
+~
+0 EXPERIENCE LEVEL XP~
+Your character advances in power by gaining experience.  The amount of exp
+you need to gain a level is determined by your race.  To gain a level, use
+the GAIN command.
+
+You gain experience by:
+    Being part of a group that kills a monster,
+    or by killing monsters on your own.
+You lose experience by:
+    Fleeing from combat
+    Recalling out of combat
+    Being the target of certain spells
+    Dying
+
+The experience you get from a kill depends on several things: how many players
+are in your group; your level versus the level of the monster; your alignment
+versus the monster's alignment; how many of this monster have been killed
+lately; and some random variation.
+~
+0 GAIN~
+GAIN increases one of your levels.  Level gain is no longer automatic, due
+to the 'semi' multiclass system.  Typing GAIN with no argument will report
+which levels you are able to gain in, and the cost to do so (in xp).
+Typing GAIN with the 3-letter abreviation for a class will advance your level
+in the given class, if you can level in it, and if you have enough xp.
+
+Eg: GAIN thi    will advance your thief level, if you are able to level thief.
+~
+0 GUILD~
+GUILD is similar to RECALL in use, except that it transfers you (if possible)
+to your Guild room, in the Player's Rooms, west of the Temple.  They provide
+an easy way to gain entrance to a Guild Room.  If fighting, the same penalties
+stand as for recall.
+~
+81 HALLS~
+HALLS is a command which will transfer you, the immortal to the Entry Point,
+situated within the Halls of the Immortals.  It is similar to recall, except
+that there are no limitations on use if fighting, etc.
+~
+0 HEAL~
+HEAL reports which spells you are able to buy, along with the cost.  This can
+only be done if with a NPC which offers spells - usually healers.
+HEAL followed by a single character 'buys' that spell.
+
+Eg: HEAL H  buys a heal spell.
+
+All spells are only cast on the buyer.  No one else.
+~
+0 LAW WANTED LAWLESS~
+@@lACK!MUD@@N system of laws and punishments:
+
+  Within the game, the major cities of the realm have a system of enforcing
+rules of player behavior, by having certain players known to the realm as
+being WANTED.  The system is simple, once you understand it's perspective.
+
+  The civilized states of the realm enforce peaceful interaction between
+citizens of the various states.  Killing and stealing from other citizens is
+considered unlawful, and anyone that falls under the protection of the Law is
+protected by these actions.
+
+  There are three states that a citizen can have: Civilized, Wanted, and
+Lawless.  Citizens that are Civilized are protected within the legal system
+from being attacked by other citizens, and also from having things stolen from
+them. If a Civilized citizen is attacked or stolen from, the Law will label
+the attacker with Wanted, and deal with them accordingly.  In addition, if a
+Civilized citizen breaks the Laws of the Realm, they also will be Wanted.
+
+  Wanted citizens are no longer protected under the Law, and Civilized
+citizens are authorized to kill or steal from them.  In addition, non-player
+characters will interact with them violently.
+
+  If you wish to become Lawless, this will your protection under the Law.
+However, both actors in an interaction must be Lawless for the Law to ignore
+their actions between each other.  If a Lawless attacks someone Civilized, the
+Law will seek retribution on the Lawless.  If a Civilized citizen attacks a
+Lawless, the Law doesn't protect the Lawless, it punishes the Civilized by
+making them Wanted.  To become a Lawless, you may request a PKOK flag from an
+Immortal.  Once you have chosen to be Lawless, the Law will never again place
+you under its protection.
+
+  Many hidden and unknown events in the game may take the protection of the
+Law away from you, either permanently, or temporarily.  Some of these are
+obvious, some not so obvious. A few of these events may even make you Persecuted,
+which has several unforseen circumstances.
+
+  When you become WANTED, either from breaking a law or other actions, you are
+given a sentence based on your crime.  Sentences may only be reduced by
+sacrificing valuable objects to the Law, by using the command sacrifice
+<object> judge.  The judge will examine your sacrifice, and reduce your
+sentence appropriately.
+
+  The Law is omnicient in some ways, and becoming Wanted or Lawless may have
+some unforseen repercussions, so consider your actions well before commiting
+to them!
 ~
 0 LETTER LETTERS MAIL~
 The main command is @@rNOTE@@N..all commands listed are preceded by it
@@ -76,97 +257,11 @@ note remove # of message to delete it
 
 @@eALL note and mail commands must be done at a postmaster!!@@N
 ~
-0 CRUSADE CRUSADES~
-Crusades are auto quests that random mobs, depending on the average level of
-the players logged on at the time. You must find the mob that stole the item,
-get the item, and return it to the mob that wants it back.
-
-Some questions you can ask on the crusade channel:
-
-what mob?
-who was the thief?
-who is the thief?
-what item?
-where are you?
-who stole the item?
-where is the thief?
-~
-0 CWHERE~
-CWHERE tells you the location of any fellow clan members, where ever they are
-in the game.  You must belong to a clan to use this command.
-~
-0 adapt~
-ADAPT allows you to have a weapon adapted for your use, if it's level is higher
-than yours.  Adapt can only be used when in the room with a NPC that offers
-
-his/her services for adapting.  Typing ADAPT with no argument reports the cost
-
-of having a weapon adapted.
-
-Once the weapon has been adapted, it's damage will have been lowered in line
-
-with the decrease in the weapon's level to your's.  Any affects on the weapon
-
-(Eg affects HITROLL) will be heavily reduced, and probably cancelled.
-
-If, once a weapon has been adapted, it's attributes indicate it will cause NO
-
-damage, it will crumble into dust, and you will lose it.  
-
-~
-0 heal~
-HEAL reports which spells you are able to buy, along with the cost.  This can
-
-only be done if with a NPC which offers spells - usually healers.
-
-HEAL followed by a single character 'buys' that spell.
-
-Eg: HEAL H  buys a heal spell.
-
-All spells are only cast on the buyer.  No one else.
-
-~
-0 gain~
-GAIN increases one of your levels.  Level gain is no longer automatic, due
-
-to the 'semi' multiclass system.  Typing GAIN with no argument will report
-
-which levels you are able to gain in, and the cost to do so (in xp).
-
-Typing GAIN with the 3-letter abreviation for a class will advance your level
-
-in the given class, if you can level in it, and if you have enough xp.
-
-Eg: GAIN thi    will advance your thief level, if you are able to level thief.
-
-See also:MULTI WORTH TRAIN
-
-~
-0 TRAIN~
-Syntax: train <'str'|'int'|'wis'|'dex'|'con'>
-
-TRAIN increases one of your attributes.  When you start the game, your
-
-character has slightly random attributes.  The maximum value for each
-
-attribute depends on your race and class.
-
-It costs four practice to train an attribute, except that it costs
-
-only three practice to train your prime attribute.
-
-The best attributes to train first are WIS and CON.  WIS gives you more
-
-practice when you gain a level.  CON gives you more hit points.
-
-In the long run, your character will be most powerful if you train
-
-WIS and CON both to 18 before practising or training anything else.
-
-Train now reports the cost in practice points to increase an attribute.
-
-It is also possible to spend practices on hit points or mana points.
-
+0 PEMOTE~
+PEMOTE acts in the same way as emote, except that where emote adds your name
+before the argument, PEMOTE adds you name PLUS the characters 's
+Eg PEMOTE feeling rather annoyed with Immortals         would be shown as:
+Stephen's feeling rather annoyed with Immortals.
 ~
 0 PRAY~
 Syntax: pray     <message>
@@ -176,319 +271,45 @@ Pray sends a message to *ALL* immortals on the game, even if they are wizinvis.
 Eg: PRAY i'm stuck in a no-exit, no recall room - help!
 
 WARNING: Un-necessary use of this channel will result in your ability to use
-
-	 it being removed!
-
+         it being removed!
 ~
--1 RLIST~
+0 RACE RACES RLIST~
 RLIST reports details about the different races in these Realms.
-
 ~
 0 SCAN~
 SCAN reports the (seen) characters or mobiles surrounding the player.
-
 Scan tells you the direction and the people situation that way, if any.
-
 Useful for checking about you in unknown circumstances.
-
 ~
-0 AUCTION GOSSIP . NEWBIE QUESTION ANSWER SHOUT YELL FLAME ZZZ MUSIC~
-Syntax: auction  <message>      Syntax: gossip   <message>
-
-Syntax: newbie   <message>      Syntax: question <message>
-
-Syntax: answer   <message>      Syntax: shout    <message>
-
-Syntax: yell     <message>      Syntax: zzz      <message>
-
-Syntax: flame    <message>      Syntax: race     <message>
-
-Syntax: clan     <message>      syntax: music    <message>
-
-These commands send messages through communication channels to other players.
-
-SHOUT sends a message to all awake players in the world.  To curb excessive
-
-shouting, SHOUT imposes a three-second delay on the shouter.
-
-MUSIC, AUCTION, GOSSIP, NEWBIE, and QUESTION and ANSWER also send messages 
-
-to all interested players.  '.' is a synonym for GOSSIP.  The QUESTION and 
-
-ANSWER commands both use the same 'question' channel
-
-FLAME is similar to auction, gossip, etc, but is intended for moaning about
-
-life, players, etc.  ZZZ may only be used when sleeping.
-
-YELL sends a message to all awake players within your area.
-
-RACE sends a message to members of your own race.  CLAN sends a message to
-
-those in your clan.
-
-You can use the CHANNELS command to hear, or not hear, any of these channels.
-
-
-~
-0 bad breath~
-Bad breath is an offensive spell, causing slightly more damage than the
-
-
-'magic missile' spell.
-
-~
-0 influx~
-When successfully cast, this will heal all players in the room.
-
-~
-0 warcry~
-WARCRY is a Warrior-only spell, which acts the same as the 'bless' spell.
-
-~
-0 pemote~
-PEMOTE acts in the same way as emote, except that where emote adds your name
-
-before the argument, PEMOTE adds you name PLUS the characters 's
-
-Eg PEMOTE feeling rather annoyed with Immortals         would be shown as:
-
-Stephen's feeling rather annoyed with Immortals.
-
-~
-0 alias~
-The ALIAS command allows you configure the six alias 'slots'.  An alias
-
-takes the form of a name, and the alias.  To set up a new alias, type:
-
-ALIAS <slot_number> <name> <alias>		For example:
-
-ALIAS 2 ban emote turns into a banana and splits...
-
-Now, whenever you type 'ban' the mud checks through the command table.  If
-
-your input wasn't found, it then checks your alias.  Upon matching 'ban'
-
-it issues the alias to the interpreter function, along with any argument
-
-you typed after the alias name.  For example, you can define an alias:
-
-ALIAS 1 ff cast 'faerie fire'   and then use it on mobs by typing:
-
-ff <target_name>.  So typing 'ff stephen' will cause the mud to interpret
-
-cast faerie fire stephen.
-
-To show what aliases are set, type ALIAS with no arguements.
-
-To clear an alias, type 'ALIAS <number> clear'.
-
-~
-0 colour color~
-Firstly, please note the spelling: coloUr.  This is an English mud, so we
-
-use English spellings :)
-
-The mud now supports "ansi" colour.  Use the config command to turn on
-
-or off this option.  The COLOUR command allows you to set uo what colours
-
-you see different things in.  Please note:  The list of things you can
-
-configure WILL be expanding!
-
-To find out what colours are available, type 'COLOUR HELP'.
-
-~
-0 worth~
-WORTH simply displays a list of any classes you are able to level in,
-
-along with the cost in exp to gain in it, and the difference between that
-
-cost and your current exp.
-
-~
-0 tongue~
+0 TONGUE~
 TONGUE is equivalent to SAY, except that only players of your race will
-
 understand what you say.  Anyone else will see gibberish!  Note that the
-
 RACE command will tell to ALL members of your race (who are on the channel)
-
 even if they aren't in the same room as you.
-
 ~
-82 halls~
-HALLS is a command which will transfer you, the immortal to the Entry Point,
+0 TRAIN~
+Syntax: train <'str'|'int'|'wis'|'dex'|'con'>
 
-situated within the Halls of the Immortals.  It is similar to recall, except
+TRAIN increases one of your attributes.  When you start the game, your
+character has slightly random attributes.  The maximum value for each
+attribute depends on your race and class.
 
-that there are no limitations on use if fighting, etc.  
+It costs four practice to train an attribute, except that it costs
+only three practice to train your prime attribute.
 
+The best attributes to train first are WIS and CON.  WIS gives you more
+practices when you gain a level.  CON gives you more hit points.
+
+In the long run, your character will be most powerful if you train
+WIS and CON both to max before practising or training anything else.
+
+Train now reports the cost in practice points to increase an attribute.
+It is also possible to spend practices on hit points or mana points.
 ~
-0 guild~
-GUILD is similar to RECALL in use, except that it transfers you (if possible)
-
-to your Guild room, in the Player's Rooms, west of the Temple.  They provide
-
-an easy way to gain entrance to a Guild Room.  If fighting, the same penalties
-
-stand as for recall.
-
-~
-0 donate~
-DONATE allows you to transfer a piece of equipment in your inventory
-
-to the "Donation Room", situated close to your race's Temple.
-
-~
-0 diagnose~
-DIAGNOSE allows you to check on the condition of a player or mob.
-
-The condition is shown on a scale 5(best) to 1(worst) 
-
-~
-0 law wanted lawless~
-@@lShades @@dof @@eEvil@@N system of laws and punishments:
-
-  Within the game, the major cities of the realm have a system of enforcing
-
-rules of player behavior, by having certain players known to the realm as
-
-being WANTED.  The system is simple, once you understand it's perspective.
-
-
-  The civilized states of the realm enforce peaceful interaction between
-
-citizens of the various states.  Killing and stealing from other citizens is
-
-considered unlawful, and anyone that falls under the protection of the Law is
-
-protected by these actions.
-
-
-  There are three states that a citizen can have: Civilized, Wanted, and
-
-Lawless.  Citizens that are Civilized are protected within the legal system
-
-from being attacked by other citizens, and also from having things stolen from
-
-them. If a Civilized citizen is attacked or stolen from, the Law will label
-
-the attacker with Wanted, and deal with them accordingly.  In addition, if a
-
-Civilized citizen breaks the Laws of the Realm, they also will be Wanted.
-
-
-  Wanted citizens are no longer protected under the Law, and Civilized
-
-citizens are authorized to kill or steal from them.  In addition, non-player
-
-characters will interact with them violently.
-
-
-  If you wish to become Lawless, this will your protection under the Law.
-
-However, both actors in an interaction must be Lawless for the Law to ignore
-
-their actions between each other.  If a Lawless attacks someone Civilized, the
-
-Law will seek retribution on the Lawless.  If a Civilized citizen attacks a
-
-Lawless, the Law doesn't protect the Lawless, it punishes the Civilized by
-
-making them Wanted.  To become a Lawless, you may request a PKOK flag from an
-
-Immortal.  Once you have chosen to be Lawless, the Law will never again place
-
-you under its protection.
-
-
-  Many hidden and unknown events in the game may take the protection of the
-
-Law away from you, either permanently, or temporarily.  Some of these are
-
-obvious, some not so obvious. A few of these events may even make you Persecuted,
-
-which has several unforseen circumstances.
-
-
-  When you become WANTED, either from breaking a law or other actions, you are
-
-given a sentence based on your crime.  Sentences may only be reduced by
-
-sacrificing valuable objects to the Law, by using the command sacrifice
-
-<object> judge.  The judge will examine your sacrifice, and reduce your
-
-sentence appropriately.
-
-
-  The Law is omnicient in some ways, and becoming Wanted or Lawless may have
-
-some unforseen repercussions, so consider your actions well before commiting
-
-to them!
-
-
-~
-0 imm immortal immortals~
-Due to some past events where common sense was overlooked
-
-it was brought to the attentions of the immortals that there is a
-
-problem in mortal/immortal relations.
-
-The way the immortal team is run here is very leniant and laid back, much
-
-less strict then those upon other Multi-User Domains. The point that
-
-is trying to be made is simply to respect those who do rule upon the realms.
-
-This has not been a wide spread problem but one that needed to be
-
-addressed. Those immortals who you are aware that multi-play with mort
-
-characters as well, remember that they are seperate entities in the realms.
-
-All characters deserve respect....wether they be friend or foe.
-
-Remember that anyone being rude or distasteful to not only immortals
-
-but ALSO other morts will be dealt with accordingly.
-
-~
-0 EXPERIENCE LEVEL XP~
-Your character advances in power by gaining experience.  The amount of exp
-
-you need to gain a level is determined by your race.  To gain a level, use
-
-the GAIN command.
-
-You gain experience by:
-
-    Being part of a group that kills a monster,
-
-    or by killing monsters on your own.
-
-You lose experience by:
-
-    Fleeing from combat
-
-    Recalling out of combat
-
-    Being the target of certain spells
-
-    Dying
-
-The experience you get from a kill depends on several things: how many players
-
-are in your group; your level versus the level of the monster; your alignment
-
-versus the monster's alignment; how many of this monster have been killed
-
-lately; and some random variation.
-
+0 WORTH~
+WORTH simply displays a list of any classes you are able to level in,
+along with the cost in exp to gain in it, and the difference between that
+cost and your current exp.
 ~
 0 REMORT~
 @@aREMORT@@W
