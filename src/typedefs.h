@@ -245,6 +245,10 @@ typedef struct money_type MONEY_TYPE;
 typedef struct buf_data_struct BUF_DATA_STRUCT;
 typedef struct hash_entry_tp HASH_ENTRY;
 
+/* Kline */
+typedef struct bmlist BM_LIST;
+typedef struct bitmask BITMASK;
+
 /*
  * Function types.
  */

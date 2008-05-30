@@ -97,8 +97,16 @@ bool check_blind args( ( CHAR_DATA * ch ) );
 char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
 {
    static char buf[MAX_STRING_LENGTH];
+   static char buf2[MAX_STRING_LENGTH];
 
    sprintf( buf, "%s", color_string( ch, "objects" ) );
+
+   if( IS_IMMORTAL(ch) ) /* Imms should see vnums, <3 builders :) --Kline */
+   {
+    sprintf(buf2,"(%d) ",obj->pIndexData->vnum);
+    safe_strcat(MAX_STRING_LENGTH,buf,buf2);
+   }
+
    if( IS_OBJ_STAT( obj, ITEM_INVIS ) )
       safe_strcat( MAX_STRING_LENGTH, buf, "(Invis) " );
 
@@ -381,7 +389,10 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
        * Then show what race they are (about time this added ;)
        * Imms should see mob races, too. <3 Builders! --Kline
        */
-      sprintf( buf2, "[%s] ", race_table[victim->race].race_name );
+      if( IS_NPC(victim) )
+       sprintf( buf2, "(%d) [%s] ",victim->pIndexData->vnum, race_table[victim->race].race_name );
+      else
+       sprintf( buf2, "[%s] ", race_table[victim->race].race_name );
       safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
    }
 
