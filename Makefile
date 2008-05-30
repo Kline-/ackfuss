@@ -28,7 +28,7 @@ L_FLAGS = -O -g2 -lcrypt $(PROF) $(SOLARIS_LINK)
 IMC = 1
 
 O_FILES = act_clan.o act_comm.o act_info.o act_mob.o act_move.o act_obj.o act_wiz.o \
-	  areachk.o areasave.o board.o build.o buildare.o buildtab.o clutch.o comm.o \
+	  areachk.o areasave.o bitmask.o board.o build.o buildare.o buildtab.o clutch.o comm.o \
 	  const.o db.o email.o enchant.o fight.o handler.o hash.o hunt.o interp.o lists.o \
 	  macros.o magic.o magic2.o magic3.o magic4.o mapper.o mob_commands.o mob_prog.o \
 	  money.o mount.o obj_fun.o pdelete.o quest.o rulers.o save.o scheck.o social-edit.o \

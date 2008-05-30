@@ -1298,8 +1298,20 @@ struct social_type
    char *others_auto;
 };
 
+/* Kline */
+struct bmlist // Serialized bitmasks
+{
+ BM_LIST *next;
+ long set;
+ long tar_mask;
+};
 
-
+struct bitmask
+{
+ long bits; // number of bits set in total.
+ long masks; // number of masks in all.
+ BM_LIST *int_list;
+};
 
 
 /*
@@ -1354,6 +1366,16 @@ bool can_wear_at( CHAR_DATA * ch, OBJ_DATA * obj, int location );
 
 /* act_wiz.c */
 ROOM_INDEX_DATA *find_location args( ( CHAR_DATA * ch, char *arg ) );
+
+/* bitmask.c */
+bool    remove_bit         args( ( BITMASK *mask, sh_int bit ) );
+bool    set_bit            args( ( BITMASK *mask, sh_int bit ) );
+bool    is_set             args( ( BITMASK *mask, sh_int bit ) );
+int     *serialize_bitmask args( ( BITMASK *mask ) );
+bool    free_bitmask       args( ( BITMASK *pBmask ) );
+BITMASK init_bitmask       args( ( BITMASK *bm ) );
+void    load_bitmask       args( ( BITMASK *pBmask, FILE *fp ) );
+void    save_bitmask       args( ( BITMASK *pBmask, FILE *fp ) );
 
 /* board.c */
 BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj );
