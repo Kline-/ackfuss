@@ -973,6 +973,47 @@ const struct lookup_type tab_magic_realms[] = {
    {NULL, 0}
 };
 
+const struct lookup_type tab_magic_realms_col[] = {
+
+   {"nada", BIT_0, 0},
+   {"@@eFire@@N", BIT_1, 0},
+   {"@@lShock@@N", BIT_2, 0},
+   {"@@WLight@@N", BIT_3, 0},
+   {"@@cGas@@N", BIT_4, 0},
+   {"@@GPoison@@N", BIT_5, 0},
+   {"@@aCold@@N", BIT_6, 0},
+   {"@@pSound@@N", BIT_7, 0},
+   {"@@rAcid@@N", BIT_8, 0},
+   {"@@RDrain@@N", BIT_9, 0},
+   {"@@dImpact@@N", BIT_10, 0},
+   {"@@mPsionic@@N", BIT_11, 0},
+   {"@@yHoly@@N", BIT_12, 0},
+   {NULL, 0}
+};
+
+const struct lookup_type tab_mob_race_mods_col[] = {
+
+   {"nada", BIT_0, 0},
+   {"@@lFast Healing@@N", BIT_1, 0},
+   {"@@BSlow Healing@@N", BIT_2, 0},
+   {"@@eStrong Magic@@N", BIT_3, 0},
+   {"@@RWeak Magic@@N", BIT_4, 0},
+   {"@@mNo Magic@@N", BIT_5, 0},
+   {"@@GPoison Immune@@N", BIT_6, 0},
+   {"@@cSpell Resist@@N", BIT_7, 0},
+   {"@@bWoodland@@N", BIT_8, 0},
+   {"@@dDarkness@@N", BIT_9, 0},
+   {"@@pHuge@@N", BIT_10, 0},
+   {"@@pLarge@@N", BIT_11, 0},
+   {"@@pTiny@@N", BIT_12, 0},
+   {"@@pSmall@@N", BIT_13, 0},
+   {"@@aTail@@N", BIT_14, 0},
+   {"@@yTough Skin@@N", BIT_15, 0},
+   {"@@yStone Skin@@N", BIT_16, 0},
+   {"@@yIron Skin@@N", BIT_17, 0},
+   {NULL, 0}
+
+};
 
 const struct lookup_type tab_mob_race_mods[] = {
 
@@ -1044,7 +1085,7 @@ char *bit_table_lookup( const struct lookup_type *table, unsigned long int numbe
    }
 
    if( buf[0] == '\0' )
-      strcat( buf, "none" );
+      strcat( buf, "None." );
    else
    {
       a = strlen( buf );

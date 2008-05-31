@@ -4609,18 +4609,18 @@ void do_race_list( CHAR_DATA * ch, char *argument )
      sprintf(buf,"[%3s] %9s (%s)\n\r",race_table[iRace].race_name,race_table[iRace].race_title,race_table[iRace].comment);
      send_to_char(buf,ch);
      send_to_char("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r",ch);
-     sprintf(buf,"Max Stats     : Str [%d]  Int [%d]  Wis [%d]  Dex [%d]  Con [%d]\n\rRace Mods     :",
+     sprintf(buf,"Max Stats     : Str [%d]  Int [%d]  Wis [%d]  Dex [%d]  Con [%d]\n\rRace Mods     : ",
       race_table[iRace].race_str,race_table[iRace].race_int,race_table[iRace].race_wis,race_table[iRace].race_dex,race_table[iRace].race_con);
      send_to_char(buf,ch);
-     send_to_char(output_race_mods(iRace),ch);
-     send_to_char("\n\rStrong Realms :",ch);
-     send_to_char(output_race_strong(iRace),ch);
-     send_to_char("\n\rWeak Realms   :",ch);
-     send_to_char(output_race_weak(iRace),ch);
-     send_to_char("\n\rResist Realms :",ch);
-     send_to_char(output_race_resist(iRace),ch);
-     send_to_char("\n\rSuscept Realms:",ch);
-     send_to_char(output_race_suscept(iRace),ch);
+     send_to_char(bit_table_lookup(tab_mob_race_mods_col,race_table[iRace].race_flags),ch);
+     send_to_char("\n\rStrong Realms : ",ch);
+     send_to_char(bit_table_lookup(tab_magic_realms_col,race_table[iRace].strong_realms),ch);
+     send_to_char("\n\rWeak Realms   : ",ch);
+     send_to_char(bit_table_lookup(tab_magic_realms_col,race_table[iRace].weak_realms),ch);
+     send_to_char("\n\rResist Realms : ",ch);
+     send_to_char(bit_table_lookup(tab_magic_realms_col,race_table[iRace].resist_realms),ch);
+     send_to_char("\n\rSuscept Realms: ",ch);
+     send_to_char(bit_table_lookup(tab_magic_realms_col,race_table[iRace].suscept_realms),ch);
      send_to_char("\n\rRacial Skills : ",ch);
      send_to_char(race_table[iRace].skill1,ch);
      for( iWear = 0; iWear < MAX_WEAR; iWear++ )
@@ -6474,196 +6474,6 @@ void do_loot( CHAR_DATA * ch, char *argument )
 
    send_to_char( "You cannot loot this corpse.\n\r", ch );
    return;
-}
-
-char *output_race_mods( int iRace )
-{
- static char buf[MSL];
-
- buf[0] = '\0';
-
- if( race_table[iRace].race_flags == RACE_MOD_NONE )
-  strcat(buf," None");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_FAST_HEAL) )
-  strcat(buf," @@lFast Healing@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_SLOW_HEAL) )
-  strcat(buf," @@BSlow Healing@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_STRONG_MAGIC) )
-  strcat(buf," @@eStrong Magic@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_WEAK_MAGIC) )
-  strcat(buf," @@RWeak Magic@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_NO_MAGIC) )
-  strcat(buf," @@mNo Magic@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_IMMUNE_POISON) )
-  strcat(buf," @@GPoison Immune@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_RESIST_SPELL) )
-  strcat(buf," @@cSpell Resist@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_WOODLAND) )
-  strcat(buf," @@bWoodland@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_DARKNESS) )
-  strcat(buf," @@dDarkness@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_HUGE) )
-  strcat(buf," @@pHuge@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_LARGE) )
-  strcat(buf," @@pLarge@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_TINY) )
-  strcat(buf," @@pTiny@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_SMALL) )
-  strcat(buf," @@pSmall@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_TAIL) )
-  strcat(buf," @@aTail@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_TOUGH_SKIN) )
-  strcat(buf," @@yTough Skin@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_STONE_SKIN) )
-  strcat(buf," @@yStone Skin@@N");
- if( IS_SET(race_table[iRace].race_flags,RACE_MOD_IRON_SKIN) )
-  strcat(buf," @@yIron Skin@@N");
-
- return buf;
-}
-
-char *output_race_strong( int iRace )
-{
- static char buf[MSL];
-
- buf[0] = '\0';
-
- if( race_table[iRace].strong_realms == REALM_NONE )
-  strcat(buf," None");
- if( IS_SET(race_table[iRace].strong_realms,REALM_FIRE) )
-  strcat(buf," @@eFire@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_SHOCK) )
-  strcat(buf," @@lShock@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_LIGHT) )
-  strcat(buf," @@WLight@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_GAS) )
-  strcat(buf," @@cGas@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_POISON) )
-  strcat(buf," @@GPoison@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_COLD) )
-  strcat(buf," @@aCold@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_SOUND) )
-  strcat(buf," @@pSound@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_ACID) )
-  strcat(buf," @@rAcid@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_DRAIN) )
-  strcat(buf," @@RDrain@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_IMPACT) )
-  strcat(buf," @@dImpact@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_MIND) )
-  strcat(buf," @@mMind@@N");
- if( IS_SET(race_table[iRace].strong_realms,REALM_HOLY) )
-  strcat(buf," @@yHoly@@N");
-
- return buf;
-}
-
-char *output_race_weak( int iRace )
-{
- static char buf[MSL];
-
- buf[0] = '\0';
-
- if( race_table[iRace].weak_realms == REALM_NONE )
-  strcat(buf," None");
- if( IS_SET(race_table[iRace].weak_realms,REALM_FIRE) )
-  strcat(buf," @@eFire@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_SHOCK) )
-  strcat(buf," @@lShock@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_LIGHT) )
-  strcat(buf," @@WLight@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_GAS) )
-  strcat(buf," @@cGas@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_POISON) )
-  strcat(buf," @@GPoison@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_COLD) )
-  strcat(buf," @@aCold@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_SOUND) )
-  strcat(buf," @@pSound@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_ACID) )
-  strcat(buf," @@rAcid@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_DRAIN) )
-  strcat(buf," @@RDrain@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_IMPACT) )
-  strcat(buf," @@dImpact@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_MIND) )
-  strcat(buf," @@mMind@@N");
- if( IS_SET(race_table[iRace].weak_realms,REALM_HOLY) )
-  strcat(buf," @@yHoly@@N");
-
- return buf;
-}
-
-char *output_race_resist( int iRace )
-{
- static char buf[MSL];
-
- buf[0] = '\0';
-
- if( race_table[iRace].resist_realms == REALM_NONE )
-  strcat(buf," None");
- if( IS_SET(race_table[iRace].resist_realms,REALM_FIRE) )
-  strcat(buf," @@eFire@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_SHOCK) )
-  strcat(buf," @@lShock@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_LIGHT) )
-  strcat(buf," @@WLight@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_GAS) )
-  strcat(buf," @@cGas@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_POISON) )
-  strcat(buf," @@GPoison@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_COLD) )
-  strcat(buf," @@aCold@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_SOUND) )
-  strcat(buf," @@pSound@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_ACID) )
-  strcat(buf," @@rAcid@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_DRAIN) )
-  strcat(buf," @@RDrain@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_IMPACT) )
-  strcat(buf," @@dImpact@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_MIND) )
-  strcat(buf," @@mMind@@N");
- if( IS_SET(race_table[iRace].resist_realms,REALM_HOLY) )
-  strcat(buf," @@yHoly@@N");
-
- return buf;
-}
-
-char *output_race_suscept( int iRace )
-{
- static char buf[MSL];
-
- buf[0] = '\0';
-
- if( race_table[iRace].suscept_realms == REALM_NONE )
-  strcat(buf," None");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_FIRE) )
-  strcat(buf," @@eFire@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_SHOCK) )
-  strcat(buf," @@lShock@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_LIGHT) )
-  strcat(buf," @@WLight@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_GAS) )
-  strcat(buf," @@cGas@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_POISON) )
-  strcat(buf," @@GPoison@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_COLD) )
-  strcat(buf," @@aCold@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_SOUND) )
-  strcat(buf," @@pSound@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_ACID) )
-  strcat(buf," @@rAcid@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_DRAIN) )
-  strcat(buf," @@RDrain@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_IMPACT) )
-  strcat(buf," @@dImpact@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_MIND) )
-  strcat(buf," @@mMind@@N");
- if( IS_SET(race_table[iRace].suscept_realms,REALM_HOLY) )
-  strcat(buf," @@yHoly@@N");
-
- return buf;
 }
 
 char *output_race_wear( int iRace )

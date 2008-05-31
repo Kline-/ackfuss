@@ -1342,11 +1342,6 @@ void set_title            args( ( CHAR_DATA * ch, char *title ) );
 char *color_string        args( ( CHAR_DATA * CH, char *argument ) );
 char *get_family_name     args( ( CHAR_DATA * ch ) );
 char *get_tribe_name      args( ( CHAR_DATA * ch ) );
-char *output_race_mods    args( ( int iRace ) );
-char *output_race_strong  args( ( int iRace ) );
-char *output_race_weak    args( ( int iRace ) );
-char *output_race_resist  args( ( int iRace ) );
-char *output_race_suscept args( ( int iRace ) );
 char *output_race_wear    args( ( int iRace ) );
 
 /* act_mob.c */
