@@ -3380,7 +3380,7 @@ bool imc_read_socket( void )
          imclog( "%s", "Connection close detected on read of IMC2 socket." );
          return FALSE;
       }
-      else if( iErr == EAGAIN )
+      else if( iErr == EAGAIN || EWOULDBLOCK )
          break;
       else if( nRead == -1 )
       {
@@ -6580,7 +6580,7 @@ IMC_CMD( imcconfig )
 
    if( !arg1 || arg1[0] == '\0' )
    {
-      imc_to_char( "~wSyntax: &Gimc <field> [value]\r\n\r\n", ch );
+      imc_to_char( "~wSyntax: ~Gimc <field> [value]\r\n\r\n", ch );
       imc_to_char( "~wConfiguration info for your mud. Changes save when edited.\r\n", ch );
       imc_to_char( "~wYou may set the following:\r\n\r\n", ch );
       imc_to_char( "~wShow           : ~GDisplays your current configuration.\r\n", ch );

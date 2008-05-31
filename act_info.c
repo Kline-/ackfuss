@@ -4414,6 +4414,12 @@ void do_config( CHAR_DATA * ch, char *argument )
    {
       send_to_char( "[ Keyword  ] Option\n\r", ch );
 
+      if( IS_IMMORTAL(ch) )
+      {
+       send_to_char( IS_SET( ch->config, CONFIG_AUTODIG )
+                     ? "[+AUTODIG  ] You can dig new zones by walking.\n\r" : "[-autodig  ] You must manually dig new zones.\n\r", ch );
+      }
+
       send_to_char( IS_SET( ch->act, PLR_NOSUMMON )
                     ? "[+NOSUMMON ] You may not be summoned.\n\r" : "[-nosummon ] You may be summoned.\n\r", ch );
 
@@ -4487,7 +4493,9 @@ void do_config( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( !str_cmp( arg + 1, "autoexit" ) )
+      if( !str_cmp( arg + 1, "autodig" ) && IS_IMMORTAL(ch) )
+         bit = CONFIG_AUTODIG;
+      else if( !str_cmp( arg + 1, "autoexit" ) )
          bit = CONFIG_AUTOEXIT;
       else if( !str_cmp( arg + 1, "autoloot" ) )
          bit = CONFIG_AUTOLOOT;
@@ -5004,6 +5012,11 @@ void do_combine( CHAR_DATA * ch, char *argument )
 
    ( IS_SET( ch->config, CONFIG_COMBINE ) ? do_config( ch, "-combine" ) : do_config( ch, "+combine" ) );
 
+}
+
+void do_autodig( CHAR_DATA * ch, char *argument )
+{
+   ( IS_SET( ch->config, CONFIG_AUTODIG ) ? do_config( ch, "-autodig" ) : do_config( ch, "+autodig" ) );
 }
 
 void do_pagelen( CHAR_DATA * ch, char *argument )

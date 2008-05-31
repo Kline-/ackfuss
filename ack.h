@@ -1375,7 +1375,7 @@ int     *serialize_bitmask args( ( BITMASK *mask ) );
 bool    free_bitmask       args( ( BITMASK *pBmask ) );
 BITMASK init_bitmask       args( ( BITMASK *bm ) );
 void    load_bitmask       args( ( BITMASK *pBmask, FILE *fp ) );
-void    save_bitmask       args( ( BITMASK *pBmask, FILE *fp ) );
+char    *save_bitmask      args( ( BITMASK *pBmask ) );
 
 /* board.c */
 BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj );
@@ -1663,12 +1663,13 @@ void write_start args( ( char **dest, void *retfunc, void *retparm, CHAR_DATA * 
 void write_interpret args( ( CHAR_DATA * ch, char *argument ) );
 
 /* build.c */
-void build_strdup( char **dest, char *src, bool freesrc, CHAR_DATA * ch );
-char *build_simpstrdup( char *buf );   /* A plug in alternative to str_dup */
-void build_save args( ( void ) );
 extern const char *cDirs;
-int get_dir( char );
-char *show_values( const struct lookup_type *table, int value, bool fBit );
+void build_strdup      args( ( char **dest, char *src, bool freesrc, CHAR_DATA * ch ) );
+char *build_simpstrdup args( ( char *buf ) );   /* A plug in alternative to str_dup */
+void build_save        args( ( void ) );
+int  get_dir           args( ( char ) );
+char *show_values      args( ( const struct lookup_type *table, int value, bool fBit ) );
+void check_autodig     args( ( CHAR_DATA *ch, int dir ) );
 
 /* buildtab.c  */
 /*

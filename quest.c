@@ -673,16 +673,20 @@ void generate_auto_quest(  )
       {
          if( d->connected != CON_PLAYING )
             continue;
+         if( IS_IMMORTAL(d->character) ) /* Imms shouldn't count against the quest level. --Kline */
+            continue;
          player_count += 1;
          total_levels += d->character->level;
       }
       player_count = UMAX( 1, player_count );
-      average_level = ( total_levels / player_count );
+      if( total_levels > 0 ) /* If we don't have any players on, don't want a div by 0 error. --Kline */
+       average_level = ( total_levels / player_count );
+      else
+       average_level = 1;
 
       quest_mob = NULL;
       quest_target = NULL;
 
-      average_level = number_range( 0, 99 );
       if( average_level < 20 )
       {
          a = number_range( 5, 25 );
