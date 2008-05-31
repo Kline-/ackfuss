@@ -585,6 +585,7 @@ DECLARE_DO_FUN( do_scent );
 DECLARE_DO_FUN( do_imprint );
 
 /*
- * ACK!FUSS Continual Improvements -Kline
+ * My improvements -Kline
  */
 DECLARE_DO_FUN( do_statraise );
+DECLARE_DO_FUN( do_autodig );

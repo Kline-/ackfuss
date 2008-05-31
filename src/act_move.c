@@ -525,6 +525,7 @@ void move_char( CHAR_DATA * ch, int door )
 
 void do_north( CHAR_DATA * ch, char *argument )
 {
+   check_autodig(ch,DIR_NORTH);
    move_char( ch, DIR_NORTH );
    return;
 }
@@ -533,6 +534,7 @@ void do_north( CHAR_DATA * ch, char *argument )
 
 void do_east( CHAR_DATA * ch, char *argument )
 {
+   check_autodig(ch,DIR_EAST);
    move_char( ch, DIR_EAST );
    return;
 }
@@ -541,6 +543,7 @@ void do_east( CHAR_DATA * ch, char *argument )
 
 void do_south( CHAR_DATA * ch, char *argument )
 {
+   check_autodig(ch,DIR_SOUTH);
    move_char( ch, DIR_SOUTH );
    return;
 }
@@ -549,6 +552,7 @@ void do_south( CHAR_DATA * ch, char *argument )
 
 void do_west( CHAR_DATA * ch, char *argument )
 {
+   check_autodig(ch,DIR_WEST);
    move_char( ch, DIR_WEST );
    return;
 }
@@ -557,6 +561,7 @@ void do_west( CHAR_DATA * ch, char *argument )
 
 void do_up( CHAR_DATA * ch, char *argument )
 {
+   check_autodig(ch,DIR_UP);
    move_char( ch, DIR_UP );
    return;
 }
@@ -565,6 +570,7 @@ void do_up( CHAR_DATA * ch, char *argument )
 
 void do_down( CHAR_DATA * ch, char *argument )
 {
+   check_autodig(ch,DIR_DOWN);
    move_char( ch, DIR_DOWN );
    return;
 }

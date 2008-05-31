@@ -2998,7 +2998,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
 
    if( vnum < 0 || vnum > MAX_VNUM )
    {
-      send_to_char( "Vnum must be between 0 and 32767.\n\r", ch );
+      send_to_char( "Vnum must be between 0 and 16777216.\n\r", ch );
       return;
    }
 
@@ -3114,9 +3114,9 @@ void build_addmob( CHAR_DATA * ch, char *argument )
 
    vnum = is_number( arg1 ) ? atoi( arg1 ) : -1;
 
-   if( vnum < 0 || vnum > 32767 )
+   if( vnum < 0 || vnum > MAX_VNUM )
    {
-      send_to_char( "Vnum must be between 0 and 32767.\n\r", ch );
+      send_to_char( "Vnum must be between 0 and 16777216.\n\r", ch );
       return;
    }
 
@@ -3207,9 +3207,9 @@ void build_addobject( CHAR_DATA * ch, char *argument )
 
    vnum = is_number( arg1 ) ? atoi( arg1 ) : -1;
 
-   if( vnum < 0 || vnum > 32767 )
+   if( vnum < 0 || vnum > MAX_VNUM )
    {
-      send_to_char( "Vnum must be between 0 and 32767.\n\r", ch );
+      send_to_char( "Vnum must be between 0 and 16777216.\n\r", ch );
       return;
    }
 
@@ -5999,4 +5999,53 @@ void build_clone( CHAR_DATA * ch, char *argument )
       return;
    }
    return;
+}
+
+void check_autodig( CHAR_DATA *ch, int dir )
+{
+ if( ch->position == POS_BUILDING && ch->act_build == ACT_BUILD_REDIT && IS_SET(ch->config,CONFIG_AUTODIG) )
+ {
+  AREA_DATA *pArea;
+  EXIT_DATA *pExit;
+  int vnum;
+  bool found = FALSE;
+  char buf[20];
+  char exit[6];
+
+  pExit = ch->in_room->exit[dir];
+  pArea = ch->in_room->area;
+  vnum = pArea->min_vnum;
+
+  if( pExit != NULL ) /* Don't try to dig out an existing exit --Kline */
+   return;
+
+  while( !found )
+  {
+   vnum++;
+
+   if( get_room_index(vnum) )
+    found = FALSE;
+   else
+    found = TRUE;
+  }
+
+  if( vnum > pArea->max_vnum )
+  {
+   send_to_char("AUTODIG: No more free vnums in area.\n\r",ch);
+   return;
+  }
+
+  switch( dir )
+  {
+   case DIR_NORTH: sprintf(exit,"north"); break;
+   case DIR_SOUTH: sprintf(exit,"south"); break;
+   case DIR_EAST:  sprintf(exit,"east");  break;
+   case DIR_WEST:  sprintf(exit,"west");  break;
+   case DIR_UP:    sprintf(exit,"up");    break;
+   case DIR_DOWN:  sprintf(exit,"down");  break;
+  }
+
+  sprintf(buf,"%s %d",exit,vnum);
+  build_dig(ch,buf);
+ }
 }

@@ -626,14 +626,15 @@
 #define CONFIG_FULL_ANSI        BIT_11
 #define CONFIG_MAPPER           BIT_12
 #define CONFIG_JUSTIFY          BIT_13
+#define CONFIG_AUTODIG          BIT_14
 
 
 /*
  * ACT bits for players.
  */
-#define PLR_IS_NPC                    1   /* Don't EVER set.      */
-#define PLR_BOUGHT_PET                2
-#define PLR_CLAN_LEADER               4   /* Clan Leader!! */
+#define PLR_IS_NPC              BIT_1   /* Don't EVER set.      */
+#define PLR_BOUGHT_PET          BIT_2
+#define PLR_CLAN_LEADER         BIT_3   /* Clan Leader!! */
 /* Available 
 #define PLR_AUTOEXIT                 BIT_4   
 #define PLR_AUTOLOOT                 BIT_5

@@ -217,13 +217,15 @@ void load_bitmask( BITMASK *pBmask, FILE *fp ) /* #masks #bits #mask #vector #ma
  }
 }
 
-void save_bitmask( BITMASK *pBmask, FILE *fp )
+char *save_bitmask( BITMASK *pBmask ) /* Make this a string so it's easier to pass to existing save routines. --Kline */
 {
  BM_LIST *pBMlist;
+ static char buf[MAX_STRING_LENGTH];
 
- fprintf(fp,"%ld %ld",pBmask->masks,pBmask->bits);
+ sprintf(buf,"%ld %ld",pBmask->masks,pBmask->bits);
 
  for( pBMlist = pBmask->int_list; pBMlist; pBMlist = pBMlist->next )
-  fprintf(fp," %ld %ld",pBMlist->set,pBMlist->tar_mask);
- fprintf(fp,"\n");
+  sprintf(buf," %ld %ld",pBMlist->set,pBMlist->tar_mask);
+
+ return buf;
 }
