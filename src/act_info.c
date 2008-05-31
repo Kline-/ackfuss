@@ -4412,69 +4412,69 @@ void do_config( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "[ Keyword  ] Option\n\r", ch );
+      send_to_char( "@@d[@@W Keyword  @@d]@@W Option@@N\n\r", ch );
 
       if( IS_IMMORTAL(ch) )
       {
        send_to_char( IS_SET( ch->config, CONFIG_AUTODIG )
-                     ? "[+AUTODIG  ] You can dig new zones by walking.\n\r" : "[-autodig  ] You must manually dig new zones.\n\r", ch );
+                     ? "@@d[@@a+AUTODIG  @@d]@@a You can dig new zones by walking.@@N\n\r" : "@@d[@@c-autodig  @@d]@@c You must manually dig new zones.@@N\n\r", ch );
       }
 
       send_to_char( IS_SET( ch->act, PLR_NOSUMMON )
-                    ? "[+NOSUMMON ] You may not be summoned.\n\r" : "[-nosummon ] You may be summoned.\n\r", ch );
+                    ? "@@d[@@a+NOSUMMON @@d]@@a You may not be summoned.@@N\n\r" : "@@d[@@c-nosummon @@d]@@c You may be summoned.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->act, PLR_NOVISIT )
-                    ? "[+NOVISIT  ] You may not be 'visited'.\n\r" : "[-novisit  ] You may be 'visited'.\n\r", ch );
+                    ? "@@d[@@a+NOVISIT  @@d]@@a You may not be 'visited'.@@N\n\r" : "@@d[@@c-novisit  @@d]@@c You may be 'visited'.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_COLOR )
-                    ? "[+COLOR    ] You recieve 'ANSI' color.\n\r"
-                    : "[-color    ] You don't receive 'ANSI' color.\n\r", ch );
+                    ? "@@d[@@a+COLOR    @@d]@@a You recieve 'ANSI' color.@@N\n\r"
+                    : "@@d[@@c-color    @@d]@@c You don't receive 'ANSI' color.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_AUTOEXIT )
-                    ? "[+AUTOEXIT ] You automatically see exits.\n\r"
-                    : "[-autoexit ] You don't automatically see exits.\n\r", ch );
+                    ? "@@d[@@a+AUTOEXIT @@d]@@a You automatically see exits.@@N\n\r"
+                    : "@@d[@@c-autoexit @@d]@@c You don't automatically see exits.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_AUTOLOOT )
-                    ? "[+AUTOLOOT ] You automatically loot corpses.\n\r"
-                    : "[-autoloot ] You don't automatically loot corpses.\n\r", ch );
+                    ? "@@d[@@a+AUTOLOOT @@d]@@a You automatically loot corpses.@@N\n\r"
+                    : "@@d[@@c-autoloot @@d]@@c You don't automatically loot corpses.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_AUTOSAC )
-                    ? "[+AUTOSAC  ] You automatically sacrifice corpses.\n\r"
-                    : "[-autosac  ] You don't automatically sacrifice corpses.\n\r", ch );
+                    ? "@@d[@@a+AUTOSAC  @@d]@@a You automatically sacrifice corpses.@@N\n\r"
+                    : "@@d[@@c-autosac  @@d]@@c You don't automatically sacrifice corpses.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_BLANK )
-                    ? "[+BLANK    ] You have a blank line before your prompt.\n\r"
-                    : "[-blank    ] You have no blank line before your prompt.\n\r", ch );
+                    ? "@@d[@@a+BLANK    @@d]@@a You have a blank line before your prompt.@@N\n\r"
+                    : "@@d[@@c-blank    @@d]@@c You have no blank line before your prompt.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_BRIEF )
-                    ? "[+BRIEF    ] You see brief descriptions.\n\r" : "[-brief    ] You see long descriptions.\n\r", ch );
+                    ? "@@d[@@a+BRIEF    @@d]@@a You see brief descriptions.\n\r" : "@@d[-brief    @@d]@@c You see long descriptions.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_COMBINE )
-                    ? "[+COMBINE  ] You see object lists in combined format.\n\r"
-                    : "[-combine  ] You see object lists in single format.\n\r", ch );
+                    ? "@@d[@@a+COMBINE  @@d]@@a You see object lists in combined format.@@N\n\r"
+                    : "@@d[@@c-combine  @@d]@@c You see object lists in single format.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_PROMPT )
-                    ? "[+PROMPT   ] You have a prompt.\n\r" : "[-prompt   ] You don't have a prompt.\n\r", ch );
+                    ? "@@d[@@a+PROMPT   @@d]@@a You have a prompt.\n\r" : "@@d[-prompt   @@d]@@c You don't have a prompt.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_TELNET_GA )
-                    ? "[+TELNETGA ] You receive a telnet GA sequence.\n\r"
-                    : "[-telnetga ] You don't receive a telnet GA sequence.\n\r", ch );
+                    ? "@@d[@@a+TELNETGA @@d]@@a You receive a telnet GA sequence.@@N\n\r"
+                    : "@@d[@@c-telnetga @@d]@@c You don't receive a telnet GA sequence.@@N\n\r", ch );
       send_to_char( IS_SET( ch->config, CONFIG_FULL_ANSI )
-                    ? "[+FULLANSI ] Your client supports FULL ANSI.\n\r"
-                    : "[-fullansi ] Your client does not support full ANSI (GMUD).\n\r", ch );
+                    ? "@@d[@@a+FULLANSI @@d]@@a Your client supports FULL ANSI.@@N\n\r"
+                    : "@@d[@@c-fullansi @@d]@@c Your client does not support full ANSI (GMUD).@@N\n\r", ch );
       send_to_char( IS_SET( ch->config, CONFIG_MAPPER )
-                    ? "[+DISPLAY  ] You are viewing the ASCII display map!\n\r"
-                    : "[-display  ] Your are not viewing the ASCII display map.\n\r", ch );
+                    ? "@@d[@@a+DISPLAY  @@d]@@a You are viewing the ASCII display map!@@N\n\r"
+                    : "@@d[@@c-display  @@d]@@c Your are not viewing the ASCII display map.@@N\n\r", ch );
       send_to_char( IS_SET( ch->config, CONFIG_JUSTIFY )
-                    ? "[+JUSTIFY  ] You are viewing rooms in space justified format.\n\r"
-                    : "[-justify  ] Your are not viewing rooms space justified.\n\r", ch );
-      send_to_char( IS_SET( ch->act, PLR_NO_PRAY ) ? "[+NOPRAY   ] You cannot use 'pray'.\n\r" : "", ch );
+                    ? "@@d[@@a+JUSTIFY  @@d]@@a You are viewing rooms in space justified format.@@N\n\r"
+                    : "@@d[@@c-justify  @@d]@@c Your are not viewing rooms space justified.@@N\n\r", ch );
+      send_to_char( IS_SET( ch->act, PLR_NO_PRAY ) ? "@@d[@@a+NOPRAY   @@d]@@a You cannot use 'pray'.@@N\n\r" : "", ch );
 
-      send_to_char( IS_SET( ch->act, PLR_SILENCE ) ? "[+SILENCE  ] You are silenced.\n\r" : "", ch );
+      send_to_char( IS_SET( ch->act, PLR_SILENCE ) ? "@@d[@@a+SILENCE  @@d]@@a You are silenced.@@N\n\r" : "", ch );
 
-      send_to_char( !IS_SET( ch->act, PLR_NO_EMOTE ) ? "" : "[-emote    ] You can't emote.\n\r", ch );
+      send_to_char( !IS_SET( ch->act, PLR_NO_EMOTE ) ? "" : "@@d[@@c-emote    @@d]@@c You can't emote.@@N\n\r", ch );
 
-      send_to_char( !IS_SET( ch->act, PLR_NO_TELL ) ? "" : "[-tell     ] You can't use 'tell'.\n\r", ch );
+      send_to_char( !IS_SET( ch->act, PLR_NO_TELL ) ? "" : "@@d[@@c-tell     @@d]@@c You can't use 'tell'.@@N\n\r", ch );
       sprintf( buf, "Terminal set to:  %i Rows, %i Columns.\n\r", ch->pcdata->term_rows, ch->pcdata->term_columns );
       send_to_char( buf, ch );
    }

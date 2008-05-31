@@ -557,7 +557,7 @@ void quest_inform( void )
       do_crusade( quest_mob, buf );
    if( quest_timer == 1 )
    {
-      sprintf( buf, " %s is crusading for %s ", NAME( quest_mob ), quest_object->short_descr );
+      sprintf( buf, "%s is crusading for %s ", NAME( quest_mob ), quest_object->short_descr );
       info( buf, 5 );
    }
    if( !quest_mob )
