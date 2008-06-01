@@ -383,7 +383,7 @@ void violence_update( void )
 
                      if( target != NULL )
                      {
-                        if( abs( target->level - rch->level ) < 40 )
+                        if( abs( target->level - rch->level ) < 40 && rch != quest_mob ) /* Don't want the quest mob involved in the brawl. --Kline */
                            multi_hit( rch, target, TYPE_UNDEFINED );
                      }
                   }
