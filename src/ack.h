@@ -1443,7 +1443,6 @@ void append_file args( ( CHAR_DATA * ch, char *file, char *str ) );
 void bug args( ( const char *str, int param ) );
 void log_string args( ( const char *str ) );
 void tail_chain args( ( void ) );
-void safe_strcat args( ( int max_len, char *dest, char *source ) );
 void send_to_descrips args( ( const char *message ) );
 void bug_string args( ( const char *str, const char *str2 ) );
 /* Added stuff -Flar */

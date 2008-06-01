@@ -1024,14 +1024,14 @@ void build_arealist( CHAR_DATA * ch, char *argument )
       stop_counter++;
       if( stop_counter > 40 )
       {
-         safe_strcat( MSL, msg, buf );
+         xcat( msg, buf );
          stop_counter = 0;
          send_to_char( msg, ch );
          msg[0] = '\0';
       }
       else
       {
-         safe_strcat( MAX_STRING_LENGTH, msg, buf );
+         xcat( msg, buf );
       }
    }
 

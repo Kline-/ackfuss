@@ -3414,12 +3414,12 @@ void do_areas( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg1, "all" ) )
       fall = TRUE;
    xprintf( buf, "@@W" mudnamecolor " AREA LISTING\n\r" );
-   safe_strcat( MAX_STRING_LENGTH, buf, "+-------+------------+------------------------------------------------+\n\r" );
-   safe_strcat( MAX_STRING_LENGTH, buf,
+   xcat( buf, "+-------+------------+------------------------------------------------+\n\r" );
+   xcat( buf,
                 "| @@yLevel@@W |            |                                                |\n\r" );
-   safe_strcat( MAX_STRING_LENGTH, buf,
+   xcat( buf,
                 "| @@yrange@@W |   @@yAuthor@@W   |      @@yName of Area@@W                              |\n\r" );
-   safe_strcat( MAX_STRING_LENGTH, buf, "+-------+------------+------------------------------------------------+\n\r" );
+   xcat( buf, "+-------+------------+------------------------------------------------+\n\r" );
 
    foo = 0;
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
@@ -3432,10 +3432,10 @@ void do_areas( CHAR_DATA * ch, char *argument )
 
       foo++;
       xprintf( msg, " %s %12s          %s\n\r", pArea->level_label, capitalize( pArea->owner ), pArea->name );
-      safe_strcat( MAX_STRING_LENGTH, buf, msg );
+      xcat( buf, msg );
    }
    xprintf( msg, "@@R%d Areas listed.\n\r@@N Type areas all to list the entire " mudnamecolor " realm.\n\r@@N", foo );
-   safe_strcat( MAX_STRING_LENGTH, buf, msg );
+   xcat( buf, msg );
    send_to_char( buf, ch );
    return;
 }

@@ -162,7 +162,7 @@ void checkexits( ROOM_INDEX_DATA * room, AREA_DATA * pArea, char *buffer )
             else
                room_pair( room, to_room, exit_to, buf ); /* > */
 
-            strcat( buffer, buf );
+            xcat( buffer, buf );
          }
          else if( ( room->area != pArea ) && ( exit->to_room->area == pArea ) )
          {  /* an exit from another area to our area */
@@ -173,7 +173,7 @@ void checkexits( ROOM_INDEX_DATA * room, AREA_DATA * pArea, char *buffer )
                 */
             {
                room_pair( to_room, room, exit_from, buf );
-               strcat( buffer, buf );
+               xcat( buffer, buf );
             }
 
          }  /* if room->area */
@@ -230,7 +230,7 @@ void do_vlist( CHAR_DATA * ch, char *argument )
             /*
              * something there or unused ? 
              */
-            strcat( buffer, buf2 );
+            xcat( buffer, buf2 );
          }
       }  /* for columns */
 

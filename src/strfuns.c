@@ -77,12 +77,12 @@ void pre_parse( char *list, char *victimname, char *containername, char *things 
          {
             argument = one_argument( argument, one_object );
             xprintf( holdbuf, "%s %s ", arg1, one_object );
-            safe_strcat( MSL, object_list, holdbuf );
+            xcat( object_list, holdbuf );
          }
          else
          {
             xprintf( holdbuf, "1 %s ", arg1 );
-            safe_strcat( MSL, object_list, holdbuf );
+            xcat( object_list, holdbuf );
          }
       }
    }
@@ -129,63 +129,6 @@ bool is_name( const char *str, char *namelist )
          return TRUE;
    }
 }
-void safe_strcat( int max_len, char *dest, char *source )
-{
-   int a;
-   char c;
-   char *orig_dest;
-   char *orig_source;
-
-   if( dest == NULL && source == NULL )
-      return;
-
-   if( dest == NULL )
-   {
-      fprintf( stderr, "safe_strcat: Null dest string for source : %s\n", source );
-      return;
-   }
-
-   if( source == NULL )
-   {
-      fprintf( stderr, "safe_strcat: NULL source for dest : %s\n", dest );
-      return;
-   }
-
-   orig_dest = dest;
-   orig_source = source;
-
-   while( *dest != '\0' )  /* Check to see if dest is already over limit. */
-      dest++;
-
-   a = dest - orig_dest;
-   if( a > max_len )
-   {
-      fprintf( stderr, "WARNING: dest string already too long:\nsource: %s\ndest: %s\n", source, orig_dest );
-      return;
-   }
-
-   if( a == max_len )
-   {
-      fprintf( stderr, "safe_strcat: string too long, source is : %s\n", orig_source );
-      return;
-   }
-
-   while( ( c = *( source++ ) ) != 0 )
-   {
-      *( dest++ ) = c;
-      a++;
-      if( a == max_len )
-      {
-         *( --dest ) = '\0';
-         fprintf( stderr, "safe_strcat: string too long, source is : %s\n", orig_source );
-         return;
-      }
-   }
-
-   *dest = '\0';
-   return;
-}
-
 
 char *space_pad( const char *str, sh_int final_size )
 {
@@ -194,7 +137,7 @@ char *space_pad( const char *str, sh_int final_size )
 
    xprintf( padbuf, "%s", str );
    for( ; space_pad != final_size; space_pad++ )
-      safe_strcat( MSL, padbuf, " " );
+      xcat( padbuf, " " );
    return padbuf;
 }
 
@@ -1321,37 +1264,37 @@ char *raffect_bit_name( int vector )
    rbuf[0] = '\0';
 
    if( vector & ROOM_BV_NONE )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " NONE" );
+      xcat( rbuf, " NONE" );
    if( vector & ROOM_BV_SILENCE )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " Silence" );
+      xcat( rbuf, " Silence" );
    if( vector & ROOM_BV_SAFE )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " Safe" );
+      xcat( rbuf, " Safe" );
    if( vector & ROOM_BV_ENCAPS )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " Seal Room" );
+      xcat( rbuf, " Seal Room" );
    if( vector & ROOM_BV_SHADE )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " Shade" );
+      xcat( rbuf, " Shade" );
    if( vector & ROOM_BV_HEAL_REGEN )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@mHealing Light@@N" );
+      xcat( rbuf, " @@mHealing Light@@N" );
    if( vector & ROOM_BV_HEAL_STEAL )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@dWither Shadow@@N" );
+      xcat( rbuf, " @@dWither Shadow@@N" );
    if( vector & ROOM_BV_MANA_REGEN )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@eMana Flare@@N" );
+      xcat( rbuf, " @@eMana Flare@@N" );
    if( vector & ROOM_BV_MANA_STEAL )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@dMana Drain@@N" );
+      xcat( rbuf, " @@dMana Drain@@N" );
    if( vector & ROOM_BV_FIRE_RUNE )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@eFire @@NRune" );
+      xcat( rbuf, " @@eFire @@NRune" );
    if( vector & ROOM_BV_FIRE_TRAP )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@eFire @@NTrap" );
+      xcat( rbuf, " @@eFire @@NTrap" );
    if( vector & ROOM_BV_DAMAGE_TRAP )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@dDamage @@NTrap" );
+      xcat( rbuf, " @@dDamage @@NTrap" );
    if( vector & ROOM_BV_SHOCK_RUNE )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@lShock @@NRune" );
+      xcat( rbuf, " @@lShock @@NRune" );
    if( vector & ROOM_BV_SHOCK_TRAP )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@lShock @@NTrap" );
+      xcat( rbuf, " @@lShock @@NTrap" );
    if( vector & ROOM_BV_HOLD )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@rCage@@N" );
+      xcat( rbuf, " @@rCage@@N" );
    if( vector & ROOM_BV_POISON_RUNE )
-      safe_strcat( MAX_STRING_LENGTH, rbuf, " @@Poison@@N Rune" );
+      xcat( rbuf, " @@Poison@@N Rune" );
 
    return ( rbuf[0] != '\0' ) ? rbuf + 1 : "none";
 
@@ -1366,58 +1309,58 @@ char *affect_bit_name( int vector )
 
    buf[0] = '\0';
    if( vector & AFF_BLIND )
-      safe_strcat( MAX_STRING_LENGTH, buf, " blind" );
+      xcat( buf, " blind" );
    if( vector & AFF_INVISIBLE )
-      safe_strcat( MAX_STRING_LENGTH, buf, " invisible" );
+      xcat( buf, " invisible" );
    if( vector & AFF_DETECT_EVIL )
-      safe_strcat( MAX_STRING_LENGTH, buf, " detect_evil" );
+      xcat( buf, " detect_evil" );
    if( vector & AFF_DETECT_INVIS )
-      safe_strcat( MAX_STRING_LENGTH, buf, " detect_invis" );
+      xcat( buf, " detect_invis" );
    if( vector & AFF_DETECT_MAGIC )
-      safe_strcat( MAX_STRING_LENGTH, buf, " detect_magic" );
+      xcat( buf, " detect_magic" );
    if( vector & AFF_DETECT_HIDDEN )
-      safe_strcat( MAX_STRING_LENGTH, buf, " detect_hidden" );
+      xcat( buf, " detect_hidden" );
    if( vector & AFF_HOLD )
-      safe_strcat( MAX_STRING_LENGTH, buf, " hold" );
+      xcat( buf, " hold" );
    if( vector & AFF_SANCTUARY )
-      safe_strcat( MAX_STRING_LENGTH, buf, " sanctuary" );
+      xcat( buf, " sanctuary" );
    if( vector & AFF_FAERIE_FIRE )
-      safe_strcat( MAX_STRING_LENGTH, buf, " faerie_fire" );
+      xcat( buf, " faerie_fire" );
    if( vector & AFF_INFRARED )
-      safe_strcat( MAX_STRING_LENGTH, buf, " infrared" );
+      xcat( buf, " infrared" );
    if( vector & AFF_CURSE )
-      safe_strcat( MAX_STRING_LENGTH, buf, " curse" );
+      xcat( buf, " curse" );
    if( vector & AFF_CLOAK_FLAMING )
-      safe_strcat( MAX_STRING_LENGTH, buf, " flaming" );
+      xcat( buf, " flaming" );
    if( vector & AFF_POISON )
-      safe_strcat( MAX_STRING_LENGTH, buf, " poison" );
+      xcat( buf, " poison" );
    if( vector & AFF_PROTECT )
-      safe_strcat( MAX_STRING_LENGTH, buf, " protect" );
+      xcat( buf, " protect" );
    if( vector & AFF_PARALYSIS )
-      safe_strcat( MAX_STRING_LENGTH, buf, " paralysis" );
+      xcat( buf, " paralysis" );
    if( vector & AFF_SLEEP )
-      safe_strcat( MAX_STRING_LENGTH, buf, " sleep" );
+      xcat( buf, " sleep" );
    if( vector & AFF_SNEAK )
-      safe_strcat( MAX_STRING_LENGTH, buf, " sneak" );
+      xcat( buf, " sneak" );
    if( vector & AFF_HIDE )
-      safe_strcat( MAX_STRING_LENGTH, buf, " hide" );
+      xcat( buf, " hide" );
    if( vector & AFF_CHARM )
-      safe_strcat( MAX_STRING_LENGTH, buf, " charm" );
+      xcat( buf, " charm" );
    if( vector & AFF_FLYING )
-      safe_strcat( MAX_STRING_LENGTH, buf, " flying" );
+      xcat( buf, " flying" );
    if( vector & AFF_PASS_DOOR )
-      safe_strcat( MAX_STRING_LENGTH, buf, " pass_door" );
+      xcat( buf, " pass_door" );
 
    if( vector & AFF_CLOAK_REFLECTION )
-      safe_strcat( MAX_STRING_LENGTH, buf, " cloak:reflection" );
+      xcat( buf, " cloak:reflection" );
    if( vector & AFF_CLOAK_ABSORPTION )
-      safe_strcat( MAX_STRING_LENGTH, buf, " cloak:absorption" );
+      xcat( buf, " cloak:absorption" );
 
 
    if( vector & AFF_CLOAK_ADEPT )
-      safe_strcat( MAX_STRING_LENGTH, buf, " cloak:adept" );
+      xcat( buf, " cloak:adept" );
    if( vector & AFF_CLOAK_REGEN )
-      safe_strcat( MAX_STRING_LENGTH, buf, " cloak:regeneration" );
+      xcat( buf, " cloak:regeneration" );
 
 
 
@@ -1439,57 +1382,57 @@ char *extra_bit_name( int extra_flags )
 
    buf[0] = '\0';
    if( extra_flags & ITEM_GLOW )
-      safe_strcat( MAX_STRING_LENGTH, buf, " glow" );
+      xcat( buf, " glow" );
    if( extra_flags & ITEM_HUM )
-      safe_strcat( MAX_STRING_LENGTH, buf, " hum" );
+      xcat( buf, " hum" );
    if( extra_flags & ITEM_DARK )
-      safe_strcat( MAX_STRING_LENGTH, buf, " nodisarm" );
+      xcat( buf, " nodisarm" );
    if( extra_flags & ITEM_LOCK )
-      safe_strcat( MAX_STRING_LENGTH, buf, " lock" );
+      xcat( buf, " lock" );
    if( extra_flags & ITEM_EVIL )
-      safe_strcat( MAX_STRING_LENGTH, buf, " evil" );
+      xcat( buf, " evil" );
    if( extra_flags & ITEM_INVIS )
-      safe_strcat( MAX_STRING_LENGTH, buf, " invis" );
+      xcat( buf, " invis" );
    if( extra_flags & ITEM_MAGIC )
-      safe_strcat( MAX_STRING_LENGTH, buf, " magic" );
+      xcat( buf, " magic" );
    if( extra_flags & ITEM_NODROP )
-      safe_strcat( MAX_STRING_LENGTH, buf, " nodrop" );
+      xcat( buf, " nodrop" );
    if( extra_flags & ITEM_BLESS )
-      safe_strcat( MAX_STRING_LENGTH, buf, " bless" );
+      xcat( buf, " bless" );
    if( extra_flags & ITEM_ANTI_GOOD )
-      safe_strcat( MAX_STRING_LENGTH, buf, " anti-good" );
+      xcat( buf, " anti-good" );
    if( extra_flags & ITEM_ANTI_EVIL )
-      safe_strcat( MAX_STRING_LENGTH, buf, " anti-evil" );
+      xcat( buf, " anti-evil" );
    if( extra_flags & ITEM_ANTI_NEUTRAL )
-      safe_strcat( MAX_STRING_LENGTH, buf, " anti-neutral" );
+      xcat( buf, " anti-neutral" );
    if( extra_flags & ITEM_NOREMOVE )
-      safe_strcat( MAX_STRING_LENGTH, buf, " noremove" );
+      xcat( buf, " noremove" );
    if( extra_flags & ITEM_INVENTORY )
-      safe_strcat( MAX_STRING_LENGTH, buf, " inventory" );
+      xcat( buf, " inventory" );
    if( extra_flags & ITEM_NOLOOT )
-      safe_strcat( MAX_STRING_LENGTH, buf, " noloot" );
+      xcat( buf, " noloot" );
    if( extra_flags & ITEM_NOSAC )
-      safe_strcat( MAX_STRING_LENGTH, buf, " nosac" );
+      xcat( buf, " nosac" );
    if( extra_flags & ITEM_REMORT )
-      safe_strcat( MAX_STRING_LENGTH, buf, " remort" );
+      xcat( buf, " remort" );
    if( extra_flags & ITEM_CLAN_EQ )
-      safe_strcat( MAX_STRING_LENGTH, buf, " claneq" );
+      xcat( buf, " claneq" );
    if( extra_flags & ITEM_NOSAVE )
-      safe_strcat( MAX_STRING_LENGTH, buf, " nosave" );
+      xcat( buf, " nosave" );
    if( extra_flags & ITEM_NO_AUCTION )
-      safe_strcat( MAX_STRING_LENGTH, buf, " no_auction" );
+      xcat( buf, " no_auction" );
    if( extra_flags & ITEM_RARE )
-      safe_strcat( MAX_STRING_LENGTH, buf, " rare" );
+      xcat( buf, " rare" );
    if( extra_flags & ITEM_VAMP )
-      safe_strcat( MAX_STRING_LENGTH, buf, " vamp" );
+      xcat( buf, " vamp" );
    if( extra_flags & ITEM_UNIQUE )
-      safe_strcat( MAX_STRING_LENGTH, buf, " unique" );
+      xcat( buf, " unique" );
    if( extra_flags & ITEM_TRIG_DESTROY )
-      safe_strcat( MAX_STRING_LENGTH, buf, " trigger:destroy" );
+      xcat( buf, " trigger:destroy" );
    if( extra_flags & ITEM_LIFESTEALER )
-      safe_strcat( MAX_STRING_LENGTH, buf, " lifestealer" );
+      xcat( buf, " lifestealer" );
    if( extra_flags & ITEM_SILVER )
-      safe_strcat( MAX_STRING_LENGTH, buf, " silver" );
+      xcat( buf, " silver" );
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }
@@ -1595,7 +1538,7 @@ void safe_printf( const char *file, const char *function, int line, int size, ch
  vsprintf(buf,fmt,args);
  va_end(args);
 
- /*Max Alloc Size is allot!*/
+ /*Max Alloc Size is alot!*/
  if( size > MAS )
  {
   /*Yes, this is a potential loop bug if infact the xprintf does collapse in on itself..*/
@@ -1645,3 +1588,58 @@ void safe_printf( const char *file, const char *function, int line, int size, ch
   }
  }
 }
+
+void safe_strcat( const char *file, const char *function, int line, int size, char *prev, char *next, ... )
+{
+ char buf[MAS];
+ va_list args;
+ va_start(args,next);
+ vsprintf(buf,next,args);
+ va_end(args);
+
+ /*Max Alloc Size is alot!*/
+ if( size > MAS )
+ {
+  xprintf_2(bug_buf,"xcat buffer overflow: %s",next);
+  log_string(bug_buf);
+  monitor_chan(bug_buf,MONITOR_DEBUG);
+
+  xprintf_2(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
+  log_string(bug_buf);
+  monitor_chan(bug_buf,MONITOR_DEBUG);
+
+  return;
+ }
+
+ if( (unsigned)size < strlen(buf)+1 )
+ {
+  xprintf_2(bug_buf,"xcat buffer overflow: %s",next);
+  log_string(bug_buf);
+  monitor_chan(bug_buf,MONITOR_DEBUG);
+
+  xprintf_2(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+  log_string(bug_buf);
+  monitor_chan(bug_buf,MONITOR_DEBUG);
+
+
+  return;
+ }
+ else
+ {
+  strcat(prev,buf);
+
+  /*Just double checking.*/
+  if( strlen(prev) > (unsigned)size - 1 )
+  {
+   xprintf_2(bug_buf,"xcat buffer overflow: %s",next);
+   log_string(bug_buf);
+   monitor_chan(bug_buf,MONITOR_DEBUG);
+
+   xprintf_2(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+   log_string(bug_buf);
+   monitor_chan(bug_buf,MONITOR_DEBUG);
+   return;
+  }
+ }
+}
+

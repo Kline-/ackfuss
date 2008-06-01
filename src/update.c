@@ -1010,12 +1010,12 @@ void weather_update( void )
    {
       case 5:
          weather_info.sunlight = SUN_LIGHT;
-         strcat( buf, "The sky shows signs of daybreak.\n\r" );
+         xcat( buf, "The sky shows signs of daybreak.\n\r" );
          break;
 
       case 6:
          weather_info.sunlight = SUN_RISE;
-         strcat( buf, "The sun rises in the east.\n\r" );
+         xcat( buf, "The sun rises in the east.\n\r" );
          for( x = 1; x < MAX_CLAN; x++ )
             for( y = 1; y < MAX_CLAN; y++ )
                politics_data.daily_negotiate_table[x][y] = FALSE;
@@ -1030,7 +1030,7 @@ void weather_update( void )
 
       case 19:
          weather_info.sunlight = SUN_SET;
-         strcat( buf, "The sun slowly disappears in the west.\n\r" );
+         xcat( buf, "The sun slowly disappears in the west.\n\r" );
          for( x = 1; x < MAX_CLAN; x++ )
             for( y = 1; y < MAX_CLAN; y++ )
                politics_data.daily_negotiate_table[x][y] = FALSE;
@@ -1038,7 +1038,7 @@ void weather_update( void )
 
       case 20:
          weather_info.sunlight = SUN_DARK;
-         strcat( buf, "The night has begun.\n\r" );
+         xcat( buf, "The night has begun.\n\r" );
          break;
 
       case 24:
@@ -1065,32 +1065,32 @@ void weather_update( void )
       case 5:
          weather_info.moon_loc = MOON_RISE;
          xprintf( buf2, "@@NA %s @@yMoon @@Nhas risen.\n\r", get_moon_phase_name(  ) );
-         safe_strcat( MSL, buf, buf2 );
+         xcat( buf, buf2 );
          break;
       case 10:
          weather_info.moon_loc = MOON_LOW;
          xprintf( buf2, "@@NThe %s @@yMoon @@Nrides low on the horizon.\n\r", get_moon_phase_name(  ) );
-         safe_strcat( MSL, buf, buf2 );
+         xcat( buf, buf2 );
          break;
       case 15:
          weather_info.moon_loc = MOON_PEAK;
          xprintf( buf2, "@@NThe %s @@yMoon @@Nreaches it's zenith.\n\r", get_moon_phase_name(  ) );
-         safe_strcat( MSL, buf, buf2 );
+         xcat( buf, buf2 );
          break;
       case 20:
          weather_info.moon_loc = MOON_FALL;
          xprintf( buf2, "@@NThe %s @@yMoon @@Nfalls.\n\r", get_moon_phase_name(  ) );
-         safe_strcat( MSL, buf, buf2 );
+         xcat( buf, buf2 );
          break;
       case 25:
          weather_info.moon_loc = MOON_SET;
          xprintf( buf2, "@@NThe %s @@yMoon @@Nis setting.\n\r", get_moon_phase_name(  ) );
-         safe_strcat( MSL, buf, buf2 );
+         xcat( buf, buf2 );
          break;
       case 30:
          weather_info.moon_loc = MOON_DOWN;
          xprintf( buf2, "@@NThe %s @@yMoon @@Nhas left the sky.\n\r", get_moon_phase_name(  ) );
-         safe_strcat( MSL, buf, buf2 );
+         xcat( buf, buf2 );
          break;
 
       default:
@@ -1151,7 +1151,7 @@ void weather_update( void )
       case SKY_CLOUDLESS:
          if( weather_info.mmhg < 990 || ( weather_info.mmhg < 1010 && number_bits( 2 ) == 0 ) )
          {
-            strcat( buf, "The sky is getting cloudy.\n\r" );
+            xcat( buf, "The sky is getting cloudy.\n\r" );
             weather_info.sky = SKY_CLOUDY;
          }
          break;
@@ -1159,13 +1159,13 @@ void weather_update( void )
       case SKY_CLOUDY:
          if( weather_info.mmhg < 970 || ( weather_info.mmhg < 990 && number_bits( 2 ) == 0 ) )
          {
-            strcat( buf, "It starts to rain.\n\r" );
+            xcat( buf, "It starts to rain.\n\r" );
             weather_info.sky = SKY_RAINING;
          }
 
          if( weather_info.mmhg > 1030 && number_bits( 2 ) == 0 )
          {
-            strcat( buf, "The clouds disappear.\n\r" );
+            xcat( buf, "The clouds disappear.\n\r" );
             weather_info.sky = SKY_CLOUDLESS;
          }
          break;
@@ -1173,13 +1173,13 @@ void weather_update( void )
       case SKY_RAINING:
          if( weather_info.mmhg < 970 && number_bits( 2 ) == 0 )
          {
-            strcat( buf, "Lightning flashes in the sky.\n\r" );
+            xcat( buf, "Lightning flashes in the sky.\n\r" );
             weather_info.sky = SKY_LIGHTNING;
          }
 
          if( weather_info.mmhg > 1030 || ( weather_info.mmhg > 1010 && number_bits( 2 ) == 0 ) )
          {
-            strcat( buf, "The rain stopped.\n\r" );
+            xcat( buf, "The rain stopped.\n\r" );
             weather_info.sky = SKY_CLOUDY;
          }
          break;
@@ -1187,7 +1187,7 @@ void weather_update( void )
       case SKY_LIGHTNING:
          if( weather_info.mmhg > 1010 || ( weather_info.mmhg > 990 && number_bits( 2 ) == 0 ) )
          {
-            strcat( buf, "The lightning has stopped.\n\r" );
+            xcat( buf, "The lightning has stopped.\n\r" );
             weather_info.sky = SKY_RAINING;
             break;
          }

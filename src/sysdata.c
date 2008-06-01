@@ -120,16 +120,16 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
       sh_int looper;
       xprintf( outbuf, "%s", "System data for " mudnamecolor ":\n\r" );
       xprintf( catbuf, "Playtesters: %s\n\r", sysdata.playtesters );
-      safe_strcat( MSL, outbuf, catbuf );
+      xcat( outbuf, catbuf );
       for( looper = 0; looper < MAX_NUM_IMMS; looper++ )
       {
          xprintf( catbuf, "Level %d Immortals: %s\n\r", 81 + looper, sysdata.imms[looper].this_string );
-         safe_strcat( MSL, outbuf, catbuf );
+         xcat( outbuf, catbuf );
       }
       xprintf( catbuf, "Wizlocked: %s\n\r", ( wizlock ? "Yes" : "No" ) );
-      safe_strcat( MSL, outbuf, catbuf );
+      xcat( outbuf, catbuf );
       xprintf( catbuf, "Show Players Damage numbers in combat: %s\n\r", ( sysdata.shownumbers ? "Yes" : "No" ) );
-      safe_strcat( MSL, outbuf, catbuf );
+      xcat( outbuf, catbuf );
       send_to_char( outbuf, ch );
       return;
    }

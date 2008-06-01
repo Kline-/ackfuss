@@ -273,16 +273,16 @@ void do_politics( CHAR_DATA * ch, char *argument )
    buf2[0] = '\0';
 
    xprintf( buf, "        " );
-   safe_strcat( MAX_STRING_LENGTH, buf2, buf );
+   xcat( buf2, buf );
 
    for( x = 1; x < MAX_CLAN; x++ )
    {
       xprintf( buf, " %s  ", clan_table[x].clan_abbr );
-      safe_strcat( MAX_STRING_LENGTH, buf2, buf );
+      xcat( buf2, buf );
    }
    buf[0] = '\0';
    xprintf( buf, "\n\r\n\r" );
-   safe_strcat( MAX_STRING_LENGTH, buf2, buf );
+   xcat( buf2, buf );
 
    send_to_char( buf2, ch );
 
@@ -294,7 +294,7 @@ void do_politics( CHAR_DATA * ch, char *argument )
       buf[0] = '\0';
       buf2[0] = '\0';
       xprintf( buf, "%1i %s ", x, clan_table[x].clan_abbr );
-      safe_strcat( MAX_STRING_LENGTH, buf2, buf );
+      xcat( buf2, buf );
 
       for( y = 1; y < MAX_CLAN; y++ )
       {
@@ -302,19 +302,19 @@ void do_politics( CHAR_DATA * ch, char *argument )
          if( x != y )
          {
             xprintf( buf, "%s ", get_diplo_name( politics_data.diplomacy[x][y] ) );
-            safe_strcat( MAX_STRING_LENGTH, buf2, buf );
+            xcat( buf2, buf );
          }
          else
          {
             xprintf( buf, "        " );
-            safe_strcat( MAX_STRING_LENGTH, buf2, buf );
+            xcat( buf2, buf );
          }
 
 
 
       }
       xprintf( buf, "\n\r\n\r" );
-      safe_strcat( MAX_STRING_LENGTH, buf2, buf );
+      xcat( buf2, buf );
       send_to_char( buf2, ch );
    }
    if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
@@ -681,20 +681,20 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
          if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_BOSS ) )
          {
             if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_LEADER ) )
-               safe_strcat( MAX_STRING_LENGTH, buf, " L " );
+               xcat( buf, " L " );
 
             if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_ARMOURER ) )
-               safe_strcat( MAX_STRING_LENGTH, buf, " A " );
+               xcat( buf, " A " );
 
 
             if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_TREASURER ) )
-               safe_strcat( MAX_STRING_LENGTH, buf, " T " );
+               xcat( buf, " T " );
 
 
             if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
-               safe_strcat( MAX_STRING_LENGTH, buf, " D " );
+               xcat( buf, " D " );
          }
-         safe_strcat( MAX_STRING_LENGTH, buf, "\n\r" );
+         xcat( buf, "\n\r" );
 
 
          send_to_char( buf, ch );
@@ -992,7 +992,7 @@ void do_council( CHAR_DATA * ch, char *argument )
       for( imember = super_councils[this_council].first_member; imember != NULL; imember = imember->next )
       {
          xprintf( buf2, "%s\n\r", imember->this_member->name );
-         safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
+         xcat( buf, buf2 );
       }
       send_to_char( buf, ch );
 
