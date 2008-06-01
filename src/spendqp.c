@@ -682,7 +682,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
          ch->current_brand->priority = str_dup( "" );
       }
 
-      build_strdup( &ch->current_brand->message, "$edit", TRUE, ch );
+      build_strdup( &ch->current_brand->message, "$edit", TRUE, FALSE, ch );
       return;
    }
 

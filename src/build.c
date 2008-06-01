@@ -1758,28 +1758,28 @@ void build_setmob( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "name" ) )
    {
-      build_strdup( &pMob->player_name, arg3, TRUE, ch );
+      build_strdup( &pMob->player_name, arg3, TRUE, FALSE, ch );
       area_modified( pArea );
       return;
    }
 
    if( !str_cmp( arg2, "short" ) )
    {
-      build_strdup( &pMob->short_descr, arg3, TRUE, ch );
+      build_strdup( &pMob->short_descr, arg3, TRUE, FALSE, ch );
       area_modified( pArea );
       return;
    }
 
    if( !str_cmp( arg2, "long" ) )
    {
-      build_strdup( &pMob->long_descr, arg3, TRUE, ch );
+      build_strdup( &pMob->long_descr, arg3, TRUE, TRUE, ch );
       area_modified( pArea );
       return;
    }
 
    if( !str_cmp( arg2, "desc" ) )
    {
-      build_strdup( &pMob->description, arg3, TRUE, ch );
+      build_strdup( &pMob->description, arg3, TRUE, FALSE, ch );
       area_modified( pArea );
       return;
    }
@@ -2129,13 +2129,13 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "name" ) )
    {
-      build_strdup( &location->name, arg2, TRUE, ch );
+      build_strdup( &location->name, arg2, TRUE, FALSE, ch );
       return;
    }
 
    if( !str_cmp( arg1, "desc" ) )
    {
-      build_strdup( &location->description, arg2, TRUE, ch );
+      build_strdup( &location->description, arg2, TRUE, FALSE, ch );
       return;
    }
 
@@ -2192,14 +2192,14 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       {
          GET_FREE( ed, exdesc_free );
 
-         build_strdup( &ed->keyword, arg2, FALSE, ch );
-         build_strdup( &ed->description, arg3, FALSE, ch );
+         build_strdup( &ed->keyword, arg2, FALSE, FALSE, ch );
+         build_strdup( &ed->description, arg3, FALSE, FALSE, ch );
          LINK( ed, location->first_exdesc, location->last_exdesc, next, prev );
          top_ed++;
          return;
       }
 
-      build_strdup( &ed->description, arg3, TRUE, ch );
+      build_strdup( &ed->description, arg3, TRUE, FALSE, ch );
       return;
 
    }
@@ -2381,7 +2381,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
                pDestExit->to_room = location;
                pDestExit->vnum = location->vnum;
                pDestExit->description = &str_empty[0];
-               build_strdup( &pDestExit->keyword, pExit->keyword, FALSE, ch );
+               build_strdup( &pDestExit->keyword, pExit->keyword, FALSE, FALSE, ch );
                pDestExit->exit_info = pExit->exit_info;
                pDestExit->key = pExit->exit_info;
                top_exit++;
@@ -2404,13 +2404,13 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
       if( !str_cmp( arg3, "keyword" ) )
       {
-         build_strdup( &pExit->keyword, arg4, TRUE, ch );
+         build_strdup( &pExit->keyword, arg4, TRUE, FALSE, ch );
          return;
       }
 
       if( !str_cmp( arg3, "desc" ) )
       {
-         build_strdup( &pExit->description, arg4, TRUE, ch );
+         build_strdup( &pExit->description, arg4, TRUE, FALSE, ch );
          return;
       }
 
@@ -2798,19 +2798,19 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "name" ) )
    {
-      build_strdup( &pObj->name, arg3, TRUE, ch );
+      build_strdup( &pObj->name, arg3, TRUE, FALSE, ch );
       return;
    }
 
    if( !str_cmp( arg2, "short" ) )
    {
-      build_strdup( &pObj->short_descr, arg3, TRUE, ch );
+      build_strdup( &pObj->short_descr, arg3, TRUE, FALSE, ch );
       return;
    }
 
    if( !str_cmp( arg2, "long" ) )
    {
-      build_strdup( &pObj->description, arg3, TRUE, ch );
+      build_strdup( &pObj->description, arg3, TRUE, TRUE, ch );
       return;
    }
 
@@ -2865,14 +2865,14 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       }
       if( found )
       {
-         build_strdup( &ed->description, argument, TRUE, ch );
+         build_strdup( &ed->description, argument, TRUE, FALSE, ch );
          return;
       }
 
 
       GET_FREE( ed, exdesc_free );
-      build_strdup( &ed->keyword, arg3, FALSE, ch );
-      build_strdup( &ed->description, argument, FALSE, ch );
+      build_strdup( &ed->keyword, arg3, FALSE, FALSE, ch );
+      build_strdup( &ed->description, argument, FALSE, FALSE, ch );
       LINK( ed, pObj->first_exdesc, pObj->last_exdesc, next, prev );
       return;
    }
@@ -4461,7 +4461,7 @@ char *build_simpstrdup( char *buf )
 {
    char *rvalue;
 
-   build_strdup( &rvalue, buf, FALSE, NULL );
+   build_strdup( &rvalue, buf, FALSE, FALSE, NULL );
    return rvalue;
 }
 
@@ -4469,7 +4469,7 @@ char *build_simpstrdup( char *buf )
 
 /* spec- rewritten to work correctly with SSM */
 
-void build_strdup( char **dest, char *src, bool freesrc, CHAR_DATA * ch )
+void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA * ch )
 {
    /*
     * Does the same as fread_string plus more, if there is enough memory. 
@@ -4607,6 +4607,12 @@ void build_strdup( char **dest, char *src, bool freesrc, CHAR_DATA * ch )
             if( *src )  /* don't overrun here.. */
                src++;
       }
+   }
+
+   if( newline ) /* Tack a newline on at the end --Kline */
+   {
+    *out++ = '\n';
+    *out++ = '\r';
    }
 
    *out = 0;
@@ -5625,7 +5631,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   build_strdup( &pHelp->text, "$edit", TRUE, ch );
+   build_strdup( &pHelp->text, "$edit", TRUE, FALSE, ch );
    /*
     * Mark the help's area as modified so the help saves... 
     */

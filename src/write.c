@@ -494,7 +494,15 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
                   srcspc = src - 1; /* Only use a dash if necessary */
                   destspc = n - 1;
                }
+            case '@': /* Color */
+             dest[n++] = c;
+             break;
             default:
+               if( dest[n - 1] == '@' ) /* We're a color code */
+               {
+                dest[n++] = c;
+                break;
+               }
                dest[n++] = c;
                col++;
                break;

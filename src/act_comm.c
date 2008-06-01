@@ -299,7 +299,7 @@ void do_note( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg, "write" ) || !str_cmp( arg, "edit" ) )
    {
       note_attach( ch );
-      build_strdup( &ch->pnote->text, "$edit", TRUE, ch );
+      build_strdup( &ch->pnote->text, "$edit", TRUE, FALSE, ch );
       return;
    }
 

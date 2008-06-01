@@ -70,7 +70,7 @@ extern int sAllocPerm;
 extern int fBootDb;
 
 /* Some build.c functions : */
-void build_strdup( char **dest, char *src, bool freesrc, CHAR_DATA * ch );
+void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA * ch );
 char *build_simpstrdup( char * );
 ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, sh_int vnum, sh_int sector );
 
@@ -730,28 +730,28 @@ void build_setarea( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "owner" ) )
    {
-      build_strdup( &pArea->owner, arg2, TRUE, ch );
+      build_strdup( &pArea->owner, arg2, TRUE, FALSE, ch );
       return;
    }
 
    if( !str_cmp( arg1, "title" ) )
    {
-      build_strdup( &pArea->name, argument, TRUE, ch );
+      build_strdup( &pArea->name, argument, TRUE, FALSE, ch );
       return;
    }
    if( !str_cmp( arg1, "level_label" ) )
    {
-      build_strdup( &pArea->level_label, argument, TRUE, ch );
+      build_strdup( &pArea->level_label, argument, TRUE, FALSE, ch );
       return;
    }
    if( !str_cmp( arg1, "keyword" ) )
    {
-      build_strdup( &pArea->keyword, arg2, TRUE, ch );
+      build_strdup( &pArea->keyword, arg2, TRUE, FALSE, ch );
       return;
    }
    if( !str_cmp( arg1, "message" ) )
    {
-      build_strdup( &pArea->reset_msg, arg2, TRUE, ch );
+      build_strdup( &pArea->reset_msg, arg2, TRUE, FALSE, ch );
       return;
    }
 

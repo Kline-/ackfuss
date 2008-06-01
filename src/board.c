@@ -761,7 +761,7 @@ void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
          }
          else
          {
-            build_strdup( &msg->message, "$edit", TRUE, ch );
+            build_strdup( &msg->message, "$edit", TRUE, FALSE, ch );
          }
 
       }
