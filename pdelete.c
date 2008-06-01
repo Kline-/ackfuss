@@ -54,7 +54,7 @@ void do_sdelete( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
    strcpy( buf, ch->name );
-   sprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", capitalize( buf ) );
+   xprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", capitalize( buf ) );
 
    pArg = arg1;
    while( isspace( *argument ) )

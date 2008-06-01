@@ -264,7 +264,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
 
    else if( !str_cmp( cmd, "show" ) )  /* Show a certain social */
    {
-      sprintf( buf, "Social: %s\n\r"
+      xprintf( buf, "Social: %s\n\r"
                "(cnoarg) No argument given, character sees:\n\r"
                "%s\n\r\n\r"
                "(onoarg) No argument given, others see:\n\r"

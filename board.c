@@ -163,7 +163,7 @@ void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
    for( msg = board->first_message; msg != NULL; msg = msg->next )
    {
       cnt++;
-      sprintf( buf, "[%3d] %12s : %s", cnt, msg->author, msg->title );
+      xprintf( buf, "[%3d] %12s : %s", cnt, msg->author, msg->title );
       send_to_char( buf, ch );
 
    }
@@ -202,7 +202,7 @@ BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj )
 
    fclose( fpReserve );
 
-   sprintf( buf, "%s/board.%i", BOARD_DIR, board->vnum );
+   xprintf( buf, "%s/board.%i", BOARD_DIR, board->vnum );
 
    if( ( board_file = fopen( buf, "r" ) ) != NULL )
    {
@@ -314,7 +314,7 @@ void save_board( BOARD_DATA * board, CHAR_DATA * ch )
    fclose( fpReserve );
 
 
-   sprintf( buf, "%s/board.%i", BOARD_DIR, board->vnum );
+   xprintf( buf, "%s/board.%i", BOARD_DIR, board->vnum );
    if( ( board_file = fopen( buf, "w" ) ) == NULL )
    {
       send_to_char( "Cannot save board, please contact an immortal.\n\r", ch );
@@ -523,7 +523,7 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
             send_to_char( "This is a private message.\n\r", ch );
             break;
          }
-         sprintf( buf, "** [%d] %12s : %s ** \n\r\n\r%s\n\r", cnt, msg->author, msg->title, msg->message );
+         xprintf( buf, "** [%d] %12s : %s ** \n\r\n\r%s\n\r", cnt, msg->author, msg->title, msg->message );
          send_to_char( buf, ch );
          break;
       }
@@ -604,7 +604,7 @@ void do_write( CHAR_DATA * ch, char *argument )
 
    GET_FREE( msg, message_free );   /* Dont put message in list till we  */
    msg->datetime = time( NULL ); /* we are sure we can edit.          */
-   sprintf( buf, "%s @@a%s@@N", argument, ( char * )ctime( &current_time ) );
+   xprintf( buf, "%s @@a%s@@N", argument, ( char * )ctime( &current_time ) );
    if( msg->title != NULL )
       free_string( msg->title );
    msg->title = str_dup( buf );

@@ -70,7 +70,6 @@ char *item_type_name args( ( OBJ_DATA * obj ) );
 char *affect_loc_name args( ( int location ) );
 char *affect_bit_name args( ( int vector ) );
 char *raffect_bit_name args( ( int vector ) );
-
 char *extra_bit_name args( ( int extra_flags ) );
 char *race_name args( ( CHAR_DATA * ch ) );
 char *short_race_name args( ( CHAR_DATA * ch ) );
@@ -85,6 +84,7 @@ char *strip_out args( ( const char *orig, const char *strip ) );
 char *strip_color args( ( const char *orig, const char *strip ) );
 int nocol_strlen( const char *text );
 int ccode_len( const char *text, sh_int desired );
-
 void pre_parse( char *list, char *victimname, char *containername, char *things );
 char *one_word( char *argument, char *arg_first );
+/* My additions; safe_printf by Darien --Kline */
+void safe_printf(const char *file, const char *function, int line,int size, char *str, char *fmt, ...);

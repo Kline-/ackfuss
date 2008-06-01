@@ -44,7 +44,7 @@ void save_clan_table(  )
    sh_int x, y;
 
    fclose( fpReserve );
-   sprintf( clan_file_name, "%s", CLAN_FILE );
+   xprintf( clan_file_name, "%s", CLAN_FILE );
 
    if( ( fp = fopen( clan_file_name, "w" ) ) == NULL )
    {
@@ -272,16 +272,16 @@ void do_politics( CHAR_DATA * ch, char *argument )
    buf[0] = '\0';
    buf2[0] = '\0';
 
-   sprintf( buf, "        " );
+   xprintf( buf, "        " );
    safe_strcat( MAX_STRING_LENGTH, buf2, buf );
 
    for( x = 1; x < MAX_CLAN; x++ )
    {
-      sprintf( buf, " %s  ", clan_table[x].clan_abbr );
+      xprintf( buf, " %s  ", clan_table[x].clan_abbr );
       safe_strcat( MAX_STRING_LENGTH, buf2, buf );
    }
    buf[0] = '\0';
-   sprintf( buf, "\n\r\n\r" );
+   xprintf( buf, "\n\r\n\r" );
    safe_strcat( MAX_STRING_LENGTH, buf2, buf );
 
    send_to_char( buf2, ch );
@@ -293,7 +293,7 @@ void do_politics( CHAR_DATA * ch, char *argument )
        */
       buf[0] = '\0';
       buf2[0] = '\0';
-      sprintf( buf, "%1i %s ", x, clan_table[x].clan_abbr );
+      xprintf( buf, "%1i %s ", x, clan_table[x].clan_abbr );
       safe_strcat( MAX_STRING_LENGTH, buf2, buf );
 
       for( y = 1; y < MAX_CLAN; y++ )
@@ -301,19 +301,19 @@ void do_politics( CHAR_DATA * ch, char *argument )
          buf[0] = '\0';
          if( x != y )
          {
-            sprintf( buf, "%s ", get_diplo_name( politics_data.diplomacy[x][y] ) );
+            xprintf( buf, "%s ", get_diplo_name( politics_data.diplomacy[x][y] ) );
             safe_strcat( MAX_STRING_LENGTH, buf2, buf );
          }
          else
          {
-            sprintf( buf, "        " );
+            xprintf( buf, "        " );
             safe_strcat( MAX_STRING_LENGTH, buf2, buf );
          }
 
 
 
       }
-      sprintf( buf, "\n\r\n\r" );
+      xprintf( buf, "\n\r\n\r" );
       safe_strcat( MAX_STRING_LENGTH, buf2, buf );
       send_to_char( buf2, ch );
    }
@@ -322,7 +322,7 @@ void do_politics( CHAR_DATA * ch, char *argument )
       {
          if( politics_data.end_current_state[ch->pcdata->clan][x] )
          {
-            sprintf( buf, "%s has requested an end to your current state of affairs", clan_table[x].clan_name );
+            xprintf( buf, "%s has requested an end to your current state of affairs", clan_table[x].clan_name );
             send_to_char( buf, ch );
          }
       }
@@ -367,7 +367,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
 
    if( politics_data.daily_negotiate_table[ch->pcdata->clan][target_clan] )
    {
-      sprintf( buf, "Your clan has already negotiated with %s today.\n\r", clan_table[target_clan].clan_name );
+      xprintf( buf, "Your clan has already negotiated with %s today.\n\r", clan_table[target_clan].clan_name );
       send_to_char( buf, ch );
       return;
    }
@@ -382,7 +382,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
             politics_data.diplomacy[ch->pcdata->clan][target_clan] = -425;
             politics_data.diplomacy[target_clan][ch->pcdata->clan] = -425;
             send_to_char( "@@NYou have successfully negotiated an end to this dreaded @@eCLAN WAR@@N. Great Job!!\n\r", ch );
-            sprintf( buf, "@@eCLAN:@@N The war between %s and %s has ended. They may no longer PKILL each other!!\n\r",
+            xprintf( buf, "@@eCLAN:@@N The war between %s and %s has ended. They may no longer PKILL each other!!\n\r",
                      clan_table[ch->pcdata->clan].clan_name, clan_table[target_clan].clan_name );
             info( buf, 1 );
 
@@ -393,7 +393,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
          }
          else
          {
-            sprintf( buf,
+            xprintf( buf,
                      "@@NYou are currently at @@RWAR@@N with %s. Both clans must negotiate an end to the war first.\n\r",
                      clan_table[target_clan].clan_name );
             send_to_char( buf, ch );
@@ -405,7 +405,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
          politics_data.diplomacy[ch->pcdata->clan][target_clan] += 25;
          politics_data.diplomacy[target_clan][ch->pcdata->clan] += 25;
 
-         sprintf( buf, "You are requesting a more peaceful state of affairs with %s.", clan_table[target_clan].clan_name );
+         xprintf( buf, "You are requesting a more peaceful state of affairs with %s.", clan_table[target_clan].clan_name );
          send_to_char( buf, ch );
       }
    }
@@ -417,10 +417,10 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
       if( ( politics_data.diplomacy[ch->pcdata->clan][target_clan] - 50 ) < -450 )
 
       {
-         sprintf( buf, "@@NYou have started a @@eWAR@@N with %s! Watch out!.\n\r", clan_table[target_clan].clan_name );
+         xprintf( buf, "@@NYou have started a @@eWAR@@N with %s! Watch out!.\n\r", clan_table[target_clan].clan_name );
          send_to_char( buf, ch );
 
-         sprintf( buf, "@@eCLAN:@@N A war has started between %s and %s. They may now PKILL each other!!\n\r",
+         xprintf( buf, "@@eCLAN:@@N A war has started between %s and %s. They may now PKILL each other!!\n\r",
                   clan_table[ch->pcdata->clan].clan_name, clan_table[target_clan].clan_name );
          info( buf, 1 );
 
@@ -437,7 +437,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
          politics_data.diplomacy[ch->pcdata->clan][target_clan] -= 50;
          politics_data.diplomacy[target_clan][ch->pcdata->clan] -= 50;
 
-         sprintf( buf, "You are requesting a more aggressive state of affairs with %s.", clan_table[target_clan].clan_name );
+         xprintf( buf, "You are requesting a more aggressive state of affairs with %s.", clan_table[target_clan].clan_name );
          send_to_char( buf, ch );
       }
    }
@@ -556,9 +556,9 @@ void do_cset( CHAR_DATA * ch, char *argument )
 
    if( value < 0 || value >= MAX_CLAN )
    {
-      sprintf( buf, "%d is not a valid value.\n\r", value );
+      xprintf( buf, "%d is not a valid value.\n\r", value );
       send_to_char( buf, ch );
-      sprintf( buf, "Use a value between 0 and %d.\n\r\n\r", MAX_CLAN - 1 );
+      xprintf( buf, "Use a value between 0 and %d.\n\r\n\r", MAX_CLAN - 1 );
       send_to_char( buf, ch );
       do_clan_list( ch, "" );
       return;
@@ -566,10 +566,10 @@ void do_cset( CHAR_DATA * ch, char *argument )
 
 
    victim->pcdata->clan = value;
-   sprintf( buf, "%s now belongs to clan %s.\n\r", victim->name, clan_table[value].clan_name );
+   xprintf( buf, "%s now belongs to clan %s.\n\r", victim->name, clan_table[value].clan_name );
    send_to_char( buf, ch );
 
-   sprintf( buf, "%s has cset %s into clan %s.", ch->name, victim->name, clan_table[value].clan_name );
+   xprintf( buf, "%s has cset %s into clan %s.", ch->name, victim->name, clan_table[value].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    return;
@@ -620,14 +620,14 @@ void do_accept( CHAR_DATA * ch, char *argument )
 
    if( victim->pcdata->clan != 0 )
    {
-      sprintf( buf, "%s is already in a clan.  Maybe they should leave it first?\n\r", victim->name );
+      xprintf( buf, "%s is already in a clan.  Maybe they should leave it first?\n\r", victim->name );
       send_to_char( buf, ch );
       return;
    }
 
    if( victim->level < 20 )
    {
-      sprintf( buf, "%s must be at least 20th level to enter a clan.\n\r", victim->name );
+      xprintf( buf, "%s must be at least 20th level to enter a clan.\n\r", victim->name );
       send_to_char( buf, ch );
       return;
    }
@@ -635,7 +635,7 @@ void do_accept( CHAR_DATA * ch, char *argument )
    act( "$N accepts you into $S clan!", victim, NULL, ch, TO_VICT );
    act( "You accept $N into your clan!", ch, NULL, victim, TO_VICT );
 
-   sprintf( buf, "%s has accepted %s into clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
+   xprintf( buf, "%s has accepted %s into clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    return;
@@ -677,7 +677,7 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
             continue;
 
          found = TRUE;
-         sprintf( buf, "%-28s %s ", victim->name, victim->in_room->name );
+         xprintf( buf, "%-28s %s ", victim->name, victim->in_room->name );
          if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_BOSS ) )
          {
             if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_LEADER ) )
@@ -727,7 +727,7 @@ void do_leave( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   sprintf( buf, "%s has left clan %s.", ch->name, clan_table[ch->pcdata->clan].clan_name );
+   xprintf( buf, "%s has left clan %s.", ch->name, clan_table[ch->pcdata->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    ch->pcdata->clan = 0;
@@ -830,10 +830,10 @@ void do_banish( CHAR_DATA * ch, char *argument )
       REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_BOSS );
 
 
-   sprintf( buf, "%s has banished %s from clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
+   xprintf( buf, "%s has banished %s from clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
-   sprintf( buf, "%s banishes you from clan %s!\n\r", ch->name, clan_table[ch->pcdata->clan].clan_name );
+   xprintf( buf, "%s banishes you from clan %s!\n\r", ch->name, clan_table[ch->pcdata->clan].clan_name );
    send_to_char( buf, victim );
    act( "$N has been banished.", ch, NULL, victim, TO_CHAR );
    return;
@@ -862,7 +862,7 @@ void do_make( CHAR_DATA * ch, char *argument )
 
    if( !is_number( arg1 ) || arg2[0] == '\0' )
    {
-      sprintf( buf, "Syntax: Make [0-%d] [Target]\n\r", MAX_CLAN_EQ - 1 );
+      xprintf( buf, "Syntax: Make [0-%d] [Target]\n\r", MAX_CLAN_EQ - 1 );
       send_to_char( buf, ch );
       send_to_char( "Items you can currently make:\n\r\n\r", ch );
 
@@ -871,12 +871,12 @@ void do_make( CHAR_DATA * ch, char *argument )
          if( clan_table[ch->pcdata->clan].eq[cnt] != -1
              && ( ( pObj = get_obj_index( clan_table[ch->pcdata->clan].eq[cnt] ) ) != NULL ) )
          {
-            sprintf( buf, "[%2d] : %s.\n\r", cnt, pObj->short_descr );
+            xprintf( buf, "[%2d] : %s.\n\r", cnt, pObj->short_descr );
             send_to_char( buf, ch );
          }
          else
          {
-            sprintf( buf, "[%2d] : No Object Set.\n\r", cnt );
+            xprintf( buf, "[%2d] : No Object Set.\n\r", cnt );
             send_to_char( buf, ch );
          }
       }
@@ -937,7 +937,7 @@ void do_make( CHAR_DATA * ch, char *argument )
       act( "You create $p, and hand it to $N.", ch, obj, target, TO_CHAR );
       act( "$N creates $p, and hands it to you.", target, obj, ch, TO_CHAR );
       obj_to_char( obj, target );
-      sprintf( buf, "%s has made %s for %s.", ch->name, obj->short_descr, target->name );
+      xprintf( buf, "%s has made %s for %s.", ch->name, obj->short_descr, target->name );
    }
    else
    {
@@ -945,7 +945,7 @@ void do_make( CHAR_DATA * ch, char *argument )
       act( "You create $p, and put it away.", ch, obj, NULL, TO_CHAR );
       act( "$n creates $p, and puts it away.", ch, obj, NULL, TO_ROOM );
       obj_to_char( obj, ch );
-      sprintf( buf, "%s has made themself %s.", ch->name, obj->short_descr );
+      xprintf( buf, "%s has made themself %s.", ch->name, obj->short_descr );
    }
    monitor_chan( buf, MONITOR_CLAN );
 
@@ -985,13 +985,13 @@ void do_council( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' )
    {
-      sprintf( buf, "%s", "" );
-      sprintf( buf2, "%s", "" );
-      sprintf( buf, "Members of the Council of %s\n\r\n\r", super_councils[this_council].council_name );
+      xprintf( buf, "%s", "" );
+      xprintf( buf2, "%s", "" );
+      xprintf( buf, "Members of the Council of %s\n\r\n\r", super_councils[this_council].council_name );
 
       for( imember = super_councils[this_council].first_member; imember != NULL; imember = imember->next )
       {
-         sprintf( buf2, "%s\n\r", imember->this_member->name );
+         xprintf( buf2, "%s\n\r", imember->this_member->name );
          safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
       }
       send_to_char( buf, ch );
@@ -1011,7 +1011,7 @@ void do_council( CHAR_DATA * ch, char *argument )
       }
 
       LINK( member, super_councils[this_council].first_member, super_councils[this_council].last_member, next, prev );
-      sprintf( buf, "You have joined the Current Council of %s\n\r", super_councils[this_council].council_name );
+      xprintf( buf, "You have joined the Current Council of %s\n\r", super_councils[this_council].council_name );
       send_to_char( buf, ch );
       super_councils[this_council].council_time = 10;
       do_council( ch, "" );
@@ -1070,10 +1070,10 @@ void do_council( CHAR_DATA * ch, char *argument )
             }
             else
             {
-               sprintf( buf, "%s is now a member of the Council of %s!\n\r", victim->name,
+               xprintf( buf, "%s is now a member of the Council of %s!\n\r", victim->name,
                         super_councils[this_council].council_name );
                send_to_char( buf, ch );
-               sprintf( buf, "You are now a member of the Council of %s!\n\r", super_councils[this_council].council_name );
+               xprintf( buf, "You are now a member of the Council of %s!\n\r", super_councils[this_council].council_name );
                SET_BIT( victim->pcdata->pflags, PFLAG_SUPER_COUNCIL );
             }
          }
@@ -1109,10 +1109,10 @@ void do_council( CHAR_DATA * ch, char *argument )
             }
             else
             {
-               sprintf( buf, "%s has been outcast from the @@eKindred@@N by the %s, and is now a @@dRENEGADE@@N!!!!\n\r",
+               xprintf( buf, "%s has been outcast from the @@eKindred@@N by the %s, and is now a @@dRENEGADE@@N!!!!\n\r",
                         victim->name, super_councils[this_council].council_name );
                send_to_char( buf, ch );
-               sprintf( buf,
+               xprintf( buf,
                         "You have been @@ROUTCAST@@N from the @@eKindred@@N by the %s, and are now a @@dRenegade@@N!!!!!\n\r",
                         super_councils[this_council].council_name );
                send_to_char( buf, victim );

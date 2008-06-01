@@ -57,7 +57,7 @@ void gain_level( CHAR_DATA * ch )
    ch->intell_exp -= cost;
    ch->level = UMIN( 140, ch->level++ );
 
-   sprintf( buf, "%s gains a level!", ch->short_descr );
+   xprintf( buf, "%s gains a level!", ch->short_descr );
    info( buf, 1 );
    return;
 }
@@ -106,11 +106,11 @@ void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target )
 
    if( ( ch == NULL ) || ( target == NULL ) )
    {
-      sprintf( buf, "%s", "Null ch and/or target in mob_group_follow, exiting." );
+      xprintf( buf, "%s", "Null ch and/or target in mob_group_follow, exiting." );
       monitor_chan( buf, MONITOR_MOB );
       return;
    }
-   sprintf( buf, "Ok guys, let's all follow %s.", target->short_descr );
+   xprintf( buf, "Ok guys, let's all follow %s.", target->short_descr );
    do_say( ch, buf );
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
@@ -135,9 +135,9 @@ void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target )
          else if( num > 29 )
          {
             if( num > 32 )
-               sprintf( buf, "Man I don't want to join %s's group!", target->short_descr );
+               xprintf( buf, "Man I don't want to join %s's group!", target->short_descr );
             else
-               sprintf( buf, "I hate big groups." );
+               xprintf( buf, "I hate big groups." );
             do_say( vch, buf );
             do_follow( vch, vch->name );
             do_say( vch, "I'm outta here." );
@@ -204,11 +204,11 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
       is_hunting = TRUE;
       if( tar_is_leader == TRUE )
       {
-         sprintf( buf, "We're planning on killing %s.", target->hunting->short_descr );
+         xprintf( buf, "We're planning on killing %s.", target->hunting->short_descr );
       }
       else
       {
-         sprintf( buf, "I'm planning on killing %s.", target->hunting->short_descr );
+         xprintf( buf, "I'm planning on killing %s.", target->hunting->short_descr );
       }
       do_say( target, buf );
    }
@@ -241,12 +241,12 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
    {
       if( ch_is_leader == TRUE )
       {
-         sprintf( buf, "Want to help us kill %s instead?", ch->hunting->short_descr );
+         xprintf( buf, "Want to help us kill %s instead?", ch->hunting->short_descr );
          do_say( ch, buf );
       }
       else if( ch_is_leader == FALSE )
       {
-         sprintf( buf, "Want to help me kill %s instead?", ch->hunting->short_descr );
+         xprintf( buf, "Want to help me kill %s instead?", ch->hunting->short_descr );
          do_say( ch, buf );
       }
    }
@@ -432,11 +432,11 @@ void mob_regen_check( CHAR_DATA * ch, CHAR_DATA * target, bool need_flee )
       target = ch;
 
    if( ch->mana >= mana_cost( ch, skill_lookup( "heal" ) ) )
-      sprintf( buf, "'heal' %s", target->name );
+      xprintf( buf, "'heal' %s", target->name );
    else if( ch->mana >= mana_cost( ch, skill_lookup( "cure critical" ) ) )
-      sprintf( buf, "'cure critical' %s", target->name );
+      xprintf( buf, "'cure critical' %s", target->name );
    else if( ch->mana >= mana_cost( ch, skill_lookup( "cure serious" ) ) )
-      sprintf( buf, "'cure serious' %s", target->name );
+      xprintf( buf, "'cure serious' %s", target->name );
    else if( need_flee == TRUE )
    {
       do_flee( ch, "" );
@@ -1011,12 +1011,12 @@ void select_target( CHAR_DATA * ch )
                   }
                   if( alone == FALSE )
                   {
-                     sprintf( buf, "%s We're coming for you!", victim->name );
+                     xprintf( buf, "%s We're coming for you!", victim->name );
                      do_tell( ch, buf );
                   }
                   else
                   {
-                     sprintf( buf, "%s I'm coming for you!", victim->name );
+                     xprintf( buf, "%s I'm coming for you!", victim->name );
                      do_tell( ch, buf );
                   }
                }
@@ -1026,7 +1026,7 @@ void select_target( CHAR_DATA * ch )
 
       if( set_hunt( ch, NULL, victim, NULL, HUNT_WORLD | HUNT_PICKDOOR | HUNT_CR, HUNT_MERC ) )
       {
-         sprintf( buf, "Right!  %s is our new target!!", victim->short_descr );
+         xprintf( buf, "Right!  %s is our new target!!", victim->short_descr );
          do_say( ch, buf );
       }
 
@@ -1101,7 +1101,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
    {
       leader_wants = GRP_STATE_LEVELING;
    }
-   sprintf( monbuf, "NPC Group Handler, Leader is %s, state is %s", ngroup->leader->name, group_state_table[ngroup->state] );
+   xprintf( monbuf, "NPC Group Handler, Leader is %s, state is %s", ngroup->leader->name, group_state_table[ngroup->state] );
    monitor_chan( monbuf, MONITOR_MOB );
 
    switch ( ngroup->state )
@@ -1227,7 +1227,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
          }
          if( leader->hunting == NULL )
          {
-//        sprintf( monbuf, "Leader %s not hunting anything in GRP_STATE_HUNTING",
+//        xprintf( monbuf, "Leader %s not hunting anything in GRP_STATE_HUNTING",
 //              leader->name );
 //        monitor_chan( monbuf, MONITOR_MOB );
             select_target( ngroup->leader );
@@ -1365,7 +1365,7 @@ void int_combat_handler( CHAR_DATA * ch, CHAR_DATA * victim )
    {
       if( vch == victim )
       {
-         sprintf( buf, "%d.%s", counter, vch->name );
+         xprintf( buf, "%d.%s", counter, vch->name );
          break;
       }
 
@@ -1384,22 +1384,22 @@ void int_combat_handler( CHAR_DATA * ch, CHAR_DATA * victim )
          switch ( number_range( 0, 5 ) )
          {
             case 0:
-               sprintf( arg, "frenzy" );
+               xprintf( arg, "frenzy" );
                break;
             case 1:
-               sprintf( arg, "punch %s", buf );
+               xprintf( arg, "punch %s", buf );
                break;
             case 2:
-               sprintf( arg, "knee %s", buf );
+               xprintf( arg, "knee %s", buf );
                break;
             case 3:
-               sprintf( arg, "headbutt %s", buf );
+               xprintf( arg, "headbutt %s", buf );
                break;
             case 4:
-               sprintf( arg, "punch %s", buf );
+               xprintf( arg, "punch %s", buf );
                break;
             case 5:
-               sprintf( arg, "dirt %s", buf );
+               xprintf( arg, "dirt %s", buf );
                break;
          }
          interpret( ch, arg );
@@ -1409,7 +1409,7 @@ void int_combat_handler( CHAR_DATA * ch, CHAR_DATA * victim )
          sn = find_spell( ch, TAR_CHAR_OFFENSIVE );
          if( ( sn != -1 ) && ( ch->mana > mana_cost( ch, sn ) ) )
          {
-            sprintf( arg, "cast '%s' %s", skill_table[sn].name, buf );
+            xprintf( arg, "cast '%s' %s", skill_table[sn].name, buf );
             interpret( ch, arg );
          }
    }

@@ -1135,7 +1135,7 @@ void wide_table_printout( const struct lookup_type *table, char *buf )
           && ( strcmp( table[a].text, "nada" ) ) )
       {
          strcat( buf, "     " );
-         sprintf( tmp, "%12s", table[a].text );
+         xprintf( tmp, "%12s", table[a].text );
          strcat( buf, tmp );
          if( ++foo % 4 == 0 )
             strcat( buf, "\n\r" );
@@ -1163,7 +1163,7 @@ char *show_values( const struct lookup_type *table, int value, bool fBit )
           && ( strcmp( table[a].text, "placeholder" ) ) )
       {
          strcat( buf, "     " );
-         sprintf( tmp, "%s%-13s",
+         xprintf( tmp, "%s%-13s",
                   fBit ? ( IS_SET( value, table[a].value ) ? "@@y*" : "@@g " ) :
                   ( value == table[a].value ? "@@y*" : "@@g " ), table[a].text );
          strcat( buf, tmp );

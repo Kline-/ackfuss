@@ -280,7 +280,7 @@ void stop_riding( CHAR_DATA * ch )
       {
          char buf[MAX_STRING_LENGTH];
 
-         sprintf( buf, "NPC %s got on a mount somehow", t_ch->short_descr );
+         xprintf_2( buf, "NPC %s got on a mount somehow", t_ch->short_descr );
          log_string( buf );
          t_ch->rider = NULL;
          update_pos( t_ch );
@@ -304,7 +304,7 @@ void stop_riding( CHAR_DATA * ch )
          if( IS_RIDING( t_ch ) )
          {
             char buf[MAX_STRING_LENGTH];
-            sprintf( buf, "%s on mount, but not " "RIDING", t_ch->name );
+            xprintf_2( buf, "%s on mount, but not " "RIDING", t_ch->name );
             log_string( buf );
             t_ch->position = POS_RIDING;
          }

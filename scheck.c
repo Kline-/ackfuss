@@ -683,7 +683,7 @@ void do_scheck( CHAR_DATA * ch, char *argument )
    walk_sysdata(  );
    walk_ngroups(  );
 
-   sprintf( buf, "%ld leaks dumped to leaks.dmp\n\r", dump(  ) );
+   xprintf( buf, "%ld leaks dumped to leaks.dmp\n\r", dump(  ) );
    send_to_char( buf, ch );
    disable_timer_abort = FALSE;
 }

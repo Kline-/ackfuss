@@ -167,7 +167,7 @@ bool check_level_use( CHAR_DATA * ch, int level )
    if( get_trust( ch ) >= level )
       return TRUE;
 
-   sprintf( out, "This option limited to " );
+   xprintf( out, "This option limited to " );
 
    switch ( level )
    {
@@ -187,7 +187,7 @@ bool check_level_use( CHAR_DATA * ch, int level )
          strcat( out, "Adepts or higher.\n\r" );
          break;
       default:
-         sprintf( buf, "level %d players and higher.\n\r", level );
+         xprintf( buf, "level %d players and higher.\n\r", level );
          strcat( out, buf );
    }
    send_to_char( out, ch );
@@ -611,7 +611,7 @@ int get_item_value( OBJ_DATA * obj )
    if( wear_loc == MAX_WEAR )
    {
       /*
-       * sprintf( buf, "Object has no wear loc" );
+       * xprintf( buf, "Object has no wear loc" );
        * monitor_chan( buf, MONITOR_OBJ );  
        */
       ac_mod = 0;
@@ -625,7 +625,7 @@ int get_item_value( OBJ_DATA * obj )
       {
          default:
             bug( "Get_item_value: unknown location %d.", this_aff->location );
-            sprintf( buf, "Get_item_value called for unknown location %d.", this_aff->location );
+            xprintf( buf, "Get_item_value called for unknown location %d.", this_aff->location );
             monitor_chan( buf, MONITOR_OBJ );
             break;
          case APPLY_NONE:
@@ -691,7 +691,7 @@ int get_item_value( OBJ_DATA * obj )
    if( IS_SET( obj->item_apply, ITEM_APPLY_SANC ) )
       cost = cost * 1.3;
 
-   sprintf( buf, "Cost computed for item %d.", cost );
+   xprintf( buf, "Cost computed for item %d.", cost );
 /*  monitor_chan( buf, MONITOR_OBJ );  */
 
    if( obj->item_type == ITEM_ENCHANTMENT )

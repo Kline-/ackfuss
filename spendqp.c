@@ -48,7 +48,7 @@ void save_brands(  )
 
 
    fclose( fpReserve );
-   sprintf( brand_file_name, "%s", BRANDS_FILE );
+   xprintf( brand_file_name, "%s", BRANDS_FILE );
 
    if( ( fp = fopen( brand_file_name, "w" ) ) == NULL )
    {
@@ -91,10 +91,10 @@ void load_brands( void )
    DL_LIST *brand_member;
 
 
-   sprintf( brands_file_name, "%s", BRANDS_FILE );
+   xprintf( brands_file_name, "%s", BRANDS_FILE );
 
 
-   sprintf( buf, "Loading %s\n\r", brands_file_name );
+   xprintf( buf, "Loading %s\n\r", brands_file_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    if( ( brandsfp = fopen( brands_file_name, "r" ) ) == NULL )
@@ -144,7 +144,7 @@ void load_brands( void )
 
       fclose( brandsfp );
 
-      sprintf( buf, "Done Loading %s\n\r", brands_file_name );
+      xprintf( buf, "Done Loading %s\n\r", brands_file_name );
       monitor_chan( buf, MONITOR_CLAN );
 
    }
@@ -159,8 +159,8 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
    char brandbuf[MSL];
    char catbuf[MSL];
 
-   sprintf( brandbuf, "%s", "" );
-   sprintf( catbuf, "%s", "" );
+   xprintf( brandbuf, "%s", "" );
+   xprintf( catbuf, "%s", "" );
 
    smash_tilde( argument );
    argument = one_argument( argument, arg1 );
@@ -262,36 +262,36 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
          if( !str_cmp( ch->pcdata->pedit_string[0], "none" ) )
          {
-            sprintf( test_string, ch->pcdata->room_enter );
+            xprintf( test_string, ch->pcdata->room_enter );
          }
          else
          {
-            sprintf( test_string, ch->pcdata->pedit_string[0] );
+            xprintf( test_string, ch->pcdata->pedit_string[0] );
             qp_cost++;
          }
-         sprintf( move_buf, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), test_string );
+         xprintf( move_buf, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), test_string );
          act( move_buf, ch, NULL, rev_name[1], TO_CHAR );
          if( !str_cmp( ch->pcdata->pedit_string[1], "none" ) )
          {
-            sprintf( test_string, ch->pcdata->room_exit );
+            xprintf( test_string, ch->pcdata->room_exit );
          }
          else
          {
-            sprintf( test_string, ch->pcdata->pedit_string[1] );
+            xprintf( test_string, ch->pcdata->pedit_string[1] );
             qp_cost++;
          }
 
 
-         sprintf( move_buf, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), test_string );
+         xprintf( move_buf, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), test_string );
          act( move_buf, ch, NULL, dir_name[1], TO_CHAR );
 
-         sprintf( buf, "Purchase cost is %d qps.\n\r", qp_cost );
+         xprintf( buf, "Purchase cost is %d qps.\n\r", qp_cost );
          send_to_char( buf, ch );
          return;
       }
       else if( !str_cmp( ch->pcdata->pedit_state, "assist" ) )
       {
-         sprintf( buf, "Current message:\n\r  %s\n\r",
+         xprintf( buf, "Current message:\n\r  %s\n\r",
                   ( !str_cmp( ch->pcdata->pedit_string[0], "none" ) ?
                     ch->pcdata->assist_msg : ch->pcdata->pedit_string[0] ) );
          send_to_char( buf, ch );
@@ -337,7 +337,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                ch->pcdata->room_enter = str_dup( ch->pcdata->pedit_string[0] );
                free_string( ch->pcdata->pedit_string[0] );
                ch->pcdata->pedit_string[0] = str_dup( "none" );
-               sprintf( catbuf, "Enter message changed to %s\n\r", ch->pcdata->room_enter );
+               xprintf( catbuf, "Enter message changed to %s\n\r", ch->pcdata->room_enter );
                safe_strcat( MSL, brandbuf, catbuf );
             }
             if( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
@@ -346,7 +346,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                ch->pcdata->room_exit = str_dup( ch->pcdata->pedit_string[1] );
                free_string( ch->pcdata->pedit_string[1] );
                ch->pcdata->pedit_string[1] = str_dup( "none" );
-               sprintf( catbuf, "Exit message changed to %s\n\r", ch->pcdata->room_exit );
+               xprintf( catbuf, "Exit message changed to %s\n\r", ch->pcdata->room_exit );
                safe_strcat( MSL, brandbuf, catbuf );
             }
             free_string( ch->pcdata->pedit_string[0] );
@@ -413,7 +413,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             }
             else
             {
-               sprintf( catbuf, "%s ", word1 );
+               xprintf( catbuf, "%s ", word1 );
                safe_strcat( MSL, assistbuf, catbuf );
             }
          }
@@ -440,7 +440,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             brand->branded = str_dup( ch->name );
             brand->branded_by = str_dup( "@@rSystem@@N" );
             brand->priority = str_dup( "normal" );
-            sprintf( brandbuf, "Assist message changed to %s\n\r", ch->pcdata->assist_msg );
+            xprintf( brandbuf, "Assist message changed to %s\n\r", ch->pcdata->assist_msg );
             brand->message = str_dup( brandbuf );
             strtime = ctime( &current_time );
             strtime[strlen( strtime ) - 1] = '\0';
@@ -614,7 +614,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       for( brand_list = first_brand; brand_list; brand_list = brand_list->next )
       {
          brand = brand_list->this_one;
-         sprintf( buf, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
+         xprintf( buf, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
                   vnum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
          safe_strcat( MSL, buf1, buf );
          vnum++;
@@ -656,7 +656,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
          if( vnum++ == anum )
          {
             brand = brand_list->this_one;
-            sprintf( buf, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
+            xprintf( buf, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
                      anum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
             safe_strcat( MSL, buf1, buf );
             safe_strcat( MSL, buf1, brand->message );
@@ -743,7 +743,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
          return;
       }
       buf1[0] = '\0';
-      sprintf( buf, "[%3d] %s: Brander: %s  Date: %s Priority: %s\n\r",
+      xprintf( buf, "[%3d] %s: Brander: %s  Date: %s Priority: %s\n\r",
                vnum,
                ch->current_brand->branded,
                ch->current_brand->branded_by, ch->current_brand->dt_stamp, ch->current_brand->priority );
@@ -852,21 +852,21 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_str >= statcap )
   {
-   sprintf(buf,"You can not raise your Str any further. The limit is %d.\n\r",statcap);
+   xprintf(buf,"You can not raise your Str any further. The limit is %d.\n\r",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_str; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   sprintf(buf,"It costs %d QP to raise your Str, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   xprintf(buf,"It costs %d QP to raise your Str, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_str++; /* Raise the actual cap */
   ch->pcdata->perm_str++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  sprintf(buf,"You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_str,ch->pcdata->quest_points);
+  xprintf(buf,"You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_str,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
@@ -874,21 +874,21 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_int >= statcap )
   {
-   sprintf(buf,"You can not raise your Int any further. The limit is %d.\n\r",statcap);
+   xprintf(buf,"You can not raise your Int any further. The limit is %d.\n\r",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_int; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   sprintf(buf,"It costs %d QP to raise your Int, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   xprintf(buf,"It costs %d QP to raise your Int, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_int++; /* Raise the actual cap */
   ch->pcdata->perm_int++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  sprintf(buf,"You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_int,ch->pcdata->quest_points);
+  xprintf(buf,"You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_int,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
@@ -896,21 +896,21 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_wis >= statcap )
   {
-   sprintf(buf,"You can not raise your Wis any further. The limit is %d.\n\r",statcap);
+   xprintf(buf,"You can not raise your Wis any further. The limit is %d.\n\r",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_wis; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   sprintf(buf,"It costs %d QP to raise your Wis, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   xprintf(buf,"It costs %d QP to raise your Wis, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_wis++; /* Raise the actual cap */
   ch->pcdata->perm_wis++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  sprintf(buf,"You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_wis,ch->pcdata->quest_points);
+  xprintf(buf,"You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_wis,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
@@ -918,21 +918,21 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_dex >= statcap )
   {
-   sprintf(buf,"You can not raise your Dex any further. The limit is %d.\n\r",statcap);
+   xprintf(buf,"You can not raise your Dex any further. The limit is %d.\n\r",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_dex; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   sprintf(buf,"It costs %d QP to raise your Dex, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   xprintf(buf,"It costs %d QP to raise your Dex, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_dex++; /* Raise the actual cap */
   ch->pcdata->perm_dex++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  sprintf(buf,"You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_dex,ch->pcdata->quest_points);
+  xprintf(buf,"You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_dex,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
@@ -940,21 +940,21 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_con >= statcap )
   {
-   sprintf(buf,"You can not raise your Con any further. The limit is %d.\n\r",statcap);
+   xprintf(buf,"You can not raise your Con any further. The limit is %d.\n\r",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_con; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   sprintf(buf,"It costs %d QP to raise your Con, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   xprintf(buf,"It costs %d QP to raise your Con, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_con++; /* Raise the actual cap */
   ch->pcdata->perm_con++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  sprintf(buf,"You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_con,ch->pcdata->quest_points);
+  xprintf(buf,"You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_con,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }

@@ -35,6 +35,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <signal.h>
+#include <stdarg.h>
 
 #ifndef  DEC_ACK_H
 #include "globals.h"
@@ -75,12 +76,12 @@ void pre_parse( char *list, char *victimname, char *containername, char *things 
          if( is_number( arg1 ) )
          {
             argument = one_argument( argument, one_object );
-            sprintf( holdbuf, "%s %s ", arg1, one_object );
+            xprintf( holdbuf, "%s %s ", arg1, one_object );
             safe_strcat( MSL, object_list, holdbuf );
          }
          else
          {
-            sprintf( holdbuf, "1 %s ", arg1 );
+            xprintf( holdbuf, "1 %s ", arg1 );
             safe_strcat( MSL, object_list, holdbuf );
          }
       }
@@ -191,7 +192,7 @@ char *space_pad( const char *str, sh_int final_size )
    sh_int space_pad = my_strlen( str );
    static char padbuf[MSL];
 
-   sprintf( padbuf, "%s", str );
+   xprintf( padbuf, "%s", str );
    for( ; space_pad != final_size; space_pad++ )
       safe_strcat( MSL, padbuf, " " );
    return padbuf;
@@ -810,7 +811,7 @@ char *str_mod( char *mod_string, char *argument )
 
    if( !str_cmp( argument, "" ) )
    {
-      sprintf( bug_buf, "Unknown reason for return, argument is -%s-", argument );
+      xprintf_2( bug_buf, "Unknown reason for return, argument is -%s-", argument );
       monitor_chan( bug_buf, MONITOR_DEBUG );
       return mod_string;
 
@@ -845,8 +846,8 @@ char *str_mod( char *mod_string, char *argument )
 
          if( multiple )
          {
-            sprintf( temp, "\'%s\'", arg1 );
-            sprintf( arg1, "%s", temp );
+            xprintf( temp, "\'%s\'", arg1 );
+            xprintf( arg1, "%s", temp );
          }
 
          if( arg1 )
@@ -1229,7 +1230,7 @@ char *item_type_name( OBJ_DATA * obj )
 
    }
 
-   sprintf( log, "Item_type_name: Object: %d.  Unknown Type: %d", obj->pIndexData->vnum, obj->item_type );
+   xprintf( log, "Item_type_name: Object: %d.  Unknown Type: %d", obj->pIndexData->vnum, obj->item_type );
    monitor_chan( log, MONITOR_OBJ );
    bug( log, 0 );
    return "(unknown)";
@@ -1304,7 +1305,7 @@ char *affect_loc_name( int location )
          return "save vs spell";
    }
 
-   sprintf( buf, "affect_location_name: location %d unknown.", location );
+   xprintf( buf, "affect_location_name: location %d unknown.", location );
    monitor_chan( buf, MONITOR_OBJ );
 
    bug( "Affect_location_name: unknown location %d.", location );
@@ -1524,16 +1525,16 @@ char *short_race_name( CHAR_DATA * ch )
    static char buf[MAX_STRING_LENGTH];
 
    if( IS_NPC( ch ) )
-      sprintf( buf, "NPC" );
+      xprintf( buf, "NPC" );
    else if( ch->race >= MAX_RACE || ch->race < 0 )
    {
       /*
        * error reporting here one day... maybe 
        */
-      sprintf( buf, "unknown!" );
+      xprintf( buf, "unknown!" );
    }
    else
-      sprintf( buf, "%s", race_table[ch->race].race_name );
+      xprintf( buf, "%s", race_table[ch->race].race_name );
 
    return ( buf );
 }
@@ -1576,4 +1577,71 @@ char *get_tribe_name( CHAR_DATA * ch )
          return "@@WNOT SET@@N";
    }
 
+}
+
+/*Originaly, i heard on gamedev that someone was looking for a way to stop sprintf
+ *from overflowing, ofcourse, people fail to think of functions like strlcpy, which
+ *is essentaily a safe sprintf, atleast as it has been described to me.  I however
+ *chose to write my own system.  This allows me to capture the function, and line
+ *of the overflowing string in question.  Thus allowing me to essentaily find out
+ *where the mud overflows, and stop it from happening.  Great little tool.
+ *All i ask is that you leave this header in place.  -- Darien of Sandstorm:Mages Sanctuary
+ */
+void safe_printf( const char *file, const char *function, int line, int size, char *str, char *fmt, ... )
+{
+ char buf[MAS];
+ va_list args;
+ va_start(args,fmt);
+ vsprintf(buf,fmt,args);
+ va_end(args);
+
+ /*Max Alloc Size is allot!*/
+ if( size > MAS )
+ {
+  /*Yes, this is a potential loop bug if infact the xprintf does collapse in on itself..*/
+  xprintf_2(bug_buf,"xprintf buffer overflow: %s",fmt);
+  log_string(bug_buf);
+  monitor_chan(bug_buf,MONITOR_DEBUG);
+
+  xprintf_2(bug_buf,"xprintf buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
+  log_string(bug_buf);
+  monitor_chan(bug_buf,MONITOR_DEBUG);
+
+  return;
+ }
+
+ if( (unsigned)size < strlen(buf)+1 ) 
+ {
+  /*Yes, this is a potential loop bug if infact the xprintf does collapse in on itself..*/
+  xprintf_2(bug_buf,"xprintf buffer overflow: %s",fmt);
+  log_string(bug_buf);
+  monitor_chan(bug_buf,MONITOR_DEBUG);
+
+  xprintf_2(bug_buf,"xprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+  log_string(bug_buf);
+  monitor_chan(bug_buf,MONITOR_DEBUG);
+
+  return;
+ }
+ else
+ {
+  strcpy(str,buf);
+  //Disabled for now.
+  //strlcpy(str,buf,size-2);
+  //str[size-1] = '\0';
+
+  /*Just double checking.*/
+  if( strlen(str) > (unsigned)size - 1 )
+  {
+   /*Yes, this is a potential loop bug if infact the xprintf does collapse in on itself..*/
+   xprintf_2(bug_buf,"xprintf buffer overflow: %s",fmt);
+   log_string(bug_buf);
+   monitor_chan(bug_buf,MONITOR_DEBUG);
+
+   xprintf_2(bug_buf,"xprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+   log_string(bug_buf);
+   monitor_chan(bug_buf,MONITOR_DEBUG);
+   return;
+  }
+ }
 }

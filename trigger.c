@@ -61,7 +61,7 @@ void trigger_show( CHAR_DATA * ch )
 {
    char buf[MAX_STRING_LENGTH];
 
-   sprintf( buf, "Trigger objects information:\n\r" );
+   xprintf( buf, "Trigger objects information:\n\r" );
 
    strcat( buf, "v1  Name           v2		    v3\n\r" );
    strcat( buf, "--  ----        ---------       ---------\n\r" );

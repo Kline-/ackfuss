@@ -40,12 +40,16 @@
 /*
  * String and memory management parameters.
  */
+#define MAX_ALLOC_SIZE           262144
+#define MAS                      MAX_ALLOC_SIZE
 #define MAX_KEY_HASH             2048
+#define MKH                      MAX_KEY_HASH
 #define MAX_STRING_LENGTH        8192
-#define MSL			MAX_STRING_LENGTH
-#define MAX_INPUT_LENGTH          640
-#define MAX_AREAS                 1000
-#define MAX_VNUM 16777216
+#define MSL			 MAX_STRING_LENGTH
+#define MAX_INPUT_LENGTH         2048
+#define MIL                      MAX_INPUT_LENGTH
+#define MAX_AREAS                1000
+#define MAX_VNUM                 16777216
 
 #define BOOT_DB_ABORT_THRESHOLD			  25
 #define RUNNING_ABORT_THRESHOLD			  10

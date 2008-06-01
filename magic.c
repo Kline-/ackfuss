@@ -272,30 +272,30 @@ void say_spell( CHAR_DATA * ch, int sn )
    switch ( skill_table[sn].target )
    {
       case TAR_IGNORE:
-         sprintf( msg, "$n closes $s eyes, and prays." );
-         sprintf( msg2, "You close your eyes and pray.\n\r" );
+         xprintf( msg, "$n closes $s eyes, and prays." );
+         xprintf( msg2, "You close your eyes and pray.\n\r" );
          break;
       case TAR_CHAR_OFFENSIVE:
-         sprintf( msg, "$n's eyes glow red for an instant!" );
-         sprintf( msg2, "Your eyes glow red for an instant!\n\r" );
+         xprintf( msg, "$n's eyes glow red for an instant!" );
+         xprintf( msg2, "Your eyes glow red for an instant!\n\r" );
          break;
       case TAR_CHAR_DEFENSIVE:
-         sprintf( msg, "$n falls silent as $e meditates." );
-         sprintf( msg2, "You become silent as you meditate.\n\r" );
+         xprintf( msg, "$n falls silent as $e meditates." );
+         xprintf( msg2, "You become silent as you meditate.\n\r" );
          break;
       case TAR_CHAR_SELF:
-         sprintf( msg, "$n motions toward $mself." );
-         sprintf( msg2, "You motion towards yourself.\n\r" );
+         xprintf( msg, "$n motions toward $mself." );
+         xprintf( msg2, "You motion towards yourself.\n\r" );
          break;
       case TAR_OBJ_INV:
-         sprintf( msg, "$n's hands briefly glow magically!" );
-         sprintf( msg2, "Your hands briefly glow magically!\n\r" );
+         xprintf( msg, "$n's hands briefly glow magically!" );
+         xprintf( msg2, "Your hands briefly glow magically!\n\r" );
    }
    act( msg, ch, NULL, ch, TO_NOTVICT );
    send_to_char( msg2, ch );
 
-   sprintf( buf2, "$n utters the words, '%s'.", buf );
-   sprintf( buf, "$n utters the words, '%s'.", skill_table[sn].name );
+   xprintf( buf2, "$n utters the words, '%s'.", buf );
+   xprintf( buf, "$n utters the words, '%s'.", skill_table[sn].name );
 
    for( rch = ch->in_room->first_person; rch; rch = rch->next_in_room )
    {
@@ -330,7 +330,7 @@ bool saves_spell( int level, CHAR_DATA * victim )
    if( number_percent(  ) < save )
       saved = TRUE;
 #if 0
-   sprintf( log_buf, "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
+   xprintf( log_buf, "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
             victim->name, get_psuedo_level( victim ),
             wis_app[get_curr_wis( victim )].spell_save,
             victim->saving_throw, save, level, ( saved ? "@@aSAVED@@N" : "@@eFAILED@@N" ) );
@@ -690,7 +690,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
        && ( sn != skill_lookup( "cure serious" ) )
        && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
    {
-      sprintf( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
+      xprintf_2( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
                ch->name, typed, skill_table[sn].name,
                ch->in_room->name, ch->in_room->vnum, ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
       monitor_chan( log_buf, MONITOR_MAGIC );
@@ -733,7 +733,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
              && ( sn != skill_lookup( "cure serious" ) )
              && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
          {
-            sprintf( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
+            xprintf_2( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
                      ch->name, typed, skill_table[sn].name,
                      ch->in_room->name, ch->in_room->vnum,
                      ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
@@ -780,7 +780,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
              && ( sn != skill_lookup( "cure serious" ) )
              && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
          {
-            sprintf( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
+            xprintf_2( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
                      ch->name, typed, skill_table[sn].name,
                      ch->in_room->name, ch->in_room->vnum,
                      ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
@@ -1376,7 +1376,7 @@ bool spell_create_water( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
       if( !is_name( "water", ob->name ) )
       {
          char buf[MAX_STRING_LENGTH];
-         sprintf( buf, "%s water", ob->name );
+         xprintf( buf, "%s water", ob->name );
          free_string( ob->name );
          ob->name = str_dup( buf );
       }
@@ -2461,7 +2461,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    char buf[MAX_STRING_LENGTH];
    AFFECT_DATA *paf;
 
-   sprintf( buf,
+   xprintf( buf,
             "@@NObject '%s' is @@etype@@N %s, @@aextra flags@@N %s.\n\r@@mWorn@@N: %s, @@cWeight@@N: %d, @@yvalue@@N: %s @@N, @@rlevel@@N: %d.\n\r",
             ob->short_descr,
             item_type_name( ob ),
@@ -2473,7 +2473,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    {
       case ITEM_SCROLL:
       case ITEM_POTION:
-         sprintf( buf, "Level %d spells of:", ob->value[0] );
+         xprintf( buf, "Level %d spells of:", ob->value[0] );
          send_to_char( buf, ch );
 
          if( ob->value[1] >= 0 && ob->value[1] < MAX_SKILL )
@@ -2502,7 +2502,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
 
       case ITEM_WAND:
       case ITEM_STAFF:
-         sprintf( buf, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
+         xprintf( buf, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
          send_to_char( buf, ch );
 
          if( ob->value[3] >= 0 && ob->value[3] < MAX_SKILL )
@@ -2516,13 +2516,13 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
          break;
 
       case ITEM_WEAPON:
-         sprintf( buf, "Damage is %d to %d (average %d).\n\r",
+         xprintf( buf, "Damage is %d to %d (average %d).\n\r",
                   ob->value[1], ob->value[2], ( ob->value[1] + ob->value[2] ) / 2 );
          send_to_char( buf, ch );
          break;
 
       case ITEM_ARMOR:
-         sprintf( buf, "Armor class is %d.\n\r", ob->value[0] );
+         xprintf( buf, "Armor class is %d.\n\r", ob->value[0] );
          send_to_char( buf, ch );
          break;
    }
@@ -2531,7 +2531,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    {
       if( paf->location != APPLY_NONE && paf->modifier != 0 )
       {
-         sprintf( buf, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
+         xprintf( buf, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
          send_to_char( buf, ch );
       }
    }

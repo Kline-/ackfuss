@@ -188,7 +188,7 @@ void do_note( CHAR_DATA * ch, char *argument )
       {
          if( is_note_to( ch, pnote ) )
          {
-            sprintf( buf, "[%3d%s] %s: %s\n\r",
+            xprintf( buf, "[%3d%s] %s: %s\n\r",
                      vnum,
                      ( pnote->date_stamp > ch->last_note
                        && str_cmp( pnote->sender, ch->name ) ) ? "N" : " ", pnote->sender, pnote->subject );
@@ -228,13 +228,13 @@ void do_note( CHAR_DATA * ch, char *argument )
          {
             if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && ch->last_note < pnote->date_stamp )
             {
-               sprintf( buf, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
+               xprintf( buf, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
                strcat( buf1, buf );
 
-               sprintf( buf, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
+               xprintf( buf, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
                strcat( buf1, buf );
 
-               sprintf( buf, "Across the top of the letter it says: %s\n\r", pnote->subject );
+               xprintf( buf, "Across the top of the letter it says: %s\n\r", pnote->subject );
                strcat( buf1, buf );
 
                strcat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
@@ -267,13 +267,13 @@ void do_note( CHAR_DATA * ch, char *argument )
       {
          if( is_note_to( ch, pnote ) && ( vnum++ == anum || fAll ) )
          {
-            sprintf( buf, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
+            xprintf( buf, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
             strcat( buf1, buf );
 
-            sprintf( buf, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
+            xprintf( buf, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
             strcat( buf1, buf );
 
-            sprintf( buf, "Across the top of the letter it says: %s\n\r", pnote->subject );
+            xprintf( buf, "Across the top of the letter it says: %s\n\r", pnote->subject );
             strcat( buf1, buf );
 
             strcat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
@@ -365,7 +365,7 @@ void do_note( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      sprintf( buf, "%s: %s\n\rTo: %s\n\r", ch->pnote->sender, ch->pnote->subject, ch->pnote->to_list );
+      xprintf( buf, "%s: %s\n\rTo: %s\n\r", ch->pnote->sender, ch->pnote->subject, ch->pnote->to_list );
       send_to_char( buf, ch );
       send_to_char( ch->pnote->text, ch );
       return;
@@ -487,14 +487,14 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
 
    if( argument[0] == '\0' )
    {
-      sprintf( buf, "%s what?\n\r", verb );
+      xprintf( buf, "%s what?\n\r", verb );
       buf[0] = UPPER( buf[0] );
       return;
    }
 
    if( !IS_NPC( ch ) && IS_SET( ch->act, PLR_SILENCE ) )
    {
-      sprintf( buf, "You can't %s.\n\r", verb );
+      xprintf( buf, "You can't %s.\n\r", verb );
       send_to_char( buf, ch );
       return;
    }
@@ -511,96 +511,96 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
    switch ( channel )
    {
       default:
-         sprintf( buf, "You %s '%s'.\n\r", verb, argument );
+         xprintf( buf, "You %s '%s'.\n\r", verb, argument );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.", verb );
+         xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_GOSSIP:
-         sprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "gossip" ), verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "gossip" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.", verb );
+         xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
 
       case CHANNEL_CRUSADE:
-         sprintf( buf, "@@NYou %s@@N '%s'.%s\n\r", verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "@@NYou %s@@N '%s'.%s\n\r", verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.", verb );
+         xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_AUCTION:
-         sprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "auction" ), verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "auction" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.", verb );
+         xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_MUSIC:
-         sprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "music" ), verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "music" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.", verb );
+         xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
 
 
       case CHANNEL_YELL:
-         sprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "yell" ), verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "yell" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.", verb );
+         xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_ADEPT:
-         sprintf( buf, "%s%s %s: '%s'.%s\n\r",
+         xprintf( buf, "%s%s %s: '%s'.%s\n\r",
                   color_string( ch, "clan" ), verb, ch->name, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %s: '$t'.", verb );
+         xprintf( buf, "$n %s: '$t'.", verb );
          break;
 
 
 
       case CHANNEL_FLAME:
-         sprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "flame" ), verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "flame" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.", verb );
+         xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
 
       case CHANNEL_SHOUT:
-         sprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "shout" ), verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "shout" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.\n\r", verb );
+         xprintf( buf, "$n %ss '$t'.\n\r", verb );
          break;
 
 
       case CHANNEL_CLAN:
-         sprintf( buf, "%s%s %s: '%s'.%s\n\r",
+         xprintf( buf, "%s%s %s: '%s'.%s\n\r",
                   color_string( ch, "clan" ), verb, ch->name, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %s: '$t'.\n\r", verb );
+         xprintf( buf, "$n %s: '$t'.\n\r", verb );
          break;
 
       case CHANNEL_FAMILY:
-         sprintf( buf, "%s%s %s: '%s'.%s\n\r",
+         xprintf( buf, "%s%s %s: '%s'.%s\n\r",
                   color_string( ch, "clan" ), verb, ch->name, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %s: '$t'.\n\r", verb );
+         xprintf( buf, "$n %s: '$t'.\n\r", verb );
          break;
 
       case CHANNEL_HOWL:
-         sprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "race" ), verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "race" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %ss '$t'.\n\r", verb );
+         xprintf( buf, "$n %ss '$t'.\n\r", verb );
          break;
 
       case CHANNEL_RACE:
-         sprintf( buf, "%s%s %s: '%s'.%s\n\r",
+         xprintf( buf, "%s%s %s: '%s'.%s\n\r",
                   color_string( ch, "race" ), verb, ch->name, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         sprintf( buf, "$n %s: '$t'.\n\r", verb );
+         xprintf( buf, "$n %s: '$t'.\n\r", verb );
          break;
 
       case CHANNEL_CREATOR:
-         sprintf( buf, "%s $n: $t.", verb );
+         xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
@@ -608,7 +608,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_IMMTALK:
-         sprintf( buf, "$n: $t." );
+         xprintf( buf, "$n: $t." );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
@@ -618,7 +618,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
 
 
       case CHANNEL_REMORTTALK:
-         sprintf( buf, "%s $n: $t.", verb );
+         xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
@@ -626,7 +626,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_DIPLOMAT:
-         sprintf( buf, "%s $n: $t.", verb );
+         xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
@@ -634,21 +634,21 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_QUEST:
-         sprintf( buf, "%s $n: $t.", verb );
+         xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
          ch->position = position;
          break;
       case CHANNEL_OOC:
-         sprintf( buf, "%s $n: $t.", verb );
+         xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
          ch->position = position;
          break;
       case CHANNEL_GAME:
-         sprintf( buf, "%s $n: $t.", verb );
+         xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
@@ -724,35 +724,35 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
             switch ( channel )
             {
                default:
-                  sprintf( ansi, "%s", buf );
+                  xprintf( ansi, "%s", buf );
                   break;
                case CHANNEL_SHOUT:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "shout" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "shout" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_RACE:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "race" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "race" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_MUSIC:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "music" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "music" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_CLAN:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "clan" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "clan" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_FLAME:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "flame" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "flame" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_YELL:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "yell" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "yell" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_GOSSIP:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_OOC:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
 
                case CHANNEL_CRUSADE:
-                  sprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
+                  xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
 
             }
@@ -820,7 +820,7 @@ void do_race( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   sprintf( buf, "[  %s  ]", race_table[ch->race].race_name );
+   xprintf( buf, "[  %s  ]", race_table[ch->race].race_name );
    talk_channel( ch, argument, CHANNEL_RACE, buf );
    return;
 }
@@ -841,7 +841,7 @@ void do_clan( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   sprintf( buf, "[%s]", clan_table[ch->pcdata->clan].clan_abbr );
+   xprintf( buf, "[%s]", clan_table[ch->pcdata->clan].clan_abbr );
    talk_channel( ch, argument, CHANNEL_CLAN, buf );
    return;
 }
@@ -861,7 +861,7 @@ void do_familytalk( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   sprintf( buf, "[%s]", get_family_name( ch ) );
+   xprintf( buf, "[%s]", get_family_name( ch ) );
    talk_channel( ch, argument, CHANNEL_FAMILY, buf );
    return;
 }
@@ -885,7 +885,7 @@ void do_howl( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * sprintf( buf, "[%s]", get_family_name ( ch ) );  
+    * xprintf( buf, "[%s]", get_family_name ( ch ) );  
     */
    talk_channel( ch, argument, CHANNEL_HOWL, "@@bHowl@@N" );
    return;
@@ -1058,11 +1058,11 @@ void do_say( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
       argument = slur_text( argument );
 
-   sprintf( buf, "You say '%s$T%s'.", color_string( ch, "say" ), color_string( ch, "normal" ) );
+   xprintf( buf, "You say '%s$T%s'.", color_string( ch, "say" ), color_string( ch, "normal" ) );
    act( buf, ch, NULL, argument, TO_CHAR );
    for( ppl = ch->in_room->first_person; ppl != NULL; ppl = ppl->next_in_room )
    {
-      sprintf( buf, "$n says '%s$t%s'.", color_string( ppl, "say" ), color_string( ppl, "normal" ) );
+      xprintf( buf, "$n says '%s$t%s'.", color_string( ppl, "say" ), color_string( ppl, "normal" ) );
       act( buf, ch, argument, ppl, TO_VICT );
    }
    mprog_speech_trigger( argument, ch );
@@ -1095,12 +1095,12 @@ void do_ignore( CHAR_DATA * ch, char *argument )
       {
          if( ch->pcdata->ignore_list[i] != NULL )
          {
-            sprintf( buf, "  %d) @@R%s@@g\n\r", i + 1, ch->pcdata->ignore_list[i] );
+            xprintf( buf, "  %d) @@R%s@@g\n\r", i + 1, ch->pcdata->ignore_list[i] );
             send_to_char( buf, ch );
          }
          else
          {
-            sprintf( buf, "  %d) @@Rnobody@@g\n\r", i + 1 );
+            xprintf( buf, "  %d) @@Rnobody@@g\n\r", i + 1 );
             send_to_char( buf, ch );
          }
       }
@@ -1140,12 +1140,12 @@ void do_ignore( CHAR_DATA * ch, char *argument )
         {
             if( ch->pcdata->ignore_list[i] != NULL )
             {
-                sprintf(buf, "  %d) @@R%s@@g\n\r",i+1,ch->pcdata->ignore_list[i]);
+                xprintf(buf, "  %d) @@R%s@@g\n\r",i+1,ch->pcdata->ignore_list[i]);
                 send_to_char( buf, ch );
             }
             else
             {
-		sprintf( buf, "  %d) @@Rnobody@@g\n\r", i+1 );
+		xprintf( buf, "  %d) @@Rnobody@@g\n\r", i+1 );
                 send_to_char( buf, ch );
             }
         }
@@ -1205,7 +1205,7 @@ void do_ignore( CHAR_DATA * ch, char *argument )
    send_to_char( "\nCurrent person to be ignored:\n\r", ch );
    for( i = 0; i < 3; i++ )
    {
-      sprintf( buf, "  %d) @@R%s@@g\n\r", i + 1, ch->pcdata->ignore_list[i] );
+      xprintf( buf, "  %d) @@R%s@@g\n\r", i + 1, ch->pcdata->ignore_list[i] );
       send_to_char( buf, ch );
    }
    for( i = 0; i < 3; i++ )
@@ -1294,7 +1294,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
        && ( !str_cmp( victim->pcdata->ignore_list[0], ch->name ) ||
             !str_cmp( victim->pcdata->ignore_list[1], ch->name ) || !str_cmp( victim->pcdata->ignore_list[2], ch->name ) ) )
    {
-      sprintf( buf, "%s @@Ris ignoring you!!@@g\n\r", victim->name );
+      xprintf( buf, "%s @@Ris ignoring you!!@@g\n\r", victim->name );
       send_to_char( buf, ch );
       return;
    }
@@ -1308,7 +1308,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
              if( victim->pcdata->ignore_list != NULL ){ *//*
     * { == ch->name ){
     */
-/*	sprintf( buf, "%s, %s\n\r", victim->pcdata->ignore_list, ch->name );
+/*	xprintf( buf, "%s, %s\n\r", victim->pcdata->ignore_list, ch->name );
 	send_to_char( buf, ch);
 	return;
     }*/
@@ -1322,12 +1322,12 @@ void do_tell( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
       argument = slur_text( argument );
 
-   sprintf( buf, "You tell $N '%s$t%s'.", color_string( ch, "tell" ), color_string( ch, "normal" ) );
+   xprintf( buf, "You tell $N '%s$t%s'.", color_string( ch, "tell" ), color_string( ch, "normal" ) );
    act( buf, ch, argument, victim, TO_CHAR );
 
    position = victim->position;
    victim->position = POS_STANDING;
-   sprintf( buf, "$n tells you '%s$t%s'.", color_string( victim, "tell" ), color_string( victim, "normal" ) );
+   xprintf( buf, "$n tells you '%s$t%s'.", color_string( victim, "tell" ), color_string( victim, "normal" ) );
 
    act( buf, ch, argument, victim, TO_VICT );
    victim->position = position;
@@ -1758,7 +1758,7 @@ void do_quit( CHAR_DATA * ch, char *argument )
    send_to_char( "@@W-- George Orwell, '1984'@@g\n\r", ch );
 
    act( "$n waves, and leaves the game.", ch, NULL, NULL, TO_ROOM );
-   sprintf( log_buf, "%s quits ACK!", ch->name );
+   xprintf_2( log_buf, "%s quits ACK!", ch->name );
    if( ch->level != 85 )
       notify( log_buf, MAX_LEVEL - 2 );
    log_string( log_buf );
@@ -1779,7 +1779,7 @@ void do_quit( CHAR_DATA * ch, char *argument )
          if( other_logins->connected == CON_GET_OLD_PASSWORD )
          {
             char logbuf[MSL];
-            sprintf( logbuf, "CHEATER!!! Possible attempt to utilize eq dup bug, %s", other_logins->character->name );
+            xprintf( logbuf, "CHEATER!!! Possible attempt to utilize eq dup bug, %s", other_logins->character->name );
 
             log_string( logbuf );
          }
@@ -1816,7 +1816,7 @@ void do_save( CHAR_DATA * ch, char *argument )
    }
 
    save_char_obj( ch );
-   sprintf( buf, "Saving %s.\n\r", ch->name );
+   xprintf( buf, "Saving %s.\n\r", ch->name );
    send_to_char( buf, ch );
    return;
 }
@@ -2145,7 +2145,7 @@ void group_all( CHAR_DATA * ch )
             ch_sremort = TRUE;
          if( get_psuedo_level( gch ) > 80 )
             victim_sremort = TRUE;
-/*    sprintf( buf, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
+/*    xprintf( buf, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
      ch->name, get_psuedo_level( ch ), ( ch_adept == TRUE ) ? "YES" : "NO", ( ch_dremort == TRUE) : "YES" : "NO", ( ch_sremort == TRUE ) ? "YES" : "NO",
      victim->name, get_psuedo_level( victim ), ( victim_adept == TRUE ) ? "YES" : "NO", ( victim_dremort == TRUE ) ? "YES" : "NO", ( victim_sremort == TRUE ) ? "YES" : "NO" );
 */
@@ -2226,7 +2226,7 @@ void do_group( CHAR_DATA * ch, char *argument )
       CHAR_DATA *leader;
 
       leader = ( ch->leader != NULL ) ? ch->leader : ch;
-      sprintf( buf, "%s's group:\n\r", PERS( leader, ch ) );
+      xprintf( buf, "%s's group:\n\r", PERS( leader, ch ) );
       send_to_char( buf, ch );
 
       for( gch = first_char; gch != NULL; gch = gch->next )
@@ -2235,14 +2235,14 @@ void do_group( CHAR_DATA * ch, char *argument )
          {
             if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
             {
-               sprintf( buf,
+               xprintf( buf,
                         "%-16s %4d of %4d hp %4d of %4d mana %4d of %4d move %5d xp\n\r",
                         capitalize( PERS( gch, ch ) ),
                         gch->hit, gch->max_hit, gch->mana, gch->max_mana, gch->move, gch->max_move, gch->exp );
             }
             else
             {
-               sprintf( buf,
+               xprintf( buf,
                         "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5d xp\n\r",
                         gch->level,
                         IS_NPC( gch ) ? "Mob" : class_table[gch->class].who_name,
@@ -2307,7 +2307,7 @@ void do_group( CHAR_DATA * ch, char *argument )
       ch_sremort = TRUE;
    if( get_psuedo_level( victim ) > 80 )
       victim_sremort = TRUE;
-/*    sprintf( buf, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
+/*    xprintf( buf, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
      ch->name, get_psuedo_level( ch ), ( ch_adept == TRUE ) ? "YES" : "NO", ( ch_dremort == TRUE) : "YES" : "NO", ( ch_sremort == TRUE ) ? "YES" : "NO",
      victim->name, get_psuedo_level( victim ), ( victim_adept == TRUE ) ? "YES" : "NO", ( victim_dremort == TRUE ) ? "YES" : "NO", ( victim_sremort == TRUE ) ? "YES" : "NO" );
 */
@@ -2423,7 +2423,7 @@ void do_split( CHAR_DATA * ch, char *argument )
          send_to_char( "Your group members wouldn't like that!\n\r", ch );
          return;
       }
-      sprintf( catbuf, "%d %s ", share, coinbuf );
+      xprintf( catbuf, "%d %s ", share, coinbuf );
       safe_strcat( MSL, givebuf, catbuf );
    }
    if( valid )
@@ -2435,7 +2435,7 @@ void do_split( CHAR_DATA * ch, char *argument )
          if( gch != ch && is_same_group( gch, ch ) )
          {
             give_money( ch, gch, givebuf );
-            sprintf( outbuf, "%s gives you %s.\n\r", PERS( ch, gch ), cost_to_money( money_to_cost( givebuf ) ) );
+            xprintf( outbuf, "%s gives you %s.\n\r", PERS( ch, gch ), cost_to_money( money_to_cost( givebuf ) ) );
             send_to_char( outbuf, gch );
          }
       }
@@ -2478,7 +2478,7 @@ void do_gtell( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
       argument = slur_text( argument );
 
-   sprintf( buf, "%s tells the group '%s'.\n\r", ch->name, argument );
+   xprintf( buf, "%s tells the group '%s'.\n\r", ch->name, argument );
    for( gch = first_char; gch != NULL; gch = gch->next )
    {
       if( is_same_group( gch, ch ) )
@@ -2587,7 +2587,7 @@ void do_pray( CHAR_DATA * ch, char *argument )
    }
 
    send_to_char( "You pray, concentrating on your message.\n\r", ch );
-   sprintf( buf, "%s sends the following message via prayer:\n\r`%s'\n\r", ch->name, argument );
+   xprintf( buf, "%s sends the following message via prayer:\n\r`%s'\n\r", ch->name, argument );
    notify( buf, LEVEL_HERO );
 
    return;
@@ -2678,8 +2678,8 @@ void do_tongue( CHAR_DATA * ch, char *argument )
    }
 
 
-   sprintf( buf3, "$n tongues, '%s'", buf );
-   sprintf( buf2, "$n tongues, '%s'.", argument );
+   xprintf( buf3, "$n tongues, '%s'", buf );
+   xprintf( buf2, "$n tongues, '%s'.", argument );
 
    for( rch = ch->in_room->first_person; rch; rch = rch->next_in_room )
    {
@@ -2693,9 +2693,9 @@ void do_tongue( CHAR_DATA * ch, char *argument )
          act( ( ch->race == rch->race || rch->level > LEVEL_IMMORTAL ) ? buf2 : buf3, ch, NULL, rch, TO_VICT );
    }
 
-   sprintf( buf2, "You tongue, '%s'.\n\r", buf );
+   xprintf( buf2, "You tongue, '%s'.\n\r", buf );
    send_to_char( buf2, ch );
-   sprintf( buf2, "Translation: %s.\n\r", argument );
+   xprintf( buf2, "Translation: %s.\n\r", argument );
    send_to_char( buf2, ch );
    return;
 }
@@ -2993,16 +2993,16 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
       {
          if( quest_timer < 7 )
          {
-            sprintf( buf, "@@eI don't even know who stole it yet!@@N" );
+            xprintf( buf, "@@eI don't even know who stole it yet!@@N" );
          }
          else if( quest_object && quest_target )
          {
-            sprintf( buf, "@@NIt was %s @@N who stole my %s@@N.", quest_target->short_descr, quest_object->short_descr );
+            xprintf( buf, "@@NIt was %s @@N who stole my %s@@N.", quest_target->short_descr, quest_object->short_descr );
          }
       }
       else if( quest_object )
       {
-         sprintf( buf, "@@NDon't worry about who stole my %s@@N, he has recieved his just reward!",
+         xprintf( buf, "@@NDon't worry about who stole my %s@@N, he has recieved his just reward!",
                   quest_object->short_descr );
       }
       if( quest_mob != NULL )
@@ -3014,7 +3014,7 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
    {
       if( quest_mob && quest_object )
       {
-         sprintf( buf, "@@NMy %s @@Nwas stolen from me.", quest_object->short_descr );
+         xprintf( buf, "@@NMy %s @@Nwas stolen from me.", quest_object->short_descr );
          do_crusade( quest_mob, buf );
          return;
       }
@@ -3023,7 +3023,7 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
    if( !str_cmp( argument, "where are you?" ) )
       if( quest_mob )
       {
-         sprintf( buf, "@@NYou can find me in %s@@N, please hurry!!", quest_mob->in_room->area->name );
+         xprintf( buf, "@@NYou can find me in %s@@N, please hurry!!", quest_mob->in_room->area->name );
          do_crusade( quest_mob, buf );
          return;
       }
@@ -3036,22 +3036,22 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
          {
             if( quest_timer < 10 )
             {
-               sprintf( buf, "@@NI don't really know where %s@@N is, let me try and find out.", quest_target->short_descr );
+               xprintf( buf, "@@NI don't really know where %s@@N is, let me try and find out.", quest_target->short_descr );
             }
             else if( quest_target )
             {
-               sprintf( buf, "@@NI'm not really sure, but I THINK %s@@N is in %s@@N",
+               xprintf( buf, "@@NI'm not really sure, but I THINK %s@@N is in %s@@N",
                         quest_target->short_descr, quest_target->in_room->area->name );
             }
 
          }
          else if( ( quest_target ) && ( quest_timer <= 7 ) )
          {
-            sprintf( buf, "@@eI don't even know who stole it yet!@@N" );
+            xprintf( buf, "@@eI don't even know who stole it yet!@@N" );
          }
          else
          {
-            sprintf( buf, "@@NDon't worry about where the thief who stole my %s@@N is, he has recieved his just reward",
+            xprintf( buf, "@@NDon't worry about where the thief who stole my %s@@N is, he has recieved his just reward",
                      quest_object->short_descr );
          }
          do_crusade( quest_mob, buf );
