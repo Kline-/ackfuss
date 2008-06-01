@@ -1634,9 +1634,9 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          for( looper = 0; looper < MAX_RACE; looper++ )
          {
             xprintf( catbuf, "[%i]:%s ", looper, race_table[looper].race_title );
-            safe_strcat( MSL, buf, catbuf );
+            xcat( buf, catbuf );
          }
-         safe_strcat( MSL, buf, "\n\r" );
+         xcat( buf, "\n\r" );
          send_to_char( buf, ch );
          return;
       }
@@ -3067,6 +3067,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
       pRoomIndex->exit[RevDirs[dir]] = pExit;
    }
 
+   area_modified(pArea);
    return;
 }
 

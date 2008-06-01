@@ -213,33 +213,33 @@ char *rev_spec_lookup( void *func )
 
 void print_spec_lookup( char *buf )
 {
-   strcat( buf, "       spec_breath_any         \n\r" );
-   strcat( buf, "       spec_breath_acid        \n\r" );
-   strcat( buf, "       spec_breath_fire        \n\r" );
-   strcat( buf, "       spec_breath_frost       \n\r" );
-   strcat( buf, "       spec_breath_gas         \n\r" );
-   strcat( buf, "       spec_breath_lightning   \n\r" );
-   strcat( buf, "       spec_cast_adept         \n\r" );
-   strcat( buf, "       spec_cast_cleric        \n\r" );
-   strcat( buf, "       spec_cast_judge         \n\r" );
-   strcat( buf, "       spec_cast_mage          \n\r" );
-   strcat( buf, "       spec_cast_undead        \n\r" );
-   strcat( buf, "       spec_executioner        \n\r" );
-   strcat( buf, "       spec_fido               \n\r" );
-   strcat( buf, "       spec_guard              \n\r" );
-   strcat( buf, "       spec_janitor            \n\r" );
-   strcat( buf, "       spec_mayor              \n\r" );
-   strcat( buf, "       spec_poison             \n\r" );
-   strcat( buf, "       spec_thief              \n\r" );
-   strcat( buf, "       spec_policeman          \n\r" );
-   strcat( buf, "       spec_cast_cadaver       \n\r" );
-   strcat( buf, "       spec_undead             \n\r" );
-   strcat( buf, "       spec_rewield            \n\r" );
-   strcat( buf, "	     spec_cast_bigtime       \n\r" );
-   strcat( buf, "       spec_wizardofoz         \n\r" );
-   strcat( buf, "       spec_vamp_hunter (Int mobs only) \n\r" );
-   strcat( buf, "       spec_mino_guard \n\r" );
-   strcat( buf, "       spec_tax_man \n\r" );
+   xcat( buf, "       spec_breath_any         \n\r" );
+   xcat( buf, "       spec_breath_acid        \n\r" );
+   xcat( buf, "       spec_breath_fire        \n\r" );
+   xcat( buf, "       spec_breath_frost       \n\r" );
+   xcat( buf, "       spec_breath_gas         \n\r" );
+   xcat( buf, "       spec_breath_lightning   \n\r" );
+   xcat( buf, "       spec_cast_adept         \n\r" );
+   xcat( buf, "       spec_cast_cleric        \n\r" );
+   xcat( buf, "       spec_cast_judge         \n\r" );
+   xcat( buf, "       spec_cast_mage          \n\r" );
+   xcat( buf, "       spec_cast_undead        \n\r" );
+   xcat( buf, "       spec_executioner        \n\r" );
+   xcat( buf, "       spec_fido               \n\r" );
+   xcat( buf, "       spec_guard              \n\r" );
+   xcat( buf, "       spec_janitor            \n\r" );
+   xcat( buf, "       spec_mayor              \n\r" );
+   xcat( buf, "       spec_poison             \n\r" );
+   xcat( buf, "       spec_thief              \n\r" );
+   xcat( buf, "       spec_policeman          \n\r" );
+   xcat( buf, "       spec_cast_cadaver       \n\r" );
+   xcat( buf, "       spec_undead             \n\r" );
+   xcat( buf, "       spec_rewield            \n\r" );
+   xcat( buf, "	     spec_cast_bigtime       \n\r" );
+   xcat( buf, "       spec_wizardofoz         \n\r" );
+   xcat( buf, "       spec_vamp_hunter (Int mobs only) \n\r" );
+   xcat( buf, "       spec_mino_guard \n\r" );
+   xcat( buf, "       spec_tax_man \n\r" );
 
    return;
 }
@@ -1728,7 +1728,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 6:
          xprintf( buf, "%s", ch->hunting->name );
          xprintf( buf1, "@@eI know that you are a Vampyre, and I shall not rest until your are destroyed!!!@@N\n\r" );
-         safe_strcat( MAX_STRING_LENGTH, buf, buf1 );
+         xcat( buf, buf1 );
          do_tell( ch, buf );
          break;
       case 7:
@@ -1751,7 +1751,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 17:
          xprintf( buf, " %s ", ch->hunting->name );
          xprintf( buf1, "@@Do you finally know fear? I shall not rest until ALL of your kind are destroyed!!!@@N\n\r" );
-         safe_strcat( MAX_STRING_LENGTH, buf, buf1 );
+         xcat( buf, buf1 );
          do_tell( ch, buf );
          break;
 
@@ -1878,10 +1878,10 @@ bool spec_tax_man( CHAR_DATA * ch )
    }
    xprintf( mon_buf, "Tax Collector visited %s ", victim->name );
    xprintf( cat_buf, "Collected %i from bank, and %i from gold on hand.\n\r", bank_loss, char_loss );
-   safe_strcat( MSL, mon_buf, cat_buf );
+   xcat( mon_buf, cat_buf );
    xprintf( cat_buf, "New totals are balance: %i/%i  on hand: %i/%i\n\r",
             victim->balance, old_bank, victim->gold, old_char );
-   safe_strcat( MSL, mon_buf, cat_buf );
+   xcat( mon_buf, cat_buf );
    monitor_chan( mon_buf, MONITOR_MOB );
 
    do_save( victim, "" );

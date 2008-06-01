@@ -64,7 +64,6 @@ char *two_args args( ( char *argument, char *arg_first, char *arg_second ) );
 char *str_mod args( ( char *mod_string, char *argument ) );
 void rand_arg args( ( char *argument, char *output ) );
 char *space_pad args( ( const char *str, sh_int final_size ) );
-void safe_strcat args( ( int max_len, char *dest, char *source ) );
 char *center_text args( ( char *text, int width ) );
 char *item_type_name args( ( OBJ_DATA * obj ) );
 char *affect_loc_name args( ( int location ) );
@@ -87,4 +86,5 @@ int ccode_len( const char *text, sh_int desired );
 void pre_parse( char *list, char *victimname, char *containername, char *things );
 char *one_word( char *argument, char *arg_first );
 /* My additions; safe_printf by Darien --Kline */
-void safe_printf(const char *file, const char *function, int line,int size, char *str, char *fmt, ...);
+void safe_printf(const char *file, const char *function, int line, int size, char *str, char *fmt, ...);
+void safe_strcat(const char *file, const char *function, int line, int size, char *prev, char *next, ... );

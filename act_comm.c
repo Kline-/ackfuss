@@ -2424,7 +2424,7 @@ void do_split( CHAR_DATA * ch, char *argument )
          return;
       }
       xprintf( catbuf, "%d %s ", share, coinbuf );
-      safe_strcat( MSL, givebuf, catbuf );
+      xcat( givebuf, catbuf );
    }
    if( valid )
    {

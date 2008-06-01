@@ -1139,7 +1139,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       {
          check = 1;
          xprintf( buf, "<%dhp", ch->hit );
-         strcat( buf2, buf );
+         xcat( buf2, buf );
       }
       if( ch->mana < ch->max_mana )
       {
@@ -1148,7 +1148,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          else
             xprintf( buf, "<%dmn", ch->mana );
          check = 1;
-         strcat( buf2, buf );
+         xcat( buf2, buf );
       }
       if( ch->move < ch->max_move )
       {
@@ -1156,7 +1156,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             xprintf( buf, " %dmv", ch->move );
          else
             xprintf( buf, "<%dmv", ch->move );
-         strcat( buf2, buf );
+         xcat( buf2, buf );
          check = 1;
       }
       if( check == 1 )
@@ -1821,18 +1821,18 @@ void show_menu_to( DESCRIPTOR_DATA * d )
    char menu[MAX_STRING_LENGTH];
 
    xprintf( menu, "\n\rCharacter Creation Menu.\n\r\n\r" );
-   strcat( menu, "Options:\n\r" );
+   xcat( menu, "Options:\n\r" );
 
    xprintf( buf, "        1. Set Gender.       Currently:%s\n\r",
             !IS_SET( d->check, CHECK_SEX ) ? "Not Set." :
             ch->sex == SEX_NEUTRAL ? "Neutral." : ch->sex == SEX_MALE ? "Male." : "Female." );
-   strcat( menu, buf );
+   xcat( menu, buf );
 
    xprintf( buf, "        2. Set Race.         Currently:%s\n\r",
             !IS_SET( d->check, CHECK_RACE ) ? "Not Set." : race_table[ch->race].race_title );
-   strcat( menu, buf );
+   xcat( menu, buf );
 
-   strcat( menu, "        3. Roll Attributes.  Currently:" );
+   xcat( menu, "        3. Roll Attributes.  Currently:" );
    if( IS_SET( d->check, CHECK_STATS ) )
       xprintf( buf, "\n\r        Str: [%d]  Int: [%d]  Wis: [%d]\n\r        Dex: [%d]  Con: [%d]\n\r",
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
@@ -1840,26 +1840,26 @@ void show_menu_to( DESCRIPTOR_DATA * d )
       xprintf( buf, "Not Set.\n\r" );
 
 
-   strcat( menu, buf );
+   xcat( menu, buf );
 
-   strcat( menu, "        4. Set Class Order.  Currently:" );
+   xcat( menu, "        4. Set Class Order.  Currently:" );
    if( IS_SET( d->check, CHECK_CLASS ) )
    {
       int fubar;
       xprintf( buf, "\n\r        " );
       for( fubar = 0; fubar < MAX_CLASS; fubar++ )
       {
-         strcat( menu, class_table[ch->pcdata->order[fubar]].who_name );
-         strcat( menu, ". " );
+         xcat( menu, class_table[ch->pcdata->order[fubar]].who_name );
+         xcat( menu, ". " );
       }
-      strcat( menu, "\n\r" );
+      xcat( menu, "\n\r" );
    }
    else
-      strcat( menu, "Not Set.\n\r" );
+      xcat( menu, "Not Set.\n\r" );
 
-   strcat( menu, "        5. Exit Creation Process.\n\r" );
+   xcat( menu, "        5. Exit Creation Process.\n\r" );
 
-   strcat( menu, "\n\rPlease Select 1-5: " );
+   xcat( menu, "\n\rPlease Select 1-5: " );
    write_to_buffer( d, menu, 0 );
    return;
 }
@@ -1872,10 +1872,10 @@ void show_smenu_to( DESCRIPTOR_DATA * d )
 
    xprintf( menu, "\n\rCharacter Creation: Gender.\n\r\n\r" );
 
-   strcat( menu, "Please Select:\n\r" );
-   strcat( menu, "              M : Male.\n\r" );
-   strcat( menu, "              F : Female.\n\r" );
-   strcat( menu, "              N : Neutral.\n\r\n\r" );
+   xcat( menu, "Please Select:\n\r" );
+   xcat( menu, "              M : Male.\n\r" );
+   xcat( menu, "              F : Female.\n\r" );
+   xcat( menu, "              N : Neutral.\n\r\n\r" );
 
    if( IS_SET( d->check, CHECK_SEX ) )
       xprintf( buf, "Current Choice: %s\n\r",
@@ -1883,8 +1883,8 @@ void show_smenu_to( DESCRIPTOR_DATA * d )
    else
       xprintf( buf, "No Current Selection.\n\r" );
 
-   strcat( menu, buf );
-   strcat( menu, "\n\rPlease Select M/F/N: " );
+   xcat( menu, buf );
+   xcat( menu, "\n\rPlease Select M/F/N: " );
 
    write_to_buffer( d, menu, 0 );
    return;
@@ -1897,11 +1897,11 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
    int iRace;
 
    xprintf( menu, "\n\rCharacter Creation: Race.\n\r\n\r" );
-   strcat( menu, "Notes: a) Race determines abilities in different classes.\n\r" );
-   strcat( menu, "       b) Each Race will soon have seperate hometowns.\n\r" );
-   strcat( menu, "       c) Race determines your attributes.\n\r\n\r" );
-   strcat( menu, "Abr   Name             Class Abilities       Str Int Wis Dex Con\n\r" );
-   strcat( menu, "---   ----             ---------------       --- --- --- --- ---\n\r" );
+   xcat( menu, "Notes: a) Race determines abilities in different classes.\n\r" );
+   xcat( menu, "       b) Each Race will soon have seperate hometowns.\n\r" );
+   xcat( menu, "       c) Race determines your attributes.\n\r\n\r" );
+   xcat( menu, "Abr   Name             Class Abilities       Str Int Wis Dex Con\n\r" );
+   xcat( menu, "---   ----             ---------------       --- --- --- --- ---\n\r" );
 
    for( iRace = 0; iRace < MAX_RACE; iRace++ )
    {
@@ -1909,16 +1909,16 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
          continue;
       xprintf( buf, "%3s   %-10s     %s", race_table[iRace].race_name,
                race_table[iRace].race_title, race_table[iRace].comment );
-      strcat( menu, buf );
+      xcat( menu, buf );
 
       xprintf( buf, "  %-2d  %-2d  %-2d  %-2d  %-2d\n\r",
                race_table[iRace].race_str,
                race_table[iRace].race_int,
                race_table[iRace].race_wis, race_table[iRace].race_dex, race_table[iRace].race_con );
-      strcat( menu, buf );
+      xcat( menu, buf );
    }
 
-   strcat( menu, "\n\rPlease Select Your Race (Abr), or type the full race name for race info: " );
+   xcat( menu, "\n\rPlease Select Your Race (Abr), or type the full race name for race info: " );
    write_to_buffer( d, menu, 0 );
    return;
 }
@@ -1947,8 +1947,8 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
    ch->pcdata->max_con = number_range(3,(race_table[ch->race].race_con-5));
 
    xprintf( menu, "\n\rCharacter Creation: Attributes.\n\r\n\r" );
-   strcat( menu, "There is no way to increase your MAX attributes, so choose wisely!\n\r" );
-   strcat( menu, "Current Attributes:\n\r" );
+   xcat( menu, "There is no way to increase your MAX attributes, so choose wisely!\n\r" );
+   xcat( menu, "Current Attributes:\n\r" );
    write_to_buffer(d,menu,0);
 
    show_stotal_to(d);
@@ -1963,12 +1963,12 @@ void show_ahelp_menu_to( DESCRIPTOR_DATA * d )
 
    char menu[MAX_STRING_LENGTH];
    xprintf( menu, "%s", "" );
-   strcat( menu, "Str affects items you can wear and weight you can carry, and your hitroll and damroll.\n\r" );
-   strcat( menu, "Int affects your mana gain, how many Npcs you can control effectively, and spell success.\n\r" );
-   strcat( menu, "Wis affects how many practices you get, your mana, and your saving against spells.\n\r" );
-   strcat( menu, "Dex affects your ac, how many items you can carry, and your ability to dodge.\n\r" );
-   strcat( menu, "Con affects how many hitpoints you gain per level.\n\r" );
-   strcat( menu, "\n\rPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): " );
+   xcat( menu, "Str affects items you can wear and weight you can carry, and your hitroll and damroll.\n\r" );
+   xcat( menu, "Int affects your mana gain, how many Npcs you can control effectively, and spell success.\n\r" );
+   xcat( menu, "Wis affects how many practices you get, your mana, and your saving against spells.\n\r" );
+   xcat( menu, "Dex affects your ac, how many items you can carry, and your ability to dodge.\n\r" );
+   xcat( menu, "Con affects how many hitpoints you gain per level.\n\r" );
+   xcat( menu, "\n\rPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): " );
 
    write_to_buffer( d, menu, 0 );
    return;
@@ -1981,24 +1981,24 @@ void show_cmenu_to( DESCRIPTOR_DATA * d )
    int iClass;
 
    xprintf( menu, "Character Creation: Class Order.\n\r\n\r" );
-   strcat( menu, "This option allows you to select the order of your classes.\n\r" );
-   strcat( menu, "Being a MultiClass Mud, this order is very important, as it\n\r" );
-   strcat( menu, "will determine how easily you progress in each class, and\n\r" );
-   strcat( menu, "how well you can use the skills/spells of each class.\n\r" );
-   strcat( menu, "There are five classes.  Please list, in order of best to\n\r" );
-   strcat( menu, "worst, the order your classes will be.\n\r" );
-   strcat( menu, "(The 1st you pick will be your prime class, gaining a +1 bonus.\n\r" );
-   strcat( menu, "For example, psi mag cle thi war.\n\r" );
-   strcat( menu, "Abr    Prime Atr    Name\n\r" );
-   strcat( menu, "---    ---------    ----\n\r" );
+   xcat( menu, "This option allows you to select the order of your classes.\n\r" );
+   xcat( menu, "Being a MultiClass Mud, this order is very important, as it\n\r" );
+   xcat( menu, "will determine how easily you progress in each class, and\n\r" );
+   xcat( menu, "how well you can use the skills/spells of each class.\n\r" );
+   xcat( menu, "There are five classes.  Please list, in order of best to\n\r" );
+   xcat( menu, "worst, the order your classes will be.\n\r" );
+   xcat( menu, "(The 1st you pick will be your prime class, gaining a +1 bonus.\n\r" );
+   xcat( menu, "For example, psi mag cle thi war.\n\r" );
+   xcat( menu, "Abr    Prime Atr    Name\n\r" );
+   xcat( menu, "---    ---------    ----\n\r" );
 
    for( iClass = 0; iClass < MAX_CLASS; iClass++ )
    {
       xprintf( buf, "%3s    %3s    %-10s\n\r", class_table[iClass].who_name, class_table[iClass].attr,
                class_table[iClass].class_name );
-      strcat( menu, buf );
+      xcat( menu, buf );
    }
-   strcat( menu, "\n\rOrder: " );
+   xcat( menu, "\n\rOrder: " );
    write_to_buffer( d, menu, 0 );
    return;
 }

@@ -368,7 +368,7 @@ void do_disguise( CHAR_DATA * ch, char *argument )
    {
 
       free_string( ch->long_descr );
-      safe_strcat( MAX_STRING_LENGTH, argument, "\n\r" );
+      xcat( argument, "\n\r" );
       ch->long_descr = str_dup( argument );
       send_to_char( "You are now Disguised!!!\n\r", ch );
       return;
@@ -2039,12 +2039,12 @@ void do_stance( CHAR_DATA * ch, char *argument )
 
          }
 
-         safe_strcat( MSL, msg_buf, cat_buf );
+         xcat( msg_buf, cat_buf );
          xprintf( cat_buf, "%s", "" );
       }
       xprintf( cat_buf, "%s",
                "Type stance <stance name> to change your current fighting stance.\n\r You may place your current Stance in your prompt with a \%s\n\r" );
-      safe_strcat( MSL, msg_buf, cat_buf );
+      xcat( msg_buf, cat_buf );
       send_to_char( msg_buf, ch );
       return;
    }

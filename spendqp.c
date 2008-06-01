@@ -338,7 +338,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                free_string( ch->pcdata->pedit_string[0] );
                ch->pcdata->pedit_string[0] = str_dup( "none" );
                xprintf( catbuf, "Enter message changed to %s\n\r", ch->pcdata->room_enter );
-               safe_strcat( MSL, brandbuf, catbuf );
+               xcat( brandbuf, catbuf );
             }
             if( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
             {
@@ -347,7 +347,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                free_string( ch->pcdata->pedit_string[1] );
                ch->pcdata->pedit_string[1] = str_dup( "none" );
                xprintf( catbuf, "Exit message changed to %s\n\r", ch->pcdata->room_exit );
-               safe_strcat( MSL, brandbuf, catbuf );
+               xcat( brandbuf, catbuf );
             }
             free_string( ch->pcdata->pedit_string[0] );
             ch->pcdata->pedit_string[0] = str_dup( "none" );
@@ -408,13 +408,13 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                break;
             if( !str_cmp( "*name*", word1 ) )
             {
-               safe_strcat( MSL, assistbuf, "$N " );
+               xcat( assistbuf, "$N " );
                continue;
             }
             else
             {
                xprintf( catbuf, "%s ", word1 );
-               safe_strcat( MSL, assistbuf, catbuf );
+               xcat( assistbuf, catbuf );
             }
          }
          free_string( ch->pcdata->assist_msg );
@@ -616,11 +616,11 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
          brand = brand_list->this_one;
          xprintf( buf, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
                   vnum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
-         safe_strcat( MSL, buf1, buf );
+         xcat( buf1, buf );
          vnum++;
          if( vnum > 100 )
          {
-            safe_strcat( MSL, buf1, "---More Follow---\n\r" );
+            xcat( buf1, "---More Follow---\n\r" );
             break;
          }
       }
@@ -658,8 +658,8 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
             brand = brand_list->this_one;
             xprintf( buf, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
                      anum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
-            safe_strcat( MSL, buf1, buf );
-            safe_strcat( MSL, buf1, brand->message );
+            xcat( buf1, buf );
+            xcat( buf1, brand->message );
             send_to_char( buf1, ch );
             return;
          }

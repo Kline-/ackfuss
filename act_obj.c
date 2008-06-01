@@ -2914,7 +2914,7 @@ void do_list( CHAR_DATA * ch, char *argument )
             if( !found )
             {
                found = TRUE;
-               safe_strcat( MAX_STRING_LENGTH, buf1,
+               xcat( buf1,
                             "\n\r@@g[@@yLevel@@g]       @@yPet@@g                           @@yPrice  ( Approximate )@@N \n\r" );
             }
             stopcounter++;
@@ -2923,7 +2923,7 @@ void do_list( CHAR_DATA * ch, char *argument )
             xprintf( buf, "[ @@W%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \n\r", pet->level, ccode_len( pet->short_descr, 30 ),
                      capitalize( pet->short_descr ), ccode_len( costbuf, 35 ), costbuf );
             PUT_FREE( rounded_cost, money_type_free );
-            safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+            xcat( buf1, buf );
             if( stopcounter > 45 )
             {
                send_to_char( buf1, ch );
@@ -2951,7 +2951,7 @@ void do_list( CHAR_DATA * ch, char *argument )
             if( !found )
             {
                found = TRUE;
-               safe_strcat( MAX_STRING_LENGTH, buf1,
+               xcat( buf1,
                             "\n\r@@g[@@yLvl@@g]       @@yItem@@g                           @@yPrice  ( Approximate )@@N \n\r" );
             }
             stopcounter++;
@@ -2961,7 +2961,7 @@ void do_list( CHAR_DATA * ch, char *argument )
                      obj->level, ccode_len( obj->short_descr, 30 ), capitalize( obj->short_descr ), ccode_len( costbuf, 30 ),
                      costbuf );
             PUT_FREE( rounded_cost, money_type_free );
-            safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+            xcat( buf1, buf );
             if( stopcounter > 45 )
             {
                send_to_char( buf1, ch );
@@ -3820,7 +3820,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
          {
             char buf2[MSL];
             xprintf( buf2, " The item has been taken by %s.\n\r", ch->name );
-            safe_strcat( MSL, buf, buf2 );
+            xcat( buf, buf2 );
          }
          do_echo( ch, buf );
          if( good_seller )

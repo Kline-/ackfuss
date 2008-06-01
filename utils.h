@@ -441,7 +441,8 @@ do { \
 /*
  * Miscellaneous macros.
  */
-/* My additions; safe_sprintf by Darien --Kline */
+/* My additions; safe_sprintf/strcat by Darien --Kline */
 #define xprintf(var,args...) safe_printf (__FILE__, __FUNCTION__, __LINE__, sizeof(var), (var), ##args )
-/* for *char types */
-#define xprintf_2(var,args...) safe_printf (__FILE__, __FUNCTION__, __LINE__, MIL, (var), ##args)
+#define xprintf_2(var,args...) safe_printf (__FILE__, __FUNCTION__, __LINE__, MIL, (var), ##args) /* for *char types */
+#define xcat(var, args...) safe_strcat(__FILE__,__FUNCTION__,__LINE__,sizeof(var), (var),##args )
+#define xcat_2(var, args...) safe_strcat(__FILE__,__FUNCTION__,__LINE__,MAS, (var),##args ) /* for *char types */

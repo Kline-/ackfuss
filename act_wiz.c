@@ -1103,18 +1103,18 @@ void do_ofindlev( CHAR_DATA * ch, char *argument )
             {
                xprintf( buf, "\n\r(@@mREMORT@@N) [%3d] [%5d] %s", pObjIndex->level,
                         pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-               safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+               xcat( buf1, buf );
             }
             else
             {
                xprintf( buf, "\n\r(@@aMORTAL@@N) [%3d] [%5d] %s", pObjIndex->level,
                         pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-               safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+               xcat( buf1, buf );
             }
          }
       }
    }
-   safe_strcat( MSL, buf1, "\n\r" );
+   xcat( buf1, "\n\r" );
    if( !found )
    {
       send_to_char( "Nothing like that in hell, earth, or heaven.\n\r", ch );
@@ -1166,7 +1166,7 @@ void do_mfind( CHAR_DATA * ch, char *argument )
          {
             found = TRUE;
             xprintf( buf, "[%5d] [%3d] %s\n\r", pMobIndex->vnum, pMobIndex->level, capitalize( pMobIndex->short_descr ) );
-            safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+            xcat( buf1, buf );
          }
       }
    }
@@ -1243,7 +1243,7 @@ void do_mfindlev( CHAR_DATA * ch, char *argument )
 
             xprintf( buf, "(%3d) [%3d] [%5d] %s\n\r",
                      perkills, pMobIndex->level, pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
-            safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+            xcat( buf1, buf );
          }
       }
    }
@@ -1305,7 +1305,7 @@ void do_ofind( CHAR_DATA * ch, char *argument )
                      pObjIndex->vnum, pObjIndex->level,
                      ( IS_SET( pObjIndex->extra_flags, ITEM_REMORT ) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), capitalize( pObjIndex->short_descr ) );
-            safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+            xcat( buf1, buf );
          }
       }
    }
@@ -2223,9 +2223,9 @@ void do_ban( CHAR_DATA * ch, char *argument )
       {
          strcat( buf, pban->name );
          xprintf( buf2, ( pban->newbie ? " Newbies" : " All" ) );
-         safe_strcat( MSL, buf, buf2 );
+         xcat( buf, buf2 );
          xprintf( buf2, "  Banned by: %s", pban->banned_by );
-         safe_strcat( MSL, buf, buf2 );
+         xcat( buf, buf2 );
          strcat( buf, "\n\r" );
       }
       send_to_char( buf, ch );
@@ -3878,7 +3878,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
 
          obj_counter++;
          buf[0] = UPPER( buf[0] );
-         safe_strcat( MSL, buf, catbuf );
+         xcat( buf, catbuf );
 
       }
    }
@@ -4099,7 +4099,7 @@ void do_iwhere( CHAR_DATA * ch, char *argument )
          count++;
          xprintf( buf, "%-12s [%5d] %-20s\n\r",
                   vch->name, vch->in_room == NULL ? 0 : vch->in_room->vnum, vch->in_room->area->name );
-         safe_strcat( MSL, buf2, buf );
+         xcat( buf2, buf );
       }
    }
 
@@ -4847,8 +4847,8 @@ void do_test( CHAR_DATA * ch, char *argument )
    char catbuf[MSL];
    xprintf( testing, "%s", "Testing anti-color capitalize:" );
    xprintf( catbuf, argument );
-   safe_strcat( MSL, testing, capitalize( catbuf ) );
-   safe_strcat( MSL, testing, "\n\r" );
+   xcat( testing, capitalize( catbuf ) );
+   xcat( testing, "\n\r" );
    send_to_char( testing, ch );
    return;
 }
@@ -4957,9 +4957,9 @@ void do_monitor( CHAR_DATA * ch, char *argument )
             if( !IS_NPC( ch ) )
             {
                xprintf( colbuf, "@@%c", ch->pcdata->hicol );
-               safe_strcat( MSL, buf, colbuf );
+               xcat( buf, colbuf );
             }
-            safe_strcat( MAX_STRING_LENGTH, buf, monitor_table[a].on_name );
+            xcat( buf, monitor_table[a].on_name );
          }
 
          else
@@ -4967,9 +4967,9 @@ void do_monitor( CHAR_DATA * ch, char *argument )
             if( !IS_NPC( ch ) )
             {
                xprintf( colbuf, "@@%c", ch->pcdata->dimcol );
-               safe_strcat( MSL, buf, colbuf );
+               xcat( buf, colbuf );
             }
-            safe_strcat( MAX_STRING_LENGTH, buf, monitor_table[a].off_name );
+            xcat( buf, monitor_table[a].off_name );
          }
 
       }
@@ -5593,7 +5593,7 @@ void do_otype( CHAR_DATA * ch, char *argument )
             xprintf( buf, "<%d> %s [%5d] %s\n\r", pObjIndex->level,
                      ( IS_SET( pObjIndex->extra_flags, ITEM_REMORT ) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->vnum, pObjIndex->short_descr );
-            safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+            xcat( buf1, buf );
          }
       }
    }
@@ -5656,7 +5656,7 @@ void do_owear( CHAR_DATA * ch, char *argument )
                      pObjIndex->level,
                      ( IS_SET( pObjIndex->extra_flags, ITEM_REMORT ) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->short_descr );
-            safe_strcat( MAX_STRING_LENGTH, buf1, buf );
+            xcat( buf1, buf );
          }
       }
    }
@@ -5717,7 +5717,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
       xprintf( outbuf, "%s", "Syntax for findreset:\n\r" );
       xprintf( catbuf, "%s",
                "findreset obj/mob <vnum> [+w]\n\r+w shows all resets in the world, default is current area only.\n\r" );
-      safe_strcat( MSL, outbuf, catbuf );
+      xcat( outbuf, catbuf );
       send_to_char( outbuf, ch );
       return;
    }
@@ -5766,7 +5766,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
                      if( reset->arg1 != vnum )
                         continue;
                      xprintf( catbuf, "Room: %d, limit of: %d\n\r", reset->arg3, reset->arg2 );
-                     safe_strcat( MSL, outbuf, catbuf );
+                     xcat( outbuf, catbuf );
                      /*
                       * scan for give and equip commands for this mob 
                       */
@@ -5783,16 +5783,16 @@ void do_findreset( CHAR_DATA * ch, char *argument )
                            if( pObj != NULL )
                            {
                               if( pMob->pShop != NULL )
-                                 safe_strcat( MSL, outbuf, "  sells " );
+                                 xcat( outbuf, "  sells " );
                               else
-                                 safe_strcat( MSL, outbuf, "  with " );
+                                 xcat( outbuf, "  with " );
                               xprintf( catbuf, "[%d] %s.\n\r", pObj->vnum, pObj->name );
-                              safe_strcat( MSL, outbuf, catbuf );
+                              xcat( outbuf, catbuf );
                            }
                            else
                            {
                               xprintf( catbuf, "[%d] unknown object in give reset!\n\r", similar->arg1 );
-                              safe_strcat( MSL, outbuf, catbuf );
+                              xcat( outbuf, catbuf );
                            }
                         }
                         else if( similar->command == 'E' )
@@ -5804,7 +5804,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
                            else
                               xprintf( catbuf, "[%d] unknown object equipped on %s.\n\r",
                                        similar->arg1, tab_wear_loc[similar->arg3].text );
-                           safe_strcat( MSL, outbuf, catbuf );
+                           xcat( outbuf, catbuf );
                         }
                      }
                      break;
