@@ -101,7 +101,7 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
 
    xprintf( buf, "%s", color_string( ch, "objects" ) );
 
-   if( IS_IMMORTAL(ch) ) /* Imms should see vnums, <3 builders :) --Kline */
+   if( IS_IMMORTAL(ch) && ch->position == POS_BUILDING ) /* Imms should see vnums, <3 builders :) --Kline */
    {
     xprintf(buf2,"(%d) ",obj->pIndexData->vnum);
     xcat(buf,buf2);
@@ -389,7 +389,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
        * Then show what race they are (about time this added ;)
        * Imms should see mob races, too. <3 Builders! --Kline
        */
-      if( IS_NPC(victim) )
+      if( IS_NPC(victim) && ch->position == POS_BUILDING )
        xprintf( buf2, "(%d) [%s] ",victim->pIndexData->vnum, race_table[victim->race].race_name );
       else
        xprintf( buf2, "[%s] ", race_table[victim->race].race_name );
