@@ -214,7 +214,7 @@ int main( int argc, char **argv )
 #ifndef WIN32
    init_alarm_handler(  );
 #endif
-   xprintf_2( log_buf, "ACK!MUD is ready on port %d.", port );
+   xprintf_2( log_buf, "ACK! MUD is ready on port %d.", port );
    log_string( log_buf );
    log_string("Last compiled on " __DATE__ " at " __TIME__ ".");
 #ifdef IMC
