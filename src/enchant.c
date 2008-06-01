@@ -124,7 +124,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
          bad_enchant_mix = TRUE;
          if( !str_cmp( arg2, "debug" ) )
          {
-            sprintf( debug, "Non-enchantment item in matrix..%s\n\r", this_obj->name );
+            xprintf( debug, "Non-enchantment item in matrix..%s\n\r", this_obj->name );
             send_to_char( debug, ch );
          }
          break;
@@ -152,7 +152,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
             default:
                if( !str_cmp( arg2, "debug" ) )
                {
-                  sprintf( debug, "Bad location in v0 of enchantment %s\n\r", this_obj->name );
+                  xprintf( debug, "Bad location in v0 of enchantment %s\n\r", this_obj->name );
                   send_to_char( debug, ch );
                }
                break;
@@ -236,7 +236,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
    {
       if( !str_cmp( arg2, "debug" ) )
       {
-         sprintf( debug, "%s", "No item within matrix.\n\r" );
+         xprintf( debug, "%s", "No item within matrix.\n\r" );
          send_to_char( debug, ch );
       }
       return;
@@ -261,7 +261,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
          default:
             if( !str_cmp( arg2, "debug" ) )
             {
-               sprintf( debug, "Unknown aff on %s\n\r", unique->name );
+               xprintf( debug, "Unknown aff on %s\n\r", unique->name );
                send_to_char( debug, ch );
             }
             break;
@@ -337,31 +337,31 @@ void do_enchant( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "show" ) )
    {
-      sprintf( msg_buf, "Your enchantment will add the following to %s\n\r", unique->short_descr );
+      xprintf( msg_buf, "Your enchantment will add the following to %s\n\r", unique->short_descr );
 
       if( new_extras != 0 )
       {
-         sprintf( cat_buf, "Extra Flags : %s\n\r", extra_bit_name( new_extras ) );
+         xprintf( cat_buf, "Extra Flags : %s\n\r", extra_bit_name( new_extras ) );
          safe_strcat( MSL, msg_buf, cat_buf );
       }
       if( new_apply != ITEM_APPLY_NONE )
       {
-         sprintf( cat_buf, "Magic Flags : %s\n\r", bit_table_lookup( tab_item_apply, ( new_apply ) ) );
+         xprintf( cat_buf, "Magic Flags : %s\n\r", bit_table_lookup( tab_item_apply, ( new_apply ) ) );
          safe_strcat( MSL, msg_buf, cat_buf );
       }
 
       if( mod_str != 0 )
       {
-         sprintf( cat_buf, "Str: %d  Total: %d  ", mod_str, mod_str + cur_str );
+         xprintf( cat_buf, "Str: %d  Total: %d  ", mod_str, mod_str + cur_str );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_str + cur_str > 10 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_str + cur_str ) * 10, min_level );
@@ -369,32 +369,32 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_int != 0 )
       {
-         sprintf( cat_buf, "Int: %d  Total: %d  ", mod_int, mod_int + cur_int );
+         xprintf( cat_buf, "Int: %d  Total: %d  ", mod_int, mod_int + cur_int );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_int + cur_int > 10 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_int + cur_int ) * 10, min_level );
       }
       if( mod_wis != 0 )
       {
-         sprintf( cat_buf, "Wis: %d  Total: %d  ", mod_wis, mod_wis + cur_wis );
+         xprintf( cat_buf, "Wis: %d  Total: %d  ", mod_wis, mod_wis + cur_wis );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_wis + cur_wis > 10 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_wis + cur_wis ) * 10, min_level );
@@ -402,80 +402,80 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_dex != 0 )
       {
-         sprintf( cat_buf, "Dex: %d  Total: %d\n\r  ", mod_dex, mod_dex + cur_dex );
+         xprintf( cat_buf, "Dex: %d  Total: %d\n\r  ", mod_dex, mod_dex + cur_dex );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_dex + cur_dex > 10 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_dex + cur_dex ) * 10, min_level );
       }
       if( mod_con != 0 )
       {
-         sprintf( cat_buf, "Con: %d  Total: %d  ", mod_con, mod_con + cur_con );
+         xprintf( cat_buf, "Con: %d  Total: %d  ", mod_con, mod_con + cur_con );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_con + cur_con > 10 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_con + cur_con ) * 10, min_level );
       }
       if( mod_hit != 0 )
       {
-         sprintf( cat_buf, "Hit Points: %d  Total: %d  ", mod_hit, mod_hit + cur_hit );
+         xprintf( cat_buf, "Hit Points: %d  Total: %d  ", mod_hit, mod_hit + cur_hit );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_hit + cur_hit > 480 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_hit + cur_hit ) / 4, min_level );
       }
       if( mod_mana != 0 )
       {
-         sprintf( cat_buf, "Mana: %d  Total: %d  ", mod_mana, mod_mana + cur_mana );
+         xprintf( cat_buf, "Mana: %d  Total: %d  ", mod_mana, mod_mana + cur_mana );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_mana + cur_mana > 480 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_mana + cur_mana ) / 4, min_level );
       }
       if( mod_move != 0 )
       {
-         sprintf( cat_buf, "Move: %d  Total: %d  ", mod_move, mod_move + cur_move );
+         xprintf( cat_buf, "Move: %d  Total: %d  ", mod_move, mod_move + cur_move );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_move + cur_move > 240 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_move + cur_move ) / 2 * 10, min_level );
@@ -483,16 +483,16 @@ void do_enchant( CHAR_DATA * ch, char *argument )
 
       if( mod_armor != 0 )
       {
-         sprintf( cat_buf, "AC: %d  Total: %d  ", mod_armor, mod_armor + cur_armor );
+         xprintf( cat_buf, "AC: %d  Total: %d  ", mod_armor, mod_armor + cur_armor );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_armor + cur_armor < -480 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_armor + cur_armor ) / -4, min_level );
@@ -500,48 +500,48 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_hitroll != 0 )
       {
-         sprintf( cat_buf, "Hitroll: %d  Total: %d  ", mod_hitroll, mod_hitroll + cur_hitroll );
+         xprintf( cat_buf, "Hitroll: %d  Total: %d  ", mod_hitroll, mod_hitroll + cur_hitroll );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_hitroll + cur_hitroll > 50 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_hitroll + cur_hitroll ) * 2 + 20, min_level );
       }
       if( mod_damroll != 0 )
       {
-         sprintf( cat_buf, "Damroll: %d  Total: %d  ", mod_damroll, mod_damroll + cur_damroll );
+         xprintf( cat_buf, "Damroll: %d  Total: %d  ", mod_damroll, mod_damroll + cur_damroll );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_damroll + cur_damroll > 50 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_damroll + cur_damroll ) * 2 + 20, min_level );
       }
       if( mod_save != 0 )
       {
-         sprintf( cat_buf, "Save vs Spell: %d  Total: %d  ", mod_save, mod_save + cur_save );
+         xprintf( cat_buf, "Save vs Spell: %d  Total: %d  ", mod_save, mod_save + cur_save );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_save + cur_save < -36 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          min_level = UMAX( ( mod_save + cur_save ) / -3 * 10, min_level );
@@ -549,34 +549,34 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_item_weight != 0 )
       {
-         sprintf( cat_buf, "New item weight: %d  ", mod_item_weight + unique->weight );
+         xprintf( cat_buf, "New item weight: %d  ", mod_item_weight + unique->weight );
          safe_strcat( MSL, msg_buf, cat_buf );
          if( mod_item_weight + unique->weight < 1 )
          {
             legal_enchant = FALSE;
-            sprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
+            xprintf( cat_buf, "%s", "@@RILLEGAL@@N\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "\n\r" );
+            xprintf( cat_buf, "%s", "\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
 
       }
       if( IS_SET( unique->extra_flags, ITEM_CLAN_EQ ) )
       {
-         sprintf( cat_buf, "%s is clan equipment, and may not be enchanted.\n\r", unique->short_descr );
+         xprintf( cat_buf, "%s is clan equipment, and may not be enchanted.\n\r", unique->short_descr );
          safe_strcat( MSL, msg_buf, cat_buf );
          legal_enchant = FALSE;
       }
 
       if( legal_enchant )
       {
-         sprintf( cat_buf, "Total Cost: %d @@aqp@@N\n\r", qp_cost );
+         xprintf( cat_buf, "Total Cost: %d @@aqp@@N\n\r", qp_cost );
       }
       else
       {
-         sprintf( cat_buf, "%s", "This is not a legal enchantment.  Remove some enchantments, and try again.\n\r" );
+         xprintf( cat_buf, "%s", "This is not a legal enchantment.  Remove some enchantments, and try again.\n\r" );
       }
       safe_strcat( MSL, msg_buf, cat_buf );
       if( legal_enchant )
@@ -584,16 +584,16 @@ void do_enchant( CHAR_DATA * ch, char *argument )
          if( ch->pcdata->quest_points >= qp_cost )
 
          {
-            sprintf( cat_buf, "%s", "You may type enchant buy to purchase this upgrade.\n\r" );
+            xprintf( cat_buf, "%s", "You may type enchant buy to purchase this upgrade.\n\r" );
          }
          else
          {
-            sprintf( cat_buf, "%s", "You do not have enough quest points for this upgrade.\n\r" );
+            xprintf( cat_buf, "%s", "You do not have enough quest points for this upgrade.\n\r" );
          }
          safe_strcat( MSL, msg_buf, cat_buf );
          if( ( min_level > unique->level ) && ( min_level > get_psuedo_level( ch ) ) )
          {
-            sprintf( cat_buf,
+            xprintf( cat_buf,
                      "@@eWARNING: @@WEnchanting %s with these affects will make the item level %d, which is higher than your current ability to use.\n\r",
                      unique->short_descr, min_level );
             safe_strcat( MSL, msg_buf, cat_buf );
@@ -852,13 +852,13 @@ void do_enchant( CHAR_DATA * ch, char *argument )
 
 
       ch->pcdata->quest_points = ch->pcdata->quest_points - qp_cost;
-      sprintf( enchant_buf, "%s", "Enchantments Used: " );
+      xprintf( enchant_buf, "%s", "Enchantments Used: " );
       for( this_obj = matrix->first_in_carry_list; this_obj != NULL; this_obj = this_obj_next )
       {
          this_obj_next = this_obj->next_in_carry_list;
          if( this_obj->item_type == ITEM_ENCHANTMENT )
          {
-            sprintf( enchant_catbuf, "%s (%d) ", this_obj->name, this_obj->pIndexData->vnum );
+            xprintf( enchant_catbuf, "%s (%d) ", this_obj->name, this_obj->pIndexData->vnum );
             safe_strcat( MSL, enchant_buf, enchant_catbuf );
             extract_obj( this_obj );
          }
@@ -878,18 +878,18 @@ void do_enchant( CHAR_DATA * ch, char *argument )
          AFFECT_DATA *one_aff;
          char *strtime;
 
-         sprintf( brandbuf, "UNIQUE ITEM: keyword: %s, Name: %s, flags: %s \n\r level: %d, affects:\n\r",
+         xprintf( brandbuf, "UNIQUE ITEM: keyword: %s, Name: %s, flags: %s \n\r level: %d, affects:\n\r",
                   unique->name, unique->short_descr, extra_bit_name( unique->extra_flags ), unique->level );
          for( one_aff = unique->first_apply; one_aff != NULL; one_aff = one_aff->next )
          {
             if( one_aff->location != APPLY_NONE && one_aff->modifier != 0 )
             {
-               sprintf( cat2_buf, "Affects %s by %d.\n\r", affect_loc_name( one_aff->location ), one_aff->modifier );
+               xprintf( cat2_buf, "Affects %s by %d.\n\r", affect_loc_name( one_aff->location ), one_aff->modifier );
                safe_strcat( MSL, brandbuf, cat2_buf );
 
             }
          }
-         sprintf( cat2_buf, "Total cost: %d qp\n\r", qp_cost );
+         xprintf( cat2_buf, "Total cost: %d qp\n\r", qp_cost );
          safe_strcat( MSL, brandbuf, cat2_buf );
          safe_strcat( MSL, brandbuf, enchant_buf );
          GET_FREE( brand, brand_data_free );

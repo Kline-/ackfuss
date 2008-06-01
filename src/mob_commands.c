@@ -124,25 +124,25 @@ void do_mpstat( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   sprintf( buf, "Name: %s.  Vnum: %d.\n\r", victim->name, victim->pIndexData->vnum );
+   xprintf( buf, "Name: %s.  Vnum: %d.\n\r", victim->name, victim->pIndexData->vnum );
    send_to_char( buf, ch );
 
-   sprintf( buf, "Short description: %s.\n\rLong  description: %s",
+   xprintf( buf, "Short description: %s.\n\rLong  description: %s",
             victim->short_descr, victim->long_descr[0] != '\0' ? victim->long_descr : "(none).\n\r" );
    send_to_char( buf, ch );
 
-   sprintf( buf, "Hp: %d/%d.  Mana: %d/%d.  Move: %d/%d. \n\r",
+   xprintf( buf, "Hp: %d/%d.  Mana: %d/%d.  Move: %d/%d. \n\r",
             victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move );
    send_to_char( buf, ch );
 
-   sprintf( buf,
+   xprintf( buf,
             "Lv: %d.  Class: %d.  Align: %d.  AC: %d.  Gold: %d.  Exp: %d.\n\r",
             victim->level, victim->class, victim->alignment, GET_AC( victim ), victim->gold, victim->exp );
    send_to_char( buf, ch );
 
    for( mprg = victim->pIndexData->first_mprog; mprg != NULL; mprg = mprg->next )
    {
-      sprintf( buf, ">%s %s\n\r%s\n\r", mprog_type_to_name( mprg->type ), mprg->arglist, mprg->comlist );
+      xprintf( buf, ">%s %s\n\r%s\n\r", mprog_type_to_name( mprg->type ), mprg->arglist, mprg->comlist );
       send_to_char( buf, ch );
    }
 
@@ -658,7 +658,7 @@ void do_mptransfer( CHAR_DATA * ch, char *argument )
              && d->character != ch && d->character->in_room != NULL && can_see( ch, d->character ) )
          {
             char buf[MAX_STRING_LENGTH];
-            sprintf( buf, "%s %s", d->character->name, arg2 );
+            xprintf( buf, "%s %s", d->character->name, arg2 );
             do_transfer( ch, buf );
          }
       }

@@ -1024,7 +1024,7 @@ void interpret( CHAR_DATA * ch, char *argument )
 
    if( ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_LOG ) ) || fLogAll || cmd_table[cmd].log == LOG_ALWAYS )
    {
-      sprintf( log_buf, "Log %s: %s", ch->name, logline );
+      xprintf_2( log_buf, "Log %s: %s", ch->name, logline );
       log_string( log_buf );
       if( IS_SET( ch->act, PLR_LOG ) )
          monitor_chan( log_buf, MONITOR_BAD );
@@ -1038,7 +1038,7 @@ void interpret( CHAR_DATA * ch, char *argument )
    if( ch->desc != NULL && ch->desc->snoop_by != NULL )  /* -S- Mod */
    {
       char snp[MAX_STRING_LENGTH];
-      sprintf( snp, "[Snoop:%s] %s\n\r", ch->name, logline );
+      xprintf( snp, "[Snoop:%s] %s\n\r", ch->name, logline );
       write_to_buffer( ch->desc->snoop_by, snp, 0 );
    }
 
@@ -1055,7 +1055,7 @@ void interpret( CHAR_DATA * ch, char *argument )
          if( !str_cmp( ch->pcdata->alias_name[cnt], command ) && str_cmp( ch->pcdata->alias_name[cnt], "<none>@@N" ) )
          {
             found = TRUE;
-            sprintf( foo, "~%s %s", ch->pcdata->alias[cnt], argument );
+            xprintf( foo, "~%s %s", ch->pcdata->alias[cnt], argument );
             interpret( ch, foo );
             return;
          }

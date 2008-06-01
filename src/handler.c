@@ -180,7 +180,7 @@ void my_get_age( CHAR_DATA * ch, char *buf )
    months = ( ticks / 480 ) % 8;
    years = 17 + ( ticks / 3840 );
 
-   sprintf( buf + strlen( buf ), "%d years, %d months and %d days", years, months, days );
+   xprintf_2( buf + strlen(buf) , "%d years, %d months and %d days", years, months, days );
    return;
 }
 
@@ -411,7 +411,7 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
    {
       default:
          bug( "Affect_modify: unknown location %d.", paf->location );
-         sprintf( buf, "Affect_modify: called for %s - unknown location %d.", ch->name, paf->location );
+         xprintf( buf, "Affect_modify: called for %s - unknown location %d.", ch->name, paf->location );
          monitor_chan( buf, MONITOR_OBJ );
          return;
 
@@ -608,7 +608,7 @@ void affect_to_room( ROOM_INDEX_DATA * room, ROOM_AFFECT_DATA * raf )
 
    SET_BIT( room->affected_by, raf->bitvector );
 
-   sprintf( buf, "@@e%s@@N has cast @@d%s@@N in @@Narea: @@r%s@@N, @@Nroom: @@r%d@@N.",
+   xprintf( buf, "@@e%s@@N has cast @@d%s@@N in @@Narea: @@r%s@@N, @@Nroom: @@r%d@@N.",
             raf->caster->name, raffect_bit_name( raf->bitvector ), room->area->name, room->vnum );
    monitor_chan( buf, MONITOR_GEN_MORT );
 
@@ -622,7 +622,7 @@ void r_affect_remove( ROOM_INDEX_DATA * room, ROOM_AFFECT_DATA * raf )
    if( room->first_room_affect == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "r_affect_remove: no affect to remove from room %d.", room->vnum );
+      xprintf( buf, "r_affect_remove: no affect to remove from room %d.", room->vnum );
       monitor_chan( buf, MONITOR_ROOM );
 
       bug( "R_affect_remove: no affect for room: %d.", room->vnum );
@@ -680,7 +680,7 @@ void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
    if( ch->first_affect == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "affect_remove: %s did not have aff %d to remove.",
+      xprintf( buf, "affect_remove: %s did not have aff %d to remove.",
                IS_NPC( ch ) ? ch->short_descr : ch->name, paf->type );
       monitor_chan( buf, MONITOR_MOB );
 
@@ -713,8 +713,8 @@ void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
          char buf1[MSL];
          char buf2[MSL];
 
-         sprintf( buf1, this_shield->wearoff_room );
-         sprintf( buf2, this_shield->wearoff_self );
+         xprintf( buf1, this_shield->wearoff_room );
+         xprintf( buf2, this_shield->wearoff_self );
          act( buf1, ch, NULL, NULL, TO_ROOM );
          act( buf2, ch, NULL, NULL, TO_CHAR );
 
@@ -819,7 +819,7 @@ void char_from_room( CHAR_DATA * ch )
    if( ch->in_room == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "char_from_room: %s in NULL room.", IS_NPC( ch ) ? ch->short_descr : ch->name );
+      xprintf( buf, "char_from_room: %s in NULL room.", IS_NPC( ch ) ? ch->short_descr : ch->name );
       monitor_chan( buf, MONITOR_ROOM );
 
       bug( "Char_from_room: NULL.", 0 );
@@ -861,7 +861,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
    if( pRoomIndex == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "char_to_room: Attempted to move %s to a NULL room.", NAME( ch ) );
+      xprintf( buf, "char_to_room: Attempted to move %s to a NULL room.", NAME( ch ) );
       monitor_chan( buf, MONITOR_ROOM );
 
       bug( "Char_to_room: NULL.", 0 );
@@ -1082,7 +1082,7 @@ void obj_from_char( OBJ_DATA * obj )
    if( ( ch = obj->carried_by ) == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "obj_from_char: NULL ch to remove %s from.", obj->short_descr );
+      xprintf( buf, "obj_from_char: NULL ch to remove %s from.", obj->short_descr );
       monitor_chan( buf, MONITOR_OBJ );
 
       bug( "Obj_from_char: null ch.", 0 );
@@ -1186,7 +1186,7 @@ void equip_char( CHAR_DATA * ch, OBJ_DATA * obj, int iWear )
 
    if( ( !IS_NPC( ch ) && ch->desc->connected != CON_SETTING_STATS ) && ( get_eq_char( ch, iWear ) != NULL ) )
    {
-      sprintf( log, "equip_char: %s (room %d) cannot be equiped with %s, as wear slot (%d) not empty.",
+      xprintf( log, "equip_char: %s (room %d) cannot be equiped with %s, as wear slot (%d) not empty.",
                NAME( ch ), ch->in_room->vnum, obj->short_descr, iWear );
       monitor_chan( log, MONITOR_OBJ );
 
@@ -1302,7 +1302,7 @@ void unequip_char( CHAR_DATA * ch, OBJ_DATA * obj )
    if( obj->wear_loc == WEAR_NONE )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "unequip_char: %s is not wearing %s.", NAME( ch ), obj->short_descr );
+      xprintf( buf, "unequip_char: %s is not wearing %s.", NAME( ch ), obj->short_descr );
       monitor_chan( buf, MONITOR_OBJ );
 
       bug( "Unequip_char: already unequipped.", 0 );
@@ -1437,7 +1437,7 @@ void obj_from_room( OBJ_DATA * obj )
    if( ( in_room = obj->in_room ) == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "obj_from_room: %s in NULL room.", obj->short_descr );
+      xprintf( buf, "obj_from_room: %s in NULL room.", obj->short_descr );
       monitor_chan( buf, MONITOR_OBJ );
 
       bug( "obj_from_room: NULL.", 0 );
@@ -1450,7 +1450,7 @@ void obj_from_room( OBJ_DATA * obj )
       obj_to_room( obj, get_room_index( ROOM_VNUM_LIMBO ) );
       if( ( in_room = obj->in_room ) == NULL )
       {
-         sprintf( buf, "obj_from_room, %s really screwed up, failed attempts to move to Limbo.", obj->short_descr );
+         xprintf( buf, "obj_from_room, %s really screwed up, failed attempts to move to Limbo.", obj->short_descr );
          monitor_chan( buf, MONITOR_OBJ );
          return;
       }
@@ -1530,7 +1530,7 @@ void obj_from_obj( OBJ_DATA * obj )
    if( ( obj_from = obj->in_obj ) == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "obj_from_obj: %s not in another object.", obj->short_descr );
+      xprintf( buf, "obj_from_obj: %s not in another object.", obj->short_descr );
       monitor_chan( buf, MONITOR_OBJ );
       bug( "Obj_from_obj: null obj_from.", 0 );
       return;
@@ -1705,7 +1705,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    if( ch->in_room == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "extract_char: %s in NULL room., Moved to room 2", NAME( ch ) );
+      xprintf( buf, "extract_char: %s in NULL room., Moved to room 2", NAME( ch ) );
       monitor_chan( buf, MONITOR_MOB );
 
       bug( "Extract_char: NULL.", 0 );
@@ -2200,7 +2200,7 @@ OBJ_DATA *create_money( int amount )
    if( amount <= 0 )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "create_money: %d provided as amount.", amount );
+      xprintf( buf, "create_money: %d provided as amount.", amount );
       monitor_chan( buf, MONITOR_OBJ );
 
       bug( "Create_money: zero or negative money %d.", amount );
@@ -2214,7 +2214,7 @@ OBJ_DATA *create_money( int amount )
    else
    {
       obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0 );
-      sprintf( buf, obj->short_descr, amount );
+      xprintf( buf, obj->short_descr, amount );
       free_string( obj->short_descr );
       obj->short_descr = str_dup( buf );
       obj->value[0] = amount;
@@ -2482,7 +2482,7 @@ void notify( char *message, int lv )
    DESCRIPTOR_DATA *d;
    char buf[MAX_STRING_LENGTH];
 
-   sprintf( buf, "[NOTE]: %s\n\r", message );
+   xprintf( buf, "[NOTE]: %s\n\r", message );
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
           && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !IS_SET( d->character->deaf, CHANNEL_NOTIFY ) )
@@ -2495,7 +2495,7 @@ void auction( char *message )
    DESCRIPTOR_DATA *d;
    char buf[MAX_STRING_LENGTH];
 
-   sprintf( buf, "[AUCTION]: %s\n\r", message );
+   xprintf( buf, "[AUCTION]: %s\n\r", message );
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING ) && !IS_NPC( d->character ) && !IS_SET( d->character->deaf, CHANNEL_AUCTION ) )
          send_to_char( buf, d->character );
@@ -2519,7 +2519,7 @@ void info( char *message, int lv )
       if( ( d->connected == CON_PLAYING )
           && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !IS_SET( d->character->deaf, CHANNEL_INFO ) )
       {
-         sprintf( buf, "%s[INFO]: %s%s\n\r",
+         xprintf( buf, "%s[INFO]: %s%s\n\r",
                   color_string( d->character, "info" ), message, color_string( d->character, "normal" ) );
          send_to_char( buf, d->character );
       }
@@ -2536,7 +2536,7 @@ void log_chan( const char *message, int lv )
    DESCRIPTOR_DATA *d;
    char buf[MAX_STRING_LENGTH];
 
-   sprintf( buf, "[LOG]: %s\n\r", message );
+   xprintf( buf, "[LOG]: %s\n\r", message );
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
           && ( get_trust( d->character ) == MAX_LEVEL )
@@ -2742,7 +2742,7 @@ void remove_shield( CHAR_DATA * ch, MAGIC_SHIELD * shield )
    if( ch->first_shield == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "shield_remove: %s did not have a shield to remove.", IS_NPC( ch ) ? ch->short_descr : ch->name );
+      xprintf( buf, "shield_remove: %s did not have a shield to remove.", IS_NPC( ch ) ? ch->short_descr : ch->name );
       monitor_chan( buf, MONITOR_MOB );
 
       bug( "Remove_shield: no shield.", 0 );

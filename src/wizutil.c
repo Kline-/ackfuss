@@ -128,7 +128,7 @@ void room_pair( ROOM_INDEX_DATA * left, ROOM_INDEX_DATA * right, exit_status ex,
          break;
    }
 
-   sprintf( buffer, "%5d %-26.26s %s%5d %-26.26s(%-8.8s)\n\r",
+   xprintf( buffer, "%5d %-26.26s %s%5d %-26.26s(%-8.8s)\n\r",
             left->vnum, left->name, sExit, right->vnum, right->name, area_name( right->area ) );
 }
 
@@ -226,7 +226,7 @@ void do_vlist( CHAR_DATA * ch, char *argument )
          if( vnum < MAX_SHOW_VNUM )
          {
             room = get_room_index( vnum * 100 + 1 );  /* each zone has to have a XXX01 room */
-            sprintf( buf2, "%3d %-8.8s  ", vnum, room ? area_name( room->area ) : "-" );
+            xprintf( buf2, "%3d %-8.8s  ", vnum, room ? area_name( room->area ) : "-" );
             /*
              * something there or unused ? 
              */
@@ -327,9 +327,9 @@ void do_rename( CHAR_DATA * ch, char *argument )
     * First, check if there is a player named that off-line 
     */
 #if !defined(machintosh) && !defined(MSDOS)
-   sprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
+   xprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
 #else
-   sprintf( strsave, "%s%s", PLAYER_DIR, capitalize( new_name ) );
+   xprintf( strsave, "%s%s", PLAYER_DIR, capitalize( new_name ) );
 #endif
 
    fclose( fpReserve ); /* close the reserve file */
@@ -347,9 +347,9 @@ void do_rename( CHAR_DATA * ch, char *argument )
     * Check .gz file ! 
     */
 #if !defined(machintosh) && !defined(MSDOS)
-   sprintf( strsave, "%s%s%s%s.gz", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
+   xprintf( strsave, "%s%s%s%s.gz", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
 #else
-   sprintf( strsave, "%s%s.gz", PLAYER_DIR, capitalize( new_name ) );
+   xprintf( strsave, "%s%s.gz", PLAYER_DIR, capitalize( new_name ) );
 #endif
 
    fclose( fpReserve ); /* close the reserve file */
@@ -374,9 +374,9 @@ void do_rename( CHAR_DATA * ch, char *argument )
     */
 
 #if !defined(machintosh) && !defined(MSDOS)
-   sprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( victim->name ), "/", capitalize( victim->name ) );
+   xprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( victim->name ), "/", capitalize( victim->name ) );
 #else
-   sprintf( strsave, "%s%s", PLAYER_DIR, capitalize( victim->name ) );
+   xprintf( strsave, "%s%s", PLAYER_DIR, capitalize( victim->name ) );
 #endif
 
 
@@ -474,7 +474,7 @@ const char *name_expand( CHAR_DATA * ch )
          count++;
 
 
-   sprintf( outbuf, "%d.%s", count, name );
+   xprintf( outbuf, "%d.%s", count, name );
    return outbuf;
 }
 

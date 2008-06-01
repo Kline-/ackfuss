@@ -382,14 +382,14 @@ void boot_db( void )
          switch ( index )
          {
             case SUPER_NONE:
-               sprintf( buf, "%s", "ORDINARIES" );
+               xprintf( buf, "%s", "ORDINARIES" );
                break;
             case SUPER_VAMP:
-               sprintf( buf, "%s", "@@rJUSTICARS@@N" );
+               xprintf( buf, "%s", "@@rJUSTICARS@@N" );
                break;
 
             default:
-               sprintf( buf, "%s", "NONE" );
+               xprintf( buf, "%s", "NONE" );
                break;
          }
          super_councils[index].council_name = str_dup( buf );
@@ -432,10 +432,10 @@ void boot_db( void )
       char buf[MAX_STRING_LENGTH];
       log_f( "Loading in Clan diplomacy info." );
 
-      sprintf( clan_file_name, "%s", CLAN_FILE );
+      xprintf( clan_file_name, "%s", CLAN_FILE );
 
 
-      sprintf( buf, "Loading %s\n\r", clan_file_name );
+      xprintf( buf, "Loading %s\n\r", clan_file_name );
       monitor_chan( buf, MONITOR_CLAN );
 
 
@@ -447,7 +447,7 @@ void boot_db( void )
       else
       {
          fpArea = clanfp;
-         sprintf( strArea, "%s", clan_file_name );
+         xprintf( strArea, "%s", clan_file_name );
 
          for( x = 1; x < MAX_CLAN; x++ )
          {
@@ -474,7 +474,7 @@ void boot_db( void )
          fclose( clanfp );
       }
       fpArea = NULL;
-      sprintf( buf, "Done Loading %s", clan_file_name );
+      xprintf( buf, "Done Loading %s", clan_file_name );
       log_f( buf );
 
    }
@@ -814,10 +814,10 @@ void load_corpses( void )
    char buf[MAX_STRING_LENGTH];
 
 
-   sprintf( corpse_file_name, "%s", CORPSE_FILE );
+   xprintf( corpse_file_name, "%s", CORPSE_FILE );
 
 
-   sprintf( buf, "Loading %s\n\r", corpse_file_name );
+   xprintf( buf, "Loading %s\n\r", corpse_file_name );
    log_f( buf );
 
 
@@ -831,7 +831,7 @@ void load_corpses( void )
    else
    {
       fpArea = corpsefp;
-      sprintf( strArea, "%s", corpse_file_name );
+      xprintf( strArea, "%s", corpse_file_name );
 
       for( ;; )
 
@@ -866,7 +866,7 @@ void load_corpses( void )
    }
    fclose( corpsefp );
    fpArea = NULL;
-   sprintf( buf, "Done Loading %s", corpse_file_name );
+   xprintf( buf, "Done Loading %s", corpse_file_name );
    monitor_chan( buf, MONITOR_CLAN );
 
 }
@@ -884,9 +884,9 @@ void load_marks( void )
    char buf[MAX_STRING_LENGTH];
 
 
-   sprintf( marks_file_name, "%s", MARKS_FILE );
+   xprintf( marks_file_name, "%s", MARKS_FILE );
 
-   sprintf( buf, "Loading %s\n\r", marks_file_name );
+   xprintf( buf, "Loading %s\n\r", marks_file_name );
    log_f( buf );
 
 
@@ -899,7 +899,7 @@ void load_marks( void )
    else
    {
       fpArea = marksfp;
-      sprintf( strArea, "%s", marks_file_name );
+      xprintf( strArea, "%s", marks_file_name );
 
       for( ;; )
       {
@@ -936,7 +936,7 @@ void load_marks( void )
 
       fclose( marksfp );
       fpArea = NULL;
-      sprintf( buf, "Done Loading %s", marks_file_name );
+      xprintf( buf, "Done Loading %s", marks_file_name );
       monitor_chan( buf, MONITOR_CLAN );
 
    }
@@ -950,8 +950,8 @@ void load_bans( void )
    char buf[MAX_STRING_LENGTH];
 
 
-   sprintf( bans_file_name, "%s", BANS_FILE );
-   sprintf( buf, "Loading %s\n\r", bans_file_name );
+   xprintf( bans_file_name, "%s", BANS_FILE );
+   xprintf( buf, "Loading %s\n\r", bans_file_name );
    log_f( buf );
 
 
@@ -964,7 +964,7 @@ void load_bans( void )
    else
    {
       fpArea = bansfp;
-      sprintf( strArea, "%s", bans_file_name );
+      xprintf( strArea, "%s", bans_file_name );
 
       for( ;; )
       {
@@ -1001,7 +1001,7 @@ void load_bans( void )
 
       fclose( bansfp );
       fpArea = NULL;
-      sprintf( buf, "Done Loading %s", bans_file_name );
+      xprintf( buf, "Done Loading %s", bans_file_name );
       log_f( buf );
 
    }
@@ -1041,7 +1041,7 @@ void load_mobiles( FILE * fp )
 
       if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
       {
-       sprintf(buf,"Load_mobiles: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       xprintf(buf,"Load_mobiles: vnum %d out of bounds for %s.",vnum,area_load->filename);
        log_string(buf);
       }
 
@@ -1183,7 +1183,7 @@ void load_objects( FILE * fp )
 
       if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
       {
-       sprintf(buf,"Load_objects: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       xprintf(buf,"Load_objects: vnum %d out of bounds for %s.",vnum,area_load->filename);
        log_string(buf);
       }
 
@@ -1516,7 +1516,7 @@ void load_rooms( FILE * fp )
 
       if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
       {
-       sprintf(buf,"Load_rooms: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       xprintf(buf,"Load_rooms: vnum %d out of bounds for %s.",vnum,area_load->filename);
        log_string(buf);
       }
 
@@ -1556,7 +1556,7 @@ void load_rooms( FILE * fp )
 #ifdef DEBUG_MONEY
       {
          char testbuf[MSL];
-         sprintf( testbuf, "loading rooms, vnum is %d", pRoomIndex->vnum );
+         xprintf( testbuf, "loading rooms, vnum is %d", pRoomIndex->vnum );
          room_treasure->money_key = str_dup( testbuf );
       }
 #endif
@@ -1760,7 +1760,7 @@ void load_objfuns( FILE * fp )
                char *temp;
                char buf[MSL];
                temp = fread_word( fp );
-               sprintf( buf,
+               xprintf( buf,
                         "Error in Load Objfuns:  area %s has Objfun without corresponding object.  Save this area after booting complete to remove.",
                         strArea );
                log_f( buf );
@@ -1890,7 +1890,7 @@ void fix_exits( void )
             {
                if( ( pexit->vnum <= 0 ) || ( get_room_index( pexit->vnum ) == NULL ) )
                {
-                  sprintf( buf, "Bad exit vnum %d in room %d", pexit->vnum, pRoomIndex->vnum );
+                  xprintf( buf, "Bad exit vnum %d in room %d", pexit->vnum, pRoomIndex->vnum );
                   bug( buf, 0 );
                   PUT_FREE( pexit, exit_free );
                   pRoomIndex->exit[door] = NULL;
@@ -2048,21 +2048,21 @@ void check_resets( void )
             switch ( ValReset )
             {
                case INVAL_ROOM:
-                  sprintf( buf, "Invalid room for reset: " );
+                  xprintf( buf, "Invalid room for reset: " );
                   break;
                case INVAL_OBJ:
-                  sprintf( buf, "Invalid obj  for reset: " );
+                  xprintf( buf, "Invalid obj  for reset: " );
                   break;
                case INVAL_MOB:
-                  sprintf( buf, "Invalid mob  for reset: " );
+                  xprintf( buf, "Invalid mob  for reset: " );
                   break;
                case INVAL_GEN:
                default:
-                  sprintf( buf, "Invalid arg  for reset: " );
+                  xprintf( buf, "Invalid arg  for reset: " );
                   break;
             }
             SHOW_AREA;
-            sprintf( buf + strlen( buf ), "%c %d %d %d %d.", pReset->command,
+            xprintf( buf + strlen( buf ), "%c %d %d %d %d.", pReset->command,
                      pReset->ifflag, pReset->arg1, pReset->arg2, pReset->arg3 );
             bug( buf, 0 );
             {
@@ -2084,7 +2084,7 @@ void check_resets( void )
                }
                if( guilty_reset == NULL )
                {
-                  sprintf( bug_buf, "Uhoh, couldn't find that damn reset!" );
+                  xprintf( bug_buf, "Uhoh, couldn't find that damn reset!" );
                   monitor_chan( bug_buf, MONITOR_AREA_BUGS );
                   bug( "Couldn't find the reset.", 0 );
                }
@@ -2127,7 +2127,7 @@ void area_update( void )
             if( !IS_NPC( pch ) && IS_AWAKE( pch ) && pch->in_room != NULL && pch->in_room->area == pArea )
             {
                char reset_buf[MSL];
-               sprintf( reset_buf, "%s\n\r", pArea->reset_msg );
+               xprintf( reset_buf, "%s\n\r", pArea->reset_msg );
                send_to_char( reset_buf, pch );
             }
          }
@@ -2166,7 +2166,7 @@ void reset_area( AREA_DATA * pArea )
    int previous_bug = 0;
 
 
-   sprintf( buf, "Area Reset called for %s.", pArea->name );
+   xprintf( buf, "Area Reset called for %s.", pArea->name );
    monitor_chan( buf, MONITOR_AREA_UPDATE );
    area_resetting_global = TRUE;
    mob = NULL;
@@ -2484,9 +2484,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
        * Only load one with the same name 
        */
 #if !defined(machintosh) && !defined(MSDOS)
-      sprintf( buf, "%s n%i", pMobIndex->player_name, pMobIndex->count + 1 );
+      xprintf( buf, "%s n%i", pMobIndex->player_name, pMobIndex->count + 1 );
 #else
-      sprintf( buf, "n%i %s", pMobIndex->count + 1, pMobIndex->player_name );
+      xprintf( buf, "n%i %s", pMobIndex->count + 1, pMobIndex->player_name );
 #endif
 
    }
@@ -2569,7 +2569,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 #ifdef DEBUG_MONEY
    {
       char testbuf[MSL];
-      sprintf( testbuf, "create_mobile, %s", mob->name );
+      xprintf( testbuf, "create_mobile, %s", mob->name );
       money->money_key = str_dup( testbuf );
    }
 #endif
@@ -2581,7 +2581,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 #ifdef DEBUG_MONEY
    {
       char testbuf[MSL];
-      sprintf( testbuf, "create_mobile, %s", mob->name );
+      xprintf( testbuf, "create_mobile, %s", mob->name );
       money->money_key = str_dup( testbuf );
    }
 #endif
@@ -2692,7 +2692,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 #ifdef DEBUG_MONEY
    {
       char testbuf[MSL];
-      sprintf( testbuf, "create_object, %s", obj->name );
+      xprintf( testbuf, "create_object, %s", obj->name );
       money->money_key = str_dup( testbuf );
    }
 #endif
@@ -3105,7 +3105,7 @@ int fread_number( FILE * fp )
    if( !isdigit( c ) )
    {
       char error_buf[MSL];
-      sprintf( error_buf, "%c", c );
+      xprintf( error_buf, "%c", c );
       bug_string( "Fread_number: looking for a digit, found a %s.", error_buf );
       hang( "Error in fread_number" );
    }
@@ -3413,7 +3413,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "all" ) )
       fall = TRUE;
-   sprintf( buf, "@@W" mudnamecolor " AREA LISTING\n\r" );
+   xprintf( buf, "@@W" mudnamecolor " AREA LISTING\n\r" );
    safe_strcat( MAX_STRING_LENGTH, buf, "+-------+------------+------------------------------------------------+\n\r" );
    safe_strcat( MAX_STRING_LENGTH, buf,
                 "| @@yLevel@@W |            |                                                |\n\r" );
@@ -3431,10 +3431,10 @@ void do_areas( CHAR_DATA * ch, char *argument )
          continue;
 
       foo++;
-      sprintf( msg, " %s %12s          %s\n\r", pArea->level_label, capitalize( pArea->owner ), pArea->name );
+      xprintf( msg, " %s %12s          %s\n\r", pArea->level_label, capitalize( pArea->owner ), pArea->name );
       safe_strcat( MAX_STRING_LENGTH, buf, msg );
    }
-   sprintf( msg, "@@R%d Areas listed.\n\r@@N Type areas all to list the entire " mudnamecolor " realm.\n\r@@N", foo );
+   xprintf( msg, "@@R%d Areas listed.\n\r@@N Type areas all to list the entire " mudnamecolor " realm.\n\r@@N", foo );
    safe_strcat( MAX_STRING_LENGTH, buf, msg );
    send_to_char( buf, ch );
    return;
@@ -3495,45 +3495,45 @@ void do_memory( CHAR_DATA * ch, char *argument )
       }
    }
 
-   sprintf( buf, "Affects %5d\n\r", top_affect );
+   xprintf( buf, "Affects %5d\n\r", top_affect );
    send_to_char( buf, ch );
-   sprintf( buf, "Areas   %5d\n\r", top_area );
+   xprintf( buf, "Areas   %5d\n\r", top_area );
    send_to_char( buf, ch );
-   sprintf( buf, "ExDes   %5d\n\r", top_ed );
+   xprintf( buf, "ExDes   %5d\n\r", top_ed );
    send_to_char( buf, ch );
-   sprintf( buf, "Exits   %5d\n\r", top_exit );
+   xprintf( buf, "Exits   %5d\n\r", top_exit );
    send_to_char( buf, ch );
-   sprintf( buf, "Helps   %5d\n\r", top_help );
+   xprintf( buf, "Helps   %5d\n\r", top_help );
    send_to_char( buf, ch );
-   sprintf( buf, "Mobs    %5d\n\r", top_mob_index );
+   xprintf( buf, "Mobs    %5d\n\r", top_mob_index );
    send_to_char( buf, ch );
-   sprintf( buf, "Objs    %5d\n\r", top_obj_index );
+   xprintf( buf, "Objs    %5d\n\r", top_obj_index );
    send_to_char( buf, ch );
-   sprintf( buf, "Resets  %5d\n\r", top_reset );
+   xprintf( buf, "Resets  %5d\n\r", top_reset );
    send_to_char( buf, ch );
-   sprintf( buf, "Rooms   %5d\n\r", top_room );
+   xprintf( buf, "Rooms   %5d\n\r", top_room );
    send_to_char( buf, ch );
-   sprintf( buf, "Shops   %5d\n\r", top_shop );
+   xprintf( buf, "Shops   %5d\n\r", top_shop );
    send_to_char( buf, ch );
 
 #if 0
-   sprintf( buf, "Strings %5d strings of %7d bytes (max %d).\n\r", nAllocString, sAllocString, MAX_STRING );
+   xprintf( buf, "Strings %5d strings of %7d bytes (max %d).\n\r", nAllocString, sAllocString, MAX_STRING );
 #endif
 
-   sprintf( buf, "Shared String Info:\n\r" );
+   xprintf( buf, "Shared String Info:\n\r" );
    send_to_char( buf, ch );
-   sprintf( buf, "Strings           %5ld strings of %7ld bytes (max %ld).\n\r", nAllocString, sAllocString, MAX_STRING );
+   xprintf( buf, "Strings           %5ld strings of %7ld bytes (max %ld).\n\r", nAllocString, sAllocString, MAX_STRING );
    send_to_char( buf, ch );
-   sprintf( buf, "Overflow Strings  %5ld strings of %7ld bytes.\n\r", nOverFlowString, sOverFlowString );
+   xprintf( buf, "Overflow Strings  %5ld strings of %7ld bytes.\n\r", nOverFlowString, sOverFlowString );
    send_to_char( buf, ch );
    if( Full )
    {
       send_to_char( "Shared String Heap is full, increase MAX_STRING.\n\r", ch );
-      sprintf( buf, "Overflow high-water-mark is %ld bytes.\n\r", hwOverFlow );
+      xprintf( buf, "Overflow high-water-mark is %ld bytes.\n\r", hwOverFlow );
       send_to_char( buf, ch );
    }
 
-   sprintf( buf, "Perms   %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
+   xprintf( buf, "Perms   %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
    send_to_char( buf, ch );
 
    return;
@@ -3552,15 +3552,15 @@ void do_status( CHAR_DATA * ch, char *argument )
    send_to_char( "The following counts are for *distinct* mobs/objs/rooms, not a count\n\r", ch );
    send_to_char( "of how many are actually in the game at this time.\n\r", ch );
    send_to_char( "NB. Areas count will include areas used as help files.\n\r\n\r", ch );
-   sprintf( buf, "Areas   %5d\n\r", top_area );
+   xprintf( buf, "Areas   %5d\n\r", top_area );
    send_to_char( buf, ch );
-   sprintf( buf, "Helps   %5d\n\r", top_help );
+   xprintf( buf, "Helps   %5d\n\r", top_help );
    send_to_char( buf, ch );
-   sprintf( buf, "Mobs    %5d\n\r", top_mob_index );
+   xprintf( buf, "Mobs    %5d\n\r", top_mob_index );
    send_to_char( buf, ch );
-   sprintf( buf, "Objs    %5d\n\r", top_obj_index );
+   xprintf( buf, "Objs    %5d\n\r", top_obj_index );
    send_to_char( buf, ch );
-   sprintf( buf, "Rooms   %5d\n\r", top_room );
+   xprintf( buf, "Rooms   %5d\n\r", top_room );
    send_to_char( buf, ch );
 
    return;
@@ -3820,7 +3820,7 @@ void bug( const char *str, int param )
          fseek( fpArea, iChar, 0 );
       }
 
-      sprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
+      xprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
       log_string( buf );
 
       if( ( fp = fopen( SHUTDOWN_FILE, "a" ) ) != NULL )
@@ -3871,7 +3871,7 @@ void bug_string( const char *str, const char *str2 )
          fseek( fpArea, iChar, 0 );
       }
 
-      sprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
+      xprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
       log_string( buf );
 
       if( ( fp = fopen( SHUTDOWN_FILE, "a" ) ) != NULL )
@@ -3981,7 +3981,7 @@ void mprog_file_read( char *f, MOB_INDEX_DATA * pMobIndex )
    char *permf;
    int type;
 
-   sprintf( name, "%s%s", MOB_DIR, f );
+   xprintf( name, "%s%s", MOB_DIR, f );
    if( !( fp = fopen( name, "r" ) ) )
    {
       bug( "Mob: %d couldn't opne mobprog file.", pMobIndex->vnum );
@@ -4135,7 +4135,7 @@ bool char_exists( char *argument )
  bool found = FALSE;
 
  fclose( fpReserve );
- sprintf( buf, "%s%s%s%s", PLAYER_DIR, initial( argument ), "/", capitalize( argument ) );
+ xprintf( buf, "%s%s%s%s", PLAYER_DIR, initial( argument ), "/", capitalize( argument ) );
 
  if( ( fp = fopen( buf, "r" ) ) != NULL )
  {

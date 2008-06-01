@@ -99,11 +99,11 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
    static char buf[MAX_STRING_LENGTH];
    static char buf2[MAX_STRING_LENGTH];
 
-   sprintf( buf, "%s", color_string( ch, "objects" ) );
+   xprintf( buf, "%s", color_string( ch, "objects" ) );
 
    if( IS_IMMORTAL(ch) ) /* Imms should see vnums, <3 builders :) --Kline */
    {
-    sprintf(buf2,"(%d) ",obj->pIndexData->vnum);
+    xprintf(buf2,"(%d) ",obj->pIndexData->vnum);
     safe_strcat(MAX_STRING_LENGTH,buf,buf2);
    }
 
@@ -218,7 +218,7 @@ void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShow
       {
          if( prgnShow[iShow] != 1 )
          {
-            sprintf( buf, "(%2d) ", prgnShow[iShow] );
+            xprintf( buf, "(%2d) ", prgnShow[iShow] );
             send_to_char( buf, ch );
          }
          else
@@ -322,7 +322,7 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
       {
          if( prgnShow[iShow] != 1 )
          {
-            sprintf( buf, "(%2d) ", prgnShow[iShow] );
+            xprintf( buf, "(%2d) ", prgnShow[iShow] );
             send_to_char( buf, ch );
          }
          else
@@ -360,7 +360,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    char buf2[MAX_STRING_LENGTH];
 
 
-   sprintf( buf, "%s", color_string( ch, "mobiles" ) );
+   xprintf( buf, "%s", color_string( ch, "mobiles" ) );
    buf2[0] = '\0';
 
 
@@ -390,9 +390,9 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
        * Imms should see mob races, too. <3 Builders! --Kline
        */
       if( IS_NPC(victim) )
-       sprintf( buf2, "(%d) [%s] ",victim->pIndexData->vnum, race_table[victim->race].race_name );
+       xprintf( buf2, "(%d) [%s] ",victim->pIndexData->vnum, race_table[victim->race].race_name );
       else
-       sprintf( buf2, "[%s] ", race_table[victim->race].race_name );
+       xprintf( buf2, "[%s] ", race_table[victim->race].race_name );
       safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
    }
 
@@ -503,7 +503,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
          if( victim->sitting != NULL && victim->sitting->in_room == victim->in_room )
          {
             char sit[MAX_INPUT_LENGTH];
-            sprintf( sit, " is here, resting on %s.", victim->sitting->short_descr );
+            xprintf( sit, " is here, resting on %s.", victim->sitting->short_descr );
             safe_strcat( MAX_STRING_LENGTH, buf, sit );
          }
          else
@@ -515,7 +515,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
          if( !IS_NPC( victim ) && ( victim->stance > 0 ) && ( victim->stance != STANCE_AMBUSH ) )
          {
             char stance_buf[MSL];
-            sprintf( stance_buf, " in the Stance of the %s.", stance_app[victim->stance].name );
+            xprintf( stance_buf, " in the Stance of the %s.", stance_app[victim->stance].name );
             safe_strcat( MSL, buf, stance_buf );
          }
          else
@@ -585,7 +585,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
 
    if( victim->riding != NULL )
    {
-      sprintf( buf2, "  riding %s.\n\r", victim->riding->short_descr );
+      xprintf( buf2, "  riding %s.\n\r", victim->riding->short_descr );
       safe_strcat( MSL, buf, buf2 );
    }
 
@@ -794,7 +794,7 @@ void do_look( CHAR_DATA * ch, char *argument )
       }
       else
       {
-         sprintf( out, "%s%s%s\n\r", color_string( ch, "rooms" ), ch->in_room->name, color_string( ch, "normal" ) );
+         xprintf( out, "%s%s%s\n\r", color_string( ch, "rooms" ), ch->in_room->name, color_string( ch, "normal" ) );
 
          send_to_char( out, ch );
          if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_AUTOEXIT ) ) )
@@ -804,7 +804,7 @@ void do_look( CHAR_DATA * ch, char *argument )
             char *string_format( char *str, int *numlines, int width, int height, bool unjust );
             int wid = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );
 
-            sprintf( out, "%s%s%s\n\r", color_string( ch, "rooms" ),
+            xprintf( out, "%s%s%s\n\r", color_string( ch, "rooms" ),
                      string_format( ch->in_room->description, NULL, wid, 10000,
                                     !IS_SET( ch->config, CONFIG_JUSTIFY ) ), color_string( ch, "normal" ) );
             send_to_char( out, ch );
@@ -817,7 +817,7 @@ void do_look( CHAR_DATA * ch, char *argument )
       if( ( ch->in_room->affected_by != 0 )
           && ( ( is_affected( ch, skill_lookup( "detect magic" ) ) ) || ( item_has_apply( ch, ITEM_APPLY_DET_MAG ) ) ) )
       {
-         sprintf( out, "%s", color_string( ch, "rooms" ) );
+         xprintf( out, "%s", color_string( ch, "rooms" ) );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_SHADE ) )
             safe_strcat( MAX_STRING_LENGTH, out, "@@NA menacing @@ddark shadow@@N hangs in the sky above you.\n\r" );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_ENCAPS ) )
@@ -864,12 +864,12 @@ void do_look( CHAR_DATA * ch, char *argument )
 
                if( IS_WOLF( ch ) )
                {
-                  sprintf( marksbuf, "@@aThis room has @@W%d @@a%s@@W.@@N\n\r", num_marks,
+                  xprintf( marksbuf, "@@aThis room has @@W%d @@a%s@@W.@@N\n\r", num_marks,
                            ( num_marks > 1 ) ? "scents" : "scent" );
                }
                else if( IS_VAMP( ch ) )
                {
-                  sprintf( marksbuf, "@@mThis room has @@W%d @@eBlood%s@@N.\n\r", num_marks,
+                  xprintf( marksbuf, "@@mThis room has @@W%d @@eBlood%s@@N.\n\r", num_marks,
                            ( num_marks > 1 ) ? "Signs" : "Sign" );
                }
                send_to_char( marksbuf, ch );
@@ -883,7 +883,7 @@ void do_look( CHAR_DATA * ch, char *argument )
       show_char_to_char( ch->in_room->first_person, ch );
       {
          char money_show[MSL];
-         sprintf( money_show, "%s lie in a pile.\n\r", money_string( ch->in_room->treasure ) );
+         xprintf( money_show, "%s lie in a pile.\n\r", money_string( ch->in_room->treasure ) );
          if( str_prefix( " lie", money_show ) )
             send_to_char( money_show, ch );
       }
@@ -936,7 +936,7 @@ void do_look( CHAR_DATA * ch, char *argument )
                return;
             }
 
-            sprintf( buf, "You look in $p and see: %s%s.%s", color_string( ch, "rooms" ),
+            xprintf( buf, "You look in $p and see: %s%s.%s", color_string( ch, "rooms" ),
                      room->name, color_string( ch, "normal" ) );
             act( buf, ch, obj, NULL, TO_CHAR );
 
@@ -949,7 +949,7 @@ void do_look( CHAR_DATA * ch, char *argument )
                   if( can_see( ch, ppl ) )
                   {
                      found = TRUE;
-                     sprintf( buf, "%s%s%s\n\r", color_string( ch, "mobiles" ),
+                     xprintf( buf, "%s%s%s\n\r", color_string( ch, "mobiles" ),
                               ( IS_NPC( ppl ) ? ppl->short_descr : ppl->name ), color_string( ch, "normal" ) );
                      send_to_char( buf, ch );
                   }
@@ -975,7 +975,7 @@ void do_look( CHAR_DATA * ch, char *argument )
                break;
             }
 
-            sprintf( buf, "It's %s full of a %s liquid.\n\r",
+            xprintf( buf, "It's %s full of a %s liquid.\n\r",
                      obj->value[1] < obj->value[0] / 4
                      ? "less than" :
                      obj->value[1] < 3 * obj->value[0] / 4 ? "about" : "more than", liq_table[obj->value[2]].liq_color );
@@ -996,7 +996,7 @@ void do_look( CHAR_DATA * ch, char *argument )
             show_list_to_char( obj->first_in_carry_list, ch, TRUE, TRUE );
             {
                char money_show[MSL];
-               sprintf( money_show, "%s lie within.\n\r", money_string( obj->money ) );
+               xprintf( money_show, "%s lie within.\n\r", money_string( obj->money ) );
                if( str_prefix( " lie", money_show ) )
                   send_to_char( money_show, ch );
             }
@@ -1032,7 +1032,7 @@ void do_look( CHAR_DATA * ch, char *argument )
    {
       if( can_see_obj( ch, obj ) )
       {
-         sprintf( pdesc, "\n\r%s", get_extra_descr( arg1, obj->first_exdesc ) );
+         xprintf( pdesc, "\n\r%s", get_extra_descr( arg1, obj->first_exdesc ) );
          if( str_cmp( pdesc, "\n\r(null)" ) )
          {
             send_to_char( pdesc, ch );
@@ -1040,7 +1040,7 @@ void do_look( CHAR_DATA * ch, char *argument )
             return;
          }
 
-         sprintf( pdesc, "\n\r%s", get_extra_descr( arg1, obj->pIndexData->first_exdesc ) );
+         xprintf( pdesc, "\n\r%s", get_extra_descr( arg1, obj->pIndexData->first_exdesc ) );
 
          if( str_cmp( pdesc, "\n\r(null)" ) )
          {
@@ -1061,7 +1061,7 @@ void do_look( CHAR_DATA * ch, char *argument )
    {
       if( can_see_obj( ch, obj ) )
       {
-         sprintf( pdesc, "\n\r%s", get_extra_descr( arg1, obj->first_exdesc ) );
+         xprintf( pdesc, "\n\r%s", get_extra_descr( arg1, obj->first_exdesc ) );
 
          if( str_cmp( pdesc, "\n\r(null)" ) )
          {
@@ -1070,7 +1070,7 @@ void do_look( CHAR_DATA * ch, char *argument )
             return;
          }
 
-         sprintf( pdesc, "\n\r%s", get_extra_descr( arg1, obj->pIndexData->first_exdesc ) );
+         xprintf( pdesc, "\n\r%s", get_extra_descr( arg1, obj->pIndexData->first_exdesc ) );
          if( str_cmp( pdesc, "\n\r(null)" ) )
          {
             send_to_char( pdesc, ch );
@@ -1087,7 +1087,7 @@ void do_look( CHAR_DATA * ch, char *argument )
       }
    }
 
-   sprintf( pdesc, "\n\r%s", get_extra_descr( arg1, ch->in_room->first_exdesc ) );
+   xprintf( pdesc, "\n\r%s", get_extra_descr( arg1, ch->in_room->first_exdesc ) );
    if( str_cmp( pdesc, "\n\r(null)" ) )
    {
       send_to_char( pdesc, ch );
@@ -1177,7 +1177,7 @@ void do_examine( CHAR_DATA * ch, char *argument )
          case ITEM_CORPSE_NPC:
          case ITEM_CORPSE_PC:
             send_to_char( "When you look inside, you see:\n\r", ch );
-            sprintf( buf, "in %s", arg );
+            xprintf( buf, "in %s", arg );
             do_look( ch, buf );
       }
       if( ch->position > POS_RESTING )
@@ -1226,11 +1226,11 @@ void do_exits( CHAR_DATA * ch, char *argument )
             found = TRUE;
             if( IS_SET( pexit->exit_info, EX_CLOSED ) )
             {
-               sprintf( buf2, " closed %s", ( !str_cmp( pexit->keyword, "" ) ? compass_name[door] : pexit->keyword ) );
+               xprintf( buf2, " closed %s", ( !str_cmp( pexit->keyword, "" ) ? compass_name[door] : pexit->keyword ) );
             }
             else
             {
-               sprintf( buf2, " %s", ( !str_cmp( pexit->keyword, "" ) ? compass_name[door] : pexit->keyword ) );
+               xprintf( buf2, " %s", ( !str_cmp( pexit->keyword, "" ) ? compass_name[door] : pexit->keyword ) );
             }
             safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
             continue;
@@ -1250,9 +1250,9 @@ void do_exits( CHAR_DATA * ch, char *argument )
          {
             found = TRUE;
             if( fAuto )
-               sprintf( buf2, " (%s)", compass_name[door] );
+               xprintf( buf2, " (%s)", compass_name[door] );
             else
-               sprintf( buf2, "%-5s - Door.\n\r", capitalize( compass_name[door] ) );
+               xprintf( buf2, "%-5s - Door.\n\r", capitalize( compass_name[door] ) );
 
             safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
             continue;
@@ -1269,7 +1269,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
          }
          else
          {
-            sprintf( buf + strlen( buf ), "%-5s - %s\n\r",
+            xprintf( buf + strlen( buf ), "%-5s - %s\n\r",
                      capitalize( compass_name[door] ),
                      room_is_dark( pexit->to_room ) ? "Too dark to tell" : pexit->to_room->name );
          }
@@ -1303,7 +1303,7 @@ void do_score( CHAR_DATA * ch, char *argument )
    int cnt;
 
 
-   sprintf( buf, "@@y%s%s, Race: %s%s, Clan: %s\n\rAge: ",
+   xprintf( buf, "@@y%s%s, Race: %s%s, Clan: %s\n\rAge: ",
             IS_NPC( ch ) ? ch->short_descr : ch->name,
             IS_NPC( ch ) ? "" : ch->pcdata->title,
             IS_NPC( ch ) ? "n/a" : race_table[ch->race].race_title,
@@ -1311,11 +1311,11 @@ void do_score( CHAR_DATA * ch, char *argument )
             IS_NPC( ch ) ? "n/a" : clan_table[ch->pcdata->clan].clan_name );
    my_get_age( ch, buf );
    send_to_char( buf, ch );
-   sprintf( buf, " (%d hours RL)\n\r", my_get_hours( ch ) );
+   xprintf( buf, " (%d hours RL)\n\r", my_get_hours( ch ) );
    send_to_char( buf, ch );
 
    /*
-    * sprintf( buf, 
+    * xprintf( buf, 
     * "@@WYou are: @@y%s%s  \n\r@@WAge: @@y%d @@W( @@y%d @@Whrs ) Race: @@y%s  @@WClan: @@y%s.@@g\n\r",
     * IS_NPC(ch) ? ch->short_descr : ch->name,
     * IS_NPC(ch) ? "" : ch->pcdata->title,    
@@ -1326,17 +1326,17 @@ void do_score( CHAR_DATA * ch, char *argument )
     * send_to_char( buf, ch );
     */
 
-   sprintf( buf, "@@c+===============================================================+\n\r" );
+   xprintf( buf, "@@c+===============================================================+\n\r" );
    send_to_char( buf, ch );
 
-   sprintf( buf,
+   xprintf( buf,
             "| @@y%4d/%4d @@WHit @@y%4d/%4d @@WMana @@y%4d/%4d @@WMovement @@y%3d @@WPractices@@c |\n\r",
             ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move, ch->practice );
    send_to_char( buf, ch );
 
    if( IS_NPC( ch ) )
    {
-      sprintf( buf,
+      xprintf( buf,
                "|     @@R[ @@WStr:  @@y%2d  @@WInt:  @@y%2d  @@WWis:  @@y%2d  @@WDex:  @@y%2d  @@WCon:  @@y%2d @@R]      @@c|\n\r",
                get_curr_str( ch ), get_curr_int( ch ), get_curr_wis( ch ), get_curr_dex( ch ), get_curr_con( ch ) );
       send_to_char( buf, ch );
@@ -1345,7 +1345,7 @@ void do_score( CHAR_DATA * ch, char *argument )
    }
    else
    {
-      sprintf( buf,
+      xprintf( buf,
                "|   @@R[ @@WStr:@@y%2d/%2d  @@WInt:@@y%2d/%2d  @@WWis:@@y%2d/%2d  @@WDex:@@y%2d/%2d  @@WCon:@@y%2d/%2d @@R]   @@c|\n\r",
                get_curr_str( ch ), ch->pcdata->max_str,
                get_curr_int( ch ), ch->pcdata->max_int,
@@ -1359,31 +1359,31 @@ void do_score( CHAR_DATA * ch, char *argument )
 
       buf2[0] = '\0';
 
-      sprintf( buf2, "@@WClass Order:@@y " );
+      xprintf( buf2, "@@WClass Order:@@y " );
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       {
-         sprintf( buf, "%s ", class_table[ch->pcdata->order[cnt]].who_name );
+         xprintf( buf, "%s ", class_table[ch->pcdata->order[cnt]].who_name );
          safe_strcat( MAX_STRING_LENGTH, buf2, buf );
       }
-      sprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+      xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
       send_to_char( buf, ch );
 
       buf2[0] = '\0';
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       {
-         sprintf( buf, "@@c%s", class_table[cnt].who_name );
+         xprintf( buf, "@@c%s", class_table[cnt].who_name );
          safe_strcat( MAX_STRING_LENGTH, buf2, buf );
          if( ch->lvl[cnt] != -1 )
-            sprintf( buf, ":@@W%2d ", ch->lvl[cnt] );
+            xprintf( buf, ":@@W%2d ", ch->lvl[cnt] );
          else
-            sprintf( buf, "@@c:@@W%s ", " 0" );
+            xprintf( buf, "@@c:@@W%s ", " 0" );
          safe_strcat( MAX_STRING_LENGTH, buf2, buf );
       }
    }
    else
-      sprintf( buf2, " @@WLevel: @@y%d", ch->level );
+      xprintf( buf2, " @@WLevel: @@y%d", ch->level );
 
-   sprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+   xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
    send_to_char( buf, ch );
    buf2[0] = '\0';
 
@@ -1394,32 +1394,32 @@ void do_score( CHAR_DATA * ch, char *argument )
       {
          if( ch->lvl2[cnt] != -1 )
          {
-            sprintf( buf, "@@m%s:@@W%2d ", remort_table[cnt].who_name, ch->lvl2[cnt] );
+            xprintf( buf, "@@m%s:@@W%2d ", remort_table[cnt].who_name, ch->lvl2[cnt] );
             safe_strcat( MAX_STRING_LENGTH, buf2, buf );
 
          }
       }
-      sprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+      xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
       send_to_char( buf, ch );
    }
 
    if( ch->adept_level > 0 )
    {
-      sprintf( buf, "@@WADEPT@@N: %s ", get_adept_name( ch ) );
+      xprintf( buf, "@@WADEPT@@N: %s ", get_adept_name( ch ) );
       buf2[0] = '\0';
       safe_strcat( MAX_STRING_LENGTH, buf2, buf );
-      sprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+      xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
       send_to_char( buf, ch );
    }
 
 
-   sprintf( buf,
+   xprintf( buf,
             "X========= @@WExps: @@y%9d @@c========= @@aQuest Points: @@y%4d @@c========X\n\r", ch->exp, IS_NPC(ch) ? 0 : ch->pcdata->quest_points );
    send_to_char( buf, ch );
 
    if( get_trust( ch ) != ch->level )
    {
-      sprintf( buf, "X================= @@WYou are trusted at level @@y%2d @@c=================X\n\r", get_trust( ch ) );
+      xprintf( buf, "X================= @@WYou are trusted at level @@y%2d @@c=================X\n\r", get_trust( ch ) );
       send_to_char( buf, ch );
    }
 
@@ -1427,13 +1427,13 @@ void do_score( CHAR_DATA * ch, char *argument )
 
 
 
-   sprintf( buf,
+   xprintf( buf,
             "| @@WYou are carrying @@y%4d/%4d @@Witems, weight @@y%4.2f/%7d @@Wkg.  @@c|\n\r",
             ch->carry_number, can_carry_n( ch ), ch->carry_weight, can_carry_w( ch ) );
    send_to_char( buf, ch );
 
 
-   sprintf( buf,
+   xprintf( buf,
             "|       @@WAutoexit: @@y%s   @@WAutoloot: @@y%s  @@WAutosac: @@y%s       @@c|\n\r",
             ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_AUTOEXIT ) ) ? "*ON* " : "*OFF*",
             ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_AUTOLOOT ) ) ? "*ON* " : "*OFF*",
@@ -1443,95 +1443,95 @@ void do_score( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      sprintf( buf, " @@WYou have killed a total of: @@y%d @@WNPCs, and @@y%d @@WPlayers.",
+      xprintf( buf, " @@WYou have killed a total of: @@y%d @@WNPCs, and @@y%d @@WPlayers.",
                ch->pcdata->mkills, ch->pcdata->pkills );
-      sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+      xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
       send_to_char( buf2, ch );
 
-      sprintf( buf, " @@WA total of @@y%d @@WNPCs and @@y%d @@WPlayers have killed you.",
+      xprintf( buf, " @@WA total of @@y%d @@WNPCs and @@y%d @@WPlayers have killed you.",
                ch->pcdata->mkilled, ch->pcdata->pkilled );
-      sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+      xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
       send_to_char( buf2, ch );
 
-      sprintf( buf, " @@WWimpy Set to @@y%d @@WHitPoints.  Page Length is @@y%d @@Wlines.", ch->wimpy, ch->pcdata->pagelen );
-      sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+      xprintf( buf, " @@WWimpy Set to @@y%d @@WHitPoints.  Page Length is @@y%d @@Wlines.", ch->wimpy, ch->pcdata->pagelen );
+      xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
       send_to_char( buf2, ch );
 
-      sprintf( buf, " @@WDrunk: @@y%3s   @@WThirsty: @@y%3s   @@WHungry: @@y%3s",
+      xprintf( buf, " @@WDrunk: @@y%3s   @@WThirsty: @@y%3s   @@WHungry: @@y%3s",
                ( ch->pcdata->condition[COND_DRUNK] > 10 ) ? "Yes" : "No",
                ( ch->pcdata->condition[COND_THIRST] == 0 ) ? "Yes" : "No",
                ( ch->pcdata->condition[COND_FULL] == 0 ) ? "Yes" : "No" );
-      sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+      xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
       send_to_char( buf2, ch );
 
       if( IS_VAMP( ch ) )
       {
-         sprintf( buf, "@@eBLOODLUST@@W: @@e%d@@W/@@e%d@@N", ch->pcdata->bloodlust, ch->pcdata->bloodlust_max );
-         sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+         xprintf( buf, "@@eBLOODLUST@@W: @@e%d@@W/@@e%d@@N", ch->pcdata->bloodlust, ch->pcdata->bloodlust_max );
+         xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
-         sprintf( buf, "@@dKindred Rank:@@N %d  @@rGeneration:@@N %d   @@mKnowledge Avail:@@N %d",
+         xprintf( buf, "@@dKindred Rank:@@N %d  @@rGeneration:@@N %d   @@mKnowledge Avail:@@N %d",
                   ch->pcdata->vamp_level, ch->pcdata->generation, ch->pcdata->vamp_pracs );
-         sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+         xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
-         sprintf( buf, "@@WFAMILY: %s", get_family_name( ch ) );
-         sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+         xprintf( buf, "@@WFAMILY: %s", get_family_name( ch ) );
+         xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
 
       }
       else if( IS_WOLF( ch ) )
       {
-         sprintf( buf, "@@eRAGE@@W: @@e%d@@W/@@e%d@@N", ch->pcdata->bloodlust, ch->pcdata->bloodlust_max );
-         sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+         xprintf( buf, "@@eRAGE@@W: @@e%d@@W/@@e%d@@N", ch->pcdata->bloodlust, ch->pcdata->bloodlust_max );
+         xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
-         sprintf( buf, "@@rTribe Rank@@W:@@N %d  @@yTribe Standing@@W:@@N %s   @@GKnowledge Avail:@@N %d",
+         xprintf( buf, "@@rTribe Rank@@W:@@N %d  @@yTribe Standing@@W:@@N %s   @@GKnowledge Avail:@@N %d",
                   ch->pcdata->vamp_level, get_tribe_standing_name( ch->pcdata->generation ), ch->pcdata->vamp_pracs );
-         sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+         xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
-         sprintf( buf, "@@bTRIBE: %s", get_tribe_name( ch ) );
-         sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+         xprintf( buf, "@@bTRIBE: %s", get_tribe_name( ch ) );
+         xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
 
       }
 
    }
-   sprintf( buf, "%s", "" );
-   sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+   xprintf( buf, "%s", "" );
+   xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
    send_to_char( buf2, ch );
-   sprintf( buf, "@@WYou have assumed the @@yStance @@Wof the@@N %s.", stance_app[ch->stance].name );
-   sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+   xprintf( buf, "@@WYou have assumed the @@yStance @@Wof the@@N %s.", stance_app[ch->stance].name );
+   xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
    send_to_char( buf2, ch );
 
    switch ( ch->position )
    {
       case POS_DEAD:
-         sprintf( buf, " You are @@yDEAD!!" );
+         xprintf( buf, " You are @@yDEAD!!" );
          break;
       case POS_MORTAL:
-         sprintf( buf, " You are @@ymortally wounded." );
+         xprintf( buf, " You are @@ymortally wounded." );
          break;
       case POS_INCAP:
-         sprintf( buf, " You are @@yincapaciated." );
+         xprintf( buf, " You are @@yincapaciated." );
          break;
       case POS_STUNNED:
-         sprintf( buf, " You are @@ystunned." );
+         xprintf( buf, " You are @@ystunned." );
          break;
       case POS_SLEEPING:
-         sprintf( buf, " You are @@ysleeping." );
+         xprintf( buf, " You are @@ysleeping." );
          break;
       case POS_RESTING:
-         sprintf( buf, " You are @@yresting." );
+         xprintf( buf, " You are @@yresting." );
          break;
       case POS_STANDING:
-         sprintf( buf, " You are @@ystanding." );
+         xprintf( buf, " You are @@ystanding." );
          break;
       case POS_FIGHTING:
-         sprintf( buf, " You are @@yfighting." );
+         xprintf( buf, " You are @@yfighting." );
          break;
    }
-   sprintf( buf2, "|@@W%s @@c|\n\r", center_text( buf, 62 ) );
+   xprintf( buf2, "|@@W%s @@c|\n\r", center_text( buf, 62 ) );
    send_to_char( buf2, ch );
 
-   sprintf( buf, "@@WYou are " );
+   xprintf( buf, "@@WYou are " );
    if( GET_AC( ch ) >= 101 )
       safe_strcat( MAX_STRING_LENGTH, buf, "@@yall skin and bones." );
    else if( GET_AC( ch ) >= 80 )
@@ -1558,16 +1558,16 @@ void do_score( CHAR_DATA * ch, char *argument )
       safe_strcat( MAX_STRING_LENGTH, buf, "@@yalmost invincible!" );
 
 
-   sprintf( buf2, " @@WArmor Class: @@y%5d.   %s", GET_AC( ch ), buf );
-   sprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+   xprintf( buf2, " @@WArmor Class: @@y%5d.   %s", GET_AC( ch ), buf );
+   xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
    send_to_char( buf, ch );
 
-   sprintf( buf, " @@WHitroll: @@y%-5d   @@WDamroll: @@y%-5d", GET_HITROLL( ch ), GET_DAMROLL( ch ) );
-   sprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+   xprintf( buf, " @@WHitroll: @@y%-5d   @@WDamroll: @@y%-5d", GET_HITROLL( ch ), GET_DAMROLL( ch ) );
+   xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
    send_to_char( buf2, ch );
 
 
-   sprintf( buf, " @@WYou are " );
+   xprintf( buf, " @@WYou are " );
 
    if( ch->alignment > 900 )
       safe_strcat( MAX_STRING_LENGTH, buf, "@@yangelic." );
@@ -1588,13 +1588,13 @@ void do_score( CHAR_DATA * ch, char *argument )
    else
       safe_strcat( MAX_STRING_LENGTH, buf, "@@ysatanic!" );
 
-   sprintf( buf2, " @@WAlignment: @@y%5d.   %s", ch->alignment, buf );
-   sprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+   xprintf( buf2, " @@WAlignment: @@y%5d.   %s", ch->alignment, buf );
+   xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
    send_to_char( buf, ch );
 
 
 
-   sprintf( buf, "+===============================================================+@@g\n\r" );
+   xprintf( buf, "+===============================================================+@@g\n\r" );
    send_to_char( buf, ch );
 
 
@@ -1615,19 +1615,19 @@ void do_affected( CHAR_DATA * ch, char *argument )
    {
       for( paf = ch->first_affect; paf != NULL; paf = paf->next )
       {
-         sprintf( buf, "Spell: '%s'", skill_table[paf->type].name );
+         xprintf( buf, "Spell: '%s'", skill_table[paf->type].name );
          send_to_char( buf, ch );
 
          if( ch->level >= 16 )
          {
             if( paf->location > APPLY_NONE )
             {
-               sprintf( buf,
+               xprintf( buf,
                         " modifies %s by %d for %d hours", affect_loc_name( paf->location ), paf->modifier, paf->duration );
 
             }
             else
-               sprintf( buf, " lasts for %d hours", paf->duration );
+               xprintf( buf, " lasts for %d hours", paf->duration );
             send_to_char( buf, ch );
          }
 
@@ -1670,7 +1670,7 @@ void do_affected( CHAR_DATA * ch, char *argument )
       send_to_char( "Spell: 'Know Alignment' permanent duration.\n\r", ch );
 
 
-   sprintf( buf, "*****************************************************************\n\r" );
+   xprintf( buf, "*****************************************************************\n\r" );
    send_to_char( buf, ch );
 
 
@@ -1718,7 +1718,7 @@ void do_time( CHAR_DATA * ch, char *argument )
    else
       suf = "th";
 
-   sprintf( buf,
+   xprintf( buf,
             "It is %d o'clock %s, Day of %s, %d%s the Month of %s.\n\rAck! started up at %s\rThe system time is %s\r",
             ( time_info.hour % 12 == 0 ) ? 12 : time_info.hour % 12,
             time_info.hour >= 12 ? "pm" : "am",
@@ -1756,7 +1756,7 @@ void do_weather( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   sprintf( buf, "The sky is %s and %s.\n\r",
+   xprintf( buf, "The sky is %s and %s.\n\r",
             sky_look[weather_info.sky],
             weather_info.change >= 0 ? "a warm southerly breeze blows" : "a cold northern gust blows" );
    switch ( weather_info.moon_loc )
@@ -1765,24 +1765,24 @@ void do_weather( CHAR_DATA * ch, char *argument )
          safe_strcat( MSL, buf, "The moon is not in the sky.\n\r" );
          break;
       case MOON_RISE:
-         sprintf( buf2, "A %s @@yMoon@@N is just rising.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "A %s @@yMoon@@N is just rising.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
       case MOON_LOW:
-         sprintf( buf2, "A %s @@yMoon@@N is low on the horizon.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "A %s @@yMoon@@N is low on the horizon.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
       case MOON_PEAK:
-         sprintf( buf2, "A %s @@yMoon@@N is high above you.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "A %s @@yMoon@@N is high above you.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
       case MOON_FALL:
-         sprintf( buf2, "A %s @@yMoon@@N is falling.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "A %s @@yMoon@@N is falling.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
 
       case MOON_SET:
-         sprintf( buf2, "A %s @@yMoon@@N has just set.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "A %s @@yMoon@@N has just set.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
 
@@ -1974,7 +1974,7 @@ void do_who( CHAR_DATA * ch, char *argument )
 
    buf[0] = '\0';
 
-   sprintf( buf, "The Mighty Adventurers of " mudnamecolor "\n\r" );
+   xprintf( buf, "The Mighty Adventurers of " mudnamecolor "\n\r" );
    safe_strcat( MAX_STRING_LENGTH, buf,
                 "@@b|-----------------------------------------------------------------------------+\n\r" );
    safe_strcat( MAX_STRING_LENGTH, buf,
@@ -2253,7 +2253,7 @@ void do_who( CHAR_DATA * ch, char *argument )
 
          if( IS_SET( wch->pcdata->pflags, PFLAG_AMBAS ) )
          {
-            sprintf( buf3, "   AMBASSADOR  " );
+            xprintf( buf3, "   AMBASSADOR  " );
          }
          else
          {
@@ -2262,19 +2262,19 @@ void do_who( CHAR_DATA * ch, char *argument )
                switch ( wch->level )
                {
                   case MAX_LEVEL - 0:
-                     sprintf( buf3, "@@l %s@@g", class );
+                     xprintf( buf3, "@@l %s@@g", class );
                      break;
                   case MAX_LEVEL - 1:
-                     sprintf( buf3, "@@B %s@@g", class );
+                     xprintf( buf3, "@@B %s@@g", class );
                      break;
                   case MAX_LEVEL - 2:
-                     sprintf( buf3, "@@a %s@@g", class );
+                     xprintf( buf3, "@@a %s@@g", class );
                      break;
                   case MAX_LEVEL - 3:
-                     sprintf( buf3, "@@c %s@@g", class );
+                     xprintf( buf3, "@@c %s@@g", class );
                      break;
                   default:
-                     sprintf( buf3, "@@W %s@@g", class );
+                     xprintf( buf3, "@@W %s@@g", class );
                      break;
                }
             }
@@ -2287,15 +2287,15 @@ void do_who( CHAR_DATA * ch, char *argument )
                {
                   if( wch->lvl2[cnt] > 0 )
                   {
-                     sprintf( buf4, "@@m%3d@@N", wch->lvl2[cnt] );
+                     xprintf( buf4, "@@m%3d@@N", wch->lvl2[cnt] );
 
                   }
                   else
                   {
                      if( wch->lvl[cnt] <= 0 )
-                        sprintf( buf4, "@@d%3d@@N", 0 );
+                        xprintf( buf4, "@@d%3d@@N", 0 );
                      else
-                        sprintf( buf4, "@@b%3d@@N", wch->lvl[cnt] );
+                        xprintf( buf4, "@@b%3d@@N", wch->lvl[cnt] );
                   }
 
                   safe_strcat( MAX_STRING_LENGTH, buf3, buf4 );
@@ -2318,7 +2318,7 @@ void do_who( CHAR_DATA * ch, char *argument )
          else
             safe_strcat( MAX_STRING_LENGTH, clan_job, " " );
 
-         sprintf( fgs, "%3s %5s %s%s%s%s%s",
+         xprintf( fgs, "%3s %5s %s%s%s%s%s",
                   race_table[wch->race].race_name,
                   clan_table[wch->pcdata->clan].clan_abbr,
                   IS_SET( wch->pcdata->pflags, PFLAG_AFK ) ? "A" : " ",
@@ -2361,20 +2361,20 @@ void do_who( CHAR_DATA * ch, char *argument )
                idle = TRUE;
             }
          }
-         sprintf( buf4, "%s", wch->pcdata->title );
+         xprintf( buf4, "%s", wch->pcdata->title );
 
          if( slength + excess > 43 )
          {
             if( invis )
-               sprintf( buf4, "%1.26s", wch->pcdata->title );
+               xprintf( buf4, "%1.26s", wch->pcdata->title );
             else if( idle && !wanted )
-               sprintf( buf4, "%1.24s", wch->pcdata->title );
+               xprintf( buf4, "%1.24s", wch->pcdata->title );
             else if( !idle && wanted )
-               sprintf( buf4, "%1.28s", wch->pcdata->title );
+               xprintf( buf4, "%1.28s", wch->pcdata->title );
             else if( idle && wanted )
-               sprintf( buf4, "%1.18s", wch->pcdata->title );
+               xprintf( buf4, "%1.18s", wch->pcdata->title );
             else
-               sprintf( buf4, "%1.31s", wch->pcdata->title );
+               xprintf( buf4, "%1.31s", wch->pcdata->title );
 
 
          }
@@ -2389,30 +2389,30 @@ void do_who( CHAR_DATA * ch, char *argument )
          {
             if( slength + excess <= 43 )
             {
-               sprintf( buf + strlen( buf ), "@@b|%s%s%s  %s @@b| %s%s%s%s",
+               xprintf( buf + strlen( buf ), "@@b|%s%s%s  %s @@b| %s%s%s%s",
                         color_string( ch, "stats" ),
                         buf3,
                         color_string( ch, "stats" ),
                         fgs,
                         color_string( ch, "stats" ),
                         wch->name, buf4, IS_SET( wch->act, PLR_WIZINVIS ) ? "@@y(WIZI)@@b" : "" );
-               sprintf( buf + strlen( buf ), "@@b|@@g\n\r" );
+               xprintf( buf + strlen( buf ), "@@b|@@g\n\r" );
             }
             else
             {
-               sprintf( buf + strlen( buf ), "@@b|%s%s%s  %s @@b| %s%s%s%s",
+               xprintf( buf + strlen( buf ), "@@b|%s%s%s  %s @@b| %s%s%s%s",
                         color_string( ch, "stats" ),
                         buf3,
                         color_string( ch, "stats" ),
                         fgs,
                         color_string( ch, "stats" ),
                         wch->name, buf4, IS_SET( wch->act, PLR_WIZINVIS ) ? " @@y(WIZI)@@b " : "" );
-               sprintf( buf + strlen( buf ), "@@b|@@g\n\r" );
+               xprintf( buf + strlen( buf ), "@@b|@@g\n\r" );
             }
          }
          else
          {
-            sprintf( buf + strlen( buf ), "@@b|%s%s%s  %s @@b| %s%s%s%s",
+            xprintf( buf + strlen( buf ), "@@b|%s%s%s  %s @@b| %s%s%s%s",
                      color_string( ch, "stats" ),
                      buf3,
                      color_string( ch, "stats" ),
@@ -2424,9 +2424,9 @@ void do_who( CHAR_DATA * ch, char *argument )
 
 
             if( wch->timer > 5 )
-               sprintf( buf + strlen( buf ), "[IDLE:%2d] @@b|@@g\n\r", wch->timer );
+               xprintf( buf + strlen( buf ), "[IDLE:%2d] @@b|@@g\n\r", wch->timer );
             else
-               sprintf( buf + strlen( buf ), "@@b|@@g\n\r" );
+               xprintf( buf + strlen( buf ), "@@b|@@g\n\r" );
          }
       }
 
@@ -2438,22 +2438,22 @@ void do_who( CHAR_DATA * ch, char *argument )
 
    if( true_cnt > max_players )
       max_players = true_cnt + 15;
-   sprintf( buf4, "@@y(%d @@gAdventurer%s@@y)  @@gKEY:  (@@dA@@g)fk  (@@bB@@g)uilding  (@@eP@@g)kok  (@@WW@@g)riting",
+   xprintf( buf4, "@@y(%d @@gAdventurer%s@@y)  @@gKEY:  (@@dA@@g)fk  (@@bB@@g)uilding  (@@eP@@g)kok  (@@WW@@g)riting",
             nMatch, nMatch == 1 ? "" : "s" );
-   sprintf( buf2, "@@b|@@G %s @@b|\n\r", center_text( buf4, 75 ) );
+   xprintf( buf2, "@@b|@@G %s @@b|\n\r", center_text( buf4, 75 ) );
    safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
-   sprintf( buf4, " @@g(@@y*@@g) Clan Boss  (@@yL@@g) Clan Leader  (@@rJ@@g) Clan Job  (@@y!@@g) Clan Armourer@@N " );
-   sprintf( buf2, "@@b|@@G %s @@b|\n\r", center_text( buf4, 75 ) );
+   xprintf( buf4, " @@g(@@y*@@g) Clan Boss  (@@yL@@g) Clan Leader  (@@rJ@@g) Clan Job  (@@y!@@g) Clan Armourer@@N " );
+   xprintf( buf2, "@@b|@@G %s @@b|\n\r", center_text( buf4, 75 ) );
    safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
-   sprintf( buf4, "@@GThere has been a maximum of @@W%d @@eadventurer%s @@Glogged on this session@@N",
+   xprintf( buf4, "@@GThere has been a maximum of @@W%d @@eadventurer%s @@Glogged on this session@@N",
             max_players, max_players == 1 ? "" : "s" );
-   sprintf( buf2, "@@b|@@G %s @@b|\n\r", center_text( buf4, 75 ) );
+   xprintf( buf2, "@@b|@@G %s @@b|\n\r", center_text( buf4, 75 ) );
    safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
    safe_strcat( MAX_STRING_LENGTH, buf,
                 "@@b_______________________________________________________________________________\n\r" );
 
 /* Removed this... out is used once, to add a single color code... D'Oh! to me --Stimpy
-    sprintf( out, "%s%s", buf, color_string( ch, "normal" ) );
+    xprintf( out, "%s%s", buf, color_string( ch, "normal" ) );
 */
 
    send_to_char( buf, ch );
@@ -2595,7 +2595,7 @@ void do_who( CHAR_DATA * ch, char *argument )
 
    buf[0] = '\0';
 
-   sprintf( buf, "WHO Listing: " mudnamecolor "\n\r" );
+   xprintf( buf, "WHO Listing: " mudnamecolor "\n\r" );
    safe_strcat( MAX_STRING_LENGTH, buf,
                 "@@R+-----------------------------------------------------------------------------+\n\r" );
    safe_strcat( MAX_STRING_LENGTH, buf,
@@ -2874,7 +2874,7 @@ void do_who( CHAR_DATA * ch, char *argument )
 
          if( IS_SET( wch->pcdata->pflags, PFLAG_AMBAS ) )
          {
-            sprintf( buf3, "   AMBASSADOR  " );
+            xprintf( buf3, "   AMBASSADOR  " );
          }
          else
          {
@@ -2883,19 +2883,19 @@ void do_who( CHAR_DATA * ch, char *argument )
                switch ( wch->level )
                {
                   case MAX_LEVEL - 0:
-                     sprintf( buf3, "@@l %s@@g", class );
+                     xprintf( buf3, "@@l %s@@g", class );
                      break;
                   case MAX_LEVEL - 1:
-                     sprintf( buf3, "@@B %s@@g", class );
+                     xprintf( buf3, "@@B %s@@g", class );
                      break;
                   case MAX_LEVEL - 2:
-                     sprintf( buf3, "@@a %s@@g", class );
+                     xprintf( buf3, "@@a %s@@g", class );
                      break;
                   case MAX_LEVEL - 3:
-                     sprintf( buf3, "@@c %s@@g", class );
+                     xprintf( buf3, "@@c %s@@g", class );
                      break;
                   default:
-                     sprintf( buf3, "@@W %s@@g", class );
+                     xprintf( buf3, "@@W %s@@g", class );
                      break;
                }
             }
@@ -2908,15 +2908,15 @@ void do_who( CHAR_DATA * ch, char *argument )
                {
                   if( wch->lvl2[cnt] > 0 )
                   {
-                     sprintf( buf4, "@@m%3d@@N", wch->lvl2[cnt] );
+                     xprintf( buf4, "@@m%3d@@N", wch->lvl2[cnt] );
 
                   }
                   else
                   {
                      if( wch->lvl[cnt] <= 0 )
-                        sprintf( buf4, "@@d%3d@@N", 0 );
+                        xprintf( buf4, "@@d%3d@@N", 0 );
                      else
-                        sprintf( buf4, "@@b%3d@@N", wch->lvl[cnt] );
+                        xprintf( buf4, "@@b%3d@@N", wch->lvl[cnt] );
                   }
 
                   safe_strcat( MAX_STRING_LENGTH, buf3, buf4 );
@@ -2939,7 +2939,7 @@ void do_who( CHAR_DATA * ch, char *argument )
          else
             safe_strcat( MAX_STRING_LENGTH, clan_job, " " );
 
-         sprintf( fgs, "%3s %5s %s%s%s%s%s",
+         xprintf( fgs, "%3s %5s %s%s%s%s%s",
                   race_table[wch->race].race_name,
                   clan_table[wch->pcdata->clan].clan_abbr,
                   IS_SET( wch->pcdata->pflags, PFLAG_AFK ) ? "A" : " ",
@@ -2982,20 +2982,20 @@ void do_who( CHAR_DATA * ch, char *argument )
                idle = TRUE;
             }
          }
-         sprintf( buf4, "%s", wch->pcdata->title );
+         xprintf( buf4, "%s", wch->pcdata->title );
 
          if( slength + excess > 43 )
          {
             if( invis )
-               sprintf( buf4, "%1.26s", wch->pcdata->title );
+               xprintf( buf4, "%1.26s", wch->pcdata->title );
             else if( idle && !wanted )
-               sprintf( buf4, "%1.24s", wch->pcdata->title );
+               xprintf( buf4, "%1.24s", wch->pcdata->title );
             else if( !idle && wanted )
-               sprintf( buf4, "%1.28s", wch->pcdata->title );
+               xprintf( buf4, "%1.28s", wch->pcdata->title );
             else if( idle && wanted )
-               sprintf( buf4, "%1.18s", wch->pcdata->title );
+               xprintf( buf4, "%1.18s", wch->pcdata->title );
             else
-               sprintf( buf4, "%1.31s", wch->pcdata->title );
+               xprintf( buf4, "%1.31s", wch->pcdata->title );
 
 
          }
@@ -3010,28 +3010,28 @@ void do_who( CHAR_DATA * ch, char *argument )
          {
             if( slength + excess <= 43 )
             {
-               sprintf( buf + strlen( buf ), "@@R|%s%s%s  %s @@R| %s%s%s%s",
+               xprintf_2( buf + strlen( buf ), "@@R|%s%s%s  %s @@R| %s%s%s%s",
                         color_string( ch, "stats" ),
                         buf3,
                         color_string( ch, "stats" ),
                         fgs,
                         color_string( ch, "stats" ), wch->name, buf4, IS_SET( wch->act, PLR_WIZINVIS ) ? "(WIZI)" : "" );
-               sprintf( buf + strlen( buf ), "@@R|@@g\n\r" );
+               xprintf_2( buf + strlen( buf ), "@@R|@@g\n\r" );
             }
             else
             {
-               sprintf( buf + strlen( buf ), "@@R|%s%s%s  %s @@R| %s%s%s%s",
+               xprintf_2( buf + strlen( buf ), "@@R|%s%s%s  %s @@R| %s%s%s%s",
                         color_string( ch, "stats" ),
                         buf3,
                         color_string( ch, "stats" ),
                         fgs,
                         color_string( ch, "stats" ), wch->name, buf4, IS_SET( wch->act, PLR_WIZINVIS ) ? " (WIZI) " : "" );
-               sprintf( buf + strlen( buf ), "@@R|@@g\n\r" );
+               xprintf_2( buf + strlen( buf ), "@@R|@@g\n\r" );
             }
          }
          else
          {
-            sprintf( buf + strlen( buf ), "@@R|%s%s%s  %s @@R| %s%s%s%s",
+            xprintf_2( buf + strlen( buf ), "@@R|%s%s%s  %s @@R| %s%s%s%s",
                      color_string( ch, "stats" ),
                      buf3,
                      color_string( ch, "stats" ),
@@ -3043,9 +3043,9 @@ void do_who( CHAR_DATA * ch, char *argument )
 
 
             if( wch->timer > 5 )
-               sprintf( buf + strlen( buf ), "[IDLE:%2d] @@R|@@g\n\r", wch->timer );
+               xprintf_2( buf + strlen( buf ), "[IDLE:%2d] @@R|@@g\n\r", wch->timer );
             else
-               sprintf( buf + strlen( buf ), "@@R|@@g\n\r" );
+               xprintf_2( buf + strlen( buf ), "@@R|@@g\n\r" );
          }
       }
 
@@ -3057,22 +3057,22 @@ void do_who( CHAR_DATA * ch, char *argument )
 
    if( true_cnt > max_players )
       max_players = true_cnt;
-   sprintf( buf4, "(%d Player%s)  KEY: (A)fk  (B)uilding  (*)Clan Boss  (P)kok  (W)riting", nMatch, nMatch == 1 ? "" : "s" );
-   sprintf( buf2, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
+   xprintf( buf4, "(%d Player%s)  KEY: (A)fk  (B)uilding  (*)Clan Boss  (P)kok  (W)riting", nMatch, nMatch == 1 ? "" : "s" );
+   xprintf( buf2, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
    safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
-   sprintf( buf4, " (L) Clan Leader  (!) Clan Armourer " );
-   sprintf( buf2, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
+   xprintf( buf4, " (L) Clan Leader  (!) Clan Armourer " );
+   xprintf( buf2, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
    safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
 
-   sprintf( buf4, "There have been a maximum of %d player%s logged on this session",
+   xprintf( buf4, "There have been a maximum of %d player%s logged on this session",
             max_players, max_players == 1 ? "" : "s" );
-   sprintf( buf2, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
+   xprintf( buf2, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
    safe_strcat( MAX_STRING_LENGTH, buf, buf2 );
    safe_strcat( MAX_STRING_LENGTH, buf,
                 "@@R+-----------------------------------------------------------------------------+\n\r" );
 
 /* Removed this... out is used once, to add a single color code... D'Oh! to me --Stimpy
-    sprintf( out, "%s%s", buf, color_string( ch, "normal" ) );
+    xprintf( out, "%s%s", buf, color_string( ch, "normal" ) );
 */
 
    send_to_char( buf, ch );
@@ -3235,7 +3235,7 @@ void do_where( CHAR_DATA * ch, char *argument )
    if( arg[0] == '\0' )
    {
       send_to_char( "Players near you:\n\r", ch );
-      sprintf( buf, "In %s %s @@N:\n\r", ch->in_room->area->level_label, ch->in_room->area->name );
+      xprintf( buf, "In %s %s @@N:\n\r", ch->in_room->area->level_label, ch->in_room->area->name );
       send_to_char( buf, ch );
       found = FALSE;
       for( d = first_desc; d; d = d->next )
@@ -3248,7 +3248,7 @@ void do_where( CHAR_DATA * ch, char *argument )
              && can_see( ch, victim ) && ( !IS_WOLF( victim ) || ( !IS_SHIFTED( victim ) && !IS_RAGED( victim ) ) ) )
          {
             found = TRUE;
-            sprintf( buf, "%-28s %s\n\r", victim->name, victim->in_room->name );
+            xprintf( buf, "%-28s %s\n\r", victim->name, victim->in_room->name );
             send_to_char( buf, ch );
          }
       }
@@ -3274,7 +3274,7 @@ void do_where( CHAR_DATA * ch, char *argument )
              && can_see( ch, victim ) && is_name( arg, victim->name ) )
          {
             found = TRUE;
-            sprintf( buf, "%-28s %s\n\r", PERS( victim, ch ), victim->in_room->name );
+            xprintf( buf, "%-28s %s\n\r", PERS( victim, ch ), victim->in_room->name );
             send_to_char( buf, ch );
             break;
          }
@@ -3562,7 +3562,7 @@ void do_title( CHAR_DATA * ch, char *argument )
 
    smash_tilde( argument );
    set_title( ch, argument );
-   sprintf( buf, "You are now: %s%s.\n\r", ch->name, ch->pcdata->title );
+   xprintf( buf, "You are now: %s%s.\n\r", ch->name, ch->pcdata->title );
    send_to_char( buf, ch );
 }
 
@@ -3609,13 +3609,13 @@ void do_report( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_INPUT_LENGTH];
 
-   sprintf( buf,
+   xprintf( buf,
             "You report: %d/%d hp %d/%d mana %d/%d mv %d xp.\n\r",
             ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move, ch->exp );
 
    send_to_char( buf, ch );
 
-   sprintf( buf, "$n reports: %d/%d hp %d/%d mana %d/%d mv %d xp.",
+   xprintf( buf, "$n reports: %d/%d hp %d/%d mana %d/%d mv %d xp.",
             ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move, ch->exp );
 
    act( buf, ch, NULL, NULL, TO_ROOM );
@@ -3700,7 +3700,7 @@ void do_practice( CHAR_DATA * ch, char *argument )
             }
             if( ch->pcdata->learned[sn] > 0 )
             {
-               sprintf( buf, "@@W%16s-@@y%-7s@@g  ", skill_table[sn].name, learnt_name( ch->pcdata->learned[sn] ) );
+               xprintf( buf, "@@W%16s-@@y%-7s@@g  ", skill_table[sn].name, learnt_name( ch->pcdata->learned[sn] ) );
 
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
                if( ++col % 3 == 0 )
@@ -3712,7 +3712,7 @@ void do_practice( CHAR_DATA * ch, char *argument )
       if( col % 3 != 0 )
          safe_strcat( MAX_STRING_LENGTH, buf1, "\n\r" );
 
-      sprintf( buf, "You have %d practice sessions left.\n\r", ch->practice );
+      xprintf( buf, "You have %d practice sessions left.\n\r", ch->practice );
       safe_strcat( MAX_STRING_LENGTH, buf1, buf );
       send_to_char( buf1, ch );
    }
@@ -3808,7 +3808,7 @@ void do_practice( CHAR_DATA * ch, char *argument )
 
       if( ch->pcdata->learned[sn] >= adept )
       {
-         sprintf( buf, "You are already know %s as well as is currently possible.\n\r", skill_table[sn].name );
+         xprintf( buf, "You are already know %s as well as is currently possible.\n\r", skill_table[sn].name );
          send_to_char( buf, ch );
       }
       else
@@ -3868,7 +3868,7 @@ void do_wimpy( CHAR_DATA * ch, char *argument )
    }
 
    ch->wimpy = wimpy;
-   sprintf( buf, "Wimpy set to %d hit points.\n\r", wimpy );
+   xprintf( buf, "Wimpy set to %d hit points.\n\r", wimpy );
    send_to_char( buf, ch );
    return;
 }
@@ -3985,7 +3985,7 @@ void do_socials( CHAR_DATA * ch, char *argument )
 
    for( iSocial = 0; social_table[iSocial].name[0] != '\0'; iSocial++ )
    {
-      sprintf( buf, "%-12s", social_table[iSocial].name );
+      xprintf( buf, "%-12s", social_table[iSocial].name );
       safe_strcat( MAX_STRING_LENGTH, out, buf );
       if( ++col % 6 == 0 )
          safe_strcat( MAX_STRING_LENGTH, out, "\n\r" );
@@ -4040,7 +4040,7 @@ void do_socials( CHAR_DATA * ch, char *argument )
   * && !IS_WOLF( ch ) )
   * continue;
   * 
-  * sprintf( buf, "%-12s", cmd_table[cmd].name );
+  * xprintf( buf, "%-12s", cmd_table[cmd].name );
   * safe_strcat(MAX_STRING_LENGTH, buf1, buf );
   * if ( ++col % 6 == 0 )
   * safe_strcat(MAX_STRING_LENGTH, buf1, "\n\r" );
@@ -4109,7 +4109,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
 
    for( col = 0; col < 8; col++ )
    {
-      sprintf( show_table[col].buf, "%s:\n\r", cmd_group_names[col] );
+      xprintf( show_table[col].buf, "%s:\n\r", cmd_group_names[col] );
       show_table[col].col = 0;
    }
 
@@ -4140,7 +4140,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
          if( ( cmd_table[cmd].show == C_SHOW_SKILL ) && ( ch->pcdata->learned[skill_lookup( cmd_table[cmd].name )] < 10 ) )
             continue;
 
-         sprintf( buf, "%-12s", cmd_table[cmd].name );
+         xprintf( buf, "%-12s", cmd_table[cmd].name );
          safe_strcat( MSL, show_table[cmd_table[cmd].type].buf, buf );
          if( ++show_table[cmd_table[cmd].type].col % 6 == 0 )
             safe_strcat( MSL, show_table[cmd_table[cmd].type].buf, "\n\r" );
@@ -4330,7 +4330,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
             {
                if( !IS_NPC( ch ) )
                {
-                  sprintf( colbuf, "@@%c", ch->pcdata->dimcol );
+                  xprintf( colbuf, "@@%c", ch->pcdata->dimcol );
                   safe_strcat( MSL, buffer, colbuf );
                }
                safe_strcat( MAX_STRING_LENGTH, buffer, channels[a].off_string );
@@ -4339,7 +4339,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
             {
                if( !IS_NPC( ch ) )
                {
-                  sprintf( colbuf, "@@%c", ch->pcdata->hicol );
+                  xprintf( colbuf, "@@%c", ch->pcdata->hicol );
                   safe_strcat( MSL, buffer, colbuf );
                }
                safe_strcat( MAX_STRING_LENGTH, buffer, channels[a].on_string );
@@ -4475,7 +4475,7 @@ void do_config( CHAR_DATA * ch, char *argument )
       send_to_char( !IS_SET( ch->act, PLR_NO_EMOTE ) ? "" : "@@d[@@c-emote    @@d]@@c You can't emote.@@N\n\r", ch );
 
       send_to_char( !IS_SET( ch->act, PLR_NO_TELL ) ? "" : "@@d[@@c-tell     @@d]@@c You can't use 'tell'.@@N\n\r", ch );
-      sprintf( buf, "Terminal set to:  %i Rows, %i Columns.\n\r", ch->pcdata->term_rows, ch->pcdata->term_columns );
+      xprintf( buf, "Terminal set to:  %i Rows, %i Columns.\n\r", ch->pcdata->term_rows, ch->pcdata->term_columns );
       send_to_char( buf, ch );
    }
    else
@@ -4559,7 +4559,7 @@ void do_config( CHAR_DATA * ch, char *argument )
          if( bit == CONFIG_FULL_ANSI )
          {
             char scrollbuf[MSL];
-            sprintf( scrollbuf, "%s%s%s%i;%ir%s%i;%iH",
+            xprintf( scrollbuf, "%s%s%s%i;%ir%s%i;%iH",
                      CRS_RESET, CRS_CLS, CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13, 0 );
             send_to_char( scrollbuf, ch );
          }
@@ -4606,10 +4606,10 @@ void do_race_list( CHAR_DATA * ch, char *argument )
      int iWear, cnt = 0;
 
      send_to_char("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r",ch);
-     sprintf(buf,"[%3s] %9s (%s)\n\r",race_table[iRace].race_name,race_table[iRace].race_title,race_table[iRace].comment);
+     xprintf(buf,"[%3s] %9s (%s)\n\r",race_table[iRace].race_name,race_table[iRace].race_title,race_table[iRace].comment);
      send_to_char(buf,ch);
      send_to_char("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r",ch);
-     sprintf(buf,"Max Stats     : Str [%d]  Int [%d]  Wis [%d]  Dex [%d]  Con [%d]\n\rRace Mods     : ",
+     xprintf(buf,"Max Stats     : Str [%d]  Int [%d]  Wis [%d]  Dex [%d]  Con [%d]\n\rRace Mods     : ",
       race_table[iRace].race_str,race_table[iRace].race_int,race_table[iRace].race_wis,race_table[iRace].race_dex,race_table[iRace].race_con);
      send_to_char(buf,ch);
      send_to_char(bit_table_lookup(tab_mob_race_mods_col,race_table[iRace].race_flags),ch);
@@ -4626,7 +4626,7 @@ void do_race_list( CHAR_DATA * ch, char *argument )
      for( iWear = 0; iWear < MAX_WEAR; iWear++ )
       if( race_table[iRace].wear_locs[iWear] == TRUE )
        cnt++;
-     sprintf(buf,"\n\rWear Locations: %d\n\r",cnt);
+     xprintf(buf,"\n\rWear Locations: %d\n\r",cnt);
      send_to_char(buf,ch);
      send_to_char(output_race_wear(iRace),ch);
 
@@ -4647,7 +4647,7 @@ void do_race_list( CHAR_DATA * ch, char *argument )
    {
       if( IS_IMMORTAL( ch ) )
       {
-         sprintf( buf, "   %3d   %5d    %5s     %9s %2d %s %5s %4s\n\r",
+         xprintf( buf, "   %3d   %5d    %5s     %9s %2d %s %5s %4s\n\r",
                   iRace, race_table[iRace].recall,
                   race_table[iRace].race_name, race_table[iRace].race_title,
                   race_table[iRace].classes, race_table[iRace].comment,
@@ -4658,7 +4658,7 @@ void do_race_list( CHAR_DATA * ch, char *argument )
 
       else if( race_table[iRace].player_allowed == TRUE )
       {
-         sprintf( buf, "   %5s    %9s    %2d %s\n\r",
+         xprintf( buf, "   %5s    %9s    %2d %s\n\r",
                   race_table[iRace].race_name, race_table[iRace].race_title,
                   race_table[iRace].classes, race_table[iRace].comment );
          send_to_char( buf, ch );
@@ -4690,11 +4690,11 @@ void do_clan_list( CHAR_DATA * ch, char *argument )
       if( !IS_IMMORTAL( ch ) && iClan == 0 )
          continue;   /* Don't list 'none' as a clan :) */
       if( IS_IMMORTAL( ch ) )
-         sprintf( buf, "   %3d   %5d    %s  %12s  %s\n\r",
+         xprintf( buf, "   %3d   %5d    %s  %12s  %s\n\r",
                   iClan, clan_table[iClan].clan_room, clan_table[iClan].clan_abbr,
                   clan_table[iClan].leader, clan_table[iClan].clan_name );
       else
-         sprintf( buf, "   %s    %12s  %s\n\r",
+         xprintf( buf, "   %s    %12s  %s\n\r",
                   clan_table[iClan].clan_abbr, clan_table[iClan].leader, clan_table[iClan].clan_name );
 
       send_to_char( buf, ch );
@@ -4749,7 +4749,7 @@ void do_spells( CHAR_DATA * ch, char *argument )
        * continue; 
        */
 
-      sprintf( buf, "%18s %3dpts ", skill_table[sn].name, mana_cost( ch, sn ) );
+      xprintf( buf, "%18s %3dpts ", skill_table[sn].name, mana_cost( ch, sn ) );
       safe_strcat( MAX_STRING_LENGTH, buf1, buf );
       if( ++col % 3 == 0 )
          safe_strcat( MAX_STRING_LENGTH, buf1, "\n\r" );
@@ -4867,7 +4867,7 @@ void do_slist( CHAR_DATA * ch, char *argument )
             if( pSpell )
             {
 
-               sprintf( buf, "@@r%2d:@@N", level );
+               xprintf( buf, "@@r%2d:@@N", level );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
                pSpell = FALSE;
             }
@@ -4876,18 +4876,18 @@ void do_slist( CHAR_DATA * ch, char *argument )
                safe_strcat( MAX_STRING_LENGTH, buf1, "   " );
             if( ch->pcdata->learned[sn] > 0 )
             {
-               sprintf( buf, "@@m%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@m%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             else if( skill_table[sn].skill_level[class] >
                      ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[class] : ch->lvl[class] ) )
             {
-               sprintf( buf, "@@d%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@d%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             else
             {
-               sprintf( buf, "@@a%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@a%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             if( col % 4 == 0 )
@@ -4899,7 +4899,7 @@ void do_slist( CHAR_DATA * ch, char *argument )
             if( pSpell )
             {
 
-               sprintf( buf, "@@r%2d:@@N", level );
+               xprintf( buf, "@@r%2d:@@N", level );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
                pSpell = FALSE;
             }
@@ -4908,18 +4908,18 @@ void do_slist( CHAR_DATA * ch, char *argument )
                safe_strcat( MAX_STRING_LENGTH, buf1, "   " );
             if( ch->pcdata->learned[sn] > 0 )
             {
-               sprintf( buf, "@@x@@m%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@x@@m%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             else if( skill_table[sn].skill_level[class] >
                      ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[class] : ch->lvl[class] ) )
             {
-               sprintf( buf, "@@d%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@d%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             else
             {
-               sprintf( buf, "@@a%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@a%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             if( col % 4 == 0 )
@@ -4929,7 +4929,7 @@ void do_slist( CHAR_DATA * ch, char *argument )
          {
             if( pSpell )
             {
-               sprintf( buf, "@@r%2d:@@N", level );
+               xprintf( buf, "@@r%2d:@@N", level );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
                pSpell = FALSE;
             }
@@ -4940,18 +4940,18 @@ void do_slist( CHAR_DATA * ch, char *argument )
 
             if( ch->pcdata->learned[sn] > 0 )
             {
-               sprintf( buf, "@@x@@m%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@x@@m%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             else if( skill_table[sn].skill_level[class] >
                      ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[class] : ch->lvl[class] ) )
             {
-               sprintf( buf, "@@d%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@d%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             else
             {
-               sprintf( buf, "@@a%18s@@N", skill_table[sn].name );
+               xprintf( buf, "@@a%18s@@N", skill_table[sn].name );
                safe_strcat( MAX_STRING_LENGTH, buf1, buf );
             }
             if( col % 4 == 0 )
@@ -5039,7 +5039,7 @@ void do_pagelen( CHAR_DATA * ch, char *argument )
    }
 
    ch->pcdata->pagelen = lines;
-   sprintf( buf, "Page pause set to %d lines.\n\r", lines );
+   xprintf( buf, "Page pause set to %d lines.\n\r", lines );
    send_to_char( buf, ch );
    return;
 }
@@ -5190,29 +5190,29 @@ void do_heal( CHAR_DATA * ch, char *argument )
        * Work out costs of different spells. 
        */
       send_to_char( "Costs for spells ( approximate ):\n\r", ch );
-      sprintf( costbuf, "%s", cost_to_money( ( mult * 100 ) ) );
-      sprintf( buf, "Sanctuary:          %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
+      xprintf( costbuf, "%s", cost_to_money( ( mult * 100 ) ) );
+      xprintf( buf, "Sanctuary:          %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
       send_to_char( buf, ch );
-      sprintf( costbuf, "%s", cost_to_money( ( mult * 50 ) ) );
-      sprintf( buf, "Heal:               %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
+      xprintf( costbuf, "%s", cost_to_money( ( mult * 50 ) ) );
+      xprintf( buf, "Heal:               %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
       send_to_char( buf, ch );
-      sprintf( costbuf, "%s", cost_to_money( ( mult * 20 ) ) );
-      sprintf( buf, "Invisibilty:        %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
+      xprintf( costbuf, "%s", cost_to_money( ( mult * 20 ) ) );
+      xprintf( buf, "Invisibilty:        %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
       send_to_char( buf, ch );
-      sprintf( costbuf, "%s", cost_to_money( ( mult * 10 ) ) );
-      sprintf( buf, "Detect Invisibilty: %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
+      xprintf( costbuf, "%s", cost_to_money( ( mult * 10 ) ) );
+      xprintf( buf, "Detect Invisibilty: %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
       send_to_char( buf, ch );
-      sprintf( costbuf, "%s", cost_to_money( ( mult * 10 ) ) );
-      sprintf( buf, "Refresh:            %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
+      xprintf( costbuf, "%s", cost_to_money( ( mult * 10 ) ) );
+      xprintf( buf, "Refresh:            %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
       send_to_char( buf, ch );
-      sprintf( costbuf, "%s", cost_to_money( ( mult * 20 ) ) );
-      sprintf( buf, "Night Vision:       %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
+      xprintf( costbuf, "%s", cost_to_money( ( mult * 20 ) ) );
+      xprintf( buf, "Night Vision:       %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
       send_to_char( buf, ch );
-      sprintf( costbuf, "%s", cost_to_money( ( mult * 200 ) ) );
-      sprintf( buf, "Magical Dispel:     %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
+      xprintf( costbuf, "%s", cost_to_money( ( mult * 200 ) ) );
+      xprintf( buf, "Magical Dispel:     %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
       send_to_char( buf, ch );
-      sprintf( costbuf, "%s", cost_to_money( ( 2000 ) ) );
-      sprintf( buf, "Mana:     %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
+      xprintf( costbuf, "%s", cost_to_money( ( 2000 ) ) );
+      xprintf( buf, "Mana:     %-*s.\n\r", ccode_len( costbuf, 40 ), costbuf );
       send_to_char( buf, ch );
 
 
@@ -5235,7 +5235,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
          spell_sanctuary( skill_lookup( "sanc" ), mult, ch, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 100 ) );
          give = one_argument( give, changebuf );
-         sprintf( givebuf, "%s to %s", give, mob->name );
+         xprintf( givebuf, "%s to %s", give, mob->name );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\n\r", ch );
@@ -5251,7 +5251,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
          give = take_best_coins( ch->money, 1000 );
          ch->mana = UMIN( ch->max_mana, ch->mana + 50 );
          give = one_argument( give, changebuf );
-         sprintf( givebuf, "%s to %s", give, mob->name );
+         xprintf( givebuf, "%s to %s", give, mob->name );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\n\r", ch );
@@ -5268,7 +5268,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
          spell_heal( skill_lookup( "heal" ), mult, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 50 ) );
          give = one_argument( give, changebuf );
-         sprintf( givebuf, "%s to %s", give, mob->name );
+         xprintf( givebuf, "%s to %s", give, mob->name );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\n\r", ch );
@@ -5284,7 +5284,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
          spell_invis( skill_lookup( "invis" ), mult, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 20 ) );
          give = one_argument( give, changebuf );
-         sprintf( givebuf, "%s to %s", give, mob->name );
+         xprintf( givebuf, "%s to %s", give, mob->name );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\n\r", ch );
@@ -5300,7 +5300,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
          spell_detect_invis( skill_lookup( "detect invis" ), mult, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 10 ) );
          give = one_argument( give, changebuf );
-         sprintf( givebuf, "%s to %s", give, mob->name );
+         xprintf( givebuf, "%s to %s", give, mob->name );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\n\r", ch );
@@ -5316,7 +5316,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
          spell_refresh( skill_lookup( "refresh" ), mult, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 10 ) );
          give = one_argument( give, changebuf );
-         sprintf( givebuf, "%s to %s", give, mob->name );
+         xprintf( givebuf, "%s to %s", give, mob->name );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\n\r", ch );
@@ -5332,7 +5332,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
          spell_infravision( skill_lookup( "infra" ), mult, ch, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 20 ) );
          give = one_argument( give, changebuf );
-         sprintf( givebuf, "%s to %s", give, mob->name );
+         xprintf( givebuf, "%s to %s", give, mob->name );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\n\r", ch );
@@ -5349,7 +5349,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
          spell_dispel_magic( skill_lookup( "dispel magic" ), mult * 5, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 200 ) );
          give = one_argument( give, changebuf );
-         sprintf( givebuf, "%s to %s", give, mob->name );
+         xprintf( givebuf, "%s to %s", give, mob->name );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\n\r", ch );
@@ -5465,7 +5465,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
             any = TRUE;
             cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
 
-            sprintf( buf, "%s : %d Exp.\n\r", class_table[cnt].who_name, cost );
+            xprintf( buf, "%s : %d Exp.\n\r", class_table[cnt].who_name, cost );
             send_to_char( buf, ch );
          }
 
@@ -5474,14 +5474,14 @@ void do_gain( CHAR_DATA * ch, char *argument )
          {
             any = TRUE;
             cost = exp_to_level( ch, cnt, 5 );  /* 5 means remort */
-            sprintf( buf, "%s : %d Exp.\n\r", remort_table[cnt].who_name, cost );
+            xprintf( buf, "%s : %d Exp.\n\r", remort_table[cnt].who_name, cost );
             send_to_char( buf, ch );
          }
       if( ( ch->adept_level > 0 ) && ( ch->adept_level < 20 ) )
       {
          any = TRUE;
          cost = exp_to_level_adept( ch );
-         sprintf( buf, "@@WAdept@@N: %d Exp.\n\r", cost );
+         xprintf( buf, "@@WAdept@@N: %d Exp.\n\r", cost );
          send_to_char( buf, ch );
       }
       if( allow_remort )
@@ -5602,7 +5602,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
 
    else if( ch->exp < cost )
    {
-      sprintf( buf, "Cost is %d Exp.  You only have %d (%d short).\n\r", cost, ch->exp, ( cost - ch->exp ) );
+      xprintf( buf, "Cost is %d Exp.  You only have %d (%d short).\n\r", cost, ch->exp, ( cost - ch->exp ) );
       send_to_char( buf, ch );
       return;
    }
@@ -5646,7 +5646,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
       ch->exp -= cost;
       advance_level( ch, c, TRUE, FALSE );
       ch->adept_level = UMAX( 1, ch->adept_level + 1 );
-      sprintf( buf, "%s @@W advances in the way of the Adept!!\n\r", ch->name );
+      xprintf( buf, "%s @@W advances in the way of the Adept!!\n\r", ch->name );
       info( buf, 1 );
       free_string( ch->pcdata->who_name );
       ch->pcdata->who_name = str_dup( get_adept_name( ch ) );
@@ -5701,9 +5701,9 @@ void do_gain( CHAR_DATA * ch, char *argument )
     * Check to see if able to reach new level 
     */
    if( remort )
-      sprintf( buf, "You gain a %s level!\n\r", remort_table[c].class_name );
+      xprintf( buf, "You gain a %s level!\n\r", remort_table[c].class_name );
    else
-      sprintf( buf, "You gain a %s level!\n\r", class_table[c].class_name );
+      xprintf( buf, "You gain a %s level!\n\r", class_table[c].class_name );
    send_to_char( buf, ch );
 
    /*
@@ -5711,9 +5711,9 @@ void do_gain( CHAR_DATA * ch, char *argument )
     */
 
    if( remort )
-      sprintf( buf, "%s advances in the way of the %s.", ch->name, remort_table[c].class_name );
+      xprintf( buf, "%s advances in the way of the %s.", ch->name, remort_table[c].class_name );
    else
-      sprintf( buf, "%s advances in the way of the %s.", ch->name, class_table[c].class_name );
+      xprintf( buf, "%s advances in the way of the %s.", ch->name, class_table[c].class_name );
    info( buf, 1 );
 
    ch->exp -= cost;
@@ -5774,7 +5774,7 @@ void do_assassinate( CHAR_DATA * ch, char *argument )
 
    if( argument[0] == '\0' )
    {
-      sprintf( buf, "$N tells you, 'The cost is %d GP.'", cost );
+      xprintf( buf, "$N tells you, 'The cost is %d GP.'", cost );
       act( buf, ch, NULL, mob, TO_CHAR );
       return;
    }
@@ -5824,7 +5824,7 @@ void do_assassinate( CHAR_DATA * ch, char *argument )
    ch->gold -= cost;
    act( "$n gives $N some gold coins.", ch, NULL, mob, TO_NOTVICT );
    act( "$n says '$N shall die by my hand!`", mob, NULL, victim, TO_ROOM );
-   sprintf( buf, "%s employs the services of %s to assassinate %s!!", ch->name, mob->short_descr, victim->name );
+   xprintf( buf, "%s employs the services of %s to assassinate %s!!", ch->name, mob->short_descr, victim->name );
    info( buf, 1 );
    return;
 }
@@ -5858,7 +5858,7 @@ void do_alias( CHAR_DATA * ch, char *argument )
 
       for( cnt = 0; cnt < MAX_ALIASES; cnt++ )
       {
-         sprintf( buf, "(%d) [Name:] %12s  [Aliases:] %s\n\r", cnt, ch->pcdata->alias_name[cnt], ch->pcdata->alias[cnt] );
+         xprintf( buf, "(%d) [Name:] %12s  [Aliases:] %s\n\r", cnt, ch->pcdata->alias_name[cnt], ch->pcdata->alias[cnt] );
          send_to_char( buf, ch );
       }
       send_to_char( "\n\rTo Set an Alias:\n\r", ch );
@@ -5889,7 +5889,7 @@ void do_alias( CHAR_DATA * ch, char *argument )
 
    if( alias_no < 0 || alias_no > ( MAX_ALIASES - 1 ) )
    {
-      sprintf( buf, "Valid alias numbers are 0 to %d.\n\r", MAX_ALIASES );
+      xprintf( buf, "Valid alias numbers are 0 to %d.\n\r", MAX_ALIASES );
       send_to_char( buf, ch );
       return;
    }
@@ -5959,7 +5959,7 @@ void do_color( CHAR_DATA * ch, char *argument )
 
       for( cnt = 0; cnt < MAX_color; cnt++ )
       {
-         sprintf( buf, "@@W%8s: %s%-12s@@N   ",
+         xprintf( buf, "@@W%8s: %s%-12s@@N   ",
                   color_table[cnt].name, ansi_table[ch->pcdata->color[cnt]].value, ansi_table[ch->pcdata->color[cnt]].name );
          send_to_char( buf, ch );
          if( ++col % 3 == 0 )
@@ -5974,7 +5974,7 @@ void do_color( CHAR_DATA * ch, char *argument )
 
       for( cnt = 0; cnt < MAX_ANSI; cnt++ )
       {
-         sprintf( buf, "%s%-12s@@N  ",
+         xprintf( buf, "%s%-12s@@N  ",
                   IS_SET( ch->config, CONFIG_COLOR ) ? ansi_table[cnt].value : "", ansi_table[cnt].name );
          send_to_char( buf, ch );
          if( ++col % 5 == 0 )
@@ -6130,7 +6130,7 @@ void do_worth( CHAR_DATA * ch, char *argument )
    {
 
       cost = exp_to_level_adept( ch );
-      sprintf( buf, " %-14s  %9d %9d.\n\r", get_adept_name( ch ), cost, UMAX( 0, cost - ch->exp ) );
+      xprintf( buf, " %-14s  %9d %9d.\n\r", get_adept_name( ch ), cost, UMAX( 0, cost - ch->exp ) );
       send_to_char( buf, ch );
       return;
    }
@@ -6147,7 +6147,7 @@ void do_worth( CHAR_DATA * ch, char *argument )
          any = TRUE;
          cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
 
-         sprintf( buf, "%-14s  %9d %9d.\n\r", class_table[cnt].who_name, cost, UMAX( 0, cost - ch->exp ) );
+         xprintf( buf, "%-14s  %9d %9d.\n\r", class_table[cnt].who_name, cost, UMAX( 0, cost - ch->exp ) );
          send_to_char( buf, ch );
       }
 
@@ -6159,7 +6159,7 @@ void do_worth( CHAR_DATA * ch, char *argument )
       {
          any = TRUE;
          cost = exp_to_level( ch, cnt, 5 );  /* Pass 5 for remort */
-         sprintf( buf, "%-14s  %9d %9d.\n\r", remort_table[cnt].who_name, cost, UMAX( 0, cost - ch->exp ) );
+         xprintf( buf, "%-14s  %9d %9d.\n\r", remort_table[cnt].who_name, cost, UMAX( 0, cost - ch->exp ) );
          send_to_char( buf, ch );
       }
 
@@ -6203,18 +6203,18 @@ void do_whois( CHAR_DATA * ch, char *argument )
    /*
     * Ok, so now show the details! 
     */
-   sprintf( buf, "-=-=-=-=-=-=-=-=-=-=- %9s -=-=-=-=-=-=-=-=-=-=-\n\r", victim->name );
+   xprintf( buf, "-=-=-=-=-=-=-=-=-=-=- %9s -=-=-=-=-=-=-=-=-=-=-\n\r", victim->name );
    if( IS_IMMORTAL( victim ) )
    {
-      sprintf( buf + strlen( buf ), " [ %3s ]\n\r", victim->pcdata->who_name );
+      xprintf( buf + strlen( buf ), " [ %3s ]\n\r", victim->pcdata->who_name );
    }
    else if( victim->adept_level > 0 )
    {
-      sprintf( buf + strlen( buf ), " %s \n\r", get_adept_name( victim ) );
+      xprintf( buf + strlen( buf ), " %s \n\r", get_adept_name( victim ) );
    }
    else
    {
-      sprintf( buf + strlen( buf ), "Levels: [ Mag:%2d  Cle:%2d  Thi:%2d  War:%2d  Psi:%2d ]\n\r",
+      xprintf( buf + strlen( buf ), "Levels: [ Mag:%2d  Cle:%2d  Thi:%2d  War:%2d  Psi:%2d ]\n\r",
                victim->lvl[0] > 0 ? victim->lvl[0] : 0,
                victim->lvl[1] > 0 ? victim->lvl[1] : 0,
                victim->lvl[2] > 0 ? victim->lvl[2] : 0,
@@ -6222,39 +6222,39 @@ void do_whois( CHAR_DATA * ch, char *argument )
 
       if( is_remort( victim ) )
 
-         sprintf( buf + strlen( buf ), "Levels: [ Sor:%2d  Ass:%2d  Kni:%2d  Nec:%2d  Mon:%2d ]\n\r",
+         xprintf( buf + strlen( buf ), "Levels: [ Sor:%2d  Ass:%2d  Kni:%2d  Nec:%2d  Mon:%2d ]\n\r",
                   victim->lvl2[0] > 0 ? victim->lvl2[0] : 0,
                   victim->lvl2[1] > 0 ? victim->lvl2[1] : 0,
                   victim->lvl2[2] > 0 ? victim->lvl2[2] : 0,
                   victim->lvl2[3] > 0 ? victim->lvl2[3] : 0, victim->lvl2[4] > 0 ? victim->lvl2[4] : 0 );
    }
-   sprintf( buf + strlen( buf ), "Sex: %s.  Race: %s.  Clan: %s.\n\r",
+   xprintf( buf + strlen( buf ), "Sex: %s.  Race: %s.  Clan: %s.\n\r",
             ( victim->sex == SEX_MALE ) ? "Male" :
             ( victim->sex == SEX_FEMALE ) ? "Female" : "None",
             race_table[victim->race].race_name, clan_table[victim->pcdata->clan].clan_name );
 
    /*
     * if (victim->pcdata->pflags != 0)
-    * sprintf( buf+strlen(buf), "Player is %s\n\r",bit_table_lookup(tab_player_flags,victim->pcdata->pflags));
+    * xprintf( buf+strlen(buf), "Player is %s\n\r",bit_table_lookup(tab_player_flags,victim->pcdata->pflags));
     * taken out to not show vamps :P 
     */
    if( IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
-      sprintf( buf + strlen( buf ), "Player is @@ePKOK@@N\n\r" );
-   sprintf( buf + strlen( buf ), "Players Killed: %d.  Times killed by players: %d.\n\r",
+      xprintf( buf + strlen( buf ), "Player is @@ePKOK@@N\n\r" );
+   xprintf( buf + strlen( buf ), "Players Killed: %d.  Times killed by players: %d.\n\r",
             victim->pcdata->pkills, victim->pcdata->pkilled );
 
-   sprintf( buf + strlen( buf ), "Mobs killed: %d.  Times killed by mobs: %d.\n\r",
+   xprintf( buf + strlen( buf ), "Mobs killed: %d.  Times killed by mobs: %d.\n\r",
             victim->pcdata->mkills, victim->pcdata->mkilled );
 
    if( IS_IMMORTAL( victim ) )
    {
-      sprintf( buf + strlen( buf ), "%s is an Immortal.\r\n", victim->name );
+      xprintf( buf + strlen( buf ), "%s is an Immortal.\r\n", victim->name );
    }
    /*
     * Description here, or email address? 
     */
 
-   sprintf( buf + strlen( buf ), "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
+   xprintf( buf + strlen( buf ), "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
    send_to_char( buf, ch );
    return;
 }
@@ -6278,11 +6278,11 @@ void do_shelp( CHAR_DATA * ch, char *argument )
 
    if( ( sn = skill_lookup( argument ) ) < 0 )
    {
-      sprintf( buf, "No sHelp found for argument:%s\n\r", argument );
+      xprintf( buf, "No sHelp found for argument:%s\n\r", argument );
       send_to_char( buf, ch );
       return;
    }
-   sprintf( buf, "shelp_%s", skill_table[sn].name );
+   xprintf( buf, "shelp_%s", skill_table[sn].name );
 
    /*
     * Search help texts for 'shelp_<name>' as keyword.... 
@@ -6340,7 +6340,7 @@ void do_colist( CHAR_DATA * ch, char *argument )
 
    for( col = 0; col < MAX_ANSI; col++ )
    {
-      sprintf( buf, "%c - %s%-14s@@N    ",
+      xprintf( buf, "%c - %s%-14s@@N    ",
                ansi_table[col].letter,
                IS_SET( ch->config, CONFIG_COLOR ) ? ansi_table[col].value : "", ansi_table[col].name );
       send_to_char( buf, ch );

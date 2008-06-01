@@ -68,17 +68,17 @@ void do_email( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg1 );
    if( arg1[0] == '\0' )
    {
-      sprintf( outbuf, "%s", "Syntax for email:\n\r" );
-      sprintf( catbuf, "%s", "set <email address>\n\r" );
+      xprintf( outbuf, "%s", "Syntax for email:\n\r" );
+      xprintf( catbuf, "%s", "set <email address>\n\r" );
       safe_strcat( MSL, outbuf, catbuf );
       if( get_trust( ch ) == MAX_LEVEL )
       {
-         sprintf( catbuf, "%s", "validate <playername>\n\r" );
+         xprintf( catbuf, "%s", "validate <playername>\n\r" );
          safe_strcat( MSL, outbuf, catbuf );
       }
       if( ch->pcdata->valid_email )
       {
-         sprintf( catbuf, "Your email address is currently set to %s.\n\r", ch->pcdata->email_address );
+         xprintf( catbuf, "Your email address is currently set to %s.\n\r", ch->pcdata->email_address );
          safe_strcat( MSL, outbuf, catbuf );
       }
       else
@@ -87,7 +87,7 @@ void do_email( CHAR_DATA * ch, char *argument )
             safe_strcat( MSL, outbuf, "Your email address has not been set.\n\r" );
          else
          {
-            sprintf( catbuf, "Your email address has been set to %s, but has not been authorized by an Implementor.\n\r",
+            xprintf( catbuf, "Your email address has been set to %s, but has not been authorized by an Implementor.\n\r",
                      ch->pcdata->email_address );
             safe_strcat( MSL, outbuf, catbuf );
          }
@@ -111,7 +111,7 @@ void do_email( CHAR_DATA * ch, char *argument )
          ch->pcdata->email_address = str_dup( arg2 );
          ch->pcdata->valid_email = FALSE;
          do_save( ch, "" );
-         sprintf( outbuf,
+         xprintf( outbuf,
                   "Your email address has been set to %s. The Implementors have been notified, please be patient.\n\r",
                   ch->pcdata->email_address );
          send_to_char( outbuf, ch );
@@ -133,7 +133,7 @@ void do_email( CHAR_DATA * ch, char *argument )
                PUT_FREE( brand, brand_data_free );
                PUT_FREE( brand_member, dl_list_free );
             }
-            sprintf( brandbuf,
+            xprintf( brandbuf,
                      "Email address validation request for %s, address %s\n\rPlease type email validate %s to authorize.\n\r",
                      ch->name, ch->pcdata->email_address, ch->name );
             GET_FREE( brand, brand_data_free );
@@ -156,7 +156,7 @@ void do_email( CHAR_DATA * ch, char *argument )
       }
       else
       {
-         sprintf( outbuf, "%s is not an acceptable email address.\n\r", arg2 );
+         xprintf( outbuf, "%s is not an acceptable email address.\n\r", arg2 );
          send_to_char( outbuf, ch );
          return;
       }
@@ -191,7 +191,7 @@ void do_email( CHAR_DATA * ch, char *argument )
             if( !found )
             {
                char buf[MSL];
-               sprintf( buf, "No pFile found for '%s'.\n\r", capitalize( arg2 ) );
+               xprintf( buf, "No pFile found for '%s'.\n\r", capitalize( arg2 ) );
                send_to_char( buf, ch );
                free_char( d.character );
                return;
@@ -253,22 +253,22 @@ void send_email( const char *m_address, const char *m_subject, const char *mfile
    char dbbuf[MSL];
    int forkval;
 
-   sprintf( mailbuf, "mail -s \"%s\" %s <%s%s", m_subject, m_address, MAIL_DIR, capitalize( mfilename ) );
+   xprintf( mailbuf, "mail -s \"%s\" %s <%s%s", m_subject, m_address, MAIL_DIR, capitalize( mfilename ) );
    signal( SIGCHLD, SIG_IGN );
    if( ( forkval = fork(  ) ) > 0 )
    {
-      sprintf( dbbuf, "Just sent email: %s", mailbuf );
+      xprintf( dbbuf, "Just sent email: %s", mailbuf );
       monitor_chan( dbbuf, MONITOR_SYSTEM );
       return;
    }
    else if( forkval < 0 )
    {
-      sprintf( dbbuf, "Error in fork for sent email: %s", mailbuf );
+      xprintf( dbbuf, "Error in fork for sent email: %s", mailbuf );
       monitor_chan( dbbuf, MONITOR_SYSTEM );
 
       return;
    }
-   sprintf( mailfpbuf, "%s%s", MAIL_DIR, mfilename );
+   xprintf( mailfpbuf, "%s%s", MAIL_DIR, mfilename );
    if( ( mailfp = fopen( mailfpbuf, "r" ) ) == NULL )
    {
       fpReserve = fopen( NULL_FILE, "r" );
@@ -277,7 +277,7 @@ void send_email( const char *m_address, const char *m_subject, const char *mfile
 
    fclose( mailfp );
    system( mailbuf );
-   sprintf( delbuf, "rm %s%s", MAIL_DIR, mfilename );
+   xprintf( delbuf, "rm %s%s", MAIL_DIR, mfilename );
    system( delbuf );
    kill( getpid(  ), SIGKILL );
    return;
@@ -288,7 +288,7 @@ bool save_mail_file( const char *mfilename, char *mtext )
    FILE *mailfp;
    char mailfpfilename[MSL];
    fclose( fpReserve );
-   sprintf( mailfpfilename, "%s%s", MAIL_DIR, mfilename );
+   xprintf( mailfpfilename, "%s%s", MAIL_DIR, mfilename );
    if( ( mailfp = fopen( mailfpfilename, "w" ) ) == NULL )
    {
       fpReserve = fopen( NULL_FILE, "r" );
@@ -313,12 +313,12 @@ void send_rep_out( CHAR_DATA * ch, char *outbuf, bool mailme, char *msub )
       if( ( !IS_NPC( ch ) ) && ( str_cmp( ch->pcdata->email_address, "not set" ) ) )
       {
          char mailfilename[MSL];
-         sprintf( mailfilename, "%s.mail", ch->name );
+         xprintf( mailfilename, "%s.mail", ch->name );
          saved_mail = save_mail_file( mailfilename, outbuf );
          if( saved_mail )
          {
             char outbuf2[MSL];
-            sprintf( outbuf2, "Email sent to %s\n\r", ch->pcdata->email_address );
+            xprintf( outbuf2, "Email sent to %s\n\r", ch->pcdata->email_address );
             send_to_char( outbuf2, ch );
             send_email( ch->pcdata->email_address, msub, mailfilename );
          }

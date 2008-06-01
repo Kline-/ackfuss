@@ -214,8 +214,9 @@ int main( int argc, char **argv )
 #ifndef WIN32
    init_alarm_handler(  );
 #endif
-   sprintf( log_buf, "ACK! MUD is ready on port %d.", port );
+   xprintf_2( log_buf, "ACK!MUD is ready on port %d.", port );
    log_string( log_buf );
+   log_string("Last compiled on " __DATE__ " at " __TIME__ ".");
 #ifdef IMC
    imc_startup( FALSE, imcsocket, fCopyOver );
 #endif
@@ -648,10 +649,10 @@ void new_descriptor( int control )
       int addr;
 
       addr = ntohl( sock.sin_addr.s_addr );
-      sprintf( buf, "%d.%d.%d.%d", ( addr >> 24 ) & 0xFF, ( addr >> 16 ) & 0xFF, ( addr >> 8 ) & 0xFF, ( addr ) & 0xFF );
-      sprintf( log_buf, "Sock.sinaddr:  %s (%d)", buf, ntohs( sock.sin_port ) );
+      xprintf( buf, "%d.%d.%d.%d", ( addr >> 24 ) & 0xFF, ( addr >> 16 ) & 0xFF, ( addr >> 8 ) & 0xFF, ( addr ) & 0xFF );
+      xprintf_2( log_buf, "Sock.sinaddr:  %s (%d)", buf, ntohs( sock.sin_port ) );
       log_string( log_buf );
-      sprintf( log_buf, "Connection formed from %s.", buf );
+      xprintf_2( log_buf, "Connection formed from %s.", buf );
       monitor_chan( log_buf, MONITOR_CONNECT );
 
       dnew->remote_port = ntohs( sock.sin_port );
@@ -684,7 +685,7 @@ void new_descriptor( int control )
     * if ( !str_prefix( pban->name, dnew->host ) && !( pban->newbie ) )
     * {
     * char buf[MAX_STRING_LENGTH];
-    * sprintf( buf, "Denying access to banned site %s", dnew->host );
+    * xprintf( buf, "Denying access to banned site %s", dnew->host );
     * monitor_chan( buf, MONITOR_CONNECT );
     * write_to_descriptor( desc,
     * "Your site has been banned from this Mud.  BYE BYE!\n\r", 0 );
@@ -714,7 +715,7 @@ void new_descriptor( int control )
       HELP_DATA *pHelp;
       extern HELP_DATA *first_help;
 
-      sprintf( buf, "greeting%d", 0 /* number_range( 0, 4 ) */  );
+      xprintf( buf, "greeting%d", 0 /* number_range( 0, 4 ) */  );
 
       for( pHelp = first_help; pHelp != NULL; pHelp = pHelp->next )
          if( !str_cmp( pHelp->keyword, buf ) )
@@ -785,7 +786,7 @@ void close_socket( DESCRIPTOR_DATA * dclose )
 
    if( ( ch = dclose->character ) != NULL )
    {
-      sprintf( log_buf, "Closing link to %s.", ch->name );
+      xprintf_2( log_buf, "Closing link to %s.", ch->name );
       log_string( log_buf );
       monitor_chan( log_buf, MONITOR_CONNECT );
       if( dclose->connected == CON_PLAYING )
@@ -834,9 +835,9 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d )
    iStart = strlen( d->inbuf );
    if( iStart >= sizeof( d->inbuf ) - 10 )
    {
-      sprintf( log_buf, "%s input overflow!", d->host );
+      xprintf_2( log_buf, "%s input overflow!", d->host );
       log_string( log_buf );
-      sprintf( log_buf, "input overflow by %s (%s)", ( d->character == NULL ) ? "[login]" : d->character->name, d->host );
+      xprintf_2( log_buf, "input overflow by %s (%s)", ( d->character == NULL ) ? "[login]" : d->character->name, d->host );
       monitor_chan( log_buf, MONITOR_CONNECT );
       write_to_descriptor( d->descriptor, "\n\r SPAMMING IS RUDE, BYE BYE! \n\r", 0 );
       return FALSE;
@@ -945,7 +946,7 @@ void read_from_buffer( DESCRIPTOR_DATA * d )
          {
             if( d->connected == CON_PLAYING )
             {
-               sprintf( log_buf, "%s input spamming!", d->character->name );
+               xprintf_2( log_buf, "%s input spamming!", d->character->name );
                log_string( log_buf );
                monitor_chan( log_buf, MONITOR_CONNECT );
             }
@@ -1021,7 +1022,7 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
 
       snoop_ch = d->original != NULL ? d->original : d->character;
       if( snoop_ch != NULL )
-         sprintf( foo, "[SNOOP:%s] ", snoop_ch->name );
+         xprintf( foo, "[SNOOP:%s] ", snoop_ch->name );
       write_to_buffer( d->snoop_by, foo, 0 );
       write_to_buffer( d->snoop_by, d->outbuf, d->outtop );
    }
@@ -1080,50 +1081,50 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
 
       if( ch->act_build == ACT_BUILD_NOWT )
       {
-         sprintf( msg, "Mode:  None" );
-         sprintf( msg2, "Use Redit, Medit or Oedit to select mode." );
+         xprintf( msg, "Mode:  None" );
+         xprintf( msg2, "Use Redit, Medit or Oedit to select mode." );
       }
 
       if( ch->act_build == ACT_BUILD_REDIT )
       {
-         sprintf( msg, "Mode: Redit" );
+         xprintf( msg, "Mode: Redit" );
          if( ch->build_vnum == -1 )
-            sprintf( msg2, "No vnum is set." );
+            xprintf( msg2, "No vnum is set." );
          else
          {
             room = get_room_index( ch->build_vnum );
             if( room != NULL )
-               sprintf( msg2, "[%5d]: %s", ch->build_vnum, room->name );
+               xprintf( msg2, "[%5d]: %s", ch->build_vnum, room->name );
          }
       }
 
       if( ch->act_build == ACT_BUILD_OEDIT )
       {
-         sprintf( msg, "Mode: Oedit" );
+         xprintf( msg, "Mode: Oedit" );
          if( ch->build_vnum == -1 )
-            sprintf( msg2, "No vnum set." );
+            xprintf( msg2, "No vnum set." );
          else
          {
             obj = get_obj_index( ch->build_vnum );
             if( obj != NULL )
-               sprintf( msg2, "[%5d]: %s", ch->build_vnum, obj->short_descr );
+               xprintf( msg2, "[%5d]: %s", ch->build_vnum, obj->short_descr );
          }
       }
 
 
       if( ch->act_build == ACT_BUILD_MEDIT )
       {
-         sprintf( msg, "Mode: Medit" );
+         xprintf( msg, "Mode: Medit" );
          if( ch->build_vnum == -1 )
-            sprintf( msg2, "No vnum set." );
+            xprintf( msg2, "No vnum set." );
          else
          {
             mob = get_mob_index( ch->build_vnum );
             if( mob != NULL )
-               sprintf( msg2, "[%5d]: %s", ch->build_vnum, mob->short_descr );
+               xprintf( msg2, "[%5d]: %s", ch->build_vnum, mob->short_descr );
          }
       }
-      sprintf( msg3, "< %s %s >", msg, msg2 );
+      xprintf( msg3, "< %s %s >", msg, msg2 );
       write_to_buffer( d, msg3, 0 );
       return;
    }
@@ -1133,28 +1134,28 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
     */
    if( !IS_SET( ch->config, CONFIG_PROMPT ) )
    {
-      sprintf( buf2, "\r" );
+      xprintf( buf2, "\r" );
       if( ch->hit < ch->max_hit )
       {
          check = 1;
-         sprintf( buf, "<%dhp", ch->hit );
+         xprintf( buf, "<%dhp", ch->hit );
          strcat( buf2, buf );
       }
       if( ch->mana < ch->max_mana )
       {
          if( check == 1 )
-            sprintf( buf, " %dmn", ch->mana );
+            xprintf( buf, " %dmn", ch->mana );
          else
-            sprintf( buf, "<%dmn", ch->mana );
+            xprintf( buf, "<%dmn", ch->mana );
          check = 1;
          strcat( buf2, buf );
       }
       if( ch->move < ch->max_move )
       {
          if( check == 1 )
-            sprintf( buf, " %dmv", ch->move );
+            xprintf( buf, " %dmv", ch->move );
          else
-            sprintf( buf, "<%dmv", ch->move );
+            xprintf( buf, "<%dmv", ch->move );
          strcat( buf2, buf );
          check = 1;
       }
@@ -1173,7 +1174,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
 
    point = buf;
    str = d->original != NULL ? d->original->prompt : d->character->prompt;
-   sprintf( buf2, "%s", "@@N" );
+   xprintf( buf2, "%s", "@@N" );
    i = buf2;
    while( ( *point = *i ) != '\0' )
       ++point, ++i;
@@ -1199,7 +1200,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             switch ( *str )
             {
                default:
-                  sprintf( buf2, "%s", "BadClass" );
+                  xprintf( buf2, "%s", "BadClass" );
                   i = buf2;
                   break;
                case 'm':
@@ -1219,7 +1220,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                   }
                   else
                   {
-                     sprintf( buf2, "%s", "BadClass" );
+                     xprintf( buf2, "%s", "BadClass" );
                      i = buf2;
                      break;
                   }
@@ -1269,7 +1270,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                   }
                   else
                   {
-                     sprintf( buf2, "%s", "BadClass" );
+                     xprintf( buf2, "%s", "BadClass" );
                      i = buf2;
                      break;
                   }
@@ -1297,125 +1298,125 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                cost = exp_to_level( ch, cl_index, 5 );
             else
                cost = exp_to_level( ch, cl_index, ch->pcdata->order[cl_index] );
-            sprintf( buf2, "%d", UMAX( 0, cost - ch->exp ) );
+            xprintf( buf2, "%d", UMAX( 0, cost - ch->exp ) );
             i = buf2;
             break;
          }
          case '!':
-            sprintf( buf2, "%d", GET_HITROLL( ch ) );
+            xprintf( buf2, "%d", GET_HITROLL( ch ) );
             i = buf2;
             break;
          case '+':
-            sprintf( buf2, "%d", GET_DAMROLL( ch ) );
+            xprintf( buf2, "%d", GET_DAMROLL( ch ) );
             i = buf2;
             break;
          case '*':
-            sprintf( buf2, "%d", GET_AC( ch ) );
+            xprintf( buf2, "%d", GET_AC( ch ) );
             i = buf2;
             break;
          case 'h':
-            sprintf( buf2, "%d", ch->hit );
+            xprintf( buf2, "%d", ch->hit );
             i = buf2;
             break;
          case 'H':
-            sprintf( buf2, "%d", ch->max_hit );
+            xprintf( buf2, "%d", ch->max_hit );
             i = buf2;
             break;
          case 'I':
-            sprintf( buf2, ".0%f%%", (float)((ch->hit / ch->max_hit) * 100) );
+            xprintf( buf2, ".0%f%%", (float)((ch->hit / ch->max_hit) * 100) );
             i = buf2;
             break;
          case 'm':
-            sprintf( buf2, "%d", ch->mana );
+            xprintf( buf2, "%d", ch->mana );
             i = buf2;
             break;
          case 'M':
-            sprintf( buf2, "%d", ch->max_mana );
+            xprintf( buf2, "%d", ch->max_mana );
             i = buf2;
             break;
          case 'J':
-            sprintf( buf2, "%.0f%%", (float)((ch->mana / ch->max_mana) * 100) );
+            xprintf( buf2, "%.0f%%", (float)((ch->mana / ch->max_mana) * 100) );
             i = buf2;
             break;
          case 'v':
-            sprintf( buf2, "%d", ch->move );
+            xprintf( buf2, "%d", ch->move );
             i = buf2;
             break;
          case 'V':
-            sprintf( buf2, "%d", ch->max_move );
+            xprintf( buf2, "%d", ch->max_move );
             i = buf2;
             break;
          case 'K':
-            sprintf( buf2, "%.0f%%", (float)((ch->move / ch->max_move) * 100) );
+            xprintf( buf2, "%.0f%%", (float)((ch->move / ch->max_move) * 100) );
             i = buf2;
             break;
          case 'x':
-            sprintf( buf2, "%d", ch->exp );
+            xprintf( buf2, "%d", ch->exp );
             i = buf2;
             break;
          case 'g':
-            sprintf( buf2, "%d", ch->gold );
+            xprintf( buf2, "%d", ch->gold );
             i = buf2;
             break;
          case 'a':
             if( ch->level < 5 )
-               sprintf( buf2, "%d", ch->alignment );
+               xprintf( buf2, "%d", ch->alignment );
             else
-               sprintf( buf2, "%s", IS_GOOD( ch ) ? "good" : IS_EVIL( ch ) ? "evil" : "neutral" );
+               xprintf( buf2, "%s", IS_GOOD( ch ) ? "good" : IS_EVIL( ch ) ? "evil" : "neutral" );
             i = buf2;
             break;
          case 'r':
             if( ch->in_room != NULL )
-               sprintf( buf2, "%s", ch->in_room->name );
+               xprintf( buf2, "%s", ch->in_room->name );
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
          case 'R':
             if( IS_IMMORTAL( ch ) && ch->in_room != NULL )
-               sprintf( buf2, "%d", ch->in_room->vnum );
+               xprintf( buf2, "%d", ch->in_room->vnum );
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
          case 's':
             if( !IS_NPC( ch ) )
-               sprintf( buf2, "%s", stance_app[ch->stance].name );
+               xprintf( buf2, "%s", stance_app[ch->stance].name );
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
 
          case 'z':
             if( IS_IMMORTAL( ch ) && ch->in_room != NULL )
-               sprintf( buf2, "%s", ch->in_room->area->name );
+               xprintf( buf2, "%s", ch->in_room->area->name );
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
          case '%':
-            sprintf( buf2, "%%" );
+            xprintf( buf2, "%%" );
             i = buf2;
             break;
          case 'b':
             if( !IS_NPC( ch ) && IS_VAMP( ch ) )
-               sprintf( buf2, "@@e%d@@N", ch->pcdata->bloodlust );
+               xprintf( buf2, "@@e%d@@N", ch->pcdata->bloodlust );
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
          case 'B':
             if( !IS_NPC( ch ) && IS_VAMP( ch ) )
-               sprintf( buf2, "@@e%d@@N", ch->pcdata->bloodlust_max );
+               xprintf( buf2, "@@e%d@@N", ch->pcdata->bloodlust_max );
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
          case 'c':
             if( !IS_NPC( ch ) )
-               sprintf( buf2, "\n\r" );
+               xprintf( buf2, "\n\r" );
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
 
@@ -1423,18 +1424,18 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             if( IS_NPC( ch ) )
                break;
             if( IS_IMMORTAL( ch ) )
-               sprintf( buf2, "INVIS: %d", IS_SET( ch->act, PLR_WIZINVIS ) ? ch->invis : 0 );
+               xprintf( buf2, "INVIS: %d", IS_SET( ch->act, PLR_WIZINVIS ) ? ch->invis : 0 );
             else
             {
                if( ( IS_AFFECTED( ch, AFF_INVISIBLE ) )
                    || ( IS_AFFECTED( ch, AFF_HIDE ) )
                    || ( item_has_apply( ch, ITEM_APPLY_INV ) ) || ( item_has_apply( ch, ITEM_APPLY_HIDE ) ) )
                {
-                  sprintf( buf2, "%s", "INVIS" );
+                  xprintf( buf2, "%s", "INVIS" );
                }
                else
                {
-                  sprintf( buf2, "%s", "VIS" );
+                  xprintf( buf2, "%s", "VIS" );
                }
             }
             i = buf2;
@@ -1442,25 +1443,25 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
 
          case 't':
             if( !IS_NPC( ch ) )
-               sprintf( buf2, "%d %s", ( time_info.hour % 12 == 0 ) ? 12 : time_info.hour % 12,
+               xprintf( buf2, "%d %s", ( time_info.hour % 12 == 0 ) ? 12 : time_info.hour % 12,
                         time_info.hour >= 12 ? "pm" : "am" );
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
          case 'F':
             if( !IS_NPC( ch ) && IS_WOLF( ch ) )
             {
                if( IS_RAGED( ch ) )
-                  sprintf( buf2, "%s", "GAROU" );
+                  xprintf( buf2, "%s", "GAROU" );
                else if( IS_SHIFTED( ch ) )
-                  sprintf( buf2, "%s", "LUPIS" );
+                  xprintf( buf2, "%s", "LUPIS" );
                else
-                  sprintf( buf2, "%s", "HUMANUS" );
+                  xprintf( buf2, "%s", "HUMANUS" );
             }
 
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
 
@@ -1468,14 +1469,14 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             if( !IS_NPC( ch ) )
             {
                if( weather_info.moon_loc == MOON_DOWN )
-                  sprintf( buf2, "%s", "DOWN" );
+                  xprintf( buf2, "%s", "DOWN" );
                else if( weather_info.moon_loc == MOON_PEAK )
-                  sprintf( buf2, "PEAK:%s", get_moon_phase_name(  ) );
+                  xprintf( buf2, "PEAK:%s", get_moon_phase_name(  ) );
                else
-                  sprintf( buf2, "LOW:%s", get_moon_phase_name(  ) );
+                  xprintf( buf2, "LOW:%s", get_moon_phase_name(  ) );
             }
             else
-               sprintf( buf2, " " );
+               xprintf( buf2, " " );
             i = buf2;
             break;
 
@@ -1520,25 +1521,25 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             percent = -1;
 
          if( percent >= 95 )
-            sprintf( wound, "@@rExcellent@@N" );
+            xprintf( wound, "@@rExcellent@@N" );
          else if( percent >= 85 )
-            sprintf( wound, "@@GScratches@@N" );
+            xprintf( wound, "@@GScratches@@N" );
          else if( percent >= 70 )
-            sprintf( wound, "@@ySmall wounds@@N" );
+            xprintf( wound, "@@ySmall wounds@@N" );
          else if( percent >= 55 )
-            sprintf( wound, "@@bLarger wounds@@N" );
+            xprintf( wound, "@@bLarger wounds@@N" );
          else if( percent >= 45 )
-            sprintf( wound, "@@mBleeding freely@@N" );
+            xprintf( wound, "@@mBleeding freely@@N" );
          else if( percent >= 30 )
-            sprintf( wound, "@@RLeaking guts@@N" );
+            xprintf( wound, "@@RLeaking guts@@N" );
          else if( percent >= 15 )
-            sprintf( wound, "@@eA MESS!@@N" );
+            xprintf( wound, "@@eA MESS!@@N" );
          else
-            sprintf( wound, "@@2@@W@@fALMOST DEAD!!!@@N" );
+            xprintf( wound, "@@2@@W@@fALMOST DEAD!!!@@N" );
          if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
-            sprintf( buf, "@@W%s %s @@N ", tank == ch ? "YOU" : "Tank", wound );
+            xprintf( buf, "@@W%s %s @@N ", tank == ch ? "YOU" : "Tank", wound );
          else
-            sprintf( buf, "@@a[@@W%s@@a:%s@@a]@@N ", tank == ch ? "YOU" : "Tank", wound );
+            xprintf( buf, "@@a[@@W%s@@a:%s@@a]@@N ", tank == ch ? "YOU" : "Tank", wound );
          write_to_buffer( d, buf, 0 );
       }
    }
@@ -1563,25 +1564,25 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          percent = -1;
 
       if( percent >= 95 )
-         sprintf( wound, "@@rExcellent@@N" );
+         xprintf( wound, "@@rExcellent@@N" );
       else if( percent >= 85 )
-         sprintf( wound, "@@GScratches@@N" );
+         xprintf( wound, "@@GScratches@@N" );
       else if( percent >= 70 )
-         sprintf( wound, "@@ySmall wounds@@N" );
+         xprintf( wound, "@@ySmall wounds@@N" );
       else if( percent >= 55 )
-         sprintf( wound, "@@bLarger wounds@@N" );
+         xprintf( wound, "@@bLarger wounds@@N" );
       else if( percent >= 45 )
-         sprintf( wound, "@@mBleeding freely@@N" );
+         xprintf( wound, "@@mBleeding freely@@N" );
       else if( percent >= 30 )
-         sprintf( wound, "@@RLeaking guts@@N" );
+         xprintf( wound, "@@RLeaking guts@@N" );
       else if( percent >= 15 )
-         sprintf( wound, "@@eA MESS!@@N" );
+         xprintf( wound, "@@eA MESS!@@N" );
       else
-         sprintf( wound, "@@2@@WALMOST DEAD!!!@@N" );
+         xprintf( wound, "@@2@@WALMOST DEAD!!!@@N" );
       if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
-         sprintf( buf, "@@WVictim %s @@N\n\r", wound );
+         xprintf( buf, "@@WVictim %s @@N\n\r", wound );
       else
-         sprintf( buf, "@@a[@@WVictim@@a:%s@@a]@@N\n\r", wound );
+         xprintf( buf, "@@a[@@WVictim@@a:%s@@a]@@N\n\r", wound );
 
       /*
        * buf[0] = UPPER(buf[0]); 
@@ -1803,7 +1804,7 @@ void show_stotal_to( DESCRIPTOR_DATA * d )
  CHAR_DATA *ch = d->character;
  char buf[MSL];
  
- sprintf( buf, "Str: [%d/%d]  Int: [%d/%d]  Wis: [%d/%d]  Dex: [%d/%d]  Con: [%d/%d]  Total: [%d/%d]",
+ xprintf( buf, "Str: [%d/%d]  Int: [%d/%d]  Wis: [%d/%d]  Dex: [%d/%d]  Con: [%d/%d]  Total: [%d/%d]",
   ch->pcdata->max_str, race_table[ch->race].race_str, ch->pcdata->max_int, race_table[ch->race].race_int, ch->pcdata->max_wis,
   race_table[ch->race].race_wis, ch->pcdata->max_dex, race_table[ch->race].race_dex, ch->pcdata->max_con, race_table[ch->race].race_con,
  (ch->pcdata->max_str + ch->pcdata->max_int + ch->pcdata->max_wis + ch->pcdata->max_dex + ch->pcdata->max_con), MAX_TOT_STATS );
@@ -1819,24 +1820,24 @@ void show_menu_to( DESCRIPTOR_DATA * d )
    char buf[MAX_STRING_LENGTH];
    char menu[MAX_STRING_LENGTH];
 
-   sprintf( menu, "\n\rCharacter Creation Menu.\n\r\n\r" );
+   xprintf( menu, "\n\rCharacter Creation Menu.\n\r\n\r" );
    strcat( menu, "Options:\n\r" );
 
-   sprintf( buf, "        1. Set Gender.       Currently:%s\n\r",
+   xprintf( buf, "        1. Set Gender.       Currently:%s\n\r",
             !IS_SET( d->check, CHECK_SEX ) ? "Not Set." :
             ch->sex == SEX_NEUTRAL ? "Neutral." : ch->sex == SEX_MALE ? "Male." : "Female." );
    strcat( menu, buf );
 
-   sprintf( buf, "        2. Set Race.         Currently:%s\n\r",
+   xprintf( buf, "        2. Set Race.         Currently:%s\n\r",
             !IS_SET( d->check, CHECK_RACE ) ? "Not Set." : race_table[ch->race].race_title );
    strcat( menu, buf );
 
    strcat( menu, "        3. Roll Attributes.  Currently:" );
    if( IS_SET( d->check, CHECK_STATS ) )
-      sprintf( buf, "\n\r        Str: [%d]  Int: [%d]  Wis: [%d]\n\r        Dex: [%d]  Con: [%d]\n\r",
+      xprintf( buf, "\n\r        Str: [%d]  Int: [%d]  Wis: [%d]\n\r        Dex: [%d]  Con: [%d]\n\r",
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
    else
-      sprintf( buf, "Not Set.\n\r" );
+      xprintf( buf, "Not Set.\n\r" );
 
 
    strcat( menu, buf );
@@ -1845,7 +1846,7 @@ void show_menu_to( DESCRIPTOR_DATA * d )
    if( IS_SET( d->check, CHECK_CLASS ) )
    {
       int fubar;
-      sprintf( buf, "\n\r        " );
+      xprintf( buf, "\n\r        " );
       for( fubar = 0; fubar < MAX_CLASS; fubar++ )
       {
          strcat( menu, class_table[ch->pcdata->order[fubar]].who_name );
@@ -1869,7 +1870,7 @@ void show_smenu_to( DESCRIPTOR_DATA * d )
    char buf[MAX_STRING_LENGTH];
    char menu[MAX_STRING_LENGTH];
 
-   sprintf( menu, "\n\rCharacter Creation: Gender.\n\r\n\r" );
+   xprintf( menu, "\n\rCharacter Creation: Gender.\n\r\n\r" );
 
    strcat( menu, "Please Select:\n\r" );
    strcat( menu, "              M : Male.\n\r" );
@@ -1877,10 +1878,10 @@ void show_smenu_to( DESCRIPTOR_DATA * d )
    strcat( menu, "              N : Neutral.\n\r\n\r" );
 
    if( IS_SET( d->check, CHECK_SEX ) )
-      sprintf( buf, "Current Choice: %s\n\r",
+      xprintf( buf, "Current Choice: %s\n\r",
                ch->sex == SEX_NEUTRAL ? "Neutral." : ch->sex == SEX_MALE ? "Male." : "Female." );
    else
-      sprintf( buf, "No Current Selection.\n\r" );
+      xprintf( buf, "No Current Selection.\n\r" );
 
    strcat( menu, buf );
    strcat( menu, "\n\rPlease Select M/F/N: " );
@@ -1895,7 +1896,7 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
    char buf[MAX_STRING_LENGTH];
    int iRace;
 
-   sprintf( menu, "\n\rCharacter Creation: Race.\n\r\n\r" );
+   xprintf( menu, "\n\rCharacter Creation: Race.\n\r\n\r" );
    strcat( menu, "Notes: a) Race determines abilities in different classes.\n\r" );
    strcat( menu, "       b) Each Race will soon have seperate hometowns.\n\r" );
    strcat( menu, "       c) Race determines your attributes.\n\r\n\r" );
@@ -1906,11 +1907,11 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
    {
       if( race_table[iRace].player_allowed == FALSE )
          continue;
-      sprintf( buf, "%3s   %-10s     %s", race_table[iRace].race_name,
+      xprintf( buf, "%3s   %-10s     %s", race_table[iRace].race_name,
                race_table[iRace].race_title, race_table[iRace].comment );
       strcat( menu, buf );
 
-      sprintf( buf, "  %-2d  %-2d  %-2d  %-2d  %-2d\n\r",
+      xprintf( buf, "  %-2d  %-2d  %-2d  %-2d  %-2d\n\r",
                race_table[iRace].race_str,
                race_table[iRace].race_int,
                race_table[iRace].race_wis, race_table[iRace].race_dex, race_table[iRace].race_con );
@@ -1932,7 +1933,7 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
     */
    if( !IS_SET( d->check, CHECK_RACE ) )
    {
-      sprintf( menu, "\n\rYou must select a race first.\n\r" );
+      xprintf( menu, "\n\rYou must select a race first.\n\r" );
       write_to_buffer( d, menu, 0 );
       d->connected = CON_MENU;
       show_menu_to( d );
@@ -1945,7 +1946,7 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
    ch->pcdata->max_dex = number_range(3,(race_table[ch->race].race_dex-5));
    ch->pcdata->max_con = number_range(3,(race_table[ch->race].race_con-5));
 
-   sprintf( menu, "\n\rCharacter Creation: Attributes.\n\r\n\r" );
+   xprintf( menu, "\n\rCharacter Creation: Attributes.\n\r\n\r" );
    strcat( menu, "There is no way to increase your MAX attributes, so choose wisely!\n\r" );
    strcat( menu, "Current Attributes:\n\r" );
    write_to_buffer(d,menu,0);
@@ -1961,7 +1962,7 @@ void show_ahelp_menu_to( DESCRIPTOR_DATA * d )
 {
 
    char menu[MAX_STRING_LENGTH];
-   sprintf( menu, "%s", "" );
+   xprintf( menu, "%s", "" );
    strcat( menu, "Str affects items you can wear and weight you can carry, and your hitroll and damroll.\n\r" );
    strcat( menu, "Int affects your mana gain, how many Npcs you can control effectively, and spell success.\n\r" );
    strcat( menu, "Wis affects how many practices you get, your mana, and your saving against spells.\n\r" );
@@ -1979,7 +1980,7 @@ void show_cmenu_to( DESCRIPTOR_DATA * d )
    char buf[MAX_STRING_LENGTH];
    int iClass;
 
-   sprintf( menu, "Character Creation: Class Order.\n\r\n\r" );
+   xprintf( menu, "Character Creation: Class Order.\n\r\n\r" );
    strcat( menu, "This option allows you to select the order of your classes.\n\r" );
    strcat( menu, "Being a MultiClass Mud, this order is very important, as it\n\r" );
    strcat( menu, "will determine how easily you progress in each class, and\n\r" );
@@ -1993,7 +1994,7 @@ void show_cmenu_to( DESCRIPTOR_DATA * d )
 
    for( iClass = 0; iClass < MAX_CLASS; iClass++ )
    {
-      sprintf( buf, "%3s    %3s    %-10s\n\r", class_table[iClass].who_name, class_table[iClass].attr,
+      xprintf( buf, "%3s    %3s    %-10s\n\r", class_table[iClass].who_name, class_table[iClass].attr,
                class_table[iClass].class_name );
       strcat( menu, buf );
    }
@@ -2037,12 +2038,12 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       argument[0] = UPPER( argument[0] );
 
-      sprintf( buf, "%s provided as name from login from site %s.", argument, d->host );
+      xprintf( buf, "%s provided as name from login from site %s.", argument, d->host );
       monitor_chan( buf, MONITOR_CONNECT );
 
       if( !check_parse_name( argument ) )
       {
-         sprintf( buf, "Illegal name %s from site %s.", argument, d->host );
+         xprintf( buf, "Illegal name %s from site %s.", argument, d->host );
          monitor_chan( buf, MONITOR_CONNECT );
          write_to_buffer( d, "Illegal name, try another.\n\rName: ", 0 );
          return;
@@ -2055,7 +2056,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       if( IS_SET( ch->act, PLR_DENY ) )
       {
-         sprintf( log_buf, "Denying access to %s@%s.", argument, d->host );
+         xprintf_2( log_buf, "Denying access to %s@%s.", argument, d->host );
          log_string( log_buf );
          monitor_chan( log_buf, MONITOR_CONNECT );
          write_to_buffer( d, "You are denied access.\n\r", 0 );
@@ -2104,7 +2105,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             if( !str_prefix( pban->name, d->host ) && ( pban->newbie == FALSE ) )
             {
                char buf[MAX_STRING_LENGTH];
-               sprintf( buf, "Denying access to banned site %s", d->host );
+               xprintf( buf, "Denying access to banned site %s", d->host );
                monitor_chan( buf, MONITOR_CONNECT );
                write_to_descriptor( d->descriptor, "Your site has been banned from this Mud.  BYE BYE!\n\r", 0 );
                d->connected = CON_QUITTING;
@@ -2139,7 +2140,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
             {
                char buf[MAX_STRING_LENGTH];
-               sprintf( buf, "Denying access to banned site %s", d->host );
+               xprintf( buf, "Denying access to banned site %s", d->host );
                monitor_chan( buf, MONITOR_CONNECT );
                write_to_descriptor( d->descriptor, "Your site has been banned from this Mud.  BYE BYE!\n\r", 0 );
                d->connected = CON_QUITTING;
@@ -2149,7 +2150,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          }
 
 
-         sprintf( buf, "Did I get that right, %s (Y/N)? ", argument );
+         xprintf( buf, "Did I get that right, %s (Y/N)? ", argument );
          write_to_buffer( d, buf, 0 );
          d->connected = CON_CONFIRM_NEW_NAME;
          return;
@@ -2162,7 +2163,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       if( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
       {
          write_to_buffer( d, "Wrong password.\n\r", 0 );
-         sprintf( buf, "FAILED LOGIN for %s from site %s.", ch->name, d->host );
+         xprintf( buf, "FAILED LOGIN for %s from site %s.", ch->name, d->host );
          monitor_chan( buf, MONITOR_CONNECT );
          ch->pcdata->failures++;
          save_char_obj( ch );
@@ -2178,10 +2179,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       if( check_playing( d, ch->name ) )
          return;
 
-      sprintf( log_buf, "%s has connected.", ch->name );
+      xprintf_2( log_buf, "%s has connected.", ch->name );
       monitor_chan( log_buf, MONITOR_CONNECT );
 
-      sprintf( log_buf, "Site Name: %s.", d->host );
+      xprintf_2( log_buf, "Site Name: %s.", d->host );
       monitor_chan( log_buf, MONITOR_CONNECT );
 
       log_string( log_buf );
@@ -2198,7 +2199,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          char msgbuf[MSL];
          for( brands = first_brand, numbrands = 0; brands; brands = brands->next, numbrands++ );
          do_help( ch, "imotd" );
-         sprintf( msgbuf, "There are currently %d outstanding brands.\n\r%s",
+         xprintf( msgbuf, "There are currently %d outstanding brands.\n\r%s",
                   numbrands,
                   ( ( numbrands < 50 ) ?
                     "" :
@@ -2220,7 +2221,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       {
          case 'y':
          case 'Y':
-            sprintf( buf, "New character.\n\rGive me a password for %s: %s", ch->name, echo_off_str );
+            xprintf( buf, "New character.\n\rGive me a password for %s: %s", ch->name, echo_off_str );
             write_to_buffer( d, buf, 0 );
             d->connected = CON_GET_NEW_PASSWORD;
             return;
@@ -2327,7 +2328,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                show_menu_to( d );
                return;
             }
-            sprintf( log_buf, "%s@%s new player.", ch->name, d->host );
+            xprintf_2( log_buf, "%s@%s new player.", ch->name, d->host );
             log_string( log_buf );
             monitor_chan( log_buf, MONITOR_CONNECT );
             write_to_buffer( d, "\n\r", 2 );
@@ -2417,7 +2418,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             write_to_buffer(d,"Your Str is already at max.",0);
            else if( total >= MAX_TOT_STATS )
            {
-            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            xprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
             write_to_buffer(d,buf,0);
            }
            else
@@ -2432,7 +2433,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             write_to_buffer(d,"Your Int is already at max.",0);
            else if( total >= MAX_TOT_STATS )
            {
-            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            xprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
             write_to_buffer(d,buf,0);
            }
            else
@@ -2447,7 +2448,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             write_to_buffer(d,"Your Wis is already at max.",0);
            else if( total >= MAX_TOT_STATS )
            {
-            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            xprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
             write_to_buffer(d,buf,0);
            }
            else
@@ -2462,7 +2463,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             write_to_buffer(d,"Your Dex is already at max.",0);
            else if( total >= MAX_TOT_STATS )
            {
-            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            xprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
             write_to_buffer(d,buf,0);
            }
            else
@@ -2477,7 +2478,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             write_to_buffer(d,"Your Con is already at max.",0);
            else if( total >= MAX_TOT_STATS )
            {
-            sprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
+            xprintf(buf,"You already have %d total stat points allocated.",MAX_TOT_STATS);
             write_to_buffer(d,buf,0);
            }
            else
@@ -2660,7 +2661,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       if( IS_SET( ch->config, CONFIG_FULL_ANSI ) )
       {
          char scrollbuf[MSL];
-         sprintf( scrollbuf, "%s%s%s%i;%ir%s%%i;%iH",
+         xprintf( scrollbuf, "%s%s%s%i;%ir%s%%i;%iH",
                   CRS_RESET, CRS_CLS, CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13 );
          send_to_char( scrollbuf, ch );
       }
@@ -2714,7 +2715,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->pcdata->move_from_gain = ch->max_move;
 
          ch->pcdata->clan = 0;   /* no clan */
-         sprintf( buf, " needs a new title!" );
+         xprintf( buf, " needs a new title!" );
          set_title( ch, buf );
 
          {
@@ -2775,23 +2776,23 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
        */
       if( ch->pcdata->failures != 0 && ch->level != 1 )
       {
-         sprintf( msg, "WARNING:  There have been %d failed login attempts.\n\r", ch->pcdata->failures );
+         xprintf( msg, "WARNING:  There have been %d failed login attempts.\n\r", ch->pcdata->failures );
          send_to_char( msg, ch );
          ch->pcdata->failures = 0;
       }
 
       if( ch->level > 1 )
       {
-         sprintf( msg, "\n\rLast successful login from: %s\n\r\n\r", ch->pcdata->host );
+         xprintf( msg, "\n\rLast successful login from: %s\n\r\n\r", ch->pcdata->host );
          send_to_char( msg, ch );
          if( strcmp( d->host, ch->pcdata->host ) )
          {
-            sprintf( msg, "%s connected from %s ( last login was from %s ) !", ch->name, d->host, ch->pcdata->host );
+            xprintf( msg, "%s connected from %s ( last login was from %s ) !", ch->name, d->host, ch->pcdata->host );
             log_string( msg );
             monitor_chan( msg, MONITOR_CONNECT );
             if( ( ch->level > 80 ) )
             {
-               sprintf( msg, "WARNING!!! %s logged in with level %d.\n\r", ch->name, ch->level );
+               xprintf( msg, "WARNING!!! %s logged in with level %d.\n\r", ch->name, ch->level );
                log_string( msg );
             }
 
@@ -2814,7 +2815,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          send_to_char( "\n\rYou have one new letter waiting.\n\r", ch );
       else if( notes > 1 )
       {
-         sprintf( buf, "\n\rYou have %d new letters waiting.\n\r", notes );
+         xprintf( buf, "\n\rYou have %d new letters waiting.\n\r", notes );
          send_to_char( buf, ch );
       }
 
@@ -2822,7 +2823,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       act( "$n enters " mudnamecolor ".", ch, NULL, NULL, TO_ROOM );
 
-      sprintf( buf, "%s has entered the game.", ch->name );
+      xprintf( buf, "%s has entered the game.", ch->name );
       monitor_chan( buf, MONITOR_CONNECT );
 
       if( ( number_range( 0, 99 ) < ( ch->balance / 10000000 ) ) && ( ch->balance > ( get_psuedo_level( ch ) * 100000 ) ) )
@@ -3071,7 +3072,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
             ch->timer = 0;
             send_to_char( "Reconnecting.\n\r", ch );
             act( "$n reconnects.", ch, NULL, NULL, TO_ROOM );
-            sprintf( log_buf, "%s@%s reconnected.", ch->name, d->host );
+            xprintf_2( log_buf, "%s@%s reconnected.", ch->name, d->host );
             log_string( log_buf );
             monitor_chan( log_buf, MONITOR_CONNECT );
             d->connected = CON_PLAYING;
@@ -3108,7 +3109,7 @@ bool check_playing( DESCRIPTOR_DATA * d, char *name )
           && dold->connected != CON_GET_OLD_PASSWORD
           && !str_cmp( name, dold->original ? dold->original->name : dold->character->name ) )
       {
-         sprintf( buf, "Player from site %s tried to login as %s (already playing) !", d->host, name );
+         xprintf( buf, "Player from site %s tried to login as %s (already playing) !", d->host, name );
          monitor_chan( buf, MONITOR_CONNECT );
 /* Not sure if we want to do this..players can cheat and try to log back in as themselves to end a fight Zen
 	    dold->character->position = POS_STANDING;
@@ -3541,7 +3542,7 @@ void do_finger( CHAR_DATA * ch, char *argument )
 
    if( !found )
    {
-      sprintf( buf, "No pFile found for '%s'.\n\r", capitalize( name ) );
+      xprintf( buf, "No pFile found for '%s'.\n\r", capitalize( name ) );
       send_to_char( buf, ch );
       return;
    }
@@ -3550,13 +3551,13 @@ void do_finger( CHAR_DATA * ch, char *argument )
    d.character = NULL;
    victim->desc = NULL;
 
-   sprintf( buf, "Name: %s.\n\r", capitalize( victim->name ) );
+   xprintf( buf, "Name: %s.\n\r", capitalize( victim->name ) );
    send_to_char( buf, ch );
 
-   sprintf( buf, "Last Login was from: %s.\n\r", victim->pcdata->host );
+   xprintf( buf, "Last Login was from: %s.\n\r", victim->pcdata->host );
    send_to_char( buf, ch );
 
-   sprintf( buf, "pFile was last saved at: %s.", victim->pcdata->lastlogin );
+   xprintf( buf, "pFile was last saved at: %s.", victim->pcdata->lastlogin );
    send_to_char( buf, ch );
 
    free_char( victim );
@@ -3583,7 +3584,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
 {
    FILE *fp;
    DESCRIPTOR_DATA *d, *d_next;
-   char buf[100], buf2[100], buf3[100];
+   char buf[256], buf2[100], buf3[100];
 
    fp = fopen( COPYOVER_FILE, "w" );
 
@@ -3599,9 +3600,8 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
    if( auction_item != NULL )
       do_auction( ch, "stop" );
 
-   sprintf( buf,
-            "\n\r**** HOTreboot by An Immortal - Please remain ONLINE ****\n\r*********** We will be back in 30 seconds!! *************%s\n\n\r",
-            "" );
+   xprintf( buf,
+            "\n\r**** HOTreboot by An Immortal - Please remain ONLINE ****\n\r*********** We will be back in 30 seconds!! *************\n\n\r");
 
    /*
     * For each PLAYING descriptor( non-negative ), save its state 
@@ -3650,8 +3650,8 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
     * exec - descriptors are inherited 
     */
 
-   sprintf( buf, "%d", port );
-   sprintf( buf2, "%d", control );
+   xprintf( buf, "%d", port );
+   xprintf( buf2, "%d", control );
 #ifdef IMC
    if( this_imcmud )
       snprintf( buf3, 100, "%d", this_imcmud->desc );

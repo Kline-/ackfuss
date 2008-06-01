@@ -177,13 +177,13 @@ bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
       if( in_obj->carried_by != NULL )
       {
          found = TRUE;
-         sprintf( buf, "%s carried by %s.\n\r",
+         xprintf( buf, "%s carried by %s.\n\r",
                   ob->short_descr, can_see( ch, in_obj->carried_by ) ? PERS( in_obj->carried_by, ch ) : "someone" );
       }
       else
       {
          found = TRUE;
-         sprintf( buf, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+         xprintf( buf, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
       }
 
       buf[0] = UPPER( buf[0] );
@@ -521,7 +521,7 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    char_from_room( victim );
    char_to_room( victim, ch->in_room );
    act( "$n arrives suddenly.", victim, NULL, NULL, TO_ROOM );
-   sprintf( buf, "%s has summoned you!!", ch->name );
+   xprintf( buf, "%s has summoned you!!", ch->name );
    send_to_char( buf, victim );
    do_look( victim, "auto" );
    return TRUE;
@@ -578,8 +578,8 @@ bool spell_ventriloquate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
 
    target_name = one_argument( target_name, speaker );
 
-   sprintf( buf1, "%s says '%s'.\n\r", speaker, target_name );
-   sprintf( buf2, "Someone makes %s say '%s'.\n\r", speaker, target_name );
+   xprintf( buf1, "%s says '%s'.\n\r", speaker, target_name );
+   xprintf( buf2, "Someone makes %s say '%s'.\n\r", speaker, target_name );
    buf1[0] = UPPER( buf1[0] );
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
@@ -1696,13 +1696,13 @@ bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
       if( in_obj->carried_by != NULL )
       {
          found = TRUE;
-         sprintf( buf, "%s carried by %s.\n\r",
+         xprintf( buf, "%s carried by %s.\n\r",
                   ob->short_descr, can_see( ch, in_obj->carried_by ) ? PERS( in_obj->carried_by, ch ) : "someone" );
       }
       else
       {
          found = TRUE;
-         sprintf( buf, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+         xprintf( buf, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
       }
 
       buf[0] = UPPER( buf[0] );
@@ -1868,7 +1868,7 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    char buf[MAX_STRING_LENGTH];
    AFFECT_DATA *paf;
 
-   sprintf( buf,
+   xprintf( buf,
             "Object '%s' is type %s, extra flags %s.\n\rWeight is %d.\n\r",
             ob->name, item_type_name( ob ), extra_bit_name( ob->extra_flags ), ob->weight );
    send_to_char( buf, ch );
@@ -1877,7 +1877,7 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    {
       case ITEM_SCROLL:
       case ITEM_POTION:
-         sprintf( buf, "Level %d spells of:", ob->value[0] );
+         xprintf( buf, "Level %d spells of:", ob->value[0] );
          send_to_char( buf, ch );
 
          if( ob->value[1] >= 0 && ob->value[1] < MAX_SKILL )
@@ -1906,7 +1906,7 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 
       case ITEM_WAND:
       case ITEM_STAFF:
-         sprintf( buf, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
+         xprintf( buf, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
          send_to_char( buf, ch );
 
          if( ob->value[3] >= 0 && ob->value[3] < MAX_SKILL )
@@ -1920,12 +1920,12 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
          break;
 
       case ITEM_WEAPON:
-         sprintf( buf, " Average damage is %d.\n\r", ( ob->value[1] + ob->value[2] ) / 2 );
+         xprintf( buf, " Average damage is %d.\n\r", ( ob->value[1] + ob->value[2] ) / 2 );
          send_to_char( buf, ch );
          break;
 
       case ITEM_ARMOR:
-         sprintf( buf, "Armor class is %d.\n\r", ob->value[0] );
+         xprintf( buf, "Armor class is %d.\n\r", ob->value[0] );
          send_to_char( buf, ch );
          break;
    }
@@ -1934,7 +1934,7 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    {
       if( paf->location != APPLY_NONE && paf->modifier != 0 )
       {
-         sprintf( buf, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
+         xprintf( buf, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
          send_to_char( buf, ch );
       }
    }
@@ -2308,10 +2308,10 @@ bool spell_beacon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    }
 
    ob = create_object( get_obj_index( OBJ_VNUM_BEACON ), level );
-   sprintf( buf, "%s", arg );
+   xprintf( buf, "%s", arg );
    free_string( ob->name );
    ob->name = str_dup( arg );
-   sprintf( buf, "%s", ch->name );
+   xprintf( buf, "%s", ch->name );
    free_string( ob->owner );
    ob->owner = str_dup( buf );
    ob->timer = number_range( 30, 45 );

@@ -301,7 +301,7 @@ void violence_update( void )
                    && ( ch->mana > mana_cost( ch, skill_lookup( rev_table_lookup( tab_cast_name, ( 1 << index ) ) ) ) ) )
                {
                   char cast_name[MSL];
-                  sprintf( cast_name, "%s %s", rev_table_lookup( tab_cast_name, ( 1 << index ) ), ch->fighting->name );
+                  xprintf( cast_name, "%s %s", rev_table_lookup( tab_cast_name, ( 1 << index ) ), ch->fighting->name );
                   do_cast( ch, cast_name );
                   has_cast = TRUE;
                   break;
@@ -792,7 +792,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
    if( dam > 3000 )
    {
       char buf[MAX_STRING_LENGTH];
-      sprintf( buf, "Combat: %d damage by %s, attacking %s, dt %d", dam,
+      xprintf( buf, "Combat: %d damage by %s, attacking %s, dt %d", dam,
                IS_NPC( ch ) ? ch->short_descr : ch->name, victim->name, dt );
       if( ch->level < 82 ) /* stop imms generating warnings!! */
          monitor_chan( buf, MONITOR_COMBAT );
@@ -901,15 +901,15 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
       char buf1[MSL];
       char buf2[MSL];
       char buf3[MSL];
-      sprintf( buf1, "%s", victim->first_shield->absorb_message_room );
+      xprintf( buf1, "%s", victim->first_shield->absorb_message_room );
       if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
-         sprintf( buf2, "%s", "$K shield ouch" );
+         xprintf( buf2, "%s", "$K shield ouch" );
       else
-         sprintf( buf2, "%s", victim->first_shield->absorb_message_victim );
+         xprintf( buf2, "%s", victim->first_shield->absorb_message_victim );
       if( !IS_NPC( victim ) && IS_SET( victim->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
-         sprintf( buf3, "%s", "Your shield cool" );
+         xprintf( buf3, "%s", "Your shield cool" );
       else
-         sprintf( buf3, "%s", victim->first_shield->absorb_message_self );
+         xprintf( buf3, "%s", victim->first_shield->absorb_message_self );
       victim->first_shield->hits -= dam;
       dam = dam - dam * ( victim->first_shield->percent / 100 );
       if( victim->first_shield->harmfull == TRUE )
@@ -1019,7 +1019,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
 
                char_to_room( elemental, ch->in_room );
                obj_to_char( explosion, elemental );
-               sprintf( bufz, "%s", explosion->name );
+               xprintf( bufz, "%s", explosion->name );
                do_wear( elemental, bufz );
 
                if( number_range( 0, 99 ) < 40 )
@@ -1217,19 +1217,19 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
 	         && IS_SET(victim->pcdata->pflags,PFLAG_PKOK) )
 	    {
 
-	     sprintf(buf, "%s kills %s in mortal combat.", ch->name, victim->name);
+	     xprintf(buf, "%s kills %s in mortal combat.", ch->name, victim->name);
 	     info(buf, 1);
 	    }
 	    else
 	    {
-             sprintf( buf, "%s turns %s into a corpse.  Whooops.",
+             xprintf( buf, "%s turns %s into a corpse.  Whooops.",
                ( IS_NPC(ch) ? ch->short_descr : ch->name ),
                ( IS_NPC(victim) ? victim->short_descr : victim->name) );
              info( buf, 1 );	   
             }
 */
 
-         sprintf( log_buf, "%s killed by %s at %d",
+         xprintf_2( log_buf, "%s killed by %s at %d",
                   ( IS_NPC( victim ) ? victim->short_descr : victim->name ),
                   ( IS_NPC( ch ) ? ch->short_descr : ch->name ), victim->in_room->vnum );
          log_string( log_buf );
@@ -1255,7 +1255,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
       else
       {
          char name_buf[MAX_STRING_LENGTH];
-         sprintf( name_buf, "%s", ch->name );
+         xprintf( name_buf, "%s", ch->name );
          raw_kill( victim, name_buf );
       }
 
@@ -1465,7 +1465,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
 	{
 	    char buf[MAX_STRING_LENGTH];
 
-	    sprintf( buf, "Check_killer: %s bad AFF_CHARM",
+	    xprintf( buf, "Check_killer: %s bad AFF_CHARM",
 		IS_NPC(ch) ? ch->short_descr : ch->name );
 	    bug( buf, 0 );
 	    affect_strip( ch, gsn_charm_person );
@@ -1490,7 +1490,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
     * {
     * char buf[MAX_STRING_LENGTH];
     * 
-    * sprintf( buf, "Check_killer: %s bad AFF_CHARM",
+    * xprintf( buf, "Check_killer: %s bad AFF_CHARM",
     * IS_NPC(ch) ? victim->short_descr : victim->name );
     * bug( buf, 0 );
     * affect_strip( ch, gsn_charm_person );
@@ -1517,7 +1517,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
    {
       char buf[MAX_STRING_LENGTH];
 
-      sprintf( buf, "%s flagged as a KILLER for attack on %s.", ch->name, victim->name );
+      xprintf( buf, "%s flagged as a KILLER for attack on %s.", ch->name, victim->name );
       monitor_chan( buf, MONITOR_COMBAT );
    }
    diff = 3;
@@ -1790,7 +1790,7 @@ void update_pos( CHAR_DATA * victim )
       if( !IS_NPC( victim ) )
          gain_exp( victim, 0 - ( victim->exp / 4 ) );
 
-      sprintf( buf, "%s (vampire) has been misted!", victim->name );
+      xprintf( buf, "%s (vampire) has been misted!", victim->name );
       monitor_chan( buf, MONITOR_COMBAT );
 
       act( "$n turns to mist and floats away....", victim, NULL, NULL, TO_ROOM );
@@ -2172,7 +2172,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
       corpse = create_object( get_obj_index( OBJ_VNUM_CORPSE_PC ), 0 );
       corpse->timer = number_range( 20, 30 );
 
-      sprintf( buf, "%s", ch->name );
+      xprintf( buf, "%s", ch->name );
       free_string( corpse->owner );
       corpse->owner = str_dup( buf );
 
@@ -2220,11 +2220,11 @@ void make_corpse( CHAR_DATA * ch, char *argument )
       corpse->value[0] = 1;
       corpse->value[3] = number_range( 3, 6 );
    }
-   sprintf( buf, corpse->short_descr, name );
+   xprintf( buf, corpse->short_descr, name );
    free_string( corpse->short_descr );
    corpse->short_descr = str_dup( buf );
 
-   sprintf( buf, corpse->description, name );
+   xprintf( buf, corpse->description, name );
    free_string( corpse->description );
    corpse->description = str_dup( buf );
    OREF( obj_next, OBJ_NEXTCONTENT );
@@ -2340,7 +2340,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
       quest_target = NULL;
    if( victim == quest_mob )
    {
-      sprintf( buf, "Oh well, I guess the quest is over, since I am about to @@eDIE!!!!!@@N" );
+      xprintf( buf, "Oh well, I guess the quest is over, since I am about to @@eDIE!!!!!@@N" );
       do_crusade( victim, buf );
 
       quest_mob = NULL;
@@ -2396,7 +2396,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
       if( my_corpse == NULL )
       {
          char monbuf[MSL];
-         sprintf( monbuf, "%s is looking for their corpse in room %d, but it's not there",
+         xprintf( monbuf, "%s is looking for their corpse in room %d, but it's not there",
                   victim->name, victim->in_room->vnum );
          monitor_chan( monbuf, MONITOR_MOB );
       }
@@ -2540,7 +2540,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
          funky /= 1000;
 
 
-      sprintf( buf, "You Receive %d Experience Points.\n\r", funky );
+      xprintf( buf, "You Receive %d Experience Points.\n\r", funky );
       send_to_char( buf, gch );
       if( IS_NPC( gch ) && IS_SET( gch->act, ACT_INTELLIGENT ) )
          gch->intell_exp += funky;
@@ -2807,15 +2807,15 @@ void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
       }
       if( sysdata.shownumbers == TRUE )
       {
-         sprintf( buf1, "%s$n %s%s $N%c@@g @@l(@@d%d@@l)@@N", col, col, vp, punct, dam );
-         sprintf( buf2, "%sYou %s%s $N%c@@g @@l(@@d%d@@l)@@N", col, col, vs, punct, dam );
-         sprintf( buf3, "%s$n %s%s you%c@@g @@l(@@d%d@@l)@@N", col, col, vp, punct, dam );
+         xprintf( buf1, "%s$n %s%s $N%c@@g @@l(@@d%d@@l)@@N", col, col, vp, punct, dam );
+         xprintf( buf2, "%sYou %s%s $N%c@@g @@l(@@d%d@@l)@@N", col, col, vs, punct, dam );
+         xprintf( buf3, "%s$n %s%s you%c@@g @@l(@@d%d@@l)@@N", col, col, vp, punct, dam );
       }
       else
       {
-         sprintf( buf1, "%s$n %s%s $N%c@@g", col, col, vp, punct );
-         sprintf( buf2, "%sYou %s%s $N%c@@g", col, col, vs, punct );
-         sprintf( buf3, "%s$n %s%s you%c@@g", col, col, vp, punct );
+         xprintf( buf1, "%s$n %s%s $N%c@@g", col, col, vp, punct );
+         xprintf( buf2, "%sYou %s%s $N%c@@g", col, col, vs, punct );
+         xprintf( buf3, "%s$n %s%s you%c@@g", col, col, vp, punct );
       }
 
    }
@@ -2840,19 +2840,19 @@ void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
       {
          if( dt != TYPE_MARTIAL )
          {
-            sprintf( buf1, "%s$n %s%s $N%s%s $s %s%c@@g @@l(@@d%d@@l)@@N", col, col, vp, col, str, attack, punct, dam );
-            sprintf( buf2, "%sYou %s%s $N%s%s your %s%c@@g @@l(@@d%d@@l)@@N", col, col, vs, col, str, attack, punct, dam );
+            xprintf( buf1, "%s$n %s%s $N%s%s $s %s%c@@g @@l(@@d%d@@l)@@N", col, col, vp, col, str, attack, punct, dam );
+            xprintf( buf2, "%sYou %s%s $N%s%s your %s%c@@g @@l(@@d%d@@l)@@N", col, col, vs, col, str, attack, punct, dam );
             if( *str == '\'' )
-               sprintf( buf3, "%s$n %s%s your%s%s $s %s%c@@g @@l(@@d%d@@l)@@N", col, col, vp, col, str + 2, attack, punct,
+               xprintf( buf3, "%s$n %s%s your%s%s $s %s%c@@g @@l(@@d%d@@l)@@N", col, col, vp, col, str + 2, attack, punct,
                         dam );
             else
-               sprintf( buf3, "%s$n %s%s you%s%s $s %s%c@@g @@l(@@d%d@@l)@@N", col, col, vp, col, str, attack, punct, dam );
+               xprintf( buf3, "%s$n %s%s you%s%s $s %s%c@@g @@l(@@d%d@@l)@@N", col, col, vp, col, str, attack, punct, dam );
          }
          else
          {
-            sprintf( buf1, "$n pulls a karate move on $N!" );
-            sprintf( buf2, "You pull a karate move on $N!" );
-            sprintf( buf3, "$n pulls a karate move on you!" );
+            xprintf( buf1, "$n pulls a karate move on $N!" );
+            xprintf( buf2, "You pull a karate move on $N!" );
+            xprintf( buf3, "$n pulls a karate move on you!" );
          }
       }
       else
@@ -2860,18 +2860,18 @@ void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
 
          if( dt != TYPE_MARTIAL )
          {
-            sprintf( buf1, "%s$n %s%s $N%s%s $s %s%c@@g", col, col, vp, col, str, attack, punct );
-            sprintf( buf2, "%sYou %s%s $N%s%s your %s%c@@g", col, col, vs, col, str, attack, punct );
+            xprintf( buf1, "%s$n %s%s $N%s%s $s %s%c@@g", col, col, vp, col, str, attack, punct );
+            xprintf( buf2, "%sYou %s%s $N%s%s your %s%c@@g", col, col, vs, col, str, attack, punct );
             if( *str == '\'' )
-               sprintf( buf3, "%s$n %s%s your%s%s $s %s%c@@g", col, col, vp, col, str + 2, attack, punct );
+               xprintf( buf3, "%s$n %s%s your%s%s $s %s%c@@g", col, col, vp, col, str + 2, attack, punct );
             else
-               sprintf( buf3, "%s$n %s%s you%s%s $s %s%c@@g", col, col, vp, col, str, attack, punct );
+               xprintf( buf3, "%s$n %s%s you%s%s $s %s%c@@g", col, col, vp, col, str, attack, punct );
          }
          else
          {
-            sprintf( buf1, "$n pulls a karate move on $N!" );
-            sprintf( buf2, "You pull a karate move on $N!" );
-            sprintf( buf3, "$n pulls a karate move on you!" );
+            xprintf( buf1, "$n pulls a karate move on $N!" );
+            xprintf( buf2, "You pull a karate move on $N!" );
+            xprintf( buf3, "$n pulls a karate move on you!" );
          }
 
       }
@@ -3200,7 +3200,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
    }
 
    WAIT_STATE( ch, 1 * PULSE_VIOLENCE );
-   sprintf( buf, "%s attacked by %s.\n\r", victim->name, ch->name );
+   xprintf( buf, "%s attacked by %s.\n\r", victim->name, ch->name );
    notify( buf, MAX_LEVEL - 2 );
 
    if( IS_NPC( ch ) || IS_NPC( victim )
@@ -3209,7 +3209,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
       /*
        * If not pkok people, do yell. 
        */
-      sprintf( buf, "Help! I'M BEING ATTACKED!!! ARRRGGGHHHHHH!" );
+      xprintf( buf, "Help! I'M BEING ATTACKED!!! ARRRGGGHHHHHH!" );
       do_yell( victim, buf );
    }
    check_killer( ch, victim );
@@ -3370,11 +3370,11 @@ void do_backstab( CHAR_DATA * ch, char *argument )
           * HIT! 
           */
          char actbuf[MSL];
-         sprintf( actbuf, "$n places $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$n places $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, obj, victim, TO_NOTVICT );
-         sprintf( actbuf, "You place $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "You place $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, obj, victim, TO_CHAR );
-         sprintf( actbuf, "$N places $p into your back!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$N places $p into your back!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, victim, obj, ch, TO_CHAR );
       }
       else
@@ -3423,7 +3423,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
    if( IS_SET( victim->act, ACT_NO_FLEE ) && !IS_NPC( ch ) && IS_NPC( victim ) )
    {
       send_to_char( "You attempt to flee from battle, but fail!\n\r", ch );
-      sprintf( buf, "%s tells you 'No way will you escape ME!!'\n\r", victim->short_descr );
+      xprintf( buf, "%s tells you 'No way will you escape ME!!'\n\r", victim->short_descr );
       send_to_char( buf, ch );
       return;
    }
@@ -3470,7 +3470,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
          if( ch->adept_level > 0 )
             cost /= 1000;
          cost = UMIN( cost, ch->exp );
-         sprintf( buf, "You flee from combat!  You lose %d exps.\n\r", cost );
+         xprintf( buf, "You flee from combat!  You lose %d exps.\n\r", cost );
          send_to_char( buf, ch );
          gain_exp( ch, ( 0 - cost ) );
       }
@@ -3492,7 +3492,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
    if( ch->adept_level > 0 )
       cost = 0;
    cost = UMIN( cost, ch->exp );
-   sprintf( buf, "You failed!  You lose %d exps.\n\r", cost );
+   xprintf( buf, "You failed!  You lose %d exps.\n\r", cost );
    send_to_char( buf, ch );
    gain_exp( ch, ( 0 - cost ) );
    return;
@@ -3863,11 +3863,11 @@ void do_circle( CHAR_DATA * ch, char *argument )
           * HIT! 
           */
          char actbuf[MSL];
-         sprintf( actbuf, "$n places $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$n places $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, obj, victim, TO_NOTVICT );
-         sprintf( actbuf, "You place $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "You place $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, obj, victim, TO_CHAR );
-         sprintf( actbuf, "$N places $p into your back!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$N places $p into your back!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, victim, obj, ch, TO_CHAR );
       }
       else
@@ -4300,11 +4300,11 @@ void do_punch( CHAR_DATA * ch, char *argument )
           * HIT! 
           */
          char actbuf[MSL];
-         sprintf( actbuf, "$n punches $N!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$n punches $N!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_NOTVICT );
-         sprintf( actbuf, "$N punches you really hard!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$N punches you really hard!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, victim, NULL, ch, TO_CHAR );
-         sprintf( actbuf, "You punch $N!! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "You punch $N!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_CHAR );
       }
       else
@@ -4392,11 +4392,11 @@ void do_headbutt( CHAR_DATA * ch, char *argument )
           * HIT! 
           */
          char actbuf[MSL];
-         sprintf( actbuf, "$n headbutts $N in the face! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$n headbutts $N in the face! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_NOTVICT );
-         sprintf( actbuf, "$N headbutts you in the face! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$N headbutts you in the face! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, victim, NULL, ch, TO_CHAR );
-         sprintf( actbuf, "You headbutt $N in the face! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "You headbutt $N in the face! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_CHAR );
       }
       else
@@ -4489,11 +4489,11 @@ void do_charge( CHAR_DATA * ch, char *argument )
           * HIT! 
           */
          char actbuf[MSL];
-         sprintf( actbuf, "@@a$n @@acharges $N@@a, and knocks them over!@@N @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "@@a$n @@acharges $N@@a, and knocks them over!@@N @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_NOTVICT );
-         sprintf( actbuf, "@@a$N @@acharges right into you!@@N @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "@@a$N @@acharges right into you!@@N @@l(@@W%d@@l)@@N", dam );
          act( actbuf, victim, NULL, ch, TO_CHAR );
-         sprintf( actbuf, "@@aYou charge right into $N@@a, and knock him over!@@N @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "@@aYou charge right into $N@@a, and knock him over!@@N @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_CHAR );
       }
       else
@@ -4585,11 +4585,11 @@ void do_knee( CHAR_DATA * ch, char *argument )
           * HIT! 
           */
          char actbuf[MSL];
-         sprintf( actbuf, "$n grabs $N and knees $M in the groin! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$n grabs $N and knees $M in the groin! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_NOTVICT );
-         sprintf( actbuf, "$N grabs you, and knees you in the groin! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$N grabs you, and knees you in the groin! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, victim, NULL, ch, TO_CHAR );
-         sprintf( actbuf, "You grab $M and knee $M in the groin! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "You grab $M and knee $M in the groin! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_CHAR );
       }
       else
@@ -4676,11 +4676,11 @@ void do_kick( CHAR_DATA * ch, char *argument )
           * HIT! 
           */
          char actbuf[MSL];
-         sprintf( actbuf, "$n kicks $N really hard! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$n kicks $N really hard! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_NOTVICT );
-         sprintf( actbuf, "$N kicks you really hard! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "$N kicks you really hard! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, victim, NULL, ch, TO_CHAR );
-         sprintf( actbuf, "You kick $N really hard! @@l(@@W%d@@l)@@N", dam );
+         xprintf( actbuf, "You kick $N really hard! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, NULL, victim, TO_CHAR );
       }
       else
@@ -4774,7 +4774,7 @@ void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, int dam )
       if( !IS_NPC( victim ) )
       {
 
-         sprintf( log_buf, "%s killed by %s at %d", victim->name, obj->short_descr, victim->in_room->vnum );
+         xprintf_2( log_buf, "%s killed by %s at %d", victim->name, obj->short_descr, victim->in_room->vnum );
          log_string( log_buf );
 
          notify( log_buf, 82 );
@@ -4824,7 +4824,7 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
 
    /*
     * For debugging purposes  
-    * sprintf( buf, "dt: %d max_dt: %d\n\r", dt, max_dt );
+    * xprintf( buf, "dt: %d max_dt: %d\n\r", dt, max_dt );
     * notify( buf, 1 );  
     */
 
@@ -4836,61 +4836,61 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
          switch ( number_range( 0, 9 ) )
          {
             case 0:
-               sprintf( buf1, "$n grabs $N's neck, and twists until there is a loud SNAP!" );
-               sprintf( buf2, "You grab $N's neck, and twist until there is a loud SNAP!" );
-               sprintf( buf3, "$n grabs your neck, and twists until there is a loud SNAP!" );
+               xprintf( buf1, "$n grabs $N's neck, and twists until there is a loud SNAP!" );
+               xprintf( buf2, "You grab $N's neck, and twist until there is a loud SNAP!" );
+               xprintf( buf3, "$n grabs your neck, and twists until there is a loud SNAP!" );
                break;
             case 1:
-               sprintf( buf1, "$n slams $s fist into $N and crushes $S heart!" );
-               sprintf( buf2, "You slam your fist into $N and crush $S heart!" );
-               sprintf( buf3, "$n slams $s fist into you, and crushes your heart!" );
+               xprintf( buf1, "$n slams $s fist into $N and crushes $S heart!" );
+               xprintf( buf2, "You slam your fist into $N and crush $S heart!" );
+               xprintf( buf3, "$n slams $s fist into you, and crushes your heart!" );
                break;
             case 2:
-               sprintf( buf1, "$n rams $s hand into $N's ribcage, and rips out $S guts!" );
-               sprintf( buf2, "You ram your hand into $N's ribcage, and rip out $S guts!" );
-               sprintf( buf3, "$n rams $s hand into your ribcage, and rips out your guts!" );
+               xprintf( buf1, "$n rams $s hand into $N's ribcage, and rips out $S guts!" );
+               xprintf( buf2, "You ram your hand into $N's ribcage, and rip out $S guts!" );
+               xprintf( buf3, "$n rams $s hand into your ribcage, and rips out your guts!" );
                break;
             case 3:
-               sprintf( buf1, "$n grabs $N, and rips $S head clean off!" );
-               sprintf( buf2, "You grab $N, and rip his head clean off!" );
-               sprintf( buf3, "$n grabs you, and rips your head clean off!" );
+               xprintf( buf1, "$n grabs $N, and rips $S head clean off!" );
+               xprintf( buf2, "You grab $N, and rip his head clean off!" );
+               xprintf( buf3, "$n grabs you, and rips your head clean off!" );
                break;
             case 4:
-               sprintf( buf1, "$n reaches behind $N, and rips $S spine out of $S back!" );
-               sprintf( buf2, "You reach behind $N, and rip $S spine out of $S back!" );
-               sprintf( buf3, "$n reaches behind you, and rips your spine out of your back!" );
+               xprintf( buf1, "$n reaches behind $N, and rips $S spine out of $S back!" );
+               xprintf( buf2, "You reach behind $N, and rip $S spine out of $S back!" );
+               xprintf( buf3, "$n reaches behind you, and rips your spine out of your back!" );
                break;
             case 5:
-               sprintf( buf1, "$n rips $N's face open via $S eye sockets!" );
-               sprintf( buf2, "You rip $N's face open via $S eye sockets!" );
-               sprintf( buf3, "$n rips your face open via your eye sockets!" );
+               xprintf( buf1, "$n rips $N's face open via $S eye sockets!" );
+               xprintf( buf2, "You rip $N's face open via $S eye sockets!" );
+               xprintf( buf3, "$n rips your face open via your eye sockets!" );
                break;
             case 6:
-               sprintf( buf1, "$n rips off $N's head and vomits down $S throat!" );
-               sprintf( buf2, "You rip off $N's head and vomit down $S throat!" );
-               sprintf( buf3, "$n rips off your head and vomits down your throat!" );
+               xprintf( buf1, "$n rips off $N's head and vomits down $S throat!" );
+               xprintf( buf2, "You rip off $N's head and vomit down $S throat!" );
+               xprintf( buf3, "$n rips off your head and vomits down your throat!" );
                break;
             case 7:
-               sprintf( buf1, "$N splurts blood as $n rips open $S chest with $s teeth!" );
-               sprintf( buf2, "$N splurts blood as you rip open $S chest with your teeth!" );
-               sprintf( buf3, "You splurt blood as $n rips open your chest with $s teeth!" );
+               xprintf( buf1, "$N splurts blood as $n rips open $S chest with $s teeth!" );
+               xprintf( buf2, "$N splurts blood as you rip open $S chest with your teeth!" );
+               xprintf( buf3, "You splurt blood as $n rips open your chest with $s teeth!" );
                break;
             case 8:
-               sprintf( buf1, "$n wrenches $N's arms out from their sockets!" );
-               sprintf( buf2, "You wrench $N's arms out from their sockets!" );
-               sprintf( buf3, "$n wrenches your arms out of thier sockets!" );
+               xprintf( buf1, "$n wrenches $N's arms out from their sockets!" );
+               xprintf( buf2, "You wrench $N's arms out from their sockets!" );
+               xprintf( buf3, "$n wrenches your arms out of thier sockets!" );
                break;
             case 9:
-               sprintf( buf1, "$n shatters $N's skull with a punch.  Brains leak out." );
-               sprintf( buf2, "You shatter $N's skull with a punch.  Brains leak out." );
-               sprintf( buf3, "$n shatters your skull with a punch.  Brains leak out." );
+               xprintf( buf1, "$n shatters $N's skull with a punch.  Brains leak out." );
+               xprintf( buf2, "You shatter $N's skull with a punch.  Brains leak out." );
+               xprintf( buf3, "$n shatters your skull with a punch.  Brains leak out." );
                break;
          }
       else  /* Unarmed, mob has no_body */
       {
-         sprintf( buf1, "$n shatters $N's skull with a punch.  Brains leak out." );
-         sprintf( buf2, "You shatter $N's skull with a punch.  Brains leak out." );
-         sprintf( buf3, "$n shatters your skull with a punch.  Brains leak out." );
+         xprintf( buf1, "$n shatters $N's skull with a punch.  Brains leak out." );
+         xprintf( buf2, "You shatter $N's skull with a punch.  Brains leak out." );
+         xprintf( buf3, "$n shatters your skull with a punch.  Brains leak out." );
       }
    }
 
@@ -4903,29 +4903,29 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
             switch ( number_range( 0, 4 ) )
             {
                case 0:
-                  sprintf( buf1, "$n slices $N's head clean from $S neck" );
-                  sprintf( buf2, "You slice $N's head clean from $S neck" );
-                  sprintf( buf3, "$n slices your head clean from your neck" );
+                  xprintf( buf1, "$n slices $N's head clean from $S neck" );
+                  xprintf( buf2, "You slice $N's head clean from $S neck" );
+                  xprintf( buf3, "$n slices your head clean from your neck" );
                   break;
                case 1:
-                  sprintf( buf1, "$n slashes open $N's chest; $S entrails pour out!" );
-                  sprintf( buf2, "You slash open $N's chest; $S entrails pour out!" );
-                  sprintf( buf3, "$n slashes open your chest; your entrails pour out!" );
+                  xprintf( buf1, "$n slashes open $N's chest; $S entrails pour out!" );
+                  xprintf( buf2, "You slash open $N's chest; $S entrails pour out!" );
+                  xprintf( buf3, "$n slashes open your chest; your entrails pour out!" );
                   break;
                case 2:
-                  sprintf( buf1, "$n slices $N's throat open.  Blood sprays out wildly!" );
-                  sprintf( buf2, "You slice $N's throat open.  Blood sprays out wildly!" );
-                  sprintf( buf3, "$n slices your throat open.  Blood sprays out wildly!" );
+                  xprintf( buf1, "$n slices $N's throat open.  Blood sprays out wildly!" );
+                  xprintf( buf2, "You slice $N's throat open.  Blood sprays out wildly!" );
+                  xprintf( buf3, "$n slices your throat open.  Blood sprays out wildly!" );
                   break;
                case 3:
-                  sprintf( buf1, "$n slices $N's legs off, leaving two bloody stumps!" );
-                  sprintf( buf2, "You slice $N's legs off, leaving two bloody stumps!" );
-                  sprintf( buf3, "$n slices your legs off, leaving two bloody stumps!" );
+                  xprintf( buf1, "$n slices $N's legs off, leaving two bloody stumps!" );
+                  xprintf( buf2, "You slice $N's legs off, leaving two bloody stumps!" );
+                  xprintf( buf3, "$n slices your legs off, leaving two bloody stumps!" );
                   break;
                case 4:
-                  sprintf( buf1, "$n slashes $N's eyeballs out!" );
-                  sprintf( buf2, "You slash $N's eyeballs out!" );
-                  sprintf( buf3, "$n slashes your eyeballs out!" );
+                  xprintf( buf1, "$n slashes $N's eyeballs out!" );
+                  xprintf( buf2, "You slash $N's eyeballs out!" );
+                  xprintf( buf3, "$n slashes your eyeballs out!" );
                   break;
             }
             break;
@@ -4934,31 +4934,31 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
             switch ( number_range( 0, 4 ) )
             {
                case 0:
-                  sprintf( buf1, "$n rips a gaping hole down $N's back!" );
-                  sprintf( buf2, "You rip a gaping hole down $N's back!" );
-                  sprintf( buf3, "$n rips a gaping hole down your back!" );
+                  xprintf( buf1, "$n rips a gaping hole down $N's back!" );
+                  xprintf( buf2, "You rip a gaping hole down $N's back!" );
+                  xprintf( buf3, "$n rips a gaping hole down your back!" );
                   break;
                case 1:
-                  sprintf( buf1, "$n stabs into $N, and cuts $S heart out!" );
-                  sprintf( buf2, "You stab into $N, and cut $S heart out!" );
-                  sprintf( buf3, "$n stabs into you, and cuts your heart out!" );
+                  xprintf( buf1, "$n stabs into $N, and cuts $S heart out!" );
+                  xprintf( buf2, "You stab into $N, and cut $S heart out!" );
+                  xprintf( buf3, "$n stabs into you, and cuts your heart out!" );
                   break;
                case 2:
-                  sprintf( buf1, "$n stabs into $N's back, and wrenches out $S spine!" );
-                  sprintf( buf2, "You stab into $N's back, and wrench out $S spine!" );
-                  sprintf( buf3, "$n stabs into your back, and wrenches out your spine!" );
+                  xprintf( buf1, "$n stabs into $N's back, and wrenches out $S spine!" );
+                  xprintf( buf2, "You stab into $N's back, and wrench out $S spine!" );
+                  xprintf( buf3, "$n stabs into your back, and wrenches out your spine!" );
                   break;
                case 3:
-                  sprintf( buf1, "$n plunges $s weapon into $N's head!" );
-                  sprintf( buf2, "You plunge your weapon into $N's head!" );
-                  sprintf( buf3, "$n plunges $s weapon into your head!" );
+                  xprintf( buf1, "$n plunges $s weapon into $N's head!" );
+                  xprintf( buf2, "You plunge your weapon into $N's head!" );
+                  xprintf( buf3, "$n plunges $s weapon into your head!" );
                   break;
                case 4:
-                  sprintf( buf1, "$n stabs into $N's chest, skewering $S heart!" );
-                  sprintf( buf1, "$n stabs into $N's chest, skewering $S heart!" );
-                  sprintf( buf2, "You stab into $N's chest, skewering $S heart!" );
-                  sprintf( buf2, "You stab into $N's chest, skewering $S heart!" );
-                  sprintf( buf3, "$n stabs into your chest, skewering your heart!" );
+                  xprintf( buf1, "$n stabs into $N's chest, skewering $S heart!" );
+                  xprintf( buf1, "$n stabs into $N's chest, skewering $S heart!" );
+                  xprintf( buf2, "You stab into $N's chest, skewering $S heart!" );
+                  xprintf( buf2, "You stab into $N's chest, skewering $S heart!" );
+                  xprintf( buf3, "$n stabs into your chest, skewering your heart!" );
                   break;
             }
             break;
@@ -4966,24 +4966,24 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
             switch ( number_range( 0, 3 ) )
             {
                case 0:
-                  sprintf( buf1, "$n whips out $N's eyes, spraying blood everywhere!" );
-                  sprintf( buf2, "You whip out $N's eyes, spraying blood everywhere!" );
-                  sprintf( buf3, "$n whips out your eyes, spraying blood everywhere!" );
+                  xprintf( buf1, "$n whips out $N's eyes, spraying blood everywhere!" );
+                  xprintf( buf2, "You whip out $N's eyes, spraying blood everywhere!" );
+                  xprintf( buf3, "$n whips out your eyes, spraying blood everywhere!" );
                   break;
                case 1:
-                  sprintf( buf1, "$n's whip catches $N's head, and rips it off!" );
-                  sprintf( buf2, "Your whip catches $N's head, and rips it off!" );
-                  sprintf( buf3, "$n's whip catches your head, and rips it off!" );
+                  xprintf( buf1, "$n's whip catches $N's head, and rips it off!" );
+                  xprintf( buf2, "Your whip catches $N's head, and rips it off!" );
+                  xprintf( buf3, "$n's whip catches your head, and rips it off!" );
                   break;
                case 2:
-                  sprintf( buf1, "$n's whip wraps around $N's arms, yanking them off!" );
-                  sprintf( buf2, "Your whip wraps around $N's arms, yanking them off!" );
-                  sprintf( buf3, "$n's whip wraps around your arms, yanking them off!" );
+                  xprintf( buf1, "$n's whip wraps around $N's arms, yanking them off!" );
+                  xprintf( buf2, "Your whip wraps around $N's arms, yanking them off!" );
+                  xprintf( buf3, "$n's whip wraps around your arms, yanking them off!" );
                   break;
                case 3:
-                  sprintf( buf1, "$n's whip cuts open $N's main artery, spraying blood!" );
-                  sprintf( buf2, "Your whip cuts open $N's main artery, spraying blood!" );
-                  sprintf( buf3, "$n's whip cuts open your main artery, spraying blood!" );
+                  xprintf( buf1, "$n's whip cuts open $N's main artery, spraying blood!" );
+                  xprintf( buf2, "Your whip cuts open $N's main artery, spraying blood!" );
+                  xprintf( buf3, "$n's whip cuts open your main artery, spraying blood!" );
                   break;
             }
             break;
@@ -4991,31 +4991,31 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
             switch ( number_range( 0, 4 ) )
             {
                case 0:
-                  sprintf( buf1, "$n claws out $N's heart!" );
-                  sprintf( buf2, "You claw out $N's heart!" );
-                  sprintf( buf3, "$n claws out your heart!" );
+                  xprintf( buf1, "$n claws out $N's heart!" );
+                  xprintf( buf2, "You claw out $N's heart!" );
+                  xprintf( buf3, "$n claws out your heart!" );
                   break;
                case 1:
-                  sprintf( buf1, "$n's claw catches $N's back, slicing it open!" );
-                  sprintf( buf2, "Your claw catches $N's back, slicing it open!" );
-                  sprintf( buf3, "$n's claw catches your back, slicing it open!" );
+                  xprintf( buf1, "$n's claw catches $N's back, slicing it open!" );
+                  xprintf( buf2, "Your claw catches $N's back, slicing it open!" );
+                  xprintf( buf3, "$n's claw catches your back, slicing it open!" );
                   break;
                case 2:
-                  sprintf( buf1, "$N screams in agony, as $n's claw removes $S eyes!" );
-                  sprintf( buf1, "$N screams in agony, as $n's claw removes $S eyes!" );
-                  sprintf( buf2, "$N screams in agony, as your claw removes $S eyes!" );
-                  sprintf( buf2, "$N screams in agony, as your claw removes $S eyes!" );
-                  sprintf( buf3, "You scream in agony, as $n's claw removes your eyes!" );
+                  xprintf( buf1, "$N screams in agony, as $n's claw removes $S eyes!" );
+                  xprintf( buf1, "$N screams in agony, as $n's claw removes $S eyes!" );
+                  xprintf( buf2, "$N screams in agony, as your claw removes $S eyes!" );
+                  xprintf( buf2, "$N screams in agony, as your claw removes $S eyes!" );
+                  xprintf( buf3, "You scream in agony, as $n's claw removes your eyes!" );
                   break;
                case 3:
-                  sprintf( buf1, "$n's claw ruptures $N's ribcage, shredding $S heart!" );
-                  sprintf( buf2, "Your claw ruptures $N's ribcage, shredding $S heart!" );
-                  sprintf( buf3, "$n's claw ruptures your ribcage, shredding your heart!" );
+                  xprintf( buf1, "$n's claw ruptures $N's ribcage, shredding $S heart!" );
+                  xprintf( buf2, "Your claw ruptures $N's ribcage, shredding $S heart!" );
+                  xprintf( buf3, "$n's claw ruptures your ribcage, shredding your heart!" );
                   break;
                case 4:
-                  sprintf( buf1, "$n's claw slashes $N's neck, decapitating $M!" );
-                  sprintf( buf2, "Your claw slashes $N's neck, decapitating $M!" );
-                  sprintf( buf3, "$n's claw slashes your neck, decapitating you!" );
+                  xprintf( buf1, "$n's claw slashes $N's neck, decapitating $M!" );
+                  xprintf( buf2, "Your claw slashes $N's neck, decapitating $M!" );
+                  xprintf( buf3, "$n's claw slashes your neck, decapitating you!" );
                   break;
             }
             break;
@@ -5024,29 +5024,29 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
             switch ( number_range( 0, 4 ) )
             {
                case 0:
-                  sprintf( buf1, "$n pounds $N's head; $S brains leak from $S ears!" );
-                  sprintf( buf2, "You pound $N's head; $S brains leak from $S ears!" );
-                  sprintf( buf3, "$n pounds your head; your brains leak from your ears!" );
+                  xprintf( buf1, "$n pounds $N's head; $S brains leak from $S ears!" );
+                  xprintf( buf2, "You pound $N's head; $S brains leak from $S ears!" );
+                  xprintf( buf3, "$n pounds your head; your brains leak from your ears!" );
                   break;
                case 1:
-                  sprintf( buf1, "$n crushes $N's ribcage, and $S entrails slop out!" );
-                  sprintf( buf2, "You crush $N's ribcage, and $S entrails slop out!" );
-                  sprintf( buf3, "$n crushes your ribcage, and your entrails slop out!" );
+                  xprintf( buf1, "$n crushes $N's ribcage, and $S entrails slop out!" );
+                  xprintf( buf2, "You crush $N's ribcage, and $S entrails slop out!" );
+                  xprintf( buf3, "$n crushes your ribcage, and your entrails slop out!" );
                   break;
                case 2:
-                  sprintf( buf1, "$n pounds $N's spine until you hear it CRACK!" );
-                  sprintf( buf2, "You pound $N's spine until you hear it CRACK!" );
-                  sprintf( buf3, "$n pounds your spine until you hear it CRACK!" );
+                  xprintf( buf1, "$n pounds $N's spine until you hear it CRACK!" );
+                  xprintf( buf2, "You pound $N's spine until you hear it CRACK!" );
+                  xprintf( buf3, "$n pounds your spine until you hear it CRACK!" );
                   break;
                case 3:
-                  sprintf( buf1, "$n pounds $N's face, forcing $S nose into $S brain!" );
-                  sprintf( buf2, "You pound $N's face, forcing $S nose into $S brain!" );
-                  sprintf( buf3, "$n pounds your face, forcing your nose into your brain!" );
+                  xprintf( buf1, "$n pounds $N's face, forcing $S nose into $S brain!" );
+                  xprintf( buf2, "You pound $N's face, forcing $S nose into $S brain!" );
+                  xprintf( buf3, "$n pounds your face, forcing your nose into your brain!" );
                   break;
                case 4:
-                  sprintf( buf1, "$n crushes $N's head down into $S neck!" );
-                  sprintf( buf2, "You crush $N's head down into $S neck!" );
-                  sprintf( buf3, "$n crushes your head down into your neck!" );
+                  xprintf( buf1, "$n crushes $N's head down into $S neck!" );
+                  xprintf( buf2, "You crush $N's head down into $S neck!" );
+                  xprintf( buf3, "$n crushes your head down into your neck!" );
                   break;
             }
             break;
@@ -5054,29 +5054,29 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
             switch ( number_range( 0, 4 ) )
             {
                case 0:
-                  sprintf( buf1, "$n's blast totally obliterates $N's head!" );
-                  sprintf( buf2, "Your blast totally obliterates $N's head!" );
-                  sprintf( buf3, "$n's blast totally obliterates your head!" );
+                  xprintf( buf1, "$n's blast totally obliterates $N's head!" );
+                  xprintf( buf2, "Your blast totally obliterates $N's head!" );
+                  xprintf( buf3, "$n's blast totally obliterates your head!" );
                   break;
                case 1:
-                  sprintf( buf1, "$n's blast makes $N's head fly into the air!" );
-                  sprintf( buf2, "Your blast makes $N's head fly into the air!" );
-                  sprintf( buf3, "$n's blast makes your head fly into the air!" );
+                  xprintf( buf1, "$n's blast makes $N's head fly into the air!" );
+                  xprintf( buf2, "Your blast makes $N's head fly into the air!" );
+                  xprintf( buf3, "$n's blast makes your head fly into the air!" );
                   break;
                case 2:
-                  sprintf( buf1, "$n blasts $N's stomach open - entrails plop out!" );
-                  sprintf( buf2, "You blast $N's stomach open - entrails plop out!" );
-                  sprintf( buf3, "$n blasts your stomach open - entrails plop out!" );
+                  xprintf( buf1, "$n blasts $N's stomach open - entrails plop out!" );
+                  xprintf( buf2, "You blast $N's stomach open - entrails plop out!" );
+                  xprintf( buf3, "$n blasts your stomach open - entrails plop out!" );
                   break;
                case 3:
-                  sprintf( buf1, "$n's blast removes $N's legs from $S body!" );
-                  sprintf( buf2, "Your blast removes $N's legs from $S body!" );
-                  sprintf( buf3, "$n's blast removes your legs from your body!" );
+                  xprintf( buf1, "$n's blast removes $N's legs from $S body!" );
+                  xprintf( buf2, "Your blast removes $N's legs from $S body!" );
+                  xprintf( buf3, "$n's blast removes your legs from your body!" );
                   break;
                case 4:
-                  sprintf( buf1, "$n's blast splits $N's back, and $S spine falls out!" );
-                  sprintf( buf2, "Your blast splits $N's back, and $S spine falls out!" );
-                  sprintf( buf3, "$n's blast splits your back, and your spine falls out!" );
+                  xprintf( buf1, "$n's blast splits $N's back, and $S spine falls out!" );
+                  xprintf( buf2, "Your blast splits $N's back, and $S spine falls out!" );
+                  xprintf( buf3, "$n's blast splits your back, and your spine falls out!" );
                   break;
             }
             break;
@@ -5084,24 +5084,24 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
             switch ( number_range( 0, 3 ) )
             {
                case 0:
-                  sprintf( buf1, "$n pulls $N's heart clean from $S ribcage!" );
-                  sprintf( buf2, "You pull $N's heart clean from $S ribcage!" );
-                  sprintf( buf3, "$n pulls your heart clean from your ribcage!" );
+                  xprintf( buf1, "$n pulls $N's heart clean from $S ribcage!" );
+                  xprintf( buf2, "You pull $N's heart clean from $S ribcage!" );
+                  xprintf( buf3, "$n pulls your heart clean from your ribcage!" );
                   break;
                case 1:
-                  sprintf( buf1, "$n snags $N's spine, and rips it out!" );
-                  sprintf( buf2, "You snag $N's spine, and rip it out!" );
-                  sprintf( buf3, "$n snags your spine, and rips it out!" );
+                  xprintf( buf1, "$n snags $N's spine, and rips it out!" );
+                  xprintf( buf2, "You snag $N's spine, and rip it out!" );
+                  xprintf( buf3, "$n snags your spine, and rips it out!" );
                   break;
                case 2:
-                  sprintf( buf1, "$N's stomach splits open, and $S entrails slip out!" );
-                  sprintf( buf2, "$N's stomach splits open, and $S entrails slip out!" );
-                  sprintf( buf3, "Your stomach splits open, and your entrails slip out!" );
+                  xprintf( buf1, "$N's stomach splits open, and $S entrails slip out!" );
+                  xprintf( buf2, "$N's stomach splits open, and $S entrails slip out!" );
+                  xprintf( buf3, "Your stomach splits open, and your entrails slip out!" );
                   break;
                case 3:
-                  sprintf( buf1, "$n pulls $N's heart from $S chest!" );
-                  sprintf( buf2, "You pull $N's heart from $S chest!" );
-                  sprintf( buf3, "$n pulls your heart from your chest!" );
+                  xprintf( buf1, "$n pulls $N's heart from $S chest!" );
+                  xprintf( buf2, "You pull $N's heart from $S chest!" );
+                  xprintf( buf3, "$n pulls your heart from your chest!" );
                   break;
             }
             break;
@@ -5123,11 +5123,11 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
       obj = create_object( get_obj_index( vnum ), 0 );
       obj->timer = number_range( 4, 7 );
 
-      sprintf( buf, obj->short_descr, name );
+      xprintf( buf, obj->short_descr, name );
       free_string( obj->short_descr );
       obj->short_descr = str_dup( buf );
 
-      sprintf( buf, obj->description, name );
+      xprintf( buf, obj->description, name );
       free_string( obj->description );
       obj->description = str_dup( buf );
 
@@ -5170,9 +5170,9 @@ void do_assist( CHAR_DATA * ch, char *argument )
       }
       if( ( assist->fighting != NULL ) && ( ch->fighting == NULL ) )
       {
-         sprintf( actbuf, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+         xprintf( actbuf, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
          act( actbuf, ch, NULL, assist, TO_ROOM );
-         sprintf( actbuf, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+         xprintf( actbuf, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
          act( actbuf, ch, NULL, assist, TO_CHAR );
          set_fighting( ch, assist->fighting, TRUE );
          return;
@@ -5202,9 +5202,9 @@ void do_assist( CHAR_DATA * ch, char *argument )
        && ( ch->leader->in_room == ch->in_room )
        && ( ch->leader->fighting != NULL ) && ( ch->fighting == NULL ) && ( ch->leader != ch ) )
    {
-      sprintf( actbuf, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+      xprintf( actbuf, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
       act( actbuf, ch, NULL, ch->leader, TO_ROOM );
-      sprintf( actbuf, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+      xprintf( actbuf, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
       act( actbuf, ch, NULL, ch->leader, TO_CHAR );
       set_fighting( ch, ch->leader->fighting, TRUE );
       return;
@@ -5216,9 +5216,9 @@ void do_assist( CHAR_DATA * ch, char *argument )
    for( ppl = ch->in_room->first_person; ppl != NULL; ppl = ppl->next_in_room )
       if( ( is_same_group( ch, ppl ) ) && ( ppl != ch ) && ( ppl->fighting != NULL ) && ( ch->fighting == NULL ) )
       {
-         sprintf( actbuf, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+         xprintf( actbuf, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
          act( actbuf, ch, NULL, ppl, TO_ROOM );
-         sprintf( actbuf, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+         xprintf( actbuf, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
          act( actbuf, ch, NULL, ppl, TO_CHAR );
          set_fighting( ch, ppl->fighting, TRUE );
          return;

@@ -80,19 +80,19 @@ void do_tribe( CHAR_DATA * ch, char *argument )
             switch ( index )
             {
                case 0:
-                  sprintf( buf, "\n\r@@WRENEGADE!!@@N\n\r" );
+                  xprintf( buf, "\n\r@@WRENEGADE!!@@N\n\r" );
                   break;
                case 1:
-                  sprintf( buf, "\n\r@@WCHANGE ME@@N\n\r" );
+                  xprintf( buf, "\n\r@@WCHANGE ME@@N\n\r" );
                   break;
                case 2:
-                  sprintf( buf, "\n\r@@WCHANGE ME@@N\n\r" );
+                  xprintf( buf, "\n\r@@WCHANGE ME@@N\n\r" );
                   break;
                case 3:
-                  sprintf( buf, "\n\r@@WCHANGE ME@@N\n\r" );
+                  xprintf( buf, "\n\r@@WCHANGE ME@@N\n\r" );
                   break;
                case 4:
-                  sprintf( buf, "\n\r@@WCHANGE ME@@N\n\r" );
+                  xprintf( buf, "\n\r@@WCHANGE ME@@N\n\r" );
                   break;
             }
 
@@ -112,7 +112,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
 
 
 
-                  sprintf( buf, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N  @@NRage: @@e%d@@N/@@e%d@@N   %-15s\n\r",
+                  xprintf( buf, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N  @@NRage: @@e%d@@N/@@e%d@@N   %-15s\n\r",
                            victim->name, get_tribe_standing_name( victim->pcdata->generation ), victim->pcdata->vamp_level,
                            victim->pcdata->bloodlust, victim->pcdata->bloodlust_max, victim->in_room->name );
                   send_to_char( buf, ch );
@@ -127,7 +127,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
       else
       {
 
-         sprintf( buf, "@@WMembers of the @@bGarou @@rTribe %s\n\r", get_tribe_name( ch ) );
+         xprintf( buf, "@@WMembers of the @@bGarou @@rTribe %s\n\r", get_tribe_name( ch ) );
          send_to_char( buf, ch );
          found = FALSE;
          for( d = first_desc; d != NULL; d = d->next )
@@ -140,7 +140,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
                   continue;
 
                found = TRUE;
-               sprintf( buf, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N\n\r",
+               xprintf( buf, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N\n\r",
                         victim->name, get_tribe_standing_name( victim->pcdata->generation ), victim->pcdata->vamp_level );
                send_to_char( buf, ch );
             }
@@ -206,7 +206,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
             return;
          }
 
-         sprintf( buf, "@@N%s's @@yStanding@@N is now %s in @@bTribe@@N %s.\n\r",
+         xprintf( buf, "@@N%s's @@yStanding@@N is now %s in @@bTribe@@N %s.\n\r",
                   victim->name, get_tribe_standing_name( victim->pcdata->generation ), get_tribe_name( ch ) );
          do_howl( ch, buf );
          return;
@@ -215,7 +215,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
       if( !str_cmp( arg2, "banish" ) )
       {
          int sn;
-         sprintf( buf, "@@N%s has been @@eBANISHED@@N from @@bTribe@@N %s.\n\r", victim->name, get_tribe_name( ch ) );
+         xprintf( buf, "@@N%s has been @@eBANISHED@@N from @@bTribe@@N %s.\n\r", victim->name, get_tribe_name( ch ) );
          do_howl( ch, buf );
          victim->pcdata->vamp_bloodline = 0;
          victim->pcdata->generation = 9;
@@ -329,7 +329,7 @@ void do_imprint( CHAR_DATA * ch, char *argument )
    victim->pcdata->vamp_skill_num += 1;
 
    send_to_char( "You have increased their @@bGarou@@N instincts@@N!!!\n\r", ch );
-   sprintf( buf, "You are now instinctively aware of @@e%s@@N!!!\n\r", skill_table[sn].name );
+   xprintf( buf, "You are now instinctively aware of @@e%s@@N!!!\n\r", skill_table[sn].name );
    send_to_char( buf, victim );
 
 
@@ -427,7 +427,7 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
       act( "$N must grovel at your feet before you will accept him under your control.\n\r", ch, NULL, victim, TO_CHAR );
       check_social( ch, "growl", victim->name );
-      sprintf( socbuf, "%s", ch->name );
+      xprintf( socbuf, "%s", ch->name );
       check_social( victim, "grovel", socbuf );
       check_social( victim, "cower", socbuf );
       return FALSE;
@@ -511,7 +511,7 @@ bool spell_wolf_mark( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
          costring = "@@m";
          break;
    }
-   sprintf( buf, "%s%s @@W: %s", costring, ch->name, get_tribe_standing_name( ch->pcdata->generation ) );
+   xprintf( buf, "%s%s @@W: %s", costring, ch->name, get_tribe_standing_name( ch->pcdata->generation ) );
    mark->author = str_dup( buf );
    mark->duration = ( ( MAX_WOLF_LEVEL ) - ch->pcdata->generation ) * ( ch->pcdata->vamp_level ) * 10;
    mark->type = WOLF;
@@ -542,7 +542,7 @@ void do_scent( CHAR_DATA * ch, char *argument )
       if( mark_list->mark->type != WOLF )
          continue;
 
-      sprintf( buf, "%s : %s\n\r", mark_list->mark->author, mark_list->mark->message );
+      xprintf( buf, "%s : %s\n\r", mark_list->mark->author, mark_list->mark->message );
       send_to_char( buf, ch );
    }
    check_social( ch, "sniff", "" );

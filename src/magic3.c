@@ -1278,7 +1278,7 @@ bool spell_restoration( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       ch->pcdata->bloodlust = ch->pcdata->bloodlust_max;
 
    send_to_char( "@@eTHe life force of tha captured soul restores you!\n\r", ch );
-   sprintf( buf, " %s has used a restoration spell.\n\r", ch->name );
+   xprintf( buf, " %s has used a restoration spell.\n\r", ch->name );
    monitor_chan( buf, MONITOR_BAD );
    return TRUE;
 }
@@ -1971,7 +1971,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
       char msg_buf[MSL];
 
 
-      sprintf( msg_buf, "\n\r%s\n\r", "Fighting Stances available to you:\n\r" );
+      xprintf( msg_buf, "\n\r%s\n\r", "Fighting Stances available to you:\n\r" );
 
       for( i = 0; i < MAX_STANCE; i++ )
       {
@@ -1979,70 +1979,70 @@ void do_stance( CHAR_DATA * ch, char *argument )
          switch ( i )
          {
             case STANCE_WARRIOR:
-               sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_CASTER:
                if( ( ch->lvl[0] > 50 ) /* mage */
                    || ( ch->lvl[1] > 70 ) /* cleric */
                    || ( ch->lvl[4] > 60 ) )  /* psi */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_WIZARD:
                if( ( ch->lvl2[0] > 20 )   /* sorc */
                    || ( ch->lvl2[3] > 40 )   /* necro */
                    || ( ch->lvl2[4] > 60 ) ) /* monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_MAGI:
                if( ( ch->adept_level > 10 ) )   /*adept */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_AMBUSH:
                if( ch->lvl2[1] > 30 )  /* assassin */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_AC_BEST:
                if( ( ch->lvl2[2] > 65 )   /* knight */
                    || ( ch->lvl2[4] > 30 ) ) /* monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_HR_BEST:
                if( ( ch->lvl2[2] > 45 )   /* knight */
                    || ( ch->lvl2[4] > 20 ) ) /* monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_DR_BEST:
                if( ( ch->lvl2[2] > 35 )   /* knight */
                    || ( ch->lvl2[4] > 10 ) ) /* monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_AC_WORST:
                if( ch->lvl2[4] > 45 )  /* monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_HR_WORST:
                if( ch->lvl2[4] > 60 )  /* monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_DR_WORST:
                if( ch->lvl2[4] > 70 )  /* monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_SUPER_FIGHTER:
                if( ( ch->lvl2[4] > 79 ) && ( ch->lvl2[2] > 79 ) ) /* both knight and monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_SUPER_SPEED:
                if( ( ch->lvl2[4] > 70 ) && ( ch->lvl2[2] > 70 ) ) /* both knight and monk */
-                  sprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
                break;
 
          }
 
          safe_strcat( MSL, msg_buf, cat_buf );
-         sprintf( cat_buf, "%s", "" );
+         xprintf( cat_buf, "%s", "" );
       }
-      sprintf( cat_buf, "%s",
+      xprintf( cat_buf, "%s",
                "Type stance <stance name> to change your current fighting stance.\n\r You may place your current Stance in your prompt with a \%s\n\r" );
       safe_strcat( MSL, msg_buf, cat_buf );
       send_to_char( msg_buf, ch );
@@ -2200,9 +2200,9 @@ void do_stance( CHAR_DATA * ch, char *argument )
             ch->stance_hr_mod = stance_app[i].hr_mod * get_psuedo_level( ch ) / 10;
 
          ch->stance = i;
-         sprintf( stance_buf, "$n assumes the Stance of the %s!", stance_app[i].name );
+         xprintf( stance_buf, "$n assumes the Stance of the %s!", stance_app[i].name );
          act( stance_buf, ch, NULL, NULL, TO_ROOM );
-         sprintf( stance_buf, "You assume the Stance of the %s!\n\r", stance_app[i].name );
+         xprintf( stance_buf, "You assume the Stance of the %s!\n\r", stance_app[i].name );
          send_to_char( stance_buf, ch );
       }
       WAIT_STATE( ch, 2 * PULSE_VIOLENCE );

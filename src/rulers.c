@@ -74,7 +74,7 @@ void save_rulers(  )
 
 
    fclose( fpReserve );
-   sprintf( ruler_file_name, "%s", RULERS_FILE );
+   xprintf( ruler_file_name, "%s", RULERS_FILE );
 
    if( ( fp = fopen( ruler_file_name, "w" ) ) == NULL )
    {
@@ -94,11 +94,11 @@ void save_rulers(  )
          fprintf( fp, "%d\n", ruler->this_one->flags );
          fprintf( fp, "%d\n", ruler->this_one->ruler_rank );
 
-         sprintf( keybuf, "%s", "" );
+         xprintf( keybuf, "%s", "" );
 
          for( control = ruler->this_one->first_control; control; control = control->next )
          {
-            sprintf( catkeybuf, "%s ", control->this_one->keyword );
+            xprintf( catkeybuf, "%s ", control->this_one->keyword );
             safe_strcat( MSL, keybuf, catkeybuf );
          }
          fprintf( fp, "%s~\n", keybuf );
@@ -131,10 +131,10 @@ void load_rulers( void )
    RULER_LIST *ruler_member;
 
 
-   sprintf( rulers_file_name, "%s", RULERS_FILE );
+   xprintf( rulers_file_name, "%s", RULERS_FILE );
 
 
-   sprintf( buf, "Loading %s\n\r", rulers_file_name );
+   xprintf( buf, "Loading %s\n\r", rulers_file_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    if( ( rulersfp = fopen( rulers_file_name, "r" ) ) == NULL )
@@ -190,7 +190,7 @@ void load_rulers( void )
 
       fclose( rulersfp );
 
-      sprintf( buf, "Done Loading %s\n\r", rulers_file_name );
+      xprintf( buf, "Done Loading %s\n\r", rulers_file_name );
       monitor_chan( buf, MONITOR_CLAN );
 
    }
@@ -221,14 +221,14 @@ void do_rulers( CHAR_DATA * ch, char *argument )
    if( arg1[0] == '\0' )   /* show current rulers */
    {
 
-      sprintf( outbuf, "\n\rCurrent Rulers of " mudnamecolor "\n\r\n\r" );
+      xprintf( outbuf, "\n\rCurrent Rulers of " mudnamecolor "\n\r\n\r" );
 
       for( ruler = first_ruler_list; ruler; ruler = ruler->next )
       {
          sh_int sex;
          sex = ( IS_SET( ruler->this_one->flags, RULER_NEUTRAL ) ? SEX_NEUTRAL
                  : IS_SET( ruler->this_one->flags, RULER_MALE ) ? SEX_MALE : SEX_FEMALE );
-         sprintf( catbuf, " %s %s : %s \n\r",
+         xprintf( catbuf, " %s %s : %s \n\r",
                   get_ruler_title( ruler->this_one->ruler_rank, sex ),
                   capitalize( ruler->this_one->name ),
                   ( IS_SET( ruler->this_one->flags, RULER_GROUP ) ? ruler->this_one->affiliation_name : "Not Affiliated" ) );
@@ -236,11 +236,11 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          if( ruler->this_one->first_control != NULL )
          {
             CONTROL_LIST *control;
-            sprintf( catbuf, "  Ruler of :" );
+            xprintf( catbuf, "  Ruler of :" );
             safe_strcat( MSL, catbuf, outbuf );
             for( control = ruler->this_one->first_control; control; control = control->next )
             {
-               sprintf( catbuf, "%s\n\r", control->this_one->area->name );
+               xprintf( catbuf, "%s\n\r", control->this_one->area->name );
                safe_strcat( MSL, outbuf, catbuf );
             }
          }

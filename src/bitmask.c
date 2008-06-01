@@ -222,10 +222,10 @@ char *save_bitmask( BITMASK *pBmask ) /* Make this a string so it's easier to pa
  BM_LIST *pBMlist;
  static char buf[MAX_STRING_LENGTH];
 
- sprintf(buf,"%ld %ld",pBmask->masks,pBmask->bits);
+ xprintf(buf,"%ld %ld",pBmask->masks,pBmask->bits);
 
  for( pBMlist = pBmask->int_list; pBMlist; pBMlist = pBMlist->next )
-  sprintf(buf," %ld %ld",pBMlist->set,pBMlist->tar_mask);
+  xprintf(buf," %ld %ld",pBMlist->set,pBMlist->tar_mask);
 
  return buf;
 }

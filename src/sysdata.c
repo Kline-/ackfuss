@@ -38,7 +38,7 @@ void load_sysdata( void )
    FILE *sysfp;
    char sys_file_name[MAX_STRING_LENGTH];
    extern bool wizlock;
-   sprintf( sys_file_name, "%s", SYSDAT_FILE );
+   xprintf( sys_file_name, "%s", SYSDAT_FILE );
 
    if( ( sysfp = fopen( sys_file_name, "r" ) ) == NULL )
    {
@@ -70,7 +70,7 @@ void save_sysdata( void )
    extern bool wizlock;
 
    fclose( fpReserve );
-   sprintf( sys_file_name, "%s", SYSDAT_FILE );
+   xprintf( sys_file_name, "%s", SYSDAT_FILE );
 
    if( ( fp = fopen( sys_file_name, "w" ) ) == NULL )
    {
@@ -118,17 +118,17 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
    if( !str_prefix( arg1, "show" ) )
    {
       sh_int looper;
-      sprintf( outbuf, "%s", "System data for " mudnamecolor ":\n\r" );
-      sprintf( catbuf, "Playtesters: %s\n\r", sysdata.playtesters );
+      xprintf( outbuf, "%s", "System data for " mudnamecolor ":\n\r" );
+      xprintf( catbuf, "Playtesters: %s\n\r", sysdata.playtesters );
       safe_strcat( MSL, outbuf, catbuf );
       for( looper = 0; looper < MAX_NUM_IMMS; looper++ )
       {
-         sprintf( catbuf, "Level %d Immortals: %s\n\r", 81 + looper, sysdata.imms[looper].this_string );
+         xprintf( catbuf, "Level %d Immortals: %s\n\r", 81 + looper, sysdata.imms[looper].this_string );
          safe_strcat( MSL, outbuf, catbuf );
       }
-      sprintf( catbuf, "Wizlocked: %s\n\r", ( wizlock ? "Yes" : "No" ) );
+      xprintf( catbuf, "Wizlocked: %s\n\r", ( wizlock ? "Yes" : "No" ) );
       safe_strcat( MSL, outbuf, catbuf );
-      sprintf( catbuf, "Show Players Damage numbers in combat: %s\n\r", ( sysdata.shownumbers ? "Yes" : "No" ) );
+      xprintf( catbuf, "Show Players Damage numbers in combat: %s\n\r", ( sysdata.shownumbers ? "Yes" : "No" ) );
       safe_strcat( MSL, outbuf, catbuf );
       send_to_char( outbuf, ch );
       return;

@@ -126,20 +126,20 @@ void move_char( CHAR_DATA * ch, int door )
    {
       if( pexit->keyword[0] == '^' )
       {
-         sprintf( door_name_leave, "through the %s", pexit->keyword + 1 );
-         sprintf( door_name_enter, "the %s", pexit->keyword + 1 );
+         xprintf( door_name_leave, "through the %s", pexit->keyword + 1 );
+         xprintf( door_name_enter, "the %s", pexit->keyword + 1 );
       }
       else
       {
-         sprintf( door_name_leave, "through the %s", pexit->keyword );
-         sprintf( door_name_enter, "the %s", pexit->keyword );
+         xprintf( door_name_leave, "through the %s", pexit->keyword );
+         xprintf( door_name_enter, "the %s", pexit->keyword );
       }
 
    }
    else
    {
-      sprintf( door_name_leave, "%s", dir_name[door] );
-      sprintf( door_name_enter, "%s", rev_name[door] );
+      xprintf( door_name_leave, "%s", dir_name[door] );
+      xprintf( door_name_enter, "%s", rev_name[door] );
    }
 
    if( IS_SET( in_room->affected_by, ROOM_BV_ENCAPS ) || IS_SET( to_room->affected_by, ROOM_BV_ENCAPS ) )
@@ -429,9 +429,9 @@ void move_char( CHAR_DATA * ch, int door )
    {
       if( check_valid_ride( ch ) )
       {
-         sprintf( tmp, "You ride %s on %s.\n\r", door_name_leave, ch->riding->short_descr );
+         xprintf( tmp, "You ride %s on %s.\n\r", door_name_leave, ch->riding->short_descr );
          send_to_char( tmp, ch );
-         sprintf( tmp, "$n rides %s on %s.", door_name_leave, ch->riding->short_descr );
+         xprintf( tmp, "$n rides %s on %s.", door_name_leave, ch->riding->short_descr );
       }
    }
 
@@ -442,21 +442,21 @@ void move_char( CHAR_DATA * ch, int door )
          act( "$n climbs $T.", ch, NULL, door_name_leave, TO_ROOM );
       else if( IS_SET( pexit->exit_info, EX_CLOSED ) )   /* using passdoor */
       {
-         sprintf( buf, "$L$n floats %s.", door_name_leave );
+         xprintf( buf, "$L$n floats %s.", door_name_leave );
          act( buf, ch, NULL, pexit->keyword, TO_ROOM );
       }
       else
       {
          if( IS_NPC( ch ) || ( !IS_NPC( ch ) && ( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) ) ) )
-            sprintf( move_buf, "$L$n %s $T.", "wanders" );
+            xprintf( move_buf, "$L$n %s $T.", "wanders" );
          else if( ch->riding == NULL )
          {
-            sprintf( move_buf, "$L%s$n %s $T.",
+            xprintf( move_buf, "$L%s$n %s $T.",
                      get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->pcdata->room_exit );
          }
          else if( ch->riding != NULL )
          {
-            sprintf( move_buf, "$L%s$n rides $T on %s.",
+            xprintf( move_buf, "$L%s$n rides $T on %s.",
                      get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->riding->short_descr );
          }
          act( move_buf, ch, NULL, door_name_leave, TO_ROOM );
@@ -482,15 +482,15 @@ void move_char( CHAR_DATA * ch, int door )
     */
    {
       if( IS_NPC( ch ) || ( !IS_NPC( ch ) && ( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) ) ) )
-         sprintf( move_buf, "$L$n %s $T.", "wanders in from" );
+         xprintf( move_buf, "$L$n %s $T.", "wanders in from" );
       else if( ch->riding == NULL )
       {
-         sprintf( move_buf, "$L%s$n %s $T.",
+         xprintf( move_buf, "$L%s$n %s $T.",
                   get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->pcdata->room_enter );
       }
       else if( ch->riding != NULL )
       {
-         sprintf( move_buf, "$L%s$n rides in from $T on %s.",
+         xprintf( move_buf, "$L%s$n rides in from $T on %s.",
                   get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->riding->short_descr );
       }
       act( move_buf, ch, NULL, door_name_enter, TO_ROOM );
@@ -1530,7 +1530,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
          lose = ( ch->level / 4 ) + 1;
          lose = UMIN( lose, ch->exp );
          gain_exp( ch, 0 - lose );
-         sprintf( buf, "You failed!  You lose %d exps.\n\r", lose );
+         xprintf( buf, "You failed!  You lose %d exps.\n\r", lose );
          send_to_char( buf, ch );
          return;
       }
@@ -1538,7 +1538,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
       lose = ( ch->level / 4 ) + 25;
       lose = UMIN( lose, ch->exp );
       gain_exp( ch, 0 - lose );
-      sprintf( buf, "You recall from combat!  You lose %d exps.\n\r", lose );
+      xprintf( buf, "You recall from combat!  You lose %d exps.\n\r", lose );
       send_to_char( buf, ch );
       stop_fighting( ch, TRUE );
    }
@@ -1600,7 +1600,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    if( argument[0] == '\0' )
    {
-      sprintf( buf, "You have %d practice sessions.\n\r", ch->practice );
+      xprintf( buf, "You have %d practice sessions.\n\r", ch->practice );
       send_to_char( buf, ch );
       argument = "foo";
    }
@@ -1696,31 +1696,31 @@ void do_train( CHAR_DATA * ch, char *argument )
       if( ch->pcdata->perm_str < ch->pcdata->max_str )
       {
          strcat( buf, "  str" );
-         sprintf( buf2, " (%d)", cost1 );
+         xprintf( buf2, " (%d)", cost1 );
          strcat( buf, buf2 );
       }
       if( ch->pcdata->perm_int < ch->pcdata->max_int )
       {
          strcat( buf, "  int" );
-         sprintf( buf2, " (%d)", cost2 );
+         xprintf( buf2, " (%d)", cost2 );
          strcat( buf, buf2 );
       }
       if( ch->pcdata->perm_wis < ch->pcdata->max_wis )
       {
          strcat( buf, "  wis" );
-         sprintf( buf2, " (%d)", cost3 );
+         xprintf( buf2, " (%d)", cost3 );
          strcat( buf, buf2 );
       }
       if( ch->pcdata->perm_dex < ch->pcdata->max_dex )
       {
          strcat( buf, "  dex" );
-         sprintf( buf2, " (%d)", cost4 );
+         xprintf( buf2, " (%d)", cost4 );
          strcat( buf, buf2 );
       }
       if( ch->pcdata->perm_con < ch->pcdata->max_con )
       {
          strcat( buf, "  con" );
-         sprintf( buf2, " (%d)", cost5 );
+         xprintf( buf2, " (%d)", cost5 );
          strcat( buf, buf2 );
       }
       if( buf[strlen( buf ) - 1] != ':' )
@@ -1993,14 +1993,14 @@ void do_scan( CHAR_DATA * ch, char *argument )
 
                if( IS_NPC( d ) )
                {
-                  sprintf( person, "%s (NPC)", d->short_descr );
+                  xprintf( person, "%s (NPC)", d->short_descr );
                }
                else
                {
-                  sprintf( person, "%s", PERS( d, ch ) );
+                  xprintf( person, "%s", PERS( d, ch ) );
                }
 
-               sprintf( buf, "%s : %s\n\r", dir_name[door], person );
+               xprintf( buf, "%s : %s\n\r", dir_name[door], person );
 
                send_to_char( buf, ch );
 
@@ -2010,7 +2010,7 @@ void do_scan( CHAR_DATA * ch, char *argument )
          if( ( pexit->to_room->affected_by != 0 )
              && ( ( is_affected( ch, skill_lookup( "detect magic" ) ) ) || ( item_has_apply( ch, ITEM_APPLY_DET_MAG ) ) ) )
          {
-            sprintf( buf, "The room %s has a @@rMagical@@N Affect!!!\n\r", dir_name[door] );
+            xprintf( buf, "The room %s has a @@rMagical@@N Affect!!!\n\r", dir_name[door] );
             send_to_char( buf, ch );
          }
 
@@ -2186,18 +2186,18 @@ void do_scout( CHAR_DATA * ch, char *argument )
                continue;
 
             if( depth == 1 )
-               sprintf( pre, "%s : ", dir_name[door] );
+               xprintf( pre, "%s : ", dir_name[door] );
             else if( depth == 2 )
-               sprintf( pre, "Far %s : ", dir_name[door] );
+               xprintf( pre, "Far %s : ", dir_name[door] );
             else if( depth == 3 )
-               sprintf( pre, "Very Far %s : ", dir_name[door] );
+               xprintf( pre, "Very Far %s : ", dir_name[door] );
             else if( depth == 4 )
-               sprintf( pre, "Distant %s : ", dir_name[door] );
+               xprintf( pre, "Distant %s : ", dir_name[door] );
 
             if( IS_NPC( target ) )
-               sprintf( buf, "%s%s\n\r", pre, target->short_descr );
+               xprintf( buf, "%s%s\n\r", pre, target->short_descr );
             else
-               sprintf( buf, "%s%s\n\r", pre, target->name );
+               xprintf( buf, "%s%s\n\r", pre, target->name );
 
             send_to_char( buf, ch );
          }

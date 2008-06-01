@@ -441,3 +441,7 @@ do { \
 /*
  * Miscellaneous macros.
  */
+/* My additions; safe_sprintf by Darien --Kline */
+#define xprintf(var,args...) safe_printf (__FILE__, __FUNCTION__, __LINE__, sizeof(var), (var), ##args )
+/* for *char types */
+#define xprintf_2(var,args...) safe_printf (__FILE__, __FUNCTION__, __LINE__, MIL, (var), ##args)

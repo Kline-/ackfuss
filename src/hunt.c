@@ -236,11 +236,11 @@ bool set_hunt( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj
       ch->searching = NULL;
    }
    ch->hunt_flags = nflags;
-   sprintf( buf, "%s has started hunting (%s) %s",
+   xprintf( buf, "%s has started hunting (%s) %s",
             NAME( ch ),
             ( vch ? IS_NPC( vch ) ? "mobile" : "player" : "object" ), ( vch ? NAME( vch ) : vobj->short_descr ) );
    if( fch )
-      sprintf( buf + strlen( buf ), " for %s", NAME( fch ) );
+      xprintf( buf + strlen( buf ), " for %s", NAME( fch ) );
    monitor_chan( buf, MONITOR_HUNTING );
 /*  bug(buf, 0);  */
    return TRUE;
@@ -367,14 +367,14 @@ bool mob_hunt( CHAR_DATA * mob )
          switch ( number_bits( 4 ) )
          {
             case 0:
-               sprintf( buf, "$N tells you '%s seems to have disappeared!'", NAME( mob->hunting ) );
+               xprintf( buf, "$N tells you '%s seems to have disappeared!'", NAME( mob->hunting ) );
                act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
                end_hunt( mob );
                return TRUE;
             case 1:
             case 2:
             case 3:
-               sprintf( buf, "$N tells you '%s seems to have disappeared!  I shall "
+               xprintf( buf, "$N tells you '%s seems to have disappeared!  I shall "
                         "find %s though!'", NAME( mob->hunting ),
                         ( mob->hunting->sex == SEX_MALE ? "him" : mob->hunting->sex == SEX_FEMALE ? "her" : "it" ) );
                act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
@@ -386,16 +386,16 @@ bool mob_hunt( CHAR_DATA * mob )
          switch ( number_bits( 5 ) )
          {
             case 0:
-               sprintf( buf, "Where are you, %s?", NAME( mob->hunting ) );
+               xprintf( buf, "Where are you, %s?", NAME( mob->hunting ) );
                break;
             case 1:
-               sprintf( buf, "Why can't I find you, %s?", NAME( mob->hunting ) );
+               xprintf( buf, "Why can't I find you, %s?", NAME( mob->hunting ) );
                break;
             case 2:
-               sprintf( buf, "I know you're out there, %s!", NAME( mob->hunting ) );
+               xprintf( buf, "I know you're out there, %s!", NAME( mob->hunting ) );
                break;
             case 3:
-               sprintf( buf, "I'll find you, %s, just wait!", NAME( mob->hunting ) );
+               xprintf( buf, "I'll find you, %s, just wait!", NAME( mob->hunting ) );
                break;
             default:
                return FALSE;
@@ -426,7 +426,7 @@ bool mob_hunt( CHAR_DATA * mob )
       }
       if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->hunt_for )
       {
-         sprintf( buf, "$N tells you 'I have found %s!  Now %s shall die!'",
+         xprintf( buf, "$N tells you 'I have found %s!  Now %s shall die!'",
                   NAME( mob->hunting ),
                   ( mob->hunting->sex == SEX_FEMALE ? "she" : mob->hunting->sex == SEX_MALE ? "he" : "it" ) );
          act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
@@ -434,16 +434,16 @@ bool mob_hunt( CHAR_DATA * mob )
       switch ( number_bits( 2 ) )
       {
          case 0:
-            sprintf( buf, "Now I have you, %s!", NAME( mob->hunting ) );
+            xprintf( buf, "Now I have you, %s!", NAME( mob->hunting ) );
             break;
          case 1:
-            sprintf( buf, "I knew you'd be here, %s!", NAME( mob->hunting ) );
+            xprintf( buf, "I knew you'd be here, %s!", NAME( mob->hunting ) );
             break;
          case 2:
-            sprintf( buf, "Did you really think you were safe, %s?", NAME( mob->hunting ) );
+            xprintf( buf, "Did you really think you were safe, %s?", NAME( mob->hunting ) );
             break;
          case 3:
-            sprintf( buf, "So here you are, %s!", NAME( mob->hunting ) );
+            xprintf( buf, "So here you are, %s!", NAME( mob->hunting ) );
             break;
       }
       if( IS_SET( mob->hunt_flags, HUNT_INFORM ) )
@@ -465,14 +465,14 @@ bool mob_hunt( CHAR_DATA * mob )
          switch ( number_bits( 4 ) )
          {
             case 0:
-               sprintf( buf, "$N tells you 'I seem to have lost %s's trail.'", NAME( mob->hunting ) );
+               xprintf( buf, "$N tells you 'I seem to have lost %s's trail.'", NAME( mob->hunting ) );
                act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
                end_hunt( mob );
                return TRUE;
             case 1:
             case 2:
             case 3:
-               sprintf( buf, "$N tells you 'I seem to have lost %s's trail.  I shall "
+               xprintf( buf, "$N tells you 'I seem to have lost %s's trail.  I shall "
                         "find it again, though!'", NAME( mob->hunting ) );
                act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
                return TRUE;
@@ -483,16 +483,16 @@ bool mob_hunt( CHAR_DATA * mob )
          switch ( number_bits( 6 ) )
          {
             case 0:
-               sprintf( buf, "Where are you hiding, %s?", NAME( mob->hunting ) );
+               xprintf( buf, "Where are you hiding, %s?", NAME( mob->hunting ) );
                break;
             case 1:
-               sprintf( buf, "You can't run forever, %s!", NAME( mob->hunting ) );
+               xprintf( buf, "You can't run forever, %s!", NAME( mob->hunting ) );
                break;
             case 2:
-               sprintf( buf, "Come out, come out, wherever you are, %s!", NAME( mob->hunting ) );
+               xprintf( buf, "Come out, come out, wherever you are, %s!", NAME( mob->hunting ) );
                break;
             case 3:
-               sprintf( buf, "I promise I won't hurt you, %s.", NAME( mob->hunting ) );
+               xprintf( buf, "I promise I won't hurt you, %s.", NAME( mob->hunting ) );
                break;
             default:
                return FALSE;
@@ -523,25 +523,25 @@ void char_hunt( CHAR_DATA * ch )
       {
          if( !can_see_obj( ch, ch->hunt_obj ) || !ch->hunt_obj->in_room )
          {
-            sprintf( buf, "@@RYou seem to have lost the trail to %s.@@N\n\r", ch->hunt_obj->short_descr );
+            xprintf( buf, "@@RYou seem to have lost the trail to %s.@@N\n\r", ch->hunt_obj->short_descr );
             send_to_char( buf, ch );
             end_hunt( ch );
          }
          else if( ch->hunt_obj->in_room == ch->in_room )
          {
-            sprintf( buf, "@@RAhhh.  You have found %s!@@N\n\r", ch->hunt_obj->short_descr );
+            xprintf( buf, "@@RAhhh.  You have found %s!@@N\n\r", ch->hunt_obj->short_descr );
             send_to_char( buf, ch );
             end_hunt( ch );
          }
          else if( ( dir = h_find_dir( ch->in_room, ch->hunt_obj->in_room, ch->hunt_flags ) ) < 0 )
          {
-            sprintf( buf, "@@RYou seem to have lost the trail to %s.@@N\n\r", ch->hunt_obj->short_descr );
+            xprintf( buf, "@@RYou seem to have lost the trail to %s.@@N\n\r", ch->hunt_obj->short_descr );
             send_to_char( buf, ch );
             end_hunt( ch );
          }
          else
          {
-            sprintf( buf, "@@RYou sense that %s is %s of here.@@N\n\r", ch->hunt_obj->short_descr, dir_name[dir] );
+            xprintf( buf, "@@RYou sense that %s is %s of here.@@N\n\r", ch->hunt_obj->short_descr, dir_name[dir] );
             send_to_char( buf, ch );
          }
       }
@@ -564,7 +564,7 @@ void char_hunt( CHAR_DATA * ch )
    }
    else
    {
-      sprintf( buf, "@@RYou sense your prey is %s of here.@@N\n\r", dir_name[dir] );
+      xprintf( buf, "@@RYou sense your prey is %s of here.@@N\n\r", dir_name[dir] );
       send_to_char( buf, ch );
    }
    return;
@@ -592,12 +592,12 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    {
       if( ch->hunting )
       {
-         sprintf( arg, "You stop hunting %s.\n\r", NAME( ch->hunting ) );
+         xprintf( arg, "You stop hunting %s.\n\r", NAME( ch->hunting ) );
          send_to_char( arg, ch );
       }
       else if( ch->hunt_obj )
       {
-         sprintf( arg, "You stop looking for %s.\n\r", ch->hunt_obj->short_descr );
+         xprintf( arg, "You stop looking for %s.\n\r", ch->hunt_obj->short_descr );
          send_to_char( arg, ch );
       }
       else
@@ -609,7 +609,7 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    }
    else if( !IS_IMMORTAL( ch ) && ( victim != NULL ) && !IS_NPC( victim ) && IS_IMMORTAL( victim ) )
    {
-      sprintf( arg, "You can't hunt Immortal %s!\n\r", NAME( victim ) );
+      xprintf( arg, "You can't hunt Immortal %s!\n\r", NAME( victim ) );
       send_to_char( arg, ch );
       return;
    }

@@ -96,7 +96,7 @@ void alarm_update(  )
       abort_threshold = RUNNING_ABORT_THRESHOLD;
       strtime = ctime( &current_time );
       strtime[strlen( strtime ) - 1] = '\0';
-      sprintf( buf, "Used %d user CPU seconds.", last_checkpoint );
+      xprintf( buf, "Used %d user CPU seconds.", last_checkpoint );
       fprintf( stderr, "%s :: %s\n", strtime, buf );
    }
 }
@@ -149,7 +149,7 @@ void alarm_handler( int signo )
       log_f( "current usage: %d, last checkpoint: %d", usage_now, last_checkpoint );
       log_f( "SSM dups: %d, loops: %d, recent: %d", ssm_dup_count, ssm_loops, ssm_recent_loops );
 
-      sprintf( buf, "%s\n\r", szFrozenMessage );
+      xprintf( buf, "%s\n\r", szFrozenMessage );
       bug( buf, 0 );
       raise( SIGABRT ); /* kill ourselves on return */
    }
@@ -221,7 +221,7 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
       ch->pcdata->bloodlust_max += add_bloodlust;
       ch->pcdata->vamp_pracs += add_prac;
       ch->pcdata->vamp_skill_max += add_max_skills;
-      sprintf( buf, "@@NYou gain: %d @@rRage Ability@@N, and %d @@bWerewolf Practices. .@@N\n\r", add_bloodlust, add_prac );
+      xprintf( buf, "@@NYou gain: %d @@rRage Ability@@N, and %d @@bWerewolf Practices. .@@N\n\r", add_bloodlust, add_prac );
 
 
       send_to_char( buf, ch );
@@ -241,7 +241,7 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
       ch->pcdata->vamp_skill_max += add_max_skills;
 
 
-      sprintf( buf, "You gain: %d @@eBloodlust@@N, and %d Vampyre Practices. .\n\r", add_bloodlust, add_prac );
+      xprintf( buf, "You gain: %d @@eBloodlust@@N, and %d Vampyre Practices. .\n\r", add_bloodlust, add_prac );
 
 
       send_to_char( buf, ch );
@@ -290,7 +290,7 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
    if( !IS_NPC( ch ) )
       REMOVE_BIT( ch->act, PLR_BOUGHT_PET );
 
-   sprintf( buf, "You gain: %d Hit Points, %d Mana, %d Movement and %d pracs.\n\r", add_hp, add_mana, add_move, add_prac );
+   xprintf( buf, "You gain: %d Hit Points, %d Mana, %d Movement and %d pracs.\n\r", add_hp, add_mana, add_move, add_prac );
 
    if( show )
       send_to_char( buf, ch );
@@ -1048,45 +1048,48 @@ void weather_update( void )
             for( y = 1; y < MAX_CLAN; y++ )
                politics_data.daily_negotiate_table[x][y] = FALSE;
          clean_donate_rooms(  );
-         monitor_chan("Mud list is being refreshed.",MONITOR_IMC);
-         for( r = first_rinfo; r; r = rnext )
+         if( this_imcmud->autoconnect ) /* Don't attempt a re-connect if we don't want to. --Kline */
          {
-          rnext = r->next;
-          imc_delete_reminfo( r );
+          monitor_chan("Mud list is being refreshed.",MONITOR_IMC);
+          for( r = first_rinfo; r; r = rnext )
+          {
+           rnext = r->next;
+           imc_delete_reminfo( r );
+          }
+          imc_request_keepalive(  );
          }
-         imc_request_keepalive(  );
          break;
    }
    switch ( time_info.moon++ )
    {
       case 5:
          weather_info.moon_loc = MOON_RISE;
-         sprintf( buf2, "@@NA %s @@yMoon @@Nhas risen.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "@@NA %s @@yMoon @@Nhas risen.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
       case 10:
          weather_info.moon_loc = MOON_LOW;
-         sprintf( buf2, "@@NThe %s @@yMoon @@Nrides low on the horizon.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "@@NThe %s @@yMoon @@Nrides low on the horizon.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
       case 15:
          weather_info.moon_loc = MOON_PEAK;
-         sprintf( buf2, "@@NThe %s @@yMoon @@Nreaches it's zenith.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "@@NThe %s @@yMoon @@Nreaches it's zenith.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
       case 20:
          weather_info.moon_loc = MOON_FALL;
-         sprintf( buf2, "@@NThe %s @@yMoon @@Nfalls.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "@@NThe %s @@yMoon @@Nfalls.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
       case 25:
          weather_info.moon_loc = MOON_SET;
-         sprintf( buf2, "@@NThe %s @@yMoon @@Nis setting.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "@@NThe %s @@yMoon @@Nis setting.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
       case 30:
          weather_info.moon_loc = MOON_DOWN;
-         sprintf( buf2, "@@NThe %s @@yMoon @@Nhas left the sky.\n\r", get_moon_phase_name(  ) );
+         xprintf( buf2, "@@NThe %s @@yMoon @@Nhas left the sky.\n\r", get_moon_phase_name(  ) );
          safe_strcat( MSL, buf, buf2 );
          break;
 
@@ -1402,7 +1405,7 @@ void char_update( void )
                   OBJ_DATA *replacer;
                   if( ( new_index = get_obj_index( obj->value[6] ) ) == NULL )
                   {
-                     sprintf( bug_buf,
+                     xprintf_2( bug_buf,
                               "ERROR in expiring item %s(%s %d): item has a replace vnum set (%d), but that is not a valid item.",
                               obj->name, obj->pIndexData->area->keyword, obj->pIndexData->vnum, obj->value[6] );
                      monitor_chan( bug_buf, MONITOR_OBJ );
@@ -1797,7 +1800,7 @@ void obj_update( void )
          OBJ_DATA *replacer;
          if( ( new_index = get_obj_index( obj->value[6] ) ) == NULL )
          {
-            sprintf( bug_buf,
+            xprintf_2( bug_buf,
                      "ERROR in expiring item %s(%s %d): item has a replace vnum set (%d), but that is not a valid item.",
                      obj->name, obj->pIndexData->area->keyword, obj->pIndexData->vnum, obj->value[6] );
             monitor_chan( bug_buf, MONITOR_OBJ );
@@ -2192,7 +2195,7 @@ bool check_rewield( CHAR_DATA * ch )
 
       if( pickup )
       {
-         sprintf( buf, "Great!  %s!  Just what i've always wanted!", weapon->short_descr );
+         xprintf( buf, "Great!  %s!  Just what i've always wanted!", weapon->short_descr );
          do_say( ch, buf );
       }
 
@@ -2353,7 +2356,7 @@ bool check_re_equip( CHAR_DATA * ch )
           */
          if( pickup )
          {
-            sprintf( buf, "Great!  %s!  Just what i've always wanted!", armor->short_descr );
+            xprintf( buf, "Great!  %s!  Just what i've always wanted!", armor->short_descr );
             do_say( ch, buf );
          }
 
@@ -2387,7 +2390,7 @@ bool check_re_equip( CHAR_DATA * ch )
           */
          if( pickup )
          {
-            sprintf( buf, "Great!  %s!  Just what i've always wanted!", light->short_descr );
+            xprintf( buf, "Great!  %s!  Just what i've always wanted!", light->short_descr );
             do_say( ch, buf );
          }
 
@@ -2444,21 +2447,21 @@ void auction_update( void )
       case 0:
          if( auction_bidder == NULL )
          {
-            sprintf( buf,
+            xprintf( buf,
                      "@@N%s (level:%d, valued at %s) has been offered for auction.  A @@e10%% fee@@N will be charged, the higher of the reserve price or highest bid.",
                      auction_item->short_descr, auction_item->level, cost_to_money( auction_item->cost ) );
          }
          else
          {
-            sprintf( buf, "%s has bid %s for %s.", auction_bidder->name,
+            xprintf( buf, "%s has bid %s for %s.", auction_bidder->name,
                      cost_to_money( auction_bid ), auction_item->short_descr );
          }
          break;
       case 1:
          if( auction_bidder == NULL )
-            sprintf( buf, "Last chance to bid for %s.", auction_item->short_descr );
+            xprintf( buf, "Last chance to bid for %s.", auction_item->short_descr );
          else
-            sprintf( buf, "Last bid for %s was %s.  Any more offers?",
+            xprintf( buf, "Last bid for %s was %s.  Any more offers?",
                      auction_item->short_descr, cost_to_money( auction_bid ) );
          break;
       case 2:
@@ -2494,10 +2497,10 @@ void auction_update( void )
             auction_item = NULL;
             return;
          }
-         sprintf( buf, "%s - Going Once!", auction_item->short_descr );
+         xprintf( buf, "%s - Going Once!", auction_item->short_descr );
          break;
       case 3:
-         sprintf( buf, "%s - Going TWICE!", auction_item->short_descr );
+         xprintf( buf, "%s - Going TWICE!", auction_item->short_descr );
          break;
       case 4:
          if( auction_bid < auction_reserve )
@@ -2510,7 +2513,7 @@ void auction_update( void )
                   good_buyer = TRUE;
             }
 
-            sprintf( buf, "%s - CANCELLED.  Reserve price not matched.", auction_item->short_descr );
+            xprintf( buf, "%s - CANCELLED.  Reserve price not matched.", auction_item->short_descr );
             if( good_seller )
             {
                int bid;
@@ -2542,13 +2545,13 @@ void auction_update( void )
 
             if( good_buyer )
             {
-               sprintf( buf, "%s - SOLD! to %s.", auction_item->short_descr, auction_bidder->name );
+               xprintf( buf, "%s - SOLD! to %s.", auction_item->short_descr, auction_bidder->name );
 
                obj_to_char( auction_item, auction_bidder );
             }
             else
             {
-               sprintf( buf, "%s - SOLD!, but the buyer has left us.  Oh Well!!!", auction_item->short_descr );
+               xprintf( buf, "%s - SOLD!, but the buyer has left us.  Oh Well!!!", auction_item->short_descr );
                extract_obj( auction_item );
             }
             if( good_seller )
@@ -2586,11 +2589,11 @@ void remember_attack( CHAR_DATA * ch, CHAR_DATA * victim )
    switch ( number_range( 0, 7 ) )
    {
       case 0:
-         sprintf( buf, "%s returns!  I shall have my revenge at last!", victim->name );
+         xprintf( buf, "%s returns!  I shall have my revenge at last!", victim->name );
          do_yell( ch, buf );
          break;
       case 1:
-         sprintf( buf, "%s You should never have returned.  Ye shall DIE!", victim->name );
+         xprintf( buf, "%s You should never have returned.  Ye shall DIE!", victim->name );
          do_whisper( ch, buf );
          break;
       case 2:
@@ -2600,24 +2603,24 @@ void remember_attack( CHAR_DATA * ch, CHAR_DATA * victim )
          do_say( ch, "I SHALL HAVE MY REVENGE!!!" );
          break;
       case 3:
-         sprintf( buf, "%s has wronged me, and now I will seek my revenge!", victim->name );
+         xprintf( buf, "%s has wronged me, and now I will seek my revenge!", victim->name );
          do_gossip( ch, buf );
-         sprintf( buf, "Prepare to die, %s.", victim->name );
+         xprintf( buf, "Prepare to die, %s.", victim->name );
          do_say( ch, buf );
          break;
       case 4:
-         sprintf( buf, "So, %s.  You have returned.  Let us finish our fight this time!", victim->name );
+         xprintf( buf, "So, %s.  You have returned.  Let us finish our fight this time!", victim->name );
          do_say( ch, buf );
          break;
       case 5:
-         sprintf( buf, "Only cowards flee from me, %s!", victim->name );
+         xprintf( buf, "Only cowards flee from me, %s!", victim->name );
          do_say( ch, buf );
          break;
       case 6:
          act( "$n looks at $N, and recognizes $M!!", ch, NULL, victim, TO_ROOM );
          act( "$n looks at you, and recognizes you!!", ch, NULL, victim, TO_VICT );
          act( "You look at $N, and recognize $M!", ch, NULL, victim, TO_CHAR );
-         sprintf( buf, "There can only be one winner, %s.", victim->name );
+         xprintf( buf, "There can only be one winner, %s.", victim->name );
          do_say( ch, buf );
          break;
    }

@@ -186,7 +186,7 @@ void build_save(  )
          CurLoops = SaveQ[CurrentSaving].loops;
          send_to_char( "Starting Save.\n", CurSaveChar );
 
-         sprintf( filename, "%s.new", CurSaveArea->filename );
+         xprintf( filename, "%s.new", CurSaveArea->filename );
          SaveFile = fopen( filename, "w" );
          if( SaveFile == NULL )
          {
@@ -199,7 +199,7 @@ void build_save(  )
           * Open second file for saving in envy format 
           */
 
-         sprintf( buf, "Starting to save %s", CurSaveArea->filename );
+         xprintf( buf, "Starting to save %s", CurSaveArea->filename );
          monitor_chan( buf, MONITOR_AREA_SAVING );
 
 
@@ -745,7 +745,7 @@ void build_save_end(  )
    char filename[255];
    char buf[MAX_STRING_LENGTH];
 
-   sprintf( buf, "Finished saving %s", CurSaveArea->filename );
+   xprintf( buf, "Finished saving %s", CurSaveArea->filename );
    monitor_chan( buf, MONITOR_AREA_SAVING );
 
    fprintf( SaveFile, "#$\n" );
@@ -754,12 +754,12 @@ void build_save_end(  )
    /*
     * Save backup 
     */
-   sprintf( filename, "%s.old", CurSaveArea->filename );
+   xprintf( filename, "%s.old", CurSaveArea->filename );
    rename( CurSaveArea->filename, filename );
    /*
     * And rename .new to area filename 
     */
-   sprintf( filename, "%s.new", CurSaveArea->filename );
+   xprintf( filename, "%s.new", CurSaveArea->filename );
    rename( filename, CurSaveArea->filename );
 
    Section = 0;
