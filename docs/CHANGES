@@ -1,3 +1,22 @@
+4.3.4 - 01 Jun 08:
+ Damage spells now have a +/- 10% randomness. It's pretty boring seeing the exact same damage all the time!
+ strcat and the old safe_strcat were replaced with a newer xcat, along the lines of xprintf.
+ When using 'long <str>' on an obj or mob it will auto-newline. No more need to $edit to add it.
+ Moved most things to xprintf by Darien. It will log (to file and in-game) what overflows a buffer and the exact location in the code. Some things couldn't move, yet, as they rely on sprintf returning an int.
+ Fixed a rare permanent loop issue in IMC.
+ Fixed autoquest to ignore imms.
+ Added an autodig feature for builders to automatically dig out exits while walking if enabled.
+ Added Runter's bitmask system. This is not in active use yet, but I will be moving things to it slowly.
+ Imms now see the vnum of mobs and objs while in the builder.
+ Updated every mob in the game to have an appropriate race.
+ Fixed a minor log inconsistency and imms now see mob races in addition to player races.
+ Added 3 new player/npc races and 1 npc race.
+ 'rlist' will now display a data sheet per race with 'rlist <abbr>'.
+ The race table has a new bool of has_money for configuring races that drop cash when they die (stop giving rats gold!).
+ Changed load_obj() to not randomize the level if an obj is level 1 (was messing up newbie school gear).
+ Mobs now take 8 hours to fill up on gold rather than 2.
+ Removed the old has_exp_fix checks as they no longer apply.
+ The imcrefresh routine goes off at midnight (game time) to help keep the mud connected to IMC. Only works if autoconnect is turned on.
 4.3.3 - 24 May 08:
  Minor helpfile updates.
  Removed some duplicate code in bust_a_prompt() and added some new options.
