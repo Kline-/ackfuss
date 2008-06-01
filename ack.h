@@ -1659,7 +1659,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) );
 
 /* build.c */
 extern const char *cDirs;
-void build_strdup      args( ( char **dest, char *src, bool freesrc, CHAR_DATA * ch ) );
+void build_strdup      args( ( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA * ch ) );
 char *build_simpstrdup args( ( char *buf ) );   /* A plug in alternative to str_dup */
 void build_save        args( ( void ) );
 int  get_dir           args( ( char ) );
