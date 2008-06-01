@@ -40,6 +40,7 @@
 
 extern POL_DATA politics_data;
 extern OBJ_DATA *quest_object;
+extern CHAR_DATA *quest_mob;
 
 extern COUNCIL_DATA super_councils[MAX_SUPER];
 
@@ -1950,6 +1951,9 @@ void aggr_update( void )
          }
          if( IS_SET( victim->in_room->room_flags, ROOM_SAFE ) )
             continue;
+
+         if( ch == quest_mob ) /* Stop the quest mob from fighting folks trying to help it! --Kline */
+          continue;
 
          act( "$n growls at $N!", victim, NULL, ch, TO_NOTVICT );
          act( "$N growls at you!  Uh-oh!!", victim, NULL, ch, TO_CHAR );
