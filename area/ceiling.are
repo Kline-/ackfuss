@@ -125,6 +125,21 @@ where is the thief?
 CWHERE tells you the location of any fellow clan members, where ever they are
 in the game.  You must belong to a clan to use this command.
 ~
+0 DEATH~
+When your character dies, your corpse is magically transported to the
+Morgue of Moribound - an establishment which serves all the realms of this
+land.  You are given a new body to use, and placed in the lands of
+Moribound.
+
+The only task you must complete is to get to your corpse is find your way to
+the morgue - a task set as a rather sick joke by the morgue's management.
+
+Any spells which were affecting you are canceled by death.
+Following and groups are not affected by death.
+You lose HALF of the experience points you have.
+Corpses decay after time, and the objects inside corpses decay with them.
+Only the player who died may take items from his/her/it's corpse.
+~
 0 DIAGNOSE~
 DIAGNOSE allows you to check on the condition of a player or mob.
 The condition is shown on a scale 5(best) to 1(worst)
@@ -257,6 +272,31 @@ note remove # of message to delete it
 
 @@eALL note and mail commands must be done at a postmaster!!@@N
 ~
+0 NEWBIE~
+As a new player to Shades of Evil, there are several things that you will
+need to know.  First off, it's important to understand that this is a
+multiclass mud...you are, right now, a member of 5 classes.  When it comes
+time to level your character, you can find the guildmasters in the players
+area, west of the temple/recall.  Type help GAIN to find out about
+leveling your character.
+
+Here are some important helps that you need to read:
+        HELP COLOR
+        COLOR HELP
+        HELP DEATH
+        HELP TRAIN
+        WORTH
+
+Here's a couple more things about Shades of Evil that are handy to know:
+        Recalls are free, just type "recall"
+        There is no rent here, just "save" and "quit"
+        There are NO DEATHTRAPS on SoE...we hate them.
+        There ARE item level limits...it's the only way we have right now
+          to control item flow among characters.
+        Your colors are completely configurable, read COLOR HELP.
+        -and, last by not least-
+        The Immortals are here to help you!  Ask them questions! (Politely!)
+~
 0 PEMOTE~
 PEMOTE acts in the same way as emote, except that where emote adds your name
 before the argument, PEMOTE adds you name PLUS the characters 's
@@ -276,10 +316,48 @@ WARNING: Un-necessary use of this channel will result in your ability to use
 0 RACE RACES RLIST~
 RLIST reports details about the different races in these Realms.
 ~
+0 REMORT~
+@@aREMORT@@W
+
+Shades of Evil's remort policy is as follows:
+        When you have attained 70th level in @@ytwo@@W classes, you may add
+        @@yone@@W of the five remort classes to your character.
+        When you have attained 70th level in that new class, and have
+        attained 80th level in @@yall@@W five basic classes, you may add
+        a @@ysecond@@W remort class.
+
+        When you have attained 80th level in all classes, including the
+        two remort classes, you will become an @@gAdept@@W.
+
+When you are ready to remort, type gain <first three letters of new class>.
+
+Remort classes are:
+        -@@cKnight@@W
+        -@@pSorcerer@@W
+        -@@GNecromancer@@W
+        -@@gMonk@@W
+        -@@dAssassin@@W
+~
 0 SCAN~
 SCAN reports the (seen) characters or mobiles surrounding the player.
 Scan tells you the direction and the people situation that way, if any.
 Useful for checking about you in unknown circumstances.
+~
+85 SYSDATA~
+OPTION               DESCRIPTION
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Playtesters          These characters are allowed to login while the game
+                     is wizlocked.
+Wizlocked            Shows if the game is currently wizlocked. Info only.
+                     To change this setting, use the wizlock command.
+Show Damage          Toggles displaying numeric damage in combat.
+Exp Multiplier       All exp gained is multiplied by this number.
+Mob AC               Every mob's AC is multiplied by this number each load.
+Mob DR               Every mob's DR is multiplied by this number each load.
+Mob HP               Every mob's HP is multiplied by this number each load.
+Mob HR               Every mob's HR is multiplied by this number each load.
+Mob MP               Every mob's MP is multiplied by this number each load.
+Mob MV               Every mob's MV is multiplied by this number each load.
 ~
 0 TONGUE~
 TONGUE is equivalent to SAY, except that only players of your race will
@@ -310,113 +388,6 @@ It is also possible to spend practices on hit points or mana points.
 WORTH simply displays a list of any classes you are able to level in,
 along with the cost in exp to gain in it, and the difference between that
 cost and your current exp.
-~
-0 REMORT~
-@@aREMORT@@W
-
-Shades of Evil's remort policy is as follows:
-
-        When you have attained 70th level in @@ytwo@@W classes, you may add
-
-        @@yone@@W of the five remort classes to your character.
-
-        When you have attained 70th level in that new class, and have
-
-        attained 80th level in @@yall@@W five basic classes, you may add
-
-        a @@ysecond@@W remort class.
-
-
-        When you have attained 80th level in all classes, including the
-
-        two remort classes, you will become an @@gAdept@@W.
-
-When you are ready to remort, type gain <first three letters of new class>.
-
-
-Remort classes are:
-
-        -@@cKnight@@W
-
-        -@@pSorcerer@@W
-
-        -@@GNecromancer@@W
-
-        -@@gMonk@@W
-
-        -@@dAssassin@@W
-
-~
-0 DEATH~
-When your character dies, your corpse is magically transported to the 
-
-Morgue of Moribound - an establishment which serves all the realms of this 
-
-land.  You are given a new body to use, and placed in the lands of 
-
-Moribound.
-
-The only task you must complete is to get to your corpse is find your way to
-
-the morgue - a task set as a rather sick joke by the morgue's management.
-
-
-Any spells which were affecting you are canceled by death.
-
-Following and groups are not affected by death.
-
-You lose HALF of the experience points you have.
-
-Corpses decay after time, and the objects inside corpses decay with them.
-
-Only the player who died may take items from his/her/it's corpse.
-
-~
-0 NEWBIE~
-As a new player to Shades of Evil, there are several things that you will 
-
-need to know.  First off, it's important to understand that this is a  
-
-multiclass mud...you are, right now, a member of 5 classes.  When it comes
-
-time to level your character, you can find the guildmasters in the players
-
-area, west of the temple/recall.  Type help GAIN to find out about 
-
-leveling your character.
-
-
-Here are some important helps that you need to read:
-
-	HELP COLOUR
-
-	COLOUR HELP
-
-	HELP DEATH
-
-	HELP TRAIN
-
-	WORTH
-
-
-Here's a couple more things about Shades of Evil that are handy to know:
-
-	Recalls are free, just type "recall"
-
-	There is no rent here, just "save" and "quit"
-
-	There are NO DEATHTRAPS on SoE...we hate them.
-
-	There ARE item level limits...it's the only way we have right now
-
-	  to control item flow among characters.
-
-	Your colors are completely configurable, read COLOUR HELP.
-
-	-and, last by not least-
-
-	The Immortals are here to help you!  Ask them questions! (Politely!)
-
 ~
 0 QP QUESTPOINTS~
 Quest Points

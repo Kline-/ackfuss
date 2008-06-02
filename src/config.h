@@ -86,8 +86,6 @@
 #define MAX_STANCE		13
 #define MAX_TOT_STATS               90   /* Total sum of player stats when creating */
 
-#define MAX_NUM_IMMS    5
-
                      /*
                       * total number of supernatural types in the game  
                       */

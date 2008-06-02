@@ -1568,7 +1568,8 @@ void do_train( CHAR_DATA * ch, char *argument )
    CHAR_DATA *mob;
    int hp_gain = 0;
    int mana_gain = 0;
-   sh_int *pAbility;
+   int *pAbilityI = NULL;
+   sh_int *pAbilityS = NULL; /* This is going to be ugly...But better on memory at least. --Kline */
    int pMax = 0;
    char *pOutput;
    int cost, cost1, cost2, cost3, cost4, cost5; /* Urrgghh */
@@ -1611,7 +1612,7 @@ void do_train( CHAR_DATA * ch, char *argument )
    {
       if( class_table[ch->class].attr_prime == APPLY_STR )
          cost = 3;
-      pAbility = &ch->pcdata->perm_str;
+      pAbilityS = &ch->pcdata->perm_str;
       pMax = ch->pcdata->max_str;
       pOutput = "strength";
    }
@@ -1620,7 +1621,7 @@ void do_train( CHAR_DATA * ch, char *argument )
    {
       if( class_table[ch->class].attr_prime == APPLY_INT )
          cost = 3;
-      pAbility = &ch->pcdata->perm_int;
+      pAbilityS = &ch->pcdata->perm_int;
       pMax = ch->pcdata->max_int;
       pOutput = "intelligence";
    }
@@ -1629,7 +1630,7 @@ void do_train( CHAR_DATA * ch, char *argument )
    {
       if( class_table[ch->class].attr_prime == APPLY_WIS )
          cost = 3;
-      pAbility = &ch->pcdata->perm_wis;
+      pAbilityS = &ch->pcdata->perm_wis;
       pMax = ch->pcdata->max_wis;
       pOutput = "wisdom";
    }
@@ -1638,7 +1639,7 @@ void do_train( CHAR_DATA * ch, char *argument )
    {
       if( class_table[ch->class].attr_prime == APPLY_DEX )
          cost = 3;
-      pAbility = &ch->pcdata->perm_dex;
+      pAbilityS = &ch->pcdata->perm_dex;
       pMax = ch->pcdata->max_dex;
       pOutput = "dexterity";
    }
@@ -1647,14 +1648,14 @@ void do_train( CHAR_DATA * ch, char *argument )
    {
       if( class_table[ch->class].attr_prime == APPLY_CON )
          cost = 3;
-      pAbility = &ch->pcdata->perm_con;
+      pAbilityS = &ch->pcdata->perm_con;
       pMax = ch->pcdata->max_con;
       pOutput = "constitution";
    }
 
    else if( !str_cmp( argument, "hp" ) )
    {
-      pAbility = &ch->max_hit;
+      pAbilityI = &ch->max_hit;
       pOutput = "number of hit points";
       cost = 4;   /* this is pracs per "train hp" */
       hp_gain = 1;   /* this is hp gained per "train hp" */
@@ -1662,7 +1663,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    else if( !str_cmp( argument, "mana" ) )
    {
-      pAbility = &ch->max_mana;
+      pAbilityI = &ch->max_mana;
       pOutput = "amount of mana";
       cost = 5;
       mana_gain = 1;
@@ -1743,7 +1744,7 @@ void do_train( CHAR_DATA * ch, char *argument )
       }
 
       ch->practice -= cost;
-      *pAbility += hp_gain;
+      *pAbilityI += hp_gain;
       ch->pcdata->hp_from_gain += 1;
       act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
       act( "$n's $T increases!", ch, NULL, pOutput, TO_ROOM );
@@ -1760,14 +1761,14 @@ void do_train( CHAR_DATA * ch, char *argument )
       }
 
       ch->practice -= cost;
-      *pAbility += mana_gain;
+      *pAbilityI += mana_gain;
       ch->pcdata->mana_from_gain += 1;
 
       act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
       act( "$n's $T increases!", ch, NULL, pOutput, TO_ROOM );
       return;
    }
-   if( *pAbility >= pMax )
+   if( *pAbilityS >= pMax )
    {
       act( "Your $T is already at maximum.", ch, NULL, pOutput, TO_CHAR );
       return;
@@ -1780,7 +1781,7 @@ void do_train( CHAR_DATA * ch, char *argument )
    }
 
    ch->practice -= cost;
-   *pAbility += 1;
+   *pAbilityS += 1;
    act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
    act( "$n's $T increases!", ch, NULL, pOutput, TO_ROOM );
    return;

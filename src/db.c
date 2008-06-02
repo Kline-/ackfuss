@@ -435,7 +435,7 @@ void boot_db( void )
       xprintf( clan_file_name, "%s", CLAN_FILE );
 
 
-      xprintf( buf, "Loading %s\n\r", clan_file_name );
+      xprintf( buf, "Loading %s", clan_file_name );
       monitor_chan( buf, MONITOR_CLAN );
 
 
@@ -490,9 +490,10 @@ void boot_db( void )
 
    }
 
-
-
-
+   fBootDb = FALSE;
+   log_f( "Loading System Data." );
+   load_sysdata(  );
+   fBootDb = TRUE;
 
    /*
     * Read in all the area files.
@@ -587,7 +588,7 @@ void boot_db( void )
    {
       log_f( "Fixing Exits......" );
       fix_exits(  );
-      log_f( "Done.\n\r" );
+      log_f( "Done." );
       fBootDb = FALSE;
       log_f( "Checking Resets..." );
       check_resets(  );
@@ -611,10 +612,6 @@ void boot_db( void )
       load_rulers(  );
       log_f( "Loading imm brands." );
       load_brands(  );
-      log_f( "Loading System Data." );
-      load_sysdata(  );
-
-
    }
    auto_quest = TRUE;
    return;
@@ -817,7 +814,7 @@ void load_corpses( void )
    xprintf( corpse_file_name, "%s", CORPSE_FILE );
 
 
-   xprintf( buf, "Loading %s\n\r", corpse_file_name );
+   xprintf( buf, "Loading %s", corpse_file_name );
    log_f( buf );
 
 
@@ -886,7 +883,7 @@ void load_marks( void )
 
    xprintf( marks_file_name, "%s", MARKS_FILE );
 
-   xprintf( buf, "Loading %s\n\r", marks_file_name );
+   xprintf( buf, "Loading %s", marks_file_name );
    log_f( buf );
 
 
@@ -951,7 +948,7 @@ void load_bans( void )
 
 
    xprintf( bans_file_name, "%s", BANS_FILE );
-   xprintf( buf, "Loading %s\n\r", bans_file_name );
+   xprintf( buf, "Loading %s", bans_file_name );
    log_f( buf );
 
 
@@ -2529,8 +2526,13 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 /*  mob->move_to	= NO_VNUM; */
 
    mob->armor = interpolate( mob->level / 2, 100, -100 );
+   mob->armor *= sysdata.mob_ac;
+
+   mob->hitroll += ((get_psuedo_level(mob) / 4) * sysdata.mob_hr);
+   mob->damroll += ((get_psuedo_level(mob) / 4) * sysdata.mob_dr);
 
    mob->max_hit = mob->level * 15 + number_range( mob->level * mob->level / 2, mob->level * mob->level / 1 );
+   mob->max_hit *= sysdata.mob_hp;
    mob->hit = mob->max_hit;
 
    mob->exp = exp_for_mobile( mob->level, mob );
@@ -2540,7 +2542,15 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     * mana for mobs... 
     */
    mob->max_mana = level * 25;
-   mob->mana = level * 25;
+   mob->max_mana *= sysdata.mob_mp;
+   mob->mana = mob->max_mana;
+
+   /*
+    * move for mobs...
+    */
+   mob->max_move = level * 25;
+   mob->max_move *= sysdata.mob_mv;
+   mob->move = mob->max_move;
 
    mob->skills = pMobIndex->skills;
    mob->cast = pMobIndex->cast;
@@ -3533,7 +3543,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
       send_to_char( buf, ch );
    }
 
-   xprintf( buf, "Perms   %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
+   xprintf( buf, "Perms              %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
    send_to_char( buf, ch );
 
    return;

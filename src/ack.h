@@ -68,11 +68,16 @@ struct str_array
 
 struct sysdata_type
 {
-   bool w_lock;
-   bool test_open;
-   char *playtesters;
-   STR_ARRAY imms[MAX_NUM_IMMS];
-   bool shownumbers;
+ float expmult;
+ float mob_ac;
+ float mob_dr;
+ float mob_hp;
+ float mob_hr;
+ float mob_mp;
+ float mob_mv;
+ char *playtesters;
+ bool shownumbers;
+ bool w_lock;
 };
 
 struct board_data
@@ -662,12 +667,12 @@ struct char_data
    time_t last_note;
    sh_int timer;
    sh_int wait;
-   sh_int hit;
-   sh_int max_hit;
-   sh_int mana;
-   sh_int max_mana;
-   sh_int move;
-   sh_int max_move;
+   int hit;
+   int max_hit;
+   int mana;
+   int max_mana;
+   int move;
+   int max_move;
    int gold;
    int balance;   /* Amount of gold (if any) in bank */
    int exp;

@@ -648,10 +648,7 @@ void walk_councils( void )
 }
 void walk_sysdata( void )
 {
-   sh_int looper;
    touch( sysdata.playtesters );
-   for( looper = 0; looper < MAX_NUM_IMMS; looper++ )
-      touch( sysdata.imms[looper].this_string );
 }
 
 
