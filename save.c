@@ -1365,13 +1365,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             ch->prompt = str_dup( "<%h %m %mv> " );
       }
 
-      /*
-       * Why this: ?? 
-       */
-      /*
-       * if ( ch->exp > 2000 )
-       * ch->exp = 2000;      
-       */
       ch->long_descr_orig = str_dup( ch->long_descr );
       if( !fMatch )
       {

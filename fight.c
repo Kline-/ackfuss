@@ -2539,6 +2539,8 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       if( gch->adept_level > 0 )
          funky /= 1000;
 
+      /* Support changing exp on the fly. --Kline */
+      funky *= sysdata.expmult;
 
       xprintf( buf, "You Receive %d Experience Points.\n\r", funky );
       send_to_char( buf, gch );
