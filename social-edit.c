@@ -37,8 +37,6 @@
 #include <string.h>
 #include <time.h>
 #include "globals.h"
-
-#define SOCIAL_FILE DATA_DIR "socials.txt"   /* or whatever fits you */
                            /*
                             * #define CONST_SOCIAL  
                                                          *//*
@@ -67,6 +65,8 @@ void load_social_table(  )
    FILE *fp;
    int i;
 
+   xprintf_2(log_buf,"Loading %s",SOCIAL_FILE);
+   log_f(log_buf);
 
    fp = fopen( SOCIAL_FILE, "r" );
 
@@ -93,6 +93,7 @@ void load_social_table(  )
 
    social_table[maxSocial].name = str_dup( "" );   /* empty! */
 
+   log_f("Done.");
    fclose( fp );
 
 }

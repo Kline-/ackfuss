@@ -372,7 +372,7 @@ void boot_db( void )
    {
       sh_int index;
       char buf[MAX_STRING_LENGTH];
-      log_f( "Initializing Supernatural Councils" );
+      log_f( "Initializing supernatural councils..." );
       for( index = SUPER_NONE; index < MAX_SUPER; index++ )
       {
          super_councils[index].first_member = NULL;
@@ -395,6 +395,7 @@ void boot_db( void )
          super_councils[index].council_name = str_dup( buf );
 
       }
+      log_f("Done.");
    }
 
    /*
@@ -430,14 +431,12 @@ void boot_db( void )
       char clan_file_name[MAX_STRING_LENGTH];
       sh_int x, y;
       char buf[MAX_STRING_LENGTH];
-      log_f( "Loading in Clan diplomacy info." );
 
       xprintf( clan_file_name, "%s", CLAN_FILE );
 
 
       xprintf( buf, "Loading %s", clan_file_name );
-      monitor_chan( buf, MONITOR_CLAN );
-
+      log_f(buf);
 
 
       if( ( clanfp = fopen( clan_file_name, "r" ) ) == NULL )
@@ -474,33 +473,32 @@ void boot_db( void )
          fclose( clanfp );
       }
       fpArea = NULL;
-      xprintf( buf, "Done Loading %s", clan_file_name );
-      log_f( buf );
+      log_f("Done.");
 
    }
 
 
 
    /*
-    * Read in all the socials.
+    * Start loading up data files!
     */
-   {
 
-      load_social_table(  );
-
-   }
-
-   fBootDb = FALSE;
-   log_f( "Loading System Data." );
-   load_sysdata(  );
-   fBootDb = TRUE;
+   load_sysdata();       /* Must be first, can possibly alter things to follow! --Kline */
+   load_social_table();
+/* load_gold(); */
+   load_notes();
+   load_corpses();
+   load_marks();
+   load_bans();
+   load_rulers();
+   load_brands();
 
    /*
     * Read in all the area files.
     */
    {
       FILE *fpList;
-      log_f( "Reading Area Files..." );
+      log_f( "Loading area files..." );
 
       if( ( fpList = fopen( AREA_LIST, "r" ) ) == NULL )
       {
@@ -574,44 +572,30 @@ void boot_db( void )
          fpArea = NULL;
       }
       fclose( fpList );
+      log_f("Done.");
    }
 
    /*
     * Fix up exits.
     * MAG Mod: Check resets. (Allows loading objects of later areas.)
-    * MAG Mod: Load gold for areas.
     * Declare db booting over.
     * Reset all areas once.
     * Load up the notes file.
     * Set the MOBtrigger.
     */
    {
-      log_f( "Fixing Exits......" );
+      log_f( "Fixing exits..." );
       fix_exits(  );
       log_f( "Done." );
       fBootDb = FALSE;
-      log_f( "Checking Resets..." );
+      log_f( "Checking resets..." );
       check_resets(  );
-      log_f( "Done." );
-/*	load_gold(); */
-      log_f( "Updating Areas...." );
+      log_f( "Done.");
+      log_f( "Updating areas..." );
       area_update(  );
-      log_f( "Loading notes" );
-      load_notes(  );
+      log_f("Done.");
       MOBtrigger = TRUE;
-      log_f( "Loading corpses." );
-      load_corpses(  );
-      booting_up = TRUE;
-      log_f( "Loading room marks." );
-      load_marks(  );
       booting_up = FALSE;
-      save_marks(  );
-      log_f( "Loading banned sites." );
-      load_bans(  );
-      log_f( "Loading ruler data." );
-      load_rulers(  );
-      log_f( "Loading imm brands." );
-      load_brands(  );
    }
    auto_quest = TRUE;
    return;
@@ -814,7 +798,7 @@ void load_corpses( void )
    xprintf( corpse_file_name, "%s", CORPSE_FILE );
 
 
-   xprintf( buf, "Loading %s", corpse_file_name );
+   xprintf( buf, "Loading %s", CORPSE_FILE);
    log_f( buf );
 
 
@@ -863,8 +847,7 @@ void load_corpses( void )
    }
    fclose( corpsefp );
    fpArea = NULL;
-   xprintf( buf, "Done Loading %s", corpse_file_name );
-   monitor_chan( buf, MONITOR_CLAN );
+   log_f("Done.");
 
 }
 
@@ -883,7 +866,7 @@ void load_marks( void )
 
    xprintf( marks_file_name, "%s", MARKS_FILE );
 
-   xprintf( buf, "Loading %s", marks_file_name );
+   xprintf( buf, "Loading %s",MARKS_FILE);
    log_f( buf );
 
 
@@ -933,8 +916,7 @@ void load_marks( void )
 
       fclose( marksfp );
       fpArea = NULL;
-      xprintf( buf, "Done Loading %s", marks_file_name );
-      monitor_chan( buf, MONITOR_CLAN );
+      log_f("Done.");
 
    }
 }
@@ -948,7 +930,7 @@ void load_bans( void )
 
 
    xprintf( bans_file_name, "%s", BANS_FILE );
-   xprintf( buf, "Loading %s", bans_file_name );
+   xprintf( buf, "Loading %s",BANS_FILE);
    log_f( buf );
 
 
@@ -998,8 +980,7 @@ void load_bans( void )
 
       fclose( bansfp );
       fpArea = NULL;
-      xprintf( buf, "Done Loading %s", bans_file_name );
-      log_f( buf );
+      log_f("Done.");
 
    }
 }
@@ -1800,6 +1781,9 @@ void load_notes( void )
 {
    FILE *fp;
 
+   xprintf_2(log_buf,"Loading %s",NOTE_FILE);
+   log_f(log_buf);
+
    if( ( fp = fopen( NOTE_FILE, "r" ) ) == NULL )
    {
       log_f( "No note file to read." );
@@ -1816,6 +1800,7 @@ void load_notes( void )
          if( feof( fp ) )
          {
             fclose( fp );
+            log_f("Done.");
             return;
          }
       }
