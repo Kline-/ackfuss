@@ -1289,22 +1289,21 @@
 #define MAIL_DIR        "../mail/"
 #define DATA_DIR        "../data/"
 #define BUG_DIR         "../reports/"
+
 #define BUG_FILE       BUG_DIR  "bugs.txt"   /* For 'bug' and bug( )         */
-#define IDEA_FILE      BUG_DIR   "ideas.txt" /* For 'idea'                   */
-#define TYPO_FILE      BUG_DIR   "typos.txt" /* For 'typo'                   */
-#define NOTE_FILE      DATA_DIR "notes.txt"  /* For 'notes'                  */
-/* FIXME: boards.txt in here????? */
-#define SHUTDOWN_FILE   BUG_DIR  "shutdown.txt" /* For 'shutdown'               */
+#define IDEA_FILE      BUG_DIR  "ideas.txt" /* For 'idea'                   */
+#define TYPO_FILE      BUG_DIR  "typos.txt" /* For 'typo'                   */
+#define SHUTDOWN_FILE  BUG_DIR  "shutdown.txt" /* For 'shutdown'               */
 
-#define CLAN_FILE		DATA_DIR "clandata.dat" /* stores clan diplomacy data   */
-#define CORPSE_FILE	DATA_DIR "corpses.lst"
-#define MARKS_FILE	DATA_DIR "roommarks.lst"
-#define BANS_FILE	DATA_DIR "bans.lst"
-#define RULERS_FILE	DATA_DIR "rulers.lst"
-#define CONTROLS_FILE	DATA_DIR "area_controls.lst"
-#define BRANDS_FILE	DATA_DIR "brands.lst"
-
-#define SYSDAT_FILE	DATA_DIR "system.dat"
+#define NOTE_FILE      DATA_DIR "notes.dat"  /* For 'notes'                  */
+#define CLAN_FILE      DATA_DIR "clans.dat" /* stores clan diplomacy data   */
+#define CORPSE_FILE    DATA_DIR "corpses.dat"
+#define MARKS_FILE     DATA_DIR "marks.dat"
+#define BANS_FILE      DATA_DIR "bans.dat"
+#define RULERS_FILE    DATA_DIR "rulers.dat"
+#define BRANDS_FILE    DATA_DIR "brands.dat"
+#define SYSDAT_FILE    DATA_DIR "sysdat.dat"
+#define SOCIAL_FILE    DATA_DIR "socials.dat"   /* or whatever fits you */
 
 #if defined(SOE) && !defined(SOETEST) && !defined(SOEBLD)
 #define WHO_HTML_FILE   "/home/ftp/pub/webpage/soewholist.html"   /* for ftping who list to html web page :) */

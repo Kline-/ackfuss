@@ -134,8 +134,8 @@ void load_rulers( void )
    xprintf( rulers_file_name, "%s", RULERS_FILE );
 
 
-   xprintf( buf, "Loading %s\n\r", rulers_file_name );
-   monitor_chan( buf, MONITOR_CLAN );
+   xprintf( buf, "Loading %s",RULERS_FILE);
+   log_f(buf);
 
    if( ( rulersfp = fopen( rulers_file_name, "r" ) ) == NULL )
    {
@@ -190,8 +190,7 @@ void load_rulers( void )
 
       fclose( rulersfp );
 
-      xprintf( buf, "Done Loading %s\n\r", rulers_file_name );
-      monitor_chan( buf, MONITOR_CLAN );
+      log_f("Done.");
 
    }
 }

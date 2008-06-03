@@ -45,6 +45,9 @@ void load_sysdata( void )
  char *word;
  bool fMatch;
 
+ xprintf_2(log_buf,"Loading %s",SYSDAT_FILE);
+ log_f(log_buf);
+
  init_sysdata(); /* Need to set some defaults --Kline */
 
  if( (fp = fopen(SYSDAT_FILE,"r")) == NULL )
@@ -62,7 +65,13 @@ void load_sysdata( void )
   {
    case 'E':
     if( !str_cmp(word,"End") )
+    {
+     fflush(fp);
+     fclose(fp);
+     wizlock = sysdata.w_lock;
+     log_f("Done.");
      return;
+    }
     KEY("Expmult",      sysdata.expmult,     fread_number(fp));
     break;
    case 'M':
@@ -90,10 +99,6 @@ void load_sysdata( void )
    fread_to_eol(fp);
   }
  }
-
- fflush(fp);
- fclose(fp);
- wizlock = sysdata.w_lock;
 
  return;
 }

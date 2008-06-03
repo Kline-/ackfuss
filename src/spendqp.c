@@ -94,8 +94,8 @@ void load_brands( void )
    xprintf( brands_file_name, "%s", BRANDS_FILE );
 
 
-   xprintf( buf, "Loading %s\n\r", brands_file_name );
-   monitor_chan( buf, MONITOR_CLAN );
+   xprintf( buf, "Loading %s",BRANDS_FILE);
+   log_f(buf);
 
    if( ( brandsfp = fopen( brands_file_name, "r" ) ) == NULL )
    {
@@ -144,8 +144,7 @@ void load_brands( void )
 
       fclose( brandsfp );
 
-      xprintf( buf, "Done Loading %s\n\r", brands_file_name );
-      monitor_chan( buf, MONITOR_CLAN );
+      log_f("Done.");
 
    }
 }
