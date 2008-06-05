@@ -84,6 +84,7 @@ void load_sysdata( void )
     break;
    case 'P':
     SKEY("Playtesters", sysdata.playtesters, fread_string(fp));
+    KEY("Pulse",        sysdata.pulse,       fread_number(fp));
     break;
    case 'S':
     KEY("Shownumbers",  sysdata.shownumbers, fread_number(fp));
@@ -124,6 +125,7 @@ void save_sysdata( void )
  fprintf(fp, "Mob_MP      %0.4f\n",  sysdata.mob_mp);
  fprintf(fp, "Mob_MV      %0.4f\n",  sysdata.mob_mv);
  fprintf(fp, "Playtesters %s~\n",    sysdata.playtesters);
+ fprintf(fp, "Pulse       %d\n",     sysdata.pulse);
  fprintf(fp, "Shownumbers %d\n",     sysdata.shownumbers);
  fprintf(fp, "Wizlock     %d\n",     wizlock);
  fprintf(fp, "End\n\n");
@@ -152,7 +154,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   send_to_char("Syntax for sysdata:\n\r",ch);
   send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\n\r",ch);
   send_to_char("  strings: playtesters\n\r",ch);
-  send_to_char("  options: mob[ac | dr | hp | hr | mp | mv] expmult shownumbers\n\r",ch);
+  send_to_char("  options: expmult mob[ac | dr | hp | hr | mp | mv] pulse shownumbers\n\r",ch);
   return;
  }
 
@@ -171,12 +173,6 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   xcat(outbuf,catbuf);
   xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Playtesters    ]       [%15s]\n\r",sysdata.playtesters);
-  xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Wizlocked      ]       [%15s]\n\r",(wizlock ? "Yes" : "No"));
-  xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Show Damage    ]       [%15s]\n\r",(sysdata.shownumbers ? "Yes" : "No"));
-  xcat(outbuf,catbuf);
   xprintf(catbuf,"[Exp Multiplier ]       [%15.4f]\n\r",sysdata.expmult);
   xcat(outbuf,catbuf);
   xprintf(catbuf,"[Mob AC         ]       [%15.4f]\n\r",sysdata.mob_ac);
@@ -190,6 +186,14 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   xprintf(catbuf,"[Mob MP         ]       [%15.4f]\n\r",sysdata.mob_mp);
   xcat(outbuf,catbuf);
   xprintf(catbuf,"[Mob MV         ]       [%15.4f]\n\r",sysdata.mob_mv);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Playtesters    ]       [%15s]\n\r",sysdata.playtesters);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Pulse Per Sec  ]       [%15d]\n\r",sysdata.pulse);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Show Damage    ]       [%15s]\n\r",(sysdata.shownumbers ? "Yes" : "No"));
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Wizlocked      ]       [%15s]\n\r",(wizlock ? "Yes" : "No"));
   xcat(outbuf,catbuf);
   xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
   xcat(outbuf,catbuf);
@@ -213,6 +217,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   sysdata.mob_mv = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_prefix(arg1,"playtesters") )
   sysdata.playtesters = str_mod(sysdata.playtesters,arg2);
+ else if( !str_prefix(arg1,"pulse") )
+  sysdata.pulse = atoi(arg2) > 0 ? atoi(arg2) : 1;
  else if( !str_prefix(arg1,"shownumbers") )
   sysdata.shownumbers = (sysdata.shownumbers ? FALSE : TRUE);
  else
@@ -237,6 +243,7 @@ void init_sysdata( void )
  sysdata.mob_mp = 1;
  sysdata.mob_mv = 1;
  sysdata.playtesters = "";
+ sysdata.pulse = 8;
  sysdata.shownumbers = TRUE;
  sysdata.w_lock = FALSE;
 

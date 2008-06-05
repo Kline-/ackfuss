@@ -318,6 +318,8 @@ void boot_db( void )
       init_mm(  );
    }
 
+   load_sysdata();   /* Must be first, can possibly alter things to follow! --Kline */
+
    /*
     * Set time and weather.
     */
@@ -483,7 +485,6 @@ void boot_db( void )
     * Start loading up data files!
     */
 
-   load_sysdata();       /* Must be first, can possibly alter things to follow! --Kline */
    load_social_table();
 /* load_gold(); */
    load_notes();
@@ -3528,7 +3529,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
       send_to_char( buf, ch );
    }
 
-   xprintf( buf, "Perms              %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
+   xprintf( buf, "Perms             %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
    send_to_char( buf, ch );
 
    return;

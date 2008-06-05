@@ -822,14 +822,8 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    if( ( IS_SET( type, REALM_DRAIN ) ) && ( IS_UNDEAD( victim ) ) )
       dam_modifier = 0.0;
 
-   xprintf_2(log_buf,"pre-mod: %d",dam);
-   monitor_chan(log_buf,MONITOR_MAGIC);
    dam *= dam_modifier;
-   xprintf_2(log_buf,"pst-mod: %d",dam);
-   monitor_chan(log_buf,MONITOR_MAGIC);
    dam += number_range((dam * -0.10),(dam * 0.10)); /* Lets add a little randomness to things. --Kline */
-   xprintf_2(log_buf,"random : %d",dam);
-   monitor_chan(log_buf,MONITOR_MAGIC);
 
    /*
     * Stop up any residual loopholes.
