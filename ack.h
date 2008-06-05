@@ -76,6 +76,7 @@ struct sysdata_type
  float mob_mp;
  float mob_mv;
  char *playtesters;
+ sh_int pulse;
  bool shownumbers;
  bool w_lock;
 };

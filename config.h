@@ -205,7 +205,7 @@
 #define OBJ_VNUM_QUEST_MAX		80
 
 
-#define PULSE_PER_SECOND             8
+#define PULSE_PER_SECOND          sysdata.pulse /* Configurable in-game, essential to speed based combat. --Kline */
 #define PULSE_VIOLENCE            (  2 * PULSE_PER_SECOND )
 #define PULSE_MOBILE              (  4 * PULSE_PER_SECOND )
 #define PULSE_OBJFUN		  (  4 * PULSE_PER_SECOND )
