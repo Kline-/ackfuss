@@ -2057,6 +2057,7 @@ void update_handler( void )
    static int pulse_mobile;
    static int pulse_gain;
    static int pulse_violence;
+   static int pulse_combat;
    static int pulse_point;
    static int pulse_auction;
    extern int saving_area;
@@ -2109,6 +2110,12 @@ void update_handler( void )
       alarm_update(  );
       pulse_violence = PULSE_VIOLENCE;
       violence_update(  );
+   }
+
+   if( --pulse_combat <= 0 )
+   {
+    pulse_combat = PULSE_COMBAT;
+    combat_update( );
    }
 
    if( --pulse_mobile <= 0 )

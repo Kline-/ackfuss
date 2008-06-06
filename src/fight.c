@@ -116,28 +116,6 @@ void violence_update( void )
       }
       has_cast = FALSE;
 
-      /*
-       * Speed based combat. Arms attack independantly of each other,
-       * as do special racials such as fangs or tails. --Kline
-       */
-      if( ch->position == POS_FIGHTING && (victim = ch->fighting) != NULL )
-      {
-       ch->speed[SPEED_LH] -= 0.01;
-
-       if( ch->speed[SPEED_LH] <= 0 )
-       {
-        one_hit(ch, victim, TYPE_UNDEFINED);
-        ch->speed[SPEED_LH] = get_speed(ch,SPEED_LH);
-       }
-       ch->speed[SPEED_RH] -= 0.01;
-
-       if( ch->speed[SPEED_RH] <= 0 )
-       {
-        one_hit(ch, victim, TYPE_UNDEFINED);
-        ch->speed[SPEED_RH] = get_speed(ch,SPEED_RH);
-       }
-      }
-
 /* Healing rapidly for raged wolves  */
 
       if( !IS_NPC( ch ) && IS_WOLF( ch ) && IS_RAGED( ch ) )
@@ -455,7 +433,7 @@ void multi_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
        && ( ( ( wield2 = get_eq_char( ch, WEAR_HOLD_HAND_R ) ) != NULL ) && ( wield2->item_type == ITEM_WEAPON ) ) )
       dual_chance = 15;
 
-
+/*
    chance = IS_NPC( ch )
       ? ( IS_SET( ch->skills, MOB_SECOND ) ? 80 : 0 )
       : ( ( ch->pcdata->learned[gsn_second_attack] / 2 ) - ( dex_app[get_curr_dex( ch )].defensive / 3 )
@@ -524,6 +502,7 @@ void multi_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
       if( ch->fighting != victim )
          return;
    }
+*/
    if( !IS_NPC( ch ) && IS_SET( race_table[ch->race].race_flags, RACE_MOD_TAIL ) )
    {
       if( number_percent(  ) < 25 )
@@ -5826,3 +5805,36 @@ float get_speed( CHAR_DATA *ch, int slot )
  return value;
 }
 
+void combat_update( void )
+{
+ CHAR_DATA *ch;
+ CHAR_DATA *ch_next;
+ CHAR_DATA *victim;
+
+ for( ch = first_char; ch; ch = ch_next )
+ {
+  ch_next = ch->next;
+
+  /*
+   * Speed based combat. Arms attack independantly of each other,
+   * as do special racials such as fangs or tails. --Kline
+   */
+  if( ch->position == POS_FIGHTING && (victim = ch->fighting) != NULL )
+  {
+   ch->speed[SPEED_LH] -= 0.01;
+
+   if( ch->speed[SPEED_LH] <= 0 )
+   {
+    one_hit(ch, victim, TYPE_UNDEFINED);
+    ch->speed[SPEED_LH] = get_speed(ch,SPEED_LH);
+   }
+   ch->speed[SPEED_RH] -= 0.01;
+
+   if( ch->speed[SPEED_RH] <= 0 )
+   {
+    one_hit(ch, victim, TYPE_UNDEFINED);
+    ch->speed[SPEED_RH] = get_speed(ch,SPEED_RH);
+   }
+  }
+ }
+}
