@@ -586,6 +586,7 @@ struct mob_index_data
    sh_int race;
    sh_int position;
    int hunt_flags;
+   float speed[4];
 };
 
 
@@ -727,7 +728,7 @@ struct char_data
    MONEY_TYPE *money;
    MONEY_TYPE *bank_money;
    NPC_GROUP_DATA *ngroup;
-
+   float speed[4];
 };
 
 
@@ -967,7 +968,7 @@ struct obj_data
    int value[10];
    sh_int condition; /* % value for condition */
    MONEY_TYPE *money;
-
+   float speed;
 };
 
 
@@ -1405,25 +1406,26 @@ void hang args( ( const char *str ) );
  /*
   * db.c 
   */
-void perm_update args( ( void ) );
-void boot_db args( ( void ) );
-void area_update args( ( void ) );
-void message_update args( ( void ) );
-CD *create_mobile args( ( MOB_INDEX_DATA * pMobIndex ) );
-OD *create_object args( ( OBJ_INDEX_DATA * pObjIndex, int level ) );
-void clear_char args( ( CHAR_DATA * ch ) );
-void free_char args( ( CHAR_DATA * ch ) );
-char *get_extra_descr args( ( const char *name, EXTRA_DESCR_DATA * ed ) );
-MID *get_mob_index args( ( int vnum ) );
-OID *get_obj_index args( ( int vnum ) );
-RID *get_room_index args( ( int vnum ) );
-char fread_letter args( ( FILE * fp ) );
-int fread_number args( ( FILE * fp ) );
-char *fread_string args( ( FILE * fp ) );
-void fread_to_eol args( ( FILE * fp ) );
-char *fsave_to_eol args( ( FILE * fp ) );
-char *fread_word args( ( FILE * fp ) );
-bool char_exists args( ( char *argument ) );
+void  perm_update      args( ( void ) );
+void  boot_db          args( ( void ) );
+void  area_update      args( ( void ) );
+void  message_update   args( ( void ) );
+CD    *create_mobile   args( ( MOB_INDEX_DATA * pMobIndex ) );
+OD    *create_object   args( ( OBJ_INDEX_DATA * pObjIndex, int level ) );
+void  clear_char       args( ( CHAR_DATA * ch ) );
+void  free_char        args( ( CHAR_DATA * ch ) );
+char  *get_extra_descr args( ( const char *name, EXTRA_DESCR_DATA * ed ) );
+MID   *get_mob_index   args( ( int vnum ) );
+OID   *get_obj_index   args( ( int vnum ) );
+RID   *get_room_index  args( ( int vnum ) );
+char  fread_letter     args( ( FILE * fp ) );
+int   fread_number     args( ( FILE * fp ) );
+char  *fread_string    args( ( FILE * fp ) );
+void  fread_to_eol     args( ( FILE * fp ) );
+char  *fsave_to_eol    args( ( FILE * fp ) );
+char  *fread_word      args( ( FILE * fp ) );
+bool  char_exists      args( ( char *argument ) );
+float number_speed     args( ( void ) );
 
 /* void *  alloc_mem       args( ( int sMem ) );
 void    check_freed     args( ( unsigned int first, unsigned int last) );
@@ -1456,15 +1458,15 @@ void bugf( char *fmt, ... ) __attribute__ ( ( format( printf, 1, 2 ) ) );
 void log_f( char *fmt, ... ) __attribute__ ( ( format( printf, 1, 2 ) ) );
 
 /* fight.c */
-void violence_update args( ( void ) );
-void multi_hit args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt ) );
-void damage args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt ) );
-void update_pos args( ( CHAR_DATA * victim ) );
-void stop_fighting args( ( CHAR_DATA * ch, bool fBoth ) );
-void death_cry args( ( CHAR_DATA * ch ) );
-void raw_kill args( ( CHAR_DATA * victim, char *argument ) );
-void check_killer args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-
+void  violence_update args( ( void ) );
+void  multi_hit       args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt ) );
+void  damage          args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt ) );
+void  update_pos      args( ( CHAR_DATA * victim ) );
+void  stop_fighting   args( ( CHAR_DATA * ch, bool fBoth ) );
+void  death_cry       args( ( CHAR_DATA * ch ) );
+void  raw_kill        args( ( CHAR_DATA * victim, char *argument ) );
+void  check_killer    args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+float get_speed       args (( CHAR_DATA *ch, int slot));
 
 /* handler.c */
 bool remove_obj       args( ( CHAR_DATA * ch, int iWear, bool fReplace ) );

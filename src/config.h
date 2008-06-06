@@ -118,7 +118,13 @@
 #define TYPE_UNDEFINED               -2
 #define TYPE_HIT                     1000
 
-
+/*
+ * For speed combat, hands. --Kline
+ */
+#define SPEED_RH   0
+#define SPEED_LH   1
+#define SPEED_TAIL 2
+#define SPEED_FANG 3
 
 /*
  *  Target types.
@@ -206,7 +212,7 @@
 
 
 #define PULSE_PER_SECOND          sysdata.pulse /* Configurable in-game, essential to speed based combat. --Kline */
-#define PULSE_VIOLENCE            (  2 * PULSE_PER_SECOND )
+#define PULSE_VIOLENCE            ( 1 )         /* Violence needs to fire every second to update speed.           */
 #define PULSE_MOBILE              (  4 * PULSE_PER_SECOND )
 #define PULSE_OBJFUN		  (  4 * PULSE_PER_SECOND )
 #define PULSE_TICK                ( 60 * PULSE_PER_SECOND )

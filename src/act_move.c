@@ -1696,37 +1696,37 @@ void do_train( CHAR_DATA * ch, char *argument )
 
       if( ch->pcdata->perm_str < ch->pcdata->max_str )
       {
-         strcat( buf, "  str" );
+         xcat( buf, "  str" );
          xprintf( buf2, " (%d)", cost1 );
-         strcat( buf, buf2 );
+         xcat( buf, buf2 );
       }
       if( ch->pcdata->perm_int < ch->pcdata->max_int )
       {
-         strcat( buf, "  int" );
+         xcat( buf, "  int" );
          xprintf( buf2, " (%d)", cost2 );
-         strcat( buf, buf2 );
+         xcat( buf, buf2 );
       }
       if( ch->pcdata->perm_wis < ch->pcdata->max_wis )
       {
-         strcat( buf, "  wis" );
+         xcat( buf, "  wis" );
          xprintf( buf2, " (%d)", cost3 );
-         strcat( buf, buf2 );
+         xcat( buf, buf2 );
       }
       if( ch->pcdata->perm_dex < ch->pcdata->max_dex )
       {
-         strcat( buf, "  dex" );
+         xcat( buf, "  dex" );
          xprintf( buf2, " (%d)", cost4 );
-         strcat( buf, buf2 );
+         xcat( buf, buf2 );
       }
       if( ch->pcdata->perm_con < ch->pcdata->max_con )
       {
-         strcat( buf, "  con" );
+         xcat( buf, "  con" );
          xprintf( buf2, " (%d)", cost5 );
-         strcat( buf, buf2 );
+         xcat( buf, buf2 );
       }
       if( buf[strlen( buf ) - 1] != ':' )
       {
-         strcat( buf, ".\n\r" );
+         xcat( buf, ".\n\r" );
          send_to_char( buf, ch );
       }
       return;

@@ -439,11 +439,11 @@ void build_commands( CHAR_DATA * ch, char *argument )
       if( build_cmd_table[cmd].level > get_trust( ch ) )
          continue;
       xprintf( buf, "%-20s    ", build_cmd_table[cmd].name );
-      strcat( out, buf );
+      xcat( out, buf );
       if( ++col % 3 == 0 )
-         strcat( out, "\n\r" );
+         xcat( out, "\n\r" );
    }
-   strcat( out, "\n\r" );
+   xcat( out, "\n\r" );
    send_to_char( out, ch );
    return;
 }
@@ -490,78 +490,78 @@ void build_showmob( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    xprintf( buf, "@@WName: @@y%s.    @@WClass: @@y%s.\n\r", pMob->player_name, tab_mob_class[pMob->class].text );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WVnum: @@y%d.  @@WSex: @@y%s.  @@WRace:@@y %s ",
             pMob->vnum,
             pMob->sex == SEX_MALE ? "male" :
             pMob->sex == SEX_FEMALE ? "female" : "neutral",
             ( ( pMob->race > -1 ) && ( pMob->race < MAX_RACE ) ) ? race_table[pMob->race].race_title : "Illegal Race" );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, " @@WLv: @@y%d.    @@WAlign: @@y%d.\n\r", pMob->level, pMob->alignment );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WModifiers: AC: @@y%d.  @@WHitroll: @@y%d.  @@WDamroll: @@y%d.\n\r",
             pMob->ac_mod, pMob->hr_mod, pMob->dr_mod );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WMob Flags:@@y\n\r%s", show_values( tab_mob_flags, pMob->act, TRUE ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WAffected by:@@y\n\r%s", show_values( tab_affected_by, pMob->affected_by, TRUE ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WSkill Flags:@@y %s\n\r", bit_table_lookup( tab_mob_skill, pMob->skills ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WPSkill Flags:@@y %s\n\r", bit_table_lookup( tab_mob_powerskill, pMob->power_skills ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WCast Flags:@@y %s\n\r", bit_table_lookup( tab_mob_cast, pMob->cast ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WPCast Flags:@@y %s\n\r", bit_table_lookup( tab_mob_powercast, pMob->power_cast ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WDef Flags:@@y %s\n\r", bit_table_lookup( tab_mob_def, pMob->def ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WStrong Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->strong_magic ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WWeak Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->weak_magic ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WResist Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->resist ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WSuscept Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->suscept ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
    xprintf( buf, "@@WRace Mods:@@y %s\n\r", bit_table_lookup( tab_mob_race_mods, pMob->race_mods ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WShort description: @@y%s.\n\r@@WLong  description: @@y%s",
             pMob->short_descr, pMob->long_descr[0] != '\0' ? pMob->long_descr : "(none).\n\r" );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    if( pMob->spec_fun != 0 )
    {
       xprintf( buf, "@@WMobile has spec fun: @@y%s\n\r", rev_spec_lookup( pMob->spec_fun ) );
-      strcat( buf1, buf );
+      xcat( buf1, buf );
    }
 
    if( ( pShop = pMob->pShop ) != 0 )
    {
       is_shopkeeper = 1;
-      strcat( buf1, "@@WMobile is a shopkeeper, will buy @@y" );
+      xcat( buf1, "@@WMobile is a shopkeeper, will buy @@y" );
       for( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
       {
          if( pShop->buy_type[iTrade] > 0 )
          {
-            strcat( buf1, tab_item_types[pShop->buy_type[iTrade] - 1].text );
-            strcat( buf1, " " );
+            xcat( buf1, tab_item_types[pShop->buy_type[iTrade] - 1].text );
+            xcat( buf1, " " );
          }
       }
-      strcat( buf1, "\n\r" );
+      xcat( buf1, "\n\r" );
       xprintf( buf, "@@WOpens at @@y%i @@Whrs, shuts at @@y%i @@Whours, profbuy:@@y%i, @@Wprofsell:@@y%i.\n\r",
                pShop->open_hour, pShop->close_hour, pShop->profit_buy, pShop->profit_sell );
-      strcat( buf1, buf );
+      xcat( buf1, buf );
 
    }
-   strcat( buf1, "@@g" );
+   xcat( buf1, "@@g" );
    send_to_char( buf1, ch );
    return;
 }
@@ -603,17 +603,17 @@ void build_showobj( CHAR_DATA * ch, char *argument )
       return;
 
    xprintf( buf, "@@WName: @@y%s  @@WLevel: @@y%d.\n\r", obj->name, obj->level );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WVnum: @@y%d.  @@WType: @@y%s.\n\r", obj->vnum, tab_item_types[( obj->item_type ) - 1].text );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WShort description: @@y%s.\n\r@@WLong description: @@y%s\n\r", obj->short_descr, obj->description );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    /*
     * xprintf( buf, "@@WItem type: @@y%s.\n\r",rev_table_lookup(tab_item_types,obj->item_type));
-    * strcat( buf1, buf);
+    * xcat( buf1, buf);
     */
 
    xprintf( buf, "@@WWear bits: @@y%s\n\r@@WExtra bits: @@y%s.\n\r",
@@ -623,21 +623,21 @@ void build_showobj( CHAR_DATA * ch, char *argument )
     * I think another bit_table_lookup is better!  Zen 
     */
 
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WItem_applies: @@y%s.\n\r", bit_table_lookup( tab_item_apply, obj->item_apply ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WWeight: @@y%d.\n\r", obj->weight );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
-   strcat( buf1, "@@WObject Values:\n\r" );
+   xcat( buf1, "@@WObject Values:\n\r" );
 
    for( cnt = 0; cnt < 10; cnt++ )
    {
       xprintf( buf, "@@W[Value%d : @@y%6d@@W] %s",
                cnt, obj->value[cnt], rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) );
-      strcat( buf1, buf );
+      xcat( buf1, buf );
       if( is_name( "Spell", rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) ) )
       {
          fubar = obj->value[cnt];
@@ -665,34 +665,34 @@ void build_showobj( CHAR_DATA * ch, char *argument )
       }
       else
          xprintf( buf, "@@g\n\r" );
-      strcat( buf1, buf );
+      xcat( buf1, buf );
    }
    if( obj->obj_fun != NULL )
    {
       xprintf( buf, "@@WObject has objfun: @@y%s.@@g\n\r", rev_obj_fun_lookup( obj->obj_fun ) );
-      strcat( buf1, buf );
+      xcat( buf1, buf );
    }
 
    if( obj->first_exdesc != NULL )
    {
       EXTRA_DESCR_DATA *ed;
 
-      strcat( buf1, "@@WExtra description keywords: '@@y" );
+      xcat( buf1, "@@WExtra description keywords: '@@y" );
 
       for( ed = obj->first_exdesc; ed != NULL; ed = ed->next )
       {
-         strcat( buf1, ed->keyword );
+         xcat( buf1, ed->keyword );
          if( ed->next != NULL )
-            strcat( buf1, " " );
+            xcat( buf1, " " );
       }
 
-      strcat( buf1, "'@@g.\n\r" );
+      xcat( buf1, "'@@g.\n\r" );
    }
 
    for( paf = obj->first_apply; paf != NULL; paf = paf->next )
    {
       xprintf( buf, "@@WAffects @@y%s @@Wby @@y%d@@g.\n\r", affect_loc_name( paf->location ), paf->modifier );
-      strcat( buf1, buf );
+      xcat( buf1, buf );
    }
 
    send_to_char( buf1, ch );
@@ -725,7 +725,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
    if( arg1[0] == '\0' )
    {
       display = DISPLAY_BRIEFDOORS | DISPLAY_RESETS | DISPLAY_DESC;
-      strcat( buf1, "Can also use showroom brief/doors/resets/desc/all.\n\r" );
+      xcat( buf1, "Can also use showroom brief/doors/resets/desc/all.\n\r" );
    }
    else if( !is_name( arg1, "brief doors resets desc all" ) )
    {
@@ -750,34 +750,34 @@ void build_showroom( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    xprintf( buf, "@@WName: @@y%s.\n\r@@WArea: @@y%s.\n\r", location->name, location->area->name );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf,
             "@@WVnum: @@y%d.  @@WSector:\n\r @@y%s",
             location->vnum, show_values( tab_sector_types, location->sector_type, FALSE ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    xprintf( buf, "@@WFlags:\n\r@@y%s", show_values( tab_room_flags, location->room_flags, TRUE ) );
-   strcat( buf1, buf );
+   xcat( buf1, buf );
 
    if( ( display & DISPLAY_DESC ) )
    {
       xprintf( buf, "@@WDescr: \n\r@@y%s", location->description );
-      strcat( buf1, buf );
+      xcat( buf1, buf );
    }
 
    if( location->first_exdesc != NULL )
    {
       EXTRA_DESCR_DATA *ed;
 
-      strcat( buf1, "@@WExtra description keywords:@@y '" );
+      xcat( buf1, "@@WExtra description keywords:@@y '" );
       for( ed = location->first_exdesc; ed; ed = ed->next )
       {
-         strcat( buf1, ed->keyword );
+         xcat( buf1, ed->keyword );
          if( ed->next != NULL )
-            strcat( buf1, " " );
+            xcat( buf1, " " );
       }
-      strcat( buf1, "'.\n\r" );
+      xcat( buf1, "'.\n\r" );
    }
 
    /*
@@ -800,23 +800,23 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                xprintf( buf, "@@WExit: @@y%7s @@W: To @@y%5i %s\n\r", sDirs[door],
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "" );
-               strcat( buf1, buf );
+               xcat( buf1, buf );
                xprintf( buf, "             @@WKey: @@y%5i %s,  @@WExit Type:@@y %s\n\r",
                         pKeyObj != NULL ? pKeyObj->vnum : 0,
                         pKeyObj != NULL ? pKeyObj->name : "None", bit_table_lookup( tab_door_types, pexit->exit_info ) );
-               strcat( buf1, buf );
+               xcat( buf1, buf );
                if( pexit->keyword != NULL && pexit->keyword[0] != '\0' )
                {
                   xprintf( buf, "@@WKeyword(s): @@y%s.  ", pexit->keyword );
-                  strcat( buf1, buf );
+                  xcat( buf1, buf );
                }
                xprintf( buf, "@@WDesc: @@y%s", pexit->description[0] != '\0' ? pexit->description : "(none).\n\r" );
-               strcat( buf1, buf );
+               xcat( buf1, buf );
             }
             else
             {
                if( pexit->key > 0 )
-                  strcat( buf1, "@@yK" );
+                  xcat( buf1, "@@yK" );
                /*
                 * New way of showing doors... move to relevant place if it works 
                 */
@@ -826,7 +826,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "Unknown",
                         bit_table_lookup( tab_door_types, pexit->exit_info ) );
-               strcat( buf1, buf );
+               xcat( buf1, buf );
             }
          }
       }
@@ -837,11 +837,11 @@ void build_showroom( CHAR_DATA * ch, char *argument )
     */
    if( ( display & DISPLAY_RESETS ) && location->first_room_reset != NULL )
    {
-      strcat( buf1, "@@WResets:\n\r" );
+      xcat( buf1, "@@WResets:\n\r" );
       for( Pointer = location->first_room_reset; Pointer; )
-         strcat( buf1, reset_to_text( &Pointer, NULL ) );
+         xcat( buf1, reset_to_text( &Pointer, NULL ) );
    }
-   strcat( buf1, "@@g" );
+   xcat( buf1, "@@g" );
    send_to_char( buf1, ch );
    return;
 }
@@ -860,9 +860,9 @@ void build_showresets( CHAR_DATA * ch, char *argument )
    if( !build_canread( location->area, ch, 1 ) )
       return;
 
-   strcat( buf1, "Room Resets:\n\r" );
+   xcat( buf1, "Room Resets:\n\r" );
    for( Pointer = location->first_room_reset; Pointer != NULL; )
-      strcat( buf1, reset_to_text( &Pointer, &count ) );
+      xcat( buf1, reset_to_text( &Pointer, &count ) );
 
    send_to_char( buf1, ch );
 }
@@ -881,11 +881,11 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
    buf1[0] = '\0';
    pReset = ( *pList )->data;
 
-   strcat( buf1, build_docount( pcount ) );
+   xcat( buf1, build_docount( pcount ) );
    if( ( *pList )->is_free )  /* sanity check */
-      strcat( buf1, " **LIST IS FREE** " );  /* Bad Thing! */
+      xcat( buf1, " **LIST IS FREE** " );  /* Bad Thing! */
    if( pReset->is_free )
-      strcat( buf1, " **RESET IS FREE** " );
+      xcat( buf1, " **RESET IS FREE** " );
 
    ( *pList ) = ( *pList )->next;
 
@@ -893,7 +893,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
    {
       default:
          xprintf( buf, "  stray '%c' reset: %d %d %d.\n\r", pReset->command, pReset->arg1, pReset->arg2, pReset->arg3 );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
          break;
       case 'G':
          pObj = get_obj_index( pReset->arg1 );
@@ -901,7 +901,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             xprintf( buf, "  stray 'give' reset: object [%d] %s.\n\r", pReset->arg1, pObj->name );
          else
             xprintf( buf, "  stray 'give' reset: object %d (unknown).\n\r", pReset->arg1 );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
          break;
       case 'E':
          pObj = get_obj_index( pReset->arg1 );
@@ -911,11 +911,11 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
          else
             xprintf( buf, "  stray 'equip' reset: object [%d] (unknown), on %s.\n\r",
                      pReset->arg1, tab_wear_loc[( pReset->arg3 )].text );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
          break;
       case 'A':  /* AutoMessage for room */
          xprintf( buf1, "Message: (%d-%d) %s\n\r", pReset->arg2, pReset->arg3, pReset->notes );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
          break;
       case 'M':  /* Load mob */
          pMob = get_mob_index( pReset->arg1 );
@@ -923,7 +923,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             xprintf( buf, " [%d] %s (limit of %d).\n\r", pMob->vnum, pMob->player_name, pReset->arg2 );
          else
             xprintf( buf, " [%d] (unknown) (limit of %d).\n\r", pReset->arg1, pReset->arg2 );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
 
          /*
           * scan for give and equip commands for this mob 
@@ -937,7 +937,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                break;
 
             ( *pList ) = ( *pList )->next;
-            strcat( buf1, build_docount( pcount ) );
+            xcat( buf1, build_docount( pcount ) );
 
             if( pReset->command == 'G' )
             {
@@ -945,16 +945,16 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                if( pObj != NULL )
                {
                   if( pMob->pShop != NULL )
-                     strcat( buf1, "  sells " );
+                     xcat( buf1, "  sells " );
                   else
-                     strcat( buf1, "  with " );
+                     xcat( buf1, "  with " );
                   xprintf( buf, "[%d] %s.\n\r", pObj->vnum, pObj->name );
-                  strcat( buf1, buf );
+                  xcat( buf1, buf );
                }
                else
                {
                   xprintf( buf, "[%d] unknown object in give reset!\n\r", pReset->arg1 );
-                  strcat( buf1, buf );
+                  xcat( buf1, buf );
                }
             }
             else if( pReset->command == 'E' )
@@ -965,7 +965,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                            pObj->name, tab_wear_loc[( pReset->arg3 )].text );
                else
                   xprintf( buf, "[%d] unknown object equipped on %s.\n\r", pReset->arg1, tab_wear_loc[pReset->arg3].text );
-               strcat( buf1, buf );
+               xcat( buf1, buf );
             }
          }
          break;
@@ -975,7 +975,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             xprintf( buf, " [%d] %s no more than %d in room.\n\r", pObj->vnum, pObj->name, pReset->arg2 );
          else
             xprintf( buf, " [%d] unknown object reset!\n\r", pReset->arg1 );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
          break;
       case 'D':  /* close/lock doors */
          buf[0] = '\0';
@@ -993,11 +993,11 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                xprintf( buf, " Close and lock door %s.\n\r", sDirs[pReset->arg2] );
                break;
          }
-         strcat( buf1, buf );
+         xcat( buf1, buf );
          break;
       case 'R':  /* randomise exits */
          xprintf( buf, " Randomize doors up to number %d.\n\r", pReset->arg2 );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
          break;
    }
 
@@ -1064,7 +1064,7 @@ void build_findmob( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          xprintf( buf, "[%5d] %s\n\r", pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
       }
    }
 
@@ -1124,7 +1124,7 @@ void build_findmobroom( CHAR_DATA * ch, char *argument )
             xprintf( buf, "[%5d] %s\n\r", pRoom->vnum, capitalize( pRoom->name ) );
          else
             xprintf( buf, "[%5d] Unknown\n\r", pReset->arg3 );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
       }
    }
 
@@ -1187,7 +1187,7 @@ void build_findobject( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          xprintf( buf, "[%5d] %s\n\r", pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
       }
    }
 
@@ -1250,7 +1250,7 @@ void build_findroom( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          xprintf( buf, "[%5d] %s\n\r", pRoomIndex->vnum, capitalize( pRoomIndex->name ) );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
       }
    }
 
@@ -3801,7 +3801,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       old_vnum = vnum;
 
       xprintf( buf, "Are you sure you want to delete room [%d] %s?\n\r", vnum, pRoomIndex->name );
-      strcat( buf, "Type delroom ok if you are sure.\n\r" );
+      xcat( buf, "Type delroom ok if you are sure.\n\r" );
       send_to_char( buf, ch );
       return;
    }
@@ -4063,7 +4063,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
       old_ovnum = vnum;
 
       xprintf( buf, "Are you sure you want to delete object: [%d] %s?\n\r", vnum, pObjIndex->name );
-      strcat( buf, "Type delobject ok if you are sure.\n\r" );
+      xcat( buf, "Type delobject ok if you are sure.\n\r" );
       send_to_char( buf, ch );
       return;
    }
@@ -4247,7 +4247,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
       old_mob_vnum = vnum;
 
       xprintf( buf, "Are you sure you want to delete mobile: [%d] %s?\n\r", vnum, pMobIndex->player_name );
-      strcat( buf, "Type delmobile ok if you are sure.\n\r" );
+      xcat( buf, "Type delmobile ok if you are sure.\n\r" );
       send_to_char( buf, ch );
       return;
    }
@@ -4524,8 +4524,8 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
           */
          fclose( fpReserve );
          filename[0] = '\0';
-         strcat( filename, STRING_FILE_DIR );
-         strcat( filename, src );
+         xcat( filename, STRING_FILE_DIR );
+         xcat( filename, src );
          infile = fopen( filename, "r" );
          if( !infile )
             filechar = str_dup( "Could not open file.\n\r" );
@@ -4635,7 +4635,7 @@ void build_editstr( char **dest, char *src, CHAR_DATA * ch )
    if( *dest != &str_empty[0] )
    {
       send_to_char( src, ch );
-      strcat( *dest, src );   /* Add src string into the buffer */
+      xcat( *dest, src );   /* Add src string into the buffer */
    }
    else
    {
@@ -5179,7 +5179,7 @@ void build_listspells( CHAR_DATA * ch, char *argument )
       if( skill_table[sn].target == type || fall )
       {
          xprintf( buf, "@@W[Spell No: %4d] @@y%s@@g\n\r", sn, skill_table[sn].name );
-         strcat( buf2, buf );
+         xcat( buf2, buf );
       }
    }
    send_to_char( buf2, ch );
@@ -5222,7 +5222,7 @@ void build_urooms( CHAR_DATA * ch, char *argument )
          {
             case 0:
                xprintf( buf, "%d", curvnum );
-               strcat( used, buf );
+               xcat( used, buf );
                foo = curvnum;
                last = 1;
                break;
@@ -5232,10 +5232,10 @@ void build_urooms( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   xprintf( buf, "-%d", curvnum - 1 );
-                  strcat( free, buf );
+                  xcat( free, buf );
                }
                xprintf( buf, " %d", curvnum );
-               strcat( used, buf );
+               xcat( used, buf );
                foo = curvnum;
                last = 1;
          }
@@ -5246,7 +5246,7 @@ void build_urooms( CHAR_DATA * ch, char *argument )
          {
             case 0:
                xprintf( buf, "%d", curvnum );
-               strcat( free, buf );
+               xcat( free, buf );
                foo = curvnum;
                last = 2;
                break;
@@ -5254,10 +5254,10 @@ void build_urooms( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   xprintf( buf, "-%d", curvnum - 1 );
-                  strcat( used, buf );
+                  xcat( used, buf );
                }
                xprintf( buf, " %d", curvnum );
-               strcat( free, buf );
+               xcat( free, buf );
                last = 2;
                foo = curvnum;
                break;
@@ -5277,16 +5277,16 @@ void build_urooms( CHAR_DATA * ch, char *argument )
                xprintf( buf, "-%d.", curvnum );
             else
                xprintf( buf, " %d.", curvnum );
-            strcat( used, buf );
+            xcat( used, buf );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                xprintf( buf, "-%d.", curvnum - 1 );
-               strcat( used, buf );
+               xcat( used, buf );
             }
             xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
       }
    }
@@ -5298,17 +5298,17 @@ void build_urooms( CHAR_DATA * ch, char *argument )
             if( foo != curvnum - 1 )
             {
                xprintf( buf, "-%d.", curvnum - 1 );
-               strcat( used, buf );
+               xcat( used, buf );
             }
             xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
          case 2:
             if( foo != curvnum - 1 )
                xprintf( buf, "-%d.", curvnum );
             else
                xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
       }
    }
@@ -5347,7 +5347,7 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
          {
             case 0:
                xprintf( buf, "%d", curvnum );
-               strcat( used, buf );
+               xcat( used, buf );
                foo = curvnum;
                last = 1;
                break;
@@ -5357,10 +5357,10 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   xprintf( buf, "-%d", curvnum - 1 );
-                  strcat( free, buf );
+                  xcat( free, buf );
                }
                xprintf( buf, " %d", curvnum );
-               strcat( used, buf );
+               xcat( used, buf );
                foo = curvnum;
                last = 1;
          }
@@ -5371,7 +5371,7 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
          {
             case 0:
                xprintf( buf, "%d", curvnum );
-               strcat( free, buf );
+               xcat( free, buf );
                foo = curvnum;
                last = 2;
                break;
@@ -5379,10 +5379,10 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   xprintf( buf, "-%d", curvnum - 1 );
-                  strcat( used, buf );
+                  xcat( used, buf );
                }
                xprintf( buf, " %d", curvnum );
-               strcat( free, buf );
+               xcat( free, buf );
                last = 2;
                foo = curvnum;
                break;
@@ -5402,16 +5402,16 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
                xprintf( buf, "-%d.", curvnum );
             else
                xprintf( buf, " %d.", curvnum );
-            strcat( used, buf );
+            xcat( used, buf );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                xprintf( buf, "-%d.", curvnum - 1 );
-               strcat( used, buf );
+               xcat( used, buf );
             }
             xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
       }
    }
@@ -5423,17 +5423,17 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
             if( foo != curvnum - 1 )
             {
                xprintf( buf, "-%d.", curvnum - 1 );
-               strcat( used, buf );
+               xcat( used, buf );
             }
             xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
          case 2:
             if( foo != curvnum - 1 )
                xprintf( buf, "-%d.", curvnum );
             else
                xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
       }
    }
@@ -5468,7 +5468,7 @@ void build_umobs( CHAR_DATA * ch, char *argument )
          {
             case 0:
                xprintf( buf, "%d", curvnum );
-               strcat( used, buf );
+               xcat( used, buf );
                foo = curvnum;
                last = 1;
                break;
@@ -5478,10 +5478,10 @@ void build_umobs( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   xprintf( buf, "-%d", curvnum - 1 );
-                  strcat( free, buf );
+                  xcat( free, buf );
                }
                xprintf( buf, " %d", curvnum );
-               strcat( used, buf );
+               xcat( used, buf );
                foo = curvnum;
                last = 1;
          }
@@ -5492,7 +5492,7 @@ void build_umobs( CHAR_DATA * ch, char *argument )
          {
             case 0:
                xprintf( buf, "%d", curvnum );
-               strcat( free, buf );
+               xcat( free, buf );
                foo = curvnum;
                last = 2;
                break;
@@ -5500,10 +5500,10 @@ void build_umobs( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   xprintf( buf, "-%d", curvnum - 1 );
-                  strcat( used, buf );
+                  xcat( used, buf );
                }
                xprintf( buf, " %d", curvnum );
-               strcat( free, buf );
+               xcat( free, buf );
                last = 2;
                foo = curvnum;
                break;
@@ -5523,16 +5523,16 @@ void build_umobs( CHAR_DATA * ch, char *argument )
                xprintf( buf, "-%d.", curvnum );
             else
                xprintf( buf, " %d.", curvnum );
-            strcat( used, buf );
+            xcat( used, buf );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                xprintf( buf, "-%d.", curvnum - 1 );
-               strcat( used, buf );
+               xcat( used, buf );
             }
             xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
       }
    }
@@ -5544,17 +5544,17 @@ void build_umobs( CHAR_DATA * ch, char *argument )
             if( foo != curvnum - 1 )
             {
                xprintf( buf, "-%d.", curvnum - 1 );
-               strcat( used, buf );
+               xcat( used, buf );
             }
             xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
          case 2:
             if( foo != curvnum - 1 )
                xprintf( buf, "-%d.", curvnum );
             else
                xprintf( buf, " %d.", curvnum );
-            strcat( free, buf );
+            xcat( free, buf );
             break;
       }
    }

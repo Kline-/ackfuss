@@ -481,7 +481,7 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
             xprintf_2( buf + strlen( buf ), " %s", compass_name[e] );
          }
       }
-   strcat( buf, " ]" );
+   xcat( buf, " ]" );
    return buf;
 }
 
@@ -522,8 +522,8 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
    }
 #endif
    strcpy( disp, map_format( ch->in_room->name, 0, bufs, &y, cols, rows, TRUE ) );
-   strcat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ) );
-   strcat( disp, map_format( ch->in_room->description, y, bufs, &y, cols, rows, !IS_SET( ch->config, CONFIG_JUSTIFY ) ) );
+   xcat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ) );
+   xcat( disp, map_format( ch->in_room->description, y, bufs, &y, cols, rows, !IS_SET( ch->config, CONFIG_JUSTIFY ) ) );
    if( y < MAP_Y )
    {
       x = disp + strlen( disp );

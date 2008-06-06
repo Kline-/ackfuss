@@ -479,6 +479,7 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
    fprintf( fp, "Values       %d %d %d %d %d %d %d %d %d %d\n",
             obj->value[0], obj->value[1], obj->value[2], obj->value[3],
             obj->value[4], obj->value[5], obj->value[6], obj->value[7], obj->value[8], obj->value[9] );
+   fprintf( fp, "Speed        %4.2f\n", obj->speed );
 
    switch ( obj->item_type )
    {
@@ -1620,6 +1621,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
 
          case 'S':
             SKEY( "ShortDescr", obj->short_descr, fread_string( fp ) );
+            KEY( "Speed", obj->speed, fread_number( fp ) );
 
             if( !str_cmp( word, "Spell" ) )
             {
@@ -1985,6 +1987,7 @@ void fread_corpse( FILE * fp )
 
          case 'S':
             SKEY( "ShortDescr", obj->short_descr, fread_string( fp ) );
+            KEY( "Speed", obj->speed, fread_number( fp ) );
 
             if( !str_cmp( word, "Spell" ) )
             {
@@ -2120,6 +2123,7 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
    fprintf( fp, "Timer        %d\n", obj->timer );
    fprintf( fp, "Cost         %d\n", obj->cost );
    fprintf( fp, "Values       %d %d %d %d\n", obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
+   fprintf( fp, "Speed        %4.2f\n", obj->speed);
 
    switch ( obj->item_type )
    {

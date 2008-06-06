@@ -116,6 +116,28 @@ void violence_update( void )
       }
       has_cast = FALSE;
 
+      /*
+       * Speed based combat. Arms attack independantly of each other,
+       * as do special racials such as fangs or tails. --Kline
+       */
+      if( ch->position == POS_FIGHTING && (victim = ch->fighting) != NULL )
+      {
+       ch->speed[SPEED_LH] -= 0.01;
+
+       if( ch->speed[SPEED_LH] <= 0 )
+       {
+        one_hit(ch, victim, TYPE_UNDEFINED);
+        ch->speed[SPEED_LH] = get_speed(ch,SPEED_LH);
+       }
+       ch->speed[SPEED_RH] -= 0.01;
+
+       if( ch->speed[SPEED_RH] <= 0 )
+       {
+        one_hit(ch, victim, TYPE_UNDEFINED);
+        ch->speed[SPEED_RH] = get_speed(ch,SPEED_RH);
+       }
+      }
+
 /* Healing rapidly for raged wolves  */
 
       if( !IS_NPC( ch ) && IS_WOLF( ch ) && IS_RAGED( ch ) )
@@ -5769,3 +5791,38 @@ void do_rage( CHAR_DATA * ch, char *argument )
 
 
 };
+
+float get_speed( CHAR_DATA *ch, int slot )
+{
+ float value = 4.00;
+ int i;
+ OBJ_DATA *wield;
+
+ if( !IS_NPC(ch) )
+ {
+  switch(slot) {
+   case SPEED_LH: wield = get_eq_char(ch,WEAR_HOLD_HAND_L);  break;
+   case SPEED_RH: wield = get_eq_char(ch,WEAR_HOLD_HAND_R);  break;
+   default: wield = NULL; break;
+  }
+  if( wield != NULL && wield->item_type == ITEM_WEAPON )
+   value = wield->speed;
+  else
+  {
+   for( i = ch->level; i > 0; i-- )
+    value -= 0.01;
+  }
+ }
+ else
+ {
+  for( i = ch->level; i > 0 && value > 0.99; i -= 13 )
+   value -= 0.14;
+ }
+
+
+ if( value < 1 )
+  value = 1;
+
+ return value;
+}
+

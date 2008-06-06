@@ -258,7 +258,7 @@ void say_spell( CHAR_DATA * ch, int sn )
       {
          if( !str_prefix( syl_table[iSyl].old, pName ) )
          {
-            strcat( buf, syl_table[iSyl].new );
+            xcat( buf, syl_table[iSyl].new );
             break;
          }
       }
@@ -2516,9 +2516,9 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
          break;
 
       case ITEM_WEAPON:
-         xprintf( buf, "Damage is %d to %d (average %d).\n\r",
-                  ob->value[1], ob->value[2], ( ob->value[1] + ob->value[2] ) / 2 );
-         send_to_char( buf, ch );
+        xprintf( buf, "Damage is %d to %d (average %d). Speed is %4.2f (%4.2f DPS).\n\r",
+            ob->value[1], ob->value[2] , (ob->value[1] + ob->value[2]) / 2, ob->speed, ((ob->value[1] + ob->value[2])/2) / ob->speed);
+         send_to_char(buf,ch);
          break;
 
       case ITEM_ARMOR:

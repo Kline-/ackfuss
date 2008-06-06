@@ -436,7 +436,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
       xcat( buf, "(THIEF) " );
 
    /*
-    * strcat to buf *linkdead* if not connected? 
+    * xcat to buf *linkdead* if not connected? 
     */
    if( !IS_NPC( victim ) )
       if( ( victim->desc ) != NULL && victim->desc->connected != CON_PLAYING )
@@ -2382,7 +2382,7 @@ void do_who( CHAR_DATA * ch, char *argument )
          {
             for( cnt = slength + excess; cnt < 43; cnt++ )
             {
-               strcat( buf4, " " );
+               xcat( buf4, " " );
             }
          }
          if( invis )
@@ -3003,7 +3003,7 @@ void do_who( CHAR_DATA * ch, char *argument )
          {
             for( cnt = slength + excess; cnt < 43; cnt++ )
             {
-               strcat( buf4, " " );
+               xcat( buf4, " " );
             }
          }
          if( invis )
@@ -6482,35 +6482,35 @@ char *output_race_wear( int iRace )
 
  buf[0] = '\0';
  
- strcat(buf,race_table[iRace].wear_locs[0]  ? " @@aLight@@N"      : " @@dLight@@N"      );
- strcat(buf,race_table[iRace].wear_locs[1]  ? " @@aFloating@@N"   : " @@dFloating@@N"   );
- strcat(buf,race_table[iRace].wear_locs[2]  ? " @@aAura@@N"       : " @@dAura@@N"       );
- strcat(buf,race_table[iRace].wear_locs[3]  ? " @@aHorns@@N"      : " @@dHorns@@N"      );
- strcat(buf,race_table[iRace].wear_locs[4]  ? " @@aHead@@N"       : " @@dHead@@N"       );
- strcat(buf,race_table[iRace].wear_locs[5]  ? " @@aFace@@N"       : " @@dFace@@N"       );
- strcat(buf,race_table[iRace].wear_locs[6]  ? " @@aBeak@@N"       : " @@dBeak@@N"       );
- strcat(buf,race_table[iRace].wear_locs[7]  ? " @@aEar@@N"        : " @@dEar@@N"        );
- strcat(buf,race_table[iRace].wear_locs[8]  ? " @@aEar@@N"        : " @@dEar@@N"        );
- strcat(buf,race_table[iRace].wear_locs[9]  ? " @@aNeck@@N"       : " @@dNeck@@N"       );
- strcat(buf,race_table[iRace].wear_locs[10] ? " @@aNeck@@N\n\r"   : " @@dNeck@@N\n\r"   );
- strcat(buf,race_table[iRace].wear_locs[11] ? " @@aWings@@N"      : " @@dWings@@N"      );
- strcat(buf,race_table[iRace].wear_locs[12] ? " @@aShoulders@@N"  : " @@dShoulders@@N"  );
- strcat(buf,race_table[iRace].wear_locs[13] ? " @@aArms@@N"       : " @@dArms@@N"       );
- strcat(buf,race_table[iRace].wear_locs[14] ? " @@aWrist@@N"      : " @@dWrist@@N"      );
- strcat(buf,race_table[iRace].wear_locs[15] ? " @@aWrist@@N"      : " @@dWrist@@N"      );
- strcat(buf,race_table[iRace].wear_locs[16] ? " @@aHands@@N"      : " @@dHands@@N"      );
- strcat(buf,race_table[iRace].wear_locs[17] ? " @@aFinger@@N"     : " @@dFinger@@N"     );
- strcat(buf,race_table[iRace].wear_locs[18] ? " @@aFinger@@N"     : " @@dFinger@@N"     );
- strcat(buf,race_table[iRace].wear_locs[19] ? " @@aClaws@@N\n\r"  : " @@dClaws@@N\n\r"  );
- strcat(buf,race_table[iRace].wear_locs[20] ? " @@aLeft Hand@@N"  : " @@dLeft Hand@@N"  );
- strcat(buf,race_table[iRace].wear_locs[21] ? " @@aRight Hand@@N" : " @@dRight Hand@@N" );
- strcat(buf,race_table[iRace].wear_locs[22] ? " @@aCape@@N"       : " @@dCape@@N"       );
- strcat(buf,race_table[iRace].wear_locs[23] ? " @@aWaist@@N"      : " @@dWaist@@N"      );
- strcat(buf,race_table[iRace].wear_locs[24] ? " @@aBody@@N"       : " @@dBody@@N"       );
- strcat(buf,race_table[iRace].wear_locs[25] ? " @@aTail@@N"       : " @@dTail@@N"       );
- strcat(buf,race_table[iRace].wear_locs[26] ? " @@aLegs@@N"       : " @@dLegs@@N"       );
- strcat(buf,race_table[iRace].wear_locs[27] ? " @@aFeet@@N"       : " @@dFeet@@N"       );
- strcat(buf,race_table[iRace].wear_locs[28] ? " @@aHooves@@N"     : " @@dHooves@@N"     );
+ xcat(buf,race_table[iRace].wear_locs[0]  ? " @@aLight@@N"      : " @@dLight@@N"      );
+ xcat(buf,race_table[iRace].wear_locs[1]  ? " @@aFloating@@N"   : " @@dFloating@@N"   );
+ xcat(buf,race_table[iRace].wear_locs[2]  ? " @@aAura@@N"       : " @@dAura@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[3]  ? " @@aHorns@@N"      : " @@dHorns@@N"      );
+ xcat(buf,race_table[iRace].wear_locs[4]  ? " @@aHead@@N"       : " @@dHead@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[5]  ? " @@aFace@@N"       : " @@dFace@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[6]  ? " @@aBeak@@N"       : " @@dBeak@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[7]  ? " @@aEar@@N"        : " @@dEar@@N"        );
+ xcat(buf,race_table[iRace].wear_locs[8]  ? " @@aEar@@N"        : " @@dEar@@N"        );
+ xcat(buf,race_table[iRace].wear_locs[9]  ? " @@aNeck@@N"       : " @@dNeck@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[10] ? " @@aNeck@@N\n\r"   : " @@dNeck@@N\n\r"   );
+ xcat(buf,race_table[iRace].wear_locs[11] ? " @@aWings@@N"      : " @@dWings@@N"      );
+ xcat(buf,race_table[iRace].wear_locs[12] ? " @@aShoulders@@N"  : " @@dShoulders@@N"  );
+ xcat(buf,race_table[iRace].wear_locs[13] ? " @@aArms@@N"       : " @@dArms@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[14] ? " @@aWrist@@N"      : " @@dWrist@@N"      );
+ xcat(buf,race_table[iRace].wear_locs[15] ? " @@aWrist@@N"      : " @@dWrist@@N"      );
+ xcat(buf,race_table[iRace].wear_locs[16] ? " @@aHands@@N"      : " @@dHands@@N"      );
+ xcat(buf,race_table[iRace].wear_locs[17] ? " @@aFinger@@N"     : " @@dFinger@@N"     );
+ xcat(buf,race_table[iRace].wear_locs[18] ? " @@aFinger@@N"     : " @@dFinger@@N"     );
+ xcat(buf,race_table[iRace].wear_locs[19] ? " @@aClaws@@N\n\r"  : " @@dClaws@@N\n\r"  );
+ xcat(buf,race_table[iRace].wear_locs[20] ? " @@aLeft Hand@@N"  : " @@dLeft Hand@@N"  );
+ xcat(buf,race_table[iRace].wear_locs[21] ? " @@aRight Hand@@N" : " @@dRight Hand@@N" );
+ xcat(buf,race_table[iRace].wear_locs[22] ? " @@aCape@@N"       : " @@dCape@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[23] ? " @@aWaist@@N"      : " @@dWaist@@N"      );
+ xcat(buf,race_table[iRace].wear_locs[24] ? " @@aBody@@N"       : " @@dBody@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[25] ? " @@aTail@@N"       : " @@dTail@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[26] ? " @@aLegs@@N"       : " @@dLegs@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[27] ? " @@aFeet@@N"       : " @@dFeet@@N"       );
+ xcat(buf,race_table[iRace].wear_locs[28] ? " @@aHooves@@N"     : " @@dHooves@@N"     );
 
  return buf;
 }

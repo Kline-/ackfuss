@@ -95,15 +95,15 @@ char *rev_obj_fun_lookup( void *func )
 
 void print_obj_fun_lookup( char *buf )
 {
-   strcat( buf, " objfun_giggle \n\r" );
-   strcat( buf, " objfun_cast_fight	\n\r" );
-   strcat( buf, " objfun_sword_aggro \n\r" );
-   strcat( buf, " objfun_soul_moan \n\r  " );
-   strcat( buf, " objfun_infused_soul \n\r  " );
-   strcat( buf, " objfun_flaming \n\r" );
-   strcat( buf, " objfun_healing \n\r  " );
-   strcat( buf, " objfun_dispeller \n\r  " );
-   strcat( buf, " objfun_regen \n\r  " );
+   xcat( buf, " objfun_giggle \n\r" );
+   xcat( buf, " objfun_cast_fight	\n\r" );
+   xcat( buf, " objfun_sword_aggro \n\r" );
+   xcat( buf, " objfun_soul_moan \n\r  " );
+   xcat( buf, " objfun_infused_soul \n\r  " );
+   xcat( buf, " objfun_flaming \n\r" );
+   xcat( buf, " objfun_healing \n\r  " );
+   xcat( buf, " objfun_dispeller \n\r  " );
+   xcat( buf, " objfun_regen \n\r  " );
 
    return;
 }

@@ -746,8 +746,8 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
                vnum,
                ch->current_brand->branded,
                ch->current_brand->branded_by, ch->current_brand->dt_stamp, ch->current_brand->priority );
-      strcat( buf1, buf );
-      strcat( buf1, ch->current_brand->message );
+      xcat( buf1, buf );
+      xcat( buf1, ch->current_brand->message );
       send_to_char( buf1, ch );
       return;
    }
