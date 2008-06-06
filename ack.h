@@ -1466,7 +1466,8 @@ void  stop_fighting   args( ( CHAR_DATA * ch, bool fBoth ) );
 void  death_cry       args( ( CHAR_DATA * ch ) );
 void  raw_kill        args( ( CHAR_DATA * victim, char *argument ) );
 void  check_killer    args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-float get_speed       args (( CHAR_DATA *ch, int slot));
+float get_speed       args( ( CHAR_DATA *ch, int slot ) );
+void  combat_update   args( ( void ) );
 
 /* handler.c */
 bool remove_obj       args( ( CHAR_DATA * ch, int iWear, bool fReplace ) );

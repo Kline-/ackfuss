@@ -212,7 +212,8 @@
 
 
 #define PULSE_PER_SECOND          sysdata.pulse /* Configurable in-game, essential to speed based combat. --Kline */
-#define PULSE_VIOLENCE            ( 1 )         /* Violence needs to fire every second to update speed.           */
+#define PULSE_COMBAT              (  1                    )
+#define PULSE_VIOLENCE            (  2 * PULSE_PER_SECOND )
 #define PULSE_MOBILE              (  4 * PULSE_PER_SECOND )
 #define PULSE_OBJFUN		  (  4 * PULSE_PER_SECOND )
 #define PULSE_TICK                ( 60 * PULSE_PER_SECOND )
