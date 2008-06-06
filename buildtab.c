@@ -1078,14 +1078,14 @@ char *bit_table_lookup( const struct lookup_type *table, unsigned long int numbe
       if( ( number & table[a].value ) == table[a].value &&
           str_cmp( table[a].text, "nada" ) && str_cmp( table[a].text, "placeholder" ) )
       {
-         strcat( buf, table[a].text );
-         strcat( buf, ", " );
+         xcat( buf, table[a].text );
+         xcat( buf, ", " );
          number &= ~table[a].value;
       }
    }
 
    if( buf[0] == '\0' )
-      strcat( buf, "None." );
+      xcat( buf, "None." );
    else
    {
       a = strlen( buf );
@@ -1106,9 +1106,9 @@ void table_printout( const struct lookup_type *table, char *buf )
    {
       if( ( strcmp( table[a].text, "nada" ) ) && ( strcmp( table[a].text, "placeholder" ) ) )   /* If not an invalid choice */
       {
-         strcat( buf, "          " );
-         strcat( buf, table[a].text );
-         strcat( buf, "\n\r" );
+         xcat( buf, "          " );
+         xcat( buf, table[a].text );
+         xcat( buf, "\n\r" );
       }
    }
 
@@ -1134,14 +1134,14 @@ void wide_table_printout( const struct lookup_type *table, char *buf )
       if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
           && ( strcmp( table[a].text, "nada" ) ) )
       {
-         strcat( buf, "     " );
+         xcat( buf, "     " );
          xprintf( tmp, "%12s", table[a].text );
-         strcat( buf, tmp );
+         xcat( buf, tmp );
          if( ++foo % 4 == 0 )
-            strcat( buf, "\n\r" );
+            xcat( buf, "\n\r" );
       }
    }
-   strcat( buf, "\n\r" );
+   xcat( buf, "\n\r" );
    return;
 }
 
@@ -1162,15 +1162,15 @@ char *show_values( const struct lookup_type *table, int value, bool fBit )
       if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
           && ( strcmp( table[a].text, "placeholder" ) ) )
       {
-         strcat( buf, "     " );
+         xcat( buf, "     " );
          xprintf( tmp, "%s%-13s",
                   fBit ? ( IS_SET( value, table[a].value ) ? "@@y*" : "@@g " ) :
                   ( value == table[a].value ? "@@y*" : "@@g " ), table[a].text );
-         strcat( buf, tmp );
+         xcat( buf, tmp );
          if( ++foo % 4 == 0 )
-            strcat( buf, "\n\r" );
+            xcat( buf, "\n\r" );
       }
    }
-   strcat( buf, "@@g\n\r" );
+   xcat( buf, "@@g\n\r" );
    return ( buf );
 }

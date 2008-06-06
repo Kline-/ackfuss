@@ -2684,6 +2684,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
    obj->last_content = NULL;
    obj->prev_content = NULL;
    obj->weight = pObjIndex->weight;
+   obj->speed = number_speed();
    GET_FREE( money, money_type_free );
 #ifdef DEBUG_MONEY
    {
@@ -3565,6 +3566,23 @@ void do_status( CHAR_DATA * ch, char *argument )
 
 
 
+/*
+ * Generate a random float for weapon speed.
+ */
+float number_speed(void)
+{
+ float s1, s2, s3, value = 0.00;
+
+ s1 = number_range(1,4);
+ s2 = ((number_range(0,4) + 0.00) / 10);
+ s3 = ((number_range(0,4) + 0.00) / 100);
+ value = s1+s2+s3;
+
+ if (value > 4.00)
+  value = 4.00;
+
+ return value;
+}
 
 
 /*

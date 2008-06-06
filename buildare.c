@@ -669,8 +669,8 @@ void build_setarea( CHAR_DATA * ch, char *argument )
             {
                if( str_cmp( name, argn ) )   /* i.e. not the same */
                {
-                  strcat( buffer, name );
-                  strcat( buffer, " " );
+                  xcat( buffer, name );
+                  xcat( buffer, " " );
                }
                oldperm = one_argument( oldperm, name );
             }
@@ -717,8 +717,8 @@ void build_setarea( CHAR_DATA * ch, char *argument )
          {
             if( str_cmp( name, argn ) )   /* i.e. not the same */
             {
-               strcat( buffer, name );
-               strcat( buffer, " " );
+               xcat( buffer, name );
+               xcat( buffer, " " );
             }
             oldperm = one_argument( oldperm, name );
          }
@@ -930,7 +930,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
          if( pArea->first_area_room != NULL )
             pRoomIndex = pArea->first_area_room->data;
          xprintf( buf, "[%5d] %s\n\r", pArea->first_area_room != NULL ? pRoomIndex->vnum : 0, pArea->name );
-         strcat( buf1, buf );
+         xcat( buf1, buf );
       }
    }
 
@@ -959,48 +959,48 @@ void build_showarea( CHAR_DATA * ch, char *argument )
    buf[0] = '\0';
 
    xprintf( buffer, "\n\rTitle: %s\n\r", pArea->name );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
    xprintf( buffer, "Keyword: %s\n\r", pArea->keyword );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
    xprintf( buffer, "Level Label: %s\n\r", pArea->level_label );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
    xprintf( buffer, "Repop Rate: %i\n\r", pArea->reset_rate );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
    xprintf( buffer, "Reset Message: %s\n\r", pArea->reset_msg );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
 
    if( get_trust( ch ) >= MAX_LEVEL - 1 )
    {
       xprintf( buffer, "filename: %s\n\r", pArea->filename );
-      strcat( buf, buffer );
+      xcat( buf, buffer );
    }
 
    xprintf( buffer, "OFFSET: %d\n\r", pArea->offset );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
 
    xprintf( buffer, "Owner: %s\n\rCan Read: %s\n\rCan Write: %s\n\r", pArea->owner, pArea->can_read, pArea->can_write );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
 
    xprintf( buffer, "Min Vnum: %5d    Max Vnum: %5d      Gold: %i\n\r", pArea->min_vnum, pArea->max_vnum, pArea->gold );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
    xprintf( buffer, "Min Level: %5d    Max Level: %5d \n\r", pArea->min_level, pArea->max_level );
-   strcat( buf, buffer );
+   xcat( buf, buffer );
 
    if( IS_SET( pArea->flags, AREA_PAYAREA ) )
-      strcat( buf, "This is a pay area.\n\r" );
+      xcat( buf, "This is a pay area.\n\r" );
    if( !IS_SET( pArea->flags, AREA_TELEPORT ) )
-      strcat( buf, "You cannot teleport into here.\n\r" );
+      xcat( buf, "You cannot teleport into here.\n\r" );
    if( IS_SET( pArea->flags, AREA_BUILDING ) )
-      strcat( buf, "Area currently being built.\n\r" );
+      xcat( buf, "Area currently being built.\n\r" );
 
    if( IS_SET( pArea->flags, AREA_NOSHOW ) )
-      strcat( buf, "Area title will not be shown on area list.\n\r" );
+      xcat( buf, "Area title will not be shown on area list.\n\r" );
    else
-      strcat( buf, "Area title will show on area list.\n\r" );
+      xcat( buf, "Area title will show on area list.\n\r" );
    if( IS_SET( pArea->flags, AREA_NO_ROOM_AFF ) )
-      strcat( buf, "Bad Room Affect spells are not allowed.\n\r" );
+      xcat( buf, "Bad Room Affect spells are not allowed.\n\r" );
    else
-      strcat( buf, "Bad Room Affect spells may be used.\n\r" );
+      xcat( buf, "Bad Room Affect spells may be used.\n\r" );
 
    send_to_char( buf, ch );
    return;

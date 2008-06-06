@@ -95,8 +95,8 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
       to_list = one_argument( to_list, to_one );
       if( to_one[0] != '\0' && str_cmp( ch->name, to_one ) )
       {
-         strcat( to_new, " " );
-         strcat( to_new, to_one );
+         xcat( to_new, " " );
+         xcat( to_new, to_one );
       }
    }
 
@@ -192,7 +192,7 @@ void do_note( CHAR_DATA * ch, char *argument )
                      vnum,
                      ( pnote->date_stamp > ch->last_note
                        && str_cmp( pnote->sender, ch->name ) ) ? "N" : " ", pnote->sender, pnote->subject );
-            strcat( buf1, buf );
+            xcat( buf1, buf );
             vnum++;
          }
       }
@@ -229,17 +229,17 @@ void do_note( CHAR_DATA * ch, char *argument )
             if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && ch->last_note < pnote->date_stamp )
             {
                xprintf( buf, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
-               strcat( buf1, buf );
+               xcat( buf1, buf );
 
                xprintf( buf, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
-               strcat( buf1, buf );
+               xcat( buf1, buf );
 
                xprintf( buf, "Across the top of the letter it says: %s\n\r", pnote->subject );
-               strcat( buf1, buf );
+               xcat( buf1, buf );
 
-               strcat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
+               xcat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
 
-               strcat( buf1, pnote->text );
+               xcat( buf1, pnote->text );
                ch->last_note = UMAX( ch->last_note, pnote->date_stamp );
                send_to_char( buf1, ch );
                return;
@@ -268,21 +268,21 @@ void do_note( CHAR_DATA * ch, char *argument )
          if( is_note_to( ch, pnote ) && ( vnum++ == anum || fAll ) )
          {
             xprintf( buf, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
-            strcat( buf1, buf );
+            xcat( buf1, buf );
 
             xprintf( buf, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
-            strcat( buf1, buf );
+            xcat( buf1, buf );
 
             xprintf( buf, "Across the top of the letter it says: %s\n\r", pnote->subject );
-            strcat( buf1, buf );
+            xcat( buf1, buf );
 
-            strcat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
+            xcat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
 
-            strcat( buf1, pnote->text );
+            xcat( buf1, pnote->text );
             if( !fAll )
                send_to_char( buf1, ch );
             else
-               strcat( buf1, "\n\r" );
+               xcat( buf1, "\n\r" );
             ch->last_note = UMAX( ch->last_note, pnote->date_stamp );
             if( !fAll )
                return;
@@ -319,8 +319,8 @@ void do_note( CHAR_DATA * ch, char *argument )
          *tilde = '-';
       }
 
-      strcat( buf, argument );
-      strcat( buf, "\n\r" );
+      xcat( buf, argument );
+      xcat( buf, "\n\r" );
       free_string( ch->pnote->text );
       ch->pnote->text = str_dup( buf );
       send_to_char( "Ok.\n\r", ch );
@@ -1424,7 +1424,7 @@ void do_emote( CHAR_DATA * ch, char *argument )
 
    strcpy( buf, argument );
    if( isalpha( plast[-1] ) )
-      strcat( buf, "." );
+      xcat( buf, "." );
 
    act( "$n $T", ch, NULL, buf, TO_ROOM );
    act( "$n $T", ch, NULL, buf, TO_CHAR );
@@ -2545,7 +2545,7 @@ void do_pemote( CHAR_DATA * ch, char *argument )
 
    strcpy( buf, argument );
    if( isalpha( plast[-1] ) )
-      strcat( buf, "." );
+      xcat( buf, "." );
 
    act( "$n's $T", ch, NULL, buf, TO_ROOM );
    act( "$n's $T", ch, NULL, buf, TO_CHAR );
@@ -2669,7 +2669,7 @@ void do_tongue( CHAR_DATA * ch, char *argument )
       {
          if( !str_prefix( syl_table[iSyl].old, pName ) )
          {
-            strcat( buf, syl_table[iSyl].new );
+            xcat( buf, syl_table[iSyl].new );
             break;
          }
       }
@@ -2757,7 +2757,7 @@ char *slur_text( char *argument )
       {
          if( !str_prefix( syl_table[iSyl].old, pName ) )
          {
-            strcat( buf, syl_table[iSyl].new );
+            xcat( buf, syl_table[iSyl].new );
             length = strlen( syl_table[iSyl].old );
             break;
          }

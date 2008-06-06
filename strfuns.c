@@ -770,15 +770,15 @@ char *str_mod( char *mod_string, char *argument )
          argument++;
 
          if( mod_string )
-            strcat( buf, mod_string );
+            xcat( buf, mod_string );
          while( isspace( *argument ) )
             argument++;
          if( !str_infix( argument, mod_string ) )
          {
             return mod_string;
          }
-         strcat( buf, argument );
-         strcat( buf, " " );
+         xcat( buf, argument );
+         xcat( buf, " " );
       }
       if( argument[0] == '-' )
       {
@@ -808,7 +808,7 @@ char *str_mod( char *mod_string, char *argument )
                   buf[i++] = *( buf2++ );
                while( ( !isspace( *( buf2++ ) ) ) || ( ( multiple ) && ( ( buf2[0] != '\'' ) && ( buf2[0] != '\0' ) ) ) );
                buf[i] = '\0';
-               strcat( buf, buf2 );
+               xcat( buf, buf2 );
             }
          }
 

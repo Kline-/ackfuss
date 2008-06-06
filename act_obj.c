@@ -1813,7 +1813,7 @@ void do_wear( CHAR_DATA * ch, char *argument )
                xprintf( eqbuf, "%s", "@@dNothing@@N" );
             }
             xprintf( catbuf, "%s%25s@@N %-*s\n\r", colbuf, where_name[location], ccode_len( eqbuf, 40 ), eqbuf );
-            strcat( outbuf, catbuf );
+            xcat( outbuf, catbuf );
          }
       }
       send_to_char( outbuf, ch );
