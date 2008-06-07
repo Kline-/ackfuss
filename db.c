@@ -1204,6 +1204,8 @@ void load_objects( FILE * fp )
          pObjIndex->wear_flags = fread_number( fp );
       }
       pObjIndex->item_apply = fread_number( fp );
+      if( area_revision > 16 )
+       pObjIndex->speed = atof(fread_string( fp ));
       pObjIndex->value[0] = fread_number( fp );
       pObjIndex->value[1] = fread_number( fp );
       pObjIndex->value[2] = fread_number( fp );
@@ -2684,7 +2686,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
    obj->last_content = NULL;
    obj->prev_content = NULL;
    obj->weight = pObjIndex->weight;
-   obj->speed = number_speed();
+   if( (obj->speed = pObjIndex->speed) < 0.01 || (obj->speed = pObjIndex->speed) > 4 )
+    obj->speed = number_speed();
    GET_FREE( money, money_type_free );
 #ifdef DEBUG_MONEY
    {

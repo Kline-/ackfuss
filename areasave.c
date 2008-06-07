@@ -62,7 +62,7 @@
 #define BUILD_SEC_SPECIALS 9
 #define BUILD_SEC_OBJFUNS  10 /* -S- Mod */
 #define BUILD_SEC_END      11
-#define AREA_VERSION  16
+#define AREA_VERSION  17
 
 
 struct save_queue_type
@@ -454,6 +454,7 @@ void build_save_objects(  )
    fprintf( SaveFile, "%s~\n", pObject->short_descr );
    fprintf( SaveFile, "%s~\n", pObject->description );
    fprintf( SaveFile, "%i %i %i %i\n", pObject->item_type, pObject->extra_flags, pObject->wear_flags, pObject->item_apply );
+   fprintf( SaveFile, "%0.2f~\n", pObject->speed );
 
    /*
     * Check for pills, potions, scrolls, staffs and wands.  

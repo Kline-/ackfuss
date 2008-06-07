@@ -919,6 +919,7 @@ struct obj_index_data
    int value[10];
    TRIGGER_DATA *first_trigger;
    TRIGGER_DATA *last_trigger;
+   float speed;
 };
 
 
