@@ -631,6 +631,9 @@ void build_showobj( CHAR_DATA * ch, char *argument )
    xprintf( buf, "@@WWeight: @@y%d.\n\r", obj->weight );
    xcat( buf1, buf );
 
+   xprintf( buf, "@@WSpeed: @@y%4.2f\n\r", obj->speed );
+   xcat( buf1, buf );
+
    xcat( buf1, "@@WObject Values:\n\r" );
 
    for( cnt = 0; cnt < 10; cnt++ )
@@ -2543,7 +2546,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       send_to_char( "or:     [set] <string> <value>\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
-      send_to_char( "  value0 value1 value2 value3\n\r", ch );
+      send_to_char( "  value0 value1 value2 value3 speed\n\r", ch );
       send_to_char( "  level extra wear weight aff type\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "String being one of:\n\r", ch );
@@ -2603,6 +2606,17 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          return;
       }
       pObj->level = value;
+      return;
+   }
+
+   if( !str_cmp( arg2, "speed" ) )
+   {
+      if( atof(arg3) < 0.01 || atof(arg3) > 4 )
+      {
+         send_to_char("item speed is 0.01 to 4.00.\n\r", ch );
+         return;
+      }
+      pObj->speed = atof(arg3);
       return;
    }
 

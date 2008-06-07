@@ -502,13 +502,13 @@ void multi_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
       if( ch->fighting != victim )
          return;
    }
-*/
+
    if( !IS_NPC( ch ) && IS_SET( race_table[ch->race].race_flags, RACE_MOD_TAIL ) )
    {
       if( number_percent(  ) < 25 )
          one_hit( ch, victim, TYPE_HIT + 13 );
    }
-
+*/
    if( !IS_NPC( ch ) && ( ( ch->stance == STANCE_AMBUSH ) || ( ch->stance == STANCE_AC_BEST ) ) )
    {
       send_to_char( "You step out of the shadows.\n\r", ch );
@@ -5780,14 +5780,17 @@ float get_speed( CHAR_DATA *ch, int slot )
  if( !IS_NPC(ch) )
  {
   switch(slot) {
-   case SPEED_LH: wield = get_eq_char(ch,WEAR_HOLD_HAND_L);  break;
-   case SPEED_RH: wield = get_eq_char(ch,WEAR_HOLD_HAND_R);  break;
+   case SPEED_LH:   wield = get_eq_char(ch,WEAR_HOLD_HAND_L);  break;
+   case SPEED_RH:   wield = get_eq_char(ch,WEAR_HOLD_HAND_R);  break;
+   case SPEED_TAIL: wield = NULL;                              break;
    default: wield = NULL; break;
   }
   if( wield != NULL && wield->item_type == ITEM_WEAPON )
    value = wield->speed;
   else
   {
+   if( slot == SPEED_TAIL )
+    value = number_range(30,60);
    for( i = ch->level; i > 0; i-- )
     value -= 0.01;
   }
@@ -5834,6 +5837,16 @@ void combat_update( void )
    {
     one_hit(ch, victim, TYPE_UNDEFINED);
     ch->speed[SPEED_RH] = get_speed(ch,SPEED_RH);
+   }
+   if( IS_SET(race_table[ch->race].race_flags,RACE_MOD_TAIL) )
+   {
+    ch->speed[SPEED_TAIL] -= 0.01;
+
+    if( ch->speed[SPEED_TAIL] <= 0 )
+    {
+     one_hit(ch,victim,(TYPE_HIT + 13));
+     ch->speed[SPEED_TAIL] = get_speed(ch,SPEED_TAIL);
+    }
    }
   }
  }
