@@ -501,9 +501,9 @@ const struct lookup_type tab_mob_flags[] = {
 
 const struct lookup_type tab_mob_skill[] = {
    {"nada", 1, 0},
-   {"2_attack", 2, 100},
-   {"3_attack", 4, 200},
-   {"4_attack", 8, 400},
+   {"enhanced_reflexes", 2, 100},
+   {"sleight_of_hand", 4, 200},
+   {"crushing_blow", 8, 400},
    {"punch", 16, 200},
    {"headbutt", 32, 200},
    {"knee", 64, 200},
@@ -514,19 +514,19 @@ const struct lookup_type tab_mob_skill[] = {
    {"dodge", 2048, 200},
    {"parry", 4096, 200},
    {"martial", 8192, 300},
-   {"enhanced", 16384, 400},
+   {"enhanced_dam", 16384, 400},
    {"dualwield", 32768, 350},
    {"dirt", 65536, 300},
-   {"5_attack", 131072, 500},
-   {"6_attack", 262144, 600},
+   {"combat_prowess", 131072, 500},
+   {"quickstrike", 262144, 600},
    {"charge", 524288, 700},
    {NULL, 0, 0}
 };
 const struct lookup_type tab_mob_powerskill[] = {
    {"nada", 1, 0},
-   {"2_attack", 2, 100},
-   {"3_attack", 4, 200},
-   {"4_attack", 8, 400},
+   {"enhanced_reflexes", 2, 100},
+   {"sleight_of_hand", 4, 200},
+   {"crushing_blow", 8, 400},
    {"punch", 16, 200},
    {"headbutt", 32, 200},
    {"knee", 64, 200},
@@ -537,11 +537,11 @@ const struct lookup_type tab_mob_powerskill[] = {
    {"dodge", 2048, 200},
    {"parry", 4096, 200},
    {"martial", 8192, 300},
-   {"enhanced", 16384, 400},
+   {"enhanced_dam", 16384, 400},
    {"dualwield", 32768, 350},
    {"dirt", 65536, 300},
-   {"5_attack", 131072, 500},
-   {"6_attack", 262144, 600},
+   {"combat_prowess", 131072, 500},
+   {"quickstrike", 262144, 600},
    {"charge", 524288, 700},
    {NULL, 0, 0}
 };

@@ -416,15 +416,15 @@ long_int exp_for_mobile( int level, CHAR_DATA * mob )
    max exp for the mob--that's with EVERY skill in the book :)   */
 
 
-   if( IS_SET( mob->skills, MOB_SECOND ) )
+   if( IS_SET( mob->skills, MOB_REFLEXES ) )
       value += .05 * base_value;
-   if( IS_SET( mob->skills, MOB_THIRD ) )
+   if( IS_SET( mob->skills, MOB_SLEIGHT ) )
       value += .200 * base_value;
-   if( IS_SET( mob->skills, MOB_FOURTH ) )
+   if( IS_SET( mob->skills, MOB_CRUSHING ) )
       value += .1 * base_value;
-   if( IS_SET( mob->skills, MOB_FIFTH ) )
+   if( IS_SET( mob->skills, MOB_PROWESS ) )
       value += .200 * base_value;
-   if( IS_SET( mob->skills, MOB_SIXTH ) )
+   if( IS_SET( mob->skills, MOB_QUICKSTRIKE ) )
       value += .1 * base_value;
    if( IS_SET( mob->skills, MOB_PUNCH ) )
       value += .050 * base_value;
