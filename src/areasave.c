@@ -454,7 +454,7 @@ void build_save_objects(  )
    fprintf( SaveFile, "%s~\n", pObject->short_descr );
    fprintf( SaveFile, "%s~\n", pObject->description );
    fprintf( SaveFile, "%i %i %i %i\n", pObject->item_type, pObject->extra_flags, pObject->wear_flags, pObject->item_apply );
-   fprintf( SaveFile, "%0.2f~\n", pObject->speed );
+   fprintf( SaveFile, "%0.2f\n", pObject->speed );
 
    /*
     * Check for pills, potions, scrolls, staffs and wands.  

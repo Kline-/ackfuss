@@ -1420,6 +1420,7 @@ MID   *get_mob_index   args( ( int vnum ) );
 OID   *get_obj_index   args( ( int vnum ) );
 RID   *get_room_index  args( ( int vnum ) );
 char  fread_letter     args( ( FILE * fp ) );
+float fread_float      args( ( FILE * fp ) );
 int   fread_number     args( ( FILE * fp ) );
 char  *fread_string    args( ( FILE * fp ) );
 void  fread_to_eol     args( ( FILE * fp ) );
