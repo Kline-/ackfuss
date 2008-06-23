@@ -600,6 +600,10 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
          dam += ( ch->pcdata->learned[gsn_enhanced_damage] > 0 ) ?
             dam * ch->pcdata->learned[gsn_enhanced_damage] / 150 : dam * .4;
    }
+   if( IS_NPC(ch) && IS_SET(ch->skills,MOB_PROWESS) )
+      dam += number_range((ch->level * 1.5),(ch->level * 3));
+   if( !IS_NPC(ch) && ch->pcdata->learned[gsn_combat_prowess] > 0 )
+      dam += number_range((ch->pcdata->learned[gsn_combat_prowess] * 1.5),(ch->pcdata->learned[gsn_combat_prowess] * 3));
    if( !IS_AWAKE( victim ) )
       dam *= 1.5;
    /*
@@ -682,7 +686,6 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
          ch->alignment = UMAX( -1000, ch->alignment - 50 );
       }
    }
-
    damage( ch, victim, dam, dt );
 
 
@@ -711,17 +714,18 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
    /*
     * Stop up any residual loopholes.
     */
+/*
    if( dam > 3000 )
    {
       char buf[MAX_STRING_LENGTH];
       xprintf( buf, "Combat: %d damage by %s, attacking %s, dt %d", dam,
                IS_NPC( ch ) ? ch->short_descr : ch->name, victim->name, dt );
-      if( ch->level < 82 ) /* stop imms generating warnings!! */
+      if( ch->level < 82 ) stop imms generating warnings!!
          monitor_chan( buf, MONITOR_COMBAT );
       log_f( buf );
       dam = 3000;
    }
-
+*/
    if( victim != ch )
    {
       /*
@@ -811,6 +815,17 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
          if( check_skills( ch, victim ) )
             return;
       }
+
+   if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_CRUSHING) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_crushing_blow]) )
+   {
+    if( (IS_NPC(ch) && number_percent() < 9) || (!IS_NPC(ch) && (number_range(85,300) - ch->pcdata->learned[gsn_crushing_blow]) < 10) )
+    {
+     act("@@WYou @@e*@@RCRUSH@@e* @@W$N's body with the force of your blow!@@N",ch,NULL,victim,TO_CHAR);
+     act("@@W$n @@e*@@RCRUSHES@@e* @@Wyour body with the force of $s blow!@@N",ch,NULL,victim,TO_VICT);
+     act("@@W$n @@e*@@RCRUSHES@@e* @@W$N's body with the force of $s blow!@@N",ch,NULL,victim,TO_NOTVICT);
+     dam *= 2.5;
+    }
+   }
       if( dt != -1 )
          dam_message( ch, victim, dam, dt );
    }
