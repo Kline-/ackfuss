@@ -956,26 +956,26 @@
  * New bits to determine what skills a mob can do in combat -S-
  */
 
-#define MOB_NONE		      	     1
-#define MOB_SECOND			     2
-#define MOB_THIRD			     4
-#define MOB_FOURTH			     8
-#define MOB_PUNCH			    16
-#define MOB_HEADBUTT			    32
-#define MOB_KNEE			    64
-#define MOB_DISARM			   128
-#define MOB_TRIP			   256
-#define MOB_NODISARM			   512
-#define MOB_NOTRIP			  1024
-#define MOB_DODGE			  2048
-#define MOB_PARRY			  4096
-#define MOB_MARTIAL			  8192
-#define MOB_ENHANCED			 16384
-#define MOB_DUALWIELD			 32768
-#define MOB_DIRT			 65536
-#define MOB_FIFTH			131072
-#define MOB_SIXTH			262144
-#define MOB_CHARGE			524288
+#define MOB_NONE          BIT_1
+#define MOB_REFLEXES      BIT_2
+#define MOB_SLEIGHT       BIT_3
+#define MOB_CRUSHING      BIT_4
+#define MOB_PUNCH         BIT_5
+#define MOB_HEADBUTT      BIT_6
+#define MOB_KNEE          BIT_7
+#define MOB_DISARM        BIT_8
+#define MOB_TRIP          BIT_9
+#define MOB_NODISARM      BIT_10
+#define MOB_NOTRIP        BIT_11
+#define MOB_DODGE         BIT_12
+#define MOB_PARRY         BIT_13
+#define MOB_MARTIAL       BIT_14
+#define MOB_ENHANCED      BIT_15
+#define MOB_DUALWIELD     BIT_16
+#define MOB_DIRT          BIT_17
+#define MOB_PROWESS       BIT_18
+#define MOB_QUICKSTRIKE   BIT_19
+#define MOB_CHARGE        BIT_20
 
 /*
  * New bits to determine what spells a mob will cast in combat -S-
