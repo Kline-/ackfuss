@@ -55,8 +55,6 @@ extern sh_int gsn_nodisarm;
 extern sh_int gsn_trip;
 extern sh_int gsn_dirt;
 extern sh_int gsn_bash;
-
-extern sh_int gsn_fourth_attack;
 extern sh_int gsn_shield_block;
 extern sh_int gsn_beserk;
 
@@ -79,8 +77,11 @@ extern sh_int gsn_enhanced_damage;
 extern sh_int gsn_kick;
 extern sh_int gsn_parry;
 extern sh_int gsn_rescue;
-extern sh_int gsn_second_attack;
-extern sh_int gsn_third_attack;
+extern sh_int gsn_enhanced_reflexes;
+extern sh_int gsn_sleight_of_hand;
+extern sh_int gsn_crushing_blow;
+extern sh_int gsn_combat_prowess;
+extern sh_int gsn_quickstrike;
 
 extern sh_int gsn_blindness;
 extern sh_int gsn_charm_person;
@@ -95,8 +96,6 @@ extern sh_int gsn_teach;
 extern sh_int gsn_adrenaline;
 extern sh_int gsn_frenzy;
 extern sh_int gsn_emotion_control;
-extern sh_int gsn_fifth_attack;
-extern sh_int gsn_sixth_attack;
 extern sh_int gsn_target;
 extern sh_int gsn_charge;
 extern sh_int gsn_unit_tactics;

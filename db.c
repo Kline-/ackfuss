@@ -84,8 +84,6 @@ sh_int gsn_notrip;
 sh_int gsn_nodisarm;
 sh_int gsn_trip;
 sh_int gsn_dirt;
-
-sh_int gsn_fourth_attack;
 sh_int gsn_shield_block;
 sh_int gsn_beserk;
 
@@ -107,9 +105,11 @@ sh_int gsn_enhanced_damage;
 sh_int gsn_kick;
 sh_int gsn_parry;
 sh_int gsn_rescue;
-sh_int gsn_second_attack;
-sh_int gsn_third_attack;
-
+sh_int gsn_enhanced_reflexes;
+sh_int gsn_sleight_of_hand;
+sh_int gsn_crushing_blow;
+sh_int gsn_combat_prowess;
+sh_int gsn_quickstrike;
 sh_int gsn_blindness;
 sh_int gsn_charm_person;
 sh_int gsn_curse;
@@ -122,8 +122,6 @@ sh_int gsn_instruct;
 sh_int gsn_adrenaline;
 sh_int gsn_frenzy;
 sh_int gsn_emotion_control;
-sh_int gsn_fifth_attack;
-sh_int gsn_sixth_attack;
 sh_int gsn_target;
 sh_int gsn_charge;
 sh_int gsn_unit_tactics;
