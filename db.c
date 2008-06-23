@@ -37,6 +37,7 @@
 #include "hash.h"
 #include "ssm.h"
 #include <unistd.h>  /* for execl */
+#include <math.h> /* For fread_float */
 #include <sys/wait.h>
 #include <errno.h>
 #include <signal.h>
@@ -1205,7 +1206,7 @@ void load_objects( FILE * fp )
       }
       pObjIndex->item_apply = fread_number( fp );
       if( area_revision > 16 )
-       pObjIndex->speed = atof(fread_string( fp ));
+       pObjIndex->speed = fread_float( fp );
       pObjIndex->value[0] = fread_number( fp );
       pObjIndex->value[1] = fread_number( fp );
       pObjIndex->value[2] = fread_number( fp );
@@ -3072,7 +3073,93 @@ char fread_letter( FILE * fp )
    return c;
 }
 
+/*
+ * Read a float number from a file. Turn the result into a float value.
+ * Taken from AFKMud by Samson
+ */
+float fread_float( FILE *fp )
+{
+ float number;
+ bool sign, decimal;
+ char c;
+ int place = 0;
+ 
+ do
+ {
+  if( feof(fp) )
+  {
+   bug("fread_float: EOF encountered on read.",0);
+   if( fBootDb )
+   {
+    bug( "Corrupt file somewhere.",0);
+    exit(1);
+   }
+   return 0;
+  }
+  c = getc( fp );
+ }
+ while( isspace(c) );
+ 
+ number = 0;
+ 
+ sign   = FALSE;
+ decimal = FALSE;
 
+ if( c == '+' )
+  c = getc( fp );
+ else if( c == '-' )
+ {
+  sign = TRUE;
+  c = getc( fp );
+ }
+ 
+ if( !isdigit(c) )
+ {
+  bug( "Fread_float: bad format. (%c)", c );
+  if( fBootDb )
+   exit( 1 );
+  return 0;
+ }
+  
+ while( 1 )
+ {
+  if( c == '.' || isdigit(c) )
+  {
+   if( c == '.' )
+   {
+    decimal = TRUE;
+    c = getc( fp );
+   }
+
+   if( feof(fp) )
+   {
+    bug("fread_float: EOF encountered on read.",0);
+    if( fBootDb )
+     exit( 1 );
+    return number;
+   }
+   if( !decimal )
+    number = number * 10 + c - '0';
+   else
+   {
+    place++;
+    number += pow( 10, ( -1 * place ) ) * ( c - '0' );
+   }
+   c      = getc( fp );
+  }
+  else break;
+ }
+
+ if( sign )
+  number = 0 - number;
+
+ if( c == '|' )
+  number += fread_float( fp );
+ else if( c != ' ' )
+  ungetc( c, fp );
+
+ return number;
+}
 
 /*
  * Read a number from a file.

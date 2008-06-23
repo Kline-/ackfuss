@@ -22,7 +22,7 @@ PROF    =
 #SOLARIS_LINK = -lnsl -lsocket -lresolv
 
 C_FLAGS = -O -g2 -Wall -DACK_43 $(PROF) $(SOLARIS_FLAG)
-L_FLAGS = -O -g2 -lcrypt $(PROF) $(SOLARIS_LINK)
+L_FLAGS = -O -g2 -lcrypt -lm $(PROF) $(SOLARIS_LINK)
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
