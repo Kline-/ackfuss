@@ -72,15 +72,15 @@ void load_sysdata( void )
      log_f("Done.");
      return;
     }
-    KEY("Expmult",      sysdata.expmult,     fread_number(fp));
+    KEY("Expmult",      sysdata.expmult,     atof(fread_string(fp)));
     break;
    case 'M':
-    KEY("Mob_AC",       sysdata.mob_ac,      fread_number(fp));
-    KEY("Mob_DR",       sysdata.mob_dr,      fread_number(fp));
-    KEY("Mob_HP",       sysdata.mob_hp,      fread_number(fp));
-    KEY("Mob_HR",       sysdata.mob_hr,      fread_number(fp));
-    KEY("Mob_MP",       sysdata.mob_mp,      fread_number(fp));
-    KEY("Mob_MV",       sysdata.mob_mv,      fread_number(fp));
+    KEY("Mob_AC",       sysdata.mob_ac,      atof(fread_string(fp)));
+    KEY("Mob_DR",       sysdata.mob_dr,      atof(fread_string(fp)));
+    KEY("Mob_HP",       sysdata.mob_hp,      atof(fread_string(fp)));
+    KEY("Mob_HR",       sysdata.mob_hr,      atof(fread_string(fp)));
+    KEY("Mob_MP",       sysdata.mob_mp,      atof(fread_string(fp)));
+    KEY("Mob_MV",       sysdata.mob_mv,      atof(fread_string(fp)));
     break;
    case 'P':
     SKEY("Playtesters", sysdata.playtesters, fread_string(fp));
@@ -117,17 +117,17 @@ void save_sysdata( void )
   return;
  }
 
- fprintf(fp, "Expmult     %0.4f\n",  sysdata.expmult);
- fprintf(fp, "Mob_AC      %0.4f\n",  sysdata.mob_ac);
- fprintf(fp, "Mob_DR      %0.4f\n",  sysdata.mob_dr);
- fprintf(fp, "Mob_HP      %0.4f\n",  sysdata.mob_hp);
- fprintf(fp, "Mob_HR      %0.4f\n",  sysdata.mob_hr);
- fprintf(fp, "Mob_MP      %0.4f\n",  sysdata.mob_mp);
- fprintf(fp, "Mob_MV      %0.4f\n",  sysdata.mob_mv);
- fprintf(fp, "Playtesters %s~\n",    sysdata.playtesters);
- fprintf(fp, "Pulse       %d\n",     sysdata.pulse);
- fprintf(fp, "Shownumbers %d\n",     sysdata.shownumbers);
- fprintf(fp, "Wizlock     %d\n",     wizlock);
+ fprintf(fp, "Expmult     %0.4f~\n",  sysdata.expmult);
+ fprintf(fp, "Mob_AC      %0.4f~\n",  sysdata.mob_ac);
+ fprintf(fp, "Mob_DR      %0.4f~\n",  sysdata.mob_dr);
+ fprintf(fp, "Mob_HP      %0.4f~\n",  sysdata.mob_hp);
+ fprintf(fp, "Mob_HR      %0.4f~\n",  sysdata.mob_hr);
+ fprintf(fp, "Mob_MP      %0.4f~\n",  sysdata.mob_mp);
+ fprintf(fp, "Mob_MV      %0.4f~\n",  sysdata.mob_mv);
+ fprintf(fp, "Playtesters %s~\n",     sysdata.playtesters);
+ fprintf(fp, "Pulse       %d\n",      sysdata.pulse);
+ fprintf(fp, "Shownumbers %d\n",      sysdata.shownumbers);
+ fprintf(fp, "Wizlock     %d\n",      wizlock);
  fprintf(fp, "End\n\n");
 
  fflush(fp);
