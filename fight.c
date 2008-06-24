@@ -5736,7 +5736,7 @@ float get_speed( CHAR_DATA *ch, int slot )
   for( i = ch->level; i > 0 && value > 0.99; i -= 13 )
    value -= 0.14;
  }
- value -= stance_app[ch->stance].speed_mod;
+ value += stance_app[ch->stance].speed_mod;
  if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_REFLEXES) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_enhanced_reflexes]) )
   value -= 0.02;
  if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_SLEIGHT) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_sleight_of_hand]) )
