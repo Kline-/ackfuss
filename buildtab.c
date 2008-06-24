@@ -1106,9 +1106,9 @@ void table_printout( const struct lookup_type *table, char *buf )
    {
       if( ( strcmp( table[a].text, "nada" ) ) && ( strcmp( table[a].text, "placeholder" ) ) )   /* If not an invalid choice */
       {
-         xcat( buf, "          " );
-         xcat( buf, table[a].text );
-         xcat( buf, "\n\r" );
+         xcat_2( buf, "          " );
+         xcat_2( buf, table[a].text );
+         xcat_2( buf, "\n\r" );
       }
    }
 
@@ -1134,9 +1134,9 @@ void wide_table_printout( const struct lookup_type *table, char *buf )
       if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
           && ( strcmp( table[a].text, "nada" ) ) )
       {
-         xcat( buf, "     " );
+         xcat_2( buf, "     " );
          xprintf( tmp, "%12s", table[a].text );
-         xcat( buf, tmp );
+         xcat_2( buf, tmp );
          if( ++foo % 4 == 0 )
             xcat( buf, "\n\r" );
       }
