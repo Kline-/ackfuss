@@ -128,7 +128,7 @@ void violence_update( void )
 
 /* slight damage for players in a speeded stance, simulates fatigue */
 
-      if( !IS_NPC( ch ) && ( stance_app[ch->stance].speed_mod > 1 ) )
+      if( !IS_NPC( ch ) && ( stance_app[ch->stance].speed_mod > 0 ) )
       {
          ch->hit =
             UMAX( 10, ch->hit - number_range( get_psuedo_level( ch ) * 5 / 1000, get_psuedo_level( ch ) * 10 / 1000 ) );
@@ -5736,6 +5736,7 @@ float get_speed( CHAR_DATA *ch, int slot )
   for( i = ch->level; i > 0 && value > 0.99; i -= 13 )
    value -= 0.14;
  }
+ value -= stance_app[ch->stance].speed_mod;
  if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_REFLEXES) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_enhanced_reflexes]) )
   value -= 0.02;
  if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_SLEIGHT) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_sleight_of_hand]) )

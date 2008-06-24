@@ -302,7 +302,7 @@ struct stance_app_type
    sh_int ac_mod;
    sh_int dr_mod;
    sh_int hr_mod;
-   sh_int speed_mod;
+   float speed_mod;
 };
 
 /*
