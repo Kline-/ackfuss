@@ -538,20 +538,24 @@ const struct race_type race_table[MAX_RACE] = {
 
 };
 
+/*
+ * name, ac (int), dr (int), hr (int), speed (float)
+ * negative speed is good, positive is bad
+ */
 const struct stance_app_type stance_app[MAX_STANCE] = {
    {"Adventurer", 0, 0, 0, 0},
-   {"Mage", 20, -3, -3, 0},
-   {"Ninja", -30, 0, 5, 3},
-   {"Shadows", -20, -1, -2, 4},
+   {"Mage", 20, -3, -3, 0.15},
+   {"Ninja", -30, 0, 5, -0.12},
+   {"Shadows", -20, -1, -2, -0.15},
    {"Essence", 0, 0, 3, 0},
    {"Beast", 0, 3, 0, 0},
-   {"Flame", 10, 3, 3, 1},
-   {"Spirit", -10, 3, -2, 1},
-   {"Void", -10, -2, 3, 2},
-   {"Dragon", -10, 2, 2, -1},
-   {"Snake", 7, -3, -2, 4},
-   {"Wizard", 30, -5, -5, 0},
-   {"Magi", 40, -10, -10, 0}
+   {"Flame", 10, 3, 3, -0.03},
+   {"Spirit", -10, 3, -2, -0.03},
+   {"Void", -10, -2, 3, -0.06},
+   {"Dragon", -10, 2, 2, 0.03},
+   {"Snake", 7, -3, -2, -0.15},
+   {"Wizard", 30, -5, -5, 0.12},
+   {"Magi", 40, -10, -10, 0.09}
 };
 
 
