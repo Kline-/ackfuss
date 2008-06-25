@@ -62,7 +62,7 @@
  */
 
 #define MAX_CLAN_EQ		     6   /* Number of clan eq items */
-#define MAX_color		    15   /* eg look, prompt, shout */
+#define MAX_COLOR		    15   /* eg look, prompt, shout */
 #define MAX_ANSI		    28   /* eg red, black, etc (was 11) */
 #define MAX_ALIASES		     6
 #define MAX_IGNORES		     3
@@ -85,6 +85,7 @@
 #define MAX_SUPER                    4
 #define MAX_STANCE		13
 #define MAX_TOT_STATS               90   /* Total sum of player stats when creating */
+#define MAX_HISTORY                 20   /* History per channel */
 
                      /*
                       * total number of supernatural types in the game  
@@ -718,37 +719,36 @@
 /*
  * Channel bits.
  */
-#define CHANNEL_AUCTION               1
-#define CHANNEL_GOSSIP                2
-#define CHANNEL_MUSIC                 4
-#define CHANNEL_IMMTALK               8
-#define CHANNEL_NEWBIE               16
-#define CHANNEL_QUESTION             32
-#define CHANNEL_SHOUT                64
-#define CHANNEL_YELL                128
-#define CHANNEL_FLAME               256
-#define CHANNEL_ZZZ                 512
-#define CHANNEL_RACE               1024
-#define CHANNEL_CLAN               2048
-#define CHANNEL_NOTIFY             4096
-#define CHANNEL_INFO               8192
-#define CHANNEL_LOG		  16384
-#define CHANNEL_CREATOR		  32768
-#define CHANNEL_ALLCLAN		  65536
-#define CHANNEL_ALLRACE		 131072
-#define CHANNEL_HERMIT		 262144  /* Turns off ALL channels */
-#define CHANNEL_BEEP		 524288
-#define CHANNEL_FAMILY		1048576
-#define CHANNEL_DIPLOMAT	2097152
-#define CHANNEL_CRUSADE		4194304
-#define CHANNEL_REMORTTALK	8388608
+#define CHANNEL_AUCTION        BIT_1
+#define CHANNEL_GOSSIP         BIT_2
+#define CHANNEL_MUSIC          BIT_3
+#define CHANNEL_IMMTALK        BIT_4
+#define CHANNEL_NEWBIE         BIT_5
+#define CHANNEL_QUESTION       BIT_6
+#define CHANNEL_SHOUT          BIT_7
+#define CHANNEL_YELL           BIT_8
+#define CHANNEL_FLAME          BIT_9
+#define CHANNEL_ZZZ            BIT_10
+#define CHANNEL_RACE           BIT_11
+#define CHANNEL_CLAN           BIT_12
+#define CHANNEL_NOTIFY         BIT_13
+#define CHANNEL_INFO           BIT_14
+#define CHANNEL_LOG            BIT_15
+#define CHANNEL_CREATOR        BIT_16
+#define CHANNEL_ALLCLAN        BIT_17
+#define CHANNEL_ALLRACE        BIT_18
+#define CHANNEL_HERMIT         BIT_19  /* Turns off ALL channels */
+#define CHANNEL_BEEP           BIT_20
+#define CHANNEL_FAMILY         BIT_21
+#define CHANNEL_DIPLOMAT       BIT_22
+#define CHANNEL_CRUSADE        BIT_23
+#define CHANNEL_REMORTTALK     BIT_24
 #define CHANNEL_HOWL           BIT_25
-#define CHANNEL_ADEPT	        BIT_26
-/* #define CHANNEL_MAUCTION        67108864  */
+#define CHANNEL_ADEPT          BIT_26
 #define CHANNEL_OOC            BIT_27
 #define CHANNEL_QUEST          BIT_28
-#define CHANNEL_LANG	        BIT_29
-#define CHANNEL_GAME		BIT_30
+#define CHANNEL_LANG           BIT_29
+#define CHANNEL_GAME           BIT_30
 
   /*
    * NOTE 32 is the last allowable channel ZEN 

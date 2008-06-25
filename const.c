@@ -40,7 +40,7 @@
  * Put here for ease of editing. -S-
  */
 
-const struct color_type color_table[MAX_color] = {
+const struct color_type color_table[MAX_COLOR] = {
    {"say", 0},
    {"tell", 1},
    {"gossip", 2},
