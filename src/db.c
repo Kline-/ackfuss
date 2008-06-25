@@ -4248,3 +4248,16 @@ bool char_exists( char *argument )
  fpReserve = fopen( NULL_FILE, "r" );
  return found;
 }
+
+int bv_log( int n )
+{
+ int result = 0;
+
+ while( n > 0 )
+ {
+  n >>= 1;
+  result++;
+ }
+
+ return result;
+}

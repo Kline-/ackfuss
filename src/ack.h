@@ -742,7 +742,7 @@ struct pc_data
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    PC_DATA *next;
    PC_DATA *prev;
-   int color[MAX_color];
+   int color[MAX_COLOR];
    char *pwd;
    char *bamfin;
    char *room_enter;
@@ -811,6 +811,7 @@ struct pc_data
    char *email_address;
    bool valid_email;
    char *assist_msg;
+   char chistory[30][MAX_HISTORY][MAX_STRING_LENGTH]; /* 30 channels, each with MAX_HISTORY, length of MSL */
 #ifdef IMC
    IMC_CHARDATA *imcchardata;
 #endif
@@ -1428,6 +1429,7 @@ char  *fsave_to_eol    args( ( FILE * fp ) );
 char  *fread_word      args( ( FILE * fp ) );
 bool  char_exists      args( ( char *argument ) );
 float number_speed     args( ( void ) );
+int   bv_log           args( ( int n ) );
 
 /* void *  alloc_mem       args( ( int sMem ) );
 void    check_freed     args( ( unsigned int first, unsigned int last) );

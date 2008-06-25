@@ -5957,7 +5957,7 @@ void do_color( CHAR_DATA * ch, char *argument )
    {
       send_to_char( "@@yPresent color Configuration:@@g\n\r\n\r", ch );
 
-      for( cnt = 0; cnt < MAX_color; cnt++ )
+      for( cnt = 0; cnt < MAX_COLOR; cnt++ )
       {
          xprintf( buf, "@@W%8s: %s%-12s@@N   ",
                   color_table[cnt].name, ansi_table[ch->pcdata->color[cnt]].value, ansi_table[ch->pcdata->color[cnt]].name );
@@ -6009,7 +6009,7 @@ void do_color( CHAR_DATA * ch, char *argument )
        * Check to see if the name is valid 
        */
       color_number = -1;
-      for( cnt = 0; cnt < MAX_color; cnt++ )
+      for( cnt = 0; cnt < MAX_COLOR; cnt++ )
          if( !str_cmp( arg1, color_table[cnt].name ) )
             color_number = color_table[cnt].index;
    }
@@ -6094,7 +6094,7 @@ char *color_string( CHAR_DATA * ch, char *argument )
     * By here, ch is a PC and wants color 
     */
    num = -1;
-   for( cnt = 0; cnt < MAX_color; cnt++ )
+   for( cnt = 0; cnt < MAX_COLOR; cnt++ )
       if( !str_cmp( argument, color_table[cnt].name ) )
          num = cnt;
 

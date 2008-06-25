@@ -492,6 +492,26 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
       return;
    }
 
+   if( !str_cmp(argument,"history") )
+   {
+    int x,y = 0;
+    bool found = FALSE;
+
+    x = (bv_log(channel)-1);
+
+    for( y = 0; y < MAX_HISTORY; y++ )
+     if( ch->pcdata->chistory[x][y][0] != '\0' )
+     {
+      found = TRUE;
+      send_to_char(ch->pcdata->chistory[x][y],ch);
+     }
+
+    if( !found )
+     send_to_char("No history available for that channel yet.\n\r",ch);
+
+    return;
+   }
+
    if( !IS_NPC( ch ) && IS_SET( ch->act, PLR_SILENCE ) )
    {
       xprintf( buf, "You can't %s.\n\r", verb );
@@ -522,7 +542,6 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
-
       case CHANNEL_CRUSADE:
          xprintf( buf, "@@NYou %s@@N '%s'.%s\n\r", verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
@@ -541,8 +560,6 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
-
-
       case CHANNEL_YELL:
          xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "yell" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
@@ -556,21 +573,17 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          xprintf( buf, "$n %s: '$t'.", verb );
          break;
 
-
-
       case CHANNEL_FLAME:
          xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "flame" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
-
       case CHANNEL_SHOUT:
          xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "shout" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          xprintf( buf, "$n %ss '$t'.\n\r", verb );
          break;
-
 
       case CHANNEL_CLAN:
          xprintf( buf, "%s%s %s: '%s'.%s\n\r",
@@ -615,8 +628,6 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          ch->position = position;
          break;
 
-
-
       case CHANNEL_REMORTTALK:
          xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
@@ -640,6 +651,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          act( buf, ch, argument, NULL, TO_CHAR );
          ch->position = position;
          break;
+
       case CHANNEL_OOC:
          xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
@@ -647,6 +659,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          act( buf, ch, argument, NULL, TO_CHAR );
          ch->position = position;
          break;
+
       case CHANNEL_GAME:
          xprintf( buf, "%s $n: $t.", verb );
          position = ch->position;
@@ -750,11 +763,58 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                case CHANNEL_OOC:
                   xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
-
                case CHANNEL_CRUSADE:
                   xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
 
+            }
+            if( !IS_NPC(vch) )
+            {
+             int x,y = 0;
+
+             x = (bv_log(channel)-1);
+
+             for( y = 0; y < MAX_HISTORY; y++ )
+             {
+              if( vch->pcdata->chistory[x][y] == '\0' )
+              {
+               xprintf(vch->pcdata->chistory[x][0],"%s: %s\n\r",ch->name,argument);
+               break;
+              }
+              if( y == (MAX_HISTORY -1) )
+              {
+               int i = 0;
+
+               for( i = 1; i < MAX_HISTORY; i++ )
+                xprintf(vch->pcdata->chistory[x][(i-1)],vch->pcdata->chistory[x][i]);
+
+               xprintf(vch->pcdata->chistory[x][y],"%s: %s\n\r",ch->name,argument);
+              }
+             }
+            }
+            if( !IS_NPC(ch) )
+            {
+             int x,y = 0;
+
+             x = (bv_log(channel)-1);
+
+             for( y = 0; y < MAX_HISTORY; y++ )
+             {
+              if( ch->pcdata->chistory[x][y] == '\0' )
+              {
+               xprintf(ch->pcdata->chistory[x][0],"%s: %s\n\r",ch->name,argument);
+               break;
+              }
+              if( y == (MAX_HISTORY -1) )
+              {
+               int i = 0;
+
+               for( i = 1; i < MAX_HISTORY; i++ )
+                xprintf(ch->pcdata->chistory[x][(i-1)],ch->pcdata->chistory[x][i]);
+
+               xprintf(ch->pcdata->chistory[x][y],"%s: %s\n\r",ch->name,argument);
+              }
+             }
             }
             act( ansi, ch, argument, vch, TO_VICT );
             vch->position = position;

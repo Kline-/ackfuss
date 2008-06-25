@@ -3320,7 +3320,6 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
       return;
 
    if( ch == NULL )
-
       return;
 
    if( ( ch->is_free != FALSE ) || ( ch->in_room == NULL ) )

@@ -361,7 +361,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       }
 
       fprintf( fp, "colors\n" );
-      for( foo = 0; foo < MAX_color; foo++ )
+      for( foo = 0; foo < MAX_COLOR; foo++ )
          fprintf( fp, "%d\n", ch->pcdata->color[foo] );
 
       fprintf( fp, "AttrPerm     %d %d %d %d %d\n",
@@ -1030,7 +1030,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             if( !str_cmp( word, "colors" ) && !IS_NPC( ch ) )
             {
                int foo;
-               for( foo = 0; foo < MAX_color; foo++ )
+               for( foo = 0; foo < MAX_COLOR; foo++ )
                   ch->pcdata->color[foo] = fread_number( fp );
                fMatch = TRUE;
                break;
