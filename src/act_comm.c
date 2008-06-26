@@ -500,7 +500,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
     x = (bv_log(channel)-1);
 
     for( y = 0; y < MAX_HISTORY; y++ )
-     if( ch->pcdata->chistory[x][y] != '\0' )
+     if( ch->pcdata->chistory[x][y][0] != '\0' )
      {
       found = TRUE;
       send_to_char(ch->pcdata->chistory[x][y],ch);
@@ -681,7 +681,6 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
 
          if( d->connected == CON_PLAYING && !IS_SET( och->deaf, channel ) && !IS_SET( och->deaf, CHANNEL_HERMIT ) )
          {
-
             if( IS_SET( vch->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
                continue;
             if( channel == CHANNEL_CREATOR && get_trust( och ) < MAX_LEVEL )
@@ -766,7 +765,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                   break;
 
             }
-            if( !IS_NPC(vch) && vch != ch )
+            if( !IS_NPC(vch) )
             {
              sh_int x,y = 0;
 
@@ -788,31 +787,6 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
 
                vch->pcdata->chistory[x][y][0] = '\0';
                xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
-              }
-             }
-            }
-            if( !IS_NPC(ch) && vch != ch )
-            {
-             sh_int x,y = 0;
-
-             x = (bv_log(channel)-1);
-
-             for( y = 0; y < MAX_HISTORY; y++ )
-             {
-              if( ch->pcdata->chistory[x][y] == '\0' )
-              {
-               xprintf(ch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
-               break;
-              }
-              if( y == (MAX_HISTORY -1) )
-              {
-               int i = 0;
-
-               for( i = 1; i < MAX_HISTORY; i++ )
-                xprintf(ch->pcdata->chistory[x][(i-1)],ch->pcdata->chistory[x][i]);
-
-               ch->pcdata->chistory[x][y][0] = '\0';
-               xprintf(ch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
               }
              }
             }
