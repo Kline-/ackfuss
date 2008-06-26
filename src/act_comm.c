@@ -492,15 +492,15 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
       return;
    }
 
-   if( !str_cmp(argument,"history") )
+   if( !str_cmp(argument,"history") && !IS_NPC(ch) )
    {
-    int x,y = 0;
+    sh_int x,y = 0;
     bool found = FALSE;
 
     x = (bv_log(channel)-1);
 
     for( y = 0; y < MAX_HISTORY; y++ )
-     if( ch->pcdata->chistory[x][y][0] != '\0' )
+     if( ch->pcdata->chistory[x][y] != '\0' )
      {
       found = TRUE;
       send_to_char(ch->pcdata->chistory[x][y],ch);
@@ -529,8 +529,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
       argument = slur_text( argument );
 
    switch ( channel )
-   {
-      default:
+   {      default:
          xprintf( buf, "You %s '%s'.\n\r", verb, argument );
          send_to_char( buf, ch );
          xprintf( buf, "$n %ss '$t'.", verb );
@@ -680,8 +679,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          och = ( d->original ) ? ( d->original ) : ( d->character );
          vch = d->character;
 
-         if( d->connected == CON_PLAYING
-             && vch != ch && !IS_SET( och->deaf, channel ) && !IS_SET( och->deaf, CHANNEL_HERMIT ) )
+         if( d->connected == CON_PLAYING && !IS_SET( och->deaf, channel ) && !IS_SET( och->deaf, CHANNEL_HERMIT ) )
          {
 
             if( IS_SET( vch->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
@@ -768,9 +766,9 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                   break;
 
             }
-            if( !IS_NPC(vch) )
+            if( !IS_NPC(vch) && vch != ch )
             {
-             int x,y = 0;
+             sh_int x,y = 0;
 
              x = (bv_log(channel)-1);
 
@@ -778,7 +776,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
              {
               if( vch->pcdata->chistory[x][y] == '\0' )
               {
-               xprintf(vch->pcdata->chistory[x][0],"%s: %s\n\r",ch->name,argument);
+               xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
                break;
               }
               if( y == (MAX_HISTORY -1) )
@@ -788,13 +786,14 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                for( i = 1; i < MAX_HISTORY; i++ )
                 xprintf(vch->pcdata->chistory[x][(i-1)],vch->pcdata->chistory[x][i]);
 
-               xprintf(vch->pcdata->chistory[x][y],"%s: %s\n\r",ch->name,argument);
+               vch->pcdata->chistory[x][y][0] = '\0';
+               xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
               }
              }
             }
-            if( !IS_NPC(ch) )
+            if( !IS_NPC(ch) && vch != ch )
             {
-             int x,y = 0;
+             sh_int x,y = 0;
 
              x = (bv_log(channel)-1);
 
@@ -802,7 +801,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
              {
               if( ch->pcdata->chistory[x][y] == '\0' )
               {
-               xprintf(ch->pcdata->chistory[x][0],"%s: %s\n\r",ch->name,argument);
+               xprintf(ch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
                break;
               }
               if( y == (MAX_HISTORY -1) )
@@ -812,7 +811,8 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                for( i = 1; i < MAX_HISTORY; i++ )
                 xprintf(ch->pcdata->chistory[x][(i-1)],ch->pcdata->chistory[x][i]);
 
-               xprintf(ch->pcdata->chistory[x][y],"%s: %s\n\r",ch->name,argument);
+               ch->pcdata->chistory[x][y][0] = '\0';
+               xprintf(ch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
               }
              }
             }

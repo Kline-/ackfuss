@@ -83,7 +83,7 @@ void load_sysdata( void )
     KEY("Mob_MV",       sysdata.mob_mv,      fread_float(fp));
     break;
    case 'P':
-    SKEY("Playtesters", sysdata.playtesters, fread_string(fp));
+    KEY("Playtesters",  sysdata.playtesters, fread_string(fp));
     KEY("Pulse",        sysdata.pulse,       fread_number(fp));
     break;
    case 'S':
