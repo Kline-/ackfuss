@@ -752,7 +752,7 @@ struct pc_data
    char *host; /* Used to tell PC last login site */
    sh_int failures;  /* Failed logins */
    sh_int clan;   /* will be used to denote clan membership */
-   int generation;   /* Used for vamps *//* were_age for wolves */
+   sh_int generation;   /* Used for vamps *//* were_age for wolves */
    sh_int perm_str;
    sh_int perm_int;
    sh_int perm_wis;
