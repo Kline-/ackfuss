@@ -282,8 +282,10 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_COMM, C_SHOW_ALWAYS},
    {")", do_creator, POS_DEAD, L_GOD, LOG_NORMAL,
     C_TYPE_COMM, C_SHOW_ALWAYS},
-/*    { ".",              do_gossip,      POS_RESTING,     0,  LOG_NORMAL,
-      C_TYPE_COMM, C_SHOW_ALWAYS }, */
+   { ".",              do_gossip,      POS_RESTING,     0,  LOG_NORMAL,
+    C_TYPE_COMM, C_SHOW_ALWAYS },
+   { "gossip", do_gossip, POS_RESTING, 0, LOG_NORMAL,
+    C_TYPE_COMM, C_SHOW_ALWAYS },
    {"pemote", do_pemote, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_ALWAYS},
    {"emote", do_emote, POS_RESTING, 0, LOG_NORMAL,

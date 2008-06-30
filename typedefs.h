@@ -248,6 +248,7 @@ typedef struct hash_entry_tp HASH_ENTRY;
 /* Kline */
 typedef struct bmlist BM_LIST;
 typedef struct bitmask BITMASK;
+typedef struct chanhistory CHAN_HISTORY;
 
 /*
  * Function types.

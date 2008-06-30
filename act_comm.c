@@ -775,7 +775,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
              {
               if( vch->pcdata->chistory[x][y] == '\0' )
               {
-               xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
+               xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
                break;
               }
               if( y == (MAX_HISTORY -1) )
@@ -786,7 +786,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                 xprintf(vch->pcdata->chistory[x][(i-1)],vch->pcdata->chistory[x][i]);
 
                vch->pcdata->chistory[x][y][0] = '\0';
-               xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",ch->name,argument);
+               xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
               }
              }
             }

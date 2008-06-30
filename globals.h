@@ -160,6 +160,7 @@ extern CHAR_DATA *char_list;
 extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
 extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
 extern SYS_DATA_TYPE sysdata;
+extern CHAN_HISTORY chan_history;
 
 /* YUCK! */
 extern char *target_name;

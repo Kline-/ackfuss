@@ -106,6 +106,10 @@ int quest_timer;  /* Time left to get object */
 int quest_wait = 0;  /* Min time until next quest  */
 sh_int quest_personality;  /* mob's crusade personality :) */
 
+/* Some debug globals --Kline */
+int free_get = 0;
+int free_put = 0;
+
 /* Zen mod: Diplomatics globals */
 
 POL_DATA politics_data;
