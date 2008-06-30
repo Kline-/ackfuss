@@ -509,9 +509,9 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
       if( IS_IMMORTAL(ch) )
       {
        found = TRUE;
-       xprintf(buf,"[%s]",ctime(&chan_history.time[x][y]));
+       xprintf(buf,"[%s",ctime(&chan_history.time[x][y]));
        buf[(strlen(buf)-1)] = '\0';           /* I realize how ugly this chunk looks but it was */
-       xcat(buf," ");                         /* necessary to get around ctime adding a newline --Kline */
+       xcat(buf,"] ");                        /* necessary to get around ctime adding a newline --Kline */
        xcat(buf,chan_history.message[x][y]);
        send_to_char(buf,ch);
       }
@@ -689,7 +689,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          och = ( d->original ) ? ( d->original ) : ( d->character );
          vch = d->character;
 
-         if( d->connected == CON_PLAYING && !IS_SET( och->deaf, channel ) && !IS_SET( och->deaf, CHANNEL_HERMIT ) )
+         if( d->connected == CON_PLAYING && vch != ch && !IS_SET( och->deaf, channel ) && !IS_SET( och->deaf, CHANNEL_HERMIT ) )
          {
             if( IS_SET( vch->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
                continue;
