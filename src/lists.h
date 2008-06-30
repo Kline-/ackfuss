@@ -171,6 +171,9 @@ void obj_free_destructor( OBJ_DATA * odat );
 void ruler_data_free_destructor( RULER_DATA * rdat );
 void npc_group_free_destructor( NPC_GROUP_DATA * ngrp );
 
+extern int free_get;
+extern int free_put;
+
 #define GET_FREE(item, freelist) \
 do { \
   if ( !(freelist) ) \
@@ -183,6 +186,7 @@ do { \
     (item) = (freelist); \
     (freelist) = (item)->next; \
     memset((item), 0, sizeof(*(item))); /* This clears is_free flag */ \
+    free_get++; \
   } \
 } while(0)
 
@@ -196,4 +200,5 @@ do { \
   (item)->is_free = TRUE; /* This sets is_free flag */ \
   (freelist) = (item); \
   if( freelist##_destructor != NULL ) freelist##_destructor(item); \
+  free_put++; \
 } while(0)

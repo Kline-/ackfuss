@@ -64,6 +64,7 @@ KILL_DATA kill_table[MAX_LEVEL];
 TIME_INFO_DATA time_info;
 WEATHER_DATA weather_info;
 SYS_DATA_TYPE sysdata;
+CHAN_HISTORY chan_history;
 
 bool booting_up;
 bool area_resetting_global;
@@ -140,7 +141,8 @@ sh_int gsn_mana_sense;
 
 
 
-
+extern int free_get;
+extern int free_put;
 extern bool auto_quest;
 
 extern COUNCIL_DATA super_councils[MAX_SUPER];
@@ -3619,6 +3621,9 @@ void do_memory( CHAR_DATA * ch, char *argument )
    }
 
    xprintf( buf, "Perms             %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
+   send_to_char( buf, ch );
+
+   xprintf( buf, "Freelist Info: Gets: %5d Puts: %5d\n\r",free_get,free_put);
    send_to_char( buf, ch );
 
    return;

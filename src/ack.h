@@ -1322,6 +1322,11 @@ struct bitmask
  BM_LIST *int_list;
 };
 
+struct chanhistory
+{
+ time_t time[30][MAX_HISTORY];
+ char message[30][MAX_HISTORY][MAX_STRING_LENGTH]; /* 30 channels, each with MAX_HISTORY, length of MSL */
+};
 
 /*
  * Our function prototypes.

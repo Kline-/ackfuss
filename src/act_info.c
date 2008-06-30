@@ -4172,122 +4172,92 @@ struct chan_type
 
 struct chan_type channels[] = {
    {CHANNEL_AUCTION, 0, "auction",
-    "[ +AUCTION  ] You hear biddings.@@N\n\r",
+    "[ +AUCTION  ] You hear biddings.\n\r",
     "[ -auction  ] You don't hear biddings.\n\r"},
+   {CHANNEL_GOSSIP, 0, "gossip",
+    "[ +GOSSIP   ] You hear general gossip.\n\r",
+    "[ -gossip   ] You don't hear general gossip.\n\r"},
    {CHANNEL_MUSIC, 0, "music",
     "[ +MUSIC    ] You hear people's music quotes.\n\r",
     "[ -music    ] You don't hear people's music quotes.\n\r"},
    {CHANNEL_IMMTALK, LEVEL_HERO, "immtalk",
     "[ +IMMTALK  ] You hear what other immortals have to say.\n\r",
     "[ -immtalk  ] You don't hear what other immortals have to say.\n\r"},
-   {CHANNEL_NOTIFY, LEVEL_HERO, "notify",
-    "[ +NOTIFY   ] You hear player information.\n\r",
-    "[ -notify   ] You don't hear player information.\n\r"},
-   {CHANNEL_LOG, 0, "log",
-    "[ +LOG      ] You receive LOG_FILE details.\n\r",
-    "[ -log      ] You don't receive LOG_FILE details.\n\r"},
-
-   {CHANNEL_QUEST, 0, "quest",
-    "[  +QUEST   ] You hear roleplaying quests!\n\r",
-    "[  -quest   ] You ignore roleplaying quests.\n\r"},
-
    {CHANNEL_NEWBIE, 0, "newbie",
     "[ +NEWBIE   ] You hear newbie's chit-chat.\n\r",
     "[ -newbie   ] You don't hear newbie's chit-chat.\n\r"},
-
-
    {CHANNEL_QUESTION, 0, "question",
     "[ +QUESTION ] You hear player's questions & answers.\n\r",
     "[ -question ] You don't hear player's questions & answers.\n\r"},
-
-
    {CHANNEL_SHOUT, 0, "shout",
     "[ +SHOUT    ] You hear people shouting.\n\r",
     "[ -shout    ] You don't hear people shouting.\n\r"},
-
-
    {CHANNEL_YELL, 0, "yell",
     "[ +YELL     ] You hear people yelling.\n\r",
     "[ -yell     ] You don't hear people yelling.\n\r"},
-
-
-   {CHANNEL_CLAN, 0, "clan",
-    "[ +CLAN     ] You hear clan chit-chat.\n\r",
-    "[ -clan     ] You don't hear clan chit-chat.\n\r"},
-
-   {CHANNEL_GAME, 0, "game",
-    "[ +GAME     ] You hear players participating in games.\n\r",
-    "[ -game     ] You no longer hear people playing games.\n\r"},
-
-   {CHANNEL_RACE, 0, "race",
-    "[ +RACE     ] You hear your race's chit-chat.\n\r",
-    "[ -race     ] You don't hear your race's chit-chat.\n\r"},
-
    {CHANNEL_FLAME, 0, "flame",
     "[ +FLAME    ] You hear players flaming each other.\n\r",
     "[ -flame    ] You don't hear players flaming each other.\n\r"},
-
-
    {CHANNEL_ZZZ, 0, "zzz",
     "[ +ZZZ      ] You hear sleeping players chatting.\n\r",
     "[ -zzz      ] You don't hear sleeping players chatting.\n\r"},
-
-
+   {CHANNEL_RACE, 0, "race",
+    "[ +RACE     ] You hear your race's chit-chat.\n\r",
+    "[ -race     ] You don't hear your race's chit-chat.\n\r"},
+   {CHANNEL_CLAN, 0, "clan",
+    "[ +CLAN     ] You hear clan chit-chat.\n\r",
+    "[ -clan     ] You don't hear clan chit-chat.\n\r"},
+   {CHANNEL_NOTIFY, LEVEL_HERO, "notify",
+    "[ +NOTIFY   ] You hear player information.\n\r",
+    "[ -notify   ] You don't hear player information.\n\r"},
    {CHANNEL_INFO, 0, "info",
     "[ +INFO     ] You hear information about deaths, etc.\n\r",
     "[ -info     ] You don't hear information about deaths, etc.\n\r"},
-
+   {CHANNEL_LOG, 85, "log",
+    "[ +LOG      ] You receive LOG_FILE details.\n\r",
+    "[ -log      ] You don't receive LOG_FILE details.\n\r"},
    {CHANNEL_CREATOR, 85, "creator",
     "[ +CREATOR  ] You hear Creator's discussing Mud matters.\n\r",
     "[ -creator  ] You don't hear Creators discussing Mud matters\n\r"},
-
    {CHANNEL_ALLCLAN, 85, "allclan",
     "[ +ALLCLAN  ] You hear ALL clan channels.\n\r",
     "[ -allclan  ] You don't hear ALL clan channels.\n\r"},
-
    {CHANNEL_ALLRACE, 85, "allrace",
     "[ +ALLRACE  ] You hear ALL race channels.\n\r",
     "[ -allrace  ] You don't hear ALL race channels.\n\r"},
-
    {CHANNEL_HERMIT, 0, "hermit",
     "[ +HERMIT   ] You are NOT ignoring all channels.\n\r",
     "[ -hermit   ] YOU ARE IGNORING ALL CHANNELS!\n\r"},
-
    {CHANNEL_BEEP, 0, "beep",
     "[ +BEEP     ] You accept 'beeps' from other players.\n\r",
     "[ -beep     ] You are ignoring 'beeps' from other players.\n\r"},
-   {CHANNEL_ALLCLAN, 85, "allclan",
-    "[ +ALLCLAN  ] You hear ALL clan channels.\n\r",
-    "[ -allclan  ] You don't hear ALL clan channels.\n\r"},
-
    {CHANNEL_FAMILY, 0, "vampyre",
     "",
     ""},
-
    {CHANNEL_DIPLOMAT, 0, "diplomat",
     "[ +DIPLOMAT ] You hear diplomatic negotioations.\n\r",
     "[ -diplomat ] YOU do not hear diplomatic negotiations\n\r"},
-
-   {CHANNEL_REMORTTALK, 0, "{",
-    "[ +{        ] You hear remorts gossiping amongst themselves.\n\r",
-    "[ -{        ] You are ignoring idle remort chatter.\n\r"},
-
    {CHANNEL_CRUSADE, 0, "crusade",
     "[ +CRUSADE  ] You hear quest information.\n\r",
     "[ -crusade  ] You are ignoring quest information.\n\r"},
-
+   {CHANNEL_REMORTTALK, 0, "{",
+    "[ +{        ] You hear remorts gossiping amongst themselves.\n\r",
+    "[ -{        ] You are ignoring idle remort chatter.\n\r"},
+   {CHANNEL_HOWL, 0, "howl",
+    "",
+    ""},
    {CHANNEL_ADEPT, 0, "adept",
-    "[  +ADEPT   ] You hear Adepts plotting to take over the mud!\n\r",
-    "[  -adept   ] You ignore those bored dudes and dudettes.\n\r"},
-
-   {CHANNEL_GAME, 0, "game",
-    "[   +GAME   ] You hear non-roleplaying games.\n\r",
-    "[   -game   ] You are ignoring non-roleplaying games.\n\r"},
-
-
+    "[ +ADEPT    ] You hear Adepts plotting to take over the mud!\n\r",
+    "[ -adept    ] You ignore those bored dudes and dudettes.\n\r"},
    {CHANNEL_OOC, 0, "ooc",
-    "[   +OOC    ] You hear non-roleplaying chit-chat.\n\r",
-    "[   -ooc    ] You ignore those boring non-roleplaying fools!\n\r"},
+    "[ +OOC      ] You hear non-roleplaying chit-chat.\n\r",
+    "[ -ooc      ] You ignore those boring non-roleplaying fools!\n\r"},
+   {CHANNEL_QUEST, 0, "quest",
+    "[ +QUEST    ] You hear roleplaying quests!\n\r",
+    "[ -quest    ] You ignore roleplaying quests.\n\r"},
+   {CHANNEL_GAME, 0, "game",
+    "[ +GAME     ] You hear players participating in games.\n\r",
+    "[ -game     ] You no longer hear people playing games.\n\r"},
 
    {0, 0, NULL, NULL}
 };

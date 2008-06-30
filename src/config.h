@@ -747,8 +747,7 @@
 #define CHANNEL_ADEPT          BIT_26
 #define CHANNEL_OOC            BIT_27
 #define CHANNEL_QUEST          BIT_28
-#define CHANNEL_LANG           BIT_29
-#define CHANNEL_GAME           BIT_30
+#define CHANNEL_GAME           BIT_29
 
   /*
    * NOTE 32 is the last allowable channel ZEN 
