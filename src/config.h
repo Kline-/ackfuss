@@ -698,23 +698,22 @@
 /* 
  * Player flags
  */
-#define PFLAG_PKOK		1
-#define PFLAG_AFK			2
-#define PFLAG_AMBAS		4
-#define PFLAG_VAMP		8
-#define PFLAG_CLAN_DIPLOMAT	16
-#define PFLAG_CLAN_BOSS		32
-#define PFLAG_CLAN_TREASURER	64
-#define PFLAG_CLAN_ARMOURER	128
-#define PFLAG_CLAN_LEADER	256
-#define PFLAG_SUPER_COUNCIL	512
-#define PFLAG_WEREWOLF		1024
-#define PFLAG_RAGED		2048
-#define PFLAG_SHIFTED		4096
-#define PFLAG_RULER		BIT_14
-#define PFLAG_BLIND_PLAYER	BIT_15
-#define PFLAG_TESTER  BIT_16
-
+#define PFLAG_PKOK             BIT_1
+#define PFLAG_AFK              BIT_2
+#define PFLAG_AMBAS            BIT_3
+#define PFLAG_VAMP             BIT_4
+#define PFLAG_CLAN_DIPLOMAT    BIT_5
+#define PFLAG_CLAN_BOSS        BIT_6
+#define PFLAG_CLAN_TREASURER   BIT_7
+#define PFLAG_CLAN_ARMOURER    BIT_8
+#define PFLAG_CLAN_LEADER      BIT_9
+#define PFLAG_SUPER_COUNCIL    BIT_10
+#define PFLAG_WEREWOLF         BIT_11
+#define PFLAG_RAGED            BIT_12
+#define PFLAG_SHIFTED          BIT_13
+#define PFLAG_RULER            BIT_14
+#define PFLAG_BLIND_PLAYER     BIT_15
+#define PFLAG_TESTER           BIT_16
 
 /*
  * Channel bits.
