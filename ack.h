@@ -811,7 +811,6 @@ struct pc_data
    char *email_address;
    bool valid_email;
    char *assist_msg;
-   char chistory[30][MAX_HISTORY][MAX_STRING_LENGTH]; /* 30 channels, each with MAX_HISTORY, length of MSL */
 #ifdef IMC
    IMC_CHARDATA *imcchardata;
 #endif

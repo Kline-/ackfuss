@@ -492,7 +492,11 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
       return;
    }
 
-   if( !str_cmp(argument,"history") && !IS_NPC(ch) )
+   REMOVE_BIT( ch->deaf, channel );
+   if( IS_SET( ch->deaf, CHANNEL_HERMIT ) )
+      send_to_char( "You are hermit right now, and will not hear the response.\n\r ", ch );
+
+   if( !str_cmp(argument,"history") )
    {
     sh_int x,y = 0;
     bool found = FALSE;
@@ -500,10 +504,22 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
     x = (bv_log(channel)-1);
 
     for( y = 0; y < MAX_HISTORY; y++ )
-     if( ch->pcdata->chistory[x][y][0] != '\0' )
+     if( chan_history.message[x][y][0] != '\0' )
      {
-      found = TRUE;
-      send_to_char(ch->pcdata->chistory[x][y],ch);
+      if( IS_IMMORTAL(ch) )
+      {
+       found = TRUE;
+       xprintf(buf,"[%s]",ctime(&chan_history.time[x][y]));
+       buf[(strlen(buf)-1)] = '\0';           /* I realize how ugly this chunk looks but it was */
+       xcat(buf," ");                         /* necessary to get around ctime adding a newline --Kline */
+       xcat(buf,chan_history.message[x][y]);
+       send_to_char(buf,ch);
+      }
+      else if( ch->logon <= chan_history.time[x][y] )
+      {
+       found = TRUE;
+       send_to_char(chan_history.message[x][y],ch);
+      }
      }
 
     if( !found )
@@ -518,12 +534,6 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
       send_to_char( buf, ch );
       return;
    }
-
-   REMOVE_BIT( ch->deaf, channel );
-   if( IS_SET( ch->deaf, CHANNEL_HERMIT ) )
-      send_to_char( "You are hermit right now, and will not hear the response.\n\r ", ch );
-
-
 
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
       argument = slur_text( argument );
@@ -764,39 +774,45 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                   xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
 
-            }
-            if( !IS_NPC(vch) )
-            {
-             sh_int x,y = 0;
-
-             x = (bv_log(channel)-1);
-
-             for( y = 0; y < MAX_HISTORY; y++ )
-             {
-              if( vch->pcdata->chistory[x][y] == '\0' )
-              {
-               xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
-               break;
-              }
-              if( y == (MAX_HISTORY -1) )
-              {
-               int i = 0;
-
-               for( i = 1; i < MAX_HISTORY; i++ )
-                xprintf(vch->pcdata->chistory[x][(i-1)],vch->pcdata->chistory[x][i]);
-
-               vch->pcdata->chistory[x][y][0] = '\0';
-               xprintf(vch->pcdata->chistory[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
-              }
-             }
-            }
+            } //switch
             act( ansi, ch, argument, vch, TO_VICT );
             vch->position = position;
+         } //if connected
+      } //d loop
+
+      {
+       sh_int x,y = 0;
+
+       x = (bv_log(channel)-1);
+
+       for( y = 0; y < MAX_HISTORY; y++ )
+       {
+        if( chan_history.message[x][y] == '\0' )
+        {
+         xprintf(chan_history.message[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
+         chan_history.time[x][y] = current_time;
+         break;
+        }
+        if( y == (MAX_HISTORY -1) )
+        {
+         int i = 0;
+
+         for( i = 1; i < MAX_HISTORY; i++ )
+         {
+          xprintf(chan_history.message[x][(i-1)],chan_history.message[x][i]);
+          chan_history.time[x][(i-1)] = chan_history.time[x][i];
          }
+
+         chan_history.message[x][y][0] = '\0';
+         chan_history.time[x][y] = 0;
+         xprintf(chan_history.message[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
+         chan_history.time[x][y] = current_time;
+        }
+       }
       }
 
       return;
-   }
+   } //no reason
 }
 
 void do_creator( CHAR_DATA * ch, char *argument )
