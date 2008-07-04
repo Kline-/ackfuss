@@ -4266,3 +4266,153 @@ int bv_log( int n )
 
  return result;
 }
+
+void check_chistory( CHAR_DATA *ch, int channel )
+{
+ sh_int x,y = 0;
+ bool found = FALSE;
+ char buf[MAX_STRING_LENGTH];
+
+ x = (bv_log(channel)-1);
+
+ for( y = 0; y < MAX_HISTORY; y++ )
+  if( chan_history.message[x][y][0] != '\0' )
+  {
+   if( IS_IMMORTAL(ch) )
+   {
+    found = TRUE;
+    xprintf(buf,"[%s",ctime(&chan_history.time[x][y]));
+    buf[(strlen(buf)-1)] = '\0';           /* I realize how ugly this chunk looks but it was */
+    xcat(buf,"] ");                        /* necessary to get around ctime adding a newline --Kline */
+    xcat(buf,chan_history.message[x][y]);
+    send_to_char(buf,ch);
+   }
+   else if( ch->logon <= chan_history.time[x][y] )
+   {
+    switch( channel )
+    {
+     default: found = TRUE; send_to_char(chan_history.message[x][y],ch); break;
+     case CHANNEL_DIPLOMAT:
+      if( IS_SET(ch->pcdata->pflags,PFLAG_CLAN_DIPLOMAT) )
+      {
+       found = TRUE;
+       send_to_char(chan_history.message[x][y],ch);
+      }
+      break;
+     case CHANNEL_REMORTTALK:
+      if( is_remort(ch) )
+      {
+       found = TRUE;
+       send_to_char(chan_history.message[x][y],ch);
+      }
+      break;
+     case CHANNEL_YELL:
+      if( !str_cmp(ch->in_room->area->name,chan_history.aname[x][y]) )
+      {
+       found = TRUE;
+       send_to_char(chan_history.message[x][y],ch);
+      }
+      break;
+     case CHANNEL_CLAN:
+      if( ch->pcdata->clan == chan_history.cbit[x][y] )
+      {
+       send_to_char(buf,ch);
+       found = TRUE;
+       send_to_char(chan_history.message[x][y],ch);
+      }
+      break;
+     case CHANNEL_RACE:
+      if( ch->race == chan_history.cbit[x][y] )
+      {
+       xprintf(buf,"char: %d chan: %d\n\r",ch->race,chan_history.cbit[x][y]);
+       send_to_char(buf,ch);
+       found = TRUE;
+       send_to_char(chan_history.message[x][y],ch);
+      }
+      break;
+     case CHANNEL_FAMILY:
+      if( IS_VAMP(ch) && ch->pcdata->vamp_bloodline == chan_history.cbit[x][y] )
+      {
+       found = TRUE;
+       send_to_char(chan_history.message[x][y],ch);
+      }
+      break;
+     case CHANNEL_HOWL:
+      if( IS_WOLF(ch) && ch->pcdata->vamp_bloodline == chan_history.cbit[x][y] )
+      {
+       found = TRUE;
+       send_to_char(chan_history.message[x][y],ch);
+      }
+     break;
+    }
+   }
+  }
+
+ if( !found )
+  send_to_char("No history available for that channel yet.\n\r",ch);
+
+ return;
+}
+
+void update_chistory( CHAR_DATA *ch, char *argument, int channel )
+{
+ sh_int x,y = 0;
+
+ x = (bv_log(channel)-1);
+
+ for( y = 0; y < MAX_HISTORY; y++ )
+ {
+  if( chan_history.message[x][y] == '\0' )
+  {
+   xprintf(chan_history.message[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
+   chan_history.time[x][y] = current_time;
+   xprintf(chan_history.aname[x][y],"none");
+   chan_history.cbit[x][y] = -1;
+
+   switch( channel )
+   {
+    default: break;
+    case CHANNEL_YELL:   xprintf(chan_history.aname[x][y],ch->in_room->area->name);              break;
+    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                             break;
+    case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                     break;
+    case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->vamp_bloodline; break;
+    case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->vamp_bloodline; break;
+   }
+   break;
+  }
+  if( y == (MAX_HISTORY -1) )
+  {
+   int i = 0;
+
+   for( i = 1; i < MAX_HISTORY; i++ )
+   {
+    xprintf(chan_history.message[x][(i-1)],chan_history.message[x][i]);
+    chan_history.time[x][(i-1)] = chan_history.time[x][i];
+    xprintf(chan_history.aname[x][(i-1)],chan_history.aname[x][i]);
+    chan_history.cbit[x][(i-1)] = chan_history.cbit[x][i];
+   }
+
+   chan_history.message[x][y][0] = '\0';
+   chan_history.time[x][y] = 0;
+   chan_history.aname[x][y][0] = '\0';
+   chan_history.cbit[x][y] = 0;
+
+   xprintf(chan_history.message[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
+   chan_history.time[x][y] = current_time;
+   xprintf(chan_history.aname[x][y],"none");
+   chan_history.cbit[x][y] = -1;
+
+   switch( channel )
+   {
+    default: break;
+    case CHANNEL_YELL:   xprintf(chan_history.aname[x][y],ch->in_room->area->name);              break;
+    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                             break;
+    case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                     break;
+    case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->vamp_bloodline; break;
+    case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->vamp_bloodline; break;
+   }
+  }
+ }
+ return;
+}
+
