@@ -249,6 +249,7 @@ typedef struct hash_entry_tp HASH_ENTRY;
 typedef struct bmlist BM_LIST;
 typedef struct bitmask BITMASK;
 typedef struct chanhistory CHAN_HISTORY;
+typedef struct super_data SUPER_DATA;
 
 /*
  * Function types.

@@ -1466,11 +1466,11 @@ void do_score( CHAR_DATA * ch, char *argument )
 
       if( IS_VAMP( ch ) )
       {
-         xprintf( buf, "@@eBLOODLUST@@W: @@e%d@@W/@@e%d@@N", ch->pcdata->bloodlust, ch->pcdata->bloodlust_max );
+         xprintf( buf, "@@eBLOODLUST@@W: @@e%d@@W/@@e%d@@N", ch->pcdata->super->energy, ch->pcdata->super->energy_max );
          xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
          xprintf( buf, "@@dKindred Rank:@@N %d  @@rGeneration:@@N %d   @@mKnowledge Avail:@@N %d",
-                  ch->pcdata->vamp_level, ch->pcdata->generation, ch->pcdata->vamp_pracs );
+                  ch->pcdata->super->level, ch->pcdata->super->generation, ch->pcdata->super->pracs );
          xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
          xprintf( buf, "@@WFAMILY: %s", get_family_name( ch ) );
@@ -1480,11 +1480,11 @@ void do_score( CHAR_DATA * ch, char *argument )
       }
       else if( IS_WOLF( ch ) )
       {
-         xprintf( buf, "@@eRAGE@@W: @@e%d@@W/@@e%d@@N", ch->pcdata->bloodlust, ch->pcdata->bloodlust_max );
+         xprintf( buf, "@@eRAGE@@W: @@e%d@@W/@@e%d@@N", ch->pcdata->super->energy, ch->pcdata->super->energy_max );
          xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
          xprintf( buf, "@@rTribe Rank@@W:@@N %d  @@yTribe Standing@@W:@@N %s   @@GKnowledge Avail:@@N %d",
-                  ch->pcdata->vamp_level, get_tribe_standing_name( ch->pcdata->generation ), ch->pcdata->vamp_pracs );
+                  ch->pcdata->super->level, get_tribe_standing_name( ch->pcdata->super->generation ), ch->pcdata->super->pracs );
          xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
          send_to_char( buf2, ch );
          xprintf( buf, "@@bTRIBE: %s", get_tribe_name( ch ) );
@@ -5468,13 +5468,13 @@ void do_gain( CHAR_DATA * ch, char *argument )
          send_to_char( ".\n\r", ch );
       else
          send_to_char( "None.\n\r", ch );
-      if( ( IS_VAMP( ch ) ) && ( ch->pcdata->vamp_level < ( MAX_VAMP_LEVEL - ( ch->pcdata->generation / 2 ) ) ) )
+      if( ( IS_VAMP( ch ) ) && ( ch->pcdata->super->level < ( MAX_VAMP_LEVEL - ( ch->pcdata->super->generation / 2 ) ) ) )
          if( IS_VAMP( ch ) )
-            if( ch->pcdata->vamp_exp >= exp_to_level_vamp( ch->pcdata->vamp_level ) )
+            if( ch->pcdata->super->exp >= exp_to_level_vamp( ch->pcdata->super->level ) )
                send_to_char( "@@NYou may gain a @@dVAMPYRE@@N level!!!\n\r", ch );
-      if( ( IS_WOLF( ch ) ) && ( ch->pcdata->vamp_level < ( ( MAX_WOLF_LEVEL + 2 ) - ( ch->pcdata->generation * 2 ) ) ) )
+      if( ( IS_WOLF( ch ) ) && ( ch->pcdata->super->level < ( ( MAX_WOLF_LEVEL + 2 ) - ( ch->pcdata->super->generation * 2 ) ) ) )
          if( IS_WOLF( ch ) )
-            if( ch->pcdata->vamp_exp >= exp_to_level_wolf( ch->pcdata->vamp_level ) )
+            if( ch->pcdata->super->exp >= exp_to_level_wolf( ch->pcdata->super->level ) )
                send_to_char( "@@NYou may gain a @@bWerewolf@@N level!!!\n\r", ch );
 
       return;
@@ -5538,9 +5538,9 @@ void do_gain( CHAR_DATA * ch, char *argument )
     * Ok, so now class should be valid.  Check if enough exp 
     */
    if( wolf )
-      vamp_cost = exp_to_level_wolf( ch->pcdata->vamp_level );
+      vamp_cost = exp_to_level_wolf( ch->pcdata->super->level );
    else if( vamp )
-      vamp_cost = exp_to_level_vamp( ch->pcdata->vamp_level );
+      vamp_cost = exp_to_level_vamp( ch->pcdata->super->level );
    else if( remort )
       cost = exp_to_level( ch, c, 5 );
    else if( adept )
@@ -5555,7 +5555,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
 
    if( vamp )
    {
-      if( ch->pcdata->vamp_exp < vamp_cost )
+      if( ch->pcdata->super->exp < vamp_cost )
       {
          send_to_char( "@@NYou have not yet mastered your current knowledge of the ways of the @@dKINDRED@@N!!\n\r", ch );
          return;
@@ -5563,7 +5563,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
    }
    else if( wolf )
    {
-      if( ch->pcdata->vamp_exp < vamp_cost )
+      if( ch->pcdata->super->exp < vamp_cost )
       {
          send_to_char( "@@NYour @@rtribe@@N does not consider you worthy!@@N!!\n\r", ch );
          return;
@@ -5577,13 +5577,13 @@ void do_gain( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ( wolf ) && ( ch->pcdata->vamp_level < ( MAX_WOLF_LEVEL - ( ch->pcdata->generation * 2 ) ) ) )
+   if( ( wolf ) && ( ch->pcdata->super->level < ( MAX_WOLF_LEVEL - ( ch->pcdata->super->generation * 2 ) ) ) )
    {
       c = ADVANCE_WOLF;
       send_to_char( "@@NYour @@rTribe@@N increases your standing@@N!!!\n\r", ch );
-      ch->pcdata->vamp_exp -= vamp_cost;
+      ch->pcdata->super->exp -= vamp_cost;
       advance_level( ch, c, TRUE, remort );
-      ch->pcdata->vamp_level += 1;
+      ch->pcdata->super->level += 1;
       do_save( ch, "" );
       return;
    }
@@ -5594,13 +5594,13 @@ void do_gain( CHAR_DATA * ch, char *argument )
    }
 
 
-   if( ( vamp ) && ( ch->pcdata->vamp_level < ( MAX_VAMP_LEVEL - ( ch->pcdata->generation / 2 ) ) ) )
+   if( ( vamp ) && ( ch->pcdata->super->level < ( MAX_VAMP_LEVEL - ( ch->pcdata->super->generation / 2 ) ) ) )
    {
       c = ADVANCE_VAMP;
       send_to_char( "@@NYou gain more power in the ways of the @@dKindred@@N!!!\n\r", ch );
-      ch->pcdata->vamp_exp -= vamp_cost;
+      ch->pcdata->super->exp -= vamp_cost;
       advance_level( ch, c, TRUE, remort );
-      ch->pcdata->vamp_level += 1;
+      ch->pcdata->super->level += 1;
       do_save( ch, "" );
       return;
    }

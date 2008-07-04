@@ -627,7 +627,7 @@ void do_hunt( CHAR_DATA * ch, char *argument )
     */
    chance = ( IS_NPC( ch ) ? 75 : ch->pcdata->learned[gsn_hunt] );
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
-      chance = ( ( MAX_WOLF_LEVEL - ch->pcdata->generation ) * 4 ) + ch->pcdata->vamp_level;
+      chance = ( ( MAX_WOLF_LEVEL - ch->pcdata->super->generation ) * 4 ) + ch->pcdata->super->level;
 
    if( chance < number_percent(  ) )
    {

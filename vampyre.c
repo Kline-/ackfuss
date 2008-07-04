@@ -133,7 +133,7 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
       send_to_char( "Better leave that to the REAL Vampyres, you wanna be!!!\n\r", ch );
       return FALSE;
    }
-   if( ch->pcdata->vamp_bloodline == 0 )
+   if( ch->pcdata->super->bloodline == 0 )
    {
       send_to_char( "@@dRENEGADES@@n can't embrace!!!\n\r", ch );
       return FALSE;
@@ -182,25 +182,25 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
 
    {
 
-      victim->pcdata->vamp_level = 1;
-      victim->pcdata->vamp_exp = 0;
-      victim->pcdata->vamp_skill_num = 0;
-      victim->pcdata->vamp_skill_max = 2;
-      if( victim->pcdata->generation == -1 )
-         victim->pcdata->generation = ch->pcdata->generation + 2;
+      victim->pcdata->super->level = 1;
+      victim->pcdata->super->exp = 0;
+      victim->pcdata->super->skills_learned = 0;
+      victim->pcdata->super->skills_max = 2;
+      if( victim->pcdata->super->generation == -1 )
+         victim->pcdata->super->generation = ch->pcdata->super->generation + 2;
       else
-         victim->pcdata->generation = ch->pcdata->generation + 1;
+         victim->pcdata->super->generation = ch->pcdata->super->generation + 1;
 
-      if( victim->pcdata->generation < 4 )
-         victim->pcdata->generation = 5;
-      victim->pcdata->vamp_bloodline = ch->pcdata->vamp_bloodline;
-      victim->pcdata->bloodlust = -10;
-      victim->pcdata->bloodlust_max = 20;
+      if( victim->pcdata->super->generation < 4 )
+         victim->pcdata->super->generation = 5;
+      victim->pcdata->super->bloodline = ch->pcdata->super->bloodline;
+      victim->pcdata->super->energy = -10;
+      victim->pcdata->super->energy_max = 20;
       SET_BIT( victim->pcdata->pflags, PFLAG_VAMP );
       victim->pcdata->condition[COND_FULL] = 20;
       victim->pcdata->condition[COND_THIRST] = 20;
-      victim->pcdata->vamp_pracs = 2;
-      ch->pcdata->bloodlust_max -= 5;
+      victim->pcdata->super->pracs = 2;
+      ch->pcdata->super->energy_max -= 5;
       victim->pcdata->recall_vnum = 9001;
 
 
@@ -278,7 +278,7 @@ void do_family( CHAR_DATA * ch, char *argument )
             if( d->connected == CON_PLAYING
                 && ( victim = d->character ) != NULL && !IS_NPC( victim ) && victim->in_room != NULL )
             {
-               if( IS_VAMP( victim ) && ( victim->pcdata->vamp_bloodline == index ) )
+               if( IS_VAMP( victim ) && ( victim->pcdata->super->bloodline == index ) )
                {
                   found = TRUE;
                }
@@ -288,8 +288,8 @@ void do_family( CHAR_DATA * ch, char *argument )
 
 
                xprintf( buf, "%-15s @@NGen: @@r%d   @@NRank: @@d%d@@N  @@NBloodlust: @@e%d@@N/@@e%d@@N   %-15s\n\r",
-                        victim->name, victim->pcdata->generation, victim->pcdata->vamp_level, victim->pcdata->bloodlust,
-                        victim->pcdata->bloodlust_max, victim->in_room->name );
+                        victim->name, victim->pcdata->super->generation, victim->pcdata->super->level, victim->pcdata->super->energy,
+                        victim->pcdata->super->energy_max, victim->in_room->name );
                send_to_char( buf, ch );
             }
          }
@@ -311,12 +311,12 @@ void do_family( CHAR_DATA * ch, char *argument )
              && ( victim = d->character ) != NULL
              && !IS_NPC( victim ) && victim->in_room != NULL && IS_VAMP( victim ) && !IS_IMMORTAL( victim ) )
          {
-            if( victim->pcdata->vamp_bloodline != ch->pcdata->vamp_bloodline )
+            if( victim->pcdata->super->bloodline != ch->pcdata->super->bloodline )
                continue;
 
             found = TRUE;
             xprintf( buf, "%-15s @@NGeneration: @@r%d     @@NRank: @@d%d@@N\n\r",
-                     victim->name, victim->pcdata->generation, victim->pcdata->vamp_level );
+                     victim->name, victim->pcdata->super->generation, victim->pcdata->super->level );
             send_to_char( buf, ch );
          }
       }
@@ -374,7 +374,7 @@ void do_instruct( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg );
    sn = skill_lookup( arg );
 
-   if( ch->pcdata->vamp_bloodline != victim->pcdata->vamp_bloodline )
+   if( ch->pcdata->super->bloodline != victim->pcdata->super->bloodline )
    {
       send_to_char( "There not a member of your family!!\n\r", ch );
       return;
@@ -393,14 +393,14 @@ void do_instruct( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( victim->pcdata->vamp_level < skill_table[sn].skill_level[victim->pcdata->vamp_bloodline] )
+   if( victim->pcdata->super->level < skill_table[sn].skill_level[victim->pcdata->super->bloodline] )
    {
       send_to_char( "@@NThey are too inexperienced in the ways of the @@dKindred@@N to learn this skill.\n\r", ch );
       send_to_char( "@@NYou are to inexperienced in the ways of the @@dKindred@@N to learn this skill.\n\r", victim );
       return;
    }
 
-   if( victim->pcdata->vamp_skill_num >= victim->pcdata->vamp_skill_max )
+   if( victim->pcdata->super->skills_learned >= victim->pcdata->super->skills_max )
    {
       send_to_char( "They seem unable to grasp the knowledge.\n\r", ch );
       send_to_char( "@@NYou are unable to learn any more @@dKindred@@N knowledge at this time.\n\r", victim );
@@ -410,8 +410,8 @@ void do_instruct( CHAR_DATA * ch, char *argument )
 /* Okay, the skill is good, the instructor knows it, and the victim doesn't  */
 
    victim->pcdata->learned[sn] = 90;
-   victim->pcdata->vamp_pracs -= 1;
-   victim->pcdata->vamp_skill_num += 1;
+   victim->pcdata->super->pracs -= 1;
+   victim->pcdata->super->skills_learned += 1;
 
    send_to_char( "You have taught them another way of the @@dKindred@@N!!!\n\r", ch );
    xprintf( buf, "You are now learned in the way of @@e%s@@N!!!\n\r", skill_table[sn].name );
@@ -467,7 +467,7 @@ bool spell_cloak_darkness( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
       return FALSE;
 
    af.type = sn;
-   af.duration = ch->pcdata->vamp_level;
+   af.duration = ch->pcdata->super->level;
    af.location = 0;
    af.modifier = 0;
    af.bitvector = 0;
@@ -550,7 +550,7 @@ bool spell_blood_sign( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
    mark->room_vnum = ch->in_room->vnum;
    mark->message = str_dup( target_name );
-   switch ( ( int )ch->pcdata->vamp_level / 4 )
+   switch ( ( int )ch->pcdata->super->level / 4 )
    {
       case 0:
          costring = "@@a";
@@ -573,7 +573,7 @@ bool spell_blood_sign( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    }
    xprintf( buf, "%s%s @@W: %s", costring, ch->name, get_family_name( ch ) );
    mark->author = str_dup( buf );
-   mark->duration = ( ( MAX_VAMP_LEVEL ) - ch->pcdata->generation ) * ( ch->pcdata->vamp_level ) * 10;
+   mark->duration = ( ( MAX_VAMP_LEVEL ) - ch->pcdata->super->generation ) * ( ch->pcdata->super->level ) * 10;
    mark->type = VAMP;
    mark_to_room( ch->in_room->vnum, mark );
    return TRUE;

@@ -752,7 +752,6 @@ struct pc_data
    char *host; /* Used to tell PC last login site */
    sh_int failures;  /* Failed logins */
    sh_int clan;   /* will be used to denote clan membership */
-   sh_int generation;   /* Used for vamps *//* were_age for wolves */
    sh_int perm_str;
    sh_int perm_int;
    sh_int perm_wis;
@@ -769,8 +768,7 @@ struct pc_data
    sh_int mod_dex;
    sh_int mod_con;
    sh_int condition[3];
-   int bloodlust; /* rage points for wolves */
-   int bloodlust_max;
+   SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
    sh_int pagelen;
    sh_int learned[MAX_SKILL];
    char *header;  /* header used for message */
@@ -786,15 +784,7 @@ struct pc_data
    char *lastlogin;
    sh_int order[MAX_CLASS];   /* Class Order */
    int monitor;   /* monitor channel for imms */
-   int vamp_level;   /* were level */
-   int vamp_bloodlust_max;
-   int vamp_skill_num;
-   int vamp_skill_max;
-   int vamp_bloodline;
-   int vamp_exp;
-   int vamp_pracs;
    sh_int quest_points;
-
    char *ignore_list[MAX_IGNORES];  /* Ignore this person */
    int recall_vnum;
    int mana_from_gain;  /* saves non-item oriented mana total */
@@ -1327,6 +1317,22 @@ struct chanhistory
  char message[30][MAX_HISTORY][MAX_STRING_LENGTH]; /* 30 channels, each with MAX_HISTORY, length of MSL */
  char aname[30][MAX_HISTORY][128]; /* To track area, for yell */
  int cbit[30][MAX_HISTORY]; /* To track which clan, family, tribe, or race */
+};
+
+struct super_data
+{
+ bool is_free;
+ SUPER_DATA *next;
+ SUPER_DATA *prev;
+ int energy; /* rage, blood, or focus */
+ int energy_max;
+ int level;
+ int skills_learned; /* total # skills known */
+ int skills_max;     /* total # skills may learn; based on gen, etc */
+ int exp;
+ int pracs;
+ sh_int bloodline;
+ sh_int generation;
 };
 
 /*

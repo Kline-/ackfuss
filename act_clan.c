@@ -1116,7 +1116,7 @@ void do_council( CHAR_DATA * ch, char *argument )
                         "You have been @@ROUTCAST@@N from the @@eKindred@@N by the %s, and are now a @@dRenegade@@N!!!!!\n\r",
                         super_councils[this_council].council_name );
                send_to_char( buf, victim );
-               victim->pcdata->vamp_bloodline = 0;
+               victim->pcdata->super->bloodline = 0;
                do_save( victim, "" );
             }
          }

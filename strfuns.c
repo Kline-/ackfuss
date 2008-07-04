@@ -1486,7 +1486,7 @@ char *short_race_name( CHAR_DATA * ch )
 char *get_family_name( CHAR_DATA * ch )
 {
 
-   switch ( ch->pcdata->vamp_bloodline )
+   switch ( ch->pcdata->super->bloodline )
    {
       default:
          return "Renegade!";
@@ -1506,7 +1506,7 @@ char *get_family_name( CHAR_DATA * ch )
 
 char *get_tribe_name( CHAR_DATA * ch )
 {
-   switch ( ch->pcdata->vamp_bloodline )
+   switch ( ch->pcdata->super->bloodline )
    {
       default:
          return "Renegade!";
