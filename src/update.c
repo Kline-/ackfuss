@@ -214,14 +214,14 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
     */
    if( class == ADVANCE_WOLF )
    {
-      add_bloodlust = ( number_range( 1, ( ( MAX_WOLF_LEVEL / 2 ) - ch->pcdata->generation ) ) ) +
-         ( ( ( MAX_WOLF_LEVEL / 2 ) - ch->pcdata->generation ) / 2 );
-      add_prac = number_range( 1, UMAX( 2, ( ( MAX_WOLF_LEVEL / 2 ) - ch->pcdata->generation ) ) );
+      add_bloodlust = ( number_range( 1, ( ( MAX_WOLF_LEVEL / 2 ) - ch->pcdata->super->generation ) ) ) +
+         ( ( ( MAX_WOLF_LEVEL / 2 ) - ch->pcdata->super->generation ) / 2 );
+      add_prac = number_range( 1, UMAX( 2, ( ( MAX_WOLF_LEVEL / 2 ) - ch->pcdata->super->generation ) ) );
       add_max_skills = add_prac;
 
-      ch->pcdata->bloodlust_max += add_bloodlust;
-      ch->pcdata->vamp_pracs += add_prac;
-      ch->pcdata->vamp_skill_max += add_max_skills;
+      ch->pcdata->super->energy_max += add_bloodlust;
+      ch->pcdata->super->pracs += add_prac;
+      ch->pcdata->super->skills_max += add_max_skills;
       xprintf( buf, "@@NYou gain: %d @@rRage Ability@@N, and %d @@bWerewolf Practices. .@@N\n\r", add_bloodlust, add_prac );
 
 
@@ -233,13 +233,13 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
    if( ( class == 16 ) )
    {
 
-      add_bloodlust = UMAX( ( ( MAX_VAMP_LEVEL / 2 ) - ( ch->pcdata->generation / 2 ) ), 1 );
-      add_prac = number_range( 1, UMAX( 2, ( ( MAX_VAMP_LEVEL / 2 ) - ( ch->pcdata->generation ) ) ) );
-      add_max_skills = number_range( 1, UMAX( 2, ( ( MAX_VAMP_LEVEL / 2 ) - ( ch->pcdata->generation ) ) ) );
+      add_bloodlust = UMAX( ( ( MAX_VAMP_LEVEL / 2 ) - ( ch->pcdata->super->generation / 2 ) ), 1 );
+      add_prac = number_range( 1, UMAX( 2, ( ( MAX_VAMP_LEVEL / 2 ) - ( ch->pcdata->super->generation ) ) ) );
+      add_max_skills = number_range( 1, UMAX( 2, ( ( MAX_VAMP_LEVEL / 2 ) - ( ch->pcdata->super->generation ) ) ) );
 
-      ch->pcdata->bloodlust_max += add_bloodlust;
-      ch->pcdata->vamp_pracs += add_prac;
-      ch->pcdata->vamp_skill_max += add_max_skills;
+      ch->pcdata->super->energy_max += add_bloodlust;
+      ch->pcdata->super->pracs += add_prac;
+      ch->pcdata->super->skills_max += add_max_skills;
 
 
       xprintf( buf, "You gain: %d @@eBloodlust@@N, and %d Vampyre Practices. .\n\r", add_bloodlust, add_prac );
@@ -364,11 +364,11 @@ int hit_gain( CHAR_DATA * ch )
       if( ch->pcdata->condition[COND_THIRST] == 0 )
          gain /= 2;
 
-      if( IS_VAMP( ch ) && ch->pcdata->bloodlust < 3 )
+      if( IS_VAMP( ch ) && ch->pcdata->super->energy < 3 )
          gain = 0;
-      else if( IS_VAMP( ch ) && ch->pcdata->bloodlust < 8 )
+      else if( IS_VAMP( ch ) && ch->pcdata->super->energy < 8 )
          gain /= 2;
-      if( IS_VAMP( ch ) && ch->pcdata->bloodlust == -10 )
+      if( IS_VAMP( ch ) && ch->pcdata->super->energy == -10 )
          gain = ( 5 + ch->level / 25 );
 
 
@@ -466,11 +466,11 @@ int mana_gain( CHAR_DATA * ch )
 
          if( ch->pcdata->condition[COND_THIRST] == 0 )
             gain /= 2;
-         if( IS_VAMP( ch ) && ch->pcdata->bloodlust < 3 )
+         if( IS_VAMP( ch ) && ch->pcdata->super->energy < 3 )
             gain = 0;
-         else if( IS_VAMP( ch ) && ch->pcdata->bloodlust < 8 )
+         else if( IS_VAMP( ch ) && ch->pcdata->super->energy < 8 )
             gain /= 2;
-         if( IS_VAMP( ch ) && ch->pcdata->bloodlust == -10 )
+         if( IS_VAMP( ch ) && ch->pcdata->super->energy == -10 )
             gain = ( 5 + ch->level / 25 );
 
          if( IS_WOLF( ch ) && IS_RAGED( ch ) )
@@ -564,11 +564,11 @@ int move_gain( CHAR_DATA * ch )
       if( ch->pcdata->condition[COND_THIRST] == 0 )
          gain /= 2;
 
-      if( IS_VAMP( ch ) && ch->pcdata->bloodlust < 3 )
+      if( IS_VAMP( ch ) && ch->pcdata->super->energy < 3 )
          gain = 0;
-      else if( IS_VAMP( ch ) && ch->pcdata->bloodlust < 8 )
+      else if( IS_VAMP( ch ) && ch->pcdata->super->energy < 8 )
          gain /= 2;
-      if( IS_VAMP( ch ) && ch->pcdata->bloodlust == -10 )
+      if( IS_VAMP( ch ) && ch->pcdata->super->energy == -10 )
          gain = ( 5 + ch->level / 25 );
 
 
@@ -592,18 +592,18 @@ void gain_rage( CHAR_DATA * ch )
 
 
    if( IS_RAGED( ch ) )
-      current_rage = ch->pcdata->bloodlust_max;
+      current_rage = ch->pcdata->super->energy_max;
    else if( IS_SHIFTED( ch ) )
-      current_rage = UMAX( 1, ( ch->pcdata->bloodlust_max / 5 ) );
+      current_rage = UMAX( 1, ( ch->pcdata->super->energy_max / 5 ) );
    else
-      current_rage = UMAX( 1, ( ch->pcdata->bloodlust_max / 10 ) );
+      current_rage = UMAX( 1, ( ch->pcdata->super->energy_max / 10 ) );
 
-   rage_gain = number_range( 1, ( MAX_WOLF_LEVEL / 2 - ch->pcdata->generation ) );
+   rage_gain = number_range( 1, ( MAX_WOLF_LEVEL / 2 - ch->pcdata->super->generation ) );
 
-   if( ch->pcdata->bloodlust >= current_rage )
-      ch->pcdata->bloodlust = UMIN( ( ch->pcdata->bloodlust + rage_gain ), current_rage );
+   if( ch->pcdata->super->energy >= current_rage )
+      ch->pcdata->super->energy = UMIN( ( ch->pcdata->super->energy + rage_gain ), current_rage );
    else
-      ch->pcdata->bloodlust = UMIN( current_rage, ( ch->pcdata->bloodlust + rage_gain ) );
+      ch->pcdata->super->energy = UMIN( current_rage, ( ch->pcdata->super->energy + rage_gain ) );
 
 }
 
@@ -618,30 +618,30 @@ void gain_bloodlust( CHAR_DATA * ch, int value )
    if( value == 0 )
       return;
 
-   condition = ch->pcdata->bloodlust;
+   condition = ch->pcdata->super->energy;
 
    /*
     * in case vamp bites off more than he can chew ;)
     * -Damane- 4/26/96 
     */
 
-   if( ( ch->pcdata->bloodlust + value ) > ch->pcdata->bloodlust_max )
-      ch->pcdata->bloodlust = ch->pcdata->bloodlust_max;
+   if( ( ch->pcdata->super->energy + value ) > ch->pcdata->super->energy_max )
+      ch->pcdata->super->energy = ch->pcdata->super->energy_max;
    else
-      ch->pcdata->bloodlust += value;
+      ch->pcdata->super->energy += value;
 
-   if( ch->pcdata->bloodlust > ch->pcdata->bloodlust_max )
-      ch->pcdata->bloodlust = ch->pcdata->bloodlust_max;
+   if( ch->pcdata->super->energy > ch->pcdata->super->energy_max )
+      ch->pcdata->super->energy = ch->pcdata->super->energy_max;
 
    if( ch->position == POS_BUILDING || ch->position == POS_WRITING )
       return;
-   if( ( ch->pcdata->bloodlust < 0 ) && ( ch->pcdata->bloodlust != -10 ) )
-      ch->pcdata->bloodlust = 0;
-   if( ch->pcdata->bloodlust < 2 )
+   if( ( ch->pcdata->super->energy < 0 ) && ( ch->pcdata->super->energy != -10 ) )
+      ch->pcdata->super->energy = 0;
+   if( ch->pcdata->super->energy < 2 )
       send_to_char( "Your body burns with the need for blood!\n\r", ch );
-   else if( ch->pcdata->bloodlust < 7 )
+   else if( ch->pcdata->super->energy < 7 )
       send_to_char( "You start to feel weaker... more blood needed!\n\r", ch );
-   else if( ch->pcdata->bloodlust < 10 )
+   else if( ch->pcdata->super->energy < 10 )
       send_to_char( "You find yourself missing the taste of blood.\n\r", ch );
    return;
 }
@@ -1482,10 +1482,10 @@ void char_update( void )
                {
                   send_to_char( "You feel the blood leach sapping your strength.\n\r", ch );
                   act( "You feel a surge of blood, coming from your blood leach on $N.", paf->caster, NULL, ch, TO_CHAR );
-                  paf->caster->pcdata->bloodlust += ( 10 - paf->caster->pcdata->generation );
-                  if( paf->caster->pcdata->bloodlust > paf->caster->pcdata->bloodlust_max )
-                     paf->caster->pcdata->bloodlust = paf->caster->pcdata->bloodlust_max;
-                  damage( ch, ch, paf->caster->pcdata->vamp_level * 20, TYPE_UNDEFINED );
+                  paf->caster->pcdata->super->energy += ( 10 - paf->caster->pcdata->super->generation );
+                  if( paf->caster->pcdata->super->energy > paf->caster->pcdata->super->energy_max )
+                     paf->caster->pcdata->super->energy = paf->caster->pcdata->super->energy_max;
+                  damage( ch, ch, paf->caster->pcdata->super->level * 20, TYPE_UNDEFINED );
                }
             }
             if( paf->type == skill_lookup( "black hand" ) )
@@ -1662,7 +1662,7 @@ void check_vamp( CHAR_DATA * ch )
        * Take bloodlust into account when calculating dam! 
        */
 
-      dam *= 40 - ch->pcdata->vamp_level;
+      dam *= 40 - ch->pcdata->super->level;
 
       /*
        * So dam ranges from 2 (lightning;no bloodlust)
@@ -1672,7 +1672,7 @@ void check_vamp( CHAR_DATA * ch )
 
       act( "$n's skin burns with it's contact with daylight!", ch, NULL, NULL, TO_ROOM );
       send_to_char( "Your skin burns with it's contact with daylight!", ch );
-      if( ch->pcdata->bloodlust <= -5 )
+      if( ch->pcdata->super->energy <= -5 )
          return;
       damage( ch, ch, dam, -1 );
    }

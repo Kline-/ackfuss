@@ -322,7 +322,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    }
    else
    {
-      fprintf( fp, "Generation   %d\n", ch->pcdata->generation );
       fprintf( fp, "Clan         %d\n", ch->pcdata->clan );
       fprintf( fp, "Order        %d %d %d %d %d\n",
                ch->pcdata->order[0], ch->pcdata->order[1], ch->pcdata->order[2],
@@ -373,14 +372,15 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "AttrMax      %d %d %d %d %d\n",
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
 
-      fprintf( fp, "Bloodlust    %d\n", ch->pcdata->bloodlust );
-      fprintf( fp, "Bloodlustmax   %d\n", ch->pcdata->bloodlust_max );
-      fprintf( fp, "Vamplevel      %d\n", ch->pcdata->vamp_level );
-      fprintf( fp, "Vampexp       %d\n", ch->pcdata->vamp_exp );
-      fprintf( fp, "Vampskillnum  %d\n", ch->pcdata->vamp_skill_num );
-      fprintf( fp, "Vampskillmax  %d\n", ch->pcdata->vamp_skill_max );
-      fprintf( fp, "Vampbloodline %d\n", ch->pcdata->vamp_bloodline );
-      fprintf( fp, "Vamppracs     %d\n", ch->pcdata->vamp_pracs );
+      fprintf( fp, "SupBloodline   %d\n", ch->pcdata->super->bloodline );
+      fprintf( fp, "SupEnergy      %d\n", ch->pcdata->super->energy );
+      fprintf( fp, "SupEnergyMax   %d\n", ch->pcdata->super->energy_max );
+      fprintf( fp, "SupExp         %d\n", ch->pcdata->super->exp );
+      fprintf( fp, "SupGeneration  %d\n", ch->pcdata->super->generation );
+      fprintf( fp, "SupLevel       %d\n", ch->pcdata->super->level );
+      fprintf( fp, "SupPracs       %d\n", ch->pcdata->super->pracs );
+      fprintf( fp, "SupSkillLearn  %d\n", ch->pcdata->super->skills_learned );
+      fprintf( fp, "SupSkillMax    %d\n", ch->pcdata->super->skills_max );
       fprintf( fp, "Questpoints   %d\n", ch->pcdata->quest_points );
       fprintf( fp, "RecallVnum    %d\n", ch->pcdata->recall_vnum );
       fprintf( fp, "GainMana      %d\n", ch->pcdata->mana_from_gain );
@@ -552,6 +552,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 {
    int cnt;
    static PC_DATA pcdata_zero;
+   static SUPER_DATA super_zero;
    char strsave[MAX_INPUT_LENGTH];
    char tempstrsave[MAX_INPUT_LENGTH];
    char *bufptr, *nmptr;
@@ -604,6 +605,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    {
       GET_FREE( ch->pcdata, pcd_free );
       *ch->pcdata = pcdata_zero;
+      GET_FREE( ch->pcdata->super, super_free );
+      *ch->pcdata->super = super_zero;
 
       d->character = ch;
 
@@ -621,7 +624,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->perm_wis = 13;
       ch->pcdata->perm_dex = 13;
       ch->pcdata->perm_con = 13;
-      ch->pcdata->bloodlust = 24;
+      ch->pcdata->super->energy = 24;
       ch->pcdata->condition[COND_THIRST] = 48;
       ch->pcdata->pagelen = 20;
       ch->pcdata->condition[COND_FULL] = 48;
@@ -992,8 +995,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                fMatch = TRUE;
                break;
             }
-            KEY( "Bloodlust", ch->pcdata->bloodlust, fread_number( fp ) );
-            KEY( "Bloodlustmax", ch->pcdata->bloodlust_max, fread_number( fp ) );
             if( !IS_NPC( ch ) )
             {
                SKEY( "Bamfin", ch->pcdata->bamfin, fread_string( fp ) );
@@ -1096,7 +1097,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                fMatch = TRUE;
                break;
             }
-            KEY( "Generation", ch->pcdata->generation, fread_number( fp ) );
             break;
 
          case 'H':
@@ -1295,6 +1295,16 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                fMatch = TRUE;
             }
 
+            KEY( "SupBloodline", ch->pcdata->super->bloodline, fread_number( fp ) );
+            KEY( "SupEnergy", ch->pcdata->super->energy, fread_number( fp ) );
+            KEY( "SupEnergyMax", ch->pcdata->super->energy_max, fread_number( fp ) );
+            KEY( "SupExp", ch->pcdata->super->exp, fread_number( fp ) );
+            KEY( "SupGeneration", ch->pcdata->super->generation, fread_number( fp ) );
+            KEY( "SupLevel", ch->pcdata->super->level, fread_number( fp ) );
+            KEY( "SupPracs", ch->pcdata->super->pracs, fread_number( fp ) );
+            KEY( "SupSkillLearn", ch->pcdata->super->skills_learned, fread_number( fp ) );
+            KEY( "SupSkillMax", ch->pcdata->super->skills_max, fread_number( fp ) );
+
             break;
 
          case 'T':
@@ -1325,15 +1335,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                fMatch = TRUE;
                break;
             }
-
-            KEY( "Vamplevel", ch->pcdata->vamp_level, fread_number( fp ) );
-            KEY( "Vampexp", ch->pcdata->vamp_exp, fread_number( fp ) );
-            KEY( "Vampbloodline", ch->pcdata->vamp_bloodline, fread_number( fp ) );
-            KEY( "Vampskillnum", ch->pcdata->vamp_skill_num, fread_number( fp ) );
-            KEY( "Vampskillmax", ch->pcdata->vamp_skill_max, fread_number( fp ) );
-            KEY( "Vamppracs", ch->pcdata->vamp_pracs, fread_number( fp ) );
-
-
             break;
 
          case 'W':

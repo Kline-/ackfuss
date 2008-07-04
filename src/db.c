@@ -4331,14 +4331,14 @@ void check_chistory( CHAR_DATA *ch, int channel )
       }
       break;
      case CHANNEL_FAMILY:
-      if( IS_VAMP(ch) && ch->pcdata->vamp_bloodline == chan_history.cbit[x][y] )
+      if( IS_VAMP(ch) && ch->pcdata->super->bloodline == chan_history.cbit[x][y] )
       {
        found = TRUE;
        send_to_char(chan_history.message[x][y],ch);
       }
       break;
      case CHANNEL_HOWL:
-      if( IS_WOLF(ch) && ch->pcdata->vamp_bloodline == chan_history.cbit[x][y] )
+      if( IS_WOLF(ch) && ch->pcdata->super->bloodline == chan_history.cbit[x][y] )
       {
        found = TRUE;
        send_to_char(chan_history.message[x][y],ch);
@@ -4372,11 +4372,11 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    switch( channel )
    {
     default: break;
-    case CHANNEL_YELL:   xprintf(chan_history.aname[x][y],ch->in_room->area->name);              break;
-    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                             break;
-    case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                     break;
-    case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->vamp_bloodline; break;
-    case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->vamp_bloodline; break;
+    case CHANNEL_YELL:   xprintf(chan_history.aname[x][y],ch->in_room->area->name);                break;
+    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                               break;
+    case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
+    case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
+    case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
    }
    break;
   }
@@ -4405,11 +4405,11 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    switch( channel )
    {
     default: break;
-    case CHANNEL_YELL:   xprintf(chan_history.aname[x][y],ch->in_room->area->name);              break;
-    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                             break;
-    case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                     break;
-    case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->vamp_bloodline; break;
-    case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->vamp_bloodline; break;
+    case CHANNEL_YELL:   xprintf(chan_history.aname[x][y],ch->in_room->area->name);                break;
+    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                               break;
+    case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
+    case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
+    case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
    }
   }
  }

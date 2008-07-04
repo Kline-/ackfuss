@@ -97,6 +97,7 @@ NOTE_DATA *note_free = NULL;
 OBJ_DATA *obj_free = NULL;
 OBJ_INDEX_DATA *oid_free = NULL;
 PC_DATA *pcd_free = NULL;
+SUPER_DATA *super_free = NULL;
 RESET_DATA *reset_free = NULL;
 ROOM_INDEX_DATA *rid_free = NULL;
 SHOP_DATA *shop_free = NULL;
@@ -284,6 +285,10 @@ void pcd_free_destructor( PC_DATA * pcdat )
       free_string( pcdat->pedit_string[cnt] );
    }
    free_string( pcdat->email_address );
+}
+
+void super_free_destructor( SUPER_DATA *superdat )
+{
 }
 
 void char_free_destructor( CHAR_DATA * cdat )

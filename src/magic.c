@@ -128,7 +128,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
       {
          cost = UMAX( skill_table[sn].min_mana,
                       ( ( skill_table[sn].min_mana * skill_lev ) /
-                        ( ( ch->pcdata->vamp_level == 0 ) ? 1 : ch->pcdata->vamp_level ) ) );
+                        ( ( ch->pcdata->super->level == 0 ) ? 1 : ch->pcdata->super->level ) ) );
       }
    }
    if( IS_NPC( ch ) )
@@ -447,14 +447,14 @@ void do_cast( CHAR_DATA * ch, char *argument )
       }
    if( !IS_NPC( ch ) )
       if( ( IS_VAMP( ch ) ) && ( skill_table[sn].flag2 == VAMP ) )
-         best = ch->pcdata->vamp_level * 4;
+         best = ch->pcdata->super->level * 4;
    if( ( ch->adept_level > 0 ) && ( skill_table[sn].flag1 == ADEPT ) )
       best = ch->adept_level * 4;
    if( IS_NPC( ch ) && ( skill_table[sn].flag1 == ADEPT ) )
       best = -1;
    if( !IS_NPC( ch ) )
       if( skill_table[sn].flag2 == WOLF && IS_WOLF( ch ) )
-         best = ch->pcdata->vamp_level * 4;
+         best = ch->pcdata->super->level * 4;
 
 
    if( best == 80 )
@@ -599,7 +599,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
    }
    if( IS_VAMP( ch ) && ( skill_table[sn].flag2 == VAMP ) )
    {
-      if( !IS_NPC( ch ) && ch->pcdata->bloodlust < mana )
+      if( !IS_NPC( ch ) && ch->pcdata->super->energy < mana )
       {
          send_to_char( "@@NYou don't have enough @@eblood@@N to cast that spell!!!\n\r", ch );
          return;
@@ -611,7 +611,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
       send_to_char( "Huh?\n\r", ch );
       return;
    }
-   if( skill_table[sn].flag2 == WOLF && ( !IS_NPC( ch ) && IS_WOLF( ch ) ) && ch->pcdata->bloodlust < mana )
+   if( skill_table[sn].flag2 == WOLF && ( !IS_NPC( ch ) && IS_WOLF( ch ) ) && ch->pcdata->super->energy < mana )
    {
       send_to_char( "@@bYou aren't able to summon enough @@rRAGE@@N!!\n\r", ch );
       return;
@@ -670,9 +670,9 @@ void do_cast( CHAR_DATA * ch, char *argument )
          send_to_char( "You lost your concentration.\n\r", ch );
 
          if( IS_VAMP( ch ) && ( skill_table[sn].flag2 == VAMP ) )
-            ch->pcdata->bloodlust -= mana / 2;
+            ch->pcdata->super->energy -= mana / 2;
          else if( skill_table[sn].flag2 == WOLF && ( !IS_NPC( ch ) && IS_WOLF( ch ) ) )
-            ch->pcdata->bloodlust -= mana / 3;
+            ch->pcdata->super->energy -= mana / 3;
          else
             ch->mana -= mana / 2;
          return;
@@ -699,7 +699,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
    {
       if( ( skill_table[sn].flag2 == VAMP ) || ( skill_table[sn].flag2 == WOLF ) )
       {
-         ch->pcdata->bloodlust -= mana;
+         ch->pcdata->super->energy -= mana;
       }
       else
       {
@@ -743,7 +743,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
          {
             if( ( skill_table[sn].flag2 == VAMP ) || ( skill_table[sn].flag2 == WOLF ) )
             {
-               ch->pcdata->bloodlust -= mana;
+               ch->pcdata->super->energy -= mana;
             }
             else
             {
@@ -790,7 +790,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
          {
             if( ( skill_table[sn].flag2 == VAMP ) || ( skill_table[sn].flag2 == WOLF ) )
             {
-               ch->pcdata->bloodlust -= mana;
+               ch->pcdata->super->energy -= mana;
             }
             else
             {

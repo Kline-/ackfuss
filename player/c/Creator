@@ -37,7 +37,6 @@ Damroll      0
 Armor        100
 Wimpy        0
 Deaf         5449477
-Generation   0
 Clan         0
 Order        4 2 0 3 1
 Mkills	   77
@@ -94,14 +93,6 @@ colors
 AttrPerm     13 13 13 13 13
 AttrMod      0 0 0 0 0
 AttrMax      22 22 22 22 22
-Bloodlust    100
-Bloodlustmax   1000
-Vamplevel      20
-Vampexp       8
-Vampskillnum  0
-Vampskillmax  30
-Vampbloodline 1
-Vamppracs     30
 Questpoints   637
 RecallVnum    18300
 GainMana      1427
