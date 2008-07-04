@@ -1,3 +1,19 @@
+4.3.5 - 03 Jul 08:
+ Moved all super related stuff into its own struct, SUPER_DATA, within pcdata. This makes it more generic and easier to implement across all supers: vamp, wolf, and hunter (soon to be).
+ Added gossip back in; not sure why it left.
+ Fixed some minor level problems in the channel table.
+ Added a bv_log() (thanks Abel!) to change bitvectors to enums. All channels now support a 'history' argument that will display the last MAX_HISTORY on each channel.
+ Stance speed mods were redone for the new combat system, and now affect things.
+ Fixed remort skills being in the wrong classes, oops. Also removed Nth attacks and coded new skills to replace them.
+ Added fread_float to properly handle floats instead of the backwards hack I was using with atof().
+ Minor help updates. Slowly but surely.
+ Fixed a bug in sysdata and speed where I was incorrectly loading values with fread_number, so they all truncated at the decimal :).
+ Obj speed is now settable in the OLC. If an object has a speed set, it will use it. If not, it will generate randomly each time the obj is loaded.
+ Updated AREA_VERSION for this, so things should be backwards (but not forwards) compatible. IE: old areas will load fine, but once updated to the new version are unusable on an old format game.
+ Speed properly in to test now.
+ Added some consistency to logging and file naming.
+ The sysdata command got a COMPLETE overhaul, and it now exceptionally more useful and easier to expand / maintain. Helpfiles added for it, too. Read them!
+ Quest mobs will no longer auto-assist other NPCs or be aggressive.
 4.3.4 - 01 Jun 08:
  Damage spells now have a +/- 10% randomness. It's pretty boring seeing the exact same damage all the time!
  strcat and the old safe_strcat were replaced with a newer xcat, along the lines of xprintf.
