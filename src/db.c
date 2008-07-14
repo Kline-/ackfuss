@@ -2254,6 +2254,7 @@ void reset_area( AREA_DATA * pArea )
                break;
             }
 
+            level = pObjIndex->level;
             obj = create_object( pObjIndex, level > 1 ? number_fuzzy( level ) : level );
 
 
@@ -2293,7 +2294,7 @@ void reset_area( AREA_DATA * pArea )
                break;
             }
 
-
+            level = pObjIndex->level;
             obj = create_object( pObjIndex, obj_to->level > 1 ? number_fuzzy( obj_to->level ) : obj_to->level );
 
             obj_to_obj( obj, obj_to );
@@ -2371,6 +2372,7 @@ void reset_area( AREA_DATA * pArea )
                if( has_obj )
                   break;
 
+               level = pObjIndex->level;
                obj = create_object( pObjIndex, level > 1 ? number_fuzzy( level ) : level );
             }
             obj_to_char( obj, mob );
