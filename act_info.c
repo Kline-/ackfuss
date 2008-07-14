@@ -3648,8 +3648,6 @@ void do_practice( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-   buf1[0] = '\0';
-
    if( ch->level < 3 )
    {
       send_to_char( "You must be third level to practice.  Go train instead!\n\r", ch );
@@ -3702,18 +3700,18 @@ void do_practice( CHAR_DATA * ch, char *argument )
             {
                xprintf( buf, "@@W%16s-@@y%-7s@@g  ", skill_table[sn].name, learnt_name( ch->pcdata->learned[sn] ) );
 
-               xcat( buf1, buf );
+               xcat_2( buf1, buf );
                if( ++col % 3 == 0 )
-                  xcat( buf1, "\n\r" );
+                  xcat_2( buf1, "\n\r" );
             }
          }
       }
 
       if( col % 3 != 0 )
-         xcat( buf1, "\n\r" );
+         xcat_2( buf1, "\n\r" );
 
-      xprintf( buf, "You have %d practice sessions left.\n\r", ch->practice );
-      xcat( buf1, buf );
+      xprintf( buf, "\n\rYou have %d practice sessions left.\n\r", ch->practice );
+      xcat_2( buf1, buf );
       send_to_char( buf1, ch );
    }
    else

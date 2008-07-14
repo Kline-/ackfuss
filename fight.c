@@ -1925,6 +1925,9 @@ void update_pos( CHAR_DATA * victim )
  */
 void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
 {
+   static FIGHT_DATA *fight;
+   FIGHT_DATA *vfight;
+
    if( ch->fighting != NULL )
    {
       /*
@@ -1967,6 +1970,18 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
          victim->target = str_dup( ch->name );
    }
 
+   for( vfight = first_fight; vfight != NULL; vfight = vfight->next )
+   {
+    /* Keep out duplicates */
+    if( vfight->ch == ch )
+     return;
+    if( vfight->ch == victim )
+     return;
+   }
+   GET_FREE(fight,fight_free);
+   fight->ch = ch;
+   LINK(fight,first_fight,last_fight,next,prev);
+
    return;
 }
 
@@ -1979,11 +1994,17 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
 {
    CHAR_DATA *fch;
    CHAR_DATA *fch_next;
+   FIGHT_DATA *fight;
 
    ch->fighting = NULL;
    ch->position = POS_STANDING;
    update_pos( ch );
-
+   for( fight = first_fight; fight != NULL; fight = fight->next )
+    if( fight->ch == ch )
+    {
+     UNLINK(fight,first_fight,last_fight,next,prev);
+     PUT_FREE(fight,fight_free);
+    }
 
    if( !fBoth )
       return;
@@ -3096,7 +3117,6 @@ void do_murde( CHAR_DATA * ch, char *argument )
 
 void do_murder( CHAR_DATA * ch, char *argument )
 {
-   char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
 
@@ -3139,8 +3159,8 @@ void do_murder( CHAR_DATA * ch, char *argument )
    }
 
    WAIT_STATE( ch, 1 * PULSE_VIOLENCE );
-   xprintf( buf, "%s attacked by %s.\n\r", victim->name, ch->name );
-   notify( buf, MAX_LEVEL - 2 );
+   xprintf_2( log_buf, "%s attacked by %s.\n\r", victim->name, ch->name );
+   notify( log_buf, MAX_LEVEL - 2 );
 
    if( IS_NPC( ch ) || IS_NPC( victim )
        || !IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) || !IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
@@ -3148,8 +3168,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
       /*
        * If not pkok people, do yell. 
        */
-      xprintf( buf, "Help! I'M BEING ATTACKED!!! ARRRGGGHHHHHH!" );
-      do_yell( victim, buf );
+      do_yell( victim, "Help! I'M BEING ATTACKED!!! ARRRGGGHHHHHH!" );
    }
    check_killer( ch, victim );
    multi_hit( ch, victim, TYPE_UNDEFINED );
@@ -5752,19 +5771,20 @@ float get_speed( CHAR_DATA *ch, int slot )
 
 void combat_update( void )
 {
+ FIGHT_DATA *fight;
  CHAR_DATA *ch;
- CHAR_DATA *ch_next;
  CHAR_DATA *victim;
 
- for( ch = first_char; ch; ch = ch_next )
+ for( fight = first_fight; fight != NULL; fight = fight->next )
  {
-  ch_next = ch->next;
+  ch = fight->ch;
+  victim = ch->fighting;
 
   /*
    * Speed based combat. Arms attack independantly of each other,
    * as do special racials such as fangs or tails. --Kline
    */
-  if( ch->position == POS_FIGHTING && (victim = ch->fighting) != NULL )
+  if( ch->position == POS_FIGHTING && victim != NULL )
   {
    /* Left hand attack (primary) */
    ch->speed[SPEED_LH] -= 0.01;

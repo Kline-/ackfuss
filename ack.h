@@ -81,6 +81,14 @@ struct sysdata_type
  bool w_lock;
 };
 
+struct fight_data
+{
+ bool is_free;
+ FIGHT_DATA *next;
+ FIGHT_DATA *prev;
+ CHAR_DATA *ch;
+};
+
 struct board_data
 {
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */

@@ -317,7 +317,6 @@ DECLARE_DO_FUN( do_howl );
  * Now the 'standard' stuff:*
  ****************************/
 
-DECLARE_DO_FUN( do_advance );
 DECLARE_DO_FUN( do_allow );
 DECLARE_DO_FUN( do_answer );
 DECLARE_DO_FUN( do_areas );

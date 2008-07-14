@@ -75,7 +75,8 @@ extern BUF_DATA_STRUCT *first_buf;
 extern BUF_DATA_STRUCT *last_buf;
 extern NPC_GROUP_DATA *first_npc_group;
 extern NPC_GROUP_DATA *last_npc_group;
-
+extern FIGHT_DATA *first_fight;
+extern FIGHT_DATA *last_fight;
 extern PORTAL_DATA *portal_free;
 extern AFFECT_DATA *affect_free;
 extern ROOM_AFFECT_DATA *raffect_free;
@@ -119,6 +120,7 @@ extern MESSAGE_DATA *message_free;
 extern BUF_DATA_STRUCT *buf_free;
 extern HASH_ENTRY *hash_free;
 extern NPC_GROUP_DATA *npc_group_free;
+extern FIGHT_DATA *fight_free;
 
 extern void ( *portal_free_destructor ) ( PORTAL_DATA * pdat );
 extern void ( *affect_free_destructor ) ( AFFECT_DATA * adat );
@@ -172,6 +174,7 @@ void shield_free_destructor( MAGIC_SHIELD * msdat );
 void obj_free_destructor( OBJ_DATA * odat );
 void ruler_data_free_destructor( RULER_DATA * rdat );
 void npc_group_free_destructor( NPC_GROUP_DATA * ngrp );
+void fight_free_destructor( FIGHT_DATA *fight );
 
 extern int free_get;
 extern int free_put;

@@ -1739,16 +1739,6 @@ void do_purge( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_advance( CHAR_DATA * ch, char *argument )
-{
-   send_to_char( "Use setclass instead.  Advance no longer works here.\n\r", ch );
-   return;
-}
-
-
-
 void do_trust( CHAR_DATA * ch, char *argument )
 {
    char arg1[MAX_INPUT_LENGTH];
@@ -4050,41 +4040,26 @@ void do_iscore( CHAR_DATA * ch, char *argument )
 
 void do_fights( CHAR_DATA * ch, char *argument )
 {
-   /*
-    * Displays list of any PCs currently fighting.  Also shows 'victim'
-    * * --Stephen
-    */
+ FIGHT_DATA *fight;
+ int cnt = 0;
+ char buf[MAX_STRING_LENGTH];
 
-   CHAR_DATA *vch;
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
-   int count;
+ send_to_char("Active Fights:\n\r",ch);
 
-   count = 0;
-   buf2[0] = '\0';
-
-   for( vch = first_char; vch != NULL; vch = vch->next )
-   {
-      if( !IS_NPC( vch ) && ( vch->fighting != NULL ) && can_see( ch, vch ) )
-      {
-         count++;
-         xprintf( buf, "%s Vs. %s  [Room:%5d]\n\r", vch->name, IS_NPC( vch->fighting ) ?
-                  vch->fighting->short_descr : vch->fighting->name, vch->in_room->vnum );
-         xcat( buf2, buf );
-      }
-   }
-
-   if( count == 0 )
-      xcat( buf2, "No Players are currently fighting!\n\r" );
-   else
-   {
-      xprintf( buf, "%d fight%s\n\r", count, ( count > 1 ) ? "s." : "." );
-      xcat( buf2, buf );
-   }
-
-   xcat( buf2, "\n\r" );
-   send_to_char( buf2, ch );
-   return;
+ for( fight = first_fight; fight != NULL; fight = fight->next )
+ {
+  cnt++;
+  xprintf(buf,"%s vs %s [Room:%5d]\n\r",IS_NPC(fight->ch->fighting) ? fight->ch->fighting->short_descr : fight->ch->fighting->name,IS_NPC(fight->ch) ? fight->ch->short_descr : fight->ch->name,fight->ch->fighting->in_room->vnum);
+  send_to_char(buf,ch);
+ }
+ if( cnt == 0 )
+  send_to_char("No fights right now!\n\r",ch);
+ else
+ {
+  xprintf(buf,"%d fight%s right now.\n\r",cnt,( cnt > 1 ) ? "s" : "");
+  send_to_char(buf,ch);
+ }
+ return;
 }
 
 void do_iwhere( CHAR_DATA * ch, char *argument )
