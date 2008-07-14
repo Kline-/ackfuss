@@ -250,6 +250,7 @@ typedef struct bmlist BM_LIST;
 typedef struct bitmask BITMASK;
 typedef struct chanhistory CHAN_HISTORY;
 typedef struct super_data SUPER_DATA;
+typedef struct fight_data FIGHT_DATA;
 
 /*
  * Function types.
