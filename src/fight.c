@@ -1975,7 +1975,7 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
     /* Keep out duplicates */
     if( vfight->ch == ch )
      return;
-    if( vfight->ch == victim )
+    if( vfight->ch == ch->fighting )
      return;
    }
    GET_FREE(fight,fight_free);
@@ -2002,6 +2002,17 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
    for( fight = first_fight; fight != NULL; fight = fight->next )
     if( fight->ch == ch )
     {
+     if( fight->ch->fighting != NULL )
+     {
+      FIGHT_DATA *vfight;
+
+      for( vfight = first_fight; vfight != NULL; vfight = vfight->next )
+       if( vfight->ch == fight->ch->fighting )
+       {
+        UNLINK(vfight,first_fight,last_fight,next,prev);
+        PUT_FREE(vfight,fight_free);
+       }
+     }
      UNLINK(fight,first_fight,last_fight,next,prev);
      PUT_FREE(fight,fight_free);
     }

@@ -1853,6 +1853,9 @@ void imc_display_channel( IMC_CHANNEL * c, const char *from, char *txt, int emot
       if( IMCPERM( ch ) < c->level || !imc_hasname( IMC_LISTEN( ch ), c->local_name ) )
          continue;
 
+      if( imc_isignoring( ch, from ) )
+         continue;
+
       if( !c->open )
       {
          snprintf( name, SMST, "%s@%s", CH_IMCNAME( ch ), this_imcmud->localname );
@@ -7510,7 +7513,7 @@ IMC_CMD( imccedit )
       {
          if( !strcasecmp( tmp->name, argument ) )
          {
-            imc_printf( ch, "~W%s &gis already a command name.\r\n", argument );
+            imc_printf( ch, "~W%s ~gis already a command name.\r\n", argument );
             return;
          }
          for( alias = tmp->first_alias; alias; alias = alias->next )
