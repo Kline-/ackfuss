@@ -1852,9 +1852,9 @@ void imc_display_channel( IMC_CHANNEL * c, const char *from, char *txt, int emot
 
       if( IMCPERM( ch ) < c->level || !imc_hasname( IMC_LISTEN( ch ), c->local_name ) )
          continue;
-
-      if( imc_isignoring( ch, from ) )
-         continue;
+/*
+      if( str_prefix( CH_IMCNAME( ch ), from ) && imc_isignoring( ch, from ) )
+         continue;*/
 
       if( !c->open )
       {

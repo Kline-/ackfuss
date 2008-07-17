@@ -1269,9 +1269,9 @@ void do_exits( CHAR_DATA * ch, char *argument )
          }
          else
          {
-            xprintf( buf + strlen( buf ), "%-5s - %s\n\r",
+            xprintf_2( buf + strlen( buf ), "%-5s - %s\n\r",
                      capitalize( compass_name[door] ),
-                     room_is_dark( pexit->to_room ) ? "Too dark to tell" : pexit->to_room->name );
+                     ( room_is_dark( pexit->to_room ) || pexit->to_room == ch->in_room ) ? "Too dark to tell" : pexit->to_room->name );
          }
       }
    }
@@ -3710,9 +3710,10 @@ void do_practice( CHAR_DATA * ch, char *argument )
       if( col % 3 != 0 )
          xcat_2( buf1, "\n\r" );
 
-      xprintf( buf, "\n\rYou have %d practice sessions left.\n\r", ch->practice );
-      xcat_2( buf1, buf );
       send_to_char( buf1, ch );
+
+      xprintf( buf, "\n\rYou have %d practice sessions left.\n\r", ch->practice );
+      send_to_char( buf, ch );
    }
    else
    {

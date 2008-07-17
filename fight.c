@@ -2000,22 +2000,28 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
    ch->position = POS_STANDING;
    update_pos( ch );
    for( fight = first_fight; fight != NULL; fight = fight->next )
+   {
+    bool found = FALSE;
+
     if( fight->ch == ch )
     {
-     if( fight->ch->fighting != NULL )
-     {
-      FIGHT_DATA *vfight;
-
-      for( vfight = first_fight; vfight != NULL; vfight = vfight->next )
-       if( vfight->ch == fight->ch->fighting )
-       {
-        UNLINK(vfight,first_fight,last_fight,next,prev);
-        PUT_FREE(vfight,fight_free);
-       }
-     }
+     found = TRUE;
      UNLINK(fight,first_fight,last_fight,next,prev);
      PUT_FREE(fight,fight_free);
     }
+    if( !found )
+    {
+     FIGHT_DATA *vfight;
+
+     for( vfight = first_fight; vfight != NULL; vfight = vfight->next )
+      if( vfight->ch->fighting == ch )
+      {
+       UNLINK(vfight,first_fight,last_fight,next,prev);
+       PUT_FREE(vfight,fight_free);
+      }
+    }
+
+   }
 
    if( !fBoth )
       return;

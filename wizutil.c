@@ -128,7 +128,7 @@ void room_pair( ROOM_INDEX_DATA * left, ROOM_INDEX_DATA * right, exit_status ex,
          break;
    }
 
-   xprintf( buffer, "%5d %-26.26s %s%5d %-26.26s(%-8.8s)\n\r",
+   xprintf_2( buffer, "%5d %-26.26s %s%5d %-26.26s(%-8.8s)\n\r",
             left->vnum, left->name, sExit, right->vnum, right->name, area_name( right->area ) );
 }
 
@@ -162,7 +162,7 @@ void checkexits( ROOM_INDEX_DATA * room, AREA_DATA * pArea, char *buffer )
             else
                room_pair( room, to_room, exit_to, buf ); /* > */
 
-            xcat( buffer, buf );
+            xcat_2( buffer, buf );
          }
          else if( ( room->area != pArea ) && ( exit->to_room->area == pArea ) )
          {  /* an exit from another area to our area */
