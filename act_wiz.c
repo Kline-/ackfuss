@@ -4048,15 +4048,12 @@ void do_fights( CHAR_DATA * ch, char *argument )
 
  for( fight = first_fight; fight != NULL; fight = fight->next )
  {
-  if( fight->ch != NULL && fight->ch->fighting != NULL )
-  {
-   cnt++;
-   xprintf(buf,"%s vs %s [Room:%5d]\n\r",
-    IS_NPC(fight->ch->fighting) ? fight->ch->fighting->short_descr : fight->ch->fighting->name,
-    IS_NPC(fight->ch) ? fight->ch->short_descr : fight->ch->name,
-    fight->ch->fighting->in_room->vnum);
-   send_to_char(buf,ch);
-  }
+  cnt++;
+  xprintf(buf,"%s vs %s [Room:%5d]\n\r",
+   IS_NPC(fight->ch->fighting) ? fight->ch->fighting->short_descr : fight->ch->fighting->name,
+   IS_NPC(fight->ch) ? fight->ch->short_descr : fight->ch->name,
+   fight->ch->fighting->in_room->vnum);
+  send_to_char(buf,ch);
  }
  if( cnt == 0 )
   send_to_char("No fights right now!\n\r",ch);
