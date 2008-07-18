@@ -1970,14 +1970,14 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
          victim->target = str_dup( ch->name );
    }
 
+   /* Keep out duplicates */
    for( vfight = first_fight; vfight != NULL; vfight = vfight->next )
-   {
-    /* Keep out duplicates */
     if( vfight->ch == ch )
      return;
-    if( vfight->ch == ch->fighting )
-     return;
-   }
+   /*
+   xprintf_2(log_buf,"Adding %s vs %s to the fight queue.",ch->name,victim->name);
+   monitor_chan(log_buf,MONITOR_DEBUG);
+   */
    GET_FREE(fight,fight_free);
    fight->ch = ch;
    LINK(fight,first_fight,last_fight,next,prev);
@@ -1994,34 +1994,10 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
 {
    CHAR_DATA *fch;
    CHAR_DATA *fch_next;
-   FIGHT_DATA *fight;
 
    ch->fighting = NULL;
    ch->position = POS_STANDING;
    update_pos( ch );
-   for( fight = first_fight; fight != NULL; fight = fight->next )
-   {
-    bool found = FALSE;
-
-    if( fight->ch == ch )
-    {
-     found = TRUE;
-     UNLINK(fight,first_fight,last_fight,next,prev);
-     PUT_FREE(fight,fight_free);
-    }
-    if( !found )
-    {
-     FIGHT_DATA *vfight;
-
-     for( vfight = first_fight; vfight != NULL; vfight = vfight->next )
-      if( vfight->ch->fighting == ch )
-      {
-       UNLINK(vfight,first_fight,last_fight,next,prev);
-       PUT_FREE(vfight,fight_free);
-      }
-    }
-
-   }
 
    if( !fBoth )
       return;
@@ -5794,6 +5770,20 @@ void combat_update( void )
 
  for( fight = first_fight; fight != NULL; fight = fight->next )
  {
+  if( fight->ch == NULL )
+  {
+   //monitor_chan("Removing a null fight->ch from queue.",MONITOR_DEBUG);
+   UNLINK(fight,first_fight,last_fight,next,prev);
+   PUT_FREE(fight,fight_free);
+   return;
+  }
+  if( fight->ch->fighting == NULL )
+  {
+   //monitor_chan("Removing a null fight->ch->fighting from queue.",MONITOR_DEBUG);
+   UNLINK(fight,first_fight,last_fight,next,prev);
+   PUT_FREE(fight,fight_free);
+   return;
+  }
   ch = fight->ch;
   victim = ch->fighting;
 
