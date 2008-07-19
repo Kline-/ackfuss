@@ -348,23 +348,6 @@ struct con_app_type
    sh_int shock;
 };
 
-
-
-/*
- * Help table types.
- */
-struct help_data
-{
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   HELP_DATA *next;
-   HELP_DATA *prev;
-   sh_int level;
-   char *keyword;
-   char *text;
-};
-
-
-
 /*
  * Shop types.
  */
@@ -1152,8 +1135,6 @@ struct area_data
    int aggro_list;
    BUILD_DATA_LIST *first_area_room;
    BUILD_DATA_LIST *last_area_room;
-   BUILD_DATA_LIST *first_area_help_text;
-   BUILD_DATA_LIST *last_area_help_text;
    BUILD_DATA_LIST *first_area_object;
    BUILD_DATA_LIST *last_area_object;
    BUILD_DATA_LIST *first_area_mobile;

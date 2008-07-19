@@ -198,7 +198,6 @@ typedef struct char_data CHAR_DATA;
 typedef struct descriptor_data DESCRIPTOR_DATA;
 typedef struct exit_data EXIT_DATA;
 typedef struct extra_descr_data EXTRA_DESCR_DATA;
-typedef struct help_data HELP_DATA;
 typedef struct kill_data KILL_DATA;
 typedef struct mob_index_data MOB_INDEX_DATA;
 typedef struct note_data NOTE_DATA;

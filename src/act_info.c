@@ -1796,37 +1796,45 @@ void do_weather( CHAR_DATA * ch, char *argument )
 
 void do_help( CHAR_DATA * ch, char *argument )
 {
-   HELP_DATA *pHelp;
+ FILE *fp;
+ char buf[MAX_STRING_LENGTH];
+ bool found = FALSE;
 
-   if( argument[0] == '\0' )
-      argument = "summary";
+ buf[0] = '\0';
+ argument = strlower(argument);
 
-   for( pHelp = first_help; pHelp != NULL; pHelp = pHelp->next )
-   {
-      if( pHelp->level > get_trust( ch ) )
-         continue;
+ if( argument[0] == '\0' )
+  xprintf(buf,"%shelp.index",HELP_DIR);
+ else
+  xprintf(buf,"%s%s.%s",HELP_DIR,argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
 
-      if( is_name( argument, pHelp->keyword ) )
-      {
-         if( pHelp->level >= 0 && str_cmp( argument, "imotd" ) )
-         {
-            send_to_char( pHelp->keyword, ch );
-            send_to_char( "\n\r", ch );
-         }
+ if( (fp = fopen(buf,"r")) != NULL )
+ {
+  found = TRUE;
+  while( fgets(buf,MAX_STRING_LENGTH,fp) )
+   send_to_char(buf,ch);
+  fclose(fp);
+ }
+ else if( !IS_IMMORTAL(ch) )
+ {
+  send_to_char("No help on that word.\n\r",ch);
+  return;
+ }
 
-         /*
-          * Strip leading '.' to allow initial blanks.
-          */
-         if( pHelp->text[0] == '.' )
-            send_to_char( pHelp->text + 1, ch );
-         else
-            send_to_char( pHelp->text, ch );
-         return;
-      }
-   }
+ if( IS_IMMORTAL(ch) )
+ {
+  xprintf(buf,"%s%s.%s",HELP_DIR,argument,HELP_MORT);
+  if( (fp = fopen(buf,"r")) != NULL )
+  {
+   while( fgets(buf,MAX_STRING_LENGTH,fp) )
+    send_to_char(buf,ch);
+   fclose(fp);
+  }
+  else if( !found )
+   send_to_char("No help on that word.\n\r",ch);
+ }
 
-   send_to_char( "No help on that word.\n\r", ch );
-   return;
+ return;
 }
 
 
@@ -6235,7 +6243,6 @@ void do_shelp( CHAR_DATA * ch, char *argument )
     */
    int sn;
    char buf[MAX_STRING_LENGTH];
-   HELP_DATA *pHelp;
    bool found = FALSE;
    buf[0] = '\0';
 
@@ -6256,13 +6263,6 @@ void do_shelp( CHAR_DATA * ch, char *argument )
    /*
     * Search help texts for 'shelp_<name>' as keyword.... 
     */
-   for( pHelp = first_help; pHelp != NULL; pHelp = pHelp->next )
-      if( !str_cmp( buf, pHelp->keyword ) )
-      {
-         found = TRUE;
-         send_to_char( pHelp->text, ch );
-         break;
-      }
 
    if( !found )
       send_to_char( "Couldn't find a sHelp for that skill/spell.\n\r", ch );

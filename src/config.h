@@ -1294,6 +1294,10 @@
 #define MAIL_DIR        "../mail/"
 #define DATA_DIR        "../data/"
 #define BUG_DIR         "../reports/"
+#define HELP_DIR        "../helps/"
+
+#define HELP_MORT      "mrt" /* Mortal helpfiles */
+#define HELP_IMM       "imm" /* Immortal helpfiles */
 
 #define BUG_FILE       BUG_DIR  "bugs.txt"   /* For 'bug' and bug( )         */
 #define IDEA_FILE      BUG_DIR  "ideas.txt" /* For 'idea'                   */

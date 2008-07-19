@@ -52,7 +52,7 @@
 #define BUILD_TOOMANY  2
 
 #define BUILD_SEC_AREA     1
-#define BUILD_SEC_HELP     2
+//Was for helps
 #define BUILD_SEC_ROOMS    3
 #define BUILD_SEC_MOBILES  4
 #define BUILD_SEC_MOBPROGS 5
@@ -92,7 +92,6 @@ int AreasModified = 0;
 /* Local functions */
 /* void build_save(); proto in merc.h */
 void build_save_area( void );
-void build_save_help( void );
 void build_save_mobs( void );
 void build_save_mobprogs( void );
 void build_save_objects( void );
@@ -215,9 +214,6 @@ void build_save(  )
          case BUILD_SEC_AREA:
             build_save_area(  );
             break;
-         case BUILD_SEC_HELP:
-            build_save_help(  );
-            break;
          case BUILD_SEC_ROOMS:
             build_save_rooms(  );
             break;
@@ -287,42 +283,6 @@ void build_save_area(  )
 /*     fprintf( Envy, "%s~\n", CurSaveArea->name );                     */
 
    Section++;
-}
-
-void build_save_help(  )
-{
-   HELP_DATA *pHelp;
-
-   if( Pointer == NULL )   /* Start */
-   {
-      if( CurSaveArea->first_area_help_text == NULL )
-      {
-         Section++;
-         return;
-      }
-      send_to_char( "Saving help section.\n", CurSaveChar );
-      fprintf( SaveFile, "#HELPS\n" );
-      Pointer = CurSaveArea->first_area_help_text;
-   }
-
-   pHelp = Pointer->data;
-   fprintf( SaveFile, "%i %s~\n", pHelp->level, pHelp->keyword );
-   if( isspace( pHelp->text[0] ) )
-      fprintf( SaveFile, ".%s~\n", pHelp->text );
-   else
-      fprintf( SaveFile, "%s~\n", pHelp->text );
-
-   Pointer = Pointer->next;
-   if( Pointer == NULL )   /* End */
-   {
-      fprintf( SaveFile, "0 $~\n" );
-      Section++;
-   }
-   /*
-    * No saving helps for envy format 
-    */
-
-   return;
 }
 
 void build_save_mobs(  )
