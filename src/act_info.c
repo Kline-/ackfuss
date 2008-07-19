@@ -1797,22 +1797,15 @@ void do_weather( CHAR_DATA * ch, char *argument )
 void do_help( CHAR_DATA * ch, char *argument )
 {
  FILE *fp;
- char tmp[7];
- char buf[MAX_STRING_LENGTH];
+ char buf[MSL];
  bool found = FALSE;
  bool shelp = FALSE;
- sh_int i;
 
- tmp[0] = '\0';
  buf[0] = '\0';
  strlower(argument);
  smash_space(argument);
 
- /* This is my ghetto fix to get around the limitations of str_infix et al --Kline */
- for( i = 0; i < 6; i++ )
-  tmp[i] = argument[i];
-
- if( !str_cmp(tmp,"shelp_") )
+ if( !str_prefix("shelp_",argument) )
   shelp = TRUE;
 
  if( argument[0] == '\0' )
