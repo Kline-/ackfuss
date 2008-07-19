@@ -1,0 +1,13 @@
+ADAPT
+
+ADAPT allows you to have a weapon adapted for your use, if it's level is higher
+than yours.  Adapt can only be used when in the room with a NPC that offers
+his/her services for adapting.  Typing ADAPT with no argument reports the cost
+of having a weapon adapted.
+
+Once the weapon has been adapted, its damage will have been lowered in line
+with the decrease in the weapon's level to your's.  Any affects on the weapon
+(Eg affects HITROLL) will be heavily reduced, and probably cancelled.
+
+If, once a weapon has been adapted, it's attributes indicate it will cause NO
+damage, it will crumble into dust, and you will lose it.

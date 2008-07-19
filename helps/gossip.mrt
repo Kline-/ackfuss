@@ -1,0 +1,22 @@
+AUCTION GOSSIP . NEWBIE QUESTION ANSWER SHOUT YELL FLAME ZZZ MUSIC
+
+Syntax: auction  <message>      Syntax: gossip   <message>
+Syntax: newbie   <message>      Syntax: question <message>
+Syntax: answer   <message>      Syntax: shout    <message>
+Syntax: yell     <message>      Syntax: zzz      <message>
+Syntax: flame    <message>      Syntax: race     <message>
+Syntax: clan     <message>      syntax: music    <message>
+
+These commands send messages through communication channels to other players.
+SHOUT sends a message to all awake players in the world.  To curb excessive
+shouting, SHOUT imposes a three-second delay on the shouter.
+MUSIC, AUCTION, GOSSIP, NEWBIE, and QUESTION and ANSWER also send messages
+to all interested players.  '.' is a synonym for GOSSIP.  The QUESTION and
+ANSWER commands both use the same 'question' channel
+FLAME is similar to auction, gossip, etc, but is intended for moaning about
+life, players, etc.  ZZZ may only be used when sleeping.
+YELL sends a message to all awake players within your area.
+RACE sends a message to members of your own race.  CLAN sends a message to
+those in your clan.
+
+You can use the CHANNELS command to hear, or not hear, any of these channels.

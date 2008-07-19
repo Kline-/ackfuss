@@ -1,0 +1,7 @@
+ASSIST
+
+@@yASSIST@@g is a command that allows you to assist any member of your group
+in combat.  ASSIST by itself will attempt to have you assist your leader
+first, then each member of your group, in group order.
+Syntax:  assist <target>
+         assist

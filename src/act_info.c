@@ -1815,6 +1815,17 @@ void do_help( CHAR_DATA * ch, char *argument )
    send_to_char(buf,ch);
   fclose(fp);
  }
+
+ /* Search for a plural */
+ xprintf(buf,"%s%ss.%s",HELP_DIR,argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
+
+ if( (fp = fopen(buf,"r")) != NULL )
+ {
+  found = TRUE;
+  while( fgets(buf,MAX_STRING_LENGTH,fp) )
+   send_to_char(buf,ch);
+  fclose(fp);
+ }
  else if( !IS_IMMORTAL(ch) )
  {
   send_to_char("No help on that word.\n\r",ch);
@@ -1824,6 +1835,16 @@ void do_help( CHAR_DATA * ch, char *argument )
  if( IS_IMMORTAL(ch) )
  {
   xprintf(buf,"%s%s.%s",HELP_DIR,argument,HELP_MORT);
+  if( (fp = fopen(buf,"r")) != NULL )
+  {
+   if( found )
+    send_to_char("\n\r",ch);
+   while( fgets(buf,MAX_STRING_LENGTH,fp) )
+    send_to_char(buf,ch);
+   fclose(fp);
+  }
+  /* Search for a plural */
+  xprintf(buf,"%s%ss.%s",HELP_DIR,argument,HELP_MORT);
   if( (fp = fopen(buf,"r")) != NULL )
   {
    if( found )

@@ -1,0 +1,25 @@
+ALIAS
+
+The ALIAS command allows you configure the six alias 'slots'.  An alias
+takes the form of a name, and the alias.  To set up a new alias, type:
+ALIAS <slot_number> <name> <alias>
+
+For example:
+ALIAS 2 ban emote turns into a banana and splits...
+
+Now, whenever you type 'ban' the mud checks through the command table.  If
+your input wasn't found, it then checks your alias.  Upon matching 'ban'
+it issues the alias to the interpreter function, along with any argument
+you typed after the alias name.
+
+For example, you can define an alias:
+ALIAS 1 ff cast 'faerie fire'
+
+and then use it on mobs by typing:
+ff <target_name>.
+
+So typing 'ff stephen' will cause the mud to interpret
+cast faerie fire stephen.
+
+To show what aliases are set, type ALIAS with no arguements.
+To clear an alias, type 'ALIAS <number> clear'.
