@@ -1702,11 +1702,11 @@ const struct skill_type skill_table[MAX_SKILL] = {
 
    {
     MORTAL, NORM,
-    "mystic armour", {10, 82, 82, 82, 82},
+    "mystic armor", {10, 82, 82, 82, 82},
     spell_mystic_armor, TAR_CHAR_DEFENSIVE, POS_STANDING,
     NULL, SLOT( 590 ), 18, 24,
-    "" "Your Mystic Armour fades away",
-    "The Mystic Armour around someone in the room fades away."},
+    "" "Your Mystic Armor fades away",
+    "The Mystic Armor around someone in the room fades away."},
 
 
    {
@@ -2470,7 +2470,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
 
    {
     MORTAL, NORM,
-    "stake", {85, 45, 85, 60, 85},
+    "stake", {85, 85, 85, 85, 85},
     spell_null, TAR_IGNORE, POS_STANDING,
     &gsn_stake, SLOT( 0 ), 0, 24,
     "", NULL,
@@ -3148,7 +3148,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
 
    {
     MORTAL, NORM,
-    "decapitate", {85, 45, 85, 60, 85},
+    "decapitate", {85, 85, 85, 85, 85},
     spell_null, TAR_IGNORE, POS_FIGHTING,
     &gsn_decapitate, SLOT( 0 ), 0, 0,
     "", "!decapitate!",

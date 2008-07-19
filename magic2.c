@@ -2100,7 +2100,7 @@ bool spell_mystic_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
 
    if( ch == victim )
    {
-      send_to_char( "You are mystically armoured, but it suddenly fades away!\n\r", ch );
+      send_to_char( "You are mystically armored, but it suddenly fades away!\n\r", ch );
       return FALSE;
    }
 
@@ -2114,9 +2114,9 @@ bool spell_mystic_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    af.bitvector = 0;
    affect_to_char( victim, &af );
 
-   act( "$n is surrounded by $N's mystic armour.", victim, NULL, ch, TO_ROOM );
-   act( "$N is surrounded by your mystic armour.", ch, NULL, victim, TO_CHAR );
-   act( "You are surrounded by $N's mystic armour.", victim, NULL, ch, TO_CHAR );
+   act( "$n is surrounded by $N's mystic armor.", victim, NULL, ch, TO_ROOM );
+   act( "$N is surrounded by your mystic armor.", ch, NULL, victim, TO_CHAR );
+   act( "You are surrounded by $N's mystic armor.", victim, NULL, ch, TO_CHAR );
    return TRUE;
 }
 
@@ -2314,7 +2314,7 @@ bool spell_beacon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    xprintf( buf, "%s", ch->name );
    free_string( ob->owner );
    ob->owner = str_dup( buf );
-   ob->timer = number_range( 30, 45 );
+   ob->timer = 20 + (level / 3);
    obj_to_room( ob, ch->in_room );
    act( "$n magically produces $p!", ch, ob, NULL, TO_ROOM );
    act( "You magically produce $p!", ch, ob, NULL, TO_CHAR );

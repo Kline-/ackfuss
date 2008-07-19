@@ -369,7 +369,7 @@ bool spell_mystical_focus( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
 
 
    af.type = sn;
-   af.duration = get_psuedo_level( ch ) / 7;
+   af.duration = 1 + (get_psuedo_level( ch ) / 7);
    af.location = 0;
    af.modifier = 0;
    af.bitvector = 0;
