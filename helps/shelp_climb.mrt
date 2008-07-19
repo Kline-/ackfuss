@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Climb
+    Classes: Thief(25)
+   Duration: N/A
+   Modifies: N/A
+       Type: Passive
+Description: Without the aid of flying, a character can move in
+             an up or down direction.
+*******************************************************************************

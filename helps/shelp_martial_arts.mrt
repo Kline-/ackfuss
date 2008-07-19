@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Martial Arts
+    Classes: Thief(30), Warrior(20)
+   Duration: N/A
+   Modifies: N/A
+       Type: Passive
+Description: Unarmed attacks now cause more damage after
+             learning this skill.
+*******************************************************************************

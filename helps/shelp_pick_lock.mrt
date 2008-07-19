@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Pick Lock
+    Classes: Thief(25)
+   Duration: Instant
+   Modifies: N/A
+       Type: N/A
+Description: Certain locks and doors can be picked open without
+             needing a key after learning this underestimated ability.
+*******************************************************************************

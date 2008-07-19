@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Steal
+    Classes: Thief(1)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Offensive
+Description: This skill allows you to steal one object or gold from
+             another player or mob. However, there are drawbacks for
+             getting caught.
+*******************************************************************************

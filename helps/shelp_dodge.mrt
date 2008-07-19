@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Dodge
+    Classes: Thief(7), Warrior(16)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive - Self
+Description: After learning this skill it becomes harder for an
+             enemy to land certain attacks on you.
+*******************************************************************************

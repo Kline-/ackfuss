@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Trip
+    Classes: Thief(18), Warrior(25)
+   Duration: Instant
+   Modifies: N/A
+       Type: Offensive
+Description: This skill allows you to trip an opponent momentarily
+             giving them pause.
+*******************************************************************************

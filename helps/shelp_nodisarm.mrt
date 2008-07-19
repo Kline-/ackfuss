@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: No Disarm
+    Classes: Thief(40), Warrior(30)
+   Duration: N/A
+   Modifies: N/A
+       Type: Passive
+Description: It becomes more difficult to become disarmed from
+             your weapon after learning this skill.
+*******************************************************************************

@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Backstab
+    Classes: Thief(10)
+   Duration: Instant
+   Modifies: N/A
+       Type: Offensive
+Description: This skill allows for the ability to place a piercing or
+             stabbing weapon into the back of an opponent for a great
+             amount of damage.
+*******************************************************************************

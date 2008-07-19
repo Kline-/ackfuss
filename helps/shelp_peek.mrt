@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Peek
+    Classes: Thief(20)
+   Duration: N/A
+   Modifies: N/A
+       Type: Passive
+Description: This skill grants the ability to see a player's or mob's
+             inventory.
+*******************************************************************************

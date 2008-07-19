@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Sneak
+    Classes: Thief(5)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This skill allows you to move room to room with a
+             better chance of being unnoticed by other players or
+             mobs.
+*******************************************************************************

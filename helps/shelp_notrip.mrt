@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: No Trip
+    Classes: Thief(30), Warrior(40)
+   Duration: N/A
+   Modifies: N/A
+       Type: Passive
+Description: Being tripped won't happen quite so often after
+             learning this skill.
+*******************************************************************************

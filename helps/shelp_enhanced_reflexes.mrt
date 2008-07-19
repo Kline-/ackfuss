@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Enhanced Reflexes
+    Classes: Thief(10), Warrior(15)
+   Duration: N/A
+   Modifies: N/A
+       Type: Passive
+Description: This slightly increases your speed of attack with all weapons,
+             and unarmed.
+*******************************************************************************
