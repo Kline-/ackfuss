@@ -1,0 +1,9 @@
+BUILD HELP : FINDOBJECT
+-----------------------
+
+The FINDOBJECT command displays certain object vnums.
+Syntax:  FINDOBJECT <string>
+
+You will be shown a list of any objects that contain the string within their
+short description.  Typing 'ALL' for the string will list all the objects.
+This command will only show details of objects in your current area.

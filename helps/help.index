@@ -1,3 +1,18 @@
-HELP INDEX
+The help pages for ACK! MUD have been updated, rewritten and reformatted.
+The following topics now have sub-pages, and then sub-sub-pages!
 
-Default for no argument!
+These are the main sub-pages available:
+
+	MOVEMENT        GROUP           OBJECTS
+	INFORMATION     COMMUNICATION   COMBAT
+	OTHER
+
+And also, other help pages of interest:
+
+	DAMAGE          DEATH           EXPERIENCE 
+	NEWS            TICK            WIZLIST 
+	CHANGES         THANKS          BOARDS
+	MULTI           GAIN
+
+So, to view the list of GROUP related commands, type "HELP GROUP".
+   Or, to view the help page for Damage, type "HELP DAMAGE".

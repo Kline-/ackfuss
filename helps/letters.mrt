@@ -1,0 +1,29 @@
+LETTER LETTERS MAIL
+
+The main command is @@rNOTE@@N..all commands listed are preceded by it
+@@yTo Write:@@N
+to (name) - sets who note is going to
+subject   - lets you write a subject
+write     - place you in editor to begin writing note
+edit      - also places you in editor to write note
+post      - posts your note to the player you are writing to
+
+@@yTo Read:@@N
+list      - lists all letters your have recieved, both old and new
+read #    - readds the message number specified
+remove #  - giving the number of which note, removes it from the list
+
+@@GExamples!!!!@@N
+If you were writing a letter to @@eCyberlich@@N this is how you would do it:
+
+note to cyberlich
+note subject hi
+note write (or edit) -then write message, exit editor
+note post
+
+Cyberlich would then type
+note list
+note read # of message
+note remove # of message to delete it
+
+@@eALL note and mail commands must be done at a postmaster!!@@N

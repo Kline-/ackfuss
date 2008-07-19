@@ -1,0 +1,10 @@
+BUILD HELP : MEDIT
+------------------
+
+The MEDIT command places you in Mobile EDITing mode.
+Syntax:  MEDIT [mob-vnum]
+
+This will allow you to edit information concerning mobiles.  To set which mobile
+you wish to work on, either enter a mob-vnum after MEDIT, or use the SETVNUM
+command.  Anything you type will be checked to see if it applies to mobiles,
+and if so, the value, flag or string specified will be set.

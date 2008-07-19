@@ -1,0 +1,12 @@
+BUILD HELP : USING THE EDITOR
+-----------------------------
+
+Using the editor, it is possible to edit any strings you need.  The most 
+common of these will be room descriptions.
+
+To enter the editor, enter '$edit' as the string.  So, in Redit mode:
+'desc $edit'  will allow you to edit the room's description.
+
+To format the string, type '.f'
+To see what other options are available, type '.h'
+To finish editing a string, type '.'

@@ -1,0 +1,10 @@
+PRAY
+
+Syntax: pray     <message>
+
+Pray sends a message to *ALL* immortals on the game, even if they are wizinvis.
+
+Eg: PRAY i'm stuck in a no-exit, no recall room - help!
+
+WARNING: Un-necessary use of this channel will result in your ability to use
+         it being removed!

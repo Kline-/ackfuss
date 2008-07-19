@@ -1,0 +1,37 @@
+PROMPT
+
+Your prompt allows you to customize the way you view this world by allowing
+only certain features or by color (type help color). They are as follows:
+
+        %I :  Current Health (%)
+        %h :  Current Health
+        %H :  Max Health
+        %J :  Current Mana (%)
+        %m :  Current Mana
+        %M :  Max Mana
+        %K :  Current Move (%)
+        %v :  Current Move
+        %V :  Max Move
+        %x :  Experience
+        %g :  Money
+        %a :  Alignment
+        %r :  Room name
+        %s :  Stance
+        %c :  Newline
+        %t :  MUD time
+        %i :  Visibility
+        %w :  Follow with 2 letter class abbr, ie: Th for Thief shows EXP TNL
+        %! :  Hitroll
+        %+ :  Damroll
+        %* :  AC
+
+        Immortal Only:
+
+        %R :  Room vnum
+        %z :  Area name
+ 
+The command "prompt all" will set your prompt to the example below.
+To disable seeing a prompt, use config -prompt.
+ 
+Example: PROMPT @@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N
+Will set your prompt to "@@g<@@d[@@W100@@d] [@@e10@@RH @@l100@@BM @@r100@@GV@@d]@@g>@@N"

@@ -1,0 +1,16 @@
+BUILD HELP : SPELLS
+-------------------
+
+The SPELLS command displays information about spells.
+Syntax:  SPELLS [ ign | off | def | slf | obj | all ]
+
+Depending on the argument, the SPELLS command display information about spells.
+ign : Spells that ignore target (earthquake, mindflame, etc)
+off : Offensive spells (will start combat)
+def : Defensive spells (won't)
+slf : Defensive spells that can only affect the caster
+obj : Object related spells
+all : List all spells.
+
+This will show the name, and the SLOT NUMBER, which is used by magical items
+to determine what spells thay have.

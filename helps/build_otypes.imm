@@ -1,0 +1,27 @@
+OBJECT TYPES:
+
++===============+=======================================================+
+| Object Type	|			Description			|
++---------------+-------------------------------------------------------+
+| LIGHT		| Object provides light for the room it is held in.	|
+| SCROLL	| 3-spells, affects one target.				| 
+| WAND		| One spell, usually aggresive; one target.		|
+| STAFF		| One spell, affects each character in room.		|
+| WEAPON	| Can be wielded, and used in combat.			|
+| TREASURE	| Item is treasure, usually jewels, etc.		|
+| ARMOR		| Can be worn to protect the player.			|
+| POTION	| Can be quaffed to affect the user only. (no_save)	|
+| CLUTCH	| Reserved for special objects.  Ask before using!	|
+| FURNITURE	| Players may rest on these objects.			|
+| TRASH		| Object doesn't really do anything at all :)		|
+| CONTAINER	| Can be used to put items in.				|
+| DRINK_CON	| Drink Container.					|
+| KEY		| Opens a certain door. (no_save)			|
+| FOOD		| Object may be eaten.					|
+| MONEY		| Object is converted to GP when picked up.		|
+| BOAT		| Can be used to cross water.				|
+| CORPSE	| Object is a corpse...					|
+| FOUNTAIN	| Players may drink from this.				|
+| PILL		| Like a potion, but eaten.				|
+| BOARD		| Bulletin Board.  Ask before using, please!		|
++===============+=======================================================+

@@ -1,0 +1,9 @@
+BUILD HELP : ADDOBJECT
+----------------------
+
+The ADDOBJECT command allows you to create new objects within the current area.
+Syntax:  ADDOBJECT <object-vnum> <name>
+
+This will add a new object with the specified vnum, and with the specified
+name (which you can always change later).  The object will not be added if
+there is already an object with the vnum you supply.

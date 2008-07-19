@@ -1,0 +1,9 @@
+BUILD HELP : GOTO
+-----------------
+
+The GOTO command allows you to goto either a room or a mob.
+Sytntax:    [For Rooms]   GOTO <room-vnum>
+            [For  Mobs]   GOTO <mob-name>
+
+At Present, the builder's goto command simply calls the Immortal's goto.
+This will be changed shortly, to reduce the chance of abuse.

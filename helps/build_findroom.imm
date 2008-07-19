@@ -1,0 +1,9 @@
+BUILD HELP : FINDROOM
+----------------------
+
+The FINDROOM command allows to find certain rooms.
+Syntax:  FINDROOM <string>
+
+You will be shown a list of any rooms, which contain the string in their name.
+If you enter 'ALL' as the string, you will be shown a list of all the rooms
+in the area you are in.

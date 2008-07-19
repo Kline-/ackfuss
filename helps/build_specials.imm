@@ -1,0 +1,32 @@
+BUILD HELP : SPECIAL FUNCTIONS
+------------------------------
+
+Special Functions (spec_funs) can be attached to mobiles in order to increase
+the things they can do.
+
++=======================+===============================================+
+| Spec_Fun		|		Description			|
++-----------------------+-----------------------------------------------+
+| spec_breath_any	| Casts any fire breath.			|
+| spec_breath_acid	| Casts acid breath.				|
+| spec_breath_fire	| Casts fire breath.				|
+| spec_breath_frost	| Casts frost breath.				|
+| spec_breath_lightning	| Casts lightning breath.			|
+| spec_cast_adept	| Casts healing spells.				|
+| spec_cast_cleric	| Offensive spells.				|
+| spec_cast_judge	| Used to be for Judge Dread - Offensive.	|
+| spec_cast_mage	| Offensive spells.				|
+| spec_cast_undead	| Offensive spells.				|
+| spec_executioner	| For executioners only.			|
+| spec_fido		| Eats corpses left lying around.		|
+| spec_janitor		| Clears up objects on the floor.		|
+| spec_guard		| Attacks wanted players.			|
+| spec_mayor		| DON'T USE.					|
+| spec_posion		| Bites players, poisoning them.		|
+| spec_thief		| Steals gold from players.			|
+| spec_policeman	| Same as spec_guard.				|	
+| spec_cast_cadaver	| DON'T USE.					|
+| spec_undead		| Like spec_cast_undead; summons undead mobs.	|
+| spec_rewield		| Will wield best weapon available in room/inv.	|
+| spec_bigtime		| High level offensive spells.			|
++=======================+===============================================+

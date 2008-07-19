@@ -1,0 +1,7 @@
+BUILD HELP : EXTRA DESCRIPTIONS
+-------------------------------
+
+Extra descriptions consist of a keyword, and a string.  When the player
+'examines' the keyword, the string will be displayed.
+
+Extra Descriptions enable you to add more detail to your rooms and objects.

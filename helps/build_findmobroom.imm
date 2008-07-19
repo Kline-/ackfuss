@@ -1,0 +1,7 @@
+BUILD HELP : FINDMOBROOM
+------------------------
+
+The FINDMOBROOM command allows you to find which room a mob is loaded into.
+Syntax:  FINDMOBROOM <mob-vnum>
+
+You will be shown a list of any rooms that the mob referenced is loaded in.

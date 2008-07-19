@@ -1,0 +1,22 @@
+BUILD HELP : SHOPS
+------------------
+
+Shops are basically mobiles with a few extras.  To make a shop, simply create
+a mobile, and set the 'shopspec' part of the mobile.
+
+trade0 - trade4 are the item types that the monile will buy or sell.
+If you don't want 5 different item types bought/sold, leave some entries blank.
+
+profbuy is the profit the shopkeeper makes when you buy an item.  100 = 100% =
+no profit.  150 = 150% = a fifty percent increae in price.
+
+profsell is the loss you make when selling.  100 = 100% = no loss.  50 = 50% =
+you only get half the item's price from the shopkeeper.
+
+profbuy should be no smaller than 100
+profsell should be no larger than 100
+
+openhour is the time the shop is 'open'
+closehour is the time the shop is 'shut'
+
+For a 24-hr shop, set openhour to 0 and closehour to 23.

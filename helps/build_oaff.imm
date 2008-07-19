@@ -1,0 +1,7 @@
+OBJECT AFFECTED_BY FLAGS:
+
+None		Str		Dex		Int		Wis
+Con		Sex		Age		Height		Weight
+Mana		Hit		Move		Gold		Exp
+AC		HitRoll		DamRoll		Saving_Para	Saving_rod
+Saving_Petri	Saving_Breath	Saving_Spell

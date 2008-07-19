@@ -1,0 +1,11 @@
+*******************************************************************************
+       Name: Magic Missile		
+    Classes: Mage(3)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to unleash tiny, magically darts
+             of magical energy, which will strike the target.  For higher
+             level casters, the ability to produce more than one such missile
+             becomes possible.
+*******************************************************************************

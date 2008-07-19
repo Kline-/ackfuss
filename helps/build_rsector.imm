@@ -1,0 +1,15 @@
+SECTOR TYPES:
+
++===============+===============+	+===============+===============+
+| Sector Type	| Movement Loss	|	| Sector Type	| Movement Loss	|
++---------------+---------------+	+---------------+---------------+
+| INSIDE	|        1	|	| WATER_SWIM	|        4	|
+| CITY		|        2	|	| WATER_NOSWIM	|        1	|
+| FIELD		|        2	|	| UNUSED	|        6	|
+| FOREST	|        3	|	| AIR		|       10	|
+| HILLS		|        4	|	| DESERT	|        6	|
+| MOUNTAIN	|        6	|	+===============+===============+
++===============+===============+
+
+*WATER_NOSWIM Sectors require a boat, or a 'fly' spell.
+*AIR Sectors require the player to be affected by 'fly'.

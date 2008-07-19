@@ -1,0 +1,33 @@
+BUILD HELP : ADDRESET
+---------------------
+
+The ADDRESET command adds a new entry to the reset list.
+
+Syntax: ADDRESET  mob <mob-vnum> <limit>
+Load the mob with mob-vnum into the present room.  Don't load more than limit.
+EG: ADDRESET mob 1010 1
+
+Syntax:  ADDRESET obj <obj-vnum>
+Load the object with obj-vnum into the present room.
+EG: ADDRESET obj 1020
+
+Syntax:  ADDRESET equip <mob-vnum> <obj-vnum> <location>
+Make the mob with mob-vnum wear the object with obj-vnum in location.
+EG: ADDRESET equip 1010 1020 wield
+
+Syntax:  ADDRESET give <mob-vnum> <obj-vnum>
+Give the mob with mob-vnum the object with obj-vnum.
+EG:  ADDRESET give 1010 1021                  
+
+Syntax:  ADDRESET door <direction> <state>
+Set the flag specified by state to the door in a certain direction.
+EG:  ADDRESET door n closed
+
+Syntax:  ADDRESET rand <num-dirs>
+Randomise the first num-dirs exits in the room.
+Exits are number 0 (North), 1 (East), 2 (South), 3 (West), 4 (Up), and 5 (Down).  
+EG:  ADDRESET rand 3
+
+Syntax:  ADDRESET message <text>
+Adds an auto-message to the room, which is displayed periodically.
+EG:  ADDRESET message You hear the screams of the Ogre Kings.

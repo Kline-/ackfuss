@@ -1,0 +1,16 @@
+BUILD HELP : VALUES
+-------------------
+
+The VALUES command displays information about different object types.
+Syntax:  VALUES <object_type>
+
+Each object used has a TYPE: armor, weapon, fountain, staff, etc.  For each
+object, there are four values (value0 to value3) for each object, which
+determine how the object works or is used.  To find out what the four values
+mean for a given object type, use the values command.
+For example, typing 'VALUES container' will display:
+
+[0] Weight capacity
+[1] FLAGS: 1:closeable 2:pickproof 4:closed 8:locked
+[2] Key Vnum
+[3] Unused

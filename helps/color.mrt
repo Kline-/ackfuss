@@ -1,0 +1,9 @@
+COLOR
+
+The mud now supports "ansi" colour.  Use the config command to turn on
+or off this option.  The COLOR command allows you to set uo what colors
+you see different things in.  Please note:  The list of things you can
+configure WILL be expanding!
+
+To find out what colours are available, type 'COLOR HELP'.
+To learn how to use available colors, type 'COLIST'.

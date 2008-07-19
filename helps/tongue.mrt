@@ -1,0 +1,6 @@
+TONGUE
+
+TONGUE is equivalent to SAY, except that only players of your race will
+understand what you say.  Anyone else will see gibberish!  Note that the
+RACE command will tell to ALL members of your race (who are on the channel)
+even if they aren't in the same room as you.

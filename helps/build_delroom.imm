@@ -1,0 +1,9 @@
+BUILD HELP : DELROOM
+--------------------
+
+The DELROOM command allows you to delete a room.
+Syntax:  DELROOM <room-vnum>
+
+If the room-vnum is found in your current area, and no one is currently in it,
+the room will be flagged for deletion, and you will be asked to enter DELROOM OK
+to actually delete it.

@@ -1,0 +1,10 @@
+BUILD HELP : OEDIT
+------------------
+
+The OEDIT command places you in Object EDITing mode.
+Syntax:  OEDIT [object-vnum]
+
+This will allow you to edit onformation concerning objects.  To set which object
+you wish to work on, either enter an object-vnum after OEDIT, or use the SETVNUM
+command.  Anything you type will be checked to see if it applies to mobiles,
+and if so, the value, flag or string specified will be set.

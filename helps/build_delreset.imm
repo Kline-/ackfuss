@@ -1,0 +1,8 @@
+BUILD HELP : DELRESET
+---------------------
+
+The DELRESET command allows you to remove resets from a room.
+Syntax:  DELRESET <reset-number>
+
+This will delete reset-number from the reset list in the current room.
+To find out the number for each reset, type SHOWRESETS.

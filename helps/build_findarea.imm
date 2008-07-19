@@ -1,0 +1,7 @@
+BUILD HELP : FINDAREA
+---------------------
+
+The FINDAREA command allows you find certain areas.
+Syntax:  FINDAREA <string>
+
+You will be shown a list of all the area titles containing the string.

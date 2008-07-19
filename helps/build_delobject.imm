@@ -1,0 +1,9 @@
+BUILD HELP : DELOBJECT
+----------------------
+
+The DELOBJECT allows you to delete an object.
+Syntax:  DELOBJECT <obj-vnum>
+
+If an object is found with the specified vnum in the current area, it will be
+flagged for deletion, and you will be asked to enter DELOBJECT OK in order for
+it to be actually deleted.

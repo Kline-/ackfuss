@@ -1,0 +1,13 @@
+BUILD HELP : OBJECTS
+--------------------
+
+The following information is needed for each object:
+NAME	The name(s) that it is referenced by, from commands like give, etc.
+SHORT   The short description, used when getting or wielding, for example.
+LONG    The long description - seen when object is on the floor.
+EXTRA   Flags used to set special properties for the object.
+WEAR    Flags which determine where the object can be worn, if at all.
+AFF     Affects, such as HitRoll + 5, mana +50. etc.
+WEIGHT  The weight of the object - 1:light 5:heavy 10:Very Heavy!
+TYPE    The item type for the object, eg weapon, armor or fountain.
+ED      Extra description - see 'HELP extra'

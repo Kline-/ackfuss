@@ -1,0 +1,8 @@
+BUILD HELP : RESETS
+-------------------
+
+Each area typically consists of Rooms, Objects and Mobiles.  Rooms 'appear'
+almost automatically, but for your objects and mobiles to be loaded requires
+the use of RESETS.  Using the builder, you can add resets to rooms, to do such
+operations as loading mobiles, equiping mobiles with objects, randomising
+exits, etc.

@@ -1,0 +1,8 @@
+BUILD HELP : ADDMOB
+-------------------
+
+The ADDMOB command allows you to create new mobiles within the current area.
+Syntax:  ADDMOB <mob-vnum> <name>
+
+This will add a new mobile into the area, with the specified vnum and name(s).
+This will not happen if there is already a mobile with the vnum you supply.

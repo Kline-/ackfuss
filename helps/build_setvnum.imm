@@ -1,0 +1,8 @@
+BUILD HELP : SETVNUM
+--------------------
+
+The SETVNUM command allows you to select which vnum you are working on.
+Syntax SETVNUM <vnum>
+
+This will set the vnum of the room, object or mobile that you are currently
+working on.

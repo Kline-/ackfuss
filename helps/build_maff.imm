@@ -1,0 +1,9 @@
+MOB AFFECTED_BY FLAGS:
+
+Blind		Invisible	Detect_Evil	Detect_Invis
+Detect_Magic	Detect_Hidden	Sanctuary	Faerie_Fire
+Infrared	Curse		Poison		Protection
+Sneak		Hide		Sleep		Flying
+Pass_Door	Anti_Magic	Detect_Undead
+
+*Anti_Magic protects the Mobile from magical attacks.

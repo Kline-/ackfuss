@@ -1,0 +1,8 @@
+BUILD HELP : LIQUIDS
+--------------------
+
+The LIQUIDS command shows the liquid numbers.
+Syntax:  LIQUIDS
+
+This will display a numbered list of liquids.
+Liquids are used for drink containers and fountains.

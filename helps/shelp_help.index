@@ -1,0 +1,17 @@
+*******************************************************************************
+sHelp is a command that provides help pages for the various skills and spells
+offered to all the classes within the game.  Unlike the 'help' command, you
+can abbreviate the skill or spell you are looking for, eg: 'shelp arm' will
+display the help page for the armor spell.
+
+For spells, the following information is shown:
+       Name: The name of the spell
+    Classes: Which classes have access to this spell, and at what level 
+   Duration: The time (in ticks) that the spell lasts for                                  
+   Modifies: What (if any) modifies the spell offers
+       Type: What type of spell, eg: Offensive (starts fights) or defensive
+Description: A brief description of the spell
+
+For skills, the same information is shown as for spells, except for the
+'type' field.
+*******************************************************************************

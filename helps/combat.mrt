@@ -1,0 +1,8 @@
+			--COMBAT--
+
+The following commands are available:
+kill            flee            kick            rescue
+disarm          backstab        dirt            bash
+trip            assist
+
+For more detailed help, type "HELP <command>".

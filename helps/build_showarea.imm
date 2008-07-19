@@ -1,0 +1,5 @@
+BUILD HELP : SHOWAREA
+---------------------
+
+The SHOWAREA command displays various details about the area, Ranging from the
+owner, to the minimum and maximum vnums allowed.  

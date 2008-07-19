@@ -1,0 +1,11 @@
+BUILD HELP : WEAPONS
+--------------------
+
+The WEAPONS command displays the weapon numbers.
+Syntax:  WEAPONS
+
+For objects of type WEAPON, the last value (value3) determines which sort of
+weapon it is - hit, crush, slash, etc.  This command displays a numbered list
+of the weapon types.
+
+Note:  For backstabbing weapons, the weapon type must be 11 (pierce).

@@ -1,0 +1,40 @@
+@@g       Diku Mud was created by Hans Henrik St{rfeldt, Katja Nyboe,
+            Tom Madsen, Michael Seifert and Sebastian Hammer.
+             MERC Modifications made by: Furey, Hatchet, Kahn@@k
+)
+)                               @@RX*. 
+@@a                              @@p  |  @@a 
+@@a      .         .      @@d/\      @@a.@@p|@@a          .          .     @@RO  @@Wa 
+@@a                *    @@d.'  `.   @@p  |@@a.     .     *             @@ROOO@@W&&& 
+@@a               .    @@d/      \  @@p  +@@d________________        @@Wa@@ROOOOO@@W&&&&
+@@a      |            @@d`.@@l+-''-+@@d.' .' `.^^^^^^^^\^^^^^\.    @@W&&&&@@ROOO@@W&&&
+@@a     -*-   . .       @@l|u--.| @@d /     \@@l'''''''|'''''|   @@W&&&&&&&@@ROO@@W  @@d'
+@@a      |              @@l|   u|@@d.'       `.@@l" "  |" " "|    @@d'''''      
+@@a   :            .    @@l|.u-.@@d/ _..---.._ \@@l    |     |       @@a. @@R*.
+@@a  -*-            *   @@l|    @@d'-@@l|U U U U|@@d-'____L_____L_  @@a.     @@p|    @@a.
+@@a   :         .   .   @@l|.-u.| |..---..|@@d //// ////// /\       @@p+
+@@a         . *         @@l|u   | |       |@@d// /// // ///==\     / \
+@@a           :         @@l|.--u| |..---..|@@d//////'\////====\   /   \ 
+@@a     .               @@l| u  | |       |@@d''''/\  @@l|@@d''@@l|++++@@l| @@a.@@d`+'''+'  @@a.
+                     @@l|.--u| |..---..|u u|u | |u ||||||   |  U|
+                  @@d/''''/-\--@@l|       @@l|===|  |u|==|++++@@l|   |   |
+@@g         aaa      @@l|===| _ | |..---..|u u|u | |u ||@@bHH@@l||U'U'U'U'|
+@@g    aaa&&&&&&aa   @@l|===|||||_|       |===|_.|u|_.|+@@bHH@@l+|_/_/_/_/@@gaa
+@@gaa&&&&&&&&&&&&&&a @@l|''|''''\---/'-.._|--.---------.'''`.__ _.@@g&&&&&&a
+@@d  ''''''    '''    @@m\_\\ \  \/' //\  ','|  ___  | |`.   :||  @@d''''
+@@g    @@g                a@@m\`| `   _//  | / _| || |  | `.'  ,''|
+@@gaaa @@g  aaaa       a&&&&@@m\| \  //'   |  // \`| |  `.'  .' | |
+@@g&&&&&a&&&&&&a      ''''' @@m\\`//| | \ \//   \`  .-'  .' | '/
+@@g&&&&&&&&&&&&&&&a          @@m\// |.`  ` ' /'  :-'   .'|  '/ @@gaa
+@@d''''' ''''''@@g         a&&&@@m|   \\ |   // .'    .'| |  |@@g&&&&&&a
+@@d      ''@@g           a&&&&&&&@@m\   | `| ''.'     .' | ' /@@g&&&&&&&&&a
+@@k)
+)
+)              @@mAck!Mud @@W2.2, @@cModified @@gMerc2.2 @@cby: @@gStimpy, Thalen
+                    @@mAck!Mud @@W4.3 @@cby @@mZenithar@@c, with help from
+                @@gSpectrum, Altrag, Ramias, Universe, and others@@N
+                            @@cScreen: @@gMichlotixlan @@N
+                    @@mAck!Mud @@cHome Page@@W: @@ahttp://ackmud.nuc.net@@N
+@@k)
+)
+@@NWhat is your name?@@N

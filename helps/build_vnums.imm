@@ -1,0 +1,20 @@
+BUILD HELP : VNUMS
+------------------
+
+"VNUMS" stands for "Virtual Numbers".
+They are arbitary numbers used to identify either Rooms, Objects or Mobiles on the mud.
+
+Each object, room and mobile must have a unique vnum, for their type.  That is, you can't have two
+mobiles with the same vnum, but you could have a mobile and an object using the
+same vnum.  Think of each of the three "users" of vnums as being completely
+sperate:  Mobile vnums have to be unique, but only for mobs.  Object vnums must
+also be unique, but also only for objects.  Room vnums must be unique, but only
+for rooms.  
+
+Each area consists of: rooms, mobiles and objects, principally.  Each area has
+a vnum range associated with it.  So, for example, the range is vnums 100 to 199
+(Kiess area).  There are rooms with vnums 101 - 195, objects with vnums 
+101 - 143, and mobiles with vnums 101 - 135.  It is normal to use consecutive
+vnums starting at the lowest vnum, for all objects, rooms and mobiles in an area.
+
+Please try to conform to this usage of vnums!

@@ -1,0 +1,19 @@
+TRAIN
+
+Syntax: train <'str'|'int'|'wis'|'dex'|'con'>
+
+TRAIN increases one of your attributes.  When you start the game, your
+character has slightly random attributes.  The maximum value for each
+attribute depends on your race and class.
+
+It costs four practice to train an attribute, except that it costs
+only three practice to train your prime attribute.
+
+The best attributes to train first are WIS and CON.  WIS gives you more
+practices when you gain a level.  CON gives you more hit points.
+
+In the long run, your character will be most powerful if you train
+WIS and CON both to max before practising or training anything else.
+
+Train now reports the cost in practice points to increase an attribute.
+It is also possible to spend practices on hit points or mana points.

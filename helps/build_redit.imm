@@ -1,0 +1,10 @@
+BUILD HELP : REDIT
+------------------
+
+The REDIT command places you in Room EDITing mode.
+Syntax:  REDIT
+
+This will allow you to edit information concerning rooms.  The room you are
+working on is ALWAYS the room your character is currently in.
+Anything you type will be checked to see if it applies to rooms, and if so, 
+the value, flag or string will be set.

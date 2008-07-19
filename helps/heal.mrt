@@ -1,0 +1,9 @@
+HEAL
+
+HEAL reports which spells you are able to buy, along with the cost.  This can
+only be done if with a NPC which offers spells - usually healers.
+HEAL followed by a single character 'buys' that spell.
+
+Eg: HEAL H  buys a heal spell.
+
+All spells are only cast on the buyer.  No one else.

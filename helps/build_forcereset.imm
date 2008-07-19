@@ -1,0 +1,10 @@
+BUILD HELP : FORCERESET
+-----------------------
+
+The FORCERESET command allows you to execute all resets within the current area.
+Syntax:  FORCERESET
+
+This will read through each reset, and if applicable, will load objects or mobs,
+equip mobs, set door states, etc.  BE WARNED!  Any aggressive mobiles that are
+loaded are just that - aggressive!  In other words you'll be a valid target, 
+even if you are in building mode.

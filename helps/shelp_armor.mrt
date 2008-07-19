@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Armor		
+    Classes: Mage(3)
+   Duration: 24
+   Modifies: Armor Class
+       Type: Defensive
+Description: This spell creates a magical field of force, which protects as
+             if it were physical armor.  It does not hinder the player in
+             any way, and will last for it's duration, unless dispelled.
+*******************************************************************************

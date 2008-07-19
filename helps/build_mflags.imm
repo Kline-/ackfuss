@@ -1,0 +1,24 @@
+MOBILE (ACT) FLAGS:
+
++===============+=======================================================+
+| Act Flag	|			Description			|
++---------------+-------------------------------------------------------+
+| IS_NPC	| Auto-set for Mobiles.					|
+| SENTINEL	| The Mobile will stay in the room it is loaded into.	|
+| SCAVENGER	| Will pick up any objects lying on the floor.		|
+| REMEMBER	| Will attack the last player to try and kill it.	|
+| NO_FLEE	| Players are unable to flee from this Mobile.		|
+| AGGRESSIVE	| Attacks any players that it encounters.		|
+| STAY_AREA	| Will not leave the area it was loaded into.		|
+| WIMPY		| Wimps out of fights.					|
+| PET		| Is a Pet.  (Don't use!)				|
+| TRAIN		| Can train players.					|
+| PRACTICE	| Players can practice skills/spells at this Mobile	|
+| MERCENARY	| Will assassinate players for a price.			|
+| HEAL		| Mobile sells heals and other spells.			|
+| ADAPT		| Will adapt weapon levels for players.			|
+| UNDEAD	| Mob is undead; may be summoned by spec_undead.	|	
+| BANK		| Offers banking services to players.			|
+| NO_BODY	| Has no solid body; can't bs.			        |
+| HUNTER	| Hunts anyone who attacks it, or it attacks.		|
++===============+=======================================================+

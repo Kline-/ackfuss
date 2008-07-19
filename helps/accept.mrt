@@ -1,0 +1,11 @@
+ACCEPT BANISH MAKE
+
+@@yACCEPT@@g allows the clan leader to accept a new member into his/her clan.
+Syntax:  accept <target>
+
+@@yBANISH@@g allows the clan leader to banish a member from his/her clan.
+Syntax:  banish <target>
+
+@@yMAKE@@g allows the clan leader to create one of the pre-made clan equ for
+a member of their clan.
+Syntax:  make <clan_eq_#> <target>

@@ -79,6 +79,7 @@ bool str_infix args( ( const char *astr, const char *bstr ) );
 bool str_suffix args( ( const char *astr, const char *bstr ) );
 char *capitalize args( ( const char *str ) );
 void smash_tilde args( ( char *str ) );
+void smash_space args( ( char *str ) );
 char *strip_out args( ( const char *orig, const char *strip ) );
 char *strip_color args( ( const char *orig, const char *strip ) );
 int nocol_strlen( const char *text );

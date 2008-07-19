@@ -1,0 +1,5 @@
+BUILD HELP : SHOWMOB
+--------------------
+
+SHOWMOB displays various details about a given mob.
+Sytntax:  SHOWMOB <mob-vnum>

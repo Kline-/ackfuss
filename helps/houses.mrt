@@ -1,0 +1,51 @@
+HOUSE HOUSES
+
+Basic House (includes recall, 3 rooms, all indoors): 100 QP
+Spouse Recall Set to House: 75 QP
+
+***Areas***
+Slums: No extra Cost (Default)
+Rich Section: 20 QP Extra
+Non-racial City (Tarot City, Tirna O'goth, etc): 10 QP Extra
+
+***Doors***
+Locked: 85 QP
+Pick-proof: 85
+Smash-proof 85 QP
+Pass-proof: 85 QP
+Nodetect: 100 QP
+
+***Additional Rooms***
+First (total 4): 10 QP
+Second (total 5): 20 QP
+Third (total 6): 30 QP
+Fourth (total 7): 40 QP
+Fifth (total 8): 50 QP
+Sixth (total 9): 60 QP
+Seventh (total 10): 70 QP
+NOTE:NO house will be built with more than 10 rooms!
+
+***Room Flags***
+Cold: 55 QP
+Dark: 55 QP
+Hot: 55 QP
+No_magic: 60 QP
+No_mob: 70 QP
+No_recall: 55 QP
+No_teleport: 60 QP
+Pk: 70 QP
+Private: 60 QP
+Quiet: 55 QP
+Regen: 100 QP
+Safe: 80 QP
+Solitary: 50 QP
+
+Prices for room flags are PER room.
+
+All rooms are defaulted indoors, but rooms can be outdoors if
+requested.
+
+Please contact an immortal if you have questions, or wish to
+purchase a home.
+
+CHANGE: Locks cost 15, not 85 QP

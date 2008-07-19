@@ -1,0 +1,21 @@
+ROOM FLAGS:   ( * = To be added! )
+
++===============+============================================================+
+| Flag Name	|			Description			     |
++---------------+------------------------------------------------------------+
+| DARK		| The Room is dark - a light source is needed to see.	     |
+| REGEN		| Players will regenerate HPs, mana and movement faster.     |
+| NO_MOB	| No mobiles may enter the room.			     |
+| INDOORS	| The room is indoors; players see no weather messages.	     |
+| *NO_MAGIC	| Players may not cast spells here.			     |
+| HOT		| Players lose HPs due to the heat.			     |
+| COLD		| Players lose Hps due to the cold.			     |
+| *PK		| Players may Pkill here without being flagged.		     |
+| *QUIET	| Players may not talk in this room.			     |
+| PRIVATE	| The room holds only two players maximum.		     |
+| SAFE		| Players are safe from attack here.			     |
+| SOLITARY	| Only one player is allowed into the room at a time.	     |
+| PET_SHOP	| Room is a Pet_shop.  Please don't use this flag!	     |
+| NO_RECALL	| Players may not recall or use the home command here.	     |
+| NO_TELEPORT   | Players using teleport cannot appear in this room.	     |
++===============+============================================================+

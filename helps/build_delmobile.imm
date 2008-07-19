@@ -1,0 +1,8 @@
+BUILD HELP : DELMOBILE
+----------------------
+
+The DELMOBILE command allows you to delete a mobile from an area.
+Syntax:  DELMOBILE <mob-vnum>
+
+This will flag the mob with the specified mob-vnum to be deleted.  You will
+need to enter DELMOBILE OK in order for it to be actually deleted.

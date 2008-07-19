@@ -1,0 +1,11 @@
+BUILD HELP : DOORS
+------------------
+
+Uh-oh.  I don't know exactly _how_ doors are handled by the builder.  I'm
+still working this one out myself.  As far as i know, this method seems to
+work:
+
+set the door as type door, and as closed, locked or pickproof, as needed.
+Add a reset to close/lock the door.
+
+Make sure you set both sides of the door.

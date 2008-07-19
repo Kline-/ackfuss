@@ -1,0 +1,17 @@
+BANK
+
+The BANK command allows you to carry out financial transactions with the bank 
+of your choice.  All banks in the game respect a player's balance, meaning
+you can use any bank you find.  
+
+Usage: BANK [ balance | deposit | withdraw ]
+BANK                 with no argument displays usage information.
+BANK BALANCE         reports your current bank balance.
+BANK DEPOSIT  <gold> deposits a specified amount of gold into your account.
+BANK WITHDRAW <gold> withdraws a specified amount of gold.
+
+Needless to say, you must have the specified amount of gold in your account or
+inventory before you can deposit or withdraw it.
+The banking system has been introduced as a measure to work alongside the new
+limit on the amount of gold that a player can carry.  Eg:  How many people can
+explore and fight, whilst carrying thousands of gold coins?

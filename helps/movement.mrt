@@ -1,0 +1,7 @@
+			--MOVEMENT--
+
+The following commands are available:
+north           east            south           west
+up              down            exits           recall (or /)
+
+For more detailed help, type "HELP <command>".

@@ -1,0 +1,10 @@
+BUILD HELP : DIG
+----------------
+
+The DIG command allows you to add a room to an area.
+Syntax:  DIG <direction> <room-vnum>
+
+This will add an exit in the direction given,  to the room you are currently in,
+connected to a new room, which will have the vnum specified.  There are two
+obvious limitations:  There can't already be a door in the direction you give,
+or a room that already has the vnum you give.

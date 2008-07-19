@@ -1,0 +1,5 @@
+BUILD HELP : SHOWRESETS
+-----------------------
+
+The SHOWRESETS command displays any resets for the room you are currently in.
+Syntax:  SHOWRESETS

@@ -1,0 +1,16 @@
+BUILD HELP : LIST | X
+---------------------
+
+The LIST command has two purposes.  Firstly, it shows you details about the
+Room, Mobile or Object you are currently working on.  Secondly, it allows
+you find out which flags you can set for objects.
+Syntax:  LIST [flags-name]
+
+If you type just LIST on its own, you will be shown details of your current
+room, mobile or object.  If you want to see a list of flags (in wide format,
+rather than the long format used when you screw up) type LIST HELP.
+
+The lists of flags you can display vary according to which editing mode you are
+in.  This is basically because there is a list of FLAGS for each mode, etc...
+
+X may be used in place of LIST.

@@ -1,0 +1,9 @@
+BUILD HELP : SET
+----------------
+
+Set allows you to set some value, string or flag, depending upon which editing
+mode you are currently in.  It is not really needed any more, as you can drop
+the 'SET' part of the command now.  Eg: SET level 100 (when editing mobs) could
+be entered as 'level 100' instead.
+
+Typing 'SET' on it's own displays the values, flags or strings you can set.

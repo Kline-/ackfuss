@@ -1797,14 +1797,30 @@ void do_weather( CHAR_DATA * ch, char *argument )
 void do_help( CHAR_DATA * ch, char *argument )
 {
  FILE *fp;
+ char tmp[7];
  char buf[MAX_STRING_LENGTH];
  bool found = FALSE;
+ bool shelp = FALSE;
+ sh_int i;
 
+ tmp[0] = '\0';
  buf[0] = '\0';
- argument = strlower(argument);
+ strlower(argument);
+ smash_space(argument);
+
+ /* This is my ghetto fix to get around the limitations of str_infix et al --Kline */
+ for( i = 0; i < 6; i++ )
+  tmp[i] = argument[i];
+
+ if( !str_cmp(tmp,"shelp_") )
+  shelp = TRUE;
 
  if( argument[0] == '\0' )
   xprintf(buf,"%shelp.index",HELP_DIR);
+ else if( !str_cmp(argument,"build_help.index") ) /* special case for the builder */
+  xprintf(buf,"%s%s",HELP_DIR,argument);
+ else if( !str_cmp(argument,"shelp_help.index") ) /* special case for shelp */
+  xprintf(buf,"%s%s",HELP_DIR,argument);
  else
   xprintf(buf,"%s%s.%s",HELP_DIR,argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
 
@@ -1818,7 +1834,6 @@ void do_help( CHAR_DATA * ch, char *argument )
 
  /* Search for a plural */
  xprintf(buf,"%s%ss.%s",HELP_DIR,argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
-
  if( (fp = fopen(buf,"r")) != NULL )
  {
   found = TRUE;
@@ -1828,7 +1843,10 @@ void do_help( CHAR_DATA * ch, char *argument )
  }
  else if( !IS_IMMORTAL(ch) )
  {
-  send_to_char("No help on that word.\n\r",ch);
+  if( !shelp )
+   send_to_char("No help on that word.\n\r",ch);
+  else
+   send_to_char("No sHelp for that skill/spell.\n\r",ch);
   return;
  }
 
@@ -1839,6 +1857,7 @@ void do_help( CHAR_DATA * ch, char *argument )
   {
    if( found )
     send_to_char("\n\r",ch);
+   found = TRUE;
    while( fgets(buf,MAX_STRING_LENGTH,fp) )
     send_to_char(buf,ch);
    fclose(fp);
@@ -1849,12 +1868,19 @@ void do_help( CHAR_DATA * ch, char *argument )
   {
    if( found )
     send_to_char("\n\r",ch);
+   found = TRUE;
    while( fgets(buf,MAX_STRING_LENGTH,fp) )
     send_to_char(buf,ch);
    fclose(fp);
   }
-  else if( !found )
-   send_to_char("No help on that word.\n\r",ch);
+  if( !found )
+  {
+   if( !shelp )
+    send_to_char("No help on that word.\n\r",ch);
+   else
+    send_to_char("No sHelp for that skill/spell.\n\r",ch);
+   return;
+  }
  }
 
  return;
@@ -6261,36 +6287,29 @@ void do_whois( CHAR_DATA * ch, char *argument )
 
 void do_shelp( CHAR_DATA * ch, char *argument )
 {
-   /*
-    * Like help, except for spells and skills. 
-    */
-   int sn;
-   char buf[MAX_STRING_LENGTH];
-   bool found = FALSE;
-   buf[0] = '\0';
+ /*
+  * Like help, except for spells and skills. 
+  */
+ int sn;
+ char buf[MAX_STRING_LENGTH];
+ buf[0] = '\0';
 
-   if( argument[0] == '\0' )
-   {
-      do_help( ch, "shelp_summary" );
-      return;
-   }
+ if( argument[0] == '\0' )
+ {
+  do_help( ch, "shelp_help.index" );
+  return;
+ }
 
-   if( ( sn = skill_lookup( argument ) ) < 0 )
-   {
-      xprintf( buf, "No sHelp found for argument:%s\n\r", argument );
-      send_to_char( buf, ch );
-      return;
-   }
-   xprintf( buf, "shelp_%s", skill_table[sn].name );
+ if( ( sn = skill_lookup( argument ) ) < 0 )
+ {
+  xprintf( buf, "No sHelp found for argument:%s\n\r", argument );
+  send_to_char( buf, ch );
+  return;
+ }
+ xprintf( buf, "shelp_%s", skill_table[sn].name );
+ do_help(ch,buf);
 
-   /*
-    * Search help texts for 'shelp_<name>' as keyword.... 
-    */
-
-   if( !found )
-      send_to_char( "Couldn't find a sHelp for that skill/spell.\n\r", ch );
-
-   return;
+ return;
 }
 
 void do_afk( CHAR_DATA * ch, char *argument )

@@ -1,0 +1,10 @@
+BUILD HELP : FINDMOB
+--------------------
+
+The FINDMOB command allows you to find the vnum of a given mobile.
+Syntax:  FINDMOB <mob-name | ALL >
+
+If a mob-name is supllied, the vnums of any mobiles whose names match that
+given will be displayed.  If ALL is entered, then all the mobiles will
+be displayed.  This command only shows the vnums for mobiles in the same
+area as you.

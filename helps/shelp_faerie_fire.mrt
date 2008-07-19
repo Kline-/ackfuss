@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Faerie Fire		
+    Classes: Mage(3)
+   Duration: 5 + (Cast Level / 4)
+   Modifies: Armor Class
+       Type: Defensive
+Description: This spell engulfs the victim's body, making it easy for those
+             figting the victim to see him/her, effectively raising the
+             victim's Armor Class.
+*******************************************************************************

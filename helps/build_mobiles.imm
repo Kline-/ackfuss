@@ -1,0 +1,18 @@
+BUILD HELP : MOBILES
+--------------------
+
+The following information is need for each mobile:
+NAME	Keywords for the Mobile.
+SHORT	The short description of the mobile.
+LONG    The long description, used on 'LOOK'.
+DESC	The Mobile's description.
+SPEC	Any SPECial functions the Mobile uses.
+SEX	The Mobile's gender.
+LEVEL	The Mobile's level.
+ALIGN	The Mobile's alignment.
+AFF	Flags determining what spells, etc the Mobile is affected by.
+ACT	Flags determining how the Mobile acts, eg: Scavenger, Hunter, etc.
+HR_MOD	HitRoll Modifier.
+DR_MOD	DamRoll Modifier.
+AC_MOD	ArmorClass Modifier.
+SHOP	Shop information.  See 'HELP shops'.

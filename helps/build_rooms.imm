@@ -1,0 +1,10 @@
+BUILD HELP : ROOMS
+------------------
+
+The following information is needed for each room:
+NAME	The name of the room, eg "The Temple of Midgaard"
+DESC    The description
+FLAGS	Flags which determine the room's attributes, eg no_recall, dark, etc.
+SECTOR	The kind of terrain, eg city, field, hills, etc.
+DOOR	Information about exits, etc.  See 'HELP doors'.
+EXTRA	Extra descriptions - see 'HELP extra'

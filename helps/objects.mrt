@@ -1,0 +1,13 @@
+			--OBJECTS--
+
+The following commands are available:
+get             put             drop            give
+sacrifice       wear            wield           hold
+donate          recite          quaff           zap
+brandish        lock            unlock          open
+close           pick            inventory       equipment
+look            compare         eat             drink
+fill            list            buy             sell
+value           adapt
+
+For more detailed help, type "HELP <command>".

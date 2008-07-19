@@ -1,0 +1,9 @@
+BUILD HELP : STRINGS
+--------------------
+
+STRINGS are collections of characters: i.e. words or sentences.
+The most visible parts of an area are the descriptions on mobiles, objects, 
+and especially rooms.  Please try and bear some thought to how these will
+look, especially for mobiles and objects that may end up out of their intended
+positions.  Room descriptions should be neutral, and not too short, where
+possible.

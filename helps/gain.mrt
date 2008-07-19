@@ -1,0 +1,9 @@
+GAIN
+
+GAIN increases one of your levels.  Level gain is no longer automatic, due
+to the 'semi' multiclass system.  Typing GAIN with no argument will report
+which levels you are able to gain in, and the cost to do so (in xp).
+Typing GAIN with the 3-letter abreviation for a class will advance your level
+in the given class, if you can level in it, and if you have enough xp.
+
+Eg: GAIN thi    will advance your thief level, if you are able to level thief.

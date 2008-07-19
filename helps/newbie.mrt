@@ -1,22 +1,25 @@
-AUCTION GOSSIP . NEWBIE QUESTION ANSWER SHOUT YELL FLAME ZZZ MUSIC
+NEWBIE
 
-Syntax: auction  <message>      Syntax: gossip   <message>
-Syntax: newbie   <message>      Syntax: question <message>
-Syntax: answer   <message>      Syntax: shout    <message>
-Syntax: yell     <message>      Syntax: zzz      <message>
-Syntax: flame    <message>      Syntax: race     <message>
-Syntax: clan     <message>      syntax: music    <message>
+As a new player to Shades of Evil, there are several things that you will
+need to know.  First off, it's important to understand that this is a
+multiclass mud...you are, right now, a member of 5 classes.  When it comes
+time to level your character, you can find the guildmasters in the players
+area, west of the temple/recall.  Type help GAIN to find out about
+leveling your character.
 
-These commands send messages through communication channels to other players.
-SHOUT sends a message to all awake players in the world.  To curb excessive
-shouting, SHOUT imposes a three-second delay on the shouter.
-MUSIC, AUCTION, GOSSIP, NEWBIE, and QUESTION and ANSWER also send messages
-to all interested players.  '.' is a synonym for GOSSIP.  The QUESTION and
-ANSWER commands both use the same 'question' channel
-FLAME is similar to auction, gossip, etc, but is intended for moaning about
-life, players, etc.  ZZZ may only be used when sleeping.
-YELL sends a message to all awake players within your area.
-RACE sends a message to members of your own race.  CLAN sends a message to
-those in your clan.
+Here are some important helps that you need to read:
+        HELP COLOR
+        COLOR HELP
+        HELP DEATH
+        HELP TRAIN
+        WORTH
 
-You can use the CHANNELS command to hear, or not hear, any of these channels.
+Here's a couple more things about Shades of Evil that are handy to know:
+        Recalls are free, just type "recall"
+        There is no rent here, just "save" and "quit"
+        There are NO DEATHTRAPS on SoE...we hate them.
+        There ARE item level limits...it's the only way we have right now
+          to control item flow among characters.
+        Your colors are completely configurable, read COLOR HELP.
+        -and, last by not least-
+        The Immortals are here to help you!  Ask them questions! (Politely!)
