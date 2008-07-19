@@ -4444,7 +4444,7 @@ void build_help( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   do_help( ch, "build_summary" );
+   do_help( ch, "build_help.index" );
    return;
 }
 

@@ -718,21 +718,16 @@ void new_descriptor( int control )
       char buf[MAX_STRING_LENGTH];
       FILE *fp;
 
-      xprintf( buf, "greeting%d.%s", 0, HELP_MORT /* number_range( 0, 4 ) */  );
+      xprintf( buf, "%sgreeting%d.%s", HELP_DIR, number_range(0,4), HELP_MORT );
 
       if( (fp = fopen(buf,"r")) != NULL )
-       while( !feof(fp) )
-        fgets(buf,MAX_STRING_LENGTH,fp);
+       while( fgets(buf,MAX_STRING_LENGTH,fp) )
+        write_to_buffer(dnew,buf,0);
       else
        xprintf(buf,"Please enter your name:");
 
       if( fp != NULL )
        fclose(fp);
-
-      if( buf[0] == '.' )
-       write_to_buffer(dnew,buf+1,0);
-      else
-       write_to_buffer(dnew,buf,0);
    }
 
    cur_players++;

@@ -1433,6 +1433,7 @@ float number_speed     args( ( void ) );
 int   bv_log           args( ( int n ) );
 void  check_chistory   args( ( CHAR_DATA *ch, int channel ) );
 void  update_chistory  args( ( CHAR_DATA *ch, char *argument, int channel ) );
+int   count_helps      args( ( void ) );
 
 /* void *  alloc_mem       args( ( int sMem ) );
 void    check_freed     args( ( unsigned int first, unsigned int last) );

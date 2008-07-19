@@ -3542,6 +3542,8 @@ void do_memory( CHAR_DATA * ch, char *argument )
       }
    }
 
+   
+
    xprintf( buf, "Affects %5d\n\r", top_affect );
    send_to_char( buf, ch );
    xprintf( buf, "Areas   %5d\n\r", top_area );
@@ -3550,7 +3552,8 @@ void do_memory( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
    xprintf( buf, "Exits   %5d\n\r", top_exit );
    send_to_char( buf, ch );
-   //add helps
+   xprintf( buf, "Helps   %5d\n\r", count_helps() );
+   send_to_char( buf, ch );
    xprintf( buf, "Mobs    %5d\n\r", top_mob_index );
    send_to_char( buf, ch );
    xprintf( buf, "Objs    %5d\n\r", top_obj_index );
@@ -3603,7 +3606,8 @@ void do_status( CHAR_DATA * ch, char *argument )
    send_to_char( "NB. Areas count will include areas used as help files.\n\r\n\r", ch );
    xprintf( buf, "Areas   %5d\n\r", top_area );
    send_to_char( buf, ch );
-   //add helps
+   xprintf( buf, "Helps   %5d\n\r", count_helps() );
+   send_to_char( buf, ch );
    xprintf( buf, "Mobs    %5d\n\r", top_mob_index );
    send_to_char( buf, ch );
    xprintf( buf, "Objs    %5d\n\r", top_obj_index );
@@ -4374,3 +4378,16 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
  return;
 }
 
+int count_helps( void )
+{
+ FILE *fp;
+ char buf[MAX_STRING_LENGTH];
+
+ xprintf(buf,"ls %s -1 | wc -l",HELP_DIR);
+ if( (fp = popen(buf,"r")) == NULL )
+  return 0;
+ else
+  fgets(buf,MAX_STRING_LENGTH,fp);
+
+ return atoi(buf);
+}

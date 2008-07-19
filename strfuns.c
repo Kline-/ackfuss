@@ -157,7 +157,19 @@ void smash_tilde( char *str )
    return;
 }
 
-
+/*
+ * Removes spaces from a string.
+ * Replaces them with underscores for easier use.
+ */
+void smash_space( char *str )
+{
+ for( ; *str != '\0'; str++ )
+ {
+  if( *str == ' ' )
+   *str = '_';
+ }
+ return;
+}
 
 /*
  * Compare strings, case insensitive.
