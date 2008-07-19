@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Detect Evil		
+    Classes: Mage(12), Cleric(8)
+   Duration: 5 + ( Cast Level / 10 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to recognize evil beings, who will
+             appear to be surrounded by a red aura.
+*******************************************************************************

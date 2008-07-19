@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Influx		
+    Classes: Cleric(65)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: With this spell, the caster floods the room with positive
+             energy, partially restoring the Hit Points of all beings
+             present in the same location.
+*******************************************************************************

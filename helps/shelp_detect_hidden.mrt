@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Detect Hidden		
+    Classes: Mage(17), Cleric(16)
+   Duration: 4 + ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to be aware of any hiding beings in
+             the current location.  This spell does not reveal who is hiding,
+             however, just the fact that someone is.
+*******************************************************************************

@@ -1,0 +1,12 @@
+*******************************************************************************
+       Name: Charm Person 		
+    Classes: Mage(49), Cleric(60)
+   Duration: 3 + ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Offensive
+Description: This spells allows the caster to attempt to charm the victim. 
+             if the spell succeeds, the victim will treat the caster as a
+             trusted friend, and obey any reasonable order they are given.
+	     Remember that it is normal to hold the master responsible for
+             any orders the victims carry out.
+*******************************************************************************

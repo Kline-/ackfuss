@@ -1,0 +1,12 @@
+*******************************************************************************
+       Name: Beacon
+    Classes: Mage(70), Psionicist(70)
+   Duration: 20 + ( Cast Level / 3 )
+   Modifies: N/A
+       Type: N/A
+Description: A beacon allows you to create a magical beacon which you name
+             allowing you to eventually (when you get the portal spell)
+             create a portal or gateway to the room in which you left the
+             beacon. IE: c beacon bread will create a magical beacon named
+             bread.
+*******************************************************************************

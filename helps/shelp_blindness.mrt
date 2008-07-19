@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Blindness		
+    Classes: Mage(16)
+   Duration: 1 + ( Cast Level / 4 )
+   Modifies: HitRoll
+       Type: Offensive
+Description: This spell causes blindness in the recipient, affecting their
+             ability to strike their foes.
+*******************************************************************************

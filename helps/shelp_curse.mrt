@@ -1,0 +1,11 @@
+*******************************************************************************
+       Name: Curse		
+    Classes: Mage(35), Cleric(26)
+   Duration: 2 * ( Cast Level / 8 )
+   Modifies: HitRoll, Saving Roll
+       Type: Offensive
+Description: This spell casts a curse upon the victim, reducing their chances
+             of the victim striking thier enemies, whilst making it easy for
+             them to be attacked.  Cursed players may not recall to their
+             temple.
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Cure Poison		
+    Classes: Cleric(32)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to remove any traces of poison
+             from the victim's body.
+*******************************************************************************

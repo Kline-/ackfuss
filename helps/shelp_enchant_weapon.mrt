@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Enchant Weapon		
+    Classes: Mage(39)
+   Duration: Permanent
+   Modifies: Object HitRoll, Object DamRoll
+       Type: N/A
+Description: This spell allows the caster to convert a normal, non-magic
+             weapon to a magically enchanted one, resulting in bonuses to
+             the wielder's attack rolls.
+*******************************************************************************

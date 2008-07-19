@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Earthquake		
+    Classes: Cleric(78)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell summons a mini-earthquake to strike the caster's
+             location, causing damage to all those affected.
+*******************************************************************************

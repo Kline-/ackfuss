@@ -1,0 +1,13 @@
+*******************************************************************************
+       Name: Chain Lightning		
+    Classes: Mage(65)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to produce a powerful bolt of
+             energy from his/her fingertip.  The bolt will proceed to fly
+             through the current location, striking all present randomly.
+             The bolt will then either vanish, or return to strike the
+             caster!  Each time a victim is struck, the bolt's energy is
+             reduced, as is it's ability to damage.
+*******************************************************************************

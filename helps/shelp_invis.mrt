@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Invisibility		
+    Classes: Mage(17)
+   Duration: 4 + ( Cast Level / 5 )
+   Modifies: N/A
+       Type: Defensive
+Description: This spell causes the target to become invisible to other beings,
+             but can still be detected by the use of a detect magic spell. 
+*******************************************************************************

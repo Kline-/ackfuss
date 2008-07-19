@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Window
+    Classes: Mage(70), Psionicist(70)
+   Duration: 1 + ( Cast Level / 30 )
+   Modifies: N/A
+       Type: N/A
+Description: Window allows you to open a window to one of
+             your beacons, allowing you to see what is in that
+             particular room.
+*******************************************************************************

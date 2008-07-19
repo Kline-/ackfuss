@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Mystical Focus
+    Classes: Mage(55)
+   Duration: 1 + ( Cast Level / 7 )
+   Modifies: Spell Damage
+       Type: Defensive - Self
+Description: Mystical focus increases spell damage at the expense of mana.
+             Spells cast with mystical focus active cost 2.5x more mana than
+             normal.
+*******************************************************************************

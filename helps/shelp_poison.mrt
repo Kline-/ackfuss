@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Posion		
+    Classes: Cleric(31)
+   Duration: 12 + ( Cast Level / 10 )
+   Modifies: Strength
+       Type: Offensive
+Description: This spell enables the caster to poison the victim, resulting
+             in a drop in the victim's Strength score.
+*******************************************************************************

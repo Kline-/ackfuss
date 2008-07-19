@@ -1,0 +1,11 @@
+*******************************************************************************
+       Name: Sleep		
+    Classes: Mage(9)
+   Duration: 4 + ( Cast Level / 15 )
+   Modifies: N/A
+       Type: Offensive
+Description: If successfully cast, this spell allows the caster to force
+             the victim into a deep, trance-like sleep.  The victim may not
+             be woken by normal means, save for combat, or the spell running
+             it's duration.
+*******************************************************************************

@@ -1,0 +1,11 @@
+*******************************************************************************
+       Name: Locate Object		
+    Classes: Mage(16), Cleric(30)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: This spell is used by the caster to find the position of the
+             specified object.  General terms such as 'sword' may be given,
+             but this will result in an almost overwhelming burst of 
+             information being provided to the caster!
+*******************************************************************************

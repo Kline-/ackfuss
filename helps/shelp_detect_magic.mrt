@@ -1,0 +1,8 @@
+*******************************************************************************
+       Name: Detect Magic		
+    Classes: Mage(7), Cleric(7)
+   Duration: 6 + ( Cast Level / 4 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spells allows the caster to detect magical affects.
+*******************************************************************************

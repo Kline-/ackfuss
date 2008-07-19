@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Bark Skin 		
+    Classes: Cleric(20)
+   Duration: 3 + ( Cast Level / 12 )
+   Modifies: Armor Class
+       Type: Defensive - Self
+Description: This spell causes the caster's skin to harden, until it looks
+             like wood, providing an Armor Class bonus.
+*******************************************************************************

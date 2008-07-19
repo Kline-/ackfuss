@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Protection from Evil		
+    Classes: Mage(9), Cleric(12)
+   Duration: 8 + ( Cast Level / 5 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell surrounds the caster with an invisible shield of
+             energy of energy, helping to protect against any evil beings
+             the caster might encounter.
+*******************************************************************************

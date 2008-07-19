@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Chill Touch		
+    Classes: Mage(8)
+   Duration: 3
+   Modifies: Strength
+       Type: Offensive
+Description: This spells causes a blue glow to encompass the caster's hand.
+             This energy can then be used to strike at a given foe, who will
+             be reduced in strength, as well as suffering damage.
+*******************************************************************************

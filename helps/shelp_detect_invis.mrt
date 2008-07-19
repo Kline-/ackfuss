@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Detect Invisibility		
+    Classes: Mage(19)
+   Duration: 6 + ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to see any invisible beings, 
+             providing they are of similar level to the caster, or lower.
+*******************************************************************************

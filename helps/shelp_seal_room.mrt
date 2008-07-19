@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Seal Room
+    Classes: Mage(70), Cleric(50), Psionicist(50)
+   Duration: 2 + ( Cast Level / 20 )
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to completely seal off
+             all exits available in a certain place. A web of energy will
+             bar all travel going in and out of that given place.
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Mystical Potency
+    Classes: Mage(40)
+   Duration: N/A
+   Modifies: Spell Damage
+       Type: Passive
+Description: Mystical potency passively increases spell damage. The higher
+             your intellect, the greater the effect.
+*******************************************************************************

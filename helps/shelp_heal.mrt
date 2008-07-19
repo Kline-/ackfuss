@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Heal		
+    Classes: Cleric(75)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spells results in the target's Hit Points being virtually
+             restored, as well as healing any diseases or posions.
+*******************************************************************************

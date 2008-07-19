@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Flare
+    Classes: Cleric(20)
+   Duration: 1 + ( Cast Level / 4 )
+   Modifies: Hitroll
+       Type: Offensive
+Description: Spell that grants the wielder to summon the mystical
+             powers of Ra to blind an opponent.
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Refresh		
+    Classes: Cleric(11)
+   Duration: Permanent
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to transfer some magical energy
+             to movement energy, which is supplied to the target.
+*******************************************************************************

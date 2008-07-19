@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Call Lightning 		
+    Classes: Cleric(36)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell can only be used outdoors, in bad weather.  It
+             allows the caster to call bolts of lightning, which strike all
+             non-friendly characters in that location.
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Shield		
+    Classes: Mage(9)
+   Duration: 4 + ( Cast Level / 5 )
+   Modifies: Armor Class
+       Type: Defensive
+Description: This spell allows the caster to create a magical, invisible
+             shield about the target, providing an Armor Class bonus.
+*******************************************************************************
