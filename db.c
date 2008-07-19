@@ -188,7 +188,6 @@ int top_affect;
 int top_area;
 int top_ed;
 int top_exit;
-int top_help;
 int top_mob_index;
 int top_obj_index;
 int top_reset;
@@ -256,7 +255,6 @@ int area_revision = -1;
 void init_mm args( ( void ) );
 
 void load_area args( ( FILE * fp ) );
-void load_helps args( ( FILE * fp ) );
 void load_mobiles args( ( FILE * fp ) );
 void load_objects args( ( FILE * fp ) );
 void load_resets args( ( FILE * fp ) );
@@ -544,8 +542,6 @@ void boot_db( void )
                break;
             else if( !str_cmp( word, "AREA" ) )
                load_area( fpArea );
-            else if( !str_cmp( word, "HELPS" ) )
-               load_helps( fpArea );
             else if( !str_cmp( word, "MOBILES" ) )
                load_mobiles( fpArea );
             else if( !str_cmp( word, "MOBPROGS" ) )
@@ -640,8 +636,6 @@ void load_area( FILE * fp )
    pArea->flags = 0;
    pArea->first_area_room = NULL;
    pArea->last_area_room = NULL;
-   pArea->first_area_help_text = NULL;
-   pArea->last_area_help_text = NULL;
    pArea->first_area_object = NULL;
    pArea->last_area_object = NULL;
    pArea->first_area_mobile = NULL;
@@ -750,42 +744,6 @@ void load_area( FILE * fp )
    LINK( pArea, first_area, last_area, next, prev );
 
    top_area++;
-   return;
-}
-
-
-
-/*
- * Snarf a help section.
- */
-void load_helps( FILE * fp )
-{
-   HELP_DATA *pHelp;
-   BUILD_DATA_LIST *pList;
-
-
-   for( ;; )
-   {
-      GET_FREE( pHelp, help_free );
-      pHelp->level = fread_number( fp );
-      pHelp->keyword = fread_string( fp );
-      if( pHelp->keyword[0] == '$' )
-         break;
-      pHelp->text = fread_string( fp );
-
-      /*
-       * greeting text handled in comm.c now -S- 
-       */
-
-      LINK( pHelp, first_help, last_help, next, prev );
-/* MAG Mod */
-      GET_FREE( pList, build_free );
-      pList->data = pHelp;
-      LINK( pList, area_load->first_area_help_text, area_load->last_area_help_text, next, prev );
-
-      top_help++;
-   }
-
    return;
 }
 
@@ -3592,8 +3550,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
    xprintf( buf, "Exits   %5d\n\r", top_exit );
    send_to_char( buf, ch );
-   xprintf( buf, "Helps   %5d\n\r", top_help );
-   send_to_char( buf, ch );
+   //add helps
    xprintf( buf, "Mobs    %5d\n\r", top_mob_index );
    send_to_char( buf, ch );
    xprintf( buf, "Objs    %5d\n\r", top_obj_index );
@@ -3646,8 +3603,7 @@ void do_status( CHAR_DATA * ch, char *argument )
    send_to_char( "NB. Areas count will include areas used as help files.\n\r\n\r", ch );
    xprintf( buf, "Areas   %5d\n\r", top_area );
    send_to_char( buf, ch );
-   xprintf( buf, "Helps   %5d\n\r", top_help );
-   send_to_char( buf, ch );
+   //add helps
    xprintf( buf, "Mobs    %5d\n\r", top_mob_index );
    send_to_char( buf, ch );
    xprintf( buf, "Objs    %5d\n\r", top_obj_index );

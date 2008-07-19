@@ -260,14 +260,12 @@ extern int top_affect;
 extern int top_area;
 extern int top_ed;
 extern int top_exit;
-extern int top_help;
 extern int top_mob_index;
 extern int top_obj_index;
 extern int top_reset;
 extern int top_room;
 extern int top_shop;
 
-extern HELP_DATA *help_last;
 extern AREA_DATA *area_last;
 extern AREA_DATA *area_first;
 extern SHOP_DATA *first_shop;
@@ -5586,8 +5584,6 @@ void build_umobs( CHAR_DATA * ch, char *argument )
  **/
 void build_findhelp( CHAR_DATA * ch, char *argument )
 {
-   HELP_DATA *pHelp;
-   char buf[MAX_STRING_LENGTH];
    char arg[MAX_STRING_LENGTH];
    int cnt = 0;
 
@@ -5599,15 +5595,6 @@ void build_findhelp( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   for( pHelp = first_help; pHelp != NULL; pHelp = pHelp->next )
-   {
-      if( is_name( arg, pHelp->keyword ) )
-      {
-         cnt++;
-         xprintf( buf, "[%2d] <%s> \n\r%1.100s\n\r", cnt, pHelp->keyword, pHelp->text );
-         send_to_char( buf, ch );
-      }
-   }
    if( cnt == 0 )
       send_to_char( "Couldn't find that keyword.\n\r", ch );
    return;
@@ -5618,9 +5605,6 @@ void build_findhelp( CHAR_DATA * ch, char *argument )
 
 void build_helpedit( CHAR_DATA * ch, char *argument )
 {
-   HELP_DATA *pHelp;
-   AREA_DATA *area;
-   BUILD_DATA_LIST *plist;
    char arg[MAX_STRING_LENGTH];
    int number;
    int count;
@@ -5634,46 +5618,20 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   /** Now try and find the keyword **/
-
-   for( pHelp = first_help; pHelp != NULL; pHelp = pHelp->next )
-      if( is_name( arg, pHelp->keyword ) && ( ++count == number ) )
-         break;
-
-   if( pHelp == NULL )
+   if( 1 )
    {
       send_to_char( "Couldn't find that keyword.\n\r", ch );
       return;
    }
 
-   build_strdup( &pHelp->text, "$edit", TRUE, FALSE, ch );
-   /*
-    * Mark the help's area as modified so the help saves... 
-    */
-   for( area = first_area; area != NULL; area = area->next )
-   {
-      if( area->first_area_help_text != NULL )
-      {
-         for( plist = area->first_area_help_text; plist != NULL; plist = plist->next )
-         {
-            if( plist->data == pHelp )
-            {
-               area_modified( area );
-               break;
-            }
-         }
-      }
-   }
+//   build_strdup( &pHelp->text, "$edit", TRUE, FALSE, ch );
    return;
 }
 
 void build_addhelp( CHAR_DATA * ch, char *argument )
 {
-   HELP_DATA *pHelp;
-   BUILD_DATA_LIST *pList;
    char arg[MAX_STRING_LENGTH];
    int level;
-   AREA_DATA *area;
    argument = one_argument( argument, arg );
 
    if( !is_number( arg ) || argument[0] == '\0' )
@@ -5690,100 +5648,10 @@ void build_addhelp( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   GET_FREE( pHelp, help_free );
-   pHelp->level = level;
-   pHelp->keyword = str_dup( argument );
-   pHelp->text = str_dup( "NEW HELP.  DELETE THIS LINE FIRST!" );
-
-   LINK( pHelp, first_help, last_help, next, prev );
-/* MAG Mod */
-   GET_FREE( pList, build_free );
-   pList->data = pHelp;
-/* find helps area, or use system if not set */
-
-   for( area = first_area; area; area = area->next )
-      if( !str_cmp( area->keyword, "helps" ) )
-         break;
-   if( area == NULL )
-      area = first_area;
-   LINK( pList, area->first_area_help_text, area->last_area_help_text, next, prev );
-
-   top_help++;
    send_to_char( "Help added.  Use HELPEDIT <keyword> to edit it.\n\r", ch );
    return;
 }
 
-/*
-void do_all_help_save()
-{
-
-
-  FILE * fp;
-  char help_file_name[MAX_STRING_LENGTH];
-  
-
-  
-  if ( ( fp = fopen( help_file, "w" ) ) == NULL )
-  {
-    bug( "Save Help Table: fopen", 0 );
-    perror( "failed open of helpfile.dat in do_help_save" );
-  }
-  else
-  {
-      
-  HELP_DATA *pHelp;
-  BUILD_SATA_LIST *Pointer;
-
-  for (pointer = first_help; pointer != NULL, pointer = pointer_next )
-  {
-    pHelp=Pointer->data;
-    fprintf( fp,"%i %s~\n",pHelp->level,pHelp->keyword);
-
-    if (isspace(pHelp->text[0]))
-       fprintf( fp,".%s~\n",pHelp->text);
-    else
-      fprintf(fp,"%s~\n",pHelp->text);
-      
-  }
-  fflush( fp );
-  fclose( fp ); 
-  return;
-
-}
-
-void do_all_help_load()
-{
-
-
-    HELP_DATA *pHelp;
-    BUILD_DATA_LIST *pointer;
-    FILE * fp;
-    char help_file[MAX_STRING_LENGTH];   
-
-  
-  if ( ( fp = fopen( help_file, "r" ) ) == NULL )
-  {
-    bug( "Help Table: fopen", 0 );
-    perror( "failed open of helpfile.dat in do_help_load" );
-  } 
-    
-  for ( pointer = first_help; pointer != NULL; pointer = pointer_next )
-  {
-    GET_FREE(pHelp, help_free);
-    pHelp->level    = fread_number( fp );
-    pHelp->keyword  = fread_string( fp );
-    if ( pHelp->keyword[0] == '$' )
-	  break;
-    pHelp->text     = fread_string( fp );
-	
-    LINK(pHelp, first_help, last_help, next, prev);
-	top_help++;
-  }
-  fclose ( fp );
-  return;
-
-}
-  */
 /* NOTE--NEED TO MAKE SURE WE GET MOTD, TOO--I THINK IT WIL BE OKAY ZEN */
 
 

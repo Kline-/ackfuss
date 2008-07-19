@@ -1643,3 +1643,26 @@ void safe_strcat( const char *file, const char *function, int line, int size, ch
  }
 }
 
+char *strlower( char *ip )
+{
+ static char buf[MAX_STRING_LENGTH];
+ int i;
+
+ for( i = 0; i < (MAX_STRING_LENGTH - 1) && ip[i] != '\0'; i++ )
+  buf[i] = tolower(ip[i]);
+
+ buf[i] = '\0';
+ return buf;
+}
+
+char *strupper( char *ip )
+{
+ static char buf[MAX_STRING_LENGTH];
+ int i;
+
+ for( i = 0; i < (MAX_STRING_LENGTH - 1) && ip[i] != '\0'; i++ )
+  buf[i] = toupper(ip[i]);
+
+ buf[i] = '\0';
+ return buf;
+}

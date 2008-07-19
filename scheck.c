@@ -469,15 +469,6 @@ static void walk_social_type( struct social_type *s )
    touch( s->others_auto );
 }
 
-static void walk_help_data( HELP_DATA * h )
-{
-   if( !h )
-      return;
-
-   touch( h->keyword );
-   touch( h->text );
-}
-
 static void walk_descriptor_data( DESCRIPTOR_DATA * d )
 {
    if( !d )
@@ -503,14 +494,6 @@ static void walk_socials( void )
 
    for( i = 0; i < maxSocial; i++ )
       walk_social_type( &social_table[i] );
-}
-
-static void walk_helps( void )
-{
-   HELP_DATA *h;
-
-   for( h = first_help; h; h = h->next )
-      walk_help_data( h );
 }
 
 static void walk_chars( void )
@@ -660,7 +643,6 @@ void do_scheck( CHAR_DATA * ch, char *argument )
    clear(  );
 
    walk_socials(  );
-   walk_helps(  );
    walk_chars(  );
    walk_descriptors(  );
    walk_objects(  );

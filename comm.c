@@ -716,20 +716,23 @@ void new_descriptor( int control )
     */
    {
       char buf[MAX_STRING_LENGTH];
-      HELP_DATA *pHelp;
-      extern HELP_DATA *first_help;
+      FILE *fp;
 
-      xprintf( buf, "greeting%d", 0 /* number_range( 0, 4 ) */  );
+      xprintf( buf, "greeting%d.%s", 0, HELP_MORT /* number_range( 0, 4 ) */  );
 
-      for( pHelp = first_help; pHelp != NULL; pHelp = pHelp->next )
-         if( !str_cmp( pHelp->keyword, buf ) )
-         {
-            if( pHelp->text[0] == '.' )
-               write_to_buffer( dnew, pHelp->text + 1, 0 );
-            else
-               write_to_buffer( dnew, pHelp->text, 0 );
-            break;   /* so no more found through multiple copies */
-         }
+      if( (fp = fopen(buf,"r")) != NULL )
+       while( !feof(fp) )
+        fgets(buf,MAX_STRING_LENGTH,fp);
+      else
+       xprintf(buf,"Please enter your name:");
+
+      if( fp != NULL )
+       fclose(fp);
+
+      if( buf[0] == '.' )
+       write_to_buffer(dnew,buf+1,0);
+      else
+       write_to_buffer(dnew,buf,0);
    }
 
    cur_players++;
