@@ -1826,6 +1826,8 @@ void do_help( CHAR_DATA * ch, char *argument )
   xprintf(buf,"%s%s.%s",HELP_DIR,argument,HELP_MORT);
   if( (fp = fopen(buf,"r")) != NULL )
   {
+   if( found )
+    send_to_char("\n\r",ch);
    while( fgets(buf,MAX_STRING_LENGTH,fp) )
     send_to_char(buf,ch);
    fclose(fp);
