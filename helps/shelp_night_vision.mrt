@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Night Vision
+    Classes: Psionicist(19)
+   Duration: 4 + ( Cast Level / 3 )
+   Modifies: N/A
+       Type: Defensive
+Description: This spell enables the target to see better in darkness,
+             without the use of any external light source.
+*******************************************************************************

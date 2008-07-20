@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: See Magic		
+    Classes: Psionicist(7)
+   Duration: 6 + ( Cast Level / 4 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to see the aura surrounding any
+             magical items.
+*******************************************************************************

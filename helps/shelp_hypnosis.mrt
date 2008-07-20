@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Hypnosis 		
+    Classes: Psionicist(14)
+   Duration: 3 + ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to attempt to hypnotise his/her
+             victim, who will then follow all orders given.
+*******************************************************************************

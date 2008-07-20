@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Sense Evil		
+    Classes: Psionicist(10)
+   Duration: 5 + ( Cast Level / 10 )
+   Modifies: N/A
+       Type: Defensive - Self
+Description: This spell allows the caster to sense if any beings encountered
+             are of evil alignment.
+*******************************************************************************

@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Phase		
+    Classes: Psionicist(45)
+   Duration: 3 + ( Cast Level / 20 )
+   Modifies: Armor Class
+       Type: Defensive - Self
+Description: This spell switches part of the caster's body into a different
+             plane of existence, allowing him/her to pass through closed
+             doors, as well as providing an Armor Class bonus.
+*******************************************************************************

@@ -1,0 +1,23 @@
+*******************************************************************************
+       Name: Planergy		
+    Classes: Psionicist(5)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: This spell allows the caster to summon alien energy to come
+             forth, and engulf the victim.  The energy summoned is determined
+             by the level of the caster:
+
+             Level:		Plane:		Energy:
+              <  8 		Fire            Flames
+              9-17		Sun             Heat Ray
+             18-26		Magma 		Lava
+	     27-35		Radiance	Light
+             36-44		Lightning	Lightning
+	     34-53		Salt		Dehydration
+	     54-62		Ash		Cold
+	     63-71		Positive	Energy
+	      > 72		Negative	Energy
+
+             NOTE: The damage increases with each new Plane.
+*******************************************************************************

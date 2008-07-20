@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Bloody Tears		
+    Classes: Psionicist(26)
+   Duration: 2 + ( Cast Level / 4 )
+   Modifies: HitRoll
+       Type: Offensive
+Description: This spell causes the victim's eyes to start bleeding suddenly,
+             rendering him/her blind for a short while.
+*******************************************************************************
