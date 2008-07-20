@@ -591,33 +591,6 @@ bool spell_ventriloquate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    return TRUE;
 }
 
-bool spell_warcry( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
-/* --Stephen 
- * FIXME: make this a warrior skill, check for bless.
- */
-{
-   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-   AFFECT_DATA af;
-
-   if( victim->position == POS_FIGHTING || is_affected( victim, sn ) )
-      return FALSE;
-   af.type = sn;
-   af.duration = 4 + level;
-   af.location = APPLY_HITROLL;
-   af.modifier = level / 16;
-   af.bitvector = 0;
-   affect_to_char( victim, &af );
-
-   af.location = APPLY_SAVING_SPELL;
-   af.modifier = 0 - level / 16;
-   affect_to_char( victim, &af );
-   send_to_char( "You feel righteous.\n\r", victim );
-   if( ch != victim )
-      send_to_char( "Ok.\n\r", ch );
-   return TRUE;
-}
-
-
 bool spell_weaken( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
