@@ -5906,7 +5906,7 @@ void do_census( CHAR_DATA *ch, char *argument )
    xcat(buf,"\n\r[RACE ] ");
  }
  
- xcat(buf,"\n\r");
+ xcat(buf,"\n\r\n\rFound %0.0f total mobs.\n\r",tf0);
  send_to_char(buf,ch);
 
  return;
