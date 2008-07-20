@@ -590,3 +590,4 @@ DECLARE_DO_FUN( do_imprint );
  */
 DECLARE_DO_FUN( do_statraise );
 DECLARE_DO_FUN( do_autodig );
+DECLARE_DO_FUN( do_census );

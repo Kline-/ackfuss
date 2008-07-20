@@ -5812,3 +5812,95 @@ void do_findreset( CHAR_DATA * ch, char *argument )
    send_to_char( "Currently not implemented.\n\r", ch );
    return;
 }
+
+void do_census( CHAR_DATA *ch, char *argument )
+{
+ CHAR_DATA *vch;
+ char buf[MSL];
+ int rcnt[MAX_RACE];
+ int ccnt[MAX_CLASS];
+ int scnt[3];
+ sh_int i;
+ float tf0, tf1, tf2, tf3;
+ int ti1;
+
+ if( argument[0] == '\0' )
+ {
+  send_to_char("Syntax: census <world/area>\n\r",ch);
+  return;
+ }
+
+ if( !str_prefix(argument,"world") )
+ {
+  xprintf(buf,"Census For: %s",center_text(mudnamecolor,132));
+  send_to_char(buf,ch);
+  send_to_char("\n\r------------------------------------------------------------------------------------------------------------------------------------\n\r",ch);
+  for( vch = first_char; vch != NULL; vch = vch->next )
+  {
+   if( !IS_NPC(vch) )
+    continue;
+   rcnt[vch->race]++;
+   ccnt[vch->class]++;
+   scnt[vch->sex]++;
+  }
+ }
+ else if( !str_prefix(argument,"area") )
+ {
+  xprintf(buf,"Census For: %s",center_text(ch->in_room->area->name,132));
+  send_to_char(buf,ch);
+  send_to_char("\n\r------------------------------------------------------------------------------------------------------------------------------------\n\r",ch);
+  for( vch = first_char; vch != NULL; vch = vch->next )
+  {
+   if( !IS_NPC(vch) )
+    continue;
+   if( vch->in_room->area != ch->in_room->area )
+    continue;
+   rcnt[vch->race]++;
+   ccnt[vch->class]++;
+   scnt[vch->sex]++;
+  }
+ }
+ else
+ {
+  do_census(ch,"");
+  return;
+ }
+
+ /* Tally the sexes! */
+ tf0 = (scnt[SEX_NEUTRAL] + scnt[SEX_MALE] + scnt[SEX_FEMALE]);
+ tf1 = (scnt[SEX_NEUTRAL] / tf0) * 100;
+ tf2 = (scnt[SEX_MALE] / tf0) * 100;
+ tf3 = (scnt[SEX_FEMALE] / tf0) * 100;
+ xprintf(buf,"[SEX  ] ");
+ send_to_char(buf,ch);
+ xprintf(buf,"%9s: %4d (%05.2f%%) %9s: %4d (%05.2f%%) %9s: %4d (%05.2f%%)\n\r","Neutral",scnt[SEX_NEUTRAL],tf1,"Male",scnt[SEX_MALE],tf2,"Female",scnt[SEX_FEMALE],tf3);
+ send_to_char(buf,ch);
+
+ /* Tally the classes! */
+ tf0 = 0;
+ for( i = 0; i < MAX_CLASS; i++ )
+  tf0 += ccnt[i];
+ xprintf(buf,"[CLASS] ");
+ for( i = 0; i < MAX_CLASS; i++ )
+  xcat(buf,"%9s: %4d (%05.2f%%) ",class_table[i].who_name,ccnt[i],((ccnt[i] / tf0) * 100));
+ xcat(buf,"\n\r");
+ send_to_char(buf,ch);
+
+ /* Tally the races! */
+ tf0 = 0;
+ ti1 = 0;
+ for( i = 0; i < MAX_RACE; i++ )
+  tf0 += rcnt[i];
+ xprintf(buf,"[RACE ] ");
+ for( i = 0; i < MAX_RACE; i++ )
+ {
+  xcat(buf,"%9s: %4d (%05.2f%%) ",race_table[i].race_title,rcnt[i],((rcnt[i] / tf0) * 100));
+  if( ++ti1 % 5 == 0 && i < (MAX_RACE -1) )
+   xcat(buf,"\n\r[RACE ] ");
+ }
+ 
+ xcat(buf,"\n\r");
+ send_to_char(buf,ch);
+
+ return;
+}
