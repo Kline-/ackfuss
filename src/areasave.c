@@ -52,16 +52,15 @@
 #define BUILD_TOOMANY  2
 
 #define BUILD_SEC_AREA     1
-//Was for helps
-#define BUILD_SEC_ROOMS    3
-#define BUILD_SEC_MOBILES  4
-#define BUILD_SEC_MOBPROGS 5
-#define BUILD_SEC_OBJECTS  6
-#define BUILD_SEC_SHOPS    7
-#define BUILD_SEC_RESETS   8
-#define BUILD_SEC_SPECIALS 9
-#define BUILD_SEC_OBJFUNS  10 /* -S- Mod */
-#define BUILD_SEC_END      11
+#define BUILD_SEC_ROOMS    2
+#define BUILD_SEC_MOBILES  3
+#define BUILD_SEC_MOBPROGS 4
+#define BUILD_SEC_OBJECTS  5
+#define BUILD_SEC_SHOPS    6
+#define BUILD_SEC_RESETS   7
+#define BUILD_SEC_SPECIALS 8
+#define BUILD_SEC_OBJFUNS  9 /* -S- Mod */
+#define BUILD_SEC_END      10
 #define AREA_VERSION  17
 
 

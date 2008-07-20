@@ -1,6 +1,6 @@
 #AREA
 @@WThe City of @@yMidgaard@@N~
-Q 16
+Q 17
 K midgaard~
 L @@W{@@r ALL @@W}@@N~
 N 23
@@ -21,37 +21,37 @@ M No bad room spells allowed.
 Entering the @@eSyringe@@N~
 @@NWoW!!! That was...different.  You are very disoriented..suddenly, a crazed
 
-man with unkempt hair and the smell of cheap wine on his breath appears, and
+man with unkempt hair and the smell of cheap wine on his breath appears, and
 
-shouts: "Oh my, another victim to experiment on!!!  MUAHHAAAAA!!" He waves his
+shouts: "Oh my, another victim to experiment on!!!  MUAHHAAAAA!!" He waves his
 
-hands and mutters loudly, and suddenly, you begin to shrink!!! Smaller and
+hands and mutters loudly, and suddenly, you begin to shrink!!! Smaller and
 
-smaller you become, until you are smaller than the dust particles around you..
+smaller you become, until you are smaller than the dust particles around you..
 
 
-It seems the only way to go is DOWN.
+It seems the only way to go is DOWN.
 
-~
+~
 12 1
 S
 #3039
 The Mad Scientist's Lab~
 @@NThe scent of chemicals, burning fires, and bubbling fluids overwhelm you as
 
-you enter. Scattered about on various tables and workbenches are wierd glass
+you enter. Scattered about on various tables and workbenches are wierd glass
 
-flasks, tubes, and unusual pieces of equipment, with what seems to be some
+flasks, tubes, and unusual pieces of equipment, with what seems to be some
 
-sort of strange experiments being performed..all with no apparent rhyme or
+sort of strange experiments being performed..all with no apparent rhyme or
 
-reason. Who ever works here is absent, but you are drawn towards the center
+reason. Who ever works here is absent, but you are drawn towards the center
 
-workbench, where a large @@eSyringe@@N lies next to a covered glass dish
+workbench, where a large @@eSyringe@@N lies next to a covered glass dish
 
-filled with a dark @@Rfluid@@N--maybe it's blood!
+filled with a dark @@Rfluid@@N--maybe it's blood!
 
-~
+~
 12 1
 D2
 ~
@@ -69,13 +69,13 @@ S
 The Midgaard Post Office~
 This is the Midgaard branch of the Global Post Office.
 
-From here you may read or write letters to friends
+From here you may read or write letters to friends
 
-and enemies alike...
+and enemies alike...
 
-There is a large SIGN here... perhaps you should look at it?
+There is a large SIGN here... perhaps you should look at it?
 
-~
+~
 17436 11
 D1
 ~
@@ -85,29 +85,29 @@ E
 sign~
 @@WTo send notes use the following commands:-
 
- 
+ 
 
-Note to (name)
+Note to (name)
 
- 
+ 
 
-  Note subject (subject)
+  Note subject (subject)
 
- 
+ 
 
-    Note + (msg) for each subsequent line of text.
+    Note + (msg) for each subsequent line of text.
 
-      Note show to see your note
+      Note show to see your note
 
-~
+~
 S
 #3085
 The quiet room~
 This is a room where players can come and sleep with no interuptions. There is
 
-a sign on the wall.
+a sign on the wall.
 
-~
+~
 25886 11
 D5
 ~
@@ -117,15 +117,15 @@ E
 sign~
 Sssshh! No talking in this room.
 
-~
+~
 S
 #3086
 The Power Trivia Room~
 This room is used by the players of the mud, to engage in the totally
 
-pointless pursuit of trivial knowledge.
+pointless pursuit of trivial knowledge.
 
-~
+~
 8 11
 D4
 ~
@@ -145,14 +145,14 @@ S
 The Miscellaneous Donation Area~
 You are in the part of the donation area used to hold items other than
 
-weapons or amror.
+weapons or amror.
 
-~
+~
 12 11
 D0
 The central donation area.
 
-~
+~
 ~
 0 -1 3021
 S
@@ -160,12 +160,12 @@ S
 The Armor Donation Area~
 You are in part of the donation area used to hold armor items. 
 
-~
+~
 12 11
 D3
 The central donation area.
 
-~
+~
 ~
 0 -1 3021
 S
@@ -173,12 +173,12 @@ S
 The Weapons Donation Area~
 You are in part of the donation area used to hold weapons.
 
-~
+~
 12 11
 D2
 The central donation area.
 
-~
+~
 ~
 0 -1 3021
 S
@@ -186,36 +186,36 @@ S
 The Donation Area~
 You are standing in a cross-shaped room.  To the west you can see the Temple.
 
-To the North, East and South, you see the various donation locations.  These
+To the North, East and South, you see the various donation locations.  These
 
-are used to house unwanted equipment, donated by players who no longer need
+are used to house unwanted equipment, donated by players who no longer need
 
-them.
+them.
 
-~
+~
 12 11
 D0
 You see the Weapon donation area.
 
-~
+~
 ~
 0 -1 3019
 D1
 You see the Armor donation area.
 
-~
+~
 ~
 0 -1 3018
 D2
 You see a room used for various donations.
 
-~
+~
 ~
 0 -1 3017
 D3
 You see the Temple of Midgaard.
 
-~
+~
 ~
 0 -1 3001
 S
@@ -223,9 +223,9 @@ S
 On the River~
 The river enters from a hole in the eastern city wall.  The hole has been
 
-blocked by several vertically positioned iron bars set into the wall.
+blocked by several vertically positioned iron bars set into the wall.
 
-~
+~
 0 7
 D3
 ~
@@ -236,9 +236,9 @@ S
 On the River~
 You see the warehouse on the northern riverbank.  East of here you see the
 
-city wall.  The river flows west towards the levee.
+city wall.  The river flows west towards the levee.
 
-~
+~
 0 7
 D1
 ~
@@ -253,9 +253,9 @@ S
 On the River~
 The levee is directly north of here.  The river flows in an east west
 
-direction.
+direction.
 
-~
+~
 4 7
 D0
 ~
@@ -274,9 +274,9 @@ S
 On the River~
 North of here you see the dump.  The river flows from east to west.  The
 
-riverbanks are too steep to climb.
+riverbanks are too steep to climb.
 
-~
+~
 0 7
 D1
 ~
@@ -291,9 +291,9 @@ S
 On the River~
 North of here you see the miserable buildings of the poor alley.  The
 
-river flows west towards the bridge.  The riverbanks are too steep to climb.
+river flows west towards the bridge.  The riverbanks are too steep to climb.
 
-~
+~
 0 7
 D1
 ~
@@ -308,11 +308,11 @@ S
 Under the Bridge~
 The arch under the bridge is covered by seaweed for one foot above the
 
-surface of the river.  The water gently flows through an opening in the lower
+surface of the river.  The water gently flows through an opening in the lower
 
-part of the city wall.
+part of the city wall.
 
-~
+~
 0 7
 D1
 ~
@@ -322,63 +322,63 @@ E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  Looks pretty solid.
+some kind of mortar.  Looks pretty solid.
 
-~
+~
 S
 #3143
 The Jail~
 You are in a dark and humid jail.  The dark stone walls are hard and cold
 
-to the touch.  A heavy steel door is to the north.
+to the touch.  A heavy steel door is to the north.
 
-~
+~
 8 11
 D0
 You see the heavy steel door.
 
-~
+~
 door~
 1 3137 3142
 E
 wall walls~
 The walls are marked with lots of scratches.  Some of them spell sentences
 
-like "JAIL IS BETTER THAN SQL" and "INGRES STRIKES AGAIN".
+like "JAIL IS BETTER THAN SQL" and "INGRES STRIKES AGAIN".
 
-~
+~
 S
 #3142
 Captain's Office~
 You are in the Office of the Captain of the Guard.  The Midgaard Coat of
 
-Arms is hanging on the north wall and a heavy steel door is to the south.
+Arms is hanging on the north wall and a heavy steel door is to the south.
 
-~
+~
 8 11
 D1
 You see the Cityguard Head Quarters.
 
-~
+~
 door~
 1 3120 3110
 D2
 You see the heavy steel door.
 
-~
+~
 door~
 1 3137 3143
 E
 arms~
 Although a bit dusty the Coat of Arms is an excellent piece of work.
 
-~
+~
 S
 #3141
 End of Penny Lane~
 You are at the end of Penny Lane.  The only exit appears to be south.
 
-~
+~
 0 1
 D2
 ~
@@ -389,7 +389,7 @@ S
 Penny Lane~
 You are on Penny Lane.  The narrow road continues north and west.
 
-~
+~
 0 1
 D0
 ~
@@ -404,9 +404,9 @@ S
 Penny Lane~
 You are on Penny Lane.  Emerald Avenue is to the west and Penny Lane
 
-continues in eastward direction.
+continues in eastward direction.
 
-~
+~
 0 1
 D1
 ~
@@ -421,46 +421,46 @@ S
 The Mayor's Office~
 You are in the not very big office of the Mayor of Midgaard.  A large and
 
-polished but completely empty desk is standing in front of an armchair that
+polished but completely empty desk is standing in front of an armchair that
 
-looks so comfortable that it most of all resembles a bed with the head end
+looks so comfortable that it most of all resembles a bed with the head end
 
-raised slightly.
+raised slightly.
 
-~
+~
 8 11
 D3
 The waiting room is to the west.
 
-~
+~
 ~
 0 -1 3137
 E
 chair armchair~
 This chair is really a masterpiece.  A chair where one can sit as comfortably
 
-as in a bed.  All lecture halls should be equipped with these things.
+as in a bed.  All lecture halls should be equipped with these things.
 
-~
+~
 S
 #3137
 The Waiting Room~
 You are standing in the waiting room at the town hall.  Wooden chairs stand
 
-along the walls and a long desk is placed in the middle of the room.
+along the walls and a long desk is placed in the middle of the room.
 
-~
+~
 8 11
 D1
 It looks like some kind of office.
 
-~
+~
 ~
 0 -1 3138
 D3
 The exit west leads to Emerald Avenue.
 
-~
+~
 ~
 0 -1 3117
 S
@@ -468,9 +468,9 @@ S
 Park Road~
 You are at a bend on Park Road.  To the south the road goes on and to the
 
-west is the Road Crossing.
+west is the Road Crossing.
 
-~
+~
 0 1
 D2
 ~
@@ -485,11 +485,11 @@ S
 Park Road~
 You are at a bend on Park Road.  To the north the road goes on and to the
 
-east is the Road Crossing.  To the south, the ancient cliffs rise from deep
+east is the Road Crossing.  To the south, the ancient cliffs rise from deep
 
-under the ground, forming a wall.
+under the ground, forming a wall.
 
-~
+~
 0 1
 D0
 ~
@@ -504,9 +504,9 @@ S
 Emerald Avenue~
 You are standing at a bend on Emerald Avenue.  To the west the road goes on
 
-and to the north is the Road Crossing.
+and to the north is the Road Crossing.
 
-~
+~
 0 1
 D0
 ~
@@ -521,9 +521,9 @@ S
 Emerald Avenue~
 You are standing at a bend on Emerald Avenue.  To the east the road goes on
 
-and to the south is the Road Crossing.
+and to the south is the Road Crossing.
 
-~
+~
 0 1
 D1
 ~
@@ -538,9 +538,9 @@ S
 Emerald Avenue~
 You are standing on the north end of Emerald Avenue.  To the north is the
 
-promenade and to the east is the small street Penny Lane.
+promenade and to the east is the small street Penny Lane.
 
-~
+~
 0 1
 D0
 ~
@@ -559,7 +559,7 @@ S
 Park Road~
 You are at Park Road which continues north and south.
 
-~
+~
 0 1
 D0
 ~
@@ -574,11 +574,11 @@ S
 On the Concourse~
 You are at the southeast corner of the city wall.  The Concourse leads
 
-both north and west.  A small path leads off the concourse to the South, and
+both north and west.  A small path leads off the concourse to the South, and
 
-is partly obscured by the overgrowth.
+is partly obscured by the overgrowth.
 
-~
+~
 0 1
 D0
 ~
@@ -593,7 +593,7 @@ S
 On the Concourse~
 The Concourse continues both east and west.  Park Road is north of here.
 
-~
+~
 0 1
 D0
 ~
@@ -612,9 +612,9 @@ S
 On the Concourse~
 The Concourse continues both east and west.  Emerald Avenue is north of
 
-here.
+here.
 
-~
+~
 0 1
 D0
 ~
@@ -633,9 +633,9 @@ S
 On the Concourse~
 You are at the southwest corner of the city wall.  The Concourse leads
 
-both north and east.
+both north and east.
 
-~
+~
 0 1
 D0
 ~
@@ -650,7 +650,7 @@ S
 Park Road~
 You are on Park Road which continues north.  The Concourse is south of here.
 
-~
+~
 0 1
 D0
 ~
@@ -665,9 +665,9 @@ S
 Emerald Avenue~
 You are on Emerald Avenue which continues north.
 
-The Concourse is south of here.
+The Concourse is south of here.
 
-~
+~
 0 1
 D0
 ~
@@ -682,7 +682,7 @@ S
 End of Elm Street~
 You are at the end of Elm Street.  An old elm tree grows here.
 
-~
+~
 0 1
 D3
 ~
@@ -692,15 +692,15 @@ E
 elm tree~
 The fresh young leaves of the elm tree wave gently in the wind.
 
-~
+~
 S
 #3123
 Elm Street~
 You are on Elm street.  Park Road is to the west and Elm Street continues
 
-in eastward direction.
+in eastward direction.
 
-~
+~
 0 1
 D1
 ~
@@ -715,9 +715,9 @@ S
 Park Road~
 You are on Park Road which leads south and north.  Elm Street is east of
 
-here.
+here.
 
-~
+~
 0 1
 D0
 ~
@@ -736,9 +736,9 @@ S
 Emerald Avenue~
 You are standing at a bend on Emerald Avenue.  The road leads south and
 
-east.
+east.
 
-~
+~
 0 1
 D1
 ~
@@ -753,9 +753,9 @@ S
 Road Crossing~
 You are in the middle of the road cross.  Roads lead in all directions.
 
-A road sign is here.
+A road sign is here.
 
-~
+~
 0 1
 D0
 ~
@@ -778,22 +778,22 @@ sign~
 The sign points in all directions:
 
 
-   North - Emerald Avenue.
+   North - Emerald Avenue.
 
-   East  - Park Road.
+   East  - Park Road.
 
-   South - Emerald Avenue.
+   South - Emerald Avenue.
 
-   West  - Park Road.
+   West  - Park Road.
 
 
-~
+~
 S
 #3119
 Emerald Avenue~
 You are standing at a bend on Emerald Avenue.  The road leads north and west.
 
-~
+~
 0 1
 D0
 ~
@@ -808,7 +808,7 @@ S
 Park Road~
 You are on Park Road which leads north and south.
 
-~
+~
 0 1
 D0
 ~
@@ -823,9 +823,9 @@ S
 Emerald Avenue~
 You are at Emerald Avenue which continues north and south.  To the west is
 
-the park entrance and to the east is the not very big Town Hall of Midgaard.
+the park entrance and to the east is the not very big Town Hall of Midgaard.
 
-~
+~
 0 1
 D0
 ~
@@ -848,11 +848,11 @@ S
 Eastern Park Entrance~
 You are standing at the eastern end of the park.  A small path leads west
 
-into the park.  Going east through the entrance you will reach Emerald
+into the park.  Going east through the entrance you will reach Emerald
 
-Avenue.
+Avenue.
 
-~
+~
 4 1
 D1
 ~
@@ -867,9 +867,9 @@ S
 A path in the park~
 You are in the park.  The paths lead north and east.  Eastwards is the
 
-park entrance and to the west you see a small pond.
+park entrance and to the west you see a small pond.
 
-~
+~
 0 1
 D0
 ~
@@ -888,9 +888,9 @@ S
 The Pond~
 You are swimming around in the pond, feeling rather stupid.  You can get
 
-back on the path from the eastern and western end of the pond.
+back on the path from the eastern and western end of the pond.
 
-~
+~
 0 6
 D1
 ~
@@ -905,9 +905,9 @@ S
 A path in the park~
 You are in the park.  The paths lead north and west.  Westwards is the
 
-park entrance and to the east you see a small pond.
+park entrance and to the east you see a small pond.
 
-~
+~
 0 1
 D0
 ~
@@ -916,13 +916,13 @@ D0
 D1
 You see the pond.
 
-~
+~
 ~
 0 -1 3114
 D3
 You see the western park entrance.
 
-~
+~
 ~
 0 -1 3112
 S
@@ -930,9 +930,9 @@ S
 Western Park Entrance~
 You are standing at the western end of the park.  A small path leads east
 
-into the park and going west through the entrance you will reach Park Road.
+into the park and going west through the entrance you will reach Park Road.
 
-~
+~
 4 1
 D1
 ~
@@ -947,9 +947,9 @@ S
 Park Road~
 The road continues north and south.  A building is just west of here, you
 
-notice a sign on the door.  The park entrance is to the east.
+notice a sign on the door.  The park entrance is to the east.
 
-~
+~
 0 1
 D0
 ~
@@ -958,7 +958,7 @@ D0
 D1
 You see the park entrance.
 
-~
+~
 ~
 0 -1 3112
 D2
@@ -968,7 +968,7 @@ D2
 D3
 You see the cityguard head quarters.
 
-~
+~
 door~
 1 -1 3110
 E
@@ -976,28 +976,28 @@ building door sign~
 The sign on the door says:-
 
 
-		 Cityguard Head Quarters
+		 Cityguard Head Quarters
 
-~
+~
 S
 #3110
 Cityguard Head Quarters~
 You are inside a tidy office.  A big desk made from dark wood is standing
 
-in the centre of the room.
+in the centre of the room.
 
-~
+~
 8 11
 D1
 You see Park Road.
 
-~
+~
 door~
 1 -1 3111
 D3
 You see a sign saying 'KEEP OUT'.
 
-~
+~
 door~
 1 3120 3142
 S
@@ -1005,9 +1005,9 @@ S
 Small path in the park~
 You are on a small path running through the park.  It continues west and
 
-south and just north of here you see the southern wall of Park Cafe.
+south and just north of here you see the southern wall of Park Cafe.
 
-~
+~
 0 1
 D2
 ~
@@ -1022,16 +1022,16 @@ S
 Small path in the park~
 You are standing on a small path inside the park.  The park entrance is
 
-just north of here, and Park Cafe is just east of the entrance.  The path
+just north of here, and Park Cafe is just east of the entrance.  The path
 
-leads further east and west.
+leads further east and west.
 
-~
+~
 0 1
 D0
 You see the northern park entrance.
 
-~
+~
 ~
 0 -1 3105
 D1
@@ -1047,9 +1047,9 @@ S
 Small path through the park~
 You are walking along a small path through the park.  The path continues
 
-south and east.
+south and east.
 
-~
+~
 0 1
 D1
 ~
@@ -1064,18 +1064,18 @@ S
 Park Cafe~
 You are inside Park Cafe, a very well lighted, cosy place. The cafe
 
-is built from large logs. Through the windows in the northern wall you
+is built from large logs. Through the windows in the northern wall you
 
-see the river, and through the southern window you see many vigorous
+see the river, and through the southern window you see many vigorous
 
-colorful plants.
+colorful plants.
 
-~
+~
 8 11
 D3
 You see the park entrance.
 
-~
+~
 ~
 0 -1 3105
 S
@@ -1083,28 +1083,28 @@ S
 Park Entrance~
 You are standing just inside the small park of Midgaard.  To the north is
 
-the promenade and a small path leads south into the park.  To your east is
+the promenade and a small path leads south into the park.  To your east is
 
-the famous Park Cafe.
+the famous Park Cafe.
 
-~
+~
 4 1
 D0
 You see the promenade.
 
-~
+~
 ~
 0 -1 3102
 D1
 You see Park Cafe.
 
-~
+~
 ~
 0 -1 3106
 D2
 You see the park.
 
-~
+~
 ~
 0 -1 3108
 S
@@ -1112,58 +1112,58 @@ S
 Northeast end of Concourse~
 You are at the Concourse.  The city wall is just east and a small
 
-promenade goes west.  Looking across the river you see a building that
+promenade goes west.  Looking across the river you see a building that
 
-resembles a warehouse.  The Concourse continues south along the city wall.
+resembles a warehouse.  The Concourse continues south along the city wall.
 
-~
+~
 0 1
 D2
 The Concourse continues south.
 
-~
+~
 ~
 0 -1 3130
 D3
 You see the promenade.
 
-~
+~
 ~
 0 -1 3103
 E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 S
 #3103
 Promenade~
 The river gently flows west just north of here.  The promenade continues
 
-both east and west.  A small path leads south.  Looking across the river you
+both east and west.  A small path leads south.  Looking across the river you
 
-see the levee.
+see the levee.
 
-~
+~
 0 1
 D1
 You see the Concourse.
 
-~
+~
 ~
 0 -1 3104
 D2
 The small path leads south.
 
-~
+~
 ~
 0 -1 3132
 D3
 You see the promenade.
 
-~
+~
 ~
 0 -1 3102
 S
@@ -1171,28 +1171,28 @@ S
 Promenade~
 The river gently flows west just north of here.  The promenade continues
 
-both east and west.  South of here you see the entrance to the park, and a
+both east and west.  South of here you see the entrance to the park, and a
 
-small building seems to be just west of the entrance.
+small building seems to be just west of the entrance.
 
-~
+~
 0 1
 D1
 You see the promenade.
 
-~
+~
 ~
 0 -1 3103
 D2
 You see the park entrance.
 
-~
+~
 ~
 0 -1 3105
 D3
 You see the promenade.
 
-~
+~
 ~
 0 -1 3101
 S
@@ -1200,28 +1200,28 @@ S
 Promenade~
 The river gently flows west just north of here.  The promenade continues
 
-further east and to the west you see the city wall.  Park Road leads south
+further east and to the west you see the city wall.  Park Road leads south
 
-from here.
+from here.
 
-~
+~
 0 1
 D1
 The promenade.
 
-~
+~
 ~
 0 -1 3102
 D2
 Park Road leads south.
 
-~
+~
 ~
 0 -1 3131
 D3
 You see the Concourse.
 
-~
+~
 ~
 0 -1 3100
 S
@@ -1229,28 +1229,28 @@ S
 Northwest end of Concourse~
 You are at the concourse, the city wall is just west.  A small promenade
 
-goes east, and the bridge is just north of here.  The concourse continues
+goes east, and the bridge is just north of here.  The concourse continues
 
-south along the city wall.
+south along the city wall.
 
-~
+~
 0 1
 D0
 You see the Bridge.
 
-~
+~
 ~
 0 -1 3051
 D1
 You see the promenade.
 
-~
+~
 ~
 0 -1 3101
 D2
 The promenade continues far south.
 
-~
+~
 ~
 0 -1 3127
 S
@@ -1259,14 +1259,14 @@ Entrance to the Valkyrie~
 WOW you can fly!  You are floating in the air above Temple Square of Midgaard.
 
 
-A ladder leading to the Valkyrie clan room has been left here.
+A ladder leading to the Valkyrie clan room has been left here.
 
-~
+~
 4 9
 D5
 Back down on the earth where you should be!
 
-~
+~
 ~
 0 0 3005
 S
@@ -1274,18 +1274,18 @@ S
 By the Temple Altar~
 You are by the temple altar in the northern end of the Temple of Midgaard.
 
-A huge altar made from white polished marble is standing in front of you and
+A huge altar made from white polished marble is standing in front of you and
 
-behind it is a ten foot tall sitting statue of Odin, the King of the Gods.
+behind it is a ten foot tall sitting statue of Odin, the King of the Gods.
 
-To the West is the meeting point of the Immortal and mortal worlds and to the East lies the Quest Room.
+To the West is the meeting point of the Immortal and mortal worlds and to the East lies the Quest Room.
 
-~
+~
 132104 11
 D2
 You see the southern end of the temple.
 
-~
+~
 ~
 0 -1 3001
 D4
@@ -1300,175 +1300,175 @@ E
 statue odin king god~
 The statue represents the one-eyed Odin sitting on a his throne.  He has
 
-long, grey hair and beard and a strict look on his face.  On top of the
+long, grey hair and beard and a strict look on his face.  On top of the
 
-throne, just above his shoulders, his two ravens Hugin and Munin are sitting
+throne, just above his shoulders, his two ravens Hugin and Munin are sitting
 
-and at his feet are his wolves Gere and Freke.
+and at his feet are his wolves Gere and Freke.
 
-~
+~
 E
 altar~
 Even though the altar is more than ten feet long it appears to be made from a
 
-single block of white virgin marble.
+single block of white virgin marble.
 
-~
+~
 S
 #3053
 Outside the East Gate of Midgaard~
 You are by two small towers that have been built into the city wall and
 
-connected with a footbridge across the heavy wooden gate.  To the east is the
+connected with a footbridge across the heavy wooden gate.  To the east is the
 
-Midgaard Road. To the north a small dusty trail follow the city wall.  
+Midgaard Road. To the north a small dusty trail follow the city wall.  
 
-A new path leads to the south.....
+A new path leads to the south.....
 
-~
+~
 0 1
 D3
 You see the city gate.
 
-~
+~
 ~
 1 3133 3041
 E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 E
 tower towers~
 Both of the towers are built from large grey rocks that have been fastened to
 
-each other with some kind of mortar, just like the city wall.
+each other with some kind of mortar, just like the city wall.
 
-~
+~
 E
 gate~
 It is a set of very big double doors made from hard wood.  They have been
 
-reinforced with large iron bands to make them even more sturdy.  One of the
+reinforced with large iron bands to make them even more sturdy.  One of the
 
-doors is equipped with a very big lock.
+doors is equipped with a very big lock.
 
-~
+~
 E
 bridge footbridge~
 It is too high up to reach but it looks as if one easily could walk across it
 
-from one tower to the other.
+from one tower to the other.
 
-~
+~
 S
 #3052
 Outside the West Gate of Midgaard~
 You are by two small towers that have been built into the city wall and
 
-connected with a footbridge across the heavy wooden gate.  To the west you
+connected with a footbridge across the heavy wooden gate.  To the west you
 
-can see Roc Road, which runs to the West.
+can see Roc Road, which runs to the West.
 
-~
+~
 0 1
 D1
 The city gate is to the east.
 
-~
+~
 ~
 1 3133 3040
 D3
 Roc Road.
 
-~
+~
 ~
 0 -1 3230
 E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 E
 tower towers~
 Both of the towers are built from large grey rocks that have been fastened to
 
-each other with some kind of mortar, just like the city wall.
+each other with some kind of mortar, just like the city wall.
 
-~
+~
 E
 gate~
 It is a set of very big double doors made from hard wood.  They have been
 
-reinforced with large iron bands to make them even more sturdy.  One of the
+reinforced with large iron bands to make them even more sturdy.  One of the
 
-doors is equipped with a very big lock.
+doors is equipped with a very big lock.
 
-~
+~
 E
 bridge footbridge~
 It is too high up to reach but it looks as if one easily could walk across it
 
-from one tower to the other.
+from one tower to the other.
 
-~
+~
 S
 #3051
 On the Bridge~
 You are standing on the stone bridge crosses the river.  The bridge is
 
-built out from the western city wall and the river flows west through an
+built out from the western city wall and the river flows west through an
 
-opening in the wall ten feet below the bridge.
+opening in the wall ten feet below the bridge.
 
-~
+~
 0 1
 D0
 You see the road.
 
-~
+~
 ~
 0 -1 3047
 D2
 You see the Concourse.
 
-~
+~
 ~
 0 -1 3100
 E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 E
 opening~
 You cannot really see it from here as it is somewhere beneath your feet.
 
-~
+~
 E
 bridge~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar, just like the wall.
+some kind of mortar, just like the wall.
 
-~
+~
 S
 #3050
 The Unused Whorehouse~
 This rundown house used to be the "Escort Service" for those citizens of
 
-~
+~
 8 11
 D0
 You see the alley.
 
-~
+~
 ~
 0 -1 3046
 S
@@ -1476,12 +1476,12 @@ S
 Levee~
 You are at the levee.  South of here you see the river gently flowing west.
 
-~
+~
 0 1
 D0
 You see the Alley.
 
-~
+~
 ~
 0 -1 3045
 S
@@ -1489,14 +1489,14 @@ S
 Grubby Inn~
 You are inside the old Grubby Inn.  This place has not been cleaned for
 
-several decades, vile smells make you dizzy.
+several decades, vile smells make you dizzy.
 
-~
+~
 1032 11
 D0
 You see the alley.
 
-~
+~
 ~
 0 -1 3024
 S
@@ -1504,50 +1504,50 @@ S
 Wall Road~
 You are standing on the road next to the western city wall which
 
-continues north.  South of here is a bridge across the river.
+continues north.  South of here is a bridge across the river.
 
-~
+~
 0 1
 D0
 You see the road.
 
-~
+~
 ~
 0 -1 3043
 D2
 You see the bridge.
 
-~
+~
 ~
 0 -1 3051
 E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 S
 #3046
 Eastern end of Alley~
 You are standing at the eastern end of the alley, the city wall is just
 
-east, blocking any further movement.  An old three-story warehouse is
+east, blocking any further movement.  An old three-story warehouse is
 
-directly south of here.
+directly south of here.
 
-~
+~
 0 1
 D2
 You see the warehouse.
 
-~
+~
 ~
 0 -1 3050
 D3
 You see the alley.
 
-~
+~
 ~
 0 -1 3045
 S
@@ -1555,32 +1555,32 @@ S
 Alley at Levee~
 You are standing in the alley which continues east and west.  South of
 
-here you see the levee.  North is the Pet Shop.
+here you see the levee.  North is the Pet Shop.
 
-~
+~
 0 1
 D0
 You see, hear, and smell the pet shop.
 
-~
+~
 ~
 0 0 3031
 D1
 The alley leads east.
 
-~
+~
 ~
 0 -1 3046
 D2
 You see the levee.
 
-~
+~
 ~
 0 -1 3049
 D3
 The alley leads west.
 
-~
+~
 ~
 0 -1 3026
 S
@@ -1588,26 +1588,26 @@ S
 Poor Alley~
 You are in narrow and dirty alley leading east and west.  The leather shop
 
-is to the north.
+is to the north.
 
-~
+~
 0 1
 D0
 The leather shop is to the north.
 
-~
+~
 ~
 0 -1 3035
 D1
 The alley leads east.
 
-~
+~
 ~
 0 -1 3024
 D3
 The alley leads west.
 
-~
+~
 ~
 0 -1 3043
 S
@@ -1615,87 +1615,87 @@ S
 Wall Road~
 You are walking next to the western city wall.  Wall Road continues further
 
-north and south.  A small, poor alley leads east.
+north and south.  A small, poor alley leads east.
 
-Some letters have been written on the wall here.
+Some letters have been written on the wall here.
 
-~
+~
 0 1
 D0
 The road continues further north.
 
-~
+~
 ~
 0 -1 3042
 D1
 The alley leads east.
 
-~
+~
 ~
 0 -1 3044
 D2
 The road continues further south.
 
-~
+~
 ~
 0 -1 3047
 E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 E
 letters~
 It says 'Who watches the watchmen?'
 
-~
+~
 S
 #3042
 Wall Road~
 You are walking next to the western city wall.  The road continues further
 
-south and the city gate is just north of here.
+south and the city gate is just north of here.
 
-~
+~
 0 1
 D0
 You see the city gate.
 
-~
+~
 ~
 0 -1 3040
 D2
 The road continues further south.
 
-~
+~
 ~
 0 -1 3043
 E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 S
 #3041
 Inside the East Gate of Midgaard~
 You are by two small towers that have been built into the city wall and
 
-connected with a footbridge across the heavy wooden gate.  Main Street leads
+connected with a footbridge across the heavy wooden gate.  Main Street leads
 
-west from here.  South of here is the wall road, but it looks dirty and 
+west from here.  South of here is the wall road, but it looks dirty and 
 
-not too safe.
+not too safe.
 
-~
+~
 0 1
 D1
 You see the city gate.
 
-~
+~
 ~
 1 3133 3053
 D3
@@ -1706,112 +1706,112 @@ E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 E
 tower towers~
 Both of the towers are built from large grey rocks that have been fastened to
 
-each other with some kind of mortar, just like the city wall.
+each other with some kind of mortar, just like the city wall.
 
-~
+~
 E
 gate~
 It is a set of very big double doors made from hard wood.  They have been
 
-reinforced with large iron bands to make them even more sturdy.  One of the
+reinforced with large iron bands to make them even more sturdy.  One of the
 
-doors is equipped with a very big lock.
+doors is equipped with a very big lock.
 
-~
+~
 E
 bridge footbridge~
 It is too high up to reach but it looks as if one easily could walk across it
 
-from one tower to the other.
+from one tower to the other.
 
-~
+~
 S
 #3040
 Inside the West Gate of Midgaard~
 You are by two small towers that have been built into the city wall and
 
-connected with a footbridge across the heavy wooden gate.  Main Street leads
+connected with a footbridge across the heavy wooden gate.  Main Street leads
 
-east and Wall Road leads south from here.
+east and Wall Road leads south from here.
 
-~
+~
 0 1
 D1
 You see Main Street.
 
-~
+~
 ~
 0 -1 3012
 D2
 You see the road running along the inner side of the city wall.  You notice
 
-that it is called Wall Road.
+that it is called Wall Road.
 
-~
+~
 ~
 0 -1 3042
 D3
 The city gate is to the west.
 
-~
+~
 ~
 1 3133 3052
 E
 wall~
 It is built from large grey rocks that have been fastened to each other with
 
-some kind of mortar.  It is far too high to climb.
+some kind of mortar.  It is far too high to climb.
 
-~
+~
 E
 tower towers~
 Both of the towers are built from large grey rocks that have been fastened to
 
-each other with some kind of mortar, just like the city wall.
+each other with some kind of mortar, just like the city wall.
 
-~
+~
 E
 gate~
 It is a set of very big double doors made from hard wood.  They have been
 
-reinforced with large iron bands to make them even more sturdy.  One of the
+reinforced with large iron bands to make them even more sturdy.  One of the
 
-doors is equipped with a very big lock.
+doors is equipped with a very big lock.
 
-~
+~
 E
 bridge footbridge~
 It is too high up to reach but it looks as if one easily could walk across it
 
-from one tower to the other.
+from one tower to the other.
 
-~
+~
 S
 #3035
 The Leather Shop~
 An acrid smell fills this large room.  Along the walls are numerous
 
-shelves containing all sorts of animal hide and in the crackling fireplace
+shelves containing all sorts of animal hide and in the crackling fireplace
 
-hangs a big iron pot with boiling water.  In the middle of the room is a
+hangs a big iron pot with boiling water.  In the middle of the room is a
 
-large oak table.
+large oak table.
 
-A wooden sign is hanging above the fireplace.
+A wooden sign is hanging above the fireplace.
 
-~
+~
 1032 11
 D2
 You see the alley.
 
-~
+~
 ~
 0 -1 3044
 E
@@ -1819,51 +1819,51 @@ sign~
 The wooden sign says :-
 
 
-    Use 'list' to see what is in store,
+    Use 'list' to see what is in store,
 
-	'buy <item>' to buy an item,
+	'buy <item>' to buy an item,
 
-	'sell <item>' to sell an item and
+	'sell <item>' to sell an item and
 
-	'value <item>' to make the leather worker evaluate an item.
+	'value <item>' to make the leather worker evaluate an item.
 
-~
+~
 E
 pot~
 Several large pieces of leather hide are boiling in the iron pot.
 
-~
+~
 E
 table~
 It is made from solid oak but appears to be very used.  Its surface is
 
-covered in marks and scratches.  A large burning candle stands directly on
+covered in marks and scratches.  A large burning candle stands directly on
 
-the table surface, tallow flowing down its sides.
+the table surface, tallow flowing down its sides.
 
-~
+~
 E
 fireplace~
 It is a rather large fireplace made from heavy granite rocks.
 
-~
+~
 S
 #3034
 The Jeweller's Shop~
 You are in a small, beautifully furnished room.  The warm light emanating from
 
-the small oil lamps on the walls is reflected in the hard, polished surface of
+the small oil lamps on the walls is reflected in the hard, polished surface of
 
-the big mahogany desk that stands in the centre of the room. A small sign with
+the big mahogany desk that stands in the centre of the room. A small sign with
 
-golden letters stands on the desk.
+golden letters stands on the desk.
 
-~
+~
 1032 11
 D0
 You see Main Street.
 
-~
+~
 ~
 0 -1 3015
 E
@@ -1871,85 +1871,85 @@ sign~
 The golden letters say :-
 
 
-    Use 'list' to see what is in store,
+    Use 'list' to see what is in store,
 
-	'buy <item>' to buy an item,
+	'buy <item>' to buy an item,
 
-	'sell <item>' to sell an item and
+	'sell <item>' to sell an item and
 
-	'value <item>' to make the jeweller evaluate an item.
+	'value <item>' to make the jeweller evaluate an item.
 
-~
+~
 E
 desk~
 Your face is reflected in its surface.
 
-~
+~
 E
 oil lamps~
 They are made from polished gold and looks as if they are securely fastened
 
-to the smooth stone walls.
+to the smooth stone walls.
 
-~
+~
 S
 #3033
 The Magic Shop~
 You are in a small room that smells of rare chemicals and spices.
 
-Dividing the room in two is a large desk, and on the wall behind it are
+Dividing the room in two is a large desk, and on the wall behind it are
 
-numerous shelves crammed with jars, bottles, books and scrolls of all
+numerous shelves crammed with jars, bottles, books and scrolls of all
 
-sorts and sizes.
+sorts and sizes.
 
-~
+~
 1032 11
 D2
 You see the main street.
 
-~
+~
 ~
 0 -1 3012
 E
 scrolls~
 Each scroll is stored in a leather tube that protects it from moist.
 
-~
+~
 E
 books~
 Most of them appear to be very old and dusty.
 
-~
+~
 E
 jars bottles~
 Some of them are transparent enabling you to see that some contain colored
 
-powders while others contain body parts of various animals.
+powders while others contain body parts of various animals.
 
-~
+~
 S
 #3032
 Pet Shop Store~
 This is the small dark room in which the Pet Shop Boy keeps his pets.
 
-It is vital that this room be immediately after the pet shop.
+It is vital that this room be immediately after the pet shop.
 
-~
+~
 12 11
 S
 #3031
 The Pet Shop~
 The Pet Shop is a small crowded store, full of cages and animals of
 
-various sorts and sizes.  There is a sign on the wall.
+various sorts and sizes.  There is a sign on the wall.
 
-~
+~
 5128 11
 D2
 You see the Alley.
 
-~
+~
 ~
 0 -1 3045
 E
@@ -1957,35 +1957,35 @@ sign~
 The sign reads:
 
 
-  Use 'List' to see the available pets.
+  Use 'List' to see the available pets.
 
-  Use 'Buy <pet> <name>' to buy yourself a pet and name it.
-
-
-  You can use 'order <pet> <instructions>' to order your pets around.
-
-  If you abuse your pet, it will no longer regard you as its master.
-
-  If you have several pets you may use 'order all <instructions>'
+  Use 'Buy <pet> <name>' to buy yourself a pet and name it.
 
 
- Regards,
+  You can use 'order <pet> <instructions>' to order your pets around.
+
+  If you abuse your pet, it will no longer regard you as its master.
+
+  If you have several pets you may use 'order all <instructions>'
 
 
-   The Shopkeeper
+ Regards,
 
-~
+
+   The Shopkeeper
+
+~
 S
 #3030
 The Dump~
 (Dwf) An adorable leper stands here rotting quietly.
 
-~
+~
 4 2
 D0
 You see the common square.
 
-~
+~
 ~
 0 -1 3025
 D2
@@ -2001,84 +2001,84 @@ S
 Abandoned Warehouse~
 You are inside the only room in the old warehouse.  The place is very dusty
 
-and appears to have been unused for many years.  The skylight spills
+and appears to have been unused for many years.  The skylight spills
 
-violet-tinged light.
+violet-tinged light.
 
-~
+~
 8 11
 D0
 The Dark Alley.
 
-~
+~
 ~
 0 -1 3026
 E
 sign~
 -x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
 
-xWELCOME TO THE BLACK DETH'S CORPSE RETRIEVAL SERVICE!                        x
+xWELCOME TO THE BLACK DETH'S CORPSE RETRIEVAL SERVICE!                        x
 
--                                                                             -
+-                                                                             -
 
-x If you've died, and were unable to get back to your corpse, why not let the x
+x If you've died, and were unable to get back to your corpse, why not let the x
 
-- Black Deth use his dark powers to summon forth your rotting remains?        -
+- Black Deth use his dark powers to summon forth your rotting remains?        -
 
-x We offer reasonable rates:                                                  x
+x We offer reasonable rates:                                                  x
 
--                                                                             -
+-                                                                             -
 
-x       Levels 1 to 10 : 1000 gold coins.                                     x
+x       Levels 1 to 10 : 1000 gold coins.                                     x
 
--       Levels 11 +    : 3000 gold coins.                                     -
+-       Levels 11 +    : 3000 gold coins.                                     -
 
-x                                                                             x
+x                                                                             x
 
--                        Please note:                                         -
+-                        Please note:                                         -
 
-x 1) NO REFUNDS!                                                              x
+x 1) NO REFUNDS!                                                              x
 
-- 2) If you pay for the Black Deth's services, and receive no corpse, tough.  -
+- 2) If you pay for the Black Deth's services, and receive no corpse, tough.  -
 
-x 3) You will only receive the first corpse the Black Deth finds with his     x
+x 3) You will only receive the first corpse the Black Deth finds with his     x
 
--    dark powers.  So try not to die everywhere and expect him to get         -
+-    dark powers.  So try not to die everywhere and expect him to get         -
 
-x    the corpse with your equipment first time.  Remember, time IS money!     x
+x    the corpse with your equipment first time.  Remember, time IS money!     x
 
-- 4) The prices shown are likely to change at any time.                       -
+- 4) The prices shown are likely to change at any time.                       -
 
-x 5) E&OE                                                                     x
+x 5) E&OE                                                                     x
 
--x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-
 
-~
+~
 S
 #3026
 The Dark Alley~
 The dark alley, to the west is the common square.  The alley continues east.
 
-A forboding unused whorehouse lies to the south.
+A forboding unused whorehouse lies to the south.
 
-~
+~
 0 1
 D1
 The alley continues east.
 
-~
+~
 ~
 0 -1 3045
 D2
 The Unused Whorehouse.
 
-~
+~
 ~
 0 -1 3029
 D3
 You see the common square.
 
-~
+~
 ~
 0 -1 3025
 S
@@ -2086,34 +2086,34 @@ S
 The Common Square~
 The common square, people pass you, talking to each other.  To the west is
 
-the poor alley and to the east is the dark alley.  To the north, this square
+the poor alley and to the east is the dark alley.  To the north, this square
 
-is connected to the market square.  From the south you notice a nasty smell.
+is connected to the market square.  From the south you notice a nasty smell.
 
-~
+~
 0 1
 D0
 You see the market square.
 
-~
+~
 ~
 0 -1 3014
 D1
 You see the dark alley.
 
-~
+~
 ~
 0 -1 3026
 D2
 You see the city dump.
 
-~
+~
 ~
 0 -1 3030
 D3
 You see the poor alley.
 
-~
+~
 ~
 0 -1 3024
 S
@@ -2121,9 +2121,9 @@ S
 Eastern End of Poor Alley~
 You are at the poor alley.  South of here is the Grubby Inn and to the
 
-east you see common square.  The alley continues further west.
+east you see common square.  The alley continues further west.
 
-~
+~
 0 1
 D0
 ~
@@ -2132,19 +2132,19 @@ D0
 D1
 You see the common square.
 
-~
+~
 ~
 0 -1 3025
 D2
 You see the Inn.
 
-~
+~
 ~
 0 -1 3048
 D3
 You see the poor alley.
 
-~
+~
 ~
 0 -1 3044
 S
@@ -2152,16 +2152,16 @@ S
 The Armoury~
 The armoury with all kinds of armours on the walls and in the window.  You
 
-see helmets, shields and chain mails.  To the north is the main street.
+see helmets, shields and chain mails.  To the north is the main street.
 
-On the wall is a small note.
+On the wall is a small note.
 
-~
+~
 1032 11
 D0
 You see the main street.
 
-~
+~
 ~
 0 -1 3013
 E
@@ -2169,41 +2169,41 @@ note~
 You can use these commands for trading:
 
 
-  value <item>     To get the price of an item in your possession.
+  value <item>     To get the price of an item in your possession.
 
-  sell <item>      To sell something.
+  sell <item>      To sell something.
 
-  buy <item>       To buy something (provided that the shop has it in store).
+  buy <item>       To buy something (provided that the shop has it in store).
 
-  list             Gives you a listing of the shop's inventory.
+  list             Gives you a listing of the shop's inventory.
 
 
-	WE DON'T GIVE CREDIT; WE DON'T EXPECT TO RECEIVE CREDIT!
+	WE DON'T GIVE CREDIT; WE DON'T EXPECT TO RECEIVE CREDIT!
 
-			     NO HAGGLING
+			     NO HAGGLING
 
-~
+~
 S
 #3016
 The Main Street~
 The main street, to the north is the weapon shop.  To the east you leave town
 
-and to the west the street leads to the market square. A doorway to the south
+and to the west the street leads to the market square. A doorway to the south
 
-marks the entrance to the Sample House.
+marks the entrance to the Sample House.
 
-~
+~
 0 1
 D0
 You see the weapon shop.
 
-~
+~
 ~
 0 -1 3011
 D1
 You see the city gate.
 
-~
+~
 ~
 0 -1 3041
 D2
@@ -2213,7 +2213,7 @@ D2
 D3
 You see the main street leading to the market square.
 
-~
+~
 ~
 0 -1 3015
 S
@@ -2221,34 +2221,34 @@ S
 The Main Street~
 You are on Main Street crossing through town.  To the north is the general
 
-store, and the main street continues east.  To the west you see and hear the
+store, and the main street continues east.  To the west you see and hear the
 
-market place and to the south is the Jeweller's Shop.
+market place and to the south is the Jeweller's Shop.
 
-~
+~
 0 1
 D0
 You see the general store.
 
-~
+~
 ~
 0 -1 3010
 D1
 You see Main Street.
 
-~
+~
 ~
 0 -1 3016
 D2
 You see the Jeweller's Shop.
 
-~
+~
 ~
 0 -1 3034
 D3
 You see the market square.
 
-~
+~
 ~
 0 -1 3014
 S
@@ -2256,30 +2256,30 @@ S
 Market Square~
 You are standing on the market square, the famous Square of Midgaard. A large,  peculiar looking statue is standing in the middle of the square. Roads lead in  every direction, north to the temple square, south to the common square, east   and westbound is the main street.  Some small steps lead down below the Squar.f
 
-~
+~
 0 1
 D0
 You see the temple square.
 
-~
+~
 ~
 0 -1 3005
 D1
 You see the main street.
 
-~
+~
 ~
 0 -1 3015
 D2
 You see the common square.
 
-~
+~
 ~
 0 -1 3025
 D3
 You see the main street.
 
-~
+~
 ~
 0 -1 3013
 D4
@@ -2289,47 +2289,47 @@ D4
 D5
 Some steps lead this way....
 
-~
+~
 ~
 1 -1 9551
 E
 statue~
 What you see is the Midgaard Worm, stretching around the Palace of Midgaard.
 
-~
+~
 S
 #3013
 Main Street~
 You are on the main street passing through the City of Midgaard.  South of
 
-here is the entrance to the Armoury, and the bakery is to the north.  East of
+here is the entrance to the Armoury, and the bakery is to the north.  East of
 
-here is the market square.
+here is the market square.
 
-~
+~
 0 1
 D0
 You see the bakery.
 
-~
+~
 ~
 0 -1 3009
 D1
 You see the market square.
 
-~
+~
 ~
 0 -1 3014
 D2
 You see the armoury.
 
-~
+~
 ~
 0 -1 3020
 D3
 You see the main street.
 
-~
+~
 ~
 0 -1 3012
 S
@@ -2337,22 +2337,22 @@ S
 Main Street~
 You are at the end of the main street of Midgaard.  The street continues 
 
-east towards the market square.  The magic shop is to the north and to the 
+east towards the market square.  The magic shop is to the north and to the 
 
-west is the city gate.
+west is the city gate.
 
-~
+~
 0 1
 D0
 You see the magic shop.
 
-~
+~
 ~
 0 -1 3033
 D1
 You see the main street.
 
-~
+~
 ~
 0 -1 3013
 D2
@@ -2362,7 +2362,7 @@ D2
 D3
 You see the city gate.
 
-~
+~
 ~
 0 -1 3040
 S
@@ -2370,12 +2370,12 @@ S
 The Weapon Shop~
 You are inside the weapon shop.  There is a small note on the counter.
 
-~
+~
 1032 11
 D2
 You see the main street.
 
-~
+~
 ~
 0 -1 3016
 E
@@ -2383,32 +2383,32 @@ note~
 The note reads:
 
 
-  List  - Show which various items are in the store.
+  List  - Show which various items are in the store.
 
-  Buy   - Buy an item.
+  Buy   - Buy an item.
 
-  Value - The shopkeeper will (free of charge) tell how much he will
+  Value - The shopkeeper will (free of charge) tell how much he will
 
-	  pay for your item.
+	  pay for your item.
 
-  Sell  - Sell an item.
+  Sell  - Sell an item.
 
-~
+~
 S
 #3010
 The General Store~
 You are inside the general store.  All sorts of items are stacked on shelves
 
-behind the counter, safely out of your reach.
+behind the counter, safely out of your reach.
 
-A small note hangs on the wall.
+A small note hangs on the wall.
 
-~
+~
 1032 11
 D2
 You see the main street.
 
-~
+~
 ~
 0 -1 3015
 E
@@ -2416,34 +2416,34 @@ note~
 The note reads:
 
 
-  List  - Show which various items are in the store.
+  List  - Show which various items are in the store.
 
-  Buy   - Buy an item.
+  Buy   - Buy an item.
 
-  Value - The shopkeeper will (free of charge) tell how much he will
+  Value - The shopkeeper will (free of charge) tell how much he will
 
-	  pay for your item.
+	  pay for your item.
 
-  Sell  - Sell an item.
+  Sell  - Sell an item.
 
-~
+~
 S
 #3009
 The Bakery~
 You are standing inside the small bakery.  A sweet scent of Danish and
 
-fine bread fills the room.  The bread and Danish are arranged in fine order
+fine bread fills the room.  The bread and Danish are arranged in fine order
 
-on the shelves, and seem to be of the finest quality.
+on the shelves, and seem to be of the finest quality.
 
-A small sign is on the counter.
+A small sign is on the counter.
 
-~
+~
 1036 11
 D2
 You see the main street.
 
-~
+~
 ~
 0 -1 3013
 E
@@ -2451,39 +2451,39 @@ sign~
 Free instructions provided by the store:
 
 
-   Buy  - Will buy you some bread or pastry.
+   Buy  - Will buy you some bread or pastry.
 
-   List - The baker will kindly tell you the price and sort of the bread in
+   List - The baker will kindly tell you the price and sort of the bread in
 
-	  his bakery.
+	  his bakery.
 
-~
+~
 E
 danish pastry~
 You see that this is truly delicious pastry.  Must be made by a Dane from
 
-Denmark (which surely is not the capital of Sweden!).  Former ruler of
+Denmark (which surely is not the capital of Sweden!).  Former ruler of
 
-Scandinavia, England, Northern Germany, Northern France, Russia, Greenland,
+Scandinavia, England, Northern Germany, Northern France, Russia, Greenland,
 
-Iceland, Estonia etc. etc.
+Iceland, Estonia etc. etc.
 
-   The sight of those large, wholesome chokoladeboller makes your mouth water
+   The sight of those large, wholesome chokoladeboller makes your mouth water
 
-and your soul sing.
+and your soul sing.
 
 
-~
+~
 S
 #3008
 The lover's hideaway.~
 A quiet, ornately furnished room, for you to sit and chat with your loved one.
 
-Relax for a while, get the strains out of your system. In fact, its really
+Relax for a while, get the strains out of your system. In fact, its really
 
-just a glorified private room isnt it.
+just a glorified private room isnt it.
 
-~
+~
 1548 11
 D4
 ~
@@ -2492,7 +2492,7 @@ D4
 D5
 You see the entrance hall.
 
-~
+~
 ~
 0 -1 3006
 S
@@ -2500,70 +2500,70 @@ S
 The Grunting Boar~
 You are standing in the bar.  The bar is set against the northern wall, old
 
-archaic writing, carvings and symbols cover its top.  A fireplace is built into
+archaic writing, carvings and symbols cover its top.  A fireplace is built into
 
-the western wall, and through the southeastern windows you can see the temple
+the western wall, and through the southeastern windows you can see the temple
 
-square.  This place makes you feel like home.
+square.  This place makes you feel like home.
 
-A small sign with big letters is fastened to the bar.
+A small sign with big letters is fastened to the bar.
 
-~
+~
 8 11
 D3
 You see the exit to the entrance hall.
 
-~
+~
 ~
 0 -1 3006
 E
 writing carving carvings symbols symbol~
 Although it is very hard to understand, you think it looks a lot like beer,
 
-poems about beer, and small beer-mugs.
+poems about beer, and small beer-mugs.
 
-~
+~
 E
 sign~
 The sign reads:
 
-Free instructions provided by the Grunting Boar Inn.
+Free instructions provided by the Grunting Boar Inn.
 
 
-   Buy  - Buy something (drinkable) from the bartender.
+   Buy  - Buy something (drinkable) from the bartender.
 
-   List - The bartender will show you all the different drinks and
+   List - The bartender will show you all the different drinks and
 
-	  specialties, and tell the price of each.
+	  specialties, and tell the price of each.
 
-~
+~
 S
 #3006
 Entrance to the Grunting Boar Inn~
 You are standing in the entrance hall of the Grunting Boar Inn.  The hall
 
-has been wisely decorated with simple but functional furniture.  A small
+has been wisely decorated with simple but functional furniture.  A small
 
-staircase leads up to the defunct reception room and the bar is to the east.
+staircase leads up to the defunct reception room and the bar is to the east.
 
-~
+~
 8 11
 D1
 Surprise! You see the bar.
 
-~
+~
 ~
 0 -1 3007
 D3
 You see the temple square.
 
-~
+~
 ~
 0 -1 3005
 D4
 You see the defunct reception room.
 
-~
+~
 ~
 0 -1 3008
 S
@@ -2571,28 +2571,28 @@ S
 The Temple Square~
 You are standing in Temple Square. Huge, marble steps lead up to the Temple
 
-Gate. Ye Old Grunting Boar Inn lies to the east. South of you is Market Square
+Gate. Ye Old Grunting Boar Inn lies to the east. South of you is Market Square
 
-the center of Midgaard.
+the center of Midgaard.
 
-~
+~
 16 1
 D0
 You see the temple.
 
-~
+~
 ~
 0 -1 3001
 D1
 You see the good old Grunting Boar Inn.
 
-~
+~
 ~
 0 -1 3006
 D2
 You see the Market Square.
 
-~
+~
 ~
 0 -1 3014
 D3
@@ -2608,50 +2608,50 @@ S
 The Temple Of Midgaard~
 @@WYou stand at the southern end of the Temple Hall in the Temple of Midgaard.
 
-The Temple has been constructed from giant marble blocks, eternal in
+The Temple has been constructed from giant marble blocks, eternal in
 
-appearance.  Most of the walls are covered by ancient murals depicting Gods,
+appearance.  Most of the walls are covered by ancient murals depicting Gods,
 
-Giants and peasants.
+Giants and peasants.
 
-   Large steps lead down through the Grand Temple Gate, descending the huge
+   Large steps lead down through the Grand Temple Gate, descending the huge
 
-mound upon which the temple is built ending at the Temple Square below.
+mound upon which the temple is built ending at the Temple Square below.
 
-   Equally large steps lead UP through a small door into the ENTRANCE to MUD
+   Equally large steps lead UP through a small door into the ENTRANCE to MUD
 
-SCHOOL.  (type '@@yup@@W' to go to @@RMUD SCHOOL@@W.)
+SCHOOL.  (type '@@yup@@W' to go to @@RMUD SCHOOL@@W.)
 
-You see a small plaque and spy a small doorway to the east, which looks like
+You see a small plaque and spy a small doorway to the east, which looks like
 
-it was just made, as well as a Grand Archway to the west.
+it was just made, as well as a Grand Archway to the west.
 
-  The Temple itself with the Midgaard Healer lie North of here.
+  The Temple itself with the Midgaard Healer lie North of here.
 
-~
+~
 213020 8
 D0
 At the northern end of the temple hall is a statue and a huge altar.
 
-~
+~
 ~
 0 -1 3054
 D1
 The Donation Area.
 
-~
+~
 ~
 0 -1 3021
 D2
 You see the temple square.
 
-~
+~
 ~
 0 -1 3005
 D3
 The Entrance Hall to the Player's Rooms.
 
-~
+~
 ~
 0 -1 1101
 D4
@@ -2666,27 +2666,27 @@ E
 plaque~
 This entire world has been integrated, modified, debugged, and enhanced by
 
-Hatchet, Kahn, and Furey of MERC Industries to be run by any MERC Mud.
+Hatchet, Kahn, and Furey of MERC Industries to be run by any MERC Mud.
 
-1992 December 17
+1992 December 17
 
-~
+~
 S
 #3002
 The Bank of Midgaard~
 You are in a small room, home to the Midgaard branch of Globank, the bank that
 
-likes to say no.  The room is very small, and looks like most other banks
+likes to say no.  The room is very small, and looks like most other banks
 
--silent, and well-kept.  You hate it already.
+-silent, and well-kept.  You hate it already.
 
- 
+ 
 
- 
+ 
 
-@@lYou notice a shadowy form in the corner, seemingly casing the joint.@@N
+@@lYou notice a shadowy form in the corner, seemingly casing the joint.@@N
 
-~
+~
 8 11
 D0
 ~
@@ -2714,15 +2714,15 @@ S
 Calm room of relaxation and meditation.~
 Theres a natural mystic flowing through the air, and if you listen carefully
 
-you will hear, sweet sweet sounds of trickling water, gentle chiming and winds
+you will hear, sweet sweet sounds of trickling water, gentle chiming and winds
 
-stirring through forrests. Calm feelings pervade the air, and you breathe
+stirring through forrests. Calm feelings pervade the air, and you breathe
 
-deeply in an atmosphere of true relaxation and utmost tranquility
+deeply in an atmosphere of true relaxation and utmost tranquility
 
- 
+ 
 
-~
+~
 1562 11
 D5
 ~
@@ -2733,11 +2733,11 @@ S
 A dusty trail into nowhere~
 Managing to escape the hustle and bustle of Midgaard, you now find yourself
 
-standing in the middle of an open field...Dusty trails lead in all directions
+standing in the middle of an open field...Dusty trails lead in all directions
 
-to what appears to be.....a farm?!?!?!
+to what appears to be.....a farm?!?!?!
 
-~
+~
 1024 2
 D0
 ~
@@ -2748,11 +2748,11 @@ S
 Leading to the pond~
 The tall grass starts to creep up on your sides, as the smell of water and
 
-green grass linger in the air. Gazing towards the north more you can barely
+green grass linger in the air. Gazing towards the north more you can barely
 
-make out what appears to be a pond.
+make out what appears to be a pond.
 
-~
+~
 1024 2
 D0
 ~
@@ -2767,11 +2767,11 @@ S
 The shores of a small pond~
 You find yourself waist deep in tall grasses and cat-o-nine tails. The ground
 
-beneath your feet is soft and squishy. Kind of makes you feel like if you
+beneath your feet is soft and squishy. Kind of makes you feel like if you
 
-don't move soon you know your will become a permanent fixture here.
+don't move soon you know your will become a permanent fixture here.
 
-~
+~
 1024 2
 D0
 ~
@@ -2795,18 +2795,18 @@ S
 The Immortal Contact Area~
 This room is for use of contacting an immortal when none can be found thru
 
-other means. If you have bugs to report, reims to ask for, and other
+other means. If you have bugs to report, reims to ask for, and other
 
-situations that need an immortals guidance please feel free to post here. This
+situations that need an immortals guidance please feel free to post here. This
 
-board is meant for that one purpose alone, excessive use will lead to the
+board is meant for that one purpose alone, excessive use will lead to the
 
-board being unavailable for the purposes which is was intended for, which is
+board being unavailable for the purposes which is was intended for, which is
 
-to help in coping with the frequest adsence of immortals when they are needed.
+to help in coping with the frequest adsence of immortals when they are needed.
 
 
-~
+~
 1032 1
 D5
 ~
@@ -2817,15 +2817,15 @@ S
 @@WTales of Power, Despair and Honor@@N~
 @@aThis room is placed for mortals to comment and compliment the roleplaying
 
-qualities of other players.  It is NOT here for in character stories, flames,
+qualities of other players.  It is NOT here for in character stories, flames,
 
-or boosting your own multi-play characters.  Messages will be reviewed, and
+or boosting your own multi-play characters.  Messages will be reviewed, and
 
-researched notes will be used in calculating the weekly roleplayer of the week
+researched notes will be used in calculating the weekly roleplayer of the week
 
-award of 10 qps.@@N
+award of 10 qps.@@N
 
-~
+~
 1052 1
 D5
 ~
@@ -2839,7 +2839,7 @@ post postmaster master~
 The Postmaster~
 The Postmaster stands here, watching over you...
 
-~
+~
 ~
 524299 8320 1000 S
 72 1
@@ -2861,10 +2861,10 @@ crier~
 the town crier~
 The town crier is here, weeping quietly.
 
-~
+~
 He is very good at his job - completely dissolved in tears.
 
-~
+~
 1 0 900 S
 23 1
 0 0 0
@@ -2875,12 +2875,12 @@ mayor~
 the mayor~
 The mayor is here.  He shakes your hand.
 
-~
+~
 He is a well-built, middle-aged man with thin, grey hair.
 
-~
+~
 1 8192 900 S
-16 1
+17 1
 0 0 0
 ! 0 0 0 7 0 0 32
 | 0 0 0 0 0 0 0
@@ -2889,16 +2889,16 @@ secretary~
 the secretary~
 A secretary is sitting at the desk.
 
-~
+~
 She looks very busy.
 
-The Secretary says 'Sorry, but the Mayor is extremely busy today'.
+The Secretary says 'Sorry, but the Mayor is extremely busy today'.
 
-The Secretary says 'Please sit down and have a seat in the meantime'.
+The Secretary says 'Please sit down and have a seat in the meantime'.
 
-~
+~
 1 0 900 S
-14 2
+13 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2907,12 +2907,12 @@ cityguard guard~
 the cityguard~
 A cityguard stands here, looking very upset.
 
-~
+~
 A big, strong, angry guard.
 
-~
+~
 1 0 1000 S
-8 1
+9 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2921,12 +2921,12 @@ captain~
 the captain~
 The captain of the guard is looking very upset.
 
-~
+~
 A big, strong, angry captain.
 
-~
+~
 1 8 1000 S
-17 1
+16 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2935,12 +2935,12 @@ duck~
 the duck~
 A duck is here, quacking happily.
 
-~
+~
 The duck is quite fat.  It looks like it is enjoying life.
 
-~
+~
 1 0 1000 S
-9 0
+8 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2949,10 +2949,10 @@ sparrow~
 the sparrow~
 A sparrow is flapping around on the ground.
 
-~
+~
 The sparrow looks like it is enjoying life.
 
-~
+~
 1 0 1000 S
 6 0
 0 0 0
@@ -2963,10 +2963,10 @@ duckling~
 the duckling~
 A duckling is swimming around in the pond.
 
-~
+~
 The duckling is adorable, it looks most of all like a tiny furball.
 
-~
+~
 1 0 1000 S
 1 0
 0 0 0
@@ -2977,12 +2977,12 @@ swan~
 the swan~
 A swan is swimming around in the pond.
 
-~
+~
 The white swan is very elegant.
 
-~
+~
 1 0 1000 S
-5 0
+6 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2991,12 +2991,12 @@ sexton~
 the sexton~
 A sexton is sitting here, drinking hot tea.
 
-~
+~
 The sexton looks like he is relaxing after another grave-digging job.
 
-~
+~
 1 0 800 S
-14 1
+13 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3005,14 +3005,14 @@ maid~
 the maid~
 The maid is waiting for your order.
 
-~
+~
 She is very beautiful with golden hair, and deep blue eyes. A good reason
 
-for coming here more often.
+for coming here more often.
 
-~
+~
 1 0 1000 S
-31 2
+30 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3021,12 +3021,12 @@ wolf~
 the wolf~
 A large, trained wolf is here.
 
-~
+~
 The wolf looks like a strong, fearless fighter.
 
-~
+~
 1 0 0 S
-4 0
+3 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3035,12 +3035,12 @@ rottweiler~
 the rottweiler~
 A large, loyal rottweiler is here.
 
-~
+~
 The rottweiler looks like a strong, fierce fighter.
 
-~
+~
 1 0 400 S
-24 0
+23 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3049,12 +3049,12 @@ beagle~
 the beagle~
 A small, quick, loyal beagle is here.
 
-~
+~
 The beagle looks like a fierce fighter.
 
-~
+~
 1 0 400 S
-15 0
+14 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3063,10 +3063,10 @@ puppy~
 the puppy~
 A small loyal puppy is here.
 
-~
+~
 The puppy looks like a cute, little, fierce fighter.
 
-~
+~
 1 0 400 S
 2 0
 0 0 0
@@ -3077,12 +3077,12 @@ kitten~
 the kitten~
 A small loyal kitten is here.
 
-~
+~
 The kitten looks like a cute, little, fierce fighter.
 
-~
+~
 1 0 400 S
-3 0
+4 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3091,10 +3091,10 @@ cityguard guard~
 the cityguard~
 A cityguard is here, guarding the mayor.
 
-~
+~
 A big, strong, helpful, trustworthy guard.
 
-~
+~
 65 65538 1000 S
 1 1
 0 0 0
@@ -3105,10 +3105,10 @@ cityguard guard~
 the cityguard~
 A cityguard is here, guarding the gate.
 
-~
+~
 A big, strong, helpful, trustworthy guard.
 
-~
+~
 65 0 1000 S
 7 1
 0 0 0
@@ -3119,10 +3119,10 @@ cityguard guard~
 the cityguard~
 A cityguard is here, guarding the gate.
 
-~
+~
 A big, strong, helpful, trustworthy guard.
 
-~
+~
 65 0 1000 S
 11 1
 0 0 0
@@ -3133,12 +3133,12 @@ cat~
 an alley cat~
 An alley cat hisses at you.
 
-~
+~
 The alley cat is half starved and more than a little feral.
 
-~
+~
 1 0 -200 S
-38 1
+39 1
 -350 85 94
 ! 0 0 19 7 2322 0 0
 | 0 0 0 0 0 0 0
@@ -3147,10 +3147,10 @@ beggar~
 the beggar~
 A beggar is here, asking for a few coins.
 
-~
+~
 The beggar looks like she is fed up with life.
 
-~
+~
 1 0 400 S
 2 2
 0 0 0
@@ -3161,12 +3161,12 @@ drunk~
 the drunk~
 A singing, happy drunk.
 
-~
+~
 A drunk who seems to be too happy, and to carry too much money.
 
-~
+~
 1 0 400 S
-10 1
+9 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3175,10 +3175,10 @@ vagabond~
 the vagabond~
 A vagabond is here, looking for victims.
 
-~
+~
 He looks pretty mean.
 
-~
+~
 1 0 -200 S
 7 1
 0 0 0
@@ -3189,10 +3189,10 @@ bug~
 A bug~
 A furry little system bug is here.
 
-~
+~
 A system bug is something from a computer programer's worst nightmare.
 
-~
+~
 131201 40 -200 S
 10 0
 10 -3 -3
@@ -3203,10 +3203,10 @@ janitor~
 the janitor~
 A janitor is walking around, cleaning up.
 
-~
+~
 ~
 1 0 900 S
-7 1
+6 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3215,10 +3215,10 @@ cityguard guard~
 the cityguard~
 A cityguard stands here.
 
-~
+~
 A big, strong, helpful, trustworthy guard.
 
-~
+~
 65 0 1000 S
 35 1
 -100 70 80
@@ -3229,16 +3229,16 @@ dealer~
 Aod the Dealer~
 Aod the Dealer stands in the shadows here.
 
-~
+~
 Aod looks just like the dealer hoodlum you see on T.V.  He's wearing a
 
-concert shirt and Levi 501's.  His hair is pulled back into a pony tail.
+concert shirt and Levi 501's.  His hair is pulled back into a pony tail.
 
-A beard and moustache complete the look.  Aod has brought some drugs
+A beard and moustache complete the look.  Aod has brought some drugs
 
-with him from Generic Mud.
+with him from Generic Mud.
 
-~
+~
 8388611 552 0 S
 10 1
 0 0 0
@@ -3249,12 +3249,12 @@ filthy~
 Filthy~
 Filthy is standing here, eager to serve you a special drink.
 
-~
+~
 Filthy looks real, ehm, dirty. He likes to keep his costumers happy,
 
-but do not mess with him or else he'll get upset.
+but do not mess with him or else he'll get upset.
 
-~
+~
 3 0 600 S
 15 1
 -500 500 500
@@ -3265,12 +3265,12 @@ bartender~
 the bartender~
 A bartender watches you calmly, while he skillfully mixes a drink.
 
-~
+~
 A tired looking Bartender who hates trouble in his bar.
 
-~
+~
 8388611 0 900 S
-49 1
+48 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3279,10 +3279,10 @@ healer~
 the healer~
 A healer is here.
 
-~
+~
 Although retired from adventuring, the healer still lends a hand.
 
-~
+~
 4099 8328 1000 S
 113 1
 -500 500 500
@@ -3294,27 +3294,27 @@ Gertrude~
 Gertrude the Executioner polishes her blade...~
 A masked woman with muscles bulging all over her body.  You can tell by
 
-the look in her eyes that she enjoys seeing you cower in her presence.
+the look in her eyes that she enjoys seeing you cower in her presence.
 
-~
+~
 131103 1633020 1000 S
 138 2
 -2500 1000 1000
-! 0 0 0 7 944270 7637056 48
+! 3 0 0 7 944270 7637056 48
 | 0 0 0 0 0 0 0
 #3010
 leather worker~
 the leather worker~
 The leather worker is sitting by the table, sewing a leather cap.
 
-~
+~
 He looks as an honest, hard-working artisan who only just earns enough to
 
-keep himself going.
+keep himself going.
 
-~
+~
 3 128 900 S
-108 1
+107 1
 -500 500 500
 ! 0 0 0 7 2054 0 0
 | 0 0 0 0 0 0 0
@@ -3323,10 +3323,10 @@ jeweller~
 the jeweller~
 The jeweller is standing behind the desk.
 
-~
+~
 He is fat and has a content although watchful look on his face.
 
-~
+~
 8388611 8320 900 S
 79 1
 -500 500 500
@@ -3337,10 +3337,10 @@ boy~
 the pet shop boy~
 A pet shop boy is here, humming gently.
 
-~
+~
 He is young and close-cropped and looks quite happy.
 
-~
+~
 3 0 900 S
 71 1
 -500 500 500
@@ -3351,10 +3351,10 @@ sailor~
 the sailor~
 A sailor stands here, waiting to train you.
 
-~
+~
 He looks like a strong, fit sailor.
 
-~
+~
 515 0 900 S
 66 1
 0 0 0
@@ -3365,12 +3365,12 @@ captain~
 the captain~
 A retired captain stands here, selling boats.
 
-~
+~
 This captain has killed more sharks than you have eaten peas.
 
-~
+~
 3 40 900 S
-19 1
+20 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3379,10 +3379,10 @@ thief~
 the thief~
 A thief, all dressed in black.
 
-~
+~
 Well COUNT your money!
 
-~
+~
 3 98304 100 S
 2 1
 0 0 0
@@ -3393,12 +3393,12 @@ armourer armorer~
 the armourer~
 An armourer stands here.
 
-~
+~
 An old but very strong armourer, he has made more armours in his
 
-lifetime than you have ever seen.
+lifetime than you have ever seen.
 
-~
+~
 9438211 8328 900 S
 101 1
 -500 500 500
@@ -3409,10 +3409,10 @@ weaponsmith~
 the weaponsmith~
 A weaponsmith.
 
-~
+~
 A young weaponsmith, who still has lots to learn.
 
-~
+~
 8396807 8328 900 S
 84 1
 -500 500 500
@@ -3423,10 +3423,10 @@ grocer~
 the grocer~
 A grocer stands at the counter, with a slightly impatient look on his face.
 
-~
+~
 A tall grocer, who moves two 200 pounds bag of flour around on his shoulders.
 
-~
+~
 8388611 8320 900 S
 110 1
 -500 500 500
@@ -3437,14 +3437,14 @@ baker~
 the baker~
 The baker looks at you calmly, wiping flour from his face with one hand.
 
-~
+~
 A fat, nice looking baker. But you can see that he has many scars on his
 
-body.
+body.
 
-~
+~
 9437187 8320 900 S
-99 1
+98 1
 -500 500 500
 ! 0 0 0 7 6600 16384 0
 | 0 0 0 0 0 0 0
@@ -3453,14 +3453,14 @@ wizard~
 the wizard~
 A wizard walks around behind the counter, talking to himself.
 
-~
+~
 The wizard looks old and senile, and yet he looks like a very powerful
 
-wizard. He is equipped with fine clothing, and is wearing many fine
+wizard. He is equipped with fine clothing, and is wearing many fine
 
-rings and bracelets.
+rings and bracelets.
 
-~
+~
 3 0 900 S
 74 1
 -500 500 500
@@ -3471,12 +3471,12 @@ max teller~
 Max~
 Max the bank teller stands here, ready to take your money.
 
-@@W  Max the bank teller says, 'Have you seen those shady dudes loitering about?'@@N
+@@W  Max the bank teller says, 'Have you seen those shady dudes loitering about?'@@N
 
-~
+~
 He looks greasy, and not very trustworthy.  Go figure.
 
-~
+~
 9469963 128 0 S
 97 1
 -500 500 500
@@ -3488,7 +3488,7 @@ collector~
 @@WA @@lS@@do@@eE Tax Collector@@W wanders about looking for poeple who haven't filed their taxes.@@N~
 ~
 20250625 1591528 0 S
-131 1
+132 1
 -2500 1000 1000
 ! 0 0 0 7 401294 128 16
 | 0 0 0 0 0 0 0
@@ -3497,7 +3497,7 @@ warhorse horse~
 @@WA Warhorse@@N~
 @@WA Warhorse snorts at you!@@N
 
-~
+~
 ~
 134217985 0 0 S
 31 1
@@ -3511,6 +3511,7 @@ ladder~
 ~
 ~
 1 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -3520,8 +3521,9 @@ darkness~
 @@GDarkness@@g~
 A blade of @@GDarkness@@g lies here.
 
-~
+~
 5 16384 8421376 33
+0.00
 0 0 0 9 0 0 0 0 0 0
 10
 A
@@ -3538,13 +3540,13 @@ E
 darkness~
 Looking at @@GDarkness@@g is like looking into the furthest corner of your
 
-sad and evil soul.  You sense the power stored within this weapon to be awesome,
+sad and evil soul.  You sense the power stored within this weapon to be awesome,
 
-ready to strike your enemies at the slightest chance.  You are forced to look
+ready to strike your enemies at the slightest chance.  You are forced to look
 
-away, rather than be dragged into it's dark heart....
+away, rather than be dragged into it's dark heart....
 
-~
+~
 L
 1
 #3039
@@ -3552,6 +3554,7 @@ oil~
 some cinnamon massage oil~
 An oily patch on the ground~
 13 2 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -3561,6 +3564,7 @@ loren mask~
 loren's Silver Mask~
 The Mask of Loren lies here.~
 9 1 8388624 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -3576,6 +3580,7 @@ ddagger~
 a dagger~
 A dagger lies here.~
 5 1 8421376 1
+0.00
 0 0 0 11 0 0 0 0 0 0
 1
 A
@@ -3593,6 +3598,7 @@ dcomic~
 a Dark Horse Comic~
 A tattered, well-read edition of Dark Horse Presents... lies forgotten here.~
 1 1 8421376 1
+0.00
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -3612,6 +3618,7 @@ ddhell~
 darkDemon's flaming blade named "HellsFury"~
 DarkDemon's blazing blade is here !~
 5 3 8421376 1
+0.00
 0 0 0 11 0 0 0 0 0 0
 1
 A
@@ -3629,8 +3636,9 @@ board~
 the lover's board~
 The lover's board is stuck to the wall with 4 arrows.
 
-~
+~
 27 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -3640,8 +3648,9 @@ board~
 a bulletin board.~
 A decrepit board with sheets of paper stuck to it is tacked to the wall.
 
-~
+~
 27 0 0 1
+0.00
 0 0 0 3089 0 0 0 0 0 0
 1
 L
@@ -3651,8 +3660,9 @@ letter~
 <Obj Name> not available.~
 A letter of condolence lies here.
 
-~
+~
 13 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -3662,6 +3672,7 @@ board notice bulletin~
 the notice board.~
 There is a large notice board fixed to the wall.~
 27 0 0 1
+0.00
 10 1 1 2 0 0 0 0 0 0
 16960
 L
@@ -3671,6 +3682,7 @@ board notice bulletin~
 the test board.~
 There is a Test Bulletin Board here.~
 27 0 0 1
+0.00
 10 1 1 1 0 0 0 0 0 0
 16960
 L
@@ -3680,6 +3692,7 @@ Band Temp Wedding~
 @@WA @@ybeautiful @@gdiamond @@yring @@d<@@WT@@d>@@N~
 @@yA wide, plain circle of gold inscribed:~
 9 0 8396800 1
+0.00
 1 0 0 0 0 0 0 0 0 0
 1
 L
@@ -3689,6 +3702,7 @@ banner~
 a war banner~
 A war banner is on the floor here.~
 1 65 8388608 1
+0.00
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -3699,7 +3713,7 @@ E
 banner~
 This is the official Merc war banner to see you through the darkest realm!
 
-~
+~
 L
 1
 #3016
@@ -3707,6 +3721,7 @@ ring signet~
 a city guard signet ring~
 You see a ring with a strange symbol on the floor.~
 9 64 8396800 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -3720,15 +3735,16 @@ bracer~
 a standard issue bracer~
 You see a standard issue bracer here.~
 9 0 8390656 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 bracer~
 You see a bracer of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3018
@@ -3736,15 +3752,16 @@ belt~
 a standard issue belt~
 You see a standard issue belt here.~
 9 0 8519680 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 belt~
 You see a belt of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3019
@@ -3752,15 +3769,16 @@ cape~
 a standard issue cape~
 You see a standard issue cape here.~
 9 0 8454144 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 cape~
 You see a cape of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3023
@@ -3768,15 +3786,16 @@ sleeves~
 a pair of standard issue sleeves~
 You see a pair of standard issue sleeves here.~
 9 0 8389632 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 sleeves~
 You see sleeves of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3024
@@ -3784,15 +3803,16 @@ gloves~
 a pair of standard issue gloves~
 You see a pair of standard issue gloves here.~
 9 0 8392704 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 gloves~
 You see gloves of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3025
@@ -3800,15 +3820,16 @@ boots~
 a pair of standard issue boots~
 You see a pair of standard issue boots here.~
 9 0 10485760 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 boots~
 You see boots of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3026
@@ -3816,15 +3837,16 @@ leggings~
 a pair of standard issue leggings~
 You see a pair of standard issue leggings here.~
 9 0 9437184 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 leggings~
 You see leggings of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3027
@@ -3832,15 +3854,16 @@ helmet~
 a standard issue helmet~
 You see a standard issue helmet here.~
 9 0 8388616 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 helmet~
 You see a helmet of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3028
@@ -3848,15 +3871,16 @@ cloak~
 a standard issue cloak~
 You see a standard issue cloak here.~
 9 0 8388736 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 cloak~
 You see a cloak of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3029
@@ -3864,15 +3888,16 @@ shield~
 a standard issue shield~
 You see a standard issue shield here.~
 9 0 8421376 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 shield~
 You see a shield of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3034
@@ -3880,15 +3905,16 @@ vest~
 a standard issue vest~
 You see a standard issue vest here.~
 9 0 8650752 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 5
 E
 vest~
 You see a vest of great craftsmanship.  Stamped on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 3
 #3035
@@ -3896,6 +3922,7 @@ mace~
 a standard issue mace~
 You see a standard issue mace here.~
 5 64 8421376 1
+0.00
 0 4 4 7 0 0 0 0 0 0
 5
 A
@@ -3906,9 +3933,9 @@ E
 mace~
 You see a mace of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3036
@@ -3916,6 +3943,7 @@ dagger~
 a standard issue dagger~
 You see a standard issue dagger here.~
 5 64 8421376 1
+0.00
 0 4 4 11 0 0 0 0 0 0
 5
 A
@@ -3926,9 +3954,9 @@ E
 dagger~
 You see a dagger of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3037
@@ -3936,6 +3964,7 @@ sword~
 a standard issue sword~
 You see a standard issue sword here.~
 5 64 8421376 1
+0.00
 0 3 4 3 0 0 0 0 0 0
 5
 A
@@ -3946,9 +3975,9 @@ E
 sword~
 You see a sword of great craftsmanship.  Imprinted on the side is:
 
-Merc Industries
+Merc Industries
 
-~
+~
 L
 1
 #3140
@@ -3956,6 +3985,7 @@ notice liquidation bank~
 the bank's notice of liquidation~
 The bank's notice of liquidation is taped to the wall.~
 12 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 999
 E
@@ -3963,21 +3993,21 @@ notice liquidation bank~
 The letter is written in a reserved and dignified Spencer hand.
 
 
-    To whom it may concern,
+    To whom it may concern,
 
 
-	Merc Industries has charmed your money.  Apparently one's
+	Merc Industries has charmed your money.  Apparently one's
 
-	gold will remain close, even beyond death. We are closing
+	gold will remain close, even beyond death. We are closing
 
-	down our offices and ATM machines.  Our services here are
+	down our offices and ATM machines.  Our services here are
 
-	no longer required.
+	no longer required.
 
 
-    Midgaard City Bank
+    Midgaard City Bank
 
-~
+~
 L
 1
 #3139
@@ -3985,6 +4015,7 @@ letter resignation~
 the receptionist's letter of resignation~
 The receptionist's letter of resignation is taped to the wall.~
 12 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 999
 E
@@ -3992,21 +4023,21 @@ letter resignation~
 The letter is written in a bold and feminine Carolinian hand.
 
 
-    To whom it may concern,
+    To whom it may concern,
 
 
-	Merc Industries has installed a new no-rent save and quit
+	Merc Industries has installed a new no-rent save and quit
 
-	system.  Apparently one can now save and quit at any time
+	system.  Apparently one can now save and quit at any time
 
-	from anywhere inside a town or out.  My services here are
+	from anywhere inside a town or out.  My services here are
 
-	no longer required.
+	no longer required.
 
 
-    Diana the Receptionist
+    Diana the Receptionist
 
-~
+~
 L
 1
 #3138
@@ -4014,6 +4045,7 @@ skin water buffalo~
 a buffalo water skin~
 A bloated dead buffalo is on the floor.~
 17 0 8388608 1
+0.00
 100 100 0 0 0 0 0 0 0 0
 5
 L
@@ -4023,13 +4055,14 @@ key steel~
 a steel key~
 A large steel key has been left here.~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 E
 key steel~
 A key of this size must fit a very strong lock.
 
-~
+~
 L
 1
 #3136
@@ -4037,6 +4070,7 @@ coins gold~
 a small pile of gold coins~
 A small pile of gold coins lies here.~
 20 0 8388608 1
+0.00
 20 0 0 0 0 0 0 0 0 0
 0
 L
@@ -4046,13 +4080,14 @@ fountain water~
 a fountain~
 A small white fountain gushes forth here.~
 25 0 0 1
+0.00
 15 0 0 0 0 0 0 0 0 0
 500
 E
 fountain~
 It is very nice.  Made from fine white marble.
 
-~
+~
 L
 1
 #3134
@@ -4060,17 +4095,18 @@ bench~
 the Bench~
 A white-painted wooden bench is standing here.~
 12 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 100
 E
 bench~
 It is a quite heavy but very comfortable bench.  It is placed with its front
 
-towards the river so you can sit and watch the river and the houses on the
+towards the river so you can sit and watch the river and the houses on the
 
-other side.
+other side.
 
-~
+~
 L
 1
 #3133
@@ -4078,6 +4114,7 @@ city key~
 the City Key~
 The very big City Key is lying here.~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 10
 L
@@ -4087,6 +4124,7 @@ gold coins~
 the gold~
 A lot of gold is here.~
 20 0 8388608 1
+0.00
 52385 0 0 0 0 0 0 0 0 0
 0
 L
@@ -4096,13 +4134,14 @@ safe~
 the safe~
 A safe is placed in a dark corner of the room.~
 15 0 0 1
+0.00
 34 15 3123 0 0 0 0 0 0 0
 100
 E
 safe~
 The safe is very heavy.
 
-~
+~
 L
 1
 #3130
@@ -4110,13 +4149,14 @@ desk drawer~
 the desk~
 A desk is set against the western wall.~
 15 0 0 1
+0.00
 34 15 3122 0 0 0 0 0 0 0
 100
 E
 drawer~
 You notice a keyhole in the drawer.
 
-~
+~
 L
 1
 #3129
@@ -4124,6 +4164,7 @@ hand cuffs~
 a pair of hand cuffs~
 A pair of hand cuffs has been left here.~
 13 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 4
 L
@@ -4133,13 +4174,14 @@ sword long~
 a long sword~
 A long sword has been left here.~
 5 0 8421376 1
+0.00
 0 3 8 3 0 0 0 0 0 0
 8
 E
 sword long~
 This is the ceremonial sword of the Mayor of Midgaard.
 
-~
+~
 L
 1
 #3123
@@ -4147,13 +4189,14 @@ key brass~
 a key~
 A brass key has been left here.~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 E
 key brass~
 The brass key is small and looks like it fits a very complicated lock.
 
-~
+~
 L
 1
 #3122
@@ -4161,13 +4204,14 @@ key wooden~
 a key~
 A wooden key has been left here.~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 E
 key wooden~
 The wooden key is not special.
 
-~
+~
 L
 1
 #3121
@@ -4175,13 +4219,14 @@ key rusty~
 a key~
 A rusty key has been left here.~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 E
 key rusty~
 The key is a fairly large rusty key.  You notice some fresh dirt on it.
 
-~
+~
 L
 1
 #3120
@@ -4189,13 +4234,14 @@ key iron~
 a key~
 An iron key has been left here.~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 E
 key iron~
 The iron key is not special.
 
-~
+~
 L
 1
 #3106
@@ -4203,6 +4249,7 @@ bracer iron~
 an iron bracer~
 An iron bracer is lying on the ground.~
 9 0 8390656 1
+0.00
 7 0 0 0 0 0 0 0 0 0
 8
 L
@@ -4212,6 +4259,7 @@ bracer bronze~
 a bronze bracer~
 A bronze bracer is lying on the ground.~
 9 0 8390656 1
+0.00
 6 0 0 0 0 0 0 0 0 0
 8
 L
@@ -4221,13 +4269,14 @@ water cup~
 a cup of water~
 A cup has been set here.~
 17 0 8388608 1
+0.00
 2 2 0 0 0 0 0 0 0 0
 3
 E
 cup~
 It is a large simple cup.
 
-~
+~
 L
 1
 #3101
@@ -4235,13 +4284,14 @@ coffee cup~
 a cup of coffee~
 A cup has been set here.~
 17 0 8388608 1
+0.00
 2 2 12 0 0 0 0 0 0 0
 3
 E
 cup~
 It is a small simple cup.
 
-~
+~
 L
 1
 #3100
@@ -4249,13 +4299,14 @@ tea cup~
 a cup of tea~
 A cup has been set here.~
 17 0 8388608 1
+0.00
 2 2 11 0 0 0 0 0 0 0
 3
 E
 cup~
 It is a small simple cup.
 
-~
+~
 L
 1
 #3097
@@ -4263,6 +4314,7 @@ shield small metal~
 a small metal shield~
 A small metal shield is lying on the ground.~
 9 0 8421376 1
+0.00
 4 0 0 0 0 0 0 0 0 0
 3
 L
@@ -4272,6 +4324,7 @@ sleeves scale mail~
 a pair of scale mail sleeves~
 A pair of scale mail sleeves is lying on the ground.~
 9 0 8389632 1
+0.00
 4 0 0 0 0 0 0 0 0 0
 8
 L
@@ -4281,6 +4334,7 @@ gloves reinforced~
 a pair of reinforced gloves~
 A pair of reinforced gloves is lying on the ground.~
 9 0 8392704 1
+0.00
 4 0 0 0 0 0 0 0 0 0
 2
 L
@@ -4290,6 +4344,7 @@ boots reinforced~
 a pair of reinforced boots~
 A pair of reinforced boots lies here.~
 9 0 10485760 1
+0.00
 4 0 0 0 0 0 0 0 0 0
 6
 L
@@ -4299,6 +4354,7 @@ skirt scale mail~
 a long scale mail skirt~
 A long scale mail skirt is lying on the ground.~
 9 0 9437184 1
+0.00
 4 0 0 0 0 0 0 0 0 0
 20
 L
@@ -4308,6 +4364,7 @@ coif scale mail~
 a scale mail coif~
 A scale mail coif is lying on the ground.~
 9 0 8388616 1
+0.00
 4 0 0 0 0 0 0 0 0 0
 4
 L
@@ -4317,6 +4374,7 @@ jerkin scale mail~
 a scale mail jerkin~
 A scale mail jerkin is lying on the ground.~
 9 0 8650752 1
+0.00
 4 0 0 0 0 0 0 0 0 0
 20
 L
@@ -4326,6 +4384,7 @@ sleeves~
 a pair of studded leather sleeves~
 A pair of studded leather sleeves is lying on the ground.~
 9 0 8389632 1
+0.00
 3 0 0 0 0 0 0 0 0 0
 4
 L
@@ -4335,6 +4394,7 @@ gloves~
 a pair of hard leather gloves~
 A pair of hard leather gloves is lying on the ground.~
 9 0 8392704 1
+0.00
 3 0 0 0 0 0 0 0 0 0
 1
 L
@@ -4344,6 +4404,7 @@ boots~
 a pair of hard leather boots~
 A pair of hard leather boots lies here.~
 9 0 10485760 1
+0.00
 3 0 0 0 0 0 0 0 0 0
 4
 L
@@ -4353,6 +4414,7 @@ pants~
 a pair of studded leather pants~
 A pair of studded leather pants is lying on the ground.~
 9 0 9437184 1
+0.00
 3 0 0 0 0 0 0 0 0 0
 8
 L
@@ -4362,6 +4424,7 @@ cap~
 a hard leather cap~
 A hard leather cap is lying on the ground.~
 9 0 8388616 1
+0.00
 3 0 0 0 0 0 0 0 0 0
 2
 L
@@ -4371,6 +4434,7 @@ jerkin~
 a studded leather jerkin~
 A studded leather jerkin is lying on the ground.~
 9 0 8650752 1
+0.00
 3 0 0 0 0 0 0 0 0 0
 10
 L
@@ -4380,6 +4444,7 @@ sleeves~
 a pair of leather sleeves~
 A pair of leather sleeves is lying on the ground.~
 9 0 8389632 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 3
 L
@@ -4389,6 +4454,7 @@ gloves~
 a pair of leather gloves~
 A pair of leather gloves is lying on the ground.~
 9 0 8392704 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 1
 L
@@ -4398,6 +4464,7 @@ boots~
 a pair of leather boots~
 A pair of leather boots lies here.~
 9 0 10485760 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 3
 L
@@ -4407,6 +4474,7 @@ pants~
 a pair of leather pants~
 A pair of leather pants is lying on the ground.~
 9 0 9437184 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 5
 L
@@ -4416,6 +4484,7 @@ cap~
 a leather cap~
 A leather cap is lying on the ground.~
 9 0 8388616 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 1
 L
@@ -4425,6 +4494,7 @@ jerkin~
 a leather jerkin~
 A leather jerkin is lying on the ground.~
 9 0 8650752 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 5
 L
@@ -4434,13 +4504,14 @@ canoe~
 a canoe~
 A canoe has been left here.~
 22 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 32
 E
 canoe~
 The canoe is fairly light.
 
-~
+~
 L
 1
 #3050
@@ -4448,13 +4519,14 @@ raft~
 a raft~
 A raft has been left here.~
 22 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 75
 E
 raft~
 The raft looks very primitive.
 
-~
+~
 L
 1
 #3046
@@ -4462,6 +4534,7 @@ bronze breast plate~
 a bronze breast plate~
 A bronze breast plate is lying on the ground.~
 9 0 8650752 1
+0.00
 6 0 0 0 0 0 0 0 0 0
 80
 L
@@ -4471,6 +4544,7 @@ jacket scale mail~
 a scale mail jacket~
 A scale mail jacket is lying on the ground.~
 9 0 8650752 1
+0.00
 4 0 0 0 0 0 0 0 0 0
 40
 L
@@ -4480,13 +4554,14 @@ scroll recall~
 a scroll of recall~
 A scroll has carelessly been left here.~
 2 64 8388608 1
+0.00
 12 42 -1 -1 0 0 0 0 0 0
 4
 E
 scroll~
 The scroll has written a formulae of 'Word of Recall' upon it.
 
-~
+~
 L
 1
 #3041
@@ -4494,13 +4569,14 @@ potion yellow~
 a yellow potion of see invisible~
 A small yellow potion has carelessly been left here.~
 10 192 8388608 1
+0.00
 12 19 -1 -1 0 0 0 0 0 0
 1
 E
 potion yellow~
 The potion has a small label 'Detect The Invisible'.
 
-~
+~
 L
 1
 #3040
@@ -4508,25 +4584,26 @@ scroll identify~
 a scroll of identify~
 A scroll has carelessly been left here.~
 2 64 8388608 1
+0.00
 12 53 -1 -1 0 0 0 0 0 0
 1
 E
 scroll identify~
 The scroll has a magic formula drawn upon it:
 
-     ???
+     ???
 
-    ?   ?
+    ?   ?
 
-       ?
+       ?
 
-      ?
+      ?
 
-      ?
+      ?
 
-      *
+      *
 
-~
+~
 L
 2
 #3033
@@ -4534,6 +4611,7 @@ box~
 a box~
 A small box.~
 15 0 8388608 1
+0.00
 10 0 0 0 0 0 0 0 0 0
 5
 L
@@ -4543,6 +4621,7 @@ bag~
 a bag~
 A small bag.~
 15 0 8388608 1
+0.00
 50 0 0 0 0 0 0 0 0 0
 2
 L
@@ -4552,22 +4631,23 @@ lantern~
 a hooded brass lantern~
 A hooded brass lantern has been left here.~
 1 8192 8421376 1
+0.00
 0 0 100 0 0 0 0 0 0 0
 4
 E
 letters~
 They say, "Use 'hold lantern' to activate."
 
-~
+~
 E
 lantern~
 It is a large and robust but somewhat battered oil lantern made from brass,
 
-equipped with a handle to make it handy and a hood to protect its flame.
+equipped with a handle to make it handy and a hood to protect its flame.
 
-Some letters have been scratched on its bottom.
+Some letters have been scratched on its bottom.
 
-~
+~
 L
 2
 #3030
@@ -4575,6 +4655,7 @@ torch~
 a torch~
 A large torch.~
 1 8192 8388608 1
+0.00
 0 0 24 0 0 0 0 0 0 0
 1
 L
@@ -4584,6 +4665,7 @@ sword long~
 a long sword~
 A long sword has been left here.~
 5 0 8421376 1
+0.00
 0 2 6 3 0 0 0 0 0 0
 8
 L
@@ -4593,6 +4675,7 @@ sword small~
 a small sword~
 A small sword lies here.~
 5 0 8421376 1
+0.00
 0 2 5 11 0 0 0 0 0 0
 3
 L
@@ -4602,6 +4685,7 @@ dagger~
 a dagger~
 A dagger with a long thin blade is here.~
 5 0 8421376 1
+0.00
 0 2 4 11 0 0 0 0 0 0
 1
 L
@@ -4611,6 +4695,7 @@ potpie pot pie~
 a big pot pie~
 A big pot pie has been left here.~
 19 8192 8388608 1
+0.00
 40 0 0 0 0 0 0 0 0 0
 5
 L
@@ -4620,17 +4705,18 @@ axe blade~
 an executioner's axe~
 An executioner's axe is here waiting to possess its next user.~
 5 3072 8421376 1
+0.00
 0 5 6 1 0 0 0 0 0 0
 30
 E
 axe blade~
 It is quite heavy.  The blade is made of some metal that you can't even
 
-spell.  The edge of the blade looks as if it could cut through anything
+spell.  The edge of the blade looks as if it could cut through anything
 
-or anyone.
+or anyone.
 
-~
+~
 L
 1
 #3004
@@ -4638,6 +4724,7 @@ bottle local~
 a bottle of local specialty~
 A dark bottle has been left here.~
 17 0 8388608 1
+0.00
 8 8 8 0 0 0 0 0 0 0
 10
 L
@@ -4647,6 +4734,7 @@ bottle firebreather~
 a bottle of firebreather~
 A firebreather has been left here.~
 17 0 8388608 1
+0.00
 8 8 7 0 0 0 0 0 0 0
 10
 L
@@ -4656,6 +4744,7 @@ bottle ale~
 a bottle of ale~
 A dark bottle of ale has been left here.~
 17 0 8388608 1
+0.00
 8 8 3 0 0 0 0 0 0 0
 10
 L
@@ -4665,6 +4754,7 @@ bottle beer~
 a bottle of beer~
 A beer bottle has been left here.~
 17 0 8388608 1
+0.00
 8 8 1 0 0 0 0 0 0 0
 10
 L
@@ -4674,6 +4764,7 @@ barrel beer~
 a barrel of beer~
 A beer barrel has been left here.~
 17 0 8388608 1
+0.00
 50 50 1 0 0 0 0 0 0 0
 65
 L
@@ -4683,8 +4774,9 @@ board~
 the Board of Thought~
 The board for thought sharing is here, floating downwind slowly.
 
-~
+~
 27 0 0 1
+0.00
 0 0 0 3210 0 0 0 0 0 0
 1
 L
@@ -4694,8 +4786,9 @@ amulet youth~
 the @@yamulet@@g of @@By@@Wo@@Ru@@Wt@@Bh@@g~
 An amulet depicting life lies here.
 
-~
+~
 9 320 8388736 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -4715,13 +4808,14 @@ Osiris Statue~
 @@gStatue of @@cOsiris@@N~
 @@gStatue of @@cOsiris~
 12 1 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 E
 plaque~
 @@gThis statue represents one of the great gods of Egypt, @@cOsiris@@g, the loving husband of @@yIsis@@g.  It is placed here in the @@Wcenter @@gof town for all to see, and as a @@Rreminder @@gto all that not all Gods are @@dImmortal@@G.
 
-~
+~
 L
 1
 #3049
@@ -4729,8 +4823,9 @@ board~
 the Immortal contact board~
 A board sits here, with post it notes attached, a single one saying if in need of an immortal please leave message here.
 
-~
+~
 27 0 0 1
+0.00
 10 0 0 3049 0 0 0 0 0 0
 1
 L
@@ -4740,6 +4835,7 @@ board~
 @@WThe @@bTales @@Wof @@yHonor@@W Board@@N~
 @@WThe @@bTales @@Wof @@yHonor@@W Board @@Wfloats here quietly.@@N~
 27 0 0 1
+0.00
 10 0 0 3052 0 0 0 0 0 0
 10000
 L
@@ -4749,6 +4845,7 @@ Duel Board~
 duel Challenge Board (aka Mortal Combat)~
 A board on which to issue challenges to those deserving them~
 27 1 0 1
+0.00
 30 1 10 3014 0 0 0 0 0 0
 1000
 L
