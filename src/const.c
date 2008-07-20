@@ -1946,8 +1946,8 @@ const struct skill_type skill_table[MAX_SKILL] = {
    {
     MORTAL, NORM,
     "warcry", {82, 82, 82, 5, 82},
-    spell_warcry, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 501 ), 5, 12,
+    spell_null, TAR_CHAR_SELF, POS_STANDING,
+    &gsn_warcry, SLOT( 501 ), 5, 12,
     "", "You feel less protected.",
     ""},
 
@@ -2212,9 +2212,9 @@ const struct skill_type skill_table[MAX_SKILL] = {
 
    {
     MORTAL, NORM,
-    "beserk", {82, 82, 82, 34, 82},
+    "berserk", {82, 82, 82, 34, 82},
     spell_null, TAR_IGNORE, POS_FIGHTING,
-    &gsn_beserk, SLOT( 0 ), 0, 24,
+    &gsn_berserk, SLOT( 0 ), 0, 24,
     "", "You calm down!",
     "$n looks calmer!"},
 

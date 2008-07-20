@@ -360,7 +360,7 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_ACTION, C_SHOW_SKILL},
    {"bash", do_bash, POS_FIGHTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_SKILL},
-   {"beserk", do_beserk, POS_FIGHTING, 0, LOG_NORMAL,
+   {"berserk", do_berserk, POS_FIGHTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_SKILL},
    {"circle", do_circle, POS_FIGHTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_SKILL},
@@ -539,6 +539,8 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_MISC, C_SHOW_ALWAYS},
    {"wake", do_wake, POS_SLEEPING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_ALWAYS},
+   {"warcry", do_warcry, POS_STANDING, 0, LOG_NORMAL,
+    C_TYPE_ACTION, C_SHOW_SKILL},
    {"where", do_where, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_INFO, C_SHOW_ALWAYS},
 

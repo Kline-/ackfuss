@@ -1,0 +1,8 @@
+*******************************************************************************
+       Name: Disarm
+    Classes: Warrior(12)
+   Duration: Instant
+   Modifies: N/A
+       Type: Offensive
+Description: This skill attempts to disarm your opponent of their weapon.
+*******************************************************************************

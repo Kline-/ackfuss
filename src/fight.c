@@ -4110,7 +4110,7 @@ void do_bash( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_beserk( CHAR_DATA * ch, char *argument )
+void do_berserk( CHAR_DATA * ch, char *argument )
 {
    AFFECT_DATA af;
    int best;
@@ -4133,17 +4133,17 @@ void do_beserk( CHAR_DATA * ch, char *argument )
 
    if( ch->fighting == NULL )
    {
-      send_to_char( "You can only go beserk when fighting!\n\r", ch );
+      send_to_char( "You can only go berserk when fighting!\n\r", ch );
       return;
    }
 
-   if( is_affected( ch, gsn_beserk ) )
+   if( is_affected( ch, gsn_berserk ) )
    {
-      send_to_char( "You are already beserk!!\n\r", ch );
+      send_to_char( "You are already berserk!!\n\r", ch );
       return;
    }
 
-   if( ch->pcdata->learned[gsn_beserk] == 0 )
+   if( ch->pcdata->learned[gsn_berserk] == 0 )
    {
       send_to_char( "You don't know how to use this skill!\n\r", ch );
       return;
@@ -4151,10 +4151,10 @@ void do_beserk( CHAR_DATA * ch, char *argument )
 
 
 
-   WAIT_STATE( ch, skill_table[gsn_beserk].beats );
+   WAIT_STATE( ch, skill_table[gsn_berserk].beats );
 
 
-   if( number_percent(  ) < ( ch->pcdata->learned[gsn_beserk] / 2 ) )
+   if( number_percent(  ) < ( ch->pcdata->learned[gsn_berserk] / 2 ) )
    {
       /*
        * Failure 
@@ -4166,7 +4166,7 @@ void do_beserk( CHAR_DATA * ch, char *argument )
 
 
 
-   af.type = gsn_beserk;
+   af.type = gsn_berserk;
    af.duration = ( best == 2 ) ? 4 : 2;
    af.location = APPLY_AC;
    af.modifier = ( best == 2 ) ? level : ( level * 2 );

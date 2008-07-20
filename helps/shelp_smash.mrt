@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Smash
+    Classes: Warrior(30)
+   Duration: N/A
+   Modifies: N/A
+       Type: N/A
+Description: When a lock lacks a key, and lockpick cannot be found,
+             smashing the door in will usually work as well.
+*******************************************************************************

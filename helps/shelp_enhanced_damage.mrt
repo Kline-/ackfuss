@@ -1,0 +1,8 @@
+*******************************************************************************
+       Name: Enhanced Damage
+    Classes: Warrior(42)
+   Duration: N/A
+   Modifies: Melee Damage
+       Type: Passive
+Description: This skill will raise the amount of melee damage you do.
+*******************************************************************************

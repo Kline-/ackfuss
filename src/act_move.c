@@ -1358,7 +1358,52 @@ void do_sneak( CHAR_DATA * ch, char *argument )
    return;
 }
 
+void do_warcry( CHAR_DATA *ch, char *argument ) /* Thanks Koron, saved me re-inventing the wheel ;) */
+{
+ AFFECT_DATA af;
+ sh_int chance;
 
+ if( is_affected(ch,skill_lookup("warcry")) )
+ {
+  send_to_char("You've already let out a warcry!\n\r",ch);
+  return;
+ }
+
+ if( IS_NPC(ch) )
+  chance = 80;
+ else
+  chance = ch->pcdata->learned[skill_lookup("warcry")];
+
+ if( chance < 10 )
+ {
+  send_to_char("You're really not sure how loud you should scream. Maybe you should practice more.\n\r",ch);
+  return;
+ }
+
+ WAIT_STATE(ch,skill_table[gsn_warcry].beats);
+
+ if( number_percent() > chance )
+ {
+  send_to_char("Your warcry comes out sounding more like an pubescent screech...\n\r",ch);
+  act("$n makes some very strange noises...",ch,NULL,NULL,TO_ROOM);
+  return;
+ }
+
+ af.type      = skill_lookup("warcry");
+ af.duration  = 4 + (get_psuedo_level(ch) * 6);
+ af.location  = APPLY_HITROLL;
+ af.modifier  = 10 + (get_psuedo_level(ch) / 12);
+ af.bitvector = 0;
+ affect_to_char(ch,&af);
+
+ af.location  = APPLY_SAVING_SPELL;
+ af.modifier  = -1 - (get_psuedo_level(ch) / 12);
+ affect_to_char(ch,&af);
+
+ send_to_char("You feel ready for battle!\n\r",ch);
+ act("$n screams a blood-curdling warcry!",ch,NULL,NULL,TO_ROOM);
+ return;
+}
 
 void do_hide( CHAR_DATA * ch, char *argument )
 {

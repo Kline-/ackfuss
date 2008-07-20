@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Dirt
+    Classes: Warrior(35)
+   Duration: Instant
+   Modifies: Hitroll
+       Type: Offensive
+Description: This dirty tactic will make it more difficult for an opponent to
+             land a strike on you as well as blinding them.
+*******************************************************************************

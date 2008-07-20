@@ -86,7 +86,7 @@ sh_int gsn_nodisarm;
 sh_int gsn_trip;
 sh_int gsn_dirt;
 sh_int gsn_shield_block;
-sh_int gsn_beserk;
+sh_int gsn_berserk;
 
 sh_int gsn_circle;
 sh_int gsn_backstab;
@@ -96,6 +96,7 @@ sh_int gsn_hunt;
 sh_int gsn_peek;
 sh_int gsn_pick_lock;
 sh_int gsn_sneak;
+sh_int gsn_warcry;
 sh_int gsn_steal;
 
 sh_int gsn_punch;

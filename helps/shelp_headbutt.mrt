@@ -1,0 +1,8 @@
+*******************************************************************************
+       Name: Headbutt
+    Classes: Warrior(6)
+   Duration: Instant
+   Modifies: N/A
+       Type: Offensive
+Description: Slightly stronger than punch, but with an increased chance to miss.
+*******************************************************************************

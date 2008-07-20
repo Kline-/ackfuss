@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Punch
+    Classes: Warrior(5)
+   Duration: Instant
+   Modifies: N/A
+       Type: Offensive
+Description: This attack ordinarily deals slightly less than average damage,
+             but can, with luck, be much more potent.
+*******************************************************************************

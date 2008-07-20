@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Warcy
+    Classes: Warrior(5)
+   Duration: 4 + ( Cast Level * 6 )
+   Modifies: Hitroll, Saving Throw
+       Type: Defensive
+Description: By unleashing a primal instinct, the warrior can geather
+             enough power from within for better accuracy and an innate
+             ability to shrug off minor spellcastings.
+*******************************************************************************

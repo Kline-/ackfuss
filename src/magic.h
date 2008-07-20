@@ -199,7 +199,6 @@ DECLARE_SPELL_FUN( spell_suffocate );
 DECLARE_SPELL_FUN( spell_summon );
 DECLARE_SPELL_FUN( spell_teleport );
 DECLARE_SPELL_FUN( spell_ventriloquate );
-DECLARE_SPELL_FUN( spell_warcry );  /* --Stephen */
 DECLARE_SPELL_FUN( spell_weaken );
 DECLARE_SPELL_FUN( spell_window );
 DECLARE_SPELL_FUN( spell_portal );
