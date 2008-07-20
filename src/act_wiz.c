@@ -5832,8 +5832,8 @@ void do_census( CHAR_DATA *ch, char *argument )
 
  if( !str_prefix(argument,"world") )
  {
-  xprintf(buf,"Census For: %s",center_text(mudnamecolor,132));
-  send_to_char(buf,ch);
+  xprintf(buf,"Census For: %s",mudnamecolor);
+  send_to_char(center_text(buf,132),ch);
   send_to_char("\n\r------------------------------------------------------------------------------------------------------------------------------------\n\r",ch);
   for( vch = first_char; vch != NULL; vch = vch->next )
   {
@@ -5846,8 +5846,8 @@ void do_census( CHAR_DATA *ch, char *argument )
  }
  else if( !str_prefix(argument,"area") )
  {
-  xprintf(buf,"Census For: %s",center_text(ch->in_room->area->name,132));
-  send_to_char(buf,ch);
+  xprintf(buf,"Census For: %s",ch->in_room->area->name);
+  send_to_char(center_text(buf,132),ch);
   send_to_char("\n\r------------------------------------------------------------------------------------------------------------------------------------\n\r",ch);
   for( vch = first_char; vch != NULL; vch = vch->next )
   {
