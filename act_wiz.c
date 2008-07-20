@@ -5820,9 +5820,16 @@ void do_census( CHAR_DATA *ch, char *argument )
  int rcnt[MAX_RACE];
  int ccnt[MAX_CLASS];
  int scnt[3];
- sh_int i;
- float tf0, tf1, tf2, tf3;
- int ti1;
+ sh_int i = 0;
+ float tf0, tf1, tf2, tf3 = 0;
+ int ti1 = 0;
+
+ for( i = 0; i < MAX_RACE; i++ )
+  rcnt[i] = 0;
+ for( i = 0; i < MAX_CLASS; i++ )
+  ccnt[i] = 0;
+ for( i = 0; i < 3; i++ )
+  scnt[i] = 0;
 
  if( argument[0] == '\0' )
  {
