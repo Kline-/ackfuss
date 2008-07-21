@@ -2235,7 +2235,7 @@ void do_brandish( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   WAIT_STATE( ch, 2 * PULSE_VIOLENCE );
+   WAIT_STATE( ch, 225 );
    if( staff->value[2] > 0 )
    {
       act( "$n brandishes $p.", ch, staff, NULL, TO_ROOM );
@@ -2334,7 +2334,7 @@ void do_zap( CHAR_DATA * ch, char *argument )
       }
    }
 
-   WAIT_STATE( ch, 2 * PULSE_VIOLENCE );
+   WAIT_STATE( ch, 225 );
    if( wand->value[2] > 0 )
    {
       if( victim != NULL )

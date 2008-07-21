@@ -913,7 +913,6 @@ void do_answer( CHAR_DATA * ch, char *argument )
 void do_shout( CHAR_DATA * ch, char *argument )
 {
    talk_channel( ch, argument, CHANNEL_SHOUT, "shout" );
-   WAIT_STATE( ch, 12 );
    return;
 }
 

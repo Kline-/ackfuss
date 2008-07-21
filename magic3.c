@@ -2205,7 +2205,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
          xprintf( stance_buf, "You assume the Stance of the %s!\n\r", stance_app[i].name );
          send_to_char( stance_buf, ch );
       }
-      WAIT_STATE( ch, 2 * PULSE_VIOLENCE );
+      WAIT_STATE( ch, 350 );
       return;
    }
 }
