@@ -552,11 +552,13 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_INFO, C_SHOW_ALWAYS},
 
    /*
-    * ACK!FUSS Continual Additions -Kline
+    * AckFUSS Continual Additions -Kline
     */
 
    {"statraise", do_statraise, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_ALWAYS},
+   {"census", do_census, POS_STANDING, L_HER, LOG_NORMAL,
+    C_TYPE_IMM, C_SHOW_ALWAYS},
 
 
    /*
@@ -599,8 +601,6 @@ const struct cmd_type cmd_table[] = {
    {"alink", do_alink, POS_DEAD, L_GOD, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"build", do_build, POS_STANDING, L_HER, LOG_ALWAYS,
-    C_TYPE_IMM, C_SHOW_ALWAYS},
-   {"census", do_census, POS_STANDING, L_HER, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"mpcr", do_mpcr, POS_STANDING, L_DEI, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS},
