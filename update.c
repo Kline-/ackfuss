@@ -1565,7 +1565,7 @@ void char_update( void )
                   check_social( ch, "growl", ch->master->name );
                   do_say( ch, "How dare you order me around!!!" );
                   stop_follower( ch );
-                  multi_hit( ch, this_master, TYPE_UNDEFINED );
+                  one_hit( ch, this_master, TYPE_UNDEFINED );
                   continue;
                }
             }
@@ -1963,7 +1963,7 @@ void aggr_update( void )
          if( wield != NULL && wield->item_type == ITEM_WEAPON && wield->value[3] == 11 && victim->fighting == NULL )
             do_backstab( ch, victim->name );
          else
-            multi_hit( ch, victim, TYPE_UNDEFINED );
+            one_hit( ch, victim, TYPE_UNDEFINED );
       }
       CUREF( ch_next );
    }
@@ -2640,7 +2640,7 @@ void remember_attack( CHAR_DATA * ch, CHAR_DATA * victim )
     * Check if has intelligence, and call correct attack? 
     */
 
-   multi_hit( ch, victim, TYPE_UNDEFINED );
+   one_hit( ch, victim, TYPE_UNDEFINED );
    /*
     * spec- plug leak here 
     */

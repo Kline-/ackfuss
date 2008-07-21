@@ -1236,7 +1236,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
          if( leader->in_room == leader->hunting->in_room )
          {
             ngroup->state = GRP_STATE_FIGHT;
-            multi_hit( leader, leader->hunting, TYPE_UNDEFINED );
+            one_hit( leader, leader->hunting, TYPE_UNDEFINED );
             break;
          }
          move_dir = h_find_dir( leader->in_room, leader->hunting->in_room,

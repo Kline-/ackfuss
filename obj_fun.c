@@ -311,7 +311,7 @@ void objfun_sword_aggro( OBJ_DATA * obj, CHAR_DATA * keeper )
          act( "$p carried by you glows in your hands.", keeper, obj, NULL, TO_CHAR );
          act( "$p says 'LOOK! LOOK!  $n is here!!'", keeper, obj, NULL, TO_ROOM );
          act( "$p says 'LOOK! LOOK!  $n is here!!'", keeper, obj, NULL, TO_CHAR );
-         multi_hit( vch, keeper, TYPE_UNDEFINED );
+         one_hit( vch, keeper, TYPE_UNDEFINED );
          break;
       }
    }

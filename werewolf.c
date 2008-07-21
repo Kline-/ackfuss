@@ -384,7 +384,7 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
          do_stand( victim, "" );
       if( ch->position < POS_STANDING )
          do_stand( ch, "" );
-      multi_hit( ch, victim, TYPE_UNDEFINED );
+      one_hit( ch, victim, TYPE_UNDEFINED );
       return FALSE;
    }
 

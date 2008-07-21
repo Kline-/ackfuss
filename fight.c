@@ -59,7 +59,6 @@ void group_gain args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 
 bool is_safe args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void make_corpse args( ( CHAR_DATA * ch, char *argument ) );
-void one_hit args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt ) );
 void raw_kill args( ( CHAR_DATA * victim, char *argument ) );
 void set_fighting args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
 void disarm args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
@@ -329,7 +328,7 @@ void violence_update( void )
           && ( ch->is_free == FALSE )
           && ( victim->is_free == FALSE )
           && ( ch->in_room != NULL ) && ( victim->in_room != NULL ) && ( ch->in_room == victim->in_room ) )
-         multi_hit( ch, victim, TYPE_UNDEFINED );
+         one_hit( ch, victim, TYPE_UNDEFINED );
       else
          stop_fighting( ch, FALSE );
 
@@ -384,7 +383,7 @@ void violence_update( void )
                      if( target != NULL )
                      {
                         if( abs( target->level - rch->level ) < 40 && rch != quest_mob ) /* Don't want the quest mob involved in the brawl. --Kline */
-                           multi_hit( rch, target, TYPE_UNDEFINED );
+                           one_hit( rch, target, TYPE_UNDEFINED );
                      }
                   }
                }
@@ -394,51 +393,6 @@ void violence_update( void )
       }
    }
    CUREF( ch_next );
-   return;
-}
-
-
-
-/*
- * Do one group of attacks.
- */
-void multi_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
-{
-   OBJ_DATA *wield1 = NULL;
-   OBJ_DATA *wield2 = NULL;
-   int dual_chance = 0;
-
-   if( ( ch->stance == STANCE_CASTER ) || ( ch->stance == STANCE_WIZARD ) )
-      return;
-
-   if( ch->position == POS_RIDING )
-   {
-      if( ch->riding && ( ch->riding->in_room == ch->in_room ) )
-      {
-         do_dismount( ch, "" );
-      }
-      else
-      {
-         ch->position = POS_FIGHTING;
-      }
-   }
-   one_hit( ch, victim, dt );
-   if( ch->fighting != victim )
-      return;
-   if( ( ( ( wield1 = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) != NULL )
-         && ( wield1->item_type == ITEM_WEAPON ) )
-       && ( ( ( wield2 = get_eq_char( ch, WEAR_HOLD_HAND_R ) ) != NULL ) && ( wield2->item_type == ITEM_WEAPON ) ) )
-      dual_chance = 15;
-
-   if( !IS_NPC( ch ) && ( ( ch->stance == STANCE_AMBUSH ) || ( ch->stance == STANCE_AC_BEST ) ) )
-   {
-      send_to_char( "You step out of the shadows.\n\r", ch );
-      ch->stance = STANCE_WARRIOR;
-      ch->stance_ac_mod = 0;
-      ch->stance_dr_mod = 0;
-      ch->stance_hr_mod = 0;
-      act( "$n steps out of the Shadows!", ch, NULL, NULL, TO_ROOM );
-   }
    return;
 }
 
@@ -467,8 +421,36 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
     * Can't beat a dead char!
     * Guard against weird room-leavings.
     */
+   if( ( ch->stance == STANCE_CASTER ) || ( ch->stance == STANCE_WIZARD ) )
+      return;
+
+   if( ch->position == POS_RIDING )
+   {
+      if( ch->riding && ( ch->riding->in_room == ch->in_room ) )
+      {
+         do_dismount( ch, "" );
+      }
+      else
+      {
+         ch->position = POS_FIGHTING;
+      }
+   }
+
+   if( ch->fighting != victim )
+      return;
+
    if( victim->position == POS_DEAD || ch->in_room != victim->in_room )
       return;
+
+   if( !IS_NPC( ch ) && ( ( ch->stance == STANCE_AMBUSH ) || ( ch->stance == STANCE_AC_BEST ) ) )
+   {
+      send_to_char( "You step out of the shadows.\n\r", ch );
+      ch->stance = STANCE_WARRIOR;
+      ch->stance_ac_mod = 0;
+      ch->stance_dr_mod = 0;
+      ch->stance_hr_mod = 0;
+      act( "$n steps out of the Shadows!", ch, NULL, NULL, TO_ROOM );
+   }
 
    /*
     * Figure out the type of damage message.
@@ -763,7 +745,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
              && victim->master != NULL && victim->master->in_room == ch->in_room && number_bits( 3 ) == 0 )
          {
             stop_fighting( ch, FALSE );
-            multi_hit( ch, victim->master, TYPE_UNDEFINED );
+            one_hit( ch, victim->master, TYPE_UNDEFINED );
             return;
          }
       }
@@ -980,11 +962,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
                      stop_fighting( elemental, TRUE );
                      if( ( number_range( 0, 99 ) < 50 ) && ( !IS_NPC( ch ) ) )
                      {
-                        multi_hit( elemental, ch, TYPE_UNDEFINED );
+                        one_hit( elemental, ch, TYPE_UNDEFINED );
                      }
                      else if( !IS_NPC( victim ) )
                      {
-                        multi_hit( elemental, victim, TYPE_UNDEFINED );
+                        one_hit( elemental, victim, TYPE_UNDEFINED );
                      }
                   }
                   CUREF( rch_next );
@@ -3005,7 +2987,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
    if( victim == ch )
    {
       send_to_char( "You hit yourself.  Ouch!\n\r", ch );
-      multi_hit( ch, ch, TYPE_UNDEFINED );
+      one_hit( ch, ch, TYPE_UNDEFINED );
       return;
    }
 
@@ -3026,7 +3008,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
 
    WAIT_STATE( ch, 1 * PULSE_VIOLENCE );
    check_killer( ch, victim );
-   multi_hit( ch, victim, TYPE_UNDEFINED );
+   one_hit( ch, victim, TYPE_UNDEFINED );
    return;
 }
 
@@ -3164,7 +3146,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
       do_yell( victim, "Help! I'M BEING ATTACKED!!! ARRRGGGHHHHHH!" );
    }
    check_killer( ch, victim );
-   multi_hit( ch, victim, TYPE_UNDEFINED );
+   one_hit( ch, victim, TYPE_UNDEFINED );
    return;
 }
 
@@ -5445,7 +5427,7 @@ void do_feed( CHAR_DATA * ch, char *argument )
          act( "$N screams in horror at $n and jumps to $S feet!", ch, NULL, victim, TO_NOTVICT );
          do_say( victim, "You'll pay for that!" );
          victim->position = POS_STANDING;
-         multi_hit( victim, ch, TYPE_UNDEFINED );
+         one_hit( victim, ch, TYPE_UNDEFINED );
       }
 
 

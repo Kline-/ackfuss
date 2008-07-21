@@ -2437,7 +2437,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
          if( IS_NPC( victim ) && ( victim->pIndexData->pShop == NULL ) )
          {
             act( "$n says 'I'll get you for that, $N!'", victim, NULL, ch, TO_ROOM );
-            multi_hit( victim, ch, TYPE_UNDEFINED );
+            one_hit( victim, ch, TYPE_UNDEFINED );
          }
          else
          {

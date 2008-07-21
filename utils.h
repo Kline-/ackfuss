@@ -136,8 +136,6 @@ char_reference(&s); } while(0)
 #define CUREF(var) char_unreference(&var);
 
 
-
-
 /*
  * Utility macros.
  */
@@ -167,11 +165,8 @@ char_reference(&s); } while(0)
 #define IS_GOOD(ch)             (ch->alignment >= 350)
 #define IS_EVIL(ch)             (ch->alignment <= -350)
 #define IS_NEUTRAL(ch)          (!IS_GOOD(ch) && !IS_EVIL(ch))
-
 #define IS_AWAKE(ch)            (ch->position > POS_SLEEPING)
-
 #define GET_AC(ch)              ( IS_NPC(ch) ? (REAL_AC( ch ) + ch->ac_mod) : REAL_AC( ch ) + ch->stance_ac_mod )
-
 #define REAL_AC(ch)             ((ch)->armor  + ( IS_AWAKE(ch) \
                                                 ? ( IS_NPC( ch ) \
                                                 ? ( dex_app[get_curr_dex(ch)].defensive * get_psuedo_level( ch )/20 ) \
@@ -184,28 +179,18 @@ char_reference(&s); } while(0)
 /* High level naked players should still be able to fight ok */
 
 #define GET_HITROLL(ch)         ( IS_NPC(ch) ? (REAL_HITROLL(ch) + ch->hr_mod + (get_psuedo_level( ch ) / 4 )) : REAL_HITROLL(ch)+(ch->level/8) + ch->stance_hr_mod )
-
 #define REAL_HITROLL(ch)        ((ch)->hitroll+ (str_app[get_curr_str(ch)].tohit * get_psuedo_level( ch )/10) )
-
 #define GET_DAMROLL(ch)         ( IS_NPC(ch) ? (REAL_DAMROLL(ch) + ch->dr_mod + (ch->level / 3 ))  : REAL_DAMROLL(ch)+(ch->level/10) + ch->stance_dr_mod )
-
 #define REAL_DAMROLL(ch)        ((ch)->damroll+( str_app[get_curr_str(ch)].todam * get_psuedo_level( ch ) /10 ) )
-
 #define IS_OUTSIDE(ch)          (!IS_SET( (ch)->in_room->room_flags, ROOM_INDOORS))
-
 #define WAIT_STATE(ch, npulse)  ((ch)->wait = UMAX((ch)->wait, (npulse)))
-
 #define MANA_COST(ch, sn)       (IS_NPC(ch) ? 0 : UMAX ( skill_table[sn].min_mana, 100 / (2 + ch->level - skill_table[sn].skill_level[ch->class] ) ) )
-
 #define IS_RIDING(ch)           (!IS_NPC(ch) && ((ch)->riding))
-
 #define ADEPT_LEVEL(ch)         (IS_NPC(ch) ? (ch)->level/7 : (ch)->adept_level )
-
 #define MAGIC_STANCE(ch)        ( IS_NPC(ch) ? FALSE : \
                                    ( (ch)->stance == STANCE_CASTER ) \
                                 || ( (ch)->stance == STANCE_WIZARD ) \
                                 || ( (ch)->stance == STANCE_MAGI ) )
-
 #define PLAYTESTER(ch)          ( !IS_NPC(ch) && IS_SET((ch)->pcdata->pflags, PFLAG_TESTER )  )
 #define HAS_BODY(ch)            ( !IS_NPC(ch) || !IS_SET((ch)->act, ACT_NO_BODY ) )
 #define HAS_MIND(ch)            ( !IS_NPC(ch) || !IS_SET((ch)->act, ACT_NOMIND ) )
