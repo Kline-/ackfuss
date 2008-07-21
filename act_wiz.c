@@ -3848,17 +3848,50 @@ void do_owhere( CHAR_DATA * ch, char *argument )
    if( is_name( "mailme", argument ) )
       mailme = TRUE;
    one_argument( argument, arg );
-   xprintf( buf, "Output for Owhere %s", arg );
+   xprintf( buf, "Output for Owhere %s\n\r", arg );
    if( arg[0] == '\0' )
    {
-      send_to_char( "Syntax:  owhere <object>.\n\r", ch );
+      send_to_char( "Syntax:  owhere <object/rare>.\n\r", ch );
       return;
+   }
+   else if( !str_prefix(arg,"rare") ) /* Check for outstanding rares not held by players --Kline */
+   {
+    for( obj = first_obj; obj != NULL; obj = obj->next )
+    {
+     if( obj == auction_item )
+      continue;
+     if( !IS_SET(obj->extra_flags,ITEM_RARE) )
+      continue; 
+     found = TRUE;
+
+     for( in_obj = obj; in_obj->in_obj != NULL; in_obj = in_obj->in_obj );
+
+     if( in_obj->carried_by != NULL )
+     {
+      if( !IS_NPC(in_obj->carried_by) )
+       continue;
+      else
+       xprintf( catbuf, "[%2d] %s carried by %s [Room:%d].\n\r",
+                obj_counter, obj->short_descr, PERS( in_obj->carried_by, ch ), in_obj->carried_by->in_room->vnum );
+     }
+     else
+     {
+      xprintf( catbuf, "[%2d] %s in %s [Room:%d].\n\r",
+               obj_counter,
+               obj->short_descr, ( in_obj->in_room == NULL ) ?
+               "somewhere" : in_obj->in_room->name, in_obj->in_room->vnum );
+     }
+
+     obj_counter++;
+     buf[0] = UPPER( buf[0] );
+     xcat( buf, catbuf );
+    }
    }
    else
    {
       for( obj = first_obj; obj != NULL; obj = obj->next )
       {
-         if( !can_see_obj( ch, obj ) || !is_name( arg, obj->name ) )
+         if( !is_name( arg, obj->name ) )
             continue;
          if( obj == auction_item )
             continue;
