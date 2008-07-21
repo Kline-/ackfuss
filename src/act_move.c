@@ -421,7 +421,7 @@ void move_char( CHAR_DATA * ch, int door )
          return;
       }
 
-      WAIT_STATE( ch, 1 );
+      WAIT_STATE( ch, 100 );
       ch->move -= move;
    }
 /* Mount code - Celestian */
@@ -1571,7 +1571,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
 
       if( number_bits( 1 ) == 0 )
       {
-         WAIT_STATE( ch, 4 );
+         WAIT_STATE( ch, 275 );
          lose = ( ch->level / 4 ) + 1;
          lose = UMIN( lose, ch->exp );
          gain_exp( ch, 0 - lose );

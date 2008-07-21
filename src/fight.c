@@ -436,9 +436,6 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
       }
    }
 
-   if( ch->fighting != victim )
-      return;
-
    if( victim->position == POS_DEAD || ch->in_room != victim->in_room )
       return;
 
@@ -2938,8 +2935,8 @@ void trip( CHAR_DATA * ch, CHAR_DATA * victim )
       act( "You trip $N and $N goes down!", ch, NULL, victim, TO_CHAR );
       act( "$n trips $N and $N goes down!", ch, NULL, victim, TO_NOTVICT );
 
-      WAIT_STATE( ch, 2 * PULSE_VIOLENCE );
-      WAIT_STATE( victim, 2 * PULSE_VIOLENCE );
+      WAIT_STATE( ch, 100 );
+      WAIT_STATE( victim, 300 );
       victim->position = POS_RESTING;
    }
 
@@ -3006,7 +3003,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   WAIT_STATE( ch, 1 * PULSE_VIOLENCE );
+   WAIT_STATE( ch, 150 );
    check_killer( ch, victim );
    one_hit( ch, victim, TYPE_UNDEFINED );
    return;
@@ -3074,7 +3071,7 @@ void do_target( CHAR_DATA * ch, char *argument )
       stop_fighting( ch, FALSE );
    }
 
-   WAIT_STATE( ch, 1 * PULSE_VIOLENCE );
+   WAIT_STATE( ch, 150 );
    check_killer( ch, victim );
    one_hit( ch, victim, TYPE_UNDEFINED );
    return;
@@ -3133,7 +3130,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   WAIT_STATE( ch, 1 * PULSE_VIOLENCE );
+   WAIT_STATE( ch, 150 );
    xprintf_2( log_buf, "%s attacked by %s.\n\r", victim->name, ch->name );
    notify( log_buf, MAX_LEVEL - 2 );
 

@@ -213,17 +213,17 @@
 
 
 #define PULSE_PER_SECOND          sysdata.pulse /* Configurable in-game, essential to speed based combat. --Kline */
-#define PULSE_COMBAT              (  1                    )
-#define PULSE_VIOLENCE            (  2 * PULSE_PER_SECOND )
-#define PULSE_MOBILE              (  4 * PULSE_PER_SECOND )
-#define PULSE_OBJFUN		  (  4 * PULSE_PER_SECOND )
-#define PULSE_TICK                ( 60 * PULSE_PER_SECOND )
-#define PULSE_MESSAGE		  ( 12 * PULSE_PER_SECOND )
-#define PULSE_ROOMS		  ( 30 * PULSE_PER_SECOND )
-#define PULSE_AREA                ( 80 * PULSE_PER_SECOND )
-#define PULSE_AUCTION		  ( 30 * PULSE_PER_SECOND )
-#define PULSE_RAUCTION            ( 30 * PULSE_PER_SECOND )
-#define PULSE_MAUCTION            ( 30 * PULSE_PER_SECOND )
+#define PULSE_COMBAT              (  1                     )
+#define PULSE_VIOLENCE            (  2  * PULSE_PER_SECOND )
+#define PULSE_MOBILE              (  4  * PULSE_PER_SECOND )
+#define PULSE_OBJFUN		  (  4  * PULSE_PER_SECOND )
+#define PULSE_TICK                ( 60  * PULSE_PER_SECOND )
+#define PULSE_MESSAGE		  ( 12  * PULSE_PER_SECOND )
+#define PULSE_ROOMS		  ( 30  * PULSE_PER_SECOND )
+#define PULSE_AREA                ( 80  * PULSE_PER_SECOND )
+#define PULSE_AUCTION		  ( 30  * PULSE_PER_SECOND )
+#define PULSE_RAUCTION            ( 30  * PULSE_PER_SECOND )
+#define PULSE_MAUCTION            ( 30  * PULSE_PER_SECOND )
 
 
 #define VAMPIRE_RECALL		 9001

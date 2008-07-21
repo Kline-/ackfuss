@@ -122,7 +122,7 @@ void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target )
 
          num = number_percent(  );
 
-//  WAIT_STATE( vch, 12 );
+//  WAIT_STATE( vch, 275 );
 
          if( num > 85 )
             do_say( vch, "Ok boss.  Whatever you say." );
@@ -197,7 +197,7 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
 
    do_say( ch, "Hello there.  What are you up to?" );
 
-//   WAIT_STATE( target, 24 );
+//   WAIT_STATE( target, 560 );
 
    if( target->hunting != NULL )
    {
@@ -217,7 +217,7 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
       do_say( target, "Nothing.  Just hanging around." );
    }
 
-   WAIT_STATE( ch, 24 );
+   WAIT_STATE( ch, 275 );
 
    /*
     * check to see which of the two is higher. the higher mob will lead 
@@ -254,7 +254,7 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
    {
       do_say( ch, "Want to group?" );
    }
-   WAIT_STATE( target, 24 );
+   WAIT_STATE( target, 275 );
 
    if( ch_is_higher == TRUE )
    {
@@ -271,7 +271,7 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
    {
       do_say( target, "Ok, why not!?  Follow me." );
 
-      WAIT_STATE( ch, 24 );
+      WAIT_STATE( ch, 275 );
 
       do_say( ch, "Cool!" );
 
