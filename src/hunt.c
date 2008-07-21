@@ -450,7 +450,7 @@ bool mob_hunt( CHAR_DATA * mob )
          do_yell( mob, buf );
       else
          do_say( mob, buf );
-      multi_hit( mob, mob->hunting, TYPE_UNDEFINED );
+      one_hit( mob, mob->hunting, TYPE_UNDEFINED );
       end_hunt( mob );
       return TRUE;
    }

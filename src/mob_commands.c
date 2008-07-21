@@ -233,7 +233,7 @@ void do_mpkill( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   multi_hit( ch, victim, TYPE_UNDEFINED );
+   one_hit( ch, victim, TYPE_UNDEFINED );
    return;
 }
 

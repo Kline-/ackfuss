@@ -750,7 +750,7 @@ bool spec_executioner( CHAR_DATA * ch )
       xprintf( buf, "%s is a %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!", victim->name, crime );
 
    do_yell( ch, buf );
-   multi_hit( ch, victim, TYPE_UNDEFINED );
+   one_hit( ch, victim, TYPE_UNDEFINED );
    char_to_room( create_mobile( get_mob_index( MOB_VNUM_CITYGUARD ) ), ch->in_room );
    char_to_room( create_mobile( get_mob_index( MOB_VNUM_CITYGUARD ) ), ch->in_room );
    return TRUE;
@@ -791,7 +791,7 @@ bool spec_mino_guard( CHAR_DATA * ch )
 
 
    do_yell( ch, "Intruder Alert! Man the Walls!" );
-   multi_hit( ch, victim, TYPE_UNDEFINED );
+   one_hit( ch, victim, TYPE_UNDEFINED );
    return TRUE;
 }
 
@@ -1225,7 +1225,7 @@ bool spec_undead( CHAR_DATA * ch )
       char_from_room( victim );
       char_to_room( victim, ch->in_room );
       act( "$n arrives suddenly.", victim, NULL, NULL, TO_ROOM );
-      multi_hit( victim, ch->fighting, TYPE_UNDEFINED );
+      one_hit( victim, ch->fighting, TYPE_UNDEFINED );
    }
    else
    {

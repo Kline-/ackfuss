@@ -2238,7 +2238,7 @@ bool spell_creature_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
       if( saves_spell( level, victim ) )
       {
          do_say( victim, "How dare you!, I LOVE my master!" );
-         multi_hit( victim, ch, TYPE_UNDEFINED );
+         one_hit( victim, ch, TYPE_UNDEFINED );
          return TRUE;
       }
       stop_follower( victim );
@@ -2250,7 +2250,7 @@ bool spell_creature_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    else
    {
       do_say( victim, "How dare you!, I LOVE my master!" );
-      multi_hit( victim, ch, TYPE_UNDEFINED );
+      one_hit( victim, ch, TYPE_UNDEFINED );
       return TRUE;
    }
 
@@ -2285,7 +2285,7 @@ bool spell_corrupt_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
       if( saves_spell( level, victim ) )
       {
          do_say( victim, "How dare you!, I LOVE my master!" );
-         multi_hit( victim, ch, TYPE_UNDEFINED );
+         one_hit( victim, ch, TYPE_UNDEFINED );
          return TRUE;
       }
 
@@ -2294,7 +2294,7 @@ bool spell_corrupt_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
       if( victim->in_room == master->in_room )
       {
          do_say( victim, "Now I shall have my revenge for being charmed!!!" );
-         multi_hit( victim, master, TYPE_UNDEFINED );
+         one_hit( victim, master, TYPE_UNDEFINED );
          return TRUE;
       }
       else
@@ -2309,7 +2309,7 @@ bool spell_corrupt_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    else
    {
       do_say( victim, "How dare you!, I LOVE my master!" );
-      multi_hit( victim, ch, TYPE_UNDEFINED );
+      one_hit( victim, ch, TYPE_UNDEFINED );
       return TRUE;
    }
 

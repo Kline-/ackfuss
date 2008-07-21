@@ -814,7 +814,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
          if( ( vch == victim ) && ( vch->fighting == NULL ) && ( vch->master != ch ) && ( vch != ch ) )
          {
             check_killer( ch, vch );
-            multi_hit( vch, ch, TYPE_UNDEFINED );  /* SRZ--fixed bad call--swap ch&v */
+            one_hit( vch, ch, TYPE_UNDEFINED );  /* SRZ--fixed bad call--swap ch&v */
             break;
          }
       }
@@ -907,7 +907,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim, OBJ_
          vch_next = vch->next_in_room;
          if( victim == vch && victim->fighting == NULL )
          {
-            multi_hit( ch, victim, TYPE_UNDEFINED );  /* SRZ swapped ch& v */
+            one_hit( ch, victim, TYPE_UNDEFINED );  /* SRZ swapped ch& v */
             break;
          }
       }
@@ -1708,7 +1708,7 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
             if( victim == vch && victim->fighting == NULL )
             {
                check_killer( ch, victim );
-               multi_hit( victim, ch, TYPE_UNDEFINED );
+               one_hit( victim, ch, TYPE_UNDEFINED );
                break;
             }
          }
@@ -1732,7 +1732,7 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
             if( victim == vch && victim->fighting == NULL )
             {
                check_killer( ch, victim );
-               multi_hit( victim, ch, TYPE_UNDEFINED );
+               one_hit( victim, ch, TYPE_UNDEFINED );
                break;
             }
          }
@@ -1866,7 +1866,7 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
          if( victim == vch && victim->fighting == NULL )
          {
             check_killer( ch, victim );
-            multi_hit( victim, ch, TYPE_UNDEFINED );
+            one_hit( victim, ch, TYPE_UNDEFINED );
             break;
          }
       }

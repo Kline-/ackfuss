@@ -1467,7 +1467,6 @@ void log_f( char *fmt, ... ) __attribute__ ( ( format( printf, 1, 2 ) ) );
 
 /* fight.c */
 void  violence_update args( ( void ) );
-void  multi_hit       args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt ) );
 void  damage          args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt ) );
 void  update_pos      args( ( CHAR_DATA * victim ) );
 void  stop_fighting   args( ( CHAR_DATA * ch, bool fBoth ) );
@@ -1476,6 +1475,7 @@ void  raw_kill        args( ( CHAR_DATA * victim, char *argument ) );
 void  check_killer    args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 float get_speed       args( ( CHAR_DATA *ch, int slot ) );
 void  combat_update   args( ( void ) );
+void  one_hit         args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dt ) );
 
 /* handler.c */
 bool remove_obj       args( ( CHAR_DATA * ch, int iWear, bool fReplace ) );
