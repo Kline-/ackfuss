@@ -860,8 +860,8 @@ void comlog( CHAR_DATA * ch, int cmd, char *args )
    if( !fplog || ltime + ( 5 * 60 ) <= current_time )
    {
       if( fplog )
-         fclose( fplog );
-      if( !( fplog = fopen( "../log/comlog.txt", "w" ) ) )
+         file_close( fplog );
+      if( !( fplog = file_open( "../log/comlog.txt", "w" ) ) )
          return;
       ltime = current_time;
    }

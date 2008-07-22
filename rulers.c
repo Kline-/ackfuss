@@ -72,13 +72,11 @@ void save_rulers(  )
    RULER_LIST *ruler;
    CONTROL_LIST *control;
 
-
-   fclose( fpReserve );
    xprintf( ruler_file_name, "%s", RULERS_FILE );
 
-   if( ( fp = fopen( ruler_file_name, "w" ) ) == NULL )
+   if( ( fp = file_open( ruler_file_name, "w" ) ) == NULL )
    {
-      bug( "Save ruler list: fopen", 0 );
+      bug( "Save ruler list: file_open", 0 );
       perror( "failed open of rulers.lst in save_ruler" );
    }
    else
@@ -107,11 +105,7 @@ void save_rulers(  )
    }
 
 
-   fflush( fp );
-   fclose( fp );
-
-
-   fpReserve = fopen( NULL_FILE, "r" );
+   file_close( fp );
    return;
 
 }
@@ -137,9 +131,9 @@ void load_rulers( void )
    xprintf( buf, "Loading %s",RULERS_FILE);
    log_f(buf);
 
-   if( ( rulersfp = fopen( rulers_file_name, "r" ) ) == NULL )
+   if( ( rulersfp = file_open( rulers_file_name, "r" ) ) == NULL )
    {
-      bug( "Load rulers Table: fopen", 0 );
+      bug( "Load rulers Table: file_open", 0 );
       perror( "failed open of rulers_table.dat in load_rulers_table" );
    }
    else
@@ -188,7 +182,7 @@ void load_rulers( void )
          }
       }
 
-      fclose( rulersfp );
+      file_close( rulersfp );
 
       log_f("Done.");
 

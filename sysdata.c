@@ -50,7 +50,7 @@ void load_sysdata( void )
 
  init_sysdata(); /* Need to set some defaults --Kline */
 
- if( (fp = fopen(SYSDAT_FILE,"r")) == NULL )
+ if( (fp = file_open(SYSDAT_FILE,"r")) == NULL )
  {
   log_f("Failed to load system data.");
   return;
@@ -66,8 +66,7 @@ void load_sysdata( void )
    case 'E':
     if( !str_cmp(word,"End") )
     {
-     fflush(fp);
-     fclose(fp);
+     file_close(fp);
      wizlock = sysdata.w_lock;
      log_f("Done.");
      return;
@@ -109,9 +108,7 @@ void save_sysdata( void )
  FILE *fp;
  extern bool wizlock;
 
- fclose(fpReserve);
-
- if( (fp = fopen(SYSDAT_FILE,"w")) == NULL )
+ if( (fp = file_open(SYSDAT_FILE,"w")) == NULL )
  {
   log_f("Failed to save system data.");
   return;
@@ -130,9 +127,7 @@ void save_sysdata( void )
  fprintf(fp, "Wizlock     %d\n",      wizlock);
  fprintf(fp, "End\n\n");
 
- fflush(fp);
- fclose(fp);
- fpReserve = fopen(NULL_FILE,"r");
+ file_close(fp);
 
  return;
 }

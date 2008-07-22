@@ -1296,8 +1296,11 @@
 #define BUG_DIR         "../reports/"
 #define HELP_DIR        "../helps/"
 
-#define HELP_MORT      "mrt" /* Mortal helpfiles */
-#define HELP_IMM       "imm" /* Immortal helpfiles */
+#define HELP_MORT      "mrt"              /* Mortal helpfiles                      */
+#define HELP_IMM       "imm"              /* Immortal helpfiles                    */
+#define HELP_INDEX     "help.index"       /* For 'help' with no arg                */
+#define SHELP_INDEX    "shelp_help.index" /* For 'shelp' with no arg               */
+#define BHELP_INDEX    "build_help.index" /* For 'help' with no arg while building */
 
 #define BUG_FILE       BUG_DIR  "bugs.txt"   /* For 'bug' and bug( )         */
 #define IDEA_FILE      BUG_DIR  "ideas.txt" /* For 'idea'                   */

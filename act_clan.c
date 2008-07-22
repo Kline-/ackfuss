@@ -43,12 +43,11 @@ void save_clan_table(  )
    char clan_file_name[MAX_STRING_LENGTH];
    sh_int x, y;
 
-   fclose( fpReserve );
    xprintf( clan_file_name, "%s", CLAN_FILE );
 
-   if( ( fp = fopen( clan_file_name, "w" ) ) == NULL )
+   if( ( fp = file_open( clan_file_name, "w" ) ) == NULL )
    {
-      bug( "Save Clan Table: fopen", 0 );
+      bug( "Save Clan Table: file_open", 0 );
       perror( "failed open of clan_table.dat in save_clan_table" );
    }
    else
@@ -80,11 +79,8 @@ void save_clan_table(  )
 
       }
 
-
-      fflush( fp );
-      fclose( fp );
+      file_close( fp );
    }
-   fpReserve = fopen( NULL_FILE, "r" );
    return;
 
 }

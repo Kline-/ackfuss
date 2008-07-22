@@ -269,13 +269,13 @@ void send_email( const char *m_address, const char *m_subject, const char *mfile
       return;
    }
    xprintf( mailfpbuf, "%s%s", MAIL_DIR, mfilename );
-   if( ( mailfp = fopen( mailfpbuf, "r" ) ) == NULL )
+   if( ( mailfp = file_open( mailfpbuf, "r" ) ) == NULL )
    {
-      fpReserve = fopen( NULL_FILE, "r" );
+      file_close(mailfp);
       kill( getpid(  ), SIGKILL );  /* didn't have a valid file to mail */
    }
 
-   fclose( mailfp );
+   file_close(mailfp);
    system( mailbuf );
    xprintf( delbuf, "rm %s%s", MAIL_DIR, mfilename );
    system( delbuf );
@@ -287,17 +287,15 @@ bool save_mail_file( const char *mfilename, char *mtext )
 {
    FILE *mailfp;
    char mailfpfilename[MSL];
-   fclose( fpReserve );
+
    xprintf( mailfpfilename, "%s%s", MAIL_DIR, mfilename );
-   if( ( mailfp = fopen( mailfpfilename, "w" ) ) == NULL )
+   if( ( mailfp = file_open( mailfpfilename, "w" ) ) == NULL )
    {
-      fpReserve = fopen( NULL_FILE, "r" );
+      file_close(mailfp);
       return FALSE;
    }
    fprintf( mailfp, "%s\n", strip_color( mtext, "@@" ) );
-   fflush( mailfp );
-   fclose( mailfp );
-   fpReserve = fopen( NULL_FILE, "r" );
+   file_close(mailfp);
    return TRUE;
 }
 

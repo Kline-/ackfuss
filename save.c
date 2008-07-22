@@ -149,7 +149,6 @@ void save_char_obj( CHAR_DATA * ch )
       ch = ch->desc->original;
 
    ch->save_time = current_time;
-   fclose( fpReserve );
 
 
    /*
@@ -196,9 +195,9 @@ void save_char_obj( CHAR_DATA * ch )
 
    xprintf( tempstrsave, "%s.temp", strsave );
 
-   if( ( fp = fopen( tempstrsave, "w" ) ) == NULL )
+   if( ( fp = file_open( tempstrsave, "w" ) ) == NULL )
    {
-      monitor_chan( "Save_char_obj: fopen", MONITOR_BAD );
+      monitor_chan( "Save_char_obj: file_open", MONITOR_BAD );
       perror( strsave );
    }
    else
@@ -209,8 +208,7 @@ void save_char_obj( CHAR_DATA * ch )
          fwrite_obj( ch, ch->first_carry, fp, 0 );
       fprintf( fp, "#END\n" );
    }
-   fflush( fp );
-   fclose( fp );
+   file_close(fp);
 
    /*
     * Now make temp file the actual pfile... 
@@ -221,7 +219,6 @@ void save_char_obj( CHAR_DATA * ch )
     * THAT easy?? 
     */
 
-   fpReserve = fopen( NULL_FILE, "r" );
    return;
 }
 
@@ -571,7 +568,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
        */
       hash_changed_vnums = create_hash_table( 1024 );
 
-      if( ( fp = fopen( "area_changes.txt", "r" ) ) != NULL )  /* -- Alty */
+      if( ( fp = file_open( "area_changes.txt", "r" ) ) != NULL )  /* -- Alty */
       {
          while( !feof( fp ) )
          {
@@ -588,7 +585,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
                add_hash_entry( hash_changed_vnums, oldvnum, ( void * )newvnum );
             }
          }
-         fclose( fp );
+         file_close( fp );
       }
    }
 
@@ -734,7 +731,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    }
 
    found = FALSE;
-   fclose( fpReserve );
 
    /*
     * parsed player file directories by Yaz of 4th Realm 
@@ -783,16 +779,16 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 
 #if !defined(macintosh) && !defined(MSDOS)
    xprintf( tempstrsave, "%s%s", strsave, ".gz" );
-   if( ( fp = fopen( tempstrsave, "r" ) ) != NULL )
+   if( ( fp = file_open( tempstrsave, "r" ) ) != NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      fclose( fp );
+      file_close( fp );
       xprintf( buf, "gzip -dfq %s", tempstrsave );
       system( buf );
    }
 #endif
 
-   if( ( fp = fopen( strsave, "r" ) ) != NULL )
+   if( ( fp = file_open( strsave, "r" ) ) != NULL )
    {
       int iNest;
 
@@ -833,7 +829,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
             break;
          }
       }
-      fclose( fp );
+      file_close( fp );
    }
 
    if( !found && is_npc )
@@ -843,7 +839,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
        */
       free_char( ch );
    }
-   fpReserve = fopen( NULL_FILE, "r" );
    return found;
 }
 
@@ -2186,16 +2181,11 @@ void save_corpses(  )
    char corpse_file_name[MAX_STRING_LENGTH];
    CORPSE_DATA *this_corpse;
 
-
-
-
-
-   fclose( fpReserve );
    xprintf( corpse_file_name, "%s", CORPSE_FILE );
 
-   if( ( fp = fopen( corpse_file_name, "w" ) ) == NULL )
+   if( ( fp = file_open( corpse_file_name, "w" ) ) == NULL )
    {
-      bug( "Save Corpses: fopen", 0 );
+      bug( "Save Corpses: file_open", 0 );
       perror( "failed open of corpse_file in save_corpses" );
    }
    else
@@ -2206,10 +2196,8 @@ void save_corpses(  )
       }
       fprintf( fp, "#END\n\n" );
 
-      fflush( fp );
-      fclose( fp );
+      file_close(fp);
    }
-   fpReserve = fopen( NULL_FILE, "r" );
    return;
 
 }
@@ -2221,14 +2209,11 @@ void save_marks(  )
    char mark_file_name[MAX_STRING_LENGTH];
    MARK_LIST_MEMBER *mark_list;
 
-
-
-   fclose( fpReserve );
    xprintf( mark_file_name, "%s", MARKS_FILE );
 
-   if( ( fp = fopen( mark_file_name, "w" ) ) == NULL )
+   if( ( fp = file_open( mark_file_name, "w" ) ) == NULL )
    {
-      bug( "Save Mark list: fopen", 0 );
+      bug( "Save Mark list: file_open", 0 );
       perror( "failed open of roommarks.lst in save_marks" );
    }
    else
@@ -2246,11 +2231,7 @@ void save_marks(  )
    }
 
 
-   fflush( fp );
-   fclose( fp );
-
-
-   fpReserve = fopen( NULL_FILE, "r" );
+   file_close(fp);
    return;
 
 }
@@ -2262,14 +2243,11 @@ void save_bans(  )
    char ban_file_name[MAX_STRING_LENGTH];
    BAN_DATA *pban;
 
-
-
-   fclose( fpReserve );
    xprintf( ban_file_name, "%s", BANS_FILE );
 
-   if( ( fp = fopen( ban_file_name, "w" ) ) == NULL )
+   if( ( fp = file_open( ban_file_name, "w" ) ) == NULL )
    {
-      bug( "Save ban list: fopen", 0 );
+      bug( "Save ban list: file_open", 0 );
       perror( "failed open of bans.lst in save_ban" );
    }
    else
@@ -2285,11 +2263,7 @@ void save_bans(  )
    }
 
 
-   fflush( fp );
-   fclose( fp );
-
-
-   fpReserve = fopen( NULL_FILE, "r" );
+   file_close(fp);
    return;
 
 }

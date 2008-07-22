@@ -178,7 +178,7 @@ sh_int h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags
       return -1;
 #ifdef DEBUG_HUNT_CODE
    if( !h_fp )
-      h_fp = fopen( "hunt.out", "w" );
+      h_fp = file_open( "hunt.out", "w" );
    fprintf( h_fp, "h_find_dir\n" );
    fflush( h_fp );
 #endif

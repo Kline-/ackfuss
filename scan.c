@@ -88,10 +88,12 @@ void del_hash_entry( hash_entry * entry )
    }
 
    if( search_entry != NULL )
+   {
       if( prev_entry == NULL )
          hash_table[a] = NULL;
       else
          prev_entry->next = entry->next;
+   }
 
    free( entry );
 }

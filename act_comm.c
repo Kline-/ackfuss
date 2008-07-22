@@ -120,8 +120,7 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
    /*
     * Rewrite entire list.
     */
-   fclose( fpReserve );
-   if( !( fp = fopen( NOTE_FILE, "w" ) ) )
+   if( !( fp = file_open( NOTE_FILE, "w" ) ) )
    {
       perror( NOTE_FILE );
    }
@@ -136,9 +135,8 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
          fprintf( fp, "Subject %s~\n", pnote->subject );
          fprintf( fp, "Text\n%s~\n\n", pnote->text );
       }
-      fclose( fp );
    }
-   fpReserve = fopen( NULL_FILE, "r" );
+   file_close(fp);
    return;
 }
 
@@ -405,8 +403,7 @@ void do_note( CHAR_DATA * ch, char *argument )
       pnote = ch->pnote;
       ch->pnote = NULL;
 
-      fclose( fpReserve );
-      if( !( fp = fopen( NOTE_FILE, "a" ) ) )
+      if( !( fp = file_open( NOTE_FILE, "a" ) ) )
       {
          perror( NOTE_FILE );
       }
@@ -418,10 +415,9 @@ void do_note( CHAR_DATA * ch, char *argument )
          fprintf( fp, "To      %s~\n", pnote->to_list );
          fprintf( fp, "Subject %s~\n", pnote->subject );
          fprintf( fp, "Text\n%s~\n\n", pnote->text );
-         fclose( fp );
       }
-      fpReserve = fopen( NULL_FILE, "r" );
 
+      file_close(fp);
       send_to_char( "Ok.\n\r", ch );
       return;
    }

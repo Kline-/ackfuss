@@ -200,11 +200,9 @@ BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj )
    board->first_message = NULL;
    board->last_message = NULL;
 
-   fclose( fpReserve );
-
    xprintf( buf, "%s/board.%i", BOARD_DIR, board->vnum );
 
-   if( ( board_file = fopen( buf, "r" ) ) != NULL )
+   if( ( board_file = file_open( buf, "r" ) ) != NULL )
    {
       /*
        * Read in Optional board parameters 
@@ -298,8 +296,7 @@ BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj )
       /*
        * Now close file 
        */
-      fclose( board_file );
-      fpReserve = fopen( NULL_FILE, "r" );
+      file_close( board_file );
    }
 
    return board;
@@ -311,15 +308,13 @@ void save_board( BOARD_DATA * board, CHAR_DATA * ch )
    FILE *board_file;
    MESSAGE_DATA *message;
 
-   fclose( fpReserve );
-
 
    xprintf( buf, "%s/board.%i", BOARD_DIR, board->vnum );
-   if( ( board_file = fopen( buf, "w" ) ) == NULL )
+   if( ( board_file = file_open( buf, "w" ) ) == NULL )
    {
       send_to_char( "Cannot save board, please contact an immortal.\n\r", ch );
       bug( "Could not save file board.%i.", board->vnum );
-      fpReserve = fopen( NULL_FILE, "r" );
+      file_close(board_file);
       return;
    }
 
@@ -353,8 +348,7 @@ void save_board( BOARD_DATA * board, CHAR_DATA * ch )
 
    fprintf( board_file, "S\n" );
 
-   fclose( board_file );
-   fpReserve = fopen( NULL_FILE, "r" );
+   file_close( board_file );
 
    return;
 }
