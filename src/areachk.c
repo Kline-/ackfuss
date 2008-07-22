@@ -183,7 +183,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
    obj_hash = create_hash_table( MAX_KEY_HASH );
    mob_hash = create_hash_table( MAX_KEY_HASH );
 
-   out_file = fopen( "area_changes.txt", "a" );
+   out_file = file_open( "area_changes.txt", "a" );
 
    for( CurArea = first_area; CurArea != NULL; CurArea = CurArea->next )
    {
@@ -305,7 +305,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
       }
    }
 
-   fclose( out_file );
+   file_close( out_file );
 
    /*
     * Now go through all things referencing the changes 

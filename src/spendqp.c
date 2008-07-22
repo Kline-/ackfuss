@@ -46,13 +46,11 @@ void save_brands(  )
    DL_LIST *brand;
    BRAND_DATA *this_brand;
 
-
-   fclose( fpReserve );
    xprintf( brand_file_name, "%s", BRANDS_FILE );
 
-   if( ( fp = fopen( brand_file_name, "w" ) ) == NULL )
+   if( ( fp = file_open( brand_file_name, "w" ) ) == NULL )
    {
-      bug( "Save brands list: fopen", 0 );
+      bug( "Save brands list: file_open", 0 );
       perror( "failed open of brands.lst in save_brands" );
    }
    else
@@ -71,12 +69,8 @@ void save_brands(  )
       fprintf( fp, "#END~\n\n" );
    }
 
+   file_close(fp);
 
-   fflush( fp );
-   fclose( fp );
-
-
-   fpReserve = fopen( NULL_FILE, "r" );
    return;
 
 }
@@ -97,9 +91,9 @@ void load_brands( void )
    xprintf( buf, "Loading %s",BRANDS_FILE);
    log_f(buf);
 
-   if( ( brandsfp = fopen( brands_file_name, "r" ) ) == NULL )
+   if( ( brandsfp = file_open( brands_file_name, "r" ) ) == NULL )
    {
-      bug( "Load brands Table: fopen", 0 );
+      bug( "Load brands Table: file_open", 0 );
       perror( "failed open of brands_table.dat in load_brands_table" );
    }
    else
@@ -142,7 +136,7 @@ void load_brands( void )
          }
       }
 
-      fclose( brandsfp );
+      file_close( brandsfp );
 
       log_f("Done.");
 

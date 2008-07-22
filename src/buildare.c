@@ -112,7 +112,7 @@ void build_save_area_list( void )
    AREA_DATA *pArea;
    FILE *fpArea;
 
-   fpArea = fopen( "area.lst.new", "w" );
+   fpArea = file_open( "area.lst.new", "w" );
 
    if( fpArea == NULL )
    {
@@ -127,7 +127,7 @@ void build_save_area_list( void )
 
    fprintf( fpArea, "$\n\r" );
 
-   fclose( fpArea );
+   file_close( fpArea );
 
    /*
     * Save backup 
@@ -141,7 +141,7 @@ void build_save_area_gold( void )
    AREA_DATA *pArea;
    FILE *fpArea;
 
-   fpArea = fopen( "area.gld.new", "w" );
+   fpArea = file_open( "area.gld.new", "w" );
 
    if( fpArea == NULL )
    {
@@ -156,7 +156,7 @@ void build_save_area_gold( void )
 
    fprintf( fpArea, "-1\n\r" );
 
-   fclose( fpArea );
+   file_close( fpArea );
 
    /*
     * Save backup 
@@ -249,21 +249,21 @@ void build_makearea( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   fpArea = fopen( arg1, "r" );
+   fpArea = file_open( arg1, "r" );
    if( fpArea != NULL )
    {
       send_to_char( "There is already a file with that name.\n\r", ch );
-      fclose( fpArea );
+      file_close( fpArea );
       return;
    }
 
-   fpArea = fopen( arg1, "w" );
+   fpArea = file_open( arg1, "w" );
    if( fpArea == NULL )
    {
       send_to_char( "Invalid filename, would not be able to save.\n\r", ch );
       return;
    }
-   fclose( fpArea );
+   file_close( fpArea );
 
    /*
     * Find a unique area number 
@@ -413,21 +413,21 @@ void build_addarea( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   fpArea = fopen( arg1, "r" );
+   fpArea = file_open( arg1, "r" );
    if( fpArea != NULL )
    {
       send_to_char( "There is already a file with that name.\n\r", ch );
-      fclose( fpArea );
+      file_close( fpArea );
       return;
    }
 
-   fpArea = fopen( arg1, "w" );
+   fpArea = file_open( arg1, "w" );
    if( fpArea == NULL )
    {
       send_to_char( "Invalid filename, would not be able to save.\n\r", ch );
       return;
    }
-   fclose( fpArea );
+   file_close( fpArea );
 
    /*
     * Find a unique area number 

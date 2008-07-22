@@ -68,7 +68,7 @@ void load_social_table(  )
    xprintf_2(log_buf,"Loading %s",SOCIAL_FILE);
    log_f(log_buf);
 
-   fp = fopen( SOCIAL_FILE, "r" );
+   fp = file_open( SOCIAL_FILE, "r" );
 
    if( !fp )
    {
@@ -94,7 +94,7 @@ void load_social_table(  )
    social_table[maxSocial].name = str_dup( "" );   /* empty! */
 
    log_f("Done.");
-   fclose( fp );
+   file_close( fp );
 
 }
 
@@ -120,7 +120,7 @@ void save_social_table(  )
    FILE *fp;
    int i;
 
-   fp = fopen( SOCIAL_FILE, "w" );
+   fp = file_open( SOCIAL_FILE, "w" );
 
    if( !fp )
    {
@@ -140,7 +140,7 @@ void save_social_table(  )
    for( i = 0; i < maxSocial; i++ )
       save_social( &social_table[i], fp );
 
-   fclose( fp );
+   file_close( fp );
 }
 
 

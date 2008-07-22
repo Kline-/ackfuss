@@ -4444,7 +4444,7 @@ void build_help( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   do_help( ch, "build_help.index" );
+   do_help( ch, BHELP_INDEX );
    return;
 }
 
@@ -4534,11 +4534,10 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
          /*
           * Read in a file 
           */
-         fclose( fpReserve );
          filename[0] = '\0';
          xcat( filename, STRING_FILE_DIR );
          xcat( filename, src );
-         infile = fopen( filename, "r" );
+         infile = file_open( filename, "r" );
          if( !infile )
             filechar = str_dup( "Could not open file.\n\r" );
          else
@@ -4551,7 +4550,6 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
             filechar = fread_string( infile );
 /*       fBootDb=0; */
          }
-         fpReserve = fopen( NULL_FILE, "r" );
          *dest = filechar;
          return;
       }
@@ -5630,26 +5628,48 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
 
 void build_addhelp( CHAR_DATA * ch, char *argument )
 {
-   char arg[MAX_STRING_LENGTH];
-   int level;
-   argument = one_argument( argument, arg );
+ char arg[MAX_STRING_LENGTH];
+ bool mort = FALSE;
+ FILE *fp;
 
-   if( !is_number( arg ) || argument[0] == '\0' )
-   {
-      send_to_char( "Usage: ADDHELP <level> <keyword(s)>.\n\r", ch );
-      return;
-   }
+ argument = one_argument(argument,arg);
+ smash_space(argument);
 
-   level = atoi( arg );
+ if( argument[0] == '\0' )
+ {
+  send_to_char("Usage: ADDHELP <mort/imm> <keyword>.\n\r",ch);
+  return;
+ }
+ if( !str_prefix(arg,"mort") )
+  mort = TRUE;
+ else if( !str_prefix(arg,"imm") )
+  mort = FALSE;
+ else
+ {
+  build_addhelp(ch,"");
+  return;
+ }
 
-   if( level < -1 || level > 85 )
-   {
-      send_to_char( "Level must be between -1 and 85.\n\r", ch );
-      return;
-   }
+ xprintf(arg,"%s%s.%s",HELP_DIR,argument,mort ? HELP_MORT : HELP_IMM);
+ if( (fp = file_open(arg,"r")) != NULL )
+ {
+  send_to_char("Help already exists. Use HELPEDIT <keyword> to edit it.\n\r",ch);
+  file_close(fp);
+  return;
+ }
+ else if( (fp = file_open(arg,"w")) != NULL )
+ {
+  send_to_char("Help added. Use HELPEDIT <keyword> to edit it.\n\r",ch);
+  file_close(fp);
+  return;
+ }
+ else
+ {
+  send_to_char("An error has occured. Contact a shell owner.\n\r",ch);
+  return;
+ }
 
-   send_to_char( "Help added.  Use HELPEDIT <keyword> to edit it.\n\r", ch );
-   return;
+ return;
 }
 
 /* NOTE--NEED TO MAKE SURE WE GET MOTD, TOO--I THINK IT WIL BE OKAY ZEN */

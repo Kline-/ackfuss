@@ -194,6 +194,8 @@ int top_obj_index;
 int top_reset;
 int top_room;
 int top_shop;
+int fp_open;
+int fp_close;
 
 /*
  * MOBprogram locals
@@ -441,7 +443,7 @@ void boot_db( void )
       log_f(buf);
 
 
-      if( ( clanfp = fopen( clan_file_name, "r" ) ) == NULL )
+      if( ( clanfp = file_open( clan_file_name, "r" ) ) == NULL )
       {
          log_f( "failed open of clan_table.dat in load_clan_table" );
       }
@@ -472,7 +474,7 @@ void boot_db( void )
          }
 
 
-         fclose( clanfp );
+         file_close( clanfp );
       }
       fpArea = NULL;
       log_f("Done.");
@@ -501,7 +503,7 @@ void boot_db( void )
       FILE *fpList;
       log_f( "Loading area files..." );
 
-      if( ( fpList = fopen( AREA_LIST, "r" ) ) == NULL )
+      if( ( fpList = file_open( AREA_LIST, "r" ) ) == NULL )
       {
          perror( AREA_LIST );
          log_f( "Unable to open area.lst, aborting bootup." );
@@ -520,7 +522,7 @@ void boot_db( void )
          }
          else
          {
-            if( ( fpArea = fopen( strArea, "r" ) ) == NULL )
+            if( ( fpArea = file_open( strArea, "r" ) ) == NULL )
             {
                log_string( strArea );
                kill( getpid(  ), SIGQUIT );
@@ -567,10 +569,10 @@ void boot_db( void )
          }
 
          if( fpArea != stdin )
-            fclose( fpArea );
+            file_close( fpArea );
          fpArea = NULL;
       }
-      fclose( fpList );
+      file_close( fpList );
       log_f("Done.");
    }
 
@@ -764,9 +766,9 @@ void load_corpses( void )
 
 
 
-   if( ( corpsefp = fopen( corpse_file_name, "r" ) ) == NULL )
+   if( ( corpsefp = file_open( corpse_file_name, "r" ) ) == NULL )
    {
-      log_f( "Load corpse Table: fopen" );
+      log_f( "Load corpse Table: file_open" );
       perror( "failed open of corpse_table.dat in load_corpse_table" );
    }
 
@@ -806,7 +808,7 @@ void load_corpses( void )
          }
       }
    }
-   fclose( corpsefp );
+   file_close( corpsefp );
    fpArea = NULL;
    log_f("Done.");
 
@@ -832,9 +834,9 @@ void load_marks( void )
 
 
 
-   if( ( marksfp = fopen( marks_file_name, "r" ) ) == NULL )
+   if( ( marksfp = file_open( marks_file_name, "r" ) ) == NULL )
    {
-      log_f( "Load marks Table: fopen" );
+      log_f( "Load marks Table: file_open" );
       perror( "failed open of marks_table.dat in load_marks_table" );
    }
    else
@@ -875,7 +877,7 @@ void load_marks( void )
          }
       }
 
-      fclose( marksfp );
+      file_close( marksfp );
       fpArea = NULL;
       log_f("Done.");
 
@@ -896,9 +898,9 @@ void load_bans( void )
 
 
 
-   if( ( bansfp = fopen( bans_file_name, "r" ) ) == NULL )
+   if( ( bansfp = file_open( bans_file_name, "r" ) ) == NULL )
    {
-      log_f( "Load bans Table: fopen" );
+      log_f( "Load bans Table: file_open" );
       perror( "failed open of bans_table.dat in load_bans_table" );
    }
    else
@@ -939,7 +941,7 @@ void load_bans( void )
          }
       }
 
-      fclose( bansfp );
+      file_close( bansfp );
       fpArea = NULL;
       log_f("Done.");
 
@@ -1747,7 +1749,7 @@ void load_notes( void )
    xprintf_2(log_buf,"Loading %s",NOTE_FILE);
    log_f(log_buf);
 
-   if( ( fp = fopen( NOTE_FILE, "r" ) ) == NULL )
+   if( ( fp = file_open( NOTE_FILE, "r" ) ) == NULL )
    {
       log_f( "No note file to read." );
       return;
@@ -1762,7 +1764,7 @@ void load_notes( void )
          letter = getc( fp );
          if( feof( fp ) )
          {
-            fclose( fp );
+            file_close( fp );
             log_f("Done.");
             return;
          }
@@ -1866,7 +1868,7 @@ void load_gold( void )
    int gold;
    AREA_DATA *pArea;
 
-   fpArea = fopen( "area.gld", "r" );
+   fpArea = file_open( "area.gld", "r" );
 
    if( fpArea == NULL )
    {
@@ -1886,7 +1888,7 @@ void load_gold( void )
          pArea->gold = gold;
    }
 
-   fclose( fpArea );
+   file_close( fpArea );
 
 }
 
@@ -3495,14 +3497,14 @@ void perm_update(  )
     */
    FILE *po;
    char *strtime;
-   po = fopen( "perm.out", "a" );
+   po = file_open( "perm.out", "a" );
 
 
    strtime = ctime( &current_time );
    strtime[strlen( strtime ) - 1] = '\0';
 
    fprintf( po, "%s :: Perms   %5d blocks  of %7d bytes.\n\r", strtime, nAllocPerm, sAllocPerm );
-   fclose( po );
+   file_close( po );
    return;
 }
 
@@ -3587,6 +3589,9 @@ void do_memory( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
 
    xprintf( buf, "Freelist Info: Gets: %5d Puts: %5d\n\r",free_get,free_put);
+   send_to_char( buf, ch );
+
+   xprintf( buf, "File Streams: Opens: %5d Closes: %5d\n\r",fp_open,fp_close);
    send_to_char( buf, ch );
 
    return;
@@ -3817,19 +3822,18 @@ void append_file( CHAR_DATA * ch, char *file, char *str )
    if( IS_NPC( ch ) || str[0] == '\0' )
       return;
 
-   fclose( fpReserve );
-   if( ( fp = fopen( file, "a" ) ) == NULL )
+   if( ( fp = file_open( file, "a" ) ) == NULL )
    {
+      file_close(fp);
       perror( file );
       send_to_char( "Could not open the file!\n\r", ch );
    }
    else
    {
       fprintf( fp, "[%5d] %s: %s\n", ch->in_room ? ch->in_room->vnum : 0, ch->name, str );
-      fclose( fp );
+      file_close( fp );
    }
 
-   fpReserve = fopen( NULL_FILE, "r" );
    return;
 }
 
@@ -3893,10 +3897,10 @@ void bug( const char *str, int param )
       xprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
       log_string( buf );
 
-      if( ( fp = fopen( SHUTDOWN_FILE, "a" ) ) != NULL )
+      if( ( fp = file_open( SHUTDOWN_FILE, "a" ) ) != NULL )
       {
          fprintf( fp, "[*****] %s\n", buf );
-         fclose( fp );
+         file_close( fp );
       }
    }
 
@@ -3904,13 +3908,11 @@ void bug( const char *str, int param )
    sprintf( buf + strlen( buf ), str, param );
    log_string( buf );
 
-   fclose( fpReserve );
-   if( ( fp = fopen( BUG_FILE, "a" ) ) != NULL )
+   if( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
    {
       fprintf( fp, "%s\n", buf );
-      fclose( fp );
+      file_close( fp );
    }
-   fpReserve = fopen( NULL_FILE, "r" );
 
    return;
 }
@@ -3944,10 +3946,10 @@ void bug_string( const char *str, const char *str2 )
       xprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
       log_string( buf );
 
-      if( ( fp = fopen( SHUTDOWN_FILE, "a" ) ) != NULL )
+      if( ( fp = file_open( SHUTDOWN_FILE, "a" ) ) != NULL )
       {
          fprintf( fp, "[*****] %s\n", buf );
-         fclose( fp );
+         file_close( fp );
       }
    }
 
@@ -3955,13 +3957,11 @@ void bug_string( const char *str, const char *str2 )
    sprintf( buf + strlen( buf ), str, str2 );
    log_string( buf );
 
-   fclose( fpReserve );
-   if( ( fp = fopen( BUG_FILE, "a" ) ) != NULL )
+   if( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
    {
       fprintf( fp, "%s\n", buf );
-      fclose( fp );
+      file_close( fp );
    }
-   fpReserve = fopen( NULL_FILE, "r" );
 
    return;
 }
@@ -4052,7 +4052,7 @@ void mprog_file_read( char *f, MOB_INDEX_DATA * pMobIndex )
    int type;
 
    xprintf( name, "%s%s", MOB_DIR, f );
-   if( !( fp = fopen( name, "r" ) ) )
+   if( !( fp = file_open( name, "r" ) ) )
    {
       bug( "Mob: %d couldn't opne mobprog file.", pMobIndex->vnum );
       return;
@@ -4087,7 +4087,7 @@ void mprog_file_read( char *f, MOB_INDEX_DATA * pMobIndex )
             break;
       }
    }
-   fclose( fp );
+   file_close( fp );
    return;
 }
 
@@ -4204,16 +4204,13 @@ bool char_exists( char *argument )
  char buf[MAX_STRING_LENGTH];
  bool found = FALSE;
 
- fclose( fpReserve );
  xprintf( buf, "%s%s%s%s", PLAYER_DIR, initial( argument ), "/", capitalize( argument ) );
 
- if( ( fp = fopen( buf, "r" ) ) != NULL )
- {
+ if( ( fp = file_open( buf, "r" ) ) != NULL )
   found = TRUE;
-  fclose( fp );
- }
 
- fpReserve = fopen( NULL_FILE, "r" );
+ file_close( fp );
+ 
  return found;
 }
 
@@ -4391,4 +4388,33 @@ int count_helps( void )
   fgets(buf,MAX_STRING_LENGTH,fp);
 
  return atoi(buf);
+}
+
+FILE *file_open( const char *file, const char *opt )
+{
+ FILE *fp;
+
+ if( fpReserve != NULL )
+ {
+  fclose(fpReserve);
+  fpReserve = NULL;
+ }
+ fp = fopen(file,opt);
+ fp_open++;
+
+ return fp;
+}
+
+void file_close( FILE *file )
+{
+ if( file != NULL )
+ {
+  fflush(file);
+  fclose(file);
+ }
+ if( fpReserve == NULL )
+  fpReserve = fopen(NULL_FILE,"r");
+ fp_close++;
+
+ return;
 }

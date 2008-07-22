@@ -185,12 +185,13 @@ void build_save(  )
          send_to_char( "Starting Save.\n", CurSaveChar );
 
          xprintf( filename, "%s.new", CurSaveArea->filename );
-         SaveFile = fopen( filename, "w" );
+         SaveFile = file_open( filename, "w" );
          if( SaveFile == NULL )
          {
             if( CurrentSaving == ToBeSaved )
                saving_area = NOT_SAVING;
             send_to_char( "Can not open file for saving.\n", CurSaveChar );
+            file_close(SaveFile);
             return;
          }
          /*
@@ -710,7 +711,7 @@ void build_save_end(  )
 
    fprintf( SaveFile, "#$\n" );
    send_to_char( "Finished saving.\n", CurSaveChar );
-   fclose( SaveFile );
+   file_close( SaveFile );
    /*
     * Save backup 
     */

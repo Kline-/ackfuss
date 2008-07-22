@@ -1809,30 +1809,29 @@ void do_help( CHAR_DATA * ch, char *argument )
   shelp = TRUE;
 
  if( argument[0] == '\0' )
-  xprintf(buf,"%shelp.index",HELP_DIR);
- else if( !str_cmp(argument,"build_help.index") ) /* special case for the builder */
-  xprintf(buf,"%s%s",HELP_DIR,argument);
- else if( !str_cmp(argument,"shelp_help.index") ) /* special case for shelp */
-  xprintf(buf,"%s%s",HELP_DIR,argument);
+  xprintf(buf,"%s%s",HELP_DIR,HELP_INDEX);
+ else if( !str_cmp(argument,BHELP_INDEX) ) /* special case for the builder */
+  xprintf(buf,"%s%s",HELP_DIR,BHELP_INDEX);
+ else if( !str_cmp(argument,SHELP_INDEX) ) /* special case for shelp */
+  xprintf(buf,"%s%s",HELP_DIR,SHELP_INDEX);
  else
   xprintf(buf,"%s%s.%s",HELP_DIR,argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
 
- if( (fp = fopen(buf,"r")) != NULL )
+ if( (fp = file_open(buf,"r")) != NULL )
  {
   found = TRUE;
   while( fgets(buf,MAX_STRING_LENGTH,fp) )
    send_to_char(buf,ch);
-  fclose(fp);
  }
-
+ file_close(fp);
  /* Search for a plural */
  xprintf(buf,"%s%ss.%s",HELP_DIR,argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
- if( (fp = fopen(buf,"r")) != NULL )
+ if( (fp = file_open(buf,"r")) != NULL )
  {
   found = TRUE;
   while( fgets(buf,MAX_STRING_LENGTH,fp) )
    send_to_char(buf,ch);
-  fclose(fp);
+  file_close(fp);
  }
  else if( !IS_IMMORTAL(ch) )
  {
@@ -1840,38 +1839,40 @@ void do_help( CHAR_DATA * ch, char *argument )
    send_to_char("No help on that word.\n\r",ch);
   else
    send_to_char("No sHelp for that skill/spell.\n\r",ch);
+  file_close(fp);
   return;
  }
 
  if( IS_IMMORTAL(ch) )
  {
   xprintf(buf,"%s%s.%s",HELP_DIR,argument,HELP_MORT);
-  if( (fp = fopen(buf,"r")) != NULL )
+  if( (fp = file_open(buf,"r")) != NULL )
   {
    if( found )
     send_to_char("\n\r",ch);
    found = TRUE;
    while( fgets(buf,MAX_STRING_LENGTH,fp) )
     send_to_char(buf,ch);
-   fclose(fp);
   }
+  file_close(fp);
   /* Search for a plural */
   xprintf(buf,"%s%ss.%s",HELP_DIR,argument,HELP_MORT);
-  if( (fp = fopen(buf,"r")) != NULL )
+  if( (fp = file_open(buf,"r")) != NULL )
   {
    if( found )
     send_to_char("\n\r",ch);
    found = TRUE;
    while( fgets(buf,MAX_STRING_LENGTH,fp) )
     send_to_char(buf,ch);
-   fclose(fp);
   }
+  file_close(fp);
   if( !found )
   {
    if( !shelp )
     send_to_char("No help on that word.\n\r",ch);
    else
     send_to_char("No sHelp for that skill/spell.\n\r",ch);
+   file_close(fp);
    return;
   }
  }
@@ -6289,7 +6290,7 @@ void do_shelp( CHAR_DATA * ch, char *argument )
 
  if( argument[0] == '\0' )
  {
-  do_help( ch, "shelp_help.index" );
+  do_help( ch, SHELP_INDEX );
   return;
  }
 

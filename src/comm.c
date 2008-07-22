@@ -534,9 +534,9 @@ void game_loop( int control )
          if( now_bd_time->tm_hour != cur_hour )
          {
             cur_hour = now_bd_time->tm_hour;
-            out_file = fopen( "players.num", "a" );
+            out_file = file_open( "players.num", "a" );
             fprintf( out_file, "%i %i %i\n", now_bd_time->tm_mday, cur_hour, max_players );
-            fclose( out_file );
+            file_close( out_file );
             max_players = cur_players;
          }
 
@@ -720,14 +720,13 @@ void new_descriptor( int control )
 
       xprintf( buf, "%sgreeting%d.%s", HELP_DIR, number_range(0,4), HELP_MORT );
 
-      if( (fp = fopen(buf,"r")) != NULL )
+      if( (fp = file_open(buf,"r")) != NULL )
        while( fgets(buf,MAX_STRING_LENGTH,fp) )
         write_to_buffer(dnew,buf,0);
       else
        xprintf(buf,"Please enter your name:");
 
-      if( fp != NULL )
-       fclose(fp);
+      file_close(fp);
    }
 
    cur_players++;
@@ -3593,7 +3592,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
    {
       send_to_char( "Copyover file not writeable, aborted.\n\r", ch );
       log_f( "Could not write to copyover file: %s", COPYOVER_FILE );
-      perror( "do_copyover:fopen" );
+      perror( "do_copyover:file_open" );
       return;
    }
 
@@ -3697,7 +3696,7 @@ void copyover_recover(  )
 
    if( !fp )   /* there are some descriptors open which will hang forever then ? */
    {
-      perror( "copyover_recover:fopen" );
+      perror( "copyover_recover:file_open" );
       log_f( "Copyover file not found. Exitting.\n\r" );
       exit( 1 );
    }
