@@ -1,0 +1,4 @@
+FORCE
+
+Force will make another character of lower level interpret whatever command you force them
+to do. So if you 'force bob gossip I love the imms!' then bob will do just that.

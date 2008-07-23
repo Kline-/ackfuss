@@ -1,0 +1,5 @@
+HOTREBOOT
+
+Hotreboot will reboot the MUD while keeping players connected. There is a slight
+pause while the game reloads, but then everyone is placed back in the same place
+they were prior the reboot without having to log back in.

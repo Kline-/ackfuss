@@ -1,0 +1,3 @@
+SHUTDOWN
+
+Shutdown will halt the game and end the startup script if it was used to keep the game alive.

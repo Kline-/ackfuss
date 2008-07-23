@@ -1,0 +1,4 @@
+AREASAVE
+
+This will cycle through every area in the game and set the modified bit, forcing it
+to save. This can take some time, especially with a lot of areas, so be patient.

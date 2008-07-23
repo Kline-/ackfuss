@@ -219,7 +219,6 @@ DECLARE_DO_FUN( do_clan );
 DECLARE_DO_FUN( do_clan_list );
 DECLARE_DO_FUN( do_clan_recall );
 DECLARE_DO_FUN( do_clutch );
-DECLARE_DO_FUN( do_clutchinfo );
 DECLARE_DO_FUN( do_colist );
 DECLARE_DO_FUN( do_color );
 DECLARE_DO_FUN( do_creator );

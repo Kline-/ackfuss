@@ -1,0 +1,5 @@
+TRUST
+
+Granting trust allows a player access to commands higher than their level while
+still retaining the appearance of a 'normal' character. They are still considered
+a player, not an imm, but simply have elevated command access.

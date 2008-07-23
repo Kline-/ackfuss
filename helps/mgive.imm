@@ -1,0 +1,6 @@
+MGIVE
+
+Mgive allows you to create and transfer money from nothing.
+
+mgive <player> <amt> will just give the person your money like normal.
+mgive create <player> <amt> will create new money and give it to the player.

@@ -1,0 +1,4 @@
+WHONAME
+
+Sets the 'whoname' of the target. This is what is displayed on who in place
+of class levels.

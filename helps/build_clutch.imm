@@ -1,0 +1,13 @@
+BUILD HELP : CLUTCH
+-------------------
+
+Clutch items have the following values. Please keep this file updated as code
+is changed, so that builders may stay on top of things.
+
+Details for spells available for clutchable items:
+NB: The first number is the value required for value[0].
+v1 - v3 are value[1] - value[3].
+
+1 : Portal.   v1 = room_vnum to portal to.
+2 : Gate.     v1 = mob_vnum to load, v2 = % chance will follow.
+3 : Portal    (As #1, but object is not destroyed.)

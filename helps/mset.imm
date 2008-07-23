@@ -1,0 +1,5 @@
+MSET
+
+Mset allows you to change the values of a NPC or PC such as health, mana, move,
+and many others. If changing a NPC this will only be temporary, and any permenant
+changes will need to be done via the OLC.

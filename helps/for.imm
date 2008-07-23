@@ -1,0 +1,22 @@
+FOR
+
+The for command is very powerful, essentially allowing you to build a for() loop
+within the MUD. You can 'for <all/gods/mortals/mobs/everywhere> <action>'. A #
+symbole can also be inserted as a variable for the target's name. Examples:
+
+for all at # look
+You probably don't want to do this! It will make you 'at <target> look' for every
+PC or NPC in the entire MUD! It may crash or at the very least probably disconnect you :)
+
+for gods tell # Hi!
+This will make you send a tell to each online Immortal saying 'Hi!'.
+
+for mortals gossip I found a mort!
+This would make you gossip 'I found a mort!' once for every player that was logged on.
+
+for mobs slay #
+This would attempt slay every MOB in the game. Maybe it will crash? Who knows :D
+
+for everywhere say I am king!
+This would make you say 'I am king!' as many times as there are rooms in the MUD.
+You can't use the # symbol with 'for everywhere'.

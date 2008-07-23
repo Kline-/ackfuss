@@ -1,0 +1,4 @@
+LOG
+
+The log command will log all actions a player performs except privileged commands such as
+changing their password.

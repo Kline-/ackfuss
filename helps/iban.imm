@@ -1,0 +1,4 @@
+IBAN
+
+The iban command will display all banned sites. They can be added to with 'ban' or removed
+with 'allow'.

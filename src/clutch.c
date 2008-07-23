@@ -75,29 +75,6 @@ bool valid_clutch_number( int number )
    return FALSE;
 }
 
-
-void do_clutchinfo( CHAR_DATA * ch, char *argument )
-{
-
-   /*
-    * Imm command to show details 
-    */
-   send_to_char( "Details for spells available for clutchable items:\n\r", ch );
-   send_to_char( "NB: The first number is the value required for value[0].\n\r", ch );
-   send_to_char( "v1 - v3 are value[1] - value[3].\n\r\n\r", ch );
-
-   send_to_char( " 1 : Portal.   v1 = room_vnum to portal to.\n\r", ch );
-   send_to_char( " 2 : Gate.     v1 = mob_vnum to load, v2 = % chance will follow.n\r", ch );
-   send_to_char( " 3 : Portal    (As #1, but object is not destroyed.)\n\r", ch );
-   send_to_char( "\n\r", ch );
-
-   /*
-    * KEEP THIS UPDATED!! 
-    */
-
-   return;
-}
-
 void do_clutch( CHAR_DATA * ch, char *argument )
 {
    /*

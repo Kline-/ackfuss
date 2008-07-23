@@ -1,0 +1,9 @@
+DEATHMATCH
+
+The deathmatch command will start a deathmatch! This is a free for all PVP fest
+where players fight till the last man standing and records (pdeaths) don't save.
+The game is DM-Locked (similar to wizlock) until the DM is stopped or ended,
+preventing players from logging back in to compete once they are eliminated.
+
+See 'help dm' for the file that is displayed to players at the start of a
+deathmatch.

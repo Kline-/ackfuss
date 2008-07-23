@@ -616,8 +616,6 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"sysdata", do_sysdata, POS_DEAD, L_GOD, LOG_ALWAYS,
     C_TYPE_IMM, C_SHOW_ALWAYS},
-   {"clutchinfo", do_clutchinfo, POS_DEAD, L_HER, LOG_NORMAL,
-    C_TYPE_IMM, C_SHOW_ALWAYS},
    {"setclass", do_setclass, POS_DEAD, L_GOD, LOG_ALWAYS,
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"doggy", do_dog, POS_DEAD, L_GOD, LOG_ALWAYS,

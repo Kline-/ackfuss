@@ -1,0 +1,4 @@
+SSTAT
+
+The sstat command will display the target's skill levels. You can optionally use
+sstat <victim> <skill> to display only a specific skill.

@@ -1,0 +1,6 @@
+REBOOT
+
+Reboot will shutdown the MUD and let the startup script re-initialize it.
+There should be very few instances where a cold reboot is actually needed,
+unless you are running in DOS or some other system that can't handle a
+hotreboot.
