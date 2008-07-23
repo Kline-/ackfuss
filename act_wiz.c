@@ -1408,7 +1408,7 @@ void do_reboot( CHAR_DATA * ch, char *argument )
 
    if( saving_area )
    {
-      send_to_char( "Please wait until area saving complete.\n", ch );
+      send_to_char( "Please wait until area saving is complete.\n", ch );
       return;
    }
 
@@ -1438,7 +1438,7 @@ void do_shutdown( CHAR_DATA * ch, char *argument )
 
    if( saving_area )
    {
-      send_to_char( "Please wait until area saving complete.\n", ch );
+      send_to_char( "Please wait until area saving is complete.\n", ch );
       return;
    }
 
@@ -4145,7 +4145,6 @@ void do_iwhere( CHAR_DATA * ch, char *argument )
       xcat( buf2, buf );
    }
 
-   xcat( buf2, "\n\r" );
    send_to_char( buf2, ch );
    return;
 }

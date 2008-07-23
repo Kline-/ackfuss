@@ -3585,6 +3585,13 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
    FILE *fp;
    DESCRIPTOR_DATA *d, *d_next;
    char buf[256], buf2[100], buf3[100];
+   extern int saving_area;
+
+   if( saving_area )
+   {
+      send_to_char( "Please wait until area saving is complete.\n", ch );
+      return;
+   }
 
    fp = fopen( COPYOVER_FILE, "w" );
 
