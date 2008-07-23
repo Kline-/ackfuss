@@ -172,7 +172,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
 
    if( !cmd[0] )
    {
-      send_to_char( "Huh? Type HELP SEDIT to see syntax.\n\r", ch );
+      do_help(ch,"sedit");
       return;
    }
 
