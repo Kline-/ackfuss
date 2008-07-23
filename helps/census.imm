@@ -1,0 +1,6 @@
+CENSUS
+
+Census displays a breakdown of all NPCs (no players) in the game. It is not a
+unique count, but a RAW count of every single NPC that is currently spawned.
+You can check census for the whole game with 'census world' or only for the
+area you are in with 'census area'.

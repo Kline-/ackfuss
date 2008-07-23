@@ -1,0 +1,5 @@
+CREATOR )
+
+Creator is a special channel for Implementor/Creator level imms. By default this
+is level 85, but is changeable in config.h prior to compiling. ) is a shortcut
+for creator.

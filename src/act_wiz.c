@@ -809,6 +809,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    AFFECT_DATA *paf;
    CHAR_DATA *victim;
+   MPROG_DATA *mprg;
 
    one_argument( argument, arg );
 
@@ -947,12 +948,21 @@ void do_mstat( CHAR_DATA * ch, char *argument )
             victim->leader ? victim->leader->name : "(none)", affect_bit_name( victim->affected_by ) );
    xcat( buf1, buf );
 
-   xprintf( buf, "Short description: %s.\n\rLong  description: %s",
+   xprintf( buf, "Short description: %s.\n\rLong  description: %s\n\r",
             victim->short_descr, victim->long_descr[0] != '\0' ? victim->long_descr : "(none).\n\r" );
    xcat( buf1, buf );
 
-   if( IS_NPC( victim ) && victim->spec_fun != 0 )
+   if( IS_NPC( victim ) )
+   {
+    if( victim->spec_fun != 0 )
       xcat( buf1, "Mobile has spec fun.\n\r" );
+    if( victim->pIndexData->progtypes != 0 )
+    {
+     xcat( buf1, "MOB Progs:" );
+     for( mprg = victim->pIndexData->first_mprog; mprg != NULL; mprg = mprg->next )
+      xcat( buf1, "\n\r    >%s [%s] [%s]\n\r", mprog_type_to_name( mprg->type ), mprg->arglist, mprg->comlist );
+    }
+   }
 
 /*    if ( IS_NPC( victim ) 
     && IS_SET( victim->act_hunt, ACT_HUNT_MOVE )

@@ -1563,9 +1563,6 @@ bool is_shielded args( ( CHAR_DATA * ch, sh_int shield_type ) );
 void remove_shield args( ( CHAR_DATA * ch, MAGIC_SHIELD * shield ) );
 bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
 
-
-
-
 /* macros.c */
 sh_int get_remort_level args( ( CHAR_DATA * ch ) );
 sh_int get_psuedo_level args( ( CHAR_DATA * ch ) );
@@ -1581,7 +1578,6 @@ void reset_gain_stats args( ( CHAR_DATA * ch ) );
 int exp_to_level_wolf args( ( int level ) );
 int get_item_value args( ( OBJ_DATA * obj ) );
 
-
 /* magic.c */
 int mana_cost args( ( CHAR_DATA * ch, int sn ) );
 int skill_lookup args( ( const char *name ) );
@@ -1590,6 +1586,8 @@ bool saves_spell args( ( int level, CHAR_DATA * victim ) );
 void obj_cast_spell args( ( int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
 bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj );
 
+/* mob_commands.c */
+char *mprog_type_to_name args( ( int type ) );
 
 /* mob_prog.c */
 #ifdef DUNNO_STRSTR

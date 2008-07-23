@@ -1,0 +1,6 @@
+AUTODIG
+
+The autodig command is used as a shortcut to config +/-autodig. Enabling
+autodig allows you to dig new rooms while building as you walk. The next
+available vnum will be automatically used until the area has run out.
+If you disable autodig you can still dig manually with the 'dig' command.

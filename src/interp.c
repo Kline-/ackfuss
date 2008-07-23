@@ -604,8 +604,6 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"mpcr", do_mpcr, POS_STANDING, L_DEI, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS},
-   {"mpstat", do_mpstat, POS_DEAD, L_GOD, LOG_NORMAL,
-    C_TYPE_IMM, C_SHOW_ALWAYS},
    {"halls", do_halls, POS_RESTING, L_HER, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"lhunt", do_lhunt, POS_DEAD, L_SUP, LOG_NORMAL,

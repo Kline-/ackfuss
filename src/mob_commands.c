@@ -42,14 +42,8 @@
 #include <stdlib.h>
 #include "globals.h"
 
-/*
- * Local functions.
- */
-
-char *mprog_type_to_name args( ( int type ) );
-
 /* This routine transfers between alpha and numeric forms of the
- *  mob_prog bitvector types. It allows the words to show up in mpstat to
+ *  mob_prog bitvector types. It allows the words to show up in mstat to
  *  make it just a hair bit easier to see what a mob should be doing.
  */
 
@@ -84,70 +78,6 @@ char *mprog_type_to_name( int type )
       default:
          return "ERROR_PROG";
    }
-}
-
-/* A trivial rehack of do_mstat.  This doesnt show all the data, but just
- * enough to identify the mob and give its basic condition.  It does however,
- * show the MOBprograms which are set.
- */
-
-void do_mpstat( CHAR_DATA * ch, char *argument )
-{
-   char buf[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
-   MPROG_DATA *mprg;
-   CHAR_DATA *victim;
-
-   one_argument( argument, arg );
-
-   if( arg[0] == '\0' )
-   {
-      send_to_char( "MobProg stat whom?\n\r", ch );
-      return;
-   }
-
-   if( ( victim = get_char_world( ch, arg ) ) == NULL )
-   {
-      send_to_char( "They aren't here.\n\r", ch );
-      return;
-   }
-
-   if( !IS_NPC( victim ) )
-   {
-      send_to_char( "Only Mobiles can have Programs!\n\r", ch );
-      return;
-   }
-
-   if( !( victim->pIndexData->progtypes ) )
-   {
-      send_to_char( "That Mobile has no Programs set.\n\r", ch );
-      return;
-   }
-
-   xprintf( buf, "Name: %s.  Vnum: %d.\n\r", victim->name, victim->pIndexData->vnum );
-   send_to_char( buf, ch );
-
-   xprintf( buf, "Short description: %s.\n\rLong  description: %s",
-            victim->short_descr, victim->long_descr[0] != '\0' ? victim->long_descr : "(none).\n\r" );
-   send_to_char( buf, ch );
-
-   xprintf( buf, "Hp: %d/%d.  Mana: %d/%d.  Move: %d/%d. \n\r",
-            victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move );
-   send_to_char( buf, ch );
-
-   xprintf( buf,
-            "Lv: %d.  Class: %d.  Align: %d.  AC: %d.  Gold: %d.  Exp: %d.\n\r",
-            victim->level, victim->class, victim->alignment, GET_AC( victim ), victim->gold, victim->exp );
-   send_to_char( buf, ch );
-
-   for( mprg = victim->pIndexData->first_mprog; mprg != NULL; mprg = mprg->next )
-   {
-      xprintf( buf, ">%s %s\n\r%s\n\r", mprog_type_to_name( mprg->type ), mprg->arglist, mprg->comlist );
-      send_to_char( buf, ch );
-   }
-
-   return;
-
 }
 
 /* prints the argument to all the rooms aroud the mobile */

@@ -402,7 +402,6 @@ DECLARE_DO_FUN( do_mpkill );
 DECLARE_DO_FUN( do_mpmload );
 DECLARE_DO_FUN( do_mpoload );
 DECLARE_DO_FUN( do_mppurge );
-DECLARE_DO_FUN( do_mpstat );
 DECLARE_DO_FUN( do_mptransfer );
 DECLARE_DO_FUN( do_mset );
 DECLARE_DO_FUN( do_mstat );

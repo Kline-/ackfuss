@@ -1,0 +1,8 @@
+BUILD
+
+The build command loads up the online creator (OLC) to create or edit new
+areas, mobs, and objects. Once in the builder it has its own set of helpfiles
+and commands. You can exit the builder with 'stop' and escape (send commands
+outside the builder while building) the builder with a colon, ':'.
+
+IE: To talk on 'gossip' while building, you would use :gossip <msg>.

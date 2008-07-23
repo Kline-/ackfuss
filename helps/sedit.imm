@@ -1,0 +1,50 @@
+SEDIT
+
+The sedit command allows you to add, remove, and change socials from within the game.
+Full options: sedit <new/delete/show/cnoarg/onoarg/cfound/ofound/vfound/cself/oself> <social>
+
+sedit new <social>
+This will create a new blank social named <social>. You can then craft it to your suiting with
+the other sedit commands.
+
+sedit delete <social>
+This will delete <social> from the game. There is no undoing this except to restore the
+socials file from backup!
+
+sedit show <social>
+This will display all values of <social>. Useful for checking if messages are correct,
+or even out of curiosity.
+
+sedit cnoarg <social>
+This will change what <social> displays to the user (ch) without an argument (noarg).
+IE: if a player typed 'wave' they would see the cnoarg for the 'wave' social.
+
+sedit onoarg <social>
+This will change what <social> displays to others (o) without an argument (noarg).
+IE: if a player typed 'wave' others in the room would see the onoarg for the 'wave' social.
+
+sedit cfound <social>
+This will change what <social> displays to the user (ch) when a victim is present (found).
+IE: if a player typed 'wave bob' while 'bob' was in the room the player (ch) would see
+the cfound for the 'wave' social.
+
+sedit ofound <social>
+This will change what <social> displays to others (o) when a victim is present (found).
+IE: if a player typed 'wave bob' while 'bob' was in the room others (not user or victim)
+would see the ofound for the 'wave' social.
+
+sedit vfound <social>
+This will change what <social> displays to the victim (v) when they are in the room with
+the player (found).
+IE: if a player typed 'wave bob' while 'bob' was in the room bob would see the vfound for
+the 'wave' social.
+
+sedit cself <social>
+This will change what <social> displays to the user (ch) when they target themselves (self)
+with the social.
+IE: if a player typed 'wave self' they would see the cself for the 'wave' social.
+
+sedit oself <social>
+This will change what <social> displays to others (o) when the user targets themselves (self)
+with the social.
+IE: if a player typed 'wave self' others in the room would see the oself for the 'wave' social.
