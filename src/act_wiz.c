@@ -67,7 +67,7 @@ void do_transdm( CHAR_DATA * ch, char *argument )
             continue;
          }
 
-         room = number_range( 4051, 4099 );
+         room = number_range(DM_ARENA_START,DM_ARENA_END);
          xprintf( buf, "%d", room );
          location = find_location( wch, buf );
          if( wch->fighting != NULL )
@@ -1244,6 +1244,7 @@ void do_mfindlev( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
+   xprintf(buf1,"[Kls] [Lvl] [Vnum ] [Name ]\n\r");
    for( vnum = 0; nMatch < top_mob_index; vnum++ )
    {
       if( ( pMobIndex = get_mob_index( vnum ) ) != NULL )

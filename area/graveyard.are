@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@dGraveyard@@N~
-Q 16
+Q 17
 K graveyard~
 L @@W{@@r45 75@@W}@@N~
 N 42
@@ -1587,7 +1587,7 @@ death knight~
 ~
 ~
 278563 533160 -1000 S
-72 1
+73 1
 -400 210 180
 ! 3 0 14 7 24494 33554432 80
 | 0 0 0 0 0 0 0
@@ -1598,7 +1598,7 @@ sentinel~
 ~
 ~
 81971 631486 0 S
-96 1
+95 1
 -1400 240 220
 ! 0 0 14 7 162958 16781440 144
 | 0 0 0 0 0 0 0
@@ -1620,7 +1620,7 @@ legion death~
 ~
 ~
 3563625 98856 -600 S
-65 1
+64 1
 -40 45 55
 ! 0 0 14 7 6302 0 0
 | 0 0 0 0 0 0 0
@@ -1665,7 +1665,7 @@ a nasty skeleton~
 All bones, the skeleton laughs at your attempts to hurt it!!
 ~
 3555413 33320 -450 S
-57 0
+58 0
 -40 23 22
 ! 0 0 14 7 4354 0 0
 | 0 0 0 0 0 0 0
@@ -1678,7 +1678,7 @@ a vicious ghoul~
 stench growls at you!@@g
 ~
 3424319 552 -500 S
-59 0
+58 0
 -50 45 50
 ! 0 0 14 7 18434 0 0
 | 0 0 0 0 0 0 0
@@ -1703,7 +1703,7 @@ wight~
 @@RThe Wight's bloody eyes peer into your soul.@@g
 ~
 3563615 68128 -850 S
-63 0
+62 0
 -100 100 100
 ! 0 0 14 7 31806 32832 0
 | 0 0 0 0 0 0 0
@@ -1747,7 +1747,7 @@ Abraham van Helsing
 ~
 ~
 3145729 1614572 1000 S
-90 1
+91 1
 -1000 250 250
 ! 3 0 0 7 26126 1085440 144
 | 0 0 0 0 0 0 0
@@ -1759,6 +1759,7 @@ a tiny key~
 A tiny key lies here.
 ~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1768,6 +1769,7 @@ bastard sword~
 hero's bastard sword~
 @@gan ancient bastard sword, fully 5 feet long, lies here.~
 5 67 8421376 257
+0.00
 28 0 0 1 0 0 0 0 0 0
 20
 A
@@ -1785,6 +1787,7 @@ skull key~
 a @@RSkull Key@@g~
 A large black key shaped like a skull lies here.~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1795,6 +1798,7 @@ plate platemail archon~
 @@ga glimmering, iridescent suit of platemail lies here..
 ~
 9 1281 8650752 4224
+0.00
 40 0 0 0 0 0 0 0 0 0
 20
 A
@@ -1818,6 +1822,7 @@ mace archon~
 @@gMace of the @@RArchon@@g~
 A shimmering, irridescent mace studded with diamonds lies here.~
 5 1347 8421376 257
+0.00
 35 0 0 7 0 0 0 0 0 0
 1
 A
@@ -1840,6 +1845,7 @@ a Thick Fleshy Plant~
 A Large fleshy plant grows here.
 ~
 17 0 8388616 1
+0.00
 50 50 0 0 0 0 0 0 0 0
 3
 L
@@ -1850,6 +1856,7 @@ a black iron shield~
 @@Ra badly dented iron shield lies here, covered in @@bgraveyard filth.@@g
 ~
 9 20 8421376 1
+0.00
 20 0 0 0 0 0 0 0 0 0
 15
 A
@@ -1882,6 +1889,7 @@ a dirty mace~
 A short mace, covered in graveyard dirt lies here.
 ~
 5 20 8421376 1
+0.00
 20 0 0 7 0 0 0 0 0 0
 10
 A
@@ -1901,6 +1909,7 @@ L
 @@ea crypt key@@N~
 @@d a large stone key in the shape of a dagger lies here.@@g~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 10
 L
@@ -1911,6 +1920,7 @@ guard faceguard archon~
 A glimmering, irridescent faceguard is waiting to be worn.
 ~
 9 321 8388624 3594
+0.00
 25 0 0 0 0 0 0 0 0 0
 3
 A
@@ -1932,6 +1942,7 @@ Cabrilaan~
 blade lies here.
 ~
 5 1283 8421376 384
+0.00
 25 0 0 3 0 0 0 0 0 0
 1
 A
@@ -1951,6 +1962,7 @@ helm legion~
 @@ga @@RDeath Legion Helm@@g~
 @@ga helm with a huge @@Reye@@g glares at you!~
 9 84 8388616 1035
+0.00
 20 0 0 0 0 0 0 0 0 0
 5
 A
@@ -1972,6 +1984,7 @@ sword death legion~
 floats here.
 ~
 5 86 8421376 257
+0.00
 35 0 0 3 0 0 0 0 0 0
 1
 A
@@ -1988,6 +2001,7 @@ the bottom section of a broken staff.~
 What seems to be the bottom section of a broken staff lies here.
 ~
 29 0 8388608 1
+0.00
 0 11014 11015 0 0 0 0 0 0 0
 1
 L
@@ -1999,6 +2013,7 @@ The middle piece of a broken staff lies here, looking for it's connecting
 parts.
 ~
 29 0 8388608 1
+0.00
 11013 0 11015 0 0 0 0 0 0 0
 1
 L
@@ -2009,6 +2024,7 @@ the bottom section.~
 The connected bottom section of a staff lies here.
 ~
 29 0 8388608 1
+0.00
 0 11016 11017 0 0 0 0 0 0 0
 1
 L
@@ -2019,6 +2035,7 @@ the top piece.~
 The top piece of a beautiful staff lies here.
 ~
 29 0 8388608 1
+0.00
 11015 0 11017 0 0 0 0 0 0 0
 1
 L
@@ -2030,6 +2047,7 @@ A mostly completed staff lies here, looking for a beautiful gem to fit inside
 it's cap.
 ~
 29 0 8388608 1
+0.00
 0 11018 11019 0 0 0 0 0 0 0
 1
 L
@@ -2040,6 +2058,7 @@ a brilliant gem~
 A beautiful glittering gem lies here, looking perfect for a moagical staff.
 ~
 29 0 8388608 1
+0.00
 11017 0 11019 0 0 0 0 0 0 0
 1
 L
@@ -2050,6 +2069,7 @@ a pure white staff~
 A beautiful white staff, topped with a shimmering gem lies here.
 ~
 4 321 8421376 1
+0.00
 70 8 8 635 0 0 0 0 0 0
 1
 L

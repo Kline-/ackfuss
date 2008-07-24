@@ -1,6 +1,6 @@
 #AREA
 @@BGarmaine@@N~
-Q 16
+Q 17
 K none~
 L @@N{@@eA@@gD@@eE@@gP@@eT@@N}~
 N 130
@@ -1939,7 +1939,7 @@ martin~
 @@gMartin is truly a master of the sword, and the mind.@@N
 ~
 3146859 27372 1000 S
-136 1
+135 1
 -2500 1000 1000
 ! 3 0 0 7 425662 0 80
 | 0 0 0 0 0 0 0
@@ -1951,7 +1951,7 @@ elis~
 Her face seems to glow brighter than the lights inside.
 ~
 3145835 27368 1000 S
-140 2
+141 2
 -2500 1000 1000
 ! 0 0 0 7 425726 37751848 48
 | 0 0 0 0 0 0 0
@@ -1963,7 +1963,7 @@ butch~
 @@gButch is known as the greatest thief that ever lived, or treasurer hunter as he would put it.  Better watch your pocket.@@N
 ~
 3145839 125674 1000 S
-130 1
+131 1
 -2500 1000 1000
 ! 2 0 0 7 425726 262144 80
 | 0 0 0 0 0 0 0
@@ -1985,7 +1985,7 @@ Xania~
 @@gCeles appears to be tired, and yawns at the sight of you.@@N
 ~
 3145835 27368 1000 S
-141 2
+140 2
 -2500 1000 1000
 ! 0 0 0 7 425726 8392832 48
 | 0 0 0 0 0 0 0
@@ -2021,7 +2021,7 @@ james~
 @@gJames has traveled the world over, and is adept at many things.@@N
 ~
 3145835 27368 1000 S
-141 1
+140 1
 -2500 1000 1000
 ! 3 0 0 7 948878 33280 48
 | 0 0 0 0 0 0 0
@@ -2033,7 +2033,7 @@ jack~
 @@gJack looks just like a bodybuilder.@@N
 ~
 3145835 92906 1000 S
-140 1
+141 1
 -2500 1000 1000
 ! 7 0 0 7 457358 295424 80
 | 0 0 0 0 0 0 0
@@ -2045,7 +2045,7 @@ guardian~
 @@gThe Guardian is fearless, and extremely strong.@@N
 ~
 3145835 117482 1000 S
-142 0
+141 0
 -2500 1000 1000
 ! 0 0 17 7 424590 33554944 144
 | 0 0 0 0 0 0 0
@@ -2069,7 +2069,7 @@ flaming hydra~
 @@gThe Hydra seems to draw his power from the flames.@@N
 ~
 3145835 19176 -1000 S
-141 1
+140 1
 -2500 1000 1000
 ! 3 0 19 7 490126 50332672 48
 | 0 0 0 0 0 0 0
@@ -2093,7 +2093,7 @@ guard garmaine~
 @@gThe guard looks very determined to stop all intruders.@@N
 ~
 3145835 27368 1000 S
-138 1
+137 1
 -2500 1000 1000
 ! 3 0 0 7 948878 1048576 80
 | 0 0 0 0 0 0 0
@@ -2105,7 +2105,7 @@ guard garmaine~
 @@gThe guard looks very determined to stop all intruders.@@N
 ~
 3145835 27368 1000 S
-140 1
+139 1
 -2500 1000 1000
 ! 7 0 0 7 948878 1048576 48
 | 0 0 0 0 0 0 0
@@ -2117,7 +2117,7 @@ guard garmaine~
 @@gThe guard looks very determined to stop all intruders.@@N
 ~
 3145835 27368 1000 S
-138 1
+139 1
 -2500 1000 1000
 ! 7 0 0 7 948878 1048576 48
 | 0 0 0 0 0 0 0
@@ -2165,7 +2165,7 @@ ice golem~
 @@gThe Golem has transfixed eyes.  He doesn't seem to care about much.@@N
 ~
 3145825 1067752 0 S
-135 1
+136 1
 -2500 1000 1000
 ! 3 0 17 7 948910 8 48
 | 0 0 0 0 0 0 0
@@ -2177,7 +2177,7 @@ poppy~
 @@gHe is an old man, but looks strong.@@N
 ~
 3145825 1600248 1000 S
-136 1
+137 1
 -2500 1000 1000
 ! 5 0 0 7 424590 33554944 80
 | 0 0 0 0 0 0 0
@@ -2213,7 +2213,7 @@ chimera~
 @@gHer three heads give her a wide range of view.@@N
 ~
 3145833 1100520 -1000 S
-142 2
+141 2
 -2500 1000 1000
 ! 3 0 19 7 424846 55578152 48
 | 0 0 0 0 0 0 0
@@ -2236,6 +2236,7 @@ sword diamonds~
 @@lS@@gw@@lo@@gr@@ld @@lo@@lf @@lD@@gi@@ga@@lm@@lo@@gn@@gd@@ls@@N~
 @@gThe @@lS@@gw@@lo@@gr@@ld @@lo@@lf @@lD@@gi@@ga@@lm@@lo@@gn@@gd@@ls@@g, a weapon of legend.@@N~
 5 3137 8421376 75777
+0.00
 0 0 0 11 0 0 0 0 0 0
 15
 A
@@ -2255,6 +2256,7 @@ ice orb~
 @@rI@@lc@@re @@rO@@lr@@rb@@N~
 @@rI@@lc@@re @@rO@@lr@@rb@@g, relic of myth.@@N~
 11 2243 8421376 81417
+0.00
 3 30081 0 0 0 0 0 0 0 0
 10
 A
@@ -2274,6 +2276,7 @@ diamond leggings~
 @@aD@@gi@@ga@@am@@go@@gn@@ad @@aL@@ge@@gg@@ag@@ai@@gn@@gg@@as@@N~
 @@gThe @@aD@@gi@@ga@@am@@go@@gn@@ad @@aL@@ge@@gg@@ag@@ai@@gn@@gg@@as@@g sparkle in the light.@@N~
 9 3168 9437184 32869
+0.00
 0 0 0 0 0 0 0 0 0 0
 15
 A
@@ -2293,6 +2296,7 @@ gauntlet~
 @@pG@@da@@du@@pn@@pt@@dl@@de@@pt@@N~
 @@gA strong looking @@pG@@da@@du@@pn@@pt@@dl@@de@@pt@@g lies here.~
 29 64 8392704 257
+0.00
 0 30017 30023 0 0 0 0 0 0 0
 3
 L
@@ -2302,6 +2306,7 @@ samurai gloves~
 @@dS@@ea@@em@@du@@er@@ea@@di @@dG@@el@@do@@dv@@ee@@ds@@N~
 @@dS@@ea@@em@@du@@er@@ea@@di @@dG@@el@@do@@dv@@ee@@ds@@g are of choice to those of the martial arts.@@N~
 29 64 8392704 97
+0.00
 0 30007 30030 0 0 0 0 0 0 0
 3
 L
@@ -2311,6 +2316,7 @@ icy cape~
 @@lI@@gc@@ly @@lC@@ga@@gp@@le@@N~
 @@gAn @@lI@@gc@@ly @@lC@@ga@@gp@@le@@g lies here, shimmering in and out of existence.@@N~
 29 96 8454144 5
+0.00
 30006 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2320,6 +2326,7 @@ ring heroes~
 @@gR@@mi@@mn@@gg @@go@@gf @@gH@@me@@gr@@go@@me@@gs@@N~
 @@gThe ring of a long dead @@gH@@me@@gr@@go@@me@@gs@@g rests here.@@N~
 29 64 8396800 65537
+0.00
 0 30010 30024 0 0 0 0 0 0 0
 3
 L
@@ -2329,6 +2336,7 @@ safety charm~
 @@aS@@ga@@af@@ae@@gt@@ay @@aC@@gh@@aa@@gr@@am@@N~
 @@gA @@aS@@ga@@af@@ae@@gt@@ay @@aC@@gh@@aa@@gr@@am@@g lies here protecting the very ground it lies on.@@N~
 29 64 8650752 145
+0.00
 30011 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2338,6 +2346,7 @@ yeti cloak~
 @@gY@@We@@Wt@@gi @@gC@@Wl@@go@@Wa@@gk@@N~
 @@gThis @@gY@@We@@Wt@@gi @@gC@@Wl@@go@@Wa@@gk@@g must belong to a yeti.@@N~
 29 0 8388736 16395
+0.00
 0 30019 30031 0 0 0 0 0 0 0
 3
 L
@@ -2347,6 +2356,7 @@ ice spikes~
 @@aI@@ec@@ae @@aS@@ep@@ai@@ak@@ee@@as@@N~
 @@gThese @@aI@@ec@@ae @@aS@@ep@@ai@@ak@@ee@@as@@g get good traction on slippery surfaces.@@N~
 29 66 10485760 16385
+0.00
 30020 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2356,6 +2366,7 @@ gem box~
 @@eG@@re@@em @@eB@@ro@@ex@@N~
 @@gA relic only hinted about in legend, here lies the @@eG@@re@@em @@eB@@ro@@ex@@g.~
 29 98 8421376 17
+0.00
 30016 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2365,6 +2376,7 @@ snow stone~
 @@BS@@Wn@@Wo@@Bw @@BS@@Wt@@Bo@@Wn@@Be@@N~
 @@gThe @@BS@@Wn@@Wo@@Bw @@BS@@Wt@@Bo@@Wn@@Be@@g are cold to the touch.@@N~
 29 64 8421376 1537
+0.00
 0 30009 30027 0 0 0 0 0 0 0
 3
 L
@@ -2374,6 +2386,7 @@ ancient ring~
 @@WA@@Bn@@Bc@@Wi@@Be@@Bn@@Wt @@WR@@Bi@@Bn@@Wg@@N~
 @@gThis appears to be a very @@WA@@Bn@@Bc@@Wi@@Be@@Bn@@Wt @@WR@@Bi@@Bn@@Wg@@g.@@N~
 29 66 8396800 37121
+0.00
 0 30018 30032 0 0 0 0 0 0 0
 3
 L
@@ -2383,6 +2396,7 @@ cursed ring~
 @@dC@@pu@@dr@@ds@@pe@@dd @@dR@@pi@@pn@@dg@@N~
 @@gThe @@dC@@pu@@dr@@ds@@pe@@dd @@dR@@pi@@pn@@dg@@g was hexed long ago, in a forgotten time.~
 29 4290 8396800 1
+0.00
 30021 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2392,6 +2406,7 @@ ring paladins~
 @@cR@@Wi@@Wn@@cg @@co@@cf @@cP@@Wa@@Wl@@ca@@cd@@Wi@@Wn@@cs@@N~
 @@gThe @@cR@@Wi@@Wn@@cg @@co@@cf @@cP@@Wa@@Wl@@ca@@cd@@Wi@@Wn@@cs@@g is a sought-after relic in these parts.@@N~
 29 320 8396800 145
+0.00
 0 30015 30025 0 0 0 0 0 0 0
 3
 L
@@ -2401,6 +2416,7 @@ ribbon~
 @@eR@@Ri@@eb@@eb@@Ro@@en@@N~
 @@gThe @@eR@@Ri@@eb@@eb@@Ro@@en@@g is the ward of all ailments.~
 29 0 8388616 8193
+0.00
 30008 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2410,6 +2426,7 @@ dragon boots~
 @@eD@@Br@@ea@@eg@@Bo@@en @@eB@@Bo@@eo@@Bt@@es@@N~
 @@gThese @@eD@@Br@@ea@@eg@@Bo@@en @@eB@@Bo@@eo@@Bt@@es@@g are big enough to fit a dragon, of course.@@N~
 29 64 10485760 16385
+0.00
 0 30005 30026 0 0 0 0 0 0 0
 3
 L
@@ -2419,6 +2436,7 @@ boots speed~
 @@GB@@ro@@Go@@rt@@Gs @@Go@@Gf @@GS@@rp@@Ge@@re@@Gd@@N~
 @@gThese @@GB@@ro@@Go@@rt@@Gs @@Go@@Gf @@GS@@rp@@Ge@@re@@Gd@@g even look fast.@@N~
 29 2 10485760 33
+0.00
 30012 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2428,6 +2446,7 @@ knight's valor~
 @@aK@@Gn@@Gi@@ag@@ah@@Gt@@G'@@as @@aV@@Ga@@al@@Go@@ar@@N~
 @@gThe enemies worst fear was of the @@aK@@Gn@@Gi@@ag@@ah@@Gt@@G'@@as @@aV@@Ga@@al@@Go@@ar@@g.@@N~
 29 65 8519680 145
+0.00
 30014 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2437,6 +2456,7 @@ offering~
 @@dO@@af@@af@@de@@dr@@ai@@an@@dg@@N~
 @@gAn @@dO@@af@@af@@de@@dr@@ai@@an@@dg@@g to the gods almost always is beneficial.~
 29 3 8421376 145
+0.00
 30003 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2446,6 +2466,7 @@ goggles~
 @@pG@@eo@@eg@@pg@@el@@ee@@ps@@N~
 @@gWith @@pG@@eo@@eg@@pg@@el@@ee@@ps@@g on, you can even see in the dark!~
 29 65 8388624 3
+0.00
 0 30013 30028 0 0 0 0 0 0 0
 3
 L
@@ -2455,6 +2476,7 @@ earrings~
 @@mE@@ya@@yr@@mr@@mi@@yn@@yg@@ms@@N~
 @@gThese @@mE@@ya@@yr@@mr@@mi@@yn@@yg@@ms@@g are usually found in the sacks of magic users.~
 29 65 8388672 1545
+0.00
 0 30022 30029 0 0 0 0 0 0 0
 3
 L
@@ -2464,6 +2486,7 @@ rage ring~
 @@dR@@ei@@en@@dg @@do@@df @@dR@@ea@@eg@@de@@N~
 @@gThe @@dR@@ei@@en@@dg @@do@@df @@dR@@ea@@eg@@de@@g was first discovered in a cave somewhere.@@N~
 29 64 8396800 257
+0.00
 30004 0 30033 0 0 0 0 0 0 0
 3
 L
@@ -2473,6 +2496,7 @@ ninja gloves~
 @@pN@@ei@@pn@@ej@@pa @@pG@@el@@po@@pv@@ee@@ps@@N~
 @@gA set of @@pN@@ei@@pn@@ej@@pa @@pG@@el@@po@@pv@@ee@@ps@@g lies on the ground here.~
 29 64 8392704 97
+0.00
 0 30025 30035 0 0 0 0 0 0 0
 3
 L
@@ -2482,6 +2506,7 @@ gem studded earrings~
 @@mG@@ee@@mm @@mS@@et@@eu@@md@@ed@@ee@@md @@mE@@ea@@er@@mr@@mi@@en@@eg@@ms@@N~
 @@gSome @@mG@@ee@@mm @@mS@@et@@eu@@md@@ed@@ee@@md @@mE@@ea@@er@@mr@@mi@@en@@eg@@ms@@g shimmer on the ground here.~
 29 99 8388672 113673
+0.00
 0 30030 30037 0 0 0 0 0 0 0
 3
 L
@@ -2491,6 +2516,7 @@ garmaine ring~
 @@pG@@Ga@@Gr@@pm@@pa@@Gi@@Gn@@pe @@pR@@Gi@@Gn@@pg@@N~
 @@gThis @@pR@@Gi@@Gn@@pg@@g is inscribed with the word: 'Garmaine'.@@N~
 29 65 8396800 145
+0.00
 0 30023 30042 0 0 0 0 0 0 0
 3
 L
@@ -2500,6 +2526,7 @@ blizzard charm~
 @@gB@@Bl@@Bi@@gz@@gz@@Ba@@Br@@gd @@gC@@Bh@@ga@@Br@@gm@@N~
 @@gThis @@gC@@Bh@@ga@@Br@@gm@@g is colder than ice.~
 29 65 8388736 16387
+0.00
 0 30027 30038 0 0 0 0 0 0 0
 3
 L
@@ -2509,6 +2536,7 @@ relic rage~
 @@eT@@Bh@@ee @@eR@@Be@@el@@Bi@@ec @@eo@@ef @@eR@@Ba@@Bg@@ee@@N~
 @@gThis @@eR@@Be@@el@@Bi@@ec @@gsymbolizes the @@eR@@Ba@@Bg@@ee@@g within all.~
 29 66 8421376 257
+0.00
 0 30026 30048 0 0 0 0 0 0 0
 3
 L
@@ -2518,6 +2546,7 @@ dragon ribbon~
 @@BD@@Rr@@Ba@@Bg@@Ro@@Bn @@BR@@Ri@@Bb@@Bb@@Ro@@Bn@@N~
 @@gThe @@BD@@Rr@@Ba@@Bg@@Ro@@Bn @@BR@@Ri@@Bb@@Bb@@Ro@@Bn@@g is a part of dragon heritage.@@N~
 29 64 8388616 17
+0.00
 0 30029 30047 0 0 0 0 0 0 0
 3
 L
@@ -2527,6 +2556,7 @@ night visors~
 @@rN@@pi@@rg@@ph@@rt @@rV@@pi@@rs@@ro@@pr@@rs@@N~
 @@gWith @@rN@@pi@@rg@@ph@@rt @@rV@@pi@@rs@@ro@@pr@@rs@@g, running in the darkness is easy.~
 29 65 8388624 16387
+0.00
 0 30028 30041 0 0 0 0 0 0 0
 3
 L
@@ -2536,6 +2566,7 @@ knight's offering~
 @@GK@@dn@@di@@Gg@@Gh@@dt@@d'@@Gs @@GO@@df@@df@@Ge@@Gr@@di@@dn@@Gg@@N~
 @@gThe @@GK@@dn@@di@@Gg@@Gh@@dt@@d'@@Gs @@GO@@df@@df@@Ge@@Gr@@di@@dn@@Gg@@g gave the knights extra passion for battle.@@N~
 29 65 8421376 401
+0.00
 0 30024 30046 0 0 0 0 0 0 0
 3
 L
@@ -2545,6 +2576,7 @@ safety shoes~
 @@aS@@ea@@af@@ae@@et@@ay @@aS@@eh@@ao@@ee@@as@@N~
 @@aS@@ea@@af@@ae@@et@@ay @@aS@@eh@@ao@@ee@@as@@g will protect your feet from the terrain.~
 29 64 10485760 16513
+0.00
 0 30032 30034 0 0 0 0 0 0 0
 3
 L
@@ -2554,6 +2586,7 @@ icy ring~
 @@BI@@lc@@By @@BR@@li@@ln@@Bg@@N~
 @@gThe @@BI@@lc@@By @@BR@@li@@ln@@Bg@@g fades in and out of reality.@@N~
 29 96 8396800 101
+0.00
 0 30031 30049 0 0 0 0 0 0 0
 3
 L
@@ -2563,6 +2596,7 @@ snowball~
 @@gS@@ln@@lo@@gw@@gb@@la@@ll@@gl@@N~
 @@gThe @@gS@@ln@@lo@@gw@@gb@@la@@ll@@gl@@g is light and fluffy.~
 29 0 8421376 1
+0.00
 0 30098 30095 0 0 0 0 0 0 0
 1
 L
@@ -2572,6 +2606,7 @@ gate key~
 @@eG@@aa@@at@@ee @@eK@@ae@@ey@@N~
 @@gThis is the @@eG@@aa@@at@@ee @@eK@@ae@@ey@@g of Garmaine.@@N~
 18 96 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2581,6 +2616,7 @@ snow pile~
 @@lP@@Wi@@Wl@@le @@lo@@lf @@lS@@Wn@@Wo@@lw@@N~
 @@gThere seems to be a @@lP@@Wi@@Wl@@le @@lo@@lf @@lS@@Wn@@Wo@@lw@@g here.@@N~
 29 1048576 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 L
@@ -2590,6 +2626,7 @@ ninja visors~
 @@dN@@ei@@dn@@ej@@da @@dV@@ei@@ds@@do@@er@@ds@@N~
 @@gIt is hard to find a @@dN@@ei@@dn@@ej@@da@@g without his @@dV@@ei@@ds@@do@@er@@ds@@g.@@N~
 29 65 8388624 1033
+0.00
 0 30038 30033 0 0 0 0 0 0 0
 3
 L
@@ -2599,6 +2636,7 @@ dragon earrings~
 @@pD@@rr@@pa@@pg@@ro@@pn @@pE@@ra@@rr@@pr@@pi@@rn@@rg@@ps@@N~
 @@pD@@rr@@pa@@pg@@ro@@pn @@pE@@ra@@rr@@pr@@pi@@rn@@rg@@ps@@g are specially designed for dragons.@@N~
 29 64 8388672 16385
+0.00
 0 30038 30039 0 0 0 0 0 0 0
 3
 L
@@ -2608,6 +2646,7 @@ offering garmaine~
 @@aO@@lf@@lf@@ae@@ar@@li@@ln@@ag @@ao@@af @@aG@@la@@lr@@am@@aa@@li@@ln@@ae@@N~
 @@gThe @@aO@@lf@@lf@@ae@@ar@@li@@ln@@ag @@ao@@af @@aG@@la@@lr@@am@@aa@@li@@ln@@ae@@g is used to protect the town from evil.@@N~
 29 65 8421376 145
+0.00
 0 30041 30002 0 0 0 0 0 0 0
 3
 L
@@ -2617,6 +2656,7 @@ blizzard ring~
 @@aB@@gl@@gi@@az@@az@@ga@@gr@@ad @@aR@@gi@@gn@@ag@@N~
 @@gThe @@aB@@gl@@gi@@az@@az@@ga@@gr@@ad @@aR@@gi@@gn@@ag@@g has a small storm around it.@@N~
 29 0 8396800 16409
+0.00
 0 30034 30040 0 0 0 0 0 0 0
 3
 L
@@ -2626,6 +2666,7 @@ Safety Relic~
 @@rS@@ya@@rf@@re@@yt@@ry @@rR@@ye@@rl@@yi@@rc@@N~
 @@gThe @@rS@@ya@@rf@@re@@yt@@ry @@rR@@ye@@rl@@yi@@rc@@g offers great protection.@@N~
 29 65 8421376 145
+0.00
 0 30037 30044 0 0 0 0 0 0 0
 3
 L
@@ -2635,6 +2676,7 @@ symbol ninja~
 @@dS@@yy@@dm@@db@@yo@@dl @@do@@df @@dt@@yh@@de @@dN@@yi@@dn@@yj@@da@@N~
 @@gThe @@dS@@yy@@dm@@db@@yo@@dl @@do@@df @@dt@@yh@@de @@dN@@yi@@dn@@yj@@da@@g is just what it is called, the symbol of the ninja.@@N~
 29 64 8421376 1129
+0.00
 0 30040 30033 0 0 0 0 0 0 0
 3
 L
@@ -2644,6 +2686,7 @@ blizzard earrings~
 @@BB@@ll@@li@@Bz@@Bz@@la@@lr@@Bd @@BE@@la@@lr@@Br@@Bi@@ln@@lg@@Bs@@N~
 @@gThe @@BB@@ll@@li@@Bz@@Bz@@la@@lr@@Bd @@BE@@la@@lr@@Br@@Bi@@ln@@lg@@Bs@@g hum like a savage winter storm.@@N~
 29 66 8388672 19
+0.00
 0 30039 30036 0 0 0 0 0 0 0
 3
 L
@@ -2653,6 +2696,7 @@ symbol garmaine~
 @@cS@@ry@@cm@@cb@@ro@@cl @@co@@cf @@cG@@ra@@rr@@cm@@ca@@ri@@rn@@ce@@N~
 @@gThe @@cS@@ry@@cm@@cb@@ro@@cl @@co@@cf @@cG@@ra@@rr@@cm@@ca@@ri@@rn@@ce@@g is encrusted with a minature mining pick.@@N~
 29 64 8421376 145
+0.00
 0 30045 30033 0 0 0 0 0 0 0
 3
 L
@@ -2662,6 +2706,7 @@ flaming claw~
 @@lA @@eFlaming @@lClaw@@N~
 ~
 5 8260 0 1
+0.00
 0 0 0 5 0 0 0 0 0 0
 15
 A
@@ -2675,6 +2720,7 @@ claws~
 @@lBig @@rClaws@@N~
 ~
 5 8196 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2688,6 +2734,7 @@ diamond band~
 @@rD@@gi@@ga@@rm@@go@@gn@@rd @@rB@@ga@@gn@@rd@@N~
 @@gThe @@rD@@gi@@ga@@rm@@go@@gn@@rd @@rB@@ga@@gn@@rd@@g glows in the light.@@N~
 29 65 8390656 145
+0.00
 0 30034 30043 0 0 0 0 0 0 0
 3
 L
@@ -2697,6 +2744,7 @@ diamond necklace~
 @@gD@@li@@la@@gm@@lo@@ln@@gd @@gN@@le@@lc@@gk@@gl@@la@@lc@@ge@@N~
 @@gThe @@gD@@li@@la@@gm@@lo@@ln@@gd @@gN@@le@@lc@@gk@@gl@@la@@lc@@ge@@g glistens in the light.@@N~
 29 64 8388736 16401
+0.00
 0 30044 30045 0 0 0 0 0 0 0
 3
 L
@@ -2706,6 +2754,7 @@ ice rod~
 @@BI@@lc@@Be @@BR@@lo@@Bd@@N~
 @@gThe @@BI@@lc@@Be @@BR@@lo@@Bd@@g looks to be made out of solid ice.@@N~
 29 64 8421376 9
+0.00
 0 30043 30033 0 0 0 0 0 0 0
 3
 L
@@ -2715,6 +2764,7 @@ diamond ring~
 @@aD@@gi@@ga@@am@@go@@gn@@ad @@aR@@gi@@gn@@ag@@N~
 @@gThe @@aD@@gi@@ga@@am@@go@@gn@@ad @@aR@@gi@@gn@@ag@@g has a soft inner glow.@@N~
 29 1 8396800 145
+0.00
 0 30041 30000 0 0 0 0 0 0 0
 3
 L
@@ -2724,6 +2774,7 @@ icy boots~
 @@eI@@lc@@ey @@eB@@lo@@eo@@lt@@es@@N~
 @@gThe @@eI@@lc@@ey @@eB@@lo@@eo@@lt@@es@@g get good traction on ice.@@N~
 29 64 10485760 16385
+0.00
 0 30042 30050 0 0 0 0 0 0 0
 3
 L
@@ -2733,6 +2784,7 @@ ribbon shadows~
 @@dR@@gi@@db@@db@@go@@dn @@do@@df @@dS@@gh@@ga@@dd@@go@@gw@@ds@@N~
 @@gThe @@dR@@gi@@db@@db@@go@@dn @@do@@df @@dS@@gh@@ga@@dd@@go@@gw@@ds@@g blends in with the darkness.@@N~
 29 0 8388616 1
+0.00
 0 30049 30051 0 0 0 0 0 0 0
 3
 L
@@ -2742,6 +2794,7 @@ relic safety~
 @@aR@@ce@@al@@ci@@ac @@ao@@af @@aS@@ca@@af@@ae@@ct@@ay@@N~
 @@gThe @@aR@@ce@@al@@ci@@ac @@ao@@af @@aS@@ca@@af@@ae@@ct@@ay@@g protects all withing its reach.@@N~
 29 65 8421376 145
+0.00
 0 30052 30001 0 0 0 0 0 0 0
 3
 L
@@ -2751,6 +2804,7 @@ visor shadows~
 @@gV@@di@@gs@@do@@gr @@go@@gf @@gS@@dh@@da@@gd@@do@@dw@@gs@@N~
 @@gThe @@gV@@di@@gs@@do@@gr @@go@@gf @@gS@@dh@@da@@gd@@do@@dw@@gs@@g absorbs all light in the room.@@N~
 29 66 8388624 4097
+0.00
 0 30047 30033 0 0 0 0 0 0 0
 3
 L
@@ -2760,6 +2814,7 @@ diamond boots~
 @@yD@@gi@@ga@@ym@@go@@gn@@yd @@yB@@go@@yo@@gt@@ys@@N~
 @@gThe @@yD@@gi@@ga@@ym@@go@@gn@@yd @@yB@@go@@yo@@gt@@ys@@g are extremely durable.@@N~
 29 0 10485760 1
+0.00
 0 30051 30052 0 0 0 0 0 0 0
 3
 L
@@ -2769,6 +2824,7 @@ helm shadows~
 @@pH@@de@@dl@@pm @@po@@pf @@pS@@dh@@da@@pd@@po@@dw@@ps@@N~
 @@gThe @@pH@@de@@dl@@pm @@po@@pf @@pS@@dh@@da@@pd@@po@@dw@@ps@@g is blacker than night.@@N~
 29 64 8388616 3
+0.00
 0 30050 30033 0 0 0 0 0 0 0
 3
 L
@@ -2778,6 +2834,7 @@ brick ice~
 @@BB@@Wr@@Bi@@Wc@@Bk @@Bo@@Bf @@BI@@Wc@@Be@@N~
 @@gA @@BB@@Wr@@Bi@@Wc@@Bk @@Bo@@Bf @@BI@@Wc@@Be@@g lies here.@@N~
 29 64 8421376 145
+0.00
 0 30048 30033 0 0 0 0 0 0 0
 3
 L
@@ -2787,6 +2844,7 @@ snowman~
 @@gA @@lS@@ln@@lo@@lw@@gm@@ga@@gn@@N~
 @@gA @@lSnow@@gman stands here.@@N~
 12 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 100
 L

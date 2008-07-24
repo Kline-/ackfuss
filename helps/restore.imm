@@ -1,0 +1,3 @@
+RESTORE
+
+The restore command will set a player's current hit, mana, and move to their maximum values.

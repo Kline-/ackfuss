@@ -1,0 +1,3 @@
+RESETGAIN
+
+Resetgain will reset a player's hit/mana/move by re-calculating their total level gains.

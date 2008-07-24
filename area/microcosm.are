@@ -1,6 +1,6 @@
 #AREA
 @@bThe Microcosm@@N~
-Q 16
+Q 17
 K none~
 L {RM}~
 N 60
@@ -3494,7 +3494,7 @@ Insanity is here, strapped to a chair, kicking his feet and laughing his @$$
 ~
 ~
 131083 128 0 S
-79 1
+78 1
 -790 45 120
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3505,7 +3505,7 @@ the twisted thought~
 ~
 ~
 131115 8320 0 S
-61 1
+62 1
 0 100 20
 ! 0 0 19 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -3516,7 +3516,7 @@ the Crooked idea~
 ~
 ~
 131119 8320 0 S
-75 1
+76 1
 0 100 40
 ! 0 0 19 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -3527,7 +3527,7 @@ the baker~
 ~
 ~
 33554443 8360 0 S
-148 1
+149 1
 -2500 1000 1000
 ! 0 0 0 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3560,7 +3560,7 @@ DNA alchemist~
 ~
 ~
 41943051 128 0 S
-86 1
+85 1
 -1000 400 400
 ! 0 0 0 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3572,7 +3572,7 @@ creativity~
 ~
 ~
 1179659 532608 0 S
-86 1
+87 1
 -1000 200 176
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3629,7 +3629,7 @@ This is one secretary that you do NOT want to disturb!@@N
 ~
 ~
 3 598016 0 S
-81 2
+82 2
 -550 110 55
 ! 0 0 0 7 142 0 0
 | 0 0 0 0 0 0 0
@@ -3644,7 +3644,7 @@ Standing here, with is an apron full of those silver bands... a @@lCoEnzyme
 
 ~
 1048577 128 0 S
-84 1
+83 1
 -550 85 75
 ! 0 0 19 7 8194 0 0
 | 0 0 0 0 0 0 0
@@ -3655,7 +3655,7 @@ An innocent passerby, perfect for venting frustration...
 ~
 ~
 3 8192 0 S
-76 1
+77 1
 -500 77 45
 ! 0 0 0 7 8198 0 0
 | 0 0 0 0 0 0 0
@@ -3706,7 +3706,7 @@ logic~
 ~
 ~
 1179657 10368 0 S
-99 1
+98 1
 -1000 200 220
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3728,7 +3728,7 @@ The @@bBig Stinky Outhouse monster@@N leaps to life and attacks!
 ~
 ~
 131113 128 0 S
-76 1
+77 1
 -480 60 60
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3761,7 +3761,7 @@ There is a groundskeeper here keeping the grass in top-notch shape.
 ~
 ~
 1 8320 0 S
-88 1
+87 1
 -600 110 70
 ! 0 0 0 7 24582 0 0
 | 0 0 0 0 0 0 0
@@ -3772,7 +3772,7 @@ A caddy is here, holding his charge's glass of bourbon.
 ~
 ~
 131073 8192 0 S
-83 1
+84 1
 -100 80 70
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3783,7 +3783,7 @@ Duran Duran is here, and they're planning a come-back tour! sTOP THEM!
 ~
 ~
 131073 8320 0 S
-75 1
+74 1
 -900 190 140
 ! 0 0 0 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3794,7 +3794,7 @@ the Bell Bottoms~
 ~
 ~
 131073 8320 0 S
-76 1
+77 1
 -1200 175 160
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3806,7 +3806,7 @@ plaid~
 ~
 ~
 131073 8320 0 S
-71 1
+72 1
 -1300 199 150
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3817,7 +3817,7 @@ poofy hair~
 ~
 ~
 131073 8320 0 S
-86 1
+87 1
 -999 145 170
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3828,7 +3828,7 @@ Spandex~
 ~
 ~
 131073 8320 0 S
-74 1
+75 1
 -1001 210 190
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3861,7 +3861,7 @@ bobomb~
 ~
 ~
 33 524348 0 S
-36 1
+35 1
 -1000 500 500
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3883,7 +3883,7 @@ A @@yBright@@N idea strolls merrily along here.
 ~
 ~
 9 128 0 S
-92 1
+91 1
 -600 140 130
 ! 0 0 19 7 8198 16 0
 | 0 0 0 0 0 0 0
@@ -3894,7 +3894,7 @@ A @@dForgotten idea shuffles from place to place.@@N
 ~
 ~
 9 8320 0 S
-89 1
+90 1
 -790 95 111
 ! 0 0 19 7 8198 16384 0
 | 0 0 0 0 0 0 0
@@ -3905,7 +3905,7 @@ A @@lRetina@@N is here, soakin up some rays on his lawn chair.
 ~
 ~
 11 524416 0 S
-93 1
+92 1
 -500 59 37
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3916,7 +3916,7 @@ A @@lRetina@@N is here, soakin up some rays on his lawn chair.
 ~
 ~
 11 524416 0 S
-81 1
+80 1
 -120 59 37
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3951,7 +3951,7 @@ A depressing thought is sulking here while sewing itself into it's death
 ~
 ~
 9 128 0 S
-86 1
+85 1
 -500 110 90
 ! 0 0 19 7 8198 0 0
 | 0 0 0 0 0 0 0
@@ -3962,7 +3962,7 @@ anyone but @@x@@iDeception@@N~
 ~
 ~
 131081 0 0 S
-89 1
+88 1
 -1111 166 180
 ! 0 0 19 7 8198 256 0
 | 0 0 0 0 0 0 0
@@ -4016,7 +4016,7 @@ passion~
 ~
 ~
 1048605 524332 0 S
-100 1
+101 1
 -1300 260 290
 ! 0 0 19 7 24590 256 0
 | 0 0 0 0 0 0 0
@@ -4027,7 +4027,7 @@ comprehension~
 ~
 ~
 1048601 44 0 S
-96 1
+95 1
 -1200 270 290
 ! 0 0 19 7 24590 1572864 8
 | 0 0 0 0 0 0 0
@@ -4038,7 +4038,7 @@ love~
 ~
 ~
 1048601 524332 0 S
-94 1
+93 1
 -1500 700 700
 ! 0 0 19 7 30734 16 16
 | 0 0 0 0 0 0 0
@@ -4050,6 +4050,7 @@ thousand Year Old Fruitcake~
 A piece of the hardest substance known to man lies here. Fruit Cake!
 ~
 5 2 8421376 1
+0.00
 0 0 0 8 0 0 0 0 0 0
 1
 A
@@ -4071,6 +4072,7 @@ potion~
 @@lPotion1@@N~
 ~
 10 128 0 1
+0.00
 0 -1 -1 -1 0 0 0 0 0 0
 1
 L
@@ -4080,6 +4082,7 @@ creative little earrings~
 @@aCreative@@N little earrings~
 ~
 9 0 8388672 3593
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4099,6 +4102,7 @@ burning rage~
 @@eBurning Rage@@N~
 ~
 9 17 8392704 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 4
 A
@@ -4127,6 +4131,7 @@ burden of intellect~
 A Very heavy belt lies here looking very smart.
 ~
 9 0 8519680 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 35
 A
@@ -4151,6 +4156,7 @@ key of knowlege~
 The key to knowing it all lies here in the dust@@N
 ~
 18 16391 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 30
 L
@@ -4160,6 +4166,7 @@ first riddle dor key~
 @@eThe Key to the First Riddle@@N~
 ~
 18 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 30
 L
@@ -4170,6 +4177,7 @@ central nervous chamber keytool~
 A strange, almost key-like object lies here...
 ~
 18 16787 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 4
 L
@@ -4181,6 +4189,7 @@ Lying here, is a hammer that looks like you could sure get your point accross
 with it in a hurry...
 ~
 5 0 8421376 513
+0.00
 0 0 0 8 0 0 0 0 0 0
 1
 A
@@ -4213,6 +4222,7 @@ tweed pants of power~
 A very powerful looking pile of tweed has been laid here.
 ~
 9 0 9437184 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4232,6 +4242,7 @@ L
 @@WF@@d@@fu@@N@@dZ@@Wz@@d@@fy @@WL@@doG@@W@@fI@@N@@dc~
 ~
 9 0 8388616 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4269,6 +4280,7 @@ The holiest of all golfclubs lies here...
 @@N
 ~
 1 0 8421376 1
+0.00
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -4289,6 +4301,7 @@ bourbon~
 A nice little glass of bourbon sits here.
 ~
 10 128 8388608 1
+0.00
 0 603 604 36 0 0 0 0 0 0
 1
 L
@@ -4298,6 +4311,7 @@ straight jacket of might~
 @@eT@@lh@@ee @@lS@@et@@lr@@ea@@li@@eg@@lh@@et @@lJ@@ea@@lc@@ek@@le@@et @@lO@@ef @@lM@@ei@@lg@@eh@@lt@@N~
 ~
 9 4 8650752 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4324,6 +4338,7 @@ the sword of the useless~
 A useless looking sword lies here...
 ~
 5 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 12
 A
@@ -4339,6 +4354,7 @@ bright idea~
 ~
 ~
 1 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -4348,6 +4364,7 @@ the enchanted bowling ball of MURHN~
 @@BThe Enchanted Bowling Ball of @@lMURHN@@N~
 ~
 9 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4366,6 +4383,7 @@ holy avenger~
 @@gThis ancient avenger was used by the Paladins of yore@@N
 ~
 5 3072 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4388,6 +4406,7 @@ the might of higher morality~
 The justification of your actions lies here.
 ~
 9 0 8389632 3858
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4412,6 +4431,7 @@ Protective Warmth~
 An intangable warmth is present.
 ~
 9 33 8421376 144
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4442,6 +4462,7 @@ the throes of passion~
 A tangable passion lies here.
 ~
 9 4 8390656 16384
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4462,6 +4483,7 @@ goggles of perception~
 Some very special welder's goggles lie here.
 ~
 9 1 8388624 3592
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4488,6 +4510,7 @@ Loving Embrace~
 The blissful wrap of love is waiting to be fallen into.
 ~
 9 1 8454144 272
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -4518,6 +4541,7 @@ the Tri Force of @@ePower@@N~
 The Triforce of @@ePower@@N in it's entirety, floats here.
 ~
 29 262145 8421376 384
+0.00
 0 16830 5607 0 0 0 0 0 0 0
 1
 A
@@ -4547,6 +4571,7 @@ tri force whole complete~
 the @@fTriforce@@N, whole and complete, once again.~
 ~
 4 1310723 8421376 24474
+0.00
 80 13 13 227 0 0 0 0 0 0
 1
 A
@@ -4577,6 +4602,7 @@ the Bottom Half of the Triforce of @@ePower@@N~
 The larger, bottom half of the Triforce of @@ePower@@N floats powerfully here
 ~
 29 1310722 8421376 256
+0.00
 0 5626 5605 0 0 0 0 0 0 0
 1
 A
@@ -4603,6 +4629,7 @@ the Top Half of the Triforce of @@ePower@@N~
 The bottom half of the Triforce of @@ePower@@N, floats here powerfully
 ~
 29 1310722 8421376 16
+0.00
 5625 0 5605 0 0 0 0 0 0 0
 1
 A
@@ -4626,6 +4653,7 @@ yellow kgb gem~
 @@yA Universe Gem@@N~
 @@yA Univrese Gem destroys reality here@@N~
 4 16385 8421376 1
+0.00
 80 5 5 28 0 0 0 0 0 0
 1
 L
@@ -4635,6 +4663,7 @@ yellow kgb gem~
 @@bA Universe Gem@@N~
 @@bA Univrese Gem destroys reality here@@N~
 4 16385 8421376 1
+0.00
 80 3 3 28 0 0 0 0 0 0
 1
 L
@@ -4644,6 +4673,7 @@ green kgb gem~
 @@rA Universe Gem@@N~
 @@rA Univrese Gem destroys reality here@@N~
 4 16385 8421376 1
+0.00
 100 4 4 612 0 0 0 0 0 0
 1
 L
@@ -4653,6 +4683,7 @@ green kgb gem~
 @@GA Universe Gem@@N~
 @@GA Univrese Gem destroys reality here@@N~
 4 16385 8421376 1
+0.00
 100 2 2 612 0 0 0 0 0 0
 1
 L
@@ -4662,6 +4693,7 @@ blue kgb gem~
 @@lA Universe Gem@@N~
 @@lA Univrese Gem destroys reality here@@N~
 4 278529 8421376 1
+0.00
 110 4 4 223 0 0 0 0 0 0
 1
 L
@@ -4671,6 +4703,7 @@ red kgb gem~
 @@eA Universe Gem@@N~
 @@eA Univrese Gem destroys reality here@@N~
 4 16385 8421376 1
+0.00
 120 0 0 226 0 0 0 0 0 0
 1
 L
@@ -4680,6 +4713,7 @@ red kgb gem~
 @@RA Universe Gem@@N~
 @@RA Univrese Gem destroys reality here@@N~
 4 278529 8421376 1
+0.00
 120 1 1 226 0 0 0 0 0 0
 1
 L
@@ -4689,6 +4723,7 @@ blue kgb gem~
 @@BA Universe Gem@@N~
 @@BA Univrese Gem destroys reality here@@N~
 4 278529 8421376 1
+0.00
 100 2 2 223 0 0 0 0 0 0
 1
 L

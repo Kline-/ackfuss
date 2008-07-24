@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@GFarmlands@@N~
-Q 16
+Q 17
 K farm~
 L @@W{@@mRMORT@@W}@@N~
 N 116
@@ -1333,7 +1333,7 @@ girl daughter woman~
 @@GA young girl in a plain @@ggrey@@G dress is here, cooking.@@N~
 ~
 3 8192 0 S
-84 2
+85 2
 -800 200 200
 ! 5 0 0 7 24078 0 0
 | 0 0 0 0 0 0 0
@@ -1363,7 +1363,7 @@ Farmer man~
 @@GThe Farmer is here, hands callused from years of work.@@N~
 ~
 3145733 8320 0 S
-100 1
+99 1
 -1100 400 400
 ! 5 0 0 7 23694 0 16
 | 0 0 0 0 0 0 0

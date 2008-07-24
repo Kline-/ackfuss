@@ -1,6 +1,6 @@
 #AREA
 @@WThe Arena@@N~
-Q 16
+Q 17
 K arena~
 L @@W{@@r 1 10@@W}@@N~
 N 52
@@ -135,7 +135,7 @@ This guy really is a huge killing machine perhaps you should walk away.
 
 ~
 19 0 0 S
-5 1
+4 1
 100 -10 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -145,7 +145,7 @@ rat~
 A large rat is scurring about here.~
 ~
 1 0 -10 S
-6 0
+7 0
 100 -100 -100
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -157,7 +157,7 @@ Borg.
 The big borgy bastard.
 ~
 23 0 1000 S
-11 0
+10 0
 -50 25 20
 ! 0 0 19 7 20612 0 0
 | 0 0 0 0 0 0 0
@@ -168,6 +168,7 @@ shield~
 shield~
 A large flaming shield~
 9 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 10
 A
@@ -179,6 +180,7 @@ breast plate~
 breastplate~
 A breast plate~
 9 0 8650752 1
+0.00
 500 10 10 10 0 0 0 0 0 0
 1
 A

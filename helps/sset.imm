@@ -1,0 +1,4 @@
+SSET
+
+Sset will set any, or all, skills/spells on a player. You can sset <target> all <level>
+or sset <target> <skill> <level>.

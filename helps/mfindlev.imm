@@ -1,0 +1,4 @@
+MFINDLEV
+
+Mfindlev will display all NPCs with a level matching the search. You can also 'mfindlev <min> <max>'
+to display a range, or 'mfindlev all' to display all NPCs in game.

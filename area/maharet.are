@@ -1,6 +1,6 @@
 #AREA
 @@GEvermeet@@N~
-Q 16
+Q 17
 K evermeet~
 L @@W{@@r ALL @@W}@@N~
 N 7
@@ -1187,7 +1187,7 @@ The beautifully radiant Queen Amlariul sits here lost in thought.
 ~
 ~
 3 680 -1 S
-81 2
+82 2
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1198,7 +1198,7 @@ The wizened old elven priest looks up at you from his reading.
 ~
 ~
 5635 2728 300 S
-80 1
+81 1
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1209,7 +1209,7 @@ The serenely graceful Elven guards patrol here.
 ~
 ~
 197 8832 -1 S
-36 1
+37 1
 -25 20 20
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1275,7 +1275,7 @@ The honorable elf before you would rather die than cheat a customer of his
 leads that has him practically chained to the bank.
 ~
 32771 8872 0 S
-80 1
+81 1
 -1300 400 400
 ! 3 0 3 7 398 0 0
 | 0 0 0 0 0 0 0
@@ -1289,7 +1289,7 @@ The huge man towering over you sends a shiver down your spine with a glance.
 likely that he would give you a big hug rather than hurt you.
 ~
 11 8876 0 S
-68 1
+69 1
 -65 65 65
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1304,7 +1304,7 @@ Rushing up to you the moment you walked in the door, it's almost as if he was
 get his delicate designer feelings hurt with the slightest frown.
 ~
 8388611 10912 0 S
-140 1
+141 1
 -1400 400 400
 ! 0 0 3 7 30 0 16
 | 0 0 0 0 0 0 0
@@ -1319,7 +1319,7 @@ Kythaela looks as if she has been in this business for a long time. Her
 and she will design a special one just for you.
 ~
 8195 10920 0 S
-117 2
+118 2
 -1400 400 400
 ! 0 0 3 7 6158 0 16
 | 0 0 0 0 0 0 0
@@ -1332,7 +1332,7 @@ This scruffy little scavenger is better off left unnoticed. Maybe if you ignore 
 could give it a few scraps and send it on its way.
 ~
 197 0 -1 S
-2 0
+3 0
 -3 3 3
 ! 0 0 2 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1372,7 +1372,7 @@ A tall, thin elf stands before you. He looks slightly bored, as if it has been
 various food items he has brought in today.
 ~
 3 2720 0 S
-137 1
+138 1
 -1400 400 400
 ! 0 0 3 7 24076 0 0
 | 0 0 0 0 0 0 0
@@ -1415,7 +1415,7 @@ Tall and slender and graceful, this lady has a piercing glare about her, I
 wouldnt mess if I were you.
 ~
 1539 2720 -1 S
-78 2
+77 2
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1437,6 +1437,7 @@ elven boots~
 a pair of elven boots~
 A pair of handmade elven boots have been left here.~
 9 0 10485760 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1446,6 +1447,7 @@ elven tunic~
 a bright blue elven tunic~
 A very fashionable blue tunic has been left here.~
 9 0 8650752 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1457,6 +1459,7 @@ elven cloak~
 an ornately decorated elven cloak~
 A very fancy elven cloak had been left here.~
 9 0 8454144 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -1470,6 +1473,7 @@ bottle wine~
 a bottle of fine vintage wine~
 A bottle of fine vintage wine has been left here.~
 17 0 8388608 1
+0.00
 10 10 2 0 0 0 0 0 0 0
 4
 L
@@ -1479,6 +1483,7 @@ kayak~
 a kayak~
 A hand-crafted kayak has been left here.~
 22 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 50
 L
@@ -1488,6 +1493,7 @@ dandylion leaves~
 freshly cut dandylion leaves~
 Some freshly cut dandylion leaves have been left here to tempt you.~
 19 0 8388608 1
+0.00
 50 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1497,6 +1503,7 @@ loaf waybread~
 a loaf of waybread~
 A tasty loaf of waybread has been left here.~
 19 0 8388608 1
+0.00
 55 0 0 0 0 0 0 0 0 0
 3
 L
@@ -1506,6 +1513,7 @@ riocha wine~
 a fine glass of 1982 Riocha~
 ~
 17 0 8388608 1
+0.00
 1 1 2 1 0 0 0 0 0 0
 1
 L
@@ -1516,6 +1524,7 @@ needle~
 You can just make out a needle here.
 ~
 5 65 8421376 1
+0.00
 0 0 0 11 0 0 0 0 0 0
 1
 L
@@ -1526,6 +1535,7 @@ an exceedingly tasteless blue and red cravatte~
 An awful cravatte lies on the floor here.
 ~
 9 0 8388736 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1540,6 +1550,7 @@ a single perfect pale hanging snowdrop~
 A snowdrop has been thoughtlessly discarded here.
 ~
 8 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1550,6 +1561,7 @@ a twining deep crimson rose of love~
 A rose lies trampled on the floor here.
 ~
 8 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1560,6 +1572,7 @@ bouquet~
 A large bouquet lies on the floor here forgotten.
 ~
 8 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1571,6 +1584,7 @@ space modulator~
 a PEW39 Explosive Space Modulator~
 A PEW39 Explosive Space Modulator lies here ready to blow up the world.~
 5 16705 8421376 1
+0.00
 0 0 0 11 0 0 0 0 0 0
 4
 A
@@ -1592,6 +1606,7 @@ nectar~
 nectar of the gods~
 A refreshing drink has been left here.~
 10 128 8388608 1
+0.00
 10 16 81 -1 0 0 0 0 0 0
 1
 L
@@ -1601,6 +1616,7 @@ vapor barrier~
 a vapor barrier~
 Someone has left a vapor barrier here. Wise choice.~
 17 0 8388608 1
+0.00
 30 30 8 0 0 0 0 0 0 0
 1
 L
@@ -1610,6 +1626,7 @@ mug rivengut~
 a mug of rivengut~
 A mug of rivengut has been left here.~
 17 0 8388608 1
+0.00
 10 10 4 0 0 0 0 0 0 0
 1
 L
@@ -1619,6 +1636,7 @@ oshite staff~
 an O'Shite Staff~
 An ornate staff lies here. Clasp it in times of need calling, 'O'Shite! Get me outa here!'~
 4 65 8421376 1
+0.00
 40 1 1 42 0 0 0 0 0 0
 1
 L
@@ -1628,6 +1646,7 @@ blueberry muffin~
 a blueberry muffin~
 A scrumptious blueberry muffin tempts you here.~
 19 0 8388608 1
+0.00
 50 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1637,6 +1656,7 @@ chocolate donut~
 a chocolate donut~
 A yummy chocolate donut beckons to you.~
 19 0 8388608 1
+0.00
 40 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1646,6 +1666,7 @@ elfrune rune~
 an elfrune~
 This ornately detailed token is a gift of Queen Amluruil herself, use it wisely.~
 3 1 8421376 1
+0.00
 75 3 3 2 0 0 0 0 0 0
 1
 L
@@ -1656,6 +1677,7 @@ elven chainmail~
 A superbly crafted set of elven chain is here.
 ~
 9 1 8650752 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1669,6 +1691,7 @@ snack~
 a Scooby Snack~
 A scooby snack lies here. Are you willing to do anything to get it?~
 26 0 8388608 1
+0.00
 75 66 36 28 0 0 0 0 0 0
 1
 L
@@ -1678,6 +1701,7 @@ sleeves~
 a pair of elven sleeves~
 A finely crafted pair of elven sleeves have been carelessly left behind here.~
 9 0 8389632 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -1693,6 +1717,7 @@ bracer~
 an elven bracer~
 An elven bracer has been dropped here.~
 9 0 8390656 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -1706,6 +1731,7 @@ leggings~
 a pair of elven leggings ~
 A pair of elven leggings have been left here.~
 9 0 9437184 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -1719,6 +1745,7 @@ elven cloak~
 a finely woven elven cloak~
 A finely woven elven cloak hangs here on a peg.~
 9 0 8388736 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 2
 L
@@ -1728,6 +1755,7 @@ boots elvenkind~
 boots of elvenkind~
 A pair of boots of elvenkind lie here.~
 9 1 10485760 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1745,6 +1773,7 @@ white rose~
 a long-stemmed white rose~
 A beautiful long-stemmed white rose lies here.~
 9 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1758,6 +1787,7 @@ elven belt~
 a finely crafted elven belt~
 Someone has left a belt here. Hope it wasn't needed to hold up their pants.~
 9 0 8519680 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1771,6 +1801,7 @@ elven sword~
 an elven sword ~
 An elven sword lies here, waiting for a good fight.~
 5 65 8421376 1
+0.00
 0 0 0 1 0 0 0 0 0 0
 5
 A
@@ -1784,6 +1815,7 @@ elven bow~
 a finely crafted elven bow~
 A finely crafted elven bow rests here, waiting to be picked up.~
 5 65 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 4
 A
@@ -1797,6 +1829,7 @@ moonblade sword~
 a Moonblade~
 A finely crafted sword decorated with runes radiates a glowing light here.~
 5 65 8421376 1
+0.00
 0 0 0 1 0 0 0 0 0 0
 5
 A
@@ -1814,6 +1847,7 @@ elven shield~
 a finely crafted elven shield~
 A finely crafted elven shield is resting here.~
 9 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -1831,6 +1865,7 @@ bk tshirt~
 a BK t-shirt~
 A t-shirt lies here with the logo 'Get it your way right away at BK now'~
 9 0 8650752 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1840,6 +1875,7 @@ fountain~
 the Fountain of Stars~
 An ornately decorated fountain flows here.~
 25 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 10000
 L

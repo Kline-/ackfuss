@@ -1,0 +1,7 @@
+SNOOP
+
+Snoop allows you to watch the actions of a player as if they were your
+own. This is very useful for checking errors or understanding the output
+a player is seeing in troubleshooting; it can also be used to monitor
+cheating. This is highly invasive of player privacy however, and should
+be used with the utmost care.

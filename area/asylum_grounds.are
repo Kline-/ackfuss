@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@dMiskatonic @@mAsylum @@GGrounds@@N~
-Q 16
+Q 17
 K asylum~
 L @@W{@@r30 60@@W}@@N~
 N 53
@@ -2127,7 +2127,7 @@ A stern looking doctor wanders about.
 ~
 ~
 3145801 33416 0 S
-47 1
+48 1
 -300 150 130
 ! 0 0 0 7 7190 0 0
 | 0 0 0 0 0 0 0
@@ -2139,7 +2139,7 @@ asylum guard~
 ~
 ~
 3145793 33448 0 S
-57 1
+56 1
 -320 140 140
 ! 3 0 0 7 23718 0 0
 | 0 0 0 0 0 0 0
@@ -2151,7 +2151,7 @@ inmate~
 ~
 ~
 262209 0 0 S
-39 1
+38 1
 -275 100 95
 ! 0 0 0 7 2070 0 0
 | 0 0 0 0 0 0 0
@@ -2163,7 +2163,7 @@ female inmate~
 ~
 ~
 65 0 0 S
-43 2
+42 2
 -290 150 105
 ! 0 0 0 7 2326 0 0
 | 0 0 0 0 0 0 0
@@ -2199,7 +2199,7 @@ child inmate~
 ~
 ~
 65 0 0 S
-33 1
+34 1
 -175 65 60
 ! 0 0 0 7 2390 0 0
 | 0 0 0 0 0 0 0
@@ -2210,6 +2210,7 @@ foot rabbit~
 a @@yrabbit's foot@@N~
 @@NThe poor paw of an unlucky @@ybunny@@N lies here.~
 9 1 8421376 16449
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2227,6 +2228,7 @@ medallion turquoise~
 @@NA @@rturquoise @@ymedallion@@N~
 @@NA small @@rturquoise @@Ndisc, with a strange rune etched on it's face lies here.~
 9 17 8388736 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -2244,6 +2246,7 @@ baton~
 a @@dblack baton@@N~
 @@NAn evil looking baton of an unknown metal, and rings of @@rturquoise@@N beckons you to wield it.~
 5 84 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2261,6 +2264,7 @@ smock staff~
 @@NA @@Wmedical smock@@N~
 @@NA a small smock, with a trace of some @@Rstain@@N lies crumpled in a heap.~
 9 0 8454144 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2284,6 +2288,7 @@ knuckles turquoise~
 @@rTurquoise@@N Knuckles~
 @@NA nasty set of @@rturquoise @@Nknuckles glint in your light.~
 9 20 8392704 256
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -2303,6 +2308,7 @@ carrot~
 
 ~
 26 0 8388608 1
+0.00
 0 61 66 -1 0 0 0 0 0 0
 1
 L
@@ -2312,6 +2318,7 @@ Sai~
 @@WC@@gr@@duel @@WI@@gr@@don @@WS@@ga@@di@@N~
 @@dA martial arts weapon lies here, @@Wglinting@@d in the darkness@@N~
 5 37748736 8421376 1
+0.00
 0 0 0 11 0 0 0 0 0 0
 1
 A

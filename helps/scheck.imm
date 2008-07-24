@@ -1,0 +1,4 @@
+SCHECK
+
+Scheck will check for memory leaks in the string heap and output them to a file
+that can be looked at for further information.

@@ -1,0 +1,4 @@
+SLOOKUP
+
+Slookup will lookup the GSN and slot number for a specified skill / spell. Useful
+when adding spells to wands or staves.

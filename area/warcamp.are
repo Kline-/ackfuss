@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@eMinotaur's @@dWarcamp@@N~
-Q 16
+Q 17
 K minotaurcamp~
 L @@W{@@mLO RM@@W}@@N~
 N 145
@@ -426,7 +426,7 @@ minotaur lesser guard~
 ~
 ~
 3153923 8892 -200 S
-84 1
+85 1
 -750 230 200
 ! 3 0 12 7 14782 0 2
 | 0 0 0 0 0 0 0
@@ -460,7 +460,7 @@ minotaur ranger~
 ~
 ~
 3153923 631036 -200 S
-90 1
+89 1
 -800 250 225
 ! 9 0 12 7 14478 0 80
 | 0 0 0 0 0 0 0
@@ -484,6 +484,7 @@ key~
 @@Wa @@eBone @@dKey @@Wlies on the ground here.@@N
 ~
 18 147488 8388608 1
+0.00
 6623 0 0 0 0 0 0 0 0 0
 1
 L
@@ -494,6 +495,7 @@ battleaxe~
 @@dA wicked looking @@gbattle-axe@@d lies on the ground.@@N
 ~
 5 0 8421376 1
+0.00
 0 0 0 3 0 0 0 0 0 0
 25
 A
@@ -512,6 +514,7 @@ security pass~
 @@dA piece of paper with strange writing on it lies on the ground.@@N
 ~
 9 131072 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -532,6 +535,7 @@ boots~
 @@dA large pair of @@eMinotaur @@dboots lies on the ground.@@N
 ~
 9 131392 12582912 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 15
 A
@@ -554,6 +558,7 @@ battle helmet~
 @@dA very large helmet with two holes on the top lies on the ground.@@N
 ~
 9 131072 8388612 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 25
 A

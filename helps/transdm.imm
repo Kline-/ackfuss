@@ -1,0 +1,6 @@
+TRANSDM
+
+The transdm command should be used prior to starting a deathmatch if you wish
+to contain the bloodshed to the DM Arena. Otherwise, players will roam the MUD
+in their battles. Transdm will transfer all players to a random room within
+the DM Arena.

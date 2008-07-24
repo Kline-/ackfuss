@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@lEthereal Plane@@N~
-Q 16
+Q 17
 K etherealplane~
 L @@W{@@mRMORT@@W}@@N~
 N 83
@@ -592,7 +592,7 @@ A Plasma Beast
 ~
 ~
 3211361 532608 0 S
-79 1
+78 1
 -200 200 200
 ! 0 0 19 7 22662 0 0
 | 0 0 0 0 0 0 0

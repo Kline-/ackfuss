@@ -1,0 +1,5 @@
+IQUEST
+
+Iquest will display the status and information about the auto-quest module. You can
+also 'iquest stop' to disable the auto-quester, 'iquest start' to generate a single
+quest, and 'iquest auto' to enable auto-questing.

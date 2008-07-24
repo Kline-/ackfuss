@@ -1,0 +1,4 @@
+OFINDLEV
+
+Ofindlev will display all objects with a level matching the search. You can also 'ofindlev <min> <max>'
+to display a range, or 'ofindlev all' to display all objects in game.

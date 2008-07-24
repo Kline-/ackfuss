@@ -1,0 +1,6 @@
+TRANSFER
+
+Transfer will move one PC/NPC either to your location or another. You may
+'transfer <target>' to bring them to you, 'transfer <target> <victim>' to
+move <target> to <victim>, or 'transfer <target> <room vnum>' to move
+<target> to a specific room.

@@ -1,6 +1,6 @@
 #AREA
 Plane of the Mortals~
-Q 16
+Q 17
 K players~
 L @@W{@@mRMORT@@W}@@N~
 N 27
@@ -702,7 +702,7 @@ Al the Bartender is a short, fat, round kind of guy, always cleaning glasses,
 think about it.  He flashes a quick smile at you.
 ~
 515 533180 900 S
-75 1
+74 1
 -1000 500 500
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -753,7 +753,7 @@ You realize that whenever your guildmaster moves, you fail to notice it:
 the appearance of a beggar.
 ~
 1027 0 1000 S
-78 2
+79 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -780,7 +780,7 @@ Even though your guildmaster looks old and tired, you can clearly see the
 and you notice that she is surrounded by a blue shimmering aura.
 ~
 1027 0 1000 S
-73 2
+72 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -791,6 +791,7 @@ seat~
 a wooden garden seat~
 A very old, well-worn oak garden seat is tucked away in one corner.~
 12 64 0 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 1
 L
@@ -801,6 +802,7 @@ a small china fountain~
 A small china fountain gurgles away sweetly to itself.
 ~
 25 64 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1000
 L
@@ -810,6 +812,7 @@ glass key~
 a glass key~
 An Important Looking Glass Key Lies Here.~
 1 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -819,6 +822,7 @@ seat~
 a small, circular seat~
 A small, circular seat is in the middle of the room.~
 12 64 0 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 200
 L
@@ -828,6 +832,7 @@ board~
 the Lovers' Board~
 The Lovers's Board is here, stuck to the wall with four arrows.~
 27 0 0 1
+0.00
 14 1 1 1141 0 0 0 0 0 0
 10000
 L
@@ -838,6 +843,7 @@ the Info board~
 The Info Board is here, holding Rules, and General Information.
 ~
 27 0 0 1
+0.00
 365 1 82 1117 0 0 0 0 0 0
 1
 L
@@ -848,6 +854,7 @@ a can of Pepsi~
 A can of Pepsi lies forgotten on the floor.
 ~
 17 0 8388608 1
+0.00
 4 4 15 0 0 0 0 0 0 0
 5
 L
@@ -858,6 +865,7 @@ a glass of Jack Daniel's~
 A glass of Jack Daniel's lies on the floor.
 ~
 17 0 8388608 1
+0.00
 4 4 5 0 0 0 0 0 0 0
 5
 L
@@ -868,6 +876,7 @@ a glass of wine~
 A bottle of quality red wine has been left here.
 ~
 17 0 8388608 1
+0.00
 4 4 2 0 0 0 0 0 0 0
 5
 L
@@ -878,6 +887,7 @@ a bottle of beer~
 A bottle of warm beer has been left here.
 ~
 17 0 8388608 1
+0.00
 4 4 1 0 0 0 0 0 0 0
 5
 L
@@ -888,6 +898,7 @@ a bottle of spring water~
 A small bottle of local spring water has been left here.
 ~
 17 0 8388608 1
+0.00
 4 4 0 0 0 0 0 0 0 0
 5
 L
@@ -897,6 +908,7 @@ board~
 @@bBoard@@N~
 @@bAn ancient board for Remortals' scribbles@@N~
 27 0 0 1
+0.00
 30 35 35 1100 0 0 0 0 0 0
 1
 L
@@ -906,6 +918,7 @@ key~
 @@bAncient key of the @@mRemortals@@N~
 @@bAncient key of the @@mRemortals' Sanctum@@N~
 4 0 8388608 1
+0.00
 0 0 0 -1 0 0 0 0 0 0
 1
 L
@@ -916,6 +929,7 @@ wed board~
 @@eS@@do@@eE@@W's @@yWedding @@aBoard@@N
 ~
 27 1 0 1
+0.00
 60 1 1 1107 0 0 0 0 0 0
 1000
 L

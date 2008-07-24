@@ -1,0 +1,4 @@
+MSTAT
+
+The mstat command displays basic information about a PC/NPC such as stats, ac, hr, dr, etc. For NPCs
+it will also display MOB specs or progs if any are set.

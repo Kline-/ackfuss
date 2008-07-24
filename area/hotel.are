@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@bHotel@@N~
-Q 16
+Q 17
 K hotel~
 L @@W{@@r30 60@@W}@@N~
 N 4
@@ -821,7 +821,7 @@ A Doorman stands here, watching the entrance.
 He looks old, and bored.  Be nice and leave him alone.
 ~
 31 8 200 S
-23 1
+22 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -833,7 +833,7 @@ The bellboy stands here, looking to make a quick tip.
 He is young, and ugly.  What else do you need to know?
 ~
 7 0 400 S
-27 1
+28 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -845,7 +845,7 @@ A member of staff stands here, trying to ignore you.
 She is old, and looks unhelpful, to say the least.
 ~
 15 60 -200 S
-23 2
+24 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -857,7 +857,7 @@ A newlywed groom stands here, waiting for night time.
 He has just got married, and is spending his honeymoon here.  Fool.
 ~
 7 8 0 S
-29 1
+30 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -869,7 +869,7 @@ A newlywed bride stands here, trying to fake a headache.
 She is very pretty, and looks annoyed at having to honeymoon here.
 ~
 7 0 500 S
-24 2
+25 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -881,7 +881,7 @@ A guest is here, thinking of more things to complain about.
 He is big, horrible and ugly.  The perfect guest for this hotel!
 ~
 39 0 -200 S
-23 1
+22 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -942,7 +942,7 @@ Driller Killer, the mean puppet stands here, waiting to kill you.  Run!?!?
 Driller Killer is a small doll, but has a large, sharp head.
 ~
 3145783 32778 -900 S
-49 0
+50 0
 -20 8 8
 ! 0 0 19 7 6286 1052672 0
 | 0 0 0 0 0 0 0
@@ -954,7 +954,7 @@ The Puppetmaster stands here, looking damn evil.
 He is scared, and old.  However, he's still bigger than you!
 ~
 3145767 136 -900 S
-55 0
+54 0
 -150 0 100
 ! 0 0 0 7 14 0 68
 | 0 0 0 0 0 0 0
@@ -966,7 +966,7 @@ A giant puppet is waiting here......  for you maybe??
 The puppet is giant by puppet dimensions, but still smaller than you.
 ~
 3145761 0 -400 S
-45 0
+46 0
 0 0 0
 ! 0 0 19 7 2054 0 0
 | 0 0 0 0 0 0 0
@@ -978,7 +978,7 @@ A puppet is here, wandering around.
 The puppet looks like a normal puppet, except it is walking around!!!!!!
 ~
 3145761 0 -200 S
-43 0
+42 0
 0 75 10
 ! 0 0 19 7 2054 0 0
 | 0 0 0 0 0 0 0
@@ -990,7 +990,7 @@ A puppet is here, as if on guard.
 It is a plain looking puppet, except is looks very evil.
 ~
 3145763 0 -700 S
-46 0
+45 0
 -100 100 0
 ! 0 0 19 7 6158 0 4
 | 0 0 0 0 0 0 0
@@ -1001,6 +1001,7 @@ red staff~
 a red staff~
 A red staff lies on the floor.~
 4 2576 8421376 1
+0.00
 50 8 8 30 0 0 0 0 0 0
 2
 L
@@ -1010,6 +1011,7 @@ staff gnarled~
 a gnarled staff~
 A gnarled staff lies here.~
 5 2576 8421376 1
+0.00
 0 0 0 7 0 0 0 0 0 0
 4
 L
@@ -1019,6 +1021,7 @@ red armbands~
 some red armbands~
 A red pair of armbands lies here.~
 9 16 8390656 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 4
 A
@@ -1036,6 +1039,7 @@ leggings red~
 red leggings~
 Some red leggings have been left here.~
 9 16 9437184 17
+0.00
 0 0 0 0 0 0 0 0 0 0
 4
 A
@@ -1051,6 +1055,7 @@ coins~
 a bag of coins~
 A bag of coins lies here.~
 20 0 8388608 1
+0.00
 5000 0 0 0 0 0 0 0 0 0
 2
 L
@@ -1060,6 +1065,7 @@ kitchen knife~
 a kitchen knife~
 A kitchen knife has been left here.~
 5 16 8421376 1
+0.00
 0 0 0 3 0 0 0 0 0 0
 3
 A
@@ -1073,6 +1079,7 @@ hat pin hatpin~
 a small hatpin~
 A small hatpin has been dropped here.~
 5 16 8421376 257
+0.00
 0 0 0 11 0 0 0 0 0 0
 3
 A
@@ -1086,6 +1093,7 @@ belt leather~
 a leather belt~
 A leather belt has carelessly been left here.~
 9 528 8519680 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 L
@@ -1095,6 +1103,7 @@ brain fluid~
 some brain fluid~
 Some brain fluid has been left here.~
 10 128 8388608 1
+0.00
 50 56 67 1 0 0 0 0 0 0
 4
 L
@@ -1104,6 +1113,7 @@ gold band~
 a gold band~
 A gold band has been dropped here.~
 9 0 8396800 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 A

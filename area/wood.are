@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@rEccentric @@GWoodland@@N~
-Q 16
+Q 17
 K eccentricwoodland~
 L @@W{@@r 4 50@@W}@@N~
 N 35
@@ -788,7 +788,7 @@ The sacred holy ram lies here, sleeping and unaware.
 ~
 ~
 3 657408 0 S
-8 1
+7 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -820,7 +820,7 @@ A shapeshifter~
 A small sniffing shapeshifter cringes in one corner.~
 ~
 1 0 0 S
-10 0
+11 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -853,7 +853,7 @@ A nasty vicious wolverine is rooting for food here.
 ~
 ~
 3 0 0 S
-35 1
+36 1
 -40 15 25
 ! 0 0 19 7 16644 0 0
 | 0 0 0 0 0 0 0
@@ -864,7 +864,7 @@ The ghost of the dead adventurer rises from the ground and attacks!
 ~
 ~
 35 0 -50 S
-28 1
+29 1
 0 0 0
 ! 0 0 14 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -886,6 +886,7 @@ blood~
 A drop of Isileth's sweet crimson blood~
 A drop of Isileth's sweet crimson blood~
 9 3 8388672 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -900,6 +901,7 @@ the unholy grail~
 The unholy grail lies here, shimmering softly.
 ~
 13 1 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -909,6 +911,7 @@ gown~
 a tight fitting black silken gown~
 A grubby gown is lying here~
 9 0 8650752 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -919,6 +922,7 @@ a filmy sheer silk white clinging gown.~
 A beautiful gown lies here ground underfoot.
 ~
 9 0 8650752 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -929,6 +933,7 @@ bracer of Giant Strength~
 A huge bracer has been stupidly discarded here.
 ~
 9 0 8390656 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -946,6 +951,7 @@ the bloodring~
 The bloodring lies here, glowing in the dust.
 ~
 9 0 8396800 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -962,6 +968,7 @@ a noticeboard for the dark~
 A parchment nailed to the wall, for the sharing of knowledge.
 ~
 27 1 0 1
+0.00
 28 1 1 9011 0 0 0 0 0 0
 1
 L
@@ -972,6 +979,7 @@ fountain of all knowledge~
 The fountain of all knowledge is here, gushing streams of words.
 ~
 25 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -982,6 +990,7 @@ an azure potion~
 A small vial lies on the floor here, full of an azure liquid.
 ~
 10 128 8388608 1
+0.00
 0 28 -1 -1 0 0 0 0 0 0
 10
 L
@@ -992,6 +1001,7 @@ an oak staff~
 A bit of tree is lying here forgotten.
 ~
 5 2 8421376 1
+0.00
 0 0 0 7 0 0 0 0 0 0
 10
 A
@@ -1008,6 +1018,7 @@ wolverine claws~
 Some long razor blades on gloves lie on the floor here. 
 ~
 5 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 8
 A
@@ -1023,6 +1034,7 @@ key~
 key to discovery~
 Nah you dont want this.~
 9 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1032,6 +1044,7 @@ cigarette~
 a smouldering cigarette~
 ~
 9 0 8388672 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1042,6 +1055,7 @@ desk ~
 An anchient black desk appears to be watching you.
 ~
 12 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1052,6 +1066,7 @@ a small uncomfortable chair~
 The lonely chair resides here waiting for a man.
 ~
 12 2 8388672 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1062,6 +1077,7 @@ dark pulsating halo~
 Something shimmers on the ground here.
 ~
 1 4482 8421376 1
+0.00
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -1078,6 +1094,7 @@ silver spiked wristband~
 A glinting silver wristband lies in the dirt here.
 ~
 9 2 8390656 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A

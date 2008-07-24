@@ -1,6 +1,6 @@
 #AREA
 @@RTirna n'Ogth@@N~
-Q 16
+Q 17
 K tirnanogth~
 L @@W{@@r ALL @@W}@@N~
 N 71
@@ -1910,7 +1910,7 @@ Gabe is standing here waiting to sell you something!
 ~
 ~
 8388611 8360 0 S
-94 1
+95 1
 -500 500 500
 ! 3 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -1922,7 +1922,7 @@ Scrub is selling drinks.
 ~
 ~
 8388611 40 0 S
-92 1
+91 1
 -500 500 500
 ! 6 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -1942,7 +1942,7 @@ He is a very insane man who believes that brown hair and brown eyes are
 
 ~
 35 552 -1000 S
-35 1
+36 1
 -50 25 25
 ! 3 0 0 7 14358 0 0
 | 0 0 0 0 0 0 0
@@ -1978,7 +1978,7 @@ He is the leader of the SU.
 
 ~
 3 4 500 S
-23 1
+22 1
 -40 15 10
 ! 3 0 0 7 6146 0 0
 | 0 0 0 0 0 0 0
@@ -2054,7 +2054,7 @@ The rodent is a large brown looking mouse.  It is said that the city was
 
 ~
 65 0 0 S
-4 1
+5 1
 0 0 0
 ! 2 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2096,7 +2096,7 @@ pkiller hunter~
 ~
 ~
 20054045 1633020 0 S
-123 1
+122 1
 -2000 1000 1000
 ! 3 0 0 7 420346 16384 16
 | 0 0 0 0 0 0 0
@@ -2112,7 +2112,7 @@ Fromp is a huge bald man with bulging muscles. He is totally decked out in
 
 ~
 1539 168 0 S
-90 1
+89 1
 -100 100 350
 ! 3 0 0 7 30776 0 0
 | 0 0 0 0 0 0 0
@@ -2124,7 +2124,7 @@ All you see is someone in a dark black robe!
 
 ~
 8390147 524456 0 S
-90 1
+91 1
 -100 100 350
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2136,7 +2136,7 @@ He looks totally normal, except he has a really big head!
 
 ~
 8390147 168 0 S
-99 1
+100 1
 -100 100 350
 ! 4 0 0 7 0 8675328 0
 | 0 0 0 0 0 0 0
@@ -2152,7 +2152,7 @@ Juzical is a very tanned lady with jet-black hair.  She wears a many colored
 
 ~
 8390147 168 0 S
-100 2
+101 2
 -100 100 350
 ! 1 0 0 7 4 0 16
 | 0 0 0 0 0 0 0
@@ -2164,7 +2164,7 @@ Jim will keep your money safe in his bank.
 
 ~
 8421379 0 0 S
-92 1
+91 1
 -100 100 100
 ! 2 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2190,7 +2190,7 @@ This guy is a non-stop healing machine.  He never tires, he just keeps casting
 
 ~
 8392707 0 0 S
-97 1
+98 1
 -100 100 350
 ! 1 0 0 7 0 0 24
 | 0 0 0 0 0 0 0
@@ -2209,7 +2209,7 @@ He seems like a normal man, but he has a very evil grin on his face.  Better
 
 ~
 65 0 0 S
-12 1
+11 1
 0 0 0
 ! 2 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2264,7 +2264,7 @@ She is dressed in thin rags, barely covering here frail body.  It looks like
 
 ~
 65 0 0 S
-12 2
+11 2
 0 0 0
 ! 4 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2288,7 +2288,7 @@ guardian~
 ~
 ~
 2250879 59640 -1000 S
-137 1
+138 1
 -2500 1000 1000
 ! 0 0 14 7 958592 17334468 32
 | 0 0 0 0 0 0 0
@@ -2299,6 +2299,7 @@ hook~
 @@bGrappling@@N @@dHook@@N~
 ~
 9 0 8519680 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2308,6 +2309,7 @@ board~
 the Vampire board of wisdom~
 The Vampire Board of Wisdom~
 27 0 0 1
+0.00
 150 0 0 9014 0 0 0 0 0 0
 1
 L
@@ -2317,6 +2319,7 @@ stake~
 Stake~
 Stake~
 21 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2326,6 +2329,7 @@ Drink~
 @@gThe Fountain of @@eBloodlust@@g.~
 ~
 25 1 0 1
+0.00
 13 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2339,6 +2343,7 @@ A fountain of living bone is constructed here with a deep crimson fluid flowing 
 
 ~
 25 0 0 1
+0.00
 13 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2348,6 +2353,7 @@ portal door~
 the door portal~
 The portal~
 7 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2357,6 +2363,7 @@ fountain~
 the fountain of death.~
 The fountain nourishes you so that you will be healthy when you are dead!~
 25 0 0 1
+0.00
 11 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2370,6 +2377,7 @@ The helm is totally black with a bright red flame on the top!
 
 ~
 9 0 8388616 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2381,6 +2389,7 @@ boots~
 the Deathguard's Boots~
 The boots are jet black with spiked toes.~
 9 0 10485760 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2392,6 +2401,7 @@ sword~
 the Deathguard's Sword~
 The sword is a shiny black.~
 5 0 8421376 1
+0.00
 0 0 0 3 0 0 0 0 0 0
 1
 A
@@ -2405,6 +2415,7 @@ sleeves~
 watchman's Sleeves~
 The sleeves are black with a painted eye on them.~
 9 0 8389632 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2416,6 +2427,7 @@ The leggings are a crimson red with a skeleton painted down the front.
 
 ~
 9 0 9437184 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2427,6 +2439,7 @@ ring~
 watchman's ring~
 The ring is made of a rought twine.~
 9 0 8396800 1
+0.00
 0 0 0 1 0 0 0 0 0 0
 1
 A
@@ -2438,6 +2451,7 @@ popper~
 popper~
 The slim Popper dagger is lying here!~
 5 0 8421376 1
+0.00
 0 0 0 11 0 0 0 0 0 0
 1
 A
@@ -2451,6 +2465,7 @@ banner~
 cross-like Symboled Banner~
 A banner lays here with a red cross like symbol on it!~
 1 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2462,6 +2477,7 @@ gauntlets~
 gauntlets of SU~
 A pair of multicolored gauntlets are waiting to be worn.~
 9 0 8392704 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2475,6 +2491,7 @@ bracer~
 brAcEr~
 A bRaCeR is on the ground.~
 9 0 8390656 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2486,6 +2503,7 @@ ring~
 ring of Ruling~
 A charming looking ring is here.~
 9 0 8396800 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2501,6 +2519,7 @@ board~
 a Large Board~
 The Vampire Board of wisdom~
 27 4 0 1
+0.00
 150 0 0 9013 0 0 0 0 0 0
 1
 L
@@ -2510,6 +2529,7 @@ Golden Spatula~
 a Golden Spatula~
 This shining Golden Spatula is a wedding gift from Jaguar!~
 13 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2521,6 +2541,7 @@ A piece of parchment, with words that you do not understand.
 
 ~
 11 -65344 8421376 1
+0.00
 3 9013 0 0 0 0 0 0 0 0
 1
 L
@@ -2532,6 +2553,7 @@ The darkened board, red glow casting enough to barely see the words of the writt
 
 ~
 27 0 0 1
+0.00
 12 80 80 9019 0 0 0 0 0 0
 1
 L

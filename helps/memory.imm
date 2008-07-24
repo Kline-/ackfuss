@@ -1,0 +1,6 @@
+MEMORY
+
+The memory command will display statistics about the game's memory usage. You can also
+'memory defrag' to defragment the heap, possibly giving a small performance gain. This
+is usually unnecessary though except on an excessively busy game, and the MUD will often
+auto-defragment on its own.

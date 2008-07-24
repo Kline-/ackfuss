@@ -1,6 +1,6 @@
 #AREA
 The Topmost Area~
-Q 16
+Q 17
 K helps~
 L @@e[@@RSYSTEM@@e]@@N~
 N 0
@@ -18,18 +18,16 @@ S Title not shown on area list.
 New room~
 This is a desc\brthis is only a desc
 
-this shouldnt be wrapped
+this shouldnt be wrapped
 
-\brthis should
+\brthis should
 
-\br
+\br
 
-hmm
+hmm
 
-~
+~
 4 11
 S
-#0
-#OBJECTS
 #0
 #$

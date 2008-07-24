@@ -1,0 +1,5 @@
+AT
+
+The at command lets you perform actions in the same room as the target.
+IE: 'at bob wave' will transfer you to bob, perform the wave command, then
+move you back to your original location.

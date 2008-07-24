@@ -1,6 +1,6 @@
 #AREA
 Limbo~
-Q 16
+Q 17
 K none~
 L @@e[@@RSYSTEM@@e]@@N~
 N 24
@@ -428,7 +428,7 @@ Puff the Fractal Dragon is here, contemplating a higher reality.
 ~
 ~
 1 0 1000 S
-31 2
+32 2
 0 0 0
 ! 0 0 8 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -478,7 +478,7 @@ A cute li'l goldfish.~
 A cute li'l goldfish sinks its fangs into you!~
 ~
 1 8320 -1000 S
-56 2
+57 2
 0 6 60
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -488,7 +488,7 @@ The old healer~
 The old healer~
 ~
 12291 0 0 S
-9 1
+8 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -503,7 +503,7 @@ jailrat~
 ~
 ~
 262149 32808 0 S
-15 1
+16 1
 -100 10 10
 ! 2 0 19 7 870400 0 0
 | 0 0 0 0 0 0 0
@@ -518,7 +518,7 @@ jailrat~
 ~
 ~
 278609 131072 0 S
-16 1
+15 1
 0 0 0
 ! 7 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -533,7 +533,7 @@ Taert, bulging muscles and all, is here.
 ~
 ~
 1 1572864 500 S
-60 1
+61 1
 -50 0 20
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -555,7 +555,7 @@ The Dark Stalker is a product of the Dark Powers.  It's only purpose in life
 
 ~
 65553 1049090 -900 S
-48 1
+47 1
 0 0 0
 ! 0 0 16 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -574,7 +574,7 @@ The Zombie looks like it has just been animated.  This doesn't stop it
 
 ~
 3 0 -400 S
-7 0
+6 0
 0 0 0
 ! 0 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -590,7 +590,7 @@ The Zombie looks freshly animated.  Looking closer you almost recognise it.
 
 ~
 16385 0 -400 S
-2 1
+1 1
 0 0 0
 ! 0 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -609,7 +609,7 @@ You see a long beared wacky mage standing here. His head seems swollen with
 
 ~
 11 1573032 0 S
-64 1
+63 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -622,7 +622,7 @@ The sweet-looking Tate is here.
 ~
 ~
 1 1572864 300 S
-51 1
+50 1
 -50 22 22
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -635,7 +635,7 @@ Lyle, the second most bravest adventurer in the world, cowers here.
 ~
 ~
 1 1572864 300 S
-64 1
+63 1
 -20 40 12
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -694,7 +694,7 @@ This cute littlwe bird couldnt hurt a flea...
 
 ~
 3 524416 0 S
-94 1
+93 1
 -247 120 150
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -710,7 +710,7 @@ Man.. does this guy reek. he looks even worse than he smells. You really didnt
 
 ~
 2051 0 0 S
-72 1
+73 1
 -350 45 38
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -730,7 +730,7 @@ This little brat must belon gto the ppl who own this house.. this kid makes
 
 ~
 1 0 -700 S
-53 1
+54 1
 -210 22 23
 ! 6 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -746,7 +746,7 @@ He is here to serve you.
 
 ~
 3 0 1000 S
-70 1
+71 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -759,7 +759,7 @@ A beaver with red hair languishes in the sun here.
 ~
 ~
 3 40 -1 S
-80 1
+79 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -795,7 +795,7 @@ morganth~
 ~
 ~
 24117257 1049148 0 S
-59 1
+60 1
 0 0 0
 ! 0 0 0 7 0 1022 48
 | 1 32 0 0 0 1 32
@@ -806,6 +806,7 @@ belt skulls~
 the belt of skulls~
 A belt of small skulls lies before you~
 16 0 8519680 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -815,6 +816,7 @@ shield~
 the Shield of Darkness~
 A dull black shield lies before you~
 16 0 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -824,6 +826,7 @@ dagger~
 @@Ra Bloody PulpDog Dagger@@g~
 A Bloody PulpDog Dagger lies here, gleaming~
 5 256 8421376 129
+0.00
 0 0 0 11 0 0 0 0 0 0
 1
 A
@@ -837,6 +840,7 @@ fountain spring~
 the Spring of Life~
 A larg spring flows from the ground~
 25 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 10000
 L
@@ -846,6 +850,7 @@ Key~
 a key~
 A key made from solid Gold~
 13 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -855,6 +860,7 @@ coin gold~
 a gold coin~
 One miserable gold coin.~
 20 0 8388608 1
+0.00
 1 0 0 0 0 0 0 0 0 0
 1
 L
@@ -864,6 +870,7 @@ coins gold~
 %d gold coins~
 A pile of gold coins.~
 20 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -873,6 +880,7 @@ Corpse~
 corpse of %s~
 The corpse of %s is lying here.~
 23 0 0 1
+0.00
 0 0 0 1 0 0 0 0 0 0
 100
 L
@@ -882,6 +890,7 @@ Corpse~
 corpse of %s~
 The corpse of %s is lying here.~
 24 0 0 1
+0.00
 0 0 0 1 0 0 0 0 0 0
 100
 L
@@ -891,6 +900,7 @@ head~
 head of %s~
 The severed head of %s is lying here.~
 19 0 8388608 1
+0.00
 10 0 0 0 0 0 0 0 0 0
 5
 L
@@ -900,6 +910,7 @@ heart~
 heart of %s~
 The torn-out heart of %s is lying here.~
 19 0 8388608 1
+0.00
 16 0 0 0 0 0 0 0 0 0
 2
 L
@@ -909,6 +920,7 @@ arm~
 arm of %s~
 The sliced-off arm of %s is lying here.~
 19 0 8388608 1
+0.00
 20 0 0 0 0 0 0 0 0 0
 5
 L
@@ -918,6 +930,7 @@ leg~
 leg of %s~
 The sliced-off leg of %s is lying here.~
 19 0 8388608 1
+0.00
 20 0 0 0 0 0 0 0 0 0
 5
 L
@@ -932,6 +945,7 @@ The sloppy brain of %s has plopped out here.
 
 ~
 13 0 0 1
+0.00
 5 0 0 1 0 0 0 0 0 0
 1
 L
@@ -941,6 +955,7 @@ mushroom~
 a Magic Mushroom~
 A delicious magic mushroom is here.~
 19 0 8388608 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 1
 L
@@ -950,6 +965,7 @@ ball light~
 a bright ball of light~
 A bright ball of light shimmers in the air.~
 1 0 8388608 1
+0.00
 0 0 -1 0 0 0 0 0 0 0
 1
 L
@@ -959,6 +975,7 @@ spring~
 a magical spring~
 A magical spring flows from the ground here.~
 25 64 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 5000
 L
@@ -968,6 +985,7 @@ board~
 a board~
 The Clan Board is here.~
 27 0 0 1
+0.00
 28 1 1 91 0 0 0 0 0 0
 10000
 L
@@ -977,6 +995,7 @@ board~
 the Bulletin Board~
 The Clan Protectorate Board~
 27 0 0 1
+0.00
 30 0 0 4 0 0 0 0 0 0
 10000
 L
@@ -986,6 +1005,7 @@ bathtub tub joke~
 a large white bathtub~
 A practical joke from Kyrie to Myst lies here.~
 12 0 8388608 1
+0.00
 3 0 0 0 0 0 0 0 0 0
 55
 E
@@ -1006,6 +1026,7 @@ The PulpDog Notice Board is here for visitors to use...
 
 ~
 27 0 0 1
+0.00
 28 0 0 5 0 0 0 0 0 0
 1
 L
@@ -1015,6 +1036,7 @@ shield~
 Protectorate Battle Shield~
 Protectorate Battle Shield~
 9 -12615678 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -1036,6 +1058,7 @@ helm~
 protectorate Helm~
 The Protectorate Helm~
 9 -32766 8388616 1033
+0.00
 0 0 0 0 0 0 0 0 0 0
 4
 A
@@ -1059,6 +1082,7 @@ sleeves~
 protectorate Sleeves~
 The Protectorare Sleeves~
 9 -12615678 8389632 16401
+0.00
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -1076,6 +1100,7 @@ Level 100 tester sword~
 level 100 tester sword~
 100th level tester sword~
 5 0 8421376 1
+0.00
 36 84 0 6 0 0 0 0 0 0
 1
 A
@@ -1091,6 +1116,7 @@ Laswer cannon~
 small laser connon white~
 A little white laser conna rests here.~
 5 0 8421376 1
+0.00
 0 0 0 11 0 0 0 0 0 0
 22
 A
@@ -1108,6 +1134,7 @@ Corpse~
 Corpse~
 Corpse~
 15 0 0 1
+0.00
 10000 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1117,6 +1144,7 @@ ball light~
 a bright ball of light~
 A bright ball of light shimmers in the air.~
 1 0 8388608 1
+0.00
 0 0 -1 0 0 0 0 0 0 0
 1
 L
@@ -1126,6 +1154,7 @@ desk small oak wooden~
 a small wooden desk~
 A small, fashionable oak desk sits here.~
 12 64 8421376 1
+0.00
 2 0 0 0 0 0 0 0 0 0
 50
 A
@@ -1139,6 +1168,7 @@ Corpse~
 Corpse~
 Corpse~
 15 0 0 1
+0.00
 10000 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1151,6 +1181,7 @@ A magical window floats before you.  Where does it look?
 
 ~
 7 64 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 200
 L
@@ -1160,6 +1191,7 @@ token~
 a token you should EXAMINE~
 ~
 13 4224 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1184,6 +1216,7 @@ A FireBlade lies here.
 
 ~
 5 12484 8421376 1
+0.00
 0 0 0 3 0 0 0 0 0 0
 1
 A
@@ -1202,6 +1235,7 @@ A small bundle of food lies here.
 
 ~
 19 64 8388608 1
+0.00
 5 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1214,6 +1248,7 @@ A magical beacon floats gently before you.
 
 ~
 6 64 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 5
 L
@@ -1226,6 +1261,7 @@ A large portal silently spins before you.
 
 ~
 7 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 200
 L
@@ -1235,6 +1271,7 @@ picture portrait orc orcs~
 a huge Portrait~
 A huge Portrait hangs here, showing hundreds of Orcs in battle~
 13 0 0 1
+0.00
 9 0 37 0 0 0 0 0 0 0
 1
 L
@@ -1250,6 +1287,7 @@ soul potion~
 
 ~
 10 688 8388608 1
+0.00
 70 632 616 618 0 0 0 0 0 0
 1
 L
@@ -1262,6 +1300,7 @@ A small living figurine lies here, groaning in agony.@@N
 
 ~
 28 512 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1271,6 +1310,7 @@ fountain~
 the fountain~
 A majestic marble fountain flows here.~
 25 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 10000
 L
@@ -1280,6 +1320,7 @@ board~
 the board~
 The Clan Board is firmly fixed to the wall.~
 27 0 0 1
+0.00
 28 1 1 1543 0 0 0 0 0 0
 1
 L
@@ -1289,6 +1330,7 @@ tome~
 the Tome of the Ancients~
 An antique spellbook lies here radiating power.~
 9 1 8421376 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -1304,6 +1346,7 @@ Armour~
 bMX body Armour~
 ~
 9 4 8650752 0
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1323,6 +1366,7 @@ katana~
 Protectorate Crysblade~
 Protectorate Crysblade~
 5 -12615616 8421376 385
+0.00
 20 0 0 1 0 0 0 0 0 0
 10
 A
@@ -1340,6 +1384,7 @@ leggings~
 Protectorate Leggings~
 Protectorate Leggings~
 9 0 9437184 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 5
 A
@@ -1359,6 +1404,7 @@ Madness~
 @@dThe @@RBeast's @@dMadness @@N~
 A blade of pure @@RRage~
 5 4673 8421376 24475
+0.00
 0 0 5 11 0 0 0 0 0 0
 5
 A
@@ -1400,6 +1446,7 @@ zenithars yinyang~
 @@mZenithar's @@pYin@@mYang@@N~
 @@mZenithar's @@psymbol @@Gof interdependence.@@N~
 16 0 8388608 1
+0.00
 4 4 400 4000 0 0 0 0 0 0
 1
 L
@@ -1409,6 +1456,7 @@ cyberlichs soggy socks~
 @@dCyberlich's @@GSoggy @@bSocks@@N~
 @@GThese are the very same @@bsocks @@Gthat saw @@dCyber @@Gall through the war.@@N~
 16 0 8388608 1
+0.00
 3 3 300 3000 0 0 0 0 0 0
 1
 L
@@ -1418,6 +1466,7 @@ dominias black soul~
 @@RDominia's @@dBlack @@WSoul@@N~
 @@RDominia's @@dBlack @@WSoul @@Genvelops you.@@N~
 16 0 8388608 1
+0.00
 3 3 300 3000 0 0 0 0 0 0
 1
 E
@@ -1430,6 +1479,7 @@ stimpys djgpp compiler~
 @@lStimpy's @@gDJGPP Compiler@@N~
 @@GThe very first @@gcompiler @@lStimpy @@Gever used.@@N~
 16 0 8388608 1
+0.00
 1 1 100 1000 0 0 0 0 0 0
 1
 L
@@ -1439,6 +1489,7 @@ thalens olc~
 @@eThalen's @@dOLC@@N~
 @@eThalen's @@dOnline Compiler @@Gused to dynamically build areas.@@N~
 16 0 8388608 1
+0.00
 1 1 100 1000 0 0 0 0 0 0
 1
 L
@@ -1448,6 +1499,7 @@ spectrums ice~
 @@cSpectrum's @@aICE@@N~
 @@cSpectrum's @@aIntegrated Customization Engine @@Gused for intermud communication.@@N~
 16 0 8388608 1
+0.00
 2 2 200 2000 0 0 0 0 0 0
 1
 L
@@ -1457,6 +1509,7 @@ altrags map~
 @@bAltrag's @@dMap@@N~
 @@bAltrag's @@dMap @@Gshows you were you've been.@@N~
 16 0 8388608 1
+0.00
 2 2 200 2000 0 0 0 0 0 0
 1
 L
@@ -1466,6 +1519,7 @@ present~
 @@NA brightly wrapped Christmas Present@@N~
 A Christmas Present wrapped in red and green paper, with a golden bow.@@N~
 32 0 8388608 1
+0.00
 0 0 0 0 0 0 74 20 0 0
 1
 L
@@ -1477,6 +1531,7 @@ intmob code~
 
 ~
 8 0 8388608 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1488,6 +1543,7 @@ A ring with an opaque @@lm@@Bo@@lt@@Bt@@ll@@Be@@ld @@Bdeep blue@@N stone.
 
 ~
 9 1 8396800 3
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1501,6 +1557,7 @@ A ring with @@bbrown@@N, @@Bblue@@N, @@Rred@@N, and @@gwhite@@N stripes.
 
 ~
 9 2 8396800 5
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1514,6 +1571,7 @@ An amulet with a transparent pale @@ablue@@N stone.
 
 ~
 9 4 8388736 9
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1529,6 +1587,7 @@ An amulet with concentric rings of @@dgray@@N, @@gwhite@@N, @@bbrown@@N,
 
 ~
 9 32 8388736 17
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1542,6 +1601,7 @@ A @@dshadowy @@Nhalo.
 
 ~
 9 64 8388609 33
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1555,6 +1615,7 @@ A @@msticky@@N looking @@gaura@@N.
 
 ~
 9 128 8388610 65
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A

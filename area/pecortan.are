@@ -1,6 +1,6 @@
 #AREA
 @@dPecortan@@N~
-Q 16
+Q 17
 K pecortan~
 L @@W{@@mRM @@lAD@@W}@@N~
 N 50
@@ -1881,7 +1881,7 @@ A small friendly storekeeper stands here.
 ~
 ~
 67 0 0 S
-21 1
+22 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1914,7 +1914,7 @@ The night gaunt stands here, offering refreshments.
 ~
 ~
 131153 280641 -1000 S
-6 1
+7 1
 -1500 700 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1967,7 +1967,7 @@ This is the queen of the giant bees.  She is about 6 feet long, and her
 stinger looks poised to strike.  Maybe now would be a good time to retreat?
 ~
 107 524840 0 S
-104 2
+105 2
 -1200 700 180
 ! 0 0 19 7 26638 0 16
 | 0 0 0 0 0 0 0
@@ -1981,7 +1981,7 @@ This skeletal figure stands at about 7 feet in height, and is dressed in
 you with a sense of pity.
 ~
 67 552 0 S
-107 0
+106 0
 -999 700 480
 ! 0 0 0 7 26638 524288 0
 | 0 0 0 0 0 0 0
@@ -1996,7 +1996,7 @@ You find it very difficult to make out any details about @@dThe @@GLord @@dof
 you are better of NOT seeing the foul creature.
 ~
 75 21032 -300 S
-111 1
+112 1
 -1500 580 620
 ! 0 0 0 7 26654 0 0
 | 0 0 0 0 0 0 0
@@ -2010,7 +2010,7 @@ The harpy looks back at you, her beady eyes burning with hatred and malice.
 flesh from your body.
 ~
 134217851 524800 -500 S
-81 2
+82 2
 -900 300 300
 ! 0 0 18 7 24590 65536 0
 | 0 0 0 0 0 0 0
@@ -2055,7 +2055,7 @@ This wizen old man hobbles along the road, seemingly on the verge of collaps.
 appraising look of a weapons expert...Maybe he is more than he seems?
 ~
 193 0 0 S
-12 1
+13 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2070,7 +2070,7 @@ The huge form of the troll hulks over you, howling with rage.  "How DARE you
 snarl at you he grabs a spiked club and swings it down towards your head!
 ~
 111 512 -500 S
-97 1
+98 1
 -1300 500 390
 ! 0 0 13 7 26638 0 8
 | 0 0 0 0 0 0 0
@@ -2081,7 +2081,7 @@ The pit fiend stands here, waiting to take your soul.
 ~
 ~
 123 16968 -1000 S
-107 1
+106 1
 -1500 700 700
 ! 0 0 16 7 30750 0 0
 | 0 0 0 0 0 0 0
@@ -2103,7 +2103,7 @@ The doorman is standing here, welcoming visitors.
 ~
 ~
 67 0 0 S
-10 1
+9 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2171,7 +2171,7 @@ the KrakKen~
 ~
 ~
 131113 107134 0 S
-91 1
+90 1
 -1350 500 400
 ! 0 0 19 7 30734 0 16
 | 0 0 0 0 0 0 0
@@ -2193,7 +2193,7 @@ The statue of the @@aChromium@@N Elder Dragon, is here.
 ~
 ~
 11 8764 0 S
-109 1
+108 1
 -1500 500 500
 ! 0 0 8 7 29710 0 0
 | 0 0 0 0 0 0 0
@@ -2205,7 +2205,7 @@ The statue of the Elder Dragon known as @@dAr@@Wcad@@des
 ~
 ~
 131083 8828 0 S
-100 1
+101 1
 -1400 620 610
 ! 0 0 8 7 29710 0 16
 | 0 0 0 0 0 0 0
@@ -2216,7 +2216,7 @@ The statue of @@dVae@@Gvic@@Rtus As@@Gma@@ddi@@N, the Elder Dragon, looms powerf
 ~
 ~
 131083 25148 0 S
-106 1
+105 1
 -1450 660 600
 ! 0 0 8 7 29710 0 16
 | 0 0 0 0 0 0 0
@@ -2227,7 +2227,7 @@ A statue of the most feared Elder Dragon, @@dNic@@aol @@dBo@@clas@@N
 ~
 ~
 131083 8764 0 S
-112 1
+111 1
 -1500 700 630
 ! 0 0 8 7 31758 0 0
 | 0 0 0 0 0 0 0
@@ -2238,6 +2238,7 @@ waterskin skin~
 a waterskin~
 A waterskin lies here.~
 17 0 8388608 1
+0.00
 100 100 0 0 0 0 0 0 0 0
 1
 L
@@ -2248,6 +2249,7 @@ a small loaf of bread~
 A small loaf of bread lies on the floor.
 ~
 19 0 8388608 1
+0.00
 40 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2258,6 +2260,7 @@ a black steel breastplate~
 A black steel breastplate lies here.
 ~
 9 262148 8650752 3738
+0.00
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2278,6 +2281,7 @@ a double-headed black war axe~
 A huge double-headed black war axe sticks out of the ground.
 ~
 5 262147 8421376 1
+0.00
 0 10 20 3 0 0 0 0 0 0
 8
 A
@@ -2300,6 +2304,7 @@ L
 A waist garment with 6 human heads dangling from it is here.
 ~
 9 262148 8519680 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -2322,6 +2327,7 @@ nOT USED~
 A small DarkBlade pendant is lying here.
 ~
 9 0 8388736 1
+0.00
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2334,6 +2340,7 @@ not USED~
 A coiled black band is lying here, pulsing with dark energy.
 ~
 9 3 8390656 1
+0.00
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2346,6 +2353,7 @@ a skull-shaped earring~
 A small skull-shaped earring lies on the floor.
 ~
 9 0 8388672 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2360,6 +2368,7 @@ the black flame of eternity~
 A small black flame floats lazily in the air.
 ~
 1 0 8388608 1
+0.00
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -2374,6 +2383,7 @@ a skull-shaped chalice~
 A large skull-shaped chalice rests on the floor here.
 ~
 10 128 8388608 1
+0.00
 80 28 28 28 0 0 0 0 0 0
 5
 L
@@ -2384,6 +2394,7 @@ a still-beating human heart~
 A human heart is lying here, pumping blood onto the floor.
 ~
 19 0 8388608 1
+0.00
 50 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2394,6 +2405,7 @@ the armageddon clock~
 @@dThis is the clock that counts down to universal extinction.@@N
 ~
 4 195 8421376 17
+0.00
 80 10 10 617 0 0 0 0 0 0
 1
 L
@@ -2404,6 +2416,7 @@ nOT USED~
 A beautiful golden harp is resting here.
 ~
 1 3 8388608 1
+0.00
 0 0 -1 0 0 0 0 0 0 0
 8
 A
@@ -2422,6 +2435,7 @@ nOT USED~
 A huge hive is hanging from the ceiling.
 ~
 15 0 8388608 1
+0.00
 500 0 0 0 0 0 0 0 0 0
 100
 L
@@ -2432,6 +2446,7 @@ the staff of age~
 A long withered staff is lying here.
 ~
 4 262226 8421376 16
+0.00
 80 5 5 617 0 0 0 0 0 0
 5
 A
@@ -2470,6 +2485,7 @@ the gift of the undead~
 @@dA small pill, wrapped with a ribbon, lies here.@@N
 ~
 26 4 8388608 1
+0.00
 80 503 503 503 0 0 0 0 0 0
 0
 L
@@ -2480,6 +2496,7 @@ the armour of darkness~
 @@dThe @@lLegionaire@@d'@@ls@@d own armour has been carefully placed here.@@N
 ~
 9 262147 8454144 16786
+0.00
 10 0 0 0 0 0 0 0 0 0
 40
 A
@@ -2511,6 +2528,7 @@ harpy wings~
 @@N
 ~
 9 262144 8650752 16384
+0.00
 15 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2537,6 +2555,7 @@ The Aegis Halberd~
 @@dThe mightiest polearm lies is propped up against a wall here.@@N
 ~
 5 262147 8421376 1
+0.00
 0 15 30 3 0 0 0 0 0 0
 22
 A
@@ -2568,6 +2587,7 @@ the robes of the necromancer~
 here on the floor, forgotten as it's art.@@N
 ~
 9 262145 8650752 17
+0.00
 15 0 0 0 0 0 0 0 0 0
 20
 A
@@ -2596,6 +2616,7 @@ the helm of necromantic device~
 A shining helm is lying here in a pool of blood.
 ~
 9 262148 8388616 1546
+0.00
 10 0 0 0 0 0 0 0 0 0
 20
 A
@@ -2628,6 +2649,7 @@ necropotence~
 @@eThe most destructive tool of sacrifice and Necromancy lies here.@@N
 ~
 5 262225 8421376 16400
+0.00
 0 20 30 8 0 0 0 0 0 0
 5
 A
@@ -2654,6 +2676,7 @@ strange white facemask~
 A strange white facemask is lying on the floor here.
 ~
 26 1 8421392 1
+0.00
 80 28 28 614 0 0 0 0 0 0
 1
 L
@@ -2664,6 +2687,7 @@ nOT USED~
 A giant bee's sting is lying on the floor here.
 ~
 5 2 8421376 1
+0.00
 0 10 20 11 0 0 0 0 0 0
 1
 A
@@ -2678,6 +2702,7 @@ the traveller's staff~
 A long staff of polished oak is lying here.
 ~
 5 64 8421376 1
+0.00
 0 5 10 6 0 0 0 0 0 0
 1
 A
@@ -2692,6 +2717,7 @@ a spiked club~
 A huge wooden club with a foot-long spike driven through the end lies here.
 ~
 5 0 8421376 1
+0.00
 0 0 0 6 0 0 0 0 0 0
 15
 A
@@ -2718,6 +2744,7 @@ a brass spiked helmet~
 A huge brass helmet with a large spike on top is lying here.
 ~
 9 0 8388616 1
+0.00
 6 0 0 0 0 0 0 0 0 0
 15
 A
@@ -2738,6 +2765,7 @@ a brass spiked breastplate~
 A huge brass breastplate covered with large spikes is lying here.
 ~
 9 0 8650752 1
+0.00
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2764,6 +2792,7 @@ the donation box~
 A large donation box lies here for the needy...please give generously!
 ~
 15 0 0 1
+0.00
 10000 1 0 0 0 0 0 0 0 0
 500
 L
@@ -2774,6 +2803,7 @@ the DarkBlade notice board~
 A screen of darkness covered with glowing green letters float nearby.
 ~
 27 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 0
 L
@@ -2784,6 +2814,7 @@ the blood fountain~
 A black twisted fountain is here, slurping up blood.
 ~
 25 0 0 1
+0.00
 13 0 0 0 0 0 0 0 0 0
 50
 L
@@ -2793,6 +2824,7 @@ dark heart pill~
 @@da @@GPiece @@dof the @@GDark Heart@@N~
 ~
 26 4 8388608 1
+0.00
 80 617 28 72 0 0 0 0 0 0
 1
 L
@@ -2802,6 +2834,7 @@ the sting of the Queen be~
 @@RThe @@ySting @@Rof the @@yQueen Bee@@N~
 ~
 11 5 8421376 16785
+0.00
 16817 0 0 0 0 0 0 0 0 0
 10
 A
@@ -2823,6 +2856,7 @@ rainbow dragon scale shield~
 @@eT@@yh@@re @@lR@@ma@@ei@@yn@@rb@@lo@@mw @@eD@@yr@@ra@@lg@@mo@@en @@yS@@rc@@la@@ml@@ee @@yS@@rh@@li@@me@@el@@yd~
 ~
 9 262144 8421376 20378
+0.00
 0 0 0 0 0 0 0 0 0 0
 35
 A
@@ -2855,6 +2889,7 @@ fiery staff~
 A small pillar of flame floats vertically here.
 ~
 4 4 8421376 16
+0.00
 80 2 2 200 0 0 0 0 0 0
 8
 L
@@ -2865,6 +2900,7 @@ the watery staff~
 A small pillar of water floats vertically here.
 ~
 4 4 8421376 16
+0.00
 80 2 2 606 0 0 0 0 0 0
 8
 L
@@ -2874,6 +2910,7 @@ feast of the unicorn~
 @@dThe @@eFeast @@dof the @@eUnicorn@@N~
 ~
 26 0 8421376 17
+0.00
 80 223 614 72 0 0 0 0 0 0
 1
 L
@@ -2883,6 +2920,7 @@ the ring af ma ruf ma'ruf~
 @@BThe @@aRing @@Bof @@aMa@@B'@@aRuf@@N~
 ~
 9 262144 8396800 17
+0.00
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2912,6 +2950,7 @@ crystal clear stream~
 forest to the south.@@N
 ~
 25 0 0 1
+0.00
 0 0 0 0 0 0 0 0 0 0
 500
 L
@@ -2922,6 +2961,7 @@ the Tri Force of @@rWisdom@@N~
 In it's entirety, the Triforce of @@rWisdom@@N floats here.
 ~
 29 262146 8421376 24074
+0.00
 5605 0 5607 0 0 0 0 0 0 0
 1
 A
@@ -2950,6 +2990,7 @@ the Bottom Half of the Triforce of @@rWisdom@@N~
 Wisely floats here the Bottom Half of the Triforce of @@rWisdom@@N does.
 ~
 29 1310722 8421376 3592
+0.00
 0 16832 16830 0 0 0 0 0 0 0
 1
 A
@@ -2974,6 +3015,7 @@ the Top Half of the Triforce of @@rWisdom@@N~
 Here sits the Top Half of the Triforce of @@rWisdom@@N
 ~
 29 1310722 8421376 20482
+0.00
 16831 0 16830 0 0 0 0 0 0 0
 1
 A
