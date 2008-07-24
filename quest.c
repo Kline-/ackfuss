@@ -245,7 +245,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest )
       {
          xprintf( buf,
-                  "@@NThe quest has been stopped by an @@mImmortal@@N. Please speak up if you have already gotten the item.\n\r" );
+                  "@@NThe quest has been stopped by an @@mImmortal@@N. Please speak up if you have already gotten the item." );
          do_echo( ch, buf );
          clear_quest(  );
       }

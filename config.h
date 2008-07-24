@@ -211,6 +211,14 @@
 #define OBJ_VNUM_QUEST_MIN		66
 #define OBJ_VNUM_QUEST_MAX		80
 
+/*
+ * vnums for deathmatch arena.
+ * Upon starting a DM, all players will be transfered somewhere
+ * randomly within this range. Make sure it exists!
+ *
+ */
+#define DM_ARENA_START    201
+#define DM_ARENA_END      250
 
 #define PULSE_PER_SECOND          sysdata.pulse /* Configurable in-game, essential to speed based combat. --Kline */
 #define PULSE_COMBAT              (  1                     )

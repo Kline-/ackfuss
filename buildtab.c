@@ -1138,10 +1138,10 @@ void wide_table_printout( const struct lookup_type *table, char *buf )
          xprintf( tmp, "%12s", table[a].text );
          xcat_2( buf, tmp );
          if( ++foo % 4 == 0 )
-            xcat( buf, "\n\r" );
+            xcat_2( buf, "\n\r" );
       }
    }
-   xcat( buf, "\n\r" );
+   xcat_2( buf, "\n\r" );
    return;
 }
 
