@@ -758,8 +758,8 @@ struct pc_data
    SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
    sh_int pagelen;
    sh_int learned[MAX_SKILL];
-   char *header;  /* header used for message */
-   char *message; /* message for board in progress */
+   char *header;  /* filename for helpedit */
+   char *message; /* helpedit file contents */
    char *alias_name[MAX_ALIASES];
    char *alias[MAX_ALIASES];
    char *who_name;   /* To show on who name */

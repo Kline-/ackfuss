@@ -4387,6 +4387,7 @@ int count_helps( void )
  else
   fgets(buf,MAX_STRING_LENGTH,fp);
 
+ pclose(fp);
  return atoi(buf);
 }
 

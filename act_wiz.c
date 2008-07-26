@@ -1049,15 +1049,24 @@ void do_mstat( CHAR_DATA * ch, char *argument )
 
 void do_olmsg( CHAR_DATA * ch, char *argument )
 {
-   if( !IS_NPC( ch ) )
-   {
-      smash_tilde( argument );
-      free_string( ch->pcdata->load_msg );
-      ch->pcdata->load_msg = str_dup( argument );
-      send_to_char( "Ok.\n\r", ch );
-   }
-   return;
+ if( argument[0] == '\0' )
+ {
+  send_to_char("Syntax: olmsg <string> or olmsg none for default.\n\rMessage needs to contain $n for you and $p for the object.\n\r",ch);
+  return;
+ }
+ if( !IS_NPC( ch ) )
+ {
+  smash_tilde( argument );
+  free_string(ch->pcdata->load_msg);
+  if( !str_cmp(argument,"none") )
+   ch->pcdata->load_msg = str_dup("");
+  else
+   ch->pcdata->load_msg = str_dup(argument);
+  send_to_char("Ok.\n\r",ch);
+ }
+ return;
 }
+
 void do_ofindlev( CHAR_DATA * ch, char *argument )
 {
    extern int top_obj_index;
@@ -1684,13 +1693,19 @@ void do_oload( CHAR_DATA * ch, char *argument )
    obj = create_object( pObjIndex, level );
    if( CAN_WEAR( obj, ITEM_TAKE ) )
    {
-      act( "$n @@mgestures majestically, and@@N $p @@mappears with a crash of @@WTHUNDER!!@@N", ch, obj, NULL, TO_ROOM );
+      if( strlen(ch->pcdata->load_msg) > 0 )
+       act(ch->pcdata->load_msg,ch,obj,NULL,TO_ROOM);
+      else
+       act( "$n @@mgestures majestically, and@@N $p @@mappears with a crash of @@WTHUNDER!!@@N", ch, obj, NULL, TO_ROOM );
       obj_to_char( obj, ch );
    }
    else
    {
+      if( strlen(ch->pcdata->load_msg) > 0 )
+       act(ch->pcdata->load_msg,ch,obj,NULL,TO_ROOM);
+      else
+       act( "$n @@mgestures, and a @@N$p@@M appears with a thunderous crash@@N!!!", ch, obj, NULL, TO_ROOM );
       obj_to_room( obj, ch->in_room );
-      act( "$n @@mgestures, and a @@N$p@@M appears with a thunderous crash@@N!!!", ch, obj, NULL, TO_ROOM );
    }
    send_to_char( "Ok.\n\r", ch );
    return;

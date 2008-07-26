@@ -330,6 +330,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "Pkilled	   %d\n", ch->pcdata->pkilled );
 
       fprintf( fp, "Password     %s~\n", ch->pcdata->pwd );
+      fprintf( fp, "LoadMsg      %s~\n", ch->pcdata->load_msg );
       fprintf( fp, "Bamfin       %s~\n", ch->pcdata->bamfin );
       fprintf( fp, "Bamfout      %s~\n", ch->pcdata->bamfout );
       fprintf( fp, "Roomenter    %s~\n", ch->pcdata->room_enter );
@@ -611,6 +612,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->lastlogin = str_dup( "Unknown!" );
       ch->pcdata->who_name = str_dup( "off" );
       ch->pcdata->pwd = str_dup( "" );
+      ch->pcdata->load_msg = str_dup( "" );
       ch->pcdata->bamfin = str_dup( "" );
       ch->pcdata->bamfout = str_dup( "" );
       ch->pcdata->room_enter = str_dup( "" );
@@ -1150,6 +1152,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             if( !IS_NPC( ch ) )
             {
                SKEY( "LastLogin", ch->pcdata->lastlogin, fread_string( fp ) );
+               SKEY( "LoadMsg", ch->pcdata->load_msg, fread_string( fp ) );
             }
             break;
 
