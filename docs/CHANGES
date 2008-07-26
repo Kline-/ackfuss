@@ -1,3 +1,22 @@
+4.3.6 - 25 Jul 08:
+ Added a delhelp for the new helpfile system.
+ Helpedit works with the new helpfile system.
+ Added a basic Deathmatch arena and updated transdm to work with it.
+ Removed clutchinfo command, it should have been a helpfile from the start.
+ Removed mpstat and bundled it into mstat.
+ Added file_open() and file_close() to handle fpReserve. Call file_close() even if file_open() failes to re-open fpReserve!
+ Updated all wait_states (const table, etc) to fit properly with 100 pulse/sec.
+ Merged multi_hit into one_hit and removed multi_hit. Call one_hit recursively if you need to.
+ You can now 'owhere rare' to show all rares not currently held by players.
+ Bug fix in area saving (they now save properly again).
+ Census command added for area/mud wide MOB stats.
+ Warcry is now a skill, not a spell. Beserk renamed properly to berserk.
+ All imm commands in wizhhelp have 100% complete helpfiles.
+ All mortal classes have 100% complete shelps.
+ Stake and decapitate removed from mortal classes for use in Super Hunter later.
+ All helpfiles are now stored individually on disk, and no longer im areas or memory. Options in config.h
+ Added a FIGHT_DATA list for chars fighting. More resource efficient than cycling the whole MUD.
+ Removed advance command (not needed).
 4.3.5 - 03 Jul 08:
  Moved all super related stuff into its own struct, SUPER_DATA, within pcdata. This makes it more generic and easier to implement across all supers: vamp, wolf, and hunter (soon to be).
  Added gossip back in; not sure why it left.
