@@ -597,7 +597,6 @@ struct char_data
    CHAR_DATA *leader;
    CHAR_DATA *fighting;
    CHAR_DATA *reply;
-
 /*    CHAR_DATA *         hunting;
     char *              huntdirs;
     int                 huntdirno;
@@ -607,18 +606,15 @@ struct char_data
     OBJ_DATA	*	hunt_obj;
     int			move_to;
     char *		movename;*/
-
    CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
    OBJ_DATA *hunt_obj;  /* Looking for objects     */
    CHAR_DATA *hunt_for; /* Employer (crs, mercs)   */
    ROOM_INDEX_DATA *hunt_home;   /* Return to after hunting */
    char *searching;  /* For PC's that quit      */
    int hunt_flags;   /* Action flags         */
-
    bool switched; /* = not isnull(descriptor->original) */
    CHAR_DATA *old_body; /* = descriptor->original */
    int poly_level;
-
    SPEC_FUN *spec_fun;
    MOB_INDEX_DATA *pIndexData;
    DESCRIPTOR_DATA *desc;

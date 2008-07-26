@@ -186,9 +186,24 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
          }
          else
          {
+          FILE *fp = NULL;
+            if( ch->pcdata->header != NULL ) /* File passed from helpedit */
+            {
+             if( (fp = file_open(ch->pcdata->header,"w")) == NULL )
+             {
+              send_to_char("Something is broken in write_interpret saving to file.\n\r",ch);
+              file_close(fp);
+              return;
+             }
+            }
             *dest = str_dup( buf );
             if( ( buf_data->returnfunc ) != NULL )
                ( *buf_data->returnfunc ) ( buf_data->returnparm, dest, ch, TRUE );
+            if( ch->pcdata->header != NULL ) /* File passed from helpedit */
+            {
+             fprintf(fp,buf);
+             file_close(fp);
+            }
          }
       }
       else
