@@ -4645,7 +4645,7 @@ void build_editstr( char **dest, char *src, CHAR_DATA * ch )
    if( *dest != &str_empty[0] )
    {
       send_to_char( src, ch );
-      xcat( *dest, src );   /* Add src string into the buffer */
+      xcat_2( *dest, src );   /* Add src string into the buffer */
    }
    else
    {
@@ -5603,27 +5603,63 @@ void build_findhelp( CHAR_DATA * ch, char *argument )
 
 void build_helpedit( CHAR_DATA * ch, char *argument )
 {
-   char arg[MAX_STRING_LENGTH];
-   int number;
-   int count;
+ char arg[MAX_STRING_LENGTH];
+ bool mort = FALSE;
+ FILE *fp;
 
-   number = number_argument( argument, arg );
-   count = 0;
+ argument = one_argument(argument,arg);
+ smash_space(argument);
 
-   if( arg[0] == '\0' )
-   {
-      send_to_char( "Usage: HELPEDIT <keyword>\n\r", ch );
-      return;
-   }
+ if( argument[0] == '\0' )
+ {
+  send_to_char("Usage: HELPEDIT <mort/imm> <keyword>.\n\r",ch);
+  return;
+ }
+ if( !str_prefix(arg,"mort") )
+  mort = TRUE;
+ else if( !str_prefix(arg,"imm") )
+  mort = FALSE;
+ else
+ {
+  build_helpedit(ch,"");
+  return;
+ }
 
-   if( 1 )
-   {
-      send_to_char( "Couldn't find that keyword.\n\r", ch );
-      return;
-   }
+ xprintf(arg,"%s%s.%s",HELP_DIR,argument,mort ? HELP_MORT : HELP_IMM);
+ if( (fp = file_open(arg,"r")) == NULL )
+ {
+  send_to_char("Couldn't find that keyword.\n\r",ch);
+  file_close(fp);
+  return;
+ }
+ else if( (fp = file_open(arg,"r")) != NULL )
+ {
+  char buf1[MSL];
+  char buf2[MSL];
 
-//   build_strdup( &pHelp->text, "$edit", TRUE, FALSE, ch );
-   return;
+  buf1[0] = '\0';
+  buf2[0] = '\0';
+  ch->pcdata->header = str_dup(arg);
+
+  while( fgets(buf1,MSL,fp) )
+  {
+   if( buf2[0] == '\0' )
+    xprintf(buf2,buf1);
+   else
+    xcat(buf2,buf1);
+  }
+  ch->pcdata->message = str_dup(buf2);
+
+  build_strdup(&ch->pcdata->message,"$edit",TRUE,FALSE,ch);
+  file_close(fp);
+ }
+ else
+ {
+  send_to_char("An error has occured. Contact a shell owner.\n\r",ch);
+  return;
+ }
+
+ return;
 }
 
 void build_addhelp( CHAR_DATA * ch, char *argument )
