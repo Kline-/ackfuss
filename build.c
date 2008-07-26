@@ -137,6 +137,7 @@ DECLARE_DO_FUN( build_delwarn );
 DECLARE_DO_FUN( build_delroom );
 DECLARE_DO_FUN( build_delmob );
 DECLARE_DO_FUN( build_delobject );
+DECLARE_DO_FUN( build_delhelp );
 DECLARE_DO_FUN( build_showresets );
 DECLARE_DO_FUN( build_addreset );
 DECLARE_DO_FUN( build_delreset );
@@ -199,6 +200,8 @@ const struct cmd_type build_cmd_table[] = {
    {"delobject", build_delobject, POS_STANDING, 0, LOG_NORMAL},
    {"delreset", build_delreset, POS_STANDING, 0, LOG_NORMAL},
    {"delmobile", build_delmob, POS_STANDING, 0, LOG_NORMAL},
+   {"delhel", build_delwarn, POS_STANDING, MAX_LEVEL, LOG_NORMAL},
+   {"delhelp", build_delhelp, POS_STANDING, MAX_LEVEL, LOG_NORMAL},
    {"forcereset", build_forcereset, POS_STANDING, 0, LOG_NORMAL},
    {"findhelp", build_findhelp, POS_STANDING, 0, LOG_NORMAL},
    {"addhelp", build_addhelp, POS_STANDING, 0, LOG_NORMAL},
@@ -3767,10 +3770,66 @@ void build_delreset( CHAR_DATA * ch, char *argument )
 
 void build_delwarn( CHAR_DATA * ch, char *argument )
 {
-   send_to_char( "You must spell out delroom, delobject or delmobile in full.\n\r", ch );
+   send_to_char( "You must spell out delroom, delobject, delmobile, or delhelp in full.\n\r", ch );
    return;
 }
 
+void build_delhelp( CHAR_DATA *ch, char *argument )
+{
+ FILE *fp;
+ char arg1[MSL];
+ char arg2[MSL];
+ bool mort = FALSE;
+
+ argument = one_argument(argument,arg1);
+ argument = one_argument(argument,arg2);
+
+ if( arg1[0] == '\0' )
+ {
+  send_to_char("Syntax: delhelp <mort/imm> <keyword> ok.\n\r",ch);
+  return;
+ }
+ if( !str_prefix(arg1,"mort") )
+  mort = TRUE;
+ else if( !str_prefix(arg1,"imm") )
+  mort = FALSE;
+ else
+ {
+  build_delhelp(ch,"");
+  return;
+ }
+
+ xprintf(arg1,"%s%s.%s",HELP_DIR,arg2,mort ? HELP_MORT : HELP_IMM);
+ if( (fp = file_open(arg1,"r")) == NULL )
+ {
+  send_to_char("Couldn't find that keyword.\n\r",ch);
+  file_close(fp);
+  return;
+ }
+ else if( (fp = file_open(arg1,"r")) != NULL )
+ {
+  if( str_cmp(argument,"ok") )
+  {
+   build_delhelp(ch,"");
+   file_close(fp);
+   return;
+  }
+  else
+  {
+   file_close(fp);
+   unlink(arg1);
+   send_to_char("Done.\n\r",ch);
+   return;
+  }
+ }
+ else
+ {
+  send_to_char("An error has occured. Contact a shell owner.\n\r",ch);
+  return;
+ }
+
+ return;
+}
 
 void build_delroom( CHAR_DATA * ch, char *argument )
 {
