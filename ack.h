@@ -1430,6 +1430,8 @@ int   bv_log           args( ( int n ) );
 void  check_chistory   args( ( CHAR_DATA *ch, int channel ) );
 void  update_chistory  args( ( CHAR_DATA *ch, char *argument, int channel ) );
 int   count_helps      args( ( void ) );
+char  *search_helps    args( ( const char *string ) );
+char  *_popen          args( ( const char *string ) );
 FILE  *file_open       args( ( const char *file, const char *opt ) );
 void  file_close       args( ( FILE *file ) );
 

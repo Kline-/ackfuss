@@ -5667,7 +5667,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
  FILE *fp;
 
  argument = one_argument(argument,arg);
- smash_space(argument);
+ smash_replace(argument," ","_");
 
  if( argument[0] == '\0' )
  {
@@ -5728,7 +5728,7 @@ void build_addhelp( CHAR_DATA * ch, char *argument )
  FILE *fp;
 
  argument = one_argument(argument,arg);
- smash_space(argument);
+ smash_replace(argument," ","_");
 
  if( argument[0] == '\0' )
  {

@@ -1803,7 +1803,7 @@ void do_help( CHAR_DATA * ch, char *argument )
 
  buf[0] = '\0';
  strlower(argument);
- smash_space(argument);
+ smash_replace(argument," ","_");
 
  if( !str_prefix("shelp_",argument) )
   shelp = TRUE;

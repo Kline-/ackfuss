@@ -130,6 +130,20 @@ bool is_name( const char *str, char *namelist )
    }
 }
 
+bool is_name_pfx( const char *str, char *namelist )
+{
+   char name[MAX_INPUT_LENGTH];
+
+   for( ;; )
+   {
+      namelist = one_argument( namelist, name );
+      if( name[0] == '\0' )
+         return FALSE;
+      if( !str_prefix( str, name ) )
+         return TRUE;
+   }
+}
+
 char *space_pad( const char *str, sh_int final_size )
 {
    sh_int space_pad = my_strlen( str );
@@ -145,28 +159,24 @@ char *space_pad( const char *str, sh_int final_size )
 /*
  * Removes the tildes from a string.
  * Used for player-entered strings that go into disk files.
+ * Kept for backwards compatibility --Kline
  */
 void smash_tilde( char *str )
 {
-   for( ; *str != '\0'; str++ )
-   {
-      if( *str == '~' )
-         *str = '-';
-   }
-
-   return;
+ smash_replace(str,"~","-");
+ return;
 }
 
 /*
- * Removes spaces from a string.
- * Replaces them with underscores for easier use.
- */
-void smash_space( char *str )
+ * Remove and replace in a string.
+ * Easier than making X smash_Y functions. --Kline
+ */ 
+void smash_replace( char *str, char *old, char *new )
 {
  for( ; *str != '\0'; str++ )
  {
-  if( *str == ' ' )
-   *str = '_';
+  if( *str == *old )
+   *str = *new;
  }
  return;
 }
