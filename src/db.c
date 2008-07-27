@@ -4378,17 +4378,77 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
 
 int count_helps( void )
 {
- FILE *fp;
- char buf[MAX_STRING_LENGTH];
+ char buf[MSL];
+ char tmp[MSL];
 
- xprintf(buf,"ls %s -1 | wc -l",HELP_DIR);
- if( (fp = popen(buf,"r")) == NULL )
-  return 0;
- else
-  fgets(buf,MAX_STRING_LENGTH,fp);
+ xprintf(tmp,"ls %s -1 | wc -l",HELP_DIR);
+ xprintf(buf,_popen(tmp));
 
- pclose(fp);
  return atoi(buf);
+}
+
+char *search_helps( const char *string )
+{
+ static char ret[MSL];
+ char buf[MSL];
+ char *tmp1 = NULL;
+ sh_int i = 0;
+
+ xprintf(buf,"ls %s",HELP_DIR);
+ tmp1 = _popen(buf);
+ smash_replace(tmp1,".","\n");
+ smash_replace(tmp1,"\n"," ");
+
+ //monitor_chan(tmp1,MONITOR_DEBUG);
+ xprintf(ret,strstr(tmp1,string));
+
+ for( i = 0; i < strlen(ret); i++ )
+ {
+  if( ret[i] == ' ' );
+  {
+   ret[i+1] = '\0';
+   break;
+  }
+ }
+
+ return ret;
+}
+
+char *_popen( const char *string )
+{
+ static char ret[MSL];
+ char tmp[MSL];
+ FILE *fp;
+
+ ret[0] = '\0';
+ tmp[0] = '\0';
+ if( fpReserve != NULL )
+ {
+  fclose(fpReserve);
+  fpReserve = NULL;
+ }
+
+ if( (fp = popen(string,"r")) == NULL )
+  xprintf(ret,"");
+ else
+ {
+  while( fgets(tmp,MSL,fp) )
+  {
+   if( ret[0] == '\0' )
+    xprintf(ret,tmp);
+   else
+    xcat(ret,tmp);
+  }
+ }
+
+ fp_open++;
+ fp_close++;
+
+ fclose(fp);
+ if( fpReserve == NULL )
+  fpReserve = fopen(NULL_FILE,"r");
+
+ return ret;
 }
 
 FILE *file_open( const char *file, const char *opt )
