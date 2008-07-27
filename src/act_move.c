@@ -421,7 +421,7 @@ void move_char( CHAR_DATA * ch, int door )
          return;
       }
 
-      WAIT_STATE( ch, 100 );
+      WAIT_STATE( ch, 25 );
       ch->move -= move;
    }
 /* Mount code - Celestian */
@@ -2251,4 +2251,24 @@ void do_scout( CHAR_DATA * ch, char *argument )
 
       depth = depth - 1;
    }
+}
+
+void do_abandon( CHAR_DATA *ch, char *argument ) /* Thanks to Koron & Abel for the idea! */
+{
+ CHAR_DATA *vch;
+ sh_int cnt = 0;
+
+ for( vch = first_char; vch != NULL; vch = vch->next )
+ {
+  if( vch->master == ch )
+  {
+   cnt++;
+   stop_follower(vch);
+  }
+ }
+
+ if( cnt == 0 )
+  send_to_char("Sadly you have no followers to abandon.\n\r",ch);
+
+ return;
 }

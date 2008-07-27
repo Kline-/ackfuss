@@ -132,7 +132,8 @@ const struct cmd_type cmd_table[] = {
 
    {"test", do_test, POS_DEAD, 0, LOG_NORMAL,
     C_TYPE_INFO, C_SHOW_ALWAYS},
-
+   {"abandon", do_abandon, POS_STANDING, 0, LOG_NORMAL,
+    C_TYPE_ACTION, C_SHOW_ALWAYS},
    {"affected", do_affected, POS_DEAD, 0, LOG_NORMAL,
     C_TYPE_INFO, C_SHOW_ALWAYS},
    {"areas", do_areas, POS_DEAD, 0, LOG_NORMAL,
