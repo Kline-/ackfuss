@@ -2146,14 +2146,14 @@ char *imcrankbuffer( CHAR_DATA * ch )
       imcstrlcpy( rbuf, "~YStaff", SMST );
 
       if( CH_IMCRANK( ch ) && CH_IMCRANK( ch )[0] != '\0' )
-         snprintf( rbuf, SMST, "~Y%s", color_mtoi( CH_IMCRANK( ch ) ) );
+         snprintf( rbuf, SMST, "%14s", color_mtoi( CH_IMCRANK( ch ) ) );
    }
    else
    {
       imcstrlcpy( rbuf, "~BPlayer", SMST );
 
       if( CH_IMCRANK( ch ) && CH_IMCRANK( ch )[0] != '\0' )
-         snprintf( rbuf, SMST, "~B%s", color_mtoi( CH_IMCRANK( ch ) ) );
+         snprintf( rbuf, SMST, "%14s", color_mtoi( CH_IMCRANK( ch ) ) );
    }
    return rbuf;
 }
@@ -2279,7 +2279,7 @@ char *process_plrline( char *plrrank, char *plrflags, char *plrname, char *plrti
 {
    static char pline[LGST];
 
-   imcstrlcpy( pline, whot->immline, LGST );
+   imcstrlcpy( pline, whot->plrline, LGST );
    imcstrlcpy( pline, imcstrrep( pline, "<%charrank%>", plrrank ), LGST );
    imcstrlcpy( pline, imcstrrep( pline, "<%charflags%>", plrflags ), LGST );
    imcstrlcpy( pline, imcstrrep( pline, "<%charname%>", plrname ), LGST );

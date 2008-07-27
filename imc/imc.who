@@ -1,24 +1,21 @@
 Head: <center>~R-=[ ~WPlayers on <%mudfullname%> ~R]=-
-<center>~Y-=[ ~Wtelnet://<%mudtelnet%>:<%mudport%> ~Y]=-¢
+<center>~Y-=[ ~Wtelnet://<%mudtelnet%>:<%mudport%> ~Y]=-~!¢
 
-Tail: ~Y[~WPlayers online: <%plrcount%>~Y] ~Y[~WHomepage: <%mudurl%>~Y]¢
+Tail: ~Y[~WPlayers online: <%plrcount%>~Y] ~Y[~WHomepage: <%mudurl%>~Y]~!¢
 
-Plrline: <%charrank%>~z[<%charflags%>]~G <%charname%><%chartitle%>¢
+Plrline: ~b[~B<%charrank%>~b] ~G<%charname%><%chartitle%>~!¢
 
-Immline: <%charrank%>~z[<%charflags%>]~G <%charname%><%chartitle%>¢
+Immline: ~r[~R<%charrank%>~r] ~G<%charname%><%chartitle%>~!¢
 
-Plrheader: ~B-------------------------------=[ ~WPlayers ~B]=--------------------------------¢
+Plrheader: ~B-------------------------------=[  ~WPlayers  ~B]=--------------------------------~!¢
 
-Immheader: ~R-------------------------------=[ ~WImmortals ~R]=--------------------------------¢
+Immheader: ~R-------------------------------=[ ~WImmortals ~R]=--------------------------------~!¢
 
 Master:
 <%head%>
-
-<%plrheader%>
-
-<%plrline%>
 <%immheader%>
-
 <%immline%>
+<%plrheader%>
+<%plrline%>
 <%tail%>
 ¢
