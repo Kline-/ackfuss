@@ -1,0 +1,8 @@
+*******************************************************************************
+       Name: Room Dispel
+    Classes: Knight(33), Sorcerer(22)
+   Duration: N/A
+   Modifies: N/A
+       Type: Room Affect
+Description: Room dispel will remove all room affects.
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Rune:Fire
+    Classes: Necromancer(15), Sorcerer(11)
+   Duration: ( Cast Level + (2 to 20) )
+   Modifies: N/A
+       Type: Room Affect
+Description: Creates a rune that will explode when the room is entered,
+             burning the first person in the room.
+*******************************************************************************

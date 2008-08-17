@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Cloak:Reflection
+    Classes: Sorcerer(48)
+   Duration: N/A
+   Modifies: N/A
+       Type: Defensive
+Description: Creates a cloak around you that will reflect spells back upon
+             the person who cast them.
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Cloak:Absorption
+    Classes: Monk(43), Sorcerer(60)
+   Duration: ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Defensive
+Description: Creates a heavy protective cloak that will absorb some damage
+             from spells.
+*******************************************************************************

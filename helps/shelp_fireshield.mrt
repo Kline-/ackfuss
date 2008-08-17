@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Fireshield
+    Classes: Sorcerer(80)
+   Duration: ( Cast Level / 10 )
+   Modifies: N/A
+       Type: Defensive
+Description: Surrounds you with a flaming shield that does an extensive amount
+             of damage to anyone who strikes you with a spell or an attack.
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Shockshield
+    Classes: Sorcerer(55)
+   Duration: ( Cast Level / 7 )
+   Modifies: N/A
+       Type: Defensive
+Description: Surrounds your character with a blue shield of electricity that
+             causes damage to your enemies upon impact.
+*******************************************************************************

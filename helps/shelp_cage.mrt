@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Cage
+    Classes: Necromancer(19), Knight(40), Assassin(31), Monk(13), Sorcerer(18)
+   Duration: ( Cast Level / 20 + (2 to 10) )
+   Modifies: N/A
+       Type: Room Affect
+Description: Cage will create a barrier making it impossible for a mobile
+             or player to leave a room. However, players can still enter a
+             room that is caged.
+*******************************************************************************

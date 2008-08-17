@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Cloak:Adept
+    Classes: Adept(1)
+   Duration: ( Cast Level / 5 )
+   Modifies: Damage
+       Type: Defensive
+Description: This ability allows the user to cloak themselves with additional
+             power.
+*******************************************************************************

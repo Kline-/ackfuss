@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Mana Drain
+    Classes: Necromancer(15), Sorcerer(11)
+   Duration: ( Cast Level / 8 + (2 to 10) )
+   Modifies: N/A
+       Type: Room Affect
+Description: Mana Drain is a room affect that causes players and mobiles to
+             lose their mana at an accelerated rate.
+*******************************************************************************

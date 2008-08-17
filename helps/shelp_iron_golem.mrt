@@ -1,0 +1,8 @@
+*******************************************************************************
+       Name: Iron Golem
+    Classes: Sorcerer(63)
+   Duration: ( Cast Level / 3 )
+   Modifies: N/A
+       Type: Charm Affect
+Description: Summons a high level charmed mobile for you to control.
+*******************************************************************************

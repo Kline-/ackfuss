@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Thaumatergy
+    Classes: Sorcerer(26)
+   Duration: N/A
+   Modifies: N/A
+       Type: Passive
+Description: Thaumatergy passively increases all spell damage. The affect is
+             stronger with higher Int.
+*******************************************************************************

@@ -3,6 +3,9 @@ SYSDATA
 OPTION               DESCRIPTION
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 Exp Multiplier       All exp gained is multiplied by this number.
+Kills Per Lev        This adjusts how many same-level mobs a player needs to
+                     kill, on average, per level. Decreasing will make the
+                     game easier to level, increasing will make it slower.
 Mob AC               Every mob's AC is multiplied by this number each load.
 Mob DR               Every mob's DR is multiplied by this number each load.
 Mob HP               Every mob's HP is multiplied by this number each load.

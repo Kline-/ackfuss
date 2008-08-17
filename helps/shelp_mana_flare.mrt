@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Mana Flare
+    Classes: Monk(22), Sorcerer(18)
+   Duration: ( Cast Level / 8 + (2 to 10) )
+   Modifies: N/A
+       Type: Room Affect
+Description: Casting a mana flare will make any players or mobiles in that
+             room regenerate their mana more quickly.
+*******************************************************************************
