@@ -69,6 +69,7 @@ struct str_array
 struct sysdata_type
 {
  float expmult;
+ sh_int killperlev;
  float mob_ac;
  float mob_dr;
  float mob_hp;
@@ -427,14 +428,6 @@ struct clan_type
    int eq[MAX_CLAN_EQ]; /* vnums of objects to load */
 
 };
-
-
-struct exp_type
-{
-   long_int mob_base;   /* Base exp for mob of level x  */
-   long_int exp_base[MAX_CLASS]; /* Cost for each class of level */
-};
-
 
 
 /*
@@ -1562,19 +1555,20 @@ void remove_shield args( ( CHAR_DATA * ch, MAGIC_SHIELD * shield ) );
 bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
 
 /* macros.c */
-sh_int get_remort_level args( ( CHAR_DATA * ch ) );
-sh_int get_psuedo_level args( ( CHAR_DATA * ch ) );
-bool ok_to_use args( ( CHAR_DATA * ch, int value ) );
-bool check_level_use args( ( CHAR_DATA * ch, int level ) );
-int exp_to_level args( ( CHAR_DATA * ch, int class, int index ) );
-int exp_for_mobile args( ( int level, CHAR_DATA * mob ) );
-int skill_table_lookup args( ( CHAR_DATA * ch, int sn, int return_type ) );
-bool is_remort args( ( CHAR_DATA * ch ) );
-int exp_to_level_vamp args( ( int level ) );
-int exp_to_level_adept args( ( CHAR_DATA * ch ) );
-void reset_gain_stats args( ( CHAR_DATA * ch ) );
-int exp_to_level_wolf args( ( int level ) );
-int get_item_value args( ( OBJ_DATA * obj ) );
+sh_int get_remort_level   args( ( CHAR_DATA * ch ) );
+sh_int get_psuedo_level   args( ( CHAR_DATA * ch ) );
+bool   ok_to_use          args( ( CHAR_DATA * ch, int value ) );
+bool   check_level_use    args( ( CHAR_DATA * ch, int level ) );
+int    exp_to_level       args( ( CHAR_DATA * ch, int class, int index ) );
+int    exp_for_mobile     args( ( int level, CHAR_DATA * mob ) );
+int    exp_mob_base       args( ( int level ) );
+int    skill_table_lookup args( ( CHAR_DATA * ch, int sn, int return_type ) );
+bool   is_remort          args( ( CHAR_DATA * ch ) );
+int    exp_to_level_vamp  args( ( int level ) );
+int    exp_to_level_adept args( ( CHAR_DATA * ch ) );
+void   reset_gain_stats   args( ( CHAR_DATA * ch ) );
+int    exp_to_level_wolf  args( ( int level ) );
+int    get_item_value     args( ( OBJ_DATA * obj ) );
 
 /* magic.c */
 int mana_cost args( ( CHAR_DATA * ch, int sn ) );

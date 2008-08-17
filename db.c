@@ -4389,27 +4389,33 @@ int count_helps( void )
 
 char *search_helps( const char *string )
 {
- static char ret[MSL];
- char buf[MSL];
- char *tmp1 = NULL;
- sh_int i = 0;
+ static char ret[MSL] = {'\0'};
+ char tmp[MSL] = {'\0'};
+ char *t_buf;
+ char *t_out;
+ char *pipe;
 
- xprintf(buf,"ls %s",HELP_DIR);
- tmp1 = _popen(buf);
- smash_replace(tmp1,".","\n");
- smash_replace(tmp1,"\n"," ");
+ t_buf = (char *)calloc(1,sizeof(char));
+ t_out = (char *)calloc(1,sizeof(char));
+ pipe = (char *)calloc(1,sizeof(char));
 
- //monitor_chan(tmp1,MONITOR_DEBUG);
- xprintf(ret,strstr(tmp1,string));
+ xprintf(tmp,_popen(string));
+ pipe = tmp;
 
- for( i = 0; i < strlen(ret); i++ )
+ for( t_out = strtok_r(pipe,"\n",&t_buf); t_out != NULL; t_out = strtok_r(NULL,"\n",&t_buf) )
  {
-  if( ret[i] == ' ' );
-  {
-   ret[i+1] = '\0';
-   break;
-  }
+  t_out += 9;                /* Strip off ../helps/ at the start, edit if you change your HELP_DIR */
+  xprintf(tmp,t_out);
+  tmp[strlen(tmp)-4] = '\0'; /* Strip off .ext at the end, edit if you change HELP_MORT or HELP_IMM */
+  xcat(ret,"%s ",tmp);
  }
+
+ t_buf = NULL;
+  free(t_buf);
+ t_out = NULL;
+  free(t_out);
+ pipe = NULL;
+  free(pipe);
 
  return ret;
 }

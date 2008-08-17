@@ -132,7 +132,6 @@ extern const struct ansi_type ansi_table[MAX_ANSI];
 extern const struct class_type class_table[MAX_CLASS];
 extern const struct class_type remort_table[MAX_CLASS];
 extern const struct race_type race_table[MAX_RACE];
-extern const struct exp_type exp_table[141];
 extern const struct clan_type clan_table[MAX_CLAN];
 extern const struct cmd_type cmd_table[];
 extern const struct liq_type liq_table[LIQ_MAX];

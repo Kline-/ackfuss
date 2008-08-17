@@ -73,6 +73,9 @@ void load_sysdata( void )
     }
     KEY("Expmult",      sysdata.expmult,     fread_float(fp));
     break;
+   case 'K':
+    KEY("KillPerLev",   sysdata.killperlev,  fread_number(fp));
+    break;
    case 'M':
     KEY("Mob_AC",       sysdata.mob_ac,      fread_float(fp));
     KEY("Mob_DR",       sysdata.mob_dr,      fread_float(fp));
@@ -115,16 +118,17 @@ void save_sysdata( void )
  }
 
  fprintf(fp, "Expmult     %0.4f\n",  sysdata.expmult);
+ fprintf(fp, "KillPerLev  %d\n",     sysdata.killperlev);
  fprintf(fp, "Mob_AC      %0.4f\n",  sysdata.mob_ac);
  fprintf(fp, "Mob_DR      %0.4f\n",  sysdata.mob_dr);
  fprintf(fp, "Mob_HP      %0.4f\n",  sysdata.mob_hp);
  fprintf(fp, "Mob_HR      %0.4f\n",  sysdata.mob_hr);
  fprintf(fp, "Mob_MP      %0.4f\n",  sysdata.mob_mp);
  fprintf(fp, "Mob_MV      %0.4f\n",  sysdata.mob_mv);
- fprintf(fp, "Playtesters %s~\n",     sysdata.playtesters);
- fprintf(fp, "Pulse       %d\n",      sysdata.pulse);
- fprintf(fp, "Shownumbers %d\n",      sysdata.shownumbers);
- fprintf(fp, "Wizlock     %d\n",      wizlock);
+ fprintf(fp, "Playtesters %s~\n",    sysdata.playtesters);
+ fprintf(fp, "Pulse       %d\n",     sysdata.pulse);
+ fprintf(fp, "Shownumbers %d\n",     sysdata.shownumbers);
+ fprintf(fp, "Wizlock     %d\n",     wizlock);
  fprintf(fp, "End\n\n");
 
  file_close(fp);
@@ -149,7 +153,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   send_to_char("Syntax for sysdata:\n\r",ch);
   send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\n\r",ch);
   send_to_char("  strings: playtesters\n\r",ch);
-  send_to_char("  options: expmult mob[ac | dr | hp | hr | mp | mv] pulse shownumbers\n\r",ch);
+  send_to_char("  options: expmult killsperlev mob[ac | dr | hp | hr | mp | mv] pulse shownumbers\n\r",ch);
   return;
  }
 
@@ -169,6 +173,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
   xcat(outbuf,catbuf);
   xprintf(catbuf,"[Exp Multiplier ]       [%15.4f]\n\r",sysdata.expmult);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Kills Per Lev  ]       [%15d]\n\r",sysdata.killperlev);
   xcat(outbuf,catbuf);
   xprintf(catbuf,"[Mob AC         ]       [%15.4f]\n\r",sysdata.mob_ac);
   xcat(outbuf,catbuf);
@@ -198,6 +204,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
 
  if( !str_prefix(arg1,"expmult") )
   sysdata.expmult = atof(arg2) != 0 ? atof(arg2) : 1;
+ else if( !str_prefix(arg1,"killsperlev") )
+  sysdata.killperlev = atoi(arg2) > 0 ? atoi(arg2) : 1;
  else if( !str_cmp(arg1,"mobac") )
   sysdata.mob_ac = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_cmp(arg1,"mobdr") )
@@ -231,6 +239,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
 void init_sysdata( void )
 {
  sysdata.expmult = 1;
+ sysdata.killperlev = 60;
  sysdata.mob_ac = 1;
  sysdata.mob_dr = 1;
  sysdata.mob_hp = 1;

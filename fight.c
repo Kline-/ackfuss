@@ -2441,17 +2441,6 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       funky = ( base * get_psuedo_level( gch ) ) / huggy;   /* gch's % of exp gained */
 
       /*
-       * Capping changed.  -S- 
-       */
-      /*
-       * Changed YET again -S- 
-       */
-      /*
-       * funky = UMIN( funky, ( 1.5 * exp_table[gch->level].mob_base ) );        
-       * funky = UMAX( 0, funky );        
-       */
-
-      /*
        * Now the max is just 250K 
        */
       if( funky < 0 )

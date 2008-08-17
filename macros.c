@@ -209,109 +209,90 @@ long_int exp_to_level_adept( CHAR_DATA * ch )
 
 long_int exp_to_level( CHAR_DATA * ch, int class, int index )
 {
+ /*
+  * To get remort costs, call with index == 5 
+  */
 
-   /*
-    * To get remort costs, call with index==5 
-    */
-
-   int max_level = 0;
-   int mult;
-   int level, next_level_index;
-   int totlevels = 0, diff;
-   long_int cost;
-   int a;
+ int max_level = 0;
+ int level, next_level_index, diff, totlevels = 0;
+ long_int cost;
+ sh_int i, mult;
 
 
-   if( ( index == 5 ) && ( ch->lvl2[class] <= 0 ) )
-      return 0;
+ if( (index == 5) && (ch->lvl2[class] <= 0) ) /* Freebie on that first one ;) */
+  return 0;
 
+ for( i = 0; i < MAX_CLASS; i++ ) /* Find the highest level of any class a player has */
+  if( ch->lvl[i] > max_level )
+   max_level = ch->lvl[i];
 
-   for( a = 0; a < MAX_CLASS; a++ )
-      if( ch->lvl[a] > max_level )
-         max_level = ch->lvl[a];
+ switch( index ) /* Classes cost less -> more based on order */
+ {
+  case 0:  mult = 3;  break;
+  case 1:  mult = 4;  break;
+  case 2:  mult = 5;  break;
+  case 3:  mult = 6;  break;
+  case 4:  mult = 7;  break;
+  default: mult = 23; break; /* Remort classes, bugs :P */
+ }
 
-/*  Okay, here, we are setting up a cheat to have float mulitpliers..we will devide the total exp by 4 to get
-      the proper values later.  */
+ if( index == 5 )
+  level = UMAX(0,ch->lvl2[class]); /* Grab the remort class level */
+ else
+  level = UMAX(0,ch->lvl[class]);  /* Grab the mortal class level */
 
+ /*
+  * Adjust level to make costs higher 
+  */
+ for( i = 0; i < MAX_CLASS; i++ )
+ {
+  totlevels += ch->lvl[i];
+  if( ch->lvl2[i] > 0 )
+   totlevels += ch->lvl2[i];
+ }
 
-   switch ( index )
-   {
-      case 0:
-         mult = 3;
-         break;
-      case 1:
-         mult = 4;
-         break;
-      case 2:
-         mult = 5;
-         break;
-      case 3:
-         mult = 6;
-         break;
-      case 4:
-         mult = 7;
-         break;
-      default:
-         mult = 23;  /* i.e. remort class */
-         break;
-   }
+ if( index != 5 )
+  next_level_index = ch->lvl[class];
+ else
+  next_level_index = UMIN((ch->lvl2[class] + 20),79);
 
-   if( index == 5 )
-      level = UMAX( 0, ch->lvl2[class] );
-   else
-      level = UMAX( 0, ch->lvl[class] );
+ if( next_level_index < 0 )
+  next_level_index = 0;
 
-   /*
-    * Adjust level to make costs higher 
-    */
+ cost = (exp_mob_base(next_level_index) * sysdata.killperlev);
 
-   for( a = 0; a < MAX_CLASS; a++ )
-   {
-      totlevels += ch->lvl[a];
-      if( ch->lvl2[a] > 0 )
-         totlevels += ch->lvl2[a];
-   }
-   if( index != 5 )
-      next_level_index = ch->lvl[class];
-   else
-      next_level_index = UMIN( ch->lvl2[class] + 20, 79 );
+ /*
+  * Now multiply by a factor dependant on total number of levels 
+  */
+ diff = (totlevels / MAX_CLASS) - (level + 20);
 
-   if( next_level_index < 0 )
-      next_level_index = 0;
+ if( index == 5 )
+  diff -= 30;
+ if( diff < 10 )
+  diff = 10;
 
-   cost = exp_table[next_level_index].exp_base[class];
+ /*
+  * Discourage uneven levelling 
+  */
+ cost *= (diff / 10);
 
-   /*
-    * Now multiply by a factor dependant on total number of levels 
-    */
-   diff = ( totlevels / MAX_CLASS ) - ( level + 20 );
-   if( index == 5 )
-      diff -= 30;
-   if( diff < 10 )
-      diff = 10;
+ /*
+  * REALLY discourage uneven levelling :P  
+  */
+ if( (index != 5) && ((ch->level - ch->lvl[class]) > 25) )
+  cost *= (diff / 7);
 
-   /*
-    * Discourage uneven levelling 
-    */
+ /*
+  * Now multiply by order index/remort index...other factors will come here later, like race mod, etc. 
+  */
+ cost *= mult;
 
+ /*
+  * Now refudge the order multiplier... Divide by some factor, 5.4 feels nice and arbitrary :P
+  */
+ cost /= 5.4;
 
-   cost *= ( diff / 10 );
-   /*
-    * REALLY discourage uneven levelling :P  
-    */
-   if( ( index != 5 ) && ( ( ch->level - ch->lvl[class] ) > 25 ) )
-      cost *= ( diff / 7 );
-
-
-   /*
-    * Now multiply by order index/remort index...other factors will come here later, like race mod, etc. 
-    */
-   cost *= mult;
-/* now refudge the order multiplier... divide by some factor..6 works right now..  */
-
-   cost /= 5.4;
-
-   return ( cost );
+ return cost;
 }
 
 int exp_to_level_vamp( int level )
@@ -400,15 +381,29 @@ int exp_to_level_wolf( int level )
 
 }
 
+long_int exp_mob_base( int level )
+{
+ long int value = 0;
+ sh_int i = 0;
 
+ for( i = 0; i < level; i++ )
+ {
+  value += 100;
+  value *= 1.04;
+ }
+
+ if( value < 1 )
+  value = 100;
+
+ return value;
+}
 
 long_int exp_for_mobile( int level, CHAR_DATA * mob )
 {
 
-   long_int value, base_value;
+   long_int value, base_value = 0;
 
-
-   base_value = exp_table[level].mob_base;
+   base_value = exp_mob_base(level);
    value = base_value;
 
 /* now we have the base for the mobs level..let's add multipliers based on the skills it has 
