@@ -96,7 +96,7 @@ bool spell_deflect_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
    if( is_affected( victim, sn ) )
       return FALSE;
    af.type = sn;
-   af.duration = 16;
+   af.duration = (level + 2);
    af.modifier = -40 - get_psuedo_level( ch ) / 5;
    af.location = APPLY_AC;
    af.bitvector = 0;

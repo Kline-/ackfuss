@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Adrenaline
+    Classes: Knight(38), Monk(28)
+   Duration: N/A
+   Modifies: Damroll
+       Type: Defensive
+Description: When hit hard enough, adrenaline will take over and you will gain
+             damroll. Adrenaline will damage you when it wears off.
+*******************************************************************************

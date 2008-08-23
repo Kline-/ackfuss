@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Deflect Weapon
+    Classes: Monk(10)
+   Duration: ( Cast Level + 2 )
+   Modifies: Armor Class
+       Type: Defensive
+Description: Is a medium level defensive spell that increases armor class
+             temporarily.
+*******************************************************************************

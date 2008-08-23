@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Stun
+    Classes: Knight(18), Monk(25)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: Stunning an enemy causes an enemy to miss attacks, spells and
+             makes them unable to heal or flee a fight.
+*******************************************************************************

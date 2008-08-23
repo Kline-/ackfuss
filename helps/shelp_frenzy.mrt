@@ -1,0 +1,8 @@
+*******************************************************************************
+       Name: Frenzy
+    Classes: Knight(23), Monk(18)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: Room attack that will attack all mobiles in a room.
+*******************************************************************************
