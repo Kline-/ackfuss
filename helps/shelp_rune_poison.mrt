@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Rune:Poison
+    Classes: Necromancer(12), Assassin(15)
+   Duration: ( Cast Level + ( 2 to 20 ) )
+   Modifies: Poison
+       Type: Room Affect
+Description: Creates a rune that will explode when the room is entered,
+             poisoning the first person in the room.
+*******************************************************************************

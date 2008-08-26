@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Disguise
+    Classes: Assassin(25)
+   Duration: N/A
+   Modifies: Long Description
+       Type: Defensive
+Description: Disguise modifies your long description to hide your true
+             identity from other characters in the room. To get rid of it,
+             use "disguise reset".
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Cloak:Misery
+    Classes: Assassin(80)
+   Duration: ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Defensive
+Description: Surround you with a cloak that will curse enemies when they
+             strike you in combat.
+*******************************************************************************

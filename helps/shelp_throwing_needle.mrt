@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Throwing Needle
+    Classes: Assassin(5)
+   Duration: 12 + ( Cast Level / 10 )
+   Modifies: N/A
+       Type: Offensive
+Description: Is a medium to high damage attack spell that will leave a poison
+             affect on the target character.
+*******************************************************************************

@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Withering Shadow
+    Classes: Assassin(35)
+   Duration: ( Cast Level / 8 ) + ( 2 to 10 ) )
+   Modifies: Regen
+       Type: Room Affect
+Description: Withering shadow will cause players in a room to lose health
+             as long as they remain in the room.
+*******************************************************************************

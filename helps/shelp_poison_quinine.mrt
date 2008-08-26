@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Posion:Quinine
+    Classes: Assassin(36)
+   Duration: 2 * ( Cast Level / 8 )
+   Modifies: Hitroll, AC
+       Type: Offensive
+Description: A stronger poison than Arsenic that lowers hitroll and AC of the
+             victim.
+*******************************************************************************
