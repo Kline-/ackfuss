@@ -1416,7 +1416,7 @@ bool spell_holy_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    if( is_affected( victim, sn ) )
       return FALSE;
    af.type = sn;
-   af.duration = 12;
+   af.duration = 2 + ( level / 7 );
    af.modifier = -80 - get_psuedo_level( ch ) / 5;
    af.location = APPLY_AC;
    af.bitvector = 0;
