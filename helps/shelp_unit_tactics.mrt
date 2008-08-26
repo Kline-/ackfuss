@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Unit Tactics
+    Classes: Knight(16)
+   Duration: N/A
+   Modifies: N/A
+       Type: Passive
+Description: Allows you to control up to 3 more charmed creatures, based on
+             skill.
+*******************************************************************************

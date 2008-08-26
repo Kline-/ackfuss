@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Morale
+    Classes: Knight(10)
+   Duration: ( 4 + ( Cast Level / 5 ) )
+   Modifies: Damroll
+       Type: Defensive
+Description: Morale is a group affecting spell that will increase damroll
+             temporarily.
+*******************************************************************************

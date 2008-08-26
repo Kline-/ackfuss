@@ -1,0 +1,8 @@
+*******************************************************************************
+       Name: Target
+    Classes: Knight(20)
+   Duration: N/A
+   Modifies: N/A
+       Type: Offensive
+Description: Target allows you to switch who you are fighting in combat.
+*******************************************************************************
