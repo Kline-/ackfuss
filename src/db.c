@@ -1009,20 +1009,13 @@ void load_mobiles( FILE * fp )
       pMobIndex->affected_by = fread_number( fp );
       pMobIndex->pShop = NULL;
       pMobIndex->alignment = fread_number( fp );
-      letter = fread_letter( fp );
-      pMobIndex->level = number_fuzzy( fread_number( fp ) );
 
+      pMobIndex->level = number_fuzzy( fread_number( fp ) );
       pMobIndex->sex = fread_number( fp );
 
       pMobIndex->ac_mod = fread_number( fp );   /* read      */
       pMobIndex->hr_mod = fread_number( fp );   /* in the    */
       pMobIndex->dr_mod = fread_number( fp );   /* modifiers */
-
-      if( letter != 'S' )
-      {
-         bug( "Load_mobiles: vnum %d non-S.", vnum );
-         hang( "Loading Mobiles in db.c" );
-      }
 
       /*
        * The "new" additions to mobs start with a !

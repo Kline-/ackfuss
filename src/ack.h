@@ -528,15 +528,6 @@ struct mob_index_data
    sh_int hr_mod; /* hitroll modifier */
    sh_int dr_mod; /* damroll modifier */
    char *target;  /* last ch to attack */
-   sh_int hitroll;   /* Unused */
-   sh_int ac;  /* Unused */
-   sh_int hitnodice; /* Unused */
-   sh_int hitsizedice;  /* Unused */
-   sh_int hitplus;   /* Unused */
-   sh_int damnodice; /* Unused */
-   sh_int damsizedice;  /* Unused */
-   sh_int damplus;   /* Unused */
-   int gold;   /* Unused */
    MPROG_DATA *first_mprog;   /* Used by MOBprogram   */
    MPROG_DATA *last_mprog;
    int progtypes; /* Used by MOBprogram   */
@@ -556,6 +547,7 @@ struct mob_index_data
    sh_int position;
    int hunt_flags;
    float speed[4];
+   sh_int learned[MAX_SKILL]; /* To replace skill/cast flags */
 };
 
 
