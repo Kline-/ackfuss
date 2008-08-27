@@ -1039,14 +1039,7 @@ void load_mobiles( FILE * fp )
          pMobIndex->cast = fread_number( fp );
          pMobIndex->def = fread_number( fp );
          if( ( area_revision < 16 ) || ( pMobIndex->race < 0 ) )
-         {
-#ifdef AA
-            pMobIndex->race = 14;
-#else
-            pMobIndex->race = 0;
-#endif
-         }
-         else;
+          pMobIndex->race = 0;
       }
       else
          ungetc( letter, fp );

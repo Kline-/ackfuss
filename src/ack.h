@@ -61,11 +61,6 @@
 #include "imc.h"
 #endif
 
-struct str_array
-{
-   char *this_string;
-};
-
 struct sysdata_type
 {
  float expmult;
@@ -136,16 +131,6 @@ struct ansi_type
 };
 
 #define color_NORMAL "\033[0m"
-
-/* Structure for material/strengths */
-struct material_type
-{
-   char *name; /* Name of the material */
-   char *descrip; /* Descr. of how strong it is */
-   int quality;   /* 0 = crap, 100 = non-breakable */
-};
-
-#define NO_MATERIAL	10 /* Number of materials */
 
 struct dl_list
 {
