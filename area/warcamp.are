@@ -403,7 +403,7 @@ minotaur patrol~
 @@dA @@eMinotaur @@dPatrol spots you and attacks!@@N
 ~
 ~
-3145729 8380 -200 S
+3145729 8380 -200
 83 1
 -674 160 130
 ! 7 0 12 7 14350 0 4
@@ -414,7 +414,7 @@ cut cutthroat throat minotaur~
 @@dA @@eMinotaur @@dCutthroat jumps out from behind the @@grocks.@@N
 ~
 ~
-3145731 106686 -200 S
+3145731 106686 -200
 86 1
 -675 175 140
 ! 2 0 12 7 6286 0 128
@@ -425,8 +425,8 @@ minotaur lesser guard~
 @@dThis @@eMinotaur@@d @@dGuard seems to be guarding a door.@@N
 ~
 ~
-3153923 8892 -200 S
-85 1
+3153923 8892 -200
+86 1
 -750 230 200
 ! 3 0 12 7 14782 0 2
 | 0 0 0 0 0 0 0
@@ -436,7 +436,7 @@ minotaur trainee~
 @@dA @@eMinotaur @@dTrainee @@dis hard at work slashing a target.@@N
 ~
 ~
-3153923 8328 -200 S
+3153923 8328 -200
 83 1
 -590 140 140
 ! 3 0 12 7 14 0 0
@@ -448,7 +448,7 @@ minotaur worker~
 path.@@N
 ~
 ~
-1 8320 -100 S
+1 8320 -100
 87 1
 -500 160 145
 ! 3 0 12 7 6 0 0
@@ -459,8 +459,8 @@ minotaur ranger~
 @@dA @@eMinotaur @@GRanger @@dscouts out the rear area of the camp.@@N
 ~
 ~
-3153923 631036 -200 S
-89 1
+3153923 631036 -200
+88 1
 -800 250 225
 ! 9 0 12 7 14478 0 80
 | 0 0 0 0 0 0 0
@@ -471,8 +471,8 @@ minotaur commander~
 discovered.@@N
 ~
 ~
-3153923 90300 -200 S
-94 1
+3153923 90300 -200
+93 1
 -1000 310 310
 ! 0 0 12 7 6798 0 48
 | 0 0 0 0 0 0 0

@@ -134,8 +134,8 @@ A large, well trained gladiator is preparing here.
 This guy really is a huge killing machine perhaps you should walk away.
 
 ~
-19 0 0 S
-4 1
+19 0 0
+5 1
 100 -10 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -144,8 +144,8 @@ rat~
 rat~
 A large rat is scurring about here.~
 ~
-1 0 -10 S
-7 0
+1 0 -10
+8 0
 100 -100 -100
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -156,7 +156,7 @@ Borg.
 ~
 The big borgy bastard.
 ~
-23 0 1000 S
+23 0 1000
 10 0
 -50 25 20
 ! 0 0 19 7 20612 0 0

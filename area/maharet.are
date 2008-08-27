@@ -1153,7 +1153,7 @@ The gate guard~
 The impassive gate guard stands here.
 ~
 ~
-7 32776 -100 S
+7 32776 -100
 55 1
 -500 120 110
 ! 0 0 3 7 0 0 0
@@ -1164,7 +1164,7 @@ The Elite Guard captain~
 The guard captain of the elite squadron polishes his boots nonchalantly here.
 ~
 ~
-21102721 533120 100 S
+21102721 533120 100
 66 1
 -690 199 223
 ! 0 0 3 7 7684 0 0
@@ -1175,7 +1175,7 @@ The Elite Elven guard~
 The impassive Elite guard stands here, looming over you.
 ~
 ~
-87 8872 -1 S
+87 8872 -1
 64 1
 -40 40 40
 ! 0 0 3 7 0 0 0
@@ -1186,8 +1186,8 @@ Queen Amlariul~
 The beautifully radiant Queen Amlariul sits here lost in thought.
 ~
 ~
-3 680 -1 S
-82 2
+3 680 -1
+83 2
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1197,8 +1197,8 @@ the wizened priest~
 The wizened old elven priest looks up at you from his reading.
 ~
 ~
-5635 2728 300 S
-81 1
+5635 2728 300
+82 1
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1208,8 +1208,8 @@ the elegant elven guard~
 The serenely graceful Elven guards patrol here.
 ~
 ~
-197 8832 -1 S
-37 1
+197 8832 -1
+38 1
 -25 20 20
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1219,7 +1219,7 @@ Amylla Goldeneyes~
 Amylla Goldeneyes bakes her way through the day's order here.
 ~
 ~
-131 35368 -1 S
+131 35368 -1
 72 2
 -1400 400 400
 ! 0 0 3 7 24076 0 16
@@ -1230,8 +1230,8 @@ Sebastian the shopkeeper~
 A short, crabby elf is here giving music lessons.
 ~
 ~
-3 2720 0 S
-61 1
+3 2720 0
+60 1
 -1400 400 400
 ! 0 0 3 7 24076 0 16
 | 0 0 0 0 0 0 0
@@ -1245,8 +1245,8 @@ This pretty little elf spends most of her time here among her flowers. With her
 giving flowers to those around her, which makes it a little difficult for her
 to make any money in her chosen profession.
 ~
-16785475 10912 0 S
-141 2
+16785475 10912 0
+140 2
 -1400 400 400
 ! 0 0 3 7 390 0 0
 | 0 0 0 0 0 0 0
@@ -1260,8 +1260,8 @@ This quiet, silver-haired elf with his deep set eyes and an expression of
 the brave' by the queen herself, he will protect the city of Evermeet with his
 life.
 ~
-131083 10984 0 S
-111 1
+131083 10984 0
+112 1
 -1000 527 527
 ! 0 0 3 7 6158 0 0
 | 0 0 0 0 0 0 0
@@ -1274,8 +1274,8 @@ The honorable elf before you would rather die than cheat a customer of his
 money. His serious manner is no doubt a direct result of the strict life he
 leads that has him practically chained to the bank.
 ~
-32771 8872 0 S
-81 1
+32771 8872 0
+82 1
 -1300 400 400
 ! 3 0 3 7 398 0 0
 | 0 0 0 0 0 0 0
@@ -1288,8 +1288,8 @@ The huge man towering over you sends a shiver down your spine with a glance.
 On closer inspection, you realize he wouldn't hurt a fly, and it seems more
 likely that he would give you a big hug rather than hurt you.
 ~
-11 8876 0 S
-69 1
+11 8876 0
+68 1
 -65 65 65
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1303,8 +1303,8 @@ Rushing up to you the moment you walked in the door, it's almost as if he was
 say you love them. Insulting him is not normally a good idea, and he tends to
 get his delicate designer feelings hurt with the slightest frown.
 ~
-8388611 10912 0 S
-141 1
+8388611 10912 0
+142 1
 -1400 400 400
 ! 0 0 3 7 30 0 16
 | 0 0 0 0 0 0 0
@@ -1318,8 +1318,8 @@ Kythaela looks as if she has been in this business for a long time. Her
 in knowing one of her weapons will never fail you in battle. Just say the word
 and she will design a special one just for you.
 ~
-8195 10920 0 S
-118 2
+8195 10920 0
+117 2
 -1400 400 400
 ! 0 0 3 7 6158 0 16
 | 0 0 0 0 0 0 0
@@ -1331,8 +1331,8 @@ A scruffy little dwarf is here, trying to blend into the shadows.
 This scruffy little scavenger is better off left unnoticed. Maybe if you ignore it, it will just go away? Of course, if you are feeling a little generous, you
 could give it a few scraps and send it on its way.
 ~
-197 0 -1 S
-3 0
+197 0 -1
+2 0
 -3 3 3
 ! 0 0 2 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1342,7 +1342,7 @@ Thaola the shopkeeper~
 A soft-spoken elven woman is here offering you a glass of wine.
 ~
 ~
-8388611 10912 0 S
+8388611 10912 0
 140 2
 -1400 400 400
 ! 0 0 3 7 0 0 16
@@ -1357,8 +1357,8 @@ This handsome elf looks as if he's tired of being cooped up in this tiny shop.
 from his job. There is always something to be made or fixed everytime he turns
 around. Maybe it is time he got a partner for the store?
 ~
-1048579 10912 0 S
-141 1
+1048579 10912 0
+142 1
 -1300 400 500
 ! 3 0 3 7 142 0 0
 | 0 0 0 0 0 0 0
@@ -1371,8 +1371,8 @@ A tall, thin elf stands before you. He looks slightly bored, as if it has been
 a slow day at the market. He smiles at you as he tries to tempt you with the
 various food items he has brought in today.
 ~
-3 2720 0 S
-138 1
+3 2720 0
+137 1
 -1400 400 400
 ! 0 0 3 7 24076 0 0
 | 0 0 0 0 0 0 0
@@ -1386,8 +1386,8 @@ The happy elf before you has made it his life's work to find hard to locate
 getting you the hard to find things you may need. So go ahead, make his day,
 ask for something he couldn't possibly have in his backroom.
 ~
-3 2720 0 S
-141 1
+3 2720 0
+142 1
 -1400 400 400
 ! 0 0 3 7 24206 0 0
 | 0 0 0 0 0 0 0
@@ -1401,8 +1401,8 @@ As you look into Laeroth's eyes, you get the feeling you can't count as high
 of his age. He looks at you patiently and asks if there is anything special he
 can make up for you today.
 ~
-3 2720 0 S
-140 1
+3 2720 0
+139 1
 -1400 400 400
 ! 0 0 3 7 24076 8394752 0
 | 0 0 0 0 0 0 0
@@ -1414,8 +1414,8 @@ Lorianne the bartender kicks her heels here.
 Tall and slender and graceful, this lady has a piercing glare about her, I
 wouldnt mess if I were you.
 ~
-1539 2720 -1 S
-77 2
+1539 2720 -1
+76 2
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1425,7 +1425,7 @@ Paul the Creditman~
 A very happy man is here offering you credit for jewelry.
 ~
 ~
-8388611 2720 0 S
+8388611 2720 0
 59 1
 -1400 400 400
 ! 0 0 3 7 20236 0 16

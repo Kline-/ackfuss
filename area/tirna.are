@@ -1869,7 +1869,7 @@ Hurv sells you potions and scrolls!
 
 ~
 ~
-8388611 8360 0 S
+8388611 8360 0
 90 1
 -500 500 500
 ! 5 0 0 7 0 0 0
@@ -1883,7 +1883,7 @@ Smith the armorsmith is selling his armor!
 
 ~
 ~
-8388611 8360 0 S
+8388611 8360 0
 90 1
 -500 500 500
 ! 7 0 0 7 0 0 0
@@ -1897,7 +1897,7 @@ Smith the weaponsmith is standing here!
 
 ~
 ~
-8388611 8360 0 S
+8388611 8360 0
 102 1
 -500 500 500
 ! 7 0 0 7 0 0 0
@@ -1909,8 +1909,8 @@ Gabe is standing here waiting to sell you something!
 
 ~
 ~
-8388611 8360 0 S
-95 1
+8388611 8360 0
+96 1
 -500 500 500
 ! 3 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -1921,8 +1921,8 @@ Scrub is selling drinks.
 
 ~
 ~
-8388611 40 0 S
-91 1
+8388611 40 0
+90 1
 -500 500 500
 ! 6 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -1941,7 +1941,7 @@ He is a very insane man who believes that brown hair and brown eyes are
  
 
 ~
-35 552 -1000 S
+35 552 -1000
 36 1
 -50 25 25
 ! 3 0 0 7 14358 0 0
@@ -1959,7 +1959,7 @@ This man really likes his cigars.
  
 
 ~
-35 32 -500 S
+35 32 -500
 26 1
 -35 22 19
 ! 3 0 0 7 8194 0 0
@@ -1977,8 +1977,8 @@ He is the leader of the SU.
  
 
 ~
-3 4 500 S
-22 1
+3 4 500
+21 1
 -40 15 10
 ! 3 0 0 7 6146 0 0
 | 0 0 0 0 0 0 0
@@ -1993,7 +1993,7 @@ He used to be some political dude for some extreme cult.
  
 
 ~
-35 8 -400 S
+35 8 -400
 43 1
 -40 20 20
 ! 3 0 0 7 4162 0 0
@@ -2013,7 +2013,7 @@ He is a soldier in the cult called Izan.  He stands strong with brown hair and
  
 
 ~
-65 0 0 S
+65 0 0
 20 1
 16 13 15
 ! 3 0 0 7 18 0 0
@@ -2033,7 +2033,7 @@ This guard is one of the elite of the black watchman.  His sole purpose is go
  
 
 ~
-67 0 0 S
+67 0 0
 16 1
 -20 15 18
 ! 3 0 14 7 98 0 0
@@ -2053,8 +2053,8 @@ The rodent is a large brown looking mouse.  It is said that the city was
  
 
 ~
-65 0 0 S
-5 1
+65 0 0
+6 1
 0 0 0
 ! 2 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2071,8 +2071,8 @@ She is very petit with long blond hair.  Her eyes burn you like fire and seem
 of Mouse's lovers.
 
 ~
-8390147 168 0 S
-77 2
+8390147 168 0
+76 2
 -100 100 350
 ! 2 0 0 7 31112 0 0
 | 0 0 0 0 0 0 0
@@ -2085,8 +2085,8 @@ Ramgul is the lord of these alley's.  He may not be too tough, but his
 intelligence brings death to his foes.
 
 ~
-8195 65538 -280 S
-12 1
+8195 65538 -280
+13 1
 -10 8 10
 ! 2 0 0 7 4096 0 0
 | 0 0 0 0 0 0 0
@@ -2095,8 +2095,8 @@ pkiller hunter~
 @@BA Pkiller Hunter@@g~
 ~
 ~
-20054045 1633020 0 S
-122 1
+20054045 1633020 0
+121 1
 -2000 1000 1000
 ! 3 0 0 7 420346 16384 16
 | 0 0 0 0 0 0 0
@@ -2111,8 +2111,8 @@ Fromp is a huge bald man with bulging muscles. He is totally decked out in
 is a kind man.
 
 ~
-1539 168 0 S
-89 1
+1539 168 0
+88 1
 -100 100 350
 ! 3 0 0 7 30776 0 0
 | 0 0 0 0 0 0 0
@@ -2123,8 +2123,8 @@ Kazmar trains you in the way of spellcasting.~
 All you see is someone in a dark black robe!
 
 ~
-8390147 524456 0 S
-91 1
+8390147 524456 0
+92 1
 -100 100 350
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2135,8 +2135,8 @@ Mindwave teaches you how to really use your mind.~
 He looks totally normal, except he has a really big head!
 
 ~
-8390147 168 0 S
-100 1
+8390147 168 0
+99 1
 -100 100 350
 ! 4 0 0 7 0 8675328 0
 | 0 0 0 0 0 0 0
@@ -2151,8 +2151,8 @@ Juzical is a very tanned lady with jet-black hair.  She wears a many colored
 in any form of worship.
 
 ~
-8390147 168 0 S
-101 2
+8390147 168 0
+102 2
 -100 100 350
 ! 1 0 0 7 4 0 16
 | 0 0 0 0 0 0 0
@@ -2163,8 +2163,8 @@ Jim the Banker wants your money.~
 Jim will keep your money safe in his bank.
 
 ~
-8421379 0 0 S
-91 1
+8421379 0 0
+90 1
 -100 100 100
 ! 2 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2175,7 +2175,7 @@ Brad will send and give you mail.~
 He is just the guy who handles the post.
 
 ~
-8912899 0 0 S
+8912899 0 0
 86 1
 -100 100 100
 ! 1 0 0 7 0 0 0
@@ -2189,7 +2189,7 @@ This guy is a non-stop healing machine.  He never tires, he just keeps casting
 spells at everyone.  Make sure to say thanks!
 
 ~
-8392707 0 0 S
+8392707 0 0
 98 1
 -100 100 350
 ! 1 0 0 7 0 0 24
@@ -2208,8 +2208,8 @@ He seems like a normal man, but he has a very evil grin on his face.  Better
  
 
 ~
-65 0 0 S
-11 1
+65 0 0
+10 1
 0 0 0
 ! 2 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2226,8 +2226,8 @@ This man is one of the policing members of the city.  His job is to patrol and
  
 
 ~
-65 0 0 S
-16 1
+65 0 0
+17 1
 -10 10 10
 ! 3 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2243,8 +2243,8 @@ He is a large man with a gruff appearance.  He is in much need of a job though
 
 
 ~
-65 0 0 S
-19 1
+65 0 0
+18 1
 0 0 0
 ! 3 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2263,8 +2263,8 @@ She is dressed in thin rags, barely covering here frail body.  It looks like
  
 
 ~
-65 0 0 S
-11 2
+65 0 0
+12 2
 0 0 0
 ! 4 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2275,7 +2275,7 @@ Joe the baker sells his goods!
 
 ~
 ~
-8388611 8360 0 S
+8388611 8360 0
 96 1
 -500 500 500
 ! 4 0 0 7 0 0 0
@@ -2287,8 +2287,8 @@ guardian~
 
 ~
 ~
-2250879 59640 -1000 S
-138 1
+2250879 59640 -1000
+139 1
 -2500 1000 1000
 ! 0 0 14 7 958592 17334468 32
 | 0 0 0 0 0 0 0

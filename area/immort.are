@@ -551,7 +551,7 @@ The Fairy Godmother, sent by Stephen to spread joy and happiness throughout
 The kind smile on her face tells you that she means you no harm, and is
 just here to say hello, and maybe help you along your way.
 ~
-3 1581704 1000 S
+3 1581704 1000
 67 2
 -500 100 100
 ! 0 0 0 7 0 0 0
@@ -561,7 +561,7 @@ Quartermaster~
 Quartermaster~
 Quartermaster~
 ~
-1 0 0 S
+1 0 0
 1 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -571,7 +571,7 @@ Grand Master of Thieves~
 Grand Master of Thieves~
 Grand Master of Thieves~
 ~
-1 0 0 S
+1 0 0
 8 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -581,7 +581,7 @@ Bok-Choi~
 Bok-Choi~
 Bok-Choi~
 ~
-1 0 0 S
+1 0 0
 10 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -591,8 +591,8 @@ Bashinator~
 Bashinator~
 Bashinator~
 ~
-1 0 0 S
-3 1
+1 0 0
+2 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -601,7 +601,7 @@ Emperor's Guard~
 Emperor's Guard~
 Emperor's Guard~
 ~
-1 0 0 S
+1 0 0
 8 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -611,8 +611,8 @@ Emperor Hirohito~
 Emperor Hirohito~
 Emperor Hirohito~
 ~
-1 0 0 S
-7 1
+1 0 0
+8 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -621,7 +621,7 @@ Wazir~
 Wazir~
 Wazir~
 ~
-1 0 0 S
+1 0 0
 34 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -631,7 +631,7 @@ Godzilla~
 Godzilla~
 Godzilla~
 ~
-1 0 0 S
+1 0 0
 15 1
 0 0 0
 ! 0 0 8 7 0 0 0
@@ -641,8 +641,8 @@ Dim-Mak~
 Dim-Mak~
 Dim-Mak~
 ~
-1 0 0 S
-5 1
+1 0 0
+6 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -651,8 +651,8 @@ Concubine~
 Concubine~
 Concubine~
 ~
-1 0 0 S
-10 1
+1 0 0
+9 1
 0 0 0
 ! 0 0 16 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -661,8 +661,8 @@ Ginsu Chef~
 Ginsu Chef~
 Ginsu Chef~
 ~
-1 0 0 S
-6 1
+1 0 0
+7 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -671,8 +671,8 @@ Sony VCR~
 Sony VCR~
 Sony VCR~
 ~
-1 0 0 S
-9 1
+1 0 0
+8 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -681,8 +681,8 @@ Vermin~
 Vermin~
 Vermin~
 ~
-1 0 0 S
-4 1
+1 0 0
+5 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -691,8 +691,8 @@ T'ian-Lung~
 T'ian-Lung~
 T'ian-Lung~
 ~
-1 0 0 S
-3 1
+1 0 0
+2 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -701,8 +701,8 @@ Tsaburi Matsumoto~
 Tsaburi Matsumoto~
 Tsaburi Matsumoto~
 ~
-1 0 0 S
-11 1
+1 0 0
+10 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -711,7 +711,7 @@ Lizard~
 Lizard~
 Lizard~
 ~
-1 0 0 S
+1 0 0
 1 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -721,7 +721,7 @@ Manticore~
 Manticore~
 Manticore~
 ~
-1 0 0 S
+1 0 0
 15 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -731,8 +731,8 @@ Pet Tiger~
 Pet Tiger~
 Pet Tiger~
 ~
-1 0 0 S
-6 1
+1 0 0
+7 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -741,8 +741,8 @@ Shogun~
 Shogun~
 Shogun~
 ~
-1 0 0 S
-5 1
+1 0 0
+4 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -751,8 +751,8 @@ Ninja~
 Ninja~
 Ninja~
 ~
-1 0 0 S
-3 1
+1 0 0
+4 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -761,8 +761,8 @@ Buddha~
 Buddha~
 Buddha~
 ~
-1 0 0 S
-13 1
+1 0 0
+12 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -771,8 +771,8 @@ Musashi~
 Musashi~
 Musashi~
 ~
-1 0 0 S
-8 1
+1 0 0
+9 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -781,8 +781,8 @@ Bupu~
 Bupu the Gully-Dwarf~
 A little bundle of refuse is busy lapping from a puddle here.~
 ~
-1 0 0 S
-78 1
+1 0 0
+79 1
 0 0 0
 ! 0 0 2 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -794,8 +794,8 @@ The Great Lord Zeus stands here, waiting to take your order.
 Zeus looks disgruntled to say the least at his demotion to bartender!  Maybe
 it'll teach him not to load Tiamat into recall, eh?
 ~
-1 8380 900 S
-81 1
+1 8380 900
+80 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -805,7 +805,7 @@ The peculiar living massage table~
 The incredible living massage table of Maharet stands here.
 ~
 ~
-3 640 0 S
+3 640 0
 82 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -815,7 +815,7 @@ Dealer~
 Dealer~
 Dealer~
 ~
-1 0 0 S
+1 0 0
 3 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -825,7 +825,7 @@ Eagle Knight~
 Eagle Knight~
 Eagle Knight~
 ~
-1 0 0 S
+1 0 0
 10 1
 0 0 0
 ! 0 0 18 7 8 0 0
@@ -836,8 +836,8 @@ earth elemental~
 @@Na huge man-like form made of @@bEarth@@N towers over you.
 ~
 ~
-262145 552 0 S
-55 0
+262145 552 0
+54 0
 -800 350 250
 ! 7 0 17 7 22542 0 0
 | 0 0 0 0 0 0 0
@@ -846,7 +846,7 @@ iron golem~
 @@dIron @@gGolem@@N~
 @@Na towering mass of @@dmetal@@N peers into your soul.@@N~
 ~
-1 680 0 S
+1 680 0
 64 0
 -1100 400 260
 ! 0 0 17 7 155150 0 0
@@ -856,7 +856,7 @@ soul thief~
 @@dSoul @@lThief@@N~
 ~
 ~
-327681 98986 0 S
+327681 98986 0
 69 1
 -950 280 290
 ! 0 0 16 7 24078 0 0
@@ -866,7 +866,7 @@ holy avenger~
 @@aHoly @@WAvenger@@N~
 @@WA majestic Avenger stands before you.@@N~
 ~
-3145729 8936 0 S
+3145729 8936 0
 56 1
 -1100 250 300
 ! 0 0 0 7 155150 0 16
@@ -876,8 +876,8 @@ Diamond Golem~
 @@WD@@yi@@Wa@@ym@@Wo@@yn@@Wd @@g Golem@@N~
 @@yA shimmering tower of @@adiamond @@yglitters before you.@@N~
 ~
-3145729 535208 0 S
-78 1
+3145729 535208 0
+79 1
 -1450 450 200
 ! 0 0 17 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -886,7 +886,7 @@ Algeroth~
 @@dAlgeroth@@N~
 @@dAlgeroth@@N The Lord of Darkness@@N~
 ~
-12811 1599656 -1000 S
+12811 1599656 -1000
 120 1
 -700 600 800
 ! 0 0 16 7 0 0 0
@@ -896,7 +896,7 @@ familiar~
 A familiar~
 ~
 ~
-1 0 0 S
+1 0 0
 18 1
 0 0 0
 ! 5 0 19 7 0 0 0
@@ -907,8 +907,8 @@ Clan~
 @@dClan Enforcer@@N
 ~
 ~
-17174539 1632504 0 S
-122 1
+17174539 1632504 0
+123 1
 -2500 1000 1000
 ! 3 0 0 7 415886 0 16
 | 0 0 0 0 0 0 0
@@ -917,7 +917,7 @@ Elemental~
 Elemental~
 Elemental~
 ~
-3 2176 0 S
+3 2176 0
 117 1
 -1600 1000 750
 ! 0 0 17 7 397214 0 4
@@ -928,7 +928,7 @@ pegasus~
 @@WA @@mMagestic @@WPegasus@@W stands here, wings folded.@@N
 ~
 ~
-134217729 1573544 0 S
+134217729 1573544 0
 61 1
 -1200 350 350
 ! 0 0 19 7 154638 0 80
@@ -939,7 +939,7 @@ nightmare~
 @@WA @@eDemonic @@dNightmare @@Wglowers at you evilly.@@N
 ~
 ~
-134217729 1573544 0 S
+134217729 1573544 0
 60 1
 -1200 350 350
 ! 0 0 19 7 154638 0 48
@@ -950,8 +950,8 @@ beast~
 @@WAn @@lElemental @@aBeast@@N gazes into your eyes.@@N
 ~
 ~
-134217729 1573544 0 S
-58 1
+134217729 1573544 0
+59 1
 -1200 350 350
 ! 0 0 19 7 153614 0 144
 | 0 0 0 0 0 0 0
@@ -961,7 +961,7 @@ devourer~
 @@WAn @@rIntellect @@bDevourer@@W peers into your thoughts.@@N
 ~
 ~
-134283265 1573544 0 S
+134283265 1573544 0
 59 1
 -1200 350 350
 ! 0 0 19 7 153614 0 144
@@ -972,7 +972,7 @@ shadow~
 @@WA @@dShadow @@RHound @@Wgrowls at you fiercely!@@N
 ~
 ~
-134283265 1573544 0 S
+134283265 1573544 0
 58 1
 -1200 350 350
 ! 0 0 19 7 153614 0 48

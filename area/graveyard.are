@@ -1586,8 +1586,8 @@ death knight~
 @@da knight trained in the ways of death stands here, barring your way@@N
 ~
 ~
-278563 533160 -1000 S
-73 1
+278563 533160 -1000
+74 1
 -400 210 180
 ! 3 0 14 7 24494 33554432 80
 | 0 0 0 0 0 0 0
@@ -1597,8 +1597,8 @@ sentinel~
 @@da huge shadowy sentinel stands before you.@@N
 ~
 ~
-81971 631486 0 S
-95 1
+81971 631486 0
+94 1
 -1400 240 220
 ! 0 0 14 7 162958 16781440 144
 | 0 0 0 0 0 0 0
@@ -1608,7 +1608,7 @@ A @@Bscreeching@@N @@Gharpie@@N~
 A sceaming harpie wails as you as it dives foerm the air above.
 ~
 ~
-82017 98366 0 S
+82017 98366 0
 89 2
 -200 110 105
 ! 0 0 18 7 16782 0 0
@@ -1619,8 +1619,8 @@ legion death~
 @@ga decaying member of the @@RLegion of Death@@g attacks you!@@g
 ~
 ~
-3563625 98856 -600 S
-64 1
+3563625 98856 -600
+65 1
 -40 45 55
 ! 0 0 14 7 6302 0 0
 | 0 0 0 0 0 0 0
@@ -1630,7 +1630,7 @@ zombie lord~
 @@RAn animated corpse of a long dead hero @@gstands in front of you.@@g
 ~
 ~
-3424283 680 1000 S
+3424283 680 1000
 74 0
 -70 55 65
 ! 0 0 14 7 24470 64 0
@@ -1641,7 +1641,7 @@ Gillian~
 @@RGillian@@g is here, comforting @@cManiac.@@g
 ~
 ~
-19922969 33448 1000 S
+19922969 33448 1000
 76 2
 -210 60 85
 ! 0 0 3 7 23534 561152 16
@@ -1652,8 +1652,8 @@ zombie~
 @@m a shambling zombie decays into pieces in front of you.@@g
 ~
 ~
-278613 2600 -450 S
-54 0
+278613 2600 -450
+53 0
 -2000 45 30
 ! 3 0 14 7 530 0 0
 | 0 0 0 0 0 0 0
@@ -1664,7 +1664,7 @@ a nasty skeleton~
 ~
 All bones, the skeleton laughs at your attempts to hurt it!!
 ~
-3555413 33320 -450 S
+3555413 33320 -450
 58 0
 -40 23 22
 ! 0 0 14 7 4354 0 0
@@ -1677,7 +1677,7 @@ a vicious ghoul~
 @@RA pale skinned creature with blackened teeth, dirty claws, and @@RA putrid
 stench growls at you!@@g
 ~
-3424319 552 -500 S
+3424319 552 -500
 58 0
 -50 45 50
 ! 0 0 14 7 18434 0 0
@@ -1690,7 +1690,7 @@ a vicious ghoul~
 @@RA pale skinned creature with blackened teeth, dirty claws, and A putrid
 stench stares back at you!@@g
 ~
-3424311 40 -500 S
+3424311 40 -500
 54 0
 -50 45 50
 ! 0 0 14 7 18434 0 0
@@ -1702,8 +1702,8 @@ wight~
 ~
 @@RThe Wight's bloody eyes peer into your soul.@@g
 ~
-3563615 68128 -850 S
-62 0
+3563615 68128 -850
+61 0
 -100 100 100
 ! 0 0 14 7 31806 32832 0
 | 0 0 0 0 0 0 0
@@ -1713,8 +1713,8 @@ maniac~
 A fear crazed adventurer named @@cManiac@@g attacks you!!
 ~
 ~
-19922961 32936 1000 S
-61 1
+19922961 32936 1000
+62 1
 -200 80 70
 ! 0 0 0 7 23470 2103360 8
 | 0 0 0 0 0 0 0
@@ -1724,7 +1724,7 @@ shadow evil~
 @@Ran evil shadow@@g waits here, watching you!
 ~
 ~
-82027 117502 -950 S
+82027 117502 -950
 94 0
 -1100 240 220
 ! 0 0 14 7 22536 3170304 0
@@ -1735,8 +1735,8 @@ An @@eangered@@N spirit~
 An @@eangered@@N entity floats here, adding its troubled cries to the @@cair.@@N
 ~
 ~
-16419 2066 0 S
-64 0
+16419 2066 0
+65 0
 -130 90 100
 ! 0 0 14 7 20622 274432 0
 | 0 0 0 0 0 0 0
@@ -1746,7 +1746,7 @@ abraham helsing~
 Abraham van Helsing
 ~
 ~
-3145729 1614572 1000 S
+3145729 1614572 1000
 91 1
 -1000 250 250
 ! 3 0 0 7 26126 1085440 144

@@ -1472,7 +1472,7 @@ Abu~
 The sly little Abu is here, looking for something to kill 
 ~
 ~
-4194305 1048576 400 S
+4194305 1048576 400
 4 1
 -30 0 0
 ! 0 0 0 7 0 0 0
@@ -1484,8 +1484,8 @@ An fraction of Aliaser's power floats here.
 ~
 He is big and bad.  Don't mess with him.
 ~
-65 136 1000 S
-74 1
+65 136 1000
+73 1
 0 0 0
 ! 0 0 17 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1498,8 +1498,8 @@ He is big, he is bad.  You don't want to fight him when he isn't chained up.
 Perhaps now would be a good time to flee from him!!!  If you don't flee, you
 would really suffer the consequences.
 ~
-67 8 0 S
-2 0
+67 8 0
+3 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1511,8 +1511,8 @@ A blackbird chirps merrily here.
 He looks mean, but you feel comfortable that you can kill him, especially since
 he is leashed up, and you are not.
 ~
-3 0 0 S
-6 0
+3 0 0
+7 0
 50 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1524,8 +1524,8 @@ A sparrow grubs down on a worm here.
 He looks wimpy.  You feel comfortable that you can kill him, especially since
 he is leashed up, and you are not.
 ~
-131 0 0 S
-3 0
+131 0 0
+4 0
 60 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1537,7 +1537,7 @@ A magpie flutters around here aimlessly.
 He looks mean, but you feel comfortable that you can kill him, especially since
 he is leashed up, and you are not.
 ~
-35 0 0 S
+35 0 0
 11 0
 50 0 0
 ! 0 0 19 7 0 0 0
@@ -1550,8 +1550,8 @@ A jay stands here looking weak but majestic.
 He looks mean, but you feel comfortable that you can kill him, especially since
 he is leashed up, and you are not.
 ~
-163 0 0 S
-9 0
+163 0 0
+8 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1563,7 +1563,7 @@ The eagle perches here, chewing on a bit of flesh.
 He looks mean, and you just might have a small problem killing him, but he
 looks like a great prize!!!
 ~
-3 512 0 S
+3 512 0
 1 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -1575,8 +1575,8 @@ An adept of Overlord Kahn is here, contemplating your progress.
 ~
 He is big and bad.  Don't mess with him.
 ~
-67 136 1000 S
-80 1
+67 136 1000
+81 1
 -500 500 500
 ! 0 0 0 7 17416 0 0
 | 0 0 0 0 0 0 0
@@ -1587,7 +1587,7 @@ A gekko is slithering around here.
 ~
 The gekko smiles at you, completely harmless!
 ~
-193 0 100 S
+193 0 100
 8 0
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -1599,7 +1599,7 @@ The newt tries to find water here.
 ~
 It smiles at you, and tries to eat your leg.
 ~
-65 0 -100 S
+65 0 -100
 1 0
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -1611,8 +1611,8 @@ The badger roots around for food here.
 ~
 It grunts at you.
 ~
-65 0 0 S
-8 0
+65 0 0
+9 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1623,7 +1623,7 @@ The squirrel looks for a tree to climb here.
 ~
 His fur might be worth money.
 ~
-193 0 100 S
+193 0 100
 6 0
 10 -2 -2
 ! 0 0 19 7 0 0 0
@@ -1635,7 +1635,7 @@ A slug squeltches around here, waiting to be trod on.
 ~
 You don't see much but slime about it.
 ~
-65 0 0 S
+65 0 0
 5 0
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -1647,7 +1647,7 @@ Eeyore the donkey is in a _seriously_ bad mood.
 ~
 It looks mean.  You'd better run.
 ~
-97 0 0 S
+97 0 0
 8 0
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -1659,7 +1659,7 @@ Pooh Bear digs in his honey pot for a little treat.
 ~
 The bear must be bigger than you!  It wants to rip your head off.
 ~
-65 0 0 S
+65 0 0
 5 0
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -1670,7 +1670,7 @@ Piglet~
 Piglet tries to remain on the ground, whilst holding onto a balloon here.
 ~
 ~
-65 0 0 S
+65 0 0
 10 0
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -1682,8 +1682,8 @@ An adept of Frag is here, grinning and selling you things.
 ~
 He is big and bad.  Don't mess with him.
 ~
-67 136 1000 S
-74 1
+67 136 1000
+75 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1694,7 +1694,7 @@ The Adept of Furey is here, waiting to help you.
 ~
 He is big and bad.  Don't mess with him.
 ~
-1603 136 1000 S
+1603 136 1000
 78 1
 -500 500 500
 ! 0 0 0 7 0 0 0
@@ -1706,7 +1706,7 @@ The priest of Hatchet is ready to help you practice.
 ~
 He is big and bad.  Don't mess with him.
 ~
-1049667 136 1000 S
+1049667 136 1000
 110 1
 -500 500 500
 ! 0 0 0 7 26504 0 0
@@ -1719,8 +1719,8 @@ A wise old sage sits here, looking weak and feeble.
 This horrible creature is your final test for mud school.  Kill him, and the
 diploma is yours.
 ~
-3 512 0 S
-9 0
+3 512 0
+10 0
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1731,7 +1731,7 @@ A newbie Squire stands here, dropping equipment all over the place.
  
 ~
 ~
-3 553 0 S
+3 553 0
 2 1
 0 0 0
 ! 1 0 0 7 0 0 0
