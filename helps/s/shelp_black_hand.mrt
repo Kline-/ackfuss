@@ -1,8 +1,8 @@
 *******************************************************************************
-       Name: Fire Blast
-    Classes: Sorcerer(34)
+       Name: Black Hand
+    Classes: Necromancer(7)
    Duration: N/A
    Modifies: N/A
        Type: Offensive
-Description: Medium damage spell that blasts your foe with a gout of flame.
+Description: This is an attack spell that causes drain realm damage.
 *******************************************************************************

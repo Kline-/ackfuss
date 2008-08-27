@@ -1,6 +1,6 @@
 *******************************************************************************
        Name: Cloak:Misery
-    Classes: Assassin(80)
+    Classes: Assassin(80), Necromancer(73)
    Duration: ( Cast Level / 8 )
    Modifies: N/A
        Type: Defensive

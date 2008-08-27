@@ -4381,7 +4381,7 @@ int count_helps( void )
  char buf[MSL];
  char tmp[MSL];
 
- xprintf(tmp,"ls %s -1 | wc -l",HELP_DIR);
+ xprintf(tmp,"expr `ls -1 -R %s | wc -l` - 26",HELP_DIR);
  xprintf(buf,_popen(tmp));
 
  return atoi(buf);

@@ -1,0 +1,11 @@
+*******************************************************************************
+       Name: Infuse
+    Classes: Necromancer(71)
+   Duration: Permanent
+   Modifies: Weapons
+       Type: Enchantment
+Description: Requires a soul figurine and weapon to cast. Infuses the weapon
+             with new stats and the ability to cast dispel. All of this is
+             based on the level of the soul used. Costs the Necromancer HP to
+             cast.
+*******************************************************************************

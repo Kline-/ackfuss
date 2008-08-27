@@ -3781,6 +3781,7 @@ void build_delhelp( CHAR_DATA *ch, char *argument )
  char arg2[MSL];
  bool mort = FALSE;
 
+ strlower(argument);
  argument = one_argument(argument,arg1);
  argument = one_argument(argument,arg2);
 
@@ -3799,7 +3800,7 @@ void build_delhelp( CHAR_DATA *ch, char *argument )
   return;
  }
 
- xprintf(arg1,"%s%s.%s",HELP_DIR,arg2,mort ? HELP_MORT : HELP_IMM);
+ xprintf(arg1,"%s%s/%s.%s",HELP_DIR,initial(arg2),arg2,mort ? HELP_MORT : HELP_IMM);
  if( (fp = file_open(arg1,"r")) == NULL )
  {
   send_to_char("Couldn't find that keyword.\n\r",ch);
@@ -5666,6 +5667,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
  bool mort = FALSE;
  FILE *fp;
 
+ strlower(argument);
  argument = one_argument(argument,arg);
  smash_replace(argument," ","_");
 
@@ -5684,7 +5686,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
   return;
  }
 
- xprintf(arg,"%s%s.%s",HELP_DIR,argument,mort ? HELP_MORT : HELP_IMM);
+ xprintf(arg,"%s%s/%s.%s",HELP_DIR,initial(argument),argument,mort ? HELP_MORT : HELP_IMM);
  if( (fp = file_open(arg,"r")) == NULL )
  {
   send_to_char("Couldn't find that keyword.\n\r",ch);
@@ -5727,6 +5729,7 @@ void build_addhelp( CHAR_DATA * ch, char *argument )
  bool mort = FALSE;
  FILE *fp;
 
+ strlower(argument);
  argument = one_argument(argument,arg);
  smash_replace(argument," ","_");
 
@@ -5745,7 +5748,7 @@ void build_addhelp( CHAR_DATA * ch, char *argument )
   return;
  }
 
- xprintf(arg,"%s%s.%s",HELP_DIR,argument,mort ? HELP_MORT : HELP_IMM);
+ xprintf(arg,"%s%s/%s.%s",HELP_DIR,initial(argument),argument,mort ? HELP_MORT : HELP_IMM);
  if( (fp = file_open(arg,"r")) != NULL )
  {
   send_to_char("Help already exists. Use HELPEDIT <keyword> to edit it.\n\r",ch);

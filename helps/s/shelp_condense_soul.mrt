@@ -1,0 +1,10 @@
+*******************************************************************************
+       Name: Condense Soul
+    Classes: Necromancer(79)
+   Duration: Permanent
+   Modifies: Potions
+       Type: Creation
+Description: Requires a soul figurine to cast. Creates a powerful soul potion
+             that can imbue the user with extra strength temporarily. Costs
+             the Necromancer HP to cast.
+*******************************************************************************

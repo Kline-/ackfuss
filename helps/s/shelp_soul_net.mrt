@@ -1,0 +1,9 @@
+*******************************************************************************
+       Name: Soul Net
+    Classes: Necromancer(58)
+   Duration: ( Cast Level / 8 )
+   Modifies: N/A
+       Type: Room Affect
+Description: Soul net is a room affect that will push the soul of a killed
+             monster in to a soul figurine which is necessary for infuse.
+*******************************************************************************

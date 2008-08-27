@@ -1,10 +1,8 @@
 *******************************************************************************
-       Name: Shock Storm
-    Classes: Sorcerer(42)
+       Name: Fire Blast
+    Classes: Sorcerer(34), Necromancer(55)
    Duration: N/A
    Modifies: N/A
        Type: Offensive
-Description: Medium damage spell that electrocutes your foe with a storm of
-             lightning.
+Description: Medium damage spell that blasts your foe with a gout of flame.
 *******************************************************************************
-
