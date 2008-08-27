@@ -1810,13 +1810,13 @@ void do_help( CHAR_DATA * ch, char *argument )
   shelp = TRUE;
 
  if( argument[0] == '\0' )
-  xprintf(buf,"%s%s",HELP_DIR,HELP_INDEX);
+  xprintf(buf,"%s%s/%s",HELP_DIR,initial(HELP_INDEX),HELP_INDEX);
  else if( !str_cmp(argument,BHELP_INDEX) ) /* special case for the builder */
-  xprintf(buf,"%s%s",HELP_DIR,BHELP_INDEX);
+  xprintf(buf,"%s%s/%s",HELP_DIR,initial(BHELP_INDEX),BHELP_INDEX);
  else if( !str_cmp(argument,SHELP_INDEX) ) /* special case for shelp */
-  xprintf(buf,"%s%s",HELP_DIR,SHELP_INDEX);
+  xprintf(buf,"%s%s/%s",HELP_DIR,initial(SHELP_INDEX),SHELP_INDEX);
  else
-  xprintf(buf,"%s%s.%s",HELP_DIR,argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
+  xprintf(buf,"%s%s/%s.%s",HELP_DIR,initial(argument),argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
 
  if( (fp = file_open(buf,"r")) != NULL )
  {
@@ -1826,7 +1826,7 @@ void do_help( CHAR_DATA * ch, char *argument )
  }
  file_close(fp);
  /* Search for a plural */
- xprintf(buf,"%s%ss.%s",HELP_DIR,argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
+ xprintf(buf,"%s%s/%ss.%s",HELP_DIR,initial(argument),argument,IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
  if( (fp = file_open(buf,"r")) != NULL )
  {
   found = TRUE;
@@ -1846,7 +1846,7 @@ void do_help( CHAR_DATA * ch, char *argument )
 
  if( IS_IMMORTAL(ch) )
  {
-  xprintf(buf,"%s%s.%s",HELP_DIR,argument,HELP_MORT);
+  xprintf(buf,"%s%s/%s.%s",HELP_DIR,initial(argument),argument,HELP_MORT);
   if( (fp = file_open(buf,"r")) != NULL )
   {
    if( found )
@@ -1857,7 +1857,7 @@ void do_help( CHAR_DATA * ch, char *argument )
   }
   file_close(fp);
   /* Search for a plural */
-  xprintf(buf,"%s%ss.%s",HELP_DIR,argument,HELP_MORT);
+  xprintf(buf,"%s%s/%ss.%s",HELP_DIR,initial(argument),argument,HELP_MORT);
   if( (fp = file_open(buf,"r")) != NULL )
   {
    if( found )

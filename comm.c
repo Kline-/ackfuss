@@ -718,7 +718,7 @@ void new_descriptor( int control )
       char buf[MAX_STRING_LENGTH];
       FILE *fp;
 
-      xprintf( buf, "%sgreeting%d.%s", HELP_DIR, number_range(0,4), HELP_MORT );
+      xprintf( buf, "%s/g/greeting%d.%s", HELP_DIR, number_range(0,4), HELP_MORT );
 
       if( (fp = file_open(buf,"r")) != NULL )
        while( fgets(buf,MAX_STRING_LENGTH,fp) )
