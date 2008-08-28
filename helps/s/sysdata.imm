@@ -2,6 +2,8 @@ SYSDATA
 
 OPTION               DESCRIPTION
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Damcap               Limits the maximum damage a player or mob will do
+                     in a single hit (spell or melee).
 Exp Multiplier       All exp gained is multiplied by this number.
 Kills Per Lev        This adjusts how many same-level mobs a player needs to
                      kill, on average, per level. Decreasing will make the

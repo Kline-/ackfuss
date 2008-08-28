@@ -63,6 +63,8 @@ void load_sysdata( void )
 
   switch( UPPER(word[0]) )
   {
+   case 'D':
+    KEY("Damcap",       sysdata.damcap,      fread_number(fp));
    case 'E':
     if( !str_cmp(word,"End") )
     {
@@ -117,6 +119,7 @@ void save_sysdata( void )
   return;
  }
 
+ fprintf(fp, "Damcap      %d\n",     sysdata.damcap);
  fprintf(fp, "Expmult     %0.4f\n",  sysdata.expmult);
  fprintf(fp, "KillPerLev  %d\n",     sysdata.killperlev);
  fprintf(fp, "Mob_AC      %0.4f\n",  sysdata.mob_ac);
@@ -153,7 +156,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   send_to_char("Syntax for sysdata:\n\r",ch);
   send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\n\r",ch);
   send_to_char("  strings: playtesters\n\r",ch);
-  send_to_char("  options: expmult killsperlev mob[ac | dr | hp | hr | mp | mv] pulse shownumbers\n\r",ch);
+  send_to_char("  options: damcap expmult killsperlev mob[ac | dr | hp | hr | mp | mv] pulse shownumbers\n\r",ch);
   return;
  }
 
@@ -171,6 +174,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   xprintf(catbuf,"[Option         ]       [Value          ]\n\r");
   xcat(outbuf,catbuf);
   xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Damcap         ]       [%15d]\n\r",sysdata.damcap);
   xcat(outbuf,catbuf);
   xprintf(catbuf,"[Exp Multiplier ]       [%15.4f]\n\r",sysdata.expmult);
   xcat(outbuf,catbuf);
@@ -202,7 +207,9 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   return;
  }
 
- if( !str_prefix(arg1,"expmult") )
+ if( !str_prefix(arg1,"damcap") )
+  sysdata.damcap = atoi(arg2) > 0 ? atoi(arg2) : 1;
+ else if( !str_prefix(arg1,"expmult") )
   sysdata.expmult = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_prefix(arg1,"killsperlev") )
   sysdata.killperlev = atoi(arg2) > 0 ? atoi(arg2) : 1;
@@ -238,6 +245,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
 
 void init_sysdata( void )
 {
+ sysdata.damcap = 3000;
  sysdata.expmult = 1;
  sysdata.killperlev = 60;
  sysdata.mob_ac = 1;
