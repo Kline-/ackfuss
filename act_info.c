@@ -1837,9 +1837,17 @@ void do_help( CHAR_DATA * ch, char *argument )
  else if( !IS_IMMORTAL(ch) )
  {
   if( !shelp )
+  {
    send_to_char("No help on that word.\n\r",ch);
+   xprintf(buf,"Missing help: %s attempted by %s.",argument,ch->name);
+   monitor_chan(buf,MONITOR_HELPS);
+  }
   else
+  {
    send_to_char("No sHelp for that skill/spell.\n\r",ch);
+   xprintf(buf,"Missing sHelp: %s attempted by %s.",argument,ch->name);
+   monitor_chan(buf,MONITOR_HELPS);
+  }
   file_close(fp);
   return;
  }
@@ -1870,9 +1878,17 @@ void do_help( CHAR_DATA * ch, char *argument )
   if( !found )
   {
    if( !shelp )
+   {
     send_to_char("No help on that word.\n\r",ch);
+    xprintf(buf,"Missing help: %s attempted by %s.",argument,ch->name);
+    monitor_chan(buf,MONITOR_HELPS);
+   }
    else
+   {
     send_to_char("No sHelp for that skill/spell.\n\r",ch);
+    xprintf(buf,"Missing sHelp: %s attempted by %s.",argument,ch->name);
+    monitor_chan(buf,MONITOR_HELPS);
+   }
    file_close(fp);
    return;
   }
