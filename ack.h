@@ -63,6 +63,7 @@
 
 struct sysdata_type
 {
+ int damcap;
  float expmult;
  sh_int killperlev;
  float mob_ac;

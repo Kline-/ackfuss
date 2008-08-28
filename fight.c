@@ -693,18 +693,18 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
    /*
     * Stop up any residual loopholes.
     */
-/*
-   if( dam > 3000 )
+
+   if( dam > sysdata.damcap )
    {
       char buf[MAX_STRING_LENGTH];
       xprintf( buf, "Combat: %d damage by %s, attacking %s, dt %d", dam,
                IS_NPC( ch ) ? ch->short_descr : ch->name, victim->name, dt );
-      if( ch->level < 82 ) stop imms generating warnings!!
-         monitor_chan( buf, MONITOR_COMBAT );
+      if( ch->level < 82 )
+        monitor_chan( buf, MONITOR_COMBAT );
       log_f( buf );
-      dam = 3000;
+      dam = sysdata.damcap;
    }
-*/
+
    if( victim != ch )
    {
       /*

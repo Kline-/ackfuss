@@ -828,13 +828,15 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    /*
     * Stop up any residual loopholes.
     */
-   if( dam > 3000 )
+   if( dam > sysdata.damcap )
    {
       char buf[MAX_STRING_LENGTH];
       xprintf( buf, "Spell: %d damage by %s, spell %s", dam,
                ( obj == NULL ) ? ( IS_NPC( ch ) ? ch->short_descr : ch->name ) : obj->short_descr, skill_table[sn].name );
+      if( ch->level < 82 )
+       monitor_chan( buf, MONITOR_MAGIC );
       log_f( buf );
-/*    dam = 3000; */
+      dam = sysdata.damcap;
    }
 
    if( victim != ch )
