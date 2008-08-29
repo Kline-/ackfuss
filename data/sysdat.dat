@@ -1,4 +1,6 @@
+Damcap      3000
 Expmult     1.0000
+KillPerLev  60
 Mob_AC      1.0000
 Mob_DR      1.0000
 Mob_HP      1.0000

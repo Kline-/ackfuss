@@ -1444,12 +1444,12 @@ void do_score( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) )
    {
       xprintf( buf, " @@WYou have killed a total of: @@y%d @@WNPCs, and @@y%d @@WPlayers.",
-               ch->pcdata->mkills, ch->pcdata->pkills );
+               ch->pcdata->records->mk, ch->pcdata->records->pk );
       xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
       send_to_char( buf2, ch );
 
       xprintf( buf, " @@WA total of @@y%d @@WNPCs and @@y%d @@WPlayers have killed you.",
-               ch->pcdata->mkilled, ch->pcdata->pkilled );
+               ch->pcdata->records->md, ch->pcdata->records->pd );
       xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
       send_to_char( buf2, ch );
 
@@ -2943,15 +2943,7 @@ void set_title( CHAR_DATA * ch, char *title )
       return;
    }
 
-   if( isalpha( title[0] ) || isdigit( title[0] ) )
-   {
-      buf[0] = ' ';
-      strcpy( buf + 1, title );
-   }
-   else
-   {
-      strcpy( buf, title );
-   }
+   strcpy( buf, title );
 
    free_string( ch->pcdata->title );
    ch->pcdata->title = str_dup( buf );
@@ -5652,10 +5644,10 @@ void do_whois( CHAR_DATA * ch, char *argument )
    if( IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
       xprintf( buf + strlen( buf ), "Player is @@ePKOK@@N\n\r" );
    xprintf( buf + strlen( buf ), "Players Killed: %d.  Times killed by players: %d.\n\r",
-            victim->pcdata->pkills, victim->pcdata->pkilled );
+            victim->pcdata->records->pk, victim->pcdata->records->pd );
 
    xprintf( buf + strlen( buf ), "Mobs killed: %d.  Times killed by mobs: %d.\n\r",
-            victim->pcdata->mkills, victim->pcdata->mkilled );
+            victim->pcdata->records->mk, victim->pcdata->records->md );
 
    if( IS_IMMORTAL( victim ) )
    {

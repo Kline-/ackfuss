@@ -238,6 +238,10 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    int cnt;
    int sn;
    int foo;
+   char time_buf[MSL];
+
+   xprintf(time_buf,ctime(&current_time)); /* ctime adding a newline annoyed me --Kline */
+   time_buf[strlen(time_buf)-1] = '\0';
 
    /*
     * Really cool fix for m/c prob.. *laugh* 
@@ -248,127 +252,133 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    fprintf( fp, "#%s\n", IS_NPC( ch ) ? "MOB" : "PLAYER" );
 
-   fprintf( fp, "Revision     %d\n", SAVE_REVISION );
-   fprintf( fp, "Name         %s~\n", ch->name );
-   fprintf( fp, "ShortDescr   %s~\n", ch->short_descr );
-   fprintf( fp, "LongDescr    %s~\n", ch->long_descr_orig );
-   fprintf( fp, "Description  %s~\n", ch->description );
-   fprintf( fp, "Prompt       %s~\n", ch->prompt );
-   fprintf( fp, "Sex          %d\n", ch->sex );
-   fprintf( fp, "LoginSex     %d\n", ch->login_sex );
-   fprintf( fp, "Class        %d\n", ch->class );
-   fprintf( fp, "Race         %d\n", ch->race );
-   fprintf( fp, "Level        %d\n", ch->level );
-   fprintf( fp, "Sentence     %d\n", ch->sentence );
-   fprintf( fp, "Invis        %d\n", ch->invis );
-   fprintf( fp, "Incog		 %d\n", ch->incog );
+   fprintf( fp, "Revision       %d\n", SAVE_REVISION );
+   fprintf( fp, "Name           %s~\n", ch->name );
+   fprintf( fp, "ShortDescr     %s~\n", ch->short_descr );
+   fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig );
+   fprintf( fp, "Description    %s~\n", ch->description );
+   fprintf( fp, "Prompt         %s~\n", ch->prompt );
+   fprintf( fp, "Sex            %d\n", ch->sex );
+   fprintf( fp, "LoginSex       %d\n", ch->login_sex );
+   fprintf( fp, "Class          %d\n", ch->class );
+   fprintf( fp, "Race           %d\n", ch->race );
+   fprintf( fp, "Level          %d\n", ch->level );
+   fprintf( fp, "Sentence       %d\n", ch->sentence );
+   fprintf( fp, "Invis          %d\n", ch->invis );
+   fprintf( fp, "Incog          %d\n", ch->incog );
 
-   fprintf( fp, "m/c          " );
+   fprintf( fp, "m/c            " );
    for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       fprintf( fp, "%2d ", ch->lvl[cnt] );
    fprintf( fp, "\n" );
 
-   fprintf( fp, "Remort       " );
+   fprintf( fp, "Remort         " );
    for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       fprintf( fp, "%2d ", ch->lvl2[cnt] );
    fprintf( fp, "\n" );
-   fprintf( fp, "Adeptlevel   " );
-   fprintf( fp, "%2d\n", ch->adept_level );
 
-
-   fprintf( fp, "Trust        %d\n", ch->trust );
-   fprintf( fp, "Wizbit       %d\n", ch->wizbit );
-   fprintf( fp, "Played       %d\n", ch->played + ( int )( current_time - ch->logon ) );
-   fprintf( fp, "Note         %ld\n", ch->last_note );
-   fprintf( fp, "Room         %d\n",
+   fprintf( fp, "Adeptlevel     %d\n", ch->adept_level );
+   fprintf( fp, "Trust          %d\n", ch->trust );
+   fprintf( fp, "Wizbit         %d\n", ch->wizbit );
+   fprintf( fp, "Played         %d\n", ch->played + ( int )( current_time - ch->logon ) );
+   fprintf( fp, "Note           %ld\n", ch->last_note );
+   fprintf( fp, "Room           %d\n",
             ( ch->in_room == get_room_index( ROOM_VNUM_LIMBO )
               && ch->was_in_room != NULL ) ? ch->was_in_room->vnum : ch->in_room->vnum );
 
-   fprintf( fp, "HpManaMove   %d %d %d %d %d %d\n", ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move );
+   fprintf( fp, "HpManaMove     %d %d %d %d %d %d\n", ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move );
 
-
-   fprintf( fp, "Money %d ", MAX_CURRENCY );
+   fprintf( fp, "Money          %d ", MAX_CURRENCY );
    for( foo = 0; foo < MAX_CURRENCY; foo++ )
       fprintf( fp, "%d ", ch->money->cash_unit[foo] );
-   fprintf( fp, "%s", "\n" );
-   fprintf( fp, "BankMoney %d ", MAX_CURRENCY );
+   fprintf( fp, "\n" );
+
+   fprintf( fp, "BankMoney      %d ", MAX_CURRENCY );
    for( foo = 0; foo < MAX_CURRENCY; foo++ )
       fprintf( fp, "%d ", ch->bank_money->cash_unit[foo] );
-   fprintf( fp, "%s", "\n" );
-   fprintf( fp, "Exp          %d\n", ch->exp );
-   fprintf( fp, "Act          %d\n", ch->act );
-   fprintf( fp, "Config       %d\n", ch->config );
-   fprintf( fp, "AffectedBy   %d\n", ch->affected_by );
+   fprintf( fp, "\n" );
+
+   fprintf( fp, "Exp            %d\n", ch->exp );
+   fprintf( fp, "Act            %d\n", ch->act );
+   fprintf( fp, "Config         %d\n", ch->config );
+   fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
    /*
     * Bug fix from Alander 
     */
-   fprintf( fp, "Position     %d\n", ch->position == POS_FIGHTING ? POS_STANDING : ch->position );
+   fprintf( fp, "Position       %d\n", ch->position == POS_FIGHTING ? POS_STANDING : ch->position );
 
-   fprintf( fp, "Practice     %d\n", ch->practice );
-   fprintf( fp, "SavingThrow  %d\n", ch->saving_throw );
-   fprintf( fp, "Alignment    %d\n", ch->alignment );
-   fprintf( fp, "Hitroll      %d\n", ch->hitroll );
-   fprintf( fp, "Damroll      %d\n", ch->damroll );
-   fprintf( fp, "Armor        %d\n", ch->armor );
-   fprintf( fp, "Wimpy        %d\n", ch->wimpy );
-   fprintf( fp, "Deaf         %d\n", ch->deaf );
+   fprintf( fp, "Practice       %d\n", ch->practice );
+   fprintf( fp, "SavingThrow    %d\n", ch->saving_throw );
+   fprintf( fp, "Alignment      %d\n", ch->alignment );
+   fprintf( fp, "Hitroll        %d\n", ch->hitroll );
+   fprintf( fp, "Damroll        %d\n", ch->damroll );
+   fprintf( fp, "Armor          %d\n", ch->armor );
+   fprintf( fp, "Wimpy          %d\n", ch->wimpy );
+   fprintf( fp, "Deaf           %d\n", ch->deaf );
 
    if( IS_NPC( ch ) )
    {
-      fprintf( fp, "Vnum         %d\n", ch->pIndexData->vnum );
+      fprintf( fp, "Vnum           %d\n", ch->pIndexData->vnum );
    }
    else
    {
-      fprintf( fp, "Clan         %d\n", ch->pcdata->clan );
-      fprintf( fp, "Order        %d %d %d %d %d\n",
+      fprintf( fp, "Clan           %d\n", ch->pcdata->clan );
+      fprintf( fp, "Order          %d %d %d %d %d\n",
                ch->pcdata->order[0], ch->pcdata->order[1], ch->pcdata->order[2],
                ch->pcdata->order[3], ch->pcdata->order[4] );
-
-      fprintf( fp, "Mkills	   %d\n", ch->pcdata->mkills );
-      fprintf( fp, "Mkilled	   %d\n", ch->pcdata->mkilled );
-      fprintf( fp, "Pkills	   %d\n", ch->pcdata->pkills );
-      fprintf( fp, "Pkilled	   %d\n", ch->pcdata->pkilled );
-
-      fprintf( fp, "Password     %s~\n", ch->pcdata->pwd );
-      fprintf( fp, "LoadMsg      %s~\n", ch->pcdata->load_msg );
-      fprintf( fp, "Bamfin       %s~\n", ch->pcdata->bamfin );
-      fprintf( fp, "Bamfout      %s~\n", ch->pcdata->bamfout );
-      fprintf( fp, "Roomenter    %s~\n", ch->pcdata->room_enter );
-      fprintf( fp, "Roomexit     %s~\n", ch->pcdata->room_exit );
-      fprintf( fp, "Title        %s~\n", ch->pcdata->title );
+      fprintf( fp, "Password       %s~\n", ch->pcdata->pwd );
+      fprintf( fp, "LoadMsg        %s~\n", ch->pcdata->load_msg );
+      fprintf( fp, "Bamfin         %s~\n", ch->pcdata->bamfin );
+      fprintf( fp, "Bamfout        %s~\n", ch->pcdata->bamfout );
+      fprintf( fp, "Roomenter      %s~\n", ch->pcdata->room_enter );
+      fprintf( fp, "Roomexit       %s~\n", ch->pcdata->room_exit );
+      fprintf( fp, "Title          %s~\n", ch->pcdata->title );
       /*
        * We add a '*' to preserve leading spaces... strip * on load 
        */
-      fprintf( fp, "Whoname      W%s~\n", ch->pcdata->who_name );
-      fprintf( fp, "Monitor	   %d\n", ch->pcdata->monitor );
-      fprintf( fp, "Host         %s~\n", ch->pcdata->host );
-      fprintf( fp, "Failures     %d\n", ch->pcdata->failures );
-      fprintf( fp, "LastLogin    %s~\n", ( char * )ctime( &current_time ) );
-      fprintf( fp, "HiCol	   %c~\n", ch->pcdata->hicol );
-      fprintf( fp, "DimCol	   %c~\n", ch->pcdata->dimcol );
-      fprintf( fp, "TermRows    %i\n", ch->pcdata->term_rows );
+      fprintf( fp, "Whoname        *%s~\n", ch->pcdata->who_name );
+      fprintf( fp, "Monitor        %d\n", ch->pcdata->monitor );
+      fprintf( fp, "Host           %s~\n", ch->pcdata->host );
+      fprintf( fp, "Failures       %d\n", ch->pcdata->failures );
+      fprintf( fp, "LastLogin      %s~\n", time_buf );
+      fprintf( fp, "HiCol          %c~\n", ch->pcdata->hicol );
+      fprintf( fp, "DimCol         %c~\n", ch->pcdata->dimcol );
+      fprintf( fp, "TermRows       %i\n", ch->pcdata->term_rows );
       fprintf( fp, "TermColumns    %i\n", ch->pcdata->term_columns );
-      fprintf( fp, "Email   %s~\n", ch->pcdata->email_address );
-      fprintf( fp, "EmailValid    %i\n", ch->pcdata->valid_email );
-      fprintf( fp, "AssistMsg     %s~\n", ch->pcdata->assist_msg );
+      fprintf( fp, "Email          %s~\n", ch->pcdata->email_address );
+      fprintf( fp, "EmailValid     %i\n", ch->pcdata->valid_email );
+      fprintf( fp, "AssistMsg      %s~\n", ch->pcdata->assist_msg );
+
       for( cnt = 0; cnt < MAX_ALIASES; cnt++ )
       {
-         fprintf( fp, "Alias_Name%d %s~\n", cnt, ch->pcdata->alias_name[cnt] );
-         fprintf( fp, "Alias%d      %s~\n", cnt, ch->pcdata->alias[cnt] );
+         fprintf( fp, "Alias_Name%d    %s~\n", cnt, ch->pcdata->alias_name[cnt] );
+         fprintf( fp, "Alias%d         %s~\n", cnt, ch->pcdata->alias[cnt] );
       }
 
-      fprintf( fp, "colors\n" );
+      fprintf( fp, "Colors         " );
       for( foo = 0; foo < MAX_COLOR; foo++ )
-         fprintf( fp, "%d\n", ch->pcdata->color[foo] );
+         fprintf( fp, "%d ", ch->pcdata->color[foo] );
+      fprintf( fp, "\n" );
 
-      fprintf( fp, "AttrPerm     %d %d %d %d %d\n",
+      fprintf( fp, "AttrPerm       %d %d %d %d %d\n",
                ch->pcdata->perm_str,
                ch->pcdata->perm_int, ch->pcdata->perm_wis, ch->pcdata->perm_dex, ch->pcdata->perm_con );
 
-      fprintf( fp, "AttrMod      %d %d %d %d %d\n", 0, 0, 0, 0, 0 );
-
-      fprintf( fp, "AttrMax      %d %d %d %d %d\n",
+      fprintf( fp, "AttrMax        %d %d %d %d %d\n",
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
+
+      fprintf( fp, "RecCrusade     %d\n", ch->pcdata->records->crusade );
+      fprintf( fp, "RecMdamAmt     %d\n", ch->pcdata->records->mdam_amt );
+      fprintf( fp, "RecMdamGsn     %d\n", ch->pcdata->records->mdam_gsn );
+      fprintf( fp, "RecPdamAmt     %d\n", ch->pcdata->records->pdam_amt );
+      fprintf( fp, "RecPdamGsn     %d\n", ch->pcdata->records->pdam_gsn );
+      fprintf( fp, "RecPD          %d\n", ch->pcdata->records->pd );
+      fprintf( fp, "RecPK          %d\n", ch->pcdata->records->pk );
+      fprintf( fp, "RecMD          %d\n", ch->pcdata->records->md );
+      fprintf( fp, "RecMK          %d\n", ch->pcdata->records->mk );
+      fprintf( fp, "RecMquest      %d\n", ch->pcdata->records->mquest );
+      fprintf( fp, "RecQP          %d\n", ch->pcdata->records->qp );
+      fprintf( fp, "RecQpTot       %d\n", ch->pcdata->records->qp_tot );
 
       fprintf( fp, "SupBloodline   %d\n", ch->pcdata->super->bloodline );
       fprintf( fp, "SupEnergy      %d\n", ch->pcdata->super->energy );
@@ -379,27 +389,22 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "SupPracs       %d\n", ch->pcdata->super->pracs );
       fprintf( fp, "SupSkillLearn  %d\n", ch->pcdata->super->skills_learned );
       fprintf( fp, "SupSkillMax    %d\n", ch->pcdata->super->skills_max );
-      fprintf( fp, "Questpoints   %d\n", ch->pcdata->quest_points );
-      fprintf( fp, "RecallVnum    %d\n", ch->pcdata->recall_vnum );
-      fprintf( fp, "GainMana      %d\n", ch->pcdata->mana_from_gain );
-      fprintf( fp, "GainHp        %d\n", ch->pcdata->hp_from_gain );
-      fprintf( fp, "GainMove      %d\n", ch->pcdata->move_from_gain );
-      fprintf( fp, "RulerRank    %d\n", ch->pcdata->ruler_rank );
 
-
-
-
-
-      fprintf( fp, "Condition    %d %d %d\n", ch->pcdata->condition[0], ch->pcdata->condition[1], ch->pcdata->condition[2] );
-
-      fprintf( fp, "Pagelen      %d\n", ch->pcdata->pagelen );
-      fprintf( fp, "Pflags       %d\n", ch->pcdata->pflags );
+      fprintf( fp, "Questpoints    %d\n", ch->pcdata->quest_points );
+      fprintf( fp, "RecallVnum     %d\n", ch->pcdata->recall_vnum );
+      fprintf( fp, "GainMana       %d\n", ch->pcdata->mana_from_gain );
+      fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
+      fprintf( fp, "GainMove       %d\n", ch->pcdata->move_from_gain );
+      fprintf( fp, "RulerRank      %d\n", ch->pcdata->ruler_rank );
+      fprintf( fp, "Condition      %d %d %d\n", ch->pcdata->condition[0], ch->pcdata->condition[1], ch->pcdata->condition[2] );
+      fprintf( fp, "Pagelen        %d\n", ch->pcdata->pagelen );
+      fprintf( fp, "Pflags         %d\n", ch->pcdata->pflags );
 
       for( sn = 0; sn < MAX_SKILL; sn++ )
       {
          if( skill_table[sn].name != NULL && ch->pcdata->learned[sn] > 0 )
          {
-            fprintf( fp, "Skill        %d '%s'\n", ch->pcdata->learned[sn], skill_table[sn].name );
+            fprintf( fp, "Skill          %d '%s'\n", ch->pcdata->learned[sn], skill_table[sn].name );
          }
       }
    }
@@ -550,6 +555,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 {
    int cnt;
    static PC_DATA pcdata_zero;
+   static RECORD_DATA record_zero;
    static SUPER_DATA super_zero;
    char strsave[MAX_INPUT_LENGTH];
    char tempstrsave[MAX_INPUT_LENGTH];
@@ -603,6 +609,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    {
       GET_FREE( ch->pcdata, pcd_free );
       *ch->pcdata = pcdata_zero;
+      GET_FREE( ch->pcdata->records, record_free );
+      *ch->pcdata->records = record_zero;
       GET_FREE( ch->pcdata->super, super_free );
       *ch->pcdata->super = super_zero;
 
@@ -623,14 +631,22 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->perm_wis = 13;
       ch->pcdata->perm_dex = 13;
       ch->pcdata->perm_con = 13;
+      ch->pcdata->records->crusade = 0;
+      ch->pcdata->records->mdam_amt = 0;
+      ch->pcdata->records->mdam_gsn = 0;
+      ch->pcdata->records->pdam_amt = 0;
+      ch->pcdata->records->pdam_gsn = 0;
+      ch->pcdata->records->pd = 0;
+      ch->pcdata->records->pk = 0;
+      ch->pcdata->records->md = 0;
+      ch->pcdata->records->mk = 0;
+      ch->pcdata->records->mquest = 0;
+      ch->pcdata->records->qp = 0;
+      ch->pcdata->records->qp_tot = 0;
       ch->pcdata->super->energy = 24;
       ch->pcdata->condition[COND_THIRST] = 48;
       ch->pcdata->pagelen = 20;
       ch->pcdata->condition[COND_FULL] = 48;
-      ch->pcdata->pkills = 0;
-      ch->pcdata->pkilled = 0;
-      ch->pcdata->mkills = 0;
-      ch->pcdata->mkilled = 0;
       ch->pcdata->pflags = 0;
       ch->pcdata->recall_vnum = 3001;
       ch->pcdata->mana_from_gain = -1;
@@ -859,7 +875,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 
 void fread_char( CHAR_DATA * ch, FILE * fp )
 {
-   char buf[MAX_STRING_LENGTH];
    char *word;
    bool fMatch;
    int cnt;
@@ -949,17 +964,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
             if( !IS_NPC( ch ) )
             {
-               if( !str_cmp( word, "AttrMod" ) )
-               {
-                  ch->pcdata->mod_str = fread_number( fp );
-                  ch->pcdata->mod_int = fread_number( fp );
-                  ch->pcdata->mod_wis = fread_number( fp );
-                  ch->pcdata->mod_dex = fread_number( fp );
-                  ch->pcdata->mod_con = fread_number( fp );
-                  fMatch = TRUE;
-                  break;
-               }
-
                if( !str_cmp( word, "AttrMax" ) )
                {
                   ch->pcdata->max_str = fread_number( fp );
@@ -1025,7 +1029,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             }
             KEY( "Class", ch->class, fread_number( fp ) );
             KEY( "Config", ch->config, fread_number( fp ) );
-            if( !str_cmp( word, "colors" ) && !IS_NPC( ch ) )
+            if( !str_cmp( word, "Colors" ) && !IS_NPC( ch ) )
             {
                int foo;
                for( foo = 0; foo < MAX_COLOR; foo++ )
@@ -1159,8 +1163,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'M':
             if( !IS_NPC( ch ) )
             {
-               KEY( "Mkills", ch->pcdata->mkills, fread_number( fp ) );
-               KEY( "Mkilled", ch->pcdata->mkilled, fread_number( fp ) );
                KEY( "Monitor", ch->pcdata->monitor, fread_number( fp ) );
             }
             if( !str_cmp( word, "Money" ) )
@@ -1226,8 +1228,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                KEY( "Pagelen", ch->pcdata->pagelen, fread_number( fp ) );
                SKEY( "Password", ch->pcdata->pwd, fread_string( fp ) );
-               KEY( "Pkills", ch->pcdata->pkills, fread_number( fp ) );
-               KEY( "Pkilled", ch->pcdata->pkilled, fread_number( fp ) );
                KEY( "Pflags", ch->pcdata->pflags, fread_number( fp ) );
             }
             KEY( "Played", ch->played, fread_number( fp ) );
@@ -1242,6 +1242,18 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
          case 'R':
             KEY( "Race", ch->race, fread_number( fp ) );
+            KEY( "RecCrusade", ch->pcdata->records->crusade, fread_number( fp ) );
+            KEY( "RecMdamAmt", ch->pcdata->records->mdam_amt, fread_number( fp ) );
+            KEY( "RecMdamGsn", ch->pcdata->records->mdam_gsn, fread_number( fp ) );
+            KEY( "RecPdamAmt", ch->pcdata->records->pdam_amt, fread_number( fp ) );
+            KEY( "RecPdamAmt", ch->pcdata->records->pdam_gsn, fread_number( fp ) );
+            KEY( "RecPD", ch->pcdata->records->pd, fread_number( fp ) );
+            KEY( "RecPK", ch->pcdata->records->pk, fread_number( fp ) );
+            KEY( "RecMD", ch->pcdata->records->md, fread_number( fp ) );
+            KEY( "RecMK", ch->pcdata->records->mk, fread_number( fp ) );
+            KEY( "RecMquest", ch->pcdata->records->mquest, fread_number( fp ) );
+            KEY( "RecQP", ch->pcdata->records->qp, fread_number( fp ) );
+            KEY( "RecQpTot", ch->pcdata->records->qp_tot, fread_number( fp ) );
             KEY( "Revision", cur_revision, fread_number( fp ) );
             SKEY( "Roomenter", ch->pcdata->room_enter, fread_string( fp ) );
             SKEY( "Roomexit", ch->pcdata->room_exit, fread_string( fp ) );
@@ -1309,20 +1321,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "Trust", ch->trust, fread_number( fp ) );
             KEY( "TermRows", ch->pcdata->term_rows, fread_number( fp ) );
             KEY( "TermColumns", ch->pcdata->term_columns, fread_number( fp ) );
-            if( !str_cmp( word, "Title" ) && !IS_NPC( ch ) )
-            {
-               if( ch->pcdata->title != NULL )
-                  free_string( ch->pcdata->title );
-               ch->pcdata->title = fread_string( fp );
-               if( isalpha( ch->pcdata->title[0] ) || isdigit( ch->pcdata->title[0] ) )
-               {
-                  xprintf( buf, " %s", ch->pcdata->title );
-                  free_string( ch->pcdata->title );
-                  ch->pcdata->title = str_dup( buf );
-               }
-               fMatch = TRUE;
-               break;
-            }
+            SKEY( "Title", ch->pcdata->title, fread_string( fp ) );
 
             break;
 
@@ -1340,6 +1339,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "Wizbit", ch->wizbit, fread_number( fp ) );
             if( !str_cmp( word, "Whoname" ) )
             {
+               char buf[MSL];
+
                if( ch->pcdata->who_name != NULL )
                   free_string( ch->pcdata->who_name );
                ch->pcdata->who_name = fread_string( fp );

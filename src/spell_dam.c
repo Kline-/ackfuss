@@ -974,17 +974,17 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       if( !IS_NPC( ch ) )
       {
          if( !IS_NPC( victim ) )
-            ch->pcdata->pkills++;
+            ch->pcdata->records->pk++;
          else
-            ch->pcdata->mkills++;
+            ch->pcdata->records->mk++;
       }
 
       if( !IS_NPC( victim ) )
       {
          if( !IS_NPC( ch ) )
-            victim->pcdata->pkilled++;
+            victim->pcdata->records->pd++;
          else
-            victim->pcdata->mkilled++;
+            victim->pcdata->records->md++;
       }
 
       if( !IS_NPC( victim ) || IS_SET( victim->act, ACT_INTELLIGENT ) )
