@@ -118,7 +118,7 @@ static long dump( void )
    BufEntry *p;
    long count = 0;
 
-   dumpf = file_open( "../reports/leaks.dmp", "w" );
+   dumpf = file_open( "../report/leaks.dmp", "w" );
 
    for( p = ssm_buf_head; p; p = p->next )
    {

@@ -1215,11 +1215,6 @@ void weather_update( void )
 void gain_update( void )
 {
    CHAR_DATA *ch;
-
-/* send wholist to web page :) Zen  !-!-! ONLY RUN THIS ON ONE PORT OF YOUR SERVER !-! */
-#if defined(SOE) && !defined(SOETEST) && !defined(SOEBLD)
-   list_who_to_output(  );
-#endif
 /* Update super_councils info  */
 
    {

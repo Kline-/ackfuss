@@ -111,12 +111,14 @@ void build_save_area_list( void )
 {
    AREA_DATA *pArea;
    FILE *fpArea;
+   char buf[MSL];
 
-   fpArea = file_open( "area.lst.new", "w" );
+   fpArea = file_open( AREA_LIST, "w" );
 
    if( fpArea == NULL )
    {
-      bug( "Could not open area.lst.new for saving.", 0 );
+      bug( "Could not open new AREA_LIST for saving.", 0 );
+      file_close( fpArea );
       return;
    }
 
@@ -132,8 +134,10 @@ void build_save_area_list( void )
    /*
     * Save backup 
     */
-   rename( "area.lst", "area.lst.old" );
-   rename( "area.lst.new", "area.lst" );
+   xprintf( buf, "%s.old", AREA_LIST );
+   rename( AREA_LIST, buf );
+   xprintf( buf, "%s.new", AREA_LIST );
+   rename( buf, AREA_LIST );
 }
 
 void build_save_area_gold( void )
