@@ -825,20 +825,6 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    dam *= dam_modifier;
    dam += number_range((dam * -0.10),(dam * 0.10)); /* Lets add a little randomness to things. --Kline */
 
-   /*
-    * Stop up any residual loopholes.
-    */
-   if( dam > sysdata.damcap )
-   {
-      char buf[MAX_STRING_LENGTH];
-      xprintf( buf, "Spell: %d damage by %s, spell %s", dam,
-               ( obj == NULL ) ? ( IS_NPC( ch ) ? ch->short_descr : ch->name ) : obj->short_descr, skill_table[sn].name );
-      if( ch->level < 82 )
-       monitor_chan( buf, MONITOR_MAGIC );
-      log_f( buf );
-      dam = sysdata.damcap;
-   }
-
    if( victim != ch )
    {
       /*
@@ -902,6 +888,21 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       if( dam < 0 )
          dam = 0;
 
+     /*
+      * Stop up any residual loopholes.
+      */
+     if( dam > sysdata.damcap )
+     {
+        char buf[MAX_STRING_LENGTH];
+        xprintf( buf, "Spell: %d damage by %s, spell %s", dam,
+                 ( obj == NULL ) ? ( IS_NPC( ch ) ? ch->short_descr : ch->name ) : obj->short_descr, skill_table[sn].name );
+        if( ch->level < 82 )
+         monitor_chan( buf, MONITOR_MAGIC );
+        log_f( buf );
+        dam = sysdata.damcap;
+     }
+
+
       if( ( show_msg ) && ( dam >= 0 ) )
          sp_dam_message( obj, ch, victim, dam, type, sn );
 
@@ -912,6 +913,17 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
     * Inform the victim of his new state.
     */
    victim->hit -= dam;
+
+   if( !IS_NPC(ch) )
+   {
+    if( dam > ch->pcdata->records->mdam_amt )
+    {
+     send_to_char("@@yYou've broken your magical damage record!@@N\n\r",ch);
+     ch->pcdata->records->mdam_amt = dam;
+     ch->pcdata->records->mdam_gsn = sn;
+    }
+   }
+
    if( !IS_NPC( victim ) )
       check_adrenaline( victim, dam );
 

@@ -1246,7 +1246,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "RecMdamAmt", ch->pcdata->records->mdam_amt, fread_number( fp ) );
             KEY( "RecMdamGsn", ch->pcdata->records->mdam_gsn, fread_number( fp ) );
             KEY( "RecPdamAmt", ch->pcdata->records->pdam_amt, fread_number( fp ) );
-            KEY( "RecPdamAmt", ch->pcdata->records->pdam_gsn, fread_number( fp ) );
+            KEY( "RecPdamGsn", ch->pcdata->records->pdam_gsn, fread_number( fp ) );
             KEY( "RecPD", ch->pcdata->records->pd, fread_number( fp ) );
             KEY( "RecPK", ch->pcdata->records->pk, fread_number( fp ) );
             KEY( "RecMD", ch->pcdata->records->md, fread_number( fp ) );

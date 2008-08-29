@@ -1592,7 +1592,31 @@ void do_score( CHAR_DATA * ch, char *argument )
    xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
    send_to_char( buf, ch );
 
+   if( !IS_NPC(ch) )
+   {
+    xprintf( buf, "%s", "" );
+    xprintf( buf2, "@@c|%s @@c|\n\r", center_text( buf, 62 ) );
+    send_to_char( buf2, ch );
 
+    xprintf( buf2, " @@WPersonal Records" );
+    xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+    send_to_char( buf, ch );
+
+    if( sysdata.shownumbers )
+    {
+     xprintf( buf2, "@@WMDam: @@y%-4d @@W(@@y%-14s@@W)  PDam: @@y%-4d @@W(@@y%-14s@@W)",
+      ch->pcdata->records->mdam_amt, ch->pcdata->records->mdam_gsn > 0 ? skill_table[ch->pcdata->records->mdam_gsn].name : "none",
+      ch->pcdata->records->pdam_amt, ch->pcdata->records->pdam_gsn > 0 ? ch->pcdata->records->pdam_gsn >= TYPE_HIT ? "auto attack" : skill_table[ch->pcdata->records->pdam_gsn].name : "none" );
+     xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+     send_to_char( buf, ch );
+    }
+
+    xprintf( buf2, "@@WCrusades: @@y%-4d  @@WQP: @@y%-4d  @@WTotal QP: @@y%-5d",
+     ch->pcdata->records->crusade, ch->pcdata->records->qp, ch->pcdata->records->qp_tot );
+    xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+    send_to_char( buf, ch );
+
+   }
 
    xprintf( buf, "+===============================================================+@@g\n\r" );
    send_to_char( buf, ch );
@@ -2988,7 +3012,7 @@ void do_title( CHAR_DATA * ch, char *argument )
    /*
     * my_strlen handles color codes as zero length 
     */
-   if( my_strlen( argument ) > 29 )
+   if( my_strlen( argument ) > 32 )
    {
       send_to_char( "Title too long.  Please try again.\n\r", ch );
       return;

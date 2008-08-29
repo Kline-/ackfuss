@@ -65,7 +65,7 @@ void disarm args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
 void trip args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void check_adrenaline args( ( CHAR_DATA * ch, sh_int damage ) );
 void obj_damage args( ( OBJ_DATA * obj, CHAR_DATA * victim, int dam ) );
-
+int combat_damcap args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt ) );
 
 /*
  * Control the fights going on.
@@ -681,28 +681,17 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
 {
    OBJ_DATA *sil_weapon;
    int sn;
+   int tmp_dt;
 
+   tmp_dt = dt;
 
-/*   char buf[MAX_STRING_LENGTH];   this is unused now -- uni */
+   if( dt == gsn_circle || dt == gsn_backstab || gsn_charge ) /* Ugly workarounds for records and dam management --Kline */
+    dt = -1;
 
    if( victim->is_free == TRUE )
    {
       bug( "Freed victim in one_hit", 0 );
       return;
-   }
-   /*
-    * Stop up any residual loopholes.
-    */
-
-   if( dam > sysdata.damcap )
-   {
-      char buf[MAX_STRING_LENGTH];
-      xprintf( buf, "Combat: %d damage by %s, attacking %s, dt %d", dam,
-               IS_NPC( ch ) ? ch->short_descr : ch->name, victim->name, dt );
-      if( ch->level < 82 )
-        monitor_chan( buf, MONITOR_COMBAT );
-      log_f( buf );
-      dam = sysdata.damcap;
    }
 
    if( victim != ch )
@@ -795,7 +784,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
             return;
       }
 
-   if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_CRUSHING) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_crushing_blow]) )
+   if( ((IS_NPC(ch) && IS_SET(ch->skills,MOB_CRUSHING) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_crushing_blow])) && dt != -1 )
    {
     if( (IS_NPC(ch) && number_percent() < 9) || (!IS_NPC(ch) && (number_range(85,300) - ch->pcdata->learned[gsn_crushing_blow]) < 10) )
     {
@@ -805,6 +794,9 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
      dam *= 2.5;
     }
    }
+
+   dam = combat_damcap(ch,victim,dam,dt);
+
       if( dt != -1 )
          dam_message( ch, victim, dam, dt );
    }
@@ -853,6 +845,17 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
     * Inform the victim of his new state.
     */
    victim->hit -= dam;
+
+   if( !IS_NPC(ch) )
+   {
+    if( dam > ch->pcdata->records->pdam_amt )
+    {
+     send_to_char("@@yYou've broken your physical damage record!@@N\n\r",ch);
+     ch->pcdata->records->pdam_amt = dam;
+     ch->pcdata->records->pdam_gsn = tmp_dt;
+    }
+   }
+
    if( !IS_NPC( victim ) )
       check_adrenaline( victim, dam );
 
@@ -3149,6 +3152,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
    int mult;
    int chance;
    int dam;
+   bool crack = FALSE;
 
 
     /******************************************************************
@@ -3283,11 +3287,20 @@ void do_backstab( CHAR_DATA * ch, char *argument )
    }
    else
    {
+     /*
+      * HIT!
+      */
+
+      if( !IS_NPC( ch ) && ch->pcdata->order[0] == 2 && number_percent( ) == chance )
+      {
+       crack = TRUE;
+       dam *= 2;
+      }
+
+      dam = combat_damcap(ch,victim,dam,gsn_backstab);
+
       if( sysdata.shownumbers == TRUE )
       {
-         /*
-          * HIT! 
-          */
          char actbuf[MSL];
          xprintf( actbuf, "$n places $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, obj, victim, TO_NOTVICT );
@@ -3302,14 +3315,10 @@ void do_backstab( CHAR_DATA * ch, char *argument )
          act( "You place $p into the back of $N!!", ch, obj, victim, TO_CHAR );
          act( "$N places $p into your back.  OUCH!", victim, obj, ch, TO_CHAR );
       }
-      if( !IS_NPC( ch ) && ch->pcdata->order[0] == 2 && number_percent(  ) == chance )
-
-      {
+      if( crack )
          send_to_room( "You hear a large CRACK!\n\r", ch->in_room );
-         dam *= 2;
-      }
 
-      damage( ch, victim, dam, -1 );
+      damage( ch, victim, dam, gsn_backstab );
    }
 
    WAIT_STATE( ch, skill_table[gsn_backstab].beats );
@@ -3634,6 +3643,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
    int mult;
    int chance;
    int dam;
+   bool crack = FALSE;
 
 
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
@@ -3776,11 +3786,16 @@ void do_circle( CHAR_DATA * ch, char *argument )
        * HIT! 
        */
 
+      if( !IS_NPC( ch ) && ch->pcdata->order[0] == 2 && number_percent(  ) == chance )
+      {
+       crack = TRUE;
+       dam *= 2;
+      }
+
+      dam = combat_damcap(ch,victim,dam,gsn_circle);
+
       if( sysdata.shownumbers == TRUE )
       {
-         /*
-          * HIT! 
-          */
          char actbuf[MSL];
          xprintf( actbuf, "$n places $p into the back of $N!! @@l(@@W%d@@l)@@N", dam );
          act( actbuf, ch, obj, victim, TO_NOTVICT );
@@ -3796,14 +3811,10 @@ void do_circle( CHAR_DATA * ch, char *argument )
          act( "$N places $p into your back.  OUCH!", victim, obj, ch, TO_CHAR );
       }
 
-      if( !IS_NPC( ch ) && ch->pcdata->order[0] == 2 && number_percent(  ) == chance )
-
-      {
+      if( crack )
          send_to_room( "You hear a large CRACK!\n\r", ch->in_room );
-         dam *= 2;
-      }
 
-      damage( ch, victim, dam, -1 );
+      damage( ch, victim, dam, gsn_circle );
    }
 
    WAIT_STATE( ch, skill_table[gsn_circle].beats );
@@ -4402,6 +4413,8 @@ void do_charge( CHAR_DATA * ch, char *argument )
        * HIT 
        */
 
+      dam = combat_damcap(ch,victim,dam,gsn_charge);
+
       if( sysdata.shownumbers == TRUE )
       {
          /*
@@ -4422,7 +4435,7 @@ void do_charge( CHAR_DATA * ch, char *argument )
          act( "@@aYou charge right into $N@@a, and knock him over!@@N", ch, NULL, victim, TO_CHAR );
       }
 
-      damage( ch, victim, dam, -1 );
+      damage( ch, victim, dam, gsn_charge );
    }
    else
    {
@@ -5795,4 +5808,23 @@ void combat_update( void )
    }
   }
  }
+}
+
+int combat_damcap( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
+{
+ char buf[MSL];
+
+ if( dam > sysdata.damcap )
+ {
+  xprintf( buf, "Combat: %d damage by %s, attacking %s, dt %d", dam,
+               IS_NPC( ch ) ? ch->short_descr : ch->name, victim->name, dt );
+  if( ch->level < 82 )
+  {
+   monitor_chan( buf, MONITOR_COMBAT );
+   log_f( buf );
+  }
+  dam = sysdata.damcap;
+ }
+
+ return dam;
 }
