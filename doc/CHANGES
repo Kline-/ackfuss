@@ -1,3 +1,26 @@
+4.3.7 - 29 Aug 08:
+ Removed lots of unused code.
+ Added 'color' support for all regular channels.
+ Renamed dirs to be standardized (singular, not plural).
+ Allow immortals to always pickup quest items.
+ Updated stock sysdata file.
+ Added a records struct to pcdata, moved all records there and added some new ones to track.
+ "Prettied up" pfile saves for fields to align, it annoyed me.
+ Added MONITOR_HELPS to display when players can't find a help file.
+ Added a new sysdata option: damcap. In Ack 4.3.1 all damage was limited to 3000, this is now configurable.
+ Changed area format slightly; stop saving un-needed information.
+ Sorted helps by first letter, updated code to match. All helps are DONE now, too. Only need to keep up with it as I go along :)
+ Holy Armor now has a duration based on level instead of static.
+ Deflect Weapon duration now based on level, not just static.
+ Added a new sysdata option to that controls how much classes cost per level based on number of mob kills per level. No more const EXP table.
+ Fixed a bug in help with : in filenames.
+ Fixed a bug in IMC parsing the who template.
+ Updated IMC to support whonames via imcwho and a more uniform default template.
+ Added _popen to output shell commands to a char and handle fpReserve management with it.
+ smash_replace() is an upgraded smash_tilde(). smash_tilde() was moved to use it and has only been kept for backwards compatibility.
+ Added an abandon command to drop all followers.
+ Closed a possible file descriptor leak in count_helps().
+ Olmsg now actually saves and oload now also uses it, yay for fun imm stuff :P
 4.3.6 - 25 Jul 08:
  Added a delhelp for the new helpfile system.
  Helpedit works with the new helpfile system.
