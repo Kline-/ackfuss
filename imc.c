@@ -1475,6 +1475,15 @@ void imc_write_buffer( const char *txt )
    if( !this_imcmud || this_imcmud->desc < 1 )
    {
       imcbug( "%s: Configuration or socket is invalid!", __FUNCTION__ );
+      if( this_imcmud && this_imcmud->autoconnect ) /* Don't attempt a re-connect if we don't want to. --Kline */
+      {
+       if( this_imcmud && this_imcmud->state > IMC_OFFLINE )
+        return;
+
+       imcconnect_attempts = 0;
+       imcwait = 0;
+       imc_startup( TRUE, -1, FALSE );
+      }
       return;
    }
 
@@ -3686,28 +3695,28 @@ void imc_savechar( CHAR_DATA * ch, FILE * fp )
       return;
 #endif
 
-   fprintf( fp, "IMCPerm      %d\n", IMCPERM( ch ) );
-   fprintf( fp, "IMCFlags     %ld\n", ( long int )IMCFLAG( ch ) );
+   fprintf( fp, "IMCPerm        %d\n", IMCPERM( ch ) );
+   fprintf( fp, "IMCFlags       %ld\n", ( long int )IMCFLAG( ch ) );
    if( IMC_LISTEN( ch ) && IMC_LISTEN( ch )[0] != '\0' )
-      fprintf( fp, "IMCListen    %s\n", IMC_LISTEN( ch ) );
+      fprintf( fp, "IMCListen      %s\n", IMC_LISTEN( ch ) );
    if( IMC_DENY( ch ) && IMC_DENY( ch )[0] != '\0' )
-      fprintf( fp, "IMCDeny      %s\n", IMC_DENY( ch ) );
+      fprintf( fp, "IMCDeny        %s\n", IMC_DENY( ch ) );
    if( IMC_EMAIL( ch ) && IMC_EMAIL( ch )[0] != '\0' )
-      fprintf( fp, "IMCEmail     %s\n", IMC_EMAIL( ch ) );
+      fprintf( fp, "IMCEmail       %s\n", IMC_EMAIL( ch ) );
    if( IMC_HOMEPAGE( ch ) && IMC_HOMEPAGE( ch )[0] != '\0' )
-      fprintf( fp, "IMCHomepage  %s\n", IMC_HOMEPAGE( ch ) );
+      fprintf( fp, "IMCHomepage    %s\n", IMC_HOMEPAGE( ch ) );
    if( IMC_ICQ( ch ) )
-      fprintf( fp, "IMCICQ       %d\n", IMC_ICQ( ch ) );
+      fprintf( fp, "IMCICQ         %d\n", IMC_ICQ( ch ) );
    if( IMC_AIM( ch ) && IMC_AIM( ch )[0] != '\0' )
-      fprintf( fp, "IMCAIM       %s\n", IMC_AIM( ch ) );
+      fprintf( fp, "IMCAIM         %s\n", IMC_AIM( ch ) );
    if( IMC_YAHOO( ch ) && IMC_YAHOO( ch )[0] != '\0' )
-      fprintf( fp, "IMCYahoo     %s\n", IMC_YAHOO( ch ) );
+      fprintf( fp, "IMCYahoo       %s\n", IMC_YAHOO( ch ) );
    if( IMC_MSN( ch ) && IMC_MSN( ch )[0] != '\0' )
-      fprintf( fp, "IMCMSN       %s\n", IMC_MSN( ch ) );
+      fprintf( fp, "IMCMSN         %s\n", IMC_MSN( ch ) );
    if( IMC_COMMENT( ch ) && IMC_COMMENT( ch )[0] != '\0' )
-      fprintf( fp, "IMCComment   %s\n", IMC_COMMENT( ch ) );
+      fprintf( fp, "IMCComment     %s\n", IMC_COMMENT( ch ) );
    for( temp = FIRST_IMCIGNORE( ch ); temp; temp = temp->next )
-      fprintf( fp, "IMCignore    %s\n", temp->name );
+      fprintf( fp, "IMCignore      %s\n", temp->name );
    return;
 }
 

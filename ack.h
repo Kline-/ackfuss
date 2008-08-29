@@ -61,31 +61,6 @@
 #include "imc.h"
 #endif
 
-struct sysdata_type
-{
- int damcap;
- float expmult;
- sh_int killperlev;
- float mob_ac;
- float mob_dr;
- float mob_hp;
- float mob_hr;
- float mob_mp;
- float mob_mv;
- char *playtesters;
- sh_int pulse;
- bool shownumbers;
- bool w_lock;
-};
-
-struct fight_data
-{
- bool is_free;
- FIGHT_DATA *next;
- FIGHT_DATA *prev;
- CHAR_DATA *ch;
-};
-
 struct board_data
 {
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
@@ -734,10 +709,7 @@ struct pc_data
    char *alias_name[MAX_ALIASES];
    char *alias[MAX_ALIASES];
    char *who_name;   /* To show on who name */
-   int pkills;
-   int pkilled;
-   int mkills;
-   int mkilled;
+   RECORD_DATA *records; /* kill/damage/etc records */
    int pflags;
    char *lastlogin;
    sh_int order[MAX_CLASS];   /* Class Order */
@@ -1275,6 +1247,25 @@ struct chanhistory
  int cbit[30][MAX_HISTORY]; /* To track which clan, family, tribe, or race */
 };
 
+struct record_data
+{
+ bool is_free;
+ RECORD_DATA *next;
+ RECORD_DATA *prev;
+ int crusade;
+ int mdam_amt;
+ sh_int mdam_gsn;
+ int pdam_amt;
+ sh_int pdam_gsn;
+ int pd;
+ int pk;
+ int md;
+ int mk;
+ int mquest;
+ int qp;
+ int qp_tot;
+};
+
 struct super_data
 {
  bool is_free;
@@ -1289,6 +1280,31 @@ struct super_data
  int pracs;
  sh_int bloodline;
  sh_int generation;
+};
+
+struct sysdata_type
+{
+ int damcap;
+ float expmult;
+ sh_int killperlev;
+ float mob_ac;
+ float mob_dr;
+ float mob_hp;
+ float mob_hr;
+ float mob_mp;
+ float mob_mv;
+ char *playtesters;
+ sh_int pulse;
+ bool shownumbers;
+ bool w_lock;
+};
+
+struct fight_data
+{
+ bool is_free;
+ FIGHT_DATA *next;
+ FIGHT_DATA *prev;
+ CHAR_DATA *ch;
 };
 
 /*
