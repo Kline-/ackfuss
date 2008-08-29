@@ -62,7 +62,7 @@
  */
 
 #define MAX_CLAN_EQ		     6   /* Number of clan eq items */
-#define MAX_COLOR		    15   /* eg look, prompt, shout */
+#define MAX_COLOR		    22   /* eg look, prompt, shout */
 #define MAX_ANSI		    28   /* eg red, black, etc (was 11) */
 #define MAX_ALIASES		     6
 #define MAX_IGNORES		     3
@@ -1286,14 +1286,14 @@
 
 #if defined(unix)
 #define PLAYER_DIR      "../player/"   /* Player files                 */
-#define NPC_DIR		"../npcs/"
+#define NPC_DIR		"../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
 #define MOB_DIR         "MOBProgs/" /* MOBProg files                */
 #endif
 
 #if defined(linux)
 #define PLAYER_DIR      "../player/"   /* Player files                 */
-#define NPC_DIR		"../npcs/"
+#define NPC_DIR		"../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
 #define MOB_DIR         "MOBProgs/" /* MOBProg files                */
 #endif
@@ -1302,8 +1302,8 @@
 
 #define MAIL_DIR        "../mail/"
 #define DATA_DIR        "../data/"
-#define BUG_DIR         "../reports/"
-#define HELP_DIR        "../helps/"
+#define BUG_DIR         "../report/"
+#define HELP_DIR        "../help/"
 
 #define HELP_MORT      "mrt"              /* Mortal helpfiles                      */
 #define HELP_IMM       "imm"              /* Immortal helpfiles                    */
@@ -1326,14 +1326,6 @@
 #define SYSDAT_FILE    DATA_DIR "sysdat.dat"
 #define SOCIAL_FILE    DATA_DIR "socials.dat"   /* or whatever fits you */
 
-#if defined(SOE) && !defined(SOETEST) && !defined(SOEBLD)
-#define WHO_HTML_FILE   "/home/ftp/pub/webpage/soewholist.html"   /* for ftping who list to html web page :) */
-#define WHO_COUNT_FILE  "/home/ftp/pub/webpage/whocount.html"
-#endif
-#if !defined(WHO_HTML_FILE)
-#define WHO_HTML_FILE   DATA_DIR "whofile"   /* for ftping who list to html web page :) */
-#define WHO_COUNT_FILE  DATA_DIR "whocountfile"
-#endif
 /* Other Stuff - Flar */
 #define COPYOVER_FILE	"COPYOVER.TXT" /* Temp data file used for copyover */
 #define EXE_FILE		"../src/ack"   /* The one that runs the ACK! */

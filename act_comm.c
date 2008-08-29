@@ -509,7 +509,8 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
       argument = slur_text( argument );
 
    switch ( channel )
-   {      default:
+   {
+      default:
          xprintf( buf, "You %s '%s'.\n\r", verb, argument );
          send_to_char( buf, ch );
          xprintf( buf, "$n %ss '$t'.", verb );
@@ -522,7 +523,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_CRUSADE:
-         xprintf( buf, "@@NYou %s@@N '%s'.%s\n\r", verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "crusade" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          xprintf( buf, "$n %ss '$t'.", verb );
          break;
@@ -546,8 +547,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_ADEPT:
-         xprintf( buf, "%s%s %s: '%s'.%s\n\r",
-                  color_string( ch, "clan" ), verb, ch->name, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "adept" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          xprintf( buf, "$n %s: '$t'.", verb );
          break;
@@ -565,28 +565,25 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_CLAN:
-         xprintf( buf, "%s%s %s: '%s'.%s\n\r",
-                  color_string( ch, "clan" ), verb, ch->name, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          xprintf( buf, "$n %s: '$t'.", verb );
          break;
 
       case CHANNEL_FAMILY:
-         xprintf( buf, "%s%s %s: '%s'.%s\n\r",
-                  color_string( ch, "clan" ), verb, ch->name, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          xprintf( buf, "$n %s: '$t'.", verb );
          break;
 
       case CHANNEL_HOWL:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "race" ), verb, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "clan" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          xprintf( buf, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_RACE:
-         xprintf( buf, "%s%s %s: '%s'.%s\n\r",
-                  color_string( ch, "race" ), verb, ch->name, argument, color_string( ch, "normal" ) );
+         xprintf( buf, "%s%s %s: '%s'.%s\n\r", color_string( ch, "race" ), verb, ch->name, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          xprintf( buf, "$n %s: '$t'.", verb );
          break;
@@ -608,43 +605,33 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_REMORTTALK:
+         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "remort" ), argument, color_string( ch, "normal" ) );
+         send_to_char( buf, ch );
          xprintf( buf, "%s $n: $t.", verb );
-         position = ch->position;
-         ch->position = POS_STANDING;
-         act( buf, ch, argument, NULL, TO_CHAR );
-         ch->position = position;
          break;
 
       case CHANNEL_DIPLOMAT:
+         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "diplomat" ), argument, color_string( ch, "normal" ) );
+         send_to_char( buf, ch );
          xprintf( buf, "%s $n: $t.", verb );
-         position = ch->position;
-         ch->position = POS_STANDING;
-         act( buf, ch, argument, NULL, TO_CHAR );
-         ch->position = position;
          break;
 
       case CHANNEL_QUEST:
+         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "quest" ), argument, color_string( ch, "normal" ) );
+         send_to_char( buf, ch );
          xprintf( buf, "%s $n: $t.", verb );
-         position = ch->position;
-         ch->position = POS_STANDING;
-         act( buf, ch, argument, NULL, TO_CHAR );
-         ch->position = position;
          break;
 
       case CHANNEL_OOC:
+         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "ooc" ), argument, color_string( ch, "normal" ) );
+         send_to_char( buf, ch );
          xprintf( buf, "%s $n: $t.", verb );
-         position = ch->position;
-         ch->position = POS_STANDING;
-         act( buf, ch, argument, NULL, TO_CHAR );
-         ch->position = position;
          break;
 
       case CHANNEL_GAME:
+         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "game" ), argument, color_string( ch, "normal" ) );
+         send_to_char( buf, ch );
          xprintf( buf, "%s $n: $t.", verb );
-         position = ch->position;
-         ch->position = POS_STANDING;
-         act( buf, ch, argument, NULL, TO_CHAR );
-         ch->position = position;
          break;
 
    }

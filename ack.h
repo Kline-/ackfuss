@@ -1328,7 +1328,6 @@ bool is_same_group args( ( CHAR_DATA * ach, CHAR_DATA * bch ) );
 bool is_group_leader args( ( CHAR_DATA * ch ) );
 char *slur_text args( ( char *argument ) );
 void send_to_room args( ( char *message, ROOM_INDEX_DATA * room ) );
-void list_who_to_output args( ( void ) );
 
 /* act_info.c */
 void set_title            args( ( CHAR_DATA * ch, char *title ) );

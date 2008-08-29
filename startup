@@ -8,7 +8,7 @@ port=3000
 if [ "$1" != "" ]; then port=$1; fi
 
 # set up
-cd ../reports
+cd ../report
 if [ -f shutdown.txt ]; then rm -f shutdown.txt; fi
 
 cd ../area
@@ -38,7 +38,7 @@ do
 
   # shutdown?
 
-cd ../reports
+cd ../report
 
   if [ -e shutdown.txt ]; then
     echo "startup: shutting down" >>$logfile
