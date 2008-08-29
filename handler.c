@@ -987,7 +987,9 @@ void obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch )
 
       average_level = obj->value[3];
 
-      if( ( average_level < 20 ) && ( get_psuedo_level( ch ) < 45 ) )
+      if( IS_IMMORTAL(ch) )
+       valid_questor = TRUE;
+      else if( ( average_level < 20 ) && ( get_psuedo_level( ch ) < 45 ) )
       {
          valid_questor = TRUE;
       }
