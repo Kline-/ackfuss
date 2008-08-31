@@ -110,7 +110,7 @@ void do_email( CHAR_DATA * ch, char *argument )
          free_string( ch->pcdata->email_address );
          ch->pcdata->email_address = str_dup( arg2 );
          ch->pcdata->valid_email = FALSE;
-         do_save( ch, "" );
+         do_save( ch, "auto" );
          xprintf( outbuf,
                   "Your email address has been set to %s. The Implementors have been notified, please be patient.\n\r",
                   ch->pcdata->email_address );

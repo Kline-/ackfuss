@@ -1884,6 +1884,6 @@ bool spec_tax_man( CHAR_DATA * ch )
    xcat( mon_buf, cat_buf );
    monitor_chan( mon_buf, MONITOR_MOB );
 
-   do_save( victim, "" );
+   do_save( victim, "auto" );
    return TRUE;
 }

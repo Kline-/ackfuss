@@ -1111,6 +1111,9 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
    {
       group_gain( ch, victim );
 
+      /* Update mquest */
+      update_mquest_kill(ch,victim);
+
       /*
        * Sort out kill counts..... 
        */

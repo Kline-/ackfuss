@@ -1407,7 +1407,7 @@ char *extra_bit_name( int extra_flags )
       xcat( buf, " glow" );
    if( extra_flags & ITEM_HUM )
       xcat( buf, " hum" );
-   if( extra_flags & ITEM_DARK )
+   if( extra_flags & ITEM_NODISARM )
       xcat( buf, " nodisarm" );
    if( extra_flags & ITEM_LOCK )
       xcat( buf, " lock" );

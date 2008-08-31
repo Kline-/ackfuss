@@ -578,6 +578,16 @@ bool is_remort( CHAR_DATA * ch )
    return FALSE;
 }
 
+bool is_adept( CHAR_DATA * ch )
+{
+   if( IS_NPC( ch ) )
+      return FALSE;
+
+   if( ch->adept_level > 0 )
+      return TRUE;
+
+   return FALSE;
+}
 
 int get_item_value( OBJ_DATA * obj )
 {

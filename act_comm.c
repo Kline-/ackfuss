@@ -1794,7 +1794,8 @@ void do_save( CHAR_DATA * ch, char *argument )
 
    save_char_obj( ch );
    xprintf( buf, "Saving %s.\n\r", ch->name );
-   send_to_char( buf, ch );
+   if( str_cmp(argument,"auto") )
+    send_to_char( buf, ch );
    return;
 }
 

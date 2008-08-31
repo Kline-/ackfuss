@@ -1387,7 +1387,6 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                xprintf( buf2, " " );
             i = buf2;
             break;
-
          case 'z':
             if( IS_IMMORTAL( ch ) && ch->in_room != NULL )
                xprintf( buf2, "%s", ch->in_room->area->name );
@@ -1420,7 +1419,6 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                xprintf( buf2, " " );
             i = buf2;
             break;
-
          case 'i':
             if( IS_NPC( ch ) )
                break;
@@ -1441,7 +1439,6 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             }
             i = buf2;
             break;
-
          case 't':
             if( !IS_NPC( ch ) )
                xprintf( buf2, "%d %s", ( time_info.hour % 12 == 0 ) ? 12 : time_info.hour % 12,
@@ -1465,7 +1462,6 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                xprintf( buf2, " " );
             i = buf2;
             break;
-
          case 'p':
             if( !IS_NPC( ch ) )
             {
@@ -1479,6 +1475,18 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             else
                xprintf( buf2, " " );
             i = buf2;
+            break;
+         case 'Q':
+            if( !IS_NPC(ch) )
+            {
+               if( ch->pcdata->quest_info->wait_time > 0 )
+                  xprintf( buf2, "%2d", ch->pcdata->quest_info->wait_time );
+               else
+                  xprintf( buf2, "OK" );
+            }
+            else
+               xprintf( buf2, "Mquest Error.\n\r" );
+            i = buf2; 
             break;
 
 

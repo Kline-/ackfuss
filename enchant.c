@@ -869,7 +869,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
 
       act( "$n dances about wildly, chanting wierd mantras, and gestures crazily over $p.", ch, matrix, NULL, TO_ROOM );
       act( "You enchant $p with additional powers!", ch, unique, NULL, TO_CHAR );
-      do_save( ch, "" );
+      do_save( ch, "auto" );
       {
          BRAND_DATA *brand;
          DL_LIST *brand_member;

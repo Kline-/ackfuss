@@ -731,6 +731,7 @@ struct pc_data
    char *email_address;
    bool valid_email;
    char *assist_msg;
+   QUEST_INFO *quest_info;
 #ifdef IMC
    IMC_CHARDATA *imcchardata;
 #endif
@@ -1261,7 +1262,8 @@ struct record_data
  int pk;
  int md;
  int mk;
- int mquest;
+ int mquest_c;
+ int mquest_f;
  int qp;
  int qp_tot;
 };
@@ -1305,6 +1307,24 @@ struct fight_data
  FIGHT_DATA *next;
  FIGHT_DATA *prev;
  CHAR_DATA *ch;
+};
+
+struct quest_info
+{
+ bool is_free;
+ QUEST_INFO *next;
+ QUEST_INFO *prev;
+ sh_int amount[5];
+ sh_int assault_type;
+ bool is_questing;
+ bool quest_complete;
+ int quest_hint[5];
+ int quest_item_vnum[5];
+ int quest_mob_vnum[5];
+ sh_int quest_reward[3];
+ sh_int quest_type;
+ sh_int time_left;
+ sh_int wait_time;
 };
 
 /*
@@ -1557,6 +1577,7 @@ int    exp_for_mobile     args( ( int level, CHAR_DATA * mob ) );
 int    exp_mob_base       args( ( int level ) );
 int    skill_table_lookup args( ( CHAR_DATA * ch, int sn, int return_type ) );
 bool   is_remort          args( ( CHAR_DATA * ch ) );
+bool   is_adept           args( ( CHAR_DATA * ch ) );
 int    exp_to_level_vamp  args( ( int level ) );
 int    exp_to_level_adept args( ( CHAR_DATA * ch ) );
 void   reset_gain_stats   args( ( CHAR_DATA * ch ) );
@@ -1591,6 +1612,13 @@ void mprog_hitprcnt_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch ) );
 void mprog_death_trigger args( ( CHAR_DATA * mob ) );
 void mprog_random_trigger args( ( CHAR_DATA * mob ) );
 void mprog_speech_trigger args( ( char *txt, CHAR_DATA * mob ) );
+
+/* mquest.c */
+void display_mob_target      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+void display_obj_target      args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
+void update_mquest_wait_time args( ( CHAR_DATA *ch ) );
+void update_mquest_kill      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+
 
            /*-------*\
 			  ) quest.c (

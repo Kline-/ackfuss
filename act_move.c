@@ -2256,19 +2256,18 @@ void do_scout( CHAR_DATA * ch, char *argument )
 void do_abandon( CHAR_DATA *ch, char *argument ) /* Thanks to Koron & Abel for the idea! */
 {
  CHAR_DATA *vch;
- sh_int cnt = 0;
+
+ if( ch->num_followers < 1 )
+ {
+  send_to_char("Sadly you have no followers to abandon.\n\r",ch);
+  return;
+ }
 
  for( vch = first_char; vch != NULL; vch = vch->next )
  {
   if( vch->master == ch )
-  {
-   cnt++;
    stop_follower(vch);
-  }
  }
-
- if( cnt == 0 )
-  send_to_char("Sadly you have no followers to abandon.\n\r",ch);
 
  return;
 }

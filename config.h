@@ -104,11 +104,12 @@
 #define LIQ_MAX         17
 
 
-#define AREA_PAYAREA  	    1
-#define AREA_TELEPORT 	    2
-#define AREA_BUILDING 	    4
-#define AREA_NOSHOW	    8 /* Show area name on 'areas' command? */
-#define AREA_NO_ROOM_AFF    16
+#define AREA_PAYAREA  	    BIT_1
+#define AREA_TELEPORT 	    BIT_2
+#define AREA_BUILDING 	    BIT_3
+#define AREA_NOSHOW	    BIT_4 /* Show area name on 'areas' command? */
+#define AREA_NO_ROOM_AFF    BIT_5
+#define AREA_NO_QUEST       BIT_6
 
 /*
  * Types of attacks.
@@ -914,35 +915,37 @@
  * ACT bits for mobs.
  * Used in #MOBILES.
  */
-#define ACT_IS_NPC                    1   /* Auto set for mobs    */
-#define ACT_SENTINEL                  2   /* Stays in one room    */
-#define ACT_SCAVENGER                 4   /* Picks up objects     */
-#define ACT_REMEMBER                  8   /* remembers target     */
-#define ACT_NO_FLEE                  16   /* can't flee from mob  */
-#define ACT_AGGRESSIVE               32   /* Attacks PC's         */
-#define ACT_STAY_AREA                64   /* Won't leave area     */
-#define ACT_WIMPY                   128   /* Flees when hurt      */
-#define ACT_PET                     256   /* Auto set for pets    */
-#define ACT_TRAIN                   512   /* Can train PC's       */
-#define ACT_PRACTICE               1024   /* Can practice PC's    */
-#define ACT_MERCENARY              2048   /* Is a mercenary       */
-#define ACT_HEAL                   4096   /* Sells spells         */
-#define ACT_ADAPT                  8192   /* Adapts weapons       */
-#define ACT_UNDEAD                16384   /* Mob is undead  */
-#define ACT_BANKER                32768   /* Is a *B*anker :P     */
-#define ACT_NO_BODY               65536   /* no body for damage   */
-#define ACT_HUNTER		 131072  /* hunts attackers      */
-#define ACT_NOMIND		 262144  /* Psi attack no-no     */
-#define ACT_POSTMAN		 524288  /* Postmaster     */
-#define ACT_REWIELD	 	1048576  /* Uses better weapons  */
-#define ACT_RE_EQUIP	 	2097152  /* Uses better equipment */
-#define ACT_INTELLIGENT		4194304  /* For shitkicking mobs */
-#define ACT_VAMPIRE             8388608   /* Vampire mob    */
-#define ACT_BREEDER          16777216  /* Mob can breed        */
-#define ACT_SOLO   	       33554432   /* Mob is buffed for solo combat */
-#define ACT_WEREWOLF           67108864         /* Werewolf mob         */ /* doesn't do anything in ack4.0 ZENFIX */
-#define ACT_MOUNT             134217728   /* Mountable MOB */
-#define ACT_NOBLOOD		BIT_29
+#define ACT_IS_NPC            BIT_1    /* Auto set for mobs      */
+#define ACT_SENTINEL          BIT_2    /* Stays in one room      */
+#define ACT_SCAVENGER         BIT_3    /* Picks up objects       */
+#define ACT_REMEMBER          BIT_4    /* remembers target       */
+#define ACT_NO_FLEE           BIT_5    /* can't flee from mob    */
+#define ACT_AGGRESSIVE        BIT_6    /* Attacks PC's           */
+#define ACT_STAY_AREA         BIT_7    /* Won't leave area       */
+#define ACT_WIMPY             BIT_8    /* Flees when hurt        */
+#define ACT_PET               BIT_9    /* Auto set for pets      */
+#define ACT_TRAIN             BIT_10   /* Can train PC's         */
+#define ACT_PRACTICE          BIT_11   /* Can practice PC's      */
+#define ACT_MERCENARY         BIT_12   /* Is a mercenary         */
+#define ACT_HEAL              BIT_13   /* Sells spells           */
+#define ACT_ADAPT             BIT_14   /* Adapts weapons         */
+#define ACT_UNDEAD            BIT_15   /* Mob is undead          */
+#define ACT_BANKER            BIT_16   /* Is a *B*anker :P       */
+#define ACT_NO_BODY           BIT_17   /* no body for damage     */
+#define ACT_HUNTER	      BIT_18   /* hunts attackers        */
+#define ACT_NOMIND	      BIT_19   /* Psi attack no-no       */
+#define ACT_POSTMAN	      BIT_20   /* Postmaster             */
+#define ACT_REWIELD	      BIT_21   /* Uses better weapons    */
+#define ACT_RE_EQUIP	      BIT_22   /* Uses better equipment  */
+#define ACT_INTELLIGENT	      BIT_23   /* For shitkicking mobs   */
+#define ACT_VAMPIRE           BIT_24   /* Vampire mob            */
+#define ACT_BREEDER           BIT_25   /* Mob can breed          */
+#define ACT_SOLO   	      BIT_26   /* buffed for solo combat */
+#define ACT_WEREWOLF          BIT_27   /* Werewolf mob           */ /* doesn't do anything in ack4.0 ZENFIX */
+#define ACT_MOUNT             BIT_28   /* Mountable MOB          */
+#define ACT_NOBLOOD           BIT_29   /* no bloodwalk           */
+#define ACT_NO_QUEST          BIT_30   /* disable from mquest    */
+#define ACT_QUESTMASTER       BIT_31   /* mquest questmaster     */
 
 /* build bits for OLC -S- */
 #define ACT_BUILD_NOWT                0   /* not doing anything   */
@@ -1123,34 +1126,34 @@
  * Extra flags.
  * Used in #OBJECTS.
  */
-#define ITEM_GLOW				1
-#define ITEM_HUM				2
-#define ITEM_DARK				4
-#define ITEM_NODISARM				4
-#define ITEM_LOCK				8
-#define ITEM_EVIL				16
-#define ITEM_INVIS			32
-#define ITEM_MAGIC			64
-#define ITEM_NODROP			128
-#define ITEM_BLESS			256
-#define ITEM_ANTI_GOOD			512
-#define ITEM_ANTI_EVIL			1024
-#define ITEM_ANTI_NEUTRAL		2048
-#define ITEM_NOREMOVE			4096
-#define ITEM_INVENTORY			8192
-#define ITEM_NOSAVE			16384 /* For "quest" items :) */
-#define ITEM_CLAN_EQ		 	32768 /* only leaders and creators may load */
-#define ITEM_TRIG_DESTROY	 	65536 /* Trigger object that destroy after use */
-#define ITEM_NO_AUCTION			131072   /* Can't be auctioned */
-#define ITEM_REMORT			262144   /* player must have a remort class of higher level than item level */
-#define ITEM_ADEPT			524288
-#define ITEM_RARE			1048576
-#define ITEM_VAMP                       2097152 /* player must be a vampyre */
-#define ITEM_NOLOOT			4194304
-#define ITEM_NOSAC			8388608
-#define ITEM_UNIQUE			16777216
-#define ITEM_LIFESTEALER	   BIT_26
+#define ITEM_GLOW			BIT_1
+#define ITEM_HUM			BIT_2
+#define ITEM_NODISARM			BIT_3
+#define ITEM_LOCK			BIT_4
+#define ITEM_EVIL			BIT_5
+#define ITEM_INVIS			BIT_6
+#define ITEM_MAGIC			BIT_7
+#define ITEM_NODROP			BIT_8
+#define ITEM_BLESS			BIT_9
+#define ITEM_ANTI_GOOD			BIT_10
+#define ITEM_ANTI_EVIL			BIT_11
+#define ITEM_ANTI_NEUTRAL		BIT_12
+#define ITEM_NOREMOVE			BIT_13
+#define ITEM_INVENTORY			BIT_14
+#define ITEM_NOSAVE			BIT_15 /* For "quest" items :) */
+#define ITEM_CLAN_EQ		 	BIT_16 /* only leaders and creators may load */
+#define ITEM_TRIG_DESTROY	 	BIT_17 /* Trigger object that destroy after use */
+#define ITEM_NO_AUCTION			BIT_18   /* Can't be auctioned */
+#define ITEM_REMORT			BIT_19   /* player must have a remort class of higher level than item level */
+#define ITEM_ADEPT			BIT_20
+#define ITEM_RARE			BIT_21
+#define ITEM_VAMP                       BIT_22 /* player must be a vampyre */
+#define ITEM_NOLOOT			BIT_23
+#define ITEM_NOSAC			BIT_24
+#define ITEM_UNIQUE			BIT_25
+#define ITEM_LIFESTEALER	        BIT_26
 #define ITEM_SILVER			BIT_27
+#define ITEM_NO_QUEST                   BIT_28 /* disable for mquest */
 
 /* Class-restricted stuff dropped. */
 
