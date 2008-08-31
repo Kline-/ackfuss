@@ -183,7 +183,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    send_to_char("You have already completed that task!\n\r",ch);
    return;
   }
-  if( ch->pcdata->quest_info->quest_hint[hint-1] != -1 )
+  if( ch->pcdata->quest_info->quest_hint[hint-1] )
   {
    send_to_char("You've already got your hint for that task!\n\r",ch);
    return;
@@ -200,7 +200,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    xprintf(buf,"%s can be found somewhere in %s.\n\r",ob->short_descr,ob->area->name);
    send_to_char(buf,ch);
   }
-  ch->pcdata->quest_info->quest_hint[hint-1] = 0;
+  ch->pcdata->quest_info->quest_hint[hint-1] = TRUE;
   send_to_char("Your quest rewards have been reduced for using a hint.\n\r",ch);
   do_save(ch,"auto");
   return;
@@ -531,9 +531,9 @@ void mquest_complete_message( CHAR_DATA *ch )
  if( IS_NPC(ch) )
   return;
  if( ch->pcdata->quest_info->quest_complete )
- {/*
+ {
   for( i = 0; i < 5; i++ )
-   if( ch->pcdata->quest_info->quest_hint[i] != -1 )
+   if( ch->pcdata->quest_info->quest_hint[i] )
     hint++;
   if( hint > 0 )
   {
@@ -551,14 +551,14 @@ void mquest_complete_message( CHAR_DATA *ch )
    ch->pcdata->quest_info->quest_reward[2] *= (float)(1-((float)hint/(float)x));
    xprintf(buf,"Quest reward reduced for the use of %d hints (%d).\n\r",hint,x);
    send_to_char(buf,ch);
-  }*/
+  }
 
   xprintf(buf,"Quest Complete. You have earned %d qp, %s and %d experience!\n\r",ch->pcdata->quest_info->quest_reward[0],cost_to_money(ch->pcdata->quest_info->quest_reward[1]),ch->pcdata->quest_info->quest_reward[2]);
   send_to_char(buf,ch);
 
   ch->pcdata->quest_points += ch->pcdata->quest_info->quest_reward[0];
   join_money(round_money(ch->pcdata->quest_info->quest_reward[1],TRUE),ch->money);
-  ch->exp+=ch->pcdata->quest_info->quest_reward[2];
+  ch->exp += ch->pcdata->quest_info->quest_reward[2];
 
   ch->pcdata->records->mquest_c++;
   ch->pcdata->records->qp_tot += ch->pcdata->quest_info->quest_reward[0];
@@ -674,9 +674,7 @@ void mquest_calc_rewards( CHAR_DATA *ch )
  if( number_percent() < 5 )
   ch->pcdata->quest_info->quest_reward[2] *= 1.5;
 
- if( ch->pcdata->quest_info->quest_reward[0] == 0 || ch->pcdata->quest_info->quest_reward[1] == 0 || ch->pcdata->quest_info->quest_reward[2] == 0 )
-  send_to_char("An error has occured calculating rewards. This should not happen.\n\r",ch);
-
+ /* No negative rewards */
  if( ch->pcdata->quest_info->quest_reward[0] < 0 )
   ch->pcdata->quest_info->quest_reward[0] = 0;
  if( ch->pcdata->quest_info->quest_reward[1] < 0 )
@@ -701,7 +699,7 @@ void mquest_clear( CHAR_DATA *ch )
  ch->pcdata->quest_info->is_questing = FALSE;
  ch->pcdata->quest_info->quest_complete = FALSE;
  for( i = 0; i < 5; i++ )
-  ch->pcdata->quest_info->quest_hint[i] = -1;
+  ch->pcdata->quest_info->quest_hint[i] = FALSE;
  for( i = 0; i < 5; i++ )
   ch->pcdata->quest_info->quest_item_vnum[i] = 0;
  for( i = 0; i < 5; i++ )
@@ -984,10 +982,10 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
  return obj;
 }
 
-void display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
+char *display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
 {
  if( IS_NPC(ch) || !IS_NPC(victim) )
-  return;
+  return "";
  if( ch->pcdata->quest_info->is_questing && (ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL || ch->pcdata->quest_info->quest_type == QUEST_KILLING) )
  {
   sh_int i = 0;
@@ -998,24 +996,24 @@ void display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
     && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->pIndexData->vnum
     || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->short_descr) 
     && get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area == victim->in_room->area)) )
-     send_to_char("@@e[@@yTARGET@@e] @@N",ch);
+     return "@@e[@@yTARGET@@e] @@N";
  }
- return;
+ return "";
 }
 
-void display_obj_target( CHAR_DATA *ch, OBJ_DATA *obj )
+char *display_obj_target( CHAR_DATA *ch, OBJ_DATA *obj )
 {
  if( IS_NPC(ch) )
-  return;
+  return "";
  if( ch->pcdata->quest_info->is_questing && (ch->pcdata->quest_info->quest_type == QUEST_MULTI_RETRIEVE || ch->pcdata->quest_info->quest_type == QUEST_RETRIEVAL) )
  {
   sh_int i = 0;
 
   for( i = 0; i < 5; i++ )
    if( ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum && ch->pcdata->quest_info->amount[i] > 0 )
-    send_to_char("@@e[@@yTARGET@@e] @@N",ch);
+    return "@@e[@@yTARGET@@e] @@N";
  }
- return;
+ return "";
 }
 
 void update_mquest_wait_time( CHAR_DATA *ch )
@@ -1033,15 +1031,13 @@ void update_mquest_wait_time( CHAR_DATA *ch )
 
 void update_mquest_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 {
- sh_int tot = 0;
+ sh_int i, tot = 0;
 
  if( IS_NPC(ch) || !IS_NPC(victim) )
   return;
- if( ch->pcdata->quest_info->is_questing && (ch->pcdata->quest_info->quest_type==QUEST_KILLING || ch->pcdata->quest_info->quest_type==QUEST_MULTI_KILL) && !ch->pcdata->quest_info->quest_complete )
+ if( ch->pcdata->quest_info->is_questing && (ch->pcdata->quest_info->quest_type == QUEST_KILLING || ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL) && !ch->pcdata->quest_info->quest_complete )
  {
-  sh_int i = 0;
-
-  for (i = 0; i < 5; i++ )
+  for( i = 0; i < 5; i++ )
   {
    if( ch->pcdata->quest_info->quest_mob_vnum[i] < 1 )
     continue;
@@ -1052,18 +1048,17 @@ void update_mquest_kill( CHAR_DATA *ch, CHAR_DATA *victim )
    {
     ch->pcdata->quest_info->amount[i]--;
     send_to_char("You have completed a quest kill!\n\r",ch);
+    if( ch->pcdata->quest_info->amount[i] == 0 )
+     send_to_char("You have completed the kill requirement for this creature!\n\r",ch);
    }
-   if( ch->pcdata->quest_info->amount[i] == 0 )
-    send_to_char("You have completed the kill requirement for this creature!\n\r",ch);
+   if( ch->pcdata->quest_info->amount[i] > -1 )
+    tot += ch->pcdata->quest_info->amount[i];
   }
-  if( ch->pcdata->quest_info->amount[i] > -1 )
-   tot += ch->pcdata->quest_info->amount[i];
- }
-
- if( tot == 0 ) /* If the total is 0 after checking through the whole loop, then they've completed their quest. */
- {
-  ch->pcdata->quest_info->quest_complete = TRUE;
-  send_to_char("You have completed your quest! Return to the quest master.\n\r",ch);
+  if( tot == 0 ) /* If the total is 0 after checking through the whole loop, then they've completed their quest. */
+  {
+   ch->pcdata->quest_info->quest_complete = TRUE;
+   send_to_char("You have completed your quest! Return to the quest master.\n\r",ch);
+  }
  }
  return;
 }

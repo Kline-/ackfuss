@@ -108,7 +108,7 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
    }
 
    /* Check for mquest target */
-   display_obj_target(ch,obj);
+   xcat(buf,display_obj_target(ch,obj));
 
    if( IS_OBJ_STAT( obj, ITEM_INVIS ) )
       xcat( buf, "(Invis) " );
@@ -367,7 +367,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    buf2[0] = '\0';
 
    /* Check for mquest target */
-   display_mob_target(ch,victim);
+   xcat(buf,display_mob_target(ch,victim));
 
 /* This is temporary....
  * Zen  WOLF
