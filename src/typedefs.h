@@ -250,6 +250,7 @@ typedef struct chanhistory CHAN_HISTORY;
 typedef struct super_data SUPER_DATA;
 typedef struct fight_data FIGHT_DATA;
 typedef struct record_data RECORD_DATA;
+typedef struct quest_info QUEST_INFO;
 
 /*
  * Function types.

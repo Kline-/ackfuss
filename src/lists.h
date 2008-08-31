@@ -75,6 +75,8 @@ extern NPC_GROUP_DATA *first_npc_group;
 extern NPC_GROUP_DATA *last_npc_group;
 extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
+extern QUEST_INFO *first_quest_info;
+extern QUEST_INFO *last_quest_info;
 extern PORTAL_DATA *portal_free;
 extern AFFECT_DATA *affect_free;
 extern ROOM_AFFECT_DATA *raffect_free;
@@ -119,6 +121,7 @@ extern BUF_DATA_STRUCT *buf_free;
 extern HASH_ENTRY *hash_free;
 extern NPC_GROUP_DATA *npc_group_free;
 extern FIGHT_DATA *fight_free;
+extern QUEST_INFO *quest_info_free;
 
 extern void ( *portal_free_destructor ) ( PORTAL_DATA * pdat );
 extern void ( *affect_free_destructor ) ( AFFECT_DATA * adat );
@@ -173,6 +176,7 @@ void obj_free_destructor( OBJ_DATA * odat );
 void ruler_data_free_destructor( RULER_DATA * rdat );
 void npc_group_free_destructor( NPC_GROUP_DATA * ngrp );
 void fight_free_destructor( FIGHT_DATA *fight );
+void quest_info_free_destructor( QUEST_INFO *quest );
 
 extern int free_get;
 extern int free_put;

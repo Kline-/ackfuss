@@ -356,9 +356,9 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       }
 
       fprintf( fp, "Colors         " );
-      for( foo = 0; foo < MAX_COLOR; foo++ )
-         fprintf( fp, "%d ", ch->pcdata->color[foo] );
-      fprintf( fp, "\n" );
+       for( foo = 0; foo < MAX_COLOR; foo++ )
+        fprintf( fp, "%d ", ch->pcdata->color[foo] );
+       fprintf( fp, "\n" );
 
       fprintf( fp, "AttrPerm       %d %d %d %d %d\n",
                ch->pcdata->perm_str,
@@ -366,6 +366,32 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
       fprintf( fp, "AttrMax        %d %d %d %d %d\n",
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
+
+      fprintf( fp, "QuestAmount    " );
+       for( foo = 0; foo < 5; foo++ )
+        fprintf( fp, "%d ", ch->pcdata->quest_info->amount[foo] );
+       fprintf( fp, "\n" );
+      fprintf( fp, "QuestAsltType  %d\n", ch->pcdata->quest_info->assault_type );
+      fprintf( fp, "QuestHint      " );
+       for( foo = 0; foo < 5; foo++ )
+        fprintf( fp, "%d ", ch->pcdata->quest_info->quest_hint[foo] );
+       fprintf( fp, "\n" );
+      fprintf( fp, "QuestIsQuest   %d\n", ch->pcdata->quest_info->is_questing );
+      fprintf( fp, "QuestItem      " );
+       for( foo = 0; foo < 5; foo++ )
+        fprintf( fp, "%d ", ch->pcdata->quest_info->quest_item_vnum[foo] );
+       fprintf( fp, "\n" );
+      fprintf( fp, "QuestMob       " );
+       for( foo = 0; foo < 5; foo++ )
+        fprintf( fp, "%d ", ch->pcdata->quest_info->quest_mob_vnum[foo] );
+       fprintf( fp, "\n" );
+      fprintf( fp, "QuestReward    " );
+       for( foo = 0; foo < 3; foo++ )
+        fprintf( fp, "%d ", ch->pcdata->quest_info->quest_reward[foo] );
+       fprintf( fp, "\n" );
+      fprintf( fp, "QuestTimeLeft  %d\n", ch->pcdata->quest_info->time_left );
+      fprintf( fp, "QuestType      %d\n", ch->pcdata->quest_info->quest_type );
+      fprintf( fp, "QuestWaitTime  %d\n", ch->pcdata->quest_info->wait_time );
 
       fprintf( fp, "RecCrusade     %d\n", ch->pcdata->records->crusade );
       fprintf( fp, "RecMdamAmt     %d\n", ch->pcdata->records->mdam_amt );
@@ -376,7 +402,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "RecPK          %d\n", ch->pcdata->records->pk );
       fprintf( fp, "RecMD          %d\n", ch->pcdata->records->md );
       fprintf( fp, "RecMK          %d\n", ch->pcdata->records->mk );
-      fprintf( fp, "RecMquest      %d\n", ch->pcdata->records->mquest );
+      fprintf( fp, "RecMquestC     %d\n", ch->pcdata->records->mquest_c );
+      fprintf( fp, "RecMquestF     %d\n", ch->pcdata->records->mquest_f );
       fprintf( fp, "RecQP          %d\n", ch->pcdata->records->qp );
       fprintf( fp, "RecQpTot       %d\n", ch->pcdata->records->qp_tot );
 
@@ -390,7 +417,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "SupSkillLearn  %d\n", ch->pcdata->super->skills_learned );
       fprintf( fp, "SupSkillMax    %d\n", ch->pcdata->super->skills_max );
 
-      fprintf( fp, "Questpoints    %d\n", ch->pcdata->quest_points );
+      fprintf( fp, "QuestPoints    %d\n", ch->pcdata->quest_points );
       fprintf( fp, "RecallVnum     %d\n", ch->pcdata->recall_vnum );
       fprintf( fp, "GainMana       %d\n", ch->pcdata->mana_from_gain );
       fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
@@ -407,18 +434,19 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
             fprintf( fp, "Skill          %d '%s'\n", ch->pcdata->learned[sn], skill_table[sn].name );
          }
       }
-   }
-
-   for( paf = ch->first_affect; paf != NULL; paf = paf->next )
-   {
-      fprintf( fp, "Affect %3d %3d %3d %3d %10d\n", paf->type, paf->duration, paf->modifier, paf->location, paf->bitvector );
-   }
 #ifdef IMC
    imc_savechar( ch, fp );
 #endif
 #ifdef I3
    i3save_char( ch, fp );
 #endif
+   }
+
+   for( paf = ch->first_affect; paf != NULL; paf = paf->next )
+   {
+      fprintf( fp, "Affect %3d %3d %3d %3d %10d\n", paf->type, paf->duration, paf->modifier, paf->location, paf->bitvector );
+   }
+
    fprintf( fp, "End\n\n" );
    return;
 }
@@ -555,6 +583,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 {
    int cnt;
    static PC_DATA pcdata_zero;
+   static QUEST_INFO quest_info_zero;
    static RECORD_DATA record_zero;
    static SUPER_DATA super_zero;
    char strsave[MAX_INPUT_LENGTH];
@@ -609,6 +638,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    {
       GET_FREE( ch->pcdata, pcd_free );
       *ch->pcdata = pcdata_zero;
+      GET_FREE( ch->pcdata->quest_info, quest_info_free );
+      *ch->pcdata->quest_info = quest_info_zero;
       GET_FREE( ch->pcdata->records, record_free );
       *ch->pcdata->records = record_zero;
       GET_FREE( ch->pcdata->super, super_free );
@@ -631,6 +662,24 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->perm_wis = 13;
       ch->pcdata->perm_dex = 13;
       ch->pcdata->perm_con = 13;
+
+      for( foo = 0; foo < 5; foo++ )
+       ch->pcdata->quest_info->amount[foo] = -1;
+      ch->pcdata->quest_info->assault_type = 0;
+      ch->pcdata->quest_info->is_questing = FALSE;
+      ch->pcdata->quest_info->quest_complete = FALSE;
+      for( foo = 0; foo < 5; foo++ )
+       ch->pcdata->quest_info->quest_hint[foo] = -1;
+      for( foo = 0; foo < 5; foo++ )
+       ch->pcdata->quest_info->quest_item_vnum[foo] = 0;
+      for( foo = 0; foo < 5; foo++ )
+       ch->pcdata->quest_info->quest_mob_vnum[foo] = 0;
+      for( foo = 0; foo < 3; foo++ )
+       ch->pcdata->quest_info->quest_reward[foo] = 0;
+      ch->pcdata->quest_info->quest_type = 0;
+      ch->pcdata->quest_info->time_left = 0;
+      ch->pcdata->quest_info->wait_time = 0;
+
       ch->pcdata->records->crusade = 0;
       ch->pcdata->records->mdam_amt = 0;
       ch->pcdata->records->mdam_gsn = 0;
@@ -640,10 +689,13 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->records->pk = 0;
       ch->pcdata->records->md = 0;
       ch->pcdata->records->mk = 0;
-      ch->pcdata->records->mquest = 0;
+      ch->pcdata->records->mquest_c = 0;
+      ch->pcdata->records->mquest_f = 0;
       ch->pcdata->records->qp = 0;
       ch->pcdata->records->qp_tot = 0;
+
       ch->pcdata->super->energy = 24;
+
       ch->pcdata->condition[COND_THIRST] = 48;
       ch->pcdata->pagelen = 20;
       ch->pcdata->condition[COND_FULL] = 48;
@@ -667,17 +719,17 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       for( foo = 0; foo < MAX_CLASS; foo++ )
          ch->lvl2[foo] = -1;
       ch->adept_level = -1;
+      for( cnt = 0; cnt < MAX_ALIASES; cnt++ )
+      {
+         ch->pcdata->alias_name[cnt] = str_dup( "<none>" );
+         ch->pcdata->alias[cnt] = str_dup( "<none>" );
+      }
 #ifdef IMC
       imc_initchar( ch );
 #endif
 #ifdef I3
       i3init_char( ch );
 #endif
-      for( cnt = 0; cnt < MAX_ALIASES; cnt++ )
-      {
-         ch->pcdata->alias_name[cnt] = str_dup( "<none>" );
-         ch->pcdata->alias[cnt] = str_dup( "<none>" );
-      }
    }
    else
    {
@@ -913,32 +965,22 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "Alignment", ch->alignment, fread_number( fp ) );
             KEY( "Armor", ch->armor, fread_number( fp ) );
             KEY( "Adeptlevel", ch->adept_level, fread_number( fp ) );
-            SKEY( "AssistMsg", ch->pcdata->assist_msg, fread_string( fp ) );
             if( !IS_NPC( ch ) )
             {
+               SKEY( "AssistMsg", ch->pcdata->assist_msg, fread_string( fp ) );
+
                SKEY( "Alias_Name0", ch->pcdata->alias_name[0], fread_string( fp ) );
-
                SKEY( "Alias_Name1", ch->pcdata->alias_name[1], fread_string( fp ) );
-
                SKEY( "Alias_Name2", ch->pcdata->alias_name[2], fread_string( fp ) );
-
                SKEY( "Alias_Name3", ch->pcdata->alias_name[3], fread_string( fp ) );
-
                SKEY( "Alias_Name4", ch->pcdata->alias_name[4], fread_string( fp ) );
-
                SKEY( "Alias_Name5", ch->pcdata->alias_name[5], fread_string( fp ) );
 
-
                SKEY( "Alias0", ch->pcdata->alias[0], fread_string( fp ) );
-
                SKEY( "Alias1", ch->pcdata->alias[1], fread_string( fp ) );
-
                SKEY( "Alias2", ch->pcdata->alias[2], fread_string( fp ) );
-
                SKEY( "Alias3", ch->pcdata->alias[3], fread_string( fp ) );
-
                SKEY( "Alias4", ch->pcdata->alias[4], fread_string( fp ) );
-
                SKEY( "Alias5", ch->pcdata->alias[5], fread_string( fp ) );
             }
 
@@ -1053,7 +1095,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "Deaf", ch->deaf, fread_number( fp ) );
             SKEY( "Description", ch->description, fread_string( fp ) );
 
-            if( !str_cmp( word, "DimCol" ) )
+            if( !str_cmp( word, "DimCol" ) && !IS_NPC( ch ) )
             {
                char *temp;
                temp = fread_string( fp );
@@ -1075,8 +1117,11 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                return;
             }
             KEY( "Exp", ch->exp, fread_number( fp ) );
-            KEY( "EmailValid", ch->pcdata->valid_email, fread_number( fp ) );
-            SKEY( "Email", ch->pcdata->email_address, fread_string( fp ) );
+            if( !IS_NPC( ch ) )
+            {
+               KEY( "EmailValid", ch->pcdata->valid_email, fread_number( fp ) );
+               SKEY( "Email", ch->pcdata->email_address, fread_string( fp ) );
+            }
             break;
 
          case 'F':
@@ -1087,9 +1132,12 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'G':
-            KEY( "GainMana", ch->pcdata->mana_from_gain, fread_number( fp ) );
-            KEY( "GainHp", ch->pcdata->hp_from_gain, fread_number( fp ) );
-            KEY( "GainMove", ch->pcdata->move_from_gain, fread_number( fp ) );
+            if( !IS_NPC( ch ) )
+            {
+               KEY( "GainMana", ch->pcdata->mana_from_gain, fread_number( fp ) );
+               KEY( "GainHp", ch->pcdata->hp_from_gain, fread_number( fp ) );
+               KEY( "GainMove", ch->pcdata->move_from_gain, fread_number( fp ) );
+            }
 /*	    KEY( "Gold",        ch->gold,               fread_number( fp ) );  */
 
             if( !str_cmp( word, "Gold" ) )
@@ -1102,13 +1150,12 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
          case 'H':
             KEY( "Hitroll", ch->hitroll, fread_number( fp ) );
-/*	    if (!IS_NPC(ch))
-	    {  */
-            SKEY( "Host", ch->pcdata->host, fread_string( fp ) );
-/*            }  */
+            if( !IS_NPC( ch ) )
+	    {
+               SKEY( "Host", ch->pcdata->host, fread_string( fp ) );
+            }
 
-
-            if( !str_cmp( word, "HiCol" ) )
+            if( !str_cmp( word, "HiCol" ) && !IS_NPC( ch ) )
             {
                char *temp;
                temp = fread_string( fp );
@@ -1215,9 +1262,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'O':
             if( !str_cmp( word, "Order" ) && !IS_NPC( ch ) )
             {
-               int i;
-               for( i = 0; i < MAX_CLASS; i++ )
-                  ch->pcdata->order[i] = fread_number( fp );
+               for( cnt = 0; cnt < MAX_CLASS; cnt++ )
+                  ch->pcdata->order[cnt] = fread_number( fp );
                fMatch = TRUE;
                break;
             }
@@ -1237,27 +1283,78 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'Q':
-            KEY( "Questpoints", ch->pcdata->quest_points, fread_number( fp ) );
+            if( !IS_NPC( ch ) )
+            {
+               if( !str_cmp( word, "QuestAmount" ) )
+               {
+                  for( cnt = 0; cnt < 5; cnt++ )
+                     ch->pcdata->quest_info->amount[cnt] = fread_number( fp );
+                  fMatch = TRUE;
+                  break;
+               }
+               KEY( "QuestAsltType", ch->pcdata->quest_info->assault_type, fread_number( fp ) );
+               KEY( "QuestComplete", ch->pcdata->quest_info->quest_complete, fread_number( fp ) );
+               if( !str_cmp( word, "QuestHint" ) )
+               {
+                  for( cnt = 0; cnt < 5; cnt++ )
+                     ch->pcdata->quest_info->quest_hint[cnt] = fread_number( fp );
+                  fMatch = TRUE;
+                  break;
+               }
+               KEY( "QuestIsQuest", ch->pcdata->quest_info->is_questing, fread_number( fp ) );
+               if( !str_cmp( word, "QuestItem" ) )
+               {
+                  for( cnt = 0; cnt < 5; cnt++ )
+                     ch->pcdata->quest_info->quest_item_vnum[cnt] = fread_number( fp );
+                  fMatch = TRUE;
+                  break;
+               }
+               if( !str_cmp( word, "QuestMob" ) )
+               {
+                  for( cnt = 0; cnt < 5; cnt++ )
+                     ch->pcdata->quest_info->quest_mob_vnum[cnt] = fread_number( fp );
+                  fMatch = TRUE;
+                  break;
+               }
+               KEY( "QuestPoints", ch->pcdata->quest_points, fread_number( fp ) );
+               if( !str_cmp( word, "QuestReward" ) )
+               {
+                  for( cnt = 0; cnt < 3; cnt++ )
+                     ch->pcdata->quest_info->quest_reward[cnt] = fread_number( fp );
+                  fMatch = TRUE;
+                  break;
+               }
+               KEY( "QuestTimeLeft", ch->pcdata->quest_info->time_left, fread_number( fp ) );
+               KEY( "QuestType", ch->pcdata->quest_info->quest_type, fread_number( fp ) );
+               KEY( "QuestWaitTime", ch->pcdata->quest_info->wait_time, fread_number( fp ) );
+            }
             break;
 
          case 'R':
             KEY( "Race", ch->race, fread_number( fp ) );
-            KEY( "RecCrusade", ch->pcdata->records->crusade, fread_number( fp ) );
-            KEY( "RecMdamAmt", ch->pcdata->records->mdam_amt, fread_number( fp ) );
-            KEY( "RecMdamGsn", ch->pcdata->records->mdam_gsn, fread_number( fp ) );
-            KEY( "RecPdamAmt", ch->pcdata->records->pdam_amt, fread_number( fp ) );
-            KEY( "RecPdamGsn", ch->pcdata->records->pdam_gsn, fread_number( fp ) );
-            KEY( "RecPD", ch->pcdata->records->pd, fread_number( fp ) );
-            KEY( "RecPK", ch->pcdata->records->pk, fread_number( fp ) );
-            KEY( "RecMD", ch->pcdata->records->md, fread_number( fp ) );
-            KEY( "RecMK", ch->pcdata->records->mk, fread_number( fp ) );
-            KEY( "RecMquest", ch->pcdata->records->mquest, fread_number( fp ) );
-            KEY( "RecQP", ch->pcdata->records->qp, fread_number( fp ) );
-            KEY( "RecQpTot", ch->pcdata->records->qp_tot, fread_number( fp ) );
+            if( !IS_NPC( ch ) )
+            {
+               KEY( "RecCrusade", ch->pcdata->records->crusade, fread_number( fp ) );
+               KEY( "RecMdamAmt", ch->pcdata->records->mdam_amt, fread_number( fp ) );
+               KEY( "RecMdamGsn", ch->pcdata->records->mdam_gsn, fread_number( fp ) );
+               KEY( "RecPdamAmt", ch->pcdata->records->pdam_amt, fread_number( fp ) );
+               KEY( "RecPdamGsn", ch->pcdata->records->pdam_gsn, fread_number( fp ) );
+               KEY( "RecPD", ch->pcdata->records->pd, fread_number( fp ) );
+               KEY( "RecPK", ch->pcdata->records->pk, fread_number( fp ) );
+               KEY( "RecMD", ch->pcdata->records->md, fread_number( fp ) );
+               KEY( "RecMK", ch->pcdata->records->mk, fread_number( fp ) );
+               KEY( "RecMquestC", ch->pcdata->records->mquest_c, fread_number( fp ) );
+               KEY( "RecMquestF", ch->pcdata->records->mquest_f, fread_number( fp ) );
+               KEY( "RecQP", ch->pcdata->records->qp, fread_number( fp ) );
+               KEY( "RecQpTot", ch->pcdata->records->qp_tot, fread_number( fp ) );
+            }
             KEY( "Revision", cur_revision, fread_number( fp ) );
-            SKEY( "Roomenter", ch->pcdata->room_enter, fread_string( fp ) );
-            SKEY( "Roomexit", ch->pcdata->room_exit, fread_string( fp ) );
-            KEY( "RulerRank", ch->pcdata->ruler_rank, fread_number( fp ) );
+            if( !IS_NPC( ch ) )
+            {
+               SKEY( "Roomenter", ch->pcdata->room_enter, fread_string( fp ) );
+               SKEY( "Roomexit", ch->pcdata->room_exit, fread_string( fp ) );
+               KEY( "RulerRank", ch->pcdata->ruler_rank, fread_number( fp ) );
+            }
 
             if( !str_cmp( word, "Remort" ) )
             {
@@ -1275,11 +1372,12 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                fMatch = TRUE;
                break;
             }
-            KEY( "RecallVnum", ch->pcdata->recall_vnum, fread_number( fp ) );
+            if( !IS_NPC( ch ) )
+            {
+               KEY( "RecallVnum", ch->pcdata->recall_vnum, fread_number( fp ) );
+            }
 
             break;
-
-
 
          case 'S':
             KEY( "SavingThrow", ch->saving_throw, fread_number( fp ) );
@@ -1305,24 +1403,28 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                fMatch = TRUE;
             }
 
-            KEY( "SupBloodline", ch->pcdata->super->bloodline, fread_number( fp ) );
-            KEY( "SupEnergy", ch->pcdata->super->energy, fread_number( fp ) );
-            KEY( "SupEnergyMax", ch->pcdata->super->energy_max, fread_number( fp ) );
-            KEY( "SupExp", ch->pcdata->super->exp, fread_number( fp ) );
-            KEY( "SupGeneration", ch->pcdata->super->generation, fread_number( fp ) );
-            KEY( "SupLevel", ch->pcdata->super->level, fread_number( fp ) );
-            KEY( "SupPracs", ch->pcdata->super->pracs, fread_number( fp ) );
-            KEY( "SupSkillLearn", ch->pcdata->super->skills_learned, fread_number( fp ) );
-            KEY( "SupSkillMax", ch->pcdata->super->skills_max, fread_number( fp ) );
-
+            if( !IS_NPC( ch ) )
+            {
+               KEY( "SupBloodline", ch->pcdata->super->bloodline, fread_number( fp ) );
+               KEY( "SupEnergy", ch->pcdata->super->energy, fread_number( fp ) );
+               KEY( "SupEnergyMax", ch->pcdata->super->energy_max, fread_number( fp ) );
+               KEY( "SupExp", ch->pcdata->super->exp, fread_number( fp ) );
+               KEY( "SupGeneration", ch->pcdata->super->generation, fread_number( fp ) );
+               KEY( "SupLevel", ch->pcdata->super->level, fread_number( fp ) );
+               KEY( "SupPracs", ch->pcdata->super->pracs, fread_number( fp ) );
+               KEY( "SupSkillLearn", ch->pcdata->super->skills_learned, fread_number( fp ) );
+               KEY( "SupSkillMax", ch->pcdata->super->skills_max, fread_number( fp ) );
+            }
             break;
 
          case 'T':
             KEY( "Trust", ch->trust, fread_number( fp ) );
-            KEY( "TermRows", ch->pcdata->term_rows, fread_number( fp ) );
-            KEY( "TermColumns", ch->pcdata->term_columns, fread_number( fp ) );
-            SKEY( "Title", ch->pcdata->title, fread_string( fp ) );
-
+            if( !IS_NPC( ch ) )
+            {
+               KEY( "TermRows", ch->pcdata->term_rows, fread_number( fp ) );
+               KEY( "TermColumns", ch->pcdata->term_columns, fread_number( fp ) );
+               SKEY( "Title", ch->pcdata->title, fread_string( fp ) );
+            }
             break;
 
          case 'V':
@@ -1337,7 +1439,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'W':
             KEY( "Wimpy", ch->wimpy, fread_number( fp ) );
             KEY( "Wizbit", ch->wizbit, fread_number( fp ) );
-            if( !str_cmp( word, "Whoname" ) )
+            if( !str_cmp( word, "Whoname" ) && !IS_NPC( ch ) )
             {
                char buf[MSL];
 

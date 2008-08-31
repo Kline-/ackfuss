@@ -24,6 +24,7 @@ only certain features or by color (type help color). They are as follows:
         %! :  Hitroll
         %+ :  Damroll
         %* :  AC
+        %Q :  Time remaining until next mquest is available
 
         Immortal Only:
 

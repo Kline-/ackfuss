@@ -78,7 +78,8 @@ NPC_GROUP_DATA *first_npc_group = NULL;
 NPC_GROUP_DATA *last_npc_group = NULL;
 FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
-
+QUEST_INFO *first_quest_info = NULL;
+QUEST_INFO *last_quest_info = NULL;
 
 
 PORTAL_DATA *portal_free = NULL;
@@ -125,6 +126,7 @@ BUF_DATA_STRUCT *buf_free = NULL;
 HASH_ENTRY *hash_free = NULL;
 NPC_GROUP_DATA *npc_group_free = NULL;
 FIGHT_DATA *fight_free = NULL;
+QUEST_INFO *quest_info_free = NULL;
 
 void ( *portal_free_destructor ) ( PORTAL_DATA * pdat ) = NULL;
 void ( *affect_free_destructor ) ( AFFECT_DATA * adat ) = NULL;
@@ -296,6 +298,10 @@ void record_free_destructor( RECORD_DATA *recorddat )
 void fight_free_destructor( FIGHT_DATA *fight )
 {
  fight->ch = NULL;
+}
+
+void quest_info_free_destructor( QUEST_INFO *quest )
+{
 }
 
 void char_free_destructor( CHAR_DATA * cdat )

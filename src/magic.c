@@ -1898,12 +1898,9 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
          act( "The hum surrounding $p fades.", ch, ob, NULL, TO_CHAR );
          act( "The hum surrounding $p fades.", ch, ob, NULL, TO_ROOM );
       }
-      if( IS_SET( ob->extra_flags, ITEM_DARK ) )
-      {
-         REMOVE_BIT( ob->extra_flags, ITEM_DARK );
-         act( "$p looks brighter.", ch, ob, NULL, TO_CHAR );
-         act( "$p looks brighter.", ch, ob, NULL, TO_ROOM );
-      }
+      if( IS_SET( ob->extra_flags, ITEM_NODISARM ) )
+         REMOVE_BIT( ob->extra_flags, ITEM_NODISARM );
+
       if( IS_SET( ob->extra_flags, ITEM_EVIL ) )
       {
          REMOVE_BIT( ob->extra_flags, ITEM_EVIL );

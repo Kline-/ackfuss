@@ -931,7 +931,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
       deposit_money( ch, argument );
       xprintf( buf, "You deposit %s.  Your new balance is %s.\n\r", argument, money_string( ch->bank_money ) );
       send_to_char( buf, ch );
-      do_save( ch, "" );
+      do_save( ch, "auto" );
       return;
 
    }
@@ -949,7 +949,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
          xprintf( buf, "You were unable to withdraw %s.\n\r", argument );
       }
       send_to_char( buf, ch );
-      do_save( ch, "" );
+      do_save( ch, "auto" );
       return;
    }
 

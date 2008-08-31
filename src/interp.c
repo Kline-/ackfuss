@@ -560,6 +560,10 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_ACTION, C_SHOW_ALWAYS},
    {"census", do_census, POS_STANDING, L_HER, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS},
+   {"mquest", do_mquest, POS_STANDING, 0, LOG_NORMAL,
+    C_TYPE_ACTION, C_SHOW_ALWAYS},
+   {"qstat", do_qstat, POS_STANDING, L_HER, LOG_NORMAL,
+    C_TYPE_IMM, C_SHOW_ALWAYS},
 
 
    /*

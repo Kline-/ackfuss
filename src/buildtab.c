@@ -494,6 +494,8 @@ const struct lookup_type tab_mob_flags[] = {
    {"werewolf", BIT_27, NO_USE},
    {"mount", BIT_28, 1000},
    {"no_blood", BIT_29, 4000},
+   {"no_quest", BIT_30, 0},
+   {"questmaster", BIT_31, 0},
    {NULL, 0}
 };
 
@@ -740,6 +742,7 @@ const struct lookup_type tab_obj_flags[] = {
    {"trigger:destroy", 65536, 10},
    {"no_auction", 131072, 0},
    {"remort", 262144, 9},
+   {"adept", BIT_20, 12},
    {"rare", 1048576, 1000},
    {"vamp", 2097152, 9},
    {"noloot", 4194304, 20},
@@ -747,6 +750,7 @@ const struct lookup_type tab_obj_flags[] = {
    {"unique", 16777216, 100},
    {"lifestealer", BIT_26, 100},
    {"silver", BIT_27, 100},
+   {"noquest", BIT_28, 0},
    {NULL, 0}
 };
 

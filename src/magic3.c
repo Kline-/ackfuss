@@ -1385,7 +1385,7 @@ bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    send_to_char( "@@NYou condense the soul and some of your life force into your weapon.\n\r", ch );
    ch->max_hit -= 100;
    ch->pcdata->hp_from_gain -= 100;
-   do_save( ch, "" );
+   do_save( ch, "auto" );
    return TRUE;
 }
 

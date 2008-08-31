@@ -1351,6 +1351,9 @@ void char_update( void )
          ch->sitting = NULL;
       }
 
+      /* Update mquest status */
+      update_mquest_wait_time(ch);
+
       if( ch->position >= POS_STUNNED )
       {
          /*

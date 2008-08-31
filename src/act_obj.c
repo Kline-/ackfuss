@@ -232,7 +232,7 @@ void do_get( CHAR_DATA * ch, char *argument )
                save_corpses(  );
          }
          if( ch->level > 1 )
-            do_save( ch, "" );
+            do_save( ch, "auto" );
          return;
       }
       else
@@ -267,7 +267,7 @@ void do_get( CHAR_DATA * ch, char *argument )
             }
          }
          if( ch->level > 1 )
-            do_save( ch, "" );
+            do_save( ch, "auto" );
 
 
          return;
@@ -291,7 +291,7 @@ void do_get( CHAR_DATA * ch, char *argument )
             }
          }
          if( found && ch->level > 1 )
-            do_save( ch, "" );
+            do_save( ch, "auto" );
 
          if( !found && !get_ok )
          {
@@ -384,14 +384,14 @@ void do_get( CHAR_DATA * ch, char *argument )
             return;
          }
          if( ch->level > 1 )
-            do_save( ch, "" );
+            do_save( ch, "auto" );
 
 
          return;
       }
    }
    if( ch->level > 1 )
-      do_save( ch, "" );
+      do_save( ch, "auto" );
 
 
    return;
@@ -545,7 +545,7 @@ void do_put( CHAR_DATA * ch, char *argument )
          }
       }
       if( ch->level > 2 )
-         do_save( ch, "" );
+         do_save( ch, "auto" );
       return;
    }
 
@@ -634,7 +634,7 @@ void do_drop( CHAR_DATA * ch, char *argument )
          }
       }
       if( ch->level > 1 )
-         do_save( ch, "" );
+         do_save( ch, "auto" );
       return;
    }
 
@@ -665,7 +665,7 @@ void do_drop( CHAR_DATA * ch, char *argument )
    }
 
    if( found && ch->level > 1 )
-      do_save( ch, "" );
+      do_save( ch, "auto" );
    return;
 }
 
@@ -868,7 +868,7 @@ void do_give( CHAR_DATA * ch, char *argument )
       }
    }
    if( ch->level > 1 )
-      do_save( victim, "" );
+      do_save( victim, "auto" );
 
 
    return;
@@ -2042,7 +2042,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
       /*
        * Force a save, to prevent cheaters claiming reimb rights.
        */
-      do_save( ch, "" );
+      do_save( ch, "auto" );
       return;
    }
 
@@ -3261,7 +3261,7 @@ void do_donate( CHAR_DATA * ch, char *argument )
    {
       extract_obj( obj );
    }
-   do_save( ch, "" );
+   do_save( ch, "auto" );
 }
 
 void do_adapt( CHAR_DATA * ch, char *argument )
@@ -3520,7 +3520,7 @@ void do_cdonate( CHAR_DATA * ch, char *argument )
    {
       extract_obj( obj );
    }
-   do_save( ch, "" );
+   do_save( ch, "auto" );
    return;
 }
 

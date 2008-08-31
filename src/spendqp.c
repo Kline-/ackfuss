@@ -349,7 +349,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             free_string( ch->pcdata->pedit_state );
             ch->pcdata->pedit_state = str_dup( "none" );
             ch->pcdata->quest_points -= qp_cost;
-            do_save( ch, "" );
+            do_save( ch, "auto" );
             {
                BRAND_DATA *brand;
                DL_LIST *brand_member;
@@ -424,7 +424,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          ch->pcdata->pedit_state = str_dup( "none" );
          send_to_char( "Done!\n\r", ch );
          ch->pcdata->quest_points -= 3;
-         do_save( ch, "" );
+         do_save( ch, "auto" );
          {
             BRAND_DATA *brand;
             DL_LIST *brand_member;
@@ -474,7 +474,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          do_look( ch, "" );
          act( "$n steps into the room from a @@apulsating @@mvortex@@N.", ch, NULL, NULL, TO_ROOM );
          ch->pcdata->quest_points -= 10;
-         do_save( ch, "" );
+         do_save( ch, "auto" );
          return;
       }
    }
@@ -502,7 +502,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
             ch->pcdata->recall_vnum = ch->in_room->vnum;
             ch->pcdata->quest_points -= 50;
-            do_save( ch, "" );
+            do_save( ch, "auto" );
             send_to_char( "You know call this room your home, and will recall here!\n\r", ch );
             return;
          }
@@ -545,7 +545,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             act( "Couldn't find it.", ch, NULL, NULL, TO_CHAR );
          }
          ch->pcdata->quest_points -= 10;
-         do_save( ch, "" );
+         do_save( ch, "auto" );
          return;
       }
    }

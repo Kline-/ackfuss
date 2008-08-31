@@ -2907,6 +2907,12 @@ void free_char( CHAR_DATA * ch )
 #ifdef I3
       free_i3chardata( ch );
 #endif
+      if( ch->pcdata->super )
+       PUT_FREE( ch->pcdata->super, super_free );
+      if( ch->pcdata->records )
+       PUT_FREE( ch->pcdata->records, record_free );
+      if( ch->pcdata->quest_info )
+       PUT_FREE( ch->pcdata->quest_info, quest_info_free );
       PUT_FREE( ch->pcdata, pcd_free );
    }
 
@@ -3574,7 +3580,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
    xprintf( buf, "Perms             %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
    send_to_char( buf, ch );
 
-   xprintf( buf, "Freelist Info: Gets: %5d Puts: %5d\n\r",free_get,free_put);
+   xprintf( buf, "Freelist Info: Gets: %5d Puts:   %5d\n\r",free_get,free_put);
    send_to_char( buf, ch );
 
    xprintf( buf, "File Streams: Opens: %5d Closes: %5d\n\r",fp_open,fp_close);

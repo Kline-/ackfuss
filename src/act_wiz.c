@@ -2531,7 +2531,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
       send_to_char( "  str int wis dex con sex class level\n\r", ch );
-      send_to_char( "  gold hp mana move practice align\n\r", ch );
+      send_to_char( "  gold hp mana move practice align mquest_time\n\r", ch );
       send_to_char( "  thirst drunk full race hunt flags aff recall\n\r", ch );
       send_to_char( "  order (Sumpremes and higher only)\n\r", ch );
       send_to_char( "\n\r", ch );
@@ -2646,13 +2646,6 @@ void do_mset( CHAR_DATA * ch, char *argument )
          SET_BIT( victim->act, ACT_INTELLIGENT );
       }
    }
-
-
-
-
-
-
-
 
    if( !str_cmp( arg2, "str" ) )
    {
@@ -2883,6 +2876,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
       victim->level = value;
       return;
    }
+
    if( !str_cmp( arg2, "timer" ) )
    {
       if( !IS_NPC( victim ) )
@@ -2973,9 +2967,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
          send_to_char( "They are not a supernatural!!\n\r", ch );
       return;
 
-
    }
-
 
    if( !str_cmp( arg2, "thirst" ) )
    {
@@ -3070,6 +3062,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
          SET_BIT( victim->pcdata->pflags, value );
       return;
    }
+
    if( !str_cmp( arg2, "aff" ) )
    {
       if( IS_NPC( victim ) )
@@ -3154,9 +3147,6 @@ void do_mset( CHAR_DATA * ch, char *argument )
       return;
    }
 
-
-
-
    if( !str_cmp( arg2, "exit" ) )
    {
       if( IS_NPC( victim ) )
@@ -3210,6 +3200,23 @@ void do_mset( CHAR_DATA * ch, char *argument )
       }
 
       return;
+   }
+
+   if( !str_cmp( arg2, "mquest_time" ) )
+   {
+    if( IS_NPC(victim) )
+    {
+     send_to_char("Not on NPC's.\n\r",ch);
+     return;
+    }
+    if( value < 0 )
+    {
+     send_to_char("Valid values are above -1.\n\r",ch);
+     return;
+    }
+    victim->pcdata->quest_info->wait_time = value;
+    send_to_char("New wait time has been set.\n\r",ch);
+    return;
    }
 
    /*
@@ -3854,7 +3861,7 @@ void do_wizify( CHAR_DATA * ch, char *argument )
       act( "$n has dewizzed you!\n\r", ch, NULL, victim, TO_VICT );
    }
 
-   do_save( victim, "" );
+   do_save( victim, "auto" );
    return;
 }
 
@@ -4242,7 +4249,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
          xprintf( buf, " %s %s", victim->name, get_adept_name( victim ) );
          do_whoname( ch, buf );
          victim->exp = 0;
-         do_save( victim, "" );
+         do_save( victim, "auto" );
          return;
       }
    }
@@ -4946,9 +4953,11 @@ struct monitor_type monitor_table[] = {
    {"room", MONITOR_ROOM, 83, "@@e", "ROOM",
     "[ ROOM         ] You are informed of problems involved with rooms.\n\r",
     "[ room         ] Not informed of problems with rooms.\n\r"},
+
    {"magic", MONITOR_MAGIC, 83, "@@a", "MAGIC",
     "[ MAGIC        ] You are informed of various spell casting info.\n\r",
     "[ magic        ] Not informed of spell casting info.\n\r"},
+
    {"imm_general", MONITOR_GEN_IMM, 85, "@@y", "IMM_GEN",
     "[ IMM_GENERAL  ] You are notified of use of logged immortal commands.\n\r",
     "[ imm_general  ] You are not told of the use of logged immortal commands.\n\r"},
@@ -4976,15 +4985,23 @@ struct monitor_type monitor_table[] = {
    {"bad", MONITOR_BAD, 85, "@@W", "BAD",
     "[ BAD          ] You are told of 'bad' things players (try to) do!\n\r",
     "[ bad          ] Not told of 'bad' things players do.\n\r"},
+
    {"debug", MONITOR_DEBUG, 85, "@@W", "DEBUG",
     "[ DEBUG        ] You are watching code debugging info!\n\r",
     "[ debug        ] Not watching code debugging info.\n\r"},
+
    {"imc", MONITOR_IMC, 84, "@@W", "IMC",
     "[ IMC          ] You are told of imc net traffic.\n\r",
     "[ imc          ] Not told of imc net traffic.\n\r"},
+
    {"system", MONITOR_SYSTEM, 84, "@@W", "SYSTEM",
     "[ SYSTEM       ] You are told of system messages.\n\r",
     "[ system       ] Not told of system messages.\n\r"},
+
+   {"help", MONITOR_HELPS, 82, "@@W", "HELP",
+    "[ HELP         ] You are told of all missing helpfiles.\n\r",
+    "[ help         ] Not told about missing helpfiles.\n\r"},
+
    {NULL, 0, 0, NULL, NULL}
 };
 

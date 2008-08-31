@@ -107,6 +107,9 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
     xcat(buf,buf2);
    }
 
+   /* Check for mquest target */
+   display_obj_target(ch,obj);
+
    if( IS_OBJ_STAT( obj, ITEM_INVIS ) )
       xcat( buf, "(Invis) " );
 
@@ -363,6 +366,8 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    xprintf( buf, "%s", color_string( ch, "mobiles" ) );
    buf2[0] = '\0';
 
+   /* Check for mquest target */
+   display_mob_target(ch,victim);
 
 /* This is temporary....
  * Zen  WOLF
@@ -1616,6 +1621,11 @@ void do_score( CHAR_DATA * ch, char *argument )
     xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
     send_to_char( buf, ch );
 
+    xprintf( buf2, "@@WYou have completed @@y%d @@Wmquests and failed @@y%d@@W.",
+     ch->pcdata->records->mquest_c, ch->pcdata->records->mquest_f );
+    xprintf( buf, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
+    send_to_char( buf, ch );
+
    }
 
    xprintf( buf, "+===============================================================+@@g\n\r" );
@@ -1858,7 +1868,7 @@ void do_help( CHAR_DATA * ch, char *argument )
    send_to_char(buf,ch);
   file_close(fp);
  }
- else if( !IS_IMMORTAL(ch) )
+ else if( !IS_IMMORTAL(ch) && !found )
  {
   if( !shelp )
   {
@@ -3874,27 +3884,33 @@ void do_config( CHAR_DATA * ch, char *argument )
                     : "@@d[@@c-blank    @@d]@@c You have no blank line before your prompt.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_BRIEF )
-                    ? "@@d[@@a+BRIEF    @@d]@@a You see brief descriptions.\n\r" : "@@d[-brief    @@d]@@c You see long descriptions.@@N\n\r", ch );
+                    ? "@@d[@@a+BRIEF    @@d]@@a You see brief descriptions.\n\r"
+                    : "@@d[@@c-brief    @@d]@@c You see long descriptions.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_COMBINE )
                     ? "@@d[@@a+COMBINE  @@d]@@a You see object lists in combined format.@@N\n\r"
                     : "@@d[@@c-combine  @@d]@@c You see object lists in single format.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_PROMPT )
-                    ? "@@d[@@a+PROMPT   @@d]@@a You have a prompt.\n\r" : "@@d[-prompt   @@d]@@c You don't have a prompt.@@N\n\r", ch );
+                    ? "@@d[@@a+PROMPT   @@d]@@a You have a prompt.\n\r"
+                    : "@@d[@@c-prompt   @@d]@@c You don't have a prompt.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_TELNET_GA )
                     ? "@@d[@@a+TELNETGA @@d]@@a You receive a telnet GA sequence.@@N\n\r"
                     : "@@d[@@c-telnetga @@d]@@c You don't receive a telnet GA sequence.@@N\n\r", ch );
+
       send_to_char( IS_SET( ch->config, CONFIG_FULL_ANSI )
                     ? "@@d[@@a+FULLANSI @@d]@@a Your client supports FULL ANSI.@@N\n\r"
                     : "@@d[@@c-fullansi @@d]@@c Your client does not support full ANSI (GMUD).@@N\n\r", ch );
+
       send_to_char( IS_SET( ch->config, CONFIG_MAPPER )
                     ? "@@d[@@a+DISPLAY  @@d]@@a You are viewing the ASCII display map!@@N\n\r"
                     : "@@d[@@c-display  @@d]@@c Your are not viewing the ASCII display map.@@N\n\r", ch );
+
       send_to_char( IS_SET( ch->config, CONFIG_JUSTIFY )
                     ? "@@d[@@a+JUSTIFY  @@d]@@a You are viewing rooms in space justified format.@@N\n\r"
                     : "@@d[@@c-justify  @@d]@@c Your are not viewing rooms space justified.@@N\n\r", ch );
+
       send_to_char( IS_SET( ch->act, PLR_NO_PRAY ) ? "@@d[@@a+NOPRAY   @@d]@@a You cannot use 'pray'.@@N\n\r" : "", ch );
 
       send_to_char( IS_SET( ch->act, PLR_SILENCE ) ? "@@d[@@a+SILENCE  @@d]@@a You are silenced.@@N\n\r" : "", ch );
@@ -5041,7 +5057,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
       ch->pcdata->super->exp -= vamp_cost;
       advance_level( ch, c, TRUE, remort );
       ch->pcdata->super->level += 1;
-      do_save( ch, "" );
+      do_save( ch, "auto" );
       return;
    }
    else if( wolf )
@@ -5058,7 +5074,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
       ch->pcdata->super->exp -= vamp_cost;
       advance_level( ch, c, TRUE, remort );
       ch->pcdata->super->level += 1;
-      do_save( ch, "" );
+      do_save( ch, "auto" );
       return;
    }
    else if( vamp )
@@ -5077,7 +5093,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
       info( buf, 1 );
       free_string( ch->pcdata->who_name );
       ch->pcdata->who_name = str_dup( get_adept_name( ch ) );
-      do_save( ch, "" );
+      do_save( ch, "auto" );
       if( ch->adept_level == 1 )
          ch->exp /= 1000;
       return;
@@ -5162,7 +5178,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
       if( ch->lvl2[subpop] > ch->level )
          ch->level = ch->lvl2[subpop];
    }
-   do_save( ch, "" );
+   do_save( ch, "auto" );
    return;
 }
 
@@ -5865,7 +5881,7 @@ void do_loot( CHAR_DATA * ch, char *argument )
              */
             if( ch->level > 1 )
             {
-               do_save( ch, "" );
+               do_save( ch, "auto" );
             }
          }
          else
