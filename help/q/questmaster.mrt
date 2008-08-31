@@ -1,0 +1,20 @@
+MQUEST QUESTMASTER
+
+The questmaster system is now active. There are four commands available.
+mquest request - gets a quest if a questmaster mob is in the room.
+mquest giveup  - abandons a quest. This has a slight penalty.
+mquest info    - display the relevant information about the quest.
+mquest complete- hands in the quest if a questmaster mob is in the room.
+mquest handin  - hands in currently held quest items to a questmaster.
+mquest hint #  - Gives a hint for task ## in your quest list.
+                 Your rewards will be reduced completely if you require
+                 hints for each task.
+Currently, there are four types of quests.
+A (+) indicates a bonus reward. If the amount to retrieve is larger than 1,
+there is typically a small bonus associated as well.
+item retrieval   - Retrieve a certain # of a certain item.
+multi-item retrieval   - Retrieve a certain # of numerous items (+)
+creature killing  - Hunt down and destroy a certain # of a mob
+multi-creature killing - Hunt down and destroy a certian # of numerous mobs (+)
+There are plans to expand this system to allow for more complex, group
+or mudwide quests in the future.

@@ -1318,7 +1318,7 @@ struct quest_info
  sh_int assault_type;
  bool is_questing;
  bool quest_complete;
- int quest_hint[5];
+ bool quest_hint[5];
  int quest_item_vnum[5];
  int quest_mob_vnum[5];
  sh_int quest_reward[3];
@@ -1614,8 +1614,8 @@ void mprog_random_trigger args( ( CHAR_DATA * mob ) );
 void mprog_speech_trigger args( ( char *txt, CHAR_DATA * mob ) );
 
 /* mquest.c */
-void display_mob_target      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
-void display_obj_target      args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
+char *display_mob_target     args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
+char *display_obj_target     args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
 void update_mquest_wait_time args( ( CHAR_DATA *ch ) );
 void update_mquest_kill      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 

@@ -372,6 +372,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "%d ", ch->pcdata->quest_info->amount[foo] );
        fprintf( fp, "\n" );
       fprintf( fp, "QuestAsltType  %d\n", ch->pcdata->quest_info->assault_type );
+      fprintf( fp, "QuestComplete  %d\n", ch->pcdata->quest_info->quest_complete );
       fprintf( fp, "QuestHint      " );
        for( foo = 0; foo < 5; foo++ )
         fprintf( fp, "%d ", ch->pcdata->quest_info->quest_hint[foo] );
@@ -669,7 +670,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->quest_info->is_questing = FALSE;
       ch->pcdata->quest_info->quest_complete = FALSE;
       for( foo = 0; foo < 5; foo++ )
-       ch->pcdata->quest_info->quest_hint[foo] = -1;
+       ch->pcdata->quest_info->quest_hint[foo] = FALSE;
       for( foo = 0; foo < 5; foo++ )
        ch->pcdata->quest_info->quest_item_vnum[foo] = 0;
       for( foo = 0; foo < 5; foo++ )

@@ -685,7 +685,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
 
    tmp_dt = dt;
 
-   if( dt == gsn_circle || dt == gsn_backstab || gsn_charge ) /* Ugly workarounds for records and dam management --Kline */
+   if( dt == gsn_circle || dt == gsn_backstab || dt == gsn_charge ) /* Ugly workarounds for records and dam management --Kline */
     dt = -1;
 
    if( victim->is_free == TRUE )

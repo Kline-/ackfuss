@@ -2530,7 +2530,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
       send_to_char( "or:     mset <victim> <string> <value>\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
-      send_to_char( "  str int wis dex con sex class level\n\r", ch );
+      send_to_char( "  str int wis dex con sex class level exp\n\r", ch );
       send_to_char( "  gold hp mana move practice align mquest_time\n\r", ch );
       send_to_char( "  thirst drunk full race hunt flags aff recall\n\r", ch );
       send_to_char( "  order (Sumpremes and higher only)\n\r", ch );
@@ -3216,6 +3216,13 @@ void do_mset( CHAR_DATA * ch, char *argument )
     }
     victim->pcdata->quest_info->wait_time = value;
     send_to_char("New wait time has been set.\n\r",ch);
+    return;
+   }
+
+   if( !str_cmp( arg2, "exp" ) )
+   {
+    victim->exp = value;
+    send_to_char("Done.\n\r",ch);
     return;
    }
 
