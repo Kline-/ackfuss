@@ -32,6 +32,12 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_MONEY_H
+#include "money.h"
+#endif
+
+extern int top_mob_index;
+
 /**** Local Functions ****/
 CHAR_DATA *get_quest_target args( ( int min_level, int max_level ) );
 CHAR_DATA *get_quest_giver args( ( int min_level, int max_level ) );
@@ -230,8 +236,8 @@ void do_quest( CHAR_DATA * ch, char *argument )
       xprintf( buf, "Target Object is: %s.\n\r", quest_object->short_descr );
       send_to_char( buf, ch );
 
-      xprintf( buf, "Quest Object is worth: %d QP, %d Prac, %d GP\n\r",
-               quest_object->value[0], quest_object->value[1], quest_object->value[2] );
+      xprintf( buf, "Quest Object is worth: %d QP, %d Prac, %s\n\r",
+               quest_object->value[0], quest_object->value[1], cost_to_money(quest_object->value[2]) );
       send_to_char( buf, ch );
 
 
@@ -393,15 +399,9 @@ CHAR_DATA *get_quest_target( int min_level, int max_level )
    CHAR_DATA *target;
    int min_index = 0;   /* the minimum number of times to go through the list */
 
-
-
-/*   int min_distance = 50; unused */
-/*   char *dirs = NULL; unused */
-
-
    if( max_level > 140 )
       max_level = 140;
-   min_index = number_range( 1, 1000 );
+   min_index = number_range(0,top_mob_index-1);
 
    for( target = first_char; target != NULL; target = target->next )
    {

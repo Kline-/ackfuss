@@ -107,8 +107,22 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  }
  else if( !str_prefix(argument,"giveup") )
  {
-  int pqp = 0, pgold = 0, pexp = 0;
+  CHAR_DATA *mob;
+  int pqp = 0, pgold = 0, pexp = 0, mn = 0;
+  char *cost;
+  char change[MSL], mbuf[MSL];
 
+  change[0] = '\0';
+  mbuf[0] = '\0';
+
+  for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
+   if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
+    break;
+  if( mob == NULL )
+  {
+   send_to_char("You have to be at a questmaster!\n\r",ch);
+   return;
+  }
   if( !ch->pcdata->quest_info->is_questing )
   {
    send_to_char("You are not currently on a quest!\n\r",ch);
@@ -141,10 +155,23 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   }
 
   ch->pcdata->quest_points -= pqp;
-  join_money(round_money(pgold * -1,TRUE),ch->money);
+  cost = take_best_coins(ch->money,pgold); /* Gives a string of the coins we need to steal. */
+  cost = one_argument(cost,change);        /* First arg is change, skip it. Rest is what we take. */
+  for( mn = 0; mn < MAX_CURRENCY; mn++ )
+  {
+   char m_number[MSL], m_name[MSL];
+   cost = one_argument(cost,m_number);
+   if( m_number[0] == '\0' )
+    break;
+   cost = one_argument(cost,m_name);
+   if( m_name[0] == '\0' )
+    break; 
+   if( m_number > 0 )
+    xcat(mbuf,"%s %s ",m_number,m_name);
+  }
   ch->exp -= pexp;
 
-  xprintf(buf,"Giving up on this quest has cost you %d qp, %s and %d exp.\n\r",pqp,cost_to_money(pgold),pexp);
+  xprintf(buf,"Giving up on this quest has cost you %d qp, %d exp, %s.\n\r",pqp,pexp,cost_to_money(money_to_value(ch,mbuf)));
   send_to_char(buf,ch);
   ch->pcdata->records->mquest_f++;
   ch->pcdata->quest_info->wait_time = number_range(10,15); /* higher wait time on giveup */
@@ -257,57 +284,55 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   int x = 0;
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-  {
    if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
     break;
-   if( mob == NULL )
+  if( mob == NULL )
+  {
+   send_to_char("You have to be at a questmaster!\n\r",ch);
+   return;
+  }
+  if( !ch->pcdata->quest_info->is_questing )
+  {
+   send_to_char("You aren't even on a quest! Request one first.\n\r",ch);
+   return;
+  }
+  if( ch->pcdata->quest_info->quest_type != QUEST_RETRIEVAL && ch->pcdata->quest_info->quest_type != QUEST_MULTI_RETRIEVE )
+  {
+   send_to_char("You aren't on an item retrieval quest, so you have nothing to hand in!\n\r",ch);
+   return;
+  }
+  for( i = 0; i < 5; i++) /* take objects */
+  {
+   if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 )
    {
-    send_to_char("You have to be at a questmaster!\n\r",ch);
-    return;
-   }
-   if( !ch->pcdata->quest_info->is_questing )
-   {
-    send_to_char("You aren't even on a quest! Request one first.\n\r",ch);
-    return;
-   }
-   if( ch->pcdata->quest_info->quest_type != QUEST_RETRIEVAL && ch->pcdata->quest_info->quest_type != QUEST_MULTI_RETRIEVE )
-   {
-    send_to_char("You aren't on an item retrieval quest, so you have nothing to hand in!\n\r",ch);
-    return;
-   }
-   for( i = 0; i < 5; i++) /* take objects */
-   {
-    if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 )
+    for( obj = ch->first_carry; obj != NULL && ch->pcdata->quest_info->amount[i] > 0; obj = obj_next )
     {
-     for( obj = ch->first_carry; obj != NULL && ch->pcdata->quest_info->amount[i] > 0; obj = obj_next )
+     obj_next = obj->next_in_carry_list;
+     if( ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum && obj->wear_loc == WEAR_NONE && !IS_SET(obj->extra_flags,ITEM_UNIQUE) )
      {
-      obj_next = obj->next_in_carry_list;
-      if( ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum && obj->wear_loc == WEAR_NONE && !IS_SET(obj->extra_flags,ITEM_UNIQUE) )
+      extract_obj(obj);
+      x++;
+      ch->pcdata->quest_info->amount[i]--;
+      if( ch->pcdata->quest_info->amount[i] == 0 )
       {
-       extract_obj(obj);
-       x++;
-       ch->pcdata->quest_info->amount[i]--;
-       if( ch->pcdata->quest_info->amount[i] == 0 )
-       {
-        xprintf(buf,"You have now handed in all the %s you needed for your quest.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr);
-        send_to_char(buf,ch);
-       }
+       xprintf(buf,"You have now handed in all the %s you needed for your quest.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr);
+       send_to_char(buf,ch);
       }
      }
-     if( x > 0 && ch->pcdata->quest_info->amount[i] != 0 )
-     {
-      xprintf(buf,"%s (%d) was handed into the questmaster.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,x);
-      send_to_char(buf,ch);
-     }
+    }
+    if( x > 0 && ch->pcdata->quest_info->amount[i] != 0 )
+    {
+     xprintf(buf,"%s (%d) was handed into the questmaster.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,x);
+     send_to_char(buf,ch);
     }
    }
-   ch->pcdata->quest_info->quest_complete = TRUE;
-   for( i = 0; i < 5; i++ )
-    if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 && ch->pcdata->quest_info->amount[i] > 0 )
-     ch->pcdata->quest_info->quest_complete = FALSE;
-   mquest_complete_message(ch);
-   do_save(ch,"auto");
   }
+  ch->pcdata->quest_info->quest_complete = TRUE;
+  for( i = 0; i < 5; i++ )
+   if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 && ch->pcdata->quest_info->amount[i] > 0 )
+    ch->pcdata->quest_info->quest_complete = FALSE;
+  mquest_complete_message(ch);
+  do_save(ch,"auto");
  }
  else if( !str_prefix(argument,"complete") )
  {
@@ -468,7 +493,8 @@ void mquest_info( CHAR_DATA *ch )
      xprintf(buf,"Your quest contract states that you must retrieve %d more of them.\n\r",ch->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
      xprintf(buf,"@@eHint:@@N They can be found in %s@@N!\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->area->name);
-     send_to_char(buf,ch);
+     if( ch->pcdata->quest_info->quest_hint[0] )
+      send_to_char(buf,ch);
     }
    }
    else
@@ -485,7 +511,8 @@ void mquest_info( CHAR_DATA *ch )
      xprintf(buf,"Your quest contract states that you must slay %d more of them.\n\r",ch->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
      xprintf(buf,"@@eHint:@@N They can be found in %s@@N!\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area->name);
-     send_to_char(buf,ch);
+     if( ch->pcdata->quest_info->quest_hint[0] )
+      send_to_char(buf,ch);
     }
     else
      send_to_char("You have fulfilled the kill requirements outlined in your contract.\n\r",ch);
@@ -501,7 +528,10 @@ void mquest_info( CHAR_DATA *ch )
     {
      xprintf(buf,"Target #%d: %s (%d)",i+1,get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,ch->pcdata->quest_info->amount[i]);
      send_to_char(buf,ch);
-     xprintf(buf," [%s]\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area->name);
+     if( ch->pcdata->quest_info->quest_hint[i] )
+      xprintf(buf," [%s]\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area->name);
+     else
+      xprintf(buf,"\n\r");
      send_to_char(buf,ch);
     }
    }
@@ -514,7 +544,10 @@ void mquest_info( CHAR_DATA *ch )
     {
      xprintf(buf,"Item #%d: %s (%d)",i+1,get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,ch->pcdata->quest_info->amount[i]);
      send_to_char(buf,ch);
-     xprintf(buf," [%s]\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->area->name);
+     if( ch->pcdata->quest_info->quest_hint[i] )
+      xprintf(buf," [%s]\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->area->name);
+     else
+      xprintf(buf,"\n\r");
      send_to_char(buf,ch);
     }
    }
@@ -544,6 +577,8 @@ void mquest_complete_message( CHAR_DATA *ch )
    else
    {
     send_to_char("Error calculating mquest reward. This should not happen.\n\r",ch);
+    ch->pcdata->quest_info->wait_time = 0;
+    mquest_clear(ch);
     return;
    }
    ch->pcdata->quest_info->quest_reward[0] *= (float)(1-((float)hint/(float)x));
@@ -553,7 +588,7 @@ void mquest_complete_message( CHAR_DATA *ch )
    send_to_char(buf,ch);
   }
 
-  xprintf(buf,"Quest Complete. You have earned %d qp, %s and %d experience!\n\r",ch->pcdata->quest_info->quest_reward[0],cost_to_money(ch->pcdata->quest_info->quest_reward[1]),ch->pcdata->quest_info->quest_reward[2]);
+  xprintf(buf,"Quest Complete. You have earned %d qp, $d experience, %s!\n\r",ch->pcdata->quest_info->quest_reward[0],cost_to_money(ch->pcdata->quest_info->quest_reward[1]),ch->pcdata->quest_info->quest_reward[2]);
   send_to_char(buf,ch);
 
   ch->pcdata->quest_points += ch->pcdata->quest_info->quest_reward[0];
