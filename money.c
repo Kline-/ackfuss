@@ -583,6 +583,43 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       send_to_char( "Done.\n\r", ch );
       return;
    }
+   if( !str_cmp( arg1, "delete" ) )
+   {
+      char m_name[MSL];
+      char m_number[MSL];
+      sh_int mn;
+      sh_int cnt;
+      MONEY_TYPE *transfer;
+      if( get_trust( ch ) < 84 )
+      {
+         send_to_char( "Huh?\n\r", ch );
+         return;
+      }
+      argument = one_argument( argument, arg1 );
+      argument = one_argument( argument, m_number );
+      argument = one_argument( argument, m_name );
+      if( ( mn = money_lookup( m_name ) ) < 0 )
+      {
+         send_to_char( "No such money unit.\n\r", ch );
+         return;
+      }
+      GET_FREE( transfer, money_type_free );
+#ifdef DEBUG_MONEY
+      {
+         char testbuf[MSL];
+         xprintf( testbuf, "mgive, %s, %s", ch->name, argument );
+         transfer->money_key = str_dup( testbuf );
+      }
+#endif
+
+      for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
+         transfer->cash_unit[cnt] = 0;
+      transfer->cash_unit[mn] -= ( is_number( m_number ) ? atoi( m_number ) : 10 );
+      victim->carry_weight -= money_weight( transfer );
+      join_money( transfer, victim->money );
+      send_to_char( "Done.\n\r", ch );
+      return;
+   }
    good_give = give_money( ch, victim, argument );
    if( good_give )
       send_to_char( "Gave it to them.\n\r", ch );
