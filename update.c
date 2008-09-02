@@ -1288,7 +1288,7 @@ void gain_update( void )
             ch->move += move_gain( ch );
          else if( ch->carry_weight >= can_carry_w( ch ) )
          {
-            send_to_char( "You are carrying so much wieght that you are @@eEXHAUSTED@@N!!\n\r", ch );
+            send_to_char( "You are carrying so much weight that you are @@eEXHAUSTED@@N!!\n\r", ch );
             ch->move = 0;
          }
 
