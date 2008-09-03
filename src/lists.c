@@ -78,10 +78,6 @@ NPC_GROUP_DATA *first_npc_group = NULL;
 NPC_GROUP_DATA *last_npc_group = NULL;
 FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
-QUEST_INFO *first_quest_info = NULL;
-QUEST_INFO *last_quest_info = NULL;
-
-
 PORTAL_DATA *portal_free = NULL;
 AFFECT_DATA *affect_free = NULL;
 ROOM_AFFECT_DATA *raffect_free = NULL;

@@ -37,6 +37,9 @@
 #include "money.h"
 #endif
 
+#ifndef DEC_MQUEST_H
+#include "mquest.h"
+#endif
 
 #if !defined(macintosh)
 extern int _filbuf args( ( FILE * ) );
@@ -368,26 +371,25 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
 
       fprintf( fp, "QuestAmount    " );
-       for( foo = 0; foo < 5; foo++ )
+       for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
         fprintf( fp, "%d ", ch->pcdata->quest_info->amount[foo] );
        fprintf( fp, "\n" );
-      fprintf( fp, "QuestAsltType  %d\n", ch->pcdata->quest_info->assault_type );
       fprintf( fp, "QuestComplete  %d\n", ch->pcdata->quest_info->quest_complete );
       fprintf( fp, "QuestHint      " );
-       for( foo = 0; foo < 5; foo++ )
+       for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
         fprintf( fp, "%d ", ch->pcdata->quest_info->quest_hint[foo] );
        fprintf( fp, "\n" );
       fprintf( fp, "QuestIsQuest   %d\n", ch->pcdata->quest_info->is_questing );
       fprintf( fp, "QuestItem      " );
-       for( foo = 0; foo < 5; foo++ )
+       for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
         fprintf( fp, "%d ", ch->pcdata->quest_info->quest_item_vnum[foo] );
        fprintf( fp, "\n" );
       fprintf( fp, "QuestMob       " );
-       for( foo = 0; foo < 5; foo++ )
+       for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
         fprintf( fp, "%d ", ch->pcdata->quest_info->quest_mob_vnum[foo] );
        fprintf( fp, "\n" );
       fprintf( fp, "QuestReward    " );
-       for( foo = 0; foo < 3; foo++ )
+       for( foo = 0; foo < QUEST_MAX_REWARD; foo++ )
         fprintf( fp, "%d ", ch->pcdata->quest_info->quest_reward[foo] );
        fprintf( fp, "\n" );
       fprintf( fp, "QuestTimeLeft  %d\n", ch->pcdata->quest_info->time_left );
@@ -664,18 +666,17 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->perm_dex = 13;
       ch->pcdata->perm_con = 13;
 
-      for( foo = 0; foo < 5; foo++ )
+      for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
        ch->pcdata->quest_info->amount[foo] = -1;
-      ch->pcdata->quest_info->assault_type = 0;
       ch->pcdata->quest_info->is_questing = FALSE;
       ch->pcdata->quest_info->quest_complete = FALSE;
-      for( foo = 0; foo < 5; foo++ )
+      for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
        ch->pcdata->quest_info->quest_hint[foo] = FALSE;
-      for( foo = 0; foo < 5; foo++ )
+      for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
        ch->pcdata->quest_info->quest_item_vnum[foo] = 0;
-      for( foo = 0; foo < 5; foo++ )
+      for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
        ch->pcdata->quest_info->quest_mob_vnum[foo] = 0;
-      for( foo = 0; foo < 3; foo++ )
+      for( foo = 0; foo < QUEST_MAX_REWARD; foo++ )
        ch->pcdata->quest_info->quest_reward[foo] = 0;
       ch->pcdata->quest_info->quest_type = 0;
       ch->pcdata->quest_info->time_left = 0;
@@ -1288,16 +1289,15 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                if( !str_cmp( word, "QuestAmount" ) )
                {
-                  for( cnt = 0; cnt < 5; cnt++ )
+                  for( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
                      ch->pcdata->quest_info->amount[cnt] = fread_number( fp );
                   fMatch = TRUE;
                   break;
                }
-               KEY( "QuestAsltType", ch->pcdata->quest_info->assault_type, fread_number( fp ) );
                KEY( "QuestComplete", ch->pcdata->quest_info->quest_complete, fread_number( fp ) );
                if( !str_cmp( word, "QuestHint" ) )
                {
-                  for( cnt = 0; cnt < 5; cnt++ )
+                  for( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
                      ch->pcdata->quest_info->quest_hint[cnt] = fread_number( fp );
                   fMatch = TRUE;
                   break;
@@ -1305,14 +1305,14 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                KEY( "QuestIsQuest", ch->pcdata->quest_info->is_questing, fread_number( fp ) );
                if( !str_cmp( word, "QuestItem" ) )
                {
-                  for( cnt = 0; cnt < 5; cnt++ )
+                  for( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
                      ch->pcdata->quest_info->quest_item_vnum[cnt] = fread_number( fp );
                   fMatch = TRUE;
                   break;
                }
                if( !str_cmp( word, "QuestMob" ) )
                {
-                  for( cnt = 0; cnt < 5; cnt++ )
+                  for( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
                      ch->pcdata->quest_info->quest_mob_vnum[cnt] = fread_number( fp );
                   fMatch = TRUE;
                   break;
@@ -1320,7 +1320,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                KEY( "QuestPoints", ch->pcdata->quest_points, fread_number( fp ) );
                if( !str_cmp( word, "QuestReward" ) )
                {
-                  for( cnt = 0; cnt < 3; cnt++ )
+                  for( cnt = 0; cnt < QUEST_MAX_REWARD; cnt++ )
                      ch->pcdata->quest_info->quest_reward[cnt] = fread_number( fp );
                   fMatch = TRUE;
                   break;

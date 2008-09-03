@@ -75,8 +75,6 @@ extern NPC_GROUP_DATA *first_npc_group;
 extern NPC_GROUP_DATA *last_npc_group;
 extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
-extern QUEST_INFO *first_quest_info;
-extern QUEST_INFO *last_quest_info;
 extern PORTAL_DATA *portal_free;
 extern AFFECT_DATA *affect_free;
 extern ROOM_AFFECT_DATA *raffect_free;
