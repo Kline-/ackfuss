@@ -29,7 +29,7 @@ OBJ_DATA  *get_quest_item          args( ( int min_lev, int max_lev, CHAR_DATA *
 
 void do_mquest( CHAR_DATA *ch, char *argument )
 {
- sh_int i;
+ sh_int i, v1, v2;
  CHAR_DATA *mob;
  OBJ_DATA *obj;
  OBJ_DATA *obj_next;
@@ -49,7 +49,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  }
  if( arg1[0] == '\0' )
  {
-  send_to_char("Mquest what? Syntax: mquest <giveup|request|info|handin|complete|hint>\n\r",ch);
+  send_to_char("Mquest what? Syntax: mquest <giveup|request|info|complete|hint>\n\r",ch);
   return;
  }
  if( !str_prefix(arg1,"request") )
@@ -73,19 +73,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    send_to_char(buf,ch);
    return;
   }
-  if( ch->pcdata->quest_info->quest_type == QUEST_ASSAULT )
-  {
-   send_to_char("@@dYou must complete your @@eassault@@d quest before you can continue questing!\n\r",ch);
-   return;
-  }/*
-  if( number_percent() < 6 )
-  {
-   send_to_char("@@dYour next assigned quest is an @@eassault@@d quest!\n\r",ch);
-   send_to_char("@@dThese quests are mandatory if you wish to keep questing!\n\r",ch);
-   ch->pcdata->quest_info->quest_type = QUEST_ASSAULT;
-   generate_assault_quest(ch);
-  }*/
-  if( number_percent () < 51 )
+  if( number_percent() < 51 )
   {
    send_to_char("Your next available quest is an @@eitem retrieval quest@@N!\n\r",ch);
    if( number_percent() < 70 )
@@ -131,11 +119,6 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   if( !ch->pcdata->quest_info->is_questing )
   {
    send_to_char("You are not currently on a quest!\n\r",ch);
-   return;
-  }
-  if( ch->pcdata->quest_info->quest_type == QUEST_ASSAULT )
-  {
-   send_to_char("Your current quest is an @@eassault@@N quest. It must be completed before you can continue questing.\n\r",ch);
    return;
   }
 
@@ -257,34 +240,6 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    mquest_info(ch);
    return;
   }
-  if( ch->pcdata->quest_info->assault_type != 0 )
-  {
-   switch( ch->pcdata->quest_info->assault_type )
-   {
-    default:
-     send_to_char("ERROR!\n\r",ch);
-     return;
-    case ASSAULT_STEALTH:
-     send_to_char("You are on a STEALTH quest!\n\r",ch);
-     return;
-    case ASSAULT_SLAUGHTER:
-     send_to_char("You are on a SLAUGHTER quest!\n\r",ch);
-     return;
-    case ASSAULT_INVASION:
-     send_to_char("You are on an INVASION quest!\n\r",ch);
-     return;
-    case ASSAULT_PROTECT:
-     send_to_char("You are on a PROTECT quest!\n\r",ch);
-     return;
-    case ASSAULT_PRISONER:
-     send_to_char("You are on a PRISONER quest!\n\r",ch);
-     return;
-    case ASSAULT_STOP:
-     send_to_char("You are on a STOP quest!\n\r",ch);
-     return;
-   }
-  }
-  return;
  }
  else if( !str_prefix(arg1,"handin") )
  {
@@ -309,7 +264,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    send_to_char("You aren't on an item retrieval quest, so you have nothing to hand in!\n\r",ch);
    return;
   }
-  for( i = 0; i < 5; i++) /* take objects */
+  for( i = 0; i < QUEST_MAX_DATA; i++) /* take objects */
   {
    if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 )
    {
@@ -337,7 +292,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    }
   }
   ch->pcdata->quest_info->quest_complete = TRUE;
-  for( i = 0; i < 5; i++ )
+  for( i = 0; i < QUEST_MAX_DATA; i++ )
    if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 && ch->pcdata->quest_info->amount[i] > 0 )
     ch->pcdata->quest_info->quest_complete = FALSE;
   mquest_complete_message(ch);
@@ -366,12 +321,12 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    send_to_char("You aren't on a creature killing quest, so you have nothing to complete!\n\r",ch);
    return;
   }
-  for( i = 0; i < 5; i++ )
+  for( i = 0; i < QUEST_MAX_DATA; i++ )
   {
    if( ch->pcdata->quest_info->quest_mob_vnum[i] != 0 && ch->pcdata->quest_info->amount[i] > 0 )
    {
     x += ch->pcdata->quest_info->amount[i];
-    xprintf(buf,"You are seeking out the creature known as %s.\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr);
+    xprintf(buf,"You are seeking out the creature known as %s@@N.\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr);
     send_to_char(buf,ch);
     xprintf(buf,"Your quest contract states that you must slay %d more of them.\n\r",ch->pcdata->quest_info->amount[i]);
     send_to_char(buf,ch);
@@ -450,7 +405,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
    break;
   case QUEST_MULTI_KILL:
    send_to_char("Kill the following creatures (# of times).\n\r",ch);
-   for( i = 0; i < 5; i++ )
+   for( i = 0; i < QUEST_MAX_DATA; i++ )
    {
     if( victim->pcdata->quest_info->quest_mob_vnum[i] != 0 )
     {
@@ -461,7 +416,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
    break;
   case QUEST_MULTI_RETRIEVE:
    send_to_char("Retrieve the following items (# of times).\n\r",ch);
-   for( i = 0; i < 5; i++ )
+   for( i = 0; i < QUEST_MAX_DATA; i++ )
    {
     if( victim->pcdata->quest_info->quest_item_vnum[i] != 0 )
     {
@@ -484,12 +439,13 @@ void mquest_info( CHAR_DATA *ch )
  switch( ch->pcdata->quest_info->quest_type )
  {
   default:
-   send_to_char("Your current quest is an @@eassault@@N quest!\n\r",ch);
+   xprintf(buf,"quest_type is a value of %d, how'd that happen? Tell an imm, thanks!\n\r",ch->pcdata->quest_info->quest_type);
+   send_to_char(buf,ch);
    break;
   case QUEST_RETRIEVAL:
    if( ch->pcdata->quest_info->quest_item_vnum[0] != 0 )
    {
-    xprintf(buf,"You are seeking the item known as %s.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[0])->short_descr);
+    xprintf(buf,"You are seeking the item known as %s@@N.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[0])->short_descr);
     send_to_char(buf,ch);
 
     if( ch->pcdata->quest_info->amount[0] > 0 )
@@ -507,7 +463,7 @@ void mquest_info( CHAR_DATA *ch )
   case QUEST_KILLING:
    if( ch->pcdata->quest_info->quest_mob_vnum[0] != 0 )
    {
-    xprintf(buf,"You are seeking out the creature known as %s.\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
+    xprintf(buf,"You are seeking out the creature known as %s@@N.\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
     send_to_char(buf,ch);
 
     if( ch->pcdata->quest_info->amount[0] > 0 )
@@ -526,7 +482,7 @@ void mquest_info( CHAR_DATA *ch )
    break;
   case QUEST_MULTI_KILL:
    send_to_char("You must hunt down and destroy the following creatures (# of times).\n\r",ch);
-   for( i = 0; i < 5; i++ )
+   for( i = 0; i < QUEST_MAX_DATA; i++ )
    {
     if( ch->pcdata->quest_info->quest_mob_vnum[i] != 0 )
     {
@@ -542,7 +498,7 @@ void mquest_info( CHAR_DATA *ch )
    break;
   case QUEST_MULTI_RETRIEVE:
    send_to_char("You must retrieve the following items from across the land (# of times).\n\r",ch);
-   for( i = 0; i < 5; i++ )
+   for( i = 0; i < QUEST_MAX_DATA; i++ )
    {
     if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 )
     {
@@ -569,12 +525,15 @@ void mquest_complete_message( CHAR_DATA *ch )
   return;
  if( ch->pcdata->quest_info->quest_complete )
  {
-  for( i = 0; i < 5; i++ )
+  for( i = 0; i < QUEST_MAX_DATA; i++ )
    if( ch->pcdata->quest_info->quest_hint[i] )
     hint++;
 
-  xprintf(buf,"Quest reward reduced for the use of %d hint%s.\n\r",hint,hint > 1 ? "s" : "");
-  send_to_char(buf,ch);
+  if( hint > 0 )
+  {
+   xprintf(buf,"Quest reward reduced for the use of %d hint%s.\n\r",hint,hint > 1 ? "s" : "");
+   send_to_char(buf,ch);
+  }
 
   while( hint > 0 )
   {
@@ -594,7 +553,7 @@ void mquest_complete_message( CHAR_DATA *ch )
   ch->pcdata->records->mquest_c++;
   ch->pcdata->records->qp_tot += ch->pcdata->quest_info->quest_reward[0];
 
-  if( ch->pcdata->records->mquest_c %50 == 0 )   /* every time a person completes 50 quests */
+  if( ch->pcdata->records->mquest_c % 50 == 0 )   /* every time a person completes 50 quests */
   {
    send_to_char("@@eCongratulations! You've succesfully completed 50 questmaster quests!\n\r",ch);
    send_to_char("@@eYou have been rewarded a bonus 25 practices and 40 quest points!\n\r",ch);
@@ -646,11 +605,11 @@ void mquest_calc_rewards( CHAR_DATA *ch )
  }
 
  /* Add some randomness */
- ch->pcdata->quest_info->quest_reward[1] += number_range(-1,1);
- ch->pcdata->quest_info->quest_reward[2] = number_range(ch->pcdata->quest_info->quest_reward[2] * 0.9,ch->pcdata->quest_info->quest_reward[2] * 1.1);
- ch->pcdata->quest_info->quest_reward[3] = number_range(ch->pcdata->quest_info->quest_reward[3] * 0.9,ch->pcdata->quest_info->quest_reward[3] * 1.1);
+ ch->pcdata->quest_info->quest_reward[0] += number_range(-1,1);
+ ch->pcdata->quest_info->quest_reward[1] = number_range(ch->pcdata->quest_info->quest_reward[2] * 0.9,ch->pcdata->quest_info->quest_reward[2] * 1.1);
+ ch->pcdata->quest_info->quest_reward[2] = number_range(ch->pcdata->quest_info->quest_reward[3] * 0.9,ch->pcdata->quest_info->quest_reward[3] * 1.1);
 
- for( tot_tsk = 0; tot_tsk < 5; tot_tsk++ )
+ for( tot_tsk = 0; tot_tsk < QUEST_MAX_DATA; tot_tsk++ )
  {
   if( ch->pcdata->quest_info->amount[tot_tsk] == -1 )
    break;
@@ -726,18 +685,17 @@ void mquest_clear( CHAR_DATA *ch, bool error )
  if( IS_NPC(ch) )
   return;
 
- for( i = 0; i < 5; i++ )
+ for( i = 0; i < QUEST_MAX_DATA; i++ )
   ch->pcdata->quest_info->amount[i] = -1;
- ch->pcdata->quest_info->assault_type = 0;
  ch->pcdata->quest_info->is_questing = FALSE;
  ch->pcdata->quest_info->quest_complete = FALSE;
- for( i = 0; i < 5; i++ )
+ for( i = 0; i < QUEST_MAX_DATA; i++ )
   ch->pcdata->quest_info->quest_hint[i] = FALSE;
- for( i = 0; i < 5; i++ )
+ for( i = 0; i < QUEST_MAX_DATA; i++ )
   ch->pcdata->quest_info->quest_item_vnum[i] = 0;
- for( i = 0; i < 5; i++ )
+ for( i = 0; i < QUEST_MAX_DATA; i++ )
   ch->pcdata->quest_info->quest_mob_vnum[i] = 0;
- for( i = 0; i < 3; i++ )
+ for( i = 0; i < QUEST_MAX_REWARD; i++ )
   ch->pcdata->quest_info->quest_reward[i] = 0;
  ch->pcdata->quest_info->quest_type = 0;
  ch->pcdata->quest_info->time_left = 0;
@@ -793,11 +751,16 @@ void generate_killing_quest( CHAR_DATA *ch )
 
   if( !mob )
   {
-   max--; /* If it was entirely ineligible, reduce the tasks by 1. */
+   min_lev -= 10;
+   max_lev -= 10;
    i--;
-   if( max < 1 ) /* Ensure we find something */
-    max = 1;
-
+   if( min_lev < 1 || max_lev < 1 )
+   {
+    send_to_char("Mquest error. Unable to find suitible mobs. Aborting.\n\r",ch);
+    ch->pcdata->quest_info->wait_time = 0;
+    mquest_clear(ch,TRUE);
+    return;
+   }
    continue;
   }
 
@@ -837,6 +800,12 @@ void generate_killing_quest( CHAR_DATA *ch )
    i--;
   }
  }
+ if( ch->pcdata->quest_info->quest_type == QUEST_KILLING )
+  for( i = 1; i < QUEST_MAX_DATA; i++ )
+  {
+   ch->pcdata->quest_info->quest_mob_vnum[i] = 0;
+   ch->pcdata->quest_info->amount[i] = -1;
+  }
  return;
 }
 
@@ -880,7 +849,6 @@ void generate_retrieval_quest( CHAR_DATA *ch )
  sh_int min_lev, max_lev;
  sh_int clev;
  
-
  if( IS_NPC(ch) )
   return;
 
@@ -915,11 +883,16 @@ void generate_retrieval_quest( CHAR_DATA *ch )
 
   if( !obj )
   {
-   max--; /* If it was entirely ineligible, reduce the tasks by 1. */
+   min_lev -= 10;
+   max_lev -= 10;
    i--;
-   if( max < 1 ) /* Ensure we find something */
-    max = 1;
-
+   if( min_lev < 1 || max_lev < 1 )
+   {
+    send_to_char("Mquest error. Unable to find suitible objs. Aborting.\n\r",ch);
+    ch->pcdata->quest_info->wait_time = 0;
+    mquest_clear(ch,TRUE);
+    return;
+   }
    continue;
   }
 
@@ -1025,8 +998,9 @@ char *display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
   sh_int i = 0;
 
   /* Ugly to workaround same-descr mobs with different vnums for repop purposes */
-  for( i = 0; i < 5; i++ )
-   if( ch->pcdata->quest_info->amount[i] > 0
+  for( i = 0; i < QUEST_MAX_DATA; i++ )
+   if( ch->pcdata->quest_info->quest_mob_vnum[i] > 0
+    && ch->pcdata->quest_info->amount[i] > 0
     && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->pIndexData->vnum
     || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->short_descr) 
     && get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area == victim->in_room->area)) )
@@ -1043,9 +1017,11 @@ char *display_obj_target( CHAR_DATA *ch, OBJ_DATA *obj )
  {
   sh_int i = 0;
 
-  for( i = 0; i < 5; i++ )
-   if( ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum && ch->pcdata->quest_info->amount[i] > 0 )
-    return "@@e[@@yTARGET@@e] @@N";
+  for( i = 0; i < QUEST_MAX_DATA; i++ )
+   if( ch->pcdata->quest_info->quest_item_vnum[i] > 0
+    && ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum
+    && ch->pcdata->quest_info->amount[i] > 0 )
+     return "@@e[@@yTARGET@@e] @@N";
  }
  return "";
 }
@@ -1071,7 +1047,7 @@ void update_mquest_kill( CHAR_DATA *ch, CHAR_DATA *victim )
   return;
  if( ch->pcdata->quest_info->is_questing && (ch->pcdata->quest_info->quest_type == QUEST_KILLING || ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL) && !ch->pcdata->quest_info->quest_complete )
  {
-  for( i = 0; i < 5; i++ )
+  for( i = 0; i < QUEST_MAX_DATA; i++ )
   {
    if( ch->pcdata->quest_info->quest_mob_vnum[i] < 1 )
     continue;

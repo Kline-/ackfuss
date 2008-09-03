@@ -57,6 +57,10 @@
 #include "act_mob.h"
 #endif
 
+#ifndef DEC_MQUEST_H
+#include "mquest.h"
+#endif
+
 #ifdef IMC
 #include "imc.h"
 #endif
@@ -1314,14 +1318,13 @@ struct quest_info
  bool is_free;
  QUEST_INFO *next;
  QUEST_INFO *prev;
- sh_int amount[5];
- sh_int assault_type;
+ sh_int amount[QUEST_MAX_DATA];
  bool is_questing;
  bool quest_complete;
- bool quest_hint[5];
- int quest_item_vnum[5];
- int quest_mob_vnum[5];
- sh_int quest_reward[3];
+ bool quest_hint[QUEST_MAX_DATA];
+ int quest_item_vnum[QUEST_MAX_DATA];
+ int quest_mob_vnum[QUEST_MAX_DATA];
+ sh_int quest_reward[QUEST_MAX_REWARD];
  sh_int quest_type;
  sh_int time_left;
  sh_int wait_time;
