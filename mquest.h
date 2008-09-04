@@ -12,3 +12,7 @@
 
 #define QUEST_MAX_DATA        5
 #define QUEST_MAX_REWARD      3
+
+#define QUEST_REWARD_QP       0
+#define QUEST_REWARD_GOLD     1
+#define QUEST_REWARD_EXP      2

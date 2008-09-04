@@ -1324,7 +1324,7 @@ struct quest_info
  bool quest_hint[QUEST_MAX_DATA];
  int quest_item_vnum[QUEST_MAX_DATA];
  int quest_mob_vnum[QUEST_MAX_DATA];
- sh_int quest_reward[QUEST_MAX_REWARD];
+ int quest_reward[QUEST_MAX_REWARD];
  sh_int quest_type;
  sh_int time_left;
  sh_int wait_time;
