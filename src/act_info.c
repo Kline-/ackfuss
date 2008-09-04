@@ -5942,3 +5942,12 @@ char *output_race_wear( int iRace )
 
  return buf;
 }
+
+void do_safe( CHAR_DATA *ch, char *argument )
+{
+ if( ch->in_room != NULL && IS_SET(ch->in_room->room_flags,ROOM_SAFE) )
+  send_to_char("@@GYou are safe from attacks here.@@N\n\r",ch);
+ else
+  send_to_char("@@RYou are not safe from attacks here.@@N\n\r",ch);
+ return;
+}

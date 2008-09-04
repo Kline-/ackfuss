@@ -29,7 +29,6 @@ OBJ_DATA  *get_quest_item          args( ( int min_lev, int max_lev, CHAR_DATA *
 
 void do_mquest( CHAR_DATA *ch, char *argument )
 {
- sh_int i, v1, v2;
  CHAR_DATA *mob;
  OBJ_DATA *obj;
  OBJ_DATA *obj_next;
@@ -122,9 +121,9 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    return;
   }
 
-  pqp = UMAX(1,ch->pcdata->quest_info->quest_reward[0]/3);
-  pgold = UMAX(1,ch->pcdata->quest_info->quest_reward[1]/4);
-  pexp = UMAX(1,ch->pcdata->quest_info->quest_reward[2]/4);
+  pqp = UMAX(1,ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP]/3);
+  pgold = UMAX(1,ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD]/4);
+  pexp = UMAX(1,ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP]/4);
 
   if( (ch->pcdata->quest_points - pqp) < 0 )
   {
@@ -241,10 +240,10 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    return;
   }
  }
- else if( !str_prefix(arg1,"handin") )
+ else if( !str_prefix(arg1,"complete") )
  {
   CHAR_DATA *mob;
-  int x = 0;
+  sh_int i = 0, x = 0;
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
@@ -259,87 +258,72 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    send_to_char("You aren't even on a quest! Request one first.\n\r",ch);
    return;
   }
-  if( ch->pcdata->quest_info->quest_type != QUEST_RETRIEVAL && ch->pcdata->quest_info->quest_type != QUEST_MULTI_RETRIEVE )
+
+  switch( ch->pcdata->quest_info->quest_type )
   {
-   send_to_char("You aren't on an item retrieval quest, so you have nothing to hand in!\n\r",ch);
-   return;
-  }
-  for( i = 0; i < QUEST_MAX_DATA; i++) /* take objects */
-  {
-   if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 )
-   {
-    x = 0;
-    for( obj = ch->first_carry; obj != NULL && ch->pcdata->quest_info->amount[i] > 0; obj = obj_next )
+   default:
+    send_to_char("Invalid quest type. Notifity an immortal.\n\r",ch);
+    return;
+   case QUEST_RETRIEVAL:
+   case QUEST_MULTI_RETRIEVE:
+    for( i = 0; i < QUEST_MAX_DATA; i++) /* take objects */
     {
-     obj_next = obj->next_in_carry_list;
-     if( ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum && obj->wear_loc == WEAR_NONE && !IS_SET(obj->extra_flags,ITEM_UNIQUE) )
+     if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 )
      {
-      extract_obj(obj);
-      x++;
-      ch->pcdata->quest_info->amount[i]--;
-      if( ch->pcdata->quest_info->amount[i] == 0 )
+      x = 0;
+      for( obj = ch->first_carry; obj != NULL && ch->pcdata->quest_info->amount[i] > 0; obj = obj_next )
       {
-       xprintf(buf,"You have now handed in all the %s you needed for your quest.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr);
+       obj_next = obj->next_in_carry_list;
+       if( ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum && obj->wear_loc == WEAR_NONE && !IS_SET(obj->extra_flags,ITEM_UNIQUE) )
+       {
+        extract_obj(obj);
+        x++;
+        ch->pcdata->quest_info->amount[i]--;
+        if( ch->pcdata->quest_info->amount[i] == 0 )
+        {
+         xprintf(buf,"You have now handed in all the %s you needed for your quest.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr);
+         send_to_char(buf,ch);
+        }
+       }
+      }
+      if( x > 0 && ch->pcdata->quest_info->amount[i] != 0 )
+      {
+       xprintf(buf,"%s (%d) was handed into the questmaster.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,x);
        send_to_char(buf,ch);
       }
      }
     }
-    if( x > 0 && ch->pcdata->quest_info->amount[i] != 0 )
+    x = 0;
+    for( i = 0; i < QUEST_MAX_DATA; i++ )
+     if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 && ch->pcdata->quest_info->amount[i] > 0 )
+      x += ch->pcdata->quest_info->amount[i];
+    if( x > 0 )
     {
-     xprintf(buf,"%s (%d) was handed into the questmaster.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,x);
-     send_to_char(buf,ch);
+     mquest_info(ch);
+     return;
     }
-   }
+    ch->pcdata->quest_info->quest_complete = TRUE;
+    mquest_complete_message(ch);
+    do_save(ch,"auto");
+    return;
+   case QUEST_KILLING:
+   case QUEST_MULTI_KILL:
+    x = 0;
+    for( i = 0; i < QUEST_MAX_DATA; i++ )
+     if( ch->pcdata->quest_info->quest_mob_vnum[i] != 0 && ch->pcdata->quest_info->amount[i] > 0 )
+      x += ch->pcdata->quest_info->amount[i];
+    if( x > 0 )
+    {
+     mquest_info(ch);
+     return;
+    }
+    ch->pcdata->quest_info->quest_complete = TRUE;
+    mquest_complete_message(ch);
+    do_save(ch,"auto");
+    return;
   }
-  ch->pcdata->quest_info->quest_complete = TRUE;
-  for( i = 0; i < QUEST_MAX_DATA; i++ )
-   if( ch->pcdata->quest_info->quest_item_vnum[i] != 0 && ch->pcdata->quest_info->amount[i] > 0 )
-    ch->pcdata->quest_info->quest_complete = FALSE;
-  mquest_complete_message(ch);
-  do_save(ch,"auto");
  }
- else if( !str_prefix(arg1,"complete") )
- {
-  CHAR_DATA *mob;
-  sh_int x = 0;
-
-  for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
-    break;
-  if( mob == NULL )
-  {
-   send_to_char("You have to be at a questmaster!\n\r",ch);
-   return;
-  }
-  if( !ch->pcdata->quest_info->is_questing )
-  {
-   send_to_char("You aren't even on a quest! Request one first.\n\r",ch);
-   return;
-  }
-  if( ch->pcdata->quest_info->quest_type != QUEST_KILLING && ch->pcdata->quest_info->quest_type != QUEST_MULTI_KILL )
-  {
-   send_to_char("You aren't on a creature killing quest, so you have nothing to complete!\n\r",ch);
-   return;
-  }
-  for( i = 0; i < QUEST_MAX_DATA; i++ )
-  {
-   if( ch->pcdata->quest_info->quest_mob_vnum[i] != 0 && ch->pcdata->quest_info->amount[i] > 0 )
-   {
-    x += ch->pcdata->quest_info->amount[i];
-    xprintf(buf,"You are seeking out the creature known as %s@@N.\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr);
-    send_to_char(buf,ch);
-    xprintf(buf,"Your quest contract states that you must slay %d more of them.\n\r",ch->pcdata->quest_info->amount[i]);
-    send_to_char(buf,ch);
-   }
-  }
-  if( x > 0 )
-   return;
-  ch->pcdata->quest_info->quest_complete = TRUE;
-  mquest_complete_message(ch);
-  do_save(ch,"auto");
- }
- else
-  do_mquest(ch,"");
+ do_mquest(ch,"");
  return;
 }
 
@@ -426,7 +410,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
    }
    break;
  }
- xprintf(buf,"QP:   %d\n\rGold: %s\n\rExp:  %d\n\r",victim->pcdata->quest_info->quest_reward[0],cost_to_money(victim->pcdata->quest_info->quest_reward[1]),victim->pcdata->quest_info->quest_reward[2]);
+ xprintf(buf,"QP:   %d\n\rGold: %s\n\rExp:  %d\n\r",victim->pcdata->quest_info->quest_reward[QUEST_REWARD_QP],cost_to_money(victim->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD]),victim->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP]);
  send_to_char(buf,ch);
  return;
 }
@@ -537,21 +521,21 @@ void mquest_complete_message( CHAR_DATA *ch )
 
   while( hint > 0 )
   {
-   ch->pcdata->quest_info->quest_reward[0] *= 0.90;
-   ch->pcdata->quest_info->quest_reward[1] *= 0.90;
-   ch->pcdata->quest_info->quest_reward[2] *= 0.90;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] *= 0.90;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] *= 0.90;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] *= 0.90;
    hint--;
   }
 
-  xprintf(buf,"Quest Complete. You have earned %d qp, %d experience, %s!\n\r",ch->pcdata->quest_info->quest_reward[0],ch->pcdata->quest_info->quest_reward[2],cost_to_money(ch->pcdata->quest_info->quest_reward[1]));
+  xprintf(buf,"Quest Complete. You have earned %d qp, %d experience, %s!\n\r",ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP],ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP],cost_to_money(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD]));
   send_to_char(buf,ch);
 
-  ch->pcdata->quest_points += ch->pcdata->quest_info->quest_reward[0];
-  join_money(round_money(ch->pcdata->quest_info->quest_reward[1],TRUE),ch->money);
-  ch->exp += ch->pcdata->quest_info->quest_reward[2];
+  ch->pcdata->quest_points += ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
+  join_money(round_money(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD],TRUE),ch->money);
+  ch->exp += ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP];
 
   ch->pcdata->records->mquest_c++;
-  ch->pcdata->records->qp_tot += ch->pcdata->quest_info->quest_reward[0];
+  ch->pcdata->records->qp_tot += ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
 
   if( ch->pcdata->records->mquest_c % 50 == 0 )   /* every time a person completes 50 quests */
   {
@@ -576,6 +560,7 @@ void mquest_complete_message( CHAR_DATA *ch )
 void mquest_calc_rewards( CHAR_DATA *ch )
 {
  sh_int clev, tot_amt, tot_tsk;
+ int exp;
  float mod = 1.00;
 
  if( IS_NPC(ch) )
@@ -584,30 +569,21 @@ void mquest_calc_rewards( CHAR_DATA *ch )
  tot_amt = 0;
  tot_tsk = 0;
  clev = get_psuedo_level(ch);
+ exp = (exp_mob_base(clev) * sysdata.killperlev);
+ exp = number_range(exp * 0.04,exp * 0.08);
+
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = number_range(clev / 40,clev / 20);
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range(clev * 15,clev * 30);
 
  if( is_adept(ch) )
- {
-  ch->pcdata->quest_info->quest_reward[0] = number_range(4,5);
-  ch->pcdata->quest_info->quest_reward[1] = number_range(5000,7000);
-  ch->pcdata->quest_info->quest_reward[2] = number_range(exp_to_level_adept(ch) * 0.04,exp_to_level_adept(ch) * 0.08);
- }
- else if( is_remort(ch) )
- {
-  ch->pcdata->quest_info->quest_reward[0] = number_range(3,4);
-  ch->pcdata->quest_info->quest_reward[1] = number_range(3000,5000);
-  ch->pcdata->quest_info->quest_reward[2] = number_range(exp_to_level(ch,clev,5) * 0.04,exp_to_level(ch,clev,5) * 0.08);
- }
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range(exp_to_level_adept(ch) * 0.04,exp_to_level_adept(ch) * 0.08);
  else
- {
-  ch->pcdata->quest_info->quest_reward[0] = number_range(2,3);
-  ch->pcdata->quest_info->quest_reward[1] = number_range(1000,3000);
-  ch->pcdata->quest_info->quest_reward[2] = number_range(exp_to_level(ch,clev,1) * 0.04,exp_to_level(ch,clev,1) * 0.08);
- }
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = exp;
 
  /* Add some randomness */
- ch->pcdata->quest_info->quest_reward[0] += number_range(-1,1);
- ch->pcdata->quest_info->quest_reward[1] = number_range(ch->pcdata->quest_info->quest_reward[2] * 0.9,ch->pcdata->quest_info->quest_reward[2] * 1.1);
- ch->pcdata->quest_info->quest_reward[2] = number_range(ch->pcdata->quest_info->quest_reward[3] * 0.9,ch->pcdata->quest_info->quest_reward[3] * 1.1);
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] += number_range(-1,1);
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 0.9,ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 1.1);
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 0.9,ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 1.1);
 
  for( tot_tsk = 0; tot_tsk < QUEST_MAX_DATA; tot_tsk++ )
  {
@@ -654,25 +630,25 @@ void mquest_calc_rewards( CHAR_DATA *ch )
   return;
  }
 
- ch->pcdata->quest_info->quest_reward[0] *= mod;
- ch->pcdata->quest_info->quest_reward[1] *= mod;
- ch->pcdata->quest_info->quest_reward[2] *= mod;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] *= mod;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] *= mod;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] *= mod;
        
  /* Bonus! */
  if( number_percent() < 5 )
-  ch->pcdata->quest_info->quest_reward[0] += 2;
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] += 2;
  if( number_percent() < 5 )
-  ch->pcdata->quest_info->quest_reward[1] *= 1.5;
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] *= 1.5;
  if( number_percent() < 5 )
-  ch->pcdata->quest_info->quest_reward[2] *= 1.5;
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] *= 1.5;
 
  /* No negative rewards */
- if( ch->pcdata->quest_info->quest_reward[0] < 0 )
-  ch->pcdata->quest_info->quest_reward[0] = 0;
- if( ch->pcdata->quest_info->quest_reward[1] < 0 )
-  ch->pcdata->quest_info->quest_reward[1] = 0;
- if( ch->pcdata->quest_info->quest_reward[2] < 0 )
-  ch->pcdata->quest_info->quest_reward[2] = 0;
+ if( ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] < 0 )
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = 0;
+ if( ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] < 0 )
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = 0;
+ if( ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] < 0 )
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = 0;
 
  return;
 }
@@ -735,11 +711,6 @@ void generate_killing_quest( CHAR_DATA *ch )
   max_lev = 110;
  else if( clev == 120 && min_lev <110 )
   min_lev = 110;
- else
- {
-  send_to_char("Mquest error. Unable to calculate levels.\n\r",ch);
-  return;
- }
 
  min_lev = UMAX(0,min_lev);
  max_lev = UMIN(140,max_lev);
@@ -867,11 +838,6 @@ void generate_retrieval_quest( CHAR_DATA *ch )
   max_lev = 110;
  else if( clev == 120 && min_lev <110 )
   min_lev = 110;
- else
- {
-  send_to_char("Mquest error. Unable to calculate levels.\n\r",ch);
-  return;
- }
 
  min_lev = UMAX(0,min_lev);
  max_lev = UMIN(140,max_lev);

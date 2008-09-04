@@ -591,3 +591,4 @@ DECLARE_DO_FUN( do_census );
 DECLARE_DO_FUN( do_abandon );
 DECLARE_DO_FUN( do_mquest );
 DECLARE_DO_FUN( do_qstat );
+DECLARE_DO_FUN( do_safe );
