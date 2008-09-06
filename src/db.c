@@ -3601,7 +3601,6 @@ void do_status( CHAR_DATA * ch, char *argument )
    send_to_char( "\n\r", ch );
    send_to_char( "The following counts are for *distinct* mobs/objs/rooms, not a count\n\r", ch );
    send_to_char( "of how many are actually in the game at this time.\n\r", ch );
-   send_to_char( "NB. Areas count will include areas used as help files.\n\r\n\r", ch );
    xprintf( buf, "Areas   %5d\n\r", top_area );
    send_to_char( buf, ch );
    xprintf( buf, "Helps   %5d\n\r", count_helps() );
@@ -3896,8 +3895,7 @@ void bug( const char *str, int param )
       }
    }
 
-   strcpy( buf, "[*****] BUG: " );
-   sprintf( buf + strlen( buf ), str, param );
+   xprintf( buf, "[*****] BUG: %s %d", str, param );
    log_string( buf );
 
    if( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
@@ -3945,8 +3943,7 @@ void bug_string( const char *str, const char *str2 )
       }
    }
 
-   strcpy( buf, "[*****] BUG: " );
-   sprintf( buf + strlen( buf ), str, str2 );
+   xprintf( buf, "[*****] BUG: %s %s", str, str2 );
    log_string( buf );
 
    if( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
