@@ -283,7 +283,7 @@ void hunt_move( CHAR_DATA * mob, sh_int dir )
          do_open( mob, dir_name[dir] );
    }
    else
-      move_char( mob, dir );
+      move_char( mob, dir, FALSE );
    return;
 }
 

@@ -3387,7 +3387,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
                     || ( IS_SET( ch->act, ACT_STAY_AREA ) && pexit->to_room->area != ch->in_room->area ) ) ) )
          continue;
 
-      move_char( ch, door );
+      move_char( ch, door, TRUE );
       if( ( now_in = ch->in_room ) == was_in )
          continue;
 

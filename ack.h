@@ -233,7 +233,7 @@ struct descriptor_data
    char inbuf[4 * MAX_INPUT_LENGTH];
    char incomm[MAX_INPUT_LENGTH];
    char inlast[MAX_INPUT_LENGTH];
-   int repeat;
+   sh_int repeat;
    char *showstr_head;
    char *showstr_point;
    char *outbuf;
@@ -735,6 +735,7 @@ struct pc_data
    bool valid_email;
    char *assist_msg;
    QUEST_INFO *quest_info;
+   sh_int movement; /* Quick movement */
 #ifdef IMC
    IMC_CHARDATA *imcchardata;
 #endif
@@ -1364,7 +1365,7 @@ void int_handler args( ( CHAR_DATA * ch ) );
 
 
 /* act_move.c */
-void move_char args( ( CHAR_DATA * ch, int door ) );
+void move_char args( ( CHAR_DATA * ch, int door, bool look ) );
 
 /* act_obj.c */
 
