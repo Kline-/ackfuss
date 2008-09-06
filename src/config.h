@@ -86,6 +86,7 @@
 #define MAX_STANCE		13
 #define MAX_TOT_STATS               90   /* Total sum of player stats when creating */
 #define MAX_HISTORY                 20   /* History per channel */
+#define MAX_MOVE_DISPLAY             5   /* Number of rooms to auto-look while moving before they go brief */
 
                      /*
                       * total number of supernatural types in the game  

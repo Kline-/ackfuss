@@ -840,7 +840,7 @@ void mobile_update( void )
           && !IS_SET( pexit->to_room->room_flags, ROOM_NO_MOB )
           && ( !IS_SET( ch->act, ACT_STAY_AREA ) || pexit->to_room->area == ch->in_room->area ) )
       {
-         move_char( ch, door );
+         move_char( ch, door, FALSE );
          /*
           * If ch changes position due
           * to it's or someother mob's
@@ -873,7 +873,7 @@ void mobile_update( void )
             }
          }
          if( !found )
-            move_char( ch, door );
+            move_char( ch, door, FALSE );
       }
 
    }

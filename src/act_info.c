@@ -1205,6 +1205,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
    EXIT_DATA *pexit;
    bool found;
    bool fAuto;
+   bool fAutonr;
    int door;
 
    buf[0] = '\0';
@@ -1212,11 +1213,12 @@ void do_exits( CHAR_DATA * ch, char *argument )
 
 
    fAuto = !str_cmp( argument, "auto" );
+   fAutonr = !str_cmp( argument, "autonr" );
 
    if( !check_blind( ch ) )
       return;
 
-   strcpy( buf, fAuto ? "[Exits:" : "Obvious exits:\n\r" );
+   strcpy( buf, (fAuto || fAutonr ) ? "[Exits:" : "Obvious exits:\n\r" );
 
    found = FALSE;
    for( door = 0; door <= 5; door++ )
@@ -1254,7 +1256,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
              && ( ch->pcdata->learned[gsn_find_doors] > number_percent(  ) ) && ( !str_cmp( pexit->keyword, "" ) ) )
          {
             found = TRUE;
-            if( fAuto )
+            if( fAuto || fAutonr )
                xprintf( buf2, " (%s)", compass_name[door] );
             else
                xprintf( buf2, "%-5s - Door.\n\r", capitalize( compass_name[door] ) );
@@ -1267,7 +1269,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
           && pexit->to_room != NULL && !IS_SET( pexit->exit_info, EX_CLOSED ) && ( !str_cmp( pexit->keyword, "" ) ) )
       {
          found = TRUE;
-         if( fAuto )
+         if( fAuto || fAutonr )
          {
             xcat( buf, " " );
             xcat( buf, compass_name[door] );
@@ -1282,10 +1284,13 @@ void do_exits( CHAR_DATA * ch, char *argument )
    }
 
    if( !found )
-      xcat( buf, fAuto ? " none" : "None.\n\r" );
+      xcat( buf, (fAuto || fAutonr) ? " none" : "None.\n\r" );
 
    if( fAuto )
       xcat( buf, "]\n\r" );
+
+   if( fAutonr )
+      xcat( buf, "]" );
 
    send_to_char( buf, ch );
    return;

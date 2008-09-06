@@ -1148,6 +1148,12 @@ void interpret( CHAR_DATA * ch, char *argument )
    comlog( ch, cmd, argument );
    ( *cmd_table[cmd].do_fun ) ( ch, argument );
 
+   /* Check for movement */
+   if( !IS_NPC(ch) && (!str_cmp(cmd_table[cmd].name,"north") || !str_cmp(cmd_table[cmd].name,"east") || !str_cmp(cmd_table[cmd].name,"south") || !str_cmp(cmd_table[cmd].name,"west") || !str_cmp(cmd_table[cmd].name,"up") || !str_cmp(cmd_table[cmd].name,"down")) )
+    ch->pcdata->movement++;
+   else
+    ch->pcdata->movement = 0;
+
    tail_chain(  );
    return;
 }
