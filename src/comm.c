@@ -1003,7 +1003,7 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
             write_to_buffer( d, "\n\r", 2 );
          if( ch->hunting || ch->hunt_obj )
             char_hunt( ch );
-         if( !IS_NPC(ch) && ch->pcdata->movement < MAX_MOVE_DISPLAY )
+         if( !IS_NPC(ch) && ch->pcdata->movement <= MAX_MOVE_DISPLAY )
           bust_a_prompt( d );
          if( IS_SET( ch->config, CONFIG_TELNET_GA ) )
             write_to_buffer( d, go_ahead_str, 0 );
