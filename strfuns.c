@@ -1552,7 +1552,7 @@ char *get_tribe_name( CHAR_DATA * ch )
  *where the mud overflows, and stop it from happening.  Great little tool.
  *All i ask is that you leave this header in place.  -- Darien of Sandstorm:Mages Sanctuary
  */
-void safe_printf( const char *file, const char *function, int line, int size, char *str, char *fmt, ... )
+int safe_printf( const char *file, const char *function, int line, int size, char *str, char *fmt, ... )
 {
  char buf[MAS];
  va_list args;
@@ -1572,7 +1572,7 @@ void safe_printf( const char *file, const char *function, int line, int size, ch
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
-  return;
+  return -1;
  }
 
  if( (unsigned)size < strlen(buf)+1 ) 
@@ -1586,7 +1586,7 @@ void safe_printf( const char *file, const char *function, int line, int size, ch
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
-  return;
+  return -1;
  }
  else
  {
@@ -1606,9 +1606,10 @@ void safe_printf( const char *file, const char *function, int line, int size, ch
    xprintf_2(bug_buf,"xprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
    log_string(bug_buf);
    monitor_chan(bug_buf,MONITOR_DEBUG);
-   return;
+   return -1;
   }
  }
+ return strlen(str);
 }
 
 void safe_strcat( const char *file, const char *function, int line, int size, char *prev, char *next, ... )

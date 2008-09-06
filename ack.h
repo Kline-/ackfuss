@@ -43,7 +43,6 @@
 #include "globals.h"
 #endif
 
-
 /* Various linked lists head/tail pointer declarations. -- Altrag */
 #ifndef DEC_LISTS_H
 #include "lists.h"

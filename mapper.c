@@ -373,7 +373,7 @@ char *map_format( char *str, int start, char map[MAP_Y][MSL], int *numlines, int
          *pbuf = '\0';
          c = last_color( buf );
          if( currline < MAP_Y )
-            pret += sprintf( pret, "%s   ", map[currline] );
+            pret += xprintf_2( pret, "%s   ", map[currline] );
          else if( currline == MAP_Y )
             strcpy( pret, "              " ), pret += 14;
          if( unjust || iseol( *arg ) )
@@ -443,7 +443,7 @@ char *map_format( char *str, int start, char map[MAP_Y][MSL], int *numlines, int
          *pbuf++ = '\n';
          *pbuf++ = '\r';
          if( currline < MAP_Y )
-            pret += sprintf( pret, "%s   ", map[currline] );
+            pret += xprintf_2( pret, "%s   ", map[currline] );
          else if( currline == MAP_Y || ( currline == MAP_Y + 1 && blen <= term_width - 15 ) )
             strcpy( pret, "              " ), pret += 14;
          ++currline;
@@ -528,7 +528,7 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
    {
       x = disp + strlen( disp );
       while( y < MAP_Y )
-         x += sprintf( x, "%s\n\r", bufs[y] ), ++y;
+         x += xprintf_2( x, "%s\n\r", bufs[y] ), ++y;
    }
    send_to_char( disp, ch );
 #ifdef ACK_43

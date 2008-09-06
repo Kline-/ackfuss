@@ -88,7 +88,7 @@ int ccode_len( const char *text, sh_int desired );
 void pre_parse( char *list, char *victimname, char *containername, char *things );
 char *one_word( char *argument, char *arg_first );
 /* My additions; safe_printf by Darien --Kline */
-void safe_printf(const char *file, const char *function, int line, int size, char *str, char *fmt, ...);
+int  safe_printf(const char *file, const char *function, int line, int size, char *str, char *fmt, ...);
 void safe_strcat(const char *file, const char *function, int line, int size, char *prev, char *next, ... );
 char *strlower( char *ip );
 char *strlower( char *ip );
