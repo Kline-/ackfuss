@@ -1154,6 +1154,8 @@ void load_objects( FILE * fp )
       pObjIndex->item_apply = fread_number( fp );
       if( area_revision > 16 )
        pObjIndex->speed = fread_float( fp );
+      if( area_revision > 17 )
+       pObjIndex->max_durability = fread_number( fp );
       pObjIndex->value[0] = fread_number( fp );
       pObjIndex->value[1] = fread_number( fp );
       pObjIndex->value[2] = fread_number( fp );
@@ -2636,8 +2638,11 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
    obj->last_content = NULL;
    obj->prev_content = NULL;
    obj->weight = pObjIndex->weight;
-   if( (obj->speed = pObjIndex->speed) < 0.01 || (obj->speed = pObjIndex->speed) > 4 )
+   if( (obj->speed = pObjIndex->speed) < 0.01 || (obj->speed = pObjIndex->speed) > 4.00 )
     obj->speed = number_speed();
+   if( (obj->max_durability = pObjIndex->max_durability) < 1 )
+    obj->max_durability = number_range(2,100);
+   obj->durability = obj->max_durability;
    GET_FREE( money, money_type_free );
 #ifdef DEBUG_MONEY
    {
@@ -2690,8 +2695,6 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
    if( obj->item_type == ITEM_FOOD )
       obj->cost /= 200;
    obj->cost = UMAX( 10, obj->cost );
-
-   obj->condition = 100;   /* New, so in tip-top condition */
 
    /*
     * Mess with object properties.
@@ -3635,7 +3638,6 @@ float number_speed(void)
 
  return value;
 }
-
 
 /*
  * Stick a little fuzz on a number.

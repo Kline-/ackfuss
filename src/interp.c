@@ -566,6 +566,8 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_IMM, C_SHOW_ALWAYS},
    {"safe", do_safe, POS_STANDING, 0, LOG_NORMAL,
     C_TYPE_INFO, C_SHOW_ALWAYS},
+   {"repair", do_repair, POS_STANDING, 0, LOG_NORMAL,
+    C_TYPE_INFO, C_SHOW_ALWAYS},
 
 
    /*

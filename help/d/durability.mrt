@@ -1,0 +1,5 @@
+DURABILITY
+
+Items have durability and will be damaged in combat. If an item's durability reaches zero
+it will fall off broken into your inventory and you will be unable to use it until you
+repair it.

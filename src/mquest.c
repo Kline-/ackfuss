@@ -56,7 +56,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
     break;
-  if( mob == NULL )
+  if( mob == NULL || !can_see(ch,mob) )
   {
    send_to_char("You have to be at a questmaster!\n\r",ch);
    return;
@@ -110,7 +110,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
     break;
-  if( mob == NULL )
+  if( mob == NULL || !can_see(ch,mob) )
   {
    send_to_char("You have to be at a questmaster!\n\r",ch);
    return;

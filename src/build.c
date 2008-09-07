@@ -635,6 +635,9 @@ void build_showobj( CHAR_DATA * ch, char *argument )
    xprintf( buf, "@@WSpeed: @@y%4.2f\n\r", obj->speed );
    xcat( buf1, buf );
 
+   xprintf( buf, "@@WDurability: @@y%d.\n\r", obj->max_durability );
+   xcat( buf1, buf );
+
    xcat( buf1, "@@WObject Values:\n\r" );
 
    for( cnt = 0; cnt < 10; cnt++ )
@@ -2548,7 +2551,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
       send_to_char( "  value0 value1 value2 value3 speed\n\r", ch );
-      send_to_char( "  level extra wear weight aff type\n\r", ch );
+      send_to_char( "  level extra wear weight aff type durability\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "String being one of:\n\r", ch );
       send_to_char( "  name short long ed objfun\n\r", ch );
@@ -2959,6 +2962,22 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       else
          paf->modifier = atoi( argument );
       return;
+   }
+
+   if( !str_prefix(arg2,"durability") )
+   {
+    if( !is_number(arg3) )
+    {
+     send_to_char("Durability must be a number.\n\r",ch);
+     return;
+    }
+    if( atoi(arg3) < 2 )
+    {
+     send_to_char("Value must be at least 2. An object with only 1 durability is considered 'broken' and un-usable.\n\r",ch);
+     return;
+    }
+    pObj->max_durability = atoi(arg3);
+    pObj->durability = pObj->max_durability;
    }
 
    /*

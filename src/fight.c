@@ -66,6 +66,7 @@ void check_adrenaline args( ( CHAR_DATA * ch, sh_int damage ) );
 void obj_damage       args( ( OBJ_DATA * obj, CHAR_DATA * victim, int dam ) );
 int combat_damcap     args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt ) );
 void check_brawl      args( ( CHAR_DATA *ch ) );
+void damage_gear      args( ( CHAR_DATA *ch ) );
 
 /*
  * Control the fights going on.
@@ -668,6 +669,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
          ch->alignment = UMAX( -1000, ch->alignment - 50 );
       }
    }
+   damage_gear(victim);
    damage( ch, victim, dam, dt );
 
 
@@ -5875,6 +5877,25 @@ void check_brawl( CHAR_DATA *ch )
     act("@@eYou find yourself caught up in the brawl!@@N",rch,NULL,NULL,TO_CHAR);
     act("@@e$n finds $mself caught up in the brawl!@@N",rch,NULL,NULL,TO_ROOM);
    }
+  }
+ }
+}
+
+void damage_gear( CHAR_DATA *ch )
+{
+ OBJ_DATA *obj;
+
+ for( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
+ {
+  if( obj->wear_loc == WEAR_NONE )
+   continue;
+  if( number_percent() < 50 )
+   obj->durability--;
+  if( obj->durability == 1 )
+  {
+   act("@@y$p breaks and falls off.@@N",ch,obj,NULL,TO_CHAR);
+   act("@@y$n's $p breaks and falls off.@@N",ch,obj,NULL,TO_ROOM);
+   remove_obj(ch,obj->wear_loc,TRUE);
   }
  }
 }
