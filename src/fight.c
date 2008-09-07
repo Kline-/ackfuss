@@ -48,24 +48,24 @@ extern CHAR_DATA *quest_mob;
 /*
  * Local functions.
  */
-bool check_dodge args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void check_killer args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool check_parry args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool check_skills args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void dam_message args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt ) );
-void death_message args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt ) );
-void death_cry args( ( CHAR_DATA * ch ) );
-void group_gain args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-
-bool is_safe args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void make_corpse args( ( CHAR_DATA * ch, char *argument ) );
-void raw_kill args( ( CHAR_DATA * victim, char *argument ) );
-void set_fighting args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
-void disarm args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
-void trip args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+bool check_dodge      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+void check_killer     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+bool check_parry      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+bool check_skills     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+void dam_message      args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt ) );
+void death_message    args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt ) );
+void death_cry        args( ( CHAR_DATA * ch ) );
+void group_gain       args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+bool is_safe          args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+void make_corpse      args( ( CHAR_DATA * ch, char *argument ) );
+void raw_kill         args( ( CHAR_DATA * victim, char *argument ) );
+void set_fighting     args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
+void disarm           args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
+void trip             args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void check_adrenaline args( ( CHAR_DATA * ch, sh_int damage ) );
-void obj_damage args( ( OBJ_DATA * obj, CHAR_DATA * victim, int dam ) );
-int combat_damcap args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt ) );
+void obj_damage       args( ( OBJ_DATA * obj, CHAR_DATA * victim, int dam ) );
+int combat_damcap     args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt ) );
+void check_brawl      args( ( CHAR_DATA *ch ) );
 
 /*
  * Control the fights going on.
@@ -328,7 +328,10 @@ void violence_update( void )
           && ( ch->is_free == FALSE )
           && ( victim->is_free == FALSE )
           && ( ch->in_room != NULL ) && ( victim->in_room != NULL ) && ( ch->in_room == victim->in_room ) )
+      {
+         check_brawl(ch);
          one_hit( ch, victim, TYPE_UNDEFINED );
+      }
       else
          stop_fighting( ch, FALSE );
 
@@ -5830,4 +5833,48 @@ int combat_damcap( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
  }
 
  return dam;
+}
+
+void check_brawl( CHAR_DATA *ch )
+{
+ #define MAX_BRAWLS 10
+ CHAR_DATA *fight[MAX_BRAWLS], *rch, *rch_next, *vch, *vch_next;
+ sh_int i = 0, x = 0;
+
+ for( i = 0; i < MAX_BRAWLS; i++ )
+  fight[i] = NULL;
+
+ for( rch = ch->in_room->first_person; rch != NULL; rch = rch_next )
+ {
+  rch_next = rch->next_in_room;
+
+  if( rch->fighting == NULL && IS_AWAKE(rch) && rch->master != ch && !IS_IMMORTAL(rch) && number_percent() <= 2 )
+  {
+   if( IS_NPC(rch) && (IS_SET(rch->act,ACT_TRAIN) || IS_SET(rch->act,ACT_PRACTICE) || rch->pIndexData->pShop != NULL) )
+    continue;
+
+   for( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )
+   {
+    vch_next = vch->next_in_room;
+
+    if( vch->fighting == NULL && rch->master != ch && !IS_IMMORTAL(vch) && i < MAX_BRAWLS )
+    {
+     fight[i] = vch;
+     i++;
+    }
+   }
+   x = number_range(0,i); /* Only search as many as we found */
+   if( fight[x] != NULL )
+   {
+    if( !IS_NPC(rch) && !IS_NPC(fight[x]) ) /* Don't force PVP */
+     continue;
+    if( !can_see(rch,fight[x]) )
+    continue;
+    rch->fighting = fight[x];
+    rch->position = POS_FIGHTING;
+    act("@@eYou find yourself caught up in the brawl!@@N",rch,NULL,NULL,TO_CHAR);
+    act("@@e$n finds $mself caught up in the brawl!@@N",rch,NULL,NULL,TO_ROOM);
+   }
+  }
+ }
 }
