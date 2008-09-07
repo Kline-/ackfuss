@@ -845,6 +845,8 @@ struct obj_index_data
    TRIGGER_DATA *first_trigger;
    TRIGGER_DATA *last_trigger;
    float speed;
+   sh_int durability;
+   sh_int max_durability;
 };
 
 
@@ -892,7 +894,8 @@ struct obj_data
    sh_int level;
    sh_int timer;
    int value[10];
-   sh_int condition; /* % value for condition */
+   sh_int durability;
+   sh_int max_durability;
    MONEY_TYPE *money;
    float speed;
 };

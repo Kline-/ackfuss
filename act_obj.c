@@ -1403,6 +1403,13 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
       return;
    }
 
+   if( obj->durability <= 1 )
+   {
+    act("$p is broken and in need of repair.",ch,obj,NULL,TO_CHAR);
+    act("$n tries to use $p but is is broken and in need of repair.",ch,obj,NULL,TO_ROOM);
+    return;
+   }
+
    if( obj->item_type == ITEM_TRIGGER && obj->value[0] == 6 )
    {
       /*
@@ -4037,4 +4044,97 @@ void do_connect( CHAR_DATA * ch, char *argument )
    }
 
    return;
+}
+
+void do_repair( CHAR_DATA *ch, char *argument )
+{
+ OBJ_DATA *obj;
+ CHAR_DATA *mob;
+ char *cbuf = '\0';
+ char changebuf[MSL], mbuf[MSL];
+ int cost = 0, change = 0;
+ sh_int mod = 3;
+ bool found = FALSE;
+
+ changebuf[0] = '\0';
+ mbuf[0] = '\0';
+
+ if( argument[0] == '\0' )
+ {
+  send_to_char("You can either repair a specific item or repair 'all'.\n\r",ch);
+  return;
+ }
+
+ for( mob = ch->in_room->first_person; mob != NULL; mob = mob->next_in_room )
+  if( IS_NPC(mob) && mob->pIndexData->pShop != NULL )
+   break;
+
+ if( mob == NULL || !can_see(ch,mob) )
+ {
+  send_to_char("You need to be at a shop keeper to repair your equipment.\n\r",ch);
+  return;
+ }
+
+ if( !str_cmp(argument,"all") )
+ {
+  for( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
+  {
+   if( obj->durability < obj->max_durability )
+   {
+    found = TRUE;
+    cost = ((((obj->durability - obj->max_durability) * mod) * obj->level) * -1);
+    if( money_value(ch->money) - cost < 0 )
+    {
+     act("You don't have enough money to repair $p.",ch,obj,NULL,TO_CHAR);
+     continue;
+    }
+    obj->durability = obj->max_durability;
+    cbuf = take_best_coins(ch->money,cost); /* Gives a string of the coins we need to steal. */
+    cbuf = one_argument(cbuf,changebuf);
+    change = is_number(changebuf) ? atoi(changebuf) : 0;
+    xprintf(changebuf,"%s to %s",cbuf,mob->name);
+    do_give(ch,changebuf);
+    act("$N repairs $p.",ch,obj,mob,TO_CHAR);
+    if( change > 0 )
+    {
+     MONEY_TYPE *transaction;
+     transaction = round_money( change, TRUE );
+     join_money( transaction, ch->money );
+    }
+   }
+  }
+  if( !found )
+   send_to_char("None of your equipment needs repairing.\n\r",ch);
+  return;
+ }
+
+ if( (obj = get_obj_carry(ch,argument)) == NULL && (obj = get_obj_wear(ch,argument)) == NULL )
+ {
+  send_to_char("You do not have that item.\n\r",ch);
+  return;
+ }
+ if( obj->durability >= obj->max_durability )
+ {
+  send_to_char("That item is not in need of repair.\n\r",ch);
+  return;
+ }
+ cost = ((((obj->durability - obj->max_durability) * mod) * obj->level) * -1);
+ if( money_value(ch->money) - cost < 0 )
+ {
+  act("You don't have enough money to repair $p.",ch,obj,NULL,TO_CHAR);
+  return;
+ }
+ obj->durability = obj->max_durability;
+ cbuf = take_best_coins(ch->money,cost); /* Gives a string of the coins we need to steal. */
+ cbuf = one_argument(cbuf,changebuf);
+ change = is_number(changebuf) ? atoi(changebuf) : 0;
+ xprintf(changebuf,"%s to %s",cbuf,mob->name);
+ do_give(ch,changebuf);
+ act("$N repairs $p.",ch,obj,mob,TO_CHAR);
+ if( change > 0 )
+ {
+  MONEY_TYPE *transaction;
+  transaction = round_money( change, TRUE );
+  join_money( transaction, ch->money );
+ }
 }

@@ -491,6 +491,7 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
    fprintf( fp, "Name         %s~\n", obj->name );
    fprintf( fp, "ShortDescr   %s~\n", obj->short_descr );
    fprintf( fp, "Description  %s~\n", obj->description );
+   fprintf( fp, "Durability   %d %d\n", obj->durability, obj->max_durability );
    fprintf( fp, "Vnum         %d\n", obj->pIndexData->vnum );
    fprintf( fp, "ExtraFlags   %d\n", obj->extra_flags );
    fprintf( fp, "WearFlags    %d\n", obj->wear_flags );
@@ -1558,6 +1559,13 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
 
          case 'D':
             SKEY( "Description", obj->description, fread_string( fp ) );
+            if( !str_cmp( word, "Durability" ) )
+            {
+             obj->durability = fread_number( fp );
+             obj->max_durability = fread_number( fp );
+             fMatch = TRUE;
+             break;
+            }
             break;
 
          case 'E':

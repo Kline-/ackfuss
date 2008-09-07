@@ -713,7 +713,7 @@ void do_ostat( CHAR_DATA * ch, char *argument )
    xprintf( buf, "Cost: %d.  Timer: %d.  Level: %d.\n\r", obj->cost, obj->timer, obj->level );
    xcat( buf1, buf );
 
-   xprintf( buf, "Condition: %d%%.\n\r", obj->condition );
+   xprintf( buf, "Durability: %d/%d (%1.0f%).\n\r", obj->durability, obj->max_durability, (float)(((float)obj->durability / (float)obj->max_durability) * 100) );
    xcat( buf1, buf );
 
    xprintf(buf, "Speed %4.2f\n\r", obj->speed);
@@ -3259,7 +3259,7 @@ void do_oset( CHAR_DATA * ch, char *argument )
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
       send_to_char( "  value0 value1 value2 value3 [v0,v1,v2,v3] speed\n\r", ch );
-      send_to_char( "  extra wear level weight cost timer condition\n\r", ch );
+      send_to_char( "  extra wear level weight cost timer durability\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "String being one of:\n\r", ch );
       send_to_char( "  name short long ed\n\r", ch );
@@ -3315,14 +3315,15 @@ void do_oset( CHAR_DATA * ch, char *argument )
    }
 
 
-   if( !str_cmp( arg2, "condition" ) || !str_cmp( arg2, "cond" ) )
+   if( !str_cmp( arg2, "durability" ) || !str_cmp( arg2, "dura" ) )
    {
-      if( value < 0 || value > 100 )
+      if( value < 2 )
       {
-         send_to_char( "Condition must be a value between 0 and 100.\n\r", ch );
-         return;
+       send_to_char("Value must be at least 2. An object with only 1 durability is considered 'broken' and un-usable.\n\r",ch);
+       return;
       }
-      obj->condition = value;
+      obj->max_durability = value;
+      obj->durability = value;
       return;
    }
 
