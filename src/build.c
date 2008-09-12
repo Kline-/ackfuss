@@ -309,7 +309,7 @@ ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, sh_int vnum, sh_int sector )
    pRoomIndex->room_flags = 0;
    pRoomIndex->sector_type = sector;
    pRoomIndex->light = 0;
-   for( door = 0; door <= 5; door++ )
+   for( door = 0; door < MAX_DIR; door++ )
       pRoomIndex->exit[door] = NULL;
    pRoomIndex->first_room_reset = NULL;
    pRoomIndex->last_room_reset = NULL;
@@ -791,7 +791,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
     * Exits
     */
    if( ( display & ( DISPLAY_BRIEFDOORS | DISPLAY_FULLDOORS ) ) )
-      for( door = 0; door <= 5; door++ )
+      for( door = 0; door < MAX_DIR; door++ )
       {
          EXIT_DATA *pexit;
          OBJ_INDEX_DATA *pKeyObj;
@@ -2239,7 +2239,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
             door = -1;
       }
 
-      if( door < 0 || door > 5 )
+      if( door < 0 || door > MAX_DIR )
       {
          send_to_char( "Door number must be a number between 0 and 5, or NSEWUD\n\r", ch );
          return;
@@ -3966,7 +3966,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       {
          pSrchRoom = pList->data;
 
-         for( door = 0; door <= 5; door++ )
+         for( door = 0; door < MAX_DIR; door++ )
          {
             if( ( pExit = pSrchRoom->exit[door] ) != NULL && ( pExit->to_room == pRoomIndex || pSrchRoom == pRoomIndex ) )
             {
@@ -4078,7 +4078,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       EXIT_DATA *pExit;
       int door;
 
-      for( door = 0; door <= 5; door++ )
+      for( door = 0; door < MAX_DIR; door++ )
       {
          if( ( pExit = pRoomIndex->exit[door] ) != NULL )
          {

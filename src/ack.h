@@ -1128,7 +1128,7 @@ struct room_index_data
    EXTRA_DESCR_DATA *first_exdesc;
    EXTRA_DESCR_DATA *last_exdesc;
    AREA_DATA *area;
-   EXIT_DATA *exit[6];
+   EXIT_DATA *exit[MAX_DIR];
    char *name;
    char *description;
    char *auto_message;  /* If != NULL, send_to_room each tick */

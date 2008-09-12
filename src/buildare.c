@@ -512,7 +512,7 @@ void build_addarea( CHAR_DATA * ch, char *argument )
    pRoomIndex->room_flags = 0;
    pRoomIndex->sector_type = SECT_INSIDE;
    pRoomIndex->light = 0;
-   for( door = 0; door <= 5; door++ )
+   for( door = 0; door < MAX_DIR; door++ )
       pRoomIndex->exit[door] = NULL;
    pRoomIndex->first_room_reset = NULL;
    pRoomIndex->last_room_reset = NULL;

@@ -1221,7 +1221,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
    strcpy( buf, (fAuto || fAutonr ) ? "[Exits:" : "Obvious exits:\n\r" );
 
    found = FALSE;
-   for( door = 0; door <= 5; door++ )
+   for( door = 0; door < MAX_DIR; door++ )
    {
       /*
        * check for players that are blind (irl) 

@@ -2250,7 +2250,7 @@ void death_cry( CHAR_DATA * ch )
    if( ( was_in_room == NULL ) || ( was_in_room->vnum == 0 ) )
       return;
 
-   for( door = 0; door <= 5; door++ )
+   for( door = 0; door < MAX_DIR; door++ )
    {
       EXIT_DATA *pexit;
 
