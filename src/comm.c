@@ -999,7 +999,7 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
          CHAR_DATA *ch;
 
          ch = d->original ? d->original : d->character;
-         if( IS_SET( ch->config, CONFIG_BLANK ) )
+         if( IS_SET( ch->config, CONFIG_BLANK ) && ch->pcdata->movement <= MAX_MOVE_DISPLAY )
             write_to_buffer( d, "\n\r", 2 );
          if( ch->hunting || ch->hunt_obj )
             char_hunt( ch );
@@ -1738,6 +1738,11 @@ void write_to_buffer( DESCRIPTOR_DATA * d, const char *txt, int length )
             for( cnt = 0; cnt < MAX_ANSI; cnt++ )
                if( ansi_table[cnt].letter == lookup )
                   break;
+
+            if( lookup == 'z' ) /* Random foreground color */
+             cnt = number_range(0,16);
+            if( lookup == 'q' ) /* Random background color */
+             cnt = number_range(20,27);
 
             if( cnt == MAX_ANSI )
             {
