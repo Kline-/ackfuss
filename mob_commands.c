@@ -101,7 +101,7 @@ void do_mpasound( CHAR_DATA * ch, char *argument )
    }
 
    was_in_room = ch->in_room;
-   for( door = 0; door <= 5; door++ )
+   for( door = 0; door < MAX_DIR; door++ )
    {
       EXIT_DATA *pexit;
 

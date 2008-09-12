@@ -100,7 +100,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    if( !IS_NPC(ch) && ch->pcdata->movement >= MAX_MOVE_DISPLAY )
     look = FALSE;
 
-   if( door < 0 || door > 5 )
+   if( door < 0 || door > MAX_DIR )
    {
       bug( "Do_move: bad door %d.", door );
       ch->using_named_door = FALSE;
@@ -602,7 +602,7 @@ int find_door( CHAR_DATA * ch, char *arg )
       door = 5;
    else
    {
-      for( door = 0; door <= 5; door++ )
+      for( door = 0; door < MAX_DIR; door++ )
       {
          if( ( pexit = ch->in_room->exit[door] ) != NULL
              && IS_SET( pexit->exit_info, EX_ISDOOR ) && pexit->keyword != NULL && is_name( arg, pexit->keyword ) )
@@ -2015,7 +2015,7 @@ void do_scan( CHAR_DATA * ch, char *argument )
    send_to_char( "You look around.\n\r", ch );
 
    location = ch->in_room;
-   for( door = 0; door < 6; door++ )
+   for( door = 0; door < MAX_DIR; door++ )
    {
       EXIT_DATA *pexit;
 
@@ -2205,7 +2205,7 @@ void do_scout( CHAR_DATA * ch, char *argument )
    while( depth > 0 )
    {
       loc = ch->in_room;
-      for( door = 0; door < 6; door++ )
+      for( door = 0; door < MAX_DIR; door++ )
       {
          tmploc = loc;
 

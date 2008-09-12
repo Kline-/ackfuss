@@ -633,7 +633,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
    }
    xcat( buf1, ".\n\r" );
 
-   for( door = 0; door <= 5; door++ )
+   for( door = 0; door < MAX_DIR; door++ )
    {
       EXIT_DATA *pexit;
 

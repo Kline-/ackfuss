@@ -1478,7 +1478,7 @@ void load_rooms( FILE * fp )
       pRoomIndex->affected_by = ROOM_BV_NONE;
       pRoomIndex->first_room_affect = NULL;
       pRoomIndex->last_room_affect = NULL;
-      for( door = 0; door <= 5; door++ )
+      for( door = 0; door < MAX_DIR; door++ )
          pRoomIndex->exit[door] = NULL;
       pRoomIndex->first_room_reset = NULL;   /* MAG Mod */
       pRoomIndex->last_room_reset = NULL;
@@ -1510,7 +1510,7 @@ void load_rooms( FILE * fp )
 
 
             door = fread_number( fp );
-            if( door < 0 || door > 5 )
+            if( door < 0 || door > MAX_DIR )
             {
                bug( "Fread_rooms: vnum %d has bad door number.", vnum );
                hang( "Loading Rooms in db.c" );
@@ -1819,7 +1819,7 @@ void fix_exits( void )
          bool fexit;
 
          fexit = FALSE;
-         for( door = 0; door <= 5; door++ )
+         for( door = 0; door < MAX_DIR; door++ )
          {
             if( ( pexit = pRoomIndex->exit[door] ) != NULL )
             {
