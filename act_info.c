@@ -5780,10 +5780,10 @@ void do_colist( CHAR_DATA * ch, char *argument )
       if( ++n % 3 == 0 )
          send_to_char( "\n\r", ch );
    }
+   send_to_char("z - @@zrandom color@@N      q - @@qrandom back color@@N\n\r",ch);
    if( n % 3 != 0 )
       send_to_char( "\n\r", ch );
 
-   send_to_char( "\n\r", ch );
    return;
 }
 
