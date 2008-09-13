@@ -1,0 +1,949 @@
+#AREA
+@@RT@@dhe @@RT@@draining @@RG@@drounds@@N~
+Q 18
+K  none ~
+L @@W{@@r 1  5@@W}@@N~
+N 2
+I 1 5
+V 310 359
+X 0
+F 5
+U @@dThe clash of swords sounds dimly throughout the @@RT@@draining @@RG@@drounds.@@N~
+O Kline~
+R Kline~
+W Kline~
+T You can teleport into here
+M No bad room spells allowed.
+#ROOMS
+#310
+@@RB@@defore the @@RF@@dield@@N~
+@@dYou stand before the training grounds where novice adventurers come to hone their skills before venturing forth into the world. Students practice their melee and magical skills in small groups and against numerous "well used" target dummies.@@N~
+4 2
+D0
+~
+~
+0 -1 311
+S
+#311
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 318
+D1
+~
+~
+0 -1 315
+D2
+~
+~
+0 -1 310
+D3
+~
+~
+0 -1 312
+S
+#312
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 319
+D1
+~
+~
+0 -1 311
+D3
+~
+~
+0 -1 313
+S
+#313
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 320
+D1
+~
+~
+0 -1 312
+D3
+~
+~
+0 -1 314
+S
+#314
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 321
+D1
+~
+~
+0 -1 313
+S
+#315
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 322
+D1
+~
+~
+0 -1 316
+D3
+~
+~
+0 -1 311
+S
+#316
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 323
+D1
+~
+~
+0 -1 317
+D3
+~
+~
+0 -1 315
+S
+#317
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 324
+D3
+~
+~
+0 -1 316
+S
+#318
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 325
+D1
+~
+~
+0 -1 322
+D2
+~
+~
+0 -1 311
+D3
+~
+~
+0 -1 319
+S
+#319
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 326
+D1
+~
+~
+0 -1 318
+D2
+~
+~
+0 0 312
+D3
+~
+~
+0 -1 320
+S
+#320
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 327
+D1
+~
+~
+0 -1 319
+D2
+~
+~
+0 0 313
+D3
+~
+~
+0 -1 321
+S
+#321
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 328
+D1
+~
+~
+0 -1 320
+D2
+~
+~
+0 0 314
+S
+#322
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 329
+D1
+~
+~
+0 -1 323
+D2
+~
+~
+0 0 315
+D3
+~
+~
+0 -1 318
+S
+#323
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 330
+D1
+~
+~
+0 -1 324
+D2
+~
+~
+0 0 316
+D3
+~
+~
+0 -1 322
+S
+#324
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 331
+D2
+~
+~
+0 0 317
+D3
+~
+~
+0 -1 323
+S
+#325
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 332
+D1
+~
+~
+0 -1 329
+D2
+~
+~
+0 -1 318
+D3
+~
+~
+0 -1 326
+S
+#326
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 333
+D1
+~
+~
+0 -1 325
+D2
+~
+~
+0 0 319
+D3
+~
+~
+0 -1 327
+S
+#327
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 334
+D1
+~
+~
+0 -1 326
+D2
+~
+~
+0 0 320
+D3
+~
+~
+0 -1 328
+S
+#328
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 335
+D1
+~
+~
+0 -1 327
+D2
+~
+~
+0 0 321
+S
+#329
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 336
+D1
+~
+~
+0 -1 330
+D2
+~
+~
+0 0 322
+D3
+~
+~
+0 -1 325
+S
+#330
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 337
+D1
+~
+~
+0 -1 331
+D2
+~
+~
+0 0 323
+D3
+~
+~
+0 -1 329
+S
+#331
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 338
+D2
+~
+~
+0 0 324
+D3
+~
+~
+0 -1 330
+S
+#332
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 339
+D1
+~
+~
+0 -1 336
+D2
+~
+~
+0 -1 325
+D3
+~
+~
+0 -1 333
+S
+#333
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 340
+D1
+~
+~
+0 -1 332
+D2
+~
+~
+0 0 326
+D3
+~
+~
+0 -1 334
+S
+#334
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 341
+D1
+~
+~
+0 -1 333
+D2
+~
+~
+0 0 327
+D3
+~
+~
+0 -1 335
+S
+#335
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 342
+D1
+~
+~
+0 -1 334
+D2
+~
+~
+0 0 328
+S
+#336
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 343
+D1
+~
+~
+0 -1 337
+D2
+~
+~
+0 0 329
+D3
+~
+~
+0 -1 332
+S
+#337
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 344
+D1
+~
+~
+0 -1 338
+D2
+~
+~
+0 0 330
+D3
+~
+~
+0 -1 336
+S
+#338
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 345
+D2
+~
+~
+0 0 331
+D3
+~
+~
+0 -1 337
+S
+#339
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 346
+D1
+~
+~
+0 -1 343
+D2
+~
+~
+0 -1 332
+D3
+~
+~
+0 -1 340
+S
+#340
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 347
+D1
+~
+~
+0 -1 339
+D2
+~
+~
+0 0 333
+D3
+~
+~
+0 -1 341
+S
+#341
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 348
+D1
+~
+~
+0 -1 340
+D2
+~
+~
+0 0 334
+D3
+~
+~
+0 -1 342
+S
+#342
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 349
+D1
+~
+~
+0 -1 341
+D2
+~
+~
+0 0 335
+S
+#343
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 350
+D1
+~
+~
+0 -1 344
+D2
+~
+~
+0 0 336
+D3
+~
+~
+0 -1 339
+S
+#344
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 351
+D1
+~
+~
+0 -1 345
+D2
+~
+~
+0 0 337
+D3
+~
+~
+0 -1 343
+S
+#345
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 352
+D2
+~
+~
+0 0 338
+D3
+~
+~
+0 -1 344
+S
+#346
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 353
+D1
+~
+~
+0 -1 350
+D2
+~
+~
+0 -1 339
+D3
+~
+~
+0 -1 347
+S
+#347
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 354
+D1
+~
+~
+0 -1 346
+D2
+~
+~
+0 0 340
+D3
+~
+~
+0 -1 348
+S
+#348
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 355
+D1
+~
+~
+0 -1 347
+D2
+~
+~
+0 0 341
+D3
+~
+~
+0 -1 349
+S
+#349
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 359
+D1
+~
+~
+0 -1 348
+D2
+~
+~
+0 0 342
+S
+#350
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 356
+D1
+~
+~
+0 -1 351
+D2
+~
+~
+0 0 343
+D3
+~
+~
+0 -1 346
+S
+#351
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 357
+D1
+~
+~
+0 -1 352
+D2
+~
+~
+0 0 344
+D3
+~
+~
+0 -1 350
+S
+#352
+New room~
+No description~
+0 2
+D0
+~
+~
+0 -1 358
+D2
+~
+~
+0 0 345
+D3
+~
+~
+0 -1 351
+S
+#353
+New room~
+No description~
+0 2
+D1
+~
+~
+0 -1 356
+D2
+~
+~
+0 -1 346
+D3
+~
+~
+0 -1 354
+S
+#354
+New room~
+No description~
+0 2
+D1
+~
+~
+0 -1 353
+D2
+~
+~
+0 0 347
+D3
+~
+~
+0 -1 355
+S
+#355
+New room~
+No description~
+0 2
+D1
+~
+~
+0 -1 354
+D2
+~
+~
+0 0 348
+D3
+~
+~
+0 -1 359
+S
+#356
+New room~
+No description~
+0 2
+D1
+~
+~
+0 -1 357
+D2
+~
+~
+0 0 350
+D3
+~
+~
+0 -1 353
+S
+#357
+New room~
+No description~
+0 2
+D1
+~
+~
+0 -1 358
+D2
+~
+~
+0 0 351
+D3
+~
+~
+0 -1 356
+S
+#358
+New room~
+No description~
+0 2
+D2
+~
+~
+0 0 352
+D3
+~
+~
+0 -1 357
+S
+#359
+New room~
+No description~
+0 2
+D1
+~
+~
+0 -1 355
+D2
+~
+~
+0 0 349
+S
+#0
+#$
