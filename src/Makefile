@@ -1,5 +1,5 @@
 CC      = gcc
-PROF    = 
+#PROF    = -pg
 
 # Debugging flags possible:  DEBUG_MEM DEBUG_MEM_CORRUPT DEBUG_MEM_DUP_FREE
 # DEBUG_MEM is most basic, just checks magic numbers when freeing
@@ -21,8 +21,8 @@ PROF    =
 #SOLARIS_FLAG = -Dsun -DSYSV -Wno-char-subscripts
 #SOLARIS_LINK = -lnsl -lsocket -lresolv
 
-C_FLAGS = -O -g2 -Wall -DACK_43 $(PROF) $(SOLARIS_FLAG)
-L_FLAGS = -O -g2 -lcrypt -lm $(PROF) $(SOLARIS_LINK)
+C_FLAGS = -O2 -g -Wall -DACK_43 $(PROF) $(SOLARIS_FLAG)
+L_FLAGS = -O2 -g -lcrypt -lm $(PROF) $(SOLARIS_LINK)
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
