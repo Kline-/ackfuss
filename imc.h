@@ -1,10 +1,10 @@
 /* IMC2 Freedom Client - Developed by Mud Domain.
  *
- * Copyright ©2004 by Roger Libiez ( Samson )
+ * Copyright ©2004-2008 by Roger Libiez ( Samson )
  * Contributions by Johnathan Walker ( Xorith ), Copyright ©2004
  * Additional contributions by Jesse Defer ( Garil ), Copyright ©2004
  * Additional contributions by Rogel, Copyright ©2004
- * Comments and suggestions welcome: http://www.mudbytes.net/index.php?a=forum&f=31
+ * Comments and suggestions welcome: http://www.mudbytes.net/imc2-support-forum
  * License terms are available in the imc2freedom.license file.
  */
 
@@ -15,7 +15,7 @@
  * This name was chosen to represent the ideals of not only the code, but of the
  * network which spawned it.
  */
-#define IMC_VERSION_STRING "IMC2 Freedom CL-2.1a "
+#define IMC_VERSION_STRING "IMC2 Freedom CL-2.2 "
 #define IMC_VERSION 2
 
 /* Number of entries to keep in the channel histories */
@@ -70,7 +70,6 @@ typedef enum
 #define IMC_AFK          (1 <<  7)
 #define IMC_COLORFLAG    (1 <<  8)
 #define IMC_PERMOVERRIDE (1 <<  9)
-#define IMC_NOTIFY       (1 << 10)
 
 #define IMCPERM(ch)           (CH_IMCDATA((ch))->imcperm)
 #define IMCFLAG(ch)           (CH_IMCDATA((ch))->imcflag)
@@ -422,8 +421,17 @@ bool imc_loadchar( CHAR_DATA * ch, FILE * fp, const char *word );
 void imc_savechar( CHAR_DATA * ch, FILE * fp );
 void imc_freechardata( CHAR_DATA * ch );
 void imc_loop( void );
-IMC_CHANNEL *imc_findchannel( char *name );  /* Externalized for comm.c spamguard checks */
-void imc_register_packet_handler( char *name, PACKET_FUN * func );
+IMC_CHANNEL *imc_findchannel( const char *name );
+void imc_register_packet_handler( const char *name, PACKET_FUN * func );
+IMC_PACKET *imc_newpacket( const char *from, const char *type, const char *to );
+void imc_addtopacket( IMC_PACKET * p, const char *fmt, ... );
+void imc_write_packet( IMC_PACKET * p );
+char *imc_getData( char *output, const char *key, const char *packet );
+CHAR_DATA *imc_find_user( const char *name );
+char *imc_nameof( const char *src );
+char *imc_mudof( const char *src );
+void imc_send_tell( const char *from, const char *to, const char *txt, int reply );
+
 #if defined(_DISKIO_H_)
 void imc_load_pfile( CHAR_DATA * ch, char *tag, int num, char *line );
 void imc_save_pfile( struct CHAR_DATA *ch, FBFILE * fp );
