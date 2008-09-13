@@ -113,7 +113,8 @@ void build_save_area_list( void )
    FILE *fpArea;
    char buf[MSL];
 
-   fpArea = file_open( AREA_LIST, "w" );
+   xprintf( buf, "%s.new", AREA_LIST );
+   fpArea = file_open( buf, "w" );
 
    if( fpArea == NULL )
    {
@@ -610,13 +611,13 @@ void build_setarea( CHAR_DATA * ch, char *argument )
       send_to_char( "      teleport    Yes/No  \n\r", ch );
       send_to_char( "      building    Yes/No  \n\r", ch );
       send_to_char( "      show        Yes/No  \n\r", ch );
-      send_to_char( "	     room_spells On/Off \n\r", ch );
+      send_to_char( "      room_spells On/Off \n\r", ch );
       send_to_char( "      min_level   <level>\n\r", ch );
       send_to_char( "      max_level   <level>\n\r", ch );
       send_to_char( "      level_label <label>\n\r", ch );
-      send_to_char( "	     keyword     <keyword> \n\r", ch );
-      send_to_char( "	     repop_rate  ticks( lower is faster ) \n\r", ch );
-      send_to_char( "	     message <message> \n\r", ch );
+      send_to_char( "      keyword     <keyword> \n\r", ch );
+      send_to_char( "      repop_rate  ticks( lower is faster ) \n\r", ch );
+      send_to_char( "      message <message> \n\r", ch );
 
       send_to_char( "@@Y      offset  <vnum>@@g\n\r", ch );
       return;
