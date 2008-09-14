@@ -74,7 +74,6 @@ char *build_simpstrdup( char * );
 ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, sh_int vnum, sh_int sector );
 
 
-
 int build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 {
    if( get_trust( ch ) >= MAX_LEVEL - 1 )
@@ -1037,9 +1036,4 @@ void build_arealist( CHAR_DATA * ch, char *argument )
 
    send_to_char( msg, ch );
    return;
-}
-
-void build_sysdata( CHAR_DATA *ch, char *argument )
-{
- return;
 }
