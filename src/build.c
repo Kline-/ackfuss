@@ -2549,6 +2549,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
    {
       send_to_char( "Syntax: [set] <field>  <value>\n\r", ch );
       send_to_char( "or:     [set] <string> <value>\n\r", ch );
+      send_to_char( "or:     aobj [full]\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
       send_to_char( "  value0 value1 value2 value3 speed\n\r", ch );
@@ -2592,6 +2593,52 @@ void build_setobject( CHAR_DATA * ch, char *argument )
    /*
     * Set something.
     */
+   if( !str_prefix( "aobj", arg2 ) )
+   {
+    float mult = 0.0;
+    sh_int ac = 0, dr = 0, hp = 0, hr = 0, mp = 0, mv = 0, svs = 0;
+
+    if( pObj->level < 1 ) /* Should never happen anyhow, but sanity checks are never bad */
+    {
+     send_to_char("You can only auto-object items that are at least level 1.\n\r",ch);
+     return;
+    }
+
+    mult = (float)pObj->level / 120.0000;
+    ac = sysdata.build_obj_ac * mult;
+    dr = sysdata.build_obj_dr * mult;
+    hp = sysdata.build_obj_hp * mult;
+    hr = sysdata.build_obj_hr * mult;
+    mp = sysdata.build_obj_mp * mult;
+    mv = sysdata.build_obj_mv * mult;
+    svs = sysdata.build_obj_svs * mult;
+
+    if( !str_cmp("full",arg3) )
+    {
+     /* Use bonus % table based on wear slot */
+    }
+
+    xprintf(buf,"%d aff %sac %d",pObj->vnum,ac == 0 ? "-" : "",ac);
+    build_setobject(ch,buf);
+    xprintf(buf,"%d aff %sdamroll %d",pObj->vnum,dr == 0 ? "-" : "",dr);
+    build_setobject(ch,buf);
+    xprintf(buf,"%d aff %shit %d",pObj->vnum,hp == 0 ? "-" : "",hp);
+    build_setobject(ch,buf);
+    xprintf(buf,"%d aff %shitroll %d",pObj->vnum,hr == 0 ? "-" : "",hr);
+    build_setobject(ch,buf);
+    xprintf(buf,"%d aff %smana %d",pObj->vnum,mp == 0 ? "-" : "",mp);
+    build_setobject(ch,buf);
+    xprintf(buf,"%d aff %smove %d",pObj->vnum,mv == 0 ? "-" : "",mv);
+    build_setobject(ch,buf);
+    xprintf(buf,"%d aff %ssaving_spell %d",pObj->vnum,svs == 0 ? "-" : "",svs);
+    build_setobject(ch,buf);
+
+    xprintf(buf,"Auto-object complete based on item level %d. Stats are %0.2f%% of max.\n\r",pObj->level,(mult * 100));
+    send_to_char(buf,ch);
+
+    return;
+   }
+
    if( !str_prefix( "value", arg2 ) )
    {
       num = arg2[5] - '0';
@@ -6075,4 +6122,83 @@ void check_autodig( CHAR_DATA *ch, int dir )
   xprintf(buf,"%s %d",exit,vnum);
   build_dig(ch,buf);
  }
+}
+
+void build_sysdata( CHAR_DATA *ch, char *argument )
+{
+ char outbuf[MSL];
+ char catbuf[MSL];
+ char arg1[MSL];
+ char arg2[MSL];
+
+ argument = one_argument(argument,arg1);
+ argument = one_argument(argument,arg2);
+
+ if( arg1[0] == '\0' )
+ {
+  send_to_char("Syntax for sysdata:\n\r",ch);
+  send_to_char("  sysdata help | show | <option> <value>\n\r",ch);
+  send_to_char("  options: obj[ac | dr | hp | hr | mp | mv | svs]\n\r",ch);
+  return;
+ }
+
+ if( !str_prefix(arg1,"help") )
+ {
+  build_help(ch,"sysdata");
+  return;
+ }
+
+ if( !str_prefix(arg1,"show") )
+ {
+  xprintf(outbuf,"%s","  Builder system data for " mudnamecolor ":\n\r");
+  xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Option         ]       [Value          ]\n\r");
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Obj AC         ]       [%15d]\n\r",sysdata.build_obj_ac);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Obj DR         ]       [%15d]\n\r",sysdata.build_obj_dr);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Obj HP         ]       [%15d]\n\r",sysdata.build_obj_hp);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Obj HR         ]       [%15d]\n\r",sysdata.build_obj_hr);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Obj MP         ]       [%15d]\n\r",sysdata.build_obj_mp);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Obj MV         ]       [%15d]\n\r",sysdata.build_obj_mv);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Obj SVS        ]       [%15d]\n\r",sysdata.build_obj_svs);
+  xcat(outbuf,catbuf);
+  xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  xcat(outbuf,catbuf);
+  send_to_char(outbuf,ch);
+  return;
+ }
+
+ if( !str_cmp(arg1,"objac") )
+  sysdata.build_obj_ac = atoi(arg2) != 0 ? atoi(arg2) : 1;
+ else if( !str_cmp(arg1,"objdr") )
+  sysdata.build_obj_dr = atoi(arg2) != 0 ? atoi(arg2) : 1;
+ else if( !str_cmp(arg1,"objhp") )
+  sysdata.build_obj_hp = atoi(arg2) != 0 ? atoi(arg2) : 1;
+ else if( !str_cmp(arg1,"objhr") )
+  sysdata.build_obj_hr = atoi(arg2) != 0 ? atoi(arg2) : 1;
+ else if( !str_cmp(arg1,"objmp") )
+  sysdata.build_obj_mp = atoi(arg2) != 0 ? atoi(arg2) : 1;
+ else if( !str_cmp(arg1,"objmv") )
+  sysdata.build_obj_mv = atoi(arg2) != 0 ? atoi(arg2) : 1;
+ else if( !str_cmp(arg1,"objsvs") )
+  sysdata.build_obj_svs = atoi(arg2) != 0 ? atoi(arg2) : 1;
+ else
+ {
+  build_sysdata(ch,"");
+  return;
+ }
+
+ save_sysdata( );
+ build_sysdata(ch,"show");
+
+ return;
 }
