@@ -2549,7 +2549,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
    {
       send_to_char( "Syntax: [set] <field>  <value>\n\r", ch );
       send_to_char( "or:     [set] <string> <value>\n\r", ch );
-      send_to_char( "or:     aobj [full]\n\r", ch );
+      send_to_char( "or:     aobj [<slot>]\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
       send_to_char( "  value0 value1 value2 value3 speed\n\r", ch );
@@ -2613,9 +2613,33 @@ void build_setobject( CHAR_DATA * ch, char *argument )
     mv = sysdata.build_obj_mv * mult;
     svs = sysdata.build_obj_svs * mult;
 
-    if( !str_cmp("full",arg3) )
+    if( arg3[0] != '\0' ) /* Use modifiers based on wear slot */
     {
-     /* Use bonus % table based on wear slot */
+     sh_int i = 0;
+     bool found = FALSE;
+
+     for( i = 0; tab_auto_obj[i].name != NULL; i++ )
+     {
+      if( !str_prefix(arg3,tab_auto_obj[i].name) )
+      {
+       found = TRUE;
+       ac *= tab_auto_obj[i].ac;
+       dr *= tab_auto_obj[i].dr;
+       hp *= tab_auto_obj[i].hp;
+       hr *= tab_auto_obj[i].hr;
+       mp *= tab_auto_obj[i].mp;
+       mv *= tab_auto_obj[i].mv;
+       svs *= tab_auto_obj[i].svs;
+       break;
+      }
+     }
+     if( found )
+     {
+      xprintf(buf,"Values modified based on object type: %s.\n\r",tab_auto_obj[i].name);
+      send_to_char(buf,ch);
+     }
+     else
+      send_to_char("Values unchanged. Unknown object type.\n\r",ch);
     }
 
     xprintf(buf,"%d aff %sac %d",pObj->vnum,ac == 0 ? "-" : "",ac);
@@ -2989,8 +3013,8 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       if( neg == 1 )
       {
          if( !found )
-         {
-            send_to_char( "Location not found.\n\r", ch );
+         {  /* Commenting this to squelch auto-object. It's not that important to generate a message. --Kline
+            send_to_char( "Location not found.\n\r", ch ); */
             return;
          }
 
