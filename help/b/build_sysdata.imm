@@ -1,0 +1,11 @@
+SYSDATA
+
+OPTION               DESCRIPTION
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+Obj AC               The max AC for a level 120 item.
+Obj DR               The max DR for a level 120 item.
+Obj HP               The max HP for a level 120 item.
+Obj HR               The max HR for a level 120 item.
+Obj MP               The max MP for a level 120 item.
+Obj MV               The max MV for a level 120 item.
+Obj SVS              The max SVS for a level 120 item.
