@@ -1038,3 +1038,8 @@ void build_arealist( CHAR_DATA * ch, char *argument )
    send_to_char( msg, ch );
    return;
 }
+
+void build_sysdata( CHAR_DATA *ch, char *argument )
+{
+ return;
+}

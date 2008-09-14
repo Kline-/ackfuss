@@ -150,7 +150,7 @@ DECLARE_DO_FUN( build_findarea );
 DECLARE_DO_FUN( build_addarea );
 DECLARE_DO_FUN( build_setarea );
 DECLARE_DO_FUN( build_makearea );
-
+DECLARE_DO_FUN( build_sysdata );
 
 /* Commands */
 const struct cmd_type build_cmd_table[] = {
@@ -221,6 +221,7 @@ const struct cmd_type build_cmd_table[] = {
    {"check_area", do_check_area, POS_STANDING, MAX_LEVEL, LOG_NORMAL},
    {"check_areas", do_check_areas, POS_STANDING, MAX_LEVEL, LOG_ALWAYS},
    {"clone", build_clone, POS_STANDING, 0, LOG_NORMAL},
+   {"sysdata", build_sysdata, POS_STANDING, MAX_LEVEL, LOG_ALWAYS},
    /*
     * End of list.
     */
