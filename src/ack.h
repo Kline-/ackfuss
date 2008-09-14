@@ -1341,6 +1341,18 @@ struct quest_info
  sh_int wait_time;
 };
 
+struct eq_type
+{
+ char *const name;
+ float ac;
+ float dr;
+ float hp;
+ float hr;
+ float mp;
+ float mv;
+ float svs;
+};
+
 /*
  * Our function prototypes.
  * One big lump ... this is every function in Merc.

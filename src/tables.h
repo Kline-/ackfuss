@@ -60,3 +60,4 @@ extern const struct lookup_type tab_mob_race_mods_col[];
 extern const struct lookup_type tab_cast_name[];
 extern const struct lookup_type tab_mob_def[];
 extern const struct lookup_type tab_mob_race_mods[];
+extern const struct eq_type tab_auto_obj[];
