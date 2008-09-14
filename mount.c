@@ -24,6 +24,13 @@
  *  benefitting.  We hope that you share your changes too.  What goes      *
  *  around, comes around.                                                  *
  ***************************************************************************/
+/***************************************************************************
+ * _/_/_/_/  _/    _/  _/_/_/_/ _/_/_/_/ AckFUSS is modified ACK!MUD 4.3.1 *
+ * _/        _/    _/  _/       _/       copyright Matt Goff (Kline) 2008  *
+ * _/_/      _/    _/  _/_/_/_/ _/_/_/_/                                   *
+ * _/        _/    _/        _/       _/ Support for this code is provided *
+ * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
+ ***************************************************************************/
 
 /* Mount, ok ppl lets mount them damn horses, i knew they had to be good
  * for something.
