@@ -1,3 +1,29 @@
+4.3.8 - 14 Sep 08:
+ Auto-object is complete with a mod table. ie: aobj weapon will modify the level-based values with "weapon" stats -- only hr and dr, and a percentage of the level's base stats. Adjust the sysdata values or the build table as needed for customization :).
+ Auto-object is in. Use aobj when editing an object, adjust the top-end values with sysdata while in build mode.
+ A build version of sysdata is in to configure values for the auto-object system and future use.
+ Some bugfixes with strlower() being used.
+ Mobs now get save_vs_spell on load. A new sysdata option, mobsvs, was added for this, also.
+ Fixed a minor align bug in setarea and a bug in saving the Area list.
+ Starting to build a 1 to 5 newbie zone, well, because I can.
+ Moved all references for door counting to a MAX_DIR define in config.h
+ Added color tokens for random color and random back color.
+ Items now have durability and take damage in combat. Once an item is broken (no durability) it falls off to inv and is un-usable until repaired. 
+ Repair command in place to handle this though the costs may need adjusting :D
+ Added brawl code. Mobs can now be "swept up" into a fight in their room.
+ Updated with MAX_MOVE_DISPLAY for the number of rooms to auto-look on enter while moving. Past this number players will only be shown a room name and exits. Good for speed walking :).
+ xprintf updated to replace the last relics of sprintf used in the mapper and bug() calls.
+ Safe command added to let a player know if their room is flagged safe or not.
+ Fixed iquest to show money values.
+ Added a "delete" arg to mgive.
+ Updated autoquest to use top_mob_index instead of 1000 loop.
+ Fixed no fight damage messages.
+ Added 'exp' to mset.
+ mquest (thanks Abel) is in. Generates random quests for players to do for qp/gold/exp.
+ Changed save to allow arg "auto" to save quietly; updated all occurrences of this.
+ Fixed a lot of missing !IS_NPC() checks in saving.
+ Removed an un-used ITEM_DARK sharing flags with ITEM_NODISARM.
+ Added MONITOR_HELPS to the monitor table, oops.
 4.3.7 - 29 Aug 08:
  Removed lots of unused code.
  Added 'color' support for all regular channels.
