@@ -1,6 +1,13 @@
 /* Codebase macros - Change as you might need.
  * Yes, Rogel, you can gloat all you want. You win, this is cleaner, though not by a whole lot.
  */
+/***************************************************************************
+ * _/_/_/_/  _/    _/  _/_/_/_/ _/_/_/_/ AckFUSS is modified ACK!MUD 4.3.1 *
+ * _/        _/    _/  _/       _/       copyright Matt Goff (Kline) 2008  *
+ * _/_/      _/    _/  _/_/_/_/ _/_/_/_/                                   *
+ * _/        _/    _/        _/       _/ Support for this code is provided *
+ * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
+ ***************************************************************************/
 
 #ifndef __IMC2CFG_H__
 #define __IMC2CFG_H__

@@ -24,7 +24,13 @@
  *  benefitting.  We hope that you share your changes too.  What goes      *
  *  around, comes around.                                                  *
  ***************************************************************************/
-
+/***************************************************************************
+ * _/_/_/_/  _/    _/  _/_/_/_/ _/_/_/_/ AckFUSS is modified ACK!MUD 4.3.1 *
+ * _/        _/    _/  _/       _/       copyright Matt Goff (Kline) 2008  *
+ * _/_/      _/    _/  _/_/_/_/ _/_/_/_/                                   *
+ * _/        _/    _/        _/       _/ Support for this code is provided *
+ * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
+ ***************************************************************************/
 
 extern unsigned long int table_lookup( const struct lookup_type *, char * );
 extern char *rev_table_lookup( const struct lookup_type *, unsigned long int );

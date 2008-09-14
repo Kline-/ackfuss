@@ -24,6 +24,13 @@
  *  benefitting.  We hope that you share your changes too.  What goes      *
  *  around, comes around.                                                  *
  ***************************************************************************/
+/***************************************************************************
+ * _/_/_/_/  _/    _/  _/_/_/_/ _/_/_/_/ AckFUSS is modified ACK!MUD 4.3.1 *
+ * _/        _/    _/  _/       _/       copyright Matt Goff (Kline) 2008  *
+ * _/_/      _/    _/  _/_/_/_/ _/_/_/_/                                   *
+ * _/        _/    _/        _/       _/ Support for this code is provided *
+ * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
+ ***************************************************************************/
 
 #include <ctype.h>
 #include <stdio.h>
@@ -2639,7 +2646,13 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       send_to_char(buf,ch);
      }
      else
-      send_to_char("Values unchanged. Unknown object type.\n\r",ch);
+     {
+      xprintf(buf,"Invalid object type. Valid object types:");
+      for( i = 0; tab_auto_obj[i].name != NULL; i++ )
+       xcat(buf," %s",tab_auto_obj[i].name);
+      xcat(buf,".\n\r");
+      send_to_char(buf,ch);
+     }
     }
 
     xprintf(buf,"%d aff %sac %d",pObj->vnum,ac == 0 ? "-" : "",ac);
