@@ -1841,7 +1841,7 @@ void do_help( CHAR_DATA * ch, char *argument )
  bool shelp = FALSE;
 
  buf[0] = '\0';
- strlower(argument);
+ argument = strlower(argument);
  smash_replace(argument," ","_");
  smash_replace(argument,":","_");
 

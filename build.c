@@ -3801,7 +3801,7 @@ void build_delhelp( CHAR_DATA *ch, char *argument )
  char arg2[MSL];
  bool mort = FALSE;
 
- strlower(argument);
+ argument = strlower(argument);
  argument = one_argument(argument,arg1);
  argument = one_argument(argument,arg2);
 
@@ -4519,7 +4519,7 @@ void build_help( CHAR_DATA * ch, char *argument )
 
    if( argument[0] != '\0' )  /* If an argument supplied... */
    {
-      xprintf( buf, "BUILD_%s", argument );  /* Format text to send */
+      xprintf( buf, "build_%s", argument );  /* Format text to send */
       do_help( ch, buf );  /* Try and find BUILD_<helpname> in helps */
       return;
    }
@@ -5687,7 +5687,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
  bool mort = FALSE;
  FILE *fp;
 
- strlower(argument);
+ argument = strlower(argument);
  argument = one_argument(argument,arg);
  smash_replace(argument," ","_");
 
@@ -5749,7 +5749,7 @@ void build_addhelp( CHAR_DATA * ch, char *argument )
  bool mort = FALSE;
  FILE *fp;
 
- strlower(argument);
+ argument = strlower(argument);
  argument = one_argument(argument,arg);
  smash_replace(argument," ","_");
 
