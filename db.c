@@ -2468,8 +2468,10 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->armor = interpolate( mob->level / 2, 100, -100 );
    mob->armor *= sysdata.mob_ac;
 
-   mob->hitroll += ((get_psuedo_level(mob) / 4) * sysdata.mob_hr);
-   mob->damroll += ((get_psuedo_level(mob) / 4) * sysdata.mob_dr);
+   mob->hitroll += (get_psuedo_level(mob) / 4);
+   mob->hitroll *= sysdata.mob_hr;
+   mob->damroll += (get_psuedo_level(mob) / 4);
+   mob->damroll *= sysdata.mob_dr;
 
    mob->max_hit = mob->level * 15 + number_range( mob->level * mob->level / 2, mob->level * mob->level / 1 );
    mob->max_hit *= sysdata.mob_hp;
@@ -2508,6 +2510,8 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->position = POS_STANDING;
    mob->is_quitting = FALSE;
    mob->extract_timer = -1;
+   mob->saving_throw = (get_psuedo_level(mob) / 10);
+   mob->saving_throw *= sysdata.mob_svs;
 
    mob->in_room = NULL; /* to distinguish between loaded mobs */
    /*

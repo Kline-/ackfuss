@@ -63,8 +63,18 @@ void load_sysdata( void )
 
   switch( UPPER(word[0]) )
   {
+   case 'B':
+    KEY("Build_Obj_AC",  sysdata.build_obj_ac,  fread_number(fp));
+    KEY("Build_Obj_DR",  sysdata.build_obj_dr,  fread_number(fp));
+    KEY("Build_Obj_HP",  sysdata.build_obj_hp,  fread_number(fp));
+    KEY("Build_Obj_HR",  sysdata.build_obj_hr,  fread_number(fp));
+    KEY("Build_Obj_MP",  sysdata.build_obj_mp,  fread_number(fp));
+    KEY("Build_Obj_MV",  sysdata.build_obj_mv,  fread_number(fp));
+    KEY("Build_Obj_SVS", sysdata.build_obj_svs, fread_number(fp));
+    break;
    case 'D':
-    KEY("Damcap",       sysdata.damcap,      fread_number(fp));
+    KEY("Damcap",        sysdata.damcap,        fread_number(fp));
+    break;
    case 'E':
     if( !str_cmp(word,"End") )
     {
@@ -73,28 +83,29 @@ void load_sysdata( void )
      log_f("Done.");
      return;
     }
-    KEY("Expmult",      sysdata.expmult,     fread_float(fp));
+    KEY("Expmult",       sysdata.expmult,       fread_float(fp));
     break;
    case 'K':
-    KEY("KillPerLev",   sysdata.killperlev,  fread_number(fp));
+    KEY("KillPerLev",    sysdata.killperlev,    fread_number(fp));
     break;
    case 'M':
-    KEY("Mob_AC",       sysdata.mob_ac,      fread_float(fp));
-    KEY("Mob_DR",       sysdata.mob_dr,      fread_float(fp));
-    KEY("Mob_HP",       sysdata.mob_hp,      fread_float(fp));
-    KEY("Mob_HR",       sysdata.mob_hr,      fread_float(fp));
-    KEY("Mob_MP",       sysdata.mob_mp,      fread_float(fp));
-    KEY("Mob_MV",       sysdata.mob_mv,      fread_float(fp));
+    KEY("Mob_AC",        sysdata.mob_ac,        fread_float(fp));
+    KEY("Mob_DR",        sysdata.mob_dr,        fread_float(fp));
+    KEY("Mob_HP",        sysdata.mob_hp,        fread_float(fp));
+    KEY("Mob_HR",        sysdata.mob_hr,        fread_float(fp));
+    KEY("Mob_MP",        sysdata.mob_mp,        fread_float(fp));
+    KEY("Mob_MV",        sysdata.mob_mv,        fread_float(fp));
+    KEY("Mob_SVS",       sysdata.mob_svs,       fread_float(fp));
     break;
    case 'P':
-    KEY("Playtesters",  sysdata.playtesters, fread_string(fp));
-    KEY("Pulse",        sysdata.pulse,       fread_number(fp));
+    KEY("Playtesters",   sysdata.playtesters,   fread_string(fp));
+    KEY("Pulse",         sysdata.pulse,         fread_number(fp));
     break;
    case 'S':
-    KEY("Shownumbers",  sysdata.shownumbers, fread_number(fp));
+    KEY("Shownumbers",   sysdata.shownumbers,   fread_number(fp));
     break;
    case 'W':
-    KEY("Wizlock",      sysdata.w_lock,      fread_number(fp));
+    KEY("Wizlock",       sysdata.w_lock,        fread_number(fp));
     break;
   }
   if( !fMatch )
@@ -119,19 +130,27 @@ void save_sysdata( void )
   return;
  }
 
- fprintf(fp, "Damcap      %d\n",     sysdata.damcap);
- fprintf(fp, "Expmult     %0.4f\n",  sysdata.expmult);
- fprintf(fp, "KillPerLev  %d\n",     sysdata.killperlev);
- fprintf(fp, "Mob_AC      %0.4f\n",  sysdata.mob_ac);
- fprintf(fp, "Mob_DR      %0.4f\n",  sysdata.mob_dr);
- fprintf(fp, "Mob_HP      %0.4f\n",  sysdata.mob_hp);
- fprintf(fp, "Mob_HR      %0.4f\n",  sysdata.mob_hr);
- fprintf(fp, "Mob_MP      %0.4f\n",  sysdata.mob_mp);
- fprintf(fp, "Mob_MV      %0.4f\n",  sysdata.mob_mv);
- fprintf(fp, "Playtesters %s~\n",    sysdata.playtesters);
- fprintf(fp, "Pulse       %d\n",     sysdata.pulse);
- fprintf(fp, "Shownumbers %d\n",     sysdata.shownumbers);
- fprintf(fp, "Wizlock     %d\n",     wizlock);
+ fprintf(fp, "Build_Obj_AC  %d\n",    sysdata.build_obj_ac);
+ fprintf(fp, "Build_Obj_DR  %d\n",    sysdata.build_obj_dr);
+ fprintf(fp, "Build_Obj_HP  %d\n",    sysdata.build_obj_hp);
+ fprintf(fp, "Build_Obj_HR  %d\n",    sysdata.build_obj_hr);
+ fprintf(fp, "Build_Obj_MP  %d\n",    sysdata.build_obj_mp);
+ fprintf(fp, "Build_Obj_MV  %d\n",    sysdata.build_obj_mv);
+ fprintf(fp, "Build_Obj_SVS %d\n",    sysdata.build_obj_svs);
+ fprintf(fp, "Damcap        %d\n",    sysdata.damcap);
+ fprintf(fp, "Expmult       %0.4f\n", sysdata.expmult);
+ fprintf(fp, "KillPerLev    %d\n",    sysdata.killperlev);
+ fprintf(fp, "Mob_AC        %0.4f\n", sysdata.mob_ac);
+ fprintf(fp, "Mob_DR        %0.4f\n", sysdata.mob_dr);
+ fprintf(fp, "Mob_HP        %0.4f\n", sysdata.mob_hp);
+ fprintf(fp, "Mob_HR        %0.4f\n", sysdata.mob_hr);
+ fprintf(fp, "Mob_MP        %0.4f\n", sysdata.mob_mp);
+ fprintf(fp, "Mob_MV        %0.4f\n", sysdata.mob_mv);
+ fprintf(fp, "Mob_SVS       %0.4f\n", sysdata.mob_svs);
+ fprintf(fp, "Playtesters   %s~\n",   sysdata.playtesters);
+ fprintf(fp, "Pulse         %d\n",    sysdata.pulse);
+ fprintf(fp, "Shownumbers   %d\n",    sysdata.shownumbers);
+ fprintf(fp, "Wizlock       %d\n",    wizlock);
  fprintf(fp, "End\n\n");
 
  file_close(fp);
@@ -156,7 +175,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   send_to_char("Syntax for sysdata:\n\r",ch);
   send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\n\r",ch);
   send_to_char("  strings: playtesters\n\r",ch);
-  send_to_char("  options: damcap expmult killsperlev mob[ac | dr | hp | hr | mp | mv] pulse shownumbers\n\r",ch);
+  send_to_char("  options: damcap expmult killsperlev mob[ac | dr | hp | hr | mp | mv | svs] pulse shownumbers\n\r",ch);
   return;
  }
 
@@ -193,6 +212,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   xcat(outbuf,catbuf);
   xprintf(catbuf,"[Mob MV         ]       [%15.4f]\n\r",sysdata.mob_mv);
   xcat(outbuf,catbuf);
+  xprintf(catbuf,"[Mob SVS        ]       [%15.4f]\n\r",sysdata.mob_svs);
+  xcat(outbuf,catbuf);
   xprintf(catbuf,"[Playtesters    ]       [%15s]\n\r",sysdata.playtesters);
   xcat(outbuf,catbuf);
   xprintf(catbuf,"[Pulse Per Sec  ]       [%15d]\n\r",sysdata.pulse);
@@ -225,6 +246,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   sysdata.mob_mp = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_cmp(arg1,"mobmv") )
   sysdata.mob_mv = atof(arg2) != 0 ? atof(arg2) : 1;
+ else if( !str_cmp(arg1,"mobsvs") )
+  sysdata.mob_svs = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_prefix(arg1,"playtesters") )
   sysdata.playtesters = str_mod(sysdata.playtesters,arg2);
  else if( !str_prefix(arg1,"pulse") )
@@ -245,6 +268,13 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
 
 void init_sysdata( void )
 {
+ sysdata.build_obj_ac = -500;
+ sysdata.build_obj_dr = 125;
+ sysdata.build_obj_hp = 250;
+ sysdata.build_obj_hr = 125;
+ sysdata.build_obj_mp = 250;
+ sysdata.build_obj_mv = 250;
+ sysdata.build_obj_svs = -25;
  sysdata.damcap = 3000;
  sysdata.expmult = 1;
  sysdata.killperlev = 60;
@@ -254,6 +284,7 @@ void init_sysdata( void )
  sysdata.mob_hr = 1;
  sysdata.mob_mp = 1;
  sysdata.mob_mv = 1;
+ sysdata.mob_svs = 1;
  sysdata.playtesters = "";
  sysdata.pulse = 8;
  sysdata.shownumbers = TRUE;

@@ -1293,7 +1293,14 @@ struct super_data
 
 struct sysdata_type
 {
- int damcap;
+ sh_int build_obj_ac;
+ sh_int build_obj_dr;
+ sh_int build_obj_hp;
+ sh_int build_obj_hr;
+ sh_int build_obj_mp;
+ sh_int build_obj_mv;
+ sh_int build_obj_svs;
+ sh_int damcap;
  float expmult;
  sh_int killperlev;
  float mob_ac;
@@ -1302,6 +1309,7 @@ struct sysdata_type
  float mob_hr;
  float mob_mp;
  float mob_mv;
+ float mob_svs;
  char *playtesters;
  sh_int pulse;
  bool shownumbers;
