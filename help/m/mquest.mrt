@@ -12,8 +12,10 @@ mquest info            - Display the relevant information about the quest.
 mquest complete        - Hands in the quest if a questmaster mob is in the room.
 mquest hint #          - Gives a hint for task # in your quest list.
 
-There are four types of quests you can receive:
+There are six types of quests you can receive:
 item retrieval         - Retrieve a certain # of a certain item.
 multi-item retrieval   - Retrieve a certain # of numerous items.
 creature killing       - Hunt down and destroy a certain # of a mob.
 multi-creature killing - Hunt down and destroy a certian # of numerous mobs.
+race killing           - Hunt down and destroy a certain # of a race.
+multi-race killing     - Hunt down and destroy a certain # of numerous races.
