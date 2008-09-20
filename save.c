@@ -680,9 +680,9 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
        ch->pcdata->quest_info->quest_hint[foo] = FALSE;
       for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-       ch->pcdata->quest_info->quest_item_vnum[foo] = 0;
+       ch->pcdata->quest_info->quest_item_vnum[foo] = -1;
       for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-       ch->pcdata->quest_info->quest_mob_vnum[foo] = 0;
+       ch->pcdata->quest_info->quest_mob_vnum[foo] = -1;
       for( foo = 0; foo < QUEST_MAX_REWARD; foo++ )
        ch->pcdata->quest_info->quest_reward[foo] = 0;
       ch->pcdata->quest_info->quest_type = 0;
