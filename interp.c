@@ -229,6 +229,8 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_CONFIG, C_SHOW_ALWAYS},
    {"auto", do_auto, POS_DEAD, 0, LOG_NORMAL,
     C_TYPE_CONFIG, C_SHOW_ALWAYS},
+   {"autobrief", do_autobrief, POS_DEAD, 0, LOG_NORMAL,
+    C_TYPE_CONFIG, C_SHOW_ALWAYS},
    {"autodig", do_autodig, POS_DEAD, L_HER, LOG_NORMAL,
     C_TYPE_CONFIG, C_SHOW_ALWAYS},
    {"autoexit", do_autoexit, POS_DEAD, 0, LOG_NORMAL,

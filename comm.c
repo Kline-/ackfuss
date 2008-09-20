@@ -1007,11 +1007,11 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
          CHAR_DATA *ch;
 
          ch = d->original ? d->original : d->character;
-         if( IS_SET( ch->config, CONFIG_BLANK ) && ch->pcdata->movement <= MAX_MOVE_DISPLAY )
+         if( IS_SET( ch->config, CONFIG_BLANK ) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !IS_SET(ch->config,CONFIG_AUTOBRIEF)) )
             write_to_buffer( d, "\n\r", 2 );
          if( ch->hunting || ch->hunt_obj )
             char_hunt( ch );
-         if( !IS_NPC(ch) && ch->pcdata->movement <= MAX_MOVE_DISPLAY )
+         if( !IS_NPC(ch) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !IS_SET(ch->config,CONFIG_AUTOBRIEF)) )
           bust_a_prompt( d );
          if( IS_SET( ch->config, CONFIG_TELNET_GA ) )
             write_to_buffer( d, go_ahead_str, 0 );
