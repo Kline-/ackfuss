@@ -104,7 +104,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    tmp[0] = '\0';
 
    check_autodig(ch,door);
-   if( !IS_NPC(ch) && ch->pcdata->movement >= MAX_MOVE_DISPLAY )
+   if( !IS_NPC(ch) && ch->pcdata->movement >= MAX_MOVE_DISPLAY && IS_SET(ch->config,CONFIG_AUTOBRIEF) )
     look = FALSE;
 
    if( door < 0 || door > MAX_DIR )

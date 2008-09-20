@@ -654,7 +654,7 @@
 #define CONFIG_MAPPER           BIT_12
 #define CONFIG_JUSTIFY          BIT_13
 #define CONFIG_AUTODIG          BIT_14
-
+#define CONFIG_AUTOBRIEF        BIT_15
 
 /*
  * ACT bits for players.

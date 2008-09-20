@@ -1,0 +1,6 @@
+AUTOBRIEF
+
+The autobrief command is used as a shortcut to config +/-autobrief. With autobrief
+enabled you will stop seeing room descriptions and the automapper when traveling.
+This helps reduce the amount of data sent to your client and speeds up long distance
+speed walking. With autobrief disabled, rooms will always display normally.

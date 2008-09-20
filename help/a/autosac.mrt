@@ -1,0 +1,5 @@
+AUTOSAC
+
+The autosac command is used as a shortcut to config +/-autosac. With autosac
+enabled you will automatically sacrifice corpses as you kill mobs. With it
+disabled you will not.

@@ -1,0 +1,5 @@
+AUTOEXIT
+
+The autoexit command is used as a shortcut to config +/-autoexit. With autoexit
+enabled you will automatically see room exits when entering a new room. With it
+disabled, you will not.

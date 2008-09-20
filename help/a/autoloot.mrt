@@ -1,0 +1,5 @@
+AUTOLOOT
+
+The autoloot command is used as a shortcut to config +/-autoloot. With autoloot
+enabled you will automatically take all money and items from a corpse after
+killing a mob. With it disabled, you will not.

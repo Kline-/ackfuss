@@ -3879,6 +3879,10 @@ void do_config( CHAR_DATA * ch, char *argument )
                     ? "@@d[@@a+COLOR    @@d]@@a You recieve 'ANSI' color.@@N\n\r"
                     : "@@d[@@c-color    @@d]@@c You don't receive 'ANSI' color.@@N\n\r", ch );
 
+      send_to_char( IS_SET( ch->config, CONFIG_AUTOBRIEF )
+                    ? "@@d[@@a+AUTOBRIEF@@d]@@a You automatically hide room descriptions when traveling.@@N\n\r"
+                    : "@@d[@@c-autobrief@@d]@@c You don't automatically hide room descriptions when traveling.@@N\n\r", ch );
+
       send_to_char( IS_SET( ch->config, CONFIG_AUTOEXIT )
                     ? "@@d[@@a+AUTOEXIT @@d]@@a You automatically see exits.@@N\n\r"
                     : "@@d[@@c-autoexit @@d]@@c You don't automatically see exits.@@N\n\r", ch );
@@ -3948,7 +3952,9 @@ void do_config( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( !str_cmp( arg + 1, "autodig" ) && IS_IMMORTAL(ch) )
+      if( !str_cmp( arg + 1, "autobrief" ) )
+         bit = CONFIG_AUTOBRIEF;
+      else if( !str_cmp( arg + 1, "autodig" ) && IS_IMMORTAL(ch) )
          bit = CONFIG_AUTODIG;
       else if( !str_cmp( arg + 1, "autoexit" ) )
          bit = CONFIG_AUTOEXIT;
@@ -4472,6 +4478,11 @@ void do_combine( CHAR_DATA * ch, char *argument )
 void do_autodig( CHAR_DATA * ch, char *argument )
 {
    ( IS_SET( ch->config, CONFIG_AUTODIG ) ? do_config( ch, "-autodig" ) : do_config( ch, "+autodig" ) );
+}
+
+void do_autobrief( CHAR_DATA * ch, char *argument )
+{
+   ( IS_SET( ch->config, CONFIG_AUTOBRIEF ) ? do_config( ch, "-autobrief" ) : do_config( ch, "+autobrief" ) );
 }
 
 void do_pagelen( CHAR_DATA * ch, char *argument )
