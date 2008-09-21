@@ -162,13 +162,13 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
     * Commands are .help .save .preview .- .clear .lines 
     */
    argument++;
-   if( argument[0] == '\0' || UPPER( argument[0] == 'S' || UPPER( argument[0] ) == 'Q' ) )
+   if( argument[0] == '\0' || !str_prefix(argument,"save") || !str_prefix(argument,"quit") )
    {
       bool save;
       char **dest;
       CHAR_DATA *ch;
 
-      if( UPPER( argument[0] ) == 'Q' )
+      if( !str_prefix(argument,"quit") )
          save = 0;
       else
          save = 1;
@@ -237,7 +237,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
    }
 
 
-   if( UPPER( argument[0] ) == 'H' )
+   if( !str_prefix(argument,"help") )
    {
       /*
        * Help 
@@ -258,7 +258,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
       return;
    }
 
-   if( UPPER( argument[0] ) == 'R' )
+   if( !str_prefix(argument,"replace") )
    {
       /*
        * Mag:  I bet you take one look at this, and change it :) -S- 
@@ -372,7 +372,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
 
 
 
-   if( UPPER( argument[0] ) == 'P' )
+   if( !str_prefix(argument,"preview") )
    {
       send_to_char( buf, ch );
       return;
@@ -418,7 +418,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
       return;
    }
 
-   if( argument[0] == 'f' )
+   if( !str_prefix(argument,"format") )
    {
       char *src;
       char dest[MAX_STRING_LENGTH];
