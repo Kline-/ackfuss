@@ -163,6 +163,7 @@ void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
    send_to_char( "This is a notice board.\n\r", ch );
    send_to_char( "Type READ <num> to read message <num>, and WRITE <title> to post.\n\r", ch );
    send_to_char( "Type WRITE to: <player> for a private message.\n\r", ch );
+   send_to_char( "Type DELETE <num> to delete message <num> that you have writen.\n\r", ch );
    send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r", ch );
 
 
