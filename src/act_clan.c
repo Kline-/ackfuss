@@ -118,7 +118,7 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( arg1 == '\0' || arg2[0] == '\0' )
+   if( arg1[0] == '\0' || arg2[0] == '\0' )
    {
       send_to_char( "Syntax: ctoggle <clan number> <armourer/diplomat/treasurer/leader>\n\r", ch );
       return;
