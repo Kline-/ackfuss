@@ -1846,41 +1846,41 @@ void show_menu_to( DESCRIPTOR_DATA * d )
    xprintf( menu, "\n\rCharacter Creation Menu.\n\r\n\r" );
    xcat( menu, "Options:\n\r" );
 
-   xprintf( buf, "        1. Set Gender.       Currently:%s\n\r",
-            !IS_SET( d->check, CHECK_SEX ) ? "Not Set." :
+   xprintf( buf, "        1. Set Gender       Currently:%s\n\r",
+            !IS_SET( d->check, CHECK_SEX ) ? "Not Set" :
             ch->sex == SEX_NEUTRAL ? "Neutral." : ch->sex == SEX_MALE ? "Male." : "Female." );
    xcat( menu, buf );
 
-   xprintf( buf, "        2. Set Race.         Currently:%s\n\r",
-            !IS_SET( d->check, CHECK_RACE ) ? "Not Set." : race_table[ch->race].race_title );
+   xprintf( buf, "        2. Set Race         Currently:%s\n\r",
+            !IS_SET( d->check, CHECK_RACE ) ? "Not Set" : race_table[ch->race].race_title );
    xcat( menu, buf );
 
-   xcat( menu, "        3. Roll Attributes.  Currently:" );
+   xcat( menu, "        3. Roll Attributes  Currently:" );
    if( IS_SET( d->check, CHECK_STATS ) )
       xprintf( buf, "\n\r        Str: [%d]  Int: [%d]  Wis: [%d]\n\r        Dex: [%d]  Con: [%d]\n\r",
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
    else
-      xprintf( buf, "Not Set.\n\r" );
+      xprintf( buf, "Not Set\n\r" );
 
 
    xcat( menu, buf );
 
-   xcat( menu, "        4. Set Class Order.  Currently:" );
+   xcat( menu, "        4. Set Class Order  Currently:" );
    if( IS_SET( d->check, CHECK_CLASS ) )
    {
-      int fubar;
+      sh_int i;
       xprintf( buf, "\n\r        " );
-      for( fubar = 0; fubar < MAX_CLASS; fubar++ )
+      for( i = 0; i < MAX_CLASS; i++ )
       {
-         xcat( menu, class_table[ch->pcdata->order[fubar]].who_name );
-         xcat( menu, ". " );
+         xprintf( buf, "%s ", class_table[ch->pcdata->order[i]].who_name );
+         xcat( menu, buf );
       }
       xcat( menu, "\n\r" );
    }
    else
-      xcat( menu, "Not Set.\n\r" );
+      xcat( menu, "Not Set\n\r" );
 
-   xcat( menu, "        5. Exit Creation Process.\n\r" );
+   xcat( menu, "        5. Exit Creation Process\n\r" );
 
    xcat( menu, "\n\rPlease Select 1-5: " );
    write_to_buffer( d, menu, 0 );
@@ -1896,13 +1896,13 @@ void show_smenu_to( DESCRIPTOR_DATA * d )
    xprintf( menu, "\n\rCharacter Creation: Gender.\n\r\n\r" );
 
    xcat( menu, "Please Select:\n\r" );
-   xcat( menu, "              M : Male.\n\r" );
-   xcat( menu, "              F : Female.\n\r" );
-   xcat( menu, "              N : Neutral.\n\r\n\r" );
+   xcat( menu, "              M : Male\n\r" );
+   xcat( menu, "              F : Female\n\r" );
+   xcat( menu, "              N : Neutral\n\r\n\r" );
 
    if( IS_SET( d->check, CHECK_SEX ) )
       xprintf( buf, "Current Choice: %s\n\r",
-               ch->sex == SEX_NEUTRAL ? "Neutral." : ch->sex == SEX_MALE ? "Male." : "Female." );
+               ch->sex == SEX_NEUTRAL ? "Neutral" : ch->sex == SEX_MALE ? "Male" : "Female" );
    else
       xprintf( buf, "No Current Selection.\n\r" );
 
