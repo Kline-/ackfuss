@@ -822,7 +822,7 @@ char *str_mod( char *mod_string, char *argument )
             xprintf( arg1, "%s", temp );
          }
 
-         if( arg1 )
+         if( arg1[0] != '\0' )
          {
             buf2 = str_dup( mod_string );
             buf3 = buf2;
