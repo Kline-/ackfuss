@@ -1,9 +1,9 @@
 /* IMC2 Freedom Client - Developed by Mud Domain.
  *
- * Copyright ©2004 by Roger Libiez ( Samson )
- * Contributions by Johnathan Walker ( Xorith ), Copyright ©2004
- * Additional contributions by Jesse Defer ( Garil ), Copyright ©2004
- * Additional contributions by Rogel, Copyright ©2004
+ * Copyright ï¿½2004 by Roger Libiez ( Samson )
+ * Contributions by Johnathan Walker ( Xorith ), Copyright ï¿½2004
+ * Additional contributions by Jesse Defer ( Garil ), Copyright ï¿½2004
+ * Additional contributions by Rogel, Copyright ï¿½2004
  * Comments and suggestions welcome: http://www.mudbytes.net/index.php?a=forum&f=31
  * License terms are available in the imc2freedom.license file.
  */
@@ -1923,7 +1923,7 @@ PFUN( imc_recv_broadcast )
    if( !( c = imc_findchannel( chan ) ) )
       return;
 
-   if( !sender || sender[0] == '\0' )
+   if( sender[0] == '\0' )
       imc_display_channel( c, q->from, txt, em );
    else
       imc_display_channel( c, sender, txt, em );
@@ -2050,7 +2050,7 @@ PFUN( imc_recv_chanwho )
 
       imcstrlcpy( cwho, get_local_chanwho( c ), IMC_BUFF_SIZE );
 
-      if( ( !cwho || !strcasecmp( cwho, "" ) || !strcasecmp( cwho, "Nobody" ) ) && !strcasecmp( q->to, "*" ) )
+      if( ( !strcasecmp( cwho, "" ) || !strcasecmp( cwho, "Nobody" ) ) && !strcasecmp( q->to, "*" ) )
          return;
       imcstrlcpy( buf, cwho, IMC_BUFF_SIZE );
    }
@@ -2662,37 +2662,37 @@ PFUN( imc_recv_isalive )
 
    r->expired = FALSE;
 
-   if( url && url[0] != '\0' )
+   if( url[0] != '\0' )
    {
       IMCSTRFREE( r->url );
       r->url = IMCSTRALLOC( url );
    }
 
-   if( version && version[0] != '\0' )
+   if( version[0] != '\0' )
    {
       IMCSTRFREE( r->version );
       r->version = IMCSTRALLOC( version );
    }
 
-   if( netname && netname[0] != '\0' )
+   if( netname[0] != '\0' )
    {
       IMCSTRFREE( r->network );
       r->network = IMCSTRALLOC( netname );
    }
 
-   if( q->route && q->route[0] != '\0' )
+   if( q->route[0] != '\0' )
    {
       IMCSTRFREE( r->path );
       r->path = IMCSTRALLOC( q->route );
    }
 
-   if( host && host[0] != '\0' )
+   if( host[0] != '\0' )
    {
       IMCSTRFREE( r->host );
       r->host = IMCSTRALLOC( host );
    }
 
-   if( iport && iport[0] != '\0' )
+   if( iport[0] != '\0' )
    {
       IMCSTRFREE( r->port );
       r->port = IMCSTRALLOC( iport );
@@ -2769,7 +2769,7 @@ PFUN( imc_recv_iceupdate )
       return;
    }
 
-   if( !chan || chan[0] == '\0' )
+   if( chan[0] == '\0' )
    {
       imclog( "%s: NULL channel name received, skipping", __FUNCTION__ );
       return;
@@ -3249,7 +3249,7 @@ void imc_process_authentication( char *packet )
    packet = imcone_argument( packet, netname );
    packet = imcone_argument( packet, encrypt );
 
-   if( !rname || rname[0] == '\0' )
+   if( rname[0] == '\0' )
    {
       imclog( "%s", "Incomplete authentication packet. Unable to connect." );
       imc_shutdown( FALSE );
@@ -3262,7 +3262,7 @@ void imc_process_authentication( char *packet )
       char *cryptpwd;
       long auth_value = 0;
 
-      if( !pw || pw[0] == '\0' )
+      if( pw[0] == '\0' )
       {
          imclog( "SHA-256 Authentication failure: No auth_value was returned by %s.", rname );
          imc_shutdown( FALSE );
@@ -3305,7 +3305,7 @@ void imc_process_authentication( char *packet )
       }
 
       imclog( "%s", "Standard Authentication completed." );
-      if( encrypt && encrypt[0] != '\0' && !strcasecmp( encrypt, "SHA256-SET" ) )
+      if( encrypt[0] != '\0' && !strcasecmp( encrypt, "SHA256-SET" ) )
       {
          imclog( "SHA-256 Authentication has been enabled." );
          this_imcmud->sha256pass = TRUE;
@@ -4314,7 +4314,7 @@ void imc_savehelps( void )
       fprintf( fp, "%s", "#HELP\n" );
       fprintf( fp, "Name %s\n", help->name );
       fprintf( fp, "Perm %s\n", imcperm_names[help->level] );
-      fprintf( fp, "Text %s¢\n", help->text );
+      fprintf( fp, "Text %sï¿½\n", help->text );
       fprintf( fp, "%s", "End\n\n" );
    }
    fprintf( fp, "%s", "#END\n" );
@@ -4373,7 +4373,7 @@ void imc_readhelp( IMC_HELP_DATA * help, FILE * fp )
             {
                int num = 0;
 
-               while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+               while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                   num++;
                hbuf[num] = '\0';
                help->text = IMCSTRALLOC( hbuf );
@@ -5016,49 +5016,49 @@ void imc_load_who_template( void )
 
       if( !strcasecmp( word, "Head:" ) )
       {
-         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
             ++num;
          hbuf[num] = '\0';
          whot->head = IMCSTRALLOC( parse_who_header( hbuf ) );
       }
       else if( !strcasecmp( word, "Tail:" ) )
       {
-         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
             ++num;
          hbuf[num] = '\0';
          whot->tail = IMCSTRALLOC( parse_who_tail( hbuf ) );
       }
       else if( !strcasecmp( word, "Plrline:" ) )
       {
-         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
             ++num;
          hbuf[num] = '\0';
          whot->plrline = IMCSTRALLOC( hbuf );
       }
       else if( !strcasecmp( word, "Immline:" ) )
       {
-         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
             ++num;
          hbuf[num] = '\0';
          whot->immline = IMCSTRALLOC( hbuf );
       }
       else if( !strcasecmp( word, "Immheader:" ) )
       {
-         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
             ++num;
          hbuf[num] = '\0';
          whot->immheader = IMCSTRALLOC( hbuf );
       }
       else if( !strcasecmp( word, "Plrheader:" ) )
       {
-         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
             ++num;
          hbuf[num] = '\0';
          whot->plrheader = IMCSTRALLOC( hbuf );
       }
       else if( !strcasecmp( word, "Master:" ) )
       {
-         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+         while( ( hbuf[num] = fgetc( fp ) ) != EOF && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
             ++num;
          hbuf[num] = '\0';
          whot->master = IMCSTRALLOC( hbuf );
@@ -5618,7 +5618,7 @@ IMC_CMD( imcsetup )
    argument = imcone_argument( argument, chan );
    argument = imcone_argument( argument, arg1 );
 
-   if( !imccmd || imccmd[0] == '\0' || !chan || chan[0] == '\0' )
+   if( imccmd[0] == '\0' || chan[0] == '\0' )
    {
       imc_to_char( "Syntax: imcsetup <command> <channel> [<data..>]\r\n", ch );
       imc_to_char( "Where 'command' is one of the following:\r\n", ch );
@@ -5686,7 +5686,7 @@ IMC_CMD( imcsetup )
          return;
       }
 
-      if( !arg1 || arg1[0] == '\0' )
+      if( arg1[0] == '\0' )
       {
          imc_to_char( "Missing 'newname' argument for 'imcsetup rename'\r\n", ch ); /* Lets be more kind! -- X */
          imc_to_char( "Syntax: imcsetup rename <local channel> <newname>\r\n", ch );   /* Fixed syntax message -- X */
@@ -6240,7 +6240,7 @@ IMC_CMD( imcfinger )
 
    argument = imcone_argument( argument, arg );
 
-   if( !arg || arg[0] == '\0' )
+   if( arg[0] == '\0' )
    {
       imc_to_char( "~wUsage: imcfinger person@mud\r\n", ch );
       imc_to_char( "~wUsage: imcfinger <field> <value>\r\n", ch );
@@ -6597,7 +6597,7 @@ IMC_CMD( imcconfig )
 
    argument = imcone_argument( argument, arg1 );
 
-   if( !arg1 || arg1[0] == '\0' )
+   if( arg1[0] == '\0' )
    {
       imc_to_char( "~wSyntax: ~Gimc <field> [value]\r\n\r\n", ch );
       imc_to_char( "~wConfiguration info for your mud. Changes save when edited.\r\n", ch );
@@ -6868,7 +6868,7 @@ IMC_CMD( imcignore )
 
    argument = imcone_argument( argument, arg );
 
-   if( !arg || arg[0] == '\0' )
+   if( arg[0] == '\0' )
    {
       imc_to_char( "You currently ignore the following:\r\n", ch );
       for( count = 0, ign = FIRST_IMCIGNORE( ch ); ign; ign = ign->next, count++ )
@@ -6936,7 +6936,7 @@ IMC_CMD( imcban )
 
    argument = imcone_argument( argument, arg );
 
-   if( !arg || arg[0] == '\0' )
+   if( arg[0] == '\0' )
    {
       imc_to_char( "The mud currently bans the following:\r\n", ch );
       for( count = 0, ban = first_imc_ban; ban; ban = ban->next, count++ )
@@ -6995,7 +6995,7 @@ IMC_CMD( imc_deny_channel )
 
    argument = imcone_argument( argument, vic_name );
 
-   if( !vic_name || vic_name[0] == '\0' || !argument || argument[0] == '\0' )
+   if( vic_name[0] == '\0' || argument[0] == '\0' )
    {
       imc_to_char( "Usage: imcdeny <person> <local channel name>\r\n", ch );
       imc_to_char( "Usage: imcdeny <person> [tell/beep/finger]\r\n", ch );
@@ -7111,7 +7111,7 @@ IMC_CMD( imcpermset )
 
    argument = imcone_argument( argument, arg );
 
-   if( !arg || arg[0] == '\0' )
+   if( arg[0] == '\0' )
    {
       imc_to_char( "Usage: imcpermset <user> <permission>\r\n", ch );
       imc_to_char( "Permission can be one of: None, Mort, Imm, Admin, Imp\r\n", ch );
@@ -7270,7 +7270,7 @@ IMC_CMD( imcremoteadmin )
    argument = imcone_argument( argument, pwd );
    argument = imcone_argument( argument, cmd );
 
-   if( !server || server[0] == '\0' || !cmd || cmd[0] == '\0' )
+   if( server[0] == '\0' || cmd[0] == '\0' )
    {
       imc_to_char( "Syntax: imcadmin <server> <password> <command> [<data..>]\r\n", ch );
       imc_to_char( "You must be an approved server administrator to use remote commands.\r\n", ch );
@@ -7423,7 +7423,7 @@ IMC_CMD( imccedit )
    argument = imcone_argument( argument, name );
    argument = imcone_argument( argument, option );
 
-   if( !name || name[0] == '\0' || !option || option[0] == '\0' )
+   if( name[0] == '\0' || option[0] == '\0' )
    {
       imc_to_char( "Usage: imccedit <command> <create|delete|alias|rename|code|permission|connected> <field>.\r\n", ch );
       return;
@@ -7640,7 +7640,7 @@ IMC_CMD( imchedit )
    argument = imcone_argument( argument, name );
    argument = imcone_argument( argument, cmd );
 
-   if( !name || name[0] == '\0' || !cmd || cmd[0] == '\0' || !argument || argument[0] == '\0' )
+   if( name[0] == '\0' || cmd[0] == '\0' || argument[0] == '\0' )
    {
       imc_to_char( "Usage: imchedit <topic> [name|perm] <field>\r\n", ch );
       imc_to_char( "Where <field> can be either name, or permission level.\r\n", ch );
@@ -7941,7 +7941,7 @@ char *imc_find_social( CHAR_DATA * ch, char *sname, char *person, char *mud, int
    return socname;
 }
 
-/* Revised 10/10/03 by Xorith: Recognize the need to capitalize for a new sentence. */
+/* Revised 10/10/03 by Xorith: Recognize the need to capitalize for a newï¿½sentence. */
 char *imc_act_string( const char *format, CHAR_DATA * ch, CHAR_DATA * vic )
 {
    static char *const he_she[] = { "it", "he", "she" };
@@ -8120,21 +8120,21 @@ char *imc_send_social( CHAR_DATA * ch, char *argument, int telloption )
    if( telloption == 0 )
    {
       snprintf( socbuf, LGST, "%s", imc_find_social( ch, arg1, person, mud, 0 ) );
-      if( !socbuf || socbuf[0] == '\0' )
+      if( socbuf[0] == '\0' )
          return "";
    }
 
    if( telloption == 1 )
    {
       snprintf( socbuf, LGST, "%s", imc_find_social( ch, arg1, person, mud, 1 ) );
-      if( !socbuf || socbuf[0] == '\0' )
+      if( socbuf[0] == '\0' )
          return "";
    }
 
    if( telloption == 2 )
    {
       snprintf( socbuf, LGST, "%s", imc_find_social( ch, arg1, person, mud, 2 ) );
-      if( !socbuf || socbuf[0] == '\0' )
+      if( socbuf[0] == '\0' )
          return "";
    }
 
