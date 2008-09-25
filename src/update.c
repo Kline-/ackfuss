@@ -1608,24 +1608,15 @@ void char_update( void )
     * Autosave and autoquit.
     * Check that these chars still exist.
     */
-   if( ch_save != NULL || ch_quit != NULL )
+   CREF( ch_next, CHAR_NEXT );
+   if( ch_save != NULL )
+    save_char_obj(ch_save);
+   if( ch_quit != NULL )
    {
-      CREF( ch_next, CHAR_NEXT );
-
-      for( ch = first_char; ch != NULL; ch = ch_next )
-      {
-         ch_next = ch->next;
-         if( ch == ch_save )
-            save_char_obj( ch );
-         if( ch == ch_quit )
-         {
-            send_to_char( "Idle for too long.  Bye Bye!\n\r", ch );
-            do_quit( ch, "" );
-         }
-      }
-      CUREF( ch_next );
-
+    send_to_char("Idle for too long. Bye bye!\n\r",ch_quit);
+    do_quit(ch_quit,"");
    }
+   CUREF( ch_next );
 
    return;
 }
