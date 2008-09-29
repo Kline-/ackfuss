@@ -247,7 +247,7 @@ bool set_hunt( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj
             NAME( ch ),
             ( vch ? IS_NPC( vch ) ? "mobile" : "player" : "object" ), ( vch ? NAME( vch ) : vobj->short_descr ) );
    if( fch )
-      xprintf( buf + strlen( buf ), " for %s", NAME( fch ) );
+      xprintf_2( buf + strlen( buf ), " for %s", NAME( fch ) );
    monitor_chan( buf, MONITOR_HUNTING );
 /*  bug(buf, 0);  */
    return TRUE;

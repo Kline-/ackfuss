@@ -5672,15 +5672,15 @@ void do_whois( CHAR_DATA * ch, char *argument )
    xprintf( buf, "-=-=-=-=-=-=-=-=-=-=- %9s -=-=-=-=-=-=-=-=-=-=-\n\r", victim->name );
    if( IS_IMMORTAL( victim ) )
    {
-      xprintf( buf + strlen( buf ), " [ %3s ]\n\r", victim->pcdata->who_name );
+      xprintf_2( buf + strlen( buf ), " [ %3s ]\n\r", victim->pcdata->who_name );
    }
    else if( victim->adept_level > 0 )
    {
-      xprintf( buf + strlen( buf ), " %s \n\r", get_adept_name( victim ) );
+      xprintf_2( buf + strlen( buf ), " %s \n\r", get_adept_name( victim ) );
    }
    else
    {
-      xprintf( buf + strlen( buf ), "Levels: [ Mag:%2d  Cle:%2d  Thi:%2d  War:%2d  Psi:%2d ]\n\r",
+      xprintf_2( buf + strlen( buf ), "Levels: [ Mag:%2d  Cle:%2d  Thi:%2d  War:%2d  Psi:%2d ]\n\r",
                victim->lvl[0] > 0 ? victim->lvl[0] : 0,
                victim->lvl[1] > 0 ? victim->lvl[1] : 0,
                victim->lvl[2] > 0 ? victim->lvl[2] : 0,
@@ -5688,13 +5688,13 @@ void do_whois( CHAR_DATA * ch, char *argument )
 
       if( is_remort( victim ) )
 
-         xprintf( buf + strlen( buf ), "Levels: [ Sor:%2d  Ass:%2d  Kni:%2d  Nec:%2d  Mon:%2d ]\n\r",
+         xprintf_2( buf + strlen( buf ), "Levels: [ Sor:%2d  Ass:%2d  Kni:%2d  Nec:%2d  Mon:%2d ]\n\r",
                   victim->lvl2[0] > 0 ? victim->lvl2[0] : 0,
                   victim->lvl2[1] > 0 ? victim->lvl2[1] : 0,
                   victim->lvl2[2] > 0 ? victim->lvl2[2] : 0,
                   victim->lvl2[3] > 0 ? victim->lvl2[3] : 0, victim->lvl2[4] > 0 ? victim->lvl2[4] : 0 );
    }
-   xprintf( buf + strlen( buf ), "Sex: %s.  Race: %s.  Clan: %s.\n\r",
+   xprintf_2( buf + strlen( buf ), "Sex: %s.  Race: %s.  Clan: %s.\n\r",
             ( victim->sex == SEX_MALE ) ? "Male" :
             ( victim->sex == SEX_FEMALE ) ? "Female" : "None",
             race_table[victim->race].race_name, clan_table[victim->pcdata->clan].clan_name );
@@ -5705,22 +5705,22 @@ void do_whois( CHAR_DATA * ch, char *argument )
     * taken out to not show vamps :P 
     */
    if( IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
-      xprintf( buf + strlen( buf ), "Player is @@ePKOK@@N\n\r" );
-   xprintf( buf + strlen( buf ), "Players Killed: %d.  Times killed by players: %d.\n\r",
+      xprintf_2( buf + strlen( buf ), "Player is @@ePKOK@@N\n\r" );
+   xprintf_2( buf + strlen( buf ), "Players Killed: %d.  Times killed by players: %d.\n\r",
             victim->pcdata->records->pk, victim->pcdata->records->pd );
 
-   xprintf( buf + strlen( buf ), "Mobs killed: %d.  Times killed by mobs: %d.\n\r",
+   xprintf_2( buf + strlen( buf ), "Mobs killed: %d.  Times killed by mobs: %d.\n\r",
             victim->pcdata->records->mk, victim->pcdata->records->md );
 
    if( IS_IMMORTAL( victim ) )
    {
-      xprintf( buf + strlen( buf ), "%s is an Immortal.\r\n", victim->name );
+      xprintf_2( buf + strlen( buf ), "%s is an Immortal.\r\n", victim->name );
    }
    /*
     * Description here, or email address? 
     */
 
-   xprintf( buf + strlen( buf ), "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
+   xprintf_2( buf + strlen( buf ), "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
    send_to_char( buf, ch );
    return;
 }
