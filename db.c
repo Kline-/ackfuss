@@ -2003,7 +2003,7 @@ void check_resets( void )
                   break;
             }
             SHOW_AREA;
-            xprintf( buf + strlen( buf ), "%c %d %d %d %d.", pReset->command,
+            xprintf_2( buf + strlen( buf ), "%c %d %d %d %d.", pReset->command,
                      pReset->ifflag, pReset->arg1, pReset->arg2, pReset->arg3 );
             bug( buf, 0 );
             {

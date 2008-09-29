@@ -4769,17 +4769,17 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
       found = TRUE;
       xprintf( buf, "%s (%s)", NAME( lch ), ( IS_NPC( lch ) ? "mobile" : "player" ) );
       if( lch->hunting )
-         xprintf( buf + strlen( buf ), " hunting for (%s) %s",
+         xprintf_2( buf + strlen( buf ), " hunting for (%s) %s",
                   ( IS_NPC( lch->hunting ) ? "mobile" : "player" ), NAME( lch->hunting ) );
       if( lch->hunt_obj )
       {
          if( lch->hunting && IS_SET( lch->hunt_flags, HUNT_CR ) && lch->hunt_obj->item_type == ITEM_CORPSE_PC )
             xcat( buf, " to return a corpse" );
          else
-            xprintf( buf + strlen( buf ), " looking for (object) %s", lch->hunt_obj->short_descr );
+            xprintf_2( buf + strlen( buf ), " looking for (object) %s", lch->hunt_obj->short_descr );
       }
       if( IS_NPC( lch ) && IS_SET( lch->hunt_flags, HUNT_MERC | HUNT_CR ) && lch->hunt_for )
-         xprintf( buf + strlen( buf ), ", employed by %s", NAME( lch->hunt_for ) );
+         xprintf_2( buf + strlen( buf ), ", employed by %s", NAME( lch->hunt_for ) );
       xcat( buf, ".\n\r" );
       send_to_char( buf, ch );
    }
