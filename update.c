@@ -70,9 +70,10 @@ void quest_update args( ( void ) );
  * IMC2 keeps quietly losing sync to the server. Going to let
  * it run the keepalive routine so I can stay connected. --Kline
  */
+#ifdef IMC
 void imc_delete_reminfo args(( REMOTEINFO * p ));
 void imc_request_keepalive args(( void ));
-
+#endif
 int abort_threshold = BOOT_DB_ABORT_THRESHOLD;
 bool disable_timer_abort = FALSE;
 int last_checkpoint;
@@ -1007,8 +1008,9 @@ void weather_update( void )
    DESCRIPTOR_DATA *d;
    int diff;
    sh_int x, y;
+#ifdef IMC
    REMOTEINFO *r, *rnext;
-
+#endif
    buf[0] = '\0';
    buf2[0] = '\0';
 
@@ -1054,6 +1056,7 @@ void weather_update( void )
             for( y = 1; y < MAX_CLAN; y++ )
                politics_data.daily_negotiate_table[x][y] = FALSE;
          clean_donate_rooms(  );
+#ifdef IMC
          if( this_imcmud->autoconnect ) /* Don't attempt a re-connect if we don't want to. --Kline */
          {
           monitor_chan("Mud list is being refreshed.",MONITOR_IMC);
@@ -1064,6 +1067,7 @@ void weather_update( void )
           }
           imc_request_keepalive(  );
          }
+#endif
          break;
    }
    switch ( time_info.moon++ )
