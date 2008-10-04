@@ -505,6 +505,7 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
    fprintf( fp, "Money %d ", MAX_CURRENCY );
    for( foo = 0; foo < MAX_CURRENCY; foo++ )
       fprintf( fp, "%d ", obj->money->cash_unit[foo] );
+   fprintf( fp, "\n" );
    if( obj->obj_fun != NULL )
       fprintf( fp, "Objfun       %s~\n", rev_obj_fun_lookup( obj->obj_fun ) );
 
@@ -2227,6 +2228,7 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
    fprintf( fp, "Money %d ", MAX_CURRENCY );
    for( foo = 0; foo < MAX_CURRENCY; foo++ )
       fprintf( fp, "%d ", obj->money->cash_unit[foo] );
+   fprintf( fp, "\n" );
    if( obj->obj_fun != NULL )
       fprintf( fp, "Objfun       %s~\n", rev_obj_fun_lookup( obj->obj_fun ) );
 

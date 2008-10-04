@@ -1,15 +1,23 @@
-Damcap      3000
-Expmult     1.0000
-KillPerLev  60
-Mob_AC      1.0000
-Mob_DR      1.0000
-Mob_HP      1.0000
-Mob_HR      1.0000
-Mob_MP      1.0000
-Mob_MV      1.0000
-Playtesters ~
-Pulse       100
-Shownumbers 1
-Wizlock     0
+Build_Obj_AC  -500
+Build_Obj_DR  125
+Build_Obj_HP  250
+Build_Obj_HR  125
+Build_Obj_MP  250
+Build_Obj_MV  250
+Build_Obj_SVS -25
+Damcap        3000
+Expmult       1.0000
+KillPerLev    60
+Mob_AC        1.0000
+Mob_DR        1.0000
+Mob_HP        1.0000
+Mob_HR        1.0000
+Mob_MP        1.0000
+Mob_MV        1.0000
+Mob_SVS       1.0000
+Playtesters   ~
+Pulse         100
+Shownumbers   1
+Wizlock       0
 End
 

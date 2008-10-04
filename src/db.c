@@ -263,6 +263,7 @@ int area_revision = -1;
  */
 void init_mm args( ( void ) );
 
+void load_areas args( ( void ) );
 void load_area args( ( FILE * fp ) );
 void load_mobiles args( ( FILE * fp ) );
 void load_objects args( ( FILE * fp ) );
@@ -493,95 +494,15 @@ void boot_db( void )
     * Start loading up data files!
     */
 
+   load_areas();
    load_social_table();
 /* load_gold(); */
    load_notes();
-   load_corpses();
    load_marks();
    load_bans();
    load_rulers();
    load_brands();
-
-   /*
-    * Read in all the area files.
-    */
-   {
-      FILE *fpList;
-      log_f( "Loading area files..." );
-
-      if( ( fpList = file_open( AREA_LIST, "r" ) ) == NULL )
-      {
-         perror( AREA_LIST );
-         log_f( "Unable to open area.lst, aborting bootup." );
-         kill( getpid(  ), SIGQUIT );
-      }
-
-      for( ;; )
-      {
-         strcpy( strArea, fread_word( fpList ) );
-         if( strArea[0] == '$' )
-            break;
-
-         if( strArea[0] == '-' )
-         {
-            fpArea = stdin;
-         }
-         else
-         {
-            if( ( fpArea = file_open( strArea, "r" ) ) == NULL )
-            {
-               log_string( strArea );
-               kill( getpid(  ), SIGQUIT );
-            }
-         }
-
-         for( ;; )
-         {
-            char *word;
-
-            if( fread_letter( fpArea ) != '#' )
-            {
-               bug( "Boot_db: # not found.", 0 );
-               kill( getpid(  ), SIGQUIT );
-            }
-
-            word = fread_word( fpArea );
-
-            if( word[0] == '$' )
-               break;
-            else if( !str_cmp( word, "AREA" ) )
-               load_area( fpArea );
-            else if( !str_cmp( word, "MOBILES" ) )
-               load_mobiles( fpArea );
-            else if( !str_cmp( word, "MOBPROGS" ) )
-               load_mobprogs( fpArea );
-            else if( !str_cmp( word, "OBJECTS" ) )
-               load_objects( fpArea );
-            else if( !str_cmp( word, "RESETS" ) )
-               load_resets( fpArea );
-            else if( !str_cmp( word, "ROOMS" ) )
-               load_rooms( fpArea );
-            else if( !str_cmp( word, "SHOPS" ) )
-               load_shops( fpArea );
-            else if( !str_cmp( word, "SPECIALS" ) )
-               load_specials( fpArea );
-            else if( !str_cmp( word, "OBJFUNS" ) )
-               load_objfuns( fpArea );
-            else
-            {
-               bug( "Boot_db: bad section name.", 0 );
-               exit( 1 );
-            }
-         }
-
-         if( fpArea != stdin )
-            file_close( fpArea );
-         fpArea = NULL;
-      }
-      file_close( fpList );
-      log_f("Done.");
-   }
-
+   load_corpses();
    /*
     * Fix up exits.
     * MAG Mod: Check resets. (Allows loading objects of later areas.)
@@ -608,7 +529,87 @@ void boot_db( void )
    return;
 }
 
+/*
+ * Read in all the area files.
+ */
+void load_areas( void )
+{
+   FILE *fpList;
+   log_f( "Loading area files..." );
 
+   if( ( fpList = file_open( AREA_LIST, "r" ) ) == NULL )
+   {
+      perror( AREA_LIST );
+      log_f( "Unable to open area.lst, aborting bootup." );
+      kill( getpid(  ), SIGQUIT );
+   }
+
+   for( ;; )
+   {
+      strcpy( strArea, fread_word( fpList ) );
+      if( strArea[0] == '$' )
+         break;
+
+      if( strArea[0] == '-' )
+      {
+         fpArea = stdin;
+      }
+      else
+      {
+         if( ( fpArea = file_open( strArea, "r" ) ) == NULL )
+         {
+            log_string( strArea );
+            kill( getpid(  ), SIGQUIT );
+         }
+      }
+
+      for( ;; )
+      {
+         char *word;
+
+         if( fread_letter( fpArea ) != '#' )
+         {
+            bug( "Boot_db: # not found.", 0 );
+            kill( getpid(  ), SIGQUIT );
+         }
+
+         word = fread_word( fpArea );
+
+         if( word[0] == '$' )
+            break;
+         else if( !str_cmp( word, "AREA" ) )
+            load_area( fpArea );
+         else if( !str_cmp( word, "MOBILES" ) )
+            load_mobiles( fpArea );
+         else if( !str_cmp( word, "MOBPROGS" ) )
+            load_mobprogs( fpArea );
+         else if( !str_cmp( word, "OBJECTS" ) )
+            load_objects( fpArea );
+         else if( !str_cmp( word, "RESETS" ) )
+            load_resets( fpArea );
+         else if( !str_cmp( word, "ROOMS" ) )
+            load_rooms( fpArea );
+         else if( !str_cmp( word, "SHOPS" ) )
+            load_shops( fpArea );
+         else if( !str_cmp( word, "SPECIALS" ) )
+            load_specials( fpArea );
+         else if( !str_cmp( word, "OBJFUNS" ) )
+            load_objfuns( fpArea );
+         else
+         {
+            bug( "Boot_db: bad section name.", 0 );
+            exit( 1 );
+         }
+      }
+
+      if( fpArea != stdin )
+         file_close( fpArea );
+      fpArea = NULL;
+   }
+   file_close( fpList );
+   log_f("Done.");
+   return;
+}
 
 /*
  * Snarf an 'area' header line.
