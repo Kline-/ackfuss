@@ -3911,7 +3911,7 @@ void bug( const char *str, int param )
    if( param > 0 )
     xprintf( buf, "[*****] BUG: %s %d", str, param );
    else
-    xprintf( buf, "[*****] BUG: %d", str );
+    xprintf( buf, "[*****] BUG: %s", str );
    log_string( buf );
 
    if( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
