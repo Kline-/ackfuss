@@ -6065,7 +6065,7 @@ IMC_CMD( imctell )
    /*
     * Tell socials. Suggested by Darien@Sandstorm 
     */
-   if( argument[0] == '@' )
+   if( argument[0] == '%' )
    {
       char *p, *p2;
       char buf2[SMST];
@@ -6145,7 +6145,7 @@ IMC_CMD( imcreply )
    /*
     * Tell socials. Suggested by Darien@Sandstorm 
     */
-   if( argument[0] == '@' )
+   if( argument[0] == '%' )
    {
       char *p, *p2;
       char buf2[SMST];
@@ -8450,7 +8450,7 @@ bool imc_command_hook( CHAR_DATA * ch, char *command, char *argument )
             argument++;
          imc_sendmessage( c, CH_IMCNAME( ch ), color_mtoi( argument ), 1 );
          break;
-      case '@':
+      case '%':
          /*
           * Strip the @ and then extra spaces - Remcon 6-28-03 
           */
