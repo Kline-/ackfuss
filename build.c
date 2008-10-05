@@ -3222,6 +3222,7 @@ void build_addmob( CHAR_DATA * ch, char *argument )
    BUILD_DATA_LIST *pList;
    int vnum;
    int iHash;
+   static BITMASK bitmask_zero;
 
    smash_tilde( argument );
    argument = one_argument( argument, arg1 );
@@ -3264,6 +3265,8 @@ void build_addmob( CHAR_DATA * ch, char *argument )
 
 
    GET_FREE( pMobIndex, mid_free );
+   GET_FREE( pMobIndex->act, bitmask_free );
+   *pMobIndex->act = bitmask_zero;
    pMobIndex->vnum = vnum;
    pMobIndex->area = pArea;
    pMobIndex->player_name = str_dup( arg2 );
@@ -4589,6 +4592,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
    /*
     * Now delete structure 
     */
+   PUT_FREE( pMobIndex->act, bitmask_free );
    PUT_FREE( pMobIndex, mid_free );
 
    top_mob_index--;

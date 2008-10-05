@@ -99,7 +99,7 @@ bool set_bit( BITMASK *mask, int bit ) /* Returns TRUE if a bit was set. FALSE i
  }
 
  /* Let's allocate a new one! */
- pBlist = malloc(sizeof(BM_LIST));
+ pBlist = (BM_LIST *)malloc(sizeof(BM_LIST));
  ++mask->masks;
  pBlist->next = mask->int_list;
  mask->int_list = pBlist;
@@ -185,6 +185,7 @@ bool free_bitmask( BITMASK *pBmask ) /* Frees a bitmask; safe to call dry. Retur
   free(pBMlist);
   found = TRUE;
  }
+
  return found;
 }
 
@@ -231,4 +232,36 @@ void bv_to_bm( int list, BITMASK *mask )
    set_bit(mask,i+1);
 
  return;
+}
+
+void debug_bitmask( BITMASK *pBmask )
+{
+ int *array = (int *)serialize_bitmask(pBmask);
+ int i = 0;
+
+ for(; array[i] != 0; ++i)
+ {
+  xprintf_2(log_buf,"%d",array[i]); // this is our bit we are accessing.
+  monitor_chan(log_buf,MONITOR_DEBUG);
+ }
+ free(array);
+ return;
+}
+
+void bm_test( void )
+{
+ BITMASK *bm = (BITMASK *)malloc(sizeof(BITMASK));
+ int i;
+ static BITMASK bitmask_zero;
+ *bm = bitmask_zero;
+
+ // We're gonna put in a random number of random bits.
+ i = number_range(75, 250); // between 75 and 250 bits to set
+ while( i-- )
+ {
+  if( number_percent() > 50 )
+   set_bit(bm,i);
+ }
+ debug_bitmask(bm); // Let's see what the contents are.
+ free_bitmask(bm);
 }

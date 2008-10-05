@@ -2419,7 +2419,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    char buf[255];
    MONEY_TYPE *money;
    sh_int cnt;
-   static BITMASK bitmask_zero;
 
    if( pMobIndex == NULL )
    {
@@ -2446,9 +2445,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    clear_char( mob );
    mob->pIndexData = pMobIndex;
 
-   GET_FREE( mob->act, bitmask_free );
-   *mob->act = bitmask_zero;
-
    if( is_set( pMobIndex->act, ACT_INTELLIGENT ) )
       mob->name = str_dup( buf );
    else
@@ -2472,7 +2468,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 
    mob->level = level;
    mob->npc = TRUE; /* New check for NPC's */
-   mob->act = pMobIndex->act;
    mob->act = pMobIndex->act;
    mob->affected_by = pMobIndex->affected_by;
    mob->alignment = pMobIndex->alignment;
@@ -2801,8 +2796,11 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 void clear_char( CHAR_DATA * ch )
 {
    static CHAR_DATA ch_zero;
+   static BITMASK bitmask_zero;
 
    *ch = ch_zero;
+   GET_FREE( ch->act, bitmask_free );
+   *ch->act = bitmask_zero;
    ch->name = &str_empty[0];
    ch->short_descr = &str_empty[0];
    ch->long_descr = &str_empty[0];
@@ -2829,8 +2827,6 @@ void clear_char( CHAR_DATA * ch )
    ch->first_shield = NULL;
    ch->last_shield = NULL;
    ch->stunTimer = 0;
-/*    ch->pcdata->recall_vnum = 3001;     */
-
 
    return;
 }
