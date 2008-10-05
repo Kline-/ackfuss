@@ -199,7 +199,7 @@ void do_get( CHAR_DATA * ch, char *argument )
          if( !fGroup )
          {
             if( victim == NULL
-                || !IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) || !IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) )
+                || !is_set( victim->act, ACT_PKOK ) || !is_set( ch->act, ACT_PKOK ) )
                send_to_char( "You can't do that.\n\r", ch );
             return;
          }
@@ -2449,7 +2449,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
       act( "$n tried to steal from you.\n\r", ch, NULL, victim, TO_VICT );
       act( "$n tried to steal from $N.\n\r", ch, NULL, victim, TO_NOTVICT );
       if( !IS_NPC( ch ) && !IS_NPC( victim )
-          && IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) && IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
+          && is_set( ch->act, ACT_PKOK ) && is_set( victim->act, ACT_PKOK ) )
          return;
       xprintf( buf, "%s is a bloody thief!", ch->name );
       do_yell( victim, buf );

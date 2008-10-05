@@ -821,11 +821,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
       char buf2[MSL];
       char buf3[MSL];
       xprintf( buf1, "%s", victim->first_shield->absorb_message_room );
-      if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+      if( is_set( ch->act, ACT_BLIND_PLAYER ) )
          xprintf( buf2, "%s", "$K shield ouch" );
       else
          xprintf( buf2, "%s", victim->first_shield->absorb_message_victim );
-      if( !IS_NPC( victim ) && IS_SET( victim->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+      if( is_set( victim->act, ACT_BLIND_PLAYER ) )
          xprintf( buf3, "%s", "Your shield cool" );
       else
          xprintf( buf3, "%s", victim->first_shield->absorb_message_self );
@@ -882,11 +882,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
 
 
       act( "@@N$n's @@ecloak@@N flares and envelops $N in @@eflames@@N!!", victim, NULL, ch, TO_NOTVICT );
-      if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+      if( is_set( ch->act, ACT_BLIND_PLAYER ) )
          act( "Flame cloak on $K ouch", ch, NULL, victim, TO_CHAR );
       else
          act( "@@N$N's @@ecloak@@N flares, and envelops you with @@eflame@@N!!", ch, NULL, victim, TO_CHAR );
-      if( !IS_NPC( victim ) && IS_SET( victim->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+      if( is_set( victim->act, ACT_BLIND_PLAYER ) )
          act( "Your Flame cloak flares", victim, NULL, ch, TO_CHAR );
       else
          act( "@@NYour @@ecloak@@N flares, and envelops $N with @@eflame@@N!!!", victim, NULL, ch, TO_CHAR );
@@ -1009,11 +1009,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
    {
       AFFECT_DATA af;
       act( "@@N$n's @@dcloak@@N flares and shrouds $N in @@dmisery@@N!!", victim, NULL, ch, TO_NOTVICT );
-      if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+      if( is_set( ch->act, ACT_BLIND_PLAYER ) )
          act( "Flame cloak on $K ouch", ch, NULL, victim, TO_CHAR );
       else
          act( "@@N$N's @@dcloak@@N flares, and shrouds you with @@dmisery@@N!!", ch, NULL, victim, TO_CHAR );
-      if( !IS_NPC( victim ) && IS_SET( victim->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+      if( is_set( victim->act, ACT_BLIND_PLAYER ) )
          act( "Your Death cloak flares", victim, NULL, ch, TO_CHAR );
       else
          act( "@@NYour @@dcloak@@N flares, and shrouds $N with @@dmisery@@N!!!", victim, NULL, ch, TO_CHAR );
@@ -1146,8 +1146,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
       if( !IS_NPC( victim ) || is_set( victim->act, ACT_INTELLIGENT ) )
       {
 /*	    if ( !IS_NPC(ch) && !IS_NPC(victim)
-	         && IS_SET(ch->pcdata->pflags,PFLAG_PKOK)
-	         && IS_SET(victim->pcdata->pflags,PFLAG_PKOK) )
+	         && is_set(ch->act,ACT_PKOK)
+	         && is_set(victim->act,ACT_PKOK) )
 	    {
 
 	     xprintf(buf, "%s kills %s in mortal combat.", ch->name, victim->name);
@@ -1283,9 +1283,9 @@ bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
     */
 
    if( !IS_NPC( ch ) && !IS_NPC( victim )
-       && ( IS_SET( victim->pcdata->pflags, PFLAG_PKOK )
+       && ( is_set( victim->act, ACT_PKOK )
             || is_set( victim->act, ACT_VAMPIRE ) )
-       && ( IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) || is_set( ch->act, ACT_VAMPIRE ) ) )
+       && ( is_set( ch->act, ACT_PKOK ) || is_set( ch->act, ACT_VAMPIRE ) ) )
       return FALSE;
 
    if( ( ( victim->level < 10 ) || ( victim->level + 20 < ch->level ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC( ch ) ) )
@@ -1383,7 +1383,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
           && ( politics_data.diplomacy[ch->pcdata->clan][victim->pcdata->clan] < -450 ) )
          return;
 
-      if( IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) && IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
+      if( is_set( ch->act, ACT_PKOK ) && is_set( victim->act, ACT_PKOK ) )
          return;
    }
 
@@ -2141,7 +2141,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
                leave_corpse = TRUE;
                corpse->value[0] = 1;
             }
-            if( IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) )
+            if( is_set( ch->act, ACT_PKOK ) )
                corpse->value[0] = 1;
             if( ch->pcdata->clan > 0 )
             {
@@ -2194,7 +2194,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      if( ( IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) )
+      if( ( is_set( ch->act, ACT_PKOK ) )
           || ( target != NULL && ( target->pcdata->clan != ch->pcdata->clan )
                && ( politics_data.diplomacy[ch->pcdata->clan][target->pcdata->clan] < -450 ) )
           || ( ( ch->level > 30 )
@@ -2815,7 +2815,7 @@ void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
       }
    }
    act( buf1, ch, NULL, victim, TO_NOTVICT );
-   if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+   if( is_set( ch->act, ACT_BLIND_PLAYER ) )
    {
       if( dam < victim->max_hit / 30 )
          act( "You glance $K", ch, NULL, victim, TO_CHAR );
@@ -2828,7 +2828,7 @@ void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
    }
    else
       act( buf2, ch, NULL, victim, TO_CHAR );
-   if( !IS_NPC( victim ) && IS_SET( victim->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+   if( is_set( victim->act, ACT_BLIND_PLAYER ) )
    {
       if( dam < victim->max_hit / 30 )
          act( "$k glances you", ch, NULL, victim, TO_VICT );
@@ -3141,7 +3141,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
    notify( log_buf, MAX_LEVEL - 2 );
 
    if( IS_NPC( ch ) || IS_NPC( victim )
-       || !IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) || !IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
+       || !is_set( ch->act, ACT_PKOK ) || !is_set( victim->act, ACT_PKOK ) )
    {
       /*
        * If not pkok people, do yell. 

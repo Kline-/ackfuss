@@ -661,7 +661,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                continue;
             if( channel == CHANNEL_IMMTALK && !IS_HERO( och ) )
                continue;
-            if( channel == CHANNEL_DIPLOMAT && !IS_SET( och->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
+            if( channel == CHANNEL_DIPLOMAT && !is_set( och->act, ACT_CDIPLOMAT ) )
                continue;
             if( channel == CHANNEL_REMORTTALK && !is_remort( och ) )
                continue;
@@ -976,7 +976,7 @@ void do_immtalk( CHAR_DATA * ch, char *argument )
 }
 void do_diptalk( CHAR_DATA * ch, char *argument )
 {
-   if( !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
+   if( !is_set( ch->act, ACT_CDIPLOMAT ) )
    {
       send_to_char( "You are not a clan diplomat.\n\r", ch );
       return;
@@ -2218,7 +2218,7 @@ void do_group( CHAR_DATA * ch, char *argument )
       {
          if( is_same_group( gch, ch ) )
          {
-            if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+            if( is_set( ch->act, ACT_BLIND_PLAYER ) )
             {
                xprintf( buf,
                         "%-16s %4d of %4d hp %4d of %4d mana %4d of %4d move %5d xp\n\r",

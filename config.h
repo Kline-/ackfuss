@@ -659,71 +659,67 @@
 /* 
  * ACT bits for players and mobs
  */
-#define ACT_NONE        0    /* Empty, don't use               */
-#define ACT_BOUGHT_PET  1    /* Player bought a pet this level */
-#define ACT_SENTINEL    2    /* Stays in one room              */
-#define ACT_SCAVENGER   3    /* Picks up objects               */
-#define ACT_REMEMBER    4    /* Remembers target               */
-#define ACT_NO_FLEE     5    /* Can't flee from mob            */
-#define ACT_AGGRESSIVE  6    /* Attacks PC's                   */
-#define ACT_STAY_AREA   7    /* Won't leave area               */
-#define ACT_WIMPY       8    /* Flees when hurt                */
-#define ACT_PET         9    /* Auto set for pets              */
-#define ACT_TRAIN       10   /* Can train PC's                 */
-#define ACT_PRACTICE    11   /* Can practice PC's              */
-#define ACT_MERCENARY   12   /* Is a mercenary                 */
-#define ACT_HEAL        13   /* Sells spells                   */
-#define ACT_ADAPT       14   /* Adapts weapons                 */
-#define ACT_UNDEAD      15   /* Undead...spooky                */
-#define ACT_BANKER      16   /* Is a *B*anker :P               */
-#define ACT_NO_BODY     17   /* No body for damage             */
-#define ACT_HUNTER      18   /* Hunts attackers                */
-#define ACT_NO_MIND     19   /* Psi attack no-no               */
-#define ACT_POSTMAN     20   /* Postmaster                     */
-#define ACT_RE_WIELD    21   /* Uses better weapons            */
-#define ACT_RE_EQUIP    22   /* Uses better equipment          */
-#define ACT_INTELLIGENT 23   /* For shitkicking mobs           */
-#define ACT_VAMPIRE     24   /* Vampire                        */
-#define ACT_BREEDER     25   /* Mob can breed                  */
-#define ACT_SOLO   	26   /* Buffed for solo combat         */
-#define ACT_WEREWOLF    27   /* Werewolf                       */
-#define ACT_MOUNT       28   /* Mountable MOB                  */
-#define ACT_NO_BLOOD    29   /* No bloodwalk                   */
-#define ACT_NO_QUEST    30   /* Disable from mquest            */
-#define ACT_QUESTMASTER 31   /* Questmaster for mquest         */
-#define ACT_NO_PRAY     32   /* Can't use pray                 */
-#define ACT_HOLYLIGHT   33   /* Can see everything             */
-#define ACT_WIZINVIS    34   /* Invisible to lower levels      */
-#define ACT_BUILDER     35   /* Is able to use the OLC         */
-#define ACT_SILENCE     36   /* Can't use channels             */
-#define ACT_NO_EMOTE    37   /* Can't use emotes/socials       */
-#define ACT_NO_TELL     38   /* Can't use tell                 */
-#define ACT_LOG         39   /* All actions are logged         */
-#define ACT_DENY        40   /* Can't login                    */
-#define ACT_FREEZE      41   /* Frozen in place, no commands   */
-#define ACT_THIEF       42   /* Thief! Wanted!                 */
-#define ACT_KILLER      43   /* Pker! Wanted!                  */
-#define ACT_NO_SUMMON   44   /* Doesn't want to be summoned    */
-#define ACT_NO_VISIT    45   /* Doesn't want to be visited     */
-#define ACT_INCOG       46   /* Invis except in-room           */
-#define ACT_SHIFTED     47   /* Wolf-form Werewolf             */
-#define ACT_RAGED       48   /* Enraged Werewolf               */
-#define ACT_AFK         49   /* AFK -- duh? :P                 */
-
-/* 
- * Player flags
- */
-#define PFLAG_PKOK             BIT_1
-#define PFLAG_AMBAS            BIT_3
-#define PFLAG_CLAN_DIPLOMAT    BIT_5
-#define PFLAG_CLAN_BOSS        BIT_6
-#define PFLAG_CLAN_TREASURER   BIT_7
-#define PFLAG_CLAN_ARMOURER    BIT_8
-#define PFLAG_CLAN_LEADER      BIT_9
-#define PFLAG_SUPER_COUNCIL    BIT_10
-#define PFLAG_RULER            BIT_14
-#define PFLAG_BLIND_PLAYER     BIT_15
-#define PFLAG_TESTER           BIT_16
+#define ACT_NONE         0    /* Empty, don't use               */
+#define ACT_BOUGHT_PET   1    /* Player bought a pet this level */
+#define ACT_SENTINEL     2    /* Stays in one room              */
+#define ACT_SCAVENGER    3    /* Picks up objects               */
+#define ACT_REMEMBER     4    /* Remembers target               */
+#define ACT_NO_FLEE      5    /* Can't flee from mob            */
+#define ACT_AGGRESSIVE   6    /* Attacks PC's                   */
+#define ACT_STAY_AREA    7    /* Won't leave area               */
+#define ACT_WIMPY        8    /* Flees when hurt                */
+#define ACT_PET          9    /* Auto set for pets              */
+#define ACT_TRAIN        10   /* Can train PC's                 */
+#define ACT_PRACTICE     11   /* Can practice PC's              */
+#define ACT_MERCENARY    12   /* Is a mercenary                 */
+#define ACT_HEAL         13   /* Sells spells                   */
+#define ACT_ADAPT        14   /* Adapts weapons                 */
+#define ACT_UNDEAD       15   /* Undead...spooky                */
+#define ACT_BANKER       16   /* Is a *B*anker :P               */
+#define ACT_NO_BODY      17   /* No body for damage             */
+#define ACT_HUNTER       18   /* Hunts attackers                */
+#define ACT_NO_MIND      19   /* Psi attack no-no               */
+#define ACT_POSTMAN      20   /* Postmaster                     */
+#define ACT_RE_WIELD     21   /* Uses better weapons            */
+#define ACT_RE_EQUIP     22   /* Uses better equipment          */
+#define ACT_INTELLIGENT  23   /* For shitkicking mobs           */
+#define ACT_VAMPIRE      24   /* Vampire                        */
+#define ACT_BREEDER      25   /* Mob can breed                  */
+#define ACT_SOLO   	 26   /* Buffed for solo combat         */
+#define ACT_WEREWOLF     27   /* Werewolf                       */
+#define ACT_MOUNT        28   /* Mountable MOB                  */
+#define ACT_NO_BLOOD     29   /* No bloodwalk                   */
+#define ACT_NO_QUEST     30   /* Disable from mquest            */
+#define ACT_QUESTMASTER  31   /* Questmaster for mquest         */
+#define ACT_NO_PRAY      32   /* Can't use pray                 */
+#define ACT_HOLYLIGHT    33   /* Can see everything             */
+#define ACT_WIZINVIS     34   /* Invisible to lower levels      */
+#define ACT_BUILDER      35   /* Is able to use the OLC         */
+#define ACT_SILENCE      36   /* Can't use channels             */
+#define ACT_NO_EMOTE     37   /* Can't use emotes/socials       */
+#define ACT_NO_TELL      38   /* Can't use tell                 */
+#define ACT_LOG          39   /* All actions are logged         */
+#define ACT_DENY         40   /* Can't login                    */
+#define ACT_FREEZE       41   /* Frozen in place, no commands   */
+#define ACT_THIEF        42   /* Thief! Wanted!                 */
+#define ACT_KILLER       43   /* Pker! Wanted!                  */
+#define ACT_NO_SUMMON    44   /* Doesn't want to be summoned    */
+#define ACT_NO_VISIT     45   /* Doesn't want to be visited     */
+#define ACT_INCOG        46   /* Invis except in-room           */
+#define ACT_SHIFTED      47   /* Wolf-form Werewolf             */
+#define ACT_RAGED        48   /* Enraged Werewolf               */
+#define ACT_AFK          49   /* AFK -- duh? :P                 */
+#define ACT_PKOK         50   /* Full PKer                      */
+#define ACT_AMBASSADOR   51   /* Newbie helper mortals          */
+#define ACT_CDIPLOMAT    52   /* Clan Diplomat                  */
+#define ACT_CBOSS        53   /* Clan Boss                      */
+#define ACT_CTREASURER   54   /* Clan Treasurer                 */
+#define ACT_CARMORER     55   /* Clan Armorer                   */
+#define ACT_CLEADER      56   /* Clan Leader                    */
+#define ACT_COUNCIL      57   /* Super council member           */
+#define ACT_RULER        58   /* Zone ruler                     */
+#define ACT_BLIND_PLAYER 59   /* IRL blind, special output      */
+#define ACT_TESTER       60   /* Play testers                   */
 
 /*
  * Channel bits.

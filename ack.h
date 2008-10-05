@@ -721,7 +721,6 @@ struct pc_data
    char *alias[MAX_ALIASES];
    char *who_name;   /* To show on who name */
    RECORD_DATA *records; /* kill/damage/etc records */
-   int pflags;
    char *lastlogin;
    sh_int order[MAX_CLASS];   /* Class Order */
    int monitor;   /* monitor channel for imms */

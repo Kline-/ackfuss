@@ -1554,7 +1554,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             xprintf( wound, "@@eA MESS!@@N" );
          else
             xprintf( wound, "@@2@@W@@fALMOST DEAD!!!@@N" );
-         if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+         if( is_set( ch->act, ACT_BLIND_PLAYER ) )
             xprintf( buf, "@@W%s %s @@N ", tank == ch ? "YOU" : "Tank", wound );
          else
             xprintf( buf, "@@a[@@W%s@@a:%s@@a]@@N ", tank == ch ? "YOU" : "Tank", wound );
@@ -1597,7 +1597,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          xprintf( wound, "@@eA MESS!@@N" );
       else
          xprintf( wound, "@@2@@WALMOST DEAD!!!@@N" );
-      if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+      if( is_set( ch->act, ACT_BLIND_PLAYER ) )
          xprintf( buf, "@@WVictim %s @@N\n\r", wound );
       else
          xprintf( buf, "@@a[@@WVictim@@a:%s@@a]@@N\n\r", wound );

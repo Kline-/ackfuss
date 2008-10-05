@@ -147,7 +147,7 @@ int get_trust( CHAR_DATA * ch )
    if( ch->desc != NULL && ch->desc->original != NULL )
       ch = ch->desc->original;
 
-   if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_AMBAS ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_AMBASSADOR ) )
       return ( LEVEL_HERO + 1 );
 
    if( ch->trust != 0 )
@@ -1832,7 +1832,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    }
    PUT_FREE( ch->money, money_type_free );
    PUT_FREE( ch->bank_money, money_type_free );
-   if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_SUPER_COUNCIL ) )
+   if( is_set( ch->act, ACT_COUNCIL ) )
    {
       sh_int this_council;
       MEMBER_DATA *imember;

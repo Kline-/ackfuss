@@ -347,7 +347,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
 
       if( to_room->vnum == ROOM_VNUM_CLAN
-          && ( IS_NPC( ch ) || ( ( !IS_IMMORTAL( ch ) ) && ( !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_BOSS ) ) ) ) )
+          && ( IS_NPC( ch ) || ( ( !IS_IMMORTAL( ch ) ) && ( !is_set( ch->act, ACT_CBOSS ) ) ) ) )
       {
          send_to_char( "Only Clan Bosses may enter this room.\n\r", ch );
          ch->using_named_door = FALSE;
