@@ -2365,7 +2365,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
       return FALSE;
 
 
-   if( !IS_NPC( victim ) && IS_SET( victim->act, PLR_WIZINVIS ) && get_trust( ch ) < victim->invis )
+   if( !IS_NPC( victim ) && is_set( victim->act2, PLR_WIZINVIS ) && get_trust( ch ) < victim->invis )
 
       /*
        * &&   get_trust( ch ) < get_trust( victim ) ) 
@@ -2373,7 +2373,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
 
       return FALSE;
 
-   if( !IS_NPC( ch ) && IS_SET( ch->act, PLR_HOLYLIGHT ) )
+   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_HOLYLIGHT ) )
       return TRUE;
    if( ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) ) && ch->in_room == victim->in_room )
       return FALSE;
@@ -2412,7 +2412,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
  */
 bool can_see_obj( CHAR_DATA * ch, OBJ_DATA * obj )
 {
-   if( !IS_NPC( ch ) && IS_SET( ch->act, PLR_HOLYLIGHT ) )
+   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_HOLYLIGHT ) )
       return TRUE;
 /*    if ( obj->item_type == ITEM_TRIGGER )
       return TRUE;  */
@@ -2631,7 +2631,7 @@ CHAR_DATA *switch_char( CHAR_DATA * victim, int mvnum, int poly_level )
 
       case 1: /* Level 1 */
          mob->pcdata = victim->pcdata;
-         REMOVE_BIT( mob->act, ACT_IS_NPC );
+         mob->npc = FALSE;
 
       case 0: /* Level 0 */
          mob->desc = victim->desc;
@@ -2708,7 +2708,7 @@ CHAR_DATA *unswitch_char( CHAR_DATA * victim )
          original->pcdata = victim->pcdata;
 
       case 0:
-         SET_BIT( victim->act, ACT_IS_NPC );
+         victim->npc = TRUE;
    }
 
 

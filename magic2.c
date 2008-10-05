@@ -517,7 +517,7 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
       send_to_char( "You failed.\n\r", ch );
       return TRUE;
    }
-   if( ( IS_SET( victim->act, PLR_NOSUMMON ) ) || ( IS_NPC( victim ) && ( victim->level > ( level - 21 ) ) ) )
+   if( ( is_set( victim->act2, PLR_NOSUMMON ) ) || ( IS_NPC( victim ) && ( victim->level > ( level - 21 ) ) ) )
    {
       send_to_char( "You seemed unable to snatch your victim!\n\r", ch );
       send_to_char( "You feel a slight tugging sensation.\n\r", victim );
@@ -1046,7 +1046,7 @@ bool spell_visit( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
       return TRUE;
    }
 
-   if( IS_SET( victim->act, PLR_NOVISIT ) )
+   if( is_set( victim->act2, PLR_NOVISIT ) )
    {
       send_to_char( "You seem unable to visit your target!\n\r", ch );
       return TRUE;

@@ -656,61 +656,14 @@
 #define CONFIG_AUTODIG          BIT_14
 #define CONFIG_AUTOBRIEF        BIT_15
 
-/*
- * ACT bits for players.
+/* 
+ * ACT bits for players
  */
-#define PLR_IS_NPC              BIT_1   /* Don't EVER set.      */
-#define PLR_BOUGHT_PET          BIT_2
-#define PLR_CLAN_LEADER         BIT_3   /* Clan Leader!! */
-/* Available 
-#define PLR_AUTOEXIT                 BIT_4   
-#define PLR_AUTOLOOT                 BIT_5
-#define PLR_AUTOSAC                  BIT_6
-#define PLR_BLANK                    BIT_7
-#define PLR_BRIEF                    BIT_8
-*/
-
-#define PLR_NO_PRAY                 256
-/* Available
-#define PLR_COMBINE                 BIT_10
-#define PLR_PROMPT                 BIT_11
-#define PLR_TELNET_GA              BIT_12
-*/
-#define PLR_HOLYLIGHT              4096
-#define PLR_WIZINVIS               8192
-#define PLR_BUILDER               16384   /* Is able to use the OLC */
-#define PLR_SILENCE               32768
-
-#define PLR_NO_EMOTE              65536
-/* avaiable
-#define PLR_color		 BIT_18	
-*/
-#define PLR_NO_TELL              262144
-#define PLR_LOG                  524288
-#define PLR_DENY                1048576
-#define PLR_FREEZE              2097152
-#define PLR_THIEF               4194304
-#define PLR_KILLER              8388608
-#define PLR_NOSUMMON           16777216
-#define PLR_NOVISIT            33554432
-/* available
-#define PLR_QUESTING	        BIT_27
-#define PLR_AUTOSPLIT         BIT_28
-#define PLR_AUTOASSIST        BIT_29
-*/
-
-#define PLR_NOBLOOD	       536870912
-
-#define PLR_INCOG			1073741824
-
-/*
- * Obsolete bits.
- */
-#if 0
-#define PLR_AUCTION                   4   /* Obsolete     */
-#define PLR_CHAT                    256   /* Obsolete     */
-#define PLR_NO_SHOUT             131072   /* Obsolete     */
-#endif
+enum player_act {
+ PLR_NONE, PL_IS_NPC, PLR_BOUGHT_PET, PLR_REUSE1, PLR_NO_PRAY, PLR_HOLYLIGHT,
+ PLR_WIZINVIS, PLR_BUILDER, PLR_SILENCE, PLR_NO_EMOTE, PLR_NO_TELL, PLR_LOG, PLR_DENY,
+ PLR_FREEZE, PLR_THIEF, PLR_KILLER, PLR_NOSUMMON, PLR_NOVISIT, PLR_NOBLOOD
+};
 
 /* 
  * Player flags
@@ -923,7 +876,6 @@
  * ACT bits for mobs.
  * Used in #MOBILES.
  */
-#define ACT_IS_NPC            BIT_1    /* Auto set for mobs      */
 #define ACT_SENTINEL          BIT_2    /* Stays in one room      */
 #define ACT_SCAVENGER         BIT_3    /* Picks up objects       */
 #define ACT_REMEMBER          BIT_4    /* remembers target       */

@@ -347,9 +347,9 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
-      SET_BIT( quest_mob->act, PLR_NOSUMMON );
-      SET_BIT( quest_mob->act, PLR_NOVISIT );
-      SET_BIT( quest_mob->act, PLR_NOBLOOD );
+      set_bit( quest_mob->act2, PLR_NOSUMMON );
+      set_bit( quest_mob->act2, PLR_NOVISIT );
+      set_bit( quest_mob->act2, PLR_NOBLOOD );
 
       new_long_desc[0] = '\0';
       if( quest_target->long_descr_orig != NULL )
@@ -360,9 +360,9 @@ void do_quest( CHAR_DATA * ch, char *argument )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
 
-      SET_BIT( quest_target->act, PLR_NOSUMMON );
-      SET_BIT( quest_target->act, PLR_NOVISIT );
-      SET_BIT( quest_target->act, PLR_NOBLOOD );
+      set_bit( quest_target->act2, PLR_NOSUMMON );
+      set_bit( quest_target->act2, PLR_NOVISIT );
+      set_bit( quest_target->act2, PLR_NOBLOOD );
 
       send_to_char( "QUEST STARTED!\n\r\n\r", ch );
 
@@ -783,9 +783,9 @@ void generate_auto_quest(  )
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
-      SET_BIT( quest_mob->act, PLR_NOSUMMON );
-      SET_BIT( quest_mob->act, PLR_NOVISIT );
-      SET_BIT( quest_mob->act, PLR_NOBLOOD );
+      set_bit( quest_mob->act2, PLR_NOSUMMON );
+      set_bit( quest_mob->act2, PLR_NOVISIT );
+      set_bit( quest_mob->act2, PLR_NOBLOOD );
 
 
       new_long_desc[0] = '\0';
@@ -797,9 +797,9 @@ void generate_auto_quest(  )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
 
-      SET_BIT( quest_target->act, PLR_NOSUMMON );
-      SET_BIT( quest_target->act, PLR_NOVISIT );
-      SET_BIT( quest_target->act, PLR_NOBLOOD );
+      set_bit( quest_target->act2, PLR_NOSUMMON );
+      set_bit( quest_target->act2, PLR_NOVISIT );
+      set_bit( quest_target->act2, PLR_NOBLOOD );
 
       return;
    }

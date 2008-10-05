@@ -232,7 +232,7 @@ char *save_bitmask( BITMASK *pBmask ) /* Make this a string so it's easier to pa
  xprintf(buf,"%ld %ld",pBmask->masks,pBmask->bits);
 
  for( pBMlist = pBmask->int_list; pBMlist; pBMlist = pBMlist->next )
-  xprintf(buf," %ld %ld",pBMlist->set,pBMlist->tar_mask);
+  xcat(buf," %ld %ld",pBMlist->set,pBMlist->tar_mask);
 
  return buf;
 }

@@ -338,7 +338,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          }
       }
 
-      if( to_room->vnum == ROOM_VNUM_BUILDER && ( !IS_IMMORTAL( ch ) && !IS_SET( ch->act, PLR_BUILDER ) ) )
+      if( to_room->vnum == ROOM_VNUM_BUILDER && ( !IS_IMMORTAL( ch ) && !is_set( ch->act2, PLR_BUILDER ) ) )
       {
          send_to_char( "The Portal allows entrance to builders only.\n\r", ch );
          ch->using_named_door = FALSE;
@@ -447,7 +447,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    }
 
 /*    if ( ( !IS_AFFECTED(ch, AFF_SNEAK) && !item_has_apply( ch, ITEM_APPLY_SNEAK ) )
-    && ( IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS) ) )  */
+    && ( IS_NPC(ch) || !is_set(ch->act2, PLR_WIZINVIS) ) )  */
    {
       if( IS_SET( pexit->exit_info, EX_CLIMB ) )   /* dir_name[door] */
          act( "$n climbs $T.", ch, NULL, door_name_leave, TO_ROOM );
@@ -489,7 +489,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
    /*
     * if ( ( !IS_AFFECTED(ch, AFF_SNEAK) && !item_has_apply( ch, ITEM_APPLY_SNEAK ) )
-    * && ( IS_NPC(ch) || !IS_SET(ch->act, PLR_WIZINVIS) ) )   
+    * && ( IS_NPC(ch) || !is_set(ch->act2, PLR_WIZINVIS) ) )   
     */
    {
       if( IS_NPC( ch ) || ( !IS_NPC( ch ) && ( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) ) ) )

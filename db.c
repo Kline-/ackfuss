@@ -1011,8 +1011,9 @@ void load_mobiles( FILE * fp )
 
       pMobIndex->long_descr[0] = UPPER( pMobIndex->long_descr[0] );
       pMobIndex->description[0] = UPPER( pMobIndex->description[0] );
-
-      pMobIndex->act = fread_number( fp ) | ACT_IS_NPC;
+      if( area_revision >= 19 )
+       load_bitmask(pMobIndex->act2,fp);
+      pMobIndex->act = fread_number( fp );
       pMobIndex->affected_by = fread_number( fp );
       pMobIndex->pShop = NULL;
       pMobIndex->alignment = fread_number( fp );
@@ -2414,6 +2415,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    char buf[255];
    MONEY_TYPE *money;
    sh_int cnt;
+   static BITMASK bitmask_zero;
 
    if( pMobIndex == NULL )
    {
@@ -2440,6 +2442,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    clear_char( mob );
    mob->pIndexData = pMobIndex;
 
+   GET_FREE( mob->act2, bitmask_free );
+   *mob->act2 = bitmask_zero;
+
    if( IS_SET( pMobIndex->act, ACT_INTELLIGENT ) )
       mob->name = str_dup( buf );
    else
@@ -2462,7 +2467,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    level = ( pMobIndex->level );
 
    mob->level = level;
-
+   mob->npc = TRUE; /* New check for NPC's */
    mob->act = pMobIndex->act;
    mob->affected_by = pMobIndex->affected_by;
    mob->alignment = pMobIndex->alignment;
@@ -2912,7 +2917,10 @@ void free_char( CHAR_DATA * ch )
    {
       PUT_FREE( ch->current_brand, brand_data_free );
    }
-
+   if( ch->act2 )
+   {
+      PUT_FREE( ch->act2, bitmask_free );
+   }
    if( ch->pcdata != NULL )
    {
 #ifdef IMC

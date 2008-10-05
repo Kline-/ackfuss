@@ -129,6 +129,7 @@ HASH_ENTRY *hash_free = NULL;
 NPC_GROUP_DATA *npc_group_free = NULL;
 FIGHT_DATA *fight_free = NULL;
 QUEST_INFO *quest_info_free = NULL;
+BITMASK *bitmask_free = NULL;
 
 void ( *portal_free_destructor ) ( PORTAL_DATA * pdat ) = NULL;
 void ( *affect_free_destructor ) ( AFFECT_DATA * adat ) = NULL;
@@ -303,6 +304,10 @@ void fight_free_destructor( FIGHT_DATA *fight )
 }
 
 void quest_info_free_destructor( QUEST_INFO *quest )
+{
+}
+
+void bitmask_free_destructor( BITMASK *bitmask )
 {
 }
 

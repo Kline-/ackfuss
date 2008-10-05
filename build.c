@@ -393,7 +393,7 @@ void build_interpret( CHAR_DATA * ch, char *argument )
    if( build_cmd_table[cmd].log == LOG_NEVER )
       strcpy( logline, "XXXXXXXX XXXXXXXX XXXXXXXX" );
 
-   if( ( !IS_NPC( ch ) && IS_SET( ch->act, PLR_LOG ) ) || fLogAll || build_cmd_table[cmd].log == LOG_ALWAYS )
+   if( ( !IS_NPC( ch ) && is_set( ch->act2, PLR_LOG ) ) || fLogAll || build_cmd_table[cmd].log == LOG_ALWAYS )
    {
       xprintf_2( log_buf, "Log %s: %s", ch->name, logline );
       log_string( log_buf );
@@ -3199,7 +3199,7 @@ void build_stop( CHAR_DATA * ch, char *argument )
 
 void do_build( CHAR_DATA * ch, char *argument )
 {
-   if( !IS_SET( ch->act, PLR_BUILDER ) )
+   if( !is_set( ch->act2, PLR_BUILDER ) )
    {
       send_to_char( "You aren't allowed to build!\n\r", ch );
       return;
@@ -3270,7 +3270,6 @@ void build_addmob( CHAR_DATA * ch, char *argument )
    pMobIndex->long_descr = &str_empty[0];
    pMobIndex->description = &str_empty[0];
 
-   pMobIndex->act = ACT_IS_NPC;
    pMobIndex->affected_by = 0;
    pMobIndex->pShop = NULL;
    pMobIndex->alignment = 0;

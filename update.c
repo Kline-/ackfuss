@@ -295,7 +295,7 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
    ch->practice += add_prac;
 
    if( !IS_NPC( ch ) )
-      REMOVE_BIT( ch->act, PLR_BOUGHT_PET );
+      remove_bit( ch->act2, PLR_BOUGHT_PET );
 
    xprintf( buf, "You gain: %d Hit Points, %d Mana, %d Movement and %d pracs.\n\r", add_hp, add_mana, add_move, add_prac );
 
