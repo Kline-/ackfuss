@@ -309,6 +309,7 @@ void quest_info_free_destructor( QUEST_INFO *quest )
 
 void bitmask_free_destructor( BITMASK *bitmask )
 {
+ free_bitmask( bitmask );
 }
 
 void char_free_destructor( CHAR_DATA * cdat )

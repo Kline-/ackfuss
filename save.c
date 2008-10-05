@@ -309,6 +309,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    fprintf( fp, "Exp            %d\n", ch->exp );
    fprintf( fp, "Act            %d\n", ch->act );
+   bv_to_bm(ch->act,ch->act2); /* Start converting! */
    fprintf( fp, "Act2           %s\n", save_bitmask( ch->act2 ) );
    fprintf( fp, "Config         %d\n", ch->config );
    fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
