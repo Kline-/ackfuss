@@ -1274,9 +1274,9 @@ bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
       return TRUE;
    }
 
-   if( IS_SET( victim->act, PLR_KILLER ) )
+   if( is_set( victim->act2, PLR_KILLER ) )
       return FALSE;
-   if( IS_SET( victim->act, PLR_THIEF ) )
+   if( is_set( victim->act2, PLR_THIEF ) )
       return FALSE;
    /*
     * Vampires are considered PKOK 
@@ -1358,8 +1358,8 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
     * NPC's are fair game.
     * So are killers and thieves.
     */
-   if( IS_NPC( victim ) || IS_SET( victim->act, PLR_KILLER ) || IS_SET( victim->in_room->room_flags, ROOM_PK ) /* -S- Mod */
-       || IS_SET( victim->act, PLR_THIEF ) || IS_VAMP( victim ) || IS_WOLF( victim )   /*
+   if( IS_NPC( victim ) || is_set( victim->act2, PLR_KILLER ) || IS_SET( victim->in_room->room_flags, ROOM_PK ) /* -S- Mod */
+       || is_set( victim->act2, PLR_THIEF ) || IS_VAMP( victim ) || IS_WOLF( victim )   /*
                                                                                         * || ( ch->fighting == victim )  */
        || ( ch == victim ) )
       return;
@@ -1464,7 +1464,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
    if( ch->adept_level > 0 )
       ch->sentence += diff * get_psuedo_level( ch ) * 2;
 
-   SET_BIT( ch->act, PLR_KILLER );
+   set_bit( ch->act2, PLR_KILLER );
    save_char_obj( ch );
 
 
@@ -1762,7 +1762,7 @@ void update_pos( CHAR_DATA * victim )
       /*
        * drop stuff if is (WANTED) 
        */
-      if( ( IS_SET( victim->act, PLR_KILLER ) || IS_SET( victim->act, PLR_THIEF ) )
+      if( ( is_set( victim->act2, PLR_KILLER ) || is_set( victim->act2, PLR_THIEF ) )
           && ( ( victim->fighting != NULL )
                && ( ( !IS_NPC( victim->fighting ) )
                     || ( !str_cmp( rev_spec_lookup( victim->fighting->spec_fun ), "spec_executioner" ) ) ) ) )
@@ -2159,7 +2159,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    }  /* end of player only */
 
 
-   if( ( IS_SET( ch->act, PLR_KILLER ) || IS_SET( ch->act, PLR_THIEF ) )
+   if( ( is_set( ch->act2, PLR_KILLER ) || is_set( ch->act2, PLR_THIEF ) )
        && ( ( target != NULL )
             && ( ( !IS_NPC( target ) ) || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_executioner" ) ) ) ) )
 
@@ -2198,7 +2198,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
           || ( target != NULL && ( target->pcdata->clan != ch->pcdata->clan )
                && ( politics_data.diplomacy[ch->pcdata->clan][target->pcdata->clan] < -450 ) )
           || ( ( ch->level > 30 )
-               && ( IS_SET( ch->act, PLR_KILLER ) || IS_SET( ch->act, PLR_THIEF ) ) ) || ( leave_corpse ) )
+               && ( is_set( ch->act2, PLR_KILLER ) || is_set( ch->act2, PLR_THIEF ) ) ) || ( leave_corpse ) )
          obj_to_room( corpse, ch->in_room );
       else
          obj_to_room( corpse, get_room_index( ROOM_VNUM_MORGUE ) );
@@ -2972,7 +2972,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( victim ) && !( deathmatch ) )
    {
-      if( !IS_SET( victim->act, PLR_KILLER ) && !IS_SET( victim->act, PLR_THIEF ) )
+      if( !is_set( victim->act2, PLR_KILLER ) && !is_set( victim->act2, PLR_THIEF ) )
       {
          send_to_char( "You must MURDER a player.\n\r", ch );
          return;
@@ -3040,7 +3040,7 @@ void do_target( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( victim ) && !( deathmatch ) )
    {
-      if( !IS_SET( victim->act, PLR_KILLER ) && !IS_SET( victim->act, PLR_THIEF ) )
+      if( !is_set( victim->act2, PLR_KILLER ) && !is_set( victim->act2, PLR_THIEF ) )
       {
          send_to_char( "You must MURDER a player.\n\r", ch );
          return;

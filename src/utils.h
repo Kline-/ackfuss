@@ -163,7 +163,7 @@ char_reference(&s); } while(0)
  */
 #define IS_VAMP(ch) (IS_NPC(ch) ? IS_SET(ch->act, ACT_VAMPIRE) : IS_SET(ch->pcdata->pflags,PFLAG_VAMP) )
 #define IS_UNDEAD(ch) (IS_NPC(ch) ? IS_SET(ch->act, ACT_UNDEAD ) : FALSE )
-#define IS_NPC(ch)              (IS_SET((ch)->act, ACT_IS_NPC))
+#define IS_NPC(ch)              ( (ch)->npc )
 #define IS_IMMORTAL(ch)         (get_trust(ch) >= LEVEL_IMMORTAL)
 #define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
 #define IS_AFFECTED(ch, sn)     (IS_SET((ch)->affected_by, (sn)))

@@ -67,7 +67,7 @@
 #define BUILD_SEC_SPECIALS 8
 #define BUILD_SEC_OBJFUNS  9 /* -S- Mod */
 #define BUILD_SEC_END      10
-#define AREA_VERSION  18
+#define AREA_VERSION  19
 
 
 struct save_queue_type
@@ -315,6 +315,7 @@ void build_save_mobs(  )
    fprintf( SaveFile, "%s~\n", pMobIndex->short_descr );
    fprintf( SaveFile, "%s~\n", pMobIndex->long_descr );
    fprintf( SaveFile, "%s~\n", pMobIndex->description );
+   fprintf( SaveFile, "%s", save_bitmask( pMobIndex->act2 ) );
    fprintf( SaveFile, "%i %i %i\n", pMobIndex->act, pMobIndex->affected_by, pMobIndex->alignment );
    fprintf( SaveFile, "%i %i\n", pMobIndex->level, pMobIndex->sex );
    fprintf( SaveFile, "%i %i %i\n", pMobIndex->ac_mod, pMobIndex->hr_mod, pMobIndex->dr_mod );

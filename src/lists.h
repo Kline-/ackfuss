@@ -127,6 +127,7 @@ extern HASH_ENTRY *hash_free;
 extern NPC_GROUP_DATA *npc_group_free;
 extern FIGHT_DATA *fight_free;
 extern QUEST_INFO *quest_info_free;
+extern BITMASK *bitmask_free;
 
 extern void ( *portal_free_destructor ) ( PORTAL_DATA * pdat );
 extern void ( *affect_free_destructor ) ( AFFECT_DATA * adat );
@@ -182,6 +183,7 @@ void ruler_data_free_destructor( RULER_DATA * rdat );
 void npc_group_free_destructor( NPC_GROUP_DATA * ngrp );
 void fight_free_destructor( FIGHT_DATA *fight );
 void quest_info_free_destructor( QUEST_INFO *quest );
+void bitmask_free_destructor( BITMASK *bitmask );
 
 extern int free_get;
 extern int free_put;

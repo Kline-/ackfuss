@@ -309,6 +309,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    fprintf( fp, "Exp            %d\n", ch->exp );
    fprintf( fp, "Act            %d\n", ch->act );
+   fprintf( fp, "Act2           %s\n", save_bitmask( ch->act2 ) );
    fprintf( fp, "Config         %d\n", ch->config );
    fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
    /*
@@ -597,6 +598,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    static QUEST_INFO quest_info_zero;
    static RECORD_DATA record_zero;
    static SUPER_DATA super_zero;
+   static BITMASK bitmask_zero;
    char strsave[MAX_INPUT_LENGTH];
    char tempstrsave[MAX_INPUT_LENGTH];
    char *bufptr, *nmptr;
@@ -655,6 +657,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       *ch->pcdata->records = record_zero;
       GET_FREE( ch->pcdata->super, super_free );
       *ch->pcdata->super = super_zero;
+      GET_FREE( ch->act2, bitmask_free );
+      *ch->act2 = bitmask_zero;
 
       d->character = ch;
 
@@ -766,9 +770,12 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    ch->prompt = str_dup( "@@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N" );
    ch->last_note = 0;
    if( is_npc )
-      ch->act = ACT_IS_NPC;
+      ch->npc = TRUE;
    else
+   {
+      ch->npc = FALSE;
       ch->config = CONFIG_BLANK | CONFIG_COMBINE | CONFIG_PROMPT | CONFIG_MAPPER;
+   }
    ch->sex = SEX_NEUTRAL;
    ch->login_sex = -1;
    ch->current_brand = NULL;
@@ -932,6 +939,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 #undef KEY
 #endif
 
+/* BKEY is to load a bitmask field, so it works a bit differently. --Kline */
+#define BKEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { load_bitmask(field,value); fMatch = TRUE; break;}
 #define KEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { field  = value; fMatch = TRUE;  break;}
 #define SKEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { if (field!=NULL) free_string(field);field  = value; fMatch = TRUE;  break;}
 
@@ -971,6 +980,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
          case 'A':
             KEY( "Act", ch->act, fread_number( fp ) );
+            BKEY( "Act2", ch->act2, fp );
             KEY( "AffectedBy", ch->affected_by, fread_number( fp ) );
             KEY( "Alignment", ch->alignment, fread_number( fp ) );
             KEY( "Armor", ch->armor, fread_number( fp ) );

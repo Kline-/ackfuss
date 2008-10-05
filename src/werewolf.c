@@ -234,8 +234,8 @@ void do_tribe( CHAR_DATA * ch, char *argument )
          char_from_room( victim );
          char_to_room( victim, get_room_index( victim->pcdata->recall_vnum ) );
          victim->sentence += 15000;
-         if( !IS_SET( victim->act, PLR_KILLER ) )
-            SET_BIT( victim->act, PLR_KILLER );
+         if( !is_set( victim->act2, PLR_KILLER ) )
+            set_bit( victim->act2, PLR_KILLER );
          do_save( victim, "" );
          return;
       }

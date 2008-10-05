@@ -727,13 +727,13 @@ bool spec_executioner( CHAR_DATA * ch )
          continue;
 
 
-      if( !IS_NPC( victim ) && IS_SET( victim->act, PLR_KILLER ) )
+      if( !IS_NPC( victim ) && is_set( victim->act2, PLR_KILLER ) )
       {
          crime = "KILLER";
          break;
       }
 
-      if( !IS_NPC( victim ) && IS_SET( victim->act, PLR_THIEF ) )
+      if( !IS_NPC( victim ) && is_set( victim->act2, PLR_THIEF ) )
       {
          crime = "THIEF";
          break;
@@ -1024,13 +1024,13 @@ bool spec_policeman( CHAR_DATA * ch )
       if( IS_VAMP( victim ) && IS_AFFECTED( victim, AFF_VAMP_HEALING ) )
          continue;
 
-      if( !IS_NPC( victim ) && IS_SET( victim->act, PLR_KILLER ) )
+      if( !IS_NPC( victim ) && is_set( victim->act2, PLR_KILLER ) )
       {
          crime = "KILLER";
          break;
       }
 
-      if( !IS_NPC( victim ) && IS_SET( victim->act, PLR_THIEF ) )
+      if( !IS_NPC( victim ) && is_set( victim->act2, PLR_THIEF ) )
       {
          crime = "THIEF";
          break;

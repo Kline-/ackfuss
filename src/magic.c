@@ -2227,7 +2227,7 @@ bool spell_faerie_fog( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    }
    for( ich = ch->in_room->first_person; ich != NULL; ich = ich->next_in_room )
    {
-      if( !IS_NPC( ich ) && IS_SET( ich->act, PLR_WIZINVIS ) )
+      if( !IS_NPC( ich ) && is_set( ich->act2, PLR_WIZINVIS ) )
          continue;
 
       if( ich == ch || saves_spell( level, ich ) )

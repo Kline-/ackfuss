@@ -441,10 +441,10 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    if( IS_AFFECTED( victim, AFF_SANCTUARY ) || item_has_apply( victim, ITEM_APPLY_SANC ) )
       xcat( buf, "(White) " );
 
-   if( !IS_NPC( victim ) && IS_SET( victim->act, PLR_KILLER ) )
+   if( !IS_NPC( victim ) && is_set( victim->act2, PLR_KILLER ) )
       xcat( buf, "(KILLER) " );
 
-   if( !IS_NPC( victim ) && IS_SET( victim->act, PLR_THIEF ) )
+   if( !IS_NPC( victim ) && is_set( victim->act2, PLR_THIEF ) )
       xcat( buf, "(THIEF) " );
 
    /*
@@ -708,7 +708,7 @@ void show_char_to_char( CHAR_DATA * list, CHAR_DATA * ch )
       if( rch == ch )
          continue;
 
-      if( !IS_NPC( rch ) && IS_SET( rch->act, PLR_WIZINVIS ) && get_trust( ch ) < rch->invis )
+      if( !IS_NPC( rch ) && is_set( rch->act2, PLR_WIZINVIS ) && get_trust( ch ) < rch->invis )
          continue;
 
       if( ( rch->rider != NULL ) && ( rch->rider != ch ) )
@@ -732,7 +732,7 @@ void show_char_to_char( CHAR_DATA * list, CHAR_DATA * ch )
 
 bool check_blind( CHAR_DATA * ch )
 {
-   if( !IS_NPC( ch ) && IS_SET( ch->act, PLR_HOLYLIGHT ) )
+   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_HOLYLIGHT ) )
       return TRUE;
 
    if( IS_AFFECTED( ch, AFF_BLIND ) )
@@ -781,7 +781,7 @@ void do_look( CHAR_DATA * ch, char *argument )
    if( !check_blind( ch ) )
       return;
 
-   if( !IS_NPC( ch ) && !IS_SET( ch->act, PLR_HOLYLIGHT ) && room_is_dark( ch->in_room ) )
+   if( !IS_NPC( ch ) && !is_set( ch->act2, PLR_HOLYLIGHT ) && room_is_dark( ch->in_room ) )
    {
       send_to_char( "It is pitch black ... \n\r", ch );
       show_char_to_char( ch->in_room->first_person, ch );
@@ -942,7 +942,7 @@ void do_look( CHAR_DATA * ch, char *argument )
 
             act( "$n looks into $p.", ch, obj, NULL, TO_ROOM );
 
-            if( !IS_NPC( ch ) && !IS_SET( ch->act, PLR_HOLYLIGHT ) && room_is_dark( ch->in_room ) )
+            if( !IS_NPC( ch ) && !is_set( ch->act2, PLR_HOLYLIGHT ) && room_is_dark( ch->in_room ) )
             {
                act( "$p comes out into a dark place.  You see nothing!\n\r", ch, obj, NULL, TO_CHAR );
                return;
@@ -2453,14 +2453,14 @@ void do_who( CHAR_DATA * ch, char *argument )
          idle = FALSE;
          wanted = FALSE;
          invis = FALSE;
-         if( IS_SET( wch->act, PLR_WIZINVIS ) )
+         if( is_set( wch->act2, PLR_WIZINVIS ) )
          {
             excess += 6;
             invis = TRUE;
          }
          else
          {
-            if( IS_SET( wch->act, PLR_KILLER ) || IS_SET( wch->act, PLR_THIEF ) )
+            if( is_set( wch->act2, PLR_KILLER ) || is_set( wch->act2, PLR_THIEF ) )
             {
                excess += 8;
                wanted = TRUE;
@@ -2505,7 +2505,7 @@ void do_who( CHAR_DATA * ch, char *argument )
                         buf3,
                         color_string( ch, "stats" ),
                         fgs,
-                        color_string( ch, "stats" ), wch->name, buf4, IS_SET( wch->act, PLR_WIZINVIS ) ? "(WIZI)" : "" );
+                        color_string( ch, "stats" ), wch->name, buf4, is_set( wch->act2, PLR_WIZINVIS ) ? "(WIZI)" : "" );
                xprintf_2( buf + strlen( buf ), "@@R|@@g\n\r" );
             }
             else
@@ -2515,7 +2515,7 @@ void do_who( CHAR_DATA * ch, char *argument )
                         buf3,
                         color_string( ch, "stats" ),
                         fgs,
-                        color_string( ch, "stats" ), wch->name, buf4, IS_SET( wch->act, PLR_WIZINVIS ) ? " (WIZI) " : "" );
+                        color_string( ch, "stats" ), wch->name, buf4, is_set( wch->act2, PLR_WIZINVIS ) ? " (WIZI) " : "" );
                xprintf_2( buf + strlen( buf ), "@@R|@@g\n\r" );
             }
          }
@@ -2528,7 +2528,7 @@ void do_who( CHAR_DATA * ch, char *argument )
                      fgs,
                      color_string( ch, "stats" ),
                      wch->name,
-                     buf4, ( IS_SET( wch->act, PLR_KILLER ) || IS_SET( wch->act, PLR_THIEF ) ) ? "(WANTED)" : "" );
+                     buf4, ( is_set( wch->act2, PLR_KILLER ) || is_set( wch->act2, PLR_THIEF ) ) ? "(WANTED)" : "" );
 
 
 
@@ -3508,10 +3508,6 @@ void do_socials( CHAR_DATA * ch, char *argument )
   * && ch->pcdata->clan == 0 )
   * continue;
   * 
-  * if ( cmd_table[cmd].level == BOSS_ONLY
-  * && !IS_SET( ch->act, PLR_CLAN_LEADER ) )
-  * continue;
-  * 
   * if ( cmd_table[cmd].level == VAMP_ONLY
   * && !IS_VAMP( ch ) )
   * continue;
@@ -3603,7 +3599,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
          if( cmd_table[cmd].level == CLAN_ONLY && ch->pcdata->clan == 0 )
             continue;
 
-         if( cmd_table[cmd].level == BOSS_ONLY && !IS_SET( ch->act, PLR_CLAN_LEADER ) )
+         if( cmd_table[cmd].level == BOSS_ONLY && !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_LEADER ) )
             continue;
 
          if( cmd_table[cmd].level == VAMP_ONLY && !IS_VAMP( ch ) )
@@ -3758,7 +3754,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      if( !IS_NPC( ch ) && IS_SET( ch->act, PLR_SILENCE ) )
+      if( !IS_NPC( ch ) && is_set( ch->act2, PLR_SILENCE ) )
       {
          send_to_char( "You are silenced.\n\r", ch );
          return;
@@ -3869,10 +3865,10 @@ void do_config( CHAR_DATA * ch, char *argument )
                      ? "@@d[@@a+AUTODIG  @@d]@@a You can dig new zones by walking.@@N\n\r" : "@@d[@@c-autodig  @@d]@@c You must manually dig new zones.@@N\n\r", ch );
       }
 
-      send_to_char( IS_SET( ch->act, PLR_NOSUMMON )
+      send_to_char( is_set( ch->act2, PLR_NOSUMMON )
                     ? "@@d[@@a+NOSUMMON @@d]@@a You may not be summoned.@@N\n\r" : "@@d[@@c-nosummon @@d]@@c You may be summoned.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->act, PLR_NOVISIT )
+      send_to_char( is_set( ch->act2, PLR_NOVISIT )
                     ? "@@d[@@a+NOVISIT  @@d]@@a You may not be 'visited'.@@N\n\r" : "@@d[@@c-novisit  @@d]@@c You may be 'visited'.@@N\n\r", ch );
 
       send_to_char( IS_SET( ch->config, CONFIG_COLOR )
@@ -3927,13 +3923,13 @@ void do_config( CHAR_DATA * ch, char *argument )
                     ? "@@d[@@a+JUSTIFY  @@d]@@a You are viewing rooms in space justified format.@@N\n\r"
                     : "@@d[@@c-justify  @@d]@@c Your are not viewing rooms space justified.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->act, PLR_NO_PRAY ) ? "@@d[@@a+NOPRAY   @@d]@@a You cannot use 'pray'.@@N\n\r" : "", ch );
+      send_to_char( is_set( ch->act2, PLR_NO_PRAY ) ? "" : "@@d[@@a+NOPRAY   @@d]@@a You cannot use 'pray'.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->act, PLR_SILENCE ) ? "@@d[@@a+SILENCE  @@d]@@a You are silenced.@@N\n\r" : "", ch );
+      send_to_char( !is_set( ch->act2, PLR_SILENCE ) ? "" : "@@d[@@a+SILENCE  @@d]@@a You are silenced.@@N\n\r", ch );
 
-      send_to_char( !IS_SET( ch->act, PLR_NO_EMOTE ) ? "" : "@@d[@@c-emote    @@d]@@c You can't emote.@@N\n\r", ch );
+      send_to_char( !is_set( ch->act2, PLR_NO_EMOTE ) ? "" : "@@d[@@c-emote    @@d]@@c You can't emote.@@N\n\r", ch );
 
-      send_to_char( !IS_SET( ch->act, PLR_NO_TELL ) ? "" : "@@d[@@c-tell     @@d]@@c You can't use 'tell'.@@N\n\r", ch );
+      send_to_char( !is_set( ch->act2, PLR_NO_TELL ) ? "" : "@@d[@@c-tell     @@d]@@c You can't use 'tell'.@@N\n\r", ch );
       xprintf( buf, "Terminal set to:  %i Rows, %i Columns.\n\r", ch->pcdata->term_rows, ch->pcdata->term_columns );
       send_to_char( buf, ch );
    }
@@ -4015,7 +4011,7 @@ void do_config( CHAR_DATA * ch, char *argument )
          if( config_var )
             SET_BIT( ch->config, bit );
          else
-            SET_BIT( ch->act, bit );
+            set_bit( ch->act2, bit );
 
          if( bit == CONFIG_FULL_ANSI )
          {
@@ -4030,7 +4026,7 @@ void do_config( CHAR_DATA * ch, char *argument )
          if( config_var )
             REMOVE_BIT( ch->config, bit );
          else
-            REMOVE_BIT( ch->act, bit );
+            remove_bit( ch->act2, bit );
          if( bit == CONFIG_FULL_ANSI )
          {
 

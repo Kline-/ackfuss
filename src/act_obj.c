@@ -2045,8 +2045,8 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
       {
 
          ch->sentence = 0;
-         REMOVE_BIT( ch->act, PLR_KILLER );
-         REMOVE_BIT( ch->act, PLR_THIEF );
+         remove_bit( ch->act2, PLR_KILLER );
+         remove_bit( ch->act2, PLR_THIEF );
          send_to_char( "Your debt to society has been paid!  Please more careful in the future.\n\r", ch );
          xprintf( monbuf, "%s has had a WANTED flag removed by the judge.\n\r", ch->name );
          monitor_chan( monbuf, MONITOR_GEN_MORT );
@@ -2464,7 +2464,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
          {
             int diff = 0;
             diff = ( abs( get_psuedo_level( ch ) - get_psuedo_level( victim ) ) + 10 ) * 20;
-            SET_BIT( ch->act, PLR_THIEF );
+            set_bit( ch->act2, PLR_THIEF );
             send_to_char( "*** You are now a THIEF!! ***\n\r", ch );
             ch->sentence += diff;
             save_char_obj( ch );
@@ -2549,7 +2549,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
     * Undesirables.
     */
 
-   if( !IS_NPC( ch ) && IS_SET( ch->act, PLR_KILLER ) )
+   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_KILLER ) )
    {
       do_say( keeper, "Killers are not welcome!" );
       xprintf( buf, "%s the KILLER is over here!", ch->name );
@@ -2558,7 +2558,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
       return NULL;
    }
 
-   if( !IS_NPC( ch ) && IS_SET( ch->act, PLR_THIEF ) )
+   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_THIEF ) )
    {
       do_say( keeper, "Thieves are not welcome!" );
       xprintf( buf, "%s the THIEF is over here!", ch->name );
@@ -2752,7 +2752,7 @@ void do_buy( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( IS_SET( ch->act, PLR_BOUGHT_PET ) )
+      if( is_set( ch->act2, PLR_BOUGHT_PET ) )
       {
          send_to_char( "You already bought one pet this level.\n\r", ch );
          return;
@@ -2791,7 +2791,7 @@ void do_buy( CHAR_DATA * ch, char *argument )
       }
 
       pet = create_mobile( pet->pIndexData );
-      SET_BIT( ch->act, PLR_BOUGHT_PET );
+      set_bit( ch->act2, PLR_BOUGHT_PET );
       SET_BIT( pet->act, ACT_PET );
       SET_BIT( pet->affected_by, AFF_CHARM );
       argument = one_argument( argument, arg );

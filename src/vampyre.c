@@ -502,7 +502,7 @@ bool spell_blood_walk( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
        || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE )
        || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY )
        || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
-       || IS_SET( victim->act, PLR_NOBLOOD )
+       || is_set( victim->act2, PLR_NOBLOOD )
        || IS_SET( victim->in_room->room_flags, ROOM_NOBLOODWALK )
        || ( ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) > 20 ) )
    {
@@ -516,7 +516,7 @@ bool spell_blood_walk( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    }
 
 
-   if( IS_SET( victim->act, PLR_NOVISIT ) )
+   if( is_set( victim->act2, PLR_NOVISIT ) )
    {
       send_to_char( "You cannot sense your target's @@eblood@@N!\n\r", ch );
       return TRUE;
@@ -528,7 +528,7 @@ bool spell_blood_walk( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       return FALSE;
    }
 
-   if( IS_SET( victim->act, PLR_NOBLOOD ) )
+   if( is_set( victim->act2, PLR_NOBLOOD ) )
    {
       send_to_char( "You cannot sense your target's @@eblood@@N!\n\r", ch );
       return FALSE;

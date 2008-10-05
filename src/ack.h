@@ -507,6 +507,7 @@ struct mob_index_data
    sh_int sex;
    sh_int level;
    int act;
+   BITMASK *act2;
    int affected_by;
    int aggro_list;
    sh_int alignment;
@@ -562,6 +563,7 @@ struct char_data
     OBJ_DATA	*	hunt_obj;
     int			move_to;
     char *		movename;*/
+   bool npc; /* For NPC's, no more flag */
    CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
    OBJ_DATA *hunt_obj;  /* Looking for objects     */
    CHAR_DATA *hunt_for; /* Employer (crs, mercs)   */
@@ -623,6 +625,7 @@ struct char_data
    int exp;
    int intell_exp;
    int act;
+   BITMASK *act2;
    int config;
    int act_build; /* for setting what ya editing */
    int build_vnum;   /* the current vnum for w-y-e  */
@@ -1249,6 +1252,9 @@ struct bmlist // Serialized bitmasks
 
 struct bitmask
 {
+ bool is_free;
+ BITMASK *next;
+ BITMASK *prev;
  long bits; // number of bits set in total.
  long masks; // number of masks in all.
  BM_LIST *int_list;
