@@ -203,7 +203,7 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
       victim->pcdata->super->bloodline = ch->pcdata->super->bloodline;
       victim->pcdata->super->energy = -10;
       victim->pcdata->super->energy_max = 20;
-      SET_BIT( victim->pcdata->pflags, PFLAG_VAMP );
+      set_bit( victim->act, ACT_VAMPIRE );
       victim->pcdata->condition[COND_FULL] = 20;
       victim->pcdata->condition[COND_THIRST] = 20;
       victim->pcdata->super->pracs = 2;

@@ -33,7 +33,7 @@ O_FILES = act_clan.o act_comm.o act_info.o act_mob.o act_move.o act_obj.o act_wi
 	  macros.o magic.o magic2.o magic3.o magic4.o mapper.o mob_commands.o mob_prog.o \
 	  money.o mount.o mquest.o obj_fun.o pdelete.o quest.o rulers.o save.o scheck.o social-edit.o \
 	  special.o spell_dam.o spendqp.o ssm.o strfuns.o sysdata.o trigger.o update.o \
-	  vampyre.o werewolf.o wizutil.o write.o
+	  vampire.o werewolf.o wizutil.o write.o
 
 ifdef IMC
    O_FILES := imc.o sha256.o $(O_FILES)

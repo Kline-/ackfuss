@@ -2432,7 +2432,7 @@ void do_who( CHAR_DATA * ch, char *argument )
          xprintf( fgs, "%3s %5s %s%s%s%s%s",
                   race_table[wch->race].race_name,
                   clan_table[wch->pcdata->clan].clan_abbr,
-                  IS_SET( wch->pcdata->pflags, PFLAG_AFK ) ? "A" : " ",
+                  is_set( wch->act, ACT_AFK ) ? "A" : " ",
                   wch->position == POS_BUILDING ? "B" : " ",
                   clan_job,
                   IS_SET( wch->pcdata->pflags, PFLAG_PKOK ) ? "P" : " ", wch->position == POS_WRITING ? "W" : " " );
@@ -3706,7 +3706,7 @@ struct chan_type channels[] = {
    {CHANNEL_BEEP, 0, "beep",
     "[ +BEEP     ] You accept 'beeps' from other players.\n\r",
     "[ -beep     ] You are ignoring 'beeps' from other players.\n\r"},
-   {CHANNEL_FAMILY, 0, "vampyre",
+   {CHANNEL_FAMILY, 0, "vampire",
     "",
     ""},
    {CHANNEL_DIPLOMAT, 0, "diplomat",
@@ -5697,7 +5697,7 @@ void do_whois( CHAR_DATA * ch, char *argument )
 
    /*
     * if (victim->pcdata->pflags != 0)
-    * xprintf( buf+strlen(buf), "Player is %s\n\r",bit_table_lookup(tab_player_flags,victim->pcdata->pflags));
+    * xprintf( buf+strlen(buf), "Player is %s\n\r",bit_table_lookup(tab_player_act,victim->act));
     * taken out to not show vamps :P 
     */
    if( IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
@@ -5750,21 +5750,17 @@ void do_shelp( CHAR_DATA * ch, char *argument )
 
 void do_afk( CHAR_DATA * ch, char *argument )
 {
-   int value;
-
    if( IS_NPC( ch ) )
       return;
 
-   value = table_lookup( tab_player_flags, "AFK" );
-
-   if( IS_SET( ch->pcdata->pflags, value ) )
+   if( is_set( ch->act, ACT_AFK ) )
    {
-      REMOVE_BIT( ch->pcdata->pflags, value );
+      remove_bit( ch->act, ACT_AFK );
       send_to_char( "AFK flag turned off.\n\r", ch );
    }
    else
    {
-      SET_BIT( ch->pcdata->pflags, value );
+      set_bit( ch->act, ACT_AFK );
       send_to_char( "AFK flag turned on.\n\r", ch );
    }
    return;

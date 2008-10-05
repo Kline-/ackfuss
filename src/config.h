@@ -674,7 +674,7 @@
 #define ACT_MERCENARY   12   /* Is a mercenary                 */
 #define ACT_HEAL        13   /* Sells spells                   */
 #define ACT_ADAPT       14   /* Adapts weapons                 */
-#define ACT_UNDEAD      15   /* Mob is undead                  */
+#define ACT_UNDEAD      15   /* Undead...spooky                */
 #define ACT_BANKER      16   /* Is a *B*anker :P               */
 #define ACT_NO_BODY     17   /* No body for damage             */
 #define ACT_HUNTER      18   /* Hunts attackers                */
@@ -683,10 +683,10 @@
 #define ACT_RE_WIELD    21   /* Uses better weapons            */
 #define ACT_RE_EQUIP    22   /* Uses better equipment          */
 #define ACT_INTELLIGENT 23   /* For shitkicking mobs           */
-#define ACT_VAMPIRE     24   /* Vampire mob                    */
+#define ACT_VAMPIRE     24   /* Vampire                        */
 #define ACT_BREEDER     25   /* Mob can breed                  */
 #define ACT_SOLO   	26   /* Buffed for solo combat         */
-#define ACT_WEREWOLF    27   /* Werewolf mob                   */
+#define ACT_WEREWOLF    27   /* Werewolf                       */
 #define ACT_MOUNT       28   /* Mountable MOB                  */
 #define ACT_NO_BLOOD    29   /* No bloodwalk                   */
 #define ACT_NO_QUEST    30   /* Disable from mquest            */
@@ -706,23 +706,21 @@
 #define ACT_NO_SUMMON   44   /* Doesn't want to be summoned    */
 #define ACT_NO_VISIT    45   /* Doesn't want to be visited     */
 #define ACT_INCOG       46   /* Invis except in-room           */
+#define ACT_SHIFTED     47   /* Wolf-form Werewolf             */
+#define ACT_RAGED       48   /* Enraged Werewolf               */
+#define ACT_AFK         49   /* AFK -- duh? :P                 */
 
 /* 
  * Player flags
  */
 #define PFLAG_PKOK             BIT_1
-#define PFLAG_AFK              BIT_2
 #define PFLAG_AMBAS            BIT_3
-#define PFLAG_VAMP             BIT_4
 #define PFLAG_CLAN_DIPLOMAT    BIT_5
 #define PFLAG_CLAN_BOSS        BIT_6
 #define PFLAG_CLAN_TREASURER   BIT_7
 #define PFLAG_CLAN_ARMOURER    BIT_8
 #define PFLAG_CLAN_LEADER      BIT_9
 #define PFLAG_SUPER_COUNCIL    BIT_10
-#define PFLAG_WEREWOLF         BIT_11
-#define PFLAG_RAGED            BIT_12
-#define PFLAG_SHIFTED          BIT_13
 #define PFLAG_RULER            BIT_14
 #define PFLAG_BLIND_PLAYER     BIT_15
 #define PFLAG_TESTER           BIT_16
@@ -1110,7 +1108,7 @@
 #define ITEM_REMORT			BIT_19   /* player must have a remort class of higher level than item level */
 #define ITEM_ADEPT			BIT_20
 #define ITEM_RARE			BIT_21
-#define ITEM_VAMP                       BIT_22 /* player must be a vampyre */
+#define ITEM_VAMP                       BIT_22 /* player must be a vampire */
 #define ITEM_NOLOOT			BIT_23
 #define ITEM_NOSAC			BIT_24
 #define ITEM_UNIQUE			BIT_25

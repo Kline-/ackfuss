@@ -1212,19 +1212,19 @@ void do_tell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
+   if( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
       send_to_char( "You are too @@rENRAGED @@NTo talk to mortals!\n\r", ch );
       return;
    }
 
-   if( ( !IS_NPC( ch ) ) && ( IS_SET( ch->pcdata->pflags, PFLAG_AFK ) ) )
+   if( is_set( ch->act, ACT_AFK ) )
    {
-      REMOVE_BIT( ch->pcdata->pflags, PFLAG_AFK );
+      remove_bit( ch->act, ACT_AFK );
       act( "You are no longer AFK.", ch, NULL, NULL, TO_CHAR );
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
+   if( is_set( ch->act, ACT_SILENCE ) )
    {
       send_to_char( "Your message didn't get through.\n\r", ch );
       return;
@@ -1261,7 +1261,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ( !IS_NPC( victim ) ) && ( IS_SET( victim->pcdata->pflags, PFLAG_AFK ) ) )
+   if( is_set( victim->act, ACT_AFK ) )
    {
       act( "$N is currently away from keyboard.", ch, NULL, victim, TO_CHAR );
       return;
@@ -2043,7 +2043,7 @@ void do_order( CHAR_DATA * ch, char *argument )
        || ( !str_prefix( arg, "answer" ) )
        || ( !str_prefix( arg, "diplomat" ) )
        || ( !str_prefix( arg, "enter" ) )
-       || ( !str_prefix( arg, "vampyre" ) )
+       || ( !str_prefix( arg, "vampire" ) )
        || ( !str_prefix( arg, "newbie" ) )
        || ( !str_prefix( arg, "adept" ) )
        || ( !str_prefix( arg, "zzz" ) )
