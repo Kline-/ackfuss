@@ -586,7 +586,7 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
    {
       act( buf1, NULL, ( void * )obj, victim, TO_NOTVICT );
    }
-   if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+   if( is_set( ch->act, ACT_BLIND_PLAYER ) )
    {
       if( dam < victim->max_hit / 30 )
          act( "You glance $K", ch, NULL, victim, TO_CHAR );
@@ -601,7 +601,7 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
    {
       act( buf2, ch, NULL, victim, TO_CHAR );
    }
-   if( !IS_NPC( victim ) && IS_SET( victim->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+   if( is_set( victim->act, ACT_BLIND_PLAYER ) )
    {
       if( dam < victim->max_hit / 30 )
          act( "$k glances you", ch, NULL, victim, TO_VICT );

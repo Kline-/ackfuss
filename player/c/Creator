@@ -102,7 +102,6 @@ GainMove       8250
 RulerRank      2
 Condition      0 48 10
 Pagelen        100
-Pflags         9728
 Skill          99 'reserved'
 Skill          99 'acid blast'
 Skill          99 'armor'

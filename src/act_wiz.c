@@ -4603,11 +4603,6 @@ void do_togbuild( CHAR_DATA * ch, char *argument )
 
 void do_togleader( CHAR_DATA * ch, char *argument )
 {
-   /*
-    * Toggles PC's ch->pcdata->pfalgs PLR_CLAN_BOSS value 
-    * * -S-
-    */
-
    CHAR_DATA *victim;
 
 
@@ -4629,15 +4624,15 @@ void do_togleader( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_SET( victim->pcdata->pflags, PFLAG_CLAN_BOSS ) )
+   if( !is_set( victim->act, ACT_CBOSS ) )
    {
-      SET_BIT( victim->pcdata->pflags, PFLAG_CLAN_BOSS );
+      set_bit( victim->act, ACT_CBOSS );
       send_to_char( "Bit set for CLAN_BOSS.\n\r", ch );
       send_to_char( "You have been set as a clan boss.\n\r", victim );
    }
    else
    {
-      REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_BOSS );
+      remove_bit( victim->act, ACT_CBOSS );
       send_to_char( "Bit removed for CLAN_BOSS.\n\r", ch );
       send_to_char( "You are no longer a clan boss.\n\r", victim );
    }
@@ -5330,11 +5325,6 @@ void do_alink( CHAR_DATA * ch, char *argument )
 
 void do_togcouncil( CHAR_DATA * ch, char *argument )
 {
-   /*
-    * Toggles PC's ch->pcdata->pfalgs PLR_CLAN_BOSS value 
-    * * -S-
-    */
-
    CHAR_DATA *victim;
 
 
@@ -5356,15 +5346,15 @@ void do_togcouncil( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_SET( victim->pcdata->pflags, PFLAG_SUPER_COUNCIL ) )
+   if( !is_set( victim->act, ACT_COUNCIL ) )
    {
-      SET_BIT( victim->pcdata->pflags, PFLAG_SUPER_COUNCIL );
+      set_bit( victim->act, ACT_COUNCIL );
       send_to_char( "Bit set for Council Member.\n\r", ch );
       send_to_char( "You have been set as a Council Member.\n\r", victim );
    }
    else
    {
-      REMOVE_BIT( victim->pcdata->pflags, PFLAG_SUPER_COUNCIL );
+      remove_bit( victim->act, ACT_COUNCIL );
       send_to_char( "Bit removed for COUNCIL MEMBER.\n\r", ch );
       send_to_char( "You are no longer a COUNCIL MEMBER.\n\r", victim );
    }

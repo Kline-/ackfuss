@@ -454,7 +454,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
       if( ( victim->desc ) != NULL && victim->desc->connected != CON_PLAYING )
          xcat( buf, "(LINKDEAD)" );
 
-   if( !IS_NPC( victim ) && IS_SET( victim->pcdata->pflags, PFLAG_RULER ) )
+   if( is_set( victim->act, ACT_RULER ) )
       xcat( buf, get_ruler_title( victim->pcdata->ruler_rank, victim->login_sex ) );
    if( victim->position == POS_STANDING && victim->long_descr[0] != '\0' )
    {
@@ -1233,7 +1233,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
       /*
        * check for players that are blind (irl) 
        */
-      if( !IS_NPC( ch ) && IS_SET( ch->pcdata->pflags, PFLAG_BLIND_PLAYER ) )
+      if( is_set( ch->act, ACT_BLIND_PLAYER ) )
       {
          if( ( pexit = ch->in_room->exit[door] ) != NULL && pexit->to_room != NULL )
          {
@@ -2362,7 +2362,7 @@ void do_who( CHAR_DATA * ch, char *argument )
          }
 
 
-         if( IS_SET( wch->pcdata->pflags, PFLAG_AMBAS ) )
+         if( is_set( wch->act, ACT_AMBASSADOR ) )
          {
             xprintf( buf3, "   AMBASSADOR  " );
          }
@@ -2420,11 +2420,11 @@ void do_who( CHAR_DATA * ch, char *argument )
           * ADDED: race and clan (Stephen)
           */
          clan_job[0] = '\0';
-         if( IS_SET( wch->pcdata->pflags, PFLAG_CLAN_BOSS ) )
+         if( is_set( wch->act, ACT_CBOSS ) )
             xcat( clan_job, "*" );
-         else if( IS_SET( wch->pcdata->pflags, PFLAG_CLAN_LEADER ) )
+         else if( is_set( wch->act, ACT_CLEADER ) )
             xcat( clan_job, "L" );
-         else if( IS_SET( wch->pcdata->pflags, PFLAG_CLAN_ARMOURER ) )
+         else if( is_set( wch->act, ACT_CARMORER ) )
             xcat( clan_job, "!" );
          else
             xcat( clan_job, " " );
@@ -2435,7 +2435,7 @@ void do_who( CHAR_DATA * ch, char *argument )
                   is_set( wch->act, ACT_AFK ) ? "A" : " ",
                   wch->position == POS_BUILDING ? "B" : " ",
                   clan_job,
-                  IS_SET( wch->pcdata->pflags, PFLAG_PKOK ) ? "P" : " ", wch->position == POS_WRITING ? "W" : " " );
+                  is_set( wch->act, ACT_PKOK ) ? "P" : " ", wch->position == POS_WRITING ? "W" : " " );
          /*
           * Oh look... another hack needed due to change in who format! 
           */
@@ -3599,7 +3599,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
          if( cmd_table[cmd].level == CLAN_ONLY && ch->pcdata->clan == 0 )
             continue;
 
-         if( cmd_table[cmd].level == BOSS_ONLY && !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_LEADER ) )
+         if( cmd_table[cmd].level == BOSS_ONLY && !is_set( ch->act, ACT_CLEADER ) )
             continue;
 
          if( cmd_table[cmd].level == VAMP_ONLY && !IS_VAMP( ch ) )
@@ -5696,11 +5696,11 @@ void do_whois( CHAR_DATA * ch, char *argument )
             race_table[victim->race].race_name, clan_table[victim->pcdata->clan].clan_name );
 
    /*
-    * if (victim->pcdata->pflags != 0)
+    * if (victim->act != 0)
     * xprintf( buf+strlen(buf), "Player is %s\n\r",bit_table_lookup(tab_player_act,victim->act));
     * taken out to not show vamps :P 
     */
-   if( IS_SET( victim->pcdata->pflags, PFLAG_PKOK ) )
+   if( is_set( victim->act, ACT_PKOK ) )
       xprintf_2( buf + strlen( buf ), "Player is @@ePKOK@@N\n\r" );
    xprintf_2( buf + strlen( buf ), "Players Killed: %d.  Times killed by players: %d.\n\r",
             victim->pcdata->records->pk, victim->pcdata->records->pd );
@@ -5847,7 +5847,7 @@ void do_loot( CHAR_DATA * ch, char *argument )
     * begin checking for lootability 
     */
 
-   if( ( ch->pcdata->clan == 0 ) && ( !IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) ) && ( !IS_VAMP( ch ) && !IS_WOLF( ch ) ) )
+   if( ( ch->pcdata->clan == 0 ) && ( !is_set( ch->act, ACT_PKOK ) ) && ( !IS_VAMP( ch ) && !IS_WOLF( ch ) ) )
    {
       send_to_char( "You cannot loot corpses.\n\r", ch );
       return;
@@ -5860,7 +5860,7 @@ void do_loot( CHAR_DATA * ch, char *argument )
    }
 
    if( ( ch->pcdata->clan == corpse->value[2] )
-       || ( ( IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) )
+       || ( ( is_set( ch->act, ACT_PKOK ) )
             && ( corpse->value[0] == 1 ) ) || ( ( IS_WOLF( ch ) || IS_VAMP( ch ) ) && ( corpse->value[0] == 1 ) ) )
    {
       counter = number_range( 1, 100 );

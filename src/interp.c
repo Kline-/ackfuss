@@ -1006,7 +1006,7 @@ void interpret( CHAR_DATA * ch, char *argument )
       if( cmd_table[cmd].level == CLAN_ONLY && !IS_NPC( ch ) && ch->pcdata->clan == 0 )
          continue;
 
-      if( cmd_table[cmd].level == BOSS_ONLY && !IS_NPC( ch ) && !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_BOSS ) )
+      if( cmd_table[cmd].level == BOSS_ONLY && !IS_NPC( ch ) && !is_set( ch->act, ACT_CLEADER ) )
          continue;
 
       if( cmd_table[cmd].level == VAMP_ONLY && !IS_NPC( ch ) && !IS_VAMP( ch ) && ( ch->level != L_GOD ) )

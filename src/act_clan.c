@@ -112,7 +112,7 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg2 );
 
 
-   if( IS_NPC( ch ) || !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_BOSS ) )
+   if( IS_NPC( ch ) || !is_set( ch->act, ACT_CBOSS ) )
    {
       send_to_char( "This command is for clan bosses only.\n\r", ch );
       return;
@@ -146,13 +146,13 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
    }
 
    if( !str_prefix( arg2, "armourer" ) )
-      job = PFLAG_CLAN_ARMOURER;
+      job = ACT_CARMORER;
    else if( !str_prefix( arg2, "diplomat" ) )
-      job = PFLAG_CLAN_DIPLOMAT;
+      job = ACT_CDIPLOMAT;
    else if( !str_prefix( arg2, "treasurer" ) )
-      job = PFLAG_CLAN_TREASURER;
+      job = ACT_CTREASURER;
    else if( !str_prefix( arg2, "leader" ) )
-      job = PFLAG_CLAN_LEADER;
+      job = ACT_CLEADER;
 
    else
    {
@@ -162,33 +162,33 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
 
    switch ( job )
    {
-      case PFLAG_CLAN_TREASURER:
+      case ACT_CTREASURER:
 
-         if( !IS_SET( victim->pcdata->pflags, PFLAG_CLAN_TREASURER ) )
+         if( !is_set( victim->act, ACT_CTREASURER ) )
          {
-            SET_BIT( victim->pcdata->pflags, PFLAG_CLAN_TREASURER );
+            set_bit( victim->act, ACT_CTREASURER );
             send_to_char( "Job set as CLAN TREASURER.\n\r", ch );
             send_to_char( "You have been set as a clan treasurer.\n\r", victim );
          }
          else
          {
-            REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_TREASURER );
+            remove_bit( victim->act, ACT_CTREASURER );
             send_to_char( "Job cleared: CLAN TREASURER.\n\r", ch );
             send_to_char( "You are no longer a clan treasurer.\n\r", victim );
          }
          break;
 
-      case PFLAG_CLAN_DIPLOMAT:
+      case ACT_CDIPLOMAT:
 
-         if( !IS_SET( victim->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
+         if( !is_set( victim->act, ACT_CDIPLOMAT ) )
          {
-            SET_BIT( victim->pcdata->pflags, PFLAG_CLAN_DIPLOMAT );
+            set_bit( victim->act, ACT_CDIPLOMAT );
             send_to_char( "Job set as CLAN DIPLOMAT.\n\r", ch );
             send_to_char( "You have been set as a clan diplomat.\n\r", victim );
          }
          else
          {
-            REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_DIPLOMAT );
+            remove_bit( victim->act, ACT_CDIPLOMAT );
             send_to_char( "Job cleared: CLAN DIPLOMAT.\n\r", ch );
             send_to_char( "You are no longer a clan diplomat.\n\r", victim );
          }
@@ -196,33 +196,33 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
 
 
 
-      case PFLAG_CLAN_ARMOURER:
+      case ACT_CARMORER:
 
-         if( !IS_SET( victim->pcdata->pflags, PFLAG_CLAN_ARMOURER ) )
+         if( !is_set( victim->act, ACT_CARMORER ) )
          {
-            SET_BIT( victim->pcdata->pflags, PFLAG_CLAN_ARMOURER );
+            set_bit( victim->act, ACT_CARMORER );
             send_to_char( "Job set as CLAN ARMOURER.\n\r", ch );
             send_to_char( "You have been set as a clan armourer.\n\r", victim );
          }
          else
          {
-            REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_ARMOURER );
+            remove_bit( victim->act, ACT_CARMORER );
             send_to_char( "Job cleared: CLAN ARMOURER.\n\r", ch );
             send_to_char( "You are no longer a clan armourer.\n\r", victim );
          }
          break;
 
-      case PFLAG_CLAN_LEADER:
+      case ACT_CLEADER:
 
-         if( !IS_SET( victim->pcdata->pflags, PFLAG_CLAN_LEADER ) )
+         if( !is_set( victim->act, ACT_CLEADER ) )
          {
-            SET_BIT( victim->pcdata->pflags, PFLAG_CLAN_LEADER );
+            set_bit( victim->act, ACT_CLEADER );
             send_to_char( "Job set as CLAN LEADER.\n\r", ch );
             send_to_char( "You have been set as a clan leader.\n\r", victim );
          }
          else
          {
-            REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_LEADER );
+            remove_bit( victim->act, ACT_CLEADER );
             send_to_char( "Job cleared: CLAN LEADER.\n\r", ch );
             send_to_char( "You are no longer a clan leader.\n\r", victim );
          }
@@ -320,7 +320,7 @@ void do_politics( CHAR_DATA * ch, char *argument )
       xcat( buf2, buf );
       send_to_char( buf2, ch );
    }
-   if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
+   if( is_set( ch->act, ACT_CDIPLOMAT ) )
       for( x = 1; x < MAX_CLAN; x++ )
       {
          if( politics_data.end_current_state[ch->pcdata->clan][x] )
@@ -344,7 +344,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg2 );
 
 
-   if( IS_NPC( ch ) || !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
+   if( IS_NPC( ch ) || !is_set( ch->act, ACT_CDIPLOMAT ) )
    {
       send_to_char( "This command is for clan diplomats only.\n\r", ch );
       return;
@@ -591,7 +591,7 @@ void do_accept( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-   if( !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_LEADER ) )
+   if( !is_set( ch->act, ACT_CLEADER ) )
    {
       send_to_char( "You must be a clan leader to use this command!\n\r", ch );
       return;
@@ -672,7 +672,7 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
       if( d->connected == CON_PLAYING
           && ( victim = d->character ) != NULL
           && !IS_NPC( victim )
-          && victim->in_room != NULL && ( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_BOSS ) || can_see( ch, victim ) ) )
+          && victim->in_room != NULL && ( is_set( ch->act, ACT_CBOSS ) || can_see( ch, victim ) ) )
       {
          if( victim->pcdata->clan != ch->pcdata->clan )
             continue;
@@ -681,20 +681,20 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
 
          found = TRUE;
          xprintf( buf, "%-28s %s ", victim->name, victim->in_room->name );
-         if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_BOSS ) )
+         if( is_set( ch->act, ACT_CBOSS ) )
          {
-            if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_LEADER ) )
+            if( is_set( victim->act, ACT_CLEADER ) )
                xcat( buf, " L " );
 
-            if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_ARMOURER ) )
+            if( is_set( victim->act, ACT_CARMORER ) )
                xcat( buf, " A " );
 
 
-            if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_TREASURER ) )
+            if( is_set( victim->act, ACT_CTREASURER ) )
                xcat( buf, " T " );
 
 
-            if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
+            if( is_set( victim->act, ACT_CDIPLOMAT ) )
                xcat( buf, " D " );
          }
          xcat( buf, "\n\r" );
@@ -735,23 +735,23 @@ void do_leave( CHAR_DATA * ch, char *argument )
 
    ch->pcdata->clan = 0;
    send_to_char( "You leave your clan.  Let's hope they don't get mad!\n\r", ch );
-   if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
-      REMOVE_BIT( ch->pcdata->pflags, PFLAG_CLAN_DIPLOMAT );
+   if( is_set( ch->act, ACT_CDIPLOMAT ) )
+      remove_bit( ch->act, ACT_CDIPLOMAT );
 
-   if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_TREASURER ) )
-      REMOVE_BIT( ch->pcdata->pflags, PFLAG_CLAN_TREASURER );
-
-
-   if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_ARMOURER ) )
-      REMOVE_BIT( ch->pcdata->pflags, PFLAG_CLAN_ARMOURER );
+   if( is_set( ch->act, ACT_CTREASURER ) )
+      remove_bit( ch->act, ACT_CTREASURER );
 
 
-   if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_LEADER ) )
-      REMOVE_BIT( ch->pcdata->pflags, PFLAG_CLAN_LEADER );
+   if( is_set( ch->act, ACT_CARMORER ) )
+      remove_bit( ch->act, ACT_CARMORER );
 
 
-   if( IS_SET( ch->pcdata->pflags, PFLAG_CLAN_BOSS ) )
-      REMOVE_BIT( ch->pcdata->pflags, PFLAG_CLAN_BOSS );
+   if( is_set( ch->act, ACT_CLEADER ) )
+      remove_bit( ch->act, ACT_CLEADER );
+
+
+   if( is_set( ch->act, ACT_CBOSS ) )
+      remove_bit( ch->act, ACT_CBOSS );
 
 
    return;
@@ -767,7 +767,7 @@ void do_banish( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-   if( !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_LEADER ) )
+   if( !is_set( ch->act, ACT_CLEADER ) )
    {
       send_to_char( "Only Clan Leaders may use this command.\n\r", ch );
       return;
@@ -806,7 +806,7 @@ void do_banish( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_BOSS ) )
+   if( is_set( victim->act, ACT_CBOSS ) )
    {
       send_to_char( "Nice Try.", ch );
       return;
@@ -814,23 +814,23 @@ void do_banish( CHAR_DATA * ch, char *argument )
 
    victim->pcdata->clan = 0;
 
-   if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_DIPLOMAT ) )
-      REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_DIPLOMAT );
+   if( is_set( victim->act, ACT_CDIPLOMAT ) )
+      remove_bit( victim->act, ACT_CDIPLOMAT );
 
-   if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_TREASURER ) )
-      REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_TREASURER );
-
-
-   if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_ARMOURER ) )
-      REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_ARMOURER );
+   if( is_set( victim->act, ACT_CTREASURER ) )
+      remove_bit( victim->act, ACT_CTREASURER );
 
 
-   if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_LEADER ) )
-      REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_LEADER );
+   if( is_set( victim->act, ACT_CARMORER ) )
+      remove_bit( victim->act, ACT_CARMORER );
 
 
-   if( IS_SET( victim->pcdata->pflags, PFLAG_CLAN_BOSS ) )
-      REMOVE_BIT( victim->pcdata->pflags, PFLAG_CLAN_BOSS );
+   if( is_set( victim->act, ACT_CLEADER ) )
+      remove_bit( victim->act, ACT_CLEADER );
+
+
+   if( is_set( victim->act, ACT_CBOSS ) )
+      remove_bit( victim->act, ACT_CBOSS );
 
 
    xprintf( buf, "%s has banished %s from clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
@@ -857,7 +857,7 @@ void do_make( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg2 );
 
 
-   if( IS_NPC( ch ) || !IS_SET( ch->pcdata->pflags, PFLAG_CLAN_ARMOURER ) )
+   if( IS_NPC( ch ) || !is_set( ch->act, ACT_CARMORER ) )
    {
       send_to_char( "This command is for clan armourers only.\n\r", ch );
       return;
@@ -968,7 +968,7 @@ void do_council( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
 
 
-   if( ( IS_NPC( ch ) ) || ( !IS_SET( ch->pcdata->pflags, PFLAG_SUPER_COUNCIL ) ) )
+   if( ( IS_NPC( ch ) ) || ( !is_set( ch->act, ACT_COUNCIL ) ) )
    {
       send_to_char( "You are not a council member!\n\r", ch );
       return;
@@ -1077,7 +1077,7 @@ void do_council( CHAR_DATA * ch, char *argument )
                         super_councils[this_council].council_name );
                send_to_char( buf, ch );
                xprintf( buf, "You are now a member of the Council of %s!\n\r", super_councils[this_council].council_name );
-               SET_BIT( victim->pcdata->pflags, PFLAG_SUPER_COUNCIL );
+               set_bit( victim->act, ACT_COUNCIL );
             }
          }
          else

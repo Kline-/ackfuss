@@ -4271,7 +4271,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
     {
      default: found = TRUE; send_to_char(chan_history.message[x][y],ch); break;
      case CHANNEL_DIPLOMAT:
-      if( IS_SET(ch->pcdata->pflags,PFLAG_CLAN_DIPLOMAT) )
+      if( is_set(ch->act,ACT_CDIPLOMAT) )
       {
        found = TRUE;
        send_to_char(chan_history.message[x][y],ch);

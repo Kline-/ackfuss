@@ -434,7 +434,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "RulerRank      %d\n", ch->pcdata->ruler_rank );
       fprintf( fp, "Condition      %d %d %d\n", ch->pcdata->condition[0], ch->pcdata->condition[1], ch->pcdata->condition[2] );
       fprintf( fp, "Pagelen        %d\n", ch->pcdata->pagelen );
-      fprintf( fp, "Pflags         %d\n", ch->pcdata->pflags );
 
       for( sn = 0; sn < MAX_SKILL; sn++ )
       {
@@ -712,7 +711,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->condition[COND_THIRST] = 48;
       ch->pcdata->pagelen = 20;
       ch->pcdata->condition[COND_FULL] = 48;
-      ch->pcdata->pflags = 0;
       ch->pcdata->recall_vnum = 3001;
       ch->pcdata->mana_from_gain = -1;
       ch->pcdata->hp_from_gain = -1;
@@ -1292,7 +1290,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                KEY( "Pagelen", ch->pcdata->pagelen, fread_number( fp ) );
                SKEY( "Password", ch->pcdata->pwd, fread_string( fp ) );
-               KEY( "Pflags", ch->pcdata->pflags, fread_number( fp ) );
             }
             KEY( "Played", ch->played, fread_number( fp ) );
             KEY( "Position", ch->position, fread_number( fp ) );
