@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@GFarmlands@@N~
-Q 19
+Q 20
 K farm~
 L @@W{@@mRMORT@@W}@@N~
 N 116
@@ -1312,8 +1312,8 @@ Slave~
 @@Ga slave@@N~
 @@GA female slave is here, planting tiny plants into the ground.@@N~
 ~
-3145869 0 0
-86 1
+0 0
+87 1
 -500 100 100
 ! 5 0 0 7 24078 0 2
 | 0 0 0 0 0 0 0
@@ -1323,7 +1323,7 @@ a slave~
 @@Ga slave@@N~
 @@GA male slave is here, searching for weeds.@@N~
 ~
-1 0 0
+0 0
 93 1
 -700 150 150
 ! 5 0 0 7 24078 0 2
@@ -1334,7 +1334,7 @@ girl daughter woman~
 @@Gthe farmer's daughter@@N~
 @@GA young girl in a plain @@ggrey@@G dress is here, cooking.@@N~
 ~
-3 8192 0
+8192 0
 86 2
 -800 200 200
 ! 5 0 0 7 24078 0 0
@@ -1345,8 +1345,8 @@ boy man son~
 @@Gthe farmer's son@@N~
 @@GA teen in @@Bblue@@G overall's is here, cleaning out the farming equipment@@N~
 ~
-3145729 8320 0
-88 1
+8320 0
+89 1
 -900 275 275
 ! 5 0 0 7 24286 0 8
 | 0 0 0 0 0 0 0
@@ -1356,8 +1356,8 @@ wife woman~
 @@Gthe farmer's wife@@N~
 @@GA middle-aged woman directs the slaves, tired of her life.@@N~
 ~
-5 8320 0
-87 2
+8320 0
+86 2
 -1100 0 300
 ! 5 0 0 7 24270 0 16
 | 0 0 0 0 0 0 0
@@ -1367,8 +1367,8 @@ Farmer man~
 @@Gthe Farmer@@N~
 @@GThe Farmer is here, hands callused from years of work.@@N~
 ~
-3145733 8320 0
-99 1
+8320 0
+98 1
 -1100 400 400
 ! 5 0 0 7 23694 0 16
 | 0 0 0 0 0 0 0
@@ -1378,8 +1378,8 @@ chicken~
 @@Ga chicken@@N~
 @@GA small runt-like chicken is here, searching for food.@@N~
 ~
-1 0 0
-73 1
+0 0
+72 1
 -750 100 100
 ! 5 0 19 7 18694 0 0
 | 0 0 0 0 0 0 0

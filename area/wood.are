@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@rEccentric @@GWoodland@@N~
-Q 19
+Q 20
 K eccentricwoodland~
 L @@W{@@r 4 50@@W}@@N~
 N 35
@@ -776,8 +776,8 @@ guinea pig guardian of shrew~
 The Guinea-pig guardian of the burrow awaits death here.
 ~
 ~
-131091 535168 0
-82 1
+535168 0
+81 1
 0 100 50
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -788,7 +788,7 @@ a bleating starry-eyed ram~
 The sacred holy ram lies here, sleeping and unaware.
 ~
 ~
-3 657408 0
+657408 0
 8 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -800,7 +800,7 @@ The Shadow~
 The Shadow is levitating here, ready to help the clan.
 ~
 ~
-4099 0 0
+0 0
 2 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -812,7 +812,7 @@ a giant spider~
 A giant spider hangs on his web here.
 ~
 ~
-3 0 0
+0 0
 9 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -823,7 +823,7 @@ shapeshifter~
 A shapeshifter~
 A small sniffing shapeshifter cringes in one corner.~
 ~
-1 0 0
+0 0
 10 0
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -835,8 +835,8 @@ A grumpy hermit~
 A grumpy looking hermit shakes a stick at you.
 ~
 ~
-3 0 50
-38 1
+0 50
+37 1
 0 0 2
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -847,8 +847,8 @@ A rotting tree.~
 A rotting tree approaches you.
 ~
 ~
-1 0 -100
-10 1
+0 -100
+11 1
 -10 1 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -859,7 +859,7 @@ A nasty vicious wolverine~
 A nasty vicious wolverine is rooting for food here.
 ~
 ~
-3 0 0
+0 0
 38 1
 -40 15 25
 ! 0 0 19 7 16644 0 0
@@ -871,7 +871,7 @@ ghost of the adventurer~
 The ghost of the dead adventurer rises from the ground and attacks!
 ~
 ~
-35 0 -50
+0 -50
 28 1
 0 0 0
 ! 0 0 14 7 2 0 0
@@ -883,8 +883,8 @@ MaGiCaL MiStEr @@RM@@yy@@cs@@Gt@@Wo@@bf@@Rf@@ce@@yl@@Ge@@Ws@@g~
 A Strange cat lies here doing conjuring tricks.
 ~
 ~
-133651 1081474 0
-81 1
+1081474 0
+82 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0

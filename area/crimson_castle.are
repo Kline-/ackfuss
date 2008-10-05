@@ -1,6 +1,6 @@
 #AREA
 @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@gCastle@@N~
-Q 19
+Q 20
 K crimson_castle~
 L @@N{@@dA@@mD@@pE@@WP@@gT@@N}~
 N 146
@@ -2756,7 +2756,7 @@ guard guardian tower~
 @@dThe guardian of the t@@mo@@pw@@We@@gr@@d halts your progress..@@N
 ~
 ~
-36700195 16488 0
+16488 0
 130 1
 -1700 900 400
 ! 6 0 0 7 148110 0 48
@@ -2768,8 +2768,8 @@ Ixtochel~
 @@dThe castle guardian clutches the castle key tightly in his hands..@@N
 ~
 ~
-65539 26816 0
-127 1
+26816 0
+128 1
 -1750 800 600
 ! 6 0 0 7 155662 8683520 16
 | 0 0 0 0 0 0 0
@@ -2780,7 +2780,7 @@ tower demon~
 @@dA crimson demon of the tower sneaks up on you..@@N
 ~
 ~
-302055457 639210 -1000
+639210 -1000
 125 0
 -1500 700 700
 ! 2 0 16 7 221198 0 80
@@ -2792,8 +2792,8 @@ Grastrou Beast~
 @@dA dark grastrou beast lies in the shadows..@@N
 ~
 ~
-268500995 18664 0
-134 1
+18664 0
+133 1
 -1500 750 650
 ! 7 0 19 7 155662 0 16
 | 0 0 0 0 0 0 0
@@ -2804,7 +2804,7 @@ Grastrou Beast~
 @@dA dark grastrou beast lies in the shadows..@@N
 ~
 ~
-268500995 18664 0
+18664 0
 135 1
 -1500 750 650
 ! 0 0 19 7 155662 0 16
@@ -2816,8 +2816,8 @@ Lord Dark~
 @@dEvil reigns and the lord of the tower retakes his throne..@@N
 ~
 ~
-36765715 551656 -1000
-141 0
+551656 -1000
+142 0
 -2500 1000 1000
 ! 1 0 0 7 1047182 51380480 48
 | 0 0 0 0 0 0 0
@@ -2828,8 +2828,8 @@ healer seduction~
 @@dSeduction herself cleanses your soul with her silky hands..@@N
 ~
 ~
-268703235 1065152 0
-120 2
+1065152 0
+121 2
 0 0 0
 ! 1 0 16 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2840,8 +2840,8 @@ lim dul limdul lim-dul~
 @@dLim-Dul, prince of the crimson realm, prepares armageddon..@@N
 ~
 ~
-65571 26856 0
-136 0
+26856 0
+137 0
 -2500 1000 850
 ! 6 0 0 7 417806 50331648 144
 | 0 0 0 0 0 0 0
@@ -2852,7 +2852,7 @@ paladin~
 @@dThe Paladin of Lucrezia has been corrupted by the dark side..@@N
 ~
 ~
-36896793 27388 -1000
+27388 -1000
 139 2
 -2000 1000 700
 ! 7 0 0 7 948622 6488064 144
@@ -2864,7 +2864,7 @@ displacer beast~
 @@dA large cat-like beast with two tails growls at you..@@N
 ~
 ~
-65571 84202 0
+84202 0
 130 0
 -1875 900 700
 ! 2 0 19 7 155662 32768 16
@@ -2876,7 +2876,7 @@ displacer beast~
 @@dA large cat-like beast with two tails growls at you..@@N
 ~
 ~
-65571 84202 0
+84202 0
 132 0
 -1875 900 700
 ! 0 0 19 7 155662 32768 16
@@ -2888,7 +2888,7 @@ displacer beast~
 @@dA large cat-like beast with two tails growls at you..@@N
 ~
 ~
-65571 18664 0
+18664 0
 134 0
 -1875 900 700
 ! 0 0 19 7 155662 32768 16
@@ -2900,8 +2900,8 @@ displacer beast~
 @@dA large cat-like beast with two tails growls at you..@@N
 ~
 ~
-65571 18664 0
-131 0
+18664 0
+130 0
 -1875 900 700
 ! 0 0 19 7 155662 32768 16
 | 0 0 0 0 0 0 0
@@ -2912,7 +2912,7 @@ Evil~
 @@dE@@mv@@pi@@gl@@N
 ~
 ~
-305594411 1698558 -1000
+1698558 -1000
 139 1
 -2500 1000 1000
 ! 9 0 16 7 948414 67108862 48
@@ -2924,7 +2924,7 @@ Evil~
 @@dE@@mv@@pi@@gl@@N
 ~
 ~
-305594411 1698558 -1000
+1698558 -1000
 141 1
 -2500 1000 1000
 ! 0 0 16 7 948414 67108862 48
@@ -2936,8 +2936,8 @@ Evil~
 @@dE@@mv@@pi@@gl@@N
 ~
 ~
-305594411 1698558 -1000
-140 1
+1698558 -1000
+139 1
 -2500 1000 1000
 ! 0 0 16 7 948414 67108862 48
 | 0 0 0 0 0 0 0
@@ -2948,7 +2948,7 @@ mirage~
 @@dJuzam is here, although he doesnt seem the same to you..@@N
 ~
 ~
-268435491 26856 -1000
+26856 -1000
 121 0
 -1999 899 899
 ! 2 0 0 7 679950 0 56
@@ -2960,8 +2960,8 @@ nether shadow~
 @@dA nether shadow is here with a part of the darkness..@@N
 ~
 ~
-33554435 18624 -1000
-123 1
+18624 -1000
+122 1
 -1789 789 789
 ! 0 0 16 7 155662 0 16
 | 0 0 0 0 0 0 0
@@ -2972,8 +2972,8 @@ nether shadow~
 @@dA nether shadow is here with a part of the darkness..@@N
 ~
 ~
-33554435 18624 -1000
-124 1
+18624 -1000
+125 1
 -1789 789 789
 ! 0 0 16 7 155662 0 16
 | 0 0 0 0 0 0 0
@@ -2984,8 +2984,8 @@ stargazer~
 @@dA S@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr is here awaiting his fate..@@N
 ~
 ~
-35 18664 0
-126 1
+18664 0
+125 1
 -1600 900 400
 ! 2 0 0 7 24590 0 16
 | 0 0 0 0 0 0 0
@@ -2996,7 +2996,7 @@ stargazer~
 @@dA S@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr is here awaiting his fate..@@N
 ~
 ~
-35 18664 0
+18664 0
 128 1
 -1600 900 400
 ! 0 0 0 7 24590 0 16
@@ -3008,8 +3008,8 @@ whirlwind~
 @@dA deadly whirlwind spins and spins..@@N
 ~
 ~
-33 1073388 0
-131 2
+1073388 0
+130 2
 -1400 1000 500
 ! 9 0 17 7 24582 0 80
 | 0 0 0 0 0 0 0
@@ -3020,7 +3020,7 @@ whirlwind~
 @@dA deadly whirlwind spins and spins..@@N
 ~
 ~
-33 1073388 0
+1073388 0
 136 2
 -1400 1000 500
 ! 0 0 17 7 24582 0 80
@@ -3032,8 +3032,8 @@ Omega~
 @@dThe @@BW@@li@@cn@@ad @@ROmega @@dfollows the biddings of its master..@@N
 ~
 ~
-448765723 1632488 0
-126 1
+1632488 0
+127 1
 -2500 1000 1000
 ! 6 0 17 7 155662 0 16
 | 0 0 0 0 0 0 0
@@ -3044,7 +3044,7 @@ sentinel~
 @@dA Shadow Sentinel scampers around waiting to ambush you..@@N
 ~
 ~
-3145781 92908 0
+92908 0
 130 1
 -2100 920 820
 ! 7 0 17 7 417806 0 80
@@ -3056,8 +3056,8 @@ sentinel~
 @@dA Shadow Sentinel scampers around waiting to ambush you..@@N
 ~
 ~
-3145781 92908 0
-136 1
+92908 0
+137 1
 -2100 920 820
 ! 0 0 17 7 417806 0 80
 | 0 0 0 0 0 0 0
@@ -3068,8 +3068,8 @@ jester~
 @@dThe @@mL@@po@@Wr@@gd@@m'@@ps@@d jester dances around in a fool's way..@@N
 ~
 ~
-268435457 581824 0
-131 1
+581824 0
+130 1
 -1500 700 700
 ! 9 0 0 7 24590 2097152 16
 | 0 0 0 0 0 0 0
@@ -3080,7 +3080,7 @@ jester~
 @@dThe @@mL@@po@@Wr@@gd@@m'@@ps@@d jester dances around in a fool's way..@@N
 ~
 ~
-268435457 581824 0
+581824 0
 126 1
 -1500 700 700
 ! 0 0 0 7 24590 2097152 16
@@ -3092,7 +3092,7 @@ servant~
 (Darkness) @@dA servant of the lord keeps his watch..@@N
 ~
 ~
-17 1099840 0
+1099840 0
 126 1
 -1500 800 800
 ! 7 0 0 7 155662 0 16
@@ -3104,8 +3104,8 @@ servant~
 (Darkness) @@dA servant of the lord keeps his watch..@@N
 ~
 ~
-17 1099840 0
-133 1
+1099840 0
+132 1
 -1500 800 800
 ! 0 0 0 7 155662 0 16
 | 0 0 0 0 0 0 0
@@ -3124,8 +3124,8 @@ dancer exotic~
 look up to see her bear fangs and try to sink them into your neck.  Your lust
 for her may have been your downfall.@@N
 ~
-268451881 49384 0
-120 2
+49384 0
+119 2
 -1250 900 500
 ! 2 0 0 7 24582 50331648 80
 | 0 0 0 0 0 0 0
@@ -3136,8 +3136,8 @@ Celestial~
 (Power) @@dThe celestial of the castle wanders the halls..@@N
 ~
 ~
-33619985 1108200 1000
-134 2
+1108200 1000
+135 2
 -1600 600 600
 ! 5 0 0 7 155662 525312 16
 | 0 0 0 0 0 0 0
@@ -3148,7 +3148,7 @@ omega crimson captain guard stormguard~
 @@dThe Captain of the Castle Stormguards patrols the area..@@N
 ~
 ~
-310509593 1108200 0
+1108200 0
 140 1
 -2250 950 950
 ! 9 0 17 7 423950 32768 144
@@ -3160,8 +3160,8 @@ captain storm guard stormguard~
 @@dA stormguard captain wanders the halls guarding the castle.@@N
 ~
 ~
-33685521 18664 0
-133 1
+18664 0
+132 1
 -1999 899 899
 ! 0 0 0 7 155790 0 16
 | 0 0 0 0 0 0 0
@@ -3172,8 +3172,8 @@ captain storm guard stormguard~
 @@dA stormguard captain wanders the halls guarding the castle.@@N
 ~
 ~
-33685521 26856 0
-133 1
+26856 0
+132 1
 -1999 899 899
 ! 0 0 0 7 155790 0 16
 | 0 0 0 0 0 0 0
@@ -3184,7 +3184,7 @@ crimson guard storm stormguard~
 @@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
 ~
 ~
-3276809 1622252 0
+1622252 0
 128 1
 -1600 600 600
 ! 6 0 0 7 155662 0 80
@@ -3196,8 +3196,8 @@ guard storm stormguard~
 @@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
 ~
 ~
-3276809 1622252 0
-130 1
+1622252 0
+131 1
 -1600 600 600
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
@@ -3208,7 +3208,7 @@ guard storm stormguard~
 @@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
 ~
 ~
-3276809 1622252 0
+1622252 0
 127 1
 -1600 600 600
 ! 0 0 0 7 155662 0 80
@@ -3220,8 +3220,8 @@ guard storm stormguard~
 @@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
 ~
 ~
-3276809 1622252 0
-130 1
+1622252 0
+131 1
 -1600 600 600
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
@@ -3232,7 +3232,7 @@ guard storm stormguard~
 @@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
 ~
 ~
-3276809 1622252 0
+1622252 0
 131 1
 -1600 600 600
 ! 0 0 0 7 155662 0 80
@@ -3244,8 +3244,8 @@ guard storm stormguard~
 @@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
 ~
 ~
-3276809 1622252 0
-128 1
+1622252 0
+127 1
 -1600 600 600
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
@@ -3256,8 +3256,8 @@ delphi~
 @@dDelphi wanders the halls looking to pick a fight..@@N
 ~
 ~
-33554451 116930 0
-136 1
+116930 0
+135 1
 -2000 900 900
 ! 7 0 0 7 155662 4194304 80
 | 0 0 0 0 0 0 0
@@ -3268,7 +3268,7 @@ clurven~
 @@BC@@gl@@Burven @@dwanders the halls of the castle..@@N
 ~
 ~
-3 84202 0
+84202 0
 137 1
 -2000 950 950
 ! 9 0 0 7 155662 0 16
@@ -3280,8 +3280,8 @@ secret~
 @@dOne of the dark secrets of your soul..@@N
 ~
 ~
-33554435 92386 0
-141 1
+92386 0
+142 1
 -2000 950 950
 ! 9 0 16 7 155662 0 16
 | 0 0 0 0 0 0 0
@@ -3292,7 +3292,7 @@ name Beta~
 @@dThe second coming, B@@ye@@dta is here scouting the castle..@@N
 ~
 ~
-131091 84034 0
+84034 0
 138 1
 -2000 950 950
 ! 2 0 0 7 155662 0 128
@@ -3304,7 +3304,7 @@ impoyx~
 @@dThe castle spirit, Impoyx, haunts the halls..@@N
 ~
 ~
-33554435 90306 0
+90306 0
 133 1
 -2500 900 700
 ! 0 0 14 7 417806 0 80
@@ -3316,8 +3316,8 @@ Hartryx~
 @@dImpoyx's living brother, Hartryx, searches to recieve eternal rest..@@N
 ~
 ~
-33554435 90178 0
-139 1
+90178 0
+138 1
 -2500 1000 700
 ! 0 0 0 7 417806 0 80
 | 0 0 0 0 0 0 0
@@ -3328,8 +3328,8 @@ Ztur~
 @@dThe dead founder of the Stormguards, Ztur..@@N
 ~
 ~
-3 84162 0
-141 1
+84162 0
+142 1
 -2200 1000 1000
 ! 0 0 14 7 417806 1183744 0
 | 0 0 0 0 0 0 0
@@ -3340,7 +3340,7 @@ Bogardan~
 @@dBogardan the ancient executioner dawns a black hood..@@N
 ~
 ~
-3 84034 0
+84034 0
 136 1
 -1500 1000 1000
 ! 0 0 14 7 155662 0 144
@@ -3352,8 +3352,8 @@ auroch~
 @@dThe king of the crypts of crimson, @@yA@@dur@@go@@dch...@@N
 ~
 ~
-33619987 84162 0
-139 2
+84162 0
+138 2
 -1900 999 999
 ! 0 0 14 7 155662 0 16
 | 0 0 0 0 0 0 0
@@ -3364,7 +3364,7 @@ Soldelvi~
 @@dCrimson's dark queen, @@dS@@mo@@pl@@gd@@delvi@@d stands alert..@@N
 ~
 ~
-42008595 84162 0
+84162 0
 139 2
 -1900 999 999
 ! 0 0 14 7 423950 0 16
@@ -3376,8 +3376,8 @@ dancer~
 @@dA ballroom dancer is here doing an intricate dance on the floor..@@N
 ~
 ~
-33685513 24768 0
-131 1
+24768 0
+132 1
 -1700 800 700
 ! 1 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
@@ -3388,7 +3388,7 @@ dancer~
 @@dA ballroom dancer is here doing an intricate dance on the floor..@@N
 ~
 ~
-33685513 24768 0
+24768 0
 135 1
 -1700 800 700
 ! 0 0 0 7 155662 0 80
@@ -3400,8 +3400,8 @@ guard storm stormguard~
 @@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
 ~
 ~
-3276809 1622252 0
-129 1
+1622252 0
+128 1
 -1600 900 900
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
@@ -3412,8 +3412,8 @@ guard storm stormguard~
 @@dA castle @@Bst@@lor@@cmg@@aua@@grd@@d watches for intruders..@@N
 ~
 ~
-3276809 1622252 0
-127 1
+1622252 0
+128 1
 -1600 900 900
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
@@ -3424,7 +3424,7 @@ skeleton~
 @@dA skeleton replaces bones that break away..@@N
 ~
 ~
-280117301 1624298 0
+1624298 0
 126 1
 -1700 800 800
 ! 6 0 14 7 155662 0 80

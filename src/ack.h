@@ -1419,6 +1419,8 @@ BITMASK init_bitmask       args( ( BITMASK *bm ) );
 void    load_bitmask       args( ( BITMASK *pBmask, FILE *fp ) );
 char    *save_bitmask      args( ( BITMASK *pBmask ) );
 void    bv_to_bm           args( ( int list, BITMASK *mask ) );
+void    debug_bitmask      args( ( BITMASK *pBmask ) );
+void    bm_test            args( ( void ) );
 
 /* board.c */
 BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj );

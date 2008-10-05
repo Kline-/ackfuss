@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@yLost Isle@@N~
-Q 19
+Q 20
 K lostisle~
 L @@W{@@r50 70@@W}@@N~
 N 18
@@ -1664,8 +1664,8 @@ The Tyrannosaurus stands many times taller than you, and looks to weigh at
 at these gleaming teeth, you notice body parts of adventurers who were not so
 lucky at conquering this ravenous creature.
 ~
-33554557 32768 -600
-77 2
+32768 -600
+78 2
 -65 75 200
 ! 0 0 19 7 540678 0 0
 | 0 0 0 0 0 0 0
@@ -1679,7 +1679,7 @@ The Triceratops is the largest of the horn-faced dinosaurs.  The huge front
 bone plate protects his head against attack from other dinosaurs, whilst the
 two great horns jutting from it provide an ample form of attack.
 ~
-134217929 0 -400
+0 -400
 77 1
 -120 60 50
 ! 0 0 19 7 16386 0 0
@@ -1695,8 +1695,8 @@ The Stegosaurus looks fairly harmless, but also pretty large; eight feet of
 lined with a double set of diamond shaped plates, used to regulate body heat.
 The spiked tail looks unfriendly, too, now you think about it.
 ~
-69 0 100
-76 1
+0 100
+75 1
 -120 50 40
 ! 0 0 19 7 1038 0 0
 | 0 0 0 0 0 0 0
@@ -1711,7 +1711,7 @@ The Pterandon, big brother of the Pteradactyl, has a four-foot long beak, which
 be cumbersome, but as it swoops to and fro around your head, you realise
 quite the opposite.
 ~
-134217821 524288 -300
+524288 -300
 64 2
 -150 150 40
 ! 0 0 19 7 16384 0 0
@@ -1726,8 +1726,8 @@ The Lambeosaurus has a flat snout and a large crest on it's head.  It looks
 quite happy to stay where it is right now, although it looks at you like a 
 mouse would look at a cat.
 ~
-193 98432 300
-64 1
+98432 300
+65 1
 -100 5 10
 ! 0 0 19 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -1740,7 +1740,7 @@ A Elasmosaurus is here, looking downright mean.
 The Elasmosaurus looks like a huge snake.  Short fins protrude from it's thick
 body.  It looks menacing, and seems to be sizing you up for a meal.
 ~
-103 0 -400
+0 -400
 77 2
 -100 150 15
 ! 0 0 19 7 81934 0 0
@@ -1754,8 +1754,8 @@ A medium-sized Diplodocus stands here looking for people to stomp on.
 The Diplodocus doesn't look fully grown.  Standing taller than a Tyrannosurus
 Rex, however, she still looks absolutely deadly if annoyed.
 ~
-203 0 200
-77 2
+0 200
+76 2
 -110 100 200
 ! 0 0 19 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -1769,8 +1769,8 @@ The Deiononychus, due to it's small size, is an excellent fighter.  It looks
 almost intelligent.  It stares at you for a moment, before continuing to dart
 around you.
 ~
-77 0 -300
-66 1
+0 -300
+67 1
 -90 300 40
 ! 0 0 19 7 393230 0 0
 | 0 0 0 0 0 0 0
@@ -1784,8 +1784,8 @@ The Paleocinthus has side spikes, and a smallish head.  It's large, spiked
 tail looks pretty mean.  You wonder why he needs it when all he eats is
 vegetation.
 ~
-69 0 250
-67 1
+0 250
+68 1
 -200 40 50
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1800,8 +1800,8 @@ The old Hag looks very old, and very hungry.  She licks her lips as she looks
 pitch black pupils almost hypnotise you, but her warts, and rotting flesh
 make you feel more like chucking than falling into a trance.
 ~
-15 640 -900
-92 2
+640 -900
+93 2
 -200 100 80
 ! 0 0 0 7 6 0 80
 | 0 0 0 0 0 0 0
@@ -1815,7 +1815,7 @@ The Grappli hopping about you is a small, intelligent forg-like humanoid.
 It seems to be occupied looking for insects to eat, rather than trying to eat
 you, like most of the other inhabitants of the Isle.
 ~
-141 33280 300
+33280 300
 56 0
 -75 50 35
 ! 0 0 19 7 6 0 0
@@ -1830,7 +1830,7 @@ The Grappli hopping about you is a small, intelligent forg-like humanoid.
 It seems to be occupied looking for insects to eat, rather than trying to eat
 you, like most of the other inhabitants of the Isle.
 ~
-141 33280 300
+33280 300
 48 0
 -10 2 3
 ! 0 0 19 7 0 0 0
@@ -1845,7 +1845,7 @@ The Grappli hopping about you is a small, intelligent forg-like humanoid.
 It seems to be occupied looking for insects to eat, rather than trying to eat
 you, like most of the other inhabitants of the Isle.
 ~
-141 33280 300
+33280 300
 57 0
 -5 3 1
 ! 0 0 19 7 0 0 0
@@ -1859,7 +1859,7 @@ A small druid is here, looking just slightly mad.
 The druid is dribbling all over the place, and now and again, barks at himself.
 He mumbles something about lizards before doing his best doggy woof again.
 ~
-79 98432 100
+98432 100
 84 1
 -160 120 100
 ! 0 0 0 7 16390 33558528 48

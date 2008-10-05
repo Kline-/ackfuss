@@ -1,6 +1,6 @@
 #AREA
 Plane of the Mortals~
-Q 19
+Q 20
 K players~
 L @@W{@@mRMORT@@W}@@N~
 N 27
@@ -686,7 +686,7 @@ You are in no doubt that this guildmaster is truly close to your god; he has
 a peaceful, loving look. You notice that he is surrounded by a white aura.
 You sense that he could destroy your mind with the slightest thought.
 ~
-1027 128 1000
+128 1000
 73 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -702,8 +702,8 @@ Al the Bartender is a short, fat, round kind of guy, always cleaning glasses,
 strange, ya know?  Enough for you to notice, but not enough to make you really
 think about it.  He flashes a quick smile at you.
 ~
-515 533180 900
-75 1
+533180 900
+76 1
 -1000 500 500
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -740,7 +740,7 @@ This is your master.  Big and strong with bulging muscles.  Several scars
 across his body prove that he was using arms before you were born.  He
 has a calm look on his face.
 ~
-1027 0 1000
+0 1000
 79 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -755,8 +755,8 @@ You realize that whenever your guildmaster moves, you fail to notice it:
 the way of the true thief.  She is dressed in poor clothing, having
 the appearance of a beggar.
 ~
-1027 0 1000
-79 2
+0 1000
+78 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -769,7 +769,7 @@ Your guildmaster is standing here.
 You are in no doubt that this guildmaster is truly close to your god; he has
 a peaceful, loving look. You notice that he is surrounded by a white aura.
 ~
-1027 128 1000
+128 1000
 75 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -784,7 +784,7 @@ Even though your guildmaster looks old and tired, you can clearly see the
 vast amount of knowledge she possesses. She is wearing fine magic clothing,
 and you notice that she is surrounded by a blue shimmering aura.
 ~
-1027 0 1000
+0 1000
 72 2
 0 0 0
 ! 0 0 0 7 0 0 0

@@ -1,6 +1,6 @@
 #AREA
 Plane of the Gods~
-Q 19
+Q 20
 K immrooms~
 L @@W{@@R IMM@@W }@@N~
 N 26
@@ -551,7 +551,7 @@ The Fairy Godmother, sent by Stephen to spread joy and happiness throughout
 The kind smile on her face tells you that she means you no harm, and is
 just here to say hello, and maybe help you along your way.
 ~
-3 1581704 1000
+1581704 1000
 67 2
 -500 100 100
 ! 0 0 0 7 0 0 0
@@ -562,7 +562,7 @@ Quartermaster~
 Quartermaster~
 Quartermaster~
 ~
-1 0 0
+0 0
 1 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -573,7 +573,7 @@ Grand Master of Thieves~
 Grand Master of Thieves~
 Grand Master of Thieves~
 ~
-1 0 0
+0 0
 9 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -584,7 +584,7 @@ Bok-Choi~
 Bok-Choi~
 Bok-Choi~
 ~
-1 0 0
+0 0
 10 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -595,8 +595,8 @@ Bashinator~
 Bashinator~
 Bashinator~
 ~
-1 0 0
-2 1
+0 0
+3 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -606,7 +606,7 @@ Emperor's Guard~
 Emperor's Guard~
 Emperor's Guard~
 ~
-1 0 0
+0 0
 8 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -617,8 +617,8 @@ Emperor Hirohito~
 Emperor Hirohito~
 Emperor Hirohito~
 ~
-1 0 0
-9 1
+0 0
+8 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -628,7 +628,7 @@ Wazir~
 Wazir~
 Wazir~
 ~
-1 0 0
+0 0
 34 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -639,7 +639,7 @@ Godzilla~
 Godzilla~
 Godzilla~
 ~
-1 0 0
+0 0
 15 1
 0 0 0
 ! 0 0 8 7 0 0 0
@@ -650,8 +650,8 @@ Dim-Mak~
 Dim-Mak~
 Dim-Mak~
 ~
-1 0 0
-6 1
+0 0
+7 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -661,7 +661,7 @@ Concubine~
 Concubine~
 Concubine~
 ~
-1 0 0
+0 0
 10 1
 0 0 0
 ! 0 0 16 7 0 0 0
@@ -672,7 +672,7 @@ Ginsu Chef~
 Ginsu Chef~
 Ginsu Chef~
 ~
-1 0 0
+0 0
 7 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -683,8 +683,8 @@ Sony VCR~
 Sony VCR~
 Sony VCR~
 ~
-1 0 0
-8 1
+0 0
+9 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -694,7 +694,7 @@ Vermin~
 Vermin~
 Vermin~
 ~
-1 0 0
+0 0
 4 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -705,7 +705,7 @@ T'ian-Lung~
 T'ian-Lung~
 T'ian-Lung~
 ~
-1 0 0
+0 0
 3 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -716,8 +716,8 @@ Tsaburi Matsumoto~
 Tsaburi Matsumoto~
 Tsaburi Matsumoto~
 ~
-1 0 0
-11 1
+0 0
+12 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -727,8 +727,8 @@ Lizard~
 Lizard~
 Lizard~
 ~
-1 0 0
-2 1
+0 0
+1 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -738,8 +738,8 @@ Manticore~
 Manticore~
 Manticore~
 ~
-1 0 0
-15 1
+0 0
+14 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -749,8 +749,8 @@ Pet Tiger~
 Pet Tiger~
 Pet Tiger~
 ~
-1 0 0
-6 1
+0 0
+5 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -760,8 +760,8 @@ Shogun~
 Shogun~
 Shogun~
 ~
-1 0 0
-4 1
+0 0
+3 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -771,8 +771,8 @@ Ninja~
 Ninja~
 Ninja~
 ~
-1 0 0
-5 1
+0 0
+4 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -782,7 +782,7 @@ Buddha~
 Buddha~
 Buddha~
 ~
-1 0 0
+0 0
 12 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -793,7 +793,7 @@ Musashi~
 Musashi~
 Musashi~
 ~
-1 0 0
+0 0
 8 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -804,8 +804,8 @@ Bupu~
 Bupu the Gully-Dwarf~
 A little bundle of refuse is busy lapping from a puddle here.~
 ~
-1 0 0
-79 1
+0 0
+80 1
 0 0 0
 ! 0 0 2 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -818,7 +818,7 @@ The Great Lord Zeus stands here, waiting to take your order.
 Zeus looks disgruntled to say the least at his demotion to bartender!  Maybe
 it'll teach him not to load Tiamat into recall, eh?
 ~
-1 8380 900
+8380 900
 81 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -830,8 +830,8 @@ The peculiar living massage table~
 The incredible living massage table of Maharet stands here.
 ~
 ~
-3 640 0
-82 1
+640 0
+81 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -841,7 +841,7 @@ Dealer~
 Dealer~
 Dealer~
 ~
-1 0 0
+0 0
 2 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -852,8 +852,8 @@ Eagle Knight~
 Eagle Knight~
 Eagle Knight~
 ~
-1 0 0
-10 1
+0 0
+11 1
 0 0 0
 ! 0 0 18 7 8 0 0
 | 0 0 0 0 0 0 0
@@ -864,7 +864,7 @@ earth elemental~
 @@Na huge man-like form made of @@bEarth@@N towers over you.
 ~
 ~
-262145 552 0
+552 0
 54 0
 -800 350 250
 ! 7 0 17 7 22542 0 0
@@ -875,8 +875,8 @@ iron golem~
 @@dIron @@gGolem@@N~
 @@Na towering mass of @@dmetal@@N peers into your soul.@@N~
 ~
-1 680 0
-65 0
+680 0
+64 0
 -1100 400 260
 ! 0 0 17 7 155150 0 0
 | 0 0 0 0 0 0 0
@@ -886,7 +886,7 @@ soul thief~
 @@dSoul @@lThief@@N~
 ~
 ~
-327681 98986 0
+98986 0
 69 1
 -950 280 290
 ! 0 0 16 7 24078 0 0
@@ -897,8 +897,8 @@ holy avenger~
 @@aHoly @@WAvenger@@N~
 @@WA majestic Avenger stands before you.@@N~
 ~
-3145729 8936 0
-56 1
+8936 0
+57 1
 -1100 250 300
 ! 0 0 0 7 155150 0 16
 | 0 0 0 0 0 0 0
@@ -908,7 +908,7 @@ Diamond Golem~
 @@WD@@yi@@Wa@@ym@@Wo@@yn@@Wd @@g Golem@@N~
 @@yA shimmering tower of @@adiamond @@yglitters before you.@@N~
 ~
-3145729 535208 0
+535208 0
 80 1
 -1450 450 200
 ! 0 0 17 7 24078 0 16
@@ -919,7 +919,7 @@ Algeroth~
 @@dAlgeroth@@N~
 @@dAlgeroth@@N The Lord of Darkness@@N~
 ~
-12811 1599656 -1000
+1599656 -1000
 119 1
 -700 600 800
 ! 0 0 16 7 0 0 0
@@ -930,8 +930,8 @@ familiar~
 A familiar~
 ~
 ~
-1 0 0
-19 1
+0 0
+20 1
 0 0 0
 ! 5 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -942,8 +942,8 @@ Clan~
 @@dClan Enforcer@@N
 ~
 ~
-17174539 1632504 0
-122 1
+1632504 0
+121 1
 -2500 1000 1000
 ! 3 0 0 7 415886 0 16
 | 0 0 0 0 0 0 0
@@ -953,8 +953,8 @@ Elemental~
 Elemental~
 Elemental~
 ~
-3 2176 0
-116 1
+2176 0
+115 1
 -1600 1000 750
 ! 0 0 17 7 397214 0 4
 | 0 0 0 0 0 0 0
@@ -965,8 +965,8 @@ pegasus~
 @@WA @@mMagestic @@WPegasus@@W stands here, wings folded.@@N
 ~
 ~
-134217729 1573544 0
-60 1
+1573544 0
+59 1
 -1200 350 350
 ! 0 0 19 7 154638 0 80
 | 0 0 0 0 0 0 0
@@ -977,8 +977,8 @@ nightmare~
 @@WA @@eDemonic @@dNightmare @@Wglowers at you evilly.@@N
 ~
 ~
-134217729 1573544 0
-59 1
+1573544 0
+58 1
 -1200 350 350
 ! 0 0 19 7 154638 0 48
 | 0 0 0 0 0 0 0
@@ -989,7 +989,7 @@ beast~
 @@WAn @@lElemental @@aBeast@@N gazes into your eyes.@@N
 ~
 ~
-134217729 1573544 0
+1573544 0
 58 1
 -1200 350 350
 ! 0 0 19 7 153614 0 144
@@ -1001,7 +1001,7 @@ devourer~
 @@WAn @@rIntellect @@bDevourer@@W peers into your thoughts.@@N
 ~
 ~
-134283265 1573544 0
+1573544 0
 58 1
 -1200 350 350
 ! 0 0 19 7 153614 0 144
@@ -1013,8 +1013,8 @@ shadow~
 @@WA @@dShadow @@RHound @@Wgrowls at you fiercely!@@N
 ~
 ~
-134283265 1573544 0
-58 1
+1573544 0
+57 1
 -1200 350 350
 ! 0 0 19 7 153614 0 48
 | 0 0 0 0 0 0 0

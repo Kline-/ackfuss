@@ -1,6 +1,6 @@
 #AREA
 @@GForest @@Wof @@dConfusion@@N~
-Q 19
+Q 20
 K forestconfusion~
 L @@W(@@r10 60@@W}@@N~
 N 13
@@ -3161,7 +3161,7 @@ A young catrat is here.
 This catrat is a young male.  Catrats are a cross between a cat and a rat,
 as their name suggests.  Needless to say, they are most ugly.
 ~
-143 0 -300
+0 -300
 15 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -3175,7 +3175,7 @@ A female catrat is here.
 This catrat is an adult female.  Catrats are a cross between a cat and a rat,
 as their name suggests.  Needless to say, they are most ugly.
 ~
-143 0 -300
+0 -300
 9 1
 0 0 0
 ! 0 0 19 7 2 0 0
@@ -3189,8 +3189,8 @@ A male catrat is here.
 This catrat is an adult male.  Catrats are a cross between a cat and a rat,
 as their name suggests.  Needless to say, they are most ugly.
 ~
-143 0 -300
-7 1
+0 -300
+6 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3203,7 +3203,7 @@ The Hippocampus is here.
 The Hippocampus is a cross between a horse and a fish.  It's front hooves are
 replaced by webbed feet, and the rear half is a silver, scaled tail.
 ~
-3 524288 300
+524288 300
 28 2
 -20 10 10
 ! 0 0 19 7 2050 0 0
@@ -3218,7 +3218,7 @@ Neogi are a cross between a moray eel and a spider.  They have short, furry,
 eight-legged bodies and a long, slippery neck.  This one has obviously not
 managed to reach the level of master, and has therefore been mastered itself.
 ~
-19 0 -200
+0 -200
 21 0
 0 0 0
 ! 0 0 0 7 2 0 0
@@ -3233,7 +3233,7 @@ Neogi are a cross between a moray eel and a spider.  They have short, furry,
 eight-legged bodies and a long, slippery neck.  This one has obviously not
 managed to reach the level of master, and has therefore been mastered itself.
 ~
-19 0 -200
+0 -200
 15 0
 0 0 0
 ! 0 0 0 7 2 0 0
@@ -3248,7 +3248,7 @@ Neogi are a cross between a moray eel and a spider.  They have short, furry,
 eight-legged bodies and a long, slippery neck.  This one has reached the level
 of master, and is in charge of making sure the slaves do their work.
 ~
-19 0 -300
+0 -300
 16 0
 -10 10 10
 ! 0 0 0 7 2 0 0
@@ -3264,8 +3264,8 @@ Neogi are a cross between a moray eel and a spider.  They have short, furry,
 supreme rank of ruler over this small mine, and is in charge of all of the
 operations.
 ~
-19 0 -400
-31 0
+0 -400
+30 0
 -20 20 15
 ! 0 0 0 7 4 0 2
 | 0 0 0 0 0 0 0
@@ -3279,7 +3279,7 @@ Neogi are a cross between a moray eel and a spider.  They have short, furry,
 eight-legged bodies and a long, slippery neck.  This one has reached a high
 rank in the mine, answering only to the Ruler itself.
 ~
-19 0 -200
+0 -200
 19 0
 -10 10 10
 ! 0 0 0 7 2 0 0
@@ -3293,12 +3293,12 @@ A male cockatrice pecks around for insects.
 The cocaktrice is a strange mix of lizard, cock and bat.  It seems to ignore
 you as it goes about its task of looking for small insects.
 ~
-65 524800 -50
-24 1
+524800 -50
+25 1
 -10 0 15
 ! 0 0 19 7 2306 0 0
 | 0 0 0 0 0 0 0
-2 5 1 6144 0 268435521
+2 5 0 268435521 1 6144
 #9611
 female cock cockatrice~
 a female cockatrice~
@@ -3307,7 +3307,7 @@ A female cockatrice is here, looking hungry.
 The cocaktrice is a strange mix of lizard, cock and bat.  It seems to ignore
 you as it goes about its task of looking for small insects.
 ~
-65 524800 -25
+524800 -25
 24 2
 -15 10 10
 ! 0 0 19 7 258 0 0
@@ -3321,7 +3321,7 @@ A disfigured broken one stands here, moaning.
 The broken one is a tragic survivor of a magical experiment to try and
 combine a lizard man with a hawk.  Boy, he's ugly.
 ~
-11 0 -300
+0 -300
 29 1
 -20 20 15
 ! 0 0 0 7 18 0 0
@@ -3335,8 +3335,8 @@ A disfigured broken one stands here, moaning.
 The broken one is a tragic survivor of a magical experiment to try and
 combine a lizard man with a hawk.  Boy, he's ugly.
 ~
-11 0 -300
-29 1
+0 -300
+30 1
 -20 15 20
 ! 0 0 0 7 18 0 0
 | 0 0 0 0 0 0 0
@@ -3350,7 +3350,7 @@ The broken one is a tragic survivor of a magical experiment to try and
 combine a lizard man with a hawk.  Boy, he's ugly.  He's also the leader of
 the other broken ones in this clearing.
 ~
-11 0 -300
+0 -300
 41 1
 -25 20 25
 ! 0 0 0 7 6402 0 0
@@ -3364,7 +3364,7 @@ A baby hippogriff is here, yelling for food.
 The baby hippogriff, although no where near full size, shows the distinct
 features of its race: the head and wings of an eagle, and the body of a horse.
 ~
-3 524288 200
+524288 200
 28 2
 -10 15 10
 ! 0 0 19 7 2304 0 0
@@ -3378,7 +3378,7 @@ A large hippogriff is perched here.
 The hippogriff is an eerie mix of eagle (head and wings) and horse (body).
 It doesn't look too pleased to see you!
 ~
-11 524288 300
+524288 300
 31 0
 -25 20 20
 ! 0 0 19 7 3330 0 0
@@ -3392,8 +3392,8 @@ A small tree stands here.
 The tree is old, withered, and stunted.  It appears to almost have a sort
 of face on its bark.
 ~
-3 0 -200
-26 0
+0 -200
+25 0
 -20 10 10
 ! 0 0 17 7 5152 0 0
 | 0 0 0 0 0 0 0
@@ -3406,7 +3406,7 @@ A large tree stands here.
 The tree is old, withered, and stunted.  It appears to almost have a sort
 of face on its bark.
 ~
-3 0 -200
+0 -200
 32 0
 -30 25 40
 ! 0 0 17 7 5156 0 0
@@ -3420,8 +3420,8 @@ A large male wemic stands here.
 A mix of lion (body) and human (torso and head) the Wemic stands at around
 7 feet tall.  It's dusky golden fur is topped by fine, black mane.
 ~
-65 0 250
-51 1
+0 250
+50 1
 -20 37 40
 ! 0 0 19 7 6658 48 0
 | 0 0 0 0 0 0 0
@@ -3434,7 +3434,7 @@ A large female wemic stands here.
 A mix of lion (body) and human (torso and head) the Wemic stands at around
 6 feet tall.  It's dusky golden fur is topped by fine, black mane.
 ~
-3145795 0 250
+0 250
 46 1
 -50 40 50
 ! 0 0 19 7 7940 20 4
@@ -3449,7 +3449,7 @@ A mix of lion (body) and human (torso and head) the Wemic stands at around
 3 feet tall.  It's dusky golden fur is topped by the beginnings of a fine
 black mane.
 ~
-67 0 250
+0 250
 32 1
 -20 50 15
 ! 0 0 19 7 6786 0 0
@@ -3463,8 +3463,8 @@ A massive, menacing Guardian Yugloth stands here.
 The Yugloth is basically an enormous bear, with huge wings and ram's horns.
 It looks like it's been left here to guard something...
 ~
-3145759 2176 -500
-71 0
+2176 -500
+72 0
 -75 75 60
 ! 0 0 17 7 24552 1605632 8
 | 0 0 0 0 0 0 0
@@ -3485,7 +3485,7 @@ Ymass is truely an evil priest.  Banished to this cabin many years ago, he set
 He is about 8 feet tall, and appears to have added parts of other creatures
 to his own body, in an attempt to boost his powers.
 ~
-3145751 2176 -900
+2176 -900
 84 1
 -100 90 100
 ! 0 0 0 7 24568 1081344 16
@@ -3509,7 +3509,7 @@ A small spider is crawling around here.
 ~
 The spider has many legs, and looks like Ymmas!
 ~
-39 98336 -300
+98336 -300
 61 0
 -40 55 50
 ! 0 0 19 7 2696 0 0
@@ -3523,8 +3523,8 @@ A male centaur is here.
 The centaur, a mix of horse (back legs) and human (head; arms; torso) is 
 large, and responsible for the supply of food to the tribe, via hunting.
 ~
-3145797 32768 300
-46 1
+32768 300
+45 1
 -40 45 40
 ! 0 0 9 7 6324 0 4
 | 0 0 0 0 0 0 0
@@ -3537,7 +3537,7 @@ A female centaur is here.
 The centaur, a mix of horse (back legs) and human (head; arms; torso) is 
 medium sized, and generally looks after its young.
 ~
-3145799 32768 300
+32768 300
 42 2
 -45 40 45
 ! 0 0 9 7 6322 0 4
@@ -3551,7 +3551,7 @@ A baby centaur is here.
 The centaur, a mix of horse (back legs) and human (head; arms; torso) is 
 small, and loos to be about one year old.
 ~
-71 32768 300
+32768 300
 22 1
 -15 15 10
 ! 0 0 9 7 2096 0 0
@@ -3566,7 +3566,7 @@ The centaur, a mix of horse (back legs) and human (head; arms; torso) is
 very large, and in charge of this small tribe.  Look like he knows some
 simple magic, too.
 ~
-69 40960 300
+40960 300
 50 1
 -55 50 40
 ! 0 0 9 7 8100 0 8
@@ -3580,7 +3580,7 @@ A Manscorpian is here, out on patrol.
 The manscorpian, as its name suggests, is a mix of scorpian (lower body) and
 of man (upper body).  It looks pretty big, and pretty angry to see you!
 ~
-3145829 512 -230
+512 -230
 44 1
 -50 55 50
 ! 0 0 19 7 1940 0 0
@@ -3594,8 +3594,8 @@ A Manscorpian is here, out on patrol.
 The manscorpian, as its name suggests, is a mix of scorpian (lower body) and
 of man (upper body).  It looks pretty big, and pretty angry to see you!
 ~
-3145829 512 -230
-47 1
+512 -230
+48 1
 -55 50 50
 ! 0 0 19 7 7044 0 8
 | 0 0 0 0 0 0 0
@@ -3610,8 +3610,8 @@ The manscorpian, as its name suggests, is a mix of scorpian (lower body) and
 The King is in charge of this small colony, and does not take kindly to
 intruders!
 ~
-3145799 2560 -380
-55 1
+2560 -380
+54 1
 0 0 0
 ! 0 0 19 7 23476 4160 16
 | 0 0 0 0 0 0 0
@@ -3630,7 +3630,7 @@ A Manscorpian is here, on guard.
 The manscorpian, as its name suggests, is a mix of scorpian (lower body) and
 of man (upper body).  It looks pretty big, and pretty angry to see you!
 ~
-3145797 512 -330
+512 -330
 51 1
 -40 50 55
 ! 0 0 19 7 8020 0 0
@@ -3648,7 +3648,7 @@ The King's aid stands here, looking powerful.
 ~
 The aid is an old, corrupt cleric, employed to protect the King if attacked.
 ~
-3145731 512 -400
+512 -400
 42 1
 -60 60 55
 ! 0 0 0 7 6998 0 8

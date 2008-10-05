@@ -1,6 +1,6 @@
 #AREA
 @@yPublic @@dDungeons@@N~
-Q 19
+Q 20
 K publicdungeons~
 L @@W{@@r 5 15@@W}@@N~
 N 28
@@ -275,8 +275,8 @@ Alice in Chains is a blood thirsty killing machine, and a not very nice
 killing machine at that!  She stares cross-eyed at you, whilst saying,
 "sickman, sickman, sickman."
 ~
-3 8 -400
-5 2
+8 -400
+4 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -290,8 +290,8 @@ Pantera is a shaven-headed beast, half man, half who-knows-what?  He has
 a very mean look in his eyes.  You wonder why he is in here, but then when
 he smiles, you know why.
 ~
-3 0 -300
-9 1
+0 -300
+10 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -305,7 +305,7 @@ Buffalo Tom was Midgaard's most notorious serial killer, with over three
 hundred murders to his name.  He looks like a nice man, who wouldn't say
 boo to a spider.  My! How looks can be misleading.
 ~
-3 8 -600
+8 -600
 21 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -320,7 +320,7 @@ Blur is so called because no one has ever seen it stop moving.  It spins
 round and round, screaming at all present.  Just looking at it makes you
 dizzy.
 ~
-3 8 -800
+8 -800
 21 0
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -335,8 +335,8 @@ Dinosaur Jr, son of Dinosaur senior, was convited of mass murder many
 many years ago, and has been locked up in the dungeons since, which can
 hardly have done much to improve his temper.
 ~
-3 0 -100
-8 1
+0 -100
+7 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -350,8 +350,8 @@ Elastica is so named because she appears to be made out of elastic, with
 the ability to bend and re-shape her body at will.  She forms into a 
 question mark as you look at her.
 ~
-3 0 -200
-7 2
+0 -200
+8 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0

@@ -1,6 +1,6 @@
 #AREA
 @@bThe Microcosm@@N~
-Q 19
+Q 20
 K none~
 L {RM}~
 N 60
@@ -3493,7 +3493,7 @@ Insanity is here, strapped to a chair, kicking his feet and laughing his @$$
 off.
 ~
 ~
-131083 128 0
+128 0
 77 1
 -790 45 120
 ! 0 0 19 7 0 0 0
@@ -3505,8 +3505,8 @@ the twisted thought~
 @@eThere is a twisted thought here, just waiting to be had!@@N
 ~
 ~
-131115 8320 0
-62 1
+8320 0
+61 1
 0 100 20
 ! 0 0 19 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -3517,7 +3517,7 @@ the Crooked idea~
 @@lThere is a crooked idea here, just waiting to be had!@@N
 ~
 ~
-131119 8320 0
+8320 0
 75 1
 0 100 40
 ! 0 0 19 7 2 0 0
@@ -3529,8 +3529,8 @@ the baker~
 @@rThe baker sits behind his counter.@@N
 ~
 ~
-33554443 8360 0
-150 1
+8360 0
+151 1
 -2500 1000 1000
 ! 0 0 0 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3541,7 +3541,7 @@ the armory guy~
 @@rThe armory guy sits behind his counter.@@N
 ~
 ~
-8388619 8320 0
+8320 0
 95 1
 -1000 400 400
 ! 0 0 0 7 24590 0 0
@@ -3553,7 +3553,7 @@ the weapon shop guy~
 @@rThe weapon shop guy sits behind his counter.@@N
 ~
 ~
-8388619 8320 0
+8320 0
 100 1
 -1000 400 400
 ! 0 0 0 7 24590 0 0
@@ -3565,7 +3565,7 @@ DNA alchemist~
 @@rAn alchemist sits on his stool behind the counter.@@N
 ~
 ~
-41943051 128 0
+128 0
 85 1
 -1000 400 400
 ! 0 0 0 7 24590 0 0
@@ -3578,7 +3578,7 @@ creativity~
 of metal shavings...
 ~
 ~
-1179659 532608 0
+532608 0
 86 1
 -1000 200 176
 ! 0 0 19 7 8206 0 0
@@ -3590,8 +3590,8 @@ anger~
 @@eAnger@@N is here, totally mellowed out. Hey he IS on a break you know.
 ~
 ~
-1179659 8320 0
-75 1
+8320 0
+74 1
 -1111 180 190
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3602,8 +3602,8 @@ intellect~
 @@yIntellect is here having coffee with his friends and debating.@@N
 ~
 ~
-1179659 8192 0
-87 1
+8192 0
+88 1
 -1000 190 220
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3614,7 +3614,7 @@ the Golf Pro~
 (plaid)A short, badly dressed, fat guy stands behind the counter here.
 ~
 ~
-1048579 8192 0
+8192 0
 82 1
 -700 70 45
 ! 0 0 0 7 12302 0 8
@@ -3628,7 +3628,7 @@ reason~
 ~
 The higher brain function known as: @@BReason@@N
 ~
-1048579 532480 0
+532480 0
 93 1
 -1000 188 222
 ! 0 0 19 7 12302 0 16
@@ -3640,8 +3640,8 @@ the pissed off secretary~
 This is one secretary that you do NOT want to disturb!@@N
 ~
 ~
-3 598016 0
-82 2
+598016 0
+81 2
 -550 110 55
 ! 0 0 0 7 142 0 0
 | 0 0 0 0 0 0 0
@@ -3656,7 +3656,7 @@ Standing here, with is an apron full of those silver bands... a @@lCoEnzyme
 
 
 ~
-1048577 128 0
+128 0
 81 1
 -550 85 75
 ! 0 0 19 7 8194 0 0
@@ -3668,7 +3668,7 @@ innocent passerby~
 An innocent passerby, perfect for venting frustration...
 ~
 ~
-3 8192 0
+8192 0
 78 1
 -500 77 45
 ! 0 0 0 7 8198 0 0
@@ -3683,8 +3683,8 @@ little birdie~
 This is like on of them birds that spins around dazed cartoon characters heads
 yeah?@@N
 ~
-19 524416 0
-80 2
+524416 0
+81 2
 -700 95 35
 ! 0 0 19 7 24582 0 0
 | 0 0 0 0 0 0 0
@@ -3698,8 +3698,8 @@ Here stand the largest statue you have ever seen.  But you know there is more
 to him.  Seeming almost to move to block your passage to the doorway behind
 him. There seems to be a dust-filled flaw in his chest... is THAT they key?
 ~
-1048587 65666 0
-89 0
+65666 0
+90 0
 -800 110 132
 ! 0 0 17 7 30982 0 0
 | 0 0 0 0 0 0 0
@@ -3711,8 +3711,8 @@ Wait a sec! this is a fake Hephaestus!!!
 ~
 MUAHAHA wrong one!
 ~
-1 0 0
-15 1
+0 0
+16 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3723,8 +3723,8 @@ logic~
 @@dLogic @@N is here, attempting to improve his game.
 ~
 ~
-1179657 10368 0
-99 1
+10368 0
+100 1
 -1000 200 220
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3735,8 +3735,8 @@ instinct~
 @@GInstinct@@N is here marking his territory on the golf course.
 ~
 ~
-1179657 0 0
-89 1
+0 0
+90 1
 -100 30 180
 ! 0 0 19 7 8198 0 0
 | 0 0 0 0 0 0 0
@@ -3747,7 +3747,7 @@ out house monster~
 The @@bBig Stinky Outhouse monster@@N leaps to life and attacks!
 ~
 ~
-131113 128 0
+128 0
 78 1
 -480 60 60
 ! 0 0 19 7 8206 0 0
@@ -3759,7 +3759,7 @@ the lost caddy~
 A caddy is here, looking for the clubs he dropped.
 ~
 ~
-1 0 0
+0 0
 64 1
 -100 69 30
 ! 0 0 0 7 8198 0 0
@@ -3771,8 +3771,8 @@ the golf-cart drivin' nut~
 Some nut is here driving a golf-cart, he almost hit you!
 ~
 ~
-131077 8192 0
-81 1
+8192 0
+80 1
 -450 85 50
 ! 0 0 0 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3783,7 +3783,7 @@ the groundskeeper~
 There is a groundskeeper here keeping the grass in top-notch shape.
 ~
 ~
-1 8320 0
+8320 0
 88 1
 -600 110 70
 ! 0 0 0 7 24582 0 0
@@ -3795,8 +3795,8 @@ the stuck up caddy~
 A caddy is here, holding his charge's glass of bourbon.
 ~
 ~
-131073 8192 0
-85 1
+8192 0
+84 1
 -100 80 70
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3807,7 +3807,7 @@ Duran Duran~
 Duran Duran is here, and they're planning a come-back tour! sTOP THEM!
 ~
 ~
-131073 8320 0
+8320 0
 73 1
 -900 190 140
 ! 0 0 0 7 24590 0 0
@@ -3819,8 +3819,8 @@ the Bell Bottoms~
 @@lThere are Bell Bottom jeans here, don't let them win!@@N
 ~
 ~
-131073 8320 0
-77 1
+8320 0
+78 1
 -1200 175 160
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3832,7 +3832,7 @@ plaid~
 @@Ryour @@Gwardrobe@@R.@@N
 ~
 ~
-131073 8320 0
+8320 0
 71 1
 -1300 199 150
 ! 0 0 19 7 24590 0 0
@@ -3844,8 +3844,8 @@ poofy hair~
 @@yEEEK! Poofy Hair! (aka:Bed Head) is trying to attack your roots!@@N
 ~
 ~
-131073 8320 0
-87 1
+8320 0
+86 1
 -999 145 170
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3856,7 +3856,7 @@ Spandex~
 @@pSpandex: size 5 and it fits. 'Nuff said.@@N
 ~
 ~
-131073 8320 0
+8320 0
 77 1
 -1001 210 190
 ! 0 0 19 7 24590 0 0
@@ -3868,8 +3868,8 @@ k-rad~
 @@dK-Rad is here trying to become part of your vernacular.@@N
 ~
 ~
-131073 8320 0
-74 1
+8320 0
+73 1
 -900 160 210
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3880,7 +3880,7 @@ Fluorescant Pink~
 EEEEEK! PINK!!! Tooo.. much.. fluorescant pink!!!
 ~
 ~
-131073 8320 0
+8320 0
 89 1
 -1300 210 175
 ! 0 0 19 7 24590 0 0
@@ -3892,8 +3892,8 @@ bobomb~
 @@eFIRE IN THE HOLE!@@N
 ~
 ~
-33 524348 0
-35 1
+524348 0
+36 1
 -1000 500 500
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3904,8 +3904,8 @@ the useless idea~
 A useless idea mopes along here.
 ~
 ~
-9 524416 0
-82 1
+524416 0
+83 1
 -680 160 180
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3916,7 +3916,7 @@ a bright idea~
 A @@yBright@@N idea strolls merrily along here.
 ~
 ~
-9 128 0
+128 0
 92 1
 -600 140 130
 ! 0 0 19 7 8198 16 0
@@ -3928,7 +3928,7 @@ a forgotten idea~
 A @@dForgotten idea shuffles from place to place.@@N
 ~
 ~
-9 8320 0
+8320 0
 90 1
 -790 95 111
 ! 0 0 19 7 8198 16384 0
@@ -3940,8 +3940,8 @@ the retina~
 A @@lRetina@@N is here, soakin up some rays on his lawn chair.
 ~
 ~
-11 524416 0
-93 1
+524416 0
+94 1
 -500 59 37
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3952,7 +3952,7 @@ the retina~
 A @@lRetina@@N is here, soakin up some rays on his lawn chair.
 ~
 ~
-11 524416 0
+524416 0
 81 1
 -120 59 37
 ! 0 0 19 7 8206 0 0
@@ -3965,8 +3965,8 @@ retired trainer~
 Nervous Chamber.@@N
 ~
 ~
-5643 0 0
-99 1
+0 0
+98 1
 -1000 422 500
 ! 0 0 0 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3977,8 +3977,8 @@ the happy thought~
 A happy thought is bouncing along here, singing a gay tune.
 ~
 ~
-9 0 0
-95 1
+0 0
+96 1
 -500 83 111
 ! 0 0 19 7 8198 0 0
 | 0 0 0 0 0 0 0
@@ -3990,7 +3990,7 @@ A depressing thought is sulking here while sewing itself into it's death
 shroud.
 ~
 ~
-9 128 0
+128 0
 85 1
 -500 110 90
 ! 0 0 19 7 8198 0 0
@@ -4002,8 +4002,8 @@ anyone but @@x@@iDeception@@N~
 @@x@@iDeception@@N is not here.@@N
 ~
 ~
-131081 0 0
-89 1
+0 0
+88 1
 -1111 166 180
 ! 0 0 19 7 8198 256 0
 | 0 0 0 0 0 0 0
@@ -4014,7 +4014,7 @@ hate~
 @@RHate@@N is here hunting weevils.
 ~
 ~
-131097 524288 0
+524288 0
 81 1
 -1000 160 160
 ! 0 0 19 7 0 0 0
@@ -4026,8 +4026,8 @@ morality~
 @@W@@xMorality@@N will out-righteous you anyday.
 ~
 ~
-25 557096 0
-96 1
+557096 0
+97 1
 -1300 270 260
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -4037,7 +4037,7 @@ b~
 c~
 ~
 ~
-1 2 0
+2 0
 2 1
 0 0 0
 ! 0 0 19 7 0 0 0
@@ -4049,8 +4049,8 @@ caring~
 @@lCaring@@Nwraps it's warmth around you.
 ~
 ~
-1048601 524332 0
-101 1
+524332 0
+100 1
 -1300 320 260
 ! 0 0 19 7 24590 786432 0
 | 0 0 0 0 0 0 0
@@ -4061,8 +4061,8 @@ passion~
 @@mPassion@@N flits about aimlessly looking to satisfy its nameless need.
 ~
 ~
-1048605 524332 0
-100 1
+524332 0
+101 1
 -1300 260 290
 ! 0 0 19 7 24590 256 0
 | 0 0 0 0 0 0 0
@@ -4073,8 +4073,8 @@ comprehension~
 @@bComprehension@@N is here adjusting his points of view.
 ~
 ~
-1048601 44 0
-95 1
+44 0
+96 1
 -1200 270 290
 ! 0 0 19 7 24590 1572864 8
 | 0 0 0 0 0 0 0
@@ -4085,7 +4085,7 @@ love~
 @@cLove@@N is here basking in what you wish you had.
 ~
 ~
-1048601 524332 0
+524332 0
 94 1
 -1500 700 700
 ! 0 0 19 7 30734 16 16

@@ -1,6 +1,6 @@
 #AREA
 @@lS@@do@@eE @@WMud University@@N~
-Q 19
+Q 20
 K soeuniversity~
 L @@W{@@r 1  5@@W}@@N~
 N 88
@@ -653,8 +653,8 @@ Ghost~
 ~
 This little ghost doesn't look too tough to you!
 ~
-3 0 0
-5 1
+0 0
+6 1
 0 -4 -3
 ! 3 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -665,7 +665,7 @@ troll~
 @@NA stubby little @@rtroll @@N thinks he'll eat YOU for dinner!
 ~
 ~
-3 0 0
+0 0
 5 1
 0 -10 -6
 ! 2 0 13 7 0 0 0
@@ -676,7 +676,7 @@ sales man salesman~
 @@WA@@a peksy @@lSalesman@@N~
 ~
 ~
-67 0 0
+0 0
 2 1
 0 0 0
 ! 0 0 0 7 0 0 0
@@ -690,7 +690,7 @@ This guy looks like he would kill his own mother for a cigarette.  He
 is punk incarnate.  Better not get too close to him, unless you want to
 put him out of his misery.
 ~
-67 0 0
+0 0
 5 1
 0 0 0
 ! 2 0 14 7 0 0 0
@@ -704,8 +704,8 @@ A @@RShambling Skeleton@@N~
 These little, disorganized skeletons don't look too hard. Maybe they will help
 train new players in the art of combat.
 ~
-16777283 0 0
-2 1
+0 0
+3 1
 -25 -5 2
 ! 3 0 14 7 0 0 0
 | 0 0 0 0 0 0 0

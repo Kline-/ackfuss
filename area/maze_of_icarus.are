@@ -1,6 +1,6 @@
 #AREA
 @@WThe Maze of @@lIcarus@@N~
-Q 19
+Q 20
 K icarusmaze~
 L @@W{@@rADEPT@@W}@@N~
 N 108
@@ -148,7 +148,7 @@ minotuar slave~
 @@WA @@RMinotaur Slave@@N~
 @@WA @@RSlave of @@eKahl'Dann@@W cowers before you.@@N~
 ~
-1 0 0
+0 0
 101 1
 -900 500 400
 ! 0 0 12 7 22542 0 0
@@ -159,7 +159,7 @@ Minotaur Servant~
 @@WA @@RMinotuar Servant@@N~
 @@WA @@RServant of @@eKahl'Dann @@Wgoes about his business.@@N~
 ~
-1 8320 0
+8320 0
 100 1
 -1000 500 450
 ! 0 0 12 7 7694 4128 0
@@ -170,8 +170,8 @@ minotaur guard~
 @@WA @@RMinoatur Guard@@N~
 @@WA @@RMinotaur Guard@@N searches for intruders!@@N~
 ~
-41 17064 0
-117 1
+17064 0
+116 1
 -1100 550 600
 ! 7 0 12 7 679438 0 0
 | 0 0 0 0 0 0 0
@@ -181,7 +181,7 @@ minotaur master~
 @@WA @@RMinotaur Master@@N~
 @@WA Majestic @@RMinotaur Master@@N watches you closely!~
 ~
-3145761 170 0
+170 0
 120 1
 -1250 1000 750
 ! 0 0 12 7 941710 0 0
@@ -192,7 +192,7 @@ minotaur lord~
 @@WA Mighty @@RMinotuar Lord@@N~
 @@WOne of the @@eLords @@Wof the @@RMaze@@N ponders your fate.~
 ~
-3145737 10408 0
+10408 0
 129 1
 -1400 800 900
 ! 0 0 12 7 925326 0 16
@@ -203,8 +203,8 @@ minotaur prince~
 @@WOne of the @@RPrinces of the Maze@@W~
 @@WA @@RPrince of @@eKhal'Dann@@N laughs at you evilly!@@N ~
 ~
-3145769 10408 0
-135 1
+10408 0
+136 1
 -1500 1000 1000
 ! 0 0 12 7 925326 0 16
 | 0 0 0 0 0 0 0
@@ -214,7 +214,7 @@ Minotaur king~
 @@eTekk'Moran@@W, @@RKing of the Minotaurs@@N~
 @@eTekk'Moran@@W, @@RKing of the Minotaurs surveys his Realm@@N.~
 ~
-19922987 92394 0
+92394 0
 142 1
 -1400 1000 1000
 ! 0 0 12 7 925326 4096 16
@@ -225,8 +225,8 @@ scout minotaur~
 @@WA @@RMinotuar@@d Scout@@N~
 @@WA @@RMinotaur @@dScout @@Wsearches for strategic information.@@N~
 ~
-129 1680042 0
-110 1
+1680042 0
+109 1
 -1000 500 450
 ! 0 0 12 7 6670 0 0
 | 0 0 0 0 0 0 0
@@ -236,8 +236,8 @@ captain minotaur~
 @@WA @@RMinotaur @@eCaptain @@Wof @@dWar@@N~
 @@WA @@RMinotaur @@eCaptain @@Wof @@dWar@@N commands a war party!~
 ~
-3145737 10368 0
-132 1
+10368 0
+133 1
 -1800 1000 1000
 ! 0 0 12 7 417038 0 0
 | 0 0 0 0 0 0 0
@@ -247,8 +247,8 @@ diplomat~
 @@WA @@RMinotaur @@ydiplomat@@N~
 @@WA @@RMinotaur @@yDiplomat@@N tries to end this useless, unwanted war.@@N~
 ~
-19922953 27328 0
-137 1
+27328 0
+136 1
 -1500 1000 1000
 ! 0 0 12 7 400014 0 0
 | 0 0 0 0 0 0 0
@@ -258,8 +258,8 @@ assassin minotaur~
 @@WA @@RMinotaur @@dAssassin@@N~
 ~
 ~
-19922947 125122 0
-139 1
+125122 0
+140 1
 -1900 1000 1000
 ! 0 0 12 7 401038 0 0
 | 0 0 0 0 0 0 0

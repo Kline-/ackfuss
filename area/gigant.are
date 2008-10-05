@@ -1,6 +1,6 @@
 #AREA
 @@WThe City of @@eGiganthia@@N~
-Q 19
+Q 20
 K gigantia~
 L @@W{@@r ALL@@W }@@N~
 N 6
@@ -660,7 +660,7 @@ Gruth is a large Ogre, who smells awful.  Maybe you should tell him?  On
 second thoughts, he looks like he might be displeased if you did.
 ,r thoughts, thought
 ~
-3 10240 800
+10240 800
 111 1
 -1000 527 527
 ! 0 0 5 7 6286 32 16
@@ -673,7 +673,7 @@ The Ogre Chieftain is here, doing his best to rule.
 ~
 The Chieftain looks old, but still able to beat most people in a fight.
 ~
-3 8320 200
+8320 200
 75 1
 -100 100 100
 ! 0 0 5 7 0 32 0
@@ -686,8 +686,8 @@ The Armourer stands here, waiting to rip you off.
 ~
 The Armourer buys and sells armour.  What an exciting life!
 ~
-3 10376 250
-77 2
+10376 250
+78 2
 -1400 400 400
 ! 0 0 5 7 24076 32 0
 | 0 0 0 0 0 0 0
@@ -699,7 +699,7 @@ The Shopkeeper stands here, waiting to sell you stuff.
 ~
 She looks quite clean as ogres go.  Shame she doesn't smell clean as well.
 ~
-3 10368 300
+10368 300
 77 2
 -1400 400 400
 ! 0 0 5 7 24078 96 16
@@ -712,8 +712,8 @@ The Shopkeeper stands here, rubbing his hands together.
 ~
 The shopkeeper is fairly short, and balding.
 ~
-3 10368 400
-73 1
+10368 400
+74 1
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0
@@ -725,8 +725,8 @@ The Healer, Huth, stands here, looking in good health.
 ~
 Huth is a retired killer, now employed to use his skills to heal adventurers.
 ~
-4099 10240 800
-75 1
+10240 800
+74 1
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0
@@ -738,8 +738,8 @@ The Weaponsmith stands here.
 ~
 The Weaponsmith has sold more weapons than you've you had hot dinners.
 ~
-8195 10376 450
-80 2
+10376 450
+79 2
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0
@@ -751,7 +751,7 @@ A wise man stands here, looking wise, and ummm male.
 ~
 He looks very intelligent for an ogre.  Pretty big too.
 ~
-1539 8192 375
+8192 375
 76 1
 -1400 400 400
 ! 0 0 5 7 24076 32 16
@@ -764,7 +764,7 @@ A Male Ogre is here.
 ~
 He looks like your typical ogre - untidy, and rather large.  Smells too.
 ~
-1 0 50
+0 50
 41 1
 -850 130 140
 ! 0 0 5 7 2322 0 0
@@ -777,7 +777,7 @@ A Female Ogre is here.
 ~
 She looks like your typical ogre - untidy, and rather large.  Smells too.
 ~
-1 0 50
+0 50
 35 2
 -850 130 140
 ! 0 0 5 7 2322 0 0
@@ -790,8 +790,8 @@ The Barkeeper stands here, keeping bar.
 ~
 He looks quite friendly, as well as being taller than you.
 ~
-3 10368 -100
-78 1
+10368 -100
+79 1
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0
@@ -803,7 +803,7 @@ An elite guard stands here, ready to help the Chieftain.
 ~
 He is   B  I  G  !
 ~
-3 0 200
+0 200
 26 1
 0 0 0
 ! 0 0 5 7 0 0 0
@@ -817,8 +817,8 @@ A guard stands here, looking out for criminals.
 The guard looks you over, deciding if he should work his own form of justice
 on you.  He shrugs and looks elsewhere for someone to pick on.
 ~
-3 0 200
-28 1
+0 200
+27 1
 0 0 0
 ! 0 0 5 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -831,7 +831,7 @@ A guard stands here, looking out for criminals.
 The guard looks you over, deciding if he should work his own form of justice
 on you.  He shrugs and looks elsewhere for someone to pick on.
 ~
-1 0 200
+0 200
 25 1
 0 0 0
 ! 0 0 5 7 0 0 0
@@ -844,8 +844,8 @@ The shopkeeper stands here, waiting for you to buy stuff.
 ~
 The shopkeeper is a big ogre.  Play nice.
 ~
-3 10368 300
-77 1
+10368 300
+78 1
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0

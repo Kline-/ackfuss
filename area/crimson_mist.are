@@ -1,6 +1,6 @@
 #AREA
 @@dT@@mh@@pe @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@dM@@mi@@ps@@Wt@@N~
-Q 19
+Q 20
 K crimson_mist~
 L @@N{@@dA@@mD@@pE@@WP@@gT@@N}~
 N 163
@@ -2955,8 +2955,8 @@ Dweller~
 @@mA small figure here floats around here with an aimless stare that seems to
 be formed from the @@pf@@mog itself..@@N
 ~
-105 16552 0
-124 0
+16552 0
+123 0
 -1400 800 550
 ! 3 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
@@ -2969,7 +2969,7 @@ Dweller~
 @@mA small figure here floats around here with an aimless stare that seems to
 be formed from the @@pf@@mog itself..@@N
 ~
-105 16552 0
+16552 0
 127 0
 -1400 800 550
 ! 0 0 17 7 6174 0 4
@@ -2983,7 +2983,7 @@ Dweller~
 @@mA small figure here floats around here with an aimless stare that seems to
 be formed from the @@pf@@mog itself..@@N
 ~
-105 16552 0
+16552 0
 121 0
 -1400 800 550
 ! 0 0 17 7 6174 0 4
@@ -2997,8 +2997,8 @@ Dweller~
 @@mA small figure here floats around here with an aimless stare that seems to
 be formed from the @@pf@@mog itself..@@N
 ~
-105 16552 0
-123 0
+16552 0
+124 0
 -1400 800 550
 ! 0 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
@@ -3011,7 +3011,7 @@ Dweller~
 @@mA small figure here floats around here with an aimless stare that seems to
 be formed from the @@pf@@mog itself..@@N
 ~
-105 16552 0
+16552 0
 125 0
 -1400 800 550
 ! 0 0 17 7 6174 0 4
@@ -3026,8 +3026,8 @@ A large, large man stands here, with a small trail of a deep @@mviolet@@N fog
 orbiting slowly around and around his tall, muscular body. His stare could
 @@ppierce@@N into the very depths of your soul..@@N
 ~
-36765723 18664 0
-106 1
+18664 0
+107 1
 -1700 1000 500
 ! 7 0 0 7 30870 1052736 80
 | 0 0 0 0 0 0 0
@@ -3041,7 +3041,7 @@ Rock Hydra~
 while another two seem to be confused as its stares blankly into the Shiyztlan
 @@m...@@N
 ~
-33554435 16618 0
+16618 0
 112 0
 -1800 1000 500
 ! 8 0 19 7 548878 40 176
@@ -3053,7 +3053,7 @@ Vampyre Bats bat~
 @@mA small @@dswarm of vampyre bats@@m attacks you on your way down..@@N
 ~
 @@N @@N~
-33570819 524988 0
+524988 0
 129 0
 -1000 500 500
 ! 3 0 19 7 524302 0 8
@@ -3065,7 +3065,7 @@ Vampyre Bats bat~
 @@mA small @@dswarm of vampyre bats@@m attacks you on your way down..@@N
 ~
 ~
-16387 524988 0
+524988 0
 122 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
@@ -3077,8 +3077,8 @@ Vampyre Bats bat~
 @@mA small @@dswarm of vampyre bats@@m attacks you on your way down..@@N
 ~
 ~
-16387 524988 0
-129 0
+524988 0
+130 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
@@ -3089,7 +3089,7 @@ Vampyre Bats bat~
 @@mA small @@dswarm of vampyre bats@@m attacks you on your way down..@@N
 ~
 ~
-16387 524988 0
+524988 0
 125 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
@@ -3101,8 +3101,8 @@ Vampyre Bats bat~
 @@mA small @@dswarm of vampyre bats@@m attacks you on your way down..@@N
 ~
 ~
-16387 524988 0
-124 0
+524988 0
+125 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
@@ -3113,8 +3113,8 @@ Vampyre Bats bat~
 @@mA small @@dswarm of vampyre bats@@m attacks you on your way down..@@N
 ~
 ~
-16387 524988 0
-123 0
+524988 0
+122 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
@@ -3127,8 +3127,8 @@ Patrol fog mist~
 @@mYou see nothing but a patch of @@ddark fog@@m, until it condenses and
 attacks you where you stand.@@N
 ~
-36700161 16616 0
-125 0
+16616 0
+126 0
 -1700 660 580
 ! 0 0 0 7 548878 0 8
 | 0 0 0 0 0 0 0
@@ -3141,8 +3141,8 @@ Patrol fog mist~
 @@mYou see nothing but a patch of @@ddark fog@@m, until it condenses and
 attacks you where you stand.@@N
 ~
-36700161 16616 0
-108 0
+16616 0
+109 0
 -1700 660 580
 ! 0 0 0 7 548878 0 8
 | 0 0 0 0 0 0 0
@@ -3155,8 +3155,8 @@ Patrol fog mist~
 @@mYou see nothing but a patch of @@ddark fog@@m, until it condenses and
 attacks you where you stand.@@N
 ~
-36700161 16616 0
-116 0
+16616 0
+115 0
 -1700 660 580
 ! 0 0 0 7 548878 0 8
 | 0 0 0 0 0 0 0
@@ -3167,8 +3167,8 @@ crimson demon~
 @@mA patch of @@pcrimson mist@@m gently starts to surround you..@@N
 ~
 ~
-43 526570 0
-120 1
+526570 0
+119 1
 -1900 800 600
 ! 6 0 16 7 942094 0 48
 | 0 0 0 0 0 0 0
@@ -3180,7 +3180,7 @@ aries~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
+18624 0
 128 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
@@ -3193,8 +3193,8 @@ Taurus~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
-131 0
+18624 0
+130 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3206,7 +3206,7 @@ Gemini~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
+18624 0
 125 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
@@ -3219,8 +3219,8 @@ Cancer~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
-123 0
+18624 0
+124 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3232,8 +3232,8 @@ leo~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
-127 0
+18624 0
+126 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3245,8 +3245,8 @@ Virgo~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
-121 2
+18624 0
+122 2
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3258,8 +3258,8 @@ Libra~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
-131 0
+18624 0
+132 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3271,8 +3271,8 @@ Scorpio~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
-127 0
+18624 0
+128 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3284,7 +3284,7 @@ Sagittarius~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
+18624 0
 132 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
@@ -3297,7 +3297,7 @@ Capricorn~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
+18624 0
 131 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
@@ -3310,8 +3310,8 @@ Aquarius~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
-125 0
+18624 0
+124 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3323,8 +3323,8 @@ Pisces~
 ~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
-33751067 18624 0
-134 0
+18624 0
+135 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3338,7 +3338,7 @@ Prophet~
 perfume.  You take a longer sniff and the mist condenses into a beautiful,
 full-figured woman..@@N
 ~
-4115 18536 1000
+18536 1000
 138 1
 -2500 1000 1000
 ! 1 0 17 7 14 0 0
@@ -3350,7 +3350,7 @@ suggestion hypnotic crimson~
 @@dSome beautiful creature @@fentices@@N@@d you with her song...@@N
 ~
 ~
-45105153 26876 -1000
+26876 -1000
 130 2
 -2000 800 800
 ! 6 0 16 7 942094 1509120 48
@@ -3362,7 +3362,7 @@ Crimson Crusader~
 @@mThe crusader of the @@dm@@mi@@ps@@gt@@m patrols for the undead..@@N
 ~
 ~
-50530333 1698558 1000
+1698558 1000
 112 1
 -1234 600 500
 ! 6 0 0 7 942094 34816 16
@@ -3373,7 +3373,7 @@ sentient~
 @@mSentient@@d, @@dThe @@pCrimson Executioner@@N~
 ~
 ~
-53608477 649982 0
+649982 0
 137 0
 -2500 1000 1000
 ! 7 0 0 7 933902 0 48
@@ -3385,8 +3385,8 @@ Crimson Shadow~
 @@mA @@ddark shadow's eyes@@m keep a careful watch on you..@@N
 ~
 ~
-33554433 548992 0
-109 0
+548992 0
+108 0
 -1300 800 800
 ! 0 0 16 7 14 64 72
 | 0 0 0 0 0 0 0
@@ -3397,7 +3397,7 @@ Crimson Shadow~
 @@mA @@ddark shadow's eyes@@m keep a careful watch on you..@@N
 ~
 ~
-33554433 548992 0
+548992 0
 107 0
 -975 800 800
 ! 0 0 16 7 14 64 72
@@ -3409,8 +3409,8 @@ Crimson Shadow~
 @@mA @@ddark shadow's eyes@@m keep a careful watch on you..@@N
 ~
 ~
-33554433 548992 0
-102 0
+548992 0
+103 0
 -975 800 800
 ! 0 0 16 7 14 64 72
 | 0 0 0 0 0 0 0
@@ -3421,8 +3421,8 @@ evil~
 @@dThe @@Revil@@d of the tower wanders these halls...@@N
 ~
 ~
-16908297 24808 -1000
-106 1
+24808 -1000
+107 1
 -2000 800 750
 ! 7 0 16 7 942094 8388640 16
 | 0 0 0 0 0 0 0
@@ -3433,7 +3433,7 @@ evil~
 @@dThe @@Revil@@d of the tower wanders these halls...@@N
 ~
 ~
-50462729 24808 -1000
+24808 -1000
 119 1
 -2000 800 750
 ! 0 0 16 7 942094 8388640 16
@@ -3445,7 +3445,7 @@ evil~
 @@dThe @@Revil@@d of the tower wanders these halls...@@N
 ~
 ~
-50462729 24808 -1000
+24808 -1000
 109 1
 -2000 800 750
 ! 0 0 16 7 942094 8388640 16
@@ -3457,7 +3457,7 @@ nightmare~
 @@dA large stallion with hooves of purple flame...@@N
 ~
 ~
-167903257 576234 -1000
+576234 -1000
 134 1
 -1700 700 700
 ! 0 0 19 7 679950 0 0
@@ -3469,7 +3469,7 @@ paladin~
 @@dThe wandering paladin travels through here..@@N
 ~
 ~
-33685513 1075964 1000
+1075964 1000
 138 2
 -2000 1000 400
 ! 9 0 0 7 948622 6488064 144
@@ -3481,8 +3481,8 @@ Lord Dark~
 @@dThe dark lord of the tower rests in his throne..@@N
 ~
 ~
-36700179 551144 -1000
-145 1
+551144 -1000
+144 1
 -2500 1000 1000
 ! 6 0 0 7 974862 51380480 48
 | 0 0 0 0 0 0 0
@@ -3496,7 +3496,7 @@ A large, large man stands here, with a small trail of a deep @@mviolet@@N fog
 orbiting slowly around and around his tall, muscular body. His stare could
 @@ppierce@@N into the very depths of your soul..@@N
 ~
-36765723 18664 0
+18664 0
 132 1
 -1600 800 800
 ! 7 0 0 7 30870 1052736 80
@@ -3511,7 +3511,7 @@ A large, large man stands here, with a small trail of a deep @@mviolet@@N fog
 orbiting slowly around and around his tall, muscular body. His stare could
 @@ppierce@@N into the very depths of your soul..@@N
 ~
-3211291 18664 0
+18664 0
 142 1
 -1600 800 800
 ! 0 0 0 7 30870 1052736 80
@@ -3523,8 +3523,8 @@ necromancer mage crimson~
 @@dA necromancer of the m@@my@@ps@@gt@@d wanders here, chanting spells..@@N
 ~
 ~
-33554449 16576 0
-129 1
+16576 0
+128 1
 -1500 500 1000
 ! 8 0 0 7 553102 0 16
 | 0 0 0 0 0 0 0
@@ -3535,8 +3535,8 @@ necromancer mage crimson~
 @@dA necromancer of the m@@my@@ps@@gt@@d wanders here, chanting spells..@@N
 ~
 ~
-33554449 16576 0
-126 1
+16576 0
+125 1
 -1500 500 1000
 ! 0 0 0 7 553102 0 16
 | 0 0 0 0 0 0 0
@@ -3547,7 +3547,7 @@ necromancer mage crimson~
 @@dA necromancer of the m@@my@@ps@@gt@@d wanders here, chanting spells..@@N
 ~
 ~
-33554449 16576 0
+16576 0
 133 1
 -1500 500 1000
 ! 0 0 0 7 553102 0 16
@@ -3559,7 +3559,7 @@ crimson slave~
 @@dA small human banished to serve the m@@mi@@ps@@gt@@d...@@N
 ~
 ~
-1 542912 0
+542912 0
 116 1
 -1500 550 700
 ! 0 0 0 7 14 0 0
@@ -3571,8 +3571,8 @@ crimson slave~
 @@dA small human banished to serve the m@@mi@@ps@@gt@@d...@@N
 ~
 ~
-1 542912 0
-120 1
+542912 0
+119 1
 -1500 550 700
 ! 0 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -3583,7 +3583,7 @@ crimson slave~
 @@dA small human banished to serve the m@@mi@@ps@@gt@@d...@@N
 ~
 ~
-1 542912 0
+542912 0
 124 1
 -1500 550 700
 ! 0 0 0 7 14 0 0
@@ -3595,7 +3595,7 @@ thief~
 @@dThe thief trapped inside the tower tries to steal your gold..@@N
 ~
 ~
-196633 26856 0
+26856 0
 135 1
 -1500 700 700
 ! 2 0 0 7 161806 0 16
@@ -3607,8 +3607,8 @@ head~
 @@mThe head a hydra is here glaring at you..@@N
 ~
 ~
-65539 16616 0
-125 1
+16616 0
+126 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
@@ -3619,8 +3619,8 @@ head~
 @@mThe head a hydra is here glaring at you..@@N
 ~
 ~
-65539 16616 0
-116 1
+16616 0
+115 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
@@ -3631,8 +3631,8 @@ head~
 @@mThe head a hydra is here glaring at you..@@N
 ~
 ~
-33619971 16616 0
-116 1
+16616 0
+115 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
@@ -3643,8 +3643,8 @@ head~
 @@mThe head a hydra is here glaring at you..@@N
 ~
 ~
-33619971 16616 0
-125 1
+16616 0
+124 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
@@ -3655,8 +3655,8 @@ head~
 @@mThe head a hydra is here glaring at you..@@N
 ~
 ~
-33619971 16616 0
-119 1
+16616 0
+120 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
@@ -3667,7 +3667,7 @@ head~
 @@mThe head a hydra is here glaring at you..@@N
 ~
 ~
-33619971 16616 0
+16616 0
 118 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
@@ -3679,7 +3679,7 @@ head~
 @@mThe head a hydra is here glaring at you..@@N
 ~
 ~
-65539 16616 0
+16616 0
 118 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8

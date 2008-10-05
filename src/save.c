@@ -595,7 +595,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    static QUEST_INFO quest_info_zero;
    static RECORD_DATA record_zero;
    static SUPER_DATA super_zero;
-   static BITMASK bitmask_zero;
    char strsave[MAX_INPUT_LENGTH];
    char tempstrsave[MAX_INPUT_LENGTH];
    char *bufptr, *nmptr;
@@ -654,8 +653,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       *ch->pcdata->records = record_zero;
       GET_FREE( ch->pcdata->super, super_free );
       *ch->pcdata->super = super_zero;
-      GET_FREE( ch->act, bitmask_free );
-      *ch->act = bitmask_zero;
 
       d->character = ch;
 
@@ -768,10 +765,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    if( is_npc )
       ch->npc = TRUE;
    else
-   {
       ch->npc = FALSE;
-      set_bit(ch->act,ACT_BLANK | ACT_COMBINE | ACT_PROMPT | ACT_MAPPER);
-   }
    ch->sex = SEX_NEUTRAL;
    ch->login_sex = -1;
    ch->current_brand = NULL;

@@ -1,6 +1,6 @@
 #AREA
 @@dMoribund@@N~
-Q 19
+Q 20
 K moribund~
 L @@W{ @@rALL@@W }@@N~
 N 19
@@ -97,7 +97,7 @@ D2
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D3
 Moribund.
 ~
@@ -107,7 +107,7 @@ D4
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D5
 Moribund.
 ~
@@ -121,10 +121,10 @@ You are in the inner lands of Moribund.  Whisps of grey smoke float by.
 ~
 9228 11
 D0
-The Morgue!
+Moribund.
 ~
 ~
-0 -1 3300
+0 -1 3304
 D1
 Moribund.
 ~
@@ -134,17 +134,17 @@ D2
 Moribund.
 ~
 ~
-0 -1 3304
+0 -1 3303
 D3
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3305
 D4
-Moribund.
+The Morgue!
 ~
 ~
-0 -1 3305
+0 -1 3300
 D5
 Moribund.
 ~
@@ -196,22 +196,22 @@ D0
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D1
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D2
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D3
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D4
 Moribund.
 ~
@@ -242,7 +242,7 @@ D2
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3301
 D3
 Moribund.
 ~
@@ -252,7 +252,7 @@ D4
 Moribund.
 ~
 ~
-0 -1 3301
+0 -1 3302
 D5
 Moribund.
 ~
@@ -282,7 +282,7 @@ gremlin~
 a Pesky Gremlin~
 A Pesky Gremlin stands here, looking for someone to hurt.~
 ~
-2069 1605632 -900
+1605632 -900
 2 1
 200 0 0
 ! 0 0 19 7 8226 2 0
@@ -296,8 +296,8 @@ A strange, flickering light whirls around you.
 As you look closer, you realise it is swamp gas.  You sense an evil force at
 work, as it whips round your body, as if a hungry snake.
 ~
-3 524416 -900
-24 0
+524416 -900
+25 0
 40 16 19
 ! 0 0 17 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -311,7 +311,7 @@ Cadaver is a long dead adventurer, forever doomed to summon forth other
 adventurer's corpses when they die.  The only fun He gets is to plonk the
 newly dead players into his home, Moribund.
 ~
-3 524288 -200
+524288 -200
 81 1
 100 50 50
 ! 0 0 14 7 0 0 0
