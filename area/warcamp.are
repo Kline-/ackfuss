@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@eMinotaur's @@dWarcamp@@N~
-Q 17
+Q 19
 K minotaurcamp~
 L @@W{@@mLO RM@@W}@@N~
 N 145
@@ -404,10 +404,11 @@ minotaur patrol~
 ~
 ~
 3145729 8380 -200
-83 1
+82 1
 -674 160 130
 ! 7 0 12 7 14350 0 4
 | 0 0 0 0 0 0 0
+1 3 0 3145729
 #6605
 cut cutthroat throat minotaur~
 @@eMinotaur @@dCutthroat@@N~
@@ -415,10 +416,11 @@ cut cutthroat throat minotaur~
 ~
 ~
 3145731 106686 -200
-86 1
+87 1
 -675 175 140
 ! 2 0 12 7 6286 0 128
 | 0 0 0 0 0 0 0
+1 4 0 3145731
 #6621
 minotaur lesser guard~
 @@eMinotaur @@dLesser Guard@@N~
@@ -426,10 +428,11 @@ minotaur lesser guard~
 ~
 ~
 3153923 8892 -200
-86 1
+87 1
 -750 230 200
 ! 3 0 12 7 14782 0 2
 | 0 0 0 0 0 0 0
+1 5 0 3153923
 #6622
 minotaur trainee~
 @@eMinotaur @@dTrainee@@N~
@@ -437,10 +440,11 @@ minotaur trainee~
 ~
 ~
 3153923 8328 -200
-83 1
+84 1
 -590 140 140
 ! 3 0 12 7 14 0 0
 | 0 0 0 0 0 0 0
+1 5 0 3153923
 #6620
 minotaur worker~
 @@eMinotaur @@dWorker@@N~
@@ -449,10 +453,11 @@ minotaur worker~
 ~
 ~
 1 8320 -100
-87 1
+86 1
 -500 160 145
 ! 3 0 12 7 6 0 0
 | 0 0 0 0 0 0 0
+1 1 0 1
 #6614
 minotaur ranger~
 @@eMinotaur @@GRanger@@N~
@@ -460,10 +465,11 @@ minotaur ranger~
 ~
 ~
 3153923 631036 -200
-88 1
+89 1
 -800 250 225
 ! 9 0 12 7 14478 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3153923
 #6623
 minotaur commander~
 @@eMinotaur @@cCommander@@N~
@@ -472,10 +478,11 @@ minotaur commander~
 ~
 ~
 3153923 90300 -200
-93 1
+94 1
 -1000 310 310
 ! 0 0 12 7 6798 0 48
 | 0 0 0 0 0 0 0
+1 5 0 3153923
 #0
 #OBJECTS
 #6623
@@ -485,6 +492,7 @@ key~
 ~
 18 147488 8388608 1
 0.00
+0
 6623 0 0 0 0 0 0 0 0 0
 1
 L
@@ -496,6 +504,7 @@ battleaxe~
 ~
 5 0 8421376 1
 0.00
+0
 0 0 0 3 0 0 0 0 0 0
 25
 A
@@ -515,6 +524,7 @@ security pass~
 ~
 9 131072 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -536,6 +546,7 @@ boots~
 ~
 9 131392 12582912 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 15
 A
@@ -559,6 +570,7 @@ battle helmet~
 ~
 9 131072 8388612 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 25
 A

@@ -1,6 +1,6 @@
 #AREA
 @@dUnderneath the @@mAsylum@@N~
-Q 17
+Q 19
 K underasylum~
 L @@W{@@mRMORT@@W}@@N~
 N 156
@@ -205,11 +205,11 @@ S
 about.@@N
 ~
 9 11
-D2
+D1
 ~
 ~
 0 -1 5116
-D3
+D2
 ~
 ~
 0 -1 5110
@@ -274,11 +274,11 @@ S
 D2
 ~
 ~
-0 -1 5113
-D3
-~
-~
 0 -1 5111
+D4
+~
+~
+0 -1 5113
 S
 #5113
 @@dThe Vast Darkness@@N~
@@ -337,14 +337,14 @@ D0
 ~
 ~
 0 0 5114
+D1
+~
+~
+0 -1 5116
 D2
 ~
 ~
 0 -1 5114
-D4
-~
-~
-0 -1 5116
 S
 #5116
 @@dThe Vast Darkness@@N~
@@ -435,11 +435,11 @@ S
 about.@@N
 ~
 9 11
-D1
+D0
 ~
 ~
 0 -1 5121
-D4
+D3
 ~
 ~
 0 -1 5119
@@ -739,6 +739,7 @@ guardian~
 -800 310 350
 ! 3 0 0 7 22542 589824 72
 | 0 0 0 0 0 0 0
+1 7 0 3145849
 #5101
 thing~
 @@dA @@Rhideous @@Gamphibious@@d @@dthing@@N~
@@ -751,6 +752,7 @@ thing~
 -750 250 200
 ! 0 0 19 7 22542 589824 72
 | 0 0 0 0 0 0 0
+1 5 0 3145753
 #5102
 thing~
 @@dAn oversized @@Gfrog-like @@dthing@@N~
@@ -759,10 +761,11 @@ thing~
 ~
 ~
 3407929 680 0
-102 1
+103 1
 -670 250 250
 ! 0 0 19 7 22542 589824 8
 | 0 0 0 0 0 0 0
+1 7 0 3407929
 #5103
 frog~
 @@dA huge @@Rdemonic @@GFrog@@N~
@@ -775,6 +778,7 @@ frog~
 -910 380 400
 ! 0 0 19 7 415758 17367040 48
 | 0 0 0 0 0 0 0
+1 6 0 3162137
 #5104
 administrator~
 @@DThe @@mAsylum @@RAdministrator@@N~
@@ -783,10 +787,11 @@ administrator~
 ~
 ~
 36716561 68266 0
-119 1
+118 1
 -1500 600 600
 ! 0 0 0 7 415758 50921472 48
 | 0 0 0 0 0 0 0
+1 6 0 36716561
 #5105
 monstrosity~
 @@dA @@RDemonic @@dMonstrosity@@N~
@@ -798,6 +803,7 @@ monstrosity~
 -2000 800 1000
 ! 0 0 16 7 415758 50921472 48
 | 0 0 0 0 0 0 0
+1 7 0 36716593
 #0
 #OBJECTS
 #5100
@@ -807,6 +813,7 @@ key~
 ~
 18 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -817,6 +824,7 @@ L
 ~
 14 65536 0 1
 0.00
+0
 9 3 5105 0 0 0 0 0 0 0
 1000
 E
@@ -830,6 +838,7 @@ sash~
 ~
 9 262800 8519680 1281
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -852,6 +861,7 @@ gauntlets~
 @@dA pair of @@mAsylum @@dGauntlets@@d lies here.@@N~
 9 262786 8392704 261
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 A
@@ -872,6 +882,7 @@ stain~
 @@dThe remnants of a dried pool of @@Gslime@@d covers the floor.@@N~
 9 393408 8650752 17
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -896,6 +907,7 @@ rod~
 @@dA blackened rod, covered in @@Rstains@@d lies here.@@N~
 5 33816720 8421376 257
 0.00
+0
 0 0 0 8 0 0 0 0 0 0
 15
 A
@@ -912,6 +924,7 @@ slime~
 @@dA tiny blob of petrified @@Gslime@@d lies here.@@N~
 9 262272 8388672 65543
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -930,6 +943,7 @@ boots~
 @@dA pair of @@mmalachite @@dboots@@N~
 9 262784 10485760 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A

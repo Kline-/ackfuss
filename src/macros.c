@@ -493,7 +493,7 @@ long_int exp_for_mobile( int level, CHAR_DATA * mob )
    if( IS_SET( mob->def, DEF_SHIELD_ICE ) )
       value += .100 * base_value;
 
-   if( IS_SET( mob->act, ACT_SOLO ) )
+   if( is_set( mob->act, ACT_SOLO ) )
       value += .500 * base_value;
 
 

@@ -52,7 +52,7 @@
 #define NPC_STATE_CRIT_HEAL   1
 #define NPC_STATE_CRIT_MANA   2
 
-#define AI_MOB( ch )    ( IS_NPC( (ch) ) && IS_SET((ch)->act, ACT_INTELLIGENT ) )
+#define AI_MOB( ch )    ( IS_NPC( (ch) ) && is_set((ch)->act, ACT_INTELLIGENT ) )
 
 typedef struct npc_group_data NPC_GROUP_DATA;
 

@@ -70,7 +70,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
          }
 
       if( ( skill_table[sn].flag1 == REMORT )
-          && ( ( ( IS_SET( ch->act, ACT_PET ) ) || ( IS_AFFECTED( ch, AFF_CHARM ) ) ) && ( ch->rider == NULL ) ) )
+          && ( ( ( is_set( ch->act, ACT_PET ) ) || ( IS_AFFECTED( ch, AFF_CHARM ) ) ) && ( ch->rider == NULL ) ) )
          best = -1;
 
       if( skill_table[sn].flag1 == ADEPT )
@@ -96,7 +96,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
 
    if( ( best == -1 ) && ( IS_NPC( ch ) ) )
    {
-      if( ( IS_SET( ch->act, ACT_INTELLIGENT ) ) && ( sn == skill_lookup( "ethereal" ) ) )
+      if( ( is_set( ch->act, ACT_INTELLIGENT ) ) && ( sn == skill_lookup( "ethereal" ) ) )
       {
          return 150;
       }
@@ -124,7 +124,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
 
    if( IS_VAMP( ch ) && ( skill_table[sn].flag2 == VAMP ) )
       mincost = skill_table[sn].min_mana;
-   if( IS_NPC( ch ) && IS_SET( ch->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
       mincost = skill_table[sn].min_mana + ( 200 - ch->level );
    if( skill_table[sn].flag2 == WOLF )
    {
@@ -327,7 +327,7 @@ bool saves_spell( int level, CHAR_DATA * victim )
           get_psuedo_level( victim ) * 2 / 3 :
           get_psuedo_level( victim ) ) - level - URANGE( -40, victim->saving_throw, 40 ) );
    save -= wis_app[get_curr_wis( victim )].spell_save;
-   if( ( IS_NPC( victim ) ) && ( IS_SET( victim->act, ACT_SOLO ) ) )
+   if( ( IS_NPC( victim ) ) && ( is_set( victim->act, ACT_SOLO ) ) )
       save += 20;
    if( !IS_NPC( victim ) && ( IS_SET( race_table[victim->race].race_flags, RACE_MOD_RESIST_SPELL ) ) )
       save += 20;
@@ -390,7 +390,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
     */
    /*
     * if ( IS_NPC(ch)
-    * && ( !IS_SET( ch->act, ACT_INTELLIGENT ) )
+    * && ( !is_set( ch->act, ACT_INTELLIGENT ) )
     * && ( !ch->pIndexData->progtypes
     * || IS_AFFECTED( ch, AFF_CHARM ) ) )
     * return;
@@ -430,7 +430,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
    {
       best = UMIN( 90, get_psuedo_level( ch ) );
       if( ( skill_table[sn].flag1 == REMORT )
-          && ( ( ( IS_SET( ch->act, ACT_PET ) ) || ( IS_AFFECTED( ch, AFF_CHARM ) ) ) && ( ch->rider == NULL ) ) )
+          && ( ( ( is_set( ch->act, ACT_PET ) ) || ( IS_AFFECTED( ch, AFF_CHARM ) ) ) && ( ch->rider == NULL ) ) )
          best = -1;
 
 
@@ -2227,7 +2227,7 @@ bool spell_faerie_fog( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    }
    for( ich = ch->in_room->first_person; ich != NULL; ich = ich->next_in_room )
    {
-      if( !IS_NPC( ich ) && is_set( ich->act2, PLR_WIZINVIS ) )
+      if( !IS_NPC( ich ) && is_set( ich->act, ACT_WIZINVIS ) )
          continue;
 
       if( ich == ch || saves_spell( level, ich ) )

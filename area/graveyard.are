@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@dGraveyard@@N~
-Q 17
+Q 19
 K graveyard~
 L @@W{@@r45 75@@W}@@N~
 N 42
@@ -1587,10 +1587,11 @@ death knight~
 ~
 ~
 278563 533160 -1000
-74 1
+75 1
 -400 210 180
 ! 3 0 14 7 24494 33554432 80
 | 0 0 0 0 0 0 0
+1 5 0 278563
 #11012
 sentinel~
 @@dThe Death Guardian@@N~
@@ -1602,6 +1603,7 @@ sentinel~
 -1400 240 220
 ! 0 0 14 7 162958 16781440 144
 | 0 0 0 0 0 0 0
+1 6 0 81971
 #11011
 a harpie~
 A @@Bscreeching@@N @@Gharpie@@N~
@@ -1613,6 +1615,7 @@ A sceaming harpie wails as you as it dives foerm the air above.
 -200 110 105
 ! 0 0 18 7 16782 0 0
 | 0 0 0 0 0 0 0
+1 5 0 82017
 #11008
 legion death~
 @@gA @@RLegion of Death@@g~
@@ -1620,10 +1623,11 @@ legion death~
 ~
 ~
 3563625 98856 -600
-65 1
+66 1
 -40 45 55
 ! 0 0 14 7 6302 0 0
 | 0 0 0 0 0 0 0
+1 10 0 3563625
 #11007
 zombie lord~
 @@mA Zombie Lord@@g~
@@ -1631,10 +1635,11 @@ zombie lord~
 ~
 ~
 3424283 680 1000
-74 0
+75 0
 -70 55 65
 ! 0 0 14 7 24470 64 0
 | 0 0 0 0 0 0 0
+1 8 0 3424283
 #11006
 Gillian~
 @@WGillian@@g~
@@ -1646,6 +1651,7 @@ Gillian~
 -210 60 85
 ! 0 0 3 7 23534 561152 16
 | 0 0 0 0 0 0 0
+1 6 0 19922969
 #11004
 zombie~
 @@ma slow moving zombie@@g~
@@ -1657,6 +1663,7 @@ zombie~
 -2000 45 30
 ! 3 0 14 7 530 0 0
 | 0 0 0 0 0 0 0
+1 6 0 278613
 #11003
 skeleton~
 a nasty skeleton~
@@ -1665,10 +1672,11 @@ a nasty skeleton~
 All bones, the skeleton laughs at your attempts to hurt it!!
 ~
 3555413 33320 -450
-58 0
+57 0
 -40 23 22
 ! 0 0 14 7 4354 0 0
 | 0 0 0 0 0 0 0
+1 9 0 3555413
 #11000
 ghoul~
 a vicious ghoul~
@@ -1678,10 +1686,11 @@ a vicious ghoul~
 stench growls at you!@@g
 ~
 3424319 552 -500
-58 0
+57 0
 -50 45 50
 ! 0 0 14 7 18434 0 0
 | 0 0 0 0 0 0 0
+1 10 0 3424319
 #11002
 vicious ghoul~
 a vicious ghoul~
@@ -1695,6 +1704,7 @@ a vicious ghoul~
 -50 45 50
 ! 0 0 14 7 18434 0 0
 | 0 0 0 0 0 0 0
+1 9 0 3424311
 #11001
 wight~
 @@ma ghastly Wight@@g~
@@ -1707,6 +1717,7 @@ wight~
 -100 100 100
 ! 0 0 14 7 31806 32832 0
 | 0 0 0 0 0 0 0
+1 12 0 3563615
 #11005
 maniac~
 @@cManiac@@g the @@mLost@@g~
@@ -1718,6 +1729,7 @@ A fear crazed adventurer named @@cManiac@@g attacks you!!
 -200 80 70
 ! 0 0 0 7 23470 2103360 8
 | 0 0 0 0 0 0 0
+1 5 0 19922961
 #11009
 shadow evil~
 @@Ran evil shadow@@g~
@@ -1729,6 +1741,7 @@ shadow evil~
 -1100 240 220
 ! 0 0 14 7 22536 3170304 0
 | 0 0 0 0 0 0 0
+1 7 0 82027
 #11010
 spirit~
 An @@eangered@@N spirit~
@@ -1736,10 +1749,11 @@ An @@eangered@@N entity floats here, adding its troubled cries to the @@cair.@@N
 ~
 ~
 16419 2066 0
-65 0
+64 0
 -130 90 100
 ! 0 0 14 7 20622 274432 0
 | 0 0 0 0 0 0 0
+1 4 0 16419
 #11014
 abraham helsing~
 @@aAbraham van Helsing@@N~
@@ -1747,10 +1761,11 @@ Abraham van Helsing
 ~
 ~
 3145729 1614572 1000
-91 1
+92 1
 -1000 250 250
 ! 3 0 0 7 26126 1085440 144
 | 0 0 0 0 0 0 0
+1 3 0 3145729
 #0
 #OBJECTS
 #11012
@@ -1760,6 +1775,7 @@ A tiny key lies here.
 ~
 18 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1770,6 +1786,7 @@ hero's bastard sword~
 @@gan ancient bastard sword, fully 5 feet long, lies here.~
 5 67 8421376 257
 0.00
+0
 28 0 0 1 0 0 0 0 0 0
 20
 A
@@ -1788,6 +1805,7 @@ a @@RSkull Key@@g~
 A large black key shaped like a skull lies here.~
 18 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1799,6 +1817,7 @@ plate platemail archon~
 ~
 9 1281 8650752 4224
 0.00
+0
 40 0 0 0 0 0 0 0 0 0
 20
 A
@@ -1823,6 +1842,7 @@ mace archon~
 A shimmering, irridescent mace studded with diamonds lies here.~
 5 1347 8421376 257
 0.00
+0
 35 0 0 7 0 0 0 0 0 0
 1
 A
@@ -1846,6 +1866,7 @@ A Large fleshy plant grows here.
 ~
 17 0 8388616 1
 0.00
+0
 50 50 0 0 0 0 0 0 0 0
 3
 L
@@ -1857,6 +1878,7 @@ a black iron shield~
 ~
 9 20 8421376 1
 0.00
+0
 20 0 0 0 0 0 0 0 0 0
 15
 A
@@ -1890,6 +1912,7 @@ A short mace, covered in graveyard dirt lies here.
 ~
 5 20 8421376 1
 0.00
+0
 20 0 0 7 0 0 0 0 0 0
 10
 A
@@ -1910,6 +1933,7 @@ L
 @@d a large stone key in the shape of a dagger lies here.@@g~
 18 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 L
@@ -1921,6 +1945,7 @@ A glimmering, irridescent faceguard is waiting to be worn.
 ~
 9 321 8388624 3594
 0.00
+0
 25 0 0 0 0 0 0 0 0 0
 3
 A
@@ -1943,6 +1968,7 @@ Cabrilaan~
 ~
 5 1283 8421376 384
 0.00
+0
 25 0 0 3 0 0 0 0 0 0
 1
 A
@@ -1963,6 +1989,7 @@ helm legion~
 @@ga helm with a huge @@Reye@@g glares at you!~
 9 84 8388616 1035
 0.00
+0
 20 0 0 0 0 0 0 0 0 0
 5
 A
@@ -1985,6 +2012,7 @@ sword death legion~
 ~
 5 86 8421376 257
 0.00
+0
 35 0 0 3 0 0 0 0 0 0
 1
 A
@@ -2002,6 +2030,7 @@ What seems to be the bottom section of a broken staff lies here.
 ~
 29 0 8388608 1
 0.00
+0
 0 11014 11015 0 0 0 0 0 0 0
 1
 L
@@ -2014,6 +2043,7 @@ The middle piece of a broken staff lies here, looking for it's connecting
 ~
 29 0 8388608 1
 0.00
+0
 11013 0 11015 0 0 0 0 0 0 0
 1
 L
@@ -2025,6 +2055,7 @@ The connected bottom section of a staff lies here.
 ~
 29 0 8388608 1
 0.00
+0
 0 11016 11017 0 0 0 0 0 0 0
 1
 L
@@ -2036,6 +2067,7 @@ The top piece of a beautiful staff lies here.
 ~
 29 0 8388608 1
 0.00
+0
 11015 0 11017 0 0 0 0 0 0 0
 1
 L
@@ -2048,6 +2080,7 @@ A mostly completed staff lies here, looking for a beautiful gem to fit inside
 ~
 29 0 8388608 1
 0.00
+0
 0 11018 11019 0 0 0 0 0 0 0
 1
 L
@@ -2059,6 +2092,7 @@ A beautiful glittering gem lies here, looking perfect for a moagical staff.
 ~
 29 0 8388608 1
 0.00
+0
 11017 0 11019 0 0 0 0 0 0 0
 1
 L
@@ -2070,6 +2104,7 @@ A beautiful white staff, topped with a shimmering gem lies here.
 ~
 4 321 8421376 1
 0.00
+0
 70 8 8 635 0 0 0 0 0 0
 1
 L

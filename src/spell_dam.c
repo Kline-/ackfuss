@@ -1005,7 +1005,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
             victim->pcdata->records->md++;
       }
 
-      if( !IS_NPC( victim ) || IS_SET( victim->act, ACT_INTELLIGENT ) )
+      if( !IS_NPC( victim ) || is_set( victim->act, ACT_INTELLIGENT ) )
       {
 
 
@@ -1042,7 +1042,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       if( deathmatch && !IS_NPC( victim ) )
          do_quit( victim, "" );
 
-      if( IS_NPC( ch ) && IS_NPC( victim ) && IS_SET( ch->act, ACT_INTELLIGENT ) )
+      if( IS_NPC( ch ) && IS_NPC( victim ) && is_set( ch->act, ACT_INTELLIGENT ) )
       {
          do_get( ch, "all corpse" );
          do_sacrifice( ch, "corpse" );
@@ -1082,7 +1082,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
     */
    if( IS_NPC( victim ) && dam > 0 )
    {
-      if( ( IS_SET( victim->act, ACT_WIMPY ) && number_bits( 1 ) == 0
+      if( ( is_set( victim->act, ACT_WIMPY ) && number_bits( 1 ) == 0
             && victim->hit < victim->max_hit / 2 )
           || ( IS_AFFECTED( victim, AFF_CHARM ) && victim->master != NULL && victim->master->in_room != victim->in_room ) )
          do_flee( victim, "" );

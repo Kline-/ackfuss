@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@dMiskatonic @@mAsylum @@GGrounds@@N~
-Q 17
+Q 19
 K asylum~
 L @@W{@@r30 60@@W}@@N~
 N 53
@@ -2131,6 +2131,7 @@ A stern looking doctor wanders about.
 -300 150 130
 ! 0 0 0 7 7190 0 0
 | 0 0 0 0 0 0 0
+1 5 0 3145801
 #3901
 asylum guard~
 @@NAn @@dAsylum@@N guard~
@@ -2143,6 +2144,7 @@ asylum guard~
 -320 140 140
 ! 3 0 0 7 23718 0 0
 | 0 0 0 0 0 0 0
+1 4 0 3145793
 #3902
 inmate~
 @@NA befuddled @@einmate@@N~
@@ -2151,10 +2153,11 @@ inmate~
 ~
 ~
 262209 0 0
-39 1
+38 1
 -275 100 95
 ! 0 0 0 7 2070 0 0
 | 0 0 0 0 0 0 0
+1 3 0 262209
 #3903
 female inmate~
 @@NA female @@einmate@@N~
@@ -2167,6 +2170,7 @@ female inmate~
 -290 150 105
 ! 0 0 0 7 2326 0 0
 | 0 0 0 0 0 0 0
+1 2 0 65
 #3904
 bunny~
 @@NA cute little @@abunny@@N~
@@ -2175,10 +2179,11 @@ bunny~
 ~
 ~
 1 0 450
-37 1
+38 1
 -220 90 60
 ! 0 0 19 7 2310 0 0
 | 0 0 0 0 0 0 0
+1 1 0 1
 #3905
 ugly frog~
 @@NAn @@eugly @@Gfrog@@N~
@@ -2191,6 +2196,7 @@ ugly frog~
 -100 80 75
 ! 0 0 19 7 2054 0 0
 | 0 0 0 0 0 0 0
+1 2 0 262145
 #3906
 child inmate~
 @@NA young @@einmate@@N~
@@ -2199,10 +2205,11 @@ child inmate~
 ~
 ~
 65 0 0
-33 1
+32 1
 -175 65 60
 ! 0 0 0 7 2390 0 0
 | 0 0 0 0 0 0 0
+1 2 0 65
 #0
 #OBJECTS
 #3900
@@ -2211,6 +2218,7 @@ a @@yrabbit's foot@@N~
 @@NThe poor paw of an unlucky @@ybunny@@N lies here.~
 9 1 8421376 16449
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2229,6 +2237,7 @@ medallion turquoise~
 @@NA small @@rturquoise @@Ndisc, with a strange rune etched on it's face lies here.~
 9 17 8388736 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -2247,6 +2256,7 @@ a @@dblack baton@@N~
 @@NAn evil looking baton of an unknown metal, and rings of @@rturquoise@@N beckons you to wield it.~
 5 84 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2265,6 +2275,7 @@ smock staff~
 @@NA a small smock, with a trace of some @@Rstain@@N lies crumpled in a heap.~
 9 0 8454144 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2289,6 +2300,7 @@ knuckles turquoise~
 @@NA nasty set of @@rturquoise @@Nknuckles glint in your light.~
 9 20 8392704 256
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -2309,6 +2321,7 @@ carrot~
 ~
 26 0 8388608 1
 0.00
+0
 0 61 66 -1 0 0 0 0 0 0
 1
 L
@@ -2319,6 +2332,7 @@ Sai~
 @@dA martial arts weapon lies here, @@Wglinting@@d in the darkness@@N~
 5 37748736 8421376 1
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 1
 A

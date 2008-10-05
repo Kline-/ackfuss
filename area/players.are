@@ -1,6 +1,6 @@
 #AREA
 Plane of the Mortals~
-Q 17
+Q 19
 K players~
 L @@W{@@mRMORT@@W}@@N~
 N 27
@@ -687,10 +687,11 @@ You are in no doubt that this guildmaster is truly close to your god; he has
 You sense that he could destroy your mind with the slightest thought.
 ~
 1027 128 1000
-74 1
+73 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 1027
 #1105
 al bartender~
 Al the Bartender~
@@ -706,6 +707,7 @@ Al the Bartender is a short, fat, round kind of guy, always cleaning glasses,
 -1000 500 500
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 515
 >greet_prog 100~
 if ispc($n)
         say Greetings, $n
@@ -743,6 +745,7 @@ This is your master.  Big and strong with bulging muscles.  Several scars
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 1027
 #1103
 guildmaster master~
 the guildmaster~
@@ -753,10 +756,11 @@ You realize that whenever your guildmaster moves, you fail to notice it:
 the appearance of a beggar.
 ~
 1027 0 1000
-78 2
+79 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 1027
 #1102
 guildmaster master~
 the guildmaster~
@@ -770,6 +774,7 @@ You are in no doubt that this guildmaster is truly close to your god; he has
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 1027
 #1101
 guildmaster master~
 the guildmaster~
@@ -784,6 +789,7 @@ Even though your guildmaster looks old and tired, you can clearly see the
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 1027
 #0
 #OBJECTS
 #1147
@@ -792,6 +798,7 @@ a wooden garden seat~
 A very old, well-worn oak garden seat is tucked away in one corner.~
 12 64 0 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 L
@@ -803,6 +810,7 @@ A small china fountain gurgles away sweetly to itself.
 ~
 25 64 0 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1000
 L
@@ -813,6 +821,7 @@ a glass key~
 An Important Looking Glass Key Lies Here.~
 1 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -823,6 +832,7 @@ a small, circular seat~
 A small, circular seat is in the middle of the room.~
 12 64 0 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 200
 L
@@ -833,6 +843,7 @@ the Lovers' Board~
 The Lovers's Board is here, stuck to the wall with four arrows.~
 27 0 0 1
 0.00
+0
 14 1 1 1141 0 0 0 0 0 0
 10000
 L
@@ -844,6 +855,7 @@ The Info Board is here, holding Rules, and General Information.
 ~
 27 0 0 1
 0.00
+0
 365 1 82 1117 0 0 0 0 0 0
 1
 L
@@ -855,6 +867,7 @@ A can of Pepsi lies forgotten on the floor.
 ~
 17 0 8388608 1
 0.00
+0
 4 4 15 0 0 0 0 0 0 0
 5
 L
@@ -866,6 +879,7 @@ A glass of Jack Daniel's lies on the floor.
 ~
 17 0 8388608 1
 0.00
+0
 4 4 5 0 0 0 0 0 0 0
 5
 L
@@ -877,6 +891,7 @@ A bottle of quality red wine has been left here.
 ~
 17 0 8388608 1
 0.00
+0
 4 4 2 0 0 0 0 0 0 0
 5
 L
@@ -888,6 +903,7 @@ A bottle of warm beer has been left here.
 ~
 17 0 8388608 1
 0.00
+0
 4 4 1 0 0 0 0 0 0 0
 5
 L
@@ -899,6 +915,7 @@ A small bottle of local spring water has been left here.
 ~
 17 0 8388608 1
 0.00
+0
 4 4 0 0 0 0 0 0 0 0
 5
 L
@@ -909,6 +926,7 @@ board~
 @@bAn ancient board for Remortals' scribbles@@N~
 27 0 0 1
 0.00
+0
 30 35 35 1100 0 0 0 0 0 0
 1
 L
@@ -919,6 +937,7 @@ key~
 @@bAncient key of the @@mRemortals' Sanctum@@N~
 4 0 8388608 1
 0.00
+0
 0 0 0 -1 0 0 0 0 0 0
 1
 L
@@ -930,6 +949,7 @@ wed board~
 ~
 27 1 0 1
 0.00
+0
 60 1 1 1107 0 0 0 0 0 0
 1000
 L

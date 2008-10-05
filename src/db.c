@@ -963,6 +963,7 @@ void load_mobiles( FILE * fp )
    MOB_INDEX_DATA *pMobIndex;
    BUILD_DATA_LIST *pList;
    char buf[MSL];
+   static BITMASK bitmask_zero;
 
    for( ;; )
    {
@@ -1011,9 +1012,9 @@ void load_mobiles( FILE * fp )
 
       pMobIndex->long_descr[0] = UPPER( pMobIndex->long_descr[0] );
       pMobIndex->description[0] = UPPER( pMobIndex->description[0] );
-      if( area_revision >= 19 )
-       load_bitmask(pMobIndex->act2,fp);
-      pMobIndex->act = fread_number( fp );
+
+      if( area_revision < 20 ) /* Old act */
+       fread_number( fp );
       pMobIndex->affected_by = fread_number( fp );
       pMobIndex->pShop = NULL;
       pMobIndex->alignment = fread_number( fp );
@@ -1057,7 +1058,10 @@ void load_mobiles( FILE * fp )
       }
       else
          ungetc( letter, fp );
-
+      GET_FREE( pMobIndex->act, bitmask_free );
+      *pMobIndex->act = bitmask_zero;
+      if( area_revision >= 19 )
+       load_bitmask(pMobIndex->act,fp);
       letter = fread_letter( fp );
       if( letter == '>' )
       {
@@ -2169,7 +2173,7 @@ void reset_area( AREA_DATA * pArea )
                ROOM_INDEX_DATA *pRoomIndexPrev;
                pRoomIndexPrev = get_room_index( pRoomIndex->vnum - 1 );
                if( pRoomIndexPrev != NULL && IS_SET( pRoomIndexPrev->room_flags, ROOM_PET_SHOP ) )
-                  SET_BIT( mob->act, ACT_PET );
+                  set_bit( mob->act, ACT_PET );
             }
 
             if( room_is_dark( pRoomIndex ) )
@@ -2424,7 +2428,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    }
 
 
-   if( IS_SET( pMobIndex->act, ACT_INTELLIGENT ) )
+   if( is_set( pMobIndex->act, ACT_INTELLIGENT ) )
    {
       /*
        * Only load one with the same name 
@@ -2442,10 +2446,10 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    clear_char( mob );
    mob->pIndexData = pMobIndex;
 
-   GET_FREE( mob->act2, bitmask_free );
-   *mob->act2 = bitmask_zero;
+   GET_FREE( mob->act, bitmask_free );
+   *mob->act = bitmask_zero;
 
-   if( IS_SET( pMobIndex->act, ACT_INTELLIGENT ) )
+   if( is_set( pMobIndex->act, ACT_INTELLIGENT ) )
       mob->name = str_dup( buf );
    else
       mob->name = str_dup( pMobIndex->player_name );
@@ -2468,6 +2472,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 
    mob->level = level;
    mob->npc = TRUE; /* New check for NPC's */
+   mob->act = pMobIndex->act;
    mob->act = pMobIndex->act;
    mob->affected_by = pMobIndex->affected_by;
    mob->alignment = pMobIndex->alignment;
@@ -2917,9 +2922,9 @@ void free_char( CHAR_DATA * ch )
    {
       PUT_FREE( ch->current_brand, brand_data_free );
    }
-   if( ch->act2 )
+   if( ch->act )
    {
-      PUT_FREE( ch->act2, bitmask_free );
+      PUT_FREE( ch->act, bitmask_free );
    }
    if( ch->pcdata != NULL )
    {

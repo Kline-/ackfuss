@@ -473,36 +473,36 @@ const struct lookup_type tab_weapon_types[] = {
 const struct lookup_type tab_mob_flags[] = {
    {"nada", 0, 0},
    {"is_npc", 1, 0}, /* Auto set for mobs    */
-   {"sentinel", 2, 100},   /* stays in one room    */
-   {"scavenger", 4, 300},  /* picks up objects     */
-   {"remember", 8, 100},   /* remembers target     */
-   {"no_flee", 16, 50}, /* can't flee from mob  */
-   {"aggressive", 32, 100},   /* attacks pc's         */
-   {"stay_area", 64, 10},  /* won't leave area     */
-   {"wimpy", 128, 100}, /* flees when hurt      */
-   {"pet", 256, 100},   /* auto set for pets    */
-   {"train", 512, 2000},   /* can train pc's       */
-   {"practice", 1024, 2000},  /* can practice pc's    */
-   {"mercenary", 2048, 100},  /* is a mercenary       */
-   {"heal", 4096, 5000},   /* sells heals          */
-   {"adapt", 8192, 4000},  /* adapts weapons       */
-   {"undead", 16384, 10000},  /* TBA                  */
-   {"bank", 32768, 400},   /* is a bank            */
-   {"no_body", 65536, 1000},  /* Doesn't have body locations */
-   {"hunter", 131072, 4000},  /* HUNTS */
-   {"no_mind", 262144, 100},  /* immune to some psi's  */
-   {"postman", 524288, 1000}, /* handles letters */
-   {"rewield", 1048576, 1000},   /* looks for better weapons */
-   {"reequip", 2097152, 1000},   /* looks for better armor */
-   {"intelligent", BIT_23, NO_USE},
-   {"vampire", BIT_24, 1000000},
-   {"breeder", BIT_25, NO_USE},
-   {"solo", BIT_26, 5000}, /*  mob is designed to fight solo */
-   {"werewolf", BIT_27, NO_USE},
-   {"mount", BIT_28, 1000},
-   {"no_blood", BIT_29, 4000},
-   {"no_quest", BIT_30, 0},
-   {"questmaster", BIT_31, 0},
+   {"sentinel", ACT_SENTINEL, 100},   /* stays in one room    */
+   {"scavenger", ACT_SCAVENGER, 300},  /* picks up objects     */
+   {"remember", ACT_REMEMBER, 100},   /* remembers target     */
+   {"no_flee", ACT_NO_FLEE, 50}, /* can't flee from mob  */
+   {"aggressive", ACT_AGGRESSIVE, 100},   /* attacks pc's         */
+   {"stay_area", ACT_STAY_AREA, 10},  /* won't leave area     */
+   {"wimpy", ACT_WIMPY, 100}, /* flees when hurt      */
+   {"pet", ACT_PET, 100},   /* auto set for pets    */
+   {"train", ACT_TRAIN, 2000},   /* can train pc's       */
+   {"practice", ACT_PRACTICE, 2000},  /* can practice pc's    */
+   {"mercenary", ACT_MERCENARY, 100},  /* is a mercenary       */
+   {"heal", ACT_HEAL, 5000},   /* sells heals          */
+   {"adapt", ACT_ADAPT, 4000},  /* adapts weapons       */
+   {"undead", ACT_UNDEAD, 10000},  /* TBA                  */
+   {"bank", ACT_BANKER, 400},   /* is a bank            */
+   {"no_body", ACT_NO_BODY, 1000},  /* Doesn't have body locations */
+   {"hunter", ACT_HUNTER, 4000},  /* HUNTS */
+   {"no_mind", ACT_NO_MIND, 100},  /* immune to some psi's  */
+   {"postman", ACT_POSTMAN, 1000}, /* handles letters */
+   {"rewield", ACT_RE_WIELD, 1000},   /* looks for better weapons */
+   {"reequip", ACT_RE_EQUIP, 1000},   /* looks for better armor */
+   {"intelligent", ACT_INTELLIGENT, NO_USE},
+   {"vampire", ACT_VAMPIRE, 1000000},
+   {"breeder", ACT_BREEDER, NO_USE},
+   {"solo", ACT_SOLO, 5000}, /*  mob is designed to fight solo */
+   {"werewolf", ACT_WEREWOLF, NO_USE},
+   {"mount", ACT_MOUNT, 1000},
+   {"no_blood", ACT_NO_BLOOD, 4000},
+   {"no_quest", ACT_NO_QUEST, 0},
+   {"questmaster", ACT_QUESTMASTER, 0},
    {NULL, 0}
 };
 
@@ -1207,6 +1207,35 @@ char *show_values( const struct lookup_type *table, int value, bool fBit )
          xprintf( tmp, "%s%-13s",
                   fBit ? ( IS_SET( value, table[a].value ) ? "@@y*" : "@@g " ) :
                   ( value == table[a].value ? "@@y*" : "@@g " ), table[a].text );
+         xcat( buf, tmp );
+         if( ++foo % 4 == 0 )
+            xcat( buf, "\n\r" );
+      }
+   }
+   xcat( buf, "@@g\n\r" );
+   return ( buf );
+}
+
+char *bm_show_values( const struct lookup_type *table, BITMASK *mask )
+{
+
+   char tmp[MAX_STRING_LENGTH];
+   static char buf[MAX_STRING_LENGTH];
+   int a;
+   int foo; /* work out how many values shown in a row */
+
+   a = 0;
+   foo = 0;
+   buf[0] = '\0';
+
+   for( a = 0; table[a].text != NULL; a++ )
+   {
+      if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
+          && ( strcmp( table[a].text, "placeholder" ) ) )
+      {
+         xcat( buf, "     " );
+         xprintf( tmp, "%s%-13s",
+                  is_set( mask, table[a].value ) ? "@@y*" : "@@g ",table[a].text);
          xcat( buf, tmp );
          if( ++foo % 4 == 0 )
             xcat( buf, "\n\r" );

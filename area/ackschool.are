@@ -1,6 +1,6 @@
 #AREA
 @@lS@@do@@eE @@WMud University@@N~
-Q 17
+Q 19
 K soeuniversity~
 L @@W{@@r 1  5@@W}@@N~
 N 88
@@ -654,10 +654,11 @@ Ghost~
 This little ghost doesn't look too tough to you!
 ~
 3 0 0
-4 1
+5 1
 0 -4 -3
 ! 3 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #20103
 troll~
 @@NA stubby little @@rtroll@@N~
@@ -669,6 +670,7 @@ troll~
 0 -10 -6
 ! 2 0 13 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #20102
 sales man salesman~
 @@WA@@a peksy @@lSalesman@@N~
@@ -679,6 +681,7 @@ sales man salesman~
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #20101
 wraith~
 @@NA Small @@gWraith@@N~
@@ -688,10 +691,11 @@ This guy looks like he would kill his own mother for a cigarette.  He
 put him out of his misery.
 ~
 67 0 0
-6 1
+5 1
 0 0 0
 ! 2 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #20100
 Skeleton~
 A @@RShambling Skeleton@@N~
@@ -701,10 +705,11 @@ These little, disorganized skeletons don't look too hard. Maybe they will help
 train new players in the art of combat.
 ~
 16777283 0 0
-3 1
+2 1
 -25 -5 2
 ! 3 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
+1 4 0 16777283
 #0
 #OBJECTS
 #20100
@@ -714,6 +719,7 @@ A brand new mace lies on the ground, still glossy and polished.
 ~
 5 0 8421376 1
 0.00
+0
 0 2 3 7 0 0 0 0 0 0
 1
 A
@@ -729,6 +735,7 @@ A knife that can cut an aluminum can without dulling is dropped here.
 ~
 5 0 8421376 1
 0.00
+0
 0 2 4 11 0 0 0 0 0 0
 1
 A
@@ -744,6 +751,7 @@ A sword made from cheap steel lies here, reflecting light.
 ~
 5 0 8421376 1
 0.00
+0
 0 4 6 3 0 0 0 0 0 0
 1
 A
@@ -758,6 +766,7 @@ jacket~
 @@N A shabby @@lskeleton's @@Njacket lies here, waiting for you to take it~
 9 0 8650752 1
 0.00
+0
 9 0 0 0 0 0 0 0 0 0
 5
 L
@@ -768,6 +777,7 @@ shield~
 @@BYou see a @@RTiny Shield @@B that may help protect you from minimal damage ~
 9 0 8421376 1
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -786,6 +796,7 @@ necklace~
 @@NThis @@ygolden @@necklace @@ePROVES @@Nyou completed your schooling~
 9 0 8388736 1
 0.00
+0
 3 0 0 0 0 0 0 0 0 0
 1
 A
@@ -804,6 +815,7 @@ hat~
 A hat from a Ghost might be a good thing to have~
 9 0 8388616 1
 0.00
+0
 11 0 0 0 0 0 0 0 0 0
 1
 A
@@ -821,6 +833,7 @@ pants~
 ~
 9 0 9437184 1
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -834,6 +847,7 @@ A ring of ivory lace and satin rests here.
 ~
 9 0 9437184 1
 0.00
+0
 5 0 0 0 0 0 0 0 0 0
 1
 L
@@ -844,6 +858,7 @@ gloves~
 @@NWhen you put these @@lskeleton's gloves@@N on, your fingers turn to @@gbone@@N~
 9 0 8392704 1
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -858,6 +873,7 @@ sleeves~
 @@R A pair of Ghostly Sleeves are here... maybe they can protect you~
 9 0 8390656 1
 0.00
+0
 11 0 0 0 0 0 0 0 0 0
 1
 L
@@ -868,6 +884,7 @@ a @@yHaunted@@N Cape~
 @@N Maybe you should tie this @@yHaunted@@N Cape around your neck~
 9 0 8454144 1
 0.00
+0
 9 0 0 0 0 0 0 0 0 0
 1
 A
@@ -880,6 +897,7 @@ belt~
 @@NA dusty little @@rjewelled @@Nbelt for your waist~
 9 0 8519680 1
 0.00
+0
 9 0 0 0 0 0 0 0 0 0
 1
 A
@@ -895,6 +913,7 @@ A bracelet made from colored string sits here in a pile.
 ~
 9 0 8390656 1
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -912,6 +931,7 @@ A small, boney key lies here.
 ~
 18 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -923,6 +943,7 @@ A paper proclaiming graduation from SoE School for Higher Mudding is here.
 ~
 1 64 8421376 1
 0.00
+0
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -942,6 +963,7 @@ A firefly buzzes around the room.
 ~
 1 67 8388608 1
 0.00
+0
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -957,6 +979,7 @@ x-ray Xray specs~
 ~
 9 0 8388624 1
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -971,6 +994,7 @@ clip-on clipon earring~
 @@NA small @@pearring @@eGlowss@@N here, maybe you should get it~
 9 0 8388672 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 A
@@ -984,6 +1008,7 @@ bag clue~
 ~
 15 0 8388608 1
 0.00
+0
 20 0 0 0 0 0 0 0 0 0
 1
 L

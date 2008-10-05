@@ -1,6 +1,6 @@
 #AREA
 @@eMinotaur@@d Keep@@N~
-Q 17
+Q 19
 K minokeep~
 L @@W{@@mRM @@lAD@@W}@@N~
 N 103
@@ -1829,6 +1829,7 @@ mino minotaur captain~
 -1100 750 650
 ! 0 0 12 7 155150 50331648 48
 | 0 0 0 0 0 0 0
+1 7 0 36700243
 #1301
 minotaur guard~
 @@eMinotaur @@dGuard@@M~
@@ -1837,10 +1838,11 @@ minotaur guard~
 ~
 ~
 3145795 1048808 250
-131 1
+130 1
 -750 620 600
 ! 0 0 12 7 155150 0 0
 | 0 0 0 0 0 0 0
+1 5 0 3145795
 #1302
 minotaur patrol~
 @@WA @@eMinotaur @@dPatrolman@@N~
@@ -1853,6 +1855,7 @@ minotaur patrol~
 -800 620 500
 ! 0 0 12 7 24078 0 0
 | 0 0 0 0 0 0 0
+1 4 0 3145793
 #1303
 Gate Guard Minotaur~
 @@dGate Guard@@N~
@@ -1861,10 +1864,11 @@ Gate Guard Minotaur~
 ~
 ~
 67 2216 -1000
-122 1
+123 1
 -950 600 700
 ! 0 0 12 7 155150 0 32
 | 0 0 0 0 0 0 0
+1 3 0 67
 #1304
 minotaur cook~
 @@eMinotaur@@d Cook@@N~
@@ -1877,6 +1881,7 @@ minotaur cook~
 -750 600 650
 ! 0 0 12 7 24078 1064960 8
 | 0 0 0 0 0 0 0
+1 3 0 7
 #1305
 minotaur swordsman swordsmaster trainer~
 @@WA @@eMinotaur @@dSwordmaster@@N~
@@ -1889,6 +1894,7 @@ minotaur swordsman swordsmaster trainer~
 -1100 800 750
 ! 0 0 12 7 417294 50331648 48
 | 0 0 0 0 0 0 0
+1 6 0 36700227
 #1306
 minotaur swordsman student~
 @@WA @@eMinotaur @@dSword Student@@N~
@@ -1901,6 +1907,7 @@ minotaur swordsman student~
 -600 220 250
 ! 0 0 12 7 24078 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #1307
 mino minotaur soldier~
 @@WA @@eMinotaur @@dSoldier@@N~
@@ -1909,10 +1916,11 @@ mino minotaur soldier~
 ~
 ~
 67 131240 -250
-119 1
+120 1
 -740 700 650
 ! 0 0 12 7 155150 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #1308
 prison mob~
 @@WThe @@eMinotaur @@dPrisoner@@N~
@@ -1923,10 +1931,11 @@ prison mob~
 ~
 ~
 131089 12348 100
-104 1
+103 1
 -670 245 255
 ! 3 0 12 7 526350 0 2
 | 0 0 0 0 0 0 0
+1 3 0 131089
 #1309
 prison guard minotaur~
 @@dThe @@eMinotaur @@dprison guard @@N~
@@ -1935,10 +1944,11 @@ A Prison Guard stands here, guarding the prisoners.
 ~
 ~
 3 141500 0
-124 1
+123 1
 -950 680 650
 ! 0 0 12 7 399406 4096 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #0
 #OBJECTS
 #1300
@@ -1949,6 +1959,7 @@ mino minotaur earring~
 ~
 9 32 8388672 4097
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1971,6 +1982,7 @@ cloak~
 ~
 9 12582912 8454144 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 20
 A
@@ -1991,6 +2003,7 @@ flaming blade~
 @@WA @@ygolden @@Wblade with @@erubies @@Wencrusted in the hilt lies forgotten.@@N~
 5 7 8421376 257
 0.00
+0
 0 0 0 1 0 0 0 0 0 0
 35
 A
@@ -2011,6 +2024,7 @@ longsword~
 @@WA nasty @@ylongsword@@N glitters in the light.@@N~
 5 262144 8421376 1
 0.00
+0
 0 0 0 3 0 0 0 0 0 0
 15
 A
@@ -2029,6 +2043,7 @@ buckler~
 @@WA small @@bbuckler@@N, with one central @@eruby@@N and a @@ysun@@W emblazoned around it lies here.@@N~
 9 12583008 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 40
 A
@@ -2047,6 +2062,7 @@ fire dagger~
 @@WA small @@Rflaming @@Ydagger @@Wlies here.@@N~
 5 68 8421376 1
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 2
 A

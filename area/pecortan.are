@@ -1,6 +1,6 @@
 #AREA
 @@dPecortan@@N~
-Q 17
+Q 19
 K pecortan~
 L @@W{@@mRM @@lAD@@W}@@N~
 N 50
@@ -1881,10 +1881,11 @@ A small friendly storekeeper stands here.
 ~
 ~
 67 0 0
-23 1
+22 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #16868
 dark guard warrior~
 the dark guard~
@@ -1896,6 +1897,7 @@ The dark guard stands here, ready to slice your head from your shoulders.
 -1300 340 480
 ! 0 0 0 7 31246 0 0
 | 0 0 0 0 0 0 0
+1 6 0 1179723
 #16856
 soul~
 a lost soul~
@@ -1907,6 +1909,7 @@ A swirling lost soul tries to drag you into back into the pit.
 100 -50 -50
 ! 0 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
+1 4 0 99
 #16848
 boy~
 the dark-refreshment boy~
@@ -1918,6 +1921,7 @@ The night gaunt stands here, offering refreshments.
 -1500 700 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 4 0 131153
 #16843
 acolyte~
 the acolyte~
@@ -1925,10 +1929,11 @@ A shapely acolyte smiles enticingly at you through blood red lips.
 ~
 ~
 75 25212 -1000
-94 2
+95 2
 -1400 650 460
 ! 0 0 0 7 29710 0 0
 | 0 0 0 0 0 0 0
+1 4 0 75
 #16819
 armageddon~
 Armageddon~
@@ -1944,6 +1949,7 @@ Armageddon stands at nearly 20 feet, and is undoubtedly the most fearsome
 -1500 700 700
 ! 0 0 17 7 30734 0 16
 | 0 0 0 0 0 0 0
+1 6 0 123
 #16817
 giant bee~
 @@ya Giant Bee@@N~
@@ -1958,6 +1964,7 @@ This giant bee is about 4 feet long, with a wicked-looking barbed stinger that
 -600 190 180
 ! 0 0 19 7 24578 0 8
 | 0 0 0 0 0 0 0
+1 5 0 131177
 #16816
 queen giant bee~
 @@ythe queen of the giant bees@@N~
@@ -1967,10 +1974,11 @@ This is the queen of the giant bees.  She is about 6 feet long, and her
 stinger looks poised to strike.  Maybe now would be a good time to retreat?
 ~
 107 524840 0
-105 2
+104 2
 -1200 700 180
 ! 0 0 19 7 26638 0 16
 | 0 0 0 0 0 0 0
+1 5 0 107
 #16815
 age~
 @@dAge@@N~
@@ -1985,6 +1993,7 @@ This skeletal figure stands at about 7 feet in height, and is dressed in
 -999 700 480
 ! 0 0 0 7 26638 524288 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #16813
 The Lord of Tresserhorn~
 @@dThe @@GLord @@dof @@GTresserhorn@@N~
@@ -2000,6 +2009,7 @@ You find it very difficult to make out any details about @@dThe @@GLord @@dof
 -1500 580 620
 ! 0 0 0 7 26654 0 0
 | 0 0 0 0 0 0 0
+1 4 0 75
 #16804
 the vicious radib harpy~
 @@dThe Harpy@@N~
@@ -2014,6 +2024,7 @@ The harpy looks back at you, her beady eyes burning with hatred and malice.
 -900 300 300
 ! 0 0 18 7 24590 65536 0
 | 0 0 0 0 0 0 0
+1 7 0 134217851
 #16809
 the legionaire god~
 @@dThe @@lLegionaire God@@N~
@@ -2024,10 +2035,11 @@ The form of the god of warriors stands at nearly 8 feet tall.  A shroud of
 depths of his cowled hood reveal his supernatural origin.
 ~
 83 524840 0
-110 0
+109 0
 -1500 600 550
 ! 0 0 0 7 24734 0 0
 | 0 0 0 0 0 0 0
+1 4 0 83
 #16811
 the crazed necromancer~
 @@dThe @@lC@@er@@pa@@yz@@re@@cd @@RNecromancer@@N~
@@ -2045,6 +2057,7 @@ Standing at nearly 7 feet tall, and clad in glowing red armor, The
 -1250 700 700
 ! 0 0 0 7 24590 256 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #16821
 wizen old man traveller~
 the wizen old traveller~
@@ -2059,6 +2072,7 @@ This wizen old man hobbles along the road, seemingly on the verge of collaps.
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 193
 #16825
 the smelly under bridge troll~
 @@cthe under-bridge Troll@@N~
@@ -2070,10 +2084,11 @@ The huge form of the troll hulks over you, howling with rage.  "How DARE you
 snarl at you he grabs a spiked club and swings it down towards your head!
 ~
 111 512 -500
-98 1
+99 1
 -1300 500 390
 ! 0 0 13 7 26638 0 8
 | 0 0 0 0 0 0 0
+1 6 0 111
 #16851
 pit fiend~
 the pit fiend~
@@ -2081,10 +2096,11 @@ The pit fiend stands here, waiting to take your soul.
 ~
 ~
 123 16968 -1000
-107 1
+106 1
 -1500 700 700
 ! 0 0 16 7 30750 0 0
 | 0 0 0 0 0 0 0
+1 6 0 123
 #16852
 imp~
 the imp~
@@ -2092,10 +2108,11 @@ A small green imp stands here, preserving combat trophies.
 ~
 ~
 73 286780 -666
-98 1
+99 1
 -1500 620 500
 ! 0 0 16 7 29710 0 16
 | 0 0 0 0 0 0 0
+1 3 0 73
 #16857
 doorman~
 the doorman~
@@ -2103,10 +2120,11 @@ The doorman is standing here, welcoming visitors.
 ~
 ~
 67 0 0
-9 1
+10 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #16802
 darkblade clan guardian~
 the DarkBlade clan guardian~
@@ -2114,10 +2132,11 @@ A guardian of clan DarkBlade is standing here, glaring at you.
 ~
 ~
 1 0 0
-28 1
+29 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 1 0 1
 #16882
 healer~
 the healer~
@@ -2125,10 +2144,11 @@ A kind healer stands here, tending to your wounds.
 ~
 ~
 4163 128 1000
-29 1
+30 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 4 0 4163
 #16800
 dark heart of the wood~
 @@GThe @@dDark Heart @@Gof the @@dWood@@N~
@@ -2148,10 +2168,11 @@ dark heart of the wood~
 its @@Gperversion@@d.@@N
 ~
 11 56 0
-101 1
+102 1
 -900 400 430
 ! 0 0 17 7 24582 524288 0
 | 0 0 0 0 0 0 0
+1 3 0 11
 #16801
 rainbow dragon~
 @@eT@@yh@@re @@lR@@ma@@ei@@yn@@rb@@lo@@mw @@eD@@yr@@ra@@lg@@mo@@en@@N~
@@ -2164,6 +2185,7 @@ rainbow dragon~
 -1100 700 700
 ! 0 0 8 7 30990 0 16
 | 0 0 0 0 0 0 0
+1 6 0 132619
 #16803
 the krakken~
 the KrakKen~
@@ -2175,6 +2197,7 @@ the KrakKen~
 -1350 500 400
 ! 0 0 19 7 30734 0 16
 | 0 0 0 0 0 0 0
+1 4 0 131113
 #16805
 paladia mors~
 @@ePaladia-Mors@@N~
@@ -2182,10 +2205,11 @@ paladia mors~
 ~
 ~
 131083 533052 0
-107 1
+108 1
 -1300 500 500
 ! 0 0 8 7 28686 0 0
 | 0 0 0 0 0 0 0
+1 4 0 131083
 #16806
 chromium elder dragon~
 the @@aChromium@@N Elder Dragon~
@@ -2193,10 +2217,11 @@ The statue of the @@aChromium@@N Elder Dragon, is here.
 ~
 ~
 11 8764 0
-108 1
+109 1
 -1500 500 500
 ! 0 0 8 7 29710 0 0
 | 0 0 0 0 0 0 0
+1 3 0 11
 #16807
 arcades sabbath edler dragon statue~
 @@WAr@@dcad@@Wes Sab@@db@@Wa@@dth@@N~
@@ -2209,6 +2234,7 @@ The statue of the Elder Dragon known as @@dAr@@Wcad@@des
 -1400 620 610
 ! 0 0 8 7 29710 0 16
 | 0 0 0 0 0 0 0
+1 4 0 131083
 #16808
 Vaevictus Asmadi~
 @@RVae@@Gvic@@dtus As@@Gma@@Rdi@@N~
@@ -2220,6 +2246,7 @@ The statue of @@dVae@@Gvic@@Rtus As@@Gma@@ddi@@N, the Elder Dragon, looms powerf
 -1450 660 600
 ! 0 0 8 7 29710 0 16
 | 0 0 0 0 0 0 0
+1 4 0 131083
 #16810
 nicol bolas~
 @@aNic@@dol @@cBo@@dlas@@N~
@@ -2227,10 +2254,11 @@ A statue of the most feared Elder Dragon, @@dNic@@aol @@dBo@@clas@@N
 ~
 ~
 131083 8764 0
-112 1
+111 1
 -1500 700 630
 ! 0 0 8 7 31758 0 0
 | 0 0 0 0 0 0 0
+1 4 0 131083
 #0
 #OBJECTS
 #16882
@@ -2239,6 +2267,7 @@ a waterskin~
 A waterskin lies here.~
 17 0 8388608 1
 0.00
+0
 100 100 0 0 0 0 0 0 0 0
 1
 L
@@ -2250,6 +2279,7 @@ A small loaf of bread lies on the floor.
 ~
 19 0 8388608 1
 0.00
+0
 40 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2261,6 +2291,7 @@ A black steel breastplate lies here.
 ~
 9 262148 8650752 3738
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2282,6 +2313,7 @@ A huge double-headed black war axe sticks out of the ground.
 ~
 5 262147 8421376 1
 0.00
+0
 0 10 20 3 0 0 0 0 0 0
 8
 A
@@ -2305,6 +2337,7 @@ A waist garment with 6 human heads dangling from it is here.
 ~
 9 262148 8519680 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -2328,6 +2361,7 @@ A small DarkBlade pendant is lying here.
 ~
 9 0 8388736 1
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2341,6 +2375,7 @@ A coiled black band is lying here, pulsing with dark energy.
 ~
 9 3 8390656 1
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2354,6 +2389,7 @@ A small skull-shaped earring lies on the floor.
 ~
 9 0 8388672 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2369,6 +2405,7 @@ A small black flame floats lazily in the air.
 ~
 1 0 8388608 1
 0.00
+0
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -2384,6 +2421,7 @@ A large skull-shaped chalice rests on the floor here.
 ~
 10 128 8388608 1
 0.00
+0
 80 28 28 28 0 0 0 0 0 0
 5
 L
@@ -2395,6 +2433,7 @@ A human heart is lying here, pumping blood onto the floor.
 ~
 19 0 8388608 1
 0.00
+0
 50 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2406,6 +2445,7 @@ the armageddon clock~
 ~
 4 195 8421376 17
 0.00
+0
 80 10 10 617 0 0 0 0 0 0
 1
 L
@@ -2417,6 +2457,7 @@ A beautiful golden harp is resting here.
 ~
 1 3 8388608 1
 0.00
+0
 0 0 -1 0 0 0 0 0 0 0
 8
 A
@@ -2436,6 +2477,7 @@ A huge hive is hanging from the ceiling.
 ~
 15 0 8388608 1
 0.00
+0
 500 0 0 0 0 0 0 0 0 0
 100
 L
@@ -2447,6 +2489,7 @@ A long withered staff is lying here.
 ~
 4 262226 8421376 16
 0.00
+0
 80 5 5 617 0 0 0 0 0 0
 5
 A
@@ -2486,6 +2529,7 @@ the gift of the undead~
 ~
 26 4 8388608 1
 0.00
+0
 80 503 503 503 0 0 0 0 0 0
 0
 L
@@ -2497,6 +2541,7 @@ the armour of darkness~
 ~
 9 262147 8454144 16786
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 40
 A
@@ -2529,6 +2574,7 @@ harpy wings~
 ~
 9 262144 8650752 16384
 0.00
+0
 15 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2556,6 +2602,7 @@ The Aegis Halberd~
 ~
 5 262147 8421376 1
 0.00
+0
 0 15 30 3 0 0 0 0 0 0
 22
 A
@@ -2588,6 +2635,7 @@ the robes of the necromancer~
 ~
 9 262145 8650752 17
 0.00
+0
 15 0 0 0 0 0 0 0 0 0
 20
 A
@@ -2617,6 +2665,7 @@ A shining helm is lying here in a pool of blood.
 ~
 9 262148 8388616 1546
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 20
 A
@@ -2650,6 +2699,7 @@ necropotence~
 ~
 5 262225 8421376 16400
 0.00
+0
 0 20 30 8 0 0 0 0 0 0
 5
 A
@@ -2677,6 +2727,7 @@ A strange white facemask is lying on the floor here.
 ~
 26 1 8421392 1
 0.00
+0
 80 28 28 614 0 0 0 0 0 0
 1
 L
@@ -2688,6 +2739,7 @@ A giant bee's sting is lying on the floor here.
 ~
 5 2 8421376 1
 0.00
+0
 0 10 20 11 0 0 0 0 0 0
 1
 A
@@ -2703,6 +2755,7 @@ A long staff of polished oak is lying here.
 ~
 5 64 8421376 1
 0.00
+0
 0 5 10 6 0 0 0 0 0 0
 1
 A
@@ -2718,6 +2771,7 @@ A huge wooden club with a foot-long spike driven through the end lies here.
 ~
 5 0 8421376 1
 0.00
+0
 0 0 0 6 0 0 0 0 0 0
 15
 A
@@ -2745,6 +2799,7 @@ A huge brass helmet with a large spike on top is lying here.
 ~
 9 0 8388616 1
 0.00
+0
 6 0 0 0 0 0 0 0 0 0
 15
 A
@@ -2766,6 +2821,7 @@ A huge brass breastplate covered with large spikes is lying here.
 ~
 9 0 8650752 1
 0.00
+0
 10 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2793,6 +2849,7 @@ A large donation box lies here for the needy...please give generously!
 ~
 15 0 0 1
 0.00
+0
 10000 1 0 0 0 0 0 0 0 0
 500
 L
@@ -2804,6 +2861,7 @@ A screen of darkness covered with glowing green letters float nearby.
 ~
 27 0 0 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 0
 L
@@ -2815,6 +2873,7 @@ A black twisted fountain is here, slurping up blood.
 ~
 25 0 0 1
 0.00
+0
 13 0 0 0 0 0 0 0 0 0
 50
 L
@@ -2825,6 +2884,7 @@ dark heart pill~
 ~
 26 4 8388608 1
 0.00
+0
 80 617 28 72 0 0 0 0 0 0
 1
 L
@@ -2835,6 +2895,7 @@ the sting of the Queen be~
 ~
 11 5 8421376 16785
 0.00
+0
 16817 0 0 0 0 0 0 0 0 0
 10
 A
@@ -2857,6 +2918,7 @@ rainbow dragon scale shield~
 ~
 9 262144 8421376 20378
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 35
 A
@@ -2890,6 +2952,7 @@ A small pillar of flame floats vertically here.
 ~
 4 4 8421376 16
 0.00
+0
 80 2 2 200 0 0 0 0 0 0
 8
 L
@@ -2901,6 +2964,7 @@ A small pillar of water floats vertically here.
 ~
 4 4 8421376 16
 0.00
+0
 80 2 2 606 0 0 0 0 0 0
 8
 L
@@ -2911,6 +2975,7 @@ feast of the unicorn~
 ~
 26 0 8421376 17
 0.00
+0
 80 223 614 72 0 0 0 0 0 0
 1
 L
@@ -2921,6 +2986,7 @@ the ring af ma ruf ma'ruf~
 ~
 9 262144 8396800 17
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2951,6 +3017,7 @@ crystal clear stream~
 ~
 25 0 0 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 500
 L
@@ -2962,6 +3029,7 @@ In it's entirety, the Triforce of @@rWisdom@@N floats here.
 ~
 29 262146 8421376 24074
 0.00
+0
 5605 0 5607 0 0 0 0 0 0 0
 1
 A
@@ -2991,6 +3059,7 @@ Wisely floats here the Bottom Half of the Triforce of @@rWisdom@@N does.
 ~
 29 1310722 8421376 3592
 0.00
+0
 0 16832 16830 0 0 0 0 0 0 0
 1
 A
@@ -3016,6 +3085,7 @@ Here sits the Top Half of the Triforce of @@rWisdom@@N
 ~
 29 1310722 8421376 20482
 0.00
+0
 16831 0 16830 0 0 0 0 0 0 0
 1
 A

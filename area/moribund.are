@@ -1,6 +1,6 @@
 #AREA
 @@dMoribund@@N~
-Q 17
+Q 19
 K moribund~
 L @@W{ @@rALL@@W }@@N~
 N 19
@@ -51,22 +51,22 @@ D0
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3304
 D1
 Moribund.
 ~
 ~
-0 -1 3304
+0 -1 3303
 D2
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D3
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D4
 Moribund.
 ~
@@ -87,7 +87,7 @@ D0
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3306
 D1
 Moribund.
 ~
@@ -97,17 +97,17 @@ D2
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D3
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D4
 Moribund.
 ~
 ~
-0 -1 3306
+0 -1 3303
 D5
 Moribund.
 ~
@@ -121,10 +121,10 @@ You are in the inner lands of Moribund.  Whisps of grey smoke float by.
 ~
 9228 11
 D0
-Moribund.
+The Morgue!
 ~
 ~
-0 -1 3305
+0 -1 3300
 D1
 Moribund.
 ~
@@ -134,17 +134,17 @@ D2
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3304
 D3
 Moribund.
 ~
 ~
-0 -1 3304
+0 -1 3303
 D4
-The Morgue!
+Moribund.
 ~
 ~
-0 -1 3300
+0 -1 3305
 D5
 Moribund.
 ~
@@ -196,12 +196,12 @@ D0
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3303
 D1
 Moribund.
 ~
 ~
-0 -1 3303
+0 -1 3302
 D2
 Moribund.
 ~
@@ -237,12 +237,12 @@ D1
 Moribund.
 ~
 ~
-0 -1 3302
+0 -1 3301
 D2
 Moribund.
 ~
 ~
-0 -1 3301
+0 -1 3302
 D3
 Moribund.
 ~
@@ -287,6 +287,7 @@ A Pesky Gremlin stands here, looking for someone to hurt.~
 200 0 0
 ! 0 0 19 7 8226 2 0
 | 0 0 0 0 0 0 0
+1 4 0 2069
 #3301
 will willo wisp~
 Will-o the Wisp~
@@ -300,6 +301,7 @@ As you look closer, you realise it is swamp gas.  You sense an evil force at
 40 16 19
 ! 0 0 17 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #3300
 cadaver~
 Cadaver~
@@ -310,10 +312,11 @@ Cadaver is a long dead adventurer, forever doomed to summon forth other
 newly dead players into his home, Moribund.
 ~
 3 524288 -200
-82 1
+81 1
 100 50 50
 ! 0 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #0
 #OBJECTS
 #3301
@@ -322,6 +325,7 @@ a potion~
 A strange potion lies here.~
 10 128 8388608 1
 0.00
+0
 1 19 -1 -1 0 0 0 0 0 0
 1
 L
@@ -333,6 +337,7 @@ A small key made from human bone lies here.
 ~
 18 2 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L

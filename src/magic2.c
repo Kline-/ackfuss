@@ -517,7 +517,7 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
       send_to_char( "You failed.\n\r", ch );
       return TRUE;
    }
-   if( ( is_set( victim->act2, PLR_NOSUMMON ) ) || ( IS_NPC( victim ) && ( victim->level > ( level - 21 ) ) ) )
+   if( ( is_set( victim->act, ACT_NO_SUMMON ) ) || ( IS_NPC( victim ) && ( victim->level > ( level - 21 ) ) ) )
    {
       send_to_char( "You seemed unable to snatch your victim!\n\r", ch );
       send_to_char( "You feel a slight tugging sensation.\n\r", victim );
@@ -1046,7 +1046,7 @@ bool spell_visit( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
       return TRUE;
    }
 
-   if( is_set( victim->act2, PLR_NOVISIT ) )
+   if( is_set( victim->act, ACT_NO_VISIT ) )
    {
       send_to_char( "You seem unable to visit your target!\n\r", ch );
       return TRUE;
@@ -1593,7 +1593,7 @@ bool spell_animate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
 
    if( ob->item_type == ITEM_CORPSE_NPC )
    {
-      SET_BIT( corpse->act, ACT_UNDEAD );
+      set_bit( corpse->act, ACT_UNDEAD );
       act( "$n's eyes glow black!", corpse, NULL, NULL, TO_ROOM );
    }
 
@@ -1615,7 +1615,7 @@ bool spell_animate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
 
    extract_obj( ob );
    do_wear( corpse, "all" );  /* FIXME: better to check items, then wear... */
-   SET_BIT( corpse->act, ACT_PET );
+   set_bit( corpse->act, ACT_PET );
    SET_BIT( corpse->affected_by, AFF_CHARM );
    corpse->extract_timer = get_psuedo_level( ch ) / 3;
 
@@ -1827,7 +1827,7 @@ bool spell_mind_flail( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    if( victim == ch )
       return FALSE;
 
-   if( IS_NPC( victim ) && IS_SET( victim->act, ACT_NOMIND ) )
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
       return TRUE;
 
 
@@ -1933,7 +1933,7 @@ bool spell_physic_thrust( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
       return FALSE;
 
 
-   if( IS_NPC( victim ) && IS_SET( victim->act, ACT_NOMIND ) )
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
       return TRUE;
 
 
@@ -1955,7 +1955,7 @@ bool spell_physic_crush( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    if( victim == ch )
       return FALSE;
 
-   if( IS_NPC( victim ) && IS_SET( victim->act, ACT_NOMIND ) )
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
       return TRUE;
 
 
@@ -1976,7 +1976,7 @@ bool spell_ego_whip( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    if( victim == ch )
       return FALSE;
 
-   if( IS_NPC( victim ) && IS_SET( victim->act, ACT_NOMIND ) )
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
       return TRUE;
 
 

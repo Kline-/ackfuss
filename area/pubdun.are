@@ -1,6 +1,6 @@
 #AREA
 @@yPublic @@dDungeons@@N~
-Q 17
+Q 19
 K publicdungeons~
 L @@W{@@r 5 15@@W}@@N~
 N 28
@@ -276,10 +276,11 @@ Alice in Chains is a blood thirsty killing machine, and a not very nice
 "sickman, sickman, sickman."
 ~
 3 8 -400
-6 2
+5 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9552
 pantera~
 Pantera~
@@ -294,6 +295,7 @@ Pantera is a shaven-headed beast, half man, half who-knows-what?  He has
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9553
 buffalo tom~
 Buffalo Tom~
@@ -308,6 +310,7 @@ Buffalo Tom was Midgaard's most notorious serial killer, with over three
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9554
 blur~
 Blur~
@@ -322,6 +325,7 @@ Blur is so called because no one has ever seen it stop moving.  It spins
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9555
 dinosaur jr~
 Dinosaur Jr~
@@ -336,6 +340,7 @@ Dinosaur Jr, son of Dinosaur senior, was convited of mass murder many
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9556
 elastica~
 Elastica~
@@ -346,10 +351,11 @@ Elastica is so named because she appears to be made out of elastic, with
 question mark as you look at her.
 ~
 3 0 -200
-6 2
+7 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #0
 #OBJECTS
 #9551
@@ -358,6 +364,7 @@ the vibrating ring~
 The vibrating ring spins whirls about on the floor in front of you.~
 9 2 8396800 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 A
@@ -370,6 +377,7 @@ a Buffalo bracer~
 A Buffalo bracer has been left here.~
 9 1 8390656 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 A
@@ -382,6 +390,7 @@ pantera's fang~
 Pantera's fang has been left here.~
 5 65 8421376 1
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 10
 A

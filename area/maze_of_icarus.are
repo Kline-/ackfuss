@@ -1,6 +1,6 @@
 #AREA
 @@WThe Maze of @@lIcarus@@N~
-Q 17
+Q 19
 K icarusmaze~
 L @@W{@@rADEPT@@W}@@N~
 N 108
@@ -149,10 +149,11 @@ minotuar slave~
 @@WA @@RSlave of @@eKahl'Dann@@W cowers before you.@@N~
 ~
 1 0 0
-102 1
+101 1
 -900 500 400
 ! 0 0 12 7 22542 0 0
 | 0 0 0 0 0 0 0
+1 1 0 1
 #4951
 Minotaur Servant~
 @@WA @@RMinotuar Servant@@N~
@@ -163,6 +164,7 @@ Minotaur Servant~
 -1000 500 450
 ! 0 0 12 7 7694 4128 0
 | 0 0 0 0 0 0 0
+1 1 0 1
 #4952
 minotaur guard~
 @@WA @@RMinoatur Guard@@N~
@@ -173,6 +175,7 @@ minotaur guard~
 -1100 550 600
 ! 7 0 12 7 679438 0 0
 | 0 0 0 0 0 0 0
+1 3 0 41
 #4953
 minotaur master~
 @@WA @@RMinotaur Master@@N~
@@ -183,26 +186,29 @@ minotaur master~
 -1250 1000 750
 ! 0 0 12 7 941710 0 0
 | 0 0 0 0 0 0 0
+1 4 0 3145761
 #4954
 minotaur lord~
 @@WA Mighty @@RMinotuar Lord@@N~
 @@WOne of the @@eLords @@Wof the @@RMaze@@N ponders your fate.~
 ~
 3145737 10408 0
-130 1
+129 1
 -1400 800 900
 ! 0 0 12 7 925326 0 16
 | 0 0 0 0 0 0 0
+1 4 0 3145737
 #4955
 minotaur prince~
 @@WOne of the @@RPrinces of the Maze@@W~
 @@WA @@RPrince of @@eKhal'Dann@@N laughs at you evilly!@@N ~
 ~
 3145769 10408 0
-134 1
+135 1
 -1500 1000 1000
 ! 0 0 12 7 925326 0 16
 | 0 0 0 0 0 0 0
+1 5 0 3145769
 #4956
 Minotaur king~
 @@eTekk'Moran@@W, @@RKing of the Minotaurs@@N~
@@ -213,6 +219,7 @@ Minotaur king~
 -1400 1000 1000
 ! 0 0 12 7 925326 4096 16
 | 0 0 0 0 0 0 0
+1 7 0 19922987
 #4957
 scout minotaur~
 @@WA @@RMinotuar@@d Scout@@N~
@@ -223,16 +230,18 @@ scout minotaur~
 -1000 500 450
 ! 0 0 12 7 6670 0 0
 | 0 0 0 0 0 0 0
+1 2 0 129
 #4958
 captain minotaur~
 @@WA @@RMinotaur @@eCaptain @@Wof @@dWar@@N~
 @@WA @@RMinotaur @@eCaptain @@Wof @@dWar@@N commands a war party!~
 ~
 3145737 10368 0
-133 1
+132 1
 -1800 1000 1000
 ! 0 0 12 7 417038 0 0
 | 0 0 0 0 0 0 0
+1 4 0 3145737
 #4959
 diplomat~
 @@WA @@RMinotaur @@ydiplomat@@N~
@@ -243,6 +252,7 @@ diplomat~
 -1500 1000 1000
 ! 0 0 12 7 400014 0 0
 | 0 0 0 0 0 0 0
+1 5 0 19922953
 #4960
 assassin minotaur~
 @@WA @@RMinotaur @@dAssassin@@N~
@@ -253,6 +263,7 @@ assassin minotaur~
 -1900 1000 1000
 ! 0 0 12 7 401038 0 0
 | 0 0 0 0 0 0 0
+1 5 0 19922947
 #0
 #OBJECTS
 #4950
@@ -261,6 +272,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4961 0 0 0 0 0 0 0
 1
 L
@@ -271,6 +283,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4972 0 0 0 0 0 0 0
 1
 L
@@ -281,6 +294,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4983 0 0 0 0 0 0 0
 1
 L
@@ -291,6 +305,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4954 0 0 0 0 0 0 0
 1
 L
@@ -301,6 +316,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4964 0 0 0 0 0 0 0
 1
 L
@@ -311,6 +327,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4980 0 0 0 0 0 0 0
 1
 L
@@ -321,6 +338,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4991 0 0 0 0 0 0 0
 1
 L
@@ -331,6 +349,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4973 0 0 0 0 0 0 0
 1
 L
@@ -341,6 +360,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4952 0 0 0 0 0 0 0
 1
 L
@@ -351,6 +371,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4994 0 0 0 0 0 0 0
 1
 L
@@ -361,6 +382,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4973 0 0 0 0 0 0 0
 1
 L
@@ -371,6 +393,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4974 0 0 0 0 0 0 0
 1
 L
@@ -381,6 +404,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4980 0 0 0 0 0 0 0
 1
 L
@@ -391,6 +415,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4954 0 0 0 0 0 0 0
 1
 L
@@ -401,6 +426,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4953 0 0 0 0 0 0 0
 1
 L
@@ -411,6 +437,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4962 0 0 0 0 0 0 0
 1
 L
@@ -421,6 +448,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4964 0 0 0 0 0 0 0
 1
 L
@@ -431,6 +459,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4982 0 0 0 0 0 0 0
 1
 L
@@ -441,6 +470,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4970 0 0 0 0 0 0 0
 1
 L
@@ -451,6 +481,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 0 4984 0 0 0 0 0 0 0
 1
 L
@@ -461,6 +492,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 3 4950 0 0 0 0 0 0 0
 1
 L
@@ -471,6 +503,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 3 4951 0 0 0 0 0 0 0
 1
 L
@@ -481,6 +514,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 3 4981 0 0 0 0 0 0 0
 1
 L
@@ -491,6 +525,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 3 4952 0 0 0 0 0 0 0
 1
 L
@@ -501,6 +536,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 3 4953 0 0 0 0 0 0 0
 1
 L
@@ -511,6 +547,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 3 4954 0 0 0 0 0 0 0
 1
 L
@@ -521,6 +558,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 0 0 1
 0.00
+0
 9 3 4955 0 0 0 0 0 0 0
 1
 L
@@ -531,6 +569,7 @@ ring ruby obsidian~
 @@WA gleaming @@dobsidian @@yring@@W set with a sparkling @@eruby@@NM~
 9 0 8396800 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 A
@@ -551,6 +590,7 @@ bracers minotaur~
 @@WA spiked pair of @@dobsidian bracers@@W, etched with @@estrange symbols@@N~
 9 3 8390656 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 16
 A
@@ -569,6 +609,7 @@ hooves minotaur~
 @@WA pair of @@eblood @@Wencrusted @@dhooves@@W lie here.@@N~
 9 3 12582912 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 25
 A
@@ -591,6 +632,7 @@ wax ball~
 @@WA mass of @@ywax@@N has melted into a mess.@@N~
 29 0 8388608 1
 0.00
+0
 0 4981 4982 0 0 0 0 0 0 0
 1
 L
@@ -601,6 +643,7 @@ feathers eagle~
 @@WSeveral large @@afeathers@@W, seemingly from a giant @@bEagle@@W havecollected here.@@N~
 29 1048576 8388608 1
 0.00
+0
 4980 0 4982 0 0 0 0 0 0 0
 1
 L
@@ -611,6 +654,7 @@ mess sticky~
 @@WA large, sticky mess of @@afeathers @@W and @@ywax@@N lies here.@@N~
 29 0 8388608 1
 0.00
+0
 0 4984 4991 0 0 0 0 0 0 0
 1
 L
@@ -621,6 +665,7 @@ rope coil~
 @@WSeveral short pieces of @@brope@@W are coiled neatly here.@@N~
 29 0 8388608 1
 0.00
+0
 0 4988 4984 0 0 0 0 0 0 0
 1
 L
@@ -631,6 +676,7 @@ rigging~
 @@WAn unusual rigging, complete with @@bwooden @@Wwings@@N lies here.@@N~
 29 0 8388608 1
 0.00
+0
 4982 0 4991 0 0 0 0 0 0 0
 1
 L
@@ -641,6 +687,7 @@ torch flickering~
 @@WA magically @@ef@@yl@@ei@@yc@@ek@@ye@@er@@yi@@en@@yg@@b torch@@W liesforgotten here.@@N~
 29 0 8388608 1
 0.00
+0
 0 4991 4986 0 0 0 0 0 0 0
 1
 L
@@ -651,6 +698,7 @@ wings icarus~
 @@WA beautiful set of hand crafted wings lies here.@@N~
 9 1048577 8389632 20608
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -671,6 +719,7 @@ rod minotaur~
 @@WA huge @@dobsidian rod@@W, encrusted with @@erubies@@W floats before you.@@N~
 5 19 8421376 16641
 0.00
+0
 0 0 0 8 0 0 0 0 0 0
 45
 A
@@ -691,6 +740,7 @@ frame~
 @@WA lattice @@bframe@@W in the shape of a pair of wings lies here.@@N~
 29 0 8388608 1
 0.00
+0
 4983 0 4984 0 0 0 0 0 0 0
 1
 L
@@ -701,6 +751,7 @@ sticks~
 @@WA large pile of @@bwooden sticks and branches@@W.@@N~
 29 0 8388608 1
 0.00
+0
 0 4990 4988 0 0 0 0 0 0 0
 1
 L
@@ -711,6 +762,7 @@ twine~
 @@WA large ball of @@ytwine@@N lies abandoned in the corner@@N.~
 29 0 8388608 1
 0.00
+0
 4989 0 4988 0 0 0 0 0 0 0
 1
 L
@@ -721,6 +773,7 @@ dream~
 @@WThe result of long hard work, a @@rfanciful @@ADream of freedom stands before you.@@N~
 29 0 8388608 1
 0.00
+0
 4985 0 4986 0 0 0 0 0 0 0
 1
 L
@@ -731,6 +784,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4963 0 0 0 0 0 0 0
 1
 L
@@ -741,6 +795,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4981 0 0 0 0 0 0 0
 1
 L
@@ -751,6 +806,7 @@ gate~
 @@WAn @@dIron bound @@RGate@@N stands here.~
 14 65536 0 1
 0.00
+0
 9 0 4952 0 0 0 0 0 0 0
 1
 L

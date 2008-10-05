@@ -67,7 +67,7 @@
 #define BUILD_SEC_SPECIALS 8
 #define BUILD_SEC_OBJFUNS  9 /* -S- Mod */
 #define BUILD_SEC_END      10
-#define AREA_VERSION  19
+#define AREA_VERSION  20
 
 
 struct save_queue_type
@@ -315,9 +315,7 @@ void build_save_mobs(  )
    fprintf( SaveFile, "%s~\n", pMobIndex->short_descr );
    fprintf( SaveFile, "%s~\n", pMobIndex->long_descr );
    fprintf( SaveFile, "%s~\n", pMobIndex->description );
-   bv_to_bm( pMobIndex->act, pMobIndex->act2 ); /* Start converting! */
-   fprintf( SaveFile, "%s", save_bitmask( pMobIndex->act2 ) );
-   fprintf( SaveFile, "%i %i %i\n", pMobIndex->act, pMobIndex->affected_by, pMobIndex->alignment );
+   fprintf( SaveFile, "%i %i\n", pMobIndex->affected_by, pMobIndex->alignment );
    fprintf( SaveFile, "%i %i\n", pMobIndex->level, pMobIndex->sex );
    fprintf( SaveFile, "%i %i %i\n", pMobIndex->ac_mod, pMobIndex->hr_mod, pMobIndex->dr_mod );
 
@@ -335,6 +333,7 @@ void build_save_mobs(  )
             pMobIndex->strong_magic,
             pMobIndex->weak_magic,
             pMobIndex->race_mods, pMobIndex->power_skills, pMobIndex->power_cast, pMobIndex->resist, pMobIndex->suscept );
+   fprintf( SaveFile, "%s\n", save_bitmask( pMobIndex->act ) );
 
    mprg = pMobIndex->first_mprog;
    finish_progs = 0;

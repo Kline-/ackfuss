@@ -1,6 +1,6 @@
 #AREA
 @@dT@@mh@@pe @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@dM@@mi@@ps@@Wt@@N~
-Q 17
+Q 19
 K crimson_mist~
 L @@N{@@dA@@mD@@pE@@WP@@gT@@N}~
 N 163
@@ -2956,10 +2956,11 @@ Dweller~
 be formed from the @@pf@@mog itself..@@N
 ~
 105 16552 0
-123 0
+124 0
 -1400 800 550
 ! 3 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
+1 4 0 105
 #8351
 Dweller~
 @@dF@@mog @@dD@@mweller@@N~
@@ -2973,6 +2974,7 @@ Dweller~
 -1400 800 550
 ! 0 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
+1 4 0 105
 #8352
 Dweller~
 @@dF@@mog @@dD@@mweller@@N~
@@ -2982,10 +2984,11 @@ Dweller~
 be formed from the @@pf@@mog itself..@@N
 ~
 105 16552 0
-122 0
+121 0
 -1400 800 550
 ! 0 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
+1 4 0 105
 #8353
 Dweller~
 @@dF@@mog @@dD@@mweller@@N~
@@ -2999,6 +3002,7 @@ Dweller~
 -1400 800 550
 ! 0 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
+1 4 0 105
 #8354
 Dweller~
 @@dF@@mog @@dD@@mweller@@N~
@@ -3012,6 +3016,7 @@ Dweller~
 -1400 800 550
 ! 0 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
+1 4 0 105
 #8355
 Guard guardian mist crimson~
 @@dGuard of the Crimson Mist@@N~
@@ -3022,10 +3027,11 @@ A large, large man stands here, with a small trail of a deep @@mviolet@@N fog
 @@ppierce@@N into the very depths of your soul..@@N
 ~
 36765723 18664 0
-105 1
+106 1
 -1700 1000 500
 ! 7 0 0 7 30870 1052736 80
 | 0 0 0 0 0 0 0
+1 8 0 36765723
 #8356
 Rock Hydra~
 @@dThe @@mRock Hydra@@N~
@@ -3040,6 +3046,7 @@ Rock Hydra~
 -1800 1000 500
 ! 8 0 19 7 548878 40 176
 | 0 0 0 0 0 0 0
+1 3 0 33554435
 #8357
 Vampyre Bats bat~
 @@NVampyre @@pBats@@N~
@@ -3051,6 +3058,7 @@ Vampyre Bats bat~
 -1000 500 500
 ! 3 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
+1 4 0 33570819
 #8358
 Vampyre Bats bat~
 @@NVampyre @@pBats@@N~
@@ -3058,10 +3066,11 @@ Vampyre Bats bat~
 ~
 ~
 16387 524988 0
-123 0
+122 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
+1 3 0 16387
 #8359
 Vampyre Bats bat~
 @@NVampyre @@pBats@@N~
@@ -3073,6 +3082,7 @@ Vampyre Bats bat~
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
+1 3 0 16387
 #8360
 Vampyre Bats bat~
 @@NVampyre @@pBats@@N~
@@ -3084,6 +3094,7 @@ Vampyre Bats bat~
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
+1 3 0 16387
 #8361
 Vampyre Bats bat~
 @@NVampyre @@pBats@@N~
@@ -3091,10 +3102,11 @@ Vampyre Bats bat~
 ~
 ~
 16387 524988 0
-125 0
+124 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
+1 3 0 16387
 #8362
 Vampyre Bats bat~
 @@NVampyre @@pBats@@N~
@@ -3106,6 +3118,7 @@ Vampyre Bats bat~
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
+1 3 0 16387
 #8363
 Patrol fog mist~
 @@mCrimson Mist @@dPatrol@@N~
@@ -3119,6 +3132,7 @@ Patrol fog mist~
 -1700 660 580
 ! 0 0 0 7 548878 0 8
 | 0 0 0 0 0 0 0
+1 4 0 36700161
 #8364
 Patrol fog mist~
 @@mCrimson Mist @@dPatrol@@N~
@@ -3132,6 +3146,7 @@ Patrol fog mist~
 -1700 660 580
 ! 0 0 0 7 548878 0 8
 | 0 0 0 0 0 0 0
+1 4 0 36700161
 #8365
 Patrol fog mist~
 @@mCrimson Mist @@dPatrol@@N~
@@ -3145,6 +3160,7 @@ Patrol fog mist~
 -1700 660 580
 ! 0 0 0 7 548878 0 8
 | 0 0 0 0 0 0 0
+1 4 0 36700161
 #8366
 crimson demon~
 @@mCrimson @@dDemon@@N~
@@ -3152,10 +3168,11 @@ crimson demon~
 ~
 ~
 43 526570 0
-121 1
+120 1
 -1900 800 600
 ! 6 0 16 7 942094 0 48
 | 0 0 0 0 0 0 0
+1 4 0 43
 #8367
 aries~
 @@RAries@@e, @@dThe Ram@@N~
@@ -3168,6 +3185,7 @@ aries~
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8368
 Taurus~
 @@bTaurus@@y, @@dThe Bull@@N~
@@ -3180,6 +3198,7 @@ Taurus~
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8369
 Gemini~
 @@BGemini@@l, @@dThe Twins@@N~
@@ -3188,10 +3207,11 @@ Gemini~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 33751067 18624 0
-126 0
+125 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8370
 Cancer~
 @@W@@xCancer@@N,@@d The Crab@@N~
@@ -3204,6 +3224,7 @@ Cancer~
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8371
 leo~
 @@yLeo@@W@@x, @@dThe Lion@@N~
@@ -3212,10 +3233,11 @@ leo~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 33751067 18624 0
-128 0
+127 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8372
 Virgo~
 @@cVirgo@@a, @@dThe Virgin@@N~
@@ -3224,10 +3246,11 @@ Virgo~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 33751067 18624 0
-122 2
+121 2
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8373
 Libra~
 @@mLibra@@p, @@dThe Scales@@N~
@@ -3236,10 +3259,11 @@ Libra~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 33751067 18624 0
-132 0
+131 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8374
 Scorpio~
 @@RScorpio@@e, @@dThe Scorpion@@N~
@@ -3248,10 +3272,11 @@ Scorpio~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 33751067 18624 0
-126 0
+127 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8375
 Sagittarius~
 @@GSagittarius@@r, @@dThe Archer@@N~
@@ -3264,6 +3289,7 @@ Sagittarius~
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8376
 Capricorn~
 @@cCapricorn@@a,@@d The Goat@@N~
@@ -3276,6 +3302,7 @@ Capricorn~
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8377
 Aquarius~
 @@BAquarius@@l, @@dThe Water Bearer@@N~
@@ -3284,10 +3311,11 @@ Aquarius~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 33751067 18624 0
-126 0
+125 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8378
 Pisces~
 @@mPisces@@p, @@dThe Fish@@N~
@@ -3300,6 +3328,7 @@ Pisces~
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
+1 7 0 33751067
 #8379
 Prophet~
 @@mPrayer @@pSpeaker@@N~
@@ -3314,6 +3343,7 @@ Prophet~
 -2500 1000 1000
 ! 1 0 17 7 14 0 0
 | 0 0 0 0 0 0 0
+1 4 0 4115
 #8380
 suggestion hypnotic crimson~
 @@dA @@mCrimson @@pSuggestion@@N~
@@ -3321,10 +3351,11 @@ suggestion hypnotic crimson~
 ~
 ~
 45105153 26876 -1000
-131 2
+130 2
 -2000 800 800
 ! 6 0 16 7 942094 1509120 48
 | 0 0 0 0 0 0 0
+1 6 0 45105153
 #8381
 Crimson Crusader~
 @@dThe @@mCrimson @@lCrusader@@N~
@@ -3336,16 +3367,18 @@ Crimson Crusader~
 -1234 600 500
 ! 6 0 0 7 942094 34816 16
 | 0 0 0 0 0 0 0
+1 9 0 50530333
 #8382
 sentient~
 @@mSentient@@d, @@dThe @@pCrimson Executioner@@N~
 ~
 ~
 53608477 649982 0
-138 0
+137 0
 -2500 1000 1000
 ! 7 0 0 7 933902 0 48
 | 0 0 0 0 0 0 0
+1 9 0 53608477
 #8383
 Crimson Shadow~
 @@dA Crimson Shadow@@N~
@@ -3357,6 +3390,7 @@ Crimson Shadow~
 -1300 800 800
 ! 0 0 16 7 14 64 72
 | 0 0 0 0 0 0 0
+1 2 0 33554433
 #8384
 Crimson Shadow~
 @@dA Crimson Shadow@@N~
@@ -3368,6 +3402,7 @@ Crimson Shadow~
 -975 800 800
 ! 0 0 16 7 14 64 72
 | 0 0 0 0 0 0 0
+1 2 0 33554433
 #8385
 Crimson Shadow~
 @@dA Crimson Shadow@@N~
@@ -3375,10 +3410,11 @@ Crimson Shadow~
 ~
 ~
 33554433 548992 0
-103 0
+102 0
 -975 800 800
 ! 0 0 16 7 14 64 72
 | 0 0 0 0 0 0 0
+1 2 0 33554433
 #8386
 evil~
 @@dPure @@mCrimson @@REvil@@N~
@@ -3390,6 +3426,7 @@ evil~
 -2000 800 750
 ! 7 0 16 7 942094 8388640 16
 | 0 0 0 0 0 0 0
+1 4 0 16908297
 #8387
 evil~
 @@dPure @@mCrimson @@REvil@@N~
@@ -3401,6 +3438,7 @@ evil~
 -2000 800 750
 ! 0 0 16 7 942094 8388640 16
 | 0 0 0 0 0 0 0
+1 5 0 50462729
 #8388
 evil~
 @@dPure @@mCrimson @@REvil@@N~
@@ -3412,6 +3450,7 @@ evil~
 -2000 800 750
 ! 0 0 16 7 942094 8388640 16
 | 0 0 0 0 0 0 0
+1 5 0 50462729
 #8389
 nightmare~
 @@dNig@@mhtm@@pare@@N~
@@ -3419,10 +3458,11 @@ nightmare~
 ~
 ~
 167903257 576234 -1000
-133 1
+134 1
 -1700 700 700
 ! 0 0 19 7 679950 0 0
 | 0 0 0 0 0 0 0
+1 6 0 167903257
 #8390
 paladin~
 @@BPaladin @@lof @@aLucrezia@@N~
@@ -3430,10 +3470,11 @@ paladin~
 ~
 ~
 33685513 1075964 1000
-139 2
+138 2
 -2000 1000 400
 ! 9 0 0 7 948622 6488064 144
 | 0 0 0 0 0 0 0
+1 4 0 33685513
 #8391
 Lord Dark~
 @@mJuzam@@p, @@dLord of the Tower@@N~
@@ -3441,10 +3482,11 @@ Lord Dark~
 ~
 ~
 36700179 551144 -1000
-144 1
+145 1
 -2500 1000 1000
 ! 6 0 0 7 974862 51380480 48
 | 0 0 0 0 0 0 0
+1 6 0 36700179
 #8392
 Guard guardian mist crimson~
 @@dCrimson @@mMist @@pGuard@@N~
@@ -3459,6 +3501,7 @@ A large, large man stands here, with a small trail of a deep @@mviolet@@N fog
 -1600 800 800
 ! 7 0 0 7 30870 1052736 80
 | 0 0 0 0 0 0 0
+1 8 0 36765723
 #8393
 Guard guardian mist crimson~
 @@dCrimson @@mMist @@pGuard@@N~
@@ -3473,6 +3516,7 @@ A large, large man stands here, with a small trail of a deep @@mviolet@@N fog
 -1600 800 800
 ! 0 0 0 7 30870 1052736 80
 | 0 0 0 0 0 0 0
+1 7 0 3211291
 #8394
 necromancer mage crimson~
 @@mCrimson @@dNecromancer@@N~
@@ -3480,10 +3524,11 @@ necromancer mage crimson~
 ~
 ~
 33554449 16576 0
-130 1
+129 1
 -1500 500 1000
 ! 8 0 0 7 553102 0 16
 | 0 0 0 0 0 0 0
+1 3 0 33554449
 #8395
 necromancer mage crimson~
 @@mCrimson @@dNecromancer@@N~
@@ -3491,10 +3536,11 @@ necromancer mage crimson~
 ~
 ~
 33554449 16576 0
-127 1
+126 1
 -1500 500 1000
 ! 0 0 0 7 553102 0 16
 | 0 0 0 0 0 0 0
+1 3 0 33554449
 #8396
 necromancer mage crimson~
 @@mCrimson @@dNecromancer@@N~
@@ -3502,10 +3548,11 @@ necromancer mage crimson~
 ~
 ~
 33554449 16576 0
-132 1
+133 1
 -1500 500 1000
 ! 0 0 0 7 553102 0 16
 | 0 0 0 0 0 0 0
+1 3 0 33554449
 #8397
 crimson slave~
 @@dA @@mCrimson @@dSlave@@N~
@@ -3513,10 +3560,11 @@ crimson slave~
 ~
 ~
 1 542912 0
-115 1
+116 1
 -1500 550 700
 ! 0 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
+1 1 0 1
 #8398
 crimson slave~
 @@dA @@mCrimson @@dSlave@@N~
@@ -3528,6 +3576,7 @@ crimson slave~
 -1500 550 700
 ! 0 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
+1 1 0 1
 #8399
 crimson slave~
 @@dA @@mCrimson @@dSlave@@N~
@@ -3539,6 +3588,7 @@ crimson slave~
 -1500 550 700
 ! 0 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
+1 1 0 1
 #8400
 thief~
 @@dA @@mCrimson @@dThief@@N~
@@ -3546,10 +3596,11 @@ thief~
 ~
 ~
 196633 26856 0
-136 1
+135 1
 -1500 700 700
 ! 2 0 0 7 161806 0 16
 | 0 0 0 0 0 0 0
+1 5 0 196633
 #8401
 head~
 @@mThe @@dHead @@mof the @@dHydra@@N~
@@ -3557,10 +3608,11 @@ head~
 ~
 ~
 65539 16616 0
-124 1
+125 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
+1 3 0 65539
 #8402
 head~
 @@mThe @@dHead @@mof the @@dHydra@@N~
@@ -3568,10 +3620,11 @@ head~
 ~
 ~
 65539 16616 0
-117 1
+116 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
+1 3 0 65539
 #8403
 head~
 @@mThe @@dHead @@mof the @@dHydra@@N~
@@ -3579,10 +3632,11 @@ head~
 ~
 ~
 33619971 16616 0
-117 1
+116 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
+1 4 0 33619971
 #8404
 head~
 @@mThe @@dHead @@mof the @@dHydra@@N~
@@ -3594,6 +3648,7 @@ head~
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
+1 4 0 33619971
 #8405
 head~
 @@mThe @@dHead @@mof the @@dHydra@@N~
@@ -3605,6 +3660,7 @@ head~
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
+1 4 0 33619971
 #8406
 head~
 @@mThe @@dHead @@mof the @@dHydra@@N~
@@ -3616,6 +3672,7 @@ head~
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
+1 4 0 33619971
 #8407
 head~
 @@mThe @@dHead @@mof the @@dHydra@@N~
@@ -3627,6 +3684,7 @@ head~
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
+1 3 0 65539
 #0
 #OBJECTS
 #8350
@@ -3635,6 +3693,7 @@ Sphere~
 @@pA small sphere floats here @@mshining@@p in the mist...@@N~
 18 8406992 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 L
@@ -3645,6 +3704,7 @@ leggings leg~
 @@NA @@mpure dark fog@@N covers the ground here with an eerie @@pglow@@N~
 9 2240 9437184 19473
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 0
 A
@@ -3677,6 +3737,7 @@ sash mist~
 @@NA small cord that seems to be packed @@dm@@mi@@ps@@Wt@@g...@@N~
 9 192 8519680 8449
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 0
 A
@@ -3701,6 +3762,7 @@ claymore~
 @@mA large sword lies heres with patches of fog floating..@@N~
 5 192 8421376 16385
 0.00
+0
 0 0 0 6 0 0 0 0 0 0
 0
 A
@@ -3719,6 +3781,7 @@ hydra charm~
 @@mA small hide from the hydra itself..@@N~
 9 8520834 8388736 16409
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -3747,6 +3810,7 @@ Crimson Jasper~
 @@mA small @@pj@@Wa@@gs@@mp@@ge@@pr@@m floats here, waiting for you.@@N~
 14 9441474 8421376 62911
 0.00
+0
 9 0 3014 0 0 0 0 0 0 0
 1
 A
@@ -3788,6 +3852,7 @@ statue figurine~
 ~
 14 66561 0 1
 0.00
+0
 9 3 8366 0 0 0 0 0 0 0
 1
 L
@@ -3799,6 +3864,7 @@ statue figurine~
 ~
 14 65537 0 1
 0.00
+0
 9 3 8366 0 0 0 0 0 0 0
 1
 L
@@ -3810,6 +3876,7 @@ statue figurine~
 ~
 14 65537 0 1
 0.00
+0
 9 3 8366 0 0 0 0 0 0 0
 1
 L
@@ -3821,6 +3888,7 @@ statue figurine~
 ~
 14 65537 0 1
 0.00
+0
 9 0 8377 0 0 0 0 0 0 0
 1
 L
@@ -3831,6 +3899,7 @@ petal~
 @@mA carnation petal of pure @@gdiamond@@m lies here..@@N~
 29 1048768 8519680 1
 0.00
+0
 0 8361 8362 0 0 0 0 0 0 0
 2
 L
@@ -3841,6 +3910,7 @@ thorn~
 @@mA @@dc@@mr@@pi@@Wm@@gs@@po@@mn @@rthorn@@m lies here in the dirt..@@N~
 29 1048768 8519680 1
 0.00
+0
 8360 0 8362 0 0 0 0 0 0 0
 0
 L
@@ -3851,6 +3921,7 @@ Bud~
 ~
 29 1048768 8519680 1
 0.00
+0
 0 8365 8366 0 0 0 0 0 0 0
 3
 L
@@ -3861,6 +3932,7 @@ leaf~
 @@mA tiny flower @@rleaf@@m lies here gently glowing..@@N~
 29 1048768 8519680 1
 0.00
+0
 0 8364 8365 0 0 0 0 0 0 0
 1
 L
@@ -3871,6 +3943,7 @@ twig~
 @@mA thin @@btwig@@m is here waiting to be held..@@N~
 29 1048768 8519680 1
 0.00
+0
 8363 0 8365 0 0 0 0 0 0 0
 3
 L
@@ -3881,6 +3954,7 @@ stem~
 @@eA small stem made of a @@Rr@@eu@@gb@@Ry@@e gem..@@N~
 29 1048768 8519680 1
 0.00
+0
 8362 0 8366 0 0 0 0 0 0 0
 2
 L
@@ -3891,6 +3965,7 @@ crimson flower mist~
 @@ma flower of changing shades of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N~
 9 5247169 8388616 89791
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 5
 A
@@ -3923,6 +3998,7 @@ Cloak~
 @@mThis evil cloth begs you to take it with you...@@N~
 9 2752 8388736 98321
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 0
 A
@@ -3947,6 +4023,7 @@ independence~
 @@dYour freedom from the suggestions of evil lies here...@@N~
 5 3268 8421376 1833
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 0
 A
@@ -3969,6 +4046,7 @@ halberd~
 @@dA dark halberd stains the floor with an evil taint..@@N~
 5 16785104 8421376 21561
 0.00
+0
 0 0 0 8 0 0 0 0 0 0
 1
 A
@@ -4015,6 +4093,7 @@ mane nightmare~
 @@dThe mane of the stallion of the stars..@@N~
 9 12583122 8454144 81433
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -4043,6 +4122,7 @@ blessing~
 @@gThe blessing of a pure warrior...@@N~
 1 1474 8421376 20497
 0.00
+0
 0 0 -1 0 0 0 0 0 0 0
 0
 A
@@ -4079,6 +4159,7 @@ Ivory Lore~
 @@gA small Ivory Lore lies here floating gently..@@N~
 4 1053824 8421376 1
 0.00
+0
 100 3 3 613 0 0 0 0 0 0
 1
 A
@@ -4095,6 +4176,7 @@ Call To Arms~
 @@BThe scroll which commands a whole army...@@N~
 2 448 8388608 1
 0.00
+0
 140 639 640 641 0 0 0 0 0 0
 0
 L
@@ -4105,6 +4187,7 @@ broadsword sword broad~
 @@dThe evil broadsword of the demon Juzam lies here..@@N~
 5 468 8421376 21817
 0.00
+0
 0 0 0 1 0 0 0 0 0 0
 1
 A
@@ -4143,6 +4226,7 @@ leggings demon~
 @@dSome leggings of the dark demon lord..@@N~
 9 128 9437184 33041
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 A
@@ -4163,6 +4247,7 @@ shield chaos~
 @@dThe shield of @@Rchaos@@d..@@N~
 9 131458 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 15
 A
@@ -4193,6 +4278,7 @@ juzam's Treasure~
 The dark ruler's treasure has been dropped here~
 20 0 8388608 1
 0.00
+0
 50000 0 0 0 0 0 0 0 0 0
 1
 L
@@ -4203,6 +4289,7 @@ window~
 ~
 14 1 0 1
 0.00
+0
 9 0 8370 0 0 0 0 0 0 0
 1
 L
@@ -4213,6 +4300,7 @@ red~
 @@mThe @@Rred@@m pebble of the mist floats here..@@N~
 29 1048704 8421376 1
 0.00
+0
 0 8380 8385 0 0 0 0 0 0 0
 1
 A
@@ -4231,6 +4319,7 @@ blue~
 @@mThe @@Bblue@@m pebble of the mist floats here..@@N~
 29 1048704 8421376 1
 0.00
+0
 8379 0 8385 0 0 0 0 0 0 0
 1
 A
@@ -4249,6 +4338,7 @@ purple~
 @@mThe @@ppurple@@M pebble of the mist floats here..@@N~
 29 1048704 8421376 1
 0.00
+0
 0 8382 8386 0 0 0 0 0 0 0
 1
 A
@@ -4265,6 +4355,7 @@ yellow~
 @@mThe @@yyellow@@M pebble of the mist floats here..@@N~
 29 1048704 8421376 1
 0.00
+0
 8381 0 8386 0 0 0 0 0 0 0
 1
 A
@@ -4279,6 +4370,7 @@ green~
 @@mThe @@Ggreen@@m pebble of the mist floats here..@@N~
 29 1048704 8421376 1
 0.00
+0
 0 8384 8387 0 0 0 0 0 0 0
 1
 A
@@ -4295,6 +4387,7 @@ grey~
 @@mThe @@dgrey@@m pebble of the mist floats here...@@N~
 29 1048704 8421376 1
 0.00
+0
 8383 0 8387 0 0 0 0 0 0 0
 1
 A
@@ -4313,6 +4406,7 @@ stone blue red~
 @@dA S@@mt@@po@@Wn@@ge @@do@@mf @@RRed @@da@@mn@@pd @@BBlue@@N~
 29 1048704 8421376 1041
 0.00
+0
 0 8386 8388 0 0 0 0 0 0 0
 1
 A
@@ -4333,6 +4427,7 @@ stone purple yellow~
 @@dA S@@mt@@po@@Wn@@ge @@do@@mf @@pPurple @@da@@mn@@pd @@yYellow@@N~
 29 1048704 8421376 1
 0.00
+0
 8385 0 8388 0 0 0 0 0 0 0
 1
 A
@@ -4353,6 +4448,7 @@ stone green grey~
 @@dA S@@mt@@po@@Wn@@ge @@do@@mf @@GGreen @@da@@mn@@pd @@dGrey@@N~
 29 1048704 8421376 1
 0.00
+0
 0 8388 8355 0 0 0 0 0 0 0
 1
 A
@@ -4373,6 +4469,7 @@ rock~
 ~
 29 1052800 8421376 1
 0.00
+0
 8387 0 8355 0 0 0 0 0 0 0
 1
 A
@@ -4403,6 +4500,7 @@ ring hydra~
 @@mA ring of the hydra lies here waiting to be worn..@@N~
 9 1152 8396800 433
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -4423,6 +4521,7 @@ Return~
 @@mThis return transports you back into your worst nightmares.@@N~
 14 128 8421376 1
 0.00
+0
 9 0 8372 0 0 0 0 0 0 0
 2
 L

@@ -1,6 +1,6 @@
 #AREA
 @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@gCastle@@N~
-Q 17
+Q 19
 K crimson_castle~
 L @@N{@@dA@@mD@@pE@@WP@@gT@@N}~
 N 146
@@ -2761,6 +2761,7 @@ guard guardian tower~
 -1700 900 400
 ! 6 0 0 7 148110 0 48
 | 0 0 0 0 0 0 0
+1 6 0 36700195
 #11301
 Ixtochel~
 @@dI@@mx@@pt@@Wo@@gc@@ph@@me@@dl@@N~
@@ -2772,6 +2773,7 @@ Ixtochel~
 -1750 800 600
 ! 6 0 0 7 155662 8683520 16
 | 0 0 0 0 0 0 0
+1 3 0 65539
 #11302
 tower demon~
 @@dA T@@mo@@pw@@we@@gr @@dDemon@@N~
@@ -2779,10 +2781,11 @@ tower demon~
 ~
 ~
 302055457 639210 -1000
-124 0
+125 0
 -1500 700 700
 ! 2 0 16 7 221198 0 80
 | 0 0 0 0 0 0 0
+1 5 0 302055457
 #11303
 Grastrou Beast~
 @@dG@@Wr@@ga@@Ws@@dt@@Wr@@go@@Wu @@gBeast@@N~
@@ -2794,6 +2797,7 @@ Grastrou Beast~
 -1500 750 650
 ! 7 0 19 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 4 0 268500995
 #11304
 Grastrou Beast~
 @@dG@@Wr@@ga@@Ws@@dt@@Wr@@go@@Wu @@gBeast@@N~
@@ -2805,6 +2809,7 @@ Grastrou Beast~
 -1500 750 650
 ! 0 0 19 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 4 0 268500995
 #11449
 Lord Dark~
 @@dJ@@mu@@pz@@Wa@@gm@@m, @@gHigh @@mKing @@pof @@dC@@mr@@pi@@Wm@@gs@@po@@mn@@N~
@@ -2812,10 +2817,11 @@ Lord Dark~
 ~
 ~
 36765715 551656 -1000
-140 0
+141 0
 -2500 1000 1000
 ! 1 0 0 7 1047182 51380480 48
 | 0 0 0 0 0 0 0
+1 7 0 36765715
 #11305
 healer seduction~
 @@dS@@me@@pd@@gu@@Wc@@gt@@pi@@mo@@dn@@N~
@@ -2827,6 +2833,7 @@ healer seduction~
 0 0 0
 ! 1 0 16 7 0 0 0
 | 0 0 0 0 0 0 0
+1 7 0 268703235
 #11306
 lim dul limdul lim-dul~
 @@dL@@mi@@pm@@W-@@dD@@mu@@pl@@N~
@@ -2838,6 +2845,7 @@ lim dul limdul lim-dul~
 -2500 1000 850
 ! 6 0 0 7 417806 50331648 144
 | 0 0 0 0 0 0 0
+1 4 0 65571
 #11307
 paladin~
 @@BThe @@aP@@ga@@ll@@ca@@gd@@ai@@ln @@gof @@yLucrezia@@N~
@@ -2849,6 +2857,7 @@ paladin~
 -2000 1000 700
 ! 7 0 0 7 948622 6488064 144
 | 0 0 0 0 0 0 0
+1 8 0 36896793
 #11308
 displacer beast~
 @@dD@@WD@@di@@Wi@@ds@@Ws@@dp@@Wp@@dl@@Wl@@da@@Wa@@dc@@Wc@@de@@We@@dr@@Wr @@dB@@WB@@de@@We@@da@@Wa@@ds@@Ws@@dt@@Wt@@N~
@@ -2856,10 +2865,11 @@ displacer beast~
 ~
 ~
 65571 84202 0
-131 0
+130 0
 -1875 900 700
 ! 2 0 19 7 155662 32768 16
 | 0 0 0 0 0 0 0
+1 4 0 65571
 #11309
 displacer beast~
 @@dD@@WD@@di@@Wi@@ds@@Ws@@dp@@Wp@@dl@@Wl@@da@@Wa@@dc@@Wc@@de@@We@@dr@@Wr @@dB@@WB@@de@@We@@da@@Wa@@ds@@Ws@@dt@@Wt@@N~
@@ -2867,10 +2877,11 @@ displacer beast~
 ~
 ~
 65571 84202 0
-133 0
+132 0
 -1875 900 700
 ! 0 0 19 7 155662 32768 16
 | 0 0 0 0 0 0 0
+1 4 0 65571
 #11310
 displacer beast~
 @@dD@@WD@@di@@Wi@@ds@@Ws@@dp@@Wp@@dl@@Wl@@da@@Wa@@dc@@Wc@@de@@We@@dr@@Wr @@dB@@WB@@de@@We@@da@@Wa@@ds@@Ws@@dt@@Wt@@N~
@@ -2878,10 +2889,11 @@ displacer beast~
 ~
 ~
 65571 18664 0
-133 0
+134 0
 -1875 900 700
 ! 0 0 19 7 155662 32768 16
 | 0 0 0 0 0 0 0
+1 4 0 65571
 #11311
 displacer beast~
 @@dD@@WD@@di@@Wi@@ds@@Ws@@dp@@Wp@@dl@@Wl@@da@@Wa@@dc@@Wc@@de@@We@@dr@@Wr @@dB@@WB@@de@@We@@da@@Wa@@ds@@Ws@@dt@@Wt@@N~
@@ -2889,10 +2901,11 @@ displacer beast~
 ~
 ~
 65571 18664 0
-130 0
+131 0
 -1875 900 700
 ! 0 0 19 7 155662 32768 16
 | 0 0 0 0 0 0 0
+1 4 0 65571
 #11312
 Evil~
 @@dE@@mv@@pi@@gl@@N~
@@ -2904,6 +2917,7 @@ Evil~
 -2500 1000 1000
 ! 9 0 16 7 948414 67108862 48
 | 0 0 0 0 0 0 0
+1 11 0 305594411
 #11313
 Evil~
 @@dE@@mv@@pi@@gl@@N~
@@ -2915,6 +2929,7 @@ Evil~
 -2500 1000 1000
 ! 0 0 16 7 948414 67108862 48
 | 0 0 0 0 0 0 0
+1 11 0 305594411
 #11314
 Evil~
 @@dE@@mv@@pi@@gl@@N~
@@ -2926,6 +2941,7 @@ Evil~
 -2500 1000 1000
 ! 0 0 16 7 948414 67108862 48
 | 0 0 0 0 0 0 0
+1 11 0 305594411
 #11315
 mirage~
 @@dJ@@mu@@pz@@Wa@@gm@@N~
@@ -2933,10 +2949,11 @@ mirage~
 ~
 ~
 268435491 26856 -1000
-120 0
+121 0
 -1999 899 899
 ! 2 0 0 7 679950 0 56
 | 0 0 0 0 0 0 0
+1 4 0 268435491
 #11316
 nether shadow~
 @@dA @@mN@@ge@@pt@@Wh@@me@@gr @@dShadow@@N~
@@ -2948,6 +2965,7 @@ nether shadow~
 -1789 789 789
 ! 0 0 16 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 3 0 33554435
 #11317
 nether shadow~
 @@dA @@mN@@ge@@pt@@Wh@@me@@gr @@dShadow@@N~
@@ -2955,10 +2973,11 @@ nether shadow~
 ~
 ~
 33554435 18624 -1000
-123 1
+124 1
 -1789 789 789
 ! 0 0 16 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 3 0 33554435
 #11318
 stargazer~
 @@dS@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr@@N~
@@ -2966,10 +2985,11 @@ stargazer~
 ~
 ~
 35 18664 0
-127 1
+126 1
 -1600 900 400
 ! 2 0 0 7 24590 0 16
 | 0 0 0 0 0 0 0
+1 3 0 35
 #11319
 stargazer~
 @@dS@@mt@@pa@@Wr@@gg@@Wa@@pz@@me@@dr@@N~
@@ -2981,6 +3001,7 @@ stargazer~
 -1600 900 400
 ! 0 0 0 7 24590 0 16
 | 0 0 0 0 0 0 0
+1 3 0 35
 #11320
 whirlwind~
 @@dW@@mh@@pi@@gr@@pl@@mw@@pi@@gn@@pd@@N~
@@ -2992,6 +3013,7 @@ whirlwind~
 -1400 1000 500
 ! 9 0 17 7 24582 0 80
 | 0 0 0 0 0 0 0
+1 2 0 33
 #11321
 whirlwind~
 @@dW@@mh@@pi@@gr@@pl@@mw@@pi@@gn@@pd@@N~
@@ -2999,10 +3021,11 @@ whirlwind~
 ~
 ~
 33 1073388 0
-135 2
+136 2
 -1400 1000 500
 ! 0 0 17 7 24582 0 80
 | 0 0 0 0 0 0 0
+1 2 0 33
 #11322
 Omega~
 @@dThe @@BW@@li@@cn@@ad @@RO@@em@@ge@@eg@@Ra@@N~
@@ -3010,10 +3033,11 @@ Omega~
 ~
 ~
 448765723 1632488 0
-127 1
+126 1
 -2500 1000 1000
 ! 6 0 17 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 20 0 448765723
 #11323
 sentinel~
 @@RO@@Wm@@Rega @@dS@@Wh@@dadow S@@We@@dntinel@@N~
@@ -3025,6 +3049,7 @@ sentinel~
 -2100 920 820
 ! 7 0 17 7 417806 0 80
 | 0 0 0 0 0 0 0
+1 6 0 3145781
 #11324
 sentinel~
 @@RO@@Wm@@Rega @@dS@@Wh@@dadow S@@We@@dntinel@@N~
@@ -3036,6 +3061,7 @@ sentinel~
 -2100 920 820
 ! 0 0 17 7 417806 0 80
 | 0 0 0 0 0 0 0
+1 6 0 3145781
 #11325
 jester~
 @@dA @@mC@@pa@@Ws@@gt@@pl@@me @@dJ@@me@@ps@@Wt@@ge@@pr@@N~
@@ -3043,10 +3069,11 @@ jester~
 ~
 ~
 268435457 581824 0
-132 1
+131 1
 -1500 700 700
 ! 9 0 0 7 24590 2097152 16
 | 0 0 0 0 0 0 0
+1 2 0 268435457
 #11326
 jester~
 @@dA @@mC@@pa@@Ws@@gt@@pl@@me @@dJ@@me@@ps@@Wt@@ge@@pr@@N~
@@ -3054,10 +3081,11 @@ jester~
 ~
 ~
 268435457 581824 0
-127 1
+126 1
 -1500 700 700
 ! 0 0 0 7 24590 2097152 16
 | 0 0 0 0 0 0 0
+1 2 0 268435457
 #11327
 servant~
 @@dThe @@mL@@po@@Wr@@gd@@m'@@ps @@dSe@@Wr@@gv@@Wa@@dnt@@N~
@@ -3069,6 +3097,7 @@ servant~
 -1500 800 800
 ! 7 0 0 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 2 0 17
 #11328
 servant~
 @@dThe @@mL@@po@@Wr@@gd@@m'@@ps @@dSe@@Wr@@gv@@Wa@@dnt@@N~
@@ -3080,6 +3109,7 @@ servant~
 -1500 800 800
 ! 0 0 0 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 2 0 17
 #11329
 dancer exotic~
 @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@RE@@ex@@yo@@Wt@@gic@@N~
@@ -3099,6 +3129,7 @@ dancer exotic~
 -1250 900 500
 ! 2 0 0 7 24582 50331648 80
 | 0 0 0 0 0 0 0
+1 5 0 268451881
 #11330
 Celestial~
 @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@yCeles@@gtial@@N~
@@ -3110,6 +3141,7 @@ Celestial~
 -1600 600 600
 ! 5 0 0 7 155662 525312 16
 | 0 0 0 0 0 0 0
+1 4 0 33619985
 #11331
 omega crimson captain guard stormguard~
 @@RThe @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@RO@@em@@ye@@Wg@@ga@@N~
@@ -3117,10 +3149,11 @@ omega crimson captain guard stormguard~
 ~
 ~
 310509593 1108200 0
-139 1
+140 1
 -2250 950 950
 ! 9 0 17 7 423950 32768 144
 | 0 0 0 0 0 0 0
+1 7 0 310509593
 #11332
 captain storm guard stormguard~
 @@dS@@mt@@po@@wr@@gm@@Wg@@pu@@ma@@dr@@md @@dC@@ma@@pp@@Wt@@ga@@pi@@mn@@N~
@@ -3132,6 +3165,7 @@ captain storm guard stormguard~
 -1999 899 899
 ! 0 0 0 7 155790 0 16
 | 0 0 0 0 0 0 0
+1 4 0 33685521
 #11333
 captain storm guard stormguard~
 @@dS@@mt@@po@@wr@@gm@@Wg@@pu@@ma@@dr@@md @@dC@@ma@@pp@@Wt@@ga@@pi@@mn@@N~
@@ -3139,10 +3173,11 @@ captain storm guard stormguard~
 ~
 ~
 33685521 26856 0
-132 1
+133 1
 -1999 899 899
 ! 0 0 0 7 155790 0 16
 | 0 0 0 0 0 0 0
+1 4 0 33685521
 #11334
 crimson guard storm stormguard~
 @@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
@@ -3150,10 +3185,11 @@ crimson guard storm stormguard~
 ~
 ~
 3276809 1622252 0
-129 1
+128 1
 -1600 600 600
 ! 6 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3276809
 #11335
 guard storm stormguard~
 @@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
@@ -3161,10 +3197,11 @@ guard storm stormguard~
 ~
 ~
 3276809 1622252 0
-131 1
+130 1
 -1600 600 600
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3276809
 #11336
 guard storm stormguard~
 @@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
@@ -3172,10 +3209,11 @@ guard storm stormguard~
 ~
 ~
 3276809 1622252 0
-128 1
+127 1
 -1600 600 600
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3276809
 #11337
 guard storm stormguard~
 @@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
@@ -3183,10 +3221,11 @@ guard storm stormguard~
 ~
 ~
 3276809 1622252 0
-129 1
+130 1
 -1600 600 600
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3276809
 #11338
 guard storm stormguard~
 @@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
@@ -3198,6 +3237,7 @@ guard storm stormguard~
 -1600 600 600
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3276809
 #11339
 guard storm stormguard~
 @@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
@@ -3209,6 +3249,7 @@ guard storm stormguard~
 -1600 600 600
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3276809
 #11341
 delphi~
 @@dD@@me@@pl@@dphi@@N~
@@ -3220,6 +3261,7 @@ delphi~
 -2000 900 900
 ! 7 0 0 7 155662 4194304 80
 | 0 0 0 0 0 0 0
+1 4 0 33554451
 #11340
 clurven~
 @@BC@@gl@@Bu@@Brven@@N~
@@ -3231,6 +3273,7 @@ clurven~
 -2000 950 950
 ! 9 0 0 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 2 0 3
 #11342
 secret~
 @@dA Dark Secret@@N~
@@ -3238,10 +3281,11 @@ secret~
 ~
 ~
 33554435 92386 0
-142 1
+141 1
 -2000 950 950
 ! 9 0 16 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 3 0 33554435
 #11343
 name Beta~
 @@dB@@ye@@dta@@N~
@@ -3253,6 +3297,7 @@ name Beta~
 -2000 950 950
 ! 2 0 0 7 155662 0 128
 | 0 0 0 0 0 0 0
+1 4 0 131091
 #11344
 impoyx~
 @@pI@@mm@@gpoyx@@N~
@@ -3260,10 +3305,11 @@ impoyx~
 ~
 ~
 33554435 90306 0
-134 1
+133 1
 -2500 900 700
 ! 0 0 14 7 417806 0 80
 | 0 0 0 0 0 0 0
+1 3 0 33554435
 #11345
 Hartryx~
 @@dH@@Ra@@ertryx@@N~
@@ -3275,6 +3321,7 @@ Hartryx~
 -2500 1000 700
 ! 0 0 0 7 417806 0 80
 | 0 0 0 0 0 0 0
+1 3 0 33554435
 #11346
 Ztur~
 @@cZtur@@N~
@@ -3286,6 +3333,7 @@ Ztur~
 -2200 1000 1000
 ! 0 0 14 7 417806 1183744 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #11347
 Bogardan~
 @@RB@@eo@@Rg@@ea@@Rrdan@@N~
@@ -3297,6 +3345,7 @@ Bogardan~
 -1500 1000 1000
 ! 0 0 14 7 155662 0 144
 | 0 0 0 0 0 0 0
+1 2 0 3
 #11349
 auroch~
 @@yA@@dur@@go@@dch@@N~
@@ -3304,10 +3353,11 @@ auroch~
 ~
 ~
 33619987 84162 0
-138 2
+139 2
 -1900 999 999
 ! 0 0 14 7 155662 0 16
 | 0 0 0 0 0 0 0
+1 5 0 33619987
 #11348
 Soldelvi~
 @@dS@@mo@@pl@@gd@@delvi@@N~
@@ -3319,6 +3369,7 @@ Soldelvi~
 -1900 999 999
 ! 0 0 14 7 423950 0 16
 | 0 0 0 0 0 0 0
+1 6 0 42008595
 #11350
 dancer~
 @@gBallroom @@dD@@ma@@pn@@Wc@@ge@@pr@@N~
@@ -3330,6 +3381,7 @@ dancer~
 -1700 800 700
 ! 1 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 4 0 33685513
 #11351
 dancer~
 @@gBallroom @@dD@@ma@@pn@@Wc@@ge@@pr@@N~
@@ -3341,6 +3393,7 @@ dancer~
 -1700 800 700
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 4 0 33685513
 #11352
 guard storm stormguard~
 @@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
@@ -3348,10 +3401,11 @@ guard storm stormguard~
 ~
 ~
 3276809 1622252 0
-128 1
+129 1
 -1600 900 900
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3276809
 #11353
 guard storm stormguard~
 @@dA C@@mr@@pi@@Wm@@gs@@po@@mn @@BSt@@lor@@cmg@@aua@@grd@@N~
@@ -3359,10 +3413,11 @@ guard storm stormguard~
 ~
 ~
 3276809 1622252 0
-128 1
+127 1
 -1600 900 900
 ! 0 0 0 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 5 0 3276809
 #11354
 skeleton~
 @@gS@@Wh@@ga@@Wm@@gb@@Wl@@gi@@Wn@@gg @@dS@@mk@@pe@@Wl@@ge@@pt@@mo@@dn@@N~
@@ -3374,6 +3429,7 @@ skeleton~
 -1700 800 800
 ! 6 0 14 7 155662 0 80
 | 0 0 0 0 0 0 0
+1 10 0 280117301
 #0
 #OBJECTS
 #11300
@@ -3382,6 +3438,7 @@ cloak~
 @@dA small cloak of the @@mm@@pi@@Ws@@gt@@d lies here peacefully..@@N~
 15 12714128 8388608 1
 0.00
+0
 500 0 0 0 0 0 0 0 0 0
 0
 L
@@ -3392,6 +3449,7 @@ death crimson~
 @@mSome small patches of fog cover a long, thin dagger.@@N~
 5 20 8421376 433
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 3
 A
@@ -3406,6 +3464,7 @@ key~
 @@dThe key to the great crimson castle..@@N~
 18 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 0
 L
@@ -3416,6 +3475,7 @@ left~
 @@dThe left piece to a key..@@N~
 29 0 8388608 1
 0.00
+0
 0 11304 11305 0 0 0 0 0 0 0
 10
 L
@@ -3426,6 +3486,7 @@ right~
 @@dThe right piece to a key..@@N~
 29 0 8388608 1
 0.00
+0
 11303 0 11305 0 0 0 0 0 0 0
 10
 L
@@ -3436,6 +3497,7 @@ The Gate Key~
 @@dThe key to the castle gates lie here gracefully..@@N~
 18 128 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 5
 L
@@ -3446,6 +3508,7 @@ throne~
 ~
 14 0 0 1
 0.00
+0
 9 0 11422 0 0 0 0 0 0 0
 5000
 L
@@ -3456,6 +3519,7 @@ Juzam's Hammer~
 @@dA hammer useful only to Juzam.@@N~
 5 33558545 8421376 1
 0.00
+0
 0 0 0 6 0 0 0 0 0 0
 1
 L
@@ -3466,6 +3530,7 @@ ring ruby~
 @@dA ring of pure @@Rruby@@d engraved with a single @@ge@@ey@@ge@@d..@@N~
 9 2576 8396800 77321
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 4
 A
@@ -3492,6 +3557,7 @@ boots~
 @@dBoots of an evil power fills the room with large shadows..@@N~
 9 2576 10485760 353
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 A
@@ -3512,6 +3578,7 @@ corpse~
 @@dThe corpse of a hero who met his fate lies here...@@N~
 23 0 0 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 0
 L
@@ -3522,6 +3589,7 @@ corpse~
 @@dThe corpse of a hero who met his fate lies here...@@N~
 23 0 0 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 0
 L
@@ -3532,6 +3600,7 @@ will juzam~
 The will of Juzam, lord of the darkness..~
 2 16 8421376 1
 0.00
+0
 120 636 600 647 0 0 0 0 0 0
 0
 L
@@ -3542,6 +3611,7 @@ mask~
 A small mask that seems like a tight fit..~
 9 2576 8388624 1153
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -3566,6 +3636,7 @@ hammer lucrezia~
 @@dThe dark @@Rsledgehammer@@d of a corrupted paladin..@@N~
 5 33819152 8421376 417
 0.00
+0
 0 0 0 6 0 0 0 0 0 0
 20
 A
@@ -3592,6 +3663,7 @@ right seal~
 A piece of the seal..~
 29 0 8388608 1
 0.00
+0
 0 11316 11317 0 0 0 0 0 0 0
 1
 L
@@ -3602,6 +3674,7 @@ left seal~
 A piece of the seal..~
 29 0 8388608 1
 0.00
+0
 11315 0 11317 0 0 0 0 0 0 0
 1
 L
@@ -3612,6 +3685,7 @@ seal~
 A seal of the purest evil, the darkest urges..~
 14 6672 8421376 1
 0.00
+0
 9 0 11326 0 0 0 0 0 0 0
 10
 A
@@ -3632,6 +3706,7 @@ sphere ruby~
 @@dThe sphere of evil's dwelling...@@N~
 14 65680 8388608 1
 0.00
+0
 9 0 11443 0 0 0 0 0 0 0
 30
 L
@@ -3642,6 +3717,7 @@ evil eye~
 An evil eye with unbelievable powers..~
 4 4096 8421376 1
 0.00
+0
 120 15 15 647 0 0 0 0 0 0
 10
 A
@@ -3666,6 +3742,7 @@ fire cracker firecracker~
 @@dA small @@Rfirecracker@@d looks tiny but deadly..@@N~
 2 0 8388608 1
 0.00
+0
 140 200 203 204 0 0 0 0 0 0
 0
 L
@@ -3676,6 +3753,7 @@ scroll of death~
 @@dA scroll fitting for a @@mpainful@@R death@@d lies here..@@N~
 2 0 8388608 1
 0.00
+0
 140 17 33 38 0 0 0 0 0 0
 0
 L
@@ -3686,6 +3764,7 @@ darkness~
 Darkness is here waiting to unlock evil..~
 18 16 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -3696,6 +3775,7 @@ darkness~
 Darkness is here waiting to unlock evil..~
 18 16 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -3706,6 +3786,7 @@ rune~
 @@NA magical @@yrune@@N lies in the dirt..~
 31 0 8388608 1
 0.00
+0
 -1 0 10 8 0 0 0 0 0 0
 1
 L
@@ -3716,6 +3797,7 @@ bomb~
 @@NA small bomb is here ready to @@R@@fE@@e@@fX@@y@@fP@@g@@fL@@y@@fO@@e@@fD@@R@@fE@@N..~
 2 16 8388608 1
 0.00
+0
 140 200 201 202 0 0 0 0 0 0
 50
 L
@@ -3726,6 +3808,7 @@ ruby~
 A small cracked ruby lies in the dust..~
 29 0 8388608 1
 0.00
+0
 0 11398 11399 0 0 0 0 0 0 0
 1
 L
@@ -3736,6 +3819,7 @@ shard~
 A small shard of amthyst~
 29 0 8388608 1
 0.00
+0
 11397 0 11399 0 0 0 0 0 0 0
 1
 L
@@ -3746,6 +3830,7 @@ facet~
 A tiny shining facet lies on the floor~
 29 0 8388608 1
 0.00
+0
 0 11402 11427 0 0 0 0 0 0 0
 1
 L
@@ -3756,6 +3841,7 @@ diamond~
 A small diamond..~
 29 0 8388608 1
 0.00
+0
 0 11401 11402 0 0 0 0 0 0 0
 1
 L
@@ -3766,6 +3852,7 @@ marble~
 ~
 29 0 8388608 1
 0.00
+0
 11400 0 11402 0 0 0 0 0 0 0
 1
 L
@@ -3776,6 +3863,7 @@ crystal ball~
 A tiny clear ball..~
 29 0 8388608 1
 0.00
+0
 11399 0 11427 0 0 0 0 0 0 0
 1
 L
@@ -3786,6 +3874,7 @@ arrowhead~
 A tiny stone arrowhead..~
 29 0 8388608 1
 0.00
+0
 0 11404 11405 0 0 0 0 0 0 0
 1
 L
@@ -3796,6 +3885,7 @@ broken glass~
 A tiny piece of broken glass..@@N~
 29 0 8388608 1
 0.00
+0
 11403 0 11405 0 0 0 0 0 0 0
 1
 L
@@ -3806,6 +3896,7 @@ charm~
 A tiny charm..~
 29 0 8388608 1
 0.00
+0
 0 11408 11428 0 0 0 0 0 0 0
 1
 L
@@ -3816,6 +3907,7 @@ emerald~
 A tiny sparkling @@remerald@@N~
 29 0 8388608 1
 0.00
+0
 0 11407 11408 0 0 0 0 0 0 0
 1
 L
@@ -3826,6 +3918,7 @@ onyx~
 ~
 29 0 8388608 1
 0.00
+0
 11406 0 11408 0 0 0 0 0 0 0
 1
 L
@@ -3836,6 +3929,7 @@ gemstone~
 A precious metal lies in the dust~
 29 0 8388608 1
 0.00
+0
 11405 0 11428 0 0 0 0 0 0 0
 1
 L
@@ -3846,6 +3940,7 @@ circle~
 A small metal circle~
 29 0 8388608 1
 0.00
+0
 0 11410 11411 0 0 0 0 0 0 0
 1
 L
@@ -3856,6 +3951,7 @@ topaz~
 A small chunk of topaz..~
 29 0 8388608 1
 0.00
+0
 11409 0 11411 0 0 0 0 0 0 0
 1
 L
@@ -3866,6 +3962,7 @@ ring~
 A tiny ring which fits the puzzle..~
 29 0 8388608 1
 0.00
+0
 0 11414 11429 0 0 0 0 0 0 0
 1
 L
@@ -3876,6 +3973,7 @@ pearls~
 A small round pearl lies here~
 29 0 8388608 1
 0.00
+0
 0 11413 11414 0 0 0 0 0 0 0
 1
 L
@@ -3886,6 +3984,7 @@ air charm~
 @@dSomeone dropped a @@ysparkling @@Ba@@li@@cr @@mc@@ph@@ga@@pr@@mm@@d..@@N~
 11 1048577 8421376 1
 0.00
+0
 2 11322 100 0 0 0 0 0 0 0
 15
 L
@@ -3896,6 +3995,7 @@ sea shell seashell~
 A tiny seashell lies here dripping wet~
 29 0 8388608 1
 0.00
+0
 11412 0 11414 0 0 0 0 0 0 0
 1
 L
@@ -3906,6 +4006,7 @@ locket~
 Lockets..lockets..everywhere...~
 29 0 8388608 1
 0.00
+0
 11411 0 11429 0 0 0 0 0 0 0
 1
 L
@@ -3916,6 +4017,7 @@ gold~
 A tiny chunk of fools gold lies here..~
 29 0 8388608 1
 0.00
+0
 0 11416 11417 0 0 0 0 0 0 0
 1
 L
@@ -3926,6 +4028,7 @@ bloodstone~
 Caught unders wheels roll...oh the bleeding of me..~
 29 0 8388608 1
 0.00
+0
 11415 0 11417 0 0 0 0 0 0 0
 1
 L
@@ -3936,6 +4039,7 @@ insignia~
 A tiny emblem of the mist lies here~
 29 0 8388608 1
 0.00
+0
 0 11420 11430 0 0 0 0 0 0 0
 1
 L
@@ -3946,6 +4050,7 @@ moonstone~
 A small luner rock lies on the ground..~
 29 0 8388608 1
 0.00
+0
 0 11419 11420 0 0 0 0 0 0 0
 1
 L
@@ -3956,6 +4061,7 @@ comet~
 A chunk of meteor is stuck in the ground..~
 29 0 8388608 1
 0.00
+0
 11418 0 11420 0 0 0 0 0 0 0
 1
 L
@@ -3966,6 +4072,7 @@ rock~
 A rock.  Just a rock.~
 29 0 8388608 1
 0.00
+0
 0 11417 11430 0 0 0 0 0 0 0
 1
 L
@@ -3976,6 +4083,7 @@ opal~
 Some small chunks of white opal?~
 29 0 8388608 1
 0.00
+0
 0 11422 11423 0 0 0 0 0 0 0
 1
 L
@@ -3986,6 +4094,7 @@ silver~
 Some small chunks of silver here sparkle in the sun..~
 29 0 8388608 1
 0.00
+0
 11421 0 11423 0 0 0 0 0 0 0
 1
 L
@@ -3996,6 +4105,7 @@ crest~
 A small crest of the crimson guards..~
 29 0 8388608 1
 0.00
+0
 0 11426 11431 0 0 0 0 0 0 0
 1
 L
@@ -4006,6 +4116,7 @@ bronze~
 A small @@bbronze@@N chunk is here..~
 29 0 8388608 1
 0.00
+0
 0 11425 11426 0 0 0 0 0 0 0
 1
 L
@@ -4016,6 +4127,7 @@ turquoise~
 A small piece of turquoise...~
 29 0 8388608 1
 0.00
+0
 11424 0 11426 0 0 0 0 0 0 0
 1
 L
@@ -4026,6 +4138,7 @@ earring~
 A small earring made out of tiny jewels..~
 29 0 8388608 1
 0.00
+0
 11423 0 11431 0 0 0 0 0 0 0
 1
 L
@@ -4036,6 +4149,7 @@ necklace~
 A small necklace bites the dust..~
 29 0 8388608 1
 0.00
+0
 0 11428 11432 0 0 0 0 0 0 0
 1
 L
@@ -4046,6 +4160,7 @@ bracelet~
 A tiny bracelet of pure gemstones~
 29 0 8388608 1
 0.00
+0
 11427 0 11432 0 0 0 0 0 0 0
 1
 L
@@ -4056,6 +4171,7 @@ glove~
 A powerful glove lies in the dirt..~
 29 0 8388608 1
 0.00
+0
 11434 0 11435 0 0 0 0 0 0 0
 1
 L
@@ -4066,6 +4182,7 @@ belt~
 The small belt that belongs to the sea naga..~
 29 0 8388608 1
 0.00
+0
 0 11431 11433 0 0 0 0 0 0 0
 1
 L
@@ -4076,6 +4193,7 @@ facemask~
 A facemask from Juzam himself...~
 29 0 8388608 1
 0.00
+0
 11430 0 11433 0 0 0 0 0 0 0
 1
 L
@@ -4086,6 +4204,7 @@ shield~
 A shield of pure evil..~
 29 0 8388608 1
 0.00
+0
 0 11433 11434 0 0 0 0 0 0 0
 1
 L
@@ -4096,6 +4215,7 @@ sash~
 A tiny sash which fits about your waist nicely..~
 29 0 8388608 1
 0.00
+0
 11432 0 11434 0 0 0 0 0 0 0
 1
 L
@@ -4106,6 +4226,7 @@ armour~
 Some sturdy armour lies here..~
 29 0 8388608 1
 0.00
+0
 0 11429 11436 0 0 0 0 0 0 0
 1
 L
@@ -4116,6 +4237,7 @@ sash~
 The almight sash of Alexandria..why is it on the ground..~
 9 4194321 8454144 18033
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10
 A
@@ -4142,6 +4264,7 @@ Stealth~
 @@dA stealthy weapon lies on the ground...or does it?..@@N~
 5 37751317 8421376 369
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 15
 A
@@ -4167,6 +4290,7 @@ hood~
 @@WThe hood of an @@de@@Rx@@me@@dcutioner@@W..@@N~
 9 2577 8388624 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 25
 A
@@ -4191,6 +4315,7 @@ Fury~
 @@dThe fury of the retributive staff of crimson..@@N~
 4 0 8421376 1
 0.00
+0
 0 0 0 -1 0 0 0 0 0 0
 0
 L
@@ -4201,6 +4326,7 @@ bone~
 @@gA small bone from a skeleton..@@N~
 1 2704 8421376 1561
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 4
 A

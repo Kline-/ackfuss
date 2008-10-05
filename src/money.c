@@ -914,7 +914,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
     */
    for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    {
-      if( IS_NPC( mob ) && IS_SET( mob->act, ACT_BANKER ) )
+      if( IS_NPC( mob ) && is_set( mob->act, ACT_BANKER ) )
          break;
    }
 

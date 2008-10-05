@@ -161,14 +161,14 @@ char_reference(&s); } while(0)
 /*
  * Character macros.
  */
-#define IS_VAMP(ch) (IS_NPC(ch) ? IS_SET(ch->act, ACT_VAMPIRE) : IS_SET(ch->pcdata->pflags,PFLAG_VAMP) )
-#define IS_UNDEAD(ch) (IS_NPC(ch) ? IS_SET(ch->act, ACT_UNDEAD ) : FALSE )
+#define IS_VAMP(ch) (IS_NPC(ch) ? is_set(ch->act, ACT_VAMPIRE) : IS_SET(ch->pcdata->pflags,PFLAG_VAMP) )
+#define IS_UNDEAD(ch) (IS_NPC(ch) ? is_set(ch->act, ACT_UNDEAD ) : FALSE )
 #define IS_NPC(ch)              ( (ch)->npc )
 #define IS_IMMORTAL(ch)         (get_trust(ch) >= LEVEL_IMMORTAL)
 #define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
 #define IS_AFFECTED(ch, sn)     (IS_SET((ch)->affected_by, (sn)))
-/* #define IS_WERE(ch) (IS_NPC(ch) ? IS_SET(ch->act, ACT_WEREWOLF) : IS_SET(ch->pcdata->pflags,PFLAG_WEREWOLF) )
-*/
+#define IS_WERE(ch) (IS_NPC(ch) ? is_set(ch->act, ACT_WEREWOLF) : IS_SET(ch->pcdata->pflags,PFLAG_WEREWOLF) )
+
 #define IS_GOOD(ch)             (ch->alignment >= 350)
 #define IS_EVIL(ch)             (ch->alignment <= -350)
 #define IS_NEUTRAL(ch)          (!IS_GOOD(ch) && !IS_EVIL(ch))
@@ -199,8 +199,8 @@ char_reference(&s); } while(0)
                                 || ( (ch)->stance == STANCE_WIZARD ) \
                                 || ( (ch)->stance == STANCE_MAGI ) )
 #define PLAYTESTER(ch)          ( !IS_NPC(ch) && IS_SET((ch)->pcdata->pflags, PFLAG_TESTER )  )
-#define HAS_BODY(ch)            ( !IS_NPC(ch) || !IS_SET((ch)->act, ACT_NO_BODY ) )
-#define HAS_MIND(ch)            ( !IS_NPC(ch) || !IS_SET((ch)->act, ACT_NOMIND ) )
+#define HAS_BODY(ch)            ( !IS_NPC(ch) || !is_set((ch)->act, ACT_NO_BODY ) )
+#define HAS_MIND(ch)            ( !IS_NPC(ch) || !is_set((ch)->act, ACT_NO_MIND ) )
 #define IS_WEAPON(eq)           ( (eq) != NULL ? (eq)->item_type == ITEM_WEAPON : FALSE )
 #define IS_SHIELD(eq)           ( (eq) != NULL ? (eq)->item_type == ITEM_ARMOR : FALSE )
 

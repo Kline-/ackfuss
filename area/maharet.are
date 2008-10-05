@@ -1,6 +1,6 @@
 #AREA
 @@GEvermeet@@N~
-Q 17
+Q 19
 K evermeet~
 L @@W{@@r ALL @@W}@@N~
 N 7
@@ -1154,10 +1154,11 @@ The impassive gate guard stands here.
 ~
 ~
 7 32776 -100
-55 1
+54 1
 -500 120 110
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 7
 #9220
 captain~
 The Elite Guard captain~
@@ -1165,10 +1166,11 @@ The guard captain of the elite squadron polishes his boots nonchalantly here.
 ~
 ~
 21102721 533120 100
-66 1
+65 1
 -690 199 223
 ! 0 0 3 7 7684 0 0
 | 0 0 0 0 0 0 0
+1 5 0 21102721
 #9219
 elite~
 The Elite Elven guard~
@@ -1176,10 +1178,11 @@ The impassive Elite guard stands here, looming over you.
 ~
 ~
 87 8872 -1
-64 1
+63 1
 -40 40 40
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
+1 5 0 87
 #9218
 queen~
 Queen Amlariul~
@@ -1187,10 +1190,11 @@ The beautifully radiant Queen Amlariul sits here lost in thought.
 ~
 ~
 3 680 -1
-83 2
+84 2
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9217
 healer~
 the wizened priest~
@@ -1198,10 +1202,11 @@ The wizened old elven priest looks up at you from his reading.
 ~
 ~
 5635 2728 300
-82 1
+83 1
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
+1 5 0 5635
 #9216
 guard elven~
 the elegant elven guard~
@@ -1213,6 +1218,7 @@ The serenely graceful Elven guards patrol here.
 -25 20 20
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
+1 4 0 197
 #9215
 amylla shopkeeper~
 Amylla Goldeneyes~
@@ -1224,6 +1230,7 @@ Amylla Goldeneyes bakes her way through the day's order here.
 -1400 400 400
 ! 0 0 3 7 24076 0 16
 | 0 0 0 0 0 0 0
+1 3 0 131
 #9213
 sebastian shopkeeper~
 Sebastian the shopkeeper~
@@ -1231,10 +1238,11 @@ A short, crabby elf is here giving music lessons.
 ~
 ~
 3 2720 0
-60 1
+59 1
 -1400 400 400
 ! 0 0 3 7 24076 0 16
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9208
 ilyrana shopkeeper~
 Ilyrana the Shopkeeper~
@@ -1246,10 +1254,11 @@ This pretty little elf spends most of her time here among her flowers. With her
 to make any money in her chosen profession.
 ~
 16785475 10912 0
-140 2
+139 2
 -1400 400 400
 ! 0 0 3 7 390 0 0
 | 0 0 0 0 0 0 0
+1 5 0 16785475
 #9207
 marikoth executioner~
 Marikoth the Executioner~
@@ -1265,6 +1274,7 @@ This quiet, silver-haired elf with his deep set eyes and an expression of
 -1000 527 527
 ! 0 0 3 7 6158 0 0
 | 0 0 0 0 0 0 0
+1 4 0 131083
 #9206
 alinar banker~
 Alinar the Banker~
@@ -1275,10 +1285,11 @@ The honorable elf before you would rather die than cheat a customer of his
 leads that has him practically chained to the bank.
 ~
 32771 8872 0
-82 1
+81 1
 -1300 400 400
 ! 3 0 3 7 398 0 0
 | 0 0 0 0 0 0 0
+1 3 0 32771
 #9205
 dandy innkeeper~
 Dandy the Innkeeper~
@@ -1289,10 +1300,11 @@ The huge man towering over you sends a shiver down your spine with a glance.
 likely that he would give you a big hug rather than hurt you.
 ~
 11 8876 0
-68 1
+69 1
 -65 65 65
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 11
 #9203
 pierre consultant~
 Pierre the Fashion Consultant~
@@ -1304,10 +1316,11 @@ Rushing up to you the moment you walked in the door, it's almost as if he was
 get his delicate designer feelings hurt with the slightest frown.
 ~
 8388611 10912 0
-142 1
+143 1
 -1400 400 400
 ! 0 0 3 7 30 0 16
 | 0 0 0 0 0 0 0
+1 3 0 8388611
 #9202
 kythaela weaponsmith~
 Kythaela the weaponsmith~
@@ -1319,10 +1332,11 @@ Kythaela looks as if she has been in this business for a long time. Her
 and she will design a special one just for you.
 ~
 8195 10920 0
-117 2
+118 2
 -1400 400 400
 ! 0 0 3 7 6158 0 16
 | 0 0 0 0 0 0 0
+1 3 0 8195
 #9201
 scruffy dwarf~
 a scruffy little dwarf~
@@ -1336,6 +1350,7 @@ This scruffy little scavenger is better off left unnoticed. Maybe if you ignore 
 -3 3 3
 ! 0 0 2 7 0 0 0
 | 0 0 0 0 0 0 0
+1 4 0 197
 #9204
 thaola shopkeeper~
 Thaola the shopkeeper~
@@ -1343,10 +1358,11 @@ A soft-spoken elven woman is here offering you a glass of wine.
 ~
 ~
 8388611 10912 0
-140 2
+139 2
 -1400 400 400
 ! 0 0 3 7 0 0 16
 | 0 0 0 0 0 0 0
+1 3 0 8388611
 #9209
 amasal armorer~
 Amasal the Armorer~
@@ -1362,6 +1378,7 @@ This handsome elf looks as if he's tired of being cooped up in this tiny shop.
 -1300 400 500
 ! 3 0 3 7 142 0 0
 | 0 0 0 0 0 0 0
+1 3 0 1048579
 #9210
 rennyn shopkeeper~
 Rennyn the shopkeeper~
@@ -1372,10 +1389,11 @@ A tall, thin elf stands before you. He looks slightly bored, as if it has been
 various food items he has brought in today.
 ~
 3 2720 0
-137 1
+138 1
 -1400 400 400
 ! 0 0 3 7 24076 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9211
 evanard grocer~
 Evanard the Grocer~
@@ -1391,6 +1409,7 @@ The happy elf before you has made it his life's work to find hard to locate
 -1400 400 400
 ! 0 0 3 7 24206 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9212
 laeroth wizard~
 Laeroth the Wizard~
@@ -1406,6 +1425,7 @@ As you look into Laeroth's eyes, you get the feeling you can't count as high
 -1400 400 400
 ! 0 0 3 7 24076 8394752 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #9214
 lorianne bartender~
 Lorianne the bartender~
@@ -1415,10 +1435,11 @@ Tall and slender and graceful, this lady has a piercing glare about her, I
 wouldnt mess if I were you.
 ~
 1539 2720 -1
-76 2
+77 2
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
+1 4 0 1539
 #9222
 paul creditman jeweller~
 Paul the Creditman~
@@ -1430,6 +1451,7 @@ A very happy man is here offering you credit for jewelry.
 -1400 400 400
 ! 0 0 3 7 20236 0 16
 | 0 0 0 0 0 0 0
+1 3 0 8388611
 #0
 #OBJECTS
 #9234
@@ -1438,6 +1460,7 @@ a pair of elven boots~
 A pair of handmade elven boots have been left here.~
 9 0 10485760 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1448,6 +1471,7 @@ a bright blue elven tunic~
 A very fashionable blue tunic has been left here.~
 9 0 8650752 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1460,6 +1484,7 @@ an ornately decorated elven cloak~
 A very fancy elven cloak had been left here.~
 9 0 8454144 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -1474,6 +1499,7 @@ a bottle of fine vintage wine~
 A bottle of fine vintage wine has been left here.~
 17 0 8388608 1
 0.00
+0
 10 10 2 0 0 0 0 0 0 0
 4
 L
@@ -1484,6 +1510,7 @@ a kayak~
 A hand-crafted kayak has been left here.~
 22 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 50
 L
@@ -1494,6 +1521,7 @@ freshly cut dandylion leaves~
 Some freshly cut dandylion leaves have been left here to tempt you.~
 19 0 8388608 1
 0.00
+0
 50 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1504,6 +1532,7 @@ a loaf of waybread~
 A tasty loaf of waybread has been left here.~
 19 0 8388608 1
 0.00
+0
 55 0 0 0 0 0 0 0 0 0
 3
 L
@@ -1514,6 +1543,7 @@ a fine glass of 1982 Riocha~
 ~
 17 0 8388608 1
 0.00
+0
 1 1 2 1 0 0 0 0 0 0
 1
 L
@@ -1525,6 +1555,7 @@ You can just make out a needle here.
 ~
 5 65 8421376 1
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 1
 L
@@ -1536,6 +1567,7 @@ An awful cravatte lies on the floor here.
 ~
 9 0 8388736 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1551,6 +1583,7 @@ A snowdrop has been thoughtlessly discarded here.
 ~
 8 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1562,6 +1595,7 @@ A rose lies trampled on the floor here.
 ~
 8 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1573,6 +1607,7 @@ A large bouquet lies on the floor here forgotten.
 ~
 8 0 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1585,6 +1620,7 @@ a PEW39 Explosive Space Modulator~
 A PEW39 Explosive Space Modulator lies here ready to blow up the world.~
 5 16705 8421376 1
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 4
 A
@@ -1607,6 +1643,7 @@ nectar of the gods~
 A refreshing drink has been left here.~
 10 128 8388608 1
 0.00
+0
 10 16 81 -1 0 0 0 0 0 0
 1
 L
@@ -1617,6 +1654,7 @@ a vapor barrier~
 Someone has left a vapor barrier here. Wise choice.~
 17 0 8388608 1
 0.00
+0
 30 30 8 0 0 0 0 0 0 0
 1
 L
@@ -1627,6 +1665,7 @@ a mug of rivengut~
 A mug of rivengut has been left here.~
 17 0 8388608 1
 0.00
+0
 10 10 4 0 0 0 0 0 0 0
 1
 L
@@ -1637,6 +1676,7 @@ an O'Shite Staff~
 An ornate staff lies here. Clasp it in times of need calling, 'O'Shite! Get me outa here!'~
 4 65 8421376 1
 0.00
+0
 40 1 1 42 0 0 0 0 0 0
 1
 L
@@ -1647,6 +1687,7 @@ a blueberry muffin~
 A scrumptious blueberry muffin tempts you here.~
 19 0 8388608 1
 0.00
+0
 50 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1657,6 +1698,7 @@ a chocolate donut~
 A yummy chocolate donut beckons to you.~
 19 0 8388608 1
 0.00
+0
 40 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1667,6 +1709,7 @@ an elfrune~
 This ornately detailed token is a gift of Queen Amluruil herself, use it wisely.~
 3 1 8421376 1
 0.00
+0
 75 3 3 2 0 0 0 0 0 0
 1
 L
@@ -1678,6 +1721,7 @@ A superbly crafted set of elven chain is here.
 ~
 9 1 8650752 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1692,6 +1736,7 @@ a Scooby Snack~
 A scooby snack lies here. Are you willing to do anything to get it?~
 26 0 8388608 1
 0.00
+0
 75 66 36 28 0 0 0 0 0 0
 1
 L
@@ -1702,6 +1747,7 @@ a pair of elven sleeves~
 A finely crafted pair of elven sleeves have been carelessly left behind here.~
 9 0 8389632 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -1718,6 +1764,7 @@ an elven bracer~
 An elven bracer has been dropped here.~
 9 0 8390656 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -1732,6 +1779,7 @@ a pair of elven leggings ~
 A pair of elven leggings have been left here.~
 9 0 9437184 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 2
 A
@@ -1746,6 +1794,7 @@ a finely woven elven cloak~
 A finely woven elven cloak hangs here on a peg.~
 9 0 8388736 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 2
 L
@@ -1756,6 +1805,7 @@ boots of elvenkind~
 A pair of boots of elvenkind lie here.~
 9 1 10485760 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1774,6 +1824,7 @@ a long-stemmed white rose~
 A beautiful long-stemmed white rose lies here.~
 9 0 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1788,6 +1839,7 @@ a finely crafted elven belt~
 Someone has left a belt here. Hope it wasn't needed to hold up their pants.~
 9 0 8519680 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -1802,6 +1854,7 @@ an elven sword ~
 An elven sword lies here, waiting for a good fight.~
 5 65 8421376 1
 0.00
+0
 0 0 0 1 0 0 0 0 0 0
 5
 A
@@ -1816,6 +1869,7 @@ a finely crafted elven bow~
 A finely crafted elven bow rests here, waiting to be picked up.~
 5 65 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 4
 A
@@ -1830,6 +1884,7 @@ a Moonblade~
 A finely crafted sword decorated with runes radiates a glowing light here.~
 5 65 8421376 1
 0.00
+0
 0 0 0 1 0 0 0 0 0 0
 5
 A
@@ -1848,6 +1903,7 @@ a finely crafted elven shield~
 A finely crafted elven shield is resting here.~
 9 0 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 3
 A
@@ -1866,6 +1922,7 @@ a BK t-shirt~
 A t-shirt lies here with the logo 'Get it your way right away at BK now'~
 9 0 8650752 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -1876,6 +1933,7 @@ the Fountain of Stars~
 An ornately decorated fountain flows here.~
 25 0 0 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 10000
 L

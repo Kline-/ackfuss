@@ -1,6 +1,6 @@
 #AREA
 @@lS@@do@@eE@@N @@aKindergarden@@N~
-Q 17
+Q 19
 K soekindergarden~
 L @@W{@@r 1  5@@W}@@N~
 N 22
@@ -1477,6 +1477,7 @@ The sly little Abu is here, looking for something to kill
 -30 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 4194305
 #3700
 acolyte cleric~
 Aliaser's power~
@@ -1489,6 +1490,7 @@ He is big and bad.  Don't mess with him.
 0 0 0
 ! 0 0 17 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 65
 #3701
 pool goo~
 a pool of goo~
@@ -1503,6 +1505,7 @@ He is big, he is bad.  You don't want to fight him when he isn't chained up.
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #3702
 blackbird~
 a blackbird~
@@ -1516,6 +1519,7 @@ He looks mean, but you feel comfortable that you can kill him, especially since
 50 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #3703
 sparrow~
 a sparrow~
@@ -1525,10 +1529,11 @@ He looks wimpy.  You feel comfortable that you can kill him, especially since
 he is leashed up, and you are not.
 ~
 131 0 0
-4 0
+5 0
 60 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 131
 #3704
 magpie~
 a magpie~
@@ -1542,6 +1547,7 @@ He looks mean, but you feel comfortable that you can kill him, especially since
 50 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 35
 #3705
 jay~
 the jay~
@@ -1555,6 +1561,7 @@ He looks mean, but you feel comfortable that you can kill him, especially since
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 4 0 163
 #3706
 eagle~
 the eagle~
@@ -1568,6 +1575,7 @@ He looks mean, and you just might have a small problem killing him, but he
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #3707
 adept cleric~
 the adept of Kahn~
@@ -1576,10 +1584,11 @@ An adept of Overlord Kahn is here, contemplating your progress.
 He is big and bad.  Don't mess with him.
 ~
 67 136 1000
-81 1
+82 1
 -500 500 500
 ! 0 0 0 7 17416 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #3709
 gekko~
 the gekko~
@@ -1592,6 +1601,7 @@ The gekko smiles at you, completely harmless!
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 193
 #3710
 newt~
 the newt~
@@ -1604,6 +1614,7 @@ It smiles at you, and tries to eat your leg.
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 65
 #3711
 badger~
 the badger~
@@ -1612,10 +1623,11 @@ The badger roots around for food here.
 It grunts at you.
 ~
 65 0 0
-9 0
+10 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 65
 #3712
 squirrel~
 the squirrel~
@@ -1628,6 +1640,7 @@ His fur might be worth money.
 10 -2 -2
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 193
 #3713
 slug~
 the squidgy slug~
@@ -1636,10 +1649,11 @@ A slug squeltches around here, waiting to be trod on.
 You don't see much but slime about it.
 ~
 65 0 0
-5 0
+4 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 65
 #3714
 eeyore~
 Eeyore the donkey~
@@ -1648,10 +1662,11 @@ Eeyore the donkey is in a _seriously_ bad mood.
 It looks mean.  You'd better run.
 ~
 97 0 0
-8 0
+7 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 97
 #3715
 pooh bear~
 Pooh Bear~
@@ -1660,10 +1675,11 @@ Pooh Bear digs in his honey pot for a little treat.
 The bear must be bigger than you!  It wants to rip your head off.
 ~
 65 0 0
-5 0
+4 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 65
 #3716
 Piglet~
 Piglet~
@@ -1671,10 +1687,11 @@ Piglet tries to remain on the ground, whilst holding onto a balloon here.
 ~
 ~
 65 0 0
-10 0
+9 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 65
 #3717
 adept cleric~
 the adept of Frag~
@@ -1683,10 +1700,11 @@ An adept of Frag is here, grinning and selling you things.
 He is big and bad.  Don't mess with him.
 ~
 67 136 1000
-75 1
+74 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 3 0 67
 #3718
 adept cleric~
 the adept of Furey~
@@ -1695,10 +1713,11 @@ The Adept of Furey is here, waiting to help you.
 He is big and bad.  Don't mess with him.
 ~
 1603 136 1000
-78 1
+77 1
 -500 500 500
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 5 0 1603
 #3719
 priest cleric~
 the priest of Hatchet~
@@ -1707,10 +1726,11 @@ The priest of Hatchet is ready to help you practice.
 He is big and bad.  Don't mess with him.
 ~
 1049667 136 1000
-110 1
+109 1
 -500 500 500
 ! 0 0 0 7 26504 0 0
 | 0 0 0 0 0 0 0
+1 5 0 1049667
 #3720
 sage~
 a wise old fool~
@@ -1720,10 +1740,11 @@ This horrible creature is your final test for mud school.  Kill him, and the
 diploma is yours.
 ~
 3 512 0
-10 0
+11 0
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #3721
 The Newbie Squire~
 A Newbie Squire~
@@ -1732,10 +1753,11 @@ A newbie Squire stands here, dropping equipment all over the place.
 ~
 ~
 3 553 0
-2 1
+3 1
 0 0 0
 ! 1 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
+1 2 0 3
 #0
 #OBJECTS
 #3717
@@ -1744,6 +1766,7 @@ a jewelled dagger~
 ~
 5 0 8421376 1
 0.00
+0
 0 0 0 11 0 0 0 0 0 0
 1
 A
@@ -1762,6 +1785,7 @@ a sub issue mace~
 You see a sub issue mace here.~
 5 64 8421376 1
 0.00
+0
 0 2 3 7 0 0 0 0 0 0
 1
 A
@@ -1782,6 +1806,7 @@ You see a sub issue dagger that has been dropped here.
 ~
 5 64 8421376 1
 0.00
+0
 0 2 3 11 0 0 0 0 0 0
 1
 A
@@ -1803,6 +1828,7 @@ a sub issue sword~
 You see a sub issue sword here.~
 5 64 8421376 1
 0.00
+0
 0 2 3 3 0 0 0 0 0 0
 1
 A
@@ -1824,6 +1850,7 @@ You see a sub issue vest that has been dropped here.
 ~
 9 0 8650752 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1839,6 +1866,7 @@ a sub issue shield~
 You see a sub issue shield here.~
 9 0 8421376 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1854,6 +1882,7 @@ a sub issue cloak~
 You see a sub issue cloak here.~
 9 0 8388736 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1871,6 +1900,7 @@ You see a sub issue helmet that has been dropped here rather carelessly.
 ~
 9 0 8388616 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1886,6 +1916,7 @@ a pair of sub issue leggings~
 You see a pair of sub issue leggings here.~
 9 0 9437184 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1901,6 +1932,7 @@ a pair of sub issue boots~
 You see a pair of sub issue boots here.~
 9 0 10485760 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1916,6 +1948,7 @@ a pair of sub issue gloves~
 You see a pair of sub issue gloves here.~
 9 0 8392704 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1931,6 +1964,7 @@ a pair of sub issue sleeves~
 You see a pair of sub issue sleeves here.~
 9 0 8389632 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1946,6 +1980,7 @@ a sub issue cape~
 You see a sub issue cape here.~
 9 0 8454144 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1961,6 +1996,7 @@ a sub issue belt~
 You see a sub issue belt here.~
 9 0 8519680 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1976,6 +2012,7 @@ a sub issue bracer~
 You see a sub issue bracer here.~
 9 0 8390656 1
 0.00
+0
 2 0 0 0 0 0 0 0 0 0
 1
 E
@@ -1991,6 +2028,7 @@ a key~
 You see a very important key here!~
 18 0 8388608 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 L
@@ -2001,6 +2039,7 @@ a mud school diploma~
 You see a mud school diploma here.~
 8 64 8421376 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A
@@ -2023,6 +2062,7 @@ a war banner~
 A war banner is on the floor here.~
 1 65 8388608 1
 0.00
+0
 0 0 -1 0 0 0 0 0 0 0
 1
 A
@@ -2042,6 +2082,7 @@ A fabled prize lies here.
 ~
 9 2 8388672 1
 0.00
+0
 0 0 0 0 0 0 0 0 0 0
 1
 A

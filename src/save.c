@@ -308,9 +308,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "\n" );
 
    fprintf( fp, "Exp            %d\n", ch->exp );
-   fprintf( fp, "Act            %d\n", ch->act );
-   bv_to_bm(ch->act,ch->act2); /* Start converting! */
-   fprintf( fp, "Act2           %s\n", save_bitmask( ch->act2 ) );
+   fprintf( fp, "Act            %s\n", save_bitmask( ch->act ) );
    fprintf( fp, "Config         %d\n", ch->config );
    fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
    /*
@@ -658,8 +656,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       *ch->pcdata->records = record_zero;
       GET_FREE( ch->pcdata->super, super_free );
       *ch->pcdata->super = super_zero;
-      GET_FREE( ch->act2, bitmask_free );
-      *ch->act2 = bitmask_zero;
+      GET_FREE( ch->act, bitmask_free );
+      *ch->act = bitmask_zero;
 
       d->character = ch;
 
@@ -980,8 +978,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'A':
-            KEY( "Act", ch->act, fread_number( fp ) );
-            BKEY( "Act2", ch->act2, fp );
+            BKEY( "Act", ch->act, fp );
             KEY( "AffectedBy", ch->affected_by, fread_number( fp ) );
             KEY( "Alignment", ch->alignment, fread_number( fp ) );
             KEY( "Armor", ch->armor, fread_number( fp ) );

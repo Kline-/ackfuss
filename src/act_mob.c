@@ -399,7 +399,7 @@ void need_to_stand( CHAR_DATA * ch )
          if( ( AI_MOB( vch ) )
              && ( vch->leader == NULL )
              && ( !is_same_group( vch, ch ) )
-             && ( IS_SET( vch->act, ACT_INTELLIGENT ) )
+             && ( is_set( vch->act, ACT_INTELLIGENT ) )
              && ( vch != ch )
              && ( ( get_psuedo_level( vch ) - get_psuedo_level( ch ) <= 20 )
                   && ( get_psuedo_level( vch ) - get_psuedo_level( ch ) >= -20 ) ) )
@@ -642,7 +642,7 @@ void mob_is_standing( CHAR_DATA * ch )
                continue;
 
             if( ( vch != ch ) && ( IS_NPC( vch ) )
-                && ( IS_SET( vch->act, ACT_INTELLIGENT ) )
+                && ( is_set( vch->act, ACT_INTELLIGENT ) )
                 && ( !is_same_group( ch, vch ) )
                 && ( vch->position == POS_STANDING )
                 && ( ( get_psuedo_level( vch ) - get_psuedo_level( ch ) <= 20
@@ -862,7 +862,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
    /*
     * Don't attack other int mobs! 
     */
-   if( IS_NPC( victim ) && IS_SET( victim->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_INTELLIGENT ) )
       return FALSE;
 
    /*
@@ -907,7 +907,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
    if( ( ch->spec_fun == spec_lookup( "spec_vamp_hunter" ) ) && ( IS_NPC( victim ) ) && ( number_percent(  ) < 20 ) )
       return FALSE;
 
-   if( ( IS_SET( victim->in_room->room_flags, ROOM_SAFE ) ) || ( IS_SET( victim->act, ACT_SOLO ) )
+   if( ( IS_SET( victim->in_room->room_flags, ROOM_SAFE ) ) || ( is_set( victim->act, ACT_SOLO ) )
        /*
         * || ( IS_SET( victim->in_room->room_flags, ROOM_JAIL_CELL ) ) 
         */  )

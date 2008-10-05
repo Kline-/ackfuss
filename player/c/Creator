@@ -25,7 +25,7 @@ HpManaMove     6059 6059 1427 1427 8250 8250
 Money          8 2 0 2 0 0 1 1 1 
 BankMoney      8 0 0 0 0 0 0 0 110 
 Exp            0
-Act            153160
+Act            0 0
 Config         2152
 AffectedBy     0
 Position       7
