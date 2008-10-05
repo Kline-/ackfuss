@@ -46,7 +46,8 @@
 /* This program provides the interpreting of building commands */
 
 /* The tables are now in buildtab.c: (This file was getting a bit big.)
-     Mob type flags      :    tab_mob_flags       : bit_vector
+     Mob act flags       :    tab_mob_act         : bitmask
+     Player act flags    :    tab_player_act      : bitmask
      Mob affected by     :    tab_affected_by     : bit_vector
      Object item type    :    tab_item_types      : number
      Object extra flags  :    tab_obj_flags       : bit_vector
@@ -515,7 +516,7 @@ void build_showmob( CHAR_DATA * ch, char *argument )
             pMob->ac_mod, pMob->hr_mod, pMob->dr_mod );
    xcat( buf1, buf );
 
-   xprintf( buf, "@@WMob Flags:@@y\n\r%s", bm_show_values( tab_mob_flags, pMob->act ) );
+   xprintf( buf, "@@WMob Flags:@@y\n\r%s", bm_show_values( tab_mob_act, pMob->act ) );
    xcat( buf1, buf );
 
    xprintf( buf, "@@WAffected by:@@y\n\r%s", show_values( tab_affected_by, pMob->affected_by, TRUE ) );
@@ -1355,7 +1356,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
    /*
     * Check for act flags 
     */
-   lvalue = table_lookup( tab_mob_flags, arg2 );
+   lvalue = table_lookup( tab_mob_act, arg2 );
    if( lvalue != 0 )
    {
       /*
@@ -5053,7 +5054,7 @@ void build_list( CHAR_DATA * ch, char *argument )
             break;
          case ACT_BUILD_MEDIT:
             xprintf( buf, "Valid mob flags are :\n\r" );
-            wide_table_printout( tab_mob_flags, buf + strlen( buf ) );
+            wide_table_printout( tab_mob_act, buf + strlen( buf ) );
             send_to_char( buf, ch );
             break;
          case ACT_BUILD_OEDIT:
