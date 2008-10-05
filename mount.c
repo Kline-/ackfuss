@@ -121,7 +121,7 @@ void do_mount( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( mount ) )
    {
-      if( !IS_SET( mount->act, ACT_MOUNT ) )
+      if( !is_set( mount->act, ACT_MOUNT ) )
       {
          act( "It's too difficult to ride on $N.", ch, 0, mount, TO_CHAR );
          return;
@@ -158,8 +158,8 @@ void do_mount( CHAR_DATA * ch, char *argument )
       ch->riding = mount;
       mount->rider = ch;
       ch->position = POS_RIDING;
-      if( !IS_SET( mount->act, ACT_SENTINEL ) )
-         SET_BIT( mount->act, ACT_SENTINEL );
+      if( !is_set( mount->act, ACT_SENTINEL ) )
+         set_bit( mount->act, ACT_SENTINEL );
       act( "You climb on and ride $N.", ch, 0, mount, TO_CHAR );
       act( "$n climbs on and rides $N.", ch, 0, mount, TO_ROOM );
       act( "$n climbs on and rides you.", ch, 0, mount, TO_VICT );

@@ -310,7 +310,7 @@ void objfun_sword_aggro( OBJ_DATA * obj, CHAR_DATA * keeper )
    {
       if( IS_NPC( vch )
           && ( vch->level > keeper->level )
-          && IS_SET( vch->act, ACT_AGGRESSIVE ) && vch->fighting == NULL && number_bits( 4 ) == 0 )
+          && is_set( vch->act, ACT_AGGRESSIVE ) && vch->fighting == NULL && number_bits( 4 ) == 0 )
       {
          act( "$p carried by $n glows in $s hands.", keeper, obj, NULL, TO_ROOM );
          act( "$p carried by you glows in your hands.", keeper, obj, NULL, TO_CHAR );

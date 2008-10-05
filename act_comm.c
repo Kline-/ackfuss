@@ -166,7 +166,7 @@ void do_note( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    for( postie = ch->in_room->first_person; postie != NULL; postie = postie->next_in_room )
-      if( IS_NPC( postie ) && IS_SET( postie->act, ACT_POSTMAN ) )
+      if( IS_NPC( postie ) && is_set( postie->act, ACT_POSTMAN ) )
          break;
 
 
@@ -505,7 +505,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
     return;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_SILENCE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
    {
       xprintf( buf, "You can't %s.\n\r", verb );
       send_to_char( buf, ch );
@@ -1224,7 +1224,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
       act( "You are no longer AFK.", ch, NULL, NULL, TO_CHAR );
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_SILENCE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
    {
       send_to_char( "Your message didn't get through.\n\r", ch );
       return;
@@ -1333,7 +1333,7 @@ void do_reply( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_SILENCE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
    {
       send_to_char( "Your message didn't get through.\n\r", ch );
       return;
@@ -1385,7 +1385,7 @@ void do_emote( CHAR_DATA * ch, char *argument )
    char *plast;
    buf[0] = '\0';
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_NO_EMOTE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_NO_EMOTE ) )
    {
       send_to_char( "You can't show your emotions.\n\r", ch );
       return;
@@ -2450,7 +2450,7 @@ void do_gtell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( ch->act2, PLR_NO_TELL ) )
+   if( is_set( ch->act, ACT_NO_TELL ) )
    {
       send_to_char( "Your message didn't get through!\n\r", ch );
       return;
@@ -2513,7 +2513,7 @@ void do_pemote( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char *plast;
    buf[0] = '\0';
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_NO_EMOTE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_NO_EMOTE ) )
    {
       send_to_char( "You can't pemote.\n\r", ch );
       return;
@@ -2565,7 +2565,7 @@ void do_pray( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( ch->act2, PLR_NO_PRAY ) )
+   if( is_set( ch->act, ACT_NO_PRAY ) )
    {
       send_to_char( "The Gods are not listening to you today.\n\r", ch );
       return;
@@ -2765,7 +2765,7 @@ void do_whisper( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_SILENCE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
    {
       send_to_char( "Your whispering skills seem rusty today.\n\r", ch );
       return;
@@ -2831,7 +2831,7 @@ void do_ask( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_SILENCE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
    {
       send_to_char( "You seem to have problems speaking!\n\r", ch );
       return;

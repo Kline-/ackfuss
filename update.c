@@ -295,7 +295,7 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
    ch->practice += add_prac;
 
    if( !IS_NPC( ch ) )
-      remove_bit( ch->act2, PLR_BOUGHT_PET );
+      remove_bit( ch->act, ACT_BOUGHT_PET );
 
    xprintf( buf, "You gain: %d Hit Points, %d Mana, %d Movement and %d pracs.\n\r", add_hp, add_mana, add_move, add_prac );
 
@@ -317,7 +317,7 @@ void gain_exp( CHAR_DATA * ch, long_int gain )
     * -S- Mod:  mobs CAN gain exp as well as players 
     */
 
-   if( ( IS_NPC( ch ) ) && !( IS_SET( ch->act, ACT_INTELLIGENT ) ) )
+   if( ( IS_NPC( ch ) ) && !( is_set( ch->act, ACT_INTELLIGENT ) ) )
       return;
 
    if( IS_IMMORTAL( ch ) )
@@ -344,7 +344,7 @@ int hit_gain( CHAR_DATA * ch )
    if( ch->is_free != FALSE )
       return 0;
 
-   if( IS_NPC( ch ) && !IS_SET( ch->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( ch ) && !is_set( ch->act, ACT_INTELLIGENT ) )
 
       gain = ( 5 + ch->level / 30 );
 
@@ -445,7 +445,7 @@ int mana_gain( CHAR_DATA * ch )
    int gain;
    if( ch->is_free != FALSE )
       return 0;
-   if( IS_NPC( ch ) && !IS_SET( ch->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( ch ) && !is_set( ch->act, ACT_INTELLIGENT ) )
    {
       gain = ( 1 + ch->level / 30 );
    }
@@ -744,7 +744,7 @@ void mobile_update( void )
       /*
        * Intelligent mob? 
        */
-/*	if ( IS_SET( ch->act, ACT_INTELLIGENT ) )
+/*	if ( is_set( ch->act, ACT_INTELLIGENT ) )
 	   int_handler( ch ); Disabled for now, for bugs.  */
 
       /*
@@ -756,11 +756,11 @@ void mobile_update( void )
       /*
        * Check for rewield, and re-equip (specials not used anymore) 
        */
-      if( IS_SET( ch->act, ACT_REWIELD ) )
+      if( is_set( ch->act, ACT_RE_WIELD ) )
          if( check_rewield( ch ) )
             continue;
 
-      if( IS_SET( ch->act, ACT_RE_EQUIP ) )
+      if( is_set( ch->act, ACT_RE_EQUIP ) )
          if( check_re_equip( ch ) )
             continue;
 
@@ -809,7 +809,7 @@ void mobile_update( void )
       /*
        * Scavenge 
        */
-      if( IS_SET( ch->act, ACT_SCAVENGER ) && ch->in_room->first_content != NULL && number_bits( 2 ) == 0 )
+      if( is_set( ch->act, ACT_SCAVENGER ) && ch->in_room->first_content != NULL && number_bits( 2 ) == 0 )
       {
          OBJ_DATA *obj;
          OBJ_DATA *obj_best;
@@ -837,14 +837,14 @@ void mobile_update( void )
       /*
        * Wander 
        */
-      if( !IS_SET( ch->act, ACT_SENTINEL )
+      if( !is_set( ch->act, ACT_SENTINEL )
           && ch->leader == NULL
           && ( door = number_bits( 5 ) ) <= 5
           && ( pexit = ch->in_room->exit[door] ) != NULL
           && pexit->to_room != NULL
           && !IS_SET( pexit->exit_info, EX_CLOSED )
           && !IS_SET( pexit->to_room->room_flags, ROOM_NO_MOB )
-          && ( !IS_SET( ch->act, ACT_STAY_AREA ) || pexit->to_room->area == ch->in_room->area ) )
+          && ( !is_set( ch->act, ACT_STAY_AREA ) || pexit->to_room->area == ch->in_room->area ) )
       {
          move_char( ch, door, FALSE );
          /*
@@ -1905,11 +1905,11 @@ void aggr_update( void )
          ch_next = ch->next_in_room;
 
          if( !IS_NPC( ch )
-             || !IS_SET( ch->act, ACT_AGGRESSIVE )
+             || !is_set( ch->act, ACT_AGGRESSIVE )
              || ch->fighting != NULL
              || ch->hunting != NULL
              || IS_AFFECTED( ch, AFF_CHARM )
-             || !IS_AWAKE( ch ) || ( IS_SET( ch->act, ACT_WIMPY ) && IS_AWAKE( wch ) ) || !can_see( ch, wch ) )
+             || !IS_AWAKE( ch ) || ( is_set( ch->act, ACT_WIMPY ) && IS_AWAKE( wch ) ) || !can_see( ch, wch ) )
             continue;
 
 
@@ -1929,9 +1929,9 @@ void aggr_update( void )
          {
             vch_next = vch->next_in_room;
 
-            if( ( !IS_NPC( vch ) || IS_SET( vch->act, ACT_INTELLIGENT ) )
+            if( ( !IS_NPC( vch ) || is_set( vch->act, ACT_INTELLIGENT ) )
                 && vch->level < LEVEL_IMMORTAL
-                && ( !IS_SET( ch->act, ACT_WIMPY ) || !IS_AWAKE( vch ) )
+                && ( !is_set( ch->act, ACT_WIMPY ) || !IS_AWAKE( vch ) )
                 && can_see( ch, vch ) && ( !( IS_UNDEAD( ch ) && IS_VAMP( vch ) ) ) )
             {
                if( number_range( 0, count ) == 0 )

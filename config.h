@@ -657,13 +657,55 @@
 #define CONFIG_AUTOBRIEF        BIT_15
 
 /* 
- * ACT bits for players
+ * ACT bits for players and mobs
  */
-enum player_act {
- PLR_NONE, PL_IS_NPC, PLR_BOUGHT_PET, PLR_REUSE1, PLR_NO_PRAY, PLR_HOLYLIGHT,
- PLR_WIZINVIS, PLR_BUILDER, PLR_SILENCE, PLR_NO_EMOTE, PLR_NO_TELL, PLR_LOG, PLR_DENY,
- PLR_FREEZE, PLR_THIEF, PLR_KILLER, PLR_NOSUMMON, PLR_NOVISIT, PLR_NOBLOOD
-};
+#define ACT_NONE        0    /* Empty, don't use               */
+#define ACT_BOUGHT_PET  1    /* Player bought a pet this level */
+#define ACT_SENTINEL    2    /* Stays in one room              */
+#define ACT_SCAVENGER   3    /* Picks up objects               */
+#define ACT_REMEMBER    4    /* Remembers target               */
+#define ACT_NO_FLEE     5    /* Can't flee from mob            */
+#define ACT_AGGRESSIVE  6    /* Attacks PC's                   */
+#define ACT_STAY_AREA   7    /* Won't leave area               */
+#define ACT_WIMPY       8    /* Flees when hurt                */
+#define ACT_PET         9    /* Auto set for pets              */
+#define ACT_TRAIN       10   /* Can train PC's                 */
+#define ACT_PRACTICE    11   /* Can practice PC's              */
+#define ACT_MERCENARY   12   /* Is a mercenary                 */
+#define ACT_HEAL        13   /* Sells spells                   */
+#define ACT_ADAPT       14   /* Adapts weapons                 */
+#define ACT_UNDEAD      15   /* Mob is undead                  */
+#define ACT_BANKER      16   /* Is a *B*anker :P               */
+#define ACT_NO_BODY     17   /* No body for damage             */
+#define ACT_HUNTER      18   /* Hunts attackers                */
+#define ACT_NO_MIND     19   /* Psi attack no-no               */
+#define ACT_POSTMAN     20   /* Postmaster                     */
+#define ACT_RE_WIELD    21   /* Uses better weapons            */
+#define ACT_RE_EQUIP    22   /* Uses better equipment          */
+#define ACT_INTELLIGENT 23   /* For shitkicking mobs           */
+#define ACT_VAMPIRE     24   /* Vampire mob                    */
+#define ACT_BREEDER     25   /* Mob can breed                  */
+#define ACT_SOLO   	26   /* Buffed for solo combat         */
+#define ACT_WEREWOLF    27   /* Werewolf mob                   */
+#define ACT_MOUNT       28   /* Mountable MOB                  */
+#define ACT_NO_BLOOD    29   /* No bloodwalk                   */
+#define ACT_NO_QUEST    30   /* Disable from mquest            */
+#define ACT_QUESTMASTER 31   /* Questmaster for mquest         */
+#define ACT_NO_PRAY     32   /* Can't use pray                 */
+#define ACT_HOLYLIGHT   33   /* Can see everything             */
+#define ACT_WIZINVIS    34   /* Invisible to lower levels      */
+#define ACT_BUILDER     35   /* Is able to use the OLC         */
+#define ACT_SILENCE     36   /* Can't use channels             */
+#define ACT_NO_EMOTE    37   /* Can't use emotes/socials       */
+#define ACT_NO_TELL     38   /* Can't use tell                 */
+#define ACT_LOG         39   /* All actions are logged         */
+#define ACT_DENY        40   /* Can't login                    */
+#define ACT_FREEZE      41   /* Frozen in place, no commands   */
+#define ACT_THIEF       42   /* Thief! Wanted!                 */
+#define ACT_KILLER      43   /* Pker! Wanted!                  */
+#define ACT_NO_SUMMON   44   /* Doesn't want to be summoned    */
+#define ACT_NO_VISIT    45   /* Doesn't want to be visited     */
+#define ACT_INCOG       46   /* Invis except in-room           */
 
 /* 
  * Player flags
@@ -867,45 +909,6 @@ enum player_act {
 #define ROOM_BV_HOLD           32768   /* room lets you in, but not out..recall works */
 #define ROOM_BV_POISON_RUNE    65536   /* room gives poison to entering ch */
 #define ROOM_BV_SOUL_NET	131072   /* makes soul instead of corpse */
-
-
-
-
-
-/*
- * ACT bits for mobs.
- * Used in #MOBILES.
- */
-#define ACT_SENTINEL          BIT_2    /* Stays in one room      */
-#define ACT_SCAVENGER         BIT_3    /* Picks up objects       */
-#define ACT_REMEMBER          BIT_4    /* remembers target       */
-#define ACT_NO_FLEE           BIT_5    /* can't flee from mob    */
-#define ACT_AGGRESSIVE        BIT_6    /* Attacks PC's           */
-#define ACT_STAY_AREA         BIT_7    /* Won't leave area       */
-#define ACT_WIMPY             BIT_8    /* Flees when hurt        */
-#define ACT_PET               BIT_9    /* Auto set for pets      */
-#define ACT_TRAIN             BIT_10   /* Can train PC's         */
-#define ACT_PRACTICE          BIT_11   /* Can practice PC's      */
-#define ACT_MERCENARY         BIT_12   /* Is a mercenary         */
-#define ACT_HEAL              BIT_13   /* Sells spells           */
-#define ACT_ADAPT             BIT_14   /* Adapts weapons         */
-#define ACT_UNDEAD            BIT_15   /* Mob is undead          */
-#define ACT_BANKER            BIT_16   /* Is a *B*anker :P       */
-#define ACT_NO_BODY           BIT_17   /* no body for damage     */
-#define ACT_HUNTER	      BIT_18   /* hunts attackers        */
-#define ACT_NOMIND	      BIT_19   /* Psi attack no-no       */
-#define ACT_POSTMAN	      BIT_20   /* Postmaster             */
-#define ACT_REWIELD	      BIT_21   /* Uses better weapons    */
-#define ACT_RE_EQUIP	      BIT_22   /* Uses better equipment  */
-#define ACT_INTELLIGENT	      BIT_23   /* For shitkicking mobs   */
-#define ACT_VAMPIRE           BIT_24   /* Vampire mob            */
-#define ACT_BREEDER           BIT_25   /* Mob can breed          */
-#define ACT_SOLO   	      BIT_26   /* buffed for solo combat */
-#define ACT_WEREWOLF          BIT_27   /* Werewolf mob           */ /* doesn't do anything in ack4.0 ZENFIX */
-#define ACT_MOUNT             BIT_28   /* Mountable MOB          */
-#define ACT_NOBLOOD           BIT_29   /* no bloodwalk           */
-#define ACT_NO_QUEST          BIT_30   /* disable from mquest    */
-#define ACT_QUESTMASTER       BIT_31   /* mquest questmaster     */
 
 /* build bits for OLC -S- */
 #define ACT_BUILD_NOWT                0   /* not doing anything   */

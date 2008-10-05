@@ -62,7 +62,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  if( !str_prefix(arg1,"request") )
  {
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && is_set(mob->pIndexData->act,ACT_QUESTMASTER) )
     break;
   if( mob == NULL || !can_see(ch,mob) )
   {
@@ -120,7 +120,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   mbuf[0] = '\0';
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && is_set(mob->pIndexData->act,ACT_QUESTMASTER) )
     break;
   if( mob == NULL || !can_see(ch,mob) )
   {
@@ -273,7 +273,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   sh_int i = 0, x = 0;
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && IS_SET(mob->pIndexData->act,ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && is_set(mob->pIndexData->act,ACT_QUESTMASTER) )
     break;
   if( mob == NULL )
   {
@@ -888,7 +888,7 @@ void generate_killing_quest( CHAR_DATA *ch )
      ch->pcdata->quest_info->amount[i] = 1;
     else
     {
-     if( IS_SET(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->act,ACT_SENTINEL) )
+     if( is_set(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->act,ACT_SENTINEL) )
       ch->pcdata->quest_info->amount[i] = 1;
      else
       ch->pcdata->quest_info->amount[i] = (2 + number_range(0,4));
@@ -933,8 +933,8 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
    || (mob->pIndexData->vnum > mob->in_room->area->max_vnum || mob->pIndexData->vnum < mob->in_room->area->min_vnum)
    || (IS_SET(mob->in_room->room_flags,ROOM_SAFE))
    || (IS_AFFECTED(mob,AFF_CHARM))
-   || (IS_SET(mob->act,ACT_PET))
-   || (IS_SET(mob->act,ACT_NO_QUEST)))
+   || (is_set(mob->act,ACT_PET))
+   || (is_set(mob->act,ACT_NO_QUEST)))
     continue;
 
   if( number_percent() < 5 ) /* Add variety to actually selecting the first ch we find in the ch_list */

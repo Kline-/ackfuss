@@ -261,7 +261,7 @@ bool spell_waterelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -292,7 +292,7 @@ bool spell_skeleton( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
     * summoned->move     = summoned->max_move;  
     */
 
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -675,7 +675,7 @@ bool spell_ethereal( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       return FALSE;
    }
    if( ( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) )
-       && ( !IS_NPC( ch ) && ( !IS_SET( ch->act, ACT_INTELLIGENT ) ) ) )
+       && ( !IS_NPC( ch ) && ( !is_set( ch->act, ACT_INTELLIGENT ) ) ) )
    {
       send_to_char( "You failed.\n\r", ch );
       return FALSE;
@@ -741,7 +741,7 @@ bool spell_fireelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1154,7 +1154,7 @@ bool spell_room_dispel( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    if( room == NULL )
       return FALSE;
 
-   if( IS_NPC( ch ) && IS_SET( ch->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
       chance = 1000;
    else
       chance = ch->level + 20;
@@ -1471,7 +1471,7 @@ bool spell_earthelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1501,7 +1501,7 @@ bool spell_iron_golem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1533,7 +1533,7 @@ bool spell_soul_thief( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1563,7 +1563,7 @@ bool spell_holy_avenger( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1593,7 +1593,7 @@ bool spell_diamond_golem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1623,7 +1623,7 @@ bool spell_summon_pegasus( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1653,7 +1653,7 @@ bool spell_summon_nightmare( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DA
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1683,7 +1683,7 @@ bool spell_summon_beast( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1713,7 +1713,7 @@ bool spell_summon_devourer( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -1743,7 +1743,7 @@ bool spell_summon_shadow( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
     * summoned->move     = summoned->max_move;  
     * 
     */
-   SET_BIT( summoned->act, ACT_PET );
+   set_bit( summoned->act, ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -2249,7 +2249,7 @@ bool spell_creature_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
          return TRUE;
       }
       stop_follower( victim );
-      SET_BIT( victim->act, ACT_PET );
+      set_bit( victim->act, ACT_PET );
       SET_BIT( victim->affected_by, AFF_CHARM );
       victim->extract_timer = get_psuedo_level( ch ) / 3;
       add_follower( victim, ch );

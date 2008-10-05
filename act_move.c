@@ -155,7 +155,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
    if( IS_SET( in_room->affected_by, ROOM_BV_ENCAPS ) || IS_SET( to_room->affected_by, ROOM_BV_ENCAPS ) )
    {
-      if( IS_NPC( ch ) && IS_SET( ch->act, ACT_INTELLIGENT ) )
+      if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
       {
          if( ch->mana > mana_cost( ch, skill_lookup( "room dispel" ) ) )
             do_cast( ch, "room dispel" );
@@ -169,7 +169,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    }
    if( IS_SET( in_room->affected_by, ROOM_BV_HOLD ) )
    {
-      if( IS_NPC( ch ) && IS_SET( ch->act, ACT_INTELLIGENT ) )
+      if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
       {
          if( ch->mana > mana_cost( ch, skill_lookup( "room dispel" ) ) )
             do_cast( ch, "room dispel" );
@@ -338,7 +338,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          }
       }
 
-      if( to_room->vnum == ROOM_VNUM_BUILDER && ( !IS_IMMORTAL( ch ) && !is_set( ch->act2, PLR_BUILDER ) ) )
+      if( to_room->vnum == ROOM_VNUM_BUILDER && ( !IS_IMMORTAL( ch ) && !is_set( ch->act, ACT_BUILDER ) ) )
       {
          send_to_char( "The Portal allows entrance to builders only.\n\r", ch );
          ch->using_named_door = FALSE;
@@ -364,7 +364,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          {
 
             if( ( IS_NPC( ch ) )
-                && ( IS_SET( ch->act, ACT_INTELLIGENT ) ) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
+                && ( is_set( ch->act, ACT_INTELLIGENT ) ) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
             {
                do_cast( ch, "fly" );
             }
@@ -405,7 +405,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          if( !found )
          {
             if( ( IS_NPC( ch ) )
-                && ( IS_SET( ch->act, ACT_INTELLIGENT ) ) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
+                && ( is_set( ch->act, ACT_INTELLIGENT ) ) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
             {
                do_cast( ch, "fly" );
             }
@@ -447,7 +447,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    }
 
 /*    if ( ( !IS_AFFECTED(ch, AFF_SNEAK) && !item_has_apply( ch, ITEM_APPLY_SNEAK ) )
-    && ( IS_NPC(ch) || !is_set(ch->act2, PLR_WIZINVIS) ) )  */
+    && ( IS_NPC(ch) || !is_set(ch->act, PLR_WIZINVIS) ) )  */
    {
       if( IS_SET( pexit->exit_info, EX_CLIMB ) )   /* dir_name[door] */
          act( "$n climbs $T.", ch, NULL, door_name_leave, TO_ROOM );
@@ -489,7 +489,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
    /*
     * if ( ( !IS_AFFECTED(ch, AFF_SNEAK) && !item_has_apply( ch, ITEM_APPLY_SNEAK ) )
-    * && ( IS_NPC(ch) || !is_set(ch->act2, PLR_WIZINVIS) ) )   
+    * && ( IS_NPC(ch) || !is_set(ch->act, PLR_WIZINVIS) ) )   
     */
    {
       if( IS_NPC( ch ) || ( !IS_NPC( ch ) && ( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) ) ) )
@@ -1647,7 +1647,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    {
-      if( IS_NPC( mob ) && IS_SET( mob->act, ACT_TRAIN ) )
+      if( IS_NPC( mob ) && is_set( mob->act, ACT_TRAIN ) )
          break;
    }
 

@@ -8,7 +8,7 @@
  * We all benifit when we work together.
  *
  * To successfully use this you will use the variable BITMASK
- * "BITMASK act;"
+ * "BITMASK *act;"
  * instead of int in your struct declarations for your bitmasks.
  * On this new variable type just pass the variables address to
  * the new functions-- set_bit, remove_bit, is_set.
@@ -48,7 +48,7 @@
 #include <time.h>
 #include "globals.h"
 
-bool remove_bit( BITMASK *mask, sh_int bit ) /* Returns FALSE if nothing removed. TRUE if so. */
+bool remove_bit( BITMASK *mask, int bit ) /* Returns FALSE if nothing removed. TRUE if so. */
 {
  BM_LIST *pBlist, *last = 0;
 
@@ -79,7 +79,7 @@ bool remove_bit( BITMASK *mask, sh_int bit ) /* Returns FALSE if nothing removed
  return FALSE; /* A bug happened. Wee. Somehow. */
 }
 
-bool set_bit( BITMASK *mask, sh_int bit ) /* Returns TRUE if a bit was set. FALSE if already set. */
+bool set_bit( BITMASK *mask, int bit ) /* Returns TRUE if a bit was set. FALSE if already set. */
 {
  BM_LIST *pBlist;
 
@@ -110,7 +110,7 @@ bool set_bit( BITMASK *mask, sh_int bit ) /* Returns TRUE if a bit was set. FALS
  return TRUE; /* We did something, yay! */
 }
 
-bool is_set( BITMASK *mask, sh_int bit )
+bool is_set( BITMASK *mask, int bit )
 {
  BM_LIST *pBlist;
 
@@ -205,12 +205,13 @@ void load_bitmask( BITMASK *pBmask, FILE *fp ) /* #masks #bits #mask #vector #ma
   pBmask->int_list = pBMlist;
   pBMlist->tar_mask = fread_number(fp);
  }
+ fread_to_eol(fp);
 }
 
 char *save_bitmask( BITMASK *pBmask ) /* Make this a string so it's easier to pass to existing save routines. --Kline */
 {
  BM_LIST *pBMlist;
- static char buf[MAX_STRING_LENGTH];
+ static char buf[MSL];
 
  xprintf(buf,"%ld %ld",pBmask->masks,pBmask->bits);
 
@@ -223,11 +224,11 @@ char *save_bitmask( BITMASK *pBmask ) /* Make this a string so it's easier to pa
 /* Thanks to Marlin@Azereth for this */
 void bv_to_bm( int list, BITMASK *mask )
 {
- sh_int bit;
+ sh_int i;
 
- for( bit = 0; bit <= 31; bit++ )
-  if( IS_SET(list,(1 << bit)) )
-   set_bit(mask,bit);
+ for( i = 0; i < 32; i++ )
+  if( IS_SET(list,(1 << i)) )
+   set_bit(mask,i+1);
 
  return;
 }

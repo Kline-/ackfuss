@@ -2045,8 +2045,8 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
       {
 
          ch->sentence = 0;
-         remove_bit( ch->act2, PLR_KILLER );
-         remove_bit( ch->act2, PLR_THIEF );
+         remove_bit( ch->act, ACT_KILLER );
+         remove_bit( ch->act, ACT_THIEF );
          send_to_char( "Your debt to society has been paid!  Please more careful in the future.\n\r", ch );
          xprintf( monbuf, "%s has had a WANTED flag removed by the judge.\n\r", ch->name );
          monitor_chan( monbuf, MONITOR_GEN_MORT );
@@ -2464,7 +2464,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
          {
             int diff = 0;
             diff = ( abs( get_psuedo_level( ch ) - get_psuedo_level( victim ) ) + 10 ) * 20;
-            set_bit( ch->act2, PLR_THIEF );
+            set_bit( ch->act, ACT_THIEF );
             send_to_char( "*** You are now a THIEF!! ***\n\r", ch );
             ch->sentence += diff;
             save_char_obj( ch );
@@ -2549,7 +2549,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
     * Undesirables.
     */
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_KILLER ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_KILLER ) )
    {
       do_say( keeper, "Killers are not welcome!" );
       xprintf( buf, "%s the KILLER is over here!", ch->name );
@@ -2558,7 +2558,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
       return NULL;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_THIEF ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_THIEF ) )
    {
       do_say( keeper, "Thieves are not welcome!" );
       xprintf( buf, "%s the THIEF is over here!", ch->name );
@@ -2746,13 +2746,13 @@ void do_buy( CHAR_DATA * ch, char *argument )
       ch->in_room = pRoomIndexNext;
       pet = get_char_room( ch, arg );
       ch->in_room = in_room;
-      if( pet == NULL || !IS_SET( pet->act, ACT_PET ) )
+      if( pet == NULL || !is_set( pet->act, ACT_PET ) )
       {
          send_to_char( "Sorry, you can't buy that here.\n\r", ch );
          return;
       }
 
-      if( is_set( ch->act2, PLR_BOUGHT_PET ) )
+      if( is_set( ch->act, ACT_BOUGHT_PET ) )
       {
          send_to_char( "You already bought one pet this level.\n\r", ch );
          return;
@@ -2791,8 +2791,8 @@ void do_buy( CHAR_DATA * ch, char *argument )
       }
 
       pet = create_mobile( pet->pIndexData );
-      set_bit( ch->act2, PLR_BOUGHT_PET );
-      SET_BIT( pet->act, ACT_PET );
+      set_bit( ch->act, ACT_BOUGHT_PET );
+      set_bit( pet->act, ACT_PET );
       SET_BIT( pet->affected_by, AFF_CHARM );
       argument = one_argument( argument, arg );
       if( arg[0] != '\0' )
@@ -2930,7 +2930,7 @@ void do_list( CHAR_DATA * ch, char *argument )
       found = FALSE;
       for( pet = pRoomIndexNext->first_person; pet; pet = pet->next_in_room )
       {
-         if( IS_SET( pet->act, ACT_PET ) )
+         if( is_set( pet->act, ACT_PET ) )
          {
             if( !found )
             {
@@ -3310,7 +3310,7 @@ void do_adapt( CHAR_DATA * ch, char *argument )
     */
    for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    {
-      if( IS_NPC( mob ) && IS_SET( mob->act, ACT_ADAPT ) )
+      if( IS_NPC( mob ) && is_set( mob->act, ACT_ADAPT ) )
          break;
    }
 

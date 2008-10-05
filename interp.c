@@ -953,7 +953,7 @@ void interpret( CHAR_DATA * ch, char *argument )
    /*
     * Implement freeze command.
     */
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_FREEZE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_FREEZE ) )
    {
       send_to_char( "@@a@@fYou're totally frozen!@@N\n\r", ch );
       return;
@@ -1039,11 +1039,11 @@ void interpret( CHAR_DATA * ch, char *argument )
    if( cmd_table[cmd].log == LOG_NEVER )
       strcpy( logline, "XXXXXXXX XXXXXXXX XXXXXXXX@@N" );
 
-   if( ( !IS_NPC( ch ) && is_set( ch->act2, PLR_LOG ) ) || fLogAll || cmd_table[cmd].log == LOG_ALWAYS )
+   if( ( !IS_NPC( ch ) && is_set( ch->act, ACT_LOG ) ) || fLogAll || cmd_table[cmd].log == LOG_ALWAYS )
    {
       xprintf_2( log_buf, "Log %s: %s", ch->name, logline );
       log_string( log_buf );
-      if( is_set( ch->act2, PLR_LOG ) )
+      if( is_set( ch->act, ACT_LOG ) )
          monitor_chan( log_buf, MONITOR_BAD );
       else if( cmd_table[cmd].level > LEVEL_HERO )
          monitor_chan( log_buf, MONITOR_GEN_IMM );
@@ -1193,7 +1193,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
    if( !found )
       return FALSE;
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_NO_EMOTE ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_NO_EMOTE ) )
    {
       send_to_char( "You are anti-social!\n\r", ch );
       return TRUE;

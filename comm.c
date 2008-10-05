@@ -1432,7 +1432,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             if( IS_NPC( ch ) )
                break;
             if( IS_IMMORTAL( ch ) )
-               xprintf( buf2, "INVIS: %d", is_set( ch->act2, PLR_WIZINVIS ) ? ch->invis : 0 );
+               xprintf( buf2, "INVIS: %d", is_set( ch->act, ACT_WIZINVIS ) ? ch->invis : 0 );
             else
             {
                if( ( IS_AFFECTED( ch, AFF_INVISIBLE ) )
@@ -2077,7 +2077,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
 
 
-      if( is_set( ch->act2, PLR_DENY ) )
+      if( is_set( ch->act, ACT_DENY ) )
       {
          xprintf_2( log_buf, "Denying access to %s@%s.", argument, d->host );
          log_string( log_buf );
@@ -3427,16 +3427,16 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
                   can_see_message = TRUE;
                   if( IS_IMMORTAL( to ) )
                   {
-                     if( is_set( ch->act2, PLR_WIZINVIS ) && ch->invis > get_trust( to )
+                     if( is_set( ch->act, ACT_WIZINVIS ) && ch->invis > get_trust( to )
                          /*
-                          * || ( is_set( ch->act2, PLR_INCOG )
+                          * || ( is_set( ch->act, PLR_INCOG )
                           * && ch->incog > get_trust( to )
                           */  )
                         can_see_message = FALSE;
                   }
                   else
                   {
-                     if( is_set( ch->act2, PLR_WIZINVIS ) && get_trust( to ) < ch->invis )
+                     if( is_set( ch->act, ACT_WIZINVIS ) && get_trust( to ) < ch->invis )
                         can_see_message = FALSE;
                      if( ( IS_AFFECTED( ch, AFF_SNEAK ) || item_has_apply( ch, ITEM_APPLY_SNEAK ) )
                          && ( ( get_psuedo_level( ch ) - 20 + number_range( 1, 30 ) ) > get_psuedo_level( to ) ) )

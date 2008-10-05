@@ -322,7 +322,7 @@ int can_carry_n( CHAR_DATA * ch )
       return 500;
 
    /*
-    * if ( IS_NPC(ch) && IS_SET(ch->act, ACT_PET) )
+    * if ( IS_NPC(ch) && is_set(ch->act, ACT_PET) )
     * return 0;  
     */
 
@@ -339,7 +339,7 @@ int can_carry_w( CHAR_DATA * ch )
    if( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
       return 9999999;
 
-/*    if ( IS_NPC(ch) && IS_SET(ch->act, ACT_PET) )
+/*    if ( IS_NPC(ch) && is_set(ch->act, ACT_PET) )
 	return 0;   */
 
    return str_app[get_curr_str( ch )].carry;
@@ -1760,7 +1760,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
 
    if( !fPull )
    {
-      if( IS_NPC( ch ) && IS_SET( ch->act, ACT_INTELLIGENT ) )
+      if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
       {
          char_to_room( ch, get_room_index( ROOM_VNUM_INT_HEAL ) );
 
@@ -2365,7 +2365,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
       return FALSE;
 
 
-   if( !IS_NPC( victim ) && is_set( victim->act2, PLR_WIZINVIS ) && get_trust( ch ) < victim->invis )
+   if( !IS_NPC( victim ) && is_set( victim->act, ACT_WIZINVIS ) && get_trust( ch ) < victim->invis )
 
       /*
        * &&   get_trust( ch ) < get_trust( victim ) ) 
@@ -2373,7 +2373,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
 
       return FALSE;
 
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_HOLYLIGHT ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_HOLYLIGHT ) )
       return TRUE;
    if( ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) ) && ch->in_room == victim->in_room )
       return FALSE;
@@ -2412,7 +2412,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
  */
 bool can_see_obj( CHAR_DATA * ch, OBJ_DATA * obj )
 {
-   if( !IS_NPC( ch ) && is_set( ch->act2, PLR_HOLYLIGHT ) )
+   if( !IS_NPC( ch ) && is_set( ch->act, ACT_HOLYLIGHT ) )
       return TRUE;
 /*    if ( obj->item_type == ITEM_TRIGGER )
       return TRUE;  */

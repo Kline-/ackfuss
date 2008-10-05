@@ -187,13 +187,13 @@ void do_deny( CHAR_DATA * ch, char *argument )
 //          do_quit( victim, "" );
       return;
    }
-   if( is_set( victim->act2, PLR_DENY ) )
+   if( is_set( victim->act, ACT_DENY ) )
    {
-      remove_bit( victim->act2, PLR_DENY );
+      remove_bit( victim->act, ACT_DENY );
    }
    else
    {
-      set_bit( victim->act2, PLR_DENY );
+      set_bit( victim->act, ACT_DENY );
       send_to_char( "You are denied access!\n\r", victim );
    }
    send_to_char( "OK.\n\r", ch );
@@ -275,9 +275,9 @@ void do_pardon( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "killer" ) )
    {
-      if( is_set( victim->act2, PLR_KILLER ) )
+      if( is_set( victim->act, ACT_KILLER ) )
       {
-         remove_bit( victim->act2, PLR_KILLER );
+         remove_bit( victim->act, ACT_KILLER );
          send_to_char( "Killer flag removed.\n\r", ch );
          send_to_char( "You are no longer a KILLER.\n\r", victim );
       }
@@ -286,9 +286,9 @@ void do_pardon( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "thief" ) )
    {
-      if( is_set( victim->act2, PLR_THIEF ) )
+      if( is_set( victim->act, ACT_THIEF ) )
       {
-         remove_bit( victim->act2, PLR_THIEF );
+         remove_bit( victim->act, ACT_THIEF );
          send_to_char( "Thief flag removed.\n\r", ch );
          send_to_char( "You are no longer a THIEF.\n\r", victim );
       }
@@ -545,7 +545,7 @@ void do_goto( CHAR_DATA * ch, char *argument )
    if( ch->fighting != NULL )
       stop_fighting( ch, TRUE );
    /*
-    * if ( !is_set(ch->act2, PLR_WIZINVIS) )  
+    * if ( !is_set(ch->act, ACT_WIZINVIS) )  
     */
    {
       act( "$L$n $T.", ch, NULL,
@@ -556,7 +556,7 @@ void do_goto( CHAR_DATA * ch, char *argument )
    char_from_room( ch );
    char_to_room( ch, location );
 
-/*    if ( !is_set(ch->act2, PLR_WIZINVIS) )   */
+/*    if ( !is_set(ch->act, ACT_WIZINVIS) )   */
    {
       act( "$L$n $T.", ch, NULL,
            ( ch->pcdata != NULL && ch->pcdata->bamfin[0] != '\0' )
@@ -1373,7 +1373,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
    {
       for( victim = first_char; victim != NULL; victim = victim->next )
       {
-         if( IS_NPC( victim ) && victim->in_room != NULL && IS_SET( victim->act, ACT_INTELLIGENT ) )
+         if( IS_NPC( victim ) && victim->in_room != NULL && is_set( victim->act, ACT_INTELLIGENT ) )
          {
             xprintf( buf, "[%5d] %-20s [%5d] %-30s\n\r",
                      victim->pIndexData->vnum, victim->short_descr, victim->in_room->vnum, victim->in_room->name );
@@ -1909,15 +1909,15 @@ void do_freeze( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->act2, PLR_FREEZE ) )
+   if( is_set( victim->act, ACT_FREEZE ) )
    {
-      remove_bit( victim->act2, PLR_FREEZE );
+      remove_bit( victim->act, ACT_FREEZE );
       send_to_char( "You can play again.\n\r", victim );
       send_to_char( "FREEZE removed.\n\r", ch );
    }
    else
    {
-      set_bit( victim->act2, PLR_FREEZE );
+      set_bit( victim->act, ACT_FREEZE );
       send_to_char( "You can't do ANYthing!\n\r", victim );
       xprintf( buf, "You have been FROZEN by %s!!\n\r", ch->name );
       send_to_char( buf, victim );
@@ -1997,14 +1997,14 @@ void do_log( CHAR_DATA * ch, char *argument )
    /*
     * No level check, gods can log anyone.
     */
-   if( is_set( victim->act2, PLR_LOG ) )
+   if( is_set( victim->act, ACT_LOG ) )
    {
-      remove_bit( victim->act2, PLR_LOG );
+      remove_bit( victim->act, ACT_LOG );
       send_to_char( "LOG removed.\n\r", ch );
    }
    else
    {
-      set_bit( victim->act2, PLR_LOG );
+      set_bit( victim->act, ACT_LOG );
       send_to_char( "LOG set.\n\r", ch );
    }
 //    if ( found )
@@ -2046,15 +2046,15 @@ void do_noemote( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->act2, PLR_NO_EMOTE ) )
+   if( is_set( victim->act, ACT_NO_EMOTE ) )
    {
-      remove_bit( victim->act2, PLR_NO_EMOTE );
+      remove_bit( victim->act, ACT_NO_EMOTE );
       send_to_char( "You can emote again.\n\r", victim );
       send_to_char( "NO_EMOTE removed.\n\r", ch );
    }
    else
    {
-      set_bit( victim->act2, PLR_NO_EMOTE );
+      set_bit( victim->act, ACT_NO_EMOTE );
       send_to_char( "Your ability to emote has been removed!\n\r", victim );
       send_to_char( "NO_EMOTE set.\n\r", ch );
    }
@@ -2095,15 +2095,15 @@ void do_notell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->act2, PLR_NO_TELL ) )
+   if( is_set( victim->act, ACT_NO_TELL ) )
    {
-      remove_bit( victim->act2, PLR_NO_TELL );
+      remove_bit( victim->act, ACT_NO_TELL );
       send_to_char( "You can tell again.\n\r", victim );
       send_to_char( "NO_TELL removed.\n\r", ch );
    }
    else
    {
-      set_bit( victim->act2, PLR_NO_TELL );
+      set_bit( victim->act, ACT_NO_TELL );
       send_to_char( "You now can not use the tell command!\n\r", victim );
       send_to_char( "NO_TELL set.\n\r", ch );
    }
@@ -2144,15 +2144,15 @@ void do_silence( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->act2, PLR_SILENCE ) )
+   if( is_set( victim->act, ACT_SILENCE ) )
    {
-      remove_bit( victim->act2, PLR_SILENCE );
+      remove_bit( victim->act, ACT_SILENCE );
       send_to_char( "You can use channels again.\n\r", victim );
       send_to_char( "SILENCE removed.\n\r", ch );
    }
    else
    {
-      set_bit( victim->act2, PLR_SILENCE );
+      set_bit( victim->act, ACT_SILENCE );
       send_to_char( "You can't use channels!\n\r", victim );
       send_to_char( "SILENCE set.\n\r", ch );
    }
@@ -2195,15 +2195,15 @@ void do_nopray( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->act2, PLR_NO_PRAY ) )
+   if( is_set( victim->act, ACT_NO_PRAY ) )
    {
-      remove_bit( victim->act2, PLR_NO_PRAY );
+      remove_bit( victim->act, ACT_NO_PRAY );
       send_to_char( "You can use 'PRAY' again.\n\r", victim );
       send_to_char( "NOPRAY removed.\n\r", ch );
    }
    else
    {
-      set_bit( victim->act2, PLR_NO_PRAY );
+      set_bit( victim->act, ACT_NO_PRAY );
       send_to_char( "You can't use 'PRAY'!\n\r", victim );
       send_to_char( "NOPRAY set.\n\r", ch );
    }
@@ -2642,15 +2642,15 @@ void do_mset( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( IS_SET( victim->act, ACT_INTELLIGENT ) )
+      if( is_set( victim->act, ACT_INTELLIGENT ) )
       {
          send_to_char( "Removing intelligence.\n\r", ch );
-         REMOVE_BIT( victim->act, ACT_INTELLIGENT );
+         remove_bit( victim->act, ACT_INTELLIGENT );
       }
       else
       {
          send_to_char( "Adding intelligence.\n\r", ch );
-         SET_BIT( victim->act, ACT_INTELLIGENT );
+         set_bit( victim->act, ACT_INTELLIGENT );
       }
    }
 
@@ -3781,7 +3781,7 @@ void do_invis( CHAR_DATA * ch, char *argument )
       level = UMAX( 1, atoi( argument ) );
       level = UMIN( ch->level, level );
 
-      if( is_set( ch->act2, PLR_WIZINVIS ) )
+      if( is_set( ch->act, ACT_WIZINVIS ) )
       {
          ch->invis = level;
          xprintf( buf, "Wizinvis changed to level: %d\n\r", level );
@@ -3801,16 +3801,16 @@ void do_invis( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-   if( is_set( ch->act2, PLR_WIZINVIS ) )
+   if( is_set( ch->act, ACT_WIZINVIS ) )
    {
-      remove_bit( ch->act2, PLR_WIZINVIS );
+      remove_bit( ch->act, ACT_WIZINVIS );
       act( "Small, dazzling spots of light focus into the shape of $n!", ch, NULL, NULL, TO_ROOM );
 
       send_to_char( "Your body becomes solid again.\n\r", ch );
    }
    else
    {
-      set_bit( ch->act2, PLR_WIZINVIS );
+      set_bit( ch->act, ACT_WIZINVIS );
       act( "$n dissolves into a storm of dazzling points of light!", ch, NULL, NULL, TO_ROOM );
       send_to_char( "You slowly vanish into thin air.\n\r", ch );
       xprintf( buf, "Setting Wizinvis to level: %d.\n\r", level );
@@ -3827,14 +3827,14 @@ void do_holylight( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-   if( is_set( ch->act2, PLR_HOLYLIGHT ) )
+   if( is_set( ch->act, ACT_HOLYLIGHT ) )
    {
-      remove_bit( ch->act2, PLR_HOLYLIGHT );
+      remove_bit( ch->act, ACT_HOLYLIGHT );
       send_to_char( "Holy light mode off.\n\r", ch );
    }
    else
    {
-      set_bit( ch->act2, PLR_HOLYLIGHT );
+      set_bit( ch->act, ACT_HOLYLIGHT );
       send_to_char( "Holy light mode on.\n\r", ch );
    }
 
@@ -4097,10 +4097,10 @@ void do_iscore( CHAR_DATA * ch, char *argument )
    extern bool wizlock;
 
    xprintf( buf, "(wiz) Invis: %s   Holylight: %s\n\r",
-            is_set( ch->act2, PLR_WIZINVIS ) ? "YES" : "NO ", is_set( ch->act2, PLR_HOLYLIGHT ) ? "YES" : "NO " );
+            is_set( ch->act, ACT_WIZINVIS ) ? "YES" : "NO ", is_set( ch->act, ACT_HOLYLIGHT ) ? "YES" : "NO " );
    send_to_char( buf, ch );
 
-   if( is_set( ch->act2, PLR_WIZINVIS ) )
+   if( is_set( ch->act, ACT_WIZINVIS ) )
    {
       xprintf( buf, "You are wizinvis at level %d.\n\r", ch->invis );
       send_to_char( buf, ch );
@@ -4561,7 +4561,7 @@ void do_dog( CHAR_DATA * ch, char *argument )
 void do_togbuild( CHAR_DATA * ch, char *argument )
 {
    /*
-    * Toggles PC's ch->act PLR_BUILDER value 
+    * Toggles PC's ch->act ACT_BUILDER value 
     * * -S-
     */
 
@@ -4586,15 +4586,15 @@ void do_togbuild( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !is_set( victim->act2, PLR_BUILDER ) )
+   if( !is_set( victim->act, ACT_BUILDER ) )
    {
-      set_bit( victim->act2, PLR_BUILDER );
+      set_bit( victim->act, ACT_BUILDER );
       send_to_char( "Bit set to ALLOW building.\n\r", ch );
       send_to_char( "You have been authorized to use the builder.\n\r", victim );
    }
    else
    {
-      remove_bit( victim->act2, PLR_BUILDER );
+      remove_bit( victim->act, ACT_BUILDER );
       send_to_char( "Bit set to DISALLOW building.\n\r", ch );
       send_to_char( "You authorization to build has been revoked.\n\r", victim );
    }

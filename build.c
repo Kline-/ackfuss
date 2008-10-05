@@ -393,7 +393,7 @@ void build_interpret( CHAR_DATA * ch, char *argument )
    if( build_cmd_table[cmd].log == LOG_NEVER )
       strcpy( logline, "XXXXXXXX XXXXXXXX XXXXXXXX" );
 
-   if( ( !IS_NPC( ch ) && is_set( ch->act2, PLR_LOG ) ) || fLogAll || build_cmd_table[cmd].log == LOG_ALWAYS )
+   if( ( !IS_NPC( ch ) && is_set( ch->act, ACT_LOG ) ) || fLogAll || build_cmd_table[cmd].log == LOG_ALWAYS )
    {
       xprintf_2( log_buf, "Log %s: %s", ch->name, logline );
       log_string( log_buf );
@@ -515,7 +515,7 @@ void build_showmob( CHAR_DATA * ch, char *argument )
             pMob->ac_mod, pMob->hr_mod, pMob->dr_mod );
    xcat( buf1, buf );
 
-   xprintf( buf, "@@WMob Flags:@@y\n\r%s", show_values( tab_mob_flags, pMob->act, TRUE ) );
+   xprintf( buf, "@@WMob Flags:@@y\n\r%s", bm_show_values( tab_mob_flags, pMob->act ) );
    xcat( buf1, buf );
 
    xprintf( buf, "@@WAffected by:@@y\n\r%s", show_values( tab_affected_by, pMob->affected_by, TRUE ) );
@@ -1361,10 +1361,10 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       /*
        * Then we've found a value 
        */
-      if( IS_SET( pMob->act, lvalue ) )
-         REMOVE_BIT( pMob->act, lvalue );
+      if( is_set( pMob->act, lvalue ) )
+         remove_bit( pMob->act, lvalue );
       else
-         SET_BIT( pMob->act, lvalue );
+         set_bit( pMob->act, lvalue );
       send_to_char( "OK.  Act Flag toggled.\n\r", ch );
       area_modified( pArea );
       return;
@@ -3199,7 +3199,7 @@ void build_stop( CHAR_DATA * ch, char *argument )
 
 void do_build( CHAR_DATA * ch, char *argument )
 {
-   if( !is_set( ch->act2, PLR_BUILDER ) )
+   if( !is_set( ch->act, ACT_BUILDER ) )
    {
       send_to_char( "You aren't allowed to build!\n\r", ch );
       return;

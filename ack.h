@@ -506,8 +506,7 @@ struct mob_index_data
    sh_int killed;
    sh_int sex;
    sh_int level;
-   int act;
-   BITMASK *act2;
+   BITMASK *act;
    int affected_by;
    int aggro_list;
    sh_int alignment;
@@ -624,8 +623,7 @@ struct char_data
    int balance;   /* Amount of gold (if any) in bank */
    int exp;
    int intell_exp;
-   int act;
-   BITMASK *act2;
+   BITMASK *act;
    int config;
    int act_build; /* for setting what ya editing */
    int build_vnum;   /* the current vnum for w-y-e  */
@@ -1414,9 +1412,9 @@ bool can_wear_at( CHAR_DATA * ch, OBJ_DATA * obj, int location );
 ROOM_INDEX_DATA *find_location args( ( CHAR_DATA * ch, char *arg ) );
 
 /* bitmask.c */
-bool    remove_bit         args( ( BITMASK *mask, sh_int bit ) );
-bool    set_bit            args( ( BITMASK *mask, sh_int bit ) );
-bool    is_set             args( ( BITMASK *mask, sh_int bit ) );
+bool    remove_bit         args( ( BITMASK *mask, int bit ) );
+bool    set_bit            args( ( BITMASK *mask, int bit ) );
+bool    is_set             args( ( BITMASK *mask, int bit ) );
 int     *serialize_bitmask args( ( BITMASK *mask ) );
 bool    free_bitmask       args( ( BITMASK *pBmask ) );
 BITMASK init_bitmask       args( ( BITMASK *bm ) );
@@ -1733,6 +1731,7 @@ char *build_simpstrdup args( ( char *buf ) );   /* A plug in alternative to str_
 void build_save        args( ( void ) );
 int  get_dir           args( ( char ) );
 char *show_values      args( ( const struct lookup_type *table, int value, bool fBit ) );
+char *bm_show_values   args( ( const struct lookup_type *table, BITMASK *mask ) );
 void check_autodig     args( ( CHAR_DATA *ch, int dir ) );
 
 /* buildtab.c  */

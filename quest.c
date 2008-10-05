@@ -347,9 +347,9 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
-      set_bit( quest_mob->act2, PLR_NOSUMMON );
-      set_bit( quest_mob->act2, PLR_NOVISIT );
-      set_bit( quest_mob->act2, PLR_NOBLOOD );
+      set_bit( quest_mob->act, ACT_NO_SUMMON );
+      set_bit( quest_mob->act, ACT_NO_VISIT );
+      set_bit( quest_mob->act, ACT_NO_BLOOD );
 
       new_long_desc[0] = '\0';
       if( quest_target->long_descr_orig != NULL )
@@ -360,9 +360,9 @@ void do_quest( CHAR_DATA * ch, char *argument )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
 
-      set_bit( quest_target->act2, PLR_NOSUMMON );
-      set_bit( quest_target->act2, PLR_NOVISIT );
-      set_bit( quest_target->act2, PLR_NOBLOOD );
+      set_bit( quest_target->act, ACT_NO_SUMMON );
+      set_bit( quest_target->act, ACT_NO_VISIT );
+      set_bit( quest_target->act, ACT_NO_BLOOD );
 
       send_to_char( "QUEST STARTED!\n\r\n\r", ch );
 
@@ -430,8 +430,8 @@ CHAR_DATA *get_quest_target( int min_level, int max_level )
           || ( target->level > max_level )
           || ( IS_VAMP( target ) )
           || ( IS_SET( target->in_room->area->flags, AREA_NOSHOW ) )
-          || ( IS_SET( target->act, ACT_SENTINEL ) )
-          || ( IS_SET( target->act, ACT_PET ) )
+          || ( is_set( target->act, ACT_SENTINEL ) )
+          || ( is_set( target->act, ACT_PET ) )
           || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_stephen" ) )
           || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_tax_man" ) ) )
          continue;
@@ -504,8 +504,8 @@ CHAR_DATA *get_quest_giver( int min_level, int max_level )
           || ( target->level > max_level )
           || ( IS_VAMP( target ) )
           || ( IS_SET( target->in_room->area->flags, AREA_NOSHOW ) )
-          || ( IS_SET( target->act, ACT_SENTINEL ) )
-          || ( IS_SET( target->act, ACT_PET ) )
+          || ( is_set( target->act, ACT_SENTINEL ) )
+          || ( is_set( target->act, ACT_PET ) )
           || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_stephen" ) )
           || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_tax_man" ) ) )
 
@@ -783,9 +783,9 @@ void generate_auto_quest(  )
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
-      set_bit( quest_mob->act2, PLR_NOSUMMON );
-      set_bit( quest_mob->act2, PLR_NOVISIT );
-      set_bit( quest_mob->act2, PLR_NOBLOOD );
+      set_bit( quest_mob->act, ACT_NO_SUMMON );
+      set_bit( quest_mob->act, ACT_NO_VISIT );
+      set_bit( quest_mob->act, ACT_NO_BLOOD );
 
 
       new_long_desc[0] = '\0';
@@ -797,9 +797,9 @@ void generate_auto_quest(  )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
 
-      set_bit( quest_target->act2, PLR_NOSUMMON );
-      set_bit( quest_target->act2, PLR_NOVISIT );
-      set_bit( quest_target->act2, PLR_NOBLOOD );
+      set_bit( quest_target->act, ACT_NO_SUMMON );
+      set_bit( quest_target->act, ACT_NO_VISIT );
+      set_bit( quest_target->act, ACT_NO_BLOOD );
 
       return;
    }
