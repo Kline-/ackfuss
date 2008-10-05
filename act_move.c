@@ -104,7 +104,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    tmp[0] = '\0';
 
    check_autodig(ch,door);
-   if( !IS_NPC(ch) && ch->pcdata->movement >= MAX_MOVE_DISPLAY && IS_SET(ch->config,CONFIG_AUTOBRIEF) )
+   if( !IS_NPC(ch) && ch->pcdata->movement >= MAX_MOVE_DISPLAY && is_set(ch->act,ACT_AUTOBRIEF) )
     look = FALSE;
 
    if( door < 0 || door > MAX_DIR )
@@ -528,7 +528,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    {
     xprintf( buf, "%s%s%s\n\r", color_string( ch, "rooms" ), ch->in_room->name, color_string( ch, "normal" ) );
     send_to_char( buf, ch );
-    if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_AUTOEXIT ) ) )
+    if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && is_set( ch->act, ACT_AUTOEXIT ) ) )
      do_exits( ch, "autonr" );
    }
 

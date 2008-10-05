@@ -624,7 +624,6 @@ struct char_data
    int exp;
    int intell_exp;
    BITMASK *act;
-   int config;
    int act_build; /* for setting what ya editing */
    int build_vnum;   /* the current vnum for w-y-e  */
    int affected_by;

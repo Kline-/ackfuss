@@ -6114,7 +6114,7 @@ void build_clone( CHAR_DATA * ch, char *argument )
 
 void check_autodig( CHAR_DATA *ch, int dir )
 {
- if( ch->position == POS_BUILDING && ch->act_build == ACT_BUILD_REDIT && IS_SET(ch->config,CONFIG_AUTODIG) )
+ if( ch->position == POS_BUILDING && ch->act_build == ACT_BUILD_REDIT && is_set(ch->act,ACT_AUTODIG) )
  {
   AREA_DATA *pArea;
   EXIT_DATA *pExit;

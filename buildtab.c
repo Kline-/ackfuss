@@ -543,6 +543,21 @@ const struct lookup_type tab_player_act[] = {
  {"ruler",        ACT_RULER,        0},
  {"blind_player", ACT_BLIND_PLAYER, 0},
  {"tester",       ACT_TESTER,       0},
+ {"autoexit",     ACT_AUTOEXIT,     0},
+ {"autoloot",     ACT_AUTOLOOT,     0},
+ {"autosac",      ACT_AUTOSAC,      0},
+ {"blank",        ACT_BLANK,        0},
+ {"brief",        ACT_BRIEF,        0},
+ {"combine",      ACT_COMBINE,      0},
+ {"prompt",       ACT_PROMPT,       0},
+ {"telnet_ga",    ACT_TELNET_GA,    0},
+ {"color",        ACT_COLOR,        0},
+ {"autosplit",    ACT_AUTOSPLIT,    0},
+ {"full_ansi",    ACT_FULL_ANSI,    0},
+ {"mapper",       ACT_MAPPER,       0},
+ {"justify",      ACT_JUSTIFY,      0},
+ {"autodig",      ACT_AUTODIG,      0},
+ {"autobrief",    ACT_AUTOBRIEF,    0},
  {NULL, 0}
 };
 
