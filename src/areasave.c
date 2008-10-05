@@ -315,6 +315,7 @@ void build_save_mobs(  )
    fprintf( SaveFile, "%s~\n", pMobIndex->short_descr );
    fprintf( SaveFile, "%s~\n", pMobIndex->long_descr );
    fprintf( SaveFile, "%s~\n", pMobIndex->description );
+   bv_to_bm( pMobIndex->act, pMobIndex->act2 ); /* Start converting! */
    fprintf( SaveFile, "%s", save_bitmask( pMobIndex->act2 ) );
    fprintf( SaveFile, "%i %i %i\n", pMobIndex->act, pMobIndex->affected_by, pMobIndex->alignment );
    fprintf( SaveFile, "%i %i\n", pMobIndex->level, pMobIndex->sex );

@@ -188,23 +188,6 @@ bool free_bitmask( BITMASK *pBmask ) /* Frees a bitmask; safe to call dry. Retur
  return found;
 }
 
-/*
- * Initialze a bitmask.
- * bm = init_bitmask(NULL);
- * init_bitmask(&bm);
- * Both of the above work.
- */
-BITMASK init_bitmask( BITMASK *bm )
-{
- static BITMASK bmzero;
-
- if( bm == 0 )
-  return bmzero;
-
- *bm = bmzero;
- return bmzero;
-}
-
 void load_bitmask( BITMASK *pBmask, FILE *fp ) /* #masks #bits #mask #vector #mask #vector ... */
 {
  int i;
@@ -235,4 +218,16 @@ char *save_bitmask( BITMASK *pBmask ) /* Make this a string so it's easier to pa
   xcat(buf," %ld %ld",pBMlist->set,pBMlist->tar_mask);
 
  return buf;
+}
+
+/* Thanks to Marlin@Azereth for this */
+void bv_to_bm( int list, BITMASK *mask )
+{
+ sh_int bit;
+
+ for( bit = 0; bit <= 31; bit++ )
+  if( IS_SET(list,(1 << bit)) )
+   set_bit(mask,bit);
+
+ return;
 }
