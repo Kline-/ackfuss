@@ -40,7 +40,8 @@
 
 
 /* The tables in here are:
-     Mob type flags      :    tab_mob_flags       : bit_vector
+     Mob act flags       :    tab_mob_act         : bitmask
+     Player act flags    :    tab_player_act      : bitmask
      Mob affected by     :    tab_affected_by     : bit_vector
      Mob classes	 :    tab_mob_class	  : number
      Object item type    :    tab_item_types      : number
@@ -470,40 +471,60 @@ const struct lookup_type tab_weapon_types[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_mob_flags[] = {
-   {"nada", 0, 0},
-   {"is_npc", 1, 0}, /* Auto set for mobs    */
-   {"sentinel", ACT_SENTINEL, 100},   /* stays in one room    */
-   {"scavenger", ACT_SCAVENGER, 300},  /* picks up objects     */
-   {"remember", ACT_REMEMBER, 100},   /* remembers target     */
-   {"no_flee", ACT_NO_FLEE, 50}, /* can't flee from mob  */
-   {"aggressive", ACT_AGGRESSIVE, 100},   /* attacks pc's         */
-   {"stay_area", ACT_STAY_AREA, 10},  /* won't leave area     */
-   {"wimpy", ACT_WIMPY, 100}, /* flees when hurt      */
-   {"pet", ACT_PET, 100},   /* auto set for pets    */
-   {"train", ACT_TRAIN, 2000},   /* can train pc's       */
-   {"practice", ACT_PRACTICE, 2000},  /* can practice pc's    */
-   {"mercenary", ACT_MERCENARY, 100},  /* is a mercenary       */
-   {"heal", ACT_HEAL, 5000},   /* sells heals          */
-   {"adapt", ACT_ADAPT, 4000},  /* adapts weapons       */
-   {"undead", ACT_UNDEAD, 10000},  /* TBA                  */
-   {"bank", ACT_BANKER, 400},   /* is a bank            */
-   {"no_body", ACT_NO_BODY, 1000},  /* Doesn't have body locations */
-   {"hunter", ACT_HUNTER, 4000},  /* HUNTS */
-   {"no_mind", ACT_NO_MIND, 100},  /* immune to some psi's  */
-   {"postman", ACT_POSTMAN, 1000}, /* handles letters */
-   {"rewield", ACT_RE_WIELD, 1000},   /* looks for better weapons */
-   {"reequip", ACT_RE_EQUIP, 1000},   /* looks for better armor */
-   {"intelligent", ACT_INTELLIGENT, NO_USE},
-   {"vampire", ACT_VAMPIRE, 1000000},
-   {"breeder", ACT_BREEDER, NO_USE},
-   {"solo", ACT_SOLO, 5000}, /*  mob is designed to fight solo */
-   {"werewolf", ACT_WEREWOLF, NO_USE},
-   {"mount", ACT_MOUNT, 1000},
-   {"no_blood", ACT_NO_BLOOD, 4000},
-   {"no_quest", ACT_NO_QUEST, 0},
-   {"questmaster", ACT_QUESTMASTER, 0},
+const struct lookup_type tab_mob_act[] = {
+   {"nada",        ACT_NONE, 0},
+   {"sentinel",    ACT_SENTINEL,    100     }, /* stays in one room    */
+   {"scavenger",   ACT_SCAVENGER,   300     }, /* picks up objects     */
+   {"remember",    ACT_REMEMBER,    100     }, /* remembers target     */
+   {"no_flee",     ACT_NO_FLEE,     50      }, /* can't flee from mob  */
+   {"aggressive",  ACT_AGGRESSIVE,  100     }, /* attacks pc's         */
+   {"stay_area",   ACT_STAY_AREA,   10      }, /* won't leave area     */
+   {"wimpy",       ACT_WIMPY,       100     }, /* flees when hurt      */
+   {"pet",         ACT_PET,         100     }, /* auto set for pets    */
+   {"train",       ACT_TRAIN,       2000    }, /* can train pc's       */
+   {"practice",    ACT_PRACTICE,    2000    }, /* can practice pc's    */
+   {"mercenary",   ACT_MERCENARY,   100     }, /* is a mercenary       */
+   {"heal",        ACT_HEAL,        5000    }, /* sells heals          */
+   {"adapt",       ACT_ADAPT,       4000    }, /* adapts weapons       */
+   {"undead",      ACT_UNDEAD,      10000   }, /* TBA                  */
+   {"bank",        ACT_BANKER,      400     }, /* is a bank            */
+   {"no_body",     ACT_NO_BODY,     1000    }, /* Doesn't have body locations */
+   {"hunter",      ACT_HUNTER,      4000    }, /* HUNTS */
+   {"no_mind",     ACT_NO_MIND,     100     }, /* immune to some psi's  */
+   {"postman",     ACT_POSTMAN,     1000    }, /* handles letters */
+   {"rewield",     ACT_RE_WIELD,    1000    }, /* looks for better weapons */
+   {"reequip",     ACT_RE_EQUIP,    1000    }, /* looks for better armor */
+   {"intelligent", ACT_INTELLIGENT, NO_USE  },
+   {"vampire",     ACT_VAMPIRE,     1000000 },
+   {"breeder",     ACT_BREEDER,     NO_USE  },
+   {"solo",        ACT_SOLO,        5000    }, /*  mob is designed to fight solo */
+   {"werewolf",    ACT_WEREWOLF,    NO_USE  },
+   {"mount",       ACT_MOUNT,       1000    },
+   {"no_blood",    ACT_NO_BLOOD,    4000    },
+   {"no_quest",    ACT_NO_QUEST,    0       },
+   {"questmaster", ACT_QUESTMASTER, 0       },
    {NULL, 0}
+};
+
+const struct lookup_type tab_player_act[] = {
+ {"nada",       ACT_NONE,       0 },
+ {"bought_pet", ACT_BOUGHT_PET, 0 },
+ {"no_pray",    ACT_NO_PRAY,    0 },
+ {"holylight",  ACT_HOLYLIGHT,  0 },
+ {"wizinvis",   ACT_WIZINVIS,   0 },
+ {"builder",    ACT_BUILDER,    0 },
+ {"silence",    ACT_SILENCE,    0 },
+ {"no_emote",   ACT_NO_EMOTE,   0 },
+ {"no_tell",    ACT_NO_TELL,    0 },
+ {"log",        ACT_LOG,        0 },
+ {"deny",       ACT_DENY,       0 },
+ {"freeze",     ACT_FREEZE,     0 },
+ {"thief",      ACT_THIEF,      0 },
+ {"killer",     ACT_KILLER,     0 },
+ {"no_summon",  ACT_NO_SUMMON,  0 },
+ {"no_visit",   ACT_NO_VISIT,   0 },
+ {"incog",      ACT_INCOG,      0 },
+ {NULL, 0}
 };
 
 /* New bits to handle how mobs act */

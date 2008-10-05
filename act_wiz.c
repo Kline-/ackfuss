@@ -942,12 +942,15 @@ void do_mstat( CHAR_DATA * ch, char *argument )
       xcat( buf1, buf );
    }
 
-   xprintf( buf, "Carry number: %d.  Carry weight: %4.2f.   @@aQuest Points@@W: @@y%3d\n\r",
+   xprintf( buf, "Carry number: %d.  Carry weight: %4.2f.   @@aQuest Points@@W: @@y%3d@@N\n\r",
             victim->carry_number, victim->carry_weight, IS_NPC(victim) ? 0 : victim->pcdata->quest_points );
    xcat( buf1, buf );
 
-   xprintf( buf, "Age: %d.  Played: %d.  Timer: %d.  Act: %d.\n\r",
-            get_age( victim ), ( int )victim->played, victim->timer, victim->act );
+   xprintf( buf, "Age: %d.  Played: %d.  Timer: %d.\n\r",
+            get_age( victim ), ( int )victim->played, victim->timer );
+   xcat( buf1, buf );
+
+   xprintf( buf, "Act:\n\r%s\n\r", bm_show_values( IS_NPC(victim) ? tab_mob_act : tab_player_act, victim->act ) );
    xcat( buf1, buf );
 
    xprintf( buf, "Master: %s.  Leader: %s.  Affected by: %s.\n\r",
