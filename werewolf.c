@@ -451,7 +451,7 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       victim->pcdata->super->bloodline = ch->pcdata->super->bloodline;
       victim->pcdata->super->energy = -10;
       victim->pcdata->super->energy_max = 7;
-      SET_BIT( victim->pcdata->pflags, PFLAG_WEREWOLF );
+      set_bit( victim->act, ACT_WEREWOLF );
       victim->pcdata->super->pracs = 2;
       victim->pcdata->recall_vnum = ch->pcdata->recall_vnum;
 

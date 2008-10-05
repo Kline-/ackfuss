@@ -503,6 +503,8 @@ const struct lookup_type tab_mob_act[] = {
    {"no_blood",    ACT_NO_BLOOD,    4000    },
    {"no_quest",    ACT_NO_QUEST,    0       },
    {"questmaster", ACT_QUESTMASTER, 0       },
+   {"shifted",     ACT_SHIFTED,     NO_USE  },
+   {"raged",       ACT_RAGED,       NO_USE  },
    {NULL, 0}
 };
 
@@ -524,6 +526,12 @@ const struct lookup_type tab_player_act[] = {
  {"no_summon",  ACT_NO_SUMMON,  0 },
  {"no_visit",   ACT_NO_VISIT,   0 },
  {"incog",      ACT_INCOG,      0 },
+ {"undead",     ACT_UNDEAD,     0 },
+ {"vampire",    ACT_VAMPIRE,    0 },
+ {"werewolf",   ACT_WEREWOLF,   0 },
+ {"shifted",    ACT_SHIFTED,    0 },
+ {"raged",      ACT_RAGED,      0 },
+ {"afk",        ACT_AFK,        0 },
  {NULL, 0}
 };
 
@@ -964,28 +972,6 @@ const struct lookup_type tab_door_states[] = {
    {"locked", 2, 0},
    {NULL, 0}
 };
-
-const struct lookup_type tab_player_flags[] = {
-   {"nada", 0, 0},
-   {"PKOK", 1, 0},
-   {"AFK", 2, 0},
-   {"AMBASSADOR", 4, 0},
-   {"VAMPIRE", 8, NO_USE},
-   {"C_DIPLOMAT", 16, NO_USE},
-   {"C_BOSS", 32, NO_USE},
-   {"C_TREASURER", 64, NO_USE},
-   {"C_ARMORER", 128, NO_USE},
-   {"C_LEADER", 256, NO_USE},
-   {"SUPER_COUNCIL", 512, NO_USE},
-   {"WEREWOLF", 1024, 0},
-   {"SHIFTED", 2048, 0},
-   {"RAGED", 4096, 0},
-   {"RULER", BIT_14, 0},
-   {"BLIND_PLAYER", BIT_15, 0},
-   {"TESTER", BIT_16, 0},
-   {NULL, 0}
-};
-
 
 const struct lookup_type tab_magic_realms[] = {
 

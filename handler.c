@@ -411,7 +411,7 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
    }
 
    if( paf->type == skill_lookup( "Enraged" ) )
-      REMOVE_BIT( ch->pcdata->pflags, PFLAG_RAGED );
+      remove_bit( ch->act, ACT_RAGED );
 
    switch ( paf->location )
    {
@@ -668,8 +668,8 @@ void affect_to_char( CHAR_DATA * ch, AFFECT_DATA * paf )
    affect_modify( ch, paf_new, TRUE );
 
    if( paf_new->type == skill_lookup( "Enraged" ) )
-      if( !IS_NPC( ch ) && IS_WOLF( ch ) )
-         SET_BIT( ch->pcdata->pflags, PFLAG_RAGED );
+      if( IS_WOLF( ch ) )
+         set_bit( ch->act, ACT_RAGED );
 
    return;
 }

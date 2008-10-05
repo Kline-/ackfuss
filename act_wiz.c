@@ -3052,24 +3052,19 @@ void do_mset( CHAR_DATA * ch, char *argument )
       if( lookupstr[0] == '+' )
          lookupstr++;
 
-      value = table_lookup( tab_player_flags, lookupstr );
+      value = table_lookup( tab_player_act, lookupstr );
       if( value < 1 )
       {
          xprintf( buf, "Valid player flags are :\n\r" );
-         table_printout( tab_player_flags, buf + strlen( buf ) );
+         table_printout( tab_player_act, buf + strlen( buf ) );
          send_to_char( buf, ch );
-         return;
-      }
-      if( value == PFLAG_VAMP )
-      {
-         send_to_char( "@@eNO WAY!!!@@N\n\r", ch );
          return;
       }
 
       if( neg )
-         REMOVE_BIT( victim->pcdata->pflags, value );
+         remove_bit( victim->act, value );
       else
-         SET_BIT( victim->pcdata->pflags, value );
+         set_bit( victim->act, value );
       return;
    }
 

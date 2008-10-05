@@ -55,7 +55,6 @@ extern const struct lookup_type tab_room_flags[];
 extern const struct lookup_type tab_sector_types[];
 extern const struct lookup_type tab_door_types[];
 extern const struct lookup_type tab_door_states[];
-extern const struct lookup_type tab_player_flags[];
 extern const struct lookup_type tab_mob_skill[];
 extern const struct lookup_type tab_mob_cast[];
 extern const struct lookup_type tab_mob_powerskill[];

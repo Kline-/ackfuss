@@ -161,13 +161,10 @@ char_reference(&s); } while(0)
 /*
  * Character macros.
  */
-#define IS_VAMP(ch) (IS_NPC(ch) ? is_set(ch->act, ACT_VAMPIRE) : IS_SET(ch->pcdata->pflags,PFLAG_VAMP) )
-#define IS_UNDEAD(ch) (IS_NPC(ch) ? is_set(ch->act, ACT_UNDEAD ) : FALSE )
 #define IS_NPC(ch)              ( (ch)->npc )
 #define IS_IMMORTAL(ch)         (get_trust(ch) >= LEVEL_IMMORTAL)
 #define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
 #define IS_AFFECTED(ch, sn)     (IS_SET((ch)->affected_by, (sn)))
-#define IS_WERE(ch) (IS_NPC(ch) ? is_set(ch->act, ACT_WEREWOLF) : IS_SET(ch->pcdata->pflags,PFLAG_WEREWOLF) )
 
 #define IS_GOOD(ch)             (ch->alignment >= 350)
 #define IS_EVIL(ch)             (ch->alignment <= -350)
@@ -178,9 +175,12 @@ char_reference(&s); } while(0)
                                                 ? ( IS_NPC( ch ) \
                                                 ? ( dex_app[get_curr_dex(ch)].defensive * get_psuedo_level( ch )/20 ) \
                                                 : ( dex_app[get_curr_dex(ch)].defensive * get_psuedo_level( ch )/10 ) ): 0 ))
-#define IS_WOLF(ch) (IS_NPC(ch) ? FALSE : IS_SET(ch->pcdata->pflags, PFLAG_WEREWOLF) )
-#define IS_SHIFTED(ch) (IS_NPC(ch) ? FALSE : IS_SET( ch->pcdata->pflags, PFLAG_SHIFTED ) ? TRUE : FALSE )
-#define IS_RAGED(ch) (IS_NPC(ch) ? FALSE : IS_SET( ch->pcdata->pflags, PFLAG_RAGED ) ? TRUE : FALSE )
+/* Super macros */
+#define IS_VAMP(ch)    ( is_set(ch->act,ACT_VAMPIRE)  )
+#define IS_UNDEAD(ch)  ( is_set(ch->act,ACT_UNDEAD)   )
+#define IS_WOLF(ch)    ( is_set(ch->act,ACT_WEREWOLF) )
+#define IS_SHIFTED(ch) ( is_set(ch->act,ACT_SHIFTED)  )
+#define IS_RAGED(ch)   ( is_set(ch->act,ACT_RAGED)    )
 
 /* Added bonus to hit and dam for higher levl players */
 /* High level naked players should still be able to fight ok */

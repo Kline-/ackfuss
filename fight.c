@@ -124,10 +124,10 @@ void violence_update( void )
 
 /* Healing rapidly for raged wolves  */
 
-      if( !IS_NPC( ch ) && IS_WOLF( ch ) && IS_RAGED( ch ) )
+      if( IS_WOLF( ch ) && IS_RAGED( ch ) )
       {
          if( !is_affected( ch, skill_lookup( "Enraged" ) ) )
-            REMOVE_BIT( ch->pcdata->pflags, PFLAG_RAGED );
+            remove_bit( ch->act, ACT_RAGED );
          ch->hit = ( UMIN( ch->max_hit, ( ch->hit + ch->max_hit / 150 ) ) );
 
       }
@@ -1080,7 +1080,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
                   send_to_char( "You THINK you are dead!  Ooops....\n\r", victim );
                }
 
-               REMOVE_BIT( victim->pcdata->pflags, PFLAG_WEREWOLF );
+               remove_bit( victim->act, ACT_WEREWOLF );
                victim->pcdata->super->level = 0;
                victim->pcdata->super->exp = 0;
                victim->pcdata->super->energy = 0;
@@ -1284,8 +1284,8 @@ bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
 
    if( !IS_NPC( ch ) && !IS_NPC( victim )
        && ( IS_SET( victim->pcdata->pflags, PFLAG_PKOK )
-            || IS_SET( victim->pcdata->pflags, PFLAG_VAMP ) )
-       && ( IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) || IS_SET( ch->pcdata->pflags, PFLAG_VAMP ) ) )
+            || is_set( victim->act, ACT_VAMPIRE ) )
+       && ( IS_SET( ch->pcdata->pflags, PFLAG_PKOK ) || is_set( ch->act, ACT_VAMPIRE ) ) )
       return FALSE;
 
    if( ( ( victim->level < 10 ) || ( victim->level + 20 < ch->level ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC( ch ) ) )
@@ -5261,7 +5261,7 @@ void do_stake( CHAR_DATA * ch, char *argument )
 
 
 
-      REMOVE_BIT( victim->pcdata->pflags, PFLAG_VAMP );
+      remove_bit( victim->act, ACT_VAMPIRE );
       victim->pcdata->super->level = 0;
       victim->pcdata->super->exp = 0;
       victim->pcdata->super->energy = 0;
@@ -5700,7 +5700,7 @@ void do_rage( CHAR_DATA * ch, char *argument )
 
       }
       send_to_char( "You are @@eENRAGED!!!!!!\n\r", ch );
-      SET_BIT( ch->pcdata->pflags, PFLAG_RAGED );
+      set_bit( ch->act, ACT_RAGED );
       ch->pcdata->super->energy = ( ch->pcdata->super->energy_max - number_range( 0, ch->pcdata->super->generation * 3 ) );
       ch->stance = STANCE_WARRIOR;
       ch->stance_ac_mod = 0;
