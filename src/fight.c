@@ -1205,12 +1205,12 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
 
       if( !IS_NPC( ch ) && IS_NPC( victim ) )
       {
-         if( IS_SET( ch->config, CONFIG_AUTOLOOT ) )
+         if( is_set( ch->act, ACT_AUTOLOOT ) )
             do_get( ch, "all from corpse" );
          else
             do_look( ch, "in corpse" );
 
-         if( IS_SET( ch->config, CONFIG_AUTOSAC ) )
+         if( is_set( ch->act, ACT_AUTOSAC ) )
             do_sacrifice( ch, "corpse" );
       }
 

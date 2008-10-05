@@ -309,7 +309,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    fprintf( fp, "Exp            %d\n", ch->exp );
    fprintf( fp, "Act            %s\n", save_bitmask( ch->act ) );
-   fprintf( fp, "Config         %d\n", ch->config );
    fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
    /*
     * Bug fix from Alander 
@@ -771,7 +770,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    else
    {
       ch->npc = FALSE;
-      ch->config = CONFIG_BLANK | CONFIG_COMBINE | CONFIG_PROMPT | CONFIG_MAPPER;
+      set_bit(ch->act,ACT_BLANK | ACT_COMBINE | ACT_PROMPT | ACT_MAPPER);
    }
    ch->sex = SEX_NEUTRAL;
    ch->login_sex = -1;
@@ -1086,7 +1085,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                KEY( "Clan", ch->pcdata->clan, fread_number( fp ) );
             }
             KEY( "Class", ch->class, fread_number( fp ) );
-            KEY( "Config", ch->config, fread_number( fp ) );
             if( !str_cmp( word, "Colors" ) && !IS_NPC( ch ) )
             {
                int foo;

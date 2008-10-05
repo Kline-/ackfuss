@@ -190,7 +190,7 @@ void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShow
          pstrShow = format_obj_to_char( obj, ch, fShort );
          fCombine = FALSE;
 
-         if( IS_NPC( ch ) || IS_SET( ch->config, CONFIG_COMBINE ) )
+         if( IS_NPC( ch ) || is_set( ch->act, ACT_COMBINE ) )
          {
             /*
              * Look for duplicates, case sensitive.
@@ -224,7 +224,7 @@ void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShow
     */
    for( iShow = 0; iShow < nShow; iShow++ )
    {
-      if( IS_NPC( ch ) || IS_SET( ch->config, CONFIG_COMBINE ) )
+      if( IS_NPC( ch ) || is_set( ch->act, ACT_COMBINE ) )
       {
          if( prgnShow[iShow] != 1 )
          {
@@ -243,7 +243,7 @@ void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShow
 
    if( fShowNothing && nShow == 0 )
    {
-      if( IS_NPC( ch ) || IS_SET( ch->config, CONFIG_COMBINE ) )
+      if( IS_NPC( ch ) || is_set( ch->act, ACT_COMBINE ) )
          send_to_char( "     ", ch );
       send_to_char( "Nothing.\n\r", ch );
    }
@@ -294,7 +294,7 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
          pstrShow = format_obj_to_char( obj, ch, fShort );
          fCombine = FALSE;
 
-         if( IS_NPC( ch ) || IS_SET( ch->config, CONFIG_COMBINE ) )
+         if( IS_NPC( ch ) || is_set( ch->act, ACT_COMBINE ) )
          {
             /*
              * Look for duplicates, case sensitive.
@@ -328,7 +328,7 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
     */
    for( iShow = 0; iShow < nShow; iShow++ )
    {
-      if( ( IS_NPC( ch ) || IS_SET( ch->config, CONFIG_COMBINE ) ) && str_cmp( prgpstrShow[iShow], "" ) )
+      if( ( IS_NPC( ch ) || is_set( ch->act, ACT_COMBINE ) ) && str_cmp( prgpstrShow[iShow], "" ) )
       {
          if( prgnShow[iShow] != 1 )
          {
@@ -347,7 +347,7 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
 
    if( fShowNothing && nShow == 0 )
    {
-      if( IS_NPC( ch ) || IS_SET( ch->config, CONFIG_COMBINE ) )
+      if( IS_NPC( ch ) || is_set( ch->act, ACT_COMBINE ) )
          send_to_char( "     ", ch );
       send_to_char( "Nothing.\n\r", ch );
    }
@@ -491,7 +491,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    }
 
    xcat( buf, PERS( victim, ch ) );
-   if( !IS_NPC( victim ) && !IS_SET( ch->config, CONFIG_BRIEF ) )
+   if( !IS_NPC( victim ) && !is_set( ch->act, ACT_BRIEF ) )
       xcat( buf, victim->pcdata->title );
 
    switch ( victim->position )
@@ -798,7 +798,7 @@ void do_look( CHAR_DATA * ch, char *argument )
        */
 
 
-      if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_MAPPER ) ) )
+      if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && is_set( ch->act, ACT_MAPPER ) ) )
       {
          send_to_char( "\n\r", ch );
          do_mapper( ch, "7" );
@@ -809,16 +809,16 @@ void do_look( CHAR_DATA * ch, char *argument )
          xprintf( out, "%s%s%s\n\r", color_string( ch, "rooms" ), ch->in_room->name, color_string( ch, "normal" ) );
 
          send_to_char( out, ch );
-         if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_AUTOEXIT ) ) )
+         if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && is_set( ch->act, ACT_AUTOEXIT ) ) )
             do_exits( ch, "auto" );
-         if( arg1[0] == '\0' || ( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && !IS_SET( ch->config, CONFIG_BRIEF ) ) ) )
+         if( arg1[0] == '\0' || ( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && !is_set( ch->act, ACT_BRIEF ) ) ) )
          {
             char *string_format( char *str, int *numlines, int width, int height, bool unjust );
             int wid = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );
 
             xprintf( out, "%s%s%s\n\r", color_string( ch, "rooms" ),
                      string_format( ch->in_room->description, NULL, wid, 10000,
-                                    !IS_SET( ch->config, CONFIG_JUSTIFY ) ), color_string( ch, "normal" ) );
+                                    !is_set( ch->act, ACT_JUSTIFY ) ), color_string( ch, "normal" ) );
             send_to_char( out, ch );
          }
       }
@@ -1452,9 +1452,9 @@ void do_score( CHAR_DATA * ch, char *argument )
 
    xprintf( buf,
             "|       @@WAutoexit: @@y%s   @@WAutoloot: @@y%s  @@WAutosac: @@y%s       @@c|\n\r",
-            ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_AUTOEXIT ) ) ? "*ON* " : "*OFF*",
-            ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_AUTOLOOT ) ) ? "*ON* " : "*OFF*",
-            ( !IS_NPC( ch ) && IS_SET( ch->config, CONFIG_AUTOSAC ) ) ? "*ON* " : "*OFF*" );
+            ( !IS_NPC( ch ) && is_set( ch->act, ACT_AUTOEXIT ) ) ? "*ON* " : "*OFF*",
+            ( !IS_NPC( ch ) && is_set( ch->act, ACT_AUTOLOOT ) ) ? "*ON* " : "*OFF*",
+            ( !IS_NPC( ch ) && is_set( ch->act, ACT_AUTOSAC ) ) ? "*ON* " : "*OFF*" );
    send_to_char( buf, ch );
 
 
@@ -3861,7 +3861,7 @@ void do_config( CHAR_DATA * ch, char *argument )
 
       if( IS_IMMORTAL(ch) )
       {
-       send_to_char( IS_SET( ch->config, CONFIG_AUTODIG )
+       send_to_char( is_set( ch->act, ACT_AUTODIG )
                      ? "@@d[@@a+AUTODIG  @@d]@@a You can dig new zones by walking.@@N\n\r" : "@@d[@@c-autodig  @@d]@@c You must manually dig new zones.@@N\n\r", ch );
       }
 
@@ -3871,55 +3871,55 @@ void do_config( CHAR_DATA * ch, char *argument )
       send_to_char( is_set( ch->act, ACT_NO_VISIT )
                     ? "@@d[@@a+NOVISIT  @@d]@@a You may not be 'visited'.@@N\n\r" : "@@d[@@c-novisit  @@d]@@c You may be 'visited'.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_COLOR )
+      send_to_char( is_set( ch->act, ACT_COLOR )
                     ? "@@d[@@a+COLOR    @@d]@@a You recieve 'ANSI' color.@@N\n\r"
                     : "@@d[@@c-color    @@d]@@c You don't receive 'ANSI' color.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_AUTOBRIEF )
+      send_to_char( is_set( ch->act, ACT_AUTOBRIEF )
                     ? "@@d[@@a+AUTOBRIEF@@d]@@a You automatically hide room descriptions when traveling.@@N\n\r"
                     : "@@d[@@c-autobrief@@d]@@c You don't automatically hide room descriptions when traveling.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_AUTOEXIT )
+      send_to_char( is_set( ch->act, ACT_AUTOEXIT )
                     ? "@@d[@@a+AUTOEXIT @@d]@@a You automatically see exits.@@N\n\r"
                     : "@@d[@@c-autoexit @@d]@@c You don't automatically see exits.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_AUTOLOOT )
+      send_to_char( is_set( ch->act, ACT_AUTOLOOT )
                     ? "@@d[@@a+AUTOLOOT @@d]@@a You automatically loot corpses.@@N\n\r"
                     : "@@d[@@c-autoloot @@d]@@c You don't automatically loot corpses.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_AUTOSAC )
+      send_to_char( is_set( ch->act, ACT_AUTOSAC )
                     ? "@@d[@@a+AUTOSAC  @@d]@@a You automatically sacrifice corpses.@@N\n\r"
                     : "@@d[@@c-autosac  @@d]@@c You don't automatically sacrifice corpses.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_BLANK )
+      send_to_char( is_set( ch->act, ACT_BLANK )
                     ? "@@d[@@a+BLANK    @@d]@@a You have a blank line before your prompt.@@N\n\r"
                     : "@@d[@@c-blank    @@d]@@c You have no blank line before your prompt.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_BRIEF )
+      send_to_char( is_set( ch->act, ACT_BRIEF )
                     ? "@@d[@@a+BRIEF    @@d]@@a You see brief descriptions.\n\r"
                     : "@@d[@@c-brief    @@d]@@c You see long descriptions.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_COMBINE )
+      send_to_char( is_set( ch->act, ACT_COMBINE )
                     ? "@@d[@@a+COMBINE  @@d]@@a You see object lists in combined format.@@N\n\r"
                     : "@@d[@@c-combine  @@d]@@c You see object lists in single format.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_PROMPT )
+      send_to_char( is_set( ch->act, ACT_PROMPT )
                     ? "@@d[@@a+PROMPT   @@d]@@a You have a prompt.\n\r"
                     : "@@d[@@c-prompt   @@d]@@c You don't have a prompt.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_TELNET_GA )
+      send_to_char( is_set( ch->act, ACT_TELNET_GA )
                     ? "@@d[@@a+TELNETGA @@d]@@a You receive a telnet GA sequence.@@N\n\r"
                     : "@@d[@@c-telnetga @@d]@@c You don't receive a telnet GA sequence.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_FULL_ANSI )
+      send_to_char( is_set( ch->act, ACT_FULL_ANSI )
                     ? "@@d[@@a+FULLANSI @@d]@@a Your client supports FULL ANSI.@@N\n\r"
                     : "@@d[@@c-fullansi @@d]@@c Your client does not support full ANSI (GMUD).@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_MAPPER )
-                    ? "@@d[@@a+DISPLAY  @@d]@@a You are viewing the ASCII display map!@@N\n\r"
-                    : "@@d[@@c-display  @@d]@@c Your are not viewing the ASCII display map.@@N\n\r", ch );
+      send_to_char( is_set( ch->act, ACT_MAPPER )
+                    ? "@@d[@@a+MAPPER   @@d]@@a You are viewing the ASCII display map!@@N\n\r"
+                    : "@@d[@@c-MAPPER   @@d]@@c Your are not viewing the ASCII display map.@@N\n\r", ch );
 
-      send_to_char( IS_SET( ch->config, CONFIG_JUSTIFY )
+      send_to_char( is_set( ch->act, ACT_JUSTIFY )
                     ? "@@d[@@a+JUSTIFY  @@d]@@a You are viewing rooms in space justified format.@@N\n\r"
                     : "@@d[@@c-justify  @@d]@@c Your are not viewing rooms space justified.@@N\n\r", ch );
 
@@ -3936,8 +3936,7 @@ void do_config( CHAR_DATA * ch, char *argument )
    else
    {
       bool fSet;
-      int bit;
-      bool config_var = TRUE;
+      sh_int bit = 0;
       if( arg[0] == '+' )
          fSet = TRUE;
       else if( arg[0] == '-' )
@@ -3948,46 +3947,9 @@ void do_config( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( !str_cmp( arg + 1, "autobrief" ) )
-         bit = CONFIG_AUTOBRIEF;
-      else if( !str_cmp( arg + 1, "autodig" ) && IS_IMMORTAL(ch) )
-         bit = CONFIG_AUTODIG;
-      else if( !str_cmp( arg + 1, "autoexit" ) )
-         bit = CONFIG_AUTOEXIT;
-      else if( !str_cmp( arg + 1, "autoloot" ) )
-         bit = CONFIG_AUTOLOOT;
-      else if( !str_cmp( arg + 1, "autosac" ) )
-         bit = CONFIG_AUTOSAC;
-      else if( !str_cmp( arg + 1, "blank" ) )
-         bit = CONFIG_BLANK;
-      else if( !str_cmp( arg + 1, "brief" ) )
-         bit = CONFIG_BRIEF;
-      else if( !str_cmp( arg + 1, "combine" ) )
-         bit = CONFIG_COMBINE;
-      else if( !str_cmp( arg + 1, "prompt" ) )
-         bit = CONFIG_PROMPT;
-      else if( !str_cmp( arg + 1, "telnetga" ) )
-         bit = CONFIG_TELNET_GA;
-      else if( !str_cmp( arg + 1, "nosummon" ) )
-      {
-         config_var = FALSE;
-         bit = ACT_NO_SUMMON;
-      }
-      else if( !str_cmp( arg + 1, "novisit" ) )
-      {
-         config_var = FALSE;
-         bit = ACT_NO_VISIT;
-      }
-      else if( !str_cmp( arg + 1, "color" ) )
-         bit = CONFIG_COLOR;
-      else if( !str_cmp( arg + 1, "fullansi" ) )
-         bit = CONFIG_FULL_ANSI;
-      else if( !str_cmp( arg + 1, "display" ) )
-         bit = CONFIG_MAPPER;
-      else if( IS_IMMORTAL( ch ) && ( !str_cmp( arg + 1, "justify" ) ) )
-         bit = CONFIG_JUSTIFY;
+      bit = table_lookup( tab_player_act, (arg + 1) );
 
-      else if( !str_prefix( "rows", arg + 1 ) )
+      if( !str_prefix( "rows", arg + 1 ) )
       {
          char arg1[MSL];
          argument = one_argument( argument, arg1 );
@@ -4000,7 +3962,7 @@ void do_config( CHAR_DATA * ch, char *argument )
          ch->pcdata->term_rows = URANGE( 10, atoi( arg1 ), 80 );
          return;
       }
-      else
+      if( bit == 0 )
       {
          send_to_char( "Config which option?\n\r", ch );
          return;
@@ -4008,12 +3970,9 @@ void do_config( CHAR_DATA * ch, char *argument )
 
       if( fSet )
       {
-         if( config_var )
-            SET_BIT( ch->config, bit );
-         else
-            set_bit( ch->act, bit );
+         set_bit( ch->act, bit );
 
-         if( bit == CONFIG_FULL_ANSI )
+         if( bit == ACT_FULL_ANSI )
          {
             char scrollbuf[MSL];
             xprintf( scrollbuf, "%s%s%s%i;%ir%s%i;%iH",
@@ -4023,11 +3982,9 @@ void do_config( CHAR_DATA * ch, char *argument )
       }
       else
       {
-         if( config_var )
-            REMOVE_BIT( ch->config, bit );
-         else
-            remove_bit( ch->act, bit );
-         if( bit == CONFIG_FULL_ANSI )
+         remove_bit( ch->act, bit );
+
+         if( bit == ACT_FULL_ANSI )
          {
 
 
@@ -4432,53 +4389,53 @@ void do_slist( CHAR_DATA * ch, char *argument )
 void do_autoexit( CHAR_DATA * ch, char *argument )
 {
 
-   ( IS_SET( ch->config, CONFIG_AUTOEXIT ) ? do_config( ch, "-autoexit" ) : do_config( ch, "+autoexit" ) );
+   ( is_set( ch->act, ACT_AUTOEXIT ) ? do_config( ch, "-autoexit" ) : do_config( ch, "+autoexit" ) );
 
 }
 
 void do_autoloot( CHAR_DATA * ch, char *argument )
 {
 
-   ( IS_SET( ch->config, CONFIG_AUTOLOOT ) ? do_config( ch, "-autoloot" ) : do_config( ch, "+autoloot" ) );
+   ( is_set( ch->act, ACT_AUTOLOOT ) ? do_config( ch, "-autoloot" ) : do_config( ch, "+autoloot" ) );
 
 }
 
 void do_autosac( CHAR_DATA * ch, char *argument )
 {
 
-   ( IS_SET( ch->config, CONFIG_AUTOSAC ) ? do_config( ch, "-autosac" ) : do_config( ch, "+autosac" ) );
+   ( is_set( ch->act, ACT_AUTOSAC ) ? do_config( ch, "-autosac" ) : do_config( ch, "+autosac" ) );
 
 }
 
 void do_blank( CHAR_DATA * ch, char *argument )
 {
 
-   ( IS_SET( ch->config, CONFIG_BLANK ) ? do_config( ch, "-blank" ) : do_config( ch, "+blank" ) );
+   ( is_set( ch->act, ACT_BLANK ) ? do_config( ch, "-blank" ) : do_config( ch, "+blank" ) );
 
 }
 
 void do_brief( CHAR_DATA * ch, char *argument )
 {
 
-   ( IS_SET( ch->config, CONFIG_BRIEF ) ? do_config( ch, "-brief" ) : do_config( ch, "+brief" ) );
+   ( is_set( ch->act, ACT_BRIEF ) ? do_config( ch, "-brief" ) : do_config( ch, "+brief" ) );
 
 }
 
 void do_combine( CHAR_DATA * ch, char *argument )
 {
 
-   ( IS_SET( ch->config, CONFIG_COMBINE ) ? do_config( ch, "-combine" ) : do_config( ch, "+combine" ) );
+   ( is_set( ch->act, ACT_COMBINE ) ? do_config( ch, "-combine" ) : do_config( ch, "+combine" ) );
 
 }
 
 void do_autodig( CHAR_DATA * ch, char *argument )
 {
-   ( IS_SET( ch->config, CONFIG_AUTODIG ) ? do_config( ch, "-autodig" ) : do_config( ch, "+autodig" ) );
+   ( is_set( ch->act, ACT_AUTODIG ) ? do_config( ch, "-autodig" ) : do_config( ch, "+autodig" ) );
 }
 
 void do_autobrief( CHAR_DATA * ch, char *argument )
 {
-   ( IS_SET( ch->config, CONFIG_AUTOBRIEF ) ? do_config( ch, "-autobrief" ) : do_config( ch, "+autobrief" ) );
+   ( is_set( ch->act, ACT_AUTOBRIEF ) ? do_config( ch, "-autobrief" ) : do_config( ch, "+autobrief" ) );
 }
 
 void do_pagelen( CHAR_DATA * ch, char *argument )
@@ -4514,7 +4471,7 @@ void do_prompt( CHAR_DATA * ch, char *argument )
 
    if( argument[0] == '\0' )
    {
-      ( IS_SET( ch->config, CONFIG_PROMPT ) ? do_config( ch, "-prompt" ) : do_config( ch, "+prompt" ) );
+      ( is_set( ch->act, ACT_PROMPT ) ? do_config( ch, "-prompt" ) : do_config( ch, "+prompt" ) );
       return;
    }
 
@@ -5437,7 +5394,7 @@ void do_color( CHAR_DATA * ch, char *argument )
       for( cnt = 0; cnt < MAX_ANSI; cnt++ )
       {
          xprintf( buf, "%s%-12s@@N  ",
-                  IS_SET( ch->config, CONFIG_COLOR ) ? ansi_table[cnt].value : "", ansi_table[cnt].name );
+                  is_set( ch->act, ACT_COLOR ) ? ansi_table[cnt].value : "", ansi_table[cnt].name );
          send_to_char( buf, ch );
          if( ++col % 5 == 0 )
             send_to_char( "\n\r", ch );
@@ -5546,7 +5503,7 @@ char *color_string( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) || argument[0] == '\0' )
       return ( "" );
 
-   if( !IS_SET( ch->config, CONFIG_COLOR ) )
+   if( !is_set( ch->act, ACT_COLOR ) )
       return ( "" );
 
    if( !str_cmp( argument, "normal" ) )
@@ -5785,7 +5742,7 @@ void do_colist( CHAR_DATA * ch, char *argument )
    {
       xprintf( buf, "%c - %s%-14s@@N    ",
                ansi_table[col].letter,
-               IS_SET( ch->config, CONFIG_COLOR ) ? ansi_table[col].value : "", ansi_table[col].name );
+               is_set( ch->act, ACT_COLOR ) ? ansi_table[col].value : "", ansi_table[col].name );
       send_to_char( buf, ch );
       if( ++n % 3 == 0 )
          send_to_char( "\n\r", ch );

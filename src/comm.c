@@ -1007,13 +1007,13 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
          CHAR_DATA *ch;
 
          ch = d->original ? d->original : d->character;
-         if( IS_SET( ch->config, CONFIG_BLANK ) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !IS_SET(ch->config,CONFIG_AUTOBRIEF)) )
+         if( is_set( ch->act, ACT_BLANK ) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !is_set(ch->act,ACT_AUTOBRIEF)) )
             write_to_buffer( d, "\n\r", 2 );
          if( ch->hunting || ch->hunt_obj )
             char_hunt( ch );
-         if( !IS_NPC(ch) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !IS_SET(ch->config,CONFIG_AUTOBRIEF)) )
+         if( !IS_NPC(ch) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !is_set(ch->act,ACT_AUTOBRIEF)) )
           bust_a_prompt( d );
-         if( IS_SET( ch->config, CONFIG_TELNET_GA ) )
+         if( is_set( ch->act, ACT_TELNET_GA ) )
             write_to_buffer( d, go_ahead_str, 0 );
       }
    }
@@ -1142,7 +1142,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
    /*
     * set default prompt to ">" -Uni 
     */
-   if( !IS_SET( ch->config, CONFIG_PROMPT ) )
+   if( !is_set( ch->act, ACT_PROMPT ) )
    {
       xprintf( buf2, "\r" );
       if( ch->hit < ch->max_hit )
@@ -1731,7 +1731,7 @@ void write_to_buffer( DESCRIPTOR_DATA * d, const char *txt, int length )
             }
 
             ch = d->original != NULL ? d->original : d->character;
-            if( ch != NULL && !IS_SET( ch->config, CONFIG_COLOR ) )
+            if( ch != NULL && !is_set( ch->act, ACT_COLOR ) )
                continue;
 /* set to default highlight or dim set by player */
             lookup = c;
@@ -2087,8 +2087,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          return;
       }
 /* TEMP FIX ZEN */
-      if( IS_SET( ch->config, CONFIG_JUSTIFY ) )
-         REMOVE_BIT( ch->config, CONFIG_JUSTIFY );
+      if( is_set( ch->act, ACT_JUSTIFY ) )
+         remove_bit( ch->act, ACT_JUSTIFY );
       if( check_reconnect( d, argument, FALSE ) )
       {
          fOld = TRUE;
@@ -2681,7 +2681,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       d->connected = CON_PLAYING;
 
 
-      if( IS_SET( ch->config, CONFIG_FULL_ANSI ) )
+      if( is_set( ch->act, ACT_FULL_ANSI ) )
       {
          char scrollbuf[MSL];
          xprintf( scrollbuf, "%s%s%s%i;%ir%s%%i;%iH",

@@ -473,7 +473,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
    buf[0] = '\0';
    ansi[0] = '\0';
 
-   if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) && ( channel != CHANNEL_HOWL ) )
+   if( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) && ( channel != CHANNEL_HOWL ) )
    {
       send_to_char( "You are too @@rENRAGED @@NTo talk to mortals!\n\r", ch );
       return;

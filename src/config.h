@@ -635,29 +635,11 @@
 #define POS_BUILDING                  9
 #define POS_RIDING                   10
 
-
-/*
- *  Configuration Bits for players
- */
-
-#define CONFIG_AUTOEXIT         BIT_1
-#define CONFIG_AUTOLOOT         BIT_2
-#define CONFIG_AUTOSAC          BIT_3
-#define CONFIG_BLANK            BIT_4
-#define CONFIG_BRIEF            BIT_5
-#define CONFIG_COMBINE          BIT_6
-#define CONFIG_PROMPT           BIT_7
-#define CONFIG_TELNET_GA        BIT_8
-#define CONFIG_COLOR            BIT_9
-#define CONFIG_AUTOSPLIT        BIT_10
-#define CONFIG_FULL_ANSI        BIT_11
-#define CONFIG_MAPPER           BIT_12
-#define CONFIG_JUSTIFY          BIT_13
-#define CONFIG_AUTODIG          BIT_14
-#define CONFIG_AUTOBRIEF        BIT_15
-
 /* 
- * ACT bits for players and mobs
+ * ACT bits for players and mobs. Uses a bitmask.
+ * I realize this could be an enum, but this allows comments next
+ * to each define and, imo, is easier to erad if you add/remove one.
+ * --Kline
  */
 #define ACT_NONE         0    /* Empty, don't use               */
 #define ACT_BOUGHT_PET   1    /* Player bought a pet this level */
@@ -720,6 +702,21 @@
 #define ACT_RULER        58   /* Zone ruler                     */
 #define ACT_BLIND_PLAYER 59   /* IRL blind, special output      */
 #define ACT_TESTER       60   /* Play testers                   */
+#define ACT_AUTOEXIT     61   /* Automatically show exits       */
+#define ACT_AUTOLOOT     62   /* Automatically loot corpses     */
+#define ACT_AUTOSAC      63   /* Automatically sac corpses      */
+#define ACT_BLANK        64   /* Blank line before prompt       */
+#define ACT_BRIEF        65   /* Hide room descriptions         */
+#define ACT_COMBINE      66   /* Combine like items (3) etc     */
+#define ACT_PROMPT       67   /* Show a prompt                  */
+#define ACT_TELNET_GA    68   /* Use Telnet GA sequences        */
+#define ACT_COLOR        69   /* CoLoR!                         */
+#define ACT_AUTOSPLIT    70   /* Automatically split gold       */
+#define ACT_FULL_ANSI    71   /* Use full ANSI controls         */
+#define ACT_MAPPER       72   /* Display the automapper         */
+#define ACT_JUSTIFY      73   /* Justify text so it's prettier  */
+#define ACT_AUTODIG      74   /* Automatically dig in builder   */
+#define ACT_AUTOBRIEF    75   /* Hide room descrs on speedwalk  */
 
 /*
  * Channel bits.
