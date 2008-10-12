@@ -907,7 +907,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
    if( ( ch->spec_fun == spec_lookup( "spec_vamp_hunter" ) ) && ( IS_NPC( victim ) ) && ( number_percent(  ) < 20 ) )
       return FALSE;
 
-   if( ( IS_SET( victim->in_room->room_flags, ROOM_SAFE ) ) || ( is_set( victim->act, ACT_SOLO ) )
+   if( ( is_set( victim->in_room->room_flags, RFLAG_SAFE ) ) || ( is_set( victim->act, ACT_SOLO ) )
        /*
         * || ( IS_SET( victim->in_room->room_flags, ROOM_JAIL_CELL ) ) 
         */  )

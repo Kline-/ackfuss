@@ -1,6 +1,6 @@
 #AREA
 @@WThe City of @@yMidgaard@@N~
-Q 20
+Q 21
 K midgaard~
 L @@W{@@r ALL @@W}@@N~
 N 23
@@ -33,7 +33,8 @@ Entering the @@eSyringe@@N~
 It seems the only way to go is DOWN.
 
 ~
-12 1
+1
+1 2 0 12
 S
 #3039
 The Mad Scientist's Lab~
@@ -52,7 +53,8 @@ The Mad Scientist's Lab~
 filled with a dark @@Rfluid@@N--maybe it's blood!
 
 ~
-12 1
+1
+1 2 0 12
 D2
 ~
 ~
@@ -76,7 +78,8 @@ This is the Midgaard branch of the Global Post Office.
 There is a large SIGN here... perhaps you should look at it?
 
 ~
-17436 11
+11
+1 5 0 17436
 D1
 ~
 ~
@@ -108,7 +111,8 @@ This is a room where players can come and sleep with no interuptions. There is
 a sign on the wall.
 
 ~
-25886 11
+11
+1 8 0 25886
 D5
 ~
 ~
@@ -126,7 +130,8 @@ This room is used by the players of the mud, to engage in the totally
 pointless pursuit of trivial knowledge.
 
 ~
-8 11
+11
+1 1 0 8
 D4
 ~
 ~
@@ -135,7 +140,8 @@ S
 #3004
 The Undead Shrine to Cyberlich.~
 This horrid place is predominately black.  If you look closely, you see that blood seeps from the walls, pools here and there on the floor.  This is where Cyberlich's devout followers come to worship him, and where they come to hire his minions.~
-18 11
+11
+1 2 0 18
 D1
 ~
 ~
@@ -148,7 +154,8 @@ You are in the part of the donation area used to hold items other than
 weapons or amror.
 
 ~
-12 11
+11
+1 2 0 12
 D0
 The central donation area.
 
@@ -161,7 +168,8 @@ The Armor Donation Area~
 You are in part of the donation area used to hold armor items. 
 
 ~
-12 11
+11
+1 2 0 12
 D3
 The central donation area.
 
@@ -174,7 +182,8 @@ The Weapons Donation Area~
 You are in part of the donation area used to hold weapons.
 
 ~
-12 11
+11
+1 2 0 12
 D2
 The central donation area.
 
@@ -193,7 +202,8 @@ You are standing in a cross-shaped room.  To the west you can see the Temple.
 them.
 
 ~
-12 11
+11
+1 2 0 12
 D0
 You see the Weapon donation area.
 
@@ -226,7 +236,8 @@ The river enters from a hole in the eastern city wall.  The hole has been
 blocked by several vertically positioned iron bars set into the wall.
 
 ~
-0 7
+7
+0 0
 D3
 ~
 ~
@@ -239,7 +250,8 @@ You see the warehouse on the northern riverbank.  East of here you see the
 city wall.  The river flows west towards the levee.
 
 ~
-0 7
+7
+0 0
 D1
 ~
 ~
@@ -256,7 +268,8 @@ The levee is directly north of here.  The river flows in an east west
 direction.
 
 ~
-4 7
+7
+1 1 0 4
 D0
 ~
 ~
@@ -277,7 +290,8 @@ North of here you see the dump.  The river flows from east to west.  The
 riverbanks are too steep to climb.
 
 ~
-0 7
+7
+0 0
 D1
 ~
 ~
@@ -294,7 +308,8 @@ North of here you see the miserable buildings of the poor alley.  The
 river flows west towards the bridge.  The riverbanks are too steep to climb.
 
 ~
-0 7
+7
+0 0
 D1
 ~
 ~
@@ -313,7 +328,8 @@ The arch under the bridge is covered by seaweed for one foot above the
 part of the city wall.
 
 ~
-0 7
+7
+0 0
 D1
 ~
 ~
@@ -333,7 +349,8 @@ You are in a dark and humid jail.  The dark stone walls are hard and cold
 to the touch.  A heavy steel door is to the north.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 You see the heavy steel door.
 
@@ -355,7 +372,8 @@ You are in the Office of the Captain of the Guard.  The Midgaard Coat of
 Arms is hanging on the north wall and a heavy steel door is to the south.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 You see the Cityguard Head Quarters.
 
@@ -379,7 +397,8 @@ End of Penny Lane~
 You are at the end of Penny Lane.  The only exit appears to be south.
 
 ~
-0 1
+1
+0 0
 D2
 ~
 ~
@@ -390,7 +409,8 @@ Penny Lane~
 You are on Penny Lane.  The narrow road continues north and west.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -407,7 +427,8 @@ You are on Penny Lane.  Emerald Avenue is to the west and Penny Lane
 continues in eastward direction.
 
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -428,7 +449,8 @@ You are in the not very big office of the Mayor of Midgaard.  A large and
 raised slightly.
 
 ~
-8 11
+11
+1 1 0 8
 D3
 The waiting room is to the west.
 
@@ -450,7 +472,8 @@ You are standing in the waiting room at the town hall.  Wooden chairs stand
 along the walls and a long desk is placed in the middle of the room.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 It looks like some kind of office.
 
@@ -471,7 +494,8 @@ You are at a bend on Park Road.  To the south the road goes on and to the
 west is the Road Crossing.
 
 ~
-0 1
+1
+0 0
 D2
 ~
 ~
@@ -490,7 +514,8 @@ You are at a bend on Park Road.  To the north the road goes on and to the
 under the ground, forming a wall.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -507,7 +532,8 @@ You are standing at a bend on Emerald Avenue.  To the west the road goes on
 and to the north is the Road Crossing.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -524,7 +550,8 @@ You are standing at a bend on Emerald Avenue.  To the east the road goes on
 and to the south is the Road Crossing.
 
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -541,7 +568,8 @@ You are standing on the north end of Emerald Avenue.  To the north is the
 promenade and to the east is the small street Penny Lane.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -560,7 +588,8 @@ Park Road~
 You are at Park Road which continues north and south.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -579,7 +608,8 @@ You are at the southeast corner of the city wall.  The Concourse leads
 is partly obscured by the overgrowth.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -594,7 +624,8 @@ On the Concourse~
 The Concourse continues both east and west.  Park Road is north of here.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -615,7 +646,8 @@ The Concourse continues both east and west.  Emerald Avenue is north of
 here.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -636,7 +668,8 @@ You are at the southwest corner of the city wall.  The Concourse leads
 both north and east.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -651,7 +684,8 @@ Park Road~
 You are on Park Road which continues north.  The Concourse is south of here.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -668,7 +702,8 @@ You are on Emerald Avenue which continues north.
 The Concourse is south of here.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -683,7 +718,8 @@ End of Elm Street~
 You are at the end of Elm Street.  An old elm tree grows here.
 
 ~
-0 1
+1
+0 0
 D3
 ~
 ~
@@ -701,7 +737,8 @@ You are on Elm street.  Park Road is to the west and Elm Street continues
 in eastward direction.
 
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -718,7 +755,8 @@ You are on Park Road which leads south and north.  Elm Street is east of
 here.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -739,7 +777,8 @@ You are standing at a bend on Emerald Avenue.  The road leads south and
 east.
 
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -756,7 +795,8 @@ You are in the middle of the road cross.  Roads lead in all directions.
 A road sign is here.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -794,7 +834,8 @@ Emerald Avenue~
 You are standing at a bend on Emerald Avenue.  The road leads north and west.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -809,7 +850,8 @@ Park Road~
 You are on Park Road which leads north and south.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -826,7 +868,8 @@ You are at Emerald Avenue which continues north and south.  To the west is
 the park entrance and to the east is the not very big Town Hall of Midgaard.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -853,7 +896,8 @@ You are standing at the eastern end of the park.  A small path leads west
 Avenue.
 
 ~
-4 1
+1
+1 1 0 4
 D1
 ~
 ~
@@ -870,7 +914,8 @@ You are in the park.  The paths lead north and east.  Eastwards is the
 park entrance and to the west you see a small pond.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -891,7 +936,8 @@ You are swimming around in the pond, feeling rather stupid.  You can get
 back on the path from the eastern and western end of the pond.
 
 ~
-0 6
+6
+0 0
 D1
 ~
 ~
@@ -908,7 +954,8 @@ You are in the park.  The paths lead north and west.  Westwards is the
 park entrance and to the east you see a small pond.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -933,7 +980,8 @@ You are standing at the western end of the park.  A small path leads east
 into the park and going west through the entrance you will reach Park Road.
 
 ~
-4 1
+1
+1 1 0 4
 D1
 ~
 ~
@@ -950,7 +998,8 @@ The road continues north and south.  A building is just west of here, you
 notice a sign on the door.  The park entrance is to the east.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -987,7 +1036,8 @@ You are inside a tidy office.  A big desk made from dark wood is standing
 in the centre of the room.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 You see Park Road.
 
@@ -1008,7 +1058,8 @@ You are on a small path running through the park.  It continues west and
 south and just north of here you see the southern wall of Park Cafe.
 
 ~
-0 1
+1
+0 0
 D2
 ~
 ~
@@ -1027,7 +1078,8 @@ You are standing on a small path inside the park.  The park entrance is
 leads further east and west.
 
 ~
-0 1
+1
+0 0
 D0
 You see the northern park entrance.
 
@@ -1050,7 +1102,8 @@ You are walking along a small path through the park.  The path continues
 south and east.
 
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -1071,7 +1124,8 @@ You are inside Park Cafe, a very well lighted, cosy place. The cafe
 colorful plants.
 
 ~
-8 11
+11
+1 1 0 8
 D3
 You see the park entrance.
 
@@ -1088,7 +1142,8 @@ You are standing just inside the small park of Midgaard.  To the north is
 the famous Park Cafe.
 
 ~
-4 1
+1
+1 1 0 4
 D0
 You see the promenade.
 
@@ -1117,7 +1172,8 @@ You are at the Concourse.  The city wall is just east and a small
 resembles a warehouse.  The Concourse continues south along the city wall.
 
 ~
-0 1
+1
+0 0
 D2
 The Concourse continues south.
 
@@ -1147,7 +1203,8 @@ The river gently flows west just north of here.  The promenade continues
 see the levee.
 
 ~
-0 1
+1
+0 0
 D1
 You see the Concourse.
 
@@ -1176,7 +1233,8 @@ The river gently flows west just north of here.  The promenade continues
 small building seems to be just west of the entrance.
 
 ~
-0 1
+1
+0 0
 D1
 You see the promenade.
 
@@ -1205,7 +1263,8 @@ The river gently flows west just north of here.  The promenade continues
 from here.
 
 ~
-0 1
+1
+0 0
 D1
 The promenade.
 
@@ -1234,7 +1293,8 @@ You are at the concourse, the city wall is just west.  A small promenade
 south along the city wall.
 
 ~
-0 1
+1
+0 0
 D0
 You see the Bridge.
 
@@ -1262,7 +1322,8 @@ WOW you can fly!  You are floating in the air above Temple Square of Midgaard.
 A ladder leading to the Valkyrie clan room has been left here.
 
 ~
-4 9
+9
+1 1 0 4
 D5
 Back down on the earth where you should be!
 
@@ -1281,7 +1342,8 @@ You are by the temple altar in the northern end of the Temple of Midgaard.
 To the West is the meeting point of the Immortal and mortal worlds and to the East lies the Quest Room.
 
 ~
-132104 11
+11
+1 3 0 132104
 D2
 You see the southern end of the temple.
 
@@ -1326,7 +1388,8 @@ You are by two small towers that have been built into the city wall and
 A new path leads to the south.....
 
 ~
-0 1
+1
+0 0
 D3
 You see the city gate.
 
@@ -1373,7 +1436,8 @@ You are by two small towers that have been built into the city wall and
 can see Roc Road, which runs to the West.
 
 ~
-0 1
+1
+0 0
 D1
 The city gate is to the east.
 
@@ -1426,7 +1490,8 @@ You are standing on the stone bridge crosses the river.  The bridge is
 opening in the wall ten feet below the bridge.
 
 ~
-0 1
+1
+0 0
 D0
 You see the road.
 
@@ -1464,7 +1529,8 @@ The Unused Whorehouse~
 This rundown house used to be the "Escort Service" for those citizens of
 
 ~
-8 11
+11
+1 1 0 8
 D0
 You see the alley.
 
@@ -1477,7 +1543,8 @@ Levee~
 You are at the levee.  South of here you see the river gently flowing west.
 
 ~
-0 1
+1
+0 0
 D0
 You see the Alley.
 
@@ -1492,7 +1559,8 @@ You are inside the old Grubby Inn.  This place has not been cleaned for
 several decades, vile smells make you dizzy.
 
 ~
-1032 11
+11
+1 2 0 1032
 D0
 You see the alley.
 
@@ -1507,7 +1575,8 @@ You are standing on the road next to the western city wall which
 continues north.  South of here is a bridge across the river.
 
 ~
-0 1
+1
+0 0
 D0
 You see the road.
 
@@ -1537,7 +1606,8 @@ You are standing at the eastern end of the alley, the city wall is just
 directly south of here.
 
 ~
-0 1
+1
+0 0
 D2
 You see the warehouse.
 
@@ -1558,7 +1628,8 @@ You are standing in the alley which continues east and west.  South of
 here you see the levee.  North is the Pet Shop.
 
 ~
-0 1
+1
+0 0
 D0
 You see, hear, and smell the pet shop.
 
@@ -1591,7 +1662,8 @@ You are in narrow and dirty alley leading east and west.  The leather shop
 is to the north.
 
 ~
-0 1
+1
+0 0
 D0
 The leather shop is to the north.
 
@@ -1620,7 +1692,8 @@ You are walking next to the western city wall.  Wall Road continues further
 Some letters have been written on the wall here.
 
 ~
-0 1
+1
+0 0
 D0
 The road continues further north.
 
@@ -1659,7 +1732,8 @@ You are walking next to the western city wall.  The road continues further
 south and the city gate is just north of here.
 
 ~
-0 1
+1
+0 0
 D0
 You see the city gate.
 
@@ -1691,7 +1765,8 @@ You are by two small towers that have been built into the city wall and
 not too safe.
 
 ~
-0 1
+1
+0 0
 D1
 You see the city gate.
 
@@ -1742,7 +1817,8 @@ You are by two small towers that have been built into the city wall and
 east and Wall Road leads south from here.
 
 ~
-0 1
+1
+0 0
 D1
 You see Main Street.
 
@@ -1807,7 +1883,8 @@ An acrid smell fills this large room.  Along the walls are numerous
 A wooden sign is hanging above the fireplace.
 
 ~
-1032 11
+11
+1 2 0 1032
 D2
 You see the alley.
 
@@ -1859,7 +1936,8 @@ You are in a small, beautifully furnished room.  The warm light emanating from
 golden letters stands on the desk.
 
 ~
-1032 11
+11
+1 2 0 1032
 D0
 You see Main Street.
 
@@ -1904,7 +1982,8 @@ You are in a small room that smells of rare chemicals and spices.
 sorts and sizes.
 
 ~
-1032 11
+11
+1 2 0 1032
 D2
 You see the main street.
 
@@ -1936,7 +2015,8 @@ This is the small dark room in which the Pet Shop Boy keeps his pets.
 It is vital that this room be immediately after the pet shop.
 
 ~
-12 11
+11
+1 2 0 12
 S
 #3031
 The Pet Shop~
@@ -1945,7 +2025,8 @@ The Pet Shop is a small crowded store, full of cages and animals of
 various sorts and sizes.  There is a sign on the wall.
 
 ~
-5128 11
+11
+1 3 0 5128
 D2
 You see the Alley.
 
@@ -1981,7 +2062,8 @@ The Dump~
 (Dwf) An adorable leper stands here rotting quietly.
 
 ~
-4 2
+2
+1 1 0 4
 D0
 You see the common square.
 
@@ -2006,7 +2088,8 @@ You are inside the only room in the old warehouse.  The place is very dusty
 violet-tinged light.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 The Dark Alley.
 
@@ -2062,7 +2145,8 @@ The dark alley, to the west is the common square.  The alley continues east.
 A forboding unused whorehouse lies to the south.
 
 ~
-0 1
+1
+0 0
 D1
 The alley continues east.
 
@@ -2091,7 +2175,8 @@ The common square, people pass you, talking to each other.  To the west is
 is connected to the market square.  From the south you notice a nasty smell.
 
 ~
-0 1
+1
+0 0
 D0
 You see the market square.
 
@@ -2124,7 +2209,8 @@ You are at the poor alley.  South of here is the Grubby Inn and to the
 east you see common square.  The alley continues further west.
 
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -2157,7 +2243,8 @@ The armoury with all kinds of armours on the walls and in the window.  You
 On the wall is a small note.
 
 ~
-1032 11
+11
+1 2 0 1032
 D0
 You see the main street.
 
@@ -2193,7 +2280,8 @@ The main street, to the north is the weapon shop.  To the east you leave town
 marks the entrance to the Sample House.
 
 ~
-0 1
+1
+0 0
 D0
 You see the weapon shop.
 
@@ -2226,7 +2314,8 @@ You are on Main Street crossing through town.  To the north is the general
 market place and to the south is the Jeweller's Shop.
 
 ~
-0 1
+1
+0 0
 D0
 You see the general store.
 
@@ -2257,7 +2346,8 @@ Market Square~
 You are standing on the market square, the famous Square of Midgaard. A large,  peculiar looking statue is standing in the middle of the square. Roads lead in  every direction, north to the temple square, south to the common square, east   and westbound is the main street.  Some small steps lead down below the Squar.f
 
 ~
-0 1
+1
+0 0
 D0
 You see the temple square.
 
@@ -2307,7 +2397,8 @@ You are on the main street passing through the City of Midgaard.  South of
 here is the market square.
 
 ~
-0 1
+1
+0 0
 D0
 You see the bakery.
 
@@ -2342,7 +2433,8 @@ You are at the end of the main street of Midgaard.  The street continues
 west is the city gate.
 
 ~
-0 1
+1
+0 0
 D0
 You see the magic shop.
 
@@ -2371,7 +2463,8 @@ The Weapon Shop~
 You are inside the weapon shop.  There is a small note on the counter.
 
 ~
-1032 11
+11
+1 2 0 1032
 D2
 You see the main street.
 
@@ -2404,7 +2497,8 @@ You are inside the general store.  All sorts of items are stacked on shelves
 A small note hangs on the wall.
 
 ~
-1032 11
+11
+1 2 0 1032
 D2
 You see the main street.
 
@@ -2439,7 +2533,8 @@ You are standing inside the small bakery.  A sweet scent of Danish and
 A small sign is on the counter.
 
 ~
-1036 11
+11
+1 3 0 1036
 D2
 You see the main street.
 
@@ -2484,7 +2579,8 @@ A quiet, ornately furnished room, for you to sit and chat with your loved one.
 just a glorified private room isnt it.
 
 ~
-1548 11
+11
+1 4 0 1548
 D4
 ~
 ~
@@ -2509,7 +2605,8 @@ You are standing in the bar.  The bar is set against the northern wall, old
 A small sign with big letters is fastened to the bar.
 
 ~
-8 11
+11
+1 1 0 8
 D3
 You see the exit to the entrance hall.
 
@@ -2547,7 +2644,8 @@ You are standing in the entrance hall of the Grunting Boar Inn.  The hall
 staircase leads up to the defunct reception room and the bar is to the east.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 Surprise! You see the bar.
 
@@ -2576,7 +2674,8 @@ You are standing in Temple Square. Huge, marble steps lead up to the Temple
 the center of Midgaard.
 
 ~
-16 1
+1
+1 1 0 16
 D0
 You see the temple.
 
@@ -2629,7 +2728,8 @@ The Temple Of Midgaard~
   The Temple itself with the Midgaard Healer lie North of here.
 
 ~
-213020 8
+8
+1 6 0 213020
 D0
 At the northern end of the temple hall is a statue and a huge altar.
 
@@ -2687,7 +2787,8 @@ You are in a small room, home to the Midgaard branch of Globank, the bank that
 @@lYou notice a shadowy form in the corner, seemingly casing the joint.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -2708,7 +2809,8 @@ S
 #3003
 The Idea Board Room~
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -2727,7 +2829,8 @@ Theres a natural mystic flowing through the air, and if you listen carefully
  
 
 ~
-1562 11
+11
+1 5 0 1562
 D5
 ~
 ~
@@ -2742,7 +2845,8 @@ Managing to escape the hustle and bustle of Midgaard, you now find yourself
 to what appears to be.....a farm?!?!?!
 
 ~
-1024 2
+2
+1 1 0 1024
 D0
 ~
 ~
@@ -2757,7 +2861,8 @@ The tall grass starts to creep up on your sides, as the smell of water and
 make out what appears to be a pond.
 
 ~
-1024 2
+2
+1 1 0 1024
 D0
 ~
 ~
@@ -2776,7 +2881,8 @@ You find yourself waist deep in tall grasses and cat-o-nine tails. The ground
 don't move soon you know your will become a permanent fixture here.
 
 ~
-1024 2
+2
+1 1 0 1024
 D0
 ~
 ~
@@ -2789,7 +2895,8 @@ S
 #3061
 The @@GP@@Bo@@Gn@@Bd@@g~
 ~
-0 2
+2
+0 0
 D2
 ~
 ~
@@ -2811,7 +2918,8 @@ This room is for use of contacting an immortal when none can be found thru
 
 
 ~
-1032 1
+1
+1 2 0 1032
 D5
 ~
 ~
@@ -2830,7 +2938,8 @@ S
 award of 10 qps.@@N
 
 ~
-1052 1
+1
+1 4 0 1052
 D5
 ~
 ~
@@ -2839,7 +2948,8 @@ S
 #3063
 Quest Central~
 All around you adventurers are bustling about, collecting their gear and preparing for another quest. The room is filled with assorted weapon and armor racks. The service counter sits at the back of the room where adventurers can claim payment for completing their trial, or request a new one.~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -2855,7 +2965,7 @@ The Postmaster stands here, watching over you...
 ~
 ~
 8320 1000
-72 1
+73 1
 0 50 50
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2896,7 +3006,7 @@ He is a well-built, middle-aged man with thin, grey hair.
 
 ~
 8192 900
-17 1
+16 1
 0 0 0
 ! 0 0 0 7 0 0 32
 | 0 0 0 0 0 0 0
@@ -2945,7 +3055,7 @@ A big, strong, angry captain.
 
 ~
 8 1000
-16 1
+15 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2975,7 +3085,7 @@ The sparrow looks like it is enjoying life.
 
 ~
 0 1000
-7 0
+8 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3005,7 +3115,7 @@ The white swan is very elegant.
 
 ~
 0 1000
-8 0
+7 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3052,7 +3162,7 @@ The wolf looks like a strong, fearless fighter.
 
 ~
 0 0
-4 0
+3 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3067,7 +3177,7 @@ The rottweiler looks like a strong, fierce fighter.
 
 ~
 0 400
-23 0
+24 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3082,7 +3192,7 @@ The beagle looks like a fierce fighter.
 
 ~
 0 400
-13 0
+14 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3097,7 +3207,7 @@ The puppy looks like a cute, little, fierce fighter.
 
 ~
 0 400
-1 0
+2 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3142,7 +3252,7 @@ A big, strong, helpful, trustworthy guard.
 
 ~
 0 1000
-6 1
+7 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3157,11 +3267,11 @@ A big, strong, helpful, trustworthy guard.
 
 ~
 0 1000
-12 1
+11 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
-2 5 1 6144 0 268435521
+2 5 0 268435521 1 6144
 #3066
 cat~
 an alley cat~
@@ -3187,7 +3297,7 @@ The beggar looks like she is fed up with life.
 
 ~
 0 400
-2 2
+3 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3245,7 +3355,7 @@ A janitor is walking around, cleaning up.
 ~
 ~
 0 900
-5 1
+6 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3313,7 +3423,7 @@ A tired looking Bartender who hates trouble in his bar.
 
 ~
 0 900
-49 1
+50 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3328,7 +3438,7 @@ Although retired from adventuring, the healer still lends a hand.
 
 ~
 8328 1000
-111 1
+110 1
 -500 500 500
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3343,7 +3453,7 @@ A masked woman with muscles bulging all over her body.  You can tell by
 
 ~
 1633020 1000
-138 2
+137 2
 -2500 1000 1000
 ! 3 0 0 7 944270 7637056 48
 | 0 0 0 0 0 0 0
@@ -3390,7 +3500,7 @@ He is young and close-cropped and looks quite happy.
 
 ~
 0 900
-72 1
+73 1
 -500 500 500
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3420,7 +3530,7 @@ This captain has killed more sharks than you have eaten peas.
 
 ~
 40 900
-22 1
+21 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3482,7 +3592,7 @@ A tall grocer, who moves two 200 pounds bag of flour around on his shoulders.
 
 ~
 8320 900
-109 1
+108 1
 -500 500 500
 ! 0 0 0 7 32 16384 0
 | 0 0 0 0 0 0 0
@@ -3559,7 +3669,7 @@ warhorse horse~
 ~
 ~
 0 0
-27 1
+28 1
 -100 30 25
 ! 0 0 19 7 2054 0 0
 | 0 0 0 0 0 0 0
@@ -3571,7 +3681,7 @@ questmaster quest master~
 ~
 ~
 1633020 0
-3 1
+2 1
 0 0 0
 ! 0 0 0 7 943630 0 0
 | 0 0 74341 6144 33554432 0 0

@@ -1,6 +1,6 @@
 #AREA
 @@dT@@mh@@pe @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@dM@@mi@@ps@@Wt@@N~
-Q 20
+Q 21
 K crimson_mist~
 L @@N{@@dA@@mD@@pE@@WP@@gT@@N}~
 N 163
@@ -21,7 +21,8 @@ W Oderus typeo~
 because you can hear your equipment clanking together with every motion of
 your body.@@N
 ~
-33 9
+9
+1 2 0 33
 D0
 ~
 ~
@@ -35,7 +36,8 @@ S
 because you can hear your equipment clanking together with every motion of
 your body.@@N
 ~
-33 9
+9
+1 2 0 33
 D0
 ~
 ~
@@ -53,7 +55,8 @@ S
 because you can hear your equipment clanking together with every motion of
 your body.@@N
 ~
-33 9
+9
+1 2 0 33
 D2
 ~
 ~
@@ -71,7 +74,8 @@ S
 because you can hear your equipment clanking together with every motion of
 your body.@@N
 ~
-33 9
+9
+1 2 0 33
 D0
 ~
 ~
@@ -89,7 +93,8 @@ S
 because you can hear your equipment clanking together with every motion of
 your body.@@N
 ~
-33 9
+9
+1 2 0 33
 D1
 ~
 ~
@@ -109,7 +114,8 @@ S
 ground. You look down to see a dark tunnel with a low coating of the same fog
 you have been walking in.@@N
 ~
-32801 9
+9
+1 3 0 32801
 D3
 ~
 ~
@@ -131,7 +137,8 @@ S
  
 @@mThere is a small sign here..@@N
 ~
-139276 5
+5
+1 4 0 139276
 D0
 ~
 portal~
@@ -160,7 +167,8 @@ S
 @@ddark@@m cleansing of your soul.  You have entered the
 @@dC@@mr@@pi@@Wm@@gs@@po@@mn @@dM@@mi@@ps@@Wt@@m...
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -182,7 +190,8 @@ S
 very frigid here and you keep walking for fear of
 @@cf@@ar@@ce@@ae@@cz@@ai@@cn@@ag@@m to death.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -204,7 +213,8 @@ S
 very frigid here and you keep walking for fear of
 @@cf@@ar@@ce@@ae@@cz@@ai@@cn@@ag@@m to death.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -226,7 +236,8 @@ S
 very frigid here and you keep walking for fear of
 @@cf@@ar@@ce@@ae@@cz@@ai@@cn@@ag@@m to death.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -249,7 +260,8 @@ S
 you collapse to the dirty floor.  A small wedge of rock slides open and out
 charges a giant hydra, heading for you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D2
 ~
 ~
@@ -266,7 +278,8 @@ S
 start to roll faster and faster down the hill while swarms of bats start to
 surround and attack you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -279,7 +292,8 @@ S
 start to roll faster and faster down the hill while swarms of bats start to
 surround and attack you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -292,7 +306,8 @@ S
 start to roll faster and faster down the hill while swarms of bats start to
 surround and attack you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -305,7 +320,8 @@ S
 start to roll faster and faster down the hill while swarms of bats start to
 surround and attack you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -318,7 +334,8 @@ S
 start to roll faster and faster down the hill while swarms of bats start to
 surround and attack you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -331,7 +348,8 @@ S
 start to roll faster and faster down the hill while swarms of bats start to
 surround and attack you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -344,7 +362,8 @@ S
 start to roll faster and faster down the hill while swarms of bats start to
 surround and attack you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -360,7 +379,8 @@ S
 to it.  A small, @@fpulsing @@y@@flight@@N@@m floats here before you, enticing
 your almost to the point of total hypnotism...@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -376,7 +396,8 @@ S
 a tiny room with a low coating of @@cdew@@m covering the floor.  This room
 just looks like it is empty.  Or is it?..@@N
 ~
-141324 11
+11
+1 5 0 141324
 D4
 ~
 ~
@@ -389,7 +410,8 @@ S
 can barely make out any kind of a definate figure at all.  Intrigued, you
 decide to continue forward.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -406,7 +428,8 @@ S
 can barely make out any kind of a definate figure at all.  Intrigued, you
 decide to continue forward.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -431,7 +454,8 @@ S
 can barely make out any kind of a definate figure at all.  Intrigued, you
 decide to continue forward.@@N
 ~
-139276 11
+11
+1 4 0 139276
 D0
 ~
 ~
@@ -450,7 +474,8 @@ S
  
 You also notice some tiny inscriptions into the bars of the gate..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D2
 ~
 ~
@@ -475,7 +500,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -494,7 +520,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -513,7 +540,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -532,7 +560,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -551,7 +580,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -570,7 +600,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -589,7 +620,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -608,7 +640,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -627,7 +660,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -646,7 +680,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -665,7 +700,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -684,7 +720,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D2
 ~
 ~
@@ -703,7 +740,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -722,7 +760,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -741,7 +780,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -760,7 +800,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -779,7 +820,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -798,7 +840,8 @@ S
 @@pcrimson@@m light pulsing from the top of the tower.  Now you are even more
 interested and decide to continue.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -820,7 +863,8 @@ S
 A low eerie tone is coming from above you.  You want to investigate but your
 very soul is telling you to stay away...@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -855,7 +899,8 @@ S
 and some shut, but all empty. You start to wonder if you might come across the
 owners of these caskets.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -879,7 +924,8 @@ S
 of @@dm@@mi@@ps@@gt@@m covering the floor. As you look farther down the hall,
 you can see some room that seems to sparkle like the @@gstars@@m.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -904,7 +950,8 @@ S
 rune of some sort, pointed towards an etching of a crab engraved into the
 solid stone on the floor on the great hall in front of you.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -922,7 +969,8 @@ S
 can not remember why you are here, where you were going, or what you have
 learned while inside the tower.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -946,7 +994,8 @@ S
 there was once a door here.  A small layer of @@dm@@mi@@ps@@gt@@m seems to
 pour out from the room to the north.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -964,7 +1013,8 @@ S
 in an octagonal step design.  You see two surrounding rooms, each containing
 some creature of the stars...@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -991,7 +1041,8 @@ S
 and some shut, but all empty. You start to wonder if you might come across the
 owners of these caskets.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1015,7 +1066,8 @@ S
 of @@dm@@mi@@ps@@gt@@m covering the floor. As you look farther down the hall,
 you can see some room that seems to sparkle like the @@gstars@@m.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1041,7 +1093,8 @@ S
 form the outline a large ram, looking upwards.  On the other wall there is a
 figure of a bull, doing the same.@@N
 ~
-131080 11
+11
+1 2 0 131080
 D0
 ~
 ~
@@ -1059,7 +1112,8 @@ S
 can not remember why you are here, where you were going, or what you have
 learned while inside the tower.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1083,7 +1137,8 @@ S
  The frame seems to be lined with a liquid which @@pglows@@m in the dim light
 that fills this whole tower.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1101,7 +1156,8 @@ S
 in an octagonal step design.  You see two surrounding rooms, each containing
 some creature of the stars...@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1128,7 +1184,8 @@ S
 and some shut, but all empty. You start to wonder if you might come across the
 owners of these caskets.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1152,7 +1209,8 @@ S
 of @@dm@@mi@@ps@@gt@@m covering the floor. As you look farther down the hall,
 you can see some room that seems to sparkle like the @@gstars@@m.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1178,7 +1236,8 @@ S
 You do see pictures etched into the walls though.  You see a large scorpian
 pair of scales seeming to surround you as they stretch from wall to wall.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1196,7 +1255,8 @@ S
 can not remember why you are here, where you were going, or what you have
 learned while inside the tower.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1219,7 +1279,8 @@ S
 @@mThere is a small doorway leading east.  You can not see whats past it for
 some reason.  Should you go in?@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1237,7 +1298,8 @@ S
 in an octagonal step design.  You see two surrounding rooms, each containing
 some creature of the stars...@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1264,7 +1326,8 @@ S
 and some shut, but all empty. You start to wonder if you might come across the
 owners of these caskets.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1288,7 +1351,8 @@ S
 of @@dm@@mi@@ps@@gt@@m covering the floor. As you look farther down the hall,
 you can see some room that seems to sparkle like the @@gstars@@m.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1314,7 +1378,8 @@ S
 On the walls are words you can not understand, but you comprehend the outlines
 painted to be a nude woman with a pet lion.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1332,7 +1397,8 @@ S
 can not remember why you are here, where you were going, or what you have
 learned while inside the tower.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1355,7 +1421,8 @@ S
 @@mA doorway to your west has some ancient carvings into its amthyst frame. A
 thick @@dm@@mi@@ps@@gt@@m blocks all views into and past the door.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1373,7 +1440,8 @@ S
 in an octagonal step design.  You see two surrounding rooms, each containing
 some creature of the stars...@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1400,7 +1468,8 @@ S
 front of you.  You turn, but the alter still seems to follow you, always
 staying in front of your line of vision.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1415,7 +1484,8 @@ S
 front of you.  You turn, but the alter still seems to follow you, always
 staying in front of your line of vision.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D3
 ~
 ~
@@ -1430,7 +1500,8 @@ S
 front of you.  You turn, but the alter still seems to follow you, always
 staying in front of your line of vision.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1445,7 +1516,8 @@ S
 front of you.  You turn, but the alter still seems to follow you, always
 staying in front of your line of vision.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D3
 ~
 ~
@@ -1460,7 +1532,8 @@ S
 front of you.  You turn, but the alter still seems to follow you, always
 staying in front of your line of vision.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D2
 ~
 ~
@@ -1475,7 +1548,8 @@ S
 front of you.  You turn, but the alter still seems to follow you, always
 staying in front of your line of vision.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1490,7 +1564,8 @@ S
 front of you.  You turn, but the alter still seems to follow you, always
 staying in front of your line of vision.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D2
 ~
 ~
@@ -1505,7 +1580,8 @@ S
 front of you.  You turn, but the alter still seems to follow you, always
 staying in front of your line of vision.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1519,7 +1595,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1537,7 +1614,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1555,7 +1633,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1573,7 +1652,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1591,7 +1671,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1609,7 +1690,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1627,7 +1709,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139528 11
+11
+1 4 0 139528
 D0
 ~
 ~
@@ -1645,7 +1728,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1663,7 +1747,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1681,7 +1766,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1699,7 +1785,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D2
 ~
 ~
@@ -1717,7 +1804,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1735,7 +1823,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1753,7 +1842,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1771,7 +1861,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1789,7 +1880,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1807,7 +1899,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1825,7 +1918,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1843,7 +1937,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1861,7 +1956,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1879,7 +1975,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1897,7 +1994,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1915,7 +2013,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1933,7 +2032,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -1951,7 +2051,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1969,7 +2070,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -1987,7 +2089,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2005,7 +2108,8 @@ S
 @@pviolet@@m flame are placed on the walls, seeming to fill the halls with a
 dancing light of @@dc@@mr@@pi@@Wm@@gs@@po@@mn..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2025,7 +2129,8 @@ S
 directions and a s@@pp@@mi@@pr@@ma@@pl@@m staircase leading up from the center
 of this room.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2047,7 +2152,8 @@ S
 stones and the sparks ignite the liquid into a burning, @@lblue@@m flame. As
 the fountain burns, the unknown power upon your mind gets weaker...@@N
 ~
-131080 11
+11
+1 2 0 131080
 D1
 ~
 ~
@@ -2067,7 +2173,8 @@ S
 directions and a s@@pp@@mi@@pr@@ma@@pl@@m staircase leading up from the center
 of this room.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -2091,7 +2198,8 @@ S
 directions and a s@@pp@@mi@@pr@@ma@@pl@@m staircase leading up from the center
 of this room.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -2113,7 +2221,8 @@ S
 stones and the sparks ignite the liquid into a burning, @@lblue@@m flame. As
 the fountain burns, the unknown power upon your mind gets weaker...@@N
 ~
-131080 11
+11
+1 2 0 131080
 D2
 ~
 ~
@@ -2133,7 +2242,8 @@ S
 directions and a s@@pp@@mi@@pr@@ma@@pl@@m staircase leading up from the center
 of this room.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2157,7 +2267,8 @@ S
 directions and a s@@pp@@mi@@pr@@ma@@pl@@m staircase leading up from the center
 of this room.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2179,7 +2290,8 @@ S
 stones and the sparks ignite the liquid into a burning, @@lblue@@m flame. As
 the fountain burns, the unknown power upon your mind gets weaker...@@N
 ~
-131080 11
+11
+1 2 0 131080
 D0
 ~
 ~
@@ -2199,7 +2311,8 @@ S
 directions and a s@@pp@@mi@@pr@@ma@@pl@@m staircase leading up from the center
 of this room.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2223,7 +2336,8 @@ S
 directions and a s@@pp@@mi@@pr@@ma@@pl@@m staircase leading up from the center
 of this room.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2245,7 +2359,8 @@ S
 stones and the sparks ignite the liquid into a burning, @@lblue@@m flame. As
 the fountain burns, the unknown power upon your mind gets weaker...@@N
 ~
-131080 11
+11
+1 2 0 131080
 D0
 ~
 ~
@@ -2265,7 +2380,8 @@ S
 directions and a s@@pp@@mi@@pr@@ma@@pl@@m staircase leading up from the center
 of this room.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2288,7 +2404,8 @@ S
 and some shut, but all empty. You start to wonder if you might come across the
 owners of these caskets.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2315,7 +2432,8 @@ S
 and some shut, but all empty. You start to wonder if you might come across the
 owners of these caskets.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2342,7 +2460,8 @@ S
 and some shut, but all empty. You start to wonder if you might come across the
 owners of these caskets.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2369,7 +2488,8 @@ S
 and some shut, but all empty. You start to wonder if you might come across the
 owners of these caskets.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2394,7 +2514,8 @@ S
 After witnessing the entrance and the first floor, you wonder what awaits you
 here...@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2428,7 +2549,8 @@ S
 aligned brick by brick.  You can also feel a pure @@ppower@@m running through
 your body. @@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -2450,7 +2572,8 @@ S
 aligned brick by brick.  You can also feel a pure @@ppower@@m running through
 your body. @@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2472,7 +2595,8 @@ S
 aligned brick by brick.  You can also feel a pure @@ppower@@m running through
 your body. @@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2494,7 +2618,8 @@ S
 aligned brick by brick.  You can also feel a pure @@ppower@@m running through
 your body. @@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2516,7 +2641,8 @@ S
 wandering around the tower.  You hear a sudden crak in the floor and you take
 a step back.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -2534,7 +2660,8 @@ S
 wandering around the tower.  You hear a sudden crak in the floor and you take
 a step back.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D2
 ~
 ~
@@ -2552,7 +2679,8 @@ S
 wandering around the tower.  You hear a sudden crak in the floor and you take
 a step back.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2570,7 +2698,8 @@ S
 wandering around the tower.  You hear a sudden crak in the floor and you take
 a step back.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2589,7 +2718,8 @@ S
 closer to the magical beast.  You look up to notice a small ladder made of the
 same @@aaquamarine@@m as the staircase, leading upwards..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -2604,7 +2734,8 @@ S
 closer to the magical beast.  You look up to notice a small ladder made of the
 same @@aaquamarine@@m as the staircase, leading upwards..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -2619,7 +2750,8 @@ S
 closer to the magical beast.  You look up to notice a small ladder made of the
 same @@aaquamarine@@m as the staircase, leading upwards..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D4
 ~
 ~
@@ -2634,7 +2766,8 @@ S
 @@mYou hear nothing.  Silence falls over you as you enter the third floor. The
 eerie calm starts to send chills down your very bones in your body.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2662,7 +2795,8 @@ S
 to appear and you attack.  Nothing can seem to break the silence.  No sounds
 come from armor clanking, weapons colliding, and death cries.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2684,7 +2818,8 @@ S
 @@dHallway of Silence@@N~
 @@d...@@N
 ~
-139528 11
+11
+1 4 0 139528
 D0
 ~
 ~
@@ -2700,7 +2835,8 @@ S
 Two guards stand at attention seeming to be waiting.  A small painting of a
 full moon is over their heads.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2727,7 +2863,8 @@ S
 the carpet below your feet.  You notice that a new doorway has appeared to the
 north.@@N
 ~
-131072 11
+11
+1 1 0 131072
 D0
 ~
 ~
@@ -2743,7 +2880,8 @@ S
 of the tower.  You hear the clanking of your armor and the shuffles of the
 gold in your wallet.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D1
 ~
 ~
@@ -2755,7 +2893,8 @@ S
 of the tower.  You hear the clanking of your armor and the shuffles of the
 gold in your wallet.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D3
 ~
 ~
@@ -2766,7 +2905,8 @@ S
 @@dComplete and total silence...@@N @@dA pin drops from your pack and you
 don't even hear it.@@N
 ~
-8456 11
+11
+1 3 0 8456
 D1
 ~
 ~
@@ -2781,7 +2921,8 @@ S
 @@dComplete and total silence...@@N @@dA pin drops from your pack and you
 don't even hear it.@@N
 ~
-8456 11
+11
+1 3 0 8456
 D2
 ~
 ~
@@ -2797,7 +2938,8 @@ S
 to appear and you attack.  Nothing can seem to break the silence.  No sounds
 come from armor clanking, weapons colliding, and death cries.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2817,7 +2959,8 @@ S
 to appear and you attack.  Nothing can seem to break the silence.  No sounds
 come from armor clanking, weapons colliding, and death cries.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2837,7 +2980,8 @@ S
 to appear and you attack.  Nothing can seem to break the silence.  No sounds
 come from armor clanking, weapons colliding, and death cries.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D0
 ~
 ~
@@ -2856,7 +3000,8 @@ S
 @@dComplete and total silence...@@N @@dA pin drops from your pack and you
 don't even hear it.@@N
 ~
-139528 11
+11
+1 4 0 139528
 D0
 ~
 ~
@@ -2871,7 +3016,8 @@ S
 @@dComplete and total silence...@@N @@dA pin drops from your pack and you
 don't even hear it.@@N
 ~
-8456 11
+11
+1 3 0 8456
 D0
 ~
 ~
@@ -2890,7 +3036,8 @@ S
 closer to the magical beast.  You look up to notice a small ladder made of the
 same @@aaquamarine@@m as the staircase, leading upwards..@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -2903,7 +3050,8 @@ S
 @@d  My mistress of the fridgid night..
 I worship, pray to on my fallen knees..@@N
 ~
-139276 9
+9
+1 4 0 139276
 D4
 ~
 ~
@@ -2924,7 +3072,8 @@ S
 I feel you shake, so deep inside..
 Oh scream my name and squeeze me tight..@@N
 ~
-24590 11
+11
+1 5 0 24590
 S
 #8489
 @@dJ@@mu@@pz@@Wa@@gm@@p'@@ms @@gDeserted @@dDwelling@@N~
@@ -2935,7 +3084,8 @@ S
 bright @@yyellow@@m light shining on the marble wall, and inscribed into the
 wall are some small @@pinscriptions@@m.@@N
 ~
-139272 11
+11
+1 3 0 139272
 D5
 ~
 ~
@@ -2956,7 +3106,7 @@ Dweller~
 be formed from the @@pf@@mog itself..@@N
 ~
 16552 0
-123 0
+124 0
 -1400 800 550
 ! 3 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
@@ -2984,7 +3134,7 @@ Dweller~
 be formed from the @@pf@@mog itself..@@N
 ~
 16552 0
-121 0
+120 0
 -1400 800 550
 ! 0 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
@@ -3012,7 +3162,7 @@ Dweller~
 be formed from the @@pf@@mog itself..@@N
 ~
 16552 0
-125 0
+124 0
 -1400 800 550
 ! 0 0 17 7 6174 0 4
 | 0 0 0 0 0 0 0
@@ -3066,7 +3216,7 @@ Vampyre Bats bat~
 ~
 ~
 524988 0
-122 0
+121 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
@@ -3102,7 +3252,7 @@ Vampyre Bats bat~
 ~
 ~
 524988 0
-125 0
+126 0
 -1000 500 500
 ! 0 0 19 7 524302 0 8
 | 0 0 0 0 0 0 0
@@ -3156,7 +3306,7 @@ Patrol fog mist~
 attacks you where you stand.@@N
 ~
 16616 0
-115 0
+116 0
 -1700 660 580
 ! 0 0 0 7 548878 0 8
 | 0 0 0 0 0 0 0
@@ -3168,7 +3318,7 @@ crimson demon~
 ~
 ~
 526570 0
-119 1
+118 1
 -1900 800 600
 ! 6 0 16 7 942094 0 48
 | 0 0 0 0 0 0 0
@@ -3194,7 +3344,7 @@ Taurus~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 18624 0
-130 0
+131 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3220,7 +3370,7 @@ Cancer~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 18624 0
-124 0
+123 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3246,7 +3396,7 @@ Virgo~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 18624 0
-122 2
+121 2
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3285,7 +3435,7 @@ Sagittarius~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 18624 0
-132 0
+131 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3298,7 +3448,7 @@ Capricorn~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 18624 0
-131 0
+132 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3311,7 +3461,7 @@ Aquarius~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 18624 0
-124 0
+123 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3324,7 +3474,7 @@ Pisces~
 @@dYou see nothing but a bunch of @@gstars@@d...@@N
 ~
 18624 0
-135 0
+134 0
 -1750 750 400
 ! 0 0 17 7 679950 0 16
 | 0 0 0 0 0 0 0
@@ -3398,7 +3548,7 @@ Crimson Shadow~
 ~
 ~
 548992 0
-107 0
+106 0
 -975 800 800
 ! 0 0 16 7 14 64 72
 | 0 0 0 0 0 0 0
@@ -3410,7 +3560,7 @@ Crimson Shadow~
 ~
 ~
 548992 0
-103 0
+104 0
 -975 800 800
 ! 0 0 16 7 14 64 72
 | 0 0 0 0 0 0 0
@@ -3434,7 +3584,7 @@ evil~
 ~
 ~
 24808 -1000
-119 1
+118 1
 -2000 800 750
 ! 0 0 16 7 942094 8388640 16
 | 0 0 0 0 0 0 0
@@ -3470,7 +3620,7 @@ paladin~
 ~
 ~
 1075964 1000
-138 2
+137 2
 -2000 1000 400
 ! 9 0 0 7 948622 6488064 144
 | 0 0 0 0 0 0 0
@@ -3512,7 +3662,7 @@ A large, large man stands here, with a small trail of a deep @@mviolet@@N fog
 @@ppierce@@N into the very depths of your soul..@@N
 ~
 18664 0
-142 1
+143 1
 -1600 800 800
 ! 0 0 0 7 30870 1052736 80
 | 0 0 0 0 0 0 0
@@ -3536,7 +3686,7 @@ necromancer mage crimson~
 ~
 ~
 16576 0
-125 1
+126 1
 -1500 500 1000
 ! 0 0 0 7 553102 0 16
 | 0 0 0 0 0 0 0
@@ -3572,7 +3722,7 @@ crimson slave~
 ~
 ~
 542912 0
-119 1
+118 1
 -1500 550 700
 ! 0 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -3584,7 +3734,7 @@ crimson slave~
 ~
 ~
 542912 0
-124 1
+123 1
 -1500 550 700
 ! 0 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -3596,7 +3746,7 @@ thief~
 ~
 ~
 26856 0
-135 1
+134 1
 -1500 700 700
 ! 2 0 0 7 161806 0 16
 | 0 0 0 0 0 0 0
@@ -3608,7 +3758,7 @@ head~
 ~
 ~
 16616 0
-126 1
+125 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
@@ -3632,7 +3782,7 @@ head~
 ~
 ~
 16616 0
-115 1
+114 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0
@@ -3668,7 +3818,7 @@ head~
 ~
 ~
 16616 0
-118 1
+117 1
 -1200 760 560
 ! 0 0 19 7 30734 0 8
 | 0 0 0 0 0 0 0

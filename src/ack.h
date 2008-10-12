@@ -1138,9 +1138,8 @@ struct room_index_data
    char *name;
    char *description;
    char *auto_message;  /* If != NULL, send_to_room each tick */
-   sh_int block_timer;
    int vnum;
-   int room_flags;
+   BITMASK *room_flags;
    sh_int light;
    sh_int sector_type;
    BUILD_DATA_LIST *first_room_reset;

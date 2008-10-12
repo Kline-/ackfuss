@@ -1,6 +1,6 @@
 #AREA
 @@GForest @@Wof @@dConfusion@@N~
-Q 20
+Q 21
 K forestconfusion~
 L @@W(@@r10 60@@W}@@N~
 N 13
@@ -21,7 +21,8 @@ You are standing at the edge of a large, gloomy forest.  Looking inside, you
 are short and withered, as if some force has mutated them.  You realize that
 the forest is deathly quiet.
 ~
-0 3
+3
+0 0
 D1
 Inside the Forest.
 ~
@@ -40,7 +41,8 @@ You are within the forest, surrounded by strange, withered trees.  A strange,
 in front of you.  You find it very hard to keep to bearings in this strange
 mist, which seems almost alive, and intent of keeping you out.
 ~
-0 3
+3
+0 0
 D2
 Inside the Mist.
 ~
@@ -59,7 +61,8 @@ You are within the forest, surrounded by strange, withered trees.  A strange,
 in front of you.  You find it very hard to keep to bearings in this strange
 mist, which seems almost alive, and intent of keeping you out.
 ~
-0 3
+3
+0 0
 D2
 Inside the Mist.
 ~
@@ -78,7 +81,8 @@ You are within the forest, surrounded by strange, withered trees.  A strange,
 in front of you.  You find it very hard to keep to bearings in this strange
 mist, which seems almost alive, and intent of keeping you out.
 ~
-0 3
+3
+0 0
 D0
 Inside the Mist.
 ~
@@ -98,7 +102,8 @@ You are within the forest, surrounded by strange, withered trees.  A strange,
 mist, which seems almost alive, and intent of keeping you out.  You are able
 to see more clearly to the east.
 ~
-0 3
+3
+0 0
 D0
 Inside the Mist.
 ~
@@ -115,7 +120,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -132,7 +138,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -149,7 +156,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -171,7 +179,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -188,7 +197,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -210,7 +220,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -227,7 +238,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D2
 The Undergrowth.
 ~
@@ -244,7 +256,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -261,7 +274,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -283,7 +297,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -300,7 +315,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D3
 The Path.
 ~
@@ -312,7 +328,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -334,7 +351,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -356,7 +374,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -368,7 +387,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -386,7 +406,8 @@ You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence. One tree
 draws your attention, a large carving embossed in it's bark.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -431,7 +452,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -453,7 +475,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -470,7 +493,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D2
 A Small Track.
 ~
@@ -487,7 +511,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -504,7 +529,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -521,7 +547,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -543,7 +570,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -565,7 +593,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -582,7 +611,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D2
 The Path.
 ~
@@ -599,7 +629,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -616,7 +647,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D0
 The Path.
 ~
@@ -633,7 +665,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -650,7 +683,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 The Path.
 ~
@@ -667,7 +701,8 @@ The Forest Path~
 You are on a narrow, winding path, running through this strange, twisted
 forest, full of stunted, withered trees and an enormous silence.
 ~
-0 3
+3
+0 0
 D1
 Some Undergrowth.
 ~
@@ -684,7 +719,8 @@ A Small Track~
 You are on a small, narrow track, which runs North to the main path, or
 continues South, through the twisted undergrowth.
 ~
-0 3
+3
+0 0
 D0
 The Main Path.
 ~
@@ -702,7 +738,8 @@ You are on a small, narrow track, which runs through the forest's bitter,
 twisted undergrowth.  The main path lies to the North, whilst the track meets
 a corner to the South.
 ~
-0 3
+3
+0 0
 D0
 A Small Track.
 ~
@@ -720,7 +757,8 @@ You are at a corner of this small and narrow track.  You can head North,
 through the thick undergrowth towards the main path, or travel East, further 
 into the undergrowth, where the track is lost between the thick bushes.
 ~
-0 3
+3
+0 0
 D0
 The Track.
 ~
@@ -738,7 +776,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D1
 The Undergrowth.
 ~
@@ -761,7 +800,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -778,7 +818,8 @@ A Passage~
 You are in a small passage, cut out of the rock itself.  From the looks of the
 rough marks on the walls, it looks like this area has been mined in the past.
 ~
-9 11
+11
+1 2 0 9
 D0
 A Passage.
 ~
@@ -800,7 +841,8 @@ A Passage~
 You are in a small passage, cut out of the rock itself.  From the looks of the
 rough marks on the walls, it looks like this area has been mined in the past.
 ~
-9 11
+11
+1 2 0 9
 D0
 A Passage.
 ~
@@ -822,7 +864,8 @@ A Passage~
 You are in a small passage, cut out of the rock itself.  From the looks of the
 rough marks on the walls, it looks like this area has been mined in the past.
 ~
-9 11
+11
+1 2 0 9
 D1
 A Mining Room.
 ~
@@ -844,7 +887,8 @@ A Mining Room~
 You are in a small room, cut out of the rock, and by the looks of the walls,
 it still is.  It looks like this room is currently being mined.
 ~
-9 11
+11
+1 2 0 9
 D3
 A Passage.
 ~
@@ -856,7 +900,8 @@ A Passage~
 You are in a small passage, cut out of the rock itself.  From the looks of the
 rough marks on the walls, it looks like this area has been mined in the past.
 ~
-9 11
+11
+1 2 0 9
 D0
 A Mining Room.
 ~
@@ -878,7 +923,8 @@ A Passage~
 You are in a small passage, cut out of the rock itself.  From the looks of the
 rough marks on the walls, it looks like this area has been mined in the past.
 ~
-9 11
+11
+1 2 0 9
 D0
 A Mining Room.
 ~
@@ -900,7 +946,8 @@ A Mining Room~
 You are in a small room, cut out of the rock, and by the looks of the walls,
 it still is.  It looks like this room is currently being mined.
 ~
-9 11
+11
+1 2 0 9
 D0
 A Passage.
 ~
@@ -912,7 +959,8 @@ A Mining Room~
 You are in a small room, cut out of the rock, and by the looks of the walls,
 it still is.  It looks like this room is currently being mined.
 ~
-9 11
+11
+1 2 0 9
 D0
 A Passage.
 ~
@@ -924,7 +972,8 @@ A Mining Room~
 You are in a small room, cut out of the rock, and by the looks of the walls,
 it still is.  It looks like this room is currently being mined.
 ~
-9 11
+11
+1 2 0 9
 D2
 A Passage.
 ~
@@ -937,7 +986,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -955,7 +1005,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D2
 The Undergrowth.
 ~
@@ -968,7 +1019,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -991,7 +1043,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D2
 The Undergrowth.
 ~
@@ -1009,7 +1062,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1028,7 +1082,8 @@ You are standing in a small pond.  The water is dark, and smells worse than
 insects scampering about on the water's edge.  Short, withered rushes line
 the edge of the pond.
 ~
-0 6
+6
+0 0
 D0
 The Undergrowth.
 ~
@@ -1052,7 +1107,8 @@ You are standing in a small pond, which appears to be fairly deep, despite its
 to grow around the edge of the water, but aren't doing too well.  The smell
 here is pretty gross.
 ~
-0 6
+6
+0 0
 D1
 The Pond.
 ~
@@ -1071,7 +1127,8 @@ You are standing in a small pond.  A few dead fish float around here, looking
 curdling smell, you're hardly surprised.  To the South, just past the water's
 edge, you can see a small opening in the ground.
 ~
-0 6
+6
+0 0
 D0
 The Pond.
 ~
@@ -1095,7 +1152,8 @@ You are in a small pond.  The smell is worst here, and large swarms of flies
 that manages to grow here only just manages to do so, but looks horrible
 anyway.
 ~
-0 6
+6
+0 0
 D0
 The Pond.
 ~
@@ -1114,7 +1172,8 @@ You are in a small, cramped opening under the ground.  It is so narrow, that
 here looks dirty, and smells faintly.  The opening leads Down, whilst you
 are able to see the pond to the North.
 ~
-521 11
+11
+1 3 0 521
 D0
 The Pond.
 ~
@@ -1132,7 +1191,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1149,7 +1209,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1167,7 +1228,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1185,7 +1247,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1203,7 +1266,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1221,7 +1285,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D2
 The Undergrowth.
 ~
@@ -1233,7 +1298,8 @@ A Mining Room~
 You are in a small room, cut out of the rock, and by the looks of the walls,
 it still is.  It looks like this room is currently being mined.
 ~
-9 11
+11
+1 2 0 9
 D2
 A Passage.
 ~
@@ -1245,7 +1311,8 @@ A Passage~
 You are in a small passage, cut out of the rock itself.  From the looks of the
 rough marks on the walls, it looks like this area has been mined in the past.
 ~
-9 11
+11
+1 2 0 9
 D0
 A Small Cavern.
 ~
@@ -1262,7 +1329,8 @@ A Small Cavern~
 You are in small cavern, cut out of the rock.  This is where the Neogi masters
 come to meet sometimes, and discuss their latest plans for global domination.
 ~
-9 11
+11
+1 2 0 9
 D2
 A Passage.
 ~
@@ -1275,7 +1343,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1294,7 +1363,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 and weeds seem to be everywhere, hampering your movement.  To the West you
 can just about see the main path.
 ~
-0 3
+3
+0 0
 D1
 The Undergrowth.
 ~
@@ -1313,7 +1383,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 and weeds seem to be everywhere, hampering your movement.  There is a large
 mound of earth to the south.
 ~
-0 3
+3
+0 0
 D1
 The Undergrowth.
 ~
@@ -1335,7 +1406,8 @@ A Small Cave~
 You are standing in a small cave, built into a large mound of earth.  There's
 not much special to see.  It looks unused.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1353,7 +1425,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 A Clearing.
 ~
@@ -1381,7 +1454,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 the Undergrowth.
 ~
@@ -1399,7 +1473,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D1
 A Clearing.
 ~
@@ -1422,7 +1497,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -1440,7 +1516,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D1
 The Undergrowth.
 ~
@@ -1457,7 +1534,8 @@ A Clearing~
 You are in a medium-sized clearing within this strange forest.  The grass
 growing around your feet looks brown, and poisoned.
 ~
-0 2
+2
+0 0
 D0
 A Clearing.
 ~
@@ -1474,7 +1552,8 @@ A Clearing~
 You are in a medium-sized clearing within this strange forest.  The grass
 growing around your feet looks brown, and poisoned.
 ~
-0 2
+2
+0 0
 D2
 A Clearing.
 ~
@@ -1491,7 +1570,8 @@ A Clearing~
 You are in a medium-sized clearing within this strange forest.  The grass
 growing around your feet looks brown, and poisoned.
 ~
-0 2
+2
+0 0
 D0
 A Clearing.
 ~
@@ -1513,7 +1593,8 @@ A Clearing~
 You are in a medium-sized clearing within this strange forest.  The grass
 growing around your feet looks brown, and poisoned.
 ~
-0 2
+2
+0 0
 D2
 A Clearing.
 ~
@@ -1530,7 +1611,8 @@ A Clearing~
 You are in a medium-sized clearing within this strange forest.  The grass
 growing around your feet looks brown, and poisoned.
 ~
-0 2
+2
+0 0
 D1
 A Clearing.
 ~
@@ -1546,7 +1628,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D0
 A large bush.
 ~
@@ -1567,7 +1650,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D1
 Woodland.
 ~
@@ -1588,7 +1672,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D2
 Woodland.
 ~
@@ -1604,7 +1689,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D0
 Woodland.
 ~
@@ -1625,7 +1711,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D0
 Woodland.
 ~
@@ -1651,7 +1738,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D0
 Woodland.
 ~
@@ -1672,7 +1760,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D0
 Woodland.
 ~
@@ -1688,7 +1777,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D0
 Woodland.
 ~
@@ -1704,7 +1794,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D0
 Woodland.
 ~
@@ -1720,7 +1811,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D0
 Woodland.
 ~
@@ -1736,7 +1828,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D1
 Woodland.
 ~
@@ -1757,7 +1850,8 @@ S
 Dense Woodland~
 You are in an area of very dense woodland, full of withered, stunted trees.
 ~
-0 3
+3
+0 0
 D3
 Woodland.
 ~
@@ -1769,7 +1863,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D2
 The Cave.
 ~
@@ -1791,7 +1886,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D1
 The Cave.
 ~
@@ -1808,7 +1904,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Cave.
 ~
@@ -1830,7 +1927,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Cave.
 ~
@@ -1852,7 +1950,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Cave.
 ~
@@ -1874,7 +1973,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Cave.
 ~
@@ -1896,7 +1996,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Cave.
 ~
@@ -1918,7 +2019,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Cave.
 ~
@@ -1940,7 +2042,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Cave.
 ~
@@ -1957,7 +2060,8 @@ A large Cave~
 You are in a large, damp, dark cave, under the strange forest above.  Small
 piles of bones lie on the floor, among the occasional pool of blood.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Cave.
 ~
@@ -1974,7 +2078,8 @@ A Large Tree~
 You are halfway up a large tree.  It doesn't look like you can climb any 
 higher up, although a large branch to the East has a large nest built on it.
 ~
-0 3
+3
+0 0
 D1
 The Nest.
 ~
@@ -1992,7 +2097,8 @@ You are in a VERY large nest, built out of branches and bones, as well as
 many other types of assorted junk that the Hippogriffs have collected from
 the bizare forest.
 ~
-0 3
+3
+0 0
 D3
 The Tree.
 ~
@@ -2005,7 +2111,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -2023,7 +2130,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 A Small Bush.
 ~
@@ -2042,7 +2150,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2067,7 +2176,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 able to grow much.
 @@GA small @@rbush@@G obscures the view to the south.@@N
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2096,7 +2206,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2115,7 +2226,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2139,7 +2251,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2168,7 +2281,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2197,7 +2311,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D1
 The Glade.
 ~
@@ -2216,7 +2331,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D1
 The Glade.
 ~
@@ -2240,7 +2356,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2264,7 +2381,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2278,7 +2396,8 @@ You are in a large glade within this strange forest.  It appears that the trees
 pokes its head through the dirty ground, but they don't seem to have been
 able to grow much.
 ~
-0 3
+3
+0 0
 D3
 The Glade.
 ~
@@ -2294,7 +2413,8 @@ You are in a large glade within this strange forest.  It appears that the trees
  
 @@dTo the north, you can faintly here the sounds of a hammer striking wood.@@N
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -2311,7 +2431,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D1
 The Main Path.
 ~
@@ -2329,7 +2450,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D1
 The Undergrowth.
 ~
@@ -2348,7 +2470,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 and weeds seem to be everywhere, hampering your movement.  To the West you can
 see the door to a small cabin.
 ~
-0 3
+3
+0 0
 D1
 The Undergrowth.
 ~
@@ -2366,7 +2489,8 @@ You are standing in a small hallway within the cabin.  The room is bare, and
 dust covers the rotten, wooden floor.  The hallway continues to the North and
 South, whilst there is a door to the East.
 ~
-9 11
+11
+1 2 0 9
 D0
 End of the Hallway.
 ~
@@ -2388,7 +2512,8 @@ A Small Strong-Room~
 You are in a secret Strong-Room, used to hold items of value to its owner.
 A thick coating of dust covers just about everything in here.
 ~
-13 11
+11
+1 3 0 13
 D5
 A small, wooden trapdoor.
 ~
@@ -2399,7 +2524,8 @@ S
 Inside the Cabin~
 You are at the Southern end of a small hallway within the cabin.
 ~
-9 11
+11
+1 2 0 9
 D0
 The Middle of the Hallway.
 ~
@@ -2417,7 +2543,8 @@ You are in a small room within the cabin, which looks like it has been used
 for experiments of some sort.  Various parts of different beasts lie around
 you on the floor - lion's bodies, parts of bats and others you can't identify.
 ~
-9 11
+11
+1 2 0 9
 D1
 A wooden door.
 ~
@@ -2428,7 +2555,8 @@ S
 Inside the Cabin~
 You are at the Northern end of the Hallway, within the cabin.
 ~
-9 11
+11
+1 2 0 9
 D2
 The Middle of the Hallway.
 ~
@@ -2446,7 +2574,8 @@ You are in a small, dark room, home to the evil Ymmas, creator of this sick
 and depraved forest, and all its inhabitants.  Just being in this room makes
 you feel ill.
 ~
-9 11
+11
+1 2 0 9
 D1
 A large iron door.
 ~
@@ -2463,7 +2592,8 @@ Ymmas' Throne Room~
 You are in a small room inside the cabin, dominated by an impressive throne,
 which appears to have been built out of the bones of many creatures.
 ~
-9 11
+11
+1 2 0 9
 D0
 Ymmas' Lair.
 ~
@@ -2481,7 +2611,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Main Path.
 ~
@@ -2499,7 +2630,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -2518,7 +2650,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 and weeds seem to be everywhere, hampering your movement.  A huge, thick
 thorn bush lies to the South.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -2537,7 +2670,8 @@ You are in a small, secluded glade, hiden within this strange forest.  Home
 creatures here, have decided to create an area of peace, rather than just
 try to kill everything that moves.
 ~
-0 3
+3
+0 0
 D0
 A Large Thorn Bush.
 ~
@@ -2566,7 +2700,8 @@ You are in a small, secluded glade, hiden within this strange forest.  Home
 creatures here, have decided to create an area of peace, rather than just
 try to kill everything that moves.
 ~
-0 3
+3
+0 0
 D2
 A Door.
 ~
@@ -2582,7 +2717,8 @@ S
 A Centaur's Hut~
 You are in a small, simple hut, built out of various parts of trees.
 ~
-8 11
+11
+1 1 0 8
 D0
 A Door.
 ~
@@ -2596,7 +2732,8 @@ You are in a small, secluded glade, hiden within this strange forest.  Home
 creatures here, have decided to create an area of peace, rather than just
 try to kill everything that moves.
 ~
-0 3
+3
+0 0
 D1
 The Glade.
 ~
@@ -2612,7 +2749,8 @@ S
 A Centaur's Hut~
 You are in a small, simple hut, built out of various parts of trees.
 ~
-8 11
+11
+1 1 0 8
 D0
 A Door.
 ~
@@ -2626,7 +2764,8 @@ You are in a small, secluded glade, hiden within this strange forest.  Home
 creatures here, have decided to create an area of peace, rather than just
 try to kill everything that moves.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2645,7 +2784,8 @@ You are in a small, secluded glade, hiden within this strange forest.  Home
 creatures here, have decided to create an area of peace, rather than just
 try to kill everything that moves.
 ~
-0 3
+3
+0 0
 D0
 The Glade.
 ~
@@ -2674,7 +2814,8 @@ You are in a small, secluded glade, hiden within this strange forest.  Home
 creatures here, have decided to create an area of peace, rather than just
 try to kill everything that moves.
 ~
-0 3
+3
+0 0
 D2
 A Door.
 ~
@@ -2693,7 +2834,8 @@ You are in a small, secluded glade, hiden within this strange forest.  Home
 creatures here, have decided to create an area of peace, rather than just
 try to kill everything that moves.
 ~
-0 3
+3
+0 0
 D1
 The Glade.
 ~
@@ -2709,7 +2851,8 @@ S
 A Centaur's Hut~
 You are in a small, simple hut, built out of various parts of trees.
 ~
-8 11
+11
+1 1 0 8
 D0
 A Door.
 ~
@@ -2720,7 +2863,8 @@ S
 A Centaur's Hut~
 You are in a small, simple hut, built out of various parts of trees.
 ~
-8 11
+11
+1 1 0 8
 D0
 A Door.
 ~
@@ -2731,7 +2875,8 @@ S
 A Centaur's Hut~
 You are in a small, simple hut, built out of various parts of trees.
 ~
-8 11
+11
+1 1 0 8
 D0
 A Door.
 ~
@@ -2744,7 +2889,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Main Path.
 ~
@@ -2762,7 +2908,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -2780,7 +2927,8 @@ You are deep within this strange, monstrous forest.  The undergrowth here,
 like all life in the forest, is strange and mutated.  The large, thick bushes
 and weeds seem to be everywhere, hampering your movement.
 ~
-0 3
+3
+0 0
 D0
 The Undergrowth.
 ~
@@ -2803,7 +2951,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 you are in is connected to other such caves, and so on....
 @@bAbove you hangs a large nexus of roots.@@N
 ~
-13 11
+11
+1 3 0 13
 D2
 Another Cave.
 ~
@@ -2821,7 +2970,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -2844,7 +2994,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D2
 Another Cave.
 ~
@@ -2862,7 +3013,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D1
 Another Cave.
 ~
@@ -2880,7 +3032,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -2898,7 +3051,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -2921,7 +3075,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D2
 Another Cave.
 ~
@@ -2934,7 +3089,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -2957,7 +3113,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -2975,7 +3132,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D1
 Another Cave.
 ~
@@ -2993,7 +3151,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -3016,7 +3175,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D1
 Another Cave.
 ~
@@ -3034,7 +3194,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -3052,7 +3213,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -3075,7 +3237,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D2
 Another Cave.
 ~
@@ -3088,7 +3251,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -3106,7 +3270,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D1
 Another Cave.
 ~
@@ -3124,7 +3289,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D1
 Another Cave.
 ~
@@ -3136,7 +3302,8 @@ A Small Cavern~
 You are in a small cavern.  It has a high, rough ceiling, and a smooth, worn
 dusty floor.  Smells in here as well.
 ~
-13 11
+11
+1 3 0 13
 S
 #9770
 In a Maze of Caves~
@@ -3144,7 +3311,8 @@ You are in a narrow cave, under the strange forest.  It is totally dark, so
 without a light source, you'd be blind down here.  It appears that the cave
 you are in is connected to other such caves, and so on....
 ~
-9 11
+11
+1 2 0 9
 D0
 Another Cave.
 ~
@@ -3162,7 +3330,7 @@ This catrat is a young male.  Catrats are a cross between a cat and a rat,
 as their name suggests.  Needless to say, they are most ugly.
 ~
 0 -300
-15 1
+16 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3176,7 +3344,7 @@ This catrat is an adult female.  Catrats are a cross between a cat and a rat,
 as their name suggests.  Needless to say, they are most ugly.
 ~
 0 -300
-9 1
+10 1
 0 0 0
 ! 0 0 19 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -3190,7 +3358,7 @@ This catrat is an adult male.  Catrats are a cross between a cat and a rat,
 as their name suggests.  Needless to say, they are most ugly.
 ~
 0 -300
-6 1
+7 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3204,7 +3372,7 @@ The Hippocampus is a cross between a horse and a fish.  It's front hooves are
 replaced by webbed feet, and the rear half is a silver, scaled tail.
 ~
 524288 300
-28 2
+29 2
 -20 10 10
 ! 0 0 19 7 2050 0 0
 | 0 0 0 0 0 0 0
@@ -3249,7 +3417,7 @@ Neogi are a cross between a moray eel and a spider.  They have short, furry,
 of master, and is in charge of making sure the slaves do their work.
 ~
 0 -300
-16 0
+17 0
 -10 10 10
 ! 0 0 0 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -3265,7 +3433,7 @@ Neogi are a cross between a moray eel and a spider.  They have short, furry,
 operations.
 ~
 0 -400
-30 0
+31 0
 -20 20 15
 ! 0 0 0 7 4 0 2
 | 0 0 0 0 0 0 0
@@ -3280,7 +3448,7 @@ Neogi are a cross between a moray eel and a spider.  They have short, furry,
 rank in the mine, answering only to the Ruler itself.
 ~
 0 -200
-19 0
+20 0
 -10 10 10
 ! 0 0 0 7 2 0 0
 | 0 0 0 0 0 0 0
@@ -3298,7 +3466,7 @@ The cocaktrice is a strange mix of lizard, cock and bat.  It seems to ignore
 -10 0 15
 ! 0 0 19 7 2306 0 0
 | 0 0 0 0 0 0 0
-2 5 0 268435521 1 6144
+2 5 1 6144 0 268435521
 #9611
 female cock cockatrice~
 a female cockatrice~
@@ -3308,7 +3476,7 @@ The cocaktrice is a strange mix of lizard, cock and bat.  It seems to ignore
 you as it goes about its task of looking for small insects.
 ~
 524800 -25
-24 2
+25 2
 -15 10 10
 ! 0 0 19 7 258 0 0
 | 0 0 0 0 0 0 0
@@ -3351,7 +3519,7 @@ The broken one is a tragic survivor of a magical experiment to try and
 the other broken ones in this clearing.
 ~
 0 -300
-41 1
+42 1
 -25 20 25
 ! 0 0 0 7 6402 0 0
 | 0 0 0 0 0 0 0
@@ -3365,7 +3533,7 @@ The baby hippogriff, although no where near full size, shows the distinct
 features of its race: the head and wings of an eagle, and the body of a horse.
 ~
 524288 200
-28 2
+27 2
 -10 15 10
 ! 0 0 19 7 2304 0 0
 | 0 0 0 0 0 0 0
@@ -3379,7 +3547,7 @@ The hippogriff is an eerie mix of eagle (head and wings) and horse (body).
 It doesn't look too pleased to see you!
 ~
 524288 300
-31 0
+30 0
 -25 20 20
 ! 0 0 19 7 3330 0 0
 | 0 0 0 0 0 0 0
@@ -3407,7 +3575,7 @@ The tree is old, withered, and stunted.  It appears to almost have a sort
 of face on its bark.
 ~
 0 -200
-32 0
+33 0
 -30 25 40
 ! 0 0 17 7 5156 0 0
 | 0 0 0 0 0 0 0
@@ -3486,7 +3654,7 @@ Ymass is truely an evil priest.  Banished to this cabin many years ago, he set
 to his own body, in an attempt to boost his powers.
 ~
 2176 -900
-84 1
+85 1
 -100 90 100
 ! 0 0 0 7 24568 1081344 16
 | 0 0 0 0 0 0 0
@@ -3524,7 +3692,7 @@ The centaur, a mix of horse (back legs) and human (head; arms; torso) is
 large, and responsible for the supply of food to the tribe, via hunting.
 ~
 32768 300
-45 1
+46 1
 -40 45 40
 ! 0 0 9 7 6324 0 4
 | 0 0 0 0 0 0 0
@@ -3552,7 +3720,7 @@ The centaur, a mix of horse (back legs) and human (head; arms; torso) is
 small, and loos to be about one year old.
 ~
 32768 300
-22 1
+21 1
 -15 15 10
 ! 0 0 9 7 2096 0 0
 | 0 0 0 0 0 0 0
@@ -3631,7 +3799,7 @@ The manscorpian, as its name suggests, is a mix of scorpian (lower body) and
 of man (upper body).  It looks pretty big, and pretty angry to see you!
 ~
 512 -330
-51 1
+50 1
 -40 50 55
 ! 0 0 19 7 8020 0 0
 | 0 0 0 0 0 0 0

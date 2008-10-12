@@ -1,6 +1,6 @@
 #AREA
 Limbo~
-Q 20
+Q 21
 K none~
 L @@e[@@RSYSTEM@@e]@@N~
 N 24
@@ -17,7 +17,8 @@ S Title not shown on area list.
 #8
 Banking Room~
 This small room is home to a large counter stretching across the room, with a single reinforced glass window set into it.  This is the bank, magically linked to the other banks within the realms.~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -46,7 +47,8 @@ You are in a sea of red-hot Lava.  Wherever you look, you see yourself
 
 
 ~
-25918 8
+8
+1 9 0 25918
 S
 #14
 Protectorate Clan Donation Room~
@@ -56,7 +58,8 @@ The room os for clan members to donate equipment to other people that might need
 
 
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -80,7 +83,8 @@ You are standing at the end of a short passage.  To the South, you can see the
 
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -108,7 +112,8 @@ You are in a small passage within the headquarters of Protectorate.To the
 
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -129,7 +134,8 @@ S
 #10
 Protectorate Clan House~
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -146,7 +152,8 @@ S
 #1
 @@RS@@mhades of @@RE@@mvil's @@RJ@@mail @@RC@@mell@@N~
 Unfortunately you have been transferred to jail for breaking one of our rules.  We are very laid back here but certain things must be adhered to.  As you look around this cold, damp, bleak looking cell, take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful Realm.~
-156956 1
+1
+1 8 0 156956
 S
 #2
 Limbo~
@@ -169,7 +176,8 @@ You are floating in a formless void, detached from all sensation of physical
 
 
 ~
-1052 11
+11
+1 4 0 1052
 E
 dropping~
 There are steaming puff-droppings here.~
@@ -202,7 +210,8 @@ You are standing outside what looks to be a strange church.  Strange
 
 
 ~
-1032 1
+1
+1 2 0 1032
 D1
 The Church.
 
@@ -236,7 +245,8 @@ You are standing inside a truely grand building.  The walls are built out
 
 
 ~
-8 1
+1
+1 1 0 8
 D3
 Outside.
 
@@ -270,7 +280,8 @@ This is a small, oblong room, with a low curving ceiling.  Along one of the
 
 
 ~
-4 11
+11
+1 1 0 4
 D1
 ~
 ~
@@ -319,7 +330,8 @@ This enormous rooms acts as Stephen's Office.  As Immortal Sponsor of the
 
 
 ~
-24596 11
+11
+1 4 0 24596
 E
 photograph~
 The photograph shows a young woman with dark hair curled up on a bed looking VERY cute!~
@@ -345,7 +357,8 @@ You are in a circular-shaped room, with a stained-glass window high above you.
 
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -354,7 +367,8 @@ S
 #13
 The Clan Healers Room~
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -373,11 +387,11 @@ He looks big, mean, and scared of PulpDog members holding him up.
 
 ~
 128 900
-75 1
+74 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
-2 8 0 -2147450737 1023 -2147483648
+2 8 1023 -2147483648 0 -2147450737
 #1
 Puff~
 Puff~
@@ -389,7 +403,7 @@ Puff the Fractal Dragon is here, contemplating a higher reality.
 ~
 ~
 0 1000
-29 2
+30 2
 0 0 0
 ! 0 0 8 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -410,11 +424,11 @@ Such people as you do not look at kings.
 
 ~
 0 1000
-81 1
+80 1
 -100 50 50
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
-3 8 0 -2143813629 32767 -2147483648 65535 -2147483648
+3 8 65535 -2147483648 32767 -2147483648 0 -2143813629
 #6
 doggy~
 a whinging doggy~
@@ -431,7 +445,7 @@ Looks kinda like a person.  Better put it out of it's misery!!
 
 ~
 0 1000
-15 0
+16 0
 200 -5 -5
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -442,7 +456,7 @@ A cute li'l goldfish.~
 A cute li'l goldfish sinks its fangs into you!~
 ~
 8320 -1000
-55 2
+56 2
 0 6 60
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -453,11 +467,11 @@ The old healer~
 The old healer~
 ~
 0 0
-8 1
+9 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
-3 8 0 -2147469309 127 -2147483648 255 -2147483648
+3 8 255 -2147483648 127 -2147483648 0 -2147469309
 #7
 jailrat~
 @@bA rat@@N~
@@ -469,11 +483,11 @@ jailrat~
 ~
 ~
 32808 0
-20 1
+21 1
 -100 10 10
 ! 2 0 19 7 870400 0 0
 | 0 0 0 0 0 0 0
-2 8 0 -2147090417 8191 -2147483648
+2 8 8191 -2147483648 0 -2147090417
 #8
 @@gBones@@N~
 @@gBones@@N~
@@ -485,11 +499,11 @@ jailrat~
 ~
 ~
 131072 0
-14 1
+15 1
 0 0 0
 ! 7 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
-4 14 0 -2147032967 1 -2147483648 511 -2147483648 8191 -2147483648
+4 14 8191 -2147483648 511 -2147483648 1 -2147483648 0 -2147032967
 #36
 taert intel~
 Taert~
@@ -528,7 +542,7 @@ The Dark Stalker is a product of the Dark Powers.  It's only purpose in life
 0 0 0
 ! 0 0 16 7 0 0 0
 | 0 0 0 0 0 0 0
-2 7 0 -2147385319 2047 -2147483648
+2 7 2047 -2147483648 0 -2147385319
 #30
 zombie~
 the Zombie~
@@ -565,7 +579,7 @@ The Zombie looks freshly animated.  Looking closer you almost recognise it.
 0 0 0
 ! 0 0 14 7 0 0 0
 | 0 0 0 0 0 0 0
-2 5 0 -2147459071 511 -2147483648
+2 5 511 -2147483648 0 -2147459071
 #33
 wizard oz~
 the wizard of oz~
@@ -581,7 +595,7 @@ You see a long beared wacky mage standing here. His head seems swollen with
 
 ~
 1573032 0
-61 1
+62 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -628,7 +642,7 @@ Blah blah blah blah *burp* blah blah blah
 0 45 43
 ! 0 0 16 7 0 0 0
 | 0 0 0 0 0 0 0
-2 8 0 -2147286899 4095 -2147483648
+2 8 4095 -2147483648 0 -2147286899
 #26
 Closet Monster~
 Closet Monster~
@@ -639,7 +653,7 @@ Blah blah blah
 
 ~
 0 0
-70 1
+69 1
 -450 12 69
 ! 0 0 16 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -689,11 +703,11 @@ Man.. does this guy reek. he looks even worse than he smells. You really didnt
 
 ~
 0 0
-73 1
+72 1
 -350 45 38
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
-2 6 0 -2147480573 63 -2147483648
+2 6 63 -2147483648 0 -2147480573
 #21
 REally Annoying kid ~
 the little brat~
@@ -727,7 +741,7 @@ He is here to serve you.
 
 ~
 0 1000
-74 1
+75 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -758,7 +772,7 @@ delvar~
 0 0 0
 ! 3 0 2 7 80370 0 16
 | 0 0 0 0 0 16 0
-5 15 0 -2114453363 32767 -2147483648 65535 -2147483648 131071 -2147483648 524287 -2147483648
+5 15 524287 -2147483648 131071 -2147483648 65535 -2147483648 32767 -2147483648 0 -2114453363
 #67
 silverleaf~
 @@gSilver@@GLeaf @@WHalfmoon@@N~
@@ -767,11 +781,11 @@ silverleaf~
 ~
 ~
 33312 0
-62 1
+63 1
 0 0 0
 ! 4 0 3 7 2 6283264 16
 | 1024 0 0 0 0 0 0
-5 15 0 -2114453363 32767 -2147483648 65535 -2147483648 131071 -2147483648 524287 -2147483648
+5 15 524287 -2147483648 131071 -2147483648 65535 -2147483648 32767 -2147483648 0 -2114453363
 #69
 morganth~
 @@mMorganth @@dthe Mysterious@@N~
@@ -784,7 +798,7 @@ morganth~
 0 0 0
 ! 0 0 0 7 0 1022 48
 | 1 32 0 0 0 1 32
-5 15 0 -2114453363 32767 -2147483648 65535 -2147483648 131071 -2147483648 524287 -2147483648
+5 15 524287 -2147483648 131071 -2147483648 65535 -2147483648 32767 -2147483648 0 -2114453363
 #0
 #OBJECTS
 #7

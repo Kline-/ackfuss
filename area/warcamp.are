@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@eMinotaur's @@dWarcamp@@N~
-Q 20
+Q 21
 K minotaurcamp~
 L @@W{@@mLO RM@@W}@@N~
 N 145
@@ -19,7 +19,8 @@ W dragonrage~
 @@bstumps@@d around you. The @@Gforest@@d starts to become more and more
 sparse. You faintly hear the sounds of hammering and sawing to the north.
 ~
-221188 3
+3
+1 5 0 221188
 D0
 ~
 ~
@@ -35,7 +36,8 @@ S
 @@bstumps@@d around you. The @@Gforest@@d starts to become more and more
 sparse. You faintly hear the sounds of hammering and sawing to the north.@@N
 ~
-221184 3
+3
+1 4 0 221184
 D0
 ~
 ~
@@ -60,7 +62,8 @@ S
 leaves and the sounds of something grunting coming up behind you.@@N
 
 ~
-221184 2
+2
+1 4 0 221184
 D1
 ~
 ~
@@ -80,7 +83,8 @@ S
 sounds. Could it have been you that could have startled all the creatures?
 Perhaps. The @@gpath @@dcontinues to the east.@@N
 ~
-221184 3
+3
+1 4 0 221184
 D1
 ~
 ~
@@ -96,7 +100,8 @@ S
 sounds. Could it have been you that could have startled all the creatures?
 Perhaps. The @@gpath @@dcontinues to the east.@@N
 ~
-221184 3
+3
+1 4 0 221184
 D0
 ~
 ~
@@ -115,7 +120,8 @@ S
 @@dThe path leads its way through a pair of large @@gboulders@@d. As you walk
 through them you have a strong @@lsense@@d that you shouldnt have done that.
 ~
-221184 3
+3
+1 4 0 221184
 D3
 ~
 ~
@@ -134,7 +140,8 @@ S
 in growth. @@yLight@@d is barely making it through the canopy high above your
 head. Something up ahead catches you eye.@@N
 ~
-221184 3
+3
+1 4 0 221184
 D1
 ~
 ~
@@ -151,7 +158,8 @@ S
 good place to @@grest@@d, the wrong spot could lead to an ambush of some kind.@@N
 @@N
 ~
-212998 3
+3
+1 5 0 212998
 D3
 ~
 ~
@@ -164,7 +172,8 @@ S
 like it is used quite often. Several tree trunks show the signs of large ax
 marks on them.@@N
 ~
-221184 2
+2
+1 4 0 221184
 D1
 ~
 ~
@@ -181,7 +190,8 @@ S
 like it is used quite often. Several tree trunks show the signs of large ax
 marks on them.@@N
 ~
-221184 2
+2
+1 4 0 221184
 D0
 ~
 ~
@@ -198,7 +208,8 @@ S
 like it is used quite often. Several tree trunks show the signs of large ax
 marks on them.@@N
 ~
-221184 2
+2
+1 4 0 221184
 D0
 ~
 ~
@@ -215,7 +226,8 @@ S
 now. It is just a matter of time before someone or something happens across
 your path.@@N
 ~
-221188 2
+2
+1 5 0 221188
 D0
 ~
 ~
@@ -236,7 +248,8 @@ S
 forest quiet. You notice large fresh footprints that cross your path. You
 could be discovered at anytime.@@N
 ~
-221184 3
+3
+1 4 0 221184
 D1
 ~
 ~
@@ -252,7 +265,8 @@ S
 following. The silence in the forest makes you feel uneasy, yet you have to
 continue on. A strange unfamiliar smell fills the air.@@N
 ~
-221184 3
+3
+1 4 0 221184
 D1
 ~
 ~
@@ -269,7 +283,8 @@ S
 looks no better than the outside. Trash lies everywhere and the only thing of
 interest lies on the @@GRanger.@@N
 ~
-221184 3
+3
+1 4 0 221184
 D3
 ~
 ~
@@ -278,27 +293,32 @@ S
 #6615
 New room~
 No description~
-221188 11
+11
+1 5 0 221188
 S
 #6616
 New room~
 No description~
-221188 11
+11
+1 5 0 221188
 S
 #6617
 New room~
 No description~
-221188 11
+11
+1 5 0 221188
 S
 #6618
 New room~
 No description~
-221188 11
+11
+1 5 0 221188
 S
 #6619
 New room~
 No description~
-221188 11
+11
+1 5 0 221188
 S
 #6620
 @@dMain Path@@N~
@@ -307,7 +327,8 @@ S
 choice is to stand and @@lfight@@d them or @@yflee@@d from an almost certain
 death.
 ~
-221184 2
+2
+1 4 0 221184
 D1
 ~
 ~
@@ -323,7 +344,8 @@ S
 @@gentrance@@d lies in front of you. You could possibly get in if you had the
 @@ekey@@d and if you could make your way past the @@eguards.@@N
 ~
-221184 2
+2
+1 4 0 221184
 D1
 ~
 ~
@@ -344,7 +366,8 @@ S
 humanoid shaped targets line the field with numerous puncture holes and slash
 marks on each of them.@@N
 ~
-221184 11
+11
+1 4 0 221184
 D1
 ~
 ~
@@ -360,7 +383,8 @@ S
 middle surrounded by several chairs. On the table are many different
 @@gplans@@d for an attack on @@WMidgaard!
 ~
-212992 11
+11
+1 3 0 212992
 D0
 ~
 ~
@@ -379,13 +403,15 @@ S
 #6630
 New room~
 No description~
-4 11
+11
+1 1 0 4
 S
 #6624
 @@bA dirt path.@@N~
 @@bA dirt path shows the hooveprints of hundreds of minotaurs@@N.
 ~
-0 2
+2
+0 0
 D0
 ~
 ~
@@ -404,7 +430,7 @@ minotaur patrol~
 ~
 ~
 8380 -200
-82 1
+81 1
 -674 160 130
 ! 7 0 12 7 14350 0 4
 | 0 0 0 0 0 0 0
@@ -428,7 +454,7 @@ minotaur lesser guard~
 ~
 ~
 8892 -200
-86 1
+87 1
 -750 230 200
 ! 3 0 12 7 14782 0 2
 | 0 0 0 0 0 0 0
@@ -453,7 +479,7 @@ minotaur worker~
 ~
 ~
 8320 -100
-85 1
+86 1
 -500 160 145
 ! 3 0 12 7 6 0 0
 | 0 0 0 0 0 0 0
@@ -465,7 +491,7 @@ minotaur ranger~
 ~
 ~
 631036 -200
-89 1
+90 1
 -800 250 225
 ! 9 0 12 7 14478 0 80
 | 0 0 0 0 0 0 0
@@ -478,7 +504,7 @@ minotaur commander~
 ~
 ~
 90300 -200
-94 1
+95 1
 -1000 310 310
 ! 0 0 12 7 6798 0 48
 | 0 0 0 0 0 0 0

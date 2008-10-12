@@ -1,6 +1,6 @@
 #AREA
 @@WThe Arena@@N~
-Q 20
+Q 21
 K arena~
 L @@W{@@r 1 10@@W}@@N~
 N 52
@@ -18,7 +18,8 @@ M No bad room spells allowed.
 #307
 In a cell~
 No description~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -27,7 +28,8 @@ S
 #306
 Kitchen~
 No description~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -36,7 +38,8 @@ S
 #305
 Mess Hall~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -49,7 +52,8 @@ S
 #304
 Combat Ground~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -62,7 +66,8 @@ S
 #303
 Training Camp~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -75,7 +80,8 @@ S
 #302
 Cells~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -91,7 +97,8 @@ You are standing in a small square room.  The walls are lined with benches and
 the benches are lined with gladiators waiting for their turn to fight to the
 death in the arena to the west.
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -110,7 +117,8 @@ S
 #301
 Training Camp~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -135,7 +143,7 @@ This guy really is a huge killing machine perhaps you should walk away.
 
 ~
 0 0
-5 1
+4 1
 100 -10 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0

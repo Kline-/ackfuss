@@ -1,6 +1,6 @@
 #AREA
 @@WThe City of @@eGiganthia@@N~
-Q 20
+Q 21
 K gigantia~
 L @@W{@@r ALL@@W }@@N~
 N 6
@@ -20,7 +20,8 @@ Path into the Town~
 You are on a small, well-worn dirt path, which leads into the Ogre town, known
 as Giganthia.
 ~
-4 4
+4
+1 1 0 4
 D1
 The Path Continues in this Direction.
 ~
@@ -33,7 +34,8 @@ You are on a small, well-worn dirt path, which leads into the Ogre town, known
 as Giganthia.  The path continues to the West, away from the town, whilst
 small stone steps lead upwards, to a path within the town.
 ~
-4 4
+4
+1 1 0 4
 D3
 The Path.
 ~
@@ -50,7 +52,8 @@ Small Stone Steps~
 You are on some small steps, connecting the upper path, within the Town, to
 the lower path, outside.
 ~
-4 4
+4
+1 1 0 4
 D4
 The Path at the Top of the Steps.
 ~
@@ -66,7 +69,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D1
 A Cave.
 ~
@@ -87,7 +91,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D0
 The Path.
 ~
@@ -108,7 +113,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D0
 The Path.
 ~
@@ -129,7 +135,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D0
 The Path.
 ~
@@ -150,7 +157,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D0
 The Path.
 ~
@@ -172,7 +180,8 @@ A Small Cave~
 You are in a small cave, which looks like it's used to train the inhabitants
 of this town.
 ~
-8 11
+11
+1 1 0 8
 D3
 The Path.
 ~
@@ -183,7 +192,8 @@ S
 Small Stone Steps~
 You are on some steps, connecting two levels of the town.
 ~
-4 4
+4
+1 1 0 4
 D4
 The Path at the Top of the Steps.
 ~
@@ -199,7 +209,8 @@ S
 A Cave~
 You are in a cave within the Town.
 ~
-8 11
+11
+1 1 0 8
 D3
 The Path.
 ~
@@ -210,7 +221,8 @@ S
 A Cave~
 You are in a cave, which serves as the General Stores for the town.
 ~
-1032 11
+11
+1 2 0 1032
 D1
 The Path.
 ~
@@ -221,7 +233,8 @@ S
 A Cave~
 You in a cave, which looks like it's used as some sort of shop for the town.
 ~
-8 11
+11
+1 1 0 8
 D3
 The Path.
 ~
@@ -232,7 +245,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D0
 The Path.
 ~
@@ -258,7 +272,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D0
 The Path.
 ~
@@ -279,7 +294,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D0
 The Path.
 ~
@@ -300,7 +316,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D1
 A Cave.
 ~
@@ -317,7 +334,8 @@ A Cave~
 You are in a small cave, which serves as the entrance to the town's meeting
 room, situated in the cave to the North.
 ~
-8 11
+11
+1 1 0 8
 D0
 The Meeting Room.
 ~
@@ -333,7 +351,8 @@ S
 The Meeting Room~
 You are in a large cave, which is used for the town's meeting room.
 ~
-8 11
+11
+1 1 0 8
 D2
 The Entrance.
 ~
@@ -344,7 +363,8 @@ S
 A Cave~
 You are in a small cave, which serves as a weapon shop for the town.
 ~
-8 11
+11
+1 1 0 8
 D3
 The Path.
 ~
@@ -355,7 +375,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D1
 The Path.
 ~
@@ -376,7 +397,8 @@ S
 A Cave~
 You are in a small cave, which acts as a food shop for the town.
 ~
-1032 11
+11
+1 2 0 1032
 D0
 The Path.
 ~
@@ -387,7 +409,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D3
 The Path.
 ~
@@ -403,7 +426,8 @@ S
 Some Stone Steps~
 You are on small steps, connecting two levels of the town.
 ~
-4 4
+4
+1 1 0 4
 D4
 The Path at the Top of the Steps.
 ~
@@ -419,7 +443,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D2
 A Cave.
 ~
@@ -441,7 +466,8 @@ A Cave~
 You are in a small cave, which acts as an entrance to the town's inn, which is
 situated to the East.
 ~
-8 11
+11
+1 1 0 8
 D0
 The Path.
 ~
@@ -457,7 +483,8 @@ S
 The Inn~
 You are in a large cave, which acts as the town's drinking joint.
 ~
-1032 11
+11
+1 2 0 1032
 D3
 The Entrance.
 ~
@@ -468,7 +495,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D1
 The Path.
 ~
@@ -484,7 +512,8 @@ S
 A Path Within the Town~
 You are on a small path, which winds its way through the Town.
 ~
-4 4
+4
+1 1 0 4
 D1
 The Path.
 ~
@@ -504,7 +533,8 @@ You are in a large cave, which serves as the town's temple.  Although not
 Unlike Midgaard's, this temple is a simple affair, with a rough stone floor,
 and uneven walls and ceiling.
 ~
-8 8
+8
+1 1 0 8
 D0
 The Path.
 ~
@@ -531,7 +561,8 @@ You are in a small room to the East of the Temple itself, which acts as the
 altar.  Although the room is bare, apart from a square chunk of rock, it
 does the job.
 ~
-1032 11
+11
+1 2 0 1032
 D3
 The Temple of Giganthia.
 ~
@@ -542,7 +573,8 @@ S
 The Board Room~
 You are in a room which usually serves as the board room for the town.
 ~
-1032 11
+11
+1 2 0 1032
 D1
 The Temple of Giganthia.
 ~
@@ -558,7 +590,8 @@ A Cave~
 You are in a small cave, which acts as an antechamber to the Chieftain's
 room.
 ~
-8 11
+11
+1 1 0 8
 D0
 The Guard Room.
 ~
@@ -579,7 +612,8 @@ S
 The Guard Room~
 You are in a cave, used by the guards as a headquarters.
 ~
-8 11
+11
+1 1 0 8
 D2
 The Antechamber.
 ~
@@ -591,7 +625,8 @@ The Chieftain's Room~
 You are in a large, grand cave, used by the Chieftain to try and rule the
 town of Giganthia, although it's pretty hard, as Ogre's are pretty independent.
 ~
-8 11
+11
+1 1 0 8
 D0
 The Antechamber.
 ~
@@ -603,7 +638,8 @@ A Cave~
 You are in a cave, which serves as the jail house for the town.  The jail 
 itself lies to the South.
 ~
-8 11
+11
+1 1 0 8
 D1
 The Path.
 ~
@@ -619,7 +655,8 @@ S
 The Jail Cell~
 You are in a totally bare room, which is used as a jail cell.
 ~
-9240 11
+11
+1 4 0 9240
 D0
 The Cell Door.
 ~
@@ -630,7 +667,8 @@ S
 A Cave~
 You are a medium sized cave, used as an armor shop.
 ~
-1032 11
+11
+1 2 0 1032
 D0
 The Path.
 ~
@@ -643,7 +681,8 @@ The center of commerce of the Ogre race, there are heaps of golden coins in
 the corners.  The ogers, having little concern for personal finance techniquez
 leave their gold here, in exchange for some nebulous paper called a 'receipt.'
 ~
-0 11
+11
+0 0
 D4
 ~
 ~
@@ -661,7 +700,7 @@ Gruth is a large Ogre, who smells awful.  Maybe you should tell him?  On
 ,r thoughts, thought
 ~
 10240 800
-111 1
+112 1
 -1000 527 527
 ! 0 0 5 7 6286 32 16
 | 0 0 0 0 0 0 0
@@ -674,7 +713,7 @@ The Ogre Chieftain is here, doing his best to rule.
 The Chieftain looks old, but still able to beat most people in a fight.
 ~
 8320 200
-75 1
+76 1
 -100 100 100
 ! 0 0 5 7 0 32 0
 | 0 0 0 0 0 0 0
@@ -713,7 +752,7 @@ The Shopkeeper stands here, rubbing his hands together.
 The shopkeeper is fairly short, and balding.
 ~
 10368 400
-74 1
+73 1
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0
@@ -726,7 +765,7 @@ The Healer, Huth, stands here, looking in good health.
 Huth is a retired killer, now employed to use his skills to heal adventurers.
 ~
 10240 800
-74 1
+75 1
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0
@@ -739,7 +778,7 @@ The Weaponsmith stands here.
 The Weaponsmith has sold more weapons than you've you had hot dinners.
 ~
 10376 450
-79 2
+80 2
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0
@@ -778,7 +817,7 @@ A Female Ogre is here.
 She looks like your typical ogre - untidy, and rather large.  Smells too.
 ~
 0 50
-35 2
+36 2
 -850 130 140
 ! 0 0 5 7 2322 0 0
 | 0 0 0 0 0 0 0
@@ -804,7 +843,7 @@ An elite guard stands here, ready to help the Chieftain.
 He is   B  I  G  !
 ~
 0 200
-26 1
+25 1
 0 0 0
 ! 0 0 5 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -845,7 +884,7 @@ The shopkeeper stands here, waiting for you to buy stuff.
 The shopkeeper is a big ogre.  Play nice.
 ~
 10368 300
-78 1
+77 1
 -1400 400 400
 ! 0 0 5 7 24076 32 16
 | 0 0 0 0 0 0 0

@@ -1,6 +1,6 @@
 #AREA
 @@RTirna n'Ogth@@N~
-Q 20
+Q 21
 K tirnanogth~
 L @@W{@@r ALL @@W}@@N~
 N 71
@@ -22,7 +22,8 @@ This path is made of the shadows themselves.  The path creeps through the
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -39,7 +40,8 @@ Totall darkness.  The wind comes rushing in from the east.
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -65,7 +67,8 @@ This clearing is surrounded by the shadows you just came through In the
  
 
 ~
-10 11
+11
+1 2 0 10
 D0
 ~
 ~
@@ -84,7 +87,8 @@ Shadows, shadows everywhere, as far as you can see.  Actually you can barely
  
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -103,7 +107,8 @@ Here the trees part into what appears a small open field.  But the field is of
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -128,7 +133,8 @@ This is no ordinary park.  There is nothing living here.  Everything is made
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -152,7 +158,8 @@ The grocery sells items that might be needed on an adventure.  There are
 
 
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -163,7 +170,8 @@ Izan Drive~
 The drive heads north and south.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -176,7 +184,8 @@ S
 #9071
 Izan Drive~
 The drive heads north and west~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -189,7 +198,8 @@ S
 #9070
 Izan Drive~
 The drive heads east and west.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -202,7 +212,8 @@ S
 #9069
 Izan Drive~
 The drive heads east and west~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -215,7 +226,8 @@ S
 #9068
 Izan Drive~
 Izan Drive leaves in all cardinal directions.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -246,7 +258,8 @@ You learn about the quests that are going to be happening here, so just read
  
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -263,7 +276,8 @@ There is information hanging all over the place about the various clans.  Here
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -280,7 +294,8 @@ Do you think you have an idea that would be cool, do you think you know
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -295,7 +310,8 @@ Only the clan leaders can be in this room.  This is where they can meet to
  
 
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -308,7 +324,8 @@ You can pkill your friends and foes here free of charge!
  
 
 ~
-136 11
+11
+1 2 0 136
 D4
 ~
 ~
@@ -321,7 +338,8 @@ This room leads to many of the board rooms.  Also the pkill room is downward.
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -356,7 +374,8 @@ A bright white light totally surrounds you.  You heart becomes weak and you
  
 
 ~
-1032 11
+11
+1 2 0 1032
 D5
 ~
 ~
@@ -373,7 +392,8 @@ This room is filled with cushions amongst the pews so that prayers can be sent
  
 
 ~
-1036 11
+11
+1 3 0 1036
 D4
 ~
 ~
@@ -396,7 +416,8 @@ This room is all upside down.  When you enter, you seem to flip over so that
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -415,7 +436,8 @@ This room is meant for the mentally challenging. The mind waves flowing
  
 
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -440,7 +462,8 @@ This room is a safe room for spells to be cast in.  It is protected by wards
  
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -461,7 +484,8 @@ The study resembles an old library.  It is filled with many bookshelves with
  
 
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -482,7 +506,8 @@ There are vials, jars, beakers, and tubes lying all over the many benches in
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -499,7 +524,8 @@ This is the end of of Illusion Road.  It is short but beautifully evil with
 
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -528,7 +554,8 @@ The road of Illusion starts here and heads west to the magic shop and the
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -547,7 +574,8 @@ The North can either take you out of town or into it.  The gate is small,
  
 
 ~
-9 4
+4
+1 2 0 9
 D2
 ~
 ~
@@ -562,7 +590,8 @@ This is the north end of Grunge Road.  North Gate lies north and Illusion Road
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -585,7 +614,8 @@ Grunge Road heads north to the North Gate and south towards town square.
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -612,7 +642,8 @@ This room is as big as a small village.  There is a large arena in the center
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -631,7 +662,8 @@ This cozy looking room is full of large pillows to rest upon after a hard days
  
 
 ~
-12 11
+11
+1 2 0 12
 D1
 ~
 ~
@@ -654,7 +686,8 @@ There are many weapons in this room.  Some are just laying on the ground, some
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -675,7 +708,8 @@ This packed room is filled with wooden men wearing the armor for sale.  There
  
 
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -688,7 +722,8 @@ Grunge Road is running north and south. To the west is the
 weapon shop and to the east is the armor shop.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -719,7 +754,8 @@ The smell of a dark baked bread permeates the air.  There is a man standing
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -734,7 +770,8 @@ Grunge Road heads north from the town square.  It leads to many shops and
 continues on.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -759,7 +796,8 @@ This room is where odds-n-ends get donated for you to freely pick up.
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -774,7 +812,8 @@ One person can only where so much armor, so you might find extra armor donated
  
 
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -791,7 +830,8 @@ Sometimes there is a generous soul who likes to help others out.  This person
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -808,7 +848,8 @@ This room helps to bring many of the rooms together.  South, east, and west
 mudschool!
 
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -845,7 +886,8 @@ This is the room where the people of the town come to be healed.  The room is
 arts.
 
 ~
-1036 11
+11
+1 3 0 1036
 D3
 ~
 ~
@@ -866,7 +908,8 @@ This is the temple of Tirna n'Ogth.  Expensive imported carpets are placed on
 temple, with the north way heading into town.
 
 ~
-1032 11
+11
+1 2 0 1032
 D0
 ~
 ~
@@ -893,7 +936,8 @@ The room is small with a desk sitting in the middle where a man is sorting the
 preventing passage.
 
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -904,7 +948,8 @@ Bank~
 This is the nice little bank of Tirna n'Ogth.  There is a SIGN at the desk. 
 
 ~
-12 11
+11
+1 2 0 12
 D1
 ~
 ~
@@ -936,7 +981,8 @@ This bar is owned and run by Scrub, a man who was magically given an extra arm
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -961,7 +1007,8 @@ Before you rises a jet black monolith rising half a mile into the sky.  It is
 the west, and Death's square is to the east.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -988,7 +1035,8 @@ This is where the executions of criminals takes place.  A large masked
 black Monolith.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1009,7 +1057,8 @@ At this point, all of the main sections of Tirna n'Ogth meat.  To the west
 the city.  And to the east is the slummier parts of town down Ramgul's Alley.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1042,7 +1091,8 @@ This alley is pretty dark with buildings lining both sides about 5 stories high
 town square, and to the east is the main part of the alley.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1055,7 +1105,8 @@ S
 #9026
 The Culdasac~
 This is the beginning of the culdasac.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1068,7 +1119,8 @@ S
 #9025
 The Culdasac~
 Heading north and south on the culdasac.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1081,7 +1133,8 @@ S
 #9024
 The Culdasac~
 The culdasac starts to turn here.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1094,7 +1147,8 @@ S
 #9023
 The Culdasac~
 This is a rather large culdasac.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1107,7 +1161,8 @@ S
 #9022
 The Culdasac~
 You can continue on the culdasac or else head down towards what appears a road.~
-12 11
+11
+1 2 0 12
 D2
 ~
 ~
@@ -1124,7 +1179,8 @@ S
 #9021
 The Culdasac~
 The culdasac goes around and around.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1137,7 +1193,8 @@ S
 #9020
 The Culdasac~
 This is a semicircular culdasac.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1150,7 +1207,8 @@ S
 #9019
 The Culdasac~
 Your are wandering around a culdasac.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1163,7 +1221,8 @@ S
 #9018
 East Gate~
 This is the east gate of Tirna n'Ogth~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -1172,7 +1231,8 @@ S
 #9017
 Ramgul's Alley~
 The alley runs east/west, while a culdasac is to the north.~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -1189,7 +1249,8 @@ S
 #9016
 Ramgul's Alley~
 The alley runs in all directions.~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -1210,7 +1271,8 @@ S
 #9015
 Ramgul's Alley~
 This is a dark alley running north/south.~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -1227,7 +1289,8 @@ An old stable can be seen to the west while the alley continues back to the
 north.
 
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -1256,12 +1319,14 @@ The room of solace, meditation, and safety for those who must remain unknown.
 of the magic stone being all the light..both present and needed by us.
 
 ~
-16399 11
+11
+1 5 0 16399
 S
 #9012
 Dark Room~
 This room is pitch black!!~
-13 11
+11
+1 3 0 13
 D2
 ~
 ~
@@ -1276,7 +1341,8 @@ In many years past, these stables probably held beautiful horses, but now it
 hole leading into what might just be a room.  The alley is back to the east.
 
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -1295,7 +1361,8 @@ This is the southwest corner of the square.  Who knows what the future holds
 time will tell.  Wander around and see what's up.
 
 ~
-137 11
+11
+1 3 0 137
 D0
 ~
 ~
@@ -1320,7 +1387,8 @@ Standing at the southeast corner of the square you notice a pair of lots to
 construction.
 
 ~
-137 11
+11
+1 3 0 137
 D0
 ~
 ~
@@ -1339,7 +1407,8 @@ This is the south end of the square.  To the south is the Unholy Citadel, the
 square continues to the east and west.
 
 ~
-221321 11
+11
+1 7 0 221321
 D1
 ~
 ~
@@ -1366,7 +1435,8 @@ This is the east end of the square.  To the north is the way to the exit, and
 interested about what is on the other side of the rubble.
 
 ~
-137 11
+11
+1 3 0 137
 D0
 ~
 ~
@@ -1391,7 +1461,8 @@ This is the home of the Vampyres.  Because of limited space and the
 undead.  Or you can rest here to heal a little faster.
 
 ~
-16521 8
+8
+1 4 0 16521
 D0
 ~
 ~
@@ -1400,7 +1471,8 @@ S
 #9000
 Pit of Death!~
 This is where things come to DIE!~
-221596 11
+11
+1 9 0 221596
 D0
 ~
 ~
@@ -1439,7 +1511,8 @@ This is the northeast corner of the square.  There is a good possiblity that
 the exit of the crypt.
 
 ~
-137 11
+11
+1 3 0 137
 D2
 ~
 ~
@@ -1462,7 +1535,8 @@ You are at the north end of the square in the crypt.  The way out of the crypt
 street.  The vampyres didn't waste a bit of him.
 
 ~
-137 11
+11
+1 3 0 137
 D0
 ~
 ~
@@ -1491,7 +1565,8 @@ This is the entrance to the crypt.  It is very musty and very dark in here.
 crypt.
 
 ~
-137 11
+11
+1 3 0 137
 D0
 ~
 ~
@@ -1516,7 +1591,8 @@ This is the northeast corner of the square.  Construction is heavy here as
 into the middle of the city.
 
 ~
-137 11
+11
+1 3 0 137
 D1
 ~
 ~
@@ -1537,7 +1613,8 @@ This is the west end of the square.  To the north is the way to the exit, and
 place."  You wonder what lies beyond the limits of the barrier.
 
 ~
-137 11
+11
+1 3 0 137
 D0
 ~
 ~
@@ -1550,7 +1627,8 @@ S
 #9029
 Grunge Road~
 This is the sparkling clean Grunge Road.  It heads north to town square and south towards the southern gate of Tirna n'Ogth~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1569,7 +1647,8 @@ The name Grunge Road is truly false.  The roads are kept clean of refuse and
 city and to the north continues Grunge Road.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1582,7 +1661,8 @@ S
 #9031
 South Gate~
 This is the south gate of Tirna n'Ogth~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1591,7 +1671,8 @@ S
 #9073
 Izan Drive~
 The drive heads north and south~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1610,7 +1691,8 @@ This room is totally in ruin.  There are burnt statues and symbols all over
  
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -1619,7 +1701,8 @@ S
 #9075
 Izan Drive~
 The drive heads north and south.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1632,7 +1715,8 @@ S
 #9076
 Izan Drive~
 The drive heads north and south.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1645,7 +1729,8 @@ S
 #9077
 Izan Drive~
 The drive leads off to the west and to the south.~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -1658,7 +1743,8 @@ S
 #9078
 Izan Drive~
 The drive leads to the east and the west.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1671,7 +1757,8 @@ S
 #9079
 Izan Drive~
 The drive heads east and west.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1692,7 +1779,8 @@ This room is large, containing many statues and paintings. There is a large
  
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1701,7 +1789,8 @@ S
 #9081
 Izan Drive~
 The drive leads of to the east and west.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1714,7 +1803,8 @@ S
 #9082
 Izan Drive~
 The drive leads east and west.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1727,7 +1817,8 @@ S
 #9083
 Izan Drive~
 The drive heads to the south and east.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1740,7 +1831,8 @@ S
 #9084
 Izan Drive~
 The drive goes north and south.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1757,7 +1849,8 @@ The drive leads north and south.
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1774,7 +1867,8 @@ This room is totally painted black and red.
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1783,7 +1877,8 @@ S
 #9087
 Izan Drive~
 The drive heads north and south.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1796,7 +1891,8 @@ S
 #9088
 Izan Drive~
 The drive heads north and south~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1809,7 +1905,8 @@ S
 #9089
 Izan Drive~
 The drive heads north and east.~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1822,7 +1919,8 @@ S
 #9090
 Izan Drive~
 The drive heads east and west.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1835,7 +1933,8 @@ S
 #9091
 Izan Drive~
 The drive heads east and west.~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1852,7 +1951,8 @@ This room is decorated in the colors of red and black.
  
 
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -1885,7 +1985,7 @@ Smith the armorsmith is selling his armor!
 ~
 ~
 8360 0
-91 1
+92 1
 -500 500 500
 ! 7 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1900,7 +2000,7 @@ Smith the weaponsmith is standing here!
 ~
 ~
 8360 0
-101 1
+100 1
 -500 500 500
 ! 7 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1913,7 +2013,7 @@ Gabe is standing here waiting to sell you something!
 ~
 ~
 8360 0
-95 1
+96 1
 -500 500 500
 ! 3 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -1926,7 +2026,7 @@ Scrub is selling drinks.
 ~
 ~
 40 0
-89 1
+88 1
 -500 500 500
 ! 6 0 0 7 14 0 0
 | 0 0 0 0 0 0 0
@@ -1985,7 +2085,7 @@ He is the leader of the SU.
 
 ~
 4 500
-22 1
+23 1
 -40 15 10
 ! 3 0 0 7 6146 0 0
 | 0 0 0 0 0 0 0
@@ -2044,7 +2144,7 @@ This guard is one of the elite of the black watchman.  His sole purpose is go
 
 ~
 0 0
-15 1
+16 1
 -20 15 18
 ! 3 0 14 7 98 0 0
 | 0 0 0 0 0 0 0
@@ -2065,7 +2165,7 @@ The rodent is a large brown looking mouse.  It is said that the city was
 
 ~
 0 0
-8 1
+7 1
 0 0 0
 ! 2 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2127,7 +2227,7 @@ Fromp is a huge bald man with bulging muscles. He is totally decked out in
 
 ~
 168 0
-87 1
+88 1
 -100 100 350
 ! 3 0 0 7 30776 0 0
 | 0 0 0 0 0 0 0
@@ -2170,7 +2270,7 @@ Juzical is a very tanned lady with jet-black hair.  She wears a many colored
 
 ~
 168 0
-101 2
+102 2
 -100 100 350
 ! 1 0 0 7 4 0 16
 | 0 0 0 0 0 0 0
@@ -2183,7 +2283,7 @@ Jim will keep your money safe in his bank.
 
 ~
 0 0
-90 1
+89 1
 -100 100 100
 ! 2 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2196,7 +2296,7 @@ He is just the guy who handles the post.
 
 ~
 0 0
-87 1
+88 1
 -100 100 100
 ! 1 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2211,7 +2311,7 @@ This guy is a non-stop healing machine.  He never tires, he just keeps casting
 
 ~
 0 0
-98 1
+97 1
 -100 100 350
 ! 1 0 0 7 0 0 24
 | 0 0 0 0 0 0 0
@@ -2268,7 +2368,7 @@ He is a large man with a gruff appearance.  He is in much need of a job though
 
 ~
 0 0
-17 1
+18 1
 0 0 0
 ! 3 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2289,7 +2389,7 @@ She is dressed in thin rags, barely covering here frail body.  It looks like
 
 ~
 0 0
-12 2
+13 2
 0 0 0
 ! 4 0 0 7 0 0 0
 | 0 0 0 0 0 0 0

@@ -1,6 +1,6 @@
 #AREA
 @@lS@@do@@eE @@WMud University@@N~
-Q 20
+Q 21
 K soeuniversity~
 L @@W{@@r 1  5@@W}@@N~
 N 88
@@ -19,7 +19,8 @@ Haunted Room~
 @@N This dim room is @@RHAUNTED!@@N Some little ghosts are trying to sneak up
 on you. Perhaps you should eliminate them before you continue @@GEAST.@@N
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -36,7 +37,8 @@ S
 them and get their equipment first. When you are done, go @@rSOUTH @@N to
 continue.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -55,7 +57,8 @@ Graduation Day!!!~
 question channels. Your final exercise is to eliminate the wraith who is
 holding your @@ldiploma!@@N
 ~
-16396 1
+1
+1 3 0 16396
 D0
 ~
 ~
@@ -76,7 +79,8 @@ S
 @@lIF YOU DON'T HAVE A @@eNEWBIE RIBBON OF FREE SPEECH@@l GO BACK AND GET ONE
 FIRST! @@N When you are done here, go @@rDOWN@@N to continue.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -105,7 +109,8 @@ S
 will show You how healthy You are. Now, if You need to rest, You may rest or
 sleep before going @@rWEST@@N to the Combat Hall!
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -123,7 +128,8 @@ Lesson V: Rules Part V~
 most will be happy to answer any questions you may have.
 Go @@rDOWN@@N to continue..
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -155,7 +161,8 @@ Lesson V: Rules Part IV~
 and they will evaluate the situation, and give you their judgement.
 Type @@rSOUTH@@N to continue :)
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -174,7 +181,8 @@ Lesson V: Rules Part III~
 kill you!
 TYPE @@rWEST@@N to continue..
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -194,7 +202,8 @@ Lesson IV: Items and Equipment (Part II)~
 is all there is to it.  You can use this for weapons, armor, wands, and
 anything else that you can @@cWEAR@@N.  Continue WEST.
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -226,7 +235,8 @@ Lesson III: Communication (Channel Uses)~
 @@rTELL@@N - This is a special channel that can not be turned off.  This is
 for private messages to one player.  Continue east.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -257,7 +267,8 @@ Lesson III: Communication~
 @@rUP@@N. (Note: To speak on a channel, type @@NThe channel name followed by
 your message.  Except for @@NThe auction channel).
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -274,7 +285,8 @@ End of Lesson II~
 @@ccommunicate@@N with other players.  Moving @@rEAST@@N, you will learn
 how this is done.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -294,7 +306,8 @@ Lesson II: Configuration~
 NOTE: @@rconfig +COLOUR, +AUTOEXIT, +COMBINE, and +PROMPT @@Nare very useful.
 Go @@rNORTH@@N to continue.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -314,7 +327,8 @@ S
 you can configure autoexit to the on setting, but that is the next lesson.
 Please move @@rEAST@@N to continue.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -333,7 +347,8 @@ S
 first letter of the direction will work, as well as using the whole word.
 To continue, move @@rNORTH@@N (or @@rN@@N).
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -351,7 +366,8 @@ S
 Example: To move north, type NORTH and to move up, type UP.
 To continue your lesson, go @@rDOWN@@N from here.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -368,7 +384,8 @@ S
 @@rWEST@@N and away you go!
 NOTE: If you need a lesson repeated, type @@rLOOK@@N and it will be done.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -392,7 +409,8 @@ S
 If you wish to return to @@lMidgaard@@N, @@rRECALL@@N.
 If you wish to set up your @@eColour @@Ngo @@rEast@@N
 ~
-28 11
+11
+1 3 0 28
 D0
 ~
 ~
@@ -420,7 +438,8 @@ S
 Because, to leave this room, you have to get by the door that is @@rUP@@N to
 continue.  If you don't, you will most likely starve.
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -444,7 +463,8 @@ Lesson I: Movement (part 5)~
 opened the door, please type @@rDROP KEY@@m to leave it for the next newbie :
 @@N
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -461,7 +481,8 @@ End of Lesson I~
 However, now the courses will get a little more difficult.
 If you will just head @@rWEST@@N from here, you can begin your next lesson.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -482,7 +503,8 @@ Lesson II: Configuration (Colour)~
 To learn how to change colors, type COLOUR@@N.  When you finish changing
 all of your colours, continue @@rnorth@@N.
 ~
-12 11
+11
+1 2 0 12
 S
 #20113
 Prayer~
@@ -500,7 +522,8 @@ Prayer~
 might get scolded, or nothing at all.  Now you may continue @@rNORTH@@N to lesson
 four.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -523,7 +546,8 @@ Lesson IV: Items and Equipment~
 and puts it on the floor.  But, you want this bag, so @@cGET@@N BAG again, and
 continue up.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -546,7 +570,8 @@ Lesson IV: Items and Equipment (Part III)~
 Whatever container you are using).
 Now go @@rWEST@@N for the final lesson!
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -571,7 +596,8 @@ S
 try to guide you through the setup.
 To continue Through the @@ySchool @@Wgo back to the @@rWest@@W.
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -591,7 +617,8 @@ Lesson V: Rules~
 expressing your views.  Thanks!!
 Go @@rDOWN@@N to continue...
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -612,7 +639,8 @@ Lesson V: Rules Part II~
 decision..choose wisely..
 Type @@rWEST@@N for your next lesson...
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -634,7 +662,8 @@ S
  
 Go @@rSOUTH @@Nto continue..
 ~
-1032 11
+11
+1 2 0 1032
 D2
 ~
 ~
@@ -666,7 +695,7 @@ troll~
 ~
 ~
 0 0
-5 1
+6 1
 0 -10 -6
 ! 2 0 13 7 0 0 0
 | 0 0 0 0 0 0 0

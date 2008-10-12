@@ -1,6 +1,6 @@
 #AREA
 @@eMinotaur@@d Keep@@N~
-Q 20
+Q 21
 K minokeep~
 L @@W{@@mRM @@lAD@@W}@@N~
 N 103
@@ -28,7 +28,8 @@ W Zenithar hephaestus~
 small home is to the North.@@N @@N
 
 ~
-4 11
+11
+1 1 0 4
 D0
 ~
 ~
@@ -43,7 +44,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come. @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -66,7 +68,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come. @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -89,7 +92,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come. @@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -108,7 +112,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -131,7 +136,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -154,7 +160,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -173,7 +180,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -192,7 +200,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -211,7 +220,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -230,7 +240,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -249,7 +260,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -268,7 +280,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -287,7 +300,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -310,7 +324,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -333,7 +348,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -356,7 +372,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -379,7 +396,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -398,7 +416,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -417,7 +436,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -440,7 +460,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -459,7 +480,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -478,7 +500,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -501,7 +524,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -520,7 +544,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -543,7 +568,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -566,7 +592,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -593,7 +620,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -612,7 +640,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -631,7 +660,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -650,7 +680,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -669,7 +700,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -692,7 +724,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -715,7 +748,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -734,7 +768,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -753,7 +788,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -772,7 +808,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -791,7 +828,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -814,7 +852,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -833,7 +872,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -854,7 +894,8 @@ S
 way to go is North, unless you want to go back to the @@broad.@@N
 
 ~
-155656 11
+11
+1 4 0 155656
 D0
 ~
 ~
@@ -885,7 +926,8 @@ S
 beautiful weapons. @@N
 
 ~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -910,7 +952,8 @@ S
 Storage room is to the East. @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -927,7 +970,8 @@ S
 there is nothing here for you to see. @@dThe @@broad@@d is to the North.
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -950,7 +994,8 @@ S
 the world.@@N@@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -975,7 +1020,8 @@ S
 Surely if this Keep is ever stormed, the @@eMinotaurs@@d shall triumph. @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -998,7 +1044,8 @@ S
 continues to the East and West. @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -1021,7 +1068,8 @@ S
 @@aanasthetics@@d don't exist...@@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1042,7 +1090,8 @@ S
 be a bad idea. @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -1063,7 +1112,8 @@ S
 road to the South.@@N
 
 ~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -1076,7 +1126,8 @@ S
 some cupboards connected to a small counter and sink.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1093,7 +1144,8 @@ S
 inhabitants do not.@@N @@N
 
 ~
-90120 11
+11
+1 4 0 90120
 D1
 ~
 ~
@@ -1112,7 +1164,8 @@ S
 small cell in the dark eastern corner.@@N @@N
 
 ~
-90120 11
+11
+1 4 0 90120
 D0
 ~
 ~
@@ -1129,7 +1182,8 @@ S
 remains of several unfortunate "inmates" litter the ground. @@N
 
 ~
-90120 11
+11
+1 4 0 90120
 D3
 ~
 ~
@@ -1146,7 +1200,8 @@ S
 vomit. You cover your nose and make haste to the nearest exit.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1167,7 +1222,8 @@ S
 vomit. You cover your nose and make haste to the nearest exit.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1194,7 +1250,8 @@ S
 noxious gasses in this room.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -1211,7 +1268,8 @@ S
 weapons at the wall. @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1232,7 +1290,8 @@ S
 weapons at the wall. @@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -1249,7 +1308,8 @@ S
 swordsmasters spar, and all of them look quite powerful.@@N
 
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -1264,7 +1324,8 @@ S
 @@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1283,7 +1344,8 @@ S
 with daggers... and there is no pain killers.@@N
 
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -1302,7 +1364,8 @@ S
 with daggers... and there is no pain killers.@@N
 
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -1319,7 +1382,8 @@ S
 hallway @@N
 
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -1341,7 +1405,8 @@ S
 
 
 ~
-1 11
+11
+1 1 0 1
 D2
 ~
 ~
@@ -1359,7 +1424,8 @@ S
 
 
 ~
-1 11
+11
+1 1 0 1
 D0
 ~
 ~
@@ -1381,7 +1447,8 @@ S
 
 
 ~
-1 11
+11
+1 1 0 1
 D0
 ~
 ~
@@ -1403,7 +1470,8 @@ S
 
 
 ~
-1 11
+11
+1 1 0 1
 D0
 ~
 ~
@@ -1425,7 +1493,8 @@ S
 
 
 ~
-1 11
+11
+1 1 0 1
 D0
 ~
 ~
@@ -1447,7 +1516,8 @@ S
 
 
 ~
-1 11
+11
+1 1 0 1
 D0
 ~
 ~
@@ -1466,7 +1536,8 @@ S
 out of here before you get permanent nasal damage.@@N
 
 ~
-1 11
+11
+1 1 0 1
 D0
 ~
 ~
@@ -1487,7 +1558,8 @@ S
 of hooves coming from further down the hall.
 
 ~
-9 11
+11
+1 2 0 9
 D2
 ~
 ~
@@ -1504,7 +1576,8 @@ S
 the sound of clattering hooves and some faint chatter can be heard.@@N
 
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -1527,7 +1600,8 @@ S
 the room.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1544,7 +1618,8 @@ S
 leather limb armor.@@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1565,7 +1640,8 @@ S
 leather limb armor.@@N
 
 ~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -1580,7 +1656,8 @@ S
 with "Party house" in the @@eMinotaur@@d language.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -1599,7 +1676,8 @@ S
 with "Party house" in the @@eMinotaur@@d language.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1618,7 +1696,8 @@ S
 with "Party house" in the @@eMinotaur@@d language.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1637,7 +1716,8 @@ S
 with "Party house" in the @@eMinotaur@@d language.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1656,7 +1736,8 @@ S
 with "Party house" in the @@eMinotaur@@d language.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1671,7 +1752,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1690,7 +1772,8 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1709,7 +1792,8 @@ S
 wise to keep moving before it does.@@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1730,7 +1814,8 @@ S
 Moss covers the rickety gate, glueing it shut.
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1756,7 +1841,8 @@ S
 @@N
 
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1779,7 +1865,8 @@ S
 Looking down, you step in a pile of...ewww...don't they use toilets?!
 
 ~
-0 2
+2
+0 0
 D0
 ~
 ~
@@ -1798,14 +1885,16 @@ S
 @@eMinotaurs@@d, practicing for the battles that may come.@@N @@N
 
 ~
-4 11
+11
+1 1 0 4
 S
 #1380
 @@bA well trod path@@N~
 @@bA dirt path littered with refuse and large piles of excrement.@@N
 
 ~
-0 2
+2
+0 0
 D0
 ~
 ~
@@ -1825,7 +1914,7 @@ mino minotaur captain~
 ~
 ~
 19112 -500
-141 1
+142 1
 -1100 750 650
 ! 0 0 12 7 155150 50331648 48
 | 0 0 0 0 0 0 0
@@ -1838,7 +1927,7 @@ minotaur guard~
 ~
 ~
 1048808 250
-130 1
+131 1
 -750 620 600
 ! 0 0 12 7 155150 0 0
 | 0 0 0 0 0 0 0
@@ -1890,7 +1979,7 @@ minotaur swordsman swordsmaster trainer~
 ~
 ~
 18664 0
-134 1
+135 1
 -1100 800 750
 ! 0 0 12 7 417294 50331648 48
 | 0 0 0 0 0 0 0
@@ -1903,7 +1992,7 @@ minotaur swordsman student~
 ~
 ~
 168 0
-116 1
+115 1
 -600 220 250
 ! 0 0 12 7 24078 0 0
 | 0 0 0 0 0 0 0
@@ -1916,7 +2005,7 @@ mino minotaur soldier~
 ~
 ~
 131240 -250
-119 1
+118 1
 -740 700 650
 ! 0 0 12 7 155150 0 0
 | 0 0 0 0 0 0 0

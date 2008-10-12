@@ -674,7 +674,7 @@ bool spell_ethereal( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       send_to_char( "Not during a @@eDeath Match@@N!!\n\r", ch );
       return FALSE;
    }
-   if( ( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) )
+   if( ( is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) )
        && ( !IS_NPC( ch ) && ( !is_set( ch->act, ACT_INTELLIGENT ) ) ) )
    {
       send_to_char( "You failed.\n\r", ch );

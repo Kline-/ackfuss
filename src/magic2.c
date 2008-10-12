@@ -506,8 +506,8 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    if( ( victim = get_char_world( ch, target_name ) ) == NULL
        || victim == ch
        || victim->in_room == NULL
-       || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
-       || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
+       || is_set( victim->in_room->room_flags, RFLAG_SAFE )
+       || is_set( victim->in_room->room_flags, RFLAG_NO_RECALL )
        || !( IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
        || victim->level >= level + 10
        || victim->fighting != NULL
@@ -547,7 +547,7 @@ bool spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       return FALSE;
    }
    if( victim->in_room == NULL
-       || IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL )
+       || is_set( victim->in_room->room_flags, RFLAG_NO_RECALL )
        || ( !IS_NPC( ch ) && victim->fighting != NULL )
        || ( victim != ch && ( saves_spell( level, victim ) || saves_spell( level, victim ) ) ) )
    {
@@ -560,8 +560,8 @@ bool spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       pRoomIndex = get_room_index( number_range( 0, 32767 ) );
       if( pRoomIndex == NULL )
          continue;
-      if( !IS_SET( pRoomIndex->room_flags, ROOM_PRIVATE )
-          && !IS_SET( pRoomIndex->room_flags, ROOM_SOLITARY ) && IS_SET( pRoomIndex->area->flags, AREA_TELEPORT ) )
+      if( !is_set( pRoomIndex->room_flags, RFLAG_PRIVATE )
+          && !is_set( pRoomIndex->room_flags, RFLAG_SOLITARY ) && IS_SET( pRoomIndex->area->flags, AREA_TELEPORT ) )
          break;
    }
 
@@ -648,7 +648,7 @@ bool spell_word_of_recall( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
    if( victim->in_room == location )
       return FALSE;
 
-   if( IS_SET( victim->in_room->room_flags, ROOM_NO_RECALL ) )
+   if( is_set( victim->in_room->room_flags, RFLAG_NO_RECALL ) )
    {
       send_to_char( "Some strange force prevents your transport.\n\r", victim );
       return TRUE;
@@ -1037,10 +1037,10 @@ bool spell_visit( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
        || victim == ch
        || IS_NPC( victim )
        || victim->in_room == NULL
-       || IS_SET( victim->in_room->room_flags, ROOM_PRIVATE )
-       || IS_SET( victim->in_room->room_flags, ROOM_SOLITARY )
-       || IS_SET( victim->in_room->room_flags, ROOM_SAFE )
-       || IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || !IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
+       || is_set( victim->in_room->room_flags, RFLAG_PRIVATE )
+       || is_set( victim->in_room->room_flags, RFLAG_SOLITARY )
+       || is_set( victim->in_room->room_flags, RFLAG_SAFE )
+       || is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) || !IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
    {
       send_to_char( "You failed.\n\r", ch );
       return TRUE;

@@ -1,6 +1,6 @@
 #AREA
 @@dThe Tomb of @@mVecna @@dthe @@RLich@@N~
-Q 20
+Q 21
 K vecna~
 L @@W{@@mRM @@lAD@@W}@@N~
 N 137
@@ -24,7 +24,8 @@ The Final Crypt, Vecna's Lair~
 watch over his personal crypt.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -41,7 +42,8 @@ The Final Crypt, Vecna's Lair~
 the ever-dead.
 
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -56,7 +58,8 @@ The Final Crypt, Vecna's Lair~
 detritus, the area purveys an aura of cleanliness.
 
 ~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -72,7 +75,8 @@ The Final Crypt, Vecna's Lair~
 
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -105,7 +109,8 @@ The Chute~
 portentious @@mcarvings@@g.
 
 ~
-24653 11
+11
+1 6 0 24653
 D0
 ~
 ~
@@ -137,7 +142,8 @@ The Ancient Crypt~
 along the east wall tell more of the story.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -173,7 +179,8 @@ The Ancient Crypt~
 as well, by the ever thick, undisturbed dust.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -198,7 +205,8 @@ The Ancient Vault~
 upon the west wall.  The ever present dust lies thickly undisturbed.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -234,7 +242,8 @@ The Ancient Vault~
 undisturbed for long years.
 
 ~
-24649 11
+11
+1 5 0 24649
 D2
 ~
 ~
@@ -268,7 +277,8 @@ The Ancient Vault~
 @@mcarvings@@g beg to be read.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -312,7 +322,8 @@ The Ancient Vault~
 deepset voice.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -360,7 +371,8 @@ The Ancient Vault~
 more of the everpresent @@mcarvings@@g in the wall.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -400,7 +412,8 @@ The Ancient Vault~
 air.  Some @@mcarvings@@g are etched into the west wall here.
 
 ~
-24649 11
+11
+1 5 0 24649
 D1
 ~
 ~
@@ -441,7 +454,8 @@ A Pillar~
 you from the south.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -471,7 +485,8 @@ Near the Terminus~
 stench, as well as thick, chocking dust.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -496,7 +511,8 @@ A Pillar~
 @@lpillars@@g is here, mere feet from the wall.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -518,7 +534,8 @@ A Pillar~
 south end of the huge Vault.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -546,7 +563,8 @@ Between the Pillars~
 dirt floor.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -578,7 +596,8 @@ Between the Pillars~
 some relief from this feeling of encroaching doom.@@g
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -608,7 +627,8 @@ A Pillar~
 eternity.@@g
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -642,7 +662,8 @@ An Eastern Corridor~
 light glistens off the smooth @@lpillar@@g to the west of here.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -677,7 +698,8 @@ Between the Pillars~
 west.  Somewhere beyond those pillars, you know, stand the walls of the crypt.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -707,7 +729,8 @@ A Pillar~
 @@lhole@@g in the floor.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -743,7 +766,8 @@ Wandering in the Crypt~
 memories of undead creatures fought in the recent past.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -772,7 +796,8 @@ Along the West Wall~
 your back against the wall, you wait for it, smelling your own fear.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -795,7 +820,8 @@ Along the Eastern Wall~
 @@lscratchings@@g on the wall here.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -829,7 +855,8 @@ A Pillar~
 coming here was such an incredibly wise move.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -858,7 +885,8 @@ Between the Pillars~
 openness, desiring the (safety?) of the walls.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -888,7 +916,8 @@ A Pillar~
 sure that the pillar makes contact with an unseen ceiling.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -920,7 +949,8 @@ Along the West Wall~
 crypt.
 
 ~
-24649 11
+11
+1 5 0 24649
 D1
 ~
 ~
@@ -939,7 +969,8 @@ Within the Crypt~
 blackness around you.@@g
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -964,7 +995,8 @@ By the West Wall~
 southwest here.  Some @@lbones@@g lie scattered in a jumble.
 
 ~
-24649 11
+11
+1 5 0 24649
 D1
 ~
 ~
@@ -984,7 +1016,8 @@ A Pillar~
 Thick dust motes hang uneasily in the air.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1014,7 +1047,8 @@ Between the Pillars~
 support the ceiling of this massive chamber.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1044,7 +1078,8 @@ Within the Crypt~
 you're light-source barely illuminates a @@lpillar@@g in the darkness.
 
 ~
-24649 11
+11
+1 5 0 24649
 D2
 ~
 ~
@@ -1068,7 +1103,8 @@ The Cottage~
 rear of the cottage stands open, and empty.
 
 ~
-4 2
+2
+1 1 0 4
 D0
 ~
 ~
@@ -1100,7 +1136,8 @@ The Woods to the East of the Cottage~
 of the outdoors puts you at ease.
 
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -1113,7 +1150,8 @@ S
 #20619
 Within the Darkening Wood~
 @@gThe woods begin to darken here, as you travel progressively northward.  A strange sense begins to fill you, as you notice the typical forest noises begin to fade from range of hearing...you have left the woodland creatures somewhere to the south.~
-4 3
+3
+1 1 0 4
 D0
 ~
 ~
@@ -1132,7 +1170,8 @@ Within the Darkening Wood~
 low hanging bows, you spy a clearing, a grey @@mstructure@@g centered within.
 
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -1168,7 +1207,8 @@ The Geodesic Dome~
 no door, no gate...just a black opening into the building.
 
 ~
-4 2
+2
+1 1 0 4
 D0
 ~
 ~
@@ -1236,7 +1276,8 @@ Inside the Geodesic Dome~
 hold itself through superior architecture.
 
 ~
-13 11
+11
+1 3 0 13
 D2
 ~
 ~
@@ -1259,7 +1300,8 @@ Inside the Tower~
 tower, spaced evenly along the length of the upward staircase.
 
 ~
-13 11
+11
+1 3 0 13
 D1
 ~
 ~
@@ -1288,7 +1330,8 @@ The Top of the Grey Tower~
 and west.
 
 ~
-9 11
+11
+1 2 0 9
 D5
 ~
 ~
@@ -1311,7 +1354,8 @@ Inside the Cottage~
 fireplace.
 
 ~
-12 11
+11
+1 2 0 12
 D2
 ~
 ~
@@ -1340,7 +1384,8 @@ S
 #20623
 The Woods~
 @@g The woods here are a delighful light green, and peaceful.  A slow breeze passes through the trees above, the branches whispering to you in some foreign tongue.~
-4 2
+2
+1 1 0 4
 D0
 ~
 ~
@@ -1361,7 +1406,8 @@ At the Bottom of the Staircase~
 light source does not penetrate the utter blackness under the archway.
 
 ~
-9 11
+11
+1 2 0 9
 D2
 ~
 ~
@@ -1385,7 +1431,8 @@ Within the Crypt~
 the south, you sense movement, and discern shapes moving in the darkness.
 
 ~
-24649 11
+11
+1 5 0 24649
 D2
 ~
 ~
@@ -1405,7 +1452,8 @@ Into the Crypt~
 the unorganized movement of many creatures in the area.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1437,7 +1485,8 @@ Inside the Crypt~
 the open area in the center of the large crypt?
 
 ~
-24649 11
+11
+1 5 0 24649
 D1
 ~
 ~
@@ -1459,7 +1508,8 @@ In the Crypt~
 begins, with the northernmost pillar.
 
 ~
-24649 11
+11
+1 5 0 24649
 D2
 ~
 ~
@@ -1481,7 +1531,8 @@ A Pillar~
 circumferance.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1514,7 +1565,8 @@ A Pillar~
 light-source barely illuminates the eastern wall of the crypt.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1546,7 +1598,8 @@ By the East Wall~
 radius of your light.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1572,7 +1625,8 @@ A Pillar~
 but, alas, it helps none at all.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1602,7 +1656,8 @@ Within the Crypt~
 @@lpillars@@g within the crypt.@@g
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1634,7 +1689,8 @@ Along the West Wall~
 north, east, and south.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1661,7 +1717,8 @@ Along the West Wall~
 wall.
 
 ~
-16396 11
+11
+1 3 0 16396
 D0
 ~
 ~
@@ -1691,7 +1748,8 @@ Within the Crypt~
 either to the wall to the west, or to the @@lpillar@@g to the east.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1721,7 +1779,8 @@ A Pillar~
 somewhere to the east.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1755,7 +1814,8 @@ Between the Pillars~
 colour.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1787,7 +1847,8 @@ A Pillar~
 gloominess.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1817,7 +1878,8 @@ Along the East Wall~
 cold hatred emerges.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1845,7 +1907,8 @@ The East Wall Begins to Slope Southwestward~
 center depths of the Tombs.
 
 ~
-16457 11
+11
+1 4 0 16457
 D0
 ~
 ~
@@ -1864,7 +1927,8 @@ A Pillar~
 beat heavily upon your senses, dulling them to points uncomfortable to men.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1894,7 +1958,8 @@ Between the Pillars~
 @@lpillars@@g.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1928,7 +1993,8 @@ A Pillar~
 accostumed.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1960,7 +2026,8 @@ Within the Crypt~
 smoldering in a deep @@Rcrimson@@g.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -1992,7 +2059,8 @@ Along the West Wall~
 rotting stench floats upon the stale air.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2017,7 +2085,8 @@ Along the West Wall~
 None too soon...
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2036,7 +2105,8 @@ Out in the Open~
 Something strikes you as amiss, tho you cannot quite place your finger on it.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2067,7 +2137,8 @@ A Pillar~
 Vault is a touch stronger here than elsewhere?
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2097,7 +2168,8 @@ By the Southwest Wall~
 dust up from the floor and into your face.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2116,7 +2188,8 @@ Dais at the Southern End~
 experienced to the north, can be felt here.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2139,7 +2212,8 @@ Dais at the Southern End~
 experienced to the north, can be felt here.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2164,7 +2238,8 @@ One More Step Up~
 rivulet, leading down in the southeast corner.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2183,7 +2258,8 @@ The Altar~
 Trench has been dug here, in the marble floor, leading off to the east.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2209,7 +2285,8 @@ Behind the Altar~
 resting place of the Guardian of the Crypt.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2228,7 +2305,8 @@ The Eastern Corridor~
 crimson, to magenta, to firey red, to cold blue.  They await.
 
 ~
-24653 11
+11
+1 6 0 24653
 D1
 ~
 ~
@@ -2247,7 +2325,8 @@ The Inner Vault~
 see it's glistening orbs, awaits the death that walks.
 
 ~
-24633 11
+11
+1 6 0 24633
 D0
 ~
 ~
@@ -2272,7 +2351,8 @@ The Inner Vault~
 suffering of your fearful soul.
 
 ~
-24633 11
+11
+1 6 0 24633
 D1
 ~
 ~
@@ -2291,7 +2371,8 @@ The Inner Vault~
 then returns it's gaze back from hence it came.
 
 ~
-24633 11
+11
+1 6 0 24633
 D2
 ~
 ~
@@ -2310,7 +2391,8 @@ The Inner Vault~
 place seeks only to imbed itself permanently into the soul.
 
 ~
-24633 11
+11
+1 6 0 24633
 D0
 ~
 ~
@@ -2337,7 +2419,8 @@ The Inner Vault~
 then returns it's gaze back from hence it came.
 
 ~
-24633 11
+11
+1 6 0 24633
 D0
 ~
 ~
@@ -2358,7 +2441,8 @@ The Inner Vault~
 choking dust.
 
 ~
-24633 11
+11
+1 6 0 24633
 D0
 ~
 ~
@@ -2380,7 +2464,8 @@ The Ancient Vault~
 
 
 ~
-24653 11
+11
+1 6 0 24653
 D2
 ~
 ~
@@ -2414,7 +2499,8 @@ The Ancient Vault~
 etched into the wall.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2473,7 +2559,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2500,7 +2587,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2527,7 +2615,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2554,7 +2643,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2573,7 +2663,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2600,7 +2691,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2627,7 +2719,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2654,7 +2747,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2681,7 +2775,8 @@ In a Confining Blackness~
 with aimless meanderings.
 
 ~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2711,7 +2806,8 @@ Atop the Descending Stairs~
 
 
 ~
-16461 11
+11
+1 5 0 16461
 D1
 ~
 ~
@@ -2730,7 +2826,8 @@ The Final Crypt~
 
 
 ~
-24653 11
+11
+1 6 0 24653
 D2
 ~
 ~
@@ -2743,7 +2840,8 @@ S
 #20685
 The Final Crypt, Vecna's Lair~
 @@gLarge pillars continue to line the east and west walls, defining a throughway north and south.  The entire Crypt is of the purest white marble, couring viens of darkened blood, dark streaks through the beautiful stone.~
-24649 11
+11
+1 5 0 24649
 D0
 ~
 ~
@@ -2758,7 +2856,8 @@ S
 @@dThis very small chamber appears to have been unused for millenia.  While once originally a store room, there seems to be nothing lying around, other than a few clumps of shadows, and some broken weapons.@@N
 
 ~
-24 11
+11
+1 2 0 24
 D1
 ~
 ~
@@ -2769,7 +2868,8 @@ S
 @@lThis very small room is dominated by a set of large @@dObsidian gates@@l, embossed by Hieroglyphics of @@eTwo Horned Man-Beasts@@l in many scenes.@@N
 
 ~
-0 11
+11
+0 0
 D4
 ~
 ~
@@ -2782,7 +2882,8 @@ Mounds of sacred earth, piled behind the alter. Magic and sacred, the life of
 the creatures of the crypt.
 
 ~
-221260 11
+11
+1 7 0 221260
 D0
 ~
 ~
@@ -2809,7 +2910,7 @@ Vecna The Lich~
 ~
 ~
 1075944 0
-117 1
+116 1
 -1950 800 800
 ! 0 0 14 7 32760 33554624 80
 | 0 0 0 0 0 0 0
@@ -2848,7 +2949,7 @@ Manasseh The Lich~
 ~
 ~
 1059578 0
-108 1
+109 1
 -999 666 666
 ! 0 0 14 7 14 96 144
 | 0 0 0 0 0 0 0
@@ -2874,7 +2975,7 @@ A Presence~
 ~
 ~
 624298 0
-88 1
+89 1
 -666 190 190
 ! 0 0 14 7 14 2112 16
 | 0 0 0 0 0 0 0
@@ -2926,7 +3027,7 @@ Skeletal Legion~
 ~
 ~
 16440 0
-84 1
+83 1
 -810 180 180
 ! 0 0 14 7 6526 0 8
 | 0 0 0 0 0 0 0
@@ -2939,7 +3040,7 @@ Wight~
 ~
 ~
 17080 0
-92 1
+91 1
 -700 200 400
 ! 3 0 14 7 11638 0 0
 | 0 0 0 0 0 0 0
@@ -3030,7 +3131,7 @@ Banshee~
 ~
 ~
 673454 0
-100 2
+99 2
 -850 380 400
 ! 0 0 14 7 22926 34944 16
 | 0 0 0 0 0 0 0
@@ -3069,7 +3170,7 @@ Nosferatu~
 ~
 ~
 1673898 0
-102 1
+103 1
 -880 366 410
 ! 3 0 14 7 22878 3145792 16
 | 0 0 0 0 0 0 0
@@ -3082,7 +3183,7 @@ Guardian of the Crypt~
 ~
 ~
 1173246 0
-113 1
+112 1
 -1000 666 666
 ! 7 0 14 7 31230 8388704 80
 | 0 0 0 0 0 0 0
@@ -3110,7 +3211,7 @@ Floating Death~
 ~
 ~
 1575612 0
-104 1
+105 1
 -1150 666 666
 ! 0 0 14 7 23310 64 16
 | 0 0 0 0 0 0 0
@@ -3136,7 +3237,7 @@ A large silent form stands here, watching your actions closely.
 ~
 ~
 109290 0
-103 1
+102 1
 -1100 666 780
 ! 0 0 14 7 399374 0 16
 | 0 0 0 0 0 0 0
@@ -3149,7 +3250,7 @@ keeper earth~
 ~
 ~
 16616 0
-120 1
+119 1
 -2000 900 700
 ! 0 0 17 7 393230 0 80
 | 0 0 0 0 0 0 0

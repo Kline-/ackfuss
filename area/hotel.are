@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@bHotel@@N~
-Q 20
+Q 21
 K hotel~
 L @@W{@@r30 60@@W}@@N~
 N 4
@@ -20,7 +20,8 @@ You are standing in a covered entrance to an old, but grand-looking Hotel.
 Whisps of cobwebs blow in the breeze, and laughter and screams echo out of
 the building to your ears.
 ~
-4 11
+11
+1 1 0 4
 D0
 ~
 ~
@@ -35,7 +36,8 @@ Foyer~
 You are now in the foyer of this old-looking hotel.  The floor is white stone,
 and displays an interesting patterned-tile type thingy in its centre.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -59,7 +61,8 @@ You are standing before a low desk, where guests come to find out things, such
 as "why is my bill so high?", "why has my husband turned green?" and other
 such trivia.
 ~
-9 11
+11
+1 2 0 9
 D3
 ~
 ~
@@ -70,7 +73,8 @@ Some Stairs~
 You are on a dusty set of stairs, that look unused.  The few footsteps you
 can see lead up, but not down...
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -84,7 +88,8 @@ S
 Passage~
 You are in a long passage within the hotel.
 ~
-1 11
+11
+1 1 0 1
 D0
 ~
 ~
@@ -107,7 +112,8 @@ The Bar~
 You are in the hotel's bar, which seems pretty empty, due to the fact that the
 barmaid who usually works here is no where to be seen.
 ~
-9 11
+11
+1 2 0 9
 D3
 ~
 ~
@@ -119,7 +125,8 @@ You are a large room, which is where the guests come to be poisoned, or even
 sometimes fed.  A long table stands proudly in the middle of the room, but
 look uncleaned, as the vomit and piles of food suggest.
 ~
-9 11
+11
+1 2 0 9
 D0
 A small door.
 ~
@@ -134,7 +141,8 @@ S
 The Kitchen~
 You are in the hotel's kitchen - a small but workman-like affair.
 ~
-9 11
+11
+1 2 0 9
 D2
 A small door.
 ~
@@ -145,7 +153,8 @@ S
 Passage~
 You are in the middle of a long passage within the hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -165,7 +174,8 @@ A Guest's Room~
 You are in what serves as a room in this hotel: dirty carpet, saggy bed and
 a cracked sink.  Bet the rent is high too.
 ~
-9 11
+11
+1 2 0 9
 D3
 A small door.
 ~
@@ -176,7 +186,8 @@ S
 Passage~
 You are at the northen end of a passage within the hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 A small door.
 ~
@@ -202,7 +213,8 @@ The Hotel Manager's Room~
 You are in the Manager's room, which (surprise!) is of much higher quality than
 the other guest's.
 ~
-9 11
+11
+1 2 0 9
 D3
 A small door.
 ~
@@ -214,7 +226,8 @@ A Guest's Room~
 You are in what serves as a room in this hotel: dirty carpet, saggy bed and
 a cracked sink.  Bet the rent is high too.
 ~
-9 11
+11
+1 2 0 9
 D2
 A small door.
 ~
@@ -226,7 +239,8 @@ Outside the Hotel~
 You are standing just outside the hotel.  Breathing this clean air, you realise
 how musty it is back in there.
 ~
-0 2
+2
+0 0
 D1
 A small door.
 ~
@@ -243,7 +257,8 @@ You are on the Hotel's meagre patio, used to hold social gatherings, which
 now looks strangely unused.  A strange-looking swimming pool is to the south,
 and appears to be very dark for *just* water.....
 ~
-0 2
+2
+0 0
 D1
 ~
 ~
@@ -258,7 +273,8 @@ Shallow End of Pool~
 You are in the shallow end of the hotel's (unused) swimming pool.  You start
 to realize why...
 ~
-0 6
+6
+0 0
 D0
 ~
 ~
@@ -273,7 +289,8 @@ Deep End of Pool~
 You are in the deep end of the hotel's swimming pool.
 At the very bottom of the pool is a small cover.
 ~
-0 6
+6
+0 0
 D0
 ~
 ~
@@ -289,7 +306,8 @@ A Narrow Pipe~
 You are in a tight pipe.
 You see a small cover above your head.
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -304,7 +322,8 @@ S
 A Narrow Pipe~
 You are in a tight pipe.
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -318,7 +337,8 @@ S
 A Narrow Pipe~
 You are in a tight pipe.
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -332,7 +352,8 @@ S
 A Narrow Pipe~
 You are in a tight pipe.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -346,7 +367,8 @@ S
 A Narrow Pipe~
 You are in a tight pipe.
 ~
-13 11
+11
+1 3 0 13
 D1
 ~
 ~
@@ -360,7 +382,8 @@ S
 Cellar~
 You are in a dark, cold cellar underneath the old hotel.
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -378,7 +401,8 @@ S
 Cellar~
 You are in a dark, cold cellar underneath the old hotel.
 ~
-9 11
+11
+1 2 0 9
 D2
 ~
 ~
@@ -392,7 +416,8 @@ S
 Cellar~
 You are in a dark, cold cellar underneath the old hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -406,7 +431,8 @@ S
 Cellar~
 You are in a dark, cold cellar underneath the old hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -426,7 +452,8 @@ A Doll's Room~
 You are in what looks to be part of an old fashioned doll's house.  Old, worn
 out dolls litter the room, some of which look to be missing bits.
 ~
-9 11
+11
+1 2 0 9
 D0
 A large door.
 ~
@@ -443,7 +470,8 @@ You are in a strange lab.  The only furniture is a large desk, covered in parts
 of puppets, dolls, etc.  A large assortment of springs and other mechanical
 looking pieces lie around on the desktop.
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -452,7 +480,8 @@ S
 #4421
 Stairs~
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -466,7 +495,8 @@ S
 The Landing~
 You are on a landing, upstairs in the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 A small door.
 ~
@@ -491,7 +521,8 @@ A Guest's Room~
 You are in what serves as a room in this hotel: dirty carpet, saggy bed and
 a cracked sink.  Bet the rent is high too.
 ~
-9 11
+11
+1 2 0 9
 D2
 A small door.
 ~
@@ -503,7 +534,8 @@ A Guest's Room~
 You are in what serves as a room in this hotel: dirty carpet, saggy bed and
 a cracked sink.  Bet the rent is high too.
 ~
-9 11
+11
+1 2 0 9
 D0
 A small door.
 ~
@@ -514,7 +546,8 @@ S
 The Landing~
 You are on a landing, upstairs in the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -533,7 +566,8 @@ S
 A Balcony~
 You are on a small balcony, attached to the old hotel.
 ~
-0 2
+2
+0 0
 D1
 ~
 ~
@@ -547,7 +581,8 @@ S
 A Balcony~
 You are on a small balcony, attached to the old hotel.
 ~
-0 2
+2
+0 0
 D3
 ~
 ~
@@ -563,7 +598,8 @@ A Guest's Room~
 You are in what serves as a room in this hotel: dirty carpet, saggy bed and
 a cracked sink.  Bet the rent is high too.
 ~
-9 11
+11
+1 2 0 9
 D3
 A small door.
 ~
@@ -574,7 +610,8 @@ S
 A Balcony~
 You are on a small balcony, attached to the old hotel.
 ~
-0 2
+2
+0 0
 D3
 ~
 ~
@@ -589,7 +626,8 @@ S
 A Balcony~
 You are on a small balcony, attached to the old hotel.
 ~
-4 2
+2
+1 1 0 4
 D1
 ~
 ~
@@ -603,7 +641,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -625,7 +664,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D2
 ~
 ~
@@ -639,7 +679,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -653,7 +694,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -671,7 +713,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -693,7 +736,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -711,7 +755,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -729,7 +774,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -751,7 +797,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -769,7 +816,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -783,7 +831,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -801,7 +850,8 @@ S
 The Hotel's Attic~
 You are in the deserted, unused (and dusty!) Attic of the Hotel.
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -847,7 +897,7 @@ A member of staff stands here, trying to ignore you.
 She is old, and looks unhelpful, to say the least.
 ~
 60 -200
-24 2
+23 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -873,7 +923,7 @@ A newlywed bride stands here, trying to fake a headache.
 She is very pretty, and looks annoyed at having to honeymoon here.
 ~
 0 500
-26 2
+27 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -900,7 +950,7 @@ The manager is a short fellow, the kind of person you take an instant dislike
 to.  You notice his trousers are undone.
 ~
 0 -250
-40 1
+39 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -913,7 +963,7 @@ The Barmaid is here, looking slightly naked.
 She is indeed naked.  Where could her clothes have gone?? 
 ~
 0 -400
-32 2
+31 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -952,7 +1002,7 @@ Driller Killer, the mean puppet stands here, waiting to kill you.  Run!?!?
 Driller Killer is a small doll, but has a large, sharp head.
 ~
 32778 -900
-49 0
+48 0
 -20 8 8
 ! 0 0 19 7 6286 1052672 0
 | 0 0 0 0 0 0 0
@@ -965,7 +1015,7 @@ The Puppetmaster stands here, looking damn evil.
 He is scared, and old.  However, he's still bigger than you!
 ~
 136 -900
-54 0
+55 0
 -150 0 100
 ! 0 0 0 7 14 0 68
 | 0 0 0 0 0 0 0
@@ -978,7 +1028,7 @@ A giant puppet is waiting here......  for you maybe??
 The puppet is giant by puppet dimensions, but still smaller than you.
 ~
 0 -400
-45 0
+46 0
 0 0 0
 ! 0 0 19 7 2054 0 0
 | 0 0 0 0 0 0 0
@@ -991,7 +1041,7 @@ A puppet is here, wandering around.
 The puppet looks like a normal puppet, except it is walking around!!!!!!
 ~
 0 -200
-42 0
+43 0
 0 75 10
 ! 0 0 19 7 2054 0 0
 | 0 0 0 0 0 0 0
@@ -1004,7 +1054,7 @@ A puppet is here, as if on guard.
 It is a plain looking puppet, except is looks very evil.
 ~
 0 -700
-45 0
+44 0
 -100 100 0
 ! 0 0 19 7 6158 0 4
 | 0 0 0 0 0 0 0

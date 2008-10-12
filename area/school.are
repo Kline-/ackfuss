@@ -1,6 +1,6 @@
 #AREA
 @@lS@@do@@eE@@N @@aKindergarden@@N~
-Q 20
+Q 21
 K soekindergarden~
 L @@W{@@r 1  5@@W}@@N~
 N 22
@@ -22,7 +22,8 @@ Entrance to Mud School~
 school@@N.  If you have been here before and want to go directly to the arena,
 go south.
 ~
-17436 11
+11
+1 5 0 17436
 D0
 You see the doorway into the Mud School Building.
 ~
@@ -41,7 +42,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 sign on the wall.  The exits are west and south.  A small plaque is on the
 wall.
 ~
-12 11
+11
+1 2 0 12
 D3
 You see a path into another room.
 ~
@@ -75,7 +77,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  Exits lead in ALL directions.
 ~
-12 11
+11
+1 2 0 12
 D0
 You see the room north that will lead you to the next section.
 ~
@@ -127,7 +130,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  Exits lead north and south.
 ~
-12 11
+11
+1 2 0 12
 D0
 You see the next station ahead.
 ~
@@ -151,7 +155,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  The only exit is east.
 ~
-12 11
+11
+1 2 0 12
 D1
 You see the central room.
 ~
@@ -168,7 +173,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  The only exit is north.
 ~
-12 11
+11
+1 2 0 12
 D0
 You see the central room.
 ~
@@ -185,7 +191,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  The only exit is up.
 ~
-12 11
+11
+1 2 0 12
 D4
 You see the central room.
 ~
@@ -202,7 +209,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  The only exit is down.
 ~
-12 11
+11
+1 2 0 12
 D5
 You see the central room.
 ~
@@ -219,7 +227,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  Exits reach west and down.
 ~
-12 11
+11
+1 2 0 12
 D3
 You see the next station of Mud School.
 ~
@@ -255,7 +264,8 @@ The Blob Cage~
 You are in a smelly cage.  Strangely, the walls are still clean!
 You see a sign here.  The only exit is up.
 ~
-8 11
+11
+1 1 0 8
 D4
 You see a safe room up.
 ~
@@ -273,7 +283,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.
 ~
-12 11
+11
+1 2 0 12
 D1
 You see the next station of Mud School.
 ~
@@ -297,7 +308,8 @@ You are in the cage room.  All around are 4 cages.  Light fluoresces off the
 ceiling in soft white tones.  Of course, there is a big sign on the wall.
 Exits lead into the cardinal directions plus down.
 ~
-12 11
+11
+1 2 0 12
 D0
 You see the aggressive monster inside!
 ~
@@ -342,7 +354,8 @@ A Cage~
 You are in a cage.  Blood and gore are everywhere.  The keepers must be lax
 in the upkeep here!  There is a sign on the wall.  The only exit is south.
 ~
-8 11
+11
+1 1 0 8
 D2
 You see the Cage Room.
 ~
@@ -359,7 +372,8 @@ A Cage~
 You are in a cage.  Blood and gore are everywhere.  The keepers must be lax
 in the upkeep here!  There is a sign on the wall.  The only exit is east.
 ~
-8 11
+11
+1 1 0 8
 D1
 You see the Cage Room.
 ~
@@ -376,7 +390,8 @@ A Cage~
 You are in a cage.  Blood and gore are everywhere.  The keepers must be lax
 in the upkeep here!  There is a sign on the wall.  The only exit is north.
 ~
-8 11
+11
+1 1 0 8
 D0
 You see the Cage Room.
 ~
@@ -393,7 +408,8 @@ A Cage~
 You are in a cage.  Blood and gore are everywhere.  The keepers must be lax
 in the upkeep here!  There is a sign on the wall.  The only exit is west.
 ~
-8 11
+11
+1 1 0 8
 D3
 You see the Cage Room.
 ~
@@ -411,7 +427,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  Find your own exit here.
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -445,7 +462,8 @@ You are in a cramped room.  Stacked neatly on shelves everywhere are items
 and packages.  Light fluoresces off the ceiling in soft white tones.  Of
 course, there is a sign on the wall.  The only exit is north.
 ~
-8 11
+11
+1 1 0 8
 D0
 You see the only exit out of here.
 ~
@@ -468,7 +486,8 @@ You are in a square white room.  The walls are all blank, with no windows.
 Light fluoresces off the ceiling in soft white tones.  Of course, there is a
 sign on the wall.  The exits are north and west, with a door to the east.
 ~
-12 11
+11
+1 2 0 12
 D1
 You see the next station of Mud School.
 ~
@@ -490,7 +509,8 @@ This room was purposefully darkened so that you would need to hold on to a
 light source to go through.  The walls are, of course, blank, and white.
 The only exit is south.
 ~
-13 11
+11
+1 3 0 13
 S
 #3721
 The End of Mud School!~
@@ -499,7 +519,8 @@ This is a very bright room, with a marble pedestal in the center.  Behind
 wall, and you feel very happy to be here right now.  There is a big sign here.
 The only exit is on the other side of the gate north of you.
 ~
-8 11
+11
+1 1 0 8
 D0
 You see the Arena ahead.
 ~
@@ -528,7 +549,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -553,7 +575,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -578,7 +601,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -599,7 +623,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -625,7 +650,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 being watched by some divine being.
 A small archway has been built in the Eastern wall.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -650,7 +676,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -675,7 +702,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -704,7 +732,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -733,7 +762,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -762,7 +792,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -787,7 +818,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -812,7 +844,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -841,7 +874,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.  There is a BIG SIGN here.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -881,7 +915,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -910,7 +945,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -935,7 +971,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -960,7 +997,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -989,7 +1027,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1018,7 +1057,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1047,7 +1087,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1072,7 +1113,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1093,7 +1135,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  You can barely see the ceiling.  You feel as if you are being watched
 by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1118,7 +1161,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1143,7 +1187,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1168,7 +1213,8 @@ You are in the Arena.  Remember, if you wish to get out of this Arena, just
 go up.  Ceilings can barely be seen in this huge Arena.  You feel as if you are
 being watched by some divine being.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -1190,7 +1236,8 @@ You are in the center of a large room.  A faint light from above shows that
 you notice that this is NOT a great place to go.  Exits go in all directions.
 Of special note is the one that brings you back up!!!
 ~
-8 11
+11
+1 1 0 8
 D0
 You see the north wall.
 ~
@@ -1222,7 +1269,8 @@ The North West Corner of the Dungeon~
 You are against a wall in the dungeon.  It is quite dark here.  The lack of
 any windows in the area explains the smell around you.
 ~
-9 11
+11
+1 2 0 9
 D1
 You see the north wall.
 ~
@@ -1239,7 +1287,8 @@ The North Wall of the Dungeon~
 You are against a wall in the dungeon.  It is quite dark here.  The lack of
 any windows in the area explains the smell around you.
 ~
-9 11
+11
+1 2 0 9
 D1
 You see the north east corner.
 ~
@@ -1261,7 +1310,8 @@ The North East Corner of the Dungeon~
 You are against a wall in the dungeon.  It is quite dark here.  The lack of
 any windows in the area explains the smell around you.
 ~
-9 11
+11
+1 2 0 9
 D2
 You see the east wall.
 ~
@@ -1278,7 +1328,8 @@ The West Wall of the Dungeon~
 You are against a wall in the dungeon.  It is quite dark here.  The lack of
 any windows in the area explains the smell around you.
 ~
-9 11
+11
+1 2 0 9
 D0
 You see the north west corner.
 ~
@@ -1300,7 +1351,8 @@ The East Wall of the Dungeon~
 You are against a wall in the dungeon.  It is quite dark here.  The lack of
 any windows in the area explains the smell around you.
 ~
-9 11
+11
+1 2 0 9
 D0
 You see the north east corner.
 ~
@@ -1322,7 +1374,8 @@ The South West Corner of the Dungeon~
 You are against a wall in the dungeon.  It is quite dark here.  The lack of
 any windows in the area explains the smell around you.
 ~
-9 11
+11
+1 2 0 9
 D0
 You see the north wall.
 ~
@@ -1339,7 +1392,8 @@ The South Wall of the Dungeon~
 You are against a wall in the dungeon.  It is quite dark here.  The lack of
 any windows in the area explains the smell around you.
 ~
-9 11
+11
+1 2 0 9
 D0
 You see the center of the dungeon.
 ~
@@ -1361,7 +1415,8 @@ The South East Corner of the Dungeon~
 You are against a wall in the dungeon.  It is quite dark here.  The lack of
 any windows in the area explains the smell around you.
 ~
-9 11
+11
+1 2 0 9
 D0
 You see the east wall.
 ~
@@ -1381,7 +1436,8 @@ A Room in Mud School~
 There is a sign on the wall (type '@@cLOOK SIGN@@N' to read it).
  
 ~
-16412 1
+1
+1 4 0 16412
 D0
 You see the next station of Mud School.
 ~
@@ -1419,7 +1475,8 @@ You are in Furey's Training Room.  Around you are all sorts of physical
 and mental training tools.  The whole room is filled with magic, holiness, 
 and sweat.  There is a sign on the wall.
 ~
-16412 1
+1
+1 4 0 16412
 D1
 You see the room you came from, and the room you should go to.
 ~
@@ -1440,7 +1497,8 @@ You are in a room filled with weapons, books, and many combat dummies, some
 cut and stabbed many times, others burnt to a crisp.  The room is filled with
 sweat and an aura of magic.  There is a sign on the wall.
 ~
-16412 1
+1
+1 4 0 16412
 D3
 You see the room you came from and the room you should go to.
 ~
@@ -1462,7 +1520,8 @@ You are on a safe looking platform, built into a large cloud floating peacefully
 above the MudSchool Arena.  Below you, you can just make out what seems to be
 an arena, while above you a strange portal glows brightly.
 ~
-12 11
+11
+1 2 0 12
 S
 #0
 #MOBILES
@@ -1473,7 +1532,7 @@ The sly little Abu is here, looking for something to kill
 ~
 ~
 1048576 400
-4 1
+5 1
 -30 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1486,7 +1545,7 @@ An fraction of Aliaser's power floats here.
 He is big and bad.  Don't mess with him.
 ~
 136 1000
-72 1
+73 1
 0 0 0
 ! 0 0 17 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1501,7 +1560,7 @@ He is big, he is bad.  You don't want to fight him when he isn't chained up.
 would really suffer the consequences.
 ~
 8 0
-3 0
+4 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1543,7 +1602,7 @@ He looks mean, but you feel comfortable that you can kill him, especially since
 he is leashed up, and you are not.
 ~
 0 0
-11 0
+12 0
 50 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1597,7 +1656,7 @@ A gekko is slithering around here.
 The gekko smiles at you, completely harmless!
 ~
 0 100
-8 0
+9 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1636,7 +1695,7 @@ The squirrel looks for a tree to climb here.
 His fur might be worth money.
 ~
 0 100
-5 0
+6 0
 10 -2 -2
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1675,7 +1734,7 @@ Pooh Bear digs in his honey pot for a little treat.
 The bear must be bigger than you!  It wants to rip your head off.
 ~
 0 0
-4 0
+5 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1687,7 +1746,7 @@ Piglet tries to remain on the ground, whilst holding onto a balloon here.
 ~
 ~
 0 0
-9 0
+8 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1700,7 +1759,7 @@ An adept of Frag is here, grinning and selling you things.
 He is big and bad.  Don't mess with him.
 ~
 136 1000
-75 1
+74 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1740,7 +1799,7 @@ This horrible creature is your final test for mud school.  Kill him, and the
 diploma is yours.
 ~
 512 0
-12 0
+11 0
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1753,7 +1812,7 @@ A newbie Squire stands here, dropping equipment all over the place.
 ~
 ~
 553 0
-3 1
+4 1
 0 0 0
 ! 1 0 0 7 0 0 0
 | 0 0 0 0 0 0 0

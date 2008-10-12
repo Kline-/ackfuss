@@ -1,6 +1,6 @@
 #AREA
 @@BGarmaine@@N~
-Q 20
+Q 21
 K none~
 L @@W{@@eA@@gD@@eE@@gP@@eT@@W}@@N~
 N 130
@@ -26,7 +26,8 @@ W darksol~
 out here?@@N
 
 ~
-81989 5
+5
+1 5 0 81989
 D0
 ~
 ~
@@ -57,7 +58,8 @@ S
 footprints around it.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 gates~
@@ -89,7 +91,8 @@ S
 from the building.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 door~
@@ -123,7 +126,8 @@ S
 feebly hanging on a wall.@@N
 
 ~
-81928 1
+1
+1 3 0 81928
 D0
 ~
 french~
@@ -156,7 +160,8 @@ S
 who is the likely guildmaster.@@N
 
 ~
-81928 1
+1
+1 3 0 81928
 D2
 ~
 ~
@@ -179,7 +184,8 @@ S
 old and worn down.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -212,7 +218,8 @@ S
 enter.@@N
 
 ~
-81992 1
+1
+1 4 0 81992
 D1
 ~
 ~
@@ -242,7 +249,8 @@ S
 small fireplace with some burnt wood in it here also.@@N
 
 ~
-81992 1
+1
+1 4 0 81992
 D3
 ~
 ~
@@ -275,7 +283,8 @@ S
 inside, so somebody must run the place.@@N
 
 ~
-81928 1
+1
+1 3 0 81928
 D1
 ~
 ~
@@ -307,7 +316,8 @@ S
 must still live comfortably.@@N
 
 ~
-81928 11
+11
+1 3 0 81928
 D3
 ~
 ~
@@ -329,7 +339,8 @@ S
 shines.@@N
 
 ~
-81928 11
+11
+1 3 0 81928
 D1
 ~
 ~
@@ -362,7 +373,8 @@ S
 all snow.  The snow, however, is more thick in the air than anywhere else.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D1
 ~
 ~
@@ -398,7 +410,8 @@ S
 east.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 weapon~
@@ -430,7 +443,8 @@ S
 small counter to do business on, and a fire in the fireplace.@@N
 
 ~
-81928 1
+1
+1 3 0 81928
 D2
 ~
 ~
@@ -468,7 +482,8 @@ S
 east.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 shadowy~
@@ -502,7 +517,8 @@ S
 nothing can be seen through it.@@N
 
 ~
-81929 1
+1
+1 4 0 81929
 D2
 ~
 ~
@@ -525,7 +541,8 @@ S
 @@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 relic~
@@ -553,7 +570,8 @@ Suprisingly, the inside of the building is a lot nicer than the stairs leading
 a warm fire in the fireplace, and there is a small counter here.@@N
 
 ~
-81928 11
+11
+1 3 0 81928
 D2
 ~
 ~
@@ -580,7 +598,8 @@ S
 continue to be here.  Looking up the stairs, a small building can be seen.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D4
 ~
 ~
@@ -607,7 +626,8 @@ S
 stop people from blowing off the stairs.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D4
 ~
 ~
@@ -638,7 +658,8 @@ S
 and then the path justs continues past it.@@N
 
 ~
-81985 1
+1
+1 4 0 81985
 D0
 ~
 door~
@@ -672,7 +693,8 @@ S
 leads to isn't distinguishable.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -712,7 +734,8 @@ S
 the west, and more of this road can be seen to the east.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D1
 ~
 ~
@@ -751,7 +774,8 @@ S
 here.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -786,7 +810,8 @@ S
 the walls, and some books lying around.@@N
 
 ~
-81928 1
+1
+1 3 0 81928
 D2
 ~
 ~
@@ -819,7 +844,8 @@ S
 some faint noises can be heard from further down the path.@@N
 
 ~
-82241 5
+5
+1 5 0 82241
 D0
 ~
 door~
@@ -853,7 +879,8 @@ S
 rusty broadsword hanging on the wall.@@N
 
 ~
-81928 1
+1
+1 3 0 81928
 D2
 ~
 ~
@@ -877,7 +904,8 @@ S
 can now be heard seemingly from within the mines.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -905,7 +933,8 @@ S
 path here, but they are headed the other way.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -930,7 +959,8 @@ S
 ahead.  There is just snow and coldness.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D1
 ~
 ~
@@ -958,7 +988,8 @@ S
 fade in out of the snow, but there are no apparent signs of life.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -983,7 +1014,8 @@ S
 kill, and the cold stings like thousands of tiny needles.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -1010,7 +1042,8 @@ S
 be seen is bitter cold and despair.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 shadow~
@@ -1049,7 +1082,8 @@ S
 @@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -1073,7 +1107,8 @@ S
 completely black, so nothing can be seen inside.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 ~
@@ -1098,7 +1133,8 @@ S
 however, a small hairline crack in one of the walls.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D2
 ~
 ~
@@ -1127,7 +1163,8 @@ S
 
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1155,7 +1192,8 @@ S
 coated with thick ice, which gleams in the light.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1174,7 +1212,8 @@ As the tunnel continues, it begins to turn westardly.  The walls are carved
 colder though.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1193,7 +1232,8 @@ S
 here also.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1215,7 +1255,8 @@ S
 getting larger.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1236,7 +1277,8 @@ S
 frozen solid.  The tunnel continues in both directions.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1257,7 +1299,8 @@ S
 will happen.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1278,7 +1321,8 @@ S
 continues.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1302,7 +1346,8 @@ S
 Maybe something hurried the miners to make this tunnel.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1327,7 +1372,8 @@ S
 walls are also jagged here.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1356,7 +1402,8 @@ S
 rest of the chamber, the walls are perfectly smooth, and freezing cold.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1383,7 +1430,8 @@ S
 south.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1408,7 +1456,8 @@ S
 but more tunnels branch off from it.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1441,7 +1490,8 @@ S
 proportions, but there doesn't look like anything is inside.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1460,7 +1510,8 @@ S
 extremely low.  A freezing blast of air flows from the tunnel.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1491,7 +1542,8 @@ S
 east.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1510,7 +1562,8 @@ S
 There seems to be some things sparkling ahead, also.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D2
 ~
 ~
@@ -1529,7 +1582,8 @@ S
 ahead.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1550,7 +1604,8 @@ S
 @@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1575,7 +1630,8 @@ S
 screams and other sounds.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1598,7 +1654,8 @@ S
 mud, in both directions, and some sparkling can be seen up ahead.@@N
 
 ~
-82249 5
+5
+1 6 0 82249
 D2
 ~
 ~
@@ -1628,7 +1685,8 @@ S
 be scene further down the tunnel.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1656,7 +1714,8 @@ S
 reason, the digging stopped right here though.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D3
 ~
 ~
@@ -1677,7 +1736,8 @@ S
 coming from the passage.  Something ominous seems near.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1699,7 +1759,8 @@ S
 even colder.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1723,7 +1784,8 @@ S
 the temperature falls just as quickly.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D2
 ~
 ~
@@ -1744,7 +1806,8 @@ S
 higher here.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1771,7 +1834,8 @@ S
 drastically warmer.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1798,7 +1862,8 @@ S
 somewhere.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1826,7 +1891,8 @@ S
 meticulously carved, unlike previous tunnels.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1853,7 +1919,8 @@ S
 continues east, and south where a small tunnel branches out.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -1880,7 +1947,8 @@ S
 little further south.@@N
 
 ~
-81961 5
+5
+1 5 0 81961
 D0
 ~
 smoltering~
@@ -1918,7 +1986,8 @@ S
 there was a lot of ice in here recently.@@N
 
 ~
-81961 5
+5
+1 5 0 81961
 D2
 ~
 ~
@@ -1939,7 +2008,8 @@ S
 for the ceiling is rather low here.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D2
 ~
 ~
@@ -1963,7 +2033,8 @@ S
 @@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -1985,7 +2056,8 @@ S
 down.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -2006,7 +2078,8 @@ S
 continues.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -2031,7 +2104,8 @@ S
 present temperature also.  The tunnel just keeps continuing.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D2
 ~
 ~
@@ -2050,7 +2124,8 @@ S
 ice.  The tunnel continues to the east.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -2075,7 +2150,8 @@ S
 The wind has seemed to die down a bit.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -2102,7 +2178,8 @@ S
 even thicker.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -2124,7 +2201,8 @@ S
 everywhere.  The tunnel appears to turn ahead.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D1
 ~
 ~
@@ -2145,7 +2223,8 @@ S
 @@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -2167,7 +2246,8 @@ S
 this ice, and the wind is totally gone now.@@N
 
 ~
-81993 5
+5
+1 5 0 81993
 D0
 ~
 ~
@@ -2189,7 +2269,8 @@ S
 looks an odd blue color...@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D0
 ~
 icy~
@@ -2211,7 +2292,8 @@ S
 of the room, with an inscription written in it.@@N
 
 ~
-81985 5
+5
+1 4 0 81985
 D2
 ~
 ~
@@ -2265,7 +2347,7 @@ butch~
 
 ~
 125674 1000
-131 1
+130 1
 -2500 1000 1000
 ! 2 0 0 7 425726 262144 80
 | 0 0 0 0 0 0 0
@@ -2278,7 +2360,7 @@ Darkshade~
 
 ~
 125694 1000
-130 1
+129 1
 -2500 1000 1000
 ! 2 0 0 7 425726 0 144
 | 0 0 0 0 0 0 0
@@ -2291,7 +2373,7 @@ Xania~
 
 ~
 27368 1000
-143 2
+142 2
 -2500 1000 1000
 ! 0 0 0 7 425726 8392832 48
 | 0 0 0 0 0 0 0
@@ -2306,7 +2388,7 @@ garmaine gate guard~
 
 ~
 27368 1000
-139 1
+140 1
 -2500 1000 1000
 ! 7 0 0 7 490126 38010880 48
 | 0 0 0 0 0 0 0
@@ -2321,7 +2403,7 @@ relm~
 
 ~
 92906 1000
-134 2
+133 2
 -2500 1000 1000
 ! 5 0 0 7 686222 4195328 144
 | 0 0 0 0 0 0 0
@@ -2366,7 +2448,7 @@ guardian~
 
 ~
 117482 1000
-141 0
+140 0
 -2500 1000 1000
 ! 0 0 17 7 424590 33554944 144
 | 0 0 0 0 0 0 0
@@ -2411,7 +2493,7 @@ guard garmaine~
 
 ~
 27368 1000
-132 1
+131 1
 -2500 1000 1000
 ! 3 0 0 7 948878 1048576 80
 | 0 0 0 0 0 0 0
@@ -2441,7 +2523,7 @@ guard garmaine~
 
 ~
 27368 1000
-140 1
+141 1
 -2500 1000 1000
 ! 7 0 0 7 948878 1048576 48
 | 0 0 0 0 0 0 0
@@ -2456,7 +2538,7 @@ guard garmaine~
 
 ~
 27368 1000
-138 1
+137 1
 -2500 1000 1000
 ! 7 0 0 7 948878 1048576 48
 | 0 0 0 0 0 0 0
@@ -2471,7 +2553,7 @@ frost dragon~
 
 ~
 543464 0
-141 1
+140 1
 -2500 1000 1000
 ! 3 0 8 7 948878 0 80
 | 0 0 0 0 0 0 0
@@ -2531,7 +2613,7 @@ poppy~
 
 ~
 1600248 1000
-138 1
+139 1
 -2500 1000 1000
 ! 5 0 0 7 424590 33554944 80
 | 0 0 0 0 0 0 0
@@ -2546,7 +2628,7 @@ guyue~
 
 ~
 1633000 0
-135 1
+134 1
 -2500 1000 1000
 ! 3 0 0 7 948990 33554432 144
 | 0 0 0 0 0 0 0
@@ -2576,7 +2658,7 @@ chimera~
 
 ~
 1100520 -1000
-140 2
+139 2
 -2500 1000 1000
 ! 3 0 19 7 424846 55578152 48
 | 0 0 0 0 0 0 0
@@ -2591,7 +2673,7 @@ yeti~
 
 ~
 125674 0
-134 1
+135 1
 -2500 1000 1000
 ! 3 0 19 7 424590 262144 80
 | 0 0 0 0 0 0 0

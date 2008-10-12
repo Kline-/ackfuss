@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@lEthereal Plane@@N~
-Q 20
+Q 21
 K etherealplane~
 L @@W{@@mRMORT@@W}@@N~
 N 83
@@ -20,7 +20,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -45,7 +46,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -70,7 +72,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -95,7 +98,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -124,7 +128,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -149,7 +154,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -178,7 +184,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -203,7 +210,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -228,7 +236,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -253,7 +262,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -278,7 +288,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -303,7 +314,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -328,7 +340,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -353,7 +366,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -386,7 +400,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 10
+10
+1 1 0 8
 D0
 ~
 ~
@@ -411,7 +426,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 10
+10
+1 1 0 8
 D0
 ~
 ~
@@ -440,7 +456,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 10
+10
+1 1 0 8
 D0
 ~
 ~
@@ -465,7 +482,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 10
+10
+1 1 0 8
 D0
 ~
 ~
@@ -490,7 +508,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 10
+10
+1 1 0 8
 D0
 ~
 ~
@@ -515,7 +534,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 10
+10
+1 1 0 8
 D0
 ~
 ~
@@ -540,7 +560,8 @@ You stand in the Ethereal plane, it is a dark plane with nothing but floating
 see the same thing.
 
 ~
-8 10
+10
+1 1 0 8
 D0
 ~
 ~
@@ -567,7 +588,8 @@ The NPC party house.~
 This is where NPC mobs go when they are in a hurting way.  If you are here,
 you are WRONG!!
 ~
-17418 11
+11
+1 4 0 17418
 D5
 ~
 ~
@@ -577,7 +599,8 @@ S
 Within the Planes~
 The air surrounding you is charged, energy flickering in and out.
 ~
-198664 11
+11
+1 4 0 198664
 D5
 ~
 ~
@@ -592,7 +615,7 @@ A Plasma Beast
 ~
 ~
 532608 0
-78 1
+79 1
 -200 200 200
 ! 0 0 19 7 22662 0 0
 | 0 0 0 0 0 0 0

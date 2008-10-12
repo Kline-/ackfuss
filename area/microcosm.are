@@ -1,6 +1,6 @@
 #AREA
 @@bThe Microcosm@@N~
-Q 20
+Q 21
 K none~
 L {RM}~
 N 60
@@ -20,7 +20,8 @@ B Currently building area.
 before you to the south, and where you came from, is still up from you...  at
 least that hasn't changed.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -36,7 +37,8 @@ S
 before you to the south, and where you came from, is still up from you...  at
 least that hasn't changed.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -51,7 +53,8 @@ S
 @@eYou stand at the end of the back alley, nothing here. Might as well go up
 of North...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -66,7 +69,8 @@ S
 @@eThis is a back alley behind the stores. Why is this even here? who in their
 right mind would need back alleys? (har har har)@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -85,7 +89,8 @@ S
 @@eThis is a back alley behind the stores. Why is this even here? who in their
 right mind would need back alleys? (har har har)@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -104,7 +109,8 @@ S
 @@eYou stand at the end of the back alley, nothing here. Might as well go up
 of North...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -119,7 +125,8 @@ S
 @@eThis is a back alley behind the stores. Why is this even here? who in their
 right mind would need back alleys? (har har har)@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -138,7 +145,8 @@ S
 @@eThis is a back alley behind the stores. Why is this even here? who in their
 right mind would need back alleys? (har har har)@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -157,7 +165,8 @@ S
 @@yStanding south of the stairs, along the eastern most wall of the chamber.
 To the south is a back alley.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -180,7 +189,8 @@ S
 @@yStanding south of the stairs, along the western most wall of the chamber.
 To the south is a back alley.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -210,7 +220,8 @@ S
  
    STAY TUNED FOLKS, MORE TO COME IN LATER VNUMS@@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -228,7 +239,8 @@ S
  
    STAY TUNED FOLKS, MORE TO COME IN LATER VNUMS@@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -241,7 +253,8 @@ S
 six inches below the rest if the square.  A  giant black archway towers above
 you to the north. Where does it go?@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -266,7 +279,8 @@ S
 six inches below the rest if the square.  A  giant black archway towers above
 you to the north. Where does it go?@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -290,7 +304,8 @@ S
 really keen to smoke in here.  Cupboards are filled with different ingredients
 while the shelves are neatly lined with completed mixtures.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D3
 ~
 ~
@@ -302,7 +317,8 @@ S
 unfortunately, you would not be able to put your shape of body into most of
 them.   There are however, a few pieces of armor, that just might fit...@@N
 ~
-25608 11
+11
+1 4 0 25608
 D1
 ~
 ~
@@ -316,7 +332,8 @@ S
  
 
 ~
-24584 11
+11
+1 3 0 24584
 D3
 ~
 ~
@@ -328,13 +345,15 @@ S
 There are small groups of people huddled into corner tables. Only a few
 characters stick out in here.@@N
 ~
-24588 11
+11
+1 4 0 24588
 S
 #5769
 @@yBakery@@N~
 @@lThe Place for the purveance of comsumables. 'Nuff said.@@N
 ~
-25608 11
+11
+1 4 0 25608
 D3
 ~
 ~
@@ -346,7 +365,8 @@ S
 bakery to the east, and a cafe to the west.@@N @@pThere is a @@msign@@p
 hanging on the Cafe door.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -369,7 +389,8 @@ S
 @@pContinueing along main street, you find an Armory to your west, and a
 lingere boutique to your east.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -395,7 +416,8 @@ S
 @@eMain Street@@N~
 The start of main street.  An Apothecary lies to the east.
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -419,7 +441,8 @@ S
 north, shops to your south, and military exercises going on to your east and
 west.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -446,7 +469,8 @@ S
 @@xYou stand inside a brightly well lit, well-padded room@@N This is obviously
 some kind of sanitarium.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D5
 ~
 ~
@@ -457,7 +481,8 @@ S
 @@dThe Laughter is defenitely louder here. A bright white light emanates from
 the room above you.@@N
 ~
-24585 11
+11
+1 4 0 24585
 D4
 ~
 ~
@@ -472,7 +497,8 @@ S
 @@dThis seems to be a jail cell for all the crooked ideas even conjured up!
 These things are nasty! lookout!@@N
 ~
-24584 11
+11
+1 3 0 24584
 D5
 ~
 ~
@@ -484,7 +510,8 @@ S
 whoever is laughing, starts laughing so hard they almost die of
 hyperventalation. Well, no choice but to see what lies beyond...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -496,7 +523,8 @@ S
 whoever is laughing, starts laughing so hard they almost die of
 hyperventalation. Well, no choice but to see what lies beyond...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D3
 ~
 ~
@@ -508,7 +536,8 @@ S
 whoever is laughing, starts laughing so hard they almost die of
 hyperventalation. Well, no choice but to see what lies beyond...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -519,7 +548,8 @@ S
 @@dThere are several directions to take, which way will you go? The hideous
 laughter seems ot be coming from all around you. This place is Creepy.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -547,7 +577,8 @@ S
 is supposed to be locked but any strain on it and the lock will break. You
 hear some kind of insane giggley laughter soming from behind it.@@N
 ~
-24585 11
+11
+1 4 0 24585
 D0
 ~
 ~
@@ -562,7 +593,8 @@ S
 @@dYou look behind you and notice that you cannot see out of this globe, no
 light gets in here. you can just BARELY see the north exit from here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -578,7 +610,8 @@ S
 enough to tell that there is an exit above you, and the one you came through
 below you.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -594,7 +627,8 @@ S
 darkness, untill finally you can almost reach out and touch it. the darkness
 has definite shape to it.  It's almost as if it is a warning.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -610,7 +644,8 @@ S
 Once your eyes adjust to the light, you can see you are inside the eyeball!
 Pretty non-descript really, just a lawnchair and a cup holder.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D2
 ~
 ~
@@ -622,7 +657,8 @@ S
 Once your eyes adjust to the light, you can see you are inside the eyeball!
 Pretty non-descript really, just a lawnchair and a cup holder.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D2
 ~
 ~
@@ -634,7 +670,8 @@ S
 emanating from it.  You could go back down the way you came and avoid this
 mystery, but wheres the fun in that?@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -650,7 +687,8 @@ S
 emanating from it.  You could go back down the way you came and avoid this
 mystery, but wheres the fun in that?@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -665,7 +703,8 @@ S
 @@aThe path continues for a ways until you come to an up-turn in the path..
 what could be up here?@@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -680,7 +719,8 @@ S
 @@aThe path continues for a ways until you come to an up-turn in the path..
 what could be up here?@@N
 ~
-24584 11
+11
+1 3 0 24584
 D3
 ~
 ~
@@ -694,7 +734,8 @@ S
 @@eA Split in the Path@@N~
 @@aThe path here splits into two symetric paths, which way to go?@@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -714,7 +755,8 @@ S
 .. There is a better view ofthe market here, not that it has changed much. The
 path splits above you.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -730,7 +772,8 @@ S
 Upwards you can still see the cube, and Up and North that strange darkness
 persists.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -748,7 +791,8 @@ S
 @@lChamber Middle@@N~
 @@rVery little activity here, you may have found a place to rest. Although not for too long, something nasty may come from that dark globe above the council hall and eat you for lunch.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -772,7 +816,8 @@ S
 factor that this place oozes.  Some bonehead scrawled some @@Ggrafitti@@r on
 the wall here... juveniles...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -800,7 +845,8 @@ S
 @@lChamber Middle@@N~
 @@rVery little activity here, you may have found a place to rest. Although not for too long, something nasty may come from that dark globe above the council hall and eat you for lunch.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -822,7 +868,8 @@ S
 @@lChamber Middle@@N~
 @@rVery little activity here, you may have found a place to rest. Although not for too long, something nasty may come from that dark globe above the council hall and eat you for lunch.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -846,7 +893,8 @@ S
 Upwards you can still see the cube, and Up and North that strange darkness
 persists.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -865,7 +913,8 @@ S
 @@rNestled in this corner you can just sit back and watch the action. You get
 a good view of the whole place from here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -879,7 +928,8 @@ S
 @@lNorth Wall@@N~
 @@rAlong the North Wall of the Chamber. Just like the rest of it...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -899,7 +949,8 @@ S
 the next level, where there is some kind of market place. Not That you need
 stairs, with the floating and all, it's just for asthetics...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -926,7 +977,8 @@ S
 your descent upon this portion of the stairway.@@N @@rA huge military style
 gathering has placed itself in front of this archway.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -950,7 +1002,8 @@ S
 the next level, where there is some kind of market place. Not That you need
 stairs, with the floating and all, it's just for asthetics...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -977,7 +1030,8 @@ S
 your descent upon this portion of the stairway.@@N @@rA huge military style
 gathering has placed itself in front of this archway.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1004,7 +1058,8 @@ S
 through to clean this out when they fry ALOT of ideas... better not track
 ashes through this head or you might not live very long.@@N
 ~
-24588 11
+11
+1 4 0 24588
 D3
 ~
 ~
@@ -1021,7 +1076,8 @@ S
 @@band @@rpuke @@bGreen. @@rThe @@brest @@rof @@bwhat @@rseems @@blike @@ran
 @@bendless @@rhallway @@bbetter @@rnot @@bbe @@rlike @@bthis!@@N
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -1035,7 +1091,8 @@ S
 @@eEndless Hallways@@N~
 @@lBefore you lies what looks like an infinite ammount of hallways and corridors.  More Corridors.. *sigh* You can still turn back you know...@@N
 ~
-24588 11
+11
+1 4 0 24588
 D2
 ~
 ~
@@ -1049,7 +1106,8 @@ S
 @@lAn @@pAnomoly @@rIn @@yThe @@eAnals @@lOf @@pThe @@eMind@@N~
 @@dWhat is this?! The junk-yard of the mind!?  Lost, forgotten and ignored (not altogether by accident) articles of the mind sit here, plotting their return to the main center of the mind.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -1059,7 +1117,8 @@ S
 @@lAn @@pAnomoly @@rIn @@yThe @@eAnals @@lOf @@pThe @@eMind@@N~
 @@d Deeper inside the crack movement has become restricted.  Horrible sounds can be heard to the North... WHAT COULD MAKE SUCH NOISES?@@N
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -1073,7 +1132,8 @@ S
 @@lAn @@pAnomoly @@rIn @@yThe @@eAnals @@lOf @@pThe @@eMind@@N~
 @@dMental strain has caused a buckle in the fabric of the mind. You are inside it. What lurks in the depth of a Twisted mind?@@N
 ~
-24588 11
+11
+1 4 0 24588
 D2
 ~
 ~
@@ -1086,7 +1146,8 @@ S
 #5684
 @@lMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1099,7 +1160,8 @@ S
 #5683
 @@pMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1112,7 +1174,8 @@ S
 #5682
 @@eMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1125,7 +1188,8 @@ S
 #5681
 @@lMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1138,7 +1202,8 @@ S
 #5680
 @@yMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -1151,7 +1216,8 @@ S
 #5679
 @@eMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -1170,7 +1236,8 @@ S
 hallways above you, you just step onto the walls @@lAnd walk like normal. Keen
 @@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1191,7 +1258,8 @@ S
 #5677
 @@eMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1204,7 +1272,8 @@ S
 #5676
 @@rMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1222,7 +1291,8 @@ S
 @@N @@eAnd not totally unsurprisingly, when you want to enter the hallways above
 you, you just step onto the walls @@eAnd walk like normal. Keen.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1239,7 +1309,8 @@ S
 #5674
 @@yMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -1252,7 +1323,8 @@ S
 #5673
 @@eMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -1265,7 +1337,8 @@ S
 #5671
 @@pMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1278,7 +1351,8 @@ S
 #5670
 @@yMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1297,7 +1371,8 @@ S
 hallways above you, you just step onto the walls @@yAnd walk like normal. Keen
 @@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -1314,7 +1389,8 @@ S
 #5668
 @@rMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1331,7 +1407,8 @@ S
 #5667
 @@eMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1350,7 +1427,8 @@ S
 hallways above you, you just step onto the walls @@pAnd walk like normal. Keen
 @@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1367,7 +1445,8 @@ S
 #5665
 @@lMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1380,7 +1459,8 @@ S
 #5664
 @@rMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1393,7 +1473,8 @@ S
 #5663
 @@rMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -1406,7 +1487,8 @@ S
 #5662
 @@eMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -1424,7 +1506,8 @@ S
 @@N @@bAnd not totally unsurprisingly, when you want to enter the hallways above
 you, you just step onto the walls @@bAnd walk like normal. Keen.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1441,7 +1524,8 @@ S
 #5660
 @@lMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1454,7 +1538,8 @@ S
 #5659
 @@rMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1476,7 +1561,8 @@ S
 @@N @@pAnd not totally unsurprisingly, when you want to enter the hallways above
 you, you just step onto the walls @@pAnd walk like normal. Keen.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1493,7 +1579,8 @@ S
 #5657
 @@lMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -1506,7 +1593,8 @@ S
 #5656
 @@rMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -1526,7 +1614,8 @@ S
  @@N
  
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1543,7 +1632,8 @@ S
 #5654
 @@rMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1556,7 +1646,8 @@ S
 #5653
 @@lMore and More of this hallway...@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1574,7 +1665,8 @@ These hallways seem just as used for passage ways as they do for offices.  The
 @@N And not totally unsurprisingly, when you want to enter the hallways above
 you, you just step onto the walls and walk like normal. Keen.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1600,7 +1692,8 @@ S
 notice it missing...@@N @@lIf you were a higher brain function on a break, you
 would deffinitely hang here.@@N
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -1613,7 +1706,8 @@ S
 #5650
 @@dHopelessly Wandering Through The Anals Of The Mind@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1642,7 +1736,8 @@ S
 #5649
 @@l Hopelessly Wandering Through The Anals Of The Mind@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1667,7 +1762,8 @@ S
 #5648
 @@rHopelessly Wandering Through The Anals Of The Mind@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1688,7 +1784,8 @@ S
 #5647
 @@yHopelessly Wandering Through The Anals Of The Mind@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1717,7 +1814,8 @@ S
 #5646
 @@eHopelessly Wandering Through The Anals Of The Mind@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1742,7 +1840,8 @@ S
 #5645
 @@pHopelessly Wandering Through The Anals Of The Mind@@N~
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1775,7 +1874,8 @@ S
 East to the First hole tee-off for those declared clinically insane and wish
 to go around again.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D1
 ~
 ~
@@ -1795,7 +1895,8 @@ Ah, the last hole. After scoring a 58 on the last hole, this nice little
 cool-down hole of a mere 421 yards and par 4 is a nice warm-up for the club
 house. To the east off the green is the trail to the clubhouse.
 ~
-24576 11
+11
+1 2 0 24576
 D0
 ~
 ~
@@ -1811,7 +1912,8 @@ S
 deffinitely the yin, of the cleaner side of the seat yang.  The only way to
 describe this mess is carnage.@@N
 ~
-24588 11
+11
+1 4 0 24588
 D4
 ~
 ~
@@ -1826,7 +1928,8 @@ You've walked into a room full of old men in bad outfits. They're jabbering on
 still there. Down a flight of stairs resides what could be the tackiest
 looking shop you've ever seen.
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -1842,7 +1945,8 @@ S
 if you will... the hallway continues to the north while a doorway with some
 blades of grass trailing from it is to the west. @@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1862,7 +1966,8 @@ St. Charles place@@N~
 place, the square on a monopoly board! Uh-oh, hotel... heck you aint carrying
 enough....@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1878,7 +1983,8 @@ S
 have sworn you passed that shoe smudge on the floor at least twelve-thousand
 times... @@N
 ~
-24584 11
+11
+1 3 0 24584
 D3
 ~
 ~
@@ -1891,7 +1997,8 @@ S
 #5626
 New room~
 No description~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -1900,7 +2007,8 @@ S
 #5625
 New room~
 No description~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1913,7 +2021,8 @@ S
 #5624
 New room~
 No description~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1926,7 +2035,8 @@ S
 #5623
 New room~
 No description~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1939,7 +2049,8 @@ S
 #5622
 New room~
 No description~
-24576 11
+11
+1 2 0 24576
 D0
 ~
 ~
@@ -1961,7 +2072,8 @@ S
 
 
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -1982,7 +2094,8 @@ S
  @@eSTILL UNDER CONTRUCTION NOTHING TO BE GAINED BY GOING FURTHER
  @@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 door~
@@ -1994,7 +2107,8 @@ S
 Explosion wouldn't scratch this puppy.  A huge keyhole is in the center of the
 door.  Hrm, the key must be on that guard. @@N
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 door~
@@ -2011,7 +2125,8 @@ S
 @@cNote@@a on the central bench. The doors leading East West Up North and Down
 are all unlocked, how odd. @@N
 ~
-24590 11
+11
+1 5 0 24590
 D0
 ~
 ~
@@ -2048,7 +2163,8 @@ S
 failed to notice you here. You could easily move back and forth between the
 now unguarded council chamber and outside the lobby.@@N
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -2064,7 +2180,8 @@ S
 moths waiting for an audience.  Not much is going on here. The Council Chamber
 is to the North, or you can go back the way you came, to the South.@@N
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -2082,7 +2199,8 @@ S
 much activity.@@N @@rUp there is a strange darkness and almost no movement or
 activity.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2124,7 +2242,8 @@ S
 the Central Nervous Chamber.  Who knows, it might be fun meandering about
 inside a human(?) body.@@N
 ~
-24588 11
+11
+1 4 0 24588
 D2
 ~
 ~
@@ -2152,7 +2271,8 @@ S
 number. @@pYou walk through the door undaunted by the scale of time which has
 passed, seeing as they were at number -12301 when @@pYou arrived. @@N
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -2178,7 +2298,8 @@ S
 rest of todays discoveries, you are content to walk in silence the rest of the
 way @@N
 ~
-24588 11
+11
+1 4 0 24588
 D1
 ~
 ~
@@ -2194,7 +2315,8 @@ S
 Oddly enough, you can now hear an alarm going off, from where? who knows.
 Despite your attempts, you are forced down farther through the vein. @@N
 ~
-24590 11
+11
+1 5 0 24590
 D5
 ~
 ~
@@ -2211,7 +2333,8 @@ S
 There is yet another @@eIMPORTANT SIGN@@R here.
 @@N
 ~
-16398 11
+11
+1 4 0 16398
 D4
 ~
 ~
@@ -2236,7 +2359,8 @@ S
 action is really not fun. Dodging the fast-moving blood-cells and trying to
 make your way to the walls of the vein, you move down through the stream. @@N
 ~
-24590 11
+11
+1 5 0 24590
 D5
 ~
 ~
@@ -2252,7 +2376,8 @@ S
 flashing off the walls of the vein above and below you. You don't actually have
 any choice but to go with the flow. @@N
 ~
-24590 11
+11
+1 5 0 24590
 D4
 ~
 ~
@@ -2270,7 +2395,8 @@ S
 the head. You pass out. You only hear the sirens and the mechanical voice stop
 their song as you are dragged upwards.@@N
 ~
-24590 11
+11
+1 5 0 24590
 D4
 ~
 ~
@@ -2287,7 +2413,8 @@ S
 texture of the floor you are being dragged on chan@@gges during the course of
 your journey. You pass out finally once more and are dragged further. @@N
 ~
-24590 11
+11
+1 5 0 24590
 D1
 ~
 ~
@@ -2318,7 +2445,8 @@ S
 here and slap whoever is in charge with a sepina so fast their protons will
 spin!
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -2335,7 +2463,8 @@ S
 @@eCyberlich@@N@@x do i get out of here now?" With a strain of discomfort on his face,
 he remarks "You don't." He speeds up his pace.
 ~
-24588 11
+11
+1 4 0 24588
 D1
 ~
 ~
@@ -2351,7 +2480,8 @@ S
 of an organism. Your growth has stopped. Pity, for you think you rather die
 than stay here. You walk on...
 ~
-24588 11
+11
+1 4 0 24588
 D1
 ~
 ~
@@ -2373,7 +2503,8 @@ S
 joins the hoards of molecules streaming into formation, presumably in defence
 of their "machine".
 ~
-24588 11
+11
+1 4 0 24588
 D1
 ~
 ~
@@ -2389,7 +2520,8 @@ S
 day has been like that so, taking it in stride you proceed through this wonder
 to the chambers of the higher functions.@@N
 ~
-24588 11
+11
+1 4 0 24588
 D4
 ~
 ~
@@ -2414,7 +2546,8 @@ S
 
 
 ~
-24588 11
+11
+1 4 0 24588
 D2
 ~
 ~
@@ -2426,7 +2559,8 @@ S
 in all directions, you swear this place must be some kind of quantum
 singularity... @@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -2442,7 +2576,8 @@ S
 alligator skin golf bags, bad clothes and spiked shoes.. AGH!  You can see the
 first Tee Box out the large window here.@@N
 ~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -2458,7 +2593,8 @@ S
 left dog-leg, trees on both sides, and a bunker beyond the green. Par 4 398
 yards.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D0
 ~
 ~
@@ -2473,7 +2609,8 @@ S
 @@BThis hole runs straight off into the distance, a small valley in the middle
 432yards par 4.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D0
 ~
 ~
@@ -2488,7 +2625,8 @@ S
 @@xMuch like the Second hole, long and straight, trees on both sides, only the
 valley is alot wider and deeper here. @@N 398 yards, par 4.
 ~
-24576 11
+11
+1 2 0 24576
 D2
 ~
 ~
@@ -2505,7 +2643,8 @@ S
 fairway shot difficult, as they bounce or roll off into the trees.@@N @@p369
 yards, par 4.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D0
 ~
 ~
@@ -2522,7 +2661,8 @@ S
 recommended as getting it from tee over the pond is difficult even for them
 best golfers.  317 yards par 3. @@N
 ~
-24576 11
+11
+1 2 0 24576
 D1
 ~
 ~
@@ -2538,7 +2678,8 @@ S
 which is wider over here, then a bit to the left is where the green is
 surrounded by some trees and two bunkers.@@N @@r365 yards, par 4. @@N
 ~
-24576 11
+11
+1 2 0 24576
 D0
 ~
 ~
@@ -2553,7 +2694,8 @@ S
 @@yThis hole is merely a tee box, valley then the hole. very short, very easy,
 unless you hit the valley. 217 yards, par 3.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D2
 ~
 ~
@@ -2569,7 +2711,8 @@ S
 there are some funny sounds comingfrom the bushes to the west... 517 yards,
 par 5@@N
 ~
-24576 11
+11
+1 2 0 24576
 D1
 ~
 ~
@@ -2589,7 +2732,8 @@ S
 cobweb not a spec of fecal matierial anywhere! even the @@yseats@@b are clean!
 That's all very interesting, but you have golf to play.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -2603,7 +2747,8 @@ S
 @@lNeural Pathway@@N~
 @@rThis is the central pathway to the Market place.  You move quickly to be out from under the shadow above the council hall... something could come out of there and eat you alive at any second!@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2627,7 +2772,8 @@ S
 and the council chambers. The eerie darkness above the council chamber is
 still giving you the creeps when you look at it. @@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2651,7 +2797,8 @@ S
 and the council chambers. The eerie darkness above the council chamber is
 still giving you the creeps when you look at it. @@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2676,7 +2823,8 @@ S
 stairs, with the floating and all, it's just for asthetics...@@N @@rThis is
 the physical center of the Chamber.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2708,7 +2856,8 @@ S
 much ahppening up here except a few delinquents playing tricks on ppl by
 dropping loads of their favorite pet's fecal material on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2736,7 +2885,8 @@ S
 much ahppening up here except a few delinquents playing tricks on ppl by
 dropping loads of their favorite pet's fecal material on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2764,7 +2914,8 @@ S
 much ahppening up here except a few delinquents playing tricks on ppl by
 dropping loads of their favorite pet's fecal material on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2794,7 +2945,8 @@ S
 a way Up here, where to you know not.@@N @@rThe end of main street is also
 below you@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -2820,7 +2972,8 @@ S
 @@lChamber Central-High@@N~
 @@rThis is an elevated point in the chamber, leading up toward the cube.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D4
 ~
 ~
@@ -2837,7 +2990,8 @@ The platform on which you now stand is nothing more than i gigantic peice of
 except for the guard and a rope ladder descending from the heavens, the last 6
 feet of it wrapped in a coil on the floor.@@N
 ~
-24582 11
+11
+1 4 0 24582
 D4
 ~
 ~
@@ -2853,7 +3007,8 @@ S
 south is a market square, filled with activity.  Even further to the south,
 are shops.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D2
 ~
 ~
@@ -2870,7 +3025,8 @@ S
 Man will you ever have stories to tell when you get home... You place your
 first hand on the ldder and start your journey.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D4
 ~
 ~
@@ -2885,7 +3041,8 @@ S
 @@yYou continue to climb, hand over hand, mile after mile... You're about
 half-way to the cube, you are almost home!@@N
 ~
-24576 11
+11
+1 2 0 24576
 D4
 ~
 ~
@@ -2903,7 +3060,8 @@ S
 withing six inches of your head, just begging you to have the key, open it and
 never return.@@N
 ~
-24576 11
+11
+1 2 0 24576
 D4
 ~
 door~
@@ -2926,7 +3084,8 @@ S
  
 @@lAGHK! What's wrong!? This IS the Central Nervous Chamber they were talking about isnt it!?!? What could be wrong?@@N
 ~
-26638 11
+11
+1 6 0 26638
 D3
 ~
 ~
@@ -2943,7 +3102,8 @@ S
 And that you have done. You can feel that the hold of this dimensia is no
 longer strong enough here to keep you bound by it's realities.@@N
 ~
-16398 11
+11
+1 4 0 16398
 D1
 ~
 ~
@@ -2953,7 +3113,8 @@ S
 @@lNorth Wall@@N~
 @@rAlong the North Wall of the Chamber. Just like the rest of it...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -2972,7 +3133,8 @@ S
 @@rNestled in this corner you can just sit back and watch the action. You get
 a good view of the whole place from here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D1
 ~
 ~
@@ -2986,7 +3148,8 @@ S
 @@lChamber Middle@@N~
 @@rVery little activity here, you may have found a place to rest. Although not for too long, something nasty may come from that dark globe above the council hall and eat you for lunch.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3009,7 +3172,8 @@ S
 @@rWalking along the outside of the Chamber... Every step you take, you see
 something wierder...@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3027,7 +3191,8 @@ S
 @@lChamber Middle@@N~
 @@rVery little activity here, you may have found a place to rest. Although not for too long, something nasty may come from that dark globe above the council hall and eat you for lunch.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3052,7 +3217,8 @@ S
  @@r You wish you could take some of these freaks home to the circus with you
 @@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3070,7 +3236,8 @@ S
 @@lChamber Middle@@N~
 @@rVery little activity here, you may have found a place to rest. Although not for too long, something nasty may come from that dark globe above the council hall and eat you for lunch.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3096,7 +3263,8 @@ S
 @@N @@rUgh, you dont even wanna touch these.. things.. who knows where they've
 been?@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3115,7 +3283,8 @@ S
 @@rYou are floating high above the lower market floor. It is particularly
 boring up here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3142,7 +3311,8 @@ S
 @@rYou are floating high above the lower market floor. It is particularly
 boring up here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3166,7 +3336,8 @@ S
 boring up here.@@N @@rYou are floating directly above the shopd, You're pretty
 sure the owenrs wouldnt appreciate you walking on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3189,7 +3360,8 @@ S
 @@rYou are floating high above the lower market floor. It is particularly
 boring up here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3213,7 +3385,8 @@ S
 boring up here.@@N @@rYou are floating directly above the shopd, You're pretty
 sure the owenrs wouldnt appreciate you walking on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3236,7 +3409,8 @@ S
 @@rYou are floating high above the lower market floor. It is particularly
 boring up here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3260,7 +3434,8 @@ S
 boring up here.@@N @@rYou are floating directly above the shopd, You're pretty
 sure the owenrs wouldnt appreciate you walking on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3279,7 +3454,8 @@ S
 @@rNestled in this corner you can just sit back and watch the action. You get
 a good view of the whole place from here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3298,7 +3474,8 @@ S
 @@rYou are floating high above the lower market floor. It is particularly
 boring up here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3325,7 +3502,8 @@ S
 @@rYou are floating high above the lower market floor. It is particularly
 boring up here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3349,7 +3527,8 @@ S
 boring up here.@@N @@rYou are floating directly above the shopd, You're pretty
 sure the owenrs wouldnt appreciate you walking on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3372,7 +3551,8 @@ S
 @@rYou are floating high above the lower market floor. It is particularly
 boring up here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3396,7 +3576,8 @@ S
 boring up here.@@N @@rYou are floating directly above the shopd, You're pretty
 sure the owenrs wouldnt appreciate you walking on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3419,7 +3600,8 @@ S
 @@rYou are floating high above the lower market floor. It is particularly
 boring up here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3443,7 +3625,8 @@ S
 boring up here.@@N @@rYou are floating directly above the shopd, You're pretty
 sure the owenrs wouldnt appreciate you walking on them.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3462,7 +3645,8 @@ S
 @@rNestled in this corner you can just sit back and watch the action. You get
 a good view of the whole place from here.@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -3482,7 +3666,8 @@ S
 othrs have gathered here, offering their assistance, theie peice of the
 univers
 ~
-25614 11
+11
+1 6 0 25614
 S
 #0
 #MOBILES
@@ -3530,7 +3715,7 @@ the baker~
 ~
 ~
 8360 0
-151 1
+150 1
 -2500 1000 1000
 ! 0 0 0 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3566,7 +3751,7 @@ DNA alchemist~
 ~
 ~
 128 0
-85 1
+84 1
 -1000 400 400
 ! 0 0 0 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3579,7 +3764,7 @@ creativity~
 ~
 ~
 532608 0
-86 1
+85 1
 -1000 200 176
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3591,7 +3776,7 @@ anger~
 ~
 ~
 8320 0
-74 1
+73 1
 -1111 180 190
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3603,7 +3788,7 @@ intellect~
 ~
 ~
 8192 0
-88 1
+89 1
 -1000 190 220
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3657,7 +3842,7 @@ Standing here, with is an apron full of those silver bands... a @@lCoEnzyme
 
 ~
 128 0
-81 1
+82 1
 -550 85 75
 ! 0 0 19 7 8194 0 0
 | 0 0 0 0 0 0 0
@@ -3669,7 +3854,7 @@ An innocent passerby, perfect for venting frustration...
 ~
 ~
 8192 0
-78 1
+79 1
 -500 77 45
 ! 0 0 0 7 8198 0 0
 | 0 0 0 0 0 0 0
@@ -3684,7 +3869,7 @@ This is like on of them birds that spins around dazed cartoon characters heads
 yeah?@@N
 ~
 524416 0
-81 2
+82 2
 -700 95 35
 ! 0 0 19 7 24582 0 0
 | 0 0 0 0 0 0 0
@@ -3724,7 +3909,7 @@ logic~
 ~
 ~
 10368 0
-100 1
+99 1
 -1000 200 220
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3748,7 +3933,7 @@ The @@bBig Stinky Outhouse monster@@N leaps to life and attacks!
 ~
 ~
 128 0
-78 1
+79 1
 -480 60 60
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3796,7 +3981,7 @@ A caddy is here, holding his charge's glass of bourbon.
 ~
 ~
 8192 0
-84 1
+83 1
 -100 80 70
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -3833,7 +4018,7 @@ plaid~
 ~
 ~
 8320 0
-71 1
+70 1
 -1300 199 150
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3869,7 +4054,7 @@ k-rad~
 ~
 ~
 8320 0
-73 1
+72 1
 -900 160 210
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3881,7 +4066,7 @@ EEEEEK! PINK!!! Tooo.. much.. fluorescant pink!!!
 ~
 ~
 8320 0
-89 1
+90 1
 -1300 210 175
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3893,7 +4078,7 @@ bobomb~
 ~
 ~
 524348 0
-36 1
+37 1
 -1000 500 500
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -3917,7 +4102,7 @@ A @@yBright@@N idea strolls merrily along here.
 ~
 ~
 128 0
-92 1
+93 1
 -600 140 130
 ! 0 0 19 7 8198 16 0
 | 0 0 0 0 0 0 0
@@ -3941,7 +4126,7 @@ A @@lRetina@@N is here, soakin up some rays on his lawn chair.
 ~
 ~
 524416 0
-94 1
+93 1
 -500 59 37
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3953,7 +4138,7 @@ A @@lRetina@@N is here, soakin up some rays on his lawn chair.
 ~
 ~
 524416 0
-81 1
+80 1
 -120 59 37
 ! 0 0 19 7 8206 0 0
 | 0 0 0 0 0 0 0
@@ -3978,7 +4163,7 @@ A happy thought is bouncing along here, singing a gay tune.
 ~
 ~
 0 0
-96 1
+97 1
 -500 83 111
 ! 0 0 19 7 8198 0 0
 | 0 0 0 0 0 0 0
@@ -3991,7 +4176,7 @@ A depressing thought is sulking here while sewing itself into it's death
 ~
 ~
 128 0
-85 1
+84 1
 -500 110 90
 ! 0 0 19 7 8198 0 0
 | 0 0 0 0 0 0 0
@@ -4027,7 +4212,7 @@ morality~
 ~
 ~
 557096 0
-97 1
+98 1
 -1300 270 260
 ! 0 0 19 7 24590 0 0
 | 0 0 0 0 0 0 0
@@ -4038,7 +4223,7 @@ c~
 ~
 ~
 2 0
-2 1
+1 1
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -4050,7 +4235,7 @@ caring~
 ~
 ~
 524332 0
-100 1
+99 1
 -1300 320 260
 ! 0 0 19 7 24590 786432 0
 | 0 0 0 0 0 0 0
@@ -4062,7 +4247,7 @@ passion~
 ~
 ~
 524332 0
-101 1
+100 1
 -1300 260 290
 ! 0 0 19 7 24590 256 0
 | 0 0 0 0 0 0 0
@@ -4086,7 +4271,7 @@ love~
 ~
 ~
 524332 0
-94 1
+93 1
 -1500 700 700
 ! 0 0 19 7 30734 16 16
 | 0 0 0 0 0 0 0

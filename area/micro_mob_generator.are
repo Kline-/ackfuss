@@ -1,6 +1,6 @@
 #AREA
 Body Generator~
-Q 20
+Q 21
 K none~
 L {?? ??}~
 N 99
@@ -17,7 +17,8 @@ S Title not shown on area list.
 #22438
 @@lChamber Repop@@N~
 No description~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -46,7 +47,8 @@ S
 #22437
 @@lChamber Repop@@N~
 No description~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -75,17 +77,20 @@ S
 #22436
 New room~
 No description~
-4 11
+11
+1 1 0 4
 S
 #22435
 New room~
 No description~
-4 11
+11
+1 1 0 4
 S
 #22434
 @@lChamber Repop@@N~
 No description~
-24588 11
+11
+1 4 0 24588
 D0
 ~
 ~
@@ -114,7 +119,8 @@ S
 #22433
 @@lChamber Repop@@N~
 No description~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -143,7 +149,8 @@ S
 #22432
 @@lChamber Repop@@N~
 No description~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~
@@ -166,7 +173,8 @@ S
 @@eThe rooms 22341-22499 are in use! (it doesnt much look like it, but they
 are)@@N
 ~
-24584 11
+11
+1 3 0 24584
 D0
 ~
 ~

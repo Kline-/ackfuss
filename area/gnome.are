@@ -1,6 +1,6 @@
 #AREA
 @@rErin's @@bBurrow@@N~
-Q 20
+Q 21
 K erinsburrow~
 L @@W{@@r ALL @@W}@@N~
 N 36
@@ -22,7 +22,8 @@ This is a vast mountain of gold buried beneath the city, the entire wealth of
 the wrath of the Overseer.  A ledger is placed on a pedestal in the corner,
 the Gnomish race being very honest and trustworthy.
 ~
-0 1
+1
+0 0
 D4
 ~
 ~
@@ -34,7 +35,8 @@ Within the caverns and tunnels that surround and make up the gnomish home
 town, food is often difficult to find.  This food store was constructed by
 an enterprising gnome, and supplies the town with simple but tasty fare.
 ~
-8 1
+1
+1 1 0 8
 D0
 Through a small tunnel in the cave wall is the exit back to the town 
 walk-ways.~
@@ -48,7 +50,8 @@ Tunnels twist and turn in a seemingly paternless way before you.  The
 as it reverberates off the earthy walls.  The walkway leads off the the east 
 and north, with a small home or shop to the south.
 ~
-8 1
+1
+1 1 0 8
 D0
 The walkway continues.~
 ~
@@ -70,7 +73,8 @@ The walkway continues through the middle of some large hill or mountain.
 stones lay to the west, the walkway extends to the north, east and south, 
 with the sound of running water in the easterly direction.
 ~
-8 1
+1
+1 1 0 8
 D0
 The walkway continues.~
 ~
@@ -97,7 +101,8 @@ The walkway extends around you, the southerly direction has long since been
 north the sound of running water echos through the tunnel.  To the west and
 east the walkway extends.
 ~
-8 1
+1
+1 1 0 8
 D0
 The sound of running water reaches your ears from this direction.~
 ~
@@ -119,7 +124,8 @@ In the center of the walkway lays a small spring, which is constantly moving,
 dry and solid beneath your feet.  The walkway continues in each of the 
 cardinal directions.
 ~
-8 1
+1
+1 1 0 8
 D0
 The walkway continues.~
 ~
@@ -145,7 +151,8 @@ The sound of armour chinking and the smell of leather preservatives and
 running water echos through the tunnels, along with the sounds of the gnomes 
 at work and play that fill your ears from all directions.
 ~
-8 1
+1
+1 1 0 8
 D0
 The walkway continues.~
 ~
@@ -172,7 +179,8 @@ A large rock forms the southerly wall of this part of the tunnel, obviously
 west the walkway continues through the township.  To the east is a smaller
 tunnel used by the jeweller.
 ~
-8 1
+1
+1 1 0 8
 D0
 The walkway continues.~
 ~
@@ -196,7 +204,8 @@ Hung around the walls of this small cave are various types of ancient gnomish
 of his lieutenants.  The only exit is to the west, back onto the walkway of
 the township.
 ~
-8 1
+1
+1 1 0 8
 D3
 Through a small entrance way there is the main walkway of the township.~
 ~
@@ -211,7 +220,8 @@ This small part of the tunnel of Erin's-Burrow was well chosen as the
 for a jeweller to sell his valueable pieces to members of the township.  The
 only exit is to the west.
 ~
-8 1
+1
+1 1 0 8
 D3
 Through a small hole in the interior of the rock, you can return to the 
 main walkway.~
@@ -226,7 +236,8 @@ The walkway, although a dark tunnel system, is dry and free from the musty
 this part of the tunnel the smell of steam and a wood fire.  The walkway 
 continues to the east and south, with a small tunnel to the west.
 ~
-8 1
+1
+1 1 0 8
 D1
 The walkway continues.~
 ~
@@ -247,7 +258,8 @@ The tunnel widens out significantly to the north, and the entrance to the
 home and gnomish religion.  The sound of running water fills the tunnel from
 the south, and the walkway continues east and west from here. 
 ~
-8 1
+1
+1 1 0 8
 D0
 Entrance to the Temple of Erin's-Burrow.~
 ~
@@ -275,7 +287,8 @@ The walkway extends around to the west and south from this part, with a small
 sounds made within these tunnels echos to every other point of this 
 underground world. 
 ~
-8 1
+1
+1 1 0 8
 D0
 A small entrance way leads you to the general store.~
 ~
@@ -297,7 +310,8 @@ Adorning the walls are ancient small swords, spears and darts.  Each item
 a coat of arms for an ancient gnomish leader.  A small entrance way is 
 carved into the east wall. 
 ~
-8 1
+1
+1 1 0 8
 D1
 The walkway can be accessed through this entrance way.~
 ~
@@ -311,7 +325,8 @@ The mostly bare earth walls have been covered with only a solitary notice
 lays to the east and leads out to the large tunnel that makes up the temple
 itself.
 ~
-8 1
+1
+1 1 0 8
 D1
 The temple is in this direction.~
 ~
@@ -324,7 +339,8 @@ The walls of this emmense, by gnomish standards at least, tunnel are covered
 paintings of the Gods themselves.  The altar can be accessed to the north, 
 a small tunnel to the west serves as the board room for the gnomish people.
 ~
-8 8
+8
+1 1 0 8
 D0
 The temple altar.~
 ~
@@ -349,7 +365,8 @@ Shelves have been attached to the walls of the tunnels, to hold the stocks
 been strengthed by some kind of cohesive substance to enable them to hold 
 the shelves weight. 
 ~
-8 1
+1
+1 1 0 8
 D2
 A small entrance way leads back to the walkway through the township.~
 ~
@@ -364,7 +381,8 @@ A small altar sits against the north wall of this small tunnel, with a small
 These tapestries are significantly smaller than those in the temple to fit 
 on the smaller room.
 ~
-8 1
+1
+1 1 0 8
 D2
 The temple of Erin's-Burrow.~
 ~
@@ -377,7 +395,8 @@ The tunnels that surround the gnome township are all used for mining of the
 into.  The tunnel continues to the west, while the tunnel becomes a walkway
 through the gnomish township.
 ~
-13 1
+1
+1 3 0 13
 D1
 Walkway in the township of Erin's-Burrow~
 ~
@@ -392,7 +411,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stones within the
 earth walls.  
 ~
-9 1
+1
+1 2 0 9
 D0
 The mining tunnel continues.~
 ~
@@ -407,7 +427,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stones within the
 earthen walls.
 ~
-9 1
+1
+1 2 0 9
 D0
 The tunnel continues.~
 ~
@@ -422,7 +443,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stones within the
 earthen walls.  The mining tunnels extend to the south, north and west. 
 ~
-9 1
+1
+1 2 0 9
 D0
 The tunnel continues.~
 ~
@@ -441,7 +463,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stone within the
 earthen walls.  The mining tunnels extend to the east and south.
 ~
-9 1
+1
+1 2 0 9
 D1
 The tunnel continues.~
 ~
@@ -456,7 +479,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stone within the 
 earthen walls.  The mining tunnel continues to the east, west and north.
 ~
-9 1
+1
+1 2 0 9
 D0
 The tunnel continues.~
 ~
@@ -475,7 +499,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stone within the
 earthen walls.  The mining tunnel continues to the west.
 ~
-9 1
+1
+1 2 0 9
 D3
 The tunnel continues.~
 ~
@@ -486,7 +511,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stone within the
 earthen walls.  The mining tunnel continues to the west and south.
 ~
-9 1
+1
+1 2 0 9
 D2
 The tunnel continues.~
 ~
@@ -501,7 +527,8 @@ Mining Tunnels~
 The tunnel sparkles with the small deposits of gems and stone within the 
 earthern walls.  The mining tunnel continues to the east and west.
 ~
-9 1
+1
+1 2 0 9
 D1
 The tunnel continues.~
 ~
@@ -516,7 +543,8 @@ Mining Tunnels~
 The tunnel sparkles with the small deposits of gems and stone within the
 earthern walls.  The mining tunnel continues to the east, west and south.
 ~
-9 1
+1
+1 2 0 9
 D1
 The tunnel continues.~
 ~
@@ -535,7 +563,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stone within the 
 earthern walls.  The mining tunnel continues to the east.
 ~
-9 1
+1
+1 2 0 9
 D1
 The tunnel continues.~
 ~
@@ -546,7 +575,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stone within the
 earthen walls.  The mining tunnel continues to the north.
 ~
-9 1
+1
+1 2 0 9
 D0
 The tunnel continues.~
 ~
@@ -557,7 +587,8 @@ Mining Tunnel~
 The tunnel sparkles with the small deposits of gems and stone within the
 earthen walls.  The mining tunnel continues to the east and west.
 ~
-9 1
+1
+1 2 0 9
 D1
 The tunnel continues.~
 ~
@@ -573,7 +604,8 @@ The tunnel sparkles with the small deposits of gems and stone within the
 earthen walls.  The mining tunnel continues to the east and leads out to 
 the hillside itself to the west.
 ~
-9 1
+1
+1 2 0 9
 D1
 The tunnel continues.~
 ~
@@ -591,7 +623,8 @@ This small tunnel has been added recently, in gnomish terms at least, to
 purpose.  Exits lead west to the Temple Altar, north to the Training room, 
 and south to the Practice room.
 ~
-12 1
+1
+1 2 0 12
 D0
 The training room.~
 ~
@@ -613,7 +646,8 @@ This is the room that houses the gnomish training.  Many years ago when the
 only recently in gnomish terms, but has survived many generations in human
 terms. The only exit is south.
 ~
-1032 1
+1
+1 2 0 1032
 D2
 The tunnel leads back to the entrance to the training rooms.~
 ~
@@ -628,7 +662,8 @@ This room was built for ease of access for the gnomes when they are in their
 students in many arts, and fits well in the close vacinity of the training
 room.  The only exit is west.
 ~
-1032 1
+1
+1 2 0 1032
 D3
 The tunnel leads to the entrance to the training rooms, and the temple.~
 ~
@@ -641,7 +676,8 @@ This tunnel, carved into the hillside, serves as both a mine and a passage
 any kobolds or goblins who happen this way, and the dark gnome-made tunnels 
 that stretch before you seem to glean whether you come as friend or foe.
 ~
-12 1
+1
+1 2 0 12
 D1
 The tunnel stretches into the hillside.~
 ~
@@ -657,7 +693,8 @@ A large hill rises from the forest here, covered in the same trees.  The
 continuing almost entirely forested into the clouds.  The only exits are 
 west back into the forest or upwards and onwards up the hill.
 ~
-4 5
+5
+1 1 0 4
 D3
 The flat forest stretches out before you.~
 ~
@@ -674,7 +711,8 @@ The hill is covered around you in not only trees, but also some small farmed
 muddier parts of the hill.  The only exits are down to the base of the hill
 and east into the hill itself.
 ~
-4 5
+5
+1 1 0 4
 D1
 A tunnel has been cut into the hill.~
 ~
@@ -696,7 +734,7 @@ Erin is a relatively large gnome, with a stature that would scare even
 defend her home and the home of the gnome race.
 ~
 8360 0
-105 2
+106 2
 -1000 527 527
 ! 0 0 4 7 6202 64 0
 | 0 0 0 0 0 0 0
@@ -712,7 +750,7 @@ Although only a small gnome in stature, Ammira has the spells to protect her
 thinning grey hair and eyes of an almost white grey. 
 ~
 8360 0
-74 2
+73 2
 -40 40 40
 ! 0 0 4 7 8212 32848 0
 | 0 0 0 0 0 0 0
@@ -728,7 +766,7 @@ The Gnomish Weaponsmith has dark tan skin, a neatly trimmed grey beard, and
 you do intend to purchase one of his fine weapons.
 ~
 8360 0
-77 1
+78 1
 -40 40 40
 ! 0 0 4 7 25092 0 0
 | 0 0 0 0 0 0 0
@@ -745,7 +783,7 @@ Elchern has, over the years, found a wide variety of food that the gnomish
 which often is whispered to give her the advantage in the food industry.
 ~
 40 0
-81 2
+80 2
 0 0 0
 ! 0 0 4 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -763,7 +801,7 @@ Garneth has the skills only taught in the olden days, the skills he learnt
 his skills can live on.
 ~
 552 0
-78 1
+77 1
 0 0 0
 ! 0 0 4 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -781,7 +819,7 @@ Seth is a seemingly average gnome.  He is of average height, he has the
 power is unmatched throughout the world.
 ~
 1192 0
-80 1
+79 1
 0 0 0
 ! 0 0 4 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -829,7 +867,7 @@ Nayelle buys and sells only the finest gnome gems, stones and jewellery
 nugget. 
 ~
 8360 0
-83 2
+84 2
 -40 40 40
 ! 0 0 4 7 56 40960 0
 | 0 0 0 0 0 0 0
@@ -844,7 +882,7 @@ Gnomes are similar to small, slightly thinner dwarves, excepting that they
 grey.  
 ~
 32768 0
-13 2
+14 2
 0 0 0
 ! 0 0 4 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -863,7 +901,7 @@ The miner is well muscled from extracting the gems and stones from the hard
 0 0 0
 ! 0 0 4 7 0 0 0
 | 0 0 0 0 0 0 0
-2 6 0 268435525 1 6144
+2 6 1 6144 0 268435525
 #6012
 gnome guard~
 the gnome guard~
@@ -891,7 +929,7 @@ His enormous nose and neatly trimmed grey beard, decorated with stones,
 day.
 ~
 8360 0
-69 1
+68 1
 -40 40 40
 ! 0 0 4 7 24 64 0
 | 0 0 0 0 0 0 0
@@ -906,7 +944,7 @@ The gnome child is very small, even by the gnomish standards, and has a head
 and are a piercing blue colour that shine with the joy in his heart.
 ~
 0 0
-14 1
+15 1
 0 0 0
 ! 0 0 4 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -921,7 +959,7 @@ The gnome child is very small, even by the gnomish standards, and has a head
 and are a piercing blue colour that shine with the joy in her heart.
 ~
 0 0
-7 2
+8 2
 0 0 0
 ! 0 0 4 7 0 0 0
 | 0 0 0 0 0 0 0

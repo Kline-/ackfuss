@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@dMiskatonic @@mAsylum@@N~
-Q 20
+Q 21
 K asyluminside~
 L @@W{@@r50 @@mRM@@W}@@N~
 N 47
@@ -20,7 +20,8 @@ W loren~
 Off in the corner, another pile of lumber has been stacked.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -56,7 +57,8 @@ S
 side, apparently to rework the @@ydesk@@N into @@WA suitable work area.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -85,7 +87,8 @@ The Entryway~
 
 
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -112,7 +115,8 @@ A Marble Arch~
 @@bLayers upon layers of dust cover the marble of the floor here, disturbed only by tracks of human footsteps, and something....else.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -144,7 +148,8 @@ The marble is ancient and cracked in several places. The wooden frame of the
 substance in several places.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -174,7 +179,8 @@ The Cafeteria~
 time when the @@mAsylum@@N had many patients.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -189,7 +195,8 @@ S
 The dust in this section of the cafeteria is very disturbed, and the stacked chairs against the wall show that someone is attempting to clean up the Cafeteria for future use.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -206,7 +213,8 @@ The Buffet Line~
 and refuse, obviously remains of decade old food for the inmates.
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -225,7 +233,8 @@ The Buffet Line~
 unappetizing, would at least be nourishing.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -244,7 +253,8 @@ The @@mAsylum@@N Kitchen~
 oven.
 
 ~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -257,7 +267,8 @@ The Hallway~
 a somewhat less used path goes to the west.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -278,7 +289,8 @@ The Recreation Room~
  
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -301,7 +313,8 @@ The Recreation Room~
 @@gbooks@@W lie scattered about.
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -341,7 +354,8 @@ The Recreation Room~
 proud efforts of the hopelessly insane.
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -360,7 +374,8 @@ The Recreation Room~
 on the wall, with darkened @@Rstains@@W on them.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -377,7 +392,8 @@ The Hallway~
 likely from ages of @@einmates@@N being led about the @@mAsylum@@N.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -396,7 +412,8 @@ The Northern Arch~
 @@aYou can hear an occasional wail of a miserable @@einmate@@a from the east.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -417,7 +434,8 @@ S
 victims of this instiution.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -440,7 +458,8 @@ A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
 
 ~
-90201 11
+11
+1 7 0 90201
 D0
 ~
 ~
@@ -451,7 +470,8 @@ A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
 
 ~
-90201 11
+11
+1 7 0 90201
 D2
 ~
 ~
@@ -464,7 +484,8 @@ S
 victims of this instiution.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -487,7 +508,8 @@ A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
 
 ~
-90201 11
+11
+1 7 0 90201
 D2
 ~
 ~
@@ -498,7 +520,8 @@ A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
 
 ~
-90201 11
+11
+1 7 0 90201
 D0
 ~
 ~
@@ -511,7 +534,8 @@ S
 victims of this instiution.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -530,7 +554,8 @@ A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
 
 ~
-90201 11
+11
+1 7 0 90201
 D2
 ~
 ~
@@ -541,7 +566,8 @@ A Small Cell~
 @@WThis miserable cell is the entire world of a poor @@einmate@@N.
 
 ~
-90201 11
+11
+1 7 0 90201
 D0
 ~
 ~
@@ -558,7 +584,8 @@ The Surgery~
 Project has something to do with medical research.
 
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -581,7 +608,8 @@ The Infirmary~
 better to deal with insane patients.
 
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -602,7 +630,8 @@ The Infirmary~
 maintainence.
 
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -615,7 +644,8 @@ The Surgeon's Office~
 and various @@gtextbooks@@W on the @@bbookshelf @@Won the far wall.@@N
 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -649,7 +679,8 @@ S
 @@dThe stairwell leads down into the depths of the @@mAsylum@@d.@@N
 
 ~
-13 11
+11
+1 3 0 13
 D5
 ~
 ~
@@ -665,7 +696,7 @@ inmate~
 ~
 ~
 65536 250
-58 1
+57 1
 -160 120 100
 ! 0 0 0 7 6158 0 0
 | 0 0 0 0 0 0 0
@@ -715,7 +746,7 @@ inmate~
 ~
 ~
 65536 250
-58 1
+59 1
 -160 120 100
 ! 0 0 0 7 6158 0 0
 | 0 0 0 0 0 0 0
@@ -728,7 +759,7 @@ inmate~
 ~
 ~
 65536 250
-59 1
+60 1
 -160 120 100
 ! 0 0 0 7 6158 0 0
 | 0 0 0 0 0 0 0
@@ -767,7 +798,7 @@ monitor~
 ~
 ~
 32936 -500
-77 1
+76 1
 -280 105 100
 ! 7 0 0 7 6150 2 0
 | 0 0 0 0 0 0 0
@@ -780,7 +811,7 @@ therapist~
 ~
 ~
 16552 -500
-72 2
+73 2
 -210 160 150
 ! 0 0 0 7 22862 16384 16
 | 0 0 0 0 0 0 0

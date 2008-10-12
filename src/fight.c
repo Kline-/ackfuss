@@ -1268,7 +1268,7 @@ bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
    /*
     * No PC vs. PS attacks in safe rooms 
     */
-   if( ( victim->in_room != NULL ) && IS_SET( victim->in_room->room_flags, ROOM_SAFE ) )
+   if( ( victim->in_room != NULL ) && is_set( victim->in_room->room_flags, RFLAG_SAFE ) )
    {
       send_to_char( "Not a chance!  This is a safe room.\n\r", ch );
       return TRUE;
@@ -1358,7 +1358,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
     * NPC's are fair game.
     * So are killers and thieves.
     */
-   if( IS_NPC( victim ) || is_set( victim->act, ACT_KILLER ) || IS_SET( victim->in_room->room_flags, ROOM_PK ) /* -S- Mod */
+   if( IS_NPC( victim ) || is_set( victim->act, ACT_KILLER ) || is_set( victim->in_room->room_flags, RFLAG_PK ) /* -S- Mod */
        || is_set( victim->act, ACT_THIEF ) || IS_VAMP( victim ) || IS_WOLF( victim )   /*
                                                                                         * || ( ch->fighting == victim )  */
        || ( ch == victim ) )
@@ -3394,7 +3394,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
           || pexit->to_room == NULL
           || IS_SET( pexit->exit_info, EX_CLOSED )
           || ( IS_NPC( ch )
-               && ( IS_SET( pexit->to_room->room_flags, ROOM_NO_MOB )
+               && ( is_set( pexit->to_room->room_flags, RFLAG_NO_MOB )
                     || ( is_set( ch->act, ACT_STAY_AREA ) && pexit->to_room->area != ch->in_room->area ) ) ) )
          continue;
 
@@ -5389,7 +5389,7 @@ void do_feed( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( victim->in_room->room_flags, ROOM_SAFE ) )
+   if( is_set( victim->in_room->room_flags, RFLAG_SAFE ) )
    {
       send_to_char( "The Gods prevent your foul deed.  This is a safe room!\n\r", ch );
       return;

@@ -81,14 +81,14 @@ void h_enqueue( ROOM_INDEX_DATA * room, sh_int dir )
    hunt->next = NULL;
    hunt->room = room;
    hunt->dir = dir;
-   SET_BIT( room->room_flags, ROOM_HUNT_MARK );
+   set_bit( room->room_flags, RFLAG_HUNT_MARK );
    if( !h_head )
       h_head = hunt;
    else
       h_tail->next = hunt;
    h_tail = hunt;
 #ifdef DEBUG_HUNT_CODE
-   fprintf( h_fp, "Enqueue: %5d - %d\n", room->vnum, IS_SET( room->room_flags, ROOM_HUNT_MARK ) );
+   fprintf( h_fp, "Enqueue: %5d - %d\n", room->vnum, is_set( room->room_flags, RFLAG_HUNT_MARK ) );
    fflush( h_fp );
 #endif
    return;
@@ -103,7 +103,7 @@ void h_dequeue( void )
    h_head = hunt->next;
    if( h_tail == hunt )
       h_tail = NULL;
-   REMOVE_BIT( hunt->room->room_flags, ROOM_HUNT_MARK );
+   remove_bit( hunt->room->room_flags, RFLAG_HUNT_MARK );
 #ifdef DEBUG_HUNT_CODE
    fprintf( h_fp, "Dequeue: %5d\n", hunt->room->vnum );
    fflush( h_fp );
@@ -141,10 +141,10 @@ bool h_is_valid_exit( ROOM_INDEX_DATA * room, sh_int dir, int h_flags )
       return FALSE;
 #ifdef DEBUG_HUNT_CODE
    fprintf( h_fp, "IsValid: %5d - %s\n", exit->to_room->vnum,
-            ( IS_SET( exit->to_room->room_flags, ROOM_HUNT_MARK ) ? "set" : "unset" ) );
+            ( is_set( exit->to_room->room_flags, RFLAG_HUNT_MARK ) ? "set" : "unset" ) );
    fflush( h_fp );
 #endif
-   if( IS_SET( exit->to_room->room_flags, ROOM_HUNT_MARK ) )
+   if( is_set( exit->to_room->room_flags, RFLAG_HUNT_MARK ) )
       return FALSE;
    if( !IS_SET( h_flags, HUNT_WORLD ) && room->area != exit->to_room->area )
       return FALSE;
@@ -193,7 +193,7 @@ sh_int h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags
    if( !h_free && !h_head && !h_tail )
       setup_hunt(  );
 #endif
-   SET_BIT( room->room_flags, ROOM_HUNT_MARK );
+   set_bit( room->room_flags, RFLAG_HUNT_MARK );
    h_enqueue_room( room, -1, h_flags );
    for( hunt = h_head; hunt; hunt = hunt->next )
    {
@@ -206,7 +206,7 @@ sh_int h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags
          fflush( h_fp );
 #endif
          h_clear(  );
-         REMOVE_BIT( room->room_flags, ROOM_HUNT_MARK );
+         remove_bit( room->room_flags, RFLAG_HUNT_MARK );
          return dir;
       }
       h_enqueue_room( hunt->room, hunt->dir, h_flags );
@@ -216,7 +216,7 @@ sh_int h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags
    fflush( h_fp );
 #endif
    h_clear(  );
-   REMOVE_BIT( room->room_flags, ROOM_HUNT_MARK );
+   remove_bit( room->room_flags, RFLAG_HUNT_MARK );
    return -1;
 }
 

@@ -1,6 +1,6 @@
 #AREA
 Plane of the Mortals~
-Q 20
+Q 21
 K players~
 L @@W{@@mRMORT@@W}@@N~
 N 27
@@ -22,7 +22,8 @@ This small garden is built on the roof of part of the Players' Rooms.
 area, small, brightly-coloured butterflies flutter back and forth,
 while a soft breeze helps to keep you cool and relaxed.
 ~
-17935 11
+11
+1 7 0 17935
 D4
 ~
 ~
@@ -35,7 +36,8 @@ This small, narrow ledge is constructed out of metal, and forms a walkway
 in the amazing view, and more worried about not falling to the ground, many
 tens of feet below you.
 ~
-18452 1
+1
+1 4 0 18452
 D1
 ~
 ~
@@ -60,7 +62,8 @@ This small room is situated above the level of the Player's Rooms, and the
 such a thin strip of metal this high up could be tricky...  Instead, why
 not just sit a while, and enjoy the view, letting your worries fade away?
 ~
-17934 11
+11
+1 6 0 17934
 D3
 ~
 ~
@@ -70,7 +73,8 @@ S
 A Tiny Alcove~
 You are in a tiny alcove, which is just the right size to hold a bulletin board.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -79,7 +83,8 @@ S
 #1136
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -88,7 +93,8 @@ S
 #1135
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -97,7 +103,8 @@ S
 #1134
 New room~
 No description~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -107,7 +114,8 @@ S
 The Templars' Guild~
 Description to come...
 ~
-0 11
+11
+0 0
 D1
 A small, dusty chamber.
 ~
@@ -122,7 +130,8 @@ S
 The Conjuerers' Guild~
 Description to come....
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -135,7 +144,8 @@ S
 #1130
 The Rangers' Guild~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -152,7 +162,8 @@ This is where disciples of the Way come to advance their skills.
 Due to the complexity of advancing one's Knowledge, only one disciple may
 enter at any one time.  Your Guild room is to the south.
 ~
-1548 11
+11
+1 4 0 1548
 D2
 Your Guild room.
 ~
@@ -166,7 +177,8 @@ This is where the Psionicists gather, whether they be beginners in the Way,
 about the place for Psionicists to rest and meditate.
 The chamber lies to the south, and your training room to the north.
 ~
-1036 11
+11
+1 3 0 1036
 D0
 The Training Room.
 ~
@@ -185,7 +197,8 @@ You are in a small chamber, below Guild square.  This chamber was built to
 rounded corners.  Stone stairs lead up to Guild Square, and a small spiral
 staircase winds down below you.
 ~
-12 11
+11
+1 2 0 12
 D0
 The Psionicist's Guild.
 ~
@@ -224,7 +237,8 @@ This small, cold room has definitely seen better days.  Dust covers everything
 littering the floor, and some old barrels have been left stacked against the
 west wall.
 ~
-12 11
+11
+1 2 0 12
 D4
 The Trapdoor.
 ~
@@ -245,7 +259,8 @@ This is surely the largest room within the area of the Player's Rooms.
 of the room is occupied by small and large tables, with an assortment of
 chairs surrounding them.  A small spiral staircase leads up.
 ~
-1036 11
+11
+1 3 0 1036
 D4
 The chamber.
 ~
@@ -262,7 +277,8 @@ The Training Room~
 This is where you come to become well-versed in your Spells and Skills.
 Your Guild Room lies to the East.
 ~
-1036 11
+11
+1 3 0 1036
 D1
 Your Guild Room.
 ~
@@ -278,7 +294,8 @@ This is the Magical Experiments Laboratory.  Dark smoke-stained stones
 partially cleaned, some painful-looking letters faintly visible.  
 Your Guild Room lies to the North.
 ~
-1036 11
+11
+1 3 0 1036
 D0
 Your Guild Room.
 ~
@@ -294,7 +311,8 @@ The Training Room~
 This is where you come to become well-versed in your Spells and Skills.
 Your Guild Room lies to the West.
 ~
-1036 11
+11
+1 3 0 1036
 D3
 Your Guild Room.
 ~
@@ -307,7 +325,8 @@ This is the inner sanctum.  A picture of the mighty Thor, is hanging on
 the wall, just above the altar which is set against the western wall.  
 Your Guild Room lies to the South.
 ~
-1036 11
+11
+1 3 0 1036
 D2
 Your Guild Room.
 ~
@@ -322,7 +341,8 @@ S
 The Info Room~
 This grand room houses the Rules Board.  Maybe you should read it??
 ~
-12 11
+11
+1 2 0 12
 D1
 A small, round room.
 ~
@@ -341,7 +361,8 @@ The Gossip Room~
 The Gossip Room, as it's name implies, is the suggested room for players to
 congregate, rest and talk about any subject.  The way out is to the North.
 ~
-14 11
+11
+1 3 0 14
 D0
 A small, round room.
 ~
@@ -357,7 +378,8 @@ The PK Room!~
 This room is provided to enable disputing players to fight to the death,
 without gaining Player Killing Flags.  The way out is to the South.
 ~
-140 11
+11
+1 3 0 140
 D2
 A small, round room.
 ~
@@ -369,7 +391,8 @@ A Small, Round Room~
 You are in a small round room, which serves as an area between the surrounding
 rooms.  Exits lead north, east, south and west.
 ~
-8 11
+11
+1 1 0 8
 D0
 The PK Room.
 ~
@@ -396,7 +419,8 @@ A Privacy Booth~
 These Booths are designed to only allow a maximum of two players to enter.
 Please use them for whatever purpose you see fit.  The way out is to the East.
 ~
-1548 11
+11
+1 4 0 1548
 D1
 The Landing.
 ~
@@ -408,7 +432,8 @@ A Privacy Booth~
 These Booths are designed to only allow a maximum of two players to enter.
 Please use them for whatever purpose you see fit.  The way out is to the North.
 ~
-1548 11
+11
+1 4 0 1548
 D0
 The Landing.
 ~
@@ -420,7 +445,8 @@ A Privacy Booth~
 These Booths are designed to only allow a maximum of two players to enter.
 Please use them for whatever purpose you see fit.  The way out is to the West.
 ~
-1548 11
+11
+1 4 0 1548
 D3
 The Landing.
 ~
@@ -432,7 +458,8 @@ A Privacy Booth~
 These Booths are designed to only allow a maximum of two players to enter.
 Please use them for whatever purpose you see fit.  The way out is to the South.
 ~
-1548 11
+11
+1 4 0 1548
 D2
 The Landing.
 ~
@@ -446,7 +473,8 @@ You are on the Landing of the Privacy Suite, built above the Lobby of the
 east, south and west.  Each room will hold a *maximum* of two players.  Stairs
 lead down back to the Lobby.
 ~
-12 11
+11
+1 2 0 12
 D0
 A Privacy Booth.
 ~
@@ -480,7 +508,8 @@ This room is provided solely for the use of those belonging to the Warrior's
 methods, or even suggestions to aid your Guild.  It's also a cool place in
 which to hang out!  Guild Sqaure is East, the training room lies to the West.
 ~
-1036 11
+11
+1 3 0 1036
 D1
 Guild Square.
 ~
@@ -499,7 +528,8 @@ This room is provided solely for the use of those belonging to the Mage's
 suggestions for new spells.  It also makes a pretty select place to hang out!
 Guild Square is to the North, and the training room is South.
 ~
-1036 11
+11
+1 3 0 1036
 D0
 Guild Square.
 ~
@@ -518,7 +548,8 @@ This room is provided solely for the use of those belonging to the Thief's
 This room can be used to discuss new tactics, ideas or just for somewhere to
 hangout.  Guild Square is West, and the training room is East.
 ~
-1036 11
+11
+1 3 0 1036
 D1
 The Training Room.
 ~
@@ -537,7 +568,8 @@ This room is provided solely for the use of those belonging to the Cleric's
 get information from fellow guild members, or just as somewhere to hang out.
 The Guild Square is to the South, and the Training room is to the North.
 ~
-1036 11
+11
+1 3 0 1036
 D0
 Cleric's Inner Sanctum.
 ~
@@ -557,7 +589,8 @@ Guild Square, situated below the Grand Lobby, forms a central area from which
 walking into YOUR room.  Small steps lead back upstairs, whilst some dusty
 stone stairs leads further down.
 ~
-8 11
+11
+1 1 0 8
 D0
 Clerics' Rooms.
 ~
@@ -598,7 +631,8 @@ You are in the Lobby of the Player's Rooms.  This grand room is slightly
 coming from.  Wide, wooden steps lead up, whilst doors are set into the east
 and west walls.
 ~
-8 11
+11
+1 1 0 8
 D1
 The Passage.
 ~
@@ -625,7 +659,8 @@ The Passage~
 You are now in a passage between the Entrance Hall to the east and the Lobby
 to the west.
 ~
-8 11
+11
+1 1 0 8
 D1
 The Entrance Hall.
 ~
@@ -649,7 +684,8 @@ You are within the Entrance to the Player's Room, a collection of rooms
 Hidden light sources make the marble walls gleam brightly.  Exits lead east
 and west.
 ~
-8 11
+11
+1 1 0 8
 D1
 The Temple of Midgaard.
 ~
@@ -669,7 +705,8 @@ This is where all the Remortals of the Realm gather to relax and chat,
 abound.
  
 ~
-1036 11
+11
+1 3 0 1036
 D0
 ~
 ~
@@ -687,7 +724,7 @@ You are in no doubt that this guildmaster is truly close to your god; he has
 You sense that he could destroy your mind with the slightest thought.
 ~
 128 1000
-73 1
+74 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -756,7 +793,7 @@ You realize that whenever your guildmaster moves, you fail to notice it:
 the appearance of a beggar.
 ~
 0 1000
-78 2
+77 2
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0

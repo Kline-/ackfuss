@@ -1,6 +1,6 @@
 #AREA
 @@dUnderneath the @@mAsylum@@N~
-Q 20
+Q 21
 K underasylum~
 L @@W{@@mRMORT@@W}@@N~
 N 156
@@ -19,7 +19,8 @@ W Zenithar~
 more than you can bear. @@GSlime @@dcovers the walls, the floor, even the
 ceiling, and tracks can be seen wandering off into the darkness.@@N
 ~
-12 11
+11
+1 2 0 12
 D0
 @@dAhead lies a narrow corridor, gloomy in it's darkness.  You think you
 glance a few gleaming @@Reyes@@d just above floor level far ahead.@@N
@@ -47,7 +48,8 @@ S
 @@dPuddles of @@GSlime @@dlie scattered about, staining the marble of the
 floor.  Not much can be seen around you as the darkness cloaks you.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -68,7 +70,8 @@ S
 @@dPuddles of @@GSlime @@dlie scattered about, staining the marble of the
 floor.  Not much can be seen around you as the darkness cloaks you.@@N
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -87,7 +90,8 @@ S
 @@dPuddles of @@GSlime @@dlie scattered about, staining the marble of the
 floor.  Not much can be seen around you as the darkness cloaks you.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -102,7 +106,8 @@ S
 @@dPuddles of @@GSlime @@dlie scattered about, staining the marble of the
 floor.  Not much can be seen around you as the darkness cloaks you.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -120,7 +125,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-13 11
+11
+1 3 0 13
 D0
 ~
 ~
@@ -138,7 +144,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -160,7 +167,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -182,7 +190,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -204,19 +213,20 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
-D0
-~
-~
-0 -1 5110
+11
+1 2 0 9
 D1
 ~
 ~
-0 -1 5108
+0 -1 5116
 D2
 ~
 ~
-0 -1 5116
+0 -1 5110
+D3
+~
+~
+0 -1 5108
 S
 #5110
 @@dThe Vast Darkness@@N~
@@ -226,7 +236,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -248,7 +259,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -270,15 +282,16 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
-D1
-~
-~
-0 -1 5111
-D4
+11
+1 2 0 9
+D2
 ~
 ~
 0 -1 5113
+D4
+~
+~
+0 -1 5111
 S
 #5113
 @@dThe Vast Darkness@@N~
@@ -288,7 +301,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -310,7 +324,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -332,7 +347,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-13 11
+11
+1 3 0 13
 D1
 ~
 ~
@@ -340,11 +356,11 @@ D1
 D3
 ~
 ~
-0 -1 5114
+0 0 5114
 D4
 ~
 ~
-0 0 5114
+0 -1 5114
 S
 #5116
 @@dThe Vast Darkness@@N~
@@ -354,7 +370,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -376,7 +393,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D2
 ~
 ~
@@ -394,7 +412,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -416,7 +435,8 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D0
 ~
 ~
@@ -434,15 +454,16 @@ S
 habitable--pools of @@Gslime@@d literally envelop your feet as you meander
 about.@@N
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
-0 -1 5121
-D3
-~
-~
 0 -1 5119
+D2
+~
+~
+0 -1 5121
 S
 #5121
 @@dA Small Alcove@@N~
@@ -450,7 +471,8 @@ S
 keeping this area dry. Shadows hide most of the details of the furthest wall,
 but it seems uninteresting, just like the rest of this bleak chamber. @@N
 ~
-13 11
+11
+1 3 0 13
 D0
 ~
 ^tunnel~
@@ -477,7 +499,8 @@ S
 @@dA small chamber branches off from the alcove to the south.  The sounds of
 low moaning draw your attention, from somewhere off to the north.@@N
 ~
-13 11
+11
+1 3 0 13
 D0
 ~
 ~
@@ -494,7 +517,8 @@ S
 you have seen previously, and give you an overall impression of recent
 occupancy.@@N
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -515,7 +539,8 @@ S
 closet fills another.@@N
 @@bDust @@dalso covers the floors, but not in the same amount as elsewhere throught the @@mAsylum@@N.
 ~
-13 11
+11
+1 3 0 13
 D0
 ~
 ^closet~
@@ -545,7 +570,8 @@ S
 Obviously, the abandoned nature of the subterranean depths of the @@mAsylum@@W
 was misleading.@@N
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -560,7 +586,8 @@ S
 @@WThe corridor is completely clean, and obviously maintained that way for a
 very specific reason.@@N
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -586,7 +613,8 @@ S
 ranging from small scalpels to a large device that appears designed to
 seperate skull plates.
 ~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -616,7 +644,8 @@ S
 @@WThe Laboratory@@N~
 @@WThis room is immense, and filled with several gurneys, in various states of use.  Some are completely fresh, some are covered in dried @@Rstains@@W, and some seem rather recently used, judging by the @@eblood@@W on them.@@N
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -645,7 +674,8 @@ The Laboratory~
 Even worse are the bulging eyes, seemingly ready to explode from within
 the sockets.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -655,7 +685,8 @@ S
 The Storage Room~
 @@WHundreds of specimen jars line the walls of this small chamber, filled with various body parts.  While most appear humanoid, the strange shape of a few of the limbs and specimens appear almost @@Gamphibian@@W. 
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -666,7 +697,8 @@ S
 @@dChains@@W on the walls make it obvious that this is where the poor victims
 are held prior to experimentation.@@N
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -677,7 +709,8 @@ S
 @@WThis@@N office is unoccupied at the moment, but appears recently used. The desk
 is immaculate, and in fact appears untouched by human hands.
 ~
-0 11
+11
+0 0
 D4
 ~
 ~
@@ -688,7 +721,8 @@ S
 @@WThe corridor here grows a little darker than before, even more dark to the
 west.@@N
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -702,7 +736,8 @@ S
 @@NThe @@dDarkened Corridor@@N~
 @@gThe gloomy feeling you had earlier overcomes your senses once again, and you suddenly yearn for escape from this evil place.
 ~
-12 11
+11
+1 2 0 12
 D1
 ~
 ~
@@ -717,7 +752,8 @@ S
 @@dDriving fear into your soul, a @@Rterrifying @@dsculpture overwhelms you.  A veritable monstrosity, the thing before you is both strangely humanoid, and fiendishly @@Gamphibian@@d.  @@GSlimy@@d flesh covers monstrous limbs, perverted features of a tortured soul fixate your thoughts as you glance at the human skull.
 The body is frog-like, appearing poised to leap at any moment, and the splayed feet end in three appendages.@@N
 ~
-9 11
+11
+1 2 0 9
 D1
 ~
 ~
@@ -761,7 +797,7 @@ thing~
 ~
 ~
 680 0
-102 1
+103 1
 -670 250 250
 ! 0 0 19 7 22542 589824 8
 | 0 0 0 0 0 0 0
@@ -799,7 +835,7 @@ monstrosity~
 ~
 ~
 68266 0
-139 1
+138 1
 -2000 800 1000
 ! 0 0 16 7 415758 50921472 48
 | 0 0 0 0 0 0 0

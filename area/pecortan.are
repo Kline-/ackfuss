@@ -1,6 +1,6 @@
 #AREA
 @@dPecortan@@N~
-Q 20
+Q 21
 K pecortan~
 L @@W{@@mRM @@lAD@@W}@@N~
 N 50
@@ -24,7 +24,8 @@ Within the centre of this small room stands a tall statue of KaVir, founder
 him alive, and his blood continually pumps from his body, pouring through a
 small hole in the base of the altar.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -35,7 +36,8 @@ The small store~
 You are standing within a small supply shop.  It is stocked with various
 supplies for the hungry traveller.
 ~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -46,7 +48,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surround you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -80,7 +83,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surrounds you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24913 11
+11
+1 6 0 24913
 D0
 ~
 ~
@@ -119,7 +123,8 @@ You are standing within the Dark Gate.  Strange shadowy forms flicker around
  
 Fix Maze Tesseracts!!!
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -136,7 +141,8 @@ You are standing at the end of the narrow corridor.  Directly in front of you
 hanging above the portal...if you value your life, you really should read it.
  fix tesseracts north of 16870...
 ~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -151,7 +157,8 @@ You are now standing near the end of the narrow corridor.  Directly in front
 of you stands a huge warrior dressed in dark armour, guarding the route to the
 north.
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -167,7 +174,8 @@ You travel further down the corridor into the darkness.  Directly ahead you
 can make out the silhouette of a large warrior, with an axe slung over one
 shoulder.
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -183,7 +191,8 @@ You are standing in a narrow corridor leading from away from the hall of
 legends, which lies to the south.  Ahead of you the corridor stretches out,
 twisting and turning, into the darkness.
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -201,7 +210,8 @@ This small, faintly lit room is stocked with various foods, drinks, and
 but the skeletal hands that can be seen protruding from his sleeves give away
 his unnatural disposition.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -214,7 +224,8 @@ This room is lit by a small ball of black flame, which floats just above head
 pair of bookcases stand end on end against another.  The whole room is covered
 in a fine dust, as if it hasn't been used in some time.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -230,7 +241,8 @@ You stand in the middle of a dark junction.  A cold misty wind swirls around
 room.  Looking up, you see only darkness, but when you try and peek through
 the pit below you a gust of icy cold wind almost blows you from your feet.
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -267,7 +279,8 @@ Within the centre of this small room stands a tall statue of KaVir, founder
 him alive, and his blood continually pumps from his body, pouring through a
 small hole in the base of the altar.
 ~
-1024 11
+11
+1 1 0 1024
 D0
 ~
 ~
@@ -284,7 +297,8 @@ This dark room is scattered with ancient tomes.  A paper-covered desk sits in
 pentagram has been painted in blood at the centre of the room, and glows
 eerily with a faint green aura.
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -296,7 +310,8 @@ You stand in total darkness, lit only by a fiery green portal to the east.
 You feel very comfortable here, away from everyday troubles, while an alluring
 acolyte tends to your every whim.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -312,7 +327,8 @@ You stand within a large spherical room, lit only by the faintly glowing moss
 clan; KaVir, Magic and Zorab, while overhead, gruesome demonic statues watch
 over you with an almost tangable presence.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -327,7 +343,8 @@ Glancing around, you find yourself standing in a narrow junction.  A large
 ceiling carries on down into the earth...peering down, a gust of cold wind
 forces you back a step.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -359,7 +376,8 @@ You stand within the ancient stone monolith.  Around you the darkness seems
 to envelope you like a thick blanket, choking the very life from your soul...
 A small pit in the centre of the room seems to lead downwards.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -375,7 +393,8 @@ The river twists around a sharp bend here, leading away to the west. In the
 distance you see a large hill.  The river seems to twist around the hill and
 vanish from sight.
 ~
-0 7
+7
+0 0
 D0
 ~
 ~
@@ -391,7 +410,8 @@ You are travelling further down the river.  The water here seems to get much
 deeper, and you occasionally see movement below the surface, as though some
 giant fish is waiting to gobble you up...
 ~
-0 7
+7
+0 0
 D0
 ~
 ~
@@ -407,7 +427,8 @@ You are knee deep in a river flowing from the south to the north. The water
 gets much deeper to the south, so it might be a good idea to get a boat before
 going any further that way...
 ~
-4 7
+7
+1 1 0 4
 D0
 ~
 ~
@@ -423,7 +444,8 @@ S
 large bee hive. There is a dull *thud*, coming repeatedly through the wall to
 the north.@@N
 ~
-8200 3
+3
+1 2 0 8200
 D0
 ~
 ~
@@ -438,7 +460,8 @@ S
 @@bFrom here the tunnel leads straight down. To where, you know not. You
 figure you could use the honeycombs as a ladder of sorts.@@N
 ~
-8200 3
+3
+1 2 0 8200
 D2
 ~
 ~
@@ -455,7 +478,8 @@ You finally reach the end of the withered branch.  Reaching up before you,
 hand.  Standing in the middle of the 'hand' is a tall thin figure dressed in
 ragged clothing.
 ~
-8200 3
+3
+1 2 0 8200
 D1
 ~
 ~
@@ -467,7 +491,8 @@ S
 Harpy is no exception to the affect it has on the Tree. A filty pile of grass,
 cloth and animal remains, is what the Harpy calls it's home.@@N
 ~
-8200 3
+3
+1 2 0 8200
 D2
 ~
 ~
@@ -481,7 +506,8 @@ You finally scramble up to a point on the tree where you can stand upright.
 seems to be a nest, while to your south you can just about make out a dark
 entrance through the leaves.
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -505,7 +531,8 @@ You are standing at the end of the twisting trail.  Before you looms a huge,
 ancient oak tree, reaching up to the sky above with claw-like branches.
 Leading off to your west is a small stone path.
 ~
-0 3
+3
+0 0
 D2
 ~
 ~
@@ -525,7 +552,8 @@ You are standing on a dark twisting trail leading north to south.  Strange
 sounds can be heard in the undergrowth on either side, and you are grateful to
 whatever higher power put you safely upon this trail.
 ~
-16388 3
+3
+1 2 0 16388
 D0
 ~
 ~
@@ -539,7 +567,8 @@ S
 The rusty iron gate~
 You are standing at a rusty iron gate at the entrance to a dark, twisted trail.Strange noises can be heard coming from the undergrowth on either side of the
 ~
-16388 3
+3
+1 2 0 16388
 D0
 ~
 ~
@@ -555,7 +584,8 @@ You are standing in a dark opening in the tree.  The creaking of tree limbs
 masks any noises you might otherwise of heard coming from inside, and the
 sickly sweet smell of tree sap assails your senses, making you feel dizzy.
 ~
-8200 3
+3
+1 2 0 8200
 D0
 ~
 ~
@@ -571,7 +601,8 @@ Clambering further up the tree, you take a pause to look around and discover
 yourself above cloud level! You realise that this tree is unnaturally tall..
 maybe you should turn back? Who knows what might lie up here?...
 ~
-0 3
+3
+0 0
 D4
 ~
 ~
@@ -589,7 +620,8 @@ You are standing at a great junction in the tree branches.  Looking around,
 spirels up into a green tinged sky.  Where IS this place?
 In the centre of the junction stands a crooked wooden sign.
 ~
-24590 3
+3
+1 5 0 24590
 D0
 ~
 ~
@@ -626,7 +658,8 @@ You are standing on a huge dead tree branch leading from the main junction.
 yourself pondering the after affects of hitting the ground at terminal
 velocity...
 ~
-8200 3
+3
+1 2 0 8200
 D0
 ~
 ~
@@ -643,7 +676,8 @@ You are standing at the end of the dead tree branch.  The rotten wood gives
 the air around you tingles and shimmers and a dark cowled figure fades into
 existance before you, a scythe clutched in skeletal hands.
 ~
-8200 3
+3
+1 2 0 8200
 D2
 ~
 ~
@@ -655,7 +689,8 @@ You are standing on a long thick branch slick with blood.  Carefully, so as
 not to slip, you make your way along it, blood-soaked tree bark squishing
 beneath your boots.
 ~
-8200 3
+3
+1 2 0 8200
 D0
 ~
 ~
@@ -671,7 +706,8 @@ You finally manage to make your way to the end of the branch without slipping
 off. Streams of deep red blood pour down the sides of the branch, and the
 stench of death lies heavily in the air.
 ~
-8200 3
+3
+1 2 0 8200
 D0
 ~
 ~
@@ -683,7 +719,8 @@ You are standing upon a rotten branch of the great tree.  The stinking wood
 snaps and crunches beneath your feet, and you start to worry that it might
 break under your weight.
 ~
-8200 3
+3
+1 2 0 8200
 D1
 ~
 ~
@@ -700,7 +737,8 @@ You are now standing at the end of the rotten branch.  The air around you is
 around you. Suddenly a rotten corpse rises up from the wood to stand before
 you.
 ~
-8200 3
+3
+1 2 0 8200
 D3
 ~
 ~
@@ -713,7 +751,8 @@ You are standing on a thin, withered branch, that reaches out from the main
 seems quite firm beneath your feet, and you have little difficulty crossing
 over it.
 ~
-8200 3
+3
+1 2 0 8200
 D1
 ~
 ~
@@ -729,7 +768,8 @@ With a great deal of effort you manage to drag yourself even higher up the
 great tree.  The huge branches sweep upwards and outwards around you, leading
 up to the very top of the Tree of Life!
 ~
-24584 3
+3
+1 3 0 24584
 D4
 ~
 ~
@@ -746,7 +786,8 @@ With one final heave you pull yourself up to the top of the Tree of Life. A
 sounds of your footsteps, and the skies above you glow with a dim greenish
 haze of undoubtedly supernatural origin.
 ~
-24584 3
+3
+1 3 0 24584
 D5
 ~
 ~
@@ -758,7 +799,8 @@ You are standing on a small stone path that leads towards a castle upon a hill
 on the west horizen. This path seems to be rarely used, although from time to
 time you see the occasional traveller.
 ~
-0 2
+2
+0 0
 D1
 ~
 ~
@@ -773,7 +815,8 @@ A small stone path~
 The small stone path leads west, away from the huge tree.  Even further to
 your west, the castle on the hill looms ever closer...
 ~
-0 2
+2
+0 0
 D1
 ~
 ~
@@ -789,7 +832,8 @@ You are now about half way between the great tree to the east and the castle
 upon the hill to the west.  Directly to your west a small bridge crosses a
 river which flows from north to south.
 ~
-0 2
+2
+0 0
 D1
 ~
 ~
@@ -806,7 +850,8 @@ You are standing on a small stone bridge which leads across a fast flowing
 while closer to your west lies a great castle upon a hill. You hear some
 strange sounds coming from under the bridge...
 ~
-0 2
+2
+0 0
 D1
 ~
 ~
@@ -826,7 +871,8 @@ With great care you climb down the wooden ladder below the bridge toward the
 strange sounds.  They seem to be like a sort of heavy breathing, but you can't
 be totally sure...and what IS that awful smell?
 ~
-4 2
+2
+1 1 0 4
 D4
 ~
 ~
@@ -842,7 +888,8 @@ S
 the various bits of garbage tucked up under the bridge reveal this quite
 clearly. @@N
 ~
-8200 6
+6
+1 2 0 8200
 D0
 ~
 ~
@@ -864,7 +911,8 @@ This small room is lit by patches of faintly glowing green moss on the walls
 DarkBlades to help any brothers or sisters who are lacking some vital piece
 of equipment.
 ~
-8 11
+11
+1 1 0 8
 D3
 ~
 ~
@@ -878,7 +926,8 @@ The walls of this room are covered with blood.  It seems to pour through a
 blood, which gradually flows back to the centre of the room, where it is
 slurped up hungrily through small cracks in the base of the fountain.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -896,7 +945,8 @@ You force your way into this room, desperately trying to push against the
 towards you with a huge clawed hand, his long tail flicking angrily from side
 to side.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -930,7 +980,8 @@ The scent of strange preservation fluids meets your nostrils as you enter this
 black polished desk.  Hanging from the ceiling are a selection of heads,
 hearts and limbs from old victims of the DarkBlades.
 ~
-12 11
+11
+1 2 0 12
 D2
 ~
 ~
@@ -944,7 +995,8 @@ You stand in a room of overwhelming darkness.  Faint patches of glowing green
 spine.  Strange arcane symbols of evil have been painted in blood upon the
 floor and walls, and the smell of death lies heavily in the air.
 ~
-1036 11
+11
+1 3 0 1036
 D1
 ~
 ~
@@ -958,7 +1010,8 @@ This small, dark room is devoid of furnishings, save for the heads of Magic's
 scent of decay.  The damp atmosphere seems to penetrate your clothing,
 chilling you to your very bones.
 ~
-1036 11
+11
+1 3 0 1036
 D3
 ~
 ~
@@ -974,7 +1027,8 @@ The room you now stand is fairly bare, except for a large sleeping pallet in
 up, you see several small stalactites of hardened blood pointing downwards
 like spears.
 ~
-12 11
+11
+1 2 0 12
 D0
 ~
 ~
@@ -993,7 +1047,8 @@ You clamber down into a large black pit.  The temperature is well below
 trapped, and it can only be so long before the master of the pit returns to
 claim his prize...your soul.
 ~
-24712 11
+11
+1 4 0 24712
 D4
 ~
 ~
@@ -1005,7 +1060,8 @@ You are standing in the large entranceway to the Hall of Legends.  This is
 where all the greatest warriors can be found, showing off their talents to the
 eagerly awaiting crowds.
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1022,7 +1078,8 @@ You are standing in a huge hall.  All around you, great warriors and wizards
 great hall stands a huge monolith; a tribute to the greatest fighters that the
 world has ever known.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1045,7 +1102,8 @@ You are travelling along a fast flowing river.  To the east, it twists sharply
 towards the north, while to the west it leads off towards a large hill, where
 it vanishes from sight.
 ~
-0 7
+7
+0 0
 D1
 ~
 ~
@@ -1061,7 +1119,8 @@ You are travelling along a fast flowing river.  Far off to your east, the
 river twists north, while to your west it travels around the side of a large
 hill.
 ~
-0 7
+7
+0 0
 D1
 ~
 ~
@@ -1077,7 +1136,8 @@ You are on a fast flowing river travelling west to east.  Far off to your east
 you see the river twist north, while to your west is a large hill.  The river
 travels past the hill and then twists northwards.
 ~
-0 7
+7
+0 0
 D1
 ~
 ~
@@ -1093,7 +1153,8 @@ You are a travelling along a fast flowing river which runs west to east. Far
 off to your east the river twists to the north, and to your west it also
 twists out of sight, around the side of the large hill.
 ~
-0 7
+7
+0 0
 D0
 ~
 ~
@@ -1113,7 +1174,8 @@ You are travelling along the fast flowing river.  You can see the river
 continue far to the east, eventually twisting northwards.  Directly to your
 north you can see a large waterfall.
 ~
-0 7
+7
+0 0
 D0
 ~
 ~
@@ -1132,7 +1194,8 @@ The large waterfall~
 would prove far too strong.
 @@N
 ~
-4 7
+7
+1 1 0 4
 D2
 ~
 ~
@@ -1144,7 +1207,8 @@ You are standing at the base of the hill.  A dark passageway leads directly
 north from you, towards the muffled sound of voices. To your south lies a fast
 flowing river, which travels from west to east.
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1160,7 +1224,8 @@ You find yourself within a small pool.  The rocks on either side of you
 prevent you travelling any further, leaving the only exit from this place
 south, back to the trolls's den.
 ~
-0 6
+6
+0 0
 D2
 ~
 ~
@@ -1173,7 +1238,8 @@ You are standing on a small stone path.  Directly to your west lies the base
 hill is a large stone castle of strange design.  Far to your east you see a
 massive tree reaching upwards into the heavens and beyond.
 ~
-0 2
+2
+0 0
 D1
 ~
 ~
@@ -1189,7 +1255,8 @@ You are standing at the base of the huge hill.  Far above you, a great stone
 castle can be seen, while far off to the east a great tree reaches ever
 upwards towards the sky.
 ~
-0 2
+2
+0 0
 D1
 ~
 ~
@@ -1201,7 +1268,8 @@ You are standing within a large passage.  Directly to your north you can make
 out the lights and sounds of people moving around.  Maybe you should
 investigate?
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1217,7 +1285,8 @@ You are standing in the great hall.  All around you, great hero's walk around,
 showing off their prowess and powers.  Within the centre of the hall stands a
 great monolith; a tribute to the greatest fighters the world has ever known.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1237,7 +1306,8 @@ You are standing within the great hall.  Great warriors and wizards walk back
 hall stands a great monolith; a tribute to the greatest fighters who ever
 walked the earth.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1257,7 +1327,8 @@ You are standing within the great hall.  All around you, great warriors and
 the centre of the hall stands a great monolith; a tribute to the greatest
 fighters who ever lived.
 ~
-8 11
+11
+1 1 0 8
 D1
 ~
 ~
@@ -1277,7 +1348,8 @@ You are standing within the centre of the great hall.  All around you, mighty
 the very centre of the hall is a great monolith; a final tribute to the
 mightest warriors who ever lived.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1305,7 +1377,8 @@ You stand within the centre of the great hall.  All around you, great hero's
 each other.  In the very middle of the hall stands a huge monolith; a lasting
 tribute to the greatest fighters the world has ever known.
 ~
-8 11
+11
+1 1 0 8
 D2
 ~
 ~
@@ -1324,7 +1397,8 @@ You stand within the great hall, surrounded by great mages and warriors from
 legend.  In the very centre of the hall stands a mighty monolith; a lasting
 and final tribute to the greatest warriors who ever lived.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1343,7 +1417,8 @@ You stand within the great hall.  All around you, great hero's from legend
 walk around, ignoring each other and you.  In the very centre of the hall
 stands a huge monolith; a tribute to the greatest warriors who ever lived.
 ~
-8 11
+11
+1 1 0 8
 D0
 ~
 ~
@@ -1361,7 +1436,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surrounds you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -1391,7 +1467,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surrounds you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -1425,7 +1502,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surrounds you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -1459,7 +1537,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surrounds you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -1493,7 +1572,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surrounds you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -1527,7 +1607,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surrounds you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -1561,7 +1642,8 @@ Within the Shadow Maze~
 You are standing within the Shadow Maze.  The darkness surrounds you like a
 smothering shroud, sucking the heat and life from your body.
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -1596,7 +1678,8 @@ You are standing at the end of the Shadow Maze.  There is a portal to your
 north which seems to lead out of this dark place...you better go through
 quickly before you freeze to death...
 ~
-24921 11
+11
+1 7 0 24921
 D0
 ~
 ~
@@ -1614,7 +1697,8 @@ A small dark alcove~
 You are standing within a small dark alcove.  To your east and west lie rooms
 to help you recover from your ordeal, and help you prepare for your next one.
 ~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -1633,7 +1717,8 @@ The healing room~
 You are standing in a small room dedicated to the healing of the injured.
 You are sure that as long as you remain here you will be safe.
 ~
-17418 11
+11
+1 4 0 17418
 D1
 ~
 ~
@@ -1642,7 +1727,8 @@ S
 #16885
 A shadowy chamber~
 ~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -1659,7 +1745,8 @@ S
 #16886
 @@GThe @@dDark Heart @@Gof the @@dWood@@N~
 ~
-8203 3
+3
+1 4 0 8203
 D2
 ~
 ~
@@ -1670,7 +1757,8 @@ S
 @@bThis place is starting to have the look of the unmistakable presence of
 bees. BIG bees.@@N
 ~
-8200 3
+3
+1 2 0 8200
 D0
 ~
 ~
@@ -1685,7 +1773,8 @@ S
 @@bYou struggle to keep your footing as you traverse this world of tree-sap
 @@N
 ~
-8200 3
+3
+1 2 0 8200
 D0
 ~
 ~
@@ -1700,7 +1789,8 @@ S
 @@bYou stand in a puddle of tree sap, it looks as though it was collected here
 @@N
 ~
-8200 3
+3
+1 2 0 8200
 D2
 ~
 ~
@@ -1715,7 +1805,8 @@ S
 @@bThe terrain here is very difficult to master. You aren't exactly used to
 climbing sap-slickened slopes on the insides of trees. @@N
 ~
-8200 3
+3
+1 2 0 8200
 D2
 ~
 ~
@@ -1730,7 +1821,8 @@ S
 @@bThe smell of sap continues to assult your senses. You are starting to feel
 nauseous. @@N
 ~
-8200 3
+3
+1 2 0 8200
 D0
 ~
 ~
@@ -1743,7 +1835,8 @@ S
 #16892
 @@bGiant Bee REPOP ROOM@@N~
 ~
-24584 3
+3
+1 3 0 24584
 D1
 ~
 ~
@@ -1760,7 +1853,8 @@ S
 Turning back now might be a good idea.  Very few could overcome the presence
 of something great enough to pervert and corrupt even Eden. @@N
 ~
-64 3
+3
+1 1 0 64
 D0
 ~
 ~
@@ -1776,7 +1870,8 @@ S
 this could be only one place in legend, or the present. Eden. It must be. It
 has to be. The canopy forms an archway to the west here.@@N
 ~
-2 3
+3
+1 1 0 2
 D3
 ~
 ~
@@ -1794,7 +1889,8 @@ S
 outcropping rocks here, you could get a handhold and climb up if you wished
 @@N
 ~
-2 3
+3
+1 1 0 2
 D2
 ~
 ~
@@ -1810,7 +1906,8 @@ S
 clear water you have ever seen. To the north, a waterfal can be seen, silently
 pouring itself over into oblivion.@@N
 ~
-6 3
+3
+1 2 0 6
 D0
 ~
 ~
@@ -1828,7 +1925,8 @@ S
 peace here. Ahead of you along the trail you hear the sounds of a brook,
 babbling forever to itself.@@N
 ~
-10 3
+3
+1 2 0 10
 D0
 ~
 vines~
@@ -1844,7 +1942,8 @@ S
 little room to move, let alone anyplace to go. If only there were a path.. it
 would take oyu senturies to hack through this place.@@N
 ~
-10 3
+3
+1 2 0 10
 D2
 ~
 ^vines~
@@ -1862,7 +1961,8 @@ S
 nature is here with you. The essence of health flows through you here. You may
 never want to leave.@@N @@G You notice a small cluster of @@bbranches@@G.@@N
 ~
-2 3
+3
+1 1 0 2
 D1
 ~
 ^overgrowth~
@@ -1917,7 +2017,7 @@ The night gaunt stands here, offering refreshments.
 ~
 ~
 280641 -1000
-8 1
+9 1
 -1500 700 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1989,7 +2089,7 @@ This skeletal figure stands at about 7 feet in height, and is dressed in
 you with a sense of pity.
 ~
 552 0
-107 0
+106 0
 -999 700 480
 ! 0 0 0 7 26638 524288 0
 | 0 0 0 0 0 0 0
@@ -2053,7 +2153,7 @@ Standing at nearly 7 feet tall, and clad in glowing red armor, The
 death magic, and NOBODY can stand against me and live!'
 ~
 640 -1
-105 1
+106 1
 -1250 700 700
 ! 0 0 0 7 24590 256 0
 | 0 0 0 0 0 0 0
@@ -2132,7 +2232,7 @@ A guardian of clan DarkBlade is standing here, glaring at you.
 ~
 ~
 0 0
-29 1
+28 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -2181,7 +2281,7 @@ rainbow dragon~
 ~
 ~
 540732 500
-111 1
+112 1
 -1100 700 700
 ! 0 0 8 7 30990 0 16
 | 0 0 0 0 0 0 0
@@ -2205,7 +2305,7 @@ paladia mors~
 ~
 ~
 533052 0
-109 1
+110 1
 -1300 500 500
 ! 0 0 8 7 28686 0 0
 | 0 0 0 0 0 0 0
@@ -2217,7 +2317,7 @@ The statue of the @@aChromium@@N Elder Dragon, is here.
 ~
 ~
 8764 0
-108 1
+107 1
 -1500 500 500
 ! 0 0 8 7 29710 0 0
 | 0 0 0 0 0 0 0
@@ -2230,7 +2330,7 @@ The statue of the Elder Dragon known as @@dAr@@Wcad@@des
 ~
 ~
 8828 0
-102 1
+103 1
 -1400 620 610
 ! 0 0 8 7 29710 0 16
 | 0 0 0 0 0 0 0
@@ -2242,7 +2342,7 @@ The statue of @@dVae@@Gvic@@Rtus As@@Gma@@ddi@@N, the Elder Dragon, looms powerf
 ~
 ~
 25148 0
-105 1
+106 1
 -1450 660 600
 ! 0 0 8 7 29710 0 16
 | 0 0 0 0 0 0 0
@@ -2254,7 +2354,7 @@ A statue of the most feared Elder Dragon, @@dNic@@aol @@dBo@@clas@@N
 ~
 ~
 8764 0
-112 1
+111 1
 -1500 700 630
 ! 0 0 8 7 31758 0 0
 | 0 0 0 0 0 0 0

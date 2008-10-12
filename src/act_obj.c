@@ -2723,7 +2723,7 @@ void do_buy( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_PET_SHOP ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_PET_SHOP ) )
    {
       char buf[MAX_STRING_LENGTH];
       CHAR_DATA *pet;
@@ -2914,7 +2914,7 @@ void do_list( CHAR_DATA * ch, char *argument )
    }
 
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_PET_SHOP ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_PET_SHOP ) )
    {
       ROOM_INDEX_DATA *pRoomIndexNext;
       CHAR_DATA *pet;

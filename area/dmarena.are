@@ -1,6 +1,6 @@
 #AREA
 DM Arena~
-Q 20
+Q 21
 K none ~
 L @@W{@@eD@@REAT@@eH@@W}@@N~
 N 1
@@ -17,7 +17,8 @@ S Title not shown on area list.
 #201
 New room~
 No description~
-4 11
+11
+1 1 0 4
 D0
 ~
 ~
@@ -26,7 +27,8 @@ S
 #202
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -47,7 +49,8 @@ S
 #203
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -68,7 +71,8 @@ S
 #204
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -85,7 +89,8 @@ S
 #205
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -94,7 +99,8 @@ S
 #206
 New room~
 No description~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -103,7 +109,8 @@ S
 #207
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -116,7 +123,8 @@ S
 #208
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -125,7 +133,8 @@ S
 #209
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -138,7 +147,8 @@ S
 #210
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -151,7 +161,8 @@ S
 #211
 New room~
 No description~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -160,7 +171,8 @@ S
 #212
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -173,7 +185,8 @@ S
 #213
 New room~
 No description~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -182,7 +195,8 @@ S
 #214
 New room~
 No description~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -195,7 +209,8 @@ S
 #215
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -208,7 +223,8 @@ S
 #216
 New room~
 No description~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -221,7 +237,8 @@ S
 #217
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -234,7 +251,8 @@ S
 #218
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -247,7 +265,8 @@ S
 #219
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -260,7 +279,8 @@ S
 #220
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -273,7 +293,8 @@ S
 #221
 New room~
 No description~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -286,7 +307,8 @@ S
 #222
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -299,7 +321,8 @@ S
 #223
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -312,7 +335,8 @@ S
 #224
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -325,7 +349,8 @@ S
 #225
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -338,7 +363,8 @@ S
 #226
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -351,7 +377,8 @@ S
 #227
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -368,7 +395,8 @@ S
 #228
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -381,7 +409,8 @@ S
 #229
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -394,7 +423,8 @@ S
 #230
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -403,7 +433,8 @@ S
 #231
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -416,7 +447,8 @@ S
 #232
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -429,7 +461,8 @@ S
 #233
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -442,7 +475,8 @@ S
 #234
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -459,7 +493,8 @@ S
 #235
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -468,7 +503,8 @@ S
 #236
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -481,7 +517,8 @@ S
 #237
 New room~
 No description~
-0 11
+11
+0 0
 D2
 ~
 ~
@@ -494,7 +531,8 @@ S
 #238
 New room~
 No description~
-0 11
+11
+0 0
 D4
 ~
 ~
@@ -507,7 +545,8 @@ S
 #239
 New room~
 No description~
-0 11
+11
+0 0
 D4
 ~
 ~
@@ -520,7 +559,8 @@ S
 #240
 New room~
 No description~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -533,7 +573,8 @@ S
 #241
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -546,7 +587,8 @@ S
 #242
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -559,7 +601,8 @@ S
 #243
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -572,7 +615,8 @@ S
 #244
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -585,7 +629,8 @@ S
 #245
 New room~
 No description~
-0 11
+11
+0 0
 D0
 ~
 ~
@@ -598,7 +643,8 @@ S
 #246
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -615,7 +661,8 @@ S
 #247
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -628,7 +675,8 @@ S
 #248
 New room~
 No description~
-0 11
+11
+0 0
 D3
 ~
 ~
@@ -637,7 +685,8 @@ S
 #249
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~
@@ -650,7 +699,8 @@ S
 #250
 New room~
 No description~
-0 11
+11
+0 0
 D1
 ~
 ~

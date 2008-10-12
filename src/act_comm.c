@@ -482,7 +482,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
    /*
     * Allows immortals to communicate in silent rooms 
     */
-   if( IS_SET( ch->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )  /* Sssshhh! */
+   if( is_set( ch->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )  /* Sssshhh! */
    {
       send_to_char( "Ssshhh!  This is a quiet room!\n\r", ch );
       return;
@@ -655,7 +655,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
 
          if( d->connected == CON_PLAYING && vch != ch && !is_set( och->deaf, channel ) && !is_set(och->deaf,CHANNEL_HERMIT) )
          {
-            if( IS_SET( vch->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
+            if( is_set( vch->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )
                continue;
             if( channel == CHANNEL_CREATOR && get_trust( och ) < MAX_LEVEL )
                continue;
@@ -1026,7 +1026,7 @@ void do_say( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )
    {
       send_to_char( "Sssshhhh! This is a quiet room!\n\r", ch );
       return;
@@ -1267,7 +1267,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( victim->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
+   if( is_set( victim->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )
    {
       act( "$N is in a quiet room, $E can't hear you.", ch, NULL, victim, TO_CHAR );
       return;
@@ -1351,7 +1351,7 @@ void do_reply( CHAR_DATA * ch, char *argument )
    }
 
 
-   if( IS_SET( victim->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
+   if( is_set( victim->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )
    {
       act( "$N is in a quiet room.  $E can't hear you.", ch, NULL, victim, TO_CHAR );
       return;
@@ -1391,7 +1391,7 @@ void do_emote( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_QUIET ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_QUIET ) )
    {
       send_to_char( "You can't show your emotions in a quiet room!\n\r", ch );
       return;
@@ -1648,7 +1648,7 @@ void do_pose( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_QUIET ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_QUIET ) )
    {
       send_to_char( "You can't pose in a quiet room!\n\r", ch );
       return;

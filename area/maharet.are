@@ -1,6 +1,6 @@
 #AREA
 @@GEvermeet@@N~
-Q 20
+Q 21
 K evermeet~
 L @@W{@@r ALL @@W}@@N~
 N 7
@@ -24,7 +24,8 @@ This lovely room sparkles like the diamond for which it is named. Normally
 other corner, it is no wonder this room is among one of the favorites of the
 house. This seems to be an ideal place to start (or restart) a budding romance.
 ~
-1546 1
+1
+1 4 0 1546
 D5
 ~
 ~
@@ -39,7 +40,8 @@ This beautiful room is tastefully decorated in assorted shades of red. Like
 This would be the perfect place to relax or bring a loved one and spend a
 quiet evening alone.
 ~
-1546 1
+1
+1 4 0 1546
 D3
 ~
 ~
@@ -53,7 +55,8 @@ This beautiful room is tastefully decorated in assorted shades of green. Like
 several chairs around it just right for sitting back and discussing whatever
 topic may come up.
 ~
-1034 1
+1
+1 3 0 1034
 D1
 ~
 ~
@@ -68,7 +71,8 @@ This beautiful room is tastefully decorated in assorted shades of blue. Like
 troubles. This would be the perfect place to relax or bring a loved one and
 spend a quiet evening alone.
 ~
-1550 1
+1
+1 5 0 1550
 D0
 ~
 ~
@@ -85,7 +89,8 @@ This quiet establishment is very popular with the locals of Evermeet. They
 purpose or another, but I'm sure if you just ask, Throleatha can find a room
 to suit your needs.
 ~
-8 1
+1
+1 1 0 8
 D0
 ~
 ~
@@ -114,7 +119,8 @@ This road seems to sparkle as if it is paved in diamonds. In actuality, it is
 architects of Evermeet designed this road so that it looks completely natural
 here in the middle of all this natural wonder.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -131,7 +137,8 @@ This road seems to sparkle as if it is paved in diamonds. In actuality, it is
 architects of Evermeet designed this road so that it looks completely natural
 here in the middle of all this natural wonder.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -146,7 +153,8 @@ Pathway to adventure~
 A long winding path that leads slowly onwards off into the distance.
 \br@@GThe forest quickly thickens to the east, blocking your vision with a thick overhanging of @@bbranches@@N.
 ~
-0 2
+2
+0 0
 D1
 ~
 ^branches~
@@ -161,7 +169,8 @@ Outside the South Gate of Evermeet~
 Outside that gate, no longer protected by the militia, you must forage onwards
 into the big wide world.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -172,7 +181,8 @@ Inside the South Gate of Evermeet~
 You see the exit of the city to the south, so go on, go out and explore, maybe
 find adventure when it is least expected.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -186,7 +196,8 @@ S
 Main Street~
 The street continues south.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -200,7 +211,8 @@ S
 Main Street~
 The Street continues south.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -217,7 +229,8 @@ As you stand in wonder of the beauty of your surroundings, you almost miss the
 these steps lead straight up through the heart of Evermeet. Watch your footing
 though, that moss can be slippery.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -242,7 +255,8 @@ This quiet room is very popular with some of the locals. They like to come
 card game is always in progress and a local musician is normally singing in a
 corner. All in all, it's a nice room in which to hide out for awhile.
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -256,7 +270,8 @@ A large open and spacious tavern, sumptiously decorated with fine pictures
 Lorianne runs an efficient tavern here, which is probably the reason why it is
 so busy and bustling.
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -271,7 +286,8 @@ The Green Sword Tavern ~
 The huge dominating entrance to the tavern leaves you gaping in awe at the
 sheer proportions of it all, the doorway must be twice as tall as any ogier!
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -286,7 +302,8 @@ Passage~
 A long thin walkway, descending off into what you think are sounds of laughter
 and merriment from the west.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -303,7 +320,8 @@ As you stand in wonder of the beauty of your surroundings, you almost miss the
 these steps lead straight up through the heart of Evermeet. Watch your footing
 though, that moss can be slippery.
 ~
-0 1
+1
+0 0
 D3
 ~
 ~
@@ -324,7 +342,8 @@ This crowded market place is packed full of busy shoppers who look as if they
 from them. Up ahead to the west is Dandy's Lyon Inn, to the south is the
 Evermeet House of Fashion, and to the north is Thaola's Wineshop.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -350,7 +369,8 @@ As you stand in awe of the wide selection of surrounding shops, you notice
 last gold piece they have earned. Everything you can imagine is available on
 this street, you just have to know where to go and who to talk to.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -368,7 +388,8 @@ This little shop is just the place to find all those little extras you can't
 on hand, make sure you let the shopkeeper know, he may have it buried in the
 backroom somewhere.
 ~
-1032 1
+1
+1 2 0 1032
 D1
 ~
 ~
@@ -382,7 +403,8 @@ As you enter this shop, you are instantly surrounded by the sweet smells of
 politely, the shopkeeper of this fine establishment would love to help you
 make a suitable selection for whatever occasion you may have in mind.
 ~
-8 1
+1
+1 1 0 8
 D3
 ~
 ~
@@ -398,7 +420,8 @@ Your mouth begins to water as you enter the farmer's market. The smells of all
 thought. Now the only problem you are faced with is what to buy. Of course you
 could take the easy way out, and just buy one of everything.
 ~
-0 1
+1
+0 0
 D2
 ~
 ~
@@ -414,7 +437,8 @@ This crowded market place is packed full of busy shoppers who look as if they
 from them. Up ahead to the north is the Farmers Market, to the east is the
 local flower shop, and to the west is the General Store.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -440,7 +464,8 @@ As you stand in awe of the wide selection of surrounding shops, you notice
 last gold piece they have earned. Everything you can imagine is available on
 this street, you just have to know where to go and who to talk to.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -458,7 +483,8 @@ As you stand in awe of the wide selection of surrounding shops, you notice
 last gold piece they have earned. Everything you can imagine is available on
 this street, you just have to know where to go and who to talk to.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -475,7 +501,8 @@ The gleaming white fountain before you has finely etched images of birds,
 that if you gaze deep into the waters, you may receive a vision of the future.
 For others, it is simply a quiet place to rest and heal for upcoming adventures.
 ~
-1038 1
+1
+1 4 0 1038
 D5
 ~
 ~
@@ -488,7 +515,8 @@ The beautiful temple before you is the very heart of Evermeet. The citizens of
 Crystalline materials and precious stones were used in the building materials,
 making the entire structure glitter in the sun with a gem-like quality.
 ~
-8 8
+8
+1 1 0 8
 D0
 ~
 ~
@@ -522,7 +550,8 @@ As you stand in awe of the wide selection of surrounding shops, you notice
 piece they have earned. Everything you can imagine is available on this street
 you just have to know where to go and who to talk to.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -543,7 +572,8 @@ This fine banking establishment takes great pride in treating all of their
 their careful hands. Typing BANK will show you all of the services available
 to you.
 ~
-8 1
+1
+1 1 0 8
 D2
 ~
 ~
@@ -557,7 +587,8 @@ The first thing you notice as you walk in this shop are the bottles upon
 extent of Thaola's stock. There are even more in the back, not to mention the
 'special' vintages she has hidden away for her favored customers.
 ~
-8 1
+1
+1 1 0 8
 D2
 ~
 ~
@@ -570,7 +601,8 @@ This comfortable Inn is a nice relief from the crowded market street outside.
 greeted by a big teddy bear of a man welcoming you to come in and relax. With
 a welcome like that, how can you refuse him?
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -588,7 +620,8 @@ This quiet room is the best at the inn. Okay, so it is also the only room at
 corner, and you get the idea that this should become your new rest stop
 whenever you visit Evermeet.
 ~
-1038 1
+1
+1 4 0 1038
 D5
 ~
 ~
@@ -602,7 +635,8 @@ You have just entered Evermeet's most prestigious clothing store. Prepare to
 send his prices skyrocketing. You wouldn't believe what he can get away with
 charging for a simple cloak.
 ~
-8 1
+1
+1 1 0 8
 D0
 ~
 ~
@@ -616,7 +650,8 @@ As you stand in awe of the wide selection of surrounding shops, you notice
 last gold piece they have earned. Everything you can imagine is available on
 this street, you just have to know where to go and who to talk to.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -633,7 +668,8 @@ This crowded market place is packed full of busy shoppers who look as if they
 from them. Up ahead to the south is the Weapon Warehouse, to the west is the
 local armory, and to the east is the Magic Emporium.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -659,7 +695,8 @@ The only armory in town, this shop sees a lot of business. Luckily for the
 the orders tend to take a long time to be filled since there is only one
 person working the shop.
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -673,7 +710,8 @@ The shop before you is a mage's dream come true. It is very well stocked and
 you only need to mention what it is you need and it will be here in a matter
 of days if not sooner.
 ~
-8 1
+1
+1 1 0 8
 D3
 ~
 ~
@@ -688,7 +726,8 @@ The Weapon Warehouse is well stocked with Kythaela's fine weapons. The walls
 price to be low. After all, we are talking about the finest quality in the
 lands.
 ~
-8 1
+1
+1 1 0 8
 D0
 ~
 ~
@@ -701,7 +740,8 @@ This crowded market place is packed full of busy shoppers who look as if they
 from them. Just ahead to the east is the Temple of Seldarine, to the north is
 the local jewelry store, and to the south is Sebastian's Music Store
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -727,7 +767,8 @@ As you enter this shop, you notice the numerous musical instruments available
 sure you don't get them from Sebastian, he tends to be a bit crabby when
 teaching.
 ~
-8 1
+1
+1 1 0 8
 D0
 ~
 ~
@@ -741,7 +782,8 @@ As you enter the store, you are instantly greeted by an overly happy looking
 the more likely you will leave the store humming the song. Even now you start
 humming something about being a credit man?
 ~
-8 1
+1
+1 1 0 8
 D2
 ~
 ~
@@ -753,7 +795,8 @@ This temple is quiet and peaceful, the only hushed movements coming from the
 older elves quietly making their way among the seats to pray for a wee while.
 An aura of total calm and understanding washes over you.
 ~
-12 1
+1
+1 2 0 12
 D1
 ~
 ~
@@ -769,7 +812,8 @@ As you pass through the door, you notice the priest looking up at you with
 tired old eyes peering behind squinted eyelids. He smiles as you enter, and
 lays his hands on you in a blessing.
 ~
-1034 1
+1
+1 3 0 1034
 D3
 ~
 ~
@@ -782,7 +826,8 @@ As you stand in wonder of the beauty of your surroundings, you almost miss the
 these steps lead straight up through the heart of Evermeet. Watch your footing
 though, that moss can be slippery.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -811,7 +856,8 @@ This road seems to sparkle as if it is paved in diamonds. In actuality, it is
 architects of Evermeet designed this road so that it looks completely natural
 here in the middle of all this natural wonder.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -828,7 +874,8 @@ This road seems to sparkle as if it is paved in diamonds. In actuality, it is
 architects of Evermeet designed this road so that it looks completely natural
 here in the middle of all this natural wonder.
 ~
-0 1
+1
+0 0
 D0
 ~
 ~
@@ -848,7 +895,8 @@ As you walk in the door, you are greeted by the tempting smell of fresh baked
 goodies. The display case before you is packed full of an assortment of tasty
 looking donuts and pastries.
 ~
-8 1
+1
+1 1 0 8
 D2
 ~
 ~
@@ -861,7 +909,8 @@ This road seems to sparkle as if it is paved in diamonds. In actuality, it is
 architects of Evermeet designed this road so that it looks competely natural
 here in the middle of all this natural wonder.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -877,7 +926,8 @@ Here is the headquarters of the guards, an indomitable looking building indeed
 You get the impression that justice and righteousness will be served from
 within in the fairest of manners.
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -893,7 +943,8 @@ The captain of the men-at-arms force, the citizen militia run by this huge
 (even by elven standards) man, a tower of vast accumulated intelligence and
 muscle to boot. Dare you cross him?
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -909,7 +960,8 @@ A comfortable room, to take a 5 minute break from all the duties of the guards
 to forget all worries and sink deeply sighing into that lovely hot cup of
 well-deserved coffee.
 ~
-8 1
+1
+1 1 0 8
 D0
 ~
 ~
@@ -922,7 +974,8 @@ This road seems to sparkle as if it is paved in diamonds. In actuality, it is
 architects of Evermeet designed this road so that it looks completely natural
 here in the middle of all this natural wonder.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -940,7 +993,8 @@ As you enter the sacred grounds of the palace, you feel a touch of wonder at
 to go into the palace though, make sure you stay on the path. It is very easy
 to get lost in these vast acres.
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -958,7 +1012,8 @@ This vast, gleaming structure of white, silver, and gold stands watch over the
 a huge central dome that is crafted of marble and roofed in gold. No wonder it
 is the centerpiece of Evermeet.
 ~
-12 1
+1
+1 2 0 12
 D1
 ~
 ~
@@ -976,7 +1031,8 @@ This quiet, luxuriously decorated room is where you must wait for the Queen
 don't think you can bribe her guards. They are all fiercely loyal to her, and
 would not look to kindly upon it.
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 ~
@@ -993,7 +1049,8 @@ You feel awed as you enter the Queen's throne room. The elaborately decorated
 throne of Queen Amlaruil. It is from here that the Queen governs her island
 with the help of her Council of Matrons, and sees to the welfare of her people.
 ~
-8 1
+1
+1 1 0 8
 D0
 ~
 ~
@@ -1010,7 +1067,8 @@ This beautifully decorated room is obviously where the queen spends most of
 crystal baywindow that overlooks the city, you can hardly blame her. Two large
 divans are next to the window, perfect for relaxing in and enjoying the view.
 ~
-26120 1
+1
+1 5 0 26120
 D2
 ~
 ~
@@ -1020,7 +1078,8 @@ S
 Main Street~
 You force your way along the street surrounded by crowds.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -1034,7 +1093,8 @@ S
 Main Street~
 You force your way along the street surrounded by crowds.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -1048,7 +1108,8 @@ S
 Inside the East Gate of Evermeet~
 You stand before the immense wrought iron East gate to the city.
 ~
-8 1
+1
+1 1 0 8
 D1
 ~
 gate~
@@ -1062,7 +1123,8 @@ S
 Outside the East Gate of Evermeet~
 You leave the gate trailing behind you as you boldly soldier on.
 ~
-0 1
+1
+0 0
 D3
 ~
 gate~
@@ -1072,13 +1134,15 @@ S
 Path of uncertainty.~
 A long path indeed, unfortunately you are travelling down it and it may take some time to reach civilisation.
 ~
-4 1
+1
+1 1 0 4
 S
 #9257
 Main Street~
 You hustle and bustle your way through the crowded streets.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -1092,7 +1156,8 @@ S
 Main Street~
 You hustle and bustle your way through the crowded streets.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -1106,7 +1171,8 @@ S
 Inside the West Gate of Evermeet~
 You stand before the large wrought iron gates to the West of the city.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -1120,7 +1186,8 @@ S
 Outside the West Gate of Evermeet~
 You leave the gate behind you as you bodly forage onward.
 ~
-0 1
+1
+0 0
 D1
 ~
 gate~
@@ -1135,7 +1202,8 @@ New room~
 Great riches await your endeavours, in which case you may consider making a
 small donation to the upkeep of the city? The mayor would be so proud od you.
 ~
-0 1
+1
+0 0
 D1
 ~
 ~
@@ -1154,7 +1222,7 @@ The impassive gate guard stands here.
 ~
 ~
 32776 -100
-55 1
+56 1
 -500 120 110
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1166,7 +1234,7 @@ The guard captain of the elite squadron polishes his boots nonchalantly here.
 ~
 ~
 533120 100
-65 1
+64 1
 -690 199 223
 ! 0 0 3 7 7684 0 0
 | 0 0 0 0 0 0 0
@@ -1178,7 +1246,7 @@ The impassive Elite guard stands here, looming over you.
 ~
 ~
 8872 -1
-63 1
+64 1
 -40 40 40
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1190,7 +1258,7 @@ The beautifully radiant Queen Amlariul sits here lost in thought.
 ~
 ~
 680 -1
-84 2
+85 2
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1202,7 +1270,7 @@ The wizened old elven priest looks up at you from his reading.
 ~
 ~
 2728 300
-82 1
+81 1
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1214,7 +1282,7 @@ The serenely graceful Elven guards patrol here.
 ~
 ~
 8832 -1
-38 1
+39 1
 -25 20 20
 ! 0 0 3 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -1226,7 +1294,7 @@ Amylla Goldeneyes bakes her way through the day's order here.
 ~
 ~
 35368 -1
-73 2
+72 2
 -1400 400 400
 ! 0 0 3 7 24076 0 16
 | 0 0 0 0 0 0 0
@@ -1238,7 +1306,7 @@ A short, crabby elf is here giving music lessons.
 ~
 ~
 2720 0
-59 1
+60 1
 -1400 400 400
 ! 0 0 3 7 24076 0 16
 | 0 0 0 0 0 0 0
@@ -1254,7 +1322,7 @@ This pretty little elf spends most of her time here among her flowers. With her
 to make any money in her chosen profession.
 ~
 10912 0
-138 2
+139 2
 -1400 400 400
 ! 0 0 3 7 390 0 0
 | 0 0 0 0 0 0 0
@@ -1285,7 +1353,7 @@ The honorable elf before you would rather die than cheat a customer of his
 leads that has him practically chained to the bank.
 ~
 8872 0
-81 1
+82 1
 -1300 400 400
 ! 3 0 3 7 398 0 0
 | 0 0 0 0 0 0 0
@@ -1332,7 +1400,7 @@ Kythaela looks as if she has been in this business for a long time. Her
 and she will design a special one just for you.
 ~
 10920 0
-118 2
+119 2
 -1400 400 400
 ! 0 0 3 7 6158 0 16
 | 0 0 0 0 0 0 0
@@ -1358,7 +1426,7 @@ A soft-spoken elven woman is here offering you a glass of wine.
 ~
 ~
 10912 0
-138 2
+139 2
 -1400 400 400
 ! 0 0 3 7 0 0 16
 | 0 0 0 0 0 0 0
@@ -1389,7 +1457,7 @@ A tall, thin elf stands before you. He looks slightly bored, as if it has been
 various food items he has brought in today.
 ~
 2720 0
-139 1
+138 1
 -1400 400 400
 ! 0 0 3 7 24076 0 0
 | 0 0 0 0 0 0 0
@@ -1435,7 +1503,7 @@ Tall and slender and graceful, this lady has a piercing glare about her, I
 wouldnt mess if I were you.
 ~
 2720 -1
-77 2
+76 2
 -1400 400 400
 ! 0 0 3 7 24078 0 16
 | 0 0 0 0 0 0 0
@@ -1447,7 +1515,7 @@ A very happy man is here offering you credit for jewelry.
 ~
 ~
 2720 0
-59 1
+58 1
 -1400 400 400
 ! 0 0 3 7 20236 0 16
 | 0 0 0 0 0 0 0

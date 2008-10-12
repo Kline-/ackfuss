@@ -1,6 +1,6 @@
 #AREA
 @@WThe @@rEccentric @@GWoodland@@N~
-Q 20
+Q 21
 K eccentricwoodland~
 L @@W{@@r 4 50@@W}@@N~
 N 35
@@ -25,7 +25,8 @@ A dark, winding tunnel ends in a small circular chamber. In this place there
 her hind legs, grinning at you in a way that makes you feel as though you are
 about to be lunch!
 ~
-0 3
+3
+0 0
 D4
 ~
 ~
@@ -45,7 +46,8 @@ The room where the long-held ritual of binding takes place between man and
 the air, which makes you feel as though something important might be about to
 happen.
 ~
-17416 3
+3
+1 3 0 17416
 D5
 ~
 ~
@@ -58,7 +60,8 @@ This is the room of combat. Aspiring elders may combat existing elders here to
 as well as an altar and a judgement table.  Off to each side is a row of stone
 benches for the spectators to use while watching the duels.
 ~
-0 3
+3
+0 0
 D5
 ~
 ~
@@ -69,7 +72,8 @@ The Recovery room.~
 A room to collapse into to heal your more fatal wounds and aching legs. Here,
 the Lords of the Dark protect their own.
 ~
-1032 3
+3
+1 2 0 1032
 D3
 ~
 ~
@@ -79,7 +83,8 @@ S
 the drawing room.~
 Drawring room it is indeed, for the remains of unfortunate folk who have been hung, drawn, and quartered lie scattered around the room here. You detect a quick flicker or movement on the periphery of your vision, but then it is gone again. Probably Requiem off hunting to be a safe bet.
 ~
-1032 3
+3
+1 2 0 1032
 D1
 ~
 ~
@@ -92,7 +97,8 @@ A circle of tall stones, set into the ground, and which merge into the ceiling
 of some sort, and two black cloaked figures approach you, waiting to serve
 your needs, or perhaps to kick you out.
 ~
-1032 3
+3
+1 2 0 1032
 D1
 ~
 ~
@@ -116,7 +122,8 @@ You can hardly bear to enter this room, so bright is it after all the
 edges of his lips, watching his subjects bleed for him. He licks his lips as
 you enter, and turns his eyes upon @@cYOU!@@N
 ~
-1544 3
+3
+1 3 0 1544
 D3
 ~
 door~
@@ -126,7 +133,8 @@ S
 End of the corridoor of the elders.~
 The corridoor appears to come to an end here.
 ~
-1032 3
+3
+1 2 0 1032
 D0
 ~
 ~
@@ -152,7 +160,8 @@ S
 Corridoor of the Elders.~
 A long, black marble corridoor.
 ~
-1032 3
+3
+1 2 0 1032
 D0
 ~
 ~
@@ -170,7 +179,8 @@ S
 Corridoor along the halls of the Elders.~
 A long black marble corridoor.
 ~
-1032 3
+3
+1 2 0 1032
 D0
 ~
 ~
@@ -184,7 +194,8 @@ S
 Corridoor to the Halls of the Dark Elders.~
 a long, narrow corridoor, lit by some faint luminescence, the walls are made of black marble and shine faintly.
 ~
-1032 3
+3
+1 2 0 1032
 D0
 ~
 ~
@@ -211,7 +222,8 @@ There is a foul smell of rotting flesh here, and you think you can hear
 legs, or heads cut off, all seemingly trying to move as if they are still
 alive.
 ~
-1032 3
+3
+1 2 0 1032
 D0
 ~
 ~
@@ -233,7 +245,8 @@ S
 Centre square of the Dark.~
 A walkway, leading to the darker recesses of this area, sure you want to go on?
 ~
-1032 3
+3
+1 2 0 1032
 D0
 ~
 ~
@@ -250,7 +263,8 @@ It is black as night here, but without the moonlight to aid you. You hear
 eyes glaring at you from various directions. But, strangely, you feel at home
 here.
 ~
-1032 3
+3
+1 2 0 1032
 D2
 ~
 ~
@@ -264,7 +278,8 @@ S
 A tiny pot hole in the ground~
 A tight squeeze of a hole, but you reckon you can just about fit through.
 ~
-8 3
+3
+1 1 0 8
 D5
 ~
 ~
@@ -274,7 +289,8 @@ S
 A clearing.~
 You come to the end of the path and emerge into a sunlit clearing. Rabbits flit from bush to bush, and you can hear birds singing. An idyllic scene. 
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -288,7 +304,8 @@ S
 Lost in the trees.~
 You come to the conclusion you are lost, the trees are all around and look threatening, you cannot really tell which direction is which. The path behind you seems to have vanished, so the only way to go is onward. 
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -301,7 +318,8 @@ S
 #7326
 Thicket of bushes.~
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -311,7 +329,8 @@ S
 Caramon's Folly.~
 Here is a secluded area, with the signs of recent battle not hard to detect. There are dead bodies strewn about here, peppered with arrows, some human in appearance, and some, well not so human. One individual doesnt seem to have given up his life yet.
 ~
-0 3
+3
+0 0
 D2
 ~
 ~
@@ -321,7 +340,8 @@ S
 Ambush point.~
 This place is a large clearing with thick shrubs to all sides, every one of which could be a good hiding place for all manner of creatures.
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -343,7 +363,8 @@ S
 A small cave.~
 Dank, and dark.
 ~
-12 3
+3
+1 2 0 12
 D0
 ~
 ~
@@ -352,7 +373,8 @@ S
 #7322
 Entrance to cave.~
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -365,7 +387,8 @@ S
 #7321
 A shadow-lined path.~
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -379,7 +402,8 @@ S
 The wolverine's lair.~
 The wolverine has been both buffed and weakened :).
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -388,7 +412,8 @@ S
 #7319
 Junction in the trees.~
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -409,7 +434,8 @@ S
 #7318
 The path narrows.~
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -422,7 +448,8 @@ S
 #7317
 a Dead-end in the path.~
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -436,7 +463,8 @@ S
 A hiding place in the thickets.~
 a place to watch the world go by in peace and quiet. 
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -445,7 +473,8 @@ S
 #7314
 A trail to one side.~
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -462,7 +491,8 @@ S
 #7313
 Crossroads.~
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -483,7 +513,8 @@ S
 #7312
 The hermits lair.~
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -492,7 +523,8 @@ S
 #7311
 The path widens.~
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -509,7 +541,8 @@ S
 #7310
 A dead-end in the forest.~
 ~
-0 3
+3
+0 0
 D3
 ~
 ~
@@ -520,7 +553,8 @@ S
 @@dA small @@bpath@@d leads to the east.  It seems lightly travelled, and the
 grass has become overgrown.@@N
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -533,7 +567,8 @@ S
 #7308
 A fork in the path.~
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -550,7 +585,8 @@ S
 #7307
 The main path.~
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -572,13 +608,15 @@ S
 The forest trap!~
 The Trees close in around you! There is no way out of here! 
 ~
-4 8
+8
+1 1 0 4
 S
 #7305
 The side path.~
 This path seems less treacherous, and you see animal marks at the side of the track, obviously this is a well used track by the local wildlife. A rabbit bounces up to you and snuffles at your toes. 
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -592,7 +630,8 @@ S
 The darker path.~
 The lights grow more and more faint, until you are on ther verge of your visual capacity, you think you can make out dark shapes moving in the trees, and once you distinctly thought you heard a giggle coming from somewhere. 
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -612,7 +651,8 @@ The lights dim, the trees loom overhead, this is not a friendly-looking path at 
  
 @@cYou notice a small hole in the ground.@@g
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -629,7 +669,8 @@ S
 #7302
 A dark path.~
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -649,7 +690,8 @@ There is an acrid smell in the air, eminating from all the ingredients lined
 it is too late, or you might yourself be on the receiving end of some of those
 ingredients.
 ~
-1546 3
+3
+1 4 0 1546
 D1
 ~
 ~
@@ -662,7 +704,8 @@ Racks and chains and thumbscrews all do not exist here, for this is the room
 the room looking very lonely, why dont you go and sit in it and await the
 inquisition!
 ~
-1544 3
+3
+1 3 0 1544
 D0
 ~
 ~
@@ -671,7 +714,8 @@ S
 #7344
 home of my spiritual tormentor~
 this description has been edited.~
-1566 3
+3
+1 6 0 1566
 S
 #7346
 Room for Jellicle Cats~
@@ -694,14 +738,16 @@ Jellicles can and Jellicles do
 Jellicle songs for Jellicle cats
 Jellicle songs for Jellicle cats
 ~
-26140 3
+3
+1 7 0 26140
 S
 #7315
 The darkening woods~
 The woods here seem even more gloomy and evil than before. To the northeast,
 you catch a glimpse of a tall dark stone structure.
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -715,13 +761,15 @@ S
 Cave Entrance~
 This is a cave entrance.
 ~
-20 3
+3
+1 2 0 20
 S
 #7347
 Off the main path~
 A small clearing, sacred and seeming a place for rest.
 ~
-1054 3
+3
+1 5 0 1054
 D1
 ~
 ~
@@ -731,7 +779,8 @@ S
 A small trail~
 A small trail leads to the north, opening into a field.
 ~
-0 3
+3
+0 0
 D0
 ~
 ~
@@ -743,7 +792,8 @@ S
 you. While you can still here animals all around, the woods seem rather sleepy
 @@N
 ~
-0 3
+3
+0 0
 D1
 ~
 ~
@@ -758,7 +808,8 @@ S
 @@GThe trees part momentarily here to reveal the sky above you.  All is quiet,
 the sounds of the forest strangely muted.@@N
 ~
-276 2
+2
+1 3 0 276
 D0
 ~
 ~
@@ -801,7 +852,7 @@ The Shadow is levitating here, ready to help the clan.
 ~
 ~
 0 0
-2 1
+1 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -824,7 +875,7 @@ A shapeshifter~
 A small sniffing shapeshifter cringes in one corner.~
 ~
 0 0
-10 0
+11 0
 0 0 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -848,7 +899,7 @@ A rotting tree approaches you.
 ~
 ~
 0 -100
-11 1
+10 1
 -10 1 0
 ! 0 0 19 7 0 0 0
 | 0 0 0 0 0 0 0
@@ -860,7 +911,7 @@ A nasty vicious wolverine is rooting for food here.
 ~
 ~
 0 0
-38 1
+37 1
 -40 15 25
 ! 0 0 19 7 16644 0 0
 | 0 0 0 0 0 0 0
@@ -884,7 +935,7 @@ A Strange cat lies here doing conjuring tricks.
 ~
 ~
 1081474 0
-82 1
+83 1
 0 0 0
 ! 0 0 0 7 0 0 0
 | 0 0 0 0 0 0 0

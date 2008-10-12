@@ -416,7 +416,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
    /*
     * Check if in a no-magic room 
     */
-   if( !char_login && IS_SET( ch->in_room->room_flags, ROOM_NO_MAGIC ) && ( skill_table[sn].flag2 != WOLF ) )
+   if( !char_login && is_set( ch->in_room->room_flags, RFLAG_NO_MAGIC ) && ( skill_table[sn].flag2 != WOLF ) )
    {
       send_to_char( "Some strange force prevents you casting the spell!\n\r", ch );
       return;
