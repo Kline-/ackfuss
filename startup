@@ -33,8 +33,16 @@ do
     let index=$index+1
   done
 
+  date > $logfile
+
   # run the mud
-  ../src/ack $port >$logfile 2>&1
+  matches=`netstat -an | grep ":$port " | grep -c LISTEN`
+  if [ $matches -ge 1 ]; then
+    #Already running
+    echo Port $port already in use.
+    exit 0
+  fi
+  ../src/ack $port &> $logfile
 
   # shutdown?
 
