@@ -1,4 +1,5 @@
-CC      = gcc
+CC   = gcc
+VERS = AckFUSS 4.3.8
 #PROF    = -pg
 
 # Debugging flags possible:  DEBUG_MEM DEBUG_MEM_CORRUPT DEBUG_MEM_DUP_FREE
@@ -21,8 +22,8 @@ CC      = gcc
 #SOLARIS_FLAG = -Dsun -DSYSV -Wno-char-subscripts
 #SOLARIS_LINK = -lnsl -lsocket -lresolv
 
-#-Werror -Wshadow -Wformat-security -Wpointer-arith -Wcast-align -Wredundant-decls -Wconversion -Wwrite-strings
-W_FLAGS = -Wall
+#-Wshadow -Wformat-security -Wcast-align -Wredundant-decls -Wconversion -Wwrite-strings
+W_FLAGS = -Wall -Werror -Wpointer-arith
 C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(SOLARIS_FLAG)
 L_FLAGS = -O2 -g -lcrypt -lm $(PROF) $(SOLARIS_LINK)
 
@@ -47,46 +48,47 @@ O_FILES = $(patsubst %.c,o/%.o,$(C_FILES))
 H_FILES = $(wildcard *.h)
 
 all:
-	$(MAKE) ack
+	@$(MAKE) ack
 
 # pull in dependency info for *existing* .o files
 -include dependencies.d
 
 ifdef CYGWIN
 ack: $(O_FILES)
-	rm -f ack.exe
-	$(CC) -o ack.exe $(O_FILES) $(L_FLAGS)
+	@rm -f ack.exe
+	@$(CC) -o ack.exe $(O_FILES) $(L_FLAGS)
 	@echo "Generating dependency file ...";
 	@$(CC) -MM $(C_FLAGS) $(C_FILES) > dependencies.d
 	@perl -pi -e 's.^([a-z]).o/$$1.g' dependencies.d
-	@echo "Done compiling mud.";
-	chmod g+w ack.exe
-	chmod a+x ack.exe
-	chmod g+w $(O_FILES)
+	@echo "Done compiling $(VERS).";
+	@chmod g+w ack.exe
+	@chmod a+x ack.exe
+	@chmod g+w $(O_FILES)
 
 clean:
 	@rm -f o/*.o ack.exe dependencies.d ../area/core
 else
 ack: $(O_FILES)
-	rm -f ack
-	$(CC) -o ack $(O_FILES) $(L_FLAGS)
+	@rm -f ack
+	@$(CC) -o ack $(O_FILES) $(L_FLAGS)
 	@echo "Generating dependency file ...";
 	@$(CC) -MM $(C_FLAGS) $(C_FILES) > dependencies.d
 	@perl -pi -e 's.^([a-z]).o/$$1.g' dependencies.d
-	@echo "Done compiling mud.";
-	chmod g+w ack
-	chmod a+x ack
-	chmod g+w $(O_FILES)
+	@echo "Done compiling $(VERS).";
+	@chmod g+w ack
+	@chmod a+x ack
+	@chmod g+w $(O_FILES)
 
 clean:
 	@rm -f o/*.o ack dependencies.d ../area/core
 endif
 
 o/%.o: %.c
-	$(CC) -c $(C_FLAGS) $< -o $@
+	@echo "Compiling $@ ...";
+	@$(CC) -c $(C_FLAGS) $< -o $@
 
 .c.o: ack.h
-	$(CC) -c $(C_FLAGS) $<
+	@$(CC) -c $(C_FLAGS) $<
 
 scan: scan.o
 	rm -f scan
