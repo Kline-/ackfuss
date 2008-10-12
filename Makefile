@@ -25,7 +25,7 @@ VERS = AckFUSS 4.3.8
 #-Wshadow -Wformat-security -Wcast-align -Wredundant-decls -Wconversion -Wwrite-strings
 W_FLAGS = -Wall -Werror -Wpointer-arith
 C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(SOLARIS_FLAG)
-L_FLAGS = -O2 -g -lcrypt -lm $(PROF) $(SOLARIS_LINK)
+L_FLAGS = -lcrypt -lm $(SOLARIS_LINK)
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
