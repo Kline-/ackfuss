@@ -710,6 +710,7 @@ struct pc_data
    sh_int mod_wis;
    sh_int mod_dex;
    sh_int mod_con;
+   BITMASK *monitor;   /* Imm channel monitoring */
    sh_int condition[3];
    SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
    sh_int pagelen;
@@ -722,7 +723,6 @@ struct pc_data
    RECORD_DATA *records; /* kill/damage/etc records */
    char *lastlogin;
    sh_int order[MAX_CLASS];   /* Class Order */
-   int monitor;   /* monitor channel for imms */
    sh_int quest_points;
    char *ignore_list[MAX_IGNORES];  /* Ignore this person */
    int recall_vnum;

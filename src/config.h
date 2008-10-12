@@ -752,26 +752,30 @@
 #define CHANNEL_QUEST      28
 #define CHANNEL_GAME       29
 
-/* Monitor channels - for imms to select what mud-based info they receive */
-#define MONITOR_CONNECT      BIT_1
-#define MONITOR_AREA_UPDATE  BIT_2
-#define MONITOR_AREA_BUGS    BIT_3
-#define MONITOR_AREA_SAVING  BIT_4
-#define MONITOR_GEN_IMM      BIT_5
-#define MONITOR_GEN_MORT     BIT_6
-#define MONITOR_COMBAT       BIT_7
-#define MONITOR_HUNTING      BIT_8
-#define MONITOR_BUILD        BIT_9
-#define MONITOR_CLAN         BIT_10
-#define MONITOR_OBJ          BIT_11
-#define MONITOR_MOB          BIT_12
-#define MONITOR_ROOM         BIT_13
-#define MONITOR_MAGIC        BIT_14
-#define MONITOR_BAD          BIT_15
-#define MONITOR_DEBUG        BIT_16
-#define MONITOR_IMC          BIT_17
-#define MONITOR_SYSTEM       BIT_18
-#define MONITOR_HELPS        BIT_19
+/* 
+ * Monitor channels - for imms to select what mud-based info they receive
+ */
+#define MONITOR_NONE         0
+#define MONITOR_CONNECT      1
+#define MONITOR_AREA_UPDATE  2
+#define MONITOR_AREA_BUGS    3
+#define MONITOR_AREA_SAVING  4
+#define MONITOR_GEN_IMM      5
+#define MONITOR_GEN_MORT     6
+#define MONITOR_COMBAT       7
+#define MONITOR_HUNTING      8
+#define MONITOR_BUILD        9
+#define MONITOR_CLAN         10
+#define MONITOR_OBJ          11
+#define MONITOR_MOB          12
+#define MONITOR_ROOM         13
+#define MONITOR_MAGIC        14
+#define MONITOR_BAD          15
+#define MONITOR_DEBUG        16
+#define MONITOR_IMC          17
+#define MONITOR_SYSTEM       18
+#define MONITOR_HELPS        19
+
 /*
  * Hunt flags for mobs
  */

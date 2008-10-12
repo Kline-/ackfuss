@@ -46,7 +46,7 @@ Roomenter      glides in from~
 Roomexit       glides quietly~
 Title          I am all.~
 Whoname        *    Da Boss   ~
-Monitor        7833
+Monitor        0 0
 Host           192.168.1.100~
 Failures       0
 LastLogin      Fri Aug 29 16:04:29 2008~

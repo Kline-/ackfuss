@@ -2913,21 +2913,13 @@ void free_char( CHAR_DATA * ch )
    }
 
    if( ch->pnote )
-   {
       PUT_FREE( ch->pnote, note_free );
-   }
    if( ch->current_brand )
-   {
       PUT_FREE( ch->current_brand, brand_data_free );
-   }
    if( ch->act )
-   {
       PUT_FREE( ch->act, bitmask_free );
-   }
    if( ch->deaf )
-   {
       PUT_FREE( ch->deaf, bitmask_free );
-   }
    if( ch->pcdata != NULL )
    {
 #ifdef IMC
@@ -2936,12 +2928,14 @@ void free_char( CHAR_DATA * ch )
 #ifdef I3
       free_i3chardata( ch );
 #endif
-      if( ch->pcdata->super )
-       PUT_FREE( ch->pcdata->super, super_free );
-      if( ch->pcdata->records )
-       PUT_FREE( ch->pcdata->records, record_free );
+      if( ch->pcdata->monitor )
+       PUT_FREE( ch->pcdata->monitor, bitmask_free );
       if( ch->pcdata->quest_info )
        PUT_FREE( ch->pcdata->quest_info, quest_info_free );
+      if( ch->pcdata->records )
+       PUT_FREE( ch->pcdata->records, record_free );
+      if( ch->pcdata->super )
+       PUT_FREE( ch->pcdata->super, super_free );
       PUT_FREE( ch->pcdata, pcd_free );
    }
 
