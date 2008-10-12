@@ -3638,7 +3638,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
 
 struct chan_type
 {
-   int bit;
+   sh_int bit;
    int min_level;
    char *name;
    char *on_string;

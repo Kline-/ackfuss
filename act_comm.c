@@ -496,7 +496,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
    }
 
    remove_bit( ch->deaf, channel );
-   if( ch->deaf == CHANNEL_HERMIT )
+   if( is_set(ch->deaf,CHANNEL_HERMIT) )
       send_to_char( "You are hermit right now, and will not hear the response.\n\r ", ch );
 
    if( !str_cmp(argument,"history") && !IS_NPC(ch) )
@@ -653,7 +653,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          och = ( d->original ) ? ( d->original ) : ( d->character );
          vch = d->character;
 
-         if( d->connected == CON_PLAYING && vch != ch && !is_set( och->deaf, channel ) && och->deaf != CHANNEL_HERMIT )
+         if( d->connected == CON_PLAYING && vch != ch && !is_set( och->deaf, channel ) && !is_set(och->deaf,CHANNEL_HERMIT) )
          {
             if( IS_SET( vch->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
                continue;

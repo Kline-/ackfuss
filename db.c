@@ -2801,8 +2801,8 @@ void clear_char( CHAR_DATA * ch )
    *ch = ch_zero;
    GET_FREE( ch->act, bitmask_free );
    *ch->act = bitmask_zero;
-   GET_FREE( ch->act, bitmask_free );
-   *ch->act = bitmask_zero;
+   GET_FREE( ch->deaf, bitmask_free );
+   *ch->deaf = bitmask_zero;
    ch->name = &str_empty[0];
    ch->short_descr = &str_empty[0];
    ch->long_descr = &str_empty[0];
