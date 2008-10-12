@@ -48,7 +48,7 @@ O_FILES = $(patsubst %.c,o/%.o,$(C_FILES))
 H_FILES = $(wildcard *.h)
 
 all:
-	@$(MAKE) ack
+	@$(MAKE) -j2 ack
 
 # pull in dependency info for *existing* .o files
 -include dependencies.d
