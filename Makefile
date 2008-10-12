@@ -84,7 +84,7 @@ clean:
 endif
 
 o/%.o: %.c
-	@echo "Compiling $@ ...";
+	@echo "Compiling `echo $@ | cut -c 3-` ...";
 	@$(CC) -c $(C_FLAGS) $< -o $@
 
 .c.o: ack.h
