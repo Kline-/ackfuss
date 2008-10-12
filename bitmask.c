@@ -50,7 +50,7 @@
 
 bool remove_bit( BITMASK *mask, int bit ) /* Returns FALSE if nothing removed. TRUE if so. */
 {
- BM_LIST *pBlist, *last = 0;
+ BM_LIST *pBlist = 0, *last = 0;
 
  if( !is_set(mask,bit) )
   return FALSE;
@@ -81,7 +81,7 @@ bool remove_bit( BITMASK *mask, int bit ) /* Returns FALSE if nothing removed. T
 
 bool set_bit( BITMASK *mask, int bit ) /* Returns TRUE if a bit was set. FALSE if already set. */
 {
- BM_LIST *pBlist;
+ BM_LIST *pBlist = 0;
 
  --bit;
 
@@ -104,7 +104,7 @@ bool set_bit( BITMASK *mask, int bit ) /* Returns TRUE if a bit was set. FALSE i
  pBlist->next = mask->int_list;
  mask->int_list = pBlist;
  pBlist->tar_mask = 0;
- pBlist->set = bit / 32;
+ pBlist->set = (bit / 32);
  pBlist->tar_mask |= 1 << (bit % 32); /* Set our bit on the new mask */
  ++mask->bits;
  return TRUE; /* We did something, yay! */
@@ -112,7 +112,7 @@ bool set_bit( BITMASK *mask, int bit ) /* Returns TRUE if a bit was set. FALSE i
 
 bool is_set( BITMASK *mask, int bit )
 {
- BM_LIST *pBlist;
+ BM_LIST *pBlist = 0;
 
  --bit;
 
@@ -136,8 +136,8 @@ bool is_set( BITMASK *mask, int bit )
  */
 int *serialize_bitmask( BITMASK *mask )
 {
- BM_LIST *pBlist;
- int *ilist = malloc(sizeof(int) * mask->bits +1), i = 0, z;
+ BM_LIST *pBlist = 0;
+ int *ilist = malloc(sizeof(int) * mask->bits +1), i = 0, z = 0;
  ilist[mask->bits] = 0; /* Zero terminates it. 0th bit CAN NOT BE SET. */
 
  for( pBlist = mask->int_list; pBlist; pBlist = pBlist->next )
@@ -158,10 +158,10 @@ int *serialize_bitmask( BITMASK *mask )
    }
 
    if( pBlist->tar_mask & 1 << z )
-    ilist[i++] = pBlist->set * 32 + z + 1;
+    ilist[i++] = (pBlist->set * 32 + z + 1);
   }
  }
- if( i < mask->bits + 1 )
+ if( i < (mask->bits + 1) )
  {
   /* Error -- we have less recorded bits than allocated. */
  }
@@ -176,7 +176,7 @@ int *serialize_bitmask( BITMASK *mask )
 
 bool free_bitmask( BITMASK *pBmask ) /* Frees a bitmask; safe to call dry. Return TRUE if freed, FALSE otherwise. */
 {
- BM_LIST *pBMlist, *next;
+ BM_LIST *pBMlist = 0, *next = 0;
  bool found = FALSE;
 
  for( pBMlist = pBmask->int_list; pBMlist; pBMlist = next )
@@ -191,8 +191,8 @@ bool free_bitmask( BITMASK *pBmask ) /* Frees a bitmask; safe to call dry. Retur
 
 void load_bitmask( BITMASK *pBmask, FILE *fp ) /* #masks #bits #mask #vector #mask #vector ... */
 {
- int i;
- BM_LIST *pBMlist;
+ int i = 0;
+ BM_LIST *pBMlist = 0;
 
  pBmask->masks = fread_number(fp);
  pBmask->bits = fread_number(fp);
@@ -211,8 +211,9 @@ void load_bitmask( BITMASK *pBmask, FILE *fp ) /* #masks #bits #mask #vector #ma
 
 char *save_bitmask( BITMASK *pBmask ) /* Make this a string so it's easier to pass to existing save routines. --Kline */
 {
- BM_LIST *pBMlist;
+ BM_LIST *pBMlist = 0;
  static char buf[MSL];
+ buf[0] = '\0';
 
  xprintf(buf,"%ld %ld",pBmask->masks,pBmask->bits);
 

@@ -624,6 +624,7 @@ struct char_data
    int exp;
    int intell_exp;
    BITMASK *act;
+   BITMASK *deaf;
    int act_build; /* for setting what ya editing */
    int build_vnum;   /* the current vnum for w-y-e  */
    int affected_by;
@@ -644,7 +645,6 @@ struct char_data
    sh_int stance_dr_mod;
    char *target;  /* last ch to attack */
    sh_int wimpy;
-   int deaf;
    MPROG_ACT_LIST *first_mpact;  /* Used by MOBprogram */
    MPROG_ACT_LIST *last_mpact;
    int mpactnum;  /* Used by MOBprogram */

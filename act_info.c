@@ -3771,7 +3771,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
             char colbuf[10];
             colbuf[0] = '\0';
 
-            if( IS_SET( ch->deaf, channels[a].bit ) )
+            if( is_set( ch->deaf, channels[a].bit ) )
             {
                if( !IS_NPC( ch ) )
                {
@@ -3831,9 +3831,9 @@ void do_channels( CHAR_DATA * ch, char *argument )
       }
 
       if( fClear )
-         REMOVE_BIT( ch->deaf, bit );
+         remove_bit( ch->deaf, bit );
       else
-         SET_BIT( ch->deaf, bit );
+         set_bit( ch->deaf, bit );
 
       send_to_char( "Ok.\n\r", ch );
    }

@@ -263,6 +263,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    fprintf( fp, "Revision       %d\n", SAVE_REVISION );
    fprintf( fp, "Name           %s~\n", ch->name );
+   fprintf( fp, "Deaf           %s\n", save_bitmask( ch->deaf ) );
    fprintf( fp, "ShortDescr     %s~\n", ch->short_descr );
    fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig );
    fprintf( fp, "Description    %s~\n", ch->description );
@@ -322,7 +323,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "Damroll        %d\n", ch->damroll );
    fprintf( fp, "Armor          %d\n", ch->armor );
    fprintf( fp, "Wimpy          %d\n", ch->wimpy );
-   fprintf( fp, "Deaf           %d\n", ch->deaf );
 
    if( IS_NPC( ch ) )
    {
@@ -752,8 +752,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    ch->last_shield = NULL;
    ch->switched = FALSE;
    ch->old_body = NULL;
-
-   ch->deaf = 0;
    ch->desc = d;
    if( ch->name != NULL )
       free_string( ch->name );
@@ -1100,7 +1098,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
          case 'D':
             KEY( "Damroll", ch->damroll, fread_number( fp ) );
-            KEY( "Deaf", ch->deaf, fread_number( fp ) );
+            BKEY( "Deaf", ch->deaf, fp );
             SKEY( "Description", ch->description, fread_string( fp ) );
 
             if( !str_cmp( word, "DimCol" ) && !IS_NPC( ch ) )
