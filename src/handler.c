@@ -2493,7 +2493,7 @@ void notify( char *message, int lv )
    xprintf( buf, "[NOTE]: %s\n\r", message );
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
-          && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !IS_SET( d->character->deaf, CHANNEL_NOTIFY ) )
+          && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !is_set( d->character->deaf, CHANNEL_NOTIFY ) )
          send_to_char( buf, d->character );
    return;
 }
@@ -2505,7 +2505,7 @@ void auction( char *message )
 
    xprintf( buf, "[AUCTION]: %s\n\r", message );
    for( d = first_desc; d; d = d->next )
-      if( ( d->connected == CON_PLAYING ) && !IS_NPC( d->character ) && !IS_SET( d->character->deaf, CHANNEL_AUCTION ) )
+      if( ( d->connected == CON_PLAYING ) && !IS_NPC( d->character ) && !is_set( d->character->deaf, CHANNEL_AUCTION ) )
          send_to_char( buf, d->character );
    return;
 }
@@ -2525,7 +2525,7 @@ void info( char *message, int lv )
 
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
-          && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !IS_SET( d->character->deaf, CHANNEL_INFO ) )
+          && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !is_set( d->character->deaf, CHANNEL_INFO ) )
       {
          xprintf( buf, "%s[INFO]: %s%s\n\r",
                   color_string( d->character, "info" ), message, color_string( d->character, "normal" ) );
@@ -2548,7 +2548,7 @@ void log_chan( const char *message, int lv )
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
           && ( get_trust( d->character ) == MAX_LEVEL )
-          && ( !IS_NPC( d->character ) ) && ( d->character->level >= lv ) && ( !IS_SET( d->character->deaf, CHANNEL_LOG ) ) )
+          && ( !IS_NPC( d->character ) ) && ( d->character->level >= lv ) && ( !is_set( d->character->deaf, CHANNEL_LOG ) ) )
          send_to_char( buf, d->character );
    return;
 }

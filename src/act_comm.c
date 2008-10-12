@@ -495,8 +495,8 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
       return;
    }
 
-   REMOVE_BIT( ch->deaf, channel );
-   if( IS_SET( ch->deaf, CHANNEL_HERMIT ) )
+   remove_bit( ch->deaf, channel );
+   if( ch->deaf == CHANNEL_HERMIT )
       send_to_char( "You are hermit right now, and will not hear the response.\n\r ", ch );
 
    if( !str_cmp(argument,"history") && !IS_NPC(ch) )
@@ -653,7 +653,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          och = ( d->original ) ? ( d->original ) : ( d->character );
          vch = d->character;
 
-         if( d->connected == CON_PLAYING && vch != ch && !IS_SET( och->deaf, channel ) && !IS_SET( och->deaf, CHANNEL_HERMIT ) )
+         if( d->connected == CON_PLAYING && vch != ch && !is_set( och->deaf, channel ) && och->deaf != CHANNEL_HERMIT )
          {
             if( IS_SET( vch->in_room->room_flags, ROOM_QUIET ) && !IS_IMMORTAL( ch ) )
                continue;
@@ -670,10 +670,10 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
             if( channel == CHANNEL_ZZZ && vch->position != POS_SLEEPING && och->level != 85 )
                continue;
             if( channel == CHANNEL_RACE && vch->race != ch->race
-                && ( och->level != 85 || IS_SET( och->deaf, CHANNEL_ALLRACE ) ) )
+                && ( och->level != 85 || is_set( och->deaf, CHANNEL_ALLRACE ) ) )
                continue;
             if( channel == CHANNEL_CLAN && och->pcdata->clan != ch->pcdata->clan
-                && ( IS_SET( och->deaf, CHANNEL_ALLCLAN ) || get_trust( och ) != MAX_LEVEL ) )
+                && ( is_set( och->deaf, CHANNEL_ALLCLAN ) || get_trust( och ) != MAX_LEVEL ) )
                continue;
             if( ( channel == CHANNEL_FAMILY )
                 && ( ( !IS_VAMP( och ) || !IS_VAMP( ch ) )
@@ -2940,7 +2940,7 @@ void do_beep( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( victim->deaf, CHANNEL_BEEP ) )
+   if( is_set( victim->deaf, CHANNEL_BEEP ) )
    {
       send_to_char( "Your victim is ignoring beeps.  Sorry!\n\r", ch );
       return;

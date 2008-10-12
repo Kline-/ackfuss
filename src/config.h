@@ -721,39 +721,35 @@
 /*
  * Channel bits.
  */
-#define CHANNEL_AUCTION        BIT_1
-#define CHANNEL_GOSSIP         BIT_2
-#define CHANNEL_MUSIC          BIT_3
-#define CHANNEL_IMMTALK        BIT_4
-#define CHANNEL_NEWBIE         BIT_5
-#define CHANNEL_QUESTION       BIT_6
-#define CHANNEL_SHOUT          BIT_7
-#define CHANNEL_YELL           BIT_8
-#define CHANNEL_FLAME          BIT_9
-#define CHANNEL_ZZZ            BIT_10
-#define CHANNEL_RACE           BIT_11
-#define CHANNEL_CLAN           BIT_12
-#define CHANNEL_NOTIFY         BIT_13
-#define CHANNEL_INFO           BIT_14
-#define CHANNEL_LOG            BIT_15
-#define CHANNEL_CREATOR        BIT_16
-#define CHANNEL_ALLCLAN        BIT_17
-#define CHANNEL_ALLRACE        BIT_18
-#define CHANNEL_HERMIT         BIT_19  /* Turns off ALL channels */
-#define CHANNEL_BEEP           BIT_20
-#define CHANNEL_FAMILY         BIT_21
-#define CHANNEL_DIPLOMAT       BIT_22
-#define CHANNEL_CRUSADE        BIT_23
-#define CHANNEL_REMORTTALK     BIT_24
-#define CHANNEL_HOWL           BIT_25
-#define CHANNEL_ADEPT          BIT_26
-#define CHANNEL_OOC            BIT_27
-#define CHANNEL_QUEST          BIT_28
-#define CHANNEL_GAME           BIT_29
-
-  /*
-   * NOTE 32 is the last allowable channel ZEN 
-   */
+#define CHANNEL_HERMIT     0 /* All channels are off */
+#define CHANNEL_AUCTION    1
+#define CHANNEL_GOSSIP     2
+#define CHANNEL_MUSIC      3
+#define CHANNEL_IMMTALK    4
+#define CHANNEL_NEWBIE     5
+#define CHANNEL_QUESTION   6
+#define CHANNEL_SHOUT      7
+#define CHANNEL_YELL       8
+#define CHANNEL_FLAME      9
+#define CHANNEL_ZZZ        10
+#define CHANNEL_RACE       11
+#define CHANNEL_CLAN       12
+#define CHANNEL_NOTIFY     13
+#define CHANNEL_INFO       14
+#define CHANNEL_LOG        15
+#define CHANNEL_CREATOR    16
+#define CHANNEL_ALLCLAN    17
+#define CHANNEL_ALLRACE    18
+#define CHANNEL_BEEP       19
+#define CHANNEL_FAMILY     20
+#define CHANNEL_DIPLOMAT   21
+#define CHANNEL_CRUSADE    22
+#define CHANNEL_REMORTTALK 23
+#define CHANNEL_HOWL       24
+#define CHANNEL_ADEPT      25
+#define CHANNEL_OOC        26
+#define CHANNEL_QUEST      27
+#define CHANNEL_GAME       28
 
 /* Monitor channels - for imms to select what mud-based info they receive */
 #define MONITOR_CONNECT      BIT_1

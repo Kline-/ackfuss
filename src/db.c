@@ -2801,6 +2801,8 @@ void clear_char( CHAR_DATA * ch )
    *ch = ch_zero;
    GET_FREE( ch->act, bitmask_free );
    *ch->act = bitmask_zero;
+   GET_FREE( ch->act, bitmask_free );
+   *ch->act = bitmask_zero;
    ch->name = &str_empty[0];
    ch->short_descr = &str_empty[0];
    ch->long_descr = &str_empty[0];
@@ -2921,6 +2923,10 @@ void free_char( CHAR_DATA * ch )
    if( ch->act )
    {
       PUT_FREE( ch->act, bitmask_free );
+   }
+   if( ch->deaf )
+   {
+      PUT_FREE( ch->deaf, bitmask_free );
    }
    if( ch->pcdata != NULL )
    {
