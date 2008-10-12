@@ -606,7 +606,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
 
    xprintf( buf,
             "Room flags: %s.\n\rDescription:\n\r%s",
-            bit_table_lookup( tab_room_flags, location->room_flags ), location->description );
+            bm_show_values( tab_room_flags, location->room_flags ), location->description );
    xcat( buf1, buf );
 
    if( location->first_exdesc != NULL )
@@ -3495,7 +3495,7 @@ void do_rset( CHAR_DATA * ch, char *argument )
       send_to_char( "Syntax: rset <location> <field> value\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
-      send_to_char( "  flags sector\n\r", ch );
+      send_to_char( "  sector\n\r", ch );
       return;
    }
 
@@ -3518,11 +3518,6 @@ void do_rset( CHAR_DATA * ch, char *argument )
    /*
     * Set something.
     */
-   if( !str_cmp( arg2, "flags" ) )
-   {
-      location->room_flags = value;
-      return;
-   }
 
    if( !str_cmp( arg2, "sector" ) )
    {

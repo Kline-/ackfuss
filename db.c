@@ -1426,6 +1426,7 @@ void load_resets( FILE * fp )
  */
 void load_rooms( FILE * fp )
 {
+   static BITMASK bitmask_zero;
    ROOM_INDEX_DATA *pRoomIndex;
    BUILD_DATA_LIST *pList;
    MONEY_TYPE *room_treasure;
@@ -1482,8 +1483,13 @@ void load_rooms( FILE * fp )
       pRoomIndex->vnum = vnum;
       pRoomIndex->name = fread_string( fp );
       pRoomIndex->description = fread_string( fp );
-      pRoomIndex->room_flags = fread_number( fp );
-      pRoomIndex->sector_type = fread_number( fp );
+      if( area_revision >= 21 )
+      {
+       GET_FREE( pRoomIndex->room_flags, bitmask_free );
+       *pRoomIndex->room_flags = bitmask_zero;
+       pRoomIndex->sector_type = fread_number(fp);
+       load_bitmask(pRoomIndex->room_flags,fp);
+      }
       if( pRoomIndex->sector_type == SECT_NULL )
          pRoomIndex->sector_type = SECT_INSIDE;
       pRoomIndex->light = 0;
@@ -1853,7 +1859,7 @@ void fix_exits( void )
          }
 
          if( !fexit )
-            SET_BIT( pRoomIndex->room_flags, ROOM_NO_MOB );
+            set_bit( pRoomIndex->room_flags, RFLAG_NO_MOB );
       }
    }
    return;
@@ -2172,7 +2178,7 @@ void reset_area( AREA_DATA * pArea )
             {
                ROOM_INDEX_DATA *pRoomIndexPrev;
                pRoomIndexPrev = get_room_index( pRoomIndex->vnum - 1 );
-               if( pRoomIndexPrev != NULL && IS_SET( pRoomIndexPrev->room_flags, ROOM_PET_SHOP ) )
+               if( pRoomIndexPrev != NULL && is_set( pRoomIndexPrev->room_flags, RFLAG_PET_SHOP ) )
                   set_bit( mob->act, ACT_PET );
             }
 
@@ -2225,7 +2231,7 @@ void reset_area( AREA_DATA * pArea )
             {
                extract_obj( obj );
             }
-            else if( ( IS_SET( pRoomIndex->room_flags, ROOM_NO_REPOP ) ) && ( pRoomIndex->first_person != NULL ) )
+            else if( ( is_set( pRoomIndex->room_flags, RFLAG_NO_REPOP ) ) && ( pRoomIndex->first_person != NULL ) )
             {
                extract_obj( obj );
             }

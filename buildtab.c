@@ -50,7 +50,7 @@
      Object affect types :    tab_obj_aff         : number
      Class types         :    tab_class           : bit_vector
      Wear locations      :    tab_wear_loc        : number
-     Room flags          :    tab_room_flags      : bit_vector
+     Room flags          :    tab_room_flags      : bitmask
      Sector types        :    tab_sector_types    : number
      Door types          :    tab_door_types      : bit_vector
      Door states         :    tab_door_states     : number
@@ -936,26 +936,26 @@ const struct lookup_type tab_obj_aff[] = {
 
 
 const struct lookup_type tab_room_flags[] = {
-   {"nada", 0, 0},
-   {"dark", 1, 1000},
-   {"regen", 2, 4000},  /* increased regen in this room */
-   {"no_mob", 4, 3000},
-   {"indoors", 8, 500},
-   {"no_magic", 16, 5000},
-   {"hot", 32, 1000},   /* players lose hp each tick   */
-   {"cold", 64, 1000},  /* players lose hp each tick   */
-   {"pk", 128, 200}, /* players may freely pk here  */
-   {"quiet", 256, 200}, /* room is quiet               */
-   {"private", 512, 1000},
-   {"safe", 1024, 4000},
-   {"solitary", 2048, 1000},
-   {"pet_shop", 4096, NO_USE},
-   {"no_recall", 8192, 1000},
-   {"no_teleport", 16384, 500},
-   {"hunt_hunt", 32768, NO_USE},
-   {"no_bloodwalk", 65536, 4000},
-   {"no_portal", 131072, 1000},
-   {"no_repop", BIT_19, 10},
+   {"nada",         RFLAG_NONE,         0     },
+   {"dark",         RFLAG_DARK,         1000  },
+   {"regen",        RFLAG_REGEN,        4000  },  /* increased regen in this room */
+   {"no_mob",       RFLAG_NO_MOB,       3000  },
+   {"indoors",      RFLAG_INDOORS,      500   },
+   {"no_magic",     RFLAG_NO_MAGIC,     5000  },
+   {"hot",          RFLAG_HOT,          1000  },   /* players lose hp each tick   */
+   {"cold",         RFLAG_COLD,         1000  },  /* players lose hp each tick   */
+   {"pk",           RFLAG_PK,           200   }, /* players may freely pk here  */
+   {"quiet",        RFLAG_QUIET,        200   }, /* room is quiet               */
+   {"private",      RFLAG_PRIVATE,      1000  },
+   {"safe",         RFLAG_SAFE,         4000  },
+   {"solitary",     RFLAG_SOLITARY,     1000  },
+   {"pet_shop",     RFLAG_PET_SHOP,     NO_USE},
+   {"no_recall",    RFLAG_NO_RECALL,    1000  },
+   {"no_teleport",  RFLAG_NO_TELEPORT,  500   },
+   {"hunt_hunt",    RFLAG_HUNT_MARK,    NO_USE},
+   {"no_bloodwalk", RFLAG_NO_BLOODWALK, 4000  },
+   {"no_portal",    RFLAG_NO_PORTAL,    1000  },
+   {"no_repop",     RFLAG_NO_REPOP,     10    },
    {NULL, 0}
 };
 

@@ -113,7 +113,7 @@ void do_mount( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ch->in_room->room_flags & ROOM_SOLITARY )
+   if( is_set(ch->in_room->room_flags,RFLAG_SOLITARY) )
    {
       send_to_char( "This room is too narrow to ride.\n\r", ch );
       return;

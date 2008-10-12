@@ -67,8 +67,7 @@
 #define BUILD_SEC_SPECIALS 8
 #define BUILD_SEC_OBJFUNS  9 /* -S- Mod */
 #define BUILD_SEC_END      10
-#define AREA_VERSION  20
-
+#define AREA_VERSION       21
 
 struct save_queue_type
 {
@@ -519,7 +518,8 @@ void build_save_rooms(  )
    fprintf( SaveFile, "#%i\n", pRoomIndex->vnum );
    fprintf( SaveFile, "%s~\n", pRoomIndex->name );
    fprintf( SaveFile, "%s~\n", pRoomIndex->description );
-   fprintf( SaveFile, "%i %i\n", pRoomIndex->room_flags, pRoomIndex->sector_type );
+   fprintf( SaveFile, "%d\n", pRoomIndex->sector_type );
+   fprintf( SaveFile, "%s\n", save_bitmask( pRoomIndex->room_flags ) );
 
    /*
     * Now do doors. 

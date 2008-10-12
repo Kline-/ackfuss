@@ -55,7 +55,7 @@
      Object affect types :    tab_obj_aff         : number
      Class types         :    tab_class           : bit_vector
      Wear locations      :    tab_wear_loc        : number
-     Room flags          :    tab_room_flags      : bit_vector
+     Room flags          :    tab_room_flags      : bitmask
      Sector types        :    tab_sector_types    : number
      Door types          :    tab_door_types      : bit_vector
      Door states         :    tab_door_states     : number
@@ -298,6 +298,7 @@ char *reset_to_text( BUILD_DATA_LIST **, int * );
 
 ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, sh_int vnum, sh_int sector )
 {
+   static BITMASK bitmask_zero;
    ROOM_INDEX_DATA *pRoomIndex;
    sh_int door, cnt;
    MONEY_TYPE *room_treasure;
@@ -315,7 +316,8 @@ ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, sh_int vnum, sh_int sector )
    pRoomIndex->vnum = vnum;
    pRoomIndex->name = str_dup( "New room" );
    pRoomIndex->description = str_dup( "No description" );
-   pRoomIndex->room_flags = 0;
+   GET_FREE( pRoomIndex->room_flags, bitmask_free );
+   *pRoomIndex->room_flags = bitmask_zero;
    pRoomIndex->sector_type = sector;
    pRoomIndex->light = 0;
    for( door = 0; door < MAX_DIR; door++ )
@@ -773,7 +775,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
             location->vnum, show_values( tab_sector_types, location->sector_type, FALSE ) );
    xcat( buf1, buf );
 
-   xprintf( buf, "@@WFlags:\n\r@@y%s", show_values( tab_room_flags, location->room_flags, TRUE ) );
+   xprintf( buf, "@@WFlags:\n\r@@y%s", bm_show_values( tab_room_flags, location->room_flags ) );
    xcat( buf1, buf );
 
    if( ( display & DISPLAY_DESC ) )
@@ -2115,12 +2117,12 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       /*
        * Flag found 
        */
-      if( IS_SET( location->room_flags, value ) )
-         REMOVE_BIT( location->room_flags, value );
+      if( is_set( location->room_flags, value ) )
+         remove_bit( location->room_flags, value );
       else
-         SET_BIT( location->room_flags, value );
+         set_bit( location->room_flags, value );
       xprintf( buf, "@@WRoom flag @@y%s@@W toggled to @@y%s@@W.@@g\n\r",
-               rev_table_lookup( tab_room_flags, value ), IS_SET( location->room_flags, value ) ? "ON" : "OFF" );
+               rev_table_lookup( tab_room_flags, value ), is_set( location->room_flags, value ) ? "ON" : "OFF" );
       send_to_char( buf, ch );
       return;
    }
@@ -4194,6 +4196,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
          PUT_FREE( pEd, exdesc_free );
       }
    }
+   PUT_FREE( pRoomIndex->room_flags, bitmask_free );
    PUT_FREE( pRoomIndex->treasure, money_type_free );
    PUT_FREE( pRoomIndex, rid_free );
 

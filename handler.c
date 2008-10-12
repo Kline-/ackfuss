@@ -2295,7 +2295,7 @@ bool room_is_dark( ROOM_INDEX_DATA * pRoomIndex )
    if( pRoomIndex->light > 0 )
       return FALSE;
 
-   if( IS_SET( pRoomIndex->room_flags, ROOM_DARK ) )
+   if( is_set( pRoomIndex->room_flags, RFLAG_DARK ) )
       return TRUE;
 
    if( IS_SET( pRoomIndex->affected_by, ROOM_BV_SHADE ) )
@@ -2327,10 +2327,10 @@ bool room_is_private( ROOM_INDEX_DATA * pRoomIndex )
    for( rch = pRoomIndex->first_person; rch != NULL; rch = rch->next_in_room )
       count++;
 
-   if( IS_SET( pRoomIndex->room_flags, ROOM_PRIVATE ) && count >= 2 )
+   if( is_set( pRoomIndex->room_flags, RFLAG_PRIVATE ) && count >= 2 )
       return TRUE;
 
-   if( IS_SET( pRoomIndex->room_flags, ROOM_SOLITARY ) && count >= 1 )
+   if( is_set( pRoomIndex->room_flags, RFLAG_SOLITARY ) && count >= 1 )
       return TRUE;
 
    return FALSE;

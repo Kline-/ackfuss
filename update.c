@@ -350,7 +350,7 @@ int hit_gain( CHAR_DATA * ch )
 
    gain = ( 5 + ch->level / 20 );
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_REGEN ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_REGEN ) )
       gain *= 2;
 
    switch ( ch->position )
@@ -385,7 +385,7 @@ int hit_gain( CHAR_DATA * ch )
    if( IS_AFFECTED( ch, AFF_POISON ) )
       gain /= 4;
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_COLD ) || ( IS_SET( ch->in_room->room_flags, ROOM_HOT ) ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_COLD ) || ( is_set( ch->in_room->room_flags, RFLAG_HOT ) ) )
       gain *= -2;
 
    if( IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_REGEN ) )
@@ -453,7 +453,7 @@ int mana_gain( CHAR_DATA * ch )
    {
       gain = ( 5 + ch->level / 20 );
 
-      if( IS_SET( ch->in_room->room_flags, ROOM_REGEN ) )
+      if( is_set( ch->in_room->room_flags, RFLAG_REGEN ) )
          gain *= 2;
 
       switch ( ch->position )
@@ -551,7 +551,7 @@ int move_gain( CHAR_DATA * ch )
    {
       gain = ( 10 + ch->level / 4 );
 
-      if( IS_SET( ch->in_room->room_flags, ROOM_REGEN ) )
+      if( is_set( ch->in_room->room_flags, RFLAG_REGEN ) )
          gain *= 2;
 
       switch ( ch->position )
@@ -843,7 +843,7 @@ void mobile_update( void )
           && ( pexit = ch->in_room->exit[door] ) != NULL
           && pexit->to_room != NULL
           && !IS_SET( pexit->exit_info, EX_CLOSED )
-          && !IS_SET( pexit->to_room->room_flags, ROOM_NO_MOB )
+          && !is_set( pexit->to_room->room_flags, RFLAG_NO_MOB )
           && ( !is_set( ch->act, ACT_STAY_AREA ) || pexit->to_room->area == ch->in_room->area ) )
       {
          move_char( ch, door, FALSE );
@@ -864,7 +864,7 @@ void mobile_update( void )
           && ( door = number_bits( 3 ) ) <= 5
           && ( pexit = ch->in_room->exit[door] ) != NULL
           && pexit->to_room != NULL
-          && !IS_SET( pexit->exit_info, EX_CLOSED ) && !IS_SET( pexit->to_room->room_flags, ROOM_NO_MOB ) )
+          && !IS_SET( pexit->exit_info, EX_CLOSED ) && !is_set( pexit->to_room->room_flags, RFLAG_NO_MOB ) )
       {
          CHAR_DATA *rch;
          bool found;
@@ -1370,9 +1370,9 @@ void char_update( void )
           */
          if( ch->position != POS_WRITING && ch->position != POS_BUILDING )
          {
-            if( IS_SET( ch->in_room->room_flags, ROOM_HOT ) )
+            if( is_set( ch->in_room->room_flags, RFLAG_HOT ) )
                send_to_char( "You feel your skin burning.\n\r", ch );
-            else if( IS_SET( ch->in_room->room_flags, ROOM_COLD ) )
+            else if( is_set( ch->in_room->room_flags, RFLAG_COLD ) )
                send_to_char( "You feel your skin freezing.\n\r", ch );
          }
 
@@ -1947,7 +1947,7 @@ void aggr_update( void )
              */
             continue;
          }
-         if( IS_SET( victim->in_room->room_flags, ROOM_SAFE ) )
+         if( is_set( victim->in_room->room_flags, RFLAG_SAFE ) )
             continue;
 
          if( ch == quest_mob ) /* Stop the quest mob from fighting folks trying to help it! --Kline */

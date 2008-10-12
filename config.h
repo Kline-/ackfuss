@@ -326,16 +326,11 @@
 #define STANCE_MAGI          12
 
 
-
-
-#define C_SHOW_NEVER    -1
-#define C_SHOW_ALWAYS     0
-#define C_SHOW_SKILL      1
-
-#define SUPER_NONE			0
-#define SUPER_VAMP			1
-#define SUPER_WOLF			2
-#define SUPER_BLESSED			3
+#define SUPER_NONE   0
+#define SUPER_VAMP   1
+#define SUPER_WOLF   2
+#define SUPER_UNDEAD 3
+#define SUPER_HUNTER 4
 
 /* defines for enchant.c  */
 #define ENCHANT_EXTRA_FLAGS	-1
@@ -414,7 +409,6 @@
 #define MOON_FALL	4
 #define MOON_SET	5
 
-
 #define MOON_NEW	0
 #define MOON_WAX_CRE	1
 #define MOON_WAX_HALF	2
@@ -430,6 +424,7 @@
 
 /* These values referenced by users command, BTW */
 
+#define CON_SETTING_STATS                1
 #define CON_PLAYING                      0
 #define CON_GET_NAME                     -1
                   /*
@@ -467,13 +462,12 @@
                    */
 #define CON_QUITTING			-15
 #define CON_RECONNECTING                -16
-#define CON_SETTING_STATS		1
 
 /* values used to check a new player has selected all options.... */
-#define CHECK_RACE			  1
-#define CHECK_CLASS			  2
-#define CHECK_SEX			  4
-#define CHECK_STATS			  8
+#define CHECK_RACE			  BIT_1
+#define CHECK_CLASS			  BIT_2
+#define CHECK_SEX			  BIT_3
+#define CHECK_STATS			  BIT_4
 
 /*
  * TO types for act.
@@ -483,31 +477,30 @@
 #define TO_VICT             2
 #define TO_CHAR             3
 
-
 /*
  * Room flags.
  * Used in #ROOMS.
  */
-#define ROOM_DARK                     1
-#define ROOM_REGEN                    2   /* increased regen in this room */
-#define ROOM_NO_MOB                   4
-#define ROOM_INDOORS                  8
-#define ROOM_NO_MAGIC                16
-#define ROOM_HOT                     32   /* players lose hp each tick   */
-#define ROOM_COLD                    64   /* players lose hp each tick   */
-#define ROOM_PK                     128   /* players may freely pk here  */
-#define ROOM_QUIET                  256   /* room is quiet               */
-#define ROOM_PRIVATE                512
-#define ROOM_SAFE                  1024
-#define ROOM_SOLITARY              2048
-#define ROOM_PET_SHOP              4096
-#define ROOM_NO_RECALL             8192
-#define ROOM_NO_TELEPORT          16384
-#define ROOM_HUNT_MARK	          32768   /* Dont ever set! */
-#define ROOM_NOBLOODWALK	  65536
-#define ROOM_NO_PORTAL		 131072
-#define ROOM_NO_REPOP		BIT_19
-
+#define RFLAG_NONE          0
+#define RFLAG_DARK          1
+#define RFLAG_REGEN         2   /* increased regen in this room */
+#define RFLAG_NO_MOB        3
+#define RFLAG_INDOORS       4
+#define RFLAG_NO_MAGIC      5
+#define RFLAG_HOT           6   /* players lose hp each tick   */
+#define RFLAG_COLD          7   /* players lose hp each tick   */
+#define RFLAG_PK            8   /* players may freely pk here  */
+#define RFLAG_QUIET         9   /* room is quiet               */
+#define RFLAG_PRIVATE       10
+#define RFLAG_SAFE          11
+#define RFLAG_SOLITARY      12
+#define RFLAG_PET_SHOP      13
+#define RFLAG_NO_RECALL     14
+#define RFLAG_NO_TELEPORT   15
+#define RFLAG_HUNT_MARK	    16   /* Dont ever set! */
+#define RFLAG_NO_BLOODWALK  17
+#define RFLAG_NO_PORTAL     18
+#define RFLAG_NO_REPOP      19
 
 /*
  * Directions.

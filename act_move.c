@@ -1475,7 +1475,7 @@ void do_clan_recall( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || IS_AFFECTED( ch, AFF_CURSE ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) || IS_AFFECTED( ch, AFF_CURSE ) )
    {
       send_to_char( "Some strange force prevents your transport.\n\r", ch );
       return;
@@ -1572,7 +1572,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
    if( ch->in_room == location )
       return;
 
-   if( IS_SET( ch->in_room->room_flags, ROOM_NO_RECALL ) || IS_AFFECTED( ch, AFF_CURSE ) )
+   if( is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) || IS_AFFECTED( ch, AFF_CURSE ) )
    {
       send_to_char( "Some strange force prevents your recall.\n\r", ch );
       return;
@@ -2126,7 +2126,7 @@ void do_enter( CHAR_DATA * ch, char *argument )
       send_to_char( "Nothing happens.\n\r", ch );
       return;
    }
-   if( ( IS_SET( ch->in_room->room_flags, ROOM_NO_PORTAL ) || IS_SET( to_room->room_flags, ROOM_NO_PORTAL ) )
+   if( ( is_set( ch->in_room->room_flags, RFLAG_NO_PORTAL ) || is_set( to_room->room_flags, RFLAG_NO_PORTAL ) )
        && number_range( 0, 100 ) < 75 )
    {
       act( "The anti-magic zone causes the portal to @@eIMPLODE@@N!!!", ch, NULL, NULL, TO_ROOM );
