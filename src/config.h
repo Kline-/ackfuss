@@ -721,35 +721,36 @@
 /*
  * Channel bits.
  */
-#define CHANNEL_HERMIT     0 /* All channels are off */
-#define CHANNEL_AUCTION    1
-#define CHANNEL_GOSSIP     2
-#define CHANNEL_MUSIC      3
-#define CHANNEL_IMMTALK    4
-#define CHANNEL_NEWBIE     5
-#define CHANNEL_QUESTION   6
-#define CHANNEL_SHOUT      7
-#define CHANNEL_YELL       8
-#define CHANNEL_FLAME      9
-#define CHANNEL_ZZZ        10
-#define CHANNEL_RACE       11
-#define CHANNEL_CLAN       12
-#define CHANNEL_NOTIFY     13
-#define CHANNEL_INFO       14
-#define CHANNEL_LOG        15
-#define CHANNEL_CREATOR    16
-#define CHANNEL_ALLCLAN    17
-#define CHANNEL_ALLRACE    18
-#define CHANNEL_BEEP       19
-#define CHANNEL_FAMILY     20
-#define CHANNEL_DIPLOMAT   21
-#define CHANNEL_CRUSADE    22
-#define CHANNEL_REMORTTALK 23
-#define CHANNEL_HOWL       24
-#define CHANNEL_ADEPT      25
-#define CHANNEL_OOC        26
-#define CHANNEL_QUEST      27
-#define CHANNEL_GAME       28
+#define CHANNEL_NONE       0
+#define CHANNEL_HERMIT     1 /* All channels are off */
+#define CHANNEL_AUCTION    2
+#define CHANNEL_GOSSIP     3
+#define CHANNEL_MUSIC      4
+#define CHANNEL_IMMTALK    5
+#define CHANNEL_NEWBIE     6
+#define CHANNEL_QUESTION   7
+#define CHANNEL_SHOUT      8
+#define CHANNEL_YELL       9
+#define CHANNEL_FLAME      10
+#define CHANNEL_ZZZ        11
+#define CHANNEL_RACE       12
+#define CHANNEL_CLAN       13
+#define CHANNEL_NOTIFY     14
+#define CHANNEL_INFO       15
+#define CHANNEL_LOG        16
+#define CHANNEL_CREATOR    17
+#define CHANNEL_ALLCLAN    18
+#define CHANNEL_ALLRACE    19
+#define CHANNEL_BEEP       20
+#define CHANNEL_FAMILY     21
+#define CHANNEL_DIPLOMAT   22
+#define CHANNEL_CRUSADE    23
+#define CHANNEL_REMORTTALK 24
+#define CHANNEL_HOWL       25
+#define CHANNEL_ADEPT      26
+#define CHANNEL_OOC        27
+#define CHANNEL_QUEST      28
+#define CHANNEL_GAME       29
 
 /* Monitor channels - for imms to select what mud-based info they receive */
 #define MONITOR_CONNECT      BIT_1
