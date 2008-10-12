@@ -5031,7 +5031,7 @@ void do_monitor( CHAR_DATA * ch, char *argument )
          if( monitor_table[a].min_level > get_trust( ch ) )
             continue;
 
-         if( IS_SET( ch->pcdata->monitor, monitor_table[a].channel ) )
+         if( is_set( ch->pcdata->monitor, monitor_table[a].channel ) )
          {
             if( !IS_NPC( ch ) )
             {
@@ -5067,10 +5067,10 @@ void do_monitor( CHAR_DATA * ch, char *argument )
       if( !strcmp( argument, monitor_table[a].name ) )
       {
          found = TRUE;
-         if( IS_SET( ch->pcdata->monitor, monitor_table[a].channel ) )
-            REMOVE_BIT( ch->pcdata->monitor, monitor_table[a].channel );
+         if( is_set( ch->pcdata->monitor, monitor_table[a].channel ) )
+            remove_bit( ch->pcdata->monitor, monitor_table[a].channel );
          else
-            SET_BIT( ch->pcdata->monitor, monitor_table[a].channel );
+            set_bit( ch->pcdata->monitor, monitor_table[a].channel );
          break;
       }
    }
@@ -5107,7 +5107,7 @@ void monitor_chan( const char *message, int channel )
    {
       if( d->connected == CON_PLAYING
           && !IS_NPC( d->character )
-          && IS_SET( d->character->pcdata->monitor, channel ) && level <= get_trust( d->character ) )
+          && is_set( d->character->pcdata->monitor, channel ) && level <= get_trust( d->character ) )
       {
          send_to_char( buf, d->character );
       }

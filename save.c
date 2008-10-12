@@ -303,6 +303,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "%d ", ch->money->cash_unit[foo] );
    fprintf( fp, "\n" );
 
+   fprintf( fp, "Monitor        %s\n", save_bitmask( ch->pcdata->monitor ) );
+
    fprintf( fp, "BankMoney      %d ", MAX_CURRENCY );
    for( foo = 0; foo < MAX_CURRENCY; foo++ )
       fprintf( fp, "%d ", ch->bank_money->cash_unit[foo] );
@@ -345,7 +347,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
        * We add a '*' to preserve leading spaces... strip * on load 
        */
       fprintf( fp, "Whoname        *%s~\n", ch->pcdata->who_name );
-      fprintf( fp, "Monitor        %d\n", ch->pcdata->monitor );
       fprintf( fp, "Host           %s~\n", ch->pcdata->host );
       fprintf( fp, "Failures       %d\n", ch->pcdata->failures );
       fprintf( fp, "LastLogin      %s~\n", time_buf );
@@ -591,6 +592,7 @@ int cur_revision = 0;
 bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 {
    int cnt;
+   static BITMASK bitmask_zero;
    static PC_DATA pcdata_zero;
    static QUEST_INFO quest_info_zero;
    static RECORD_DATA record_zero;
@@ -647,6 +649,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    {
       GET_FREE( ch->pcdata, pcd_free );
       *ch->pcdata = pcdata_zero;
+      GET_FREE( ch->pcdata->monitor, bitmask_free );
+      *ch->pcdata->monitor = bitmask_zero;
       GET_FREE( ch->pcdata->quest_info, quest_info_free );
       *ch->pcdata->quest_info = quest_info_zero;
       GET_FREE( ch->pcdata->records, record_free );
@@ -1216,7 +1220,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'M':
             if( !IS_NPC( ch ) )
             {
-               KEY( "Monitor", ch->pcdata->monitor, fread_number( fp ) );
+               BKEY( "Monitor", ch->pcdata->monitor, fp );
             }
             if( !str_cmp( word, "Money" ) )
             {
