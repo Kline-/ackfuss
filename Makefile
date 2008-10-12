@@ -21,50 +21,69 @@ CC      = gcc
 #SOLARIS_FLAG = -Dsun -DSYSV -Wno-char-subscripts
 #SOLARIS_LINK = -lnsl -lsocket -lresolv
 
-C_FLAGS = -O2 -g -Wall -DACK_43 $(PROF) $(SOLARIS_FLAG)
+#-Werror -Wshadow -Wformat-security -Wpointer-arith -Wcast-align -Wredundant-decls -Wconversion -Wwrite-strings
+W_FLAGS = -Wall
+C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(SOLARIS_FLAG)
 L_FLAGS = -O2 -g -lcrypt -lm $(PROF) $(SOLARIS_LINK)
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
 
-O_FILES = act_clan.o act_comm.o act_info.o act_mob.o act_move.o act_obj.o act_wiz.o \
-	  areachk.o areasave.o bitmask.o board.o build.o buildare.o buildtab.o clutch.o comm.o \
-	  const.o db.o email.o enchant.o fight.o handler.o hash.o hunt.o interp.o lists.o \
-	  macros.o magic.o magic2.o magic3.o magic4.o mapper.o mob_commands.o mob_prog.o \
-	  money.o mount.o mquest.o obj_fun.o pdelete.o quest.o rulers.o save.o scheck.o social-edit.o \
-	  special.o spell_dam.o spendqp.o ssm.o strfuns.o sysdata.o trigger.o update.o \
-	  vampire.o werewolf.o wizutil.o write.o
+C_FILES = act_clan.c act_comm.c act_info.c act_mob.c act_move.c act_obj.c act_wiz.c \
+	  areachk.c areasave.c bitmask.c board.c build.c buildare.c buildtab.c clutch.c comm.c \
+	  const.c db.c email.c enchant.c fight.c handler.c hash.c hunt.c interp.c lists.c \
+	  macros.c magic.c magic2.c magic3.c magic4.c mapper.c mob_commands.c mob_prog.c \
+	  money.c mount.c mquest.c obj_fun.c pdelete.c quest.c rulers.c save.c scheck.c social-edit.c \
+	  special.c spell_dam.c spendqp.c ssm.c strfuns.c sysdata.c trigger.c update.c \
+	  vampire.c werewolf.c wizutil.c write.c
 
 ifdef IMC
-   O_FILES := imc.o sha256.o $(O_FILES)
+   C_FILES := imc.c sha256.c $(C_FILES)
    C_FLAGS := $(C_FLAGS) -DIMC -DIMCACK
 endif
 
+O_FILES = $(patsubst %.c,o/%.o,$(C_FILES))
+
+H_FILES = $(wildcard *.h)
+
 all:
 	$(MAKE) ack
+
+# pull in dependency info for *existing* .o files
+-include dependencies.d
 
 ifdef CYGWIN
 ack: $(O_FILES)
 	rm -f ack.exe
 	$(CC) -o ack.exe $(O_FILES) $(L_FLAGS)
+	@echo "Generating dependency file ...";
+	@$(CC) -MM $(C_FLAGS) $(C_FILES) > dependencies.d
+	@perl -pi -e 's.^([a-z]).o/$$1.g' dependencies.d
+	@echo "Done compiling mud.";
 	chmod g+w ack.exe
 	chmod a+x ack.exe
 	chmod g+w $(O_FILES)
+
+clean:
+	@rm -f o/*.o ack.exe dependencies.d ../area/core
 else
 ack: $(O_FILES)
 	rm -f ack
 	$(CC) -o ack $(O_FILES) $(L_FLAGS)
+	@echo "Generating dependency file ...";
+	@$(CC) -MM $(C_FLAGS) $(C_FILES) > dependencies.d
+	@perl -pi -e 's.^([a-z]).o/$$1.g' dependencies.d
+	@echo "Done compiling mud.";
 	chmod g+w ack
 	chmod a+x ack
 	chmod g+w $(O_FILES)
-endif
 
 clean:
-	rm -f *.o ack ack.exe ../area/core *~
-	$(MAKE)
+	@rm -f o/*.o ack dependencies.d ../area/core
+endif
 
-purge:
-	rm -f *.o ack ack.exe ../area/core *~
+o/%.o: %.c
+	$(CC) -c $(C_FLAGS) $< -o $@
 
 .c.o: ack.h
 	$(CC) -c $(C_FLAGS) $<
