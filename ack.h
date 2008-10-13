@@ -196,8 +196,8 @@ struct mark_data
    int room_vnum;
    char *message;
    char *author;
-   sh_int duration;
-   sh_int type;   /* VAMP, WOLF */
+   short duration;
+   short type;   /* VAMP, WOLF */
    MARK_DATA *next;
    MARK_DATA *prev;  /* for freelist only */
 };
@@ -217,7 +217,7 @@ struct council_data
    MEMBER_DATA *first_member;
    MEMBER_DATA *last_member;
    bool quorum;
-   sh_int council_time;
+   short council_time;
 };
 
 
@@ -234,13 +234,13 @@ struct descriptor_data
    CHAR_DATA *character;
    CHAR_DATA *original;
    char *host;
-   sh_int descriptor;
-   sh_int connected;
+   short descriptor;
+   short connected;
    bool fcommand;
    char inbuf[4 * MAX_INPUT_LENGTH];
    char incomm[MAX_INPUT_LENGTH];
    char inlast[MAX_INPUT_LENGTH];
-   sh_int repeat;
+   short repeat;
    char *showstr_head;
    char *showstr_point;
    char *outbuf;
@@ -263,14 +263,14 @@ struct descriptor_data
 struct family_name_type
 {
    char *name;
-   sh_int clan_enemy;
+   short clan_enemy;
 
 };
 
 struct politics_data_type
 {
 
-   sh_int diplomacy[MAX_CLAN][MAX_CLAN];
+   short diplomacy[MAX_CLAN][MAX_CLAN];
    bool daily_negotiate_table[MAX_CLAN][MAX_CLAN];
    long int treasury[MAX_CLAN];
    bool end_current_state[MAX_CLAN][MAX_CLAN];
@@ -279,9 +279,9 @@ struct politics_data_type
 struct stance_app_type
 {
    char *name;
-   sh_int ac_mod;
-   sh_int dr_mod;
-   sh_int hr_mod;
+   short ac_mod;
+   short dr_mod;
+   short hr_mod;
    float speed_mod;
 };
 
@@ -290,34 +290,34 @@ struct stance_app_type
  */
 struct str_app_type
 {
-   sh_int tohit;
-   sh_int todam;
-   sh_int carry;
-   sh_int wield;
+   short tohit;
+   short todam;
+   short carry;
+   short wield;
 };
 
 struct int_app_type
 {
-   sh_int learn;
-   sh_int spell_mod;
-   sh_int mana_regen;
+   short learn;
+   short spell_mod;
+   short mana_regen;
 };
 
 struct wis_app_type
 {
-   sh_int practice;
-   sh_int spell_save;
+   short practice;
+   short spell_save;
 };
 
 struct dex_app_type
 {
-   sh_int defensive;
+   short defensive;
 };
 
 struct con_app_type
 {
-   sh_int hitp;
-   sh_int shock;
+   short hitp;
+   short shock;
 };
 
 /*
@@ -330,11 +330,11 @@ struct shop_data
    SHOP_DATA *next;  /* Next shop in list            */
    SHOP_DATA *prev;  /* Prev shop in list    */
    int keeper; /* Vnum of shop keeper mob      */
-   sh_int buy_type[MAX_TRADE];   /* Item types shop will buy     */
-   sh_int profit_buy;   /* Cost multiplier for buying   */
-   sh_int profit_sell;  /* Cost multiplier for selling  */
-   sh_int open_hour; /* First opening hour           */
-   sh_int close_hour;   /* First closing hour           */
+   short buy_type[MAX_TRADE];   /* Item types shop will buy     */
+   short profit_buy;   /* Cost multiplier for buying   */
+   short profit_sell;  /* Cost multiplier for selling  */
+   short open_hour; /* First opening hour           */
+   short close_hour;   /* First closing hour           */
 };
 
 
@@ -349,15 +349,15 @@ struct class_type
 {
    char who_name[4]; /* Three-letter name for 'who'  */
    char *class_name; /* Full name                    */
-   sh_int attr_prime;   /* Prime attribute              */
+   short attr_prime;   /* Prime attribute              */
    char *attr; /* Prime          */
-   sh_int weapon; /* First weapon                 */
+   short weapon; /* First weapon                 */
    int guild;  /* Vnum of guild room           */
-   sh_int skill_adept;  /* Maximum skill level          */
-   sh_int thac0_00;  /* Thac0 for level  0           */
-   sh_int thac0_32;  /* Thac0 for level 32           */
-   sh_int hp_min; /* Min hp gained on leveling    */
-   sh_int hp_max; /* Max hp gained on leveling    */
+   short skill_adept;  /* Maximum skill level          */
+   short thac0_00;  /* Thac0 for level  0           */
+   short thac0_32;  /* Thac0 for level 32           */
+   short hp_min; /* Min hp gained on leveling    */
+   short hp_max; /* Max hp gained on leveling    */
    bool fMana; /* Class gains mana on level    */
    char *skill1;  /* Auto-learnt skill if any     */
 };
@@ -367,17 +367,17 @@ struct race_type
 {
    char race_name[4];   /* Three letter name for race */
    char *race_title; /* Full race name */
-   sh_int recall; /* Race's recall location */
+   short recall; /* Race's recall location */
    int race_room; /* vnum of race-only room */
-   sh_int race_str;  /* max_str to use for race */
-   sh_int race_int;
-   sh_int race_wis;
-   sh_int race_dex;
-   sh_int race_con;
+   short race_str;  /* max_str to use for race */
+   short race_int;
+   short race_wis;
+   short race_dex;
+   short race_con;
    int race_flags;   /* flags for the various racial stuff    */
    bool wear_locs[MAX_WEAR];  /* on/off for each wear loc */
    int classes;   /* Number of classes for race   */
-   sh_int limit[MAX_CLASS];   /* Max for each class */
+   short limit[MAX_CLASS];   /* Max for each class */
    char *comment; /* comments shown for new players */
    char *skill1;
    int strong_realms;
@@ -392,8 +392,8 @@ struct clan_type
 {
    char *clan_name;  /* The name of the Clan */
    char *clan_abbr;  /* Abbrev. name - FIVE CHARS */
-   sh_int donat_room;   /* clan donation */
-   sh_int clan_room; /* Clan-only room */
+   short donat_room;   /* clan donation */
+   short clan_room; /* Clan-only room */
    char *leader;  /* Clan leader */
    char *enemies; /* Enemies (if any) */
    int eq[MAX_CLAN_EQ]; /* vnums of objects to load */
@@ -427,10 +427,10 @@ struct affect_data
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    AFFECT_DATA *next;
    AFFECT_DATA *prev;
-   sh_int type;
-   sh_int duration;
-   sh_int location;
-   sh_int modifier;
+   short type;
+   short duration;
+   short location;
+   short modifier;
    int bitvector;
    CHAR_DATA *caster;
    int level;
@@ -441,13 +441,13 @@ struct room_affect_data
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    ROOM_AFFECT_DATA *next;
    ROOM_AFFECT_DATA *prev;
-   sh_int duration;
-   sh_int level;
+   short duration;
+   short level;
    int type;
    int bitvector;
    int applies_spell;   /* what spell is cast on a ch by the room..a sn */
-   sh_int modifier;
-   sh_int location;
+   short modifier;
+   short location;
    CHAR_DATA *caster;
 
 };
@@ -459,8 +459,8 @@ struct room_affect_data
  */
 struct kill_data
 {
-   sh_int number;
-   sh_int killed;
+   short number;
+   short killed;
 };
 
 
@@ -469,11 +469,11 @@ struct magic_shield
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    MAGIC_SHIELD *next;
    MAGIC_SHIELD *prev;
-   sh_int type;   /* what kind is it? Electric, Fire, etc... */
+   short type;   /* what kind is it? Electric, Fire, etc... */
    bool harmfull; /* does the shield damage the attacker? */
-   sh_int attack_dam;   /* then hurt the attacker ;) */
-   sh_int percent;   /* percent of damage it absorbs per attack */
-   sh_int hits;   /* Shield hitpoints */
+   short attack_dam;   /* then hurt the attacker ;) */
+   short percent;   /* percent of damage it absorbs per attack */
+   short hits;   /* Shield hitpoints */
    int sn;
    char *absorb_message_room;
    char *absorb_message_victim;
@@ -502,17 +502,17 @@ struct mob_index_data
    char *long_descr;
    char *description;
    int vnum;
-   sh_int count;
-   sh_int killed;
-   sh_int sex;
-   sh_int level;
+   short count;
+   short killed;
+   short sex;
+   short level;
    BITMASK *act;
    int affected_by;
    int aggro_list;
-   sh_int alignment;
-   sh_int ac_mod; /* ac modifier */
-   sh_int hr_mod; /* hitroll modifier */
-   sh_int dr_mod; /* damroll modifier */
+   short alignment;
+   short ac_mod; /* ac modifier */
+   short hr_mod; /* hitroll modifier */
+   short dr_mod; /* damroll modifier */
    char *target;  /* last ch to attack */
    MPROG_DATA *first_mprog;   /* Used by MOBprogram   */
    MPROG_DATA *last_mprog;
@@ -527,13 +527,13 @@ struct mob_index_data
    int resist;
    int suscept;
    int race_mods;
-   sh_int class;
-   sh_int clan;
-   sh_int race;
-   sh_int position;
+   short p_class;
+   short clan;
+   short race;
+   short position;
    int hunt_flags;
    float speed[4];
-   sh_int learned[MAX_SKILL]; /* To replace skill/cast flags */
+   short learned[MAX_SKILL]; /* To replace skill/cast flags */
 };
 
 
@@ -593,26 +593,26 @@ struct char_data
    char *description;
    char *prompt;
    char *old_prompt; /* used to hold prompt when writing */
-   sh_int sex;
-   sh_int login_sex;
-   sh_int class;
-   sh_int clan;   /* need to convert from pcdata to this */
-   sh_int race;
-   sh_int level;  /* For m/c this = max of levels */
+   short sex;
+   short login_sex;
+   short p_class;
+   short clan;   /* need to convert from pcdata to this */
+   short race;
+   short level;  /* For m/c this = max of levels */
    int lvl[MAX_CLASS];  /* Holds details for m/c levels */
    int lvl2[MAX_CLASS]; /* for remort (if any) */
    int adept_level;
    int sentence;  /* For new legal system */
-   sh_int invis;  /* For wizinvis imms - lvl invis to */
-   sh_int incog;  /* Same as above except for incognito --Flar */
-   sh_int trust;
+   short invis;  /* For wizinvis imms - lvl invis to */
+   short incog;  /* Same as above except for incognito --Flar */
+   short trust;
    bool wizbit;
    int played;
    time_t logon;
    time_t save_time;
    time_t last_note;
-   sh_int timer;
-   sh_int wait;
+   short timer;
+   short wait;
    int hit;
    int max_hit;
    int mana;
@@ -628,23 +628,23 @@ struct char_data
    int act_build; /* for setting what ya editing */
    int build_vnum;   /* the current vnum for w-y-e  */
    int affected_by;
-   sh_int position;
-   sh_int practice;
+   short position;
+   short practice;
    float carry_weight;
-   sh_int carry_number;
-   sh_int saving_throw;
-   sh_int alignment;
-   sh_int hitroll;
-   sh_int damroll;
-   sh_int armor;
-   sh_int ac_mod; /* ac modifier */
-   sh_int stance_ac_mod;
-   sh_int hr_mod; /* hitroll modifier */
-   sh_int stance_hr_mod;
-   sh_int dr_mod; /* damroll modifier */
-   sh_int stance_dr_mod;
+   short carry_number;
+   short saving_throw;
+   short alignment;
+   short hitroll;
+   short damroll;
+   short armor;
+   short ac_mod; /* ac modifier */
+   short stance_ac_mod;
+   short hr_mod; /* hitroll modifier */
+   short stance_hr_mod;
+   short dr_mod; /* damroll modifier */
+   short stance_dr_mod;
    char *target;  /* last ch to attack */
-   sh_int wimpy;
+   short wimpy;
    MPROG_ACT_LIST *first_mpact;  /* Used by MOBprogram */
    MPROG_ACT_LIST *last_mpact;
    int mpactnum;  /* Used by MOBprogram */
@@ -663,8 +663,8 @@ struct char_data
    MAGIC_SHIELD *first_shield;
    MAGIC_SHIELD *last_shield;
    int stunTimer;
-   sh_int num_followers;
-   sh_int extract_timer;   /* same as object timer, only use for charmies */
+   short num_followers;
+   short extract_timer;   /* same as object timer, only use for charmies */
    BRAND_DATA *current_brand;
    int stance;
    bool using_named_door;
@@ -693,28 +693,28 @@ struct pc_data
    char *bamfout;
    char *title;
    char *host; /* Used to tell PC last login site */
-   sh_int failures;  /* Failed logins */
-   sh_int clan;   /* will be used to denote clan membership */
-   sh_int perm_str;
-   sh_int perm_int;
-   sh_int perm_wis;
-   sh_int perm_dex;
-   sh_int perm_con;
-   sh_int max_str;
-   sh_int max_int;
-   sh_int max_wis;
-   sh_int max_dex;
-   sh_int max_con;
-   sh_int mod_str;
-   sh_int mod_int;
-   sh_int mod_wis;
-   sh_int mod_dex;
-   sh_int mod_con;
+   short failures;  /* Failed logins */
+   short clan;   /* will be used to denote clan membership */
+   short perm_str;
+   short perm_int;
+   short perm_wis;
+   short perm_dex;
+   short perm_con;
+   short max_str;
+   short max_int;
+   short max_wis;
+   short max_dex;
+   short max_con;
+   short mod_str;
+   short mod_int;
+   short mod_wis;
+   short mod_dex;
+   short mod_con;
    BITMASK *monitor;   /* Imm channel monitoring */
-   sh_int condition[3];
+   short condition[3];
    SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
-   sh_int pagelen;
-   sh_int learned[MAX_SKILL];
+   short pagelen;
+   short learned[MAX_SKILL];
    char *header;  /* filename for helpedit */
    char *message; /* helpedit file contents */
    char *alias_name[MAX_ALIASES];
@@ -722,8 +722,8 @@ struct pc_data
    char *who_name;   /* To show on who name */
    RECORD_DATA *records; /* kill/damage/etc records */
    char *lastlogin;
-   sh_int order[MAX_CLASS];   /* Class Order */
-   sh_int quest_points;
+   short order[MAX_CLASS];   /* Class Order */
+   short quest_points;
    char *ignore_list[MAX_IGNORES];  /* Ignore this person */
    int recall_vnum;
    int mana_from_gain;  /* saves non-item oriented mana total */
@@ -732,16 +732,16 @@ struct pc_data
    char *load_msg;
    char hicol;
    char dimcol;
-   sh_int ruler_rank;
+   short ruler_rank;
    char *pedit_state;
    char *pedit_string[5];
-   sh_int term_rows;
-   sh_int term_columns;
+   short term_rows;
+   short term_columns;
    char *email_address;
    bool valid_email;
    char *assist_msg;
    QUEST_INFO *quest_info;
-   sh_int movement; /* Quick movement */
+   short movement; /* Quick movement */
 #ifdef IMC
    IMC_CHARDATA *imcchardata;
 #endif
@@ -783,7 +783,7 @@ struct liq_type
 {
    char *liq_name;
    char *liq_color;
-   sh_int liq_affect[3];
+   short liq_affect[3];
 };
 
 
@@ -833,7 +833,7 @@ struct obj_index_data
    AREA_DATA *area;
    char *owner;
    char *name;
-   sh_int level;
+   short level;
    char *short_descr;
    char *description;
    int vnum;
@@ -844,15 +844,15 @@ struct obj_index_data
     * class_flags changed to item_apply for magic apply, etc 
     */
    int item_apply;
-   sh_int count;
-   sh_int weight;
+   short count;
+   short weight;
    int cost;   /* Unused */
    int value[10];
    TRIGGER_DATA *first_trigger;
    TRIGGER_DATA *last_trigger;
    float speed;
-   sh_int durability;
-   sh_int max_durability;
+   short durability;
+   short max_durability;
 };
 
 
@@ -895,13 +895,13 @@ struct obj_data
    int wear_flags;
    int item_apply;
    int wear_loc;
-   sh_int weight;
+   short weight;
    int cost;
-   sh_int level;
-   sh_int timer;
+   short level;
+   short timer;
    int value[10];
-   sh_int durability;
-   sh_int max_durability;
+   short durability;
+   short max_durability;
    MONEY_TYPE *money;
    float speed;
 };
@@ -917,8 +917,8 @@ struct exit_data
    EXIT_DATA *next;
    ROOM_INDEX_DATA *to_room;
    int vnum;
-   sh_int exit_info;
-   sh_int key;
+   short exit_info;
+   short key;
    char *keyword;
    char *description;
 };
@@ -948,10 +948,10 @@ struct reset_data
    RESET_DATA *next;
    RESET_DATA *prev;
    char command;
-   sh_int ifflag;
-   sh_int arg1;
-   sh_int arg2;
-   sh_int arg3;
+   short ifflag;
+   short arg1;
+   short arg2;
+   short arg3;
    char *notes;
    char *auto_message;  /* Ugly - wasteful of space. */
 };
@@ -1051,11 +1051,11 @@ struct ruler_data
    RULER_DATA *next;
    RULER_DATA *prev;
    char *name;
-   sh_int ruler_rank;
+   short ruler_rank;
    char *affiliation_name;
-   sh_int affiliation_index;
+   short affiliation_index;
    char *keywords;
-   sh_int flags;
+   short flags;
    CONTROL_LIST *first_control;
    CONTROL_LIST *last_control;
 };
@@ -1069,8 +1069,8 @@ struct area_data
    RESET_DATA *first_reset;
    RESET_DATA *last_reset;
    char *name;
-   sh_int age;
-   sh_int nplayer;
+   short age;
+   short nplayer;
 /* Saving to envy mod, to renumber vnums! */
    int offset;
 
@@ -1111,10 +1111,10 @@ struct area_data
     */
    CONTROL_DATA *control;
    char *keyword;
-   sh_int min_level;
-   sh_int max_level;
+   short min_level;
+   short max_level;
    char *level_label;
-   sh_int reset_rate;
+   short reset_rate;
    char *reset_msg;
 };
 
@@ -1140,8 +1140,8 @@ struct room_index_data
    char *auto_message;  /* If != NULL, send_to_room each tick */
    int vnum;
    BITMASK *room_flags;
-   sh_int light;
-   sh_int sector_type;
+   short light;
+   short sector_type;
    BUILD_DATA_LIST *first_room_reset;
    BUILD_DATA_LIST *last_room_reset;
 /* -S- mod... don't save this with OLC :P */
@@ -1187,17 +1187,17 @@ struct lookup_type
  */
 struct skill_type
 {
-   sh_int flag1;  /* mort or remort?      */
-   sh_int flag2;  /* normal and/or vamp?     */
+   short flag1;  /* mort or remort?      */
+   short flag2;  /* normal and/or vamp?     */
    char *name; /* Name of skill                */
-   sh_int skill_level[MAX_CLASS];   /* Level needed by class        */
+   short skill_level[MAX_CLASS];   /* Level needed by class        */
    SPELL_FUN *spell_fun;   /* Spell pointer (for spells)   */
-   sh_int target; /* Legal targets                */
-   sh_int minimum_position;   /* Position for caster / user   */
-   sh_int *pgsn;  /* Pointer to associated gsn    */
-   sh_int slot;   /* Slot for #OBJECT loading     */
-   sh_int min_mana;  /* Minimum mana used            */
-   sh_int beats;  /* Waiting time after use       */
+   short target; /* Legal targets                */
+   short minimum_position;   /* Position for caster / user   */
+   short *pgsn;  /* Pointer to associated gsn    */
+   short slot;   /* Slot for #OBJECT loading     */
+   short min_mana;  /* Minimum mana used            */
+   short beats;  /* Waiting time after use       */
    char *noun_damage;   /* Damage message               */
    char *msg_off; /* Wear off message             */
    char *room_off;   /* Wear off msg TO_ROOM    */
@@ -1213,11 +1213,11 @@ struct cmd_type
 {
    char *const name;
    DO_FUN *do_fun;
-   sh_int position;
-   sh_int level;
-   sh_int log;
-   sh_int type;   /*added by Aeria for do_commands */
-   sh_int show;   /*added by Aeria for do_commands */
+   short position;
+   short level;
+   short log;
+   short type;   /*added by Aeria for do_commands */
+   short show;   /*added by Aeria for do_commands */
 
 };
 
@@ -1270,9 +1270,9 @@ struct record_data
  RECORD_DATA *prev;
  int crusade;
  int mdam_amt;
- sh_int mdam_gsn;
+ short mdam_gsn;
  int pdam_amt;
- sh_int pdam_gsn;
+ short pdam_gsn;
  int pd;
  int pk;
  int md;
@@ -1295,22 +1295,22 @@ struct super_data
  int skills_max;     /* total # skills may learn; based on gen, etc */
  int exp;
  int pracs;
- sh_int bloodline;
- sh_int generation;
+ short bloodline;
+ short generation;
 };
 
 struct sysdata_type
 {
- sh_int build_obj_ac;
- sh_int build_obj_dr;
- sh_int build_obj_hp;
- sh_int build_obj_hr;
- sh_int build_obj_mp;
- sh_int build_obj_mv;
- sh_int build_obj_svs;
- sh_int damcap;
+ short build_obj_ac;
+ short build_obj_dr;
+ short build_obj_hp;
+ short build_obj_hr;
+ short build_obj_mp;
+ short build_obj_mv;
+ short build_obj_svs;
+ short damcap;
  float expmult;
- sh_int killperlev;
+ short killperlev;
  float mob_ac;
  float mob_dr;
  float mob_hp;
@@ -1319,7 +1319,7 @@ struct sysdata_type
  float mob_mv;
  float mob_svs;
  char *playtesters;
- sh_int pulse;
+ short pulse;
  bool shownumbers;
  bool w_lock;
 };
@@ -1337,16 +1337,16 @@ struct quest_info
  bool is_free;
  QUEST_INFO *next;
  QUEST_INFO *prev;
- sh_int amount[QUEST_MAX_DATA];
+ short amount[QUEST_MAX_DATA];
  bool is_questing;
  bool quest_complete;
  bool quest_hint[QUEST_MAX_DATA];
  int quest_item_vnum[QUEST_MAX_DATA];
  int quest_mob_vnum[QUEST_MAX_DATA];
  int quest_reward[QUEST_MAX_REWARD];
- sh_int quest_type;
- sh_int time_left;
- sh_int wait_time;
+ short quest_type;
+ short time_left;
+ short wait_time;
 };
 
 struct eq_type
@@ -1510,7 +1510,7 @@ void log_f( char *fmt, ... ) __attribute__ ( ( format( printf, 1, 2 ) ) );
 
 /* fight.c */
 void  violence_update args( ( void ) );
-void  damage          args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt ) );
+void  damage          args( ( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt ) );
 void  update_pos      args( ( CHAR_DATA * victim ) );
 void  stop_fighting   args( ( CHAR_DATA * ch, bool fBoth ) );
 void  death_cry       args( ( CHAR_DATA * ch ) );
@@ -1600,16 +1600,16 @@ void obj_unreference  args( ( OBJ_DATA ** var ) );
 void interpret args( ( CHAR_DATA * ch, char *argument ) );
 bool is_number args( ( char *arg ) );
 bool IS_SWITCHED args( ( CHAR_DATA * ch ) );
-bool is_shielded args( ( CHAR_DATA * ch, sh_int shield_type ) );
+bool is_shielded args( ( CHAR_DATA * ch, short shield_type ) );
 void remove_shield args( ( CHAR_DATA * ch, MAGIC_SHIELD * shield ) );
 bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
 
 /* macros.c */
-sh_int get_remort_level   args( ( CHAR_DATA * ch ) );
-sh_int get_psuedo_level   args( ( CHAR_DATA * ch ) );
+short get_remort_level   args( ( CHAR_DATA * ch ) );
+short get_psuedo_level   args( ( CHAR_DATA * ch ) );
 bool   ok_to_use          args( ( CHAR_DATA * ch, int value ) );
 bool   check_level_use    args( ( CHAR_DATA * ch, int level ) );
-int    exp_to_level       args( ( CHAR_DATA * ch, int class, int index ) );
+int    exp_to_level       args( ( CHAR_DATA * ch, int p_class, int index ) );
 int    exp_for_mobile     args( ( int level, CHAR_DATA * mob ) );
 int    exp_mob_base       args( ( int level ) );
 int    skill_table_lookup args( ( CHAR_DATA * ch, int sn, int return_type ) );
@@ -1683,7 +1683,7 @@ char *initial args( ( const char *str ) );
 			 ) special.c (
 			 \*---------*/
 SF *spec_lookup args( ( const char *name ) );
-char *rev_spec_lookup args( ( void *func ) );
+char *rev_spec_lookup args( ( SPEC_FUN *func ) );
 void print_spec_lookup args( ( char *buf ) );
 
 /* social-edit.c  */
@@ -1695,7 +1695,7 @@ void load_social_table args( ( void ) );
 			 ) obj_fun.c (
 			 \*---------*/
 OF *obj_fun_lookup args( ( const char *name ) );
-char *rev_obj_fun_lookup args( ( void *func ) );
+char *rev_obj_fun_lookup args( ( OBJ_FUN *func ) );
 void print_obj_fun_lookup args( ( char *buf ) );
 
 
@@ -1709,7 +1709,7 @@ void trigger_handler args( ( CHAR_DATA * ch, OBJ_DATA * obj, int trigger ) );
           /*--------*\
 			 ) update.c# (
 			 \*--------*/
-void advance_level args( ( CHAR_DATA * ch, int class, bool show, bool remort ) );
+void advance_level args( ( CHAR_DATA * ch, int p_class, bool show, bool remort ) );
 void gain_exp args( ( CHAR_DATA * ch, int gain ) );
 void gain_bloodlust args( ( CHAR_DATA * ch, int value ) );
 void gain_condition args( ( CHAR_DATA * ch, int iCond, int value ) );
@@ -1720,7 +1720,7 @@ void auction_update args( ( void ) );
 void check_vamp args( ( CHAR_DATA * ch ) );
 
 /* write.c */
-void write_start args( ( char **dest, void *retfunc, void *retparm, CHAR_DATA * ch ) );
+void write_start args( ( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch ) );
 void write_interpret args( ( CHAR_DATA * ch, char *argument ) );
 
 /* build.c */
@@ -1729,16 +1729,9 @@ void build_strdup      args( ( char **dest, char *src, bool freesrc, bool newlin
 char *build_simpstrdup args( ( char *buf ) );   /* A plug in alternative to str_dup */
 void build_save        args( ( void ) );
 int  get_dir           args( ( char ) );
-char *show_values      args( ( const struct lookup_type *table, int value, bool fBit ) );
-char *bm_show_values   args( ( const struct lookup_type *table, BITMASK *mask ) );
+char *show_values      args( ( LOOKUP_TYPE *table, unsigned long int value, bool fBit ) );
+char *bm_show_values   args( ( LOOKUP_TYPE *table, BITMASK *mask ) );
 void check_autodig     args( ( CHAR_DATA *ch, int dir ) );
-
-/* buildtab.c  */
-/*
-int table_lookup	args( (const struct lookup_type * table,char * name) );
-char * rev_table_lookup	args( (const struct lookup_type * table,int number) );
-char * bit_table_lookup	args( (const struct lookup_type * table,int number) );
-*/
 
 /* buildare.c */
 /* Area manipulation funcs in buildare.c */
@@ -1764,7 +1757,7 @@ bool mob_hunt args( ( CHAR_DATA * mob ) );
 void char_hunt args( ( CHAR_DATA * ch ) );
 bool set_hunt args( ( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj, int set_flags, int rem_flags ) );
 void end_hunt args( ( CHAR_DATA * ch ) );
-sh_int h_find_dir args( ( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags ) );
+short h_find_dir args( ( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags ) );
 
   /*
    * update.c 
@@ -1783,7 +1776,7 @@ void temp_fread_string args( ( FILE * fp, char *buf ) );
 
 void save_rulers args( ( void ) );
 void load_rulers args( ( void ) );
-char *get_ruler_title args( ( int ruler_rank, int sex ) );
+const char *get_ruler_title args( ( int ruler_rank, int sex ) );
 
 /*
  *	spendqp

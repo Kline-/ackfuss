@@ -69,14 +69,14 @@ struct money_type
 int money_to_value( CHAR_DATA * ch, char *argument );
 int money_to_cost( char *money_list );
 char *cost_to_money( int cost );
-sh_int money_lookup( char *money_name );
+short money_lookup( char *money_name );
 char *money_string( MONEY_TYPE * money );
 char *unit_string( MONEY_TYPE * money );
 void deposit_money( CHAR_DATA * ch, char *argument );
 bool withdraw_money( CHAR_DATA * ch, char *argument );
 int exchange_money( CHAR_DATA * ch, char *argument );
 MONEY_TYPE *round_money( int base, bool round_up );
-MONEY_TYPE *round_money_off( int base, sh_int accuracy );
+MONEY_TYPE *round_money_off( int base, short accuracy );
 MONEY_TYPE *join_money( MONEY_TYPE * source, MONEY_TYPE * receiver );
 void drop_money( CHAR_DATA * ch, char *argument );
 bool get_money_room( CHAR_DATA * ch, char *argument );

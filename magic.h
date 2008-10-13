@@ -46,7 +46,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
 void group_gain args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 bool is_safe args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void set_fighting args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
-void check_adrenaline args( ( CHAR_DATA * ch, sh_int damage ) );
+void check_adrenaline args( ( CHAR_DATA * ch, float damage ) );
 
 /* magic.c */
 int mana_cost( CHAR_DATA * ch, int sn );

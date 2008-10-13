@@ -48,77 +48,77 @@
 /*
  * These are skill_lookup return values for common skills and spells.
  */
-extern sh_int gsn_martial_arts;  /* For unarmed fighting */
-extern sh_int gsn_stake;
-extern sh_int gsn_dualwield;
-extern sh_int gsn_stun;
-extern sh_int gsn_feed;
-extern sh_int gsn_shadow;
-extern sh_int gsn_appraise;
-extern sh_int gsn_climb;
-extern sh_int gsn_find_doors;
-extern sh_int gsn_smash;
-extern sh_int gsn_notrip;
-extern sh_int gsn_nodisarm;
-extern sh_int gsn_trip;
-extern sh_int gsn_dirt;
-extern sh_int gsn_bash;
-extern sh_int gsn_shield_block;
-extern sh_int gsn_berserk;
+extern short gsn_martial_arts;  /* For unarmed fighting */
+extern short gsn_stake;
+extern short gsn_dualwield;
+extern short gsn_stun;
+extern short gsn_feed;
+extern short gsn_shadow;
+extern short gsn_appraise;
+extern short gsn_climb;
+extern short gsn_find_doors;
+extern short gsn_smash;
+extern short gsn_notrip;
+extern short gsn_nodisarm;
+extern short gsn_trip;
+extern short gsn_dirt;
+extern short gsn_bash;
+extern short gsn_shield_block;
+extern short gsn_berserk;
 
-extern sh_int gsn_circle;
-extern sh_int gsn_backstab;
-extern sh_int gsn_dodge;
-extern sh_int gsn_hide;
-extern sh_int gsn_hunt;
-extern sh_int gsn_peek;
-extern sh_int gsn_pick_lock;
-extern sh_int gsn_sneak;
-extern sh_int gsn_warcry;
-extern sh_int gsn_steal;
+extern short gsn_circle;
+extern short gsn_backstab;
+extern short gsn_dodge;
+extern short gsn_hide;
+extern short gsn_hunt;
+extern short gsn_peek;
+extern short gsn_pick_lock;
+extern short gsn_sneak;
+extern short gsn_warcry;
+extern short gsn_steal;
 
-extern sh_int gsn_punch;
-extern sh_int gsn_headbutt;
-extern sh_int gsn_knee;
+extern short gsn_punch;
+extern short gsn_headbutt;
+extern short gsn_knee;
 
-extern sh_int gsn_disarm;
-extern sh_int gsn_enhanced_damage;
-extern sh_int gsn_kick;
-extern sh_int gsn_parry;
-extern sh_int gsn_rescue;
-extern sh_int gsn_enhanced_reflexes;
-extern sh_int gsn_sleight_of_hand;
-extern sh_int gsn_crushing_blow;
-extern sh_int gsn_combat_prowess;
-extern sh_int gsn_quickstrike;
+extern short gsn_disarm;
+extern short gsn_enhanced_damage;
+extern short gsn_kick;
+extern short gsn_parry;
+extern short gsn_rescue;
+extern short gsn_enhanced_reflexes;
+extern short gsn_sleight_of_hand;
+extern short gsn_crushing_blow;
+extern short gsn_combat_prowess;
+extern short gsn_quickstrike;
 
-extern sh_int gsn_blindness;
-extern sh_int gsn_charm_person;
-extern sh_int gsn_curse;
-extern sh_int gsn_invis;
-extern sh_int gsn_mass_invis;
-extern sh_int gsn_poison;
-extern sh_int gsn_sleep;
-extern sh_int gsn_disguise;
-extern sh_int gsn_instruct;
-extern sh_int gsn_teach;
-extern sh_int gsn_adrenaline;
-extern sh_int gsn_frenzy;
-extern sh_int gsn_emotion_control;
-extern sh_int gsn_target;
-extern sh_int gsn_charge;
-extern sh_int gsn_unit_tactics;
+extern short gsn_blindness;
+extern short gsn_charm_person;
+extern short gsn_curse;
+extern short gsn_invis;
+extern short gsn_mass_invis;
+extern short gsn_poison;
+extern short gsn_sleep;
+extern short gsn_disguise;
+extern short gsn_instruct;
+extern short gsn_teach;
+extern short gsn_adrenaline;
+extern short gsn_frenzy;
+extern short gsn_emotion_control;
+extern short gsn_target;
+extern short gsn_charge;
+extern short gsn_unit_tactics;
 
-extern sh_int gsn_mount;   /* for mount skill */
-extern sh_int gsn_imprint;
-extern sh_int gsn_scent;
-extern sh_int gsn_scout;
-extern sh_int gsn_decapitate;
-extern sh_int gsn_potency;
-extern sh_int gsn_thaumatergy;
+extern short gsn_mount;   /* for mount skill */
+extern short gsn_imprint;
+extern short gsn_scent;
+extern short gsn_scout;
+extern short gsn_decapitate;
+extern short gsn_potency;
+extern short gsn_thaumatergy;
 
 #ifdef TFS
-extern sh_int gsn_mana_sense;
+extern short gsn_mana_sense;
 #endif
 
 extern bool booting_up;

@@ -75,75 +75,75 @@ CHAN_HISTORY chan_history;
 bool booting_up;
 bool area_resetting_global;
 bool mem_log;
-sh_int gsn_martial_arts;
-sh_int gsn_stake;
-sh_int gsn_dualwield;
-sh_int gsn_stun;
-sh_int gsn_feed;
-sh_int gsn_knee;
-sh_int gsn_shadow;
-sh_int gsn_appraise;
-sh_int gsn_climb;
-sh_int gsn_find_doors;
-sh_int gsn_bash;
-sh_int gsn_smash;
-sh_int gsn_notrip;
-sh_int gsn_nodisarm;
-sh_int gsn_trip;
-sh_int gsn_dirt;
-sh_int gsn_shield_block;
-sh_int gsn_berserk;
+short gsn_martial_arts;
+short gsn_stake;
+short gsn_dualwield;
+short gsn_stun;
+short gsn_feed;
+short gsn_knee;
+short gsn_shadow;
+short gsn_appraise;
+short gsn_climb;
+short gsn_find_doors;
+short gsn_bash;
+short gsn_smash;
+short gsn_notrip;
+short gsn_nodisarm;
+short gsn_trip;
+short gsn_dirt;
+short gsn_shield_block;
+short gsn_berserk;
 
-sh_int gsn_circle;
-sh_int gsn_backstab;
-sh_int gsn_dodge;
-sh_int gsn_hide;
-sh_int gsn_hunt;
-sh_int gsn_peek;
-sh_int gsn_pick_lock;
-sh_int gsn_sneak;
-sh_int gsn_warcry;
-sh_int gsn_steal;
+short gsn_circle;
+short gsn_backstab;
+short gsn_dodge;
+short gsn_hide;
+short gsn_hunt;
+short gsn_peek;
+short gsn_pick_lock;
+short gsn_sneak;
+short gsn_warcry;
+short gsn_steal;
 
-sh_int gsn_punch;
-sh_int gsn_headbutt;
+short gsn_punch;
+short gsn_headbutt;
 
-sh_int gsn_disarm;
-sh_int gsn_enhanced_damage;
-sh_int gsn_kick;
-sh_int gsn_parry;
-sh_int gsn_rescue;
-sh_int gsn_enhanced_reflexes;
-sh_int gsn_sleight_of_hand;
-sh_int gsn_crushing_blow;
-sh_int gsn_combat_prowess;
-sh_int gsn_quickstrike;
-sh_int gsn_blindness;
-sh_int gsn_charm_person;
-sh_int gsn_curse;
-sh_int gsn_invis;
-sh_int gsn_mass_invis;
-sh_int gsn_poison;
-sh_int gsn_sleep;
-sh_int gsn_disguise;
-sh_int gsn_instruct;
-sh_int gsn_adrenaline;
-sh_int gsn_frenzy;
-sh_int gsn_emotion_control;
-sh_int gsn_target;
-sh_int gsn_charge;
-sh_int gsn_unit_tactics;
-sh_int gsn_imprint;
-sh_int gsn_scent;
-sh_int gsn_mount;
-sh_int gsn_scout;
-sh_int gsn_decapitate;
-sh_int gsn_potency;
-sh_int gsn_thaumatergy;
+short gsn_disarm;
+short gsn_enhanced_damage;
+short gsn_kick;
+short gsn_parry;
+short gsn_rescue;
+short gsn_enhanced_reflexes;
+short gsn_sleight_of_hand;
+short gsn_crushing_blow;
+short gsn_combat_prowess;
+short gsn_quickstrike;
+short gsn_blindness;
+short gsn_charm_person;
+short gsn_curse;
+short gsn_invis;
+short gsn_mass_invis;
+short gsn_poison;
+short gsn_sleep;
+short gsn_disguise;
+short gsn_instruct;
+short gsn_adrenaline;
+short gsn_frenzy;
+short gsn_emotion_control;
+short gsn_target;
+short gsn_charge;
+short gsn_unit_tactics;
+short gsn_imprint;
+short gsn_scent;
+short gsn_mount;
+short gsn_scout;
+short gsn_decapitate;
+short gsn_potency;
+short gsn_thaumatergy;
 
 
 #ifdef TFS
-sh_int gsn_mana_sense;
+short gsn_mana_sense;
 #endif
 
 
@@ -155,7 +155,7 @@ extern bool auto_quest;
 extern COUNCIL_DATA super_councils[MAX_SUPER];
 
 
-const int convert_wearflags[] = {
+extern const int convert_wearflags[] = {
    BIT_24, BIT_14, BIT_8, BIT_19, BIT_4, BIT_21, BIT_22, BIT_13,
    BIT_11, BIT_16, BIT_17, BIT_18, BIT_12, BIT_16, BIT_16, BIT_5,
    BIT_7, BIT_16,
@@ -381,7 +381,7 @@ void boot_db( void )
     */
 
    {
-      sh_int index;
+      short index;
       char buf[MAX_STRING_LENGTH];
       log_f( "Initializing supernatural councils..." );
       for( index = SUPER_NONE; index < MAX_SUPER; index++ )
@@ -440,7 +440,7 @@ void boot_db( void )
 
       FILE *clanfp;
       char clan_file_name[MAX_STRING_LENGTH];
-      sh_int x, y;
+      short x, y;
       char buf[MAX_STRING_LENGTH];
 
       xprintf( clan_file_name, "%s", CLAN_FILE );
@@ -922,7 +922,7 @@ void load_bans( void )
          word = fread_string( bansfp );
          if( !str_cmp( word, "#BAN" ) )
          {
-            sh_int get_bool = FALSE;
+            short get_bool = FALSE;
 
             GET_FREE( pban, ban_free );
             get_bool = fread_number( bansfp );
@@ -1032,7 +1032,7 @@ void load_mobiles( FILE * fp )
       letter = fread_letter( fp );
       if( letter == '!' )
       {
-         pMobIndex->class = fread_number( fp );
+         pMobIndex->p_class = fread_number( fp );
          pMobIndex->clan = fread_number( fp );
          pMobIndex->race = fread_number( fp );
          pMobIndex->position = POS_STANDING;
@@ -1094,7 +1094,7 @@ void load_objects( FILE * fp )
 {
    OBJ_INDEX_DATA *pObjIndex;
    BUILD_DATA_LIST *pList;
-   sh_int looper;
+   short looper;
    char buf[MSL];
 
    for( ;; )
@@ -1430,7 +1430,7 @@ void load_rooms( FILE * fp )
    ROOM_INDEX_DATA *pRoomIndex;
    BUILD_DATA_LIST *pList;
    MONEY_TYPE *room_treasure;
-   sh_int cnt;
+   short cnt;
    char buf[MSL];
 
    if( area_load == NULL )
@@ -2028,7 +2028,7 @@ void check_resets( void )
                for( guilty_reset = reset_room->first_room_reset; guilty_reset; guilty_reset = guilty_reset->next )
                {
 
-                  criminal = guilty_reset->data;
+                  criminal = (RESET_DATA *)guilty_reset->data;
                   if( criminal == pReset )
                   {
                      bug( "Found the reset", 0 );
@@ -2134,7 +2134,7 @@ void reset_area( AREA_DATA * pArea )
       EXIT_DATA *pexit;
       OBJ_DATA *obj;
       OBJ_DATA *obj_to;
-      sh_int num_allowed = 2;
+      short num_allowed = 2;
 
       switch ( pReset->command )
       {
@@ -2424,7 +2424,8 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    int level;
    char buf[255];
    MONEY_TYPE *money;
-   sh_int cnt;
+   short cnt;
+   float hold = 0;
 
    if( pMobIndex == NULL )
    {
@@ -2484,15 +2485,23 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 /*  mob->move_to	= NO_VNUM; */
 
    mob->armor = interpolate( mob->level / 2, 100, -100 );
-   mob->armor *= sysdata.mob_ac;
+   hold = mob->armor;
+   hold *= sysdata.mob_ac;
+   mob->armor = (int)hold;
 
    mob->hitroll += (get_psuedo_level(mob) / 4);
-   mob->hitroll *= sysdata.mob_hr;
+   hold = mob->hitroll;
+   hold *= sysdata.mob_hr;
+   mob->hitroll = (int)hold;
    mob->damroll += (get_psuedo_level(mob) / 4);
-   mob->damroll *= sysdata.mob_dr;
+   hold = mob->damroll;
+   hold *= sysdata.mob_dr;
+   mob->damroll = (int)hold;
 
    mob->max_hit = mob->level * 15 + number_range( mob->level * mob->level / 2, mob->level * mob->level / 1 );
-   mob->max_hit *= sysdata.mob_hp;
+   hold = mob->max_hit;
+   hold *= sysdata.mob_hp;
+   mob->max_hit = (int)hold;
    mob->hit = mob->max_hit;
 
    mob->exp = exp_for_mobile( mob->level, mob );
@@ -2502,20 +2511,24 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     * mana for mobs... 
     */
    mob->max_mana = level * 25;
-   mob->max_mana *= sysdata.mob_mp;
+   hold = mob->max_mana;
+   hold *= sysdata.mob_mp;
+   mob->max_mana = (int)hold;
    mob->mana = mob->max_mana;
 
    /*
     * move for mobs...
     */
    mob->max_move = level * 25;
-   mob->max_move *= sysdata.mob_mv;
+   hold = mob->max_move;
+   hold *= sysdata.mob_mv;
+   mob->max_move = (int)hold;
    mob->move = mob->max_move;
 
    mob->skills = pMobIndex->skills;
    mob->cast = pMobIndex->cast;
    mob->def = pMobIndex->def;
-   mob->class = pMobIndex->class;
+   mob->p_class = pMobIndex->p_class;
    mob->clan = pMobIndex->clan;
    mob->strong_magic = pMobIndex->strong_magic;
    mob->weak_magic = pMobIndex->weak_magic;
@@ -2529,7 +2542,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->is_quitting = FALSE;
    mob->extract_timer = -1;
    mob->saving_throw = (get_psuedo_level(mob) / 10);
-   mob->saving_throw *= sysdata.mob_svs;
+   hold = mob->saving_throw;
+   hold *= sysdata.mob_svs;
+   mob->saving_throw = (int)hold;
 
    mob->in_room = NULL; /* to distinguish between loaded mobs */
    /*
@@ -2606,7 +2621,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
    int new_cost;
    int looper;
    MONEY_TYPE *money;
-   sh_int cnt;
+   short cnt;
 
    if( level < 0 )
       level = 1;
@@ -3384,7 +3399,7 @@ char *str_dup( const char *str )
 {
    char *str_new;
 #ifdef STRING_FREELIST
-   sh_int size;
+   short size;
    int len;
 #endif
 
@@ -3432,7 +3447,7 @@ char *str_dup( const char *str )
 void free_string( char *pstr )
 {
 #ifdef STRING_FREELIST
-   sh_int size;
+   short size;
    int len;
 #endif
 
@@ -3476,7 +3491,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char msg[MAX_STRING_LENGTH];
    char arg1[MSL];
-   sh_int foo;
+   short foo;
    AREA_DATA *pArea;
    bool fall = FALSE;
 
@@ -4031,8 +4046,7 @@ void tail_chain( void )
  *  mob_prog bitvector types. This allows the use of the words in the
  *  mob/script files.
  */
-int mprog_name_to_type( name )
-     char *name;
+int mprog_name_to_type( char *name )
 {
    if( !str_cmp( name, "in_file_prog" ) )
       return IN_FILE_PROG;
@@ -4249,7 +4263,7 @@ int bv_log( int n )
 
 void check_chistory( CHAR_DATA *ch, int channel )
 {
- sh_int x,y = 0;
+ short x,y = 0;
  bool found = FALSE;
  char buf[MAX_STRING_LENGTH];
 
@@ -4336,7 +4350,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
 
 void update_chistory( CHAR_DATA *ch, char *argument, int channel )
 {
- sh_int x,y = 0;
+ short x,y = 0;
 
  x = (bv_log(channel)-1);
 

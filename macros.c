@@ -43,11 +43,11 @@
 
 void reset_gain_stats( CHAR_DATA * ch )
 {
-   sh_int index = 0;
-   sh_int index2 = 0;
-   sh_int add_move = 0;
-   sh_int add_mana = 0;
-   sh_int add_hp = 0;
+   short index = 0;
+   short index2 = 0;
+   short add_move = 0;
+   short add_mana = 0;
+   short add_hp = 0;
 
    ch->pcdata->mana_from_gain = 100;
    ch->pcdata->hp_from_gain = 25;
@@ -112,10 +112,10 @@ void reset_gain_stats( CHAR_DATA * ch )
 
 
 
-sh_int get_remort_level( CHAR_DATA * ch )
+short get_remort_level( CHAR_DATA * ch )
 {
-   sh_int index;
-   sh_int max_remort_level = 0;
+   short index;
+   short max_remort_level = 0;
 
    if( !is_remort( ch ) )
       return 0;
@@ -128,11 +128,11 @@ sh_int get_remort_level( CHAR_DATA * ch )
 
 
 
-sh_int get_psuedo_level( CHAR_DATA * ch )
+short get_psuedo_level( CHAR_DATA * ch )
 {
 
-   sh_int psuedo_level = 0;
-   sh_int index, total_remort_level = 0;
+   short psuedo_level = 0;
+   short index, total_remort_level = 0;
 
 
    if( !is_remort( ch ) || IS_NPC( ch ) )
@@ -213,7 +213,7 @@ long_int exp_to_level_adept( CHAR_DATA * ch )
 
 
 
-long_int exp_to_level( CHAR_DATA * ch, int class, int index )
+long_int exp_to_level( CHAR_DATA * ch, int p_class, int index )
 {
  /*
   * To get remort costs, call with index == 5 
@@ -221,11 +221,11 @@ long_int exp_to_level( CHAR_DATA * ch, int class, int index )
 
  int max_level = 0;
  int level, next_level_index, diff, totlevels = 0;
- long_int cost;
- sh_int i, mult;
+ float cost;
+ short i, mult;
 
 
- if( (index == 5) && (ch->lvl2[class] <= 0) ) /* Freebie on that first one ;) */
+ if( (index == 5) && (ch->lvl2[p_class] <= 0) ) /* Freebie on that first one ;) */
   return 0;
 
  for( i = 0; i < MAX_CLASS; i++ ) /* Find the highest level of any class a player has */
@@ -243,9 +243,9 @@ long_int exp_to_level( CHAR_DATA * ch, int class, int index )
  }
 
  if( index == 5 )
-  level = UMAX(0,ch->lvl2[class]); /* Grab the remort class level */
+  level = UMAX(0,ch->lvl2[p_class]); /* Grab the remort class level */
  else
-  level = UMAX(0,ch->lvl[class]);  /* Grab the mortal class level */
+  level = UMAX(0,ch->lvl[p_class]);  /* Grab the mortal class level */
 
  /*
   * Adjust level to make costs higher 
@@ -258,9 +258,9 @@ long_int exp_to_level( CHAR_DATA * ch, int class, int index )
  }
 
  if( index != 5 )
-  next_level_index = ch->lvl[class];
+  next_level_index = ch->lvl[p_class];
  else
-  next_level_index = UMIN((ch->lvl2[class] + 20),79);
+  next_level_index = UMIN((ch->lvl2[p_class] + 20),79);
 
  if( next_level_index < 0 )
   next_level_index = 0;
@@ -285,7 +285,7 @@ long_int exp_to_level( CHAR_DATA * ch, int class, int index )
  /*
   * REALLY discourage uneven levelling :P  
   */
- if( (index != 5) && ((ch->level - ch->lvl[class]) > 25) )
+ if( (index != 5) && ((ch->level - ch->lvl[p_class]) > 25) )
   cost *= (diff / 7);
 
  /*
@@ -298,7 +298,7 @@ long_int exp_to_level( CHAR_DATA * ch, int class, int index )
   */
  cost /= 5.4;
 
- return cost;
+ return (long_int)cost;
 }
 
 int exp_to_level_vamp( int level )
@@ -347,7 +347,7 @@ int exp_to_level_vamp( int level )
 int exp_to_level_wolf( int level )
 {
 
-   int exp = 0;
+   float exp = 0;
 
    switch ( level )
    {
@@ -383,14 +383,14 @@ int exp_to_level_wolf( int level )
          break;
 
    }
-   return ( exp );
+   return (int)exp;
 
 }
 
 long_int exp_mob_base( int level )
 {
- long int value = 0;
- sh_int i = 0;
+ float value = 0;
+ short i = 0;
 
  for( i = 0; i < level; i++ )
  {
@@ -401,13 +401,13 @@ long_int exp_mob_base( int level )
  if( value < 1 )
   value = 100;
 
- return value;
+ return (long_int)value;
 }
 
 long_int exp_for_mobile( int level, CHAR_DATA * mob )
 {
 
-   long_int value, base_value = 0;
+   float value, base_value = 0;
 
    base_value = exp_mob_base(level);
    value = base_value;
@@ -498,7 +498,7 @@ long_int exp_for_mobile( int level, CHAR_DATA * mob )
 
 
 
-   return ( value );
+   return (long_int)value;
 }
 
 
@@ -521,7 +521,7 @@ int skill_table_lookup( CHAR_DATA * ch, int sn, int return_type )
 
    if( IS_NPC( ch ) )
    {
-      best_class = ch->class;
+      best_class = ch->p_class;
       best_level = ch->level;
    }
    else
@@ -607,8 +607,8 @@ int get_item_value( OBJ_DATA * obj )
     * int     move_mod = 0;  
     */
    int save_mod = 0;
-   int cost = 0;
-   sh_int wear_loc = WEAR_NONE;
+   float cost = 0;
+   short wear_loc = WEAR_NONE;
    char buf[MSL];
 
 
@@ -707,7 +707,7 @@ int get_item_value( OBJ_DATA * obj )
 
    if( obj->item_type == ITEM_ENCHANTMENT )
       cost = abs( obj->value[1] * 100 );
-   return UMAX( 10, cost );
+   return UMAX( 10, (int)cost );
 
    return -1;
 }

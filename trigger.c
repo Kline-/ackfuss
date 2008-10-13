@@ -153,7 +153,7 @@ void trig_slay( CHAR_DATA * ch, OBJ_DATA * obj )
 void trig_transform( CHAR_DATA * ch, OBJ_DATA * obj )
 {
    MOB_INDEX_DATA *mob;
-   CHAR_DATA *new;
+   CHAR_DATA *cnew;
 
    if( ( mob = get_mob_index( obj->value[2] ) ) == NULL )
    {
@@ -170,9 +170,9 @@ void trig_transform( CHAR_DATA * ch, OBJ_DATA * obj )
       act( "You drop $p in shock and step back.", ch, obj, NULL, TO_CHAR );
    }
 
-   new = create_mobile( mob );
-   char_to_room( new, ch->in_room );
+   cnew = create_mobile( mob );
+   char_to_room( cnew, ch->in_room );
 
-   act( "$p slowly turns into $n!!!", new, obj, NULL, TO_ROOM );
+   act( "$p slowly turns into $n!!!", cnew, obj, NULL, TO_ROOM );
    return;
 }

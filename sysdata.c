@@ -48,7 +48,7 @@ void load_sysdata( void )
 {
  FILE *fp;
  extern bool wizlock;
- char *word;
+ const char *word;
  bool fMatch;
 
  xprintf_2(log_buf,"Loading %s",SYSDAT_FILE);

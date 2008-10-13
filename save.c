@@ -101,7 +101,7 @@ char *cap_nocol( const char *str )
 static OBJ_DATA *rgObjNest[MAX_NEST];
 
 
-bool deathmatch;  /* Deathmatch happening?        */
+extern bool deathmatch;  /* Deathmatch happening?        */
 
 
 /*
@@ -270,7 +270,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "Prompt         %s~\n", ch->prompt );
    fprintf( fp, "Sex            %d\n", ch->sex );
    fprintf( fp, "LoginSex       %d\n", ch->login_sex );
-   fprintf( fp, "Class          %d\n", ch->class );
+   fprintf( fp, "Class          %d\n", ch->p_class );
    fprintf( fp, "Race           %d\n", ch->race );
    fprintf( fp, "Level          %d\n", ch->level );
    fprintf( fp, "Sentence       %d\n", ch->sentence );
@@ -466,7 +466,7 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
 {
    EXTRA_DESCR_DATA *ed;
    AFFECT_DATA *paf;
-   sh_int foo;
+   short foo;
    /*
     * Slick recursion to write lists backwards,
     *   so loading them will load in forwards order.
@@ -938,7 +938,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 
 void fread_char( CHAR_DATA * ch, FILE * fp )
 {
-   char *word;
+   const char *word;
    bool fMatch;
    int cnt;
    /*
@@ -1080,7 +1080,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                KEY( "Clan", ch->pcdata->clan, fread_number( fp ) );
             }
-            KEY( "Class", ch->class, fread_number( fp ) );
+            KEY( "Class", ch->p_class, fread_number( fp ) );
             if( !str_cmp( word, "Colors" ) && !IS_NPC( ch ) )
             {
                int foo;
@@ -1497,7 +1497,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
 {
    static OBJ_DATA obj_zero;
    OBJ_DATA *obj;
-   char *word;
+   const char *word;
    int iNest;
    bool fMatch;
    bool fNest;
@@ -1512,7 +1512,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
    obj->description = str_dup( "" );
    {
       MONEY_TYPE *money;
-      sh_int cnt;
+      short cnt;
       GET_FREE( money, money_type_free );
 #ifdef DEBUG_MONEY
       {
@@ -1872,7 +1872,7 @@ void fread_corpse( FILE * fp )
 {
    static OBJ_DATA obj_zero;
    OBJ_DATA *obj;
-   char *word;
+   const char *word;
    int iNest;
    bool fMatch;
    bool fNest;
@@ -1887,7 +1887,7 @@ void fread_corpse( FILE * fp )
    obj->description = str_dup( "" );
    {
       MONEY_TYPE *money;
-      sh_int cnt;
+      short cnt;
       GET_FREE( money, money_type_free );
 #ifdef DEBUG_MONEY
       {
@@ -2196,7 +2196,7 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
    EXTRA_DESCR_DATA *ed;
    AFFECT_DATA *paf;
    int where_vnum = 3300;
-   sh_int foo;
+   short foo;
    /*
     * Slick recursion to write lists backwards,
     *   so loading them will load in forwards order.

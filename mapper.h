@@ -56,7 +56,8 @@ struct room_content_type contents[MAX_MAP][MAX_MAP];
 
 int map[MAX_MAP][MAX_MAP];
 
-extern sh_int rev_dir[];
+extern short const rev_dir[];
+extern const char* compass_name[];
 
 
 struct map_info_type

@@ -58,7 +58,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
    DESCRIPTOR_DATA *d;
    bool found;
-   sh_int index;
+   short index;
 
    if( IS_NPC( ch ) )
       return;
@@ -347,9 +347,9 @@ void do_imprint( CHAR_DATA * ch, char *argument )
 bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-   sh_int wolves = 0;
-   sh_int mortals = 0;
-   sh_int vamps = 0;
+   short wolves = 0;
+   short mortals = 0;
+   short vamps = 0;
    CHAR_DATA *local_dude;
 
    if( !IS_WOLF( ch ) )

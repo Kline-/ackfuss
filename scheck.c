@@ -287,7 +287,7 @@ static void walk_brands( void )
    DL_LIST *brands;
    for( brands = first_brand; brands; brands = brands->next )
    {
-      this_brand = brands->this_one;
+      this_brand = (BRAND_DATA *)brands->this_one;
       walk_brand_data( this_brand );
    }
 }
@@ -628,7 +628,7 @@ void walk_boards( void )
 
 void walk_councils( void )
 {
-   sh_int index;
+   short index;
    extern COUNCIL_DATA super_councils[MAX_SUPER];
 
    for( index = 0; index < MAX_SUPER; index++ )

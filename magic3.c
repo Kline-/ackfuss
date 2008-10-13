@@ -233,7 +233,11 @@ bool spell_ice_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
 
    dam = 150 + dice( level / 4, 12 );
    if( saves_spell( level, victim ) )
-      dam /= 1.2;
+   {
+      float tmp = dam;
+      tmp /= 1.2;
+      dam = (int)tmp;
+   }
    sp_damage( obj, ch, victim, dam, REALM_COLD, sn, TRUE );
    return TRUE;
 }
@@ -580,7 +584,7 @@ bool spell_shadowshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    shield->name = str_dup( "@@dSHADOW@@N" );
    shield->type = FLAME_SHIELD;
    shield->harmfull = TRUE;
-   shield->attack_dam = number_range( ( level * 2 ), ( level * 4.5 ) );
+   shield->attack_dam = number_range( (int)( level * 2 ), (int)( level * 4.5 ) );
    shield->percent = 20;
    shield->hits = 3000;
    shield->sn = sn;
@@ -634,7 +638,7 @@ bool spell_thoughtshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    shield->name = str_dup( "@@mTHOUGHT@@N" );
    shield->type = FLAME_SHIELD;
    shield->harmfull = TRUE;
-   shield->attack_dam = number_range( ( level * 2 ), ( level * 4.5 ) );
+   shield->attack_dam = number_range( (int)( level * 2 ), (int)( level * 4.5 ) );
    shield->percent = 20;
    shield->hits = 3000;
    shield->sn = sn;
@@ -1754,11 +1758,10 @@ bool spell_lava_burst( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    float save_mod = 1.0;
+   float dam;
 
    if( saves_spell( level, victim ) )
       save_mod = .75;
-
-
 
    if( number_range( 0, 100 ) < 50 )
    {
@@ -1796,8 +1799,10 @@ bool spell_lava_burst( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
    }
 
-   sp_damage( obj, ch, ( CHAR_DATA * ) vo,
-              number_range( get_psuedo_level( ch ) * 2, get_psuedo_level( ch ) * 4 ) * save_mod, REALM_FIRE, sn, TRUE );
+   dam = number_range( (int)(get_psuedo_level(ch) * 2), (int)(get_psuedo_level(ch) * 4));
+   dam *= save_mod;
+
+   sp_damage( obj, ch, ( CHAR_DATA * ) vo, (int)dam, REALM_FIRE, sn, TRUE );
 
    return TRUE;
 
@@ -1957,7 +1962,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_STRING_LENGTH];
    bool legal_stance = FALSE;
-   sh_int i;
+   short i;
 
    if( IS_NPC( ch ) )
    {

@@ -130,13 +130,13 @@ void do_email( CHAR_DATA * ch, char *argument )
 
             for( brand_member = first_brand; brand_member; brand_member = brand_member->next )
             {
-               brand = brand_member->this_one;
+               brand = (BRAND_DATA *)brand_member->this_one;
                if( ( !str_cmp( brand->branded, ch->name ) ) && ( !str_cmp( brand->priority, "Email Validation" ) ) )
                   break;
             }
             if( brand_member )
             {
-               brand = brand_member->this_one;
+               brand = (BRAND_DATA *)brand_member->this_one;
                PUT_FREE( brand, brand_data_free );
                PUT_FREE( brand_member, dl_list_free );
             }
@@ -225,14 +225,14 @@ void do_email( CHAR_DATA * ch, char *argument )
 
          for( brand_list = first_brand; brand_list; brand_list = brand_list->next )
          {
-            brand = brand_list->this_one;
+            brand = (BRAND_DATA *)brand_list->this_one;
             if( ( !str_cmp( brand->branded, victim->name ) ) && ( !str_cmp( brand->priority, "Email Validation" ) ) )
                break;
          }
          if( brand_list != NULL )
          {
             UNLINK( brand_list, first_brand, last_brand, next, prev );
-            brand = brand_list->this_one;
+            brand = (BRAND_DATA *)brand_list->this_one;
             PUT_FREE( brand, brand_data_free );
             brand_list->this_one = NULL;
             PUT_FREE( brand_list, dl_list_free );

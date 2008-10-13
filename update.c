@@ -195,11 +195,11 @@ void init_alarm_handler(  )
 /*
  * Advancement stuff.
  */
-void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
+void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
 {
 
    /*
-    * class used instead of ch->class.  -S- 
+    * class used instead of ch->p_class.  -S- 
     */
    /*
     * show added to allow no display of gain ( when using setclass ) 
@@ -218,7 +218,7 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
    /*
     * title no longer changed..... 
     */
-   if( class == ADVANCE_WOLF )
+   if( p_class == ADVANCE_WOLF )
    {
       add_bloodlust = ( number_range( 1, ( ( MAX_WOLF_LEVEL / 2 ) - ch->pcdata->super->generation ) ) ) +
          ( ( ( MAX_WOLF_LEVEL / 2 ) - ch->pcdata->super->generation ) / 2 );
@@ -236,7 +236,7 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
    }
 
 
-   if( ( class == 16 ) )
+   if( ( p_class == 16 ) )
    {
 
       add_bloodlust = UMAX( ( ( MAX_VAMP_LEVEL / 2 ) - ( ch->pcdata->super->generation / 2 ) ), 1 );
@@ -255,7 +255,7 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
       return;
    }
 
-   if( ( class == 32 ) )
+   if( ( p_class == 32 ) )
    {
 
       add_hp = con_app[get_curr_con( ch )].hitp + number_range( 10, 50 );
@@ -264,15 +264,15 @@ void advance_level( CHAR_DATA * ch, int class, bool show, bool remort )
 
    else if( remort )
    {
-      add_hp = con_app[get_curr_con( ch )].hitp + number_range( remort_table[class].hp_min, remort_table[class].hp_max );
-      add_mana = remort_table[class].fMana ? number_range( 2, ( 2 * get_curr_int( ch ) + get_curr_wis( ch ) ) / 16 ) : 0;
+      add_hp = con_app[get_curr_con( ch )].hitp + number_range( remort_table[p_class].hp_min, remort_table[p_class].hp_max );
+      add_mana = remort_table[p_class].fMana ? number_range( 2, ( 2 * get_curr_int( ch ) + get_curr_wis( ch ) ) / 16 ) : 0;
 
    }
    else
    {
-      add_hp = con_app[get_curr_con( ch )].hitp + number_range( class_table[class].hp_min, class_table[class].hp_max );
+      add_hp = con_app[get_curr_con( ch )].hitp + number_range( class_table[p_class].hp_min, class_table[p_class].hp_max );
 
-      add_mana = class_table[class].fMana ? number_range( 2, ( 2 * get_curr_int( ch ) + get_curr_wis( ch ) ) / 16 ) : 0;
+      add_mana = class_table[p_class].fMana ? number_range( 2, ( 2 * get_curr_int( ch ) + get_curr_wis( ch ) ) / 16 ) : 0;
    }
    add_move = number_range( 2, ( get_curr_con( ch ) + get_curr_dex( ch ) ) / 5 );
    add_prac = ( wis_app[get_curr_wis( ch )].practice / 2 ) + number_range( 1, 3 );
@@ -340,7 +340,7 @@ void gain_exp( CHAR_DATA * ch, long_int gain )
  */
 int hit_gain( CHAR_DATA * ch )
 {
-   int gain;
+   float gain;
    if( ch->is_free != FALSE )
       return 0;
 
@@ -435,14 +435,14 @@ int hit_gain( CHAR_DATA * ch )
 
    }
 
-   return UMIN( gain, ch->max_hit - ch->hit );
+   return UMIN( (int)gain, ch->max_hit - ch->hit );
 }
 
 
 
 int mana_gain( CHAR_DATA * ch )
 {
-   int gain;
+   float gain;
    if( ch->is_free != FALSE )
       return 0;
    if( IS_NPC( ch ) && !is_set( ch->act, ACT_INTELLIGENT ) )
@@ -534,14 +534,14 @@ int mana_gain( CHAR_DATA * ch )
       if( MAGIC_STANCE( ch ) )
          gain = gain * int_app[get_curr_int( ch )].mana_regen / 10;
    }
-   return UMIN( gain, ch->max_mana - ch->mana );
+   return UMIN( (int)gain, ch->max_mana - ch->mana );
 }
 
 
 
 int move_gain( CHAR_DATA * ch )
 {
-   int gain;
+   float gain;
 
    if( IS_NPC( ch ) )
    {
@@ -584,14 +584,14 @@ int move_gain( CHAR_DATA * ch )
       gain /= 4;
 
 
-   return UMIN( gain, ch->max_move - ch->move );
+   return UMIN( (int)gain, ch->max_move - ch->move );
 }
 
 void gain_rage( CHAR_DATA * ch )
 {
 
-   sh_int rage_gain = 0;
-   sh_int current_rage = 0;
+   short rage_gain = 0;
+   short current_rage = 0;
 
    if( IS_NPC( ch ) || !IS_WOLF( ch ) )
       return;
@@ -898,7 +898,7 @@ void mobile_update( void )
 void clean_donate_rooms( void )
 {
    ROOM_INDEX_DATA *room = NULL;
-   sh_int room_count, looper, chance;
+   short room_count, looper, chance;
    int room_vnum;
    OBJ_DATA *object, *obj_next;
 
@@ -1007,7 +1007,7 @@ void weather_update( void )
    char buf2[MSL];
    DESCRIPTOR_DATA *d;
    int diff;
-   sh_int x, y;
+   short x, y;
 #ifdef IMC
    REMOTEINFO *r, *rnext;
 #endif
@@ -1229,8 +1229,8 @@ void gain_update( void )
    {
 
       MEMBER_DATA *imember;
-      sh_int count = 0;
-      sh_int council_index;
+      short count = 0;
+      short council_index;
 
       for( council_index = 1; council_index < MAX_SUPER; council_index++ )
       {
@@ -1990,7 +1990,7 @@ void rooms_update( void )
    {
       for( thing = area->first_area_room; thing != NULL; thing = thing->next )
       {
-         room = thing->data;
+         room = (ROOM_INDEX_DATA *)thing->data;
 
          /*
           * if ( room->first_room_affect == NULL )
@@ -2491,7 +2491,7 @@ void auction_update( void )
                int bid;
                char changebuf[MSL];
                char *change;
-               bid = UMIN( money_value( auction_owner->money ), auction_reserve * .1 );
+               bid = UMIN( money_value( auction_owner->money ), (int)(auction_reserve * .1) );
                change = take_best_coins( auction_owner->money, bid );
                change = one_argument( change, changebuf );
                money_to_value( auction_owner, change );
@@ -2528,7 +2528,7 @@ void auction_update( void )
                int bid;
                char changebuf[MSL];
                char *change;
-               bid = UMIN( money_value( auction_owner->money ), auction_reserve * .1 );
+               bid = UMIN( money_value( auction_owner->money ), (int)(auction_reserve * .1) );
                change = take_best_coins( auction_owner->money, bid );
                change = one_argument( change, changebuf );
                money_to_value( auction_owner, change );
@@ -2564,7 +2564,7 @@ void auction_update( void )
                extract_obj( auction_item );
             }
             if( good_seller )
-               join_money( round_money( auction_bid - ( auction_bid * .1 ), TRUE ), auction_owner->money );
+               join_money( round_money( (int)(auction_bid - ( auction_bid * .1 )), TRUE ), auction_owner->money );
 
          }
 

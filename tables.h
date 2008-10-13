@@ -32,38 +32,38 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-extern unsigned long int table_lookup( const struct lookup_type *, char * );
-extern char *rev_table_lookup( const struct lookup_type *, unsigned long int );
-extern char *bit_table_lookup( const struct lookup_type *, unsigned long int );
-extern void table_printout( const struct lookup_type *, char * );
-extern void wide_table_printout( const struct lookup_type *, char * );  /* -S- mod */
+unsigned long int table_lookup( LOOKUP_TYPE *table, char *name );
+char *rev_table_lookup( LOOKUP_TYPE *table, unsigned long int );
+char *bit_table_lookup( LOOKUP_TYPE *table, unsigned long int );
+void table_printout( LOOKUP_TYPE *table, char *buf );
+void wide_table_printout( LOOKUP_TYPE *table, char *buf );  /* -S- mod */
 
-extern const struct lookup_type tab_mob_class[];
-extern const struct lookup_type tab_value_meanings[];
-extern const struct lookup_type tab_drink_types[];
-extern const struct lookup_type tab_weapon_types[];
-extern const struct lookup_type tab_mob_act[];
-extern const struct lookup_type tab_player_act[];
-extern const struct lookup_type tab_affected_by[];
-extern const struct lookup_type tab_item_types[];
-extern const struct lookup_type tab_obj_flags[];
-extern const struct lookup_type tab_wear_flags[];
-extern const struct lookup_type tab_item_apply[];
-extern const struct lookup_type tab_wear_loc[];
-extern const struct lookup_type tab_obj_aff[];
-extern const struct lookup_type tab_room_flags[];
-extern const struct lookup_type tab_sector_types[];
-extern const struct lookup_type tab_door_types[];
-extern const struct lookup_type tab_door_states[];
-extern const struct lookup_type tab_mob_skill[];
-extern const struct lookup_type tab_mob_cast[];
-extern const struct lookup_type tab_mob_powerskill[];
-extern const struct lookup_type tab_mob_powercast[];
-extern const struct lookup_type tab_magic_realms[];
-extern const struct lookup_type tab_magic_realms_col[];
-extern const struct lookup_type tab_mob_race_mods[];
-extern const struct lookup_type tab_mob_race_mods_col[];
-extern const struct lookup_type tab_cast_name[];
-extern const struct lookup_type tab_mob_def[];
-extern const struct lookup_type tab_mob_race_mods[];
-extern const struct eq_type tab_auto_obj[];
+extern LOOKUP_TYPE tab_mob_class[];
+extern LOOKUP_TYPE tab_value_meanings[];
+extern LOOKUP_TYPE tab_drink_types[];
+extern LOOKUP_TYPE tab_weapon_types[];
+extern LOOKUP_TYPE tab_mob_act[];
+extern LOOKUP_TYPE tab_player_act[];
+extern LOOKUP_TYPE tab_affected_by[];
+extern LOOKUP_TYPE tab_item_types[];
+extern LOOKUP_TYPE tab_obj_flags[];
+extern LOOKUP_TYPE tab_wear_flags[];
+extern LOOKUP_TYPE tab_item_apply[];
+extern LOOKUP_TYPE tab_wear_loc[];
+extern LOOKUP_TYPE tab_obj_aff[];
+extern LOOKUP_TYPE tab_room_flags[];
+extern LOOKUP_TYPE tab_sector_types[];
+extern LOOKUP_TYPE tab_door_types[];
+extern LOOKUP_TYPE tab_door_states[];
+extern LOOKUP_TYPE tab_mob_skill[];
+extern LOOKUP_TYPE tab_mob_cast[];
+extern LOOKUP_TYPE tab_mob_powerskill[];
+extern LOOKUP_TYPE tab_mob_powercast[];
+extern LOOKUP_TYPE tab_magic_realms[];
+extern LOOKUP_TYPE tab_magic_realms_col[];
+extern LOOKUP_TYPE tab_mob_race_mods[];
+extern LOOKUP_TYPE tab_mob_race_mods_col[];
+extern LOOKUP_TYPE tab_cast_name[];
+extern LOOKUP_TYPE tab_mob_def[];
+extern LOOKUP_TYPE tab_mob_race_mods[];
+extern eq_type tab_auto_obj[];

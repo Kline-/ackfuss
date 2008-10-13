@@ -576,7 +576,7 @@ void power_up_mob( CHAR_DATA * ch )
 
 void mob_is_standing( CHAR_DATA * ch )
 {
-   sh_int dir;
+   short dir;
    CHAR_DATA *vch;
    CHAR_DATA *tch;
    bool ready = TRUE;
@@ -930,7 +930,7 @@ void select_target( CHAR_DATA * ch )
    int force_index = 0;
    bool alone = TRUE;
    bool mob_is_leader = FALSE;
-   sh_int attempts;
+   short attempts;
 
    /*
     * mobs were doing ethereal travel too much... i've now lowered it to 
@@ -1066,9 +1066,9 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
    CHAR_DATA *follower = NULL;
    CHAR_DATA *leader = ngroup->leader;
    DL_LIST *follower_ptr;
-//  sh_int followers_want = GRP_STATE_NO_CHANGE;
-   sh_int leader_wants = GRP_STATE_NO_CHANGE;
-   sh_int group_count = 1; // start with leader
+//  short followers_want = GRP_STATE_NO_CHANGE;
+   short leader_wants = GRP_STATE_NO_CHANGE;
+   short group_count = 1; // start with leader
    char monbuf[MSL];
 
    if( leader == NULL )
@@ -1081,7 +1081,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
    for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
    {
       // check for needing healing, levelling
-      follower = follower_ptr->this_one;
+      follower = (CHAR_DATA *)follower_ptr->this_one;
       group_count++;
       continue;
    }
@@ -1137,7 +1137,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
          }
          for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
          {
-            follower = follower_ptr->this_one;
+            follower = (CHAR_DATA *)follower_ptr->this_one;
             if( ( follower->mana < follower->max_mana * 75 / 100 ) || ( follower->hit < follower->max_hit * 75 / 100 ) )
             {
                everyone_ready = FALSE;
@@ -1163,7 +1163,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
             ngroup->state = GRP_STATE_FLEE;
             for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
             {
-               follower = follower_ptr->this_one;
+               follower = (CHAR_DATA *)follower_ptr->this_one;
                if( follower->fighting != NULL )
                {
                   do_flee( follower, "" );
@@ -1188,7 +1188,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
          bool someone_still_fighting = FALSE;
          for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
          {
-            follower = follower_ptr->this_one;
+            follower = (CHAR_DATA *)follower_ptr->this_one;
             if( follower->fighting != NULL )
             {
                do_flee( follower, "" );
@@ -1225,7 +1225,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
       }
       case GRP_STATE_HUNTING:
       {  // poll followers later
-         sh_int move_dir;
+         short move_dir;
 
          if( leader->fighting != NULL )
          {
@@ -1266,7 +1266,7 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
          }
          for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
          {
-            follower = follower_ptr->this_one;
+            follower = (CHAR_DATA *)follower_ptr->this_one;
             if( able_to_level( follower ) )
             {
                gain_level( follower );
@@ -1280,10 +1280,10 @@ void int_group_handler( NPC_GROUP_DATA * ngroup )
          bool all_are_here = TRUE;
          for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
          {
-            follower = follower_ptr->this_one;
+            follower = (CHAR_DATA *)follower_ptr->this_one;
             if( follower->in_room != leader->in_room )
             {
-               sh_int move_dir;
+               short move_dir;
                all_are_here = FALSE;
                move_dir = h_find_dir( follower->in_room, leader->in_room,
                                       HUNT_WORLD | HUNT_OPENDOOR | HUNT_UNLOCKDOOR | HUNT_PICKDOOR );

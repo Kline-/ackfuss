@@ -496,7 +496,7 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
     */
    if( ( ch->is_quitting == FALSE ) && ( ch->desc != NULL ) && ( ch->desc->connected != CON_SETTING_STATS ) )
    {
-      sh_int i;
+      short i;
       for( i = 0; i < MAX_WEAR; i++ )
       {
          if( ( ( wield = get_eq_char( ch, i ) ) != NULL )
@@ -681,7 +681,7 @@ void affect_to_char( CHAR_DATA * ch, AFFECT_DATA * paf )
  */
 void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
 {
-   sh_int shield_type;
+   short shield_type;
 
    if( ch->first_affect == NULL )
    {
@@ -942,7 +942,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
 
       for( raf = ch->in_room->first_room_affect; raf != NULL; raf = raf_next )
       {
-         sh_int caster_level = 0;
+         short caster_level = 0;
          raf_next = raf->next;
 
          if( raf->bitvector == ROOM_BV_POISON_RUNE )
@@ -989,7 +989,7 @@ void obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch )
    if( ( !IS_NPC( ch ) ) && ( obj == quest_object ) )
    {
       bool valid_questor = FALSE;
-      sh_int average_level;
+      short average_level;
 
       average_level = obj->value[3];
 
@@ -1834,7 +1834,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    PUT_FREE( ch->bank_money, money_type_free );
    if( is_set( ch->act, ACT_COUNCIL ) )
    {
-      sh_int this_council;
+      short this_council;
       MEMBER_DATA *imember;
       MEMBER_DATA *imember_next;
 
@@ -2733,7 +2733,7 @@ void set_stun( CHAR_DATA * victim, int stunTime )
    return;
 }
 
-bool is_shielded( CHAR_DATA * ch, sh_int shield_type )
+bool is_shielded( CHAR_DATA * ch, short shield_type )
 {
    MAGIC_SHIELD *shield;
 

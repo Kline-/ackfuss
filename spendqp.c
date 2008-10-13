@@ -64,7 +64,7 @@ void save_brands(  )
    {
       for( brand = first_brand; brand != NULL; brand = brand->next )
       {
-         this_brand = brand->this_one;
+         this_brand = (BRAND_DATA *)brand->this_one;
          fprintf( fp, "#BRAND~\n" );
          fprintf( fp, "%s~\n", this_brand->branded );
          fprintf( fp, "%s~\n", this_brand->branded_by );
@@ -258,7 +258,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
       {
          char move_buf[MSL];
          char test_string[MSL];
-         sh_int qp_cost = 0;
+         short qp_cost = 0;
 
          if( !str_cmp( ch->pcdata->pedit_string[0], "none" ) )
          {
@@ -301,9 +301,9 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "buy" ) )
    {
-      sh_int qp_cost = 0;
+      short qp_cost = 0;
       char *strtime;
-      sh_int i;
+      short i;
 
       if( !str_cmp( ch->pcdata->pedit_state, "walk" ) )
       {
@@ -571,7 +571,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
    }
    if( !str_cmp( arg1, "clear" ) )
    {
-      sh_int i;
+      short i;
       for( i = 0; i < 5; i++ )
       {
          free_string( ch->pcdata->pedit_string[i] );
@@ -613,7 +613,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       buf1[0] = '\0';
       for( brand_list = first_brand; brand_list; brand_list = brand_list->next )
       {
-         brand = brand_list->this_one;
+         brand = (BRAND_DATA *)brand_list->this_one;
          xprintf( buf, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
                   vnum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
          xcat( buf1, buf );
@@ -655,7 +655,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       {
          if( vnum++ == anum )
          {
-            brand = brand_list->this_one;
+            brand = (BRAND_DATA *)brand_list->this_one;
             xprintf( buf, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
                      anum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
             xcat( buf1, buf );
@@ -813,7 +813,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       if( brand_list != NULL )
       {
          UNLINK( brand_list, first_brand, last_brand, next, prev );
-         brand = brand_list->this_one;
+         brand = (BRAND_DATA *)brand_list->this_one;
          PUT_FREE( brand, brand_data_free );
          brand_list->this_one = NULL;
          PUT_FREE( brand_list, dl_list_free );

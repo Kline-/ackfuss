@@ -823,7 +823,7 @@ const struct liq_type liq_table[LIQ_MAX] = {
    {"mountain dew", "bubbly", {0, 1, 5}}
 };
 
-const float hr_damTable[121] = {
+extern const float hr_damTable[121] = {
    0.311,
    0.325,
    0.341,

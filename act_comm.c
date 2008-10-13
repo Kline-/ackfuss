@@ -1642,8 +1642,8 @@ const struct pose_table_type pose_table[] = {
 
 void do_pose( CHAR_DATA * ch, char *argument )
 {
-   int level;
-   int pose;
+   short level;
+   short pose;
 
    if( IS_NPC( ch ) )
       return;
@@ -1654,11 +1654,11 @@ void do_pose( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   level = UMIN( ch->level, ( sizeof( pose_table ) / sizeof( pose_table[0] ) - 1 ) );
+   level = UMIN( ch->level, ( (short)sizeof( pose_table ) / (short)sizeof( pose_table[0] ) - 1 ) );
    pose = number_range( 0, level );
 
-   act( pose_table[pose].message[2 * ch->class + 0], ch, NULL, NULL, TO_CHAR );
-   act( pose_table[pose].message[2 * ch->class + 1], ch, NULL, NULL, TO_ROOM );
+   act( pose_table[pose].message[2 * ch->p_class + 0], ch, NULL, NULL, TO_CHAR );
+   act( pose_table[pose].message[2 * ch->p_class + 1], ch, NULL, NULL, TO_ROOM );
 
    return;
 }
@@ -1872,7 +1872,7 @@ void add_follower( CHAR_DATA * ch, CHAR_DATA * master )
 
    if( IS_NPC( ch ) && !IS_NPC( master ) )
    {
-      sh_int max_orders;
+      short max_orders;
 
       max_orders = ( get_curr_int( master ) / 5 );
       if( ( !IS_NPC( master ) ) && ( master->pcdata->learned[gsn_unit_tactics] > 10 ) )
@@ -1956,7 +1956,7 @@ void do_order( CHAR_DATA * ch, char *argument )
    CHAR_DATA *och_next;
    bool found;
    bool fAll;
-   sh_int num_followers = 0, max_orders = 0;
+   short num_followers = 0, max_orders = 0;
 
 
    argument = one_argument( argument, arg );
@@ -2230,7 +2230,7 @@ void do_group( CHAR_DATA * ch, char *argument )
                xprintf( buf,
                         "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5d xp\n\r",
                         gch->level,
-                        IS_NPC( gch ) ? "Mob" : class_table[gch->class].who_name,
+                        IS_NPC( gch ) ? "Mob" : class_table[gch->p_class].who_name,
                         capitalize( PERS( gch, ch ) ),
                         gch->hit, gch->max_hit, gch->mana, gch->max_mana, gch->move, gch->max_move, gch->exp );
             }
@@ -2590,8 +2590,8 @@ void do_tongue( CHAR_DATA * ch, char *argument )
 
    struct syl_type
    {
-      char *old;
-      char *new;
+      char *sold;
+      char *snew;
    };
 
    static const struct syl_type syl_table[] = {
@@ -2650,11 +2650,11 @@ void do_tongue( CHAR_DATA * ch, char *argument )
 
    for( pName = argument; *pName != '\0'; pName += length )
    {
-      for( iSyl = 0; ( length = strlen( syl_table[iSyl].old ) ) != 0; iSyl++ )
+      for( iSyl = 0; ( length = strlen( syl_table[iSyl].sold ) ) != 0; iSyl++ )
       {
-         if( !str_prefix( syl_table[iSyl].old, pName ) )
+         if( !str_prefix( syl_table[iSyl].sold, pName ) )
          {
-            xcat( buf, syl_table[iSyl].new );
+            xcat( buf, syl_table[iSyl].snew );
             break;
          }
       }
@@ -2699,8 +2699,8 @@ char *slur_text( char *argument )
 
    struct syl_type
    {
-      char *old;
-      char *new;
+      char *sold;
+      char *snew;
    };
 
    static const struct syl_type syl_table[] = {
@@ -2738,12 +2738,12 @@ char *slur_text( char *argument )
          continue;
       }
 
-      for( iSyl = 0; syl_table[iSyl].old != NULL; iSyl++ )
+      for( iSyl = 0; syl_table[iSyl].sold != NULL; iSyl++ )
       {
-         if( !str_prefix( syl_table[iSyl].old, pName ) )
+         if( !str_prefix( syl_table[iSyl].sold, pName ) )
          {
-            xcat( buf, syl_table[iSyl].new );
-            length = strlen( syl_table[iSyl].old );
+            xcat( buf, syl_table[iSyl].snew );
+            length = strlen( syl_table[iSyl].sold );
             break;
          }
       }
@@ -2962,7 +2962,7 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
    extern CHAR_DATA *quest_mob;
    extern CHAR_DATA *quest_target;
    extern OBJ_DATA *quest_object;
-   extern sh_int quest_timer;
+   extern short quest_timer;
    extern bool quest;
    char buf[MAX_STRING_LENGTH];
    buf[0] = '\0';

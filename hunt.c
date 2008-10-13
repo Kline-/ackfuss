@@ -49,7 +49,7 @@ struct h_queue
 {
    struct h_queue *next;
    ROOM_INDEX_DATA *room;
-   sh_int dir;
+   short dir;
 };
 
 struct h_queue *h_head = NULL;
@@ -65,7 +65,7 @@ void setup_hunt( void );
 static FILE *h_fp;
 #endif
 
-void h_enqueue( ROOM_INDEX_DATA * room, sh_int dir )
+void h_enqueue( ROOM_INDEX_DATA * room, short dir )
 {
    struct h_queue *hunt;
 
@@ -77,7 +77,7 @@ void h_enqueue( ROOM_INDEX_DATA * room, sh_int dir )
    }
    else
 #endif
-      hunt = getmem( sizeof( *hunt ) );
+      hunt = (h_queue *)getmem( sizeof( *hunt ) );
    hunt->next = NULL;
    hunt->room = room;
    hunt->dir = dir;
@@ -131,7 +131,7 @@ void h_clear( void )
 #endif
 }
 
-bool h_is_valid_exit( ROOM_INDEX_DATA * room, sh_int dir, int h_flags )
+bool h_is_valid_exit( ROOM_INDEX_DATA * room, short dir, int h_flags )
 {
    EXIT_DATA *exit = room->exit[dir];
 
@@ -163,9 +163,9 @@ bool h_is_valid_exit( ROOM_INDEX_DATA * room, sh_int dir, int h_flags )
    return TRUE;
 }
 
-void h_enqueue_room( ROOM_INDEX_DATA * room, sh_int dir, int h_flags )
+void h_enqueue_room( ROOM_INDEX_DATA * room, short dir, int h_flags )
 {
-   sh_int edir;
+   short edir;
 
 #ifdef DEBUG_HUNT_CODE
    fprintf( h_fp, "h_enqueue_room\n" );
@@ -177,7 +177,7 @@ void h_enqueue_room( ROOM_INDEX_DATA * room, sh_int dir, int h_flags )
    return;
 }
 
-sh_int h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags )
+short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags )
 {
    struct h_queue *hunt;
 
@@ -199,7 +199,7 @@ sh_int h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags
    {
       if( hunt->room == target )
       {
-         sh_int dir = hunt->dir;
+         short dir = hunt->dir;
 
 #ifdef DEBUG_HUNT_CODE
          fprintf( h_fp, "Found dir %d\n", dir );
@@ -273,7 +273,7 @@ void end_hunt( CHAR_DATA * ch )
 }
 
 bool has_key args( ( CHAR_DATA * ch, int key ) );
-void hunt_move( CHAR_DATA * mob, sh_int dir )
+void hunt_move( CHAR_DATA * mob, short dir )
 {
    EXIT_DATA *exit = mob->in_room->exit[dir];
 
@@ -297,7 +297,7 @@ void hunt_move( CHAR_DATA * mob, sh_int dir )
 /*#define NAME(ch) (IS_NPC(ch) ? ch->short_descr : ch->name)*/
 bool mob_hunt( CHAR_DATA * mob )
 {
-   sh_int dir;
+   short dir;
    char buf[128];
 
    if( !mob || !IS_NPC( mob ) )
@@ -519,7 +519,7 @@ bool mob_hunt( CHAR_DATA * mob )
 
 void char_hunt( CHAR_DATA * ch )
 {
-   sh_int dir;
+   short dir;
    char buf[MAX_STRING_LENGTH];
 
    if( IS_NPC( ch ) )
@@ -581,7 +581,7 @@ void do_hunt( CHAR_DATA * ch, char *argument )
 {
    CHAR_DATA *victim;
    char arg[MAX_INPUT_LENGTH];
-   sh_int chance;
+   short chance;
 
    if( IS_NPC( ch ) && ( ch->hunting || ch->hunt_obj ) )
       return;
@@ -639,7 +639,7 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    if( chance < number_percent(  ) )
    {
       CHAR_DATA *vch;
-      sh_int vcnt = 0;
+      short vcnt = 0;
 
       victim = NULL;
       for( vch = first_char; vch; vch = vch->next )
@@ -675,7 +675,7 @@ void setup_hunt( void )
    struct h_queue *bucket;
    int bcnt;
 
-   bucket = getmem( MAX_BUCKET_SIZE * sizeof( *bucket ) );
+   bucket = (h_queue *)getmem( MAX_BUCKET_SIZE * sizeof( *bucket ) );
    for( bcnt = 0; bcnt < MAX_BUCKET_SIZE; bcnt++ )
       bucket[bcnt].next = ( bcnt < TOP_BUCKET_LIST ? &bucket[bcnt + 1] : h_free );
    h_free = &bucket[0];

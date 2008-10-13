@@ -44,7 +44,7 @@
 #include "globals.h"
 #include "tables.h"
 
-char *get_ruler_title( int ruler_rank, int sex )
+const char *get_ruler_title( int ruler_rank, int sex )
 {
 
    switch ( ruler_rank )
@@ -224,7 +224,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
 
       for( ruler = first_ruler_list; ruler; ruler = ruler->next )
       {
-         sh_int sex;
+         short sex;
          sex = ( IS_SET( ruler->this_one->flags, RULER_NEUTRAL ) ? SEX_NEUTRAL
                  : IS_SET( ruler->this_one->flags, RULER_MALE ) ? SEX_MALE : SEX_FEMALE );
          xprintf( catbuf, " %s %s : %s \n\r",
@@ -286,7 +286,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
 
    if( !str_prefix( arg1, "affiliation" ) )
    {
-      sh_int clan_number;
+      short clan_number;
 
       if( get_trust( ch ) < L_SUP )
       {
@@ -451,7 +451,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
       }
       if( is_number( arg3 ) )
       {
-         sh_int rank;
+         short rank;
          rank = atoi( arg3 );
          if( ( rank < 1 ) || ( rank > 5 ) )
          {

@@ -151,9 +151,9 @@ bool is_name_pfx( const char *str, char *namelist )
    }
 }
 
-char *space_pad( const char *str, sh_int final_size )
+char *space_pad( const char *str, short final_size )
 {
-   sh_int space_pad = my_strlen( str );
+   short space_pad = my_strlen( str );
    static char padbuf[MSL];
 
    xprintf( padbuf, "%s", str );
@@ -178,12 +178,12 @@ void smash_tilde( char *str )
  * Remove and replace in a string.
  * Easier than making X smash_Y functions. --Kline
  */ 
-void smash_replace( char *str, char *old, char *new )
+void smash_replace( char *str, char *sold, char *snew )
 {
  for( ; *str != '\0'; str++ )
  {
-  if( *str == *old )
-   *str = *new;
+  if( *str == *sold )
+   *str = *snew;
  }
  return;
 }
@@ -691,7 +691,7 @@ int nocol_strlen( const char *text )
    return ( length );
 }
 
-int ccode_len( const char *text, sh_int desired )
+int ccode_len( const char *text, short desired )
 {
    char c;
    int i;
@@ -853,7 +853,7 @@ char *str_mod( char *mod_string, char *argument )
 void rand_arg( char *argument, char *output )
 {
    char temp[MSL];
-   sh_int counter = 0;
+   short counter = 0;
    argument = one_argument( argument, temp );
    while( temp[0] )
    {
@@ -1284,9 +1284,7 @@ char *affect_loc_name( int location )
    return "(unknown)";
 }
 
-
-
-char *raffect_bit_name( int vector )
+const char *raffect_bit_name( int vector )
 {
    static char rbuf[512];
 
@@ -1326,13 +1324,12 @@ char *raffect_bit_name( int vector )
       xcat( rbuf, " @@Poison@@N Rune" );
 
    return ( rbuf[0] != '\0' ) ? rbuf + 1 : "none";
-
 }
 
 /*
  * Return ascii name of an affect bit vector.
  */
-char *affect_bit_name( int vector )
+const char *affect_bit_name( int vector )
 {
    static char buf[512];
 
@@ -1379,33 +1376,22 @@ char *affect_bit_name( int vector )
       xcat( buf, " flying" );
    if( vector & AFF_PASS_DOOR )
       xcat( buf, " pass_door" );
-
    if( vector & AFF_CLOAK_REFLECTION )
       xcat( buf, " cloak:reflection" );
    if( vector & AFF_CLOAK_ABSORPTION )
       xcat( buf, " cloak:absorption" );
-
-
    if( vector & AFF_CLOAK_ADEPT )
       xcat( buf, " cloak:adept" );
    if( vector & AFF_CLOAK_REGEN )
       xcat( buf, " cloak:regeneration" );
 
-
-
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }
-
-
-
-
-
-
 
 /*
  * Return ascii name of extra flags vector.
  */
-char *extra_bit_name( int extra_flags )
+const char *extra_bit_name( int extra_flags )
 {
    static char buf[512];
 
@@ -1465,11 +1451,6 @@ char *extra_bit_name( int extra_flags )
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }
-
-
-
-
-
 
 /* Return the ASCII name of a character's race
  * -- Stephen
@@ -1559,7 +1540,7 @@ char *get_tribe_name( CHAR_DATA * ch )
  *where the mud overflows, and stop it from happening.  Great little tool.
  *All i ask is that you leave this header in place.  -- Darien of Sandstorm:Mages Sanctuary
  */
-int safe_printf( const char *file, const char *function, int line, int size, char *str, char *fmt, ... )
+int safe_printf( const char *file, const char *function, int line, int size, const char *str, const char *fmt, ... )
 {
  char buf[MAS];
  va_list args;
@@ -1597,7 +1578,7 @@ int safe_printf( const char *file, const char *function, int line, int size, cha
  }
  else
  {
-  strcpy(str,buf);
+  strcpy((char *)str,buf);
   //Disabled for now.
   //strlcpy(str,buf,size-2);
   //str[size-1] = '\0';
@@ -1619,7 +1600,7 @@ int safe_printf( const char *file, const char *function, int line, int size, cha
  return strlen(str);
 }
 
-void safe_strcat( const char *file, const char *function, int line, int size, char *prev, char *next, ... )
+void safe_strcat( const char *file, const char *function, int line, int size, const char *prev, const char *next, ... )
 {
  char buf[MAS];
  va_list args;
@@ -1656,7 +1637,7 @@ void safe_strcat( const char *file, const char *function, int line, int size, ch
  }
  else
  {
-  strcat(prev,buf);
+  strcat((char *)prev,buf);
 
   /*Just double checking.*/
   if( strlen(prev) > (unsigned)size - 1 )

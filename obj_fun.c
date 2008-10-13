@@ -74,7 +74,7 @@ OBJ_FUN *obj_fun_lookup( const char *name )
 }
 
 
-char *rev_obj_fun_lookup( void *func )
+char *rev_obj_fun_lookup( OBJ_FUN *func )
 {
    if( func == objfun_giggle )
       return "objfun_giggle";

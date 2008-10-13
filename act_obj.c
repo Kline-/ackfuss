@@ -251,7 +251,7 @@ void do_get( CHAR_DATA * ch, char *argument )
 
          for( ;; )   /* 'get obj corpse' */
          {
-            sh_int looper;
+            short looper;
 
             parse = one_argument( parse, object_number );
             if( object_number[0] == '\0' )
@@ -314,7 +314,7 @@ void do_get( CHAR_DATA * ch, char *argument )
 
          for( ;; )
          {
-            sh_int looper;
+            short looper;
             xprintf_2( bug_buf, "In get thing room, parse is %s.", parse );
             monitor_chan( bug_buf, MONITOR_DEBUG );
             parse = one_argument( parse, object_number );
@@ -465,7 +465,7 @@ void do_put( CHAR_DATA * ch, char *argument )
       char one_object[MSL];
       for( ;; )
       {
-         sh_int looper;
+         short looper;
          xprintf_2( bug_buf, "In put thing container, parse is %s.", parse );
          monitor_chan( bug_buf, MONITOR_DEBUG );
          parse = one_argument( parse, object_number );
@@ -591,7 +591,7 @@ void do_drop( CHAR_DATA * ch, char *argument )
       parse = object_list;
       for( ;; )
       {
-         sh_int looper;
+         short looper;
          xprintf_2( bug_buf, "In drop thing room, parse is %s.", parse );
          monitor_chan( bug_buf, MONITOR_DEBUG );
          parse = one_argument( parse, object_number );
@@ -719,7 +719,7 @@ void do_give( CHAR_DATA * ch, char *argument )
       parse = object_list;
       for( ;; )
       {
-         sh_int looper;
+         short looper;
          xprintf_2( bug_buf, "In give thing, parse is %s.", parse );
          monitor_chan( bug_buf, MONITOR_DEBUG );
          parse = one_argument( parse, object_number );
@@ -1212,7 +1212,7 @@ bool remove_obj( CHAR_DATA * ch, int iWear, bool fReplace )
 {
    OBJ_DATA *obj;
    AFFECT_DATA *aff;
-   sh_int hp_mod = 0;
+   short hp_mod = 0;
    if( ( obj = get_eq_char( ch, iWear ) ) == NULL )
       return TRUE;
 
@@ -1793,7 +1793,7 @@ void do_wear( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
-   sh_int num_unique = 0;
+   short num_unique = 0;
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
       send_to_char( "Your claws are too clumsy!!!@@N\n\r", ch );
@@ -1812,12 +1812,12 @@ void do_wear( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg );
    if( arg[0] == '\0' )
    {
-      sh_int location;
+      short location;
       char outbuf[MSL];
       char catbuf[MSL];
       char colbuf[MSL], eqbuf[MSL];
       OBJ_DATA *worn;
-      extern char *const where_name[];
+      extern const char *where_name[];
       xprintf( outbuf, "%s", "Wear slots for your race:\n\r" );
       for( location = 1; location < MAX_WEAR; location++ )
       {
@@ -1936,11 +1936,11 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
    int gp;
    OBJ_DATA *obj;
    extern OBJ_DATA *quest_object;
-   sh_int align_change = 0;
-   sh_int align_direction = 0;
+   double align_change = 0;
+   short align_direction = 0;
    bool change_align = FALSE;
    bool paying_fine = FALSE;
-   int obj_value;
+   double obj_value =0 ;
    argument = one_argument( argument, arg );
    argument = one_argument( argument, arg2 );
    if( arg[0] == '\0' || !str_cmp( arg, ch->name ) )
@@ -2004,7 +2004,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
    if( paying_fine )
    {
 
-      sh_int plevel = get_psuedo_level( ch );
+      short plevel = get_psuedo_level( ch );
       if( ch->sentence <= 0 )
       {
 
@@ -2032,7 +2032,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
          obj_value *= .6;
       if( ( obj->item_type == ITEM_FOOD ) || ( obj->item_type == ITEM_BEACON ) || ( obj->item_type == ITEM_SOUL ) )
          obj_value = 0;
-      ch->sentence -= obj_value;
+      ch->sentence -= (int)obj_value;
       if( ch->sentence > 0 )
       {
 
@@ -2121,7 +2121,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
       if( obj->item_type == ITEM_BEACON || obj->item_type == ITEM_LIGHT
           || obj->item_type == ITEM_PORTAL || obj->item_type == ITEM_FOOD )
          align_change /= 10;
-      ch->alignment = URANGE( -1000, ( ch->alignment += align_direction * align_change ), 1000 );
+      ch->alignment = URANGE( -1000, ( ch->alignment += align_direction * (short)align_change ), 1000 );
    }
 
    if( !change_align )
@@ -3811,7 +3811,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
    extern bool auction_flop;
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_STRING_LENGTH];
-   int reserve;
+   double reserve;
    void *vo = NULL;
    if( IS_NPC( ch ) )
       return;
@@ -3965,12 +3965,12 @@ void do_auction( CHAR_DATA * ch, char *argument )
    }
 
    xprintf( buf, "You have placed %s up for auction.  %s @@Whas been charged for these services.\n\r",
-            auction_item->name, cost_to_money( reserve * .1 ) );
+            auction_item->name, cost_to_money( (int)(reserve * .1) ) );
    send_to_char( buf, ch );
    auction_owner = ch;
    auction_bidder = NULL;
    auction_bid = 0;
-   auction_reserve = reserve;
+   auction_reserve = (int)reserve;
    if( auction_reserve > 0 )
       auction_bid = auction_reserve;
    auction_stage = 0;
@@ -4060,7 +4060,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
  char *cbuf = '\0';
  char changebuf[MSL], mbuf[MSL];
  int cost = 0, change = 0;
- sh_int mod = 3;
+ short mod = 3;
  bool found = FALSE;
 
  changebuf[0] = '\0';

@@ -54,25 +54,25 @@ extern CHAR_DATA *quest_mob;
 /*
  * Local functions.
  */
-bool check_dodge      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void check_killer     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool check_parry      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool check_skills     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void dam_message      args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt ) );
-void death_message    args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt ) );
-void death_cry        args( ( CHAR_DATA * ch ) );
-void group_gain       args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool is_safe          args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void make_corpse      args( ( CHAR_DATA * ch, char *argument ) );
-void raw_kill         args( ( CHAR_DATA * victim, char *argument ) );
-void set_fighting     args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
-void disarm           args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
-void trip             args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void check_adrenaline args( ( CHAR_DATA * ch, sh_int damage ) );
-void obj_damage       args( ( OBJ_DATA * obj, CHAR_DATA * victim, int dam ) );
-int combat_damcap     args( ( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt ) );
-void check_brawl      args( ( CHAR_DATA *ch ) );
-void damage_gear      args( ( CHAR_DATA *ch ) );
+bool  check_dodge      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+void  check_killer     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+bool  check_parry      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+bool  check_skills     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+void  dam_message      args( ( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt ) );
+void  death_message    args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt ) );
+void  death_cry        args( ( CHAR_DATA * ch ) );
+void  group_gain       args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+bool  is_safe          args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+void  make_corpse      args( ( CHAR_DATA * ch, char *argument ) );
+void  raw_kill         args( ( CHAR_DATA * victim, char *argument ) );
+void  set_fighting     args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
+void  disarm           args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
+void  trip             args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
+void  check_adrenaline args( ( CHAR_DATA * ch, float damage ) );
+void  obj_damage       args( ( OBJ_DATA * obj, CHAR_DATA * victim, float dam ) );
+float combat_damcap    args( ( CHAR_DATA *ch, CHAR_DATA *victim, float dam, int dt ) );
+void  check_brawl      args( ( CHAR_DATA *ch ) );
+void  damage_gear      args( ( CHAR_DATA *ch ) );
 
 /*
  * Control the fights going on.
@@ -294,8 +294,8 @@ void violence_update( void )
           && ( ch->in_room != NULL ) && ( ch->hit > 1 ) && ( ch->position == POS_FIGHTING ) )
 
       {
-         sh_int cast_frequency;
-         sh_int index;
+         short cast_frequency;
+         short index;
 
          cast_frequency = get_psuedo_level( ch ) / 2; /* maybe set in olc later? */
          if( ( number_range( 0, 99 ) < cast_frequency ) && ( ch->mana >= ( 40 * ch->max_mana / 100 ) ) )
@@ -422,7 +422,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
    OBJ_DATA *shield;
    int victim_ac;
    int remort_bonus;
-   int dam;
+   float dam;
    int diceroll;
    int ix;
    float dam_mod;
@@ -590,9 +590,9 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
             dam * ch->pcdata->learned[gsn_enhanced_damage] / 150 : dam * .4;
    }
    if( IS_NPC(ch) && IS_SET(ch->skills,MOB_PROWESS) )
-      dam += number_range((ch->level * 1.5),(ch->level * 3));
+      dam += number_range((int)(ch->level * 1.5),(int)(ch->level * 3));
    if( !IS_NPC(ch) && ch->pcdata->learned[gsn_combat_prowess] > 0 )
-      dam += number_range((ch->pcdata->learned[gsn_combat_prowess] * 1.5),(ch->pcdata->learned[gsn_combat_prowess] * 3));
+      dam += number_range((int)(ch->pcdata->learned[gsn_combat_prowess] * 1.5),(int)(ch->pcdata->learned[gsn_combat_prowess] * 3));
    if( !IS_AWAKE( victim ) )
       dam *= 1.5;
    /*
@@ -665,18 +665,18 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
               TO_CHAR );
          if( ( ch->lvl2[0] > 0 ) || ( ch->lvl2[3] > 0 ) )
          {
-            ch->hit = UMIN( ch->max_hit, ch->hit + number_range( dam * .075, dam * 1.72 ) );
+            ch->hit = UMIN( ch->max_hit, ch->hit + number_range( (int)(dam * .075), (int)(dam * 1.72) ) );
          }
          else
          {
-            ch->hit = UMIN( ch->max_hit, ch->hit + number_range( dam * .03, dam * .13 ) );
+            ch->hit = UMIN( ch->max_hit, ch->hit + number_range( (int)(dam * .03), (int)(dam * .13) ) );
          }
 
          ch->alignment = UMAX( -1000, ch->alignment - 50 );
       }
    }
    damage_gear(victim);
-   damage( ch, victim, dam, dt );
+   damage( ch, victim, (int)dam, dt );
 
 
    tail_chain(  );
@@ -688,7 +688,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
 /*
  * Inflict damage from a hit.
  */
-void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
+void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 {
    OBJ_DATA *sil_weapon;
    int sn;
@@ -829,7 +829,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
          xprintf( buf3, "%s", "Your shield cool" );
       else
          xprintf( buf3, "%s", victim->first_shield->absorb_message_self );
-      victim->first_shield->hits -= dam;
+      victim->first_shield->hits -= (short)dam;
       dam = dam - dam * ( victim->first_shield->percent / 100 );
       if( victim->first_shield->harmfull == TRUE )
       {
@@ -855,14 +855,14 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
     * Hurt the victim.
     * Inform the victim of his new state.
     */
-   victim->hit -= dam;
+   victim->hit -= (int)dam;
 
    if( !IS_NPC(ch) )
    {
     if( dam > ch->pcdata->records->pdam_amt )
     {
      send_to_char("@@yYou've broken your physical damage record!@@N\n\r",ch);
-     ch->pcdata->records->pdam_amt = dam;
+     ch->pcdata->records->pdam_amt = (int)dam;
      ch->pcdata->records->pdam_gsn = tmp_dt;
     }
    }
@@ -986,7 +986,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
       }
       else
       {
-         int flame_damage;
+         float flame_damage;
          flame_damage = dam * get_psuedo_level( victim ) / 300;
          if( IS_NPC( ch ) )
          {
@@ -998,7 +998,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
          if( ( IS_NPC( victim ) ) && ( is_set( victim->act, ACT_SOLO ) ) )
             flame_damage = flame_damage * 1.5;
 
-         ch->hit = UMAX( -5, ch->hit - flame_damage );
+         ch->hit = UMAX( -5, ch->hit - (int)flame_damage );
       }
 
    }
@@ -1530,7 +1530,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
  */
 bool check_parry( CHAR_DATA * ch, CHAR_DATA * victim )
 {
-   int chance = 0;
+   float chance = 0;
 
    if( !IS_AWAKE( victim ) )
       return FALSE;
@@ -1583,7 +1583,7 @@ bool check_parry( CHAR_DATA * ch, CHAR_DATA * victim )
  */
 bool check_dodge( CHAR_DATA * ch, CHAR_DATA * victim )
 {
-   int chance = 0;
+   float chance = 0;
 
    if( !IS_AWAKE( victim ) )
       return FALSE;
@@ -2374,7 +2374,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
    CHAR_DATA *lch;
    int members;
    int huggy;  /* To work out exp gained */
-   int funky;  /* Hope you LOVE these var names, Mag */
+   float funky;  /* Hope you LOVE these var names, Mag */
    int base;
    int vamp_exp;
 
@@ -2481,8 +2481,8 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       xprintf( buf, "You Receive %d Experience Points.\n\r", funky );
       send_to_char( buf, gch );
       if( IS_NPC( gch ) && is_set( gch->act, ACT_INTELLIGENT ) )
-         gch->intell_exp += funky;
-      gain_exp( gch, funky );
+         gch->intell_exp += (int)funky;
+      gain_exp( gch, (int)funky );
 
       if( IS_VAMP( gch ) && !IS_NPC( gch ) )
 
@@ -2578,7 +2578,7 @@ struct dam_table_str dam_table[] = {
    {0, "@@g", " fail to hit", "fails to hit", " with"}
 };
 
-void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
+void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 {
    static char *const attack_table[] = {
       "hit",
@@ -2761,7 +2761,7 @@ void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, int dam, int dt )
    {
       if( dt >= 0 && dt < MAX_SKILL )
          attack = skill_table[dt].noun_damage;
-      else if( dt >= TYPE_HIT && dt < TYPE_HIT + sizeof( attack_table ) / sizeof( attack_table[0] ) )
+      else if( dt >= TYPE_HIT && dt < TYPE_HIT + (int)sizeof( attack_table ) / (int)sizeof( attack_table[0] ) )
       {
          check_dt = UMAX( 0, ( dt - TYPE_HIT ) );
          check_dt = UMIN( check_dt, 13 );
@@ -3165,7 +3165,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
    int level;
    int mult;
    int chance;
-   int dam;
+   float dam;
    bool crack = FALSE;
 
 
@@ -3198,7 +3198,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
    }
    else
    {
-      best = ch->class;
+      best = ch->p_class;
       level = ch->level;
    }
 
@@ -3655,8 +3655,8 @@ void do_circle( CHAR_DATA * ch, char *argument )
    int best;
    int level;
    int mult;
-   int chance;
-   int dam;
+   float chance;
+   float dam;
    bool crack = FALSE;
 
 
@@ -3691,7 +3691,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
    }
    else
    {
-      best = ch->class;
+      best = ch->p_class;
       level = ch->level;
    }
 
@@ -4371,7 +4371,7 @@ void do_charge( CHAR_DATA * ch, char *argument )
 {
 
    CHAR_DATA *victim;
-   int dam;
+   float dam;
    bool prime;
    int chance;
 
@@ -4654,7 +4654,7 @@ void do_kick( CHAR_DATA * ch, char *argument )
 /* -S- Addition: Like damage() but called by objects, no message */
 /* WARNING: No killer checks made, etc.  Only use if no keeper for obj */
 
-void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, int dam )
+void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, float dam )
 {
    if( ( victim->position == POS_DEAD ) || ( victim->is_free == TRUE ) )
       return;
@@ -4676,7 +4676,7 @@ void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, int dam )
     * Hurt the victim.
     * Inform the victim of his new state.
     */
-   victim->hit -= dam;
+   victim->hit -= (int)dam;
 
 
    update_pos( victim );
@@ -5480,7 +5480,7 @@ void do_feed( CHAR_DATA * ch, char *argument )
 }
 
 
-void check_adrenaline( CHAR_DATA * ch, sh_int damage )
+void check_adrenaline( CHAR_DATA * ch, float damage )
 {
 
    AFFECT_DATA af;
@@ -5824,7 +5824,7 @@ void combat_update( void )
  }
 }
 
-int combat_damcap( CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt )
+float combat_damcap( CHAR_DATA *ch, CHAR_DATA *victim, float dam, int dt )
 {
  char buf[MSL];
 
@@ -5847,7 +5847,7 @@ void check_brawl( CHAR_DATA *ch )
 {
  #define MAX_BRAWLS 10
  CHAR_DATA *fight[MAX_BRAWLS], *rch, *rch_next, *vch, *vch_next;
- sh_int i = 0, x = 0;
+ short i = 0, x = 0;
 
  for( i = 0; i < MAX_BRAWLS; i++ )
   fight[i] = NULL;

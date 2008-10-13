@@ -889,7 +889,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
 
    xprintf( buf,
             "Lv: %d.  Class: %d.  Align: %d.  AC: %d.  Gold: %d.  Exp: %d.\n\r",
-            victim->level, victim->class, victim->alignment, GET_AC( victim ), victim->gold, victim->exp );
+            victim->level, victim->p_class, victim->alignment, GET_AC( victim ), victim->gold, victim->exp );
    xcat( buf1, buf );
 
    if( !IS_NPC( victim ) )
@@ -2570,7 +2570,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
    {
 
       int cnt;
-      int class[MAX_CLASS];
+      int p_class[MAX_CLASS];
       int parity[MAX_CLASS];
       int foo;
       bool ok = TRUE;
@@ -2603,7 +2603,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
          for( foo = 0; foo < MAX_CLASS; foo++ )
             if( !str_cmp( arg, class_table[foo].who_name ) )
             {
-               class[cnt] = foo;
+               p_class[cnt] = foo;
                parity[foo] = 1;
                break;
             }
@@ -2628,7 +2628,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
        * Copy classes to pcdata 
        */
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
-       victim->pcdata->order[cnt] = class[cnt];
+       victim->pcdata->order[cnt] = p_class[cnt];
 
       send_to_char( "Your classes have been re-ordered.\n\r", victim );
       send_to_char( "Done.\n\r", ch );
@@ -2784,7 +2784,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
          send_to_char( buf, ch );
          return;
       }
-      victim->class = value;
+      victim->p_class = value;
       return;
    }
 
@@ -3757,7 +3757,7 @@ void do_force( CHAR_DATA * ch, char *argument )
 void do_invis( CHAR_DATA * ch, char *argument )
 {
 
-   sh_int level;
+   short level;
    char buf[MAX_STRING_LENGTH];
 
    level = -1;
@@ -4196,7 +4196,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
    int value;
    int iClass;
    bool cok, remort;
-   int class = 0;
+   int p_class = 0;
    int cnt;
    int lose;
    bool vamp = FALSE;
@@ -4225,12 +4225,12 @@ void do_setclass( CHAR_DATA * ch, char *argument )
    {
       if( !str_cmp( arg2, class_table[iClass].who_name ) )
       {
-         class = iClass;
+         p_class = iClass;
          cok = TRUE;
       }
       if( !str_cmp( arg2, remort_table[iClass].who_name ) )
       {
-         class = iClass;
+         p_class = iClass;
          cok = TRUE;
          remort = TRUE;
       }
@@ -4251,8 +4251,8 @@ void do_setclass( CHAR_DATA * ch, char *argument )
       }
       else
       {
-         class = ADVANCE_ADEPT;
-         advance_level( victim, class, TRUE, FALSE );
+         p_class = ADVANCE_ADEPT;
+         advance_level( victim, p_class, TRUE, FALSE );
          victim->adept_level = 1;
          xprintf( buf, " %s %s", victim->name, get_adept_name( victim ) );
          do_whoname( ch, buf );
@@ -4306,18 +4306,18 @@ void do_setclass( CHAR_DATA * ch, char *argument )
     *   -- Swiftest
     */
 
-   if( value == ( remort ? victim->lvl2[class] : victim->lvl[class] ) )
+   if( value == ( remort ? victim->lvl2[p_class] : victim->lvl[p_class] ) )
    {
       send_to_char( "That wouldn't accomplish much!\n\r", ch );
       return;
    }
-   if( ( value < ( remort ? victim->lvl2[class] : victim->lvl[class] ) )
+   if( ( value < ( remort ? victim->lvl2[p_class] : victim->lvl[p_class] ) )
        || ( ( vamp ) && ( value <= victim->pcdata->super->level ) ) )
 
    {
       int sn;
 
-      lose = ( remort ? victim->lvl2[class] - 1 : victim->lvl[class] - 1 );
+      lose = ( remort ? victim->lvl2[p_class] - 1 : victim->lvl[p_class] - 1 );
 
       send_to_char( "Lowering a player's level!\n\r", ch );
       send_to_char( "**** OOOOHHHHHHHHHH  NNNNOOOO ****\n\r", victim );
@@ -4334,12 +4334,12 @@ void do_setclass( CHAR_DATA * ch, char *argument )
       else if( remort )
       {
          if( value != -1 )
-            victim->lvl2[class] = 1;
+            victim->lvl2[p_class] = 1;
          else
-            victim->lvl2[class] = -1;
+            victim->lvl2[p_class] = -1;
       }
       else
-         victim->lvl[class] = 1;
+         victim->lvl[p_class] = 1;
       victim->exp = 0;
       if( vamp )
       {
@@ -4356,9 +4356,9 @@ void do_setclass( CHAR_DATA * ch, char *argument )
       }
 
       if( remort )
-         victim->max_hit -= UMIN( victim->max_hit, lose * remort_table[class].hp_min );
+         victim->max_hit -= UMIN( victim->max_hit, lose * remort_table[p_class].hp_min );
       else
-         victim->max_hit -= UMIN( victim->max_hit, lose * class_table[class].hp_min );
+         victim->max_hit -= UMIN( victim->max_hit, lose * class_table[p_class].hp_min );
 
       victim->max_mana = 100;
       victim->max_move = 100;
@@ -4370,11 +4370,11 @@ void do_setclass( CHAR_DATA * ch, char *argument )
       victim->move = victim->max_move;
       if( vamp )
       {
-         class = ADVANCE_VAMP;
-         advance_level( victim, class, FALSE, remort );
+         p_class = ADVANCE_VAMP;
+         advance_level( victim, p_class, FALSE, remort );
       }
       else
-         advance_level( victim, class, FALSE, remort );
+         advance_level( victim, p_class, FALSE, remort );
    }
    else
    {
@@ -4384,22 +4384,22 @@ void do_setclass( CHAR_DATA * ch, char *argument )
 
    if( value != -1 && !remort && !( vamp ) )
    {
-      xprintf( buf, "You are now level %d in your %s class.\n\r", value, class_table[class].class_name );
+      xprintf( buf, "You are now level %d in your %s class.\n\r", value, class_table[p_class].class_name );
       send_to_char( buf, victim );
-      for( iClass = victim->lvl[class]; iClass < value; iClass++ )
+      for( iClass = victim->lvl[p_class]; iClass < value; iClass++ )
       {
-         victim->lvl[class] += 1;
-         advance_level( victim, class, FALSE, remort );
+         victim->lvl[p_class] += 1;
+         advance_level( victim, p_class, FALSE, remort );
       }
    }
    if( remort )
    {
-      xprintf( buf, "You are now level %d in your %s class.\n\r", value, remort_table[class].class_name );
+      xprintf( buf, "You are now level %d in your %s class.\n\r", value, remort_table[p_class].class_name );
       send_to_char( buf, victim );
-      for( iClass = victim->lvl2[class]; iClass < value; iClass++ )
+      for( iClass = victim->lvl2[p_class]; iClass < value; iClass++ )
       {
-         victim->lvl2[class] += 1;
-         advance_level( victim, class, FALSE, remort );
+         victim->lvl2[p_class] += 1;
+         advance_level( victim, p_class, FALSE, remort );
       }
    }
    if( vamp )
@@ -4407,9 +4407,9 @@ void do_setclass( CHAR_DATA * ch, char *argument )
       send_to_char( "@@NYou are now a level %d @@eKindred@@N!!!\n\r", victim );
       for( iClass = victim->pcdata->super->level; iClass < value; iClass++ )
       {
-         class = ADVANCE_VAMP;
+         p_class = ADVANCE_VAMP;
          victim->pcdata->super->level += 1;
-         advance_level( victim, class, FALSE, remort );
+         advance_level( victim, p_class, FALSE, remort );
       }
    }
 
@@ -5285,7 +5285,7 @@ void do_alink( CHAR_DATA * ch, char *argument )
    BUILD_DATA_LIST *pointer;
    ROOM_INDEX_DATA *current_room;
    int area_top, area_bottom;
-   sh_int doorway;
+   short doorway;
    char buf[MAX_STRING_LENGTH];
 
 
@@ -5299,7 +5299,7 @@ void do_alink( CHAR_DATA * ch, char *argument )
 
    for( pointer = this_area->first_area_room; pointer != NULL; pointer = pointer->next )
    {
-      current_room = pointer->data;
+      current_room = (ROOM_INDEX_DATA *)pointer->data;
 
       for( doorway = 0; doorway < 6; doorway++ )
       {
@@ -5898,7 +5898,7 @@ void do_census( CHAR_DATA *ch, char *argument )
  int rcnt[MAX_RACE];
  int ccnt[MAX_CLASS];
  int scnt[3];
- sh_int i = 0;
+ short i = 0;
  float tf0, tf1, tf2, tf3 = 0;
  int ti1 = 0;
 
@@ -5925,7 +5925,7 @@ void do_census( CHAR_DATA *ch, char *argument )
    if( !IS_NPC(vch) )
     continue;
    rcnt[vch->race]++;
-   ccnt[vch->class]++;
+   ccnt[vch->p_class]++;
    scnt[vch->sex]++;
   }
  }
@@ -5941,7 +5941,7 @@ void do_census( CHAR_DATA *ch, char *argument )
    if( vch->in_room->area != ch->in_room->area )
     continue;
    rcnt[vch->race]++;
-   ccnt[vch->class]++;
+   ccnt[vch->p_class]++;
    scnt[vch->sex]++;
   }
  }

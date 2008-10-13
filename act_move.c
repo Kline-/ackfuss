@@ -39,8 +39,8 @@
 #include "globals.h"
 #define NOWHERE -1
 bool check_valid_ride( CHAR_DATA * ch );
-bool deathmatch;
-char *const compass_name[] = {
+extern bool deathmatch;
+const char *compass_name[] = {
    "north", "east", "south", "west", "up", "down"
 };
 
@@ -55,11 +55,11 @@ char *const rev_name[] = {
 };
 
 
-const sh_int rev_dir[] = {
+extern short const rev_dir[] = {
    2, 3, 0, 1, 5, 4
 };
 
-const sh_int movement_loss[SECT_MAX] = {
+const short movement_loss[SECT_MAX] = {
    1, 2, 2, 3, 4, 6, 4, 1, 6, 10, 6, 1
 };
 
@@ -1374,7 +1374,7 @@ void do_sneak( CHAR_DATA * ch, char *argument )
 void do_warcry( CHAR_DATA *ch, char *argument ) /* Thanks Koron, saved me re-inventing the wheel ;) */
 {
  AFFECT_DATA af;
- sh_int chance;
+ short chance;
 
  if( is_affected(ch,skill_lookup("warcry")) )
  {
@@ -1627,7 +1627,7 @@ void do_train( CHAR_DATA * ch, char *argument )
    int hp_gain = 0;
    int mana_gain = 0;
    int *pAbilityI = NULL;
-   sh_int *pAbilityS = NULL; /* This is going to be ugly...But better on memory at least. --Kline */
+   short *pAbilityS = NULL; /* This is going to be ugly...But better on memory at least. --Kline */
    int pMax = 0;
    char *pOutput;
    int cost, cost1, cost2, cost3, cost4, cost5; /* Urrgghh */
@@ -1668,7 +1668,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( argument, "str" ) )
    {
-      if( class_table[ch->class].attr_prime == APPLY_STR )
+      if( class_table[ch->p_class].attr_prime == APPLY_STR )
          cost = 3;
       pAbilityS = &ch->pcdata->perm_str;
       pMax = ch->pcdata->max_str;
@@ -1677,7 +1677,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    else if( !str_cmp( argument, "int" ) )
    {
-      if( class_table[ch->class].attr_prime == APPLY_INT )
+      if( class_table[ch->p_class].attr_prime == APPLY_INT )
          cost = 3;
       pAbilityS = &ch->pcdata->perm_int;
       pMax = ch->pcdata->max_int;
@@ -1686,7 +1686,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    else if( !str_cmp( argument, "wis" ) )
    {
-      if( class_table[ch->class].attr_prime == APPLY_WIS )
+      if( class_table[ch->p_class].attr_prime == APPLY_WIS )
          cost = 3;
       pAbilityS = &ch->pcdata->perm_wis;
       pMax = ch->pcdata->max_wis;
@@ -1695,7 +1695,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    else if( !str_cmp( argument, "dex" ) )
    {
-      if( class_table[ch->class].attr_prime == APPLY_DEX )
+      if( class_table[ch->p_class].attr_prime == APPLY_DEX )
          cost = 3;
       pAbilityS = &ch->pcdata->perm_dex;
       pMax = ch->pcdata->max_dex;
@@ -1704,7 +1704,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    else if( !str_cmp( argument, "con" ) )
    {
-      if( class_table[ch->class].attr_prime == APPLY_CON )
+      if( class_table[ch->p_class].attr_prime == APPLY_CON )
          cost = 3;
       pAbilityS = &ch->pcdata->perm_con;
       pMax = ch->pcdata->max_con;
@@ -1737,15 +1737,15 @@ void do_train( CHAR_DATA * ch, char *argument )
       cost3 = 4;
       cost4 = 4;
       cost5 = 4;
-      if( class_table[ch->class].attr_prime == APPLY_STR )
+      if( class_table[ch->p_class].attr_prime == APPLY_STR )
          cost1 = 3;
-      if( class_table[ch->class].attr_prime == APPLY_INT )
+      if( class_table[ch->p_class].attr_prime == APPLY_INT )
          cost2 = 3;
-      if( class_table[ch->class].attr_prime == APPLY_WIS )
+      if( class_table[ch->p_class].attr_prime == APPLY_WIS )
          cost3 = 3;
-      if( class_table[ch->class].attr_prime == APPLY_DEX )
+      if( class_table[ch->p_class].attr_prime == APPLY_DEX )
          cost4 = 3;
-      if( class_table[ch->class].attr_prime == APPLY_CON )
+      if( class_table[ch->p_class].attr_prime == APPLY_CON )
          cost5 = 3;
 
 

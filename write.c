@@ -40,9 +40,6 @@
 
 /* This file deals with multi-line editing, and writing. */
 
-typedef void RET_FUN( void *, char **, CHAR_DATA *, bool );
-
-
 struct buf_data_struct
 {
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
@@ -53,7 +50,7 @@ struct buf_data_struct
    char *buf;
    int pos;
    RET_FUN *returnfunc;
-   void *returnparm;
+   MESSAGE_DATA *returnparm;
    int old_char_pos;
 };
 
@@ -65,7 +62,7 @@ extern char str_empty[1];
 char *build_simpstrdup( char * );
 
 
-void write_start( char **dest, void *retfunc, void *retparm, CHAR_DATA * ch )
+void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
 {
    BUF_DATA_STRUCT *buf_data;
    char *buf;
@@ -78,7 +75,7 @@ void write_start( char **dest, void *retfunc, void *retparm, CHAR_DATA * ch )
     */
 
 
-   buf = getmem( MAX_STRING_LENGTH );
+   buf = (char *)getmem( MAX_STRING_LENGTH );
    if( buf == NULL )
    {
       bug( "Not enough memory for string editing.", 0 );
@@ -97,8 +94,8 @@ void write_start( char **dest, void *retfunc, void *retparm, CHAR_DATA * ch )
    buf_data->dest = dest;
    buf_data->buf = buf;
    buf_data->pos = 0;
-   buf_data->returnfunc = retfunc;
-   buf_data->returnparm = retparm;
+   buf_data->returnfunc = (RET_FUN *)retfunc;
+   buf_data->returnparm = (MESSAGE_DATA *)retparm;
 
 
    *buf = '\0';

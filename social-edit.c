@@ -89,7 +89,7 @@ void load_social_table(  )
     * IMPORTANT to use malloc so we can realloc later on 
     */
 
-   social_table = malloc( sizeof( struct social_type ) * ( maxSocial + 1 ) );
+   social_table = (social_type *)malloc( sizeof( struct social_type ) * ( maxSocial + 1 ) );
 
    for( i = 0; i < maxSocial; i++ )
       load_social( fp, &social_table[i] );
@@ -200,7 +200,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
    if( !str_cmp( cmd, "delete" ) )  /* Remove a social */
    {
       int i, j;
-      struct social_type *new_table = malloc( sizeof( struct social_type ) * maxSocial );
+      struct social_type *new_table = (social_type *)malloc( sizeof( struct social_type ) * maxSocial );
 
       if( !new_table )
       {
@@ -245,7 +245,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
        */
 
       maxSocial++;
-      new_table = realloc( social_table, sizeof( struct social_type ) * maxSocial + 1 );
+      new_table = (social_type *)realloc( social_table, sizeof( struct social_type ) * maxSocial + 1 );
 
       if( !new_table )  /* realloc failed */
       {

@@ -1,4 +1,4 @@
-CC   = gcc
+CC   = g++
 VERS = AckFUSS 4.3.8
 #PROF    = -pg
 
@@ -22,8 +22,8 @@ VERS = AckFUSS 4.3.8
 #SOLARIS_FLAG = -Dsun -DSYSV -Wno-char-subscripts
 #SOLARIS_LINK = -lnsl -lsocket -lresolv
 
-#-Wshadow -Wformat-security -Wcast-align -Wredundant-decls -Wconversion -Wwrite-strings
-W_FLAGS = -Wall -Werror -Wpointer-arith
+#-Wshadow -Werror -Wformat-security -Wcast-align -Wredundant-decls -Wconversion -Wwrite-strings
+W_FLAGS = -Wall -Wpointer-arith
 C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(SOLARIS_FLAG)
 L_FLAGS = -lcrypt -lm $(SOLARIS_LINK)
 

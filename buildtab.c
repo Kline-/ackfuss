@@ -59,7 +59,7 @@
 
 
 /* Table for a mob's class... we'll mirror the PC classes in order here */
-const struct lookup_type tab_mob_class[] = {
+LOOKUP_TYPE tab_mob_class[] = {
    {"mage", 0, 0},
    {"cleric", 1, 0},
    {"thief", 2, 0},
@@ -74,7 +74,7 @@ const struct lookup_type tab_mob_class[] = {
 };
 
 /* -S- mod: hold what value0-3 mean for each type */
-const struct lookup_type tab_value_meanings[] = {
+LOOKUP_TYPE tab_value_meanings[] = {
    {"Unused", 10, 0},
    {"Unused", 11, 0},
    {"Hours of light, -1 = infinite", 12, 5},
@@ -434,7 +434,7 @@ const struct lookup_type tab_value_meanings[] = {
 
 
 
-const struct lookup_type tab_drink_types[] = {
+LOOKUP_TYPE tab_drink_types[] = {
    {"Water", 0, 10},
    {"Beer", 1, 10},
    {"Wine", 2, 10},
@@ -454,7 +454,7 @@ const struct lookup_type tab_drink_types[] = {
    {NULL, 0, 0}
 };
 
-const struct lookup_type tab_weapon_types[] = {
+LOOKUP_TYPE tab_weapon_types[] = {
    {"hit", 0, 10},
    {"slice", 1, 10},
    {"stab", 2, 30},
@@ -471,7 +471,7 @@ const struct lookup_type tab_weapon_types[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_mob_act[] = {
+LOOKUP_TYPE tab_mob_act[] = {
    {"nada",        ACT_NONE, 0},
    {"sentinel",    ACT_SENTINEL,    100    }, /* stays in one room    */
    {"scavenger",   ACT_SCAVENGER,   300    }, /* picks up objects     */
@@ -508,7 +508,7 @@ const struct lookup_type tab_mob_act[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_player_act[] = {
+LOOKUP_TYPE tab_player_act[] = {
  {"nada",         ACT_NONE,         0},
  {"bought_pet",   ACT_BOUGHT_PET,   0},
  {"no_pray",      ACT_NO_PRAY,      0},
@@ -563,7 +563,7 @@ const struct lookup_type tab_player_act[] = {
 
 /* New bits to handle how mobs act */
 
-const struct lookup_type tab_mob_skill[] = {
+LOOKUP_TYPE tab_mob_skill[] = {
    {"nada", 1, 0},
    {"enhanced_reflexes", 2, 100},
    {"sleight_of_hand", 4, 200},
@@ -586,7 +586,7 @@ const struct lookup_type tab_mob_skill[] = {
    {"charge", 524288, 700},
    {NULL, 0, 0}
 };
-const struct lookup_type tab_mob_powerskill[] = {
+LOOKUP_TYPE tab_mob_powerskill[] = {
    {"nada", 1, 0},
    {"enhanced_reflexes", 2, 100},
    {"sleight_of_hand", 4, 200},
@@ -609,7 +609,7 @@ const struct lookup_type tab_mob_powerskill[] = {
    {"charge", 524288, 700},
    {NULL, 0, 0}
 };
-const struct lookup_type tab_mob_cast[] = {
+LOOKUP_TYPE tab_mob_cast[] = {
    {"nada", 0, 0},
    {"placeholder", 1, 0},
    {"mag_missile", 2, 100},
@@ -640,7 +640,7 @@ const struct lookup_type tab_mob_cast[] = {
    {NULL, 0, 0}
 };
 
-const struct lookup_type tab_cast_name[] = {
+LOOKUP_TYPE tab_cast_name[] = {
    {"nada", 0, 0},
    {"placeholder", 1, 0},
    {"\'magic missile\'", 2, 100},
@@ -671,7 +671,7 @@ const struct lookup_type tab_cast_name[] = {
    {NULL, 0, 0}
 };
 
-const struct lookup_type tab_mob_powercast[] = {
+LOOKUP_TYPE tab_mob_powercast[] = {
    {"nada", 0, 0},
    {"placeholder", 1, 0},
    {"mag_missile", 2, 100},
@@ -701,7 +701,7 @@ const struct lookup_type tab_mob_powercast[] = {
    {"lava_burst", 33554432, 300},
    {NULL, 0, 0}
 };
-const struct lookup_type tab_mob_def[] = {
+LOOKUP_TYPE tab_mob_def[] = {
    {"nada", 1, 0},
    {"cure_light", 2, 100},
    {"cure_serious", 4, 200},
@@ -713,7 +713,7 @@ const struct lookup_type tab_mob_def[] = {
    {NULL, 0, 0}
 };
 
-const struct lookup_type tab_affected_by[] =
+LOOKUP_TYPE tab_affected_by[] =
 /*
  * Bits for 'affected_by'.
  * Used in #MOBILES.
@@ -745,7 +745,7 @@ const struct lookup_type tab_affected_by[] =
 };
 
 
-const struct lookup_type tab_item_types[] = {
+LOOKUP_TYPE tab_item_types[] = {
 /* { "nada",			0, 0 },  */
 /* { "placeholder",		0, 0 },   */
    {"light", 1, 20},
@@ -783,7 +783,7 @@ const struct lookup_type tab_item_types[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_obj_flags[] = {
+LOOKUP_TYPE tab_obj_flags[] = {
    {"nada", 0, 0},
    {"glow", 1, 10},
    {"hum", 2, 10},
@@ -816,7 +816,7 @@ const struct lookup_type tab_obj_flags[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_wear_flags[] = {
+LOOKUP_TYPE tab_wear_flags[] = {
    {"halo", BIT_1, 50},
    {"aura", BIT_2, 50},
    {"horns", BIT_3, 20},
@@ -845,7 +845,7 @@ const struct lookup_type tab_wear_flags[] = {
 };
 
 /* This not used at present.  Thought i'd bung details in though :) */
-const struct lookup_type tab_item_apply[] = {
+LOOKUP_TYPE tab_item_apply[] = {
 
    {"nada", 1, 0},
    {"infra", 2, 0},
@@ -870,7 +870,7 @@ const struct lookup_type tab_item_apply[] = {
 
 
 
-const struct lookup_type tab_wear_loc[] = {
+LOOKUP_TYPE tab_wear_loc[] = {
    {"halo", 1, 20},
    {"aura", 2, 20},
    {"horns", 3, 20},
@@ -905,7 +905,7 @@ const struct lookup_type tab_wear_loc[] = {
 };
 
 
-const struct lookup_type tab_obj_aff[] = {
+LOOKUP_TYPE tab_obj_aff[] = {
    {"nada", 0, 0},
    {"str", 1, 200},
    {"dex", 2, 200},
@@ -935,7 +935,7 @@ const struct lookup_type tab_obj_aff[] = {
 };
 
 
-const struct lookup_type tab_room_flags[] = {
+LOOKUP_TYPE tab_room_flags[] = {
    {"nada",         RFLAG_NONE,         0     },
    {"dark",         RFLAG_DARK,         1000  },
    {"regen",        RFLAG_REGEN,        4000  },  /* increased regen in this room */
@@ -959,7 +959,7 @@ const struct lookup_type tab_room_flags[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_sector_types[] = {
+LOOKUP_TYPE tab_sector_types[] = {
    {"nada", 0, 0},
    {"city", 1, 50},
    {"field", 2, 50},
@@ -976,7 +976,7 @@ const struct lookup_type tab_sector_types[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_door_types[] = {
+LOOKUP_TYPE tab_door_types[] = {
    /*
     * { "nada",        0, NO_USE },  
     */
@@ -992,14 +992,14 @@ const struct lookup_type tab_door_types[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_door_states[] = {
+LOOKUP_TYPE tab_door_states[] = {
    {"open", 0, 0},
    {"closed", 1, 0},
    {"locked", 2, 0},
    {NULL, 0}
 };
 
-const struct lookup_type tab_magic_realms[] = {
+LOOKUP_TYPE tab_magic_realms[] = {
 
    {"nada", BIT_0, 0},
    {"fire", BIT_1, 0},
@@ -1017,7 +1017,7 @@ const struct lookup_type tab_magic_realms[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_magic_realms_col[] = {
+LOOKUP_TYPE tab_magic_realms_col[] = {
 
    {"nada", BIT_0, 0},
    {"@@eFire@@N", BIT_1, 0},
@@ -1035,7 +1035,7 @@ const struct lookup_type tab_magic_realms_col[] = {
    {NULL, 0}
 };
 
-const struct lookup_type tab_mob_race_mods_col[] = {
+LOOKUP_TYPE tab_mob_race_mods_col[] = {
 
    {"nada", BIT_0, 0},
    {"@@lFast Healing@@N", BIT_1, 0},
@@ -1059,7 +1059,7 @@ const struct lookup_type tab_mob_race_mods_col[] = {
 
 };
 
-const struct lookup_type tab_mob_race_mods[] = {
+LOOKUP_TYPE tab_mob_race_mods[] = {
 
    {"nada", BIT_0, 0},
    {"fast_heal", BIT_1, 0},
@@ -1083,7 +1083,7 @@ const struct lookup_type tab_mob_race_mods[] = {
 
 };
 
-const struct eq_type tab_auto_obj[] = {
+eq_type tab_auto_obj[] = {
  /*              ac    dr    hp    hr    mp    mv   svs */
  {"halo",         0, 0.12,    0, 0.12, 0.20,    0, 0.20},
  {"aura",         0,    0,    0,    0,    0,    0, 0.40},
@@ -1115,7 +1115,7 @@ const struct eq_type tab_auto_obj[] = {
 
 /* Now for the functions */
 
-unsigned long int table_lookup( const struct lookup_type *table, char *name )
+unsigned long int table_lookup( LOOKUP_TYPE *table, char *name )
 {
    int a;
 
@@ -1128,7 +1128,7 @@ unsigned long int table_lookup( const struct lookup_type *table, char *name )
    return /* table[0].value-1  */ 0;
 }
 
-char *rev_table_lookup( const struct lookup_type *table, unsigned long int number )
+char *rev_table_lookup( LOOKUP_TYPE *table, unsigned long int number )
 {
    int a;
 
@@ -1140,7 +1140,7 @@ char *rev_table_lookup( const struct lookup_type *table, unsigned long int numbe
 
 /* spec: fixed to not assume contiguous bit use */
 
-char *bit_table_lookup( const struct lookup_type *table, unsigned long int number )
+char *bit_table_lookup( LOOKUP_TYPE *table, unsigned long int number )
 {
    int a;
    static char buf[MAX_STRING_LENGTH];
@@ -1169,7 +1169,7 @@ char *bit_table_lookup( const struct lookup_type *table, unsigned long int numbe
    return buf;
 }
 
-void table_printout( const struct lookup_type *table, char *buf )
+void table_printout( LOOKUP_TYPE *table, char *buf )
 {
    int a;
 
@@ -1189,7 +1189,7 @@ void table_printout( const struct lookup_type *table, char *buf )
    return;
 }
 
-void wide_table_printout( const struct lookup_type *table, char *buf )
+void wide_table_printout( LOOKUP_TYPE *table, char *buf )
 {
    /*
     * Like table_printout, but formats into columns 
@@ -1219,7 +1219,7 @@ void wide_table_printout( const struct lookup_type *table, char *buf )
    return;
 }
 
-char *show_values( const struct lookup_type *table, int value, bool fBit )
+char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit )
 {
 
    char tmp[MAX_STRING_LENGTH];
@@ -1249,7 +1249,7 @@ char *show_values( const struct lookup_type *table, int value, bool fBit )
    return ( buf );
 }
 
-char *bm_show_values( const struct lookup_type *table, BITMASK *mask )
+char *bm_show_values( LOOKUP_TYPE *table, BITMASK *mask )
 {
 
    char tmp[MAX_STRING_LENGTH];
