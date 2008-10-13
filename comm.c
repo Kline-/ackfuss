@@ -63,7 +63,6 @@
 #include <sys/wait.h>
 #include <unistd.h>  /* for execl */
 #include "globals.h"
-#include "cursor.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -83,6 +82,10 @@
 
 #ifndef DEC_BITMASK_H
 #include "h/bitmask.h"
+#endif
+
+#ifndef DEC_CURSOR_H
+#include "h/cursor.h"
 #endif
 
 /*

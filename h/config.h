@@ -31,12 +31,11 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#define DEC_CONFIG_H		1
+#define DEC_CONFIG_H
 
 /*
  *  Your mud info here :) Zen
  */
-
 #define mudnamecolor  "@@lYour Mud Name@@N"
 #define mudnamenocolor  "Your Mud name"
 #define sacgodname  "Cyberlich"
@@ -44,6 +43,7 @@
 #define neutralgodname  "Zenithar"
 #define evilgodname  "Oderus"
 #define UPGRADE_REVISION 15
+
 /*
  * String and memory management parameters.
  */
@@ -67,7 +67,6 @@
  * Increase the max'es if you add more of something.
  * Adjust the pulse numbers to suit yourself.
  */
-
 #define MAX_CLAN_EQ		     6   /* Number of clan eq items */
 #define MAX_COLOR		    22   /* eg look, prompt, shout */
 #define MAX_ANSI		    28   /* eg red, black, etc (was 11) */

@@ -39,9 +39,13 @@
 #include <sys/types.h>
 #endif
 #ifdef IMCSTANDALONE
-   #include "imc.h"
+#ifndef DEC_IMC_H
+   #include "h/imc.h"
 #endif
-#include "sha256.h"
+#endif
+#ifndef DEC_SHA256_H
+#include "h/sha256.h"
+#endif
 
 #if defined(IMCACK)
 #include "globals.h"

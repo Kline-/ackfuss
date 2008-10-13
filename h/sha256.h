@@ -6,6 +6,8 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
+#define DEC_SHA256_H
+
 /*-
  * Copyright 2005 Colin Percival
  * All rights reserved.

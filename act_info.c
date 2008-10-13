@@ -42,7 +42,6 @@
 #include <crypt.h>
 #endif
 #include "globals.h"
-#include "cursor.h"
 #include <math.h>
 
 #ifndef DEC_ACT_COMM_H
@@ -71,6 +70,10 @@
 
 #ifndef DEC_BUILDTAB_H
 #include "h/buildtab.h"
+#endif
+
+#ifndef DEC_CURSOR_H
+#include "h/cursor.h"
 #endif
 
 #ifndef DEC_MAGIC_H

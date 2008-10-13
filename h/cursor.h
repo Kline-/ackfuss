@@ -32,6 +32,8 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
+#define DEC_CURSOR_H
+
 #define MAP_TOP           "0"
 #define MAP_BOTTOM        "10"
 #define MAIN_TOP          "11"

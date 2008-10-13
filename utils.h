@@ -37,10 +37,6 @@
 #include "typedefs.h"
 #endif
 
-#ifndef DEC_CONFIG_H
-#include "config.h"
-#endif
-
 #if 0
 #ifndef DEC_ACK_H
 #include "ack.h"
