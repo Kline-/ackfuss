@@ -51,6 +51,10 @@
 #include "h/bitmask.h"
 #endif
 
+#ifndef DEC_BUILD_H
+#include "h/build.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

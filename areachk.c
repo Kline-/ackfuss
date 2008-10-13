@@ -45,7 +45,9 @@
 #include "globals.h"
 #include "hash.h"
 
-
+#ifndef DEC_AREASAVE_H
+#include "h/areasave.h"
+#endif
 
 void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
 {

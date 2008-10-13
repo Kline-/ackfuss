@@ -6,7 +6,7 @@ o/act_clan.o: act_clan.c globals.h typedefs.h config.h ack.h utils.h \
   h/act_info.h h/act_wiz.h h/bitmask.h
 o/act_comm.o: act_comm.c globals.h typedefs.h config.h ack.h utils.h \
   lists.h strfuns.h mquest.h imc.h imccfg.h h/act_comm.h h/act_info.h \
-  h/bitmask.h money.h
+  h/bitmask.h h/build.h money.h
 o/act_info.o: act_info.c globals.h typedefs.h config.h ack.h utils.h \
   lists.h strfuns.h mquest.h imc.h imccfg.h tables.h cursor.h \
   h/act_comm.h h/act_info.h h/act_obj.h h/act_wiz.h h/bitmask.h h/board.h \
@@ -16,26 +16,28 @@ o/act_mob.o: act_mob.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   h/act_obj.h h/act_wiz.h h/bitmask.h
 o/act_move.o: act_move.c globals.h typedefs.h config.h ack.h utils.h \
   lists.h strfuns.h mquest.h imc.h imccfg.h h/act_comm.h h/act_info.h \
-  h/act_move.h h/bitmask.h
+  h/act_move.h h/bitmask.h h/build.h
 o/act_obj.o: act_obj.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h h/act_comm.h h/act_wiz.h h/bitmask.h \
   money.h magic.h
 o/act_wiz.o: act_wiz.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h tables.h h/act_comm.h h/act_info.h \
-  h/act_wiz.h h/bitmask.h email.h
+  h/act_wiz.h h/areasave.h h/bitmask.h h/build.h email.h
 o/areachk.o: areachk.c globals.h typedefs.h config.h ack.h utils.h lists.h \
-  strfuns.h mquest.h imc.h imccfg.h hash.h
+  strfuns.h mquest.h imc.h imccfg.h hash.h h/areasave.h
 o/areasave.o: areasave.c globals.h typedefs.h config.h ack.h utils.h \
-  lists.h strfuns.h mquest.h imc.h imccfg.h h/act_wiz.h h/bitmask.h
+  lists.h strfuns.h mquest.h imc.h imccfg.h h/act_wiz.h h/areasave.h \
+  h/bitmask.h h/build.h
 o/bitmask.o: bitmask.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h h/act_wiz.h h/bitmask.h
 o/board.o: board.c globals.h typedefs.h config.h ack.h utils.h lists.h \
-  strfuns.h mquest.h imc.h imccfg.h h/board.h
+  strfuns.h mquest.h imc.h imccfg.h h/board.h h/build.h
 o/build.o: build.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h tables.h h/act_info.h h/act_move.h \
-  h/act_wiz.h h/areachk.h h/bitmask.h money.h
+  h/act_wiz.h h/areachk.h h/areasave.h h/bitmask.h h/build.h money.h
 o/buildare.o: buildare.c globals.h typedefs.h config.h ack.h utils.h \
-  lists.h strfuns.h mquest.h imc.h imccfg.h money.h
+  lists.h strfuns.h mquest.h imc.h imccfg.h h/areasave.h h/build.h \
+  money.h
 o/buildtab.o: buildtab.c globals.h typedefs.h config.h ack.h utils.h \
   lists.h strfuns.h mquest.h imc.h imccfg.h h/bitmask.h
 o/clutch.o: clutch.c globals.h typedefs.h config.h ack.h utils.h lists.h \
@@ -66,7 +68,7 @@ o/hunt.o: hunt.c globals.h typedefs.h config.h ack.h utils.h lists.h \
 o/interp.o: interp.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h h/act_clan.h h/act_comm.h \
   h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h h/bitmask.h h/board.h \
-  magic.h money.h
+  h/build.h magic.h money.h
 o/lists.o: lists.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h h/bitmask.h
 o/macros.o: macros.c globals.h typedefs.h config.h ack.h utils.h lists.h \
@@ -112,7 +114,7 @@ o/spell_dam.o: spell_dam.c globals.h typedefs.h config.h ack.h utils.h \
   h/act_move.h h/act_obj.h h/act_wiz.h h/bitmask.h magic.h money.h
 o/spendqp.o: spendqp.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h tables.h h/act_comm.h h/act_info.h \
-  h/act_wiz.h
+  h/act_wiz.h h/build.h
 o/ssm.o: ssm.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h ssm.h
 o/strfuns.o: strfuns.c globals.h typedefs.h config.h ack.h utils.h lists.h \
@@ -123,7 +125,7 @@ o/trigger.o: trigger.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h h/act_info.h
 o/update.o: update.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h h/act_comm.h h/act_move.h h/act_obj.h \
-  h/act_wiz.h h/bitmask.h money.h
+  h/act_wiz.h h/areasave.h h/bitmask.h money.h
 o/vampire.o: vampire.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h h/act_info.h h/act_move.h h/bitmask.h
 o/werewolf.o: werewolf.c globals.h typedefs.h config.h ack.h utils.h \

@@ -71,6 +71,10 @@
 #include "h/board.h"
 #endif
 
+#ifndef DEC_BUILD_H
+#include "h/build.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif

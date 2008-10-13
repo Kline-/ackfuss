@@ -58,16 +58,21 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_AREASAVE_H
+#include "h/areasave.h"
+#endif
+
 #ifndef DEC_BITMASK_H
 #include "h/bitmask.h"
+#endif
+
+#ifndef DEC_BUILD_H
+#include "h/build.h"
 #endif
 
 #ifndef DEC_EMAIL_H
 #include "email.h"
 #endif
-
-/* from areasave.c */
-char *mprog_type_to_name( int );
 
 extern int top_mob_index;
 extern int top_obj_index;

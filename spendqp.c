@@ -55,6 +55,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BUILD_H
+#include "h/build.h"
+#endif
+
 void save_brands(  )
 {
 

@@ -1388,6 +1388,8 @@ struct eq_type
 #define SF      SPEC_FUN
 #define OF	OBJ_FUN
 
+char *mprog_type_to_name( int type );
+
 /* comm.c */
 void close_socket args( ( DESCRIPTOR_DATA * dclose ) );
 void show_menu_to args( ( DESCRIPTOR_DATA * d ) ); /* Main */
@@ -1674,26 +1676,12 @@ void check_vamp args( ( CHAR_DATA * ch ) );
 void write_start args( ( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch ) );
 void write_interpret args( ( CHAR_DATA * ch, char *argument ) );
 
-/* build.c */
-extern const char *cDirs;
-void build_strdup      args( ( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA * ch ) );
-char *build_simpstrdup args( ( char *buf ) );   /* A plug in alternative to str_dup */
-void build_save        args( ( void ) );
-int  get_dir           args( ( char ) );
-char *show_values      args( ( LOOKUP_TYPE *table, unsigned long int value, bool fBit ) );
-char *bm_show_values   args( ( LOOKUP_TYPE *table, BITMASK *mask ) );
-void check_autodig     args( ( CHAR_DATA *ch, int dir ) );
-
 /* buildare.c */
 /* Area manipulation funcs in buildare.c */
 int build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror );
 int build_canwrite( AREA_DATA * Area, CHAR_DATA * ch, int showerror );
 #define AREA_NOERROR   0
 #define AREA_SHOWERROR 1
-
-/* areasave.c */
-void area_modified( AREA_DATA * );
-void build_save_flush( void );
 
 /* hunt.c */
 void hunt_victim args( ( CHAR_DATA * ch ) );

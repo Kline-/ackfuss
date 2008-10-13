@@ -37,6 +37,8 @@ char *rev_table_lookup( LOOKUP_TYPE *table, unsigned long int );
 char *bit_table_lookup( LOOKUP_TYPE *table, unsigned long int );
 void table_printout( LOOKUP_TYPE *table, char *buf );
 void wide_table_printout( LOOKUP_TYPE *table, char *buf );  /* -S- mod */
+char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit );
+char *bm_show_values( LOOKUP_TYPE *table, BITMASK *mask );
 
 extern LOOKUP_TYPE tab_mob_class[];
 extern LOOKUP_TYPE tab_value_meanings[];

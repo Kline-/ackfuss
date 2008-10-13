@@ -55,8 +55,16 @@
 #include "h/areachk.h"
 #endif
 
+#ifndef DEC_AREASAVE_H
+#include "h/areasave.h"
+#endif
+
 #ifndef DEC_BITMASK_H
 #include "h/bitmask.h"
+#endif
+
+#ifndef DEC_BUILD_H
+#include "h/build.h"
 #endif
 
 #ifndef DEC_MONEY_H
@@ -118,61 +126,12 @@ int RevDirs[] = { 2, 3, 0, 1, 5, 4 };
 #define L_ANG           L_DEI - 1
 #define L_HER           L_ANG - 1
 
-/* -S- Additions */
-DECLARE_DO_FUN( build_set_medit );
-DECLARE_DO_FUN( build_set_oedit );
-DECLARE_DO_FUN( build_set_redit );
-DECLARE_DO_FUN( build_set_nedit );
-DECLARE_DO_FUN( build_setvnum );
-DECLARE_DO_FUN( build_list );
-DECLARE_DO_FUN( build_set );
-DECLARE_DO_FUN( build_listvalues );
-DECLARE_DO_FUN( build_listweapons );
-DECLARE_DO_FUN( build_listliquids );
-DECLARE_DO_FUN( build_listspells );
-DECLARE_DO_FUN( build_urooms );
-DECLARE_DO_FUN( build_uobjs );
-DECLARE_DO_FUN( build_umobs );
-DECLARE_DO_FUN( build_findhelp );
-DECLARE_DO_FUN( build_commands );
-DECLARE_DO_FUN( build_clone );
-
-
-/* build_functions */
-DECLARE_DO_FUN( build_showmob );
-DECLARE_DO_FUN( build_showroom );
-DECLARE_DO_FUN( build_showobj );
-DECLARE_DO_FUN( build_findmob );
-DECLARE_DO_FUN( build_findmobroom );
-DECLARE_DO_FUN( build_findroom );
-DECLARE_DO_FUN( build_findobject );
-DECLARE_DO_FUN( build_help );
-DECLARE_DO_FUN( build_helpedit );
-DECLARE_DO_FUN( build_setmob );
-DECLARE_DO_FUN( build_setroom );
-DECLARE_DO_FUN( build_setobject );
-DECLARE_DO_FUN( build_stop );
-DECLARE_DO_FUN( build_dig );
-DECLARE_DO_FUN( build_addobject );
-DECLARE_DO_FUN( build_addmob );
-DECLARE_DO_FUN( build_delwarn );
-DECLARE_DO_FUN( build_delroom );
-DECLARE_DO_FUN( build_delmob );
-DECLARE_DO_FUN( build_delobject );
-DECLARE_DO_FUN( build_delhelp );
-DECLARE_DO_FUN( build_showresets );
-DECLARE_DO_FUN( build_addreset );
-DECLARE_DO_FUN( build_delreset );
-DECLARE_DO_FUN( build_forcereset );
-DECLARE_DO_FUN( build_addhelp );
-
 /* Functions in buildare.c: */
 DECLARE_DO_FUN( build_showarea );
 DECLARE_DO_FUN( build_findarea );
 DECLARE_DO_FUN( build_addarea );
 DECLARE_DO_FUN( build_setarea );
 DECLARE_DO_FUN( build_makearea );
-DECLARE_DO_FUN( build_sysdata );
 
 /* Commands */
 const struct cmd_type build_cmd_table[] = {
@@ -264,12 +223,6 @@ int build_freesize[MAX_MEM_SIZES];
 void *build_freepointer[MAX_MEM_SIZES];
 int build_numsizes = 0;
 
-/* String function */
-/* moved build_strdup to merc.h - Stephen */
-void build_editstr( char **dest, char *src, CHAR_DATA * ch );
-void build_finishedstr( char *orig, char **dest, CHAR_DATA * ch, bool saved );
-
-
 /* Variables declared in db.c, which we need */
 extern char *string_hash[MAX_KEY_HASH];
 
@@ -294,14 +247,6 @@ extern int nAllocString;
 extern int sAllocString;
 extern int nAllocPerm;
 extern int sAllocPerm;
-/* extern int                     fBootDb;   */
-
-
-/* local functions */
-char *build_docount( int * );
-char *reset_to_text( BUILD_DATA_LIST **, int * );
-
-
 
 ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, short vnum, short sector )
 {

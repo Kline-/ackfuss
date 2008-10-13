@@ -211,13 +211,6 @@ DECLARE_DO_FUN( do_stun );
 DECLARE_DO_FUN( do_trip );
 DECLARE_DO_FUN( do_listspells );
 
-/* And by MAG  
- *    
- */
-DECLARE_DO_FUN( build_interpret );
-DECLARE_DO_FUN( do_build );
-DECLARE_DO_FUN( do_savearea );
-
 /****************************
  * Now the 'standard' stuff:*
  ****************************/
