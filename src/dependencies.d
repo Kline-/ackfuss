@@ -11,7 +11,8 @@ o/act_info.o: act_info.c globals.h typedefs.h config.h ack.h utils.h \
   lists.h strfuns.h mquest.h imc.h imccfg.h tables.h cursor.h \
   h/act_comm.h h/act_info.h h/act_obj.h magic.h money.h
 o/act_mob.o: act_mob.c globals.h typedefs.h config.h ack.h utils.h lists.h \
-  strfuns.h mquest.h imc.h imccfg.h h/act_comm.h h/act_mob.h h/act_move.h
+  strfuns.h mquest.h imc.h imccfg.h h/act_comm.h h/act_mob.h h/act_move.h \
+  h/act_obj.h
 o/act_move.o: act_move.c globals.h typedefs.h config.h ack.h utils.h \
   lists.h strfuns.h mquest.h imc.h imccfg.h h/act_comm.h h/act_info.h \
   h/act_move.h
