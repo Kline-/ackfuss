@@ -44,7 +44,6 @@
 #include <crypt.h>
 #endif
 #include "globals.h"
-#include "tables.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -68,6 +67,10 @@
 
 #ifndef DEC_BUILD_H
 #include "h/build.h"
+#endif
+
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
 #endif
 
 #ifndef DEC_EMAIL_H

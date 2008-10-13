@@ -37,7 +37,6 @@
 #include <string.h>
 #include <time.h>
 #include "globals.h"
-#include "tables.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -61,6 +60,10 @@
 
 #ifndef DEC_BITMASK_H
 #include "h/bitmask.h"
+#endif
+
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
 #endif
 
 #ifndef DEC_MAGIC_H

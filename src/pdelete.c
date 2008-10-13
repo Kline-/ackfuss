@@ -43,7 +43,6 @@
 #include <crypt.h>
 #endif
 #include "globals.h"
-#include "tables.h"
 #include <math.h>
 #include <ctype.h>
 

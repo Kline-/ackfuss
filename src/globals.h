@@ -174,11 +174,6 @@ extern CHAN_HISTORY chan_history;
 /* YUCK! */
 extern char *target_name;
 
-/*
- * Command functions.
- * Defined in act_*.c (mostly).
- */
-
 /**************************
  * This bunch of commands *
  * added by Stephen ;)    *
@@ -187,7 +182,6 @@ DECLARE_DO_FUN( do_exlist );
 DECLARE_DO_FUN( do_vlist );
 DECLARE_DO_FUN( do_rename );
 DECLARE_DO_FUN( do_sdelete );
-DECLARE_DO_FUN( build_arealist );
 DECLARE_DO_FUN( do_assist );
 DECLARE_DO_FUN( do_bank );
 DECLARE_DO_FUN( do_bash );

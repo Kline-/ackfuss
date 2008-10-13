@@ -38,7 +38,6 @@
 #include <string.h>
 #include <time.h>
 #include "globals.h"
-#include "tables.h"
 #include <math.h>
 
 #ifndef DEC_ACT_WIZ_H

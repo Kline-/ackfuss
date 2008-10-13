@@ -52,7 +52,6 @@
 
 #ifndef  DEC_ACK_H
 #include "ack.h"
-#include "tables.h"
 #endif
 
 

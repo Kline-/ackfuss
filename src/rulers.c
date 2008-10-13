@@ -40,7 +40,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "globals.h"
-#include "tables.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"

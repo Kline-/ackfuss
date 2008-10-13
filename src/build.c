@@ -37,7 +37,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "globals.h"
-#include "tables.h"
 
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"
@@ -65,6 +64,14 @@
 
 #ifndef DEC_BUILD_H
 #include "h/build.h"
+#endif
+
+#ifndef DEC_BUILDARE_H
+#include "h/buildare.h"
+#endif
+
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
 #endif
 
 #ifndef DEC_MONEY_H
@@ -125,13 +132,6 @@ int RevDirs[] = { 2, 3, 0, 1, 5, 4 };
 #define L_DEI           L_SUP - 1
 #define L_ANG           L_DEI - 1
 #define L_HER           L_ANG - 1
-
-/* Functions in buildare.c: */
-DECLARE_DO_FUN( build_showarea );
-DECLARE_DO_FUN( build_findarea );
-DECLARE_DO_FUN( build_addarea );
-DECLARE_DO_FUN( build_setarea );
-DECLARE_DO_FUN( build_makearea );
 
 /* Commands */
 const struct cmd_type build_cmd_table[] = {

@@ -1676,13 +1676,6 @@ void check_vamp args( ( CHAR_DATA * ch ) );
 void write_start args( ( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch ) );
 void write_interpret args( ( CHAR_DATA * ch, char *argument ) );
 
-/* buildare.c */
-/* Area manipulation funcs in buildare.c */
-int build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror );
-int build_canwrite( AREA_DATA * Area, CHAR_DATA * ch, int showerror );
-#define AREA_NOERROR   0
-#define AREA_SHOWERROR 1
-
 /* hunt.c */
 void hunt_victim args( ( CHAR_DATA * ch ) );
 void unhunt args( ( CHAR_DATA * ch ) );

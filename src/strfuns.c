@@ -37,7 +37,6 @@
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
-/* For forks etc. */
 #include <unistd.h>
 #include <fcntl.h>
 #include <errno.h>
@@ -46,7 +45,6 @@
 
 #ifndef  DEC_ACK_H
 #include "globals.h"
-#include "tables.h"
 #endif
 
 #ifndef DEC_ACT_WIZ_H
