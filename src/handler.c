@@ -66,6 +66,10 @@
 #include "h/bitmask.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

@@ -46,6 +46,10 @@
 #include <math.h>
 #include <ctype.h>
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 void do_sdelete( CHAR_DATA * ch, char *argument )
 {
    DESCRIPTOR_DATA *d;

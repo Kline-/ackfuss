@@ -38,6 +38,10 @@
 #include <string.h>
 #include "globals.h"
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 /* This file deals with multi-line editing, and writing. */
 
 struct buf_data_struct

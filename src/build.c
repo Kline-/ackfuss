@@ -74,6 +74,10 @@
 #include "h/buildtab.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

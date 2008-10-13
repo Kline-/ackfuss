@@ -48,6 +48,10 @@
 #include "h/bitmask.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 void reset_gain_stats( CHAR_DATA * ch )
 {
    short index = 0;

@@ -79,6 +79,14 @@
 #include "h/buildare.h"
 #endif
 
+#ifndef DEC_CLUTCH_H
+#include "h/clutch.h"
+#endif
+
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif

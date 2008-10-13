@@ -49,6 +49,10 @@
 #include "h/areasave.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
 {
    ROOM_INDEX_DATA *pRoomIndex, *prevRoomIndex;

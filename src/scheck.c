@@ -40,6 +40,10 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #ifdef DEBUG_MONEY
 #ifndef DEC_MONEY_H
 #include "money.h"

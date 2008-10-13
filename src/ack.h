@@ -1365,6 +1365,13 @@ struct h_queue
    short dir;
 };
 
+struct clutch_type
+{
+   int command_number;
+   bool destroy;  /* Destory object once clutched? */
+   CLUTCH_FUN *func_name;  /* The name of the function.... */
+};
+
 struct eq_type
 {
  char *const name;
@@ -1390,20 +1397,6 @@ struct eq_type
 #define OF	OBJ_FUN
 
 char *mprog_type_to_name( int type );
-
-/* comm.c */
-void close_socket args( ( DESCRIPTOR_DATA * dclose ) );
-void show_menu_to args( ( DESCRIPTOR_DATA * d ) ); /* Main */
-void show_amenu_to args( ( DESCRIPTOR_DATA * d ) );   /* Attributes */
-void show_stotal_to args( ( DESCRIPTOR_DATA * d ) );  /* Attribute Totals */
-void show_rmenu_to args( ( DESCRIPTOR_DATA * d ) );   /* Race */
-void show_smenu_to args( ( DESCRIPTOR_DATA * d ) );   /* Sex */
-void show_cmenu_to args( ( DESCRIPTOR_DATA * d ) );   /* Class */
-void write_to_buffer args( ( DESCRIPTOR_DATA * d, const char *txt, int length ) );
-void send_to_char args( ( const char *txt, CHAR_DATA * ch ) );
-void show_string args( ( DESCRIPTOR_DATA * d, char *input ) );
-void act args( ( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2, int type ) );
-void hang args( ( const char *str ) );
 
  /*
   * db.c 
@@ -1438,14 +1431,11 @@ char  *_popen          args( ( const char *string ) );
 FILE  *file_open       args( ( const char *file, const char *opt ) );
 void  file_close       args( ( FILE *file ) );
 
-/* void *  alloc_mem       args( ( int sMem ) );
 void    check_freed     args( ( unsigned int first, unsigned int last) );
 void    check_free_mem  args( ( void ) );
 void *  alloc_perm      args( ( int sMem ) );
-void    free_mem        args( ( void *pMem, int sMem ) );*/
+/*void    free_mem        args( ( void *pMem, int sMem ) );*/
 
-/* spec: renamed getmem -> _getmem, nuked unused alloc_perm */
-/* void *  alloc_perm      args( ( int sMem ) ); */
 void *_getmem args( ( int size, const char *caller, int log ) );
 void dispose args( ( void *mem, int size ) );
 char *str_dup args( ( const char *str ) );
@@ -1462,7 +1452,6 @@ void append_file args( ( CHAR_DATA * ch, char *file, char *str ) );
 void bug args( ( const char *str, int param ) );
 void log_string args( ( const char *str ) );
 void tail_chain args( ( void ) );
-void send_to_descrips args( ( const char *message ) );
 void bug_string args( ( const char *str, const char *str2 ) );
 /* Added stuff -Flar */
 void bugf( char *fmt, ... ) __attribute__ ( ( format( printf, 1, 2 ) ) );

@@ -72,6 +72,10 @@
 #include "h/bitmask.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #if !defined(macintosh)
 extern int _filbuf args( ( FILE * ) );
 #endif

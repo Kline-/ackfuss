@@ -45,6 +45,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 const char *get_ruler_title( int ruler_rank, int sex )
 {
 
