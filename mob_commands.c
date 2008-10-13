@@ -53,6 +53,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 /* This routine transfers between alpha and numeric forms of the
  *  mob_prog bitvector types. It allows the words to show up in mstat to
  *  make it just a hair bit easier to see what a mob should be doing.

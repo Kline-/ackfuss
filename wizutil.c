@@ -41,6 +41,10 @@
 #include <string.h>
 #include "globals.h"
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 const char wizutil_id[] = "$Id: wizutil.c,v 1.6 1996/01/04 21:30:45 root Exp root $";
 
 /*

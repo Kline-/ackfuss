@@ -54,6 +54,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #endif
 
 #define IMCKEY( literal, field, value ) \

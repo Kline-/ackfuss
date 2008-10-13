@@ -72,6 +72,10 @@
 #include "h/buildtab.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #ifndef DEC_CURSOR_H
 #include "h/cursor.h"
 #endif

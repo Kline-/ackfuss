@@ -42,6 +42,10 @@
 #include "h/act_info.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #define DEC_TRIGGER( fun )		TRIGGER_FUN  fun
 
 typedef void TRIGGER_FUN args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );

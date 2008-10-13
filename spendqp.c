@@ -57,6 +57,10 @@
 #include "h/build.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 void save_brands(  )
 {
 

@@ -50,35 +50,19 @@
 #include "h/bitmask.h"
 #endif
 
-#define SPELL_NUMBER 3
-#define DECLARE_CLUTCH_FUN( fun )	CLUTCH_FUN fun
+#ifndef DEC_CLUTCH_H
+#include "h/clutch.h"
+#endif
 
-typedef void CLUTCH_FUN args( ( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj ) );
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
 
-
-DECLARE_CLUTCH_FUN( clutch_portal );
-DECLARE_CLUTCH_FUN( clutch_gate );
-
-struct clutch_type
-{
-   int command_number;
-   bool destroy;  /* Destory object once clutched? */
-   CLUTCH_FUN *func_name;  /* The name of the function.... */
-};
-
-
-const struct clutch_type clutch_table[SPELL_NUMBER] = {
+CLUTCH_TYPE clutch_table[SPELL_NUMBER] = {
    {1, TRUE, clutch_portal},
    {2, TRUE, clutch_gate},
    {3, FALSE, clutch_portal}
 };
-
-
-/* Other local functions... */
-bool valid_clutch_number( int number );
-
-
-
 
 bool valid_clutch_number( int number )
 {

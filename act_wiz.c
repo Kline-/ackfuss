@@ -53,6 +53,10 @@
 #include "h/act_info.h"
 #endif
 
+#ifndef DEC_ACT_OBJ_H
+#include "h/act_obj.h"
+#endif
+
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
 #endif
@@ -73,6 +77,10 @@
 #include "h/buildtab.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #ifndef DEC_EMAIL_H
 #include "email.h"
 #endif
@@ -85,6 +93,8 @@ extern bool deathmatch;
 extern bool wizlock;
 extern OBJ_DATA *auction_item;
 extern bool disable_timer_abort;
+extern int port;
+extern int control;
 
 void do_transdm( CHAR_DATA * ch, char *argument )
 {
@@ -6056,4 +6066,118 @@ void do_slay( CHAR_DATA * ch, char *argument )
    act( "$n sucks out $N's life energy!", ch, NULL, victim, TO_NOTVICT );
    raw_kill( victim, "" );
    return;
+}
+
+/* Here it is boys and girls the HOT reboot function and all its nifty  * little parts!! - Flar
+ */
+void do_hotreboo( CHAR_DATA * ch, char *argument )
+{
+   send_to_char( "If you want to do a @@R@@fHOT@@Breboot@@N....spell it out.\n\r", ch );
+   return;
+}
+
+void do_hotreboot( CHAR_DATA * ch, char *argument )
+{
+   FILE *fp;
+   DESCRIPTOR_DATA *d, *d_next;
+   char buf[256], buf2[100], buf3[100];
+   extern int saving_area;
+
+   if( saving_area )
+   {
+      send_to_char( "Please wait until area saving is complete.\n", ch );
+      return;
+   }
+
+   fp = fopen( COPYOVER_FILE, "w" );
+
+   if( !fp )
+   {
+      send_to_char( "Copyover file not writeable, aborted.\n\r", ch );
+      log_f( "Could not write to copyover file: %s", COPYOVER_FILE );
+      perror( "do_copyover:file_open" );
+      return;
+   }
+
+   if( auction_item != NULL )
+      do_auction( ch, "stop" );
+
+   xprintf( buf,
+            "\n\r**** HOTreboot by An Immortal - Please remain ONLINE ****\n\r*********** We will be back in 30 seconds!! *************\n\n\r");
+
+   /*
+    * For each PLAYING descriptor( non-negative ), save its state
+    */
+   for( d = first_desc; d; d = d_next )
+   {
+      CHAR_DATA *och = CH( d );
+      d_next = d->next; /* We delete from the list , so need to save this */
+
+      if( !d->character || d->connected < 0 )   /* drop those logging on */
+      {
+         write_to_descriptor( d->descriptor, "\n\r@Sorry, ACK! MUD rebooting. Come back in a few minutes.\n\r", 0 );
+         close_socket( d );   /* throw'em out */
+      }
+      else
+      {
+         fprintf( fp, "%d %s %s\n", d->descriptor, och->name, d->host );
+         if( och->level == 1 )
+         {
+
+            write_to_descriptor( d->descriptor,
+                                 "Since you are level one, and level one characters do not save....you have been advanced!\n\r",
+                                 0 );
+            och->level = 2;
+            och->lvl[och->p_class] = 2;
+         }
+         save_char_obj( och );
+         write_to_descriptor( d->descriptor, buf, 0 );
+      }
+   }
+
+   fprintf( fp, "-1\n" );
+   fclose( fp );
+
+   /*
+    * Close reserve and other always-open files and release other resources
+    */
+
+   fclose( fpReserve );
+
+#ifdef IMC
+   imc_hotboot(  );
+#endif
+
+   /*
+    * exec - descriptors are inherited
+    */
+
+   xprintf( buf, "%d", port );
+   xprintf( buf2, "%d", control );
+#ifdef IMC
+   if( this_imcmud )
+      snprintf( buf3, 100, "%d", this_imcmud->desc );
+   else
+      strncpy( buf3, "-1", 100 );
+#else
+   strncpy( buf3, "-1", 100 );
+#endif
+
+   /*
+    * spec: handle profiling cleanly here
+    */
+#ifdef PROF
+   if( !fork(  ) )   /* dump profile info */
+      exit( 0 );
+   signal( SIGPROF, SIG_IGN );
+#endif
+
+   execl( EXE_FILE, "ACK! MUD", buf, "HOTreboot", buf2, buf3, ( char * )NULL );
+
+   /*
+    * Failed - sucessful exec will not return
+    */
+
+   perror( "do_copyover: execl" );
+   send_to_char( "HOTreboot FAILED! Something is wrong in the shell!\n\r", ch );
 }

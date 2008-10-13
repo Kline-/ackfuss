@@ -46,6 +46,10 @@
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"
 #endif
+
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
                            /*
                             * #define CONST_SOCIAL  
                                                          *//*

@@ -66,12 +66,14 @@
 #define DECLARE_SPEC_FUN( fun )         bool fun( )
 #define DECLARE_SPELL_FUN( fun )        bool fun( )
 #define DECLARE_OBJ_FUN( fun )		void fun( )
+#define DECLARE_CLUTCH_FUN( fun )       void fun( )
 #else
 #define args( list )                    list
 #define DECLARE_DO_FUN( fun )           DO_FUN    fun
 #define DECLARE_SPEC_FUN( fun )         SPEC_FUN  fun
 #define DECLARE_SPELL_FUN( fun )        SPELL_FUN fun
 #define DECLARE_OBJ_FUN( fun )          OBJ_FUN   fun
+#define DECLARE_SPEC_FUN( fun )         SPEC_FUN  fun
 #endif
 
 /*
@@ -192,12 +194,14 @@ typedef struct quest_info QUEST_INFO;
 typedef struct eq_type EQ_TYPE;
 typedef struct h_queue H_QUEUE;
 typedef struct social_type SOCIAL_TYPE;
+typedef struct clutch_type CLUTCH_TYPE;
 
 /*
  * Function types.
  */
-typedef void DO_FUN args( ( CHAR_DATA * ch, char *argument ) );
-typedef bool SPEC_FUN args( ( CHAR_DATA * ch ) );
-typedef bool SPELL_FUN args( ( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj ) );
-typedef void OBJ_FUN args( ( OBJ_DATA * obj, CHAR_DATA * keeper ) );
-typedef void RET_FUN args( ( MESSAGE_DATA *, char **, CHAR_DATA *, bool ) );
+typedef void CLUTCH_FUN args( ( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj ) );
+typedef void DO_FUN     args( ( CHAR_DATA * ch, char *argument ) );
+typedef bool SPEC_FUN   args( ( CHAR_DATA * ch ) );
+typedef bool SPELL_FUN  args( ( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj ) );
+typedef void OBJ_FUN    args( ( OBJ_DATA * obj, CHAR_DATA * keeper ) );
+typedef void RET_FUN    args( ( MESSAGE_DATA *, char **, CHAR_DATA *, bool ) );

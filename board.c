@@ -51,6 +51,10 @@ include < types.h >
 #include "h/build.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #ifndef DEC_LISTS_H
 #include "lists.h"
 #endif

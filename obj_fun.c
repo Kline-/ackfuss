@@ -42,6 +42,10 @@
 #include "h/bitmask.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 DECLARE_OBJ_FUN( objfun_giggle );   /* test obj_fun   */
 DECLARE_OBJ_FUN( objfun_cast_fight );  /* Casts in fights   */
 DECLARE_OBJ_FUN( objfun_sword_aggro ); /* starts fights  */

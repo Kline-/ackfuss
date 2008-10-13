@@ -59,6 +59,10 @@
 #include "h/build.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 bool check_valid_ride( CHAR_DATA * ch );
 extern bool deathmatch;
 

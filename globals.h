@@ -185,10 +185,8 @@ DECLARE_DO_FUN( do_berserk );
 DECLARE_DO_FUN( do_rbid );
 DECLARE_DO_FUN( do_mbid );
 DECLARE_DO_FUN( do_circle );
-DECLARE_DO_FUN( do_clutch );
 DECLARE_DO_FUN( do_dirt );
 DECLARE_DO_FUN( do_feed );
-DECLARE_DO_FUN( do_finger );
 DECLARE_DO_FUN( do_gold );
 DECLARE_DO_FUN( do_headbutt );
 DECLARE_DO_FUN( do_knee );
@@ -258,8 +256,6 @@ DECLARE_DO_FUN( do_rulers );
 /*
  *  New immcommands
  */
-DECLARE_DO_FUN( do_hotreboo );   /* Flar */
-DECLARE_DO_FUN( do_hotreboot );  /* Flar */
 DECLARE_DO_FUN( do_sedit );
 DECLARE_DO_FUN( do_scheck );
 DECLARE_DO_FUN( do_immbrand );
