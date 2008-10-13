@@ -18,14 +18,10 @@ VERS = AckFUSS 4.3.8
 #Uncomment to compile in Cygwin
 #CYGWIN = -DCYGWIN
 
-# Uncomment the two lines below if compiling on a Solaris box
-#SOLARIS_FLAG = -Dsun -DSYSV -Wno-char-subscripts
-#SOLARIS_LINK = -lnsl -lsocket -lresolv
-
 #-Wshadow -Werror -Wformat-security -Wconversion -Wwrite-strings
 W_FLAGS = -Wall -Wpointer-arith -Wredundant-decls -Wcast-align
-C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(SOLARIS_FLAG)
-L_FLAGS = -lcrypt -lm $(SOLARIS_LINK)
+C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF)
+L_FLAGS = -lcrypt -lm
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1

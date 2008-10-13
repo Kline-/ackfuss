@@ -66,9 +66,7 @@
 #include <time.h>
 #include "globals.h"
 #include <signal.h>
-#if !defined( ultrix )
 #include <memory.h>
-#endif
 
 #include "ssm.h"
 
