@@ -37,10 +37,6 @@
 #include "typedefs.h"
 #endif
 
-#ifndef DEC_ACT_MOB_H
-#include "act_mob.h"
-#endif
-
 /*
  * All of the global linked lists, in one clump.  Declarations here,
  * actual variables in lists.c

@@ -36,11 +36,6 @@
 #include <time.h>
 #include "globals.h"
 
-#ifndef DEC_ACT_MOB_H
-#include "act_mob.h"
-#endif
-
-
 /*
  * All of the global linked lists, in one clump.  Variables here,
  * declarations in lists.h

@@ -52,8 +52,12 @@
 #include "money.h"
 #endif
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
 #ifndef DEC_ACT_MOB_H
-#include "act_mob.h"
+#include "h/act_mob.h"
 #endif
 
 #if !defined(macintosh)

@@ -237,6 +237,7 @@ typedef struct sysdata_type SYS_DATA_TYPE;
 typedef struct money_type MONEY_TYPE;
 typedef struct buf_data_struct BUF_DATA_STRUCT;
 typedef struct hash_entry_tp HASH_ENTRY;
+typedef struct npc_group_data NPC_GROUP_DATA;
 
 /* Kline */
 typedef struct bmlist BM_LIST;

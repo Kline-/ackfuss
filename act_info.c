@@ -50,6 +50,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
@@ -91,21 +95,6 @@ const char *where_name[] = {
    "-*worn on feet*-      ",
    "-*worn on hooves*-    ",
 };
-
-
-
-
-/*
- * Local functions.
- */
-char *format_obj_to_char args( ( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort ) );
-void show_list_to_char args( ( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShowNothing ) );
-void show_char_to_char_0 args( ( CHAR_DATA * victim, CHAR_DATA * ch ) );
-void show_char_to_char_1 args( ( CHAR_DATA * victim, CHAR_DATA * ch ) );
-void show_char_to_char args( ( CHAR_DATA * list, CHAR_DATA * ch ) );
-bool check_blind args( ( CHAR_DATA * ch ) );
-
-
 
 char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
 {

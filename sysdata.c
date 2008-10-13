@@ -39,6 +39,10 @@
 #include <math.h>
 #include <stdlib.h>
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
 #define KEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { field  = value; fMatch = TRUE;  break;}
 #define SKEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { if (field!=NULL) free_string(field);field  = value; fMatch = TRUE;  break;}
 
