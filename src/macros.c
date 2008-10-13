@@ -45,6 +45,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 void reset_gain_stats( CHAR_DATA * ch )
 {
    short index = 0;

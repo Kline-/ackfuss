@@ -46,6 +46,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

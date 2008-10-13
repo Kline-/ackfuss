@@ -52,6 +52,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 bool remove_bit( BITMASK *mask, int bit ) /* Returns FALSE if nothing removed. TRUE if so. */
 {
  BM_LIST *pBlist = 0, *last = 0;

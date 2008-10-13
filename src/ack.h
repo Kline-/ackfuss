@@ -1388,29 +1388,6 @@ struct eq_type
 #define SF      SPEC_FUN
 #define OF	OBJ_FUN
 
-/* bitmask.c */
-bool    remove_bit         args( ( BITMASK *mask, int bit ) );
-bool    set_bit            args( ( BITMASK *mask, int bit ) );
-bool    is_set             args( ( BITMASK *mask, int bit ) );
-int     *serialize_bitmask args( ( BITMASK *mask ) );
-bool    free_bitmask       args( ( BITMASK *pBmask ) );
-BITMASK init_bitmask       args( ( BITMASK *bm ) );
-void    load_bitmask       args( ( BITMASK *pBmask, FILE *fp ) );
-char    *save_bitmask      args( ( BITMASK *pBmask ) );
-void    bv_to_bm           args( ( int list, BITMASK *mask ) );
-void    debug_bitmask      args( ( BITMASK *pBmask ) );
-void    bm_test            args( ( void ) );
-
-/* board.c */
-BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj );
-void do_show_contents args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );
-void do_show_message args( ( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj ) );
-void do_edit_message args( ( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj ) );
-void do_add_to_message args( ( CHAR_DATA * ch, char *argument ) );
-void do_start_a_message args( ( CHAR_DATA * ch, char *argument ) );
-void save_message_data args( ( void ) );
-void load_messages args( ( void ) );
-
 /* comm.c */
 void close_socket args( ( DESCRIPTOR_DATA * dclose ) );
 void show_menu_to args( ( DESCRIPTOR_DATA * d ) ); /* Main */

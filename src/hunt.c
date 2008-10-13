@@ -53,6 +53,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 #define NEVER_FREE_HUNT
 
 H_QUEUE *h_head = NULL;

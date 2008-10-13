@@ -46,6 +46,10 @@
 #include "h/act_move.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 extern bool deathmatch;
 
 /*

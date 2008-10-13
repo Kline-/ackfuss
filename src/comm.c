@@ -81,6 +81,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 /*
  * Socket and TCP/IP stuff.
  */

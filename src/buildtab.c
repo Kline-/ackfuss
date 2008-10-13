@@ -38,6 +38,9 @@
 #include <string.h>
 #include "globals.h"
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
 
 /* The tables in here are:
      Mob act flags       :    tab_mob_act         : bitmask

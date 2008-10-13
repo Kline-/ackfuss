@@ -58,6 +58,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 bool able_to_level( CHAR_DATA * ch )
 {
    bool in_need = FALSE;

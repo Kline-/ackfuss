@@ -50,6 +50,10 @@
 #include <ctype.h>
 #include "globals.h"
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 /*
  * Local function prototypes
  */
