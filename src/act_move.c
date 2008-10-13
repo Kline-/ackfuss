@@ -47,8 +47,13 @@
 #include "h/act_info.h"
 #endif
 
+#ifndef DEC_ACT_MOVE_H
+#include "h/act_move.h"
+#endif
+
 bool check_valid_ride( CHAR_DATA * ch );
 extern bool deathmatch;
+
 const char *compass_name[] = {
    "north", "east", "south", "west", "up", "down"
 };
@@ -63,7 +68,6 @@ char *const rev_name[] = {
    "the South", "the West", "the North", "the East", "Below", "Above"
 };
 
-
 extern short const rev_dir[] = {
    2, 3, 0, 1, 5, 4
 };
@@ -71,25 +75,6 @@ extern short const rev_dir[] = {
 const short movement_loss[SECT_MAX] = {
    1, 2, 2, 3, 4, 6, 4, 1, 6, 10, 6, 1
 };
-
-
-
-/*
- * Local functions.
- */
-int find_door args( ( CHAR_DATA * ch, char *arg ) );
-bool has_key args( ( CHAR_DATA * ch, int key ) );
-/*
-struct fol_data
-{
-  struct fol_data *next;
-  CHAR_DATA *ch;
-};
-
-struct fol_data *fol_stack;
-struct fol_data *fol_free;
-
-*/
 
 void move_char( CHAR_DATA * ch, int door, bool look )
 {
@@ -100,7 +85,6 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    EXIT_DATA *pexit;
    char buf[MAX_STRING_LENGTH];
    char move_buf[MAX_STRING_LENGTH];
-/*    struct fol_data *fol = NULL;   */
    char tmp[MAX_STRING_LENGTH];
    int need_movement;
    char door_name_leave[MSL];

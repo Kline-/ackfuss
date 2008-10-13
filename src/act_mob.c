@@ -46,6 +46,10 @@
 #include "h/act_mob.h"
 #endif
 
+#ifndef DEC_ACT_MOVE_H
+#include "h/act_move.h"
+#endif
+
 bool able_to_level( CHAR_DATA * ch )
 {
    bool in_need = FALSE;

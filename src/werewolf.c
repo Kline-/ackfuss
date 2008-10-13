@@ -42,6 +42,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_MOVE_H
+#include "h/act_move.h"
+#endif
+
 extern bool deathmatch;
 
 /*

@@ -73,6 +73,10 @@
 #include "h/act_info.h"
 #endif
 
+#ifndef DEC_ACT_OBJ_H
+#include "h/act_obj.h"
+#endif
+
 /*
  * Socket and TCP/IP stuff.
  */

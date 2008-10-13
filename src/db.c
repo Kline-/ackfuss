@@ -60,6 +60,10 @@
 #include "h/act_mob.h"
 #endif
 
+#ifndef DEC_ACT_OBJ_H
+#include "h/act_obj.h"
+#endif
+
 #if !defined(macintosh)
 extern int _filbuf args( ( FILE * ) );
 #endif

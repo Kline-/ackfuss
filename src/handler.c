@@ -50,6 +50,14 @@
 #include "h/act_mob.h"
 #endif
 
+#ifndef DEC_ACT_MOVE_H
+#include "h/act_move.h"
+#endif
+
+#ifndef DEC_ACT_OBJ_H
+#include "h/act_obj.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

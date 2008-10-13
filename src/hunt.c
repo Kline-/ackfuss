@@ -45,6 +45,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_MOVE_H
+#include "h/act_move.h"
+#endif
+
 #define NEVER_FREE_HUNT
 
 struct h_queue

@@ -54,6 +54,10 @@
 #include "h/act_info.h"
 #endif
 
+#ifndef DEC_ACT_OBJ_H
+#include "h/act_obj.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
