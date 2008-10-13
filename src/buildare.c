@@ -35,12 +35,20 @@
 /* This file deals with adding/deleting and manipulating areas
    as a whole, also checking on permissions and deals with area bank. */
 
-
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "globals.h"
+
+#ifndef DEC_AREASAVE_H
+#include "h/areasave.h"
+#endif
+
+#ifndef DEC_BUILD_H
+#include "h/build.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -71,10 +79,6 @@ extern int sAllocString;
 extern int nAllocPerm;
 extern int sAllocPerm;
 extern int fBootDb;
-
-/* Some build.c functions : */
-ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, short vnum, short sector );
-
 
 int build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 {

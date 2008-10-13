@@ -47,6 +47,10 @@ include < types.h >
 #include "h/board.h"
 #endif
 
+#ifndef DEC_BUILD_H
+#include "h/build.h"
+#endif
+
 #ifndef DEC_LISTS_H
 #include "lists.h"
 #endif

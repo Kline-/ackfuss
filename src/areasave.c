@@ -42,8 +42,16 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_AREASAVE_H
+#include "h/areasave.h"
+#endif
+
 #ifndef DEC_BITMASK_H
 #include "h/bitmask.h"
+#endif
+
+#ifndef DEC_BUILD_H
+#include "h/build.h"
 #endif
 
 /* Way this works:
@@ -98,28 +106,6 @@ RESET_DATA *ResetPointer;
 FILE *SaveFile;
 FILE *Envy;
 int AreasModified = 0;
-
-/* Local functions */
-/* void build_save(); proto in merc.h */
-void build_save_area( void );
-void build_save_mobs( void );
-void build_save_mobprogs( void );
-void build_save_objects( void );
-void build_save_rooms( void );
-void build_save_shops( void );
-void build_save_resets( void );
-void build_save_specs( void );
-void build_save_objfuns( void );
-void build_save_end( void );
-char *mprog_type_to_name( int );
-void vuild_save_flush( void );
-/*  int convert(int lev); */
-/* Convert levels from ack -> envy! */
-
-/* int  convert(int lev)	*/
-/*  { 		*/
-/*   return( lev - ( lev/5 ) ); 	*/
-/* }   */
 
 void do_savearea( CHAR_DATA * ch, char *argument )
 {
