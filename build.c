@@ -43,6 +43,10 @@
 #include "h/act_info.h"
 #endif
 
+#ifndef DEC_ACT_MOVE_H
+#include "h/act_move.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

@@ -1381,16 +1381,6 @@ struct eq_type
 #define SF      SPEC_FUN
 #define OF	OBJ_FUN
 
-/* act_move.c */
-void move_char args( ( CHAR_DATA * ch, int door, bool look ) );
-
-/* act_obj.c */
-
-void get_obj args( ( CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container ) );
-bool can_wear_at( CHAR_DATA * ch, OBJ_DATA * obj, int location );
-
-
-
 /* act_wiz.c */
 ROOM_INDEX_DATA *find_location args( ( CHAR_DATA * ch, char *arg ) );
 
