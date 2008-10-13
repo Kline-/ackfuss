@@ -6,7 +6,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#define DEC_ACT_CLAN_H 1
+#define DEC_ACT_CLAN_H
 
 #if __STDC__ || defined(__cplusplus)
 #define P_(s) s
