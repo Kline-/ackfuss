@@ -51,6 +51,10 @@
 #include "h/act_info.h"
 #endif
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 void save_brands(  )
 {
 

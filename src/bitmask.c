@@ -48,6 +48,10 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 bool remove_bit( BITMASK *mask, int bit ) /* Returns FALSE if nothing removed. TRUE if so. */
 {
  BM_LIST *pBlist = 0, *last = 0;

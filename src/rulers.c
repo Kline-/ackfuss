@@ -37,12 +37,14 @@
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
-/* For forks etc. */
 #include <unistd.h>
 #include <fcntl.h>
-
 #include "globals.h"
 #include "tables.h"
+
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
 
 const char *get_ruler_title( int ruler_rank, int sex )
 {

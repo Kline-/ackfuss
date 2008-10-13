@@ -60,6 +60,10 @@
 #include "h/act_obj.h"
 #endif
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -3726,60 +3730,6 @@ void do_disarm( CHAR_DATA * ch, char *argument )
       disarm( ch, victim, obj );
    else
       send_to_char( "You failed.\n\r", ch );
-   return;
-}
-
-
-
-void do_sla( CHAR_DATA * ch, char *argument )
-{
-   send_to_char( "If you want to SLAY, spell it out.\n\r", ch );
-   return;
-}
-
-
-
-void do_slay( CHAR_DATA * ch, char *argument )
-{
-   CHAR_DATA *victim;
-   char arg[MAX_INPUT_LENGTH];
-
-   one_argument( argument, arg );
-   if( arg[0] == '\0' )
-   {
-      send_to_char( "Slay whom?\n\r", ch );
-      return;
-   }
-
-   if( ( victim = get_char_room( ch, arg ) ) == NULL )
-   {
-      send_to_char( "They aren't here.\n\r", ch );
-      return;
-   }
-
-   if( ch == victim )
-   {
-      send_to_char( "Suicide is a mortal sin.\n\r", ch );
-      return;
-   }
-
-
-   if( IS_HERO( victim ) )
-   {
-      send_to_char( "Not on other Immortal / Adept players!\n\r", ch );
-      return;
-   }
-
-   if( !IS_NPC( victim ) && victim->level >= ch->level )
-   {
-      send_to_char( "You failed.\n\r", ch );
-      return;
-   }
-
-   act( "You suck the life energy out of $M!", ch, NULL, victim, TO_CHAR );
-   act( "$n sucks out your life energy!", ch, NULL, victim, TO_VICT );
-   act( "$n sucks out $N's life energy!", ch, NULL, victim, TO_NOTVICT );
-   raw_kill( victim, "" );
    return;
 }
 

@@ -1388,9 +1388,6 @@ struct eq_type
 #define SF      SPEC_FUN
 #define OF	OBJ_FUN
 
-/* act_wiz.c */
-ROOM_INDEX_DATA *find_location args( ( CHAR_DATA * ch, char *arg ) );
-
 /* bitmask.c */
 bool    remove_bit         args( ( BITMASK *mask, int bit ) );
 bool    set_bit            args( ( BITMASK *mask, int bit ) );
@@ -1569,7 +1566,6 @@ CD   *switch_char     args( ( CHAR_DATA * victim, int mvnum, int poly_level ) );
 CD   *unswitch_char   args( ( CHAR_DATA * ch ) );
 int  best_class       args( ( CHAR_DATA * ch, int sn ) );
 int  best_level       args( ( CHAR_DATA * ch, int sn ) );
-void monitor_chan     args( ( const char *message, int channel ) );
 void set_stun         args( ( CHAR_DATA * victim, int stunTime ) );
 CD   *get_char        args( ( CHAR_DATA * ch ) );
 void mark_from_room   args( ( int this_room_vnum, MARK_DATA * mark ) );

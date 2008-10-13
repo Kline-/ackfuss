@@ -42,6 +42,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

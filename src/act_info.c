@@ -58,6 +58,10 @@
 #include "h/act_obj.h"
 #endif
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
