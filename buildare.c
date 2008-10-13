@@ -49,6 +49,10 @@
 #include "h/build.h"
 #endif
 
+#ifndef DEC_BUILDARE_H
+#include "h/buildare.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

@@ -41,10 +41,13 @@
 #include <string.h>
 #include <ctype.h>
 #include "globals.h"
-#include "tables.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
+#endif
+
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
 #endif
 
 void do_enchant( CHAR_DATA * ch, char *argument )

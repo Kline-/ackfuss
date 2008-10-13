@@ -75,6 +75,10 @@
 #include "h/build.h"
 #endif
 
+#ifndef DEC_BUILDARE_H
+#include "h/buildare.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
