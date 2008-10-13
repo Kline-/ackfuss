@@ -42,22 +42,16 @@ include < types.h >
 #include <string.h>
 #include <time.h>
 #include "globals.h"
+
+#ifndef DEC_BOARD_H
+#include "h/board.h"
+#endif
+
 #ifndef DEC_LISTS_H
 #include "lists.h"
 #endif
 
-#define BOARD_DIR "boards"
 #define T2000 -1  /* Terminator for files... */
-
-
-
-/* Local functions */
-void save_board( BOARD_DATA * board, CHAR_DATA * ch );
-void finished_editing( MESSAGE_DATA * msg, char **dest, CHAR_DATA * ch, bool saved );
-
-/* Some locals used to manage the list of messages: */
-
-
 
 /**************************************************************************
  *               MAG Modified outline                                     *
@@ -111,7 +105,6 @@ void finished_editing( MESSAGE_DATA * msg, char **dest, CHAR_DATA * ch, bool sav
  * Ick ick ick!  Remove all the dammed builder functions, and use the     *
  * general merc memory functions.  -- Altrag                              *
  **************************************************************************/
-
 
 void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
 {

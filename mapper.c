@@ -53,6 +53,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 int door_marks[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
 int offsets[4][2] = { {-2, 0}, {0, 2}, {2, 0}, {0, -2} };
 

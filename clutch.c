@@ -46,8 +46,11 @@
 #include "h/act_info.h"
 #endif
 
-#define SPELL_NUMBER 3
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
 
+#define SPELL_NUMBER 3
 #define DECLARE_CLUTCH_FUN( fun )	CLUTCH_FUN fun
 
 typedef void CLUTCH_FUN args( ( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj ) );

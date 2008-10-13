@@ -52,6 +52,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 /* external functions
  */
 int move_gain( CHAR_DATA * ch );

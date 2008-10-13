@@ -55,6 +55,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 /* These set of clan functions by Zen */
 extern POL_DATA politics_data;
 extern COUNCIL_DATA super_councils[MAX_SUPER];

@@ -26,13 +26,13 @@ L_FLAGS = -lcrypt -lm
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
 
-C_FILES = act_clan.c act_comm.c act_info.c act_mob.c act_move.c act_obj.c act_wiz.c \
-	  areachk.c areasave.c bitmask.c board.c build.c buildare.c buildtab.c clutch.c comm.c \
-	  const.c db.c email.c enchant.c fight.c handler.c hash.c hunt.c interp.c lists.c \
-	  macros.c magic.c magic2.c magic3.c magic4.c mapper.c mob_commands.c mob_prog.c \
-	  money.c mount.c mquest.c obj_fun.c pdelete.c quest.c rulers.c save.c scheck.c social-edit.c \
-	  special.c spell_dam.c spendqp.c ssm.c strfuns.c sysdata.c trigger.c update.c \
-	  vampire.c werewolf.c wizutil.c write.c
+C_FILES = act_clan.c act_comm.c act_info.c act_mob.c act_move.c act_obj.c act_wiz.c areachk.c \
+	  areasave.c bitmask.c board.c build.c buildare.c buildtab.c clutch.c comm.c const.c \
+	  db.c email.c enchant.c fight.c handler.c hash.c hunt.c interp.c lists.c macros.c \
+	  magic.c mapper.c mob_commands.c mob_prog.c money.c mount.c mquest.c obj_fun.c \
+	  pdelete.c quest.c rulers.c save.c scheck.c social-edit.c special.c spell_dam.c \
+	  spendqp.c ssm.c strfuns.c sysdata.c trigger.c update.c vampire.c werewolf.c \
+	  wizutil.c write.c
 
 ifdef IMC
    C_FILES := imc.c sha256.c $(C_FILES)
@@ -82,9 +82,6 @@ endif
 o/%.o: %.c
 	@echo "Compiling `echo $@ | cut -c 3-` ...";
 	@$(CC) -c $(C_FLAGS) $< -o $@
-
-.c.o: ack.h
-	@$(CC) -c $(C_FLAGS) $<
 
 scan: scan.o
 	rm -f scan

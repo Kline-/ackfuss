@@ -38,6 +38,10 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 DECLARE_OBJ_FUN( objfun_giggle );   /* test obj_fun   */
 DECLARE_OBJ_FUN( objfun_cast_fight );  /* Casts in fights   */
 DECLARE_OBJ_FUN( objfun_sword_aggro ); /* starts fights  */

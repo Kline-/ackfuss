@@ -43,8 +43,24 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
+#ifndef DEC_ACT_MOVE_H
+#include "h/act_move.h"
+#endif
+
+#ifndef DEC_ACT_OBJ_H
+#include "h/act_obj.h"
+#endif
+
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
+#endif
+
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
 #endif
 
 #ifndef DEC_MAGIC_H
@@ -2553,8 +2569,6 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    return TRUE;
 }
 
-
-
 bool spell_infravision( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
@@ -2570,5 +2584,4871 @@ bool spell_infravision( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    affect_to_char( victim, &af );
    send_to_char( "Your eyes glow red.\n\r", victim );
    act( "$n's eyes glow red.", victim, NULL, NULL, TO_ROOM );
+   return TRUE;
+}
+
+bool spell_invis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim;
+   OBJ_DATA *ob;
+   AFFECT_DATA af;
+
+   if( target_name[0] == '\0' )
+   {
+      send_to_char( "Make who or what invisible?\n\r", ch );
+      return FALSE;
+   }
+
+
+   if( ( victim = get_char_room( ch, target_name ) ) != NULL )
+   {
+      if( IS_AFFECTED( victim, AFF_INVISIBLE ) || item_has_apply( victim, ITEM_APPLY_INV ) )
+         return ( ch == victim ? FALSE : TRUE );
+
+      act( "$n fades out of existence.", victim, NULL, NULL, TO_ROOM );
+      af.type = sn;
+      af.duration = 4 + ( level / 5 );
+      af.location = APPLY_NONE;
+      af.modifier = 0;
+      af.bitvector = AFF_INVISIBLE;
+      affect_to_char( victim, &af );
+      send_to_char( "You fade out of existence.\n\r", victim );
+      return TRUE;
+   }
+   else if( ( ob = get_obj_carry( ch, target_name ) ) != NULL )
+   {
+      if( !IS_SET( ob->extra_flags, ITEM_INVIS ) )
+      {
+         SET_BIT( ob->extra_flags, ITEM_INVIS );
+         act( "$p shimmers out of visibility.", ch, ob, NULL, TO_CHAR );
+         act( "$p shimmers out of visibility.", ch, ob, NULL, TO_ROOM );
+         return TRUE;
+      }
+      else
+      {
+         act( "$p is already invisible!", ch, ob, NULL, TO_CHAR );
+         return FALSE;
+      }
+   }
+   else
+   {
+      send_to_char( "Couldn't find that person or object.\n\r", ch );
+      return FALSE;
+   }
+   return FALSE;
+}
+
+
+bool spell_know_alignment( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   char *msg;
+   int ap;
+
+   ap = victim->alignment;
+
+   if( ap > 700 )
+      msg = "$N has an aura as white as the driven snow.";
+   else if( ap > 350 )
+      msg = "$N is of excellent moral character.";
+   else if( ap > 100 )
+      msg = "$N is often kind and thoughtful.";
+   else if( ap > -100 )
+      msg = "$N doesn't have a firm moral commitment.";
+   else if( ap > -350 )
+      msg = "$N lies to $S friends.";
+   else if( ap > -700 )
+      msg = "$N's slash DISEMBOWELS you!";
+   else
+      msg = "I'd rather just not say anything at all about $N.";
+
+   act( msg, ch, NULL, victim, TO_CHAR );
+   return TRUE;
+}
+
+
+
+bool spell_lightning_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   static const short dam_each[] = {
+      0,
+      0, 0, 0, 0, 0, 0, 0, 0, 25, 28,
+      31, 34, 37, 40, 40, 41, 42, 42, 43, 44,
+      44, 45, 46, 46, 47, 48, 48, 49, 50, 50,
+      51, 52, 52, 53, 54, 54, 55, 56, 56, 57,
+      58, 58, 59, 60, 60, 61, 62, 62, 63, 64
+   };
+   int dam;
+
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
+   level = UMAX( 0, level );
+   dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+
+   sp_damage( obj, ch, victim, dam, REALM_SHOCK, sn, TRUE );
+   return TRUE;
+}
+
+
+
+bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   char buf[MAX_INPUT_LENGTH];
+   OBJ_DATA *ob;
+   OBJ_DATA *in_obj;
+   bool found;
+
+   found = FALSE;
+   for( ob = first_obj; ob != NULL; ob = ob->next )
+   {
+      if( !can_see_obj( ch, ob ) || !is_name( target_name, ob->name )
+          || IS_SET( ob->extra_flags, ITEM_RARE )
+          || ( ob->item_type == ITEM_PIECE )
+          || ( IS_SET( ob->extra_flags, ITEM_UNIQUE ) ) || ( !str_prefix( target_name, "unique" ) ) )
+         continue;
+
+
+
+      for( in_obj = ob; in_obj->in_obj != NULL; in_obj = in_obj->in_obj )
+         ;
+      if( ( in_obj->carried_by != NULL )
+          && ( IS_IMMORTAL( in_obj->carried_by )
+               || ( !IS_NPC( in_obj->carried_by )
+                    && IS_WOLF( in_obj->carried_by )
+                    && ( IS_SHIFTED( in_obj->carried_by ) || ( IS_RAGED( in_obj->carried_by ) ) ) ) ) )
+         break;
+
+      if( in_obj->carried_by != NULL )
+      {
+         found = TRUE;
+         xprintf( buf, "%s carried by %s.\n\r",
+                  ob->short_descr, can_see( ch, in_obj->carried_by ) ? PERS( in_obj->carried_by, ch ) : "someone" );
+      }
+      else
+      {
+         found = TRUE;
+         xprintf( buf, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+      }
+
+      buf[0] = UPPER( buf[0] );
+      send_to_char( buf, ch );
+   }
+
+   if( !found )
+      send_to_char( "Nothing like that in hell, earth, or heaven.\n\r", ch );
+
+   return TRUE;
+}
+
+
+
+bool spell_magic_missile( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int cnt;
+   int hits;
+   static const short dam_each[] = {
+      0,
+      3, 3, 4, 4, 5, 6, 6, 6, 6, 6,
+      7, 7, 7, 7, 7, 8, 8, 8, 8, 8,
+      9, 9, 9, 9, 9, 10, 10, 10, 10, 10,
+      11, 11, 11, 11, 11, 12, 12, 12, 12, 12,
+      13, 13, 13, 13, 13, 14, 14, 14, 14, 14
+   };
+   int dam;
+
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
+   level = UMAX( 0, level );
+   dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   cnt = 1 + ( level >= 30 ) + ( level >= 60 ) + ( level >= 80 );
+   for( hits = 0; hits < cnt; hits++ )
+   {
+      sp_damage( obj, ch, victim, dam, REALM_IMPACT, sn, TRUE );
+
+   }
+
+   return TRUE;
+}
+
+
+
+bool spell_mass_invis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   AFFECT_DATA af;
+   CHAR_DATA *gch;
+
+   for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
+   {
+      if( IS_AFFECTED( gch, AFF_INVISIBLE ) || item_has_apply( gch, ITEM_APPLY_INV ) )
+         continue;
+      act( "$n slowly fades out of existence.", gch, NULL, NULL, TO_ROOM );
+      send_to_char( "You slowly fade out of existence.\n\r", gch );
+      af.type = sn;
+      af.duration = 4 + ( level / 5 );
+      af.location = APPLY_NONE;
+      af.modifier = 0;
+      af.bitvector = AFF_INVISIBLE;
+      affect_to_char( gch, &af );
+   }
+   send_to_char( "Ok.\n\r", ch );
+
+   return TRUE;
+}
+
+
+
+bool spell_null( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   send_to_char( "That's not a spell!\n\r", ch );
+   return FALSE;
+}
+
+
+
+bool spell_pass_door( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_PASS_DOOR ) || item_has_apply( victim, ITEM_APPLY_PASS_DOOR ) )
+      return FALSE;
+   af.type = sn;
+   af.duration = 2 + ( level / 20 );
+   af.location = APPLY_NONE;
+   af.modifier = 0;
+   af.bitvector = AFF_PASS_DOOR;
+   affect_to_char( victim, &af );
+   act( "$n turns translucent.", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "You turn translucent.\n\r", victim );
+   return TRUE;
+}
+
+
+
+bool spell_poison( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( saves_spell( level, victim ) )
+      return TRUE;
+   af.type = sn;
+   af.duration = 12 + ( level / 10 );
+   af.location = APPLY_STR;
+   af.modifier = -2;
+   af.bitvector = AFF_POISON;
+   affect_join( victim, &af );
+   send_to_char( "You feel very sick.\n\r", victim );
+   act( "$n looks very sick.", victim, NULL, NULL, TO_ROOM );
+   return TRUE;
+}
+
+
+
+bool spell_protection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_PROTECT ) || item_has_apply( victim, ITEM_APPLY_PROT ) )
+      return ( ch == victim ? FALSE : TRUE );
+   af.type = sn;
+   af.duration = 8 + ( level / 5 );
+   af.location = APPLY_NONE;
+   af.modifier = 0;
+   af.bitvector = AFF_PROTECT;
+   affect_to_char( victim, &af );
+   send_to_char( "You feel protected.\n\r", victim );
+   act( "$n looks better protected.", victim, NULL, NULL, TO_ROOM );
+   return TRUE;
+}
+
+
+
+bool spell_refresh( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   if( ch->carry_weight >= can_carry_w( ch ) )
+   {
+      send_to_char( "That's not gonna help, you are carrying too much wieght!\n\r", ch );
+      return FALSE;
+   }
+   victim->move = UMIN( victim->move + level, victim->max_move );
+   send_to_char( "You feel less tired.\n\r", victim );
+   act( "$n looks less tired.", victim, NULL, NULL, TO_ROOM );
+   return TRUE;
+}
+
+
+
+bool spell_remove_curse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   if( is_affected( victim, gsn_curse ) )
+   {
+      affect_strip( victim, gsn_curse );
+      send_to_char( "You feel better.\n\r", victim );
+      act( "$n looks more Holy.", victim, NULL, NULL, TO_ROOM );
+   }
+
+   return TRUE;
+}
+
+
+
+bool spell_sanctuary( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_SANCTUARY ) || item_has_apply( victim, ITEM_APPLY_SANC ) )
+      return ( ch == victim ? FALSE : TRUE );
+   af.type = sn;
+   af.duration = 5 + ( level / 20 );
+   af.location = APPLY_NONE;
+   af.modifier = 0;
+   af.bitvector = AFF_SANCTUARY;
+   affect_to_char( victim, &af );
+   act( "$n is surrounded by a white aura.", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "You are surrounded by a white aura.\n\r", victim );
+   return TRUE;
+}
+
+
+
+bool spell_sense_evil( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_DETECT_EVIL ) )
+      return FALSE;
+   af.type = sn;
+   af.duration = 5 + ( level / 10 );
+   af.modifier = 0;
+   af.location = APPLY_NONE;
+   af.bitvector = AFF_DETECT_EVIL;
+   affect_to_char( victim, &af );
+   send_to_char( "Your eyes tingle.\n\r", victim );
+   act( "$n's eyes glow briefly.", victim, NULL, NULL, TO_ROOM );
+   return TRUE;
+}
+
+
+
+bool spell_shield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( victim, sn ) )
+      return FALSE;
+   af.type = sn;
+   af.duration = 4 + ( level / 5 );
+   af.location = APPLY_AC;
+   af.modifier = -20 - get_psuedo_level( ch ) / 5;
+   af.bitvector = 0;
+   affect_to_char( victim, &af );
+   act( "$n is surrounded by a force shield.", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "You are surrounded by a force shield.\n\r", victim );
+   return TRUE;
+}
+
+
+
+bool spell_shocking_grasp( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   static const int dam_each[] = {
+      0,
+      0, 0, 0, 0, 0, 0, 20, 25, 29, 33,
+      36, 39, 39, 39, 40, 40, 41, 41, 42, 42,
+      43, 43, 44, 44, 45, 45, 46, 46, 47, 47,
+      48, 48, 49, 49, 50, 50, 51, 51, 52, 52,
+      53, 53, 54, 54, 55, 55, 56, 56, 57, 57
+   };
+   int dam;
+
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
+   level = UMAX( 0, level );
+   dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   sp_damage( obj, ch, victim, dam, REALM_SHOCK, sn, TRUE );
+   return TRUE;
+}
+
+
+
+bool spell_sleep( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_SLEEP ) || level < victim->level || saves_spell( level, victim ) )
+      return TRUE;
+
+   af.type = sn;
+   af.duration = 4 + ( level / 15 );
+   af.location = APPLY_NONE;
+   af.modifier = 0;
+   af.bitvector = AFF_SLEEP;
+   affect_join( victim, &af );
+
+   if( IS_AWAKE( victim ) )
+   {
+      send_to_char( "You feel very sleepy ..... zzzzzz.\n\r", victim );
+
+      /*
+       * will stop the char from attackin' right away (4-24-96)
+       * -Damane- 
+       */
+      if( victim->position == POS_FIGHTING )
+         stop_fighting( victim, TRUE );
+      do_sleep( victim, "" );
+   }
+
+   return TRUE;
+}
+
+
+
+bool spell_stone_skin( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( ch, sn ) || is_affected( ch, skill_lookup( "stone skin" ) ) )
+      return FALSE;
+   af.type = sn;
+   af.duration = 5 + ( level / 12 );
+   af.location = APPLY_AC;
+   af.modifier = -40 - get_psuedo_level( ch ) / 10;
+   af.bitvector = 0;
+   affect_to_char( victim, &af );
+   act( "$n's skin turns to stone.", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "Your skin turns to stone.\n\r", victim );
+   return TRUE;
+}
+
+
+
+bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim;
+   char buf[MAX_STRING_LENGTH];
+
+   if( ( victim = get_char_world( ch, target_name ) ) == NULL
+       || victim == ch
+       || victim->in_room == NULL
+       || is_set( victim->in_room->room_flags, RFLAG_SAFE )
+       || is_set( victim->in_room->room_flags, RFLAG_NO_RECALL )
+       || !( IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
+       || victim->level >= level + 10
+       || victim->fighting != NULL
+       || ( IS_NPC( victim ) && saves_spell( level, victim ) )
+       || room_is_private( ch->in_room ) || ( ch->in_room->area->max_level < ( victim->level - 15 ) ) )
+   {
+      send_to_char( "You failed.\n\r", ch );
+      return TRUE;
+   }
+   if( ( is_set( victim->act, ACT_NO_SUMMON ) ) || ( IS_NPC( victim ) && ( victim->level > ( level - 21 ) ) ) )
+   {
+      send_to_char( "You seemed unable to snatch your victim!\n\r", ch );
+      send_to_char( "You feel a slight tugging sensation.\n\r", victim );
+      return TRUE;
+   }
+
+   act( "$n disappears suddenly.", victim, NULL, NULL, TO_ROOM );
+   char_from_room( victim );
+   char_to_room( victim, ch->in_room );
+   act( "$n arrives suddenly.", victim, NULL, NULL, TO_ROOM );
+   xprintf( buf, "%s has summoned you!!", ch->name );
+   send_to_char( buf, victim );
+   do_look( victim, "auto" );
+   return TRUE;
+}
+
+
+
+bool spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   ROOM_INDEX_DATA *pRoomIndex;
+
+   if( deathmatch )
+   {
+      send_to_char( "Not during a @@eDeath Match@@N!!\n\r", ch );
+      return FALSE;
+   }
+   if( victim->in_room == NULL
+       || is_set( victim->in_room->room_flags, RFLAG_NO_RECALL )
+       || ( !IS_NPC( ch ) && victim->fighting != NULL )
+       || ( victim != ch && ( saves_spell( level, victim ) || saves_spell( level, victim ) ) ) )
+   {
+      send_to_char( "You failed.\n\r", ch );
+      return TRUE;
+   }
+
+   for( ;; )
+   {
+      pRoomIndex = get_room_index( number_range( 0, 32767 ) );
+      if( pRoomIndex == NULL )
+         continue;
+      if( !is_set( pRoomIndex->room_flags, RFLAG_PRIVATE )
+          && !is_set( pRoomIndex->room_flags, RFLAG_SOLITARY ) && IS_SET( pRoomIndex->area->flags, AREA_TELEPORT ) )
+         break;
+   }
+
+   act( "$n slowly fades out of existence.", victim, NULL, NULL, TO_ROOM );
+   char_from_room( victim );
+   char_to_room( victim, pRoomIndex );
+   act( "$n slowly fades into existence.", victim, NULL, NULL, TO_ROOM );
+   do_look( victim, "auto" );
+   return TRUE;
+
+}
+
+
+
+bool spell_ventriloquate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   char buf1[MAX_STRING_LENGTH];
+   char buf2[MAX_STRING_LENGTH];
+   char speaker[MAX_INPUT_LENGTH];
+   CHAR_DATA *vch;
+
+   target_name = one_argument( target_name, speaker );
+
+   xprintf( buf1, "%s says '%s'.\n\r", speaker, target_name );
+   xprintf( buf2, "Someone makes %s say '%s'.\n\r", speaker, target_name );
+   buf1[0] = UPPER( buf1[0] );
+
+   for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+   {
+      if( !is_name( speaker, vch->name ) )
+         send_to_char( saves_spell( level, vch ) ? buf2 : buf1, vch );
+   }
+
+   return TRUE;
+}
+
+bool spell_weaken( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( victim, sn ) || saves_spell( level, victim ) )
+      return TRUE;
+   af.type = sn;
+   af.duration = 1 + ( level / 16 );
+   af.location = APPLY_STR;
+   af.modifier = -2;
+   af.bitvector = 0;
+   affect_to_char( victim, &af );
+   send_to_char( "You feel weaker.\n\r", victim );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+
+
+/*
+ * For Ack! : Level 66 Priest spell - allow 100% recall.
+ */
+bool spell_word_of_recall( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   ROOM_INDEX_DATA *location;
+
+   act( "$n requests Holy transport!", victim, NULL, NULL, TO_ROOM );
+   if( IS_AFFECTED( victim, AFF_CURSE ) )
+   {
+      send_to_char( "The Gods do not transport cursed players!\n\r", ch );
+      return FALSE;
+   }
+
+   if( IS_NPC( victim ) || victim->level < 6 )
+      location = get_room_index( ROOM_VNUM_TEMPLE );
+   else
+      location = get_room_index( race_table[victim->race].recall );
+
+   if( location == NULL )
+   {
+      send_to_char( "You are completely lost.\n\r", victim );
+      return FALSE;
+   }
+
+   if( victim->in_room == location )
+      return FALSE;
+
+   if( is_set( victim->in_room->room_flags, RFLAG_NO_RECALL ) )
+   {
+      send_to_char( "Some strange force prevents your transport.\n\r", victim );
+      return TRUE;
+   }
+
+   if( victim->fighting != NULL )
+      stop_fighting( victim, TRUE );
+
+   act( "$n is engulfed by a stream of blue light!", victim, NULL, NULL, TO_ROOM );
+   char_from_room( victim );
+   char_to_room( victim, location );
+   act( "$n arrives, carried by a blue stream of light!", victim, NULL, NULL, TO_ROOM );
+   do_look( victim, "auto" );
+   return TRUE;
+}
+
+
+
+/*
+ * NPC spells.
+ */
+bool spell_acid_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Fixed the nice bug that referenced the _caster's_ equipment,
+    * * so that it checks the victim's instead *laugh* -S-
+    */
+
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   OBJ_DATA *obj_lose;
+   OBJ_DATA *obj_next;
+   int dam;
+   int hpch;
+
+   if( number_percent(  ) < 2 * level && !saves_spell( level, victim ) )
+   {
+      OREF( obj_next, OBJ_NEXTCONTENT );
+      for( obj_lose = victim->first_carry; obj_lose != NULL; obj_lose = obj_next )
+      {
+         int iWear;
+
+         obj_next = obj_lose->next_in_carry_list;
+
+         if( number_bits( 2 ) != 0 )
+            continue;
+
+         switch ( obj_lose->item_type )
+         {
+            case ITEM_ARMOR:
+               if( obj_lose->value[0] > 0 )
+               {
+                  act( "$p is pitted and etched!", victim, obj_lose, NULL, TO_CHAR );
+                  if( ( iWear = obj_lose->wear_loc ) != WEAR_NONE )
+                     victim->armor -= apply_ac( obj_lose, iWear );
+                  obj_lose->value[0] -= 1;
+                  obj_lose->cost = 0;
+                  if( iWear != WEAR_NONE )
+                     victim->armor += apply_ac( obj_lose, iWear );
+               }
+               break;
+
+            case ITEM_CONTAINER:
+
+            {
+               OBJ_DATA *content;
+               OBJ_DATA *content_next;
+               act( "$p fumes and dissolves!", victim, obj_lose, NULL, TO_CHAR );
+               for( content = obj_lose->first_in_carry_list; content; content = content_next )
+               {
+                  content_next = content->next_in_carry_list;
+                  obj_from_obj( content );
+                  obj_to_room( content, victim->in_room != NULL ? victim->in_room : get_room_index( ROOM_VNUM_LIMBO ) );
+               }
+               extract_obj( obj_lose );
+               break;
+            }
+         }
+      }
+      OUREF( obj_next );
+
+   }
+
+   hpch = UMAX( 10, ch->hit );
+   dam = number_range( hpch / 16 + 1, hpch / 8 );
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   sp_damage( obj, ch, victim, dam, REALM_ACID | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   return TRUE;
+}
+
+
+
+bool spell_fire_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   OBJ_DATA *obj_lose;
+   OBJ_DATA *obj_next;
+   int dam;
+   int hpch;
+
+
+   if( !IS_NPC( ch ) )
+   {
+      dam = number_range( (int)(get_psuedo_level( ch ) * 1.2), (int)(get_psuedo_level( ch ) * 1.6) );
+      if( saves_spell( level, victim ) )
+         dam /= 2;
+      damage( ch, victim, dam, sn );
+      return TRUE;
+   }
+
+   if( number_percent(  ) < 2 * level && !saves_spell( level, victim ) )
+   {
+      OREF( obj_next, OBJ_NEXTCONTENT );
+      for( obj_lose = victim->first_carry; obj_lose != NULL; obj_lose = obj_next )
+      {
+         char *msg;
+
+         obj_next = obj_lose->next_in_carry_list;
+         if( number_bits( 2 ) != 0 )
+            continue;
+
+         switch ( obj_lose->item_type )
+         {
+            default:
+               continue;
+            case ITEM_CONTAINER:
+               msg = "$p ignites and burns!";
+               break;
+            case ITEM_POTION:
+               msg = "$p bubbles and boils!";
+               break;
+            case ITEM_SCROLL:
+               msg = "$p crackles and burns!";
+               break;
+            case ITEM_STAFF:
+               msg = "$p smokes and chars!";
+               break;
+            case ITEM_WAND:
+               msg = "$p sparks and sputters!";
+               break;
+            case ITEM_FOOD:
+               msg = "$p blackens and crisps!";
+               break;
+            case ITEM_PILL:
+               msg = "$p melts and drips!";
+               break;
+         }
+
+         act( msg, victim, obj_lose, NULL, TO_CHAR );
+         if( obj_lose->item_type == ITEM_CONTAINER )
+         {
+            OBJ_DATA *content;
+            OBJ_DATA *content_next;
+            OREF( content_next, OBJ_NEXTCONTENT );
+            for( content = obj_lose->first_in_carry_list; content; content = content_next )
+            {
+               content_next = content->next_in_carry_list;
+               obj_from_obj( content );
+               obj_to_room( content, victim->in_room != NULL ? victim->in_room : get_room_index( ROOM_VNUM_LIMBO ) );
+            }
+            OUREF( content_next );
+            extract_obj( obj_lose );
+         }
+      }
+      OUREF( obj_next );
+   }
+
+   hpch = UMAX( 10, ch->hit );
+   dam = number_range( hpch / 16 + 1, hpch / 8 );
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   sp_damage( obj, ch, victim, dam, REALM_FIRE | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   return TRUE;
+}
+
+
+
+bool spell_frost_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   OBJ_DATA *obj_lose;
+   OBJ_DATA *obj_next;
+   int dam;
+   int hpch;
+
+   if( number_percent(  ) < 2 * level && !saves_spell( level, victim ) )
+   {
+      OREF( obj_next, OBJ_NEXTCONTENT );
+      for( obj_lose = victim->first_carry; obj_lose != NULL; obj_lose = obj_next )
+      {
+         char *msg;
+
+         obj_next = obj_lose->next_in_carry_list;
+         if( number_bits( 2 ) != 0 )
+            continue;
+
+         switch ( obj_lose->item_type )
+         {
+            default:
+               continue;
+            case ITEM_CONTAINER:
+            case ITEM_DRINK_CON:
+            case ITEM_POTION:
+               msg = "$p freezes and shatters!";
+               break;
+         }
+
+         act( msg, victim, obj_lose, NULL, TO_CHAR );
+         if( obj_lose->item_type == ITEM_CONTAINER )
+         {
+            OBJ_DATA *content;
+            OBJ_DATA *content_next;
+            OREF( content_next, OBJ_NEXTCONTENT );
+            for( content = obj_lose->first_in_carry_list; content; content = content_next )
+            {
+               content_next = content->next_in_carry_list;
+               obj_from_obj( content );
+               obj_to_room( content, victim->in_room != NULL ? victim->in_room : get_room_index( ROOM_VNUM_LIMBO ) );
+            }
+            OUREF( content_next );
+         }
+      }
+      OUREF( obj_next );
+   }
+
+   hpch = UMAX( 10, ch->hit );
+   dam = number_range( hpch / 16 + 1, hpch / 8 );
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   sp_damage( obj, ch, victim, dam, REALM_COLD | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   return TRUE;
+}
+
+
+
+bool spell_gas_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *vch;
+   CHAR_DATA *vch_next;
+   int dam;
+   int hpch;
+   CREF( vch_next, CHAR_NEXTROOM );
+
+   for( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )
+   {
+      vch_next = vch->next_in_room;
+      if( IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) )
+      {
+         hpch = UMAX( 10, ch->hit );
+         dam = number_range( hpch / 16 + 1, hpch / 8 );
+         if( saves_spell( level, vch ) )
+            dam /= 2;
+         sp_damage( obj, ch, vch, dam, REALM_GAS | NO_REFLECT | NO_ABSORB, sn, TRUE );
+      }
+   }
+   CUREF( vch_next );
+   return TRUE;
+}
+
+
+
+bool spell_lightning_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+   int hpch;
+
+   hpch = UMAX( 10, ch->hit );
+   dam = number_range( hpch / 16 + 1, hpch / 8 );
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   sp_damage( obj, ch, victim, dam, REALM_SHOCK | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   return TRUE;
+}
+
+
+bool spell_hellspawn( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * High level mag / psi spell. -S- 
+    */
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+   dam = number_range( level / 2, level * 5 / 2 );
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+
+   sp_damage( obj, ch, victim, dam, REALM_DRAIN, sn, TRUE );
+   return TRUE;
+}
+
+
+bool spell_planergy( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   /*
+    * Psi spell.  Work out which energy to summon, according to
+    * * ch's level.  Each 9 levels, the Psi gets the use of a different
+    * * spell, and more damage! ;)  (planergy = planar energy)
+    * * --Stephen
+    */
+
+
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+   int lvl;
+   int plane;
+
+   if( level <= 8 )
+   {
+      lvl = 4;
+      plane = REALM_IMPACT;
+   }
+   else if( level <= 17 )
+   {
+      lvl = 13;
+      plane = REALM_GAS;
+   }
+   else if( level <= 26 )
+   {
+      lvl = 22;
+      plane = REALM_FIRE;
+   }
+   else if( level <= 35 )
+   {
+      lvl = 31;
+      plane = REALM_LIGHT;
+   }
+   else if( level <= 44 )
+   {
+      lvl = 40;
+      plane = REALM_SHOCK;
+   }
+   else if( level <= 53 )
+   {
+      lvl = 49;
+      plane = REALM_SOUND;
+   }
+   else if( level <= 62 )
+   {
+      lvl = 58;
+      plane = REALM_MIND;
+   }
+   else if( level <= 71 )
+   {
+      lvl = 67;
+      plane = REALM_ACID;
+   }
+   else
+   {
+      lvl = 80;
+      plane = REALM_POISON;
+   }
+
+   dam = dice( 6, lvl / 2 );
+
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   SET_BIT( plane, NO_REFLECT );
+   SET_BIT( plane, NO_ABSORB );
+
+   sp_damage( obj, ch, victim, dam, plane, sn, TRUE );
+
+   return TRUE;
+}
+
+
+bool spell_visit( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   /*
+    * Psi spell.  Kinda like summon, but almost done in reverse.
+    * * allows the Psi to try and transfer themself to the 'victim'
+    * * --Stephen
+    */
+
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+   if( deathmatch )
+   {
+      send_to_char( "Not during a @@eDeath Match@@N!!\n\r", ch );
+      return FALSE;
+   }
+   if( ( victim = get_char_world( ch, target_name ) ) == NULL
+       || victim == ch
+       || IS_NPC( victim )
+       || victim->in_room == NULL
+       || is_set( victim->in_room->room_flags, RFLAG_PRIVATE )
+       || is_set( victim->in_room->room_flags, RFLAG_SOLITARY )
+       || is_set( victim->in_room->room_flags, RFLAG_SAFE )
+       || is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) || !IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
+   {
+      send_to_char( "You failed.\n\r", ch );
+      return TRUE;
+   }
+
+   if( is_set( victim->act, ACT_NO_VISIT ) )
+   {
+      send_to_char( "You seem unable to visit your target!\n\r", ch );
+      return TRUE;
+   }
+
+   /*
+    * Check is ch screws up, and ends up in limbo... <grin> 
+    */
+
+   if( number_percent(  ) < 25 ) /* 25% chance */
+   {
+      send_to_char( "You get distracted, and appear in the middle of nowhere!\n\r", ch );
+      act( "$n disappears suddenly.", ch, NULL, NULL, TO_ROOM );
+      char_from_room( ch );
+      char_to_room( ch, get_room_index( ROOM_VNUM_LIMBO ) );
+      act( "$n arrives suddenly.", ch, NULL, NULL, TO_ROOM );
+      do_look( ch, "auto" );
+      return TRUE;
+   }
+
+   act( "$n disappears suddenly.", ch, NULL, NULL, TO_ROOM );
+   char_from_room( ch );
+   char_to_room( ch, victim->in_room );
+   act( "$n arrives suddenly.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "You change locations!\n\r", ch );
+   do_look( ch, "auto" );
+   return TRUE;
+}
+
+
+bool spell_barrier( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   /*
+    * Psi spell, like shield, but slightly better.  Good idea to make
+    * * sure Psi's don't have access to shield as well as this... ;)
+    * * -- Stephen
+    */
+
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( victim, sn ) )
+      return FALSE;
+
+   af.type = sn;
+   af.duration = 4 + ( level / 20 );
+   af.location = APPLY_AC;
+   af.modifier = -20 - get_psuedo_level( ch ) / 10;
+   af.bitvector = 0;
+   affect_to_char( victim, &af );
+
+   act( "$n is surrounded by a telekinetic barrier.", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "You are surrounded by a telekinetic barrier.\n\r", victim );
+   return TRUE;
+}
+
+
+bool spell_static( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Psi Spell.
+    * * Uses ch's movement, which is transfered to static electricity    
+    * * which is then chanelled at the poor victim <laugh>
+    * * --Stephen
+    */
+
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+   int loss;
+
+   send_to_char( "You transfer kinetic to static energy!\n\r", ch );
+
+   loss = dice( 2, level ) + dice( 2, level );
+
+   dam = number_range( 6, 8 ) * ( level / 3 );
+   if( ( ch->move - loss ) <= 0 )
+   {
+      send_to_char( "You have no kinetic energy left!!\n\r", ch );
+      return FALSE;
+   }
+
+   ch->move = UMAX( 1, ch->move - loss );
+
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+
+   act( "$n transfers kinetic to static energy.", ch, NULL, NULL, TO_ROOM );
+   sp_damage( obj, ch, victim, dam, REALM_SHOCK | NO_REFLECT | NO_ABSORB, sn, TRUE );
+
+   return TRUE;
+}
+
+bool spell_phobia( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Psi Spell.
+    * * Conjures victims's phobia in their mind, does dam (small) or
+    * * causes them to flee.
+    * * --Stephen
+    */
+
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+   if( ( victim->level ) > ( level + 8 ) )
+   {
+      send_to_char( "Your spell fails to take affect!\n\r", ch );
+      return TRUE;
+   }
+
+   /*
+    * figure out dam.... not too much as spell is meant to make vo flee 
+    */
+
+   dam = dice( 2, level / 8 );
+   if( obj == NULL )
+   {
+      act( "$n projects nightmare images into $N's mind!", ch, NULL, victim, TO_NOTVICT );
+      act( "You project nightmare images into $N's mind!", ch, NULL, victim, TO_CHAR );
+      act( "$N projects nightmare images into your mind!", victim, NULL, ch, TO_CHAR );
+   }
+   else
+   {
+      act( "$p projects nightmare images into $n's mind!", victim, obj, NULL, TO_ROOM );
+      act( "$p projects nightmare images into your mind!", victim, obj, NULL, TO_CHAR );
+   }
+   send_to_char( "Your worst phobia springs to life in your mind. Arrrggghhh!\n\r", victim );
+   act( "$N suffers a mental phobia attack!", ch, NULL, victim, TO_NOTVICT );
+
+   if( sp_damage( obj, ch, victim, dam, REALM_MIND, sn, TRUE ) )
+   {
+      if( !IS_NPC( victim ) && ( IS_WOLF( victim ) || IS_VAMP( victim ) ) )
+         return TRUE;
+
+      if( number_percent(  ) < 70 ) /* 70% chance */
+      {
+         act( "$N screams at $n in horror!!", ch, NULL, victim, TO_ROOM );
+         act( "$N screams at you in horror!!", ch, NULL, victim, TO_CHAR );
+         send_to_char( "You flip, and look for escape!!\n\r", victim );
+         do_flee( victim, "" );
+      }
+   }
+
+   return TRUE;
+}
+
+bool spell_mindflame( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Psi Multiple Attack - screws up all those affected 
+    */
+
+
+
+   CHAR_DATA *vch;
+   CHAR_DATA *vch_next;
+
+   if( obj == NULL )
+   {
+      send_to_char( "You initiate a mindflame attack!!\n\r", ch );
+      act( "$n concentrates, and initiates a mindlame attack!", ch, NULL, NULL, TO_ROOM );
+   }
+   else
+   {
+      act( "$p glows, and initiates a mindflame attack!", ch, obj, NULL, TO_ROOM );
+      act( "$p glows, and initiates a mindflame attack!", ch, obj, NULL, TO_CHAR );
+   }
+   CREF( vch_next, CHAR_NEXT );
+   for( vch = first_char; vch != NULL; vch = vch_next )
+   {
+      vch_next = vch->next;
+      if( vch->in_room == NULL )
+         continue;
+      if( vch->in_room == ch->in_room )
+      {
+         if( vch != ch && ( IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) ) )
+         {
+            act( "$n rolls on the floor, clutching $s head in pain!", vch, NULL, NULL, TO_ROOM );
+            send_to_char( "You roll on the floor, clutching your head in pain!\n\r", vch );
+            sp_damage( obj, ch, vch, ( get_psuedo_level( ch ) / 2 ) + dice( 6, 12 ),
+                       REALM_MIND | NO_REFLECT | NO_ABSORB, sn, TRUE );
+         }
+         continue;
+      }
+
+      if( vch->in_room->area == ch->in_room->area )
+         send_to_char( "You notice a slight burning feeling in your mind.\n\r", vch );
+   }
+   CUREF( vch_next );
+   return TRUE;
+}
+
+bool spell_chain_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * affects all in a room, can also hit caster <grin> 
+    */
+
+
+   CHAR_DATA *vch;
+   CHAR_DATA *vch_next;
+   int dam;
+
+   /*
+    * Work out starting damage. 
+    */
+   dam = dice( 10, ( get_psuedo_level( ch ) / 2 ) );
+
+   if( obj == NULL )
+   {
+      send_to_char( "Lightning flashes from your fingers!\n\r", ch );
+      act( "$n unleashes lightning from $s fingers!", ch, NULL, NULL, TO_ROOM );
+   }
+   else
+   {
+      act( "A lightning bolt flashes from $p!", ch, obj, NULL, TO_ROOM );
+      act( "A lightning bolt flashes from $p!", ch, obj, NULL, TO_CHAR );
+   }
+   CREF( vch_next, CHAR_NEXTROOM );
+
+   for( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )
+   {
+      vch_next = vch->next_in_room;
+
+      if( vch != ch && IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) )
+      {
+         send_to_char( "The lightning bolt strikes you!\n\r", vch );
+         act( "The lightning bolt strikes $n!", vch, NULL, NULL, TO_ROOM );
+         sp_damage( obj, ch, vch, dam, REALM_SHOCK | NO_REFLECT, sn, TRUE );
+         dam = ( 4 * dam / 5 );
+      }
+   }
+   CUREF( vch_next );
+
+
+
+   /*
+    * Now see if caster gets hit. 
+    */
+
+   if( saves_spell( level, ch ) )
+   {
+      act( "The lightning bolt hits the ground, and is GONE!", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "Your lightning bolts hits the ground and is GONE!\n\r", ch );
+   }
+   else
+   {
+      act( "The lightning bolt strikes $n and vanishes!", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "Your lightning returns, and hits you!\n\r", ch );
+      dam = UMIN( level / 2, dam );
+      sp_damage( obj, ch, ch, dam, REALM_SHOCK | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   }
+   return TRUE;
+}
+
+
+bool spell_suffocate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+   dam = dice( level / 3, 2 );
+
+   if( ( level + 5 ) > victim->level )
+      dam += ( ( ( level + 5 ) - victim->level ) * 2 );
+   else
+      dam -= ( ( victim->level - level ) * 2 );
+
+   act( "$n chokes and gags!", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "You feel your throat squeezed by an invisible force!\n\r", victim );
+
+   sp_damage( obj, ch, victim, dam, REALM_IMPACT, sn, TRUE );  /* -1 = no dam message */
+   return TRUE;
+}
+
+bool spell_enhance_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   OBJ_DATA *ob = ( OBJ_DATA * ) vo;
+   AFFECT_DATA *paf;
+
+   /*
+    * Quick way to stop imms (Bash?) enchanting weapons for players 
+    */
+   if( IS_IMMORTAL( ch ) && ch->level != 85 )
+   {
+      send_to_char( "Nothing Happens.\n\r", ch );
+      return FALSE;
+   }
+
+   if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_MAGIC ) || ob->first_apply != NULL )
+      return TRUE;
+
+   GET_FREE( paf, affect_free );
+   paf->type = sn;
+   paf->duration = 3 + ( level / 4 );
+   paf->location = APPLY_HITROLL;
+   paf->modifier = 3;
+   paf->bitvector = 0;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+   GET_FREE( paf, affect_free );
+   paf->type = -1;
+   paf->duration = 3 + ( level / 4 );
+   paf->location = APPLY_DAMROLL;
+   paf->modifier = 2;
+   paf->bitvector = 0;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+   act( "$p shines brightly.", ch, ob, NULL, TO_CHAR );
+   act( "$p belonging to $n shines brightly.", ch, ob, NULL, TO_ROOM );
+
+   return TRUE;
+}
+
+bool spell_bloody_tears( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+   if( IS_AFFECTED( victim, AFF_BLIND ) || saves_spell( level, victim ) )
+      return TRUE;
+
+   act( "$n's eyes start bleeding!", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "Your eyes start bleeding!\n\r", victim );
+   spell_blindness( skill_lookup( "blindness" ), level, ch, vo, obj );
+
+   sp_damage( obj, ch, victim, ( level / 2 ), REALM_MIND | NO_REFLECT | NO_ABSORB, sn, FALSE ); /* -1 = no dam message */
+
+   return TRUE;
+}
+
+bool spell_mind_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int cnt;
+   int foo;
+   int dam;
+
+
+   cnt = ( level >= 12 ) + ( level >= 30 ) + ( level >= 60 ) + ( ch->level >= 75 );
+   for( foo = 0; foo < cnt; foo++ )
+   {
+      if( number_range( 0, 99 ) < 30 )
+         continue;
+      dam = number_range( level / 4, level * 2 / 3 );
+      if( saves_spell( level, victim ) )
+         dam /= 2;
+
+      sp_damage( obj, ch, victim, dam, REALM_MIND | NO_REFLECT | NO_ABSORB, sn, TRUE );   /* -1 = no dam message */
+
+   }
+   return TRUE;
+}
+
+bool spell_nerve_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *vch;
+   CHAR_DATA *vch_next;
+
+   if( obj == NULL )
+   {
+      send_to_char( "You initiate a Nerve Fire attack!!\n\r", ch );
+      act( "$n concentrates, and initiates a Nerve Fire attack!", ch, NULL, NULL, TO_ROOM );
+   }
+   else
+   {
+      act( "$p glows with the power of Nerve Fire!", ch, obj, NULL, TO_ROOM );
+      act( "$p glows with the power of Nerve Fire!", ch, obj, NULL, TO_CHAR );
+   }
+   CREF( vch_next, CHAR_NEXT );
+   for( vch = first_char; vch != NULL; vch = vch_next )
+   {
+      vch_next = vch->next;
+      if( vch->in_room == NULL )
+         continue;
+      if( vch->in_room == ch->in_room )
+      {
+         if( vch != ch && ( IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) ) )
+         {
+            sp_damage( obj, ch, vch, ( level ) + dice( 5, 20 ), REALM_MIND | NO_REFLECT | NO_ABSORB, sn, TRUE );
+         }
+         continue;
+      }
+
+      if( vch->in_room->area == ch->in_room->area )
+         send_to_char( "You notice a slight burning feeling in your body.\n\r", vch );
+   }
+   CUREF( vch_next );
+   return TRUE;
+}
+
+bool spell_fighting_trance( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( victim, sn ) )
+      return FALSE;
+
+   af.type = sn;
+   af.duration = 6 + ( level / 20 );
+   af.location = APPLY_HITROLL;
+   af.modifier = get_psuedo_level( ch ) / 10;
+   af.bitvector = 0;
+   affect_to_char( victim, &af );
+
+   af.location = APPLY_SAVING_SPELL;
+   af.modifier = 0 - level / 8;
+   affect_to_char( victim, &af );
+
+   af.location = APPLY_DAMROLL;
+   af.modifier = get_psuedo_level( ch ) / 10;
+   affect_to_char( victim, &af );
+
+   af.location = APPLY_AC;
+   af.modifier = -10 - get_psuedo_level( ch ) / 10;
+   affect_to_char( victim, &af );
+   send_to_char( "You feel much stronger.\n\r", victim );
+   act( "$n looks much stronger.", victim, NULL, NULL, TO_ROOM );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_phase( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_PASS_DOOR ) || item_has_apply( victim, ITEM_APPLY_PASS_DOOR ) )
+      return FALSE;
+
+   af.type = sn;
+   af.duration = 3 + ( level / 20 );
+   af.location = APPLY_AC;
+   af.modifier = -10 - get_psuedo_level( ch ) / 10;
+   af.bitvector = AFF_PASS_DOOR;
+   affect_to_char( victim, &af );
+   send_to_char( "Your body switches phase.\n\r", victim );
+   act( "$n's body switches phase.", victim, NULL, NULL, TO_ROOM );
+   return TRUE;
+}
+
+bool spell_dimension_blade( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   OBJ_DATA *ob = ( OBJ_DATA * ) vo;
+   AFFECT_DATA *paf;
+
+   /*
+    * Quick way to stop imms (Bash?) enchanting weapons for players 
+    */
+   if( IS_IMMORTAL( ch ) && ch->level != 85 )
+   {
+      send_to_char( "Nothing Happens.\n\r", ch );
+      return FALSE;
+   }
+
+   if( dice( 4, 5 ) == 20 )
+   {
+      act( "$p shatters into pieces!", ch, ob, NULL, TO_CHAR );
+      act( "$p carried by $n shatters!", ch, ob, NULL, TO_ROOM );
+      extract_obj( ob );
+      return TRUE;
+   }
+
+   if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_MAGIC ) || ob->first_apply != NULL )
+      return TRUE;
+
+   GET_FREE( paf, affect_free );
+   paf->type = sn;
+   paf->duration = -1;
+   paf->location = APPLY_HITROLL;
+   paf->modifier = 1 + ( level >= 50 ) + ( level >= 60 ) + ( level >= 70 );
+   paf->bitvector = 0;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+   GET_FREE( paf, affect_free );
+   paf->type = -1;
+   paf->duration = -1;
+   paf->location = APPLY_DAMROLL;
+   paf->modifier = 1 + ( level >= 55 ) + ( level >= 70 );
+   paf->bitvector = 0;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+   act( "Part of $p switches into a different plane.", ch, ob, NULL, TO_CHAR );
+   act( "$n makes $p into a dimension blade.", ch, ob, NULL, TO_ROOM );
+   return TRUE;
+}
+
+bool spell_produce_food( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   OBJ_DATA *mushroom;
+
+   mushroom = create_object( get_obj_index( OBJ_VNUM_FOOD ), 0 );
+   mushroom->value[0] = 5 + level;
+   obj_to_room( mushroom, ch->in_room );
+   act( "$p suddenly appears.", ch, mushroom, NULL, TO_ROOM );
+   act( "$p suddenly appears.", ch, mushroom, NULL, TO_CHAR );
+   return TRUE;
+}
+
+bool spell_animate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   OBJ_DATA *ob;
+   OBJ_DATA *bits;
+   CHAR_DATA *corpse;
+
+   if( IS_NPC( ch ) )
+      return FALSE;
+
+   ob = get_obj_here( ch, target_name );
+
+   if( ob == NULL )
+   {
+      send_to_char( "Couldn't find it.\n\r", ch );
+      return FALSE;
+   }
+
+   if( ch->lvl2[3] < 70 )
+   {
+      send_to_char( " @@eDUE TO A ROLEPLAYING CHANGE, THIS SPELL IS NO LONGER AVAILABLE TO ANY CLASS\n\r", ch );
+      send_to_char( " BUT a high level @@dNECRMOANCER@@N.  THE SKILL HAS BEEN REMOVED FROM YOU CHARACTER, \n\r", ch );
+      send_to_char( " SORRY FOR THE INCONVIENENCE.  @@mTHANK YOU@@N :)\n\r", ch );
+      ch->pcdata->learned[sn] = 0;
+      return FALSE;
+   }
+
+   if( ob->item_type != ITEM_CORPSE_NPC )
+   {
+      send_to_char( "You can't animate that!\n\r", ch );
+      return FALSE;
+   }
+
+   act( "$n lays $s hands onto the $p!", ch, ob, NULL, TO_ROOM );
+   act( "You lay your hands upon the $p.", ch, ob, NULL, TO_CHAR );
+
+   act( "Bright bolts of lightning fly out from $p!!", ch, ob, NULL, TO_ROOM );
+   act( "Bright bolts of lightning fly out from $p!!", ch, ob, NULL, TO_CHAR );
+
+   corpse = create_mobile( get_mob_index( MOB_VNUM_ZOMBIE ) );
+   char_to_room( corpse, ch->in_room );
+   act( "$n stands up, and stretches slowly.", corpse, NULL, NULL, TO_ROOM );
+
+   if( ob->item_type == ITEM_CORPSE_NPC )
+   {
+      set_bit( corpse->act, ACT_UNDEAD );
+      act( "$n's eyes glow black!", corpse, NULL, NULL, TO_ROOM );
+   }
+
+   corpse->level = ob->level; /* Level of (N)PC before death */
+   corpse->max_hit = dice( 5, level );
+   corpse->hit = corpse->max_hit;
+   corpse->max_move = dice( 10, level );
+   corpse->move = corpse->max_move; /* Set Zombie's stats */
+
+   for( ;; )
+   {
+      if( ob->first_in_carry_list == NULL )
+         break;
+      bits = ob->first_in_carry_list;
+      obj_from_obj( bits );
+      obj_to_char( bits, corpse );
+
+   }
+
+   extract_obj( ob );
+   do_wear( corpse, "all" );  /* FIXME: better to check items, then wear... */
+   set_bit( corpse->act, ACT_PET );
+   SET_BIT( corpse->affected_by, AFF_CHARM );
+   corpse->extract_timer = get_psuedo_level( ch ) / 3;
+
+   add_follower( corpse, ch );
+   return TRUE;
+}
+
+bool spell_see_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_DETECT_MAGIC ) || item_has_apply( victim, ITEM_APPLY_HIDE ) )
+      return FALSE;
+   af.type = sn;
+   af.duration = 6 + ( level / 4 );
+   af.modifier = 0;
+   af.location = APPLY_NONE;
+   af.bitvector = AFF_DETECT_MAGIC;
+   affect_to_char( victim, &af );
+   send_to_char( "Your eyes tingle.\n\r", victim );
+   act( "$n's eyes glow briefly.", victim, NULL, NULL, TO_ROOM );
+   return TRUE;
+}
+
+bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   char buf[MAX_INPUT_LENGTH];
+   OBJ_DATA *ob;
+   OBJ_DATA *in_obj;
+   bool found;
+
+   found = FALSE;
+   for( ob = first_obj; ob != NULL; ob = ob->next )
+   {
+
+
+      if( !can_see_obj( ch, ob ) || !is_name( target_name, ob->name )
+          || IS_SET( ob->extra_flags, ITEM_RARE )
+          || ( ob->item_type == ITEM_PIECE )
+          || ( IS_SET( ob->extra_flags, ITEM_UNIQUE ) ) || ( !str_prefix( target_name, "unique" ) ) )
+         continue;
+
+
+
+
+
+      for( in_obj = ob; in_obj->in_obj != NULL; in_obj = in_obj->in_obj )
+         ;
+      if( ( in_obj->carried_by != NULL )
+          && ( IS_IMMORTAL( in_obj->carried_by )
+               || ( !IS_NPC( in_obj->carried_by )
+                    && IS_WOLF( in_obj->carried_by )
+                    && ( IS_SHIFTED( in_obj->carried_by ) || ( IS_RAGED( in_obj->carried_by ) ) ) ) ) )
+         break;
+
+
+      if( in_obj->carried_by != NULL )
+      {
+         found = TRUE;
+         xprintf( buf, "%s carried by %s.\n\r",
+                  ob->short_descr, can_see( ch, in_obj->carried_by ) ? PERS( in_obj->carried_by, ch ) : "someone" );
+      }
+      else
+      {
+         found = TRUE;
+         xprintf( buf, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+      }
+
+      buf[0] = UPPER( buf[0] );
+      send_to_char( buf, ch );
+   }
+
+   if( !found )
+      send_to_char( "You fail to detect any such object.\n\r", ch );
+
+   return TRUE;
+}
+
+
+bool spell_fire_blade( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   OBJ_DATA *blade;
+
+   if( get_obj_wear( ch, "fireblade" ) != NULL )
+      return FALSE;  /* Only have one at a time.. */
+
+   if( remove_obj( ch, WEAR_HOLD_HAND_L, TRUE ) )
+   {
+      blade = create_object( get_obj_index( OBJ_VNUM_FIREBLADE ), level );
+      obj_to_char( blade, ch );
+      equip_char( ch, blade, WEAR_HOLD_HAND_L );
+      blade->timer = 2 + ( level / 20 );
+      act( "A blazing FireBlade appears in $n's hand!", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "A blazing FireBlade appears in your hand!", ch );
+   }
+   return TRUE;
+}
+
+
+bool spell_know_weakness( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   AFFECT_DATA af;
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+   af.type = sn;
+   af.duration = 2 + ( level >= 20 ) + ( level >= 40 ) + ( level >= 60 ) + ( level >= 80 );
+   af.location = APPLY_HITROLL;
+   af.modifier = 3;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+   send_to_char( "You are more aware of your enemy's weaknesses.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_know_critical( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   AFFECT_DATA af;
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+   af.type = sn;
+   af.duration = 2 + ( level >= 20 ) + ( level >= 40 ) + ( level >= 60 ) + ( level >= 80 );
+   af.location = APPLY_DAMROLL;
+   af.modifier = 3;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+   send_to_char( "You are more aware of critical damage points.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_calm( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *ppl;
+   int chance;
+
+   for( ppl = ch->in_room->first_person; ppl != NULL; ppl = ppl->next_in_room )
+      if( IS_NPC( ppl ) && ppl != ch )
+      {
+         chance = ( ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[sn] / 2 ) + ( 5 * ( level - ppl->level ) ) );
+         if( number_percent(  ) < chance )
+            stop_fighting( ppl, TRUE );
+      }
+   if( obj == NULL )
+   {
+      act( "$n emits a great feeling of calm around you.", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "You emit a great feeling of calm around you.\n\r", ch );
+   }
+   else
+   {
+      act( "$p glows with a clam light.", ch, obj, NULL, TO_ROOM );
+      act( "$p glows with a clam light.", ch, obj, NULL, TO_CHAR );
+   }
+   return TRUE;
+}
+
+
+bool spell_hypnosis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( victim == ch )
+   {
+      send_to_char( "You like yourself even better!\n\r", ch );
+      return FALSE;
+   }
+
+   if( !IS_NPC( victim ) )
+   {
+      send_to_char( "You're not that powerful.\n\r", ch );
+      return FALSE;
+   }
+
+   if( IS_AFFECTED( victim, AFF_CHARM )
+       || IS_AFFECTED( ch, AFF_CHARM ) || level - 5 < victim->level || saves_spell( level, victim ) )
+      return TRUE;
+   if( IS_VAMP( victim ) && ( IS_NPC( victim ) ) )
+   {
+      send_to_char( "Wow, it seems to be immune--imagine that!\n\r", ch );
+      return TRUE;
+   }
+
+
+   if( victim->master )
+      stop_follower( victim );
+   add_follower( victim, ch );
+   af.type = sn;
+   af.duration = 3 + ( level / 8 );
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = AFF_CHARM;
+   affect_to_char( victim, &af );
+   act( "Isn't $n just so nice?", ch, NULL, victim, TO_VICT );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   victim->extract_timer = get_psuedo_level( ch ) / 3;
+   return TRUE;
+}
+
+bool spell_mind_flail( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   int dam;
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+   if( victim == ch )
+      return FALSE;
+
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
+      return TRUE;
+
+
+   dam = 5 + ( 10 * ( ( level > 20 ) + ( level >= 40 ) + ( level >= 60 ) + ( level >= 75 ) ) );
+
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+
+
+   sp_damage( obj, ch, victim, dam, REALM_MIND | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   return TRUE;
+}
+
+
+bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   OBJ_DATA *ob = ( OBJ_DATA * ) vo;
+   char buf[MAX_STRING_LENGTH];
+   AFFECT_DATA *paf;
+
+   xprintf( buf,
+            "Object '%s' is type %s, extra flags %s.\n\rWeight is %d.\n\r",
+            ob->name, item_type_name( ob ), extra_bit_name( ob->extra_flags ), ob->weight );
+   send_to_char( buf, ch );
+
+   switch ( ob->item_type )
+   {
+      case ITEM_SCROLL:
+      case ITEM_POTION:
+         xprintf( buf, "Level %d spells of:", ob->value[0] );
+         send_to_char( buf, ch );
+
+         if( ob->value[1] >= 0 && ob->value[1] < MAX_SKILL )
+         {
+            send_to_char( " '", ch );
+            send_to_char( skill_table[ob->value[1]].name, ch );
+            send_to_char( "'", ch );
+         }
+
+         if( ob->value[2] >= 0 && ob->value[2] < MAX_SKILL )
+         {
+            send_to_char( " '", ch );
+            send_to_char( skill_table[ob->value[2]].name, ch );
+            send_to_char( "'", ch );
+         }
+
+         if( ob->value[3] >= 0 && ob->value[3] < MAX_SKILL )
+         {
+            send_to_char( " '", ch );
+            send_to_char( skill_table[ob->value[3]].name, ch );
+            send_to_char( "'", ch );
+         }
+
+         send_to_char( ".\n\r", ch );
+         break;
+
+      case ITEM_WAND:
+      case ITEM_STAFF:
+         xprintf( buf, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
+         send_to_char( buf, ch );
+
+         if( ob->value[3] >= 0 && ob->value[3] < MAX_SKILL )
+         {
+            send_to_char( " '", ch );
+            send_to_char( skill_table[ob->value[3]].name, ch );
+            send_to_char( "'", ch );
+         }
+
+         send_to_char( ".\n\r", ch );
+         break;
+
+      case ITEM_WEAPON:
+         xprintf( buf, " Average damage is %d.\n\r", ( ob->value[1] + ob->value[2] ) / 2 );
+         send_to_char( buf, ch );
+         break;
+
+      case ITEM_ARMOR:
+         xprintf( buf, "Armor class is %d.\n\r", ob->value[0] );
+         send_to_char( buf, ch );
+         break;
+   }
+
+   for( paf = ob->first_apply; paf != NULL; paf = paf->next )
+   {
+      if( paf->location != APPLY_NONE && paf->modifier != 0 )
+      {
+         xprintf( buf, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
+         send_to_char( buf, ch );
+      }
+   }
+
+
+   return TRUE;
+}
+
+
+bool spell_physic_thrust( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   int dam;
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+   if( victim == ch )
+      return FALSE;
+
+
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
+      return TRUE;
+
+
+   dam = 5 + ( 20 * ( level > 20 ) + ( level >= 40 ) + ( level >= 60 ) + ( level >= 75 ) );
+
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+
+   sp_damage( obj, ch, victim, dam, REALM_MIND | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   return TRUE;
+}
+
+
+bool spell_physic_crush( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   int dam;
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+   if( victim == ch )
+      return FALSE;
+
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
+      return TRUE;
+
+
+   dam = get_psuedo_level( ch ) / 2 + ( 30 * ( level > 20 ) + ( level >= 40 ) + ( level >= 60 ) + ( level >= 75 ) );
+
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+
+   sp_damage( obj, ch, victim, dam, REALM_MIND | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   return TRUE;
+}
+
+bool spell_ego_whip( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   int dam;
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+   if( victim == ch )
+      return FALSE;
+
+   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
+      return TRUE;
+
+
+   dam = 50 + ( 40 * ( level > 20 ) + ( level >= 40 ) + ( level >= 60 ) + ( level >= 75 ) );
+
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+
+   sp_damage( obj, ch, victim, dam, REALM_MIND | NO_REFLECT | NO_ABSORB, sn, TRUE );
+   return TRUE;
+}
+
+
+bool spell_night_vision( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_INFRARED ) || item_has_apply( victim, ITEM_APPLY_INFRA ) )
+      return ( ch == victim ? FALSE : TRUE );
+   act( "$n's eyes glow red.\n\r", ch, NULL, NULL, TO_ROOM );
+   af.type = sn;
+   af.duration = 4 + ( level / 3 );
+   af.location = APPLY_NONE;
+   af.modifier = 0;
+   af.bitvector = AFF_INFRARED;
+   affect_to_char( victim, &af );
+   send_to_char( "Your eyes glow red.\n\r", victim );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_stalker( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Fixed problem of stalker not finding victim, and attacking caster,
+    * * thus giving an easy source of xp -S-
+    */
+
+   CHAR_DATA *victim;
+   CHAR_DATA *stalker;
+
+   if( target_name[0] == '\0' )
+   {
+      send_to_char( "Summon a stalker to hunt who?\n\r", ch );
+      return FALSE;
+   }
+
+
+   victim = get_char_world( ch, target_name );
+
+   if( victim == NULL )
+   {
+      send_to_char( "Target can't be found!\n\r", ch );
+      return FALSE;
+   }
+
+   if( ch == victim )
+   {
+      send_to_char( "That WOULDN'T be wise!\n\r", ch );
+      return FALSE;
+   }
+   act( "$n calls upon the dark powers to summon forth a Stalker!", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "You call upon the dark powers to summon forth a Stalker!\n\r", ch );
+
+   stalker = create_mobile( get_mob_index( MOB_VNUM_STALKER ) );
+
+   char_to_room( stalker, ch->in_room );
+   act( "$n appears before you suddenly.", stalker, NULL, NULL, TO_ROOM );
+
+   stalker->level = victim->level;
+   stalker->max_hit = victim->max_hit;
+   stalker->hit = stalker->max_hit;
+   stalker->exp = victim->level * 10;  /* not much exp :P */
+
+   if( set_hunt( stalker, ch, victim, NULL, HUNT_MERC, HUNT_CR ) )
+      act( "$n sniffs the air in search of $s prey.", stalker, NULL, NULL, TO_ROOM );
+   else
+   {
+      int sn;
+
+      sn = skill_lookup( "hellspawn" );
+      if( sn != 0 )  /* Check to be sure... should never == 0 */
+         ( *skill_table[sn].spell_fun ) ( sn, stalker->level, stalker, ch, NULL );
+
+      do_say( stalker, "How dare you waste my time!!" );
+      act( "$n returns to the dark planes, vanishing suddenly!", stalker, NULL, NULL, TO_ROOM );
+      /*
+       * char_from_room( stalker );   
+       */
+      extract_char( stalker, TRUE );
+   }
+   return TRUE;
+}
+
+bool spell_mystic_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( ch == victim )
+   {
+      send_to_char( "You are mystically armored, but it suddenly fades away!\n\r", ch );
+      return FALSE;
+   }
+
+   if( is_affected( victim, sn ) )
+      return TRUE;
+
+   af.type = sn;
+   af.duration = 4 + ( level / 3 );
+   af.location = APPLY_AC;
+   af.modifier = -10 - get_psuedo_level( ch ) / 8;
+   af.bitvector = 0;
+   affect_to_char( victim, &af );
+
+   act( "$n is surrounded by $N's mystic armor.", victim, NULL, ch, TO_ROOM );
+   act( "$N is surrounded by your mystic armor.", ch, NULL, victim, TO_CHAR );
+   act( "You are surrounded by $N's mystic armor.", victim, NULL, ch, TO_CHAR );
+   return TRUE;
+}
+
+
+bool spell_flare( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_BLIND ) || saves_spell( level, victim ) )
+      return TRUE;
+
+   if( victim == ch )
+      return FALSE;
+
+   af.type = sn;
+   af.location = APPLY_HITROLL;
+   af.modifier = level / 4;
+   af.duration = 1 + ( level / 4 );
+   af.bitvector = AFF_BLIND;
+   affect_to_char( victim, &af );
+   act( "$n invokes the power of Ra to produce a solar flare which blinds $N!", ch, NULL, victim, TO_NOTVICT );
+   act( "$N invokes the power of Ra to produce a solar flare.  You are BLINDED!", victim, NULL, ch, TO_CHAR );
+   act( "You invoke the power of Ra to produce a solar flare, which blinds $N!", ch, NULL, victim, TO_CHAR );
+
+
+   return TRUE;
+}
+
+bool spell_travel( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Transfer the player to Midgaard recall 
+    */
+
+   ROOM_INDEX_DATA *room;
+
+   if( ch->fighting != NULL )
+   {
+      send_to_char( "You can't travel when fighting!\n\r", ch );
+      return FALSE;
+   }
+
+   if( ( room = get_room_index( 3001 ) ) == NULL )
+   {
+      send_to_char( "It seems the Midgaard Temple has vanished!\n\r", ch );
+      return FALSE;
+   }
+
+   act( "$n is engulfed by a stream of green light!", ch, NULL, NULL, TO_ROOM );
+   char_from_room( ch );
+   char_to_room( ch, room );
+   act( "$n arrives, carried by a stream of green light!", ch, NULL, NULL, TO_ROOM );
+   do_look( ch, "auto" );
+   return TRUE;
+}
+
+bool spell_window( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Create a magic window to look into another room 
+    */
+   OBJ_DATA *beacon;
+   OBJ_DATA *ob;
+
+   if( target_name[0] == '\0' )
+   {
+      send_to_char( "Form a window to whom?\n\r", ch );
+      return FALSE;
+   }
+
+   beacon = get_obj_world( ch, target_name );
+
+   if( beacon == NULL || beacon->item_type != ITEM_BEACON )
+   {
+      send_to_char( "Couldn't find target.  Sorry.\n\r", ch );
+      return FALSE;
+   }
+
+   if( beacon->in_room == NULL )
+   {
+      send_to_char( "It seems that someone is carrying it.\n\r", ch );
+      return FALSE;
+   }
+
+   if( str_cmp( beacon->owner, ch->name ) )
+   {
+      send_to_char( "That's not one of YOUR beacons!\n\r", ch );
+      return FALSE;
+   }
+
+   act( "$n creates a magic window with a wave of $s hand.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "You create a magic window with a wave of your hand.\n\r", ch );
+
+   ob = create_object( get_obj_index( OBJ_VNUM_WINDOW ), level );
+   obj_to_room( ob, ch->in_room );
+   ob->timer = 1 + ( level / 30 );
+   ob->value[0] = beacon->in_room->vnum;
+   ob->value[1] = 1;
+   send_to_room( "The beacon suddenly vanishes!\n\r", beacon->in_room );
+   extract_obj( beacon );
+   return TRUE;
+}
+
+bool spell_portal( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Create a magic portal to another room 
+    */
+   OBJ_DATA *beacon;
+   OBJ_DATA *ob;
+
+   if( deathmatch )
+   {
+      send_to_char( "Not during a @@eDeath Match@@N!!!\n\r", ch );
+      return FALSE;
+   }
+   if( target_name[0] == '\0' )
+   {
+      send_to_char( "Form a portal to what?\n\r", ch );
+      return FALSE;
+   }
+
+   beacon = get_obj_world( ch, target_name );
+
+   if( beacon == NULL || beacon->item_type != ITEM_BEACON )
+   {
+      send_to_char( "Couldn't find target.  Sorry.\n\r", ch );
+      return FALSE;
+   }
+
+   if( beacon->in_room == NULL )
+   {
+      send_to_char( "It seems that someone is carrying it.\n\r", ch );
+      return FALSE;
+   }
+
+   if( str_cmp( beacon->owner, ch->name ) )
+   {
+      send_to_char( "That's not one of YOUR beacons!\n\r", ch );
+      return FALSE;
+   }
+
+   ob = create_object( get_obj_index( OBJ_VNUM_PORTAL ), level );
+   obj_to_room( ob, ch->in_room );
+   ob->timer = 1 + ( level / 30 );
+   ob->value[0] = ( beacon->carried_by == NULL ? beacon->in_room->vnum : beacon->carried_by->in_room->vnum );
+   ob->value[1] = 1;
+   ob->value[2] = 1;
+
+   act( "$n creates $p with a wave of $s hand.", ch, ob, NULL, TO_ROOM );
+   act( "You create $p with a wave of your hand.", ch, ob, NULL, TO_CHAR );
+
+   ob = create_object( get_obj_index( OBJ_VNUM_PORTAL ), level );
+   obj_to_room( ob, beacon->in_room );
+   ob->timer = 1 + ( level / 30 );
+   ob->value[0] = ch->in_room->vnum;
+   ob->value[1] = 1;
+   ob->value[2] = 1;
+   send_to_room( "The beacon suddenly vanishes!\n\r", beacon->in_room );
+   send_to_room( "A glowing portal suddenly forms before you!\n\r", ob->in_room );
+   extract_obj( beacon );
+   return TRUE;
+}
+
+bool spell_beacon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   /*
+    * Create a beacon, ready for a portal to 'goto'.
+    * * I owe someone thanks for this, but forgot the name... D'oh.
+    * * How this works: (+ for portals, etc )
+    * * a) Caster makes beacon: ownership set, obj->name = target_name
+    * * b) Someone goes off with beacon, drops it
+    * * c) Owner can then cast portal spell to it, beacon extracted
+    * * -S- 
+    */
+
+   char buf[MAX_STRING_LENGTH];
+   char arg[MAX_STRING_LENGTH];
+   OBJ_DATA *ob;
+
+   one_argument( target_name, arg );
+
+   ob = get_obj_world( ch, arg );
+   if( ob != NULL )
+   {
+      send_to_char( "There is already an object with that keyword.\n\r", ch );
+      return FALSE;
+   }
+
+   ob = create_object( get_obj_index( OBJ_VNUM_BEACON ), level );
+   xprintf( buf, "%s", arg );
+   free_string( ob->name );
+   ob->name = str_dup( arg );
+   xprintf( buf, "%s", ch->name );
+   free_string( ob->owner );
+   ob->owner = str_dup( buf );
+   ob->timer = 20 + (level / 3);
+   obj_to_room( ob, ch->in_room );
+   act( "$n magically produces $p!", ch, ob, NULL, TO_ROOM );
+   act( "You magically produce $p!", ch, ob, NULL, TO_CHAR );
+   return TRUE;
+}
+
+bool spell_seal_room( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_ENCAPS ) )
+   {
+      send_to_char( "This room is already sealed!\n\r", ch );
+      return FALSE;
+   }
+   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   {
+      send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
+      return FALSE;
+   }
+   if( deathmatch )
+   {
+      if( ch->hit < 150 )
+      {
+         send_to_char( "You don't have enough life force remaining!\n\r", ch );
+         return FALSE;
+      }
+      else
+      {
+         send_to_char( "@@eYou feel some of your life force rip from your soul!@@N\n\r", ch );
+         ch->hit -= 100;
+      }
+   }
+   act( "$n spreads his hands into the air and ejects a web of energy!", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "You spread your hands into the air and eject a web of energy!\n\r", ch );
+
+   raf.type = sn;
+   raf.level = level;
+   raf.duration = ( level / 20 ) + 2;
+   raf.bitvector = ROOM_BV_ENCAPS;
+   raf.caster = ch;
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+
+bool spell_deflect_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( victim, sn ) )
+      return FALSE;
+   af.type = sn;
+   af.duration = (level + 2);
+   af.modifier = -40 - get_psuedo_level( ch ) / 5;
+   af.location = APPLY_AC;
+   af.bitvector = 0;
+   affect_to_char( victim, &af );
+   send_to_char( "You feel a mind shield form around you.\n\r", victim );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_black_hand( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+
+   AFFECT_DATA af;
+
+
+
+
+   act( "You summon a hand of death, and it chokes $N!", ch, NULL, victim, TO_CHAR );
+   act( "A Black Hand grows from the shadows, and begins to choke $N!", ch, NULL, victim, TO_NOTVICT );
+   act( "$n summons a Black Hand from the shadows, which begins to choke you!", ch, NULL, victim, TO_VICT );
+
+   if( saves_spell( level, victim ) || IS_VAMP( victim ) || is_affected( victim, sn ) )
+   {
+      send_to_char( "The Black Hand dissolves back into the shadows!\n\r", victim );
+      send_to_char( "The Black Hand dissolves back into the shadows!\n\r", ch );
+      act( "The Black Hand dissolves back into the shadows!", ch, NULL, victim, TO_NOTVICT );
+      return TRUE;
+   }
+
+   af.type = sn;
+   af.duration = 3;
+   af.location = APPLY_HIT;
+   af.modifier = level;
+   af.bitvector = 0;
+   af.caster = ch;
+
+   affect_to_char( victim, &af );
+
+   act( "The Black Hand surrounds $N and begins to choke!", ch, NULL, victim, TO_ROOM );
+
+   return TRUE;
+}
+
+bool spell_throw_needle( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+   AFFECT_DATA af;
+
+   if( !sp_damage( obj, ch, ( CHAR_DATA * ) vo, dice( 2, level ), REALM_POISON, sn, TRUE ) )
+      return TRUE;
+
+   if( !saves_spell( level, victim ) )
+   {
+      af.type = sn;
+      af.duration = 12 + ( level / 10 );
+      af.location = APPLY_STR;
+      af.modifier = -3;
+      af.bitvector = AFF_POISON;
+      affect_join( victim, &af );
+      send_to_char( "You feel very sick.\n\r", victim );
+      act( "$n looks very sick.", victim, NULL, NULL, TO_ROOM );
+   }
+
+   return TRUE;
+
+
+
+
+}
+
+bool spell_morale( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   AFFECT_DATA af;
+   CHAR_DATA *gch;
+
+   for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
+   {
+      if( is_affected( gch, sn ) || !is_same_group( ch, gch ) )
+
+         continue;
+      act( "$n seems much more willing to fight.", gch, NULL, NULL, TO_ROOM );
+      send_to_char( "You are inspired to fight better!\n\r", gch );
+      af.type = sn;
+      af.duration = 4 + ( level / 5 );
+      af.location = APPLY_DAMROLL;
+      af.modifier = get_psuedo_level( ch ) / 10;
+      af.bitvector = 0;
+      affect_to_char( gch, &af );
+   }
+   send_to_char( "You inspire the troops!\n\r", ch );
+
+   return TRUE;
+}
+
+bool spell_leadership( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   AFFECT_DATA af;
+   CHAR_DATA *gch;
+
+   for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
+   {
+      if( is_affected( gch, sn ) || !is_same_group( ch, gch ) )
+
+         continue;
+      act( "$n looks more courageous!", gch, NULL, NULL, TO_ROOM );
+      send_to_char( "You fell courage wash over you!\n\r", gch );
+      af.type = sn;
+      af.duration = 4 + ( level / 5 );
+      af.location = APPLY_HITROLL;
+      af.modifier = get_psuedo_level( ch ) / 10;
+      af.bitvector = 0;
+      affect_to_char( gch, &af );
+   }
+   send_to_char( "You inspire the troops!\n\r", ch );
+
+   return TRUE;
+}
+
+bool spell_ice_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+   dam = 150 + dice( level / 4, 12 );
+   if( saves_spell( level, victim ) )
+   {
+      float tmp = dam;
+      tmp /= 1.2;
+      dam = (int)tmp;
+   }
+   sp_damage( obj, ch, victim, dam, REALM_COLD, sn, TRUE );
+   return TRUE;
+}
+
+bool spell_waterelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the elemental forces of @@lwater@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the elemental forces of @@lwater@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "A waterfall appears, and an elemental steps from the pool!!", ch, obj, NULL, TO_ROOM );
+   act( "A waterfall appears, and an elemental steps from the pool!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_WATERELEM ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n floods from the pool, drawing all the water into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+
+
+bool spell_skeleton( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the @@dNegative Plane@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the @@dNegative Plane@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "The ground opens beneath you, and a skeleton crawls out of the graveyard filth!!", ch, obj, NULL, TO_ROOM );
+   act( "The ground opens beneath you, and a skeleton crawls out of the graveyard filth!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_SKELETON ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n Stands erect, and bow's towards it's master.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * summoned->level    = 40;
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    */
+
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_poison_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   OBJ_DATA *ob = ( OBJ_DATA * ) vo;
+   AFFECT_DATA *paf;
+
+   /*
+    * Quick way to stop imms (Bash?) enchanting weapons for players 
+    */
+   if( IS_IMMORTAL( ch ) && ch->level != 85 )
+   {
+      send_to_char( "Nothing Happens.\n\r", ch );
+      return FALSE;
+   }
+
+   if( ob->item_type != ITEM_WEAPON )
+   {
+      send_to_char( "That is not a weapon!.\n\r", ch );
+      return FALSE;
+   }
+
+   /*
+    * This is gonna fuck up a lot.. paf->type isnt saved for objects in
+    * pfiles.. -- Alty 
+    */
+   for( paf = ob->first_apply; paf != NULL; paf = paf->next )
+   {
+      if( paf->type == sn )
+      {
+         send_to_char( "That weapon is already poisoned!.\n\r", ch );
+         return FALSE;
+      }
+   }
+
+   GET_FREE( paf, affect_free );
+   paf->type = sn;
+   paf->duration = -1;
+   paf->location = APPLY_DAMROLL;
+   paf->modifier = UMIN( ( level / 30 ) + 1, ob->level );
+   paf->bitvector = 0;
+   paf->caster = NULL;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+   return TRUE;
+}
+
+
+
+void do_disguise( CHAR_DATA * ch, char *argument )
+{
+   char arg[MAX_STRING_LENGTH];
+
+
+   if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_disguise] == 0 )
+   {
+      send_to_char( "You are not trained in this skill!\n\r", ch );
+      return;
+   }
+
+   one_argument( argument, arg );
+
+   if( arg[0] == '\0' )
+   {
+      send_to_char( " Enter the disguise name, or reset to reset your description to normal.\n\r", ch );
+      return;
+   }
+
+   if( !str_cmp( arg, "reset" ) )
+   {
+      free_string( ch->long_descr );
+      ch->long_descr = str_dup( ch->long_descr_orig );
+      return;
+   }
+   else
+   {
+
+      free_string( ch->long_descr );
+      xcat( argument, "\n\r" );
+      ch->long_descr = str_dup( argument );
+      send_to_char( "You are now Disguised!!!\n\r", ch );
+      return;
+   }
+
+
+
+   return;
+}
+
+bool spell_fireshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   MAGIC_SHIELD *shield;
+   AFFECT_DATA af;
+   bool char_login = FALSE;
+
+   if( ( !IS_NPC( ch ) ) && ( ch->desc != NULL ) && ( ch->desc->connected == CON_SETTING_STATS ) )
+      char_login = TRUE;
+
+/* check to see if victim is already flaming 
+  if ( is_shielded( victim, FLAME_SHIELD ) )	
+    return FALSE;
+  
+    for now, we are gonna allow only one shield up at a time  */
+   if( ch->first_shield != NULL )
+   {
+      return FALSE;
+   }
+
+   af.type = sn;
+   af.duration = get_psuedo_level( ch ) / 10;
+   if( char_login )
+      af.duration /= 2;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+
+   GET_FREE( shield, shield_free );
+   shield->name = str_dup( "@@eFIRE@@N" );
+   shield->type = FLAME_SHIELD;
+   shield->harmfull = TRUE;
+   shield->attack_dam = number_range( ( level * 3 ), ( level * 5 ) );
+   shield->percent = 10 + ( get_psuedo_level( ch ) / 10 );
+   shield->hits = 5000 + ( get_psuedo_level( ch ) * 10 );
+   shield->sn = sn;
+   if( char_login )
+      shield->hits /= ( number_range( 2, 10 ) );
+
+   shield->absorb_message_room = str_dup( "@@N$n's @@eshield@@N flares and envelops $N in @@eflames@@N!!" );
+   shield->absorb_message_victim = str_dup( "@@N$N's @@eshield@@N flares, and envelops you with @@eflame@@N!!" );
+   shield->absorb_message_self = str_dup( "@@NYour @@eshield@@N flares, and envelops $N with @@eflame@@N!!!" );
+   shield->wearoff_room = str_dup( "@@N$n's @@eshield@@N @@yFLAMES OUT@@N!!!!!" );
+   shield->wearoff_self = str_dup( "@@NYour @@eshield@@N @@yFLAMES OUT@@N!!!!!" );
+
+   LINK( shield, ch->first_shield, ch->last_shield, next, prev );
+
+   send_to_char( "@@NYou @@eburst@@N into @@Rflames@@N!\n\r", ch );
+   act( "@@N$n @@ebursts@@N into @@Rflames@@N!", ch, NULL, NULL, TO_ROOM );
+
+   return TRUE;
+}
+
+
+bool spell_iceshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   MAGIC_SHIELD *shield;
+   AFFECT_DATA af;
+   bool char_login = FALSE;
+
+   if( ( !IS_NPC( ch ) ) && ( ch->desc != NULL ) && ( ch->desc->connected == CON_SETTING_STATS ) )
+      char_login = TRUE;
+
+/* check to see if victim is already flaming 
+  if ( is_shielded( victim, ICE_SHIELD ) )	
+    return FALSE;
+  
+    for now, we are gonna allow only one shield up at a time  */
+   if( ch->first_shield != NULL )
+   {
+      return FALSE;
+   }
+
+   af.type = sn;
+   af.duration = get_psuedo_level( ch ) / 15;
+   if( char_login )
+      af.duration /= 2;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+
+   GET_FREE( shield, shield_free );
+   shield->name = str_dup( "@@aICE@@N" );
+   shield->type = ICE_SHIELD;
+   shield->harmfull = FALSE;
+   shield->attack_dam = 0;
+   shield->percent = 50 + ( get_psuedo_level( ch ) / 6 );
+   shield->hits = 15000 + ( get_psuedo_level( ch ) * 50 );
+   shield->sn = sn;
+   if( char_login )
+      shield->hits /= ( number_range( 2, 10 ) );
+
+   shield->absorb_message_room = str_dup( "@@N$n's @@ashield@@N absorbs the blow@@N!!" );
+   shield->absorb_message_victim = str_dup( "@@N$N's @@ashield@@N absorbs the blow@@N!!" );
+   shield->absorb_message_self = str_dup( "@@NYour @@ashield@@N absorbs the blow@@N!!!" );
+   shield->wearoff_room = str_dup( "@@N$n's @@ashield @@Nis @@rSHATTERED@@N!!!" );
+   shield->wearoff_self = str_dup( "@@NYour @@ashield@@N is @@rSHATTERED@@N!!!" );
+
+
+   LINK( shield, ch->first_shield, ch->last_shield, next, prev );
+
+   send_to_char( "@@NYou are encased in @@aIce@@N!\n\r", ch );
+   act( "@@N$n is encased in @@aIce@@N!!", ch, NULL, NULL, TO_ROOM );
+
+   return TRUE;
+}
+
+bool spell_shockshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   MAGIC_SHIELD *shield;
+   AFFECT_DATA af;
+   bool char_login = FALSE;
+
+   if( ( !IS_NPC( ch ) ) && ( ch->desc != NULL ) && ( ch->desc->connected == CON_SETTING_STATS ) )
+      char_login = TRUE;
+
+/* check to see if victim is already flaming 
+  if ( is_shielded( victim, SHOCK_SHIELD ) )	
+    return FALSE;
+  
+    for now, we are gonna allow only one shield up at a time  */
+   if( ch->first_shield != NULL )
+   {
+      return FALSE;
+   }
+
+   af.type = sn;
+   af.duration = get_psuedo_level( ch ) / 7;
+   if( char_login )
+      af.duration /= 2;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+
+   GET_FREE( shield, shield_free );
+   shield->name = str_dup( "@@lSHOCK@@N" );
+   shield->type = SHOCK_SHIELD;
+   shield->harmfull = TRUE;
+   shield->attack_dam = number_range( ( level * 2 ), ( level * 4 ) );
+   shield->percent = 25 + get_psuedo_level( ch ) / 9;
+   shield->hits = 7000 + get_psuedo_level( ch ) * 20;
+   shield->sn = sn;
+   if( char_login )
+      shield->hits /= ( number_range( 2, 10 ) );
+
+   shield->absorb_message_room = str_dup( "@@N$n's @@lshield@@N @@ysparks,@@N and zaps $N@@N!!" );
+   shield->absorb_message_victim = str_dup( "@@N$N's @@lshield@@N @@ysparks@@N, and zaps you@@N!!" );
+   shield->absorb_message_self = str_dup( "@@NYour @@lshield@@N @@ysparks@@N, and zaps $N@@N!!!" );
+   shield->wearoff_room = str_dup( "@@N$n's @@lshield@@N @@aDISSAPATES@@N!!!!!" );
+   shield->wearoff_self = str_dup( "@@NYour @@lshield@@N @@aDISSAPATES@@N!!!!!" );
+
+
+   LINK( shield, ch->first_shield, ch->last_shield, next, prev );
+
+   send_to_char( "@@NYou are surrounded by an @@lelectric field@@N!!\n\r", ch );
+   act( "@@N$n is surrounded in an @@lelectric field@@N!!", ch, NULL, NULL, TO_ROOM );
+
+   return TRUE;
+}
+
+bool spell_shadowshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   MAGIC_SHIELD *shield;
+   AFFECT_DATA af;
+   bool char_login = FALSE;
+
+   if( ( !IS_NPC( ch ) ) && ( ch->desc != NULL ) && ( ch->desc->connected == CON_SETTING_STATS ) )
+      char_login = TRUE;
+
+/* check to see if victim is already flaming 
+  if ( is_shielded( victim, FLAME_SHIELD ) )	
+    return FALSE;
+  
+    for now, we are gonna allow only one shield up at a time  */
+   if( ch->first_shield != NULL )
+   {
+      return FALSE;
+   }
+
+   af.type = sn;
+   af.duration = get_psuedo_level( ch ) / 10;
+   if( char_login )
+      af.duration /= 2;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+
+   GET_FREE( shield, shield_free );
+   shield->name = str_dup( "@@dSHADOW@@N" );
+   shield->type = FLAME_SHIELD;
+   shield->harmfull = TRUE;
+   shield->attack_dam = number_range( (int)( level * 2 ), (int)( level * 4.5 ) );
+   shield->percent = 20;
+   shield->hits = 3000;
+   shield->sn = sn;
+   if( char_login )
+      shield->hits /= ( number_range( 2, 10 ) );
+
+   shield->absorb_message_room = str_dup( "@@N$n's @@eshield@@N flares and envelops $N in @@eflames@@N!!" );
+   shield->absorb_message_victim = str_dup( "@@N$N's @@eshield@@N flares, and envelops you with @@eflame@@N!!" );
+   shield->absorb_message_self = str_dup( "@@NYour @@eshield@@N flares, and envelops $N with @@eflame@@N!!!" );
+   shield->wearoff_room = str_dup( "@@N$n's @@dshield@@N @@dDISSAPATES@@N!!!!!" );
+   shield->wearoff_self = str_dup( "@@NYour @@dshield@@N @@dDISSAPATES@@N!!!!!" );
+
+
+   LINK( shield, ch->first_shield, ch->last_shield, next, prev );
+
+   send_to_char( "You burst into flames!\n\r", ch );
+   act( "$n bursts into flames!", ch, NULL, NULL, TO_ROOM );
+
+   return TRUE;
+}
+
+bool spell_thoughtshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   MAGIC_SHIELD *shield;
+   AFFECT_DATA af;
+   bool char_login = FALSE;
+
+   if( ( !IS_NPC( ch ) ) && ( ch->desc != NULL ) && ( ch->desc->connected == CON_SETTING_STATS ) )
+      char_login = TRUE;
+
+/* check to see if victim is already flaming 
+  if ( is_shielded( victim, FLAME_SHIELD ) )	
+    return FALSE;
+  
+    for now, we are gonna allow only one shield up at a time  */
+   if( ch->first_shield != NULL )
+   {
+      return FALSE;
+   }
+
+   af.type = sn;
+   af.duration = get_psuedo_level( ch ) / 10;
+   if( char_login )
+      af.duration /= 2;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+
+   GET_FREE( shield, shield_free );
+   shield->name = str_dup( "@@mTHOUGHT@@N" );
+   shield->type = FLAME_SHIELD;
+   shield->harmfull = TRUE;
+   shield->attack_dam = number_range( (int)( level * 2 ), (int)( level * 4.5 ) );
+   shield->percent = 20;
+   shield->hits = 3000;
+   shield->sn = sn;
+   if( char_login )
+      shield->hits /= ( number_range( 2, 10 ) );
+
+   shield->absorb_message_room = str_dup( "@@N$n's @@eshield@@N flares and envelops $N in @@eflames@@N!!" );
+   shield->absorb_message_victim = str_dup( "@@N$N's @@eshield@@N flares, and envelops you with @@eflame@@N!!" );
+   shield->absorb_message_self = str_dup( "@@NYour @@eshield@@N flares, and envelops $N with @@eflame@@N!!!" );
+   shield->wearoff_room = str_dup( "@@N$n's @@dshield@@N @@dDISSAPATES@@N!!!!!" );
+   shield->wearoff_self = str_dup( "@@NYour @@dshield@@N @@dDISSAPATES@@N!!!!!" );
+
+   LINK( shield, ch->first_shield, ch->last_shield, next, prev );
+
+   send_to_char( "You burst into flames!\n\r", ch );
+   act( "$n bursts into flames!", ch, NULL, NULL, TO_ROOM );
+
+   return TRUE;
+}
+
+
+
+
+bool spell_ethereal( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   /*
+    * Ethereal travel :)
+    * * 
+    * * Zenithar
+    */
+
+
+
+   if( deathmatch )
+   {
+      send_to_char( "Not during a @@eDeath Match@@N!!\n\r", ch );
+      return FALSE;
+   }
+   if( ( is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) )
+       && ( !IS_NPC( ch ) && ( !is_set( ch->act, ACT_INTELLIGENT ) ) ) )
+   {
+      send_to_char( "You failed.\n\r", ch );
+      return FALSE;
+   }
+
+
+   /*
+    * Check is ch screws up, and ends up in limbo... <grin> 
+    */
+
+   if( ( number_percent(  ) < 15 ) && ( !IS_NPC( ch ) ) )   /* 15% chance */
+   {
+      send_to_char( "@@NYou get distracted, and appear in the middle of @@dnowhere@@N!\n\r", ch );
+      act( "@@N$n begins to disperse into @@lghostly @@Nparticles, then disappears!!", ch, NULL, NULL, TO_ROOM );
+      char_from_room( ch );
+      char_to_room( ch, get_room_index( ROOM_VNUM_LIMBO ) );
+      if( ch->riding != NULL )
+      {
+         char_from_room( ch->riding );
+         char_to_room( ch->riding, get_room_index( ROOM_VNUM_LIMBO ) );
+      }
+
+      act( "@@N$n coelesces from a @@lghostly@@N image into the room.", ch, NULL, NULL, TO_ROOM );
+      do_look( ch, "auto" );
+      return TRUE;
+   }
+
+   act( "@@N$n begins to disperse into @@lghostly @@Nparticles, then disappears!!", ch, NULL, NULL, TO_ROOM );
+   char_from_room( ch );
+   char_to_room( ch, get_room_index( ROOM_VNUM_ETHEREAL_PLANE ) );
+   if( ch->riding != NULL )
+   {
+      char_from_room( ch->riding );
+      char_to_room( ch->riding, get_room_index( ROOM_VNUM_ETHEREAL_PLANE ) );
+   }
+
+   act( "@@N$n coelesces from a @@lghostly@@N image into the room.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou enter the @@lEthereal Plane@@N!\n\r", ch );
+   do_look( ch, "auto" );
+   return TRUE;
+}
+
+bool spell_fireelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the elemental forces of @@efire@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the elemental forces of @@efire@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA @@ebonfire@@N appears, and an elemental steps from the flames!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA @@ebonfire@@N appears, and an elemental steps from the flames!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_FIREELEM ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n leaps from the bonfire, drawing all the @@eflames@@N into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_rune_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_FIRE_RUNE ) )
+   {
+      send_to_char( "@@NThere is already a @@eFire@@N Rune operating here!\n\r", ch );
+      return FALSE;
+   }
+
+   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   {
+      send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
+      return FALSE;
+   }
+
+
+   act( "$n draws a mystical @@eFire@@N Rune in the air.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou draw a @@eFire@@N Rune in the air.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level ) + number_range( 2, 20 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_FIRE_RUNE;
+   raf.caster = ch;
+   raf.modifier = ( level * 3 ) - number_range( 10, 50 );
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+bool spell_rune_poison( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_POISON_RUNE ) )
+   {
+      send_to_char( "@@NThere is already a @@dPoison@@N Rune operating here!\n\r", ch );
+      return FALSE;
+   }
+
+   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   {
+      send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
+      return FALSE;
+   }
+
+
+   act( "$n draws a mystical @@dPoison@@N Rune in the air.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou draw a @@dPoison@@N Rune in the air.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level ) + number_range( 2, 20 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_POISON_RUNE;
+   raf.caster = ch;
+   raf.modifier = 0;
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+bool spell_rune_shock( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_SHOCK_RUNE ) )
+   {
+      send_to_char( "@@NThere is already a @@lShock@@N Rune operating here!\n\r", ch );
+      return FALSE;
+   }
+   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   {
+      send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
+      return FALSE;
+   }
+
+
+
+   act( "$n draws a mystical @@lShock@@N Rune in the air.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou draw a @@lShock@@N Rune in the air.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level ) + number_range( 2, 20 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_SHOCK_RUNE;
+   raf.caster = ch;
+   raf.modifier = ( level * 3 ) - number_range( 10, 50 );
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+
+bool spell_healing_light( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_HEAL_REGEN ) )
+   {
+      send_to_char( "@@NThere is already a @@mHealing Light@@N operating here!\n\r", ch );
+      return FALSE;
+   }
+
+
+
+   act( "@@NA majestic @@mHealing Light@@N fills the room.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou fill the room with a majestic @@mHealing Light@@N.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level / 8 ) + number_range( 2, 10 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_HEAL_REGEN;
+   raf.caster = ch;
+   raf.modifier = 0;
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+bool spell_wither_shadow( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_HEAL_STEAL ) )
+   {
+      send_to_char( "@@NThere is already a @@dWithering Shadow@@N operating here!\n\r", ch );
+      return FALSE;
+   }
+
+   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   {
+      send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
+      return FALSE;
+   }
+
+
+   act( "@@NA deadly @@dWithering Shadow@@N fills the room.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou fill the room with a deadly @@dWithering Shadow@@N.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level / 8 ) + number_range( 2, 10 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_HEAL_STEAL;
+   raf.caster = ch;
+   raf.modifier = 0;
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+
+bool spell_mana_flare( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_MANA_REGEN ) )
+   {
+      send_to_char( "@@NThere is already a @@eMana Flare@@N operating here!\n\r", ch );
+      return FALSE;
+   }
+
+
+
+   act( "@@NA powerful @@eMana Flare@@N encompasses the room.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou fill the room with a powerful @@eMana Flare@@N.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level / 8 ) + number_range( 2, 10 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_MANA_REGEN;
+   raf.caster = ch;
+   raf.modifier = 0;
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+
+bool spell_mana_drain( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_MANA_STEAL ) )
+   {
+      send_to_char( "@@NThere is already a @@dMana Drain@@N operating here!\n\r", ch );
+      return FALSE;
+   }
+   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   {
+      send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
+      return FALSE;
+   }
+
+
+
+   act( "@@NA mind-sapping @@dMana Drain@@N fills the room.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou fill the room with a mind-sapping @@dMana Drain@@N.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level / 8 ) + number_range( 2, 10 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_MANA_STEAL;
+   raf.caster = ch;
+   raf.modifier = 0;
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+bool spell_cage( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_HOLD ) )
+   {
+      send_to_char( "@@NThere is already a @@rCage@@N operating here!\n\r", ch );
+      return FALSE;
+   }
+
+
+
+   act( "@@NA paralysing @@rCage@@N surrounds the room.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou surround the room with a paralyzing @@rCage@@N.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level / 20 ) + number_range( 2, 10 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_HOLD;
+   raf.caster = ch;
+   raf.modifier = 0;
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+bool spell_cloak_flaming( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   AFFECT_DATA af;
+
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+
+
+   af.type = sn;
+   af.duration = ch->level / 8;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = AFF_CLOAK_FLAMING;
+   affect_to_char( ch, &af );
+
+   return TRUE;
+}
+
+
+bool spell_cloak_reflect( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   AFFECT_DATA af;
+
+
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+
+   af.type = sn;
+   af.duration = ch->level / 8;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = AFF_CLOAK_REFLECTION;
+   affect_to_char( ch, &af );
+
+   return TRUE;
+}
+
+bool spell_cloak_absorb( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   AFFECT_DATA af;
+
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+
+
+   af.type = sn;
+   af.duration = ch->level / 8;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = AFF_CLOAK_ABSORPTION;
+   affect_to_char( ch, &af );
+
+   return TRUE;
+}
+
+bool spell_cloak_adept( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   AFFECT_DATA af;
+
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+   if( IS_NPC( ch ) )
+      return FALSE;
+
+
+   af.type = sn;
+   af.duration = get_psuedo_level( ch ) / 5;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = AFF_CLOAK_ADEPT;
+   affect_to_char( ch, &af );
+
+   return TRUE;
+}
+
+bool spell_cloak_regen( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   AFFECT_DATA af;
+
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+
+
+   af.type = sn;
+   af.duration = get_psuedo_level( ch ) / 10;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = AFF_CLOAK_REGEN;
+   affect_to_char( ch, &af );
+
+   return TRUE;
+}
+
+
+bool spell_room_dispel( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA *raf;
+   ROOM_AFFECT_DATA *raf_next;
+   int chance = 0;
+
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
+      chance = 1000;
+   else
+      chance = ch->level + 20;
+
+
+   act( "$n gestures demonically at the magical spells around the room.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou gesture demonically!\n\r", ch );
+
+
+   for( raf = room->first_room_affect; raf != NULL; raf = raf_next )
+   {
+      raf_next = raf->next;
+      if( number_percent(  ) < chance )
+      {
+         r_affect_remove( room, raf );
+         chance = ( 2 * chance ) / 3;
+      }
+      else
+         break;
+   }
+
+   return TRUE;
+}
+
+
+bool spell_throw_star( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+   AFFECT_DATA af;
+
+   if( !sp_damage( obj, ch, ( CHAR_DATA * ) vo,
+                   dice( 5, level / 2 ) + dice( 5, level / 2 ) + level, REALM_POISON, sn, TRUE ) )
+      return TRUE;
+
+   if( !saves_spell( level, victim ) )
+   {
+      af.type = sn;
+      af.duration = 12 + ( level / 10 );
+      af.location = APPLY_DAMROLL;
+      af.modifier = -level / 3;
+      af.bitvector = AFF_POISON;
+      affect_join( victim, &af );
+      send_to_char( "You feel very sick.\n\r", victim );
+      act( "$n looks very sick.", victim, NULL, NULL, TO_ROOM );
+   }
+
+   return TRUE;
+
+
+
+
+}
+
+bool spell_soul_net( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA raf;
+
+   room = ch->in_room;
+
+   if( room == NULL )
+      return FALSE;
+
+   if( IS_SET( room->affected_by, ROOM_BV_SOUL_NET ) )
+   {
+      send_to_char( "@@NThere is already a @@dSoul Net@@N operating here!\n\r", ch );
+      return FALSE;
+   }
+
+
+
+   act( "@@NA demonic @@dSoul Net@@N enshrouds the room.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou enshroud the room with a demonic @@dSoul Net@@N.\n\r", ch );
+
+   raf.type = sn;
+   raf.duration = ( level / 8 );
+   raf.level = level;
+   raf.bitvector = ROOM_BV_SOUL_NET;
+   raf.caster = ch;
+   raf.modifier = 0;
+
+   affect_to_room( room, &raf );
+   return TRUE;
+}
+
+bool spell_condense_soul( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   OBJ_DATA *ob = ( OBJ_DATA * ) vo;
+
+   if( IS_NPC( ch ) )
+      return FALSE;
+
+   if( ob->item_type != ITEM_SOUL )
+   {
+      send_to_char( "That is not a soul!.\n\r", ch );
+      return FALSE;
+   }
+
+   if( ob->level < 80 )
+   {
+      send_to_char( "Bah!! That soul is to weak to use!!\n\r", ch );
+      return FALSE;
+   }
+   extract_obj( ob );
+   ob = create_object( get_obj_index( OBJ_VNUM_SOUL_POTION ), level );
+   obj_to_char( ob, ch );
+
+   act( "@@N$n gestures diabolically, and his captured soul condenses into a@@dSoul Potion@@N.", ch, NULL, NULL, TO_ROOM );
+   send_to_char( "@@NYou condense the soul and some of your life force into a @@dSoul potion@@N.\n\r", ch );
+   ch->max_hit -= 75;
+   ch->pcdata->hp_from_gain -= 75;
+
+   return TRUE;
+}
+
+
+bool spell_restoration( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   char buf[MAX_STRING_LENGTH];
+   if( IS_NPC( ch ) )
+      return FALSE;
+
+   ch->hit = ch->max_hit;
+   ch->mana = ch->max_mana;
+   ch->move = ch->max_move;
+   if( !IS_NPC( ch ) )
+      ch->pcdata->super->energy = ch->pcdata->super->energy_max;
+
+   send_to_char( "@@eTHe life force of tha captured soul restores you!\n\r", ch );
+   xprintf( buf, " %s has used a restoration spell.\n\r", ch->name );
+   monitor_chan( buf, MONITOR_BAD );
+   return TRUE;
+}
+
+bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   OBJ_DATA *ob = ( OBJ_DATA * ) vo;
+   AFFECT_DATA *paf;
+   OBJ_DATA *obj_soul;
+   if( IS_NPC( ch ) )
+      return FALSE;
+
+   /*
+    * Quick way to stop imms (Bash?) enchanting weapons for players 
+    */
+   if( IS_IMMORTAL( ch ) && ch->level != 85 )
+   {
+      send_to_char( "Nothing Happens.\n\r", ch );
+      return FALSE;
+   }
+   if( IS_NPC( ch ) )
+      return FALSE;
+   if( ( obj_soul = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) == NULL )
+      if( ( obj_soul = get_eq_char( ch, WEAR_HOLD_HAND_R ) ) == NULL )
+      {
+         send_to_char( "@@NYou must be holding a @@eSoul@@N to cast this spell!!\n\r", ch );
+         return FALSE;
+      }
+   if( obj_soul->item_type != ITEM_SOUL )
+   {
+      send_to_char( "@@NYou are not holding a @@eSoul@@N!!\n\r", ch );
+      return FALSE;
+   }
+
+   if( ob->item_type != ITEM_WEAPON )
+   {
+      send_to_char( "That is not a weapon!.\n\r", ch );
+      return FALSE;
+   }
+
+   for( paf = ob->first_apply; paf != NULL; paf = paf->next )
+   {
+      if( paf->type == sn )
+      {
+         send_to_char( "That weapon is already infused with a soul!.\n\r", ch );
+         return FALSE;
+      }
+   }
+   if( ch->pcdata->hp_from_gain < 100 )
+   {
+      send_to_char( "You have exhausted your life force, and are unable to"
+                    " control the necromantic forces necessary for this act.\n\r", ch );
+      return FALSE;
+   }
+   GET_FREE( paf, affect_free );
+   paf->type = sn;
+   paf->duration = -1;
+   paf->location = APPLY_DAMROLL;
+   paf->modifier = ( obj_soul->level / 8 );
+   paf->bitvector = 0;
+   paf->caster = NULL;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+   GET_FREE( paf, affect_free );
+   paf->type = sn;
+   paf->duration = -1;
+   paf->location = APPLY_AC;
+   paf->modifier = -( obj_soul->level / 2 );
+   paf->bitvector = 0;
+   paf->caster = NULL;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+   GET_FREE( paf, affect_free );
+   paf->type = sn;
+   paf->duration = -1;
+   paf->location = APPLY_MANA;
+   paf->modifier = obj_soul->level / 3;
+   paf->bitvector = 0;
+   paf->caster = NULL;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+
+   GET_FREE( paf, affect_free );
+   paf->type = sn;
+   paf->duration = -1;
+   paf->location = APPLY_HITROLL;
+   paf->modifier = ( obj_soul->level / 8 );
+   paf->bitvector = 0;
+   paf->caster = NULL;
+   LINK( paf, ob->first_apply, ob->last_apply, next, prev );
+
+   SET_BIT( ob->extra_flags, ITEM_NODISARM );
+   SET_BIT( ob->extra_flags, ITEM_NODROP );
+   SET_BIT( ob->extra_flags, ITEM_NO_AUCTION );
+   SET_BIT( ob->extra_flags, ITEM_NOSAC );
+   SET_BIT( ob->extra_flags, ITEM_NOLOOT );
+   SET_BIT( ob->extra_flags, ITEM_ANTI_GOOD );
+   SET_BIT( ob->extra_flags, ITEM_NOLOOT );
+
+   ob->obj_fun = obj_fun_lookup( "objfun_infused_soul" );
+   extract_obj( obj_soul );
+
+   act( "@@N$n gestures diabolically, and his captured @@esoul@@N is infused into his $P.", ch, NULL, ob, TO_ROOM );
+   send_to_char( "@@NYou condense the soul and some of your life force into your weapon.\n\r", ch );
+   ch->max_hit -= 100;
+   ch->pcdata->hp_from_gain -= 100;
+   do_save( ch, "auto" );
+   return TRUE;
+}
+
+bool spell_holy_light( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   CHAR_DATA *gch;
+
+   for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
+   {
+      if( !is_same_group( ch, gch ) )
+
+         continue;
+      act( "$N is invigorated by the light shining off of $n!", ch, NULL, gch, TO_NOTVICT );
+      send_to_char( "You feel a warm light invigorate you!\n\r", gch );
+      gch->hit = UMIN( gch->max_hit, ( gch->hit + number_range( level * 2, level * 5 ) ) );
+   }
+   send_to_char( "You invigorate the troops!\n\r", ch );
+
+   return TRUE;
+}
+
+bool spell_holy_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( victim, sn ) )
+      return FALSE;
+   af.type = sn;
+   af.duration = 2 + ( level / 7 );
+   af.modifier = -80 - get_psuedo_level( ch ) / 5;
+   af.location = APPLY_AC;
+   af.bitvector = 0;
+   affect_to_char( victim, &af );
+   send_to_char( "Your armor is now blessed!.\n\r", victim );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_divine_intervention( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int heal;
+
+   heal = UMAX( 600, number_range( level * 4, level * 10 ) );
+   victim->hit = UMIN( victim->hit + heal, victim->max_hit );
+   update_pos( victim );
+   send_to_char( "You feel the hand of your God invigorate your soul!\n\r", victim );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_earthelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the elemental forces of @@bearth@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the elemental forces of @@bearth@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA huge mound of @@bearth@@N appears, and an elemental steps from the boulders!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA huge mound of @@bearth@@N appears, and an elemental steps from the boulders!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_EARTHELEM ) );
+   char_to_room( summoned, ch->in_room );
+   act( "@@N$n emerges from the mound, assuming the @@bearth@@N into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_iron_golem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "@@N$n calls upon the @@aalchemical@@N forces of @@dmetal@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the @@aalchemical@@N forces of @@dmetal@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA large slab of @@diron@@N appears, and a golem steps from the mass!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA large slab of @@diron@@N appears, and a golem steps from the mass!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_IRON_GOLEM ) );
+   char_to_room( summoned, ch->in_room );
+   act( "@@N$n mutates from the @@dslab of iron@@N, drawing all the metal into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_soul_thief( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+
+   act( "$n calls upon the @@dNegative Plane@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the @@dNegative Plane@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NThe ground opens beneath you, and a @@lSoul @@eThief@@N crawls out of the graveyard filth!!", ch, obj, NULL,
+        TO_ROOM );
+   act( "@@NThe ground opens beneath you, and a @@lSoul @@eThief@@N crawls out of the graveyard filth!!", ch, obj, NULL,
+        TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_SOUL_THIEF ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n Stands erect, and bow's towards it's master.", summoned, NULL, NULL, TO_ROOM );
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_holy_avenger( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the holy forces of @@Wlight@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the holy forces of @@Wlight@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA shimmering halo appears, and a @@yHoly @@WAvenger@@N steps from the light!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA shimmering halo appears, and a @@yHoly @@WAvenger@@N steps from the light!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_HOLY_AVENGER ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n steps from the light, drawing all the power into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_diamond_golem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "@@N$n calls upon the @@aalchemical@@N forces of @@ylight@@N!", ch, obj, NULL, TO_ROOM );
+   act( "@@NYou call upon the @@aalchemical@@N forces of @@ylight@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "A huge gemstone appears, and a golem steps from the diamond!!", ch, obj, NULL, TO_ROOM );
+   act( "A huge gemstone appears, and a golem steps from the diamond!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_DIAMOND_GOLEM ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n floods from the pool, drawing all the water into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_summon_pegasus( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the holy forces of @@Wlight@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the holy forces of @@Wlight@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA shimmering pyramid appears, and a @@mMagestic @@WPegasus@@N steps from the light!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA shimmering pyramid appears, and a @@mMagestic @@WPagsus@@N steps from the light!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_PEGASUS ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n steps from the light, drawing all the power into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_summon_nightmare( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the unholy forces of @@eEvil@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the unholy forces of @@eEvil@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA flaming pit appears, and a @@eDemonic @@dNightmare@@N steps from the heat!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA flaming pit appears, and a @@eDemonic @@dNightmare@@N steps from the heat!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_NIGHTMARE ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n steps from the flames, drawing all the power into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_summon_beast( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the elemental forces of @@lAir@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the elemental forces of @@'Air@@N.", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA whirlwind appears, and an @@lElemental @@aBeast@@N steps from the winds!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA whirlwind appears, and an @@lElemental @@aBeast@@N steps from the winds!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_ELEM_BEAST ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n steps from the whirlwind, drawing all the power into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_summon_devourer( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the psychic forces of the @@rMind@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the psychic forces of the @@rMind@@N!", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA vortex appears, and an @@rIntellect @@bDevourer@@N steps from the circle!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA vortex appears, and an @@rIntellect @@bDevourer@@N steps from the circle!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_INT_DEVOURER ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n steps from the vortex, drawing all the power into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_summon_shadow( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *summoned;
+
+   act( "$n calls upon the shadowy forces of @@dDarkness@@N!", ch, obj, NULL, TO_ROOM );
+   act( "You call upon the shadowy forces of @@dDarkness@@N!", ch, obj, NULL, TO_CHAR );
+
+   act( "@@NA tunnel of shadow appears, and a @@dShadow @@RHound@@N steps from the depths!!", ch, obj, NULL, TO_ROOM );
+   act( "@@NA tunnel of shadow appears, and a @@dShadow @@RHound@@N steps from the depths!!", ch, obj, NULL, TO_CHAR );
+
+   summoned = create_mobile( get_mob_index( MOB_VNUM_SHADOW_HOUND ) );
+   char_to_room( summoned, ch->in_room );
+   act( "$n steps from the tunnel, drawing all the power into it's body.", summoned, NULL, NULL, TO_ROOM );
+
+   /*
+    * don't think we need these  
+    * summoned->level    = 40;  
+    * summoned->max_hit  = dice( 8, 40 );
+    * summoned->hit      = summoned->max_hit;
+    * summoned->max_move = dice( 10, 40 );
+    * summoned->move     = summoned->max_move;  
+    * 
+    */
+   set_bit( summoned->act, ACT_PET );
+   SET_BIT( summoned->affected_by, AFF_CHARM );
+   summoned->extract_timer = get_psuedo_level( ch ) / 3;
+   add_follower( summoned, ch );
+   return TRUE;
+}
+
+bool spell_lava_burst( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   float save_mod = 1.0;
+   float dam;
+
+   if( saves_spell( level, victim ) )
+      save_mod = .75;
+
+   if( number_range( 0, 100 ) < 50 )
+   {
+      OBJ_DATA *heated_item = NULL;
+      OBJ_DATA *prev_carried = NULL;
+
+      for( heated_item = victim->first_carry; heated_item != NULL; heated_item = heated_item->next_in_carry_list )
+      {
+         if( heated_item->wear_loc == WEAR_NONE )
+            continue;
+         prev_carried = heated_item;
+         if( number_range( 0, 100 ) < 25 )
+            continue;
+         else
+            break;
+
+      }
+      if( heated_item == NULL )
+      {
+         if( prev_carried != NULL )
+         {
+            SET_BIT( prev_carried->item_apply, ITEM_APPLY_HEATED );
+            return TRUE;
+         }
+         else
+         {
+            return TRUE;
+         }
+      }
+      else
+      {
+         SET_BIT( heated_item->item_apply, ITEM_APPLY_HEATED );
+         return TRUE;
+      }
+
+   }
+
+   dam = number_range( (int)(get_psuedo_level(ch) * 2), (int)(get_psuedo_level(ch) * 4));
+   dam *= save_mod;
+
+   sp_damage( obj, ch, ( CHAR_DATA * ) vo, (int)dam, REALM_FIRE, sn, TRUE );
+
+   return TRUE;
+
+
+
+}
+
+bool spell_heat_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+
+
+   if( saves_spell( level, victim ) && ( number_range( 0, 99 ) < 50 ) )
+      return TRUE;
+   {
+      OBJ_DATA *heated_item = NULL;
+      OBJ_DATA *prev_carried = NULL;
+
+      for( heated_item = victim->first_carry; heated_item != NULL; heated_item = heated_item->next_in_carry_list )
+      {
+         if( heated_item->wear_loc == WEAR_NONE )
+            continue;
+         prev_carried = heated_item;
+         if( number_range( 0, 100 ) < 25 )
+            continue;
+         else
+            break;
+
+      }
+      if( heated_item == NULL )
+      {
+         if( prev_carried != NULL )
+         {
+            if( ( !IS_NPC( victim ) && IS_WOLF( victim ) ) && ( !IS_RAGED( victim ) && !IS_SHIFTED( victim ) ) )
+
+               SET_BIT( prev_carried->item_apply, ITEM_APPLY_HEATED );
+            return TRUE;
+         }
+         else
+         {
+            return TRUE;
+         }
+      }
+      else
+      {
+         if( ( !IS_NPC( victim ) && IS_WOLF( victim ) ) && ( !IS_RAGED( victim ) && !IS_SHIFTED( victim ) ) )
+
+            SET_BIT( heated_item->item_apply, ITEM_APPLY_HEATED );
+         return TRUE;
+      }
+
+   }
+
+
+   return TRUE;
+
+
+
+}
+
+bool spell_retri_strike( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *vch;
+   CHAR_DATA *vch_next;
+   OBJ_DATA *staff_obj = NULL;
+
+   if( ( staff_obj = get_eq_char( ch, WEAR_HOLD_HAND_R ) ) == NULL )
+      if( ( staff_obj = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) == NULL )
+      {
+         send_to_char( "You must be holding a @@rstaff@@N for this spell!\n\r", ch );
+         return FALSE;
+      }
+
+   if( staff_obj->item_type != ITEM_STAFF )
+   {
+      send_to_char( "That is not a staff you are holding, you fool!!\n\r", ch );
+      return FALSE;
+   }
+
+
+   if( obj == NULL )
+   {
+      send_to_char( "The earth trembles beneath your feet!\n\r", ch );
+      act( "$n makes the earth tremble and shiver.", ch, NULL, NULL, TO_ROOM );
+   }
+   else
+   {
+      act( "$p vibrates violently, making the earth tremble!", ch, obj, NULL, TO_CHAR );
+      act( "$p vibrates violenty, making the earth around $n tremble!", ch, obj, NULL, TO_ROOM );
+   }
+   CREF( vch_next, CHAR_NEXT );
+
+   for( vch = first_char; vch != NULL; vch = vch_next )
+   {
+      vch_next = vch->next;
+      if( vch->in_room == NULL )
+         continue;
+      if( vch->in_room == ch->in_room )
+      {
+         if( vch != ch )
+         {
+            OBJ_DATA *heated_item = NULL;
+            OBJ_DATA *prev_carried = NULL;
+
+            act( "@@W$n @@Wis @@eimmolated@@N by the fury released from the $p@@W, and falls to the ground!", vch, staff_obj,
+                 NULL, TO_ROOM );
+            act( "@@WYou are @@eimmolated@@N by the fury released from the $p@@W, and fall to the ground!", vch, staff_obj,
+                 NULL, TO_CHAR );
+            if( !sp_damage
+                ( obj, ch, vch, number_range( staff_obj->level * 6, staff_obj->level * 10 ), REALM_LIGHT, sn, FALSE ) )
+               continue;
+            for( heated_item = vch->first_carry; heated_item != NULL; heated_item = heated_item->next_in_carry_list )
+            {
+               if( heated_item->wear_loc == WEAR_NONE )
+                  continue;
+               prev_carried = heated_item;
+               if( number_range( 0, 100 ) < 25 )
+                  continue;
+               else
+                  break;
+
+            }
+            if( heated_item == NULL )
+            {
+               if( prev_carried != NULL )
+               {
+                  if( ( !IS_NPC( vch ) && IS_WOLF( vch ) ) && ( !IS_RAGED( vch ) && !IS_SHIFTED( vch ) ) )
+                     SET_BIT( prev_carried->item_apply, ITEM_APPLY_HEATED );
+
+               }
+
+            }
+            else
+            {
+               if( ( !IS_NPC( vch ) && IS_WOLF( vch ) ) && ( !IS_RAGED( vch ) && !IS_SHIFTED( vch ) ) )
+                  SET_BIT( heated_item->item_apply, ITEM_APPLY_HEATED );
+            }
+         }
+         continue;
+      }
+      else
+      {
+         act( "@@W$n @@Wis protected by the fury of the @@W$p@@W.", vch, staff_obj, NULL, TO_ROOM );
+         continue;
+      }
+      if( vch->in_room->area == ch->in_room->area )
+         send_to_char( "@@WSuddenly, a @@ybright flash@@W sears your eyes, then is gone.@@N\n\r", vch );
+   }
+
+   CUREF( vch_next );
+   extract_obj( staff_obj );
+   return TRUE;
+}
+
+
+void do_stance( CHAR_DATA * ch, char *argument )
+{
+   char arg[MAX_STRING_LENGTH];
+   bool legal_stance = FALSE;
+   short i;
+
+   if( IS_NPC( ch ) )
+   {
+      send_to_char( "Not for Npcs!\n\r", ch );
+      return;
+   }
+   if( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
+   {
+      send_to_char( "This form is not capable of fighting Stances.\n\r", ch );
+      return;
+   }
+
+   one_argument( argument, arg );
+
+   if( arg[0] == '\0' )
+   {
+      char cat_buf[MSL];
+      char msg_buf[MSL];
+
+
+      xprintf( msg_buf, "\n\r%s\n\r", "Fighting Stances available to you:\n\r" );
+
+      for( i = 0; i < MAX_STANCE; i++ )
+      {
+
+         switch ( i )
+         {
+            case STANCE_WARRIOR:
+               xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_CASTER:
+               if( ( ch->lvl[0] > 50 ) /* mage */
+                   || ( ch->lvl[1] > 70 ) /* cleric */
+                   || ( ch->lvl[4] > 60 ) )  /* psi */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_WIZARD:
+               if( ( ch->lvl2[0] > 20 )   /* sorc */
+                   || ( ch->lvl2[3] > 40 )   /* necro */
+                   || ( ch->lvl2[4] > 60 ) ) /* monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_MAGI:
+               if( ( ch->adept_level > 10 ) )   /*adept */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_AMBUSH:
+               if( ch->lvl2[1] > 30 )  /* assassin */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_AC_BEST:
+               if( ( ch->lvl2[2] > 65 )   /* knight */
+                   || ( ch->lvl2[4] > 30 ) ) /* monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_HR_BEST:
+               if( ( ch->lvl2[2] > 45 )   /* knight */
+                   || ( ch->lvl2[4] > 20 ) ) /* monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_DR_BEST:
+               if( ( ch->lvl2[2] > 35 )   /* knight */
+                   || ( ch->lvl2[4] > 10 ) ) /* monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_AC_WORST:
+               if( ch->lvl2[4] > 45 )  /* monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_HR_WORST:
+               if( ch->lvl2[4] > 60 )  /* monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_DR_WORST:
+               if( ch->lvl2[4] > 70 )  /* monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_SUPER_FIGHTER:
+               if( ( ch->lvl2[4] > 79 ) && ( ch->lvl2[2] > 79 ) ) /* both knight and monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+            case STANCE_SUPER_SPEED:
+               if( ( ch->lvl2[4] > 70 ) && ( ch->lvl2[2] > 70 ) ) /* both knight and monk */
+                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               break;
+
+         }
+
+         xcat( msg_buf, cat_buf );
+         xprintf( cat_buf, "%s", "" );
+      }
+      xprintf( cat_buf, "%s",
+               "Type stance <stance name> to change your current fighting stance.\n\r You may place your current Stance in your prompt with a \%s\n\r" );
+      xcat( msg_buf, cat_buf );
+      send_to_char( msg_buf, ch );
+      return;
+   }
+
+   for( i = 0; i < MAX_STANCE; i++ )
+      if( !str_prefix( arg, stance_app[i].name ) )
+         break;
+   if( i == MAX_STANCE )
+   {
+      do_stance( ch, "" );
+      act( "$n poses in a strange fashion, looking rather silly.", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "You twist about wildly, but are unable to figure out just the right Stance.\n\r", ch );
+   }
+
+   else
+   {
+      switch ( i )
+      {
+         case STANCE_WARRIOR:
+         {
+            legal_stance = TRUE;
+            break;
+         }
+         case STANCE_CASTER:
+            if( ( ch->lvl[0] > 50 ) /* mage */
+                || ( ch->lvl[1] > 70 ) /* cleric */
+                || ( ch->lvl[4] > 60 ) )  /* psi */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+         case STANCE_WIZARD:
+            if( ( ch->lvl2[0] > 20 )   /* sorc */
+                || ( ch->lvl2[3] > 40 )   /* necro */
+                || ( ch->lvl2[4] > 60 ) ) /* monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+         case STANCE_MAGI:
+            if( ( ch->adept_level > 10 ) )   /*adept */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+         case STANCE_AMBUSH:
+            if( ch->lvl2[1] > 30 )  /* assassin */
+            {
+               CHAR_DATA *other;
+               for( other = ch->in_room->first_person; other != NULL; other = other->next_in_room )
+                  if( ( other != ch ) && ( other != NULL ) )
+                     break;
+               if( other != NULL )
+               {
+                  send_to_char( "You can't set an ambush with people watching you!\n\r", ch );
+               }
+               else
+               {
+                  legal_stance = TRUE;
+               }
+               break;
+            }
+            break;
+         case STANCE_AC_BEST:
+            if( ( ch->lvl2[2] > 65 )   /* knight */
+                || ( ch->lvl2[4] > 30 ) ) /* monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+
+         case STANCE_HR_BEST:
+            if( ( ch->lvl2[2] > 45 )   /* knight */
+                || ( ch->lvl2[4] > 20 ) ) /* monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+
+         case STANCE_DR_BEST:
+            if( ( ch->lvl2[2] > 35 )   /* knight */
+                || ( ch->lvl2[4] > 10 ) ) /* monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+
+         case STANCE_AC_WORST:
+            if( ch->lvl2[4] > 45 )  /* monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+
+         case STANCE_HR_WORST:
+            if( ch->lvl2[4] > 60 )  /* monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+
+         case STANCE_DR_WORST:
+            if( ch->lvl2[4] > 70 )  /* monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+
+         case STANCE_SUPER_FIGHTER:
+            if( ( ch->lvl2[4] > 79 ) && ( ch->lvl2[2] > 79 ) ) /* both knight and monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+
+         case STANCE_SUPER_SPEED:
+            if( ( ch->lvl2[4] > 70 ) && ( ch->lvl2[2] > 70 ) ) /* both knight and monk */
+            {
+               legal_stance = TRUE;
+               break;
+            }
+            break;
+
+
+      }
+
+      if( legal_stance )
+      {
+         char stance_buf[MSL];
+         if( stance_app[i].ac_mod > 0 )
+            ch->stance_ac_mod = ( stance_app[i].ac_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
+         else
+            ch->stance_ac_mod = stance_app[i].ac_mod * get_psuedo_level( ch ) / 12;
+
+         if( stance_app[i].dr_mod < 0 )
+            ch->stance_dr_mod = ( stance_app[i].dr_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
+         else
+            ch->stance_dr_mod = stance_app[i].dr_mod * get_psuedo_level( ch ) / 10;
+
+         if( stance_app[i].hr_mod < 0 )
+            ch->stance_hr_mod = ( stance_app[i].hr_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
+         else
+            ch->stance_hr_mod = stance_app[i].hr_mod * get_psuedo_level( ch ) / 10;
+
+         ch->stance = i;
+         xprintf( stance_buf, "$n assumes the Stance of the %s!", stance_app[i].name );
+         act( stance_buf, ch, NULL, NULL, TO_ROOM );
+         xprintf( stance_buf, "You assume the Stance of the %s!\n\r", stance_app[i].name );
+         send_to_char( stance_buf, ch );
+      }
+      WAIT_STATE( ch, 350 );
+      return;
+   }
+}
+
+
+bool spell_creature_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   CHAR_DATA *master;
+   if( IS_NPC( ch ) )
+   {
+      send_to_char( "Not for Npcs.\n\r", ch );
+      return FALSE;
+   }
+
+   if( ( !IS_NPC( victim ) ) || ( !IS_SET( victim->affected_by, AFF_CHARM ) ) )
+   {
+      send_to_char( "That is not a charmed creature!\n\r", ch );
+      return FALSE;
+   }
+   master = victim->master ? victim->master : victim;
+   if( ( master != NULL ) && ( get_psuedo_level( ch ) < ( get_psuedo_level( master ) - 20 ) ) )
+   {
+      send_to_char( "The current bond is too strong for you to overcome.\n\r", ch );
+      return FALSE;
+   }
+
+   if( number_range( 0, 105 ) < ( level + ( get_psuedo_level( ch ) - get_psuedo_level( master ) ) ) )
+   {
+      if( saves_spell( level, victim ) )
+      {
+         do_say( victim, "How dare you!, I LOVE my master!" );
+         one_hit( victim, ch, TYPE_UNDEFINED );
+         return TRUE;
+      }
+      stop_follower( victim );
+      set_bit( victim->act, ACT_PET );
+      SET_BIT( victim->affected_by, AFF_CHARM );
+      victim->extract_timer = get_psuedo_level( ch ) / 3;
+      add_follower( victim, ch );
+   }
+   else
+   {
+      do_say( victim, "How dare you!, I LOVE my master!" );
+      one_hit( victim, ch, TYPE_UNDEFINED );
+      return TRUE;
+   }
+
+   return TRUE;
+}
+
+bool spell_corrupt_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   CHAR_DATA *master = NULL;
+
+   if( IS_NPC( ch ) )
+   {
+      send_to_char( "Not for Npcs.\n\r", ch );
+      return FALSE;
+   }
+
+   if( ( !IS_NPC( victim ) ) || ( !IS_SET( victim->affected_by, AFF_CHARM ) ) )
+   {
+      send_to_char( "That is not a charmed creature!\n\r", ch );
+      return FALSE;
+   }
+   master = victim->master ? victim->master : victim;
+   if( ( master != NULL ) && ( get_psuedo_level( ch ) < ( get_psuedo_level( master ) - 20 ) ) )
+   {
+      send_to_char( "The current bond is too strong for you to corrupt.\n\r", ch );
+      return FALSE;
+   }
+
+   if( number_range( 0, 105 ) < ( level + ( get_psuedo_level( ch ) - get_psuedo_level( master ) ) ) )
+   {
+      if( saves_spell( level, victim ) )
+      {
+         do_say( victim, "How dare you!, I LOVE my master!" );
+         one_hit( victim, ch, TYPE_UNDEFINED );
+         return TRUE;
+      }
+
+      stop_follower( victim );
+
+      if( victim->in_room == master->in_room )
+      {
+         do_say( victim, "Now I shall have my revenge for being charmed!!!" );
+         one_hit( victim, master, TYPE_UNDEFINED );
+         return TRUE;
+      }
+      else
+      {
+         do_say( victim, "AARRGH!  I HATE being charmed! Now I shall have my revenge!" );
+         victim->hunt_flags = HUNT_WORLD | HUNT_OPENDOOR | HUNT_PICKDOOR | HUNT_UNLOCKDOOR | HUNT_INFORM;
+         set_hunt( victim, NULL, master, NULL, HUNT_WORLD | HUNT_OPENDOOR | HUNT_PICKDOOR | HUNT_UNLOCKDOOR | HUNT_INFORM,
+                   HUNT_MERC | HUNT_CR );
+         return TRUE;
+      }
+   }
+   else
+   {
+      do_say( victim, "How dare you!, I LOVE my master!" );
+      one_hit( victim, ch, TYPE_UNDEFINED );
+      return TRUE;
+   }
+
+   return TRUE;
+}
+
+bool spell_fireblast( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+
+   if( obj == NULL )
+   {
+      dam = ( get_psuedo_level( ch ) / 2 )
+         + dice( ( get_psuedo_level( ch ) / 6 + ADEPT_LEVEL( ch ) / 2 ), 10 )
+         + dice( ( get_psuedo_level( ch ) / 6 + ADEPT_LEVEL( ch ) / 2 ), 10 );
+      act( "@@gA blast of @@efire@@g flies from $n's hands!@@N", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "@@gA blast of @@efire@@g flies from your hands!@@N\n\r", ch );
+   }
+   else
+   {
+      dam = dice( level / 4, 15 );
+      act( "@@gA blast of @@efire@@g flies from $p!@@N", ch, obj, NULL, TO_ROOM );
+      act( "@@gA blast of @@efire@@g flies from $p!@@N", ch, obj, NULL, TO_CHAR );
+   }
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   act( "@@g$n is struck by the blast of @@efire@@g!!@@N", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "@@gYou are struck by the @@efire @@gblast!!@@N\n\r", victim );
+   sp_damage( obj, ch, victim, dam, REALM_FIRE, sn, TRUE );
+   return TRUE;
+}
+
+bool spell_shockstorm( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+
+   if( obj == NULL )
+   {
+      dam = ( get_psuedo_level( ch ) / 2 )
+         + dice( ( get_psuedo_level( ch ) / 5 + ADEPT_LEVEL( ch ) / 2 ), 10 )
+         + dice( ( get_psuedo_level( ch ) / 5 + ADEPT_LEVEL( ch ) / 2 ), 10 );
+      act( "@@gA storm of @@lsparks@@g flies from $n's hands!@@N", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "@@gA storm of @@lsparks@@g flies from your hands!@@N\n\r", ch );
+   }
+   else
+   {
+      dam = dice( level / 4, 20 );
+      act( "@@gA storm of @@lsparks@@g flies from $p!@@N", ch, obj, NULL, TO_ROOM );
+      act( "@@gA storm of @@lsparks@@g flies from $p!@@N", ch, obj, NULL, TO_CHAR );
+   }
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   act( "@@g$n is struck by the storm of @@lsparks@@g!!@@N", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "@@gYou are struck by the storm of @@lsparks@@g!!@@N\n\r", victim );
+   sp_damage( obj, ch, victim, dam, REALM_SHOCK, sn, TRUE );
+   return TRUE;
+}
+
+bool spell_cone_cold( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+
+   if( obj == NULL )
+   {
+      dam = ( get_psuedo_level( ch ) / 2 )
+         + dice( ( get_psuedo_level( ch ) / 5 + ADEPT_LEVEL( ch ) / 2 ), 10 )
+         + dice( ( get_psuedo_level( ch ) / 5 + ADEPT_LEVEL( ch ) / 2 ), 10 );
+      act( "@@gA cone of @@acold@@g bursts forth from $n's hands!@@N", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "@@gA cone of @@acold@@g bursts forth from your hands!@@N\n\r", ch );
+   }
+   else
+   {
+      dam = dice( level / 4, 20 );
+      act( "@@gA cone of @@acold@@g bursts forth from $p!@@N", ch, obj, NULL, TO_ROOM );
+      act( "@@gA cone of @@acold@@g bursts forth from $p!@@N", ch, obj, NULL, TO_CHAR );
+   }
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   act( "@@g$n is struck by the cone of @@acold@@g!!@@N", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "@@gYou are struck by the cone of @@acold@@g!!@@N\n\r", victim );
+   sp_damage( obj, ch, victim, dam, REALM_COLD, sn, TRUE );
+   return TRUE;
+}
+
+bool spell_holy_wrath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+
+   if( obj == NULL )
+   {
+      dam = ( get_psuedo_level( ch ) / 2 )
+         + dice( ( get_psuedo_level( ch ) / 4 + ADEPT_LEVEL( ch ) ), 12 )
+         + dice( ( get_psuedo_level( ch ) / 4 + ADEPT_LEVEL( ch ) ), 12 );
+      act( "@@gA coruscating sphere of @@ylight@@g bursts forth from $n's hands!@@N", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "@@gA coruscating sphere of @@ylight@@g bursts forth from your hands!@@N\n\r", ch );
+   }
+   else
+   {
+      dam = dice( level / 5, 20 );
+      act( "@@gA coruscating sphere of @@ylight@@g bursts forth from $p!@@N", ch, obj, NULL, TO_ROOM );
+      act( "@@gA coruscating sphere of @@ylight@@g bursts forth from $p!@@N", ch, obj, NULL, TO_CHAR );
+   }
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   act( "@@g$n is struck by the coruscating sphere of @@ylight@@g!!@@N", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "@@gYou are struck by the coruscating sphere of @@ylight@@g!!@@N\n\r", victim );
+   sp_damage( obj, ch, victim, dam, REALM_HOLY, sn, TRUE );
+   return TRUE;
+}
+
+bool spell_wraith_touch( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+   float drain_mod = 1.0;
+
+   if( obj == NULL )
+   {
+      dam = ( get_psuedo_level( ch ) / 3 )
+         + dice( ( get_psuedo_level( ch ) / 6 + ADEPT_LEVEL( ch ) ), 8 )
+         + dice( ( get_psuedo_level( ch ) / 6 + ADEPT_LEVEL( ch ) ), 8 );
+      act( "@@RA @@dwraithlike hand @@Rleaps forth from $n!@@N", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "@@RA @@dwraithlike hand @@Rleaps forth from your hands!@@N\n\r", ch );
+   }
+   else
+   {
+      dam = dice( level / 5, 20 );
+      act( "@@RA @@dwraithlike hand @@Rleaps forth from $p!@@N", ch, obj, NULL, TO_ROOM );
+      act( "@@RA @@dwraithlike hand @@Rleaps forth from $p!@@N", ch, obj, NULL, TO_CHAR );
+   }
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   act( "@@R$n is struck by the @@dwraithlike hand @@R!!@@N", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "@@RYou are struck by a @@dwraithlike hand @@R!!@@N\n\r", victim );
+   drain_mod = get_psuedo_level( ch ) * dam / 130;
+   if( sp_damage( obj, ch, victim, dam, REALM_DRAIN | NO_REFLECT | NO_ABSORB, sn, TRUE ) )
+      ch->hit = UMIN( ch->max_hit, (int)( ch->hit + drain_mod ) );
+   return TRUE;
+}
+
+bool spell_thought_vise( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   int dam;
+
+
+   if( obj == NULL )
+   {
+      dam = ( get_psuedo_level( ch ) / 2 )
+         + dice( ( get_psuedo_level( ch ) / 3 + ADEPT_LEVEL( ch ) ), 10 )
+         + dice( ( get_psuedo_level( ch ) / 3 + ADEPT_LEVEL( ch ) ), 10 );
+      act( "@@rA crushing weight brushes your mind, then is gone.@@N", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "@@rYou clench your mind, crushing the thoughts of your foe.\n\r@@N", ch );
+   }
+   else
+   {
+      dam = dice( level / 5, 20 );
+      act( "@@rA crushing weight fills your mind.@@N", ch, obj, NULL, TO_CHAR );
+   }
+   if( saves_spell( level, victim ) )
+      dam /= 2;
+   act( "@@rA crushing weight brushes your mind, then is gone.@@N", victim, NULL, NULL, TO_ROOM );
+   send_to_char( "@@rA crushing weight fills your mind.@@N", victim );
+   sp_damage( obj, ch, victim, dam, REALM_MIND | NO_REFLECT | NO_ABSORB, sn, FALSE );
+   return TRUE;
+}
+
+bool spell_black_curse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( IS_AFFECTED( victim, AFF_CURSE ) )
+   {
+      send_to_char( "They are already weakened!\n\r", ch );
+      return FALSE;
+   }
+   if( saves_spell( level, victim ) )
+      return TRUE;
+   if( saves_spell( level, victim ) )
+      return TRUE;
+   af.type = sn;
+   af.duration = 2 * ( level / 8 );
+   af.location = APPLY_HITROLL;
+   af.modifier = -1 * get_psuedo_level( ch ) / 12 * get_psuedo_level( victim ) / 10;
+   af.bitvector = AFF_CURSE;
+   affect_to_char( victim, &af );
+
+   af.location = APPLY_AC;
+   af.modifier = 7 * get_psuedo_level( ch ) / 12 * get_psuedo_level( victim ) / 10;
+   affect_to_char( victim, &af );
+
+   send_to_char( "@@RA Cloud of @@dDespair@@R washes over you.@@N\n\r", victim );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+
+bool spell_cloak_misery( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   AFFECT_DATA af;
+
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+
+
+   af.type = sn;
+   af.duration = get_psuedo_level( ch ) / 8;
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+
+   return TRUE;
+}
+
+
+bool spell_poison_quinine( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( victim, sn ) )
+   {
+      send_to_char( "They are already poisoned with quinine!\n\r", ch );
+      return FALSE;
+   }
+   if( saves_spell( level, victim ) )
+      if( saves_spell( level, victim ) )
+         return TRUE;
+   af.type = sn;
+   af.duration = 2 * ( level / 8 );
+   af.location = APPLY_HITROLL;
+   af.modifier = -1 * get_psuedo_level( ch ) / 20 * get_psuedo_level( victim ) / 20;
+   af.bitvector = AFF_POISON;
+   affect_to_char( victim, &af );
+
+   af.location = APPLY_AC;
+   af.modifier = 7 * get_psuedo_level( ch ) / 20 * get_psuedo_level( victim ) / 20;
+   affect_to_char( victim, &af );
+
+   send_to_char( "@@You feel a dart pierce your neck.@@N\n\r", victim );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_poison_arsenic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+
+   if( is_affected( victim, sn ) )
+   {
+      send_to_char( "They are already poisoned with arsenic!\n\r", ch );
+      return FALSE;
+   }
+   if( saves_spell( level, victim ) )
+      if( saves_spell( level, victim ) )
+         return TRUE;
+   af.type = sn;
+   af.duration = 2 * ( level / 8 );
+   af.location = APPLY_DAMROLL;
+   af.modifier = -1 * get_psuedo_level( ch ) / 20 * get_psuedo_level( victim ) / 20;
+   af.bitvector = AFF_POISON;
+   affect_to_char( victim, &af );
+
+   af.location = APPLY_AC;
+   af.modifier = 5 * get_psuedo_level( ch ) / 20 * get_psuedo_level( victim ) / 20;
+   affect_to_char( victim, &af );
+
+   send_to_char( "@@You feel a dart pierce your neck.@@N\n\r", victim );
+   if( ch != victim )
+      send_to_char( "Ok.\n\r", ch );
+   return TRUE;
+}
+
+bool spell_sonic_blast( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+   CHAR_DATA *victim = ( CHAR_DATA * ) vo;
+   AFFECT_DATA af;
+   int dam;
+   dam = dice( get_psuedo_level( ch ) / 2, 3 ) + dice( get_psuedo_level( ch ) / 2, 3 );
+   if( saves_spell( level, victim ) )
+      dam = dam * 2 / 3;
+   if( sp_damage( obj, ch, victim, dam, REALM_SOUND | NO_REFLECT | NO_ABSORB, sn, TRUE ) )
+   {
+      if( is_affected( ch, sn ) )
+         return TRUE;
+      af.type = sn;
+      af.duration = ( level / 20 );
+      af.location = APPLY_DAMROLL;
+      af.modifier = -1 * get_psuedo_level( ch ) / 15 * get_psuedo_level( victim ) / 15;
+      af.bitvector = AFF_BLASTED;
+      affect_to_char( victim, &af );
+
+      af.type = sn;
+      af.duration = ( level / 20 );
+      af.location = APPLY_HITROLL;
+      af.modifier = -1 * get_psuedo_level( ch ) / 15 * get_psuedo_level( victim ) / 15;
+      af.bitvector = AFF_BLASTED;
+      affect_to_char( victim, &af );
+
+   }
+   return TRUE;
+}
+
+bool spell_mystical_focus( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
+{
+
+   AFFECT_DATA af;
+
+
+   if( is_affected( ch, sn ) )
+      return FALSE;
+
+
+
+   af.type = sn;
+   af.duration = 1 + (get_psuedo_level( ch ) / 7);
+   af.location = 0;
+   af.modifier = 0;
+   af.bitvector = 0;
+   affect_to_char( ch, &af );
+
    return TRUE;
 }

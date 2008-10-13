@@ -1255,6 +1255,7 @@
 #define DATA_DIR        "../data/"
 #define BUG_DIR         "../report/"
 #define HELP_DIR        "../help/"
+#define BOARD_DIR       "../board/"
 
 #define HELP_MORT      "mrt"              /* Mortal helpfiles                      */
 #define HELP_IMM       "imm"              /* Immortal helpfiles                    */

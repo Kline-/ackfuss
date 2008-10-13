@@ -197,7 +197,6 @@ DECLARE_DO_FUN( do_mbid );
 DECLARE_DO_FUN( do_circle );
 DECLARE_DO_FUN( do_clutch );
 DECLARE_DO_FUN( do_dirt );
-DECLARE_DO_FUN( do_edit );
 DECLARE_DO_FUN( do_feed );
 DECLARE_DO_FUN( do_finger );
 DECLARE_DO_FUN( do_gold );
@@ -217,10 +216,7 @@ DECLARE_DO_FUN( do_listspells );
  */
 DECLARE_DO_FUN( build_interpret );
 DECLARE_DO_FUN( do_build );
-DECLARE_DO_FUN( do_delete );
-DECLARE_DO_FUN( do_read );
 DECLARE_DO_FUN( do_savearea );
-DECLARE_DO_FUN( do_write );
 
 /****************************
  * Now the 'standard' stuff:*

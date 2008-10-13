@@ -36,6 +36,10 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 /*
  * All of the global linked lists, in one clump.  Variables here,
  * declarations in lists.h

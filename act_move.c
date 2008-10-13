@@ -51,6 +51,10 @@
 #include "h/act_move.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
 bool check_valid_ride( CHAR_DATA * ch );
 extern bool deathmatch;
 

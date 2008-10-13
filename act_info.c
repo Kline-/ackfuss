@@ -62,6 +62,14 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BITMASK_H
+#include "h/bitmask.h"
+#endif
+
+#ifndef DEC_BOARD_H
+#include "h/board.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
