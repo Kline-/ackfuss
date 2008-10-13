@@ -38,6 +38,9 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
 
 #define DEC_TRIGGER( fun )		TRIGGER_FUN  fun
 

@@ -58,10 +58,6 @@
 #include "strfuns.h"
 #endif
 
-#ifndef DEC_ACT_MOB_H
-#include "act_mob.h"
-#endif
-
 #ifndef DEC_MQUEST_H
 #include "mquest.h"
 #endif
@@ -1178,8 +1174,21 @@ struct lookup_type
    int cost;   /* if == NO_USE, only creators can set. */
 };
 
-
-
+struct npc_group_data
+{
+   bool is_free;
+   NPC_GROUP_DATA *next;
+   NPC_GROUP_DATA *prev;
+   short state;
+   DL_LIST *first_follower;
+   DL_LIST *last_follower;
+   CHAR_DATA *leader;
+   ROOM_INDEX_DATA *seek_room;
+   char *enemies;
+   char *last_fighting;
+   char *wants;
+   char *needs;
+};
 
 /*
  * Skills include spells as a particular case.
@@ -1371,13 +1380,6 @@ struct eq_type
 #define RID     ROOM_INDEX_DATA
 #define SF      SPEC_FUN
 #define OF	OBJ_FUN
-
-/* act_info.c */
-void set_title            args( ( CHAR_DATA * ch, char *title ) );
-char *color_string        args( ( CHAR_DATA * CH, char *argument ) );
-char *get_family_name     args( ( CHAR_DATA * ch ) );
-char *get_tribe_name      args( ( CHAR_DATA * ch ) );
-char *output_race_wear    args( ( int iRace ) );
 
 /* act_move.c */
 void move_char args( ( CHAR_DATA * ch, int door, bool look ) );
@@ -1727,15 +1729,15 @@ void build_save_flush( void );
 void hunt_victim args( ( CHAR_DATA * ch ) );
 void unhunt args( ( CHAR_DATA * ch ) );
 int make_hunt args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-/* void	hunt_move	args( ( CHAR_DATA *ch ) ); */
 void hunt_obj args( ( CHAR_DATA * ch ) );
 bool make_move args( ( CHAR_DATA * ch, int vnum ) );
 char *find_path args( ( int, int, CHAR_DATA *, int, int, int ) );
-
 bool mob_hunt args( ( CHAR_DATA * mob ) );
 void char_hunt args( ( CHAR_DATA * ch ) );
 bool set_hunt args( ( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj, int set_flags, int rem_flags ) );
 void end_hunt args( ( CHAR_DATA * ch ) );
+short h_find_dir args(( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags ));
+void hunt_move args(( CHAR_DATA * mob, short dir ));
 
   /*
    * update.c 

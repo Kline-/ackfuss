@@ -43,7 +43,7 @@
 #endif
 
 #ifndef DEC_ACT_MOB_H
-#include "act_mob.h"
+#include "h/act_mob.h"
 #endif
 
 bool able_to_level( CHAR_DATA * ch )

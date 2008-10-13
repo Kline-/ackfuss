@@ -43,6 +43,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
 bool check_valid_ride( CHAR_DATA * ch );
 extern bool deathmatch;
 const char *compass_name[] = {

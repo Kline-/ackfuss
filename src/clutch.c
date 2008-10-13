@@ -42,6 +42,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
 #define SPELL_NUMBER 3
 
 #define DECLARE_CLUTCH_FUN( fun )	CLUTCH_FUN fun

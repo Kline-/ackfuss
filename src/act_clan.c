@@ -47,6 +47,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
 /* These set of clan functions by Zen */
 extern POL_DATA politics_data;
 extern COUNCIL_DATA super_councils[MAX_SUPER];

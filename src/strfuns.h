@@ -81,6 +81,8 @@ const char *extra_bit_name args( ( int extra_flags ) );
 char *race_name args( ( CHAR_DATA * ch ) );
 char *short_race_name args( ( CHAR_DATA * ch ) );
 char *get_adept_name args( ( CHAR_DATA * ch ) );
+char *get_family_name args(( CHAR_DATA * ch ));
+char *get_tribe_name args(( CHAR_DATA * ch ));
 bool str_cmp args( ( const char *astr, const char *bstr ) );
 bool str_prefix args( ( const char *astr, const char *bstr ) );
 bool str_infix args( ( const char *astr, const char *bstr ) );
