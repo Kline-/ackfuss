@@ -38,7 +38,9 @@
 #include <string.h>
 #include "globals.h"
 
-
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
 
 /* Way this works:
 	Mud reads in area files, stores details in data lists.

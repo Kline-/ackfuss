@@ -49,6 +49,10 @@
 #include "h/act_move.h"
 #endif
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 #define NEVER_FREE_HUNT
 
 H_QUEUE *h_head = NULL;

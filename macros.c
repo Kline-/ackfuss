@@ -41,6 +41,10 @@
 #include "tables.h"
 #include <math.h>
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 void reset_gain_stats( CHAR_DATA * ch )
 {
    short index = 0;

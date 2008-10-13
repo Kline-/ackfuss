@@ -183,16 +183,12 @@ extern char *target_name;
  * This bunch of commands *
  * added by Stephen ;)    *
  **************************/
-
-DECLARE_DO_FUN( do_test );
 DECLARE_DO_FUN( do_exlist );
 DECLARE_DO_FUN( do_vlist );
 DECLARE_DO_FUN( do_rename );
 DECLARE_DO_FUN( do_sdelete );
 DECLARE_DO_FUN( build_arealist );
 DECLARE_DO_FUN( do_assist );
-DECLARE_DO_FUN( do_bamfin );
-DECLARE_DO_FUN( do_bamfout );
 DECLARE_DO_FUN( do_bank );
 DECLARE_DO_FUN( do_bash );
 DECLARE_DO_FUN( do_berserk );
@@ -200,41 +196,21 @@ DECLARE_DO_FUN( do_rbid );
 DECLARE_DO_FUN( do_mbid );
 DECLARE_DO_FUN( do_circle );
 DECLARE_DO_FUN( do_clutch );
-DECLARE_DO_FUN( do_deathmatc );
-DECLARE_DO_FUN( do_deathmatch );
 DECLARE_DO_FUN( do_dirt );
-DECLARE_DO_FUN( do_dog );
 DECLARE_DO_FUN( do_edit );
 DECLARE_DO_FUN( do_feed );
-DECLARE_DO_FUN( do_fights );
 DECLARE_DO_FUN( do_finger );
 DECLARE_DO_FUN( do_gold );
 DECLARE_DO_FUN( do_headbutt );
 DECLARE_DO_FUN( do_knee );
 DECLARE_DO_FUN( do_hunt );
-DECLARE_DO_FUN( do_resetpassword );
-DECLARE_DO_FUN( do_iscore );
-DECLARE_DO_FUN( do_isnoop );
-DECLARE_DO_FUN( do_iwhere );
-DECLARE_DO_FUN( do_lhunt );
-DECLARE_DO_FUN( do_monitor );
-DECLARE_DO_FUN( do_mpcr );
-DECLARE_DO_FUN( do_nopray );
 DECLARE_DO_FUN( do_punch );
 DECLARE_DO_FUN( do_quest );
-DECLARE_DO_FUN( do_retrieve );
-DECLARE_DO_FUN( do_setclass );
-DECLARE_DO_FUN( do_sstat );
 DECLARE_DO_FUN( do_stake );
 DECLARE_DO_FUN( do_status );
 DECLARE_DO_FUN( do_stun );
-DECLARE_DO_FUN( do_togbuild );
-DECLARE_DO_FUN( do_togleader );
 DECLARE_DO_FUN( do_trip );
-DECLARE_DO_FUN( do_whoname );
 DECLARE_DO_FUN( do_listspells );
-DECLARE_DO_FUN( do_reward );
-DECLARE_DO_FUN( do_togcouncil );
 
 /* And by MAG  
  *    
@@ -245,42 +221,22 @@ DECLARE_DO_FUN( do_delete );
 DECLARE_DO_FUN( do_read );
 DECLARE_DO_FUN( do_savearea );
 DECLARE_DO_FUN( do_write );
-DECLARE_DO_FUN( do_mfindlev );
-DECLARE_DO_FUN( do_check_areas );
-DECLARE_DO_FUN( do_check_area );
-DECLARE_DO_FUN( do_ofindlev );
 
 /****************************
  * Now the 'standard' stuff:*
  ****************************/
-
-DECLARE_DO_FUN( do_allow );
 DECLARE_DO_FUN( do_areas );
-DECLARE_DO_FUN( do_at );
 DECLARE_DO_FUN( do_rauction );
 DECLARE_DO_FUN( do_mauction );
 DECLARE_DO_FUN( do_autosplit );
 DECLARE_DO_FUN( do_autoassist );
 DECLARE_DO_FUN( do_backstab );
-DECLARE_DO_FUN( do_ban );
 DECLARE_DO_FUN( do_cast );
-DECLARE_DO_FUN( do_deny );
 DECLARE_DO_FUN( do_disarm );
-DECLARE_DO_FUN( do_disconnect );
-DECLARE_DO_FUN( do_echo );
 DECLARE_DO_FUN( do_flee );
-DECLARE_DO_FUN( do_force );
-DECLARE_DO_FUN( do_freeze );
-DECLARE_DO_FUN( do_goto );
-DECLARE_DO_FUN( do_holylight );
-DECLARE_DO_FUN( do_incognito );
-DECLARE_DO_FUN( do_invis );
 DECLARE_DO_FUN( do_kick );
 DECLARE_DO_FUN( do_kill );
-DECLARE_DO_FUN( do_log );
 DECLARE_DO_FUN( do_memory );
-DECLARE_DO_FUN( do_mfind );
-DECLARE_DO_FUN( do_mload );
 DECLARE_DO_FUN( do_mpasound );
 DECLARE_DO_FUN( do_mpat );
 DECLARE_DO_FUN( do_mpecho );
@@ -294,49 +250,9 @@ DECLARE_DO_FUN( do_mpmload );
 DECLARE_DO_FUN( do_mpoload );
 DECLARE_DO_FUN( do_mppurge );
 DECLARE_DO_FUN( do_mptransfer );
-DECLARE_DO_FUN( do_mset );
-DECLARE_DO_FUN( do_mstat );
-DECLARE_DO_FUN( do_mwhere );
 DECLARE_DO_FUN( do_murde );
 DECLARE_DO_FUN( do_murder );
-DECLARE_DO_FUN( do_noemote );
-DECLARE_DO_FUN( do_notell );
-DECLARE_DO_FUN( do_ofind );
-DECLARE_DO_FUN( do_oload );
-DECLARE_DO_FUN( do_oset );
-DECLARE_DO_FUN( do_ostat );
-DECLARE_DO_FUN( do_owhere );
-DECLARE_DO_FUN( do_pardon );
-DECLARE_DO_FUN( do_peace );
-DECLARE_DO_FUN( do_purge );
-DECLARE_DO_FUN( do_reboo );
-DECLARE_DO_FUN( do_reboot );
-DECLARE_DO_FUN( do_recho );
 DECLARE_DO_FUN( do_rescue );
-DECLARE_DO_FUN( do_restore );
-DECLARE_DO_FUN( do_return );
-DECLARE_DO_FUN( do_rset );
-DECLARE_DO_FUN( do_rstat );
-DECLARE_DO_FUN( do_shutdow );
-DECLARE_DO_FUN( do_shutdown );
-DECLARE_DO_FUN( do_silence );
-DECLARE_DO_FUN( do_sla );
-DECLARE_DO_FUN( do_slay );
-DECLARE_DO_FUN( do_slookup );
-DECLARE_DO_FUN( do_snoop );
-DECLARE_DO_FUN( do_sset );
-DECLARE_DO_FUN( do_switch );
-DECLARE_DO_FUN( do_transfer );
-DECLARE_DO_FUN( do_transdm );
-DECLARE_DO_FUN( do_trust );
-DECLARE_DO_FUN( do_users );
-DECLARE_DO_FUN( do_wizhelp );
-DECLARE_DO_FUN( do_wizify );
-DECLARE_DO_FUN( do_wizlock );
-
-/* from Titania@AA/Sylvana@LCN */
-DECLARE_DO_FUN( do_otype );
-DECLARE_DO_FUN( do_owear );
 
 /*   
       NEW SKILLS  (SRZ)
@@ -363,23 +279,15 @@ DECLARE_DO_FUN( do_rulers );
 /*
  *  New immcommands
  */
-
-DECLARE_DO_FUN( do_alink );
-DECLARE_DO_FUN( do_for );  /* Flar */
 DECLARE_DO_FUN( do_hotreboo );   /* Flar */
 DECLARE_DO_FUN( do_hotreboot );  /* Flar */
-DECLARE_DO_FUN( do_gain_stat_reset );
 DECLARE_DO_FUN( do_sedit );
-DECLARE_DO_FUN( do_olmsg );
 DECLARE_DO_FUN( do_scheck );
 DECLARE_DO_FUN( do_immbrand );
 DECLARE_DO_FUN( do_sysdata );
-DECLARE_DO_FUN( do_areasave );
 DECLARE_DO_FUN( do_mapper );
 DECLARE_DO_FUN( do_mgive );
 DECLARE_DO_FUN( do_email );
-DECLARE_DO_FUN( do_findreset );
-
 
 /*
  * Werwolf
@@ -393,6 +301,5 @@ DECLARE_DO_FUN( do_imprint );
  * My improvements -Kline
  */
 DECLARE_DO_FUN( do_statraise );
-DECLARE_DO_FUN( do_census );
 DECLARE_DO_FUN( do_mquest );
 DECLARE_DO_FUN( do_qstat );

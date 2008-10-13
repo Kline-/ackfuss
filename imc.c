@@ -43,36 +43,13 @@
 #endif
 #include "sha256.h"
 
-#if defined(IMCCIRCLE)
-#include "conf.h"
-#include "sysdep.h"
-#include "structs.h"
-#include "utils.h"
-#include "comm.h"
-#include "db.h"
-#include "handler.h"
-#include "interpreter.h"
-#include "imc.h"
-#endif
-
-#if defined(IMCSMAUG) || defined(IMCCHRONICLES)
-#include "mud.h"
-#ifdef WEBSVR
-#include "web.h"
-#endif
-#if defined(IMCCHRONICLES)
-#include "factions.h"
-#include "files.h"
-#endif
-#endif
-#if defined(IMCROM) || defined(IMCMERC) || defined(IMCUENVY) || defined(IMC1STMUD)
-#include "merc.h"
-#if defined(IMCROM)
-#include "tables.h"
-#endif
-#endif
 #if defined(IMCACK)
 #include "globals.h"
+
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 #endif
 
 #define IMCKEY( literal, field, value ) \
@@ -433,15 +410,7 @@ void imc_to_char( const char *txt, CHAR_DATA * ch )
    char buf[LGST * 2];
 
    snprintf( buf, LGST * 2, "%s\033[0m", color_itom( txt, ch ) );
-#if defined(IMCSMAUG)
-   send_to_char_color( buf, ch );
-#elif defined(IMCCIRCLE)
-#if _CIRCLEMUD < CIRCLEMUD_VERSION(3,0,21)
-   send_to_char( buf, ch );
-#else
-   send_to_char( ch, "%s", buf );
-#endif
-#elif defined(IMCSTANDALONE)
+#if defined(IMCSTANDALONE)
    fprintf( stderr, "%s\n", buf );
 #else
    send_to_char( buf, ch );
@@ -468,15 +437,7 @@ void imc_to_pager( const char *txt, CHAR_DATA * ch )
    char buf[LGST * 2];
 
    snprintf( buf, LGST * 2, "%s\033[0m", color_itom( txt, ch ) );
-#if defined(IMCSMAUG) || defined(IMCCHRONICLES)
-   send_to_pager_color( buf, ch );
-#elif defined(IMCROM)
-   page_to_char( buf, ch );
-#elif defined(IMC1STMUD)
-   sendpage( ch, buf2 );
-#else
    imc_to_char( buf, ch );
-#endif
    return;
 }
 
@@ -4759,20 +4720,7 @@ void imcfread_config_file( FILE * fin )
 
          case 'E':
             if( !strcasecmp( word, "End" ) )
-            {
-#if defined(IMCCHRONICLES)
-               char lbuf1[LGST], lbuf2[LGST];
-
-               snprintf( lbuf1, LGST, "%s %s.%s", CODEBASE_VERSION_TITLE, CODEBASE_VERSION_MAJOR, CODEBASE_VERSION_MINOR );
-               if( this_imcmud->base )
-                  IMCSTRFREE( this_imcmud->base );
-               this_imcmud->base = IMCSTRALLOC( lbuf1 );
-
-               snprintf( lbuf2, LGST, "%s%s", IMC_VERSION_STRING, this_imcmud->base );
-               this_imcmud->versionid = IMCSTRALLOC( lbuf2 );
-#endif
                return;
-            }
             break;
 
          case 'I':
@@ -8039,15 +7987,9 @@ CHAR_DATA *imc_make_skeleton( char *name )
 
    IMCCREATE( skeleton, CHAR_DATA, 1 );
 
-#ifdef IMCCIRCLE
-   skeleton->player.name = IMCSTRALLOC( name );
-   skeleton->player.short_descr = IMCSTRALLOC( name );
-   skeleton->in_room = real_room( 1 );
-#else
    skeleton->name = IMCSTRALLOC( name );
    skeleton->short_descr = IMCSTRALLOC( name );
    skeleton->in_room = get_room_index( ROOM_VNUM_LIMBO );
-#endif
 
    return skeleton;
 }
@@ -8057,13 +7999,9 @@ void imc_purge_skeleton( CHAR_DATA * skeleton )
    if( !skeleton )
       return;
 
-#ifdef IMCCIRCLE
-   IMCSTRFREE( skeleton->player.name );
-   IMCSTRFREE( skeleton->player.short_descr );
-#else
    IMCSTRFREE( skeleton->name );
    IMCSTRFREE( skeleton->short_descr );
-#endif
+
    IMCDISPOSE( skeleton );
 
    return;
@@ -8334,13 +8272,6 @@ bool imc_command_hook( CHAR_DATA * ch, char *command, char *argument )
 
    if( IMCPERM( ch ) <= IMCPERM_NONE )
       return FALSE;
-
-#if defined(IMCCIRCLE)
-   /*
-    * CircleMUD parser leaves leading spaces after splitting one argument 
-    */
-   skip_spaces( &argument );
-#endif
 
    /*
     * Simple command interpreter menu. Nothing overly fancy etc, but it beats trying to tie directly into the mud's
