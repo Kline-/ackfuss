@@ -32,7 +32,6 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include "cursor.h"
 #include "globals.h"
 
 #define MAX_MAP 40

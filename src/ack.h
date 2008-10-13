@@ -33,12 +33,12 @@
 
 #define DEC_ACK_H 1
 
-#ifndef DEC_TYPEDEFS_H
-#include "typedefs.h"
+#ifndef DEC_CONFIG_H
+#include "h/config.h"
 #endif
 
-#ifndef DEC_CONFIG_H
-#include "config.h"
+#ifndef DEC_TYPEDEFS_H
+#include "typedefs.h"
 #endif
 
 #ifndef DEC_UTILS_H
@@ -49,7 +49,12 @@
 #include "globals.h"
 #endif
 
-/* Various linked lists head/tail pointer declarations. -- Altrag */
+#ifdef IMC
+#ifndef DEC_IMC_H
+#include "h/imc.h"
+#endif
+#endif
+
 #ifndef DEC_LISTS_H
 #include "lists.h"
 #endif
@@ -60,10 +65,6 @@
 
 #ifndef DEC_MQUEST_H
 #include "mquest.h"
-#endif
-
-#ifdef IMC
-#include "imc.h"
 #endif
 
 struct board_data

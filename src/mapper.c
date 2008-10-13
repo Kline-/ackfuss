@@ -57,6 +57,10 @@
 #include "h/bitmask.h"
 #endif
 
+#ifndef DEC_CURSOR_H
+#include "h/cursor.h"
+#endif
+
 int door_marks[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
 int offsets[4][2] = { {-2, 0}, {0, 2}, {2, 0}, {0, -2} };
 

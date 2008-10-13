@@ -41,7 +41,9 @@
 #else
 #include <endian.h>
 #endif
-#include "sha256.h"
+#ifndef DEC_SHA256_H
+#include "h/sha256.h"
+#endif
 
 #if __FreeBSD_version < 500111
 
