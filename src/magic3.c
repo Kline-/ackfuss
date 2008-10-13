@@ -47,8 +47,6 @@
 #include "h/act_info.h"
 #endif
 
-extern bool deathmatch;
-
 /*
  * This file should contain:
  *	o Adept Spells

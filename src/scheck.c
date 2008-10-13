@@ -74,17 +74,6 @@
  *
  */
 
-
-
-/* From ban.c: */
-
-extern BAN_DATA *first_ban;
-
-
-extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
-extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
-extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
-
 /* Main code */
 
 static void touch( char *str )
@@ -458,7 +447,7 @@ static void walk_room_index_data( ROOM_INDEX_DATA * r )
 }
 
 
-static void walk_social_type( struct social_type *s )
+static void walk_social_type( SOCIAL_TYPE *s )
 {
 
 
@@ -620,7 +609,7 @@ void walk_messages( MESSAGE_DATA * m )
 void walk_boards( void )
 {
    BOARD_DATA *board;
-   extern BOARD_DATA *first_board;
+
    for( board = first_board; board; board = board->next )
       walk_messages( board->first_message );
 }

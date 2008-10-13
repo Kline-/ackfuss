@@ -154,22 +154,8 @@ short gsn_thaumatergy;
 short gsn_mana_sense;
 #endif
 
-
-
-extern int free_get;
-extern int free_put;
 extern bool auto_quest;
-
 extern COUNCIL_DATA super_councils[MAX_SUPER];
-
-
-extern const int convert_wearflags[] = {
-   BIT_24, BIT_14, BIT_8, BIT_19, BIT_4, BIT_21, BIT_22, BIT_13,
-   BIT_11, BIT_16, BIT_17, BIT_18, BIT_12, BIT_16, BIT_16, BIT_5,
-   BIT_7, BIT_16,
-   BIT_24, BIT_24, BIT_24, BIT_24, BIT_24, BIT_24, BIT_24,
-   BIT_24, BIT_24, BIT_24, BIT_24, BIT_24, BIT_24, BIT_24
-};
 
 
 /*
@@ -191,13 +177,6 @@ char *string_space = NULL;
 char *top_string = NULL;
 char str_empty[1] = { 0 };
 #endif
-
-extern char str_empty[1];
-extern long sOverFlowString;
-extern long nOverFlowString;
-extern bool Full;
-
-
 
 int top_affect;
 int top_area;
@@ -239,20 +218,13 @@ const int               rgSizeList      [MAX_MEM_LIST]  =
     16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768-64, 65536-16
 };*/
 
-
-
 int nAllocString;
 int sAllocString;
 #endif
 
-extern long nAllocString;
-extern long sAllocString;
-
-
 int nAllocPerm;
 int sAllocPerm;
 
-extern long MAX_STRING;
 void init_string_space( void );
 void boot_done( void );
 
@@ -1148,29 +1120,11 @@ void load_objects( FILE * fp )
       pObjIndex->name = fread_string( fp );
       pObjIndex->short_descr = fread_string( fp );
       pObjIndex->description = fread_string( fp );
-
       pObjIndex->short_descr[0] = LOWER( pObjIndex->short_descr[0] );
       pObjIndex->description[0] = UPPER( pObjIndex->description[0] );
-
       pObjIndex->item_type = fread_number( fp );
       pObjIndex->extra_flags = fread_number( fp );
-      if( area_revision < 15 )
-      {
-         int temp_flags, index, new_flags = 0;
-         temp_flags = fread_number( fp );
-         for( index = 0; index < 32; index++ )
-         {
-            if( IS_SET( temp_flags, ( 1 << index ) ) )
-            {
-               SET_BIT( new_flags, convert_wearflags[index] );
-            }
-            pObjIndex->wear_flags = new_flags;
-         }
-      }
-      else
-      {
-         pObjIndex->wear_flags = fread_number( fp );
-      }
+      pObjIndex->wear_flags = fread_number( fp );
       pObjIndex->item_apply = fread_number( fp );
       if( area_revision > 16 )
        pObjIndex->speed = fread_float( fp );
@@ -1180,14 +1134,7 @@ void load_objects( FILE * fp )
       pObjIndex->value[1] = fread_number( fp );
       pObjIndex->value[2] = fread_number( fp );
       pObjIndex->value[3] = fread_number( fp );
-      if( area_revision < 15 )
-      {
-         for( looper = 4; looper < 10; pObjIndex->value[looper] = 0, looper++ );
-      }
-      else
-      {
-         for( looper = 4; looper < 10; pObjIndex->value[looper] = fread_number( fp ), looper++ );
-      }
+      for( looper = 4; looper < 10; pObjIndex->value[looper] = fread_number( fp ), looper++ );
       pObjIndex->weight = fread_number( fp );
       pObjIndex->cost = 0;
 

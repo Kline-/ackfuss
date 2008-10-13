@@ -66,8 +66,6 @@
 #include "money.h"
 #endif
 
-extern bool deathmatch;
-
 const char *where_name[] = {
    "                      ",  /* light  */
    "-*floating above*-    ",
@@ -3319,7 +3317,6 @@ void do_wimpy( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    int wimpy;
-   extern bool deathmatch;
    if( deathmatch )
    {
       send_to_char( "Not during a @@eDeath MAtch@@N!!!\n\r", ch );
@@ -4792,7 +4789,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
 
    CHAR_DATA *mob;
    char buf[MAX_STRING_LENGTH];
-   long_int cost = 0;
+   int cost = 0;
    int cnt;
    int subpop;
    bool any;
@@ -5532,7 +5529,7 @@ void do_worth( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    int numclasses;
    int a;
-   long_int cost;
+   int cost;
    int cnt;
 
    if( IS_NPC( ch ) )

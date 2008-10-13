@@ -46,10 +46,6 @@
 #endif
 
 /* Variables declared in db.c, which we need */
-
-extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
-extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
-extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
 extern char *string_hash[MAX_KEY_HASH];
 
 extern char *string_space;

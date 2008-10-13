@@ -69,6 +69,132 @@ bool deathmatch;
 extern POL_DATA politics_data;
 extern CHAR_DATA *quest_target;
 extern CHAR_DATA *quest_mob;
+extern OBJ_DATA *quest_object;
+extern int quest_timer;
+
+const float hr_damTable[121] = {
+   0.311,
+   0.325,
+   0.341,
+   0.358,
+   0.378,
+   0.399,
+   0.423,
+   0.449,
+   0.478,
+   0.509,
+   0.543,
+   0.579,
+   0.618,
+   0.659,
+   0.703,
+   0.749,
+   0.797,
+   0.846,
+   0.897,
+   0.948,
+   1.000,
+   1.012,
+   1.024,
+   1.036,
+   1.048,
+   1.060,
+   1.071,
+   1.083,
+   1.094,
+   1.105,
+   1.117,
+   1.127,
+   1.138,
+   1.149,
+   1.159,
+   1.169,
+   1.178,
+   1.188,
+   1.197,
+   1.206,
+   1.215,
+   1.223,
+   1.231,
+   1.239,
+   1.247,
+   1.254,
+   1.261,
+   1.268,
+   1.274,
+   1.281,
+   1.287,
+   1.292,
+   1.298,
+   1.303,
+   1.308,
+   1.313,
+   1.317,
+   1.322,
+   1.326,
+   1.330,
+   1.333,
+   1.337,
+   1.340,
+   1.344,
+   1.347,
+   1.350,
+   1.352,
+   1.355,
+   1.357,
+   1.360,
+   1.362,
+   1.364,
+   1.366,
+   1.368,
+   1.370,
+   1.372,
+   1.373,
+   1.375,
+   1.376,
+   1.377,
+   1.379,
+   1.380,
+   1.381,
+   1.382,
+   1.383,
+   1.384,
+   1.385,
+   1.386,
+   1.387,
+   1.387,
+   1.388,
+   1.389,
+   1.389,
+   1.390,
+   1.391,
+   1.391,
+   1.392,
+   1.392,
+   1.393,
+   1.393,
+   1.393,
+   1.394,
+   1.394,
+   1.395,
+   1.395,
+   1.395,
+   1.395,
+   1.396,
+   1.396,
+   1.396,
+   1.396,
+   1.397,
+   1.397,
+   1.397,
+   1.397,
+   1.397,
+   1.397,
+   1.398,
+   1.398,
+   1.398,
+   1.398
+};
 
 /*
  * Local functions.
@@ -104,8 +230,7 @@ void violence_update( void )
    /*
     * CHAR_DATA *check_char;   
     */
-/*    extern CHAR_DATA *violence_marker;
-    CHAR_DATA	*marker;  */
+/*  CHAR_DATA	*marker;  */
    bool has_cast = FALSE;
 
 
@@ -442,7 +567,6 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
    int diceroll;
    int ix;
    float dam_mod;
-   extern const float hr_damTable[121];
    /*
     * Can't beat a dead char!
     * Guard against weird room-leavings.
@@ -2048,9 +2172,6 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    /*
     * int counter, num;   
     */
-   extern OBJ_DATA *quest_object;
-   extern int quest_timer;
-   extern CHAR_DATA *quest_target;
 
    one_argument( argument, arg );
 

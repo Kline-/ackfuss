@@ -53,10 +53,6 @@ void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
    OBJ_INDEX_DATA *pObjIndex, *prevObjIndex;
    MOB_INDEX_DATA *pMobIndex, *prevMobIndex;
 
-   extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
-   extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
-   extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
-
    int iHash;
 
 

@@ -68,12 +68,12 @@ char *const rev_name[] = {
    "the South", "the West", "the North", "the East", "Below", "Above"
 };
 
-extern short const rev_dir[] = {
-   2, 3, 0, 1, 5, 4
-};
-
 const short movement_loss[SECT_MAX] = {
    1, 2, 2, 3, 4, 6, 4, 1, 6, 10, 6, 1
+};
+
+short rev_dir[] = {
+   2, 3, 0, 1, 5, 4
 };
 
 void move_char( CHAR_DATA * ch, int door, bool look )

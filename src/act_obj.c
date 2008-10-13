@@ -57,8 +57,15 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace );
 CHAR_DATA *find_keeper( CHAR_DATA * ch );
 int get_cost( CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy );
 void check_guards( CHAR_DATA * ch );
-
 char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort );
+
+extern OBJ_DATA *quest_object;
+extern OBJ_DATA *auction_item;
+extern CHAR_DATA *auction_owner;
+extern CHAR_DATA *auction_bidder;
+extern int auction_bid;
+extern int auction_stage;
+extern bool auction_flop;
 
 void get_obj( CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container )
 {
@@ -702,8 +709,6 @@ void do_give( CHAR_DATA * ch, char *argument )
    extern bool quest;
    extern bool auto_quest;
    extern CHAR_DATA *quest_mob;
-   extern OBJ_DATA *quest_object;
-
 
    container_name[0] = '\0';
    pre_parse( argument, victim_name, container_name, object_list );
@@ -1943,7 +1948,6 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
    char monbuf[MSL];
    int gp;
    OBJ_DATA *obj;
-   extern OBJ_DATA *quest_object;
    double align_change = 0;
    short align_direction = 0;
    bool change_align = FALSE;
@@ -3734,12 +3738,6 @@ void do_appraise( CHAR_DATA * ch, char *argument )
 
 void do_bid( CHAR_DATA * ch, char *argument )
 {
-   extern OBJ_DATA *auction_item;
-   extern CHAR_DATA *auction_owner;
-   extern CHAR_DATA *auction_bidder;
-   extern int auction_bid;
-   extern int auction_stage;
-   extern bool auction_flop;
    int amount;
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
@@ -3810,13 +3808,7 @@ void do_bid( CHAR_DATA * ch, char *argument )
 
 void do_auction( CHAR_DATA * ch, char *argument )
 {
-   extern OBJ_DATA *auction_item;
-   extern CHAR_DATA *auction_owner;
-   extern CHAR_DATA *auction_bidder;
-   extern int auction_bid;
-   extern int auction_reserve;
-   extern int auction_stage;
-   extern bool auction_flop;
+   int auction_reserve = 0;
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_STRING_LENGTH];
    double reserve;

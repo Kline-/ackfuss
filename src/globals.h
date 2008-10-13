@@ -144,7 +144,7 @@ extern const struct clan_type clan_table[MAX_CLAN];
 extern const struct cmd_type cmd_table[];
 extern const struct liq_type liq_table[LIQ_MAX];
 extern const struct skill_type skill_table[MAX_SKILL];
-extern struct social_type *social_table;
+extern SOCIAL_TYPE *social_table;
 extern char *const title_table[MAX_CLASS][36][2];
 
 /* spec: log all calls to getmem/dispose when set */
@@ -167,20 +167,12 @@ extern DESCRIPTOR_DATA *descriptor_list;
 extern CHAR_DATA *char_list;
 extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
 extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
+extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
 extern SYS_DATA_TYPE sysdata;
 extern CHAN_HISTORY chan_history;
 
 /* YUCK! */
 extern char *target_name;
-
-/* board junk */
-extern BOARD_DATA *first_board;
-extern BOARD_DATA *last_board;
-extern BOARD_DATA *board_free;
-extern MESSAGE_DATA *message_free;
-
-
-
 
 /*
  * Command functions.

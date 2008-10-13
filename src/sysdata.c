@@ -48,10 +48,11 @@
 
 void init_sysdata args( ( void ) );
 
+extern bool wizlock;
+
 void load_sysdata( void )
 {
  FILE *fp;
- extern bool wizlock;
  const char *word;
  bool fMatch;
 
@@ -132,7 +133,6 @@ void load_sysdata( void )
 void save_sysdata( void )
 {
  FILE *fp;
- extern bool wizlock;
 
  if( (fp = file_open(SYSDAT_FILE,"w")) == NULL )
  {
@@ -175,7 +175,6 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
  char catbuf[MSL];
  char arg1[MSL];
  char arg2[MSL];
- extern bool wizlock;
 
  argument = one_argument(argument,arg1);
  argument = one_argument(argument,arg2);

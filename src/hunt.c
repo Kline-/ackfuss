@@ -51,19 +51,11 @@
 
 #define NEVER_FREE_HUNT
 
-struct h_queue
-{
-   struct h_queue *next;
-   ROOM_INDEX_DATA *room;
-   short dir;
-};
-
-struct h_queue *h_head = NULL;
-struct h_queue *h_tail = NULL;
-extern char *const dir_name[];
+H_QUEUE *h_head = NULL;
+H_QUEUE *h_tail = NULL;
 
 #ifdef NEVER_FREE_HUNT
-struct h_queue *h_free = NULL;
+H_QUEUE *h_free = NULL;
 void setup_hunt( void );
 #endif
 
@@ -73,7 +65,7 @@ static FILE *h_fp;
 
 void h_enqueue( ROOM_INDEX_DATA * room, short dir )
 {
-   struct h_queue *hunt;
+   H_QUEUE *hunt;
 
 #ifdef NEVER_FREE_HUNT
    if( h_free )
@@ -83,7 +75,7 @@ void h_enqueue( ROOM_INDEX_DATA * room, short dir )
    }
    else
 #endif
-      hunt = (h_queue *)getmem( sizeof( *hunt ) );
+      hunt = (H_QUEUE *)getmem( sizeof( *hunt ) );
    hunt->next = NULL;
    hunt->room = room;
    hunt->dir = dir;
@@ -102,7 +94,7 @@ void h_enqueue( ROOM_INDEX_DATA * room, short dir )
 
 void h_dequeue( void )
 {
-   struct h_queue *hunt;
+   H_QUEUE *hunt;
 
    if( !( hunt = h_head ) )
       return;
@@ -185,7 +177,7 @@ void h_enqueue_room( ROOM_INDEX_DATA * room, short dir, int h_flags )
 
 short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags )
 {
-   struct h_queue *hunt;
+   H_QUEUE *hunt;
 
    if( room == target )
       return -1;
@@ -678,10 +670,10 @@ void do_hunt( CHAR_DATA * ch, char *argument )
 #define TOP_BUCKET_LIST	4095
 void setup_hunt( void )
 {
-   struct h_queue *bucket;
+   H_QUEUE *bucket;
    int bcnt;
 
-   bucket = (h_queue *)getmem( MAX_BUCKET_SIZE * sizeof( *bucket ) );
+   bucket = (H_QUEUE *)getmem( MAX_BUCKET_SIZE * sizeof( *bucket ) );
    for( bcnt = 0; bcnt < MAX_BUCKET_SIZE; bcnt++ )
       bucket[bcnt].next = ( bcnt < TOP_BUCKET_LIST ? &bucket[bcnt + 1] : h_free );
    h_free = &bucket[0];

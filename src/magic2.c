@@ -60,9 +60,6 @@
 #include "magic.h"
 #endif
 
-extern bool deathmatch;
-
-
 bool spell_invis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim;
