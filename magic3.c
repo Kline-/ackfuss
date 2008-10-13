@@ -39,6 +39,10 @@
 #include "globals.h"
 #include "magic.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 extern bool deathmatch;
 
 /*

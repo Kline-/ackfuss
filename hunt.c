@@ -35,13 +35,15 @@
 /* Mob/player hunting.. */
 /* Copied this from one of my old MUDs..  Much cleaner than the sillymud
    hunt routines  -- Alty */
-
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include "globals.h"
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
 
 #define NEVER_FREE_HUNT
 

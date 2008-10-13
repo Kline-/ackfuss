@@ -33,7 +33,6 @@
 
 #define DEC_ACK_H 1
 
-
 #ifndef DEC_TYPEDEFS_H
 #include "typedefs.h"
 #endif
@@ -1373,27 +1372,12 @@ struct eq_type
 #define SF      SPEC_FUN
 #define OF	OBJ_FUN
 
-/* act_comm.c */
-bool is_note_to args( ( CHAR_DATA * ch, NOTE_DATA * pnote ) );
-void add_follower args( ( CHAR_DATA * ch, CHAR_DATA * master ) );
-void stop_follower args( ( CHAR_DATA * ch ) );
-void die_follower args( ( CHAR_DATA * ch ) );
-bool is_same_group args( ( CHAR_DATA * ach, CHAR_DATA * bch ) );
-bool is_group_leader args( ( CHAR_DATA * ch ) );
-char *slur_text args( ( char *argument ) );
-void send_to_room args( ( char *message, ROOM_INDEX_DATA * room ) );
-
 /* act_info.c */
 void set_title            args( ( CHAR_DATA * ch, char *title ) );
 char *color_string        args( ( CHAR_DATA * CH, char *argument ) );
 char *get_family_name     args( ( CHAR_DATA * ch ) );
 char *get_tribe_name      args( ( CHAR_DATA * ch ) );
 char *output_race_wear    args( ( int iRace ) );
-
-/* act_mob.c */
-void int_combat_handler args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void int_handler args( ( CHAR_DATA * ch ) );
-
 
 /* act_move.c */
 void move_char args( ( CHAR_DATA * ch, int door, bool look ) );
@@ -1598,7 +1582,6 @@ void obj_unreference  args( ( OBJ_DATA ** var ) );
 
 /* interp.c */
 void interpret args( ( CHAR_DATA * ch, char *argument ) );
-bool is_number args( ( char *arg ) );
 bool IS_SWITCHED args( ( CHAR_DATA * ch ) );
 bool is_shielded args( ( CHAR_DATA * ch, short shield_type ) );
 void remove_shield args( ( CHAR_DATA * ch, MAGIC_SHIELD * shield ) );
@@ -1627,10 +1610,6 @@ int skill_lookup args( ( const char *name ) );
 int slot_lookup args( ( int slot ) );
 bool saves_spell args( ( int level, CHAR_DATA * victim ) );
 void obj_cast_spell args( ( int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
-bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj );
-
-/* mob_commands.c */
-char *mprog_type_to_name args( ( int type ) );
 
 /* mob_prog.c */
 #ifdef DUNNO_STRSTR
@@ -1757,7 +1736,6 @@ bool mob_hunt args( ( CHAR_DATA * mob ) );
 void char_hunt args( ( CHAR_DATA * ch ) );
 bool set_hunt args( ( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj, int set_flags, int rem_flags ) );
 void end_hunt args( ( CHAR_DATA * ch ) );
-short h_find_dir args( ( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags ) );
 
   /*
    * update.c 

@@ -41,26 +41,24 @@
  *
  * Copyright (c) 1996 Virtual Research
  */
-
-
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
 #include "globals.h"
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
 
 /* external functions
  */
-void log_string( const char *str );
 int move_gain( CHAR_DATA * ch );
 
 /* functions for riding
  */
 void stop_riding( CHAR_DATA * ch );
-void do_mount( CHAR_DATA * ch, char *argument );
-void do_dismount( CHAR_DATA * ch, char *argument );
 bool check_valid_ride( CHAR_DATA * ch );
 
 

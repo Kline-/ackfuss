@@ -46,9 +46,16 @@
 #include "globals.h"
 #include "tables.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_EMAIL_H
 #include "email.h"
 #endif
+
+/* from areasave.c */
+char *mprog_type_to_name( int );
 
 void do_transdm( CHAR_DATA * ch, char *argument )
 {

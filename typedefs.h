@@ -119,10 +119,6 @@ char *crypt args( ( const char *key, const char *salt ) );
 char *crypt args( ( const char *key, const char *salt ) );
 #endif
 
-#if     defined(linux)
-char *crypt args( ( const char *key, const char *salt ) );
-#endif
-
 #if     defined(macintosh)
 #define NOCRYPT
 #if     defined(unix)

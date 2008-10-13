@@ -49,6 +49,10 @@
 #include <time.h>
 #include "mapper.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 int door_marks[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
 int offsets[4][2] = { {-2, 0}, {0, 2}, {2, 0}, {0, -2} };
 

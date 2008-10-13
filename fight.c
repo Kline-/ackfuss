@@ -39,6 +39,11 @@
 #include "globals.h"
 #include "tables.h"
 #include <math.h>
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -55,16 +60,13 @@ extern CHAR_DATA *quest_mob;
  * Local functions.
  */
 bool  check_dodge      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void  check_killer     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 bool  check_parry      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 bool  check_skills     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void  dam_message      args( ( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt ) );
 void  death_message    args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt ) );
-void  death_cry        args( ( CHAR_DATA * ch ) );
 void  group_gain       args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 bool  is_safe          args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void  make_corpse      args( ( CHAR_DATA * ch, char *argument ) );
-void  raw_kill         args( ( CHAR_DATA * victim, char *argument ) );
 void  set_fighting     args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
 void  disarm           args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
 void  trip             args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );

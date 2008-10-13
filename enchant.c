@@ -43,7 +43,9 @@
 #include "globals.h"
 #include "tables.h"
 
-
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
 
 void do_enchant( CHAR_DATA * ch, char *argument )
 {

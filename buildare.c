@@ -77,8 +77,6 @@ extern int sAllocPerm;
 extern int fBootDb;
 
 /* Some build.c functions : */
-void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA * ch );
-char *build_simpstrdup( char * );
 ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, short vnum, short sector );
 
 

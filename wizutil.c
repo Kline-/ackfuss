@@ -255,7 +255,6 @@ void do_vlist( CHAR_DATA * ch, char *argument )
  */
 
 bool check_parse_name( char *name );   /* comm.c */
-char *initial( const char *str );   /* comm.c */
 
 void do_rename( CHAR_DATA * ch, char *argument )
 {

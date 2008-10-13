@@ -193,44 +193,33 @@ extern MESSAGE_DATA *message_free;
  **************************/
 
 DECLARE_DO_FUN( do_test );
-
 DECLARE_DO_FUN( do_exlist );
 DECLARE_DO_FUN( do_vlist );
 DECLARE_DO_FUN( do_rename );
-
 DECLARE_DO_FUN( do_sdelete );
-
-DECLARE_DO_FUN( do_accept );
 DECLARE_DO_FUN( do_adapt );
 DECLARE_DO_FUN( do_affected );
 DECLARE_DO_FUN( do_afk );
 DECLARE_DO_FUN( do_alias );
 DECLARE_DO_FUN( do_appraise );
 DECLARE_DO_FUN( build_arealist );
-DECLARE_DO_FUN( do_ask );
 DECLARE_DO_FUN( do_assassinate );
 DECLARE_DO_FUN( do_assist );
 DECLARE_DO_FUN( do_bamfin );
 DECLARE_DO_FUN( do_bamfout );
 DECLARE_DO_FUN( do_bank );
-DECLARE_DO_FUN( do_banish );
 DECLARE_DO_FUN( do_bash );
-DECLARE_DO_FUN( do_beep );
 DECLARE_DO_FUN( do_berserk );
 DECLARE_DO_FUN( do_bid );
 DECLARE_DO_FUN( do_rbid );
 DECLARE_DO_FUN( do_mbid );
 DECLARE_DO_FUN( do_cdonate );
 DECLARE_DO_FUN( do_circle );
-DECLARE_DO_FUN( do_clan );
 DECLARE_DO_FUN( do_clan_list );
 DECLARE_DO_FUN( do_clan_recall );
 DECLARE_DO_FUN( do_clutch );
 DECLARE_DO_FUN( do_colist );
 DECLARE_DO_FUN( do_color );
-DECLARE_DO_FUN( do_creator );
-DECLARE_DO_FUN( do_cset );
-DECLARE_DO_FUN( do_cwhere );
 DECLARE_DO_FUN( do_deathmatc );
 DECLARE_DO_FUN( do_deathmatch );
 DECLARE_DO_FUN( do_diagnose );
@@ -242,14 +231,8 @@ DECLARE_DO_FUN( do_enter );
 DECLARE_DO_FUN( do_feed );
 DECLARE_DO_FUN( do_fights );
 DECLARE_DO_FUN( do_finger );
-DECLARE_DO_FUN( do_flame );
 DECLARE_DO_FUN( do_gain );
 DECLARE_DO_FUN( do_gold );
-DECLARE_DO_FUN( do_gossip );
-DECLARE_DO_FUN( do_ooc );
-DECLARE_DO_FUN( do_espanol );
-DECLARE_DO_FUN( do_francais );
-DECLARE_DO_FUN( do_quest2 );
 DECLARE_DO_FUN( do_guild );
 DECLARE_DO_FUN( do_halls );
 DECLARE_DO_FUN( do_headbutt );
@@ -260,21 +243,13 @@ DECLARE_DO_FUN( do_resetpassword );
 DECLARE_DO_FUN( do_iscore );
 DECLARE_DO_FUN( do_isnoop );
 DECLARE_DO_FUN( do_iwhere );
-DECLARE_DO_FUN( do_leav );
-DECLARE_DO_FUN( do_leave );
 DECLARE_DO_FUN( do_lhunt );
-DECLARE_DO_FUN( do_make );
 DECLARE_DO_FUN( do_monitor );
 DECLARE_DO_FUN( do_mpcr );
-DECLARE_DO_FUN( do_music );
-DECLARE_DO_FUN( do_newbie );
 DECLARE_DO_FUN( do_nopray );
-DECLARE_DO_FUN( do_pemote );
 DECLARE_DO_FUN( do_players );
-DECLARE_DO_FUN( do_pray );
 DECLARE_DO_FUN( do_punch );
 DECLARE_DO_FUN( do_quest );
-DECLARE_DO_FUN( do_race );
 DECLARE_DO_FUN( do_race_list );
 DECLARE_DO_FUN( do_retrieve );
 DECLARE_DO_FUN( do_scan );
@@ -288,21 +263,13 @@ DECLARE_DO_FUN( do_status );
 DECLARE_DO_FUN( do_stun );
 DECLARE_DO_FUN( do_togbuild );
 DECLARE_DO_FUN( do_togleader );
-DECLARE_DO_FUN( do_tongue );
 DECLARE_DO_FUN( do_trip );
-DECLARE_DO_FUN( do_whisper );
 DECLARE_DO_FUN( do_whois );
 DECLARE_DO_FUN( do_whoname );
 DECLARE_DO_FUN( do_worth );
-DECLARE_DO_FUN( do_zzz );
 DECLARE_DO_FUN( do_listspells );
 DECLARE_DO_FUN( do_reward );
 DECLARE_DO_FUN( do_togcouncil );
-DECLARE_DO_FUN( do_council );
-DECLARE_DO_FUN( do_rename );
-DECLARE_DO_FUN( do_sdelete );
-
-
 
 /* And by MAG  
  *    
@@ -316,16 +283,13 @@ DECLARE_DO_FUN( do_write );
 DECLARE_DO_FUN( do_mfindlev );
 DECLARE_DO_FUN( do_check_areas );
 DECLARE_DO_FUN( do_check_area );
-
 DECLARE_DO_FUN( do_ofindlev );
-DECLARE_DO_FUN( do_howl );
 
 /****************************
  * Now the 'standard' stuff:*
  ****************************/
 
 DECLARE_DO_FUN( do_allow );
-DECLARE_DO_FUN( do_answer );
 DECLARE_DO_FUN( do_areas );
 DECLARE_DO_FUN( do_at );
 DECLARE_DO_FUN( do_auction );
@@ -342,7 +306,6 @@ DECLARE_DO_FUN( do_ban );
 DECLARE_DO_FUN( do_blank );
 DECLARE_DO_FUN( do_brandish );
 DECLARE_DO_FUN( do_brief );
-DECLARE_DO_FUN( do_bug );
 DECLARE_DO_FUN( do_buy );
 DECLARE_DO_FUN( do_cast );
 DECLARE_DO_FUN( do_channels );
@@ -363,26 +326,19 @@ DECLARE_DO_FUN( do_drop );
 DECLARE_DO_FUN( do_east );
 DECLARE_DO_FUN( do_eat );
 DECLARE_DO_FUN( do_echo );
-DECLARE_DO_FUN( do_emote );
 DECLARE_DO_FUN( do_equipment );
 DECLARE_DO_FUN( do_examine );
 DECLARE_DO_FUN( do_exits );
 DECLARE_DO_FUN( do_fill );
 DECLARE_DO_FUN( do_flee );
-DECLARE_DO_FUN( do_follow );
 DECLARE_DO_FUN( do_force );
 DECLARE_DO_FUN( do_freeze );
-DECLARE_DO_FUN( do_game );
 DECLARE_DO_FUN( do_get );
 DECLARE_DO_FUN( do_give );
 DECLARE_DO_FUN( do_goto );
-DECLARE_DO_FUN( do_group );
-DECLARE_DO_FUN( do_gtell );
 DECLARE_DO_FUN( do_help );
 DECLARE_DO_FUN( do_hide );
 DECLARE_DO_FUN( do_holylight );
-DECLARE_DO_FUN( do_idea );
-DECLARE_DO_FUN( do_immtalk );
 DECLARE_DO_FUN( do_incognito );
 DECLARE_DO_FUN( do_inventory );
 DECLARE_DO_FUN( do_invis );
@@ -416,12 +372,10 @@ DECLARE_DO_FUN( do_murde );
 DECLARE_DO_FUN( do_murder );
 DECLARE_DO_FUN( do_noemote );
 DECLARE_DO_FUN( do_north );
-DECLARE_DO_FUN( do_note );
 DECLARE_DO_FUN( do_notell );
 DECLARE_DO_FUN( do_ofind );
 DECLARE_DO_FUN( do_oload );
 DECLARE_DO_FUN( do_open );
-DECLARE_DO_FUN( do_order );
 DECLARE_DO_FUN( do_oset );
 DECLARE_DO_FUN( do_ostat );
 DECLARE_DO_FUN( do_owhere );
@@ -430,24 +384,17 @@ DECLARE_DO_FUN( do_pardon );
 DECLARE_DO_FUN( do_password );
 DECLARE_DO_FUN( do_peace );
 DECLARE_DO_FUN( do_pick );
-DECLARE_DO_FUN( do_pose );
 DECLARE_DO_FUN( do_practice );
 DECLARE_DO_FUN( do_prompt );
 DECLARE_DO_FUN( do_purge );
 DECLARE_DO_FUN( do_put );
 DECLARE_DO_FUN( do_quaff );
-DECLARE_DO_FUN( do_question );
-DECLARE_DO_FUN( do_quest2 );
-DECLARE_DO_FUN( do_qui );
-DECLARE_DO_FUN( do_quit );
 DECLARE_DO_FUN( do_reboo );
 DECLARE_DO_FUN( do_reboot );
 DECLARE_DO_FUN( do_recall );
 DECLARE_DO_FUN( do_recho );
 DECLARE_DO_FUN( do_recite );
 DECLARE_DO_FUN( do_remove );
-DECLARE_DO_FUN( do_rent );
-DECLARE_DO_FUN( do_reply );
 DECLARE_DO_FUN( do_report );
 DECLARE_DO_FUN( do_rescue );
 DECLARE_DO_FUN( do_rest );
@@ -456,11 +403,8 @@ DECLARE_DO_FUN( do_return );
 DECLARE_DO_FUN( do_rset );
 DECLARE_DO_FUN( do_rstat );
 DECLARE_DO_FUN( do_sacrifice );
-DECLARE_DO_FUN( do_save );
-DECLARE_DO_FUN( do_say );
 DECLARE_DO_FUN( do_score );
 DECLARE_DO_FUN( do_sell );
-DECLARE_DO_FUN( do_shout );
 DECLARE_DO_FUN( do_shutdow );
 DECLARE_DO_FUN( do_shutdown );
 DECLARE_DO_FUN( do_silence );
@@ -475,19 +419,16 @@ DECLARE_DO_FUN( do_snoop );
 DECLARE_DO_FUN( do_socials );
 DECLARE_DO_FUN( do_south );
 DECLARE_DO_FUN( do_spells );
-DECLARE_DO_FUN( do_split );
 DECLARE_DO_FUN( do_sset );
 DECLARE_DO_FUN( do_stand );
 DECLARE_DO_FUN( do_steal );
 DECLARE_DO_FUN( do_switch );
-DECLARE_DO_FUN( do_tell );
 DECLARE_DO_FUN( do_time );
 DECLARE_DO_FUN( do_title );
 DECLARE_DO_FUN( do_train );
 DECLARE_DO_FUN( do_transfer );
 DECLARE_DO_FUN( do_transdm );
 DECLARE_DO_FUN( do_trust );
-DECLARE_DO_FUN( do_typo );
 DECLARE_DO_FUN( do_unlock );
 DECLARE_DO_FUN( do_up );
 DECLARE_DO_FUN( do_users );
@@ -504,16 +445,11 @@ DECLARE_DO_FUN( do_wizhelp );
 DECLARE_DO_FUN( do_wizify );
 DECLARE_DO_FUN( do_wizlist );
 DECLARE_DO_FUN( do_wizlock );
-DECLARE_DO_FUN( do_yell );
 DECLARE_DO_FUN( do_zap );
 
 /* from Titania@AA/Sylvana@LCN */
 DECLARE_DO_FUN( do_otype );
 DECLARE_DO_FUN( do_owear );
-
-/* Added by Eligan, July 10 */
-
-DECLARE_DO_FUN( do_ignore );
 
 /*   
       NEW SKILLS  (SRZ)
@@ -534,27 +470,8 @@ DECLARE_DO_FUN( do_stance );
 DECLARE_DO_FUN( do_enchant );
 
 /*
-DECLARE_DO_FUN( do_teach      );
-*/
-
-
-/* 
- *  NEW CLAN COMMANDS (ZEN)
- */
-
-DECLARE_DO_FUN( do_ctoggle );
-DECLARE_DO_FUN( do_politics );
-DECLARE_DO_FUN( do_negotiate );
-
-/*
  *   New Channels (ZEN)
  */
-
-DECLARE_DO_FUN( do_diptalk );
-DECLARE_DO_FUN( do_familytalk );
-DECLARE_DO_FUN( do_remorttalk );
-DECLARE_DO_FUN( do_crusade );
-DECLARE_DO_FUN( do_adepttalk );  /* contrib by Hermes   */
 DECLARE_DO_FUN( do_rulers );
 DECLARE_DO_FUN( do_scout );
 
@@ -585,7 +502,6 @@ DECLARE_DO_FUN( do_findreset );
  * Werwolf
  */
 DECLARE_DO_FUN( do_rage );
-DECLARE_DO_FUN( do_howl );
 DECLARE_DO_FUN( do_tribe );
 DECLARE_DO_FUN( do_scent );
 DECLARE_DO_FUN( do_imprint );

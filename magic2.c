@@ -34,13 +34,16 @@
 
 /* Original 'magic.c' now contains the first half of the file, while the
    second half is in this 'magic2.c' file.  -S- */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include "globals.h"
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif

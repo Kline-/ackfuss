@@ -38,6 +38,10 @@
 #include <math.h>
 #include "globals.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_ACT_MOB_H
 #include "act_mob.h"
 #endif

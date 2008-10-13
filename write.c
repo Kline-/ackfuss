@@ -58,10 +58,6 @@ struct buf_data_struct
 
 extern char str_empty[1];
 
-/* A str function in build.c, used to duplicate strings into perm. mem. */
-char *build_simpstrdup( char * );
-
-
 void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
 {
    BUF_DATA_STRUCT *buf_data;
