@@ -191,7 +191,7 @@ extern int free_put;
 #define GET_FREE(item, freelist) \
 do { \
   if ( !(freelist) ) \
-    (item) = getmem(sizeof(*(item))); \
+    (item) = (typeof(item))getmem(sizeof(*(item))); \
   else { \
     if ( !(freelist)->is_free ) { \
       bug("GET_FREE: freelist head is NOT FREE!  Hanging...", 0); \

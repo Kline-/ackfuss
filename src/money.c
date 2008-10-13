@@ -57,9 +57,9 @@ const struct currency_type currency_table[MAX_CURRENCY] = {
    {"sunbursts", "@@pRoyal Sunburst@@N", "@@pRoyal Sunbursts@@N", .5, 1000}
 };
 
-sh_int money_lookup( char *money_name )
+short money_lookup( char *money_name )
 {
-   sh_int mn;
+   short mn;
    for( mn = 0; mn < MAX_CURRENCY; mn++ )
    {
       if( ( !str_prefix( money_name, currency_table[mn].keyword ) )
@@ -74,7 +74,7 @@ sh_int money_lookup( char *money_name )
 
 MONEY_TYPE *join_money( MONEY_TYPE * source, MONEY_TYPE * receiver )
 {
-   sh_int looper;
+   short looper;
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
       receiver->cash_unit[looper] += source->cash_unit[looper];
@@ -86,7 +86,7 @@ MONEY_TYPE *join_money( MONEY_TYPE * source, MONEY_TYPE * receiver )
 float money_weight( MONEY_TYPE * money )
 {
    float weight = 0.0;
-   sh_int looper;
+   short looper;
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
       weight += ( money->cash_unit[looper] * currency_table[looper].unit_weight );
@@ -112,7 +112,7 @@ int money_to_cost( char *money_list )
    bool valid = TRUE;
    int value = 0;
    int unit;
-   sh_int coin;
+   short coin;
    for( ;; )
    {
       parse = one_argument( parse, numbuf );
@@ -199,7 +199,7 @@ MONEY_TYPE *round_money( int base, bool round_up )
    return money;
 }
 
-MONEY_TYPE *round_money_off( int base, sh_int accuracy )
+MONEY_TYPE *round_money_off( int base, short accuracy )
 {
    MONEY_TYPE *money;
    int money_left = base;
@@ -228,7 +228,7 @@ MONEY_TYPE *round_money_off( int base, sh_int accuracy )
 int money_value( MONEY_TYPE * money )
 {
    int base_val = 0;
-   sh_int looper;
+   short looper;
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
       base_val += money->cash_unit[looper] * currency_table[looper].exchange_val;
@@ -240,8 +240,8 @@ char *money_string( MONEY_TYPE * money )
 {
    static char outbuf[MSL];
    char catbuf[MSL];
-   sh_int looper;
-   sh_int last_found = -1;
+   short looper;
+   short last_found = -1;
    bool multiple = FALSE;
    bool first = TRUE;
    for( looper = MAX_CURRENCY - 1; looper >= 0; looper-- )
@@ -279,7 +279,7 @@ char *unit_string( MONEY_TYPE * money )
 {
    static char outbuf[MSL];
    char catbuf[MSL];
-   sh_int looper;
+   short looper;
 
    outbuf[0] = '\0';
    for( looper = MAX_CURRENCY - 1; looper >= 0; looper-- )
@@ -296,7 +296,7 @@ char *unit_string( MONEY_TYPE * money )
 bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
 {
    MONEY_TYPE *transfer;
-   sh_int looper;
+   short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
@@ -315,7 +315,7 @@ bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
    }
    for( ;; )
    {
-      sh_int mn;
+      short mn;
       argument = one_argument( argument, m_number );
       if( m_number[0] == '\0' )
          break;
@@ -356,7 +356,7 @@ bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
 bool withdraw_money( CHAR_DATA * ch, char *argument )
 {
    MONEY_TYPE *transfer;
-   sh_int looper;
+   short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
@@ -376,7 +376,7 @@ bool withdraw_money( CHAR_DATA * ch, char *argument )
    }
    for( ;; )
    {
-      sh_int mn;
+      short mn;
       argument = one_argument( argument, m_number );
       if( m_number[0] == '\0' )
          break;
@@ -415,7 +415,7 @@ bool withdraw_money( CHAR_DATA * ch, char *argument )
 void deposit_money( CHAR_DATA * ch, char *argument )
 {
    MONEY_TYPE *transfer;
-   sh_int looper;
+   short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
@@ -435,7 +435,7 @@ void deposit_money( CHAR_DATA * ch, char *argument )
    }
    for( ;; )
    {
-      sh_int mn;
+      short mn;
       argument = one_argument( argument, m_number );
       if( m_number[0] == '\0' )
          break;
@@ -467,12 +467,12 @@ void deposit_money( CHAR_DATA * ch, char *argument )
 int exchange_money( CHAR_DATA * ch, char *argument )
 {
    MONEY_TYPE *transfer;
-   sh_int looper;
+   short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
    int base_val;
-   int taxed = 0;
+   float taxed = 0;
    GET_FREE( transfer, money_type_free );
 #ifdef DEBUG_MONEY
    {
@@ -488,7 +488,7 @@ int exchange_money( CHAR_DATA * ch, char *argument )
    }
    for( ;; )
    {
-      sh_int mn;
+      short mn;
       argument = one_argument( argument, m_number );
       if( m_number[0] == '\0' )
          break;
@@ -515,12 +515,12 @@ int exchange_money( CHAR_DATA * ch, char *argument )
    ch->carry_weight -= money_weight( transfer );
    base_val = money_value( transfer );
    taxed = EXCHANGE_COST * base_val;
-   base_val -= taxed;
+   base_val -= (int)taxed;
    PUT_FREE( transfer, money_type_free );
    transfer = round_money( base_val, TRUE );
    ch->carry_weight += money_weight( transfer );
    join_money( transfer, ch->money );
-   return taxed;
+   return (int)taxed;
 }
 
 void do_mgive( CHAR_DATA * ch, char *argument )
@@ -541,8 +541,8 @@ void do_mgive( CHAR_DATA * ch, char *argument )
    {
       char m_name[MSL];
       char m_number[MSL];
-      sh_int mn;
-      sh_int cnt;
+      short mn;
+      short cnt;
       MONEY_TYPE *transfer;
       if( get_trust( ch ) < 84 )
       {
@@ -594,8 +594,8 @@ void do_mgive( CHAR_DATA * ch, char *argument )
    {
       char m_name[MSL];
       char m_number[MSL];
-      sh_int mn;
-      sh_int cnt;
+      short mn;
+      short cnt;
       MONEY_TYPE *transfer;
       if( get_trust( ch ) < 84 )
       {
@@ -638,7 +638,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
 void drop_money( CHAR_DATA * ch, char *argument )
 {
    MONEY_TYPE *transfer;
-   sh_int looper;
+   short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
@@ -657,7 +657,7 @@ void drop_money( CHAR_DATA * ch, char *argument )
    }
    for( ;; )
    {
-      sh_int mn;
+      short mn;
       argument = one_argument( argument, m_number );
       if( m_number[0] == '\0' )
          break;
@@ -690,7 +690,7 @@ int money_to_value( CHAR_DATA * ch, char *argument )
 {
 /* if successful, takes money from player */
    MONEY_TYPE *transfer;
-   sh_int looper;
+   short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
@@ -709,7 +709,7 @@ int money_to_value( CHAR_DATA * ch, char *argument )
    }
    for( ;; )
    {
-      sh_int mn;
+      short mn;
       argument = one_argument( argument, m_number );
       if( m_number[0] == '\0' )
          break;
@@ -743,7 +743,7 @@ int money_to_value( CHAR_DATA * ch, char *argument )
 bool get_money_room( CHAR_DATA * ch, char *argument )
 {
    MONEY_TYPE *transfer;
-   sh_int looper;
+   short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
@@ -773,7 +773,7 @@ bool get_money_room( CHAR_DATA * ch, char *argument )
       }
       for( ;; )
       {
-         sh_int mn;
+         short mn;
          argument = one_argument( argument, m_number );
          if( m_number[0] == '\0' )
             break;
@@ -817,7 +817,7 @@ bool get_money_room( CHAR_DATA * ch, char *argument )
 bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
 {
    MONEY_TYPE *transfer;
-   sh_int looper;
+   short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
@@ -848,7 +848,7 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
       }
       for( ;; )
       {
-         sh_int mn;
+         short mn;
          argument = one_argument( argument, m_number );
          if( m_number[0] == '\0' )
             break;
@@ -1044,7 +1044,7 @@ char *take_best_coins( MONEY_TYPE * money, int cost )
       can_take_this = transaction->cash_unit[unit_level] * currency_table[unit_level].exchange_val;
       if( can_take_this >= still_needs )
       {
-         sh_int how_many;
+         short how_many;
          how_many = ( still_needs / currency_table[unit_level].exchange_val ) +
             ( ( still_needs % currency_table[unit_level].exchange_val != 0 ) ? 1 : 0 );
          change = change + ( how_many * currency_table[unit_level].exchange_val ) - still_needs;

@@ -61,7 +61,7 @@ struct npc_group_data
    bool is_free;
    NPC_GROUP_DATA *next;
    NPC_GROUP_DATA *prev;
-   sh_int state;
+   short state;
    DL_LIST *first_follower;
    DL_LIST *last_follower;
    CHAR_DATA *leader;
@@ -76,8 +76,8 @@ struct npc_group_data
 bool able_to_level( CHAR_DATA * ch );
 void gain_level( CHAR_DATA * ch );
 int find_spell( CHAR_DATA * ch, int type );
-void hunt_move args( ( CHAR_DATA * mob, sh_int dir ) );
-sh_int h_find_dir args( ( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags ) );
+void hunt_move args( ( CHAR_DATA * mob, short dir ) );
+short h_find_dir args( ( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags ) );
 void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target );
 void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target );
 bool ready_heal_room( CHAR_DATA * ch );

@@ -80,7 +80,7 @@ char *strstr( s1, s2 )
      const char *s2;
 {
    char *cp;
-   int i, j = strlen( s1 ) - strlen( s2 ), k = strlen( s2 );
+   int i, j = (int)strlen( s1 ) - (int)strlen( s2 ), k = (int)strlen( s2 );
    if( j < 0 )
       return NULL;
    for( i = 0; i <= j && strncmp( s1++, s2, k ) != 0; i++ );
@@ -712,13 +712,13 @@ int mprog_do_ifchck( char *ifchck, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA 
       switch ( arg[1] ) /* arg should be "$*" so just get the letter */
       {
          case 'i':
-            lhsvl = mob->class;
+            lhsvl = mob->p_class;
             rhsvl = atoi( val );
             return mprog_veval( lhsvl, opr, rhsvl );
          case 'n':
             if( actor != NULL )
             {
-               lhsvl = actor->class;
+               lhsvl = actor->p_class;
                rhsvl = atoi( val );
                return mprog_veval( lhsvl, opr, rhsvl );
             }
@@ -727,7 +727,7 @@ int mprog_do_ifchck( char *ifchck, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA 
          case 't':
             if( vict != NULL )
             {
-               lhsvl = vict->class;
+               lhsvl = vict->p_class;
                rhsvl = atoi( val );
                return mprog_veval( lhsvl, opr, rhsvl );
             }
@@ -736,7 +736,7 @@ int mprog_do_ifchck( char *ifchck, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA 
          case 'r':
             if( rndm != NULL )
             {
-               lhsvl = rndm->class;
+               lhsvl = rndm->p_class;
                rhsvl = atoi( val );
                return mprog_veval( lhsvl, opr, rhsvl );
             }
@@ -1568,18 +1568,18 @@ void mprog_wordlist_check( char *arg, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DA
       {
          strcpy( temp1, mprg->arglist );
          list = temp1;
-         for( i = 0; i < strlen( list ); i++ )
+         for( i = 0; i < (int)strlen( list ); i++ )
             list[i] = LOWER( list[i] );
          strcpy( temp2, arg );
          dupl = temp2;
-         for( i = 0; i < strlen( dupl ); i++ )
+         for( i = 0; i < (int)strlen( dupl ); i++ )
             dupl[i] = LOWER( dupl[i] );
          if( ( list[0] == 'p' ) && ( list[1] == ' ' ) )
          {
             list += 2;
             while( ( start = strstr( dupl, list ) ) )
                if( ( start == dupl || *( start - 1 ) == ' ' )
-                   && ( *( end = start + strlen( list ) ) == ' ' || *end == '\n' || *end == '\r' || *end == '\0' ) )
+                   && ( *( end = start + (int)strlen( list ) ) == ' ' || *end == '\n' || *end == '\r' || *end == '\0' ) )
                {
                   mprog_driver( mprg->comlist, mob, actor, obj, vo );
                   break;
@@ -1593,7 +1593,7 @@ void mprog_wordlist_check( char *arg, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DA
             for( ; word[0] != '\0'; list = one_argument( list, word ) )
                while( ( start = strstr( dupl, word ) ) )
                   if( ( start == dupl || *( start - 1 ) == ' ' )
-                      && ( *( end = start + strlen( word ) ) == ' ' || *end == '\n' || *end == '\r' || *end == '\0' ) )
+                      && ( *( end = start + (int)strlen( word ) ) == ' ' || *end == '\n' || *end == '\r' || *end == '\0' ) )
                   {
                      mprog_driver( mprg->comlist, mob, actor, obj, vo );
                      break;

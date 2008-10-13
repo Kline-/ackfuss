@@ -42,7 +42,6 @@
 #include "money.h"
 #endif
 
-
 /* This program provides the interpreting of building commands */
 
 /* The tables are now in buildtab.c: (This file was getting a bit big.)
@@ -296,11 +295,11 @@ char *reset_to_text( BUILD_DATA_LIST **, int * );
 
 
 
-ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, sh_int vnum, sh_int sector )
+ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, short vnum, short sector )
 {
    static BITMASK bitmask_zero;
    ROOM_INDEX_DATA *pRoomIndex;
-   sh_int door, cnt;
+   short door, cnt;
    MONEY_TYPE *room_treasure;
    /*
     * Now add room 
@@ -501,7 +500,7 @@ void build_showmob( CHAR_DATA * ch, char *argument )
 
    buf1[0] = '\0';
 
-   xprintf( buf, "@@WName: @@y%s.    @@WClass: @@y%s.\n\r", pMob->player_name, tab_mob_class[pMob->class].text );
+   xprintf( buf, "@@WName: @@y%s.    @@WClass: @@y%s.\n\r", pMob->player_name, tab_mob_class[pMob->p_class].text );
    xcat( buf1, buf );
 
    xprintf( buf, "@@WVnum: @@y%d.  @@WSex: @@y%s.  @@WRace:@@y %s ",
@@ -897,7 +896,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
 
    buf[0] = '\0';
    buf1[0] = '\0';
-   pReset = ( *pList )->data;
+   pReset = (RESET_DATA *)( *pList )->data;
 
    xcat( buf1, build_docount( pcount ) );
    if( ( *pList )->is_free )  /* sanity check */
@@ -949,7 +948,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
 
          while( *pList )
          {
-            pReset = ( *pList )->data;
+            pReset = (RESET_DATA *)( *pList )->data;
 
             if( pReset->command != 'G' && pReset->command != 'E' )
                break;
@@ -1077,7 +1076,7 @@ void build_findmob( CHAR_DATA * ch, char *argument )
    for( ; Pointer != NULL; Pointer = Pointer->next )
    {
       nMatch++;
-      pMobIndex = Pointer->data;
+      pMobIndex = (MOB_INDEX_DATA *)Pointer->data;
       if( fAll || is_name( arg, pMobIndex->player_name ) )
       {
          found = TRUE;
@@ -1199,7 +1198,7 @@ void build_findobject( CHAR_DATA * ch, char *argument )
 
    for( ; pList != NULL; pList = pList->next )
    {
-      pObjIndex = pList->data;
+      pObjIndex = (OBJ_INDEX_DATA *)pList->data;
       nMatch++;
       if( fAll || is_name( arg, pObjIndex->name ) )
       {
@@ -1262,7 +1261,7 @@ void build_findroom( CHAR_DATA * ch, char *argument )
 
    for( ; pList != NULL; pList = pList->next )
    {
-      pRoomIndex = pList->data;
+      pRoomIndex = (ROOM_INDEX_DATA *)pList->data;
       nMatch++;
       if( fAll || is_name( arg, pRoomIndex->name ) )
       {
@@ -1635,7 +1634,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          send_to_char( buf, ch );
          return;
       }
-      pMob->class = lvalue;
+      pMob->p_class = lvalue;
       send_to_char( "Ok.\n\r", ch );
       area_modified( pArea );
       return;
@@ -2038,7 +2037,7 @@ void nuke_exit_resets( ROOM_INDEX_DATA * pRoomIndex, int door )
    for( pList = pRoomIndex->first_room_reset; pList; pList = pListNext )
    {
       pListNext = pList->next;
-      pReset = pList->data;
+      pReset = (RESET_DATA *)pList->data;
 
       if( pReset->command == 'D' && pReset->arg2 == door )
       {
@@ -2606,7 +2605,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
    if( !str_prefix( "aobj", arg2 ) )
    {
     float mult = 0.0;
-    sh_int ac = 0, dr = 0, hp = 0, hr = 0, mp = 0, mv = 0, svs = 0;
+    float ac = 0, dr = 0, hp = 0, hr = 0, mp = 0, mv = 0, svs = 0;
 
     if( pObj->level < 1 ) /* Should never happen anyhow, but sanity checks are never bad */
     {
@@ -2625,7 +2624,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
     if( arg3[0] != '\0' ) /* Use modifiers based on wear slot */
     {
-     sh_int i = 0;
+     short i = 0;
      bool found = FALSE;
 
      for( i = 0; tab_auto_obj[i].name != NULL; i++ )
@@ -3555,7 +3554,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       found = num;
       for( pMobList = pRoomIndex->first_room_reset; pMobList != NULL; pMobList = pMobList->next )
       {
-         pMobReset = pMobList->data;
+         pMobReset = (RESET_DATA *)pMobList->data;
          if( pMobReset->command == 'M' && pMobReset->arg1 == vnum )
          {
             found--;
@@ -3626,7 +3625,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       found = num;
       for( pMobList = pRoomIndex->first_room_reset; pMobList != NULL; pMobList = pMobList->next )
       {
-         pMobReset = pMobList->data;
+         pMobReset = (RESET_DATA *)pMobList->data;
          if( pMobReset->command == 'M' && pMobReset->arg1 == vnum )
          {
             found--;
@@ -3813,7 +3812,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   pReset = pList->data;
+   pReset = (RESET_DATA *)pList->data;
 
    if( !pReset )
    {
@@ -4054,7 +4053,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
 
       for( pList = pArea->first_area_room; pList != NULL; pList = pList->next )
       {
-         pSrchRoom = pList->data;
+         pSrchRoom = (ROOM_INDEX_DATA *)pList->data;
 
          for( door = 0; door < MAX_DIR; door++ )
          {
@@ -4811,7 +4810,7 @@ void build_editstr( char **dest, char *src, CHAR_DATA * ch )
    orig = str_dup( src );
 
    send_to_char( "Editing string. Type .help for help.\n\r", ch );
-   write_start( dest, build_finishedstr, orig, ch );
+   write_start( dest, (RET_FUN *)build_finishedstr, orig, ch );
 
    if( *dest != &str_empty[0] )
    {
@@ -4904,7 +4903,7 @@ void build_setvnum( CHAR_DATA * ch, char *argument )
 /*   ROOM_INDEX_DATA *room; unused */
    MOB_INDEX_DATA *mob;
    bool found;
-   sh_int inc = 0;
+   short inc = 0;
 
 
    if( argument[0] == '\0' )

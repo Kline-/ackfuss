@@ -48,7 +48,7 @@ void save_clan_table(  )
 
    FILE *fp;
    char clan_file_name[MAX_STRING_LENGTH];
-   sh_int x, y;
+   short x, y;
 
    xprintf( clan_file_name, "%s", CLAN_FILE );
 
@@ -235,7 +235,7 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
 
 
 
-char *get_diplo_name( sh_int value )
+char *get_diplo_name( short value )
 {
 
    char *name = '\0';
@@ -262,7 +262,7 @@ char *get_diplo_name( sh_int value )
 
 void do_politics( CHAR_DATA * ch, char *argument )
 {
-   sh_int x, y;
+   short x, y;
    char buf[MAX_STRING_LENGTH], buf2[MAX_STRING_LENGTH];
 
    if( IS_NPC( ch ) )
@@ -338,7 +338,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char arg1[MAX_STRING_LENGTH];
    char arg2[MAX_STRING_LENGTH];
-   sh_int target_clan;
+   short target_clan;
 
    argument = one_argument( argument, arg1 );
    argument = one_argument( argument, arg2 );
@@ -964,7 +964,7 @@ void do_council( CHAR_DATA * ch, char *argument )
    char arg2[MAX_STRING_LENGTH];
    MEMBER_DATA *imember;
    MEMBER_DATA *member;
-   sh_int this_council = SUPER_NONE;
+   short this_council = SUPER_NONE;
    CHAR_DATA *victim;
 
 

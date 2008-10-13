@@ -258,7 +258,7 @@ void brand_data_free_destructor( BRAND_DATA * bdat )
 
 void pcd_free_destructor( PC_DATA * pcdat )
 {
-   sh_int cnt;
+   short cnt;
 
    free_string( pcdat->pwd );
    free_string( pcdat->bamfin );

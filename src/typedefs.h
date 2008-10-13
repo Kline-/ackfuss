@@ -95,16 +95,8 @@
 #if     !defined(const)
 #define const
 #endif
-typedef int sh_int;
-typedef int bool;
 #define unix
 #else
-#if !defined(sh_int)
-typedef short int sh_int;
-#endif
-#if !defined(bool)
-typedef unsigned char bool;
-#endif
 #endif
 typedef int long_int;
 
@@ -232,7 +224,7 @@ typedef struct trigger_data TRIGGER_DATA;
 typedef struct corpse_data CORPSE_DATA;
 typedef struct mark_data MARK_DATA;
 typedef struct mark_list_member MARK_LIST_MEMBER;
-
+typedef struct lookup_type LOOKUP_TYPE;
 typedef struct message_data MESSAGE_DATA;
 typedef struct board_data BOARD_DATA;
 typedef struct control_data CONTROL_DATA;
@@ -266,3 +258,4 @@ typedef void DO_FUN args( ( CHAR_DATA * ch, char *argument ) );
 typedef bool SPEC_FUN args( ( CHAR_DATA * ch ) );
 typedef bool SPELL_FUN args( ( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj ) );
 typedef void OBJ_FUN args( ( OBJ_DATA * obj, CHAR_DATA * keeper ) );
+typedef void RET_FUN args( ( MESSAGE_DATA *, char **, CHAR_DATA *, bool ) );

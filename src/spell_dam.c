@@ -633,6 +633,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
 {
    int ch_strong, ch_weak, ch_race, ch_suscept, ch_resist, vi_strong, vi_weak, vi_race, vi_suscept, vi_resist;
    float dam_modifier = 1.0;
+   float tmp = 0;
    bool can_reflect = TRUE;
    bool can_absorb = TRUE;
 
@@ -828,8 +829,10 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    if( ( IS_SET( type, REALM_DRAIN ) ) && ( IS_UNDEAD( victim ) ) )
       dam_modifier = 0.0;
 
-   dam *= dam_modifier;
-   dam += number_range((dam * -0.10),(dam * 0.10)); /* Lets add a little randomness to things. --Kline */
+   tmp = dam;
+   tmp *= dam_modifier;
+   dam = (int)tmp;
+   dam += number_range((int)(dam * -0.10),(int)(dam * 0.10)); /* Lets add a little randomness to things. --Kline */
 
    if( victim != ch )
    {

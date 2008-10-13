@@ -61,7 +61,7 @@ struct qmessage_type
 };
 
 
-const struct qmessage_type qmessages[4][17] = {
+extern const struct qmessage_type qmessages[4][17] = {
    {
     {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
     {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
@@ -270,7 +270,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       DESCRIPTOR_DATA *d;
       int a = 80;
       int b = 0;
-      sh_int player_count = 0, average_level = 0, total_levels = 0;
+      short player_count = 0, average_level = 0, total_levels = 0;
 
       /*
        * generate a new quest! 
@@ -533,7 +533,7 @@ void quest_inform( void )
    extern CHAR_DATA *quest_target;
    extern OBJ_DATA *quest_object;
    extern int quest_timer;
-   extern sh_int quest_personality;
+   extern short quest_personality;
    extern const struct qmessage_type qmessages[4][17];
 
 
@@ -578,7 +578,7 @@ void quest_complete( CHAR_DATA * ch )
 {
    extern CHAR_DATA *quest_mob;
    extern OBJ_DATA *quest_object;
-   extern sh_int quest_personality;
+   extern short quest_personality;
    extern const struct qmessage_type qmessages[4][17];
 
 
@@ -610,7 +610,7 @@ void clear_quest(  )
    extern OBJ_DATA *quest_object;
    extern int quest_timer;
    extern int quest_wait;
-   extern sh_int quest_personality;
+   extern short quest_personality;
 
    /*
     * Clear ALL values, ready for next quest 
@@ -654,14 +654,14 @@ void generate_auto_quest(  )
    extern OBJ_DATA *quest_object;
    extern int quest_timer;
    extern int quest_wait;
-   extern sh_int quest_personality;
+   extern short quest_personality;
    int hunt_flags = 0;
    char new_long_desc[MAX_STRING_LENGTH];
-   sh_int loop_counter = 0;
+   short loop_counter = 0;
 
    int a = 140;
    int b = 0;
-   sh_int player_count = 0, average_level = 0, total_levels = 0;
+   short player_count = 0, average_level = 0, total_levels = 0;
 
    /*
     * generate a new quest! 

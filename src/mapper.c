@@ -49,8 +49,6 @@
 #include <time.h>
 #include "mapper.h"
 
-extern char *compass_name[];
-
 int door_marks[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
 int offsets[4][2] = { {-2, 0}, {0, 2}, {2, 0}, {0, -2} };
 
@@ -89,7 +87,7 @@ const struct map_info_type map_info[] = {
 
 char *get_sector_display( int sector )
 {
-   sh_int looper;
+   short looper;
    for( looper = 0;; looper++ )
       if( ( map_info[looper].sector_type == sector ) || ( map_info[looper].sector_type == SECT_TOP ) )
          break;
@@ -97,7 +95,7 @@ char *get_sector_display( int sector )
 }
 char *get_sector_color( int sector )
 {
-   sh_int looper;
+   short looper;
    for( looper = 0;; looper++ )
       if( ( map_info[looper].sector_type == sector ) || ( map_info[looper].sector_type == SECT_TOP ) )
          break;
@@ -105,7 +103,7 @@ char *get_sector_color( int sector )
 }
 char *get_invert_color( int sector )
 {
-   sh_int looper;
+   short looper;
    for( looper = 0;; looper++ )
       if( ( map_info[looper].sector_type == sector ) || ( map_info[looper].sector_type == SECT_TOP ) )
          break;
@@ -113,7 +111,7 @@ char *get_invert_color( int sector )
 }
 char *get_door_display( int door )
 {
-   sh_int looper;
+   short looper;
    for( looper = 0;; looper++ )
       if( ( door_info[looper].sector_type == door ) || ( door_info[looper].sector_type == DOOR_NULL ) )
          break;
@@ -121,7 +119,7 @@ char *get_door_display( int door )
 }
 char *get_door_color( int door )
 {
-   sh_int looper;
+   short looper;
    for( looper = 0;; looper++ )
       if( ( door_info[looper].sector_type == door ) || ( door_info[looper].sector_type == DOOR_NULL ) )
          break;
@@ -129,7 +127,7 @@ char *get_door_color( int door )
 }
 char *get_sector_name( int sector )
 {
-   sh_int looper;
+   short looper;
    for( looper = 0;; looper++ )
       if( ( map_info[looper].sector_type == sector ) || ( map_info[looper].sector_type == SECT_TOP ) )
          break;
@@ -557,7 +555,8 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
    EXIT_DATA *pexit;
    CHAR_DATA *victim;
    int door, looper;
-   sh_int door_type = 0;
+   short door_type = 0;
+   extern short const rev_dir[];
    if( map[x][y] <= 0 )
       return;  /* it's a door, not a room in the map */
 

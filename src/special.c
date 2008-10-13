@@ -151,7 +151,7 @@ SPEC_FUN *spec_lookup( const char *name )
 
 /* MAG Mod */
 
-char *rev_spec_lookup( void *func )
+char *rev_spec_lookup( SPEC_FUN *func )
 {
    if( func == spec_breath_any )
       return "spec_breath_any";
@@ -426,7 +426,7 @@ bool spec_cast_adept( CHAR_DATA * ch )
          tm_xmas.tm_year = 98;
 
          xmas_time = mktime( &tm_xmas );
-         days = difftime( xmas_time, time( &cur_time ) ) / ( 3600 * 24 );
+         days = (int)difftime( xmas_time, time( &cur_time ) ) / ( 3600 * 24 );
 
          xprintf( buffer, "$n utters the words '%i days to Christmas!'.", days );
 
@@ -1083,7 +1083,7 @@ bool spec_cast_cadaver( CHAR_DATA * ch )
     * for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next )
     * {
     * OBJ_DATA *obj;
-    * sh_int    count = 0;
+    * short    count = 0;
     * bool    match = FALSE;
     * 
     * 

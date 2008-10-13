@@ -137,7 +137,7 @@ bool is_set( BITMASK *mask, int bit )
 int *serialize_bitmask( BITMASK *mask )
 {
  BM_LIST *pBlist = 0;
- int *ilist = malloc(sizeof(int) * mask->bits +1), i = 0, z = 0;
+ int *ilist = (int *)malloc(sizeof(int) * mask->bits +1), i = 0, z = 0;
  ilist[mask->bits] = 0; /* Zero terminates it. 0th bit CAN NOT BE SET. */
 
  for( pBlist = mask->int_list; pBlist; pBlist = pBlist->next )
@@ -199,7 +199,7 @@ void load_bitmask( BITMASK *pBmask, FILE *fp ) /* #masks #bits #mask #vector #ma
 
  for( i = 0; i < pBmask->masks; ++i )
  {
-  pBMlist = malloc(sizeof(BM_LIST));
+  pBMlist = (BM_LIST *)malloc(sizeof(BM_LIST));
 
   pBMlist->set = fread_number(fp);
   pBMlist->next = pBmask->int_list;
@@ -226,7 +226,7 @@ char *save_bitmask( BITMASK *pBmask ) /* Make this a string so it's easier to pa
 /* Thanks to Marlin@Azereth for this */
 void bv_to_bm( int list, BITMASK *mask )
 {
- sh_int i;
+ short i = 0;
 
  for( i = 0; i < 32; i++ )
   if( IS_SET(list,(1 << i)) )

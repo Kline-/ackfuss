@@ -132,7 +132,7 @@ bool spell_know_alignment( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
 bool spell_lightning_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-   static const sh_int dam_each[] = {
+   static const short dam_each[] = {
       0,
       0, 0, 0, 0, 0, 0, 0, 0, 25, 28,
       31, 34, 37, 40, 40, 41, 42, 42, 43, 44,
@@ -142,7 +142,7 @@ bool spell_lightning_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
    };
    int dam;
 
-   level = UMIN( level, sizeof( dam_each ) / sizeof( dam_each[0] ) - 1 );
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
    level = UMAX( 0, level );
    dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
    if( saves_spell( level, victim ) )
@@ -210,7 +210,7 @@ bool spell_magic_missile( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    int cnt;
    int hits;
-   static const sh_int dam_each[] = {
+   static const short dam_each[] = {
       0,
       3, 3, 4, 4, 5, 6, 6, 6, 6, 6,
       7, 7, 7, 7, 7, 8, 8, 8, 8, 8,
@@ -220,7 +220,7 @@ bool spell_magic_missile( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    };
    int dam;
 
-   level = UMIN( level, sizeof( dam_each ) / sizeof( dam_each[0] ) - 1 );
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
    level = UMAX( 0, level );
    dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
    if( saves_spell( level, victim ) )
@@ -434,7 +434,7 @@ bool spell_shocking_grasp( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
    };
    int dam;
 
-   level = UMIN( level, sizeof( dam_each ) / sizeof( dam_each[0] ) - 1 );
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
    level = UMAX( 0, level );
    dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
    if( saves_spell( level, victim ) )
@@ -752,7 +752,7 @@ bool spell_fire_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 
    if( !IS_NPC( ch ) )
    {
-      dam = number_range( get_psuedo_level( ch ) * 1.2, get_psuedo_level( ch ) * 1.6 );
+      dam = number_range( (int)(get_psuedo_level( ch ) * 1.2), (int)(get_psuedo_level( ch ) * 1.6) );
       if( saves_spell( level, victim ) )
          dam /= 2;
       damage( ch, victim, dam, sn );

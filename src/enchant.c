@@ -66,11 +66,11 @@ void do_enchant( CHAR_DATA * ch, char *argument )
    int mod_str = 0, mod_int = 0, mod_dex = 0, mod_wis = 0, mod_con = 0;
    int cur_mana = 0, cur_hitroll = 0, cur_move = 0, cur_armor = 0, cur_save = 0, cur_hit = 0, cur_damroll = 0;
    int mod_mana = 0, mod_hitroll = 0, mod_move = 0, mod_armor = 0, mod_save = 0, mod_hit = 0, mod_damroll = 0;
-   sh_int mod_item_weight = 0;
+   short mod_item_weight = 0;
    bool good_item = FALSE, legal_enchant = TRUE, bad_enchant_mix = FALSE;
-   sh_int qp_cost = 20;
+   short qp_cost = 20;
    int mod = 0;
-   sh_int min_level = 10;
+   short min_level = 10;
    int new_extras = 0, new_apply = ITEM_APPLY_NONE;
 
 

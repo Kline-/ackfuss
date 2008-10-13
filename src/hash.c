@@ -91,8 +91,8 @@ hash_table *create_hash_table( int max_hash )
    hash_table *hash_head;
    HASH_ENTRY **hash_table;
 
-   hash_table = getmem( sizeof( HASH_ENTRY * ) * max_hash );
-   hash_head = getmem( sizeof( struct hash_table_tp ) );
+   hash_table = (HASH_ENTRY **)getmem( sizeof( HASH_ENTRY * ) * max_hash );
+   hash_head = (struct hash_table_tp *)getmem( sizeof( struct hash_table_tp ) );
 
    hash_head->max_hash = max_hash;
    hash_head->table = hash_table;

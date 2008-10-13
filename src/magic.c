@@ -55,8 +55,8 @@ int mana_cost( CHAR_DATA * ch, int sn )
    int best;
    int foo;
    int skill_lev;
-   int cost, mincost;
-   int class = 0;
+   float cost, mincost;
+   int p_class = 0;
 
 
 
@@ -66,7 +66,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
       for( foo = 0; foo < MAX_CLASS; foo++ )
          if( best >= skill_table[sn].skill_level[foo] )
          {
-            class = foo;
+            p_class = foo;
          }
 
       if( ( skill_table[sn].flag1 == REMORT )
@@ -84,7 +84,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
          if( ch->lvl[foo] >= skill_table[sn].skill_level[foo] && ch->lvl[foo] > best )
          {
             best = ch->lvl[foo];
-            class = foo;
+            p_class = foo;
          }
    }
    if( skill_table[sn].flag1 == ADEPT )
@@ -112,7 +112,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
 
    mincost = 1000;
 
-   skill_lev = skill_table[sn].skill_level[class];
+   skill_lev = skill_table[sn].skill_level[p_class];
 
    if( skill_lev > best )
       cost = 1000;
@@ -152,7 +152,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
       else if( IS_SET( race_table[ch->race].race_flags, RACE_MOD_STRONG_MAGIC ) )
          mincost *= .60;
    }
-   return mincost;
+   return (int)mincost;
 }
 
 /*
@@ -220,8 +220,8 @@ void say_spell( CHAR_DATA * ch, int sn )
 
    struct syl_type
    {
-      char *old;
-      char *new;
+      char *sold;
+      char *snew;
    };
 
    static const struct syl_type syl_table[] = {
@@ -260,11 +260,11 @@ void say_spell( CHAR_DATA * ch, int sn )
    buf[0] = '\0';
    for( pName = skill_table[sn].name; *pName != '\0'; pName += length )
    {
-      for( iSyl = 0; ( length = strlen( syl_table[iSyl].old ) ) != 0; iSyl++ )
+      for( iSyl = 0; ( length = strlen( syl_table[iSyl].sold ) ) != 0; iSyl++ )
       {
-         if( !str_prefix( syl_table[iSyl].old, pName ) )
+         if( !str_prefix( syl_table[iSyl].sold, pName ) )
          {
-            xcat( buf, syl_table[iSyl].new );
+            xcat( buf, syl_table[iSyl].snew );
             break;
          }
       }
@@ -306,7 +306,7 @@ void say_spell( CHAR_DATA * ch, int sn )
    for( rch = ch->in_room->first_person; rch; rch = rch->next_in_room )
    {
       if( rch != ch )
-         act( ch->class == rch->class ? buf : buf2, ch, NULL, rch, TO_VICT );
+         act( ch->p_class == rch->p_class ? buf : buf2, ch, NULL, rch, TO_VICT );
    }
 
    return;
@@ -595,7 +595,9 @@ void do_cast( CHAR_DATA * ch, char *argument )
    }
    if( ( skill_table[sn].flag2 == NORM ) && ( is_affected( ch, skill_lookup( "mystical focus" ) ) ) )
    {
-      mana *= 2.5;
+      float tmp = mana;
+      tmp *= 2.5;
+      mana = (int)tmp;
    }
 
    if( !IS_VAMP( ch ) && ( skill_table[sn].flag2 == VAMP ) )
@@ -963,7 +965,7 @@ bool spell_badbreath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 /* --Stephen */
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-   static const sh_int dam_each[] = {
+   static const short dam_each[] = {
       0,
       3, 3, 4, 4, 5, 6, 6, 6, 6, 6,
       7, 7, 7, 7, 7, 8, 8, 8, 8, 8,
@@ -973,7 +975,7 @@ bool spell_badbreath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    };
    int dam;
 
-   level = UMIN( level, sizeof( dam_each ) / sizeof( dam_each[0] ) - 1 );
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
    level = UMAX( 0, level );
    dam = number_range( dam_each[level] / 2, dam_each[level] * 2 ) + ( level / 4 );
    if( saves_spell( level, victim ) )
@@ -1055,7 +1057,7 @@ bool spell_blindness( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 bool spell_burning_hands( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-   static const sh_int dam_each[] = {
+   static const short dam_each[] = {
       0,
       0, 0, 0, 0, 14, 17, 20, 23, 26, 29,
       29, 29, 30, 30, 31, 31, 32, 32, 33, 33,
@@ -1065,7 +1067,7 @@ bool spell_burning_hands( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    };
    int dam;
 
-   level = UMIN( level, sizeof( dam_each ) / sizeof( dam_each[0] ) - 1 );
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
    level = UMAX( 0, level );
    dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
    if( saves_spell( level, victim ) )
@@ -1232,7 +1234,7 @@ bool spell_charm_person( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
 bool spell_chill_touch( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-   static const sh_int dam_each[] = {
+   static const short dam_each[] = {
       0,
       0, 0, 6, 7, 8, 9, 12, 13, 13, 13,
       14, 14, 14, 15, 15, 15, 16, 16, 16, 17,
@@ -1243,7 +1245,7 @@ bool spell_chill_touch( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    AFFECT_DATA af;
    int dam;
 
-   level = UMIN( level, sizeof( dam_each ) / sizeof( dam_each[0] ) - 1 );
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
    level = UMAX( 0, level );
    dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
    if( !saves_spell( level, victim ) )
@@ -1271,7 +1273,7 @@ bool spell_chill_touch( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 bool spell_color_spray( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-   static const sh_int dam_each[] = {
+   static const short dam_each[] = {
       0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       30, 35, 40, 45, 50, 55, 55, 55, 56, 57,
@@ -1281,7 +1283,7 @@ bool spell_color_spray( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    };
    int dam;
 
-   level = UMIN( level, sizeof( dam_each ) / sizeof( dam_each[0] ) - 1 );
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
    level = UMAX( 0, level );
    dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
    if( saves_spell( level, victim ) )
@@ -2155,7 +2157,7 @@ bool spell_energy_drain( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
 bool spell_fireball( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
-   static const sh_int dam_each[] = {
+   static const short dam_each[] = {
       0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 30, 35, 40, 45, 50, 55,
@@ -2165,7 +2167,7 @@ bool spell_fireball( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    };
    int dam;
 
-   level = UMIN( level, sizeof( dam_each ) / sizeof( dam_each[0] ) - 1 );
+   level = UMIN( level, (int)sizeof( dam_each ) / (int)sizeof( dam_each[0] ) - 1 );
    level = UMAX( 0, level );
    dam = number_range( dam_each[level] / 2, dam_each[level] * 2 );
    if( saves_spell( level, victim ) )
@@ -2450,7 +2452,7 @@ bool spell_laserbolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    int dam;
 
-   dam = number_range( level / 2, level * 1.5 );
+   dam = number_range( (int)(level / 2), (int)(level * 1.5) );
    if( saves_spell( level, victim ) )
       dam /= 2;
 

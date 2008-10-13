@@ -87,7 +87,7 @@ FILE *fpReserve;  /* Reserved file handle         */
 bool god;   /* All new chars are gods!      */
 bool merc_down;   /* Shutdown                     */
 bool wizlock;  /* Game is wizlocked            */
-bool deathmatch;  /* Deathmatch happening?        */
+extern bool deathmatch;  /* Deathmatch happening?        */
 char str_boot_time[MAX_INPUT_LENGTH];
 time_t current_time; /* Time of this pulse           */
 
@@ -112,7 +112,7 @@ CHAR_DATA *quest_target;   /* Target of the quest     */
 OBJ_DATA *quest_object; /* Object to recover    */
 int quest_timer;  /* Time left to get object */
 int quest_wait = 0;  /* Min time until next quest  */
-sh_int quest_personality;  /* mob's crusade personality :) */
+short quest_personality;  /* mob's crusade personality :) */
 
 /* Some debug globals --Kline */
 int free_get = 0;
@@ -753,7 +753,7 @@ void init_descriptor( DESCRIPTOR_DATA * dnew, int desc )
    dnew->showstr_head = NULL;
    dnew->showstr_point = NULL;
    dnew->outsize = 2000;
-   dnew->outbuf = getmem( dnew->outsize );
+   dnew->outbuf = (char *)getmem( dnew->outsize );
    dnew->flags = 0;
    dnew->childpid = 0;
 
@@ -842,7 +842,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d )
     * Check for overflow. 
     */
    iStart = strlen( d->inbuf );
-   if( iStart >= sizeof( d->inbuf ) - 10 )
+   if( iStart >= (int)sizeof( d->inbuf ) - 10 )
    {
       xprintf_2( log_buf, "%s input overflow!", d->host );
       log_string( log_buf );
@@ -1203,7 +1203,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             break;
          case 'w':
          {
-            sh_int cl_index = -1;
+            short cl_index = -1;
             int cost;
             bool remort = FALSE, adept = FALSE;
             ++str;
@@ -1660,7 +1660,7 @@ void write_to_buffer( DESCRIPTOR_DATA * d, const char *txt, int length )
    {
       char *outbuf;
 
-      outbuf = getmem( 2 * d->outsize );
+      outbuf = (char *)getmem( 2 * d->outsize );
       strncpy( outbuf, d->outbuf, d->outtop );
       dispose( d->outbuf, d->outsize );
       d->outbuf = outbuf;
@@ -1768,7 +1768,7 @@ void write_to_buffer( DESCRIPTOR_DATA * d, const char *txt, int length )
             {
                char *outbuf;
 
-               outbuf = getmem( 2 * d->outsize );
+               outbuf = (char *)getmem( 2 * d->outsize );
                strncpy( outbuf, d->outbuf, d->outtop + length - count );
                dispose( d->outbuf, d->outsize );
                d->outbuf = outbuf;
@@ -1868,7 +1868,7 @@ void show_menu_to( DESCRIPTOR_DATA * d )
    xcat( menu, "        4. Set Class Order  Currently:" );
    if( IS_SET( d->check, CHECK_CLASS ) )
    {
-      sh_int i;
+      short i;
       xprintf( buf, "\n\r        " );
       for( i = 0; i < MAX_CLASS; i++ )
       {
@@ -2212,13 +2212,13 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       lines = ch->pcdata->pagelen;
       ch->pcdata->pagelen = 20;
 
-      if( ch->lvl[ch->class] == -1 )
-         ch->lvl[ch->class] = ch->level;
+      if( ch->lvl[ch->p_class] == -1 )
+         ch->lvl[ch->p_class] = ch->level;
 
       if( IS_HERO( ch ) )
       {
          DL_LIST *brands;
-         sh_int numbrands;
+         short numbrands;
          char msgbuf[MSL];
          for( brands = first_brand, numbrands = 0; brands; brands = brands->next, numbrands++ );
          do_help( ch, "imotd" );
@@ -2569,8 +2569,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
    if( d->connected == CON_GET_NEW_CLASS )
    {
-      sh_int classes[MAX_CLASS];
-      sh_int parity[MAX_CLASS];  /* Nowt to do with parity really */
+      short classes[MAX_CLASS];
+      short parity[MAX_CLASS];  /* Nowt to do with parity really */
       char arg[MAX_STRING_LENGTH];
       int cnt;
       int foo;
@@ -2673,8 +2673,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
        */
       if( ch->level == 0 )
       {
-         ch->class = ch->pcdata->order[0];
-         ch->lvl[ch->class] = 1;
+         ch->p_class = ch->pcdata->order[0];
+         ch->lvl[ch->p_class] = 1;
       }
 
       LINK( ch, first_char, last_char, next, prev );
@@ -2696,7 +2696,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           * OBJ_DATA *obj; unused 
           */
 
-         switch ( class_table[ch->class].attr_prime )
+         switch ( class_table[ch->p_class].attr_prime )
          {
             case APPLY_STR:
                ch->pcdata->max_str++;
@@ -2724,9 +2724,9 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           * All Races get 5 classes now.. 
           */
 
-         ch->lvl[ch->class] = 1;
+         ch->lvl[ch->p_class] = 1;
          for( cnt = 0; cnt < MAX_CLASS; cnt++ )
-            if( cnt != ch->class )
+            if( cnt != ch->p_class )
                ch->lvl[cnt] = 0;
 
          ch->exp = 0;
@@ -2774,7 +2774,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           * obj_to_char( obj, ch );
           * equip_char( ch, obj, WEAR_SHIELD );
           * 
-          * obj = create_object( get_obj_index(class_table[ch->class].weapon),
+          * obj = create_object( get_obj_index(class_table[ch->p_class].weapon),
           * 0 );
           * obj_to_char( obj, ch );
           * equip_char( ch, obj, WEAR_WIELD );
@@ -2853,7 +2853,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       {
          int loss;
          int new_balance;
-         loss = number_range( ch->balance * .3, ch->balance * .6 );
+         loss = number_range( (int)(ch->balance * .3), (int)(ch->balance * .6) );
          new_balance = UMAX( ch->balance - loss, get_psuedo_level( ch ) * 100000 );
          ch->balance = UMIN( ch->balance, new_balance );
       }
@@ -3189,7 +3189,7 @@ void send_to_char( const char *txt, CHAR_DATA * ch )
    {
       char *ssh;
 
-      ssh = qgetmem( strlen( ch->desc->showstr_head ) + strlen( txt ) + 1 );
+      ssh = (char *)qgetmem( strlen( ch->desc->showstr_head ) + strlen( txt ) + 1 );
       strcpy( ssh, ch->desc->showstr_head );
       strcat( ssh, txt );
       if( ch->desc->showstr_point )
@@ -3201,7 +3201,7 @@ void send_to_char( const char *txt, CHAR_DATA * ch )
    }
    else
    {
-      ch->desc->showstr_head = qgetmem( strlen( txt ) + 1 );
+      ch->desc->showstr_head = (char *)qgetmem( strlen( txt ) + 1 );
       strcpy( ch->desc->showstr_head, txt );
       ch->desc->showstr_point = ch->desc->showstr_head;
    }
@@ -3655,7 +3655,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
                                  "Since you are level one, and level one characters do not save....you have been advanced!\n\r",
                                  0 );
             och->level = 2;
-            och->lvl[och->class] = 2;
+            och->lvl[och->p_class] = 2;
          }
          save_char_obj( och );
          write_to_descriptor( d->descriptor, buf, 0 );

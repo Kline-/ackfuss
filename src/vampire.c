@@ -247,7 +247,7 @@ void do_family( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
    DESCRIPTOR_DATA *d;
    bool found;
-   sh_int index;
+   short index;
 
    if( ch->level < 85 )
       if( !IS_VAMP( ch ) )

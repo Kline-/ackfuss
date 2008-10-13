@@ -188,7 +188,7 @@ bool spell_wraith_touch( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    send_to_char( "@@RYou are struck by a @@dwraithlike hand @@R!!@@N\n\r", victim );
    drain_mod = get_psuedo_level( ch ) * dam / 130;
    if( sp_damage( obj, ch, victim, dam, REALM_DRAIN | NO_REFLECT | NO_ABSORB, sn, TRUE ) )
-      ch->hit = UMIN( ch->max_hit, ( ch->hit + drain_mod ) );
+      ch->hit = UMIN( ch->max_hit, (int)( ch->hit + drain_mod ) );
    return TRUE;
 }
 

@@ -53,9 +53,9 @@ void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
    OBJ_INDEX_DATA *pObjIndex, *prevObjIndex;
    MOB_INDEX_DATA *pMobIndex, *prevMobIndex;
 
-   extern ROOM_INDEX_DATA *room_index_hash[];
-   extern OBJ_INDEX_DATA *obj_index_hash[];
-   extern MOB_INDEX_DATA *mob_index_hash[];
+   extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
+   extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
+   extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
 
    int iHash;
 
@@ -203,7 +203,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
        */
       for( pList = CurArea->first_area_room; pList != NULL; pList = pList->next )
       {
-         pRoomIndex = pList->data;
+         pRoomIndex = (ROOM_INDEX_DATA *)pList->data;
          if( pRoomIndex->vnum < min_vnum || pRoomIndex->vnum > max_vnum )
          {
             old_vnum = pRoomIndex->vnum;
@@ -239,7 +239,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
        */
       for( pList = CurArea->first_area_object; pList != NULL; pList = pList->next )
       {
-         pObjIndex = pList->data;
+         pObjIndex = (OBJ_INDEX_DATA *)pList->data;
          if( pObjIndex->vnum < min_vnum || pObjIndex->vnum > max_vnum )
          {
             old_vnum = pObjIndex->vnum;
@@ -275,7 +275,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
        */
       for( pList = CurArea->first_area_mobile; pList != NULL; pList = pList->next )
       {
-         pMobIndex = pList->data;
+         pMobIndex = (MOB_INDEX_DATA *)pList->data;
          if( pMobIndex->vnum < min_vnum || pMobIndex->vnum > max_vnum )
          {
             old_vnum = pMobIndex->vnum;
@@ -329,7 +329,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
          /*
           * Check keys and exits
           */
-         pRoomIndex = pList->data;
+         pRoomIndex = (ROOM_INDEX_DATA *)pList->data;
 
          for( a = 0; a <= 5; a++ )
          {

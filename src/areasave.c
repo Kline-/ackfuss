@@ -308,7 +308,7 @@ void build_save_mobs(  )
       Pointer = CurSaveArea->first_area_mobile;
    }
 
-   pMobIndex = Pointer->data;
+   pMobIndex = (MOB_INDEX_DATA *)Pointer->data;
    fprintf( SaveFile, "#%i\n", pMobIndex->vnum );
    fprintf( SaveFile, "%s~\n", pMobIndex->player_name );
    fprintf( SaveFile, "%s~\n", pMobIndex->short_descr );
@@ -326,7 +326,7 @@ void build_save_mobs(  )
 
 
    fprintf( SaveFile, "! %i %i %i %i %i %i %i\n",
-            pMobIndex->class,
+            pMobIndex->p_class,
             pMobIndex->clan, pMobIndex->race, pMobIndex->position, pMobIndex->skills, pMobIndex->cast, pMobIndex->def );
    fprintf( SaveFile, "| %i %i %i %i %i %i %i\n",
             pMobIndex->strong_magic,
@@ -380,7 +380,7 @@ void build_save_mobprogs(  )
       Pointer = CurSaveArea->first_area_mobprog;
    }
 
-   pItem = Pointer->data;
+   pItem = (MOBPROG_ITEM *)Pointer->data;
    pMobIndex = pItem->mob;
 
    fprintf( SaveFile, "M %i %s\n", pMobIndex->vnum, pItem->filename );
@@ -413,7 +413,7 @@ void build_save_objects(  )
       Pointer = CurSaveArea->first_area_object;
    }
 
-   pObject = Pointer->data;
+   pObject = (OBJ_INDEX_DATA *)Pointer->data;
 
    fprintf( SaveFile, "#%i\n", pObject->vnum );
    fprintf( SaveFile, "%s~\n", pObject->name );
@@ -513,7 +513,7 @@ void build_save_rooms(  )
       Pointer = CurSaveArea->first_area_room;
    }
 
-   pRoomIndex = Pointer->data;
+   pRoomIndex = (ROOM_INDEX_DATA *)Pointer->data;
 
    fprintf( SaveFile, "#%i\n", pRoomIndex->vnum );
    fprintf( SaveFile, "%s~\n", pRoomIndex->name );
@@ -603,7 +603,7 @@ void build_save_shops(  )
       Pointer = CurSaveArea->first_area_shop;
    }
 
-   pShop = Pointer->data;
+   pShop = (SHOP_DATA *)Pointer->data;
    fprintf( SaveFile, "%i ", pShop->keeper );
    for( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
       fprintf( SaveFile, "%i ", pShop->buy_type[iTrade] );
@@ -635,7 +635,7 @@ void build_save_specs(  )
       Pointer = CurSaveArea->first_area_specfunc;
    }
 
-   pMob = Pointer->data;
+   pMob = (MOB_INDEX_DATA *)Pointer->data;
 
    fprintf( SaveFile, "M %i ", pMob->vnum );
    fprintf( SaveFile, "%s\n", rev_spec_lookup( pMob->spec_fun ) );
@@ -666,7 +666,7 @@ void build_save_objfuns(  )
       Pointer = CurSaveArea->first_area_objfunc;
    }
 
-   pObj = Pointer->data;
+   pObj = (OBJ_INDEX_DATA *)Pointer->data;
 
    fprintf( SaveFile, "O %i ", pObj->vnum );
    fprintf( SaveFile, "%s\n", rev_obj_fun_lookup( pObj->obj_fun ) );

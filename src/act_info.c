@@ -54,7 +54,7 @@
 
 extern bool deathmatch;
 
-char *const where_name[] = {
+const char *where_name[] = {
    "                      ",  /* light  */
    "-*floating above*-    ",
    "-*enveloped by*-      ",
@@ -176,8 +176,8 @@ void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShow
    count = 0;
    for( obj = list; obj != NULL; obj = obj->next_in_carry_list )
       count++;
-   prgpstrShow = qgetmem( count * sizeof( char * ) );
-   prgnShow = qgetmem( count * sizeof( int ) );
+   prgpstrShow = (char **)qgetmem( count * sizeof( char * ) );
+   prgnShow = (int *)qgetmem( count * sizeof( int ) );
    nShow = 0;
 
    /*
@@ -280,8 +280,8 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
    count = 0;
    for( obj = list; obj != NULL; obj = obj->next_in_room )
       count++;
-   prgpstrShow = qgetmem( count * sizeof( char * ) );
-   prgnShow = qgetmem( count * sizeof( int ) );
+   prgpstrShow = (char **)qgetmem( count * sizeof( char * ) );
+   prgnShow = (int *)qgetmem( count * sizeof( int ) );
    nShow = 0;
 
    /*
@@ -864,7 +864,7 @@ void do_look( CHAR_DATA * ch, char *argument )
          if( ch->in_room->first_mark_list != NULL )
          {
             MARK_LIST_MEMBER *marks;
-            sh_int num_marks = 0;
+            short num_marks = 0;
 
             for( marks = ch->in_room->first_mark_list; marks != NULL; marks = marks->next )
 
@@ -2120,7 +2120,7 @@ void do_who( CHAR_DATA * ch, char *argument )
              || wch->level > iLevelUpper
              || ( fImmortalOnly && wch->level < LEVEL_HERO )
              || ( fadeptonly && ( ( wch->adept_level < 1 ) || wch->level >= LEVEL_HERO ) )
-             || ( fClassRestrict && !rgfClass[wch->class] )
+             || ( fClassRestrict && !rgfClass[wch->p_class] )
              || ( fremortonly && ( !is_remort( wch ) || ( wch->level >= LEVEL_HERO ) || ( wch->adept_level > 0 ) ) ) )
             continue;
 
@@ -2233,7 +2233,7 @@ void do_who( CHAR_DATA * ch, char *argument )
       for( d = first_desc; d != NULL; d = d->next )
       {
          CHAR_DATA *wch;
-         char const *class;
+         char const *p_class;
          /*
           * Check for match against restrictions.
           * Don't use trust as that exposes trusted mortals.
@@ -2260,7 +2260,7 @@ void do_who( CHAR_DATA * ch, char *argument )
              || wch->level > iLevelUpper
              || ( fImmortalOnly && wch->level < LEVEL_HERO )
              || ( fadeptonly && ( ( wch->adept_level < 1 ) || wch->level >= LEVEL_HERO ) )
-             || ( fClassRestrict && !rgfClass[wch->class] )
+             || ( fClassRestrict && !rgfClass[wch->p_class] )
              || ( fremortonly && ( !is_remort( wch ) || ( wch->level >= LEVEL_HERO ) || ( wch->adept_level > 0 ) ) ) )
 
             continue;
@@ -2332,10 +2332,10 @@ void do_who( CHAR_DATA * ch, char *argument )
          /*
           * Figure out what to print for class.
           */
-         class = class_table[wch->class].who_name;
+         p_class = class_table[wch->p_class].who_name;
 
          if( str_cmp( wch->pcdata->who_name, "off" ) )
-            class = wch->pcdata->who_name;
+            p_class = wch->pcdata->who_name;
          else
          {
             switch ( wch->level )
@@ -2343,19 +2343,19 @@ void do_who( CHAR_DATA * ch, char *argument )
                default:
                   break;
                case MAX_LEVEL - 0:
-                  class = "@@l-* CREATOR *-@@g ";
+                  p_class = "@@l-* CREATOR *-@@g ";
                   break;
                case MAX_LEVEL - 1:
-                  class = "@@B-= SUPREME =-@@g ";
+                  p_class = "@@B-= SUPREME =-@@g ";
                   break;
                case MAX_LEVEL - 2:
-                  class = "@@a--  DEITY  --@@g ";
+                  p_class = "@@a--  DEITY  --@@g ";
                   break;
                case MAX_LEVEL - 3:
-                  class = "@@c - IMMORTAL- @@g ";
+                  p_class = "@@c - IMMORTAL- @@g ";
                   break;
                case MAX_LEVEL - 4:
-                  class = "@@W    ADEPT  @@N   ";
+                  p_class = "@@W    ADEPT  @@N   ";
                   break;
             }
 
@@ -2373,19 +2373,19 @@ void do_who( CHAR_DATA * ch, char *argument )
                switch ( wch->level )
                {
                   case MAX_LEVEL - 0:
-                     xprintf( buf3, "@@l %s@@g", class );
+                     xprintf( buf3, "@@l %s@@g", p_class );
                      break;
                   case MAX_LEVEL - 1:
-                     xprintf( buf3, "@@B %s@@g", class );
+                     xprintf( buf3, "@@B %s@@g", p_class );
                      break;
                   case MAX_LEVEL - 2:
-                     xprintf( buf3, "@@a %s@@g", class );
+                     xprintf( buf3, "@@a %s@@g", p_class );
                      break;
                   case MAX_LEVEL - 3:
-                     xprintf( buf3, "@@c %s@@g", class );
+                     xprintf( buf3, "@@c %s@@g", p_class );
                      break;
                   default:
-                     xprintf( buf3, "@@W %s@@g", class );
+                     xprintf( buf3, "@@W %s@@g", p_class );
                      break;
                }
             }
@@ -2827,7 +2827,7 @@ void do_consider( CHAR_DATA * ch, char *argument )
     */
    if( !IS_NPC( victim ) )
    {
-      switch ( ch->class )
+      switch ( ch->p_class )
       {
          case 0:
             diff += 0.3;
@@ -3019,7 +3019,7 @@ void do_title( CHAR_DATA * ch, char *argument )
    }
    changed = FALSE;
 
-   for( cnt = 0; cnt < strlen( argument ); cnt++ )
+   for( cnt = 0; cnt < (int)strlen( argument ); cnt++ )
    {
       if( argument[cnt] == '[' || argument[cnt] == ']' )
       {
@@ -3113,14 +3113,14 @@ void do_practice( CHAR_DATA * ch, char *argument )
    int cnt;
    int sn;
    int ack;
-   int class;
+   int p_class;
 
    /*
     * Now need to check through ch->lvl[] to see if player's level in
     * * the required class is enough for him/her to be able to prac the
     * * skill/spell.  Eg if char is cle:10 and war:50, we don't want the
     * * player to be getting level 50 cleric spells, which would happen
-    * * if ch->class was used here! -S-
+    * * if ch->p_class was used here! -S-
     */
    buf[0] = '\0';
    buf1[0] = '\0';
@@ -3230,7 +3230,7 @@ void do_practice( CHAR_DATA * ch, char *argument )
          send_to_char( "You can't practice that.\n\r", ch );
          return;
       }
-      class = 0;
+      p_class = 0;
       ack = -1;
       ok = FALSE;
 
@@ -3243,7 +3243,7 @@ void do_practice( CHAR_DATA * ch, char *argument )
       }
       if( ( skill_table[sn].flag1 == ADEPT ) && ( ch->adept_level >= skill_table[sn].skill_level[0] ) )
       {
-         class = 0;
+         p_class = 0;
          ok = TRUE;
       }
       else
@@ -3255,7 +3255,7 @@ void do_practice( CHAR_DATA * ch, char *argument )
                if( ch->lvl[cnt] > ack )
                {
                   ack = ch->lvl[cnt];
-                  class = cnt;
+                  p_class = cnt;
                }
 
                ok = TRUE;
@@ -3266,7 +3266,7 @@ void do_practice( CHAR_DATA * ch, char *argument )
                if( ch->lvl2[cnt] > ack )
                {
                   ack = ch->lvl2[cnt];
-                  class = cnt;
+                  p_class = cnt;
                }
                ok = TRUE;
             }
@@ -3278,7 +3278,7 @@ void do_practice( CHAR_DATA * ch, char *argument )
          return;
       }
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
-         if( ch->pcdata->order[cnt] == class )
+         if( ch->pcdata->order[cnt] == p_class )
             break;
 
       adept = IS_NPC( ch ) ? 100 : ( 90 - ( cnt * 4 ) );
@@ -3320,6 +3320,7 @@ void do_wimpy( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    int wimpy;
+   extern bool deathmatch;
    if( deathmatch )
    {
       send_to_char( "Not during a @@eDeath MAtch@@N!!!\n\r", ch );
@@ -3534,7 +3535,7 @@ void do_socials( CHAR_DATA * ch, char *argument )
 struct show_cmds
 {
    char buf[MSL];
-   sh_int col;
+   short col;
 };
 
 static char *const cmd_group_names[] = {
@@ -3550,7 +3551,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
    char arg1[MSL];
    int cmd;
    int col = 0;
-   sh_int show_only = -1;
+   short show_only = -1;
 
 
    buf[0] = '\0';
@@ -3638,7 +3639,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
 
 struct chan_type
 {
-   sh_int bit;
+   short bit;
    int min_level;
    char *name;
    char *on_string;
@@ -3936,7 +3937,7 @@ void do_config( CHAR_DATA * ch, char *argument )
    else
    {
       bool fSet;
-      sh_int bit = 0;
+      short bit = 0;
       if( arg[0] == '+' )
          fSet = TRUE;
       else if( arg[0] == '-' )
@@ -4130,7 +4131,7 @@ void do_spells( CHAR_DATA * ch, char *argument )
 
    /*
     * if ( ( !IS_NPC( ch ) &&
-    * !class_table[ch->class].fMana )
+    * !class_table[ch->p_class].fMana )
     * ||  IS_NPC ( ch ) )
     */
    if( IS_NPC( ch ) )
@@ -4159,7 +4160,7 @@ void do_spells( CHAR_DATA * ch, char *argument )
          continue;
 
       /*
-       * if ( skill_table[sn].skill_level[ch->class] > LEVEL_HERO ) 
+       * if ( skill_table[sn].skill_level[ch->p_class] > LEVEL_HERO ) 
        * continue; 
        */
 
@@ -4181,7 +4182,7 @@ void do_slist( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
-   int class;
+   int p_class;
    int foo;
    int sn;
    int col;
@@ -4207,27 +4208,27 @@ void do_slist( CHAR_DATA * ch, char *argument )
    }
 
    any = FALSE;
-   class = -1;
+   p_class = -1;
    remort_class = FALSE;
    adept_class = FALSE;
    for( foo = 0; foo < MAX_CLASS; foo++ )
       if( !str_cmp( class_table[foo].who_name, argument ) )
       {
          any = TRUE;
-         class = foo;
+         p_class = foo;
 
       }
       else if( !str_cmp( remort_table[foo].who_name, argument ) )
       {
          any = TRUE;
-         class = foo;
+         p_class = foo;
          remort_class = TRUE;
       }
       else if( !str_prefix( "ADEPT", argument ) )
       {
          any = TRUE;
          adept_class = TRUE;
-         class = 0;
+         p_class = 0;
       }
 
    if( !any )
@@ -4248,14 +4249,14 @@ void do_slist( CHAR_DATA * ch, char *argument )
    else if( remort_class )
    {
       xcat( buf1, "@@m" );
-      xcat( buf1, remort_table[class].class_name );
+      xcat( buf1, remort_table[p_class].class_name );
       xcat( buf1, "@@N\n\r\n\r" );
    }
    else
 
    {
       xcat( buf1, "@@b" );
-      xcat( buf1, class_table[class].class_name );
+      xcat( buf1, class_table[p_class].class_name );
       xcat( buf1, "@@N\n\r\n\r" );
    }
 
@@ -4272,7 +4273,7 @@ void do_slist( CHAR_DATA * ch, char *argument )
       {
          if( skill_table[sn].name == NULL )
             break;
-         if( ( skill_table[sn].skill_level[class] != level )
+         if( ( skill_table[sn].skill_level[p_class] != level )
              || ( skill_table[sn].flag2 == VAMP ) || ( skill_table[sn].flag2 == WOLF ) )
             continue;
          if( ( adept_class ) && ( skill_table[sn].flag1 == ADEPT ) )
@@ -4293,8 +4294,8 @@ void do_slist( CHAR_DATA * ch, char *argument )
                xprintf( buf, "@@m%18s@@N", skill_table[sn].name );
                xcat( buf1, buf );
             }
-            else if( skill_table[sn].skill_level[class] >
-                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[class] : ch->lvl[class] ) )
+            else if( skill_table[sn].skill_level[p_class] >
+                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                xprintf( buf, "@@d%18s@@N", skill_table[sn].name );
                xcat( buf1, buf );
@@ -4325,8 +4326,8 @@ void do_slist( CHAR_DATA * ch, char *argument )
                xprintf( buf, "@@x@@m%18s@@N", skill_table[sn].name );
                xcat( buf1, buf );
             }
-            else if( skill_table[sn].skill_level[class] >
-                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[class] : ch->lvl[class] ) )
+            else if( skill_table[sn].skill_level[p_class] >
+                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                xprintf( buf, "@@d%18s@@N", skill_table[sn].name );
                xcat( buf1, buf );
@@ -4357,8 +4358,8 @@ void do_slist( CHAR_DATA * ch, char *argument )
                xprintf( buf, "@@x@@m%18s@@N", skill_table[sn].name );
                xcat( buf1, buf );
             }
-            else if( skill_table[sn].skill_level[class] >
-                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[class] : ch->lvl[class] ) )
+            else if( skill_table[sn].skill_level[p_class] >
+                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                xprintf( buf, "@@d%18s@@N", skill_table[sn].name );
                xcat( buf1, buf );
@@ -4804,11 +4805,11 @@ void do_gain( CHAR_DATA * ch, char *argument )
    bool adept = FALSE;
    bool wolf = FALSE;
    int vamp_cost = 0;
-   sh_int morts_at_seventy = 0;
-   sh_int remorts_at_seventy = 0;
-   sh_int morts_at_eighty = 0;
-   sh_int remorts_at_eighty = 0;
-   sh_int num_remorts = 0;
+   short morts_at_seventy = 0;
+   short remorts_at_seventy = 0;
+   short morts_at_eighty = 0;
+   short remorts_at_eighty = 0;
+   short num_remorts = 0;
    bool allow_remort = FALSE;
    bool allow_adept = FALSE;
 

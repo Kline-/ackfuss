@@ -182,7 +182,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  }
  else if( !str_prefix(arg1,"hint") )
  {
-  sh_int hint = 0;
+  short hint = 0;
 
   if( !ch->pcdata->quest_info->is_questing )
   {
@@ -270,7 +270,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  else if( !str_prefix(arg1,"complete") )
  {
   CHAR_DATA *mob;
-  sh_int i = 0, x = 0;
+  short i = 0, x = 0;
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    if( IS_NPC(mob) && is_set(mob->pIndexData->act,ACT_QUESTMASTER) )
@@ -360,7 +360,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
 {
  CHAR_DATA *victim;
  char buf[MSL];
- sh_int i = 0;
+ short i = 0;
 
  if( argument[0] == '\0' )
  {
@@ -473,7 +473,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
 void mquest_info( CHAR_DATA *ch )
 {
  char buf[MSL];
- sh_int i =0 ;
+ short i =0 ;
 
  switch( ch->pcdata->quest_info->quest_type )
  {
@@ -619,7 +619,8 @@ void mquest_info( CHAR_DATA *ch )
 void mquest_complete_message( CHAR_DATA *ch )
 {
  char buf[MSL];
- sh_int hint = 0, i;
+ short hint = 0, i = 0;
+ float tmp = 0;
 
  if( IS_NPC(ch) )
   return;
@@ -637,9 +638,15 @@ void mquest_complete_message( CHAR_DATA *ch )
 
   while( hint > 0 )
   {
-   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] *= 0.90;
-   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] *= 0.90;
-   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] *= 0.90;
+   tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
+   tmp *= 0.90;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = (int)tmp;
+   tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD];
+   tmp *= 0.90;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = (int)tmp;
+   tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP];
+   tmp *= 0.90;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = (int)tmp;
    hint--;
   }
 
@@ -675,9 +682,9 @@ void mquest_complete_message( CHAR_DATA *ch )
 
 void mquest_calc_rewards( CHAR_DATA *ch )
 {
- sh_int clev, tot_amt, tot_tsk;
+ short clev, tot_amt, tot_tsk;
  int exp;
- float mod = 1.00;
+ float mod = 1.00, tmp = 0;
 
  if( IS_NPC(ch) )
   return;
@@ -686,20 +693,20 @@ void mquest_calc_rewards( CHAR_DATA *ch )
  tot_tsk = 0;
  clev = get_psuedo_level(ch);
  exp = (exp_mob_base(clev) * sysdata.killperlev);
- exp = number_range(exp * 0.04,exp * 0.08);
+ exp = number_range((int)(exp * 0.04),(int)(exp * 0.08));
 
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = number_range(clev / 40,clev / 20);
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range(clev * 15,clev * 30);
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = number_range((int)(clev / 40),(int)(clev / 20));
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range((int)(clev * 15),(int)(clev * 30));
 
  if( is_adept(ch) )
-  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range(exp_to_level_adept(ch) * 0.04,exp_to_level_adept(ch) * 0.08);
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range((int)(exp_to_level_adept(ch) * 0.04),(int)(exp_to_level_adept(ch) * 0.08));
  else
   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = exp;
 
  /* Add some randomness */
  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] += number_range(-1,1);
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 0.9,ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 1.1);
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 0.9,ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 1.1);
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range((int)(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 0.9),(int)(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 1.1));
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range((int)(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 0.9),(int)(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 1.1));
 
  for( tot_tsk = 0; tot_tsk < QUEST_MAX_DATA; tot_tsk++ )
  {
@@ -746,17 +753,31 @@ void mquest_calc_rewards( CHAR_DATA *ch )
   return;
  }
 
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] *= mod;
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] *= mod;
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] *= mod;
+ tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
+ tmp *= mod;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = (int)tmp;
+ tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD];
+ tmp *= mod;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = (int)tmp;
+ tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP];
+ tmp *= mod;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = (int)tmp;
        
  /* Bonus! */
  if( number_percent() < 5 )
   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] += 2;
  if( number_percent() < 5 )
-  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] *= 1.5;
+ {
+  tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD];
+  tmp *= 1.5;
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = (int)tmp;
+ }
  if( number_percent() < 5 )
-  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] *= 1.5;
+ {
+  tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP];
+  tmp *= 1.5;
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = (int)tmp;
+ }
 
  /* No negative rewards */
  if( ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] < 0 )
@@ -804,10 +825,10 @@ void mquest_clear( CHAR_DATA *ch, bool error )
 void generate_killing_quest( CHAR_DATA *ch )
 {
  CHAR_DATA *mob;
- sh_int max, i, x;
+ short max, i, x;
  bool redo = FALSE, race = FALSE;
- sh_int min_lev, max_lev;
- sh_int clev;
+ short min_lev, max_lev;
+ short clev;
 
  if( IS_NPC(ch) )
   return;
@@ -816,8 +837,8 @@ void generate_killing_quest( CHAR_DATA *ch )
   race = TRUE;
 
  clev = get_psuedo_level(ch);
- min_lev = (clev * 0.7);
- max_lev = (clev * 1.1);
+ min_lev = (int)(clev * 0.7);
+ max_lev = (int)(clev * 1.1);
 
  if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL || ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R )
   max = number_range(3,5);
@@ -946,17 +967,17 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
 void generate_retrieval_quest( CHAR_DATA *ch )
 {
  OBJ_DATA *obj;
- sh_int max, i, x;
+ short max, i, x;
  bool redo=FALSE;
- sh_int min_lev, max_lev;
- sh_int clev;
+ short min_lev, max_lev;
+ short clev;
  
  if( IS_NPC(ch) )
   return;
 
  clev = get_psuedo_level(ch);
- min_lev = (clev * 0.7);
- max_lev = (clev * 1.1);
+ min_lev = (int)(clev * 0.7);
+ max_lev = (int)(clev * 1.1);
 
  if(ch->pcdata->quest_info->quest_type == QUEST_MULTI_RETRIEVE )
   max = number_range(3,5);
@@ -1092,7 +1113,7 @@ char *display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
   return "";
  if( ch->pcdata->quest_info->is_questing && (ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL || ch->pcdata->quest_info->quest_type == QUEST_KILLING) )
  {
-  sh_int i = 0;
+  short i = 0;
 
   /* Ugly to workaround same-descr mobs with different vnums for repop purposes */
   for( i = 0; i < QUEST_MAX_DATA; i++ )
@@ -1105,7 +1126,7 @@ char *display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
  }
  if( ch->pcdata->quest_info->is_questing && (ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R || ch->pcdata->quest_info->quest_type == QUEST_KILLING_R) )
  {
-  sh_int i = 0;
+  short i = 0;
 
   for( i = 0; i < QUEST_MAX_DATA; i++ )
    if( ch->pcdata->quest_info->quest_mob_vnum[i] > -1
@@ -1123,7 +1144,7 @@ char *display_obj_target( CHAR_DATA *ch, OBJ_DATA *obj )
   return "";
  if( ch->pcdata->quest_info->is_questing && (ch->pcdata->quest_info->quest_type == QUEST_MULTI_RETRIEVE || ch->pcdata->quest_info->quest_type == QUEST_RETRIEVAL) )
  {
-  sh_int i = 0;
+  short i = 0;
 
   for( i = 0; i < QUEST_MAX_DATA; i++ )
    if( ch->pcdata->quest_info->quest_item_vnum[i] > -1
@@ -1149,7 +1170,7 @@ void update_mquest_wait_time( CHAR_DATA *ch )
 
 void update_mquest_kill( CHAR_DATA *ch, CHAR_DATA *victim )
 {
- sh_int i, tot = 0;
+ short i, tot = 0;
 
  if( IS_NPC(ch) || !IS_NPC(victim) )
   return;

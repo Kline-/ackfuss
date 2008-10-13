@@ -79,7 +79,7 @@ extern int fBootDb;
 /* Some build.c functions : */
 void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA * ch );
 char *build_simpstrdup( char * );
-ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, sh_int vnum, sh_int sector );
+ROOM_INDEX_DATA *new_room( AREA_DATA * pArea, short vnum, short sector );
 
 
 int build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
@@ -935,7 +935,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          if( pArea->first_area_room != NULL )
-            pRoomIndex = pArea->first_area_room->data;
+            pRoomIndex = (ROOM_INDEX_DATA *)pArea->first_area_room->data;
          xprintf( buf, "[%5d] %s\n\r", pArea->first_area_room != NULL ? pRoomIndex->vnum : 0, pArea->name );
          xcat( buf1, buf );
       }
@@ -1021,7 +1021,7 @@ void build_arealist( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char msg[MAX_STRING_LENGTH];
    AREA_DATA *pArea;
-   sh_int stop_counter = 0;
+   short stop_counter = 0;
 
    buf[0] = '\0';
    xprintf( msg, "%s", "Areas of " mudnamecolor ":\n\r" );

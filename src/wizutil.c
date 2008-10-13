@@ -90,7 +90,7 @@ the /pub/pip1773 directory.
 extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];   /* db.c */
 
 /* opposite directions */
-const sh_int opposite_dir[6] = { DIR_SOUTH, DIR_WEST, DIR_NORTH, DIR_EAST, DIR_DOWN, DIR_UP };
+const short opposite_dir[6] = { DIR_SOUTH, DIR_WEST, DIR_NORTH, DIR_EAST, DIR_DOWN, DIR_UP };
 
 
 /* get the 'short' name of an area (e.g. MIDGAARD, MIRROR etc. */
