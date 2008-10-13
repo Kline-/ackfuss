@@ -98,7 +98,7 @@ o/quest.o: quest.c globals.h typedefs.h config.h ack.h utils.h lists.h \
 o/rulers.o: rulers.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h tables.h
 o/save.o: save.c globals.h typedefs.h config.h ack.h utils.h lists.h \
-  strfuns.h mquest.h imc.h imccfg.h hash.h money.h
+  strfuns.h mquest.h imc.h imccfg.h hash.h h/act_obj.h money.h
 o/scheck.o: scheck.c globals.h typedefs.h config.h ack.h utils.h lists.h \
   strfuns.h mquest.h imc.h imccfg.h tables.h ssm.h
 o/social-edit.o: social-edit.c globals.h typedefs.h config.h ack.h utils.h \

@@ -202,9 +202,9 @@ bool check_level_use( CHAR_DATA * ch, int level )
 
 
 
-long_int exp_to_level_adept( CHAR_DATA * ch )
+int exp_to_level_adept( CHAR_DATA * ch )
 {
-   long_int exp;
+   int exp;
 
    exp = ( 30000 + ( ch->adept_level * 5000 ) );
    exp = UMAX( exp, exp * ch->adept_level / 2 );
@@ -213,7 +213,7 @@ long_int exp_to_level_adept( CHAR_DATA * ch )
 
 
 
-long_int exp_to_level( CHAR_DATA * ch, int p_class, int index )
+int exp_to_level( CHAR_DATA * ch, int p_class, int index )
 {
  /*
   * To get remort costs, call with index == 5 
@@ -298,7 +298,7 @@ long_int exp_to_level( CHAR_DATA * ch, int p_class, int index )
   */
  cost /= 5.4;
 
- return (long_int)cost;
+ return (int)cost;
 }
 
 int exp_to_level_vamp( int level )
@@ -387,7 +387,7 @@ int exp_to_level_wolf( int level )
 
 }
 
-long_int exp_mob_base( int level )
+int exp_mob_base( int level )
 {
  float value = 0;
  short i = 0;
@@ -401,10 +401,10 @@ long_int exp_mob_base( int level )
  if( value < 1 )
   value = 100;
 
- return (long_int)value;
+ return (int)value;
 }
 
-long_int exp_for_mobile( int level, CHAR_DATA * mob )
+int exp_for_mobile( int level, CHAR_DATA * mob )
 {
 
    float value, base_value = 0;
@@ -498,7 +498,7 @@ long_int exp_for_mobile( int level, CHAR_DATA * mob )
 
 
 
-   return (long_int)value;
+   return (int)value;
 }
 
 

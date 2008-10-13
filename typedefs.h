@@ -74,7 +74,6 @@
 #define DECLARE_OBJ_FUN( fun )          OBJ_FUN   fun
 #endif
 
-
 /*
  * Short scalar types.
  * Diavolo reports AIX compiler has bugs with short types.
@@ -91,6 +90,11 @@
 #define TRUE     1
 #endif
 
+#ifndef __cplusplus
+typedef int bool;
+char *crypt args( ( const char *key, const char *salt ) );
+#endif
+
 #if     defined(_AIX)
 #if     !defined(const)
 #define const
@@ -98,7 +102,6 @@
 #define unix
 #else
 #endif
-typedef int long_int;
 
 /*
  * OS-dependent declarations.
@@ -247,6 +250,9 @@ typedef struct super_data SUPER_DATA;
 typedef struct fight_data FIGHT_DATA;
 typedef struct record_data RECORD_DATA;
 typedef struct quest_info QUEST_INFO;
+typedef struct eq_type EQ_TYPE;
+typedef struct h_queue H_QUEUE;
+typedef struct social_type SOCIAL_TYPE;
 
 /*
  * Function types.

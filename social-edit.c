@@ -55,9 +55,9 @@
 int maxSocial; /* max number of socials */
 
 #ifndef CONST_SOCIAL
-struct social_type *social_table;   /* and social table */
+SOCIAL_TYPE *social_table;   /* and social table */
 
-void load_social( FILE * fp, struct social_type *social )
+void load_social( FILE * fp, SOCIAL_TYPE *social )
 {
    social->name = fread_string( fp );
    social->char_no_arg = fread_string( fp );
@@ -91,7 +91,7 @@ void load_social_table(  )
     * IMPORTANT to use malloc so we can realloc later on 
     */
 
-   social_table = (social_type *)malloc( sizeof( struct social_type ) * ( maxSocial + 1 ) );
+   social_table = (SOCIAL_TYPE *)malloc( sizeof( SOCIAL_TYPE ) * ( maxSocial + 1 ) );
 
    for( i = 0; i < maxSocial; i++ )
       load_social( fp, &social_table[i] );
@@ -109,7 +109,7 @@ void load_social_table(  )
 
 #endif /* CONST_SOCIAL */
 
-void save_social( const struct social_type *s, FILE * fp )
+void save_social( const SOCIAL_TYPE *s, FILE * fp )
 {
    /*
     * get rid of (null) 
@@ -202,7 +202,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
    if( !str_cmp( cmd, "delete" ) )  /* Remove a social */
    {
       int i, j;
-      struct social_type *new_table = (social_type *)malloc( sizeof( struct social_type ) * maxSocial );
+      SOCIAL_TYPE *new_table = (SOCIAL_TYPE *)malloc( sizeof( SOCIAL_TYPE ) * maxSocial );
 
       if( !new_table )
       {
@@ -231,7 +231,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
 
    else if( !str_cmp( cmd, "new" ) )   /* Create a new social */
    {
-      struct social_type *new_table;
+      SOCIAL_TYPE *new_table;
 
       if( iSocial != -1 )
       {
@@ -247,7 +247,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
        */
 
       maxSocial++;
-      new_table = (social_type *)realloc( social_table, sizeof( struct social_type ) * maxSocial + 1 );
+      new_table = (SOCIAL_TYPE *)realloc( social_table, sizeof( SOCIAL_TYPE ) * maxSocial + 1 );
 
       if( !new_table )  /* realloc failed */
       {

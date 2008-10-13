@@ -63,7 +63,6 @@ extern MARK_LIST_MEMBER *last_mark_list;
 extern CONTROL_LIST *first_control_list;
 extern CONTROL_LIST *last_control_list;
 extern QUEUED_INTERACT_LIST *first_queued_interact;
-extern QUEUED_INTERACT_LIST *first_queued_interact;
 extern INFLUENCE_LIST *first_influence_list;
 extern INFLUENCE_LIST *last_influence_list;
 extern RULER_LIST *first_ruler_list;

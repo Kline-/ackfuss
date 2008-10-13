@@ -1083,7 +1083,7 @@ LOOKUP_TYPE tab_mob_race_mods[] = {
 
 };
 
-eq_type tab_auto_obj[] = {
+EQ_TYPE tab_auto_obj[] = {
  /*              ac    dr    hp    hr    mp    mv   svs */
  {"halo",         0, 0.12,    0, 0.12, 0.20,    0, 0.20},
  {"aura",         0,    0,    0,    0,    0,    0, 0.40},

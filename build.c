@@ -106,12 +106,6 @@ int RevDirs[] = { 2, 3, 0, 1, 5, 4 };
 #define L_ANG           L_DEI - 1
 #define L_HER           L_ANG - 1
 
-
-/*
- * Log-all switch.
- */
-extern bool fLogAll;
-
 /* -S- Additions */
 DECLARE_DO_FUN( build_set_medit );
 DECLARE_DO_FUN( build_set_oedit );
@@ -265,10 +259,6 @@ void build_finishedstr( char *orig, char **dest, CHAR_DATA * ch, bool saved );
 
 
 /* Variables declared in db.c, which we need */
-
-extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
-extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
-extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
 extern char *string_hash[MAX_KEY_HASH];
 
 extern char *string_space;
@@ -287,8 +277,6 @@ extern int top_shop;
 
 extern AREA_DATA *area_last;
 extern AREA_DATA *area_first;
-extern SHOP_DATA *first_shop;
-extern SHOP_DATA *last_shop;
 #define                 MAX_PERM_BLOCK  131072
 extern int nAllocString;
 extern int sAllocString;

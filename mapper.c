@@ -560,7 +560,6 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
    CHAR_DATA *victim;
    int door, looper;
    short door_type = 0;
-   extern short const rev_dir[];
    if( map[x][y] <= 0 )
       return;  /* it's a door, not a room in the map */
 
@@ -588,6 +587,7 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
             return;
 
          prospect_room = pexit->to_room;
+         extern short rev_dir[];
          if( ( prospect_room->exit[rev_dir[door]] ) && ( prospect_room->exit[rev_dir[door]]->to_room != room ) )
          {  /* if not two way */
             map[x][y] = SECT_BLOCKED;  /* one way into area OR maze */
@@ -641,7 +641,6 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
 
 void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
 {
-   void disp_map( char *border, char *map, CHAR_DATA * ch );
    int x, y, looper;
    char outbuf[MSL];
    char catbuf[MSL];

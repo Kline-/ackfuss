@@ -61,11 +61,19 @@
 /* from areasave.c */
 char *mprog_type_to_name( int );
 
+extern int top_mob_index;
+extern int top_obj_index;
+extern bool merc_down;
+extern int saving_area;
+extern bool deathmatch;
+extern bool wizlock;
+extern OBJ_DATA *auction_item;
+extern bool disable_timer_abort;
+
 void do_transdm( CHAR_DATA * ch, char *argument )
 {
    CHAR_DATA *wch;
    int room;
-   extern bool deathmatch;
    char buf[MAX_STRING_LENGTH];
    ROOM_INDEX_DATA *location;
 
@@ -1090,7 +1098,6 @@ void do_olmsg( CHAR_DATA * ch, char *argument )
 
 void do_ofindlev( CHAR_DATA * ch, char *argument )
 {
-   extern int top_obj_index;
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1174,7 +1181,6 @@ void do_ofindlev( CHAR_DATA * ch, char *argument )
 
 void do_mfind( CHAR_DATA * ch, char *argument )
 {
-   extern int top_mob_index;
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1231,7 +1237,6 @@ void do_mfind( CHAR_DATA * ch, char *argument )
 
 void do_mfindlev( CHAR_DATA * ch, char *argument )
 {
-   extern int top_mob_index;
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1310,7 +1315,6 @@ void do_mfindlev( CHAR_DATA * ch, char *argument )
 
 void do_ofind( CHAR_DATA * ch, char *argument )
 {
-   extern int top_obj_index;
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1432,8 +1436,6 @@ void do_reboo( CHAR_DATA * ch, char *argument )
 void do_reboot( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
-   extern bool merc_down;
-   extern int saving_area;
 
    build_save_flush(  );
 
@@ -1462,8 +1464,6 @@ void do_shutdow( CHAR_DATA * ch, char *argument )
 void do_shutdown( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
-   extern bool merc_down;
-   extern int saving_area;
 
    build_save_flush(  );
 
@@ -2347,7 +2347,6 @@ void do_deathmatch( CHAR_DATA * ch, char *argument )
     * * Only allow HIGHEST level imms to use...
     */
 
-   extern bool deathmatch;
    deathmatch = !deathmatch;
 
 
@@ -2383,7 +2382,6 @@ void do_deathmatch( CHAR_DATA * ch, char *argument )
 void do_wizlock( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_INPUT_LENGTH];
-   extern bool wizlock;
    wizlock = !wizlock;
    sysdata.w_lock = wizlock;
    save_sysdata(  );
@@ -3895,7 +3893,6 @@ void do_owhere( CHAR_DATA * ch, char *argument )
    OBJ_DATA *obj;
    OBJ_DATA *in_obj;
    int obj_counter = 1;
-   extern OBJ_DATA *auction_item;
    bool mailme = FALSE;
    if( is_name( "mailme", argument ) )
       mailme = TRUE;
@@ -4097,8 +4094,6 @@ void do_iscore( CHAR_DATA * ch, char *argument )
     */
 
    char buf[MAX_STRING_LENGTH];
-   extern bool deathmatch;
-   extern bool wizlock;
 
    xprintf( buf, "(wiz) Invis: %s   Holylight: %s\n\r",
             is_set( ch->act, ACT_WIZINVIS ) ? "YES" : "NO ", is_set( ch->act, ACT_HOLYLIGHT ) ? "YES" : "NO " );
@@ -5461,8 +5456,6 @@ void do_for( CHAR_DATA * ch, char *argument )
    CHAR_DATA *p, *p_next;
    int i;
 
-   extern bool disable_timer_abort;
-
    disable_timer_abort = TRUE;
 
    argument = one_argument( argument, range );
@@ -5629,7 +5622,6 @@ void do_for( CHAR_DATA * ch, char *argument )
 
 void do_otype( CHAR_DATA * ch, char *argument )
 {
-   extern int top_obj_index;
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -5691,7 +5683,6 @@ void do_otype( CHAR_DATA * ch, char *argument )
 
 void do_owear( CHAR_DATA * ch, char *argument )
 {
-   extern int top_obj_index;
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];

@@ -39,6 +39,10 @@
 #include "globals.h"
 #include "hash.h"
 
+#ifndef DEC_ACT_OBJ_H
+#include "h/act_obj.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -135,7 +139,6 @@ void save_char_obj( CHAR_DATA * ch )
    char strsave[MAX_INPUT_LENGTH];
    char tempstrsave[MAX_INPUT_LENGTH]; /* Hold temp filename here.. */
    char buf[MAX_INPUT_LENGTH];   /* hold misc stuff here.. */
-   extern int loop_counter;
    FILE *fp;
    char *nmptr, *bufptr;
 
@@ -1503,7 +1506,6 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
    bool fNest;
    bool fVnum;
    int Temp_Obj = 0, OldVnum = 0;
-   extern int cur_revision;
 
    GET_FREE( obj, obj_free );
    *obj = obj_zero;
@@ -1833,29 +1835,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                   KEY( "WearLoc", obj->wear_loc, fread_number( fp ) );
                }
             }
-            if( !str_cmp( word, "WearFlags" ) )
-            {
-               if( cur_revision < UPGRADE_REVISION )
-               {
-                  int temp_flags, index, new_flags = 0;
-                  extern const int convert_wearflags[];
-                  temp_flags = fread_number( fp );
-                  for( index = 0; index < 32; index++ )
-                  {
-                     if( IS_SET( temp_flags, ( 1 << index ) ) )
-                     {
-                        SET_BIT( new_flags, convert_wearflags[index] );
-                     }
-                  }
-                  obj->wear_flags = new_flags;
-                  fMatch = TRUE;
-                  break;
-               }
-               else
-               {
-                  KEY( "WearFlags", obj->wear_flags, fread_number( fp ) );
-               }
-            }
+            KEY( "WearFlags", obj->wear_flags, fread_number( fp ) );
             KEY( "Weight", obj->weight, fread_number( fp ) );
             break;
 

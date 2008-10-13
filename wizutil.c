@@ -86,9 +86,6 @@ the /pub/pip1773 directory.
 
 #define NUL '\0'
 
-
-extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];   /* db.c */
-
 /* opposite directions */
 const short opposite_dir[6] = { DIR_SOUTH, DIR_WEST, DIR_NORTH, DIR_EAST, DIR_DOWN, DIR_UP };
 

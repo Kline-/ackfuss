@@ -1357,6 +1357,13 @@ struct quest_info
  short wait_time;
 };
 
+struct h_queue
+{
+   struct h_queue *next;
+   ROOM_INDEX_DATA *room;
+   short dir;
+};
+
 struct eq_type
 {
  char *const name;

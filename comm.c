@@ -100,6 +100,7 @@ bool god;   /* All new chars are gods!      */
 bool merc_down;   /* Shutdown                     */
 bool wizlock;  /* Game is wizlocked            */
 extern bool deathmatch;  /* Deathmatch happening?        */
+extern bool disable_timer_abort;
 char str_boot_time[MAX_INPUT_LENGTH];
 time_t current_time; /* Time of this pulse           */
 
@@ -246,7 +247,6 @@ int main( int argc, char **argv )
 #endif
    if( fCopyOver )
    {
-      extern bool disable_timer_abort;
       disable_timer_abort = TRUE;
       copyover_recover(  );
       disable_timer_abort = FALSE;
@@ -1005,7 +1005,6 @@ void read_from_buffer( DESCRIPTOR_DATA * d )
  */
 bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
 {
-   extern bool merc_down;
 
    /*
     * Bust a prompt.
@@ -3063,7 +3062,6 @@ bool check_parse_name( char *name )
     * Prevent players from naming themselves after mobs.
     */
    {
-      extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];
       MOB_INDEX_DATA *pMobIndex;
       int iHash;
 
@@ -3612,8 +3610,6 @@ void do_hotreboo( CHAR_DATA * ch, char *argument )
    return;
 }
 
-extern int port, control;  /* db.c */
-
 void do_hotreboot( CHAR_DATA * ch, char *argument )
 {
    FILE *fp;
@@ -3730,9 +3726,8 @@ void copyover_recover(  )
    char host[MSL];
    int desc;
    bool fOld;
-   extern bool disable_timer_abort;
-   log_f( "Copyover recovery initiated" );
    disable_timer_abort = TRUE;
+   log_f( "Copyover recovery initiated" );
    fp = fopen( COPYOVER_FILE, "r" );
 
    if( !fp )   /* there are some descriptors open which will hang forever then ? */

@@ -59,8 +59,22 @@
 extern POL_DATA politics_data;
 extern OBJ_DATA *quest_object;
 extern CHAR_DATA *quest_mob;
-
 extern COUNCIL_DATA super_councils[MAX_SUPER];
+extern int ssm_dup_count;
+extern int ssm_loops;
+extern int ssm_recent_loops;
+extern OBJ_DATA *auction_item;
+extern CHAR_DATA *auction_owner;
+extern CHAR_DATA *auction_bidder;
+extern int auction_bid;
+extern int auction_reserve;
+extern int auction_stage;
+extern int saving_area;
+extern bool auction_flop;
+extern bool auto_quest;
+extern bool quest;
+extern int quest_timer;
+extern int quest_wait;
 
 /*
  * Local functions.
@@ -101,8 +115,6 @@ int get_user_seconds(  )
 /* Update the checkpoint */
 void alarm_update(  )
 {
-   extern int ssm_dup_count;
-   extern int ssm_loops;
    char *strtime;
    char buf[MSL];
 
@@ -158,9 +170,6 @@ void alarm_handler( int signo )
        * For the log file 
        */
       char buf[MAX_STRING_LENGTH];
-      extern int ssm_dup_count;
-      extern int ssm_loops;
-      extern int ssm_recent_loops;
 
       /*
        * spec: log usage values 
@@ -319,7 +328,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
 
 
 
-void gain_exp( CHAR_DATA * ch, long_int gain )
+void gain_exp( CHAR_DATA * ch, int gain )
 {
    /*
     * Not much happens here, as no-longer auto-level... -S- 
@@ -1720,10 +1729,8 @@ void objfun_update( void )
  */
 void obj_update( void )
 {
-
    OBJ_DATA *marker;
    OBJ_DATA *obj;
-   extern OBJ_DATA *auction_item;
 
    /*
     * Create dummy object and add to end of list.  This object is
@@ -2067,8 +2074,6 @@ void update_handler( void )
    static int pulse_combat;
    static int pulse_point;
    static int pulse_auction;
-   extern int saving_area;
-   extern bool auction_flop;
 
    if( saving_area )
       build_save(  );   /* For incremental area saving */
@@ -2438,12 +2443,6 @@ bool check_re_equip( CHAR_DATA * ch )
 
 void auction_update( void )
 {
-   extern OBJ_DATA *auction_item;
-   extern CHAR_DATA *auction_owner;
-   extern CHAR_DATA *auction_bidder;
-   extern int auction_bid;
-   extern int auction_reserve;
-   extern int auction_stage;
    char buf[MAX_STRING_LENGTH];
 
    CHAR_DATA *ach;
@@ -2661,13 +2660,6 @@ void remember_attack( CHAR_DATA * ch, CHAR_DATA * victim )
 
 void quest_update(  )
 {
-   extern bool auto_quest;
-   extern bool quest;
-   extern CHAR_DATA *quest_mob;
-   extern OBJ_DATA *quest_object;
-   extern int quest_timer;
-   extern int quest_wait;
-
    if( !quest && !auto_quest )
       return;
 

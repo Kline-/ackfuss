@@ -47,14 +47,21 @@
 #include "money.h"
 #endif
 
-extern int top_mob_index;
-
 /**** Local Functions ****/
 CHAR_DATA *get_quest_target args( ( int min_level, int max_level ) );
 CHAR_DATA *get_quest_giver args( ( int min_level, int max_level ) );
 OBJ_DATA *load_quest_object args( ( CHAR_DATA * target ) );
 void clear_quest args( ( void ) );
 
+extern CHAR_DATA *quest_mob;
+extern CHAR_DATA *quest_target;
+extern OBJ_DATA *quest_object;
+extern int quest_wait;
+extern int quest_timer;
+extern short quest_personality;
+extern bool auto_quest;
+extern bool quest;
+extern int top_mob_index;
 
 /* 17 messages, organised by blocks for each personality 
    indented messages are for when the target mob gets killed  */
@@ -65,7 +72,7 @@ struct qmessage_type
 };
 
 
-extern const struct qmessage_type qmessages[4][17] = {
+const struct qmessage_type qmessages[4][17] = {
    {
     {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
     {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""}, {"", ""},
@@ -194,14 +201,6 @@ extern const struct qmessage_type qmessages[4][17] = {
 
 void do_quest( CHAR_DATA * ch, char *argument )
 {
-   extern bool quest;
-   extern bool auto_quest;
-   extern CHAR_DATA *quest_mob;
-   extern CHAR_DATA *quest_target;
-   extern OBJ_DATA *quest_object;
-   extern int quest_timer;
-   extern int quest_wait;
-
    char buf[MAX_STRING_LENGTH];
    char new_long_desc[MAX_STRING_LENGTH];
 
@@ -533,14 +532,6 @@ CHAR_DATA *get_quest_giver( int min_level, int max_level )
 void quest_inform( void )
 {
    char buf[MAX_STRING_LENGTH];
-   extern CHAR_DATA *quest_mob;
-   extern CHAR_DATA *quest_target;
-   extern OBJ_DATA *quest_object;
-   extern int quest_timer;
-   extern short quest_personality;
-   extern const struct qmessage_type qmessages[4][17];
-
-
 
    /*
     * Work out what the mob should tell the players.... 
@@ -580,12 +571,6 @@ void quest_inform( void )
 
 void quest_complete( CHAR_DATA * ch )
 {
-   extern CHAR_DATA *quest_mob;
-   extern OBJ_DATA *quest_object;
-   extern short quest_personality;
-   extern const struct qmessage_type qmessages[4][17];
-
-
    char buf[MAX_STRING_LENGTH];
 
    xprintf( buf, qmessages[quest_personality][16].message1, NAME( ch ), quest_object->short_descr );
@@ -597,8 +582,6 @@ void quest_complete( CHAR_DATA * ch )
 
 void quest_cancel(  )
 {
-   extern CHAR_DATA *quest_mob;
-
    if( quest_mob )
       do_crusade( quest_mob, "Shoot! Just forget about recovering ANYTHING for me, ok?" );
 
@@ -608,14 +591,6 @@ void quest_cancel(  )
 
 void clear_quest(  )
 {
-   extern bool quest;
-   extern CHAR_DATA *quest_mob;
-   extern CHAR_DATA *quest_target;
-   extern OBJ_DATA *quest_object;
-   extern int quest_timer;
-   extern int quest_wait;
-   extern short quest_personality;
-
    /*
     * Clear ALL values, ready for next quest 
     */
@@ -651,14 +626,6 @@ void clear_quest(  )
 void generate_auto_quest(  )
 {
    DESCRIPTOR_DATA *d;
-   extern bool quest;
-
-   extern CHAR_DATA *quest_mob;
-   extern CHAR_DATA *quest_target;
-   extern OBJ_DATA *quest_object;
-   extern int quest_timer;
-   extern int quest_wait;
-   extern short quest_personality;
    int hunt_flags = 0;
    char new_long_desc[MAX_STRING_LENGTH];
    short loop_counter = 0;
