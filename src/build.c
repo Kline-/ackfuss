@@ -251,7 +251,6 @@ int build_numsizes = 0;
 
 /* String function */
 /* moved build_strdup to merc.h - Stephen */
-char *build_simpstrdup( char * );
 void build_editstr( char **dest, char *src, CHAR_DATA * ch );
 void build_finishedstr( char *orig, char **dest, CHAR_DATA * ch, bool saved );
 

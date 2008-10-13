@@ -22,8 +22,8 @@ VERS = AckFUSS 4.3.8
 #SOLARIS_FLAG = -Dsun -DSYSV -Wno-char-subscripts
 #SOLARIS_LINK = -lnsl -lsocket -lresolv
 
-#-Wshadow -Werror -Wformat-security -Wcast-align -Wredundant-decls -Wconversion -Wwrite-strings
-W_FLAGS = -Wall -Wpointer-arith
+#-Wshadow -Werror -Wformat-security -Wconversion -Wwrite-strings
+W_FLAGS = -Wall -Wpointer-arith -Wredundant-decls -Wcast-align
 C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(SOLARIS_FLAG)
 L_FLAGS = -lcrypt -lm $(SOLARIS_LINK)
 
@@ -45,7 +45,7 @@ endif
 
 O_FILES = $(patsubst %.c,o/%.o,$(C_FILES))
 
-H_FILES = $(wildcard *.h)
+H_FILES = $(wildcard h/*.h)
 
 all:
 	@$(MAKE) -j2 ack

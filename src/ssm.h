@@ -82,9 +82,6 @@ extern int numFree;
 extern bool Full;
 
 int defrag_heap( void );
-char *_str_dup( const char *, const char * );   /* str_dup is now a macro */
-void _free_string( char *, const char * );   /* another macro          */
-char *_fread_string( FILE *, const char * ); /* fread_string as well   */
 char *fread_word_dup( FILE * );  /* Implement later to check words also */
 void temp_hash_add( char * );
 char *temp_hash_find( const char * );

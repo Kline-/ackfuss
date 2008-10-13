@@ -48,10 +48,6 @@ bool is_safe args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void set_fighting args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
 void check_adrenaline args( ( CHAR_DATA * ch, float damage ) );
 
-/* magic.c */
-int mana_cost( CHAR_DATA * ch, int sn );
-
-
 #define REALM_NONE    	  BIT_0
 #define REALM_FIRE		    BIT_1
 #define REALM_SHOCK		    BIT_2
@@ -67,7 +63,6 @@ int mana_cost( CHAR_DATA * ch, int sn );
 #define REALM_HOLY        BIT_12
 #define NO_REFLECT        BIT_30
 #define NO_ABSORB          BIT_31
-
 
 #define RE_NONE    	  0
 #define RE_FIRE		    1

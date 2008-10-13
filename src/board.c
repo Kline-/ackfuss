@@ -52,7 +52,6 @@ include < types.h >
 
 
 /* Local functions */
-BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj );
 void save_board( BOARD_DATA * board, CHAR_DATA * ch );
 void finished_editing( MESSAGE_DATA * msg, char **dest, CHAR_DATA * ch, bool saved );
 

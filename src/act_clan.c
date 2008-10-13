@@ -39,6 +39,14 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_ACT_CLAN_H
+#include "h/act_clan.h"
+#endif
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 /* These set of clan functions by Zen */
 extern POL_DATA politics_data;
 extern COUNCIL_DATA super_councils[MAX_SUPER];

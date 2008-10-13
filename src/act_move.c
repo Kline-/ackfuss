@@ -38,6 +38,11 @@
 #include <stdlib.h>
 #include "globals.h"
 #define NOWHERE -1
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 bool check_valid_ride( CHAR_DATA * ch );
 extern bool deathmatch;
 const char *compass_name[] = {

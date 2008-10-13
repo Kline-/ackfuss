@@ -40,10 +40,12 @@
 /* For forks etc. */
 #include <unistd.h>
 #include <fcntl.h>
-
 #include "globals.h"
 #include "tables.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
 
 void save_brands(  )
 {

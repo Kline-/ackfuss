@@ -39,18 +39,13 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
-
-/*
- * Local functions.
- */
-void note_attach args( ( CHAR_DATA * ch ) );
-void note_remove args( ( CHAR_DATA * ch, NOTE_DATA * pnote ) );
-void talk_channel args( ( CHAR_DATA * ch, char *argument, int channel, const char *verb ) );
-void ask_quest_question( CHAR_DATA * ch, char *argument );
-
 
 /* Added back-in the note code, but made more like PO system */
 bool is_note_to( CHAR_DATA * ch, NOTE_DATA * pnote )

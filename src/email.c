@@ -33,6 +33,11 @@
  ***************************************************************************/
 
 #include "globals.h"
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_EMAIL_H
 #include "email.h"
 #endif

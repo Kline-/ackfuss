@@ -98,4 +98,3 @@ char *one_word( char *argument, char *arg_first );
 int  safe_printf(const char *file, const char *function, int line, int size, const char *str, const char *fmt, ...);
 void safe_strcat(const char *file, const char *function, int line, int size, const char *prev, const char *next, ... );
 char *strlower( char *ip );
-char *strlower( char *ip );

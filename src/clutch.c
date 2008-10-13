@@ -38,6 +38,9 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
 
 #define SPELL_NUMBER 3
 

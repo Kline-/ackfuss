@@ -38,6 +38,10 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

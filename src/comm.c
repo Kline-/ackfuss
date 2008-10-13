@@ -65,6 +65,10 @@
 #include "globals.h"
 #include "cursor.h"
 
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 /*
  * Socket and TCP/IP stuff.
  */

@@ -39,12 +39,18 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_ACT_CLAN_H
+#include "h/act_clan.h"
+#endif
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
 
-
-bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
 bool MP_Commands args( ( CHAR_DATA * ch ) );
 
 /*

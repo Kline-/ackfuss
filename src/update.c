@@ -39,6 +39,11 @@
 #include <time.h>
 #include "globals.h"
 #include <signal.h>
+
+#ifndef DEC_ACT_COMM_H
+#include "h/act_comm.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -62,7 +67,6 @@ void gain_update args( ( void ) );
 void obj_update args( ( void ) );
 void aggr_update args( ( void ) );
 void objfun_update args( ( void ) );
-void auction_update args( ( void ) );
 void rooms_update args( ( void ) );
 void remember_attack args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void quest_update args( ( void ) );
@@ -2037,9 +2041,6 @@ void rooms_update( void )
    }
    return;
 }
-
-
-extern void build_save_flush( void );
 
 /*
  * Handle all kinds of updates.
