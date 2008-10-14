@@ -719,6 +719,10 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_IMM, C_SHOW_NEVER},
    {"hotreboot", do_hotreboot, POS_DEAD, L_GOD, LOG_ALWAYS,
     C_TYPE_IMM, C_SHOW_ALWAYS},
+   {"bmdebug", do_bmdebug, POS_DEAD, L_GOD, LOG_NORMAL,
+    C_TYPE_IMM, C_SHOW_ALWAYS},
+   {"bmtoggle", do_bmtoggle, POS_DEAD, L_GOD, LOG_NORMAL,
+    C_TYPE_IMM, C_SHOW_ALWAYS},
    {"shutdow", do_shutdow, POS_DEAD, L_GOD, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_NEVER},
    {"shutdown", do_shutdown, POS_DEAD, L_GOD, LOG_ALWAYS,
@@ -1087,7 +1091,7 @@ void interpret( CHAR_DATA * ch, char *argument )
 
    if( ( !IS_NPC( ch ) && is_set( ch->act, ACT_LOG ) ) || fLogAll || cmd_table[cmd].log == LOG_ALWAYS )
    {
-      xprintf_2( log_buf, "Log %s: %s", ch->name, logline );
+      snprintf( log_buf, (2 * MIL), "Log %s: %s", ch->name, logline );
       log_string( log_buf );
       if( is_set( ch->act, ACT_LOG ) )
          monitor_chan( log_buf, MONITOR_BAD );
@@ -1101,7 +1105,7 @@ void interpret( CHAR_DATA * ch, char *argument )
    if( ch->desc != NULL && ch->desc->snoop_by != NULL )  /* -S- Mod */
    {
       char snp[MAX_STRING_LENGTH];
-      xprintf( snp, "[Snoop:%s] %s\n\r", ch->name, logline );
+      snprintf( snp, MSL, "[Snoop:%s] %s\n\r", ch->name, logline );
       write_to_buffer( ch->desc->snoop_by, snp, 0 );
    }
 
@@ -1118,7 +1122,7 @@ void interpret( CHAR_DATA * ch, char *argument )
          if( !str_cmp( ch->pcdata->alias_name[cnt], command ) && str_cmp( ch->pcdata->alias_name[cnt], "<none>@@N" ) )
          {
             found = TRUE;
-            xprintf( foo, "~%s %s", ch->pcdata->alias[cnt], argument );
+            snprintf( foo, MSL, "~%s %s", ch->pcdata->alias[cnt], argument );
             interpret( ch, foo );
             return;
          }

@@ -135,7 +135,7 @@ void room_pair( ROOM_INDEX_DATA * left, ROOM_INDEX_DATA * right, exit_status ex,
          break;
    }
 
-   xprintf_2( buffer, "%5d %-26.26s %s%5d %-26.26s(%-8.8s)\n\r",
+   snprintf( buffer, sizeof(buffer), "%5d %-26.26s %s%5d %-26.26s(%-8.8s)\n\r",
             left->vnum, left->name, sExit, right->vnum, right->name, area_name( right->area ) );
 }
 
@@ -233,7 +233,7 @@ void do_vlist( CHAR_DATA * ch, char *argument )
          if( vnum < MAX_SHOW_VNUM )
          {
             room = get_room_index( vnum * 100 + 1 );  /* each zone has to have a XXX01 room */
-            xprintf( buf2, "%3d %-8.8s  ", vnum, room ? area_name( room->area ) : "-" );
+            snprintf( buf2, 100, "%3d %-8.8s  ", vnum, room ? area_name( room->area ) : "-" );
             /*
              * something there or unused ? 
              */
@@ -254,8 +254,6 @@ void do_vlist( CHAR_DATA * ch, char *argument )
  * online players. 
  * .gz files are checked for too, just in case.
  */
-
-bool check_parse_name( char *name );   /* comm.c */
 
 void do_rename( CHAR_DATA * ch, char *argument )
 {
@@ -333,9 +331,9 @@ void do_rename( CHAR_DATA * ch, char *argument )
     * First, check if there is a player named that off-line 
     */
 #if !defined(machintosh) && !defined(MSDOS)
-   xprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
+   snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
 #else
-   xprintf( strsave, "%s%s", PLAYER_DIR, capitalize( new_name ) );
+   snprintf( strsave, MIL, "%s%s", PLAYER_DIR, capitalize( new_name ) );
 #endif
 
    file = file_open( strsave, "r" ); /* attempt to to open pfile */
@@ -351,9 +349,9 @@ void do_rename( CHAR_DATA * ch, char *argument )
     * Check .gz file ! 
     */
 #if !defined(machintosh) && !defined(MSDOS)
-   xprintf( strsave, "%s%s%s%s.gz", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
+   snprintf( strsave, MIL, "%s%s%s%s.gz", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
 #else
-   xprintf( strsave, "%s%s.gz", PLAYER_DIR, capitalize( new_name ) );
+   snprintf( strsave, MIL, "%s%s.gz", PLAYER_DIR, capitalize( new_name ) );
 #endif
 
    file = file_open( strsave, "r" ); /* attempt to to open pfile */
@@ -376,9 +374,9 @@ void do_rename( CHAR_DATA * ch, char *argument )
     */
 
 #if !defined(machintosh) && !defined(MSDOS)
-   xprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( victim->name ), "/", capitalize( victim->name ) );
+   snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( victim->name ), "/", capitalize( victim->name ) );
 #else
-   xprintf( strsave, "%s%s", PLAYER_DIR, capitalize( victim->name ) );
+   snprintf( strsave, MIL, "%s%s", PLAYER_DIR, capitalize( victim->name ) );
 #endif
 
 
@@ -476,7 +474,7 @@ const char *name_expand( CHAR_DATA * ch )
          count++;
 
 
-   xprintf( outbuf, "%d.%s", count, name );
+   snprintf( outbuf, MIL, "%d.%s", count, name );
    return outbuf;
 }
 

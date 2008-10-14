@@ -279,19 +279,19 @@ void do_family( CHAR_DATA * ch, char *argument )
          switch ( index )
          {
             case 0:
-               xprintf( buf, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
                break;
             case 1:
-               xprintf( buf, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
                break;
             case 2:
-               xprintf( buf, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
                break;
             case 3:
-               xprintf( buf, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
                break;
             case 4:
-               xprintf( buf, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
                break;
          }
 
@@ -311,7 +311,7 @@ void do_family( CHAR_DATA * ch, char *argument )
 
 
 
-               xprintf( buf, "%-15s @@NGen: @@r%d   @@NRank: @@d%d@@N  @@NBloodlust: @@e%d@@N/@@e%d@@N   %-15s\n\r",
+               snprintf( buf, MSL, "%-15s @@NGen: @@r%d   @@NRank: @@d%d@@N  @@NBloodlust: @@e%d@@N/@@e%d@@N   %-15s\n\r",
                         victim->name, victim->pcdata->super->generation, victim->pcdata->super->level, victim->pcdata->super->energy,
                         victim->pcdata->super->energy_max, victim->in_room->name );
                send_to_char( buf, ch );
@@ -326,7 +326,7 @@ void do_family( CHAR_DATA * ch, char *argument )
    else
    {
 
-      xprintf( buf, "@@WMembers of the @@dKindred @@NFamily %s\n\r", get_family_name( ch ) );
+      snprintf( buf, MSL, "@@WMembers of the @@dKindred @@NFamily %s\n\r", get_family_name( ch ) );
       send_to_char( buf, ch );
       found = FALSE;
       for( d = first_desc; d != NULL; d = d->next )
@@ -339,7 +339,7 @@ void do_family( CHAR_DATA * ch, char *argument )
                continue;
 
             found = TRUE;
-            xprintf( buf, "%-15s @@NGeneration: @@r%d     @@NRank: @@d%d@@N\n\r",
+            snprintf( buf, MSL, "%-15s @@NGeneration: @@r%d     @@NRank: @@d%d@@N\n\r",
                      victim->name, victim->pcdata->super->generation, victim->pcdata->super->level );
             send_to_char( buf, ch );
          }
@@ -438,7 +438,7 @@ void do_instruct( CHAR_DATA * ch, char *argument )
    victim->pcdata->super->skills_learned += 1;
 
    send_to_char( "You have taught them another way of the @@dKindred@@N!!!\n\r", ch );
-   xprintf( buf, "You are now learned in the way of @@e%s@@N!!!\n\r", skill_table[sn].name );
+   snprintf( buf, MSL, "You are now learned in the way of @@e%s@@N!!!\n\r", skill_table[sn].name );
    send_to_char( buf, victim );
 
 
@@ -595,7 +595,7 @@ bool spell_blood_sign( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
          costring = "@@m";
          break;
    }
-   xprintf( buf, "%s%s @@W: %s", costring, ch->name, get_family_name( ch ) );
+   snprintf( buf, MSL, "%s%s @@W: %s", costring, ch->name, get_family_name( ch ) );
    mark->author = str_dup( buf );
    mark->duration = ( ( MAX_VAMP_LEVEL ) - ch->pcdata->super->generation ) * ( ch->pcdata->super->level ) * 10;
    mark->type = VAMP;
@@ -625,7 +625,7 @@ bool spell_blood_sense( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       if( mark_list->mark->type != VAMP )
          continue;
 
-      xprintf( buf, "%s : %s\n\r", mark_list->mark->author, mark_list->mark->message );
+      snprintf( buf, MSL, "%s : %s\n\r", mark_list->mark->author, mark_list->mark->message );
       send_to_char( buf, ch );
    }
    return TRUE;

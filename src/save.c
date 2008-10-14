@@ -192,7 +192,7 @@ void save_char_obj( CHAR_DATA * ch )
    }
    else
       strcpy( buf, ch->name );
-   xprintf( strsave, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", cap_nocol( buf ) );
+   snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", cap_nocol( buf ) );
 #else
    /*
     * Convert npc names to dos compat name.... yuk 
@@ -211,13 +211,13 @@ void save_char_obj( CHAR_DATA * ch )
    else
       strcpy( buf, ch->name );
 
-   xprintf( strsave, "%s%s", IS_NPC( ch ) ? NPC_DIR : PLAYER_DIR, cap_nocol( buf ) );
+   snprintf( strsave, MIL, "%s%s", IS_NPC( ch ) ? NPC_DIR : PLAYER_DIR, cap_nocol( buf ) );
 #endif
    /*
     * Tack on a .temp to strsave, use as tempstrsave 
     */
 
-   xprintf( tempstrsave, "%s.temp", strsave );
+   snprintf( tempstrsave, MIL, "%s.temp", strsave );
 
    if( ( fp = file_open( tempstrsave, "w" ) ) == NULL )
    {
@@ -264,7 +264,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    int foo;
    char time_buf[MSL];
 
-   xprintf(time_buf,ctime(&current_time)); /* ctime adding a newline annoyed me --Kline */
+   snprintf(time_buf,MSL,ctime(&current_time)); /* ctime adding a newline annoyed me --Kline */
    time_buf[strlen(time_buf)-1] = '\0';
 
    /*
@@ -800,7 +800,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 #ifdef DEBUG_MONEY
       {
          char testbuf[MSL];
-         xprintf( testbuf, "loading player money, %s", ch->name );
+         snprintf( testbuf, MSL, "loading player money, %s", ch->name );
          if( money->money_key != NULL )
             free_string( money->money_key );
          money->money_key = str_dup( testbuf );
@@ -813,7 +813,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 #ifdef DEBUG_MONEY
       {
          char testbuf[MSL];
-         xprintf( testbuf, "loading player bank, %s", ch->name );
+         snprintf( testbuf, MSL, "loading player bank, %s", ch->name );
          if( money->money_key != NULL )
             free_string( money->money_key );
          money->money_key = str_dup( testbuf );
@@ -847,7 +847,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    }
    else
       strcpy( buf, name );
-   xprintf( strsave, "%s%s%s%s", is_npc ? NPC_DIR : PLAYER_DIR, initial( buf ), "/", cap_nocol( buf ) );
+   snprintf( strsave, MIL, "%s%s%s%s", is_npc ? NPC_DIR : PLAYER_DIR, initial( buf ), "/", cap_nocol( buf ) );
 #else
    /*
     * Convert npc names to dos compat name.... yuk 
@@ -866,18 +866,18 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    else
       strcpy( buf, name );
 
-   xprintf( strsave, "%s%s", is_npc ? NPC_DIR : PLAYER_DIR, cap_nocol( buf ) );
+   snprintf( strsave, MIL, "%s%s", is_npc ? NPC_DIR : PLAYER_DIR, cap_nocol( buf ) );
 #endif
 
 
 
 #if !defined(macintosh) && !defined(MSDOS)
-   xprintf( tempstrsave, "%s%s", strsave, ".gz" );
+   snprintf( tempstrsave, MIL, "%s%s", strsave, ".gz" );
    if( ( fp = file_open( tempstrsave, "r" ) ) != NULL )
    {
       char buf[MAX_STRING_LENGTH];
       file_close( fp );
-      xprintf( buf, "gzip -dfq %s", tempstrsave );
+      snprintf( buf, MSL, "gzip -dfq %s", tempstrsave );
       system( buf );
    }
 #endif
@@ -1077,7 +1077,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 #ifdef DEBUG_MONEY
                {
                   char testbuf[MSL];
-                  xprintf( testbuf, "reading player money, %s", ch->name );
+                  snprintf( testbuf, MSL, "reading player money, %s", ch->name );
                   transfer->money_key = str_dup( testbuf );
                }
 #endif
@@ -1245,7 +1245,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 #ifdef DEBUG_MONEY
                {
                   char testbuf[MSL];
-                  xprintf( testbuf, "reading player money, %s", ch->name );
+                  snprintf( testbuf, MSL, "reading player money, %s", ch->name );
                   transfer->money_key = str_dup( testbuf );
                }
 #endif
@@ -1418,7 +1418,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                sn = skill_lookup( skill_word );
                if( sn < 0 )
                {
-                  xprintf_2( log_buf, "Loading pfile %s, unknown skill %s.", ch->name, skill_word );
+                  snprintf( log_buf, (2 * MIL), "Loading pfile %s, unknown skill %s.", ch->name, skill_word );
                   monitor_chan( log_buf, MONITOR_BAD );
                }
                else
@@ -1469,7 +1469,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                if( ch->pcdata->who_name != NULL )
                   free_string( ch->pcdata->who_name );
                ch->pcdata->who_name = fread_string( fp );
-               xprintf( buf, "%s", ch->pcdata->who_name + 1 );
+               snprintf( buf, MSL, "%s", ch->pcdata->who_name + 1 );
 
                free_string( ch->pcdata->who_name );
                ch->pcdata->who_name = str_dup( buf );
@@ -1494,7 +1494,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
       ch->long_descr_orig = str_dup( ch->long_descr );
       if( !fMatch )
       {
-         xprintf_2( log_buf, "Loading in pfile :%s, no match for ( %s ).", ch->name, word );
+         snprintf( log_buf, (2 * MIL), "Loading in pfile :%s, no match for ( %s ).", ch->name, word );
          monitor_chan( log_buf, MONITOR_BAD );
          fread_to_eol( fp );
       }
@@ -1531,7 +1531,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
 #ifdef DEBUG_MONEY
       {
          char testbuf[MSL];
-         xprintf( testbuf, "loading obj money, %s", obj->name );
+         snprintf( testbuf, MSL, "loading obj money, %s", obj->name );
          money->money_key = str_dup( testbuf );
       }
 #endif
@@ -1708,7 +1708,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
 #ifdef DEBUG_MONEY
                {
                   char testbuf[MSL];
-                  xprintf( testbuf, "loading obj money, %s", obj->name );
+                  snprintf( testbuf, MSL, "loading obj money, %s", obj->name );
                   transfer->money_key = str_dup( testbuf );
                }
 #endif
@@ -1884,7 +1884,7 @@ void fread_corpse( FILE * fp )
 #ifdef DEBUG_MONEY
       {
          char testbuf[MSL];
-         xprintf( testbuf, "loading obj money, %s", obj->name );
+         snprintf( testbuf, MSL, "loading obj money, %s", obj->name );
          money->money_key = str_dup( testbuf );
       }
 #endif
@@ -2052,7 +2052,7 @@ void fread_corpse( FILE * fp )
 #ifdef DEBUG_MONEY
                {
                   char testbuf[MSL];
-                  xprintf( testbuf, "loading obj money, %s", obj->name );
+                  snprintf( testbuf, MSL, "loading obj money, %s", obj->name );
                   transfer->money_key = str_dup( testbuf );
                }
 #endif
@@ -2295,7 +2295,7 @@ void save_corpses(  )
    char corpse_file_name[MAX_STRING_LENGTH];
    CORPSE_DATA *this_corpse;
 
-   xprintf( corpse_file_name, "%s", CORPSE_FILE );
+   snprintf( corpse_file_name, MSL, "%s", CORPSE_FILE );
 
    if( ( fp = file_open( corpse_file_name, "w" ) ) == NULL )
    {
@@ -2323,7 +2323,7 @@ void save_marks(  )
    char mark_file_name[MAX_STRING_LENGTH];
    MARK_LIST_MEMBER *mark_list;
 
-   xprintf( mark_file_name, "%s", MARKS_FILE );
+   snprintf( mark_file_name, MSL, "%s", MARKS_FILE );
 
    if( ( fp = file_open( mark_file_name, "w" ) ) == NULL )
    {
@@ -2357,7 +2357,7 @@ void save_bans(  )
    char ban_file_name[MAX_STRING_LENGTH];
    BAN_DATA *pban;
 
-   xprintf( ban_file_name, "%s", BANS_FILE );
+   snprintf( ban_file_name, MSL, "%s", BANS_FILE );
 
    if( ( fp = file_open( ban_file_name, "w" ) ) == NULL )
    {

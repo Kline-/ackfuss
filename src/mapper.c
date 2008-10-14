@@ -226,7 +226,7 @@ char *string_justify( char *str, int len, int width, int numwords, int *rlen )
    spaces_needed = minspaces + ( width - ( len + 1 ) );
    if( spaces_needed <= minspaces || minspaces <= 0 )
    {
-      xprintf( buf, "%s\n\r", str );
+      snprintf( buf, MSL, "%s\n\r", str );
       return buf;
    }
    space_ratio = ( float )spaces_needed / ( float )minspaces;
@@ -243,8 +243,8 @@ char *string_justify( char *str, int len, int width, int numwords, int *rlen )
    str = break_arg( str, arg, sizeof( arg ), width, &alen, NULL );
    strcpy( bp, arg );
    bp += alen;
-/*  bp += xprintf(bp, "\n\r%d:%d:%d", len, width, numwords);
-  bp += xprintf(bp, "\n\r%d:%d:%f", minspaces, spaces_needed, space_ratio);*/
+/*  bp += snprintf(bp, MSL, "\n\r%d:%d:%d", len, width, numwords);
+  bp += snprintf(bp, MSL, "\n\r%d:%d:%f", minspaces, spaces_needed, space_ratio);*/
    *bp++ = '\n';
    *bp++ = '\r';
    *bp = '\0';
@@ -394,7 +394,7 @@ char *map_format( char *str, int start, char map[MAP_Y][MSL], int *numlines, int
          *pbuf = '\0';
          c = last_color( buf );
          if( currline < MAP_Y )
-            pret += xprintf_2( pret, "%s   ", map[currline] );
+            pret += snprintf( pret, MSL, "%s   ", map[currline] );
          else if( currline == MAP_Y )
             strcpy( pret, "              " ), pret += 14;
          if( unjust || iseol( *arg ) )
@@ -446,7 +446,7 @@ char *map_format( char *str, int start, char map[MAP_Y][MSL], int *numlines, int
       pbuf += len;
       ++numwords;
    }
-/*  xprintf(bug_buf, "%d:%d", width, blen);
+/*  snprintf(bug_buf, (2* MIL), "%d:%d", width, blen);
   monitor_chan(bug_buf, MONITOR_DEBUG);*/
    if( pbuf > buf )
    {
@@ -464,7 +464,7 @@ char *map_format( char *str, int start, char map[MAP_Y][MSL], int *numlines, int
          *pbuf++ = '\n';
          *pbuf++ = '\r';
          if( currline < MAP_Y )
-            pret += xprintf_2( pret, "%s   ", map[currline] );
+            pret += snprintf( pret, MSL, "%s   ", map[currline] );
          else if( currline == MAP_Y || ( currline == MAP_Y + 1 && blen <= term_width - 15 ) )
             strcpy( pret, "              " ), pret += 14;
          ++currline;
@@ -494,12 +494,12 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
             }
             else if( ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_find_doors] ) > number_percent(  ) )
             {
-               xprintf_2( buf + strlen( buf ), " (%s)", compass_name[e] );
+               snprintf( buf + strlen( buf ), 128, " (%s)", compass_name[e] );
             }
          }
          else
          {
-            xprintf_2( buf + strlen( buf ), " %s", compass_name[e] );
+            snprintf( buf + strlen( buf ), 128, " %s", compass_name[e] );
          }
       }
    xcat( buf, " ]" );
@@ -530,12 +530,12 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
       ox = x;
       while( *x != '\n' && *x != '\r' && *x != '\0' )
          ++x;
-      xprintf( bufs[y], "%.*s", ( x - ox ), ox );
+      snprintf( bufs[y], MSL, "%.*s", ( x - ox ), ox );
    }
 #ifdef ACK_43
    if( !IS_NPC( ch ) && is_set( ch->act, ACT_FULL_ANSI ) )
    {
-      xprintf( disp, "%s%s%i;%ir%s%i;%iH%s%s",
+      snprintf( disp, MSL, "%s%s%i;%ir%s%i;%iH%s%s",
                CRS_SAVE_ALL,
                CRS_CMD,
                ch->pcdata->term_rows - 11, ch->pcdata->term_rows - 1, CRS_CMD, ch->pcdata->term_rows - 11, 0, CRS_CMD, "J" );
@@ -549,13 +549,13 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
    {
       x = disp + strlen( disp );
       while( y < MAP_Y )
-         x += xprintf_2( x, "%s\n\r", bufs[y] ), ++y;
+         x += snprintf( x, MSL, "%s\n\r", bufs[y] ), ++y;
    }
    send_to_char( disp, ch );
 #ifdef ACK_43
    if( !IS_NPC( ch ) && is_set( ch->act, ACT_FULL_ANSI ) )
    {
-      xprintf( disp, "%s%i;%ir%s%i;%iH", CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13, 0 );
+      snprintf( disp, MSL, "%s%i;%ir%s%i;%iH", CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13, 0 );
       send_to_char( disp, ch );
    }
 #endif
@@ -586,7 +586,7 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
       if( ( can_see( ch, victim ) ) && ( !is_same_group( ch, victim ) ) )
          looper++;
    if( looper > 0 )
-      xprintf( contents[x][y].string, "%i@@N", UMIN( looper, 9 ) );
+      snprintf( contents[x][y].string, MSL, "%i@@N", UMIN( looper, 9 ) );
    else
       contents[x][y].string[0] = '\0';
 
@@ -660,11 +660,11 @@ void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
    char colorbuf[MSL];
    char displaybuf[MSL];
    outbuf[0] = '\0';
-   xprintf( outbuf, "%s", "\n\r" );
-   xprintf( borderbuf, "%s", "@@y+@@W" );
+   snprintf( outbuf, MSL, "%s", "\n\r" );
+   snprintf( borderbuf, MSL, "%s", "@@y+@@W" );
    for( looper = 0; looper <= size + 1; looper++ )
    {
-      xprintf( catbuf, "%s", "-" );
+      snprintf( catbuf, MSL, "%s", "-" );
       xcat( borderbuf, catbuf );
    }
    xcat( borderbuf, "@@y+@@N" );
@@ -676,23 +676,23 @@ void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
       {  /* every column */
          if( ( y == min ) || ( map[x][y - 1] != map[x][y] ) )
          {
-            xprintf( colorbuf, "%s%s",
+            snprintf( colorbuf, MSL, "%s%s",
                      ( ( map[x][y] <= 0 ) ?
                        get_door_color( map[x][y] ) :
                        get_sector_color( map[x][y] ) ),
                      ( ( contents[x][y].string[0] == '\0' ) ? "" : get_invert_color( map[x][y] ) ) );
-            xprintf( displaybuf, "%s",
+            snprintf( displaybuf, MSL, "%s",
                      ( ( map[x][y] <= 0 ) ?
                        get_door_display( map[x][y] ) :
                        ( ( contents[x][y].string[0] == '\0' ) ?
                          get_sector_display( map[x][y] ) : contents[x][y].string ) ) );
-            xprintf( catbuf, "%s%s", colorbuf, displaybuf );
+            snprintf( catbuf, MSL, "%s%s", colorbuf, displaybuf );
             xcat( outbuf, catbuf );
 
          }
          else
          {
-            xprintf( catbuf, "%s", ( map[x][y] <= 0 ) ? get_door_display( map[x][y] ) : get_sector_display( map[x][y] ) );
+            snprintf( catbuf, MSL, "%s", ( map[x][y] <= 0 ) ? get_door_display( map[x][y] ) : get_sector_display( map[x][y] ) );
             xcat( outbuf, catbuf );
          }
 
@@ -722,11 +722,11 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
    char colorbuf[MSL];
    char displaybuf[MSL];
    outbuf[0] = '\0';
-   xprintf( outbuf, "%s", "\n\r" );
-   xprintf( borderbuf, "%s", "@@y+@@W" );
+   snprintf( outbuf, MSL, "%s", "\n\r" );
+   snprintf( borderbuf, MSL, "%s", "@@y+@@W" );
    for( looper = 0; looper <= size + 1; looper++ )
    {
-      xprintf( catbuf, "%s", "-" );
+      snprintf( catbuf, MSL, "%s", "-" );
       xcat( borderbuf, catbuf );
    }
    xcat( borderbuf, "@@y+@@N" );
@@ -738,23 +738,23 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
       {  /* every column */
          if( ( y == min ) || ( map[x][y - 1] != map[x][y] ) )
          {
-            xprintf( colorbuf, "%s%s",
+            snprintf( colorbuf, MSL, "%s%s",
                      ( ( map[x][y] <= 0 ) ?
                        get_door_color( map[x][y] ) :
                        get_sector_color( map[x][y] ) ),
                      ( ( contents[x][y].string[0] == '\0' ) ? "" : get_invert_color( map[x][y] ) ) );
-            xprintf( displaybuf, "%s",
+            snprintf( displaybuf, MSL, "%s",
                      ( ( map[x][y] <= 0 ) ?
                        get_door_display( map[x][y] ) :
                        ( ( contents[x][y].string[0] == '\0' ) ?
                          get_sector_display( map[x][y] ) : contents[x][y].string ) ) );
-            xprintf( catbuf, "%s%s", colorbuf, displaybuf );
+            snprintf( catbuf, MSL, "%s%s", colorbuf, displaybuf );
             xcat( outbuf, catbuf );
 
          }
          else
          {
-            xprintf( catbuf, "%s", ( map[x][y] <= 0 ) ? get_door_display( map[x][y] ) : get_sector_display( map[x][y] ) );
+            snprintf( catbuf, MSL, "%s", ( map[x][y] <= 0 ) ? get_door_display( map[x][y] ) : get_sector_display( map[x][y] ) );
             xcat( outbuf, catbuf );
          }
 
@@ -780,15 +780,6 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
    return;
 }
 
-
-
-
-
-
-
-
-
-
 void do_mapper( CHAR_DATA * ch, char *argument )
 {
    int size, center, x, y, min, max, looper;
@@ -798,16 +789,16 @@ void do_mapper( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg1 );
    if( is_name( arg1, "legend key help" ) )
    {
-      xprintf( outbuf, "@@WMap Legend:@@N\n\r" );
+      snprintf( outbuf, MSL, "@@WMap Legend:@@N\n\r" );
       for( looper = 0; looper < SECT_TOP - 1; looper++ )
       {
-         xprintf( catbuf, "%s%s : @@N%s\n\r",
+         snprintf( catbuf, MSL, "%s%s : @@N%s\n\r",
                   map_info[looper].display_color, map_info[looper].display_code, map_info[looper].desc );
          xcat( outbuf, catbuf );
       }
       for( looper = 0; looper < 5; looper++ )
       {
-         xprintf( catbuf, "%s%s : @@N%s\n\r",
+         snprintf( catbuf, MSL, "%s%s : @@N%s\n\r",
                   door_info[looper].display_color, door_info[looper].display_code, door_info[looper].desc );
          xcat( outbuf, catbuf );
       }
@@ -842,7 +833,7 @@ void do_mapper( CHAR_DATA * ch, char *argument )
    MapArea( ch->in_room, ch, center, center, min - 1, max, LOS_INITIAL );
 
 /* marks the center, where ch is */
-   xprintf( contents[center][center].string, "%s", "@@f*@@N" );
+   snprintf( contents[center][center].string, MSL, "%s", "@@f*@@N" );
    if( size == 7 )
       ShowRoom( ch, min, max, size, center );
    else

@@ -37,7 +37,6 @@
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
-/* For forks etc. */
 #include <unistd.h>
 #include <fcntl.h>
 #if defined(__CYGWIN__)
@@ -6180,4 +6179,114 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
 
    perror( "do_copyover: execl" );
    send_to_char( "HOTreboot FAILED! Something is wrong in the shell!\n\r", ch );
+}
+
+void do_bmdebug( CHAR_DATA *ch, char *argument )
+{
+ CHAR_DATA *victim;
+ char buf[MSL];
+
+ if( argument == '\0' )
+ {
+  send_to_char("Specify a target. Only players/mobs so far.\n\r",ch);
+  return;
+ }
+
+ if( (victim = get_char_world(ch,argument)) == NULL )
+ {
+  send_to_char("Can't find that person.\n\r",ch);
+  return;
+ }
+
+ snprintf(buf,MSL,"Bitmask Debug for %s [%d]\n\r",IS_NPC(victim) ? victim->short_descr : victim->name, IS_NPC(victim) ? victim->pIndexData->vnum : 0 );
+ send_to_char(buf,ch);
+ snprintf(buf,MSL,"[victim->act ] %s\n\r",debug_bitmask(IS_NPC(victim) ? victim->pIndexData->act : victim->act));
+ send_to_char(buf,ch);
+ if( !IS_NPC(victim) )
+ {
+  snprintf(buf,MSL,"[victim->deaf] %s\n\r",debug_bitmask(victim->deaf));
+  send_to_char(buf,ch);
+ }
+
+ return;
+}
+
+void do_bmtoggle( CHAR_DATA *ch, char *argument )
+{
+ CHAR_DATA *victim;
+ char arg1[MIL];
+ char arg2[MIL];
+ char arg3[MIL];
+ short value = 0;
+
+ argument = one_argument(argument,arg1);
+ argument = one_argument(argument,arg2);
+ argument = one_argument(argument,arg3);
+
+ if( arg1[0] == '\0' )
+ {
+  send_to_char("Specify a target. IndexData will be edited on NPCs, actual values on players.\n\r",ch);
+  send_to_char("bmtoggle <target> <act/deaf> <bit>\n\r",ch);
+  return;
+ }
+
+ if( arg2[0] == '\0' )
+ {
+  send_to_char("Which bitmask do you want to toggle?\n\r",ch);
+  return;
+ }
+
+ if( arg3[0] == '\0' )
+ {
+  send_to_char("Which value do you want to toggle?\n\r",ch);
+  return;
+ }
+
+ value = atoi(arg3);
+
+ if( (victim = get_char_world(ch,arg1)) == NULL )
+ {
+  send_to_char("Can't find that person.\n\r",ch);
+  return;
+ }
+
+ if( !str_prefix(arg2,"act") )
+ {
+  if( IS_NPC(victim) )
+  {
+   if( is_set(victim->pIndexData->act,value) )
+    remove_bit(victim->pIndexData->act,value);
+   else
+    set_bit(victim->pIndexData->act,value);
+   area_modified(victim->pIndexData->area);
+  }
+  else
+  {
+   if( is_set(victim->act,value) )
+    remove_bit(victim->act,value);
+   else
+    set_bit(victim->act,value);
+  }
+  send_to_char("Ok.\n\r",ch);
+  return;
+ }
+
+ if( !str_prefix(arg2,"deaf") )
+ {
+  if( IS_NPC(victim) )
+   send_to_char("You can only toggle deaf on players.\n\r",ch);
+  else
+  {
+   if( is_set(victim->deaf,value) )
+    remove_bit(victim->deaf,value);
+   else
+    set_bit(victim->deaf,value);
+  }
+  send_to_char("Ok.\n\r",ch);
+  return;
+ }
+
+ do_bmtoggle(ch,"");
+
+ return;
 }

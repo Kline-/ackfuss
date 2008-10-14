@@ -2904,10 +2904,9 @@ void free_char( CHAR_DATA * ch )
       PUT_FREE( ch->pnote, note_free );
    if( ch->current_brand )
       PUT_FREE( ch->current_brand, brand_data_free );
-   if( ch->act )
-      PUT_FREE( ch->act, bitmask_free );
-   if( ch->deaf )
-      PUT_FREE( ch->deaf, bitmask_free );
+
+   PUT_FREE( ch->act, bitmask_free );
+   PUT_FREE( ch->deaf, bitmask_free );
    if( ch->pcdata != NULL )
    {
 #ifdef IMC

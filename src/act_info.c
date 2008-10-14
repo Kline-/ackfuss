@@ -429,8 +429,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
 
    if( IS_NPC( victim ) )
    {
-      if( is_set( victim->act, ACT_UNDEAD ) &&
-          ( is_affected( ch, skill_lookup( "detect undead" ) ) || item_has_apply( ch, ITEM_APPLY_DET_UNDEAD ) ) )
+      if( is_set( victim->act, ACT_UNDEAD ) && ( is_affected( ch, skill_lookup( "detect undead" ) ) || item_has_apply( ch, ITEM_APPLY_DET_UNDEAD ) ) )
          xcat( buf, "(UnDead) " );
 
       if( is_set( victim->act, ACT_INTELLIGENT ) )

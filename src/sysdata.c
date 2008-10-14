@@ -64,7 +64,7 @@ void load_sysdata( void )
  const char *word;
  bool fMatch;
 
- xprintf_2(log_buf,"Loading %s",SYSDAT_FILE);
+ snprintf(log_buf,(2 * MIL),"Loading %s",SYSDAT_FILE);
  log_f(log_buf);
 
  init_sysdata(); /* Need to set some defaults --Kline */
@@ -129,7 +129,7 @@ void load_sysdata( void )
   }
   if( !fMatch )
   {
-   xprintf_2(log_buf,"Loading in sysdata: no match for ( %s ).",word);
+   snprintf(log_buf,(2 * MIL),"Loading in sysdata: no match for ( %s ).",word);
    monitor_chan(log_buf,MONITOR_BAD);
    fread_to_eol(fp);
   }
@@ -204,42 +204,42 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
 
  if( !str_prefix(arg1,"show") )
  {
-  xprintf(outbuf,"%s","      System data for " mudnamecolor ":\n\r");
-  xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(outbuf,MSL,"%s","      System data for " mudnamecolor ":\n\r");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Option         ]       [Value          ]\n\r");
+  snprintf(catbuf,MSL,"[Option         ]       [Value          ]\n\r");
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Damcap         ]       [%15d]\n\r",sysdata.damcap);
+  snprintf(catbuf,MSL,"[Damcap         ]       [%15d]\n\r",sysdata.damcap);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Exp Multiplier ]       [%15.4f]\n\r",sysdata.expmult);
+  snprintf(catbuf,MSL,"[Exp Multiplier ]       [%15.4f]\n\r",sysdata.expmult);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Kills Per Lev  ]       [%15d]\n\r",sysdata.killperlev);
+  snprintf(catbuf,MSL,"[Kills Per Lev  ]       [%15d]\n\r",sysdata.killperlev);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Mob AC         ]       [%15.4f]\n\r",sysdata.mob_ac);
+  snprintf(catbuf,MSL,"[Mob AC         ]       [%15.4f]\n\r",sysdata.mob_ac);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Mob DR         ]       [%15.4f]\n\r",sysdata.mob_dr);
+  snprintf(catbuf,MSL,"[Mob DR         ]       [%15.4f]\n\r",sysdata.mob_dr);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Mob HP         ]       [%15.4f]\n\r",sysdata.mob_hp);
+  snprintf(catbuf,MSL,"[Mob HP         ]       [%15.4f]\n\r",sysdata.mob_hp);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Mob HR         ]       [%15.4f]\n\r",sysdata.mob_hr);
+  snprintf(catbuf,MSL,"[Mob HR         ]       [%15.4f]\n\r",sysdata.mob_hr);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Mob MP         ]       [%15.4f]\n\r",sysdata.mob_mp);
+  snprintf(catbuf,MSL,"[Mob MP         ]       [%15.4f]\n\r",sysdata.mob_mp);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Mob MV         ]       [%15.4f]\n\r",sysdata.mob_mv);
+  snprintf(catbuf,MSL,"[Mob MV         ]       [%15.4f]\n\r",sysdata.mob_mv);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Mob SVS        ]       [%15.4f]\n\r",sysdata.mob_svs);
+  snprintf(catbuf,MSL,"[Mob SVS        ]       [%15.4f]\n\r",sysdata.mob_svs);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Playtesters    ]       [%15s]\n\r",sysdata.playtesters);
+  snprintf(catbuf,MSL,"[Playtesters    ]       [%15s]\n\r",sysdata.playtesters);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Pulse Per Sec  ]       [%15d]\n\r",sysdata.pulse);
+  snprintf(catbuf,MSL,"[Pulse Per Sec  ]       [%15d]\n\r",sysdata.pulse);
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Show Damage    ]       [%15s]\n\r",(sysdata.shownumbers ? "Yes" : "No"));
+  snprintf(catbuf,MSL,"[Show Damage    ]       [%15s]\n\r",(sysdata.shownumbers ? "Yes" : "No"));
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"[Wizlocked      ]       [%15s]\n\r",(wizlock ? "Yes" : "No"));
+  snprintf(catbuf,MSL,"[Wizlocked      ]       [%15s]\n\r",(wizlock ? "Yes" : "No"));
   xcat(outbuf,catbuf);
-  xprintf(catbuf,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
   xcat(outbuf,catbuf);
   send_to_char(outbuf,ch);
   return;

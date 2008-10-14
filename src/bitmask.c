@@ -243,18 +243,22 @@ void bv_to_bm( int list, BITMASK *mask )
  return;
 }
 
-void debug_bitmask( BITMASK *pBmask )
+char *debug_bitmask( BITMASK *pBmask )
 {
  int *array = (int *)serialize_bitmask(pBmask);
  int i = 0;
+ static char buf[MSL];
+ char tmp[10];
+ buf[0] = '\0';
 
  for(; array[i] != 0; ++i)
  {
-  xprintf_2(log_buf,"%d",array[i]); // this is our bit we are accessing.
-  monitor_chan(log_buf,MONITOR_DEBUG);
+  snprintf(tmp,10,"%d ",array[i]);
+  strncat(buf,tmp,MSL); // this is our bit we are accessing.
  }
+
  free(array);
- return;
+ return buf;
 }
 
 void bm_test( void )

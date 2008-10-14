@@ -122,7 +122,7 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
    int looper;
    /*
     * For debugging purposes  
-    * xprintf( buf, "dt: %d max_dt: %d\n\r", dt, max_dt );
+    * snprintf( buf, MSL, "dt: %d max_dt: %d\n\r", dt, max_dt );
     * notify( buf, 1 );  
     */
 
@@ -136,9 +136,9 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
    switch ( looper + 1 )
    {
       default:   /* bad realm, use non-specific */
-         xprintf( buf1, "$n destroy $N!" );
-         xprintf( buf2, "You destroy $N!" );
-         xprintf( buf3, "$n destroys you." );
+         snprintf( buf1, MSL, "$n destroy $N!" );
+         snprintf( buf2, MSL, "You destroy $N!" );
+         snprintf( buf3, MSL, "$n destroys you." );
          break;
       case RE_FIRE:
       {
@@ -147,38 +147,38 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
             switch ( number_range( 0, 4 ) )
             {
                case 0:
-                  xprintf( buf1, "$n cremates $N's body to a crisp!" );
-                  xprintf( buf2, "You cremate $N's body to a crispy @@eRED@@N cinder!" );
-                  xprintf( buf3, "$n cremates your remains." );
+                  snprintf( buf1, MSL, "$n cremates $N's body to a crisp!" );
+                  snprintf( buf2, MSL, "You cremate $N's body to a crispy @@eRED@@N cinder!" );
+                  snprintf( buf3, MSL, "$n cremates your remains." );
                   break;
                case 1:
-                  xprintf( buf1, "$n fries $N's guts; smoke envelops $S corpse!" );
-                  xprintf( buf2, "You fry $N's guts; smoke bites your eyes!" );
-                  xprintf( buf3, "$n slowly fries your entrails; smoke covers your remains!" );
+                  snprintf( buf1, MSL, "$n fries $N's guts; smoke envelops $S corpse!" );
+                  snprintf( buf2, MSL, "You fry $N's guts; smoke bites your eyes!" );
+                  snprintf( buf3, MSL, "$n slowly fries your entrails; smoke covers your remains!" );
                   break;
                case 2:
-                  xprintf( buf1, "$n leaves gigantic burns on $N's remains. Blood and pus spray out wildly!" );
-                  xprintf( buf2, "You leave gigantic burns on $N's remains. Blood and pus spray out wildly!" );
-                  xprintf( buf3, "$n leaves gigantic burns on your body. Blood and pus spray out wildly!" );
+                  snprintf( buf1, MSL, "$n leaves gigantic burns on $N's remains. Blood and pus spray out wildly!" );
+                  snprintf( buf2, MSL, "You leave gigantic burns on $N's remains. Blood and pus spray out wildly!" );
+                  snprintf( buf3, MSL, "$n leaves gigantic burns on your body. Blood and pus spray out wildly!" );
                   break;
                case 3:
-                  xprintf( buf1, "$n burns $N's skin off, leaving a bloody mess!" );
-                  xprintf( buf2, "You burn $N's skin off, leaving a bloody mess!" );
-                  xprintf( buf3, "$n burns your skin off, leaving a bloody mess!" );
+                  snprintf( buf1, MSL, "$n burns $N's skin off, leaving a bloody mess!" );
+                  snprintf( buf2, MSL, "You burn $N's skin off, leaving a bloody mess!" );
+                  snprintf( buf3, MSL, "$n burns your skin off, leaving a bloody mess!" );
                   break;
                case 4:
-                  xprintf( buf1, "$n leaves $N burning in flames. Blood spills all over the floor!" );
-                  xprintf( buf2, "You leave $N burning in flames. Blood spills all over the floor!" );
-                  xprintf( buf3, "$n leaves you burning in flames. Your skin breaks and blood spills on the floor!" );
+                  snprintf( buf1, MSL, "$n leaves $N burning in flames. Blood spills all over the floor!" );
+                  snprintf( buf2, MSL, "You leave $N burning in flames. Blood spills all over the floor!" );
+                  snprintf( buf3, MSL, "$n leaves you burning in flames. Your skin breaks and blood spills on the floor!" );
                   break;
             }
 
          }
          else
          {
-            xprintf( buf1, "$n sets $N aura on fire!" );
-            xprintf( buf2, "You set $N on fire!" );
-            xprintf( buf3, "$n sets you on fire!" );
+            snprintf( buf1, MSL, "$n sets $N aura on fire!" );
+            snprintf( buf2, MSL, "You set $N on fire!" );
+            snprintf( buf3, MSL, "$n sets you on fire!" );
             break;
          }
          break;
@@ -190,27 +190,27 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
             switch ( number_range( 0, 2 ) )
             {
                case 0:
-                  xprintf( buf1, "$n electrifies $N's to a crisp." );
-                  xprintf( buf2, "You electrify $N's body to a crisp!" );
-                  xprintf( buf3, "$n electrifies your remains" );
+                  snprintf( buf1, MSL, "$n electrifies $N's to a crisp." );
+                  snprintf( buf2, MSL, "You electrify $N's body to a crisp!" );
+                  snprintf( buf3, MSL, "$n electrifies your remains" );
                   break;
                case 1:
-                  xprintf( buf1, "$n fries $N. Smoke envelops $S corpse!" );
-                  xprintf( buf2, "You fry $N. Smoke bites your eyes!" );
-                  xprintf( buf3, "$n sends electricity through your body. You feel your skin burn." );
+                  snprintf( buf1, MSL, "$n fries $N. Smoke envelops $S corpse!" );
+                  snprintf( buf2, MSL, "You fry $N. Smoke bites your eyes!" );
+                  snprintf( buf3, MSL, "$n sends electricity through your body. You feel your skin burn." );
                   break;
                case 2:
-                  xprintf( buf1, "$n lightning shocks $N's body and $S eye balls fall out!" );
-                  xprintf( buf2, "You send lightning through $N's body and $S eye balls fall out!" );
-                  xprintf( buf3, "$n sends lightning though your body. Your eye sockets pop and your eye balls fall out!" );
+                  snprintf( buf1, MSL, "$n lightning shocks $N's body and $S eye balls fall out!" );
+                  snprintf( buf2, MSL, "You send lightning through $N's body and $S eye balls fall out!" );
+                  snprintf( buf3, MSL, "$n sends lightning though your body. Your eye sockets pop and your eye balls fall out!" );
                   break;
             }
          }
          else
          {
-            xprintf( buf1, "$n electricutes $N." );
-            xprintf( buf2, "You electricute $N." );
-            xprintf( buf3, "$n electricutes you." );
+            snprintf( buf1, MSL, "$n electricutes $N." );
+            snprintf( buf2, MSL, "You electricute $N." );
+            snprintf( buf3, MSL, "$n electricutes you." );
             break;
          }
          break;
@@ -219,16 +219,16 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       {
          if( HAS_BODY( victim ) )
          {
-            xprintf( buf1, "$n makes $N's corpse glow with unholy light!" );
-            xprintf( buf2, "You penetrate $N's body with light!" );
-            xprintf( buf3, "$n penetrates your remains with light!" );
+            snprintf( buf1, MSL, "$n makes $N's corpse glow with unholy light!" );
+            snprintf( buf2, MSL, "You penetrate $N's body with light!" );
+            snprintf( buf3, MSL, "$n penetrates your remains with light!" );
             break;
          }
          else
          {
-            xprintf( buf1, "$n makes $N glow with unholy light!" );
-            xprintf( buf2, "You penetrate $N with light!" );
-            xprintf( buf3, "$n penetrates you with light!" );
+            snprintf( buf1, MSL, "$n makes $N glow with unholy light!" );
+            snprintf( buf2, MSL, "You penetrate $N with light!" );
+            snprintf( buf3, MSL, "$n penetrates you with light!" );
             break;
          }
          break;
@@ -237,16 +237,16 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       {
          if( HAS_BODY( victim ) )
          {
-            xprintf( buf1, "$n gasses $N and watches $M choke." );
-            xprintf( buf2, "You gas $N and watch $M die." );
-            xprintf( buf3, "$n gasses you and watches you die." );
+            snprintf( buf1, MSL, "$n gasses $N and watches $M choke." );
+            snprintf( buf2, MSL, "You gas $N and watch $M die." );
+            snprintf( buf3, MSL, "$n gasses you and watches you die." );
             break;
          }
          else
          {
-            xprintf( buf1, "$n gasses $N and watches $M choke." );
-            xprintf( buf2, "You gas $N and watch $M die." );
-            xprintf( buf3, "$n gasses you and watches you die." );
+            snprintf( buf1, MSL, "$n gasses $N and watches $M choke." );
+            snprintf( buf2, MSL, "You gas $N and watch $M die." );
+            snprintf( buf3, MSL, "$n gasses you and watches you die." );
             break;
          }
          break;
@@ -258,24 +258,24 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
             switch ( number_range( 0, 1 ) )
             {
                case 0:
-                  xprintf( buf1, "$n poisons $N ;$S body begins to twist in agony!" );
-                  xprintf( buf2, "You poison $N and watch $S body begin twisting in agony!" );
-                  xprintf( buf3, "$n poisons you -- you twist in agony." );
+                  snprintf( buf1, MSL, "$n poisons $N ;$S body begins to twist in agony!" );
+                  snprintf( buf2, MSL, "You poison $N and watch $S body begin twisting in agony!" );
+                  snprintf( buf3, MSL, "$n poisons you -- you twist in agony." );
                   break;
 
                case 1:
-                  xprintf( buf1, "$n sends a poisonous cloud into $N ;$S mouth starts dripping with blood!" );
-                  xprintf( buf2, "You send a poisonous cloud into $N ;$S mouth starts dripping with blood!" );
-                  xprintf( buf3, "$n bursts your lungs with his poisonous cloud, blood begins flowing from inside." );
+                  snprintf( buf1, MSL, "$n sends a poisonous cloud into $N ;$S mouth starts dripping with blood!" );
+                  snprintf( buf2, MSL, "You send a poisonous cloud into $N ;$S mouth starts dripping with blood!" );
+                  snprintf( buf3, MSL, "$n bursts your lungs with his poisonous cloud, blood begins flowing from inside." );
                   break;
             }
 
          }
          else
          {
-            xprintf( buf1, "$n poisons $N ;$S soul begins to twist in agony!" );
-            xprintf( buf2, "You poison $N and watch $S soul begin twisting in agony!" );
-            xprintf( buf3, "$n poisons you -- you twist in agony." );
+            snprintf( buf1, MSL, "$n poisons $N ;$S soul begins to twist in agony!" );
+            snprintf( buf2, MSL, "You poison $N and watch $S soul begin twisting in agony!" );
+            snprintf( buf3, MSL, "$n poisons you -- you twist in agony." );
             break;
          }
          break;
@@ -287,17 +287,17 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
             switch ( number_range( 0, 0 ) )
             {
                case 0:
-                  xprintf( buf1, "$n turns $N into a block of ice." );
-                  xprintf( buf2, "You turn $N into a block of ice." );
-                  xprintf( buf3, "$n turns you into ice!!" );
+                  snprintf( buf1, MSL, "$n turns $N into a block of ice." );
+                  snprintf( buf2, MSL, "You turn $N into a block of ice." );
+                  snprintf( buf3, MSL, "$n turns you into ice!!" );
                   break;
             }
          }
          else
          {
-            xprintf( buf1, "$n freezes $N to death!" );
-            xprintf( buf2, "You freeze $N to death!" );
-            xprintf( buf3, "$n freezes you to death!" );
+            snprintf( buf1, MSL, "$n freezes $N to death!" );
+            snprintf( buf2, MSL, "You freeze $N to death!" );
+            snprintf( buf3, MSL, "$n freezes you to death!" );
             break;
          }
          break;
@@ -306,16 +306,16 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       {
          if( HAS_BODY( victim ) )
          {
-            xprintf( buf1, "$n explodes $N's remains with deafening sound!" );
-            xprintf( buf2, "You explode $N's remains with deafening sound!" );
-            xprintf( buf3, "$n explodes your remains with deafening sound!" );
+            snprintf( buf1, MSL, "$n explodes $N's remains with deafening sound!" );
+            snprintf( buf2, MSL, "You explode $N's remains with deafening sound!" );
+            snprintf( buf3, MSL, "$n explodes your remains with deafening sound!" );
             break;
          }
          else
          {
-            xprintf( buf1, "$n shatters $N with deafening sound!" );
-            xprintf( buf2, "You shatter $N with deafening sound!" );
-            xprintf( buf3, "$n shatters you with deafening sound!" );
+            snprintf( buf1, MSL, "$n shatters $N with deafening sound!" );
+            snprintf( buf2, MSL, "You shatter $N with deafening sound!" );
+            snprintf( buf3, MSL, "$n shatters you with deafening sound!" );
             break;
          }
          break;
@@ -327,22 +327,22 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
             switch ( number_range( 0, 1 ) )
             {
                case 0:
-                  xprintf( buf1, "$n sprays acid on $N; $S flesh falls apart!" );
-                  xprintf( buf2, "You spray acid on $N; $S flesh falls apart!" );
-                  xprintf( buf3, "$n sprays acid on you. Your flesh falls apart!" );
+                  snprintf( buf1, MSL, "$n sprays acid on $N; $S flesh falls apart!" );
+                  snprintf( buf2, MSL, "You spray acid on $N; $S flesh falls apart!" );
+                  snprintf( buf3, MSL, "$n sprays acid on you. Your flesh falls apart!" );
                   break;
                case 1:
-                  xprintf( buf1, "$n dissolves $N's corpse into mushy paste." );
-                  xprintf( buf2, "You dissolve $N's corpse into mushy paste." );
-                  xprintf( buf3, "$n dissolves you into mushy paste!" );
+                  snprintf( buf1, MSL, "$n dissolves $N's corpse into mushy paste." );
+                  snprintf( buf2, MSL, "You dissolve $N's corpse into mushy paste." );
+                  snprintf( buf3, MSL, "$n dissolves you into mushy paste!" );
                   break;
             }
          }
          else
          {
-            xprintf( buf1, "$n etches $N to death!" );
-            xprintf( buf2, "You etch $N to death!" );
-            xprintf( buf3, "$n etches you to death!" );
+            snprintf( buf1, MSL, "$n etches $N to death!" );
+            snprintf( buf2, MSL, "You etch $N to death!" );
+            snprintf( buf3, MSL, "$n etches you to death!" );
             break;
          }
          break;
@@ -351,16 +351,16 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       {
          if( HAS_BODY( victim ) )
          {
-            xprintf( buf1, "$n drains $N of $S life energy." );
-            xprintf( buf2, "You drains $N of $S life energy." );
-            xprintf( buf3, "$n drains you of your life energy." );
+            snprintf( buf1, MSL, "$n drains $N of $S life energy." );
+            snprintf( buf2, MSL, "You drains $N of $S life energy." );
+            snprintf( buf3, MSL, "$n drains you of your life energy." );
             break;
          }
          else
          {
-            xprintf( buf1, "$n darkens $N soul!" );
-            xprintf( buf2, "You darken $N soul!" );
-            xprintf( buf3, "$n darkens your soul!" );
+            snprintf( buf1, MSL, "$n darkens $N soul!" );
+            snprintf( buf2, MSL, "You darken $N soul!" );
+            snprintf( buf3, MSL, "$n darkens your soul!" );
             break;
          }
          break;
@@ -369,16 +369,16 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       {
          if( HAS_BODY( victim ) )
          {
-            xprintf( buf1, "$n smashes $N's body into messy flesh." );
-            xprintf( buf2, "You smash $N into messy flesh." );
-            xprintf( buf3, "$n smashes you into messy flesh!" );
+            snprintf( buf1, MSL, "$n smashes $N's body into messy flesh." );
+            snprintf( buf2, MSL, "You smash $N into messy flesh." );
+            snprintf( buf3, MSL, "$n smashes you into messy flesh!" );
             break;
          }
          else
          {
-            xprintf( buf1, "$n crushes $N to death!" );
-            xprintf( buf2, "You crush $N to death!" );
-            xprintf( buf3, "$n crushes you to death!" );
+            snprintf( buf1, MSL, "$n crushes $N to death!" );
+            snprintf( buf2, MSL, "You crush $N to death!" );
+            snprintf( buf3, MSL, "$n crushes you to death!" );
             break;
          }
          break;
@@ -387,16 +387,16 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       {
          if( HAS_MIND( victim ) )
          {
-            xprintf( buf1, "$n blasts $N with psionic power!" );
-            xprintf( buf2, "You blast $N with psionic power!" );
-            xprintf( buf3, "$n blasts you with psionic power!" );
+            snprintf( buf1, MSL, "$n blasts $N with psionic power!" );
+            snprintf( buf2, MSL, "You blast $N with psionic power!" );
+            snprintf( buf3, MSL, "$n blasts you with psionic power!" );
             break;
          }
          else
          {
-            xprintf( buf1, "$n blasts $N with psionic power!" );
-            xprintf( buf2, "You blast $N with psionic power!" );
-            xprintf( buf3, "$n blasts you with psionic power!" );
+            snprintf( buf1, MSL, "$n blasts $N with psionic power!" );
+            snprintf( buf2, MSL, "You blast $N with psionic power!" );
+            snprintf( buf3, MSL, "$n blasts you with psionic power!" );
             break;
          }
          break;
@@ -405,16 +405,16 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       {
          if( HAS_MIND( victim ) )
          {
-            xprintf( buf1, "$n steals $N's soul with divine power!" );
-            xprintf( buf2, "You steal $N's soul with divine power!" );
-            xprintf( buf3, "$n steals your soul with divine power!" );
+            snprintf( buf1, MSL, "$n steals $N's soul with divine power!" );
+            snprintf( buf2, MSL, "You steal $N's soul with divine power!" );
+            snprintf( buf3, MSL, "$n steals your soul with divine power!" );
             break;
          }
          else
          {
-            xprintf( buf1, "$n steals $N's soul with divine power!" );
-            xprintf( buf2, "You steal $N's soul with divine power!" );
-            xprintf( buf3, "$n steals your soul with divine power!" );
+            snprintf( buf1, MSL, "$n steals $N's soul with divine power!" );
+            snprintf( buf2, MSL, "You steal $N's soul with divine power!" );
+            snprintf( buf3, MSL, "$n steals your soul with divine power!" );
             break;
          }
          break;
@@ -438,11 +438,11 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       obj = create_object( get_obj_index( vnum ), 0 );
       obj->timer = number_range( 4, 7 );
 
-      xprintf( buf, obj->short_descr, name );
+      snprintf( buf, MSL, obj->short_descr, name );
       free_string( obj->short_descr );
       obj->short_descr = str_dup( buf );
 
-      xprintf( buf, obj->description, name );
+      snprintf( buf, MSL, obj->description, name );
       free_string( obj->description );
       obj->description = str_dup( buf );
 
@@ -485,10 +485,10 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
       dead = TRUE;
    if( sysdata.shownumbers == TRUE )
    {
-      xprintf_2( testerbuf, " @@l(@@W%i@@l)@@N", dam );
+      snprintf( testerbuf, MSL, " @@l(@@W%i@@l)@@N", dam );
    }
    else
-      xprintf_2( testerbuf, "%s", "" );
+      snprintf( testerbuf, MSL, "%s", "" );
 
    for( rtype = 0; rtype < MAX_REALM; rtype++ )
    {
@@ -528,19 +528,19 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
       dam_range -= 250;
    }
    punct = ( !stress ) ? '.' : '!';
-   xprintf( outercol, "%s%s",
+   snprintf( outercol, MSL, "%s%s",
             ( dam > 250 ? sp_dam_str[rtype].backcol : "" ),
             ( dam > 250 ? sp_dam_str[rtype].invertcol : sp_dam_str[rtype].basecol ) );
-   xprintf( innercol, "%s%s",
+   snprintf( innercol, MSL, "%s%s",
             ( dam > 250 ? sp_dam_str[rtype].backcol : "" ),
             ( dam > 500 ? sp_dam_str[rtype].stresscol :
               ( dam > 250 ? sp_dam_str[rtype].invertcol : sp_dam_str[rtype].basecol ) ) );
 
    catsymbuf[0] = '\0';
-   xprintf( symbuf, "%s", " " );
+   snprintf( symbuf, MSL, "%s", " " );
    for( ; dam_range > 0; dam_range -= 50 )
    {
-      xprintf( catsymbuf, sp_dam_str[rtype].formatter, outercol, innercol, outercol );
+      snprintf( catsymbuf, MSL, sp_dam_str[rtype].formatter, outercol, innercol, outercol );
       xcat( symbuf, catsymbuf );
    }
    xcat( symbuf, " " );
@@ -557,21 +557,21 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
    }
    if( obj == NULL )
    {
-      xprintf( buf1, "%s$n %s%s%s@@N $N %swith $s %s%c@@N%s",
+      snprintf( buf1, MSL, "%s$n %s%s%s@@N $N %swith $s %s%c@@N%s",
                sp_dam_str[rtype].basecol,
                symbuf,
                ( stress ? sp_dam_str[rtype].vp_stress : sp_dam_str[rtype].vp ),
                symbuf, sp_dam_str[rtype].basecol, attack, punct, testerbuf );
-      xprintf( buf2, "%sYou %s%s%s@@N $N %swith your %s%c@@N%s",
+      snprintf( buf2, MSL, "%sYou %s%s%s@@N $N %swith your %s%c@@N%s",
                sp_dam_str[rtype].basecol,
                symbuf,
                ( stress ? sp_dam_str[rtype].vs_stress : sp_dam_str[rtype].vs ),
                symbuf, sp_dam_str[rtype].basecol, attack, punct, testerbuf );
 /*	   if ( *str == '\'' )
-	    xprintf( buf3, "%s$n %s%s your%s%s $s %s%c@@N",col,col, vp,col, str+2, attack, punct);
+	    snprintf( buf3, MSL, "%s$n %s%s your%s%s $s %s%c@@N",col,col, vp,col, str+2, attack, punct);
 	   else
 */
-      xprintf( buf3, "%s$n %s%s%s %syou with $s %s%c@@N%s",
+      snprintf( buf3, MSL, "%s$n %s%s%s %syou with $s %s%c@@N%s",
                sp_dam_str[rtype].basecol,
                symbuf,
                ( stress ? sp_dam_str[rtype].vp_stress : sp_dam_str[rtype].vp ),
@@ -579,23 +579,23 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
    }
    else if( obj != NULL )
    {
-      xprintf( buf1, "%s$p %s%s%s@@N $N %swith a %s%c@@N",
+      snprintf( buf1, MSL, "%s$p %s%s%s@@N $N %swith a %s%c@@N",
                sp_dam_str[rtype].basecol,
                symbuf,
                ( stress ? sp_dam_str[rtype].vp_stress : sp_dam_str[rtype].vp ),
                symbuf, sp_dam_str[rtype].basecol, attack, punct );
 #if 0
-      xprintf( buf2, "%sYou %s%s%s@@N $N %swith your %s%c@@N%s",
+      snprintf( buf2, MSL, "%sYou %s%s%s@@N $N %swith your %s%c@@N%s",
                sp_dam_str[rtype].basecol,
                symbuf,
                ( stress ? sp_dam_str[rtype].vs_stress : sp_dam_str[rtype].vs ),
                symbuf, sp_dam_str[rtype].basecol, attack, punct, testerbuf );
 #endif
 /*	   if ( *str == '\'' )
-	    xprintf( buf3, "%s$n %s%s your%s%s $s %s%c@@N",col,col, vp,col, str+2, attack, punct);
+	    snprintf( buf3, MSL, "%s$n %s%s your%s%s $s %s%c@@N",col,col, vp,col, str+2, attack, punct);
 	   else
 */
-      xprintf( buf3, "%s$p %s%s%s %syou with $s %s%c@@N",
+      snprintf( buf3, MSL, "%s$p %s%s%s %syou with $s %s%c@@N",
                sp_dam_str[rtype].basecol,
                symbuf,
                ( stress ? sp_dam_str[rtype].vp_stress : sp_dam_str[rtype].vp ),
@@ -603,7 +603,7 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
    }
    else
    {
-      xprintf_2( log_buf, "%s", "Error in casting spell , sp_dam called with NULL obj and ch." );
+      snprintf( log_buf, (2 * MIL), "%s", "Error in casting spell , sp_dam called with NULL obj and ch." );
       monitor_chan( log_buf, MONITOR_DEBUG );
       return;
    }
@@ -798,7 +798,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    }
    else
    {
-      xprintf_2( log_buf, "Error, object %s casting spell, but not carried by anyone.", obj->short_descr );
+      snprintf( log_buf, (2 * MIL), "Error, object %s casting spell, but not carried by anyone.", obj->short_descr );
       monitor_chan( log_buf, MONITOR_DEBUG );
       return FALSE;
    }
@@ -932,7 +932,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
      if( dam > sysdata.damcap )
      {
         char buf[MAX_STRING_LENGTH];
-        xprintf( buf, "Spell: %d damage by %s, spell %s", dam,
+        snprintf( buf, MSL, "Spell: %d damage by %s, spell %s", dam,
                  ( obj == NULL ) ? ( IS_NPC( ch ) ? ch->short_descr : ch->name ) : obj->short_descr, skill_table[sn].name );
         if( ch->level < 82 )
          monitor_chan( buf, MONITOR_MAGIC );
@@ -1041,7 +1041,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       {
 
 
-         xprintf_2( log_buf, "%s killed by %s at %d",
+         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d",
                   ( IS_NPC( victim ) ? victim->short_descr : victim->name ),
                   ( IS_NPC( ch ) ? ch->short_descr : ch->name ), victim->in_room->vnum );
          log_string( log_buf );
@@ -1067,7 +1067,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       else
       {
          char name_buf[MAX_STRING_LENGTH];
-         xprintf( name_buf, "%s", ch->name );
+         snprintf( name_buf, MSL, "%s", ch->name );
          raw_kill( victim, name_buf );
       }
 

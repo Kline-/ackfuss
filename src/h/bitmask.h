@@ -23,7 +23,7 @@ bool free_bitmask P_((BITMASK *pBmask));
 void load_bitmask P_((BITMASK *pBmask, FILE *fp));
 char *save_bitmask P_((BITMASK *pBmask));
 void bv_to_bm P_((int list, BITMASK *mask));
-void debug_bitmask P_((BITMASK *pBmask));
+char *debug_bitmask P_((BITMASK *pBmask));
 void bm_test P_((void));
 
 #undef P_
