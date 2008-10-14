@@ -88,7 +88,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   }
   if( ch->pcdata->quest_info->wait_time > 0 )
   {
-   xprintf(buf,"You must wait %d more minute%s before taking another quest.\n\r",ch->pcdata->quest_info->wait_time,ch->pcdata->quest_info->wait_time > 1 ? "s" : "");
+   snprintf(buf,MSL,"You must wait %d more minute%s before taking another quest.\n\r",ch->pcdata->quest_info->wait_time,ch->pcdata->quest_info->wait_time > 1 ? "s" : "");
    send_to_char(buf,ch);
    return;
   }
@@ -182,11 +182,11 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   }
   ch->exp -= pexp;
 
-  xprintf(buf,"Giving up on this quest has cost you %d qp, %d exp, %s.\n\r",pqp,pexp,cost_to_money(money_to_value(ch,mbuf)));
+  snprintf(buf,MSL,"Giving up on this quest has cost you %d qp, %d exp, %s.\n\r",pqp,pexp,cost_to_money(money_to_value(ch,mbuf)));
   send_to_char(buf,ch);
   ch->pcdata->records->mquest_f++;
   ch->pcdata->quest_info->wait_time = number_range(10,15); /* higher wait time on giveup */
-  xprintf(buf,"You must wait %d minutes before your next quest.\n\r",ch->pcdata->quest_info->wait_time);
+  snprintf(buf,MSL,"You must wait %d minutes before your next quest.\n\r",ch->pcdata->quest_info->wait_time);
   send_to_char(buf,ch);
   mquest_clear(ch,FALSE);
   do_save(ch,"auto");
@@ -202,7 +202,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    return;
   }
   if( ch->pcdata->quest_info->quest_type == QUEST_KILLING || ch->pcdata->quest_info->quest_type == QUEST_KILLING_R )
-   xprintf(arg2,"1");
+   snprintf(arg2,MIL,"1");
   hint = atoi(arg2);
   if( !is_number(arg2) )
   {
@@ -232,7 +232,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL || ch->pcdata->quest_info->quest_type == QUEST_KILLING )
   {
    MOB_INDEX_DATA *mob = get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[hint-1]);
-   xprintf(buf,"%s can be found somewhere in %s.\n\r",mob->short_descr,mob->area->name);
+   snprintf(buf,MSL,"%s can be found somewhere in %s.\n\r",mob->short_descr,mob->area->name);
    send_to_char(buf,ch);
   }
   else if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R || ch->pcdata->quest_info->quest_type == QUEST_KILLING_R )
@@ -247,13 +247,13 @@ void do_mquest( CHAR_DATA *ch, char *argument )
     if( mob->race == ch->pcdata->quest_info->quest_mob_vnum[hint-1] )
      break;
    }
-   xprintf(buf,"%ss can be found somewhere in %s.\n\r",race_table[mob->race].race_title,mob->in_room->area->name);
+   snprintf(buf,MSL,"%ss can be found somewhere in %s.\n\r",race_table[mob->race].race_title,mob->in_room->area->name);
    send_to_char(buf,ch);
   }
   else if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_RETRIEVE || ch->pcdata->quest_info->quest_type == QUEST_RETRIEVAL )
   {
    OBJ_INDEX_DATA *ob = get_obj_index(ch->pcdata->quest_info->quest_item_vnum[hint-1]);
-   xprintf(buf,"%s can be found somewhere in %s.\n\r",ob->short_descr,ob->area->name);
+   snprintf(buf,MSL,"%s can be found somewhere in %s.\n\r",ob->short_descr,ob->area->name);
    send_to_char(buf,ch);
   }
   ch->pcdata->quest_info->quest_hint[hint-1] = TRUE;
@@ -268,7 +268,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    send_to_char("You are not currently on a quest!\n\r",ch);
    if( ch->pcdata->quest_info->wait_time > 0 )
    {
-    xprintf(buf,"You must wait %d more minute%s before taking another quest.\n\r",ch->pcdata->quest_info->wait_time,ch->pcdata->quest_info->wait_time > 1 ? "s" : "");
+    snprintf(buf,MSL,"You must wait %d more minute%s before taking another quest.\n\r",ch->pcdata->quest_info->wait_time,ch->pcdata->quest_info->wait_time > 1 ? "s" : "");
     send_to_char(buf,ch);
    }
    return;
@@ -320,14 +320,14 @@ void do_mquest( CHAR_DATA *ch, char *argument )
         ch->pcdata->quest_info->amount[i]--;
         if( ch->pcdata->quest_info->amount[i] == 0 )
         {
-         xprintf(buf,"You have now handed in all the %s you needed for your quest.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr);
+         snprintf(buf,MSL,"You have now handed in all the %s you needed for your quest.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr);
          send_to_char(buf,ch);
         }
        }
       }
       if( x > 0 && ch->pcdata->quest_info->amount[i] != 0 )
       {
-       xprintf(buf,"%s (%d) was handed into the questmaster.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,x);
+       snprintf(buf,MSL,"%s (%d) was handed into the questmaster.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,x);
        send_to_char(buf,ch);
       }
      }
@@ -390,7 +390,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
   return;
  }
 
- xprintf(buf,"@@y%s@@b's current quest status:@@N\n\r",victim->name);
+ snprintf(buf,MSL,"@@y%s@@b's current quest status:@@N\n\r",victim->name);
  send_to_char(buf,ch);
 
  switch( victim->pcdata->quest_info->quest_type )
@@ -401,12 +401,12 @@ void do_qstat( CHAR_DATA *ch, char *argument )
   case QUEST_RETRIEVAL:
    if( victim->pcdata->quest_info->quest_item_vnum[0] > -1 )
    {
-    xprintf(buf,"%s is seeking item %d-%s...\n\r",PERS(victim,ch),victim->pcdata->quest_info->quest_item_vnum[0],get_obj_index(victim->pcdata->quest_info->quest_item_vnum[0])->short_descr);
+    snprintf(buf,MSL,"%s is seeking item %d-%s...\n\r",PERS(victim,ch),victim->pcdata->quest_info->quest_item_vnum[0],get_obj_index(victim->pcdata->quest_info->quest_item_vnum[0])->short_descr);
     send_to_char(buf,ch);
 
     if( victim->pcdata->quest_info->amount[0] > 0 )
     {
-     xprintf(buf,"...and must retrieve %d more of them.\n\r",victim->pcdata->quest_info->amount[0]);
+     snprintf(buf,MSL,"...and must retrieve %d more of them.\n\r",victim->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
     }
    }
@@ -416,12 +416,12 @@ void do_qstat( CHAR_DATA *ch, char *argument )
   case QUEST_KILLING:
    if( victim->pcdata->quest_info->quest_mob_vnum[0] > -1 )
    {
-    xprintf(buf,"%s is seeking mob %d-%s...\n\r",PERS(victim,ch),victim->pcdata->quest_info->quest_mob_vnum[0],get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
+    snprintf(buf,MSL,"%s is seeking mob %d-%s...\n\r",PERS(victim,ch),victim->pcdata->quest_info->quest_mob_vnum[0],get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
     send_to_char(buf,ch);
 
     if( victim->pcdata->quest_info->amount[0] > 0 )
     {
-     xprintf(buf,"...and must slay %d more of them.\n\r",victim->pcdata->quest_info->amount[0]);
+     snprintf(buf,MSL,"...and must slay %d more of them.\n\r",victim->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
     }
    }
@@ -434,7 +434,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
    {
     if( victim->pcdata->quest_info->quest_mob_vnum[i] > -1 )
     {
-     xprintf(buf,"Target #%d: %5d-%s (%d)\n\r",i+1,victim->pcdata->quest_info->quest_mob_vnum[i],get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->pcdata->quest_info->amount[i]);
+     snprintf(buf,MSL,"Target #%d: %5d-%s (%d)\n\r",i+1,victim->pcdata->quest_info->quest_mob_vnum[i],get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->pcdata->quest_info->amount[i]);
      send_to_char(buf,ch);
     }
    }
@@ -445,7 +445,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
    {
     if( victim->pcdata->quest_info->quest_item_vnum[i] > -1 )
     {
-     xprintf(buf,"Item #%d: %5d-%s (%d)\n\r",i+1,victim->pcdata->quest_info->quest_item_vnum[i],get_obj_index(victim->pcdata->quest_info->quest_item_vnum[i])->short_descr,victim->pcdata->quest_info->amount[i]);
+     snprintf(buf,MSL,"Item #%d: %5d-%s (%d)\n\r",i+1,victim->pcdata->quest_info->quest_item_vnum[i],get_obj_index(victim->pcdata->quest_info->quest_item_vnum[i])->short_descr,victim->pcdata->quest_info->amount[i]);
      send_to_char(buf,ch);
     }
    }
@@ -453,12 +453,12 @@ void do_qstat( CHAR_DATA *ch, char *argument )
   case QUEST_KILLING_R:
    if( victim->pcdata->quest_info->quest_mob_vnum[0] > -1 )
    {
-    xprintf(buf,"%s is seeking %s mobs...\n\r",PERS(victim,ch),race_table[victim->pcdata->quest_info->quest_mob_vnum[0]].race_title);
+    snprintf(buf,MSL,"%s is seeking %s mobs...\n\r",PERS(victim,ch),race_table[victim->pcdata->quest_info->quest_mob_vnum[0]].race_title);
     send_to_char(buf,ch);
 
     if( victim->pcdata->quest_info->amount[0] > 0 )
     {
-     xprintf(buf,"...and must slay %d more of them.\n\r",victim->pcdata->quest_info->amount[0]);
+     snprintf(buf,MSL,"...and must slay %d more of them.\n\r",victim->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
     }
    }
@@ -471,13 +471,13 @@ void do_qstat( CHAR_DATA *ch, char *argument )
    {
     if( victim->pcdata->quest_info->quest_mob_vnum[i] > -1 )
     {
-     xprintf(buf,"Target #%d: %s (%d)\n\r",i+1,race_table[victim->pcdata->quest_info->quest_mob_vnum[i]].race_title,victim->pcdata->quest_info->amount[i]);
+     snprintf(buf,MSL,"Target #%d: %s (%d)\n\r",i+1,race_table[victim->pcdata->quest_info->quest_mob_vnum[i]].race_title,victim->pcdata->quest_info->amount[i]);
      send_to_char(buf,ch);
     }
    }
    break;
  }
- xprintf(buf,"QP:   %d\n\rGold: %s\n\rExp:  %d\n\r",victim->pcdata->quest_info->quest_reward[QUEST_REWARD_QP],cost_to_money(victim->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD]),victim->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP]);
+ snprintf(buf,MSL,"QP:   %d\n\rGold: %s\n\rExp:  %d\n\r",victim->pcdata->quest_info->quest_reward[QUEST_REWARD_QP],cost_to_money(victim->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD]),victim->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP]);
  send_to_char(buf,ch);
  return;
 }
@@ -490,20 +490,20 @@ void mquest_info( CHAR_DATA *ch )
  switch( ch->pcdata->quest_info->quest_type )
  {
   default:
-   xprintf(buf,"quest_type is a value of %d, how'd that happen? Tell an imm, thanks!\n\r",ch->pcdata->quest_info->quest_type);
+   snprintf(buf,MSL,"quest_type is a value of %d, how'd that happen? Tell an imm, thanks!\n\r",ch->pcdata->quest_info->quest_type);
    send_to_char(buf,ch);
    break;
   case QUEST_RETRIEVAL:
    if( ch->pcdata->quest_info->quest_item_vnum[0] > -1 )
    {
-    xprintf(buf,"You are seeking the item known as %s@@N.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[0])->short_descr);
+    snprintf(buf,MSL,"You are seeking the item known as %s@@N.\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[0])->short_descr);
     send_to_char(buf,ch);
 
     if( ch->pcdata->quest_info->amount[0] > 0 )
     {
-     xprintf(buf,"Your quest contract states that you must retrieve %d more of them.\n\r",ch->pcdata->quest_info->amount[0]);
+     snprintf(buf,MSL,"Your quest contract states that you must retrieve %d more of them.\n\r",ch->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
-     xprintf(buf,"@@eHint:@@N They can be found in %s@@N!\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->area->name);
+     snprintf(buf,MSL,"@@eHint:@@N They can be found in %s@@N!\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->area->name);
      if( ch->pcdata->quest_info->quest_hint[0] )
       send_to_char(buf,ch);
     }
@@ -514,14 +514,14 @@ void mquest_info( CHAR_DATA *ch )
   case QUEST_KILLING:
    if( ch->pcdata->quest_info->quest_mob_vnum[0] > -1 )
    {
-    xprintf(buf,"You are seeking out the creature known as %s@@N.\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
+    snprintf(buf,MSL,"You are seeking out the creature known as %s@@N.\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
     send_to_char(buf,ch);
 
     if( ch->pcdata->quest_info->amount[0] > 0 )
     {
-     xprintf(buf,"Your quest contract states that you must slay %d more of them.\n\r",ch->pcdata->quest_info->amount[0]);
+     snprintf(buf,MSL,"Your quest contract states that you must slay %d more of them.\n\r",ch->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
-     xprintf(buf,"@@eHint:@@N They can be found in %s@@N!\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area->name);
+     snprintf(buf,MSL,"@@eHint:@@N They can be found in %s@@N!\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area->name);
      if( ch->pcdata->quest_info->quest_hint[0] )
       send_to_char(buf,ch);
     }
@@ -537,12 +537,12 @@ void mquest_info( CHAR_DATA *ch )
    {
     if( ch->pcdata->quest_info->quest_mob_vnum[i] > -1 )
     {
-     xprintf(buf,"Target #%d: %s (%d)",i+1,get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,ch->pcdata->quest_info->amount[i]);
+     snprintf(buf,MSL,"Target #%d: %s (%d)",i+1,get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,ch->pcdata->quest_info->amount[i]);
      send_to_char(buf,ch);
      if( ch->pcdata->quest_info->quest_hint[i] )
-      xprintf(buf," [%s]\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area->name);
+      snprintf(buf,MSL," [%s]\n\r",get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area->name);
      else
-      xprintf(buf,"\n\r");
+      snprintf(buf,MSL,"\n\r");
      send_to_char(buf,ch);
     }
    }
@@ -553,12 +553,12 @@ void mquest_info( CHAR_DATA *ch )
    {
     if( ch->pcdata->quest_info->quest_item_vnum[i] > -1 )
     {
-     xprintf(buf,"Item #%d: %s (%d)",i+1,get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,ch->pcdata->quest_info->amount[i]);
+     snprintf(buf,MSL,"Item #%d: %s (%d)",i+1,get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr,ch->pcdata->quest_info->amount[i]);
      send_to_char(buf,ch);
      if( ch->pcdata->quest_info->quest_hint[i] )
-      xprintf(buf," [%s]\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->area->name);
+      snprintf(buf,MSL," [%s]\n\r",get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->area->name);
      else
-      xprintf(buf,"\n\r");
+      snprintf(buf,MSL,"\n\r");
      send_to_char(buf,ch);
     }
    }
@@ -566,13 +566,13 @@ void mquest_info( CHAR_DATA *ch )
   case QUEST_KILLING_R:
    if( ch->pcdata->quest_info->quest_mob_vnum[0] > -1 )
    {
-    xprintf(buf,"You are seeking out %s creatures.\n\r",race_table[ch->pcdata->quest_info->quest_mob_vnum[0]].race_title);
+    snprintf(buf,MSL,"You are seeking out %s creatures.\n\r",race_table[ch->pcdata->quest_info->quest_mob_vnum[0]].race_title);
     send_to_char(buf,ch);
 
     if( ch->pcdata->quest_info->amount[0] > 0 )
     {
      CHAR_DATA *mob;
-     xprintf(buf,"Your quest contract states that you must slay %d more of them.\n\r",ch->pcdata->quest_info->amount[0]);
+     snprintf(buf,MSL,"Your quest contract states that you must slay %d more of them.\n\r",ch->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
      for( mob = first_char; mob != NULL; mob = mob->next )
      {
@@ -585,7 +585,7 @@ void mquest_info( CHAR_DATA *ch )
      }
      if( mob != NULL )
      {
-      xprintf(buf,"@@eHint:@@N They can be found in %s@@N!\n\r",mob->in_room->area->name);
+      snprintf(buf,MSL,"@@eHint:@@N They can be found in %s@@N!\n\r",mob->in_room->area->name);
       if( ch->pcdata->quest_info->quest_hint[0] )
        send_to_char(buf,ch);
      }
@@ -612,12 +612,12 @@ void mquest_info( CHAR_DATA *ch )
       if( mob->race == ch->pcdata->quest_info->quest_mob_vnum[i] )
        break;
      }
-     xprintf(buf,"Target #%d: %s (%d)",i+1,race_table[ch->pcdata->quest_info->quest_mob_vnum[i]].race_title,ch->pcdata->quest_info->amount[i]);
+     snprintf(buf,MSL,"Target #%d: %s (%d)",i+1,race_table[ch->pcdata->quest_info->quest_mob_vnum[i]].race_title,ch->pcdata->quest_info->amount[i]);
      send_to_char(buf,ch);
      if( ch->pcdata->quest_info->quest_hint[i] && mob != NULL )
-      xprintf(buf," [%s]\n\r",mob->in_room->area->name);
+      snprintf(buf,MSL," [%s]\n\r",mob->in_room->area->name);
      else
-      xprintf(buf,"\n\r");
+      snprintf(buf,MSL,"\n\r");
      send_to_char(buf,ch);
     }
     else
@@ -644,7 +644,7 @@ void mquest_complete_message( CHAR_DATA *ch )
 
   if( hint > 0 )
   {
-   xprintf(buf,"Quest reward reduced for the use of %d hint%s.\n\r",hint,hint > 1 ? "s" : "");
+   snprintf(buf,MSL,"Quest reward reduced for the use of %d hint%s.\n\r",hint,hint > 1 ? "s" : "");
    send_to_char(buf,ch);
   }
 
@@ -662,7 +662,7 @@ void mquest_complete_message( CHAR_DATA *ch )
    hint--;
   }
 
-  xprintf(buf,"Quest Complete. You have earned %d qp, %d experience, %s!\n\r",ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP],ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP],cost_to_money(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD]));
+  snprintf(buf,MSL,"Quest Complete. You have earned %d qp, %d experience, %s!\n\r",ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP],ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP],cost_to_money(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD]));
   send_to_char(buf,ch);
 
   ch->pcdata->quest_points += ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
@@ -827,7 +827,7 @@ void mquest_clear( CHAR_DATA *ch, bool error )
  if( ch->pcdata->quest_info->wait_time == 0 && !error )
  {
   ch->pcdata->quest_info->wait_time = 5;
-  xprintf(buf,"You must wait %d minutes before your next quest.\n\r",ch->pcdata->quest_info->wait_time);
+  snprintf(buf,MSL,"You must wait %d minutes before your next quest.\n\r",ch->pcdata->quest_info->wait_time);
   send_to_char(buf,ch);
  }
  do_save(ch,"auto");

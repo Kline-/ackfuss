@@ -603,7 +603,7 @@ void do_mptransfer( CHAR_DATA * ch, char *argument )
              && d->character != ch && d->character->in_room != NULL && can_see( ch, d->character ) )
          {
             char buf[MAX_STRING_LENGTH];
-            xprintf( buf, "%s %s", d->character->name, arg2 );
+            snprintf( buf, MSL, "%s %s", d->character->name, arg2 );
             do_transfer( ch, buf );
          }
       }

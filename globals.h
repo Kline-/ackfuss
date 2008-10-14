@@ -150,13 +150,13 @@ extern const struct stance_app_type stance_app[MAX_STANCE];
 /*
  * Global variables.
  */
-extern char bug_buf[];
+extern char bug_buf[2 * MAX_INPUT_LENGTH];
 extern time_t current_time;
 extern bool fLogAll;
 extern FILE *fpReserve;
 extern KILL_DATA kill_table[];
-extern char log_buf[];
-extern char testerbuf[];
+extern char log_buf[2 * MAX_INPUT_LENGTH];
+extern char testerbuf[MSL];
 extern TIME_INFO_DATA time_info;
 extern WEATHER_DATA weather_info;
 extern DESCRIPTOR_DATA *descriptor_list;

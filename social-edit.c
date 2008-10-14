@@ -78,7 +78,7 @@ void load_social_table(  )
    FILE *fp;
    int i;
 
-   xprintf_2(log_buf,"Loading %s",SOCIAL_FILE);
+   snprintf(log_buf,(2 * MIL),"Loading %s",SOCIAL_FILE);
    log_f(log_buf);
 
    fp = file_open( SOCIAL_FILE, "r" );
@@ -278,7 +278,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
 
    else if( !str_cmp( cmd, "show" ) )  /* Show a certain social */
    {
-      xprintf( buf, "Social: %s\n\r"
+      snprintf( buf, MSL, "Social: %s\n\r"
                "(cnoarg) No argument given, character sees:\n\r"
                "%s\n\r\n\r"
                "(onoarg) No argument given, others see:\n\r"

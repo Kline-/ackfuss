@@ -310,30 +310,30 @@ void say_spell( CHAR_DATA * ch, int sn )
    switch ( skill_table[sn].target )
    {
       case TAR_IGNORE:
-         xprintf( msg, "$n closes $s eyes, and prays." );
-         xprintf( msg2, "You close your eyes and pray.\n\r" );
+         snprintf( msg, MSL, "$n closes $s eyes, and prays." );
+         snprintf( msg2, MSL, "You close your eyes and pray.\n\r" );
          break;
       case TAR_CHAR_OFFENSIVE:
-         xprintf( msg, "$n's eyes glow red for an instant!" );
-         xprintf( msg2, "Your eyes glow red for an instant!\n\r" );
+         snprintf( msg, MSL, "$n's eyes glow red for an instant!" );
+         snprintf( msg2, MSL, "Your eyes glow red for an instant!\n\r" );
          break;
       case TAR_CHAR_DEFENSIVE:
-         xprintf( msg, "$n falls silent as $e meditates." );
-         xprintf( msg2, "You become silent as you meditate.\n\r" );
+         snprintf( msg, MSL, "$n falls silent as $e meditates." );
+         snprintf( msg2, MSL, "You become silent as you meditate.\n\r" );
          break;
       case TAR_CHAR_SELF:
-         xprintf( msg, "$n motions toward $mself." );
-         xprintf( msg2, "You motion towards yourself.\n\r" );
+         snprintf( msg, MSL, "$n motions toward $mself." );
+         snprintf( msg2, MSL, "You motion towards yourself.\n\r" );
          break;
       case TAR_OBJ_INV:
-         xprintf( msg, "$n's hands briefly glow magically!" );
-         xprintf( msg2, "Your hands briefly glow magically!\n\r" );
+         snprintf( msg, MSL, "$n's hands briefly glow magically!" );
+         snprintf( msg2, MSL, "Your hands briefly glow magically!\n\r" );
    }
    act( msg, ch, NULL, ch, TO_NOTVICT );
    send_to_char( msg2, ch );
 
-   xprintf( buf2, "$n utters the words, '%s'.", buf );
-   xprintf( buf, "$n utters the words, '%s'.", skill_table[sn].name );
+   snprintf( buf2, MSL, "$n utters the words, '%s'.", buf );
+   snprintf( buf, MSL, "$n utters the words, '%s'.", skill_table[sn].name );
 
    for( rch = ch->in_room->first_person; rch; rch = rch->next_in_room )
    {
@@ -368,7 +368,7 @@ bool saves_spell( int level, CHAR_DATA * victim )
    if( number_percent(  ) < save )
       saved = TRUE;
 #if 0
-   xprintf( log_buf, "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
+   snprintf( log_buf, "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
             victim->name, get_psuedo_level( victim ),
             wis_app[get_curr_wis( victim )].spell_save,
             victim->saving_throw, save, level, ( saved ? "@@aSAVED@@N" : "@@eFAILED@@N" ) );
@@ -730,7 +730,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
        && ( sn != skill_lookup( "cure serious" ) )
        && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
    {
-      xprintf_2( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
+      snprintf( log_buf, (2 * MIL), "%s typed %s, Spell %s, room %s(%d), target %s",
                ch->name, typed, skill_table[sn].name,
                ch->in_room->name, ch->in_room->vnum, ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
       monitor_chan( log_buf, MONITOR_MAGIC );
@@ -773,7 +773,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
              && ( sn != skill_lookup( "cure serious" ) )
              && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
          {
-            xprintf_2( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
+            snprintf( log_buf, (2 * MIL), "%s typed %s, Spell %s, room %s(%d), target %s",
                      ch->name, typed, skill_table[sn].name,
                      ch->in_room->name, ch->in_room->vnum,
                      ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
@@ -820,7 +820,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
              && ( sn != skill_lookup( "cure serious" ) )
              && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
          {
-            xprintf_2( log_buf, "%s typed %s, Spell %s, room %s(%d), target %s",
+            snprintf( log_buf, (2 * MIL), "%s typed %s, Spell %s, room %s(%d), target %s",
                      ch->name, typed, skill_table[sn].name,
                      ch->in_room->name, ch->in_room->vnum,
                      ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
@@ -1416,7 +1416,7 @@ bool spell_create_water( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
       if( !is_name( "water", ob->name ) )
       {
          char buf[MAX_STRING_LENGTH];
-         xprintf( buf, "%s water", ob->name );
+         snprintf( buf, MSL, "%s water", ob->name );
          free_string( ob->name );
          ob->name = str_dup( buf );
       }
@@ -2498,19 +2498,19 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    char buf[MAX_STRING_LENGTH];
    AFFECT_DATA *paf;
 
-   xprintf( buf,
-            "@@NObject '%s' is @@etype@@N %s, @@aextra flags@@N %s.\n\r@@mWorn@@N: %s, @@cWeight@@N: %d, @@lDurability@@N: %d/%d (%1.0f%), @@yvalue@@N: %s @@N, @@rlevel@@N: %d.\n\r",
+   snprintf( buf, MSL,
+            "@@NObject '%s' is @@etype@@N %s, @@aextra flags@@N %s.\n\r@@mWorn@@N: %s, @@cWeight@@N: %d, @@lDurability@@N: %d/%d (%1.0f%%), @@yvalue@@N: %s @@N, @@rlevel@@N: %d.\n\r",
             ob->short_descr,
             item_type_name( ob ),
             extra_bit_name( ob->extra_flags ),
-            bit_table_lookup( tab_wear_flags, ob->wear_flags ), ob->weight, ob->durability == 1 ? 0 : ob->durability, ob->max_durability,  ob->durability == 1 ? 0 : (float)(((float)ob->durability / (float)ob->max_durability) * 100), cost_to_money( ob->cost ), ob->level );
+            bit_table_lookup( tab_wear_flags, ob->wear_flags ), ob->weight, ob->durability == 1 ? 0 : ob->durability, ob->max_durability, ob->durability == 1 ? 0 : (float)(((float)ob->durability / (float)ob->max_durability) * 100), cost_to_money( ob->cost ), ob->level );
    send_to_char( buf, ch );
 
    switch ( ob->item_type )
    {
       case ITEM_SCROLL:
       case ITEM_POTION:
-         xprintf( buf, "Level %d spells of:", ob->value[0] );
+         snprintf( buf, MSL, "Level %d spells of:", ob->value[0] );
          send_to_char( buf, ch );
 
          if( ob->value[1] >= 0 && ob->value[1] < MAX_SKILL )
@@ -2539,7 +2539,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
 
       case ITEM_WAND:
       case ITEM_STAFF:
-         xprintf( buf, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
+         snprintf( buf, MSL, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
          send_to_char( buf, ch );
 
          if( ob->value[3] >= 0 && ob->value[3] < MAX_SKILL )
@@ -2553,13 +2553,13 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
          break;
 
       case ITEM_WEAPON:
-        xprintf( buf, "Damage is %d to %d (average %d). Speed is %4.2f (%4.2f DPS).\n\r",
+        snprintf( buf, MSL, "Damage is %d to %d (average %d). Speed is %4.2f (%4.2f DPS).\n\r",
             ob->value[1], ob->value[2] , (ob->value[1] + ob->value[2]) / 2, ob->speed, ((ob->value[1] + ob->value[2])/2) / ob->speed);
          send_to_char(buf,ch);
          break;
 
       case ITEM_ARMOR:
-         xprintf( buf, "Armor class is %d.\n\r", ob->value[0] );
+         snprintf( buf, MSL, "Armor class is %d.\n\r", ob->value[0] );
          send_to_char( buf, ch );
          break;
    }
@@ -2568,7 +2568,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    {
       if( paf->location != APPLY_NONE && paf->modifier != 0 )
       {
-         xprintf( buf, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
+         snprintf( buf, MSL, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
          send_to_char( buf, ch );
       }
    }
@@ -2730,13 +2730,13 @@ bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
       if( in_obj->carried_by != NULL )
       {
          found = TRUE;
-         xprintf( buf, "%s carried by %s.\n\r",
+         snprintf( buf, MSL, "%s carried by %s.\n\r",
                   ob->short_descr, can_see( ch, in_obj->carried_by ) ? PERS( in_obj->carried_by, ch ) : "someone" );
       }
       else
       {
          found = TRUE;
-         xprintf( buf, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+         snprintf( buf, MSL, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
       }
 
       buf[0] = UPPER( buf[0] );
@@ -3074,7 +3074,7 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    char_from_room( victim );
    char_to_room( victim, ch->in_room );
    act( "$n arrives suddenly.", victim, NULL, NULL, TO_ROOM );
-   xprintf( buf, "%s has summoned you!!", ch->name );
+   snprintf( buf, MSL, "%s has summoned you!!", ch->name );
    send_to_char( buf, victim );
    do_look( victim, "auto" );
    return TRUE;
@@ -3131,8 +3131,8 @@ bool spell_ventriloquate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
 
    target_name = one_argument( target_name, speaker );
 
-   xprintf( buf1, "%s says '%s'.\n\r", speaker, target_name );
-   xprintf( buf2, "Someone makes %s say '%s'.\n\r", speaker, target_name );
+   snprintf( buf1, MSL, "%s says '%s'.\n\r", speaker, target_name );
+   snprintf( buf2, MSL, "Someone makes %s say '%s'.\n\r", speaker, target_name );
    buf1[0] = UPPER( buf1[0] );
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
@@ -4222,13 +4222,13 @@ bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
       if( in_obj->carried_by != NULL )
       {
          found = TRUE;
-         xprintf( buf, "%s carried by %s.\n\r",
+         snprintf( buf, MSL, "%s carried by %s.\n\r",
                   ob->short_descr, can_see( ch, in_obj->carried_by ) ? PERS( in_obj->carried_by, ch ) : "someone" );
       }
       else
       {
          found = TRUE;
-         xprintf( buf, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+         snprintf( buf, MSL, "%s in %s.\n\r", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
       }
 
       buf[0] = UPPER( buf[0] );
@@ -4394,7 +4394,7 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    char buf[MAX_STRING_LENGTH];
    AFFECT_DATA *paf;
 
-   xprintf( buf,
+   snprintf( buf, MSL,
             "Object '%s' is type %s, extra flags %s.\n\rWeight is %d.\n\r",
             ob->name, item_type_name( ob ), extra_bit_name( ob->extra_flags ), ob->weight );
    send_to_char( buf, ch );
@@ -4403,7 +4403,7 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    {
       case ITEM_SCROLL:
       case ITEM_POTION:
-         xprintf( buf, "Level %d spells of:", ob->value[0] );
+         snprintf( buf, MSL, "Level %d spells of:", ob->value[0] );
          send_to_char( buf, ch );
 
          if( ob->value[1] >= 0 && ob->value[1] < MAX_SKILL )
@@ -4432,7 +4432,7 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 
       case ITEM_WAND:
       case ITEM_STAFF:
-         xprintf( buf, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
+         snprintf( buf, MSL, "Has %d(%d) charges of level %d", ob->value[1], ob->value[2], ob->value[0] );
          send_to_char( buf, ch );
 
          if( ob->value[3] >= 0 && ob->value[3] < MAX_SKILL )
@@ -4446,12 +4446,12 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
          break;
 
       case ITEM_WEAPON:
-         xprintf( buf, " Average damage is %d.\n\r", ( ob->value[1] + ob->value[2] ) / 2 );
+         snprintf( buf, MSL, " Average damage is %d.\n\r", ( ob->value[1] + ob->value[2] ) / 2 );
          send_to_char( buf, ch );
          break;
 
       case ITEM_ARMOR:
-         xprintf( buf, "Armor class is %d.\n\r", ob->value[0] );
+         snprintf( buf, MSL, "Armor class is %d.\n\r", ob->value[0] );
          send_to_char( buf, ch );
          break;
    }
@@ -4460,7 +4460,7 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    {
       if( paf->location != APPLY_NONE && paf->modifier != 0 )
       {
-         xprintf( buf, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
+         snprintf( buf, MSL, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
          send_to_char( buf, ch );
       }
    }
@@ -4834,10 +4834,10 @@ bool spell_beacon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    }
 
    ob = create_object( get_obj_index( OBJ_VNUM_BEACON ), level );
-   xprintf( buf, "%s", arg );
+   snprintf( buf, MSL, "%s", arg );
    free_string( ob->name );
    ob->name = str_dup( arg );
-   xprintf( buf, "%s", ch->name );
+   snprintf( buf, MSL, "%s", ch->name );
    free_string( ob->owner );
    ob->owner = str_dup( buf );
    ob->timer = 20 + (level / 3);
@@ -6087,7 +6087,7 @@ bool spell_restoration( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       ch->pcdata->super->energy = ch->pcdata->super->energy_max;
 
    send_to_char( "@@eTHe life force of tha captured soul restores you!\n\r", ch );
-   xprintf( buf, " %s has used a restoration spell.\n\r", ch->name );
+   snprintf( buf, MSL, " %s has used a restoration spell.\n\r", ch->name );
    monitor_chan( buf, MONITOR_BAD );
    return TRUE;
 }
@@ -6781,7 +6781,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
       char msg_buf[MSL];
 
 
-      xprintf( msg_buf, "\n\r%s\n\r", "Fighting Stances available to you:\n\r" );
+      snprintf( msg_buf, MSL, "\n\r%s\n\r", "Fighting Stances available to you:\n\r" );
 
       for( i = 0; i < MAX_STANCE; i++ )
       {
@@ -6789,70 +6789,70 @@ void do_stance( CHAR_DATA * ch, char *argument )
          switch ( i )
          {
             case STANCE_WARRIOR:
-               xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+               snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_CASTER:
                if( ( ch->lvl[0] > 50 ) /* mage */
                    || ( ch->lvl[1] > 70 ) /* cleric */
                    || ( ch->lvl[4] > 60 ) )  /* psi */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_WIZARD:
                if( ( ch->lvl2[0] > 20 )   /* sorc */
                    || ( ch->lvl2[3] > 40 )   /* necro */
                    || ( ch->lvl2[4] > 60 ) ) /* monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_MAGI:
                if( ( ch->adept_level > 10 ) )   /*adept */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_AMBUSH:
                if( ch->lvl2[1] > 30 )  /* assassin */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_AC_BEST:
                if( ( ch->lvl2[2] > 65 )   /* knight */
                    || ( ch->lvl2[4] > 30 ) ) /* monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_HR_BEST:
                if( ( ch->lvl2[2] > 45 )   /* knight */
                    || ( ch->lvl2[4] > 20 ) ) /* monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_DR_BEST:
                if( ( ch->lvl2[2] > 35 )   /* knight */
                    || ( ch->lvl2[4] > 10 ) ) /* monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_AC_WORST:
                if( ch->lvl2[4] > 45 )  /* monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_HR_WORST:
                if( ch->lvl2[4] > 60 )  /* monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_DR_WORST:
                if( ch->lvl2[4] > 70 )  /* monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_SUPER_FIGHTER:
                if( ( ch->lvl2[4] > 79 ) && ( ch->lvl2[2] > 79 ) ) /* both knight and monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
             case STANCE_SUPER_SPEED:
                if( ( ch->lvl2[4] > 70 ) && ( ch->lvl2[2] > 70 ) ) /* both knight and monk */
-                  xprintf( cat_buf, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
                break;
 
          }
 
          xcat( msg_buf, cat_buf );
-         xprintf( cat_buf, "%s", "" );
+         snprintf( cat_buf, MSL, "%s", "" );
       }
-      xprintf( cat_buf, "%s",
+      snprintf( cat_buf, MSL, "%s",
                "Type stance <stance name> to change your current fighting stance.\n\r You may place your current Stance in your prompt with a \%s\n\r" );
       xcat( msg_buf, cat_buf );
       send_to_char( msg_buf, ch );
@@ -7010,9 +7010,9 @@ void do_stance( CHAR_DATA * ch, char *argument )
             ch->stance_hr_mod = stance_app[i].hr_mod * get_psuedo_level( ch ) / 10;
 
          ch->stance = i;
-         xprintf( stance_buf, "$n assumes the Stance of the %s!", stance_app[i].name );
+         snprintf( stance_buf, MSL, "$n assumes the Stance of the %s!", stance_app[i].name );
          act( stance_buf, ch, NULL, NULL, TO_ROOM );
-         xprintf( stance_buf, "You assume the Stance of the %s!\n\r", stance_app[i].name );
+         snprintf( stance_buf, MSL,"You assume the Stance of the %s!\n\r", stance_app[i].name );
          send_to_char( stance_buf, ch );
       }
       WAIT_STATE( ch, 350 );

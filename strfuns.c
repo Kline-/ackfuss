@@ -85,12 +85,12 @@ void pre_parse( char *list, char *victimname, char *containername, char *things 
          if( is_number( arg1 ) )
          {
             argument = one_argument( argument, one_object );
-            xprintf( holdbuf, "%s %s ", arg1, one_object );
+            snprintf( holdbuf, MSL, "%s %s ", arg1, one_object );
             xcat( object_list, holdbuf );
          }
          else
          {
-            xprintf( holdbuf, "1 %s ", arg1 );
+            snprintf( holdbuf, MSL, "1 %s ", arg1 );
             xcat( object_list, holdbuf );
          }
       }
@@ -158,7 +158,7 @@ char *space_pad( const char *str, short final_size )
    short space_pad = my_strlen( str );
    static char padbuf[MSL];
 
-   xprintf( padbuf, "%s", str );
+   snprintf( padbuf, MSL, "%s", str );
    for( ; space_pad != final_size; space_pad++ )
       xcat( padbuf, " " );
    return padbuf;
@@ -785,7 +785,7 @@ char *str_mod( char *mod_string, char *argument )
 
    if( !str_cmp( argument, "" ) )
    {
-      xprintf_2( bug_buf, "Unknown reason for return, argument is -%s-", argument );
+      snprintf( bug_buf, (2 * MIL), "Unknown reason for return, argument is -%s-", argument );
       monitor_chan( bug_buf, MONITOR_DEBUG );
       return mod_string;
 
@@ -820,8 +820,8 @@ char *str_mod( char *mod_string, char *argument )
 
          if( multiple )
          {
-            xprintf( temp, "\'%s\'", arg1 );
-            xprintf( arg1, "%s", temp );
+            snprintf( temp, MSL, "\'%s\'", arg1 );
+            snprintf( arg1, MIL, "%s", temp );
          }
 
          if( arg1[0] != '\0' )
@@ -1204,7 +1204,7 @@ char *item_type_name( OBJ_DATA * obj )
 
    }
 
-   xprintf( log, "Item_type_name: Object: %d.  Unknown Type: %d", obj->pIndexData->vnum, obj->item_type );
+   snprintf( log, MSL, "Item_type_name: Object: %d.  Unknown Type: %d", obj->pIndexData->vnum, obj->item_type );
    monitor_chan( log, MONITOR_OBJ );
    bug( log, 0 );
    return "(unknown)";
@@ -1279,7 +1279,7 @@ char *affect_loc_name( int location )
          return "save vs spell";
    }
 
-   xprintf( buf, "affect_location_name: location %d unknown.", location );
+   snprintf( buf, MSL, "affect_location_name: location %d unknown.", location );
    monitor_chan( buf, MONITOR_OBJ );
 
    bug( "Affect_location_name: unknown location %d.", location );
@@ -1480,16 +1480,16 @@ char *short_race_name( CHAR_DATA * ch )
    static char buf[MAX_STRING_LENGTH];
 
    if( IS_NPC( ch ) )
-      xprintf( buf, "NPC" );
+      snprintf( buf, MSL, "NPC" );
    else if( ch->race >= MAX_RACE || ch->race < 0 )
    {
       /*
        * error reporting here one day... maybe 
        */
-      xprintf( buf, "unknown!" );
+      snprintf( buf, MSL, "unknown!" );
    }
    else
-      xprintf( buf, "%s", race_table[ch->race].race_name );
+      snprintf( buf, MSL, "%s", race_table[ch->race].race_name );
 
    return ( buf );
 }
@@ -1553,12 +1553,12 @@ int safe_printf( const char *file, const char *function, int line, int size, con
  /*Max Alloc Size is alot!*/
  if( size > MAS )
  {
-  /*Yes, this is a potential loop bug if infact the xprintf does collapse in on itself..*/
-  xprintf_2(bug_buf,"xprintf buffer overflow: %s",fmt);
+  /*Yes, this is a potential loop bug if infact the snprintf does collapse in on itself..*/
+  xprintf_2(bug_buf,"snprintf buffer overflow: %s",fmt);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
-  xprintf_2(bug_buf,"xprintf buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
+  xprintf_2(bug_buf,"snprintf buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
@@ -1567,12 +1567,12 @@ int safe_printf( const char *file, const char *function, int line, int size, con
 
  if( (unsigned)size < strlen(buf)+1 ) 
  {
-  /*Yes, this is a potential loop bug if infact the xprintf does collapse in on itself..*/
-  xprintf_2(bug_buf,"xprintf buffer overflow: %s",fmt);
+  /*Yes, this is a potential loop bug if infact the snprintf does collapse in on itself..*/
+  xprintf_2(bug_buf,"snprintf buffer overflow: %s",fmt);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
-  xprintf_2(bug_buf,"xprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+  xprintf_2(bug_buf,"snprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
@@ -1588,12 +1588,12 @@ int safe_printf( const char *file, const char *function, int line, int size, con
   /*Just double checking.*/
   if( strlen(str) > (unsigned)size - 1 )
   {
-   /*Yes, this is a potential loop bug if infact the xprintf does collapse in on itself..*/
-   xprintf_2(bug_buf,"xprintf buffer overflow: %s",fmt);
+   /*Yes, this is a potential loop bug if infact the snprintf does collapse in on itself..*/
+   xprintf_2(bug_buf,"snprintf buffer overflow: %s",fmt);
    log_string(bug_buf);
    monitor_chan(bug_buf,MONITOR_DEBUG);
 
-   xprintf_2(bug_buf,"xprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+   xprintf_2(bug_buf,"snprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
    log_string(bug_buf);
    monitor_chan(bug_buf,MONITOR_DEBUG);
    return -1;

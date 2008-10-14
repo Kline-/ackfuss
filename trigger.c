@@ -74,7 +74,7 @@ void trigger_show( CHAR_DATA * ch )
 {
    char buf[MAX_STRING_LENGTH];
 
-   xprintf( buf, "Trigger objects information:\n\r" );
+   snprintf( buf, MSL, "Trigger objects information:\n\r" );
 
    xcat( buf, "v1  Name           v2		    v3\n\r" );
    xcat( buf, "--  ----        ---------       ---------\n\r" );

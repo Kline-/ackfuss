@@ -456,7 +456,7 @@ bool spec_cast_adept( CHAR_DATA * ch )
          xmas_time = mktime( &tm_xmas );
          days = (int)difftime( xmas_time, time( &cur_time ) ) / ( 3600 * 24 );
 
-         xprintf( buffer, "$n utters the words '%i days to Christmas!'.", days );
+         snprintf( buffer, 255, "$n utters the words '%i days to Christmas!'.", days );
 
          act( buffer, ch, NULL, NULL, TO_ROOM );
          spell_refresh( skill_lookup( "refresh" ), ch->level, ch, victim, NULL );
@@ -779,9 +779,9 @@ bool spec_executioner( CHAR_DATA * ch )
       return FALSE;
 
    if( undead )
-      xprintf( buf, "BANZAI!!! UNDEAD HAVE ARRIVED!!! PROTECT THE LIVING!!!" );
+      snprintf( buf, MSL, "BANZAI!!! UNDEAD HAVE ARRIVED!!! PROTECT THE LIVING!!!" );
    else
-      xprintf( buf, "%s is a %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!", victim->name, crime );
+      snprintf( buf, MSL, "%s is a %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!", victim->name, crime );
 
    do_yell( ch, buf );
    one_hit( ch, victim, TYPE_UNDEFINED );
@@ -1077,7 +1077,7 @@ bool spec_policeman( CHAR_DATA * ch )
       return FALSE;
 
 
-   xprintf( buf, "%s is a %s, I shall not rest till justice is done!", victim->name, crime );
+   snprintf( buf, MSL, "%s is a %s, I shall not rest till justice is done!", victim->name, crime );
    do_yell( ch, buf );
 
    set_hunt( ch, NULL, victim, NULL, 0, 0 );
@@ -1135,7 +1135,7 @@ bool spec_cast_cadaver( CHAR_DATA * ch )
     * {
     * char   buf[MAX_STRING_LENGTH];
     * 
-    * xprintf( buf, "Try 'get all %d.corpse' to recover your belongings, %s.\n\r",
+    * snprintf( buf, MSL, "Try 'get all %d.corpse' to recover your belongings, %s.\n\r",
     * count, PERS( ch, vch ) );
     * do_say( ch, buf );
     * }
@@ -1407,7 +1407,7 @@ bool spec_rewield( CHAR_DATA * ch )
 
       if( pickup )
       {
-         xprintf( buf, "Great!  %s!  Just what i've always wanted!", weapon->short_descr );
+         snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", weapon->short_descr );
          do_say( ch, buf );
       }
 
@@ -1760,8 +1760,8 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 5:
          break;
       case 6:
-         xprintf( buf, "%s", ch->hunting->name );
-         xprintf( buf1, "@@eI know that you are a Vampyre, and I shall not rest until your are destroyed!!!@@N\n\r" );
+         snprintf( buf, MSL, "%s", ch->hunting->name );
+         snprintf( buf1, MSL, "@@eI know that you are a Vampyre, and I shall not rest until your are destroyed!!!@@N\n\r" );
          xcat( buf, buf1 );
          do_tell( ch, buf );
          break;
@@ -1773,7 +1773,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
          break;
       case 12:
       case 13:
-         xprintf( buf, "My informants have told me that %s is a Vampyre, and I have vowed to destroy him!!\n\r",
+         snprintf( buf, MSL, "My informants have told me that %s is a Vampyre, and I have vowed to destroy him!!\n\r",
                   ch->hunting->name );
          do_yell( ch, buf );
          break;
@@ -1783,8 +1783,8 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 16:
          break;
       case 17:
-         xprintf( buf, " %s ", ch->hunting->name );
-         xprintf( buf1, "@@Do you finally know fear? I shall not rest until ALL of your kind are destroyed!!!@@N\n\r" );
+         snprintf( buf, MSL, " %s ", ch->hunting->name );
+         snprintf( buf1, MSL, "@@Do you finally know fear? I shall not rest until ALL of your kind are destroyed!!!@@N\n\r" );
          xcat( buf, buf1 );
          do_tell( ch, buf );
          break;
@@ -1793,7 +1793,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 19:
          break;
       case 20:
-         xprintf( buf,
+         snprintf( buf, MSL, 
                   "All the realm shall know that %s is a Vampyre, and I shall eridicate all of these vile creatures!!\n\r",
                   ch->hunting->name );
          do_yell( ch, buf );
@@ -1910,10 +1910,10 @@ bool spec_tax_man( CHAR_DATA * ch )
       if( remainder > 0 )
          victim->gold = UMIN( victim->gold, loss );
    }
-   xprintf( mon_buf, "Tax Collector visited %s ", victim->name );
-   xprintf( cat_buf, "Collected %i from bank, and %i from gold on hand.\n\r", bank_loss, char_loss );
+   snprintf( mon_buf, MSL, "Tax Collector visited %s ", victim->name );
+   snprintf( cat_buf, MSL, "Collected %i from bank, and %i from gold on hand.\n\r", bank_loss, char_loss );
    xcat( mon_buf, cat_buf );
-   xprintf( cat_buf, "New totals are balance: %i/%i  on hand: %i/%i\n\r",
+   snprintf( cat_buf, MSL, "New totals are balance: %i/%i  on hand: %i/%i\n\r",
             victim->balance, old_bank, victim->gold, old_char );
    xcat( mon_buf, cat_buf );
    monitor_chan( mon_buf, MONITOR_MOB );

@@ -1668,7 +1668,7 @@ void mprog_bribe_trigger( CHAR_DATA * mob, CHAR_DATA * ch, int amount )
    if( IS_NPC( mob ) && ( mob->pIndexData->progtypes & BRIBE_PROG ) )
    {
       obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0 );
-      xprintf( buf, obj->short_descr, amount );
+      snprintf( buf, MSL, obj->short_descr, amount );
       free_string( obj->short_descr );
       obj->short_descr = str_dup( buf );
       obj->value[0] = amount;
