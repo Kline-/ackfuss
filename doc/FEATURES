@@ -1,0 +1,50 @@
+AckFUSS Feature List
+
+  Character Development:
+    -Level and Class based
+    -Multi-class: 11 classes in 3 tiers
+    -Vampire / Werewolf societies (not races)
+    -Clans, with politics, unique equipment, and a war system
+    -Structured PVP: choose to be PKOK and lawless or break the laws and suffer the penalties
+    -Initial stats selected by you, based on race limitations
+
+  Combat:
+    -Unique fighting stances based on class selection
+    -Speed based combat; no static round "ticks"
+    -Realm based spell damage (fire/ice/mind/etc)
+    -Limited PVP looting depending on law / clan war status of combatants
+    -Deathmatch mode -- free for all PVP with no consequences
+    -Item durability -- broken items grant no bonuses and need repairing
+    -Brawl code; bystanders may get swept into a fight
+
+  Interface Enhancements:
+    -Channel history for all public channels
+    -Most text supports player customizeable color
+    -Alias system
+    -Speedwalk mode to suppress room descriptions automatically
+    -Customizeable prompts
+    -Auto mapper to help navigate
+
+  OLC:
+    -Full online editing of rooms, objs, mobs, helps, and socials
+    -Rare items
+    -Multiple piece items that have to be collected and connected
+    -Room affects
+    -Auto dig feature to rapidly create zone layouts
+    -Auto object feature to set baseline stats based on absolute maximums, editable per slot
+    -Obj funs -- create code to make objects unique
+
+  Quest Points:
+    -Auto-run quests based on average online player level
+    -A new mquest system, letting players request random quests for gold, experience, and quest points
+    -Player driven item enhancements; power up your items as you see fit
+    -Purchaseable stat raises for Str/Int/Wis/Con/Dex
+
+  System Enhancements:
+    -System generated messages to automatically track certain player actions
+    -Integrated IMC2 Freedom client
+    -Customizeable multi-coin currency system
+    -Easily customizeable pre-compile
+    -Numerous online-configurable gameplay options to set mob difficulty, leveling speed, etc
+    -Flat helpfiles; every help is a single file -- reduced memory footprint and easily updated
+    -Race realism -- not everybody carries cash these days
