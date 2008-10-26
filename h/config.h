@@ -1249,8 +1249,6 @@
 #define MOB_DIR         "../mobprog/" /* MOBProg files                */
 #endif
 
-#define AREA_LIST       "area.lst"  /* List of areas                */
-
 #define MAIL_DIR        "../mail/"
 #define DATA_DIR        "../data/"
 #define BUG_DIR         "../report/"
@@ -1268,6 +1266,7 @@
 #define TYPO_FILE      BUG_DIR  "typos.txt" /* For 'typo'                   */
 #define SHUTDOWN_FILE  BUG_DIR  "shutdown.txt" /* For 'shutdown'               */
 
+#define AREA_LIST      DATA_DIR "arealst.dat" /* List of areas */
 #define NOTE_FILE      DATA_DIR "notes.dat"  /* For 'notes'                  */
 #define CLAN_FILE      DATA_DIR "clans.dat" /* stores clan diplomacy data   */
 #define CORPSE_FILE    DATA_DIR "corpses.dat"
