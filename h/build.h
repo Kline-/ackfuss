@@ -15,7 +15,6 @@
 #endif
 
 /* build.c */
-ROOM_INDEX_DATA *new_room P_((AREA_DATA *pArea, short vnum, short sector));
 void build_interpret P_((CHAR_DATA *ch, char *argument));
 void build_commands P_((CHAR_DATA *ch, char *argument));
 void build_showmob P_((CHAR_DATA *ch, char *argument));
@@ -37,6 +36,7 @@ void build_stop P_((CHAR_DATA *ch, char *argument));
 void do_build P_((CHAR_DATA *ch, char *argument));
 void build_addmob P_((CHAR_DATA *ch, char *argument));
 void build_addobject P_((CHAR_DATA *ch, char *argument));
+void build_addroom P_((CHAR_DATA *ch, char *argument));
 void build_addreset P_((CHAR_DATA *ch, char *argument));
 void build_delreset P_((CHAR_DATA *ch, char *argument));
 void build_delwarn P_((CHAR_DATA *ch, char *argument));

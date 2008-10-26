@@ -62,10 +62,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -174,7 +170,7 @@ int get_trust( CHAR_DATA * ch )
    if( ch->desc != NULL && ch->desc->original != NULL )
       ch = ch->desc->original;
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_AMBASSADOR ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_AMBASSADOR) )
       return ( LEVEL_HERO + 1 );
 
    if( ch->trust != 0 )
@@ -349,7 +345,7 @@ int can_carry_n( CHAR_DATA * ch )
       return 500;
 
    /*
-    * if ( IS_NPC(ch) && is_set(ch->act, ACT_PET) )
+    * if ( IS_NPC(ch) && ch->act.test(ACT_PET) )
     * return 0;  
     */
 
@@ -366,7 +362,7 @@ int can_carry_w( CHAR_DATA * ch )
    if( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
       return 9999999;
 
-/*    if ( IS_NPC(ch) && is_set(ch->act, ACT_PET) )
+/*    if ( IS_NPC(ch) && ch->act.test(ACT_PET) )
 	return 0;   */
 
    return str_app[get_curr_str( ch )].carry;
@@ -438,7 +434,7 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
    }
 
    if( paf->type == skill_lookup( "Enraged" ) )
-      remove_bit( ch->act, ACT_RAGED );
+      ch->act.reset(ACT_RAGED);
 
    switch ( paf->location )
    {
@@ -696,7 +692,7 @@ void affect_to_char( CHAR_DATA * ch, AFFECT_DATA * paf )
 
    if( paf_new->type == skill_lookup( "Enraged" ) )
       if( IS_WOLF( ch ) )
-         set_bit( ch->act, ACT_RAGED );
+         ch->act.set(ACT_RAGED);
 
    return;
 }
@@ -1784,7 +1780,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
 
    if( !fPull )
    {
-      if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
+      if( AI_MOB(ch) )
       {
          char_to_room( ch, get_room_index( ROOM_VNUM_INT_HEAL ) );
 
@@ -1856,7 +1852,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    }
    PUT_FREE( ch->money, money_type_free );
    PUT_FREE( ch->bank_money, money_type_free );
-   if( is_set( ch->act, ACT_COUNCIL ) )
+   if( ch->act.test(ACT_COUNCIL) )
    {
       short this_council;
       MEMBER_DATA *imember;
@@ -1911,7 +1907,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    UNLINK( ch, first_char, last_char, next, prev );
    if( ch->desc )
       ch->desc->character = NULL;
-   free_char( ch );
+   delete ch;
    return;
 }
 
@@ -2319,7 +2315,7 @@ bool room_is_dark( ROOM_INDEX_DATA * pRoomIndex )
    if( pRoomIndex->light > 0 )
       return FALSE;
 
-   if( is_set( pRoomIndex->room_flags, RFLAG_DARK ) )
+   if( pRoomIndex->room_flags.test(RFLAG_DARK) )
       return TRUE;
 
    if( IS_SET( pRoomIndex->affected_by, ROOM_BV_SHADE ) )
@@ -2351,10 +2347,10 @@ bool room_is_private( ROOM_INDEX_DATA * pRoomIndex )
    for( rch = pRoomIndex->first_person; rch != NULL; rch = rch->next_in_room )
       count++;
 
-   if( is_set( pRoomIndex->room_flags, RFLAG_PRIVATE ) && count >= 2 )
+   if( pRoomIndex->room_flags.test(RFLAG_PRIVATE) && count >= 2 )
       return TRUE;
 
-   if( is_set( pRoomIndex->room_flags, RFLAG_SOLITARY ) && count >= 1 )
+   if( pRoomIndex->room_flags.test(RFLAG_SOLITARY) && count >= 1 )
       return TRUE;
 
    return FALSE;
@@ -2389,7 +2385,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
       return FALSE;
 
 
-   if( !IS_NPC( victim ) && is_set( victim->act, ACT_WIZINVIS ) && get_trust( ch ) < victim->invis )
+   if( !IS_NPC( victim ) && victim->act.test(ACT_WIZINVIS) && get_trust( ch ) < victim->invis )
 
       /*
        * &&   get_trust( ch ) < get_trust( victim ) ) 
@@ -2397,7 +2393,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
 
       return FALSE;
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_HOLYLIGHT ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_HOLYLIGHT) )
       return TRUE;
    if( ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) ) && ch->in_room == victim->in_room )
       return FALSE;
@@ -2436,7 +2432,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
  */
 bool can_see_obj( CHAR_DATA * ch, OBJ_DATA * obj )
 {
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_HOLYLIGHT ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_HOLYLIGHT) )
       return TRUE;
 /*    if ( obj->item_type == ITEM_TRIGGER )
       return TRUE;  */
@@ -2517,7 +2513,7 @@ void notify( char *message, int lv )
    snprintf( buf, MSL, "[NOTE]: %s\n\r", message );
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
-          && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !is_set( d->character->deaf, CHANNEL_NOTIFY ) )
+          && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_NOTIFY) )
          send_to_char( buf, d->character );
    return;
 }
@@ -2529,7 +2525,7 @@ void auction( char *message )
 
    snprintf( buf, MSL, "[AUCTION]: %s\n\r", message );
    for( d = first_desc; d; d = d->next )
-      if( ( d->connected == CON_PLAYING ) && !IS_NPC( d->character ) && !is_set( d->character->deaf, CHANNEL_AUCTION ) )
+      if( ( d->connected == CON_PLAYING ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_AUCTION) )
          send_to_char( buf, d->character );
    return;
 }
@@ -2549,7 +2545,7 @@ void info( char *message, int lv )
 
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
-          && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !is_set( d->character->deaf, CHANNEL_INFO ) )
+          && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_INFO) )
       {
          snprintf( buf, MSL, "%s[INFO]: %s%s\n\r",
                   color_string( d->character, "info" ), message, color_string( d->character, "normal" ) );
@@ -2572,7 +2568,7 @@ void log_chan( const char *message, int lv )
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
           && ( get_trust( d->character ) == MAX_LEVEL )
-          && ( !IS_NPC( d->character ) ) && ( d->character->level >= lv ) && ( !is_set( d->character->deaf, CHANNEL_LOG ) ) )
+          && ( !IS_NPC( d->character ) ) && ( d->character->level >= lv ) && ( !d->character->deaf.test(CHANNEL_LOG) ) )
          send_to_char( buf, d->character );
    return;
 }

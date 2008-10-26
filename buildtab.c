@@ -38,13 +38,9 @@
 #include <string.h>
 #include "globals.h"
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 /* The tables in here are:
-     Mob act flags       :    tab_mob_act         : bitmask
-     Player act flags    :    tab_player_act      : bitmask
+     Mob act flags       :    tab_mob_act         : bitset
+     Player act flags    :    tab_player_act      : bitset
      Mob affected by     :    tab_affected_by     : bit_vector
      Mob classes	 :    tab_mob_class	  : number
      Object item type    :    tab_item_types      : number
@@ -53,7 +49,7 @@
      Object affect types :    tab_obj_aff         : number
      Class types         :    tab_class           : bit_vector
      Wear locations      :    tab_wear_loc        : number
-     Room flags          :    tab_room_flags      : bitmask
+     Room flags          :    tab_room_flags      : bitset
      Sector types        :    tab_sector_types    : number
      Door types          :    tab_door_types      : bit_vector
      Door states         :    tab_door_states     : number
@@ -1212,7 +1208,7 @@ void wide_table_printout( LOOKUP_TYPE *table, char *buf )
           && ( strcmp( table[a].text, "nada" ) ) )
       {
          xcat_2( buf, "     " );
-         xprintf( tmp, "%12s", table[a].text );
+         snprintf( tmp, MSL, "%12s", table[a].text );
          xcat_2( buf, tmp );
          if( ++foo % 4 == 0 )
             xcat_2( buf, "\n\r" );
@@ -1240,7 +1236,7 @@ char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit )
           && ( strcmp( table[a].text, "placeholder" ) ) )
       {
          xcat( buf, "     " );
-         xprintf( tmp, "%s%-13s",
+         snprintf( tmp, MSL, "%s%-13s",
                   fBit ? ( IS_SET( value, table[a].value ) ? "@@y*" : "@@g " ) :
                   ( value == table[a].value ? "@@y*" : "@@g " ), table[a].text );
          xcat( buf, tmp );
@@ -1252,7 +1248,7 @@ char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit )
    return ( buf );
 }
 
-char *bm_show_values( LOOKUP_TYPE *table, BITMASK *mask )
+char *bs_show_values( LOOKUP_TYPE *table, std::bitset<MAX_BITSET> &bit )
 {
 
    char tmp[MAX_STRING_LENGTH];
@@ -1270,8 +1266,8 @@ char *bm_show_values( LOOKUP_TYPE *table, BITMASK *mask )
           && ( strcmp( table[a].text, "placeholder" ) ) )
       {
          xcat( buf, "     " );
-         xprintf( tmp, "%s%-13s",
-                  is_set( mask, table[a].value ) ? "@@y*" : "@@g ",table[a].text);
+         snprintf( tmp, MSL, "%s%-13s",
+                  bit.test(table[a].value) ? "@@y*" : "@@g ",table[a].text);
          xcat( buf, tmp );
          if( ++foo % 4 == 0 )
             xcat( buf, "\n\r" );

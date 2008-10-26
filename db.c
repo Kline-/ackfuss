@@ -68,10 +68,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -385,14 +381,14 @@ void boot_db( void )
          switch ( index )
          {
             case SUPER_NONE:
-               xprintf( buf, "%s", "ORDINARIES" );
+               snprintf( buf, MSL, "%s", "ORDINARIES" );
                break;
             case SUPER_VAMP:
-               xprintf( buf, "%s", "@@rJUSTICARS@@N" );
+               snprintf( buf, MSL, "%s", "@@rJUSTICARS@@N" );
                break;
 
             default:
-               xprintf( buf, "%s", "NONE" );
+               snprintf( buf, MSL, "%s", "NONE" );
                break;
          }
          super_councils[index].council_name = str_dup( buf );
@@ -435,10 +431,10 @@ void boot_db( void )
       short x, y;
       char buf[MAX_STRING_LENGTH];
 
-      xprintf( clan_file_name, "%s", CLAN_FILE );
+      snprintf( clan_file_name, MSL, "%s", CLAN_FILE );
 
 
-      xprintf( buf, "Loading %s", clan_file_name );
+      snprintf( buf, MSL, "Loading %s", clan_file_name );
       log_f(buf);
 
 
@@ -449,7 +445,7 @@ void boot_db( void )
       else
       {
          fpArea = clanfp;
-         xprintf( strArea, "%s", clan_file_name );
+         snprintf( strArea, MSL, "%s", clan_file_name );
 
          for( x = 1; x < MAX_CLAN; x++ )
          {
@@ -619,7 +615,6 @@ void load_area( FILE * fp )
    pArea->age = 15;
    pArea->reset_rate = 15;
    pArea->nplayer = 0;
-   pArea->offset = 0;
 /* MAG Mod */
    pArea->modified = 0;
    pArea->min_vnum = 0;
@@ -690,10 +685,6 @@ void load_area( FILE * fp )
             SET_BIT( pArea->flags, AREA_NO_ROOM_AFF );
             fread_to_eol( fp );
             break;
-
-         case 'X':
-            pArea->offset = fread_number( fp );
-            break;
          case 'V':
             pArea->min_vnum = fread_number( fp );
             pArea->max_vnum = fread_number( fp );
@@ -757,10 +748,10 @@ void load_corpses( void )
    char buf[MAX_STRING_LENGTH];
 
 
-   xprintf( corpse_file_name, "%s", CORPSE_FILE );
+   snprintf( corpse_file_name, MSL, "%s", CORPSE_FILE );
 
 
-   xprintf( buf, "Loading %s", CORPSE_FILE);
+   snprintf( buf, MSL, "Loading %s", CORPSE_FILE);
    log_f( buf );
 
 
@@ -774,7 +765,7 @@ void load_corpses( void )
    else
    {
       fpArea = corpsefp;
-      xprintf( strArea, "%s", corpse_file_name );
+      snprintf( strArea, MSL, "%s", corpse_file_name );
 
       for( ;; )
 
@@ -826,9 +817,9 @@ void load_marks( void )
    char buf[MAX_STRING_LENGTH];
 
 
-   xprintf( marks_file_name, "%s", MARKS_FILE );
+   snprintf( marks_file_name, MSL, "%s", MARKS_FILE );
 
-   xprintf( buf, "Loading %s",MARKS_FILE);
+   snprintf( buf, MSL, "Loading %s",MARKS_FILE);
    log_f( buf );
 
 
@@ -841,7 +832,7 @@ void load_marks( void )
    else
    {
       fpArea = marksfp;
-      xprintf( strArea, "%s", marks_file_name );
+      snprintf( strArea, MSL, "%s", marks_file_name );
 
       for( ;; )
       {
@@ -891,8 +882,8 @@ void load_bans( void )
    char buf[MAX_STRING_LENGTH];
 
 
-   xprintf( bans_file_name, "%s", BANS_FILE );
-   xprintf( buf, "Loading %s",BANS_FILE);
+   snprintf( bans_file_name, MSL, "%s", BANS_FILE );
+   snprintf( buf, MSL, "Loading %s",BANS_FILE);
    log_f( buf );
 
 
@@ -905,7 +896,7 @@ void load_bans( void )
    else
    {
       fpArea = bansfp;
-      xprintf( strArea, "%s", bans_file_name );
+      snprintf( strArea, MSL, "%s", bans_file_name );
 
       for( ;; )
       {
@@ -955,7 +946,6 @@ void load_mobiles( FILE * fp )
    MOB_INDEX_DATA *pMobIndex;
    BUILD_DATA_LIST *pList;
    char buf[MSL];
-   static BITMASK bitmask_zero;
 
    for( ;; )
    {
@@ -982,7 +972,7 @@ void load_mobiles( FILE * fp )
 
       if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
       {
-       xprintf(buf,"Load_mobiles: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       snprintf(buf,MSL,"Load_mobiles: vnum %d out of bounds for %s.",vnum,area_load->filename);
        log_string(buf);
       }
 
@@ -994,7 +984,7 @@ void load_mobiles( FILE * fp )
       }
       fBootDb = TRUE;
 
-      GET_FREE( pMobIndex, mid_free );
+      pMobIndex = new MOB_INDEX_DATA;
       pMobIndex->vnum = vnum;
       pMobIndex->area = area_load;
       pMobIndex->player_name = fread_string( fp );
@@ -1050,10 +1040,13 @@ void load_mobiles( FILE * fp )
       }
       else
          ungetc( letter, fp );
-      GET_FREE( pMobIndex->act, bitmask_free );
-      *pMobIndex->act = bitmask_zero;
       if( area_revision >= 19 )
-       load_bitmask(pMobIndex->act,fp);
+      {
+       if( area_revision == 22 )
+        pMobIndex->act = fread_number( fp );
+       else
+        fread_to_eol(fp);
+      }
       letter = fread_letter( fp );
       if( letter == '>' )
       {
@@ -1114,7 +1107,7 @@ void load_objects( FILE * fp )
 
       if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
       {
-       xprintf(buf,"Load_objects: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       snprintf(buf,MSL,"Load_objects: vnum %d out of bounds for %s.",vnum,area_load->filename);
        log_string(buf);
       }
 
@@ -1393,11 +1386,8 @@ void load_resets( FILE * fp )
  */
 void load_rooms( FILE * fp )
 {
-   static BITMASK bitmask_zero;
    ROOM_INDEX_DATA *pRoomIndex;
    BUILD_DATA_LIST *pList;
-   MONEY_TYPE *room_treasure;
-   short cnt;
    char buf[MSL];
 
    if( area_load == NULL )
@@ -1427,7 +1417,7 @@ void load_rooms( FILE * fp )
 
       if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
       {
-       xprintf(buf,"Load_rooms: vnum %d out of bounds for %s.",vnum,area_load->filename);
+       snprintf(buf,MSL,"Load_rooms: vnum %d out of bounds for %s.",vnum,area_load->filename);
        log_string(buf);
       }
 
@@ -1439,47 +1429,29 @@ void load_rooms( FILE * fp )
       }
       fBootDb = TRUE;
 
-      GET_FREE( pRoomIndex, rid_free );
-      pRoomIndex->first_person = NULL;
-      pRoomIndex->last_person = NULL;
-      pRoomIndex->first_content = NULL;
-      pRoomIndex->last_content = NULL;
-      pRoomIndex->first_exdesc = NULL;
-      pRoomIndex->last_exdesc = NULL;
+      pRoomIndex = new ROOM_INDEX_DATA;
       pRoomIndex->area = area_load;
       pRoomIndex->vnum = vnum;
       pRoomIndex->name = fread_string( fp );
       pRoomIndex->description = fread_string( fp );
       if( area_revision >= 21 )
       {
-       GET_FREE( pRoomIndex->room_flags, bitmask_free );
-       *pRoomIndex->room_flags = bitmask_zero;
        pRoomIndex->sector_type = fread_number(fp);
-       load_bitmask(pRoomIndex->room_flags,fp);
+       if( area_revision >= 22 )
+       {
+        const char *tmp = fread_word(fp);
+
+        while( str_cmp(tmp,"EOL") )
+        {
+         pRoomIndex->room_flags.set(atoi(tmp));
+         tmp = fread_word(fp);
+        }
+       }
+       else
+        fread_to_eol(fp);
       }
       if( pRoomIndex->sector_type == SECT_NULL )
          pRoomIndex->sector_type = SECT_INSIDE;
-      pRoomIndex->light = 0;
-      pRoomIndex->affected_by = ROOM_BV_NONE;
-      pRoomIndex->first_room_affect = NULL;
-      pRoomIndex->last_room_affect = NULL;
-      for( door = 0; door < MAX_DIR; door++ )
-         pRoomIndex->exit[door] = NULL;
-      pRoomIndex->first_room_reset = NULL;   /* MAG Mod */
-      pRoomIndex->last_room_reset = NULL;
-
-      GET_FREE( room_treasure, money_type_free );
-#ifdef DEBUG_MONEY
-      {
-         char testbuf[MSL];
-         xprintf( testbuf, "loading rooms, vnum is %d", pRoomIndex->vnum );
-         room_treasure->money_key = str_dup( testbuf );
-      }
-#endif
-      for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-         room_treasure->cash_unit[cnt] = 0;
-      pRoomIndex->treasure = room_treasure;
-
 
       for( ;; )
       {
@@ -1676,7 +1648,7 @@ void load_objfuns( FILE * fp )
                char *temp;
                char buf[MSL];
                temp = fread_word( fp );
-               xprintf( buf,
+               snprintf( buf, MSL,
                         "Error in Load Objfuns:  area %s has Objfun without corresponding object.  Save this area after booting complete to remove.",
                         strArea );
                log_f( buf );
@@ -1719,7 +1691,7 @@ void load_notes( void )
 {
    FILE *fp;
 
-   xprintf_2(log_buf,"Loading %s",NOTE_FILE);
+   snprintf(log_buf,(2 * MIL),"Loading %s",NOTE_FILE);
    log_f(log_buf);
 
    if( ( fp = file_open( NOTE_FILE, "r" ) ) == NULL )
@@ -1745,7 +1717,7 @@ void load_notes( void )
       while( isspace( letter ) );
       ungetc( letter, fp );
 
-      GET_FREE( pnote, note_free );
+      pnote = new NOTE_DATA;
 
       if( str_cmp( fread_word( fp ), "sender" ) )
          break;
@@ -1810,7 +1782,7 @@ void fix_exits( void )
             {
                if( ( pexit->vnum <= 0 ) || ( get_room_index( pexit->vnum ) == NULL ) )
                {
-                  xprintf( buf, "Bad exit vnum %d in room %d", pexit->vnum, pRoomIndex->vnum );
+                  snprintf( buf, MSL, "Bad exit vnum %d in room %d", pexit->vnum, pRoomIndex->vnum );
                   bug( buf, 0 );
                   PUT_FREE( pexit, exit_free );
                   pRoomIndex->exit[door] = NULL;
@@ -1826,7 +1798,7 @@ void fix_exits( void )
          }
 
          if( !fexit )
-            set_bit( pRoomIndex->room_flags, RFLAG_NO_MOB );
+            pRoomIndex->room_flags.set(RFLAG_NO_MOB);
       }
    }
    return;
@@ -1968,21 +1940,21 @@ void check_resets( void )
             switch ( ValReset )
             {
                case INVAL_ROOM:
-                  xprintf( buf, "Invalid room for reset: " );
+                  snprintf( buf, MSL, "Invalid room for reset: " );
                   break;
                case INVAL_OBJ:
-                  xprintf( buf, "Invalid obj  for reset: " );
+                  snprintf( buf, MSL, "Invalid obj  for reset: " );
                   break;
                case INVAL_MOB:
-                  xprintf( buf, "Invalid mob  for reset: " );
+                  snprintf( buf, MSL, "Invalid mob  for reset: " );
                   break;
                case INVAL_GEN:
                default:
-                  xprintf( buf, "Invalid arg  for reset: " );
+                  snprintf( buf, MSL, "Invalid arg  for reset: " );
                   break;
             }
             SHOW_AREA;
-            xprintf_2( buf + strlen( buf ), "%c %d %d %d %d.", pReset->command,
+            snprintf( buf + strlen( buf ), MSL, "%c %d %d %d %d.", pReset->command,
                      pReset->ifflag, pReset->arg1, pReset->arg2, pReset->arg3 );
             bug( buf, 0 );
             {
@@ -2004,7 +1976,7 @@ void check_resets( void )
                }
                if( guilty_reset == NULL )
                {
-                  xprintf( bug_buf, "Uhoh, couldn't find that damn reset!" );
+                  snprintf( bug_buf, (2 * MIL), "Uhoh, couldn't find that damn reset!" );
                   monitor_chan( bug_buf, MONITOR_AREA_BUGS );
                   bug( "Couldn't find the reset.", 0 );
                }
@@ -2044,10 +2016,10 @@ void area_update( void )
       {
          for( pch = first_char; pch != NULL; pch = pch->next )
          {
-            if( !IS_NPC( pch ) && IS_AWAKE( pch ) && pch->in_room != NULL && pch->in_room->area == pArea )
+            if( !IS_NPC( pch ) && IS_AWAKE( pch ) && pch->in_room != NULL && pch->in_room->area == pArea && str_cmp(pArea->reset_msg,"off") )
             {
                char reset_buf[MSL];
-               xprintf( reset_buf, "%s\n\r", pArea->reset_msg );
+               snprintf( reset_buf, MSL, "%s\n\r", pArea->reset_msg );
                send_to_char( reset_buf, pch );
             }
          }
@@ -2086,7 +2058,7 @@ void reset_area( AREA_DATA * pArea )
    int previous_bug = 0;
 
 
-   xprintf( buf, "Area Reset called for %s.", pArea->name );
+   snprintf( buf, MSL, "Area Reset called for %s.", pArea->name );
    monitor_chan( buf, MONITOR_AREA_UPDATE );
    area_resetting_global = TRUE;
    mob = NULL;
@@ -2145,8 +2117,8 @@ void reset_area( AREA_DATA * pArea )
             {
                ROOM_INDEX_DATA *pRoomIndexPrev;
                pRoomIndexPrev = get_room_index( pRoomIndex->vnum - 1 );
-               if( pRoomIndexPrev != NULL && is_set( pRoomIndexPrev->room_flags, RFLAG_PET_SHOP ) )
-                  set_bit( mob->act, ACT_PET );
+               if( pRoomIndexPrev != NULL && pRoomIndexPrev->room_flags.test(RFLAG_PET_SHOP) )
+                  mob->act.set(ACT_PET);
             }
 
             if( room_is_dark( pRoomIndex ) )
@@ -2198,7 +2170,7 @@ void reset_area( AREA_DATA * pArea )
             {
                extract_obj( obj );
             }
-            else if( ( is_set( pRoomIndex->room_flags, RFLAG_NO_REPOP ) ) && ( pRoomIndex->first_person != NULL ) )
+            else if( ( pRoomIndex->room_flags.test(RFLAG_NO_REPOP) ) && ( pRoomIndex->first_person != NULL ) )
             {
                extract_obj( obj );
             }
@@ -2401,25 +2373,25 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    }
 
 
-   if( is_set( pMobIndex->act, ACT_INTELLIGENT ) )
+   if( pMobIndex->act.test(ACT_INTELLIGENT) )
    {
       /*
        * Only load one with the same name 
        */
 #if !defined(machintosh) && !defined(MSDOS)
-      xprintf( buf, "%s n%i", pMobIndex->player_name, pMobIndex->count + 1 );
+      snprintf( buf, MSL, "%s n%i", pMobIndex->player_name, pMobIndex->count + 1 );
 #else
-      xprintf( buf, "n%i %s", pMobIndex->count + 1, pMobIndex->player_name );
+      snprintf( buf, MSL, "n%i %s", pMobIndex->count + 1, pMobIndex->player_name );
 #endif
 
    }
 
-   GET_FREE( mob, char_free );
+   mob = new CHAR_DATA;
 
    clear_char( mob );
    mob->pIndexData = pMobIndex;
 
-   if( is_set( pMobIndex->act, ACT_INTELLIGENT ) )
+   if( pMobIndex->act.test(ACT_INTELLIGENT) )
       mob->name = str_dup( buf );
    else
       mob->name = str_dup( pMobIndex->player_name );
@@ -2523,7 +2495,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 #ifdef DEBUG_MONEY
    {
       char testbuf[MSL];
-      xprintf( testbuf, "create_mobile, %s", mob->name );
+      snprintf( testbuf, MSL, "create_mobile, %s", mob->name );
       money->money_key = str_dup( testbuf );
    }
 #endif
@@ -2535,7 +2507,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 #ifdef DEBUG_MONEY
    {
       char testbuf[MSL];
-      xprintf( testbuf, "create_mobile, %s", mob->name );
+      snprintf( testbuf, MSL, "create_mobile, %s", mob->name );
       money->money_key = str_dup( testbuf );
    }
 #endif
@@ -2651,7 +2623,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 #ifdef DEBUG_MONEY
    {
       char testbuf[MSL];
-      xprintf( testbuf, "create_object, %s", obj->name );
+      snprintf( testbuf, MSL, "create_object, %s", obj->name );
       money->money_key = str_dup( testbuf );
    }
 #endif
@@ -2784,13 +2756,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 void clear_char( CHAR_DATA * ch )
 {
    static CHAR_DATA ch_zero;
-   static BITMASK bitmask_zero;
 
    *ch = ch_zero;
-   GET_FREE( ch->act, bitmask_free );
-   *ch->act = bitmask_zero;
-   GET_FREE( ch->deaf, bitmask_free );
-   *ch->deaf = bitmask_zero;
    ch->name = &str_empty[0];
    ch->short_descr = &str_empty[0];
    ch->long_descr = &str_empty[0];
@@ -2820,117 +2787,6 @@ void clear_char( CHAR_DATA * ch )
 
    return;
 }
-
-
-
-/*
- * Free a character.
- */
-void free_char( CHAR_DATA * ch )
-{
-   MPROG_ACT_LIST *mpact;
-   CHAR_DATA *rch;
-
-   ch->is_quitting = TRUE;
-   while( ch->first_carry != NULL )
-      extract_obj( ch->first_carry );
-
-   while( ch->first_affect != NULL )
-      affect_remove( ch, ch->first_affect );
-
-   while( ( mpact = ch->first_mpact ) != NULL )
-   {
-      ch->first_mpact = mpact->next;
-      PUT_FREE( mpact, mpact_free );
-   }
-
-   for( rch = first_char; rch; rch = rch->next )
-   {
-      AFFECT_DATA *paf;
-
-      if( rch->master == ch )
-         rch->master = NULL;
-      if( rch->leader == ch )
-         rch->leader = NULL;
-      if( rch->fighting == ch )
-         rch->fighting = NULL;
-      if( rch->reply == ch )
-         rch->reply = NULL;
-      if( rch->hunting == ch )
-      {
-         if( IS_NPC( rch ) && !IS_NPC( ch ) )
-         {
-            free_string( rch->searching );
-            rch->searching = str_dup( ch->name );
-         }
-         else if( !IS_NPC( rch ) )
-         {
-            send_to_char( "@@RYou seem to have lost your prey.\n\r", rch );
-         }
-         end_hunt( rch );
-      }
-      if( rch->hunt_for == ch )
-         rch->hunt_for = NULL;
-      if( rch->old_body == ch )
-      {
-         do_return( rch, "" );
-         rch->old_body = NULL;
-      }
-      for( mpact = rch->first_mpact; mpact; mpact = mpact->next )
-      {
-         if( mpact->ch == ch )
-            mpact->ch = NULL;
-         if( mpact->vo == ch )
-            mpact->vo = NULL;
-      }
-      for( paf = rch->first_affect; paf; paf = paf->next )
-         if( paf->caster == ch )
-            paf->caster = NULL;
-   }
-
-   {
-      ROOM_INDEX_DATA *room;
-      int rvnum;
-      ROOM_AFFECT_DATA *raf;
-
-      for( rvnum = 0; rvnum < MAX_KEY_HASH; rvnum++ )
-         for( room = room_index_hash[rvnum]; room; room = room->next )
-            for( raf = room->first_room_affect; raf; raf = raf->next )
-               if( raf->caster == ch )
-                  raf->caster = NULL;
-   }
-
-   if( ch->pnote )
-      PUT_FREE( ch->pnote, note_free );
-   if( ch->current_brand )
-      PUT_FREE( ch->current_brand, brand_data_free );
-
-   PUT_FREE( ch->act, bitmask_free );
-   PUT_FREE( ch->deaf, bitmask_free );
-   if( ch->pcdata != NULL )
-   {
-#ifdef IMC
-      imc_freechardata( ch );
-#endif
-#ifdef I3
-      free_i3chardata( ch );
-#endif
-      if( ch->pcdata->monitor )
-       PUT_FREE( ch->pcdata->monitor, bitmask_free );
-      if( ch->pcdata->quest_info )
-       PUT_FREE( ch->pcdata->quest_info, quest_info_free );
-      if( ch->pcdata->records )
-       PUT_FREE( ch->pcdata->records, record_free );
-      if( ch->pcdata->super )
-       PUT_FREE( ch->pcdata->super, super_free );
-      PUT_FREE( ch->pcdata, pcd_free );
-   }
-
-   PUT_FREE( ch, char_free );
-   return;
-}
-
-
 
 /*
  * Get an extra description from a list.
@@ -3157,7 +3013,7 @@ int fread_number( FILE * fp )
    if( !isdigit( c ) )
    {
       char error_buf[MSL];
-      xprintf( error_buf, "%c", c );
+      snprintf( error_buf, MSL, "%c", c );
       bug_string( "Fread_number: looking for a digit, found a %s.", error_buf );
       hang( "Error in fread_number" );
    }
@@ -3465,7 +3321,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "all" ) )
       fall = TRUE;
-   xprintf( buf, "@@W" mudnamecolor " AREA LISTING\n\r" );
+   snprintf( buf, MSL, "@@W" mudnamecolor " AREA LISTING\n\r" );
    xcat( buf, "+-------+------------+------------------------------------------------+\n\r" );
    xcat( buf,
                 "| @@yLevel@@W |            |                                                |\n\r" );
@@ -3483,10 +3339,10 @@ void do_areas( CHAR_DATA * ch, char *argument )
          continue;
 
       foo++;
-      xprintf( msg, " %s %12s          %s\n\r", pArea->level_label, capitalize( pArea->owner ), pArea->name );
+      snprintf( msg, MSL, " %s %12s          %s\n\r", pArea->level_label, capitalize( pArea->owner ), pArea->name );
       xcat( buf, msg );
    }
-   xprintf( msg, "@@R%d Areas listed.\n\r@@N Type areas all to list the entire " mudnamecolor " realm.\n\r@@N", foo );
+   snprintf( msg, MSL, "@@R%d Areas listed.\n\r@@N Type areas all to list the entire " mudnamecolor " realm.\n\r@@N", foo );
    xcat( buf, msg );
    send_to_char( buf, ch );
    return;
@@ -3549,51 +3405,51 @@ void do_memory( CHAR_DATA * ch, char *argument )
 
    
 
-   xprintf( buf, "Affects %5d\n\r", top_affect );
+   snprintf( buf, MSL, "Affects %5d\n\r", top_affect );
    send_to_char( buf, ch );
-   xprintf( buf, "Areas   %5d\n\r", top_area );
+   snprintf( buf, MSL, "Areas   %5d\n\r", top_area );
    send_to_char( buf, ch );
-   xprintf( buf, "ExDes   %5d\n\r", top_ed );
+   snprintf( buf, MSL, "ExDes   %5d\n\r", top_ed );
    send_to_char( buf, ch );
-   xprintf( buf, "Exits   %5d\n\r", top_exit );
+   snprintf( buf, MSL, "Exits   %5d\n\r", top_exit );
    send_to_char( buf, ch );
-   xprintf( buf, "Helps   %5d\n\r", count_helps() );
+   snprintf( buf, MSL, "Helps   %5d\n\r", count_helps() );
    send_to_char( buf, ch );
-   xprintf( buf, "Mobs    %5d\n\r", top_mob_index );
+   snprintf( buf, MSL, "Mobs    %5d\n\r", top_mob_index );
    send_to_char( buf, ch );
-   xprintf( buf, "Objs    %5d\n\r", top_obj_index );
+   snprintf( buf, MSL, "Objs    %5d\n\r", top_obj_index );
    send_to_char( buf, ch );
-   xprintf( buf, "Resets  %5d\n\r", top_reset );
+   snprintf( buf, MSL, "Resets  %5d\n\r", top_reset );
    send_to_char( buf, ch );
-   xprintf( buf, "Rooms   %5d\n\r", top_room );
+   snprintf( buf, MSL, "Rooms   %5d\n\r", top_room );
    send_to_char( buf, ch );
-   xprintf( buf, "Shops   %5d\n\r", top_shop );
+   snprintf( buf, MSL, "Shops   %5d\n\r", top_shop );
    send_to_char( buf, ch );
 
 #if 0
-   xprintf( buf, "Strings %5d strings of %7d bytes (max %d).\n\r", nAllocString, sAllocString, MAX_STRING );
+   snprintf( buf, MSL, "Strings %5d strings of %7d bytes (max %d).\n\r", nAllocString, sAllocString, MAX_STRING );
 #endif
 
-   xprintf( buf, "Shared String Info:\n\r" );
+   snprintf( buf, MSL, "Shared String Info:\n\r" );
    send_to_char( buf, ch );
-   xprintf( buf, "Strings           %5ld strings of %7ld bytes (max %ld).\n\r", nAllocString, sAllocString, MAX_STRING );
+   snprintf( buf, MSL, "Strings           %5ld strings of %7ld bytes (max %ld).\n\r", nAllocString, sAllocString, MAX_STRING );
    send_to_char( buf, ch );
-   xprintf( buf, "Overflow Strings  %5ld strings of %7ld bytes.\n\r", nOverFlowString, sOverFlowString );
+   snprintf( buf, MSL, "Overflow Strings  %5ld strings of %7ld bytes.\n\r", nOverFlowString, sOverFlowString );
    send_to_char( buf, ch );
    if( Full )
    {
       send_to_char( "Shared String Heap is full, increase MAX_STRING.\n\r", ch );
-      xprintf( buf, "Overflow high-water-mark is %ld bytes.\n\r", hwOverFlow );
+      snprintf( buf, MSL, "Overflow high-water-mark is %ld bytes.\n\r", hwOverFlow );
       send_to_char( buf, ch );
    }
 
-   xprintf( buf, "Perms             %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
+   snprintf( buf, MSL, "Perms             %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
    send_to_char( buf, ch );
 
-   xprintf( buf, "Freelist Info: Gets: %5d Puts:   %5d\n\r",free_get,free_put);
+   snprintf( buf, MSL, "Freelist Info: Gets: %5d Puts:   %5d\n\r",free_get,free_put);
    send_to_char( buf, ch );
 
-   xprintf( buf, "File Streams: Opens: %5d Closes: %5d\n\r",fp_open,fp_close);
+   snprintf( buf, MSL, "File Streams: Opens: %5d Closes: %5d\n\r",fp_open,fp_close);
    send_to_char( buf, ch );
 
    return;
@@ -3611,15 +3467,15 @@ void do_status( CHAR_DATA * ch, char *argument )
    send_to_char( "\n\r", ch );
    send_to_char( "The following counts are for *distinct* mobs/objs/rooms, not a count\n\r", ch );
    send_to_char( "of how many are actually in the game at this time.\n\r", ch );
-   xprintf( buf, "Areas   %5d\n\r", top_area );
+   snprintf( buf, MSL, "Areas   %5d\n\r", top_area );
    send_to_char( buf, ch );
-   xprintf( buf, "Helps   %5d\n\r", count_helps() );
+   snprintf( buf, MSL, "Helps   %5d\n\r", count_helps() );
    send_to_char( buf, ch );
-   xprintf( buf, "Mobs    %5d\n\r", top_mob_index );
+   snprintf( buf, MSL, "Mobs    %5d\n\r", top_mob_index );
    send_to_char( buf, ch );
-   xprintf( buf, "Objs    %5d\n\r", top_obj_index );
+   snprintf( buf, MSL, "Objs    %5d\n\r", top_obj_index );
    send_to_char( buf, ch );
-   xprintf( buf, "Rooms   %5d\n\r", top_room );
+   snprintf( buf, MSL, "Rooms   %5d\n\r", top_room );
    send_to_char( buf, ch );
 
    return;
@@ -3894,7 +3750,7 @@ void bug( const char *str, int param )
          fseek( fpArea, iChar, 0 );
       }
 
-      xprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
+      snprintf( buf, MSL, "[*****] FILE: %s LINE: %d", strArea, iLine );
       log_string( buf );
 
       if( ( fp = file_open( SHUTDOWN_FILE, "a" ) ) != NULL )
@@ -3905,9 +3761,9 @@ void bug( const char *str, int param )
    }
 
    if( param > 0 )
-    xprintf( buf, "[*****] BUG: %s %d", str, param );
+    snprintf( buf, MSL, "[*****] BUG: %s %d", str, param );
    else
-    xprintf( buf, "[*****] BUG: %s", str );
+    snprintf( buf, MSL, "[*****] BUG: %s", str );
    log_string( buf );
 
    if( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
@@ -3945,7 +3801,7 @@ void bug_string( const char *str, const char *str2 )
          fseek( fpArea, iChar, 0 );
       }
 
-      xprintf( buf, "[*****] FILE: %s LINE: %d", strArea, iLine );
+      snprintf( buf, MSL, "[*****] FILE: %s LINE: %d", strArea, iLine );
       log_string( buf );
 
       if( ( fp = file_open( SHUTDOWN_FILE, "a" ) ) != NULL )
@@ -3955,7 +3811,7 @@ void bug_string( const char *str, const char *str2 )
       }
    }
 
-   xprintf( buf, "[*****] BUG: %s %s", str, str2 );
+   snprintf( buf, MSL, "[*****] BUG: %s %s", str, str2 );
    log_string( buf );
 
    if( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
@@ -4051,7 +3907,7 @@ void mprog_file_read( char *f, MOB_INDEX_DATA * pMobIndex )
    char *permf;
    int type;
 
-   xprintf( name, "%s%s", MOB_DIR, f );
+   snprintf( name, MSL, "%s%s", MOB_DIR, f );
    if( !( fp = file_open( name, "r" ) ) )
    {
       bug( "Mob: %d couldn't opne mobprog file.", pMobIndex->vnum );
@@ -4204,7 +4060,7 @@ bool char_exists( char *argument )
  char buf[MAX_STRING_LENGTH];
  bool found = FALSE;
 
- xprintf( buf, "%s%s%s%s", PLAYER_DIR, initial( argument ), "/", capitalize( argument ) );
+ snprintf( buf, MSL, "%s%s%s%s", PLAYER_DIR, initial( argument ), "/", capitalize( argument ) );
 
  if( ( fp = file_open( buf, "r" ) ) != NULL )
   found = TRUE;
@@ -4241,7 +4097,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
    if( IS_IMMORTAL(ch) )
    {
     found = TRUE;
-    xprintf(buf,"[%s",ctime(&chan_history.time[x][y]));
+    snprintf(buf,MSL,"[%s",ctime(&chan_history.time[x][y]));
     buf[(strlen(buf)-1)] = '\0';           /* I realize how ugly this chunk looks but it was */
     xcat(buf,"] ");                        /* necessary to get around ctime adding a newline --Kline */
     xcat(buf,chan_history.message[x][y]);
@@ -4253,7 +4109,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
     {
      default: found = TRUE; send_to_char(chan_history.message[x][y],ch); break;
      case CHANNEL_DIPLOMAT:
-      if( is_set(ch->act,ACT_CDIPLOMAT) )
+      if( ch->act.test(ACT_CDIPLOMAT) )
       {
        found = TRUE;
        send_to_char(chan_history.message[x][y],ch);
@@ -4284,7 +4140,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
      case CHANNEL_RACE:
       if( ch->race == chan_history.cbit[x][y] )
       {
-       xprintf(buf,"char: %d chan: %d\n\r",ch->race,chan_history.cbit[x][y]);
+       snprintf(buf,MSL,"char: %d chan: %d\n\r",ch->race,chan_history.cbit[x][y]);
        send_to_char(buf,ch);
        found = TRUE;
        send_to_char(chan_history.message[x][y],ch);
@@ -4324,15 +4180,15 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
  {
   if( chan_history.message[x][y] == '\0' )
   {
-   xprintf(chan_history.message[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
+   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
    chan_history.time[x][y] = current_time;
-   xprintf(chan_history.aname[x][y],"none");
+   snprintf(chan_history.aname[x][y],128,"none");
    chan_history.cbit[x][y] = -1;
 
    switch( channel )
    {
     default: break;
-    case CHANNEL_YELL:   xprintf(chan_history.aname[x][y],ch->in_room->area->name);                break;
+    case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,ch->in_room->area->name);           break;
     case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                               break;
     case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
     case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
@@ -4346,9 +4202,9 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
 
    for( i = 1; i < MAX_HISTORY; i++ )
    {
-    xprintf(chan_history.message[x][(i-1)],chan_history.message[x][i]);
+    snprintf(chan_history.message[x][(i-1)],MSL,chan_history.message[x][i]);
     chan_history.time[x][(i-1)] = chan_history.time[x][i];
-    xprintf(chan_history.aname[x][(i-1)],chan_history.aname[x][i]);
+    snprintf(chan_history.aname[x][(i-1)],128,chan_history.aname[x][i]);
     chan_history.cbit[x][(i-1)] = chan_history.cbit[x][i];
    }
 
@@ -4357,15 +4213,15 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    chan_history.aname[x][y][0] = '\0';
    chan_history.cbit[x][y] = 0;
 
-   xprintf(chan_history.message[x][y],"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
+   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
    chan_history.time[x][y] = current_time;
-   xprintf(chan_history.aname[x][y],"none");
+   snprintf(chan_history.aname[x][y],128,"none");
    chan_history.cbit[x][y] = -1;
 
    switch( channel )
    {
     default: break;
-    case CHANNEL_YELL:   xprintf(chan_history.aname[x][y],ch->in_room->area->name);                break;
+    case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,ch->in_room->area->name);           break;
     case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                               break;
     case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
     case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
@@ -4381,8 +4237,8 @@ int count_helps( void )
  char buf[MSL];
  char tmp[MSL];
 
- xprintf(tmp,"expr `ls -1 -R %s | wc -l` - 26",HELP_DIR);
- xprintf(buf,_popen(tmp));
+ snprintf(tmp,MSL,"expr `ls -1 -R %s | wc -l` - 26",HELP_DIR);
+ snprintf(buf,MSL,_popen(tmp));
 
  return atoi(buf);
 }
@@ -4399,13 +4255,13 @@ char *search_helps( const char *string )
  t_out = (char *)calloc(1,sizeof(char));
  pipe = (char *)calloc(1,sizeof(char));
 
- xprintf(tmp,_popen(string));
+ snprintf(tmp,MSL,_popen(string));
  pipe = tmp;
 
  for( t_out = strtok_r(pipe,"\n",&t_buf); t_out != NULL; t_out = strtok_r(NULL,"\n",&t_buf) )
  {
   t_out += 9;                /* Strip off ../helps/ at the start, edit if you change your HELP_DIR */
-  xprintf(tmp,t_out);
+  snprintf(tmp,MSL,t_out);
   tmp[strlen(tmp)-4] = '\0'; /* Strip off .ext at the end, edit if you change HELP_MORT or HELP_IMM */
   xcat(ret,"%s ",tmp);
  }
@@ -4435,13 +4291,13 @@ char *_popen( const char *string )
  }
 
  if( (fp = popen(string,"r")) == NULL )
-  xprintf(ret,"");
+  snprintf(ret,MSL,"%s","");
  else
  {
   while( fgets(tmp,MSL,fp) )
   {
    if( ret[0] == '\0' )
-    xprintf(ret,tmp);
+    snprintf(ret,MSL,tmp);
    else
     xcat(ret,tmp);
   }

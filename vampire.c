@@ -46,10 +46,6 @@
 #include "h/act_move.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -220,7 +216,7 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
       victim->pcdata->super->bloodline = ch->pcdata->super->bloodline;
       victim->pcdata->super->energy = -10;
       victim->pcdata->super->energy_max = 20;
-      set_bit( victim->act, ACT_VAMPIRE );
+      victim->act.set(ACT_VAMPIRE);
       victim->pcdata->condition[COND_FULL] = 20;
       victim->pcdata->condition[COND_THIRST] = 20;
       victim->pcdata->super->pracs = 2;
@@ -516,11 +512,11 @@ bool spell_blood_walk( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
        || victim == ch
        || !IS_NPC( victim )
        || victim->in_room == NULL
-       || is_set( victim->in_room->room_flags, RFLAG_PRIVATE )
-       || is_set( victim->in_room->room_flags, RFLAG_SOLITARY )
-       || is_set( victim->in_room->room_flags, RFLAG_SAFE )
-       || is_set( victim->act, ACT_NO_BLOOD )
-       || is_set( victim->in_room->room_flags, RFLAG_NO_BLOODWALK )
+       || victim->in_room->room_flags.test(RFLAG_PRIVATE)
+       || victim->in_room->room_flags.test(RFLAG_SOLITARY)
+       || victim->in_room->room_flags.test(RFLAG_SAFE)
+       || victim->act.test(ACT_NO_BLOOD)
+       || victim->in_room->room_flags.test(RFLAG_NO_BLOODWALK)
        || ( ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) > 20 ) )
    {
       send_to_char( "Your @@eblood@@N burns with rage, as your efforts are shaken off.\n\r", ch );
@@ -533,19 +529,19 @@ bool spell_blood_walk( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    }
 
 
-   if( is_set( victim->act, ACT_NO_VISIT ) )
+   if( victim->act.test(ACT_NO_VISIT) )
    {
       send_to_char( "You cannot sense your target's @@eblood@@N!\n\r", ch );
       return TRUE;
    }
 
-   if( is_set( victim->in_room->room_flags, RFLAG_NO_BLOODWALK ) )
+   if( victim->in_room->room_flags.test(RFLAG_NO_BLOODWALK) )
    {
       send_to_char( "You cannot sense your target's @@eblood@@N!\n\r", ch );
       return FALSE;
    }
 
-   if( is_set( victim->act, ACT_NO_BLOOD ) )
+   if( victim->act.test(ACT_NO_BLOOD) )
    {
       send_to_char( "You cannot sense your target's @@eblood@@N!\n\r", ch );
       return FALSE;

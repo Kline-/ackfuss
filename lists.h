@@ -82,19 +82,14 @@ extern AFFECT_DATA *affect_free;
 extern ROOM_AFFECT_DATA *raffect_free;
 extern AREA_DATA *area_free;
 extern BAN_DATA *ban_free;
-extern CHAR_DATA *char_free;
 extern DESCRIPTOR_DATA *desc_free;
 extern EXIT_DATA *exit_free;
 extern EXTRA_DESCR_DATA *exdesc_free;
-extern MOB_INDEX_DATA *mid_free;
-extern NOTE_DATA *note_free;
 extern OBJ_DATA *obj_free;
 extern OBJ_INDEX_DATA *oid_free;
-extern PC_DATA *pcd_free;
 extern SUPER_DATA *super_free;
 extern RECORD_DATA *record_free;
 extern RESET_DATA *reset_free;
-extern ROOM_INDEX_DATA *rid_free;
 extern SHOP_DATA *shop_free;
 extern MPROG_DATA *mprog_free;
 extern MPROG_ACT_LIST *mpact_free;
@@ -113,7 +108,6 @@ extern QUEUED_INTERACT_LIST *queued_interact_free;
 extern INFLUENCE_LIST *influence_list_free;
 extern RULER_LIST *ruler_list_free;
 extern DL_LIST *dl_list_free;
-extern BRAND_DATA *brand_data_free;
 extern MONEY_TYPE *money_type_free;
 extern BOARD_DATA *board_free;
 extern MESSAGE_DATA *message_free;
@@ -122,7 +116,6 @@ extern HASH_ENTRY *hash_free;
 extern NPC_GROUP_DATA *npc_group_free;
 extern FIGHT_DATA *fight_free;
 extern QUEST_INFO *quest_info_free;
-extern BITMASK *bitmask_free;
 
 extern void ( *portal_free_destructor ) ( PORTAL_DATA * pdat );
 extern void ( *affect_free_destructor ) ( AFFECT_DATA * adat );
@@ -150,8 +143,6 @@ extern void ( *board_free_destructor ) ( BOARD_DATA * bdat );
 extern void ( *buf_free_destructor ) ( BUF_DATA_STRUCT * bdat );
 extern void ( *hash_free_destructor ) ( HASH_ENTRY * hdat );
 
-/* actual destructors */
-void note_free_destructor( NOTE_DATA * ndat );
 #ifdef DEBUG_MONEY
 void money_type_free_destructor( MONEY_TYPE * mtdat );
 #endif
@@ -162,15 +153,10 @@ void reset_free_destructor( RESET_DATA * rdat );
 void exdesc_free_destructor( EXTRA_DESCR_DATA * eddat );
 void oid_free_destructor( OBJ_INDEX_DATA * oidat );
 void mprog_free_destructor( MPROG_DATA * mpdat );
-void mid_free_destructor( MOB_INDEX_DATA * midat );
 void exit_free_destructor( EXIT_DATA * edat );
-void rid_free_destructor( ROOM_INDEX_DATA * ridat );
 void mpact_free_destructor( MPROG_ACT_LIST * mpadat );
-void brand_data_free_destructor( BRAND_DATA * bdat );
-void pcd_free_destructor( PC_DATA * pcdat );
 void super_free_destructor( SUPER_DATA *superdat );
 void record_free_destructor( RECORD_DATA * recorddat );
-void char_free_destructor( CHAR_DATA * cdat );
 void mark_free_destructor( MARK_DATA * mdat );
 void shield_free_destructor( MAGIC_SHIELD * msdat );
 void obj_free_destructor( OBJ_DATA * odat );
@@ -178,7 +164,6 @@ void ruler_data_free_destructor( RULER_DATA * rdat );
 void npc_group_free_destructor( NPC_GROUP_DATA * ngrp );
 void fight_free_destructor( FIGHT_DATA *fight );
 void quest_info_free_destructor( QUEST_INFO *quest );
-void bitmask_free_destructor( BITMASK *bitmask );
 
 extern int free_get;
 extern int free_put;

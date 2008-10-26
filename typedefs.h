@@ -184,8 +184,6 @@ typedef struct hash_entry_tp HASH_ENTRY;
 typedef struct npc_group_data NPC_GROUP_DATA;
 
 /* Kline */
-typedef struct bmlist BM_LIST;
-typedef struct bitmask BITMASK;
 typedef struct chanhistory CHAN_HISTORY;
 typedef struct super_data SUPER_DATA;
 typedef struct fight_data FIGHT_DATA;

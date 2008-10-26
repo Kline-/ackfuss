@@ -47,10 +47,6 @@
 #include "h/act_info.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_BUILD_H
 #include "h/build.h"
 #endif
@@ -79,14 +75,9 @@ void note_attach( CHAR_DATA * ch )
    if( ch->pnote )
       return;
 
-   GET_FREE( pnote, note_free );
+   pnote = new NOTE_DATA;
 
-   pnote->next = NULL;
-   pnote->sender = str_dup( ch->name );
-   pnote->date = str_dup( "" );
-   pnote->to_list = str_dup( "" );
-   pnote->subject = str_dup( "" );
-   pnote->text = str_dup( "" );
+   pnote->sender = str_dup(ch->name);
    ch->pnote = pnote;
    return;
 }
@@ -133,7 +124,7 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
     */
    UNLINK( pnote, first_note, last_note, next, prev );
 
-   PUT_FREE( pnote, note_free );
+   delete pnote;
 
    /*
     * Rewrite entire list.
@@ -177,7 +168,7 @@ void do_note( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    for( postie = ch->in_room->first_person; postie != NULL; postie = postie->next_in_room )
-      if( IS_NPC( postie ) && is_set( postie->act, ACT_POSTMAN ) )
+      if( IS_NPC( postie ) && postie->act.test(ACT_POSTMAN) )
          break;
 
 
@@ -204,7 +195,7 @@ void do_note( CHAR_DATA * ch, char *argument )
       {
          if( is_note_to( ch, pnote ) )
          {
-            xprintf( buf, "[%3d%s] %s: %s\n\r",
+            snprintf( buf, MSL, "[%3d%s] %s: %s\n\r",
                      vnum,
                      ( pnote->date_stamp > ch->last_note
                        && str_cmp( pnote->sender, ch->name ) ) ? "N" : " ", pnote->sender, pnote->subject );
@@ -244,13 +235,13 @@ void do_note( CHAR_DATA * ch, char *argument )
          {
             if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && ch->last_note < pnote->date_stamp )
             {
-               xprintf( buf, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
+               snprintf( buf, MSL, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
                xcat( buf1, buf );
 
-               xprintf( buf, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
+               snprintf( buf, MSL, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
                xcat( buf1, buf );
 
-               xprintf( buf, "Across the top of the letter it says: %s\n\r", pnote->subject );
+               snprintf( buf, MSL, "Across the top of the letter it says: %s\n\r", pnote->subject );
                xcat( buf1, buf );
 
                xcat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
@@ -283,13 +274,13 @@ void do_note( CHAR_DATA * ch, char *argument )
       {
          if( is_note_to( ch, pnote ) && ( vnum++ == anum || fAll ) )
          {
-            xprintf( buf, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
+            snprintf( buf, MSL, "The letter is postmarked %d:%s\n\r", vnum, pnote->date );
             xcat( buf1, buf );
 
-            xprintf( buf, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
+            snprintf( buf, MSL, "It bears the mark of %s on the envelope,\n\r", pnote->sender );
             xcat( buf1, buf );
 
-            xprintf( buf, "Across the top of the letter it says: %s\n\r", pnote->subject );
+            snprintf( buf, MSL, "Across the top of the letter it says: %s\n\r", pnote->subject );
             xcat( buf1, buf );
 
             xcat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r" );
@@ -365,7 +356,7 @@ void do_note( CHAR_DATA * ch, char *argument )
    {
       if( ch->pnote )
       {
-         PUT_FREE( ch->pnote, note_free );
+         delete ch->pnote;
          ch->pnote = NULL;
       }
 
@@ -381,7 +372,7 @@ void do_note( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      xprintf( buf, "%s: %s\n\rTo: %s\n\r", ch->pnote->sender, ch->pnote->subject, ch->pnote->to_list );
+      snprintf( buf, MSL, "%s: %s\n\rTo: %s\n\r", ch->pnote->sender, ch->pnote->subject, ch->pnote->to_list );
       send_to_char( buf, ch );
       send_to_char( ch->pnote->text, ch );
       return;
@@ -493,7 +484,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
    /*
     * Allows immortals to communicate in silent rooms 
     */
-   if( is_set( ch->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )  /* Sssshhh! */
+   if( ch->in_room->room_flags.test(RFLAG_QUIET) && !IS_IMMORTAL( ch ) )  /* Sssshhh! */
    {
       send_to_char( "Ssshhh!  This is a quiet room!\n\r", ch );
       return;
@@ -501,13 +492,13 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
 
    if( argument[0] == '\0' )
    {
-      xprintf( buf, "%s what?\n\r", verb );
+      snprintf( buf, MSL, "%s what?\n\r", verb );
       buf[0] = UPPER( buf[0] );
       return;
    }
 
-   remove_bit( ch->deaf, channel );
-   if( is_set(ch->deaf,CHANNEL_HERMIT) )
+   ch->deaf.reset(channel);
+   if( ch->deaf.test(CHANNEL_HERMIT) )
       send_to_char( "You are hermit right now, and will not hear the response.\n\r ", ch );
 
    if( !str_cmp(argument,"history") && !IS_NPC(ch) )
@@ -516,9 +507,9 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
     return;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_SILENCE) )
    {
-      xprintf( buf, "You can't %s.\n\r", verb );
+      snprintf( buf, MSL, "You can't %s.\n\r", verb );
       send_to_char( buf, ch );
       return;
    }
@@ -529,85 +520,85 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
    switch ( channel )
    {
       default:
-         xprintf( buf, "You %s '%s'.\n\r", verb, argument );
+         snprintf( buf, MSL, "You %s '%s'.\n\r", verb, argument );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_GOSSIP:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "gossip" ), verb, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%sYou %s '%s'.%s\n\r", color_string( ch, "gossip" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_CRUSADE:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "crusade" ), verb, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%sYou %s '%s'.%s\n\r", color_string( ch, "crusade" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_AUCTION:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "auction" ), verb, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%sYou %s '%s'.%s\n\r", color_string( ch, "auction" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_MUSIC:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "music" ), verb, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%sYou %s '%s'.%s\n\r", color_string( ch, "music" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_YELL:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "yell" ), verb, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%sYou %s '%s'.%s\n\r", color_string( ch, "yell" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_ADEPT:
-         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "adept" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "adept" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %s: '$t'.", verb );
+         snprintf( buf, MSL, "$n %s: '$t'.", verb );
          break;
 
       case CHANNEL_FLAME:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "flame" ), verb, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%sYou %s '%s'.%s\n\r", color_string( ch, "flame" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_SHOUT:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "shout" ), verb, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%sYou %s '%s'.%s\n\r", color_string( ch, "shout" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_CLAN:
-         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %s: '$t'.", verb );
+         snprintf( buf, MSL, "$n %s: '$t'.", verb );
          break;
 
       case CHANNEL_FAMILY:
-         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %s: '$t'.", verb );
+         snprintf( buf, MSL, "$n %s: '$t'.", verb );
          break;
 
       case CHANNEL_HOWL:
-         xprintf( buf, "%sYou %s '%s'.%s\n\r", color_string( ch, "clan" ), verb, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%sYou %s '%s'.%s\n\r", color_string( ch, "clan" ), verb, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %ss '$t'.", verb );
+         snprintf( buf, MSL, "$n %ss '$t'.", verb );
          break;
 
       case CHANNEL_RACE:
-         xprintf( buf, "%s%s %s: '%s'.%s\n\r", color_string( ch, "race" ), verb, ch->name, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s%s %s: '%s'.%s\n\r", color_string( ch, "race" ), verb, ch->name, argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "$n %s: '$t'.", verb );
+         snprintf( buf, MSL, "$n %s: '$t'.", verb );
          break;
 
       case CHANNEL_CREATOR:
-         xprintf( buf, "%s $n: $t.", verb );
+         snprintf( buf, MSL, "%s $n: $t.", verb );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
@@ -615,7 +606,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_IMMTALK:
-         xprintf( buf, "$n: $t." );
+         snprintf( buf, MSL, "$n: $t." );
          position = ch->position;
          ch->position = POS_STANDING;
          act( buf, ch, argument, NULL, TO_CHAR );
@@ -623,33 +614,33 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_REMORTTALK:
-         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "remort" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "remort" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "%s $n: $t.", verb );
+         snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
       case CHANNEL_DIPLOMAT:
-         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "diplomat" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "diplomat" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "%s $n: $t.", verb );
+         snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
       case CHANNEL_QUEST:
-         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "quest" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "quest" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "%s $n: $t.", verb );
+         snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
       case CHANNEL_OOC:
-         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "ooc" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "ooc" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "%s $n: $t.", verb );
+         snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
       case CHANNEL_GAME:
-         xprintf( buf, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "game" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\n\r", verb, ch->name, color_string( ch, "game" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
-         xprintf( buf, "%s $n: $t.", verb );
+         snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
    }
@@ -664,15 +655,15 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          och = ( d->original ) ? ( d->original ) : ( d->character );
          vch = d->character;
 
-         if( d->connected == CON_PLAYING && vch != ch && !is_set( och->deaf, channel ) && !is_set(och->deaf,CHANNEL_HERMIT) )
+         if( d->connected == CON_PLAYING && vch != ch && !och->deaf.test(channel) && !och->deaf.test(CHANNEL_HERMIT) )
          {
-            if( is_set( vch->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )
+            if( vch->in_room->room_flags.test(RFLAG_QUIET) && !IS_IMMORTAL( ch ) )
                continue;
             if( channel == CHANNEL_CREATOR && get_trust( och ) < MAX_LEVEL )
                continue;
             if( channel == CHANNEL_IMMTALK && !IS_HERO( och ) )
                continue;
-            if( channel == CHANNEL_DIPLOMAT && !is_set( och->act, ACT_CDIPLOMAT ) )
+            if( channel == CHANNEL_DIPLOMAT && !och->act.test(ACT_CDIPLOMAT) )
                continue;
             if( channel == CHANNEL_REMORTTALK && !is_remort( och ) )
                continue;
@@ -681,10 +672,10 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
             if( channel == CHANNEL_ZZZ && vch->position != POS_SLEEPING && och->level != 85 )
                continue;
             if( channel == CHANNEL_RACE && vch->race != ch->race
-                && ( och->level != 85 || is_set( och->deaf, CHANNEL_ALLRACE ) ) )
+                && ( och->level != 85 || och->deaf.test(CHANNEL_ALLRACE) ) )
                continue;
             if( channel == CHANNEL_CLAN && och->pcdata->clan != ch->pcdata->clan
-                && ( is_set( och->deaf, CHANNEL_ALLCLAN ) || get_trust( och ) != MAX_LEVEL ) )
+                && ( och->deaf.test(CHANNEL_ALLCLAN) || get_trust( och ) != MAX_LEVEL ) )
                continue;
             if( ( channel == CHANNEL_FAMILY )
                 && ( ( !IS_VAMP( och ) || !IS_VAMP( ch ) )
@@ -719,34 +710,34 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
             switch ( channel )
             {
                default:
-                  xprintf( ansi, "%s", buf );
+                  snprintf( ansi, MSL, "%s", buf );
                   break;
                case CHANNEL_SHOUT:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "shout" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "shout" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_RACE:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "race" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "race" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_MUSIC:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "music" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "music" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_CLAN:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "clan" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "clan" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_FLAME:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "flame" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "flame" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_YELL:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "yell" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "yell" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_GOSSIP:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_OOC:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
                case CHANNEL_CRUSADE:
-                  xprintf( ansi, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
+                  snprintf( ansi, MSL, "%s%s%s", color_string( vch, "gossip" ), buf, color_string( vch, "normal" ) );
                   break;
 
             } //switch
@@ -816,7 +807,7 @@ void do_race( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   xprintf( buf, "[  %s  ]", race_table[ch->race].race_name );
+   snprintf( buf, MSL, "[  %s  ]", race_table[ch->race].race_name );
    talk_channel( ch, argument, CHANNEL_RACE, buf );
    return;
 }
@@ -837,7 +828,7 @@ void do_clan( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   xprintf( buf, "[%s]", clan_table[ch->pcdata->clan].clan_abbr );
+   snprintf( buf, MSL, "[%s]", clan_table[ch->pcdata->clan].clan_abbr );
    talk_channel( ch, argument, CHANNEL_CLAN, buf );
    return;
 }
@@ -857,7 +848,7 @@ void do_familytalk( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   xprintf( buf, "[%s]", get_family_name( ch ) );
+   snprintf( buf, MSL, "[%s]", get_family_name( ch ) );
    talk_channel( ch, argument, CHANNEL_FAMILY, buf );
    return;
 }
@@ -881,7 +872,7 @@ void do_howl( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * xprintf( buf, "[%s]", get_family_name ( ch ) );  
+    * snprintf( buf, "[%s]", get_family_name ( ch ) );  
     */
    talk_channel( ch, argument, CHANNEL_HOWL, "@@bHowl@@N" );
    return;
@@ -987,7 +978,7 @@ void do_immtalk( CHAR_DATA * ch, char *argument )
 }
 void do_diptalk( CHAR_DATA * ch, char *argument )
 {
-   if( !is_set( ch->act, ACT_CDIPLOMAT ) )
+   if( !ch->act.test(ACT_CDIPLOMAT) )
    {
       send_to_char( "You are not a clan diplomat.\n\r", ch );
       return;
@@ -1037,7 +1028,7 @@ void do_say( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( ch->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )
+   if( ch->in_room->room_flags.test(RFLAG_QUIET) && !IS_IMMORTAL( ch ) )
    {
       send_to_char( "Sssshhhh! This is a quiet room!\n\r", ch );
       return;
@@ -1053,11 +1044,11 @@ void do_say( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
       argument = slur_text( argument );
 
-   xprintf( buf, "You say '%s$T%s'.", color_string( ch, "say" ), color_string( ch, "normal" ) );
+   snprintf( buf, MSL, "You say '%s$T%s'.", color_string( ch, "say" ), color_string( ch, "normal" ) );
    act( buf, ch, NULL, argument, TO_CHAR );
    for( ppl = ch->in_room->first_person; ppl != NULL; ppl = ppl->next_in_room )
    {
-      xprintf( buf, "$n says '%s$t%s'.", color_string( ppl, "say" ), color_string( ppl, "normal" ) );
+      snprintf( buf, MSL, "$n says '%s$t%s'.", color_string( ppl, "say" ), color_string( ppl, "normal" ) );
       act( buf, ch, argument, ppl, TO_VICT );
    }
    mprog_speech_trigger( argument, ch );
@@ -1090,12 +1081,12 @@ void do_ignore( CHAR_DATA * ch, char *argument )
       {
          if( ch->pcdata->ignore_list[i] != NULL )
          {
-            xprintf( buf, "  %d) @@R%s@@g\n\r", i + 1, ch->pcdata->ignore_list[i] );
+            snprintf( buf, MSL, "  %d) @@R%s@@g\n\r", i + 1, ch->pcdata->ignore_list[i] );
             send_to_char( buf, ch );
          }
          else
          {
-            xprintf( buf, "  %d) @@Rnobody@@g\n\r", i + 1 );
+            snprintf( buf, MSL, "  %d) @@Rnobody@@g\n\r", i + 1 );
             send_to_char( buf, ch );
          }
       }
@@ -1135,12 +1126,12 @@ void do_ignore( CHAR_DATA * ch, char *argument )
         {
             if( ch->pcdata->ignore_list[i] != NULL )
             {
-                xprintf(buf, "  %d) @@R%s@@g\n\r",i+1,ch->pcdata->ignore_list[i]);
+                snprintf(buf, MSL, "  %d) @@R%s@@g\n\r",i+1,ch->pcdata->ignore_list[i]);
                 send_to_char( buf, ch );
             }
             else
             {
-		xprintf( buf, "  %d) @@Rnobody@@g\n\r", i+1 );
+		snprintf( buf, MSL, "  %d) @@Rnobody@@g\n\r", i+1 );
                 send_to_char( buf, ch );
             }
         }
@@ -1200,7 +1191,7 @@ void do_ignore( CHAR_DATA * ch, char *argument )
    send_to_char( "\nCurrent person to be ignored:\n\r", ch );
    for( i = 0; i < 3; i++ )
    {
-      xprintf( buf, "  %d) @@R%s@@g\n\r", i + 1, ch->pcdata->ignore_list[i] );
+      snprintf( buf, MSL, "  %d) @@R%s@@g\n\r", i + 1, ch->pcdata->ignore_list[i] );
       send_to_char( buf, ch );
    }
    for( i = 0; i < 3; i++ )
@@ -1229,13 +1220,13 @@ void do_tell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( ch->act, ACT_AFK ) )
+   if( ch->act.test(ACT_AFK) )
    {
-      remove_bit( ch->act, ACT_AFK );
+      ch->act.reset(ACT_AFK);
       act( "You are no longer AFK.", ch, NULL, NULL, TO_CHAR );
    }
 
-   if( is_set( ch->act, ACT_SILENCE ) )
+   if( ch->act.test(ACT_SILENCE) )
    {
       send_to_char( "Your message didn't get through.\n\r", ch );
       return;
@@ -1272,13 +1263,13 @@ void do_tell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->act, ACT_AFK ) )
+   if( victim->act.test(ACT_AFK) )
    {
       act( "$N is currently away from keyboard.", ch, NULL, victim, TO_CHAR );
       return;
    }
 
-   if( is_set( victim->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )
+   if( victim->in_room->room_flags.test(RFLAG_QUIET) && !IS_IMMORTAL( ch ) )
    {
       act( "$N is in a quiet room, $E can't hear you.", ch, NULL, victim, TO_CHAR );
       return;
@@ -1289,7 +1280,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
        && ( !str_cmp( victim->pcdata->ignore_list[0], ch->name ) ||
             !str_cmp( victim->pcdata->ignore_list[1], ch->name ) || !str_cmp( victim->pcdata->ignore_list[2], ch->name ) ) )
    {
-      xprintf( buf, "%s @@Ris ignoring you!!@@g\n\r", victim->name );
+      snprintf( buf, MSL, "%s @@Ris ignoring you!!@@g\n\r", victim->name );
       send_to_char( buf, ch );
       return;
    }
@@ -1303,7 +1294,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
              if( victim->pcdata->ignore_list != NULL ){ *//*
     * { == ch->name ){
     */
-/*	xprintf( buf, "%s, %s\n\r", victim->pcdata->ignore_list, ch->name );
+/*	snprintf( buf, MSL, "%s, %s\n\r", victim->pcdata->ignore_list, ch->name );
 	send_to_char( buf, ch);
 	return;
     }*/
@@ -1317,12 +1308,12 @@ void do_tell( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
       argument = slur_text( argument );
 
-   xprintf( buf, "You tell $N '%s$t%s'.", color_string( ch, "tell" ), color_string( ch, "normal" ) );
+   snprintf( buf, MSL, "You tell $N '%s$t%s'.", color_string( ch, "tell" ), color_string( ch, "normal" ) );
    act( buf, ch, argument, victim, TO_CHAR );
 
    position = victim->position;
    victim->position = POS_STANDING;
-   xprintf( buf, "$n tells you '%s$t%s'.", color_string( victim, "tell" ), color_string( victim, "normal" ) );
+   snprintf( buf, MSL, "$n tells you '%s$t%s'.", color_string( victim, "tell" ), color_string( victim, "normal" ) );
 
    act( buf, ch, argument, victim, TO_VICT );
    victim->position = position;
@@ -1344,7 +1335,7 @@ void do_reply( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_SILENCE) )
    {
       send_to_char( "Your message didn't get through.\n\r", ch );
       return;
@@ -1362,7 +1353,7 @@ void do_reply( CHAR_DATA * ch, char *argument )
    }
 
 
-   if( is_set( victim->in_room->room_flags, RFLAG_QUIET ) && !IS_IMMORTAL( ch ) )
+   if( victim->in_room->room_flags.test(RFLAG_QUIET) && !IS_IMMORTAL( ch ) )
    {
       act( "$N is in a quiet room.  $E can't hear you.", ch, NULL, victim, TO_CHAR );
       return;
@@ -1396,13 +1387,13 @@ void do_emote( CHAR_DATA * ch, char *argument )
    char *plast;
    buf[0] = '\0';
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_NO_EMOTE ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_NO_EMOTE) )
    {
       send_to_char( "You can't show your emotions.\n\r", ch );
       return;
    }
 
-   if( is_set( ch->in_room->room_flags, RFLAG_QUIET ) )
+   if( ch->in_room->room_flags.test(RFLAG_QUIET) )
    {
       send_to_char( "You can't show your emotions in a quiet room!\n\r", ch );
       return;
@@ -1659,7 +1650,7 @@ void do_pose( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-   if( is_set( ch->in_room->room_flags, RFLAG_QUIET ) )
+   if( ch->in_room->room_flags.test(RFLAG_QUIET) )
    {
       send_to_char( "You can't pose in a quiet room!\n\r", ch );
       return;
@@ -1753,7 +1744,7 @@ void do_quit( CHAR_DATA * ch, char *argument )
    send_to_char( "@@W-- George Orwell, '1984'@@g\n\r", ch );
 
    act( "$n waves, and leaves the game.", ch, NULL, NULL, TO_ROOM );
-   xprintf_2( log_buf, "%s quits ACK!", ch->name );
+   snprintf( log_buf, (2 * MIL), "%s quits ACK!", ch->name );
    if( ch->level != 85 )
       notify( log_buf, MAX_LEVEL - 2 );
    log_string( log_buf );
@@ -1774,7 +1765,7 @@ void do_quit( CHAR_DATA * ch, char *argument )
          if( other_logins->connected == CON_GET_OLD_PASSWORD )
          {
             char logbuf[MSL];
-            xprintf( logbuf, "CHEATER!!! Possible attempt to utilize eq dup bug, %s", other_logins->character->name );
+            snprintf( logbuf, MSL, "CHEATER!!! Possible attempt to utilize eq dup bug, %s", other_logins->character->name );
 
             log_string( logbuf );
          }
@@ -1811,7 +1802,7 @@ void do_save( CHAR_DATA * ch, char *argument )
    }
 
    save_char_obj( ch );
-   xprintf( buf, "Saving %s.\n\r", ch->name );
+   snprintf( buf, MSL, "Saving %s.\n\r", ch->name );
    if( str_cmp(argument,"auto") )
     send_to_char( buf, ch );
    return;
@@ -2141,7 +2132,7 @@ void group_all( CHAR_DATA * ch )
             ch_sremort = TRUE;
          if( get_psuedo_level( gch ) > 80 )
             victim_sremort = TRUE;
-/*    xprintf( buf, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
+/*    snprintf( buf, MSL, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
      ch->name, get_psuedo_level( ch ), ( ch_adept == TRUE ) ? "YES" : "NO", ( ch_dremort == TRUE) : "YES" : "NO", ( ch_sremort == TRUE ) ? "YES" : "NO",
      victim->name, get_psuedo_level( victim ), ( victim_adept == TRUE ) ? "YES" : "NO", ( victim_dremort == TRUE ) ? "YES" : "NO", ( victim_sremort == TRUE ) ? "YES" : "NO" );
 */
@@ -2222,23 +2213,23 @@ void do_group( CHAR_DATA * ch, char *argument )
       CHAR_DATA *leader;
 
       leader = ( ch->leader != NULL ) ? ch->leader : ch;
-      xprintf( buf, "%s's group:\n\r", PERS( leader, ch ) );
+      snprintf( buf, MSL, "%s's group:\n\r", PERS( leader, ch ) );
       send_to_char( buf, ch );
 
       for( gch = first_char; gch != NULL; gch = gch->next )
       {
          if( is_same_group( gch, ch ) )
          {
-            if( is_set( ch->act, ACT_BLIND_PLAYER ) )
+            if( ch->act.test(ACT_BLIND_PLAYER) )
             {
-               xprintf( buf,
+               snprintf( buf, MSL,
                         "%-16s %4d of %4d hp %4d of %4d mana %4d of %4d move %5d xp\n\r",
                         capitalize( PERS( gch, ch ) ),
                         gch->hit, gch->max_hit, gch->mana, gch->max_mana, gch->move, gch->max_move, gch->exp );
             }
             else
             {
-               xprintf( buf,
+               snprintf( buf, MSL,
                         "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5d xp\n\r",
                         gch->level,
                         IS_NPC( gch ) ? "Mob" : class_table[gch->p_class].who_name,
@@ -2303,7 +2294,7 @@ void do_group( CHAR_DATA * ch, char *argument )
       ch_sremort = TRUE;
    if( get_psuedo_level( victim ) > 80 )
       victim_sremort = TRUE;
-/*    xprintf( buf, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
+/*    snprintf( buf, MSL, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
      ch->name, get_psuedo_level( ch ), ( ch_adept == TRUE ) ? "YES" : "NO", ( ch_dremort == TRUE) : "YES" : "NO", ( ch_sremort == TRUE ) ? "YES" : "NO",
      victim->name, get_psuedo_level( victim ), ( victim_adept == TRUE ) ? "YES" : "NO", ( victim_dremort == TRUE ) ? "YES" : "NO", ( victim_sremort == TRUE ) ? "YES" : "NO" );
 */
@@ -2419,7 +2410,7 @@ void do_split( CHAR_DATA * ch, char *argument )
          send_to_char( "Your group members wouldn't like that!\n\r", ch );
          return;
       }
-      xprintf( catbuf, "%d %s ", share, coinbuf );
+      snprintf( catbuf, MSL, "%d %s ", share, coinbuf );
       xcat( givebuf, catbuf );
    }
    if( valid )
@@ -2431,7 +2422,7 @@ void do_split( CHAR_DATA * ch, char *argument )
          if( gch != ch && is_same_group( gch, ch ) )
          {
             give_money( ch, gch, givebuf );
-            xprintf( outbuf, "%s gives you %s.\n\r", PERS( ch, gch ), cost_to_money( money_to_cost( givebuf ) ) );
+            snprintf( outbuf, MSL, "%s gives you %s.\n\r", PERS( ch, gch ), cost_to_money( money_to_cost( givebuf ) ) );
             send_to_char( outbuf, gch );
          }
       }
@@ -2461,7 +2452,7 @@ void do_gtell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( ch->act, ACT_NO_TELL ) )
+   if( ch->act.test(ACT_NO_TELL) )
    {
       send_to_char( "Your message didn't get through!\n\r", ch );
       return;
@@ -2474,7 +2465,7 @@ void do_gtell( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
       argument = slur_text( argument );
 
-   xprintf( buf, "%s tells the group '%s'.\n\r", ch->name, argument );
+   snprintf( buf, MSL, "%s tells the group '%s'.\n\r", ch->name, argument );
    for( gch = first_char; gch != NULL; gch = gch->next )
    {
       if( is_same_group( gch, ch ) )
@@ -2524,7 +2515,7 @@ void do_pemote( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char *plast;
    buf[0] = '\0';
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_NO_EMOTE ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_NO_EMOTE) )
    {
       send_to_char( "You can't pemote.\n\r", ch );
       return;
@@ -2576,14 +2567,14 @@ void do_pray( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( ch->act, ACT_NO_PRAY ) )
+   if( ch->act.test(ACT_NO_PRAY) )
    {
       send_to_char( "The Gods are not listening to you today.\n\r", ch );
       return;
    }
 
    send_to_char( "You pray, concentrating on your message.\n\r", ch );
-   xprintf( buf, "%s sends the following message via prayer:\n\r`%s'\n\r", ch->name, argument );
+   snprintf( buf, MSL, "%s sends the following message via prayer:\n\r`%s'\n\r", ch->name, argument );
    notify( buf, LEVEL_HERO );
 
    return;
@@ -2674,8 +2665,8 @@ void do_tongue( CHAR_DATA * ch, char *argument )
    }
 
 
-   xprintf( buf3, "$n tongues, '%s'", buf );
-   xprintf( buf2, "$n tongues, '%s'.", argument );
+   snprintf( buf3, MSL, "$n tongues, '%s'", buf );
+   snprintf( buf2, MSL, "$n tongues, '%s'.", argument );
 
    for( rch = ch->in_room->first_person; rch; rch = rch->next_in_room )
    {
@@ -2689,9 +2680,9 @@ void do_tongue( CHAR_DATA * ch, char *argument )
          act( ( ch->race == rch->race || rch->level > LEVEL_IMMORTAL ) ? buf2 : buf3, ch, NULL, rch, TO_VICT );
    }
 
-   xprintf( buf2, "You tongue, '%s'.\n\r", buf );
+   snprintf( buf2, MSL, "You tongue, '%s'.\n\r", buf );
    send_to_char( buf2, ch );
-   xprintf( buf2, "Translation: %s.\n\r", argument );
+   snprintf( buf2, MSL, "Translation: %s.\n\r", argument );
    send_to_char( buf2, ch );
    return;
 }
@@ -2776,7 +2767,7 @@ void do_whisper( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_SILENCE) )
    {
       send_to_char( "Your whispering skills seem rusty today.\n\r", ch );
       return;
@@ -2842,7 +2833,7 @@ void do_ask( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_SILENCE ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_SILENCE) )
    {
       send_to_char( "You seem to have problems speaking!\n\r", ch );
       return;
@@ -2951,7 +2942,7 @@ void do_beep( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->deaf, CHANNEL_BEEP ) )
+   if( victim->deaf.test(CHANNEL_BEEP) )
    {
       send_to_char( "Your victim is ignoring beeps.  Sorry!\n\r", ch );
       return;
@@ -2989,16 +2980,16 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
       {
          if( quest_timer < 7 )
          {
-            xprintf( buf, "@@eI don't even know who stole it yet!@@N" );
+            snprintf( buf, MSL, "@@eI don't even know who stole it yet!@@N" );
          }
          else if( quest_object && quest_target )
          {
-            xprintf( buf, "@@NIt was %s @@N who stole my %s@@N.", quest_target->short_descr, quest_object->short_descr );
+            snprintf( buf, MSL, "@@NIt was %s @@N who stole my %s@@N.", quest_target->short_descr, quest_object->short_descr );
          }
       }
       else if( quest_object )
       {
-         xprintf( buf, "@@NDon't worry about who stole my %s@@N, he has recieved his just reward!",
+         snprintf( buf, MSL, "@@NDon't worry about who stole my %s@@N, he has recieved his just reward!",
                   quest_object->short_descr );
       }
       if( quest_mob != NULL )
@@ -3010,7 +3001,7 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
    {
       if( quest_mob && quest_object )
       {
-         xprintf( buf, "@@NMy %s @@Nwas stolen from me.", quest_object->short_descr );
+         snprintf( buf, MSL, "@@NMy %s @@Nwas stolen from me.", quest_object->short_descr );
          do_crusade( quest_mob, buf );
          return;
       }
@@ -3019,7 +3010,7 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
    if( !str_cmp( argument, "where are you?" ) )
       if( quest_mob )
       {
-         xprintf( buf, "@@NYou can find me in %s@@N, please hurry!!", quest_mob->in_room->area->name );
+         snprintf( buf, MSL, "@@NYou can find me in %s@@N, please hurry!!", quest_mob->in_room->area->name );
          do_crusade( quest_mob, buf );
          return;
       }
@@ -3032,22 +3023,22 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
          {
             if( quest_timer < 10 )
             {
-               xprintf( buf, "@@NI don't really know where %s@@N is, let me try and find out.", quest_target->short_descr );
+               snprintf( buf, MSL, "@@NI don't really know where %s@@N is, let me try and find out.", quest_target->short_descr );
             }
             else if( quest_target )
             {
-               xprintf( buf, "@@NI'm not really sure, but I THINK %s@@N is in %s@@N",
+               snprintf( buf, MSL, "@@NI'm not really sure, but I THINK %s@@N is in %s@@N",
                         quest_target->short_descr, quest_target->in_room->area->name );
             }
 
          }
          else if( ( quest_target ) && ( quest_timer <= 7 ) )
          {
-            xprintf( buf, "@@eI don't even know who stole it yet!@@N" );
+            snprintf( buf, MSL, "@@eI don't even know who stole it yet!@@N" );
          }
          else
          {
-            xprintf( buf, "@@NDon't worry about where the thief who stole my %s@@N is, he has recieved his just reward",
+            snprintf( buf, MSL, "@@NDon't worry about where the thief who stole my %s@@N is, he has recieved his just reward",
                      quest_object->short_descr );
          }
          do_crusade( quest_mob, buf );

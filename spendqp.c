@@ -130,7 +130,7 @@ void load_brands( void )
          word = fread_string( brandsfp );
          if( !str_cmp( word, "#BRAND" ) )
          {
-            GET_FREE( this_brand, brand_data_free );
+            this_brand = new BRAND_DATA;
             GET_FREE( brand_member, dl_list_free );
             this_brand->branded = fread_string( brandsfp );
             this_brand->branded_by = fread_string( brandsfp );
@@ -377,7 +377,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                BRAND_DATA *brand;
                DL_LIST *brand_member;
 
-               GET_FREE( brand, brand_data_free );
+               brand = new BRAND_DATA;
                GET_FREE( brand_member, dl_list_free );
                brand->branded = str_dup( ch->name );
                brand->branded_by = str_dup( "@@rSystem@@N" );
@@ -451,7 +451,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          {
             BRAND_DATA *brand;
             DL_LIST *brand_member;
-            GET_FREE( brand, brand_data_free );
+            brand = new BRAND_DATA;
             GET_FREE( brand_member, dl_list_free );
             brand->branded = str_dup( ch->name );
             brand->branded_by = str_dup( "@@rSystem@@N" );
@@ -689,14 +689,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg, "write" ) || !str_cmp( arg, "edit" ) )
    {
       if( ch->current_brand == NULL )
-      {
-         GET_FREE( ch->current_brand, brand_data_free );
-         ch->current_brand->branded = str_dup( "" );
-         ch->current_brand->branded_by = str_dup( "" );
-         ch->current_brand->message = str_dup( "" );
-         ch->current_brand->dt_stamp = str_dup( "" );
-         ch->current_brand->priority = str_dup( "" );
-      }
+         ch->current_brand = new BRAND_DATA;
 
       build_strdup( &ch->current_brand->message, "$edit", TRUE, FALSE, ch );
       return;
@@ -707,14 +700,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg, "player" ) )
    {
       if( ch->current_brand == NULL )
-      {
-         GET_FREE( ch->current_brand, brand_data_free );
-         ch->current_brand->branded = str_dup( "" );
-         ch->current_brand->branded_by = str_dup( "" );
-         ch->current_brand->message = str_dup( "" );
-         ch->current_brand->dt_stamp = str_dup( "" );
-         ch->current_brand->priority = str_dup( "" );
-      }
+         ch->current_brand = new BRAND_DATA;
 
       free_string( ch->current_brand->branded );
       ch->current_brand->branded = str_dup( argument );
@@ -725,14 +711,8 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg, "priority" ) )
    {
       if( ch->current_brand == NULL )
-      {
-         GET_FREE( ch->current_brand, brand_data_free );
-         ch->current_brand->branded = str_dup( "" );
-         ch->current_brand->branded_by = str_dup( "" );
-         ch->current_brand->message = str_dup( "" );
-         ch->current_brand->dt_stamp = str_dup( "" );
-         ch->current_brand->priority = str_dup( "" );
-      }
+         ch->current_brand = new BRAND_DATA;
+
       free_string( ch->current_brand->priority );
       ch->current_brand->priority = str_dup( argument );
       send_to_char( "Ok.\n\r", ch );
@@ -743,7 +723,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
    {
       if( ch->current_brand )
       {
-         PUT_FREE( ch->current_brand, brand_data_free );
+         delete ch->current_brand;
          ch->current_brand = NULL;
       }
       save_brands(  );
@@ -830,7 +810,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       {
          UNLINK( brand_list, first_brand, last_brand, next, prev );
          brand = (BRAND_DATA *)brand_list->this_one;
-         PUT_FREE( brand, brand_data_free );
+         delete brand;
          brand_list->this_one = NULL;
          PUT_FREE( brand_list, dl_list_free );
          save_brands(  );

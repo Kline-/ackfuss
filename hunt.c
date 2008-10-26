@@ -53,10 +53,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -91,7 +87,7 @@ void h_enqueue( ROOM_INDEX_DATA * room, short dir )
    hunt->next = NULL;
    hunt->room = room;
    hunt->dir = dir;
-   set_bit( room->room_flags, RFLAG_HUNT_MARK );
+   room->room_flags.set(RFLAG_HUNT_MARK);
    if( !h_head )
       h_head = hunt;
    else
@@ -113,7 +109,7 @@ void h_dequeue( void )
    h_head = hunt->next;
    if( h_tail == hunt )
       h_tail = NULL;
-   remove_bit( hunt->room->room_flags, RFLAG_HUNT_MARK );
+   hunt->room->room_flags.reset(RFLAG_HUNT_MARK);
 #ifdef DEBUG_HUNT_CODE
    fprintf( h_fp, "Dequeue: %5d\n", hunt->room->vnum );
    fflush( h_fp );
@@ -154,7 +150,7 @@ bool h_is_valid_exit( ROOM_INDEX_DATA * room, short dir, int h_flags )
             ( is_set( exit->to_room->room_flags, RFLAG_HUNT_MARK ) ? "set" : "unset" ) );
    fflush( h_fp );
 #endif
-   if( is_set( exit->to_room->room_flags, RFLAG_HUNT_MARK ) )
+   if( exit->to_room->room_flags.test(RFLAG_HUNT_MARK) )
       return FALSE;
    if( !IS_SET( h_flags, HUNT_WORLD ) && room->area != exit->to_room->area )
       return FALSE;
@@ -203,7 +199,7 @@ short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags 
    if( !h_free && !h_head && !h_tail )
       setup_hunt(  );
 #endif
-   set_bit( room->room_flags, RFLAG_HUNT_MARK );
+   room->room_flags.set(RFLAG_HUNT_MARK);
    h_enqueue_room( room, -1, h_flags );
    for( hunt = h_head; hunt; hunt = hunt->next )
    {
@@ -216,7 +212,7 @@ short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags 
          fflush( h_fp );
 #endif
          h_clear(  );
-         remove_bit( room->room_flags, RFLAG_HUNT_MARK );
+         room->room_flags.reset(RFLAG_HUNT_MARK);
          return dir;
       }
       h_enqueue_room( hunt->room, hunt->dir, h_flags );
@@ -226,7 +222,7 @@ short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags 
    fflush( h_fp );
 #endif
    h_clear(  );
-   remove_bit( room->room_flags, RFLAG_HUNT_MARK );
+   room->room_flags.reset(RFLAG_HUNT_MARK);
    return -1;
 }
 

@@ -46,10 +46,6 @@
 #include "h/areasave.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_BUILD_H
 #include "h/build.h"
 #endif
@@ -85,7 +81,7 @@
 #define BUILD_SEC_SPECIALS 8
 #define BUILD_SEC_OBJFUNS  9 /* -S- Mod */
 #define BUILD_SEC_END      10
-#define AREA_VERSION       21
+#define AREA_VERSION       22
 
 struct save_queue_type
 {
@@ -98,7 +94,6 @@ struct save_queue_type
 int saving_area = 0;
 
 /* local */
-int offset;
 int ToBeSaved = 0;
 int CurrentSaving = -1;
 AREA_DATA *CurSaveArea = NULL;
@@ -204,7 +199,6 @@ void build_save(  )
 
 
          Section = 1;
-         offset = CurSaveArea->offset;
          saving_area = AM_SAVING;
          Pointer = NULL;
          ResetPointer = NULL;
@@ -259,7 +253,6 @@ void build_save_area(  )
    fprintf( SaveFile, "N %i\n", CurSaveArea->area_num );
    fprintf( SaveFile, "I %i %i\n", CurSaveArea->min_level, CurSaveArea->max_level );
    fprintf( SaveFile, "V %i %i\n", CurSaveArea->min_vnum, CurSaveArea->max_vnum );
-   fprintf( SaveFile, "X %i\n", CurSaveArea->offset );
    fprintf( SaveFile, "F %i\n", CurSaveArea->reset_rate );
    fprintf( SaveFile, "U %s~\n", CurSaveArea->reset_msg );
    if( CurSaveArea->owner != NULL )
@@ -328,7 +321,7 @@ void build_save_mobs(  )
             pMobIndex->strong_magic,
             pMobIndex->weak_magic,
             pMobIndex->race_mods, pMobIndex->power_skills, pMobIndex->power_cast, pMobIndex->resist, pMobIndex->suscept );
-   fprintf( SaveFile, "%s\n", save_bitmask( pMobIndex->act ) );
+   fprintf( SaveFile, "%lu\n", pMobIndex->act.to_ulong() );
 
    mprg = pMobIndex->first_mprog;
    finish_progs = 0;
@@ -515,7 +508,10 @@ void build_save_rooms(  )
    fprintf( SaveFile, "%s~\n", pRoomIndex->name );
    fprintf( SaveFile, "%s~\n", pRoomIndex->description );
    fprintf( SaveFile, "%d\n", pRoomIndex->sector_type );
-   fprintf( SaveFile, "%s\n", save_bitmask( pRoomIndex->room_flags ) );
+   for( d = 0; d < MAX_BITSET; d++ )
+    if( pRoomIndex->room_flags.test(d) )
+     fprintf( SaveFile, "%d ", d );
+   fprintf( SaveFile, "EOL\n" );
 
    /*
     * Now do doors. 

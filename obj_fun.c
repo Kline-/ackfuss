@@ -38,10 +38,6 @@
 #include <time.h>
 #include "globals.h"
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -318,7 +314,7 @@ void objfun_sword_aggro( OBJ_DATA * obj, CHAR_DATA * keeper )
    {
       if( IS_NPC( vch )
           && ( vch->level > keeper->level )
-          && is_set( vch->act, ACT_AGGRESSIVE ) && vch->fighting == NULL && number_bits( 4 ) == 0 )
+          && vch->act.test(ACT_AGGRESSIVE) && vch->fighting == NULL && number_bits( 4 ) == 0 )
       {
          act( "$p carried by $n glows in $s hands.", keeper, obj, NULL, TO_ROOM );
          act( "$p carried by you glows in your hands.", keeper, obj, NULL, TO_CHAR );

@@ -46,10 +46,6 @@
 #include "h/act_move.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -251,8 +247,8 @@ void do_tribe( CHAR_DATA * ch, char *argument )
          char_from_room( victim );
          char_to_room( victim, get_room_index( victim->pcdata->recall_vnum ) );
          victim->sentence += 15000;
-         if( !is_set( victim->act, ACT_KILLER ) )
-            set_bit( victim->act, ACT_KILLER );
+         if( !victim->act.test(ACT_KILLER) )
+          victim->act.set(ACT_KILLER);
          do_save( victim, "" );
          return;
       }
@@ -468,7 +464,7 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       victim->pcdata->super->bloodline = ch->pcdata->super->bloodline;
       victim->pcdata->super->energy = -10;
       victim->pcdata->super->energy_max = 7;
-      set_bit( victim->act, ACT_WEREWOLF );
+      victim->act.set(ACT_WEREWOLF);
       victim->pcdata->super->pracs = 2;
       victim->pcdata->recall_vnum = ch->pcdata->recall_vnum;
 

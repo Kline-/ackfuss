@@ -52,10 +52,6 @@
 #include "h/act_comm.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -119,7 +115,7 @@ void do_mount( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set(ch->in_room->room_flags,RFLAG_SOLITARY) )
+   if( ch->in_room->room_flags.test(RFLAG_SOLITARY) )
    {
       send_to_char( "This room is too narrow to ride.\n\r", ch );
       return;
@@ -127,7 +123,7 @@ void do_mount( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( mount ) )
    {
-      if( !is_set( mount->act, ACT_MOUNT ) )
+      if( !mount->act.test(ACT_MOUNT) )
       {
          act( "It's too difficult to ride on $N.", ch, 0, mount, TO_CHAR );
          return;
@@ -164,8 +160,8 @@ void do_mount( CHAR_DATA * ch, char *argument )
       ch->riding = mount;
       mount->rider = ch;
       ch->position = POS_RIDING;
-      if( !is_set( mount->act, ACT_SENTINEL ) )
-         set_bit( mount->act, ACT_SENTINEL );
+      if( !mount->act.test(ACT_SENTINEL) )
+       mount->act.set(ACT_SENTINEL);
       act( "You climb on and ride $N.", ch, 0, mount, TO_CHAR );
       act( "$n climbs on and rides $N.", ch, 0, mount, TO_ROOM );
       act( "$n climbs on and rides you.", ch, 0, mount, TO_VICT );

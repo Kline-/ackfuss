@@ -46,10 +46,6 @@
 #include "h/act_info.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_CLUTCH_H
 #include "h/clutch.h"
 #endif
@@ -108,7 +104,7 @@ void do_clutch( CHAR_DATA * ch, char *argument )
 
    act( "$n clutches $p tightly in $s hand!", ch, obj, NULL, TO_ROOM );
    act( "You clutch $p tightly in your hand!", ch, obj, NULL, TO_CHAR );
-   if( !is_set( ch->in_room->room_flags, RFLAG_NO_PORTAL ) )
+   if( !ch->in_room->room_flags.test(RFLAG_NO_PORTAL) )
       ( *clutch_table[obj->value[0] - 1].func_name ) ( obj->value[1], obj->value[2], obj->value[3], ch, obj );
 
    else

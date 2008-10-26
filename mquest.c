@@ -22,10 +22,6 @@
 #include "h/act_comm.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -74,7 +70,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  if( !str_prefix(arg1,"request") )
  {
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && is_set(mob->pIndexData->act,ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && mob->pIndexData->act.test(ACT_QUESTMASTER) )
     break;
   if( mob == NULL || !can_see(ch,mob) )
   {
@@ -132,7 +128,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   mbuf[0] = '\0';
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && is_set(mob->pIndexData->act,ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && mob->pIndexData->act.test(ACT_QUESTMASTER) )
     break;
   if( mob == NULL || !can_see(ch,mob) )
   {
@@ -285,7 +281,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   short i = 0, x = 0;
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && is_set(mob->pIndexData->act,ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && mob->pIndexData->act.test(ACT_QUESTMASTER) )
     break;
   if( mob == NULL )
   {
@@ -921,7 +917,7 @@ void generate_killing_quest( CHAR_DATA *ch )
      ch->pcdata->quest_info->amount[i] = 1;
     else
     {
-     if( is_set(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->act,ACT_SENTINEL) )
+     if( get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->act.test(ACT_SENTINEL) )
       ch->pcdata->quest_info->amount[i] = 1;
      else
       ch->pcdata->quest_info->amount[i] = (2 + number_range(0,4));
@@ -964,10 +960,10 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
    || (!str_cmp(rev_spec_lookup(mob->spec_fun),"spec_cast_adept"))
    || (!str_cmp(rev_spec_lookup(mob->spec_fun),"spec_executioner"))
    || (mob->pIndexData->vnum > mob->in_room->area->max_vnum || mob->pIndexData->vnum < mob->in_room->area->min_vnum)
-   || (is_set(mob->in_room->room_flags,RFLAG_SAFE))
+   || (mob->in_room->room_flags.test(RFLAG_SAFE))
    || (IS_AFFECTED(mob,AFF_CHARM))
-   || (is_set(mob->act,ACT_PET))
-   || (is_set(mob->act,ACT_NO_QUEST)))
+   || (mob->act.test(ACT_PET))
+   || (mob->act.test(ACT_NO_QUEST)))
     continue;
 
   if( number_percent() < 5 ) /* Add variety to actually selecting the first ch we find in the ch_list */

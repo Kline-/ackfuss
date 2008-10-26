@@ -70,7 +70,6 @@ struct TH
 extern TempHash **temp_string_hash;
 
 /* These are the original Merc vars in db.c */
-extern char str_empty[1];
 extern char *string_space;
 extern char *top_string;
 extern long nAllocString;

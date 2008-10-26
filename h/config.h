@@ -57,6 +57,7 @@
 #define MIL                      MAX_INPUT_LENGTH
 #define MAX_AREAS                1000
 #define MAX_VNUM                 16777216
+#define MAX_BITSET               256    /* Total bits per bitset */
 
 #define BOOT_DB_ABORT_THRESHOLD			  25
 #define RUNNING_ABORT_THRESHOLD			  10
@@ -287,7 +288,7 @@
  * Well known room virtual numbers.
  * Defined in #ROOMS.
  */
-#define ROOM_VNUM_LIMBO               2
+#define ROOM_VNUM_LIMBO            1
 #define ROOM_VNUM_CHAT             1200
 #define ROOM_VNUM_TEMPLE           3001
 #define ROOM_VNUM_ALTAR            3054
@@ -298,15 +299,15 @@
 #define ROOM_VNUM_BUILDER	   1019  /* Bulder-flagged players only */
 #define ROOM_VNUM_BODIES	   30 /* for morphed players */
 #define ROOM_VNUM_CLAN		   1022  /* for leaders only */
-#define ROOM_VNUM_DM_RECALL       3001
-#define ROOM_VNUM_ETHEREAL_PLANE  3850
-#define ROOM_VNUM_INT_HEAL		3871
-#define ROOM_VNUM_MID_BOTTOM		3001
-#define ROOM_VNUM_MID_TOP		3200
-#define ROOM_VNUM_JAIL                  2
-#define ROOM_VNUM_ARMOR_DONATE    3018
-#define ROOM_VNUM_WEAPON_DONATE   3019
-#define ROOM_VNUM_MISC_DONATE     3017
+#define ROOM_VNUM_DM_RECALL        3001
+#define ROOM_VNUM_ETHEREAL_PLANE   3850
+#define ROOM_VNUM_INT_HEAL	   3871
+#define ROOM_VNUM_MID_BOTTOM	   3001
+#define ROOM_VNUM_MID_TOP	   3200
+#define ROOM_VNUM_JAIL             2
+#define ROOM_VNUM_ARMOR_DONATE     3018
+#define ROOM_VNUM_WEAPON_DONATE    3019
+#define ROOM_VNUM_MISC_DONATE      3017
 
 
 
@@ -321,8 +322,8 @@
 #define STANCE_DR_WORST		8
 #define STANCE_SUPER_FIGHTER	9
 #define STANCE_SUPER_SPEED	10
-#define STANCE_WIZARD         11
-#define STANCE_MAGI          12
+#define STANCE_WIZARD           11
+#define STANCE_MAGI             12
 
 
 #define SUPER_NONE   0
@@ -628,7 +629,7 @@
 #define POS_RIDING                   10
 
 /* 
- * ACT bits for players and mobs. Uses a bitmask.
+ * ACT bits for players and mobs. Uses a bitset.
  * I realize this could be an enum, but this allows comments next
  * to each define and, imo, is easier to erad if you add/remove one.
  * --Kline
@@ -1238,14 +1239,14 @@
 #define PLAYER_DIR      "../player/"   /* Player files                 */
 #define NPC_DIR		"../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
-#define MOB_DIR         "MOBProgs/" /* MOBProg files                */
+#define MOB_DIR         "../mobprog/" /* MOBProg files                */
 #endif
 
 #if defined(linux)
 #define PLAYER_DIR      "../player/"   /* Player files                 */
 #define NPC_DIR		"../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
-#define MOB_DIR         "MOBProgs/" /* MOBProg files                */
+#define MOB_DIR         "../mobprog/" /* MOBProg files                */
 #endif
 
 #define AREA_LIST       "area.lst"  /* List of areas                */

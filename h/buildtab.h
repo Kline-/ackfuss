@@ -21,7 +21,7 @@ char *bit_table_lookup P_((LOOKUP_TYPE *table, unsigned long int number));
 void table_printout P_((LOOKUP_TYPE *table, char *buf));
 void wide_table_printout P_((LOOKUP_TYPE *table, char *buf));
 char *show_values P_((LOOKUP_TYPE *table, unsigned long int value, bool fBit));
-char *bm_show_values P_((LOOKUP_TYPE *table, BITMASK *mask));
+char *bs_show_values P_((LOOKUP_TYPE *table, std::bitset<MAX_BITSET> &bit));
 
 extern LOOKUP_TYPE tab_mob_class[];
 extern LOOKUP_TYPE tab_value_meanings[];

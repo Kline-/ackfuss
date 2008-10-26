@@ -47,12 +47,12 @@
 #include "h/act_info.h"
 #endif
 
-#ifndef DEC_ACT_MOVE_H
-#include "h/act_move.h"
+#ifndef DEC_ACT_MOB_H
+#include "h/act_mob.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
+#ifndef DEC_ACT_MOVE_H
+#include "h/act_move.h"
 #endif
 
 #ifndef DEC_BUILD_H
@@ -109,7 +109,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    tmp[0] = '\0';
 
    check_autodig(ch,door);
-   if( !IS_NPC(ch) && ch->pcdata->movement >= MAX_MOVE_DISPLAY && is_set(ch->act,ACT_AUTOBRIEF) )
+   if( !IS_NPC(ch) && ch->pcdata->movement >= MAX_MOVE_DISPLAY && ch->act.test(ACT_AUTOBRIEF) )
     look = FALSE;
 
    if( door < 0 || door > MAX_DIR )
@@ -142,25 +142,25 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    {
       if( pexit->keyword[0] == '^' )
       {
-         xprintf( door_name_leave, "through the %s", pexit->keyword + 1 );
-         xprintf( door_name_enter, "the %s", pexit->keyword + 1 );
+         snprintf( door_name_leave, MSL, "through the %s", pexit->keyword + 1 );
+         snprintf( door_name_enter, MSL, "the %s", pexit->keyword + 1 );
       }
       else
       {
-         xprintf( door_name_leave, "through the %s", pexit->keyword );
-         xprintf( door_name_enter, "the %s", pexit->keyword );
+         snprintf( door_name_leave, MSL, "through the %s", pexit->keyword );
+         snprintf( door_name_enter, MSL, "the %s", pexit->keyword );
       }
 
    }
    else
    {
-      xprintf( door_name_leave, "%s", dir_name[door] );
-      xprintf( door_name_enter, "%s", rev_name[door] );
+      snprintf( door_name_leave, MSL, "%s", dir_name[door] );
+      snprintf( door_name_enter, MSL, "%s", rev_name[door] );
    }
 
    if( IS_SET( in_room->affected_by, ROOM_BV_ENCAPS ) || IS_SET( to_room->affected_by, ROOM_BV_ENCAPS ) )
    {
-      if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
+      if( AI_MOB(ch) )
       {
          if( ch->mana > mana_cost( ch, skill_lookup( "room dispel" ) ) )
             do_cast( ch, "room dispel" );
@@ -174,7 +174,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    }
    if( IS_SET( in_room->affected_by, ROOM_BV_HOLD ) )
    {
-      if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
+      if( AI_MOB(ch) )
       {
          if( ch->mana > mana_cost( ch, skill_lookup( "room dispel" ) ) )
             do_cast( ch, "room dispel" );
@@ -343,7 +343,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          }
       }
 
-      if( to_room->vnum == ROOM_VNUM_BUILDER && ( !IS_IMMORTAL( ch ) && !is_set( ch->act, ACT_BUILDER ) ) )
+      if( to_room->vnum == ROOM_VNUM_BUILDER && ( !IS_IMMORTAL( ch ) && !ch->act.test(ACT_BUILDER) ) )
       {
          send_to_char( "The Portal allows entrance to builders only.\n\r", ch );
          ch->using_named_door = FALSE;
@@ -352,7 +352,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
 
       if( to_room->vnum == ROOM_VNUM_CLAN
-          && ( IS_NPC( ch ) || ( ( !IS_IMMORTAL( ch ) ) && ( !is_set( ch->act, ACT_CBOSS ) ) ) ) )
+          && ( IS_NPC( ch ) || ( ( !IS_IMMORTAL( ch ) ) && ( !ch->act.test(ACT_CBOSS) ) ) ) )
       {
          send_to_char( "Only Clan Bosses may enter this room.\n\r", ch );
          ch->using_named_door = FALSE;
@@ -368,8 +368,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
              && ( ( ch->riding != NULL ) && ( !IS_SET( ch->riding->affected_by, AFF_FLYING ) ) ) )
          {
 
-            if( ( IS_NPC( ch ) )
-                && ( is_set( ch->act, ACT_INTELLIGENT ) ) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
+            if( AI_MOB(ch) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
             {
                do_cast( ch, "fly" );
             }
@@ -409,8 +408,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          }
          if( !found )
          {
-            if( ( IS_NPC( ch ) )
-                && ( is_set( ch->act, ACT_INTELLIGENT ) ) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
+            if( AI_MOB(ch) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
             {
                do_cast( ch, "fly" );
             }
@@ -445,34 +443,34 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    {
       if( check_valid_ride( ch ) )
       {
-         xprintf( tmp, "You ride %s on %s.\n\r", door_name_leave, ch->riding->short_descr );
+         snprintf( tmp, MSL, "You ride %s on %s.\n\r", door_name_leave, ch->riding->short_descr );
          send_to_char( tmp, ch );
-         xprintf( tmp, "$n rides %s on %s.", door_name_leave, ch->riding->short_descr );
+         snprintf( tmp, MSL, "$n rides %s on %s.", door_name_leave, ch->riding->short_descr );
       }
    }
 
 /*    if ( ( !IS_AFFECTED(ch, AFF_SNEAK) && !item_has_apply( ch, ITEM_APPLY_SNEAK ) )
-    && ( IS_NPC(ch) || !is_set(ch->act, PLR_WIZINVIS) ) )  */
+    && ( IS_NPC(ch) || ch->act.test(PLR_WIZINVIS) ) )  */
    {
       if( IS_SET( pexit->exit_info, EX_CLIMB ) )   /* dir_name[door] */
          act( "$n climbs $T.", ch, NULL, door_name_leave, TO_ROOM );
       else if( IS_SET( pexit->exit_info, EX_CLOSED ) )   /* using passdoor */
       {
-         xprintf( buf, "$L$n floats %s.", door_name_leave );
+         snprintf( buf, MSL, "$L$n floats %s.", door_name_leave );
          act( buf, ch, NULL, pexit->keyword, TO_ROOM );
       }
       else
       {
          if( IS_NPC( ch ) || ( !IS_NPC( ch ) && ( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) ) ) )
-            xprintf( move_buf, "$L$n %s $T.", "wanders" );
+            snprintf( move_buf, MSL, "$L$n %s $T.", "wanders" );
          else if( ch->riding == NULL )
          {
-            xprintf( move_buf, "$L%s$n %s $T.",
+            snprintf( move_buf, MSL, "$L%s$n %s $T.",
                      get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->pcdata->room_exit );
          }
          else if( ch->riding != NULL )
          {
-            xprintf( move_buf, "$L%s$n rides $T on %s.",
+            snprintf( move_buf, MSL, "$L%s$n rides $T on %s.",
                      get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->riding->short_descr );
          }
          act( move_buf, ch, NULL, door_name_leave, TO_ROOM );
@@ -494,19 +492,19 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
    /*
     * if ( ( !IS_AFFECTED(ch, AFF_SNEAK) && !item_has_apply( ch, ITEM_APPLY_SNEAK ) )
-    * && ( IS_NPC(ch) || !is_set(ch->act, PLR_WIZINVIS) ) )   
+    * && ( IS_NPC(ch) || !ch->act.test(PLR_WIZINVIS) ) )   
     */
    {
       if( IS_NPC( ch ) || ( !IS_NPC( ch ) && ( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) ) ) )
-         xprintf( move_buf, "$L$n %s $T.", "wanders in from" );
+         snprintf( move_buf, MSL, "$L$n %s $T.", "wanders in from" );
       else if( ch->riding == NULL )
       {
-         xprintf( move_buf, "$L%s$n %s $T.",
+         snprintf( move_buf, MSL, "$L%s$n %s $T.",
                   get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->pcdata->room_enter );
       }
       else if( ch->riding != NULL )
       {
-         xprintf( move_buf, "$L%s$n rides in from $T on %s.",
+         snprintf( move_buf, MSL, "$L%s$n rides in from $T on %s.",
                   get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->riding->short_descr );
       }
       act( move_buf, ch, NULL, door_name_enter, TO_ROOM );
@@ -531,9 +529,9 @@ void move_char( CHAR_DATA * ch, int door, bool look )
     do_look( ch, "auto" );
    else
    {
-    xprintf( buf, "%s%s%s\n\r", color_string( ch, "rooms" ), ch->in_room->name, color_string( ch, "normal" ) );
+    snprintf( buf, MSL, "%s%s%s\n\r", color_string( ch, "rooms" ), ch->in_room->name, color_string( ch, "normal" ) );
     send_to_char( buf, ch );
-    if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && is_set( ch->act, ACT_AUTOEXIT ) ) )
+    if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && ch->act.test(ACT_AUTOEXIT) ) )
      do_exits( ch, "autonr" );
    }
 
@@ -1480,7 +1478,7 @@ void do_clan_recall( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) || IS_AFFECTED( ch, AFF_CURSE ) )
+   if( ch->in_room->room_flags.test(RFLAG_NO_RECALL) || IS_AFFECTED( ch, AFF_CURSE ) )
    {
       send_to_char( "Some strange force prevents your transport.\n\r", ch );
       return;
@@ -1577,7 +1575,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
    if( ch->in_room == location )
       return;
 
-   if( is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) || IS_AFFECTED( ch, AFF_CURSE ) )
+   if( ch->in_room->room_flags.test(RFLAG_NO_RECALL) || IS_AFFECTED( ch, AFF_CURSE ) )
    {
       send_to_char( "Some strange force prevents your recall.\n\r", ch );
       return;
@@ -1593,7 +1591,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
          lose = ( ch->level / 4 ) + 1;
          lose = UMIN( lose, ch->exp );
          gain_exp( ch, 0 - lose );
-         xprintf( buf, "You failed!  You lose %d exps.\n\r", lose );
+         snprintf( buf, MSL, "You failed!  You lose %d exps.\n\r", lose );
          send_to_char( buf, ch );
          return;
       }
@@ -1601,7 +1599,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
       lose = ( ch->level / 4 ) + 25;
       lose = UMIN( lose, ch->exp );
       gain_exp( ch, 0 - lose );
-      xprintf( buf, "You recall from combat!  You lose %d exps.\n\r", lose );
+      snprintf( buf, MSL, "You recall from combat!  You lose %d exps.\n\r", lose );
       send_to_char( buf, ch );
       stop_fighting( ch, TRUE );
    }
@@ -1652,7 +1650,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    {
-      if( IS_NPC( mob ) && is_set( mob->act, ACT_TRAIN ) )
+      if( IS_NPC( mob ) && mob->act.test(ACT_TRAIN) )
          break;
    }
 
@@ -1664,7 +1662,7 @@ void do_train( CHAR_DATA * ch, char *argument )
 
    if( argument[0] == '\0' )
    {
-      xprintf( buf, "You have %d practice sessions.\n\r", ch->practice );
+      snprintf( buf, MSL, "You have %d practice sessions.\n\r", ch->practice );
       send_to_char( buf, ch );
       argument = "foo";
    }
@@ -1760,31 +1758,31 @@ void do_train( CHAR_DATA * ch, char *argument )
       if( ch->pcdata->perm_str < ch->pcdata->max_str )
       {
          xcat( buf, "  str" );
-         xprintf( buf2, " (%d)", cost1 );
+         snprintf( buf2, MSL, " (%d)", cost1 );
          xcat( buf, buf2 );
       }
       if( ch->pcdata->perm_int < ch->pcdata->max_int )
       {
          xcat( buf, "  int" );
-         xprintf( buf2, " (%d)", cost2 );
+         snprintf( buf2, MSL, " (%d)", cost2 );
          xcat( buf, buf2 );
       }
       if( ch->pcdata->perm_wis < ch->pcdata->max_wis )
       {
          xcat( buf, "  wis" );
-         xprintf( buf2, " (%d)", cost3 );
+         snprintf( buf2, MSL, " (%d)", cost3 );
          xcat( buf, buf2 );
       }
       if( ch->pcdata->perm_dex < ch->pcdata->max_dex )
       {
          xcat( buf, "  dex" );
-         xprintf( buf2, " (%d)", cost4 );
+         snprintf( buf2, MSL, " (%d)", cost4 );
          xcat( buf, buf2 );
       }
       if( ch->pcdata->perm_con < ch->pcdata->max_con )
       {
          xcat( buf, "  con" );
-         xprintf( buf2, " (%d)", cost5 );
+         snprintf( buf2, MSL, " (%d)", cost5 );
          xcat( buf, buf2 );
       }
       if( buf[strlen( buf ) - 1] != ':' )
@@ -2057,14 +2055,14 @@ void do_scan( CHAR_DATA * ch, char *argument )
 
                if( IS_NPC( d ) )
                {
-                  xprintf( person, "%s (NPC)", d->short_descr );
+                  snprintf( person, MIL, "%s (NPC)", d->short_descr );
                }
                else
                {
-                  xprintf( person, "%s", PERS( d, ch ) );
+                  snprintf( person, MIL, "%s", PERS( d, ch ) );
                }
 
-               xprintf( buf, "%s : %s\n\r", dir_name[door], person );
+               snprintf( buf, MSL, "%s : %s\n\r", dir_name[door], person );
 
                send_to_char( buf, ch );
 
@@ -2074,7 +2072,7 @@ void do_scan( CHAR_DATA * ch, char *argument )
          if( ( pexit->to_room->affected_by != 0 )
              && ( ( is_affected( ch, skill_lookup( "detect magic" ) ) ) || ( item_has_apply( ch, ITEM_APPLY_DET_MAG ) ) ) )
          {
-            xprintf( buf, "The room %s has a @@rMagical@@N Affect!!!\n\r", dir_name[door] );
+            snprintf( buf, MSL, "The room %s has a @@rMagical@@N Affect!!!\n\r", dir_name[door] );
             send_to_char( buf, ch );
          }
 
@@ -2131,7 +2129,7 @@ void do_enter( CHAR_DATA * ch, char *argument )
       send_to_char( "Nothing happens.\n\r", ch );
       return;
    }
-   if( ( is_set( ch->in_room->room_flags, RFLAG_NO_PORTAL ) || is_set( to_room->room_flags, RFLAG_NO_PORTAL ) )
+   if( ch->in_room->room_flags.test(RFLAG_NO_PORTAL) || to_room->room_flags.test(RFLAG_NO_PORTAL )
        && number_range( 0, 100 ) < 75 )
    {
       act( "The anti-magic zone causes the portal to @@eIMPLODE@@N!!!", ch, NULL, NULL, TO_ROOM );
@@ -2250,18 +2248,18 @@ void do_scout( CHAR_DATA * ch, char *argument )
                continue;
 
             if( depth == 1 )
-               xprintf( pre, "%s : ", dir_name[door] );
+               snprintf( pre, MIL, "%s : ", dir_name[door] );
             else if( depth == 2 )
-               xprintf( pre, "Far %s : ", dir_name[door] );
+               snprintf( pre, MIL, "Far %s : ", dir_name[door] );
             else if( depth == 3 )
-               xprintf( pre, "Very Far %s : ", dir_name[door] );
+               snprintf( pre, MIL, "Very Far %s : ", dir_name[door] );
             else if( depth == 4 )
-               xprintf( pre, "Distant %s : ", dir_name[door] );
+               snprintf( pre, MIL, "Distant %s : ", dir_name[door] );
 
             if( IS_NPC( target ) )
-               xprintf( buf, "%s%s\n\r", pre, target->short_descr );
+               snprintf( buf, MIL, "%s%s\n\r", pre, target->short_descr );
             else
-               xprintf( buf, "%s%s\n\r", pre, target->name );
+               snprintf( buf, MIL, "%s%s\n\r", pre, target->name );
 
             send_to_char( buf, ch );
          }
