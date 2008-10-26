@@ -1066,8 +1066,11 @@ struct ruler_data
 };
 
 
-struct area_data
+class area_data
 {
+ public:
+  area_data();
+  ~area_data();
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    AREA_DATA *next;
    AREA_DATA *prev;
@@ -1086,7 +1089,7 @@ struct area_data
    char *can_write;
    int gold;
    char *filename;
-   int flags;
+   std::bitset<MAX_BITSET> flags;
    int aggro_list;
    BUILD_DATA_LIST *first_area_room;
    BUILD_DATA_LIST *last_area_room;

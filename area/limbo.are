@@ -1,18 +1,18 @@
 #AREA
-Limbo~
-Q 22
-K none ~
-L @@R[@@eSYSTEM@@R]@@N~
-N 1
-I 1 120
-V 1 100
-F 15
-U off~
-O Kline~
-R Kline~
-W Kline~
-S Title not shown on area list.
-M No bad room spells allowed.
+Revision  22
+CanRead   Kline~
+CanWrite  Kline~
+Flags     EOL
+Keyword   none~
+LevLabel  @@R[@@eSYSTEM@@R]@@N~
+LevRange  1 120
+Name      Limbo~
+Number    1
+Owner     Kline~
+ResetMsg  off~
+ResetRate 15
+VnumRange 1 100
+End
 #ROOMS
 #1
 @@WLimbo@@N~

@@ -110,8 +110,6 @@ void do_savearea( CHAR_DATA * ch, char *argument )
 {
    AREA_DATA *SaveArea;
    int loops;
-/*     char first_arg[MAX_INPUT_LENGTH]; unused? */
-
 
    if( ch == NULL )
    {
@@ -245,38 +243,30 @@ void build_save(  )
 
 void build_save_area(  )
 {
-   fprintf( SaveFile, "#AREA\n" );
-   fprintf( SaveFile, "%s~\n", CurSaveArea->name );
-   fprintf( SaveFile, "Q %i\n", AREA_VERSION );
-   fprintf( SaveFile, "K %s~\n", CurSaveArea->keyword );
-   fprintf( SaveFile, "L %s~\n", CurSaveArea->level_label );
-   fprintf( SaveFile, "N %i\n", CurSaveArea->area_num );
-   fprintf( SaveFile, "I %i %i\n", CurSaveArea->min_level, CurSaveArea->max_level );
-   fprintf( SaveFile, "V %i %i\n", CurSaveArea->min_vnum, CurSaveArea->max_vnum );
-   fprintf( SaveFile, "F %i\n", CurSaveArea->reset_rate );
-   fprintf( SaveFile, "U %s~\n", CurSaveArea->reset_msg );
-   if( CurSaveArea->owner != NULL )
-      fprintf( SaveFile, "O %s~\n", CurSaveArea->owner );
-   if( CurSaveArea->can_read != NULL )
-      fprintf( SaveFile, "R %s~\n", CurSaveArea->can_read );
-   if( CurSaveArea->can_write != NULL )
-      fprintf( SaveFile, "W %s~\n", CurSaveArea->can_write );
-   if( IS_SET( CurSaveArea->flags, AREA_PAYAREA ) )
-      fprintf( SaveFile, "P This is a pay area.\n" );
-   if( IS_SET( CurSaveArea->flags, AREA_TELEPORT ) )
-      fprintf( SaveFile, "T You can teleport into here\n" );
-   if( IS_SET( CurSaveArea->flags, AREA_BUILDING ) )
-      fprintf( SaveFile, "B Currently building area.\n" );
-   if( IS_SET( CurSaveArea->flags, AREA_NOSHOW ) )
-      fprintf( SaveFile, "S Title not shown on area list.\n" );
-   if( IS_SET( CurSaveArea->flags, AREA_NO_ROOM_AFF ) )
-      fprintf( SaveFile, "M No bad room spells allowed.\n" );
+ short i = 0;
 
+ fprintf( SaveFile, "#AREA\n" );
+ fprintf( SaveFile, "Revision  %d\n", AREA_VERSION );
+ fprintf( SaveFile, "CanRead   %s~\n", CurSaveArea->can_read );
+ fprintf( SaveFile, "CanWrite  %s~\n", CurSaveArea->can_write );
 
-/*     fprintf( Envy, "#AREA\n" );                      remove save bug */
-/*     fprintf( Envy, "%s~\n", CurSaveArea->name );                     */
+ fprintf( SaveFile, "Flags     " );
+ for( i = 0; i < MAX_BITSET; i++ )
+  if( CurSaveArea->flags.test(i) )
+   fprintf( SaveFile, "%d ", i );
+ fprintf( SaveFile, "EOL\n" );
 
-   Section++;
+ fprintf( SaveFile, "Keyword   %s~\n", CurSaveArea->keyword );
+ fprintf( SaveFile, "LevLabel  %s~\n", CurSaveArea->level_label );
+ fprintf( SaveFile, "LevRange  %d %d\n", CurSaveArea->min_level, CurSaveArea->max_level );
+ fprintf( SaveFile, "Name      %s~\n", CurSaveArea->name );
+ fprintf( SaveFile, "Number    %d\n", CurSaveArea->area_num );
+ fprintf( SaveFile, "Owner     %s~\n", CurSaveArea->owner );
+ fprintf( SaveFile, "ResetMsg  %s~\n", CurSaveArea->reset_msg );
+ fprintf( SaveFile, "ResetRate %d\n", CurSaveArea->reset_rate );
+ fprintf( SaveFile, "VnumRange %d %d\n", CurSaveArea->min_vnum, CurSaveArea->max_vnum );
+
+ Section++;
 }
 
 void build_save_mobs(  )

@@ -16,6 +16,11 @@
 #include "money.h"
 #endif
 
+area_data::area_data()
+{
+ flags.reset();
+}
+
 brand_data::brand_data()
 {
  branded = str_dup("");
