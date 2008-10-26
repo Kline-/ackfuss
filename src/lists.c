@@ -36,10 +36,6 @@
 #include <time.h>
 #include "globals.h"
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 /*
  * All of the global linked lists, in one clump.  Variables here,
  * declarations in lists.h
@@ -88,19 +84,14 @@ AFFECT_DATA *affect_free = NULL;
 ROOM_AFFECT_DATA *raffect_free = NULL;
 AREA_DATA *area_free = NULL;
 BAN_DATA *ban_free = NULL;
-CHAR_DATA *char_free = NULL;
 DESCRIPTOR_DATA *desc_free = NULL;
 EXIT_DATA *exit_free = NULL;
 EXTRA_DESCR_DATA *exdesc_free = NULL;
-MOB_INDEX_DATA *mid_free = NULL;
-NOTE_DATA *note_free = NULL;
 OBJ_DATA *obj_free = NULL;
 OBJ_INDEX_DATA *oid_free = NULL;
-PC_DATA *pcd_free = NULL;
 SUPER_DATA *super_free = NULL;
 RECORD_DATA *record_free = NULL;
 RESET_DATA *reset_free = NULL;
-ROOM_INDEX_DATA *rid_free = NULL;
 SHOP_DATA *shop_free = NULL;
 MPROG_DATA *mprog_free = NULL;
 MPROG_ACT_LIST *mpact_free = NULL;
@@ -119,7 +110,6 @@ QUEUED_INTERACT_LIST *queued_interact_free = NULL;
 INFLUENCE_LIST *influence_list_free = NULL;
 RULER_LIST *ruler_list_free = NULL;
 DL_LIST *dl_list_free = NULL;
-BRAND_DATA *brand_data_free = NULL;
 MONEY_TYPE *money_type_free = NULL;
 BOARD_DATA *board_free = NULL;
 MESSAGE_DATA *message_free = NULL;
@@ -128,7 +118,6 @@ HASH_ENTRY *hash_free = NULL;
 NPC_GROUP_DATA *npc_group_free = NULL;
 FIGHT_DATA *fight_free = NULL;
 QUEST_INFO *quest_info_free = NULL;
-BITMASK *bitmask_free = NULL;
 
 void ( *portal_free_destructor ) ( PORTAL_DATA * pdat ) = NULL;
 void ( *affect_free_destructor ) ( AFFECT_DATA * adat ) = NULL;
@@ -156,17 +145,6 @@ void ( *board_free_destructor ) ( BOARD_DATA * bdat ) = NULL;
 void ( *buf_free_destructor ) ( BUF_DATA_STRUCT * bdat ) = NULL;
 void ( *hash_free_destructor ) ( HASH_ENTRY * hdat ) = NULL;
 
-
-
-void note_free_destructor( NOTE_DATA * ndat )
-{
-   free_string( ndat->text );
-   free_string( ndat->subject );
-   free_string( ndat->to_list );
-   free_string( ndat->date );
-   free_string( ndat->sender );
-}
-
 #ifdef DEBUG_MONEY
 void money_type_free_destructor( MONEY_TYPE * mtdat )
 {
@@ -190,7 +168,6 @@ void ban_free_destructor( BAN_DATA * bdat )
 void reset_free_destructor( RESET_DATA * rdat )
 {
    free_string( rdat->notes );
-   free_string( rdat->auto_message );
 }
 
 void exdesc_free_destructor( EXTRA_DESCR_DATA * eddat )
@@ -216,77 +193,15 @@ void mprog_free_destructor( MPROG_DATA * mpdat )
    free_string( mpdat->filename );
 }
 
-void mid_free_destructor( MOB_INDEX_DATA * midat )
-{
-   /*
-    * Free strings 
-    */
-   free_string( midat->player_name );
-   free_string( midat->short_descr );
-   free_string( midat->description );
-}
-
 void exit_free_destructor( EXIT_DATA * edat )
 {
    free_string( edat->description );
    free_string( edat->keyword );
 }
 
-void rid_free_destructor( ROOM_INDEX_DATA * ridat )
-{
-   /*
-    * Now get rid of strings associated with room 
-    */
-   free_string( ridat->name );
-   free_string( ridat->description );
-}
-
 void mpact_free_destructor( MPROG_ACT_LIST * mpadat )
 {
    free_string( mpadat->buf );
-}
-
-void brand_data_free_destructor( BRAND_DATA * bdat )
-{
-   free_string( bdat->branded );
-   free_string( bdat->branded_by );
-   free_string( bdat->dt_stamp );
-   free_string( bdat->message );
-   free_string( bdat->priority );
-}
-
-void pcd_free_destructor( PC_DATA * pcdat )
-{
-   short cnt;
-
-   free_string( pcdat->pwd );
-   free_string( pcdat->bamfin );
-   free_string( pcdat->room_enter );
-   free_string( pcdat->room_exit );
-   free_string( pcdat->bamfout );
-   free_string( pcdat->title );
-   free_string( pcdat->host );
-   free_string( pcdat->header );
-   free_string( pcdat->message );
-   free_string( pcdat->who_name );
-   free_string( pcdat->lastlogin );
-   free_string( pcdat->assist_msg );
-   for( cnt = 0; cnt < MAX_ALIASES; cnt++ )
-   {
-      free_string( pcdat->alias_name[cnt] );
-      free_string( pcdat->alias[cnt] );
-   }
-   for( cnt = 0; cnt < MAX_IGNORES; cnt++ )
-   {
-      free_string( pcdat->ignore_list[cnt] );
-   }
-   free_string( pcdat->load_msg );
-   free_string( pcdat->pedit_state );
-   for( cnt = 0; cnt < 5; cnt++ )
-   {
-      free_string( pcdat->pedit_string[cnt] );
-   }
-   free_string( pcdat->email_address );
 }
 
 void super_free_destructor( SUPER_DATA *superdat )
@@ -304,24 +219,6 @@ void fight_free_destructor( FIGHT_DATA *fight )
 
 void quest_info_free_destructor( QUEST_INFO *quest )
 {
-}
-
-void bitmask_free_destructor( BITMASK *bitmask )
-{
- free_bitmask( bitmask );
-}
-
-void char_free_destructor( CHAR_DATA * cdat )
-{
-   free_string( cdat->name );
-   free_string( cdat->short_descr );
-   free_string( cdat->long_descr );
-   free_string( cdat->long_descr_orig );
-   free_string( cdat->description );
-   free_string( cdat->prompt );
-   free_string( cdat->old_prompt );
-   free_string( cdat->searching );
-   free_string( cdat->target );
 }
 
 void mark_free_destructor( MARK_DATA * mdat )

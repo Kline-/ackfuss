@@ -63,10 +63,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_BUILDTAB_H
 #include "h/buildtab.h"
 #endif
@@ -283,7 +279,7 @@ void violence_update( void )
       if( !IS_NPC(ch) && (IS_WOLF( ch ) && IS_RAGED( ch )) )
       {
          if( !is_affected( ch, skill_lookup( "Enraged" ) ) )
-            remove_bit( ch->act, ACT_RAGED );
+            ch->act.reset(ACT_RAGED);
          ch->hit = ( UMIN( ch->max_hit, ( ch->hit + ch->max_hit / 150 ) ) );
 
       }
@@ -340,7 +336,7 @@ void violence_update( void )
        */
 
 
-      if( ( ch->is_free == FALSE ) && ( IS_NPC( ch ) ) && is_set( ch->act, ACT_SOLO ) && ch->hit > 0 )
+      if( ( ch->is_free == FALSE ) && ( IS_NPC( ch ) ) && ch->act.test(ACT_SOLO) && ch->hit > 0 )
       {
          if( ( ch->hit < ch->max_hit * 3 / 4 ) && ( ch->mana > mana_cost( ch, skill_lookup( "heal" ) ) ) )
          {
@@ -663,7 +659,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
    if( IS_NPC( ch ) )
    {
       diceroll += ( get_psuedo_level( ch ) * 5 );
-      if( is_set( ch->act, ACT_SOLO ) )
+      if( ch->act.test(ACT_SOLO) )
          diceroll += ( get_psuedo_level( ch ) * 5 );
    }
    if( IS_AFFECTED( ch, AFF_CLOAK_ADEPT ) )
@@ -719,7 +715,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
          dam = number_range( wield->value[1], wield->value[2] );
       else
          dam = number_range( ch->level / 3, ch->level / 2 );
-      if( is_set( ch->act, ACT_SOLO ) )
+      if( ch->act.test(ACT_SOLO ) )
          dam *= 1.5;
 
    }
@@ -976,11 +972,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
       char buf2[MSL];
       char buf3[MSL];
       snprintf( buf1, MSL, "%s", victim->first_shield->absorb_message_room );
-      if( is_set( ch->act, ACT_BLIND_PLAYER ) )
+      if( ch->act.test(ACT_BLIND_PLAYER ) )
          snprintf( buf2, MSL, "%s", "$K shield ouch" );
       else
          snprintf( buf2, MSL, "%s", victim->first_shield->absorb_message_victim );
-      if( is_set( victim->act, ACT_BLIND_PLAYER ) )
+      if( victim->act.test(ACT_BLIND_PLAYER ) )
          snprintf( buf3, MSL, "%s", "Your shield cool" );
       else
          snprintf( buf3, MSL, "%s", victim->first_shield->absorb_message_self );
@@ -1037,11 +1033,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
 
       act( "@@N$n's @@ecloak@@N flares and envelops $N in @@eflames@@N!!", victim, NULL, ch, TO_NOTVICT );
-      if( is_set( ch->act, ACT_BLIND_PLAYER ) )
+      if( ch->act.test(ACT_BLIND_PLAYER ) )
          act( "Flame cloak on $K ouch", ch, NULL, victim, TO_CHAR );
       else
          act( "@@N$N's @@ecloak@@N flares, and envelops you with @@eflame@@N!!", ch, NULL, victim, TO_CHAR );
-      if( is_set( victim->act, ACT_BLIND_PLAYER ) )
+      if( victim->act.test(ACT_BLIND_PLAYER ) )
          act( "Your Flame cloak flares", victim, NULL, ch, TO_CHAR );
       else
          act( "@@NYour @@ecloak@@N flares, and envelops $N with @@eflame@@N!!!", victim, NULL, ch, TO_CHAR );
@@ -1145,12 +1141,12 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
          flame_damage = dam * get_psuedo_level( victim ) / 300;
          if( IS_NPC( ch ) )
          {
-            if( is_set( ch->act, ACT_SOLO ) )
+            if( ch->act.test(ACT_SOLO ) )
                flame_damage = flame_damage / 5;
             else
                flame_damage = flame_damage / 3;
          }
-         if( ( IS_NPC( victim ) ) && ( is_set( victim->act, ACT_SOLO ) ) )
+         if( ( IS_NPC( victim ) ) && ( victim->act.test(ACT_SOLO ) ) )
             flame_damage = flame_damage * 1.5;
 
          ch->hit = UMAX( -5, ch->hit - (int)flame_damage );
@@ -1164,11 +1160,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
    {
       AFFECT_DATA af;
       act( "@@N$n's @@dcloak@@N flares and shrouds $N in @@dmisery@@N!!", victim, NULL, ch, TO_NOTVICT );
-      if( is_set( ch->act, ACT_BLIND_PLAYER ) )
+      if( ch->act.test(ACT_BLIND_PLAYER ) )
          act( "Flame cloak on $K ouch", ch, NULL, victim, TO_CHAR );
       else
          act( "@@N$N's @@dcloak@@N flares, and shrouds you with @@dmisery@@N!!", ch, NULL, victim, TO_CHAR );
-      if( is_set( victim->act, ACT_BLIND_PLAYER ) )
+      if( victim->act.test(ACT_BLIND_PLAYER ) )
          act( "Your Death cloak flares", victim, NULL, ch, TO_CHAR );
       else
          act( "@@NYour @@dcloak@@N flares, and shrouds $N with @@dmisery@@N!!!", victim, NULL, ch, TO_CHAR );
@@ -1235,7 +1231,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                   send_to_char( "You THINK you are dead!  Ooops....\n\r", victim );
                }
 
-               remove_bit( victim->act, ACT_WEREWOLF );
+               victim->act.reset(ACT_WEREWOLF);
                victim->pcdata->super->level = 0;
                victim->pcdata->super->exp = 0;
                victim->pcdata->super->energy = 0;
@@ -1298,7 +1294,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
             victim->pcdata->records->md++;
       }
 
-      if( !IS_NPC( victim ) || is_set( victim->act, ACT_INTELLIGENT ) )
+      if( !IS_NPC( victim ) || victim->act.test(ACT_INTELLIGENT ) )
       {
 /*	    if ( !IS_NPC(ch) && !IS_NPC(victim)
 	         && is_set(ch->act,ACT_PKOK)
@@ -1350,7 +1346,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
       if( deathmatch && !IS_NPC( victim ) )
          do_quit( victim, "" );
 
-      if( IS_NPC( ch ) && IS_NPC( victim ) && is_set( ch->act, ACT_INTELLIGENT ) )
+      if( IS_NPC( ch ) && IS_NPC( victim ) && ch->act.test(ACT_INTELLIGENT ) )
       {
          do_get( ch, "all from corpse" );
          do_sacrifice( ch, "corpse" );
@@ -1360,12 +1356,12 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
       if( !IS_NPC( ch ) && IS_NPC( victim ) )
       {
-         if( is_set( ch->act, ACT_AUTOLOOT ) )
+         if( ch->act.test(ACT_AUTOLOOT ) )
             do_get( ch, "all from corpse" );
          else
             do_look( ch, "in corpse" );
 
-         if( is_set( ch->act, ACT_AUTOSAC ) )
+         if( ch->act.test(ACT_AUTOSAC ) )
             do_sacrifice( ch, "corpse" );
       }
 
@@ -1392,7 +1388,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
     */
    if( IS_NPC( victim ) && dam > 0 )
    {
-      if( ( is_set( victim->act, ACT_WIMPY ) && number_bits( 1 ) == 0
+      if( ( victim->act.test(ACT_WIMPY ) && number_bits( 1 ) == 0
             && victim->hit < victim->max_hit / 2 )
           || ( IS_AFFECTED( victim, AFF_CHARM ) && victim->master != NULL && victim->master->in_room != victim->in_room ) )
          do_flee( victim, "" );
@@ -1423,24 +1419,24 @@ bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
    /*
     * No PC vs. PS attacks in safe rooms 
     */
-   if( ( victim->in_room != NULL ) && is_set( victim->in_room->room_flags, RFLAG_SAFE ) )
+   if( ( victim->in_room != NULL ) && victim->in_room->room_flags.test(RFLAG_SAFE) )
    {
       send_to_char( "Not a chance!  This is a safe room.\n\r", ch );
       return TRUE;
    }
 
-   if( is_set( victim->act, ACT_KILLER ) )
+   if( victim->act.test(ACT_KILLER ) )
       return FALSE;
-   if( is_set( victim->act, ACT_THIEF ) )
+   if( victim->act.test(ACT_THIEF ) )
       return FALSE;
    /*
     * Vampires are considered PKOK 
     */
 
    if( !IS_NPC( ch ) && !IS_NPC( victim )
-       && ( is_set( victim->act, ACT_PKOK )
-            || is_set( victim->act, ACT_VAMPIRE ) )
-       && ( is_set( ch->act, ACT_PKOK ) || is_set( ch->act, ACT_VAMPIRE ) ) )
+       && ( victim->act.test(ACT_PKOK )
+            || victim->act.test(ACT_VAMPIRE ) )
+       && ( ch->act.test(ACT_PKOK ) || ch->act.test(ACT_VAMPIRE ) ) )
       return FALSE;
 
    if( ( ( victim->level < 10 ) || ( victim->level + 20 < ch->level ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC( ch ) ) )
@@ -1513,8 +1509,8 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
     * NPC's are fair game.
     * So are killers and thieves.
     */
-   if( IS_NPC( victim ) || is_set( victim->act, ACT_KILLER ) || is_set( victim->in_room->room_flags, RFLAG_PK ) /* -S- Mod */
-       || is_set( victim->act, ACT_THIEF ) || IS_VAMP( victim ) || IS_WOLF( victim )   /*
+   if( IS_NPC( victim ) || victim->act.test(ACT_KILLER ) || victim->in_room->room_flags.test(RFLAG_PK) /* -S- Mod */
+       || victim->act.test(ACT_THIEF ) || IS_VAMP( victim ) || IS_WOLF( victim )   /*
                                                                                         * || ( ch->fighting == victim )  */
        || ( ch == victim ) )
       return;
@@ -1538,7 +1534,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
           && ( politics_data.diplomacy[ch->pcdata->clan][victim->pcdata->clan] < -450 ) )
          return;
 
-      if( is_set( ch->act, ACT_PKOK ) && is_set( victim->act, ACT_PKOK ) )
+      if( ch->act.test(ACT_PKOK ) && victim->act.test(ACT_PKOK ) )
          return;
    }
 
@@ -1619,7 +1615,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
    if( ch->adept_level > 0 )
       ch->sentence += diff * get_psuedo_level( ch ) * 2;
 
-   set_bit( ch->act, ACT_KILLER );
+   ch->act.set(ACT_KILLER);
    save_char_obj( ch );
 
 
@@ -1699,7 +1695,7 @@ bool check_parry( CHAR_DATA * ch, CHAR_DATA * victim )
        * Tuan was here.  :) 
        */
       chance = get_psuedo_level( victim ) / 3.2 + get_curr_str( victim ) * 2 / 5;
-      if( is_set( victim->act, ACT_SOLO ) )
+      if( victim->act.test(ACT_SOLO ) )
          chance += 15;
    }
    else
@@ -1752,7 +1748,7 @@ bool check_dodge( CHAR_DATA * ch, CHAR_DATA * victim )
        * Tuan was here.  :) 
        */
       chance = get_psuedo_level( victim ) / 3.1 + get_curr_dex( victim ) * 2 / 5;
-      if( is_set( victim->act, ACT_SOLO ) )
+      if( victim->act.test(ACT_SOLO ) )
          chance += 15;
    }
    else
@@ -1917,7 +1913,7 @@ void update_pos( CHAR_DATA * victim )
       /*
        * drop stuff if is (WANTED) 
        */
-      if( ( is_set( victim->act, ACT_KILLER ) || is_set( victim->act, ACT_THIEF ) )
+      if( ( victim->act.test(ACT_KILLER ) || victim->act.test(ACT_THIEF ) )
           && ( ( victim->fighting != NULL )
                && ( ( !IS_NPC( victim->fighting ) )
                     || ( !str_cmp( rev_spec_lookup( victim->fighting->spec_fun ), "spec_executioner" ) ) ) ) )
@@ -2110,7 +2106,7 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
     * Check if mob has ACT_REMEMBER (ch to attack) SET 
     */
 
-   if( IS_NPC( victim ) && !IS_NPC( ch ) && is_set( victim->act, ACT_REMEMBER ) )
+   if( IS_NPC( victim ) && !IS_NPC( ch ) && victim->act.test(ACT_REMEMBER ) )
    {
       /*
        * Then set victim->target to player's name... 
@@ -2293,7 +2289,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
                leave_corpse = TRUE;
                corpse->value[0] = 1;
             }
-            if( is_set( ch->act, ACT_PKOK ) )
+            if( ch->act.test(ACT_PKOK ) )
                corpse->value[0] = 1;
             if( ch->pcdata->clan > 0 )
             {
@@ -2311,7 +2307,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    }  /* end of player only */
 
 
-   if( ( is_set( ch->act, ACT_KILLER ) || is_set( ch->act, ACT_THIEF ) )
+   if( ( ch->act.test(ACT_KILLER ) || ch->act.test(ACT_THIEF ) )
        && ( ( target != NULL )
             && ( ( !IS_NPC( target ) ) || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_executioner" ) ) ) ) )
 
@@ -2346,11 +2342,11 @@ void make_corpse( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      if( ( is_set( ch->act, ACT_PKOK ) )
+      if( ( ch->act.test(ACT_PKOK ) )
           || ( target != NULL && ( target->pcdata->clan != ch->pcdata->clan )
                && ( politics_data.diplomacy[ch->pcdata->clan][target->pcdata->clan] < -450 ) )
           || ( ( ch->level > 30 )
-               && ( is_set( ch->act, ACT_KILLER ) || is_set( ch->act, ACT_THIEF ) ) ) || ( leave_corpse ) )
+               && ( ch->act.test(ACT_KILLER ) || ch->act.test(ACT_THIEF ) ) ) || ( leave_corpse ) )
          obj_to_room( corpse, ch->in_room );
       else
          obj_to_room( corpse, get_room_index( ROOM_VNUM_MORGUE ) );
@@ -2367,7 +2363,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    }
    else
    {
-      if( is_set( ch->act, ACT_INTELLIGENT ) )
+      if( ch->act.test(ACT_INTELLIGENT ) )
       {
          obj_to_room( corpse, get_room_index( ROOM_VNUM_INT_HEAL ) );
       }
@@ -2458,7 +2454,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
    }
 
 
-   if( IS_NPC( victim ) && !is_set( victim->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( victim ) && !victim->act.test(ACT_INTELLIGENT ) )
    {
       victim->pIndexData->killed++;
       kill_table[URANGE( 0, victim->level, MAX_LEVEL - 1 )].killed++;
@@ -2477,7 +2473,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
    victim->mana = UMAX( 1, victim->mana );
    victim->move = UMAX( 1, victim->move );
    save_char_obj( victim );
-   if( IS_NPC( victim ) && is_set( victim->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( victim ) && victim->act.test(ACT_INTELLIGENT ) )
    {
 
       OBJ_DATA *my_corpse = NULL;
@@ -2539,7 +2535,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
     */
 
    if( ( ( IS_NPC( ch ) )
-         && ( ( !is_set( ch->act, ACT_INTELLIGENT ) )
+         && ( ( !ch->act.test(ACT_INTELLIGENT ) )
               && ( ch->rider == NULL ) ) ) || ( !IS_NPC( victim ) ) || ( victim == ch ) )
       return;
 
@@ -2547,7 +2543,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
    huggy = 0;
 
    base = victim->exp;  /* Now share this out... */
-   if( is_set( victim->act, ACT_INTELLIGENT ) )
+   if( victim->act.test(ACT_INTELLIGENT ) )
       base = exp_for_mobile( victim->level, victim );
 
    for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
@@ -2632,7 +2628,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
 
       snprintf( buf, MSL, "You Receive %.0f Experience Points.\n\r", funky );
       send_to_char( buf, gch );
-      if( IS_NPC( gch ) && is_set( gch->act, ACT_INTELLIGENT ) )
+      if( AI_MOB(gch) )
          gch->intell_exp += (int)funky;
       gain_exp( gch, (int)funky );
 
@@ -2967,7 +2963,7 @@ void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
       }
    }
    act( buf1, ch, NULL, victim, TO_NOTVICT );
-   if( is_set( ch->act, ACT_BLIND_PLAYER ) )
+   if( ch->act.test(ACT_BLIND_PLAYER ) )
    {
       if( dam < victim->max_hit / 30 )
          act( "You glance $K", ch, NULL, victim, TO_CHAR );
@@ -2980,7 +2976,7 @@ void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
    }
    else
       act( buf2, ch, NULL, victim, TO_CHAR );
-   if( is_set( victim->act, ACT_BLIND_PLAYER ) )
+   if( victim->act.test(ACT_BLIND_PLAYER ) )
    {
       if( dam < victim->max_hit / 30 )
          act( "$k glances you", ch, NULL, victim, TO_VICT );
@@ -3124,7 +3120,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( victim ) && !( deathmatch ) )
    {
-      if( !is_set( victim->act, ACT_KILLER ) && !is_set( victim->act, ACT_THIEF ) )
+      if( !victim->act.test(ACT_KILLER ) && !victim->act.test(ACT_THIEF ) )
       {
          send_to_char( "You must MURDER a player.\n\r", ch );
          return;
@@ -3192,7 +3188,7 @@ void do_target( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( victim ) && !( deathmatch ) )
    {
-      if( !is_set( victim->act, ACT_KILLER ) && !is_set( victim->act, ACT_THIEF ) )
+      if( !victim->act.test(ACT_KILLER ) && !victim->act.test(ACT_THIEF ) )
       {
          send_to_char( "You must MURDER a player.\n\r", ch );
          return;
@@ -3293,7 +3289,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
    notify( log_buf, MAX_LEVEL - 2 );
 
    if( IS_NPC( ch ) || IS_NPC( victim )
-       || !is_set( ch->act, ACT_PKOK ) || !is_set( victim->act, ACT_PKOK ) )
+       || !ch->act.test(ACT_PKOK ) || !victim->act.test(ACT_PKOK ) )
    {
       /*
        * If not pkok people, do yell. 
@@ -3375,7 +3371,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
    }
    if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
       return;
-   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_BODY ) )
+   if( IS_NPC( victim ) && victim->act.test(ACT_NO_BODY ) )
    {
       act( "$N has no body to backstab!", ch, NULL, victim, TO_CHAR );
       return;
@@ -3514,7 +3510,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
     * Check if mob will "allow" ch to flee... 
     */
 
-   if( is_set( victim->act, ACT_NO_FLEE ) && !IS_NPC( ch ) && IS_NPC( victim ) )
+   if( victim->act.test(ACT_NO_FLEE ) && !IS_NPC( ch ) && IS_NPC( victim ) )
    {
       send_to_char( "You attempt to flee from battle, but fail!\n\r", ch );
       snprintf( buf, MSL, "%s tells you 'No way will you escape ME!!'\n\r", victim->short_descr );
@@ -3546,8 +3542,8 @@ void do_flee( CHAR_DATA * ch, char *argument )
           || pexit->to_room == NULL
           || IS_SET( pexit->exit_info, EX_CLOSED )
           || ( IS_NPC( ch )
-               && ( is_set( pexit->to_room->room_flags, RFLAG_NO_MOB )
-                    || ( is_set( ch->act, ACT_STAY_AREA ) && pexit->to_room->area != ch->in_room->area ) ) ) )
+               && ( pexit->to_room->room_flags.test(RFLAG_NO_MOB)
+                    || ( ch->act.test(ACT_STAY_AREA ) && pexit->to_room->area != ch->in_room->area ) ) ) )
          continue;
 
       move_char( ch, door, TRUE );
@@ -3577,7 +3573,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
       /*
        * 75% chance that mobs will hunt fleeing people. -- Alty 
        */
-      if( IS_NPC( victim ) && !is_set( victim->act, ACT_SENTINEL ) && number_bits( 2 ) > 0 )
+      if( IS_NPC( victim ) && !victim->act.test(ACT_SENTINEL ) && number_bits( 2 ) > 0 )
          set_hunt( victim, NULL, ch, NULL, HUNT_WORLD | HUNT_INFORM | HUNT_OPENDOOR, HUNT_MERC | HUNT_CR );
       return;
    }
@@ -3815,7 +3811,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
    if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
       return;
 
-   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_BODY ) )
+   if( IS_NPC( victim ) && victim->act.test(ACT_NO_BODY ) )
    {
       act( "$N has no body to backstab!", ch, NULL, victim, TO_CHAR );
       return;
@@ -4593,7 +4589,7 @@ void do_knee( CHAR_DATA * ch, char *argument )
    if( victim == NULL )
       victim = ch->fighting;
 
-   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_BODY ) )
+   if( IS_NPC( victim ) && victim->act.test(ACT_NO_BODY ) )
    {
       act( "$N doesn't have a definable body to knee!", ch, NULL, victim, TO_CHAR );
       return;
@@ -4876,7 +4872,7 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
 
    if( dt == 0 )
    {
-      if( !( IS_NPC( victim ) && is_set( victim->act, ACT_NO_BODY ) ) )
+      if( !( IS_NPC( victim ) && victim->act.test(ACT_NO_BODY ) ) )
          switch ( number_range( 0, 9 ) )
          {
             case 0:
@@ -5359,7 +5355,7 @@ void do_stake( CHAR_DATA * ch, char *argument )
 
 
 
-      remove_bit( victim->act, ACT_VAMPIRE );
+      victim->act.reset(ACT_VAMPIRE);
       victim->pcdata->super->level = 0;
       victim->pcdata->super->exp = 0;
       victim->pcdata->super->energy = 0;
@@ -5487,7 +5483,7 @@ void do_feed( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->in_room->room_flags, RFLAG_SAFE ) )
+   if( victim->in_room->room_flags.test(RFLAG_SAFE) )
    {
       send_to_char( "The Gods prevent your foul deed.  This is a safe room!\n\r", ch );
       return;
@@ -5798,7 +5794,7 @@ void do_rage( CHAR_DATA * ch, char *argument )
 
       }
       send_to_char( "You are @@eENRAGED!!!!!!\n\r", ch );
-      set_bit( ch->act, ACT_RAGED );
+      ch->act.set(ACT_RAGED);
       ch->pcdata->super->energy = ( ch->pcdata->super->energy_max - number_range( 0, ch->pcdata->super->generation * 3 ) );
       ch->stance = STANCE_WARRIOR;
       ch->stance_ac_mod = 0;
@@ -5955,7 +5951,7 @@ void check_brawl( CHAR_DATA *ch )
 
   if( rch->fighting == NULL && IS_AWAKE(rch) && rch->master != ch && !IS_IMMORTAL(rch) && number_percent() <= 2 )
   {
-   if( IS_NPC(rch) && (is_set(rch->act,ACT_TRAIN) || is_set(rch->act,ACT_PRACTICE) || rch->pIndexData->pShop != NULL) )
+   if( IS_NPC(rch) && (rch->act.test(ACT_TRAIN) || rch->act.test(ACT_PRACTICE) || rch->pIndexData->pShop != NULL) )
     continue;
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )

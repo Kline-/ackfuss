@@ -63,10 +63,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_BOARD_H
 #include "h/board.h"
 #endif
@@ -719,10 +715,6 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_IMM, C_SHOW_NEVER},
    {"hotreboot", do_hotreboot, POS_DEAD, L_GOD, LOG_ALWAYS,
     C_TYPE_IMM, C_SHOW_ALWAYS},
-   {"bmdebug", do_bmdebug, POS_DEAD, L_GOD, LOG_NORMAL,
-    C_TYPE_IMM, C_SHOW_ALWAYS},
-   {"bmtoggle", do_bmtoggle, POS_DEAD, L_GOD, LOG_NORMAL,
-    C_TYPE_IMM, C_SHOW_ALWAYS},
    {"shutdow", do_shutdow, POS_DEAD, L_GOD, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_NEVER},
    {"shutdown", do_shutdown, POS_DEAD, L_GOD, LOG_ALWAYS,
@@ -1003,7 +995,7 @@ void interpret( CHAR_DATA * ch, char *argument )
    /*
     * Implement freeze command.
     */
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_FREEZE ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_FREEZE) )
    {
       send_to_char( "@@a@@fYou're totally frozen!@@N\n\r", ch );
       return;
@@ -1056,7 +1048,7 @@ void interpret( CHAR_DATA * ch, char *argument )
       if( cmd_table[cmd].level == CLAN_ONLY && !IS_NPC( ch ) && ch->pcdata->clan == 0 )
          continue;
 
-      if( cmd_table[cmd].level == BOSS_ONLY && !IS_NPC( ch ) && !is_set( ch->act, ACT_CLEADER ) )
+      if( cmd_table[cmd].level == BOSS_ONLY && !IS_NPC( ch ) && ch->act.test(ACT_CLEADER) )
          continue;
 
       if( cmd_table[cmd].level == VAMP_ONLY && !IS_NPC( ch ) && !IS_VAMP( ch ) && ( ch->level != L_GOD ) )
@@ -1089,11 +1081,11 @@ void interpret( CHAR_DATA * ch, char *argument )
    if( cmd_table[cmd].log == LOG_NEVER )
       strcpy( logline, "XXXXXXXX XXXXXXXX XXXXXXXX@@N" );
 
-   if( ( !IS_NPC( ch ) && is_set( ch->act, ACT_LOG ) ) || fLogAll || cmd_table[cmd].log == LOG_ALWAYS )
+   if( ( !IS_NPC( ch ) && ch->act.test(ACT_LOG) ) || fLogAll || cmd_table[cmd].log == LOG_ALWAYS )
    {
       snprintf( log_buf, (2 * MIL), "Log %s: %s", ch->name, logline );
       log_string( log_buf );
-      if( is_set( ch->act, ACT_LOG ) )
+      if( ch->act.test(ACT_LOG) )
          monitor_chan( log_buf, MONITOR_BAD );
       else if( cmd_table[cmd].level > LEVEL_HERO )
          monitor_chan( log_buf, MONITOR_GEN_IMM );
@@ -1243,7 +1235,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
    if( !found )
       return FALSE;
 
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_NO_EMOTE ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_NO_EMOTE) )
    {
       send_to_char( "You are anti-social!\n\r", ch );
       return TRUE;

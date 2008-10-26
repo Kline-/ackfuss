@@ -58,10 +58,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_BUILDTAB_H
 #include "h/buildtab.h"
 #endif
@@ -102,7 +98,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
          }
 
       if( ( skill_table[sn].flag1 == REMORT )
-          && ( ( ( is_set( ch->act, ACT_PET ) ) || ( IS_AFFECTED( ch, AFF_CHARM ) ) ) && ( ch->rider == NULL ) ) )
+          && ( ( ( ch->act.test(ACT_PET ) ) || ( IS_AFFECTED( ch, AFF_CHARM ) ) ) && ( ch->rider == NULL ) ) )
          best = -1;
 
       if( skill_table[sn].flag1 == ADEPT )
@@ -128,7 +124,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
 
    if( ( best == -1 ) && ( IS_NPC( ch ) ) )
    {
-      if( ( is_set( ch->act, ACT_INTELLIGENT ) ) && ( sn == skill_lookup( "ethereal" ) ) )
+      if( ( ch->act.test(ACT_INTELLIGENT ) ) && ( sn == skill_lookup( "ethereal" ) ) )
       {
          return 150;
       }
@@ -156,7 +152,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
 
    if( IS_VAMP( ch ) && ( skill_table[sn].flag2 == VAMP ) )
       mincost = skill_table[sn].min_mana;
-   if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( ch ) && ch->act.test(ACT_INTELLIGENT ) )
       mincost = skill_table[sn].min_mana + ( 200 - ch->level );
    if( skill_table[sn].flag2 == WOLF )
    {
@@ -359,7 +355,7 @@ bool saves_spell( int level, CHAR_DATA * victim )
           get_psuedo_level( victim ) * 2 / 3 :
           get_psuedo_level( victim ) ) - level - URANGE( -40, victim->saving_throw, 40 ) );
    save -= wis_app[get_curr_wis( victim )].spell_save;
-   if( ( IS_NPC( victim ) ) && ( is_set( victim->act, ACT_SOLO ) ) )
+   if( ( IS_NPC( victim ) ) && ( victim->act.test(ACT_SOLO ) ) )
       save += 20;
    if( !IS_NPC( victim ) && ( IS_SET( race_table[victim->race].race_flags, RACE_MOD_RESIST_SPELL ) ) )
       save += 20;
@@ -422,7 +418,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
     */
    /*
     * if ( IS_NPC(ch)
-    * && ( !is_set( ch->act, ACT_INTELLIGENT ) )
+    * && ( !ch->act.test(ACT_INTELLIGENT ) )
     * && ( !ch->pIndexData->progtypes
     * || IS_AFFECTED( ch, AFF_CHARM ) ) )
     * return;
@@ -448,7 +444,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
    /*
     * Check if in a no-magic room 
     */
-   if( !char_login && is_set( ch->in_room->room_flags, RFLAG_NO_MAGIC ) && ( skill_table[sn].flag2 != WOLF ) )
+   if( !char_login && ch->in_room->room_flags.test(RFLAG_NO_MAGIC) && ( skill_table[sn].flag2 != WOLF ) )
    {
       send_to_char( "Some strange force prevents you casting the spell!\n\r", ch );
       return;
@@ -462,7 +458,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
    {
       best = UMIN( 90, get_psuedo_level( ch ) );
       if( ( skill_table[sn].flag1 == REMORT )
-          && ( ( ( is_set( ch->act, ACT_PET ) ) || ( IS_AFFECTED( ch, AFF_CHARM ) ) ) && ( ch->rider == NULL ) ) )
+          && ( ( ( ch->act.test(ACT_PET ) ) || ( IS_AFFECTED( ch, AFF_CHARM ) ) ) && ( ch->rider == NULL ) ) )
          best = -1;
 
 
@@ -2261,7 +2257,7 @@ bool spell_faerie_fog( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    }
    for( ich = ch->in_room->first_person; ich != NULL; ich = ich->next_in_room )
    {
-      if( !IS_NPC( ich ) && is_set( ich->act, ACT_WIZINVIS ) )
+      if( !IS_NPC( ich ) && ich->act.test(ACT_WIZINVIS ) )
          continue;
 
       if( ich == ch || saves_spell( level, ich ) )
@@ -3052,8 +3048,8 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    if( ( victim = get_char_world( ch, target_name ) ) == NULL
        || victim == ch
        || victim->in_room == NULL
-       || is_set( victim->in_room->room_flags, RFLAG_SAFE )
-       || is_set( victim->in_room->room_flags, RFLAG_NO_RECALL )
+       || victim->in_room->room_flags.test(RFLAG_SAFE)
+       || victim->in_room->room_flags.test(RFLAG_NO_RECALL)
        || !( IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
        || victim->level >= level + 10
        || victim->fighting != NULL
@@ -3063,7 +3059,7 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
       send_to_char( "You failed.\n\r", ch );
       return TRUE;
    }
-   if( ( is_set( victim->act, ACT_NO_SUMMON ) ) || ( IS_NPC( victim ) && ( victim->level > ( level - 21 ) ) ) )
+   if( ( victim->act.test(ACT_NO_SUMMON ) ) || ( IS_NPC( victim ) && ( victim->level > ( level - 21 ) ) ) )
    {
       send_to_char( "You seemed unable to snatch your victim!\n\r", ch );
       send_to_char( "You feel a slight tugging sensation.\n\r", victim );
@@ -3093,7 +3089,7 @@ bool spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       return FALSE;
    }
    if( victim->in_room == NULL
-       || is_set( victim->in_room->room_flags, RFLAG_NO_RECALL )
+       || victim->in_room->room_flags.test(RFLAG_NO_RECALL)
        || ( !IS_NPC( ch ) && victim->fighting != NULL )
        || ( victim != ch && ( saves_spell( level, victim ) || saves_spell( level, victim ) ) ) )
    {
@@ -3106,8 +3102,8 @@ bool spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       pRoomIndex = get_room_index( number_range( 0, 32767 ) );
       if( pRoomIndex == NULL )
          continue;
-      if( !is_set( pRoomIndex->room_flags, RFLAG_PRIVATE )
-          && !is_set( pRoomIndex->room_flags, RFLAG_SOLITARY ) && IS_SET( pRoomIndex->area->flags, AREA_TELEPORT ) )
+      if( !pRoomIndex->room_flags.test(RFLAG_PRIVATE)
+          && !pRoomIndex->room_flags.test(RFLAG_SOLITARY) && IS_SET( pRoomIndex->area->flags, AREA_TELEPORT ) )
          break;
    }
 
@@ -3194,7 +3190,7 @@ bool spell_word_of_recall( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
    if( victim->in_room == location )
       return FALSE;
 
-   if( is_set( victim->in_room->room_flags, RFLAG_NO_RECALL ) )
+   if( victim->in_room->room_flags.test(RFLAG_NO_RECALL) )
    {
       send_to_char( "Some strange force prevents your transport.\n\r", victim );
       return TRUE;
@@ -3583,16 +3579,16 @@ bool spell_visit( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
        || victim == ch
        || IS_NPC( victim )
        || victim->in_room == NULL
-       || is_set( victim->in_room->room_flags, RFLAG_PRIVATE )
-       || is_set( victim->in_room->room_flags, RFLAG_SOLITARY )
-       || is_set( victim->in_room->room_flags, RFLAG_SAFE )
-       || is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) || !IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
+       || victim->in_room->room_flags.test(RFLAG_PRIVATE)
+       || victim->in_room->room_flags.test(RFLAG_SOLITARY)
+       || victim->in_room->room_flags.test(RFLAG_SAFE)
+       || ch->in_room->room_flags.test(RFLAG_NO_RECALL) || !IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
    {
       send_to_char( "You failed.\n\r", ch );
       return TRUE;
    }
 
-   if( is_set( victim->act, ACT_NO_VISIT ) )
+   if( victim->act.test(ACT_NO_VISIT ) )
    {
       send_to_char( "You seem unable to visit your target!\n\r", ch );
       return TRUE;
@@ -4139,7 +4135,7 @@ bool spell_animate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
 
    if( ob->item_type == ITEM_CORPSE_NPC )
    {
-      set_bit( corpse->act, ACT_UNDEAD );
+      corpse->act.set(ACT_UNDEAD);
       act( "$n's eyes glow black!", corpse, NULL, NULL, TO_ROOM );
    }
 
@@ -4161,7 +4157,7 @@ bool spell_animate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
 
    extract_obj( ob );
    do_wear( corpse, "all" );  /* FIXME: better to check items, then wear... */
-   set_bit( corpse->act, ACT_PET );
+   corpse->act.set(ACT_PET);
    SET_BIT( corpse->affected_by, AFF_CHARM );
    corpse->extract_timer = get_psuedo_level( ch ) / 3;
 
@@ -4373,7 +4369,7 @@ bool spell_mind_flail( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    if( victim == ch )
       return FALSE;
 
-   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
+   if( IS_NPC( victim ) && victim->act.test(ACT_NO_MIND ) )
       return TRUE;
 
 
@@ -4479,7 +4475,7 @@ bool spell_physic_thrust( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
       return FALSE;
 
 
-   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
+   if( IS_NPC( victim ) && victim->act.test(ACT_NO_MIND ) )
       return TRUE;
 
 
@@ -4501,7 +4497,7 @@ bool spell_physic_crush( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    if( victim == ch )
       return FALSE;
 
-   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
+   if( IS_NPC( victim ) && victim->act.test(ACT_NO_MIND ) )
       return TRUE;
 
 
@@ -4522,7 +4518,7 @@ bool spell_ego_whip( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
    if( victim == ch )
       return FALSE;
 
-   if( IS_NPC( victim ) && is_set( victim->act, ACT_NO_MIND ) )
+   if( IS_NPC( victim ) && victim->act.test(ACT_NO_MIND ) )
       return TRUE;
 
 
@@ -5063,7 +5059,7 @@ bool spell_waterelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -5094,7 +5090,7 @@ bool spell_skeleton( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
     * summoned->move     = summoned->max_move;  
     */
 
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -5476,8 +5472,8 @@ bool spell_ethereal( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       send_to_char( "Not during a @@eDeath Match@@N!!\n\r", ch );
       return FALSE;
    }
-   if( ( is_set( ch->in_room->room_flags, RFLAG_NO_RECALL ) )
-       && ( !IS_NPC( ch ) && ( !is_set( ch->act, ACT_INTELLIGENT ) ) ) )
+   if( ch->in_room->room_flags.test(RFLAG_NO_RECALL)
+       && ( !IS_NPC( ch ) && ( !ch->act.test(ACT_INTELLIGENT ) ) ) )
    {
       send_to_char( "You failed.\n\r", ch );
       return FALSE;
@@ -5543,7 +5539,7 @@ bool spell_fireelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -5956,7 +5952,7 @@ bool spell_room_dispel( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    if( room == NULL )
       return FALSE;
 
-   if( IS_NPC( ch ) && is_set( ch->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( ch ) && ch->act.test(ACT_INTELLIGENT ) )
       chance = 1000;
    else
       chance = ch->level + 20;
@@ -6273,7 +6269,7 @@ bool spell_earthelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6303,7 +6299,7 @@ bool spell_iron_golem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6335,7 +6331,7 @@ bool spell_soul_thief( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6365,7 +6361,7 @@ bool spell_holy_avenger( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6395,7 +6391,7 @@ bool spell_diamond_golem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6425,7 +6421,7 @@ bool spell_summon_pegasus( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6455,7 +6451,7 @@ bool spell_summon_nightmare( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DA
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6485,7 +6481,7 @@ bool spell_summon_beast( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6515,7 +6511,7 @@ bool spell_summon_devourer( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -6545,7 +6541,7 @@ bool spell_summon_shadow( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
     * summoned->move     = summoned->max_move;  
     * 
     */
-   set_bit( summoned->act, ACT_PET );
+   summoned->act.set(ACT_PET );
    SET_BIT( summoned->affected_by, AFF_CHARM );
    summoned->extract_timer = get_psuedo_level( ch ) / 3;
    add_follower( summoned, ch );
@@ -7052,7 +7048,7 @@ bool spell_creature_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
          return TRUE;
       }
       stop_follower( victim );
-      set_bit( victim->act, ACT_PET );
+      victim->act.set(ACT_PET );
       SET_BIT( victim->affected_by, AFF_CHARM );
       victim->extract_timer = get_psuedo_level( ch ) / 3;
       add_follower( victim, ch );

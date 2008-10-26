@@ -172,11 +172,11 @@ char_reference(&s); } while(0)
                                                 ? ( dex_app[get_curr_dex(ch)].defensive * get_psuedo_level( ch )/20 ) \
                                                 : ( dex_app[get_curr_dex(ch)].defensive * get_psuedo_level( ch )/10 ) ): 0 ))
 /* Super macros */
-#define IS_VAMP(ch)    ( is_set(ch->act,ACT_VAMPIRE)  )
-#define IS_UNDEAD(ch)  ( is_set(ch->act,ACT_UNDEAD)   )
-#define IS_WOLF(ch)    ( is_set(ch->act,ACT_WEREWOLF) )
-#define IS_SHIFTED(ch) ( is_set(ch->act,ACT_SHIFTED)  )
-#define IS_RAGED(ch)   ( is_set(ch->act,ACT_RAGED)    )
+#define IS_VAMP(ch)    ( ch->act.test(ACT_VAMPIRE)  )
+#define IS_UNDEAD(ch)  ( ch->act.test(ACT_UNDEAD)   )
+#define IS_WOLF(ch)    ( ch->act.test(ACT_WEREWOLF) )
+#define IS_SHIFTED(ch) ( ch->act.test(ACT_SHIFTED)  )
+#define IS_RAGED(ch)   ( ch->act.test(ACT_RAGED)    )
 
 /* Added bonus to hit and dam for higher levl players */
 /* High level naked players should still be able to fight ok */
@@ -185,7 +185,7 @@ char_reference(&s); } while(0)
 #define REAL_HITROLL(ch)        ((ch)->hitroll+ (str_app[get_curr_str(ch)].tohit * get_psuedo_level( ch )/10) )
 #define GET_DAMROLL(ch)         ( IS_NPC(ch) ? (REAL_DAMROLL(ch) + ch->dr_mod + (ch->level / 3 ))  : REAL_DAMROLL(ch)+(ch->level/10) + ch->stance_dr_mod )
 #define REAL_DAMROLL(ch)        ((ch)->damroll+( str_app[get_curr_str(ch)].todam * get_psuedo_level( ch ) /10 ) )
-#define IS_OUTSIDE(ch)          (!is_set( (ch)->in_room->room_flags, RFLAG_INDOORS))
+#define IS_OUTSIDE(ch)          (!(ch)->in_room->room_flags.test(RFLAG_INDOORS))
 #define WAIT_STATE(ch, npulse)  ((ch)->wait = UMAX((ch)->wait, (npulse)))
 #define MANA_COST(ch, sn)       (IS_NPC(ch) ? 0 : UMAX ( skill_table[sn].min_mana, 100 / (2 + ch->level - skill_table[sn].skill_level[ch->class] ) ) )
 #define IS_RIDING(ch)           (!IS_NPC(ch) && ((ch)->riding))
@@ -195,8 +195,8 @@ char_reference(&s); } while(0)
                                 || ( (ch)->stance == STANCE_WIZARD ) \
                                 || ( (ch)->stance == STANCE_MAGI ) )
 #define PLAYTESTER(ch)          ( !IS_NPC(ch) && IS_SET((ch)->pcdata->pflags, PFLAG_TESTER )  )
-#define HAS_BODY(ch)            ( !IS_NPC(ch) || !is_set((ch)->act, ACT_NO_BODY ) )
-#define HAS_MIND(ch)            ( !IS_NPC(ch) || !is_set((ch)->act, ACT_NO_MIND ) )
+#define HAS_BODY(ch)            ( !IS_NPC(ch) || (ch)->act.test(ACT_NO_BODY) )
+#define HAS_MIND(ch)            ( !IS_NPC(ch) || (ch)->act.test(ACT_NO_MIND) )
 #define IS_WEAPON(eq)           ( (eq) != NULL ? (eq)->item_type == ITEM_WEAPON : FALSE )
 #define IS_SHIELD(eq)           ( (eq) != NULL ? (eq)->item_type == ITEM_ARMOR : FALSE )
 
@@ -429,8 +429,5 @@ do { \
 /*
  * Miscellaneous macros.
  */
-/* My additions; safe_sprintf/strcat by Darien --Kline */
-#define xprintf(var,args...) safe_printf (__FILE__, __FUNCTION__, __LINE__, sizeof(var), (var), ##args )
-#define xprintf_2(var,args...) safe_printf (__FILE__, __FUNCTION__, __LINE__, MIL, (var), ##args) /* for *char types */
 #define xcat(var, args...) safe_strcat(__FILE__,__FUNCTION__,__LINE__,sizeof(var), (var),##args )
 #define xcat_2(var, args...) safe_strcat(__FILE__,__FUNCTION__,__LINE__,MAS, (var),##args ) /* for *char types */

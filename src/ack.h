@@ -30,6 +30,7 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
+#include <bitset>
 
 #define DEC_ACK_H 1
 
@@ -135,16 +136,16 @@ struct ban_data
    bool newbie;
 };
 
-struct brand_data
+class brand_data
 {
-   bool is_free;
-   BRAND_DATA *next;
-   BRAND_DATA *prev;
-   char *branded;
-   char *branded_by;
-   char *dt_stamp;
-   char *message;
-   char *priority;
+ public:
+  brand_data();
+  ~brand_data();
+  char *branded;
+  char *branded_by;
+  char *dt_stamp;
+  char *message;
+  char *priority;
 };
 
 
@@ -400,9 +401,12 @@ struct clan_type
 /*
  * Data structure for notes.
  */
-struct note_data
+class note_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
+ public:
+  note_data();
+  ~note_data();
+   bool is_free;
    NOTE_DATA *next;
    NOTE_DATA *prev;
    char *sender;
@@ -486,8 +490,11 @@ struct magic_shield
  * Prototype for a mob.
  * This is the in-memory version of #MOBILES.
  */
-struct mob_index_data
+class mob_index_data
 {
+ public:
+  mob_index_data();
+  ~mob_index_data();
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    MOB_INDEX_DATA *next;
    SPEC_FUN *spec_fun;
@@ -502,7 +509,7 @@ struct mob_index_data
    short killed;
    short sex;
    short level;
-   BITMASK *act;
+   std::bitset<MAX_BITSET> act;
    int affected_by;
    int aggro_list;
    short alignment;
@@ -537,12 +544,15 @@ struct mob_index_data
 /*
  * One character (PC or NPC).
  */
-struct char_data
+class char_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   bool is_quitting;
+ public:
+   char_data();
+   ~char_data();
+   bool is_free;
    CHAR_DATA *next;
    CHAR_DATA *prev;
+   bool is_quitting;
    CHAR_DATA *next_in_room;
    CHAR_DATA *prev_in_room;
    CHAR_DATA *master;
@@ -619,8 +629,8 @@ struct char_data
    int balance;   /* Amount of gold (if any) in bank */
    int exp;
    int intell_exp;
-   BITMASK *act;
-   BITMASK *deaf;
+   std::bitset<MAX_BITSET> act;
+   std::bitset<MAX_BITSET> deaf;
    int act_build; /* for setting what ya editing */
    int build_vnum;   /* the current vnum for w-y-e  */
    int affected_by;
@@ -706,7 +716,7 @@ struct pc_data
    short mod_wis;
    short mod_dex;
    short mod_con;
-   BITMASK *monitor;   /* Imm channel monitoring */
+   std::bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
    short condition[3];
    SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
    short pagelen;
@@ -949,7 +959,6 @@ struct reset_data
    short arg2;
    short arg3;
    char *notes;
-   char *auto_message;  /* Ugly - wasteful of space. */
 };
 
 
@@ -1067,9 +1076,6 @@ struct area_data
    char *name;
    short age;
    short nplayer;
-/* Saving to envy mod, to renumber vnums! */
-   int offset;
-
 /* MAG mod */
    int modified;
    int min_vnum;
@@ -1119,35 +1125,35 @@ struct area_data
 /*
  * Room type.
  */
-struct room_index_data
+class room_index_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   ROOM_INDEX_DATA *next;
-   CHAR_DATA *first_person;
-   CHAR_DATA *last_person;
-   OBJ_DATA *first_content;
-   OBJ_DATA *last_content;
-   EXTRA_DESCR_DATA *first_exdesc;
-   EXTRA_DESCR_DATA *last_exdesc;
-   AREA_DATA *area;
-   EXIT_DATA *exit[MAX_DIR];
-   char *name;
-   char *description;
-   char *auto_message;  /* If != NULL, send_to_room each tick */
-   int vnum;
-   BITMASK *room_flags;
-   short light;
-   short sector_type;
-   BUILD_DATA_LIST *first_room_reset;
-   BUILD_DATA_LIST *last_room_reset;
-/* -S- mod... don't save this with OLC :P */
-   ROOM_AFFECT_DATA *first_room_affect;
-   ROOM_AFFECT_DATA *last_room_affect;
-   int affected_by;
-   MARK_LIST_MEMBER *first_mark_list;
-   MARK_LIST_MEMBER *last_mark_list;
-   MONEY_TYPE *treasure;
-
+ public:
+  room_index_data();
+  ~room_index_data();
+   int                     affected_by;
+   AREA_DATA               *area;
+   char                    *description;
+   EXIT_DATA               *exit[MAX_DIR];
+   OBJ_DATA                *first_content;
+   EXTRA_DESCR_DATA        *first_exdesc;
+   MARK_LIST_MEMBER        *first_mark_list;
+   CHAR_DATA               *first_person;
+   ROOM_AFFECT_DATA        *first_room_affect;
+   BUILD_DATA_LIST         *first_room_reset;
+   bool                    is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
+   OBJ_DATA                *last_content;
+   EXTRA_DESCR_DATA        *last_exdesc;
+   MARK_LIST_MEMBER        *last_mark_list;
+   CHAR_DATA               *last_person;
+   ROOM_AFFECT_DATA        *last_room_affect;
+   BUILD_DATA_LIST         *last_room_reset;
+   short                   light;
+   char                    *name;
+   ROOM_INDEX_DATA         *next;
+   std::bitset<MAX_BITSET> room_flags;
+   short                   sector_type;
+   MONEY_TYPE              *treasure;
+   int                     vnum;
 };
 
 /* Big MAG mod */
@@ -1247,23 +1253,6 @@ struct social_type
 };
 
 /* Kline */
-struct bmlist // Serialized bitmasks
-{
- BM_LIST *next;
- long set;
- long tar_mask;
-};
-
-struct bitmask
-{
- bool is_free;
- BITMASK *next;
- BITMASK *prev;
- long bits; // number of bits set in total.
- long masks; // number of masks in all.
- BM_LIST *int_list;
-};
-
 struct chanhistory
 {
  time_t time[30][MAX_HISTORY];
@@ -1408,7 +1397,6 @@ void  message_update   args( ( void ) );
 CD    *create_mobile   args( ( MOB_INDEX_DATA * pMobIndex ) );
 OD    *create_object   args( ( OBJ_INDEX_DATA * pObjIndex, int level ) );
 void  clear_char       args( ( CHAR_DATA * ch ) );
-void  free_char        args( ( CHAR_DATA * ch ) );
 char  *get_extra_descr args( ( const char *name, EXTRA_DESCR_DATA * ed ) );
 MID   *get_mob_index   args( ( int vnum ) );
 OID   *get_obj_index   args( ( int vnum ) );

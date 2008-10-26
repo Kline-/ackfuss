@@ -1542,66 +1542,6 @@ char *get_tribe_name( CHAR_DATA * ch )
  *where the mud overflows, and stop it from happening.  Great little tool.
  *All i ask is that you leave this header in place.  -- Darien of Sandstorm:Mages Sanctuary
  */
-int safe_printf( const char *file, const char *function, int line, int size, const char *str, const char *fmt, ... )
-{
- char buf[MAS];
- va_list args;
- va_start(args,fmt);
- vsprintf(buf,fmt,args);
- va_end(args);
-
- /*Max Alloc Size is alot!*/
- if( size > MAS )
- {
-  /*Yes, this is a potential loop bug if infact the snprintf does collapse in on itself..*/
-  xprintf_2(bug_buf,"snprintf buffer overflow: %s",fmt);
-  log_string(bug_buf);
-  monitor_chan(bug_buf,MONITOR_DEBUG);
-
-  xprintf_2(bug_buf,"snprintf buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
-  log_string(bug_buf);
-  monitor_chan(bug_buf,MONITOR_DEBUG);
-
-  return -1;
- }
-
- if( (unsigned)size < strlen(buf)+1 ) 
- {
-  /*Yes, this is a potential loop bug if infact the snprintf does collapse in on itself..*/
-  xprintf_2(bug_buf,"snprintf buffer overflow: %s",fmt);
-  log_string(bug_buf);
-  monitor_chan(bug_buf,MONITOR_DEBUG);
-
-  xprintf_2(bug_buf,"snprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
-  log_string(bug_buf);
-  monitor_chan(bug_buf,MONITOR_DEBUG);
-
-  return -1;
- }
- else
- {
-  strcpy((char *)str,buf);
-  //Disabled for now.
-  //strlcpy(str,buf,size-2);
-  //str[size-1] = '\0';
-
-  /*Just double checking.*/
-  if( strlen(str) > (unsigned)size - 1 )
-  {
-   /*Yes, this is a potential loop bug if infact the snprintf does collapse in on itself..*/
-   xprintf_2(bug_buf,"snprintf buffer overflow: %s",fmt);
-   log_string(bug_buf);
-   monitor_chan(bug_buf,MONITOR_DEBUG);
-
-   xprintf_2(bug_buf,"snprintf buffer overflow: File: %s Function: %s Line: %d",file,function,line);
-   log_string(bug_buf);
-   monitor_chan(bug_buf,MONITOR_DEBUG);
-   return -1;
-  }
- }
- return strlen(str);
-}
-
 void safe_strcat( const char *file, const char *function, int line, int size, const char *prev, const char *next, ... )
 {
  char buf[MAS];
@@ -1613,11 +1553,11 @@ void safe_strcat( const char *file, const char *function, int line, int size, co
  /*Max Alloc Size is alot!*/
  if( size > MAS )
  {
-  xprintf_2(bug_buf,"xcat buffer overflow: %s",next);
+  sprintf(bug_buf,"xcat buffer overflow: %s",next);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
-  xprintf_2(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
+  sprintf(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
@@ -1626,11 +1566,11 @@ void safe_strcat( const char *file, const char *function, int line, int size, co
 
  if( (unsigned)size < strlen(buf)+1 )
  {
-  xprintf_2(bug_buf,"xcat buffer overflow: %s",next);
+  sprintf(bug_buf,"xcat buffer overflow: %s",next);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
-  xprintf_2(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+  sprintf(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
@@ -1644,11 +1584,11 @@ void safe_strcat( const char *file, const char *function, int line, int size, co
   /*Just double checking.*/
   if( strlen(prev) > (unsigned)size - 1 )
   {
-   xprintf_2(bug_buf,"xcat buffer overflow: %s",next);
+   sprintf(bug_buf,"xcat buffer overflow: %s",next);
    log_string(bug_buf);
    monitor_chan(bug_buf,MONITOR_DEBUG);
 
-   xprintf_2(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+   sprintf(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
    log_string(bug_buf);
    monitor_chan(bug_buf,MONITOR_DEBUG);
    return;

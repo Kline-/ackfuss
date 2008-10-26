@@ -393,7 +393,6 @@ static void walk_reset_data( RESET_DATA * r )
       return;
 
    touch( r->notes );
-   touch( r->auto_message );
 }
 
 static void walk_area_data( AREA_DATA * ad )
@@ -442,7 +441,6 @@ static void walk_room_index_data( ROOM_INDEX_DATA * r )
       walk_extra_descr_data( ed );
    touch( r->name );
    touch( r->description );
-   touch( r->auto_message );
 #ifdef DEBUG_MONEY
    touch( r->treasure->money_key );
 #endif

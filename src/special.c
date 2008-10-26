@@ -58,10 +58,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -755,18 +751,18 @@ bool spec_executioner( CHAR_DATA * ch )
          continue;
 
 
-      if( !IS_NPC( victim ) && is_set( victim->act, ACT_KILLER ) )
+      if( !IS_NPC( victim ) && victim->act.test(ACT_KILLER) )
       {
          crime = "KILLER";
          break;
       }
 
-      if( !IS_NPC( victim ) && is_set( victim->act, ACT_THIEF ) )
+      if( !IS_NPC( victim ) && victim->act.test(ACT_THIEF) )
       {
          crime = "THIEF";
          break;
       }
-      if( IS_NPC( victim ) && is_set( victim->act, ACT_UNDEAD ) )
+      if( IS_NPC( victim ) && victim->act.test(ACT_UNDEAD) )
       {
          crime = "UNDEAD";
          undead = TRUE;
@@ -1052,13 +1048,13 @@ bool spec_policeman( CHAR_DATA * ch )
       if( IS_VAMP( victim ) && IS_AFFECTED( victim, AFF_VAMP_HEALING ) )
          continue;
 
-      if( !IS_NPC( victim ) && is_set( victim->act, ACT_KILLER ) )
+      if( !IS_NPC( victim ) && victim->act.test(ACT_KILLER) )
       {
          crime = "KILLER";
          break;
       }
 
-      if( !IS_NPC( victim ) && is_set( victim->act, ACT_THIEF ) )
+      if( !IS_NPC( victim ) && victim->act.test(ACT_THIEF) )
       {
          crime = "THIEF";
          break;
@@ -1244,7 +1240,7 @@ bool spec_undead( CHAR_DATA * ch )
       sum_lev = ch->level * 2 / 3;
       for( ach = first_char; ach != NULL; ach = ach->next )
       {
-         if( !is_set( ach->act, ACT_UNDEAD ) || ach->level > sum_lev || !IS_NPC( ach ) /* Kavir got summoned!  :P */
+         if( !ach->act.test(ACT_UNDEAD) || ach->level > sum_lev || !IS_NPC( ach ) /* Kavir got summoned!  :P */
              || ach->in_room == ch->in_room || !can_see( ch, ach ) || number_bits( 2 ) != 0 )
             continue;
 

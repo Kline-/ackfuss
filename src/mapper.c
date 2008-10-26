@@ -53,10 +53,6 @@
 #include "h/act_comm.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -510,7 +506,7 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
 {
 #ifdef ACK_43
    int cols = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );
-   int rows = ( IS_NPC( ch ) || !is_set( ch->act, ACT_FULL_ANSI ) ? 9999 : 10 );
+   int rows = ( IS_NPC( ch ) || !ch->act.test(ACT_FULL_ANSI ) ? 9999 : 10 );
 #else
    int cols = 80;
    int rows = 9999;
@@ -533,7 +529,7 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
       snprintf( bufs[y], MSL, "%.*s", ( x - ox ), ox );
    }
 #ifdef ACK_43
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_FULL_ANSI ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_FULL_ANSI ) )
    {
       snprintf( disp, MSL, "%s%s%i;%ir%s%i;%iH%s%s",
                CRS_SAVE_ALL,
@@ -544,7 +540,7 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
 #endif
    strcpy( disp, map_format( ch->in_room->name, 0, bufs, &y, cols, rows, TRUE ) );
    xcat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ) );
-   xcat( disp, map_format( ch->in_room->description, y, bufs, &y, cols, rows, !is_set( ch->act, ACT_JUSTIFY ) ) );
+   xcat( disp, map_format( ch->in_room->description, y, bufs, &y, cols, rows, !ch->act.test(ACT_JUSTIFY ) ) );
    if( y < MAP_Y )
    {
       x = disp + strlen( disp );
@@ -553,7 +549,7 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
    }
    send_to_char( disp, ch );
 #ifdef ACK_43
-   if( !IS_NPC( ch ) && is_set( ch->act, ACT_FULL_ANSI ) )
+   if( !IS_NPC( ch ) && ch->act.test(ACT_FULL_ANSI ) )
    {
       snprintf( disp, MSL, "%s%i;%ir%s%i;%iH", CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13, 0 );
       send_to_char( disp, ch );

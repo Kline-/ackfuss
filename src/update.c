@@ -60,10 +60,6 @@
 #include "h/areasave.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -332,7 +328,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
    ch->practice += add_prac;
 
    if( !IS_NPC( ch ) )
-      remove_bit( ch->act, ACT_BOUGHT_PET );
+    ch->act.reset(ACT_BOUGHT_PET);
 
    snprintf( buf, MSL, "You gain: %d Hit Points, %d Mana, %d Movement and %d pracs.\n\r", add_hp, add_mana, add_move, add_prac );
 
@@ -354,7 +350,7 @@ void gain_exp( CHAR_DATA * ch, int gain )
     * -S- Mod:  mobs CAN gain exp as well as players 
     */
 
-   if( ( IS_NPC( ch ) ) && !( is_set( ch->act, ACT_INTELLIGENT ) ) )
+   if( IS_NPC( ch ) && !ch->act.test(ACT_INTELLIGENT) )
       return;
 
    if( IS_IMMORTAL( ch ) )
@@ -381,13 +377,13 @@ int hit_gain( CHAR_DATA * ch )
    if( ch->is_free != FALSE )
       return 0;
 
-   if( IS_NPC( ch ) && !is_set( ch->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( ch ) && !ch->act.test(ACT_INTELLIGENT) )
 
       gain = ( 5 + ch->level / 30 );
 
    gain = ( 5 + ch->level / 20 );
 
-   if( is_set( ch->in_room->room_flags, RFLAG_REGEN ) )
+   if( ch->in_room->room_flags.test(RFLAG_REGEN) )
       gain *= 2;
 
    switch ( ch->position )
@@ -422,7 +418,7 @@ int hit_gain( CHAR_DATA * ch )
    if( IS_AFFECTED( ch, AFF_POISON ) )
       gain /= 4;
 
-   if( is_set( ch->in_room->room_flags, RFLAG_COLD ) || ( is_set( ch->in_room->room_flags, RFLAG_HOT ) ) )
+   if( ch->in_room->room_flags.test(RFLAG_COLD) || ch->in_room->room_flags.test(RFLAG_HOT) )
       gain *= -2;
 
    if( IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_REGEN ) )
@@ -482,7 +478,7 @@ int mana_gain( CHAR_DATA * ch )
    float gain;
    if( ch->is_free != FALSE )
       return 0;
-   if( IS_NPC( ch ) && !is_set( ch->act, ACT_INTELLIGENT ) )
+   if( IS_NPC( ch ) && !ch->act.test(ACT_INTELLIGENT) )
    {
       gain = ( 1 + ch->level / 30 );
    }
@@ -490,7 +486,7 @@ int mana_gain( CHAR_DATA * ch )
    {
       gain = ( 5 + ch->level / 20 );
 
-      if( is_set( ch->in_room->room_flags, RFLAG_REGEN ) )
+      if( ch->in_room->room_flags.test(RFLAG_REGEN) )
          gain *= 2;
 
       switch ( ch->position )
@@ -588,7 +584,7 @@ int move_gain( CHAR_DATA * ch )
    {
       gain = ( 10 + ch->level / 4 );
 
-      if( is_set( ch->in_room->room_flags, RFLAG_REGEN ) )
+      if( ch->in_room->room_flags.test(RFLAG_REGEN) )
          gain *= 2;
 
       switch ( ch->position )
@@ -781,7 +777,7 @@ void mobile_update( void )
       /*
        * Intelligent mob? 
        */
-/*	if ( is_set( ch->act, ACT_INTELLIGENT ) )
+/*	if ( ch->act.test(ACT_INTELLIGENT) )
 	   int_handler( ch ); Disabled for now, for bugs.  */
 
       /*
@@ -793,11 +789,11 @@ void mobile_update( void )
       /*
        * Check for rewield, and re-equip (specials not used anymore) 
        */
-      if( is_set( ch->act, ACT_RE_WIELD ) )
+      if( ch->act.test(ACT_RE_WIELD) )
          if( check_rewield( ch ) )
             continue;
 
-      if( is_set( ch->act, ACT_RE_EQUIP ) )
+      if( ch->act.test(ACT_RE_EQUIP) )
          if( check_re_equip( ch ) )
             continue;
 
@@ -846,7 +842,7 @@ void mobile_update( void )
       /*
        * Scavenge 
        */
-      if( is_set( ch->act, ACT_SCAVENGER ) && ch->in_room->first_content != NULL && number_bits( 2 ) == 0 )
+      if( ch->act.test(ACT_SCAVENGER) && ch->in_room->first_content != NULL && number_bits( 2 ) == 0 )
       {
          OBJ_DATA *obj;
          OBJ_DATA *obj_best;
@@ -874,14 +870,14 @@ void mobile_update( void )
       /*
        * Wander 
        */
-      if( !is_set( ch->act, ACT_SENTINEL )
+      if( !ch->act.test(ACT_SENTINEL)
           && ch->leader == NULL
           && ( door = number_bits( 5 ) ) <= 5
           && ( pexit = ch->in_room->exit[door] ) != NULL
           && pexit->to_room != NULL
           && !IS_SET( pexit->exit_info, EX_CLOSED )
-          && !is_set( pexit->to_room->room_flags, RFLAG_NO_MOB )
-          && ( !is_set( ch->act, ACT_STAY_AREA ) || pexit->to_room->area == ch->in_room->area ) )
+          && !pexit->to_room->room_flags.test(RFLAG_NO_MOB)
+          && ( !ch->act.test(ACT_STAY_AREA) || pexit->to_room->area == ch->in_room->area ) )
       {
          move_char( ch, door, FALSE );
          /*
@@ -901,7 +897,7 @@ void mobile_update( void )
           && ( door = number_bits( 3 ) ) <= 5
           && ( pexit = ch->in_room->exit[door] ) != NULL
           && pexit->to_room != NULL
-          && !IS_SET( pexit->exit_info, EX_CLOSED ) && !is_set( pexit->to_room->room_flags, RFLAG_NO_MOB ) )
+          && !IS_SET( pexit->exit_info, EX_CLOSED ) && !pexit->to_room->room_flags.test(RFLAG_NO_MOB) )
       {
          CHAR_DATA *rch;
          bool found;
@@ -1407,9 +1403,9 @@ void char_update( void )
           */
          if( ch->position != POS_WRITING && ch->position != POS_BUILDING )
          {
-            if( is_set( ch->in_room->room_flags, RFLAG_HOT ) )
+            if( ch->in_room->room_flags.test(RFLAG_HOT) )
                send_to_char( "You feel your skin burning.\n\r", ch );
-            else if( is_set( ch->in_room->room_flags, RFLAG_COLD ) )
+            else if( ch->in_room->room_flags.test(RFLAG_COLD) )
                send_to_char( "You feel your skin freezing.\n\r", ch );
          }
 
@@ -1940,11 +1936,11 @@ void aggr_update( void )
          ch_next = ch->next_in_room;
 
          if( !IS_NPC( ch )
-             || !is_set( ch->act, ACT_AGGRESSIVE )
+             || !ch->act.test(ACT_AGGRESSIVE)
              || ch->fighting != NULL
              || ch->hunting != NULL
              || IS_AFFECTED( ch, AFF_CHARM )
-             || !IS_AWAKE( ch ) || ( is_set( ch->act, ACT_WIMPY ) && IS_AWAKE( wch ) ) || !can_see( ch, wch ) )
+             || !IS_AWAKE( ch ) || ( ch->act.test(ACT_WIMPY) && IS_AWAKE( wch ) ) || !can_see( ch, wch ) )
             continue;
 
 
@@ -1964,9 +1960,9 @@ void aggr_update( void )
          {
             vch_next = vch->next_in_room;
 
-            if( ( !IS_NPC( vch ) || is_set( vch->act, ACT_INTELLIGENT ) )
+            if( ( !IS_NPC( vch ) || vch->act.test(ACT_INTELLIGENT) )
                 && vch->level < LEVEL_IMMORTAL
-                && ( !is_set( ch->act, ACT_WIMPY ) || !IS_AWAKE( vch ) )
+                && ( !ch->act.test(ACT_WIMPY) || !IS_AWAKE( vch ) )
                 && can_see( ch, vch ) && ( !( IS_UNDEAD( ch ) && IS_VAMP( vch ) ) ) )
             {
                if( number_range( 0, count ) == 0 )
@@ -1982,7 +1978,7 @@ void aggr_update( void )
              */
             continue;
          }
-         if( is_set( victim->in_room->room_flags, RFLAG_SAFE ) )
+         if( victim->in_room->room_flags.test(RFLAG_SAFE) )
             continue;
 
          if( ch == quest_mob ) /* Stop the quest mob from fighting folks trying to help it! --Kline */

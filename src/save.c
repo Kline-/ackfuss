@@ -47,10 +47,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -278,7 +274,15 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    fprintf( fp, "Revision       %d\n", SAVE_REVISION );
    fprintf( fp, "Name           %s~\n", ch->name );
-   fprintf( fp, "Deaf           %s\n", save_bitmask( ch->deaf ) );
+
+   fprintf( fp, "Deaf           " );
+   for( foo = 0; foo < MAX_BITSET; foo++ )
+   {
+      if( ch->deaf.test(foo) )
+       fprintf( fp, "%d ", foo );
+   }
+   fprintf( fp, "EOL\n" );
+
    fprintf( fp, "ShortDescr     %s~\n", ch->short_descr );
    fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig );
    fprintf( fp, "Description    %s~\n", ch->description );
@@ -318,7 +322,13 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "%d ", ch->money->cash_unit[foo] );
    fprintf( fp, "\n" );
 
-   fprintf( fp, "Monitor        %s\n", save_bitmask( ch->pcdata->monitor ) );
+   fprintf( fp, "Monitor        " );
+   for( foo = 0; foo < MAX_BITSET; foo++ )
+   {
+      if( ch->pcdata->monitor.test(foo) )
+       fprintf( fp, "%d ", foo );
+   }
+   fprintf( fp, "EOL\n" );
 
    fprintf( fp, "BankMoney      %d ", MAX_CURRENCY );
    for( foo = 0; foo < MAX_CURRENCY; foo++ )
@@ -326,7 +336,15 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "\n" );
 
    fprintf( fp, "Exp            %d\n", ch->exp );
-   fprintf( fp, "Act            %s\n", save_bitmask( ch->act ) );
+   
+   fprintf( fp, "Act            " );
+   for( foo = 0; foo < MAX_BITSET; foo++ )
+   {
+      if( ch->act.test(foo) )
+       fprintf( fp, "%d ", foo );
+   }
+   fprintf( fp, "EOL\n" );
+
    fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
    /*
     * Bug fix from Alander 
@@ -607,7 +625,6 @@ int cur_revision = 0;
 bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 {
    int cnt;
-   static BITMASK bitmask_zero;
    static PC_DATA pcdata_zero;
    static QUEST_INFO quest_info_zero;
    static RECORD_DATA record_zero;
@@ -657,15 +674,13 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    else
       is_npc = FALSE;
 
-   GET_FREE( ch, char_free );
+   ch = new CHAR_DATA;
    clear_char( ch );
 
    if( !is_npc )
    {
-      GET_FREE( ch->pcdata, pcd_free );
+      ch->pcdata = new PC_DATA;
       *ch->pcdata = pcdata_zero;
-      GET_FREE( ch->pcdata->monitor, bitmask_free );
-      *ch->pcdata->monitor = bitmask_zero;
       GET_FREE( ch->pcdata->quest_info, quest_info_free );
       *ch->pcdata->quest_info = quest_info_zero;
       GET_FREE( ch->pcdata->records, record_free );
@@ -675,6 +690,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 
       d->character = ch;
 
+      ch->pcdata->monitor.reset();
       ch->pcdata->host = str_dup( "Unknown!" );
       ch->pcdata->lastlogin = str_dup( "Unknown!" );
       ch->pcdata->who_name = str_dup( "off" );
@@ -931,7 +947,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       /*
        * return memory for char back to system. 
        */
-      free_char( ch );
+    delete ch;
    }
    return found;
 }
@@ -946,8 +962,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 #undef KEY
 #endif
 
-/* BKEY is to load a bitmask field, so it works a bit differently. --Kline */
-#define BKEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { load_bitmask(field,value); fMatch = TRUE; break;}
 #define KEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { field  = value; fMatch = TRUE;  break;}
 #define SKEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { if (field!=NULL) free_string(field);field  = value; fMatch = TRUE;  break;}
 
@@ -986,7 +1000,17 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'A':
-            BKEY( "Act", ch->act, fp );
+            if( !str_cmp( word, "Act" ) )
+            {
+             const char *tmp = fread_word(fp);
+             while( str_cmp(tmp,"EOL") )
+             {
+              ch->act.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = TRUE;
+             break;
+            }
             KEY( "AffectedBy", ch->affected_by, fread_number( fp ) );
             KEY( "Alignment", ch->alignment, fread_number( fp ) );
             KEY( "Armor", ch->armor, fread_number( fp ) );
@@ -1117,7 +1141,18 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
          case 'D':
             KEY( "Damroll", ch->damroll, fread_number( fp ) );
-            BKEY( "Deaf", ch->deaf, fp );
+            if( !str_cmp( word, "Deaf" ) )
+            {
+             const char *tmp = fread_word(fp);
+             while( str_cmp(tmp,"EOL") )
+             {
+              ch->deaf.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = TRUE;
+             break;
+            }
+
             SKEY( "Description", ch->description, fread_string( fp ) );
 
             if( !str_cmp( word, "DimCol" ) && !IS_NPC( ch ) )
@@ -1235,7 +1270,17 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'M':
             if( !IS_NPC( ch ) )
             {
-               BKEY( "Monitor", ch->pcdata->monitor, fp );
+             if( !str_cmp( word, "Monitor" ) )
+             {
+              const char *tmp = fread_word(fp);
+              while( str_cmp(tmp,"EOL") )
+              {
+               ch->pcdata->monitor.set(atoi(tmp));
+               tmp = fread_word(fp);
+              }
+              fMatch = TRUE;
+              break;
+             }
             }
             if( !str_cmp( word, "Money" ) )
             {

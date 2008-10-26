@@ -55,10 +55,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -74,7 +70,7 @@ void save_clan_table(  )
    char clan_file_name[MAX_STRING_LENGTH];
    short x, y;
 
-   xprintf( clan_file_name, "%s", CLAN_FILE );
+   snprintf( clan_file_name, MSL, "%s", CLAN_FILE );
 
    if( ( fp = file_open( clan_file_name, "w" ) ) == NULL )
    {
@@ -131,12 +127,11 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
    char arg1[MAX_STRING_LENGTH];
    char arg2[MAX_STRING_LENGTH];
 
-
    argument = one_argument( argument, arg1 );
    argument = one_argument( argument, arg2 );
 
 
-   if( IS_NPC( ch ) || !is_set( ch->act, ACT_CBOSS ) )
+   if( IS_NPC( ch ) || !ch->act.test(ACT_CBOSS) )
    {
       send_to_char( "This command is for clan bosses only.\n\r", ch );
       return;
@@ -147,9 +142,6 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
       send_to_char( "Syntax: ctoggle <clan number> <armourer/diplomat/treasurer/leader>\n\r", ch );
       return;
    }
-
-
-
 
    if( ( victim = get_char_world( ch, arg1 ) ) == NULL )
    {
@@ -184,74 +176,69 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
       return;
    }
 
+   victim->act.flip(job);
+
    switch ( job )
    {
       case ACT_CTREASURER:
 
-         if( !is_set( victim->act, ACT_CTREASURER ) )
+         if( victim->act.test(ACT_CTREASURER) )
          {
-            set_bit( victim->act, ACT_CTREASURER );
-            send_to_char( "Job set as CLAN TREASURER.\n\r", ch );
-            send_to_char( "You have been set as a clan treasurer.\n\r", victim );
+            snprintf( arg1, MSL, "Job set as CLAN TREASURER.\n\r" );
+            snprintf( arg2, MSL, "You have been set as a clan treasurer.\n\r" );
          }
          else
          {
-            remove_bit( victim->act, ACT_CTREASURER );
-            send_to_char( "Job cleared: CLAN TREASURER.\n\r", ch );
-            send_to_char( "You are no longer a clan treasurer.\n\r", victim );
+            snprintf( arg1, MSL, "Job cleared: CLAN TREASURER.\n\r" );
+            snprintf( arg2, MSL, "You are no longer a clan treasurer.\n\r" );
          }
          break;
 
       case ACT_CDIPLOMAT:
 
-         if( !is_set( victim->act, ACT_CDIPLOMAT ) )
+         if( victim->act.test(ACT_CDIPLOMAT) )
          {
-            set_bit( victim->act, ACT_CDIPLOMAT );
-            send_to_char( "Job set as CLAN DIPLOMAT.\n\r", ch );
-            send_to_char( "You have been set as a clan diplomat.\n\r", victim );
+            snprintf( arg1, MSL, "Job set as CLAN DIPLOMAT.\n\r" );
+            snprintf( arg2, MSL, "You have been set as a clan diplomat.\n\r" );
          }
          else
          {
-            remove_bit( victim->act, ACT_CDIPLOMAT );
-            send_to_char( "Job cleared: CLAN DIPLOMAT.\n\r", ch );
-            send_to_char( "You are no longer a clan diplomat.\n\r", victim );
+            snprintf( arg1, MSL, "Job cleared: CLAN DIPLOMAT.\n\r" );
+            snprintf( arg2, MSL, "You are no longer a clan diplomat.\n\r" );
          }
          break;
 
-
-
       case ACT_CARMORER:
 
-         if( !is_set( victim->act, ACT_CARMORER ) )
+         if( victim->act.test(ACT_CARMORER) )
          {
-            set_bit( victim->act, ACT_CARMORER );
-            send_to_char( "Job set as CLAN ARMOURER.\n\r", ch );
-            send_to_char( "You have been set as a clan armourer.\n\r", victim );
+            snprintf( arg1, MSL, "Job set as CLAN ARMOURER.\n\r" );
+            snprintf( arg2, MSL, "You have been set as a clan armourer.\n\r" );
          }
          else
          {
-            remove_bit( victim->act, ACT_CARMORER );
-            send_to_char( "Job cleared: CLAN ARMOURER.\n\r", ch );
-            send_to_char( "You are no longer a clan armourer.\n\r", victim );
+            snprintf( arg1, MSL, "Job cleared: CLAN ARMOURER.\n\r" );
+            snprintf( arg2, MSL, "You are no longer a clan armourer.\n\r" );
          }
          break;
 
       case ACT_CLEADER:
 
-         if( !is_set( victim->act, ACT_CLEADER ) )
+         if( victim->act.test(ACT_CLEADER) )
          {
-            set_bit( victim->act, ACT_CLEADER );
-            send_to_char( "Job set as CLAN LEADER.\n\r", ch );
-            send_to_char( "You have been set as a clan leader.\n\r", victim );
+            snprintf( arg1, MSL, "Job set as CLAN LEADER.\n\r" );
+            snprintf( arg2, MSL, "You have been set as a clan leader.\n\r" );
          }
          else
          {
-            remove_bit( victim->act, ACT_CLEADER );
-            send_to_char( "Job cleared: CLAN LEADER.\n\r", ch );
-            send_to_char( "You are no longer a clan leader.\n\r", victim );
+            snprintf( arg1, MSL, "Job cleared: CLAN LEADER.\n\r" );
+            snprintf( arg2, MSL, "You are no longer a clan leader.\n\r" );
          }
          break;
    }  /* end of switch( job )  */
+
+   send_to_char(arg1,ch);
+   send_to_char(arg2,victim);
 
    return;
 }
@@ -299,16 +286,16 @@ void do_politics( CHAR_DATA * ch, char *argument )
    buf[0] = '\0';
    buf2[0] = '\0';
 
-   xprintf( buf, "        " );
+   snprintf( buf, MSL, "        " );
    xcat( buf2, buf );
 
    for( x = 1; x < MAX_CLAN; x++ )
    {
-      xprintf( buf, " %s  ", clan_table[x].clan_abbr );
+      snprintf( buf, MSL, " %s  ", clan_table[x].clan_abbr );
       xcat( buf2, buf );
    }
    buf[0] = '\0';
-   xprintf( buf, "\n\r\n\r" );
+   snprintf( buf, MSL, "\n\r\n\r" );
    xcat( buf2, buf );
 
    send_to_char( buf2, ch );
@@ -320,7 +307,7 @@ void do_politics( CHAR_DATA * ch, char *argument )
        */
       buf[0] = '\0';
       buf2[0] = '\0';
-      xprintf( buf, "%1i %s ", x, clan_table[x].clan_abbr );
+      snprintf( buf, MSL, "%1i %s ", x, clan_table[x].clan_abbr );
       xcat( buf2, buf );
 
       for( y = 1; y < MAX_CLAN; y++ )
@@ -328,28 +315,28 @@ void do_politics( CHAR_DATA * ch, char *argument )
          buf[0] = '\0';
          if( x != y )
          {
-            xprintf( buf, "%s ", get_diplo_name( politics_data.diplomacy[x][y] ) );
+            snprintf( buf, MSL, "%s ", get_diplo_name( politics_data.diplomacy[x][y] ) );
             xcat( buf2, buf );
          }
          else
          {
-            xprintf( buf, "        " );
+            snprintf( buf, MSL, "        " );
             xcat( buf2, buf );
          }
 
 
 
       }
-      xprintf( buf, "\n\r\n\r" );
+      snprintf( buf, MSL, "\n\r\n\r" );
       xcat( buf2, buf );
       send_to_char( buf2, ch );
    }
-   if( is_set( ch->act, ACT_CDIPLOMAT ) )
+   if( ch->act.test(ACT_CDIPLOMAT) )
       for( x = 1; x < MAX_CLAN; x++ )
       {
          if( politics_data.end_current_state[ch->pcdata->clan][x] )
          {
-            xprintf( buf, "%s has requested an end to your current state of affairs", clan_table[x].clan_name );
+            snprintf( buf, MSL, "%s has requested an end to your current state of affairs", clan_table[x].clan_name );
             send_to_char( buf, ch );
          }
       }
@@ -368,7 +355,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg2 );
 
 
-   if( IS_NPC( ch ) || !is_set( ch->act, ACT_CDIPLOMAT ) )
+   if( IS_NPC( ch ) || !ch->act.test(ACT_CDIPLOMAT) )
    {
       send_to_char( "This command is for clan diplomats only.\n\r", ch );
       return;
@@ -394,7 +381,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
 
    if( politics_data.daily_negotiate_table[ch->pcdata->clan][target_clan] )
    {
-      xprintf( buf, "Your clan has already negotiated with %s today.\n\r", clan_table[target_clan].clan_name );
+      snprintf( buf, MSL, "Your clan has already negotiated with %s today.\n\r", clan_table[target_clan].clan_name );
       send_to_char( buf, ch );
       return;
    }
@@ -409,7 +396,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
             politics_data.diplomacy[ch->pcdata->clan][target_clan] = -425;
             politics_data.diplomacy[target_clan][ch->pcdata->clan] = -425;
             send_to_char( "@@NYou have successfully negotiated an end to this dreaded @@eCLAN WAR@@N. Great Job!!\n\r", ch );
-            xprintf( buf, "@@eCLAN:@@N The war between %s and %s has ended. They may no longer PKILL each other!!\n\r",
+            snprintf( buf, MSL, "@@eCLAN:@@N The war between %s and %s has ended. They may no longer PKILL each other!!\n\r",
                      clan_table[ch->pcdata->clan].clan_name, clan_table[target_clan].clan_name );
             info( buf, 1 );
 
@@ -420,7 +407,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
          }
          else
          {
-            xprintf( buf,
+            snprintf( buf, MSL,
                      "@@NYou are currently at @@RWAR@@N with %s. Both clans must negotiate an end to the war first.\n\r",
                      clan_table[target_clan].clan_name );
             send_to_char( buf, ch );
@@ -432,7 +419,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
          politics_data.diplomacy[ch->pcdata->clan][target_clan] += 25;
          politics_data.diplomacy[target_clan][ch->pcdata->clan] += 25;
 
-         xprintf( buf, "You are requesting a more peaceful state of affairs with %s.", clan_table[target_clan].clan_name );
+         snprintf( buf, MSL, "You are requesting a more peaceful state of affairs with %s.", clan_table[target_clan].clan_name );
          send_to_char( buf, ch );
       }
    }
@@ -444,10 +431,10 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
       if( ( politics_data.diplomacy[ch->pcdata->clan][target_clan] - 50 ) < -450 )
 
       {
-         xprintf( buf, "@@NYou have started a @@eWAR@@N with %s! Watch out!.\n\r", clan_table[target_clan].clan_name );
+         snprintf( buf, MSL, "@@NYou have started a @@eWAR@@N with %s! Watch out!.\n\r", clan_table[target_clan].clan_name );
          send_to_char( buf, ch );
 
-         xprintf( buf, "@@eCLAN:@@N A war has started between %s and %s. They may now PKILL each other!!\n\r",
+         snprintf( buf, MSL, "@@eCLAN:@@N A war has started between %s and %s. They may now PKILL each other!!\n\r",
                   clan_table[ch->pcdata->clan].clan_name, clan_table[target_clan].clan_name );
          info( buf, 1 );
 
@@ -464,7 +451,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
          politics_data.diplomacy[ch->pcdata->clan][target_clan] -= 50;
          politics_data.diplomacy[target_clan][ch->pcdata->clan] -= 50;
 
-         xprintf( buf, "You are requesting a more aggressive state of affairs with %s.", clan_table[target_clan].clan_name );
+         snprintf( buf, MSL, "You are requesting a more aggressive state of affairs with %s.", clan_table[target_clan].clan_name );
          send_to_char( buf, ch );
       }
    }
@@ -583,9 +570,9 @@ void do_cset( CHAR_DATA * ch, char *argument )
 
    if( value < 0 || value >= MAX_CLAN )
    {
-      xprintf( buf, "%d is not a valid value.\n\r", value );
+      snprintf( buf, MSL, "%d is not a valid value.\n\r", value );
       send_to_char( buf, ch );
-      xprintf( buf, "Use a value between 0 and %d.\n\r\n\r", MAX_CLAN - 1 );
+      snprintf( buf, MSL, "Use a value between 0 and %d.\n\r\n\r", MAX_CLAN - 1 );
       send_to_char( buf, ch );
       do_clan_list( ch, "" );
       return;
@@ -593,10 +580,10 @@ void do_cset( CHAR_DATA * ch, char *argument )
 
 
    victim->pcdata->clan = value;
-   xprintf( buf, "%s now belongs to clan %s.\n\r", victim->name, clan_table[value].clan_name );
+   snprintf( buf, MSL, "%s now belongs to clan %s.\n\r", victim->name, clan_table[value].clan_name );
    send_to_char( buf, ch );
 
-   xprintf( buf, "%s has cset %s into clan %s.", ch->name, victim->name, clan_table[value].clan_name );
+   snprintf( buf, MSL, "%s has cset %s into clan %s.", ch->name, victim->name, clan_table[value].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    return;
@@ -615,7 +602,7 @@ void do_accept( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-   if( !is_set( ch->act, ACT_CLEADER ) )
+   if( !ch->act.test(ACT_CLEADER) )
    {
       send_to_char( "You must be a clan leader to use this command!\n\r", ch );
       return;
@@ -647,14 +634,14 @@ void do_accept( CHAR_DATA * ch, char *argument )
 
    if( victim->pcdata->clan != 0 )
    {
-      xprintf( buf, "%s is already in a clan.  Maybe they should leave it first?\n\r", victim->name );
+      snprintf( buf, MSL, "%s is already in a clan.  Maybe they should leave it first?\n\r", victim->name );
       send_to_char( buf, ch );
       return;
    }
 
    if( victim->level < 20 )
    {
-      xprintf( buf, "%s must be at least 20th level to enter a clan.\n\r", victim->name );
+      snprintf( buf, MSL, "%s must be at least 20th level to enter a clan.\n\r", victim->name );
       send_to_char( buf, ch );
       return;
    }
@@ -662,7 +649,7 @@ void do_accept( CHAR_DATA * ch, char *argument )
    act( "$N accepts you into $S clan!", victim, NULL, ch, TO_VICT );
    act( "You accept $N into your clan!", ch, NULL, victim, TO_VICT );
 
-   xprintf( buf, "%s has accepted %s into clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
+   snprintf( buf, MSL, "%s has accepted %s into clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    return;
@@ -696,7 +683,7 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
       if( d->connected == CON_PLAYING
           && ( victim = d->character ) != NULL
           && !IS_NPC( victim )
-          && victim->in_room != NULL && ( is_set( ch->act, ACT_CBOSS ) || can_see( ch, victim ) ) )
+          && victim->in_room != NULL && ( ch->act.test(ACT_CBOSS) || can_see( ch, victim ) ) )
       {
          if( victim->pcdata->clan != ch->pcdata->clan )
             continue;
@@ -704,21 +691,19 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
             continue;
 
          found = TRUE;
-         xprintf( buf, "%-28s %s ", victim->name, victim->in_room->name );
-         if( is_set( ch->act, ACT_CBOSS ) )
+         snprintf( buf, MSL, "%-28s %s ", victim->name, victim->in_room->name );
+         if( ch->act.test(ACT_CBOSS) )
          {
-            if( is_set( victim->act, ACT_CLEADER ) )
+            if( victim->act.test(ACT_CLEADER) )
                xcat( buf, " L " );
 
-            if( is_set( victim->act, ACT_CARMORER ) )
+            if( victim->act.test(ACT_CARMORER) )
                xcat( buf, " A " );
 
-
-            if( is_set( victim->act, ACT_CTREASURER ) )
+            if( victim->act.test(ACT_CTREASURER) )
                xcat( buf, " T " );
 
-
-            if( is_set( victim->act, ACT_CDIPLOMAT ) )
+            if( victim->act.test(ACT_CDIPLOMAT) )
                xcat( buf, " D " );
          }
          xcat( buf, "\n\r" );
@@ -747,36 +732,18 @@ void do_leave( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       return;
 
-
    if( ch->pcdata->clan == 0 )   /* No clan */
    {
       send_to_char( "You must be IN a clan before you can leave it!\n\r", ch );
       return;
    }
 
-   xprintf( buf, "%s has left clan %s.", ch->name, clan_table[ch->pcdata->clan].clan_name );
+   snprintf( buf, MSL, "%s has left clan %s.", ch->name, clan_table[ch->pcdata->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    ch->pcdata->clan = 0;
+   ch->act.reset(ACT_CDIPLOMAT | ACT_CTREASURER | ACT_CARMORER | ACT_CLEADER | ACT_CBOSS);
    send_to_char( "You leave your clan.  Let's hope they don't get mad!\n\r", ch );
-   if( is_set( ch->act, ACT_CDIPLOMAT ) )
-      remove_bit( ch->act, ACT_CDIPLOMAT );
-
-   if( is_set( ch->act, ACT_CTREASURER ) )
-      remove_bit( ch->act, ACT_CTREASURER );
-
-
-   if( is_set( ch->act, ACT_CARMORER ) )
-      remove_bit( ch->act, ACT_CARMORER );
-
-
-   if( is_set( ch->act, ACT_CLEADER ) )
-      remove_bit( ch->act, ACT_CLEADER );
-
-
-   if( is_set( ch->act, ACT_CBOSS ) )
-      remove_bit( ch->act, ACT_CBOSS );
-
 
    return;
 }
@@ -787,16 +754,14 @@ void do_banish( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
    char buf[MAX_STRING_LENGTH];
 
-
    if( IS_NPC( ch ) )
       return;
 
-   if( !is_set( ch->act, ACT_CLEADER ) )
+   if( !ch->act.test(ACT_CLEADER) )
    {
       send_to_char( "Only Clan Leaders may use this command.\n\r", ch );
       return;
    }
-
 
    if( argument[0] == '\0' )
    {
@@ -804,13 +769,11 @@ void do_banish( CHAR_DATA * ch, char *argument )
       return;
    }
 
-
    if( ( victim = get_char_world( ch, argument ) ) == NULL )
    {
       send_to_char( "No such Person.\n\r", ch );
       return;
    }
-
 
    if( victim == ch )
    {
@@ -830,37 +793,19 @@ void do_banish( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( is_set( victim->act, ACT_CBOSS ) )
+   if( victim->act.test(ACT_CBOSS) )
    {
       send_to_char( "Nice Try.", ch );
       return;
    }
 
    victim->pcdata->clan = 0;
+   victim->act.reset(ACT_CDIPLOMAT | ACT_CTREASURER | ACT_CARMORER | ACT_CLEADER | ACT_CBOSS);
 
-   if( is_set( victim->act, ACT_CDIPLOMAT ) )
-      remove_bit( victim->act, ACT_CDIPLOMAT );
-
-   if( is_set( victim->act, ACT_CTREASURER ) )
-      remove_bit( victim->act, ACT_CTREASURER );
-
-
-   if( is_set( victim->act, ACT_CARMORER ) )
-      remove_bit( victim->act, ACT_CARMORER );
-
-
-   if( is_set( victim->act, ACT_CLEADER ) )
-      remove_bit( victim->act, ACT_CLEADER );
-
-
-   if( is_set( victim->act, ACT_CBOSS ) )
-      remove_bit( victim->act, ACT_CBOSS );
-
-
-   xprintf( buf, "%s has banished %s from clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
+   snprintf( buf, MSL, "%s has banished %s from clan %s.", ch->name, victim->name, clan_table[ch->pcdata->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
-   xprintf( buf, "%s banishes you from clan %s!\n\r", ch->name, clan_table[ch->pcdata->clan].clan_name );
+   snprintf( buf, MSL, "%s banishes you from clan %s!\n\r", ch->name, clan_table[ch->pcdata->clan].clan_name );
    send_to_char( buf, victim );
    act( "$N has been banished.", ch, NULL, victim, TO_CHAR );
    return;
@@ -881,7 +826,7 @@ void do_make( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg2 );
 
 
-   if( IS_NPC( ch ) || !is_set( ch->act, ACT_CARMORER ) )
+   if( IS_NPC( ch ) || !ch->act.test(ACT_CARMORER) )
    {
       send_to_char( "This command is for clan armourers only.\n\r", ch );
       return;
@@ -889,7 +834,7 @@ void do_make( CHAR_DATA * ch, char *argument )
 
    if( !is_number( arg1 ) || arg2[0] == '\0' )
    {
-      xprintf( buf, "Syntax: Make [0-%d] [Target]\n\r", MAX_CLAN_EQ - 1 );
+      snprintf( buf, MSL, "Syntax: Make [0-%d] [Target]\n\r", MAX_CLAN_EQ - 1 );
       send_to_char( buf, ch );
       send_to_char( "Items you can currently make:\n\r\n\r", ch );
 
@@ -898,12 +843,12 @@ void do_make( CHAR_DATA * ch, char *argument )
          if( clan_table[ch->pcdata->clan].eq[cnt] != -1
              && ( ( pObj = get_obj_index( clan_table[ch->pcdata->clan].eq[cnt] ) ) != NULL ) )
          {
-            xprintf( buf, "[%2d] : %s.\n\r", cnt, pObj->short_descr );
+            snprintf( buf, MSL, "[%2d] : %s.\n\r", cnt, pObj->short_descr );
             send_to_char( buf, ch );
          }
          else
          {
-            xprintf( buf, "[%2d] : No Object Set.\n\r", cnt );
+            snprintf( buf, MSL, "[%2d] : No Object Set.\n\r", cnt );
             send_to_char( buf, ch );
          }
       }
@@ -964,7 +909,7 @@ void do_make( CHAR_DATA * ch, char *argument )
       act( "You create $p, and hand it to $N.", ch, obj, target, TO_CHAR );
       act( "$N creates $p, and hands it to you.", target, obj, ch, TO_CHAR );
       obj_to_char( obj, target );
-      xprintf( buf, "%s has made %s for %s.", ch->name, obj->short_descr, target->name );
+      snprintf( buf, MSL, "%s has made %s for %s.", ch->name, obj->short_descr, target->name );
    }
    else
    {
@@ -972,7 +917,7 @@ void do_make( CHAR_DATA * ch, char *argument )
       act( "You create $p, and put it away.", ch, obj, NULL, TO_CHAR );
       act( "$n creates $p, and puts it away.", ch, obj, NULL, TO_ROOM );
       obj_to_char( obj, ch );
-      xprintf( buf, "%s has made themself %s.", ch->name, obj->short_descr );
+      snprintf( buf, MSL, "%s has made themself %s.", ch->name, obj->short_descr );
    }
    monitor_chan( buf, MONITOR_CLAN );
 
@@ -992,7 +937,7 @@ void do_council( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
 
 
-   if( ( IS_NPC( ch ) ) || ( !is_set( ch->act, ACT_COUNCIL ) ) )
+   if( ( IS_NPC( ch ) ) || ( !ch->act.test(ACT_COUNCIL) ) )
    {
       send_to_char( "You are not a council member!\n\r", ch );
       return;
@@ -1012,13 +957,13 @@ void do_council( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' )
    {
-      xprintf( buf, "%s", "" );
-      xprintf( buf2, "%s", "" );
-      xprintf( buf, "Members of the Council of %s\n\r\n\r", super_councils[this_council].council_name );
+      snprintf( buf, MSL, "%s", "" );
+      snprintf( buf2, MSL, "%s", "" );
+      snprintf( buf, MSL, "Members of the Council of %s\n\r\n\r", super_councils[this_council].council_name );
 
       for( imember = super_councils[this_council].first_member; imember != NULL; imember = imember->next )
       {
-         xprintf( buf2, "%s\n\r", imember->this_member->name );
+         snprintf( buf2, MSL, "%s\n\r", imember->this_member->name );
          xcat( buf, buf2 );
       }
       send_to_char( buf, ch );
@@ -1038,7 +983,7 @@ void do_council( CHAR_DATA * ch, char *argument )
       }
 
       LINK( member, super_councils[this_council].first_member, super_councils[this_council].last_member, next, prev );
-      xprintf( buf, "You have joined the Current Council of %s\n\r", super_councils[this_council].council_name );
+      snprintf( buf, MSL, "You have joined the Current Council of %s\n\r", super_councils[this_council].council_name );
       send_to_char( buf, ch );
       super_councils[this_council].council_time = 10;
       do_council( ch, "" );
@@ -1097,11 +1042,11 @@ void do_council( CHAR_DATA * ch, char *argument )
             }
             else
             {
-               xprintf( buf, "%s is now a member of the Council of %s!\n\r", victim->name,
+               snprintf( buf, MSL, "%s is now a member of the Council of %s!\n\r", victim->name,
                         super_councils[this_council].council_name );
                send_to_char( buf, ch );
-               xprintf( buf, "You are now a member of the Council of %s!\n\r", super_councils[this_council].council_name );
-               set_bit( victim->act, ACT_COUNCIL );
+               snprintf( buf, MSL, "You are now a member of the Council of %s!\n\r", super_councils[this_council].council_name );
+               victim->act.set(ACT_COUNCIL);
             }
          }
          else
@@ -1136,10 +1081,10 @@ void do_council( CHAR_DATA * ch, char *argument )
             }
             else
             {
-               xprintf( buf, "%s has been outcast from the @@eKindred@@N by the %s, and is now a @@dRENEGADE@@N!!!!\n\r",
+               snprintf( buf, MSL, "%s has been outcast from the @@eKindred@@N by the %s, and is now a @@dRENEGADE@@N!!!!\n\r",
                         victim->name, super_councils[this_council].council_name );
                send_to_char( buf, ch );
-               xprintf( buf,
+               snprintf( buf, MSL,
                         "You have been @@ROUTCAST@@N from the @@eKindred@@N by the %s, and are now a @@dRenegade@@N!!!!!\n\r",
                         super_councils[this_council].council_name );
                send_to_char( buf, victim );

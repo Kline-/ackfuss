@@ -32,7 +32,7 @@
 #define NPC_STATE_CRIT_HEAL   1
 #define NPC_STATE_CRIT_MANA   2
 
-#define AI_MOB( ch )    ( IS_NPC( (ch) ) && is_set((ch)->act, ACT_INTELLIGENT ) )
+#define AI_MOB( ch )    ( IS_NPC( (ch) ) && (ch)->act.test(ACT_INTELLIGENT) )
 
 /* act_mob.c */
 void gain_level P_((CHAR_DATA *ch));

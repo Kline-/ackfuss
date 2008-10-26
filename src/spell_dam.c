@@ -58,10 +58,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -615,7 +611,7 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
    {
       act( buf1, NULL, ( void * )obj, victim, TO_NOTVICT );
    }
-   if( is_set( ch->act, ACT_BLIND_PLAYER ) )
+   if( ch->act.test(ACT_BLIND_PLAYER) )
    {
       if( dam < victim->max_hit / 30 )
          act( "You glance $K", ch, NULL, victim, TO_CHAR );
@@ -630,7 +626,7 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
    {
       act( buf2, ch, NULL, victim, TO_CHAR );
    }
-   if( is_set( victim->act, ACT_BLIND_PLAYER ) )
+   if( victim->act.test(ACT_BLIND_PLAYER) )
    {
       if( dam < victim->max_hit / 30 )
          act( "$k glances you", ch, NULL, victim, TO_VICT );
@@ -1037,7 +1033,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
             victim->pcdata->records->md++;
       }
 
-      if( !IS_NPC( victim ) || is_set( victim->act, ACT_INTELLIGENT ) )
+      if( !IS_NPC( victim ) || victim->act.test(ACT_INTELLIGENT) )
       {
 
 
@@ -1074,7 +1070,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       if( deathmatch && !IS_NPC( victim ) )
          do_quit( victim, "" );
 
-      if( IS_NPC( ch ) && IS_NPC( victim ) && is_set( ch->act, ACT_INTELLIGENT ) )
+      if( IS_NPC( ch ) && IS_NPC( victim ) && ch->act.test(ACT_INTELLIGENT) )
       {
          do_get( ch, "all corpse" );
          do_sacrifice( ch, "corpse" );
@@ -1082,12 +1078,12 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
 
       if( !IS_NPC( ch ) && IS_NPC( victim ) )
       {
-         if( is_set( ch->act, ACT_AUTOLOOT ) )
+         if( ch->act.test(ACT_AUTOLOOT) )
             do_get( ch, "all corpse" );
          else
             do_look( ch, "in corpse" );
 
-         if( is_set( ch->act, ACT_AUTOSAC ) )
+         if( ch->act.test(ACT_AUTOSAC) )
             do_sacrifice( ch, "corpse" );
       }
 
@@ -1114,7 +1110,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
     */
    if( IS_NPC( victim ) && dam > 0 )
    {
-      if( ( is_set( victim->act, ACT_WIMPY ) && number_bits( 1 ) == 0
+      if( ( victim->act.test(ACT_WIMPY) && number_bits( 1 ) == 0
             && victim->hit < victim->max_hit / 2 )
           || ( IS_AFFECTED( victim, AFF_CHARM ) && victim->master != NULL && victim->master->in_room != victim->in_room ) )
          do_flee( victim, "" );

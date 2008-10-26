@@ -126,7 +126,7 @@ void build_save_area_list( void )
    FILE *fpArea;
    char buf[MSL];
 
-   xprintf( buf, "%s.new", AREA_LIST );
+   snprintf( buf, MSL, "%s.new", AREA_LIST );
    fpArea = file_open( buf, "w" );
 
    if( fpArea == NULL )
@@ -148,9 +148,9 @@ void build_save_area_list( void )
    /*
     * Save backup 
     */
-   xprintf( buf, "%s.old", AREA_LIST );
+   snprintf( buf, MSL, "%s.old", AREA_LIST );
    rename( AREA_LIST, buf );
-   xprintf( buf, "%s.new", AREA_LIST );
+   snprintf( buf, MSL, "%s.new", AREA_LIST );
    rename( buf, AREA_LIST );
 }
 
@@ -222,7 +222,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    {
 
       send_to_char( "rooms between 3 and 300..:)\r\n", ch );
-      xprintf( buf, "%d\r\n", rooms );
+      snprintf( buf, MSL, "%d\r\n", rooms );
       send_to_char( buf, ch );
       return;
 
@@ -235,16 +235,16 @@ void build_makearea( CHAR_DATA * ch, char *argument )
       fpadd = pArea;
       svnum = pArea->min_vnum;
       a = svnum - envnum - 1;
-/*	xprintf(buf,"dif %d for rooms %d, %d-%d\r\n",a,rooms,pArea->min_vnum,pArea->max_vnum);
+/*	snprintf(buf,MSL,"dif %d for rooms %d, %d-%d\r\n",a,rooms,pArea->min_vnum,pArea->max_vnum);
 	send_to_char(buf,ch);
-        xprintf(buf,"%s\r\n",pArea->name); 
+        snprintf(buf,MSL,"%s\r\n",pArea->name); 
       	send_to_char(buf,ch); */
       if( ( rooms <= a && buf != NULL ) )
       {
          send_to_char( "found one!\r\n", ch );
          vnum = envnum + 1;
          mvnum = vnum + rooms - 1;
-         xprintf( buf, "\r\n Your start vnum :%d and ending vnum: %d :\r\n", vnum, mvnum );
+         snprintf( buf, MSL, "\r\n Your start vnum :%d and ending vnum: %d :\r\n", vnum, mvnum );
          send_to_char( buf, ch );
          fpadd = pArea;
          break;
@@ -312,7 +312,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
     * 
     * for(pArea=first_area;pArea;pArea=pArea->next)
     * {  
-    * xprintf(buf,"area#%d, area name: %s\r\n",pArea->area_num,pArea->name);
+    * snprintf(buf,MSL,"area#%d, area name: %s\r\n",pArea->area_num,pArea->name);
     * send_to_char(buf,ch);
     * 
     * }
@@ -333,7 +333,6 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    pArea->min_level = 1;
    pArea->max_level = 1;
    pArea->age = 15;
-   pArea->offset = 0;
    pArea->nplayer = 0;
    pArea->modified = 1;
    pArea->filename = str_dup( arg1 );
@@ -372,7 +371,11 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    /*
     * Now add room 
     */
-   pRoomIndex = new_room( pArea, vnum, SECT_INSIDE );
+   pRoomIndex = new ROOM_INDEX_DATA;
+   pRoomIndex->area = pArea;
+   pRoomIndex->vnum = vnum;
+   pRoomIndex->sector_type = SECT_INSIDE;
+
    /*
     * Add room to hash table 
     */
@@ -401,7 +404,6 @@ void build_addarea( CHAR_DATA * ch, char *argument )
    int vnum;
    int a;
    int iHash;
-   int door;
    BUILD_DATA_LIST *pList;
    AREA_DATA *pArea;
    FILE *fpArea;
@@ -473,7 +475,6 @@ void build_addarea( CHAR_DATA * ch, char *argument )
    pArea->reset_msg = str_dup( "You here the screams of the Dead within your head." );
    pArea->reset_rate = 15;
    pArea->age = 15;
-   pArea->offset = 0;
    pArea->nplayer = 0;
    pArea->modified = 1;
    pArea->filename = str_dup( arg1 );
@@ -512,24 +513,10 @@ void build_addarea( CHAR_DATA * ch, char *argument )
    /*
     * Now add room 
     */
-   GET_FREE( pRoomIndex, rid_free );
-   pRoomIndex->first_person = NULL;
-   pRoomIndex->last_person = NULL;
-   pRoomIndex->first_content = NULL;
-   pRoomIndex->last_content = NULL;
-   pRoomIndex->first_exdesc = NULL;
-   pRoomIndex->last_exdesc = NULL;
+   pRoomIndex = new ROOM_INDEX_DATA;
    pRoomIndex->area = pArea;
    pRoomIndex->vnum = vnum;
-   pRoomIndex->name = str_dup( "New room" );
-   pRoomIndex->description = str_dup( "No description" );
-   pRoomIndex->room_flags = 0;
    pRoomIndex->sector_type = SECT_INSIDE;
-   pRoomIndex->light = 0;
-   for( door = 0; door < MAX_DIR; door++ )
-      pRoomIndex->exit[door] = NULL;
-   pRoomIndex->first_room_reset = NULL;
-   pRoomIndex->last_room_reset = NULL;
 
    /*
     * Add room to hash table 
@@ -630,9 +617,7 @@ void build_setarea( CHAR_DATA * ch, char *argument )
       send_to_char( "      level_label <label>\n\r", ch );
       send_to_char( "      keyword     <keyword> \n\r", ch );
       send_to_char( "      repop_rate  ticks( lower is faster ) \n\r", ch );
-      send_to_char( "      message <message> \n\r", ch );
-
-      send_to_char( "@@Y      offset  <vnum>@@g\n\r", ch );
+      send_to_char( "      message     <message/off> \n\r", ch );
       return;
    }
 
@@ -662,7 +647,7 @@ void build_setarea( CHAR_DATA * ch, char *argument )
          }
          if( !is_name( argn, pArea->can_read ) )
          {
-            xprintf( buffer, "%s %s", pArea->can_read, argn );
+            snprintf( buffer, MSL, "%s %s", pArea->can_read, argn );
             free_string( pArea->can_read );
             pArea->can_read = str_dup( buffer );
          }
@@ -713,7 +698,7 @@ void build_setarea( CHAR_DATA * ch, char *argument )
          }
          if( !is_name( argn, pArea->can_write ) )
          {
-            xprintf( buffer, "%s %s", pArea->can_write, argn );
+            snprintf( buffer, MSL, "%s %s", pArea->can_write, argn );
             free_string( pArea->can_write );
             pArea->can_write = str_dup( buffer );
          }
@@ -842,16 +827,6 @@ void build_setarea( CHAR_DATA * ch, char *argument )
       }
    }
 
-   if( !str_cmp( arg1, "offset" ) )
-   {
-      if( is_number( arg2 ) )
-      {
-         pArea->offset = atoi( arg2 );
-         return;
-      }
-      return;
-   }
-
    if( !str_cmp( arg1, "gold" ) )
    {
       if( is_number( arg2 ) )
@@ -942,7 +917,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
          found = TRUE;
          if( pArea->first_area_room != NULL )
             pRoomIndex = (ROOM_INDEX_DATA *)pArea->first_area_room->data;
-         xprintf( buf, "[%5d] %s\n\r", pArea->first_area_room != NULL ? pRoomIndex->vnum : 0, pArea->name );
+         snprintf( buf, MSL, "[%5d] %s\n\r", pArea->first_area_room != NULL ? pRoomIndex->vnum : 0, pArea->name );
          xcat( buf1, buf );
       }
    }
@@ -971,32 +946,29 @@ void build_showarea( CHAR_DATA * ch, char *argument )
 
    buf[0] = '\0';
 
-   xprintf( buffer, "\n\rTitle: %s\n\r", pArea->name );
+   snprintf( buffer, MSL, "\n\rTitle: %s\n\r", pArea->name );
    xcat( buf, buffer );
-   xprintf( buffer, "Keyword: %s\n\r", pArea->keyword );
+   snprintf( buffer, MSL, "Keyword: %s\n\r", pArea->keyword );
    xcat( buf, buffer );
-   xprintf( buffer, "Level Label: %s\n\r", pArea->level_label );
+   snprintf( buffer, MSL, "Level Label: %s\n\r", pArea->level_label );
    xcat( buf, buffer );
-   xprintf( buffer, "Repop Rate: %i\n\r", pArea->reset_rate );
+   snprintf( buffer, MSL, "Repop Rate: %i\n\r", pArea->reset_rate );
    xcat( buf, buffer );
-   xprintf( buffer, "Reset Message: %s\n\r", pArea->reset_msg );
+   snprintf( buffer, MSL, "Reset Message: %s\n\r", pArea->reset_msg );
    xcat( buf, buffer );
 
    if( get_trust( ch ) >= MAX_LEVEL - 1 )
    {
-      xprintf( buffer, "filename: %s\n\r", pArea->filename );
+      snprintf( buffer, MSL, "Filename: %s\n\r", pArea->filename );
       xcat( buf, buffer );
    }
 
-   xprintf( buffer, "OFFSET: %d\n\r", pArea->offset );
+   snprintf( buffer, MSL, "Owner: %s\n\rCan Read: %s\n\rCan Write: %s\n\r", pArea->owner, pArea->can_read, pArea->can_write );
    xcat( buf, buffer );
 
-   xprintf( buffer, "Owner: %s\n\rCan Read: %s\n\rCan Write: %s\n\r", pArea->owner, pArea->can_read, pArea->can_write );
+   snprintf( buffer, MSL, "Min Vnum: %5d    Max Vnum: %5d      Gold: %i\n\r", pArea->min_vnum, pArea->max_vnum, pArea->gold );
    xcat( buf, buffer );
-
-   xprintf( buffer, "Min Vnum: %5d    Max Vnum: %5d      Gold: %i\n\r", pArea->min_vnum, pArea->max_vnum, pArea->gold );
-   xcat( buf, buffer );
-   xprintf( buffer, "Min Level: %5d    Max Level: %5d \n\r", pArea->min_level, pArea->max_level );
+   snprintf( buffer, MSL, "Min Level: %5d    Max Level: %5d \n\r", pArea->min_level, pArea->max_level );
    xcat( buf, buffer );
 
    if( IS_SET( pArea->flags, AREA_PAYAREA ) )
@@ -1030,10 +1002,10 @@ void build_arealist( CHAR_DATA * ch, char *argument )
    short stop_counter = 0;
 
    buf[0] = '\0';
-   xprintf( msg, "%s", "Areas of " mudnamecolor ":\n\r" );
+   snprintf( msg, MSL, "%s", "Areas of " mudnamecolor ":\n\r" );
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
    {
-      xprintf( buf, "%12s [%8d to %8d] %s\n\r", capitalize( pArea->owner ), pArea->min_vnum, pArea->max_vnum, pArea->name );
+      snprintf( buf, MSL, "%12s [%8d to %8d] %s\n\r", capitalize( pArea->owner ), pArea->min_vnum, pArea->max_vnum, pArea->name );
       stop_counter++;
       if( stop_counter > 40 )
       {

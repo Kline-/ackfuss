@@ -44,10 +44,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -504,7 +500,7 @@ int exp_for_mobile( int level, CHAR_DATA * mob )
    if( IS_SET( mob->def, DEF_SHIELD_ICE ) )
       value += .100 * base_value;
 
-   if( is_set( mob->act, ACT_SOLO ) )
+   if( mob->act.test(ACT_SOLO) )
       value += .500 * base_value;
 
 

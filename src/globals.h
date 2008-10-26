@@ -150,6 +150,7 @@ extern const struct stance_app_type stance_app[MAX_STANCE];
 /*
  * Global variables.
  */
+extern char str_empty[1];
 extern char bug_buf[2 * MAX_INPUT_LENGTH];
 extern time_t current_time;
 extern bool fLogAll;

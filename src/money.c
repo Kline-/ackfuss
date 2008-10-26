@@ -47,10 +47,6 @@
 #include "h/act_wiz.h"
 #endif
 
-#ifndef DEC_BITMASK_H
-#include "h/bitmask.h"
-#endif
-
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -930,7 +926,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
     */
    for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    {
-      if( IS_NPC( mob ) && is_set( mob->act, ACT_BANKER ) )
+      if( IS_NPC( mob ) && mob->act.test(ACT_BANKER) )
          break;
    }
 
