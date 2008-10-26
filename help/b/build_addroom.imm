@@ -1,0 +1,8 @@
+BUILD HELP : ADDROOM
+----------------------
+
+The ADDROOM command allows you to create new rooms within the current area.
+Syntax:  ADDROOM <room vnum>
+
+This will add a new room with the specified vnum.  The room will not be added if
+there is already a room with the vnum you supply.

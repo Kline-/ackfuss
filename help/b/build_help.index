@@ -13,10 +13,10 @@ BUILD HELP : INDEX
 | Goto		List		X		Showarea	Showmob |
 | Showroom	Showobject	Showresets	Findarea	Findmob |
 | Findmobroom	Findroom	Findobject	Set		Stop    |
-| Dig		Addobject	Addmob		Addreset	Delroom |
-| Delobject	Delreset	Delmobile	Forcereset	Redit   |
-| Oedit		Medit		Nedit		Setvnum		Values  |
-| Liquids	Weapons		Spells	        Sysdata                 |
+| Dig		Addobject	Addmob		Addreset	Addroom |
+| Delobject	Delreset	Delroom		Delmobile	Redit	|
+| Forcereset	Oedit		Medit		Nedit		Setvnum	|
+| Values	Liquids		Weapons		Spells	        Sysdata |
 +-----------------------------------------------------------------------+
 |				FLAGS					|
 +-----------------------------------------------------------------------+
