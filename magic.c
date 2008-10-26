@@ -3050,7 +3050,7 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
        || victim->in_room == NULL
        || victim->in_room->room_flags.test(RFLAG_SAFE)
        || victim->in_room->room_flags.test(RFLAG_NO_RECALL)
-       || !( IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
+       || !victim->in_room->area->flags.test(AFLAG_TELEPORT)
        || victim->level >= level + 10
        || victim->fighting != NULL
        || ( IS_NPC( victim ) && saves_spell( level, victim ) )
@@ -3103,7 +3103,7 @@ bool spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       if( pRoomIndex == NULL )
          continue;
       if( !pRoomIndex->room_flags.test(RFLAG_PRIVATE)
-          && !pRoomIndex->room_flags.test(RFLAG_SOLITARY) && IS_SET( pRoomIndex->area->flags, AREA_TELEPORT ) )
+          && !pRoomIndex->room_flags.test(RFLAG_SOLITARY) && pRoomIndex->area->flags.test(AFLAG_TELEPORT) )
          break;
    }
 
@@ -3582,7 +3582,7 @@ bool spell_visit( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
        || victim->in_room->room_flags.test(RFLAG_PRIVATE)
        || victim->in_room->room_flags.test(RFLAG_SOLITARY)
        || victim->in_room->room_flags.test(RFLAG_SAFE)
-       || ch->in_room->room_flags.test(RFLAG_NO_RECALL) || !IS_SET( victim->in_room->area->flags, AREA_TELEPORT ) )
+       || ch->in_room->room_flags.test(RFLAG_NO_RECALL) || !victim->in_room->area->flags.test(AFLAG_TELEPORT) )
    {
       send_to_char( "You failed.\n\r", ch );
       return TRUE;
@@ -4858,7 +4858,7 @@ bool spell_seal_room( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
       send_to_char( "This room is already sealed!\n\r", ch );
       return FALSE;
    }
-   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   if( room->area->flags.test(AFLAG_NO_ROOM_AFF) )
    {
       send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
       return FALSE;
@@ -5562,7 +5562,7 @@ bool spell_rune_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
       return FALSE;
    }
 
-   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   if( room->area->flags.test(AFLAG_NO_ROOM_AFF) )
    {
       send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
       return FALSE;
@@ -5599,7 +5599,7 @@ bool spell_rune_poison( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       return FALSE;
    }
 
-   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   if( room->area->flags.test(AFLAG_NO_ROOM_AFF) )
    {
       send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
       return FALSE;
@@ -5635,7 +5635,7 @@ bool spell_rune_shock( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       send_to_char( "@@NThere is already a @@lShock@@N Rune operating here!\n\r", ch );
       return FALSE;
    }
-   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   if( room->area->flags.test(AFLAG_NO_ROOM_AFF) )
    {
       send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
       return FALSE;
@@ -5706,7 +5706,7 @@ bool spell_wither_shadow( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
       return FALSE;
    }
 
-   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   if( room->area->flags.test(AFLAG_NO_ROOM_AFF) )
    {
       send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
       return FALSE;
@@ -5776,7 +5776,7 @@ bool spell_mana_drain( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       send_to_char( "@@NThere is already a @@dMana Drain@@N operating here!\n\r", ch );
       return FALSE;
    }
-   if( IS_SET( room->area->flags, AREA_NO_ROOM_AFF ) )
+   if( room->area->flags.test(AFLAG_NO_ROOM_AFF) )
    {
       send_to_char( "A strange @@eDeamon@@N appears, waggles it's finger at you, and shakes its(?) head!\n\r", ch );
       return FALSE;

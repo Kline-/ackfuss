@@ -342,7 +342,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    pArea->can_read = str_dup( ch->name );
    pArea->can_write = str_dup( ch->name );
    pArea->gold = 0;
-   pArea->flags = AREA_NOSHOW;   /* don't list on 'areas' -S- */
+   pArea->flags.set(AFLAG_NOSHOW);   /* don't list on 'areas' -S- */
    pArea->first_area_room = NULL;
    pArea->last_area_room = NULL;
    pArea->first_area_object = NULL;
@@ -484,7 +484,7 @@ void build_addarea( CHAR_DATA * ch, char *argument )
    pArea->can_read = NULL;
    pArea->can_write = NULL;
    pArea->gold = 0;
-   pArea->flags = AREA_NOSHOW;   /* don't list on 'areas' -S- */
+   pArea->flags.set(AFLAG_NOSHOW);   /* don't list on 'areas' -S- */
    pArea->first_area_room = NULL;
    pArea->last_area_room = NULL;
    pArea->first_area_object = NULL;
@@ -755,76 +755,32 @@ void build_setarea( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "payarea" ) )
    {
-      if( !str_cmp( arg2, "yes" ) )
-      {
-         SET_BIT( pArea->flags, AREA_PAYAREA );
-         return;
-      }
-
-      if( !str_cmp( arg2, "no" ) )
-      {
-         REMOVE_BIT( pArea->flags, AREA_PAYAREA );
-         return;
-      }
+      pArea->flags.flip(AFLAG_PAYAREA);
+      return;
    }
 
    if( !str_cmp( arg1, "teleport" ) )
    {
-      if( !str_cmp( arg2, "yes" ) )
-      {
-         SET_BIT( pArea->flags, AREA_TELEPORT );
-         return;
-      }
-
-      if( !str_cmp( arg2, "no" ) )
-      {
-         REMOVE_BIT( pArea->flags, AREA_TELEPORT );
-         return;
-      }
+      pArea->flags.flip(AFLAG_TELEPORT);
+      return;
    }
+
    if( !str_cmp( arg1, "room_spells" ) )
    {
-      if( !str_cmp( arg2, "on" ) )
-      {
-         REMOVE_BIT( pArea->flags, AREA_NO_ROOM_AFF );
-         return;
-      }
-
-      if( !str_cmp( arg2, "off" ) )
-      {
-         SET_BIT( pArea->flags, AREA_NO_ROOM_AFF );
-         return;
-      }
+      pArea->flags.flip(AFLAG_NO_ROOM_AFF);
+      return;
    }
+
    if( !str_cmp( arg1, "building" ) )
    {
-      if( !str_cmp( arg2, "yes" ) )
-      {
-         SET_BIT( pArea->flags, AREA_BUILDING );
-         return;
-      }
-
-      if( !str_cmp( arg2, "no" ) )
-      {
-         REMOVE_BIT( pArea->flags, AREA_BUILDING );
-         return;
-      }
+      pArea->flags.flip(AFLAG_BUILDING);
+      return;
    }
 
    if( !str_cmp( arg1, "show" ) )
    {
-      if( !str_cmp( arg2, "no" ) )
-      {
-         SET_BIT( pArea->flags, AREA_NOSHOW );
-         send_to_char( "The area title will not be shown on the area list.\n\r", ch );
-         return;
-      }
-      if( !str_cmp( arg2, "yes" ) )
-      {
-         REMOVE_BIT( pArea->flags, AREA_NOSHOW );
-         send_to_char( "The area title will be shown on the area list.\n\r", ch );
-         return;
-      }
+      pArea->flags.flip(AFLAG_NOSHOW);
+      return;
    }
 
    if( !str_cmp( arg1, "gold" ) )
@@ -971,18 +927,17 @@ void build_showarea( CHAR_DATA * ch, char *argument )
    snprintf( buffer, MSL, "Min Level: %5d    Max Level: %5d \n\r", pArea->min_level, pArea->max_level );
    xcat( buf, buffer );
 
-   if( IS_SET( pArea->flags, AREA_PAYAREA ) )
+   if( pArea->flags.test(AFLAG_PAYAREA) )
       xcat( buf, "This is a pay area.\n\r" );
-   if( !IS_SET( pArea->flags, AREA_TELEPORT ) )
+   if( !pArea->flags.test(AFLAG_TELEPORT) )
       xcat( buf, "You cannot teleport into here.\n\r" );
-   if( IS_SET( pArea->flags, AREA_BUILDING ) )
+   if( pArea->flags.test(AFLAG_BUILDING) )
       xcat( buf, "Area currently being built.\n\r" );
-
-   if( IS_SET( pArea->flags, AREA_NOSHOW ) )
+   if( pArea->flags.test(AFLAG_NOSHOW) )
       xcat( buf, "Area title will not be shown on area list.\n\r" );
    else
       xcat( buf, "Area title will show on area list.\n\r" );
-   if( IS_SET( pArea->flags, AREA_NO_ROOM_AFF ) )
+   if( pArea->flags.test(AFLAG_NO_ROOM_AFF) )
       xcat( buf, "Bad Room Affect spells are not allowed.\n\r" );
    else
       xcat( buf, "Bad Room Affect spells may be used.\n\r" );

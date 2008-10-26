@@ -111,14 +111,6 @@
 #define LIQ_WATER        0
 #define LIQ_MAX         17
 
-
-#define AREA_PAYAREA  	    BIT_1
-#define AREA_TELEPORT 	    BIT_2
-#define AREA_BUILDING 	    BIT_3
-#define AREA_NOSHOW	    BIT_4 /* Show area name on 'areas' command? */
-#define AREA_NO_ROOM_AFF    BIT_5
-#define AREA_NO_QUEST       BIT_6
-
 /*
  * Types of attacks.
  * Must be non-overlapping with spell/skill types,
@@ -476,6 +468,17 @@
 #define TO_NOTVICT          1
 #define TO_VICT             2
 #define TO_CHAR             3
+
+/*
+ * Area flags.
+ * Used in #AREA
+ */
+#define AFLAG_PAYAREA        1
+#define AFLAG_TELEPORT       2
+#define AFLAG_BUILDING       3
+#define AFLAG_NOSHOW         4 /* Show area name on 'areas' command? */
+#define AFLAG_NO_ROOM_AFF    5
+#define AFLAG_NO_QUEST       6
 
 /*
  * Room flags.

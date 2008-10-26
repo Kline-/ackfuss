@@ -20,6 +20,10 @@
 #include "h/comm.h"
 #endif
 
+area_data::~area_data()
+{
+}
+
 brand_data::~brand_data()
 {
  free_string(branded);

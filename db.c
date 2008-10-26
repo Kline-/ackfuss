@@ -517,6 +517,12 @@ void boot_db( void )
    return;
 }
 
+#if defined(KEY)
+#undef KEY
+#endif
+
+#define KEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { field  = value; fMatch = true;  break;}
+#define SKEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { if (field!=NULL) free_string(field);field  = value; fMatch = true;  break;}
 /*
  * Read in all the area files.
  */
@@ -565,7 +571,8 @@ void load_areas( void )
 
          if( word[0] == '$' )
             break;
-         else if( !str_cmp( word, "AREA" ) )
+
+         if( !str_cmp( word, "AREA" ) )
             load_area( fpArea );
          else if( !str_cmp( word, "MOBILES" ) )
             load_mobiles( fpArea );
@@ -605,7 +612,8 @@ void load_areas( void )
 void load_area( FILE * fp )
 {
    AREA_DATA *pArea;
-   char letter;
+   const char *word;
+   bool fMatch = false;
    int a;
 
    GET_FREE( pArea, area_free );
@@ -644,80 +652,79 @@ void load_area( FILE * fp )
    pArea->first_area_mobprog = NULL;
    area_revision = -1;
 
-/* MAG Mod for optionals additions to area headers. */
    for( ;; )
    {
-      letter = fread_letter( fp );
-      if( letter == '#' )
-      {
-         ungetc( letter, fp );
-         break;
-      }
+      word = fread_word( fp );
+      fMatch = false;
 
-      switch ( letter )
+      if( !str_cmp(word,"End") )
+       break;
+
+      switch ( UPPER( word[0] ) )
       {
+         case '*':
+            fMatch = TRUE;
+            fread_to_eol( fp );
+            break;
+         case 'C':
+            SKEY("CanRead", pArea->can_read, fread_string( fp ) );
+            SKEY("CanWrite", pArea->can_write, fread_string( fp ) );
+            break;
          case 'F':
-            pArea->reset_rate = fread_number( fp );
-            break;
-         case 'O':
-            pArea->owner = fread_string( fp );
-            break;
-         case 'Q':
-            area_revision = fread_number( fp );
-            break;
-         case 'U':
-            free_string( pArea->reset_msg );
-            pArea->reset_msg = fread_string( fp );
-            break;
-         case 'R':
-            free_string( pArea->can_read );
-            pArea->can_read = fread_string( fp );
-            break;
-         case 'W':
-            free_string( pArea->can_write );
-            pArea->can_write = fread_string( fp );
-            break;
-         case 'P':
-            SET_BIT( pArea->flags, AREA_PAYAREA );
-            fread_to_eol( fp );
-            break;
-         case 'M':
-            SET_BIT( pArea->flags, AREA_NO_ROOM_AFF );
-            fread_to_eol( fp );
-            break;
-         case 'V':
-            pArea->min_vnum = fread_number( fp );
-            pArea->max_vnum = fread_number( fp );
-            break;
-         case 'N':
-            pArea->area_num = fread_number( fp );
-            break;
-         case 'T':
-            SET_BIT( pArea->flags, AREA_TELEPORT );
-            fread_to_eol( fp );
-            break;
-         case 'B':
-            SET_BIT( pArea->flags, AREA_BUILDING );
-            fread_to_eol( fp );
-            break;
-         case 'S':
-            SET_BIT( pArea->flags, AREA_NOSHOW );
-            fread_to_eol( fp );
+            if( !str_cmp( word, "Flags" ) )
+            {
+             const char *tmp = fread_word(fp);
+             while( str_cmp(tmp,"EOL") )
+             {
+              pArea->flags.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = TRUE;
+             break;
+            }
             break;
          case 'K':
-            free_string( pArea->keyword );
-            pArea->keyword = fread_string( fp );
+            SKEY("Keyword", pArea->keyword, fread_string( fp ) );
             break;
          case 'L':
-            free_string( pArea->level_label );
-            pArea->level_label = fread_string( fp );
+            SKEY("LevLabel", pArea->level_label, fread_string( fp ) );
+            if( !str_cmp(word,"LevRange") )
+            {
+             pArea->min_level = fread_number(fp);
+             pArea->max_level = fread_number(fp);
+             fMatch = true;
+             break;
+            }
             break;
-         case 'I':
-            pArea->min_level = fread_number( fp );
-            pArea->max_level = fread_number( fp );
+         case 'N':
+            SKEY("Name", pArea->name, fread_string( fp ) );
+            KEY("Number", pArea->area_num, fread_number( fp ) );
             break;
-
+         case 'O':
+            SKEY("Owner", pArea->owner, fread_string( fp ) );
+            break;
+         case 'R':
+            KEY("ResetMsg", pArea->reset_msg, fread_string( fp ) );
+            KEY("ResetRate", pArea->reset_rate, fread_number( fp ) );
+            KEY("Revision", area_revision, fread_number( fp ) );
+            break;
+         case 'V':
+            if( !str_cmp(word,"VnumRange") )
+            {
+             pArea->min_vnum = fread_number(fp);
+             pArea->max_vnum = fread_number(fp);
+             fMatch = true;
+             break;
+            }
+            break;
       }
+   }
+
+   if( !fMatch )
+   {
+      snprintf( log_buf, (2 * MIL), "Loading in area :%s, no match for ( %s ).", pArea->name, word );
+      monitor_chan( log_buf, MONITOR_BAD );
+      fread_to_eol( fp );
    }
 
    if( pArea->area_num == 0 )
@@ -1389,6 +1396,7 @@ void load_rooms( FILE * fp )
    ROOM_INDEX_DATA *pRoomIndex;
    BUILD_DATA_LIST *pList;
    char buf[MSL];
+   const char *tmp;
 
    if( area_load == NULL )
    {
@@ -1434,21 +1442,15 @@ void load_rooms( FILE * fp )
       pRoomIndex->vnum = vnum;
       pRoomIndex->name = fread_string( fp );
       pRoomIndex->description = fread_string( fp );
-      if( area_revision >= 21 )
+      pRoomIndex->sector_type = fread_number(fp);
       {
-       pRoomIndex->sector_type = fread_number(fp);
-       if( area_revision >= 22 )
-       {
-        const char *tmp = fread_word(fp);
+       tmp = fread_word(fp);
 
-        while( str_cmp(tmp,"EOL") )
-        {
-         pRoomIndex->room_flags.set(atoi(tmp));
-         tmp = fread_word(fp);
-        }
+       while( str_cmp(tmp,"EOL") )
+       {
+        pRoomIndex->room_flags.set(atoi(tmp));
+        tmp = fread_word(fp);
        }
-       else
-        fread_to_eol(fp);
       }
       if( pRoomIndex->sector_type == SECT_NULL )
          pRoomIndex->sector_type = SECT_INSIDE;
@@ -3332,7 +3334,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
    foo = 0;
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
    {
-      if( ( IS_SET( pArea->flags, AREA_NOSHOW ) ) || ( IS_SET( pArea->flags, AREA_BUILDING ) ) )
+      if( pArea->flags.test(AFLAG_NOSHOW) || pArea->flags.test(AFLAG_BUILDING) )
          continue;   /* for non-finished areas - don't show */
       if( ( !fall )
           && ( ( pArea->min_level > ( get_psuedo_level( ch ) ) ) || ( pArea->max_level < ( get_psuedo_level( ch ) ) ) ) )

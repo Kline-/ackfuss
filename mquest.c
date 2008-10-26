@@ -956,7 +956,7 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
 
   if( (get_psuedo_level(mob) < min_lev || get_psuedo_level(mob) > max_lev)
    || (mob->in_room->area->min_level > get_psuedo_level(ch) || mob->in_room->area->max_level < get_psuedo_level(ch))
-   || (IS_SET(mob->in_room->area->flags,AREA_NOSHOW) || IS_SET(mob->in_room->area->flags,AREA_NO_QUEST))
+   || (mob->in_room->area->flags.test(AFLAG_NOSHOW) || mob->in_room->area->flags.test(AFLAG_NO_QUEST))
    || (!str_cmp(rev_spec_lookup(mob->spec_fun),"spec_cast_adept"))
    || (!str_cmp(rev_spec_lookup(mob->spec_fun),"spec_executioner"))
    || (mob->pIndexData->vnum > mob->in_room->area->max_vnum || mob->pIndexData->vnum < mob->in_room->area->min_vnum)
@@ -1069,7 +1069,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
 
   if( obj->in_room )
   {
-   if( (IS_SET(obj->in_room->area->flags,AREA_NO_QUEST) || IS_SET(obj->in_room->area->flags,AREA_NOSHOW)) /* Hide places we don't want to use. */
+   if( (obj->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->in_room->area->flags.test(AFLAG_NOSHOW)) /* Hide places we don't want to use. */
     || (obj->in_room->area->min_level > get_psuedo_level(ch) || obj->in_room->area->max_level < get_psuedo_level(ch))
     || (obj->pIndexData->vnum > obj->in_room->area->max_vnum || obj->pIndexData->vnum < obj->in_room->area->min_vnum) /* outside obj's own area */
     || (!IS_SET(obj->wear_flags,ITEM_TAKE)) /* ensure we can pick it up */
@@ -1091,7 +1091,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
   }
   else if( obj->carried_by && obj->carried_by->in_room )
   {
-   if( (IS_SET(obj->carried_by->in_room->area->flags,AREA_NO_QUEST) || IS_SET(obj->carried_by->in_room->area->flags,AREA_NOSHOW)) /* Hide places we don't want to use. */
+   if( (obj->carried_by->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->carried_by->in_room->area->flags.test(AFLAG_NOSHOW)) /* Hide places we don't want to use. */
     || (obj->carried_by->in_room->area->min_level > get_psuedo_level(ch) || obj->carried_by->in_room->area->max_level < get_psuedo_level(ch))
     || (obj->pIndexData->vnum > obj->carried_by->in_room->area->max_vnum || obj->pIndexData->vnum < obj->carried_by->in_room->area->min_vnum) /* outside obj's own area */
     || (!IS_SET(obj->wear_flags,ITEM_TAKE)) /* ensure we can pick it up */
