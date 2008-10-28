@@ -138,7 +138,7 @@ void build_save_area_list( void )
 
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
    {
-      fprintf( fpArea, "%s\n\r", pArea->filename );
+      fprintf( fpArea, "%s\n", pArea->filename );
    }
 
    fprintf( fpArea, "$\n\r" );
@@ -192,10 +192,10 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    char buf[MAX_INPUT_LENGTH];
    ROOM_INDEX_DATA *pRoomIndex;
    int vnum = 0;
-   int svnum;
+   int svnum = 0;
    int envnum = 0;
    int mvnum = 0;
-   int a;
+   int a = 0;
    int iHash;
    int rooms;
 
@@ -231,7 +231,6 @@ void build_makearea( CHAR_DATA * ch, char *argument )
 
    for( pArea = first_area; pArea; pArea = pArea->next )
    {
-
       fpadd = pArea;
       svnum = pArea->min_vnum;
       a = svnum - envnum - 1;
@@ -266,6 +265,8 @@ void build_makearea( CHAR_DATA * ch, char *argument )
       send_to_char( "There is already a room with that vnum.\n\r", ch );
       return;
    }
+
+   strncat(arg1,".are",MSL); /* Add file extension */
 
    fpArea = file_open( arg1, "r" );
    if( fpArea != NULL )

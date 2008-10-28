@@ -154,15 +154,15 @@ bool h_is_valid_exit( ROOM_INDEX_DATA * room, short dir, int h_flags )
       return FALSE;
    if( !IS_SET( h_flags, HUNT_WORLD ) && room->area != exit->to_room->area )
       return FALSE;
-   if( IS_SET( exit->exit_info, EX_CLOSED ) )
+   if( exit->exit_info.test(EX_CLOSED) )
    {
       if( !IS_SET( h_flags, HUNT_OPENDOOR ) )
          return FALSE;
-      if( IS_SET( exit->exit_info, EX_LOCKED ) )
+      if( exit->exit_info.test(EX_LOCKED) )
       {
          if( !IS_SET( h_flags, HUNT_UNLOCKDOOR | HUNT_PICKDOOR ) )
             return FALSE;
-         if( !IS_SET( h_flags, HUNT_UNLOCKDOOR ) && IS_SET( exit->exit_info, EX_PICKPROOF ) )
+         if( !IS_SET( h_flags, HUNT_UNLOCKDOOR ) && exit->exit_info.test(EX_PICKPROOF) )
             return FALSE;
       }
    }
@@ -283,13 +283,13 @@ void hunt_move( CHAR_DATA * mob, short dir )
 {
    EXIT_DATA *exit = mob->in_room->exit[dir];
 
-   if( IS_SET( exit->exit_info, EX_CLOSED ) )
+   if( exit->exit_info.test(EX_CLOSED) )
    {
-      if( IS_SET( exit->exit_info, EX_LOCKED ) )
+      if( exit->exit_info.test(EX_LOCKED) )
       {
          if( IS_SET( mob->hunt_flags, HUNT_UNLOCKDOOR ) && has_key( mob, exit->key ) )
             do_unlock( mob, dir_name[dir] );
-         else if( IS_SET( mob->hunt_flags, HUNT_PICKDOOR ) && !IS_SET( exit->exit_info, EX_PICKPROOF ) )
+         else if( IS_SET( mob->hunt_flags, HUNT_PICKDOOR ) && !exit->exit_info.test(EX_PICKPROOF) )
             do_pick( mob, dir_name[dir] );
       }
       else if( IS_SET( mob->hunt_flags, HUNT_OPENDOOR ) )

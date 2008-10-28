@@ -78,7 +78,7 @@ char_data::char_data()
 exit_data::exit_data()
 {
  description = &str_empty[0];
- exit_info = 0;
+ exit_info.reset();
  is_free = false;
  key = 0;
  keyword = &str_empty[0];

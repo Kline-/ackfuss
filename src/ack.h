@@ -925,7 +925,7 @@ class exit_data
   exit_data();
   ~exit_data();
   char *description;
-  short exit_info;
+  std::bitset<MAX_BITSET> exit_info;
   bool is_free;
   short key;
   char *keyword;

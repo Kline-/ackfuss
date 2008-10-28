@@ -51,7 +51,7 @@
      Wear locations      :    tab_wear_loc        : number
      Room flags          :    tab_room_flags      : bitset
      Sector types        :    tab_sector_types    : number
-     Door types          :    tab_door_types      : bit_vector
+     Door types          :    tab_door_types      : bitset
      Door states         :    tab_door_states     : number
      
 */
@@ -976,18 +976,16 @@ LOOKUP_TYPE tab_sector_types[] = {
 };
 
 LOOKUP_TYPE tab_door_types[] = {
-   /*
-    * { "nada",        0, NO_USE },  
-    */
-   {"door", 1, 50},
-   {"closed", 2, 0},
-   {"locked", 4, 0},
-   {"climb", 8, 0},
-   {"immortal", 16, NO_USE},
-   {"pickproof", 32, 500},
-   {"smashproof", 64, 500},
-   {"passproof", 128, 500},
-   {"nodetect", 256, 900},
+   {"nada",       EX_NONE,       0     },
+   {"door",       EX_ISDOOR,     50    },
+   {"closed",     EX_CLOSED,     0     },
+   {"locked",     EX_LOCKED,     0     },
+   {"climb",      EX_CLIMB,      0     },
+   {"immortal",   EX_IMMORTAL,   NO_USE},
+   {"pickproof",  EX_PICKPROOF,  500   },
+   {"smashproof", EX_SMASHPROOF, 500   },
+   {"passproof",  EX_PASSPROOF,  500   },
+   {"nodetect",   EX_NODETECT,   900   },
    {NULL, 0}
 };
 

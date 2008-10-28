@@ -176,6 +176,7 @@ char *string_hash[MAX_KEY_HASH];
 
 AREA_DATA *area_used[MAX_AREAS];
 AREA_DATA *area_load;
+ROOM_INDEX_DATA *room_load;
 /* 
  * replaced for SSM
  */
@@ -253,6 +254,7 @@ void init_mm args( ( void ) );
 
 void load_areas args( ( void ) );
 void load_area args( ( FILE * fp ) );
+void load_door args( ( FILE * fp ) );
 void load_mobiles args( ( FILE * fp ) );
 void load_objects args( ( FILE * fp ) );
 void load_resets args( ( FILE * fp ) );
@@ -573,6 +575,8 @@ void load_areas( void )
 
          if( !str_cmp( word, "AREA" ) )
             load_area( fpArea );
+         else if( !str_cmp( word, "DOOR" ) )
+            load_door( fpArea );
          else if( !str_cmp( word, "MOBILES" ) )
             load_mobiles( fpArea );
          else if( !str_cmp( word, "MOBPROGS" ) )
@@ -712,6 +716,95 @@ void load_area( FILE * fp )
 
    top_area++;
    return;
+}
+
+void load_door( FILE *fp )
+{
+ EXIT_DATA *pExit;
+ short dir = 0;
+ const char *word;
+ bool fMatch = false;
+
+ if( room_load == NULL )
+ {
+  bug( "Load_door: no #ROOM seen yet.", 0 );
+  hang( "Loading doors in db.c" );
+ }
+
+ pExit = new EXIT_DATA;
+
+ for( ;; )
+ {
+  word = fread_word( fp );
+  fMatch = false;
+
+  if( !str_cmp(word,"End") )
+   break;
+
+  switch( UPPER(word[0]) )
+  {
+   case '*':
+    fMatch = true;
+    fread_to_eol(fp);
+    break;
+
+   case 'D':
+    SKEY("Desc", pExit->description, fread_string(fp));
+    if( !str_cmp(word,"Dir") )
+    {
+     dir = fread_number(fp);
+
+     if( dir < 0 || dir > MAX_DIR )
+     {
+       bug( "Load_door: dir %d has bad door number.", dir );
+       hang( "Loading doors in db.c" );
+     }
+
+     fMatch = true;
+     break;
+    }
+    break;
+
+   case 'F':
+    if( !str_cmp(word,"Flags") )
+    {
+     const char *tmp;
+
+     tmp = fread_word(fp);
+
+     while( str_cmp(tmp,"EOL") )
+     {
+      pExit->exit_info.set(atoi(tmp));
+      tmp = fread_word(fp);
+     }
+
+     fMatch = true;
+     break;
+    }
+    break;
+
+   case 'K':
+    KEY("Key", pExit->key, fread_number(fp));
+    SKEY("Keyword", pExit->keyword, fread_string(fp));
+    break;
+
+   case 'V':
+    KEY("Vnum", pExit->vnum, fread_number(fp));
+    break;
+  }
+ }
+
+ if( !fMatch )
+ {
+  snprintf( log_buf, (2 * MIL), "Loading in door :%s (%s), no match for ( %s ).", area_load->name, room_load->name, word );
+  monitor_chan( log_buf, MONITOR_BAD );
+  fread_to_eol( fp );
+ }
+
+ room_load->exit[dir] = pExit;
+ top_exit++;
+
+ return;
 }
 
 void load_corpses( void )
@@ -1366,7 +1459,7 @@ void load_room( FILE * fp )
    const char *tmp;
    const char *word;
    bool fMatch = false;
-   int vnum = 0, door, iHash;
+   int vnum = 0, iHash;
 
    if( area_load == NULL )
    {
@@ -1388,7 +1481,7 @@ void load_room( FILE * fp )
       switch( UPPER( word[0] ) )
       {
          case '*':
-            fMatch = TRUE;
+            fMatch = true;
             fread_to_eol( fp );
             break;
 
@@ -1442,51 +1535,7 @@ void load_room( FILE * fp )
             break;
       }
 /*
-      for( ;; )
-      {
-         tmp = fread_word( fp );
-
-         if( !str_cmp(tmp,"EOR") )
-            break;
-
-         if( !str_cmp(tmp,"Door") )
-         {
-            EXIT_DATA *pexit;
-            int locks;
-
-
-            door = fread_number( fp );
-            if( door < 0 || door > MAX_DIR )
-            {
-               bug( "Fread_rooms: vnum %d has bad door number.", vnum );
-               hang( "Loading Rooms in db.c" );
-            }
-
-            pexit = new EXIT_DATA;
-            pexit->description = fread_string( fp );
-            pexit->keyword = fread_string( fp );
-            pexit->exit_info = 0;
-            locks = fread_number( fp );
-            pexit->key = fread_number( fp );
-            pexit->vnum = fread_number( fp );
-
-            *
-             * -S- Mod:  exit_flags now saved as-is, with EX_CLOSED and
-             * EX_LOCKED filtered out.  If locks is 2, it's from an
-             * 'old' area, so handle it, otherwise just set exit_info.
-             * This allows new exit flags to be easily added.  :) 
-             * (Impossible for new area to have locks  = 2(closed) 
-             *
-
-            if( locks == 2 )
-               pexit->exit_info = EX_ISDOOR | EX_PICKPROOF;
-            else
-               pexit->exit_info = locks;
-
-            pRoomIndex->exit[door] = pexit;
-            top_exit++;
-         }
-         else if( !str_cmp(word,"Exit") )
+         else if( !str_cmp(word,"Extra") )
          {
             EXTRA_DESCR_DATA *ed;
 
@@ -1495,11 +1544,6 @@ void load_room( FILE * fp )
             ed->description = fread_string( fp );
             LINK( ed, pRoomIndex->first_exdesc, pRoomIndex->last_exdesc, next, prev );
             top_ed++;
-         }
-         else
-         {
-            bug( "Load_room: vnum %d has flag not 'DES'.", vnum );
-            hang( "Loading Rooms in db.c" );
          }
       }
 */
@@ -1521,6 +1565,7 @@ void load_room( FILE * fp )
    pList->data = pRoomIndex;
    LINK( pList, area_load->first_area_room, area_load->last_area_room, next, prev );
 
+   room_load = pRoomIndex;
    top_room++;
 
    return;
@@ -1904,7 +1949,7 @@ void check_resets( void )
                   break;
                }
                if( pReset->arg2 < 0 || pReset->arg2 > 5 ||
-                   !( pexit = pRoomIndex->exit[pReset->arg2] ) || !IS_SET( pexit->exit_info, EX_ISDOOR ) )
+                   !( pexit = pRoomIndex->exit[pReset->arg2] ) || !pexit->exit_info.test(EX_ISDOOR) )
                {
                   SHOW_AREA;
                   bug( "Check_resets: 'D': exit %d not door.", pReset->arg2 );
@@ -2303,18 +2348,18 @@ void reset_area( AREA_DATA * pArea )
             switch ( pReset->arg3 )
             {
                case 0:
-                  REMOVE_BIT( pexit->exit_info, EX_CLOSED );
-                  REMOVE_BIT( pexit->exit_info, EX_LOCKED );
+                  pexit->exit_info.reset(EX_CLOSED);
+                  pexit->exit_info.reset(EX_LOCKED);
                   break;
 
                case 1:
-                  SET_BIT( pexit->exit_info, EX_CLOSED );
-                  REMOVE_BIT( pexit->exit_info, EX_LOCKED );
+                  pexit->exit_info.set(EX_CLOSED);
+                  pexit->exit_info.reset(EX_LOCKED);
                   break;
 
                case 2:
-                  SET_BIT( pexit->exit_info, EX_CLOSED );
-                  SET_BIT( pexit->exit_info, EX_LOCKED );
+                  pexit->exit_info.set(EX_CLOSED);
+                  pexit->exit_info.set(EX_LOCKED);
                   break;
             }
 

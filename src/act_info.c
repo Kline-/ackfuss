@@ -1159,11 +1159,11 @@ void do_look( CHAR_DATA * ch, char *argument )
    if( ( pexit->keyword != NULL )
        && ( pexit->keyword[0] != '\0' ) && ( pexit->keyword[0] != ' ' ) && ( !str_cmp( pexit->keyword, arg1 ) ) )
    {
-      if( IS_SET( pexit->exit_info, EX_CLOSED ) )
+      if( pexit->exit_info.test(EX_CLOSED) )
       {
          act( "The $d is closed.", ch, NULL, pexit->keyword, TO_CHAR );
       }
-      else if( IS_SET( pexit->exit_info, EX_ISDOOR ) )
+      else if( pexit->exit_info.test(EX_ISDOOR) )
       {
          act( "The $d is open.", ch, NULL, pexit->keyword, TO_CHAR );
       }
@@ -1252,7 +1252,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
          if( ( pexit = ch->in_room->exit[door] ) != NULL && pexit->to_room != NULL )
          {
             found = TRUE;
-            if( IS_SET( pexit->exit_info, EX_CLOSED ) )
+            if( pexit->exit_info.test(EX_CLOSED) )
             {
                snprintf( buf2, MSL, " closed %s", ( !str_cmp( pexit->keyword, "" ) ? compass_name[door] : pexit->keyword ) );
             }
@@ -1272,8 +1272,8 @@ void do_exits( CHAR_DATA * ch, char *argument )
       if( !IS_NPC( ch ) )
          if( ( pexit = ch->in_room->exit[door] ) != NULL
              && pexit->to_room != NULL
-             && IS_SET( pexit->exit_info, EX_CLOSED )
-             && !IS_SET( pexit->exit_info, EX_NODETECT )
+             && pexit->exit_info.test(EX_CLOSED)
+             && !pexit->exit_info.test(EX_NODETECT)
              && ( ch->pcdata->learned[gsn_find_doors] > number_percent(  ) ) && ( !str_cmp( pexit->keyword, "" ) ) )
          {
             found = TRUE;
@@ -1287,7 +1287,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
          }
 
       if( ( pexit = ch->in_room->exit[door] ) != NULL
-          && pexit->to_room != NULL && !IS_SET( pexit->exit_info, EX_CLOSED ) && ( !str_cmp( pexit->keyword, "" ) ) )
+          && pexit->to_room != NULL && !pexit->exit_info.test(EX_CLOSED) && ( !str_cmp( pexit->keyword, "" ) ) )
       {
          found = TRUE;
          if( fAuto || fAutonr )

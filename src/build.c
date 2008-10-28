@@ -92,7 +92,7 @@
      Wear locations      :    tab_wear_loc        : number
      Room flags          :    tab_room_flags      : bitset
      Sector types        :    tab_sector_types    : number
-     Door types          :    tab_door_types      : bit_vector
+     Door types          :    tab_door_types      : bitset
      Door states         :    tab_door_states     : number
 
 */
@@ -690,7 +690,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
 
    if( ( display & DISPLAY_DESC ) )
    {
-      snprintf( buf, MSL, "@@WDescr: \n\r@@y%s", location->description );
+      snprintf( buf, MSL, "\n\r@@WDescr: @@y%s@@N\n\r", location->description[0] != '\0' ? location->description : "(none)." );
       xcat( buf1, buf );
    }
 
@@ -725,13 +725,13 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                   pKeyObj = get_obj_index( pexit->key );
                else
                   pKeyObj = NULL;
-               snprintf( buf, MSL, "@@WExit: @@y%7s @@W: To @@y%5i %s\n\r", sDirs[door],
+               snprintf( buf, MSL, "@@WExit: @@y%7s @@W: To @@y%5i %s@@N\n\r", sDirs[door],
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "" );
                xcat( buf1, buf );
-               snprintf( buf, MSL, "             @@WKey: @@y%5i %s,  @@WExit Type:@@y %s\n\r",
+               snprintf( buf, MSL, "             @@WKey: @@y%5i %s@@N\n\r@@WExit Type:@@y %s@@N\n\r",
                         pKeyObj != NULL ? pKeyObj->vnum : 0,
-                        pKeyObj != NULL ? pKeyObj->name : "None", bit_table_lookup( tab_door_types, pexit->exit_info ) );
+                        pKeyObj != NULL ? pKeyObj->name : "None", bs_show_values( tab_door_types, pexit->exit_info ) );
                xcat( buf1, buf );
                if( pexit->keyword != NULL && pexit->keyword[0] != '\0' )
                {
@@ -749,11 +749,11 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                 * New way of showing doors... move to relevant place if it works 
                 */
 
-               snprintf( buf, MSL, "%s: (%s)  @@WTo: @@y(%i) %s, %s\n\r", sDirs[door],
+               snprintf( buf, MSL, "\n\r%s: (%s)  @@WTo: @@y(%i) %s\n\r@@WExit flags:@@N\n\r%s\n\r", sDirs[door],
                         pexit->keyword,
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "Unknown",
-                        bit_table_lookup( tab_door_types, pexit->exit_info ) );
+                        bs_show_values( tab_door_types, pexit->exit_info ) );
                xcat( buf1, buf );
             }
          }
@@ -2226,12 +2226,6 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       if( pExit == NULL )
       {
          pExit = new EXIT_DATA;
-         pExit->to_room = NULL;
-         pExit->vnum = 0;
-         pExit->description = &str_empty[0];
-         pExit->keyword = &str_empty[0];
-         pExit->exit_info = 0;
-         pExit->key = -1;
          top_exit++;
          location->exit[door] = pExit;
       }
@@ -2302,10 +2296,9 @@ void build_setroom( CHAR_DATA * ch, char *argument )
                pDestExit = new EXIT_DATA;
                pDestExit->to_room = location;
                pDestExit->vnum = location->vnum;
-               pDestExit->description = &str_empty[0];
                build_strdup( &pDestExit->keyword, pExit->keyword, FALSE, FALSE, ch );
                pDestExit->exit_info = pExit->exit_info;
-               pDestExit->key = pExit->exit_info;
+               pDestExit->key = pExit->vnum;
                top_exit++;
                pRoom->exit[RevDirs[door]] = pDestExit;
                area_modified( pRoom->area );
@@ -2413,22 +2406,22 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          {
             if( pDestExit && str_cmp( arg5, "onesided" ) )
             {
-               SET_BIT( pDestExit->exit_info, value );
+               pDestExit->exit_info.set(value);
                area_modified( pDestRoom->area );
             }
-            SET_BIT( pExit->exit_info, value );
+            pExit->exit_info.set(value);
          }
          else
          {
             if( pDestExit && str_cmp( arg5, "onesided" ) )
             {
-               REMOVE_BIT( pDestExit->exit_info, value );
-               if( IS_SET( value, EX_ISDOOR ) )
+               pDestExit->exit_info.reset(value);
+               if( value == EX_ISDOOR )
                   nuke_exit_resets( pDestRoom, RevDirs[door] );
                area_modified( pDestRoom->area );
             }
-            REMOVE_BIT( pExit->exit_info, value );
-            if( IS_SET( value, EX_ISDOOR ) )
+            pExit->exit_info.reset(value);
+            if( value == EX_ISDOOR )
                nuke_exit_resets( location, door );
          }
          return;
@@ -3076,10 +3069,6 @@ void build_dig( CHAR_DATA * ch, char *argument )
    pExit = new EXIT_DATA;
    pExit->to_room = pRoomIndex;
    pExit->vnum = vnum;
-   pExit->description = &str_empty[0];
-   pExit->keyword = &str_empty[0];
-   pExit->exit_info = 0;
-   pExit->key = -1;
    top_exit++;
    pCurRoom->exit[dir] = pExit;
 
@@ -3088,10 +3077,6 @@ void build_dig( CHAR_DATA * ch, char *argument )
       pExit = new EXIT_DATA;
       pExit->to_room = pCurRoom;
       pExit->vnum = pCurRoom->vnum;
-      pExit->description = &str_empty[0];
-      pExit->keyword = &str_empty[0];
-      pExit->exit_info = 0;
-      pExit->key = -1;
       top_exit++;
       pRoomIndex->exit[RevDirs[dir]] = pExit;
    }
@@ -3658,7 +3643,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       rarg1 = pRoomIndex->vnum;
       rarg2 = temp - cDirs;
 
-      if( ( pExit = pRoomIndex->exit[rarg2] ) == NULL || !IS_SET( pExit->exit_info, EX_ISDOOR ) )
+      if( ( pExit = pRoomIndex->exit[rarg2] ) == NULL || !pExit->exit_info.test(EX_ISDOOR) )
       {
          send_to_char( "That exit isn't a door.\n\r", ch );
          return;
