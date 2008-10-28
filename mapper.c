@@ -482,9 +482,9 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
    for( e = 0; e < 6; e++ )
       if( r->exit[e] && r->exit[e]->to_room && !str_cmp( "", r->exit[e]->keyword ) )
       {
-         if( IS_SET( r->exit[e]->exit_info, EX_CLOSED ) )
+         if( r->exit[e]->exit_info.test(EX_CLOSED) )
          {
-            if( IS_SET( r->exit[e]->exit_info, EX_NODETECT ) )
+            if( r->exit[e]->exit_info.test(EX_NODETECT) )
             {
                continue;
             }
@@ -605,18 +605,18 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
 /* selects door symbol */
 
          door_type = 0;
-         if( !IS_SET( pexit->exit_info, EX_ISDOOR ) )
+         if( !pexit->exit_info.test(EX_ISDOOR) )
          {
             if( ( door == 0 ) || ( door == 2 ) )
                door_type = DOOR_NS;
             else
                door_type = DOOR_EW;
          }
-         else if( IS_SET( pexit->exit_info, EX_LOCKED ) )
+         else if( pexit->exit_info.test(EX_LOCKED) )
          {
             door_type = DOOR_LOCKED;
          }
-         else if( IS_SET( pexit->exit_info, EX_CLOSED ) )
+         else if( pexit->exit_info.test(EX_CLOSED) )
          {
             door_type = DOOR_CLOSED;
          }
@@ -625,9 +625,9 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
          if( ( !IS_NPC( ch ) )
              && ( !str_cmp( pexit->keyword, "" ) )
              && ( ( door_type <= DOOR_OPEN )
-                  || ( !IS_SET( pexit->exit_info, EX_ISDOOR ) )
-                  || ( ( IS_SET( pexit->exit_info, EX_CLOSED ) )
-                       && ( !IS_SET( pexit->exit_info, EX_NODETECT ) )
+                  || ( !pexit->exit_info.test(EX_ISDOOR) )
+                  || ( ( pexit->exit_info.test(EX_CLOSED) )
+                       && ( !pexit->exit_info.test(EX_NODETECT) )
                        && ( ch->pcdata->learned[gsn_find_doors] > number_percent(  ) )
                        && ( !str_cmp( pexit->keyword, "" ) ) ) ) )
          {

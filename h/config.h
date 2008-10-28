@@ -473,6 +473,7 @@
  * Area flags.
  * Used in #AREA
  */
+#define AFLAG_NONE           0
 #define AFLAG_PAYAREA        1
 #define AFLAG_TELEPORT       2
 #define AFLAG_BUILDING       3
@@ -507,7 +508,7 @@
 
 /*
  * Directions.
- * Used in #ROOMS.
+ * Used in #DOOR.
  */
 #define DIR_NORTH                     0
 #define DIR_EAST                      1
@@ -517,28 +518,25 @@
 #define DIR_DOWN                      5
 #define MAX_DIR                       6
 
-
 /*
  * Exit flags.
- * Used in #ROOMS.
+ * Used in #DOOR.
  */
+#define EX_NONE                       0
 #define EX_ISDOOR                     1
 #define EX_CLOSED                     2
-#define EX_LOCKED                     4
-#define EX_CLIMB		      8
-#define EX_IMMORTAL		     16
-#define EX_PICKPROOF                 32
-#define EX_SMASHPROOF		     64
-#define EX_PASSPROOF		    128
-#define EX_NODETECT		    256
-
-
+#define EX_LOCKED                     3
+#define EX_CLIMB		      4
+#define EX_IMMORTAL		      5
+#define EX_PICKPROOF                  6
+#define EX_SMASHPROOF		      7
+#define EX_PASSPROOF		      8
+#define EX_NODETECT		      9
 
 /*
  * Sector types.
- * Used in #ROOMS.
+ * Used in #ROOM
  */
-
 #define SECT_NULL                     0
 #define SECT_CITY                     1
 #define SECT_FIELD                    2

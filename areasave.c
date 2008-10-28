@@ -265,7 +265,7 @@ void build_save_area(  )
  fprintf( SaveFile, "ResetMsg  %s~\n", CurSaveArea->reset_msg );
  fprintf( SaveFile, "ResetRate %d\n", CurSaveArea->reset_rate );
  fprintf( SaveFile, "VnumRange %d %d\n", CurSaveArea->min_vnum, CurSaveArea->max_vnum );
- fprintf( SaveFile, "End\n\r" );
+ fprintf( SaveFile, "End\n" );
 
  Section++;
 }
@@ -477,9 +477,8 @@ void build_save_rooms(  )
 {
    ROOM_INDEX_DATA *pRoomIndex;
    EXTRA_DESCR_DATA *pEd;
-   int d;
+   short d, i;
    EXIT_DATA *pexit;
-   int locks = 0;
 
    if( Pointer == NULL )   /* Start */
    {
@@ -494,18 +493,19 @@ void build_save_rooms(  )
 
    pRoomIndex = (ROOM_INDEX_DATA *)Pointer->data;
 
-   fprintf( SaveFile, "ROOM\n" );
+   fprintf( SaveFile, "#ROOM\n" );
    fprintf( SaveFile, "Vnum  %d\n", pRoomIndex->vnum );
    fprintf( SaveFile, "Desc  %s~\n", pRoomIndex->description );
 
    fprintf( SaveFile, "Flags " );
-   for( d = 0; d < MAX_BITSET; d++ )
-    if( pRoomIndex->room_flags.test(d) )
-     fprintf( SaveFile, "%d ", d );
+   for( i = 0; i < MAX_BITSET; i++ )
+    if( pRoomIndex->room_flags.test(i) )
+     fprintf( SaveFile, "%d ", i );
    fprintf( SaveFile, "EOL\n" );
 
    fprintf( SaveFile, "Name  %s~\n", pRoomIndex->name );
    fprintf( SaveFile, "Sect  %d\n", pRoomIndex->sector_type );
+   fprintf( SaveFile, "End\n" );
 
    /*
     * Now do doors. 
@@ -514,34 +514,21 @@ void build_save_rooms(  )
    {
       if( pRoomIndex->exit[d] )
       {
-
-         fprintf( SaveFile, "D%i\n", d );
+         fprintf( SaveFile, "#DOOR\n" );
+         fprintf( SaveFile, "Dir     %d\n", d );
          pexit = pRoomIndex->exit[d];
-         fprintf( SaveFile, "%s~\n", pexit->description );
-         fprintf( SaveFile, "%s~\n", pexit->keyword );
-         /*
-          * Deal with locks 
-          */
-         /*
-          * -S- Mod: Filter out EX_LOCKED and EX_CLOSED and save exit_info 
-          */
-         locks = pexit->exit_info;
-         if( IS_SET( locks, EX_CLOSED ) )
-            REMOVE_BIT( locks, EX_CLOSED );
-         if( IS_SET( locks, EX_LOCKED ) )
-            REMOVE_BIT( locks, EX_LOCKED );
+         fprintf( SaveFile, "Desc    %s~\n", pexit->description );
 
-#if 0
-         /*
-          * BUG: before, an isdoor OR pickproof flag alone would give locks=1 
-          */
-         if( pexit->exit_info & EX_ISDOOR )
-            locks++;
-         if( pexit->exit_info & EX_PICKPROOF )
-            locks++;
-#endif
+         fprintf( SaveFile, "Flags   " );
+         for( i = 0; i < MAX_BITSET; i++ )
+          if( pexit->exit_info.test(i) && i != EX_LOCKED && i != EX_CLOSED )
+           fprintf( SaveFile, "%d ", i );
+         fprintf( SaveFile, "EOL\n" );
 
-         fprintf( SaveFile, "%i %i %i\n", locks, pexit->key, pexit->vnum );
+         fprintf( SaveFile, "Key     %d\n", pexit->key );
+         fprintf( SaveFile, "Keyword %s~\n", pexit->keyword );
+         fprintf( SaveFile, "Vnum    %d\n", pexit->vnum );
+         fprintf( SaveFile, "End\n" );
       }
    }
 
@@ -558,17 +545,10 @@ void build_save_rooms(  )
       pEd = pEd->next;
    }
 
-   /*
-    * End of one room 
-    */
-   fprintf( SaveFile, "S\n" );
-
    Pointer = Pointer->next;
-   if( Pointer == NULL )   /* End */
-   {
-      fprintf( SaveFile, "#0\n" );
-      Section++;
-   }
+   if( Pointer == NULL ) /* End */
+    Section++;
+
    return;
 }
 

@@ -690,11 +690,11 @@ void do_rstat( CHAR_DATA * ch, char *argument )
       if( ( pexit = location->exit[door] ) != NULL )
       {
          snprintf( buf, MSL,
-                  "Door: %d.  To: %d.  Key: %d.  Exit flags: %d.\n\rKeyword: '%s'.  Description: %s",
+                  "Door: %d.  To: %d.  Key: %d.  Keyword: '%s'.  Description: %s\n\rExit flags:\n\r%s\n\r",
                   door,
                   pexit->to_room != NULL ? pexit->to_room->vnum : 0,
-                  pexit->key,
-                  pexit->exit_info, pexit->keyword, pexit->description[0] != '\0' ? pexit->description : "(none).\n\r" );
+                  pexit->key, pexit->keyword, pexit->description[0] != '\0' ? pexit->description : "(none).",
+                  bs_show_values( tab_door_types,pexit->exit_info) );
          xcat( buf1, buf );
       }
    }

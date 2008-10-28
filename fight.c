@@ -3540,7 +3540,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
       door = number_door(  );
       if( ( pexit = was_in->exit[door] ) == 0
           || pexit->to_room == NULL
-          || IS_SET( pexit->exit_info, EX_CLOSED )
+          || pexit->exit_info.test(EX_CLOSED)
           || ( IS_NPC( ch )
                && ( pexit->to_room->room_flags.test(RFLAG_NO_MOB)
                     || ( ch->act.test(ACT_STAY_AREA ) && pexit->to_room->area != ch->in_room->area ) ) ) )

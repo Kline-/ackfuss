@@ -875,7 +875,7 @@ void mobile_update( void )
           && ( door = number_bits( 5 ) ) <= 5
           && ( pexit = ch->in_room->exit[door] ) != NULL
           && pexit->to_room != NULL
-          && !IS_SET( pexit->exit_info, EX_CLOSED )
+          && !pexit->exit_info.test(EX_CLOSED)
           && !pexit->to_room->room_flags.test(RFLAG_NO_MOB)
           && ( !ch->act.test(ACT_STAY_AREA) || pexit->to_room->area == ch->in_room->area ) )
       {
@@ -897,7 +897,7 @@ void mobile_update( void )
           && ( door = number_bits( 3 ) ) <= 5
           && ( pexit = ch->in_room->exit[door] ) != NULL
           && pexit->to_room != NULL
-          && !IS_SET( pexit->exit_info, EX_CLOSED ) && !pexit->to_room->room_flags.test(RFLAG_NO_MOB) )
+          && !pexit->exit_info.test(EX_CLOSED) && !pexit->to_room->room_flags.test(RFLAG_NO_MOB) )
       {
          CHAR_DATA *rch;
          bool found;
