@@ -280,7 +280,7 @@ char *money_string( MONEY_TYPE * money )
                                                                                                                                                                                                                                                        * ( last_found == looper ?
                                                                                                                                                                                                                                                        * "" :
                                                                                                                                                                                                                                                        * " " ) */  );
-         xcat( outbuf, catbuf );
+         strncat( outbuf, catbuf, MSL );
          first = FALSE;
       }
    }
@@ -299,7 +299,7 @@ char *unit_string( MONEY_TYPE * money )
       if( money->cash_unit[looper] > 0 )
       {
          snprintf( catbuf, MSL, "%d %s ", money->cash_unit[looper], currency_table[looper].keyword );
-         xcat( outbuf, catbuf );
+         strncat( outbuf, catbuf, MSL );
       }
    }
    return outbuf;
@@ -1062,13 +1062,13 @@ char *take_best_coins( MONEY_TYPE * money, int cost )
          change = change + ( how_many * currency_table[unit_level].exchange_val ) - still_needs;
          still_needs = 0;
          snprintf( takecatbuf, MSL, " %d %s", how_many, currency_table[unit_level].keyword );
-         xcat( takebuf, takecatbuf );
+         strncat( takebuf, takecatbuf, MSL );
          break;
       }
       else
       {
          snprintf( takecatbuf, MSL, " %d %s", transaction->cash_unit[unit_level], currency_table[unit_level].keyword );
-         xcat( takebuf, takecatbuf );
+         strncat( takebuf, takecatbuf, MSL );
          transaction->cash_unit[unit_level] = 0;
          still_needs -= can_take_this;
          unit_level++;

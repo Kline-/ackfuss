@@ -256,7 +256,7 @@ void load_area args( ( FILE * fp ) );
 void load_mobiles args( ( FILE * fp ) );
 void load_objects args( ( FILE * fp ) );
 void load_resets args( ( FILE * fp ) );
-void load_rooms args( ( FILE * fp ) );
+void load_room args( ( FILE * fp ) );
 void load_shops args( ( FILE * fp ) );
 void load_specials args( ( FILE * fp ) );
 void load_objfuns args( ( FILE * fp ) );
@@ -266,7 +266,6 @@ void load_corpses args( ( void ) );
 void load_marks args( ( void ) );
 void load_bans args( ( void ) );
 void load_brands args( ( void ) );
-
 void fix_exits args( ( void ) );
 void check_resets args( ( void ) );
 
@@ -582,8 +581,8 @@ void load_areas( void )
             load_objects( fpArea );
          else if( !str_cmp( word, "RESETS" ) )
             load_resets( fpArea );
-         else if( !str_cmp( word, "ROOMS" ) )
-            load_rooms( fpArea );
+         else if( !str_cmp( word, "ROOM" ) )
+            load_room( fpArea );
          else if( !str_cmp( word, "SHOPS" ) )
             load_shops( fpArea );
          else if( !str_cmp( word, "SPECIALS" ) )
@@ -616,40 +615,8 @@ void load_area( FILE * fp )
    bool fMatch = false;
    int a;
 
-   GET_FREE( pArea, area_free );
-   pArea->first_reset = NULL;
-   pArea->last_reset = NULL;
-   pArea->name = fread_string( fp );
-   pArea->age = 15;
-   pArea->reset_rate = 15;
-   pArea->nplayer = 0;
-/* MAG Mod */
-   pArea->modified = 0;
-   pArea->min_vnum = 0;
-   pArea->max_vnum = MAX_VNUM;
-   pArea->area_num = 0;
+   pArea = new AREA_DATA;
    pArea->filename = str_dup( strArea );
-   pArea->owner = str_empty;
-   pArea->can_read = str_dup( "all" );
-   pArea->can_write = str_dup( "all" );
-   pArea->level_label = str_dup( "{?? ??}" );
-   pArea->keyword = str_dup( "none" );
-   pArea->reset_msg = str_dup( "You hear the screams of the Dead within your head." );
-   pArea->min_level = 0;
-   pArea->max_level = 0;
-   pArea->gold = 0;
-   pArea->flags = 0;
-   pArea->first_area_room = NULL;
-   pArea->last_area_room = NULL;
-   pArea->first_area_object = NULL;
-   pArea->last_area_object = NULL;
-   pArea->first_area_mobile = NULL;
-   pArea->last_area_mobile = NULL;
-   pArea->first_area_shop = NULL;
-   pArea->last_area_shop = NULL;
-   pArea->first_area_specfunc = NULL;
-   pArea->last_area_specfunc = NULL;
-   pArea->first_area_mobprog = NULL;
    area_revision = -1;
 
    for( ;; )
@@ -1391,78 +1358,98 @@ void load_resets( FILE * fp )
 /*
  * Snarf a room section.
  */
-void load_rooms( FILE * fp )
+void load_room( FILE * fp )
 {
-   ROOM_INDEX_DATA *pRoomIndex;
+   ROOM_INDEX_DATA *pRoomIndex;;
    BUILD_DATA_LIST *pList;
    char buf[MSL];
    const char *tmp;
+   const char *word;
+   bool fMatch = false;
+   int vnum = 0, door, iHash;
 
    if( area_load == NULL )
    {
-      bug( "Load_rooms: no #AREA seen yet.", 0 );
+      bug( "Load_room: no #AREA seen yet.", 0 );
       hang( "Loading Rooms in db.c" );
    }
 
+   pRoomIndex = new ROOM_INDEX_DATA;
+   pRoomIndex->area = area_load;
+
    for( ;; )
    {
-      int vnum;
-      char letter;
-      int door;
-      int iHash;
+      word = fread_word( fp );
+      fMatch = false;
 
-      letter = fread_letter( fp );
-      if( letter != '#' )
+      if( !str_cmp(word,"End") )
+       break;
+
+      switch( UPPER( word[0] ) )
       {
-         bug( "Load_rooms: # not found.", 0 );
-         hang( "Loading Rooms in db.c" );
-      }
-
-      vnum = fread_number( fp );
-
-      if( vnum == 0 )
-         break;
-
-      if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
-      {
-       snprintf(buf,MSL,"Load_rooms: vnum %d out of bounds for %s.",vnum,area_load->filename);
-       log_string(buf);
-      }
-
-      fBootDb = FALSE;
-      if( get_room_index( vnum ) != NULL )
-      {
-         bug( "Load_rooms: vnum %d duplicated.", vnum );
-         hang( "Loading Rooms in db.c" );
-      }
-      fBootDb = TRUE;
-
-      pRoomIndex = new ROOM_INDEX_DATA;
-      pRoomIndex->area = area_load;
-      pRoomIndex->vnum = vnum;
-      pRoomIndex->name = fread_string( fp );
-      pRoomIndex->description = fread_string( fp );
-      pRoomIndex->sector_type = fread_number(fp);
-      {
-       tmp = fread_word(fp);
-
-       while( str_cmp(tmp,"EOL") )
-       {
-        pRoomIndex->room_flags.set(atoi(tmp));
-        tmp = fread_word(fp);
-       }
-      }
-      if( pRoomIndex->sector_type == SECT_NULL )
-         pRoomIndex->sector_type = SECT_INSIDE;
-
-      for( ;; )
-      {
-         letter = fread_letter( fp );
-
-         if( letter == 'S' )
+         case '*':
+            fMatch = TRUE;
+            fread_to_eol( fp );
             break;
 
-         if( letter == 'D' )
+         case 'D':
+            SKEY("Desc", pRoomIndex->description, fread_string( fp ) );
+            break;
+
+         case 'F':
+            if( !str_cmp(word,"Flags") )
+            {
+             tmp = fread_word(fp);
+
+             while( str_cmp(tmp,"EOL") )
+             {
+              pRoomIndex->room_flags.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = true;
+             break;
+            }
+            break;
+
+         case 'N':
+            SKEY("Name", pRoomIndex->name, fread_string( fp ) );
+            break;
+
+         case 'S':
+            KEY("Sect", pRoomIndex->sector_type, fread_number( fp ) );
+            break;
+
+         case 'V':
+            if( !str_cmp(word,"Vnum") )
+            {
+             vnum = fread_number(fp);
+             if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
+             {
+              snprintf(buf,MSL,"Load_room: vnum %d out of bounds for %s.",vnum,area_load->filename);
+              log_string(buf);
+             }
+             fBootDb = FALSE;
+             if( get_room_index( vnum ) != NULL )
+             {
+              bug( "Load_room: vnum %d duplicated.", vnum );
+              hang( "Loading Rooms in db.c" );
+             }
+             fBootDb = TRUE;
+             pRoomIndex->vnum = vnum;
+             fMatch = true;
+             break;
+            }
+            break;
+      }
+/*
+      for( ;; )
+      {
+         tmp = fread_word( fp );
+
+         if( !str_cmp(tmp,"EOR") )
+            break;
+
+         if( !str_cmp(tmp,"Door") )
          {
             EXIT_DATA *pexit;
             int locks;
@@ -1475,7 +1462,7 @@ void load_rooms( FILE * fp )
                hang( "Loading Rooms in db.c" );
             }
 
-            GET_FREE( pexit, exit_free );
+            pexit = new EXIT_DATA;
             pexit->description = fread_string( fp );
             pexit->keyword = fread_string( fp );
             pexit->exit_info = 0;
@@ -1483,13 +1470,13 @@ void load_rooms( FILE * fp )
             pexit->key = fread_number( fp );
             pexit->vnum = fread_number( fp );
 
-            /*
+            *
              * -S- Mod:  exit_flags now saved as-is, with EX_CLOSED and
              * EX_LOCKED filtered out.  If locks is 2, it's from an
              * 'old' area, so handle it, otherwise just set exit_info.
              * This allows new exit flags to be easily added.  :) 
              * (Impossible for new area to have locks  = 2(closed) 
-             */
+             *
 
             if( locks == 2 )
                pexit->exit_info = EX_ISDOOR | EX_PICKPROOF;
@@ -1499,7 +1486,7 @@ void load_rooms( FILE * fp )
             pRoomIndex->exit[door] = pexit;
             top_exit++;
          }
-         else if( letter == 'E' )
+         else if( !str_cmp(word,"Exit") )
          {
             EXTRA_DESCR_DATA *ed;
 
@@ -1511,20 +1498,30 @@ void load_rooms( FILE * fp )
          }
          else
          {
-            bug( "Load_rooms: vnum %d has flag not 'DES'.", vnum );
+            bug( "Load_room: vnum %d has flag not 'DES'.", vnum );
             hang( "Loading Rooms in db.c" );
          }
       }
-
-      iHash = vnum % MAX_KEY_HASH;
-      SING_TOPLINK( pRoomIndex, room_index_hash[iHash], next );
-/* MAG Mod */
-      GET_FREE( pList, build_free );
-      pList->data = pRoomIndex;
-      LINK( pList, area_load->first_area_room, area_load->last_area_room, next, prev );
-
-      top_room++;
+*/
    }
+   if( !fMatch )
+   {
+    snprintf( log_buf, (2 * MIL), "Loading in room :%s (%s), no match for ( %s ).", area_load->name, pRoomIndex->name, word );
+    monitor_chan( log_buf, MONITOR_BAD );
+    fread_to_eol( fp );
+   }
+
+   if( pRoomIndex->sector_type == SECT_NULL )
+      pRoomIndex->sector_type = SECT_INSIDE;
+
+
+   iHash = vnum % MAX_KEY_HASH;
+   SING_TOPLINK( pRoomIndex, room_index_hash[iHash], next );
+   GET_FREE( pList, build_free );
+   pList->data = pRoomIndex;
+   LINK( pList, area_load->first_area_room, area_load->last_area_room, next, prev );
+
+   top_room++;
 
    return;
 }
@@ -1786,7 +1783,7 @@ void fix_exits( void )
                {
                   snprintf( buf, MSL, "Bad exit vnum %d in room %d", pexit->vnum, pRoomIndex->vnum );
                   bug( buf, 0 );
-                  PUT_FREE( pexit, exit_free );
+                  delete pexit;
                   pRoomIndex->exit[door] = NULL;
 /*			pexit->to_room = NULL;   */
                }
@@ -3324,12 +3321,10 @@ void do_areas( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg1, "all" ) )
       fall = TRUE;
    snprintf( buf, MSL, "@@W" mudnamecolor " AREA LISTING\n\r" );
-   xcat( buf, "+-------+------------+------------------------------------------------+\n\r" );
-   xcat( buf,
-                "| @@yLevel@@W |            |                                                |\n\r" );
-   xcat( buf,
-                "| @@yrange@@W |   @@yAuthor@@W   |      @@yName of Area@@W                              |\n\r" );
-   xcat( buf, "+-------+------------+------------------------------------------------+\n\r" );
+   strncat( buf, "+-------+------------+------------------------------------------------+\n\r", MSL );
+   strncat( buf, "| @@yLevel@@W |            |                                                |\n\r", MSL );
+   strncat( buf, "| @@yrange@@W |   @@yAuthor@@W   |      @@yName of Area@@W                              |\n\r", MSL );
+   strncat( buf, "+-------+------------+------------------------------------------------+\n\r", MSL );
 
    foo = 0;
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
@@ -3342,10 +3337,10 @@ void do_areas( CHAR_DATA * ch, char *argument )
 
       foo++;
       snprintf( msg, MSL, " %s %12s          %s\n\r", pArea->level_label, capitalize( pArea->owner ), pArea->name );
-      xcat( buf, msg );
+      strncat( buf, msg, MSL );
    }
    snprintf( msg, MSL, "@@R%d Areas listed.\n\r@@N Type areas all to list the entire " mudnamecolor " realm.\n\r@@N", foo );
-   xcat( buf, msg );
+   strncat( buf, msg, MSL );
    send_to_char( buf, ch );
    return;
 }
@@ -4101,8 +4096,8 @@ void check_chistory( CHAR_DATA *ch, int channel )
     found = TRUE;
     snprintf(buf,MSL,"[%s",ctime(&chan_history.time[x][y]));
     buf[(strlen(buf)-1)] = '\0';           /* I realize how ugly this chunk looks but it was */
-    xcat(buf,"] ");                        /* necessary to get around ctime adding a newline --Kline */
-    xcat(buf,chan_history.message[x][y]);
+    strncat(buf,"] ",MSL);                        /* necessary to get around ctime adding a newline --Kline */
+    strncat(buf,chan_history.message[x][y],MSL);
     send_to_char(buf,ch);
    }
    else if( ch->logon <= chan_history.time[x][y] )
@@ -4247,7 +4242,7 @@ int count_helps( void )
 
 char *search_helps( const char *string )
 {
- static char ret[MSL] = {'\0'};
+ static char ret[MSL];
  char tmp[MSL] = {'\0'};
  char *t_buf;
  char *t_out;
@@ -4265,7 +4260,7 @@ char *search_helps( const char *string )
   t_out += 9;                /* Strip off ../helps/ at the start, edit if you change your HELP_DIR */
   snprintf(tmp,MSL,t_out);
   tmp[strlen(tmp)-4] = '\0'; /* Strip off .ext at the end, edit if you change HELP_MORT or HELP_IMM */
-  xcat(ret,"%s ",tmp);
+  snprintf(ret,MSL,"%s ",tmp);
  }
 
  t_buf = NULL;
@@ -4301,7 +4296,7 @@ char *_popen( const char *string )
    if( ret[0] == '\0' )
     snprintf(ret,MSL,tmp);
    else
-    xcat(ret,tmp);
+    strncat(ret,tmp,MSL);
   }
  }
 

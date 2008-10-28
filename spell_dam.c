@@ -537,9 +537,9 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
    for( ; dam_range > 0; dam_range -= 50 )
    {
       snprintf( catsymbuf, MSL, sp_dam_str[rtype].formatter, outercol, innercol, outercol );
-      xcat( symbuf, catsymbuf );
+      strncat( symbuf, catsymbuf, MSL );
    }
-   xcat( symbuf, " " );
+   strncat( symbuf, " ", MSL );
 
 
 

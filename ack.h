@@ -511,7 +511,6 @@ class mob_index_data
    short level;
    std::bitset<MAX_BITSET> act;
    int affected_by;
-   int aggro_list;
    short alignment;
    short ac_mod; /* ac modifier */
    short hr_mod; /* hitroll modifier */
@@ -686,8 +685,11 @@ class char_data
  * Data which only PC's have.
  */
 
-struct pc_data
+class pc_data
 {
+ public:
+  pc_data();
+  ~pc_data();
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    PC_DATA *next;
    PC_DATA *prev;
@@ -917,16 +919,19 @@ struct obj_data
 /*
  * Exit data.
  */
-struct exit_data
+class exit_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   EXIT_DATA *next;
-   ROOM_INDEX_DATA *to_room;
-   int vnum;
-   short exit_info;
-   short key;
-   char *keyword;
-   char *description;
+ public:
+  exit_data();
+  ~exit_data();
+  char *description;
+  short exit_info;
+  bool is_free;
+  short key;
+  char *keyword;
+  EXIT_DATA *next;
+  ROOM_INDEX_DATA *to_room;
+  int vnum;
 };
 
 
@@ -1071,56 +1076,45 @@ class area_data
  public:
   area_data();
   ~area_data();
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   AREA_DATA *next;
-   AREA_DATA *prev;
-   RESET_DATA *first_reset;
-   RESET_DATA *last_reset;
-   char *name;
-   short age;
-   short nplayer;
-/* MAG mod */
-   int modified;
-   int min_vnum;
-   int max_vnum;
-   int area_num;
-   char *owner;
-   char *can_read;
-   char *can_write;
-   int gold;
-   char *filename;
-   std::bitset<MAX_BITSET> flags;
-   int aggro_list;
-   BUILD_DATA_LIST *first_area_room;
-   BUILD_DATA_LIST *last_area_room;
-   BUILD_DATA_LIST *first_area_object;
-   BUILD_DATA_LIST *last_area_object;
-   BUILD_DATA_LIST *first_area_mobile;
-   BUILD_DATA_LIST *last_area_mobile;
-   BUILD_DATA_LIST *first_area_mobprog;
-   BUILD_DATA_LIST *last_area_mobprog;
-   BUILD_DATA_LIST *first_area_shop;
-   BUILD_DATA_LIST *last_area_shop;
-   BUILD_DATA_LIST *first_area_specfunc;
-   BUILD_DATA_LIST *last_area_specfunc;
-   BUILD_DATA_LIST *first_area_objfunc;
-   BUILD_DATA_LIST *last_area_objfunc;
-   /*
-    * BUILD_DATA_LIST *   spec_funs; in mob index data. 
-    */
-   /*
-    * BUILD_DATA_LIST *   area_shops; in mob index data. 
-    */
-   /*
-    * BUILD_DATA_LIST *   resets; already there! 
-    */
-   CONTROL_DATA *control;
-   char *keyword;
-   short min_level;
-   short max_level;
-   char *level_label;
-   short reset_rate;
-   char *reset_msg;
+  short                   age;
+  short                   area_num;
+  char                    *can_read;
+  char                    *can_write;
+  CONTROL_DATA            *control;
+  char                    *filename;
+  std::bitset<MAX_BITSET> flags;
+  BUILD_DATA_LIST         *first_area_mobile;
+  BUILD_DATA_LIST         *first_area_mobprog;
+  BUILD_DATA_LIST         *first_area_object;
+  BUILD_DATA_LIST         *first_area_objfunc;
+  BUILD_DATA_LIST         *first_area_room;
+  BUILD_DATA_LIST         *first_area_shop;
+  BUILD_DATA_LIST         *first_area_specfunc;
+  RESET_DATA              *first_reset;
+  int                     gold;
+  bool                    is_free;
+  char                    *keyword;
+  BUILD_DATA_LIST         *last_area_mobile;
+  BUILD_DATA_LIST         *last_area_mobprog;
+  BUILD_DATA_LIST         *last_area_object;
+  BUILD_DATA_LIST         *last_area_objfunc;
+  BUILD_DATA_LIST         *last_area_room;
+  BUILD_DATA_LIST         *last_area_shop;
+  BUILD_DATA_LIST         *last_area_specfunc;
+  RESET_DATA              *last_reset;
+  char                    *level_label;
+  short                   max_level;
+  int                     max_vnum;
+  bool                    modified;
+  short                   min_level;
+  int                     min_vnum;
+  char                    *name;
+  AREA_DATA               *next;
+  short                   nplayer;
+  char                    *owner;
+  AREA_DATA               *prev;
+  char                    *reset_msg;
+  short                   reset_rate;
 };
 
 

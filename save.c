@@ -680,7 +680,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    if( !is_npc )
    {
       ch->pcdata = new PC_DATA;
-      *ch->pcdata = pcdata_zero;
       GET_FREE( ch->pcdata->quest_info, quest_info_free );
       *ch->pcdata->quest_info = quest_info_zero;
       GET_FREE( ch->pcdata->records, record_free );

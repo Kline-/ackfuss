@@ -18,7 +18,45 @@
 
 area_data::area_data()
 {
+ age = 15;
+ area_num = 0;
+ can_read = &str_empty[0];
+ can_write = &str_empty[0];
+ control = NULL;
+ filename = &str_empty[0];
  flags.reset();
+ first_area_mobile = NULL;
+ first_area_mobprog = NULL;
+ first_area_object = NULL;
+ first_area_objfunc = NULL;
+ first_area_room = NULL;
+ first_area_shop = NULL;
+ first_area_specfunc = NULL;
+ first_reset = NULL;
+ gold = 0;
+ is_free = false;
+ keyword = &str_empty[0];
+ last_area_mobile = NULL;
+ last_area_mobprog = NULL;
+ last_area_object = NULL;
+ last_area_objfunc = NULL;
+ last_area_room = NULL;
+ last_area_shop = NULL;
+ last_area_specfunc = NULL;
+ last_reset = NULL;
+ level_label = str_dup("[ None ]");
+ max_level = 1;
+ max_vnum = 0;
+ modified = false;
+ min_level = 1;
+ min_vnum = 0;
+ name = str_dup("New Area");;
+ next = NULL;
+ nplayer = 0;
+ owner = &str_empty[0];
+ prev = NULL;
+ reset_msg = str_dup("The area resets. How mystical...");
+ reset_rate = 15;
 }
 
 brand_data::brand_data()
@@ -35,6 +73,18 @@ char_data::char_data()
  is_free = false;
  act.reset();
  deaf.reset();
+}
+
+exit_data::exit_data()
+{
+ description = &str_empty[0];
+ exit_info = 0;
+ is_free = false;
+ key = 0;
+ keyword = &str_empty[0];
+ next = NULL;
+ to_room = NULL;
+ vnum = 0;
 }
 
 mob_index_data::mob_index_data()
@@ -54,6 +104,10 @@ note_data::note_data()
  date_stamp = 0;
 }
 
+pc_data::pc_data()
+{
+}
+
 room_index_data::room_index_data()
 {
  short i = 0;
@@ -62,7 +116,7 @@ room_index_data::room_index_data()
  affected_by = 0;
  area = NULL;
  description = &str_empty[0];
- for( i = 0; i < 6; i++ )
+ for( i = 0; i < MAX_DIR; i++ )
   exit[i] = NULL;
  first_content = NULL;
  first_exdesc = NULL;

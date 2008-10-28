@@ -174,7 +174,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
    if( m_name[0] == '\0' )
     break; 
    if( m_number > 0 )
-    xcat(mbuf,"%s %s ",m_number,m_name);
+    snprintf(mbuf,MSL,"%s %s",m_number,m_name);
   }
   ch->exp -= pexp;
 

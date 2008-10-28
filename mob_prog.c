@@ -1276,8 +1276,8 @@ void mprog_translate( char ch, char *t, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_
                else
                {
                   strcpy( t, actor->name );
-                  xcat( t, " " );
-                  xcat( t, actor->pcdata->title );
+                  strncat( t, " ", MSL );
+                  strncat( t, actor->pcdata->title, MSL );
                }
             }
             else
@@ -1303,8 +1303,8 @@ void mprog_translate( char ch, char *t, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_
                else
                {
                   strcpy( t, vict->name );
-                  xcat( t, " " );
-                  xcat( t, vict->pcdata->title );
+                  strncat( t, " ", MSL );
+                  strncat( t, vict->pcdata->title, MSL );
                }
             }
             else
@@ -1330,8 +1330,8 @@ void mprog_translate( char ch, char *t, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_
                else
                {
                   strcpy( t, rndm->name );
-                  xcat( t, " " );
-                  xcat( t, rndm->pcdata->title );
+                  strncat( t, " ", MSL );
+                  strncat( t, rndm->pcdata->title, MSL );
                }
             }
             else

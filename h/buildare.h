@@ -23,7 +23,6 @@ int build_canwrite P_((AREA_DATA *Area, CHAR_DATA *ch, int showerror));
 void build_save_area_list P_((void));
 void build_save_area_gold P_((void));
 void build_makearea P_((CHAR_DATA *ch, char *argument));
-void build_addarea P_((CHAR_DATA *ch, char *argument));
 void do_change_gold P_((CHAR_DATA *ch, char *argument));
 void build_setarea P_((CHAR_DATA *ch, char *argument));
 void build_findarea P_((CHAR_DATA *ch, char *argument));

@@ -498,7 +498,7 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
             snprintf( buf + strlen( buf ), 128, " %s", compass_name[e] );
          }
       }
-   xcat( buf, " ]" );
+   strncat( buf, " ]", MSL );
    return buf;
 }
 
@@ -539,8 +539,8 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
    }
 #endif
    strcpy( disp, map_format( ch->in_room->name, 0, bufs, &y, cols, rows, TRUE ) );
-   xcat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ) );
-   xcat( disp, map_format( ch->in_room->description, y, bufs, &y, cols, rows, !ch->act.test(ACT_JUSTIFY ) ) );
+   strncat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ), MSL );
+   strncat( disp, map_format( ch->in_room->description, y, bufs, &y, cols, rows, !ch->act.test(ACT_JUSTIFY ) ), MSL );
    if( y < MAP_Y )
    {
       x = disp + strlen( disp );
@@ -661,13 +661,13 @@ void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
    for( looper = 0; looper <= size + 1; looper++ )
    {
       snprintf( catbuf, MSL, "%s", "-" );
-      xcat( borderbuf, catbuf );
+      strncat( borderbuf, catbuf, MSL );
    }
-   xcat( borderbuf, "@@y+@@N" );
+   strncat( borderbuf, "@@y+@@N", MSL );
    for( x = min; x <= max; ++x )
    {  /* every row */
 
-      xcat( outbuf, "@@W| " );
+      strncat( outbuf, "@@W| ", MSL );
       for( y = min; y <= max; ++y )
       {  /* every column */
          if( ( y == min ) || ( map[x][y - 1] != map[x][y] ) )
@@ -683,17 +683,17 @@ void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
                        ( ( contents[x][y].string[0] == '\0' ) ?
                          get_sector_display( map[x][y] ) : contents[x][y].string ) ) );
             snprintf( catbuf, MSL, "%s%s", colorbuf, displaybuf );
-            xcat( outbuf, catbuf );
+            strncat( outbuf, catbuf, MSL );
 
          }
          else
          {
             snprintf( catbuf, MSL, "%s", ( map[x][y] <= 0 ) ? get_door_display( map[x][y] ) : get_sector_display( map[x][y] ) );
-            xcat( outbuf, catbuf );
+            strncat( outbuf, catbuf, MSL );
          }
 
       }
-      xcat( outbuf, " @@W|@@N\n\r" );
+      strncat( outbuf, " @@W|@@N\n\r", MSL );
    }
 
    disp_map( borderbuf, outbuf, ch );
@@ -723,13 +723,13 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
    for( looper = 0; looper <= size + 1; looper++ )
    {
       snprintf( catbuf, MSL, "%s", "-" );
-      xcat( borderbuf, catbuf );
+      strncat( borderbuf, catbuf, MSL );
    }
-   xcat( borderbuf, "@@y+@@N" );
+   strncat( borderbuf, "@@y+@@N", MSL );
    for( x = min; x <= max; ++x )
    {  /* every row */
 
-      xcat( outbuf, "@@W| " );
+      strncat( outbuf, "@@W| ", MSL );
       for( y = min; y <= max; ++y )
       {  /* every column */
          if( ( y == min ) || ( map[x][y - 1] != map[x][y] ) )
@@ -745,17 +745,17 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
                        ( ( contents[x][y].string[0] == '\0' ) ?
                          get_sector_display( map[x][y] ) : contents[x][y].string ) ) );
             snprintf( catbuf, MSL, "%s%s", colorbuf, displaybuf );
-            xcat( outbuf, catbuf );
+            strncat( outbuf, catbuf, MSL );
 
          }
          else
          {
             snprintf( catbuf, MSL, "%s", ( map[x][y] <= 0 ) ? get_door_display( map[x][y] ) : get_sector_display( map[x][y] ) );
-            xcat( outbuf, catbuf );
+            strncat( outbuf, catbuf, MSL );
          }
 
       }
-      xcat( outbuf, " @@W|@@N\n\r" );
+      strncat( outbuf, " @@W|@@N\n\r", MSL );
    }
    send_to_char( "\n\r", ch );
    /*
@@ -790,13 +790,13 @@ void do_mapper( CHAR_DATA * ch, char *argument )
       {
          snprintf( catbuf, MSL, "%s%s : @@N%s\n\r",
                   map_info[looper].display_color, map_info[looper].display_code, map_info[looper].desc );
-         xcat( outbuf, catbuf );
+         strncat( outbuf, catbuf, MSL );
       }
       for( looper = 0; looper < 5; looper++ )
       {
          snprintf( catbuf, MSL, "%s%s : @@N%s\n\r",
                   door_info[looper].display_color, door_info[looper].display_code, door_info[looper].desc );
-         xcat( outbuf, catbuf );
+         strncat( outbuf, catbuf, MSL );
       }
       send_to_char( outbuf, ch );
       return;

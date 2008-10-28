@@ -82,10 +82,8 @@ FIGHT_DATA *last_fight = NULL;
 PORTAL_DATA *portal_free = NULL;
 AFFECT_DATA *affect_free = NULL;
 ROOM_AFFECT_DATA *raffect_free = NULL;
-AREA_DATA *area_free = NULL;
 BAN_DATA *ban_free = NULL;
 DESCRIPTOR_DATA *desc_free = NULL;
-EXIT_DATA *exit_free = NULL;
 EXTRA_DESCR_DATA *exdesc_free = NULL;
 OBJ_DATA *obj_free = NULL;
 OBJ_INDEX_DATA *oid_free = NULL;
@@ -122,7 +120,6 @@ QUEST_INFO *quest_info_free = NULL;
 void ( *portal_free_destructor ) ( PORTAL_DATA * pdat ) = NULL;
 void ( *affect_free_destructor ) ( AFFECT_DATA * adat ) = NULL;
 void ( *raffect_free_destructor ) ( ROOM_AFFECT_DATA * radat ) = NULL;
-void ( *area_free_destructor ) ( AREA_DATA * adat ) = NULL;
 void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat ) = NULL;
 void ( *shop_free_destructor ) ( SHOP_DATA * sdat ) = NULL;
 void ( *build_free_destructor ) ( BUILD_DATA_LIST * bddat ) = NULL;
@@ -191,12 +188,6 @@ void mprog_free_destructor( MPROG_DATA * mpdat )
    free_string( mpdat->arglist );
    free_string( mpdat->comlist );
    free_string( mpdat->filename );
-}
-
-void exit_free_destructor( EXIT_DATA * edat )
-{
-   free_string( edat->description );
-   free_string( edat->keyword );
 }
 
 void mpact_free_destructor( MPROG_ACT_LIST * mpadat )

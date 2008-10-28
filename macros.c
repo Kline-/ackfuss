@@ -185,23 +185,23 @@ bool check_level_use( CHAR_DATA * ch, int level )
    switch ( level )
    {
       case 85:
-         xcat( out, "Creators only.\n\r" );
+         strncat( out, "Creators only.\n\r", MSL );
          break;
       case 84:
-         xcat( out, "Supremes or higher.\n\r" );
+         strncat( out, "Supremes or higher.\n\r", MSL );
          break;
       case 83:
-         xcat( out, "Dieties or higher.\n\r" );
+         strncat( out, "Dieties or higher.\n\r", MSL );
          break;
       case 82:
-         xcat( out, "Immortals or higher.\n\r" );
+         strncat( out, "Immortals or higher.\n\r", MSL );
          break;
       case 81:
-         xcat( out, "Adepts or higher.\n\r" );
+         strncat( out, "Adepts or higher.\n\r", MSL );
          break;
       default:
          snprintf( buf, MSL, "level %d players and higher.\n\r", level );
-         xcat( out, buf );
+         strncat( out, buf, MSL );
    }
    send_to_char( out, ch );
    return FALSE;
