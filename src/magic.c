@@ -292,7 +292,7 @@ void say_spell( CHAR_DATA * ch, int sn )
       {
          if( !str_prefix( syl_table[iSyl].sold, pName ) )
          {
-            xcat( buf, syl_table[iSyl].snew );
+            strncat( buf, syl_table[iSyl].snew, MSL );
             break;
          }
       }
@@ -5173,7 +5173,7 @@ void do_disguise( CHAR_DATA * ch, char *argument )
    {
 
       free_string( ch->long_descr );
-      xcat( argument, "\n\r" );
+      strncat( argument, "\n\r", MSL );
       ch->long_descr = str_dup( argument );
       send_to_char( "You are now Disguised!!!\n\r", ch );
       return;
@@ -6845,12 +6845,12 @@ void do_stance( CHAR_DATA * ch, char *argument )
 
          }
 
-         xcat( msg_buf, cat_buf );
+         strncat( msg_buf, cat_buf, MSL );
          snprintf( cat_buf, MSL, "%s", "" );
       }
       snprintf( cat_buf, MSL, "%s",
                "Type stance <stance name> to change your current fighting stance.\n\r You may place your current Stance in your prompt with a \%s\n\r" );
-      xcat( msg_buf, cat_buf );
+      strncat( msg_buf, cat_buf, MSL );
       send_to_char( msg_buf, ch );
       return;
    }

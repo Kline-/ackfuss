@@ -1,30 +1,1 @@
-#AREA
-Revision  22
-CanRead   Kline~
-CanWrite  Kline~
-Flags     EOL
-Keyword   none~
-LevLabel  @@R[@@eSYSTEM@@R]@@N~
-LevRange  1 120
-Name      Limbo~
-Number    1
-Owner     Kline~
-ResetMsg  off~
-ResetRate 15
-VnumRange 1 100
-End
-#ROOMS
-#1
-@@WLimbo@@N~
-You are floating in a formless void; detached from all sensation of physical matter. A swirling, glowing, light surrounds you as it  fades into the darkness around you without any trace of edges or shadow.~
-11
-3 4 5 9 11 15 17 18 EOL
-S
-#2
-@@dJail@@N~
-Unfortunately you have been transferred to jail for breaking one of our rules.  We are very laid back here but certain things must be adhered to.  As you look around this cold, damp, bleak looking cell take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful realm.~
-11
-3 4 5 9 11 14 15 17 18 19 EOL
-S
-#0
-#$
+#AREARevision  22CanRead   Kline~CanWrite  Kline~Flags     EOLKeyword   none~LevLabel  @@R[@@eSYSTEM@@R]@@N~LevRange  1 120Name      Limbo~Number    1Owner     Kline~ResetMsg  off~ResetRate 15VnumRange 1 100End#ROOMVnum  1Name  @@WLimbo@@N~Desc  You are floating in a formless void; detached from all sensation of physical matter. A swirling, glowing, light surrounds you as it  fades into the darkness around you without any trace of edges or shadow.~Sect  11Flags 3 4 5 9 11 15 17 18 EOLEnd#ROOMVnum  2Name  @@dJail@@N~Desc  Unfortunately you have been transferred to jail for breaking one of our rules.  We are very laid back here but certain things must be adhered to. As you look around this cold, damp, bleak looking cell take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful realm.~Sect  11Flags 3 4 5 9 11 14 15 17 18 19 EOLEnd#$

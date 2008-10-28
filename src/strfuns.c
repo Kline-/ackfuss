@@ -86,12 +86,12 @@ void pre_parse( char *list, char *victimname, char *containername, char *things 
          {
             argument = one_argument( argument, one_object );
             snprintf( holdbuf, MSL, "%s %s ", arg1, one_object );
-            xcat( object_list, holdbuf );
+            strncat( object_list, holdbuf, MSL );
          }
          else
          {
             snprintf( holdbuf, MSL, "1 %s ", arg1 );
-            xcat( object_list, holdbuf );
+            strncat( object_list, holdbuf, MSL );
          }
       }
    }
@@ -160,7 +160,7 @@ char *space_pad( const char *str, short final_size )
 
    snprintf( padbuf, MSL, "%s", str );
    for( ; space_pad != final_size; space_pad++ )
-      xcat( padbuf, " " );
+      strncat( padbuf, " ", MSL );
    return padbuf;
 }
 
@@ -801,15 +801,15 @@ char *str_mod( char *mod_string, char *argument )
          argument++;
 
          if( mod_string )
-            xcat( buf, mod_string );
+            strncat( buf, mod_string, MSL );
          while( isspace( *argument ) )
             argument++;
          if( !str_infix( argument, mod_string ) )
          {
             return mod_string;
          }
-         xcat( buf, argument );
-         xcat( buf, " " );
+         strncat( buf, argument, MSL );
+         strncat( buf, " ", MSL );
       }
       if( argument[0] == '-' )
       {
@@ -839,7 +839,7 @@ char *str_mod( char *mod_string, char *argument )
                   buf[i++] = *( buf2++ );
                while( ( !isspace( *( buf2++ ) ) ) || ( ( multiple ) && ( ( buf2[0] != '\'' ) && ( buf2[0] != '\0' ) ) ) );
                buf[i] = '\0';
-               xcat( buf, buf2 );
+               strncat( buf, buf2, MSL );
             }
          }
 
@@ -1293,37 +1293,37 @@ const char *raffect_bit_name( int vector )
    rbuf[0] = '\0';
 
    if( vector & ROOM_BV_NONE )
-      xcat( rbuf, " NONE" );
+      strncat( rbuf, " NONE", MSL );
    if( vector & ROOM_BV_SILENCE )
-      xcat( rbuf, " Silence" );
+      strncat( rbuf, " Silence", MSL );
    if( vector & ROOM_BV_SAFE )
-      xcat( rbuf, " Safe" );
+      strncat( rbuf, " Safe", MSL );
    if( vector & ROOM_BV_ENCAPS )
-      xcat( rbuf, " Seal Room" );
+      strncat( rbuf, " Seal Room", MSL );
    if( vector & ROOM_BV_SHADE )
-      xcat( rbuf, " Shade" );
+      strncat( rbuf, " Shade", MSL );
    if( vector & ROOM_BV_HEAL_REGEN )
-      xcat( rbuf, " @@mHealing Light@@N" );
+      strncat( rbuf, " @@mHealing Light@@N", MSL );
    if( vector & ROOM_BV_HEAL_STEAL )
-      xcat( rbuf, " @@dWither Shadow@@N" );
+      strncat( rbuf, " @@dWither Shadow@@N", MSL );
    if( vector & ROOM_BV_MANA_REGEN )
-      xcat( rbuf, " @@eMana Flare@@N" );
+      strncat( rbuf, " @@eMana Flare@@N", MSL );
    if( vector & ROOM_BV_MANA_STEAL )
-      xcat( rbuf, " @@dMana Drain@@N" );
+      strncat( rbuf, " @@dMana Drain@@N", MSL );
    if( vector & ROOM_BV_FIRE_RUNE )
-      xcat( rbuf, " @@eFire @@NRune" );
+      strncat( rbuf, " @@eFire @@NRune", MSL );
    if( vector & ROOM_BV_FIRE_TRAP )
-      xcat( rbuf, " @@eFire @@NTrap" );
+      strncat( rbuf, " @@eFire @@NTrap", MSL );
    if( vector & ROOM_BV_DAMAGE_TRAP )
-      xcat( rbuf, " @@dDamage @@NTrap" );
+      strncat( rbuf, " @@dDamage @@NTrap", MSL );
    if( vector & ROOM_BV_SHOCK_RUNE )
-      xcat( rbuf, " @@lShock @@NRune" );
+      strncat( rbuf, " @@lShock @@NRune", MSL );
    if( vector & ROOM_BV_SHOCK_TRAP )
-      xcat( rbuf, " @@lShock @@NTrap" );
+      strncat( rbuf, " @@lShock @@NTrap", MSL );
    if( vector & ROOM_BV_HOLD )
-      xcat( rbuf, " @@rCage@@N" );
+      strncat( rbuf, " @@rCage@@N", MSL );
    if( vector & ROOM_BV_POISON_RUNE )
-      xcat( rbuf, " @@Poison@@N Rune" );
+      strncat( rbuf, " @@Poison@@N Rune", MSL );
 
    return ( rbuf[0] != '\0' ) ? rbuf + 1 : "none";
 }
@@ -1337,55 +1337,55 @@ const char *affect_bit_name( int vector )
 
    buf[0] = '\0';
    if( vector & AFF_BLIND )
-      xcat( buf, " blind" );
+      strncat( buf, " blind", MSL );
    if( vector & AFF_INVISIBLE )
-      xcat( buf, " invisible" );
+      strncat( buf, " invisible", MSL );
    if( vector & AFF_DETECT_EVIL )
-      xcat( buf, " detect_evil" );
+      strncat( buf, " detect_evil", MSL );
    if( vector & AFF_DETECT_INVIS )
-      xcat( buf, " detect_invis" );
+      strncat( buf, " detect_invis", MSL );
    if( vector & AFF_DETECT_MAGIC )
-      xcat( buf, " detect_magic" );
+      strncat( buf, " detect_magic", MSL );
    if( vector & AFF_DETECT_HIDDEN )
-      xcat( buf, " detect_hidden" );
+      strncat( buf, " detect_hidden", MSL );
    if( vector & AFF_HOLD )
-      xcat( buf, " hold" );
+      strncat( buf, " hold", MSL );
    if( vector & AFF_SANCTUARY )
-      xcat( buf, " sanctuary" );
+      strncat( buf, " sanctuary", MSL );
    if( vector & AFF_FAERIE_FIRE )
-      xcat( buf, " faerie_fire" );
+      strncat( buf, " faerie_fire", MSL );
    if( vector & AFF_INFRARED )
-      xcat( buf, " infrared" );
+      strncat( buf, " infrared", MSL );
    if( vector & AFF_CURSE )
-      xcat( buf, " curse" );
+      strncat( buf, " curse", MSL );
    if( vector & AFF_CLOAK_FLAMING )
-      xcat( buf, " flaming" );
+      strncat( buf, " flaming", MSL );
    if( vector & AFF_POISON )
-      xcat( buf, " poison" );
+      strncat( buf, " poison", MSL );
    if( vector & AFF_PROTECT )
-      xcat( buf, " protect" );
+      strncat( buf, " protect", MSL );
    if( vector & AFF_PARALYSIS )
-      xcat( buf, " paralysis" );
+      strncat( buf, " paralysis", MSL );
    if( vector & AFF_SLEEP )
-      xcat( buf, " sleep" );
+      strncat( buf, " sleep", MSL );
    if( vector & AFF_SNEAK )
-      xcat( buf, " sneak" );
+      strncat( buf, " sneak", MSL );
    if( vector & AFF_HIDE )
-      xcat( buf, " hide" );
+      strncat( buf, " hide", MSL );
    if( vector & AFF_CHARM )
-      xcat( buf, " charm" );
+      strncat( buf, " charm", MSL );
    if( vector & AFF_FLYING )
-      xcat( buf, " flying" );
+      strncat( buf, " flying", MSL );
    if( vector & AFF_PASS_DOOR )
-      xcat( buf, " pass_door" );
+      strncat( buf, " pass_door", MSL );
    if( vector & AFF_CLOAK_REFLECTION )
-      xcat( buf, " cloak:reflection" );
+      strncat( buf, " cloak:reflection", MSL );
    if( vector & AFF_CLOAK_ABSORPTION )
-      xcat( buf, " cloak:absorption" );
+      strncat( buf, " cloak:absorption", MSL );
    if( vector & AFF_CLOAK_ADEPT )
-      xcat( buf, " cloak:adept" );
+      strncat( buf, " cloak:adept", MSL );
    if( vector & AFF_CLOAK_REGEN )
-      xcat( buf, " cloak:regeneration" );
+      strncat( buf, " cloak:regeneration", MSL );
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }
@@ -1399,57 +1399,57 @@ const char *extra_bit_name( int extra_flags )
 
    buf[0] = '\0';
    if( extra_flags & ITEM_GLOW )
-      xcat( buf, " glow" );
+      strncat( buf, " glow", MSL );
    if( extra_flags & ITEM_HUM )
-      xcat( buf, " hum" );
+      strncat( buf, " hum", MSL );
    if( extra_flags & ITEM_NODISARM )
-      xcat( buf, " nodisarm" );
+      strncat( buf, " nodisarm", MSL );
    if( extra_flags & ITEM_LOCK )
-      xcat( buf, " lock" );
+      strncat( buf, " lock", MSL );
    if( extra_flags & ITEM_EVIL )
-      xcat( buf, " evil" );
+      strncat( buf, " evil", MSL );
    if( extra_flags & ITEM_INVIS )
-      xcat( buf, " invis" );
+      strncat( buf, " invis", MSL );
    if( extra_flags & ITEM_MAGIC )
-      xcat( buf, " magic" );
+      strncat( buf, " magic", MSL );
    if( extra_flags & ITEM_NODROP )
-      xcat( buf, " nodrop" );
+      strncat( buf, " nodrop", MSL );
    if( extra_flags & ITEM_BLESS )
-      xcat( buf, " bless" );
+      strncat( buf, " bless", MSL );
    if( extra_flags & ITEM_ANTI_GOOD )
-      xcat( buf, " anti-good" );
+      strncat( buf, " anti-good", MSL );
    if( extra_flags & ITEM_ANTI_EVIL )
-      xcat( buf, " anti-evil" );
+      strncat( buf, " anti-evil", MSL );
    if( extra_flags & ITEM_ANTI_NEUTRAL )
-      xcat( buf, " anti-neutral" );
+      strncat( buf, " anti-neutral", MSL );
    if( extra_flags & ITEM_NOREMOVE )
-      xcat( buf, " noremove" );
+      strncat( buf, " noremove", MSL );
    if( extra_flags & ITEM_INVENTORY )
-      xcat( buf, " inventory" );
+      strncat( buf, " inventory", MSL );
    if( extra_flags & ITEM_NOLOOT )
-      xcat( buf, " noloot" );
+      strncat( buf, " noloot", MSL );
    if( extra_flags & ITEM_NOSAC )
-      xcat( buf, " nosac" );
+      strncat( buf, " nosac", MSL );
    if( extra_flags & ITEM_REMORT )
-      xcat( buf, " remort" );
+      strncat( buf, " remort", MSL );
    if( extra_flags & ITEM_CLAN_EQ )
-      xcat( buf, " claneq" );
+      strncat( buf, " claneq", MSL );
    if( extra_flags & ITEM_NOSAVE )
-      xcat( buf, " nosave" );
+      strncat( buf, " nosave", MSL );
    if( extra_flags & ITEM_NO_AUCTION )
-      xcat( buf, " no_auction" );
+      strncat( buf, " no_auction", MSL );
    if( extra_flags & ITEM_RARE )
-      xcat( buf, " rare" );
+      strncat( buf, " rare", MSL );
    if( extra_flags & ITEM_VAMP )
-      xcat( buf, " vamp" );
+      strncat( buf, " vamp", MSL );
    if( extra_flags & ITEM_UNIQUE )
-      xcat( buf, " unique" );
+      strncat( buf, " unique", MSL );
    if( extra_flags & ITEM_TRIG_DESTROY )
-      xcat( buf, " trigger:destroy" );
+      strncat( buf, " trigger:destroy", MSL );
    if( extra_flags & ITEM_LIFESTEALER )
-      xcat( buf, " lifestealer" );
+      strncat( buf, " lifestealer", MSL );
    if( extra_flags & ITEM_SILVER )
-      xcat( buf, " silver" );
+      strncat( buf, " silver", MSL );
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }
@@ -1553,11 +1553,11 @@ void safe_strcat( const char *file, const char *function, int line, int size, co
  /*Max Alloc Size is alot!*/
  if( size > MAS )
  {
-  sprintf(bug_buf,"xcat buffer overflow: %s",next);
+  sprintf(bug_buf,"strncat buffer overflow: %s",next);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
-  sprintf(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
+  sprintf(bug_buf,"strncat buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
@@ -1566,11 +1566,11 @@ void safe_strcat( const char *file, const char *function, int line, int size, co
 
  if( (unsigned)size < strlen(buf)+1 )
  {
-  sprintf(bug_buf,"xcat buffer overflow: %s",next);
+  sprintf(bug_buf,"strncat buffer overflow: %s",next);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
-  sprintf(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+  sprintf(bug_buf,"strncat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
   log_string(bug_buf);
   monitor_chan(bug_buf,MONITOR_DEBUG);
 
@@ -1584,11 +1584,11 @@ void safe_strcat( const char *file, const char *function, int line, int size, co
   /*Just double checking.*/
   if( strlen(prev) > (unsigned)size - 1 )
   {
-   sprintf(bug_buf,"xcat buffer overflow: %s",next);
+   sprintf(bug_buf,"strncat buffer overflow: %s",next);
    log_string(bug_buf);
    monitor_chan(bug_buf,MONITOR_DEBUG);
 
-   sprintf(bug_buf,"xcat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
+   sprintf(bug_buf,"strncat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
    log_string(bug_buf);
    monitor_chan(bug_buf,MONITOR_DEBUG);
    return;

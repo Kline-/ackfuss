@@ -2181,7 +2181,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          /*
           * Delete exit 
           */
-         PUT_FREE( pExit, exit_free );
+         delete pExit;
          location->exit[door] = NULL;
          top_exit--;
 
@@ -2199,7 +2199,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
             if( pExit != NULL )
                if( pExit->vnum == location->vnum )
                {
-                  PUT_FREE( pExit, exit_free );
+                  delete pExit;
                   pDestRoom->exit[RevDirs[door]] = NULL;
                   top_exit--;
 
@@ -2225,7 +2225,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
       if( pExit == NULL )
       {
-         GET_FREE( pExit, exit_free );
+         pExit = new EXIT_DATA;
          pExit->to_room = NULL;
          pExit->vnum = 0;
          pExit->description = &str_empty[0];
@@ -2282,7 +2282,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          {
             if( pDestRoom != NULL && pDestExit != NULL ) /* If already connected */
             {
-               PUT_FREE( pDestExit, exit_free );
+               delete pDestExit;
                pDestRoom->exit[RevDirs[door]] = NULL;
                top_exit--;
 
@@ -2299,7 +2299,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
                /*
                 * Create door coming other way. 
                 */
-               GET_FREE( pDestExit, exit_free );
+               pDestExit = new EXIT_DATA;
                pDestExit->to_room = location;
                pDestExit->vnum = location->vnum;
                pDestExit->description = &str_empty[0];
@@ -3073,7 +3073,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
    /*
     * Create door 
     */
-   GET_FREE( pExit, exit_free );
+   pExit = new EXIT_DATA;
    pExit->to_room = pRoomIndex;
    pExit->vnum = vnum;
    pExit->description = &str_empty[0];
@@ -3085,7 +3085,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
 
    if( str_cmp( arg3, "onesided" ) )   /* If NOT onesided */
    {
-      GET_FREE( pExit, exit_free );
+      pExit = new EXIT_DATA;
       pExit->to_room = pCurRoom;
       pExit->vnum = pCurRoom->vnum;
       pExit->description = &str_empty[0];
@@ -4037,7 +4037,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
                /*
                 * Get rid of exit. 
                 */
-               PUT_FREE( pExit, exit_free );
+               delete pExit;
                pSrchRoom->exit[door] = NULL;
                top_exit--;
 
@@ -4146,7 +4146,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       {
          if( ( pExit = pRoomIndex->exit[door] ) != NULL )
          {
-            PUT_FREE( pExit, exit_free );
+            delete pExit;
             pRoomIndex->exit[door] = NULL;
             top_exit--;
 

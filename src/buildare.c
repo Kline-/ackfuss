@@ -321,41 +321,16 @@ void build_makearea( CHAR_DATA * ch, char *argument )
     */
 
 
-   GET_FREE( pArea, area_free );
+   pArea = new AREA_DATA;
    pArea->area_num = a;
-   pArea->first_reset = NULL;
-   pArea->last_reset = NULL;
-   pArea->name = str_dup( "New area." );
-   pArea->level_label = str_dup( "{?? ??}" );
-   pArea->keyword = str_dup( " none " );
-   pArea->reset_msg = str_dup( "You here the screams of the Dead within your head." );
-   pArea->reset_rate = 15;
-   pArea->min_level = 1;
-   pArea->max_level = 1;
-   pArea->age = 15;
-   pArea->nplayer = 0;
-   pArea->modified = 1;
+   pArea->modified = true;
    pArea->filename = str_dup( arg1 );
    pArea->min_vnum = vnum;
    pArea->max_vnum = mvnum;
    pArea->owner = str_dup( ch->name );
    pArea->can_read = str_dup( ch->name );
    pArea->can_write = str_dup( ch->name );
-   pArea->gold = 0;
    pArea->flags.set(AFLAG_NOSHOW);   /* don't list on 'areas' -S- */
-   pArea->first_area_room = NULL;
-   pArea->last_area_room = NULL;
-   pArea->first_area_object = NULL;
-   pArea->last_area_object = NULL;
-   pArea->first_area_mobile = NULL;
-   pArea->last_area_mobile = NULL;
-   pArea->first_area_shop = NULL;
-   pArea->last_area_shop = NULL;
-   pArea->first_area_specfunc = NULL;
-   pArea->last_area_specfunc = NULL;
-   pArea->first_area_mobprog = NULL;
-   pArea->last_area_mobprog = NULL;
-
 
    area_used[pArea->area_num] = pArea;
 
@@ -394,147 +369,6 @@ void build_makearea( CHAR_DATA * ch, char *argument )
 
    send_to_char( "Ok.\n\r", ch );
 }
-
-void build_addarea( CHAR_DATA * ch, char *argument )
-{
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   ROOM_INDEX_DATA *pRoomIndex;
-   int vnum;
-   int a;
-   int iHash;
-   BUILD_DATA_LIST *pList;
-   AREA_DATA *pArea;
-   FILE *fpArea;
-
-   smash_tilde( argument );
-   argument = one_argument( argument, arg1 );
-   argument = one_argument( argument, arg2 );
-   strcpy( arg3, argument );
-
-   if( arg1[0] == '\0' || arg2[0] == '\0' )
-   {
-      send_to_char( "\n\rSyntax: addarea filename vnum\n\r", ch );
-      return;
-   }
-
-   vnum = is_number( arg2 ) ? atoi( arg2 ) : -1;
-
-   if( vnum < 0 || vnum > MAX_VNUM )
-   {
-      send_to_char( "Vnum must be between 0 and 32767.\n\r", ch );
-      return;
-   }
-
-   if( get_room_index( vnum ) != NULL )
-   {
-      send_to_char( "There is already a room with that vnum.\n\r", ch );
-      return;
-   }
-
-   fpArea = file_open( arg1, "r" );
-   if( fpArea != NULL )
-   {
-      send_to_char( "There is already a file with that name.\n\r", ch );
-      file_close( fpArea );
-      return;
-   }
-
-   fpArea = file_open( arg1, "w" );
-   if( fpArea == NULL )
-   {
-      send_to_char( "Invalid filename, would not be able to save.\n\r", ch );
-      return;
-   }
-   file_close( fpArea );
-
-   /*
-    * Find a unique area number 
-    */
-   for( a = 0; a < MAX_AREAS; a++ )
-      if( area_used[a] == NULL )
-         break;
-   if( a == MAX_AREAS )
-   {
-      send_to_char( "Maximum number of areas already.\n\r", ch );
-      return;
-   }
-
-   /*
-    * Add area 
-    */
-
-   GET_FREE( pArea, area_free );
-   pArea->area_num = a;
-   pArea->first_reset = NULL;
-   pArea->last_reset = NULL;
-   pArea->name = str_dup( "New area." );
-   pArea->level_label = str_dup( "{?? ??}" );
-   pArea->keyword = str_dup( " none " );
-   pArea->reset_msg = str_dup( "You here the screams of the Dead within your head." );
-   pArea->reset_rate = 15;
-   pArea->age = 15;
-   pArea->nplayer = 0;
-   pArea->modified = 1;
-   pArea->filename = str_dup( arg1 );
-   pArea->min_vnum = 0;
-   pArea->max_vnum = MAX_VNUM;
-   pArea->owner = NULL;
-   pArea->can_read = NULL;
-   pArea->can_write = NULL;
-   pArea->gold = 0;
-   pArea->flags.set(AFLAG_NOSHOW);   /* don't list on 'areas' -S- */
-   pArea->first_area_room = NULL;
-   pArea->last_area_room = NULL;
-   pArea->first_area_object = NULL;
-   pArea->last_area_object = NULL;
-   pArea->first_area_mobile = NULL;
-   pArea->last_area_mobile = NULL;
-   pArea->first_area_shop = NULL;
-   pArea->last_area_shop = NULL;
-   pArea->first_area_specfunc = NULL;
-   pArea->last_area_specfunc = NULL;
-   pArea->first_area_mobprog = NULL;
-   pArea->last_area_mobprog = NULL;
-
-
-   area_used[pArea->area_num] = pArea;
-
-   LINK( pArea, first_area, last_area, next, prev );
-
-   top_area++;
-
-   /*
-    * Now add it to area.lst 
-    */
-   build_save_area_list(  );
-
-   /*
-    * Now add room 
-    */
-   pRoomIndex = new ROOM_INDEX_DATA;
-   pRoomIndex->area = pArea;
-   pRoomIndex->vnum = vnum;
-   pRoomIndex->sector_type = SECT_INSIDE;
-
-   /*
-    * Add room to hash table 
-    */
-   iHash = vnum % MAX_KEY_HASH;
-   SING_TOPLINK( pRoomIndex, room_index_hash[iHash], next );
-
-   /*
-    * Add room into area list. 
-    */
-   GET_FREE( pList, build_free );
-   pList->data = pRoomIndex;
-   LINK( pList, pArea->first_area_room, pArea->last_area_room, next, prev );
-   top_room++;
-
-   send_to_char( "Ok.\n\r", ch );
-}
-
 
 void do_change_gold( CHAR_DATA * ch, char *argument )
 {

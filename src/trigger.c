@@ -76,14 +76,14 @@ void trigger_show( CHAR_DATA * ch )
 
    snprintf( buf, MSL, "Trigger objects information:\n\r" );
 
-   xcat( buf, "v1  Name           v2		    v3\n\r" );
-   xcat( buf, "--  ----        ---------       ---------\n\r" );
-   xcat( buf, " 1  Transport   Room vnum          N/A\n\r" );
-   xcat( buf, " 2  Restore	    N/A		    N/A\n\r" );
-   xcat( buf, " 3  Slay	    N/A	            N/A\n\r" );
-   xcat( buf, " 4  Transform   Mob Vnum	    N/A\n\r" );
-   xcat( buf, "v0 determines what action causes the trigger:\n\r" );
-   xcat( buf, "blah blah blah" );
+   strncat( buf, "v1  Name           v2		    v3\n\r", MSL );
+   strncat( buf, "--  ----        ---------       ---------\n\r", MSL );
+   strncat( buf, " 1  Transport   Room vnum          N/A\n\r", MSL );
+   strncat( buf, " 2  Restore	    N/A		    N/A\n\r", MSL );
+   strncat( buf, " 3  Slay	    N/A	            N/A\n\r", MSL );
+   strncat( buf, " 4  Transform   Mob Vnum	    N/A\n\r", MSL );
+   strncat( buf, "v0 determines what action causes the trigger:\n\r", MSL );
+   strncat( buf, "blah blah blah", MSL );
    send_to_char( buf, ch );
    return;
 }

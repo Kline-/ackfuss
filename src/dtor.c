@@ -154,6 +154,12 @@ char_data::~char_data()
  delete pcdata;
 }
 
+exit_data::~exit_data()
+{
+ free_string(description);
+ free_string(keyword);
+}
+
 mob_index_data::~mob_index_data()
 {
  free_string(player_name);
@@ -169,6 +175,10 @@ note_data::~note_data()
  free_string(to_list);
  free_string(date);
  free_string(sender);
+}
+
+pc_data::~pc_data()
+{
 }
 
 room_index_data::~room_index_data()

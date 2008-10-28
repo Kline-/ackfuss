@@ -108,7 +108,7 @@ void save_rulers(  )
          for( control = ruler->this_one->first_control; control; control = control->next )
          {
             snprintf( catkeybuf, MSL, "%s ", control->this_one->keyword );
-            xcat( keybuf, catkeybuf );
+            strncat( keybuf, catkeybuf, MSL );
          }
          fprintf( fp, "%s~\n", keybuf );
       }
@@ -236,16 +236,16 @@ void do_rulers( CHAR_DATA * ch, char *argument )
                   get_ruler_title( ruler->this_one->ruler_rank, sex ),
                   capitalize( ruler->this_one->name ),
                   ( IS_SET( ruler->this_one->flags, RULER_GROUP ) ? ruler->this_one->affiliation_name : "Not Affiliated" ) );
-         xcat( outbuf, catbuf );
+         strncat( outbuf, catbuf, MSL );
          if( ruler->this_one->first_control != NULL )
          {
             CONTROL_LIST *control;
             snprintf( catbuf, MSL, "  Ruler of :" );
-            xcat( catbuf, outbuf );
+            strncat( catbuf, outbuf, MSL );
             for( control = ruler->this_one->first_control; control; control = control->next )
             {
                snprintf( catbuf, MSL, "%s\n\r", control->this_one->area->name );
-               xcat( outbuf, catbuf );
+               strncat( outbuf, catbuf, MSL );
             }
          }
       }

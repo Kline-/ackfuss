@@ -90,26 +90,26 @@ void do_email( CHAR_DATA * ch, char *argument )
    {
       snprintf( outbuf, MSL, "%s", "Syntax for email:\n\r" );
       snprintf( catbuf, MSL, "%s", "set <email address>\n\r" );
-      xcat( outbuf, catbuf );
+      strncat( outbuf, catbuf, MSL );
       if( get_trust( ch ) == MAX_LEVEL )
       {
          snprintf( catbuf, MSL, "%s", "validate <playername>\n\r" );
-         xcat( outbuf, catbuf );
+         strncat( outbuf, catbuf, MSL );
       }
       if( ch->pcdata->valid_email )
       {
          snprintf( catbuf, MSL, "Your email address is currently set to %s.\n\r", ch->pcdata->email_address );
-         xcat( outbuf, catbuf );
+         strncat( outbuf, catbuf, MSL );
       }
       else
       {
          if( !str_cmp( ch->pcdata->email_address, "not set" ) )
-            xcat( outbuf, "Your email address has not been set.\n\r" );
+            strncat( outbuf, "Your email address has not been set.\n\r", MSL );
          else
          {
             snprintf( catbuf, MSL, "Your email address has been set to %s, but has not been authorized by an Implementor.\n\r",
                      ch->pcdata->email_address );
-            xcat( outbuf, catbuf );
+            strncat( outbuf, catbuf, MSL );
          }
       }
       send_to_char( outbuf, ch );
