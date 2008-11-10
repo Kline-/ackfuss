@@ -2067,9 +2067,14 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       EXTRA_DESCR_DATA *ed;
       bool found;
 
-
       argument = one_argument( argument, arg2 );
       strcpy( arg3, argument );
+
+      if( strlen(arg2) < 1 || strlen(arg3) < 1 )
+      {
+        send_to_char("Extra descrs must have a keyword and description.\n\r",ch );
+        return;
+      }
 
       argn = arg2;
       if( argn[0] == '-' )

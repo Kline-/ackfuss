@@ -493,7 +493,7 @@ void build_save_rooms(  )
 
    pRoomIndex = (ROOM_INDEX_DATA *)Pointer->data;
 
-   fprintf( SaveFile, "#ROOM\n" );
+   fprintf( SaveFile, "\n#ROOM\n" );
    fprintf( SaveFile, "Vnum  %d\n", pRoomIndex->vnum );
    fprintf( SaveFile, "Desc  %s~\n", pRoomIndex->description );
 
@@ -539,9 +539,10 @@ void build_save_rooms(  )
    pEd = pRoomIndex->first_exdesc;
    while( pEd )
    {
-      fprintf( SaveFile, "E\n" );
-      fprintf( SaveFile, "%s~\n", pEd->keyword );
-      fprintf( SaveFile, "%s~\n", pEd->description );
+      fprintf( SaveFile, "#REXTRA\n" );
+      fprintf( SaveFile, "Desc       %s~\n", pEd->description );
+      fprintf( SaveFile, "Keyword    %s~\n", pEd->keyword );
+      fprintf( SaveFile, "End\n" );
       pEd = pEd->next;
    }
 

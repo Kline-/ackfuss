@@ -258,6 +258,7 @@ void load_door args( ( FILE * fp ) );
 void load_mobiles args( ( FILE * fp ) );
 void load_objects args( ( FILE * fp ) );
 void load_resets args( ( FILE * fp ) );
+void load_rextra args( ( FILE * fp ) );
 void load_room args( ( FILE * fp ) );
 void load_shops args( ( FILE * fp ) );
 void load_specials args( ( FILE * fp ) );
@@ -585,6 +586,8 @@ void load_areas( void )
             load_objects( fpArea );
          else if( !str_cmp( word, "RESETS" ) )
             load_resets( fpArea );
+         else if( !str_cmp( word, "REXTRA" ) )
+            load_rextra( fpArea );
          else if( !str_cmp( word, "ROOM" ) )
             load_room( fpArea );
          else if( !str_cmp( word, "SHOPS" ) )
@@ -1446,7 +1449,57 @@ void load_resets( FILE * fp )
    return;
 }
 
+void load_rextra( FILE * fp )
+{
+ EXTRA_DESCR_DATA *pEd;
+ const char *word;
+ bool fMatch = false;
 
+ if( room_load == NULL )
+ {
+  bug( "Load_door: no #ROOM seen yet.", 0 );
+  hang( "Loading doors in db.c" );
+ }
+
+ pEd = new EXTRA_DESCR_DATA;
+
+ for( ;; )
+ {
+  word = fread_word( fp );
+  fMatch = false;
+
+  if( !str_cmp(word,"End") )
+   break;
+
+  switch( UPPER(word[0]) )
+  {
+   case '*':
+    fMatch = true;
+    fread_to_eol(fp);
+    break;
+
+   case 'D':
+    SKEY("Desc", pEd->description, fread_string(fp));
+    break;
+
+   case 'K':
+    SKEY("Keyword", pEd->keyword, fread_string(fp));
+    break;
+  }
+ }
+
+ if( !fMatch )
+ {
+  snprintf( log_buf, (2 * MIL), "Loading in door :%s (%s), no match for ( %s ).", area_load->name, room_load->name, word );
+  monitor_chan( log_buf, MONITOR_BAD );
+  fread_to_eol( fp );
+ }
+
+ LINK( pEd, room_load->first_exdesc, room_load->last_exdesc, next, prev );
+ top_ed++;
+
+ return;
+}
 
 /*
  * Snarf a room section.
