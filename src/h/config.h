@@ -123,6 +123,7 @@
 /*
  * For speed combat, hands. --Kline
  */
+#define MAX_SPEED  4
 #define SPEED_RH   0
 #define SPEED_LH   1
 #define SPEED_TAIL 2

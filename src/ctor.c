@@ -89,6 +89,51 @@ exit_data::exit_data()
 
 mob_index_data::mob_index_data()
 {
+ short i = 0;
+
+ act.reset();
+ ac_mod = 0;
+ affected_by = 0;
+ alignment = 0;
+ area = NULL;
+ cast = 0;
+ clan = 0;
+ count = 0;
+ def = 0;
+ description = &str_empty[0];
+ dr_mod = 0;
+ hr_mod = 0;
+ first_mprog = NULL;
+ hunt_flags = 0;
+ is_free = false;
+ killed = 0;
+ last_mprog = NULL;
+ for( i = 0; i < MAX_SKILL; i++ )
+  learned[i] = 0;
+ level = 0;
+ long_descr = &str_empty[0];
+ next = NULL;
+ player_name = &str_empty[0];
+ position = 0;
+ power_cast = 0;
+ power_skills = 0;
+ progtypes = 0;
+ pShop = NULL;
+ p_class = 0;
+ race = 0;
+ race_mods = 0;
+ resist = 0;
+ sex = 0;
+ short_descr = &str_empty[0];
+ skills = 0;
+ spec_fun = NULL;
+ for( i = 0; i < MAX_SPEED; i++ )
+  speed[i] = 1.00;
+ strong_magic = 0;
+ suscept = 0;
+ target = &str_empty[0];
+ vnum = 0;
+ weak_magic = 0;
 }
 
 note_data::note_data()

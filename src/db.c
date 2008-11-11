@@ -1016,47 +1016,60 @@ void load_mobiles( FILE * fp )
    MOB_INDEX_DATA *pMobIndex;
    BUILD_DATA_LIST *pList;
    char buf[MSL];
+   const char *word;
+   bool fMatch = false;
+   int vnum = 0, iHash = 0;
+
+   if( area_load == NULL )
+   {
+    bug( "Load_mobiles: no #AREA seen yet.", 0 );
+    hang( "Loading Mobiles in db.c" );
+   }
+
+
+   pMobIndex = new MOB_INDEX_DATA;
+   pMobIndex->area = area_load;
 
    for( ;; )
    {
-      int vnum;
-      char letter;
-      int iHash;
 
-      if( area_load == NULL )
-      {
-       bug( "Load_mobiles: no #AREA seen yet.", 0 );
-       exit( 1 );
-      }
+      word = fread_word( fp );
+      fMatch = false;
 
-      letter = fread_letter( fp );
-      if( letter != '#' )
-      {
-         bug( "Load_mobiles: # not found.", 0 );
-         hang( "Loading Mobiles in db.c" );
-      }
-
-      vnum = fread_number( fp );
-      if( vnum == 0 )
+      if( !str_cmp(word,"End") )
          break;
 
-      if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
+      switch( UPPER( word[0] ) )
       {
-       snprintf(buf,MSL,"Load_mobiles: vnum %d out of bounds for %s.",vnum,area_load->filename);
-       log_string(buf);
-      }
+         case '*':
+            fMatch = true;
+            fread_to_eol( fp );
+            break;
 
-      fBootDb = FALSE;
-      if( get_mob_index( vnum ) != NULL )
-      {
-         bug( "Load_mobiles: vnum %d duplicated.", vnum );
-         hang( "Loading Mobiles in db.c" );
-      }
-      fBootDb = TRUE;
+         case 'V':
+            if( !str_cmp(word,"Vnum") )
+            {
+             vnum = fread_number(fp);
+             if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
+             {
+              snprintf(buf,MSL,"Load_mobiles: vnum %d out of bounds for %s.",vnum,area_load->filename);
+              log_string(buf);
+             }
+             fBootDb = FALSE;
+             if( get_mob_index( vnum ) != NULL )
+             {
+              bug( "Load_mobile: vnum %d duplicated.", vnum );
+              hang( "Loading Mobiles in db.c" );
+             }
+             fBootDb = TRUE;
+             pMobIndex->vnum = vnum;
+             fMatch = true;
+             break;
+            }
+            break;
 
-      pMobIndex = new MOB_INDEX_DATA;
-      pMobIndex->vnum = vnum;
-      pMobIndex->area = area_load;
+      }
+/*
       pMobIndex->player_name = fread_string( fp );
       pMobIndex->short_descr = fread_string( fp );
       pMobIndex->long_descr = fread_string( fp );
@@ -1065,22 +1078,16 @@ void load_mobiles( FILE * fp )
       pMobIndex->long_descr[0] = UPPER( pMobIndex->long_descr[0] );
       pMobIndex->description[0] = UPPER( pMobIndex->description[0] );
 
-      if( area_revision < 20 ) /* Old act */
-       fread_number( fp );
       pMobIndex->affected_by = fread_number( fp );
-      pMobIndex->pShop = NULL;
       pMobIndex->alignment = fread_number( fp );
 
       pMobIndex->level = number_fuzzy( fread_number( fp ) );
       pMobIndex->sex = fread_number( fp );
 
-      pMobIndex->ac_mod = fread_number( fp );   /* read      */
-      pMobIndex->hr_mod = fread_number( fp );   /* in the    */
-      pMobIndex->dr_mod = fread_number( fp );   /* modifiers */
+      pMobIndex->ac_mod = fread_number( fp );
+      pMobIndex->hr_mod = fread_number( fp );
+      pMobIndex->dr_mod = fread_number( fp );
 
-      /*
-       * The "new" additions to mobs start with a !
-       */
       letter = fread_letter( fp );
       if( letter == '!' )
       {
@@ -1088,7 +1095,7 @@ void load_mobiles( FILE * fp )
          pMobIndex->clan = fread_number( fp );
          pMobIndex->race = fread_number( fp );
          pMobIndex->position = POS_STANDING;
-         fread_number( fp );  /* position */
+         fread_number( fp );
          pMobIndex->skills = fread_number( fp );
          pMobIndex->cast = fread_number( fp );
          pMobIndex->def = fread_number( fp );
@@ -1125,17 +1132,24 @@ void load_mobiles( FILE * fp )
       }
       else
          ungetc( letter, fp );
-
-      iHash = vnum % MAX_KEY_HASH;
-      SING_TOPLINK( pMobIndex, mob_index_hash[iHash], next );
-/* MAG Mod */
-      GET_FREE( pList, build_free );
-      pList->data = pMobIndex;
-      LINK( pList, area_load->first_area_mobile, area_load->last_area_mobile, next, prev );
-
-      top_mob_index++;
-      kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
+*/
    }
+
+   if( !fMatch )
+   {
+    snprintf( log_buf, (2 * MIL), "Loading in mob :%s (%s), no match for ( %s ).", area_load->name, pMobIndex->short_descr, word );
+    monitor_chan( log_buf, MONITOR_BAD );
+    fread_to_eol( fp );
+   }
+
+   iHash = vnum % MAX_KEY_HASH;
+   SING_TOPLINK( pMobIndex, mob_index_hash[iHash], next );
+   GET_FREE( pList, build_free );
+   pList->data = pMobIndex;
+   LINK( pList, area_load->first_area_mobile, area_load->last_area_mobile, next, prev );
+
+   top_mob_index++;
+   kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
 
    return;
 }
@@ -1587,20 +1601,8 @@ void load_room( FILE * fp )
             }
             break;
       }
-/*
-         else if( !str_cmp(word,"Extra") )
-         {
-            EXTRA_DESCR_DATA *ed;
-
-            GET_FREE( ed, exdesc_free );
-            ed->keyword = fread_string( fp );
-            ed->description = fread_string( fp );
-            LINK( ed, pRoomIndex->first_exdesc, pRoomIndex->last_exdesc, next, prev );
-            top_ed++;
-         }
-      }
-*/
    }
+
    if( !fMatch )
    {
     snprintf( log_buf, (2 * MIL), "Loading in room :%s (%s), no match for ( %s ).", area_load->name, pRoomIndex->name, word );

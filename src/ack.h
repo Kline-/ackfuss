@@ -495,47 +495,47 @@ class mob_index_data
  public:
   mob_index_data();
   ~mob_index_data();
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   MOB_INDEX_DATA *next;
-   SPEC_FUN *spec_fun;
-   SHOP_DATA *pShop;
-   AREA_DATA *area;  /* MAG Mod */
-   char *player_name;
-   char *short_descr;
-   char *long_descr;
-   char *description;
-   int vnum;
-   short count;
-   short killed;
-   short sex;
-   short level;
    std::bitset<MAX_BITSET> act;
+   short ac_mod;
    int affected_by;
    short alignment;
-   short ac_mod; /* ac modifier */
-   short hr_mod; /* hitroll modifier */
-   short dr_mod; /* damroll modifier */
-   char *target;  /* last ch to attack */
-   MPROG_DATA *first_mprog;   /* Used by MOBprogram   */
-   MPROG_DATA *last_mprog;
-   int progtypes; /* Used by MOBprogram   */
-   int skills; /* skill flags       */
-   int power_skills;
-   int cast;   /* casting flags  */
-   int power_cast;
-   int def; /* casting flags  */
-   int strong_magic;
-   int weak_magic;
-   int resist;
-   int suscept;
-   int race_mods;
-   short p_class;
+   AREA_DATA *area;
+   int cast;
    short clan;
-   short race;
-   short position;
+   short count;
+   int def;
+   char *description;
+   short dr_mod;
+   short hr_mod;
+   MPROG_DATA *first_mprog;
    int hunt_flags;
-   float speed[4];
-   short learned[MAX_SKILL]; /* To replace skill/cast flags */
+   bool is_free;
+   short killed;
+   MPROG_DATA *last_mprog;
+   short learned[MAX_SKILL];
+   short level;
+   char *long_descr;
+   MOB_INDEX_DATA *next;
+   char *player_name;
+   short position;
+   int power_cast;
+   int power_skills;
+   int progtypes;
+   SHOP_DATA *pShop;
+   short p_class;
+   short race;
+   int race_mods;
+   int resist;
+   short sex;
+   char *short_descr;
+   int skills;
+   SPEC_FUN *spec_fun;
+   float speed[MAX_SPEED];
+   int strong_magic;
+   int suscept;
+   char *target;
+   int vnum;
+   int weak_magic;
 };
 
 
@@ -676,7 +676,7 @@ class char_data
    MONEY_TYPE *money;
    MONEY_TYPE *bank_money;
    NPC_GROUP_DATA *ngroup;
-   float speed[4];
+   float speed[MAX_SPEED];
 };
 
 
