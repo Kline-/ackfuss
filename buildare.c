@@ -502,8 +502,8 @@ void build_setarea( CHAR_DATA * ch, char *argument )
             {
                if( str_cmp( name, argn ) )   /* i.e. not the same */
                {
-                  xcat( buffer, name );
-                  xcat( buffer, " " );
+                  strncat( buffer, name, MIL );
+                  strncat( buffer, " ", MIL );
                }
                oldperm = one_argument( oldperm, name );
             }
@@ -550,8 +550,8 @@ void build_setarea( CHAR_DATA * ch, char *argument )
          {
             if( str_cmp( name, argn ) )   /* i.e. not the same */
             {
-               xcat( buffer, name );
-               xcat( buffer, " " );
+               strncat( buffer, name, MIL );
+               strncat( buffer, " ", MIL );
             }
             oldperm = one_argument( oldperm, name );
          }
@@ -709,7 +709,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
          if( pArea->first_area_room != NULL )
             pRoomIndex = (ROOM_INDEX_DATA *)pArea->first_area_room->data;
          snprintf( buf, MSL, "[%5d] %s\n\r", pArea->first_area_room != NULL ? pRoomIndex->vnum : 0, pArea->name );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
       }
    }
 
@@ -738,44 +738,44 @@ void build_showarea( CHAR_DATA * ch, char *argument )
    buf[0] = '\0';
 
    snprintf( buffer, MSL, "\n\rTitle: %s\n\r", pArea->name );
-   xcat( buf, buffer );
+   strncat( buf, buffer, MSL );
    snprintf( buffer, MSL, "Keyword: %s\n\r", pArea->keyword );
-   xcat( buf, buffer );
+   strncat( buf, buffer, MSL );
    snprintf( buffer, MSL, "Level Label: %s\n\r", pArea->level_label );
-   xcat( buf, buffer );
+   strncat( buf, buffer, MSL );
    snprintf( buffer, MSL, "Repop Rate: %i\n\r", pArea->reset_rate );
-   xcat( buf, buffer );
+   strncat( buf, buffer, MSL );
    snprintf( buffer, MSL, "Reset Message: %s\n\r", pArea->reset_msg );
-   xcat( buf, buffer );
+   strncat( buf, buffer, MSL );
 
    if( get_trust( ch ) >= MAX_LEVEL - 1 )
    {
       snprintf( buffer, MSL, "Filename: %s\n\r", pArea->filename );
-      xcat( buf, buffer );
+      strncat( buf, buffer, MSL );
    }
 
    snprintf( buffer, MSL, "Owner: %s\n\rCan Read: %s\n\rCan Write: %s\n\r", pArea->owner, pArea->can_read, pArea->can_write );
-   xcat( buf, buffer );
+   strncat( buf, buffer, MSL );
 
    snprintf( buffer, MSL, "Min Vnum: %5d    Max Vnum: %5d      Gold: %i\n\r", pArea->min_vnum, pArea->max_vnum, pArea->gold );
-   xcat( buf, buffer );
+   strncat( buf, buffer, MSL );
    snprintf( buffer, MSL, "Min Level: %5d    Max Level: %5d \n\r", pArea->min_level, pArea->max_level );
-   xcat( buf, buffer );
+   strncat( buf, buffer, MSL );
 
    if( pArea->flags.test(AFLAG_PAYAREA) )
-      xcat( buf, "This is a pay area.\n\r" );
-   if( !pArea->flags.test(AFLAG_TELEPORT) )
-      xcat( buf, "You cannot teleport into here.\n\r" );
+      strncat( buf, "This is a pay area.\n\r", MSL );
+   if( pArea->flags.test(AFLAG_TELEPORT) )
+      strncat( buf, "You cannot teleport into here.\n\r", MSL );
    if( pArea->flags.test(AFLAG_BUILDING) )
-      xcat( buf, "Area currently being built.\n\r" );
+      strncat( buf, "Area currently being built.\n\r", MSL );
    if( pArea->flags.test(AFLAG_NOSHOW) )
-      xcat( buf, "Area title will not be shown on area list.\n\r" );
+      strncat( buf, "Area title will not be shown on area list.\n\r", MSL );
    else
-      xcat( buf, "Area title will show on area list.\n\r" );
+      strncat( buf, "Area title will show on area list.\n\r", MSL );
    if( pArea->flags.test(AFLAG_NO_ROOM_AFF) )
-      xcat( buf, "Bad Room Affect spells are not allowed.\n\r" );
+      strncat( buf, "Bad Room Affect spells are not allowed.\n\r", MSL );
    else
-      xcat( buf, "Bad Room Affect spells may be used.\n\r" );
+      strncat( buf, "Bad Room Affect spells may be used.\n\r", MSL );
 
    send_to_char( buf, ch );
    return;
@@ -799,14 +799,14 @@ void build_arealist( CHAR_DATA * ch, char *argument )
       stop_counter++;
       if( stop_counter > 40 )
       {
-         xcat( msg, buf );
+         strncat( msg, buf, MSL );
          stop_counter = 0;
          send_to_char( msg, ch );
          msg[0] = '\0';
       }
       else
       {
-         xcat( msg, buf );
+         strncat( msg, buf, MSL );
       }
    }
 
