@@ -246,7 +246,7 @@ void build_save_area(  )
  short i = 0;
 
  fprintf( SaveFile, "#AREA\n" );
- fprintf( SaveFile, "Revision  %d\n", AREA_VERSION );
+ fprintf( SaveFile, "Revision  %d\n", AREA_VERSION );  /* Must be first for sanity checks --Kline */
  fprintf( SaveFile, "CanRead   %s~\n", CurSaveArea->can_read );
  fprintf( SaveFile, "CanWrite  %s~\n", CurSaveArea->can_write );
 
@@ -274,7 +274,7 @@ void build_save_mobs(  )
 {
    MOB_INDEX_DATA *pMobIndex;
    MPROG_DATA *mprg;
-   int finish_progs;
+   short i = 0;
 
    if( Pointer == NULL )   /* Start */
    {
@@ -284,61 +284,62 @@ void build_save_mobs(  )
          return;
       }
       send_to_char( "Saving mobs.\n", CurSaveChar );
-      fprintf( SaveFile, "#MOBILES\n" );
+      fprintf( SaveFile, "\n#MOBILE\n" );
       Pointer = CurSaveArea->first_area_mobile;
    }
 
    pMobIndex = (MOB_INDEX_DATA *)Pointer->data;
-   fprintf( SaveFile, "#%i\n", pMobIndex->vnum );
-   fprintf( SaveFile, "%s~\n", pMobIndex->player_name );
-   fprintf( SaveFile, "%s~\n", pMobIndex->short_descr );
-   fprintf( SaveFile, "%s~\n", pMobIndex->long_descr );
-   fprintf( SaveFile, "%s~\n", pMobIndex->description );
-   fprintf( SaveFile, "%i %i\n", pMobIndex->affected_by, pMobIndex->alignment );
-   fprintf( SaveFile, "%i %i\n", pMobIndex->level, pMobIndex->sex );
-   fprintf( SaveFile, "%i %i %i\n", pMobIndex->ac_mod, pMobIndex->hr_mod, pMobIndex->dr_mod );
 
+   fprintf( SaveFile, "Vnum      %d\n", pMobIndex->vnum );  /* Must be first for sanity checks --Kline */
+   fprintf( SaveFile, "AcMod     %d\n", pMobIndex->ac_mod );
 
-   /*
-    * Write out new details - clan, class, race and skills
-    * * The '!' signifies new section to load_mobiles() in db.c
-    */
+   fprintf( SaveFile, "Act       " );
+   for( i = 0; i < MAX_BITSET; i++ )
+    if( pMobIndex->act.test(i) )
+     fprintf( SaveFile, "%d ", i );
+   fprintf( SaveFile, "EOL\n" );
 
-
-   fprintf( SaveFile, "! %i %i %i %i %i %i %i\n",
-            pMobIndex->p_class,
-            pMobIndex->clan, pMobIndex->race, pMobIndex->position, pMobIndex->skills, pMobIndex->cast, pMobIndex->def );
-   fprintf( SaveFile, "| %i %i %i %i %i %i %i\n",
-            pMobIndex->strong_magic,
-            pMobIndex->weak_magic,
-            pMobIndex->race_mods, pMobIndex->power_skills, pMobIndex->power_cast, pMobIndex->resist, pMobIndex->suscept );
-   fprintf( SaveFile, "%lu\n", pMobIndex->act.to_ulong() );
+   fprintf( SaveFile, "Affected  %d\n", pMobIndex->affected_by );
+   fprintf( SaveFile, "Alignment %d\n", pMobIndex->alignment );
+   fprintf( SaveFile, "Cast      %d\n", pMobIndex->cast );
+   fprintf( SaveFile, "Clan      %d\n", pMobIndex->clan );
+   fprintf( SaveFile, "Class     %d\n", pMobIndex->p_class );
+   fprintf( SaveFile, "Def       %d\n", pMobIndex->def );
+   fprintf( SaveFile, "Desc      %s~\n", pMobIndex->description );
+   fprintf( SaveFile, "DrMod     %d\n", pMobIndex->dr_mod );
+   fprintf( SaveFile, "HrMod     %d\n", pMobIndex->hr_mod );
+   fprintf( SaveFile, "Level     %d\n", pMobIndex->level );
+   fprintf( SaveFile, "LongDesc  %s~\n", pMobIndex->long_descr );
+   fprintf( SaveFile, "PCast     %d\n", pMobIndex->power_cast );
+   fprintf( SaveFile, "PlrName   %s~\n", pMobIndex->player_name );
+   fprintf( SaveFile, "Position  %d\n", pMobIndex->position );
+   fprintf( SaveFile, "PSkills   %d\n", pMobIndex->power_skills );
+   fprintf( SaveFile, "Race      %d\n", pMobIndex->race );
+   fprintf( SaveFile, "RaceMods  %d\n", pMobIndex->race_mods );
+   fprintf( SaveFile, "Resist    %d\n", pMobIndex->resist );
+   fprintf( SaveFile, "Sex       %d\n", pMobIndex->sex );
+   fprintf( SaveFile, "ShortDesc %s~\n", pMobIndex->short_descr );
+   fprintf( SaveFile, "Skills    %d\n", pMobIndex->skills );
+   fprintf( SaveFile, "SMagic    %d\n", pMobIndex->strong_magic );
+   fprintf( SaveFile, "Suscept   %d\n", pMobIndex->suscept );
+   fprintf( SaveFile, "WMagic    %d\n", pMobIndex->weak_magic );
+   fprintf( SaveFile, "End\n" );
 
    mprg = pMobIndex->first_mprog;
-   finish_progs = 0;
    while( mprg )
    {
-      if( mprg->filename == NULL )
-      {
-         fprintf( SaveFile, ">%s ", mprog_type_to_name( mprg->type ) );
-         fprintf( SaveFile, "%s~\n", mprg->arglist );
-         fprintf( SaveFile, "%s~\n", mprg->comlist );
-         finish_progs = 1;
-      }
+      fprintf( SaveFile, "#MOBPROG\n" );
+      fprintf( SaveFile, "ArgList %s~\n", mprg->arglist );
+      fprintf( SaveFile, "ComList %s~\n", mprg->comlist );
+      fprintf( SaveFile, "Type    %d\n", mprg->type );
+      fprintf( SaveFile, "End\n" );
       mprg = mprg->next;
    }
-   if( finish_progs )
-   {
-      fprintf( SaveFile, "|\n" );
-   }
-
 
    Pointer = Pointer->next;
-   if( Pointer == NULL )   /* End */
-   {
-      fprintf( SaveFile, "#0\n" );
-      Section++;
-   }
+   if( Pointer == NULL ) /* End */
+    Section++;
+
    return;
 }
 
@@ -494,7 +495,7 @@ void build_save_rooms(  )
    pRoomIndex = (ROOM_INDEX_DATA *)Pointer->data;
 
    fprintf( SaveFile, "\n#ROOM\n" );
-   fprintf( SaveFile, "Vnum  %d\n", pRoomIndex->vnum );
+   fprintf( SaveFile, "Vnum  %d\n", pRoomIndex->vnum );  /* Must be first for sanity checks --Kline */
    fprintf( SaveFile, "Desc  %s~\n", pRoomIndex->description );
 
    fprintf( SaveFile, "Flags " );
@@ -515,7 +516,7 @@ void build_save_rooms(  )
       if( pRoomIndex->exit[d] )
       {
          fprintf( SaveFile, "#DOOR\n" );
-         fprintf( SaveFile, "Dir     %d\n", d );
+         fprintf( SaveFile, "Dir     %d\n", d );  /* Must be first for sanity checks --Kline */
          pexit = pRoomIndex->exit[d];
          fprintf( SaveFile, "Desc    %s~\n", pexit->description );
 

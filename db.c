@@ -578,7 +578,7 @@ void load_areas( void )
             load_area( fpArea );
          else if( !str_cmp( word, "DOOR" ) )
             load_door( fpArea );
-         else if( !str_cmp( word, "MOBILES" ) )
+         else if( !str_cmp( word, "MOBILE" ) )
             load_mobiles( fpArea );
          else if( !str_cmp( word, "MOBPROGS" ) )
             load_mobprogs( fpArea );
@@ -1017,6 +1017,7 @@ void load_mobiles( FILE * fp )
    BUILD_DATA_LIST *pList;
    char buf[MSL];
    const char *word;
+   const char *tmp;
    bool fMatch = false;
    int vnum = 0, iHash = 0;
 
@@ -1046,6 +1047,67 @@ void load_mobiles( FILE * fp )
             fread_to_eol( fp );
             break;
 
+         case 'A':
+            KEY("AcMod",pMobIndex->ac_mod,fread_number(fp));
+            if( !str_cmp(word,"Act") )
+            {
+             tmp = fread_word(fp);
+
+             while( str_cmp(tmp,"EOL") )
+             {
+              pMobIndex->act.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = true;
+             break;
+            }
+            break;
+            KEY("Affected",pMobIndex->affected_by,fread_number(fp));
+            KEY("Alignment",pMobIndex->alignment,fread_number(fp));
+            break;
+
+         case 'C':
+            KEY("Cast",pMobIndex->cast,fread_number(fp));
+            KEY("Clan",pMobIndex->clan,fread_number(fp));
+            KEY("Class",pMobIndex->p_class,fread_number(fp));
+            break;
+
+         case 'D':
+            KEY("Def",pMobIndex->def,fread_number(fp));
+            SKEY("Desc",pMobIndex->description,fread_string(fp));
+            KEY("DrMod",pMobIndex->dr_mod,fread_number(fp));
+            break;
+
+         case 'H':
+            KEY("HrMod",pMobIndex->hr_mod,fread_number(fp));
+            break;
+
+         case 'L':
+            KEY("Level",pMobIndex->level,fread_number(fp));
+            SKEY("LongDesc",pMobIndex->long_descr,fread_string(fp));
+            break;
+
+         case 'P':
+            KEY("PCast",pMobIndex->power_cast,fread_number(fp));
+            SKEY("PlrName",pMobIndex->player_name,fread_string(fp));
+            KEY("Position",pMobIndex->position,fread_number(fp));
+            KEY("PSkills",pMobIndex->power_skills,fread_number(fp));
+            break;
+
+         case 'R':
+            KEY("Race",pMobIndex->race,fread_number(fp));
+            KEY("RaceMods", pMobIndex->race_mods,fread_number(fp));
+            KEY("Resist",pMobIndex->resist,fread_number(fp));
+            break;
+
+         case 'S':
+            KEY("Sex",pMobIndex->sex,fread_number(fp));
+            SKEY("ShortDesc",pMobIndex->short_descr,fread_string(fp));
+            KEY("Skills",pMobIndex->skills,fread_number(fp));
+            KEY("SMagic",pMobIndex->strong_magic,fread_number(fp));
+            KEY("Suscept",pMobIndex->suscept,fread_number(fp));
+            break;
+
          case 'V':
             if( !str_cmp(word,"Vnum") )
             {
@@ -1068,63 +1130,12 @@ void load_mobiles( FILE * fp )
             }
             break;
 
+         case 'W':
+            KEY("WMagic",pMobIndex->weak_magic,fread_number(fp));
+            break;
+
       }
 /*
-      pMobIndex->player_name = fread_string( fp );
-      pMobIndex->short_descr = fread_string( fp );
-      pMobIndex->long_descr = fread_string( fp );
-      pMobIndex->description = fread_string( fp );
-
-      pMobIndex->long_descr[0] = UPPER( pMobIndex->long_descr[0] );
-      pMobIndex->description[0] = UPPER( pMobIndex->description[0] );
-
-      pMobIndex->affected_by = fread_number( fp );
-      pMobIndex->alignment = fread_number( fp );
-
-      pMobIndex->level = number_fuzzy( fread_number( fp ) );
-      pMobIndex->sex = fread_number( fp );
-
-      pMobIndex->ac_mod = fread_number( fp );
-      pMobIndex->hr_mod = fread_number( fp );
-      pMobIndex->dr_mod = fread_number( fp );
-
-      letter = fread_letter( fp );
-      if( letter == '!' )
-      {
-         pMobIndex->p_class = fread_number( fp );
-         pMobIndex->clan = fread_number( fp );
-         pMobIndex->race = fread_number( fp );
-         pMobIndex->position = POS_STANDING;
-         fread_number( fp );
-         pMobIndex->skills = fread_number( fp );
-         pMobIndex->cast = fread_number( fp );
-         pMobIndex->def = fread_number( fp );
-         if( ( area_revision < 16 ) || ( pMobIndex->race < 0 ) )
-          pMobIndex->race = 0;
-      }
-      else
-         ungetc( letter, fp );
-      letter = fread_letter( fp );
-      if( letter == '|' )
-      {
-         pMobIndex->strong_magic = fread_number( fp );
-         pMobIndex->weak_magic = fread_number( fp );
-         pMobIndex->race_mods = fread_number( fp );
-         pMobIndex->power_skills = fread_number( fp );
-         pMobIndex->power_cast = fread_number( fp );
-         pMobIndex->resist = fread_number( fp );
-         pMobIndex->suscept = fread_number( fp );
-      }
-      else
-         ungetc( letter, fp );
-      if( area_revision >= 19 )
-      {
-       if( area_revision == 22 )
-        pMobIndex->act = fread_number( fp );
-       else
-        fread_to_eol(fp);
-      }
-      letter = fread_letter( fp );
       if( letter == '>' )
       {
          ungetc( letter, fp );
@@ -1471,8 +1482,8 @@ void load_rextra( FILE * fp )
 
  if( room_load == NULL )
  {
-  bug( "Load_door: no #ROOM seen yet.", 0 );
-  hang( "Loading doors in db.c" );
+  bug( "Load_rextra: no #ROOM seen yet.", 0 );
+  hang( "Loading Rextras in db.c" );
  }
 
  pEd = new EXTRA_DESCR_DATA;
@@ -4007,7 +4018,7 @@ void mprog_file_read( char *f, MOB_INDEX_DATA * pMobIndex )
    snprintf( name, MSL, "%s%s", MOB_DIR, f );
    if( !( fp = file_open( name, "r" ) ) )
    {
-      bug( "Mob: %d couldn't opne mobprog file.", pMobIndex->vnum );
+      bug( "Mob: %d couldn't open mobprog file.", pMobIndex->vnum );
       return;
    }
    permf = str_dup( f );
