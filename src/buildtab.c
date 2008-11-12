@@ -1149,14 +1149,14 @@ char *bit_table_lookup( LOOKUP_TYPE *table, unsigned long int number )
       if( ( number & table[a].value ) == table[a].value &&
           str_cmp( table[a].text, "nada" ) && str_cmp( table[a].text, "placeholder" ) )
       {
-         xcat( buf, table[a].text );
-         xcat( buf, ", " );
+         strncat( buf, table[a].text, MSL );
+         strncat( buf, ", ", MSL );
          number &= ~table[a].value;
       }
    }
 
    if( buf[0] == '\0' )
-      xcat( buf, "None." );
+      strncat( buf, "None.", MSL );
    else
    {
       a = strlen( buf );
@@ -1177,9 +1177,9 @@ void table_printout( LOOKUP_TYPE *table, char *buf )
    {
       if( ( strcmp( table[a].text, "nada" ) ) && ( strcmp( table[a].text, "placeholder" ) ) )   /* If not an invalid choice */
       {
-         xcat_2( buf, "          " );
-         xcat_2( buf, table[a].text );
-         xcat_2( buf, "\n\r" );
+         strncat( buf, "          ", MSL );
+         strncat( buf, table[a].text, MSL );
+         strncat( buf, "\n\r", MSL );
       }
    }
 
@@ -1205,14 +1205,14 @@ void wide_table_printout( LOOKUP_TYPE *table, char *buf )
       if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
           && ( strcmp( table[a].text, "nada" ) ) )
       {
-         xcat_2( buf, "     " );
+         strncat( buf, "     ", MSL );
          snprintf( tmp, MSL, "%12s", table[a].text );
-         xcat_2( buf, tmp );
+         strncat( buf, tmp, MSL );
          if( ++foo % 4 == 0 )
-            xcat_2( buf, "\n\r" );
+            strncat( buf, "\n\r", MSL );
       }
    }
-   xcat_2( buf, "\n\r" );
+   strncat( buf, "\n\r", MSL );
    return;
 }
 
@@ -1233,16 +1233,16 @@ char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit )
       if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
           && ( strcmp( table[a].text, "placeholder" ) ) )
       {
-         xcat( buf, "     " );
+         strncat( buf, "     ", MSL );
          snprintf( tmp, MSL, "%s%-13s",
                   fBit ? ( IS_SET( value, table[a].value ) ? "@@y*" : "@@g " ) :
                   ( value == table[a].value ? "@@y*" : "@@g " ), table[a].text );
-         xcat( buf, tmp );
+         strncat( buf, tmp, MSL );
          if( ++foo % 4 == 0 )
-            xcat( buf, "\n\r" );
+            strncat( buf, "\n\r", MSL );
       }
    }
-   xcat( buf, "@@g\n\r" );
+   strncat( buf, "@@g\n\r", MSL );
    return ( buf );
 }
 
@@ -1263,14 +1263,14 @@ char *bs_show_values( LOOKUP_TYPE *table, std::bitset<MAX_BITSET> &bit )
       if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
           && ( strcmp( table[a].text, "placeholder" ) ) )
       {
-         xcat( buf, "     " );
+         strncat( buf, "     ", MSL );
          snprintf( tmp, MSL, "%s%-13s",
                   bit.test(table[a].value) ? "@@y*" : "@@g ",table[a].text);
-         xcat( buf, tmp );
+         strncat( buf, tmp, MSL );
          if( ++foo % 4 == 0 )
-            xcat( buf, "\n\r" );
+            strncat( buf, "\n\r", MSL );
       }
    }
-   xcat( buf, "@@g\n\r" );
+   strncat( buf, "@@g\n\r", MSL );
    return ( buf );
 }
