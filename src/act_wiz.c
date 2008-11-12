@@ -1002,7 +1002,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    xcat( buf1, buf );
 
    snprintf( buf, MSL, "Short description: %s.\n\rLong  description: %s\n\r",
-            victim->short_descr, victim->long_descr[0] != '\0' ? victim->long_descr : "(none).\n\r" );
+            victim->short_descr, victim->long_descr[0] != '\0' ? victim->long_descr : "(none)." );
    xcat( buf1, buf );
 
    if( IS_NPC( victim ) )

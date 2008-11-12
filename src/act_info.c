@@ -473,6 +473,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    if( victim->position == POS_STANDING && victim->long_descr[0] != '\0' )
    {
       xcat( buf, victim->long_descr );
+      xcat( buf, "\n\r" );
       xcat( buf, color_string( ch, "normal" ) );
 
       if( ( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
@@ -641,6 +642,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
    if( victim->description[0] != '\0' )
    {
       send_to_char( victim->description, ch );
+      send_to_char( "\n\r", ch);
    }
    else
    {

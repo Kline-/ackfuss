@@ -455,8 +455,8 @@ void build_showmob( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "@@WRace Mods:@@y %s\n\r", bit_table_lookup( tab_mob_race_mods, pMob->race_mods ) );
    xcat( buf1, buf );
 
-   snprintf( buf, MSL, "@@WShort description: @@y%s.\n\r@@WLong  description: @@y%s",
-            pMob->short_descr, pMob->long_descr[0] != '\0' ? pMob->long_descr : "(none).\n\r" );
+   snprintf( buf, MSL, "@@WShort description: @@y%s.\n\r@@WLong description: @@y%s\n\r",
+            pMob->short_descr, pMob->long_descr[0] != '\0' ? pMob->long_descr : "(none)." );
    xcat( buf1, buf );
 
    if( pMob->spec_fun != 0 )
