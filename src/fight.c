@@ -1087,8 +1087,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                explosion->level = 120;
                free_string( explosion->short_descr );
                explosion->short_descr = str_dup( "@@mConflagration@@N" );
-               free_string( explosion->description );
-               explosion->description = str_dup( "@@N A @@eFlaming @@NStaff of @@aIce@@N is supsended in mid air!" );
+               free_string( explosion->long_descr );
+               explosion->long_descr = str_dup( "@@N A @@eFlaming @@NStaff of @@aIce@@N is supsended in mid air!" );
 
                elemental->level = 140;
                free_string( elemental->name );
@@ -2319,9 +2319,9 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    free_string( corpse->short_descr );
    corpse->short_descr = str_dup( buf );
 
-   snprintf( buf, MSL, corpse->description, name );
-   free_string( corpse->description );
-   corpse->description = str_dup( buf );
+   snprintf( buf, MSL, corpse->long_descr, name );
+   free_string( corpse->long_descr );
+   corpse->long_descr = str_dup( buf );
    OREF( obj_next, OBJ_NEXTCONTENT );
    for( obj = ch->first_carry; obj != NULL; obj = obj_next )
    {
@@ -5167,9 +5167,9 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
       free_string( obj->short_descr );
       obj->short_descr = str_dup( buf );
 
-      snprintf( buf, MSL, obj->description, name );
-      free_string( obj->description );
-      obj->description = str_dup( buf );
+      snprintf( buf, MSL, obj->long_descr, name );
+      free_string( obj->long_descr );
+      obj->long_descr = str_dup( buf );
 
       obj_to_room( obj, ch->in_room );
    }

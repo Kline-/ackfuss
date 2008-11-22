@@ -177,6 +177,13 @@ note_data::~note_data()
  free_string(sender);
 }
 
+obj_index_data::~obj_index_data()
+{
+ free_string(name);
+ free_string(short_descr);
+ free_string(long_descr);
+}
+
 pc_data::~pc_data()
 {
 }

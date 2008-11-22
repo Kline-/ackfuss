@@ -826,8 +826,11 @@ struct trigger_data
 };
 
 
-struct obj_index_data
+class obj_index_data
 {
+ public:
+  obj_index_data();
+  ~obj_index_data();
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    OBJ_INDEX_DATA *next;
    EXTRA_DESCR_DATA *first_exdesc;
@@ -843,7 +846,7 @@ struct obj_index_data
    char *name;
    short level;
    char *short_descr;
-   char *description;
+   char *long_descr;
    int vnum;
    int item_type;
    int extra_flags;
@@ -897,7 +900,7 @@ struct obj_data
    char *owner;
    char *name;
    char *short_descr;
-   char *description;
+   char *long_descr;
    int item_type;
    int extra_flags;
    int wear_flags;

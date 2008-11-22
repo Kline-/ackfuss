@@ -155,8 +155,8 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
    }
    else
    {
-      if( obj->description != NULL )
-         xcat( buf, obj->description );
+      if( obj->long_descr != NULL )
+         xcat( buf, obj->long_descr );
    }
    xcat( buf, color_string( ch, "normal" ) );
    return buf;
@@ -304,7 +304,7 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
     */
    for( obj = list; obj != NULL; obj = obj->next_in_room )
    {
-      if( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) && str_cmp( obj->description, "" ) )
+      if( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) && str_cmp( obj->long_descr, "" ) )
       {
          pstrShow = format_obj_to_char( obj, ch, fShort );
          fCombine = FALSE;
@@ -1080,7 +1080,7 @@ void do_look( CHAR_DATA * ch, char *argument )
 
       if( is_name( arg1, obj->name ) )
       {
-         send_to_char( obj->description, ch );
+         send_to_char( obj->long_descr, ch );
          return;
       }
    }
@@ -1109,7 +1109,7 @@ void do_look( CHAR_DATA * ch, char *argument )
 
       if( is_name( arg1, obj->name ) )
       {
-         send_to_char( obj->description, ch );
+         send_to_char( obj->long_descr, ch );
          act( "$L$n closely examines $p.", ch, obj, NULL, TO_ROOM );
          return;
       }

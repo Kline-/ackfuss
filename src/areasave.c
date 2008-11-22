@@ -377,7 +377,7 @@ void build_save_mobprogs(  )
 
 void build_save_objects(  )
 {
-   OBJ_INDEX_DATA *pObject;
+   OBJ_INDEX_DATA *pObjIndex;
    AFFECT_DATA *pAf;
    EXTRA_DESCR_DATA *pEd;
    int val0, val1, val2, val3;
@@ -390,23 +390,25 @@ void build_save_objects(  )
          return;
       }
       send_to_char( "Saving objects.\n", CurSaveChar );
-      fprintf( SaveFile, "#OBJECTS\n" );
+      fprintf( SaveFile, "\n#OBJECT\n" );
       Pointer = CurSaveArea->first_area_object;
    }
 
-   pObject = (OBJ_INDEX_DATA *)Pointer->data;
+   pObjIndex = (OBJ_INDEX_DATA *)Pointer->data;
 
-   fprintf( SaveFile, "#%i\n", pObject->vnum );
-   fprintf( SaveFile, "%s~\n", pObject->name );
-   fprintf( SaveFile, "%s~\n", pObject->short_descr );
-   fprintf( SaveFile, "%s~\n", pObject->description );
+   fprintf( SaveFile, "Vnum      %d\n", pObjIndex->vnum );  /* Must be first for sanity checks --Kline */
+   fprintf( SaveFile, "LongDesc  %s~\n", pObjIndex->long_descr );
+   fprintf( SaveFile, "Name      %s~\n", pObjIndex->name );
+   fprintf( SaveFile, "ShortDesc %s~\n", pObjIndex->short_descr );
+   fprintf( SaveFile, "End\n" );
+/*
    fprintf( SaveFile, "%i %i %i %i\n", pObject->item_type, pObject->extra_flags, pObject->wear_flags, pObject->item_apply );
    fprintf( SaveFile, "%0.2f\n", pObject->speed );
    fprintf( SaveFile, "%d\n", pObject->max_durability );
 
-   /*
+
     * Check for pills, potions, scrolls, staffs and wands.  
-    */
+
    val0 = pObject->value[0];
    val1 = pObject->value[1];
    val2 = pObject->value[2];
@@ -459,17 +461,10 @@ void build_save_objects(  )
       fprintf( SaveFile, "L\n" );
       fprintf( SaveFile, "%d\n", 1 );
    }
-
-   /*
-    * Now for Envy... taken from my OLC :P 
-    */
-
+*/
    Pointer = Pointer->next;
-   if( Pointer == NULL )   /* End */
-   {
-      fprintf( SaveFile, "#0\n" );
-      Section++;
-   }
+   if( Pointer == NULL ) /* End */
+    Section++;
 
    return;
 }

@@ -528,7 +528,7 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
    fprintf( fp, "Nest         %d\n", iNest );
    fprintf( fp, "Name         %s~\n", obj->name );
    fprintf( fp, "ShortDescr   %s~\n", obj->short_descr );
-   fprintf( fp, "Description  %s~\n", obj->description );
+   fprintf( fp, "Description  %s~\n", obj->long_descr );
    fprintf( fp, "Durability   %d %d\n", obj->durability, obj->max_durability );
    fprintf( fp, "Vnum         %d\n", obj->pIndexData->vnum );
    fprintf( fp, "ExtraFlags   %d\n", obj->extra_flags );
@@ -1567,7 +1567,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
    *obj = obj_zero;
    obj->name = str_dup( "" );
    obj->short_descr = str_dup( "" );
-   obj->description = str_dup( "" );
+   obj->long_descr = str_dup( "" );
    {
       MONEY_TYPE *money;
       short cnt;
@@ -1622,7 +1622,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'D':
-            SKEY( "Description", obj->description, fread_string( fp ) );
+            SKEY( "Description", obj->long_descr, fread_string( fp ) );
             if( !str_cmp( word, "Durability" ) )
             {
              obj->durability = fread_number( fp );
@@ -1920,7 +1920,7 @@ void fread_corpse( FILE * fp )
    *obj = obj_zero;
    obj->name = str_dup( "" );
    obj->short_descr = str_dup( "" );
-   obj->description = str_dup( "" );
+   obj->long_descr = str_dup( "" );
    {
       MONEY_TYPE *money;
       short cnt;
@@ -1976,7 +1976,7 @@ void fread_corpse( FILE * fp )
             break;
 
          case 'D':
-            SKEY( "Description", obj->description, fread_string( fp ) );
+            SKEY( "Description", obj->long_descr, fread_string( fp ) );
             break;
 
          case 'E':
@@ -2255,7 +2255,7 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
    fprintf( fp, "Nest         %d\n", iNest );
    fprintf( fp, "Name         %s~\n", obj->name );
    fprintf( fp, "ShortDescr   %s~\n", obj->short_descr );
-   fprintf( fp, "Description  %s~\n", obj->description );
+   fprintf( fp, "Description  %s~\n", obj->long_descr );
    fprintf( fp, "Vnum         %d\n", obj->pIndexData->vnum );
    fprintf( fp, "ExtraFlags   %d\n", obj->extra_flags );
    fprintf( fp, "WearFlags    %d\n", obj->wear_flags );

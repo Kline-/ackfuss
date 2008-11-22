@@ -255,8 +255,8 @@ void init_mm args( ( void ) );
 void load_areas args( ( void ) );
 void load_area args( ( FILE * fp ) );
 void load_door args( ( FILE * fp ) );
-void load_mobiles args( ( FILE * fp ) );
-void load_objects args( ( FILE * fp ) );
+void load_mobile args( ( FILE * fp ) );
+void load_object args( ( FILE * fp ) );
 void load_resets args( ( FILE * fp ) );
 void load_rextra args( ( FILE * fp ) );
 void load_room args( ( FILE * fp ) );
@@ -579,11 +579,11 @@ void load_areas( void )
          else if( !str_cmp( word, "DOOR" ) )
             load_door( fpArea );
          else if( !str_cmp( word, "MOBILE" ) )
-            load_mobiles( fpArea );
+            load_mobile( fpArea );
          else if( !str_cmp( word, "MOBPROGS" ) )
             load_mobprogs( fpArea );
-         else if( !str_cmp( word, "OBJECTS" ) )
-            load_objects( fpArea );
+         else if( !str_cmp( word, "OBJECT" ) )
+            load_object( fpArea );
          else if( !str_cmp( word, "RESETS" ) )
             load_resets( fpArea );
          else if( !str_cmp( word, "REXTRA" ) )
@@ -1011,7 +1011,7 @@ void load_bans( void )
 /*
  * Snarf a mob section.
  */
-void load_mobiles( FILE * fp )
+void load_mobile( FILE * fp )
 {
    MOB_INDEX_DATA *pMobIndex;
    BUILD_DATA_LIST *pList;
@@ -1023,7 +1023,7 @@ void load_mobiles( FILE * fp )
 
    if( area_load == NULL )
    {
-    bug( "Load_mobiles: no #AREA seen yet.", 0 );
+    bug( "Load_mobile: no #AREA seen yet.", 0 );
     hang( "Loading Mobiles in db.c" );
    }
 
@@ -1114,7 +1114,7 @@ void load_mobiles( FILE * fp )
              vnum = fread_number(fp);
              if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
              {
-              snprintf(buf,MSL,"Load_mobiles: vnum %d out of bounds for %s.",vnum,area_load->filename);
+              snprintf(buf,MSL,"Load_mobile: vnum %d out of bounds for %s.",vnum,area_load->filename);
               log_string(buf);
              }
              fBootDb = FALSE;
@@ -1170,51 +1170,79 @@ void load_mobiles( FILE * fp )
 /*
  * Snarf an obj section.
  */
-void load_objects( FILE * fp )
+void load_object( FILE * fp )
 {
    OBJ_INDEX_DATA *pObjIndex;
    BUILD_DATA_LIST *pList;
-   short looper;
+   const char *word;
+   const char *tmp;
+   bool fMatch = false;
+   int vnum = 0, iHash = 0;
    char buf[MSL];
+
+   if( area_load == NULL )
+   {
+    bug( "Load_object: no #AREA seen yet.", 0 );
+    hang( "Loading Objects in db.c" );
+   }
+
+   pObjIndex = new OBJ_INDEX_DATA;
+   pObjIndex->area = area_load;
 
    for( ;; )
    {
-      int vnum;
-      char letter;
-      int iHash;
 
-      if( area_load == NULL )
-      {
-       bug( "Load_objects: no #AREA seen yet.", 0 );
-       exit( 1 );
-      }
+      word = fread_word( fp );
+      fMatch = false;
 
-      letter = fread_letter( fp );
-      if( letter != '#' )
-      {
-         bug( "Load_objects: # not found.", 0 );
-         hang( "Loading Objects in db.c" );
-      }
-
-      vnum = fread_number( fp );
-      if( vnum == 0 )
+      if( !str_cmp(word,"End") )
          break;
 
-      if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
+      switch( UPPER( word[0] ) )
       {
-       snprintf(buf,MSL,"Load_objects: vnum %d out of bounds for %s.",vnum,area_load->filename);
-       log_string(buf);
-      }
+         case '*':
+            fMatch = true;
+            fread_to_eol( fp );
+            break;
 
-      fBootDb = FALSE;
-      if( get_obj_index( vnum ) != NULL )
-      {
-         bug( "Load_objects: vnum %d duplicated.", vnum );
-         hang( "Loading Objects in db.c" );
-      }
-      fBootDb = TRUE;
+         case 'L':
+            SKEY("LongDesc",pObjIndex->long_descr,fread_string(fp));
+            break;
 
-      GET_FREE( pObjIndex, oid_free );
+         case 'N':
+            SKEY("Name",pObjIndex->name,fread_string(fp));
+            break;
+
+         case 'S':
+            SKEY("ShortDesc",pObjIndex->short_descr,fread_string(fp));
+            break;
+
+         case 'V':
+            if( !str_cmp(word,"Vnum") )
+            {
+             vnum = fread_number(fp);
+             if( vnum < area_load->min_vnum || vnum > area_load->max_vnum )
+             {
+              snprintf(buf,MSL,"Load_object: vnum %d out of bounds for %s.",vnum,area_load->filename);
+              log_string(buf);
+             }
+             fBootDb = FALSE;
+             if( get_obj_index( vnum ) != NULL )
+             {
+              bug( "Load_object: vnum %d duplicated.", vnum );
+              hang( "Loading Objects in db.c" );
+             }
+             fBootDb = TRUE;
+             pObjIndex->vnum = vnum;
+             fMatch = true;
+             break;
+            }
+            break;
+
+      }
+   }
+
+  /*
       pObjIndex->vnum = vnum;
       pObjIndex->area = area_load;
       pObjIndex->name = fread_string( fp );
@@ -1286,9 +1314,9 @@ void load_objects( FILE * fp )
          }
       }
 
-      /*
+      
        * Translate spell "slot numbers" to internal "skill numbers."
-       */
+       
       switch ( pObjIndex->item_type )
       {
          case ITEM_PILL:
@@ -1304,16 +1332,20 @@ void load_objects( FILE * fp )
             pObjIndex->value[3] = slot_lookup( pObjIndex->value[3] );
             break;
       }
+*/
 
-      iHash = vnum % MAX_KEY_HASH;
-      SING_TOPLINK( pObjIndex, obj_index_hash[iHash], next );
-/* MAG Mod */
-      GET_FREE( pList, build_free );
-      pList->data = pObjIndex;
-      LINK( pList, area_load->first_area_object, area_load->last_area_object, next, prev );
-
-      top_obj_index++;
+   if( !fMatch )
+   {
+    snprintf( log_buf, (2 * MIL), "Loading in obj :%s (%s), no match for ( %s ).", area_load->name, pObjIndex->short_descr, word );
+    monitor_chan( log_buf, MONITOR_BAD );
+    fread_to_eol( fp );
    }
+
+   iHash = vnum % MAX_KEY_HASH;
+   SING_TOPLINK( pObjIndex, obj_index_hash[iHash], next );
+   GET_FREE( pList, build_free );
+   pList->data = pObjIndex;
+   LINK( pList, area_load->first_area_object, area_load->last_area_object, next, prev );
 
    return;
 }
@@ -2705,7 +2737,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 
    obj->name = str_dup( pObjIndex->name );
    obj->short_descr = str_dup( pObjIndex->short_descr );
-   obj->description = str_dup( pObjIndex->description );
+   obj->long_descr = str_dup( pObjIndex->long_descr );
    obj->item_type = pObjIndex->item_type;
    obj->extra_flags = pObjIndex->extra_flags;
    obj->wear_flags = pObjIndex->wear_flags;
@@ -4101,7 +4133,7 @@ void mprog_read_programs( FILE * fp, MOB_INDEX_DATA * pMobIndex )
          break;
       else if( letter != '>' )
       {
-         bug( "Load_mobiles: vnum %d MOBPROG char", pMobIndex->vnum );
+         bug( "Load_mobile: vnum %d MOBPROG char", pMobIndex->vnum );
          ungetc( letter, fp );
          return;
       }
@@ -4109,7 +4141,7 @@ void mprog_read_programs( FILE * fp, MOB_INDEX_DATA * pMobIndex )
       switch ( type )
       {
          case ERROR_PROG:
-            bug( "Load_mobiles: vnum %d MOBPROG type.", pMobIndex->vnum );
+            bug( "Load_mobile: vnum %d MOBPROG type.", pMobIndex->vnum );
             fread_to_eol( fp );
             return;
          case IN_FILE_PROG:

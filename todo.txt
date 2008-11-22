@@ -1,0 +1,8 @@
+resume .h progress -- stopped at comm.h
+change xcat to strncat (MSL on end)
+finish area file format for ROOMS, OBJS, MOBS
+ensure all CLASS have utilized ctor/dtor when possible
+use more bitsets!
+alpha re-organize all CLASS and ctor/dtor
+pcdata dtor/ctor
+clear_char to char_data ctor

@@ -351,7 +351,7 @@ static void walk_obj_index_data( OBJ_INDEX_DATA * o )
 
    touch( o->name );
    touch( o->short_descr );
-   touch( o->description );
+   touch( o->long_descr );
    touch( o->owner );
 }
 
@@ -369,7 +369,7 @@ static void walk_obj_data( OBJ_DATA * o )
    touch( o->owner );
    touch( o->name );
    touch( o->short_descr );
-   touch( o->description );
+   touch( o->long_descr );
 #ifdef DEBUG_MONEY
    if( o->money )
       touch( o->money->money_key );

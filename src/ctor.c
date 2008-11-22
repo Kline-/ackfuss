@@ -149,6 +149,10 @@ note_data::note_data()
  date_stamp = 0;
 }
 
+obj_index_data::obj_index_data()
+{
+}
+
 pc_data::pc_data()
 {
 }

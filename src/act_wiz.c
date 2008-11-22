@@ -747,7 +747,7 @@ void do_ostat( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "Vnum: %d.  Type: %s.\n\r", obj->pIndexData->vnum, item_type_name( obj ) );
    xcat( buf1, buf );
 
-   snprintf( buf, MSL, "Short description: %s.\n\rLong description: %s\n\r", obj->short_descr, obj->description );
+   snprintf( buf, MSL, "Short description: %s.\n\rLong description: %s\n\r", obj->short_descr, obj->long_descr );
    xcat( buf1, buf );
 
    snprintf( buf, MSL, "Wear bits: %s.\n\rExtra bits: %s.\n\r",
@@ -3461,8 +3461,8 @@ void do_oset( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "long" ) )
    {
-      free_string( obj->description );
-      obj->description = str_dup( arg3 );
+      free_string( obj->long_descr );
+      obj->long_descr = str_dup( arg3 );
       return;
    }
 
