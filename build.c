@@ -530,7 +530,7 @@ void build_showobj( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WType: @@y%s.\n\r", obj->vnum, tab_item_types[( obj->item_type ) - 1].text );
    xcat( buf1, buf );
 
-   snprintf( buf, MSL, "@@WShort description: @@y%s.\n\r@@WLong description: @@y%s\n\r", obj->short_descr, obj->description );
+   snprintf( buf, MSL, "@@WShort description: @@y%s.\n\r@@WLong description: @@y%s\n\r", obj->short_descr, obj->long_descr );
    xcat( buf1, buf );
 
    /*
@@ -2818,7 +2818,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "long" ) )
    {
-      build_strdup( &pObj->description, arg3, TRUE, TRUE, ch );
+      build_strdup( &pObj->long_descr, arg3, TRUE, TRUE, ch );
       return;
    }
 
@@ -3255,12 +3255,12 @@ void build_addobject( CHAR_DATA * ch, char *argument )
    ch->act_build = ACT_BUILD_OEDIT;
 
 
-   GET_FREE( pObjIndex, oid_free );
+   pObjIndex = new OBJ_INDEX_DATA;
    pObjIndex->vnum = vnum;
    pObjIndex->area = pArea;
    pObjIndex->name = str_dup( arg2 );
    pObjIndex->short_descr = &str_empty[0];
-   pObjIndex->description = &str_empty[0];
+   pObjIndex->long_descr = &str_empty[0];
    pObjIndex->owner = &str_empty[0];
    pObjIndex->level = 1;
    pObjIndex->item_type = 1;
@@ -4346,7 +4346,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
    /*
     * Now delete structure 
     */
-   PUT_FREE( pObjIndex, oid_free );
+   delete pObjIndex;
 
    top_obj_index--;
 
@@ -5984,9 +5984,9 @@ void build_clone( CHAR_DATA * ch, char *argument )
       if( this_obj->short_descr != NULL )
          free_string( this_obj->short_descr );
       this_obj->short_descr = str_dup( obj->short_descr );
-      if( this_obj->description != NULL )
-         free_string( this_obj->description );
-      this_obj->description = str_dup( obj->description );
+      if( this_obj->long_descr != NULL )
+         free_string( this_obj->long_descr );
+      this_obj->long_descr = str_dup( obj->long_descr );
       this_obj->item_type = obj->item_type;
       this_obj->extra_flags = obj->extra_flags;
       this_obj->wear_flags = obj->wear_flags;

@@ -3435,9 +3435,9 @@ void do_adapt( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "%s <adapted>", obj->short_descr );
    free_string( obj->short_descr );
    obj->short_descr = str_dup( buf );
-   snprintf( buf, MSL, "<adapted> %s", obj->description );
-   free_string( obj->description );
-   obj->description = str_dup( buf );
+   snprintf( buf, MSL, "<adapted> %s", obj->long_descr );
+   free_string( obj->long_descr );
+   obj->long_descr = str_dup( buf );
    send_to_char( "Your weapon is now adapted.\n\r", ch );
    return;
 }

@@ -438,9 +438,9 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       free_string( obj->short_descr );
       obj->short_descr = str_dup( buf );
 
-      snprintf( buf, MSL, obj->description, name );
-      free_string( obj->description );
-      obj->description = str_dup( buf );
+      snprintf( buf, MSL, obj->long_descr, name );
+      free_string( obj->long_descr );
+      obj->long_descr = str_dup( buf );
 
       obj_to_room( obj, ch->in_room );
    }

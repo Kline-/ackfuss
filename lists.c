@@ -86,7 +86,6 @@ BAN_DATA *ban_free = NULL;
 DESCRIPTOR_DATA *desc_free = NULL;
 EXTRA_DESCR_DATA *exdesc_free = NULL;
 OBJ_DATA *obj_free = NULL;
-OBJ_INDEX_DATA *oid_free = NULL;
 SUPER_DATA *super_free = NULL;
 RECORD_DATA *record_free = NULL;
 RESET_DATA *reset_free = NULL;
@@ -173,16 +172,6 @@ void exdesc_free_destructor( EXTRA_DESCR_DATA * eddat )
    free_string( eddat->description );
 }
 
-void oid_free_destructor( OBJ_INDEX_DATA * oidat )
-{
-   /*
-    * Free strings 
-    */
-   free_string( oidat->name );
-   free_string( oidat->short_descr );
-   free_string( oidat->description );
-}
-
 void mprog_free_destructor( MPROG_DATA * mpdat )
 {
    free_string( mpdat->arglist );
@@ -232,7 +221,7 @@ void obj_free_destructor( OBJ_DATA * odat )
 {
    free_string( odat->owner );
    free_string( odat->name );
-   free_string( odat->description );
+   free_string( odat->long_descr );
    free_string( odat->short_descr );
 }
 
