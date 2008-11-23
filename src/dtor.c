@@ -103,43 +103,6 @@ char_data::~char_data()
     if( raf->caster == this )
      raf->caster = NULL;
 
- if( pcdata )
- {
-  #ifdef IMC
-   imc_freechardata(this);
-  #endif
-  #ifdef I3
-   free_i3chardata(this);
-  #endif
-  PUT_FREE(pcdata->quest_info,quest_info_free);
-  PUT_FREE(pcdata->records,record_free);
-  PUT_FREE(pcdata->super,super_free);
-  free_string(pcdata->pwd);
-  free_string(pcdata->bamfin);
-  free_string(pcdata->room_enter);
-  free_string(pcdata->room_exit);
-  free_string(pcdata->bamfout);
-  free_string(pcdata->title);
-  free_string(pcdata->host);
-  free_string(pcdata->header);
-  free_string(pcdata->message);
-  free_string(pcdata->who_name);
-  free_string(pcdata->lastlogin);
-  free_string(pcdata->assist_msg);
-  for( i = 0; i < MAX_ALIASES; i++ )
-  {
-   free_string(pcdata->alias_name[i]);
-   free_string(pcdata->alias[i]);
-  }
-  for( i = 0; i < MAX_IGNORES; i++ )
-   free_string(pcdata->ignore_list[i]);
-  free_string(pcdata->load_msg);
-  free_string(pcdata->pedit_state);
-  for( i = 0; i < 5; i++ )
-   free_string(pcdata->pedit_string[i]);
-  free_string(pcdata->email_address);
- }
-
  free_string(name);
  free_string(short_descr);
  free_string(long_descr);
@@ -149,6 +112,13 @@ char_data::~char_data()
  free_string(old_prompt);
  free_string(searching);
  free_string(target);
+
+ #ifdef IMC
+  imc_freechardata(this);
+ #endif
+ #ifdef I3
+  free_i3chardata(this);
+ #endif
 
  delete current_brand;
  delete pnote;
@@ -198,6 +168,33 @@ obj_index_data::~obj_index_data()
 
 pc_data::~pc_data()
 {
+ PUT_FREE(quest_info,quest_info_free);
+ PUT_FREE(records,record_free);
+ PUT_FREE(super,super_free);
+ free_string(pwd);
+ free_string(bamfin);
+ free_string(room_enter);
+ free_string(room_exit);
+ free_string(bamfout);
+ free_string(title);
+ free_string(host);
+ free_string(header);
+ free_string(message);
+ free_string(who_name);
+ free_string(lastlogin);
+ free_string(assist_msg);
+ for( short i = 0; i < MAX_ALIASES; i++ )
+ {
+  free_string(alias_name[i]);
+  free_string(alias[i]);
+ }
+ for( short i = 0; i < MAX_IGNORES; i++ )
+  free_string(ignore_list[i]);
+ free_string(load_msg);
+ free_string(pedit_state);
+ for( short i = 0; i < 5; i++ )
+  free_string(pedit_string[i]);
+ free_string(email_address);
  is_free = true;
 }
 

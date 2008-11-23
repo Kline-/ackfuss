@@ -538,7 +538,7 @@ void build_showobj( CHAR_DATA * ch, char *argument )
     * xcat( buf1, buf);
     */
 
-   snprintf( buf, MSL, "@@WWear bits: @@y%s\n\r@@WExtra bits: @@y%s.\n\r",
+   snprintf( buf, MSL, "@@WWear bits:\n\r@@y%s\n\r@@WExtra bits:\n\r@@y%s\n\r",
             bs_show_values( tab_wear_flags, obj->wear_flags ), bs_show_values( tab_obj_flags, obj->extra_flags ) );
    /*
     * bit_table_lookup(tab_extra_flags, obj->extra_flags ) );
