@@ -76,7 +76,7 @@ char *item_type_name args( ( OBJ_DATA * obj ) );
 char *affect_loc_name args( ( int location ) );
 const char *affect_bit_name args( ( int vector ) );
 const char *raffect_bit_name args( ( int vector ) );
-const char *extra_bit_name args( ( int extra_flags ) );
+const char *extra_bit_name args( ( std::bitset<MAX_BITSET> &extra_flags ) );
 char *race_name args( ( CHAR_DATA * ch ) );
 char *short_race_name args( ( CHAR_DATA * ch ) );
 char *get_adept_name args( ( CHAR_DATA * ch ) );

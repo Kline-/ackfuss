@@ -521,18 +521,29 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
     */
 
    if( get_psuedo_level( ch ) + 5 < ( obj->level )
-       || obj->item_type == ITEM_KEY || obj->item_type == ITEM_BEACON || IS_SET( obj->extra_flags, ITEM_NOSAVE ) )
+       || obj->item_type == ITEM_KEY || obj->item_type == ITEM_BEACON || IS_OBJ_STAT(obj,ITEM_EXTRA_NO_SAVE) )
       return;
 
    fprintf( fp, "#OBJECT\n" );
    fprintf( fp, "Nest         %d\n", iNest );
    fprintf( fp, "Name         %s~\n", obj->name );
    fprintf( fp, "ShortDescr   %s~\n", obj->short_descr );
-   fprintf( fp, "Description  %s~\n", obj->long_descr );
+   fprintf( fp, "LongDescr    %s~\n", obj->long_descr );
    fprintf( fp, "Durability   %d %d\n", obj->durability, obj->max_durability );
    fprintf( fp, "Vnum         %d\n", obj->pIndexData->vnum );
-   fprintf( fp, "ExtraFlags   %d\n", obj->extra_flags );
-   fprintf( fp, "WearFlags    %d\n", obj->wear_flags );
+
+   fprintf( fp, "ExtraFlags   " );
+    for( short i = 0; i < MAX_BITSET; i++ )
+     if( obj->extra_flags.test(i) )
+      fprintf( fp, "%d ", i );
+   fprintf( fp, "EOL\n" );
+
+   fprintf( fp, "WearFlags   " );
+    for( short i = 0; i < MAX_BITSET; i++ )
+     if( obj->wear_flags.test(i) )
+      fprintf( fp, "%d ", i );
+   fprintf( fp, "EOL\n" );
+
    fprintf( fp, "WearLoc      %d\n", obj->wear_loc );
    fprintf( fp, "Money %d ", MAX_CURRENCY );
    for( foo = 0; foo < MAX_CURRENCY; foo++ )
@@ -1622,7 +1633,6 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'D':
-            SKEY( "Description", obj->long_descr, fread_string( fp ) );
             if( !str_cmp( word, "Durability" ) )
             {
              obj->durability = fread_number( fp );
@@ -1633,7 +1643,17 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'E':
-            KEY( "ExtraFlags", obj->extra_flags, fread_number( fp ) );
+            if( !str_cmp( word, "ExtraFlags" ) )
+            {
+             const char *tmp = fread_word(fp);
+             while( str_cmp(tmp,"EOL") )
+             {
+              obj->extra_flags.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = TRUE;
+             break;
+            }
 
             if( !str_cmp( word, "ExtraDescr" ) )
             {
@@ -1742,7 +1762,9 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
 
          case 'L':
             KEY( "Level", obj->level, fread_number( fp ) );
+            SKEY( "LongDescr", obj->long_descr, fread_string( fp ) );
             break;
+
          case 'M':
             if( !str_cmp( word, "Money" ) )
             {
@@ -1891,7 +1913,17 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                   KEY( "WearLoc", obj->wear_loc, fread_number( fp ) );
                }
             }
-            KEY( "WearFlags", obj->wear_flags, fread_number( fp ) );
+            if( !str_cmp( word, "WearFlags" ) )
+            {
+             const char *tmp = fread_word(fp);
+             while( str_cmp(tmp,"EOL") )
+             {
+              obj->wear_flags.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = TRUE;
+             break;
+            }
             KEY( "Weight", obj->weight, fread_number( fp ) );
             break;
 
@@ -1975,12 +2007,18 @@ void fread_corpse( FILE * fp )
             KEY( "ClassFlags", obj->item_apply, fread_number( fp ) );
             break;
 
-         case 'D':
-            SKEY( "Description", obj->long_descr, fread_string( fp ) );
-            break;
-
          case 'E':
-            KEY( "ExtraFlags", obj->extra_flags, fread_number( fp ) );
+            if( !str_cmp( word, "ExtraFlags" ) )
+            {
+             const char *tmp = fread_word(fp);
+             while( str_cmp(tmp,"EOL") )
+             {
+              obj->extra_flags.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = TRUE;
+             break;
+            }
 
             if( !str_cmp( word, "ExtraDescr" ) )
             {
@@ -2086,7 +2124,9 @@ void fread_corpse( FILE * fp )
 
          case 'L':
             KEY( "Level", obj->level, fread_number( fp ) );
+            SKEY( "LongDescr", obj->long_descr, fread_string( fp ) );
             break;
+
          case 'M':
             if( !str_cmp( word, "Money" ) )
             {
@@ -2210,7 +2250,17 @@ void fread_corpse( FILE * fp )
             break;
 
          case 'W':
-            KEY( "WearFlags", obj->wear_flags, fread_number( fp ) );
+            if( !str_cmp( word, "WearFlags" ) )
+            {
+             const char *tmp = fread_word(fp);
+             while( str_cmp(tmp,"EOL") )
+             {
+              obj->wear_flags.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = TRUE;
+             break;
+            }
             KEY( "WearLoc", obj->wear_loc, fread_number( fp ) );
             KEY( "Weight", obj->weight, fread_number( fp ) );
             KEY( "WhereVnum", this_room_vnum, fread_number( fp ) );
@@ -2255,10 +2305,21 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
    fprintf( fp, "Nest         %d\n", iNest );
    fprintf( fp, "Name         %s~\n", obj->name );
    fprintf( fp, "ShortDescr   %s~\n", obj->short_descr );
-   fprintf( fp, "Description  %s~\n", obj->long_descr );
+   fprintf( fp, "LongDescr    %s~\n", obj->long_descr );
    fprintf( fp, "Vnum         %d\n", obj->pIndexData->vnum );
-   fprintf( fp, "ExtraFlags   %d\n", obj->extra_flags );
-   fprintf( fp, "WearFlags    %d\n", obj->wear_flags );
+
+   fprintf( fp, "ExtraFlags   " );
+    for( short i = 0; i < MAX_BITSET; i++ )
+     if( obj->extra_flags.test(i) )
+      fprintf( fp, "%d ", i );
+   fprintf( fp, "EOL\n" );
+
+   fprintf( fp, "WearFlags   " );
+    for( short i = 0; i < MAX_BITSET; i++ )
+     if( obj->wear_flags.test(i) )
+      fprintf( fp, "%d ", i );
+   fprintf( fp, "EOL\n" );
+
    fprintf( fp, "WearLoc      %d\n", obj->wear_loc );
    fprintf( fp, "Money %d ", MAX_CURRENCY );
    for( foo = 0; foo < MAX_CURRENCY; foo++ )

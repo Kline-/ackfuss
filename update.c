@@ -953,7 +953,7 @@ void clean_donate_rooms( void )
             else
                chance = 10;
 
-            if( ( IS_SET( object->extra_flags, ITEM_RARE ) ) || ( object == quest_object ) )
+            if(  IS_OBJ_STAT(object,ITEM_EXTRA_RARE) || object == quest_object )
                chance = 0;
             if( number_range( 0, 99 ) < chance )
                extract_obj( object );
@@ -974,7 +974,7 @@ void clean_donate_rooms( void )
                chance = 50;
             else
                chance = 10;
-            if( ( IS_SET( object->extra_flags, ITEM_RARE ) ) || ( object == quest_object ) )
+            if(  IS_OBJ_STAT(object,ITEM_EXTRA_RARE) || object == quest_object )
                chance = 0;
             if( number_range( 0, 99 ) < chance )
                extract_obj( object );
@@ -995,7 +995,7 @@ void clean_donate_rooms( void )
                chance = 50;
             else
                chance = 10;
-            if( ( IS_SET( object->extra_flags, ITEM_RARE ) ) || ( object == quest_object ) )
+            if(  IS_OBJ_STAT(object,ITEM_EXTRA_RARE) || object == quest_object )
                chance = 0;
             if( number_range( 0, 99 ) < chance )
                extract_obj( object );
@@ -1024,7 +1024,7 @@ void clean_donate_rooms( void )
                   chance = 50;
                else
                   chance = 10;
-               if( ( IS_SET( object->extra_flags, ITEM_RARE ) ) || ( object == quest_object ) )
+               if(  IS_OBJ_STAT(object,ITEM_EXTRA_RARE) || object == quest_object )
                   chance = 0;
                if( number_range( 0, 99 ) < chance )
                   extract_obj( object );
@@ -2296,7 +2296,7 @@ bool check_re_equip( CHAR_DATA * ch )
          if( !can_see_obj( ch, obj ) )
             continue;
 
-         if( ( obj->wear_flags & ~ITEM_TAKE ) == 0 )
+         if( !CAN_WEAR(obj,ITEM_TAKE) )
             continue;   /* Check to see if item cannot be worn */
          if( obj->item_type == ITEM_PIECE )
             continue;

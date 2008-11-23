@@ -80,8 +80,10 @@ void do_enchant( CHAR_DATA * ch, char *argument )
    short qp_cost = 20;
    int mod = 0;
    short min_level = 10;
-   int new_extras = 0, new_apply = ITEM_APPLY_NONE;
+   int new_apply = ITEM_APPLY_NONE;
+   std::bitset<MAX_BITSET> new_extras;
 
+   new_extras.reset();
 
    argument = one_argument( argument, arg1 );
    argument = one_argument( argument, arg2 );
@@ -155,8 +157,8 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       else if( this_obj->value[0] == ENCHANT_EXTRA_FLAGS )
       {
-         if( ( this_obj->value[3] > 0 ) && ( !IS_SET( new_extras, ( 1 << ( this_obj->value[3] - 1 ) ) ) ) )
-            SET_BIT( new_extras, ( 1 << ( this_obj->value[3] - 1 ) ) );
+         if( ( this_obj->value[3] > 0 ) && ( !new_extras.test(this_obj->value[3] - 1) ) )
+            new_extras.set(this_obj->value[3] - 1);
       }
       else
       {
@@ -257,12 +259,12 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       return;
    }
    if( ( ( get_remort_level( ch ) < unique->level )
-         && ( IS_OBJ_STAT( unique, ITEM_REMORT ) ) ) || ( get_psuedo_level( ch ) < unique->level ) )
+         && ( IS_OBJ_STAT(unique,ITEM_EXTRA_REMORT) ) ) || ( get_psuedo_level( ch ) < unique->level ) )
    {
       send_to_char( "You can't use this item in the first place..enchanting it is NOT going to help!\n\r", ch );
       return;
    }
-   if( IS_OBJ_STAT( unique, ITEM_UNIQUE ) )
+   if( IS_OBJ_STAT(unique,ITEM_EXTRA_UNIQUE) )
       qp_cost -= 20;
 
    for( this_aff = unique->first_apply; this_aff != NULL; this_aff = this_aff->next )
@@ -354,9 +356,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
    {
       snprintf( msg_buf, MSL, "Your enchantment will add the following to %s\n\r", unique->short_descr );
 
-      if( new_extras != 0 )
+      if( new_extras.count() != 0 )
       {
-         snprintf( cat_buf, MSL, "Extra Flags : %s\n\r", extra_bit_name( new_extras ) );
+         snprintf( cat_buf, MSL, "Extra Flags : %s\n\r", bs_show_values( tab_obj_flags, new_extras ) );
          strncat( msg_buf, cat_buf, MSL );
       }
       if( new_apply != ITEM_APPLY_NONE )
@@ -578,7 +580,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
          strncat( msg_buf, cat_buf, MSL );
 
       }
-      if( IS_SET( unique->extra_flags, ITEM_CLAN_EQ ) )
+      if( IS_OBJ_STAT(unique,ITEM_EXTRA_CLAN_EQ) )
       {
          snprintf( cat_buf, MSL, "%s is clan equipment, and may not be enchanted.\n\r", unique->short_descr );
          strncat( msg_buf, cat_buf, MSL );
@@ -687,7 +689,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       {
          legal_enchant = FALSE;
       }
-      if( IS_SET( unique->extra_flags, ITEM_CLAN_EQ ) )
+      if( IS_OBJ_STAT(unique,ITEM_EXTRA_CLAN_EQ) )
       {
          legal_enchant = FALSE;
       }
@@ -848,16 +850,18 @@ void do_enchant( CHAR_DATA * ch, char *argument )
             min_level = UMAX( ( mod_armor + cur_armor ) / -4, min_level );
 
       }
-      if( !IS_SET( unique->extra_flags, ITEM_UNIQUE ) )
-         SET_BIT( unique->extra_flags, ITEM_UNIQUE );
-      if( IS_OBJ_STAT( unique, ITEM_REMORT ) )
+      if( !IS_OBJ_STAT(unique,ITEM_EXTRA_UNIQUE) )
+         unique->extra_flags.set(ITEM_EXTRA_UNIQUE);
+      if( IS_OBJ_STAT(unique,ITEM_EXTRA_REMORT) )
       {
          min_level = UMAX( 80 + ( unique->level / 4 ), min_level );
-         REMOVE_BIT( unique->extra_flags, ITEM_REMORT );
+         unique->extra_flags.reset(ITEM_EXTRA_REMORT);
       }
       if( mod_item_weight + unique->weight > 0 )
          unique->weight = mod_item_weight + unique->weight;
-      new_extras = new_extras | unique->extra_flags;
+      for( short i = 0; i < MAX_BITSET; i++ )
+       if( unique->extra_flags.test(i) && !new_extras.test(i) )
+        new_extras.set(i);
       new_apply = new_apply | unique->item_apply;
 
       if( unique->extra_flags != new_extras )

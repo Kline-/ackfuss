@@ -1205,7 +1205,12 @@ void load_object( FILE * fp )
             fread_to_eol( fp );
             break;
 
+         case 'D':
+            KEY("Durability",pObjIndex->max_durability,fread_number(fp));
+            break;
+
          case 'L':
+            KEY("Level",pObjIndex->level,fread_number(fp));
             SKEY("LongDesc",pObjIndex->long_descr,fread_string(fp));
             break;
 
@@ -1213,8 +1218,13 @@ void load_object( FILE * fp )
             SKEY("Name",pObjIndex->name,fread_string(fp));
             break;
 
+         case 'T':
+            KEY("Type",pObjIndex->item_type,fread_number(fp));
+            break;
+
          case 'S':
             SKEY("ShortDesc",pObjIndex->short_descr,fread_string(fp));
+            KEY("Speed",pObjIndex->speed,fread_float(fp));
             break;
 
          case 'V':
@@ -2296,7 +2306,7 @@ void reset_area( AREA_DATA * pArea )
                           || ( pObjIndex->item_type == ITEM_FOUNTAIN )
                           || ( pObjIndex->item_type == ITEM_FURNITURE )
                           || ( pObjIndex->item_type == ITEM_PORTAL )
-                          || ( pObjIndex->item_type == ITEM_PIECE ) || ( pObjIndex->extra_flags == ITEM_RARE ) ) ) )
+                          || ( pObjIndex->item_type == ITEM_PIECE ) || ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_RARE) ) ) ) )
             {
                last = FALSE;
                break;
@@ -2308,7 +2318,7 @@ void reset_area( AREA_DATA * pArea )
 
             obj_to_room( obj, pRoomIndex );
 
-            if( ( IS_SET( obj->extra_flags, ITEM_RARE ) ) && !( ( number_percent(  ) < 2 ) && ( number_percent(  ) < 8 ) ) )
+            if( ( IS_OBJ_STAT(obj,ITEM_EXTRA_RARE) ) && !( ( number_percent(  ) < 2 ) && ( number_percent(  ) < 8 ) ) )
             {
                extract_obj( obj );
             }
@@ -2403,7 +2413,7 @@ void reset_area( AREA_DATA * pArea )
                }
 
                obj = create_object( pObjIndex, olevel > 1 ? number_fuzzy( olevel ) : olevel );
-               SET_BIT( obj->extra_flags, ITEM_INVENTORY );
+               obj->extra_flags.set(ITEM_EXTRA_INVENTORY);
             }
             else
             {
@@ -2802,11 +2812,11 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
       obj->value[looper] = pObjIndex->value[looper];
    }
    new_cost = get_item_value( obj );
-   if( IS_SET( obj->extra_flags, ITEM_REMORT ) )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_REMORT) )
       new_cost *= 2;
-   if( IS_SET( obj->extra_flags, ITEM_ADEPT ) )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_ADEPT) )
       new_cost *= 3;
-   if( IS_SET( obj->extra_flags, ITEM_RARE ) )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_RARE) )
       new_cost *= 10;
    obj->cost = new_cost;
 

@@ -896,7 +896,7 @@ void do_make( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !IS_SET( pObj->extra_flags, ITEM_CLAN_EQ ) )
+   if( !IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) )
    {
       send_to_char( "Object exists, but not flagged as Clan Eq.\n\r", ch );
       return;

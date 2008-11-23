@@ -22,6 +22,7 @@
 
 area_data::~area_data()
 {
+ is_free = true;
 }
 
 brand_data::~brand_data()
@@ -156,12 +157,14 @@ char_data::~char_data()
 
 exit_data::~exit_data()
 {
+ is_free = true;
  free_string(description);
  free_string(keyword);
 }
 
 mob_index_data::~mob_index_data()
 {
+ is_free = true;
  free_string(player_name);
  free_string(short_descr);
  free_string(description);
@@ -177,8 +180,17 @@ note_data::~note_data()
  free_string(sender);
 }
 
+obj_data::~obj_data()
+{
+ is_free = true;
+ free_string(name);
+ free_string(short_descr);
+ free_string(long_descr);
+}
+
 obj_index_data::~obj_index_data()
 {
+ is_free = true;
  free_string(name);
  free_string(short_descr);
  free_string(long_descr);
@@ -186,6 +198,7 @@ obj_index_data::~obj_index_data()
 
 pc_data::~pc_data()
 {
+ is_free = true;
 }
 
 room_index_data::~room_index_data()

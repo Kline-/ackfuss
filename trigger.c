@@ -103,7 +103,7 @@ void trigger_handler( CHAR_DATA * ch, OBJ_DATA * obj, int trigger )
       if( a == obj->value[1] )
       {
          ( *trigger_table[a].func ) ( ch, obj );
-         if( IS_SET( obj->extra_flags, ITEM_TRIG_DESTROY ) || trigger_table[a].always_extract )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_TRIG_DESTROY) || trigger_table[a].always_extract )
          {
             extract_obj( obj );
          }

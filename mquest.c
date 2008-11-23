@@ -309,7 +309,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
       for( obj = ch->first_carry; obj != NULL && ch->pcdata->quest_info->amount[i] > 0; obj = obj_next )
       {
        obj_next = obj->next_in_carry_list;
-       if( ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum && obj->wear_loc == WEAR_NONE && !IS_SET(obj->extra_flags,ITEM_UNIQUE) )
+       if( ch->pcdata->quest_info->quest_item_vnum[i] == obj->pIndexData->vnum && obj->wear_loc == WEAR_NONE && !IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE) )
        {
         extract_obj(obj);
         x++;
@@ -1072,13 +1072,13 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
    if( (obj->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->in_room->area->flags.test(AFLAG_NOSHOW)) /* Hide places we don't want to use. */
     || (obj->in_room->area->min_level > get_psuedo_level(ch) || obj->in_room->area->max_level < get_psuedo_level(ch))
     || (obj->pIndexData->vnum > obj->in_room->area->max_vnum || obj->pIndexData->vnum < obj->in_room->area->min_vnum) /* outside obj's own area */
-    || (!IS_SET(obj->wear_flags,ITEM_TAKE)) /* ensure we can pick it up */
-    || (IS_SET(obj->extra_flags,ITEM_RARE)) /* don't waste rares */
+    || (!CAN_WEAR(obj,ITEM_TAKE)) /* ensure we can pick it up */
+    || (IS_OBJ_STAT(obj,ITEM_EXTRA_RARE)) /* don't waste rares */
     || (obj->item_type == ITEM_QUEST) /* no autoquest items */
     || (obj->item_type == ITEM_MONEY)
-    || (IS_SET(obj->extra_flags,ITEM_NO_QUEST))
+    || (IS_OBJ_STAT(obj,ITEM_EXTRA_NO_QUEST))
     || (obj->item_type == ITEM_PIECE)
-    || (IS_SET(obj->extra_flags,ITEM_UNIQUE))
+    || (IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE))
     || (obj->carried_by != NULL && (!IS_NPC(obj->carried_by)
     || (IS_NPC(obj->carried_by) && obj->carried_by->pIndexData->pShop != NULL)))  /* held by PC or held by NPC that is a shopkeeper */
     || (obj->weight > 15)
@@ -1094,13 +1094,13 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
    if( (obj->carried_by->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->carried_by->in_room->area->flags.test(AFLAG_NOSHOW)) /* Hide places we don't want to use. */
     || (obj->carried_by->in_room->area->min_level > get_psuedo_level(ch) || obj->carried_by->in_room->area->max_level < get_psuedo_level(ch))
     || (obj->pIndexData->vnum > obj->carried_by->in_room->area->max_vnum || obj->pIndexData->vnum < obj->carried_by->in_room->area->min_vnum) /* outside obj's own area */
-    || (!IS_SET(obj->wear_flags,ITEM_TAKE)) /* ensure we can pick it up */
-    || (IS_SET(obj->extra_flags,ITEM_RARE)) /* don't waste rares */
+    || (!CAN_WEAR(obj,ITEM_TAKE)) /* ensure we can pick it up */
+    || (IS_OBJ_STAT(obj,ITEM_EXTRA_RARE)) /* don't waste rares */
     || (obj->item_type == ITEM_QUEST) /* no autoquest items */
     || (obj->item_type == ITEM_MONEY)
-    || (IS_SET(obj->extra_flags,ITEM_NO_QUEST))
+    || (IS_OBJ_STAT(obj,ITEM_EXTRA_NO_QUEST))
     || (obj->item_type == ITEM_PIECE)
-    || (IS_SET(obj->extra_flags,ITEM_UNIQUE))
+    || (IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE))
     || (obj->carried_by != NULL && (!IS_NPC(obj->carried_by)
     || (IS_NPC(obj->carried_by) && obj->carried_by->pIndexData->pShop != NULL))) /* held by PC or held by NPC that is a shopkeeper */
     || (obj->weight > 15)

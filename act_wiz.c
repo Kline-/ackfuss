@@ -751,7 +751,7 @@ void do_ostat( CHAR_DATA * ch, char *argument )
    xcat( buf1, buf );
 
    snprintf( buf, MSL, "Wear bits: %s.\n\rExtra bits: %s.\n\r",
-            bit_table_lookup( tab_wear_flags, obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
+            bs_show_values( tab_wear_flags, obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
    xcat( buf1, buf );
 
    snprintf( buf, MSL, "ITEM_APPLY: %d.\n\r", obj->item_apply );
@@ -1177,7 +1177,7 @@ void do_ofindlev( CHAR_DATA * ch, char *argument )
             found = TRUE;
             objlev = pObjIndex->level;
 
-            if( IS_SET( pObjIndex->extra_flags, ITEM_REMORT ) )
+            if( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) )
             {
                snprintf( buf, MSL, "\n\r(@@mREMORT@@N) [%3d] [%5d] %s", pObjIndex->level,
                         pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
@@ -1379,7 +1379,7 @@ void do_ofind( CHAR_DATA * ch, char *argument )
             found = TRUE;
             snprintf( buf, MSL, "[%5d] [%3d] %s %s\n\r",
                      pObjIndex->vnum, pObjIndex->level,
-                     ( IS_SET( pObjIndex->extra_flags, ITEM_REMORT ) ?
+                     ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), capitalize( pObjIndex->short_descr ) );
             xcat( buf1, buf );
          }
@@ -1729,7 +1729,7 @@ void do_oload( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( pObjIndex->extra_flags, ITEM_CLAN_EQ ) && ( ch->level != MAX_LEVEL ) )
+   if( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_CLAN_EQ) && ( ch->level != MAX_LEVEL ) )
    {
       send_to_char( "Only Creators can OLOAD clan equipment.\n\r", ch );
       return;
@@ -3299,7 +3299,7 @@ void do_oset( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( obj->extra_flags, ITEM_CLAN_EQ ) && ch->level != MAX_LEVEL )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_CLAN_EQ) && ch->level != MAX_LEVEL )
    {
       send_to_char( "Only creators can OSET Clan equipment!\n\r", ch );
       return;
@@ -3380,9 +3380,9 @@ void do_oset( CHAR_DATA * ch, char *argument )
          return;
 
       if( num == 1 )
-         SET_BIT( obj->extra_flags, value );
+         obj->extra_flags.set(value);
       else
-         REMOVE_BIT( obj->extra_flags, value );
+         obj->extra_flags.reset(value);
       return;
    }
 
@@ -3915,7 +3915,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
     {
      if( obj == auction_item )
       continue;
-     if( !IS_SET(obj->extra_flags,ITEM_RARE) )
+     if( !IS_OBJ_STAT(obj,ITEM_EXTRA_RARE) )
       continue; 
      found = TRUE;
 
@@ -5666,7 +5666,7 @@ void do_otype( CHAR_DATA * ch, char *argument )
          {
             found = TRUE;
             snprintf( buf, MSL, "<%d> %s [%5d] %s\n\r", pObjIndex->level,
-                     ( IS_SET( pObjIndex->extra_flags, ITEM_REMORT ) ?
+                     ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->vnum, pObjIndex->short_descr );
             xcat( buf1, buf );
          }
@@ -5721,14 +5721,14 @@ void do_owear( CHAR_DATA * ch, char *argument )
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {
          nMatch++;
-         if( fAll || !str_infix( arg, bit_table_lookup( tab_wear_flags, pObjIndex->wear_flags ) ) )
+         if( fAll || !str_infix( arg, bs_show_values( tab_wear_flags, pObjIndex->wear_flags ) ) )
          {
             found = TRUE;
             snprintf( buf, MSL, "<%s> [%5d] [%3d] %s %s\n\r",
-                     bit_table_lookup( tab_wear_flags, pObjIndex->wear_flags ),
+                     bs_show_values( tab_wear_flags, pObjIndex->wear_flags ),
                      pObjIndex->vnum,
                      pObjIndex->level,
-                     ( IS_SET( pObjIndex->extra_flags, ITEM_REMORT ) ?
+                     ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->short_descr );
             xcat( buf1, buf );
          }

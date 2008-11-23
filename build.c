@@ -85,8 +85,8 @@
      Player act flags    :    tab_player_act      : bitset
      Mob affected by     :    tab_affected_by     : bit_vector
      Object item type    :    tab_item_types      : number
-     Object extra flags  :    tab_obj_flags       : bit_vector
-     Object wear flags   :    tab_wear_flags      : bit_vector
+     Object extra flags  :    tab_obj_flags       : bitset
+     Object wear flags   :    tab_wear_flags      : bitset
      Object affect types :    tab_obj_aff         : number
      Class types         :    tab_class           : bit_vector
      Wear locations      :    tab_wear_loc        : number
@@ -539,7 +539,7 @@ void build_showobj( CHAR_DATA * ch, char *argument )
     */
 
    snprintf( buf, MSL, "@@WWear bits: @@y%s\n\r@@WExtra bits: @@y%s.\n\r",
-            bit_table_lookup( tab_wear_flags, obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
+            bs_show_values( tab_wear_flags, obj->wear_flags ), bs_show_values( tab_obj_flags, obj->extra_flags ) );
    /*
     * bit_table_lookup(tab_extra_flags, obj->extra_flags ) );
     * I think another bit_table_lookup is better!  Zen 
@@ -2486,7 +2486,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
    /*
     * Check for extra flag: clan_eq 
     */
-   if( IS_SET( pObj->extra_flags, ITEM_CLAN_EQ ) && get_trust( ch ) != 85 )
+   if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && get_trust( ch ) != 85 )
    {
       send_to_char( "Only a Creator can set Clan-Eq.\n\r", ch );
       return;
@@ -2706,9 +2706,9 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          return;
       }
       if( num == 1 )
-         SET_BIT( pObj->extra_flags, value );
+         pObj->extra_flags.set(value);
       else
-         REMOVE_BIT( pObj->extra_flags, value );
+         pObj->extra_flags.reset(value);
       return;
    }
 
@@ -2785,7 +2785,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( value == ITEM_CLAN_EQ && get_trust( ch ) != 85 )
+      if( value == ITEM_EXTRA_CLAN_EQ && get_trust( ch ) != 85 )
       {
          send_to_char( "Only a CREATOR may set this flag.\n\r", ch );
          return;
@@ -3166,39 +3166,15 @@ void build_addmob( CHAR_DATA * ch, char *argument )
    pMobIndex->vnum = vnum;
    pMobIndex->area = pArea;
    pMobIndex->player_name = str_dup( arg2 );
-   pMobIndex->short_descr = &str_empty[0];
-   pMobIndex->long_descr = &str_empty[0];
-   pMobIndex->description = &str_empty[0];
-
-   pMobIndex->affected_by = 0;
-   pMobIndex->pShop = NULL;
-   pMobIndex->alignment = 0;
-   pMobIndex->level = 1;
-
-   pMobIndex->sex = SEX_MALE;
-
-   pMobIndex->ac_mod = 0;
-   pMobIndex->hr_mod = 0;
-   pMobIndex->dr_mod = 0;
-
-   pMobIndex->spec_fun = NULL;
-   pMobIndex->pShop = NULL;
-   pMobIndex->count = 0;
-   pMobIndex->killed = 0;
-   pMobIndex->target = NULL;
-   pMobIndex->first_mprog = NULL;
-   pMobIndex->last_mprog = NULL;
-   pMobIndex->progtypes = 0;
-
 
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pMobIndex, mob_index_hash[iHash], next );
    GET_FREE( pList, build_free );
    pList->data = pMobIndex;
    LINK( pList, pArea->first_area_mobile, pArea->last_area_mobile, next, prev );
-
    top_mob_index++;
    kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
+
    return;
 }
 
@@ -3213,7 +3189,6 @@ void build_addobject( CHAR_DATA * ch, char *argument )
    BUILD_DATA_LIST *pList;
    int vnum;
    int iHash;
-   int looper;
    smash_tilde( argument );
    argument = one_argument( argument, arg1 );
    strcpy( arg2, argument );
@@ -3254,37 +3229,16 @@ void build_addobject( CHAR_DATA * ch, char *argument )
    ch->build_vnum = vnum;
    ch->act_build = ACT_BUILD_OEDIT;
 
-
    pObjIndex = new OBJ_INDEX_DATA;
    pObjIndex->vnum = vnum;
    pObjIndex->area = pArea;
-   pObjIndex->name = str_dup( arg2 );
-   pObjIndex->short_descr = &str_empty[0];
-   pObjIndex->long_descr = &str_empty[0];
-   pObjIndex->owner = &str_empty[0];
-   pObjIndex->level = 1;
-   pObjIndex->item_type = 1;
-   pObjIndex->extra_flags = 0;
-   pObjIndex->wear_flags = 0;
-   pObjIndex->item_apply = 1;
-   for( looper = 0; looper < 10; looper++ )
-      pObjIndex->value[looper] = 0;
-   pObjIndex->weight = 1;
-   pObjIndex->cost = 0;
-
-   pObjIndex->first_exdesc = NULL;
-   pObjIndex->last_exdesc = NULL;
-   pObjIndex->first_apply = NULL;
-   pObjIndex->last_apply = NULL;
-
+   pObjIndex->name = str_dup(arg2);
 
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pObjIndex, obj_index_hash[iHash], next );
-
    GET_FREE( pList, build_free );
    pList->data = pObjIndex;
    LINK( pList, pArea->first_area_object, pArea->last_area_object, next, prev );
-
    top_obj_index++;
 
    return;
@@ -3492,7 +3446,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       }
 
 
-      if( IS_SET( pObj->extra_flags, ITEM_CLAN_EQ ) && !IS_IMMORTAL( ch ) )
+      if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && !IS_IMMORTAL( ch ) )
       {
          send_to_char( "You can't use that object for a reset.\n\r", ch );
          return;
@@ -3547,7 +3501,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       }
 
 
-      if( IS_SET( pObj->extra_flags, ITEM_CLAN_EQ ) && !IS_IMMORTAL( ch ) )
+      if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && !IS_IMMORTAL( ch ) )
       {
          send_to_char( "You can't use that object for a reset.\n\r", ch );
          return;
@@ -3618,7 +3572,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       }
 
 
-      if( IS_SET( pObj->extra_flags, ITEM_CLAN_EQ ) && !IS_IMMORTAL( ch ) )
+      if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && !IS_IMMORTAL( ch ) )
       {
          send_to_char( "You can't use that object for a reset.\n\r", ch );
          return;

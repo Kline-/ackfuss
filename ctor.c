@@ -61,11 +61,11 @@ area_data::area_data()
 
 brand_data::brand_data()
 {
- branded = str_dup("");
- branded_by = str_dup("");
- dt_stamp = str_dup("");
- message = str_dup("");
- priority = str_dup("");
+ branded = &str_empty[0];
+ branded_by = &str_empty[0];
+ dt_stamp = &str_empty[0];
+ message = &str_empty[0];
+ priority = &str_empty[0];
 }
 
 char_data::char_data()
@@ -89,8 +89,6 @@ exit_data::exit_data()
 
 mob_index_data::mob_index_data()
 {
- short i = 0;
-
  act.reset();
  ac_mod = 0;
  affected_by = 0;
@@ -108,9 +106,9 @@ mob_index_data::mob_index_data()
  is_free = false;
  killed = 0;
  last_mprog = NULL;
- for( i = 0; i < MAX_SKILL; i++ )
+ for( short i = 0; i < MAX_SKILL; i++ )
   learned[i] = 0;
- level = 0;
+ level = 1;
  long_descr = &str_empty[0];
  next = NULL;
  player_name = &str_empty[0];
@@ -127,8 +125,8 @@ mob_index_data::mob_index_data()
  short_descr = &str_empty[0];
  skills = 0;
  spec_fun = NULL;
- for( i = 0; i < MAX_SPEED; i++ )
-  speed[i] = 1.00;
+ for( short i = 0; i < MAX_SPEED; i++ )
+  speed[i] = 0;
  strong_magic = 0;
  suscept = 0;
  target = &str_empty[0];
@@ -141,32 +139,66 @@ note_data::note_data()
  is_free = false;
  next = NULL;
  prev = NULL;
- sender = str_dup("");
- date = str_dup("");
- to_list = str_dup("");
- subject = str_dup("");
- text = str_dup("");
+ sender = &str_empty[0];
+ date = &str_empty[0];
+ to_list = &str_empty[0];
+ subject = &str_empty[0];
+ text = &str_empty[0];
  date_stamp = 0;
+}
+
+obj_data::obj_data()
+{
+ is_free = false;
+ extra_flags.reset();
+ wear_flags.reset();
 }
 
 obj_index_data::obj_index_data()
 {
+ area = NULL;
+ count = 0;
+ durability = max_durability;
+ extra_flags.reset();
+ first_apply = NULL;
+ first_exdesc = NULL;
+ first_trigger = NULL;
+ is_free = false;
+ item_apply = 1;
+ item_type = 1;
+ last_apply = NULL;
+ last_exdesc = NULL;
+ last_trigger = NULL;
+ level = 1;
+ long_descr = &str_empty[0];
+ max_durability = number_range(2,100);
+ name = &str_empty[0];
+ next = NULL;
+ obj_fun = NULL;
+ owner = &str_empty[0];
+ short_descr = &str_empty[0];
+ speed = number_speed();
+ for( short i = 0; i < MAX_OBJ_VALUE; i++ )
+  value[i] = 0;
+ vnum = 0;
+ wear_flags.reset();
+ weight = 1;
 }
 
 pc_data::pc_data()
 {
+ is_free = false;
 }
 
 room_index_data::room_index_data()
 {
- short i = 0;
  static MONEY_TYPE *room_treasure;
 
  affected_by = 0;
  area = NULL;
  description = &str_empty[0];
- for( i = 0; i < MAX_DIR; i++ )
-  exit[i] = NULL;
+ for( short i = 0; i < MAX_DIR; i++ )
+  exit[i] = 0;
  first_content = NULL;
  first_exdesc = NULL;
  first_mark_list = NULL;

@@ -315,7 +315,7 @@ void violence_update( void )
             if( IS_SET( heated_item->item_apply, ITEM_APPLY_HEATED ) && heated_item->wear_loc != WEAR_NONE )
             {
                heat_damage = heated_item->level;
-               if( IS_SET( heated_item->extra_flags, ITEM_REMORT ) )
+               if( IS_OBJ_STAT(heated_item,ITEM_EXTRA_REMORT) )
                   heat_damage *= 2;
                obj_damage( heated_item, ch, heat_damage );
                act( "@@W   $p@@N you are wearing are @@eBURNING@@N you!!!", ch, heated_item, NULL, TO_CHAR );
@@ -808,7 +808,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
    {
       dam *= dam_mod;
       if( ( wield )
-          && ( dam > 0 ) && ( IS_OBJ_STAT( wield, ITEM_LIFESTEALER ) ) && ( number_range( 0, 99 ) < ( wield->level / 4 ) ) )
+          && ( dam > 0 ) && ( IS_OBJ_STAT(wield,ITEM_EXTRA_LIFESTEALER) ) && ( number_range( 0, 99 ) < ( wield->level / 4 ) ) )
       {
          act( "@@W$n screams in @@Ragony@@W as an evil @@da@@eur@@da@@W flows from $p!@@N", victim, wield, ch, TO_NOTVICT );
          act( "@@WYou feel a surge of health as $p sucks the life of $N@@N!!", ch, wield, victim, TO_CHAR );
@@ -1211,7 +1211,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
             if( ( sil_weapon = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) == NULL )
                sil_weapon = get_eq_char( ch, WEAR_HOLD_HAND_R );
             if( IS_WOLF( victim ) && ( !IS_NPC( ch ) ) && ( ch->pcdata->learned[gsn_decapitate] != 0 )
-                && ( sil_weapon != NULL ) && ( IS_SET( sil_weapon->extra_flags, ITEM_SILVER ) ) )
+                && ( sil_weapon != NULL ) && ( IS_OBJ_STAT(sil_weapon,ITEM_EXTRA_SILVER) ) )
             {
                int chance;
 
@@ -1902,7 +1902,7 @@ void update_pos( CHAR_DATA * victim )
             if( obj == NULL )
                continue;
 
-            if( obj != NULL && !IS_SET( obj->extra_flags, ITEM_NOLOOT ) )
+            if( obj != NULL && !IS_OBJ_STAT(obj,ITEM_EXTRA_NO_LOOT) )
             {
                obj_from_char( obj );
                obj_to_room( obj, victim->in_room );
@@ -1937,7 +1937,7 @@ void update_pos( CHAR_DATA * victim )
             if( obj == NULL )
                continue;
 
-            if( obj != NULL && !IS_SET( obj->extra_flags, ITEM_NOLOOT ) )
+            if( obj != NULL && !IS_OBJ_STAT(obj,ITEM_EXTRA_NO_LOOT) )
             {
                obj_from_char( obj );
                obj_to_room( obj, victim->in_room );
@@ -1970,7 +1970,7 @@ void update_pos( CHAR_DATA * victim )
             if( obj == NULL )
                continue;
 
-            if( obj != NULL && !IS_SET( obj->extra_flags, ITEM_NOLOOT ) )
+            if( obj != NULL && !IS_OBJ_STAT(obj,ITEM_EXTRA_NO_LOOT) )
             {
                obj_from_char( obj );
                obj_to_room( obj, victim->in_room );
@@ -2333,7 +2333,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          obj->value[1] = UMAX( 1, obj->value[1] * quest_timer / 10 );
          obj->value[2] = UMAX( 1, obj->value[2] * quest_timer / 10 );
       }
-      if( IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
+      if( IS_OBJ_STAT(obj,ITEM_EXTRA_INVENTORY) )
          extract_obj( obj );
       else
          obj_to_obj( obj, corpse );
@@ -2657,11 +2657,11 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
          if( obj->wear_loc == WEAR_NONE )
             continue;
 
-         if( ( IS_OBJ_STAT( obj, ITEM_ANTI_EVIL ) && IS_EVIL( ch ) )
-             || ( IS_OBJ_STAT( obj, ITEM_ANTI_GOOD ) && IS_GOOD( ch ) )
-             || ( IS_OBJ_STAT( obj, ITEM_ANTI_NEUTRAL ) && IS_NEUTRAL( ch ) ) )
+         if( ( IS_OBJ_STAT( obj, ITEM_EXTRA_ANTI_EVIL ) && IS_EVIL( ch ) )
+             || ( IS_OBJ_STAT( obj, ITEM_EXTRA_ANTI_GOOD ) && IS_GOOD( ch ) )
+             || ( IS_OBJ_STAT( obj, ITEM_EXTRA_ANTI_NEUTRAL ) && IS_NEUTRAL( ch ) ) )
          {
-            if( !IS_OBJ_STAT( obj, ITEM_NODROP ) )
+            if( !IS_OBJ_STAT( obj, ITEM_EXTRA_NO_DROP ) )
             {
                act( "You are zapped by $p and drop it.", ch, obj, NULL, TO_CHAR );
                act( "$n is zapped by $p and drops it.", ch, obj, NULL, TO_ROOM );
@@ -3020,7 +3020,7 @@ void disarm( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj )
             return;
          }
    }
-   if( IS_SET( obj->extra_flags, ITEM_NODISARM ) )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_NO_DISARM) )
       return;
 
    if( !IS_NPC( victim ) && IS_WOLF( victim ) && ( IS_SHIFTED( victim ) || IS_RAGED( victim ) ) )
@@ -3727,7 +3727,7 @@ void do_disarm( CHAR_DATA * ch, char *argument )
          send_to_char( "Your opponent is not wielding a weapon.\n\r", ch );
          return;
       }
-   if( IS_SET( obj->extra_flags, ITEM_NODISARM ) )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_NO_DISARM) )
       return;
 
 
@@ -4760,7 +4760,7 @@ void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, float dam )
       dam /= 2;
 
    if( ( IS_AFFECTED( victim, AFF_PROTECT ) || item_has_apply( victim, ITEM_APPLY_PROT ) )
-       && IS_SET( obj->extra_flags, ITEM_EVIL ) )
+       && IS_OBJ_STAT(obj,ITEM_EXTRA_EVIL) )
       dam -= dam / 4;
 
    if( dam < 0 )

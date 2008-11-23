@@ -1,6 +1,3 @@
-o/imc.o: imc.c h/sha256.h globals.h typedefs.h ack.h h/config.h utils.h \
-  h/imc.h h/imccfg.h lists.h strfuns.h mquest.h h/act_wiz.h h/comm.h
-o/sha256.o: sha256.c h/sha256.h
 o/act_clan.o: act_clan.c globals.h typedefs.h ack.h h/config.h utils.h \
   h/imc.h h/imccfg.h lists.h strfuns.h mquest.h h/act_clan.h h/act_comm.h \
   h/act_info.h h/act_wiz.h h/comm.h
@@ -74,6 +71,8 @@ o/hash.o: hash.c globals.h typedefs.h ack.h h/config.h utils.h h/imc.h \
 o/hunt.o: hunt.c globals.h typedefs.h ack.h h/config.h utils.h h/imc.h \
   h/imccfg.h lists.h strfuns.h mquest.h h/act_comm.h h/act_move.h \
   h/act_wiz.h h/comm.h
+o/imc.o: imc.c h/sha256.h globals.h typedefs.h ack.h h/config.h utils.h \
+  h/imc.h h/imccfg.h lists.h strfuns.h mquest.h h/act_wiz.h h/comm.h
 o/interp.o: interp.c globals.h typedefs.h ack.h h/config.h utils.h h/imc.h \
   h/imccfg.h lists.h strfuns.h mquest.h h/act_clan.h h/act_comm.h \
   h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h h/board.h h/build.h \
@@ -110,11 +109,12 @@ o/quest.o: quest.c globals.h typedefs.h ack.h h/config.h utils.h h/imc.h \
   money.h
 o/rulers.o: rulers.c globals.h typedefs.h ack.h h/config.h utils.h h/imc.h \
   h/imccfg.h lists.h strfuns.h mquest.h h/act_wiz.h h/comm.h
-o/scheck.o: scheck.c globals.h typedefs.h ack.h h/config.h utils.h h/imc.h \
-  h/imccfg.h lists.h strfuns.h mquest.h h/comm.h ssm.h
 o/save.o: save.c globals.h typedefs.h ack.h h/config.h utils.h h/imc.h \
   h/imccfg.h lists.h strfuns.h mquest.h hash.h h/act_obj.h h/act_wiz.h \
   h/comm.h money.h
+o/scheck.o: scheck.c globals.h typedefs.h ack.h h/config.h utils.h h/imc.h \
+  h/imccfg.h lists.h strfuns.h mquest.h h/comm.h ssm.h
+o/sha256.o: sha256.c h/sha256.h
 o/social-edit.o: social-edit.c globals.h typedefs.h ack.h h/config.h \
   utils.h h/imc.h h/imccfg.h lists.h strfuns.h mquest.h h/act_info.h \
   h/comm.h

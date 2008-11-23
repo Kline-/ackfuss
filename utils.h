@@ -203,8 +203,8 @@ char_reference(&s); } while(0)
 /*
  * Object macros.
  */
-#define CAN_WEAR(obj, part)     (IS_SET((obj)->wear_flags,  (part)))
-#define IS_OBJ_STAT(obj, stat)  (IS_SET((obj)->extra_flags, (stat)))
+#define CAN_WEAR(obj, part)     ((obj)->wear_flags.test((part)))
+#define IS_OBJ_STAT(obj, stat)  ((obj)->extra_flags.test((stat)))
 
 
 
