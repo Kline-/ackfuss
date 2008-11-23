@@ -396,15 +396,17 @@ void build_save_objects(  )
 
    pObjIndex = (OBJ_INDEX_DATA *)Pointer->data;
 
-   fprintf( SaveFile, "Vnum      %d\n", pObjIndex->vnum );  /* Must be first for sanity checks --Kline */
-   fprintf( SaveFile, "LongDesc  %s~\n", pObjIndex->long_descr );
-   fprintf( SaveFile, "Name      %s~\n", pObjIndex->name );
-   fprintf( SaveFile, "ShortDesc %s~\n", pObjIndex->short_descr );
+   fprintf( SaveFile, "Vnum       %d\n", pObjIndex->vnum );  /* Must be first for sanity checks --Kline */
+   fprintf( SaveFile, "Durability %d\n", pObjIndex->max_durability );
+   fprintf( SaveFile, "Level      %d\n", pObjIndex->level );
+   fprintf( SaveFile, "LongDesc   %s~\n", pObjIndex->long_descr );
+   fprintf( SaveFile, "Name       %s~\n", pObjIndex->name );
+   fprintf( SaveFile, "ShortDesc  %s~\n", pObjIndex->short_descr );
+   fprintf( SaveFile, "Speed      %0.2f\n", pObjIndex->speed );
+   fprintf( SaveFile, "Type       %d\n", pObjIndex->item_type );
    fprintf( SaveFile, "End\n" );
 /*
-   fprintf( SaveFile, "%i %i %i %i\n", pObject->item_type, pObject->extra_flags, pObject->wear_flags, pObject->item_apply );
-   fprintf( SaveFile, "%0.2f\n", pObject->speed );
-   fprintf( SaveFile, "%d\n", pObject->max_durability );
+   fprintf( SaveFile, "%i %i %i\n", pObject->extra_flags, pObject->wear_flags, pObject->item_apply );
 
 
     * Check for pills, potions, scrolls, staffs and wands.  
@@ -449,17 +451,6 @@ void build_save_objects(  )
       fprintf( SaveFile, "%s~\n", pEd->keyword );
       fprintf( SaveFile, "%s~\n", pEd->description );
       pEd = pEd->next;
-   }
-
-   if( ( pObject->level > 1 ) && ( pObject->level < 130 ) )
-   {
-      fprintf( SaveFile, "L\n" );
-      fprintf( SaveFile, "%d\n", pObject->level );
-   }
-   else
-   {
-      fprintf( SaveFile, "L\n" );
-      fprintf( SaveFile, "%d\n", 1 );
    }
 */
    Pointer = Pointer->next;

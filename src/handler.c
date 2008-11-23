@@ -1225,14 +1225,14 @@ void equip_char( CHAR_DATA * ch, OBJ_DATA * obj, int iWear )
    }
 
    if( ( !IS_NPC( ch ) && ch->desc->connected != CON_SETTING_STATS )
-       && ( ( IS_OBJ_STAT( obj, ITEM_ANTI_EVIL ) && IS_EVIL( ch ) )
-            || ( IS_OBJ_STAT( obj, ITEM_ANTI_GOOD ) && IS_GOOD( ch ) )
-            || ( IS_OBJ_STAT( obj, ITEM_ANTI_NEUTRAL ) && IS_NEUTRAL( ch ) ) ) )
+       && ( ( IS_OBJ_STAT( obj, ITEM_EXTRA_ANTI_EVIL ) && IS_EVIL( ch ) )
+            || ( IS_OBJ_STAT( obj, ITEM_EXTRA_ANTI_GOOD ) && IS_GOOD( ch ) )
+            || ( IS_OBJ_STAT( obj, ITEM_EXTRA_ANTI_NEUTRAL ) && IS_NEUTRAL( ch ) ) ) )
    {
       /*
        * Thanks to Morgenes for the bug fix here!
        */
-      if( !IS_OBJ_STAT( obj, ITEM_NODROP ) )
+      if( !IS_OBJ_STAT( obj, ITEM_EXTRA_NO_DROP ) )
       {
          act( "You are zapped by $p and drop it.", ch, obj, NULL, TO_CHAR );
          act( "$n is zapped by $p and drops it.", ch, obj, NULL, TO_ROOM );
@@ -2448,7 +2448,7 @@ bool can_see_obj( CHAR_DATA * ch, OBJ_DATA * obj )
    if( room_is_dark( ch->in_room ) && ( !IS_AFFECTED( ch, AFF_INFRARED ) ) && !item_has_apply( ch, ITEM_APPLY_INFRA ) )
       return FALSE;
 
-   if( IS_SET( obj->extra_flags, ITEM_INVIS )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_INVIS)
        && ( !IS_AFFECTED( ch, AFF_DETECT_INVIS ) && !item_has_apply( ch, ITEM_APPLY_DET_INV ) ) )
       return FALSE;
 
@@ -2462,7 +2462,7 @@ bool can_see_obj( CHAR_DATA * ch, OBJ_DATA * obj )
  */
 bool can_drop_obj( CHAR_DATA * ch, OBJ_DATA * obj )
 {
-   if( !IS_SET( obj->extra_flags, ITEM_NODROP ) )
+   if( !IS_OBJ_STAT(obj,ITEM_EXTRA_NO_DROP) )
       return TRUE;
 
    if( !IS_NPC( ch ) && ch->level >= LEVEL_IMMORTAL )
@@ -2473,7 +2473,7 @@ bool can_drop_obj( CHAR_DATA * ch, OBJ_DATA * obj )
 
 bool can_sac_obj( CHAR_DATA * ch, OBJ_DATA * obj )
 {
-   if( IS_SET( obj->extra_flags, ITEM_NOSAC ) )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_NO_SAC) )
       return FALSE;
    else
       return TRUE;

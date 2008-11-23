@@ -1072,41 +1072,42 @@
 #define ITEM_SPELL_MATRIX		30
 #define ITEM_ENCHANTMENT		31
 #define ITEM_WRAPPED_PRESENT 32
+
 /*
  * Extra flags.
  * Used in #OBJECTS.
  */
-#define ITEM_GLOW			BIT_1
-#define ITEM_HUM			BIT_2
-#define ITEM_NODISARM			BIT_3
-#define ITEM_LOCK			BIT_4
-#define ITEM_EVIL			BIT_5
-#define ITEM_INVIS			BIT_6
-#define ITEM_MAGIC			BIT_7
-#define ITEM_NODROP			BIT_8
-#define ITEM_BLESS			BIT_9
-#define ITEM_ANTI_GOOD			BIT_10
-#define ITEM_ANTI_EVIL			BIT_11
-#define ITEM_ANTI_NEUTRAL		BIT_12
-#define ITEM_NOREMOVE			BIT_13
-#define ITEM_INVENTORY			BIT_14
-#define ITEM_NOSAVE			BIT_15 /* For "quest" items :) */
-#define ITEM_CLAN_EQ		 	BIT_16 /* only leaders and creators may load */
-#define ITEM_TRIG_DESTROY	 	BIT_17 /* Trigger object that destroy after use */
-#define ITEM_NO_AUCTION			BIT_18   /* Can't be auctioned */
-#define ITEM_REMORT			BIT_19   /* player must have a remort class of higher level than item level */
-#define ITEM_ADEPT			BIT_20
-#define ITEM_RARE			BIT_21
-#define ITEM_VAMP                       BIT_22 /* player must be a vampire */
-#define ITEM_NOLOOT			BIT_23
-#define ITEM_NOSAC			BIT_24
-#define ITEM_UNIQUE			BIT_25
-#define ITEM_LIFESTEALER	        BIT_26
-#define ITEM_SILVER			BIT_27
-#define ITEM_NO_QUEST                   BIT_28 /* disable for mquest */
+#define ITEM_EXTRA_NONE                 0
+#define ITEM_EXTRA_GLOW			1
+#define ITEM_EXTRA_HUM			2
+#define ITEM_EXTRA_NO_DISARM		3
+#define ITEM_EXTRA_LOCK			4
+#define ITEM_EXTRA_EVIL			5
+#define ITEM_EXTRA_INVIS		6
+#define ITEM_EXTRA_MAGIC		7
+#define ITEM_EXTRA_NO_DROP		8
+#define ITEM_EXTRA_BLESS		9
+#define ITEM_EXTRA_ANTI_GOOD		10
+#define ITEM_EXTRA_ANTI_EVIL		11
+#define ITEM_EXTRA_ANTI_NEUTRAL		12
+#define ITEM_EXTRA_NO_REMOVE		13
+#define ITEM_EXTRA_INVENTORY		14
+#define ITEM_EXTRA_NO_SAVE		15 /* For "quest" items :) */
+#define ITEM_EXTRA_CLAN_EQ		16 /* only leaders and creators may load */
+#define ITEM_EXTRA_TRIG_DESTROY	 	17 /* Trigger object that destroy after use */
+#define ITEM_EXTRA_NO_AUCTION		18   /* Can't be auctioned */
+#define ITEM_EXTRA_REMORT		19   /* player must have a remort class of higher level than item level */
+#define ITEM_EXTRA_ADEPT		20
+#define ITEM_EXTRA_RARE			21
+#define ITEM_EXTRA_VAMP                 22 /* player must be a vampire */
+#define ITEM_EXTRA_NO_LOOT		23
+#define ITEM_EXTRA_NO_SAC		24
+#define ITEM_EXTRA_UNIQUE		25
+#define ITEM_EXTRA_LIFESTEALER	        26
+#define ITEM_EXTRA_SILVER		27
+#define ITEM_EXTRA_NO_QUEST             28 /* disable for mquest */
 
 /* Class-restricted stuff dropped. */
-
 #define ITEM_APPLY_NONE                 1
 #define ITEM_APPLY_INFRA                2
 #define ITEM_APPLY_INV                  4
@@ -1146,31 +1147,31 @@
  * Wear flags.
  * Used in #OBJECTS.
  */
-#define ITEM_WEAR_NONE          BIT_0
-#define ITEM_WEAR_HALO          BIT_1
-#define ITEM_WEAR_AURA          BIT_2
-#define ITEM_WEAR_HORNS         BIT_3
-#define ITEM_WEAR_HEAD          BIT_4
-#define ITEM_WEAR_FACE          BIT_5
-#define ITEM_WEAR_BEAK          BIT_6
-#define ITEM_WEAR_EAR           BIT_7
-#define ITEM_WEAR_NECK          BIT_8
-#define ITEM_WEAR_WINGS         BIT_9
-#define ITEM_WEAR_SHOULDERS     BIT_10
-#define ITEM_WEAR_ARMS          BIT_11
-#define ITEM_WEAR_WRIST         BIT_12
-#define ITEM_WEAR_HANDS         BIT_13
-#define ITEM_WEAR_FINGER        BIT_14
-#define ITEM_WEAR_CLAWS         BIT_15
-#define ITEM_WEAR_HOLD_HAND     BIT_16
-#define ITEM_WEAR_ABOUT         BIT_17
-#define ITEM_WEAR_WAIST         BIT_18
-#define ITEM_WEAR_BODY          BIT_19
-#define ITEM_WEAR_TAIL          BIT_20
-#define ITEM_WEAR_LEGS          BIT_21
-#define ITEM_WEAR_FEET          BIT_22
-#define ITEM_WEAR_HOOVES        BIT_23
-#define ITEM_TAKE               BIT_24
+#define ITEM_WEAR_NONE          0
+#define ITEM_WEAR_HALO          1
+#define ITEM_WEAR_AURA          2
+#define ITEM_WEAR_HORNS         3
+#define ITEM_WEAR_HEAD          4
+#define ITEM_WEAR_FACE          5
+#define ITEM_WEAR_BEAK          6
+#define ITEM_WEAR_EAR           7
+#define ITEM_WEAR_NECK          8
+#define ITEM_WEAR_WINGS         9
+#define ITEM_WEAR_SHOULDERS     10
+#define ITEM_WEAR_ARMS          11
+#define ITEM_WEAR_WRIST         12
+#define ITEM_WEAR_HANDS         13
+#define ITEM_WEAR_FINGER        14
+#define ITEM_WEAR_CLAWS         15
+#define ITEM_WEAR_HOLD_HAND     16
+#define ITEM_WEAR_ABOUT         17
+#define ITEM_WEAR_WAIST         18
+#define ITEM_WEAR_BODY          19
+#define ITEM_WEAR_TAIL          20
+#define ITEM_WEAR_LEGS          21
+#define ITEM_WEAR_FEET          22
+#define ITEM_WEAR_HOOVES        23
+#define ITEM_TAKE               24
 /*
  * Apply types (for affects).
  * Used in #OBJECTS.
@@ -1207,6 +1208,7 @@
  * Values for containers (value[1]).
  * Used in #OBJECTS.
  */
+#define MAX_OBJ_VALUE                 10
 #define CONT_CLOSEABLE                1
 #define CONT_PICKPROOF                2
 #define CONT_CLOSED                   4
@@ -1282,4 +1284,4 @@
 /* Other Stuff - Flar */
 #define COPYOVER_FILE	"COPYOVER.TXT" /* Temp data file used for copyover */
 #define EXE_FILE		"../src/ack"   /* The one that runs the ACK! */
-#define VERS_STRING "AckFUSS 4.3.8"
+#define VERS_STRING "AckFUSS 4.3.9"

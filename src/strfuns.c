@@ -1393,62 +1393,62 @@ const char *affect_bit_name( int vector )
 /*
  * Return ascii name of extra flags vector.
  */
-const char *extra_bit_name( int extra_flags )
+const char *extra_bit_name( std::bitset<MAX_BITSET> &extra_flags )
 {
    static char buf[512];
 
    buf[0] = '\0';
-   if( extra_flags & ITEM_GLOW )
+   if( extra_flags.test(ITEM_EXTRA_GLOW) )
       strncat( buf, " glow", MSL );
-   if( extra_flags & ITEM_HUM )
+   if( extra_flags.test(ITEM_EXTRA_HUM) )
       strncat( buf, " hum", MSL );
-   if( extra_flags & ITEM_NODISARM )
+   if( extra_flags.test(ITEM_EXTRA_NO_DISARM) )
       strncat( buf, " nodisarm", MSL );
-   if( extra_flags & ITEM_LOCK )
+   if( extra_flags.test(ITEM_EXTRA_LOCK) )
       strncat( buf, " lock", MSL );
-   if( extra_flags & ITEM_EVIL )
+   if( extra_flags.test(ITEM_EXTRA_EVIL) )
       strncat( buf, " evil", MSL );
-   if( extra_flags & ITEM_INVIS )
+   if( extra_flags.test(ITEM_EXTRA_INVIS) )
       strncat( buf, " invis", MSL );
-   if( extra_flags & ITEM_MAGIC )
+   if( extra_flags.test(ITEM_EXTRA_MAGIC) )
       strncat( buf, " magic", MSL );
-   if( extra_flags & ITEM_NODROP )
+   if( extra_flags.test(ITEM_EXTRA_NO_DROP) )
       strncat( buf, " nodrop", MSL );
-   if( extra_flags & ITEM_BLESS )
+   if( extra_flags.test(ITEM_EXTRA_BLESS) )
       strncat( buf, " bless", MSL );
-   if( extra_flags & ITEM_ANTI_GOOD )
+   if( extra_flags.test(ITEM_EXTRA_ANTI_GOOD) )
       strncat( buf, " anti-good", MSL );
-   if( extra_flags & ITEM_ANTI_EVIL )
+   if( extra_flags.test(ITEM_EXTRA_ANTI_EVIL) )
       strncat( buf, " anti-evil", MSL );
-   if( extra_flags & ITEM_ANTI_NEUTRAL )
+   if( extra_flags.test(ITEM_EXTRA_ANTI_NEUTRAL) )
       strncat( buf, " anti-neutral", MSL );
-   if( extra_flags & ITEM_NOREMOVE )
+   if( extra_flags.test(ITEM_EXTRA_NO_REMOVE) )
       strncat( buf, " noremove", MSL );
-   if( extra_flags & ITEM_INVENTORY )
+   if( extra_flags.test(ITEM_EXTRA_INVENTORY) )
       strncat( buf, " inventory", MSL );
-   if( extra_flags & ITEM_NOLOOT )
+   if( extra_flags.test(ITEM_EXTRA_NO_LOOT) )
       strncat( buf, " noloot", MSL );
-   if( extra_flags & ITEM_NOSAC )
+   if( extra_flags.test(ITEM_EXTRA_NO_SAC) )
       strncat( buf, " nosac", MSL );
-   if( extra_flags & ITEM_REMORT )
+   if( extra_flags.test(ITEM_EXTRA_REMORT) )
       strncat( buf, " remort", MSL );
-   if( extra_flags & ITEM_CLAN_EQ )
+   if( extra_flags.test(ITEM_EXTRA_CLAN_EQ) )
       strncat( buf, " claneq", MSL );
-   if( extra_flags & ITEM_NOSAVE )
+   if( extra_flags.test(ITEM_EXTRA_NO_SAVE) )
       strncat( buf, " nosave", MSL );
-   if( extra_flags & ITEM_NO_AUCTION )
+   if( extra_flags.test(ITEM_EXTRA_NO_AUCTION) )
       strncat( buf, " no_auction", MSL );
-   if( extra_flags & ITEM_RARE )
+   if( extra_flags.test(ITEM_EXTRA_RARE) )
       strncat( buf, " rare", MSL );
-   if( extra_flags & ITEM_VAMP )
+   if( extra_flags.test(ITEM_EXTRA_VAMP) )
       strncat( buf, " vamp", MSL );
-   if( extra_flags & ITEM_UNIQUE )
+   if( extra_flags.test(ITEM_EXTRA_UNIQUE) )
       strncat( buf, " unique", MSL );
-   if( extra_flags & ITEM_TRIG_DESTROY )
+   if( extra_flags.test(ITEM_EXTRA_TRIG_DESTROY) )
       strncat( buf, " trigger:destroy", MSL );
-   if( extra_flags & ITEM_LIFESTEALER )
+   if( extra_flags.test(ITEM_EXTRA_LIFESTEALER) )
       strncat( buf, " lifestealer", MSL );
-   if( extra_flags & ITEM_SILVER )
+   if( extra_flags.test(ITEM_EXTRA_SILVER) )
       strncat( buf, " silver", MSL );
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";

@@ -132,20 +132,20 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
    /* Check for mquest target */
    xcat(buf,display_obj_target(ch,obj));
 
-   if( IS_OBJ_STAT( obj, ITEM_INVIS ) )
+   if( IS_OBJ_STAT( obj, ITEM_EXTRA_INVIS ) )
       xcat( buf, "(Invis) " );
 
-   if( ( IS_AFFECTED( ch, AFF_DETECT_EVIL ) || item_has_apply( ch, ITEM_APPLY_DET_EVIL ) ) && IS_OBJ_STAT( obj, ITEM_EVIL ) )
+   if( ( IS_AFFECTED( ch, AFF_DETECT_EVIL ) || item_has_apply( ch, ITEM_APPLY_DET_EVIL ) ) && IS_OBJ_STAT( obj, ITEM_EXTRA_EVIL ) )
       xcat( buf, "(Red Aura) " );
 
    if( ( IS_AFFECTED( ch, AFF_DETECT_MAGIC ) || item_has_apply( ch, ITEM_APPLY_DET_MAG ) )
-       && IS_OBJ_STAT( obj, ITEM_MAGIC ) )
+       && IS_OBJ_STAT( obj, ITEM_EXTRA_MAGIC ) )
       xcat( buf, "(Magical) " );
 
-   if( IS_OBJ_STAT( obj, ITEM_GLOW ) )
+   if( IS_OBJ_STAT( obj, ITEM_EXTRA_GLOW ) )
       xcat( buf, "(Glowing) " );
 
-   if( IS_OBJ_STAT( obj, ITEM_HUM ) )
+   if( IS_OBJ_STAT( obj, ITEM_EXTRA_HUM ) )
       xcat( buf, "(Humming) " );
 
    if( fShort )
@@ -2649,7 +2649,7 @@ void do_compare( CHAR_DATA * ch, char *argument )
       {
          if( obj2->wear_loc != WEAR_NONE
              && can_see_obj( ch, obj2 )
-             && obj1->item_type == obj2->item_type && ( obj1->wear_flags & obj2->wear_flags & ~ITEM_TAKE ) != 0 )
+             && obj1->item_type == obj2->item_type )
             break;
       }
 
@@ -5861,7 +5861,7 @@ void do_loot( CHAR_DATA * ch, char *argument )
             obj = obj->next_in_carry_list;
          }
 
-         if( !IS_SET( obj->extra_flags, ITEM_NOLOOT ) )
+         if( !IS_OBJ_STAT(obj,ITEM_EXTRA_NO_LOOT) )
          {
             get_obj( ch, obj, corpse );
 

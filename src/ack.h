@@ -831,39 +831,32 @@ class obj_index_data
  public:
   obj_index_data();
   ~obj_index_data();
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   OBJ_INDEX_DATA *next;
-   EXTRA_DESCR_DATA *first_exdesc;
-   EXTRA_DESCR_DATA *last_exdesc;
-   OBJ_FUN *obj_fun;
-   AFFECT_DATA *first_apply;
-   AFFECT_DATA *last_apply;
-   /*
-    * MAG Mod 
-    */
    AREA_DATA *area;
-   char *owner;
-   char *name;
-   short level;
-   char *short_descr;
-   char *long_descr;
-   int vnum;
-   int item_type;
-   int extra_flags;
-   int wear_flags;
-   /*
-    * class_flags changed to item_apply for magic apply, etc 
-    */
-   int item_apply;
    short count;
-   short weight;
-   int cost;   /* Unused */
-   int value[10];
-   TRIGGER_DATA *first_trigger;
-   TRIGGER_DATA *last_trigger;
-   float speed;
    short durability;
+   std::bitset<MAX_BITSET> extra_flags;
+   AFFECT_DATA *first_apply;
+   EXTRA_DESCR_DATA *first_exdesc;
+   TRIGGER_DATA *first_trigger;
+   bool is_free;
+   int item_apply;
+   int item_type;
+   AFFECT_DATA *last_apply;
+   EXTRA_DESCR_DATA *last_exdesc;
+   TRIGGER_DATA *last_trigger;
+   short level;
+   char *long_descr;
    short max_durability;
+   char *name;
+   OBJ_INDEX_DATA *next;
+   OBJ_FUN *obj_fun;
+   char *owner;
+   char *short_descr;
+   float speed;
+   int value[MAX_OBJ_VALUE];
+   int vnum;
+   std::bitset<MAX_BITSET> wear_flags;
+   short weight;
 };
 
 
@@ -871,8 +864,11 @@ class obj_index_data
 /*
  * One object.
  */
-struct obj_data
+class obj_data
 {
+ public:
+  obj_data();
+  ~obj_data();
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    OBJ_DATA *next;
    OBJ_DATA *prev;
@@ -902,15 +898,15 @@ struct obj_data
    char *short_descr;
    char *long_descr;
    int item_type;
-   int extra_flags;
-   int wear_flags;
+   std::bitset<MAX_BITSET> extra_flags;
+   std::bitset<MAX_BITSET> wear_flags;
    int item_apply;
    int wear_loc;
    short weight;
    int cost;
    short level;
    short timer;
-   int value[10];
+   int value[MAX_OBJ_VALUE];
    short durability;
    short max_durability;
    MONEY_TYPE *money;

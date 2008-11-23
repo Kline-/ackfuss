@@ -1240,7 +1240,7 @@ bool remove_obj( CHAR_DATA * ch, int iWear, bool fReplace )
    if( !fReplace )
       return FALSE;
 
-   if( IS_SET( obj->extra_flags, ITEM_NOREMOVE ) )
+   if( IS_OBJ_STAT(obj,ITEM_EXTRA_NO_REMOVE) )
    {
       act( "You can't remove $p.", ch, obj, NULL, TO_CHAR );
       return FALSE;
@@ -1372,7 +1372,7 @@ bool can_wear_at( CHAR_DATA * ch, OBJ_DATA * obj, int location )
       return FALSE;
    }
 
-   if( ( ( obj->wear_flags & loc_flag ) == 0 ) && ( obj->wear_loc == -1 ) )
+   if( !obj->wear_flags.test(loc_flag) && ( obj->wear_loc == -1 ) )
    {
       send_to_char( "That item can't be worn there!\n\r", ch );
       return FALSE;
@@ -1407,7 +1407,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
    }
 
    if( ( get_psuedo_level( ch ) < obj->level )
-       && ( IS_OBJ_STAT( obj, ITEM_VAMP ) ) && ( IS_VAMP( ch ) ) && ( !IS_NPC( ch ) ) )
+       && ( IS_OBJ_STAT( obj, ITEM_EXTRA_VAMP ) ) && ( IS_VAMP( ch ) ) && ( !IS_NPC( ch ) ) )
    {
       snprintf( buf, MSL, "You must be level %d to use this object.\n\r", obj->level );
       send_to_char( buf, ch );
@@ -1415,7 +1415,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
       return;
    }
 
-   if( ( IS_OBJ_STAT( obj, ITEM_VAMP ) ) && ( !IS_VAMP( ch ) ) && ( !IS_NPC( ch ) ) )
+   if( ( IS_OBJ_STAT( obj, ITEM_EXTRA_VAMP ) ) && ( !IS_VAMP( ch ) ) && ( !IS_NPC( ch ) ) )
    {
       snprintf( buf, MSL, "You must be a vampire to use this object." );
       send_to_char( buf, ch );
@@ -1423,7 +1423,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
       return;
    }
 
-   if( ( get_remort_level( ch ) < obj->level ) && ( IS_OBJ_STAT( obj, ITEM_REMORT ) ) && ( !IS_NPC( ch ) ) )
+   if( ( get_remort_level( ch ) < obj->level ) && ( IS_OBJ_STAT( obj, ITEM_EXTRA_REMORT ) ) && ( !IS_NPC( ch ) ) )
    {
       snprintf( buf, MSL, "You must be level %d in a remort class to use this object.\n\r", obj->level );
       send_to_char( buf, ch );
@@ -1825,7 +1825,7 @@ void do_wear( CHAR_DATA * ch, char *argument )
       for( obj = ch->first_carry; obj != NULL; obj = obj_next )
       {
          obj_next = obj->next_in_carry_list;
-         if( obj->wear_loc != WEAR_NONE && IS_SET( obj->extra_flags, ITEM_UNIQUE ) )
+         if( obj->wear_loc != WEAR_NONE &&  IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE) )
             num_unique++;
       }
    }
@@ -1870,12 +1870,12 @@ void do_wear( CHAR_DATA * ch, char *argument )
          obj_next = obj->next_in_carry_list;
          if( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) )
          {
-            if( ( num_unique > 4 ) && ( IS_SET( obj->extra_flags, ITEM_UNIQUE ) ) )
+            if( ( num_unique > 4 ) && (  IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE) ) )
                send_to_char( "You may only wear 5 unique items at one time.\n\r", ch );
             else
                wear_obj( ch, obj, FALSE );
          }
-         if( IS_SET( obj->extra_flags, ITEM_UNIQUE ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE) )
             num_unique++;
       }
 
@@ -1888,7 +1888,7 @@ void do_wear( CHAR_DATA * ch, char *argument )
          send_to_char( "You do not have that item.\n\r", ch );
          return;
       }
-      if( ( num_unique > 4 ) && ( IS_SET( obj->extra_flags, ITEM_UNIQUE ) ) )
+      if( num_unique > 4 && IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE) )
       {
          send_to_char( " You may only wear 5 unique items at one time.\n\r", ch );
       }
@@ -2037,7 +2037,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
          act( "The judge will not accept $p as payment.", ch, obj, 0, TO_CHAR );
          return;
       }
-      else if( IS_SET( obj->extra_flags, ITEM_CLAN_EQ ) )
+      else if(  IS_OBJ_STAT(obj,ITEM_EXTRA_CLAN_EQ) )
       {
 
          send_to_char( "You cannot use clan equipment for payment of fines.\n\r", ch );
@@ -2094,15 +2094,15 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
    {
 
       align_change = obj->level;
-      if( IS_SET( obj->extra_flags, ITEM_REMORT ) )
+      if(  IS_OBJ_STAT(obj,ITEM_EXTRA_REMORT) )
          align_change *= 1.5;
       if( align_direction == 1 )
       {
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_GOOD ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_GOOD) )
             align_change *= 1.3;
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_EVIL ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_EVIL) )
             align_change *= -.3;
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_NEUTRAL ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_NEUTRAL) )
             align_change *= 1.1;
          snprintf( buf, MSL, "@@a" goodgodname "@@N gives you %s for your sacrifice.\n\r", cost_to_money( gp ) );
          send_to_char( buf, ch );
@@ -2111,11 +2111,11 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
 
       if( align_direction == -1 )
       {
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_GOOD ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_GOOD) )
             align_change *= -.3;
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_EVIL ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_EVIL) )
             align_change *= 1.5;
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_NEUTRAL ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_NEUTRAL) )
             align_change *= 1.25;
          snprintf( buf, MSL, "@@e" evilgodname "@@N gives you %s for your sacrifice.\n\r", cost_to_money( gp ) );
          send_to_char( buf, ch );
@@ -2127,11 +2127,11 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
             align_direction = -1;
          else if( ch->alignment < -200 )
             align_direction = 1;
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_GOOD ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_GOOD) )
             align_change *= 1.5;
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_EVIL ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_EVIL) )
             align_change *= 1.5;
-         if( IS_SET( obj->extra_flags, ITEM_ANTI_NEUTRAL ) )
+         if(  IS_OBJ_STAT(obj,ITEM_EXTRA_ANTI_NEUTRAL) )
             align_change *= -.3;
          snprintf( buf, MSL, "@@l" neutralgodname "@@N gives you %s for your sacrifice.\n\r", cost_to_money( gp ) );
          send_to_char( buf, ch );
@@ -2517,7 +2517,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
    }
 
    if( !can_drop_obj( ch, obj )
-       || IS_SET( obj->extra_flags, ITEM_INVENTORY ) || obj->level > ch->level || ( obj->wear_loc > -1 ) )
+       ||  IS_OBJ_STAT(obj,ITEM_EXTRA_INVENTORY) || obj->level > ch->level || ( obj->wear_loc > -1 ) )
    {
       send_to_char( "You can't pry it away.\n\r", ch );
       return;
@@ -2896,7 +2896,7 @@ void do_buy( CHAR_DATA * ch, char *argument )
          do_say( keeper, "Thank you very much for your business!" );
       }
 
-      if( IS_SET( obj->extra_flags, ITEM_INVENTORY ) )
+      if(  IS_OBJ_STAT(obj,ITEM_EXTRA_INVENTORY) )
          obj = create_object( obj->pIndexData, obj->level );
       else
          obj_from_char( obj );
@@ -2997,7 +2997,7 @@ void do_list( CHAR_DATA * ch, char *argument )
             stopcounter++;
             rounded_cost = round_money_off( cost, 1 );
             snprintf( costbuf, MSL, "%s", money_string( rounded_cost ) );
-            snprintf( buf, MSL, "@@g[%s%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \n\r", ( IS_OBJ_STAT( obj, ITEM_REMORT ) ? "@@m" : "@@a" ),
+            snprintf( buf, MSL, "@@g[%s%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \n\r", ( IS_OBJ_STAT(obj,ITEM_EXTRA_REMORT) ? "@@m" : "@@a" ),
                      obj->level, ccode_len( obj->short_descr, 30 ), capitalize( obj->short_descr ), ccode_len( costbuf, 30 ),
                      costbuf );
             PUT_FREE( rounded_cost, money_type_free );
@@ -3080,7 +3080,7 @@ void do_sell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( obj->extra_flags, ITEM_CLAN_EQ ) )
+   if(  IS_OBJ_STAT(obj,ITEM_EXTRA_CLAN_EQ) )
    {
       act( "$n looks uncertain about buying clan equipment.", keeper, NULL, NULL, TO_VICT );
       return;
@@ -3934,7 +3934,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( IS_SET( auction_item->extra_flags, ITEM_NO_AUCTION ) )
+   if(  IS_OBJ_STAT(auction_item,ITEM_EXTRA_NO_AUCTION) )
    {
       send_to_char( "You can't auction that.  Sorry!\n\r", ch );
       auction_item = NULL;
@@ -3964,7 +3964,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
          break;
    }
 
-   if( IS_SET( auction_item->extra_flags, ITEM_NODROP ) )
+   if(  IS_OBJ_STAT(auction_item,ITEM_EXTRA_NO_DROP) )
    {
       send_to_char( "You can't let go of it!\n\r", ch );
       auction_item = NULL;

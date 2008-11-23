@@ -872,7 +872,7 @@ bool spec_janitor( CHAR_DATA * ch )
 
    for( trash = ch->in_room->first_content; trash != NULL; trash = trash->next_in_room )
    {
-      if( !IS_SET( trash->wear_flags, ITEM_TAKE ) )
+      if( !CAN_WEAR(trash,ITEM_TAKE) )
          continue;
       if( trash->item_type == ITEM_DRINK_CON || trash->item_type == ITEM_TRASH || trash->cost < 10 )
       {

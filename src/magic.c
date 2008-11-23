@@ -1922,50 +1922,50 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
        * * -- Alty
        */
 
-      if( IS_SET( ob->extra_flags, ITEM_GLOW ) )
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_GLOW) )
       {
-         REMOVE_BIT( ob->extra_flags, ITEM_GLOW );
+         ob->extra_flags.reset(ITEM_EXTRA_GLOW);
          act( "$p stops glowing.", ch, ob, NULL, TO_ROOM );
          act( "$p stops glowing.", ch, ob, NULL, TO_CHAR );
       }
-      if( IS_SET( ob->extra_flags, ITEM_HUM ) )
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_HUM) )
       {
-         REMOVE_BIT( ob->extra_flags, ITEM_HUM );
+         ob->extra_flags.reset(ITEM_EXTRA_HUM);
          act( "The hum surrounding $p fades.", ch, ob, NULL, TO_CHAR );
          act( "The hum surrounding $p fades.", ch, ob, NULL, TO_ROOM );
       }
-      if( IS_SET( ob->extra_flags, ITEM_NODISARM ) )
-         REMOVE_BIT( ob->extra_flags, ITEM_NODISARM );
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_NO_DISARM) )
+         ob->extra_flags.reset(ITEM_EXTRA_NO_DISARM);
 
-      if( IS_SET( ob->extra_flags, ITEM_EVIL ) )
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_EVIL) )
       {
-         REMOVE_BIT( ob->extra_flags, ITEM_EVIL );
+         ob->extra_flags.reset(ITEM_EXTRA_EVIL);
          act( "$p looks less evil.", ch, ob, NULL, TO_CHAR );
          act( "$p looks less evil.", ch, ob, NULL, TO_ROOM );
       }
-      if( IS_SET( ob->extra_flags, ITEM_NODROP ) )
-         REMOVE_BIT( ob->extra_flags, ITEM_NODROP );
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_NO_DROP) )
+         ob->extra_flags.reset(ITEM_EXTRA_NO_DROP);
 
-      if( IS_SET( ob->extra_flags, ITEM_INVIS ) )
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_INVIS) )
       {
-         REMOVE_BIT( ob->extra_flags, ITEM_INVIS );
+         ob->extra_flags.reset(ITEM_EXTRA_INVIS);
          act( "$p fades back into view.", ch, ob, NULL, TO_CHAR );
          act( "$p fades back into view.", ch, ob, NULL, TO_ROOM );
       }
-      if( IS_SET( ob->extra_flags, ITEM_MAGIC ) )
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_MAGIC) )
       {
-         REMOVE_BIT( ob->extra_flags, ITEM_MAGIC );
+         ob->extra_flags.reset(ITEM_EXTRA_MAGIC);
          act( "$p looks less magical.", ch, ob, NULL, TO_CHAR );
          act( "$p looks less magical.", ch, ob, NULL, TO_ROOM );
       }
-      if( IS_SET( ob->extra_flags, ITEM_BLESS ) )
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_BLESS) )
       {
-         REMOVE_BIT( ob->extra_flags, ITEM_BLESS );
+         ob->extra_flags.reset(ITEM_EXTRA_BLESS);
          act( "$p looks less Holy.", ch, ob, NULL, TO_CHAR );
          act( "$p looks less Holy.", ch, ob, NULL, TO_ROOM );
       }
-      if( IS_SET( ob->extra_flags, ITEM_NOREMOVE ) )
-         REMOVE_BIT( ob->extra_flags, ITEM_NOREMOVE );
+      if( IS_OBJ_STAT(ob,ITEM_EXTRA_NO_REMOVE) )
+         ob->extra_flags.reset(ITEM_EXTRA_NO_REMOVE);
 
       ob->first_apply = NULL;
       ob->last_apply = NULL;
@@ -2070,7 +2070,7 @@ bool spell_enchant_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
     * Should change the first_apply thing to something else..
     * right now you can't enchant ANYTHING with ANY affect -- Alty 
     */
-   if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_MAGIC ) || ob->first_apply != NULL )
+   if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_EXTRA_MAGIC ) || ob->first_apply != NULL )
    {
       send_to_char( "Nothing happens.\n\r", ch );
       return TRUE;
@@ -2095,18 +2095,18 @@ bool spell_enchant_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
 
    if( IS_GOOD( ch ) )
    {
-      SET_BIT( ob->extra_flags, ITEM_ANTI_EVIL );
+      ob->extra_flags.set(ITEM_EXTRA_ANTI_EVIL);
       act( "$p glows white.", ch, ob, NULL, TO_CHAR );
    }
    else if( IS_EVIL( ch ) )
    {
-      SET_BIT( ob->extra_flags, ITEM_ANTI_GOOD );
+      ob->extra_flags.set(ITEM_EXTRA_ANTI_GOOD);
       act( "$p glows black.", ch, ob, NULL, TO_CHAR );
    }
    else
    {
-      SET_BIT( ob->extra_flags, ITEM_ANTI_EVIL );
-      SET_BIT( ob->extra_flags, ITEM_ANTI_GOOD );
+      ob->extra_flags.set(ITEM_EXTRA_ANTI_EVIL);
+      ob->extra_flags.set(ITEM_EXTRA_ANTI_GOOD);
       act( "$p glows yellow.", ch, ob, NULL, TO_CHAR );
    }
 
@@ -2498,8 +2498,8 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
             "@@NObject '%s' is @@etype@@N %s, @@aextra flags@@N %s.\n\r@@mWorn@@N: %s, @@cWeight@@N: %d, @@lDurability@@N: %d/%d (%1.0f%%), @@yvalue@@N: %s @@N, @@rlevel@@N: %d.\n\r",
             ob->short_descr,
             item_type_name( ob ),
-            extra_bit_name( ob->extra_flags ),
-            bit_table_lookup( tab_wear_flags, ob->wear_flags ), ob->weight, ob->durability == 1 ? 0 : ob->durability, ob->max_durability, ob->durability == 1 ? 0 : (float)(((float)ob->durability / (float)ob->max_durability) * 100), cost_to_money( ob->cost ), ob->level );
+            bs_show_values( tab_obj_flags, ob->extra_flags ),
+            bs_show_values( tab_wear_flags, ob->wear_flags ), ob->weight, ob->durability == 1 ? 0 : ob->durability, ob->max_durability, ob->durability == 1 ? 0 : (float)(((float)ob->durability / (float)ob->max_durability) * 100), cost_to_money( ob->cost ), ob->level );
    send_to_char( buf, ch );
 
    switch ( ob->item_type )
@@ -2620,9 +2620,9 @@ bool spell_invis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    }
    else if( ( ob = get_obj_carry( ch, target_name ) ) != NULL )
    {
-      if( !IS_SET( ob->extra_flags, ITEM_INVIS ) )
+      if( !IS_OBJ_STAT(ob, ITEM_EXTRA_INVIS ) )
       {
-         SET_BIT( ob->extra_flags, ITEM_INVIS );
+         SET_BIT( ob->extra_flags, ITEM_EXTRA_INVIS );
          act( "$p shimmers out of visibility.", ch, ob, NULL, TO_CHAR );
          act( "$p shimmers out of visibility.", ch, ob, NULL, TO_ROOM );
          return TRUE;
@@ -2707,9 +2707,9 @@ bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    for( ob = first_obj; ob != NULL; ob = ob->next )
    {
       if( !can_see_obj( ch, ob ) || !is_name( target_name, ob->name )
-          || IS_SET( ob->extra_flags, ITEM_RARE )
+          || IS_OBJ_STAT(ob,ITEM_EXTRA_RARE)
           || ( ob->item_type == ITEM_PIECE )
-          || ( IS_SET( ob->extra_flags, ITEM_UNIQUE ) ) || ( !str_prefix( target_name, "unique" ) ) )
+          || ( IS_OBJ_STAT(ob,ITEM_EXTRA_UNIQUE) ) || ( !str_prefix( target_name, "unique" ) ) )
          continue;
 
 
@@ -3879,7 +3879,7 @@ bool spell_enhance_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
       return FALSE;
    }
 
-   if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_MAGIC ) || ob->first_apply != NULL )
+   if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_EXTRA_MAGIC ) || ob->first_apply != NULL )
       return TRUE;
 
    GET_FREE( paf, affect_free );
@@ -4054,7 +4054,7 @@ bool spell_dimension_blade( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
       return TRUE;
    }
 
-   if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_MAGIC ) || ob->first_apply != NULL )
+   if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_EXTRA_MAGIC ) || ob->first_apply != NULL )
       return TRUE;
 
    GET_FREE( paf, affect_free );
@@ -4196,9 +4196,9 @@ bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 
 
       if( !can_see_obj( ch, ob ) || !is_name( target_name, ob->name )
-          || IS_SET( ob->extra_flags, ITEM_RARE )
+          || IS_OBJ_STAT(ob,ITEM_EXTRA_RARE)
           || ( ob->item_type == ITEM_PIECE )
-          || ( IS_SET( ob->extra_flags, ITEM_UNIQUE ) ) || ( !str_prefix( target_name, "unique" ) ) )
+          || ( IS_OBJ_STAT(ob,ITEM_EXTRA_UNIQUE) ) || ( !str_prefix( target_name, "unique" ) ) )
          continue;
 
 
@@ -6175,13 +6175,13 @@ bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    paf->caster = NULL;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
-   SET_BIT( ob->extra_flags, ITEM_NODISARM );
-   SET_BIT( ob->extra_flags, ITEM_NODROP );
-   SET_BIT( ob->extra_flags, ITEM_NO_AUCTION );
-   SET_BIT( ob->extra_flags, ITEM_NOSAC );
-   SET_BIT( ob->extra_flags, ITEM_NOLOOT );
-   SET_BIT( ob->extra_flags, ITEM_ANTI_GOOD );
-   SET_BIT( ob->extra_flags, ITEM_NOLOOT );
+   ob->extra_flags.set(ITEM_EXTRA_NO_DISARM);
+   ob->extra_flags.set(ITEM_EXTRA_NO_DROP);
+   ob->extra_flags.set(ITEM_EXTRA_NO_AUCTION);
+   ob->extra_flags.set(ITEM_EXTRA_NO_SAC);
+   ob->extra_flags.set(ITEM_EXTRA_NO_LOOT);
+   ob->extra_flags.set(ITEM_EXTRA_ANTI_GOOD);
+   ob->extra_flags.set(ITEM_EXTRA_NO_LOOT);
 
    ob->obj_fun = obj_fun_lookup( "objfun_infused_soul" );
    extract_obj( obj_soul );

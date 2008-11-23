@@ -1,5 +1,5 @@
 CC   = g++
-VERS = AckFUSS 4.3.8
+VERS = AckFUSS 4.3.9
 #PROF    = -pg
 
 # Debugging flags possible:  DEBUG_MEM DEBUG_MEM_CORRUPT DEBUG_MEM_DUP_FREE
@@ -25,16 +25,12 @@ L_FLAGS = -lcrypt -lm
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1
+IMC_FILES = imc.c sha256.c
 
-C_FILES = act_clan.c act_comm.c act_info.c act_mob.c act_move.c act_obj.c act_wiz.c areachk.c \
-	  areasave.c board.c build.c buildare.c buildtab.c clutch.c comm.c const.c ctor.c db.c \
-	  dtor.c email.c enchant.c fight.c handler.c hash.c hunt.c interp.c lists.c macros.c \
-	  magic.c mapper.c mob_commands.c mob_prog.c money.c mount.c mquest.c obj_fun.c pdelete.c \
-	  quest.c rulers.c scheck.c save.c social-edit.c special.c spell_dam.c spendqp.c ssm.c \
-	  strfuns.c sysdata.c trigger.c update.c vampire.c werewolf.c wizutil.c write.c \
+C_FILES = $(filter-out $(IMC_FILES),$(wildcard *.c))
 
 ifdef IMC
-   C_FILES := imc.c sha256.c $(C_FILES)
+   C_FILES = $(wildcard *.c)
    C_FLAGS := $(C_FLAGS) -DIMC -DIMCACK
 endif
 
