@@ -623,7 +623,7 @@ int get_item_value( OBJ_DATA * obj )
 /* fix this up to use apply_ac by getting the wear loc */
    for( wear_loc = 1; wear_loc < MAX_WEAR; wear_loc++ )
    {
-      if( CAN_WEAR( obj, ( 1 << wear_loc ) ) )
+      if( CAN_WEAR( obj, wear_loc ) )
          break;
    }
    if( wear_loc == MAX_WEAR )
@@ -635,7 +635,7 @@ int get_item_value( OBJ_DATA * obj )
       ac_mod = 0;
    }
    else
-      ac_mod = apply_ac( obj, 1 << wear_loc );
+      ac_mod = apply_ac( obj, wear_loc );
 
    for( this_aff = obj->first_apply; this_aff != NULL; this_aff = this_aff->next )
    {

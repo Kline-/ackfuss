@@ -2842,7 +2842,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
       case ITEM_CLUTCH:
          break;
       case ITEM_CONTAINER:
-         obj->wear_flags = ITEM_TAKE;
+         obj->wear_flags.set(ITEM_TAKE);
       case ITEM_DRINK_CON:
       case ITEM_BOARD:
       case ITEM_KEY:

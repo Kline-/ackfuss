@@ -16,7 +16,7 @@ VERS = AckFUSS 4.3.9
 #-DDEBUG_MEM -DDEBUG_MEM_CORRUPT
 
 #Uncomment to compile in Cygwin
-#CYGWIN = -DCYGWIN
+#CYGWIN = -DCYGWIN -DWIN32
 
 #-Wshadow -Werror -Wformat-security -Wconversion -Wwrite-strings
 W_FLAGS = -Wall -Wpointer-arith -Wredundant-decls -Wcast-align
@@ -39,7 +39,7 @@ O_FILES = $(patsubst %.c,o/%.o,$(C_FILES))
 H_FILES = $(wildcard h/*.h)
 
 all:
-	@$(MAKE) -j1 ack
+	@$(MAKE) -j2 ack
 
 # pull in dependency info for *existing* .o files
 -include dependencies.d

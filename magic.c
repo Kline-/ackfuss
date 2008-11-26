@@ -2498,8 +2498,11 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
             "@@NObject '%s' is @@etype@@N %s, @@aextra flags@@N %s.\n\r@@mWorn@@N: %s, @@cWeight@@N: %d, @@lDurability@@N: %d/%d (%1.0f%%), @@yvalue@@N: %s @@N, @@rlevel@@N: %d.\n\r",
             ob->short_descr,
             item_type_name( ob ),
-            bs_show_values( tab_obj_flags, ob->extra_flags ),
-            bs_show_values( tab_wear_flags, ob->wear_flags ), ob->weight, ob->durability == 1 ? 0 : ob->durability, ob->max_durability, ob->durability == 1 ? 0 : (float)(((float)ob->durability / (float)ob->max_durability) * 100), cost_to_money( ob->cost ), ob->level );
+            extra_bit_name( ob->extra_flags ),
+            bs_show_values( tab_wear_flags, ob->wear_flags ),
+            ob->weight,
+            ob->durability == 1 ? 0 : ob->durability, ob->max_durability,
+            ob->durability == 1 ? 0 : (float)(((float)ob->durability / (float)ob->max_durability) * 100), cost_to_money( ob->cost ), ob->level );
    send_to_char( buf, ch );
 
    switch ( ob->item_type )
