@@ -1,0 +1,9 @@
+BUILD HELP : AOBJ
+------------------
+Aobj, or auto-object, is available to rapidly set gear stats based on a table and absolute
+maximum values.
+
+These stats can be raw derived from max by just using 'aobj', or further refined based on
+slot by using 'aobj <slot>'. Currently tab_auto_object contains the modifiers to be changed
+in buildtab.c, but this may move to being online-editable in the future. You can use 'aobj list'
+to see all valid slots.

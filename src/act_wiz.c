@@ -750,7 +750,7 @@ void do_ostat( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "Short description: %s.\n\rLong description: %s\n\r", obj->short_descr, obj->long_descr );
    xcat( buf1, buf );
 
-   snprintf( buf, MSL, "Wear bits: %s.\n\rExtra bits: %s.\n\r",
+   snprintf( buf, MSL, "Wear bits: \n\r%s.\n\rExtra bits: %s\n\r",
             bs_show_values( tab_wear_flags, obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
    xcat( buf1, buf );
 
@@ -3412,9 +3412,9 @@ void do_oset( CHAR_DATA * ch, char *argument )
          return;
 
       if( num == 1 )
-         SET_BIT( obj->wear_flags, value );
+         obj->wear_flags.set(value);
       else
-         REMOVE_BIT( obj->wear_flags, value );
+         obj->wear_flags.reset(value);
       return;
    }
 

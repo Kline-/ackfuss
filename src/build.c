@@ -538,8 +538,8 @@ void build_showobj( CHAR_DATA * ch, char *argument )
     * xcat( buf1, buf);
     */
 
-   snprintf( buf, MSL, "@@WWear bits:\n\r@@y%s\n\r@@WExtra bits:\n\r@@y%s\n\r",
-            bs_show_values( tab_wear_flags, obj->wear_flags ), bs_show_values( tab_obj_flags, obj->extra_flags ) );
+   snprintf( buf, MSL, "@@WWear bits:\n\r@@y%s\n\r@@WExtra bits: @@y%s\n\r",
+            bs_show_values( tab_wear_flags, obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
    /*
     * bit_table_lookup(tab_extra_flags, obj->extra_flags ) );
     * I think another bit_table_lookup is better!  Zen 
@@ -2532,6 +2532,15 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
      for( i = 0; tab_auto_obj[i].name != NULL; i++ )
      {
+      if( !str_prefix(arg3,"list") )
+      {
+       snprintf(buf,MSL,"Valid object types:");
+       for( i = 0; tab_auto_obj[i].name != NULL; i++ )
+        xcat(buf," %s",tab_auto_obj[i].name);
+       xcat(buf,".\n\r");
+       send_to_char(buf,ch);
+       return;
+      }
       if( !str_prefix(arg3,tab_auto_obj[i].name) )
       {
        found = TRUE;
@@ -2766,9 +2775,9 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          return;
       }
       if( num == 1 )
-         SET_BIT( pObj->wear_flags, value );
+         pObj->wear_flags.set(value);
       else
-         REMOVE_BIT( pObj->wear_flags, value );
+         pObj->wear_flags.reset(value);
 
       return;
 

@@ -17,6 +17,7 @@ BUILD HELP : INDEX
 | Delobject	Delreset	Delroom		Delmobile	Redit	|
 | Forcereset	Oedit		Medit		Nedit		Setvnum	|
 | Values	Liquids		Weapons		Spells	        Sysdata |
+| Aobj                                                                  |
 +-----------------------------------------------------------------------+
 |				FLAGS					|
 +-----------------------------------------------------------------------+
