@@ -398,17 +398,33 @@ void build_save_objects(  )
 
    fprintf( SaveFile, "Vnum       %d\n", pObjIndex->vnum );  /* Must be first for sanity checks --Kline */
    fprintf( SaveFile, "Durability %d\n", pObjIndex->max_durability );
+
+   fprintf( SaveFile, "ExtraFlags " );
+   for( short i = 0; i < MAX_BITSET; i++ )
+    if( pObjIndex->extra_flags.test(i) )
+     fprintf( SaveFile, "%d ", i );
+   fprintf( SaveFile, "EOL\n" );
+
+   fprintf( SaveFile, "ItemApply  %d\n", pObjIndex->item_apply );
    fprintf( SaveFile, "Level      %d\n", pObjIndex->level );
    fprintf( SaveFile, "LongDesc   %s~\n", pObjIndex->long_descr );
    fprintf( SaveFile, "Name       %s~\n", pObjIndex->name );
    fprintf( SaveFile, "ShortDesc  %s~\n", pObjIndex->short_descr );
    fprintf( SaveFile, "Speed      %0.2f\n", pObjIndex->speed );
    fprintf( SaveFile, "Type       %d\n", pObjIndex->item_type );
+
+   fprintf( SaveFile, "Values     " );
+   for( short i = 0; i < MAX_OBJ_VALUE; i++ )
+    fprintf( SaveFile, "%d ", pObjIndex->value[i] );
+
+   fprintf( SaveFile, "WearFlags  " );
+   for( short i = 0; i < MAX_BITSET; i++ )
+    if( pObjIndex->wear_flags.test(i) )
+     fprintf( SaveFile, "%d ", i );
+   fprintf( SaveFile, "EOL\n" );
+
    fprintf( SaveFile, "End\n" );
 /*
-   fprintf( SaveFile, "%i %i %i\n", pObject->extra_flags, pObject->wear_flags, pObject->item_apply );
-
-
     * Check for pills, potions, scrolls, staffs and wands.  
 
    val0 = pObject->value[0];

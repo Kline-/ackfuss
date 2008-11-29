@@ -1209,6 +1209,25 @@ void load_object( FILE * fp )
             KEY("Durability",pObjIndex->max_durability,fread_number(fp));
             break;
 
+         case 'E':
+            if( !str_cmp(word,"ExtraFlags") )
+            {
+             tmp = fread_word(fp);
+
+             while( str_cmp(tmp,"EOL") )
+             {
+              pObjIndex->extra_flags.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = true;
+             break;
+            }
+            break;
+
+         case 'I':
+            KEY("ItemApply",pObjIndex->item_apply,fread_number(fp));
+            break;
+
          case 'L':
             KEY("Level",pObjIndex->level,fread_number(fp));
             SKEY("LongDesc",pObjIndex->long_descr,fread_string(fp));
@@ -1228,6 +1247,13 @@ void load_object( FILE * fp )
             break;
 
          case 'V':
+            if( !str_cmp(word,"Values") )
+            {
+             for( short i = 0; i < MAX_OBJ_VALUE; i++ )
+              pObjIndex->value[i] = fread_number(fp);
+             fMatch = true;
+             break;
+            }
             if( !str_cmp(word,"Vnum") )
             {
              vnum = fread_number(fp);
@@ -1249,6 +1275,20 @@ void load_object( FILE * fp )
             }
             break;
 
+         case 'W':
+            if( !str_cmp(word,"WearFlags") )
+            {
+             tmp = fread_word(fp);
+
+             while( str_cmp(tmp,"EOL") )
+             {
+              pObjIndex->wear_flags.set(atoi(tmp));
+              tmp = fread_word(fp);
+             }
+             fMatch = true;
+             break;
+            }
+            break;
       }
    }
 
