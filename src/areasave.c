@@ -380,7 +380,6 @@ void build_save_objects(  )
    OBJ_INDEX_DATA *pObjIndex;
    AFFECT_DATA *pAf;
    EXTRA_DESCR_DATA *pEd;
-   int val0, val1, val2, val3;
 
    if( Pointer == NULL )   /* Start */
    {
@@ -424,34 +423,11 @@ void build_save_objects(  )
      fprintf( SaveFile, "%d ", i );
    fprintf( SaveFile, "EOL\n" );
 
+   fprintf( SaveFile, "Weight     %d\n", pObjIndex->weight );
+
    fprintf( SaveFile, "End\n" );
 /*
     * Check for pills, potions, scrolls, staffs and wands.  
-
-   val0 = pObject->value[0];
-   val1 = pObject->value[1];
-   val2 = pObject->value[2];
-   val3 = pObject->value[3];
-   switch ( pObject->item_type )
-   {
-      case ITEM_PILL:
-      case ITEM_POTION:
-      case ITEM_SCROLL:
-         val1 = val1 < 0 ? -1 : skill_table[val1].slot;
-         val2 = val2 < 0 ? -1 : skill_table[val2].slot;
-         val3 = val3 < 0 ? -1 : skill_table[val3].slot;
-         break;
-
-      case ITEM_STAFF:
-      case ITEM_WAND:
-         val3 = val3 < 0 ? -1 : skill_table[val3].slot;
-         break;
-   }
-   fprintf( SaveFile, "%i %i %i %i %i %i %i %i %i %i\n", val0, val1, val2, val3,
-            pObject->value[4], pObject->value[5], pObject->value[6], pObject->value[7],
-            pObject->value[8], pObject->value[9] );
-   fprintf( SaveFile, "%i\n", pObject->weight );
-
 
    pAf = pObject->first_apply;
    while( pAf )
@@ -460,16 +436,17 @@ void build_save_objects(  )
       fprintf( SaveFile, "%i %i\n", pAf->location, pAf->modifier );
       pAf = pAf->next;
    }
-
-   pEd = pObject->first_exdesc;
+*/
+   pEd = pObjIndex->first_exdesc;
    while( pEd )
    {
-      fprintf( SaveFile, "E\n" );
-      fprintf( SaveFile, "%s~\n", pEd->keyword );
-      fprintf( SaveFile, "%s~\n", pEd->description );
+      fprintf( SaveFile, "#OEXTRA\n" );
+      fprintf( SaveFile, "Desc       %s~\n", pEd->description );
+      fprintf( SaveFile, "Keyword    %s~\n", pEd->keyword );
+      fprintf( SaveFile, "End\n" );
       pEd = pEd->next;
    }
-*/
+
    Pointer = Pointer->next;
    if( Pointer == NULL ) /* End */
     Section++;

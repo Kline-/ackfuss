@@ -177,6 +177,7 @@ char *string_hash[MAX_KEY_HASH];
 AREA_DATA *area_used[MAX_AREAS];
 AREA_DATA *area_load;
 ROOM_INDEX_DATA *room_load;
+OBJ_INDEX_DATA *obj_load;
 /* 
  * replaced for SSM
  */
@@ -257,6 +258,7 @@ void load_area args( ( FILE * fp ) );
 void load_door args( ( FILE * fp ) );
 void load_mobile args( ( FILE * fp ) );
 void load_object args( ( FILE * fp ) );
+void load_oextra args( ( FILE * fp ) );
 void load_resets args( ( FILE * fp ) );
 void load_rextra args( ( FILE * fp ) );
 void load_room args( ( FILE * fp ) );
@@ -584,6 +586,8 @@ void load_areas( void )
             load_mobprogs( fpArea );
          else if( !str_cmp( word, "OBJECT" ) )
             load_object( fpArea );
+         else if( !str_cmp( word, "OEXTRA" ) )
+            load_oextra( fpArea );
          else if( !str_cmp( word, "RESETS" ) )
             load_resets( fpArea );
          else if( !str_cmp( word, "REXTRA" ) )
@@ -1288,35 +1292,12 @@ void load_object( FILE * fp )
              fMatch = true;
              break;
             }
+            KEY("Weight",pObjIndex->weight,fread_number(fp));
             break;
       }
    }
 
   /*
-      pObjIndex->vnum = vnum;
-      pObjIndex->area = area_load;
-      pObjIndex->name = fread_string( fp );
-      pObjIndex->short_descr = fread_string( fp );
-      pObjIndex->description = fread_string( fp );
-      pObjIndex->short_descr[0] = LOWER( pObjIndex->short_descr[0] );
-      pObjIndex->description[0] = UPPER( pObjIndex->description[0] );
-      pObjIndex->item_type = fread_number( fp );
-      pObjIndex->extra_flags = fread_number( fp );
-      pObjIndex->wear_flags = fread_number( fp );
-      pObjIndex->item_apply = fread_number( fp );
-      if( area_revision > 16 )
-       pObjIndex->speed = fread_float( fp );
-      if( area_revision > 17 )
-       pObjIndex->max_durability = fread_number( fp );
-      pObjIndex->value[0] = fread_number( fp );
-      pObjIndex->value[1] = fread_number( fp );
-      pObjIndex->value[2] = fread_number( fp );
-      pObjIndex->value[3] = fread_number( fp );
-      for( looper = 4; looper < 10; pObjIndex->value[looper] = fread_number( fp ), looper++ );
-      pObjIndex->weight = fread_number( fp );
-      pObjIndex->cost = 0;
-
-
       if( pObjIndex->item_type == ITEM_POTION )
          SET_BIT( pObjIndex->extra_flags, ITEM_NODROP );
 
@@ -1339,22 +1320,6 @@ void load_object( FILE * fp )
             paf->caster = NULL;
             LINK( paf, pObjIndex->first_apply, pObjIndex->last_apply, next, prev );
             top_affect++;
-         }
-
-         else if( letter == 'E' )
-         {
-            EXTRA_DESCR_DATA *ed;
-
-            GET_FREE( ed, exdesc_free );
-            ed->keyword = fread_string( fp );
-            ed->description = fread_string( fp );
-            LINK( ed, pObjIndex->first_exdesc, pObjIndex->last_exdesc, next, prev );
-            top_ed++;
-         }
-
-         else if( letter == 'L' )
-         {
-            pObjIndex->level = fread_number( fp );
          }
 
          else
@@ -1397,10 +1362,63 @@ void load_object( FILE * fp )
    pList->data = pObjIndex;
    LINK( pList, area_load->first_area_object, area_load->last_area_object, next, prev );
 
+   obj_load = pObjIndex;
+   top_obj_index++;
+
    return;
 }
 
+void load_oextra( FILE * fp )
+{
+ EXTRA_DESCR_DATA *pEd;
+ const char *word;
+ bool fMatch = false;
 
+ if( obj_load == NULL )
+ {
+  bug( "Load_oextra: no #OBJECT seen yet.", 0 );
+  hang( "Loading Oextras in db.c" );
+ }
+
+ pEd = new EXTRA_DESCR_DATA;
+
+ for( ;; )
+ {
+  word = fread_word( fp );
+  fMatch = false;
+
+  if( !str_cmp(word,"End") )
+   break;
+
+  switch( UPPER(word[0]) )
+  {
+   case '*':
+    fMatch = true;
+    fread_to_eol(fp);
+    break;
+
+   case 'D':
+    SKEY("Desc", pEd->description, fread_string(fp));
+    break;
+
+   case 'K':
+    SKEY("Keyword", pEd->keyword, fread_string(fp));
+    break;
+  }
+ }
+
+ if( !fMatch )
+ {
+  snprintf( log_buf, (2 * MIL), "Loading in oextra :%s (%s), no match for ( %s ).", area_load->name, obj_load->name, word );
+  monitor_chan( log_buf, MONITOR_BAD );
+  fread_to_eol( fp );
+ }
+
+ LINK( pEd, obj_load->first_exdesc, obj_load->last_exdesc, next, prev );
+ top_ed++;
+
+ return;
+}
 
 /*
  * Snarf a reset section.
@@ -1597,7 +1615,7 @@ void load_rextra( FILE * fp )
 
  if( !fMatch )
  {
-  snprintf( log_buf, (2 * MIL), "Loading in door :%s (%s), no match for ( %s ).", area_load->name, room_load->name, word );
+  snprintf( log_buf, (2 * MIL), "Loading in rextra :%s (%s), no match for ( %s ).", area_load->name, room_load->name, word );
   monitor_chan( log_buf, MONITOR_BAD );
   fread_to_eol( fp );
  }
