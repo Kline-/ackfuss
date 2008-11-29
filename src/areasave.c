@@ -416,6 +416,7 @@ void build_save_objects(  )
    fprintf( SaveFile, "Values     " );
    for( short i = 0; i < MAX_OBJ_VALUE; i++ )
     fprintf( SaveFile, "%d ", pObjIndex->value[i] );
+   fprintf( SaveFile, "\n" );
 
    fprintf( SaveFile, "WearFlags  " );
    for( short i = 0; i < MAX_BITSET; i++ )
