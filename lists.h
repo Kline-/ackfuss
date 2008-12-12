@@ -78,7 +78,6 @@ extern NPC_GROUP_DATA *last_npc_group;
 extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
 extern PORTAL_DATA *portal_free;
-extern AFFECT_DATA *affect_free;
 extern ROOM_AFFECT_DATA *raffect_free;
 extern BAN_DATA *ban_free;
 extern DESCRIPTOR_DATA *desc_free;
@@ -115,7 +114,6 @@ extern FIGHT_DATA *fight_free;
 extern QUEST_INFO *quest_info_free;
 
 extern void ( *portal_free_destructor ) ( PORTAL_DATA * pdat );
-extern void ( *affect_free_destructor ) ( AFFECT_DATA * adat );
 extern void ( *raffect_free_destructor ) ( ROOM_AFFECT_DATA * radat );
 extern void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat );
 extern void ( *shop_free_destructor ) ( SHOP_DATA * sdat );

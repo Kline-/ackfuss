@@ -2946,14 +2946,14 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          }
 
          UNLINK( paf, pObj->first_apply, pObj->last_apply, next, prev );
-         PUT_FREE( paf, affect_free ); /* Put on free list */
+         delete paf;
          return;
       }
 
 
       if( !found )
       {
-         GET_FREE( paf, affect_free );
+         paf = new AFFECT_DATA;
          paf->location = location;
          paf->modifier = atoi( argument );
          LINK( paf, pObj->first_apply, pObj->last_apply, next, prev );
@@ -4302,7 +4302,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
       for( paf = pObjIndex->first_apply; paf != NULL; paf = pNext )
       {
          pNext = paf->next;
-         PUT_FREE( paf, affect_free );
+         delete paf;
       }
    }
 

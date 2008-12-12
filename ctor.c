@@ -16,6 +16,20 @@
 #include "money.h"
 #endif
 
+affect_data::affect_data()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ type = -1;
+ duration = -1;
+ location = -1;
+ modifier = 0;
+ bitvector = 0;
+ caster = NULL;
+ level = 0;
+}
+
 area_data::area_data()
 {
  age = 15;

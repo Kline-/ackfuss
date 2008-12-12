@@ -1049,17 +1049,16 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                AFFECT_DATA *paf;
 
-               GET_FREE( paf, affect_free );
+               paf = new AFFECT_DATA;
                paf->type = fread_number( fp );
                paf->duration = fread_number( fp );
                paf->modifier = fread_number( fp );
                paf->location = fread_number( fp );
                paf->bitvector = fread_number( fp );
-               paf->caster = NULL;
                if( paf->type != -1 )
                   LINK( paf, ch->first_saved_aff, ch->last_saved_aff, next, prev );
                else
-                  PUT_FREE( paf, affect_free );
+                  delete paf;
                fMatch = TRUE;
                break;
             }
@@ -1615,7 +1614,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
             {
                AFFECT_DATA *paf;
 
-               GET_FREE( paf, affect_free );
+               paf = new AFFECT_DATA;
                paf->type = fread_number( fp );
                paf->duration = fread_number( fp );
                paf->modifier = fread_number( fp );
@@ -1677,7 +1676,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                   while( ( paf = obj->first_apply ) != NULL )
                   {
                      obj->first_apply = paf->next;
-                     PUT_FREE( paf, affect_free );
+                     delete paf;
                   }
                   while( ( ed = obj->first_exdesc ) != NULL )
                   {
@@ -1990,7 +1989,7 @@ void fread_corpse( FILE * fp )
             {
                AFFECT_DATA *paf;
 
-               GET_FREE( paf, affect_free );
+               paf = new AFFECT_DATA;
                paf->type = fread_number( fp );
                paf->duration = fread_number( fp );
                paf->modifier = fread_number( fp );
@@ -2042,7 +2041,7 @@ void fread_corpse( FILE * fp )
                   while( ( paf = obj->first_apply ) != NULL )
                   {
                      obj->first_apply = paf->next;
-                     PUT_FREE( paf, affect_free );
+                     delete paf;
                   }
                   while( ( ed = obj->first_exdesc ) != NULL )
                   {
