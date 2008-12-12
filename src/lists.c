@@ -80,7 +80,6 @@ NPC_GROUP_DATA *last_npc_group = NULL;
 FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
 PORTAL_DATA *portal_free = NULL;
-AFFECT_DATA *affect_free = NULL;
 ROOM_AFFECT_DATA *raffect_free = NULL;
 BAN_DATA *ban_free = NULL;
 DESCRIPTOR_DATA *desc_free = NULL;
@@ -117,7 +116,6 @@ FIGHT_DATA *fight_free = NULL;
 QUEST_INFO *quest_info_free = NULL;
 
 void ( *portal_free_destructor ) ( PORTAL_DATA * pdat ) = NULL;
-void ( *affect_free_destructor ) ( AFFECT_DATA * adat ) = NULL;
 void ( *raffect_free_destructor ) ( ROOM_AFFECT_DATA * radat ) = NULL;
 void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat ) = NULL;
 void ( *shop_free_destructor ) ( SHOP_DATA * sdat ) = NULL;

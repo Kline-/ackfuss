@@ -2985,7 +2985,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                do_cast( ch, "thoughtshield" );
             else
                affect_to_char( ch, this_aff );
-            PUT_FREE( this_aff, affect_free );
+            delete this_aff;
          }
       }
       d->connected = CON_PLAYING;
@@ -3726,7 +3726,7 @@ void copyover_recover(  )
                   do_cast( this_char, "thoughtshield" );
                else
                   affect_to_char( this_char, this_aff );
-               PUT_FREE( this_aff, affect_free );
+               delete this_aff;
             }
          }
          d->connected = CON_PLAYING;

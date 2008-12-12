@@ -705,26 +705,22 @@ void do_enchant( CHAR_DATA * ch, char *argument )
          if( this_aff->type != -1 )
             continue;
          UNLINK( this_aff, unique->first_apply, unique->last_apply, next, prev );
-         PUT_FREE( this_aff, affect_free );
+         delete this_aff;
       }
       if( mod_str + cur_str != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_STR;
          new_aff->modifier = mod_str + cur_str;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_str != 0 )
             min_level = UMAX( ( mod_str + cur_str ) * 10, min_level );
       }
       if( mod_int + cur_int != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_INT;
          new_aff->modifier = mod_int + cur_int;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_int != 0 )
             min_level = UMAX( ( mod_int + cur_int ) * 10, min_level );
@@ -732,11 +728,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_wis + cur_wis != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_WIS;
          new_aff->modifier = mod_wis + cur_wis;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_wis != 0 )
             min_level = UMAX( ( mod_wis + cur_wis ) * 10, min_level );
@@ -744,11 +738,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_dex + cur_dex != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_DEX;
          new_aff->modifier = mod_dex + cur_dex;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_dex != 0 )
             min_level = UMAX( ( mod_dex + cur_dex ) * 10, min_level );
@@ -756,11 +748,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_con + cur_con != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_CON;
          new_aff->modifier = mod_con + cur_con;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_con != 0 )
             min_level = UMAX( ( mod_con + cur_con ) * 10, min_level );
@@ -768,11 +758,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_hit + cur_hit != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_HIT;
          new_aff->modifier = mod_hit + cur_hit;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_hit != 0 )
             min_level = UMAX( ( mod_hit + cur_hit ) / 4, min_level );
@@ -780,11 +768,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_mana + cur_mana != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_MANA;
          new_aff->modifier = mod_mana + cur_mana;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_mana != 0 )
             min_level = UMAX( ( mod_mana + cur_mana ) / 4, min_level );
@@ -792,11 +778,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_move + cur_move != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_MOVE;
          new_aff->modifier = mod_move + cur_move;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_move != 0 )
             min_level = UMAX( ( mod_move + cur_move ) / 2 * 10, min_level );
@@ -804,11 +788,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_hitroll + cur_hitroll != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_HITROLL;
          new_aff->modifier = mod_hitroll + cur_hitroll;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_hitroll != 0 )
             min_level = UMAX( ( mod_hitroll + cur_hitroll ) * 2 + 20, min_level );
@@ -816,11 +798,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_damroll + cur_damroll != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_DAMROLL;
          new_aff->modifier = mod_damroll + cur_damroll;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_damroll != 0 )
             min_level = UMAX( ( mod_damroll + cur_damroll ) * 2 + 20, min_level );
@@ -828,11 +808,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_save + cur_save != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_SAVING_SPELL;
          new_aff->modifier = mod_save + cur_save;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_save != 0 )
             min_level = UMAX( ( mod_save + cur_save ) / -3 * 10, min_level );
@@ -840,11 +818,9 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       if( mod_armor + cur_armor != 0 )
       {
-         GET_FREE( new_aff, affect_free );
-         new_aff->type = -1;
+         new_aff = new AFFECT_DATA;
          new_aff->location = APPLY_AC;
          new_aff->modifier = mod_armor + cur_armor;
-         new_aff->duration = -1;
          LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
          if( mod_armor != 0 )
             min_level = UMAX( ( mod_armor + cur_armor ) / -4, min_level );

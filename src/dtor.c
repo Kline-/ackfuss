@@ -20,6 +20,11 @@
 #include "h/comm.h"
 #endif
 
+affect_data::~affect_data()
+{
+ is_free = true;
+}
+
 area_data::~area_data()
 {
  is_free = true;

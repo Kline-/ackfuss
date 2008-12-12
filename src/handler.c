@@ -674,7 +674,7 @@ void affect_to_char( CHAR_DATA * ch, AFFECT_DATA * paf )
 {
    AFFECT_DATA *paf_new;
 
-   GET_FREE( paf_new, affect_free );
+   paf_new = new AFFECT_DATA;
 /* Ramias... Don't copy uninitialized fields: next, prev, is_free */
 /*
     *paf_new = *paf;
@@ -753,7 +753,7 @@ void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
    }
 
    UNLINK( paf, ch->first_affect, ch->last_affect, next, prev );
-   PUT_FREE( paf, affect_free );
+   delete paf;
    return;
 }
 
@@ -1660,7 +1660,7 @@ void extract_obj( OBJ_DATA * obj )
       while( ( paf = obj->first_apply ) != NULL )
       {
          obj->first_apply = paf->next;
-         PUT_FREE( paf, affect_free );
+         delete paf;
       }
    }
 

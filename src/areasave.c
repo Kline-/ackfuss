@@ -426,17 +426,17 @@ void build_save_objects(  )
    fprintf( SaveFile, "Weight     %d\n", pObjIndex->weight );
 
    fprintf( SaveFile, "End\n" );
-/*
-    * Check for pills, potions, scrolls, staffs and wands.  
 
-   pAf = pObject->first_apply;
+   pAf = pObjIndex->first_apply;
    while( pAf )
    {
-      fprintf( SaveFile, "A\n" );
-      fprintf( SaveFile, "%i %i\n", pAf->location, pAf->modifier );
+      fprintf( SaveFile, "#OAFFECT\n" );
+      fprintf( SaveFile, "Location   %d\n", pAf->location );
+      fprintf( SaveFile, "Modifier   %d\n", pAf->modifier );
+      fprintf( SaveFile, "End\n" );
       pAf = pAf->next;
    }
-*/
+
    pEd = pObjIndex->first_exdesc;
    while( pEd )
    {

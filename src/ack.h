@@ -397,7 +397,6 @@ struct clan_type
 
 };
 
-
 /*
  * Data structure for notes.
  */
@@ -417,14 +416,15 @@ class note_data
    time_t date_stamp;
 };
 
-
-
 /*
  * An affect.
  */
-struct affect_data
+class affect_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
+ public:
+  affect_data();
+  ~affect_data();
+   bool is_free;
    AFFECT_DATA *next;
    AFFECT_DATA *prev;
    short type;

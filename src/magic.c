@@ -2076,20 +2076,15 @@ bool spell_enchant_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
       return TRUE;
    }
 
-   GET_FREE( paf, affect_free );
+   paf = new AFFECT_DATA;
    paf->type = sn;
-   paf->duration = -1;
    paf->location = APPLY_HITROLL;
    paf->modifier = UMIN( ( level / 30 ) + 1, ob->level );
-   paf->bitvector = 0;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
-   GET_FREE( paf, affect_free );
-   paf->type = -1;
-   paf->duration = -1;
+   paf = new AFFECT_DATA;
    paf->location = APPLY_DAMROLL;
    paf->modifier = UMIN( ( level / 40 ) + 1, ob->level );
-   paf->bitvector = 0;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
 
@@ -3885,20 +3880,17 @@ bool spell_enhance_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
    if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_EXTRA_MAGIC ) || ob->first_apply != NULL )
       return TRUE;
 
-   GET_FREE( paf, affect_free );
+   paf = new AFFECT_DATA;
    paf->type = sn;
    paf->duration = 3 + ( level / 4 );
    paf->location = APPLY_HITROLL;
    paf->modifier = 3;
-   paf->bitvector = 0;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
-   GET_FREE( paf, affect_free );
-   paf->type = -1;
+   paf = new AFFECT_DATA;
    paf->duration = 3 + ( level / 4 );
    paf->location = APPLY_DAMROLL;
    paf->modifier = 2;
-   paf->bitvector = 0;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
    act( "$p shines brightly.", ch, ob, NULL, TO_CHAR );
@@ -4060,20 +4052,15 @@ bool spell_dimension_blade( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
    if( ob->item_type != ITEM_WEAPON || IS_OBJ_STAT( ob, ITEM_EXTRA_MAGIC ) || ob->first_apply != NULL )
       return TRUE;
 
-   GET_FREE( paf, affect_free );
+   paf = new AFFECT_DATA;
    paf->type = sn;
-   paf->duration = -1;
    paf->location = APPLY_HITROLL;
    paf->modifier = 1 + ( level >= 50 ) + ( level >= 60 ) + ( level >= 70 );
-   paf->bitvector = 0;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
-   GET_FREE( paf, affect_free );
-   paf->type = -1;
-   paf->duration = -1;
+   paf = new AFFECT_DATA;
    paf->location = APPLY_DAMROLL;
    paf->modifier = 1 + ( level >= 55 ) + ( level >= 70 );
-   paf->bitvector = 0;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
    act( "Part of $p switches into a different plane.", ch, ob, NULL, TO_CHAR );
@@ -5133,13 +5120,10 @@ bool spell_poison_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
       }
    }
 
-   GET_FREE( paf, affect_free );
+   paf = new AFFECT_DATA;
    paf->type = sn;
-   paf->duration = -1;
    paf->location = APPLY_DAMROLL;
    paf->modifier = UMIN( ( level / 30 ) + 1, ob->level );
-   paf->bitvector = 0;
-   paf->caster = NULL;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
    return TRUE;
@@ -6141,41 +6125,29 @@ bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
                     " control the necromantic forces necessary for this act.\n\r", ch );
       return FALSE;
    }
-   GET_FREE( paf, affect_free );
+   paf = new AFFECT_DATA;
    paf->type = sn;
-   paf->duration = -1;
    paf->location = APPLY_DAMROLL;
    paf->modifier = ( obj_soul->level / 8 );
-   paf->bitvector = 0;
-   paf->caster = NULL;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
-   GET_FREE( paf, affect_free );
+   paf = new AFFECT_DATA;
    paf->type = sn;
-   paf->duration = -1;
    paf->location = APPLY_AC;
    paf->modifier = -( obj_soul->level / 2 );
-   paf->bitvector = 0;
-   paf->caster = NULL;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
-   GET_FREE( paf, affect_free );
+   paf = new AFFECT_DATA;
    paf->type = sn;
-   paf->duration = -1;
    paf->location = APPLY_MANA;
    paf->modifier = obj_soul->level / 3;
-   paf->bitvector = 0;
-   paf->caster = NULL;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
 
-   GET_FREE( paf, affect_free );
+   paf = new AFFECT_DATA;
    paf->type = sn;
-   paf->duration = -1;
    paf->location = APPLY_HITROLL;
    paf->modifier = ( obj_soul->level / 8 );
-   paf->bitvector = 0;
-   paf->caster = NULL;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
    ob->extra_flags.set(ITEM_EXTRA_NO_DISARM);

@@ -257,6 +257,7 @@ void load_areas args( ( void ) );
 void load_area args( ( FILE * fp ) );
 void load_door args( ( FILE * fp ) );
 void load_mobile args( ( FILE * fp ) );
+void load_oaffect args( ( FILE * fp ) );
 void load_object args( ( FILE * fp ) );
 void load_oextra args( ( FILE * fp ) );
 void load_resets args( ( FILE * fp ) );
@@ -584,6 +585,8 @@ void load_areas( void )
             load_mobile( fpArea );
          else if( !str_cmp( word, "MOBPROGS" ) )
             load_mobprogs( fpArea );
+         else if( !str_cmp( word, "OAFFECT" ) )
+            load_oaffect( fpArea );
          else if( !str_cmp( word, "OBJECT" ) )
             load_object( fpArea );
          else if( !str_cmp( word, "OEXTRA" ) )
@@ -1169,7 +1172,57 @@ void load_mobile( FILE * fp )
    return;
 }
 
+void load_oaffect( FILE * fp )
+{
+ AFFECT_DATA *pAf;
+ const char *word;
+ bool fMatch = false;
 
+ if( obj_load == NULL )
+ {
+  bug( "Load_oaffect: no #OBJECT seen yet.", 0 );
+  hang( "Loading Oaffects in db.c" );
+ }
+
+ pAf = new AFFECT_DATA;
+
+ for( ;; )
+ {
+  word = fread_word( fp );
+  fMatch = false;
+
+  if( !str_cmp(word,"End") )
+   break;
+
+  switch( UPPER(word[0]) )
+  {
+   case '*':
+    fMatch = true;
+    fread_to_eol(fp);
+    break;
+
+   case 'L':
+    KEY("Location", pAf->location, fread_number(fp));
+    break;
+
+   case 'M':
+    KEY("Modifier", pAf->modifier, fread_number(fp));
+    break;
+  }
+ }
+
+ if( !fMatch )
+ {
+  snprintf( log_buf, (2 * MIL), "Loading in oaffect :%s (%s), no match for ( %s ).", area_load->name, obj_load->name, word );
+  monitor_chan( log_buf, MONITOR_BAD );
+  fread_to_eol( fp );
+ }
+
+ LINK( pAf, obj_load->first_apply, obj_load->last_apply, next, prev );
+ top_affect++;
+
+ return;
+}
 
 /*
  * Snarf an obj section.
@@ -1298,38 +1351,6 @@ void load_object( FILE * fp )
    }
 
   /*
-      if( pObjIndex->item_type == ITEM_POTION )
-         SET_BIT( pObjIndex->extra_flags, ITEM_NODROP );
-
-      for( ;; )
-      {
-         char letter;
-
-         letter = fread_letter( fp );
-
-         if( letter == 'A' )
-         {
-            AFFECT_DATA *paf;
-
-            GET_FREE( paf, affect_free );
-            paf->type = -1;
-            paf->duration = -1;
-            paf->location = fread_number( fp );
-            paf->modifier = fread_number( fp );
-            paf->bitvector = 0;
-            paf->caster = NULL;
-            LINK( paf, pObjIndex->first_apply, pObjIndex->last_apply, next, prev );
-            top_affect++;
-         }
-
-         else
-         {
-            ungetc( letter, fp );
-            break;
-         }
-      }
-
-      
        * Translate spell "slot numbers" to internal "skill numbers."
        
       switch ( pObjIndex->item_type )
@@ -2852,17 +2873,10 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
       /*
        * Create new_af, or use a free_affect 
        */
-      GET_FREE( new_af, affect_free );
+      new_af = new AFFECT_DATA;
 
-      /*
-       * Now initialize the contents of new_af 
-       */
-      new_af->type = -1;
-      new_af->duration = -1;
       new_af->location = af->location;
       new_af->modifier = af->modifier;
-      new_af->bitvector = 0;
-      new_af->caster = NULL;
       LINK( new_af, obj->first_apply, obj->last_apply, next, prev );
    }
    for( looper = 0; looper < 10; looper++ )
