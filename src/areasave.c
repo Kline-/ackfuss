@@ -547,23 +547,29 @@ void build_save_shops(  )
          return;
       }
       send_to_char( "Saving shops.\n", CurSaveChar );
-      fprintf( SaveFile, "#SHOPS\n" );
       Pointer = CurSaveArea->first_area_shop;
    }
 
    pShop = (SHOP_DATA *)Pointer->data;
-   fprintf( SaveFile, "%i ", pShop->keeper );
-   for( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
-      fprintf( SaveFile, "%i ", pShop->buy_type[iTrade] );
-   fprintf( SaveFile, "%i %i %i %i\n", pShop->profit_buy, pShop->profit_sell, pShop->open_hour, pShop->close_hour );
 
+   fprintf( SaveFile, "\n#SHOP#\n" );
+   fprintf( SaveFile, "Keeper    %d\n", pShop->keeper ); /* Must be first for sanity checks --Kline */
+
+   fprintf( SaveFile, "BuyType   " );
+   for( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
+      fprintf( SaveFile, "%d ", pShop->buy_type[iTrade] );
+   fprintf( SaveFile, "\n" );
+
+   fprintf( SaveFile, "HourClose %d\n", pShop->close_hour );
+   fprintf( SaveFile, "HourOpen  %d\n", pShop->open_hour );
+   fprintf( SaveFile, "ProfBuy   %d\n", pShop->profit_buy );
+   fprintf( SaveFile, "ProfSell  %d\n", pShop->profit_sell );
+   fprintf( SaveFile, "End\n" );
 
    Pointer = Pointer->next;
    if( Pointer == NULL )   /* End */
-   {
-      fprintf( SaveFile, "0\n" );
       Section++;
-   }
+
    return;
 }
 
