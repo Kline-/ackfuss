@@ -1798,7 +1798,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
             }
 
             pMob->pShop = NULL;  /* Take away link from mob */
-            PUT_FREE( pShop, shop_free ); /* Free the memory it occupies */
+            delete pShop; /* Free the memory it occupies */
          }
          area_modified( pArea );
          return;
@@ -1817,7 +1817,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
 
       if( pShop == NULL )
       {
-         GET_FREE( pShop, shop_free );
+         pShop = new SHOP_DATA;
          if( pShop == NULL )  /* Couldn't alloc space. */
          {
             send_to_char( "Out of memory, please reboot ASAP.\n\r", ch );
@@ -4500,7 +4500,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
       /*
        * Now free shop structure 
        */
-      PUT_FREE( pShop, shop_free );
+      delete pShop;
    }
 
 

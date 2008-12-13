@@ -208,3 +208,8 @@ room_index_data::~room_index_data()
  free_string(name);
  free_string(description);
 }
+
+shop_data::~shop_data()
+{
+ is_free = true;
+}

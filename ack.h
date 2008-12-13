@@ -321,9 +321,12 @@ struct con_app_type
  * Shop types.
  */
 
-struct shop_data
+class shop_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
+ public:
+  shop_data();
+  ~shop_data();
+   bool is_free;
    SHOP_DATA *next;  /* Next shop in list            */
    SHOP_DATA *prev;  /* Prev shop in list    */
    int keeper; /* Vnum of shop keeper mob      */

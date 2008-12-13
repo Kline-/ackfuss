@@ -242,3 +242,17 @@ room_index_data::room_index_data()
  treasure = room_treasure;
  vnum = 0;
 }
+
+shop_data::shop_data()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ keeper = 0;
+ for( short i = 0; i < MAX_TRADE; i++  )
+  buy_type[i] = 0;
+ profit_buy = 1;
+ profit_sell = 1;
+ open_hour = 0;
+ close_hour = 0;
+}

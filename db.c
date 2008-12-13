@@ -177,6 +177,7 @@ char *string_hash[MAX_KEY_HASH];
 AREA_DATA *area_used[MAX_AREAS];
 AREA_DATA *area_load;
 ROOM_INDEX_DATA *room_load;
+MOB_INDEX_DATA *mob_load;
 OBJ_INDEX_DATA *obj_load;
 /* 
  * replaced for SSM
@@ -263,7 +264,7 @@ void load_oextra args( ( FILE * fp ) );
 void load_resets args( ( FILE * fp ) );
 void load_rextra args( ( FILE * fp ) );
 void load_room args( ( FILE * fp ) );
-void load_shops args( ( FILE * fp ) );
+void load_shop args( ( FILE * fp ) );
 void load_specials args( ( FILE * fp ) );
 void load_objfuns args( ( FILE * fp ) );
 void load_notes args( ( void ) );
@@ -597,8 +598,8 @@ void load_areas( void )
             load_rextra( fpArea );
          else if( !str_cmp( word, "ROOM" ) )
             load_room( fpArea );
-         else if( !str_cmp( word, "SHOPS" ) )
-            load_shops( fpArea );
+         else if( !str_cmp( word, "SHOP" ) )
+            load_shop( fpArea );
          else if( !str_cmp( word, "SPECIALS" ) )
             load_specials( fpArea );
          else if( !str_cmp( word, "OBJFUNS" ) )
@@ -1166,6 +1167,7 @@ void load_mobile( FILE * fp )
    pList->data = pMobIndex;
    LINK( pList, area_load->first_area_mobile, area_load->last_area_mobile, next, prev );
 
+   mob_load = pMobIndex;
    top_mob_index++;
    kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
 
@@ -1349,26 +1351,6 @@ void load_object( FILE * fp )
             break;
       }
    }
-
-  /*
-       * Translate spell "slot numbers" to internal "skill numbers."
-       
-      switch ( pObjIndex->item_type )
-      {
-         case ITEM_PILL:
-         case ITEM_POTION:
-         case ITEM_SCROLL:
-            pObjIndex->value[1] = slot_lookup( pObjIndex->value[1] );
-            pObjIndex->value[2] = slot_lookup( pObjIndex->value[2] );
-            pObjIndex->value[3] = slot_lookup( pObjIndex->value[3] );
-            break;
-
-         case ITEM_STAFF:
-         case ITEM_WAND:
-            pObjIndex->value[3] = slot_lookup( pObjIndex->value[3] );
-            break;
-      }
-*/
 
    if( !fMatch )
    {
@@ -1758,45 +1740,93 @@ void load_room( FILE * fp )
    return;
 }
 
-
-
 /*
  * Snarf a shop section.
  */
-void load_shops( FILE * fp )
+void load_shop( FILE * fp )
 {
    SHOP_DATA *pShop;
    BUILD_DATA_LIST *pList;
+   MOB_INDEX_DATA *pMobIndex;
+   int iTrade, keeper;
+   const char *word;
+   char buf[MSL];
+   bool fMatch = false;
+
+   if( area_load == NULL )
+   {
+      bug( "Load_shop: no #AREA seen yet.", 0 );
+      hang( "Loading Shops in db.c" );
+   }
+
+   pShop = new SHOP_DATA;
 
    for( ;; )
    {
-      MOB_INDEX_DATA *pMobIndex;
-      int iTrade;
-      int keeper;
+      word = fread_word( fp );
+      fMatch = false;
 
-      keeper = fread_number( fp );
-      if( keeper == 0 )
-         break;
-      GET_FREE( pShop, shop_free );
-      pShop->keeper = keeper;
-      for( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
-         pShop->buy_type[iTrade] = fread_number( fp );
-      pShop->profit_buy = fread_number( fp );
-      pShop->profit_sell = fread_number( fp );
-      pShop->open_hour = fread_number( fp );
-      pShop->close_hour = fread_number( fp );
-      fread_to_eol( fp );
-      pMobIndex = get_mob_index( pShop->keeper );
-      pMobIndex->pShop = pShop;
+      if( !str_cmp(word,"End") )
+       break;
 
-/* MAG Mod */
-      GET_FREE( pList, build_free );
-      pList->data = pShop;
-      LINK( pList, area_load->first_area_shop, area_load->last_area_shop, next, prev );
+      switch( UPPER( word[0] ) )
+      {
+         case '*':
+            fMatch = true;
+            fread_to_eol( fp );
+            break;
 
-      LINK( pShop, first_shop, last_shop, next, prev );
-      top_shop++;
+         case 'B':
+            if( !str_cmp(word,"BuyType") )
+            {
+             for( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
+              pShop->buy_type[iTrade] = fread_number( fp );
+
+             fMatch = true;
+             break;
+            }
+            break;
+
+         case 'H':
+            KEY("HourClose",pShop->close_hour,fread_number(fp));
+            KEY("HourOpen",pShop->open_hour,fread_number(fp));
+            break;
+
+         case 'K':
+            if( !str_cmp(word,"Keeper") )
+            {
+             keeper = fread_number(fp);
+             if( keeper < area_load->min_vnum || keeper > area_load->max_vnum )
+             {
+              snprintf(buf,MSL,"Load_shop: keeper %d out of bounds for %s.",keeper,area_load->filename);
+              log_string(buf);
+             }
+             if( get_mob_index(keeper) == NULL )
+             {
+              snprintf(buf,MSL,"Load_shop: keeper %d not found in %s.",keeper,area_load->filename);
+              log_string(buf);
+             }
+             pShop->keeper = keeper;
+             fMatch = true;
+             break;
+            }
+            break;
+
+         case 'P':
+            KEY("ProfBuy",pShop->profit_buy,fread_number(fp));
+            KEY("ProfSell",pShop->profit_sell,fread_number(fp));
+            break;
+      }
    }
+
+   pMobIndex = get_mob_index( pShop->keeper );
+   pMobIndex->pShop = pShop;
+   GET_FREE( pList, build_free );
+   pList->data = pShop;
+   LINK( pList, area_load->first_area_shop, area_load->last_area_shop, next, prev );
+   LINK( pShop, first_shop, last_shop, next, prev );
+
+   top_shop++;
 
    return;
 }
