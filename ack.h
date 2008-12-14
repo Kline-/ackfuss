@@ -1088,7 +1088,6 @@ class area_data
   BUILD_DATA_LIST         *first_area_mobile;
   BUILD_DATA_LIST         *first_area_mobprog;
   BUILD_DATA_LIST         *first_area_object;
-  BUILD_DATA_LIST         *first_area_objfunc;
   BUILD_DATA_LIST         *first_area_room;
   BUILD_DATA_LIST         *first_area_shop;
   BUILD_DATA_LIST         *first_area_specfunc;
@@ -1099,7 +1098,6 @@ class area_data
   BUILD_DATA_LIST         *last_area_mobile;
   BUILD_DATA_LIST         *last_area_mobprog;
   BUILD_DATA_LIST         *last_area_object;
-  BUILD_DATA_LIST         *last_area_objfunc;
   BUILD_DATA_LIST         *last_area_room;
   BUILD_DATA_LIST         *last_area_shop;
   BUILD_DATA_LIST         *last_area_specfunc;

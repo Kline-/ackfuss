@@ -79,8 +79,7 @@
 #define BUILD_SEC_SHOPS    6
 #define BUILD_SEC_RESETS   7
 #define BUILD_SEC_SPECIALS 8
-#define BUILD_SEC_OBJFUNS  9 /* -S- Mod */
-#define BUILD_SEC_END      10
+#define BUILD_SEC_END      9
 #define AREA_VERSION       22
 
 struct save_queue_type
@@ -227,9 +226,6 @@ void build_save(  )
             break;
          case BUILD_SEC_SPECIALS:
             build_save_specs(  );
-            break;
-         case BUILD_SEC_OBJFUNS:
-            build_save_objfuns(  );
             break;
          case BUILD_SEC_END:
             build_save_end(  );
@@ -408,6 +404,7 @@ void build_save_objects(  )
    fprintf( SaveFile, "Level      %d\n", pObjIndex->level );
    fprintf( SaveFile, "LongDesc   %s~\n", pObjIndex->long_descr );
    fprintf( SaveFile, "Name       %s~\n", pObjIndex->name );
+   fprintf( SaveFile, "ObjFun     %s\n", rev_obj_fun_lookup( pObjIndex->obj_fun ) );
    fprintf( SaveFile, "ShortDesc  %s~\n", pObjIndex->short_descr );
    fprintf( SaveFile, "Speed      %0.2f\n", pObjIndex->speed );
    fprintf( SaveFile, "Type       %d\n", pObjIndex->item_type );
@@ -594,36 +591,6 @@ void build_save_specs(  )
    fprintf( SaveFile, "M %i ", pMob->vnum );
    fprintf( SaveFile, "%s\n", rev_spec_lookup( pMob->spec_fun ) );
 
-
-   Pointer = Pointer->next;
-   if( Pointer == NULL )   /* End */
-   {
-      fprintf( SaveFile, "S\n" );
-      Section++;
-   }
-   return;
-}
-
-void build_save_objfuns(  )
-{
-   OBJ_INDEX_DATA *pObj;
-
-   if( Pointer == NULL )   /* Start */
-   {
-      if( CurSaveArea->first_area_objfunc == NULL )
-      {
-         Section++;
-         return;
-      }
-      send_to_char( "Saving objfuns.\n", CurSaveChar );
-      fprintf( SaveFile, "#OBJFUNS\n" );
-      Pointer = CurSaveArea->first_area_objfunc;
-   }
-
-   pObj = (OBJ_INDEX_DATA *)Pointer->data;
-
-   fprintf( SaveFile, "O %i ", pObj->vnum );
-   fprintf( SaveFile, "%s\n", rev_obj_fun_lookup( pObj->obj_fun ) );
 
    Pointer = Pointer->next;
    if( Pointer == NULL )   /* End */

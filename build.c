@@ -2637,26 +2637,12 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "objfun" ) )
    {
-      BUILD_DATA_LIST *pList;
-
       if( arg3[0] == '-' )
       {
          if( pObj->obj_fun == NULL )
             return;
 
          pObj->obj_fun = NULL;
-
-         for( pList = pArea->first_area_objfunc; pList != NULL; pList = pList->next )
-         {
-            if( ( OBJ_INDEX_DATA * ) pList->data == pObj )
-               break;
-         }
-
-         if( pList != NULL )
-         {
-            UNLINK( pList, pArea->first_area_objfunc, pArea->last_area_objfunc, next, prev );
-            PUT_FREE( pList, build_free );
-         }
 
          return;
       }
@@ -2667,23 +2653,6 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          print_obj_fun_lookup( buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
-      }
-
-      /*
-       * Add to area linked list 
-       */
-      /*
-       * First see if there is one for this char already 
-       */
-      for( pList = pArea->first_area_objfunc; pList != NULL; pList = pList->next )
-         if( ( OBJ_INDEX_DATA * ) pList->data == pObj )
-            break;
-
-      if( pList == NULL )
-      {
-         GET_FREE( pList, build_free );
-         pList->data = pObj;
-         LINK( pList, pArea->first_area_objfunc, pArea->last_area_objfunc, next, prev );
       }
 
       area_modified( pArea );

@@ -266,7 +266,6 @@ void load_rextra args( ( FILE * fp ) );
 void load_room args( ( FILE * fp ) );
 void load_shop args( ( FILE * fp ) );
 void load_specials args( ( FILE * fp ) );
-void load_objfuns args( ( FILE * fp ) );
 void load_notes args( ( void ) );
 void load_gold args( ( void ) );
 void load_corpses args( ( void ) );
@@ -602,8 +601,6 @@ void load_areas( void )
             load_shop( fpArea );
          else if( !str_cmp( word, "SPECIALS" ) )
             load_specials( fpArea );
-         else if( !str_cmp( word, "OBJFUNS" ) )
-            load_objfuns( fpArea );
          else
          {
             bug( "Boot_db: bad section name.", 0 );
@@ -1296,6 +1293,25 @@ void load_object( FILE * fp )
             SKEY("Name",pObjIndex->name,fread_string(fp));
             break;
 
+         case 'O':
+            if( !str_cmp(word,"ObjFun") )
+            {
+             tmp = fread_word(fp);
+             if( str_cmp(tmp,"(null)") )
+             {
+              pObjIndex->obj_fun = obj_fun_lookup(tmp);
+
+              if( pObjIndex->obj_fun == NULL )
+              {
+               snprintf(buf,MSL,"Load_object: obj_fun invalid for item %d in %s.",pObjIndex->vnum,area_load->filename);
+               log_string(buf);
+              }
+             }
+             fMatch = true;
+             break;
+            }
+            break;
+
          case 'T':
             KEY("Type",pObjIndex->item_type,fread_number(fp));
             break;
@@ -1881,68 +1897,6 @@ void load_specials( FILE * fp )
       fread_to_eol( fp );
    }
 }
-
-/* Snarf objfun declarations.  -S- */
-
-void load_objfuns( FILE * fp )
-{
-   for( ;; )
-   {
-      OBJ_INDEX_DATA *pObj;
-      char letter;
-
-      switch ( letter = fread_letter( fp ) )
-      {
-         default:
-            bug( "Load_objfuns: letter '%c' not *, O or S.", letter );
-            hang( "Loading Objfuns in db.c" );
-
-         case 'S':
-            return;
-
-         case '*':
-            break;
-
-         case 'O':  /* -S- mod => obj_funs */
-            if( ( pObj = get_obj_index( fread_number( fp ) ) ) == NULL )
-            {
-               char *temp;
-               char buf[MSL];
-               temp = fread_word( fp );
-               snprintf( buf, MSL,
-                        "Error in Load Objfuns:  area %s has Objfun without corresponding object.  Save this area after booting complete to remove.",
-                        strArea );
-               log_f( buf );
-               free_string( temp );
-            }
-            else
-               pObj->obj_fun = obj_fun_lookup( fread_word( fp ) );
-            if( pObj != NULL )
-            {
-               if( pObj->obj_fun == 0 )
-               {
-                  bug( "Load_specials(obj): 'X': vnum %d.", pObj->vnum );
-               }
-               else
-               {
-                  BUILD_DATA_LIST *pList;
-
-                  GET_FREE( pList, build_free );
-                  pList->data = pObj;
-                  LINK( pList, area_load->first_area_objfunc, area_load->last_area_objfunc, next, prev );
-               }
-            }
-            break;
-
-      }
-      /*
-       * NB. Comments will not be saved when using areasave - MAG. 
-       */
-      fread_to_eol( fp );
-   }
-}
-
-
 
 
 /*
