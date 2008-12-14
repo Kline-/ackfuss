@@ -42,7 +42,6 @@ area_data::area_data()
  first_area_mobile = NULL;
  first_area_mobprog = NULL;
  first_area_object = NULL;
- first_area_objfunc = NULL;
  first_area_room = NULL;
  first_area_shop = NULL;
  first_area_specfunc = NULL;
@@ -53,7 +52,6 @@ area_data::area_data()
  last_area_mobile = NULL;
  last_area_mobprog = NULL;
  last_area_object = NULL;
- last_area_objfunc = NULL;
  last_area_room = NULL;
  last_area_shop = NULL;
  last_area_specfunc = NULL;
