@@ -1757,37 +1757,37 @@ void do_train( CHAR_DATA * ch, char *argument )
 
       if( ch->pcdata->perm_str < ch->pcdata->max_str )
       {
-         xcat( buf, "  str" );
+         strncat( buf, "  str", MSL );
          snprintf( buf2, MSL, " (%d)", cost1 );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
       }
       if( ch->pcdata->perm_int < ch->pcdata->max_int )
       {
-         xcat( buf, "  int" );
+         strncat( buf, "  int", MSL );
          snprintf( buf2, MSL, " (%d)", cost2 );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
       }
       if( ch->pcdata->perm_wis < ch->pcdata->max_wis )
       {
-         xcat( buf, "  wis" );
+         strncat( buf, "  wis", MSL );
          snprintf( buf2, MSL, " (%d)", cost3 );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
       }
       if( ch->pcdata->perm_dex < ch->pcdata->max_dex )
       {
-         xcat( buf, "  dex" );
+         strncat( buf, "  dex", MSL );
          snprintf( buf2, MSL, " (%d)", cost4 );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
       }
       if( ch->pcdata->perm_con < ch->pcdata->max_con )
       {
-         xcat( buf, "  con" );
+         strncat( buf, "  con", MSL );
          snprintf( buf2, MSL, " (%d)", cost5 );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
       }
       if( buf[strlen( buf ) - 1] != ':' )
       {
-         xcat( buf, ".\n\r" );
+         strncat( buf, ".\n\r", MSL );
          send_to_char( buf, ch );
       }
       return;
