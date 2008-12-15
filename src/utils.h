@@ -429,5 +429,3 @@ do { \
 /*
  * Miscellaneous macros.
  */
-#define xcat(var, args...) safe_strcat(__FILE__,__FUNCTION__,__LINE__,sizeof(var), (var),##args )
-#define xcat_2(var, args...) safe_strcat(__FILE__,__FUNCTION__,__LINE__,MAS, (var),##args ) /* for *char types */

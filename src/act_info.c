@@ -126,39 +126,39 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
    if( IS_IMMORTAL(ch) && ch->position == POS_BUILDING ) /* Imms should see vnums, <3 builders :) --Kline */
    {
     snprintf(buf2,MSL,"(%d) ",obj->pIndexData->vnum);
-    xcat(buf,buf2);
+    strncat(buf,buf2,MSL);
    }
 
    /* Check for mquest target */
-   xcat(buf,display_obj_target(ch,obj));
+   strncat(buf,display_obj_target(ch,obj),MSL);
 
    if( IS_OBJ_STAT( obj, ITEM_EXTRA_INVIS ) )
-      xcat( buf, "(Invis) " );
+      strncat( buf, "(Invis) ", MSL );
 
    if( ( IS_AFFECTED( ch, AFF_DETECT_EVIL ) || item_has_apply( ch, ITEM_APPLY_DET_EVIL ) ) && IS_OBJ_STAT( obj, ITEM_EXTRA_EVIL ) )
-      xcat( buf, "(Red Aura) " );
+      strncat( buf, "(Red Aura) ", MSL );
 
    if( ( IS_AFFECTED( ch, AFF_DETECT_MAGIC ) || item_has_apply( ch, ITEM_APPLY_DET_MAG ) )
        && IS_OBJ_STAT( obj, ITEM_EXTRA_MAGIC ) )
-      xcat( buf, "(Magical) " );
+      strncat( buf, "(Magical) ", MSL );
 
    if( IS_OBJ_STAT( obj, ITEM_EXTRA_GLOW ) )
-      xcat( buf, "(Glowing) " );
+      strncat( buf, "(Glowing) ", MSL );
 
    if( IS_OBJ_STAT( obj, ITEM_EXTRA_HUM ) )
-      xcat( buf, "(Humming) " );
+      strncat( buf, "(Humming) ", MSL );
 
    if( fShort )
    {
       if( obj->short_descr != NULL )
-         xcat( buf, obj->short_descr );
+         strncat( buf, obj->short_descr, MSL );
    }
    else
    {
       if( obj->long_descr != NULL )
-         xcat( buf, obj->long_descr );
+         strncat( buf, obj->long_descr, MSL );
    }
-   xcat( buf, color_string( ch, "normal" ) );
+   strncat( buf, color_string( ch, "normal" ), MSL );
    return buf;
 }
 
@@ -389,7 +389,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    buf2[0] = '\0';
 
    /* Check for mquest target */
-   xcat(buf,display_mob_target(ch,victim));
+   strncat(buf,display_mob_target(ch,victim),MSL);
 
 /* This is temporary....
  * Zen  WOLF
@@ -420,154 +420,154 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
        snprintf( buf2, MSL, "(%d) [%s] ",victim->pIndexData->vnum, race_table[victim->race].race_name );
       else
        snprintf( buf2, MSL, "[%s] ", race_table[victim->race].race_name );
-      xcat( buf, buf2 );
+      strncat( buf, buf2, MSL );
    }
 
    if( IS_NPC( victim ) )
    {
       if( victim->act.test(ACT_UNDEAD) && ( is_affected( ch, skill_lookup( "detect undead" ) ) || item_has_apply( ch, ITEM_APPLY_DET_UNDEAD ) ) )
-         xcat( buf, "(UnDead) " );
+         strncat( buf, "(UnDead) ", MSL );
 
       if( victim->act.test(ACT_INTELLIGENT) )
-         xcat( buf, "(Int) " );
+         strncat( buf, "(Int) ", MSL );
 
    }
 
 
    if( IS_AFFECTED( victim, AFF_INVISIBLE ) )
-      xcat( buf, "(Invis) " );
+      strncat( buf, "(Invis) ", MSL );
 
    if( IS_AFFECTED( victim, AFF_HIDE ) || item_has_apply( victim, ITEM_APPLY_HIDE ) )
-      xcat( buf, "(Hide) " );
+      strncat( buf, "(Hide) ", MSL );
 
    if( IS_AFFECTED( victim, AFF_CHARM ) )
-      xcat( buf, "(Charm) " );
+      strncat( buf, "(Charm) ", MSL );
 
    if( IS_AFFECTED( victim, AFF_PASS_DOOR ) || item_has_apply( victim, ITEM_APPLY_PASS_DOOR ) )
-      xcat( buf, "(Clear) " );
+      strncat( buf, "(Clear) ", MSL );
 
    if( IS_AFFECTED( victim, AFF_FAERIE_FIRE ) )
-      xcat( buf, "(Pink) " );
+      strncat( buf, "(Pink) ", MSL );
 
    if( IS_EVIL( victim ) && ( IS_AFFECTED( ch, AFF_DETECT_EVIL ) || item_has_apply( ch, ITEM_APPLY_DET_EVIL ) ) )
-      xcat( buf, "(Red) " );
+      strncat( buf, "(Red) ", MSL );
 
    if( IS_AFFECTED( victim, AFF_SANCTUARY ) || item_has_apply( victim, ITEM_APPLY_SANC ) )
-      xcat( buf, "(White) " );
+      strncat( buf, "(White) ", MSL );
 
    if( !IS_NPC( victim ) && victim->act.test(ACT_KILLER) )
-      xcat( buf, "(KILLER) " );
+      strncat( buf, "(KILLER) ", MSL );
 
    if( !IS_NPC( victim ) && victim->act.test(ACT_THIEF) )
-      xcat( buf, "(THIEF) " );
+      strncat( buf, "(THIEF) ", MSL );
 
    /*
-    * xcat to buf *linkdead* if not connected? 
+    * strncat to buf *linkdead* if not connected? 
     */
    if( !IS_NPC( victim ) )
       if( ( victim->desc ) != NULL && victim->desc->connected != CON_PLAYING )
-         xcat( buf, "(LINKDEAD)" );
+         strncat( buf, "(LINKDEAD)", MSL );
 
    if( victim->act.test(ACT_RULER) )
-      xcat( buf, get_ruler_title( victim->pcdata->ruler_rank, victim->login_sex ) );
+      strncat( buf, get_ruler_title( victim->pcdata->ruler_rank, victim->login_sex ), MSL );
    if( victim->position == POS_STANDING && victim->long_descr[0] != '\0' )
    {
-      xcat( buf, victim->long_descr );
-      xcat( buf, "\n\r" );
-      xcat( buf, color_string( ch, "normal" ) );
+      strncat( buf, victim->long_descr, MSL );
+      strncat( buf, "\n\r", MSL );
+      strncat( buf, color_string( ch, "normal" ), MSL );
 
       if( ( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
           || ( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
           || ( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) ) || ( is_affected( victim, skill_lookup( "cloak:misery" ) ) ) )
       {
-         xcat( buf, "  @@NCLOAK:" );
+         strncat( buf, "  @@NCLOAK:", MSL );
          if( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
-            xcat( buf, " @@eFLAMING@@N" );
+            strncat( buf, " @@eFLAMING@@N", MSL );
          if( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
-            xcat( buf, " @@lABSORB@@N" );
+            strncat( buf, " @@lABSORB@@N", MSL );
          if( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) )
-            xcat( buf, " @@mREFLECT@@N" );
+            strncat( buf, " @@mREFLECT@@N", MSL );
          if( is_affected( victim, skill_lookup( "cloak:misery" ) ) )
-            xcat( buf, " @@RMISERY@@N" );
-         xcat( buf, "\n\r" );
+            strncat( buf, " @@RMISERY@@N", MSL );
+         strncat( buf, "\n\r", MSL );
       }
 
       if( victim->first_shield != NULL )
       {
          MAGIC_SHIELD *this_shield;
-         xcat( buf, "   @@WSHIELD: @@N" );
+         strncat( buf, "   @@WSHIELD: @@N", MSL );
          for( this_shield = victim->first_shield; this_shield != NULL; this_shield = this_shield->next )
-            xcat( buf, this_shield->name );
-         xcat( buf, "\n\r" );
+            strncat( buf, this_shield->name, MSL );
+         strncat( buf, "\n\r", MSL );
       }
 
       send_to_char( buf, ch );
       return;
    }
 
-   xcat( buf, PERS( victim, ch ) );
+   strncat( buf, PERS( victim, ch ), MSL );
    if( !IS_NPC( victim ) && !ch->act.test(ACT_BRIEF) )
-      xcat( buf, victim->pcdata->title );
+      strncat( buf, victim->pcdata->title, MSL );
 
    switch ( victim->position )
    {
       case POS_DEAD:
-         xcat( buf, " is DEAD!!" );
+         strncat( buf, " is DEAD!!", MSL );
          break;
       case POS_MORTAL:
-         xcat( buf, " is mortally wounded." );
+         strncat( buf, " is mortally wounded.", MSL );
          break;
       case POS_INCAP:
-         xcat( buf, " is incapacitated." );
+         strncat( buf, " is incapacitated.", MSL );
          break;
       case POS_STUNNED:
-         xcat( buf, " is lying here stunned." );
+         strncat( buf, " is lying here stunned.", MSL );
          break;
       case POS_SLEEPING:
-         xcat( buf, " is sleeping here." );
+         strncat( buf, " is sleeping here.", MSL );
          break;
       case POS_RESTING:
          if( victim->sitting != NULL && victim->sitting->in_room == victim->in_room )
          {
             char sit[MAX_INPUT_LENGTH];
             snprintf( sit, MSL, " is here, resting on %s.", victim->sitting->short_descr );
-            xcat( buf, sit );
+            strncat( buf, sit, MSL );
          }
          else
-            xcat( buf, " is resting here." );
+            strncat( buf, " is resting here.", MSL );
          break;
       case POS_STANDING:
       {
-         xcat( buf, " is here" );
+         strncat( buf, " is here", MSL );
          if( !IS_NPC( victim ) && ( victim->stance > 0 ) && ( victim->stance != STANCE_AMBUSH ) )
          {
             char stance_buf[MSL];
             snprintf( stance_buf, MSL, " in the Stance of the %s.", stance_app[victim->stance].name );
-            xcat( buf, stance_buf );
+            strncat( buf, stance_buf, MSL );
          }
          else
-            xcat( buf, "." );
+            strncat( buf, ".", MSL );
          break;
       }
       case POS_WRITING:
-         xcat( buf, " is writing a note." );
+         strncat( buf, " is writing a note.", MSL );
          break;
       case POS_BUILDING:
-         xcat( buf, " is BUILDING!!" );
+         strncat( buf, " is BUILDING!!", MSL );
          break;
       case POS_FIGHTING:
-         xcat( buf, " is here, fighting " );
+         strncat( buf, " is here, fighting ", MSL );
          if( victim->fighting == NULL )
-            xcat( buf, "thin air??" );
+            strncat( buf, "thin air??", MSL );
          else if( victim->fighting == ch )
-            xcat( buf, "YOU!" );
+            strncat( buf, "YOU!", MSL );
          else if( victim->in_room == victim->fighting->in_room )
          {
-            xcat( buf, PERS( victim->fighting, ch ) );
-            xcat( buf, "." );
+            strncat( buf, PERS( victim->fighting, ch ), MSL );
+            strncat( buf, ".", MSL );
          }
          else
-            xcat( buf, "somone who left??" );
+            strncat( buf, "somone who left??", MSL );
          break;
    }
 
@@ -575,8 +575,8 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    /*
     * buf[0] = UPPER(buf[0]); 
     */
-   xcat( buf, color_string( ch, "normal" ) );
-   xcat( buf, "\n\r" );
+   strncat( buf, color_string( ch, "normal" ), MSL );
+   strncat( buf, "\n\r", MSL );
 
    if( ( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
        || ( IS_AFFECTED( victim, AFF_CLOAK_ADEPT ) )
@@ -584,36 +584,36 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
        || ( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
        || ( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) ) || ( is_affected( victim, skill_lookup( "cloak:misery" ) ) ) )
    {
-      xcat( buf, "  @@NCLOAK:" );
+      strncat( buf, "  @@NCLOAK:", MSL );
       if( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
-         xcat( buf, " @@eFLAMING@@N" );
+         strncat( buf, " @@eFLAMING@@N", MSL );
       if( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
-         xcat( buf, " @@lABSORB@@N" );
+         strncat( buf, " @@lABSORB@@N", MSL );
       if( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) )
-         xcat( buf, " @@mREFLECT@@N" );
+         strncat( buf, " @@mREFLECT@@N", MSL );
 
       if( IS_AFFECTED( victim, AFF_CLOAK_ADEPT ) )
-         xcat( buf, " @@WADEPT@@N" );
+         strncat( buf, " @@WADEPT@@N", MSL );
       if( IS_AFFECTED( victim, AFF_CLOAK_REGEN ) )
-         xcat( buf, " @@rREGEN@@N" );
+         strncat( buf, " @@rREGEN@@N", MSL );
       if( is_affected( victim, skill_lookup( "cloak:misery" ) ) )
-         xcat( buf, " @@RMISERY@@N" );
-      xcat( buf, "\n\r" );
+         strncat( buf, " @@RMISERY@@N", MSL );
+      strncat( buf, "\n\r", MSL );
 
    }
    if( victim->first_shield != NULL )
    {
       MAGIC_SHIELD *this_shield;
-      xcat( buf, "   @@WSHIELD: @@N" );
+      strncat( buf, "   @@WSHIELD: @@N", MSL );
       for( this_shield = victim->first_shield; this_shield != NULL; this_shield = this_shield->next )
-         xcat( buf, this_shield->name );
-      xcat( buf, "\n\r" );
+         strncat( buf, this_shield->name, MSL );
+      strncat( buf, "\n\r", MSL );
    }
 
    if( victim->riding != NULL )
    {
       snprintf( buf2, MSL, "  riding %s.\n\r", victim->riding->short_descr );
-      xcat( buf, buf2 );
+      strncat( buf, buf2, MSL );
    }
 
    send_to_char( buf, ch );
@@ -657,27 +657,27 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
    strcpy( buf, PERS( victim, ch ) );
 
    if( pct >= 100 )
-      xcat( buf, " is in pristine condition.\n\r" );
+      strncat( buf, " is in pristine condition.\n\r", MSL );
    else if( pct >= 90 )
-      xcat( buf, " is slightly scratched.\n\r" );
+      strncat( buf, " is slightly scratched.\n\r", MSL );
    else if( pct >= 80 )
-      xcat( buf, " has some light bruising.\n\r" );
+      strncat( buf, " has some light bruising.\n\r", MSL );
    else if( pct >= 70 )
-      xcat( buf, " has some shallow cuts.\n\r" );
+      strncat( buf, " has some shallow cuts.\n\r", MSL );
    else if( pct >= 60 )
-      xcat( buf, " has several weeping wounds.\n\r" );
+      strncat( buf, " has several weeping wounds.\n\r", MSL );
    else if( pct >= 50 )
-      xcat( buf, " looks like a traffic accident.\n\r" );
+      strncat( buf, " looks like a traffic accident.\n\r", MSL );
    else if( pct >= 40 )
-      xcat( buf, " is bleeding slowly into a puddle.\n\r" );
+      strncat( buf, " is bleeding slowly into a puddle.\n\r", MSL );
    else if( pct >= 30 )
-      xcat( buf, " is spraying blood all over.\n\r" );
+      strncat( buf, " is spraying blood all over.\n\r", MSL );
    else if( pct >= 20 )
-      xcat( buf, " is having trouble living.\n\r" );
+      strncat( buf, " is having trouble living.\n\r", MSL );
    else if( pct >= 10 )
-      xcat( buf, " looks ready to kick the bucket.\n\r" );
+      strncat( buf, " looks ready to kick the bucket.\n\r", MSL );
    else
-      xcat( buf, " is DYING.\n\r" );
+      strncat( buf, " is DYING.\n\r", MSL );
 
    buf[0] = UPPER( buf[0] );
    send_to_char( buf, ch );
@@ -847,32 +847,29 @@ void do_look( CHAR_DATA * ch, char *argument )
       {
          snprintf( out, MSL, "%s", color_string( ch, "rooms" ) );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_SHADE ) )
-            xcat( out, "@@NA menacing @@ddark shadow@@N hangs in the sky above you.\n\r" );
+            strncat( out, "@@NA menacing @@ddark shadow@@N hangs in the sky above you.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_ENCAPS ) )
-            xcat( out, "@@NA barely visible @@renergy web@@N is blocking all exits here.\n\r" );
+            strncat( out, "@@NA barely visible @@renergy web@@N is blocking all exits here.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_FIRE_RUNE ) )
-            xcat( out, "@@NA mystical @@eFire @@NRune@@N hangs in the air above you.\n\r" );
+            strncat( out, "@@NA mystical @@eFire @@NRune@@N hangs in the air above you.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_SHOCK_RUNE ) )
-            xcat( out, "@@NA mystical @@lShock@@N Rune@@N hangs in the air above you.\n\r" );
+            strncat( out, "@@NA mystical @@lShock@@N Rune@@N hangs in the air above you.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_POISON_RUNE ) )
-            xcat( out, "@@NA mystical @@dPoison@@N Rune hangs in the air above you.\n\r" );
+            strncat( out, "@@NA mystical @@dPoison@@N Rune hangs in the air above you.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_REGEN ) )
-            xcat( out, "@@NA majestic @@mHealing Light@@N encompasses the room.\n\r" );
+            strncat( out, "@@NA majestic @@mHealing Light@@N encompasses the room.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_STEAL ) )
-            xcat( out, "@@NA menacing @@dWithering shadow@@N enfolds the room.\n\r" );
+            strncat( out, "@@NA menacing @@dWithering shadow@@N enfolds the room.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_MANA_REGEN ) )
-            xcat( out, "@@NA powerful @@eMana Flare@@N empowers the room.\n\r" );
+            strncat( out, "@@NA powerful @@eMana Flare@@N empowers the room.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_MANA_STEAL ) )
-            xcat( out, "@@NA mind sapping @@dMana Drain@@N enfolds the room.\n\r" );
+            strncat( out, "@@NA mind sapping @@dMana Drain@@N enfolds the room.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_HOLD ) )
-            xcat( out, "@@NThe magical bars of a @@rCage@@N surround the room.\n\r" );
-
+            strncat( out, "@@NThe magical bars of a @@rCage@@N surround the room.\n\r", MSL );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_SOUL_NET ) )
-            xcat( out, "@@NA demonic @@dSoul Net@@N enshrouds the room.\n\r" );
+            strncat( out, "@@NA demonic @@dSoul Net@@N enshrouds the room.\n\r", MSL );
 
-
-
-         xcat( out, color_string( ch, "normal" ) );
+         strncat( out, color_string( ch, "normal" ), MSL );
          send_to_char( out, ch );
       }
 
@@ -1262,7 +1259,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
             {
                snprintf( buf2, MSL, " %s", ( !str_cmp( pexit->keyword, "" ) ? compass_name[door] : pexit->keyword ) );
             }
-            xcat( buf, buf2 );
+            strncat( buf, buf2, MSL );
             continue;
          }
       }
@@ -1284,7 +1281,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
             else
                snprintf( buf2, MSL, "%-5s - Door.\n\r", capitalize( compass_name[door] ) );
 
-            xcat( buf, buf2 );
+            strncat( buf, buf2, MSL );
             continue;
          }
 
@@ -1294,8 +1291,8 @@ void do_exits( CHAR_DATA * ch, char *argument )
          found = TRUE;
          if( fAuto || fAutonr )
          {
-            xcat( buf, " " );
-            xcat( buf, compass_name[door] );
+            strncat( buf, " ", MSL );
+            strncat( buf, compass_name[door], MSL );
          }
          else
          {
@@ -1307,13 +1304,13 @@ void do_exits( CHAR_DATA * ch, char *argument )
    }
 
    if( !found )
-      xcat( buf, (fAuto || fAutonr) ? " none" : "None.\n\r" );
+      strncat( buf, (fAuto || fAutonr) ? " none" : "None.\n\r", MSL );
 
    if( fAuto )
-      xcat( buf, "]\n\r" );
+      strncat( buf, "]\n\r", MSL );
 
    if( fAutonr )
-      xcat( buf, "]" );
+      strncat( buf, "]", MSL );
 
    send_to_char( buf, ch );
    return;
@@ -1396,7 +1393,7 @@ void do_score( CHAR_DATA * ch, char *argument )
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       {
          snprintf( buf, MSL, "%s ", class_table[ch->pcdata->order[cnt]].who_name );
-         xcat( buf2, buf );
+         strncat( buf2, buf, MSL );
       }
       snprintf( buf, MSL, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
       send_to_char( buf, ch );
@@ -1405,12 +1402,12 @@ void do_score( CHAR_DATA * ch, char *argument )
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       {
          snprintf( buf, MSL, "@@c%s", class_table[cnt].who_name );
-         xcat( buf2, buf );
+         strncat( buf2, buf, MSL );
          if( ch->lvl[cnt] != -1 )
             snprintf( buf, MSL, ":@@W%2d ", ch->lvl[cnt] );
          else
             snprintf( buf, MSL, "@@c:@@W%s ", " 0" );
-         xcat( buf2, buf );
+         strncat( buf2, buf, MSL );
       }
    }
    else
@@ -1428,7 +1425,7 @@ void do_score( CHAR_DATA * ch, char *argument )
          if( ch->lvl2[cnt] != -1 )
          {
             snprintf( buf, MSL, "@@m%s:@@W%2d ", remort_table[cnt].who_name, ch->lvl2[cnt] );
-            xcat( buf2, buf );
+            strncat( buf2, buf, MSL );
 
          }
       }
@@ -1440,7 +1437,7 @@ void do_score( CHAR_DATA * ch, char *argument )
    {
       snprintf( buf, MSL, "@@WADEPT@@N: %s ", get_adept_name( ch ) );
       buf2[0] = '\0';
-      xcat( buf2, buf );
+      strncat( buf2, buf, MSL );
       snprintf( buf, MSL, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
       send_to_char( buf, ch );
    }
@@ -1566,29 +1563,29 @@ void do_score( CHAR_DATA * ch, char *argument )
 
    snprintf( buf, MSL, "@@WYou are " );
    if( GET_AC( ch ) >= 101 )
-      xcat( buf, "@@yall skin and bones." );
+      strncat( buf, "@@yall skin and bones.", MSL );
    else if( GET_AC( ch ) >= 80 )
-      xcat( buf, "@@ynaked." );
+      strncat( buf, "@@ynaked.", MSL );
    else if( GET_AC( ch ) >= 0 )
-      xcat( buf, "@@ybadly armored." );
+      strncat( buf, "@@ybadly armored.", MSL );
    else if( GET_AC( ch ) >= -100 )
-      xcat( buf, "@@yslightly armored." );
+      strncat( buf, "@@yslightly armored.", MSL );
    else if( GET_AC( ch ) >= -300 )
-      xcat( buf, "@@ysomewhat armored." );
+      strncat( buf, "@@ysomewhat armored.", MSL );
    else if( GET_AC( ch ) >= -500 )
-      xcat( buf, "@@yarmored." );
+      strncat( buf, "@@yarmored.", MSL );
    else if( GET_AC( ch ) >= -800 )
-      xcat( buf, "@@ywell armored." );
+      strncat( buf, "@@ywell armored.", MSL );
    else if( GET_AC( ch ) >= -1400 )
-      xcat( buf, "@@ystrongly armored." );
+      strncat( buf, "@@ystrongly armored.", MSL );
    else if( GET_AC( ch ) >= -2000 )
-      xcat( buf, "@@yheavily armored." );
+      strncat( buf, "@@yheavily armored.", MSL );
    else if( GET_AC( ch ) >= -3000 )
-      xcat( buf, "@@ysuperbly armored." );
+      strncat( buf, "@@ysuperbly armored.", MSL );
    else if( GET_AC( ch ) >= -4500 )
-      xcat( buf, "@@ydivinely armored." );
+      strncat( buf, "@@ydivinely armored.", MSL );
    else
-      xcat( buf, "@@yalmost invincible!" );
+      strncat( buf, "@@yalmost invincible!", MSL );
 
 
    snprintf( buf2, MSL, " @@WArmor Class: @@y%5d.   %s", GET_AC( ch ), buf );
@@ -1603,23 +1600,23 @@ void do_score( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, " @@WYou are " );
 
    if( ch->alignment > 900 )
-      xcat( buf, "@@yangelic." );
+      strncat( buf, "@@yangelic.", MSL );
    else if( ch->alignment > 700 )
-      xcat( buf, "@@ysaintly." );
+      strncat( buf, "@@ysaintly.", MSL );
    else if( ch->alignment > 300 )
-      xcat( buf, "@@ygood." );
+      strncat( buf, "@@ygood.", MSL );
    else if( ch->alignment > 100 )
-      xcat( buf, "@@ykind." );
+      strncat( buf, "@@ykind.", MSL );
    else if( ch->alignment > -100 )
-      xcat( buf, "@@yneutral." );
+      strncat( buf, "@@yneutral.", MSL );
    else if( ch->alignment > -350 )
-      xcat( buf, "@@ymean." );
+      strncat( buf, "@@ymean.", MSL );
    else if( ch->alignment > -700 )
-      xcat( buf, "@@yevil." );
+      strncat( buf, "@@yevil.", MSL );
    else if( ch->alignment > -900 )
-      xcat( buf, "@@ydemonic." );
+      strncat( buf, "@@ydemonic.", MSL );
    else
-      xcat( buf, "@@ysatanic!" );
+      strncat( buf, "@@ysatanic!", MSL );
 
    snprintf( buf2, MSL, " @@WAlignment: @@y%5d.   %s", ch->alignment, buf );
    snprintf( buf, MSL, "@@c|%s @@c|\n\r", center_text( buf2, 62 ) );
@@ -1824,30 +1821,28 @@ void do_weather( CHAR_DATA * ch, char *argument )
    switch ( weather_info.moon_loc )
    {
       case MOON_DOWN:
-         xcat( buf, "The moon is not in the sky.\n\r" );
+         strncat( buf, "The moon is not in the sky.\n\r", MSL );
          break;
       case MOON_RISE:
          snprintf( buf2, MSL, "A %s @@yMoon@@N is just rising.\n\r", get_moon_phase_name(  ) );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
          break;
       case MOON_LOW:
          snprintf( buf2, MSL, "A %s @@yMoon@@N is low on the horizon.\n\r", get_moon_phase_name(  ) );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
          break;
       case MOON_PEAK:
          snprintf( buf2, MSL, "A %s @@yMoon@@N is high above you.\n\r", get_moon_phase_name(  ) );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
          break;
       case MOON_FALL:
          snprintf( buf2, MSL, "A %s @@yMoon@@N is falling.\n\r", get_moon_phase_name(  ) );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
          break;
-
       case MOON_SET:
          snprintf( buf2, MSL, "A %s @@yMoon@@N has just set.\n\r", get_moon_phase_name(  ) );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
          break;
-
    }
 
    send_to_char( buf, ch );
@@ -2102,15 +2097,14 @@ void do_who( CHAR_DATA * ch, char *argument )
    buf[0] = '\0';
 
    snprintf( buf, MSL, "WHO Listing: " mudnamecolor "\n\r" );
-   xcat( buf,
-                "@@R+-----------------------------------------------------------------------------+\n\r" );
-   xcat( buf,
-                "| @@mSo Mo An Ki Ne@@R                                                              |\n\r" );
-   xcat( buf,
-                "| @@bMa Cl Th Wa Ps @@eRace Clan  ABJPW    Player	Title		      @@R(flags) @@R|\n\r" );
-   xcat( buf,
-                "|---------------------------------+-------------------------------------------|\n\r" );
-
+   strncat( buf,
+                "@@R+-----------------------------------------------------------------------------+\n\r", MSL );
+   strncat( buf,
+                "| @@mSo Mo An Ki Ne@@R                                                              |\n\r", MSL );
+   strncat( buf,
+                "| @@bMa Cl Th Wa Ps @@eRace Clan  ABJPW    Player	Title		      @@R(flags) @@R|\n\r", MSL );
+   strncat( buf,
+                "|---------------------------------+-------------------------------------------|\n\r", MSL );
 
    for( list = SHOW_IMMORT; list < SHOW_FINISH; list++ )
    {
@@ -2223,22 +2217,22 @@ void do_who( CHAR_DATA * ch, char *argument )
       switch ( list )
       {
          case SHOW_IMMORT:
-            xcat( buf,
-                         "@@R|---------------------------------|----------@@lImmortals@@R------------------------|@@g\n\r" );
+            strncat( buf,
+                         "@@R|---------------------------------|----------@@lImmortals@@R------------------------|@@g\n\r", MSL );
             break;
 
          case SHOW_ADEPT:
-            xcat( buf,
-                         "@@R|---------------------------------|------------@@WAdepts@@R-------------------------|@@g\n\r" );
+            strncat( buf,
+                         "@@R|---------------------------------|------------@@WAdepts@@R-------------------------|@@g\n\r", MSL );
             break;
 
          case SHOW_REMORT:
-            xcat( buf,
-                         "@@R|---------------------------------|----------@@mRemortals@@R------------------------|@@g\n\r" );
+            strncat( buf,
+                         "@@R|---------------------------------|----------@@mRemortals@@R------------------------|@@g\n\r", MSL );
             break;
          case SHOW_MORTAL:
-            xcat( buf,
-                         "@@R|---------------------------------|-----------@@cMortals@@R-------------------------|@@g\n\r" );
+            strncat( buf,
+                         "@@R|---------------------------------|-----------@@cMortals@@R-------------------------|@@g\n\r", MSL );
 
             break;
       }
@@ -2425,7 +2419,7 @@ void do_who( CHAR_DATA * ch, char *argument )
                         snprintf( buf4, MSL, "@@b%3d@@N", wch->lvl[cnt] );
                   }
 
-                  xcat( buf3, buf4 );
+                  strncat( buf3, buf4, MSL );
 
                }
             }
@@ -2437,13 +2431,13 @@ void do_who( CHAR_DATA * ch, char *argument )
           */
          clan_job[0] = '\0';
          if( wch->act.test(ACT_CBOSS) )
-            xcat( clan_job, "*" );
+            strncat( clan_job, "*", MSL );
          else if( wch->act.test(ACT_CLEADER) )
-            xcat( clan_job, "L" );
+            strncat( clan_job, "L", MSL );
          else if( wch->act.test(ACT_CARMORER) )
-            xcat( clan_job, "!" );
+            strncat( clan_job, "!", MSL );
          else
-            xcat( clan_job, " " );
+            strncat( clan_job, " ", MSL );
 
          snprintf( fgs, MSL, "%3s %5s %s%s%s%s%s",
                   race_table[wch->race].race_name,
@@ -2509,7 +2503,7 @@ void do_who( CHAR_DATA * ch, char *argument )
          {
             for( cnt = slength + excess; cnt < 43; cnt++ )
             {
-               xcat( buf4, " " );
+               strncat( buf4, " ", MSL );
             }
          }
          if( invis )
@@ -2555,8 +2549,8 @@ void do_who( CHAR_DATA * ch, char *argument )
          }
       }
 
-      xcat( buf,
-                   "@@R|---------------------------------+-------------------------------------------|\n\r" );
+      strncat( buf,
+                   "@@R|---------------------------------+-------------------------------------------|\n\r", MSL );
       send_to_char( buf, ch );
       buf[0] = '\0';
    }
@@ -2565,17 +2559,17 @@ void do_who( CHAR_DATA * ch, char *argument )
       max_players = true_cnt;
    snprintf( buf4, MSL, "(%d Player%s)  KEY: (A)fk  (B)uilding  (*)Clan Boss  (P)kok  (W)riting", nMatch, nMatch == 1 ? "" : "s" );
    snprintf( buf2, MSL, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
-   xcat( buf, buf2 );
+   strncat( buf, buf2, MSL );
    snprintf( buf4, MSL, " (L) Clan Leader  (!) Clan Armourer " );
    snprintf( buf2, MSL, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
-   xcat( buf, buf2 );
+   strncat( buf, buf2, MSL );
 
    snprintf( buf4, MSL, "There have been a maximum of %d player%s logged on this session",
             max_players, max_players == 1 ? "" : "s" );
    snprintf( buf2, MSL, "@@R|@@G %s @@R|\n\r", center_text( buf4, 75 ) );
-   xcat( buf, buf2 );
-   xcat( buf,
-                "@@R+-----------------------------------------------------------------------------+\n\r" );
+   strncat( buf, buf2, MSL );
+   strncat( buf,
+                "@@R+-----------------------------------------------------------------------------+\n\r", MSL );
 
 /* Removed this... out is used once, to add a single color code... D'Oh! to me --Stimpy
     snprintf( out, "%s%s", buf, color_string( ch, "normal" ) );
@@ -3076,7 +3070,7 @@ void do_description( CHAR_DATA * ch, char *argument )
       if( argument[0] == '+' )
       {
          if( ch->description != NULL )
-            xcat( buf, ch->description );
+            strncat( buf, ch->description, MSL );
          argument++;
          while( isspace( *argument ) )
             argument++;
@@ -3088,8 +3082,8 @@ void do_description( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      xcat( buf, argument );
-      xcat( buf, "\n\r" );
+      strncat( buf, argument, MSL );
+      strncat( buf, "\n\r", MSL );
       free_string( ch->description );
       ch->description = str_dup( buf );
    }
@@ -3196,15 +3190,15 @@ void do_practice( CHAR_DATA * ch, char *argument )
             {
                snprintf( buf, MSL, "@@W%16s-@@y%-7s@@g  ", skill_table[sn].name, learnt_name( ch->pcdata->learned[sn] ) );
 
-               xcat_2( buf1, buf );
+               strncat( buf1, buf, MSL );
                if( ++col % 3 == 0 )
-                  xcat_2( buf1, "\n\r" );
+                  strncat( buf1, "\n\r", MSL );
             }
          }
       }
 
       if( col % 3 != 0 )
-         xcat_2( buf1, "\n\r" );
+         strncat( buf1, "\n\r", MSL );
 
       send_to_char( buf1, ch );
 
@@ -3481,13 +3475,13 @@ void do_socials( CHAR_DATA * ch, char *argument )
    for( iSocial = 0; social_table[iSocial].name[0] != '\0'; iSocial++ )
    {
       snprintf( buf, MSL, "%-12s", social_table[iSocial].name );
-      xcat( out, buf );
+      strncat( out, buf, MSL );
       if( ++col % 6 == 0 )
-         xcat( out, "\n\r" );
+         strncat( out, "\n\r", MSL );
    }
 
    if( col % 6 != 0 )
-      xcat( out, "\n\r" );
+      strncat( out, "\n\r", MSL );
    send_to_char( out, ch );
    return;
 }
@@ -3532,14 +3526,14 @@ void do_socials( CHAR_DATA * ch, char *argument )
   * continue;
   * 
   * snprintf( buf, MSL, "%-12s", cmd_table[cmd].name );
-  * xcat(MAX_STRING_LENGTH, buf1, buf );
+  * strncat(MAX_STRING_LENGTH, buf1, buf, MSL );
   * if ( ++col % 6 == 0 )
-  * xcat(MAX_STRING_LENGTH, buf1, "\n\r" );
+  * strncat(MAX_STRING_LENGTH, buf1, "\n\r", MSL );
   * }
   * }
   * 
   * if ( col % 6 != 0 )
-  * xcat(MAX_STRING_LENGTH, buf1, "\n\r" );
+  * strncat(MAX_STRING_LENGTH, buf1, "\n\r", MSL );
   * 
   * send_to_char( buf1, ch );
   * return;
@@ -3632,9 +3626,9 @@ void do_commands( CHAR_DATA * ch, char *argument )
             continue;
 
          snprintf( buf, MSL, "%-12s", cmd_table[cmd].name );
-         xcat( show_table[cmd_table[cmd].type].buf, buf );
+         strncat( show_table[cmd_table[cmd].type].buf, buf, MSL );
          if( ++show_table[cmd_table[cmd].type].col % 6 == 0 )
-            xcat( show_table[cmd_table[cmd].type].buf, "\n\r" );
+            strncat( show_table[cmd_table[cmd].type].buf, "\n\r", MSL );
       }
    }
 
@@ -3643,7 +3637,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
    {
       if( ( show_only > -1 ) && ( show_only != col ) )
          continue;
-      xcat( show_table[col].buf, "\n\r" );
+      strncat( show_table[col].buf, "\n\r", MSL );
       send_to_char( show_table[col].buf, ch );
    }
 
@@ -3778,7 +3772,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
 
       trust = get_trust( ch );
       buffer[0] = '\0';
-      xcat( buffer, "Channels:\n\r" );
+      strncat( buffer, "Channels:\n\r", MSL );
 
       for( a = 0; channels[a].bit != 0; a++ )
       {
@@ -3792,22 +3786,22 @@ void do_channels( CHAR_DATA * ch, char *argument )
                if( !IS_NPC( ch ) )
                {
                   snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
-                  xcat( buffer, colbuf );
+                  strncat( buffer, colbuf, MSL );
                }
-               xcat( buffer, channels[a].off_string );
+               strncat( buffer, channels[a].off_string, MSL );
             }
             else
             {
                if( !IS_NPC( ch ) )
                {
                   snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
-                  xcat( buffer, colbuf );
+                  strncat( buffer, colbuf, MSL );
                }
-               xcat( buffer, channels[a].on_string );
+               strncat( buffer, channels[a].on_string, MSL );
             }
          }
 
-         xcat( buffer, "@@N" );
+         strncat( buffer, "@@N", MSL );
       }
       send_to_char( buffer, ch );
    }
@@ -4180,13 +4174,13 @@ void do_spells( CHAR_DATA * ch, char *argument )
        */
 
       snprintf( buf, MSL, "%18s %3dpts ", skill_table[sn].name, mana_cost( ch, sn ) );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
       if( ++col % 3 == 0 )
-         xcat( buf1, "\n\r" );
+         strncat( buf1, "\n\r", MSL );
    }
 
    if( col % 3 != 0 )
-      xcat( buf1, "\n\r" );
+      strncat( buf1, "\n\r", MSL );
 
    send_to_char( buf1, ch );
    return;
@@ -4254,29 +4248,28 @@ void do_slist( CHAR_DATA * ch, char *argument )
 
    buf1[0] = '\0';
 
-   xcat( buf1, "ALL Spells available for the class " );
+   strncat( buf1, "ALL Spells available for the class ", MSL );
    if( adept_class )
    {
-      xcat( buf1, "@@W" );
-      xcat( buf1, "Adept" );
-      xcat( buf1, "@@N\n\r\n\r" );
+      strncat( buf1, "@@W", MSL );
+      strncat( buf1, "Adept", MSL );
+      strncat( buf1, "@@N\n\r\n\r", MSL );
    }
    else if( remort_class )
    {
-      xcat( buf1, "@@m" );
-      xcat( buf1, remort_table[p_class].class_name );
-      xcat( buf1, "@@N\n\r\n\r" );
+      strncat( buf1, "@@m", MSL );
+      strncat( buf1, remort_table[p_class].class_name, MSL );
+      strncat( buf1, "@@N\n\r\n\r", MSL );
    }
    else
 
    {
-      xcat( buf1, "@@b" );
-      xcat( buf1, class_table[p_class].class_name );
-      xcat( buf1, "@@N\n\r\n\r" );
+      strncat( buf1, "@@b", MSL );
+      strncat( buf1, class_table[p_class].class_name, MSL );
+      strncat( buf1, "@@N\n\r\n\r", MSL );
    }
 
-
-   xcat( buf1, "@@rLv          @@lSpells@@N\n\r\n\r" );
+   strncat( buf1, "@@rLv          @@lSpells@@N\n\r\n\r", MSL );
 
    for( level = 1; level < LEVEL_IMMORTAL; level++ )
    {
@@ -4298,30 +4291,30 @@ void do_slist( CHAR_DATA * ch, char *argument )
             {
 
                snprintf( buf, MSL, "@@r%2d:@@N", level );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
                pSpell = FALSE;
             }
 
             if( ++col % 5 == 0 )
-               xcat( buf1, "   " );
+               strncat( buf1, "   ", MSL );
             if( ch->pcdata->learned[sn] > 0 )
             {
                snprintf( buf, MSL, "@@m%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
                      ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             else
             {
                snprintf( buf, MSL, "@@a%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             if( col % 4 == 0 )
-               xcat( buf1, "\n\r" );
+               strncat( buf1, "\n\r", MSL );
          }
          else if( ( remort_class ) && ( !adept_class ) && ( skill_table[sn].flag1 == REMORT ) )
          {
@@ -4330,68 +4323,68 @@ void do_slist( CHAR_DATA * ch, char *argument )
             {
 
                snprintf( buf, MSL, "@@r%2d:@@N", level );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
                pSpell = FALSE;
             }
 
             if( ++col % 5 == 0 )
-               xcat( buf1, "   " );
+               strncat( buf1, "   ", MSL );
             if( ch->pcdata->learned[sn] > 0 )
             {
                snprintf( buf, MSL, "@@x@@m%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
                      ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             else
             {
                snprintf( buf, MSL, "@@a%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             if( col % 4 == 0 )
-               xcat( buf1, "\n\r" );
+               strncat( buf1, "\n\r", MSL );
          }
          else if( ( !remort_class ) && ( !adept_class ) && ( skill_table[sn].flag1 == MORTAL ) )
          {
             if( pSpell )
             {
                snprintf( buf, MSL, "@@r%2d:@@N", level );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
                pSpell = FALSE;
             }
 
             if( ++col % 5 == 0 )
-               xcat( buf1, "   " );
+               strncat( buf1, "   ", MSL );
 
 
             if( ch->pcdata->learned[sn] > 0 )
             {
                snprintf( buf, MSL, "@@x@@m%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
                      ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             else
             {
                snprintf( buf, MSL, "@@a%18s@@N", skill_table[sn].name );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             if( col % 4 == 0 )
-               xcat( buf1, "\n\r" );
+               strncat( buf1, "\n\r", MSL );
 
          }
       }
 
       if( col % 4 != 0 )
-         xcat( buf1, "\n\r" );
+         strncat( buf1, "\n\r", MSL );
 
    }
 
@@ -4569,15 +4562,15 @@ void do_diagnose( CHAR_DATA * ch, char *argument )
    strcpy( buf, PERS( victim, ch ) );
 
    if( pct >= 100 )
-      xcat( buf, " --  [5] 4  3  2  1   \n\r" );
+      strncat( buf, " --  [5] 4  3  2  1   \n\r", MSL );
    else if( pct >= 80 )
-      xcat( buf, " --   5 [4] 3  2  1   \n\r" );
+      strncat( buf, " --   5 [4] 3  2  1   \n\r", MSL );
    else if( pct >= 60 )
-      xcat( buf, " --   5  4 [3] 2  1   \n\r" );
+      strncat( buf, " --   5  4 [3] 2  1   \n\r", MSL );
    else if( pct >= 40 )
-      xcat( buf, " --   5  4  3 [2] 1   \n\r" );
+      strncat( buf, " --   5  4  3 [2] 1   \n\r", MSL );
    else
-      xcat( buf, " --   5  4  3  2 [1]  \n\r" );
+      strncat( buf, " --   5  4  3  2 [1]  \n\r", MSL );
 
    buf[0] = UPPER( buf[0] );
    send_to_char( buf, ch );
@@ -5899,35 +5892,35 @@ char *output_race_wear( int iRace )
 
  buf[0] = '\0';
  
- xcat(buf,race_table[iRace].wear_locs[0]  ? " @@aLight@@N"      : " @@dLight@@N"      );
- xcat(buf,race_table[iRace].wear_locs[1]  ? " @@aFloating@@N"   : " @@dFloating@@N"   );
- xcat(buf,race_table[iRace].wear_locs[2]  ? " @@aAura@@N"       : " @@dAura@@N"       );
- xcat(buf,race_table[iRace].wear_locs[3]  ? " @@aHorns@@N"      : " @@dHorns@@N"      );
- xcat(buf,race_table[iRace].wear_locs[4]  ? " @@aHead@@N"       : " @@dHead@@N"       );
- xcat(buf,race_table[iRace].wear_locs[5]  ? " @@aFace@@N"       : " @@dFace@@N"       );
- xcat(buf,race_table[iRace].wear_locs[6]  ? " @@aBeak@@N"       : " @@dBeak@@N"       );
- xcat(buf,race_table[iRace].wear_locs[7]  ? " @@aEar@@N"        : " @@dEar@@N"        );
- xcat(buf,race_table[iRace].wear_locs[8]  ? " @@aEar@@N"        : " @@dEar@@N"        );
- xcat(buf,race_table[iRace].wear_locs[9]  ? " @@aNeck@@N"       : " @@dNeck@@N"       );
- xcat(buf,race_table[iRace].wear_locs[10] ? " @@aNeck@@N\n\r"   : " @@dNeck@@N\n\r"   );
- xcat(buf,race_table[iRace].wear_locs[11] ? " @@aWings@@N"      : " @@dWings@@N"      );
- xcat(buf,race_table[iRace].wear_locs[12] ? " @@aShoulders@@N"  : " @@dShoulders@@N"  );
- xcat(buf,race_table[iRace].wear_locs[13] ? " @@aArms@@N"       : " @@dArms@@N"       );
- xcat(buf,race_table[iRace].wear_locs[14] ? " @@aWrist@@N"      : " @@dWrist@@N"      );
- xcat(buf,race_table[iRace].wear_locs[15] ? " @@aWrist@@N"      : " @@dWrist@@N"      );
- xcat(buf,race_table[iRace].wear_locs[16] ? " @@aHands@@N"      : " @@dHands@@N"      );
- xcat(buf,race_table[iRace].wear_locs[17] ? " @@aFinger@@N"     : " @@dFinger@@N"     );
- xcat(buf,race_table[iRace].wear_locs[18] ? " @@aFinger@@N"     : " @@dFinger@@N"     );
- xcat(buf,race_table[iRace].wear_locs[19] ? " @@aClaws@@N\n\r"  : " @@dClaws@@N\n\r"  );
- xcat(buf,race_table[iRace].wear_locs[20] ? " @@aLeft Hand@@N"  : " @@dLeft Hand@@N"  );
- xcat(buf,race_table[iRace].wear_locs[21] ? " @@aRight Hand@@N" : " @@dRight Hand@@N" );
- xcat(buf,race_table[iRace].wear_locs[22] ? " @@aCape@@N"       : " @@dCape@@N"       );
- xcat(buf,race_table[iRace].wear_locs[23] ? " @@aWaist@@N"      : " @@dWaist@@N"      );
- xcat(buf,race_table[iRace].wear_locs[24] ? " @@aBody@@N"       : " @@dBody@@N"       );
- xcat(buf,race_table[iRace].wear_locs[25] ? " @@aTail@@N"       : " @@dTail@@N"       );
- xcat(buf,race_table[iRace].wear_locs[26] ? " @@aLegs@@N"       : " @@dLegs@@N"       );
- xcat(buf,race_table[iRace].wear_locs[27] ? " @@aFeet@@N"       : " @@dFeet@@N"       );
- xcat(buf,race_table[iRace].wear_locs[28] ? " @@aHooves@@N"     : " @@dHooves@@N"     );
+ strncat(buf,race_table[iRace].wear_locs[0]  ? " @@aLight@@N"      : " @@dLight@@N"      ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[1]  ? " @@aFloating@@N"   : " @@dFloating@@N"   ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[2]  ? " @@aAura@@N"       : " @@dAura@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[3]  ? " @@aHorns@@N"      : " @@dHorns@@N"      ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[4]  ? " @@aHead@@N"       : " @@dHead@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[5]  ? " @@aFace@@N"       : " @@dFace@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[6]  ? " @@aBeak@@N"       : " @@dBeak@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[7]  ? " @@aEar@@N"        : " @@dEar@@N"        ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[8]  ? " @@aEar@@N"        : " @@dEar@@N"        ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[9]  ? " @@aNeck@@N"       : " @@dNeck@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[10] ? " @@aNeck@@N\n\r"   : " @@dNeck@@N\n\r"   ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[11] ? " @@aWings@@N"      : " @@dWings@@N"      ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[12] ? " @@aShoulders@@N"  : " @@dShoulders@@N"  ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[13] ? " @@aArms@@N"       : " @@dArms@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[14] ? " @@aWrist@@N"      : " @@dWrist@@N"      ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[15] ? " @@aWrist@@N"      : " @@dWrist@@N"      ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[16] ? " @@aHands@@N"      : " @@dHands@@N"      ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[17] ? " @@aFinger@@N"     : " @@dFinger@@N"     ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[18] ? " @@aFinger@@N"     : " @@dFinger@@N"     ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[19] ? " @@aClaws@@N\n\r"  : " @@dClaws@@N\n\r"  ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[20] ? " @@aLeft Hand@@N"  : " @@dLeft Hand@@N"  ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[21] ? " @@aRight Hand@@N" : " @@dRight Hand@@N" ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[22] ? " @@aCape@@N"       : " @@dCape@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[23] ? " @@aWaist@@N"      : " @@dWaist@@N"      ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[24] ? " @@aBody@@N"       : " @@dBody@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[25] ? " @@aTail@@N"       : " @@dTail@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[26] ? " @@aLegs@@N"       : " @@dLegs@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[27] ? " @@aFeet@@N"       : " @@dFeet@@N"       ,MSL);
+ strncat(buf,race_table[iRace].wear_locs[28] ? " @@aHooves@@N"     : " @@dHooves@@N"     ,MSL);
 
  return buf;
 }

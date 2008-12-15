@@ -1494,7 +1494,6 @@ char *short_race_name( CHAR_DATA * ch )
    return ( buf );
 }
 
-
 char *get_family_name( CHAR_DATA * ch )
 {
 
@@ -1514,8 +1513,6 @@ char *get_family_name( CHAR_DATA * ch )
 
 }
 
-
-
 char *get_tribe_name( CHAR_DATA * ch )
 {
    switch ( ch->pcdata->super->bloodline )
@@ -1532,68 +1529,6 @@ char *get_tribe_name( CHAR_DATA * ch )
          return "@@WNOT SET@@N";
    }
 
-}
-
-/*Originaly, i heard on gamedev that someone was looking for a way to stop sprintf
- *from overflowing, ofcourse, people fail to think of functions like strlcpy, which
- *is essentaily a safe sprintf, atleast as it has been described to me.  I however
- *chose to write my own system.  This allows me to capture the function, and line
- *of the overflowing string in question.  Thus allowing me to essentaily find out
- *where the mud overflows, and stop it from happening.  Great little tool.
- *All i ask is that you leave this header in place.  -- Darien of Sandstorm:Mages Sanctuary
- */
-void safe_strcat( const char *file, const char *function, int line, int size, const char *prev, const char *next, ... )
-{
- char buf[MAS];
- va_list args;
- va_start(args,next);
- vsprintf(buf,next,args);
- va_end(args);
-
- /*Max Alloc Size is alot!*/
- if( size > MAS )
- {
-  sprintf(bug_buf,"strncat buffer overflow: %s",next);
-  log_string(bug_buf);
-  monitor_chan(bug_buf,MONITOR_DEBUG);
-
-  sprintf(bug_buf,"strncat buffer overflow: File: %s Function: %s Line: %d.",file,function,line);
-  log_string(bug_buf);
-  monitor_chan(bug_buf,MONITOR_DEBUG);
-
-  return;
- }
-
- if( (unsigned)size < strlen(buf)+1 )
- {
-  sprintf(bug_buf,"strncat buffer overflow: %s",next);
-  log_string(bug_buf);
-  monitor_chan(bug_buf,MONITOR_DEBUG);
-
-  sprintf(bug_buf,"strncat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
-  log_string(bug_buf);
-  monitor_chan(bug_buf,MONITOR_DEBUG);
-
-
-  return;
- }
- else
- {
-  strcat((char *)prev,buf);
-
-  /*Just double checking.*/
-  if( strlen(prev) > (unsigned)size - 1 )
-  {
-   sprintf(bug_buf,"strncat buffer overflow: %s",next);
-   log_string(bug_buf);
-   monitor_chan(bug_buf,MONITOR_DEBUG);
-
-   sprintf(bug_buf,"strncat buffer overflow: File: %s Function: %s Line: %d",file,function,line);
-   log_string(bug_buf);
-   monitor_chan(bug_buf,MONITOR_DEBUG);
-   return;
-  }
- }
 }
 
 char *strlower( char *ip )

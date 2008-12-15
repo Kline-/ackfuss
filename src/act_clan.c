@@ -287,16 +287,16 @@ void do_politics( CHAR_DATA * ch, char *argument )
    buf2[0] = '\0';
 
    snprintf( buf, MSL, "        " );
-   xcat( buf2, buf );
+   strncat( buf2, buf, MSL );
 
    for( x = 1; x < MAX_CLAN; x++ )
    {
       snprintf( buf, MSL, " %s  ", clan_table[x].clan_abbr );
-      xcat( buf2, buf );
+      strncat( buf2, buf, MSL );
    }
    buf[0] = '\0';
    snprintf( buf, MSL, "\n\r\n\r" );
-   xcat( buf2, buf );
+   strncat( buf2, buf, MSL );
 
    send_to_char( buf2, ch );
 
@@ -308,7 +308,7 @@ void do_politics( CHAR_DATA * ch, char *argument )
       buf[0] = '\0';
       buf2[0] = '\0';
       snprintf( buf, MSL, "%1i %s ", x, clan_table[x].clan_abbr );
-      xcat( buf2, buf );
+      strncat( buf2, buf, MSL );
 
       for( y = 1; y < MAX_CLAN; y++ )
       {
@@ -316,19 +316,19 @@ void do_politics( CHAR_DATA * ch, char *argument )
          if( x != y )
          {
             snprintf( buf, MSL, "%s ", get_diplo_name( politics_data.diplomacy[x][y] ) );
-            xcat( buf2, buf );
+            strncat( buf2, buf, MSL );
          }
          else
          {
             snprintf( buf, MSL, "        " );
-            xcat( buf2, buf );
+            strncat( buf2, buf, MSL );
          }
 
 
 
       }
       snprintf( buf, MSL, "\n\r\n\r" );
-      xcat( buf2, buf );
+      strncat( buf2, buf, MSL );
       send_to_char( buf2, ch );
    }
    if( ch->act.test(ACT_CDIPLOMAT) )
@@ -695,18 +695,18 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
          if( ch->act.test(ACT_CBOSS) )
          {
             if( victim->act.test(ACT_CLEADER) )
-               xcat( buf, " L " );
+               strncat( buf, " L ", MSL );
 
             if( victim->act.test(ACT_CARMORER) )
-               xcat( buf, " A " );
+               strncat( buf, " A ", MSL );
 
             if( victim->act.test(ACT_CTREASURER) )
-               xcat( buf, " T " );
+               strncat( buf, " T ", MSL );
 
             if( victim->act.test(ACT_CDIPLOMAT) )
-               xcat( buf, " D " );
+               strncat( buf, " D ", MSL );
          }
-         xcat( buf, "\n\r" );
+         strncat( buf, "\n\r", MSL );
 
 
          send_to_char( buf, ch );
@@ -964,7 +964,7 @@ void do_council( CHAR_DATA * ch, char *argument )
       for( imember = super_councils[this_council].first_member; imember != NULL; imember = imember->next )
       {
          snprintf( buf2, MSL, "%s\n\r", imember->this_member->name );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
       }
       send_to_char( buf, ch );
 
