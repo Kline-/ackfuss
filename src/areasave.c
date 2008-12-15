@@ -78,8 +78,7 @@
 #define BUILD_SEC_OBJECTS  5
 #define BUILD_SEC_SHOPS    6
 #define BUILD_SEC_RESETS   7
-#define BUILD_SEC_SPECIALS 8
-#define BUILD_SEC_END      9
+#define BUILD_SEC_END      8
 #define AREA_VERSION       22
 
 struct save_queue_type
@@ -224,9 +223,6 @@ void build_save(  )
          case BUILD_SEC_RESETS:
             build_save_resets(  );
             break;
-         case BUILD_SEC_SPECIALS:
-            build_save_specs(  );
-            break;
          case BUILD_SEC_END:
             build_save_end(  );
             break;
@@ -317,6 +313,7 @@ void build_save_mobs(  )
    fprintf( SaveFile, "ShortDesc %s~\n", pMobIndex->short_descr );
    fprintf( SaveFile, "Skills    %d\n", pMobIndex->skills );
    fprintf( SaveFile, "SMagic    %d\n", pMobIndex->strong_magic );
+   fprintf( SaveFile, "SpecFun   %s\n", rev_spec_lookup(pMobIndex->spec_fun) );
    fprintf( SaveFile, "Suscept   %d\n", pMobIndex->suscept );
    fprintf( SaveFile, "WMagic    %d\n", pMobIndex->weak_magic );
    fprintf( SaveFile, "End\n" );
@@ -567,37 +564,6 @@ void build_save_shops(  )
    if( Pointer == NULL )   /* End */
       Section++;
 
-   return;
-}
-
-void build_save_specs(  )
-{
-   MOB_INDEX_DATA *pMob;
-
-   if( Pointer == NULL )   /* Start */
-   {
-      if( CurSaveArea->first_area_specfunc == NULL )
-      {
-         Section++;
-         return;
-      }
-      send_to_char( "Saving specials.\n", CurSaveChar );
-      fprintf( SaveFile, "#SPECIALS\n" );
-      Pointer = CurSaveArea->first_area_specfunc;
-   }
-
-   pMob = (MOB_INDEX_DATA *)Pointer->data;
-
-   fprintf( SaveFile, "M %i ", pMob->vnum );
-   fprintf( SaveFile, "%s\n", rev_spec_lookup( pMob->spec_fun ) );
-
-
-   Pointer = Pointer->next;
-   if( Pointer == NULL )   /* End */
-   {
-      fprintf( SaveFile, "S\n" );
-      Section++;
-   }
    return;
 }
 

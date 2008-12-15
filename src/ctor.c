@@ -44,7 +44,6 @@ area_data::area_data()
  first_area_object = NULL;
  first_area_room = NULL;
  first_area_shop = NULL;
- first_area_specfunc = NULL;
  first_reset = NULL;
  gold = 0;
  is_free = false;
@@ -54,7 +53,6 @@ area_data::area_data()
  last_area_object = NULL;
  last_area_room = NULL;
  last_area_shop = NULL;
- last_area_specfunc = NULL;
  last_reset = NULL;
  level_label = str_dup("[ None ]");
  max_level = 1;

@@ -265,7 +265,6 @@ void load_resets args( ( FILE * fp ) );
 void load_rextra args( ( FILE * fp ) );
 void load_room args( ( FILE * fp ) );
 void load_shop args( ( FILE * fp ) );
-void load_specials args( ( FILE * fp ) );
 void load_notes args( ( void ) );
 void load_gold args( ( void ) );
 void load_corpses args( ( void ) );
@@ -599,8 +598,6 @@ void load_areas( void )
             load_room( fpArea );
          else if( !str_cmp( word, "SHOP" ) )
             load_shop( fpArea );
-         else if( !str_cmp( word, "SPECIALS" ) )
-            load_specials( fpArea );
          else
          {
             bug( "Boot_db: bad section name.", 0 );
@@ -1110,6 +1107,22 @@ void load_mobile( FILE * fp )
             SKEY("ShortDesc",pMobIndex->short_descr,fread_string(fp));
             KEY("Skills",pMobIndex->skills,fread_number(fp));
             KEY("SMagic",pMobIndex->strong_magic,fread_number(fp));
+            if( !str_cmp(word,"SpecFun") )
+            {
+             tmp = fread_word(fp);
+             if( str_cmp(tmp,"(null)") )
+             {
+              pMobIndex->spec_fun = spec_lookup(tmp);
+
+              if( pMobIndex->spec_fun == NULL )
+              {
+               snprintf(buf,MSL,"Load_mobile: spec_fun invalid for mob %d in %s.",pMobIndex->vnum,area_load->filename);
+               log_string(buf);
+              }
+             }
+             fMatch = true;
+             break;
+            }
             KEY("Suscept",pMobIndex->suscept,fread_number(fp));
             break;
 
@@ -1846,58 +1859,6 @@ void load_shop( FILE * fp )
 
    return;
 }
-
-
-
-/*
- * Snarf spec proc declarations.
- */
-void load_specials( FILE * fp )
-{
-   for( ;; )
-   {
-      MOB_INDEX_DATA *pMobIndex;
-      char letter;
-
-      switch ( letter = fread_letter( fp ) )
-      {
-         default:
-            bug( "Load_specials: letter '%c' not *, M, or S.", letter );
-            hang( "Loading Specials in db.c" );
-
-         case 'S':
-            return;
-
-         case '*':
-            break;
-
-         case 'M':
-            pMobIndex = get_mob_index( fread_number( fp ) );
-            pMobIndex->spec_fun = spec_lookup( fread_word( fp ) );
-            if( pMobIndex->spec_fun == 0 )
-            {
-               bug( "Load_specials(mob): 'M': vnum %d.", pMobIndex->vnum );
-            }
-            else
-            {
-               BUILD_DATA_LIST *pList;
-
-               /*
-                * MAG Mod 
-                */
-               GET_FREE( pList, build_free );
-               pList->data = pMobIndex;
-               LINK( pList, area_load->first_area_specfunc, area_load->last_area_specfunc, next, prev );
-            }
-            break;
-      }
-      /*
-       * NB. Comments will not be saved when using areasave - MAG. 
-       */
-      fread_to_eol( fp );
-   }
-}
-
 
 /*
  * Snarf notes file.
