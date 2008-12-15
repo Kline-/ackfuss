@@ -1712,26 +1712,12 @@ void build_setmob( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "spec" ) )
    {
-      BUILD_DATA_LIST *pList;
-
       if( arg3[0] == '-' )
       {
          if( pMob->spec_fun == NULL )
             return;
 
          pMob->spec_fun = NULL;
-
-         for( pList = pArea->first_area_specfunc; pList != NULL; pList = pList->next )
-         {
-            if( ( MOB_INDEX_DATA * ) pList->data == pMob )
-               break;
-         }
-
-         if( pList != NULL )
-         {
-            UNLINK( pList, pArea->first_area_specfunc, pArea->last_area_specfunc, next, prev );
-            PUT_FREE( pList, build_free );
-         }
 
          return;
       }
@@ -1742,23 +1728,6 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          print_spec_lookup( buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
-      }
-
-      /*
-       * Add to area linked list 
-       */
-      /*
-       * First see if there is one for this char already 
-       */
-      for( pList = pArea->first_area_specfunc; pList != NULL; pList = pList->next )
-         if( ( MOB_INDEX_DATA * ) pList->data == pMob )
-            break;
-
-      if( pList == NULL )
-      {
-         GET_FREE( pList, build_free );
-         pList->data = pMob;
-         LINK( pList, pArea->first_area_specfunc, pArea->last_area_specfunc, next, prev );
       }
 
       area_modified( pArea );

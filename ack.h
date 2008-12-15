@@ -1090,7 +1090,6 @@ class area_data
   BUILD_DATA_LIST         *first_area_object;
   BUILD_DATA_LIST         *first_area_room;
   BUILD_DATA_LIST         *first_area_shop;
-  BUILD_DATA_LIST         *first_area_specfunc;
   RESET_DATA              *first_reset;
   int                     gold;
   bool                    is_free;
@@ -1100,7 +1099,6 @@ class area_data
   BUILD_DATA_LIST         *last_area_object;
   BUILD_DATA_LIST         *last_area_room;
   BUILD_DATA_LIST         *last_area_shop;
-  BUILD_DATA_LIST         *last_area_specfunc;
   RESET_DATA              *last_reset;
   char                    *level_label;
   short                   max_level;
