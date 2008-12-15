@@ -145,14 +145,14 @@ void do_wizhelp( CHAR_DATA * ch, char *argument )
       if( cmd_table[cmd].level >= LEVEL_HERO && cmd_table[cmd].level <= get_trust( ch ) )
       {
          snprintf( buf, MSL, "%-12s", cmd_table[cmd].name );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
          if( ++col % 6 == 0 )
-            xcat( buf1, "\n\r" );
+            strncat( buf1, "\n\r", MSL );
       }
    }
 
    if( col % 6 != 0 )
-      xcat( buf1, "\n\r" );
+      strncat( buf1, "\n\r", MSL );
    send_to_char( buf1, ch );
    return;
 }
@@ -640,48 +640,48 @@ void do_rstat( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    snprintf( buf, MSL, "Name: '%s.'\n\rArea: '%s'.\n\r", location->name, location->area->name );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL,
             "Vnum: %d.  Light: %d.  Sector: %s.\n\r",
             location->vnum, location->light, rev_table_lookup( tab_sector_types, location->sector_type ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL,
             "Room flags: %s.\n\rDescription:\n\r%s",
             bs_show_values( tab_room_flags, location->room_flags ), location->description );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    if( location->first_exdesc != NULL )
    {
       EXTRA_DESCR_DATA *ed;
 
-      xcat( buf1, "Extra description keywords: '" );
+      strncat( buf1, "Extra description keywords: '", MSL );
       for( ed = location->first_exdesc; ed; ed = ed->next )
       {
-         xcat( buf1, ed->keyword );
+         strncat( buf1, ed->keyword, MSL );
          if( ed->next != NULL )
-            xcat( buf1, " " );
+            strncat( buf1, " ", MSL );
       }
-      xcat( buf1, "'.\n\r" );
+      strncat( buf1, "'.\n\r", MSL );
    }
 
-   xcat( buf1, "Characters:" );
+   strncat( buf1, "Characters:", MSL );
    for( rch = location->first_person; rch; rch = rch->next_in_room )
    {
-      xcat( buf1, " " );
+      strncat( buf1, " ", MSL );
       one_argument( rch->name, buf );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
-   xcat( buf1, ".\n\rObjects:   " );
+   strncat( buf1, ".\n\rObjects:   ", MSL );
    for( obj = location->first_content; obj; obj = obj->next_in_room )
    {
-      xcat( buf1, " " );
+      strncat( buf1, " ", MSL );
       one_argument( obj->name, buf );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
-   xcat( buf1, ".\n\r" );
+   strncat( buf1, ".\n\r", MSL );
 
    for( door = 0; door < MAX_DIR; door++ )
    {
@@ -695,7 +695,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
                   pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                   pexit->key, pexit->keyword, pexit->description[0] != '\0' ? pexit->description : "(none).",
                   bs_show_values( tab_door_types,pexit->exit_info) );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
       }
    }
 
@@ -705,7 +705,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
       {
          snprintf( buf, MSL, "Room_Affect: '%s', level %d, duration %d\n\r",
                   skill_table[raf->type].name, raf->level, raf->duration );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
       }
    }
 
@@ -742,46 +742,46 @@ void do_ostat( CHAR_DATA * ch, char *argument )
    }
 
    snprintf( buf, MSL, "Name: %s.\n\r", obj->name );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Vnum: %d.  Type: %s.\n\r", obj->pIndexData->vnum, item_type_name( obj ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Short description: %s.\n\rLong description: %s\n\r", obj->short_descr, obj->long_descr );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Wear bits: \n\r%s.\n\rExtra bits: %s\n\r",
             bs_show_values( tab_wear_flags, obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "ITEM_APPLY: %d.\n\r", obj->item_apply );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Number: %d/%d.  Weight: %d/%d.\n\r", 1, get_obj_number( obj ), obj->weight, get_obj_weight( obj ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Cost: %d.  Timer: %d.  Level: %d.\n\r", obj->cost, obj->timer, obj->level );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Durability: %d/%d (%1.0f%%).\n\r", obj->durability, obj->max_durability, (float)(((float)obj->durability / (float)obj->max_durability) * 100) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf(buf, MSL, "Speed %4.2f\n\r", obj->speed);
-   xcat(buf1,buf);
+   strncat(buf1,buf,MSL);
 
    snprintf( buf, MSL,
             "In room: %d.  In object: %s.  Carried by: %s.  Wear_loc: %d.\n\r",
             obj->in_room == NULL ? 0 : obj->in_room->vnum,
             obj->in_obj == NULL ? "(none)" : obj->in_obj->short_descr,
             obj->carried_by == NULL ? "(none)" : obj->carried_by->name, obj->wear_loc );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
-   xcat( buf1, "Item Values:\n\r" );
+   strncat( buf1, "Item Values:\n\r", MSL );
    for( cnt = 0; cnt < 10; cnt++ )
    {
       snprintf( buf, MSL, "@@W[Value%d : @@y%6d@@W] %s",
                cnt, obj->value[cnt], rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
       if( is_name( "Spell", rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) ) )
       {
          fubar = obj->value[cnt];
@@ -809,42 +809,42 @@ void do_ostat( CHAR_DATA * ch, char *argument )
       }
       else
          snprintf( buf, MSL, "@@g\n\r" );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    /*
     * snprintf( buf, MSL, "Values: %d %d %d %d.\n\r",
     * obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
-    * xcat( buf1, buf );
+    * strncat( buf1, buf, MSL );
     */
 
    if( obj->first_exdesc != NULL || obj->pIndexData->first_exdesc != NULL )
    {
       EXTRA_DESCR_DATA *ed;
 
-      xcat( buf1, "Extra description keywords: '" );
+      strncat( buf1, "Extra description keywords: '", MSL );
 
       for( ed = obj->first_exdesc; ed != NULL; ed = ed->next )
       {
-         xcat( buf1, ed->keyword );
+         strncat( buf1, ed->keyword, MSL );
          if( ed->next != NULL )
-            xcat( buf1, " " );
+            strncat( buf1, " ", MSL );
       }
 
       for( ed = obj->pIndexData->first_exdesc; ed != NULL; ed = ed->next )
       {
-         xcat( buf1, ed->keyword );
+         strncat( buf1, ed->keyword, MSL );
          if( ed->next != NULL )
-            xcat( buf1, " " );
+            strncat( buf1, " ", MSL );
       }
 
-      xcat( buf1, "'.\n\r" );
+      strncat( buf1, "'.\n\r", MSL );
    }
 
    for( paf = obj->first_apply; paf != NULL; paf = paf->next )
    {
       snprintf( buf, MSL, "Affects %s by %d.\n\r", affect_loc_name( paf->location ), paf->modifier );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    send_to_char( buf1, ch );
@@ -878,20 +878,20 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    snprintf( buf, MSL, "Name: %s.  Race %i\n\r", victim->name, victim->race );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Vnum: %d.  Sex: %s.  Room: %d.\n\r",
             IS_NPC( victim ) ? victim->pIndexData->vnum : 0,
             victim->sex == SEX_MALE ? "male" :
             victim->sex == SEX_FEMALE ? "female" : "neutral", victim->in_room == NULL ? 0 : victim->in_room->vnum );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    if( IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "Str: %d.  Int: %d.  Wis: %d.  Dex: %d.  Con: %d.\n\r",
                get_curr_str( victim ),
                get_curr_int( victim ), get_curr_wis( victim ), get_curr_dex( victim ), get_curr_con( victim ) );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
    else
    {
@@ -900,7 +900,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
                get_curr_int( victim ), victim->pcdata->max_int,
                get_curr_wis( victim ), victim->pcdata->max_wis,
                get_curr_dex( victim ), victim->pcdata->max_dex, get_curr_con( victim ), victim->pcdata->max_con );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    if( !IS_NPC( victim ) )
@@ -908,32 +908,32 @@ void do_mstat( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL,
                "Mag: %d Cle: %d Thi:%d War:%d Psi:%d\n\r",
                victim->lvl[0], victim->lvl[1], victim->lvl[2], victim->lvl[3], victim->lvl[4] );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
 
       snprintf( buf, MSL, "Age: " );
       my_get_age( victim, buf );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
       snprintf( buf, MSL, "   (%d Hours RL play).\n\r", my_get_hours( victim ) );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
 
       snprintf( buf, MSL, "Class Order: %s %s %s %s %s\n\r",
                class_table[victim->pcdata->order[0]].who_name,
                class_table[victim->pcdata->order[1]].who_name,
                class_table[victim->pcdata->order[2]].who_name,
                class_table[victim->pcdata->order[3]].who_name, class_table[victim->pcdata->order[4]].who_name );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
 
 
    }
 
    snprintf( buf, MSL, "Hp: %d/%d.  Mana: %d/%d.  Move: %d/%d.  Practices: %d.\n\r",
             victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->practice );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL,
             "Lv: %d.  Class: %d.  Align: %d.  AC: %d.  Gold: %d.  Exp: %d.\n\r",
             victim->level, victim->p_class, victim->alignment, GET_AC( victim ), victim->gold, victim->exp );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    if( !IS_NPC( victim ) )
    {
@@ -942,78 +942,82 @@ void do_mstat( CHAR_DATA * ch, char *argument )
                race_table[victim->race].race_name,
                IS_VAMP( victim ) ? "[VAMPIRE]" : "",
                victim->pcdata->clan, clan_table[victim->pcdata->clan].clan_abbr, victim->balance );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
 
    snprintf( buf, MSL, "Hitroll: %d.  Damroll: %d.  Position: %d.  Wimpy: %d.\n\r",
             GET_HITROLL( victim ), GET_DAMROLL( victim ), victim->position, victim->wimpy );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    if( IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "MODIFIERS: AC: %d.  Hitroll: %d.  Damroll: %d.\n\r", victim->ac_mod, victim->hr_mod, victim->dr_mod );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
       snprintf( buf, MSL, "TARGET: %s\n\r", victim->target );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
       snprintf( buf, MSL, "TIMER: %d\n\r", victim->extract_timer );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    if( !IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "Page Lines: %d.\n\r", victim->pcdata->pagelen );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    snprintf( buf, MSL, "Fighting: %s.\n\r", victim->fighting ? victim->fighting->name : "(none)" );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf(buf,MSL,"Fight speed: LH: %4.2f (%4.2f) RH: %4.2f (%4.2f)\n\r", get_speed(victim,SPEED_LH), victim->speed[SPEED_LH], get_speed(victim,SPEED_RH), victim->speed[SPEED_RH]);
-   xcat(buf1,buf);
+   strncat(buf1,buf,MSL);
 
 
    if( !IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "@@RBLOODLUST@@g: %d\n\r", victim->pcdata->super->energy );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
 
       snprintf( buf, MSL,
                "Thirst: %d.  Full: %d.  Drunk: %d.  Saving throw: %d.\n\r",
                victim->pcdata->condition[COND_THIRST],
                victim->pcdata->condition[COND_FULL], victim->pcdata->condition[COND_DRUNK], victim->saving_throw );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    snprintf( buf, MSL, "Carry number: %d.  Carry weight: %4.2f.   @@aQuest Points@@W: @@y%3d@@N\n\r",
             victim->carry_number, victim->carry_weight, IS_NPC(victim) ? 0 : victim->pcdata->quest_points );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Age: %d.  Played: %d.  Timer: %d.\n\r",
             get_age( victim ), ( int )victim->played, victim->timer );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Act:\n\r%s\n\r", bs_show_values( IS_NPC(victim) ? tab_mob_act : tab_player_act, victim->act ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Master: %s.  Leader: %s.  Affected by: %s.\n\r",
             victim->master ? victim->master->name : "(none)",
             victim->leader ? victim->leader->name : "(none)", affect_bit_name( victim->affected_by ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Short description: %s.\n\rLong  description: %s\n\r",
             victim->short_descr, victim->long_descr[0] != '\0' ? victim->long_descr : "(none)." );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    if( IS_NPC( victim ) )
    {
     if( victim->spec_fun != 0 )
-      xcat( buf1, "Mobile has spec fun.\n\r" );
+      strncat( buf1, "Mobile has spec fun.\n\r", MSL );
     if( victim->pIndexData->progtypes != 0 )
     {
-     xcat( buf1, "MOB Progs:" );
+     strncat( buf1, "MOB Progs:", MSL );
      for( mprg = victim->pIndexData->first_mprog; mprg != NULL; mprg = mprg->next )
-      xcat( buf1, "\n\r    >%s [%s] [%s]\n\r", mprog_type_to_name( mprg->type ), mprg->arglist, mprg->comlist );
+     {
+      char tmp[MSL];
+      snprintf( tmp, MSL, "\n\r    >%s [%s] [%s]\n\r", mprog_type_to_name( mprg->type ), mprg->arglist, mprg->comlist );
+      strncat(buf1,tmp,MSL);
+     }
     }
    }
 
@@ -1023,7 +1027,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
     {
        snprintf( buf, MSL, "@@GMoving to room vnum: (%d) %s.@@g\n\r", victim->move_to,
        victim->movename );
-       xcat( buf1, buf );
+       strncat( buf1, buf, MSL );
     }*/
 
    strcpy( buf, "@@GMoving to room vnum: (%d) %s.@@g\n\r" );
@@ -1039,12 +1043,12 @@ void do_mstat( CHAR_DATA * ch, char *argument )
        {
         case -1:
          snprintf(buf, MSL, "Hunting victim: %s (waiting)\n\r",victim->huntname);
-         xcat(buf1,buf);
+         strncat(buf1,buf, MSL);
          break;
          
         case -2:
          snprintf(buf, MSL, "Returning home\n\r");
-         xcat(buf1,buf);
+         strncat(buf1,buf, MSL);
          break;
          
         default:
@@ -1052,12 +1056,12 @@ void do_mstat( CHAR_DATA * ch, char *argument )
                 IS_NPC(victim->hunting) ? victim->hunting->short_descr
                                         : victim->hunting->name,
                 IS_NPC(victim->hunting) ? "MOB" : "PLAYER" );
-         xcat(buf1, buf);
+         strncat(buf1, buf, MSL);
          if (victim->huntdirs != NULL)
          {
           snprintf(buf,MSL,"Steps to victim: %i\n\r",
                              strlen(victim->huntdirs)-victim->huntdirno);
-          xcat(buf1,buf);
+          strncat(buf1,buf,MSL);
          }
        }
     }*/
@@ -1071,20 +1075,20 @@ void do_mstat( CHAR_DATA * ch, char *argument )
       if( victim->hunt_obj )
       {
          if( victim->hunting && IS_SET( victim->hunt_flags, HUNT_CR ) && victim->hunt_obj->item_type == ITEM_CORPSE_PC )
-            xcat( buf, " to return a corpse" );
+            strncat( buf, " to return a corpse", MSL );
          else
             snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", victim->hunt_obj->short_descr );
       }
       if( IS_NPC( victim ) && IS_SET( victim->hunt_flags, HUNT_MERC | HUNT_CR ) && victim->hunt_for )
          snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( victim->hunt_for ) );
-      xcat( buf, ".\n\r" );
+      strncat( buf, ".\n\r", MSL );
       buf[1] = UPPER( buf[1] );
-      xcat( buf1, buf + 1 );
+      strncat( buf1, buf + 1, MSL );
    }
    else if( victim->searching )
    {
       snprintf( buf, MSL, "Searching for %s.\n\r", victim->searching );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    for( paf = victim->first_affect; paf != NULL; paf = paf->next )
@@ -1093,7 +1097,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
                "Spell: '%s' modifies %s by %d for %d hours with bits %s.\n\r",
                skill_table[( int )paf->type].name,
                affect_loc_name( paf->location ), paf->modifier, paf->duration, affect_bit_name( paf->bitvector ) );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    send_to_char( buf1, ch );
@@ -1181,18 +1185,18 @@ void do_ofindlev( CHAR_DATA * ch, char *argument )
             {
                snprintf( buf, MSL, "\n\r(@@mREMORT@@N) [%3d] [%5d] %s", pObjIndex->level,
                         pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             else
             {
                snprintf( buf, MSL, "\n\r(@@aMORTAL@@N) [%3d] [%5d] %s", pObjIndex->level,
                         pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
          }
       }
    }
-   xcat( buf1, "\n\r" );
+   strncat( buf1, "\n\r", MSL );
    if( !found )
    {
       send_to_char( "Nothing like that in hell, earth, or heaven.\n\r", ch );
@@ -1243,7 +1247,7 @@ void do_mfind( CHAR_DATA * ch, char *argument )
          {
             found = TRUE;
             snprintf( buf, MSL, "[%5d] [%3d] %s\n\r", pMobIndex->vnum, pMobIndex->level, capitalize( pMobIndex->short_descr ) );
-            xcat( buf1, buf );
+            strncat( buf1, buf, MSL );
          }
       }
    }
@@ -1320,7 +1324,7 @@ void do_mfindlev( CHAR_DATA * ch, char *argument )
 
             snprintf( buf, MSL, "(%3d) [%3d] [%5d] %s\n\r",
                      perkills, pMobIndex->level, pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
-            xcat( buf1, buf );
+            strncat( buf1, buf, MSL );
          }
       }
    }
@@ -1381,7 +1385,7 @@ void do_ofind( CHAR_DATA * ch, char *argument )
                      pObjIndex->vnum, pObjIndex->level,
                      ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), capitalize( pObjIndex->short_descr ) );
-            xcat( buf1, buf );
+            strncat( buf1, buf, MSL );
          }
       }
    }
@@ -1499,7 +1503,7 @@ void do_shutdown( CHAR_DATA * ch, char *argument )
 
    snprintf( buf, MSL, "Shutdown by %s.", ch->name );
    append_file( ch, SHUTDOWN_FILE, buf );
-   xcat( buf, "\n\r" );
+   strncat( buf, "\n\r", MSL );
    do_echo( ch, buf );
    merc_down = TRUE;
    return;
@@ -2282,12 +2286,12 @@ void do_ban( CHAR_DATA * ch, char *argument )
       strcpy( buf, "Banned sites:\n\r" );
       for( pban = first_ban; pban != NULL; pban = pban->next )
       {
-         xcat( buf, pban->name );
+         strncat( buf, pban->name, MSL );
          snprintf( buf2, MSL, ( pban->newbie ? " Newbies" : " All" ) );
-         xcat( buf, buf2 );
+         strncat( buf, buf2, MSL );
          snprintf( buf2, MSL, "  Banned by: %s", pban->banned_by );
-         xcat( buf, buf2 );
-         xcat( buf, "\n\r" );
+         strncat( buf, buf2, MSL );
+         strncat( buf, "\n\r", MSL );
       }
       send_to_char( buf, ch );
       return;
@@ -2441,7 +2445,7 @@ void do_slookup( CHAR_DATA * ch, char *argument )
          if( skill_table[sn].name == NULL )
             break;
          snprintf( buf, MSL, "Sn: %4d Slot: %4d Skill/spell: '%s'\n\r", sn, skill_table[sn].slot, skill_table[sn].name );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
       }
       send_to_char( buf1, ch );
    }
@@ -3632,7 +3636,7 @@ void do_users( CHAR_DATA * ch, char *argument )
    }
 
    snprintf( buf2, MSL, "%d user%s\n\r", count, count == 1 ? "" : "s" );
-   xcat( buf, buf2 );
+   strncat( buf, buf2, MSL );
    snprintf( buf2, MSL, "%s%s%s", color_string( ch, "stats" ), buf, color_string( ch, "normal" ) );
    send_to_char( buf2, ch );
    return;
@@ -3939,7 +3943,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
 
      obj_counter++;
      buf[0] = UPPER( buf[0] );
-     xcat( buf, catbuf );
+     strncat( buf, catbuf, MSL );
     }
    }
    else
@@ -3969,7 +3973,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
 
          obj_counter++;
          buf[0] = UPPER( buf[0] );
-         xcat( buf, catbuf );
+         strncat( buf, catbuf, MSL );
 
       }
    }
@@ -4176,16 +4180,16 @@ void do_iwhere( CHAR_DATA * ch, char *argument )
          count++;
          snprintf( buf, MSL, "%-12s [%5d] %-20s\n\r",
                   vch->name, vch->in_room == NULL ? 0 : vch->in_room->vnum, vch->in_room->area->name );
-         xcat( buf2, buf );
+         strncat( buf2, buf, MSL );
       }
    }
 
    if( count == 0 )
-      xcat( buf2, "No Players found!\n\r" );
+      strncat( buf2, "No Players found!\n\r", MSL );
    else
    {
       snprintf( buf, MSL, "%d Player%s found.\n\r", count, ( count > 1 ) ? "s" : "" );
-      xcat( buf2, buf );
+      strncat( buf2, buf, MSL );
    }
 
    send_to_char( buf2, ch );
@@ -4774,13 +4778,13 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
       if( lch->hunt_obj )
       {
          if( lch->hunting && IS_SET( lch->hunt_flags, HUNT_CR ) && lch->hunt_obj->item_type == ITEM_CORPSE_PC )
-            xcat( buf, " to return a corpse" );
+            strncat( buf, " to return a corpse", MSL );
          else
             snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", lch->hunt_obj->short_descr );
       }
       if( IS_NPC( lch ) && IS_SET( lch->hunt_flags, HUNT_MERC | HUNT_CR ) && lch->hunt_for )
          snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( lch->hunt_for ) );
-      xcat( buf, ".\n\r" );
+      strncat( buf, ".\n\r", MSL );
       send_to_char( buf, ch );
    }
    if( !found )
@@ -4801,7 +4805,7 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
           victim->short_descr,
           victim->move_to,
           victim->movename );
-       xcat( buf1, buf );
+       strncat( buf1, buf, MSL );
     }
     
     
@@ -4813,12 +4817,12 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
          snprintf(buf, "[%s] Hunting: %s (waiting)\n\r",
             victim->short_descr,
             victim->huntname);
-         xcat(buf1,buf);
+         strncat(buf1,buf,MSL);
          break;
          
         case -2:
          snprintf(buf, "[%s] Returning home\n\r", victim->short_descr);
-         xcat(buf1,buf);
+         strncat(buf1,buf,MSL);
          break;
          
         default:
@@ -4826,14 +4830,14 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
                 victim->short_descr,
                 IS_NPC(victim->hunting) ? victim->hunting->short_descr
                                         : victim->hunting->name );
-         xcat(buf1, buf);
+         strncat(buf1, buf, MSL);
          if (victim->huntdirs != NULL)
          {
           snprintf(buf," (%i steps)",
                              strlen(victim->huntdirs)-victim->huntdirno);
-          xcat(buf1,buf);
+          strncat(buf1,buf,MSL);
          }
-         xcat( buf1, "\n\r" );
+         strncat( buf1, "\n\r", MSL );
        }
     }
    } 
@@ -4900,13 +4904,13 @@ void do_sstat( CHAR_DATA * ch, char *argument )
          break;
 
       snprintf( buf, MSL, "%16s - %3d%%  ", skill_table[sn].name, victim->pcdata->learned[sn] );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
 
       if( ++col % 3 == 0 )
-         xcat( buf1, "\n\r" );
+         strncat( buf1, "\n\r", MSL );
    }
    if( col % 3 != 0 )
-      xcat( buf1, "\n\r" );
+      strncat( buf1, "\n\r", MSL );
 
    send_to_char( buf1, ch );
    return;
@@ -4918,8 +4922,8 @@ void do_test( CHAR_DATA * ch, char *argument )
    char catbuf[MSL];
    snprintf( testing, "%s", "Testing anti-color capitalize:" );
    snprintf( catbuf, argument );
-   xcat( testing, capitalize( catbuf ) );
-   xcat( testing, "\n\r" );
+   strncat( testing, capitalize( catbuf ) );
+   strncat( testing, "\n\r" );
    send_to_char( testing, ch );
    return;
 */
@@ -5043,9 +5047,9 @@ void do_monitor( CHAR_DATA * ch, char *argument )
             if( !IS_NPC( ch ) )
             {
                snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
-               xcat( buf, colbuf );
+               strncat( buf, colbuf, MSL );
             }
-            xcat( buf, monitor_table[a].on_name );
+            strncat( buf, monitor_table[a].on_name, MSL );
          }
 
          else
@@ -5053,9 +5057,9 @@ void do_monitor( CHAR_DATA * ch, char *argument )
             if( !IS_NPC( ch ) )
             {
                snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
-               xcat( buf, colbuf );
+               strncat( buf, colbuf, MSL );
             }
-            xcat( buf, monitor_table[a].off_name );
+            strncat( buf, monitor_table[a].off_name, MSL );
          }
 
       }
@@ -5668,7 +5672,7 @@ void do_otype( CHAR_DATA * ch, char *argument )
             snprintf( buf, MSL, "<%d> %s [%5d] %s\n\r", pObjIndex->level,
                      ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->vnum, pObjIndex->short_descr );
-            xcat( buf1, buf );
+            strncat( buf1, buf, MSL );
          }
       }
    }
@@ -5730,7 +5734,7 @@ void do_owear( CHAR_DATA * ch, char *argument )
                      pObjIndex->level,
                      ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->short_descr );
-            xcat( buf1, buf );
+            strncat( buf1, buf, MSL );
          }
       }
    }
@@ -5745,12 +5749,9 @@ void do_owear( CHAR_DATA * ch, char *argument )
    send_rep_out( ch, buf1, mailme, buf );
    return;
 }
+
 void do_areasave( CHAR_DATA * ch, char *argument )
 {
-   /*
-    * -S- : Show list of areas, vnum range and owners. 
-    */
-
    AREA_DATA *pArea;
 
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
@@ -5759,8 +5760,6 @@ void do_areasave( CHAR_DATA * ch, char *argument )
 
    return;
 }
-
-
 
 void do_findreset( CHAR_DATA * ch, char *argument )
 {
@@ -5791,7 +5790,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
       snprintf( outbuf, MSL, "%s", "Syntax for findreset:\n\r" );
       snprintf( catbuf, MSL, "%s",
                "findreset obj/mob <vnum> [+w]\n\r+w shows all resets in the world, default is current area only.\n\r" );
-      xcat( outbuf, catbuf );
+      strncat( outbuf, catbuf, MSL );
       send_to_char( outbuf, ch );
       return;
    }
@@ -5840,7 +5839,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
                      if( reset->arg1 != vnum )
                         continue;
                      snprintf( catbuf, MSL, "Room: %d, limit of: %d\n\r", reset->arg3, reset->arg2 );
-                     xcat( outbuf, catbuf );
+                     strncat( outbuf, catbuf, MSL );
                      /*
                       * scan for give and equip commands for this mob 
                       */
@@ -5857,16 +5856,16 @@ void do_findreset( CHAR_DATA * ch, char *argument )
                            if( pObj != NULL )
                            {
                               if( pMob->pShop != NULL )
-                                 xcat( outbuf, "  sells " );
+                                 strncat( outbuf, "  sells ", MSL );
                               else
-                                 xcat( outbuf, "  with " );
+                                 strncat( outbuf, "  with ", MSL );
                               snprintf( catbuf, MSL, "[%d] %s.\n\r", pObj->vnum, pObj->name );
-                              xcat( outbuf, catbuf );
+                              strncat( outbuf, catbuf, MSL );
                            }
                            else
                            {
                               snprintf( catbuf, MSL, "[%d] unknown object in give reset!\n\r", similar->arg1 );
-                              xcat( outbuf, catbuf );
+                              strncat( outbuf, catbuf, MSL );
                            }
                         }
                         else if( similar->command == 'E' )
@@ -5878,7 +5877,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
                            else
                               snprintf( catbuf, MSL, "[%d] unknown object equipped on %s.\n\r",
                                        similar->arg1, tab_wear_loc[similar->arg3].text );
-                           xcat( outbuf, catbuf );
+                           strncat( outbuf, catbuf, MSL );
                         }
                      }
                      break;
@@ -5972,8 +5971,11 @@ void do_census( CHAR_DATA *ch, char *argument )
   tf0 += ccnt[i];
  snprintf(buf,MSL,"[CLASS] ");
  for( i = 0; i < MAX_CLASS; i++ )
-  xcat(buf,"%9s: %4d (%05.2f%%) ",class_table[i].who_name,ccnt[i],((ccnt[i] / tf0) * 100));
- xcat(buf,"\n\r");
+ {
+  snprintf(argument,MSL,"%9s: %4d (%05.2f%%) ",class_table[i].who_name,ccnt[i],((ccnt[i] / tf0) * 100));
+  strncat(buf,argument,MSL);
+ }
+ strncat(buf,"\n\r",MSL);
  send_to_char(buf,ch);
 
  /* Tally the races! */
@@ -5984,12 +5986,14 @@ void do_census( CHAR_DATA *ch, char *argument )
  snprintf(buf,MSL,"[RACE ] ");
  for( i = 0; i < MAX_RACE; i++ )
  {
-  xcat(buf,"%9s: %4d (%05.2f%%) ",race_table[i].race_title,rcnt[i],((rcnt[i] / tf0) * 100));
+  snprintf(argument,MSL,"%9s: %4d (%05.2f%%) ",race_table[i].race_title,rcnt[i],((rcnt[i] / tf0) * 100));
+  strncat(buf,argument,MSL);
   if( ++ti1 % 5 == 0 && i < (MAX_RACE -1) )
-   xcat(buf,"\n\r[RACE ] ");
+   strncat(buf,"\n\r[RACE ] ",MSL);
  }
  
- xcat(buf,"\n\r\n\rFound %0.0f total mobs.\n\r",tf0);
+ snprintf(argument,MSL,"\n\r\n\rFound %0.0f total mobs.\n\r",tf0);
+ strncat(buf,argument,MSL);
  send_to_char(buf,ch);
 
  return;

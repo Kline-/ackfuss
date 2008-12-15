@@ -1855,7 +1855,7 @@ void do_wear( CHAR_DATA * ch, char *argument )
                snprintf( eqbuf, MSL, "%s", "@@dNothing@@N" );
             }
             snprintf( catbuf, MSL, "%s%25s@@N %-*s\n\r", colbuf, where_name[location], ccode_len( eqbuf, 40 ), eqbuf );
-            xcat( outbuf, catbuf );
+            strncat( outbuf, catbuf, MSL );
          }
       }
       send_to_char( outbuf, ch );
@@ -2954,8 +2954,8 @@ void do_list( CHAR_DATA * ch, char *argument )
             if( !found )
             {
                found = TRUE;
-               xcat( buf1,
-                            "\n\r@@g[@@yLevel@@g]       @@yPet@@g                           @@yPrice  ( Approximate )@@N \n\r" );
+               strncat( buf1,
+                            "\n\r@@g[@@yLevel@@g]       @@yPet@@g                           @@yPrice  ( Approximate )@@N \n\r", MSL );
             }
             stopcounter++;
             rounded_cost = round_money_off( 10 * pet->level * pet->level, 1 );
@@ -2963,7 +2963,7 @@ void do_list( CHAR_DATA * ch, char *argument )
             snprintf( buf, MSL, "[ @@W%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \n\r", pet->level, ccode_len( pet->short_descr, 30 ),
                      capitalize( pet->short_descr ), ccode_len( costbuf, 35 ), costbuf );
             PUT_FREE( rounded_cost, money_type_free );
-            xcat( buf1, buf );
+            strncat( buf1, buf, MSL );
             if( stopcounter > 45 )
             {
                send_to_char( buf1, ch );
@@ -2991,8 +2991,8 @@ void do_list( CHAR_DATA * ch, char *argument )
             if( !found )
             {
                found = TRUE;
-               xcat( buf1,
-                            "\n\r@@g[@@yLvl@@g]       @@yItem@@g                           @@yPrice  ( Approximate )@@N \n\r" );
+               strncat( buf1,
+                            "\n\r@@g[@@yLvl@@g]       @@yItem@@g                           @@yPrice  ( Approximate )@@N \n\r", MSL );
             }
             stopcounter++;
             rounded_cost = round_money_off( cost, 1 );
@@ -3001,7 +3001,7 @@ void do_list( CHAR_DATA * ch, char *argument )
                      obj->level, ccode_len( obj->short_descr, 30 ), capitalize( obj->short_descr ), ccode_len( costbuf, 30 ),
                      costbuf );
             PUT_FREE( rounded_cost, money_type_free );
-            xcat( buf1, buf );
+            strncat( buf1, buf, MSL );
             if( stopcounter > 45 )
             {
                send_to_char( buf1, ch );
@@ -3848,7 +3848,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
          {
             char buf2[MSL];
             snprintf( buf2, MSL, " The item has been taken by %s.\n\r", ch->name );
-            xcat( buf, buf2 );
+            strncat( buf, buf2, MSL );
          }
          do_echo( ch, buf );
          if( good_seller )

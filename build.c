@@ -361,11 +361,11 @@ void build_commands( CHAR_DATA * ch, char *argument )
       if( build_cmd_table[cmd].level > get_trust( ch ) )
          continue;
       snprintf( buf, MSL, "%-20s    ", build_cmd_table[cmd].name );
-      xcat( out, buf );
+      strncat( out, buf, MSL );
       if( ++col % 3 == 0 )
-         xcat( out, "\n\r" );
+         strncat( out, "\n\r", MSL );
    }
-   xcat( out, "\n\r" );
+   strncat( out, "\n\r", MSL );
    send_to_char( out, ch );
    return;
 }
@@ -412,78 +412,78 @@ void build_showmob( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    snprintf( buf, MSL, "@@WName: @@y%s.    @@WClass: @@y%s.\n\r", pMob->player_name, tab_mob_class[pMob->p_class].text );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WSex: @@y%s.  @@WRace:@@y %s ",
             pMob->vnum,
             pMob->sex == SEX_MALE ? "male" :
             pMob->sex == SEX_FEMALE ? "female" : "neutral",
             ( ( pMob->race > -1 ) && ( pMob->race < MAX_RACE ) ) ? race_table[pMob->race].race_title : "Illegal Race" );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, " @@WLv: @@y%d.    @@WAlign: @@y%d.\n\r", pMob->level, pMob->alignment );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WModifiers: AC: @@y%d.  @@WHitroll: @@y%d.  @@WDamroll: @@y%d.\n\r",
             pMob->ac_mod, pMob->hr_mod, pMob->dr_mod );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WMob Flags:@@y\n\r%s", bs_show_values( tab_mob_act, pMob->act ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WAffected by:@@y\n\r%s", show_values( tab_affected_by, pMob->affected_by, TRUE ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WSkill Flags:@@y %s\n\r", bit_table_lookup( tab_mob_skill, pMob->skills ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WPSkill Flags:@@y %s\n\r", bit_table_lookup( tab_mob_powerskill, pMob->power_skills ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WCast Flags:@@y %s\n\r", bit_table_lookup( tab_mob_cast, pMob->cast ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WPCast Flags:@@y %s\n\r", bit_table_lookup( tab_mob_powercast, pMob->power_cast ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WDef Flags:@@y %s\n\r", bit_table_lookup( tab_mob_def, pMob->def ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WStrong Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->strong_magic ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WWeak Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->weak_magic ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WResist Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->resist ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WSuscept Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->suscept ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
    snprintf( buf, MSL, "@@WRace Mods:@@y %s\n\r", bit_table_lookup( tab_mob_race_mods, pMob->race_mods ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WShort description: @@y%s.\n\r@@WLong description: @@y%s\n\r",
             pMob->short_descr, pMob->long_descr[0] != '\0' ? pMob->long_descr : "(none)." );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    if( pMob->spec_fun != 0 )
    {
       snprintf( buf, MSL, "@@WMobile has spec fun: @@y%s\n\r", rev_spec_lookup( pMob->spec_fun ) );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    if( ( pShop = pMob->pShop ) != 0 )
    {
       is_shopkeeper = 1;
-      xcat( buf1, "@@WMobile is a shopkeeper, will buy @@y" );
+      strncat( buf1, "@@WMobile is a shopkeeper, will buy @@y", MSL );
       for( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
       {
          if( pShop->buy_type[iTrade] > 0 )
          {
-            xcat( buf1, tab_item_types[pShop->buy_type[iTrade] - 1].text );
-            xcat( buf1, " " );
+            strncat( buf1, tab_item_types[pShop->buy_type[iTrade] - 1].text, MSL );
+            strncat( buf1, " ", MSL );
          }
       }
-      xcat( buf1, "\n\r" );
+      strncat( buf1, "\n\r", MSL );
       snprintf( buf, MSL, "@@WOpens at @@y%i @@Whrs, shuts at @@y%i @@Whours, profbuy:@@y%i, @@Wprofsell:@@y%i.\n\r",
                pShop->open_hour, pShop->close_hour, pShop->profit_buy, pShop->profit_sell );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
 
    }
-   xcat( buf1, "@@g" );
+   strncat( buf1, "@@g", MSL );
    send_to_char( buf1, ch );
    return;
 }
@@ -525,17 +525,17 @@ void build_showobj( CHAR_DATA * ch, char *argument )
       return;
 
    snprintf( buf, MSL, "@@WName: @@y%s  @@WLevel: @@y%d.\n\r", obj->name, obj->level );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WType: @@y%s.\n\r", obj->vnum, tab_item_types[( obj->item_type ) - 1].text );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WShort description: @@y%s.\n\r@@WLong description: @@y%s\n\r", obj->short_descr, obj->long_descr );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    /*
     * snprintf( buf, MSL, "@@WItem type: @@y%s.\n\r",rev_table_lookup(tab_item_types,obj->item_type));
-    * xcat( buf1, buf);
+    * strncat( buf1, buf, MSL);
     */
 
    snprintf( buf, MSL, "@@WWear bits:\n\r@@y%s\n\r@@WExtra bits: @@y%s\n\r",
@@ -545,27 +545,27 @@ void build_showobj( CHAR_DATA * ch, char *argument )
     * I think another bit_table_lookup is better!  Zen 
     */
 
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WItem_applies: @@y%s.\n\r", bit_table_lookup( tab_item_apply, obj->item_apply ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WWeight: @@y%d.\n\r", obj->weight );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WSpeed: @@y%4.2f\n\r", obj->speed );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WDurability: @@y%d.\n\r", obj->max_durability );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
-   xcat( buf1, "@@WObject Values:\n\r" );
+   strncat( buf1, "@@WObject Values:\n\r", MSL );
 
    for( cnt = 0; cnt < 10; cnt++ )
    {
       snprintf( buf, MSL, "@@W[Value%d : @@y%6d@@W] %s",
                cnt, obj->value[cnt], rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
       if( is_name( "Spell", rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) ) )
       {
          fubar = obj->value[cnt];
@@ -593,34 +593,34 @@ void build_showobj( CHAR_DATA * ch, char *argument )
       }
       else
          snprintf( buf, MSL, "@@g\n\r" );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
    if( obj->obj_fun != NULL )
    {
       snprintf( buf, MSL, "@@WObject has objfun: @@y%s.@@g\n\r", rev_obj_fun_lookup( obj->obj_fun ) );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    if( obj->first_exdesc != NULL )
    {
       EXTRA_DESCR_DATA *ed;
 
-      xcat( buf1, "@@WExtra description keywords: '@@y" );
+      strncat( buf1, "@@WExtra description keywords: '@@y", MSL );
 
       for( ed = obj->first_exdesc; ed != NULL; ed = ed->next )
       {
-         xcat( buf1, ed->keyword );
+         strncat( buf1, ed->keyword, MSL );
          if( ed->next != NULL )
-            xcat( buf1, " " );
+            strncat( buf1, " ", MSL );
       }
 
-      xcat( buf1, "'@@g.\n\r" );
+      strncat( buf1, "'@@g.\n\r", MSL );
    }
 
    for( paf = obj->first_apply; paf != NULL; paf = paf->next )
    {
       snprintf( buf, MSL, "@@WAffects @@y%s @@Wby @@y%d@@g.\n\r", affect_loc_name( paf->location ), paf->modifier );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    send_to_char( buf1, ch );
@@ -653,7 +653,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
    if( arg1[0] == '\0' )
    {
       display = DISPLAY_BRIEFDOORS | DISPLAY_RESETS | DISPLAY_DESC;
-      xcat( buf1, "Can also use showroom brief/doors/resets/desc/all.\n\r" );
+      strncat( buf1, "Can also use showroom brief/doors/resets/desc/all.\n\r", MSL );
    }
    else if( !is_name( arg1, "brief doors resets desc all" ) )
    {
@@ -678,34 +678,34 @@ void build_showroom( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    snprintf( buf, MSL, "@@WName: @@y%s.\n\r@@WArea: @@y%s.\n\r", location->name, location->area->name );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL,
             "@@WVnum: @@y%d.  @@WSector:\n\r @@y%s",
             location->vnum, show_values( tab_sector_types, location->sector_type, FALSE ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WFlags:\n\r@@y%s", bs_show_values( tab_room_flags, location->room_flags ) );
-   xcat( buf1, buf );
+   strncat( buf1, buf, MSL );
 
    if( ( display & DISPLAY_DESC ) )
    {
       snprintf( buf, MSL, "\n\r@@WDescr: @@y%s@@N\n\r", location->description[0] != '\0' ? location->description : "(none)." );
-      xcat( buf1, buf );
+      strncat( buf1, buf, MSL );
    }
 
    if( location->first_exdesc != NULL )
    {
       EXTRA_DESCR_DATA *ed;
 
-      xcat( buf1, "@@WExtra description keywords:@@y '" );
+      strncat( buf1, "@@WExtra description keywords:@@y '", MSL );
       for( ed = location->first_exdesc; ed; ed = ed->next )
       {
-         xcat( buf1, ed->keyword );
+         strncat( buf1, ed->keyword, MSL );
          if( ed->next != NULL )
-            xcat( buf1, " " );
+            strncat( buf1, " ", MSL );
       }
-      xcat( buf1, "'.\n\r" );
+      strncat( buf1, "'.\n\r", MSL );
    }
 
    /*
@@ -728,23 +728,23 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                snprintf( buf, MSL, "@@WExit: @@y%7s @@W: To @@y%5i %s@@N\n\r", sDirs[door],
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "" );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
                snprintf( buf, MSL, "             @@WKey: @@y%5i %s@@N\n\r@@WExit Type:@@y %s@@N\n\r",
                         pKeyObj != NULL ? pKeyObj->vnum : 0,
                         pKeyObj != NULL ? pKeyObj->name : "None", bs_show_values( tab_door_types, pexit->exit_info ) );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
                if( pexit->keyword != NULL && pexit->keyword[0] != '\0' )
                {
                   snprintf( buf, MSL, "@@WKeyword(s): @@y%s.  ", pexit->keyword );
-                  xcat( buf1, buf );
+                  strncat( buf1, buf, MSL );
                }
                snprintf( buf, MSL, "@@WDesc: @@y%s", pexit->description[0] != '\0' ? pexit->description : "(none).\n\r" );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
             else
             {
                if( pexit->key > 0 )
-                  xcat( buf1, "@@yK" );
+                  strncat( buf1, "@@yK", MSL );
                /*
                 * New way of showing doors... move to relevant place if it works 
                 */
@@ -754,7 +754,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "Unknown",
                         bs_show_values( tab_door_types, pexit->exit_info ) );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
          }
       }
@@ -765,11 +765,11 @@ void build_showroom( CHAR_DATA * ch, char *argument )
     */
    if( ( display & DISPLAY_RESETS ) && location->first_room_reset != NULL )
    {
-      xcat( buf1, "@@WResets:\n\r" );
+      strncat( buf1, "@@WResets:\n\r", MSL );
       for( Pointer = location->first_room_reset; Pointer; )
-         xcat( buf1, reset_to_text( &Pointer, NULL ) );
+         strncat( buf1, reset_to_text( &Pointer, NULL ), MSL );
    }
-   xcat( buf1, "@@g" );
+   strncat( buf1, "@@g", MSL );
    send_to_char( buf1, ch );
    return;
 }
@@ -788,9 +788,9 @@ void build_showresets( CHAR_DATA * ch, char *argument )
    if( !build_canread( location->area, ch, 1 ) )
       return;
 
-   xcat( buf1, "Room Resets:\n\r" );
+   strncat( buf1, "Room Resets:\n\r", MSL );
    for( Pointer = location->first_room_reset; Pointer != NULL; )
-      xcat( buf1, reset_to_text( &Pointer, &count ) );
+      strncat( buf1, reset_to_text( &Pointer, &count ), MSL );
 
    send_to_char( buf1, ch );
 }
@@ -809,11 +809,11 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
    buf1[0] = '\0';
    pReset = (RESET_DATA *)( *pList )->data;
 
-   xcat( buf1, build_docount( pcount ) );
+   strncat( buf1, build_docount( pcount ), MSL );
    if( ( *pList )->is_free )  /* sanity check */
-      xcat( buf1, " **LIST IS FREE** " );  /* Bad Thing! */
+      strncat( buf1, " **LIST IS FREE** ", MSL );  /* Bad Thing! */
    if( pReset->is_free )
-      xcat( buf1, " **RESET IS FREE** " );
+      strncat( buf1, " **RESET IS FREE** ", MSL );
 
    ( *pList ) = ( *pList )->next;
 
@@ -821,7 +821,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
    {
       default:
          snprintf( buf, MSL, "  stray '%c' reset: %d %d %d.\n\r", pReset->command, pReset->arg1, pReset->arg2, pReset->arg3 );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
          break;
       case 'G':
          pObj = get_obj_index( pReset->arg1 );
@@ -829,7 +829,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             snprintf( buf, MSL, "  stray 'give' reset: object [%d] %s.\n\r", pReset->arg1, pObj->name );
          else
             snprintf( buf, MSL, "  stray 'give' reset: object %d (unknown).\n\r", pReset->arg1 );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
          break;
       case 'E':
          pObj = get_obj_index( pReset->arg1 );
@@ -839,11 +839,11 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
          else
             snprintf( buf, MSL, "  stray 'equip' reset: object [%d] (unknown), on %s.\n\r",
                      pReset->arg1, tab_wear_loc[( pReset->arg3 )].text );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
          break;
       case 'A':  /* AutoMessage for room */
          snprintf( buf1, MSL, "Message: (%d-%d) %s\n\r", pReset->arg2, pReset->arg3, pReset->notes );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
          break;
       case 'M':  /* Load mob */
          pMob = get_mob_index( pReset->arg1 );
@@ -851,7 +851,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             snprintf( buf, MSL, " [%d] %s (limit of %d).\n\r", pMob->vnum, pMob->player_name, pReset->arg2 );
          else
             snprintf( buf, MSL, " [%d] (unknown) (limit of %d).\n\r", pReset->arg1, pReset->arg2 );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
 
          /*
           * scan for give and equip commands for this mob 
@@ -865,7 +865,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                break;
 
             ( *pList ) = ( *pList )->next;
-            xcat( buf1, build_docount( pcount ) );
+            strncat( buf1, build_docount( pcount ), MSL );
 
             if( pReset->command == 'G' )
             {
@@ -873,16 +873,16 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                if( pObj != NULL )
                {
                   if( pMob->pShop != NULL )
-                     xcat( buf1, "  sells " );
+                     strncat( buf1, "  sells ", MSL );
                   else
-                     xcat( buf1, "  with " );
+                     strncat( buf1, "  with ", MSL );
                   snprintf( buf, MSL, "[%d] %s.\n\r", pObj->vnum, pObj->name );
-                  xcat( buf1, buf );
+                  strncat( buf1, buf, MSL );
                }
                else
                {
                   snprintf( buf, MSL, "[%d] unknown object in give reset!\n\r", pReset->arg1 );
-                  xcat( buf1, buf );
+                  strncat( buf1, buf, MSL );
                }
             }
             else if( pReset->command == 'E' )
@@ -893,7 +893,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                            pObj->name, tab_wear_loc[( pReset->arg3 )].text );
                else
                   snprintf( buf, MSL, "[%d] unknown object equipped on %s.\n\r", pReset->arg1, tab_wear_loc[pReset->arg3].text );
-               xcat( buf1, buf );
+               strncat( buf1, buf, MSL );
             }
          }
          break;
@@ -903,7 +903,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             snprintf( buf, MSL, " [%d] %s no more than %d in room.\n\r", pObj->vnum, pObj->name, pReset->arg2 );
          else
             snprintf( buf, MSL, " [%d] unknown object reset!\n\r", pReset->arg1 );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
          break;
       case 'D':  /* close/lock doors */
          buf[0] = '\0';
@@ -921,11 +921,11 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                snprintf( buf, MSL, " Close and lock door %s.\n\r", sDirs[pReset->arg2] );
                break;
          }
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
          break;
       case 'R':  /* randomise exits */
          snprintf( buf, MSL, " Randomize doors up to number %d.\n\r", pReset->arg2 );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
          break;
    }
 
@@ -992,7 +992,7 @@ void build_findmob( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %s\n\r", pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
       }
    }
 
@@ -1052,7 +1052,7 @@ void build_findmobroom( CHAR_DATA * ch, char *argument )
             snprintf( buf, MSL, "[%5d] %s\n\r", pRoom->vnum, capitalize( pRoom->name ) );
          else
             snprintf( buf, MSL, "[%5d] Unknown\n\r", pReset->arg3 );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
       }
    }
 
@@ -1115,7 +1115,7 @@ void build_findobject( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %s\n\r", pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
       }
    }
 
@@ -1178,7 +1178,7 @@ void build_findroom( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %s\n\r", pRoomIndex->vnum, capitalize( pRoomIndex->name ) );
-         xcat( buf1, buf );
+         strncat( buf1, buf, MSL );
       }
    }
 
@@ -1559,9 +1559,9 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          for( looper = 0; looper < MAX_RACE; looper++ )
          {
             snprintf( catbuf, MSL, "[%i]:%s ", looper, race_table[looper].race_title );
-            xcat( buf, catbuf );
+            strncat( buf, catbuf, MSL );
          }
-         xcat( buf, "\n\r" );
+         strncat( buf, "\n\r", MSL );
          send_to_char( buf, ch );
          return;
       }
@@ -2505,8 +2505,12 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       {
        snprintf(buf,MSL,"Valid object types:");
        for( i = 0; tab_auto_obj[i].name != NULL; i++ )
-        xcat(buf," %s",tab_auto_obj[i].name);
-       xcat(buf,".\n\r");
+       {
+        char tmp[MSL];
+        snprintf(tmp,MSL," %s",tab_auto_obj[i].name);
+        strncat(buf,tmp,MSL);
+       }
+       strncat(buf,".\n\r",MSL);
        send_to_char(buf,ch);
        return;
       }
@@ -2532,8 +2536,12 @@ void build_setobject( CHAR_DATA * ch, char *argument )
      {
       snprintf(buf,MSL,"Invalid object type. Valid object types:");
       for( i = 0; tab_auto_obj[i].name != NULL; i++ )
-       xcat(buf," %s",tab_auto_obj[i].name);
-      xcat(buf,".\n\r");
+      {
+       char tmp[MSL];
+       snprintf(tmp,MSL," %s",tab_auto_obj[i].name);
+       strncat(buf,tmp,MSL);
+      }
+      strncat(buf,".\n\r",MSL);
       send_to_char(buf,ch);
      }
     }
@@ -3847,7 +3855,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       old_vnum = vnum;
 
       snprintf( buf, MSL, "Are you sure you want to delete room [%d] %s?\n\r", vnum, pRoomIndex->name );
-      xcat( buf, "Type delroom ok if you are sure.\n\r" );
+      strncat( buf, "Type delroom ok if you are sure.\n\r", MSL );
       send_to_char( buf, ch );
       return;
    }
@@ -4109,7 +4117,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
       old_ovnum = vnum;
 
       snprintf( buf, MSL, "Are you sure you want to delete object: [%d] %s?\n\r", vnum, pObjIndex->name );
-      xcat( buf, "Type delobject ok if you are sure.\n\r" );
+      strncat( buf, "Type delobject ok if you are sure.\n\r", MSL );
       send_to_char( buf, ch );
       return;
    }
@@ -4293,7 +4301,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
       old_mob_vnum = vnum;
 
       snprintf( buf, MSL, "Are you sure you want to delete mobile: [%d] %s?\n\r", vnum, pMobIndex->player_name );
-      xcat( buf, "Type delmobile ok if you are sure.\n\r" );
+      strncat( buf, "Type delmobile ok if you are sure.\n\r", MSL );
       send_to_char( buf, ch );
       return;
    }
@@ -4569,8 +4577,8 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
           * Read in a file 
           */
          filename[0] = '\0';
-         xcat( filename, STRING_FILE_DIR );
-         xcat( filename, src );
+         strncat( filename, STRING_FILE_DIR, 255 );
+         strncat( filename, src, 255 );
          infile = file_open( filename, "r" );
          if( !infile )
             filechar = str_dup( "Could not open file.\n\r" );
@@ -4679,7 +4687,7 @@ void build_editstr( char **dest, char *src, CHAR_DATA * ch )
    if( *dest != &str_empty[0] )
    {
       send_to_char( src, ch );
-      xcat_2( *dest, src );   /* Add src string into the buffer */
+      strncat( *dest, src, MSL );   /* Add src string into the buffer */
    }
    else
    {
@@ -5223,7 +5231,7 @@ void build_listspells( CHAR_DATA * ch, char *argument )
       if( skill_table[sn].target == type || fall )
       {
          snprintf( buf, MSL, "@@W[Spell No: %4d] @@y%s@@g\n\r", sn, skill_table[sn].name );
-         xcat( buf2, buf );
+         strncat( buf2, buf, MSL );
       }
    }
    send_to_char( buf2, ch );
@@ -5266,7 +5274,7 @@ void build_urooms( CHAR_DATA * ch, char *argument )
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
                foo = curvnum;
                last = 1;
                break;
@@ -5276,10 +5284,10 @@ void build_urooms( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  xcat( free, buf );
+                  strncat( free, buf, MSL );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
                foo = curvnum;
                last = 1;
          }
@@ -5290,7 +5298,7 @@ void build_urooms( CHAR_DATA * ch, char *argument )
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               xcat( free, buf );
+               strncat( free, buf, MSL );
                foo = curvnum;
                last = 2;
                break;
@@ -5298,10 +5306,10 @@ void build_urooms( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  xcat( used, buf );
+                  strncat( used, buf, MSL );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               xcat( free, buf );
+               strncat( free, buf, MSL );
                last = 2;
                foo = curvnum;
                break;
@@ -5321,16 +5329,16 @@ void build_urooms( CHAR_DATA * ch, char *argument )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            xcat( used, buf );
+            strncat( used, buf, MSL );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
       }
    }
@@ -5342,17 +5350,17 @@ void build_urooms( CHAR_DATA * ch, char *argument )
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
          case 2:
             if( foo != curvnum - 1 )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
       }
    }
@@ -5391,7 +5399,7 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
                foo = curvnum;
                last = 1;
                break;
@@ -5401,10 +5409,10 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  xcat( free, buf );
+                  strncat( free, buf, MSL );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
                foo = curvnum;
                last = 1;
          }
@@ -5415,7 +5423,7 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               xcat( free, buf );
+               strncat( free, buf, MSL );
                foo = curvnum;
                last = 2;
                break;
@@ -5423,10 +5431,10 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  xcat( used, buf );
+                  strncat( used, buf, MSL );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               xcat( free, buf );
+               strncat( free, buf, MSL );
                last = 2;
                foo = curvnum;
                break;
@@ -5446,16 +5454,16 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            xcat( used, buf );
+            strncat( used, buf, MSL );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
       }
    }
@@ -5467,17 +5475,17 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
          case 2:
             if( foo != curvnum - 1 )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
       }
    }
@@ -5512,7 +5520,7 @@ void build_umobs( CHAR_DATA * ch, char *argument )
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
                foo = curvnum;
                last = 1;
                break;
@@ -5522,10 +5530,10 @@ void build_umobs( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  xcat( free, buf );
+                  strncat( free, buf, MSL );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
                foo = curvnum;
                last = 1;
          }
@@ -5536,7 +5544,7 @@ void build_umobs( CHAR_DATA * ch, char *argument )
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               xcat( free, buf );
+               strncat( free, buf, MSL );
                foo = curvnum;
                last = 2;
                break;
@@ -5544,10 +5552,10 @@ void build_umobs( CHAR_DATA * ch, char *argument )
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  xcat( used, buf );
+                  strncat( used, buf, MSL );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               xcat( free, buf );
+               strncat( free, buf, MSL );
                last = 2;
                foo = curvnum;
                break;
@@ -5567,16 +5575,16 @@ void build_umobs( CHAR_DATA * ch, char *argument )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            xcat( used, buf );
+            strncat( used, buf, MSL );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
       }
    }
@@ -5588,17 +5596,17 @@ void build_umobs( CHAR_DATA * ch, char *argument )
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               xcat( used, buf );
+               strncat( used, buf, MSL );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
          case 2:
             if( foo != curvnum - 1 )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            xcat( free, buf );
+            strncat( free, buf, MSL );
             break;
       }
    }
@@ -5681,7 +5689,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
    if( buf2[0] == '\0' )
     snprintf(buf2,MSL,buf1);
    else
-    xcat(buf2,buf1);
+    strncat(buf2,buf1,MSL);
   }
   ch->pcdata->message = str_dup(buf2);
 
@@ -6059,27 +6067,27 @@ void build_sysdata( CHAR_DATA *ch, char *argument )
  {
   snprintf(outbuf,MSL,"%s","  Builder system data for " mudnamecolor ":\n\r");
   snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Option         ]       [Value          ]\n\r");
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Obj AC         ]       [%15d]\n\r",sysdata.build_obj_ac);
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Obj DR         ]       [%15d]\n\r",sysdata.build_obj_dr);
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Obj HP         ]       [%15d]\n\r",sysdata.build_obj_hp);
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Obj HR         ]       [%15d]\n\r",sysdata.build_obj_hr);
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Obj MP         ]       [%15d]\n\r",sysdata.build_obj_mp);
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Obj MV         ]       [%15d]\n\r",sysdata.build_obj_mv);
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Obj SVS        ]       [%15d]\n\r",sysdata.build_obj_svs);
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
-  xcat(outbuf,catbuf);
+  strncat(outbuf,catbuf,MSL);
   send_to_char(outbuf,ch);
   return;
  }
