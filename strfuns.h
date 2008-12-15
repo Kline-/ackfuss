@@ -95,5 +95,4 @@ int nocol_strlen( const char *text );
 int ccode_len( const char *text, short desired );
 void pre_parse( char *list, char *victimname, char *containername, char *things );
 char *one_word( char *argument, char *arg_first );
-void safe_strcat(const char *file, const char *function, int line, int size, const char *prev, const char *next, ... );
 char *strlower( char *ip );
