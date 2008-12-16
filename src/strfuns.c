@@ -1391,11 +1391,11 @@ const char *affect_bit_name( int vector )
 }
 
 /*
- * Return ascii name of extra flags vector.
+ * Return ascii name of extra flags bitset.
  */
 const char *extra_bit_name( std::bitset<MAX_BITSET> &extra_flags )
 {
-   static char buf[512];
+   static char buf[MSL];
 
    buf[0] = '\0';
    if( extra_flags.test(ITEM_EXTRA_GLOW) )
@@ -1453,6 +1453,65 @@ const char *extra_bit_name( std::bitset<MAX_BITSET> &extra_flags )
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }
+
+/*
+ * Return ascii name of wear flags bitset.
+ */
+const char *wear_bit_name( std::bitset<MAX_BITSET> &wear_flags )
+{
+   static char buf[MSL];
+
+   buf[0] = '\0';
+   if( wear_flags.test(ITEM_WEAR_HALO) )
+      strncat( buf, " halo", MSL );
+   if( wear_flags.test(ITEM_WEAR_AURA) )
+      strncat( buf, " aura", MSL );
+   if( wear_flags.test(ITEM_WEAR_HORNS) )
+      strncat( buf, " horns", MSL );
+   if( wear_flags.test(ITEM_WEAR_HEAD) )
+      strncat( buf, " head", MSL );
+   if( wear_flags.test(ITEM_WEAR_FACE) )
+      strncat( buf, " face", MSL );
+   if( wear_flags.test(ITEM_WEAR_BEAK) )
+      strncat( buf, " beak", MSL );
+   if( wear_flags.test(ITEM_WEAR_EAR) )
+      strncat( buf, " ear", MSL );
+   if( wear_flags.test(ITEM_WEAR_NECK) )
+      strncat( buf, " neck", MSL );
+   if( wear_flags.test(ITEM_WEAR_WINGS) )
+      strncat( buf, " wings", MSL );
+   if( wear_flags.test(ITEM_WEAR_SHOULDERS) )
+      strncat( buf, " shoulders", MSL );
+   if( wear_flags.test(ITEM_WEAR_ARMS) )
+      strncat( buf, " arms", MSL );
+   if( wear_flags.test(ITEM_WEAR_WRIST) )
+      strncat( buf, " wrist", MSL );
+   if( wear_flags.test(ITEM_WEAR_HANDS) )
+      strncat( buf, " hands", MSL );
+   if( wear_flags.test(ITEM_WEAR_FINGER) )
+      strncat( buf, " finger", MSL );
+   if( wear_flags.test(ITEM_WEAR_CLAWS) )
+      strncat( buf, " claws", MSL );
+   if( wear_flags.test(ITEM_WEAR_HOLD_HAND) )
+      strncat( buf, " hold", MSL );
+   if( wear_flags.test(ITEM_WEAR_ABOUT) )
+      strncat( buf, " about", MSL );
+   if( wear_flags.test(ITEM_WEAR_WAIST) )
+      strncat( buf, " waist", MSL );
+   if( wear_flags.test(ITEM_WEAR_BODY) )
+      strncat( buf, " body", MSL );
+   if( wear_flags.test(ITEM_WEAR_TAIL) )
+      strncat( buf, " tail", MSL );
+   if( wear_flags.test(ITEM_WEAR_LEGS) )
+      strncat( buf, " legs", MSL );
+   if( wear_flags.test(ITEM_WEAR_FEET) )
+      strncat( buf, " feet", MSL );
+   if( wear_flags.test(ITEM_WEAR_HOOVES) )
+      strncat( buf, " hooves", MSL );
+
+   return ( buf[0] != '\0' ) ? buf + 1 : "none";
+}
+
 
 /* Return the ASCII name of a character's race
  * -- Stephen
