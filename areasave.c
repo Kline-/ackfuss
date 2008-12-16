@@ -276,12 +276,12 @@ void build_save_mobs(  )
          return;
       }
       send_to_char( "Saving mobs.\n", CurSaveChar );
-      fprintf( SaveFile, "\n#MOBILE\n" );
       Pointer = CurSaveArea->first_area_mobile;
    }
 
    pMobIndex = (MOB_INDEX_DATA *)Pointer->data;
 
+   fprintf( SaveFile, "\n#MOBILE\n" );
    fprintf( SaveFile, "Vnum      %d\n", pMobIndex->vnum );  /* Must be first for sanity checks --Kline */
    fprintf( SaveFile, "AcMod     %d\n", pMobIndex->ac_mod );
 
@@ -382,12 +382,12 @@ void build_save_objects(  )
          return;
       }
       send_to_char( "Saving objects.\n", CurSaveChar );
-      fprintf( SaveFile, "\n#OBJECT\n" );
       Pointer = CurSaveArea->first_area_object;
    }
 
    pObjIndex = (OBJ_INDEX_DATA *)Pointer->data;
 
+   fprintf( SaveFile, "\n#OBJECT\n" );
    fprintf( SaveFile, "Vnum       %d\n", pObjIndex->vnum );  /* Must be first for sanity checks --Kline */
    fprintf( SaveFile, "Durability %d\n", pObjIndex->max_durability );
 

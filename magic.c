@@ -2494,7 +2494,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
             ob->short_descr,
             item_type_name( ob ),
             extra_bit_name( ob->extra_flags ),
-            bs_show_values( tab_wear_flags, ob->wear_flags ),
+            wear_bit_name( ob->wear_flags ),
             ob->weight,
             ob->durability == 1 ? 0 : ob->durability, ob->max_durability,
             ob->durability == 1 ? 0 : (float)(((float)ob->durability / (float)ob->max_durability) * 100), cost_to_money( ob->cost ), ob->level );
@@ -4241,8 +4241,8 @@ bool spell_fire_blade( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       obj_to_char( blade, ch );
       equip_char( ch, blade, WEAR_HOLD_HAND_L );
       blade->timer = 2 + ( level / 20 );
-      act( "A blazing FireBlade appears in $n's hand!", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "A blazing FireBlade appears in your hand!", ch );
+      act( "A blazing Fire Blade appears in $n's hand!", ch, NULL, NULL, TO_ROOM );
+      send_to_char( "A blazing Fire Blade appears in your hand!\n\r", ch );
    }
    return TRUE;
 }

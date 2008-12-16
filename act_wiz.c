@@ -750,8 +750,8 @@ void do_ostat( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "Short description: %s.\n\rLong description: %s\n\r", obj->short_descr, obj->long_descr );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "Wear bits: \n\r%s.\n\rExtra bits: %s\n\r",
-            bs_show_values( tab_wear_flags, obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
+   snprintf( buf, MSL, "Wear bits: %s.\n\rExtra bits: %s\n\r",
+            wear_bit_name( obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
    strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "ITEM_APPLY: %d.\n\r", obj->item_apply );
