@@ -961,7 +961,6 @@ struct reset_data
    RESET_DATA *next;
    RESET_DATA *prev;
    char command;
-   short ifflag;
    short arg1;
    short arg2;
    short arg3;

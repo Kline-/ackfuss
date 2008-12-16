@@ -581,7 +581,7 @@ void build_save_resets(  )
       ResetPointer = CurSaveArea->first_reset;
    }
 
-   fprintf( SaveFile, "%c %i %i %i ", ResetPointer->command, ResetPointer->ifflag, ResetPointer->arg1, ResetPointer->arg2 );
+   fprintf( SaveFile, "%c %i %i ", ResetPointer->command, ResetPointer->arg1, ResetPointer->arg2 );
    if( ResetPointer->command == 'G' || ResetPointer->command == 'R' )
       fprintf( SaveFile, "%s\n", ResetPointer->notes );
    else
