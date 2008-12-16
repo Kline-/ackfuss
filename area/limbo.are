@@ -38,7 +38,7 @@ End
 Vnum      1
 AcMod     0
 Act       17 19 29 30 EOL
-Affected  0
+Affected  524288
 Alignment 0
 Cast      0
 Clan      0
@@ -69,8 +69,8 @@ End
 Vnum      2
 AcMod     0
 Act       17 18 19 21 29 30 EOL
-Affected  0
-Alignment 0
+Affected  1680062
+Alignment -1000
 Cast      1024
 Clan      0
 Class     0
