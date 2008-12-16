@@ -172,36 +172,6 @@
 #define C_SHOW_ALWAYS     0
 #define C_SHOW_SKILL      1
 
-
-
-
-/*
- * Well known mob virtual numbers.
- * Defined in #MOBILES.
- */
-#define MOB_VNUM_CITYGUARD         3060
-#define MOB_VNUM_VAMPIRE           3404
-#define MOB_VNUM_DOGGY             99
-#define MOB_VNUM_ZOMBIE 	  11004
-#define MOB_VNUM_STALKER	   32
-#define MOB_VNUM_WATERELEM        1028
-#define MOB_VNUM_SKELETON         1028
-#define MOB_VNUM_FIREELEM         1028
-#define MOB_VNUM_TRAINER		1042
-#define MOB_VNUM_EARTHELEM		1028
-#define MOB_VNUM_IRON_GOLEM		1029
-#define MOB_VNUM_SOUL_THIEF		1030
-#define MOB_VNUM_HOLY_AVENGER		1031
-#define MOB_VNUM_PEGASUS		1037
-#define MOB_VNUM_NIGHTMARE		1038
-#define MOB_VNUM_ELEM_BEAST		1039
-#define MOB_VNUM_INT_DEVOURER		1040
-#define MOB_VNUM_SHADOW_HOUND		1041
-
-
-#define MOB_VNUM_DIAMOND_GOLEM	1032
-#define MOB_VNUM_COMBAT_ELEMENTAL 1036 /* this needs to be a new mob ZENFIX */
-
 /*
  * vnums for quest items.
  * One of these will be picked at random and placed onto a random mob
@@ -244,29 +214,23 @@
  * Well known object virtual numbers.
  * Defined in #OBJECTS.
  */
-#define OBJ_VNUM_MONEY_ONE            2
-#define OBJ_VNUM_MONEY_SOME           3
-
-#define OBJ_VNUM_CORPSE_NPC          10
-#define OBJ_VNUM_CORPSE_PC           11
-#define OBJ_VNUM_SEVERED_HEAD        12
-#define OBJ_VNUM_TORN_HEART          13
-#define OBJ_VNUM_SLICED_ARM          14
-#define OBJ_VNUM_SLICED_LEG          15
-#define OBJ_VNUM_FINAL_TURD          16
-
-#define OBJ_VNUM_MUSHROOM            20
-#define OBJ_VNUM_LIGHT_BALL          21
-#define OBJ_VNUM_SPRING              19
-
-#define OBJ_VNUM_BOARD               23
+#define OBJ_VNUM_MONEY_ONE            1
+#define OBJ_VNUM_MONEY_SOME           2
+#define OBJ_VNUM_CORPSE_NPC           3
+#define OBJ_VNUM_CORPSE_PC            4
+#define OBJ_VNUM_SEVERED_HEAD         5
+#define OBJ_VNUM_TORN_HEART           6
+#define OBJ_VNUM_SLICED_ARM           7
+#define OBJ_VNUM_SLICED_LEG           8
+#define OBJ_VNUM_BRAIN                9
+#define OBJ_VNUM_MUSHROOM            10
+#define OBJ_VNUM_LIGHT_BALL          11
+#define OBJ_VNUM_SPRING              12
+#define OBJ_VNUM_WINDOW              13
+#define OBJ_VNUM_FIREBLADE           14
 #define OBJ_VNUM_FOOD		     30
-#define OBJ_VNUM_FIREBLADE	     31
-#define OBJ_VNUM_TOKEN		     32  /* For old chars */
-#define OBJ_VNUM_WINDOW		     33
 #define OBJ_VNUM_PORTAL		     34
 #define OBJ_VNUM_BEACON		     35
-
 #define OBJ_VNUM_SCHOOL_MACE       3700
 #define OBJ_VNUM_SCHOOL_DAGGER     3701
 #define OBJ_VNUM_SCHOOL_SWORD      3702
@@ -277,6 +241,7 @@
 #define OBJ_VNUM_CAPTURED_SOUL     38
 #define OBJ_VNUM_CONFLAGRATION	   1036  /* need a staff here  ZENFIX */
 #define OBJ_VNUM_MINO_PASS         10021
+
 /*
  * Well known room virtual numbers.
  * Defined in #ROOMS.
@@ -302,7 +267,30 @@
 #define ROOM_VNUM_WEAPON_DONATE    3019
 #define ROOM_VNUM_MISC_DONATE      3017
 
-
+/*
+ * Well known mob virtual numbers.
+ * Defined in #MOBILES.
+ */
+#define MOB_VNUM_CITYGUARD         3060
+#define MOB_VNUM_VAMPIRE           3404
+#define MOB_VNUM_DOGGY             99
+#define MOB_VNUM_ZOMBIE           11004
+#define MOB_VNUM_STALKER           2
+#define MOB_VNUM_WATERELEM        1028
+#define MOB_VNUM_SKELETON         1028
+#define MOB_VNUM_FIREELEM         1028
+#define MOB_VNUM_TRAINER                1042
+#define MOB_VNUM_EARTHELEM              1028
+#define MOB_VNUM_IRON_GOLEM             1029
+#define MOB_VNUM_SOUL_THIEF             1030
+#define MOB_VNUM_HOLY_AVENGER           1031
+#define MOB_VNUM_PEGASUS                1037
+#define MOB_VNUM_NIGHTMARE              1038
+#define MOB_VNUM_ELEM_BEAST             1039
+#define MOB_VNUM_INT_DEVOURER           1040
+#define MOB_VNUM_SHADOW_HOUND           1041
+#define MOB_VNUM_DIAMOND_GOLEM  1032
+#define MOB_VNUM_COMBAT_ELEMENTAL 1036 /* this needs to be a new mob ZENFIX */
 
 #define STANCE_WARRIOR		0
 #define STANCE_CASTER		1
@@ -317,7 +305,6 @@
 #define STANCE_SUPER_SPEED	10
 #define STANCE_WIZARD           11
 #define STANCE_MAGI             12
-
 
 #define SUPER_NONE   0
 #define SUPER_VAMP   1
