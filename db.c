@@ -1063,7 +1063,6 @@ void load_mobile( FILE * fp )
              fMatch = true;
              break;
             }
-            break;
             KEY("Affected",pMobIndex->affected_by,fread_number(fp));
             KEY("Alignment",pMobIndex->alignment,fread_number(fp));
             break;
