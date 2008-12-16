@@ -1494,7 +1494,6 @@ void load_resets( FILE * fp )
        * Temp values to hold reset, while we see if valid
        */
       char Tcommand;
-      int Tifflag;
       int Targ1;
       int Targ2;
       int Targ3;
@@ -1517,7 +1516,6 @@ void load_resets( FILE * fp )
        * MAG Mod 
        */
 
-      Tifflag = fread_number( fp ); /* Not used */
       Targ1 = fread_number( fp );
       Targ2 = fread_number( fp );
       Targ3 = ( letter == 'G' || letter == 'R' ) ? 0 : fread_number( fp );
@@ -2130,8 +2128,8 @@ void check_resets( void )
                   break;
             }
             SHOW_AREA;
-            snprintf( buf + strlen( buf ), MSL, "%c %d %d %d %d.", pReset->command,
-                     pReset->ifflag, pReset->arg1, pReset->arg2, pReset->arg3 );
+            snprintf( buf + strlen( buf ), MSL, "%c %d %d %d.", pReset->command,
+                     pReset->arg1, pReset->arg2, pReset->arg3 );
             bug( buf, 0 );
             {
                int room = 0;
