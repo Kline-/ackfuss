@@ -1,34 +1,24 @@
 #AREA
-The Topmost Area~
-Q 21
-K helps~
-L @@e[@@RSYSTEM@@e]@@N~
-N 0
-I 1 1
-V 16777216 16777216
-X 0
-F 15
-U You here the screams of the Dead within your head.~
-O Zenithar~
-R ~
-W ~
-S Title not shown on area list.
-#ROOMS
-#16777216
-New room~
-This is a desc\brthis is only a desc
+Revision  22
+CanRead   Kline~
+CanWrite  Kline~
+Flags     EOL
+Keyword   none~
+LevLabel  @@R[@@eSYSTEM@@R]@@N~
+LevRange  1 120
+Name      Ceiling~
+Number    2
+Owner     Kline~
+ResetMsg  off~
+ResetRate 15
+VnumRange 16777216 16777216
+End
 
-this shouldnt be wrapped
-
-\brthis should
-
-\br
-
-hmm
-
-~
-11
-1 1 0 4
-S
-#0
+#ROOM
+Vnum  16777216
+Desc  You're on top of the world up here!~
+Flags 3 4 5 9 11 15 17 18 EOL
+Name  @@WThe Ceiling@@N~
+Sect  11
+End
 #$
