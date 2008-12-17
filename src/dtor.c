@@ -159,6 +159,7 @@ obj_data::~obj_data()
 {
  is_free = true;
  free_string(name);
+ free_string(owner);
  free_string(short_descr);
  free_string(long_descr);
 }
@@ -201,6 +202,12 @@ pc_data::~pc_data()
   free_string(pedit_string[i]);
  free_string(email_address);
  is_free = true;
+}
+
+reset_data::~reset_data()
+{
+ is_free = true;
+ free_string(notes);
 }
 
 room_index_data::~room_index_data()

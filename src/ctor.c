@@ -83,6 +83,7 @@ char_data::char_data()
  is_free = false;
  act.reset();
  deaf.reset();
+ reset = NULL;
 }
 
 exit_data::exit_data()
@@ -106,7 +107,6 @@ mob_index_data::mob_index_data()
  area = NULL;
  cast = 0;
  clan = 0;
- count = 0;
  def = 0;
  description = &str_empty[0];
  dr_mod = 0;
@@ -160,14 +160,54 @@ note_data::note_data()
 obj_data::obj_data()
 {
  is_free = false;
+ next = NULL;
+ prev = NULL;
  extra_flags.reset();
  wear_flags.reset();
+ reset = NULL;
+ next_in_carry_list = NULL;
+ prev_in_carry_list = NULL;
+ first_in_carry_list = NULL;
+ last_in_carry_list = NULL;
+ next_in_room = NULL;
+ prev_in_room = NULL;
+ first_in_room = NULL;
+ last_in_room = NULL;
+ first_content = NULL;
+ last_content = NULL;
+ next_content = NULL;
+ prev_content = NULL;
+ in_obj = NULL;
+ obj_fun = NULL;
+ carried_by = NULL;
+ first_exdesc = NULL;
+ last_exdesc = NULL;
+ first_apply = NULL;
+ last_apply = NULL;
+ pIndexData = NULL;
+ in_room = NULL;
+ owner = &str_empty[0];
+ name = &str_empty[0];
+ short_descr = &str_empty[0];
+ long_descr = &str_empty[0];
+ item_type = 0;
+ item_apply = 0;
+ wear_loc = 0;
+ weight = 0;
+ cost = 0;
+ level = 0;
+ timer = 0;
+ for( short i = 0; i < MAX_OBJ_VALUE; i++ )
+  value[i] = 0;
+ durability = 0;
+ max_durability = 0;
+ money = NULL;
+ speed = 1.00;
 }
 
 obj_index_data::obj_index_data()
 {
  area = NULL;
- count = 0;
  durability = max_durability;
  extra_flags.reset();
  first_apply = NULL;
@@ -199,6 +239,19 @@ pc_data::pc_data()
 {
  header = &str_empty[0];
  is_free = false;
+}
+
+reset_data::reset_data()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ command = '\0';
+ arg1 = 0;
+ arg2 = 0;
+ arg3 = 0;
+ notes = &str_empty[0];
+ count = 0;
 }
 
 room_index_data::room_index_data()

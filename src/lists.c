@@ -84,10 +84,8 @@ ROOM_AFFECT_DATA *raffect_free = NULL;
 BAN_DATA *ban_free = NULL;
 DESCRIPTOR_DATA *desc_free = NULL;
 EXTRA_DESCR_DATA *exdesc_free = NULL;
-OBJ_DATA *obj_free = NULL;
 SUPER_DATA *super_free = NULL;
 RECORD_DATA *record_free = NULL;
-RESET_DATA *reset_free = NULL;
 MPROG_DATA *mprog_free = NULL;
 MPROG_ACT_LIST *mpact_free = NULL;
 BUILD_DATA_LIST *build_free = NULL;
@@ -157,11 +155,6 @@ void ban_free_destructor( BAN_DATA * bdat )
    free_string( bdat->banned_by );
 }
 
-void reset_free_destructor( RESET_DATA * rdat )
-{
-   free_string( rdat->notes );
-}
-
 void exdesc_free_destructor( EXTRA_DESCR_DATA * eddat )
 {
    free_string( eddat->keyword );   /* Free string memory */
@@ -211,14 +204,6 @@ void shield_free_destructor( MAGIC_SHIELD * msdat )
    free_string( msdat->name );
    free_string( msdat->wearoff_room );
    free_string( msdat->wearoff_self );
-}
-
-void obj_free_destructor( OBJ_DATA * odat )
-{
-   free_string( odat->owner );
-   free_string( odat->name );
-   free_string( odat->long_descr );
-   free_string( odat->short_descr );
 }
 
 void ruler_data_free_destructor( RULER_DATA * rdat )

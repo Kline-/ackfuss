@@ -1705,12 +1705,15 @@ void extract_obj( OBJ_DATA * obj )
       }
       save_corpses(  );
    }
-   --obj->pIndexData->count;
    if( obj->money != NULL )
    {
       PUT_FREE( obj->money, money_type_free );
    }
-   PUT_FREE( obj, obj_free );
+
+   if( obj->reset )
+    obj->reset->count--;
+
+   delete obj;
    return;
 }
 
@@ -1795,9 +1798,6 @@ void extract_char( CHAR_DATA * ch, bool fPull )
       }
       return;
    }
-
-   if( IS_NPC( ch ) )
-      --ch->pIndexData->count;
 
    if( ch->desc != NULL && ch->desc->original != NULL )
       do_return( ch, "" );
@@ -1904,6 +1904,10 @@ void extract_char( CHAR_DATA * ch, bool fPull )
          }
       }
    }
+
+   if( ch->reset )
+    ch->reset->count--;
+
    UNLINK( ch, first_char, last_char, next, prev );
    if( ch->desc )
       ch->desc->character = NULL;

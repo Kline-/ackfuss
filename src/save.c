@@ -1564,7 +1564,6 @@ extern int top_obj_index;
 
 void fread_obj( CHAR_DATA * ch, FILE * fp )
 {
-   static OBJ_DATA obj_zero;
    OBJ_DATA *obj;
    const char *word;
    int iNest;
@@ -1573,11 +1572,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
    bool fVnum;
    int Temp_Obj = 0, OldVnum = 0;
 
-   GET_FREE( obj, obj_free );
-   *obj = obj_zero;
-   obj->name = str_dup( "" );
-   obj->short_descr = str_dup( "" );
-   obj->long_descr = str_dup( "" );
+   obj = new OBJ_DATA;
    {
       MONEY_TYPE *money;
       short cnt;
@@ -1683,13 +1678,12 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                      obj->first_exdesc = ed->next;
                      PUT_FREE( ed, exdesc_free );
                   }
-                  PUT_FREE( obj, obj_free );
+                  delete obj;
                   return;
                }
                else
                {
                   LINK( obj, first_obj, last_obj, next, prev );
-                  obj->pIndexData->count++;
 
                   if( Temp_Obj )
                   {
@@ -1937,7 +1931,6 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
 }
 void fread_corpse( FILE * fp )
 {
-   static OBJ_DATA obj_zero;
    OBJ_DATA *obj;
    const char *word;
    int iNest;
@@ -1947,11 +1940,7 @@ void fread_corpse( FILE * fp )
    int Temp_Obj = 0, OldVnum = 0;
    int this_room_vnum;
 
-   GET_FREE( obj, obj_free );
-   *obj = obj_zero;
-   obj->name = str_dup( "" );
-   obj->short_descr = str_dup( "" );
-   obj->long_descr = str_dup( "" );
+   obj = new OBJ_DATA;
    {
       MONEY_TYPE *money;
       short cnt;
@@ -2048,13 +2037,12 @@ void fread_corpse( FILE * fp )
                      obj->first_exdesc = ed->next;
                      PUT_FREE( ed, exdesc_free );
                   }
-                  PUT_FREE( obj, obj_free );
+                  delete obj;
                   return;
                }
                else
                {
                   LINK( obj, first_obj, last_obj, next, prev );
-                  obj->pIndexData->count++;
 
                   if( Temp_Obj )
                   {
