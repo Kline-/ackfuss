@@ -2,7 +2,7 @@
 Revision  22
 CanRead   Kline~
 CanWrite  Kline~
-Flags     EOL
+Flags     2 4 EOL
 Keyword   none~
 LevLabel  @@R[@@eSYSTEM@@R]@@N~
 LevRange  1 120
@@ -341,4 +341,157 @@ End
 Location   18
 Modifier   26
 End
+
+#OBJECT
+Vnum       15
+Durability 46
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A small @@bb@@yu@@bndl@@ye @@Nof @@Gf@@roo@@Gd@@N sits here.
+~
+Name       small food bundle~
+ObjFun     (null)
+ShortDesc  a small @@bb@@yu@@bndl@@ye @@Nof @@Gf@@roo@@Gd@@N~
+Speed      2.13
+Type       19
+Values     5 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       16
+Durability 34
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@cbe@@aa@@cc@@ao@@cn@@N floats gently before you.
+~
+Name       magical beacon~
+ObjFun     (null)
+ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@cbe@@aa@@cc@@ao@@cn@@N~
+Speed      1.44
+Type       6
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       17
+Durability 4
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   ~
+Name       magical portal~
+ObjFun     (null)
+ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@bp@@yo@@brt@@ya@@bl@@N~
+Speed      4.00
+Type       7
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       19
+Durability 52
+ExtraFlags 1 2 EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA small, living figurine lies here, groaning in agony@@N.
+~
+Name       soul figurine~
+ObjFun     objfun_soul_moan
+ShortDesc  @@da small, living figurine@@N~
+Speed      4.00
+Type       28
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       18
+Durability 27
+ExtraFlags 1 2 EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA flask filled with an @@eevil@@d dark liquid lies here, screaming faintly.@@N
+~
+Name       soul potion~
+ObjFun     (null)
+ShortDesc  @@dA @@eSoul @@dPotion@@N~
+Speed      1.33
+Type       10
+Values     70 118 221 56 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       20
+Durability 48
+ExtraFlags 1 7 20 EOL
+ItemApply  1
+Level      120
+LongDesc   A staff of @@RE@@el@@lem@@Be@@an@@Wtal Expl@@ao@@Bs@@li@@eo@@Rn@@N glows brightly.
+~
+Name       staff elemental explosion~
+ObjFun     (null)
+ShortDesc  a staff of @@RE@@el@@lem@@Be@@an@@Wtal Expl@@ao@@Bs@@li@@eo@@Rn@@N~
+Speed      1.01
+Type       4
+Values     120 10 10 242 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -175
+End
+#OAFFECT
+Location   13
+Modifier   88
+End
+#OAFFECT
+Location   24
+Modifier   -10
+End
+
+#OBJECT
+Vnum       21
+Durability 30
+ExtraFlags EOL
+ItemApply  1
+Level      80
+LongDesc   @@dA @@lSecurity @@dPass@@N lies here discarded.
+~
+Name       security pass~
+ObjFun     (null)
+ShortDesc  @@lSecurity @@dPass@@N~
+Speed      2.33
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -117
+End
+#OAFFECT
+Location   13
+Modifier   58
+End
+#OAFFECT
+Location   24
+Modifier   -7
+End
+#RESETS
+M 1 1 1 (null)
+
+S
 #$

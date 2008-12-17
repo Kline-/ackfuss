@@ -783,3 +783,40 @@ void generate_auto_quest(  )
       return;
    }
 }
+
+void crusade_reward( CHAR_DATA *ch )
+{
+ char buf[MSL];
+ int reward = 0;
+
+ ch->pcdata->records->crusade++;
+
+ reward = number_range((get_psuedo_level(ch)/15),(get_psuedo_level(ch)/20));
+ snprintf( buf, MSL, "You receive %d quest points!\n\r", reward );
+ send_to_char( buf, ch );
+ ch->pcdata->quest_points += reward;
+ ch->pcdata->records->qp_tot += reward;
+ if( ch->pcdata->quest_points > ch->pcdata->records->qp )
+ {
+  send_to_char("@@yYou've broken your quest point record!@@N\n\r",ch);
+  ch->pcdata->records->qp = ch->pcdata->quest_points;
+ }
+
+ reward = number_range((get_psuedo_level(ch)/5),(get_psuedo_level(ch)/20));
+ snprintf( buf, MSL, "You receive %s!\n\r", cost_to_money( reward ) );
+ send_to_char( buf, ch );
+ join_money( round_money( reward, TRUE ), ch->money );
+
+ reward = number_range((get_psuedo_level(ch)/20),(get_psuedo_level(ch)/10));
+ snprintf( buf, MSL, "You receive %d practices!\n\r", reward );
+ send_to_char( buf, ch );
+ ch->practice += reward;
+
+ reward = (exp_mob_base(get_psuedo_level(ch)) * sysdata.killperlev);
+ reward = number_range((int)(reward * 0.03),(int)(reward * 0.06));
+ snprintf( buf, MSL, "You receive %d experience points!\n\r", reward );
+ send_to_char( buf, ch );
+ ch->exp += reward;
+
+ return;
+}

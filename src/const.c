@@ -110,28 +110,28 @@ const struct ansi_type ansi_table[MAX_ANSI] = {
  */
 const struct class_type class_table[MAX_CLASS] = {
    {
-    "Mag", "Mage", APPLY_INT, "Int", OBJ_VNUM_SCHOOL_DAGGER,
+    "Mag", "Mage", APPLY_INT, "Int",
     1107, 90, 18, 10, 1, 2, TRUE,
     "faerie fire",
     },
 
    {
-    "Cle", "Cleric", APPLY_WIS, "Wis", OBJ_VNUM_SCHOOL_MACE,
+    "Cle", "Cleric", APPLY_WIS, "Wis",
     1105, 90, 18, 12, 2, 2, TRUE,
     "bless"},
 
    {
-    "Thi", "Thief", APPLY_DEX, "Dex", OBJ_VNUM_SCHOOL_DAGGER,
+    "Thi", "Thief", APPLY_DEX, "Dex",
     1106, 90, 18, 8, 1, 3, FALSE,
     "steal"},
 
    {
-    "War", "Warrior", APPLY_STR, "Str", OBJ_VNUM_SCHOOL_SWORD,
+    "War", "Warrior", APPLY_STR, "Str",
     1108, 90, 18, 6, 3, 4, FALSE,
     "punch"},
 
    {
-    "Psi", "Psionicist", APPLY_CON, "Con", OBJ_VNUM_SCHOOL_SWORD,
+    "Psi", "Psionicist", APPLY_CON, "Con",
     1125, 90, 18, 10, 2, 3, TRUE,
     "mind flail"}
 
@@ -145,35 +145,35 @@ const struct class_type class_table[MAX_CLASS] = {
  */
 const struct class_type remort_table[MAX_CLASS] = {
    {
-    "Sor", "Sorcerer", APPLY_INT, "Int", 0,
+    "Sor", "Sorcerer", APPLY_INT, "Int",
     /*
      * guild room -> 
      */ 0, 0, 0, 0, 2, 3, TRUE,
     ""},
 
    {
-    "Mon", "Monk", APPLY_WIS, "Wis", 0,
+    "Mon", "Monk", APPLY_WIS, "Wis",
     /*
      * guild_room ->
      */ 0, 0, 0, 0, 2, 3, TRUE,
     ""},
 
    {
-    "Ass", "Assassin", APPLY_DEX, "Dex", 0,
+    "Ass", "Assassin", APPLY_DEX, "Dex",
     /*
      * guild room -> 
      */ 0, 0, 0, 0, 2, 3, FALSE,
     ""},
 
    {
-    "Kni", "Knight", APPLY_STR, "Str", 0,
+    "Kni", "Knight", APPLY_STR, "Str",
     /*
      * guild room -> 
      */ 0, 0, 0, 0, 4, 4, FALSE,
     ""},
 
    {
-    "Nec", "Necromancer", APPLY_CON, "Con", 0,
+    "Nec", "Necromancer", APPLY_CON, "Con",
     /*
      * guild room -> 
      */ 0, 0, 0, 0, 2, 3, TRUE,

@@ -1,0 +1,42 @@
+#AREA
+Revision  22
+CanRead   Kline~
+CanWrite  Kline~
+Flags     2 4 EOL
+Keyword   ~
+LevLabel  @@R[@@eSYSTEM@@R]@@N~
+LevRange  1 120
+Name      Quest Items~
+Number    0
+Owner     Kline~
+ResetMsg  off~
+ResetRate 15
+VnumRange 101 200
+End
+
+#ROOM
+Vnum  101
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+
+#OBJECT
+Vnum       101
+Durability 36
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@yDel@@bici@@dous @@WChoc@@dola@@bte C@@yake@@N is here looking tasty!
+~
+Name       questitem quest item delicious chocolate cake~
+ObjFun     (null)
+ShortDesc  @@yDel@@bici@@dous @@WChoc@@dola@@bte C@@yake@@N~
+Speed      3.14
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+#$

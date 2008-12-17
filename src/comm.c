@@ -2750,31 +2750,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             }
          }
          char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
-         /*
-          * Needed in case newbie drops an item. 
-          */
-
-         /*
-          * This seems to be causing a prob on meson right now.. byebye!
-          * 
-          * obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_BANNER), 0 );
-          * obj_to_char( obj, ch );
-          * equip_char( ch, obj, WEAR_LIGHT );
-          * 
-          * obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_VEST), 0 );
-          * obj_to_char( obj, ch );
-          * equip_char( ch, obj, WEAR_BODY );
-          * 
-          * obj = create_object( get_obj_index(OBJ_VNUM_SCHOOL_SHIELD), 0 );
-          * obj_to_char( obj, ch );
-          * equip_char( ch, obj, WEAR_SHIELD );
-          * 
-          * obj = create_object( get_obj_index(class_table[ch->p_class].weapon),
-          * 0 );
-          * obj_to_char( obj, ch );
-          * equip_char( ch, obj, WEAR_WIELD );
-          */
-
       }
       else if( ch->in_room != NULL )
       {
