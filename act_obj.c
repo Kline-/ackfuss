@@ -868,27 +868,7 @@ void do_give( CHAR_DATA * ch, char *argument )
                {
                   snprintf( buf, MSL, "%s I shall reward you well for recovering this for me!", NAME( ch ) );
                   do_tell( victim, buf );
-                  ch->pcdata->records->crusade++;
-                  if( obj->value[0] > 0 )
-                  {
-                     snprintf( buf, MSL, "You receive %d quest points!\n\r", obj->value[0] );
-                     send_to_char( buf, ch );
-                     ch->pcdata->quest_points += obj->value[0];
-                     ch->pcdata->records->qp_tot += obj->value[0];
-                     if( ch->pcdata->quest_points > ch->pcdata->records->qp )
-                     {
-                      send_to_char("@@yYou've broken your quest point record!@@N\n\r",ch);
-                      ch->pcdata->records->qp = ch->pcdata->quest_points;
-                     }
-                  }
-
-                  if( obj->value[2] > 0 )
-                  {
-                     snprintf( buf, MSL, "You receive %s!\n\r", cost_to_money( obj->value[2] ) );
-                     send_to_char( buf, ch );
-                     join_money( round_money( obj->value[2], TRUE ), ch->money );
-                  }
-
+                  crusade_reward(ch);
                }
                quest_complete( ch );
             }

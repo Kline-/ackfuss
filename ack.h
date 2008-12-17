@@ -351,7 +351,6 @@ struct class_type
    char *class_name; /* Full name                    */
    short attr_prime;   /* Prime attribute              */
    char *attr; /* Prime          */
-   short weapon; /* First weapon                 */
    int guild;  /* Vnum of guild room           */
    short skill_adept;  /* Maximum skill level          */
    short thac0_00;  /* Thac0 for level  0           */
@@ -1590,6 +1589,7 @@ void quest_inform args( ( void ) );
 void quest_complete args( ( CHAR_DATA * ch ) );
 void quest_cancel args( ( void ) );
 void generate_auto_quest args( ( void ) );
+void crusade_reward args( ( CHAR_DATA *ch ) );
 
 
             /*------*\

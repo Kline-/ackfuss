@@ -176,12 +176,13 @@
  * vnums for quest items.
  * One of these will be picked at random and placed onto a random mob
  * (one the player has a chance of killing!).
- * Reserve vnums 40-60 for this.
  * We'll define a range of possible vnums here - easier to expand (:
+ * The area questitems.are (vnum 101-200) is reserved for this use.
+ * As you add more items (for more variety!) incrase the max on this range.
  */
 
-#define OBJ_VNUM_QUEST_MIN		66
-#define OBJ_VNUM_QUEST_MAX		80
+#define OBJ_VNUM_QUEST_MIN		101
+#define OBJ_VNUM_QUEST_MAX		110
 
 /*
  * vnums for deathmatch arena.
@@ -228,19 +229,13 @@
 #define OBJ_VNUM_SPRING              12
 #define OBJ_VNUM_WINDOW              13
 #define OBJ_VNUM_FIREBLADE           14
-#define OBJ_VNUM_FOOD		     30
-#define OBJ_VNUM_PORTAL		     34
-#define OBJ_VNUM_BEACON		     35
-#define OBJ_VNUM_SCHOOL_MACE       3700
-#define OBJ_VNUM_SCHOOL_DAGGER     3701
-#define OBJ_VNUM_SCHOOL_SWORD      3702
-#define OBJ_VNUM_SCHOOL_VEST       3703
-#define OBJ_VNUM_SCHOOL_SHIELD     3704
-#define OBJ_VNUM_SCHOOL_BANNER     3716
-#define OBJ_VNUM_SOUL_POTION       37
-#define OBJ_VNUM_CAPTURED_SOUL     38
-#define OBJ_VNUM_CONFLAGRATION	   1036  /* need a staff here  ZENFIX */
-#define OBJ_VNUM_MINO_PASS         10021
+#define OBJ_VNUM_FOOD		     15
+#define OBJ_VNUM_BEACON              16
+#define OBJ_VNUM_PORTAL		     17
+#define OBJ_VNUM_SOUL_POTION         18
+#define OBJ_VNUM_CAPTURED_SOUL       19
+#define OBJ_VNUM_CONFLAGRATION	     20
+#define OBJ_VNUM_MINO_PASS           21
 
 /*
  * Well known room virtual numbers.
