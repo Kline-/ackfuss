@@ -439,7 +439,7 @@ void boot_db( void )
 
 
       snprintf( buf, MSL, "Loading %s", clan_file_name );
-      log_f(buf);
+      log_f("%s",buf);
 
 
       if( ( clanfp = file_open( clan_file_name, "r" ) ) == NULL )
@@ -824,7 +824,7 @@ void load_corpses( void )
 
 
    snprintf( buf, MSL, "Loading %s", CORPSE_FILE);
-   log_f( buf );
+   log_f( "%s", buf );
 
 
 
@@ -892,7 +892,7 @@ void load_marks( void )
    snprintf( marks_file_name, MSL, "%s", MARKS_FILE );
 
    snprintf( buf, MSL, "Loading %s",MARKS_FILE);
-   log_f( buf );
+   log_f( "%s", buf );
 
 
 
@@ -956,7 +956,7 @@ void load_bans( void )
 
    snprintf( bans_file_name, MSL, "%s", BANS_FILE );
    snprintf( buf, MSL, "Loading %s",BANS_FILE);
-   log_f( buf );
+   log_f( "%s", buf );
 
 
 
@@ -1865,7 +1865,7 @@ void load_notes( void )
    FILE *fp;
 
    snprintf(log_buf,(2 * MIL),"Loading %s",NOTE_FILE);
-   log_f(log_buf);
+   log_f("%s",log_buf);
 
    if( ( fp = file_open( NOTE_FILE, "r" ) ) == NULL )
    {
@@ -4352,7 +4352,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    switch( channel )
    {
     default: break;
-    case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,ch->in_room->area->name);           break;
+    case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,"%s",ch->in_room->area->name);      break;
     case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                               break;
     case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
     case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
@@ -4366,9 +4366,9 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
 
    for( i = 1; i < MAX_HISTORY; i++ )
    {
-    snprintf(chan_history.message[x][(i-1)],MSL,chan_history.message[x][i]);
+    snprintf(chan_history.message[x][(i-1)],MSL,"%s",chan_history.message[x][i]);
     chan_history.time[x][(i-1)] = chan_history.time[x][i];
-    snprintf(chan_history.aname[x][(i-1)],128,chan_history.aname[x][i]);
+    snprintf(chan_history.aname[x][(i-1)],128,"%s",chan_history.aname[x][i]);
     chan_history.cbit[x][(i-1)] = chan_history.cbit[x][i];
    }
 
@@ -4385,7 +4385,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    switch( channel )
    {
     default: break;
-    case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,ch->in_room->area->name);           break;
+    case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,"%s",ch->in_room->area->name);      break;
     case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                               break;
     case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
     case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
@@ -4402,7 +4402,7 @@ int count_helps( void )
  char tmp[MSL];
 
  snprintf(tmp,MSL,"expr `ls -1 -R %s | wc -l` - 26",HELP_DIR);
- snprintf(buf,MSL,_popen(tmp));
+ snprintf(buf,MSL,"%s",_popen(tmp));
 
  return atoi(buf);
 }
@@ -4419,13 +4419,13 @@ char *search_helps( const char *string )
  t_out = (char *)calloc(1,sizeof(char));
  pipe = (char *)calloc(1,sizeof(char));
 
- snprintf(tmp,MSL,_popen(string));
+ snprintf(tmp,MSL,"%s",_popen(string));
  pipe = tmp;
 
  for( t_out = strtok_r(pipe,"\n",&t_buf); t_out != NULL; t_out = strtok_r(NULL,"\n",&t_buf) )
  {
   t_out += 9;                /* Strip off ../helps/ at the start, edit if you change your HELP_DIR */
-  snprintf(tmp,MSL,t_out);
+  snprintf(tmp,MSL,"%s",t_out);
   tmp[strlen(tmp)-4] = '\0'; /* Strip off .ext at the end, edit if you change HELP_MORT or HELP_IMM */
   snprintf(ret,MSL,"%s ",tmp);
  }
@@ -4461,7 +4461,7 @@ char *_popen( const char *string )
   while( fgets(tmp,MSL,fp) )
   {
    if( ret[0] == '\0' )
-    snprintf(ret,MSL,tmp);
+    snprintf(ret,MSL,"%s",tmp);
    else
     strncat(ret,tmp,MSL);
   }

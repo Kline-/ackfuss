@@ -1,4 +1,4 @@
-CC   = g++
+CC   = ccache g++
 VERS = AckFUSS 4.3.9
 #PROF    = -pg
 
@@ -18,8 +18,8 @@ VERS = AckFUSS 4.3.9
 #Uncomment to compile in Cygwin
 #CYGWIN = -DCYGWIN -DWIN32
 
-#-Wshadow -Werror -Wformat-security -Wconversion -Wwrite-strings
-W_FLAGS = -Wall -Wpointer-arith -Wredundant-decls -Wcast-align
+#-Wshadow -Werror -Wconversion -Wwrite-strings
+W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align
 C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF)
 L_FLAGS = -lcrypt -lm
 

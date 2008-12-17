@@ -140,7 +140,7 @@ void load_rulers( void )
 
 
    snprintf( buf, MSL, "Loading %s",RULERS_FILE);
-   log_f(buf);
+   log_f("%s",buf);
 
    if( ( rulersfp = file_open( rulers_file_name, "r" ) ) == NULL )
    {

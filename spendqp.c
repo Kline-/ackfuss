@@ -112,7 +112,7 @@ void load_brands( void )
 
 
    snprintf( buf, MSL, "Loading %s",BRANDS_FILE);
-   log_f(buf);
+   log_f("%s",buf);
 
    if( ( brandsfp = file_open( brands_file_name, "r" ) ) == NULL )
    {
@@ -278,22 +278,22 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
          if( !str_cmp( ch->pcdata->pedit_string[0], "none" ) )
          {
-            snprintf( test_string, MSL, ch->pcdata->room_enter );
+            snprintf( test_string, MSL, "%s", ch->pcdata->room_enter );
          }
          else
          {
-            snprintf( test_string, MSL, ch->pcdata->pedit_string[0] );
+            snprintf( test_string, MSL, "%s", ch->pcdata->pedit_string[0] );
             qp_cost++;
          }
          snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), test_string );
          act( move_buf, ch, NULL, rev_name[1], TO_CHAR );
          if( !str_cmp( ch->pcdata->pedit_string[1], "none" ) )
          {
-            snprintf( test_string, MSL, ch->pcdata->room_exit );
+            snprintf( test_string, MSL, "%s", ch->pcdata->room_exit );
          }
          else
          {
-            snprintf( test_string, MSL, ch->pcdata->pedit_string[1] );
+            snprintf( test_string, MSL, "%s", ch->pcdata->pedit_string[1] );
             qp_cost++;
          }
 

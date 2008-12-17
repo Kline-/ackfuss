@@ -742,8 +742,8 @@ void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
          char buf1[MSL];
          char buf2[MSL];
 
-         snprintf( buf1, MSL, this_shield->wearoff_room );
-         snprintf( buf2, MSL, this_shield->wearoff_self );
+         snprintf( buf1, MSL, "%s", this_shield->wearoff_room );
+         snprintf( buf2, MSL, "%s", this_shield->wearoff_self );
          act( buf1, ch, NULL, NULL, TO_ROOM );
          act( buf2, ch, NULL, NULL, TO_CHAR );
 

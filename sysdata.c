@@ -65,7 +65,7 @@ void load_sysdata( void )
  bool fMatch;
 
  snprintf(log_buf,(2 * MIL),"Loading %s",SYSDAT_FILE);
- log_f(log_buf);
+ log_f("%s",log_buf);
 
  init_sysdata(); /* Need to set some defaults --Kline */
 
