@@ -16,7 +16,7 @@ End
 
 #ROOM
 Vnum  101
-Desc  ~
+Desc  This zone is just to hold crusade items. As you add more items, update the defines in config.h to use the whole range.~
 Flags EOL
 Name  New Room~
 Sect  11
@@ -34,6 +34,168 @@ Name       questitem quest item delicious chocolate cake~
 ObjFun     (null)
 ShortDesc  @@yDel@@bici@@dous @@WChoc@@dola@@bte C@@yake@@N~
 Speed      3.14
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       102
+Durability 67
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@WThe @@p"@@mTwo@@p" @@WRing@@N is here; slightly better than the "One" ring...
+~
+Name       questitem quest item two ring~
+ObjFun     (null)
+ShortDesc  @@WThe @@p"@@mTwo@@p" @@WRing@@N~
+Speed      3.41
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       103
+Durability 83
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@gBr@@dok@@Wen @@dSk@@gull@@N sits here, discarded.
+~
+Name       questitem quest item broken skull~
+ObjFun     (null)
+ShortDesc  @@gBr@@dok@@Wen @@dSk@@gull@@N~
+Speed      2.41
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       104
+Durability 95
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   Oh no! @@RKline@@e'@@Rs @@dSanity@@N is escaping!
+~
+Name       questitem quest item kline's sanity~
+ObjFun     (null)
+ShortDesc  @@RKline@@e'@@Rs @@dSanity@@N~
+Speed      2.44
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       105
+Durability 55
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   Uh oh, some stolen @@ac@@code@@N is here, better get it quick!
+~
+Name       questitem quest item mquest code top secret~
+ObjFun     (null)
+ShortDesc  @@e(@@RTop Secret@@e) @@am@@cquest @@ac@@code@@N~
+Speed      4.00
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       106
+Durability 68
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A handful of @@zP@@zs@@zy@@zc@@zh@@za@@zd@@ze@@zl@@zi@@zc @@zM@@zu@@zs@@zh@@zr@@zo@@zo@@zm@@zs@@N have been discarded here!
+~
+Name       questitem quest item psychadelic mushrooms~
+ObjFun     (null)
+ShortDesc  @@zP@@zs@@zy@@zc@@zh@@za@@zd@@ze@@zl@@zi@@zc @@zM@@zu@@zs@@zh@@zr@@zo@@zo@@zm@@zs@@N~
+Speed      3.31
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       107
+Durability 26
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A lonely @@dBlack @@RR@@eo@@Rs@@ee@@N...
+~
+Name       questitem quest item black rose~
+ObjFun     (null)
+ShortDesc  a @@dBlack @@RR@@eo@@Rs@@ee@@N~
+Speed      2.40
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       108
+Durability 62
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@RL@@eo@@Rst @@bP@@yu@@bppy@@N is here...so cute!
+~
+Name       questitem quest item lost puppy~
+ObjFun     (null)
+ShortDesc  @@RL@@eo@@Rst @@bP@@yu@@bppy@@N~
+Speed      4.00
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       109
+Durability 43
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   Someone's @@RT@@er@@mu@@pe @@RL@@eo@@mv@@pe@@N has been discarded here...How sad!
+~
+Name       questitem quest item true love~
+ObjFun     (null)
+ShortDesc  @@RT@@er@@mu@@pe @@RL@@eo@@mv@@pe@@N~
+Speed      1.11
+Type       16
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       110
+Durability 90
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@WExcali@@dpoor@@N is the real thing! Or is it...?
+~
+Name       questitem quest item excalipoor~
+ObjFun     (null)
+ShortDesc  @@WExcali@@dpoor@@N~
+Speed      2.13
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
 WearFlags  24 EOL

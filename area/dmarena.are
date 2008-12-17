@@ -1,0 +1,3696 @@
+#AREA
+Revision  22
+CanRead   Kline~
+CanWrite  Kline~
+Flags     2 4 EOL
+Keyword   ~
+LevLabel  @@R[@@e  PK  @@R]@@N~
+LevRange  1 120
+Name      Deathmatch Arena~
+Number    3
+Owner     Kline~
+ResetMsg  off~
+ResetRate 15
+VnumRange 201 300
+End
+
+#ROOM
+Vnum  201
+Desc  ~
+Flags EOL
+Name  Northwest Corner of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    202
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    220
+End
+
+#ROOM
+Vnum  202
+Desc  ~
+Flags EOL
+Name  Northern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    203
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    219
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    201
+End
+
+#ROOM
+Vnum  203
+Desc  ~
+Flags EOL
+Name  Northern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    204
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    218
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    202
+End
+
+#ROOM
+Vnum  204
+Desc  ~
+Flags EOL
+Name  Northern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    205
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    217
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    203
+End
+
+#ROOM
+Vnum  205
+Desc  ~
+Flags EOL
+Name  Northern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    206
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    216
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    204
+End
+
+#ROOM
+Vnum  206
+Desc  ~
+Flags EOL
+Name  Northern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    207
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    215
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    205
+End
+
+#ROOM
+Vnum  207
+Desc  ~
+Flags EOL
+Name  Northern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    208
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    214
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    206
+End
+
+#ROOM
+Vnum  208
+Desc  ~
+Flags EOL
+Name  Northern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    209
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    213
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    207
+End
+
+#ROOM
+Vnum  209
+Desc  ~
+Flags EOL
+Name  Northern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    210
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    212
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    208
+End
+
+#ROOM
+Vnum  210
+Desc  ~
+Flags EOL
+Name  Northeast Corner of the Arena~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    211
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    209
+End
+
+#ROOM
+Vnum  211
+Desc  ~
+Flags EOL
+Name  Eastern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    210
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    230
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    212
+End
+
+#ROOM
+Vnum  212
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    209
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    211
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    229
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    213
+End
+
+#ROOM
+Vnum  213
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    208
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    212
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    228
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    214
+End
+
+#ROOM
+Vnum  214
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    207
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    213
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    227
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    215
+End
+
+#ROOM
+Vnum  215
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    206
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    214
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    226
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    216
+End
+
+#ROOM
+Vnum  216
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    205
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    215
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    225
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    217
+End
+
+#ROOM
+Vnum  217
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    204
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    216
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    224
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    218
+End
+
+#ROOM
+Vnum  218
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    203
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    217
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    223
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    219
+End
+
+#ROOM
+Vnum  219
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    202
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    218
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    222
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    220
+End
+
+#ROOM
+Vnum  220
+Desc  ~
+Flags EOL
+Name  Western Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    201
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    219
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    221
+End
+
+#ROOM
+Vnum  221
+Desc  ~
+Flags EOL
+Name  Western Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    220
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    222
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    240
+End
+
+#ROOM
+Vnum  222
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    219
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    223
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    239
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    221
+End
+
+#ROOM
+Vnum  223
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    218
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    224
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    238
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    222
+End
+
+#ROOM
+Vnum  224
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    217
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    225
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    237
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    223
+End
+
+#ROOM
+Vnum  225
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    216
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    226
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    236
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    224
+End
+
+#ROOM
+Vnum  226
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    215
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    227
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    235
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    225
+End
+
+#ROOM
+Vnum  227
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    214
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    228
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    234
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    226
+End
+
+#ROOM
+Vnum  228
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    213
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    229
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    233
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    227
+End
+
+#ROOM
+Vnum  229
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    212
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    230
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    232
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    228
+End
+
+#ROOM
+Vnum  230
+Desc  ~
+Flags EOL
+Name  Eastern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    211
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    231
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    229
+End
+
+#ROOM
+Vnum  231
+Desc  ~
+Flags EOL
+Name  Eastern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    230
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    250
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    232
+End
+
+#ROOM
+Vnum  232
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    229
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    231
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    249
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    233
+End
+
+#ROOM
+Vnum  233
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    228
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    232
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    248
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    234
+End
+
+#ROOM
+Vnum  234
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    227
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    233
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    247
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    235
+End
+
+#ROOM
+Vnum  235
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    226
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    234
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    246
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    236
+End
+
+#ROOM
+Vnum  236
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    225
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    235
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    245
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    237
+End
+
+#ROOM
+Vnum  237
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    224
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    236
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    244
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    238
+End
+
+#ROOM
+Vnum  238
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    223
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    237
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    243
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    239
+End
+
+#ROOM
+Vnum  239
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    222
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    238
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    242
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    240
+End
+
+#ROOM
+Vnum  240
+Desc  ~
+Flags EOL
+Name  Western Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    221
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    239
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    241
+End
+
+#ROOM
+Vnum  241
+Desc  ~
+Flags EOL
+Name  Western Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    240
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    242
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    260
+End
+
+#ROOM
+Vnum  242
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    239
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    243
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    259
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    241
+End
+
+#ROOM
+Vnum  243
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    238
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    244
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    258
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    242
+End
+
+#ROOM
+Vnum  244
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    237
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    245
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    257
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    243
+End
+
+#ROOM
+Vnum  245
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    236
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    246
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    256
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    244
+End
+
+#ROOM
+Vnum  246
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    235
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    247
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    255
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    245
+End
+
+#ROOM
+Vnum  247
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    234
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    248
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    254
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    246
+End
+
+#ROOM
+Vnum  248
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    233
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    249
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    253
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    247
+End
+
+#ROOM
+Vnum  249
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    232
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    250
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    252
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    248
+End
+
+#ROOM
+Vnum  250
+Desc  ~
+Flags EOL
+Name  Eastern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    231
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    251
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    249
+End
+
+#ROOM
+Vnum  251
+Desc  ~
+Flags EOL
+Name  Eastern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    250
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    270
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    252
+End
+
+#ROOM
+Vnum  252
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    249
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    251
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    269
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    253
+End
+
+#ROOM
+Vnum  253
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    248
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    252
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    268
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    254
+End
+
+#ROOM
+Vnum  254
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    247
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    253
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    267
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    255
+End
+
+#ROOM
+Vnum  255
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    246
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    254
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    266
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    256
+End
+
+#ROOM
+Vnum  256
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    245
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    255
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    265
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    257
+End
+
+#ROOM
+Vnum  257
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    244
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    256
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    264
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    258
+End
+
+#ROOM
+Vnum  258
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    243
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    257
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    263
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    259
+End
+
+#ROOM
+Vnum  259
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    242
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    258
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    262
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    260
+End
+
+#ROOM
+Vnum  260
+Desc  ~
+Flags EOL
+Name  Western Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    241
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    259
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    261
+End
+
+#ROOM
+Vnum  261
+Desc  ~
+Flags EOL
+Name  Western Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    260
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    262
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    280
+End
+
+#ROOM
+Vnum  262
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    259
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    263
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    279
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    261
+End
+
+#ROOM
+Vnum  263
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    258
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    264
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    278
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    262
+End
+
+#ROOM
+Vnum  264
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    257
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    265
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    277
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    263
+End
+
+#ROOM
+Vnum  265
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    256
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    266
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    276
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    264
+End
+
+#ROOM
+Vnum  266
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    255
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    267
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    275
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    265
+End
+
+#ROOM
+Vnum  267
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    254
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    268
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    274
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    266
+End
+
+#ROOM
+Vnum  268
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    253
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    269
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    273
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    267
+End
+
+#ROOM
+Vnum  269
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    252
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    270
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    272
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    268
+End
+
+#ROOM
+Vnum  270
+Desc  ~
+Flags EOL
+Name  Eastern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    251
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    271
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    269
+End
+
+#ROOM
+Vnum  271
+Desc  ~
+Flags EOL
+Name  Eastern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    270
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    290
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    272
+End
+
+#ROOM
+Vnum  272
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    269
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    271
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    289
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    273
+End
+
+#ROOM
+Vnum  273
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    268
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    272
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    288
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    274
+End
+
+#ROOM
+Vnum  274
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    267
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    273
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    287
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    275
+End
+
+#ROOM
+Vnum  275
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    266
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    274
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    286
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    276
+End
+
+#ROOM
+Vnum  276
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    265
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    275
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    285
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    277
+End
+
+#ROOM
+Vnum  277
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    264
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    276
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    284
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    278
+End
+
+#ROOM
+Vnum  278
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    263
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    277
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    283
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    279
+End
+
+#ROOM
+Vnum  279
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    262
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    278
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    282
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    280
+End
+
+#ROOM
+Vnum  280
+Desc  ~
+Flags EOL
+Name  Western Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    261
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    279
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    281
+End
+
+#ROOM
+Vnum  281
+Desc  ~
+Flags EOL
+Name  Western Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    280
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    282
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    300
+End
+
+#ROOM
+Vnum  282
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    279
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    283
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    299
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    281
+End
+
+#ROOM
+Vnum  283
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    278
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    284
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    298
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    282
+End
+
+#ROOM
+Vnum  284
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    277
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    285
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    297
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    283
+End
+
+#ROOM
+Vnum  285
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    276
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    286
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    296
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    284
+End
+
+#ROOM
+Vnum  286
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    275
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    287
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    295
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    285
+End
+
+#ROOM
+Vnum  287
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    274
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    288
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    294
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    286
+End
+
+#ROOM
+Vnum  288
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    273
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    289
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    293
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    287
+End
+
+#ROOM
+Vnum  289
+Desc  ~
+Flags EOL
+Name  Within the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    272
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    290
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    292
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    288
+End
+
+#ROOM
+Vnum  290
+Desc  ~
+Flags EOL
+Name  Eastern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    271
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    291
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    289
+End
+
+#ROOM
+Vnum  291
+Desc  ~
+Flags EOL
+Name  Southeast Corner of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    290
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    292
+End
+
+#ROOM
+Vnum  292
+Desc  ~
+Flags EOL
+Name  Southern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    289
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    291
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    293
+End
+
+#ROOM
+Vnum  293
+Desc  ~
+Flags EOL
+Name  Southern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    288
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    292
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    294
+End
+
+#ROOM
+Vnum  294
+Desc  ~
+Flags EOL
+Name  Southern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    287
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    293
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    295
+End
+
+#ROOM
+Vnum  295
+Desc  ~
+Flags EOL
+Name  Southern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    286
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    294
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    296
+End
+
+#ROOM
+Vnum  296
+Desc  ~
+Flags EOL
+Name  Southern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    285
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    295
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    297
+End
+
+#ROOM
+Vnum  297
+Desc  ~
+Flags EOL
+Name  Southern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    284
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    296
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    298
+End
+
+#ROOM
+Vnum  298
+Desc  ~
+Flags EOL
+Name  Southern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    283
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    297
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    299
+End
+
+#ROOM
+Vnum  299
+Desc  ~
+Flags EOL
+Name  Southern Wall of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    282
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    298
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    300
+End
+
+#ROOM
+Vnum  300
+Desc  ~
+Flags EOL
+Name  Southwest Corner of the Arena~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    281
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    299
+End
+#$

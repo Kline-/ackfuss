@@ -191,7 +191,7 @@
  *
  */
 #define DM_ARENA_START    201
-#define DM_ARENA_END      250
+#define DM_ARENA_END      300
 
 #define PULSE_PER_SECOND          sysdata.pulse /* Configurable in-game, essential to speed based combat. --Kline */
 #define PULSE_COMBAT              (  1                     )

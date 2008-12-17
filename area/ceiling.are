@@ -2,7 +2,7 @@
 Revision  22
 CanRead   Kline~
 CanWrite  Kline~
-Flags     EOL
+Flags     4 EOL
 Keyword   none~
 LevLabel  @@R[@@eSYSTEM@@R]@@N~
 LevRange  1 120
