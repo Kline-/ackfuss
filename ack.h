@@ -504,7 +504,6 @@ class mob_index_data
    AREA_DATA *area;
    int cast;
    short clan;
-   short count;
    int def;
    char *description;
    short dr_mod;
@@ -679,6 +678,7 @@ class char_data
    MONEY_TYPE *bank_money;
    NPC_GROUP_DATA *ngroup;
    float speed[MAX_SPEED];
+   RESET_DATA *reset;
 };
 
 
@@ -834,7 +834,6 @@ class obj_index_data
   obj_index_data();
   ~obj_index_data();
    AREA_DATA *area;
-   short count;
    short durability;
    std::bitset<MAX_BITSET> extra_flags;
    AFFECT_DATA *first_apply;
@@ -913,6 +912,7 @@ class obj_data
    short max_durability;
    MONEY_TYPE *money;
    float speed;
+   RESET_DATA *reset;
 };
 
 
@@ -954,8 +954,11 @@ class exit_data
 /*
  * Area-reset definition.
  */
-struct reset_data
+class reset_data
 {
+ public:
+  reset_data();
+  ~reset_data();
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    RESET_DATA *next;
    RESET_DATA *prev;
@@ -964,6 +967,7 @@ struct reset_data
    short arg2;
    short arg3;
    char *notes;
+   short count;
 };
 
 

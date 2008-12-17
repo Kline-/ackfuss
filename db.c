@@ -1584,7 +1584,7 @@ void load_resets( FILE * fp )
       if( reset_ok ) /* i.e. only add if reset is valid. */
       {
 
-         GET_FREE( pReset, reset_free );
+         pReset = new RESET_DATA;
          pReset->command = Tcommand;
          pReset->arg1 = Targ1;
          pReset->arg2 = Targ2;
@@ -2161,7 +2161,7 @@ void check_resets( void )
                }
             }
             UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
-            PUT_FREE( pReset, reset_free );
+            delete pReset;
          }
       }
    }
@@ -2275,13 +2275,15 @@ void reset_area( AREA_DATA * pArea )
             }
 
             level = pMobIndex->level;
-            if( pMobIndex->count >= pReset->arg2 )
+            if( pReset->count >= pReset->arg2 )
             {
                last = FALSE;
                break;
             }
 
             mob = create_mobile( pMobIndex );
+            mob->reset = pReset;
+            pReset->count++;
             just_loaded = TRUE;
 
             /*
@@ -2320,7 +2322,7 @@ void reset_area( AREA_DATA * pArea )
                bug( "Reset_area: 'R': bad vnum %d.", pReset->arg3 );
                continue;
             }
-            num_allowed = ( ( pReset->arg2 == 0 ) ? 2 : pReset->arg2 - 1 );
+            num_allowed = ( pReset->arg2 );
             if( ( count_obj_room( pObjIndex, pRoomIndex->first_content ) > num_allowed )
                 || ( ( count_obj_room( pObjIndex, pRoomIndex->first_content ) > 0 )
                      && ( ( pObjIndex->item_type == ITEM_BOARD )
@@ -2335,7 +2337,8 @@ void reset_area( AREA_DATA * pArea )
 
             level = pObjIndex->level;
             obj = create_object( pObjIndex, level > 1 ? number_fuzzy( level ) : level );
-
+            obj->reset = pReset;
+            pReset->count++;
 
             obj_to_room( obj, pRoomIndex );
 
@@ -2375,6 +2378,8 @@ void reset_area( AREA_DATA * pArea )
 
             level = pObjIndex->level;
             obj = create_object( pObjIndex, obj_to->level > 1 ? number_fuzzy( obj_to->level ) : obj_to->level );
+            obj->reset = pReset;
+            pReset->count++;
 
             obj_to_obj( obj, obj_to );
 
@@ -2434,6 +2439,8 @@ void reset_area( AREA_DATA * pArea )
                }
 
                obj = create_object( pObjIndex, olevel > 1 ? number_fuzzy( olevel ) : olevel );
+               obj->reset = pReset;
+               pReset->count++;
                obj->extra_flags.set(ITEM_EXTRA_INVENTORY);
             }
             else
@@ -2453,6 +2460,8 @@ void reset_area( AREA_DATA * pArea )
 
                level = pObjIndex->level;
                obj = create_object( pObjIndex, level > 1 ? number_fuzzy( level ) : level );
+               obj->reset = pReset;
+               pReset->count++;
             }
             obj_to_char( obj, mob );
             if( pReset->command == 'E' )
@@ -2552,9 +2561,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
        * Only load one with the same name 
        */
 #if !defined(machintosh) && !defined(MSDOS)
-      snprintf( buf, MSL, "%s n%i", pMobIndex->player_name, pMobIndex->count + 1 );
+      snprintf( buf, MSL, "%s n%i", pMobIndex->player_name, 1 );
 #else
-      snprintf( buf, MSL, "n%i %s", pMobIndex->count + 1, pMobIndex->player_name );
+      snprintf( buf, MSL, "n%i %s", 1, pMobIndex->player_name );
 #endif
 
    }
@@ -2694,7 +2703,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->next = NULL;
    mob->prev = NULL;
    LINK( mob, first_char, last_char, next, prev );
-   pMobIndex->count++;
 
 //  Create group data for mob
 
@@ -2726,7 +2734,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
  */
 OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 {
-   static OBJ_DATA obj_zero;
    OBJ_DATA *obj;
    AFFECT_DATA *af;
    AFFECT_DATA *new_af;
@@ -2744,8 +2751,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
       hang( "Creating Objext in db.c" );
    }
 
-   GET_FREE( obj, obj_free );
-   *obj = obj_zero;
+   obj = new OBJ_DATA;
    obj->pIndexData = pObjIndex;
    obj->in_room = NULL;
    if( pObjIndex->level < 3 )
@@ -2909,7 +2915,6 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 
 
    LINK( obj, first_obj, last_obj, next, prev );
-   pObjIndex->count++;
 
    return obj;
 }

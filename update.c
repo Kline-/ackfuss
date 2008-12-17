@@ -1749,7 +1749,7 @@ void obj_update( void )
     * only a marker, and will not actually be processed by this
     * routine.
     */
-   GET_FREE( marker, obj_free );
+   marker = new OBJ_DATA;
    LINK( marker, first_obj, last_obj, next, prev );
 
    /*
@@ -1856,7 +1856,7 @@ void obj_update( void )
     * put it back on the free list.
     */
    UNLINK( marker, first_obj, last_obj, next, prev );
-   PUT_FREE( marker, obj_free );
+   delete marker;
 
    disable_timer_abort = FALSE;
    return;

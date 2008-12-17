@@ -1925,7 +1925,7 @@ void nuke_exit_resets( ROOM_INDEX_DATA * pRoomIndex, int door )
          PUT_FREE( pList, build_free );
 
          UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
-         PUT_FREE( pReset, reset_free );
+         delete pReset;
       }
    }
 }
@@ -3598,7 +3598,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
    /*
     * Now create new pReset 
     */
-   GET_FREE( pReset, reset_free );
+   pReset = new RESET_DATA;
    pReset->command = command;
    pReset->arg1 = rarg1;
    pReset->arg2 = rarg2;
@@ -3712,7 +3712,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
       PUT_FREE( pList, build_free );
 
       UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
-      PUT_FREE( pReset, reset_free );
+      delete pReset;
 
       /*
        * free any give/equip resets following it 
@@ -3728,7 +3728,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
          PUT_FREE( pList, build_free );
 
          UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
-         PUT_FREE( pReset, reset_free );
+         delete pReset;
       }
    }
    else
@@ -3742,7 +3742,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
       PUT_FREE( pList, build_free );
 
       UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
-      PUT_FREE( pReset, reset_free );
+      delete pReset;
    }
 
    send_to_char( "Done.\n\r", ch );
@@ -4027,7 +4027,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
          if( found )
          {
             UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
-            PUT_FREE( pReset, reset_free );
+            delete pReset;
             top_reset--;
          }
       }
@@ -4218,7 +4218,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
          if( found )
          {
             UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
-            PUT_FREE( pReset, reset_free );
+            delete pReset;
             top_reset--;
          }
       }
@@ -4416,7 +4416,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
          if( found )
          {
             UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
-            PUT_FREE( pReset, reset_free );
+            delete pReset;
             top_reset--;
          }
       }
