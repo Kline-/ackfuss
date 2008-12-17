@@ -932,7 +932,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
                  ( obj == NULL ) ? ( IS_NPC( ch ) ? ch->short_descr : ch->name ) : obj->short_descr, skill_table[sn].name );
         if( ch->level < 82 )
          monitor_chan( buf, MONITOR_MAGIC );
-        log_f( buf );
+        log_f( "%s", buf );
         dam = sysdata.damcap;
      }
 

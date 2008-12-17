@@ -197,6 +197,7 @@ obj_index_data::obj_index_data()
 
 pc_data::pc_data()
 {
+ header = &str_empty[0];
  is_free = false;
 }
 

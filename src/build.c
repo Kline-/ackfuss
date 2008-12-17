@@ -5687,7 +5687,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
   while( fgets(buf1,MSL,fp) )
   {
    if( buf2[0] == '\0' )
-    snprintf(buf2,MSL,buf1);
+    snprintf(buf2,MSL,"%s",buf1);
    else
     strncat(buf2,buf1,MSL);
   }

@@ -4929,7 +4929,7 @@ void do_test( CHAR_DATA * ch, char *argument )
 */
  char buf[MSL];
 
- snprintf(buf,MSL,search_helps(argument));
+ snprintf(buf,MSL,"%s",search_helps(argument));
  send_to_char(buf,ch);
 }
 

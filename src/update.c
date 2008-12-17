@@ -1450,7 +1450,7 @@ void char_update( void )
                               "ERROR in expiring item %s(%s %d): item has a replace vnum set (%d), but that is not a valid item.",
                               obj->name, obj->pIndexData->area->keyword, obj->pIndexData->vnum, obj->value[6] );
                      monitor_chan( bug_buf, MONITOR_OBJ );
-                     log_f( bug_buf );
+                     log_f( "%s", bug_buf );
                   }
                   else
                   {
@@ -1834,7 +1834,7 @@ void obj_update( void )
                      "ERROR in expiring item %s(%s %d): item has a replace vnum set (%d), but that is not a valid item.",
                      obj->name, obj->pIndexData->area->keyword, obj->pIndexData->vnum, obj->value[6] );
             monitor_chan( bug_buf, MONITOR_OBJ );
-            log_f( bug_buf );
+            log_f( "%s", bug_buf );
          }
          else
          {

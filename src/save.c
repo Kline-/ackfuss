@@ -260,7 +260,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    int foo;
    char time_buf[MSL];
 
-   snprintf(time_buf,MSL,ctime(&current_time)); /* ctime adding a newline annoyed me --Kline */
+   snprintf(time_buf,MSL,"%s",ctime(&current_time)); /* ctime adding a newline annoyed me --Kline */
    time_buf[strlen(time_buf)-1] = '\0';
 
    /*

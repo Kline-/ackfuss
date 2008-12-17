@@ -79,7 +79,7 @@ void load_social_table(  )
    int i;
 
    snprintf(log_buf,(2 * MIL),"Loading %s",SOCIAL_FILE);
-   log_f(log_buf);
+   log_f("%s",log_buf);
 
    fp = file_open( SOCIAL_FILE, "r" );
 

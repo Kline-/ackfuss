@@ -204,7 +204,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
                ( *buf_data->returnfunc ) ( buf_data->returnparm, dest, ch, TRUE );
             if( ch->pcdata->header != NULL ) /* File passed from helpedit */
             {
-             fprintf(fp,buf);
+             fprintf(fp,"%s",buf);
              file_close(fp);
             }
          }

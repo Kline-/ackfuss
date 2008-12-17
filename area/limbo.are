@@ -1,497 +1,1 @@
-#AREA
-Revision  22
-CanRead   Kline~
-CanWrite  Kline~
-Flags     2 4 EOL
-Keyword   none~
-LevLabel  @@R[@@eSYSTEM@@R]@@N~
-LevRange  1 120
-Name      Limbo~
-Number    1
-Owner     Kline~
-ResetMsg  off~
-ResetRate 15
-VnumRange 1 100
-End
-
-#ROOM
-Vnum  1
-Desc  You are floating in a formless void; detached from all sensation of physical matter. A swirling, glowing, light surrounds you as it  fades into the darkness around you without any trace of edges or shadow.~
-Flags 3 4 5 9 11 15 17 18 EOL
-Name  @@WLimbo@@N~
-Sect  11
-End
-#REXTRA
-Desc       There are steaming puff-droppings here.~
-Keyword    dropping~
-End
-
-#ROOM
-Vnum  2
-Desc  Unfortunately you have been transferred to jail for breaking one of our rules.  We are very laid back here but certain things must be adhered to. As you look around this cold, damp, bleak looking cell take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful realm.~
-Flags 3 4 5 9 11 14 15 17 18 19 EOL
-Name  @@dJail@@N~
-Sect  11
-End
-
-#MOBILE
-Vnum      1
-AcMod     0
-Act       17 19 29 30 EOL
-Affected  524288
-Alignment 0
-Cast      0
-Clan      0
-Class     3
-Def       0
-Desc      ~
-DrMod     0
-HrMod     0
-Level     1
-LongDesc  Puff the Fractal Dragon is here, contemplating a higher reality.~
-PCast     0
-PlrName   puff fractal dragon~
-Position  0
-PSkills   0
-Race      8
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc Puff~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
-End
-
-#MOBILE
-Vnum      2
-AcMod     0
-Act       17 18 19 21 29 30 EOL
-Affected  1680062
-Alignment -1000
-Cast      1024
-Clan      0
-Class     2
-Def       0
-Desc      The Dark Stalker is a product of the Dark Powers.  It's only purpose in life is to search out it's victim, and try and kill it. It looks dark, powerful, and ready to kill.~
-DrMod     0
-HrMod     0
-Level     80
-LongDesc  A Dark Stalker stands here, searching for it's prey.~
-PCast     0
-PlrName   dark stalker~
-Position  0
-PSkills   0
-Race      0
-RaceMods  66049
-Resist    0
-Sex       1
-ShortDesc the Dark Stalker~
-Skills    17928
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
-End
-
-#OBJECT
-Vnum       1
-Durability 9
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   One miserable gold coin.~
-Name       coin gold~
-ObjFun     (null)
-ShortDesc  a gold coin~
-Speed      4.00
-Type       20
-Values     1 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       2
-Durability 67
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   A pile of gold coins.~
-Name       coins gold~
-ObjFun     (null)
-ShortDesc  %d gold coins~
-Speed      1.01
-Type       20
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       3
-Durability 8
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   The corpse of %s is lying here.~
-Name       corpse~
-ObjFun     (null)
-ShortDesc  corpse of %s~
-Speed      4.00
-Type       23
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       4
-Durability 31
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   The corpse of %s is lying here.~
-Name       corpse~
-ObjFun     (null)
-ShortDesc  corpse of %s~
-Speed      4.00
-Type       24
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       5
-Durability 42
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   The severed head of %s is lying here.~
-Name       head~
-ObjFun     (null)
-ShortDesc  head of %s~
-Speed      3.20
-Type       13
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       6
-Durability 31
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   The torn-out heart of %s is lying here.~
-Name       heart~
-ObjFun     (null)
-ShortDesc  heart of %s~
-Speed      3.32
-Type       13
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       7
-Durability 14
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   The sliced-off arm of %s is lying here.~
-Name       arm~
-ObjFun     (null)
-ShortDesc  arm of %s~
-Speed      3.12
-Type       13
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       8
-Durability 86
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   The sliced-off leg of %s is lying here.~
-Name       leg~
-ObjFun     (null)
-ShortDesc  leg of %s~
-Speed      3.00
-Type       13
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       9
-Durability 95
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   The sloppy brain of %s has plopped out here.~
-Name       sloppy brain~
-ObjFun     (null)
-ShortDesc  sloppy brain of %s~
-Speed      4.00
-Type       13
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       10
-Durability 46
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   A delicious @@am@@ya@@ag@@yi@@ac @@mm@@pu@@mshr@@poo@@mm@@N is here.~
-Name       magic mushroom~
-ObjFun     (null)
-ShortDesc  a @@aM@@ya@@ag@@yi@@ac @@mM@@pu@@mshr@@poo@@mm@@N~
-Speed      3.04
-Type       19
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       11
-Durability 82
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   A @@ybright@@N ball of @@blight@@N shimmers in the air.~
-Name       bright ball light~
-ObjFun     (null)
-ShortDesc  a @@ybright@@N ball of @@blight@@N~
-Speed      2.21
-Type       1
-Values     0 0 -1 0 0 0 0 0 0 0 
-WearFlags  16 24 EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       12
-Durability 18
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@lspr@@Bi@@lng@@N flows from the ground here.~
-Name       magical spring~
-ObjFun     (null)
-ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@lspr@@Bi@@lng@@N~
-Speed      2.30
-Type       25
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       13
-Durability 42
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@Wwindow@@N floats before you. Where does it look?~
-Name       magical window~
-ObjFun     (null)
-ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@Wwindow@@N~
-Speed      2.44
-Type       7
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       14
-Durability 55
-ExtraFlags 1 3 7 EOL
-ItemApply  257
-Level      50
-LongDesc   @@Ra F@@ei@@Rr@@ee @@RBl@@ea@@Rd@@ee@@N smolders on the ground.~
-Name       fireblade fire blade~
-ObjFun     (null)
-ShortDesc  @@Ra F@@ei@@Rr@@ee @@RBl@@ea@@Rd@@ee@@N~
-Speed      2.80
-Type       5
-Values     0 0 0 3 0 0 0 0 0 0 
-WearFlags  16 24 EOL
-Weight     1
-End
-#OAFFECT
-Location   19
-Modifier   35
-End
-#OAFFECT
-Location   18
-Modifier   26
-End
-
-#OBJECT
-Vnum       15
-Durability 46
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   A small @@bb@@yu@@bndl@@ye @@Nof @@Gf@@roo@@Gd@@N sits here.
-~
-Name       small food bundle~
-ObjFun     (null)
-ShortDesc  a small @@bb@@yu@@bndl@@ye @@Nof @@Gf@@roo@@Gd@@N~
-Speed      2.13
-Type       19
-Values     5 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       16
-Durability 34
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@cbe@@aa@@cc@@ao@@cn@@N floats gently before you.
-~
-Name       magical beacon~
-ObjFun     (null)
-ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@cbe@@aa@@cc@@ao@@cn@@N~
-Speed      1.44
-Type       6
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       17
-Durability 4
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   ~
-Name       magical portal~
-ObjFun     (null)
-ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@bp@@yo@@brt@@ya@@bl@@N~
-Speed      4.00
-Type       7
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       19
-Durability 52
-ExtraFlags 1 2 EOL
-ItemApply  1
-Level      1
-LongDesc   @@dA small, living figurine lies here, groaning in agony@@N.
-~
-Name       soul figurine~
-ObjFun     objfun_soul_moan
-ShortDesc  @@da small, living figurine@@N~
-Speed      4.00
-Type       28
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       18
-Durability 27
-ExtraFlags 1 2 EOL
-ItemApply  1
-Level      1
-LongDesc   @@dA flask filled with an @@eevil@@d dark liquid lies here, screaming faintly.@@N
-~
-Name       soul potion~
-ObjFun     (null)
-ShortDesc  @@dA @@eSoul @@dPotion@@N~
-Speed      1.33
-Type       10
-Values     70 118 221 56 0 0 0 0 0 0 
-WearFlags  24 EOL
-Weight     1
-End
-
-#OBJECT
-Vnum       20
-Durability 48
-ExtraFlags 1 7 20 EOL
-ItemApply  1
-Level      120
-LongDesc   A staff of @@RE@@el@@lem@@Be@@an@@Wtal Expl@@ao@@Bs@@li@@eo@@Rn@@N glows brightly.
-~
-Name       staff elemental explosion~
-ObjFun     (null)
-ShortDesc  a staff of @@RE@@el@@lem@@Be@@an@@Wtal Expl@@ao@@Bs@@li@@eo@@Rn@@N~
-Speed      1.01
-Type       4
-Values     120 10 10 242 0 0 0 0 0 0 
-WearFlags  16 24 EOL
-Weight     1
-End
-#OAFFECT
-Location   17
-Modifier   -175
-End
-#OAFFECT
-Location   13
-Modifier   88
-End
-#OAFFECT
-Location   24
-Modifier   -10
-End
-
-#OBJECT
-Vnum       21
-Durability 30
-ExtraFlags EOL
-ItemApply  1
-Level      80
-LongDesc   @@dA @@lSecurity @@dPass@@N lies here discarded.
-~
-Name       security pass~
-ObjFun     (null)
-ShortDesc  @@lSecurity @@dPass@@N~
-Speed      2.33
-Type       9
-Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  16 24 EOL
-Weight     1
-End
-#OAFFECT
-Location   17
-Modifier   -117
-End
-#OAFFECT
-Location   13
-Modifier   58
-End
-#OAFFECT
-Location   24
-Modifier   -7
-End
-#RESETS
-M 1 1 1 (null)
-
-S
-#$
+#AREARevision  22CanRead   Kline~CanWrite  Kline~Flags     2 4 EOLKeyword   none~LevLabel  @@R[@@eSYSTEM@@R]@@N~LevRange  1 120Name      Limbo~Number    1Owner     Kline~ResetMsg  off~ResetRate 15VnumRange 1 100End#ROOMVnum  1Desc  You are floating in a formless void; detached from all sensation of physical matter. A swirling, glowing, light surrounds you as it  fades into the darkness around you without any trace of edges or shadow.~Flags 3 4 5 9 11 15 17 18 EOLName  @@WLimbo@@N~Sect  11End#REXTRADesc       There are steaming puff-droppings here.~Keyword    dropping~End#ROOMVnum  2Desc  Unfortunately you have been transferred to jail for breaking one of our rules.  We are very laid back here but certain things must be adhered to. As you look around this cold, damp, bleak looking cell take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful realm.~Flags 3 4 5 9 11 14 15 17 18 19 EOLName  @@dJail@@N~Sect  11End#MOBILEVnum      1AcMod     0Act       17 19 29 30 EOLAffected  524288Alignment 0Cast      0Clan      0Class     3Def       0Desc      ~DrMod     0HrMod     0Level     1LongDesc  @@yP@@buff @@dthe @@aM@@cagic @@rD@@Gragon @@dfly's around lazily in the void...@@N~PCast     0PlrName   puff magic dragon~Position  0PSkills   0Race      8RaceMods  0Resist    0Sex       1ShortDesc @@yP@@buff @@dthe @@aM@@cagic @@rD@@Gragon@@N~Skills    0SMagic    0SpecFun   (null)Suscept   0WMagic    0End#MOBILEVnum      2AcMod     0Act       17 18 19 21 29 30 EOLAffected  1680062Alignment -1000Cast      1024Clan      0Class     2Def       0Desc      The Dark Stalker is a product of the Dark Powers.  It's only purpose in life is to search out it's victim, and try and kill it. It looks dark, powerful, and ready to kill.~DrMod     0HrMod     0Level     80LongDesc  A Dark Stalker stands here, searching for it's prey.~PCast     0PlrName   dark stalker~Position  0PSkills   0Race      0RaceMods  66049Resist    0Sex       1ShortDesc the Dark Stalker~Skills    17928SMagic    0SpecFun   (null)Suscept   0WMagic    0End#OBJECTVnum       1Durability 9ExtraFlags EOLItemApply  1Level      1LongDesc   One miserable gold coin.~Name       coin gold~ObjFun     (null)ShortDesc  a gold coin~Speed      4.00Type       20Values     1 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       2Durability 67ExtraFlags EOLItemApply  1Level      1LongDesc   A pile of gold coins.~Name       coins gold~ObjFun     (null)ShortDesc  %d gold coins~Speed      1.01Type       20Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       3Durability 8ExtraFlags EOLItemApply  1Level      1LongDesc   The corpse of %s is lying here.~Name       corpse~ObjFun     (null)ShortDesc  corpse of %s~Speed      4.00Type       23Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       4Durability 31ExtraFlags EOLItemApply  1Level      1LongDesc   The corpse of %s is lying here.~Name       corpse~ObjFun     (null)ShortDesc  corpse of %s~Speed      4.00Type       24Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       5Durability 42ExtraFlags EOLItemApply  1Level      1LongDesc   The severed head of %s is lying here.~Name       head~ObjFun     (null)ShortDesc  head of %s~Speed      3.20Type       13Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       6Durability 31ExtraFlags EOLItemApply  1Level      1LongDesc   The torn-out heart of %s is lying here.~Name       heart~ObjFun     (null)ShortDesc  heart of %s~Speed      3.32Type       13Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       7Durability 14ExtraFlags EOLItemApply  1Level      1LongDesc   The sliced-off arm of %s is lying here.~Name       arm~ObjFun     (null)ShortDesc  arm of %s~Speed      3.12Type       13Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       8Durability 86ExtraFlags EOLItemApply  1Level      1LongDesc   The sliced-off leg of %s is lying here.~Name       leg~ObjFun     (null)ShortDesc  leg of %s~Speed      3.00Type       13Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       9Durability 95ExtraFlags EOLItemApply  1Level      1LongDesc   The sloppy brain of %s has plopped out here.~Name       sloppy brain~ObjFun     (null)ShortDesc  sloppy brain of %s~Speed      4.00Type       13Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       10Durability 46ExtraFlags EOLItemApply  1Level      1LongDesc   A delicious @@am@@ya@@ag@@yi@@ac @@mm@@pu@@mshr@@poo@@mm@@N is here.~Name       magic mushroom~ObjFun     (null)ShortDesc  a @@aM@@ya@@ag@@yi@@ac @@mM@@pu@@mshr@@poo@@mm@@N~Speed      3.04Type       19Values     0 0 0 0 0 0 0 0 0 0 WearFlags  24 EOLWeight     1End#OBJECTVnum       11Durability 82ExtraFlags EOLItemApply  1Level      1LongDesc   A @@ybright@@N ball of @@blight@@N shimmers in the air.~Name       bright ball light~ObjFun     (null)ShortDesc  a @@ybright@@N ball of @@blight@@N~Speed      2.21Type       1Values     0 0 -1 0 0 0 0 0 0 0 WearFlags  16 24 EOLWeight     1End#OBJECTVnum       12Durability 18ExtraFlags EOLItemApply  1Level      1LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@lspr@@Bi@@lng@@N flows from the ground here.~Name       magical spring~ObjFun     (null)ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@lspr@@Bi@@lng@@N~Speed      2.30Type       25Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       13Durability 42ExtraFlags EOLItemApply  1Level      1LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@Wwindow@@N floats before you. Where does it look?~Name       magical window~ObjFun     (null)ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@Wwindow@@N~Speed      2.44Type       7Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       14Durability 55ExtraFlags 1 3 7 EOLItemApply  257Level      50LongDesc   @@Ra F@@ei@@Rr@@ee @@RBl@@ea@@Rd@@ee@@N smolders on the ground.~Name       fireblade fire blade~ObjFun     (null)ShortDesc  @@Ra F@@ei@@Rr@@ee @@RBl@@ea@@Rd@@ee@@N~Speed      2.80Type       5Values     0 0 0 3 0 0 0 0 0 0 WearFlags  16 24 EOLWeight     1End#OAFFECTLocation   19Modifier   35End#OAFFECTLocation   18Modifier   26End#OBJECTVnum       15Durability 46ExtraFlags EOLItemApply  1Level      1LongDesc   A small @@bb@@yu@@bndl@@ye @@Nof @@Gf@@roo@@Gd@@N sits here.~Name       small food bundle~ObjFun     (null)ShortDesc  a small @@bb@@yu@@bndl@@ye @@Nof @@Gf@@roo@@Gd@@N~Speed      2.13Type       19Values     5 0 0 0 0 0 0 0 0 0 WearFlags  24 EOLWeight     1End#OBJECTVnum       16Durability 34ExtraFlags EOLItemApply  1Level      1LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@cbe@@aa@@cc@@ao@@cn@@N floats gently before you.~Name       magical beacon~ObjFun     (null)ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@cbe@@aa@@cc@@ao@@cn@@N~Speed      1.44Type       6Values     0 0 0 0 0 0 0 0 0 0 WearFlags  24 EOLWeight     1End#OBJECTVnum       17Durability 4ExtraFlags EOLItemApply  1Level      1LongDesc   ~Name       magical portal~ObjFun     (null)ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@bp@@yo@@brt@@ya@@bl@@N~Speed      4.00Type       7Values     0 0 0 0 0 0 0 0 0 0 WearFlags  EOLWeight     1End#OBJECTVnum       19Durability 52ExtraFlags 1 2 EOLItemApply  1Level      1LongDesc   @@dA small, living figurine lies here, groaning in agony@@N.~Name       soul figurine~ObjFun     objfun_soul_moanShortDesc  @@da small, living figurine@@N~Speed      4.00Type       28Values     0 0 0 0 0 0 0 0 0 0 WearFlags  24 EOLWeight     1End#OBJECTVnum       18Durability 27ExtraFlags 1 2 EOLItemApply  1Level      1LongDesc   @@dA flask filled with an @@eevil@@d dark liquid lies here, screaming faintly.@@N~Name       soul potion~ObjFun     (null)ShortDesc  @@dA @@eSoul @@dPotion@@N~Speed      1.33Type       10Values     70 118 221 56 0 0 0 0 0 0 WearFlags  24 EOLWeight     1End#OBJECTVnum       20Durability 48ExtraFlags 1 7 20 EOLItemApply  1Level      120LongDesc   A staff of @@RE@@el@@lem@@Be@@an@@Wtal Expl@@ao@@Bs@@li@@eo@@Rn@@N glows brightly.~Name       staff elemental explosion~ObjFun     (null)ShortDesc  a staff of @@RE@@el@@lem@@Be@@an@@Wtal Expl@@ao@@Bs@@li@@eo@@Rn@@N~Speed      1.01Type       4Values     120 10 10 242 0 0 0 0 0 0 WearFlags  16 24 EOLWeight     1End#OAFFECTLocation   17Modifier   -175End#OAFFECTLocation   13Modifier   88End#OAFFECTLocation   24Modifier   -10End#OBJECTVnum       21Durability 30ExtraFlags EOLItemApply  1Level      80LongDesc   @@dA @@lSecurity @@dPass@@N lies here discarded.~Name       security pass~ObjFun     (null)ShortDesc  @@lSecurity @@dPass@@N~Speed      2.33Type       9Values     0 0 0 0 0 0 0 0 0 0 WearFlags  16 24 EOLWeight     1End#OAFFECTLocation   17Modifier   -117End#OAFFECTLocation   13Modifier   58End#OAFFECTLocation   24Modifier   -7End#RESETSM 1 1 1 (null)S#$

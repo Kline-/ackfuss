@@ -3259,7 +3259,7 @@ void do_donate( CHAR_DATA * ch, char *argument )
    if( ( room = get_room_index( place_to_put_it ) ) == NULL )
    {
       snprintf( log_buf, (2 * MIL), "No valid donation room: %d", place_to_put_it );
-      log_f( log_buf );
+      log_f( "%s", log_buf );
       send_to_char( "System Error.  Contact an Administrator.\n\r", ch );
       return;
    }
@@ -3518,7 +3518,7 @@ void do_cdonate( CHAR_DATA * ch, char *argument )
    if( ( room = get_room_index( place_to_put_it ) ) == NULL )
    {
       snprintf( log_buf, (2 * MIL), "Cdonate: no valid room for vnum %d", place_to_put_it );
-      log_f( log_buf );
+      log_f( "%s", log_buf );
       send_to_char( "Invalid Clan Donation Room.  Please contact an Administrator.\n\r", ch );
       return;
    }
