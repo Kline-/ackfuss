@@ -174,9 +174,9 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
       CHAR_DATA *ch;
 
       if( !str_prefix(argument,"quit") )
-         save = 0;
+         save = false;
       else
-         save = 1;
+         save = true;
 
       dest = buf_data->dest;
       ch = buf_data->ch;
@@ -187,6 +187,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
 
       if( save )
       {
+       log_f("%s",ch->pcdata->header);
          /*
           * Check that dest still points to buf (to check for corruption) 
           */
@@ -198,7 +199,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
          else
          {
           FILE *fp = NULL;
-            if( ch->pcdata->header != NULL ) /* File passed from helpedit */
+            if( ch->pcdata->header != &str_empty[0] ) /* File passed from helpedit */
             {
              if( (fp = file_open(ch->pcdata->header,"w")) == NULL )
              {
@@ -210,7 +211,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
             *dest = str_dup( buf );
             if( ( buf_data->returnfunc ) != NULL )
                ( *buf_data->returnfunc ) ( buf_data->returnparm, dest, ch, TRUE );
-            if( ch->pcdata->header != NULL ) /* File passed from helpedit */
+            if( ch->pcdata->header != &str_empty[0] ) /* File passed from helpedit */
             {
              fprintf(fp,"%s",buf);
              file_close(fp);
