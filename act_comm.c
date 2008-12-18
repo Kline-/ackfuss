@@ -753,7 +753,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                   break;
 
             } //switch
-            act( ansi, ch, argument, vch, TO_VICT );
+            act( ansi, ch, IS_GHOST(ch) ? IS_GHOST(vch) ? argument : ghost_text(argument) : argument, vch, TO_VICT );
             vch->position = position;
          } //if connected
       } //d loop
@@ -1046,7 +1046,7 @@ void do_say( CHAR_DATA * ch, char *argument )
    for( ppl = ch->in_room->first_person; ppl != NULL; ppl = ppl->next_in_room )
    {
       snprintf( buf, MSL, "$n says '%s$t%s'.", color_string( ppl, "say" ), color_string( ppl, "normal" ) );
-      act( buf, ch, argument, ppl, TO_VICT );
+      act( buf, ch, IS_GHOST(ch) ? IS_GHOST(ppl) ? argument : ghost_text(argument) : argument, ppl, TO_VICT );
    }
    mprog_speech_trigger( argument, ch );
    return;
@@ -2684,6 +2684,24 @@ void do_tongue( CHAR_DATA * ch, char *argument )
    return;
 }
 
+
+char *ghost_text( char *argument )
+{
+ static char buf[MSL];
+ unsigned int i = 0;
+
+ buf[0] = '\0';
+
+ for( i = 0; i < strlen(argument); i++ )
+ {
+  if( number_range(1,2) == 1 )
+   strncat(buf,"o",MSL);
+  else
+   strncat(buf,"O",MSL);
+ }
+
+ return buf;
+}
 
 char *slur_text( char *argument )
 {

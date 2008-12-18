@@ -7138,3 +7138,31 @@ bool spell_mystical_focus( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
 
    return TRUE;
 }
+
+bool spell_redemption( int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj )
+{
+ CHAR_DATA *victim = (CHAR_DATA *) vo;
+
+ if( ch == victim )
+ {
+  send_to_char("You can't redeem yourself!\n\r",ch);
+  return false;
+ }
+ if( !IS_GHOST(victim) )
+ {
+  send_to_char("You can't redeem someone who isn't dead!\n\r",ch);
+  return false;
+ }
+
+ act("A beam of holy light emanates from $n's hands, engulfing the body of $N!", ch, NULL, victim, TO_NOTVICT );
+ act("A beam of holy light emanates from your hands, engulfing the body of $N!", ch, NULL, victim, TO_CHAR );
+ act("A beam of holy light emanates from $n's hands, engulfing your body!", ch, NULL, victim, TO_VICT );
+
+ resurrect(victim);
+ victim->hit += number_range(level,level*2);
+ victim->mana += number_range(level,level*2);
+ victim->move += number_range(level,level*2);
+ update_pos(victim);
+
+ return true;
+}

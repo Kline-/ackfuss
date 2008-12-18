@@ -375,6 +375,14 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
  * Zen  WOLF
  *
  */
+   if( IS_GHOST(victim) )
+   {
+    buf[0] = '\0';
+    snprintf(buf,MSL,"@@d(@@gGhost@@d) @@N%s floats here morbidly.\n\r", PERS(victim,ch) );
+    send_to_char(buf,ch);
+    return;
+   }
+
    if( !IS_NPC( victim ) && IS_WOLF( victim ) )
    {
       if( IS_SHIFTED( victim ) )
@@ -749,14 +757,12 @@ void do_look( CHAR_DATA * ch, char *argument )
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
    char out[MAX_STRING_LENGTH];
-   CHAR_DATA *ppl;
    ROOM_INDEX_DATA *room;
    EXIT_DATA *pexit;
    CHAR_DATA *victim;
    OBJ_DATA *obj;
    char pdesc[MSL];
    int door;
-   bool found;
    buf[0] = '\0';
    out[0] = '\0';
 

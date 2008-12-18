@@ -2943,6 +2943,15 @@ const struct skill_type skill_table[MAX_SKILL] = {
     "", "Your lose your mystical focus.",
     "$N shakes his head, and seems less focused."},
 
+   {
+    MORTAL, NORM,
+    "redemption", {82, 15, 82, 82, 82},
+    spell_redemption, TAR_CHAR_DEFENSIVE, POS_STANDING,
+    NULL, SLOT( 678 ), 200, 275,
+    "", "!Redemption!",
+    ""},
+
+
 };
 
 const char *compass_name[] = {

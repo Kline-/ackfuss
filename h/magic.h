@@ -233,6 +233,7 @@ bool spell_poison_quinine P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DA
 bool spell_poison_arsenic P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
 bool spell_sonic_blast P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
 bool spell_mystical_focus P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
+bool spell_redemption P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
 
 #undef P_
 

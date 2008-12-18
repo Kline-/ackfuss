@@ -247,11 +247,9 @@
 #define ROOM_VNUM_CHAT             301
 #define ROOM_VNUM_HALLS            302
 #define ROOM_VNUM_TEMPLE           3001
-#define ROOM_VNUM_ALTAR            3054
+#define ROOM_VNUM_ALTAR            ROOM_VNUM_HALLS
 #define ROOM_VNUM_SCHOOL           3700
 #define ROOM_VNUM_DONATION         3206
-#define ROOM_VNUM_MORGUE           3300
-#define ROOM_VNUM_MORIBUND         3301
 #define ROOM_VNUM_BUILDER	   1019  /* Bulder-flagged players only */
 #define ROOM_VNUM_CLAN		   1022  /* for leaders only */
 #define ROOM_VNUM_DM_RECALL        3001
@@ -610,7 +608,7 @@
 /* 
  * ACT bits for players and mobs. Uses a bitset.
  * I realize this could be an enum, but this allows comments next
- * to each define and, imo, is easier to erad if you add/remove one.
+ * to each define and, imo, is easier to read if you add/remove one.
  * --Kline
  */
 #define ACT_NONE         0    /* Empty, don't use               */
@@ -689,6 +687,7 @@
 #define ACT_JUSTIFY      73   /* Justify text so it's prettier  */
 #define ACT_AUTODIG      74   /* Automatically dig in builder   */
 #define ACT_AUTOBRIEF    75   /* Hide room descrs on speedwalk  */
+#define ACT_GHOST        76   /* You're dead! A ghost!          */
 
 /*
  * Channel bits.

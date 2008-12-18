@@ -742,11 +742,16 @@ void do_give( CHAR_DATA * ch, char *argument )
       return;
    }
 
-
    if( ( victim = get_char_room( ch, victim_name ) ) == NULL )
    {
       send_to_char( "They aren't here.\n\r", ch );
       return;
+   }
+
+   if( IS_GHOST(victim) )
+   {
+    send_to_char("You can't seem to trade with the dead...\n\r",ch);
+    return;
    }
 
    if( str_prefix( "1 all", object_list ) && str_prefix( "all.", object_list ) )
@@ -2439,6 +2444,12 @@ void do_steal( CHAR_DATA * ch, char *argument )
    {
       send_to_char( "That's pointless.\n\r", ch );
       return;
+   }
+
+   if( IS_GHOST(victim) )
+   {
+    send_to_char("You can't seem to steal from the dead...\n\r",ch);
+    return;
    }
 
    WAIT_STATE( ch, skill_table[gsn_steal].beats );

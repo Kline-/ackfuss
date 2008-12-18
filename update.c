@@ -44,6 +44,10 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
 #ifndef DEC_ACT_MOVE_H
 #include "h/act_move.h"
 #endif
@@ -1389,6 +1393,21 @@ void char_update( void )
       ch_next = ch->next;
       if( ch->is_free != FALSE )
          continue;
+
+      if( IS_GHOST(ch) )
+      {
+       if( ch->death_cnt > 0 )
+        ch->death_cnt--;
+       if( ch->death_cnt == 0 )
+       {
+        char_from_room(ch);
+        char_to_room(ch,get_room_index(ROOM_VNUM_ALTAR));
+        send_to_char("The gods have taken pity upon your ghostly plight...\n\r",ch);
+        resurrect(ch);
+        do_mpcr(ch,ch->name);
+        do_look(ch,"auto");
+       }
+      }
 
       if( !IS_NPC( ch ) && IS_WOLF( ch ) )
          gain_rage( ch );

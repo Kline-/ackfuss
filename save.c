@@ -325,7 +325,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "Note           %ld\n", ch->last_note );
    fprintf( fp, "Room           %d\n",
             ( ch->in_room == get_room_index( ROOM_VNUM_LIMBO )
-              && ch->was_in_room != NULL ) ? ch->was_in_room->vnum : ch->in_room->vnum );
+              && ch->was_in_room != NULL ) ? ch->was_in_room->vnum : ch->in_room == NULL ? get_room_index(ROOM_VNUM_LIMBO)->vnum : ch->in_room->vnum );
 
    fprintf( fp, "HpManaMove     %d %d %d %d %d %d\n", ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move );
 
@@ -368,6 +368,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "Alignment      %d\n", ch->alignment );
    fprintf( fp, "Hitroll        %d\n", ch->hitroll );
    fprintf( fp, "Damroll        %d\n", ch->damroll );
+   fprintf( fp, "DeathCnt       %d\n", ch->death_cnt );
    fprintf( fp, "Armor          %d\n", ch->armor );
    fprintf( fp, "Wimpy          %d\n", ch->wimpy );
 
@@ -550,7 +551,7 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
       fprintf( fp, "%d ", i );
    fprintf( fp, "EOL\n" );
 
-   fprintf( fp, "WearFlags   " );
+   fprintf( fp, "WearFlags    " );
     for( short i = 0; i < MAX_BITSET; i++ )
      if( obj->wear_flags.test(i) )
       fprintf( fp, "%d ", i );
@@ -1161,6 +1162,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
              break;
             }
 
+            KEY("DeathCnt", ch->death_cnt, fread_number(fp) );
             SKEY( "Description", ch->description, fread_string( fp ) );
 
             if( !str_cmp( word, "DimCol" ) && !IS_NPC( ch ) )
@@ -2267,7 +2269,7 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
 {
    EXTRA_DESCR_DATA *ed;
    AFFECT_DATA *paf;
-   int where_vnum = 3300;
+   int where_vnum = ROOM_VNUM_LIMBO;
    short foo;
    /*
     * Slick recursion to write lists backwards,
@@ -2276,10 +2278,8 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
    if( obj->next_in_carry_list != NULL )
       fwrite_corpse( obj->next_in_carry_list, fp, iNest );
 
-   if( obj->in_obj != NULL )
-      where_vnum = 3300;
    if( obj->in_room != NULL )
-      where_vnum = obj->in_room->vnum;
+    where_vnum = obj->in_room->vnum;
 
    if( obj->in_room == NULL && obj->in_obj == NULL )
       obj->in_room = get_room_index( ROOM_VNUM_LIMBO );
@@ -2300,7 +2300,7 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
       fprintf( fp, "%d ", i );
    fprintf( fp, "EOL\n" );
 
-   fprintf( fp, "WearFlags   " );
+   fprintf( fp, "WearFlags    " );
     for( short i = 0; i < MAX_BITSET; i++ )
      if( obj->wear_flags.test(i) )
       fprintf( fp, "%d ", i );

@@ -1791,6 +1791,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    while( ( this_object = ch->last_carry ) != NULL )
       extract_obj( this_object );
 
+   ch->was_in_room = ch->in_room;
    char_from_room( ch );
 
    if( !fPull )
@@ -1802,14 +1803,21 @@ void extract_char( CHAR_DATA * ch, bool fPull )
       }
       else if( !IS_VAMP( ch ) )
       {
-         char_to_room( ch, get_room_index( ROOM_VNUM_MORIBUND ) );
+       char_to_room(ch,ch->was_in_room);
+       ch->act.set(ACT_GHOST);
+       ch->death_cnt = number_range(3,5);
+       send_to_char("Your spirit rises up from your fallen body!\n\r",ch);
+       act("$n's spirit rises up from $s fallen body!",ch,NULL,NULL,TO_ROOM);
       }
       else
       {
          char_to_room( ch, get_room_index( VAMPIRE_RECALL ) );
       }
+      ch->was_in_room = NULL;
       return;
    }
+
+   ch->was_in_room = NULL;
 
    if( ch->desc != NULL && ch->desc->original != NULL )
       do_return( ch, "" );
