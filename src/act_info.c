@@ -1038,17 +1038,17 @@ void do_look( CHAR_DATA * ch, char *argument )
    {
       if( can_see_obj( ch, obj ) )
       {
-         snprintf( pdesc, MSL, "\n\r%s", get_extra_descr( arg1, obj->first_exdesc ) );
-         if( str_cmp( pdesc, "\n\r(null)" ) )
+         snprintf( pdesc, MSL, "\n\r%s\n\r", get_extra_descr( arg1, obj->first_exdesc ) );
+         if( str_cmp( pdesc, "\n\r(null)\n\r" ) )
          {
             send_to_char( pdesc, ch );
             act( "$L$n closely examines $p.", ch, obj, NULL, TO_ROOM );
             return;
          }
 
-         snprintf( pdesc, MSL, "\n\r%s", get_extra_descr( arg1, obj->pIndexData->first_exdesc ) );
+         snprintf( pdesc, MSL, "\n\r%s\n\r", get_extra_descr( arg1, obj->pIndexData->first_exdesc ) );
 
-         if( str_cmp( pdesc, "\n\r(null)" ) )
+         if( str_cmp( pdesc, "\n\r(null)\n\r" ) )
          {
             send_to_char( pdesc, ch );
             act( "$L$n closely examines $p.", ch, obj, NULL, TO_ROOM );
@@ -1067,17 +1067,17 @@ void do_look( CHAR_DATA * ch, char *argument )
    {
       if( can_see_obj( ch, obj ) )
       {
-         snprintf( pdesc, MSL, "\n\r%s", get_extra_descr( arg1, obj->first_exdesc ) );
+         snprintf( pdesc, MSL, "\n\r%s\n\r", get_extra_descr( arg1, obj->first_exdesc ) );
 
-         if( str_cmp( pdesc, "\n\r(null)" ) )
+         if( str_cmp( pdesc, "\n\r(null)\n\r" ) )
          {
             send_to_char( pdesc, ch );
             act( "$L$n closely examines $p.", ch, obj, NULL, TO_ROOM );
             return;
          }
 
-         snprintf( pdesc, MSL, "\n\r%s", get_extra_descr( arg1, obj->pIndexData->first_exdesc ) );
-         if( str_cmp( pdesc, "\n\r(null)" ) )
+         snprintf( pdesc, MSL, "\n\r%s\n\r", get_extra_descr( arg1, obj->pIndexData->first_exdesc ) );
+         if( str_cmp( pdesc, "\n\r(null)\n\r" ) )
          {
             send_to_char( pdesc, ch );
             act( "$L$n closely examines $p.", ch, obj, NULL, TO_ROOM );
@@ -1093,8 +1093,8 @@ void do_look( CHAR_DATA * ch, char *argument )
       }
    }
 
-   snprintf( pdesc, MSL, "\n\r%s", get_extra_descr( arg1, ch->in_room->first_exdesc ) );
-   if( str_cmp( pdesc, "\n\r(null)" ) )
+   snprintf( pdesc, MSL, "\n\r%s\n\r", get_extra_descr( arg1, ch->in_room->first_exdesc ) );
+   if( str_cmp( pdesc, "\n\r(null)\n\r" ) )
    {
       send_to_char( pdesc, ch );
       act( "$L$n closely examines the $t.", ch, arg1, NULL, TO_ROOM );

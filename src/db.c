@@ -2171,7 +2171,6 @@ void reset_area( AREA_DATA * pArea )
       EXIT_DATA *pexit;
       OBJ_DATA *obj;
       OBJ_DATA *obj_to;
-      short num_allowed = 2;
 
       switch ( pReset->command )
       {
@@ -2247,14 +2246,16 @@ void reset_area( AREA_DATA * pArea )
                bug( "Reset_area: 'R': bad vnum %d.", pReset->arg3 );
                continue;
             }
-            num_allowed = ( pReset->arg2 );
+/*
             if( ( count_obj_room( pObjIndex, pRoomIndex->first_content ) > num_allowed )
                 || ( ( count_obj_room( pObjIndex, pRoomIndex->first_content ) > 0 )
                      && ( ( pObjIndex->item_type == ITEM_BOARD )
                           || ( pObjIndex->item_type == ITEM_FOUNTAIN )
                           || ( pObjIndex->item_type == ITEM_FURNITURE )
                           || ( pObjIndex->item_type == ITEM_PORTAL )
-                          || ( pObjIndex->item_type == ITEM_PIECE ) || ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_RARE) ) ) ) )
+                          || ( pObjIndex->item_type == ITEM_PIECE ) || ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_RARE) ) ) ) )*/
+            log_f("count: %d arg2: %d",pReset->count,pReset->arg2);
+            if( pReset->count >= pReset->arg2 );
             {
                last = FALSE;
                break;
