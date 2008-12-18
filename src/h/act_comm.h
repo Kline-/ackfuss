@@ -66,6 +66,7 @@ void do_gtell P_((CHAR_DATA *ch, char *argument));
 void do_pemote P_((CHAR_DATA *ch, char *argument));
 void do_pray P_((CHAR_DATA *ch, char *argument));
 void do_tongue P_((CHAR_DATA *ch, char *argument));
+char *ghost_text P_((char *argument));
 char *slur_text P_((char *argument));
 void do_whisper P_((CHAR_DATA *ch, char *argument));
 void do_ask P_((CHAR_DATA *ch, char *argument));

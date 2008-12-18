@@ -4048,7 +4048,8 @@ void do_mpcr( CHAR_DATA * ch, char *victim )
          found = TRUE;
          obj_from_room( obj );
          obj_to_room( obj, ch->in_room );
-         act( "Got the blighter!", ch, NULL, NULL, TO_CHAR );
+         if( !IS_IMMORTAL(ch) )
+          act( "Got the blighter!", ch, NULL, NULL, TO_CHAR );
 
       }
 
@@ -4058,7 +4059,7 @@ void do_mpcr( CHAR_DATA * ch, char *victim )
     * act used to enable mobiles to check for CR triggers... 
     */
 
-   if( !found )
+   if( !found && !IS_IMMORTAL(ch) )
    {
       act( "Couldn't find it.", ch, NULL, NULL, TO_CHAR );
    }

@@ -235,7 +235,7 @@ ShortDesc  a @@ytoy @@b"@@WHunter@@b" @@Ndoll~
 Speed      2.43
 Type       8
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  16 24 EOL
 Weight     1
 End
 #OEXTRA
@@ -264,7 +264,7 @@ ShortDesc  a @@ytoy @@b"@@WHannah@@b" @@Ndoll~
 Speed      2.00
 Type       8
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  16 24 EOL
 Weight     1
 End
 #OEXTRA

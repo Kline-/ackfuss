@@ -1755,6 +1755,16 @@ void write_to_buffer( DESCRIPTOR_DATA * d, const char *txt, int length )
                   lookup = ch->pcdata->dimcol;
             }
 
+            if( ch != NULL && IS_GHOST(ch) )
+            {
+             switch( number_range(1,3) )
+             {
+              case 1: lookup = 'W';  break; /* white      */
+              case 2: lookup = 'd';  break; /* dark grey  */
+              case 3: lookup = 'g';  break; /* light grey */
+             }
+            }
+
             for( cnt = 0; cnt < MAX_ANSI; cnt++ )
                if( ansi_table[cnt].letter == lookup )
                   break;

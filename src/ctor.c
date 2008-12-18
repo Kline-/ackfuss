@@ -212,6 +212,7 @@ char_data::char_data()
  for( short i = 0; i < MAX_SPEED; i++ )
   speed[i] = 0;
  reset = NULL;
+ death_cnt = -1;
 }
 
 exit_data::exit_data()

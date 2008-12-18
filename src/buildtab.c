@@ -557,6 +557,7 @@ LOOKUP_TYPE tab_player_act[] = {
  {"justify",      ACT_JUSTIFY,      0},
  {"autodig",      ACT_AUTODIG,      0},
  {"autobrief",    ACT_AUTOBRIEF,    0},
+ {"ghost",        ACT_GHOST,        0},
  {NULL, 0}
 };
 

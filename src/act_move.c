@@ -163,7 +163,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          if( ch->mana > mana_cost( ch, skill_lookup( "room dispel" ) ) )
             do_cast( ch, "room dispel" );
       }
-      else
+      else if( !IS_GHOST(ch) )
       {
          send_to_char( "A barely visible energy web stops your movement!\n\r", ch );
          ch->using_named_door = FALSE;
@@ -177,7 +177,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          if( ch->mana > mana_cost( ch, skill_lookup( "room dispel" ) ) )
             do_cast( ch, "room dispel" );
       }
-      else
+      else if( !IS_GHOST(ch) )
       {
          send_to_char( "A fleeting vision of bars appears before the exit, and stops your movement!\n\r", ch );
          ch->using_named_door = FALSE;
@@ -187,7 +187,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
    if( pexit->exit_info.test(EX_CLOSED) )
    {
-      if( !IS_AFFECTED( ch, AFF_PASS_DOOR ) && ( !item_has_apply( ch, ITEM_APPLY_PASS_DOOR ) ) )
+      if( !IS_AFFECTED( ch, AFF_PASS_DOOR ) && ( !item_has_apply( ch, ITEM_APPLY_PASS_DOOR ) ) && !IS_GHOST(ch) )
       {
          if( pexit->exit_info.test(EX_NODETECT) )
             send_to_char( "Alas, you cannot go that way.\n\r", ch );
@@ -279,7 +279,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    }
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_climb] == 0
-       && pexit->exit_info.test(EX_CLIMB) && !IS_AFFECTED( ch, AFF_FLYING ) && !item_has_apply( ch, ITEM_APPLY_FLY ) )
+       && pexit->exit_info.test(EX_CLIMB) && !IS_AFFECTED( ch, AFF_FLYING ) && !item_has_apply( ch, ITEM_APPLY_FLY ) && !IS_GHOST(ch) )
    {
       send_to_char( "You'd need to be able to fly or climb to go that way!\n\r", ch );
       ch->using_named_door = FALSE;
@@ -363,7 +363,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
       {
          if( ( ( !IS_AFFECTED( ch, AFF_FLYING ) )
                && ( !item_has_apply( ch, ITEM_APPLY_FLY ) ) )
-             && ( ( ch->riding != NULL ) && ( !IS_SET( ch->riding->affected_by, AFF_FLYING ) ) ) )
+             && ( ( ch->riding != NULL ) && ( !IS_SET( ch->riding->affected_by, AFF_FLYING ) ) ) && !IS_GHOST(ch) )
          {
 
             if( AI_MOB(ch) && ( ch->mana > mana_cost( ch, skill_lookup( "fly" ) ) ) )
@@ -392,7 +392,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          /*
           * Suggestion for flying above water by Sludge
           */
-         if( ( IS_AFFECTED( ch, AFF_FLYING ) ) || ( item_has_apply( ch, ITEM_APPLY_FLY ) ) )
+         if( ( IS_AFFECTED( ch, AFF_FLYING ) ) || ( item_has_apply( ch, ITEM_APPLY_FLY ) ) || IS_GHOST(ch) )
             found = TRUE;
          if( ( ch->riding != NULL ) && ( IS_SET( ch->riding->affected_by, AFF_FLYING ) ) )
             found = TRUE;
@@ -424,7 +424,8 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
       if( IS_AFFECTED( ch, AFF_FLYING ) || item_has_apply( ch, ITEM_APPLY_FLY ) )
          move = 1;
-
+      if( IS_GHOST(ch) )
+         move = 0;
 
       if( ch->move < move )
       {

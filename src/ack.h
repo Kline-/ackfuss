@@ -670,6 +670,7 @@ class char_data
    NPC_GROUP_DATA *ngroup;
    float speed[MAX_SPEED];
    RESET_DATA *reset;
+   short death_cnt;
 };
 
 
@@ -1221,7 +1222,7 @@ struct cmd_type
    short log;
    short type;   /*added by Aeria for do_commands */
    short show;   /*added by Aeria for do_commands */
-
+   bool ghost_cmd;
 };
 
 

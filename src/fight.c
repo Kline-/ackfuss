@@ -588,6 +588,8 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
     */
    if( ( ch->stance == STANCE_CASTER ) || ( ch->stance == STANCE_WIZARD ) )
       return;
+   if( IS_GHOST(ch) || IS_GHOST(victim) )
+      return;
 
    if( ch->position == POS_RIDING )
    {
@@ -1410,29 +1412,25 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
 bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
 {
+   if( IS_GHOST(ch) || IS_GHOST(victim) )
+      return true;
+
    if( deathmatch )
-      return FALSE;  /* Deathmatch? Anything goes!! */
-
-
-/*we are going to have safe rooms no attacks at all  SRZ 2 Jul 96
-    if ( IS_NPC(ch) || IS_NPC(victim) )
-	return FALSE;
-*/
-
+      return false;  /* Deathmatch? Anything goes!! */
 
    /*
-    * No PC vs. PS attacks in safe rooms 
+    * No PC vs. PC attacks in safe rooms 
     */
    if( ( victim->in_room != NULL ) && victim->in_room->room_flags.test(RFLAG_SAFE) )
    {
       send_to_char( "Not a chance!  This is a safe room.\n\r", ch );
-      return TRUE;
+      return true;
    }
 
    if( victim->act.test(ACT_KILLER ) )
-      return FALSE;
+      return false;
    if( victim->act.test(ACT_THIEF ) )
-      return FALSE;
+      return false;
    /*
     * Vampires are considered PKOK 
     */
@@ -1441,15 +1439,15 @@ bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
        && ( victim->act.test(ACT_PKOK )
             || victim->act.test(ACT_VAMPIRE ) )
        && ( ch->act.test(ACT_PKOK ) || ch->act.test(ACT_VAMPIRE ) ) )
-      return FALSE;
+      return false;
 
    if( ( ( victim->level < 10 ) || ( victim->level + 20 < ch->level ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC( ch ) ) )
    {
       send_to_char( "The Gods prevent your foul deed.\n\r", ch );
-      return TRUE;
+      return true;
    }
 
-   return FALSE;
+   return false;
 }
 
 
@@ -2183,10 +2181,6 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    CHAR_DATA *target = NULL;
    CHAR_DATA *wch;
    char *name;
-   bool leave_corpse = FALSE;
-   /*
-    * int counter, num;   
-    */
 
    one_argument( argument, arg );
 
@@ -2289,10 +2283,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          if( ( target != NULL ) && !IS_NPC( target ) )
          {
             if( ( IS_WOLF( ch ) ) && ( IS_VAMP( target ) || IS_WOLF( target ) ) )
-            {
-               leave_corpse = TRUE;
                corpse->value[0] = 1;
-            }
             if( ch->act.test(ACT_PKOK ) )
                corpse->value[0] = 1;
             if( ch->pcdata->clan > 0 )
@@ -2346,22 +2337,13 @@ void make_corpse( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      if( ( ch->act.test(ACT_PKOK ) )
-          || ( target != NULL && ( target->pcdata->clan != ch->pcdata->clan )
-               && ( politics_data.diplomacy[ch->pcdata->clan][target->pcdata->clan] < -450 ) )
-          || ( ( ch->level > 30 )
-               && ( ch->act.test(ACT_KILLER ) || ch->act.test(ACT_THIEF ) ) ) || ( leave_corpse ) )
-         obj_to_room( corpse, ch->in_room );
-      else
-         obj_to_room( corpse, get_room_index( ROOM_VNUM_MORGUE ) );
-      {
-         CORPSE_DATA *this_corpse;
-         GET_FREE( this_corpse, corpse_free );
-         this_corpse->next = NULL;
-         this_corpse->prev = NULL;
-         this_corpse->this_corpse = corpse;
-         LINK( this_corpse, first_corpse, last_corpse, next, prev );
-      }
+      obj_to_room( corpse, ch->in_room );
+      CORPSE_DATA *this_corpse;
+      GET_FREE( this_corpse, corpse_free );
+      this_corpse->next = NULL;
+      this_corpse->prev = NULL;
+      this_corpse->this_corpse = corpse;
+      LINK( this_corpse, first_corpse, last_corpse, next, prev );
       save_corpses(  );
       return;
    }
@@ -2447,7 +2429,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
 
 
 
-   if( ( IS_NPC( victim ) || !IS_VAMP( victim ) ) && ( victim->is_free == FALSE ) && ( victim->in_room != NULL ) )
+   if( !IS_VAMP( victim ) && ( victim->is_free == FALSE ) && ( victim->in_room != NULL ) )
       make_corpse( victim, arg );
 
    for( check = first_char; check != NULL; check = check->next )
@@ -2469,7 +2451,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
 
    extract_char( victim, FALSE );
    while( victim->first_affect )
-      affect_remove( victim, victim->first_affect );
+    affect_remove( victim, victim->first_affect );
    victim->affected_by = 0;
    victim->armor = 100;
    victim->position = POS_RESTING;
@@ -6307,3 +6289,19 @@ void do_stance( CHAR_DATA * ch, char *argument )
    }
 }
 
+void resurrect( CHAR_DATA *ch )
+{
+ if( !IS_GHOST(ch) )
+  return;
+
+ ch->act.reset(ACT_GHOST);
+ ch->hit = number_range(1,(int)(ch->max_hit * 0.10));
+ ch->move = number_range(1,(int)(ch->max_move * 0.10));
+ ch->mana = number_range(1,(int)(ch->max_mana * 0.10));
+ send_to_char("@@yYou have been granted life!@@N\n\r",ch);
+ save_char_obj(ch);
+
+ act("$n's soul returns to $s body!",ch,NULL,NULL,TO_ROOM);
+
+ return;
+}

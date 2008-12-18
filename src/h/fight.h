@@ -67,5 +67,6 @@ void check_brawl P_((CHAR_DATA *ch));
 void damage_gear P_((CHAR_DATA *ch));
 void do_disguise P_((CHAR_DATA *ch, char *argument));
 void do_stance P_((CHAR_DATA *ch, char *argument));
+void resurrect P_((CHAR_DATA *ch));
 
 #undef P_

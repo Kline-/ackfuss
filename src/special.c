@@ -415,9 +415,12 @@ bool spec_cast_adept( CHAR_DATA * ch )
    if( victim == NULL )
       return FALSE;
 
-
-
    cl = number_range( 1, ch->level );
+
+   if( IS_GHOST(victim) )
+   {
+    spell_redemption( skill_lookup( "redemption" ), cl, ch, victim, NULL );
+   }
 
    switch ( number_bits( 3 ) )
    {

@@ -136,6 +136,7 @@ char_reference(&s); } while(0)
 #define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
 #define IS_AFFECTED(ch, sn)     (IS_SET((ch)->affected_by, (sn)))
 
+#define IS_GHOST(ch)            ( ch->act.test(ACT_GHOST) )
 #define IS_GOOD(ch)             (ch->alignment >= 350)
 #define IS_EVIL(ch)             (ch->alignment <= -350)
 #define IS_NEUTRAL(ch)          (!IS_GOOD(ch) && !IS_EVIL(ch))
