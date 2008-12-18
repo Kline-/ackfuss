@@ -96,6 +96,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
+#endif
+
 #ifndef DEC_MOB_COMMANDS_H
 #include "h/mob_commands.h"
 #endif

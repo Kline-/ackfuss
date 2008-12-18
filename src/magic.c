@@ -78,20 +78,21 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
+#endif
+
+#ifndef DEC_MONEY_H
+#include "h/money.h"
+#endif
+
+#ifndef DEC_SPELL_DAM_H
+#include "h/spell_dam.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
-
-#ifndef DEC_MAGIC_H
-#include "magic.h"
-#endif
-
-
-/*
- * Local functions.
- */
-void say_spell args( ( CHAR_DATA * ch, int sn ) );
-
 
 /* Calculate mana cost */
 int mana_cost( CHAR_DATA * ch, int sn )
@@ -5144,48 +5145,6 @@ bool spell_poison_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    return TRUE;
 }
 
-
-
-void do_disguise( CHAR_DATA * ch, char *argument )
-{
-   char arg[MAX_STRING_LENGTH];
-
-
-   if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_disguise] == 0 )
-   {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
-      return;
-   }
-
-   one_argument( argument, arg );
-
-   if( arg[0] == '\0' )
-   {
-      send_to_char( " Enter the disguise name, or reset to reset your description to normal.\n\r", ch );
-      return;
-   }
-
-   if( !str_cmp( arg, "reset" ) )
-   {
-      free_string( ch->long_descr );
-      ch->long_descr = str_dup( ch->long_descr_orig );
-      return;
-   }
-   else
-   {
-
-      free_string( ch->long_descr );
-      strncat( argument, "\n\r", MSL );
-      ch->long_descr = str_dup( argument );
-      send_to_char( "You are now Disguised!!!\n\r", ch );
-      return;
-   }
-
-
-
-   return;
-}
-
 bool spell_fireshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    MAGIC_SHIELD *shield;
@@ -6740,272 +6699,6 @@ bool spell_retri_strike( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    extract_obj( staff_obj );
    return TRUE;
 }
-
-
-void do_stance( CHAR_DATA * ch, char *argument )
-{
-   char arg[MAX_STRING_LENGTH];
-   bool legal_stance = FALSE;
-   short i;
-
-   if( IS_NPC( ch ) )
-   {
-      send_to_char( "Not for Npcs!\n\r", ch );
-      return;
-   }
-   if( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
-   {
-      send_to_char( "This form is not capable of fighting Stances.\n\r", ch );
-      return;
-   }
-
-   one_argument( argument, arg );
-
-   if( arg[0] == '\0' )
-   {
-      char cat_buf[MSL];
-      char msg_buf[MSL];
-
-
-      snprintf( msg_buf, MSL, "\n\r%s\n\r", "Fighting Stances available to you:\n\r" );
-
-      for( i = 0; i < MAX_STANCE; i++ )
-      {
-
-         switch ( i )
-         {
-            case STANCE_WARRIOR:
-               snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_CASTER:
-               if( ( ch->lvl[0] > 50 ) /* mage */
-                   || ( ch->lvl[1] > 70 ) /* cleric */
-                   || ( ch->lvl[4] > 60 ) )  /* psi */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_WIZARD:
-               if( ( ch->lvl2[0] > 20 )   /* sorc */
-                   || ( ch->lvl2[3] > 40 )   /* necro */
-                   || ( ch->lvl2[4] > 60 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_MAGI:
-               if( ( ch->adept_level > 10 ) )   /*adept */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_AMBUSH:
-               if( ch->lvl2[1] > 30 )  /* assassin */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_AC_BEST:
-               if( ( ch->lvl2[2] > 65 )   /* knight */
-                   || ( ch->lvl2[4] > 30 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_HR_BEST:
-               if( ( ch->lvl2[2] > 45 )   /* knight */
-                   || ( ch->lvl2[4] > 20 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_DR_BEST:
-               if( ( ch->lvl2[2] > 35 )   /* knight */
-                   || ( ch->lvl2[4] > 10 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_AC_WORST:
-               if( ch->lvl2[4] > 45 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_HR_WORST:
-               if( ch->lvl2[4] > 60 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_DR_WORST:
-               if( ch->lvl2[4] > 70 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_SUPER_FIGHTER:
-               if( ( ch->lvl2[4] > 79 ) && ( ch->lvl2[2] > 79 ) ) /* both knight and monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-            case STANCE_SUPER_SPEED:
-               if( ( ch->lvl2[4] > 70 ) && ( ch->lvl2[2] > 70 ) ) /* both knight and monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
-               break;
-
-         }
-
-         strncat( msg_buf, cat_buf, MSL );
-         snprintf( cat_buf, MSL, "%s", "" );
-      }
-      snprintf( cat_buf, MSL, "%s",
-               "Type stance <stance name> to change your current fighting stance.\n\r You may place your current Stance in your prompt with a \%s\n\r" );
-      strncat( msg_buf, cat_buf, MSL );
-      send_to_char( msg_buf, ch );
-      return;
-   }
-
-   for( i = 0; i < MAX_STANCE; i++ )
-      if( !str_prefix( arg, stance_app[i].name ) )
-         break;
-   if( i == MAX_STANCE )
-   {
-      do_stance( ch, "" );
-      act( "$n poses in a strange fashion, looking rather silly.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You twist about wildly, but are unable to figure out just the right Stance.\n\r", ch );
-   }
-
-   else
-   {
-      switch ( i )
-      {
-         case STANCE_WARRIOR:
-         {
-            legal_stance = TRUE;
-            break;
-         }
-         case STANCE_CASTER:
-            if( ( ch->lvl[0] > 50 ) /* mage */
-                || ( ch->lvl[1] > 70 ) /* cleric */
-                || ( ch->lvl[4] > 60 ) )  /* psi */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-         case STANCE_WIZARD:
-            if( ( ch->lvl2[0] > 20 )   /* sorc */
-                || ( ch->lvl2[3] > 40 )   /* necro */
-                || ( ch->lvl2[4] > 60 ) ) /* monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-         case STANCE_MAGI:
-            if( ( ch->adept_level > 10 ) )   /*adept */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-         case STANCE_AMBUSH:
-            if( ch->lvl2[1] > 30 )  /* assassin */
-            {
-               CHAR_DATA *other;
-               for( other = ch->in_room->first_person; other != NULL; other = other->next_in_room )
-                  if( ( other != ch ) && ( other != NULL ) )
-                     break;
-               if( other != NULL )
-               {
-                  send_to_char( "You can't set an ambush with people watching you!\n\r", ch );
-               }
-               else
-               {
-                  legal_stance = TRUE;
-               }
-               break;
-            }
-            break;
-         case STANCE_AC_BEST:
-            if( ( ch->lvl2[2] > 65 )   /* knight */
-                || ( ch->lvl2[4] > 30 ) ) /* monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-
-         case STANCE_HR_BEST:
-            if( ( ch->lvl2[2] > 45 )   /* knight */
-                || ( ch->lvl2[4] > 20 ) ) /* monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-
-         case STANCE_DR_BEST:
-            if( ( ch->lvl2[2] > 35 )   /* knight */
-                || ( ch->lvl2[4] > 10 ) ) /* monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-
-         case STANCE_AC_WORST:
-            if( ch->lvl2[4] > 45 )  /* monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-
-         case STANCE_HR_WORST:
-            if( ch->lvl2[4] > 60 )  /* monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-
-         case STANCE_DR_WORST:
-            if( ch->lvl2[4] > 70 )  /* monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-
-         case STANCE_SUPER_FIGHTER:
-            if( ( ch->lvl2[4] > 79 ) && ( ch->lvl2[2] > 79 ) ) /* both knight and monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-
-         case STANCE_SUPER_SPEED:
-            if( ( ch->lvl2[4] > 70 ) && ( ch->lvl2[2] > 70 ) ) /* both knight and monk */
-            {
-               legal_stance = TRUE;
-               break;
-            }
-            break;
-
-
-      }
-
-      if( legal_stance )
-      {
-         char stance_buf[MSL];
-         if( stance_app[i].ac_mod > 0 )
-            ch->stance_ac_mod = ( stance_app[i].ac_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
-         else
-            ch->stance_ac_mod = stance_app[i].ac_mod * get_psuedo_level( ch ) / 12;
-
-         if( stance_app[i].dr_mod < 0 )
-            ch->stance_dr_mod = ( stance_app[i].dr_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
-         else
-            ch->stance_dr_mod = stance_app[i].dr_mod * get_psuedo_level( ch ) / 10;
-
-         if( stance_app[i].hr_mod < 0 )
-            ch->stance_hr_mod = ( stance_app[i].hr_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
-         else
-            ch->stance_hr_mod = stance_app[i].hr_mod * get_psuedo_level( ch ) / 10;
-
-         ch->stance = i;
-         snprintf( stance_buf, MSL, "$n assumes the Stance of the %s!", stance_app[i].name );
-         act( stance_buf, ch, NULL, NULL, TO_ROOM );
-         snprintf( stance_buf, MSL,"You assume the Stance of the %s!\n\r", stance_app[i].name );
-         send_to_char( stance_buf, ch );
-      }
-      WAIT_STATE( ch, 350 );
-      return;
-   }
-}
-
 
 bool spell_creature_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {

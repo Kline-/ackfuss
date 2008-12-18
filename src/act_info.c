@@ -84,16 +84,16 @@
 #include "h/handler.h"
 #endif
 
-#ifndef DEC_SSM_H
-#include "h/ssm.h"
-#endif
-
 #ifndef DEC_MAGIC_H
-#include "magic.h"
+#include "h/magic.h"
 #endif
 
 #ifndef DEC_MONEY_H
-#include "money.h"
+#include "h/money.h"
+#endif
+
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
 #endif
 
 char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )

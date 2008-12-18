@@ -174,10 +174,8 @@ DECLARE_DO_FUN( do_exlist );
 DECLARE_DO_FUN( do_vlist );
 DECLARE_DO_FUN( do_rename );
 DECLARE_DO_FUN( do_sdelete );
-DECLARE_DO_FUN( do_bank );
 DECLARE_DO_FUN( do_rbid );
 DECLARE_DO_FUN( do_mbid );
-DECLARE_DO_FUN( do_gold );
 DECLARE_DO_FUN( do_hunt );
 DECLARE_DO_FUN( do_quest );
 DECLARE_DO_FUN( do_listspells );
@@ -189,17 +187,12 @@ DECLARE_DO_FUN( do_rauction );
 DECLARE_DO_FUN( do_mauction );
 DECLARE_DO_FUN( do_autosplit );
 DECLARE_DO_FUN( do_autoassist );
-DECLARE_DO_FUN( do_cast );
 
 /*   
       NEW SKILLS  (SRZ)
 
 */
-DECLARE_DO_FUN( do_family );
-DECLARE_DO_FUN( do_disguise );
-DECLARE_DO_FUN( do_instruct );
 DECLARE_DO_FUN( do_adrenaline );
-DECLARE_DO_FUN( do_stance );
 
 /*
  *   New Channels (ZEN)
@@ -213,11 +206,3 @@ DECLARE_DO_FUN( do_sedit );
 DECLARE_DO_FUN( do_scheck );
 DECLARE_DO_FUN( do_mapper );
 DECLARE_DO_FUN( do_sysdata );
-DECLARE_DO_FUN( do_mgive );
-
-/*
- * Werwolf
- */
-DECLARE_DO_FUN( do_tribe );
-DECLARE_DO_FUN( do_scent );
-DECLARE_DO_FUN( do_imprint );

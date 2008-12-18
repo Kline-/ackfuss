@@ -82,12 +82,12 @@
 #include "h/handler.h"
 #endif
 
-#ifndef DEC_SSM_H
-#include "h/ssm.h"
+#ifndef DEC_MONEY_H
+#include "h/money.h"
 #endif
 
-#ifndef DEC_MONEY_H
-#include "money.h"
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
 #endif
 
 /* This program provides the interpreting of building commands */

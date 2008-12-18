@@ -47,7 +47,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "mapper.h"
+#include "globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -67,6 +67,10 @@
 
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
+#endif
+
+#ifndef DEC_MAPPER_H
+#include "h/mapper.h"
 #endif
 
 int door_marks[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };

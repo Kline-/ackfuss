@@ -59,16 +59,16 @@
 #include "h/handler.h"
 #endif
 
-#ifndef DEC_SSM_H
-#include "h/ssm.h"
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
 #endif
 
 #ifndef DEC_MONEY_H
-#include "money.h"
+#include "h/money.h"
 #endif
 
-#ifndef DEC_MQUEST_H
-#include "mquest.h"
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
 #endif
 
 #if !defined(macintosh)

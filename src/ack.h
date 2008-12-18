@@ -1395,13 +1395,6 @@ void   reset_gain_stats   args( ( CHAR_DATA * ch ) );
 int    exp_to_level_wolf  args( ( int level ) );
 int    get_item_value     args( ( OBJ_DATA * obj ) );
 
-/* magic.c */
-int mana_cost args( ( CHAR_DATA * ch, int sn ) );
-int skill_lookup args( ( const char *name ) );
-int slot_lookup args( ( int slot ) );
-bool saves_spell args( ( int level, CHAR_DATA * victim ) );
-void obj_cast_spell args( ( int sn, int level, CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
-
 /* mob_prog.c */
 #ifdef DUNNO_STRSTR
 char *strstr args( ( const char *s1, const char *s2 ) );

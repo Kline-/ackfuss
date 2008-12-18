@@ -34,7 +34,7 @@
 #endif
 
 #ifndef DEC_MONEY_H
-#include "money.h"
+#include "h/money.h"
 #endif
 
 extern int top_mob_index;

@@ -47,10 +47,6 @@
 #include <errno.h>
 #include <signal.h>
 
-#ifndef DEC_MONEY_H
-#include "money.h"
-#endif
-
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"
 #endif
@@ -77,6 +73,10 @@
 
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
+#endif
+
+#ifndef DEC_MONEY_H
+#include "h/money.h"
 #endif
 
 #ifndef DEC_SPENDQP_H
