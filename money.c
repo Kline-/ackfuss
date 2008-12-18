@@ -59,11 +59,8 @@
 #include "h/handler.h"
 #endif
 
-/*
- * money.c 
- */
 #ifndef DEC_MONEY_H
-#include "money.h"
+#include "h/money.h"
 #endif
 
 const struct currency_type currency_table[MAX_CURRENCY] = {

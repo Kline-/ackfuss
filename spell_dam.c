@@ -74,12 +74,12 @@
 #include "h/handler.h"
 #endif
 
-#ifndef DEC_SSM_H
-#include "h/ssm.h"
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
 #endif
 
-#ifndef DEC_MAGIC_H
-#include "magic.h"
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
 #endif
 
 /*

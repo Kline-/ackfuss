@@ -69,10 +69,6 @@
 #include "h/ssm.h"
 #endif
 
-#ifndef DEC_MONEY_H
-#include "money.h"
-#endif
-
 /* Variables declared in db.c, which we need */
 extern char *string_hash[MAX_KEY_HASH];
 extern char *string_space;

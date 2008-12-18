@@ -66,12 +66,16 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
 #endif
 
-#ifndef DEC_FIGHT_H
-#include "h/fight.h"
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
 #endif
 
 #ifndef DEC_MOUNT_H

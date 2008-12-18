@@ -37,7 +37,15 @@
 #include "globals.h"
 
 #ifndef DEC_MAGIC_H
-#include "magic.h"
+#include "h/magic.h"
+#endif
+
+#ifndef DEC_VAMPIRE_H
+#include "h/vampire.h"
+#endif
+
+#ifndef DEC_WEREWOLF_H
+#include "h/werewolf.h"
 #endif
 
 const char *where_name[] = {

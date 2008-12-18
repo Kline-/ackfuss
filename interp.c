@@ -103,8 +103,16 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
+#endif
+
 #ifndef DEC_MOB_COMMANDS_H
 #include "h/mob_commands.h"
+#endif
+
+#ifndef DEC_MONEY_H
+#include "h/money.h"
 #endif
 
 #ifndef DEC_MOUNT_H
@@ -115,8 +123,12 @@
 #include "h/spendqp.h"
 #endif
 
-#ifndef DEC_MAGIC_H
-#include "magic.h"
+#ifndef DEC_VAMPIRE_H
+#include "h/vampire.h"
+#endif
+
+#ifndef DEC_WEREWOLF_H
+#include "h/werewolf.h"
 #endif
 
 bool MP_Commands args( ( CHAR_DATA * ch ) );

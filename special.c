@@ -75,9 +75,8 @@
 #endif
 
 #ifndef DEC_MAGIC_H
-#include "magic.h"
+#include "h/magic.h"
 #endif
-
 
 /*
  * The following special functions are available for mobiles.

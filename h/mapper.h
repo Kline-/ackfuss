@@ -32,7 +32,26 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include "globals.h"
+#define DEC_MAPPER_H
+
+#if __STDC__ || defined(__cplusplus)
+#define P_(s) s
+#else
+#define P_(s) ()
+#endif
+
+/* mapper.c */
+char *get_sector_display P_((int sector));
+char *get_sector_color P_((int sector));
+char *get_invert_color P_((int sector));
+char *get_door_display P_((int door));
+char *get_door_color P_((int door));
+char *get_sector_name P_((int sector));
+char *break_arg P_((char *str, char *first_arg, int bufsize, int max, int *buflen, int *len));
+char *string_justify P_((char *str, int len, int width, int numwords, int *rlen));
+char last_color P_((char *str));
+
+#undef P_
 
 #define MAX_MAP 40
 #define MAX_MAP_DIR 4
@@ -46,6 +65,7 @@
 
 #define LOS_INITIAL -5
 #define MAP_Y		9
+
 struct room_content_type
 {
    char string[10];
@@ -57,7 +77,6 @@ int map[MAX_MAP][MAX_MAP];
 
 extern const char* compass_name[];
 
-
 struct map_info_type
 {
    int sector_type;
@@ -66,13 +85,3 @@ struct map_info_type
    char *invert_color;
    char *desc;
 };
-
-
-void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int max, int line_of_sight );
-
-void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center );
-void ShowHalfMap( CHAR_DATA * ch, int min, int max );
-void do_printmap( CHAR_DATA * ch, char *argument );
-void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center );
-void do_map( CHAR_DATA * ch, char *argument );
-void do_smallmap( CHAR_DATA * ch, char *argument );

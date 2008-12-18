@@ -34,9 +34,42 @@
 
 #define DEC_MONEY_H
 
+#if __STDC__ || defined(__cplusplus)
+#define P_(s) s
+#else
+#define P_(s) ()
+#endif
+
+/* money.c */
+short money_lookup P_((char *money_name));
+MONEY_TYPE *join_money P_((MONEY_TYPE *source, MONEY_TYPE *receiver));
+float money_weight P_((MONEY_TYPE *money));
+char *cost_to_money P_((int cost));
+int money_to_cost P_((char *money_list));
+MONEY_TYPE *round_money P_((int base, bool round_up));
+MONEY_TYPE *round_money_off P_((int base, short accuracy));
+int money_value P_((MONEY_TYPE *money));
+char *money_string P_((MONEY_TYPE *money));
+char *unit_string P_((MONEY_TYPE *money));
+bool give_money P_((CHAR_DATA *ch, CHAR_DATA *victim, char *argument));
+bool withdraw_money P_((CHAR_DATA *ch, char *argument));
+void deposit_money P_((CHAR_DATA *ch, char *argument));
+int exchange_money P_((CHAR_DATA *ch, char *argument));
+void do_mgive P_((CHAR_DATA *ch, char *argument));
+void drop_money P_((CHAR_DATA *ch, char *argument));
+int money_to_value P_((CHAR_DATA *ch, char *argument));
+bool get_money_room P_((CHAR_DATA *ch, char *argument));
+bool get_money_obj P_((CHAR_DATA *ch, char *argument, OBJ_DATA *obj));
+void do_bank P_((CHAR_DATA *ch, char *argument));
+void do_gold P_((CHAR_DATA *ch, char *argument));
+char *take_best_coins P_((MONEY_TYPE *money, int cost));
+
+#undef P_
+
 #define MAX_CURRENCY    8
 #define EXCHANGE_COST   .1
 #define CURRENCY_NAMES   "bit bits moon moons crown crowns crescent crescents pentacle pentacles karant karants mark marks sunburst sunbursts"
+
 struct currency_type
 {
    char *keyword;
@@ -45,7 +78,6 @@ struct currency_type
    float unit_weight;   /* in hundreths of a weight unit */
    int exchange_val; /* this is in base units, your lowest money form */
 };
-
 
 struct money_type
 {
@@ -57,27 +89,5 @@ struct money_type
 #endif
    int cash_unit[MAX_CURRENCY];
 };
-
-
-int money_to_value( CHAR_DATA * ch, char *argument );
-int money_to_cost( char *money_list );
-char *cost_to_money( int cost );
-short money_lookup( char *money_name );
-char *money_string( MONEY_TYPE * money );
-char *unit_string( MONEY_TYPE * money );
-void deposit_money( CHAR_DATA * ch, char *argument );
-bool withdraw_money( CHAR_DATA * ch, char *argument );
-int exchange_money( CHAR_DATA * ch, char *argument );
-MONEY_TYPE *round_money( int base, bool round_up );
-MONEY_TYPE *round_money_off( int base, short accuracy );
-MONEY_TYPE *join_money( MONEY_TYPE * source, MONEY_TYPE * receiver );
-void drop_money( CHAR_DATA * ch, char *argument );
-bool get_money_room( CHAR_DATA * ch, char *argument );
-bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj );
-bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument );
-
-int money_value( MONEY_TYPE * money );
-float money_weight( MONEY_TYPE * money );
-char *take_best_coins( MONEY_TYPE * money, int cost );
 
 extern const struct currency_type currency_table[MAX_CURRENCY];

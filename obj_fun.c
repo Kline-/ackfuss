@@ -54,6 +54,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
+#endif
+
 DECLARE_OBJ_FUN( objfun_giggle );   /* test obj_fun   */
 DECLARE_OBJ_FUN( objfun_cast_fight );  /* Casts in fights   */
 DECLARE_OBJ_FUN( objfun_sword_aggro ); /* starts fights  */

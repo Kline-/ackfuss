@@ -76,12 +76,16 @@
 #include "h/handler.h"
 #endif
 
-#ifndef DEC_SSM_H
-#include "h/ssm.h"
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
 #endif
 
 #ifndef DEC_MONEY_H
-#include "money.h"
+#include "h/money.h"
+#endif
+
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
 #endif
 
 extern POL_DATA politics_data;

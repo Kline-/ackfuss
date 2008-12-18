@@ -65,5 +65,7 @@ void combat_update P_((void));
 float combat_damcap P_((CHAR_DATA *ch, CHAR_DATA *victim, float dam, int dt));
 void check_brawl P_((CHAR_DATA *ch));
 void damage_gear P_((CHAR_DATA *ch));
+void do_disguise P_((CHAR_DATA *ch, char *argument));
+void do_stance P_((CHAR_DATA *ch, char *argument));
 
 #undef P_

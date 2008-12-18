@@ -78,16 +78,20 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_MAGIC_H
+#include "h/magic.h"
+#endif
+
+#ifndef DEC_MONEY_H
+#include "h/money.h"
+#endif
+
 #ifndef DEC_MOUNT_H
 #include "h/mount.h"
 #endif
 
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
-#endif
-
-#ifndef DEC_MONEY_H
-#include "money.h"
 #endif
 
 extern OBJ_DATA *quest_object;
