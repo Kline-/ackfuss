@@ -1708,7 +1708,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "long" ) )
    {
-      build_strdup( &pMob->long_descr, arg3, TRUE, TRUE, ch );
+      build_strdup( &pMob->long_descr, arg3, TRUE, FALSE, ch );
       area_modified( pArea );
       return;
    }
@@ -2784,7 +2784,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "long" ) )
    {
-      build_strdup( &pObj->long_descr, arg3, TRUE, TRUE, ch );
+      build_strdup( &pObj->long_descr, arg3, TRUE, FALSE, ch );
       return;
    }
 
