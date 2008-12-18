@@ -36,6 +36,10 @@
 #include <time.h>
 #include "globals.h"
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 /*
  * All of the global linked lists, in one clump.  Variables here,
  * declarations in lists.h

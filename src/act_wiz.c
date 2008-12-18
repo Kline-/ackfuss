@@ -100,6 +100,10 @@
 #include "h/mob_commands.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 #ifndef DEC_STRFUNS_H
 #include "h/strfuns.h"
 #endif

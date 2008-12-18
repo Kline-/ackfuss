@@ -46,6 +46,10 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 /* This file deals with multi-line editing, and writing. */
 
 struct buf_data_struct

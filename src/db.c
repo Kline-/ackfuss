@@ -41,7 +41,6 @@
 #include <stdarg.h>
 #include "globals.h"
 #include "hash.h"
-#include "ssm.h"
 #include <unistd.h>  /* for execl */
 #include <math.h> /* For fread_float */
 #include <sys/wait.h>
@@ -82,6 +81,10 @@
 
 #ifndef DEC_SPENDQP_H
 #include "h/spendqp.h"
+#endif
+
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
 #endif
 
 #if !defined(macintosh)
@@ -201,11 +204,6 @@ int fp_close;
 
 int nAllocPerm;
 int sAllocPerm;
-
-void init_string_space( void );
-void boot_done( void );
-
-
 
 /*
  * Semi-locals.

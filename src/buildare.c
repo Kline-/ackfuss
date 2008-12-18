@@ -65,6 +65,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -84,8 +88,8 @@ extern int top_obj_index;
 extern int top_reset;
 extern int top_room;
 extern int top_shop;
-extern int nAllocString;
-extern int sAllocString;
+extern long int nAllocString;
+extern long int sAllocString;
 extern int nAllocPerm;
 extern int sAllocPerm;
 extern int fBootDb;

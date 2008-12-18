@@ -69,25 +69,9 @@
 #define		BIT_31		1073741824
 #define		BIT_32		2147483648
 
-
-
-
-/*
- *  SSM stuff
- */
-
 #define STR(x) #x
 #define SX(x) STR(x)
 #define _caller __FILE__ ":" SX(__LINE__)
-
-#define fread_string(x) _fread_string((x), _caller)
-char *_fread_string args( ( FILE * fp, const char *caller ) );
-#define str_dup(x) _str_dup((x), _caller)
-char *_str_dup args( ( const char *str, const char *caller ) );
-#define fread_string_eol(x) _fread_string_eol((x), _caller)
-char *_fread_string_eol args( ( FILE * fp, const char *caller ) );
-#define free_string(x) _free_string((x), _caller)
-void _free_string args( ( char *pstr, const char *caller ) );
 
 /*
  * Updated pointer referencing, curtesy of Spectrum, from Beyond the Veil

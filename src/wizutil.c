@@ -53,6 +53,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 const char wizutil_id[] = "$Id: wizutil.c,v 1.6 1996/01/04 21:30:45 root Exp root $";
 
 /*

@@ -221,9 +221,3 @@ DECLARE_DO_FUN( do_mgive );
 DECLARE_DO_FUN( do_tribe );
 DECLARE_DO_FUN( do_scent );
 DECLARE_DO_FUN( do_imprint );
-
-/*
- * My improvements -Kline
- */
-DECLARE_DO_FUN( do_mquest );
-DECLARE_DO_FUN( do_qstat );

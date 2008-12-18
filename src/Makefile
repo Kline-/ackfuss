@@ -1,5 +1,5 @@
 CC   = g++
-VERS = AckFUSS 4.3.9
+VERS = AckFUSS 4.4.0
 #PROF    = -pg
 
 # Debugging flags possible:  DEBUG_MEM DEBUG_MEM_CORRUPT DEBUG_MEM_DUP_FREE

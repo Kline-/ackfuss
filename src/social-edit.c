@@ -55,6 +55,10 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 int maxSocial; /* max number of socials */
 
 #ifndef CONST_SOCIAL

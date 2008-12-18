@@ -87,6 +87,10 @@
 #include "h/mount.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif

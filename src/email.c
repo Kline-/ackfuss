@@ -62,6 +62,10 @@
 #include "h/spendqp.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 bool valid_email_addy( char *address )
 {
 /* checks for simple email address, person@place.cat...if valid, returns
