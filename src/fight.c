@@ -71,6 +71,22 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
+#ifndef DEC_MOUNT_H
+#include "h/mount.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -206,26 +222,6 @@ const float hr_damTable[121] = {
    1.398,
    1.398
 };
-
-/*
- * Local functions.
- */
-bool  check_dodge      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool  check_parry      args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool  check_skills     args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void  dam_message      args( ( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt ) );
-void  death_message    args( ( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt ) );
-void  group_gain       args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool  is_safe          args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void  make_corpse      args( ( CHAR_DATA * ch, char *argument ) );
-void  set_fighting     args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
-void  disarm           args( ( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj ) );
-void  trip             args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void  check_adrenaline args( ( CHAR_DATA * ch, float damage ) );
-void  obj_damage       args( ( OBJ_DATA * obj, CHAR_DATA * victim, float dam ) );
-float combat_damcap    args( ( CHAR_DATA *ch, CHAR_DATA *victim, float dam, int dt ) );
-void  check_brawl      args( ( CHAR_DATA *ch ) );
-void  damage_gear      args( ( CHAR_DATA *ch ) );
 
 /*
  * Control the fights going on.

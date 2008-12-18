@@ -72,6 +72,18 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
+#ifndef DEC_SPENDQP_H
+#include "h/spendqp.h"
+#endif
+
 #if !defined(macintosh)
 extern int _filbuf args( ( FILE * ) );
 #endif
@@ -157,11 +169,6 @@ short gsn_decapitate;
 short gsn_potency;
 short gsn_thaumatergy;
 
-
-#ifdef TFS
-short gsn_mana_sense;
-#endif
-
 extern bool auto_quest;
 extern COUNCIL_DATA super_councils[MAX_SUPER];
 
@@ -179,15 +186,6 @@ AREA_DATA *area_load;
 ROOM_INDEX_DATA *room_load;
 MOB_INDEX_DATA *mob_load;
 OBJ_INDEX_DATA *obj_load;
-/* 
- * replaced for SSM
- */
-
-#if 0
-char *string_space = NULL;
-char *top_string = NULL;
-char str_empty[1] = { 0 };
-#endif
 
 int top_affect;
 int top_area;
@@ -200,38 +198,6 @@ int top_room;
 int top_shop;
 int fp_open;
 int fp_close;
-
-/*
- * MOBprogram locals
-*/
-
-int mprog_name_to_type args( ( char *name ) );
-void mprog_file_read args( ( char *f, MOB_INDEX_DATA * pMobIndex ) );
-void load_mobprogs args( ( FILE * fp ) );
-void mprog_read_programs args( ( FILE * fp, MOB_INDEX_DATA * pMobIndex ) );
-
-
-/*
- * Memory management.
- * Increase MAX_STRING if you have too.
- * Tune the others only if you understand what you're doing.
- */
-
-#if 0
-
-#define                 MAX_STRING      2097152
-/*#define                 MAX_PERM_BLOCK  131072
-#define                 MAX_MEM_LIST    12
-
-void *                  rgFreeList      [MAX_MEM_LIST];
-const int               rgSizeList      [MAX_MEM_LIST]  =
-{
-    16, 32, 64, 128, 256, 1024, 2048, 4096, 8192, 16384, 32768-64, 65536-16
-};*/
-
-int nAllocString;
-int sAllocString;
-#endif
 
 int nAllocPerm;
 int sAllocPerm;
@@ -248,33 +214,6 @@ bool fBootDb;
 FILE *fpArea;
 char strArea[MAX_INPUT_LENGTH];
 int area_revision = -1;
-
-/*
- * Local booting procedures.
- */
-void init_mm args( ( void ) );
-
-void load_areas args( ( void ) );
-void load_area args( ( FILE * fp ) );
-void load_door args( ( FILE * fp ) );
-void load_mobile args( ( FILE * fp ) );
-void load_oaffect args( ( FILE * fp ) );
-void load_object args( ( FILE * fp ) );
-void load_oextra args( ( FILE * fp ) );
-void load_resets args( ( FILE * fp ) );
-void load_rextra args( ( FILE * fp ) );
-void load_room args( ( FILE * fp ) );
-void load_shop args( ( FILE * fp ) );
-void load_notes args( ( void ) );
-void load_gold args( ( void ) );
-void load_corpses args( ( void ) );
-void load_marks args( ( void ) );
-void load_bans args( ( void ) );
-void load_brands args( ( void ) );
-void fix_exits args( ( void ) );
-void check_resets args( ( void ) );
-
-void reset_area args( ( AREA_DATA * pArea ) );
 
 #define SHOW_AREA \
   if (!previous_bug) \
@@ -293,18 +232,6 @@ void boot_db( void )
    /*
     * Init some data space stuff.
     */
-
-#if 0
-   {
-      if( ( string_space = calloc( 1, MAX_STRING ) ) == NULL )
-      {
-         bug( "Boot_db: can't alloc %d string space.", MAX_STRING );
-         exit( 1 );
-      }
-      top_string = string_space;
-      fBootDb = TRUE;
-   }
-#endif
 
    init_string_space(  );
    fBootDb = TRUE;
@@ -3326,119 +3253,6 @@ void *_getmem( int size, const char *caller, int log )
    return mem;
 }
 
-
-
-
-#if 0
-/*
- * Duplicate a string into dynamic memory.
- * Fread_strings are read-only and shared.
- */
-#define STRING_FREELIST
-#ifdef STRING_FREELIST
-#define MAX_SIZE_LIST	13
-static const int sizelist[MAX_SIZE_LIST] = { 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768 };
-struct text_data
-{
-   struct text_data *next;
-   char *text;
-};
-static struct text_data *text_free[MAX_SIZE_LIST] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
-   NULL
-};
-static struct text_data *tdf_free = NULL;
-#endif
-char *str_dup( const char *str )
-{
-   char *str_new;
-#ifdef STRING_FREELIST
-   short size;
-   int len;
-#endif
-
-   if( !str || !*str )
-      return &str_empty[0];
-
-   if( str >= string_space && str < top_string )
-      return ( char * )str;
-
-#ifdef STRING_FREELIST
-   len = strlen( str ) + 1;
-   for( size = 0; size < MAX_SIZE_LIST; size++ )
-      if( len < sizelist[size] )
-         break;
-   if( size < MAX_SIZE_LIST )
-   {
-      if( text_free[size] != NULL )
-      {
-         struct text_data *tdf = text_free[size];
-
-         text_free[size] = tdf->next;
-         str_new = tdf->text;
-         tdf->next = tdf_free;
-         tdf_free = tdf;
-      }
-      else
-         str_new = getmem( sizelist[size] );
-   }
-   else
-      str_new = getmem( len );
-#else
-   str_new = getmem( strlen( str ) + 1 );
-#endif
-   strcpy( str_new, str );
-   return str_new;
-}
-
-
-
-/*
- * Free a string.
- * Null is legal here to simplify callers.
- * Read-only shared strings are not touched.
- */
-void free_string( char *pstr )
-{
-#ifdef STRING_FREELIST
-   short size;
-   int len;
-#endif
-
-   if( pstr == NULL || pstr == &str_empty[0] || ( pstr >= string_space && pstr < top_string ) )
-      return;
-
-#ifdef STRING_FREELIST
-   len = strlen( pstr ) + 1;
-   for( size = 0; size < MAX_SIZE_LIST; size++ )
-      if( len < sizelist[size] )
-         break;
-   if( size < MAX_SIZE_LIST )
-   {
-      struct text_data *tdf;
-
-      if( tdf_free )
-      {
-         tdf = tdf_free;
-         tdf_free = tdf->next;
-      }
-      else
-         tdf = getmem( sizeof( *tdf ) );
-      tdf->text = pstr;
-      tdf->next = text_free[size];
-      text_free[size] = tdf;
-   }
-   else
-      dispose( pstr, len );
-#else
-   dispose( pstr, strlen( pstr ) + 1 );
-#endif
-   return;
-}
-
-#endif
-
-
-
 void do_areas( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
@@ -3554,11 +3368,6 @@ void do_memory( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Shops   %5d\n\r", top_shop );
    send_to_char( buf, ch );
-
-#if 0
-   snprintf( buf, MSL, "Strings %5d strings of %7d bytes (max %d).\n\r", nAllocString, sAllocString, MAX_STRING );
-#endif
-
    snprintf( buf, MSL, "Shared String Info:\n\r" );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Strings           %5ld strings of %7ld bytes (max %ld).\n\r", nAllocString, sAllocString, MAX_STRING );

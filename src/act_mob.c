@@ -58,6 +58,18 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
 bool able_to_level( CHAR_DATA * ch )
 {
    bool in_need = FALSE;

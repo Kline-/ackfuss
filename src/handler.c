@@ -66,6 +66,22 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
+#ifndef DEC_MOUNT_H
+#include "h/mount.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -75,18 +91,6 @@ extern bool quest;
 extern CHAR_DATA *quest_mob;
 extern CHAR_DATA *quest_target;
 extern COUNCIL_DATA super_councils[MAX_SUPER];
-
-/*
- * Local functions.
- */
-void affect_modify args( ( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd ) );
-
-/*
- * Updated pointer referencing, curtesy of Spectrum, from Beyond the Veil
- *
- */
-
-
 
 struct obj_ref_type *obj_ref_list;
 

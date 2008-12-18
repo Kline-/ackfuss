@@ -44,6 +44,10 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 #ifdef DEBUG_MONEY
 #ifndef DEC_MONEY_H
 #include "money.h"

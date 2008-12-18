@@ -55,6 +55,14 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -949,33 +957,18 @@ void do_zzz( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-
 void do_yell( CHAR_DATA * ch, char *argument )
 {
    talk_channel( ch, argument, CHANNEL_YELL, "yell" );
    return;
 }
 
-
-
 void do_immtalk( CHAR_DATA * ch, char *argument )
 {
-   char check[MSL];
-
-   one_argument( argument, check );
-#if 0
-   if( !str_cmp( check, "+" ) )
-   {
-      argument = one_argument( argument, check );
-      do_allimm( ch, argument );
-   }
-   else
-#endif
-      talk_channel( ch, argument, CHANNEL_IMMTALK, "immtalk" );
+   talk_channel( ch, argument, CHANNEL_IMMTALK, "immtalk" );
    return;
 }
+
 void do_diptalk( CHAR_DATA * ch, char *argument )
 {
    if( !ch->act.test(ACT_CDIPLOMAT) )

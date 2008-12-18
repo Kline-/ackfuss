@@ -56,15 +56,21 @@
 #include "h/comm.h"
 #endif
 
-/* external functions
- */
-int move_gain( CHAR_DATA * ch );
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
 
-/* functions for riding
- */
-void stop_riding( CHAR_DATA * ch );
-bool check_valid_ride( CHAR_DATA * ch );
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
 
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
+#ifndef DEC_MOUNT_H
+#include "h/mount.h"
+#endif
 
 void do_mount( CHAR_DATA * ch, char *argument )
 {

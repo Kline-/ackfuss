@@ -27,3 +27,5 @@ void do_edit_message P_((CHAR_DATA *ch, int mess_num, OBJ_DATA *obj));
 void do_edit P_((CHAR_DATA *ch, char *argument));
 
 #undef P_
+
+#define T2000 -1  /* Terminator for files... */

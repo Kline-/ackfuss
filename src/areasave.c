@@ -54,6 +54,10 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 /* Way this works:
 	Mud reads in area files, stores details in data lists.
 	Edit rooms, objects, resets.
@@ -61,25 +65,6 @@
 	Sets bool saving_area to true.
 	Incrementally saves an area, using data lists.
 */
-
-
-#define SAVEQUEUESIZE 50
-#define NOT_SAVING 0
-#define START_SAVING 1
-#define AM_SAVING 2
-#define BUILD_OK -1
-#define BUILD_CANTSAVE 1
-#define BUILD_TOOMANY  2
-
-#define BUILD_SEC_AREA     1
-#define BUILD_SEC_ROOMS    2
-#define BUILD_SEC_MOBILES  3
-#define BUILD_SEC_MOBPROGS 4
-#define BUILD_SEC_OBJECTS  5
-#define BUILD_SEC_SHOPS    6
-#define BUILD_SEC_RESETS   7
-#define BUILD_SEC_END      8
-#define AREA_VERSION       22
 
 struct save_queue_type
 {

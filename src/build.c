@@ -74,6 +74,14 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
@@ -96,7 +104,6 @@
      Door states         :    tab_door_states     : number
 
 */
-#define                 MAX_STRING      2097152
 
 /*
  * Directions.
@@ -4489,9 +4496,6 @@ void build_help( CHAR_DATA * ch, char *argument )
    do_help( ch, BHELP_INDEX );
    return;
 }
-
-
-void reset_area( AREA_DATA * );
 
 void build_forcereset( CHAR_DATA * ch, char *argument )
 {

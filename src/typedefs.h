@@ -50,12 +50,6 @@
 
 #define DEC_TYPEDEFS_H		1
 
-#if 0
-#ifndef DEC_ACK_H
-#include "ack.h"
-#endif
-#endif
-
 /*
  * Accommodate old non-Ansi compilers.
  */

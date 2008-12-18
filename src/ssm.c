@@ -68,6 +68,10 @@
 #include <signal.h>
 #include <memory.h>
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 #include "ssm.h"
 
 TempHash **temp_string_hash;

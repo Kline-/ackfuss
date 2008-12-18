@@ -23,6 +23,7 @@ void do_give P_((CHAR_DATA *ch, char *argument));
 void do_fill P_((CHAR_DATA *ch, char *argument));
 void do_drink P_((CHAR_DATA *ch, char *argument));
 void do_eat P_((CHAR_DATA *ch, char *argument));
+bool remove_obj P_((CHAR_DATA * ch, int iWear, bool fReplace));
 void do_wear P_((CHAR_DATA *ch, char *argument));
 void remove_all P_((CHAR_DATA *ch));
 void do_remove P_((CHAR_DATA *ch, char *argument));

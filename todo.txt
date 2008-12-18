@@ -1,10 +1,9 @@
-resume .h progress -- stopped at comm.h
+resume .h progress -- stopped at handler.h
 finish area file format for RESETS
 ensure all CLASS have utilized ctor/dtor when possible
 use more bitsets!
 alpha re-organize all CLASS and ctor/dtor
 pcdata dtor/ctor
-clear_char to char_data ctor
 update and move crusade questions to own func
 save gsns and affects as strings so they can renumber
 char_data to npc_data/pc_data

@@ -55,11 +55,17 @@ include < types.h >
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #ifndef DEC_LISTS_H
 #include "lists.h"
 #endif
-
-#define T2000 -1  /* Terminator for files... */
 
 /**************************************************************************
  *               MAG Modified outline                                     *

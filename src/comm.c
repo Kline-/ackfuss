@@ -88,6 +88,14 @@
 #include "h/cursor.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 /*
  * Socket and TCP/IP stuff.
  */

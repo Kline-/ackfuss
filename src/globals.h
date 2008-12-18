@@ -104,7 +104,6 @@ extern short gsn_emotion_control;
 extern short gsn_target;
 extern short gsn_charge;
 extern short gsn_unit_tactics;
-
 extern short gsn_mount;   /* for mount skill */
 extern short gsn_imprint;
 extern short gsn_scent;
@@ -112,10 +111,6 @@ extern short gsn_scout;
 extern short gsn_decapitate;
 extern short gsn_potency;
 extern short gsn_thaumatergy;
-
-#ifdef TFS
-extern short gsn_mana_sense;
-#endif
 
 extern bool booting_up;
 extern bool area_resetting_global;
@@ -179,75 +174,32 @@ DECLARE_DO_FUN( do_exlist );
 DECLARE_DO_FUN( do_vlist );
 DECLARE_DO_FUN( do_rename );
 DECLARE_DO_FUN( do_sdelete );
-DECLARE_DO_FUN( do_assist );
 DECLARE_DO_FUN( do_bank );
-DECLARE_DO_FUN( do_bash );
-DECLARE_DO_FUN( do_berserk );
 DECLARE_DO_FUN( do_rbid );
 DECLARE_DO_FUN( do_mbid );
-DECLARE_DO_FUN( do_circle );
-DECLARE_DO_FUN( do_dirt );
-DECLARE_DO_FUN( do_feed );
 DECLARE_DO_FUN( do_gold );
-DECLARE_DO_FUN( do_headbutt );
-DECLARE_DO_FUN( do_knee );
 DECLARE_DO_FUN( do_hunt );
-DECLARE_DO_FUN( do_punch );
 DECLARE_DO_FUN( do_quest );
-DECLARE_DO_FUN( do_stake );
-DECLARE_DO_FUN( do_status );
-DECLARE_DO_FUN( do_stun );
-DECLARE_DO_FUN( do_trip );
 DECLARE_DO_FUN( do_listspells );
 
 /****************************
  * Now the 'standard' stuff:*
  ****************************/
-DECLARE_DO_FUN( do_areas );
 DECLARE_DO_FUN( do_rauction );
 DECLARE_DO_FUN( do_mauction );
 DECLARE_DO_FUN( do_autosplit );
 DECLARE_DO_FUN( do_autoassist );
-DECLARE_DO_FUN( do_backstab );
 DECLARE_DO_FUN( do_cast );
-DECLARE_DO_FUN( do_disarm );
-DECLARE_DO_FUN( do_flee );
-DECLARE_DO_FUN( do_kick );
-DECLARE_DO_FUN( do_kill );
-DECLARE_DO_FUN( do_memory );
-DECLARE_DO_FUN( do_mpasound );
-DECLARE_DO_FUN( do_mpat );
-DECLARE_DO_FUN( do_mpecho );
-DECLARE_DO_FUN( do_mpechoaround );
-DECLARE_DO_FUN( do_mpechoat );
-DECLARE_DO_FUN( do_mpforce );
-DECLARE_DO_FUN( do_mpgoto );
-DECLARE_DO_FUN( do_mpjunk );
-DECLARE_DO_FUN( do_mpkill );
-DECLARE_DO_FUN( do_mpmload );
-DECLARE_DO_FUN( do_mpoload );
-DECLARE_DO_FUN( do_mppurge );
-DECLARE_DO_FUN( do_mptransfer );
-DECLARE_DO_FUN( do_murde );
-DECLARE_DO_FUN( do_murder );
-DECLARE_DO_FUN( do_rescue );
 
 /*   
       NEW SKILLS  (SRZ)
 
 */
 DECLARE_DO_FUN( do_family );
-DECLARE_DO_FUN( do_mount );
-DECLARE_DO_FUN( do_dismount );
-DECLARE_DO_FUN( do_qpspend );
 DECLARE_DO_FUN( do_disguise );
 DECLARE_DO_FUN( do_instruct );
-DECLARE_DO_FUN( do_frenzy );
 DECLARE_DO_FUN( do_adrenaline );
-DECLARE_DO_FUN( do_target );
-DECLARE_DO_FUN( do_charge );
 DECLARE_DO_FUN( do_stance );
-DECLARE_DO_FUN( do_enchant );
 
 /*
  *   New Channels (ZEN)
@@ -259,16 +211,13 @@ DECLARE_DO_FUN( do_rulers );
  */
 DECLARE_DO_FUN( do_sedit );
 DECLARE_DO_FUN( do_scheck );
-DECLARE_DO_FUN( do_immbrand );
-DECLARE_DO_FUN( do_sysdata );
 DECLARE_DO_FUN( do_mapper );
+DECLARE_DO_FUN( do_sysdata );
 DECLARE_DO_FUN( do_mgive );
-DECLARE_DO_FUN( do_email );
 
 /*
  * Werwolf
  */
-DECLARE_DO_FUN( do_rage );
 DECLARE_DO_FUN( do_tribe );
 DECLARE_DO_FUN( do_scent );
 DECLARE_DO_FUN( do_imprint );
@@ -276,6 +225,5 @@ DECLARE_DO_FUN( do_imprint );
 /*
  * My improvements -Kline
  */
-DECLARE_DO_FUN( do_statraise );
 DECLARE_DO_FUN( do_mquest );
 DECLARE_DO_FUN( do_qstat );

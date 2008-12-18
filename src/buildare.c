@@ -57,19 +57,24 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
 
 /* Variables declared in db.c, which we need */
 extern char *string_hash[MAX_KEY_HASH];
-
 extern char *string_space;
 extern char *top_string;
 extern char str_empty[1];
-
 extern AREA_DATA *area_used[MAX_AREAS];
-
 extern int top_affect;
 extern int top_area;
 extern int top_ed;
@@ -79,9 +84,6 @@ extern int top_obj_index;
 extern int top_reset;
 extern int top_room;
 extern int top_shop;
-
-#define                 MAX_STRING      1048576
-#define                 MAX_PERM_BLOCK  131072
 extern int nAllocString;
 extern int sAllocString;
 extern int nAllocPerm;

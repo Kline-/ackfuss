@@ -42,12 +42,32 @@
 #include "h/act_comm.h"
 #endif
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
+#ifndef DEC_ACT_OBJ_H
+#include "h/act_obj.h"
+#endif
+
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
 #endif
 
 #ifndef DEC_COMM_H
 #include "h/comm.h"
+#endif
+
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
 #endif
 
 #ifndef DEC_MONEY_H
@@ -57,15 +77,6 @@
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
-
-/*
- * Local functions.
- */
-void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace );
-CHAR_DATA *find_keeper( CHAR_DATA * ch );
-int get_cost( CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy );
-void check_guards( CHAR_DATA * ch );
-char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort );
 
 extern OBJ_DATA *quest_object;
 extern OBJ_DATA *auction_item;

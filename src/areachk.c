@@ -53,6 +53,10 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
 {
    ROOM_INDEX_DATA *pRoomIndex, *prevRoomIndex;
