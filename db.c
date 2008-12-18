@@ -2246,16 +2246,13 @@ void reset_area( AREA_DATA * pArea )
                bug( "Reset_area: 'R': bad vnum %d.", pReset->arg3 );
                continue;
             }
-/*
-            if( ( count_obj_room( pObjIndex, pRoomIndex->first_content ) > num_allowed )
+            if( ( count_obj_room( pObjIndex, pRoomIndex->first_content ) >= pReset->arg2 )
                 || ( ( count_obj_room( pObjIndex, pRoomIndex->first_content ) > 0 )
                      && ( ( pObjIndex->item_type == ITEM_BOARD )
                           || ( pObjIndex->item_type == ITEM_FOUNTAIN )
                           || ( pObjIndex->item_type == ITEM_FURNITURE )
                           || ( pObjIndex->item_type == ITEM_PORTAL )
-                          || ( pObjIndex->item_type == ITEM_PIECE ) || ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_RARE) ) ) ) )*/
-            log_f("count: %d arg2: %d",pReset->count,pReset->arg2);
-            if( pReset->count >= pReset->arg2 );
+                          || ( pObjIndex->item_type == ITEM_PIECE ) || ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_RARE) ) ) ) )
             {
                last = FALSE;
                break;

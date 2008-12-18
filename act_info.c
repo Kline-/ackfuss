@@ -942,36 +942,13 @@ void do_look( CHAR_DATA * ch, char *argument )
                return;
             }
 
-            snprintf( buf, MSL, "You look in $p and see: %s%s.%s", color_string( ch, "rooms" ),
-                     room->name, color_string( ch, "normal" ) );
-            act( buf, ch, obj, NULL, TO_CHAR );
-
-            found = FALSE;
-            if( room->first_person != NULL )
-            {
-               send_to_char( "You see the following beings:\n\r", ch );
-               for( ppl = room->first_person; ppl != NULL; ppl = ppl->next_in_room )
-               {
-                  if( can_see( ch, ppl ) )
-                  {
-                     found = TRUE;
-                     snprintf( buf, MSL, "%s%s%s\n\r", color_string( ch, "mobiles" ),
-                              ( IS_NPC( ppl ) ? ppl->short_descr : ppl->name ), color_string( ch, "normal" ) );
-                     send_to_char( buf, ch );
-                  }
-               }
-            }
-            if( !found )
-               act( "You see no beings through $p.", ch, obj, NULL, TO_CHAR );
-
-            if( room->first_content != NULL )
-            {
-               send_to_char( "Some objects are visible:\n\r", ch );
-               show_room_list_to_char( room->first_content, ch, TRUE, FALSE );
-            }
-            else
-               act( "You see no objects through $p.", ch, obj, NULL, TO_CHAR );
-
+            ch->was_in_room = ch->in_room;
+            char_from_room(ch);
+            char_to_room(ch,room);
+            do_look(ch,"auto");
+            char_from_room(ch);
+            char_to_room(ch,ch->was_in_room);
+            ch->was_in_room = NULL;
             break;
 
          case ITEM_DRINK_CON:
