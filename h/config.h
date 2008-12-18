@@ -243,7 +243,9 @@
  */
 #define ROOM_VNUM_LIMBO            1
 #define ROOM_VNUM_JAIL             2
-#define ROOM_VNUM_CHAT             1200
+#define ROOM_VNUM_BODIES           3    /* for morphed players */
+#define ROOM_VNUM_CHAT             301
+#define ROOM_VNUM_HALLS            302
 #define ROOM_VNUM_TEMPLE           3001
 #define ROOM_VNUM_ALTAR            3054
 #define ROOM_VNUM_SCHOOL           3700
@@ -251,7 +253,6 @@
 #define ROOM_VNUM_MORGUE           3300
 #define ROOM_VNUM_MORIBUND         3301
 #define ROOM_VNUM_BUILDER	   1019  /* Bulder-flagged players only */
-#define ROOM_VNUM_BODIES	   30 /* for morphed players */
 #define ROOM_VNUM_CLAN		   1022  /* for leaders only */
 #define ROOM_VNUM_DM_RECALL        3001
 #define ROOM_VNUM_ETHEREAL_PLANE   3850
