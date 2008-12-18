@@ -32,10 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#define DEC_LISTS_H 1
-#ifndef DEC_TYPEDEFS_H
-#include "typedefs.h"
-#endif
+#define DEC_LISTS_H
 
 /*
  * All of the global linked lists, in one clump.  Declarations here,

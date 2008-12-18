@@ -31,11 +31,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#define DEC_UTILS_H 1
-
-#ifndef DEC_TYPEDEFS_H
-#include "typedefs.h"
-#endif
+#define DEC_UTILS_H
 
 /* Use these for bitvectors..saves having to recalculate each time :) Zen */
 

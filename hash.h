@@ -6,14 +6,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#ifndef DEC_TYPEDEFS_H
-#include "typedefs.h"
-#endif
-#ifndef DEC_LISTS_H
-#include "lists.h"
-#endif
-
-
+#define DEC_HASH_H
 
 struct hash_entry_tp
 {

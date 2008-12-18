@@ -32,14 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-/*
- *  money.h -- handles multi unit money transactions.
- */
-#ifndef DEC_TYPEDEFS_H
-#include "typedefs.h"
-#endif
-
-#define DEC_MONEY_H     1
+#define DEC_MONEY_H
 
 #define MAX_CURRENCY    8
 #define EXCHANGE_COST   .1
