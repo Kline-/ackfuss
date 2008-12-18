@@ -686,7 +686,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       is_npc = FALSE;
 
    ch = new CHAR_DATA;
-   clear_char( ch );
 
    if( !is_npc )
    {
@@ -699,23 +698,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       *ch->pcdata->super = super_zero;
 
       d->character = ch;
-
-      ch->pcdata->monitor.reset();
-      ch->pcdata->host = str_dup( "Unknown!" );
-      ch->pcdata->lastlogin = str_dup( "Unknown!" );
-      ch->pcdata->who_name = str_dup( "off" );
-      ch->pcdata->pwd = str_dup( "" );
-      ch->pcdata->load_msg = str_dup( "" );
-      ch->pcdata->bamfin = str_dup( "" );
-      ch->pcdata->bamfout = str_dup( "" );
-      ch->pcdata->room_enter = str_dup( "" );
-      ch->pcdata->room_exit = str_dup( "" );
-      ch->pcdata->title = str_dup( "" );
-      ch->pcdata->perm_str = 13;
-      ch->pcdata->perm_int = 13;
-      ch->pcdata->perm_wis = 13;
-      ch->pcdata->perm_dex = 13;
-      ch->pcdata->perm_con = 13;
 
       for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
        ch->pcdata->quest_info->amount[foo] = -1;
@@ -749,6 +731,11 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 
       ch->pcdata->super->energy = 24;
 
+      ch->pcdata->perm_str = 13;
+      ch->pcdata->perm_int = 13;
+      ch->pcdata->perm_wis = 13;
+      ch->pcdata->perm_dex = 13;
+      ch->pcdata->perm_con = 13;
       ch->pcdata->condition[COND_THIRST] = 48;
       ch->pcdata->pagelen = 20;
       ch->pcdata->condition[COND_FULL] = 48;

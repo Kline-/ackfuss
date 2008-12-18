@@ -559,15 +559,6 @@ class char_data
    CHAR_DATA *leader;
    CHAR_DATA *fighting;
    CHAR_DATA *reply;
-/*    CHAR_DATA *         hunting;
-    char *              huntdirs;
-    int                 huntdirno;
-    int                 huntlastvnum;
-    char *              huntname;
-    int			act_hunt;
-    OBJ_DATA	*	hunt_obj;
-    int			move_to;
-    char *		movename;*/
    bool npc; /* For NPC's, no more flag */
    CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
    OBJ_DATA *hunt_obj;  /* Looking for objects     */
@@ -1393,7 +1384,6 @@ void  area_update      args( ( void ) );
 void  message_update   args( ( void ) );
 CD    *create_mobile   args( ( MOB_INDEX_DATA * pMobIndex ) );
 OD    *create_object   args( ( OBJ_INDEX_DATA * pObjIndex, int level ) );
-void  clear_char       args( ( CHAR_DATA * ch ) );
 char  *get_extra_descr args( ( const char *name, EXTRA_DESCR_DATA * ed ) );
 MID   *get_mob_index   args( ( int vnum ) );
 OID   *get_obj_index   args( ( int vnum ) );

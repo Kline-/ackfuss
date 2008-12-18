@@ -2570,7 +2570,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 
    mob = new CHAR_DATA;
 
-   clear_char( mob );
    mob->pIndexData = pMobIndex;
 
    if( pMobIndex->act.test(ACT_INTELLIGENT) )
@@ -2919,45 +2918,6 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
    return obj;
 }
 
-
-
-/*
- * Clear a new character.
- */
-void clear_char( CHAR_DATA * ch )
-{
-   static CHAR_DATA ch_zero;
-
-   *ch = ch_zero;
-   ch->name = &str_empty[0];
-   ch->short_descr = &str_empty[0];
-   ch->long_descr = &str_empty[0];
-   ch->long_descr_orig = &str_empty[0];
-   ch->description = &str_empty[0];
-   ch->prompt = &str_empty[0];
-   ch->last_note = 0;
-   ch->logon = current_time;
-   ch->armor = 100;
-   ch->position = POS_STANDING;
-   ch->practice = 21;
-   ch->hit = 20;
-   ch->max_hit = 20;
-   ch->mana = 100;
-   ch->max_mana = 100;
-   ch->move = 100;
-   ch->sitting = NULL;
-   ch->max_move = 100;
-   ch->act_build = 0;
-   ch->build_vnum = -1;
-   ch->sentence = 0;
-   ch->switched = FALSE;
-   ch->old_body = NULL;
-   ch->first_shield = NULL;
-   ch->last_shield = NULL;
-   ch->stunTimer = 0;
-
-   return;
-}
 
 /*
  * Get an extra description from a list.
