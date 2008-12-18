@@ -48,3 +48,5 @@ AckFUSS Feature List
     -Numerous online-configurable gameplay options to set mob difficulty, leveling speed, etc
     -Flat helpfiles; every help is a single file -- reduced memory footprint and easily updated
     -Race realism -- not everybody carries cash these days
+    -Human readable area files; no more cryptic garbage that's impossible to modify
+    -Numerous C++ and Makefile enhancements to improve maintainability and speed compile time

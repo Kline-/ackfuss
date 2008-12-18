@@ -1,3 +1,31 @@
+4.3.9 - 17 Dec 08:
+ A -LOT- of C++ conversion has happened in this release! Area files are entirely different, too!
+ Added two new types to mquest based on mob race.
+ Fixed a crash bug with the speedwalk detection.
+ Autobrief added to let players disable the speed walk suppression of room displays.
+ Added how to delete a note on look <board> per Sasuke's suggestion. Updated the writing parser with !str_prefix() instead of the ugly case-sensitive 
+ checks it had. Should work with .save .Save, etc etc.
+ Optimized char_list looping.
+ #ifdef IMC fix for the midnight keepalive.
+ Fixed a display bug in, oddly enough, bug().
+ Added a missing color code. Changed '%' to send socials over IMC, '@' was breaking color codes.
+ Added all "player" (I use the term loosely) act flags to a table for easy lookup with mstat.
+ What once was ch->pcdata->pflags has been consolidated into ch->act
+ ch->config migrated to ch->act now too
+ Updated the Makefile to use dependencies and hide obj files out of the way.
+ Updated Makefile and startup script. New startup will check for ports in use to avoid constant looping and logs.
+ Moved to compiling with g++ by default. Code updated to actually do this cleanly!
+ Moving prototypes to individual headers for readability. Slow and steady.
+ Cleaned out the AIX/SYSV/etc ancient stuff still around.
+ More headers and cleaned out the multi-base code from IMC; no need to haul it around.
+ xprintf is gone, now using snprintf. xcat is gone, now using strncat.
+ A lot of C++ work with new/delete and removal of bitmasks to bitsets. I'm sure there are many more edits too (incl super new Makefile) but I honestly don't remember them all!
+ Help update for new build command (Addroom) and minor re-org.
+ Added aobj help -- oops. Also added a "list" argument to aobj. Some fixes I missed with the previous object updates, too.
+ Objs no longer crash on load :D
+ Minor Makefile edit for -DWIN32 not being used with Cygwin.
+ Moved reset tracking to per-reset. This should work ok, but report problems if any are found. Also another freelist bites the dust!
+ A lot of things are now bitsets (infinite flags)!
 4.3.8 - 14 Sep 08:
  Auto-object is complete with a mod table. ie: aobj weapon will modify the level-based values with "weapon" stats -- only hr and dr, and a percentage of the level's base stats. Adjust the sysdata values or the build table as needed for customization :).
  Auto-object is in. Use aobj when editing an object, adjust the top-end values with sysdata while in build mode.
