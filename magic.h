@@ -43,10 +43,6 @@
 #endif
 
 bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int type, int sn, bool show_msg );
-void group_gain args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-bool is_safe args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void set_fighting args( ( CHAR_DATA * ch, CHAR_DATA * victim, bool check ) );
-void check_adrenaline args( ( CHAR_DATA * ch, float damage ) );
 
 #define REALM_NONE    	  BIT_0
 #define REALM_FIRE		    BIT_1

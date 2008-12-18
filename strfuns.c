@@ -51,6 +51,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 #ifndef DEC_STRFUNS_H
 #include "strfuns.h"
 #endif
@@ -330,39 +334,6 @@ bool str_suffix( const char *astr, const char *bstr )
       return TRUE;
 }
 
-
-
-/*
- * Returns an initial-capped string.
- */
-#if 0
-char *capitalize( const char *str )
-{
-   static char strcap[MAX_STRING_LENGTH];
-   int i;
-
-   for( i = 0; str[i] != '\0'; i++ )
-   {
-      if( ( str[i] == '@' ) && ( str[i + 1] == '@' ) && ( str[i + 2] != '\0' ) )
-      {
-         strcap[i] = str[i];
-         strcap[i + 1] = str[i + 1];
-         strcap[i + 2] = str[i + 2];
-         i += 2;
-      }
-      else
-         strcap[i] = LOWER( str[i] );
-   }
-
-   strcap[i] = '\0';
-   for( i = 0; strcap[i] != '\0' && !isalpha( strcap[i] ); i++ );
-   if( ( i > 0 ) && ( strcap[i] != '\0' ) )
-      i++;
-   if( strcap[i] != '\0' )
-      strcap[i] = UPPER( strcap[i] );
-   return strcap;
-}
-#endif
 /* Capitalize function by KaVir: 3th December 1997.
  *
  * Pass in a pointer to the string to capitalize.  The function will return
@@ -488,15 +459,7 @@ char *capitalize( const char *str )
    while( ( strcap[++i] = *++str ) != '\0' );   /* loop until end of string */
 
    i = 0;   /* str = oldstr;  Reset variables */
-#if 0
-   /*
-    * Copy strcap back into the old string 
-    */
-   while( ( *str++ = strcap[i++] ) != '\0' )
-      ;
 
-   return ( oldstr );   /* Return pointer to start of old string */
-#endif
    return ( strcap );
 }
 

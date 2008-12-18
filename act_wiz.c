@@ -80,8 +80,24 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 #ifndef DEC_EMAIL_H
-#include "email.h"
+#include "h/email.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
+#ifndef DEC_MOB_COMMANDS_H
+#include "h/mob_commands.h"
 #endif
 
 extern int top_mob_index;

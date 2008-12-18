@@ -54,6 +54,18 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 CLUTCH_TYPE clutch_table[SPELL_NUMBER] = {
    {1, TRUE, clutch_portal},
    {2, TRUE, clutch_gate},

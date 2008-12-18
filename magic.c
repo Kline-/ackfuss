@@ -66,6 +66,18 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
@@ -363,13 +375,12 @@ bool saves_spell( int level, CHAR_DATA * victim )
 
    if( number_percent(  ) < save )
       saved = TRUE;
-#if 0
-   snprintf( log_buf, "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
+
+   snprintf( log_buf, MSL, "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
             victim->name, get_psuedo_level( victim ),
             wis_app[get_curr_wis( victim )].spell_save,
             victim->saving_throw, save, level, ( saved ? "@@aSAVED@@N" : "@@eFAILED@@N" ) );
    monitor_chan( log_buf, MONITOR_MAGIC );
-#endif
 
    return ( saved );
 

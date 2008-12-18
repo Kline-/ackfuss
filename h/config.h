@@ -58,6 +58,7 @@
 #define MAX_AREAS                1000
 #define MAX_VNUM                 16777216
 #define MAX_BITSET               256    /* Total bits per bitset */
+#define MAX_PERM_BLOCK           131072
 
 #define BOOT_DB_ABORT_THRESHOLD			  25
 #define RUNNING_ABORT_THRESHOLD			  10
@@ -531,12 +532,6 @@
 #define SECT_AIR                      9
 #define SECT_DESERT                  10
 #define SECT_INSIDE                  11
-#if 0
-#define SECT_HERE                    12
-#define SECT_UNSEEN                  13
-#define SECT_BLOCKED                 14
-#define SECT_TOP                     15
-#endif
 
 #define SECT_MAX                     12
 

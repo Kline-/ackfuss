@@ -61,6 +61,14 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 void save_brands(  )
 {
 
@@ -198,21 +206,6 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
       send_to_char( "qpspend show to see a test, then qpspend buy\n\r", ch );
       return;
    }
-#if 0
-   if( !str_cmp( arg1, "state" ) )
-   {
-      argument = one_argument( argument, arg2 );
-      if( !is_name( arg2, "unique rename" ) )
-      {
-         send_to_char( "That is not a currently implemented editing state.\n\r", ch );
-         return;
-      }
-      free_string( ch->pcdata->pedit_state );
-      ch->pcdata->pedit_state = str_dup( arg2 );
-      return;
-   }
-#endif
-
 
    if( !str_cmp( arg1, "enter" ) )
    {

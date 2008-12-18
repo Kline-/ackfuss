@@ -49,6 +49,14 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 const char *get_ruler_title( int ruler_rank, int sex )
 {
 

@@ -14,6 +14,9 @@
 #include "globals.h"
 #include "hash.h"
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
 
 /*
  * Deals with generic hashing tables.

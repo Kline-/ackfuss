@@ -45,6 +45,14 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 const char wizutil_id[] = "$Id: wizutil.c,v 1.6 1996/01/04 21:30:45 root Exp root $";
 
 /*
@@ -444,38 +452,3 @@ The command works by transporting the character to each of the rooms with
 target in them. Private rooms are not violated.
 
 */
-
-/* Expand the name of a character into a string that identifies THAT
-   character within a room. E.g. the second 'guard' -> 2. guard
-*/
-
-#if 0
-const char *name_expand( CHAR_DATA * ch )
-{
-   int count = 1;
-   CHAR_DATA *rch;
-   char name[MAX_INPUT_LENGTH];  /*  HOPEFULLY no mob has a name longer than THAT */
-
-   static char outbuf[MAX_INPUT_LENGTH];
-
-   if( !IS_NPC( ch ) )
-      return ch->name;
-
-   one_argument( ch->name, name );  /* copy the first word into name */
-
-   if( !name[0] ) /* weird mob .. no keywords */
-   {
-      strcpy( outbuf, "" );   /* Do not return NULL, just an empty buffer */
-      return outbuf;
-   }
-
-   for( rch = ch->in_room->first_person; rch && ( rch != ch ); rch = rch->next_in_room )
-      if( is_name( name, rch->name ) )
-         count++;
-
-
-   snprintf( outbuf, MIL, "%d.%s", count, name );
-   return outbuf;
-}
-
-#endif

@@ -50,11 +50,10 @@
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
-                           /*
-                            * #define CONST_SOCIAL  
-                                                         *//*
-                                                         * remove this in Step 2 
-                                                         */
+
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
 
 int maxSocial; /* max number of socials */
 

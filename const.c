@@ -35,17 +35,47 @@
 #include <stdio.h>
 #include <time.h>
 #include "globals.h"
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
 
-
+const char *where_name[] = {
+   "                      ",  /* light  */
+   "-*floating above*-    ",
+   "-*enveloped by*-      ",
+   "-*worn on horns*-     ",
+   "-*worn on head*-      ",
+   "-*worn on face*-      ",
+   "-*worn on beak*-      ",
+   "-*worn on ear*-       ",
+   "-*worn on ear*-       ",
+   "-*worn on neck*-      ",
+   "-*worn on neck*-      ",  /* 10 */
+   "-*worn on wings*-     ",
+   "-*worn on shoulders*- ",
+   "-*worn on arms*-      ",
+   "-*worn around wrist*- ",
+   "-*worn around wrist*- ",  /* 15 */
+   "-*worn on hands*-     ",
+   "-*worn on finger*-    ",
+   "-*worn on finger*-    ",
+   "-*worn on claws*-     ",
+   "-*held in left hand*- ",  /* 20 */
+   "-*held in right hand*-",
+   "-*worn as a cape*-    ",
+   "-*worn about waist*-  ",
+   "-*worn on body*-      ",
+   "-*worn on tail*-      ",
+   "-*worn on legs*-      ",
+   "-*worn on feet*-      ",
+   "-*worn on hooves*-    ",
+};
 
 /*
  * color table for say, gossip, shout, etc.
  * Put here for ease of editing. -S-
  */
-
 const struct color_type color_table[MAX_COLOR] = {
    {"say",       0},
    {"tell",      1},
@@ -2905,4 +2935,26 @@ const struct skill_type skill_table[MAX_SKILL] = {
     "", "Your lose your mystical focus.",
     "$N shakes his head, and seems less focused."},
 
+};
+
+const char *compass_name[] = {
+   "north", "east", "south", "west", "up", "down"
+};
+
+char *const dir_name[] = {
+   "to the North", "to the East", "to the South", "to the West", "Up", "Down"
+};
+
+/* rev_name used to indicate where ch has come from when entering -S- */
+
+char *const rev_name[] = {
+   "the South", "the West", "the North", "the East", "Below", "Above"
+};
+
+short movement_loss[SECT_MAX] = {
+   1, 2, 2, 3, 4, 6, 4, 1, 6, 10, 6, 1
+};
+
+short rev_dir[] = {
+   2, 3, 0, 1, 5, 4
 };

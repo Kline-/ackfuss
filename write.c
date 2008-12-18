@@ -42,6 +42,10 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 /* This file deals with multi-line editing, and writing. */
 
 struct buf_data_struct

@@ -83,6 +83,38 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_EMAIL_H
+#include "h/email.h"
+#endif
+
+#ifndef DEC_ENCHANT_H
+#include "h/enchant.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
+#ifndef DEC_MOB_COMMANDS_H
+#include "h/mob_commands.h"
+#endif
+
+#ifndef DEC_MOUNT_H
+#include "h/mount.h"
+#endif
+
+#ifndef DEC_SPENDQP_H
+#include "h/spendqp.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif

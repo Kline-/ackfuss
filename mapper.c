@@ -61,6 +61,14 @@
 #include "h/cursor.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 int door_marks[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
 int offsets[4][2] = { {-2, 0}, {0, 2}, {2, 0}, {0, -2} };
 

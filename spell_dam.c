@@ -62,6 +62,18 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
@@ -563,10 +575,6 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
                symbuf,
                ( stress ? sp_dam_str[rtype].vs_stress : sp_dam_str[rtype].vs ),
                symbuf, sp_dam_str[rtype].basecol, attack, punct, testerbuf );
-/*	   if ( *str == '\'' )
-	    snprintf( buf3, MSL, "%s$n %s%s your%s%s $s %s%c@@N",col,col, vp,col, str+2, attack, punct);
-	   else
-*/
       snprintf( buf3, MSL, "%s$n %s%s%s %syou with $s %s%c@@N%s",
                sp_dam_str[rtype].basecol,
                symbuf,
@@ -580,17 +588,6 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
                symbuf,
                ( stress ? sp_dam_str[rtype].vp_stress : sp_dam_str[rtype].vp ),
                symbuf, sp_dam_str[rtype].basecol, attack, punct );
-#if 0
-      snprintf( buf2, MSL, "%sYou %s%s%s@@N $N %swith your %s%c@@N%s",
-               sp_dam_str[rtype].basecol,
-               symbuf,
-               ( stress ? sp_dam_str[rtype].vs_stress : sp_dam_str[rtype].vs ),
-               symbuf, sp_dam_str[rtype].basecol, attack, punct, testerbuf );
-#endif
-/*	   if ( *str == '\'' )
-	    snprintf( buf3, MSL, "%s$n %s%s your%s%s $s %s%c@@N",col,col, vp,col, str+2, attack, punct);
-	   else
-*/
       snprintf( buf3, MSL, "%s$p %s%s%s %syou with $s %s%c@@N",
                sp_dam_str[rtype].basecol,
                symbuf,

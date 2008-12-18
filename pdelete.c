@@ -50,6 +50,10 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 void do_sdelete( CHAR_DATA * ch, char *argument )
 {
    DESCRIPTOR_DATA *d;

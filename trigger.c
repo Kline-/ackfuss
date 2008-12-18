@@ -46,6 +46,18 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #define DEC_TRIGGER( fun )		TRIGGER_FUN  fun
 
 typedef void TRIGGER_FUN args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );

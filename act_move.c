@@ -63,30 +63,25 @@
 #include "h/comm.h"
 #endif
 
-bool check_valid_ride( CHAR_DATA * ch );
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
+#ifndef DEC_FIGHT_H
+#include "h/fight.h"
+#endif
+
+#ifndef DEC_MOUNT_H
+#include "h/mount.h"
+#endif
+
 extern bool deathmatch;
-
-const char *compass_name[] = {
-   "north", "east", "south", "west", "up", "down"
-};
-
-char *const dir_name[] = {
-   "to the North", "to the East", "to the South", "to the West", "Up", "Down"
-};
-
-/* rev_name used to indicate where ch has come from when entering -S- */
-
-char *const rev_name[] = {
-   "the South", "the West", "the North", "the East", "Below", "Above"
-};
-
-const short movement_loss[SECT_MAX] = {
-   1, 2, 2, 3, 4, 6, 4, 1, 6, 10, 6, 1
-};
-
-short rev_dir[] = {
-   2, 3, 0, 1, 5, 4
-};
+extern const short rev_dir[];
+extern const short movement_loss[];
 
 void move_char( CHAR_DATA * ch, int door, bool look )
 {

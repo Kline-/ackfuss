@@ -76,6 +76,14 @@
 #include "h/cursor.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
@@ -83,38 +91,6 @@
 #ifndef DEC_MONEY_H
 #include "money.h"
 #endif
-
-const char *where_name[] = {
-   "                      ",  /* light  */
-   "-*floating above*-    ",
-   "-*enveloped by*-      ",
-   "-*worn on horns*-     ",
-   "-*worn on head*-      ",
-   "-*worn on face*-      ",
-   "-*worn on beak*-      ",
-   "-*worn on ear*-       ",
-   "-*worn on ear*-       ",
-   "-*worn on neck*-      ",
-   "-*worn on neck*-      ",  /* 10 */
-   "-*worn on wings*-     ",
-   "-*worn on shoulders*- ",
-   "-*worn on arms*-      ",
-   "-*worn around wrist*- ",
-   "-*worn around wrist*- ",  /* 15 */
-   "-*worn on hands*-     ",
-   "-*worn on finger*-    ",
-   "-*worn on finger*-    ",
-   "-*worn on claws*-     ",
-   "-*held in left hand*- ",  /* 20 */
-   "-*held in right hand*-",
-   "-*worn as a cape*-    ",
-   "-*worn about waist*-  ",
-   "-*worn on body*-      ",
-   "-*worn on tail*-      ",
-   "-*worn on legs*-      ",
-   "-*worn on feet*-      ",
-   "-*worn on hooves*-    ",
-};
 
 char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
 {
@@ -630,6 +606,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
    int pct;
    bool found;
    buf[0] = '\0';
+   extern const char *where_name[];
 
 
    if( can_see( victim, ch ) )

@@ -37,12 +37,6 @@
 #include "typedefs.h"
 #endif
 
-#if 0
-#ifndef DEC_ACK_H
-#include "ack.h"
-#endif
-
-#endif
 /* Use these for bitvectors..saves having to recalculate each time :) Zen */
 
 #define		BIT_0		0
