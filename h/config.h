@@ -38,10 +38,10 @@
  */
 #define mudnamecolor  "@@lYour Mud Name@@N"
 #define mudnamenocolor  "Your Mud name"
-#define sacgodname  "Cyberlich"
-#define goodgodname  "Freyja"
-#define neutralgodname  "Zenithar"
-#define evilgodname  "Oderus"
+#define sacgodname  "Kline"
+#define goodgodname  "Good"
+#define neutralgodname  "Neutral"
+#define evilgodname  "Evil"
 #define UPGRADE_REVISION 15
 
 /*
@@ -75,7 +75,6 @@
 #define MAX_IGNORES		     3
 #define MAX_RACE                     20
 #define MAX_CLAN                     9 /* number of clans */
-#define EXP_LEVEL                 1000 /* exp per level */
 #define MAX_SKILL                  300
 #define MAX_CLASS                    5
 #define MAX_LEVEL                   85
@@ -242,6 +241,7 @@
  * Defined in #ROOMS.
  */
 #define ROOM_VNUM_LIMBO            1
+#define ROOM_VNUM_JAIL             2
 #define ROOM_VNUM_CHAT             1200
 #define ROOM_VNUM_TEMPLE           3001
 #define ROOM_VNUM_ALTAR            3054
@@ -257,7 +257,6 @@
 #define ROOM_VNUM_INT_HEAL	   3871
 #define ROOM_VNUM_MID_BOTTOM	   3001
 #define ROOM_VNUM_MID_TOP	   3200
-#define ROOM_VNUM_JAIL             2
 #define ROOM_VNUM_ARMOR_DONATE     3018
 #define ROOM_VNUM_WEAPON_DONATE    3019
 #define ROOM_VNUM_MISC_DONATE      3017
@@ -266,11 +265,11 @@
  * Well known mob virtual numbers.
  * Defined in #MOBILES.
  */
+#define MOB_VNUM_STALKER           2
 #define MOB_VNUM_CITYGUARD         3060
 #define MOB_VNUM_VAMPIRE           3404
 #define MOB_VNUM_DOGGY             99
 #define MOB_VNUM_ZOMBIE           11004
-#define MOB_VNUM_STALKER           2
 #define MOB_VNUM_WATERELEM        1028
 #define MOB_VNUM_SKELETON         1028
 #define MOB_VNUM_FIREELEM         1028
