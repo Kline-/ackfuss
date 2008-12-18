@@ -54,8 +54,9 @@
 #endif
 #endif
 
-
-#include "ssm.h"
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
 
 /*  String checker, Spectrum 11/96
  *

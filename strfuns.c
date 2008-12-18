@@ -44,7 +44,7 @@
 #include <stdarg.h>
 
 #ifndef  DEC_ACK_H
-#include "globals.h"
+#include "ack.h"
 #endif
 
 #ifndef DEC_ACT_WIZ_H
@@ -53,6 +53,10 @@
 
 #ifndef DEC_DB_H
 #include "h/db.h"
+#endif
+
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
 #endif
 
 #ifndef DEC_STRFUNS_H

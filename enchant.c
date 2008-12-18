@@ -66,6 +66,10 @@
 #include "h/spendqp.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 void do_enchant( CHAR_DATA * ch, char *argument )
 {
    char arg1[MSL];

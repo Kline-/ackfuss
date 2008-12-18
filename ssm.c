@@ -72,7 +72,9 @@
 #include "h/db.h"
 #endif
 
-#include "ssm.h"
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
 
 TempHash **temp_string_hash;
 

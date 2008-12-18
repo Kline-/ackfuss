@@ -53,7 +53,7 @@
 #endif
 
 #ifndef DEC_MQUEST_H
-#include "mquest.h"
+#include "h/mquest.h"
 #endif
 
 #ifndef DEC_STRFUNS_H
@@ -1420,12 +1420,6 @@ void mprog_death_trigger args( ( CHAR_DATA * mob ) );
 void mprog_random_trigger args( ( CHAR_DATA * mob ) );
 void mprog_speech_trigger args( ( char *txt, CHAR_DATA * mob ) );
 
-/* mquest.c */
-char *display_mob_target     args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
-char *display_obj_target     args( ( CHAR_DATA *ch, OBJ_DATA *obj ) );
-void update_mquest_wait_time args( ( CHAR_DATA *ch ) );
-void update_mquest_kill      args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
-
 
            /*-------*\
 			  ) quest.c (
@@ -1515,9 +1509,6 @@ void hunt_move args(( CHAR_DATA * mob, short dir ));
 
 void init_alarm_handler args( ( void ) );
 void alarm_update args( ( void ) );
-/*    SSM   */
-void temp_fread_string args( ( FILE * fp, char *buf ) );
-
 
 /*
  *      Rulers

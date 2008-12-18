@@ -57,6 +57,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 const char *get_ruler_title( int ruler_rank, int sex )
 {
 

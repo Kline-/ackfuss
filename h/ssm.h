@@ -32,7 +32,32 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-/* Mostly yanked from ssm.c */
+#define DEC_SSM_H
+
+#if __STDC__ || defined(__cplusplus)
+#define P_(s) s
+#else
+#define P_(s) ()
+#endif
+
+/* ssm.c */
+void init_string_space P_((void));
+int defrag_heap P_((void));
+void temp_fread_string P_((FILE *fp, char *buf));
+char *temp_hash_find P_((const char *str));
+void temp_hash_add P_((char *str));
+void boot_done P_((void));
+
+#undef P_
+
+#define fread_string(x) _fread_string((x), _caller)
+char *_fread_string args( ( FILE * fp, const char *caller ) );
+#define str_dup(x) _str_dup((x), _caller)
+char *_str_dup args( ( const char *str, const char *caller ) );
+#define fread_string_eol(x) _fread_string_eol((x), _caller)
+char *_fread_string_eol args( ( FILE * fp, const char *caller ) );
+#define free_string(x) _free_string((x), _caller)
+void _free_string args( ( char *pstr, const char *caller ) );
 
 #define intType short int
 #define uintType unsigned intType
@@ -79,11 +104,6 @@ extern long sOverFlowString;
 extern long hwOverFlow;
 extern int numFree;
 extern bool Full;
-
-int defrag_heap( void );
-char *fread_word_dup( FILE * );  /* Implement later to check words also */
-void temp_hash_add( char * );
-char *temp_hash_find( const char * );
 
 /*
  * ssm_buf_head points to start of shared space,

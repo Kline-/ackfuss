@@ -16,7 +16,6 @@
 #include <string.h>
 #include <time.h>
 #include "globals.h"
-#include "mquest.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -40,16 +39,6 @@
 
 extern int top_mob_index;
 extern int top_obj_index;
-
-/* locals */
-void      mquest_info              args( ( CHAR_DATA *ch ) );
-void      mquest_complete_message  args( ( CHAR_DATA *ch ) );
-void      mquest_calc_rewards      args( ( CHAR_DATA *ch ) );
-void      mquest_clear             args( ( CHAR_DATA *ch, bool error ) );
-void      generate_killing_quest   args( ( CHAR_DATA *ch ) );
-CHAR_DATA *get_quest_kill          args( ( int min_lev, int max_lev, CHAR_DATA *ch ) );
-void      generate_retrieval_quest args( ( CHAR_DATA *ch ) );
-OBJ_DATA  *get_quest_item          args( ( int min_lev, int max_lev, CHAR_DATA *ch ) );
 
 void do_mquest( CHAR_DATA *ch, char *argument )
 {

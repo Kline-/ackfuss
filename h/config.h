@@ -1260,4 +1260,4 @@
 /* Other Stuff - Flar */
 #define COPYOVER_FILE	"COPYOVER.TXT" /* Temp data file used for copyover */
 #define EXE_FILE		"../src/ack"   /* The one that runs the ACK! */
-#define VERS_STRING "AckFUSS 4.3.9"
+#define VERS_STRING "AckFUSS 4.4.0"

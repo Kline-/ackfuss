@@ -74,6 +74,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "magic.h"
 #endif
