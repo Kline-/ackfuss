@@ -37,7 +37,6 @@
 #include <time.h>
 #include <stdlib.h>
 #include "globals.h"
-#define NOWHERE -1
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"

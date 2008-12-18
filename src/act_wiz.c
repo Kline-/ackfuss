@@ -100,6 +100,10 @@
 #include "h/mob_commands.h"
 #endif
 
+#ifndef DEC_STRFUNS_H
+#include "h/strfuns.h"
+#endif
+
 extern int top_mob_index;
 extern int top_obj_index;
 extern bool merc_down;

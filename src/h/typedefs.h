@@ -48,7 +48,7 @@
 #include <errno.h>
 #include <signal.h>
 
-#define DEC_TYPEDEFS_H		1
+#define DEC_TYPEDEFS_H
 
 /*
  * Accommodate old non-Ansi compilers.

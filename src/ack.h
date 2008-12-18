@@ -32,18 +32,10 @@
  ***************************************************************************/
 #include <bitset>
 
-#define DEC_ACK_H 1
+#define DEC_ACK_H
 
 #ifndef DEC_CONFIG_H
 #include "h/config.h"
-#endif
-
-#ifndef DEC_TYPEDEFS_H
-#include "typedefs.h"
-#endif
-
-#ifndef DEC_UTILS_H
-#include "utils.h"
 #endif
 
 #ifndef DEC_GLOBALS_H
@@ -60,12 +52,20 @@
 #include "lists.h"
 #endif
 
-#ifndef DEC_STRFUNS_H
-#include "strfuns.h"
-#endif
-
 #ifndef DEC_MQUEST_H
 #include "mquest.h"
+#endif
+
+#ifndef DEC_STRFUNS_H
+#include "h/strfuns.h"
+#endif
+
+#ifndef DEC_TYPEDEFS_H
+#include "h/typedefs.h"
+#endif
+
+#ifndef DEC_UTILS_H
+#include "h/utils.h"
 #endif
 
 struct board_data
