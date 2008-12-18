@@ -1,54 +1,1 @@
-#AREA
-Revision  22
-CanRead   Kline~
-CanWrite  Kline~
-Flags     2 4 EOL
-Keyword   ~
-LevLabel  @@R[@@eIMMORT@@R]@@N~
-LevRange  1 120
-Name      Halls of the Immortals~
-Number    4
-Owner     Kline~
-ResetMsg  off~
-ResetRate 15
-VnumRange 301 400
-End
-
-#ROOM
-Vnum  301
-Desc  Colors and shapes rapidly swirl around this room as the ether tries to take form, yet can't. Everything imaginable seems to exist here, yet is always out of phase with reality. Is there anything truly here? Or is there nothing...?~
-Flags 3 4 17 18 EOL
-Name  The Void~
-Sect  11
-End
-
-#ROOM
-Vnum  302
-Desc  You stand in the hub of the Halls of Immortals. From here the rest of the structure branches outward. There are various monitoring stations around the room displaying vital statistics about the world and its populace~
-Flags 3 EOL
-Name  The Hub~
-Sect  11
-End
-
-#OBJECT
-Vnum       301
-Durability 3
-ExtraFlags EOL
-ItemApply  1
-Level      1
-LongDesc   The board of ages is here, exploding with knowledge!
-~
-Name       immortal board~
-ObjFun     (null)
-ShortDesc  the Board of Ages~
-Speed      4.00
-Type       27
-Values     0 81 81 301 0 0 0 0 0 0 
-WearFlags  EOL
-Weight     1
-End
-#RESETS
-O 301 1 302 
-
-S
-#$
+#AREARevision  22CanRead   Kline~CanWrite  Kline~Flags     2 4 EOLKeyword   ~LevLabel  @@R[@@eIMMORT@@R]@@N~LevRange  1 120Name      Halls of the Immortals~Number    4Owner     Kline~ResetMsg  off~ResetRate 15VnumRange 301 400End#ROOMVnum  301Desc  Colors and shapes rapidly swirl around this room as the ether tries to take form, yet can't. Everything imaginable seems to exist here, yet is always out of phase with reality. Is there anything truly here? Or is there nothing...?~Flags 3 4 17 18 EOLName  The Void~Sect  11End#ROOMVnum  302Desc  You stand in the hub of the Halls of Immortals. From here the rest of the structure branches outward. There are various monitoring stations around the room displaying vital statistics about the world and its populace~Flags 3 EOLName  The Hub~Sect  11End#DOORDir     5Desc    ~Flags   EOLKey     0Keyword ~Vnum    303End#ROOMVnum  303Desc  The Bank of Eternity transcends all time. There is but a single teller to serve your needs, yet the vault stretches on as far as the eye can see. This is the central bank of the world, though which all other banking transactions pass.~Flags 4 EOLName  Bank of Eternity~Sect  11End#DOORDir     4Desc    ~Flags   EOLKey     0Keyword ~Vnum    302End#MOBILEVnum      301AcMod     0Act       2 16 EOLAffected  524860Alignment 0Cast      0Clan      0Class     1Def       0Desc      ~DrMod     0HrMod     0Level     120LongDesc  The @@WEt@@ahe@@lre@@cal @@lBa@@ank@@Wer@@N floats here, phasing in and out of existence.~PCast     0PlrName   eternal ethereal banker~Position  0PSkills   0Race      17RaceMods  0Resist    0Sex       2ShortDesc @@WEt@@ahe@@lre@@cal @@lBa@@ank@@Wer@@N~Skills    0SMagic    0SpecFun   (null)Suscept   0WMagic    0End#OBJECTVnum       301Durability 3ExtraFlags EOLItemApply  1Level      1LongDesc   The board of ages is here, exploding with knowledge!~Name       immortal board~ObjFun     (null)ShortDesc  the Board of Ages~Speed      4.00Type       27Values     0 81 81 301 0 0 0 0 0 0 WearFlags  EOLWeight     1End#RESETSO 301 1 302 M 301 1 303 S#$
