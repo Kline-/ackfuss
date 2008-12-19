@@ -96,7 +96,7 @@ void gain_level( CHAR_DATA * ch )
    ch->intell_exp -= cost;
    ch->level = UMIN( 140, ch->level++ );
 
-   snprintf( buf, MSL, "%s gains a level!", ch->short_descr );
+   snprintf( buf, MSL, "%s gains a level!", NAME(ch) );
    info( buf, 1 );
    return;
 }
@@ -149,7 +149,7 @@ void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target )
       monitor_chan( buf, MONITOR_MOB );
       return;
    }
-   snprintf( buf, MSL, "Ok guys, let's all follow %s.", target->short_descr );
+   snprintf( buf, MSL, "Ok guys, let's all follow %s.", NAME(target) );
    do_say( ch, buf );
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
@@ -174,7 +174,7 @@ void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target )
          else if( num > 29 )
          {
             if( num > 32 )
-               snprintf( buf, MSL, "Man I don't want to join %s's group!", target->short_descr );
+               snprintf( buf, MSL, "Man I don't want to join %s's group!", NAME(target) );
             else
                snprintf( buf, MSL, "I hate big groups." );
             do_say( vch, buf );
@@ -243,11 +243,11 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
       is_hunting = TRUE;
       if( tar_is_leader == TRUE )
       {
-         snprintf( buf, MSL, "We're planning on killing %s.", target->hunting->short_descr );
+         snprintf( buf, MSL, "We're planning on killing %s.", NAME(target->hunting) );
       }
       else
       {
-         snprintf( buf, MSL, "I'm planning on killing %s.", target->hunting->short_descr );
+         snprintf( buf, MSL, "I'm planning on killing %s.", NAME(target->hunting) );
       }
       do_say( target, buf );
    }
@@ -280,12 +280,12 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
    {
       if( ch_is_leader == TRUE )
       {
-         snprintf( buf, MSL, "Want to help us kill %s instead?", ch->hunting->short_descr );
+         snprintf( buf, MSL, "Want to help us kill %s instead?", NAME(ch->hunting) );
          do_say( ch, buf );
       }
       else if( ch_is_leader == FALSE )
       {
-         snprintf( buf, MSL, "Want to help me kill %s instead?", ch->hunting->short_descr );
+         snprintf( buf, MSL, "Want to help me kill %s instead?", NAME(ch->hunting) );
          do_say( ch, buf );
       }
    }
@@ -900,7 +900,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
    /*
     * Don't attack players.... except for have spec_vamp_hunter 
     */
-   if( ( !IS_NPC( victim ) ) && ( ch->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) )
+   if( ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
       return FALSE;
 
    /*
@@ -915,7 +915,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
     * if IS vamp_hunter, make sure target is a player vamp 
     */
 
-   if( ( IS_VAMP( victim ) ) && ( !IS_NPC( victim ) ) && ( ch->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) )
+   if( ( IS_VAMP( victim ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
       return FALSE;
 
    /*
@@ -936,7 +936,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
 //   || (   IS_NEUTRAL( ch ) && IS_NEUTRAL( victim ) ) )
 //      return FALSE;
 
-   if( ( ch->spec_fun == spec_lookup( "spec_vamp_hunter" ) ) && ( IS_NPC( victim ) ) && ( number_percent(  ) < 20 ) )
+   if( ( !IS_NPC(ch) && ( ch->npcdata->spec_fun == spec_lookup( "spec_vamp_hunter" ) ) ) && ( IS_NPC( victim ) ) && ( number_percent(  ) < 20 ) )
       return FALSE;
 
    if( victim->in_room->room_flags.test(RFLAG_SAFE) || victim->act.test(ACT_SOLO) )
@@ -1065,7 +1065,7 @@ void select_target( CHAR_DATA * ch )
 
       if( set_hunt( ch, NULL, victim, NULL, HUNT_WORLD | HUNT_PICKDOOR | HUNT_CR, HUNT_MERC ) )
       {
-         snprintf( buf, MSL, "Right!  %s is our new target!!", victim->short_descr );
+         snprintf( buf, MSL, "Right!  %s is our new target!!", NAME(victim) );
          do_say( ch, buf );
       }
 

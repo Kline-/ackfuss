@@ -776,9 +776,9 @@ void mobile_update( void )
       /*
        * Examine call for special procedure 
        */
-      if( ch->spec_fun != 0 )
+      if( IS_NPC(ch) && ch->npcdata->spec_fun != 0 )
       {
-         if( ( *ch->spec_fun ) ( ch ) )
+         if( ( *ch->npcdata->spec_fun ) ( ch ) )
             continue;
       }
 
@@ -1449,22 +1449,6 @@ void char_update( void )
 
 
       }
-
-      /*
-       * if ( ch->stunTimer > 0 )
-       * {
-       * ch->position = POS_STUNNED;
-       * ch->stunTimer -= 1;
-       * }
-       * else
-       * {
-       * ch->stunTimer = 0;
-       * ch->position = POS_STANDING;
-       * 
-       * }  
-       */
-
-
 
       if( ( !IS_NPC( ch ) && ch->level < LEVEL_IMMORTAL ) )
       {

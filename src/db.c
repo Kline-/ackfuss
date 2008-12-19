@@ -2454,18 +2454,12 @@ void reset_area( AREA_DATA * pArea )
    return;
 }
 
-
-
-/* Nasty hack to get back the address of a loaded mob */
-extern CHAR_DATA *loaded_mob_addr;
-
 /*
  * Create an instance of a mobile.
  */
 CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 {
    CHAR_DATA *mob;
-   int level;
    char buf[255];
    MONEY_TYPE *money;
    short cnt;
@@ -2492,6 +2486,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    }
 
    mob = new CHAR_DATA;
+   mob->npcdata = new NPC_DATA;
 
    mob->pIndexData = pMobIndex;
 
@@ -2500,24 +2495,13 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    else
       mob->name = str_dup( pMobIndex->player_name );
 
-   mob->short_descr = str_dup( pMobIndex->short_descr );
+   mob->npcdata->short_descr = str_dup( pMobIndex->short_descr );
    mob->long_descr = str_dup( pMobIndex->long_descr );
    mob->description = str_dup( pMobIndex->description );
-   mob->switched = FALSE;
-   mob->old_body = NULL;
-   mob->spec_fun = pMobIndex->spec_fun;
-   mob->sitting = NULL;
+   mob->npcdata->spec_fun = pMobIndex->spec_fun;
    mob->prompt = str_dup( "<%h %m %v> " );
-   mob->first_shield = NULL;
-   mob->last_shield = NULL;
-   /*
-    * Changed exp value for mobs 
-    */
-
-   level = ( pMobIndex->level );
-
-   mob->level = level;
-   mob->npc = TRUE; /* New check for NPC's */
+   mob->level = pMobIndex->level;
+   mob->npc = true; /* New check for NPC's */
    mob->act = pMobIndex->act;
    mob->affected_by = pMobIndex->affected_by;
    mob->alignment = pMobIndex->alignment;
@@ -2525,7 +2509,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->ac_mod = pMobIndex->ac_mod;
    mob->hr_mod = pMobIndex->hr_mod;
    mob->dr_mod = pMobIndex->dr_mod;
-/*  mob->move_to	= NO_VNUM; */
 
    mob->armor = interpolate( mob->level / 2, 100, -100 );
    hold = mob->armor;
@@ -2548,12 +2531,11 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->hit = mob->max_hit;
 
    mob->exp = exp_for_mobile( mob->level, mob );
-   mob->intell_exp = 0;
 
    /*
     * mana for mobs... 
     */
-   mob->max_mana = level * 25;
+   mob->max_mana = mob->level * 25;
    hold = mob->max_mana;
    hold *= sysdata.mob_mp;
    mob->max_mana = (int)hold;
@@ -2562,21 +2544,21 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    /*
     * move for mobs...
     */
-   mob->max_move = level * 25;
+   mob->max_move = mob->level * 25;
    hold = mob->max_move;
    hold *= sysdata.mob_mv;
    mob->max_move = (int)hold;
    mob->move = mob->max_move;
 
-   mob->skills = pMobIndex->skills;
+   mob->npcdata->skills = pMobIndex->skills;
    mob->cast = pMobIndex->cast;
    mob->def = pMobIndex->def;
    mob->p_class = pMobIndex->p_class;
    mob->clan = pMobIndex->clan;
-   mob->strong_magic = pMobIndex->strong_magic;
-   mob->weak_magic = pMobIndex->weak_magic;
+   mob->npcdata->strong_magic = pMobIndex->strong_magic;
+   mob->npcdata->weak_magic = pMobIndex->weak_magic;
    mob->resist = pMobIndex->resist;
-   mob->suscept = pMobIndex->suscept;
+   mob->npcdata->suscept = pMobIndex->suscept;
    mob->race_mods = pMobIndex->race_mods;
    mob->power_skills = pMobIndex->power_skills;
    mob->power_cast = pMobIndex->power_cast;
@@ -2588,12 +2570,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    hold = mob->saving_throw;
    hold *= sysdata.mob_svs;
    mob->saving_throw = (int)hold;
-
-   mob->in_room = NULL; /* to distinguish between loaded mobs */
-   /*
-    * and creted mobs     
-    */
-   mob->ngroup = NULL;
 
    GET_FREE( money, money_type_free );
 #ifdef DEBUG_MONEY
@@ -2622,8 +2598,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    /*
     * Insert in list.
     */
-   mob->next = NULL;
-   mob->prev = NULL;
    LINK( mob, first_char, last_char, next, prev );
 
 //  Create group data for mob
@@ -4114,7 +4088,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
  {
   if( chan_history.message[x][y] == '\0' )
   {
-   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
+   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\n\r",NAME(ch),argument);
    chan_history.time[x][y] = current_time;
    snprintf(chan_history.aname[x][y],128,"none");
    chan_history.cbit[x][y] = -1;
@@ -4147,7 +4121,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    chan_history.aname[x][y][0] = '\0';
    chan_history.cbit[x][y] = 0;
 
-   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\n\r",IS_NPC(ch) ? ch->short_descr : ch->name,argument);
+   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\n\r",NAME(ch),argument);
    chan_history.time[x][y] = current_time;
    snprintf(chan_history.aname[x][y],128,"none");
    chan_history.cbit[x][y] = -1;

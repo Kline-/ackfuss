@@ -600,7 +600,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
 
    if( victim->riding != NULL )
    {
-      snprintf( buf2, MSL, "  riding %s.\n\r", victim->riding->short_descr );
+      snprintf( buf2, MSL, "  riding %s.\n\r", NAME(victim->riding) );
       strncat( buf, buf2, MSL );
    }
 
@@ -1298,7 +1298,7 @@ void do_score( CHAR_DATA * ch, char *argument )
 
 
    snprintf( buf, MSL, "@@y%s%s, Race: %s%s, Clan: %s\n\rAge: ",
-            IS_NPC( ch ) ? ch->short_descr : ch->name,
+            NAME(ch),
             IS_NPC( ch ) ? "" : ch->pcdata->title,
             IS_NPC( ch ) ? "n/a" : race_table[ch->race].race_title,
             IS_VAMP( ch ) ? "@@e(Vampire)@@N" : IS_WOLF( ch ) ? "@@r(Werewolf)@@N" : "",
@@ -5220,7 +5220,7 @@ void do_assassinate( CHAR_DATA * ch, char *argument )
    ch->gold -= cost;
    act( "$n gives $N some gold coins.", ch, NULL, mob, TO_NOTVICT );
    act( "$n says '$N shall die by my hand!`", mob, NULL, victim, TO_ROOM );
-   snprintf( buf, MSL, "%s employs the services of %s to assassinate %s!!", ch->name, mob->short_descr, victim->name );
+   snprintf( buf, MSL, "%s employs the services of %s to assassinate %s!!", ch->name, NAME(mob), victim->name );
    info( buf, 1 );
    return;
 }

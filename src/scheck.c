@@ -205,6 +205,14 @@ static void walk_ngroups( void )
    }
 }
 
+static void walk_npcdata( NPC_DATA * n )
+{
+   if( !n )
+     return;
+
+   touch( n->short_descr );
+}
+
 static void walk_pcdata( PC_DATA * p )
 {
    int i;
@@ -233,7 +241,7 @@ static void walk_pcdata( PC_DATA * p )
       touch( p->alias[i] );
       touch( p->alias_name[i] );
    }
-   for( i = 0; i < 5; i++ )
+   for( i = 0; i < MAX_PEDIT; i++ )
    {
       touch( p->pedit_string[i] );
    }
@@ -312,12 +320,12 @@ static void walk_char_data( CHAR_DATA * ch )
       return;
 
    walk_notelist( ch->pnote );
+   walk_npcdata( ch->npcdata );
    walk_pcdata( ch->pcdata );
    walk_shieldlist( ch->first_shield );
    walk_mprog_act( ch->first_mpact );
 
    touch( ch->name );
-   touch( ch->short_descr );
    touch( ch->long_descr );
    touch( ch->long_descr_orig );
    touch( ch->description );
@@ -647,8 +655,6 @@ void do_scheck( CHAR_DATA * ch, char *argument )
    walk_objects(  );
    walk_areas(  );
    walk_bans(  );
-
-
    walk_mob_indexes(  );
    walk_obj_indexes(  );
    walk_room_indexes(  );

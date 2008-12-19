@@ -1271,7 +1271,7 @@ void mprog_translate( char ch, char *t, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_
          break;
 
       case 'I':
-         strcpy( t, mob->short_descr );
+         strcpy( t, NAME(mob) );
          break;
 
       case 'n':
@@ -1288,7 +1288,7 @@ void mprog_translate( char ch, char *t, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_
             if( can_see( mob, actor ) )
             {
                if( IS_NPC( actor ) )
-                  strcpy( t, actor->short_descr );
+                  strcpy( t, NAME(actor) );
                else
                {
                   strcpy( t, actor->name );
@@ -1315,7 +1315,7 @@ void mprog_translate( char ch, char *t, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_
             if( can_see( mob, vict ) )
             {
                if( IS_NPC( vict ) )
-                  strcpy( t, vict->short_descr );
+                  strcpy( t, NAME(vict) );
                else
                {
                   strcpy( t, vict->name );
@@ -1342,7 +1342,7 @@ void mprog_translate( char ch, char *t, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_
             if( can_see( mob, rndm ) )
             {
                if( IS_NPC( rndm ) )
-                  strcpy( t, rndm->short_descr );
+                  strcpy( t, NAME(rndm) );
                else
                {
                   strcpy( t, rndm->name );

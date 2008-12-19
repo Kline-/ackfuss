@@ -148,9 +148,6 @@ class brand_data
   char *priority;
 };
 
-
-
-
 struct time_info_data
 {
    int hour;
@@ -320,27 +317,21 @@ struct con_app_type
 /*
  * Shop types.
  */
-
 class shop_data
 {
  public:
   shop_data();
   ~shop_data();
-   bool is_free;
-   SHOP_DATA *next;  /* Next shop in list            */
-   SHOP_DATA *prev;  /* Prev shop in list    */
-   int keeper; /* Vnum of shop keeper mob      */
-   short buy_type[MAX_TRADE];   /* Item types shop will buy     */
-   short profit_buy;   /* Cost multiplier for buying   */
-   short profit_sell;  /* Cost multiplier for selling  */
-   short open_hour; /* First opening hour           */
-   short close_hour;   /* First closing hour           */
+  short buy_type[MAX_TRADE]; /* Item types shop will buy     */
+  short close_hour;          /* First closing hour           */
+  bool is_free;
+  int keeper;                /* Vnum of shop keeper mob      */
+  SHOP_DATA *next;
+  short open_hour;           /* First opening hour           */
+  SHOP_DATA *prev;
+  short profit_buy;          /* Cost multiplier for buying   */
+  short profit_sell;         /* Cost multiplier for selling  */
 };
-
-
-
-
-
 
 /*
  * Per-class stuff.
@@ -407,15 +398,15 @@ class note_data
  public:
   note_data();
   ~note_data();
-   bool is_free;
-   NOTE_DATA *next;
-   NOTE_DATA *prev;
-   char *sender;
-   char *date;
-   char *to_list;
-   char *subject;
-   char *text;
-   time_t date_stamp;
+  char *date;
+  time_t date_stamp;
+  bool is_free;
+  NOTE_DATA *next;
+  NOTE_DATA *prev;
+  char *sender;
+  char *subject;
+  char *text;
+  char *to_list;
 };
 
 /*
@@ -426,16 +417,16 @@ class affect_data
  public:
   affect_data();
   ~affect_data();
-   bool is_free;
-   AFFECT_DATA *next;
-   AFFECT_DATA *prev;
-   short type;
-   short duration;
-   short location;
-   short modifier;
-   int bitvector;
-   CHAR_DATA *caster;
-   int level;
+  int bitvector;
+  CHAR_DATA *caster;
+  short duration;
+  bool is_free;
+  int level;
+  short location;
+  short modifier;
+  AFFECT_DATA *next;
+  AFFECT_DATA *prev;
+  short type;
 };
 
 struct room_affect_data
@@ -486,8 +477,6 @@ struct magic_shield
 
 };
 
-
-
 /*
  * Prototype for a mob.
  * This is the in-memory version of #MOBILES.
@@ -497,49 +486,47 @@ class mob_index_data
  public:
   mob_index_data();
   ~mob_index_data();
-   std::bitset<MAX_BITSET> act;
-   short ac_mod;
-   int affected_by;
-   short alignment;
-   AREA_DATA *area;
-   int cast;
-   short clan;
-   int def;
-   char *description;
-   short dr_mod;
-   short hr_mod;
-   MPROG_DATA *first_mprog;
-   int hunt_flags;
-   bool is_free;
-   short killed;
-   MPROG_DATA *last_mprog;
-   short learned[MAX_SKILL];
-   short level;
-   char *long_descr;
-   MOB_INDEX_DATA *next;
-   char *player_name;
-   short position;
-   int power_cast;
-   int power_skills;
-   int progtypes;
-   SHOP_DATA *pShop;
-   short p_class;
-   short race;
-   int race_mods;
-   int resist;
-   short sex;
-   char *short_descr;
-   int skills;
-   SPEC_FUN *spec_fun;
-   float speed[MAX_SPEED];
-   int strong_magic;
-   int suscept;
-   char *target;
-   int vnum;
-   int weak_magic;
+  std::bitset<MAX_BITSET> act;
+  short ac_mod;
+  int affected_by;
+  short alignment;
+  AREA_DATA *area;
+  int cast;
+  short clan;
+  int def;
+  char *description;
+  short dr_mod;
+  short hr_mod;
+  MPROG_DATA *first_mprog;
+  int hunt_flags;
+  bool is_free;
+  short killed;
+  MPROG_DATA *last_mprog;
+  short learned[MAX_SKILL];
+  short level;
+  char *long_descr;
+  MOB_INDEX_DATA *next;
+  char *player_name;
+  short position;
+  int power_cast;
+  int power_skills;
+  int progtypes;
+  SHOP_DATA *pShop;
+  short p_class;
+  short race;
+  int race_mods;
+  int resist;
+  short sex;
+  char *short_descr;
+  int skills;
+  SPEC_FUN *spec_fun;
+  float speed[MAX_SPEED];
+  int strong_magic;
+  int suscept;
+  char *target;
+  int vnum;
+  int weak_magic;
 };
-
-
 
 /*
  * One character (PC or NPC).
@@ -547,212 +534,219 @@ class mob_index_data
 class char_data
 {
  public:
-   char_data();
-   ~char_data();
-   bool is_free;
-   CHAR_DATA *next;
-   CHAR_DATA *prev;
-   bool is_quitting;
-   CHAR_DATA *next_in_room;
-   CHAR_DATA *prev_in_room;
-   CHAR_DATA *master;
-   CHAR_DATA *leader;
-   CHAR_DATA *fighting;
-   CHAR_DATA *reply;
-   bool npc; /* For NPC's, no more flag */
-   CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
-   OBJ_DATA *hunt_obj;  /* Looking for objects     */
-   CHAR_DATA *hunt_for; /* Employer (crs, mercs)   */
-   ROOM_INDEX_DATA *hunt_home;   /* Return to after hunting */
-   char *searching;  /* For PC's that quit      */
-   int hunt_flags;   /* Action flags         */
-   bool switched; /* = not isnull(descriptor->original) */
-   CHAR_DATA *old_body; /* = descriptor->original */
-   int poly_level;
-   SPEC_FUN *spec_fun;
-   MOB_INDEX_DATA *pIndexData;
-   DESCRIPTOR_DATA *desc;
-   AFFECT_DATA *first_affect;
-   AFFECT_DATA *last_affect;
-   AFFECT_DATA *first_saved_aff;
-   AFFECT_DATA *last_saved_aff;
-   NOTE_DATA *pnote;
-   OBJ_DATA *first_carry;
-   OBJ_DATA *last_carry;
-   ROOM_INDEX_DATA *in_room;
-   ROOM_INDEX_DATA *was_in_room;
-   PC_DATA *pcdata;
-   char *name;
-   OBJ_DATA *sitting;   /* What they're resting or sleeping on */
-   char *short_descr;
-   char *long_descr;
-   char *long_descr_orig;
-   char *description;
-   char *prompt;
-   char *old_prompt; /* used to hold prompt when writing */
-   short sex;
-   short login_sex;
-   short p_class;
-   short clan;   /* need to convert from pcdata to this */
-   short race;
-   short level;  /* For m/c this = max of levels */
-   int lvl[MAX_CLASS];  /* Holds details for m/c levels */
-   int lvl2[MAX_CLASS]; /* for remort (if any) */
-   int adept_level;
-   int sentence;  /* For new legal system */
-   short invis;  /* For wizinvis imms - lvl invis to */
-   short incog;  /* Same as above except for incognito --Flar */
-   short trust;
-   bool wizbit;
-   int played;
-   time_t logon;
-   time_t save_time;
-   time_t last_note;
-   short timer;
-   short wait;
-   int hit;
-   int max_hit;
-   int mana;
-   int max_mana;
-   int move;
-   int max_move;
-   int gold;
-   int balance;   /* Amount of gold (if any) in bank */
-   int exp;
-   int intell_exp;
-   std::bitset<MAX_BITSET> act;
-   std::bitset<MAX_BITSET> deaf;
-   int act_build; /* for setting what ya editing */
-   int build_vnum;   /* the current vnum for w-y-e  */
-   int affected_by;
-   short position;
-   short practice;
-   float carry_weight;
-   short carry_number;
-   short saving_throw;
-   short alignment;
-   short hitroll;
-   short damroll;
-   short armor;
-   short ac_mod; /* ac modifier */
-   short stance_ac_mod;
-   short hr_mod; /* hitroll modifier */
-   short stance_hr_mod;
-   short dr_mod; /* damroll modifier */
-   short stance_dr_mod;
-   char *target;  /* last ch to attack */
-   short wimpy;
-   MPROG_ACT_LIST *first_mpact;  /* Used by MOBprogram */
-   MPROG_ACT_LIST *last_mpact;
-   int mpactnum;  /* Used by MOBprogram */
-   int skills; /* Used for MOBs */
-   int cast;
-   int def;
-   int strong_magic;
-   int weak_magic;
-   int resist;
-   int suscept;
-   int race_mods;
-   int power_skills;
-   int power_cast;
-   CHAR_DATA *riding;
-   CHAR_DATA *rider;
-   MAGIC_SHIELD *first_shield;
-   MAGIC_SHIELD *last_shield;
-   int stunTimer;
-   short num_followers;
-   short extract_timer;   /* same as object timer, only use for charmies */
-   BRAND_DATA *current_brand;
-   int stance;
-   bool using_named_door;
-   MONEY_TYPE *money;
-   MONEY_TYPE *bank_money;
-   NPC_GROUP_DATA *ngroup;
-   float speed[MAX_SPEED];
-   RESET_DATA *reset;
-   short death_cnt;
+  char_data();
+  ~char_data();
+  std::bitset<MAX_BITSET> act;
+  int act_build; /* for setting what ya editing */
+  short ac_mod; /* ac modifier */
+  int adept_level;
+  int affected_by;
+  short alignment;
+  short armor;
+  int balance;   /* Amount of gold (if any) in bank */
+  MONEY_TYPE *bank_money;
+  int build_vnum;   /* the current vnum for w-y-e  */
+  short carry_number;
+  float carry_weight;
+  int cast;
+  short clan;   /* need to convert from pcdata to this */
+  BRAND_DATA *current_brand;
+  short damroll;
+  int def;
+  std::bitset<MAX_BITSET> deaf;
+  short death_cnt;
+  DESCRIPTOR_DATA *desc;
+  char *description;
+  short dr_mod; /* damroll modifier */
+  int exp;
+  short extract_timer;   /* same as object timer, only use for charmies */
+  CHAR_DATA *fighting;
+  AFFECT_DATA *first_affect;
+  OBJ_DATA *first_carry;
+  MPROG_ACT_LIST *first_mpact;  /* Used by MOBprogram */
+  AFFECT_DATA *first_saved_aff;
+  MAGIC_SHIELD *first_shield;
+  int gold;
+  int hit;
+  short hitroll;
+  short hr_mod; /* hitroll modifier */
+  CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
+  int hunt_flags;   /* Action flags         */
+  CHAR_DATA *hunt_for; /* Employer (crs, mercs)   */
+  ROOM_INDEX_DATA *hunt_home;   /* Return to after hunting */
+  OBJ_DATA *hunt_obj;  /* Looking for objects     */
+  short incog;  /* Same as above except for incognito --Flar */
+  short invis;  /* For wizinvis imms - lvl invis to */
+  int intell_exp;
+  ROOM_INDEX_DATA *in_room;
+  bool is_free;
+  bool is_quitting;
+  AFFECT_DATA *last_affect;
+  OBJ_DATA *last_carry;
+  MPROG_ACT_LIST *last_mpact;
+  time_t last_note;
+  AFFECT_DATA *last_saved_aff;
+  MAGIC_SHIELD *last_shield;
+  CHAR_DATA *leader;
+  short level;  /* For m/c this = max of levels */
+  short login_sex;
+  time_t logon;
+  char *long_descr;
+  char *long_descr_orig;
+  int lvl[MAX_CLASS];  /* Holds details for m/c levels */
+  int lvl2[MAX_CLASS]; /* for remort (if any) */
+  int mana;
+  CHAR_DATA *master;
+  int max_hit;
+  int max_mana;
+  int max_move;
+  MONEY_TYPE *money;
+  int move;
+  int mpactnum;  /* Used by MOBprogram */
+  char *name;
+  CHAR_DATA *next;
+  CHAR_DATA *next_in_room;
+  NPC_GROUP_DATA *ngroup;
+  bool npc; /* For NPC's, no more flag */
+  NPC_DATA *npcdata;
+  short num_followers;
+  CHAR_DATA *old_body; /* = descriptor->original */
+  char *old_prompt; /* used to hold prompt when writing */
+  PC_DATA *pcdata;
+  MOB_INDEX_DATA *pIndexData;
+  int played;
+  NOTE_DATA *pnote;
+  int poly_level;
+  short position;
+  int power_cast;
+  int power_skills;
+  short practice;
+  CHAR_DATA *prev;
+  CHAR_DATA *prev_in_room;
+  char *prompt;
+  short p_class;
+  short race;
+  int race_mods;
+  CHAR_DATA *reply;
+  RESET_DATA *reset;
+  int resist;
+  CHAR_DATA *rider;
+  CHAR_DATA *riding;
+  time_t save_time;
+  short saving_throw;
+  char *searching;  /* For PC's that quit      */
+  int sentence;  /* For new legal system */
+  short sex;
+  OBJ_DATA *sitting;   /* What they're resting or sleeping on */
+  float speed[MAX_SPEED];
+  int stance;
+  short stance_ac_mod;
+  short stance_dr_mod;
+  short stance_hr_mod;
+  short stun_timer;
+  bool switched; /* = not isnull(descriptor->original) */
+  char *target;  /* last ch to attack */
+  short timer;
+  short trust;
+  bool using_named_door;
+  short wait;
+  ROOM_INDEX_DATA *was_in_room;
+  short wimpy;
+  bool wizbit;
 };
 
-
+/*
+ * Data which only NPC's have.
+ */
+class npc_data
+{
+ public:
+  npc_data();
+  ~npc_data();
+  char *short_descr;
+  int skills;
+  SPEC_FUN *spec_fun;
+  int strong_magic;
+  int suscept;
+  int weak_magic;
+};
 
 /*
  * Data which only PC's have.
  */
-
 class pc_data
 {
  public:
   pc_data();
   ~pc_data();
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   PC_DATA *next;
-   PC_DATA *prev;
-   int color[MAX_COLOR];
-   char *pwd;
-   char *bamfin;
-   char *room_enter;
-   char *room_exit;
-   char *bamfout;
-   char *title;
-   char *host; /* Used to tell PC last login site */
-   short failures;  /* Failed logins */
-   short clan;   /* will be used to denote clan membership */
-   short perm_str;
-   short perm_int;
-   short perm_wis;
-   short perm_dex;
-   short perm_con;
-   short max_str;
-   short max_int;
-   short max_wis;
-   short max_dex;
-   short max_con;
-   short mod_str;
-   short mod_int;
-   short mod_wis;
-   short mod_dex;
-   short mod_con;
-   std::bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
-   short condition[3];
-   SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
-   short pagelen;
-   short learned[MAX_SKILL];
-   char *header;  /* filename for helpedit */
-   char *message; /* helpedit file contents */
-   char *alias_name[MAX_ALIASES];
-   char *alias[MAX_ALIASES];
-   char *who_name;   /* To show on who name */
-   RECORD_DATA *records; /* kill/damage/etc records */
-   char *lastlogin;
-   short order[MAX_CLASS];   /* Class Order */
-   short quest_points;
-   char *ignore_list[MAX_IGNORES];  /* Ignore this person */
-   int recall_vnum;
-   int mana_from_gain;  /* saves non-item oriented mana total */
-   int hp_from_gain; /* same for hitpoints */
-   int move_from_gain;
-   char *load_msg;
-   char hicol;
-   char dimcol;
-   short ruler_rank;
-   char *pedit_state;
-   char *pedit_string[5];
-   short term_rows;
-   short term_columns;
-   char *email_address;
-   bool valid_email;
-   char *assist_msg;
-   QUEST_INFO *quest_info;
-   short movement; /* Quick movement */
+  char *alias[MAX_ALIASES];
+  char *alias_name[MAX_ALIASES];
+  char *assist_msg;
+  char *bamfin;
+  char *bamfout;
+  short clan;   /* will be used to denote clan membership */
+  short condition[MAX_COND];
+  int color[MAX_COLOR];
+  char dimcol;
+  char *email_address;
+  short failures;  /* Failed logins */
+  char *header;  /* filename for helpedit */
+  char hicol;
+  char *host; /* Used to tell PC last login site */
+  int hp_from_gain; /* same for hitpoints */
+  char *ignore_list[MAX_IGNORES];  /* Ignore this person */
 #ifdef IMC
-   IMC_CHARDATA *imcchardata;
+  IMC_CHARDATA *imcchardata;
 #endif
+  bool is_free;
+  char *lastlogin;
+  short learned[MAX_SKILL];
+  char *load_msg;
+  int mana_from_gain;  /* saves non-item oriented mana total */
+  short max_con;
+  short max_dex;
+  short max_int;
+  short max_str;
+  short max_wis;
+  char *message; /* helpedit file contents */
+  short mod_con;
+  short mod_dex;
+  short mod_int;
+  short mod_str;
+  short mod_wis;
+  std::bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
+  int move_from_gain;
+  short movement; /* Quick movement */
+  PC_DATA *next;
+  short order[MAX_CLASS];   /* Class Order */
+  short pagelen;
+  char *pedit_state;
+  char *pedit_string[MAX_PEDIT];
+  short perm_con;
+  short perm_dex;
+  short perm_int;
+  short perm_str;
+  short perm_wis;
+  PC_DATA *prev;
+  char *pwd;
+  QUEST_INFO *quest_info;
+  short quest_points;
+  int recall_vnum;
+  RECORD_DATA *records; /* kill/damage/etc records */
+  char *room_enter;
+  char *room_exit;
+  short ruler_rank;
+  SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
+  short term_columns;
+  short term_rows;
+  char *title;
+  bool valid_email;
+  char *who_name;   /* To show on who name */
 };
 
 /*
  * MOBprogram block
 */
-
 struct mob_prog_act_list
 {
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
@@ -852,8 +846,6 @@ class obj_index_data
    short weight;
 };
 
-
-
 /*
  * One object.
  */
@@ -907,8 +899,6 @@ class obj_data
    RESET_DATA *reset;
 };
 
-
-
 /*
  * Exit data.
  */
@@ -926,9 +916,6 @@ class exit_data
   ROOM_INDEX_DATA *to_room;
   int vnum;
 };
-
-
-
 
 /*
  * Reset commands:

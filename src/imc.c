@@ -8004,7 +8004,6 @@ CHAR_DATA *imc_make_skeleton( char *name )
    IMCCREATE( skeleton, CHAR_DATA, 1 );
 
    skeleton->name = IMCSTRALLOC( name );
-   skeleton->short_descr = IMCSTRALLOC( name );
    skeleton->in_room = get_room_index( ROOM_VNUM_LIMBO );
 
    return skeleton;
@@ -8016,7 +8015,6 @@ void imc_purge_skeleton( CHAR_DATA * skeleton )
       return;
 
    IMCSTRFREE( skeleton->name );
-   IMCSTRFREE( skeleton->short_descr );
 
    IMCDISPOSE( skeleton );
 

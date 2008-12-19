@@ -1030,12 +1030,12 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Short description: %s.\n\rLong  description: %s\n\r",
-            victim->short_descr, victim->long_descr[0] != '\0' ? victim->long_descr : "(none)." );
+            IS_NPC(victim) ? victim->npcdata->short_descr : "(none)", victim->long_descr[0] != '\0' ? victim->long_descr : "(none)." );
    strncat( buf1, buf, MSL );
 
    if( IS_NPC( victim ) )
    {
-    if( victim->spec_fun != 0 )
+    if( victim->npcdata->spec_fun != 0 )
       strncat( buf1, "Mobile has spec fun.\n\r", MSL );
     if( victim->pIndexData->progtypes != 0 )
     {
@@ -1081,8 +1081,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
          
         default:
          snprintf(buf, MSL, "Hunting victim: %s (%s)\n\r",
-                IS_NPC(victim->hunting) ? victim->hunting->short_descr
-                                        : victim->hunting->name,
+                NAME(victim->hunting),
                 IS_NPC(victim->hunting) ? "MOB" : "PLAYER" );
          strncat(buf1, buf, MSL);
          if (victim->huntdirs != NULL)
@@ -1450,7 +1449,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
          if( AI_MOB(victim) && victim->in_room != NULL )
          {
             snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\n\r",
-                     victim->pIndexData->vnum, victim->short_descr, victim->in_room->vnum, victim->in_room->name );
+                     victim->pIndexData->vnum, NAME(victim), victim->in_room->vnum, victim->in_room->name );
             send_to_char( buf, ch );
          }
 
@@ -1465,7 +1464,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\n\r",
-                  victim->pIndexData->vnum, victim->short_descr, victim->in_room->vnum, victim->in_room->name );
+                  victim->pIndexData->vnum, NAME(victim), victim->in_room->vnum, victim->in_room->name );
          send_to_char( buf, ch );
       }
    }
@@ -3150,9 +3149,14 @@ void do_mset( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "short" ) )
    {
-      free_string( victim->short_descr );
+      if( !IS_NPC(victim) )
+      {
+       send_to_char("Not on PC's.\n\r",ch);
+       return;
+      }
+      free_string( victim->npcdata->short_descr );
       snprintf( buf, MSL, "%s", arg3 );
-      victim->short_descr = str_dup( buf );
+      victim->npcdata->short_descr = str_dup( buf );
       return;
    }
 
@@ -3252,7 +3256,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( ( victim->spec_fun = spec_lookup( arg3 ) ) == 0 )
+      if( ( victim->npcdata->spec_fun = spec_lookup( arg3 ) ) == 0 )
       {
          send_to_char( "No such spec fun.\n\r", ch );
          return;
@@ -4168,10 +4172,7 @@ void do_fights( CHAR_DATA * ch, char *argument )
  for( fight = first_fight; fight != NULL; fight = fight->next )
  {
   cnt++;
-  snprintf(buf,MSL,"%s vs %s [Room:%5d]\n\r",
-   IS_NPC(fight->ch->fighting) ? fight->ch->fighting->short_descr : fight->ch->fighting->name,
-   IS_NPC(fight->ch) ? fight->ch->short_descr : fight->ch->name,
-   fight->ch->fighting->in_room->vnum);
+  snprintf(buf,MSL,"%s vs %s [Room:%5d]\n\r",NAME(fight->ch->fighting),NAME(fight->ch),fight->ch->in_room->vnum);
   send_to_char(buf,ch);
  }
  if( cnt == 0 )
@@ -5253,7 +5254,7 @@ void do_fhunt( CHAR_DATA * ch, char *argument )
    {
       if( victim->hunting != NULL )
       {
-         snprintf( buf, MSL, "%s stops hunting %s.\n\r", victim->short_descr, victim->hunting->short_descr );
+         snprintf( buf, MSL, "%s stops hunting %s.\n\r", NAME(victim), NAME(victim->hunting) );
          end_hunt( victim );
          send_to_char( buf, ch );
          return;
@@ -5304,13 +5305,13 @@ void do_fhunt( CHAR_DATA * ch, char *argument )
 
    if( victim->hunting != NULL )
    {
-      snprintf( buf, MSL, "%s stops hunting %s.\n\r", victim->short_descr, victim->hunting->short_descr );
+      snprintf( buf, MSL, "%s stops hunting %s.\n\r", NAME(victim), NAME(victim->hunting) );
       end_hunt( victim );
       send_to_char( buf, ch );
    }
 
    victim->hunting = target;
-   snprintf( buf, MSL, "%s starts hunting %s.\n\r", victim->short_descr, victim->hunting->short_descr );
+   snprintf( buf, MSL, "%s starts hunting %s.\n\r", NAME(victim), NAME(victim->hunting) );
    send_to_char( buf, ch );
 
    return;

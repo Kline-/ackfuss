@@ -248,7 +248,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_mob )
       {
 
-         snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\n\r", quest_mob->short_descr, quest_mob->in_room->vnum );
+         snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\n\r", NAME(quest_mob), quest_mob->in_room->vnum );
          send_to_char( buf, ch );
       }
       else
@@ -257,7 +257,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       }
       if( quest_target )
       {
-         snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\n\r", quest_target->short_descr, quest_target->in_room->vnum );
+         snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\n\r", NAME(quest_target), quest_target->in_room->vnum );
          send_to_char( buf, ch );
       }
       else
@@ -366,7 +366,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_mob->long_descr_orig != NULL )
          free_string( quest_mob->long_descr_orig );
       quest_mob->long_descr_orig = str_dup( quest_mob->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\n\r", quest_mob->short_descr, quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\n\r", NAME(quest_mob), quest_object->short_descr );
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
@@ -378,7 +378,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_target->long_descr_orig != NULL )
          free_string( quest_target->long_descr_orig );
       quest_target->long_descr_orig = str_dup( quest_target->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\n\r", quest_target->short_descr, quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\n\r", NAME(quest_target), quest_object->short_descr );
       if( quest_target->long_descr != NULL )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
@@ -389,10 +389,10 @@ void do_quest( CHAR_DATA * ch, char *argument )
 
       send_to_char( "QUEST STARTED!\n\r\n\r", ch );
 
-      snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\n\r", quest_mob->short_descr, quest_mob->in_room->vnum );
+      snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\n\r", NAME(quest_mob), quest_mob->in_room->vnum );
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\n\r", quest_target->short_descr, quest_target->in_room->vnum );
+      snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\n\r", NAME(quest_target), quest_target->in_room->vnum );
       send_to_char( buf, ch );
 
       snprintf( buf, MSL, "Target Object is: %s.\n\r", quest_object->short_descr );
@@ -455,8 +455,8 @@ CHAR_DATA *get_quest_target( int min_level, int max_level )
           || ( target->in_room->area->flags.test(AFLAG_NOSHOW) )
           || ( target->act.test(ACT_SENTINEL) )
           || ( target->act.test(ACT_PET) )
-          || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_stephen" ) )
-          || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_tax_man" ) ) )
+          || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_stephen" ) )
+          || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_tax_man" ) ) )
          continue;
 
       /*
@@ -529,8 +529,8 @@ CHAR_DATA *get_quest_giver( int min_level, int max_level )
           || ( target->in_room->area->flags.test(AFLAG_NOSHOW) )
           || ( target->act.test(ACT_SENTINEL) )
           || ( target->act.test(ACT_PET) )
-          || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_stephen" ) )
-          || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_tax_man" ) ) )
+          || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_stephen" ) )
+          || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_tax_man" ) ) )
 
          continue;
       {
@@ -567,7 +567,7 @@ void quest_inform( void )
    {
       if( quest_target )
          snprintf( buf, MSL, qmessages[quest_personality][quest_timer].message1,
-                  quest_target->short_descr, quest_object->short_descr );
+                  NAME(quest_target), quest_object->short_descr );
       else
          snprintf( buf, MSL, qmessages[quest_personality][quest_timer].message2, quest_object->short_descr );
    }
@@ -770,7 +770,7 @@ void generate_auto_quest(  )
       if( quest_mob->long_descr_orig != NULL )
          free_string( quest_mob->long_descr_orig );
       quest_mob->long_descr_orig = str_dup( quest_mob->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\n\r", quest_mob->short_descr, quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\n\r", NAME(quest_mob), quest_object->short_descr );
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
@@ -783,7 +783,7 @@ void generate_auto_quest(  )
       if( quest_target->long_descr_orig != NULL )
          free_string( quest_target->long_descr_orig );
       quest_target->long_descr_orig = str_dup( quest_target->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\n\r", quest_target->short_descr, quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\n\r", NAME(quest_target), quest_object->short_descr );
       if( quest_target->long_descr != NULL )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
