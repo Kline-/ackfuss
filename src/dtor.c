@@ -76,12 +76,6 @@ char_data::~char_data()
  while( first_affect != NULL )
   affect_remove(this,first_affect);
 
- while( (mpact = first_mpact) != NULL )
- {
-  first_mpact = mpact->next;
-  PUT_FREE(mpact,mpact_free);
- }
-
  for( rch = first_char; rch; rch = rch->next )
  {
   if( rch->master == this )
@@ -110,12 +104,15 @@ char_data::~char_data()
    do_return(rch,"");
    rch->old_body = NULL;
   }
-  for( mpact = rch->first_mpact; mpact; mpact = mpact->next )
+  if( IS_NPC(rch) )
   {
-   if( mpact->ch == this )
-    mpact->ch = NULL;
-   if( mpact->vo == this )
-    mpact->vo = NULL;
+   for( mpact = rch->npcdata->first_mpact; mpact; mpact = mpact->next )
+   {
+    if( mpact->ch == this )
+     mpact->ch = NULL;
+    if( mpact->vo == this )
+     mpact->vo = NULL;
+   }
   }
   for( paf = rch->first_affect; paf; paf = paf->next )
    if( paf->caster == this )
@@ -183,6 +180,13 @@ note_data::~note_data()
 
 npc_data::~npc_data()
 {
+ MPROG_ACT_LIST *mpact;
+
+ while( (mpact = first_mpact) != NULL )
+ {
+  first_mpact = mpact->next;
+  PUT_FREE(mpact,mpact_free);
+ }
  free_string(short_descr);
 }
 

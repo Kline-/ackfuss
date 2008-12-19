@@ -65,6 +65,8 @@
  *  different from ptr->usage and log them
  */
 
+static void walk_mprog_act args(( MPROG_ACT_LIST * act ));
+
 /*
  * Things which are walked (anything else must be touched from these):
  *
@@ -210,6 +212,7 @@ static void walk_npcdata( NPC_DATA * n )
    if( !n )
      return;
 
+   walk_mprog_act( n->first_mpact );
    touch( n->short_descr );
 }
 
@@ -323,7 +326,6 @@ static void walk_char_data( CHAR_DATA * ch )
    walk_npcdata( ch->npcdata );
    walk_pcdata( ch->pcdata );
    walk_shieldlist( ch->first_shield );
-   walk_mprog_act( ch->first_mpact );
 
    touch( ch->name );
    touch( ch->long_descr );

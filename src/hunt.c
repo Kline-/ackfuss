@@ -286,7 +286,7 @@ void end_hunt( CHAR_DATA * ch )
       ch->hunt_flags = 0;
    }
    else
-      ch->hunt_flags = ch->pIndexData->hunt_flags;
+      ch->hunt_flags = ch->npcdata->pIndexData->hunt_flags;
    if( ch->searching )
    {
       free_string( ch->searching );
@@ -375,7 +375,7 @@ bool mob_hunt( CHAR_DATA * mob )
          if( mob->in_room == mob->hunt_home || ( dir = h_find_dir( mob->in_room, mob->hunt_home, mob->hunt_flags ) ) < 0 )
          {
             mob->hunt_home = NULL;
-            mob->hunt_flags = mob->pIndexData->hunt_flags;
+            mob->hunt_flags = mob->npcdata->pIndexData->hunt_flags;
          }
          else if( dir >= 0 )
             hunt_move( mob, dir );

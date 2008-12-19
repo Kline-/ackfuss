@@ -909,7 +909,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "Vnum: %d.  Sex: %s.  Room: %d.\n\r",
-            IS_NPC( victim ) ? victim->pIndexData->vnum : 0,
+            IS_NPC( victim ) ? victim->npcdata->pIndexData->vnum : 0,
             victim->sex == SEX_MALE ? "male" :
             victim->sex == SEX_FEMALE ? "female" : "neutral", victim->in_room == NULL ? 0 : victim->in_room->vnum );
    strncat( buf1, buf, MSL );
@@ -1037,10 +1037,10 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    {
     if( victim->npcdata->spec_fun != 0 )
       strncat( buf1, "Mobile has spec fun.\n\r", MSL );
-    if( victim->pIndexData->progtypes != 0 )
+    if( victim->npcdata->pIndexData->progtypes != 0 )
     {
      strncat( buf1, "MOB Progs:", MSL );
-     for( mprg = victim->pIndexData->first_mprog; mprg != NULL; mprg = mprg->next )
+     for( mprg = victim->npcdata->pIndexData->first_mprog; mprg != NULL; mprg = mprg->next )
      {
       char tmp[MSL];
       snprintf( tmp, MSL, "\n\r    >%s [%s] [%s]\n\r", mprog_type_to_name( mprg->type ), mprg->arglist, mprg->comlist );
@@ -1449,7 +1449,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
          if( AI_MOB(victim) && victim->in_room != NULL )
          {
             snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\n\r",
-                     victim->pIndexData->vnum, NAME(victim), victim->in_room->vnum, victim->in_room->name );
+                     victim->npcdata->pIndexData->vnum, NAME(victim), victim->in_room->vnum, victim->in_room->name );
             send_to_char( buf, ch );
          }
 
@@ -1464,7 +1464,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\n\r",
-                  victim->pIndexData->vnum, NAME(victim), victim->in_room->vnum, victim->in_room->name );
+                  victim->npcdata->pIndexData->vnum, NAME(victim), victim->in_room->vnum, victim->in_room->name );
          send_to_char( buf, ch );
       }
    }
@@ -2917,7 +2917,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
             free_string( victim->searching );
             victim->searching = NULL;
          }
-         victim->hunt_flags = victim->pIndexData->hunt_flags;
+         victim->hunt_flags = victim->npcdata->pIndexData->hunt_flags;
       }
 
       return;

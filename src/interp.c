@@ -916,7 +916,7 @@ void comlog( CHAR_DATA * ch, int cmd, char *args )
       ltime = current_time;
    }
    fprintf( fplog, "%.24s :: %12.12s (%5d): %s %s\n", ctime( &current_time ),
-            ch->name, ( IS_NPC( ch ) ? ch->pIndexData->vnum : -1 ), cmd_table[cmd].name,
+            ch->name, ( IS_NPC( ch ) ? ch->npcdata->pIndexData->vnum : -1 ), cmd_table[cmd].name,
             ( cmd_table[cmd].log == LOG_NEVER ? "XXX" : args ) );
    fflush( fplog );
 }
@@ -1347,7 +1347,7 @@ bool MP_Commands( CHAR_DATA * ch )  /* Can MOBProged mobs
    if( IS_SWITCHED( ch ) )
       return FALSE;
 
-   if( IS_NPC( ch ) && ch->pIndexData->progtypes && !IS_AFFECTED( ch, AFF_CHARM ) )
+   if( IS_NPC( ch ) && ch->npcdata->pIndexData->progtypes && !IS_AFFECTED( ch, AFF_CHARM ) )
       return TRUE;
 
    return FALSE;

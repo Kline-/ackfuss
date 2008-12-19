@@ -4330,7 +4330,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
       for( wch = first_char; wch != NULL; wch = wchnext )
       {
          wchnext = wch->next;
-         if( wch->pIndexData == pMobIndex )
+         if( wch->npcdata->pIndexData == pMobIndex )
             extract_char( wch, TRUE );
       }
    }

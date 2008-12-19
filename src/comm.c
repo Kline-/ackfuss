@@ -3359,7 +3359,7 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
 
    for( ; to != NULL; to = to->next_in_room )
    {
-      if( ( to->desc == NULL && ( IS_NPC( to ) && !( to->pIndexData->progtypes & ACT_PROG ) ) ) || !IS_AWAKE( to ) )
+      if( ( to->desc == NULL && ( IS_NPC( to ) && !( to->npcdata->pIndexData->progtypes & ACT_PROG ) ) ) || !IS_AWAKE( to ) )
          continue;
 
       if( type == TO_CHAR && to != ch )

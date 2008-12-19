@@ -405,7 +405,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
        * Imms should see mob races, too. <3 Builders! --Kline
        */
       if( IS_NPC(victim) && ch->position == POS_BUILDING )
-       snprintf( buf2, MSL, "(%d) [%s] ",victim->pIndexData->vnum, race_table[victim->race].race_name );
+       snprintf( buf2, MSL, "(%d) [%s] ",victim->npcdata->pIndexData->vnum, race_table[victim->race].race_name );
       else
        snprintf( buf2, MSL, "[%s] ", race_table[victim->race].race_name );
       strncat( buf, buf2, MSL );

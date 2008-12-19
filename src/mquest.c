@@ -67,7 +67,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  if( !str_prefix(arg1,"request") )
  {
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && mob->pIndexData->act.test(ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && mob->npcdata->pIndexData->act.test(ACT_QUESTMASTER) )
     break;
   if( mob == NULL || !can_see(ch,mob) )
   {
@@ -125,7 +125,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   mbuf[0] = '\0';
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && mob->pIndexData->act.test(ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && mob->npcdata->pIndexData->act.test(ACT_QUESTMASTER) )
     break;
   if( mob == NULL || !can_see(ch,mob) )
   {
@@ -278,7 +278,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   short i = 0, x = 0;
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
-   if( IS_NPC(mob) && mob->pIndexData->act.test(ACT_QUESTMASTER) )
+   if( IS_NPC(mob) && mob->npcdata->pIndexData->act.test(ACT_QUESTMASTER) )
     break;
   if( mob == NULL )
   {
@@ -882,7 +882,7 @@ void generate_killing_quest( CHAR_DATA *ch )
 
   x = 0;
   if( !race )
-   ch->pcdata->quest_info->quest_mob_vnum[i] = mob->pIndexData->vnum;
+   ch->pcdata->quest_info->quest_mob_vnum[i] = mob->npcdata->pIndexData->vnum;
   else
   {
    ch->pcdata->quest_info->quest_mob_vnum[i] = number_range(0,MAX_RACE-1);
@@ -956,7 +956,7 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
    || (mob->in_room->area->flags.test(AFLAG_NOSHOW) || mob->in_room->area->flags.test(AFLAG_NO_QUEST))
    || (!str_cmp(rev_spec_lookup(mob->npcdata->spec_fun),"spec_cast_adept"))
    || (!str_cmp(rev_spec_lookup(mob->npcdata->spec_fun),"spec_executioner"))
-   || (mob->pIndexData->vnum > mob->in_room->area->max_vnum || mob->pIndexData->vnum < mob->in_room->area->min_vnum)
+   || (mob->npcdata->pIndexData->vnum > mob->in_room->area->max_vnum || mob->npcdata->pIndexData->vnum < mob->in_room->area->min_vnum)
    || (mob->in_room->room_flags.test(RFLAG_SAFE))
    || (IS_AFFECTED(mob,AFF_CHARM))
    || (mob->act.test(ACT_PET))
@@ -1077,7 +1077,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
     || (obj->item_type == ITEM_PIECE)
     || (IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE))
     || (obj->carried_by != NULL && (!IS_NPC(obj->carried_by)
-    || (IS_NPC(obj->carried_by) && obj->carried_by->pIndexData->pShop != NULL)))  /* held by PC or held by NPC that is a shopkeeper */
+    || (IS_NPC(obj->carried_by) && obj->carried_by->npcdata->pIndexData->pShop != NULL)))  /* held by PC or held by NPC that is a shopkeeper */
     || (obj->weight > 15)
     || (obj->level > max_lev)
     || (obj->level < min_lev))
@@ -1099,7 +1099,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
     || (obj->item_type == ITEM_PIECE)
     || (IS_OBJ_STAT(obj,ITEM_EXTRA_UNIQUE))
     || (obj->carried_by != NULL && (!IS_NPC(obj->carried_by)
-    || (IS_NPC(obj->carried_by) && obj->carried_by->pIndexData->pShop != NULL))) /* held by PC or held by NPC that is a shopkeeper */
+    || (IS_NPC(obj->carried_by) && obj->carried_by->npcdata->pIndexData->pShop != NULL))) /* held by PC or held by NPC that is a shopkeeper */
     || (obj->weight > 15)
     || (obj->level > max_lev)
     || (obj->level < min_lev))
@@ -1124,7 +1124,7 @@ char *display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
   for( i = 0; i < QUEST_MAX_DATA; i++ )
    if( ch->pcdata->quest_info->quest_mob_vnum[i] > -1
     && ch->pcdata->quest_info->amount[i] > 0
-    && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->pIndexData->vnum
+    && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->npcdata->pIndexData->vnum
     || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->npcdata->short_descr) 
     && get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area == victim->in_room->area)) )
      return "@@e[@@yTARGET@@e] @@N";
@@ -1186,7 +1186,7 @@ void update_mquest_kill( CHAR_DATA *ch, CHAR_DATA *victim )
    if( ch->pcdata->quest_info->quest_mob_vnum[i] < 0 )
     continue;
    if( ch->pcdata->quest_info->amount[i] > 0
-    && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->pIndexData->vnum
+    && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->npcdata->pIndexData->vnum
     || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->npcdata->short_descr)
     && get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area == victim->in_room->area)) )
    {

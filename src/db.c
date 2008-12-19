@@ -2327,7 +2327,7 @@ void reset_area( AREA_DATA * pArea )
                break;
             }
 
-            if( mob->pIndexData->pShop != NULL )
+            if( mob->npcdata->pIndexData->pShop != NULL )
             {
                int olevel;
 
@@ -2486,7 +2486,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob = new CHAR_DATA;
    mob->npcdata = new NPC_DATA;
 
-   mob->pIndexData = pMobIndex;
+   mob->npcdata->pIndexData = pMobIndex;
 
    if( pMobIndex->act.test(ACT_INTELLIGENT) )
       mob->name = str_dup( buf );
@@ -2613,7 +2613,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
       ngroup->last_fighting = str_dup( "none" );
       ngroup->wants = str_dup( "none" );
       ngroup->needs = str_dup( "none" );
-      mob->ngroup = ngroup;
+      mob->npcdata->ngroup = ngroup;
       LINK( ngroup, first_npc_group, last_npc_group, next, prev );
    }
    return mob;

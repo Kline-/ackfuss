@@ -115,7 +115,6 @@ char_data::char_data()
  fighting = NULL;
  first_affect = NULL;
  first_carry = NULL;
- first_mpact = NULL;
  first_saved_aff = NULL;
  first_shield = NULL;
  gold = 0;
@@ -135,7 +134,6 @@ char_data::char_data()
  is_quitting = false;
  last_affect = NULL;
  last_carry = NULL;
- last_mpact = NULL;
  last_note = 0;
  last_saved_aff = NULL;
  last_shield = NULL;
@@ -156,18 +154,15 @@ char_data::char_data()
  max_move = 50;
  money = NULL;
  move = 50;
- mpactnum = 0;
  name = &str_empty[0];
  next = NULL;
  next_in_room = NULL;
- ngroup = NULL;
  npc = false;
  npcdata = NULL;
  num_followers = 0;
  old_body = NULL;
  old_prompt = &str_empty[0];
  pcdata = NULL;
- pIndexData = NULL;
  played = 0;
  pnote = NULL;
  poly_level = 0;
@@ -277,6 +272,11 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
+ first_mpact = NULL;
+ last_mpact = NULL;
+ mpactnum = 0;
+ ngroup = NULL;
+ pIndexData = NULL;
  reset = NULL;
  resist = 0;
  short_descr = &str_empty[0];
