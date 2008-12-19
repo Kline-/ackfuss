@@ -508,8 +508,6 @@ class mob_index_data
   MOB_INDEX_DATA *next;
   char *player_name;
   short position;
-  int power_cast;
-  int power_skills;
   int progtypes;
   SHOP_DATA *pShop;
   short p_class;
@@ -618,8 +616,6 @@ class char_data
   NOTE_DATA *pnote;
   int poly_level;
   short position;
-  int power_cast;
-  int power_skills;
   short practice;
   CHAR_DATA *prev;
   CHAR_DATA *prev_in_room;
@@ -628,8 +624,6 @@ class char_data
   short race;
   int race_mods;
   CHAR_DATA *reply;
-  RESET_DATA *reset;
-  int resist;
   CHAR_DATA *rider;
   CHAR_DATA *riding;
   time_t save_time;
@@ -663,6 +657,8 @@ class npc_data
  public:
   npc_data();
   ~npc_data();
+  RESET_DATA *reset;
+  int resist;
   char *short_descr;
   int skills;
   SPEC_FUN *spec_fun;

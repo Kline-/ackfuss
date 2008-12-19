@@ -42,8 +42,6 @@ extern LOOKUP_TYPE tab_door_types[];
 extern LOOKUP_TYPE tab_door_states[];
 extern LOOKUP_TYPE tab_mob_skill[];
 extern LOOKUP_TYPE tab_mob_cast[];
-extern LOOKUP_TYPE tab_mob_powerskill[];
-extern LOOKUP_TYPE tab_mob_powercast[];
 extern LOOKUP_TYPE tab_magic_realms[];
 extern LOOKUP_TYPE tab_magic_realms_col[];
 extern LOOKUP_TYPE tab_mob_race_mods[];

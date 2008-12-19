@@ -189,10 +189,8 @@ DrMod     0
 HrMod     0
 Level     120
 LongDesc  The @@WEt@@ahe@@lre@@cal @@lBa@@ank@@Wer@@N floats here, phasing in and out of existence.~
-PCast     0
 PlrName   eternal ethereal banker~
 Position  0
-PSkills   0
 Race      17
 RaceMods  0
 Resist    0
@@ -359,7 +357,10 @@ O 303 1 304
 O 304 1 304 
 
 O 305 1 304 
+
 O 306 1 304 
+
 O 307 1 307 
+
 S
 #$

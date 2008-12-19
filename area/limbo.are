@@ -57,10 +57,8 @@ DrMod     0
 HrMod     0
 Level     1
 LongDesc  @@yP@@buff @@dthe @@aM@@cagic @@rD@@Gragon @@dfly's around lazily in the void...@@N~
-PCast     0
 PlrName   puff magic dragon~
 Position  0
-PSkills   0
 Race      8
 RaceMods  0
 Resist    0
@@ -88,10 +86,8 @@ DrMod     0
 HrMod     0
 Level     80
 LongDesc  A Dark Stalker stands here, searching for it's prey.~
-PCast     0
 PlrName   dark stalker~
 Position  0
-PSkills   0
 Race      0
 RaceMods  66049
 Resist    0
