@@ -2638,8 +2638,8 @@ void check_guards( CHAR_DATA * ch )
    for( guard = first_char; guard != NULL; guard = guard->next )
       if( IS_NPC( guard )
           && ( guard->in_room->area == ch->in_room->area )
-          && guard->spec_fun != 0
-          && !str_cmp( "spec_policeman", rev_spec_lookup( guard->spec_fun ) ) && guard->hunting == NULL )
+          && guard->npcdata->spec_fun != 0
+          && !str_cmp( "spec_policeman", rev_spec_lookup( guard->npcdata->spec_fun ) ) && guard->hunting == NULL )
       {
          if( set_hunt( guard, NULL, ch, NULL, 0, HUNT_INFORM | HUNT_MERC | HUNT_CR ) )
          {
@@ -2966,8 +2966,8 @@ void do_list( CHAR_DATA * ch, char *argument )
             stopcounter++;
             rounded_cost = round_money_off( 10 * pet->level * pet->level, 1 );
             snprintf( costbuf, MSL, "%s", money_string( rounded_cost ) );
-            snprintf( buf, MSL, "[ @@W%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \n\r", pet->level, ccode_len( pet->short_descr, 30 ),
-                     capitalize( pet->short_descr ), ccode_len( costbuf, 35 ), costbuf );
+            snprintf( buf, MSL, "[ @@W%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \n\r", pet->level, ccode_len( pet->npcdata->short_descr, 30 ),
+                     capitalize( pet->npcdata->short_descr ), ccode_len( costbuf, 35 ), costbuf );
             PUT_FREE( rounded_cost, money_type_free );
             strncat( buf1, buf, MSL );
             if( stopcounter > 45 )

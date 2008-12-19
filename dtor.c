@@ -39,7 +39,15 @@ affect_data::~affect_data()
 
 area_data::~area_data()
 {
+ free_string(can_read);
+ free_string(can_write);
+ free_string(filename);
  is_free = true;
+ free_string(keyword);
+ free_string(level_label);
+ free_string(name);
+ free_string(owner);
+ free_string(reset_msg);
 }
 
 brand_data::~brand_data()
@@ -53,7 +61,7 @@ brand_data::~brand_data()
 
 char_data::~char_data()
 {
- int i = 0;
+ short i = 0;
  MPROG_ACT_LIST *mpact;
  CHAR_DATA *rch;
  AFFECT_DATA *paf;
@@ -121,7 +129,6 @@ char_data::~char_data()
      raf->caster = NULL;
 
  free_string(name);
- free_string(short_descr);
  free_string(long_descr);
  free_string(long_descr_orig);
  free_string(description);
@@ -137,9 +144,14 @@ char_data::~char_data()
   free_i3chardata(this);
  #endif
 
- delete current_brand;
- delete pnote;
- delete pcdata;
+ if( current_brand )
+  delete current_brand;
+ if( npcdata )
+  delete npcdata;
+ if( pnote )
+  delete pnote;
+ if( pcdata )
+  delete pcdata;
 }
 
 exit_data::~exit_data()
@@ -151,20 +163,27 @@ exit_data::~exit_data()
 
 mob_index_data::~mob_index_data()
 {
+ free_string(description);
  is_free = true;
+ free_string(long_descr);
  free_string(player_name);
  free_string(short_descr);
- free_string(description);
+ free_string(target);
 }
 
 note_data::~note_data()
 {
- is_free = true;
- free_string(text);
- free_string(subject);
- free_string(to_list);
  free_string(date);
+ is_free = true;
  free_string(sender);
+ free_string(subject);
+ free_string(text);
+ free_string(to_list);
+}
+
+npc_data::~npc_data()
+{
+ free_string(short_descr);
 }
 
 obj_data::~obj_data()
@@ -186,34 +205,34 @@ obj_index_data::~obj_index_data()
 
 pc_data::~pc_data()
 {
- PUT_FREE(quest_info,quest_info_free);
- PUT_FREE(records,record_free);
- PUT_FREE(super,super_free);
- free_string(pwd);
- free_string(bamfin);
- free_string(room_enter);
- free_string(room_exit);
- free_string(bamfout);
- free_string(title);
- free_string(host);
- free_string(header);
- free_string(message);
- free_string(who_name);
- free_string(lastlogin);
- free_string(assist_msg);
  for( short i = 0; i < MAX_ALIASES; i++ )
  {
-  free_string(alias_name[i]);
   free_string(alias[i]);
+  free_string(alias_name[i]);
  }
+ free_string(assist_msg);
+ free_string(bamfin);
+ free_string(bamfout);
+ free_string(email_address);
+ free_string(header);
+ free_string(host);
  for( short i = 0; i < MAX_IGNORES; i++ )
   free_string(ignore_list[i]);
- free_string(load_msg);
- free_string(pedit_state);
- for( short i = 0; i < 5; i++ )
-  free_string(pedit_string[i]);
- free_string(email_address);
  is_free = true;
+ free_string(lastlogin);
+ free_string(load_msg);
+ free_string(message);
+ free_string(pedit_state);
+ for( short i = 0; i < MAX_PEDIT; i++ )
+  free_string(pedit_string[i]);
+ free_string(pwd);
+ PUT_FREE(quest_info,quest_info_free);
+ PUT_FREE(records,record_free);
+ free_string(room_enter);
+ free_string(room_exit);
+ PUT_FREE(super,super_free);
+ free_string(title);
+ free_string(who_name);
 }
 
 reset_data::~reset_data()

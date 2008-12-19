@@ -330,9 +330,9 @@ void violence_update( void )
          }
       }
 
-      if( ch->stunTimer > 0 )
+      if( ch->stun_timer > 0 )
       {
-         ch->stunTimer--;
+         ch->stun_timer--;
          continue;
       }
       /*
@@ -634,7 +634,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
     * check for martial arts  Taken out for wierd act crash bug with type_martial ZEN
     * if ( dt == TYPE_HIT && wield == NULL )
     * if ( number_percent() < ( IS_NPC(ch) ? 
-    * ( IS_SET(ch->skills, MOB_MARTIAL ) ? 75 : 0 ) : ( ch->pcdata->learned[gsn_martial_arts]/4) ) )
+    * ( IS_SET(ch->npcdata->skills, MOB_MARTIAL ) ? 75 : 0 ) : ( ch->pcdata->learned[gsn_martial_arts]/4) ) )
     * dt = TYPE_MARTIAL;
     * 
     */
@@ -738,7 +738,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
     */
    dam += number_range( GET_DAMROLL( ch ) * 13 / 20, GET_DAMROLL( ch ) * 15 / 20 );
    if( ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_enhanced_damage] > 0 )
-       || item_has_apply( ch, ITEM_APPLY_ENHANCED ) || ( IS_NPC( ch ) && IS_SET( ch->skills, MOB_ENHANCED ) ) )
+       || item_has_apply( ch, ITEM_APPLY_ENHANCED ) || ( IS_NPC( ch ) && IS_SET( ch->npcdata->skills, MOB_ENHANCED ) ) )
    {
       if( IS_NPC( ch ) )
          dam += dam * 1 / 20;
@@ -746,7 +746,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
          dam += ( ch->pcdata->learned[gsn_enhanced_damage] > 0 ) ?
             dam * ch->pcdata->learned[gsn_enhanced_damage] / 150 : dam * .4;
    }
-   if( IS_NPC(ch) && IS_SET(ch->skills,MOB_PROWESS) )
+   if( IS_NPC(ch) && IS_SET(ch->npcdata->skills,MOB_PROWESS) )
       dam += number_range((int)(ch->level * 1.5),(int)(ch->level * 3));
    if( !IS_NPC(ch) && ch->pcdata->learned[gsn_combat_prowess] > 0 )
       dam += number_range((int)(ch->pcdata->learned[gsn_combat_prowess] * 1.5),(int)(ch->pcdata->learned[gsn_combat_prowess] * 3));
@@ -938,10 +938,10 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
        */
       if( dt >= TYPE_HIT )
       {
-         if( IS_NPC( ch ) && ( number_percent(  ) < ch->level / 6 ) && IS_SET( ch->skills, MOB_DISARM ) )
+         if( IS_NPC( ch ) && ( number_percent(  ) < ch->level / 6 ) && IS_SET( ch->npcdata->skills, MOB_DISARM ) )
             disarm( ch, victim, NULL );
 
-         if( IS_NPC( ch ) && ( number_percent(  ) < ch->level / 6 ) && IS_SET( ch->skills, MOB_TRIP ) )
+         if( IS_NPC( ch ) && ( number_percent(  ) < ch->level / 6 ) && IS_SET( ch->npcdata->skills, MOB_TRIP ) )
             trip( ch, victim );
 
          if( check_parry( ch, victim ) )
@@ -952,7 +952,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
             return;
       }
 
-   if( ((IS_NPC(ch) && IS_SET(ch->skills,MOB_CRUSHING) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_crushing_blow])) && dt != -1 )
+   if( ((IS_NPC(ch) && IS_SET(ch->npcdata->skills,MOB_CRUSHING) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_crushing_blow])) && dt != -1 )
    {
     if( (IS_NPC(ch) && number_percent() < 9) || (!IS_NPC(ch) && (number_range(85,300) - ch->pcdata->learned[gsn_crushing_blow]) < 10) )
     {
@@ -1099,8 +1099,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                elemental->level = 140;
                free_string( elemental->name );
                elemental->name = str_dup( ".hidden" );
-               free_string( elemental->short_descr );
-               elemental->short_descr = str_dup( "@@NThe @@rConflict@@N of @@eFire @@Nand @@aIce@@N" );
+               free_string( elemental->npcdata->short_descr );
+               elemental->npcdata->short_descr = str_dup( "@@NThe @@rConflict@@N of @@eFire @@Nand @@aIce@@N" );
                free_string( elemental->long_descr );
                elemental->long_descr = str_dup( "@@NA @@rPillar@@N of @@eFire @@Nand @@aIce@@N immolates itself!" );
 
@@ -1319,9 +1319,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
             }
 */
 
-         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d",
-                  ( IS_NPC( victim ) ? victim->short_descr : victim->name ),
-                  ( IS_NPC( ch ) ? ch->short_descr : ch->name ), victim->in_room->vnum );
+         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", NAME(victim), NAME(ch), victim->in_room->vnum );
          log_string( log_buf );
 
          notify( log_buf, 82 );
@@ -1688,7 +1686,7 @@ bool check_parry( CHAR_DATA * ch, CHAR_DATA * victim )
    if( !IS_AWAKE( victim ) )
       return FALSE;
 
-   if( IS_NPC( victim ) && !IS_SET( victim->skills, MOB_PARRY ) )
+   if( IS_NPC( victim ) && !IS_SET( victim->npcdata->skills, MOB_PARRY ) )
       return FALSE;
 
    if( IS_NPC( victim ) )
@@ -1741,7 +1739,7 @@ bool check_dodge( CHAR_DATA * ch, CHAR_DATA * victim )
    if( !IS_AWAKE( victim ) )
       return FALSE;
 
-   if( IS_NPC( victim ) && !IS_SET( victim->skills, MOB_DODGE ) )
+   if( IS_NPC( victim ) && !IS_SET( victim->npcdata->skills, MOB_DODGE ) )
       return FALSE;
 
    if( IS_NPC( victim ) )
@@ -1780,7 +1778,7 @@ bool check_dodge( CHAR_DATA * ch, CHAR_DATA * victim )
 
 
 /*
- * Check_skills : if IS_NPC(ch) then check ch->skills to see if there are
+ * Check_skills : if IS_NPC(ch) then check ch->npcdata->skills to see if there are
  * any extra attack skills available for use --Stephen
  */
 
@@ -1799,15 +1797,15 @@ bool check_skills( CHAR_DATA * ch, CHAR_DATA * victim )
     */
 
    cnt = 0;
-   if( IS_SET( ch->skills, MOB_PUNCH ) )
+   if( IS_SET( ch->npcdata->skills, MOB_PUNCH ) )
       cnt++;
-   if( IS_SET( ch->skills, MOB_HEADBUTT ) )
+   if( IS_SET( ch->npcdata->skills, MOB_HEADBUTT ) )
       cnt++;
-   if( IS_SET( ch->skills, MOB_KNEE ) )
+   if( IS_SET( ch->npcdata->skills, MOB_KNEE ) )
       cnt++;
-   if( IS_SET( ch->skills, MOB_DIRT ) )
+   if( IS_SET( ch->npcdata->skills, MOB_DIRT ) )
       cnt++;
-   if( IS_SET( ch->skills, MOB_CHARGE ) )
+   if( IS_SET( ch->npcdata->skills, MOB_CHARGE ) )
       cnt++;
 
    if( cnt == 0 )
@@ -1816,27 +1814,27 @@ bool check_skills( CHAR_DATA * ch, CHAR_DATA * victim )
    check = number_range( 1, cnt );
 
    cnt = 0;
-   if( IS_SET( ch->skills, MOB_PUNCH ) && ( ++cnt == check ) )
+   if( IS_SET( ch->npcdata->skills, MOB_PUNCH ) && ( ++cnt == check ) )
    {
       do_punch( ch, "" );
       return TRUE;
    }
-   if( IS_SET( ch->skills, MOB_HEADBUTT ) && ( ++cnt == check ) )
+   if( IS_SET( ch->npcdata->skills, MOB_HEADBUTT ) && ( ++cnt == check ) )
    {
       do_headbutt( ch, "" );
       return TRUE;
    }
-   if( IS_SET( ch->skills, MOB_KNEE ) && ( ++cnt == check ) )
+   if( IS_SET( ch->npcdata->skills, MOB_KNEE ) && ( ++cnt == check ) )
    {
       do_knee( ch, "" );
       return TRUE;
    }
-   if( IS_SET( ch->skills, MOB_DIRT ) && ( ++cnt == check ) )
+   if( IS_SET( ch->npcdata->skills, MOB_DIRT ) && ( ++cnt == check ) )
    {
       do_dirt( ch, "" );
       return TRUE;
    }
-   if( IS_SET( ch->skills, MOB_CHARGE ) && ( ++cnt == check ) )
+   if( IS_SET( ch->npcdata->skills, MOB_CHARGE ) && ( ++cnt == check ) )
    {
       do_charge( ch, "" );
       return TRUE;
@@ -1861,7 +1859,7 @@ void update_pos( CHAR_DATA * victim )
       if( IS_SET( victim->affected_by, AFF_VAMP_HEALING ) )
          REMOVE_BIT( victim->affected_by, AFF_VAMP_HEALING );
 
-      if( victim->position <= POS_STUNNED && victim->stunTimer == 0 )
+      if( victim->position <= POS_STUNNED && victim->stun_timer == 0 )
       {
          act( "$n stands, and gets to $s feet.", victim, NULL, NULL, TO_ROOM );
          victim->position = POS_STANDING;
@@ -1918,7 +1916,7 @@ void update_pos( CHAR_DATA * victim )
       if( ( victim->act.test(ACT_KILLER ) || victim->act.test(ACT_THIEF ) )
           && ( ( victim->fighting != NULL )
                && ( ( !IS_NPC( victim->fighting ) )
-                    || ( !str_cmp( rev_spec_lookup( victim->fighting->spec_fun ), "spec_executioner" ) ) ) ) )
+                    || ( IS_NPC(victim->fighting) && !str_cmp( rev_spec_lookup( victim->fighting->npcdata->spec_fun ), "spec_executioner" ) ) ) ) )
       {
          counter = number_range( 2, 3 );
 
@@ -2228,7 +2226,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          int gold;
          time_t lifetime;
 
-         name = ch->short_descr;
+         name = NAME(ch);
          corpse = create_object( get_obj_index( OBJ_VNUM_CORPSE_NPC ), 0 );
          corpse->timer = number_range( 3, 6 );
          corpse->level = ch->level; /* for animate spell */
@@ -2304,7 +2302,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
 
    if( ( ch->act.test(ACT_KILLER ) || ch->act.test(ACT_THIEF ) )
        && ( ( target != NULL )
-            && ( ( !IS_NPC( target ) ) || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_executioner" ) ) ) ) )
+            && ( ( !IS_NPC( target ) ) || ( IS_NPC(target) && !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_executioner" ) ) ) ) )
 
    {
       corpse->value[0] = 1;
@@ -3020,7 +3018,7 @@ void disarm( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj )
     * Stephen
     */
 
-   chance = IS_NPC( victim ) ? IS_SET( victim->skills, MOB_NODISARM ) ? 90 : 0 : victim->pcdata->learned[gsn_nodisarm];
+   chance = IS_NPC( victim ) ? IS_SET( victim->npcdata->skills, MOB_NODISARM ) ? 90 : 0 : victim->pcdata->learned[gsn_nodisarm];
 
    if( number_percent(  ) < chance )
    {
@@ -3058,7 +3056,7 @@ void trip( CHAR_DATA * ch, CHAR_DATA * victim )
    {
       int chance;
 
-      chance = IS_NPC( victim ) ? IS_SET( victim->skills, MOB_NOTRIP ) ? 75 : 0 : victim->pcdata->learned[gsn_notrip];
+      chance = IS_NPC( victim ) ? IS_SET( victim->npcdata->skills, MOB_NOTRIP ) ? 75 : 0 : victim->pcdata->learned[gsn_notrip];
 
       /*
        * Check for no-trip 
@@ -3499,7 +3497,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
    if( victim->act.test(ACT_NO_FLEE ) && !IS_NPC( ch ) && IS_NPC( victim ) )
    {
       send_to_char( "You attempt to flee from battle, but fail!\n\r", ch );
-      snprintf( buf, MSL, "%s tells you 'No way will you escape ME!!'\n\r", victim->short_descr );
+      snprintf( buf, MSL, "%s tells you 'No way will you escape ME!!'\n\r", PERS(ch,victim) );
       send_to_char( buf, ch );
       return;
    }
@@ -5145,7 +5143,7 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
       OBJ_DATA *obj;
       char *name;
 
-      name = IS_NPC( ch ) ? ch->short_descr : ch->name;
+      name = NAME(ch);
       obj = create_object( get_obj_index( vnum ), 0 );
       obj->timer = number_range( 4, 7 );
 
@@ -5411,15 +5409,15 @@ void do_stun( CHAR_DATA * ch, char *argument )
       act( "$n slams into you, leaving you stunned.", ch, NULL, victim, TO_VICT );
       act( "$n slams into $N, leaving $M stunned.", ch, NULL, victim, TO_NOTVICT );
 
-      victim->stunTimer += number_range( 1, get_psuedo_level( ch ) / 30 );
+      victim->stun_timer += number_range( 1, get_psuedo_level( ch ) / 30 );
       if( ch->lvl2[4] > 40 )
-         victim->stunTimer += number_range( 1, 2 );
+         victim->stun_timer += number_range( 1, 2 );
 
 /*      if ( !IS_NPC( ch ) )
       {
         if( ch->lvl2[3] > ch->lvl2[5] )
         {
-  	  victim->stunTimer += ch->lvl2[3] / 15;
+  	  victim->stun_timer += ch->lvl2[3] / 15;
 	  return;
         }      
         else 
@@ -5824,11 +5822,11 @@ float get_speed( CHAR_DATA *ch, int slot )
    value -= 0.14;
  }
  value += stance_app[ch->stance].speed_mod;
- if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_REFLEXES) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_enhanced_reflexes]) )
+ if( (IS_NPC(ch) && IS_SET(ch->npcdata->skills,MOB_REFLEXES) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_enhanced_reflexes]) )
   value -= 0.02;
- if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_SLEIGHT) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_sleight_of_hand]) )
+ if( (IS_NPC(ch) && IS_SET(ch->npcdata->skills,MOB_SLEIGHT) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_sleight_of_hand]) )
   value -= 0.04;
- if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_QUICKSTRIKE) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_quickstrike]) )
+ if( (IS_NPC(ch) && IS_SET(ch->npcdata->skills,MOB_QUICKSTRIKE) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_quickstrike]) )
   value -= 0.06;
 
  if( value < 1 )
@@ -5878,7 +5876,7 @@ void combat_update( void )
    }
 
    /* Right hand attack (if we dualwield) */
-   if( (IS_NPC(ch) && IS_SET(ch->skills,MOB_DUALWIELD)) || (!IS_NPC(ch) && ch->pcdata->learned[gsn_dualwield] > 10) )
+   if( (IS_NPC(ch) && IS_SET(ch->npcdata->skills,MOB_DUALWIELD)) || (!IS_NPC(ch) && ch->pcdata->learned[gsn_dualwield] > 10) )
    {
     ch->speed[SPEED_RH] -= 0.01;
 
@@ -5910,7 +5908,7 @@ float combat_damcap( CHAR_DATA *ch, CHAR_DATA *victim, float dam, int dt )
 
  if( dam > sysdata.damcap )
  {
-  snprintf( buf, MSL, "Combat: %1.0f damage by %s, attacking %s, dt %d", dam, IS_NPC( ch ) ? ch->short_descr : ch->name, IS_NPC( victim ) ? victim->short_descr : victim->name, dt );
+  snprintf( buf, MSL, "Combat: %1.0f damage by %s, attacking %s, dt %d", dam, NAME(ch), NAME(victim), dt );
   if( ch->level < 82 )
   {
    monitor_chan( buf, MONITOR_COMBAT );

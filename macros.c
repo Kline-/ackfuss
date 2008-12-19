@@ -432,43 +432,43 @@ int exp_for_mobile( int level, CHAR_DATA * mob )
    max exp for the mob--that's with EVERY skill in the book :)   */
 
 
-   if( IS_SET( mob->skills, MOB_REFLEXES ) )
+   if( IS_SET( mob->npcdata->skills, MOB_REFLEXES ) )
       value += .05 * base_value;
-   if( IS_SET( mob->skills, MOB_SLEIGHT ) )
+   if( IS_SET( mob->npcdata->skills, MOB_SLEIGHT ) )
       value += .200 * base_value;
-   if( IS_SET( mob->skills, MOB_CRUSHING ) )
+   if( IS_SET( mob->npcdata->skills, MOB_CRUSHING ) )
       value += .1 * base_value;
-   if( IS_SET( mob->skills, MOB_PROWESS ) )
+   if( IS_SET( mob->npcdata->skills, MOB_PROWESS ) )
       value += .200 * base_value;
-   if( IS_SET( mob->skills, MOB_QUICKSTRIKE ) )
+   if( IS_SET( mob->npcdata->skills, MOB_QUICKSTRIKE ) )
       value += .1 * base_value;
-   if( IS_SET( mob->skills, MOB_PUNCH ) )
+   if( IS_SET( mob->npcdata->skills, MOB_PUNCH ) )
       value += .050 * base_value;
-   if( IS_SET( mob->skills, MOB_HEADBUTT ) )
+   if( IS_SET( mob->npcdata->skills, MOB_HEADBUTT ) )
       value += .100 * base_value;
-   if( IS_SET( mob->skills, MOB_KNEE ) )
+   if( IS_SET( mob->npcdata->skills, MOB_KNEE ) )
       value += .050 * base_value;
-   if( IS_SET( mob->skills, MOB_DISARM ) )
+   if( IS_SET( mob->npcdata->skills, MOB_DISARM ) )
       value += .050 * base_value;
-   if( IS_SET( mob->skills, MOB_TRIP ) )
+   if( IS_SET( mob->npcdata->skills, MOB_TRIP ) )
       value += .050 * base_value;
-   if( IS_SET( mob->skills, MOB_NODISARM ) )
+   if( IS_SET( mob->npcdata->skills, MOB_NODISARM ) )
       value += .150 * base_value;
-   if( IS_SET( mob->skills, MOB_DODGE ) )
+   if( IS_SET( mob->npcdata->skills, MOB_DODGE ) )
       value += .150 * base_value;
-   if( IS_SET( mob->skills, MOB_PARRY ) )
+   if( IS_SET( mob->npcdata->skills, MOB_PARRY ) )
       value += .05 * base_value;
-   if( IS_SET( mob->skills, MOB_MARTIAL ) )
+   if( IS_SET( mob->npcdata->skills, MOB_MARTIAL ) )
       value += .200 * base_value;
-   if( IS_SET( mob->skills, MOB_ENHANCED ) )
+   if( IS_SET( mob->npcdata->skills, MOB_ENHANCED ) )
       value += .300 * base_value;
-   if( IS_SET( mob->skills, MOB_NOTRIP ) )
+   if( IS_SET( mob->npcdata->skills, MOB_NOTRIP ) )
       value += .100 * base_value;
-   if( IS_SET( mob->skills, MOB_DUALWIELD ) )
+   if( IS_SET( mob->npcdata->skills, MOB_DUALWIELD ) )
       value += .050 * base_value;
-   if( IS_SET( mob->skills, MOB_DIRT ) )
+   if( IS_SET( mob->npcdata->skills, MOB_DIRT ) )
       value += .150 * base_value;
-   if( IS_SET( mob->skills, MOB_CHARGE ) )
+   if( IS_SET( mob->npcdata->skills, MOB_CHARGE ) )
       value += .050 * base_value;
 
 

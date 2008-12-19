@@ -136,6 +136,7 @@ typedef struct mob_index_data MOB_INDEX_DATA;
 typedef struct note_data NOTE_DATA;
 typedef struct obj_data OBJ_DATA;
 typedef struct obj_index_data OBJ_INDEX_DATA;
+typedef struct npc_data NPC_DATA;
 typedef struct pc_data PC_DATA;
 typedef struct reset_data RESET_DATA;
 typedef struct room_index_data ROOM_INDEX_DATA;

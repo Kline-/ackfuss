@@ -721,8 +721,7 @@ void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
    if( ch->first_affect == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "affect_remove: %s did not have aff %d to remove.",
-               IS_NPC( ch ) ? ch->short_descr : ch->name, paf->type );
+      snprintf( buf, MSL, "affect_remove: %s did not have aff %d to remove.", NAME(ch), paf->type );
       monitor_chan( buf, MONITOR_MOB );
 
       bug( "Affect_remove: no affect.", 0 );
@@ -860,7 +859,7 @@ void char_from_room( CHAR_DATA * ch )
    if( ch->in_room == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "char_from_room: %s in NULL room.", IS_NPC( ch ) ? ch->short_descr : ch->name );
+      snprintf( buf, MSL, "char_from_room: %s in NULL room.", NAME(ch) );
       monitor_chan( buf, MONITOR_ROOM );
 
       bug( "Char_from_room: NULL.", 0 );
@@ -2773,7 +2772,7 @@ void set_stun( CHAR_DATA * victim, int stunTime )
    if( victim->position != POS_SLEEPING )
       victim->position = POS_STUNNED;
 
-   victim->stunTimer = stunTime;
+   victim->stun_timer = stunTime;
    return;
 }
 
@@ -2794,7 +2793,7 @@ void remove_shield( CHAR_DATA * ch, MAGIC_SHIELD * shield )
    if( ch->first_shield == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "shield_remove: %s did not have a shield to remove.", IS_NPC( ch ) ? ch->short_descr : ch->name );
+      snprintf( buf, MSL, "shield_remove: %s did not have a shield to remove.", NAME(ch) );
       monitor_chan( buf, MONITOR_MOB );
 
       bug( "Remove_shield: no shield.", 0 );

@@ -446,7 +446,7 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       OBJ_DATA *obj;
       char *name;
 
-      name = IS_NPC( ch ) ? ch->short_descr : ch->name;
+      name = NAME(ch);
       obj = create_object( get_obj_index( vnum ), 0 );
       obj->timer = number_range( 4, 7 );
 
@@ -725,7 +725,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       ch_strong = ( IS_NPC( ch ) ?
                     ( ( ( ch->race > 0 )
                         && ( ch->race < MAX_RACE ) ) ?
-                      race_table[ch->race].strong_realms : ch->strong_magic ) : race_table[ch->race].strong_realms );
+                      race_table[ch->race].strong_realms : ch->npcdata->strong_magic ) : race_table[ch->race].strong_realms );
       ch_resist = ( IS_NPC( ch ) ?
                     ( ( ( ch->race > 0 )
                         && ( ch->race < MAX_RACE ) ) ?
@@ -733,11 +733,11 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       ch_weak = ( IS_NPC( ch ) ?
                   ( ( ( ch->race > 0 )
                       && ( ch->race < MAX_RACE ) ) ?
-                    race_table[ch->race].weak_realms : ch->weak_magic ) : race_table[ch->race].weak_realms );
+                    race_table[ch->race].weak_realms : ch->npcdata->weak_magic ) : race_table[ch->race].weak_realms );
       ch_suscept = ( IS_NPC( ch ) ?
                      ( ( ( ch->race > 0 )
                          && ( ch->race < MAX_RACE ) ) ?
-                       race_table[ch->race].suscept_realms : ch->suscept ) : race_table[ch->race].suscept_realms );
+                       race_table[ch->race].suscept_realms : ch->npcdata->suscept ) : race_table[ch->race].suscept_realms );
       ch_race = ( IS_NPC( ch ) ?
                   ( ( ( ch->race > 0 )
                       && ( ch->race < MAX_RACE ) ) ?
@@ -808,7 +808,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
                  ( ( ( victim->race > 0 )
                      && ( victim->race < MAX_RACE ) ) ?
                    race_table[victim->race].strong_realms :
-                   victim->strong_magic ) : race_table[victim->race].strong_realms );
+                   victim->npcdata->strong_magic ) : race_table[victim->race].strong_realms );
    vi_resist = ( IS_NPC( victim ) ?
                  ( ( ( victim->race > 0 )
                      && ( victim->race < MAX_RACE ) ) ?
@@ -816,11 +816,11 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    vi_weak = ( IS_NPC( victim ) ?
                ( ( ( victim->race > 0 )
                    && ( victim->race < MAX_RACE ) ) ?
-                 race_table[victim->race].weak_realms : victim->weak_magic ) : race_table[victim->race].weak_realms );
+                 race_table[victim->race].weak_realms : victim->npcdata->weak_magic ) : race_table[victim->race].weak_realms );
    vi_suscept = ( IS_NPC( victim ) ?
                   ( ( ( victim->race > 0 )
                       && ( victim->race < MAX_RACE ) ) ?
-                    race_table[victim->race].suscept_realms : victim->suscept ) : race_table[victim->race].suscept_realms );
+                    race_table[victim->race].suscept_realms : victim->npcdata->suscept ) : race_table[victim->race].suscept_realms );
    vi_race = ( IS_NPC( victim ) ?
                ( ( ( victim->race > 0 )
                    && ( victim->race < MAX_RACE ) ) ?
@@ -929,8 +929,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
      if( dam > sysdata.damcap )
      {
         char buf[MAX_STRING_LENGTH];
-        snprintf( buf, MSL, "Spell: %d damage by %s, spell %s", dam,
-                 ( obj == NULL ) ? ( IS_NPC( ch ) ? ch->short_descr : ch->name ) : obj->short_descr, skill_table[sn].name );
+        snprintf( buf, MSL, "Spell: %d damage by %s, spell %s", dam, ( obj == NULL ) ? NAME(ch) : obj->short_descr, skill_table[sn].name );
         if( ch->level < 82 )
          monitor_chan( buf, MONITOR_MAGIC );
         log_f( "%s", buf );
@@ -1038,9 +1037,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       {
 
 
-         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d",
-                  ( IS_NPC( victim ) ? victim->short_descr : victim->name ),
-                  ( IS_NPC( ch ) ? ch->short_descr : ch->name ), victim->in_room->vnum );
+         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", NAME(victim), NAME(ch), victim->in_room->vnum );
          log_string( log_buf );
 
          notify( log_buf, 82 );

@@ -295,7 +295,10 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    }
    fprintf( fp, "EOL\n" );
 
-   fprintf( fp, "ShortDescr     %s~\n", ch->short_descr );
+   if( IS_NPC(ch) )
+   {
+    fprintf( fp, "ShortDescr     %s~\n", ch->npcdata->short_descr );
+   }
    fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig );
    fprintf( fp, "Description    %s~\n", ch->description );
    fprintf( fp, "Prompt         %s~\n", ch->prompt );
@@ -637,9 +640,6 @@ void abort_wrapper( void )
 
 hash_table *hash_changed_vnums = NULL;
 
-/* Nasty hack for db.c to get back address of ch */
-CHAR_DATA *loaded_mob_addr;
-
 /*
  * Load a char and inventory into a new ch structure.
  */
@@ -759,7 +759,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->hicol = 'y';
       ch->pcdata->dimcol = 'b';
       ch->pcdata->ruler_rank = 0;
-      for( foo = 0; foo < 5; foo++ )
+      for( foo = 0; foo < MAX_PEDIT; foo++ )
          ch->pcdata->pedit_string[foo] = str_dup( "none" );
       ch->pcdata->pedit_state = str_dup( "none" );
       ch->pcdata->term_rows = 25;
@@ -789,36 +789,20 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
        * is NPC 
        */
       ch->pcdata = NULL;
-      loaded_mob_addr = ch;
    }
 
-   ch->stunTimer = 0;
-   ch->first_shield = NULL;
-   ch->last_shield = NULL;
-   ch->switched = FALSE;
-   ch->old_body = NULL;
    ch->desc = d;
    if( ch->name != NULL )
-      free_string( ch->name );
+    free_string( ch->name );
    ch->name = str_dup( name );
    ch->prompt = str_dup( "" );
    ch->old_prompt = str_dup( "" );
    ch->prompt = str_dup( "@@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N" );
    ch->last_note = 0;
    if( is_npc )
-      ch->npc = TRUE;
+      ch->npc = true;
    else
-      ch->npc = FALSE;
-   ch->sex = SEX_NEUTRAL;
-   ch->login_sex = -1;
-   ch->current_brand = NULL;
-   ch->stance = 0;
-   ch->stance_ac_mod = 0;
-   ch->stance_dr_mod = 0;
-   ch->stance_hr_mod = 0;
-   ch->carry_weight = 0.0;
-   ch->carry_number = 0;
-   ch->ngroup = NULL;
+      ch->npc = false;
 
    {
       MONEY_TYPE *money;
@@ -1461,7 +1445,10 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "SavingThrow", ch->saving_throw, fread_number( fp ) );
             KEY( "Sentence", ch->sentence, fread_number( fp ) );
             KEY( "Sex", ch->sex, fread_number( fp ) );
-            SKEY( "ShortDescr", ch->short_descr, fread_string( fp ) );
+            if( IS_NPC( ch ) )
+            {
+               SKEY( "ShortDescr", ch->npcdata->short_descr, fread_string( fp ) );
+            }
 
             if( !str_cmp( word, "Skill" ) && !IS_NPC( ch ) )
             {

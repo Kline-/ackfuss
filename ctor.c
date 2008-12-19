@@ -26,16 +26,16 @@
 
 affect_data::affect_data()
 {
+ bitvector = 0;
+ caster = NULL;
+ duration = -1;
  is_free = false;
+ level = 0;
+ location = -1;
+ modifier = 0;
  next = NULL;
  prev = NULL;
  type = -1;
- duration = -1;
- location = -1;
- modifier = 0;
- bitvector = 0;
- caster = NULL;
- level = 0;
 }
 
 area_data::area_data()
@@ -88,131 +88,126 @@ brand_data::brand_data()
 
 char_data::char_data()
 {
- is_free = false;
- next = NULL;
- prev = NULL;
- is_quitting = false;
- next_in_room = NULL;
- prev_in_room = NULL;
- master = NULL;
- leader = NULL;
+ act.reset();
+ act_build = 0;
+ ac_mod = 0;
+ adept_level = 0;
+ affected_by = 0;
+ alignment = 0;
+ armor = 100;
+ balance = 0;
+ bank_money = NULL;
+ build_vnum = 0;
+ carry_number = 0;
+ carry_weight = 0;
+ cast = 0;
+ clan = 0;
+ current_brand = NULL;
+ damroll = 5;
+ def = 0;
+ deaf.reset();
+ death_cnt = 0;
+ desc = NULL;
+ description = &str_empty[0];
+ dr_mod = 0;
+ exp = 0;
+ extract_timer = 0;
  fighting = NULL;
- reply = NULL;
- npc = false;
+ first_affect = NULL;
+ first_carry = NULL;
+ first_mpact = NULL;
+ first_saved_aff = NULL;
+ first_shield = NULL;
+ gold = 0;
+ hit = 50;
+ hitroll = 5;
+ hr_mod = 0;
  hunting = NULL;
- hunt_obj = NULL;
+ hunt_flags = 0;
  hunt_for = NULL;
  hunt_home = NULL;
- searching = &str_empty[0];
- hunt_flags = 0;
- switched = false;
- old_body = NULL;
- poly_level = 0;
- spec_fun = NULL;
- pIndexData = NULL;
- desc = NULL;
- first_affect = NULL;
- last_affect = NULL;
- first_saved_aff = NULL;
- last_saved_aff = NULL;
- pnote = NULL;
- first_carry = NULL;
- last_carry = NULL;
+ hunt_obj = NULL;
+ incog = 0;
+ invis = 0;
+ intell_exp = 0;
  in_room = NULL;
- was_in_room = NULL;
- pcdata = NULL;
- name = &str_empty[0];
- sitting = NULL;
- short_descr = &str_empty[0];
+ is_free = false;
+ is_quitting = false;
+ last_affect = NULL;
+ last_carry = NULL;
+ last_mpact = NULL;
+ last_note = 0;
+ last_saved_aff = NULL;
+ last_shield = NULL;
+ leader = NULL;
+ level = 0;
+ login_sex = -1;
+ logon = current_time;
  long_descr = &str_empty[0];
  long_descr_orig = &str_empty[0];
- description = &str_empty[0];
- prompt = &str_empty[0];
- old_prompt = &str_empty[0];
- sex = 0;
- login_sex = 0;
- p_class = 0;
- clan = 0;
- race = 0;
- level = 0;
  for( short i = 0; i < MAX_CLASS; i++ )
   lvl[i] = 0;
  for( short i = 0; i < MAX_CLASS; i++ )
   lvl2[i] = 0;
- adept_level = 0;
- sentence = 0;
- invis = 0;
- incog = 0;
- trust = 0;
- wizbit = false;
- played = 0;
- logon = current_time;
- save_time = 0;
- last_note = 0;
- timer = 0;
- wait = 0;
- hit = 30;
- max_hit = 50;
  mana = 50;
+ master = NULL;
+ max_hit = 50;
  max_mana = 50;
- move = 50;
  max_move = 50;
- gold = 0;
- balance = 0;
- exp = 0;
- intell_exp = 0;
- act.reset();
- deaf.reset();
- act_build = 0;
- build_vnum = 0;
- affected_by = 0;
- position = POS_STANDING;
- practice = 21;
- carry_weight = 0.00;
- carry_number = 0;
- saving_throw = 0;
- alignment = 0;
- hitroll = 5;
- damroll = 5;
- armor = 100;
- ac_mod = 0;
- stance_ac_mod = 0;
- hr_mod = 0;
- stance_hr_mod = 0;
- dr_mod = 0;
- stance_dr_mod = 0;
- target = &str_empty[0];
- wimpy = 0;
- first_mpact = NULL;
- last_mpact = NULL;
- mpactnum = 0;
- skills = 0;
- cast = 0;
- def = 0;
- strong_magic = 0;
- weak_magic = 0;
- resist = 0;
- suscept = 0;
- race_mods = 0;
- power_skills = 0;
- power_cast = 0;
- riding = NULL;
- rider = NULL;
- first_shield = NULL;
- last_shield = NULL;
- stunTimer = 0;
- num_followers = 0;
- extract_timer = 0;
- current_brand = NULL;
- stance = 0;
- using_named_door = false;
  money = NULL;
- bank_money = NULL;
+ move = 50;
+ mpactnum = 0;
+ name = &str_empty[0];
+ next = NULL;
+ next_in_room = NULL;
  ngroup = NULL;
+ npc = false;
+ npcdata = NULL;
+ num_followers = 0;
+ old_body = NULL;
+ old_prompt = &str_empty[0];
+ pcdata = NULL;
+ pIndexData = NULL;
+ played = 0;
+ pnote = NULL;
+ poly_level = 0;
+ position = POS_STANDING;
+ power_cast = 0;
+ power_skills = 0;
+ practice = 21;
+ prev = NULL;
+ prev_in_room = NULL;
+ prompt = &str_empty[0];
+ p_class = 0;
+ race = 0;
+ race_mods = 0;
+ reply = NULL;
+ reset = NULL;
+ resist = 0;
+ rider = NULL;
+ riding = NULL;
+ save_time = 0;
+ saving_throw = 0;
+ searching = &str_empty[0];
+ sentence = 0;
+ sex = SEX_NEUTRAL;
+ sitting = NULL;
  for( short i = 0; i < MAX_SPEED; i++ )
   speed[i] = 0;
- reset = NULL;
- death_cnt = -1;
+ stance = 0;
+ stance_ac_mod = 0;
+ stance_dr_mod = 0;
+ stance_hr_mod = 0;
+ stun_timer = 0;
+ switched = false;
+ target = &str_empty[0];
+ timer = 0;
+ trust = 0;
+ using_named_door = false;
+ wait = 0;
+ was_in_room = NULL;
+ wimpy = 0;
+ wizbit = false;
 }
 
 exit_data::exit_data()
@@ -275,15 +270,25 @@ mob_index_data::mob_index_data()
 
 note_data::note_data()
 {
+ date = &str_empty[0];
+ date_stamp = 0;
  is_free = false;
  next = NULL;
  prev = NULL;
  sender = &str_empty[0];
- date = &str_empty[0];
- to_list = &str_empty[0];
  subject = &str_empty[0];
  text = &str_empty[0];
- date_stamp = 0;
+ to_list = &str_empty[0];
+}
+
+npc_data::npc_data()
+{
+ short_descr = &str_empty[0];
+ skills = 0;
+ spec_fun = NULL;
+ strong_magic = 0;
+ suscept = 0;
+ weak_magic = 0;
 }
 
 obj_data::obj_data()
@@ -366,78 +371,78 @@ obj_index_data::obj_index_data()
 
 pc_data::pc_data()
 {
- is_free = false;
- next = NULL;
- prev = NULL;
- for( short i = 0; i < MAX_COLOR; i++ )
-  color[i] = 0;
- pwd = &str_empty[0];
- bamfin = &str_empty[0];
- room_enter = &str_empty[0];
- room_exit = &str_empty[0];
- bamfout = &str_empty[0];
- title = &str_empty[0];
- host = str_dup("Unknown!");
- failures = 0;
- clan = 0;
- perm_str = 0;
- perm_int = 0;
- perm_wis = 0;
- perm_dex = 0;
- perm_con = 0;
- max_str = 0;
- max_int = 0;
- max_wis = 0;
- max_dex = 0;
- max_con = 0;
- mod_str = 0;
- mod_int = 0;
- mod_wis = 0;
- mod_dex = 0;
- mod_con = 0;
- monitor.reset();
- for( short i = 0; i < 3; i++ )
-  condition[i] = 0;
- super = NULL;
- pagelen = 0;
- for( short i = 0; i < MAX_SKILL; i++ )
-  learned[i] = 0;
- header = &str_empty[0];
- message = &str_empty[0];
  for( short i = 0; i < MAX_ALIASES; i++ )
  {
-  alias_name[i] = &str_empty[0];
   alias[i] = &str_empty[0];
+  alias_name[i] = &str_empty[0];
  }
- who_name = str_dup("off");;
- records = NULL;
- lastlogin = str_dup("Unknown!");
- for( short i = 0; i < MAX_CLASS; i++ )
-  order[i] = 0;
- quest_points = 0;
+ assist_msg = &str_empty[0];
+ bamfin = &str_empty[0];
+ bamfout = &str_empty[0];
+ clan = 0;
+ for( short i = 0; i < MAX_COND; i++ )
+  condition[i] = 0;
+ for( short i = 0; i < MAX_COLOR; i++ )
+  color[i] = 0;
+ dimcol = '\0';
+ email_address = &str_empty[0];
+ failures = 0;
+ header = &str_empty[0];
+ hicol = '\0';
+ host = str_dup("Unknown!");
+ hp_from_gain = 0;
  for( short i = 0; i < MAX_IGNORES; i++ )
   ignore_list[i] = &str_empty[0];
- recall_vnum = 0;
- mana_from_gain = 0;
- hp_from_gain = 0;
- move_from_gain = 0;
- load_msg = &str_empty[0];
- hicol = '\0';
- dimcol = '\0';
- ruler_rank = 0;
- pedit_state = &str_empty[0];
- for( short i = 0; i < 5; i++ )
-  pedit_string[i] = &str_empty[0];
- term_rows = 0;
- term_columns = 0;
- email_address = &str_empty[0];
- valid_email = false;
- assist_msg = &str_empty[0];
- quest_info = NULL;
- movement = 0;
 #ifdef IMC
  imcchardata = NULL;
 #endif
+ is_free = false;
+ lastlogin = str_dup("Unknown!");
+ for( short i = 0; i < MAX_SKILL; i++ )
+  learned[i] = 0;
+ load_msg = &str_empty[0];
+ mana_from_gain = 0;
+ max_con = 0;
+ max_dex = 0;
+ max_int = 0;
+ max_str = 0;
+ max_wis = 0;
+ message = &str_empty[0];
+ mod_con = 0;
+ mod_dex = 0;
+ mod_int = 0;
+ mod_str = 0;
+ mod_wis = 0;
+ monitor.reset();
+ move_from_gain = 0;
+ movement = 0;
+ next = NULL;
+ for( short i = 0; i < MAX_CLASS; i++ )
+  order[i] = 0;
+ pagelen = 0;
+ pedit_state = &str_empty[0];
+ for( short i = 0; i < MAX_PEDIT; i++ )
+  pedit_string[i] = &str_empty[0];
+ perm_con = 0;
+ perm_dex = 0;
+ perm_int = 0;
+ perm_str = 0;
+ perm_wis = 0;
+ prev = NULL;
+ pwd = &str_empty[0];
+ quest_info = NULL;
+ quest_points = 0;
+ recall_vnum = 0;
+ records = NULL;
+ room_enter = &str_empty[0];
+ room_exit = &str_empty[0];
+ ruler_rank = 0;
+ super = NULL;
+ term_columns = 0;
+ term_rows = 0;
+ title = &str_empty[0];
+ valid_email = false;
+ who_name = str_dup("off");;
 }
 
 reset_data::reset_data()
@@ -494,14 +499,14 @@ room_index_data::room_index_data()
 
 shop_data::shop_data()
 {
- is_free = false;
- next = NULL;
- prev = NULL;
- keeper = 0;
  for( short i = 0; i < MAX_TRADE; i++  )
   buy_type[i] = 0;
+ close_hour = 0;
+ is_free = false;
+ keeper = 0;
+ next = NULL;
+ open_hour = 0;
+ prev = NULL;
  profit_buy = 1;
  profit_sell = 1;
- open_hour = 0;
- close_hour = 0;
 }

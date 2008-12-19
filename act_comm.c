@@ -2999,7 +2999,7 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
          }
          else if( quest_object && quest_target )
          {
-            snprintf( buf, MSL, "@@NIt was %s @@N who stole my %s@@N.", quest_target->short_descr, quest_object->short_descr );
+            snprintf( buf, MSL, "@@NIt was %s @@N who stole my %s@@N.", NAME(quest_target), quest_object->short_descr );
          }
       }
       else if( quest_object )
@@ -3038,12 +3038,12 @@ void ask_quest_question( CHAR_DATA * ch, char *argument )
          {
             if( quest_timer < 10 )
             {
-               snprintf( buf, MSL, "@@NI don't really know where %s@@N is, let me try and find out.", quest_target->short_descr );
+               snprintf( buf, MSL, "@@NI don't really know where %s@@N is, let me try and find out.", NAME(quest_target) );
             }
             else if( quest_target )
             {
                snprintf( buf, MSL, "@@NI'm not really sure, but I THINK %s@@N is in %s@@N",
-                        quest_target->short_descr, quest_target->in_room->area->name );
+                        NAME(quest_target), quest_target->in_room->area->name );
             }
 
          }

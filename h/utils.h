@@ -186,8 +186,8 @@ char_reference(&s); } while(0)
 /*
  * Description macros.
  */
-#define PERS(ch, looker) ( can_see( looker, (ch) ) ? ( IS_NPC(ch) ? (ch)->short_descr : (IS_WOLF(ch) && (IS_SHIFTED(ch) || IS_RAGED(ch))) ? "A Large @@bWolf@@N" :(ch)->name ) : IS_IMMORTAL( ch ) ? "A Mystical Being" : "Someone" )
-#define NAME(ch)		( IS_NPC(ch) ? (ch)->short_descr : (ch)->name )
+#define PERS(ch, looker) ( can_see( looker, (ch) ) ? ( IS_NPC(ch) ? (ch)->npcdata->short_descr : (IS_WOLF(ch) && (IS_SHIFTED(ch) || IS_RAGED(ch))) ? "A Large @@bWolf@@N" :(ch)->name ) : IS_IMMORTAL( ch ) ? "A Mystical Being" : "Someone" )
+#define NAME(ch)		( IS_NPC(ch) ? (ch)->npcdata->short_descr : (ch)->name )
 
 
 /* Added stuff - Flar */

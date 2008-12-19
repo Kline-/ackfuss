@@ -996,7 +996,7 @@ void interpret( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ch->stunTimer > 0 )
+   if( ch->stun_timer > 0 )
    {
       send_to_char( "You are too@@aSTUNNED@@N to act!\n\r", ch );
       return;

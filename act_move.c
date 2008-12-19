@@ -442,9 +442,9 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    {
       if( check_valid_ride( ch ) )
       {
-         snprintf( tmp, MSL, "You ride %s on %s.\n\r", door_name_leave, ch->riding->short_descr );
+         snprintf( tmp, MSL, "You ride %s on %s.\n\r", door_name_leave, NAME(ch->riding) );
          send_to_char( tmp, ch );
-         snprintf( tmp, MSL, "$n rides %s on %s.", door_name_leave, ch->riding->short_descr );
+         snprintf( tmp, MSL, "$n rides %s on %s.", door_name_leave, NAME(ch->riding) );
       }
    }
 
@@ -470,7 +470,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          else if( ch->riding != NULL )
          {
             snprintf( move_buf, MSL, "$L%s$n rides $T on %s.",
-                     get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->riding->short_descr );
+                     get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), NAME(ch->riding) );
          }
          act( move_buf, ch, NULL, door_name_leave, TO_ROOM );
       }
@@ -504,7 +504,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
       else if( ch->riding != NULL )
       {
          snprintf( move_buf, MSL, "$L%s$n rides in from $T on %s.",
-                  get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->riding->short_descr );
+                  get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), NAME(ch->riding) );
       }
       act( move_buf, ch, NULL, door_name_enter, TO_ROOM );
 
@@ -2054,7 +2054,7 @@ void do_scan( CHAR_DATA * ch, char *argument )
 
                if( IS_NPC( d ) )
                {
-                  snprintf( person, MIL, "%s (NPC)", d->short_descr );
+                  snprintf( person, MIL, "%s (NPC)", NAME(d) );
                }
                else
                {
@@ -2255,10 +2255,7 @@ void do_scout( CHAR_DATA * ch, char *argument )
             else if( depth == 4 )
                snprintf( pre, MIL, "Distant %s : ", dir_name[door] );
 
-            if( IS_NPC( target ) )
-               snprintf( buf, MIL, "%s%s\n\r", pre, target->short_descr );
-            else
-               snprintf( buf, MIL, "%s%s\n\r", pre, target->name );
+            snprintf( buf, MIL, "%s%s\n\r", pre, NAME(target) );
 
             send_to_char( buf, ch );
          }

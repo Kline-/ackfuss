@@ -954,8 +954,8 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
   if( (get_psuedo_level(mob) < min_lev || get_psuedo_level(mob) > max_lev)
    || (mob->in_room->area->min_level > get_psuedo_level(ch) || mob->in_room->area->max_level < get_psuedo_level(ch))
    || (mob->in_room->area->flags.test(AFLAG_NOSHOW) || mob->in_room->area->flags.test(AFLAG_NO_QUEST))
-   || (!str_cmp(rev_spec_lookup(mob->spec_fun),"spec_cast_adept"))
-   || (!str_cmp(rev_spec_lookup(mob->spec_fun),"spec_executioner"))
+   || (!str_cmp(rev_spec_lookup(mob->npcdata->spec_fun),"spec_cast_adept"))
+   || (!str_cmp(rev_spec_lookup(mob->npcdata->spec_fun),"spec_executioner"))
    || (mob->pIndexData->vnum > mob->in_room->area->max_vnum || mob->pIndexData->vnum < mob->in_room->area->min_vnum)
    || (mob->in_room->room_flags.test(RFLAG_SAFE))
    || (IS_AFFECTED(mob,AFF_CHARM))
@@ -1125,7 +1125,7 @@ char *display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
    if( ch->pcdata->quest_info->quest_mob_vnum[i] > -1
     && ch->pcdata->quest_info->amount[i] > 0
     && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->pIndexData->vnum
-    || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->short_descr) 
+    || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->npcdata->short_descr) 
     && get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area == victim->in_room->area)) )
      return "@@e[@@yTARGET@@e] @@N";
  }
@@ -1187,7 +1187,7 @@ void update_mquest_kill( CHAR_DATA *ch, CHAR_DATA *victim )
     continue;
    if( ch->pcdata->quest_info->amount[i] > 0
     && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->pIndexData->vnum
-    || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->short_descr)
+    || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr,victim->npcdata->short_descr)
     && get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area == victim->in_room->area)) )
    {
     ch->pcdata->quest_info->amount[i]--;
