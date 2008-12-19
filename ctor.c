@@ -213,6 +213,15 @@ exit_data::exit_data()
  vnum = 0;
 }
 
+extra_descr_data::extra_descr_data()
+{
+ description = &str_empty[0];
+ is_free = false;
+ keyword = &str_empty[0];
+ next = NULL;
+ prev = NULL;
+}
+
 mob_index_data::mob_index_data()
 {
  act.reset();
@@ -426,19 +435,54 @@ pc_data::pc_data()
  perm_wis = 0;
  prev = NULL;
  pwd = &str_empty[0];
- quest_info = NULL;
+ quest_info = new QUEST_INFO;
  quest_points = 0;
  recall_vnum = 0;
- records = NULL;
+ records = new RECORD_DATA;
  room_enter = &str_empty[0];
  room_exit = &str_empty[0];
  ruler_rank = 0;
- super = NULL;
+ super = new SUPER_DATA;
  term_columns = 0;
  term_rows = 0;
  title = &str_empty[0];
  valid_email = false;
  who_name = str_dup("off");;
+}
+
+quest_info::quest_info()
+{
+ for( short i = 0; i < QUEST_MAX_DATA; i++ )
+ {
+  amount[i] = 0;
+  quest_hint[i] = false;
+  quest_item_vnum[i] = 0;
+  quest_mob_vnum[i] = 0;
+ }
+ is_questing = false;
+ quest_complete = false;
+ for( short i = 0; i < QUEST_MAX_REWARD; i++ )
+  quest_reward[i] = 0;
+ quest_type = 0;
+ time_left = 0;
+ wait_time = 0;
+}
+
+record_data::record_data()
+{
+ crusade = 0;
+ mdam_amt = 0;
+ mdam_gsn = 0;
+ pdam_amt = 0;
+ pdam_gsn = 0;
+ pd = 0;
+ pk = 0;
+ md = 0;
+ mk = 0;
+ mquest_c = 0;
+ mquest_f = 0;
+ qp = 0;
+ qp_tot = 0;
 }
 
 reset_data::reset_data()
@@ -505,4 +549,17 @@ shop_data::shop_data()
  prev = NULL;
  profit_buy = 1;
  profit_sell = 1;
+}
+
+super_data::super_data()
+{
+ bloodline = 0;
+ energy = 0;
+ energy_max = 0;
+ exp = 0;
+ generation = 0;
+ level = 0;
+ skills_learned = 0;
+ skills_max = 0;
+ pracs = 0;
 }

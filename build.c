@@ -2035,7 +2035,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
           * Delete description 
           */
          UNLINK( ed, location->first_exdesc, location->last_exdesc, next, prev );
-         PUT_FREE( ed, exdesc_free );
+         delete ed;
          top_ed--;
 
          return;
@@ -2051,7 +2051,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
       if( !found )
       {
-         GET_FREE( ed, exdesc_free );
+         ed = new EXTRA_DESCR_DATA;
 
          build_strdup( &ed->keyword, arg2, FALSE, FALSE, ch );
          build_strdup( &ed->description, arg3, FALSE, FALSE, ch );
@@ -2778,7 +2778,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          }
 
          UNLINK( ed, pObj->first_exdesc, pObj->last_exdesc, next, prev );
-         PUT_FREE( ed, exdesc_free );
+         delete ed;
 
          return;
       }
@@ -2798,7 +2798,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       }
 
 
-      GET_FREE( ed, exdesc_free );
+      ed = new EXTRA_DESCR_DATA;
       build_strdup( &ed->keyword, arg3, FALSE, FALSE, ch );
       build_strdup( &ed->description, argument, FALSE, FALSE, ch );
       LINK( ed, pObj->first_exdesc, pObj->last_exdesc, next, prev );
@@ -4031,7 +4031,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       for( pEd = pRoomIndex->first_exdesc; pEd != NULL; pEd = pNext )
       {
          pNext = pEd->next;
-         PUT_FREE( pEd, exdesc_free );
+         delete pEd;
       }
    }
    PUT_FREE( pRoomIndex->treasure, money_type_free );
@@ -4199,7 +4199,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
       for( pEd = pObjIndex->first_exdesc; pEd != NULL; pEd = pNext )
       {
          pNext = pEd->next;
-         PUT_FREE( pEd, exdesc_free );
+         delete pEd;
       }
    }
 

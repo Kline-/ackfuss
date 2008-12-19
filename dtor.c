@@ -153,8 +153,15 @@ char_data::~char_data()
 
 exit_data::~exit_data()
 {
- is_free = true;
  free_string(description);
+ is_free = true;
+ free_string(keyword);
+}
+
+extra_descr_data::~extra_descr_data()
+{
+ free_string(description);
+ is_free = true;
  free_string(keyword);
 }
 
@@ -230,13 +237,21 @@ pc_data::~pc_data()
  for( short i = 0; i < MAX_PEDIT; i++ )
   free_string(pedit_string[i]);
  free_string(pwd);
- PUT_FREE(quest_info,quest_info_free);
- PUT_FREE(records,record_free);
+ delete quest_info;
+ delete records;
  free_string(room_enter);
  free_string(room_exit);
- PUT_FREE(super,super_free);
+ delete super;
  free_string(title);
  free_string(who_name);
+}
+
+quest_info::~quest_info()
+{
+}
+
+record_data::~record_data()
+{
 }
 
 reset_data::~reset_data()
@@ -254,4 +269,8 @@ room_index_data::~room_index_data()
 shop_data::~shop_data()
 {
  is_free = true;
+}
+
+super_data::~super_data()
+{
 }

@@ -783,13 +783,16 @@ struct liq_type
 /*
  * Extra description data for a room or object.
  */
-struct extra_descr_data
+class extra_descr_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   EXTRA_DESCR_DATA *next; /* Next in list                     */
-   EXTRA_DESCR_DATA *prev; /* Prev in list             */
-   char *keyword; /* Keyword in look/examine          */
-   char *description;   /* What to see                      */
+ public:
+  extra_descr_data();
+  ~extra_descr_data();
+  char *description;   /* What to see                      */
+  char *keyword; /* Keyword in look/examine          */
+  bool is_free;
+  EXTRA_DESCR_DATA *next;
+  EXTRA_DESCR_DATA *prev;
 };
 
 struct trigger_data
@@ -1233,40 +1236,40 @@ struct chanhistory
  int cbit[30][MAX_HISTORY]; /* To track which clan, family, tribe, or race */
 };
 
-struct record_data
+class record_data
 {
- bool is_free;
- RECORD_DATA *next;
- RECORD_DATA *prev;
- int crusade;
- int mdam_amt;
- short mdam_gsn;
- int pdam_amt;
- short pdam_gsn;
- int pd;
- int pk;
- int md;
- int mk;
- int mquest_c;
- int mquest_f;
- int qp;
- int qp_tot;
+ public:
+  record_data();
+  ~record_data();
+  int crusade;
+  int mdam_amt;
+  short mdam_gsn;
+  int pdam_amt;
+  short pdam_gsn;
+  int pd;
+  int pk;
+  int md;
+  int mk;
+  int mquest_c;
+  int mquest_f;
+  int qp;
+  int qp_tot;
 };
 
-struct super_data
+class super_data
 {
- bool is_free;
- SUPER_DATA *next;
- SUPER_DATA *prev;
- int energy; /* rage, blood, or focus */
- int energy_max;
- int level;
- int skills_learned; /* total # skills known */
- int skills_max;     /* total # skills may learn; based on gen, etc */
- int exp;
- int pracs;
- short bloodline;
- short generation;
+ public:
+  super_data();
+  ~super_data();
+  short bloodline;
+  int energy; /* rage, blood, or focus */
+  int energy_max;
+  short exp;
+  short generation;
+  int level;
+  int skills_learned; /* total # skills known */
+  int skills_max;     /* total # skills may learn; based on gen, etc */
+  int pracs;
 };
 
 struct sysdata_type
@@ -1302,21 +1305,21 @@ struct fight_data
  CHAR_DATA *ch;
 };
 
-struct quest_info
+class quest_info
 {
- bool is_free;
- QUEST_INFO *next;
- QUEST_INFO *prev;
- short amount[QUEST_MAX_DATA];
- bool is_questing;
- bool quest_complete;
- bool quest_hint[QUEST_MAX_DATA];
- int quest_item_vnum[QUEST_MAX_DATA];
- int quest_mob_vnum[QUEST_MAX_DATA];
- int quest_reward[QUEST_MAX_REWARD];
- short quest_type;
- short time_left;
- short wait_time;
+ public:
+  quest_info();
+  ~quest_info();
+  short amount[QUEST_MAX_DATA];
+  bool is_questing;
+  bool quest_complete;
+  bool quest_hint[QUEST_MAX_DATA];
+  int quest_item_vnum[QUEST_MAX_DATA];
+  int quest_mob_vnum[QUEST_MAX_DATA];
+  int quest_reward[QUEST_MAX_REWARD];
+  short quest_type;
+  short time_left;
+  short wait_time;
 };
 
 struct h_queue

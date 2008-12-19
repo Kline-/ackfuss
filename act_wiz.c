@@ -3513,7 +3513,7 @@ void do_oset( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      GET_FREE( ed, exdesc_free );
+      ed = new EXTRA_DESCR_DATA;
       ed->keyword = str_dup( arg3 );
       ed->description = str_dup( argument );
       LINK( ed, obj->first_exdesc, obj->last_exdesc, next, prev );
