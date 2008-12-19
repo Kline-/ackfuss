@@ -907,7 +907,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
     * don't attack fairy godmother 
     */
    if( IS_NPC( victim ) )
-      if( victim->pIndexData->vnum == 1026 )
+      if( victim->npcdata->pIndexData->vnum == 1026 )
          return FALSE;
 
 

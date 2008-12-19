@@ -1694,12 +1694,15 @@ void extract_obj( OBJ_DATA * obj )
 /*        wch->hunt_obj = NULL;*/
       if( wch->sitting == obj )
          do_stand( wch, "" );
-      for( mpact = wch->first_mpact; mpact; mpact = mpact->next )
+      if( IS_NPC(wch) )
       {
+       for( mpact = wch->npcdata->first_mpact; mpact; mpact = mpact->next )
+       {
          if( mpact->obj == obj )
             mpact->obj = NULL;
          if( mpact->vo == obj )
             mpact->vo = NULL;
+       }
       }
    }
 
@@ -1899,7 +1902,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
             }
          }
    }
-   if( ch->ngroup != NULL )
+   if( IS_NPC(ch) && ch->npcdata->ngroup != NULL )
    {
       NPC_GROUP_DATA *kill_group = NULL;
       DL_LIST *kill_member = NULL;

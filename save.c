@@ -377,7 +377,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    if( IS_NPC( ch ) )
    {
-      fprintf( fp, "Vnum           %d\n", ch->pIndexData->vnum );
+      fprintf( fp, "Vnum           %d\n", ch->npcdata->pIndexData->vnum );
    }
    else
    {
@@ -1249,7 +1249,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
 
          case 'L':
-
             KEY( "Level", ch->level, fread_number( fp ) );
             SKEY( "LongDescr", ch->long_descr, fread_string( fp ) );
             KEY( "LoginSex", ch->login_sex, fread_number( fp ) );
@@ -1495,7 +1494,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'V':
             if( !str_cmp( word, "Vnum" ) && IS_NPC( ch ) )
             {
-               ch->pIndexData = get_mob_index( fread_number( fp ) );
+               ch->npcdata->pIndexData = get_mob_index( fread_number( fp ) );
                fMatch = TRUE;
                break;
             }

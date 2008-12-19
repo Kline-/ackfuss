@@ -561,7 +561,6 @@ class char_data
   CHAR_DATA *fighting;
   AFFECT_DATA *first_affect;
   OBJ_DATA *first_carry;
-  MPROG_ACT_LIST *first_mpact;  /* Used by MOBprogram */
   AFFECT_DATA *first_saved_aff;
   MAGIC_SHIELD *first_shield;
   int gold;
@@ -581,7 +580,6 @@ class char_data
   bool is_quitting;
   AFFECT_DATA *last_affect;
   OBJ_DATA *last_carry;
-  MPROG_ACT_LIST *last_mpact;
   time_t last_note;
   AFFECT_DATA *last_saved_aff;
   MAGIC_SHIELD *last_shield;
@@ -600,18 +598,15 @@ class char_data
   int max_move;
   MONEY_TYPE *money;
   int move;
-  int mpactnum;  /* Used by MOBprogram */
   char *name;
   CHAR_DATA *next;
   CHAR_DATA *next_in_room;
-  NPC_GROUP_DATA *ngroup;
   bool npc; /* For NPC's, no more flag */
   NPC_DATA *npcdata;
   short num_followers;
   CHAR_DATA *old_body; /* = descriptor->original */
   char *old_prompt; /* used to hold prompt when writing */
   PC_DATA *pcdata;
-  MOB_INDEX_DATA *pIndexData;
   int played;
   NOTE_DATA *pnote;
   int poly_level;
@@ -657,6 +652,11 @@ class npc_data
  public:
   npc_data();
   ~npc_data();
+  MPROG_ACT_LIST *first_mpact;
+  MPROG_ACT_LIST *last_mpact;
+  int mpactnum;
+  NPC_GROUP_DATA *ngroup;
+  MOB_INDEX_DATA *pIndexData;
   RESET_DATA *reset;
   int resist;
   char *short_descr;
