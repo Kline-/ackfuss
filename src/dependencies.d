@@ -54,14 +54,15 @@ o/const.o: const.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/magic.h \
   h/vampire.h h/werewolf.h
 o/ctor.o: ctor.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
-  lists.h h/mquest.h h/strfuns.h h/utils.h h/db.h h/money.h h/ssm.h
+  lists.h h/mquest.h h/strfuns.h h/utils.h h/db.h hash.h h/money.h \
+  h/ssm.h
 o/db.o: db.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h hash.h h/act_info.h \
   h/act_mob.h h/act_obj.h h/act_wiz.h h/comm.h h/db.h h/handler.h \
   h/money.h h/spendqp.h h/ssm.h
 o/dtor.o: dtor.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h h/comm.h h/db.h \
-  h/handler.h h/ssm.h
+  h/handler.h hash.h h/ssm.h
 o/email.o: email.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_wiz.h h/comm.h h/db.h h/email.h h/handler.h h/spendqp.h h/ssm.h

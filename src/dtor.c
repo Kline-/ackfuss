@@ -28,6 +28,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HASH_H
+#include "hash.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -50,6 +54,12 @@ area_data::~area_data()
  free_string(reset_msg);
 }
 
+ban_data::~ban_data()
+{
+ free_string(name);
+ free_string(banned_by);
+}
+
 brand_data::~brand_data()
 {
  free_string(branded);
@@ -57,6 +67,11 @@ brand_data::~brand_data()
  free_string(dt_stamp);
  free_string(message);
  free_string(priority);
+}
+
+buf_data_struct::~buf_data_struct()
+{
+ free_string(buf);
 }
 
 char_data::~char_data()
@@ -165,6 +180,22 @@ extra_descr_data::~extra_descr_data()
  free_string(keyword);
 }
 
+fight_data::~fight_data()
+{
+}
+
+hash_entry_tp::~hash_entry_tp()
+{
+ is_free = true;
+}
+
+message_data::~message_data()
+{
+ free_string(author);
+ free_string(title);
+ free_string(message);
+}
+
 mob_index_data::~mob_index_data()
 {
  free_string(description);
@@ -195,6 +226,14 @@ npc_data::~npc_data()
   PUT_FREE(mpact,mpact_free);
  }
  free_string(short_descr);
+}
+
+npc_group_data::~npc_group_data()
+{
+ free_string(enemies);
+ is_free = true;
+ free_string(needs);
+ free_string(wants);
 }
 
 obj_data::~obj_data()
@@ -258,6 +297,10 @@ reset_data::~reset_data()
 {
  is_free = true;
  free_string(notes);
+}
+
+room_affect_data::~room_affect_data()
+{
 }
 
 room_index_data::~room_index_data()

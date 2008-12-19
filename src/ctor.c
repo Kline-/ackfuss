@@ -16,6 +16,10 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_HASH_H
+#include "hash.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif
@@ -77,6 +81,16 @@ area_data::area_data()
  reset_rate = 15;
 }
 
+ban_data::ban_data()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ name = &str_empty[0];
+ banned_by = &str_empty[0];
+ newbie = false;
+}
+
 brand_data::brand_data()
 {
  branded = &str_empty[0];
@@ -84,6 +98,20 @@ brand_data::brand_data()
  dt_stamp = &str_empty[0];
  message = &str_empty[0];
  priority = &str_empty[0];
+}
+
+buf_data_struct::buf_data_struct()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ ch = NULL;
+ dest = NULL;
+ buf = &str_empty[0];
+ pos = 0;
+ returnfunc = NULL;
+ returnparm = NULL;
+ old_char_pos = 0;
 }
 
 char_data::char_data()
@@ -222,6 +250,34 @@ extra_descr_data::extra_descr_data()
  prev = NULL;
 }
 
+fight_data::fight_data()
+{
+ is_free = false;
+ ch = NULL;
+ next = NULL;
+ prev = NULL;
+}
+
+hash_entry_tp::hash_entry_tp()
+{
+ is_free = false;
+ next = NULL;
+ reference = NULL;
+ key = 0;
+}
+
+message_data::message_data()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ board = NULL;
+ datetime = 0;
+ author = &str_empty[0];
+ title = &str_empty[0];
+ message = &str_empty[0];
+}
+
 mob_index_data::mob_index_data()
 {
  act.reset();
@@ -294,6 +350,22 @@ npc_data::npc_data()
  strong_magic = 0;
  suscept = 0;
  weak_magic = 0;
+}
+
+npc_group_data::npc_group_data()
+{
+ enemies = &str_empty[0];
+ first_follower = NULL;
+ is_free = false;
+ last_fighting = NULL;
+ last_follower = NULL;
+ leader = NULL;
+ needs = &str_empty[0];
+ next = NULL;
+ prev = NULL;
+ seek_room = NULL;
+ state = 0;
+ wants = &str_empty[0];
 }
 
 obj_data::obj_data()
@@ -496,6 +568,21 @@ reset_data::reset_data()
  arg3 = 0;
  notes = &str_empty[0];
  count = 0;
+}
+
+room_affect_data::room_affect_data()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ duration = 0;
+ level = 0;
+ type = 0;
+ bitvector = 0;
+ applies_spell = 0;
+ modifier = 0;
+ location = 0;
+ caster = NULL;
 }
 
 room_index_data::room_index_data()

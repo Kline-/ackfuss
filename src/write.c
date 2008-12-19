@@ -52,22 +52,6 @@
 
 /* This file deals with multi-line editing, and writing. */
 
-struct buf_data_struct
-{
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   BUF_DATA_STRUCT *next;
-   BUF_DATA_STRUCT *prev;
-   CHAR_DATA *ch;
-   char **dest;
-   char *buf;
-   int pos;
-   RET_FUN *returnfunc;
-   MESSAGE_DATA *returnparm;
-   int old_char_pos;
-};
-
-
-
 extern char str_empty[1];
 
 void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
@@ -95,7 +79,7 @@ void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
    /*
     * Alloc mem. for a new buffer. 
     */
-   GET_FREE( buf_data, buf_free );
+   buf_data = new BUF_DATA_STRUCT;
    LINK( buf_data, first_buf, last_buf, next, prev );
 
    buf_data->ch = ch;
@@ -187,7 +171,6 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
 
       if( save )
       {
-       log_f("%s",ch->pcdata->header);
          /*
           * Check that dest still points to buf (to check for corruption) 
           */
@@ -237,7 +220,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
        */
       ch->position = buf_data->old_char_pos;
 
-      PUT_FREE( buf_data, buf_free );
+      delete buf_data;
 
       return;
    }

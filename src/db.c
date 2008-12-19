@@ -904,7 +904,7 @@ void load_bans( void )
          {
             short get_bool = FALSE;
 
-            GET_FREE( pban, ban_free );
+            pban = new BAN_DATA;
             get_bool = fread_number( bansfp );
             if( get_bool == 1 )
                pban->newbie = TRUE;
@@ -2601,7 +2601,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    if( AI_MOB( mob ) )
    {
       NPC_GROUP_DATA *ngroup;
-      GET_FREE( ngroup, npc_group_free );
+      ngroup = new NPC_GROUP_DATA;
       ngroup->next = NULL;
       ngroup->prev = NULL;
       ngroup->state = GRP_STATE_IDLE;

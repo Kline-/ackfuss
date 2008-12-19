@@ -2333,7 +2333,7 @@ void do_ban( CHAR_DATA * ch, char *argument )
       }
    }
 
-   GET_FREE( pban, ban_free );
+   pban = new BAN_DATA;
    if( !str_cmp( arg2, "newbie" ) )
       pban->newbie = TRUE;
    else
@@ -2368,7 +2368,7 @@ void do_allow( CHAR_DATA * ch, char *argument )
       {
          UNLINK( curr, first_ban, last_ban, next, prev );
 
-         PUT_FREE( curr, ban_free );
+         delete curr;
          send_to_char( "Ok.\n\r", ch );
          save_bans(  );
          return;

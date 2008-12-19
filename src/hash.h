@@ -8,12 +8,15 @@
 
 #define DEC_HASH_H
 
-struct hash_entry_tp
+class hash_entry_tp
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   HASH_ENTRY *next;
-   void *reference;
-   int key;
+ public:
+  hash_entry_tp();
+  ~hash_entry_tp();
+  bool is_free;
+  HASH_ENTRY *next;
+  void *reference;
+  int key;
 };
 
 typedef struct hash_table_tp hash_table;

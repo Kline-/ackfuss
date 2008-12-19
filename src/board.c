@@ -300,7 +300,7 @@ BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj )
          }
          else
          {
-            GET_FREE( message, message_free );
+            message = new MESSAGE_DATA;
             message->datetime = message_time;
             message->author = fread_string( board_file );
             message->title = fread_string( board_file );
@@ -465,7 +465,7 @@ void do_delete( CHAR_DATA * ch, char *argument )
 
    UNLINK( msg, board->first_message, board->last_message, next, prev );
 
-   PUT_FREE( msg, message_free );
+   delete msg;
 
    save_board( board, ch );
 
@@ -613,7 +613,7 @@ void do_write( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   GET_FREE( msg, message_free );   /* Dont put message in list till we  */
+   msg = new MESSAGE_DATA;
    msg->datetime = time( NULL ); /* we are sure we can edit.          */
    snprintf( buf, MSL, "%s @@a%s@@N", argument, ( char * )ctime( &current_time ) );
    if( msg->title != NULL )
@@ -638,7 +638,7 @@ void do_write( CHAR_DATA * ch, char *argument )
    else
    {
       send_to_char( "Could not add message.\n\r", ch );
-      PUT_FREE( msg, message_free );
+      delete msg;
    }
    return;
 }
@@ -669,7 +669,7 @@ void finished_editing( MESSAGE_DATA * msg, char **dest, CHAR_DATA * ch, bool sav
 #endif
 
       UNLINK( msg, msg->board->first_message, msg->board->last_message, next, prev );
-      PUT_FREE( msg, message_free );
+      delete msg;
    }
    else
    {
