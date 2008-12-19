@@ -729,7 +729,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       ch_resist = ( IS_NPC( ch ) ?
                     ( ( ( ch->race > 0 )
                         && ( ch->race < MAX_RACE ) ) ?
-                      race_table[ch->race].resist_realms : ch->resist ) : race_table[ch->race].resist_realms );
+                      race_table[ch->race].resist_realms : ch->npcdata->resist ) : race_table[ch->race].resist_realms );
       ch_weak = ( IS_NPC( ch ) ?
                   ( ( ( ch->race > 0 )
                       && ( ch->race < MAX_RACE ) ) ?
@@ -812,7 +812,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    vi_resist = ( IS_NPC( victim ) ?
                  ( ( ( victim->race > 0 )
                      && ( victim->race < MAX_RACE ) ) ?
-                   race_table[victim->race].resist_realms : victim->resist ) : race_table[victim->race].resist_realms );
+                   race_table[victim->race].resist_realms : victim->npcdata->resist ) : race_table[victim->race].resist_realms );
    vi_weak = ( IS_NPC( victim ) ?
                ( ( ( victim->race > 0 )
                    && ( victim->race < MAX_RACE ) ) ?

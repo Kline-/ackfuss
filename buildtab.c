@@ -586,29 +586,7 @@ LOOKUP_TYPE tab_mob_skill[] = {
    {"charge", 524288, 700},
    {NULL, 0, 0}
 };
-LOOKUP_TYPE tab_mob_powerskill[] = {
-   {"nada", 1, 0},
-   {"enhanced_reflexes", 2, 100},
-   {"sleight_of_hand", 4, 200},
-   {"crushing_blow", 8, 400},
-   {"punch", 16, 200},
-   {"headbutt", 32, 200},
-   {"knee", 64, 200},
-   {"disarm", 128, 400},
-   {"trip", 256, 300},
-   {"nodisarm", 512, 500},
-   {"notrip", 1024, 500},
-   {"dodge", 2048, 200},
-   {"parry", 4096, 200},
-   {"martial", 8192, 300},
-   {"enhanced_dam", 16384, 400},
-   {"dualwield", 32768, 350},
-   {"dirt", 65536, 300},
-   {"combat_prowess", 131072, 500},
-   {"quickstrike", 262144, 600},
-   {"charge", 524288, 700},
-   {NULL, 0, 0}
-};
+
 LOOKUP_TYPE tab_mob_cast[] = {
    {"nada", 0, 0},
    {"placeholder", 1, 0},
@@ -671,36 +649,6 @@ LOOKUP_TYPE tab_cast_name[] = {
    {NULL, 0, 0}
 };
 
-LOOKUP_TYPE tab_mob_powercast[] = {
-   {"nada", 0, 0},
-   {"placeholder", 1, 0},
-   {"mag_missile", 2, 100},
-   {"shock_grasp", 4, 110},
-   {"burn_hands", 8, 130},
-   {"col_spray", 16, 150},
-   {"fireball", 32, 250},
-   {"hellspawn", 64, 300},
-   {"acid_blast", 128, 350},
-   {"chain_light", 256, 400},
-   {"faerie_fire", 512, 300},
-   {"flare", 1024, 450},   /* 10 */
-   {"flamestrike", 2048, 500},
-   {"earthquake", 4096, 550},
-   {"mind_flail", 8192, 100},
-   {"planergy", 16384, 200},
-   {"phobia", 32768, 250},
-   {"mind_bolt", 65536, 300},
-   {"static", 131072, 350},
-   {"ego_whip", 262144, 375},
-   {"bloody_tears", 524288, 500},
-   {"mindflame", 1048576, 600},  /* 20 */
-   {"suffocate", 2097152, 650},
-   {"nerve_fire", 4194304, 700},
-   {"light_bolt", 8388608, 200},
-   {"heat_armor", 16777216, 400},
-   {"lava_burst", 33554432, 300},
-   {NULL, 0, 0}
-};
 LOOKUP_TYPE tab_mob_def[] = {
    {"nada", 1, 0},
    {"cure_light", 2, 100},

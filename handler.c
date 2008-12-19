@@ -1924,8 +1924,8 @@ void extract_char( CHAR_DATA * ch, bool fPull )
       }
    }
 
-   if( ch->reset )
-    ch->reset->count--;
+   if( ch->npcdata->reset )
+    ch->npcdata->reset->count--;
 
    UNLINK( ch, first_char, last_char, next, prev );
    if( ch->desc )

@@ -172,8 +172,6 @@ char_data::char_data()
  pnote = NULL;
  poly_level = 0;
  position = POS_STANDING;
- power_cast = 0;
- power_skills = 0;
  practice = 21;
  prev = NULL;
  prev_in_room = NULL;
@@ -182,8 +180,6 @@ char_data::char_data()
  race = 0;
  race_mods = 0;
  reply = NULL;
- reset = NULL;
- resist = 0;
  rider = NULL;
  riding = NULL;
  save_time = 0;
@@ -247,8 +243,6 @@ mob_index_data::mob_index_data()
  next = NULL;
  player_name = &str_empty[0];
  position = 0;
- power_cast = 0;
- power_skills = 0;
  progtypes = 0;
  pShop = NULL;
  p_class = 0;
@@ -283,6 +277,8 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
+ reset = NULL;
+ resist = 0;
  short_descr = &str_empty[0];
  skills = 0;
  spec_fun = NULL;

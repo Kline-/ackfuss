@@ -1014,10 +1014,8 @@ void load_mobile( FILE * fp )
             break;
 
          case 'P':
-            KEY("PCast",pMobIndex->power_cast,fread_number(fp));
             SKEY("PlrName",pMobIndex->player_name,fread_string(fp));
             KEY("Position",pMobIndex->position,fread_number(fp));
-            KEY("PSkills",pMobIndex->power_skills,fread_number(fp));
             break;
 
          case 'R':
@@ -2206,7 +2204,7 @@ void reset_area( AREA_DATA * pArea )
             }
 
             mob = create_mobile( pMobIndex );
-            mob->reset = pReset;
+            mob->npcdata->reset = pReset;
             pReset->count++;
             just_loaded = TRUE;
 
@@ -2557,11 +2555,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->clan = pMobIndex->clan;
    mob->npcdata->strong_magic = pMobIndex->strong_magic;
    mob->npcdata->weak_magic = pMobIndex->weak_magic;
-   mob->resist = pMobIndex->resist;
+   mob->npcdata->resist = pMobIndex->resist;
    mob->npcdata->suscept = pMobIndex->suscept;
    mob->race_mods = pMobIndex->race_mods;
-   mob->power_skills = pMobIndex->power_skills;
-   mob->power_cast = pMobIndex->power_cast;
    mob->race = pMobIndex->race;
    mob->position = POS_STANDING;
    mob->is_quitting = FALSE;
