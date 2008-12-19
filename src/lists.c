@@ -87,9 +87,6 @@ PORTAL_DATA *portal_free = NULL;
 ROOM_AFFECT_DATA *raffect_free = NULL;
 BAN_DATA *ban_free = NULL;
 DESCRIPTOR_DATA *desc_free = NULL;
-EXTRA_DESCR_DATA *exdesc_free = NULL;
-SUPER_DATA *super_free = NULL;
-RECORD_DATA *record_free = NULL;
 MPROG_DATA *mprog_free = NULL;
 MPROG_ACT_LIST *mpact_free = NULL;
 BUILD_DATA_LIST *build_free = NULL;
@@ -114,7 +111,6 @@ BUF_DATA_STRUCT *buf_free = NULL;
 HASH_ENTRY *hash_free = NULL;
 NPC_GROUP_DATA *npc_group_free = NULL;
 FIGHT_DATA *fight_free = NULL;
-QUEST_INFO *quest_info_free = NULL;
 
 void ( *portal_free_destructor ) ( PORTAL_DATA * pdat ) = NULL;
 void ( *raffect_free_destructor ) ( ROOM_AFFECT_DATA * radat ) = NULL;
@@ -159,12 +155,6 @@ void ban_free_destructor( BAN_DATA * bdat )
    free_string( bdat->banned_by );
 }
 
-void exdesc_free_destructor( EXTRA_DESCR_DATA * eddat )
-{
-   free_string( eddat->keyword );   /* Free string memory */
-   free_string( eddat->description );
-}
-
 void mprog_free_destructor( MPROG_DATA * mpdat )
 {
    free_string( mpdat->arglist );
@@ -177,21 +167,9 @@ void mpact_free_destructor( MPROG_ACT_LIST * mpadat )
    free_string( mpadat->buf );
 }
 
-void super_free_destructor( SUPER_DATA *superdat )
-{
-}
-
-void record_free_destructor( RECORD_DATA *recorddat )
-{
-}
-
 void fight_free_destructor( FIGHT_DATA *fight )
 {
  fight->ch = NULL;
-}
-
-void quest_info_free_destructor( QUEST_INFO *quest )
-{
 }
 
 void mark_free_destructor( MARK_DATA * mdat )

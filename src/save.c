@@ -649,10 +649,6 @@ int cur_revision = 0;
 bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 {
    int cnt;
-   static PC_DATA pcdata_zero;
-   static QUEST_INFO quest_info_zero;
-   static RECORD_DATA record_zero;
-   static SUPER_DATA super_zero;
    char strsave[MAX_INPUT_LENGTH];
    char tempstrsave[MAX_INPUT_LENGTH];
    char *bufptr, *nmptr;
@@ -703,12 +699,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    if( !is_npc )
    {
       ch->pcdata = new PC_DATA;
-      GET_FREE( ch->pcdata->quest_info, quest_info_free );
-      *ch->pcdata->quest_info = quest_info_zero;
-      GET_FREE( ch->pcdata->records, record_free );
-      *ch->pcdata->records = record_zero;
-      GET_FREE( ch->pcdata->super, super_free );
-      *ch->pcdata->super = super_zero;
 
       d->character = ch;
 
@@ -1640,7 +1630,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
             {
                EXTRA_DESCR_DATA *ed;
 
-               GET_FREE( ed, exdesc_free );
+               ed = new EXTRA_DESCR_DATA;
                ed->keyword = fread_string( fp );
                ed->description = fread_string( fp );
                LINK( ed, obj->first_exdesc, obj->last_exdesc, next, prev );
@@ -1663,7 +1653,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                   while( ( ed = obj->first_exdesc ) != NULL )
                   {
                      obj->first_exdesc = ed->next;
-                     PUT_FREE( ed, exdesc_free );
+                     delete ed;
                   }
                   delete obj;
                   return;
@@ -1999,7 +1989,7 @@ void fread_corpse( FILE * fp )
             {
                EXTRA_DESCR_DATA *ed;
 
-               GET_FREE( ed, exdesc_free );
+               ed = new EXTRA_DESCR_DATA;
                ed->keyword = fread_string( fp );
                ed->description = fread_string( fp );
                LINK( ed, obj->first_exdesc, obj->last_exdesc, next, prev );
@@ -2022,7 +2012,7 @@ void fread_corpse( FILE * fp )
                   while( ( ed = obj->first_exdesc ) != NULL )
                   {
                      obj->first_exdesc = ed->next;
-                     PUT_FREE( ed, exdesc_free );
+                     delete ed;
                   }
                   delete obj;
                   return;

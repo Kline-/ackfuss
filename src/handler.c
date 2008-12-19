@@ -1681,7 +1681,7 @@ void extract_obj( OBJ_DATA * obj )
       while( ( ed = obj->first_exdesc ) != NULL )
       {
          obj->first_exdesc = ed->next;
-         PUT_FREE( ed, exdesc_free );
+         delete ed;
       }
    }
 
