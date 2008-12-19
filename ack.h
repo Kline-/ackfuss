@@ -82,17 +82,19 @@ struct board_data
    int clan;
 };
 
-struct message_data
+class message_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   MESSAGE_DATA *next;
-   MESSAGE_DATA *prev;  /* Only used in save_board */
-   BOARD_DATA *board;
-   time_t datetime;
-   char *author;
-   char *title;
-   char *message;
-
+ public:
+  message_data();
+  ~message_data();
+  bool is_free;
+  MESSAGE_DATA *next;
+  MESSAGE_DATA *prev;  /* Only used in save_board */
+  BOARD_DATA *board;
+  time_t datetime;
+  char *author;
+  char *title;
+  char *message;
 };
 
 /*
@@ -126,14 +128,17 @@ struct dl_list
 /*
  * Site ban structure.
  */
-struct ban_data
+class ban_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   BAN_DATA *next;
-   BAN_DATA *prev;
-   char *name;
-   char *banned_by;
-   bool newbie;
+ public:
+  ban_data();
+  ~ban_data();
+  bool is_free;
+  BAN_DATA *next;
+  BAN_DATA *prev;
+  char *name;
+  char *banned_by;
+  bool newbie;
 };
 
 class brand_data
@@ -146,6 +151,23 @@ class brand_data
   char *dt_stamp;
   char *message;
   char *priority;
+};
+
+class buf_data_struct
+{
+ public:
+  buf_data_struct();
+  ~buf_data_struct();
+  bool is_free;
+  BUF_DATA_STRUCT *next;
+  BUF_DATA_STRUCT *prev;
+  CHAR_DATA *ch;
+  char **dest;
+  char *buf;
+  int pos;
+  RET_FUN *returnfunc;
+  MESSAGE_DATA *returnparm;
+  int old_char_pos;
 };
 
 struct time_info_data
@@ -204,7 +226,6 @@ struct mark_list_member
    MARK_DATA *mark;
 };
 
-
 struct council_data
 {
    char *council_name;
@@ -213,8 +234,6 @@ struct council_data
    bool quorum;
    short council_time;
 };
-
-
 
 /*
  * Descriptor (channel) structure.
@@ -429,20 +448,22 @@ class affect_data
   short type;
 };
 
-struct room_affect_data
+class room_affect_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   ROOM_AFFECT_DATA *next;
-   ROOM_AFFECT_DATA *prev;
-   short duration;
-   short level;
-   int type;
-   int bitvector;
-   int applies_spell;   /* what spell is cast on a ch by the room..a sn */
-   short modifier;
-   short location;
-   CHAR_DATA *caster;
-
+ public:
+  room_affect_data();
+  ~room_affect_data();
+  bool is_free;
+  ROOM_AFFECT_DATA *next;
+  ROOM_AFFECT_DATA *prev;
+  short duration;
+  short level;
+  int type;
+  int bitvector;
+  int applies_spell;   /* what spell is cast on a ch by the room..a sn */
+  short modifier;
+  short location;
+  CHAR_DATA *caster;
 };
 
 
@@ -1156,20 +1177,23 @@ struct lookup_type
    int cost;   /* if == NO_USE, only creators can set. */
 };
 
-struct npc_group_data
+class npc_group_data
 {
-   bool is_free;
-   NPC_GROUP_DATA *next;
-   NPC_GROUP_DATA *prev;
-   short state;
-   DL_LIST *first_follower;
-   DL_LIST *last_follower;
-   CHAR_DATA *leader;
-   ROOM_INDEX_DATA *seek_room;
-   char *enemies;
-   char *last_fighting;
-   char *wants;
-   char *needs;
+ public:
+  npc_group_data();
+  ~npc_group_data();
+  char *enemies;
+  DL_LIST *first_follower;
+  bool is_free;
+  char *last_fighting;
+  DL_LIST *last_follower;
+  CHAR_DATA *leader;
+  char *needs;
+  NPC_GROUP_DATA *next;
+  NPC_GROUP_DATA *prev;
+  ROOM_INDEX_DATA *seek_room;
+  short state;
+  char *wants;
 };
 
 /*
@@ -1297,12 +1321,15 @@ struct sysdata_type
  bool w_lock;
 };
 
-struct fight_data
+class fight_data
 {
- bool is_free;
- FIGHT_DATA *next;
- FIGHT_DATA *prev;
- CHAR_DATA *ch;
+ public:
+  fight_data();
+  ~fight_data();
+  bool is_free;
+  FIGHT_DATA *next;
+  FIGHT_DATA *prev;
+  CHAR_DATA *ch;
 };
 
 class quest_info

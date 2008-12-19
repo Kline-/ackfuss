@@ -83,9 +83,6 @@ NPC_GROUP_DATA *first_npc_group = NULL;
 NPC_GROUP_DATA *last_npc_group = NULL;
 FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
-PORTAL_DATA *portal_free = NULL;
-ROOM_AFFECT_DATA *raffect_free = NULL;
-BAN_DATA *ban_free = NULL;
 DESCRIPTOR_DATA *desc_free = NULL;
 MPROG_DATA *mprog_free = NULL;
 MPROG_ACT_LIST *mpact_free = NULL;
@@ -106,14 +103,7 @@ RULER_LIST *ruler_list_free = NULL;
 DL_LIST *dl_list_free = NULL;
 MONEY_TYPE *money_type_free = NULL;
 BOARD_DATA *board_free = NULL;
-MESSAGE_DATA *message_free = NULL;
-BUF_DATA_STRUCT *buf_free = NULL;
-HASH_ENTRY *hash_free = NULL;
-NPC_GROUP_DATA *npc_group_free = NULL;
-FIGHT_DATA *fight_free = NULL;
 
-void ( *portal_free_destructor ) ( PORTAL_DATA * pdat ) = NULL;
-void ( *raffect_free_destructor ) ( ROOM_AFFECT_DATA * radat ) = NULL;
 void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat ) = NULL;
 void ( *build_free_destructor ) ( BUILD_DATA_LIST * bddat ) = NULL;
 void ( *member_free_destructor ) ( MEMBER_DATA * mdat ) = NULL;
@@ -132,8 +122,6 @@ void ( *dl_list_free_destructor ) ( DL_LIST * dldat ) = NULL;
 void ( *money_type_free_destructor ) ( MONEY_TYPE * mtdat ) = NULL;
 #endif
 void ( *board_free_destructor ) ( BOARD_DATA * bdat ) = NULL;
-void ( *buf_free_destructor ) ( BUF_DATA_STRUCT * bdat ) = NULL;
-void ( *hash_free_destructor ) ( HASH_ENTRY * hdat ) = NULL;
 
 #ifdef DEBUG_MONEY
 void money_type_free_destructor( MONEY_TYPE * mtdat )
@@ -141,19 +129,6 @@ void money_type_free_destructor( MONEY_TYPE * mtdat )
    free_string( mtdat->money_key );
 }
 #endif
-
-void message_free_destructor( MESSAGE_DATA * mdat )
-{
-   free_string( mdat->author );
-   free_string( mdat->title );
-   free_string( mdat->message );
-}
-
-void ban_free_destructor( BAN_DATA * bdat )
-{
-   free_string( bdat->name );
-   free_string( bdat->banned_by );
-}
 
 void mprog_free_destructor( MPROG_DATA * mpdat )
 {
@@ -165,11 +140,6 @@ void mprog_free_destructor( MPROG_DATA * mpdat )
 void mpact_free_destructor( MPROG_ACT_LIST * mpadat )
 {
    free_string( mpadat->buf );
-}
-
-void fight_free_destructor( FIGHT_DATA *fight )
-{
- fight->ch = NULL;
 }
 
 void mark_free_destructor( MARK_DATA * mdat )
@@ -193,12 +163,4 @@ void ruler_data_free_destructor( RULER_DATA * rdat )
    free_string( rdat->name );
    free_string( rdat->affiliation_name );
    free_string( rdat->keywords );
-}
-
-void npc_group_free_destructor( NPC_GROUP_DATA * ngrp )
-{
-   free_string( ngrp->enemies );
-   free_string( ngrp->last_fighting );
-   free_string( ngrp->wants );
-   free_string( ngrp->needs );
 }

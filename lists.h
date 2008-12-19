@@ -74,9 +74,6 @@ extern NPC_GROUP_DATA *first_npc_group;
 extern NPC_GROUP_DATA *last_npc_group;
 extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
-extern PORTAL_DATA *portal_free;
-extern ROOM_AFFECT_DATA *raffect_free;
-extern BAN_DATA *ban_free;
 extern DESCRIPTOR_DATA *desc_free;
 extern MPROG_DATA *mprog_free;
 extern MPROG_ACT_LIST *mpact_free;
@@ -97,14 +94,7 @@ extern RULER_LIST *ruler_list_free;
 extern DL_LIST *dl_list_free;
 extern MONEY_TYPE *money_type_free;
 extern BOARD_DATA *board_free;
-extern MESSAGE_DATA *message_free;
-extern BUF_DATA_STRUCT *buf_free;
-extern HASH_ENTRY *hash_free;
-extern NPC_GROUP_DATA *npc_group_free;
-extern FIGHT_DATA *fight_free;
 
-extern void ( *portal_free_destructor ) ( PORTAL_DATA * pdat );
-extern void ( *raffect_free_destructor ) ( ROOM_AFFECT_DATA * radat );
 extern void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat );
 extern void ( *build_free_destructor ) ( BUILD_DATA_LIST * bddat );
 extern void ( *member_free_destructor ) ( MEMBER_DATA * mdat );
@@ -123,22 +113,16 @@ extern void ( *dl_list_free_destructor ) ( DL_LIST * dldat );
 extern void ( *money_type_free_destructor ) ( MONEY_TYPE * mtdat );
 #endif
 extern void ( *board_free_destructor ) ( BOARD_DATA * bdat );
-extern void ( *buf_free_destructor ) ( BUF_DATA_STRUCT * bdat );
-extern void ( *hash_free_destructor ) ( HASH_ENTRY * hdat );
 
 #ifdef DEBUG_MONEY
 void money_type_free_destructor( MONEY_TYPE * mtdat );
 #endif
 
-void message_free_destructor( MESSAGE_DATA * mdat );
-void ban_free_destructor( BAN_DATA * bdat );
 void mprog_free_destructor( MPROG_DATA * mpdat );
 void mpact_free_destructor( MPROG_ACT_LIST * mpadat );
 void mark_free_destructor( MARK_DATA * mdat );
 void shield_free_destructor( MAGIC_SHIELD * msdat );
 void ruler_data_free_destructor( RULER_DATA * rdat );
-void npc_group_free_destructor( NPC_GROUP_DATA * ngrp );
-void fight_free_destructor( FIGHT_DATA *fight );
 
 extern int free_get;
 extern int free_put;

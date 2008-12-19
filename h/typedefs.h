@@ -122,7 +122,6 @@ char *crypt args( ( const char *key, const char *salt ) );
 /*
  * Structure types.
  */
-typedef struct portal_data PORTAL_DATA;
 typedef struct affect_data AFFECT_DATA;
 typedef struct room_affect_data ROOM_AFFECT_DATA;
 typedef struct area_data AREA_DATA;

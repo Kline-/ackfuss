@@ -631,7 +631,7 @@ void affect_to_room( ROOM_INDEX_DATA * room, ROOM_AFFECT_DATA * raf )
    ROOM_AFFECT_DATA *raf_new;
    char buf[MAX_STRING_LENGTH];
 
-   GET_FREE( raf_new, raffect_free );
+   raf_new = new ROOM_AFFECT_DATA;
 /* Ramias... Don't copy uninitialized fields: next, prev, is_free */
 /*
    *raf_new = *raf;
@@ -673,7 +673,7 @@ void r_affect_remove( ROOM_INDEX_DATA * room, ROOM_AFFECT_DATA * raf )
    REMOVE_BIT( room->affected_by, raf->bitvector );
 
    UNLINK( raf, room->first_room_affect, room->last_room_affect, next, prev );
-   PUT_FREE( raf, raffect_free );
+   delete raf;
    return;
 }
 
@@ -1911,7 +1911,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
          if( kill_group->leader == ch )
          {
             UNLINK( kill_group, first_npc_group, last_npc_group, next, prev );
-            PUT_FREE( kill_group, npc_group_free );
+            delete kill_group;
          }
          else
          {

@@ -394,20 +394,6 @@ void do_get( CHAR_DATA * ch, char *argument )
                         break;
                      }
                   }
-#ifdef LOTS
-                  else if( ch->in_room->first_portal != NULL )
-                  {
-                     PORTAL_DATA *portal;
-                     for( portal = ch->in_room->first_portal; portal; portal = portal->next )
-                     {
-                        if( !str_cmp( arg1, portal->keyword ) )
-                        {
-                           act( "You cannot do that.", ch, NULL, NULL, TO_CHAR );
-                           break;
-                        }
-                     }
-                  }
-#endif
                }
 
                else if( !can_see_obj( ch, obj ) )
@@ -837,43 +823,6 @@ void do_give( CHAR_DATA * ch, char *argument )
              * trigger_handler( ch, obj, TRIGGER_DROP );   
              */
             mprog_give_trigger( victim, ch, obj );
-
-#ifdef  LOTS
-/* Interesting LOTS teaser here...this is how I run my individual quest system */
-            if( ( IS_NPC( victim ) ) && ( str_cmp( victim->pIndexData->guilds, "" ) ) )
-            {
-               char questbuf[MSL];
-
-               snprintf( questbuf, "%s%s%d", ch->name, victim->pIndexData->guilds, 2 );
-               if( ( get_quest( questbuf ) != NULL ) && ( get_iquest( ch, questbuf ) != NULL ) )
-               {
-/* this code was suggested by Drylock@AR, to handle creating a hash key from a string + integer */
-                  unsigned int iHash;
-                  {
-                     char *area_key;
-                     iHash = 0;
-                     area_key = questbuf;
-                     while( *area_key )
-                        iHash = iHash * 33U + tolower( *area_key++ );
-                     iHash = iHash % MAX_KEY_HASH;
-                  }
-                  if( obj->value[8] == iHash )
-                  {
-                     resolve_quest( ch, questbuf );
-                     end_quest( get_quest( questbuf ), ch->name );
-                     save_quests(  );
-                  }
-                  else
-                  {
-                     char saybuf[MSL];
-                     snprintf( saybuf, "Well, thanks, %s, but I really didn't need %s",
-                              PERS( ch, victim ), obj->short_descr );
-                     do_say( victim, saybuf );
-                     do_drop( victim, "treasure" );
-                  }
-               }
-            }
-#endif
 
             if( ( quest || auto_quest ) && IS_NPC( victim ) && victim == quest_mob && obj == quest_object )
             {

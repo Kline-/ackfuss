@@ -2125,7 +2125,7 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
    snprintf_2(log_buf,"Adding %s vs %s to the fight queue.",ch->name,victim->name);
    monitor_chan(log_buf,MONITOR_DEBUG);
    */
-   GET_FREE(fight,fight_free);
+   fight = new FIGHT_DATA;
    fight->ch = ch;
    LINK(fight,first_fight,last_fight,next,prev);
 
@@ -5847,14 +5847,14 @@ void combat_update( void )
   {
    //monitor_chan("Removing a null fight->ch from queue.",MONITOR_DEBUG);
    UNLINK(fight,first_fight,last_fight,next,prev);
-   PUT_FREE(fight,fight_free);
+   delete fight;
    return;
   }
   if( fight->ch->fighting == NULL )
   {
    //monitor_chan("Removing a null fight->ch->fighting from queue.",MONITOR_DEBUG);
    UNLINK(fight,first_fight,last_fight,next,prev);
-   PUT_FREE(fight,fight_free);
+   delete fight;
    return;
   }
   ch = fight->ch;

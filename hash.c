@@ -52,7 +52,7 @@ void add_hash_entry( hash_table * hash_head, int key, void *entry )
    a = key % hash_head->max_hash;
    hash_table = hash_head->table;
 
-   GET_FREE( temp, hash_free );
+   temp = new HASH_ENTRY;
    temp->key = key;
    temp->reference = entry;
    temp->next = hash_table[a];
@@ -84,7 +84,7 @@ void del_hash_entry( hash_table * hash_head, int key )
          hash_table[a] = NULL;
       else
          prev_entry->next = search_entry->next;
-      PUT_FREE( search_entry, hash_free );
+      delete search_entry;
    }
 }
 
@@ -122,7 +122,7 @@ void clear_hash_table( hash_table * hash_head )
          for( entry = hash_table[a]; entry != NULL; entry = next_entry )
          {
             next_entry = entry->next;
-            PUT_FREE( entry, hash_free );
+            delete entry;
          }
          hash_table[a] = NULL;
       }
@@ -144,7 +144,7 @@ void delete_hash_table( hash_table * hash_head )
          for( entry = hash_table[a]; entry != NULL; entry = next_entry )
          {
             next_entry = entry->next;
-            PUT_FREE( entry, hash_free );
+            delete entry;
          }
          hash_table[a] = NULL;
       }
