@@ -1340,7 +1340,7 @@ void gain_update( void )
    {
       if( ch->is_free != FALSE )
          continue;
-      if( ch->position >= POS_STUNNED && !IS_SET( ch->affected_by, AFF_VAMP_HEALING ) )
+      if( ch->position >= POS_STUNNED && !IS_SET( ch->affected_by, AFF_VAMP_HEALING ) && !IS_GHOST(ch) )
       {
          if( ( ch->hit < ch->max_hit ) && ( !IS_SET( ch->in_room->affected_by, ROOM_BV_NONE ) ) )
             ch->hit += hit_gain( ch );

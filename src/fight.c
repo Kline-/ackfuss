@@ -2452,10 +2452,10 @@ void raw_kill( CHAR_DATA * victim, char *argument )
     affect_remove( victim, victim->first_affect );
    victim->affected_by = 0;
    victim->armor = 100;
-   victim->position = POS_RESTING;
-   victim->hit = UMAX( 1, victim->hit );
-   victim->mana = UMAX( 1, victim->mana );
-   victim->move = UMAX( 1, victim->move );
+   victim->position = POS_STANDING;
+   victim->hit = 1;
+   victim->mana = 1;
+   victim->move = 1;
    save_char_obj( victim );
    if( IS_NPC( victim ) && victim->act.test(ACT_INTELLIGENT ) )
    {
