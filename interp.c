@@ -1240,6 +1240,12 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
       return TRUE;
    }
 
+   if( IS_GHOST(ch) )
+   {
+    send_to_char("Your ghostly form can't seem to convery emotions...\n\r",ch);
+    return true;
+   }
+
    switch ( ch->position )
    {
       case POS_DEAD:
