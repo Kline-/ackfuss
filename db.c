@@ -3578,6 +3578,7 @@ int interpolate( int level, int value_00, int value_32 )
 void append_file( CHAR_DATA * ch, char *file, char *str )
 {
    FILE *fp;
+   char buf[MSL];
 
    if( IS_NPC( ch ) || str[0] == '\0' )
       return;
@@ -3590,7 +3591,18 @@ void append_file( CHAR_DATA * ch, char *file, char *str )
    }
    else
    {
-      fprintf( fp, "[%5d] %s: %s\n", ch->in_room ? ch->in_room->vnum : 0, ch->name, str );
+      snprintf( buf, MSL, "[%5d] %s: %s\n", ch->in_room ? ch->in_room->vnum : 0, ch->name, str );
+      fprintf(fp,"%s",buf);
+
+      buf[strlen(buf)-1] = '\0'; /* Strip newline */
+
+      if( !str_cmp(file,TYPO_FILE) )
+       monitor_chan(buf,MONITOR_TYPO);
+      else if( !str_cmp(file,IDEA_FILE) )
+       monitor_chan(buf,MONITOR_IDEA);
+      else if( !str_cmp(file,BUG_FILE) )
+       monitor_chan(buf,MONITOR_BUG);
+
       file_close( fp );
    }
 
@@ -3739,6 +3751,7 @@ void log_string( const char *str )
    strtime = ctime( &current_time );
    strtime[strlen( strtime ) - 1] = '\0';
    fprintf( stderr, "%s :: %s\n", strtime, str );
+   monitor_chan(str,MONITOR_LOG);
    return;
 }
 

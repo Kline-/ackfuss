@@ -747,6 +747,10 @@
 #define MONITOR_IMC          17
 #define MONITOR_SYSTEM       18
 #define MONITOR_HELPS        19
+#define MONITOR_LOG          20
+#define MONITOR_TYPO         21
+#define MONITOR_IDEA         22
+#define MONITOR_BUG          23
 
 /*
  * Hunt flags for mobs
