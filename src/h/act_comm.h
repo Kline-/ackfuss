@@ -50,7 +50,6 @@ void do_pose P_((CHAR_DATA *ch, char *argument));
 void do_bug P_((CHAR_DATA *ch, char *argument));
 void do_idea P_((CHAR_DATA *ch, char *argument));
 void do_typo P_((CHAR_DATA *ch, char *argument));
-void do_rent P_((CHAR_DATA *ch, char *argument));
 void do_qui P_((CHAR_DATA *ch, char *argument));
 void do_quit P_((CHAR_DATA *ch, char *argument));
 void do_save P_((CHAR_DATA *ch, char *argument));

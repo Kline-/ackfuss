@@ -588,8 +588,6 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_ACTION, C_SHOW_ALWAYS,false},
    {"home", do_clan_recall, POS_STANDING, CLAN_ONLY, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_ALWAYS,false},
-   {"rent", do_rent, POS_DEAD, 0, LOG_NORMAL,
-    C_TYPE_MISC, C_SHOW_NEVER,false},
    {"save", do_save, POS_DEAD, 0, LOG_NORMAL,
     C_TYPE_MISC, C_SHOW_ALWAYS,true},
    {"scan", do_scan, POS_STANDING, 0, LOG_NORMAL,

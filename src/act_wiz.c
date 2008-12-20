@@ -5051,6 +5051,22 @@ struct monitor_type monitor_table[] = {
     "[ HELP         ] You are told of all missing helpfiles.\n\r",
     "[ help         ] Not told about missing helpfiles.\n\r"},
 
+   {"log", MONITOR_LOG, 85, "@@W", "LOG",
+    "[ LOG          ] You are told of all log entries.\n\r",
+    "[ log          ] Not told about log entries.\n\r"},
+
+   {"typo", MONITOR_TYPO, 81, "@@W", "TYPO",
+    "[ TYPO         ] You are told of all submitted typos.\n\r",
+    "[ typo         ] Not told about submitted typos.\n\r"},
+
+   {"idea", MONITOR_IDEA, 81, "@@W", "IDEA",
+    "[ IDEA         ] You are told of all submitted ideas.\n\r",
+    "[ idea         ] Not told about submitted ideas.\n\r"},
+
+   {"bug", MONITOR_BUG, 81, "@@W", "BUG",
+    "[ BUG          ] You are told of all submitted bugs.\n\r",
+    "[ bug          ] Not told about submitted bugs.\n\r"},
+
    {NULL, 0, 0, NULL, NULL}
 };
 
