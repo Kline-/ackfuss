@@ -36,8 +36,8 @@
 /*
  *  Your mud info here :) Zen
  */
-#define mudnamecolor  "@@lYour Mud Name@@N"
-#define mudnamenocolor  "Your Mud name"
+#define mudnamecolor  "@@lAckFUSS@@N"
+#define mudnamenocolor  "AckFUSS"
 #define sacgodname  "Kline"
 #define goodgodname  "Good"
 #define neutralgodname  "Neutral"
@@ -247,7 +247,7 @@
 #define ROOM_VNUM_BODIES           3    /* for morphed players */
 #define ROOM_VNUM_CHAT             301
 #define ROOM_VNUM_HALLS            302
-#define ROOM_VNUM_TEMPLE           3001
+#define ROOM_VNUM_TEMPLE           1001
 #define ROOM_VNUM_ALTAR            ROOM_VNUM_HALLS
 #define ROOM_VNUM_SCHOOL           3700
 #define ROOM_VNUM_DONATION         3206

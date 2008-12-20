@@ -1,0 +1,24 @@
+#AREA
+Revision  22
+CanRead   Kline~
+CanWrite  Kline~
+Flags     5 EOL
+Keyword   ~
+LevLabel  @@W[ @@rALL  @@W]@@N~
+LevRange  1 120
+Name      New Area~
+Number    5
+Owner     Kline~
+ResetMsg  The area resets. How mystical...~
+ResetRate 15
+VnumRange 1001 1050
+End
+
+#ROOM
+Vnum  1001
+Desc  ~
+Flags 3 EOL
+Name  @@yA@@bbove the @@yS@@bquare@@N~
+Sect  8
+End
+#$

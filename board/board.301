@@ -15,6 +15,12 @@ Welcome to AckFUSS and the Halls of the Immortals!
 I'm also reachable via the included IMC2 network as Kline@AF -- that is the core dev
 MUD for AckFUSS. Give me a shout or feel free to drop by!
  
--Kline
+The city of Calor starts what I would recommend for "usable" vnums. I'm trying to keep
+all vnums <= 1000 for system/imm use and expansion. So if you build a zone in that range,
+expect it to possibly conflict with future AckFUSS core areas. Feel free to create a large
+filler area to block that range if you need to make it easier to use makearea in the time
+being though!
+ 
+--Kline
 ~
 S
