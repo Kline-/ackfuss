@@ -249,16 +249,15 @@
 #define ROOM_VNUM_HALLS            302
 #define ROOM_VNUM_ETHEREAL_PLANE   401
 #define ROOM_VNUM_TEMPLE           1001
-#define ROOM_VNUM_ALTAR            ROOM_VNUM_HALLS
-#define ROOM_VNUM_SCHOOL           3700
-#define ROOM_VNUM_DONATION         3206
+#define ROOM_VNUM_ALTAR            1002
+#define ROOM_VNUM_ARMOR_DONATE     1012
+#define ROOM_VNUM_WEAPON_DONATE    1013
+#define ROOM_VNUM_MISC_DONATE      1014
+#define ROOM_VNUM_SCHOOL           1051
 #define ROOM_VNUM_BUILDER	   1019  /* Bulder-flagged players only */
 #define ROOM_VNUM_CLAN		   1022  /* for leaders only */
-#define ROOM_VNUM_DM_RECALL        ROOM_VNUM_TEMPLE
-#define ROOM_VNUM_INT_HEAL	   3871
-#define ROOM_VNUM_ARMOR_DONATE     3018
-#define ROOM_VNUM_WEAPON_DONATE    3019
-#define ROOM_VNUM_MISC_DONATE      3017
+#define ROOM_VNUM_DM_RECALL        ROOM_VNUM_ALTAR
+#define ROOM_VNUM_INT_HEAL	   ROOM_VNUM_ALTAR
 
 /*
  * Well known mob virtual numbers.
