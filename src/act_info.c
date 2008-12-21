@@ -1070,7 +1070,8 @@ void do_look( CHAR_DATA * ch, char *argument )
 
       if( is_name( arg1, obj->name ) )
       {
-         send_to_char( obj->long_descr, ch );
+         snprintf( pdesc, MSL, "%s\n\r", obj->long_descr );
+         send_to_char( pdesc, ch );
          act( "$L$n closely examines $p.", ch, obj, NULL, TO_ROOM );
          return;
       }

@@ -1515,7 +1515,6 @@ void do_recall( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
    ROOM_INDEX_DATA *location;
-   int recall_index;
    act( "$n makes the Holy Sign for transportation!", ch, 0, 0, TO_ROOM );
    buf[0] = '\0';
 
@@ -1539,8 +1538,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
 
    if( deathmatch )
    {
-      recall_index = number_range( ROOM_VNUM_DM_RECALL, ROOM_VNUM_DM_RECALL + 35 );
-      location = get_room_index( recall_index );
+      location = get_room_index( ROOM_VNUM_DM_RECALL );
 
       if( ch->hit > 250 )
       {
@@ -1554,16 +1552,6 @@ void do_recall( CHAR_DATA * ch, char *argument )
       }
 
    }
-
-
-   /*
-    * Only recall to midgaard now... 
-    */
-   /*
-    * else
-    * location = get_room_index( race_table[ch->race].recall );
-    */
-
 
    if( location == NULL )
    {

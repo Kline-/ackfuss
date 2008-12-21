@@ -2398,7 +2398,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       send_to_char( "or:     aobj [<slot>]\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "Field being one of:\n\r", ch );
-      send_to_char( "  value0 value1 value2 value3 speed\n\r", ch );
+      send_to_char( "  value0 value1 value2 value3 speed magic\n\r", ch );
       send_to_char( "  level extra wear weight aff type durability\n\r", ch );
       send_to_char( "\n\r", ch );
       send_to_char( "String being one of:\n\r", ch );
@@ -2451,6 +2451,13 @@ void build_setobject( CHAR_DATA * ch, char *argument )
     }
 
     mult = (float)pObj->level / 120.0000;
+
+    if( IS_OBJ_STAT(pObj,ITEM_EXTRA_RARE) )
+    {
+     mult += 0.15; /* Rares are 15% better by default */
+     send_to_char("Applying 15% bonus for rare flag.\n\r",ch);
+    }
+
     ac = sysdata.build_obj_ac * mult;
     dr = sysdata.build_obj_dr * mult;
     hp = sysdata.build_obj_hp * mult;
@@ -2550,6 +2557,8 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          send_to_char( "item level is 1 to 120.\n\r", ch );
          return;
       }
+      pObj->max_durability = value * 5;
+      pObj->durability = pObj->max_durability;
       pObj->level = value;
       return;
    }

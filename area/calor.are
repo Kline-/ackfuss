@@ -21,6 +21,1368 @@ Flags 3 EOL
 Name  @@yD@@bais @@yA@@bbove the @@yS@@bquare@@N~
 Sect  8
 End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1002
+End
+
+#ROOM
+Vnum  1002
+Desc  @@yT@@bhe altar of @@yU@@bn@@y'@@bKresh serves as the focal point of @@yC@@balor; positioned centrally in the market square. Small tents surround the altar in the open air market with various vendors hawking their wares. Above the altar floats the dais, while below lies the ban@@yk.@@N~
+Flags 2 EOL
+Name  @@yT@@bhe @@yA@@bltar of @@yU@@bn@@y'@@bKresh@@N~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1004
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1005
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1006
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1003
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1001
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1011
+End
+
+#ROOM
+Vnum  1003
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1007
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1002
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1009
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1015
+End
+
+#ROOM
+Vnum  1004
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1023
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1008
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1002
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1007
+End
+
+#ROOM
+Vnum  1005
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1008
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1030
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1010
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1002
+End
+
+#ROOM
+Vnum  1006
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1002
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1010
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1037
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1009
+End
+
+#ROOM
+Vnum  1007
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1004
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1003
+End
+
+#ROOM
+Vnum  1008
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1005
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1004
+End
+
+#ROOM
+Vnum  1009
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1003
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1006
+End
+
+#ROOM
+Vnum  1010
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1005
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1006
+End
+
+#ROOM
+Vnum  1011
+Desc  @@yT@@bhe bank of @@yC@@balor resides below the altar of @@yU@@bn@@y'@@bKresh. Here is where the citizens of @@yC@@balor come to store their valuables and carry out banking transactions. The bank offers other services, too, though. Small letters may also be sent from this branch, and the city's donation areas for the needy are also located her@@ye.@@N~
+Flags 4 EOL
+Name  @@yB@@bank of @@yC@@balor@@N~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1013
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1014
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1012
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1002
+End
+
+#ROOM
+Vnum  1012
+Desc  @@yT@@bhe armor donation room of @@yC@@balor is lined with racks of armor along the walls and more pieces scattered haphazardly throughout the room. Here is where items from the wealthier citizens are held for re-distribution to those in nee@@yd.@@N~
+Flags 4 EOL
+Name  @@yA@@brmor  @@yD@@bonation@@N~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1011
+End
+
+#ROOM
+Vnum  1013
+Desc  @@yT@@bhe weapon donation room of @@yC@@balor is lined with racks of weapons along the walls and more pieces scattered haphazardly throughout the room. Here is where items from the wealthier citizens are held for re-distribution to those in nee@@yd.@@N~
+Flags 4 EOL
+Name  @@yW@@beapon  @@yD@@bonation@@N~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1011
+End
+
+#ROOM
+Vnum  1014
+Desc  @@yT@@bhe miscellaneous donation room of @@yC@@balor is lined with racks of odds and ends along the walls and more pieces scattered haphazardly throughout the room. Here is where items from the wealthier citizens are held for re-distribution to those in nee@@yd.@@N~
+Flags 4 EOL
+Name  @@yM@@biscellaneous  @@yD@@bonation@@N~
+Sect  11
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1011
+End
+
+#ROOM
+Vnum  1015
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1003
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1016
+End
+
+#ROOM
+Vnum  1016
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1017
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1015
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1042
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1047
+End
+
+#ROOM
+Vnum  1017
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1018
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1016
+End
+
+#ROOM
+Vnum  1018
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1019
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1017
+End
+
+#ROOM
+Vnum  1019
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1020
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1018
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1043
+End
+
+#ROOM
+Vnum  1020
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1021
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1019
+End
+
+#ROOM
+Vnum  1021
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1022
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1020
+End
+
+#ROOM
+Vnum  1022
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1024
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1023
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1021
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1048
+End
+
+#ROOM
+Vnum  1023
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1022
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1004
+End
+
+#ROOM
+Vnum  1024
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1025
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1022
+End
+
+#ROOM
+Vnum  1025
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1026
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1024
+End
+
+#ROOM
+Vnum  1026
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1027
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1025
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1044
+End
+
+#ROOM
+Vnum  1027
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1026
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1028
+End
+
+#ROOM
+Vnum  1028
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1027
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1029
+End
+
+#ROOM
+Vnum  1029
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1028
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1031
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1030
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1049
+End
+
+#ROOM
+Vnum  1030
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1029
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1005
+End
+
+#ROOM
+Vnum  1031
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1029
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1032
+End
+
+#ROOM
+Vnum  1032
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1031
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1033
+End
+
+#ROOM
+Vnum  1033
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1032
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1034
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1045
+End
+
+#ROOM
+Vnum  1034
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1033
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1035
+End
+
+#ROOM
+Vnum  1035
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1034
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1036
+End
+
+#ROOM
+Vnum  1036
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1037
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1035
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1038
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1050
+End
+
+#ROOM
+Vnum  1037
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1006
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1036
+End
+
+#ROOM
+Vnum  1038
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1036
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1039
+End
+
+#ROOM
+Vnum  1039
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1038
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1040
+End
+
+#ROOM
+Vnum  1040
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1041
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1039
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1046
+End
+
+#ROOM
+Vnum  1041
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1042
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1040
+End
+
+#ROOM
+Vnum  1042
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  1
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1016
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1041
+End
+
+#ROOM
+Vnum  1043
+Desc  ~
+Flags EOL
+Name  northwest tower~
+Sect  1
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1019
+End
+
+#ROOM
+Vnum  1044
+Desc  ~
+Flags EOL
+Name  northeast tower~
+Sect  1
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1026
+End
+
+#ROOM
+Vnum  1045
+Desc  ~
+Flags EOL
+Name  southeast tower~
+Sect  1
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1033
+End
+
+#ROOM
+Vnum  1046
+Desc  ~
+Flags EOL
+Name  southwest tower~
+Sect  1
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1040
+End
+
+#ROOM
+Vnum  1047
+Desc  ~
+Flags EOL
+Name  west tower~
+Sect  1
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1016
+End
+
+#ROOM
+Vnum  1048
+Desc  ~
+Flags EOL
+Name  north tower~
+Sect  1
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1022
+End
+
+#ROOM
+Vnum  1049
+Desc  ~
+Flags EOL
+Name  east tower~
+Sect  1
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1029
+End
+
+#ROOM
+Vnum  1050
+Desc  ~
+Flags EOL
+Name  south tower~
+Sect  1
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1036
+End
+
+#MOBILE
+Vnum      1001
+AcMod     -2500
+Act       2 4 5 17 19 22 26 29 30 EOL
+Affected  1600252
+Alignment 0
+Cast      0
+Clan      0
+Class     3
+Def       64
+Desc      Loki is a Frost Wyrm, a rare creature of old. His enormous body casts a shadow across the entire altar. He sits perched high upon the monument, nearly on the dais above, keeping vigilant watch over Calor.~
+DrMod     1000
+HrMod     1000
+Level     120
+LongDesc  @@cL@@aoki @@Nthe @@cF@@arost @@cW@@ayrm@@N is here perched atop the monument.~
+PlrName   guardian altar loki~
+Position  0
+Race      8
+RaceMods  74469
+Resist    32
+Sex       1
+ShortDesc @@cL@@aoki@@N~
+Skills    982670
+SMagic    32
+SpecFun   (null)
+Suscept   1
+WMagic    1
+End
+
+#MOBILE
+Vnum      1002
+AcMod     0
+Act       2 16 20 29 30 EOL
+Affected  40
+Alignment 0
+Cast      0
+Clan      0
+Class     2
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  @@bThe @@yB@@bank @@yt@@beller stands ready to assist you with your transactions.@@N~
+PlrName   banker bank clerk teller~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       2
+ShortDesc the bank teller~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
 
 #OBJECT
 Vnum       1001
@@ -38,8 +1400,78 @@ Values     1051 1 1 0 0 0 0 0 0 0
 WearFlags  EOL
 Weight     1
 End
+
+#OBJECT
+Vnum       1002
+Durability 44
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@bThe monument of @@yU@@bn@@y'@@bKresh keeps eternal watch over the altar.@@N~
+Name       monument un'kresh statue giant~
+ObjFun     (null)
+ShortDesc  @@bthe monument of @@yU@@bn@@y'@@bKresh@@N~
+Speed      3.10
+Type       12
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  EOL
+Weight     1
+End
+#OEXTRA
+Desc       @@yT@@bhe monument is molded in the likeness of @@yU@@bn@@y'@@bKresh -- a large Titan. It was @@yU@@bn@@y'@@bKresh who laid the first bricks in the city of @@yC@@balor, and thus a monument was erected in his hono@@yr.@@N~
+Keyword    monument~
+End
+#OEXTRA
+Desc       @@yT@@bhe monument is molded in the likeness of @@yU@@bn@@y'@@bKresh -- a large Titan. It was @@yU@@bn@@y'@@bKresh who laid the first bricks in the city of @@yC@@balor, and thus a monument was erected in his hono@@yr.@@N~
+Keyword    statue~
+End
+#OEXTRA
+Desc       @@yT@@bhe monument is molded in the likeness of @@yU@@bn@@y'@@bKresh -- a large Titan. It was @@yU@@bn@@y'@@bKresh who laid the first bricks in the city of @@yC@@balor, and thus a monument was erected in his hono@@yr.@@N~
+Keyword    giant~
+End
+#OEXTRA
+Desc       @@yT@@bhe monument is molded in the likeness of @@yU@@bn@@y'@@bKresh -- a large Titan. It was @@yU@@bn@@y'@@bKresh who laid the first bricks in the city of @@yC@@balor, and thus a monument was erected in his hono@@yr.@@N~
+Keyword    un'kresh~
+End
+
+#OBJECT
+Vnum       1003
+Durability 32
+ExtraFlags 1 7 21 28 EOL
+ItemApply  1
+Level      10
+LongDesc   @@dA weapon chain has been discarded here.@@N~
+Name       iron weapon chain~
+ObjFun     (null)
+ShortDesc  @@dIron Weapon Chain@@N~
+Speed      1.31
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  13 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -18
+End
+#OAFFECT
+Location   19
+Modifier   6
+End
+#OAFFECT
+Location   18
+Modifier   5
+End
 #RESETS
 O 1001 1 1001 
+
+O 1002 1 1002 
+
+M 1001 1 1002 
+
+M 1002 1 1011 
+
+O 1003 1 1012 
 
 S
 #$
