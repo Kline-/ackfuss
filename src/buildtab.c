@@ -129,6 +129,17 @@ LOOKUP_TYPE tab_value_meanings[] = {
    {"Unused", 58, 0},
    {"Unused", 59, 0},
 
+   {"Dest. Room vnum", 70, 0},
+   {"Can Look In (1=yes 0=no)", 71, 0},
+   {"Can Enter (1=yes 0=no)", 72, 0},
+   {"Unused", 73, 0},
+   {"Unused", 74, 0},
+   {"Unused", 75, 0},
+   {"Replacer vnum", 76, 0},
+   {"Forced extract timer", 77, 0},
+   {"Unused", 78, 0},
+   {"Unused", 79, 0},
+
    {"Unused", 80, 0},
    {"Unused", 81, 0},
    {"Unused", 82, 0},

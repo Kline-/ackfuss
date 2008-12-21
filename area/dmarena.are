@@ -4,7 +4,7 @@ CanRead   Kline~
 CanWrite  Kline~
 Flags     2 4 EOL
 Keyword   ~
-LevLabel  @@R[@@e  PK  @@R]@@N~
+LevLabel  @@R[@@e PVP@@R ]@@N~
 LevRange  1 120
 Name      Deathmatch Arena~
 Number    3

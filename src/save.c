@@ -742,7 +742,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->condition[COND_THIRST] = 48;
       ch->pcdata->pagelen = 20;
       ch->pcdata->condition[COND_FULL] = 48;
-      ch->pcdata->recall_vnum = 3001;
+      ch->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
       ch->pcdata->mana_from_gain = -1;
       ch->pcdata->hp_from_gain = -1;
       ch->pcdata->move_from_gain = -1;

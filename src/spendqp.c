@@ -486,9 +486,9 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
       {
          ROOM_INDEX_DATA *location;
          if( ( location = get_room_index( ch->pcdata->recall_vnum ) ) == NULL )
-            location = get_room_index( 3001 );
-         act( "@@mZenithar @@Wappears before you, and takes you to your Happy Place!", ch, NULL, NULL, TO_CHAR );
-         act( "@@mZenithar @@Wappears before you, and takes $n to $s Happy Place!", ch, NULL, NULL, TO_ROOM );
+            location = get_room_index( ROOM_VNUM_TEMPLE );
+         act( "@@mKline @@Wappears before you, and takes you to your Happy Place!", ch, NULL, NULL, TO_CHAR );
+         act( "@@mKline @@Wappears before you, and takes $n to $s Happy Place!", ch, NULL, NULL, TO_ROOM );
          char_from_room( ch );
          char_to_room( ch, location );
          do_look( ch, "" );

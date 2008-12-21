@@ -4,7 +4,7 @@ CanRead   Kline~
 CanWrite  Kline~
 Flags     2 4 EOL
 Keyword   ~
-LevLabel  @@R[@@eSYSTEM@@R]@@N~
+LevLabel  @@R[@@e SYS@@R ]@@N~
 LevRange  1 120
 Name      Quest Items~
 Number    0

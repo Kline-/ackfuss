@@ -4688,9 +4688,9 @@ bool spell_travel( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
       return FALSE;
    }
 
-   if( ( room = get_room_index( 3001 ) ) == NULL )
+   if( ( room = get_room_index( ROOM_VNUM_TEMPLE ) ) == NULL )
    {
-      send_to_char( "It seems the Midgaard Temple has vanished!\n\r", ch );
+      send_to_char( "It seems the Temple has vanished!\n\r", ch );
       return FALSE;
    }
 

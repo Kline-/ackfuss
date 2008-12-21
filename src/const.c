@@ -222,7 +222,7 @@ const struct class_type remort_table[MAX_CLASS] = {
 
 const struct race_type race_table[MAX_RACE] = {
    {
-    "Hmn", "Human", 3001, 0,
+    "Hmn", "Human", ROOM_VNUM_TEMPLE, 0,
     19, 19, 19, 19, 19,
     RACE_MOD_NONE,
     /*
@@ -243,7 +243,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Hlf", "Halfling", 3001, 0,
+    "Hlf", "Halfling", ROOM_VNUM_TEMPLE, 0,
     14, 17, 21, 23, 20,
     RACE_MOD_SMALL | RACE_MOD_WOODLAND | RACE_MOD_RESIST_SPELL,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -261,7 +261,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Dwf", "Dwarf", 3001, 0,
+    "Dwf", "Dwarf", ROOM_VNUM_TEMPLE, 0,
     23, 13, 23, 13, 23,
     RACE_MOD_RESIST_SPELL | RACE_MOD_SMALL | RACE_MOD_IMMUNE_POISON,
 
@@ -352,7 +352,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Lam", "Lamia", 3001, 0,
+    "Lam", "Lamia", ROOM_VNUM_TEMPLE, 0,
     22, 17, 16, 23, 17,
     RACE_MOD_LARGE | RACE_MOD_IMMUNE_POISON | RACE_MOD_TAIL,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -370,7 +370,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Drc", "Dracon", 3001, 0,
+    "Drc", "Dracon", ROOM_VNUM_TEMPLE, 0,
     23, 23, 15, 11, 23,
     RACE_MOD_STRONG_MAGIC | RACE_MOD_TOUGH_SKIN | RACE_MOD_SLOW_HEAL | RACE_MOD_LARGE | RACE_MOD_TAIL |
     RACE_MOD_RESIST_SPELL,
@@ -389,7 +389,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Cen", "Centaur", 3001, 0,
+    "Cen", "Centaur", ROOM_VNUM_TEMPLE, 0,
     21, 17, 21, 14, 22,
     RACE_MOD_LARGE | RACE_MOD_TOUGH_SKIN | RACE_MOD_WOODLAND,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -407,7 +407,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Ttn", "Titan", 3001, 0,
+    "Ttn", "Titan", ROOM_VNUM_TEMPLE, 0,
     22, 19, 13, 19, 22,
     RACE_MOD_NO_MAGIC | RACE_MOD_HUGE | RACE_MOD_RESIST_SPELL,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -425,7 +425,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Sde", "Sidhe", 3001, 0,
+    "Sde", "Sidhe", ROOM_VNUM_TEMPLE, 0,
     16, 22, 18, 23, 16,
     RACE_MOD_STRONG_MAGIC | RACE_MOD_TINY | RACE_MOD_RESIST_SPELL,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -443,7 +443,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Min", "Minotaur", 3001, 0,
+    "Min", "Minotaur", ROOM_VNUM_TEMPLE, 0,
     23, 16, 15, 18, 23,
     RACE_MOD_LARGE | RACE_MOD_TOUGH_SKIN | RACE_MOD_DARKNESS,
     {TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -461,7 +461,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Trl", "Troll", 3001, 0,
+    "Trl", "Troll", ROOM_VNUM_TEMPLE, 0,
     22, 15, 15, 20, 23,
     RACE_MOD_FAST_HEAL | RACE_MOD_LARGE | RACE_MOD_DARKNESS | RACE_MOD_STONE_SKIN,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -479,7 +479,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Und", "Undead", 3001, 0,
+    "Und", "Undead", ROOM_VNUM_TEMPLE, 0,
     23, 15, 15, 19, 23,
     RACE_MOD_DARKNESS | RACE_MOD_IMMUNE_POISON,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -497,7 +497,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Gar", "Gargoyle", 3001, 0,
+    "Gar", "Gargoyle", ROOM_VNUM_TEMPLE, 0,
     22, 22, 16, 16, 19,
     RACE_MOD_IRON_SKIN | RACE_MOD_SLOW_HEAL | RACE_MOD_LARGE,
     {TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, TRUE, TRUE,
@@ -515,7 +515,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Dmn", "Demon", 3001, 0,
+    "Dmn", "Demon", ROOM_VNUM_TEMPLE, 0,
     20, 17, 16, 20, 22,
     RACE_MOD_FAST_HEAL | RACE_MOD_LARGE | RACE_MOD_TAIL | RACE_MOD_TOUGH_SKIN,
     {TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE,
@@ -533,7 +533,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Ele", "Elemental", 3001, 0,
+    "Ele", "Elemental", ROOM_VNUM_TEMPLE, 0,
     12, 23, 23, 23, 14,
     RACE_MOD_SLOW_HEAL | RACE_MOD_STRONG_MAGIC | RACE_MOD_RESIST_SPELL | RACE_MOD_HUGE,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -551,7 +551,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Avn", "Avian", 3001, 0,
+    "Avn", "Avian", ROOM_VNUM_TEMPLE, 0,
     22, 10, 23, 23, 17,
     RACE_MOD_NO_MAGIC | RACE_MOD_IMMUNE_POISON | RACE_MOD_WOODLAND,
     {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
@@ -569,7 +569,7 @@ const struct race_type race_table[MAX_RACE] = {
    },
 
    {
-    "Bst", "Beast", 3001, 0,
+    "Bst", "Beast", ROOM_VNUM_TEMPLE, 0,
     23, 10, 16, 23, 23,
     RACE_MOD_WOODLAND | RACE_MOD_TAIL,
     {FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,

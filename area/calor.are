@@ -4,21 +4,42 @@ CanRead   Kline~
 CanWrite  Kline~
 Flags     5 EOL
 Keyword   ~
-LevLabel  @@W[ @@rALL  @@W]@@N~
+LevLabel  @@W[@@r ALL@@W ]@@N~
 LevRange  1 120
-Name      New Area~
+Name      @@yC@@balor@@N~
 Number    5
 Owner     Kline~
-ResetMsg  The area resets. How mystical...~
+ResetMsg  off~
 ResetRate 15
 VnumRange 1001 1050
 End
 
 #ROOM
 Vnum  1001
-Desc  ~
+Desc  @@yT@@bhe dais is the focal point of @@yC@@balor. It floats above the center of the city, directly above the merchant square. It offers an impressive vantage point and there is a constant bustle of activity with adventurers and townsfolk moving through. A single portal here is providing transport for novice adventurers to the training ground@@ys.@@N~
 Flags 3 EOL
-Name  @@yA@@bbove the @@yS@@bquare@@N~
+Name  @@yD@@bais @@yA@@bbove the @@yS@@bquare@@N~
 Sect  8
 End
+
+#OBJECT
+Vnum       1001
+Durability 15
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@p(@@mPortal@@p) @@bThe @@Gtr@@rai@@Gn@@ri@@Gng gr@@rou@@Gnds@@b can be seen through this portal.@@N~
+Name       newbie school portal~
+ObjFun     (null)
+ShortDesc  the newbie school portal~
+Speed      2.20
+Type       7
+Values     1051 1 1 0 0 0 0 0 0 0 
+WearFlags  EOL
+Weight     1
+End
+#RESETS
+O 1001 1 1001 
+
+S
 #$

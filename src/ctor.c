@@ -72,7 +72,7 @@ area_data::area_data()
  modified = false;
  min_level = 1;
  min_vnum = 0;
- name = str_dup("New Area");;
+ name = str_dup("New Area");
  next = NULL;
  nplayer = 0;
  owner = &str_empty[0];

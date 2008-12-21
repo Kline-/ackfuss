@@ -4,7 +4,7 @@ CanRead   Kline~
 CanWrite  Kline~
 Flags     2 4 EOL
 Keyword   none~
-LevLabel  @@R[@@eSYSTEM@@R]@@N~
+LevLabel  @@R[@@e SYS@@R ]@@N~
 LevRange  1 120
 Name      Limbo~
 Number    1

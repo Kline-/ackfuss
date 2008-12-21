@@ -4,7 +4,7 @@ CanRead   Kline~
 CanWrite  Kline~
 Flags     2 4 EOL
 Keyword   ~
-LevLabel  @@R[@@eIMMORT@@R]@@N~
+LevLabel  @@R[@@e IMM@@R ]@@N~
 LevRange  1 120
 Name      Halls of the Immortals~
 Number    4
