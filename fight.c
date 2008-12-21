@@ -1244,7 +1244,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                victim->pcdata->super->energy_max = 0;
                victim->pcdata->super->generation = -1;
                victim->pcdata->super->bloodline = 0;
-               victim->pcdata->recall_vnum = 3001;
+               victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
 
                for( sn = 0; sn <= MAX_SKILL; sn++ )
                   if( ( skill_table[sn].flag2 == WOLF ) && ( victim->pcdata->learned[sn] > 0 ) )
@@ -1460,15 +1460,15 @@ struct hunt_mobs_tp
 hunt_mobs[] =
 {
    {
-   3062, 3001, 0, "Bug"},
+   3062, ROOM_VNUM_TEMPLE, 0, "Bug"},
    {
-   3561, 3001, 40, "Shadow Dragon"},
+   3561, ROOM_VNUM_TEMPLE, 40, "Shadow Dragon"},
    {
-   18302, 3001, 80, "Bounty Hunter"},
+   18302, ROOM_VNUM_TEMPLE, 80, "Bounty Hunter"},
    {
-   18301, 3001, 100, "The Avenger"},
+   18301, ROOM_VNUM_TEMPLE, 100, "The Avenger"},
    {
-   18306, 3001, 240, "Blayze"},
+   18306, ROOM_VNUM_TEMPLE, 240, "Blayze"},
    {
    -1, -1, -1, " "}
 };
@@ -5346,7 +5346,7 @@ void do_stake( CHAR_DATA * ch, char *argument )
       victim->pcdata->super->energy_max = 0;
       victim->pcdata->super->generation = -1;
       victim->pcdata->super->bloodline = 0;
-      victim->pcdata->recall_vnum = 3001;
+      victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
 
 /* remove vamp skills from dead vamp  */
 

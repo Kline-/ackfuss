@@ -259,7 +259,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
          do_howl( ch, buf );
          victim->pcdata->super->bloodline = 0;
          victim->pcdata->super->generation = 9;
-         victim->pcdata->recall_vnum = 3001;
+         victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
          victim->pcdata->super->level = 1;
          for( sn = 0; sn <= MAX_SKILL; sn++ )
             if( ( skill_table[sn].flag2 == WOLF ) && ( victim->pcdata->learned[sn] > 0 ) )

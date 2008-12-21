@@ -2934,7 +2934,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          }
       }
 
-      if( IS_VAMP( ch ) && !IS_NPC( ch ) && ( ch->pcdata->recall_vnum == 3001 ) )
+      if( IS_VAMP( ch ) && !IS_NPC( ch ) && ( ch->pcdata->recall_vnum == ROOM_VNUM_TEMPLE ) )
          ch->pcdata->recall_vnum = 9001;
 
       if( ch->pcdata->hp_from_gain < 0 )

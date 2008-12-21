@@ -351,24 +351,6 @@ bool ready_heal_room( CHAR_DATA * ch )
       }
    }
 
-   /*
-    * don't cast seal room in midgaard 
-    */
-
-// ZEN FIX this to check for bad room spells allowed in area
-
-//   if (  ( ch->in_room->vnum > ROOM_VNUM_MID_TOP
-//      ||   ch->in_room->vnum < ROOM_VNUM_MID_BOTTOM )   
-//      && ( !IS_SET( ch->in_room->affected_by, ROOM_BV_ENCAPS ) )  )
-//   {
-//      if ( ch->mana >= mana_cost( ch, skill_lookup ( "seal room" ) )  )
-//      {
-//        ready = FALSE;
-//        do_cast ( ch, "'seal room'" );
-//        return ready;
-//      }
-//   }
-
    return ready;
 }
 
