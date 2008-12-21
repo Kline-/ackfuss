@@ -2784,8 +2784,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
          break;
 
       case ITEM_WEAPON:
-         obj->value[1] = number_fuzzy( number_fuzzy( 1 * level / 8 + 3 ) );
-         obj->value[2] = number_fuzzy( number_fuzzy( 3 * level / 8 + 4 ) );
+         obj->value[1] = number_fuzzy( obj->value[1] );
+         obj->value[2] = number_fuzzy( obj->value[2] );
          break;
 
       case ITEM_ARMOR:
