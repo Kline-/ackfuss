@@ -7,3 +7,8 @@ update and move crusade questions to own func
 save gsns and affects as strings so they can renumber
 char_data to npc_data/pc_data
 remove room_vnum/builder/cboss
+cloth/leather/mail/plate armor
+2h weapons
+weapon skill types (class based)
+Abel [><*><]: 'Just add the wear slot to the equipment screen, do_wear/remove/dualwield checks and whatnot'.
+fix builder clone

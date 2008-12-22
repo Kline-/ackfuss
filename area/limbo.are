@@ -28,7 +28,7 @@ End
 
 #ROOM
 Vnum  2
-Desc  Unfortunately you have been transferred to jail for breaking one of our rules.  We are very laid back here but certain things must be adhered to. As you look around this cold, damp, bleak looking cell take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful realm.~
+Desc  Unfortunately you have been transferred to jail for breaking one of our rules. We are very laid back here but certain things must be adhered to. As you look around this cold, damp, bleak looking cell take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful realm.~
 Flags 3 4 5 9 11 14 15 17 18 19 EOL
 Name  @@dJail@@N~
 Sect  11
@@ -81,7 +81,7 @@ Cast      1024
 Clan      0
 Class     2
 Def       0
-Desc      The Dark Stalker is a product of the Dark Powers.  It's only purpose in life is to search out it's victim, and try and kill it. It looks dark, powerful, and ready to kill.~
+Desc      The Dark Stalker is a product of the Dark Powers. It's only purpose in life is to search out it's victim, and try and kill it. It looks dark, powerful, and ready to kill.~
 DrMod     0
 HrMod     0
 Level     80

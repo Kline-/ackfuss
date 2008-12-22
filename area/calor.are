@@ -88,9 +88,9 @@ End
 
 #ROOM
 Vnum  1003
-Desc  ~
+Desc  @@yT@@bhe market of @@yC@@balor is open air and surrounds the altar in the center of the city. Various vendors hawk their wares from carts and small tents along the street. A gentle breeze blows throughout the market as citizens bustle about. Further west the outer walls of the city can be see@@yn.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yM@@barket @@yS@@bquare@@N~
 Sect  1
 End
 #DOOR
@@ -128,9 +128,9 @@ End
 
 #ROOM
 Vnum  1004
-Desc  ~
+Desc  @@yT@@bhe market of @@yC@@balor is open air and surrounds the altar in the center of the city. Various vendors hawk their wares from carts and small tents along the street. A gentle breeze blows throughout the market as citizens bustle about. Further north the outer walls of the city can be see@@yn.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yM@@barket @@yS@@bquare@@N~
 Sect  1
 End
 #DOOR
@@ -168,9 +168,9 @@ End
 
 #ROOM
 Vnum  1005
-Desc  ~
+Desc  @@yT@@bhe market of @@yC@@balor is open air and surrounds the altar in the center of the city. Various vendors hawk their wares from carts and small tents along the street. A gentle breeze blows throughout the market as citizens bustle about. Further east the outer walls of the city can be see@@yn.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yM@@barket @@yS@@bquare@@N~
 Sect  1
 End
 #DOOR
@@ -208,9 +208,9 @@ End
 
 #ROOM
 Vnum  1006
-Desc  ~
+Desc  @@yT@@bhe market of @@yC@@balor is open air and surrounds the altar in the center of the city. Various vendors hawk their wares from carts and small tents along the street. A gentle breeze blows throughout the market as citizens bustle about. Further south the outer walls of the city can be see@@yn.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yM@@barket @@yS@@bquare@@N~
 Sect  1
 End
 #DOOR
@@ -248,9 +248,9 @@ End
 
 #ROOM
 Vnum  1007
-Desc  ~
+Desc  @@yT@@bhe market of @@yC@@balor is open air and surrounds the altar in the center of the city. Various vendors hawk their wares from carts and small tents along the street. A gentle breeze blows throughout the market as citizens bustle about. The market continues to the east and south.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yM@@barket @@yS@@bquare@@N~
 Sect  1
 End
 #DOOR
@@ -272,9 +272,9 @@ End
 
 #ROOM
 Vnum  1008
-Desc  ~
+Desc  @@yT@@bhe market of @@yC@@balor is open air and surrounds the altar in the center of the city. Various vendors hawk their wares from carts and small tents along the street. A gentle breeze blows throughout the market as citizens bustle about. The market continues to the west and south.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yM@@barket @@yS@@bquare@@N~
 Sect  1
 End
 #DOOR
@@ -296,9 +296,9 @@ End
 
 #ROOM
 Vnum  1009
-Desc  ~
+Desc  @@yT@@bhe market of @@yC@@balor is open air and surrounds the altar in the center of the city. Various vendors hawk their wares from carts and small tents along the street. A gentle breeze blows throughout the market as citizens bustle about. The market continues to the north and east.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yM@@barket @@yS@@bquare@@N~
 Sect  1
 End
 #DOOR
@@ -320,9 +320,9 @@ End
 
 #ROOM
 Vnum  1010
-Desc  ~
+Desc  @@yT@@bhe market of @@yC@@balor is open air and surrounds the altar in the center of the city. Various vendors hawk their wares from carts and small tents along the street. A gentle breeze blows throughout the market as citizens bustle about. The market continues to the north and west.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yM@@barket @@yS@@bquare@@N~
 Sect  1
 End
 #DOOR
@@ -432,9 +432,9 @@ End
 
 #ROOM
 Vnum  1015
-Desc  ~
+Desc  @@yT@@bhe western wall of @@yC@@balor can be seen to the west; towering over the city and casting a dark shadow. This room serves as a critical choke point in the city's defense. The sound of the market square can still be heard to the eas@@yt.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yB@@before the @@yW@@bestern @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -458,7 +458,7 @@ End
 Vnum  1016
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yB@@beneath the @@yW@@best @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -498,7 +498,7 @@ End
 Vnum  1017
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yW@@best @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -522,7 +522,7 @@ End
 Vnum  1018
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yW@@best @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -546,7 +546,7 @@ End
 Vnum  1019
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yB@@beneath the @@yN@@borthwest @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -578,7 +578,7 @@ End
 Vnum  1020
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yN@@borth @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -602,7 +602,7 @@ End
 Vnum  1021
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yN@@borth @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -626,7 +626,7 @@ End
 Vnum  1022
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yB@@beneath the @@yN@@borth @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -664,9 +664,9 @@ End
 
 #ROOM
 Vnum  1023
-Desc  ~
+Desc  @@yT@@bhe northern wall of @@yC@@balor can be seen to the north; towering over the city and casting a dark shadow. This room serves as a critical choke point in the city's defense. The sound of the market square can still be heard to the sout@@yh.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yB@@before the @@yN@@borthern @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -690,7 +690,7 @@ End
 Vnum  1024
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yN@@borth @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -714,7 +714,7 @@ End
 Vnum  1025
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yN@@borth @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -738,7 +738,7 @@ End
 Vnum  1026
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yB@@beneath the @@yN@@bortheast @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -770,7 +770,7 @@ End
 Vnum  1027
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yE@@bast @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -794,7 +794,7 @@ End
 Vnum  1028
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yE@@bast @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -818,7 +818,7 @@ End
 Vnum  1029
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yB@@beneath the @@yE@@bast @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -856,9 +856,9 @@ End
 
 #ROOM
 Vnum  1030
-Desc  ~
+Desc  @@yT@@bhe eastern wall of @@yC@@balor can be seen to the east; towering over the city and casting a dark shadow. This room serves as a critical choke point in the city's defense. The sound of the market square can still be heard to the wes@@yt.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yB@@before the @@yE@@bastern @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -882,7 +882,7 @@ End
 Vnum  1031
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yE@@bast @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -906,7 +906,7 @@ End
 Vnum  1032
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yE@@bast @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -930,7 +930,7 @@ End
 Vnum  1033
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yB@@beneath the @@yS@@boutheast @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -962,7 +962,7 @@ End
 Vnum  1034
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yS@@bouth @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -986,7 +986,7 @@ End
 Vnum  1035
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yS@@bouth @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -1010,7 +1010,7 @@ End
 Vnum  1036
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yB@@beneath the @@yS@@bouth @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1048,9 +1048,9 @@ End
 
 #ROOM
 Vnum  1037
-Desc  ~
+Desc  @@yT@@bhe southern wall of @@yC@@balor can be seen to the south; towering over the city and casting a dark shadow. This room serves as a critical choke point in the city's defense. The sound of the market square can still be heard to the nort@@yh.@@N~
 Flags EOL
-Name  New Room~
+Name  @@yB@@before the @@yS@@bouthern @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -1074,7 +1074,7 @@ End
 Vnum  1038
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yS@@bouth @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -1098,7 +1098,7 @@ End
 Vnum  1039
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yS@@bouth @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -1122,7 +1122,7 @@ End
 Vnum  1040
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yB@@beneath the @@yS@@bouthwest @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1154,7 +1154,7 @@ End
 Vnum  1041
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yW@@best @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -1178,7 +1178,7 @@ End
 Vnum  1042
 Desc  ~
 Flags EOL
-Name  New Room~
+Name  @@yA@@blong the @@yW@@best @@yW@@ball@@N~
 Sect  1
 End
 #DOOR
@@ -1202,7 +1202,7 @@ End
 Vnum  1043
 Desc  ~
 Flags EOL
-Name  northwest tower~
+Name  @@yT@@bhe @@yN@@borthwest @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1218,7 +1218,7 @@ End
 Vnum  1044
 Desc  ~
 Flags EOL
-Name  northeast tower~
+Name  @@yT@@bhe @@yN@@bortheast @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1234,7 +1234,7 @@ End
 Vnum  1045
 Desc  ~
 Flags EOL
-Name  southeast tower~
+Name  @@yT@@bhe @@yS@@boutheast @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1250,7 +1250,7 @@ End
 Vnum  1046
 Desc  ~
 Flags EOL
-Name  southwest tower~
+Name  @@yT@@bhe @@yS@@bouthwest @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1266,7 +1266,7 @@ End
 Vnum  1047
 Desc  ~
 Flags EOL
-Name  west tower~
+Name  @@yT@@bhe @@yW@@best @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1282,7 +1282,7 @@ End
 Vnum  1048
 Desc  ~
 Flags EOL
-Name  north tower~
+Name  @@yT@@bhe @@yN@@borth @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1298,7 +1298,7 @@ End
 Vnum  1049
 Desc  ~
 Flags EOL
-Name  east tower~
+Name  @@yT@@bhe @@yE@@bast @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1314,7 +1314,7 @@ End
 Vnum  1050
 Desc  ~
 Flags EOL
-Name  south tower~
+Name  @@yT@@bhe @@yS@@bouth @@yT@@bower@@N~
 Sect  1
 End
 #DOOR
@@ -1341,7 +1341,7 @@ DrMod     1000
 HrMod     1000
 Level     120
 LongDesc  @@cL@@aoki @@Nthe @@cF@@arost @@cW@@ayrm@@N is here perched atop the monument.~
-PlrName   guardian altar loki~
+PlrName   guardian altar loki frost wyrm~
 Position  0
 Race      8
 RaceMods  74469
@@ -1350,7 +1350,7 @@ Sex       1
 ShortDesc @@cL@@aoki@@N~
 Skills    982670
 SMagic    32
-SpecFun   (null)
+SpecFun   spec_breath_frost
 Suscept   1
 WMagic    1
 End
@@ -1380,6 +1380,35 @@ ShortDesc the bank teller~
 Skills    0
 SMagic    0
 SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1003
+AcMod     -2500
+Act       2 10 11 13 EOL
+Affected  533160
+Alignment 1000
+Cast      16811008
+Clan      0
+Class     1
+Def       80
+Desc      ~
+DrMod     0
+HrMod     0
+Level     120
+LongDesc  The @@RAvatar @@Wof @@yU@@bn@@y'@@bKresh@@N tends to the wounded citizens of @@yC@@balor@@N.~
+PlrName   avatar un'kresh~
+Position  0
+Race      10
+RaceMods  66149
+Resist    4095
+Sex       0
+ShortDesc @@RAvatar @@Wof @@yU@@bn@@y'@@bKresh@@N~
+Skills    0
+SMagic    2052
+SpecFun   spec_cast_adept
 Suscept   0
 WMagic    0
 End
@@ -1437,7 +1466,7 @@ End
 #OBJECT
 Vnum       1003
 Durability 32
-ExtraFlags 1 7 21 28 EOL
+ExtraFlags 1 21 28 EOL
 ItemApply  1
 Level      10
 LongDesc   @@dA weapon chain has been discarded here.@@N~
@@ -1446,7 +1475,7 @@ ObjFun     (null)
 ShortDesc  @@dIron Weapon Chain@@N~
 Speed      1.31
 Type       29
-Values     0 0 0 0 0 0 0 0 0 0 
+Values     1006 0 1007 0 0 0 0 0 0 0 
 WearFlags  13 24 EOL
 Weight     1
 End
@@ -1462,6 +1491,409 @@ End
 Location   18
 Modifier   5
 End
+
+#OBJECT
+Vnum       1004
+Durability 100
+ExtraFlags 1 2 3 7 21 EOL
+ItemApply  257
+Level      20
+LongDesc   A razor sharp @@Wsteel @@dchained @@eh@@Ralberd@@N hums softly.~
+Name       steel chained halberd~
+ObjFun     (null)
+ShortDesc  @@WSteel @@dChained @@eH@@Ralberd@@N~
+Speed      3.50
+Type       5
+Values     0 18 25 1 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   19
+Modifier   27
+End
+#OAFFECT
+Location   18
+Modifier   20
+End
+
+#OBJECT
+Vnum       1005
+Durability 50
+ExtraFlags 2 21 EOL
+ItemApply  1
+Level      10
+LongDesc   A @@Wsteel @@drod@@N looks like it could be a makeshift shield...~
+Name       steel rod~
+ObjFun     (null)
+ShortDesc  @@WSteel @@dRod@@N~
+Speed      2.40
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -41
+End
+#OAFFECT
+Location   13
+Modifier   20
+End
+#OAFFECT
+Location   24
+Modifier   -2
+End
+
+#OBJECT
+Vnum       1006
+Durability 50
+ExtraFlags 7 21 EOL
+ItemApply  1
+Level      10
+LongDesc   A lone @@dwrist @@eb@@Rlade@@N has been carelessly discarded...It looks quite sharp!~
+Name       wrist blade~
+ObjFun     (null)
+ShortDesc  @@dWrist @@eB@@Rlade@@N~
+Speed      4.00
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  12 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -14
+End
+#OAFFECT
+Location   19
+Modifier   4
+End
+#OAFFECT
+Location   13
+Modifier   9
+End
+#OAFFECT
+Location   18
+Modifier   4
+End
+
+#OBJECT
+Vnum       1007
+Durability 75
+ExtraFlags 1 7 21 EOL
+ItemApply  1
+Level      15
+LongDesc   A @@dwrist @@eb@@Rlade@@N with a chain attached...how curious!~
+Name       chained wrist blade~
+ObjFun     (null)
+ShortDesc  @@dChained Wrist @@eB@@Rlade@@N~
+Speed      1.44
+Type       29
+Values     1005 0 1004 0 0 0 0 0 0 0 
+WearFlags  12 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -16
+End
+#OAFFECT
+Location   19
+Modifier   4
+End
+#OAFFECT
+Location   13
+Modifier   10
+End
+#OAFFECT
+Location   18
+Modifier   5
+End
+
+#OBJECT
+Vnum       1008
+Durability 600
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yp@@boint@@N of a star lies here; broken.~
+Name       north point~
+ObjFun     (null)
+ShortDesc  @@yN@@borth @@yP@@boint@@N~
+Speed      1.23
+Type       29
+Values     1009 0 1016 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1009
+Durability 600
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yp@@boint@@N of a star lies here; broken.~
+Name       south point~
+ObjFun     (null)
+ShortDesc  @@yS@@bouth @@yP@@boint@@N~
+Speed      3.14
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1010
+Durability 4
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yp@@boint@@N of a star lies here; broken.~
+Name       east point~
+ObjFun     (null)
+ShortDesc  @@yE@@bast @@yP@@boint@@N~
+Speed      4.00
+Type       29
+Values     1011 0 1017 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1011
+Durability 100
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yp@@boint@@N of a star lies here; broken.~
+Name       west point~
+ObjFun     (null)
+ShortDesc  @@yW@@best @@yP@@boint@@N~
+Speed      4.00
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1012
+Durability 91
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yp@@boint@@N of a star lies here; broken.~
+Name       northwest point~
+ObjFun     (null)
+ShortDesc  @@yN@@borthwest @@yP@@boint@@N~
+Speed      2.10
+Type       29
+Values     1015 0 1019 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1013
+Durability 91
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yp@@boint@@N of a star lies here; broken.~
+Name       northeast point~
+ObjFun     (null)
+ShortDesc  @@yN@@bortheast @@yP@@boint@@N~
+Speed      3.42
+Type       29
+Values     1014 0 1020 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1014
+Durability 600
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yp@@boint @@Nof a star lies here; broken.~
+Name       southwest point~
+ObjFun     (null)
+ShortDesc  @@yS@@bouthwest @@yP@@boint@@N~
+Speed      1.32
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1015
+Durability 600
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yp@@boint @@Nof a star lies here; broken.~
+Name       southeast point~
+ObjFun     (null)
+ShortDesc  @@yS@@boutheast @@yP@@boint@@N~
+Speed      3.43
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1016
+Durability 600
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   Two @@yp@@boints @@Nof a star lie here; broken.~
+Name       north south points~
+ObjFun     (null)
+ShortDesc  @@yN@@borth @@W/ @@yS@@bouth@@N~
+Speed      1.23
+Type       29
+Values     1017 0 1018 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1017
+Durability 98
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   Two @@yp@@boints @@Nof a star lie here; broken.~
+Name       east west points~
+ObjFun     (null)
+ShortDesc  @@yE@@bast @@W/ @@yW@@best@@N~
+Speed      4.00
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1018
+Durability 93
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yc@@bardinal @@ys@@btar @@Nlooks incomplete, somehow...~
+Name       cardinal star~
+ObjFun     (null)
+ShortDesc  @@yT@@bhe @@yC@@bardinal @@yS@@btar@@N~
+Speed      2.00
+Type       29
+Values     1021 0 1022 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1019
+Durability 71
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   Two @@yp@@boints @@Nof a star lie here; broken.~
+Name       northwest southeast points~
+ObjFun     (null)
+ShortDesc  @@yN@@borthwest @@W/ @@yS@@boutheast@@N~
+Speed      1.11
+Type       29
+Values     1020 0 1021 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1020
+Durability 22
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   Two @@yp@@boints @@Nof a star lie here; broken.~
+Name       northeast southwest points~
+ObjFun     (null)
+ShortDesc  @@yN@@bortheast @@W/ @@yS@@bouthwest@@N~
+Speed      4.00
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1021
+Durability 30
+ExtraFlags 1 21 EOL
+ItemApply  1
+Level      120
+LongDesc   The @@yd@@biagonal @@ys@@btar @@Nlooks incomplete, somehow...~
+Name       diagonal star~
+ObjFun     (null)
+ShortDesc  @@yT@@bhe @@yD@@biagonal @@yS@@btar@@N~
+Speed      4.00
+Type       29
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1022
+Durability 600
+ExtraFlags 1 2 7 21 EOL
+ItemApply  16529
+Level      120
+LongDesc   A @@yp@@berfect @@ys@@btar @@Nis here, shining brightly!~
+Name       perfect star un'kresh~
+ObjFun     (null)
+ShortDesc  @@yT@@bhe @@yP@@berfect @@yS@@btar of @@yU@@bn@@y'@@bKresh@@N~
+Speed      2.44
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  2 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   24
+Modifier   -29
+End
+#OAFFECT
+Location   12
+Modifier   288
+End
+#OAFFECT
+Location   14
+Modifier   288
+End
+#OAFFECT
+Location   17
+Modifier   -575
+End
+#OAFFECT
+Location   19
+Modifier   144
+End
+#OAFFECT
+Location   13
+Modifier   288
+End
+#OAFFECT
+Location   18
+Modifier   144
+End
 #RESETS
 O 1001 1 1001 
 
@@ -1473,5 +1905,21 @@ M 1002 1 1011
 
 O 1003 1 1012 
 
+O 1004 1 1013 
+
+O 1005 1 1013 
+
+O 1006 1 1014 
+
+M 1003 1 1002 
+
+O 1014 1 1046 
+O 1011 1 1047 
+O 1012 1 1043 
+O 1008 1 1048 
+O 1013 1 1044 
+O 1010 1 1049 
+O 1015 1 1045 
+O 1009 1 1050 
 S
 #$
