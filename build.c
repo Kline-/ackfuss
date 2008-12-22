@@ -2561,6 +2561,10 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       {
        pObj->value[1] = number_range((value - 10),value);
        pObj->value[2] = number_range((value - 5),(value +5));
+       if( pObj->value[1] < 1 )
+        pObj->value[1] = 1;
+       if( pObj->value[2] < 1 )
+        pObj->value[2] = 1;
       }
 
       pObj->max_durability = value * 5;
