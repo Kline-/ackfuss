@@ -2559,8 +2559,8 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       }
       if( pObj->item_type == ITEM_WEAPON )
       {
-       pObj->value[0] = number_range((value - 10),value);
-       pObj->value[1] = number_range((value - 5),(value +5));
+       pObj->value[1] = number_range((value - 10),value);
+       pObj->value[2] = number_range((value - 5),(value +5));
       }
 
       pObj->max_durability = value * 5;
