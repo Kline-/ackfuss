@@ -1835,11 +1835,6 @@ void do_follow( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ( ch->level - victim->level < -20 || ch->level - victim->level > 20 ) && !IS_HERO( ch ) )
-   {
-      send_to_char( "You are not of the right caliber to follow.\n\r", ch );
-      return;
-   }
    if( IS_RIDING( ch ) && is_same_group( ch, ch->riding ) )
       do_group( ch, ch->riding->name );
 
@@ -2093,137 +2088,41 @@ void do_order( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void group_all( CHAR_DATA * ch )
-{
-   CHAR_DATA *gch;
-   int new_members = 0;
-
-   bool ch_adept = FALSE, victim_adept = FALSE, ch_dremort = FALSE, victim_dremort = FALSE, ch_sremort =
-      FALSE, victim_sremort = FALSE;
-   bool legal_group = FALSE;
-
-   for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
-   {
-      if( ( gch->master == ch ) && ( gch->leader != ch ) )
-      {
-
-         if( ch->adept_level > 0 )
-            ch_adept = TRUE;
-         if( gch->adept_level > 0 )
-            victim_adept = TRUE;
-
-         if( get_psuedo_level( ch ) > 97 )
-            ch_dremort = TRUE;
-         if( get_psuedo_level( gch ) > 97 )
-            victim_dremort = TRUE;
-
-         if( get_psuedo_level( ch ) > 80 )
-            ch_sremort = TRUE;
-         if( get_psuedo_level( gch ) > 80 )
-            victim_sremort = TRUE;
-/*    snprintf( buf, MSL, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
-     ch->name, get_psuedo_level( ch ), ( ch_adept == TRUE ) ? "YES" : "NO", ( ch_dremort == TRUE) : "YES" : "NO", ( ch_sremort == TRUE ) ? "YES" : "NO",
-     victim->name, get_psuedo_level( victim ), ( victim_adept == TRUE ) ? "YES" : "NO", ( victim_dremort == TRUE ) ? "YES" : "NO", ( victim_sremort == TRUE ) ? "YES" : "NO" );
-*/
-
-         if( ch_adept && victim_adept )
-         {
-            legal_group = TRUE;
-/*      send_to_char( "Two Adepts\n\r", ch ); */
-         }
-         else if( ( ch_adept && victim_dremort ) || ( victim_adept && ch_dremort ) )
-         {
-            if( abs( get_psuedo_level( ch ) - get_psuedo_level( gch ) ) < 9 )
-               legal_group = TRUE;
-            /*
-             * send_to_char( "Adept and dremort\n\r", ch );  
-             */
-         }
-         else if( ch_dremort || victim_dremort || ch_sremort || victim_sremort )
-         {
-            if( abs( get_psuedo_level( ch ) - get_psuedo_level( gch ) ) < 8 )
-               legal_group = TRUE;
-            else
-               legal_group = FALSE;
-            /*
-             * send_to_char( "One Remort\n\r", ch );  
-             */
-
-         }
-
-         else
-         {
-            if( abs( get_psuedo_level( ch ) - get_psuedo_level( gch ) ) < 21 )
-               legal_group = TRUE;
-            /*
-             * send_to_char( "No Remorts\n\r", ch );  
-             */
-
-         }
-
-
-
-         if( !( legal_group ) )
-         {
-            act( "$N cannot join $n's group.", ch, NULL, gch, TO_NOTVICT );
-            act( "You cannot join $n's group.", ch, NULL, gch, TO_VICT );
-            act( "$N cannot join your group.", ch, NULL, gch, TO_CHAR );
-         }
-         else
-         {
-            gch->leader = ch;
-            act( "$N joins $n's group.", ch, NULL, gch, TO_NOTVICT );
-            act( "You join $n's group.", ch, NULL, gch, TO_VICT );
-            act( "$N joins your group.", ch, NULL, gch, TO_CHAR );
-            new_members = new_members + 1;
-         }
-      }
-   }
-
-   if( new_members == 0 )
-      send_to_char( "No one else wants to join your group.\n\r", ch );
-
-   return;
-}
-
 void do_group( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
-   bool ch_adept = FALSE, victim_adept = FALSE, ch_dremort = FALSE, victim_dremort = FALSE, ch_sremort =
-      FALSE, victim_sremort = FALSE;
-   bool legal_group = FALSE;
+   short new_members = 0;
    one_argument( argument, arg );
 
    if( arg[0] == '\0' )
    {
-      CHAR_DATA *gch;
       CHAR_DATA *leader;
 
       leader = ( ch->leader != NULL ) ? ch->leader : ch;
       snprintf( buf, MSL, "%s's group:\n\r", PERS( leader, ch ) );
       send_to_char( buf, ch );
 
-      for( gch = first_char; gch != NULL; gch = gch->next )
+      for( victim = first_char; victim != NULL; victim = victim->next )
       {
-         if( is_same_group( gch, ch ) )
+         if( is_same_group( victim, ch ) )
          {
             if( ch->act.test(ACT_BLIND_PLAYER) )
             {
                snprintf( buf, MSL,
                         "%-16s %4d of %4d hp %4d of %4d mana %4d of %4d move %5d xp\n\r",
-                        capitalize( PERS( gch, ch ) ),
-                        gch->hit, gch->max_hit, gch->mana, gch->max_mana, gch->move, gch->max_move, gch->exp );
+                        capitalize( PERS( victim, ch ) ),
+                        victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->exp );
             }
             else
             {
                snprintf( buf, MSL,
                         "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5d xp\n\r",
-                        gch->level,
-                        IS_NPC( gch ) ? "Mob" : class_table[gch->p_class].who_name,
-                        capitalize( PERS( gch, ch ) ),
-                        gch->hit, gch->max_hit, gch->mana, gch->max_mana, gch->move, gch->max_move, gch->exp );
+                        victim->level,
+                        IS_NPC( victim ) ? "Mob" : class_table[victim->p_class].who_name,
+                        capitalize( PERS( victim, ch ) ),
+                        victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->exp );
             }
 
             send_to_char( buf, ch );
@@ -2232,13 +2131,24 @@ void do_group( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   /*
-    * if (  !str_cmp ( arg, "all" )  )
-    * {
-    * group_all ( ch );
-    * return;
-    * }  
-    */
+   if (  !str_cmp ( arg, "all" )  )
+   {
+     for( victim = ch->in_room->first_person; victim != NULL; victim = victim->next_in_room )
+     {
+        if( ( victim->master == ch ) && ( victim->leader != ch ) )
+        {
+         victim->leader = ch;
+         act( "$N joins $n's group.", ch, NULL, victim, TO_NOTVICT );
+         act( "You join $n's group.", ch, NULL, victim, TO_VICT );
+         act( "$N joins your group.", ch, NULL, victim, TO_CHAR );
+         new_members++;
+        }
+     }
+     if( new_members == 0 )
+        send_to_char( "No one else wants to join your group.\n\r", ch );
+
+     return;
+   }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
@@ -2264,80 +2174,6 @@ void do_group( CHAR_DATA * ch, char *argument )
       act( "$n removes $N from $s group.", ch, NULL, victim, TO_NOTVICT );
       act( "$n removes you from $s group.", ch, NULL, victim, TO_VICT );
       act( "You remove $N from your group.", ch, NULL, victim, TO_CHAR );
-      return;
-   }
-
-/* Multiple grouping restriction checks  Zen */
-
-   if( ch->adept_level > 0 )
-      ch_adept = TRUE;
-   if( victim->adept_level > 0 )
-      victim_adept = TRUE;
-
-   if( get_psuedo_level( ch ) > 97 )
-      ch_dremort = TRUE;
-   if( get_psuedo_level( victim ) > 97 )
-      victim_dremort = TRUE;
-
-   if( get_psuedo_level( ch ) > 80 )
-      ch_sremort = TRUE;
-   if( get_psuedo_level( victim ) > 80 )
-      victim_sremort = TRUE;
-/*    snprintf( buf, MSL, "%s level %i Adept: %s DREMORT: %s SREMORT: %s\n\r %s level %i ADEPT: %s DREMORT: %s SREMORT: %s \n\r",
-     ch->name, get_psuedo_level( ch ), ( ch_adept == TRUE ) ? "YES" : "NO", ( ch_dremort == TRUE) : "YES" : "NO", ( ch_sremort == TRUE ) ? "YES" : "NO",
-     victim->name, get_psuedo_level( victim ), ( victim_adept == TRUE ) ? "YES" : "NO", ( victim_dremort == TRUE ) ? "YES" : "NO", ( victim_sremort == TRUE ) ? "YES" : "NO" );
-*/
-
-   if( ch_adept && victim_adept )
-   {
-      legal_group = TRUE;
-/*      send_to_char( "Two Adepts\n\r", ch ); */
-   }
-   else if( ( ch_adept && victim_dremort ) || ( victim_adept && ch_dremort ) )
-   {
-      if( abs( get_psuedo_level( ch ) - get_psuedo_level( victim ) ) < 9 )
-         legal_group = TRUE;
-      /*
-       * send_to_char( "Adept and dremort\n\r", ch );  
-       */
-   }
-   else if( ch_dremort || victim_dremort || ch_sremort || victim_sremort )
-   {
-      if( abs( get_psuedo_level( ch ) - get_psuedo_level( victim ) ) < 8 )
-         legal_group = TRUE;
-      else
-         legal_group = FALSE;
-      /*
-       * send_to_char( "One Remort\n\r", ch );  
-       */
-
-   }
-
-   else
-   {
-      if( abs( get_psuedo_level( ch ) - get_psuedo_level( victim ) ) < 21 )
-         legal_group = TRUE;
-      /*
-       * send_to_char( "No Remorts\n\r", ch );  
-       */
-
-   }
-
-
-
-/*    if (  ( ch->adept_level > 1 && victim->adept_level <= 0 )
-       || ( victim->adept
-    if (  get_psuedo_level(ch) - get_psuedo_level(victim) < -30
-       || get_psuedo_level(ch) - get_psuedo_level(victim) > 30 )       */
-
-   if( ch->riding == victim )
-      legal_group = TRUE;
-
-   if( !( legal_group ) )
-   {
-      act( "$N cannot join $n's group.", ch, NULL, victim, TO_NOTVICT );
-      act( "You cannot join $n's group.", ch, NULL, victim, TO_VICT );
-      act( "$N cannot join your group.", ch, NULL, victim, TO_CHAR );
       return;
    }
 
