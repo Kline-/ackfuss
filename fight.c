@@ -2504,12 +2504,8 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *gch;
    CHAR_DATA *lch;
-   int members;
-   int huggy;  /* To work out exp gained */
-   float funky;  /* Hope you LOVE these var names, Mag */
-   int base;
-   int vamp_exp;
-
+   int members = 0, avg_level = 0;
+   float gain;
 
    /*
     * Monsters don't get kill xp's or alignment changes.
@@ -2523,19 +2519,19 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
               && ( ch->rider == NULL ) ) ) || ( !IS_NPC( victim ) ) || ( victim == ch ) )
       return;
 
-   members = 0;
-   huggy = 0;
-
-   base = victim->exp;  /* Now share this out... */
+   gain = victim->exp;  /* Now share this out... */
    if( victim->act.test(ACT_INTELLIGENT ) )
-      base = exp_for_mobile( victim->level, victim );
+      gain = exp_for_mobile( victim->level, victim );
+
+   avg_level += get_psuedo_level(ch);
 
    for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
    {
       if( is_same_group( gch, ch ) )
       {
          members++;
-         huggy += UMAX( get_psuedo_level( gch ), ( get_psuedo_level( ch ) - 25 ) );
+         avg_level += get_psuedo_level(gch);
+         gain *= 1.10; /* Group bonus */
       }
    }
 
@@ -2543,25 +2539,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
    {
       bug( "Group_gain: members.", members );
       members = 1;
-      huggy = get_psuedo_level( ch );
    }
-
-
-   /*
-    * Bonus for grouping 
-    */
-
-   if( members < 2 );   /* Changed from funky */
-   else if( members < 3 )
-      base *= ( 5 / 2 );   /* funky wasn't initialised */
-   else if( members < 4 )
-      base *= 3;  /* anyways.. hmm MAG */
-   else if( members < 5 )
-      base *= ( 7 / 2 );
-   else if( members < 6 )
-      base *= 4;
-   else
-      base *= ( 9 / 2 );
 
 
    /*
@@ -2572,6 +2550,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
     * 
     */
 
+   avg_level /= members;
    lch = ( ch->leader != NULL ) ? ch->leader : ch;
 
    for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
@@ -2586,43 +2565,32 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       /*
        * Calc each char's xp seperately, but mult by ch->lev/tot_group_lev. 
        */
-
-      funky = ( base * get_psuedo_level( gch ) ) / huggy;   /* gch's % of exp gained */
-
-      /*
-       * Now the max is just 250K 
-       */
-      if( funky < 0 )
-         funky = 823421;
-      funky = UMIN( funky, 1500000 );
-      if( ( abs( ( get_psuedo_level( gch ) - get_psuedo_level( victim ) ) ) > 23 )
-          || ( get_psuedo_level( gch ) > ( get_psuedo_level( victim ) + 17 ) ) )
-      {
-         funky = ( funky / 5000 );
-         vamp_exp = 0;
-      }
+      if( get_psuedo_level(gch) >= avg_level )
+       gain /= members;
       else
-         vamp_exp = 1;
+      {
+       gain /= members;
+       gain *= (get_psuedo_level(gch) / avg_level);
+      }
+
+      if( gain < 0 )
+       gain = 0;
 
       if( gch->adept_level > 0 )
-         funky /= 1000;
+         gain /= 1000;
 
       /* Support changing exp on the fly. --Kline */
-      funky *= sysdata.expmult;
+      gain *= sysdata.expmult;
 
-      snprintf( buf, MSL, "You Receive %.0f Experience Points.\n\r", funky );
+      snprintf( buf, MSL, "You Receive %.0f Experience Points.\n\r", gain );
       send_to_char( buf, gch );
       if( AI_MOB(gch) )
-         gch->intell_exp += (int)funky;
-      gain_exp( gch, (int)funky );
+         gch->intell_exp += (int)gain;
+      gain_exp( gch, (int)gain );
 
-      if( IS_VAMP( gch ) && !IS_NPC( gch ) )
+      if( !IS_NPC(gch) && (IS_VAMP( gch ) || IS_WOLF( gch )) )
 
-         gch->pcdata->super->exp += vamp_exp;
-
-      if( !IS_NPC( gch ) && IS_WOLF( gch ) )
-
-         gch->pcdata->super->exp += vamp_exp;
+         gch->pcdata->super->exp++;
 
       if( !IS_NPC( gch ) && ( gch->pcdata->learned[gsn_emotion_control] < 73 ) )
       {

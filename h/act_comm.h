@@ -58,7 +58,6 @@ void add_follower P_((CHAR_DATA *ch, CHAR_DATA *master));
 void stop_follower P_((CHAR_DATA *ch));
 void die_follower P_((CHAR_DATA *ch));
 void do_order P_((CHAR_DATA *ch, char *argument));
-void group_all P_((CHAR_DATA *ch));
 void do_group P_((CHAR_DATA *ch, char *argument));
 void do_split P_((CHAR_DATA *ch, char *argument));
 void do_gtell P_((CHAR_DATA *ch, char *argument));
