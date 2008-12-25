@@ -2505,7 +2505,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
    CHAR_DATA *gch;
    CHAR_DATA *lch;
    int members = 0, tot_level = 0;
-   float gain = 0, percent = 0;
+   float old_gain = 0, gain = 0, percent = 0;
 
    /*
     * Monsters don't get kill xp's or alignment changes.
@@ -2549,6 +2549,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
     */
 
    lch = ( ch->leader != NULL ) ? ch->leader : ch;
+   old_gain = gain;
 
    for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
    {
@@ -2562,6 +2563,8 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       /*
        * Calc each char's xp seperately, but mult by ch->lev/tot_group_lev. 
        */
+
+      gain = old_gain;
 
       percent = (get_psuedo_level(gch) / tot_level);
       gain *= percent;
