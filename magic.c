@@ -7162,7 +7162,7 @@ bool spell_redemption( int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj
  victim->hit += number_range(level*2,level*6);
  victim->mana += number_range(level*2,level*6);
  victim->move += number_range(level*2,level*6);
- gain_exp(victim,(int)(victim->exp * 0.25));
+ gain_exp(victim,(victim->exp / 4));
  send_to_char("You have gained insight from your death, and regaiend some of your lost experience!\n\r",victim);
  update_pos(victim);
 

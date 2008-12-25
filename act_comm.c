@@ -2094,11 +2094,17 @@ void do_group( CHAR_DATA * ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
    short new_members = 0;
+   float percent = 0.00;
+   int tot_level = 0;
    one_argument( argument, arg );
 
    if( arg[0] == '\0' )
    {
       CHAR_DATA *leader;
+
+      for( victim = first_char; victim != NULL; victim = victim->next )
+       if( is_same_group(victim,ch) )
+        tot_level += get_psuedo_level(victim);
 
       leader = ( ch->leader != NULL ) ? ch->leader : ch;
       snprintf( buf, MSL, "%s's group:\n\r", PERS( leader, ch ) );
@@ -2108,21 +2114,23 @@ void do_group( CHAR_DATA * ch, char *argument )
       {
          if( is_same_group( victim, ch ) )
          {
+            percent = ((get_psuedo_level(victim) * 100) / tot_level);
+
             if( ch->act.test(ACT_BLIND_PLAYER) )
             {
                snprintf( buf, MSL,
-                        "%-16s %4d of %4d hp %4d of %4d mana %4d of %4d move %5d xp\n\r",
+                        "%-16s %4d of %4d hp %4d of %4d mana %4d of %4d move %5d xp %0.2f%% split\n\r",
                         capitalize( PERS( victim, ch ) ),
-                        victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->exp );
+                        victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->exp, percent );
             }
             else
             {
                snprintf( buf, MSL,
-                        "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5d xp\n\r",
+                        "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5d xp [%0.2f%%]\n\r",
                         victim->level,
                         IS_NPC( victim ) ? "Mob" : class_table[victim->p_class].who_name,
                         capitalize( PERS( victim, ch ) ),
-                        victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->exp );
+                        victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->exp, percent );
             }
 
             send_to_char( buf, ch );
