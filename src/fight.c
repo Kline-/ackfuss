@@ -2504,8 +2504,8 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *gch;
    CHAR_DATA *lch;
-   int members = 0, avg_level = 0;
-   float gain;
+   int members = 0, tot_level = 0;
+   float gain = 0, percent = 0;
 
    /*
     * Monsters don't get kill xp's or alignment changes.
@@ -2523,14 +2523,12 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
    if( victim->act.test(ACT_INTELLIGENT ) )
       gain = exp_for_mobile( victim->level, victim );
 
-   avg_level += get_psuedo_level(ch);
-
    for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
    {
       if( is_same_group( gch, ch ) )
       {
          members++;
-         avg_level += get_psuedo_level(gch);
+         tot_level += get_psuedo_level(gch);
          gain *= 1.10; /* Group bonus */
       }
    }
@@ -2550,7 +2548,6 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
     * 
     */
 
-   avg_level /= members;
    lch = ( ch->leader != NULL ) ? ch->leader : ch;
 
    for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
@@ -2565,13 +2562,9 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       /*
        * Calc each char's xp seperately, but mult by ch->lev/tot_group_lev. 
        */
-      if( get_psuedo_level(gch) >= avg_level )
-       gain /= members;
-      else
-      {
-       gain /= members;
-       gain *= (get_psuedo_level(gch) / avg_level);
-      }
+
+      percent = (get_psuedo_level(gch) / tot_level);
+      gain *= percent;
 
       if( gain < 0 )
        gain = 0;
