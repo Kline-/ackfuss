@@ -104,26 +104,26 @@ void do_email( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg1 );
    if( arg1[0] == '\0' )
    {
-      snprintf( outbuf, MSL, "%s", "Syntax for email:\n\r" );
-      snprintf( catbuf, MSL, "%s", "set <email address>\n\r" );
+      snprintf( outbuf, MSL, "%s", "Syntax for email:\r\n" );
+      snprintf( catbuf, MSL, "%s", "set <email address>\r\n" );
       strncat( outbuf, catbuf, MSL );
       if( get_trust( ch ) == MAX_LEVEL )
       {
-         snprintf( catbuf, MSL, "%s", "validate <playername>\n\r" );
+         snprintf( catbuf, MSL, "%s", "validate <playername>\r\n" );
          strncat( outbuf, catbuf, MSL );
       }
       if( ch->pcdata->valid_email )
       {
-         snprintf( catbuf, MSL, "Your email address is currently set to %s.\n\r", ch->pcdata->email_address );
+         snprintf( catbuf, MSL, "Your email address is currently set to %s.\r\n", ch->pcdata->email_address );
          strncat( outbuf, catbuf, MSL );
       }
       else
       {
          if( !str_cmp( ch->pcdata->email_address, "not set" ) )
-            strncat( outbuf, "Your email address has not been set.\n\r", MSL );
+            strncat( outbuf, "Your email address has not been set.\r\n", MSL );
          else
          {
-            snprintf( catbuf, MSL, "Your email address has been set to %s, but has not been authorized by an Implementor.\n\r",
+            snprintf( catbuf, MSL, "Your email address has been set to %s, but has not been authorized by an Implementor.\r\n",
                      ch->pcdata->email_address );
             strncat( outbuf, catbuf, MSL );
          }
@@ -148,7 +148,7 @@ void do_email( CHAR_DATA * ch, char *argument )
          ch->pcdata->valid_email = FALSE;
          do_save( ch, "auto" );
          snprintf( outbuf, MSL,
-                  "Your email address has been set to %s. The Implementors have been notified, please be patient.\n\r",
+                  "Your email address has been set to %s. The Implementors have been notified, please be patient.\r\n",
                   ch->pcdata->email_address );
          send_to_char( outbuf, ch );
          {
@@ -170,7 +170,7 @@ void do_email( CHAR_DATA * ch, char *argument )
                PUT_FREE( brand_member, dl_list_free );
             }
             snprintf( brandbuf, MSL,
-                     "Email address validation request for %s, address %s\n\rPlease type email validate %s to authorize.\n\r",
+                     "Email address validation request for %s, address %s\r\nPlease type email validate %s to authorize.\r\n",
                      ch->name, ch->pcdata->email_address, ch->name );
             brand = new BRAND_DATA;
             GET_FREE( brand_member, dl_list_free );
@@ -192,7 +192,7 @@ void do_email( CHAR_DATA * ch, char *argument )
       }
       else
       {
-         snprintf( outbuf, MSL, "%s is not an acceptable email address.\n\r", arg2 );
+         snprintf( outbuf, MSL, "%s is not an acceptable email address.\r\n", arg2 );
          send_to_char( outbuf, ch );
          return;
       }
@@ -202,7 +202,7 @@ void do_email( CHAR_DATA * ch, char *argument )
 
       if( get_trust( ch ) < MAX_LEVEL )
       {
-         send_to_char( "Only Implementors may use this command.\n\r", ch );
+         send_to_char( "Only Implementors may use this command.\r\n", ch );
          return;
       }
       else
@@ -215,7 +215,7 @@ void do_email( CHAR_DATA * ch, char *argument )
          bool logged_in = FALSE;
          if( arg2[0] == '\0' )
          {
-            send_to_char( "Authorize email for whom?\n\r", ch );
+            send_to_char( "Authorize email for whom?\r\n", ch );
             return;
          }
 
@@ -227,7 +227,7 @@ void do_email( CHAR_DATA * ch, char *argument )
             if( !found )
             {
                char buf[MSL];
-               snprintf( buf, MSL, "No pFile found for '%s'.\n\r", capitalize( arg2 ) );
+               snprintf( buf, MSL, "No pFile found for '%s'.\r\n", capitalize( arg2 ) );
                send_to_char( buf, ch );
                delete d.character;
                return;
@@ -245,12 +245,12 @@ void do_email( CHAR_DATA * ch, char *argument )
 
          if( IS_NPC( victim ) )
          {
-            send_to_char( "Not on NPC's.\n\r", ch );
+            send_to_char( "Not on NPC's.\r\n", ch );
             return;
          }
 
          victim->pcdata->valid_email = TRUE;
-         send_to_char( "OK.\n\r", ch );
+         send_to_char( "OK.\r\n", ch );
 
          for( brand_list = first_brand; brand_list; brand_list = brand_list->next )
          {
@@ -352,14 +352,14 @@ void send_rep_out( CHAR_DATA * ch, char *outbuf, bool mailme, char *msub )
          if( saved_mail )
          {
             char outbuf2[MSL];
-            snprintf( outbuf2, MSL, "Email sent to %s\n\r", ch->pcdata->email_address );
+            snprintf( outbuf2, MSL, "Email sent to %s\r\n", ch->pcdata->email_address );
             send_to_char( outbuf2, ch );
             send_email( ch->pcdata->email_address, msub, mailfilename );
          }
          else
          {
             send_to_char( outbuf, ch );
-            send_to_char( "\n\r@@eUNABLE TO SEND SYSTEM MAIL. @@WCheck your sendmail settings.@@N\n\r", ch );
+            send_to_char( "\r\n@@eUNABLE TO SEND SYSTEM MAIL. @@WCheck your sendmail settings.@@N\r\n", ch );
          }
       }
       else

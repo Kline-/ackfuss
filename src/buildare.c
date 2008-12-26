@@ -101,7 +101,7 @@ int build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
          return 1;
 
    if( showerror == AREA_SHOWERROR )
-      send_to_char( "You are not allowed to use this area.\n\r", ch );
+      send_to_char( "You are not allowed to use this area.\r\n", ch );
 
    return 0;
 }
@@ -117,7 +117,7 @@ int build_canwrite( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
          return 1;
 
    if( showerror == AREA_SHOWERROR )
-      send_to_char( "You are not allowed to edit this area.\n\r", ch );
+      send_to_char( "You are not allowed to edit this area.\r\n", ch );
 
    return 0;
 }
@@ -143,7 +143,7 @@ void build_save_area_list( void )
       fprintf( fpArea, "%s\n", pArea->filename );
    }
 
-   fprintf( fpArea, "$\n\r" );
+   fprintf( fpArea, "$\r\n" );
 
    file_close( fpArea );
 
@@ -171,10 +171,10 @@ void build_save_area_gold( void )
 
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
    {
-      fprintf( fpArea, "%i %i\n\r", pArea->area_num, pArea->gold );
+      fprintf( fpArea, "%i %i\r\n", pArea->area_num, pArea->gold );
    }
 
-   fprintf( fpArea, "-1\n\r" );
+   fprintf( fpArea, "-1\r\n" );
 
    file_close( fpArea );
 
@@ -216,7 +216,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || arg2[0] == '\0' )
    {
-      send_to_char( "\n\rSyntax: makearea filename numrooms\n\r", ch );
+      send_to_char( "\r\nSyntax: makearea filename numrooms\r\n", ch );
       return;
    }
    rooms = atoi( arg2 );
@@ -258,13 +258,13 @@ void build_makearea( CHAR_DATA * ch, char *argument )
 
    if( vnum == mvnum )
    {
-      send_to_char( "Can't create a room with 0 rooms.\n\r", ch );
+      send_to_char( "Can't create a room with 0 rooms.\r\n", ch );
       return;
    }
 
    if( get_room_index( vnum ) != NULL )
    {
-      send_to_char( "There is already a room with that vnum.\n\r", ch );
+      send_to_char( "There is already a room with that vnum.\r\n", ch );
       return;
    }
 
@@ -273,7 +273,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    fpArea = file_open( arg1, "r" );
    if( fpArea != NULL )
    {
-      send_to_char( "There is already a file with that name.\n\r", ch );
+      send_to_char( "There is already a file with that name.\r\n", ch );
       file_close( fpArea );
       return;
    }
@@ -281,7 +281,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    fpArea = file_open( arg1, "w" );
    if( fpArea == NULL )
    {
-      send_to_char( "Invalid filename, would not be able to save.\n\r", ch );
+      send_to_char( "Invalid filename, would not be able to save.\r\n", ch );
       return;
    }
    file_close( fpArea );
@@ -294,7 +294,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
          break;
    if( a == MAX_AREAS )
    {
-      send_to_char( "Maximum number of areas already.\n\r", ch );
+      send_to_char( "Maximum number of areas already.\r\n", ch );
       return;
    }
 
@@ -370,7 +370,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    LINK( pList, pArea->first_area_room, pArea->last_area_room, next, prev );
    top_room++;
 
-   send_to_char( "Ok.\n\r", ch );
+   send_to_char( "Ok.\r\n", ch );
 }
 
 void do_change_gold( CHAR_DATA * ch, char *argument )
@@ -389,20 +389,20 @@ void do_change_gold( CHAR_DATA * ch, char *argument )
 
    if( !is_number( arg1 ) )
    {
-      send_to_char( "Must be a number.\n\r", ch );
+      send_to_char( "Must be a number.\r\n", ch );
       return;
    }
 
    value = atoi( arg1 );
    if( value > ch->gold )
    {
-      send_to_char( "You cannot put in more gold than you have!\n\r", ch );
+      send_to_char( "You cannot put in more gold than you have!\r\n", ch );
       return;
    }
 
    if( value < -pArea->gold )
    {
-      send_to_char( "You cannot take out more gold than there is here!\n\r", ch );
+      send_to_char( "You cannot take out more gold than there is here!\r\n", ch );
       return;
    }
 
@@ -434,27 +434,27 @@ void build_setarea( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || arg2[0] == '\0' )
    {
-      send_to_char( "Syntax: setarea <arguments> \n\r", ch );
-      send_to_char( "\n\r", ch );
-      send_to_char( "Arguments being one of:\n\r", ch );
-      send_to_char( "      owner       <name>  \n\r", ch );
-      send_to_char( "      read        [-]<name>  \n\r", ch );
-      send_to_char( "      write       [-]<name>  \n\r", ch );
-      send_to_char( "      gold        <amount>\n\r", ch );
-      send_to_char( "      title       <string>\n\r", ch );
-      send_to_char( "      payarea     Yes/No  \n\r", ch );
-      send_to_char( "      min         <min_vnum>\n\r", ch );
-      send_to_char( "      max         <max_vnum>\n\r", ch );
-      send_to_char( "      teleport    Yes/No  \n\r", ch );
-      send_to_char( "      building    Yes/No  \n\r", ch );
-      send_to_char( "      show        Yes/No  \n\r", ch );
-      send_to_char( "      room_spells On/Off \n\r", ch );
-      send_to_char( "      min_level   <level>\n\r", ch );
-      send_to_char( "      max_level   <level>\n\r", ch );
-      send_to_char( "      level_label <label>\n\r", ch );
-      send_to_char( "      keyword     <keyword> \n\r", ch );
-      send_to_char( "      repop_rate  ticks( lower is faster ) \n\r", ch );
-      send_to_char( "      message     <message/off> \n\r", ch );
+      send_to_char( "Syntax: setarea <arguments> \r\n", ch );
+      send_to_char( "\r\n", ch );
+      send_to_char( "Arguments being one of:\r\n", ch );
+      send_to_char( "      owner       <name>  \r\n", ch );
+      send_to_char( "      read        [-]<name>  \r\n", ch );
+      send_to_char( "      write       [-]<name>  \r\n", ch );
+      send_to_char( "      gold        <amount>\r\n", ch );
+      send_to_char( "      title       <string>\r\n", ch );
+      send_to_char( "      payarea     Yes/No  \r\n", ch );
+      send_to_char( "      min         <min_vnum>\r\n", ch );
+      send_to_char( "      max         <max_vnum>\r\n", ch );
+      send_to_char( "      teleport    Yes/No  \r\n", ch );
+      send_to_char( "      building    Yes/No  \r\n", ch );
+      send_to_char( "      show        Yes/No  \r\n", ch );
+      send_to_char( "      room_spells On/Off \r\n", ch );
+      send_to_char( "      min_level   <level>\r\n", ch );
+      send_to_char( "      max_level   <level>\r\n", ch );
+      send_to_char( "      level_label <label>\r\n", ch );
+      send_to_char( "      keyword     <keyword> \r\n", ch );
+      send_to_char( "      repop_rate  ticks( lower is faster ) \r\n", ch );
+      send_to_char( "      message     <message/off> \r\n", ch );
       return;
    }
 
@@ -692,7 +692,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg );
    if( arg[0] == '\0' )
    {
-      send_to_char( "Find what area?\n\r", ch );
+      send_to_char( "Find what area?\r\n", ch );
       return;
    }
 
@@ -710,14 +710,14 @@ void build_findarea( CHAR_DATA * ch, char *argument )
          found = TRUE;
          if( pArea->first_area_room != NULL )
             pRoomIndex = (ROOM_INDEX_DATA *)pArea->first_area_room->data;
-         snprintf( buf, MSL, "[%5d] %s\n\r", pArea->first_area_room != NULL ? pRoomIndex->vnum : 0, pArea->name );
+         snprintf( buf, MSL, "[%5d] %s\r\n", pArea->first_area_room != NULL ? pRoomIndex->vnum : 0, pArea->name );
          strncat( buf1, buf, MSL );
       }
    }
 
    if( !found )
    {
-      send_to_char( "No area like that.\n\r", ch );
+      send_to_char( "No area like that.\r\n", ch );
       return;
    }
 
@@ -739,45 +739,45 @@ void build_showarea( CHAR_DATA * ch, char *argument )
 
    buf[0] = '\0';
 
-   snprintf( buffer, MSL, "\n\rTitle: %s\n\r", pArea->name );
+   snprintf( buffer, MSL, "\r\nTitle: %s\r\n", pArea->name );
    strncat( buf, buffer, MSL );
-   snprintf( buffer, MSL, "Keyword: %s\n\r", pArea->keyword );
+   snprintf( buffer, MSL, "Keyword: %s\r\n", pArea->keyword );
    strncat( buf, buffer, MSL );
-   snprintf( buffer, MSL, "Level Label: %s\n\r", pArea->level_label );
+   snprintf( buffer, MSL, "Level Label: %s\r\n", pArea->level_label );
    strncat( buf, buffer, MSL );
-   snprintf( buffer, MSL, "Repop Rate: %i\n\r", pArea->reset_rate );
+   snprintf( buffer, MSL, "Repop Rate: %i\r\n", pArea->reset_rate );
    strncat( buf, buffer, MSL );
-   snprintf( buffer, MSL, "Reset Message: %s\n\r", pArea->reset_msg );
+   snprintf( buffer, MSL, "Reset Message: %s\r\n", pArea->reset_msg );
    strncat( buf, buffer, MSL );
 
    if( get_trust( ch ) >= MAX_LEVEL - 1 )
    {
-      snprintf( buffer, MSL, "Filename: %s\n\r", pArea->filename );
+      snprintf( buffer, MSL, "Filename: %s\r\n", pArea->filename );
       strncat( buf, buffer, MSL );
    }
 
-   snprintf( buffer, MSL, "Owner: %s\n\rCan Read: %s\n\rCan Write: %s\n\r", pArea->owner, pArea->can_read, pArea->can_write );
+   snprintf( buffer, MSL, "Owner: %s\r\nCan Read: %s\r\nCan Write: %s\r\n", pArea->owner, pArea->can_read, pArea->can_write );
    strncat( buf, buffer, MSL );
 
-   snprintf( buffer, MSL, "Min Vnum: %5d    Max Vnum: %5d      Gold: %i\n\r", pArea->min_vnum, pArea->max_vnum, pArea->gold );
+   snprintf( buffer, MSL, "Min Vnum: %5d    Max Vnum: %5d      Gold: %i\r\n", pArea->min_vnum, pArea->max_vnum, pArea->gold );
    strncat( buf, buffer, MSL );
-   snprintf( buffer, MSL, "Min Level: %5d    Max Level: %5d \n\r", pArea->min_level, pArea->max_level );
+   snprintf( buffer, MSL, "Min Level: %5d    Max Level: %5d \r\n", pArea->min_level, pArea->max_level );
    strncat( buf, buffer, MSL );
 
    if( pArea->flags.test(AFLAG_PAYAREA) )
-      strncat( buf, "This is a pay area.\n\r", MSL );
+      strncat( buf, "This is a pay area.\r\n", MSL );
    if( pArea->flags.test(AFLAG_TELEPORT) )
-      strncat( buf, "You cannot teleport into here.\n\r", MSL );
+      strncat( buf, "You cannot teleport into here.\r\n", MSL );
    if( pArea->flags.test(AFLAG_BUILDING) )
-      strncat( buf, "Area currently being built.\n\r", MSL );
+      strncat( buf, "Area currently being built.\r\n", MSL );
    if( pArea->flags.test(AFLAG_NOSHOW) )
-      strncat( buf, "Area title will not be shown on area list.\n\r", MSL );
+      strncat( buf, "Area title will not be shown on area list.\r\n", MSL );
    else
-      strncat( buf, "Area title will show on area list.\n\r", MSL );
+      strncat( buf, "Area title will show on area list.\r\n", MSL );
    if( pArea->flags.test(AFLAG_NO_ROOM_AFF) )
-      strncat( buf, "Bad Room Affect spells are not allowed.\n\r", MSL );
+      strncat( buf, "Bad Room Affect spells are not allowed.\r\n", MSL );
    else
-      strncat( buf, "Bad Room Affect spells may be used.\n\r", MSL );
+      strncat( buf, "Bad Room Affect spells may be used.\r\n", MSL );
 
    send_to_char( buf, ch );
    return;
@@ -794,10 +794,10 @@ void build_arealist( CHAR_DATA * ch, char *argument )
    short stop_counter = 0;
 
    buf[0] = '\0';
-   snprintf( msg, MSL, "%s", "Areas of " mudnamecolor ":\n\r" );
+   snprintf( msg, MSL, "%s", "Areas of " mudnamecolor ":\r\n" );
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
    {
-      snprintf( buf, MSL, "%12s [%8d to %8d] %s\n\r", capitalize( pArea->owner ), pArea->min_vnum, pArea->max_vnum, pArea->name );
+      snprintf( buf, MSL, "%12s [%8d to %8d] %s\r\n", capitalize( pArea->owner ), pArea->min_vnum, pArea->max_vnum, pArea->name );
       stop_counter++;
       if( stop_counter > 40 )
       {

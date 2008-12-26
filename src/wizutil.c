@@ -147,7 +147,7 @@ void room_pair( ROOM_INDEX_DATA * left, ROOM_INDEX_DATA * right, exit_status ex,
          break;
    }
 
-   snprintf( buffer, sizeof(buffer), "%5d %-26.26s %s%5d %-26.26s(%-8.8s)\n\r",
+   snprintf( buffer, sizeof(buffer), "%5d %-26.26s %s%5d %-26.26s(%-8.8s)\r\n",
             left->vnum, left->name, sExit, right->vnum, right->name, area_name( right->area ) );
 }
 
@@ -254,7 +254,7 @@ void do_vlist( CHAR_DATA * ch, char *argument )
       }  /* for columns */
 
       send_to_char( buffer, ch );
-      send_to_char( "\n\r", ch );
+      send_to_char( "\r\n", ch );
    }  /* for rows */
 }
 
@@ -282,7 +282,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
     */
    if( !old_name[0] )
    {
-      send_to_char( "Rename who?\n\r", ch );
+      send_to_char( "Rename who?\r\n", ch );
       return;
    }
 
@@ -290,13 +290,13 @@ void do_rename( CHAR_DATA * ch, char *argument )
 
    if( !victim )
    {
-      send_to_char( "There is no such a person online.\n\r", ch );
+      send_to_char( "There is no such a person online.\r\n", ch );
       return;
    }
 
    if( IS_NPC( victim ) )
    {
-      send_to_char( "You cannot use Rename on NPCs.\n\r", ch );
+      send_to_char( "You cannot use Rename on NPCs.\r\n", ch );
       return;
    }
 
@@ -305,19 +305,19 @@ void do_rename( CHAR_DATA * ch, char *argument )
     */
    if( ( victim != ch ) && ( get_trust( victim ) >= get_trust( ch ) ) )
    {
-      send_to_char( "You failed.\n\r", ch );
+      send_to_char( "You failed.\r\n", ch );
       return;
    }
 
    if( !victim->desc || ( victim->desc->connected != CON_PLAYING ) )
    {
-      send_to_char( "This player has lost his link or is inside a pager or the like.\n\r", ch );
+      send_to_char( "This player has lost his link or is inside a pager or the like.\r\n", ch );
       return;
    }
 
    if( !new_name[0] )
    {
-      send_to_char( "Rename to what new name?\n\r", ch );
+      send_to_char( "Rename to what new name?\r\n", ch );
       return;
    }
 
@@ -328,14 +328,14 @@ void do_rename( CHAR_DATA * ch, char *argument )
     * 
     * if (victim->clan)
     * {
-    * send_to_char ("This player is member of a clan, remove him from there first.\n\r",ch);
+    * send_to_char ("This player is member of a clan, remove him from there first.\r\n",ch);
     * return;
     * }
     */
 
    if( !check_parse_name( new_name ) )
    {
-      send_to_char( "The new name is illegal.\n\r", ch );
+      send_to_char( "The new name is illegal.\r\n", ch );
       return;
    }
 
@@ -351,7 +351,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
    file = file_open( strsave, "r" ); /* attempt to to open pfile */
    if( file )
    {
-      send_to_char( "A player with that name already exists!\n\r", ch );
+      send_to_char( "A player with that name already exists!\r\n", ch );
       file_close( file );
       return;
    }
@@ -369,7 +369,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
    file = file_open( strsave, "r" ); /* attempt to to open pfile */
    if( file )
    {
-      send_to_char( "A player with that name already exists in a compressed file!\n\r", ch );
+      send_to_char( "A player with that name already exists in a compressed file!\r\n", ch );
       file_close( file );
       return;
    }
@@ -377,7 +377,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
 
    if( get_char_world( ch, new_name ) )   /* check for playing level-1 non-saved */
    {
-      send_to_char( "A player with the name you specified already exists!\n\r", ch );
+      send_to_char( "A player with the name you specified already exists!\r\n", ch );
       return;
    }
 
@@ -413,7 +413,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
     * That's it! 
     */
 
-   send_to_char( "Character renamed.\n\r", ch );
+   send_to_char( "Character renamed.\r\n", ch );
 
    victim->position = POS_STANDING; /* I am laaazy */
    act( "$n has renamed you to $N!", ch, NULL, victim, TO_VICT );

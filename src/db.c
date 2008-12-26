@@ -235,7 +235,7 @@ void boot_db( void )
    fBootDb = TRUE;
 
 
-   send_to_descrips( "Initialising Ack! Mud.  Please Wait....\n\r" );
+   send_to_descrips( "Initialising Ack! Mud.  Please Wait....\r\n" );
 
    /*
     * Init random number generator.
@@ -2115,7 +2115,7 @@ void area_update( void )
             if( !IS_NPC( pch ) && IS_AWAKE( pch ) && pch->in_room != NULL && pch->in_room->area == pArea && str_cmp(pArea->reset_msg,"off") )
             {
                char reset_buf[MSL];
-               snprintf( reset_buf, MSL, "%s\n\r", pArea->reset_msg );
+               snprintf( reset_buf, MSL, "%s\r\n", pArea->reset_msg );
                send_to_char( reset_buf, pch );
             }
          }
@@ -3154,7 +3154,7 @@ char *fread_word( FILE * fp )
    {
       if( feof( fp ) )
       {
-         bug( "fread_word: EOF encountered on read.\n\r", 0 );
+         bug( "fread_word: EOF encountered on read.\r\n", 0 );
          if( fBootDb )
             kill( getpid(  ), SIGQUIT );
          strcpy( word, "" );
@@ -3179,7 +3179,7 @@ char *fread_word( FILE * fp )
    {
       if( feof( fp ) )
       {
-         bug( "fread_word: EOF encountered on read.\n\r", 0 );
+         bug( "fread_word: EOF encountered on read.\r\n", 0 );
          if( fBootDb )
             kill( getpid(  ), SIGQUIT );
          *pword = '\0';
@@ -3232,11 +3232,11 @@ void do_areas( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "all" ) )
       fall = TRUE;
-   snprintf( buf, MSL, "@@W" mudnamecolor " AREA LISTING\n\r" );
-   strncat( buf, "+-------+------------+------------------------------------------------+\n\r", MSL );
-   strncat( buf, "| @@yLevel@@W |            |                                                |\n\r", MSL );
-   strncat( buf, "| @@yrange@@W |   @@yAuthor@@W   |      @@yName of Area@@W                              |\n\r", MSL );
-   strncat( buf, "+-------+------------+------------------------------------------------+\n\r", MSL );
+   snprintf( buf, MSL, "@@W" mudnamecolor " AREA LISTING\r\n" );
+   strncat( buf, "+-------+------------+------------------------------------------------+\r\n", MSL );
+   strncat( buf, "| @@yLevel@@W |            |                                                |\r\n", MSL );
+   strncat( buf, "| @@yrange@@W |   @@yAuthor@@W   |      @@yName of Area@@W                              |\r\n", MSL );
+   strncat( buf, "+-------+------------+------------------------------------------------+\r\n", MSL );
 
    foo = 0;
    for( pArea = first_area; pArea != NULL; pArea = pArea->next )
@@ -3248,10 +3248,10 @@ void do_areas( CHAR_DATA * ch, char *argument )
          continue;
 
       foo++;
-      snprintf( msg, MSL, " %s %12s          %s\n\r", pArea->level_label, capitalize( pArea->owner ), pArea->name );
+      snprintf( msg, MSL, " %s %12s          %s\r\n", pArea->level_label, capitalize( pArea->owner ), pArea->name );
       strncat( buf, msg, MSL );
    }
-   snprintf( msg, MSL, "@@R%d Areas listed.\n\r@@N Type areas all to list the entire " mudnamecolor " realm.\n\r@@N", foo );
+   snprintf( msg, MSL, "@@R%d Areas listed.\r\n@@N Type areas all to list the entire " mudnamecolor " realm.\r\n@@N", foo );
    strncat( buf, msg, MSL );
    send_to_char( buf, ch );
    return;
@@ -3270,7 +3270,7 @@ void perm_update(  )
    strtime = ctime( &current_time );
    strtime[strlen( strtime ) - 1] = '\0';
 
-   fprintf( po, "%s :: Perms   %5d blocks  of %7d bytes.\n\r", strtime, nAllocPerm, sAllocPerm );
+   fprintf( po, "%s :: Perms   %5d blocks  of %7d bytes.\r\n", strtime, nAllocPerm, sAllocPerm );
    file_close( po );
    return;
 }
@@ -3292,21 +3292,21 @@ void do_memory( CHAR_DATA * ch, char *argument )
    {
       if( get_trust( ch ) < MAX_LEVEL )
       {
-         send_to_char( "Not at your level.\n\r", ch );
+         send_to_char( "Not at your level.\r\n", ch );
          return;
       }
 
       if( mem_log )
       {
          mem_log = FALSE;
-         send_to_char( "Memory logging is now OFF.\n\r", ch );
+         send_to_char( "Memory logging is now OFF.\r\n", ch );
          log_f( "%s turned off memory logging", ch->name );
          return;
       }
       else
       {
          mem_log = TRUE;
-         send_to_char( "Memory logging is now ON.. remember to turn it off!\n\r", ch );
+         send_to_char( "Memory logging is now ON.. remember to turn it off!\r\n", ch );
          log_f( "%s turned on memory logging", ch->name );
          return;
       }
@@ -3314,46 +3314,46 @@ void do_memory( CHAR_DATA * ch, char *argument )
 
    
 
-   snprintf( buf, MSL, "Affects %5d\n\r", top_affect );
+   snprintf( buf, MSL, "Affects %5d\r\n", top_affect );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Areas   %5d\n\r", top_area );
+   snprintf( buf, MSL, "Areas   %5d\r\n", top_area );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "ExDes   %5d\n\r", top_ed );
+   snprintf( buf, MSL, "ExDes   %5d\r\n", top_ed );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Exits   %5d\n\r", top_exit );
+   snprintf( buf, MSL, "Exits   %5d\r\n", top_exit );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Helps   %5d\n\r", count_helps() );
+   snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Mobs    %5d\n\r", top_mob_index );
+   snprintf( buf, MSL, "Mobs    %5d\r\n", top_mob_index );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Objs    %5d\n\r", top_obj_index );
+   snprintf( buf, MSL, "Objs    %5d\r\n", top_obj_index );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Resets  %5d\n\r", top_reset );
+   snprintf( buf, MSL, "Resets  %5d\r\n", top_reset );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Rooms   %5d\n\r", top_room );
+   snprintf( buf, MSL, "Rooms   %5d\r\n", top_room );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Shops   %5d\n\r", top_shop );
+   snprintf( buf, MSL, "Shops   %5d\r\n", top_shop );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Shared String Info:\n\r" );
+   snprintf( buf, MSL, "Shared String Info:\r\n" );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Strings           %5ld strings of %7ld bytes (max %ld).\n\r", nAllocString, sAllocString, MAX_STRING );
+   snprintf( buf, MSL, "Strings           %5ld strings of %7ld bytes (max %ld).\r\n", nAllocString, sAllocString, MAX_STRING );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Overflow Strings  %5ld strings of %7ld bytes.\n\r", nOverFlowString, sOverFlowString );
+   snprintf( buf, MSL, "Overflow Strings  %5ld strings of %7ld bytes.\r\n", nOverFlowString, sOverFlowString );
    send_to_char( buf, ch );
    if( Full )
    {
-      send_to_char( "Shared String Heap is full, increase MAX_STRING.\n\r", ch );
-      snprintf( buf, MSL, "Overflow high-water-mark is %ld bytes.\n\r", hwOverFlow );
+      send_to_char( "Shared String Heap is full, increase MAX_STRING.\r\n", ch );
+      snprintf( buf, MSL, "Overflow high-water-mark is %ld bytes.\r\n", hwOverFlow );
       send_to_char( buf, ch );
    }
 
-   snprintf( buf, MSL, "Perms             %5d blocks  of %7d bytes.\n\r", nAllocPerm, sAllocPerm );
+   snprintf( buf, MSL, "Perms             %5d blocks  of %7d bytes.\r\n", nAllocPerm, sAllocPerm );
    send_to_char( buf, ch );
 
-   snprintf( buf, MSL, "Freelist Info: Gets: %5d Puts:   %5d\n\r",free_get,free_put);
+   snprintf( buf, MSL, "Freelist Info: Gets: %5d Puts:   %5d\r\n",free_get,free_put);
    send_to_char( buf, ch );
 
-   snprintf( buf, MSL, "File Streams: Opens: %5d Closes: %5d\n\r",fp_open,fp_close);
+   snprintf( buf, MSL, "File Streams: Opens: %5d Closes: %5d\r\n",fp_open,fp_close);
    send_to_char( buf, ch );
 
    return;
@@ -3364,22 +3364,22 @@ void do_status( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
 
-   send_to_char( "             Status Report for Ack! Mud:\n\r", ch );
-   send_to_char( "             ---------------------------\n\r\n\r", ch );
+   send_to_char( "             Status Report for Ack! Mud:\r\n", ch );
+   send_to_char( "             ---------------------------\r\n\r\n", ch );
    do_time( ch, "" );
 
-   send_to_char( "\n\r", ch );
-   send_to_char( "The following counts are for *distinct* mobs/objs/rooms, not a count\n\r", ch );
-   send_to_char( "of how many are actually in the game at this time.\n\r", ch );
-   snprintf( buf, MSL, "Areas   %5d\n\r", top_area );
+   send_to_char( "\r\n", ch );
+   send_to_char( "The following counts are for *distinct* mobs/objs/rooms, not a count\r\n", ch );
+   send_to_char( "of how many are actually in the game at this time.\r\n", ch );
+   snprintf( buf, MSL, "Areas   %5d\r\n", top_area );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Helps   %5d\n\r", count_helps() );
+   snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Mobs    %5d\n\r", top_mob_index );
+   snprintf( buf, MSL, "Mobs    %5d\r\n", top_mob_index );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Objs    %5d\n\r", top_obj_index );
+   snprintf( buf, MSL, "Objs    %5d\r\n", top_obj_index );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Rooms   %5d\n\r", top_room );
+   snprintf( buf, MSL, "Rooms   %5d\r\n", top_room );
    send_to_char( buf, ch );
 
    return;
@@ -3587,7 +3587,7 @@ void append_file( CHAR_DATA * ch, char *file, char *str )
    {
       file_close(fp);
       perror( file );
-      send_to_char( "Could not open the file!\n\r", ch );
+      send_to_char( "Could not open the file!\r\n", ch );
    }
    else
    {
@@ -4057,8 +4057,6 @@ void check_chistory( CHAR_DATA *ch, int channel )
      case CHANNEL_RACE:
       if( ch->race == chan_history.cbit[x][y] )
       {
-       snprintf(buf,MSL,"char: %d chan: %d\n\r",ch->race,chan_history.cbit[x][y]);
-       send_to_char(buf,ch);
        found = TRUE;
        send_to_char(chan_history.message[x][y],ch);
       }
@@ -4082,7 +4080,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
   }
 
  if( !found )
-  send_to_char("No history available for that channel yet.\n\r",ch);
+  send_to_char("No history available for that channel yet.\r\n",ch);
 
  return;
 }
@@ -4097,7 +4095,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
  {
   if( chan_history.message[x][y] == '\0' )
   {
-   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\n\r",NAME(ch),argument);
+   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\r\n",NAME(ch),argument);
    chan_history.time[x][y] = current_time;
    snprintf(chan_history.aname[x][y],128,"none");
    chan_history.cbit[x][y] = -1;
@@ -4130,7 +4128,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    chan_history.aname[x][y][0] = '\0';
    chan_history.cbit[x][y] = 0;
 
-   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\n\r",NAME(ch),argument);
+   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\r\n",NAME(ch),argument);
    chan_history.time[x][y] = current_time;
    snprintf(chan_history.aname[x][y],128,"none");
    chan_history.cbit[x][y] = -1;

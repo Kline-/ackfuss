@@ -120,15 +120,15 @@ char *rev_obj_fun_lookup( OBJ_FUN *func )
 
 void print_obj_fun_lookup( char *buf )
 {
-   strncat( buf, " objfun_giggle \n\r", MSL );
-   strncat( buf, " objfun_cast_fight	\n\r", MSL );
-   strncat( buf, " objfun_sword_aggro \n\r", MSL );
-   strncat( buf, " objfun_soul_moan \n\r", MSL );
-   strncat( buf, " objfun_infused_soul \n\r", MSL );
-   strncat( buf, " objfun_flaming \n\r", MSL );
-   strncat( buf, " objfun_healing \n\r", MSL );
-   strncat( buf, " objfun_dispeller \n\r", MSL );
-   strncat( buf, " objfun_regen \n\r", MSL );
+   strncat( buf, " objfun_giggle \r\n", MSL );
+   strncat( buf, " objfun_cast_fight	\r\n", MSL );
+   strncat( buf, " objfun_sword_aggro \r\n", MSL );
+   strncat( buf, " objfun_soul_moan \r\n", MSL );
+   strncat( buf, " objfun_infused_soul \r\n", MSL );
+   strncat( buf, " objfun_flaming \r\n", MSL );
+   strncat( buf, " objfun_healing \r\n", MSL );
+   strncat( buf, " objfun_dispeller \r\n", MSL );
+   strncat( buf, " objfun_regen \r\n", MSL );
 
    return;
 }

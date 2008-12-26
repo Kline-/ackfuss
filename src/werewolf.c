@@ -99,7 +99,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
    if( ch->level < 85 )
       if( !IS_WOLF( ch ) )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
 
@@ -120,19 +120,19 @@ void do_tribe( CHAR_DATA * ch, char *argument )
             switch ( index )
             {
                case 0:
-                  snprintf( buf, MSL, "\n\r@@WRENEGADE!!@@N\n\r" );
+                  snprintf( buf, MSL, "\r\n@@WRENEGADE!!@@N\r\n" );
                   break;
                case 1:
-                  snprintf( buf, MSL, "\n\r@@WCHANGE ME@@N\n\r" );
+                  snprintf( buf, MSL, "\r\n@@WCHANGE ME@@N\r\n" );
                   break;
                case 2:
-                  snprintf( buf, MSL, "\n\r@@WCHANGE ME@@N\n\r" );
+                  snprintf( buf, MSL, "\r\n@@WCHANGE ME@@N\r\n" );
                   break;
                case 3:
-                  snprintf( buf, MSL, "\n\r@@WCHANGE ME@@N\n\r" );
+                  snprintf( buf, MSL, "\r\n@@WCHANGE ME@@N\r\n" );
                   break;
                case 4:
-                  snprintf( buf, MSL, "\n\r@@WCHANGE ME@@N\n\r" );
+                  snprintf( buf, MSL, "\r\n@@WCHANGE ME@@N\r\n" );
                   break;
             }
 
@@ -152,7 +152,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
 
 
 
-                  snprintf( buf, MSL, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N  @@NRage: @@e%d@@N/@@e%d@@N   %-15s\n\r",
+                  snprintf( buf, MSL, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N  @@NRage: @@e%d@@N/@@e%d@@N   %-15s\r\n",
                            victim->name, get_tribe_standing_name( victim->pcdata->super->generation ), victim->pcdata->super->level,
                            victim->pcdata->super->energy, victim->pcdata->super->energy_max, victim->in_room->name );
                   send_to_char( buf, ch );
@@ -160,14 +160,14 @@ void do_tribe( CHAR_DATA * ch, char *argument )
             }
 
             if( !found )
-               send_to_char( "@@NNo @@bGarou@@N Tribe members were found.\n\r", ch );
+               send_to_char( "@@NNo @@bGarou@@N Tribe members were found.\r\n", ch );
 
          }
       }
       else
       {
 
-         snprintf( buf, MSL, "@@WMembers of the @@bGarou @@rTribe %s\n\r", get_tribe_name( ch ) );
+         snprintf( buf, MSL, "@@WMembers of the @@bGarou @@rTribe %s\r\n", get_tribe_name( ch ) );
          send_to_char( buf, ch );
          found = FALSE;
          for( d = first_desc; d != NULL; d = d->next )
@@ -180,14 +180,14 @@ void do_tribe( CHAR_DATA * ch, char *argument )
                   continue;
 
                found = TRUE;
-               snprintf( buf, MSL, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N\n\r",
+               snprintf( buf, MSL, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N\r\n",
                         victim->name, get_tribe_standing_name( victim->pcdata->super->generation ), victim->pcdata->super->level );
                send_to_char( buf, ch );
             }
          }
 
          if( !found )
-            send_to_char( "@@NNo other @@bGarou@@N @@rTribe@@N members were found.\n\r", ch );
+            send_to_char( "@@NNo other @@bGarou@@N @@rTribe@@N members were found.\r\n", ch );
 
       }
       return;
@@ -197,7 +197,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
    {
       if( ch->pcdata->super->generation > 1 )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
 
@@ -205,14 +205,14 @@ void do_tribe( CHAR_DATA * ch, char *argument )
 
       if( ( victim = get_char_room( ch, arg1 ) ) == NULL )
       {
-         send_to_char( "They aren't here.\n\r", ch );
+         send_to_char( "They aren't here.\r\n", ch );
          return;
       }
 
       if( ( IS_NPC( victim ) )
           || ( !IS_WOLF( victim ) ) || ( victim->pcdata->super->bloodline != ch->pcdata->super->bloodline ) )
       {
-         send_to_char( "They are not in your @@bTribe@@N!\n\r", ch );
+         send_to_char( "They are not in your @@bTribe@@N!\r\n", ch );
          return;
       }
 
@@ -220,7 +220,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
       {
          if( ( arg2[0] == '\0' ) || ( arg3[0] == '\0' ) )
          {
-            send_to_char( "Use tribe <wolf> standing <new standing>\n\r", ch );
+            send_to_char( "Use tribe <wolf> standing <new standing>\r\n", ch );
             return;
          }
          if( !str_cmp( arg3, "mate" ) )
@@ -242,11 +242,11 @@ void do_tribe( CHAR_DATA * ch, char *argument )
 
          else
          {
-            send_to_char( "@@yStandings@@N: mate warder guardian sentry elder adult younger cub.\n\r", ch );
+            send_to_char( "@@yStandings@@N: mate warder guardian sentry elder adult younger cub.\r\n", ch );
             return;
          }
 
-         snprintf( buf, MSL, "@@N%s's @@yStanding@@N is now %s in @@bTribe@@N %s.\n\r",
+         snprintf( buf, MSL, "@@N%s's @@yStanding@@N is now %s in @@bTribe@@N %s.\r\n",
                   victim->name, get_tribe_standing_name( victim->pcdata->super->generation ), get_tribe_name( ch ) );
          do_howl( ch, buf );
          return;
@@ -255,7 +255,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
       if( !str_cmp( arg2, "banish" ) )
       {
          int sn;
-         snprintf( buf, MSL, "@@N%s has been @@eBANISHED@@N from @@bTribe@@N %s.\n\r", victim->name, get_tribe_name( ch ) );
+         snprintf( buf, MSL, "@@N%s has been @@eBANISHED@@N from @@bTribe@@N %s.\r\n", victim->name, get_tribe_name( ch ) );
          do_howl( ch, buf );
          victim->pcdata->super->bloodline = 0;
          victim->pcdata->super->generation = 9;
@@ -274,7 +274,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
       }
 
 
-      send_to_char( "Uknown option--use tribe <wolf> standing <new standing>\n\r", ch );
+      send_to_char( "Uknown option--use tribe <wolf> standing <new standing>\r\n", ch );
       return;
    }
 }
@@ -289,19 +289,19 @@ void do_imprint( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) || !IS_WOLF( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_imprint] == 0 )
    {
-      send_to_char( "You have not been imprinted with this skill!\n\r", ch );
+      send_to_char( "You have not been imprinted with this skill!\r\n", ch );
       return;
    }
 
    if( ch->pcdata->super->generation > 3 )
    {
-      send_to_char( "Your @@bTribal @@yStanding@@N is not high enough to imprint!\n\r", ch );
+      send_to_char( "Your @@bTribal @@yStanding@@N is not high enough to imprint!\r\n", ch );
       return;
    }
 
@@ -309,19 +309,19 @@ void do_imprint( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Imprint who?\n\r", ch );
+      send_to_char( "Imprint who?\r\n", ch );
       return;
    }
 
    victim = get_char_room( ch, arg );
    if( victim == NULL )
    {
-      send_to_char( "Couldn't find the target.\n\r", ch );
+      send_to_char( "Couldn't find the target.\r\n", ch );
       return;
    }
    if( victim == ch )
    {
-      send_to_char( "Oh yeah, that would help a lot!\n\r", ch );
+      send_to_char( "Oh yeah, that would help a lot!\r\n", ch );
       return;
    }
 
@@ -339,26 +339,26 @@ void do_imprint( CHAR_DATA * ch, char *argument )
 
    if( ch->pcdata->learned[sn] == 0 || skill_table[sn].flag2 != WOLF )
    {
-      send_to_char( "@@NYou don't know that @@bGarou@@N skill!.\n\r", ch );
+      send_to_char( "@@NYou don't know that @@bGarou@@N skill!.\r\n", ch );
       return;
    }
    if( victim->pcdata->learned[sn] != 0 )
    {
-      send_to_char( "They already know that skill.\n\r", ch );
+      send_to_char( "They already know that skill.\r\n", ch );
       return;
    }
 
    if( victim->pcdata->super->level < skill_table[sn].skill_level[victim->pcdata->super->bloodline] )
    {
-      send_to_char( "@@NThey are too inexperienced in the ways of the @@bGarou@@N to learn this skill.\n\r", ch );
-      send_to_char( "@@NYou are to inexperienced in the ways of the @@bGarou@@N to learn this skill.\n\r", victim );
+      send_to_char( "@@NThey are too inexperienced in the ways of the @@bGarou@@N to learn this skill.\r\n", ch );
+      send_to_char( "@@NYou are to inexperienced in the ways of the @@bGarou@@N to learn this skill.\r\n", victim );
       return;
    }
 
    if( victim->pcdata->super->skills_learned >= victim->pcdata->super->skills_max )
    {
-      send_to_char( "They seem unable to grasp the instinct.\n\r", ch );
-      send_to_char( "@@NYou are unable to learn any more @@bGarou@@N knowledge at this time.\n\r", victim );
+      send_to_char( "They seem unable to grasp the instinct.\r\n", ch );
+      send_to_char( "@@NYou are unable to learn any more @@bGarou@@N knowledge at this time.\r\n", victim );
       return;
    }
 
@@ -368,8 +368,8 @@ void do_imprint( CHAR_DATA * ch, char *argument )
    victim->pcdata->super->pracs -= 1;
    victim->pcdata->super->skills_learned += 1;
 
-   send_to_char( "You have increased their @@bGarou@@N instincts@@N!!!\n\r", ch );
-   snprintf( buf, MSL, "You are now instinctively aware of @@e%s@@N!!!\n\r", skill_table[sn].name );
+   send_to_char( "You have increased their @@bGarou@@N instincts@@N!!!\r\n", ch );
+   snprintf( buf, MSL, "You are now instinctively aware of @@e%s@@N!!!\r\n", skill_table[sn].name );
    send_to_char( buf, victim );
 
 
@@ -387,37 +387,37 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
    if( !IS_WOLF( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return FALSE;
    }
    if( ch->pcdata->super->bloodline == 0 )
    {
-      send_to_char( "@@dOutcasts@@n can't tribal claw!!!\n\r", ch );
+      send_to_char( "@@dOutcasts@@n can't tribal claw!!!\r\n", ch );
       return FALSE;
    }
 
    if( IS_WOLF( victim ) )
    {
-      send_to_char( "@@NYour selection is already a @@bGarou@@N!!!.\n\r", ch );
+      send_to_char( "@@NYour selection is already a @@bGarou@@N!!!.\r\n", ch );
       return FALSE;
    }
 
    if( IS_NPC( victim ) )
    {
-      send_to_char( "Fergit it bub!!\n\r", ch );
+      send_to_char( "Fergit it bub!!\r\n", ch );
       return FALSE;
    }
 
 /*    if ( victim->pcdata->clan == 7 )
      {
-       send_to_char( "@@mNO WAY!!!!!@@W They are @@dKindred @@eKillers!!!!!@@N\n\r", ch );
+       send_to_char( "@@mNO WAY!!!!!@@W They are @@dKindred @@eKillers!!!!!@@N\r\n", ch );
        return FALSE;
      }
 
 */
    if( IS_VAMP( victim ) )
    {
-      send_to_char( "A sudden awareness comes over you, as you peer into their soul and see a @@dKindred@@N!!!\n\r", ch );
+      send_to_char( "A sudden awareness comes over you, as you peer into their soul and see a @@dKindred@@N!!!\r\n", ch );
       if( !IS_AWAKE( victim ) )
          do_wake( victim, "" );
       if( victim->position < POS_STANDING )
@@ -442,17 +442,17 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
    if( vamps > 0 )
    {
-      send_to_char( "In front of @@dKindred@@N??? Not a chance!!\n\r", ch );
+      send_to_char( "In front of @@dKindred@@N??? Not a chance!!\r\n", ch );
       return FALSE;
    }
    else if( mortals > 1 )
    {
-      send_to_char( "In front of @@aMortals@@N??? Not a chance!!\n\r", ch );
+      send_to_char( "In front of @@aMortals@@N??? Not a chance!!\r\n", ch );
       return FALSE;
    }
    else if( wolves < 4 )
    {
-      send_to_char( "You must have more @@bGarou@@N witnesses to the event.\n\r", ch );
+      send_to_char( "You must have more @@bGarou@@N witnesses to the event.\r\n", ch );
       return FALSE;
    }
 
@@ -465,7 +465,7 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
        */
       char socbuf[MSL];
 
-      act( "$N must grovel at your feet before you will accept him under your control.\n\r", ch, NULL, victim, TO_CHAR );
+      act( "$N must grovel at your feet before you will accept him under your control.\r\n", ch, NULL, victim, TO_CHAR );
       check_social( ch, "growl", victim->name );
       snprintf( socbuf, MSL, "%s", ch->name );
       check_social( victim, "grovel", socbuf );
@@ -489,19 +489,19 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       victim->pcdata->recall_vnum = ch->pcdata->recall_vnum;
 
 
-      send_to_char( "@@NYou thrash the cowering form beneath you, raking your @@eclaws@@N along it's soul.\n\r", ch );
-      send_to_char( "Then, in the final death throes, you chomp it's neck, tearing out it's essence,@@N\n\r", ch );
+      send_to_char( "@@NYou thrash the cowering form beneath you, raking your @@eclaws@@N along it's soul.\r\n", ch );
+      send_to_char( "Then, in the final death throes, you chomp it's neck, tearing out it's essence,@@N\r\n", ch );
       send_to_char
-         ( "and breathe your Tribal strength into the bloody corpse, making them forever submissive to your @@btribe@@N!!!\n\r",
+         ( "and breathe your Tribal strength into the bloody corpse, making them forever submissive to your @@btribe@@N!!!\r\n",
            ch );
 
-      send_to_char( "@@NYou feel your soul ripped asunder as the @@bGarou@@N @@eClaws@@N your very soul to shreds@@N!!\n\r",
+      send_to_char( "@@NYou feel your soul ripped asunder as the @@bGarou@@N @@eClaws@@N your very soul to shreds@@N!!\r\n",
                     victim );
-      send_to_char( "As it tears your throat out, and you begin to submit to death itself, you suddenly feel\n\r", victim );
-      send_to_char( "a strong, earthly essence overcome your soul.  As the strength of the @@bGarou@@N begins to fill\n\r",
+      send_to_char( "As it tears your throat out, and you begin to submit to death itself, you suddenly feel\r\n", victim );
+      send_to_char( "a strong, earthly essence overcome your soul.  As the strength of the @@bGarou@@N begins to fill\r\n",
                     victim );
       send_to_char
-         ( "your veins, your mind is flooded with the sudden knowledge of @@bTribal @@Npower and everlasting loyalty to the @@rEldest@@N.\n\r",
+         ( "your veins, your mind is flooded with the sudden knowledge of @@bTribal @@Npower and everlasting loyalty to the @@rEldest@@N.\r\n",
            victim );
 
       act( "$n suddenly reaches out and claws $N to shreds!", ch, NULL, victim, TO_NOTVICT );
@@ -566,13 +566,13 @@ void do_scent( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) || ( !IS_WOLF( ch ) ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
    if( ch->in_room->first_mark_list == NULL )
    {
-      send_to_char( "You do not smell any information here.\n\r", ch );
+      send_to_char( "You do not smell any information here.\r\n", ch );
       return;
    }
 
@@ -582,7 +582,7 @@ void do_scent( CHAR_DATA * ch, char *argument )
       if( mark_list->mark->type != WOLF )
          continue;
 
-      snprintf( buf, MSL, "%s : %s\n\r", mark_list->mark->author, mark_list->mark->message );
+      snprintf( buf, MSL, "%s : %s\r\n", mark_list->mark->author, mark_list->mark->message );
       send_to_char( buf, ch );
    }
    check_social( ch, "sniff", "" );

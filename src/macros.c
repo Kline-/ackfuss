@@ -174,7 +174,7 @@ bool ok_to_use( CHAR_DATA * ch, int value )
 {
    if( value == NO_USE && get_trust( ch ) < 85 )
    {
-      send_to_char( "Only Creators may use this value.\n\r", ch );
+      send_to_char( "Only Creators may use this value.\r\n", ch );
       return FALSE;
    }
    return TRUE;
@@ -193,22 +193,22 @@ bool check_level_use( CHAR_DATA * ch, int level )
    switch ( level )
    {
       case 85:
-         strncat( out, "Creators only.\n\r", MSL );
+         strncat( out, "Creators only.\r\n", MSL );
          break;
       case 84:
-         strncat( out, "Supremes or higher.\n\r", MSL );
+         strncat( out, "Supremes or higher.\r\n", MSL );
          break;
       case 83:
-         strncat( out, "Dieties or higher.\n\r", MSL );
+         strncat( out, "Dieties or higher.\r\n", MSL );
          break;
       case 82:
-         strncat( out, "Immortals or higher.\n\r", MSL );
+         strncat( out, "Immortals or higher.\r\n", MSL );
          break;
       case 81:
-         strncat( out, "Adepts or higher.\n\r", MSL );
+         strncat( out, "Adepts or higher.\r\n", MSL );
          break;
       default:
-         snprintf( buf, MSL, "level %d players and higher.\n\r", level );
+         snprintf( buf, MSL, "level %d players and higher.\r\n", level );
          strncat( out, buf, MSL );
    }
    send_to_char( out, ch );

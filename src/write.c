@@ -72,7 +72,7 @@ void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
    {
       bug( "Not enough memory for string editing.", 0 );
       *dest = &str_empty[0];
-      send_to_char( "WARNING: No memory left. Things will start to go wrong.\n\r", ch );
+      send_to_char( "WARNING: No memory left. Things will start to go wrong.\r\n", ch );
       return;
    }
 
@@ -117,7 +117,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
 
    if( buf_data == NULL )
    {
-      bugf( "Call to write_interpret when not writing (char=%s)\n\r", ch->name );
+      bugf( "Call to write_interpret when not writing (char=%s)\r\n", ch->name );
       ch->position = POS_STANDING;
       return;
    }
@@ -133,7 +133,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
       curlen = strlen( buf );
       if( curlen > MAX_STRING_LENGTH - 240 )
       {
-         send_to_char( "String to long, cannot add new line.\n\r", ch );
+         send_to_char( "String to long, cannot add new line.\r\n", ch );
          return;
       }
       for( buf = buf + curlen; *argument != '\0'; )
@@ -177,7 +177,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
          if( *dest != buf )
          {
             bug( "write_interpret: Original destination has been overwritten.", 0 );
-            send_to_char( "Cannot save, string pointer been modified.\n\r", ch );
+            send_to_char( "Cannot save, string pointer been modified.\r\n", ch );
          }
          else
          {
@@ -186,7 +186,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
             {
              if( (fp = file_open(ch->pcdata->header,"w")) == NULL )
              {
-              send_to_char("Something is broken in write_interpret saving to file.\n\r",ch);
+              send_to_char("Something is broken in write_interpret saving to file.\r\n",ch);
               file_close(fp);
               return;
              }
@@ -234,16 +234,16 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
       CHAR_DATA *ch;
       ch = buf_data->ch;
 
-      send_to_char( "Normal type will be appended to the string, line by line.\n\r", ch );
-      send_to_char( ".help     or .h :  displays this help.\n\r", ch );
-      send_to_char( ".save     or .  :  saves and exits the editor.\n\r", ch );
-      send_to_char( ".preview  or .p :  display a preview of the text.\n\r", ch );
-      send_to_char( ".-[num]   or .- :  deletes [num] lines from the end, or just one line\n\r", ch );
-      send_to_char( ".clear          :  deletes whole text.\n\r", ch );
-      send_to_char( ".quit     or .q :  quits without saving.\n\r", ch );
-      send_to_char( ".format   or .f :  formats text for 80 chars.\n\r", ch );
-      send_to_char( ".replace  or .r :  replaces word with string.\n\r", ch );
-      send_to_char( "	       (usage) :  .r <word> <string>.  If no string, arg1 deleted.\n\r", ch );
+      send_to_char( "Normal type will be appended to the string, line by line.\r\n", ch );
+      send_to_char( ".help     or .h :  displays this help.\r\n", ch );
+      send_to_char( ".save     or .  :  saves and exits the editor.\r\n", ch );
+      send_to_char( ".preview  or .p :  display a preview of the text.\r\n", ch );
+      send_to_char( ".-[num]   or .- :  deletes [num] lines from the end, or just one line\r\n", ch );
+      send_to_char( ".clear          :  deletes whole text.\r\n", ch );
+      send_to_char( ".quit     or .q :  quits without saving.\r\n", ch );
+      send_to_char( ".format   or .f :  formats text for 80 chars.\r\n", ch );
+      send_to_char( ".replace  or .r :  replaces word with string.\r\n", ch );
+      send_to_char( "	       (usage) :  .r <word> <string>.  If no string, arg1 deleted.\r\n", ch );
       return;
    }
 
@@ -271,7 +271,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
 
       if( arg1[0] == '\0' )
       {
-         send_to_char( "No arg1 supplied for replace command.\n\r", ch );
+         send_to_char( "No arg1 supplied for replace command.\r\n", ch );
          return;
       }
 
@@ -333,7 +333,7 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
                 */
                if( npos > 0 )
                   npos--;
-               send_to_char( "Arg1 deleted.\n\r", ch );
+               send_to_char( "Arg1 deleted.\r\n", ch );
             }
          }
          else
@@ -393,14 +393,14 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
 
       if( a == 0 )
       {
-         send_to_char( "Tried to delete too many lines.\n\r", buf_data->ch );
+         send_to_char( "Tried to delete too many lines.\r\n", buf_data->ch );
          return;
       }
 
       a++;
       if( buf[a] == '\r' )
          a++;
-      send_to_char( "Deleted:\n\r", buf_data->ch );
+      send_to_char( "Deleted:\r\n", buf_data->ch );
       send_to_char( buf + a, buf_data->ch );
 
       buf[a] = '\0';
@@ -582,10 +582,10 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
    if( !str_cmp( argument, "clear" ) )
    {
       buf[0] = '\0';
-      send_to_char( "Done.\n\r", buf_data->ch );
+      send_to_char( "Done.\r\n", buf_data->ch );
       return;
    }
 
-   send_to_char( "Command not known, type .help for help.\n\r", buf_data->ch );
+   send_to_char( "Command not known, type .help for help.\r\n", buf_data->ch );
    return;
 }

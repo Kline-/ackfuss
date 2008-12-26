@@ -86,15 +86,15 @@ void trigger_show( CHAR_DATA * ch )
 {
    char buf[MAX_STRING_LENGTH];
 
-   snprintf( buf, MSL, "Trigger objects information:\n\r" );
+   snprintf( buf, MSL, "Trigger objects information:\r\n" );
 
-   strncat( buf, "v1  Name           v2		    v3\n\r", MSL );
-   strncat( buf, "--  ----        ---------       ---------\n\r", MSL );
-   strncat( buf, " 1  Transport   Room vnum          N/A\n\r", MSL );
-   strncat( buf, " 2  Restore	    N/A		    N/A\n\r", MSL );
-   strncat( buf, " 3  Slay	    N/A	            N/A\n\r", MSL );
-   strncat( buf, " 4  Transform   Mob Vnum	    N/A\n\r", MSL );
-   strncat( buf, "v0 determines what action causes the trigger:\n\r", MSL );
+   strncat( buf, "v1  Name           v2		    v3\r\n", MSL );
+   strncat( buf, "--  ----        ---------       ---------\r\n", MSL );
+   strncat( buf, " 1  Transport   Room vnum          N/A\r\n", MSL );
+   strncat( buf, " 2  Restore	    N/A		    N/A\r\n", MSL );
+   strncat( buf, " 3  Slay	    N/A	            N/A\r\n", MSL );
+   strncat( buf, " 4  Transform   Mob Vnum	    N/A\r\n", MSL );
+   strncat( buf, "v0 determines what action causes the trigger:\r\n", MSL );
    strncat( buf, "blah blah blah", MSL );
    send_to_char( buf, ch );
    return;
@@ -142,7 +142,7 @@ void trig_transfer( CHAR_DATA * ch, OBJ_DATA * obj )
       stop_fighting( ch, TRUE );
 
    act( "$n vanishes suddenly!", ch, NULL, NULL, TO_ROOM );
-   send_to_char( "You vanish suddenly!\n\r", ch );
+   send_to_char( "You vanish suddenly!\r\n", ch );
    char_from_room( ch );
    char_to_room( ch, location );
    do_look( ch, "auto" );
@@ -157,7 +157,7 @@ void trig_restore( CHAR_DATA * ch, OBJ_DATA * obj )
    ch->hit = ch->max_hit;
    ch->mana = ch->max_mana;
    ch->move = ch->max_move;
-   send_to_char( "You feel very healthy!\n\r", ch );
+   send_to_char( "You feel very healthy!\r\n", ch );
    return;
 }
 

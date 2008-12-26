@@ -159,22 +159,22 @@ void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
 
    if( board->min_read_lev > get_trust( ch ) )
    {
-      send_to_char( "You are not allowed to look at this board.\n\r", ch );
+      send_to_char( "You are not allowed to look at this board.\r\n", ch );
       return;
    }
 
    if( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->pcdata->clan != ( board->clan - 1 ) )
    {
-      send_to_char( "You are not of the right clan to read this board.\n\r", ch );
+      send_to_char( "You are not of the right clan to read this board.\r\n", ch );
       return;
    }
 
 
-   send_to_char( "This is a notice board.\n\r", ch );
-   send_to_char( "Type READ <num> to read message <num>, and WRITE <title> to post.\n\r", ch );
-   send_to_char( "Type WRITE to: <player> for a private message.\n\r", ch );
-   send_to_char( "Type DELETE <num> to delete message <num> that you have writen.\n\r", ch );
-   send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r", ch );
+   send_to_char( "This is a notice board.\r\n", ch );
+   send_to_char( "Type READ <num> to read message <num>, and WRITE <title> to post.\r\n", ch );
+   send_to_char( "Type WRITE to: <player> for a private message.\r\n", ch );
+   send_to_char( "Type DELETE <num> to delete message <num> that you have writen.\r\n", ch );
+   send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", ch );
 
 
    for( msg = board->first_message; msg != NULL; msg = msg->next )
@@ -187,10 +187,10 @@ void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
 
    if( cnt == 0 ) /* then there were no messages here */
    {
-      send_to_char( "         There are no messages right now!\n\r", ch );
+      send_to_char( "         There are no messages right now!\r\n", ch );
    }
 
-   send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r", ch );
+   send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", ch );
 
    return;
 }
@@ -329,7 +329,7 @@ void save_board( BOARD_DATA * board, CHAR_DATA * ch )
    snprintf( buf, MSL, "%s/board.%i", BOARD_DIR, board->vnum );
    if( ( board_file = file_open( buf, "w" ) ) == NULL )
    {
-      send_to_char( "Cannot save board, please contact an immortal.\n\r", ch );
+      send_to_char( "Cannot save board, please contact an immortal.\r\n", ch );
       bug( "Could not save file board.%i.", board->vnum );
       file_close(board_file);
       return;
@@ -382,13 +382,13 @@ void do_delete( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) )
    {
-      send_to_char( "NPCs may *not* delete messages.  So there.\n\r", ch );
+      send_to_char( "NPCs may *not* delete messages.  So there.\r\n", ch );
       return;
    }
 
    if( argument[0] == '\0' )
    {
-      send_to_char( "You need to specify a message number to delete!\n\r", ch );
+      send_to_char( "You need to specify a message number to delete!\r\n", ch );
       return;
    }
 
@@ -400,7 +400,7 @@ void do_delete( CHAR_DATA * ch, char *argument )
 
    if( object == NULL )
    {
-      send_to_char( "Delete on what?\n\r.", ch );
+      send_to_char( "Delete on what?\r\n.", ch );
       return;
    }
 
@@ -425,13 +425,13 @@ void do_delete( CHAR_DATA * ch, char *argument )
 
    if( board->min_write_lev > get_trust( ch ) )
    {
-      send_to_char( "You are not allowed to delete on this board.\n\r", ch );
+      send_to_char( "You are not allowed to delete on this board.\r\n", ch );
       return;
    }
 
    if( ( board->clan != 0 ) && ch->pcdata->clan != ( board->clan - 1 ) )
    {
-      send_to_char( "You are not of the right clan to delete on this board.\n\r", ch );
+      send_to_char( "You are not of the right clan to delete on this board.\r\n", ch );
       return;
    }
 
@@ -445,7 +445,7 @@ void do_delete( CHAR_DATA * ch, char *argument )
 
    if( msg == NULL )
    {
-      send_to_char( "No such message!\n\r", ch );
+      send_to_char( "No such message!\r\n", ch );
       return;
    }
 
@@ -455,7 +455,7 @@ void do_delete( CHAR_DATA * ch, char *argument )
    if( str_cmp( ch->name, msg->author ) && !is_name( ch->name, msg->title )
        && get_trust( ch ) < MAX_LEVEL && str_cmp( ch->name, clan_table[board->clan].leader ) )
    {
-      send_to_char( "Not your message.\n\r", ch );
+      send_to_char( "Not your message.\r\n", ch );
       return;
    }
 
@@ -511,13 +511,13 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 
    if( board->min_read_lev > get_trust( ch ) )
    {
-      send_to_char( "You are not allowed to look at this board.\n\r", ch );
+      send_to_char( "You are not allowed to look at this board.\r\n", ch );
       return;
    }
 
    if( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->pcdata->clan != ( board->clan - 1 ) )
    {
-      send_to_char( "You are not of the right clan to read this board.\n\r", ch );
+      send_to_char( "You are not of the right clan to read this board.\r\n", ch );
       return;
    }
 
@@ -531,10 +531,10 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
          to_person = one_argument( to_person, private_name );
          if( !str_cmp( to_check, "to:" ) && str_prefix( private_name, ch->name ) && str_cmp( msg->author, ch->name ) )
          {
-            send_to_char( "This is a private message.\n\r", ch );
+            send_to_char( "This is a private message.\r\n", ch );
             break;
          }
-         snprintf( buf, MSL, "** [%d] %12s : %s ** \n\r\n\r%s\n\r", cnt, msg->author, msg->title, msg->message );
+         snprintf( buf, MSL, "** [%d] %12s : %s ** \r\n\r\n%s\r\n", cnt, msg->author, msg->title, msg->message );
          send_to_char( buf, ch );
          break;
       }
@@ -542,7 +542,7 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 
    if( !mfound )
    {
-      send_to_char( "No such message!\n\r", ch );
+      send_to_char( "No such message!\r\n", ch );
    }
 
    return;
@@ -560,13 +560,13 @@ void do_write( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) )
    {
-      send_to_char( "NPCs may *not* write messages.  So there.\n\r", ch );
+      send_to_char( "NPCs may *not* write messages.  So there.\r\n", ch );
       return;
    }
 
    if( argument[0] == '\0' )
    {
-      send_to_char( "You need to specify a header for your message!\n\r", ch );
+      send_to_char( "You need to specify a header for your message!\r\n", ch );
       return;
    }
 
@@ -578,7 +578,7 @@ void do_write( CHAR_DATA * ch, char *argument )
 
    if( object == NULL )
    {
-      send_to_char( "Write on what?\n\r.", ch );
+      send_to_char( "Write on what?\r\n.", ch );
       return;
    }
 
@@ -603,13 +603,13 @@ void do_write( CHAR_DATA * ch, char *argument )
 
    if( board->min_write_lev > get_trust( ch ) )
    {
-      send_to_char( "You are not allowed to write on this board.\n\r", ch );
+      send_to_char( "You are not allowed to write on this board.\r\n", ch );
       return;
    }
 
    if( ( board->clan != 0 ) && ch->pcdata->clan != ( board->clan - 1 ) )
    {
-      send_to_char( "You are not of the right clan to write on this board.\n\r", ch );
+      send_to_char( "You are not of the right clan to write on this board.\r\n", ch );
       return;
    }
 
@@ -632,12 +632,12 @@ void do_write( CHAR_DATA * ch, char *argument )
 
    if( msg->message != &str_empty[0] )
    {
-      send_to_char( "Editing message. Type .help for help.\n\r", ch );
+      send_to_char( "Editing message. Type .help for help.\r\n", ch );
       LINK( msg, board->first_message, board->last_message, next, prev );
    }
    else
    {
-      send_to_char( "Could not add message.\n\r", ch );
+      send_to_char( "Could not add message.\r\n", ch );
       delete msg;
    }
    return;
@@ -685,7 +685,7 @@ void do_read( CHAR_DATA * ch, char *argument )
 
    if( ( argument[0] == '\0' ) || !is_number( argument ) )
    {
-      send_to_char( "Read what??\n\r", ch );
+      send_to_char( "Read what??\r\n", ch );
       return;
    }
 
@@ -697,7 +697,7 @@ void do_read( CHAR_DATA * ch, char *argument )
 
    if( obj == NULL )
    {
-      send_to_char( "Read What??\n\r", ch );
+      send_to_char( "Read What??\r\n", ch );
       return;
    }
 
@@ -749,13 +749,13 @@ void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 
    if( board->min_read_lev > get_trust( ch ) )
    {
-      send_to_char( "You are not allowed to even look at this board!\n\r", ch );
+      send_to_char( "You are not allowed to even look at this board!\r\n", ch );
       return;
    }
 
    if( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->pcdata->clan != ( board->clan - 1 ) )
    {
-      send_to_char( "You are not of the right clan to even read this board!\n\r", ch );
+      send_to_char( "You are not of the right clan to even read this board!\r\n", ch );
       return;
    }
 
@@ -767,7 +767,7 @@ void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 
          if( str_cmp( msg->author, ch->name ) )
          {
-            send_to_char( "Not your message to edit!\n\r", ch );
+            send_to_char( "Not your message to edit!\r\n", ch );
             return;
          }
          else
@@ -778,7 +778,7 @@ void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
       }
    }
    if( !mfound )
-      send_to_char( "No such message!\n\r", ch );
+      send_to_char( "No such message!\r\n", ch );
 
    return;
 }
@@ -790,7 +790,7 @@ void do_edit( CHAR_DATA * ch, char *argument )
 
    if( ( argument[0] == '\0' ) || !is_number( argument ) )
    {
-      send_to_char( "Read what??\n\r", ch );
+      send_to_char( "Read what??\r\n", ch );
       return;
    }
 
@@ -802,7 +802,7 @@ void do_edit( CHAR_DATA * ch, char *argument )
 
    if( obj == NULL )
    {
-      send_to_char( "Read What??\n\r", ch );
+      send_to_char( "Read What??\r\n", ch );
       return;
    }
 

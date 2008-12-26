@@ -669,7 +669,7 @@ void do_scheck( CHAR_DATA * ch, char *argument )
    walk_sysdata(  );
    walk_ngroups(  );
 
-   snprintf( buf, MSL, "%ld leaks dumped to leaks.dmp\n\r", dump(  ) );
+   snprintf( buf, MSL, "%ld leaks dumped to leaks.dmp\r\n", dump(  ) );
    send_to_char( buf, ch );
    disable_timer_abort = FALSE;
 }

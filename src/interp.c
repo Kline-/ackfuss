@@ -990,13 +990,13 @@ void interpret( CHAR_DATA * ch, char *argument )
     */
    if( !IS_NPC( ch ) && ch->act.test(ACT_FREEZE) )
    {
-      send_to_char( "@@a@@fYou're totally frozen!@@N\n\r", ch );
+      send_to_char( "@@a@@fYou're totally frozen!@@N\r\n", ch );
       return;
    }
 
    if( ch->stun_timer > 0 )
    {
-      send_to_char( "You are too@@aSTUNNED@@N to act!\n\r", ch );
+      send_to_char( "You are too@@aSTUNNED@@N to act!\r\n", ch );
       return;
    }
 
@@ -1090,7 +1090,7 @@ void interpret( CHAR_DATA * ch, char *argument )
    if( ch->desc != NULL && ch->desc->snoop_by != NULL )  /* -S- Mod */
    {
       char snp[MAX_STRING_LENGTH];
-      snprintf( snp, MSL, "[Snoop:%s] %s\n\r", ch->name, logline );
+      snprintf( snp, MSL, "[Snoop:%s] %s\r\n", ch->name, logline );
       write_to_buffer( ch->desc->snoop_by, snp, 0 );
    }
 
@@ -1128,7 +1128,7 @@ void interpret( CHAR_DATA * ch, char *argument )
           && !I3_command_hook( ch, command, argument )
 #endif
           )
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -1137,7 +1137,7 @@ void interpret( CHAR_DATA * ch, char *argument )
     */
    if( IS_GHOST(ch) && cmd_table[cmd].ghost_cmd == false )
    {
-    send_to_char("Not while you're @@R@@fdead@@N!\n\r",ch);
+    send_to_char("Not while you're @@R@@fdead@@N!\r\n",ch);
     return;
    }
 
@@ -1146,28 +1146,28 @@ void interpret( CHAR_DATA * ch, char *argument )
       switch ( ch->position )
       {
          case POS_DEAD:
-            send_to_char( "Lie still; you are @@dDEAD@@N.\n\r", ch );
+            send_to_char( "Lie still; you are @@dDEAD@@N.\r\n", ch );
             break;
 
          case POS_MORTAL:
          case POS_INCAP:
-            send_to_char( "You are @@Rhurt@@N far too bad for that.\n\r", ch );
+            send_to_char( "You are @@Rhurt@@N far too bad for that.\r\n", ch );
             break;
 
          case POS_STUNNED:
-            send_to_char( "You are too @@estunned@@N to do that.\n\r", ch );
+            send_to_char( "You are too @@estunned@@N to do that.\r\n", ch );
             break;
 
          case POS_SLEEPING:
-            send_to_char( "Oh, go back to @@Wsleep!@@N\n\r", ch );
+            send_to_char( "Oh, go back to @@Wsleep!@@N\r\n", ch );
             break;
 
          case POS_RESTING:
-            send_to_char( "Naaaaaah... You feel too @@brelaxed@@N...\n\r", ch );
+            send_to_char( "Naaaaaah... You feel too @@brelaxed@@N...\r\n", ch );
             break;
 
          case POS_FIGHTING:
-            send_to_char( "Not until you @@Rstop@@N fighting!\n\r", ch );
+            send_to_char( "Not until you @@Rstop@@N fighting!\r\n", ch );
             break;
 
       }
@@ -1189,7 +1189,7 @@ void interpret( CHAR_DATA * ch, char *argument )
 
 
    {
-      send_to_char( "You step out of the shadows.\n\r", ch );
+      send_to_char( "You step out of the shadows.\r\n", ch );
       ch->stance = STANCE_WARRIOR;
       ch->stance_ac_mod = 0;
       ch->stance_dr_mod = 0;
@@ -1236,29 +1236,29 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
 
    if( !IS_NPC( ch ) && ch->act.test(ACT_NO_EMOTE) )
    {
-      send_to_char( "You are anti-social!\n\r", ch );
+      send_to_char( "You are anti-social!\r\n", ch );
       return TRUE;
    }
 
    if( IS_GHOST(ch) )
    {
-    send_to_char("Your ghostly form can't seem to convery emotions...\n\r",ch);
+    send_to_char("Your ghostly form can't seem to convery emotions...\r\n",ch);
     return true;
    }
 
    switch ( ch->position )
    {
       case POS_DEAD:
-         send_to_char( "Lie still; you are @@dDEAD@@N.\n\r", ch );
+         send_to_char( "Lie still; you are @@dDEAD@@N.\r\n", ch );
          return TRUE;
 
       case POS_INCAP:
       case POS_MORTAL:
-         send_to_char( "You are @@Rhurt@@N far too bad for that.\n\r", ch );
+         send_to_char( "You are @@Rhurt@@N far too bad for that.\r\n", ch );
          return TRUE;
 
       case POS_STUNNED:
-         send_to_char( "You are too @@estunned@@N to do that.\n\r", ch );
+         send_to_char( "You are too @@estunned@@N to do that.\r\n", ch );
          return TRUE;
 
       case POS_SLEEPING:
@@ -1268,7 +1268,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
           */
          if( !str_cmp( social_table[cmd].name, "snore" ) )
             break;
-         send_to_char( "In your @@Wdreams@@N, or what?\n\r", ch );
+         send_to_char( "In your @@Wdreams@@N, or what?\r\n", ch );
          return TRUE;
 
    }
@@ -1282,7 +1282,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
    }
    else if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
    }
    else if( victim == ch )
    {

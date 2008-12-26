@@ -104,13 +104,13 @@ void do_clutch( CHAR_DATA * ch, char *argument )
 
    if( obj == NULL )
    {
-      send_to_char( "You have nothing to clutch!\n\r", ch );
+      send_to_char( "You have nothing to clutch!\r\n", ch );
       return;
    }
 
    if( !valid_clutch_number( obj->value[0] - 1 ) )
    {
-      send_to_char( "Nothing happens.\n\r", ch );
+      send_to_char( "Nothing happens.\r\n", ch );
       return;
    }
 
@@ -147,13 +147,13 @@ void clutch_portal( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj )
    room = get_room_index( v1 );
    if( room == NULL )
    {
-      send_to_char( "Nothing seems to have happened!\n\r", ch );
+      send_to_char( "Nothing seems to have happened!\r\n", ch );
       return;
    }
 
 
    act( "A glowing portal forms before $n, swallowing $m whole!", ch, NULL, NULL, TO_ROOM );
-   send_to_char( "A glowing portal forms before you, swallowing you whole!\n\r", ch );
+   send_to_char( "A glowing portal forms before you, swallowing you whole!\r\n", ch );
    stop_fighting( ch, TRUE );
    char_from_room( ch );
    char_to_room( ch, room );
@@ -174,7 +174,7 @@ void clutch_gate( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj )
    mob = get_mob_index( v1 );
    if( mob == NULL )
    {
-      send_to_char( "Nothing seems to have happened!\n\r", ch );
+      send_to_char( "Nothing seems to have happened!\r\n", ch );
       return;
    }
 

@@ -79,7 +79,7 @@ void do_mount( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) )
    {
-      send_to_char( "Mob can't ride anything!\n\r ", ch );
+      send_to_char( "Mob can't ride anything!\r\n ", ch );
       return;
    }
 
@@ -89,13 +89,13 @@ void do_mount( CHAR_DATA * ch, char *argument )
    {
       if( ( mount = get_char_room( ch, arg ) ) == NULL )
       {
-         send_to_char( "I see no one by that name " "here!\n\r", ch );
+         send_to_char( "I see no one by that name " "here!\r\n", ch );
          return;
       }
    }
    else
    {
-      send_to_char( "Whom do you wish to ride?\n\r", ch );
+      send_to_char( "Whom do you wish to ride?\r\n", ch );
       return;
    }
 
@@ -104,26 +104,26 @@ void do_mount( CHAR_DATA * ch, char *argument )
       if( ( ch->riding == NULL ) )
       {
          ch->position = POS_STANDING;
-         send_to_char( "Odd, you were mounted on thin air!\n\r", ch );
+         send_to_char( "Odd, you were mounted on thin air!\r\n", ch );
          return;
       }
    }
 
    if( mount == ch )
    {
-      send_to_char( "Ride on your own back?  How?\n\r", ch );
+      send_to_char( "Ride on your own back?  How?\r\n", ch );
       return;
    }
 
    if( ch->position == POS_RIDING )
    {
-      send_to_char( "You are already riding on something.\n\r", ch );
+      send_to_char( "You are already riding on something.\r\n", ch );
       return;
    }
 
    if( ch->in_room->room_flags.test(RFLAG_SOLITARY) )
    {
-      send_to_char( "This room is too narrow to ride.\n\r", ch );
+      send_to_char( "This room is too narrow to ride.\r\n", ch );
       return;
    }
 
@@ -204,7 +204,7 @@ void do_dismount( CHAR_DATA * ch, char *argument )
 {
    if( IS_NPC( ch ) )
    {
-      send_to_char( "You can't dismount.\n\r", ch );
+      send_to_char( "You can't dismount.\r\n", ch );
       return;
    }
 
@@ -213,7 +213,7 @@ void do_dismount( CHAR_DATA * ch, char *argument )
       if( !IS_RIDING( ch ) )
       {
          ch->position = POS_STANDING;
-         send_to_char( "Odd, you were mounted on thin air!\n\r", ch );
+         send_to_char( "Odd, you were mounted on thin air!\r\n", ch );
          return;
       }
    }
@@ -241,7 +241,7 @@ void do_dismount( CHAR_DATA * ch, char *argument )
          stop_follower( ch->riding );
    }
    else
-      send_to_char( "You are not riding anything!\n\r", ch );
+      send_to_char( "You are not riding anything!\r\n", ch );
 }
 
 /* update riding info when mount/rider no longer in same room

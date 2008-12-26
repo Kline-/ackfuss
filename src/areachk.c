@@ -222,7 +222,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
 
             if( new_vnum > max_vnum )
             {
-               snprintf( buffer, MSL, "Not enough vnums in area %s\n\r", CurArea->name );
+               snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
                send_to_char( buffer, ch );
             }
             else
@@ -258,7 +258,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
 
             if( new_vnum > max_vnum )
             {
-               snprintf( buffer, MSL, "Not enough vnums in area %s\n\r", CurArea->name );
+               snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
                send_to_char( buffer, ch );
             }
             else
@@ -294,7 +294,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
 
             if( new_vnum > max_vnum )
             {
-               snprintf( buffer, MSL, "Not enough vnums in area %s\n\r", CurArea->name );
+               snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
                send_to_char( buffer, ch );
             }
             else
@@ -438,6 +438,6 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
 
 void do_check_area( CHAR_DATA * ch, char *argument )
 {
-   send_to_char( "You must say check_areas in full.\n\r", ch );
+   send_to_char( "You must say check_areas in full.\r\n", ch );
    return;
 }

@@ -341,14 +341,14 @@ bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
          break;
       if( ( ( mn = money_lookup( m_name ) ) < 0 ) || ( !is_number( m_number ) ) )
       {
-         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return FALSE;
       }
       if( ch->money->cash_unit[mn] < atoi( m_number ) )
       {
-         snprintf( outbuf, MSL, "You don't have %s %s!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "You don't have %s %s!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return FALSE;
@@ -358,7 +358,7 @@ bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
    }
    if( ( victim->carry_weight + money_weight( transfer ) ) > can_carry_w( victim ) )
    {
-      snprintf( outbuf, MSL, "%s cannot carry that much weight!\n\r", PERS( ch, victim ) );
+      snprintf( outbuf, MSL, "%s cannot carry that much weight!\r\n", PERS( ch, victim ) );
       send_to_char( outbuf, ch );
       join_money( transfer, ch->money );
       return FALSE;
@@ -402,14 +402,14 @@ bool withdraw_money( CHAR_DATA * ch, char *argument )
          break;
       if( ( ( mn = money_lookup( m_name ) ) < 0 ) || ( !is_number( m_number ) ) )
       {
-         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->bank_money );
          return FALSE;
       }
       if( ch->bank_money->cash_unit[mn] < atoi( m_number ) )
       {
-         snprintf( outbuf, MSL, "You don't have %s %s in the bank!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "You don't have %s %s in the bank!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->bank_money );
          return FALSE;
@@ -419,7 +419,7 @@ bool withdraw_money( CHAR_DATA * ch, char *argument )
    }
    if( ( ch->carry_weight + money_weight( transfer ) ) > can_carry_w( ch ) )
    {
-      snprintf( outbuf, MSL, "%s", "You cannot carry that much weight!\n\r" );
+      snprintf( outbuf, MSL, "%s", "You cannot carry that much weight!\r\n" );
       send_to_char( outbuf, ch );
       join_money( transfer, ch->bank_money );
       return FALSE;
@@ -461,14 +461,14 @@ void deposit_money( CHAR_DATA * ch, char *argument )
          break;
       if( ( ( mn = money_lookup( m_name ) ) < 0 ) || ( !is_number( m_number ) ) )
       {
-         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return;
       }
       if( ch->money->cash_unit[mn] < atoi( m_number ) )
       {
-         snprintf( outbuf, MSL, "You don't have %s %s!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "You don't have %s %s!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return;
@@ -514,14 +514,14 @@ int exchange_money( CHAR_DATA * ch, char *argument )
          break;
       if( ( ( mn = money_lookup( m_name ) ) < 0 ) || ( !is_number( m_number ) ) )
       {
-         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return -1;
       }
       if( ch->money->cash_unit[mn] < atoi( m_number ) )
       {
-         snprintf( outbuf, MSL, "You don't have %s %s!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "You don't have %s %s!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return -1;
@@ -550,7 +550,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
 
    if( ( victim = get_char_room( ch, v_name ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
    one_argument( argument, arg1 );
@@ -563,7 +563,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       MONEY_TYPE *transfer;
       if( get_trust( ch ) < 84 )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
       argument = one_argument( argument, arg1 );
@@ -571,7 +571,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       argument = one_argument( argument, m_name );
       if( ( mn = money_lookup( m_name ) ) < 0 )
       {
-         send_to_char( "No such money unit.\n\r", ch );
+         send_to_char( "No such money unit.\r\n", ch );
          return;
       }
       GET_FREE( transfer, money_type_free );
@@ -588,7 +588,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       transfer->cash_unit[mn] += ( is_number( m_number ) ? atoi( m_number ) : 10 );
       victim->carry_weight += money_weight( transfer );
       join_money( transfer, victim->money );
-      send_to_char( "Done.\n\r", ch );
+      send_to_char( "Done.\r\n", ch );
       return;
    }
    if( !str_cmp( arg1, "exchange" ) )
@@ -596,7 +596,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       int m_val;
       if( get_trust( ch ) < 84 )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
       m_val = money_value( victim->money );
@@ -604,7 +604,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       PUT_FREE( victim->money, money_type_free );
       victim->money = round_money( m_val, TRUE );
       victim->carry_weight += money_weight( victim->money );
-      send_to_char( "Done.\n\r", ch );
+      send_to_char( "Done.\r\n", ch );
       return;
    }
    if( !str_cmp( arg1, "delete" ) )
@@ -616,7 +616,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       MONEY_TYPE *transfer;
       if( get_trust( ch ) < 84 )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
       argument = one_argument( argument, arg1 );
@@ -624,7 +624,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       argument = one_argument( argument, m_name );
       if( ( mn = money_lookup( m_name ) ) < 0 )
       {
-         send_to_char( "No such money unit.\n\r", ch );
+         send_to_char( "No such money unit.\r\n", ch );
          return;
       }
       GET_FREE( transfer, money_type_free );
@@ -641,14 +641,14 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       transfer->cash_unit[mn] -= ( is_number( m_number ) ? atoi( m_number ) : 10 );
       victim->carry_weight -= money_weight( transfer );
       join_money( transfer, victim->money );
-      send_to_char( "Done.\n\r", ch );
+      send_to_char( "Done.\r\n", ch );
       return;
    }
    good_give = give_money( ch, victim, argument );
    if( good_give )
-      send_to_char( "Gave it to them.\n\r", ch );
+      send_to_char( "Gave it to them.\r\n", ch );
    else
-      send_to_char( "Failed give.\n\r", ch );
+      send_to_char( "Failed give.\r\n", ch );
    return;
 }
 
@@ -683,14 +683,14 @@ void drop_money( CHAR_DATA * ch, char *argument )
          break;
       if( ( ( mn = money_lookup( m_name ) ) < 0 ) || ( !is_number( m_number ) ) )
       {
-         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return;
       }
       if( ch->money->cash_unit[mn] < atoi( m_number ) )
       {
-         snprintf( outbuf, MSL, "You don't have %s %s!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "You don't have %s %s!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return;
@@ -735,14 +735,14 @@ int money_to_value( CHAR_DATA * ch, char *argument )
          break;
       if( ( ( mn = money_lookup( m_name ) ) < 0 ) || ( !is_number( m_number ) ) )
       {
-         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return -1;
       }
       if( ch->money->cash_unit[mn] < atoi( m_number ) )
       {
-         snprintf( outbuf, MSL, "You don't have %s %s!\n\r", m_number, m_name );
+         snprintf( outbuf, MSL, "You don't have %s %s!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
          join_money( transfer, ch->money );
          return -1;
@@ -799,14 +799,14 @@ bool get_money_room( CHAR_DATA * ch, char *argument )
             break;
          if( ( ( mn = money_lookup( m_name ) ) < 0 ) || ( !is_number( m_number ) ) )
          {
-            snprintf( outbuf, MSL, "%s %s isn't a valid money type!\n\r", m_number, m_name );
+            snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
             send_to_char( outbuf, ch );
             join_money( transfer, ch->in_room->treasure );
             return FALSE;
          }
          if( ch->in_room->treasure->cash_unit[mn] < atoi( m_number ) )
          {
-/*        snprintf( outbuf, MSL, "There isn't that much %s here!\n\r", m_name );
+/*        snprintf( outbuf, MSL, "There isn't that much %s here!\r\n", m_name );
         send_to_char( outbuf, ch );  */
             join_money( transfer, ch->in_room->treasure );
             return FALSE;
@@ -817,7 +817,7 @@ bool get_money_room( CHAR_DATA * ch, char *argument )
    }
    if( ( ch->carry_weight + money_weight( transfer ) ) > can_carry_w( ch ) )
    {
-      snprintf( outbuf, MSL, "%s", "You cannot carry that much weight!\n\r" );
+      snprintf( outbuf, MSL, "%s", "You cannot carry that much weight!\r\n" );
       send_to_char( outbuf, ch );
       join_money( transfer, ch->in_room->treasure );
       return FALSE;
@@ -825,7 +825,7 @@ bool get_money_room( CHAR_DATA * ch, char *argument )
    ch->carry_weight += money_weight( transfer );
    if( money_value( transfer ) <= 0 )
       return FALSE;
-   snprintf( outbuf, MSL, "You pick up %s.\n\r", money_string( transfer ) );
+   snprintf( outbuf, MSL, "You pick up %s.\r\n", money_string( transfer ) );
    send_to_char( outbuf, ch );
    join_money( transfer, ch->money );
    return TRUE;
@@ -874,14 +874,14 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
             break;
          if( ( ( mn = money_lookup( m_name ) ) < 0 ) || ( !is_number( m_number ) ) )
          {
-            snprintf( outbuf, MSL, "%s %s isn't a valid money type!\n\r", m_number, m_name );
+            snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
             send_to_char( outbuf, ch );
             join_money( transfer, obj->money );
             return FALSE;
          }
          if( obj->money->cash_unit[mn] < atoi( m_number ) )
          {
-/*        snprintf( outbuf, MSL, "There isn't that much %s in %s!\n\r", m_name, obj->short_descr );
+/*        snprintf( outbuf, MSL, "There isn't that much %s in %s!\r\n", m_name, obj->short_descr );
         send_to_char( outbuf, ch );  */
             join_money( transfer, obj->money );
             return FALSE;
@@ -892,7 +892,7 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
    }
    if( ( ch->carry_weight + money_weight( transfer ) ) > can_carry_w( ch ) )
    {
-      snprintf( outbuf, MSL, "%s", "You cannot carry that much weight!\n\r" );
+      snprintf( outbuf, MSL, "%s", "You cannot carry that much weight!\r\n" );
       send_to_char( outbuf, ch );
       join_money( transfer, obj->money );
       return FALSE;
@@ -900,7 +900,7 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
    ch->carry_weight += money_weight( transfer );
    if( money_value( transfer ) <= 0 )
       return FALSE;
-   snprintf( outbuf, MSL, "You take %s from %s.\n\r", money_string( transfer ), obj->short_descr );
+   snprintf( outbuf, MSL, "You take %s from %s.\r\n", money_string( transfer ), obj->short_descr );
    send_to_char( outbuf, ch );
    join_money( transfer, ch->money );
    return TRUE;
@@ -922,7 +922,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) )
    {
-      send_to_char( "Banking Services are only available to players!\n\r", ch );
+      send_to_char( "Banking Services are only available to players!\r\n", ch );
       return;
    }
 
@@ -937,17 +937,17 @@ void do_bank( CHAR_DATA * ch, char *argument )
 
    if( mob == NULL )
    {
-      send_to_char( "You can't do that here.\n\r", ch );
+      send_to_char( "You can't do that here.\r\n", ch );
       return;
    }
 
    if( argument[0] == '\0' )
    {
-      send_to_char( "                  BANK : Options:\n\r\n\r", ch );
-      send_to_char( "          BANK BALANCE : Displays your balance.\n\r", ch );
-      send_to_char( " BANK DEPOSIT <amount> : Deposit money into your account.\n\r", ch );
-      send_to_char( "BANK WITHDRAW <amount> : Withdraw money from your account.\n\r", ch );
-      send_to_char( "BANK EXCHANGE <amount> : Exchange money. A nominal fee will be charged.\n\r", ch );
+      send_to_char( "                  BANK : Options:\r\n\r\n", ch );
+      send_to_char( "          BANK BALANCE : Displays your balance.\r\n", ch );
+      send_to_char( " BANK DEPOSIT <amount> : Deposit money into your account.\r\n", ch );
+      send_to_char( "BANK WITHDRAW <amount> : Withdraw money from your account.\r\n", ch );
+      send_to_char( "BANK EXCHANGE <amount> : Exchange money. A nominal fee will be charged.\r\n", ch );
       return;
    }
 
@@ -961,7 +961,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "balance" ) )
    {
-      snprintf( buf, MSL, "Your current balance is: %s.\n\r", money_string( ch->bank_money ) );
+      snprintf( buf, MSL, "Your current balance is: %s.\r\n", money_string( ch->bank_money ) );
       send_to_char( buf, ch );
       return;
    }
@@ -973,14 +973,14 @@ void do_bank( CHAR_DATA * ch, char *argument )
       one_argument( argument, test );
       if( test[0] == '\0' )
       {
-         send_to_char( "What exactly would you like to exchange?\n\r", ch );
+         send_to_char( "What exactly would you like to exchange?\r\n", ch );
          return;
       }
       taxes = exchange_money( ch, argument );
       if( taxes > -1 )
       {
          ex_cost = round_money( taxes, TRUE );
-         snprintf( buf, MSL, "You exchange %s. You were charged %s for the transaction.\n\r", argument, money_string( ex_cost ) );
+         snprintf( buf, MSL, "You exchange %s. You were charged %s for the transaction.\r\n", argument, money_string( ex_cost ) );
          send_to_char( buf, ch );
          PUT_FREE( ex_cost, money_type_free );
       }
@@ -990,7 +990,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg1, "deposit" ) )
    {
       deposit_money( ch, argument );
-      snprintf( buf, MSL, "You deposit %s.  Your new balance is %s.\n\r", argument, money_string( ch->bank_money ) );
+      snprintf( buf, MSL, "You deposit %s.  Your new balance is %s.\r\n", argument, money_string( ch->bank_money ) );
       send_to_char( buf, ch );
       do_save( ch, "auto" );
       return;
@@ -1003,18 +1003,18 @@ void do_bank( CHAR_DATA * ch, char *argument )
       good_withdraw = withdraw_money( ch, argument );
       if( good_withdraw )
       {
-         snprintf( buf, MSL, "You withdraw %s.  Your new balance is %s.\n\r", argument, money_string( ch->bank_money ) );
+         snprintf( buf, MSL, "You withdraw %s.  Your new balance is %s.\r\n", argument, money_string( ch->bank_money ) );
       }
       else
       {
-         snprintf( buf, MSL, "You were unable to withdraw %s.\n\r", argument );
+         snprintf( buf, MSL, "You were unable to withdraw %s.\r\n", argument );
       }
       send_to_char( buf, ch );
       do_save( ch, "auto" );
       return;
    }
 
-   send_to_char( "That option not recognised!\n\r", ch );
+   send_to_char( "That option not recognised!\r\n", ch );
    return;
 }
 
@@ -1022,7 +1022,7 @@ void do_gold( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
 
-   snprintf( buf, MSL, "You are carrying: %s.\n\r", money_string( ch->money ) );
+   snprintf( buf, MSL, "You are carrying: %s.\r\n", money_string( ch->money ) );
    send_to_char( buf, ch );
 
    return;
@@ -1082,7 +1082,7 @@ char *take_best_coins( MONEY_TYPE * money, int cost )
    change = change + ( 0 - still_needs );
    debug_money = round_money( cost, TRUE );
    snprintf( debug_moneybuf, MSL,"%s", money_string( debug_money ) );
-   snprintf( log_buf, (2 * MIL), "Buy: cost: %d ( %s )\n\r, money has %s\n\r, wants to take %s\n\r, change %d.",
+   snprintf( log_buf, (2 * MIL), "Buy: cost: %d ( %s )\r\n, money has %s\r\n, wants to take %s\r\n, change %d.",
             cost, debug_moneybuf, money_string( money ), takebuf, change );
    monitor_chan( log_buf, MONITOR_DEBUG );
    PUT_FREE( transaction, money_type_free );

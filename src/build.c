@@ -328,7 +328,7 @@ void build_interpret( CHAR_DATA * ch, char *argument )
    {
       write_to_buffer( ch->desc->snoop_by, "% ", 2 );
       write_to_buffer( ch->desc->snoop_by, logline, 0 );
-      write_to_buffer( ch->desc->snoop_by, "\n\r", 2 );
+      write_to_buffer( ch->desc->snoop_by, "\r\n", 2 );
    }
 
    if( !found )
@@ -350,7 +350,7 @@ void build_interpret( CHAR_DATA * ch, char *argument )
    if( ch->act_build == ACT_BUILD_REDIT && ch->build_vnum != ch->in_room->vnum )
    {
       ch->build_vnum = ch->in_room->vnum;
-      send_to_char( "Redit: Vnum changed to new room.\n\r", ch );
+      send_to_char( "Redit: Vnum changed to new room.\r\n", ch );
    }
 
    tail_chain(  );
@@ -365,7 +365,7 @@ void build_commands( CHAR_DATA * ch, char *argument )
    int cmd;
    int col = 0;
 
-   snprintf( out, MSL, "Building / Editing Commands Available to You:\n\r" );
+   snprintf( out, MSL, "Building / Editing Commands Available to You:\r\n" );
 
    for( cmd = 0; build_cmd_table[cmd].name[0] != '\0'; cmd++ )
    {
@@ -374,9 +374,9 @@ void build_commands( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL, "%-20s    ", build_cmd_table[cmd].name );
       strncat( out, buf, MSL );
       if( ++col % 3 == 0 )
-         strncat( out, "\n\r", MSL );
+         strncat( out, "\r\n", MSL );
    }
-   strncat( out, "\n\r", MSL );
+   strncat( out, "\r\n", MSL );
    send_to_char( out, ch );
    return;
 }
@@ -401,19 +401,19 @@ void build_showmob( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' )
    {
-      send_to_char( "showmob <vnum>\n\r", ch );
+      send_to_char( "showmob <vnum>\r\n", ch );
       return;
    }
 
    if( !is_number( arg1 ) )
    {
-      send_to_char( "must be a vnum.\n\r", ch );
+      send_to_char( "must be a vnum.\r\n", ch );
       return;
    }
 
    if( ( pMob = get_mob_index( atoi( arg1 ) ) ) == NULL )
    {
-      send_to_char( "Cannot find a mob with that vnum.\n\r", ch );
+      send_to_char( "Cannot find a mob with that vnum.\r\n", ch );
       return;
    }
 
@@ -422,7 +422,7 @@ void build_showmob( CHAR_DATA * ch, char *argument )
 
    buf1[0] = '\0';
 
-   snprintf( buf, MSL, "@@WName: @@y%s.    @@WClass: @@y%s.\n\r", pMob->player_name, tab_mob_class[pMob->p_class].text );
+   snprintf( buf, MSL, "@@WName: @@y%s.    @@WClass: @@y%s.\r\n", pMob->player_name, tab_mob_class[pMob->p_class].text );
    strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WSex: @@y%s.  @@WRace:@@y %s ",
@@ -432,43 +432,43 @@ void build_showmob( CHAR_DATA * ch, char *argument )
             ( ( pMob->race > -1 ) && ( pMob->race < MAX_RACE ) ) ? race_table[pMob->race].race_title : "Illegal Race" );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, " @@WLv: @@y%d.    @@WAlign: @@y%d.\n\r", pMob->level, pMob->alignment );
+   snprintf( buf, MSL, " @@WLv: @@y%d.    @@WAlign: @@y%d.\r\n", pMob->level, pMob->alignment );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WModifiers: AC: @@y%d.  @@WHitroll: @@y%d.  @@WDamroll: @@y%d.\n\r",
+   snprintf( buf, MSL, "@@WModifiers: AC: @@y%d.  @@WHitroll: @@y%d.  @@WDamroll: @@y%d.\r\n",
             pMob->ac_mod, pMob->hr_mod, pMob->dr_mod );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WMob Flags:@@y\n\r%s", bs_show_values( tab_mob_act, pMob->act ) );
+   snprintf( buf, MSL, "@@WMob Flags:@@y\r\n%s", bs_show_values( tab_mob_act, pMob->act ) );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WAffected by:@@y\n\r%s", show_values( tab_affected_by, pMob->affected_by, TRUE ) );
+   snprintf( buf, MSL, "@@WAffected by:@@y\r\n%s", show_values( tab_affected_by, pMob->affected_by, TRUE ) );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WSkill Flags:@@y %s\n\r", bit_table_lookup( tab_mob_skill, pMob->skills ) );
+   snprintf( buf, MSL, "@@WSkill Flags:@@y %s\r\n", bit_table_lookup( tab_mob_skill, pMob->skills ) );
    strncat( buf1, buf, MSL );
-   snprintf( buf, MSL, "@@WCast Flags:@@y %s\n\r", bit_table_lookup( tab_mob_cast, pMob->cast ) );
+   snprintf( buf, MSL, "@@WCast Flags:@@y %s\r\n", bit_table_lookup( tab_mob_cast, pMob->cast ) );
    strncat( buf1, buf, MSL );
-   snprintf( buf, MSL, "@@WDef Flags:@@y %s\n\r", bit_table_lookup( tab_mob_def, pMob->def ) );
+   snprintf( buf, MSL, "@@WDef Flags:@@y %s\r\n", bit_table_lookup( tab_mob_def, pMob->def ) );
    strncat( buf1, buf, MSL );
-   snprintf( buf, MSL, "@@WStrong Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->strong_magic ) );
+   snprintf( buf, MSL, "@@WStrong Magic Realms:@@y %s\r\n", bit_table_lookup( tab_magic_realms, pMob->strong_magic ) );
    strncat( buf1, buf, MSL );
-   snprintf( buf, MSL, "@@WWeak Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->weak_magic ) );
+   snprintf( buf, MSL, "@@WWeak Magic Realms:@@y %s\r\n", bit_table_lookup( tab_magic_realms, pMob->weak_magic ) );
    strncat( buf1, buf, MSL );
-   snprintf( buf, MSL, "@@WResist Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->resist ) );
+   snprintf( buf, MSL, "@@WResist Magic Realms:@@y %s\r\n", bit_table_lookup( tab_magic_realms, pMob->resist ) );
    strncat( buf1, buf, MSL );
-   snprintf( buf, MSL, "@@WSuscept Magic Realms:@@y %s\n\r", bit_table_lookup( tab_magic_realms, pMob->suscept ) );
+   snprintf( buf, MSL, "@@WSuscept Magic Realms:@@y %s\r\n", bit_table_lookup( tab_magic_realms, pMob->suscept ) );
    strncat( buf1, buf, MSL );
-   snprintf( buf, MSL, "@@WRace Mods:@@y %s\n\r", bit_table_lookup( tab_mob_race_mods, pMob->race_mods ) );
+   snprintf( buf, MSL, "@@WRace Mods:@@y %s\r\n", bit_table_lookup( tab_mob_race_mods, pMob->race_mods ) );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WShort description: @@y%s.\n\r@@WLong description: @@y%s\n\r",
+   snprintf( buf, MSL, "@@WShort description: @@y%s.\r\n@@WLong description: @@y%s\r\n",
             pMob->short_descr, pMob->long_descr[0] != '\0' ? pMob->long_descr : "(none)." );
    strncat( buf1, buf, MSL );
 
    if( pMob->spec_fun != 0 )
    {
-      snprintf( buf, MSL, "@@WMobile has spec fun: @@y%s\n\r", rev_spec_lookup( pMob->spec_fun ) );
+      snprintf( buf, MSL, "@@WMobile has spec fun: @@y%s\r\n", rev_spec_lookup( pMob->spec_fun ) );
       strncat( buf1, buf, MSL );
    }
 
@@ -484,8 +484,8 @@ void build_showmob( CHAR_DATA * ch, char *argument )
             strncat( buf1, " ", MSL );
          }
       }
-      strncat( buf1, "\n\r", MSL );
-      snprintf( buf, MSL, "@@WOpens at @@y%i @@Whrs, shuts at @@y%i @@Whours, profbuy:@@y%i, @@Wprofsell:@@y%i.\n\r",
+      strncat( buf1, "\r\n", MSL );
+      snprintf( buf, MSL, "@@WOpens at @@y%i @@Whrs, shuts at @@y%i @@Whours, profbuy:@@y%i, @@Wprofsell:@@y%i.\r\n",
                pShop->open_hour, pShop->close_hour, pShop->profit_buy, pShop->profit_sell );
       strncat( buf1, buf, MSL );
 
@@ -510,13 +510,13 @@ void build_showobj( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Show what object?\n\r", ch );
+      send_to_char( "Show what object?\r\n", ch );
       return;
    }
 
    if( !is_number( arg ) )
    {
-      send_to_char( "must be a vnum.\n\r", ch );
+      send_to_char( "must be a vnum.\r\n", ch );
       return;
    }
 
@@ -524,28 +524,28 @@ void build_showobj( CHAR_DATA * ch, char *argument )
 
    if( ( obj = get_obj_index( atoi( arg ) ) ) == NULL )
    {
-      send_to_char( "Object vnum not found.\n\r", ch );
+      send_to_char( "Object vnum not found.\r\n", ch );
       return;
    }
 
    if( !build_canread( obj->area, ch, 1 ) )
       return;
 
-   snprintf( buf, MSL, "@@WName: @@y%s  @@WLevel: @@y%d.\n\r", obj->name, obj->level );
+   snprintf( buf, MSL, "@@WName: @@y%s  @@WLevel: @@y%d.\r\n", obj->name, obj->level );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WType: @@y%s.\n\r", obj->vnum, tab_item_types[( obj->item_type ) - 1].text );
+   snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WType: @@y%s.\r\n", obj->vnum, tab_item_types[( obj->item_type ) - 1].text );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WShort description: @@y%s.\n\r@@WLong description: @@y%s\n\r", obj->short_descr, obj->long_descr );
+   snprintf( buf, MSL, "@@WShort description: @@y%s.\r\n@@WLong description: @@y%s\r\n", obj->short_descr, obj->long_descr );
    strncat( buf1, buf, MSL );
 
    /*
-    * snprintf( buf, MSL, "@@WItem type: @@y%s.\n\r",rev_table_lookup(tab_item_types,obj->item_type));
+    * snprintf( buf, MSL, "@@WItem type: @@y%s.\r\n",rev_table_lookup(tab_item_types,obj->item_type));
     * strncat( buf1, buf, MSL);
     */
 
-   snprintf( buf, MSL, "@@WWear bits:\n\r@@y%s\n\r@@WExtra bits: @@y%s\n\r",
+   snprintf( buf, MSL, "@@WWear bits:\r\n@@y%s\r\n@@WExtra bits: @@y%s\r\n",
             bs_show_values( tab_wear_flags, obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
    /*
     * bit_table_lookup(tab_extra_flags, obj->extra_flags ) );
@@ -554,19 +554,19 @@ void build_showobj( CHAR_DATA * ch, char *argument )
 
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WItem_applies: @@y%s.\n\r", bit_table_lookup( tab_item_apply, obj->item_apply ) );
+   snprintf( buf, MSL, "@@WItem_applies: @@y%s.\r\n", bit_table_lookup( tab_item_apply, obj->item_apply ) );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WWeight: @@y%d.\n\r", obj->weight );
+   snprintf( buf, MSL, "@@WWeight: @@y%d.\r\n", obj->weight );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WSpeed: @@y%4.2f\n\r", obj->speed );
+   snprintf( buf, MSL, "@@WSpeed: @@y%4.2f\r\n", obj->speed );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WDurability: @@y%d.\n\r", obj->max_durability );
+   snprintf( buf, MSL, "@@WDurability: @@y%d.\r\n", obj->max_durability );
    strncat( buf1, buf, MSL );
 
-   strncat( buf1, "@@WObject Values:\n\r", MSL );
+   strncat( buf1, "@@WObject Values:\r\n", MSL );
 
    for( cnt = 0; cnt < 10; cnt++ )
    {
@@ -577,34 +577,34 @@ void build_showobj( CHAR_DATA * ch, char *argument )
       {
          fubar = obj->value[cnt];
          if( fubar < 0 || fubar > MAX_SKILL )
-            snprintf( buf, MSL, "               @@R(INVALID!)@@g\n\r" );
+            snprintf( buf, MSL, "               @@R(INVALID!)@@g\r\n" );
          else
-            snprintf( buf, MSL, "               @@y(%s)@@g\n\r", skill_table[fubar].name );
+            snprintf( buf, MSL, "               @@y(%s)@@g\r\n", skill_table[fubar].name );
 
       }
       else if( is_name( "Liquid", rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) ) )
       {
          foo = str_dup( rev_table_lookup( tab_drink_types, obj->value[cnt] ) );
          if( foo[0] == '\0' )
-            snprintf( buf, MSL, "                  @@R(INVALID!)@@g\n\r" );
+            snprintf( buf, MSL, "                  @@R(INVALID!)@@g\r\n" );
          else
-            snprintf( buf, MSL, "                  @@y(%s)@@g\n\r", foo );
+            snprintf( buf, MSL, "                  @@y(%s)@@g\r\n", foo );
       }
       else if( is_name( "Weapon", rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) ) )
       {
          foo = rev_table_lookup( tab_weapon_types, obj->value[cnt] );
          if( foo[0] == '\0' )
-            snprintf( buf, MSL, "                  @@R(INVALID!)@@g\n\r" );
+            snprintf( buf, MSL, "                  @@R(INVALID!)@@g\r\n" );
          else
-            snprintf( buf, MSL, "                  @@y(%s)@@g\n\r", foo );
+            snprintf( buf, MSL, "                  @@y(%s)@@g\r\n", foo );
       }
       else
-         snprintf( buf, MSL, "@@g\n\r" );
+         snprintf( buf, MSL, "@@g\r\n" );
       strncat( buf1, buf, MSL );
    }
    if( obj->obj_fun != NULL )
    {
-      snprintf( buf, MSL, "@@WObject has objfun: @@y%s.@@g\n\r", rev_obj_fun_lookup( obj->obj_fun ) );
+      snprintf( buf, MSL, "@@WObject has objfun: @@y%s.@@g\r\n", rev_obj_fun_lookup( obj->obj_fun ) );
       strncat( buf1, buf, MSL );
    }
 
@@ -621,12 +621,12 @@ void build_showobj( CHAR_DATA * ch, char *argument )
             strncat( buf1, " ", MSL );
       }
 
-      strncat( buf1, "'@@g.\n\r", MSL );
+      strncat( buf1, "'@@g.\r\n", MSL );
    }
 
    for( paf = obj->first_apply; paf != NULL; paf = paf->next )
    {
-      snprintf( buf, MSL, "@@WAffects @@y%s @@Wby @@y%d@@g.\n\r", affect_loc_name( paf->location ), paf->modifier );
+      snprintf( buf, MSL, "@@WAffects @@y%s @@Wby @@y%d@@g.\r\n", affect_loc_name( paf->location ), paf->modifier );
       strncat( buf1, buf, MSL );
    }
 
@@ -660,11 +660,11 @@ void build_showroom( CHAR_DATA * ch, char *argument )
    if( arg1[0] == '\0' )
    {
       display = DISPLAY_BRIEFDOORS | DISPLAY_RESETS | DISPLAY_DESC;
-      strncat( buf1, "Can also use showroom brief/doors/resets/desc/all.\n\r", MSL );
+      strncat( buf1, "Can also use showroom brief/doors/resets/desc/all.\r\n", MSL );
    }
    else if( !is_name( arg1, "brief doors resets desc all" ) )
    {
-      send_to_char( "Syntax: Showroom brief/doors/resets/desc/all.\n\r", ch );
+      send_to_char( "Syntax: Showroom brief/doors/resets/desc/all.\r\n", ch );
       return;
    }
    if( !str_cmp( arg1, "brief" ) )
@@ -684,20 +684,20 @@ void build_showroom( CHAR_DATA * ch, char *argument )
 
    buf1[0] = '\0';
 
-   snprintf( buf, MSL, "@@WName: @@y%s.\n\r@@WArea: @@y%s.\n\r", location->name, location->area->name );
+   snprintf( buf, MSL, "@@WName: @@y%s.\r\n@@WArea: @@y%s.\r\n", location->name, location->area->name );
    strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL,
-            "@@WVnum: @@y%d.  @@WSector:\n\r @@y%s",
+            "@@WVnum: @@y%d.  @@WSector:\r\n @@y%s",
             location->vnum, show_values( tab_sector_types, location->sector_type, FALSE ) );
    strncat( buf1, buf, MSL );
 
-   snprintf( buf, MSL, "@@WFlags:\n\r@@y%s", bs_show_values( tab_room_flags, location->room_flags ) );
+   snprintf( buf, MSL, "@@WFlags:\r\n@@y%s", bs_show_values( tab_room_flags, location->room_flags ) );
    strncat( buf1, buf, MSL );
 
    if( ( display & DISPLAY_DESC ) )
    {
-      snprintf( buf, MSL, "\n\r@@WDescr: @@y%s@@N\n\r", location->description[0] != '\0' ? location->description : "(none)." );
+      snprintf( buf, MSL, "\r\n@@WDescr: @@y%s@@N\r\n", location->description[0] != '\0' ? location->description : "(none)." );
       strncat( buf1, buf, MSL );
    }
 
@@ -712,7 +712,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
          if( ed->next != NULL )
             strncat( buf1, " ", MSL );
       }
-      strncat( buf1, "'.\n\r", MSL );
+      strncat( buf1, "'.\r\n", MSL );
    }
 
    /*
@@ -732,11 +732,11 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                   pKeyObj = get_obj_index( pexit->key );
                else
                   pKeyObj = NULL;
-               snprintf( buf, MSL, "@@WExit: @@y%7s @@W: To @@y%5i %s@@N\n\r", sDirs[door],
+               snprintf( buf, MSL, "@@WExit: @@y%7s @@W: To @@y%5i %s@@N\r\n", sDirs[door],
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "" );
                strncat( buf1, buf, MSL );
-               snprintf( buf, MSL, "             @@WKey: @@y%5i %s@@N\n\r@@WExit Type:@@y %s@@N\n\r",
+               snprintf( buf, MSL, "             @@WKey: @@y%5i %s@@N\r\n@@WExit Type:@@y %s@@N\r\n",
                         pKeyObj != NULL ? pKeyObj->vnum : 0,
                         pKeyObj != NULL ? pKeyObj->name : "None", bs_show_values( tab_door_types, pexit->exit_info ) );
                strncat( buf1, buf, MSL );
@@ -745,7 +745,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                   snprintf( buf, MSL, "@@WKeyword(s): @@y%s.  ", pexit->keyword );
                   strncat( buf1, buf, MSL );
                }
-               snprintf( buf, MSL, "@@WDesc: @@y%s", pexit->description[0] != '\0' ? pexit->description : "(none).\n\r" );
+               snprintf( buf, MSL, "@@WDesc: @@y%s", pexit->description[0] != '\0' ? pexit->description : "(none).\r\n" );
                strncat( buf1, buf, MSL );
             }
             else
@@ -756,7 +756,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                 * New way of showing doors... move to relevant place if it works 
                 */
 
-               snprintf( buf, MSL, "\n\r%s: (%s)  @@WTo: @@y(%i) %s\n\r@@WExit flags:@@N\n\r%s\n\r", sDirs[door],
+               snprintf( buf, MSL, "\r\n%s: (%s)  @@WTo: @@y(%i) %s\r\n@@WExit flags:@@N\r\n%s\r\n", sDirs[door],
                         pexit->keyword,
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "Unknown",
@@ -772,7 +772,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
     */
    if( ( display & DISPLAY_RESETS ) && location->first_room_reset != NULL )
    {
-      strncat( buf1, "@@WResets:\n\r", MSL );
+      strncat( buf1, "@@WResets:\r\n", MSL );
       for( Pointer = location->first_room_reset; Pointer; )
          strncat( buf1, reset_to_text( &Pointer, NULL ), MSL );
    }
@@ -795,7 +795,7 @@ void build_showresets( CHAR_DATA * ch, char *argument )
    if( !build_canread( location->area, ch, 1 ) )
       return;
 
-   strncat( buf1, "Room Resets:\n\r", MSL );
+   strncat( buf1, "Room Resets:\r\n", MSL );
    for( Pointer = location->first_room_reset; Pointer != NULL; )
       strncat( buf1, reset_to_text( &Pointer, &count ), MSL );
 
@@ -827,37 +827,37 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
    switch ( pReset->command )
    {
       default:
-         snprintf( buf, MSL, "  stray '%c' reset: %d %d %d.\n\r", pReset->command, pReset->arg1, pReset->arg2, pReset->arg3 );
+         snprintf( buf, MSL, "  stray '%c' reset: %d %d %d.\r\n", pReset->command, pReset->arg1, pReset->arg2, pReset->arg3 );
          strncat( buf1, buf, MSL );
          break;
       case 'G':
          pObj = get_obj_index( pReset->arg1 );
          if( pObj )
-            snprintf( buf, MSL, "  stray 'give' reset: object [%d] %s.\n\r", pReset->arg1, pObj->name );
+            snprintf( buf, MSL, "  stray 'give' reset: object [%d] %s.\r\n", pReset->arg1, pObj->name );
          else
-            snprintf( buf, MSL, "  stray 'give' reset: object %d (unknown).\n\r", pReset->arg1 );
+            snprintf( buf, MSL, "  stray 'give' reset: object %d (unknown).\r\n", pReset->arg1 );
          strncat( buf1, buf, MSL );
          break;
       case 'E':
          pObj = get_obj_index( pReset->arg1 );
          if( pObj )
-            snprintf( buf, MSL, "  stray 'equip' reset: object [%d] %s, on %s.\n\r",
+            snprintf( buf, MSL, "  stray 'equip' reset: object [%d] %s, on %s.\r\n",
                      pReset->arg1, pObj->name, tab_wear_loc[( pReset->arg3 )].text );
          else
-            snprintf( buf, MSL, "  stray 'equip' reset: object [%d] (unknown), on %s.\n\r",
+            snprintf( buf, MSL, "  stray 'equip' reset: object [%d] (unknown), on %s.\r\n",
                      pReset->arg1, tab_wear_loc[( pReset->arg3 )].text );
          strncat( buf1, buf, MSL );
          break;
       case 'A':  /* AutoMessage for room */
-         snprintf( buf1, MSL, "Message: (%d-%d) %s\n\r", pReset->arg2, pReset->arg3, pReset->notes );
+         snprintf( buf1, MSL, "Message: (%d-%d) %s\r\n", pReset->arg2, pReset->arg3, pReset->notes );
          strncat( buf1, buf, MSL );
          break;
       case 'M':  /* Load mob */
          pMob = get_mob_index( pReset->arg1 );
          if( pMob != NULL )
-            snprintf( buf, MSL, " [%d] %s (limit of %d).\n\r", pMob->vnum, pMob->player_name, pReset->arg2 );
+            snprintf( buf, MSL, " [%d] %s (limit of %d).\r\n", pMob->vnum, pMob->player_name, pReset->arg2 );
          else
-            snprintf( buf, MSL, " [%d] (unknown) (limit of %d).\n\r", pReset->arg1, pReset->arg2 );
+            snprintf( buf, MSL, " [%d] (unknown) (limit of %d).\r\n", pReset->arg1, pReset->arg2 );
          strncat( buf1, buf, MSL );
 
          /*
@@ -883,12 +883,12 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                      strncat( buf1, "  sells ", MSL );
                   else
                      strncat( buf1, "  with ", MSL );
-                  snprintf( buf, MSL, "[%d] %s.\n\r", pObj->vnum, pObj->name );
+                  snprintf( buf, MSL, "[%d] %s.\r\n", pObj->vnum, pObj->name );
                   strncat( buf1, buf, MSL );
                }
                else
                {
-                  snprintf( buf, MSL, "[%d] unknown object in give reset!\n\r", pReset->arg1 );
+                  snprintf( buf, MSL, "[%d] unknown object in give reset!\r\n", pReset->arg1 );
                   strncat( buf1, buf, MSL );
                }
             }
@@ -896,10 +896,10 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             {
                pObj = get_obj_index( pReset->arg1 );
                if( pObj != NULL )
-                  snprintf( buf, MSL, "  equiped with [%d] %s, on %s.\n\r", pObj->vnum,
+                  snprintf( buf, MSL, "  equiped with [%d] %s, on %s.\r\n", pObj->vnum,
                            pObj->name, tab_wear_loc[( pReset->arg3 )].text );
                else
-                  snprintf( buf, MSL, "[%d] unknown object equipped on %s.\n\r", pReset->arg1, tab_wear_loc[pReset->arg3].text );
+                  snprintf( buf, MSL, "[%d] unknown object equipped on %s.\r\n", pReset->arg1, tab_wear_loc[pReset->arg3].text );
                strncat( buf1, buf, MSL );
             }
          }
@@ -907,9 +907,9 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
       case 'O':  /* Load object to room */
          pObj = get_obj_index( pReset->arg1 );
          if( pObj != NULL )
-            snprintf( buf, MSL, " [%d] %s no more than %d in room.\n\r", pObj->vnum, pObj->name, pReset->arg2 );
+            snprintf( buf, MSL, " [%d] %s no more than %d in room.\r\n", pObj->vnum, pObj->name, pReset->arg2 );
          else
-            snprintf( buf, MSL, " [%d] unknown object reset!\n\r", pReset->arg1 );
+            snprintf( buf, MSL, " [%d] unknown object reset!\r\n", pReset->arg1 );
          strncat( buf1, buf, MSL );
          break;
       case 'D':  /* close/lock doors */
@@ -917,21 +917,21 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
          switch ( pReset->arg3 )
          {
             default:
-               snprintf( buf, MSL, " Illegal door state %d for door %d\n\r", pReset->arg1, pReset->arg2 );
+               snprintf( buf, MSL, " Illegal door state %d for door %d\r\n", pReset->arg1, pReset->arg2 );
             case 0:
-               snprintf( buf, MSL, " Open door %s.\n\r", sDirs[pReset->arg2] );
+               snprintf( buf, MSL, " Open door %s.\r\n", sDirs[pReset->arg2] );
                break;
             case 1:
-               snprintf( buf, MSL, " Close door %s.\n\r", sDirs[pReset->arg2] );
+               snprintf( buf, MSL, " Close door %s.\r\n", sDirs[pReset->arg2] );
                break;
             case 2:
-               snprintf( buf, MSL, " Close and lock door %s.\n\r", sDirs[pReset->arg2] );
+               snprintf( buf, MSL, " Close and lock door %s.\r\n", sDirs[pReset->arg2] );
                break;
          }
          strncat( buf1, buf, MSL );
          break;
       case 'R':  /* randomise exits */
-         snprintf( buf, MSL, " Randomize doors up to number %d.\n\r", pReset->arg2 );
+         snprintf( buf, MSL, " Randomize doors up to number %d.\r\n", pReset->arg2 );
          strncat( buf1, buf, MSL );
          break;
    }
@@ -967,13 +967,13 @@ void build_findmob( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg );
    if( arg[0] == '\0' )
    {
-      send_to_char( "find which mob?\n\r", ch );
+      send_to_char( "find which mob?\r\n", ch );
       return;
    }
 
    if( !( Area = ch->in_room->area ) )
    {
-      send_to_char( "Don't know what area you're in.\n\r", ch );
+      send_to_char( "Don't know what area you're in.\r\n", ch );
       return;
    }
 
@@ -982,7 +982,7 @@ void build_findmob( CHAR_DATA * ch, char *argument )
 
    if( !( Pointer = Area->first_area_mobile ) )
    {
-      send_to_char( "No mobiles in this area.\n\r", ch );
+      send_to_char( "No mobiles in this area.\r\n", ch );
       return;
    }
 
@@ -998,14 +998,14 @@ void build_findmob( CHAR_DATA * ch, char *argument )
       if( fAll || is_name( arg, pMobIndex->player_name ) )
       {
          found = TRUE;
-         snprintf( buf, MSL, "[%5d] %s\n\r", pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
+         snprintf( buf, MSL, "[%5d] %s\r\n", pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
          strncat( buf1, buf, MSL );
       }
    }
 
    if( !found )
    {
-      send_to_char( "Nothing like that in this area.\n\r", ch );
+      send_to_char( "Nothing like that in this area.\r\n", ch );
       return;
    }
 
@@ -1026,13 +1026,13 @@ void build_findmobroom( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg );
    if( arg[0] == '\0' )
    {
-      send_to_char( "find which mob vnum?\n\r", ch );
+      send_to_char( "find which mob vnum?\r\n", ch );
       return;
    }
 
    if( !is_number( arg ) )
    {
-      send_to_char( "syntax: findmobroom vnum.\n\r", ch );
+      send_to_char( "syntax: findmobroom vnum.\r\n", ch );
       return;
    }
 
@@ -1042,7 +1042,7 @@ void build_findmobroom( CHAR_DATA * ch, char *argument )
 
    if( !( Area = ch->in_room->area ) )
    {
-      send_to_char( "Don't know what area you're in.\n\r", ch );
+      send_to_char( "Don't know what area you're in.\r\n", ch );
       return;
    }
 
@@ -1056,16 +1056,16 @@ void build_findmobroom( CHAR_DATA * ch, char *argument )
          found = TRUE;
          pRoom = get_room_index( pReset->arg3 );
          if( pRoom != NULL )
-            snprintf( buf, MSL, "[%5d] %s\n\r", pRoom->vnum, capitalize( pRoom->name ) );
+            snprintf( buf, MSL, "[%5d] %s\r\n", pRoom->vnum, capitalize( pRoom->name ) );
          else
-            snprintf( buf, MSL, "[%5d] Unknown\n\r", pReset->arg3 );
+            snprintf( buf, MSL, "[%5d] Unknown\r\n", pReset->arg3 );
          strncat( buf1, buf, MSL );
       }
    }
 
    if( !found )
    {
-      send_to_char( "Mob not found in any room.\n\r", ch );
+      send_to_char( "Mob not found in any room.\r\n", ch );
       return;
    }
 
@@ -1089,13 +1089,13 @@ void build_findobject( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg );
    if( arg[0] == '\0' )
    {
-      send_to_char( "Find what object?\n\r", ch );
+      send_to_char( "Find what object?\r\n", ch );
       return;
    }
 
    if( !( Area = ch->in_room->area ) )
    {
-      send_to_char( "Don't know what area you're in.\n\r", ch );
+      send_to_char( "Don't know what area you're in.\r\n", ch );
       return;
    }
 
@@ -1105,7 +1105,7 @@ void build_findobject( CHAR_DATA * ch, char *argument )
 
    if( !( pList = Area->first_area_object ) )
    {
-      send_to_char( "No objects in this area.\n\r", ch );
+      send_to_char( "No objects in this area.\r\n", ch );
       return;
    }
 
@@ -1121,14 +1121,14 @@ void build_findobject( CHAR_DATA * ch, char *argument )
       if( fAll || is_name( arg, pObjIndex->name ) )
       {
          found = TRUE;
-         snprintf( buf, MSL, "[%5d] %s\n\r", pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
+         snprintf( buf, MSL, "[%5d] %s\r\n", pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
          strncat( buf1, buf, MSL );
       }
    }
 
    if( !found )
    {
-      send_to_char( "Nothing like that in the area.\n\r", ch );
+      send_to_char( "Nothing like that in the area.\r\n", ch );
       return;
    }
 
@@ -1152,13 +1152,13 @@ void build_findroom( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg );
    if( arg[0] == '\0' )
    {
-      send_to_char( "Find what room?\n\r", ch );
+      send_to_char( "Find what room?\r\n", ch );
       return;
    }
 
    if( !( Area = ch->in_room->area ) )
    {
-      send_to_char( "Don't know what area you're in.\n\r", ch );
+      send_to_char( "Don't know what area you're in.\r\n", ch );
       return;
    }
 
@@ -1168,7 +1168,7 @@ void build_findroom( CHAR_DATA * ch, char *argument )
 
    if( !( pList = Area->first_area_room ) )
    {
-      send_to_char( "No rooms in this area.\n\r", ch );
+      send_to_char( "No rooms in this area.\r\n", ch );
       return;
    }
 
@@ -1184,14 +1184,14 @@ void build_findroom( CHAR_DATA * ch, char *argument )
       if( fAll || is_name( arg, pRoomIndex->name ) )
       {
          found = TRUE;
-         snprintf( buf, MSL, "[%5d] %s\n\r", pRoomIndex->vnum, capitalize( pRoomIndex->name ) );
+         snprintf( buf, MSL, "[%5d] %s\r\n", pRoomIndex->vnum, capitalize( pRoomIndex->name ) );
          strncat( buf1, buf, MSL );
       }
    }
 
    if( !found )
    {
-      send_to_char( "Nothing like that in the area.\n\r", ch );
+      send_to_char( "Nothing like that in the area.\r\n", ch );
       return;
    }
 
@@ -1230,34 +1230,34 @@ void build_setmob( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || arg2[0] == '\0' )
    {
-      send_to_char( "Syntax: [set] <field>  <value>\n\r", ch );
-      send_to_char( "or:     [set] <string> <value>\n\r", ch );
-      send_to_char( "or:     [set] edit <string>\n\r", ch );
-      send_to_char( "or:     [set] shop <shopspec> <value>\n\r", ch );
-      send_to_char( "\n\r", ch );
-      send_to_char( "Field being one of:\n\r", ch );
-      send_to_char( "  sex level align  aff act\n\r", ch );
-      send_to_char( "  class clan position race\n\r", ch );
-      send_to_char( "  skill cast def rmod\n\r", ch );
-      send_to_char( "  hr_mod dr_mod ac_mod\n\r", ch );
-      send_to_char( "String being one of:\n\r", ch );
-      send_to_char( "  name short long desc spec\n\r", ch );
-      send_to_char( "Use [set] spec - to clear spec_fun\n\r", ch );
-      send_to_char( "Shopspec being one of:\n\r", ch );
-      send_to_char( "  trade0 - trade4 profbuy profsell openhour\n\r", ch );
-      send_to_char( "  closehour clear\n\r", ch );
+      send_to_char( "Syntax: [set] <field>  <value>\r\n", ch );
+      send_to_char( "or:     [set] <string> <value>\r\n", ch );
+      send_to_char( "or:     [set] edit <string>\r\n", ch );
+      send_to_char( "or:     [set] shop <shopspec> <value>\r\n", ch );
+      send_to_char( "\r\n", ch );
+      send_to_char( "Field being one of:\r\n", ch );
+      send_to_char( "  sex level align  aff act\r\n", ch );
+      send_to_char( "  class clan position race\r\n", ch );
+      send_to_char( "  skill cast def rmod\r\n", ch );
+      send_to_char( "  hr_mod dr_mod ac_mod\r\n", ch );
+      send_to_char( "String being one of:\r\n", ch );
+      send_to_char( "  name short long desc spec\r\n", ch );
+      send_to_char( "Use [set] spec - to clear spec_fun\r\n", ch );
+      send_to_char( "Shopspec being one of:\r\n", ch );
+      send_to_char( "  trade0 - trade4 profbuy profsell openhour\r\n", ch );
+      send_to_char( "  closehour clear\r\n", ch );
       return;
    }
 
    if( !is_number( arg1 ) )
    {
-      send_to_char( "Must be a vnum for first arg.\n\r", ch );
+      send_to_char( "Must be a vnum for first arg.\r\n", ch );
       return;
    }
 
    if( ( pMob = get_mob_index( atoi( arg1 ) ) ) == NULL )
    {
-      send_to_char( "Cannot find mob with that vnum.\n\r", ch );
+      send_to_char( "Cannot find mob with that vnum.\r\n", ch );
       return;
    }
 
@@ -1282,7 +1282,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
        * Then we've found a value 
        */
       pMob->act.flip(lvalue);
-      send_to_char( "OK.  Act Flag toggled.\n\r", ch );
+      send_to_char( "OK.  Act Flag toggled.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1300,7 +1300,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->affected_by, lvalue );
       else
          SET_BIT( pMob->affected_by, lvalue );
-      send_to_char( "OK.  Affected_by Flag toggled.\n\r", ch );
+      send_to_char( "OK.  Affected_by Flag toggled.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1310,7 +1310,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_mob_skill, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_mob_skill, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1322,7 +1322,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->skills, lvalue );
       else
          SET_BIT( pMob->skills, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1332,7 +1332,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_mob_cast, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_mob_cast, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1344,7 +1344,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->cast, lvalue );
       else
          SET_BIT( pMob->cast, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1354,7 +1354,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_mob_def, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_mob_def, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1366,7 +1366,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->def, lvalue );
       else
          SET_BIT( pMob->def, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1375,7 +1375,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_magic_realms, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_magic_realms, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1387,7 +1387,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->strong_magic, lvalue );
       else
          SET_BIT( pMob->strong_magic, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1396,7 +1396,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_mob_race_mods, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_mob_race_mods, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1408,7 +1408,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->race_mods, lvalue );
       else
          SET_BIT( pMob->race_mods, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1418,7 +1418,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_magic_realms, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_magic_realms, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1430,7 +1430,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->weak_magic, lvalue );
       else
          SET_BIT( pMob->weak_magic, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1439,7 +1439,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_magic_realms, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_magic_realms, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1451,7 +1451,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->resist, lvalue );
       else
          SET_BIT( pMob->resist, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1460,7 +1460,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_magic_realms, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_magic_realms, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1472,7 +1472,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->suscept, lvalue );
       else
          SET_BIT( pMob->suscept, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1481,7 +1481,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_mob_race_mods, arg3 );
       if( lvalue == 0 )
       {
-         snprintf( buf, MSL, "You can toggle the following flags:\n\r" );
+         snprintf( buf, MSL, "You can toggle the following flags:\r\n" );
          table_printout( tab_mob_race_mods, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1493,7 +1493,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          REMOVE_BIT( pMob->race_mods, lvalue );
       else
          SET_BIT( pMob->race_mods, lvalue );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1502,13 +1502,13 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       lvalue = table_lookup( tab_mob_class, arg3 );
       if( lvalue == -1 )
       {
-         snprintf( buf, MSL, "You can use the following classes:\n\r" );
+         snprintf( buf, MSL, "You can use the following classes:\r\n" );
          table_printout( tab_mob_class, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
       }
       pMob->p_class = lvalue;
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1520,18 +1520,18 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       {
          int looper;
          char catbuf[MSL];
-         snprintf( buf, MSL, "You can use the following races:\n\r" );
+         snprintf( buf, MSL, "You can use the following races:\r\n" );
          for( looper = 0; looper < MAX_RACE; looper++ )
          {
             snprintf( catbuf, MSL, "[%i]:%s ", looper, race_table[looper].race_title );
             strncat( buf, catbuf, MSL );
          }
-         strncat( buf, "\n\r", MSL );
+         strncat( buf, "\r\n", MSL );
          send_to_char( buf, ch );
          return;
       }
       pMob->race = lvalue;
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       area_modified( pArea );
       return;
    }
@@ -1546,12 +1546,12 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          value = POS_SLEEPING;
       else
       {
-         send_to_char( "position must be standing, resting or sleeping.\n\r", ch );
+         send_to_char( "position must be standing, resting or sleeping.\r\n", ch );
          return;
       }
       pMob->position = value;
       area_modified( pArea );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       return;
    }
 
@@ -1567,7 +1567,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
 
       if( value == -1 )
       {
-         send_to_char( "Must be male, female or neutral.\n\r", ch );
+         send_to_char( "Must be male, female or neutral.\r\n", ch );
          return;
       }
       pMob->sex = value;
@@ -1579,7 +1579,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
    {
       if( value < 1 || value > 140 )
       {
-         send_to_char( "Level range is 1 to 140.\n\r", ch );
+         send_to_char( "Level range is 1 to 140.\r\n", ch );
          return;
       }
       pMob->level = value;
@@ -1591,7 +1591,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
    {
       if( value < -1000 || value > 1000 )
       {
-         send_to_char( "Alignment range is -1000 to 1000.\n\r", ch );
+         send_to_char( "Alignment range is -1000 to 1000.\r\n", ch );
          return;
       }
       pMob->alignment = value;
@@ -1603,7 +1603,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
    {
       if( value < -2500 || value > 500 )
       {
-         send_to_char( "ac_mod range is -2500 to 500.\n\r", ch );
+         send_to_char( "ac_mod range is -2500 to 500.\r\n", ch );
          return;
       }
       pMob->ac_mod = value;
@@ -1615,7 +1615,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
    {
       if( value < -10 || value > 1000 )
       {
-         send_to_char( "hr_mod range is -10 to 1000.\n\r", ch );
+         send_to_char( "hr_mod range is -10 to 1000.\r\n", ch );
          return;
       }
       pMob->hr_mod = value;
@@ -1627,7 +1627,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
    {
       if( value < -10 || value > 1000 )
       {
-         send_to_char( "dr_mod range is -10 to 1000.\n\r", ch );
+         send_to_char( "dr_mod range is -10 to 1000.\r\n", ch );
          return;
       }
       pMob->dr_mod = value;
@@ -1689,7 +1689,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
 
       if( ( pMob->spec_fun = spec_lookup( arg3 ) ) == 0 )
       {
-         snprintf( buf, MSL, "Valid spec funs are :\n\r" );
+         snprintf( buf, MSL, "Valid spec funs are :\r\n" );
          print_spec_lookup( buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -1754,13 +1754,13 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          pShop = new SHOP_DATA;
          if( pShop == NULL )  /* Couldn't alloc space. */
          {
-            send_to_char( "Out of memory, please reboot ASAP.\n\r", ch );
+            send_to_char( "Out of memory, please reboot ASAP.\r\n", ch );
             return;
          }
          GET_FREE( pList, build_free );
          if( pList == NULL )
          {
-            send_to_char( "Out of memory, please reboot ASAP.\n\r", ch );
+            send_to_char( "Out of memory, please reboot ASAP.\r\n", ch );
             return;
          }
 
@@ -1785,14 +1785,14 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          num = arg3[5] - '0';
          if( num < 0 || num > MAX_TRADE )
          {
-            snprintf( buf, MSL, "trade must be between 0 and %i\n\r", MAX_TRADE );
+            snprintf( buf, MSL, "trade must be between 0 and %i\r\n", MAX_TRADE );
             send_to_char( buf, ch );
             return;
          }
          value = table_lookup( tab_item_types, arg4 );
          if( value == 0 )
          {
-            snprintf( buf, MSL, "Item type must be one of the following:\n\r" );
+            snprintf( buf, MSL, "Item type must be one of the following:\r\n" );
             table_printout( tab_item_types, buf + strlen( buf ) );
             send_to_char( buf, ch );
          }
@@ -1806,12 +1806,12 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       {
          if( value < 0 )
          {
-            send_to_char( "Profbuy must be a number more than 0.\n\r", ch );
+            send_to_char( "Profbuy must be a number more than 0.\r\n", ch );
             return;
          }
          if( value < 100 )
          {
-            send_to_char( "WARNING: Profbuy should be over 100.\n\r", ch );
+            send_to_char( "WARNING: Profbuy should be over 100.\r\n", ch );
             return;
          }
 
@@ -1823,12 +1823,12 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       {
          if( value < 0 )
          {
-            send_to_char( "Profsell must be a number more than 0.\n\r", ch );
+            send_to_char( "Profsell must be a number more than 0.\r\n", ch );
             return;
          }
          if( value > 100 )
          {
-            send_to_char( "WARNING: Profsell should be over 100.\n\r", ch );
+            send_to_char( "WARNING: Profsell should be over 100.\r\n", ch );
             return;
          }
          pShop->profit_sell = value;
@@ -1839,7 +1839,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       {
          if( value < 0 || value > 24 )
          {
-            send_to_char( "Openhour must be a number between 0 and 24.\n\r", ch );
+            send_to_char( "Openhour must be a number between 0 and 24.\r\n", ch );
             return;
          }
 
@@ -1851,7 +1851,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       {
          if( value < 0 || value > 24 )
          {
-            send_to_char( "closehour must be a number between 0 and 24.\n\r", ch );
+            send_to_char( "closehour must be a number between 0 and 24.\r\n", ch );
             return;
          }
 
@@ -1913,23 +1913,23 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' )
    {
-      send_to_char( "Syntax: [set] <arguments> \n\r", ch );
-      send_to_char( "    Or: [set] <string> value\n\r", ch );
-      send_to_char( "    Or: [set] edit <string>\n\r", ch );
-      send_to_char( "\n\r", ch );
-      send_to_char( "Arguments being one of:\n\r", ch );
-      send_to_char( "      flags  +/-<ascii-flag> \n\r", ch );
-      send_to_char( "      sector <ascii-sector-type>\n\r", ch );
-      send_to_char( "      door <door-number> to <vnum> [onesided]\n\r", ch );
-      send_to_char( "                         keyword <string>\n\r", ch );
-      send_to_char( "                         desc <string>\n\r", ch );
-      send_to_char( "                         key <vnum> [onesided]\n\r", ch );
-      send_to_char( "                         type <ascii-type> [onesided]\n\r", ch );
-      send_to_char( "                         clear [onesided]\n\r", ch );
-      send_to_char( "      extra <keyword> <string>\n\r", ch );
-      send_to_char( "      extra -<keyword>\n\r", ch );
-      send_to_char( "String being one of:\n\r", ch );
-      send_to_char( "      name desc\n\r", ch );
+      send_to_char( "Syntax: [set] <arguments> \r\n", ch );
+      send_to_char( "    Or: [set] <string> value\r\n", ch );
+      send_to_char( "    Or: [set] edit <string>\r\n", ch );
+      send_to_char( "\r\n", ch );
+      send_to_char( "Arguments being one of:\r\n", ch );
+      send_to_char( "      flags  +/-<ascii-flag> \r\n", ch );
+      send_to_char( "      sector <ascii-sector-type>\r\n", ch );
+      send_to_char( "      door <door-number> to <vnum> [onesided]\r\n", ch );
+      send_to_char( "                         keyword <string>\r\n", ch );
+      send_to_char( "                         desc <string>\r\n", ch );
+      send_to_char( "                         key <vnum> [onesided]\r\n", ch );
+      send_to_char( "                         type <ascii-type> [onesided]\r\n", ch );
+      send_to_char( "                         clear [onesided]\r\n", ch );
+      send_to_char( "      extra <keyword> <string>\r\n", ch );
+      send_to_char( "      extra -<keyword>\r\n", ch );
+      send_to_char( "String being one of:\r\n", ch );
+      send_to_char( "      name desc\r\n", ch );
       return;
    }
 
@@ -1937,7 +1937,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
    if( location == NULL )
    {
-      send_to_char( "Invalid vnum selected!\n\r", ch );
+      send_to_char( "Invalid vnum selected!\r\n", ch );
       return;
    }
 
@@ -1959,7 +1959,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
        * Flag found 
        */
       location->room_flags.flip(value);
-      snprintf( buf, MSL, "@@WRoom flag @@y%s@@W toggled to @@y%s@@W.@@g\n\r",
+      snprintf( buf, MSL, "@@WRoom flag @@y%s@@W toggled to @@y%s@@W.@@g\r\n",
                rev_table_lookup( tab_room_flags, value ), location->room_flags.test(value) ? "ON" : "OFF" );
       send_to_char( buf, ch );
       return;
@@ -1972,7 +1972,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
        * Sector found 
        */
       location->sector_type = value;
-      snprintf( buf, MSL, "@@WSector type set to @@y%s@@W.@@g\n\r", rev_table_lookup( tab_sector_types, value ) );
+      snprintf( buf, MSL, "@@WSector type set to @@y%s@@W.@@g\r\n", rev_table_lookup( tab_sector_types, value ) );
       send_to_char( buf, ch );
       return;
    }
@@ -2006,7 +2006,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
       if( strlen(arg2) < 1 || strlen(arg3) < 1 )
       {
-        send_to_char("Extra descrs must have a keyword and description.\n\r",ch );
+        send_to_char("Extra descrs must have a keyword and description.\r\n",ch );
         return;
       }
 
@@ -2027,7 +2027,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
          if( !found )
          {
-            send_to_char( "Keyword not found.\n\r", ch );
+            send_to_char( "Keyword not found.\r\n", ch );
             return;
          }
 
@@ -2095,7 +2095,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
       if( door < 0 || door > MAX_DIR )
       {
-         send_to_char( "Door number must be a number between 0 and 5, or NSEWUD\n\r", ch );
+         send_to_char( "Door number must be a number between 0 and 5, or NSEWUD\r\n", ch );
          return;
       }
 
@@ -2189,19 +2189,19 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
          if( !is_number( arg4 ) )
          {
-            send_to_char( "Room number must be a vnum\n\r", ch );
+            send_to_char( "Room number must be a vnum\r\n", ch );
             return;
          }
          value = atoi( arg4 );
          if( !( pRoom = get_room_index( value ) ) )
          {
-            send_to_char( "No such vnum.\n\r", ch );
+            send_to_char( "No such vnum.\r\n", ch );
             return;
          }
 
          if( !build_canwrite( pRoom->area, ch, 0 ) )
          {
-            send_to_char( "You cannot connect to this room.\n\r", ch );
+            send_to_char( "You cannot connect to this room.\r\n", ch );
             return;
          }
 
@@ -2245,7 +2245,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
             if( pDestExit->to_room != location )
             {
-               snprintf( buf, MSL, "The door in room %i going %s points to room [%i] %s.\n\r",
+               snprintf( buf, MSL, "The door in room %i going %s points to room [%i] %s.\r\n",
                         value,
                         sDirs[RevDirs[door]], pDestExit->vnum, pDestExit->to_room != NULL ? pDestExit->to_room->name : "" );
                send_to_char( buf, ch );
@@ -2283,12 +2283,12 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
          if( !is_number( arg4 ) )
          {
-            send_to_char( "Object number must be a vnum, or blank.\n\r", ch );
+            send_to_char( "Object number must be a vnum, or blank.\r\n", ch );
             return;
          }
          if( !( pObject = get_obj_index( atoi( arg4 ) ) ) )
          {
-            send_to_char( "No such vnum.\n\r", ch );
+            send_to_char( "No such vnum.\r\n", ch );
             return;
          }
 
@@ -2328,7 +2328,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          value = table_lookup( tab_door_types, argn );
          if( value == 0 )
          {
-            snprintf( buf, MSL, "Possible door types are +/-:\n\r" );
+            snprintf( buf, MSL, "Possible door types are +/-:\r\n" );
             table_printout( tab_door_types, buf + strlen( buf ) );
             send_to_char( buf, ch );
             return;
@@ -2336,7 +2336,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
          if( value == EX_CLOSED || value == EX_LOCKED )
          {
-            send_to_char( "To CLOSE or LOCK a door, use a reset.\n\r", ch );
+            send_to_char( "To CLOSE or LOCK a door, use a reset.\r\n", ch );
             return;
          }
 
@@ -2393,23 +2393,23 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || arg2[0] == '\0' )
    {
-      send_to_char( "Syntax: [set] <field>  <value>\n\r", ch );
-      send_to_char( "or:     [set] <string> <value>\n\r", ch );
-      send_to_char( "or:     aobj [<slot>]\n\r", ch );
-      send_to_char( "\n\r", ch );
-      send_to_char( "Field being one of:\n\r", ch );
-      send_to_char( "  value0 value1 value2 value3 speed magic\n\r", ch );
-      send_to_char( "  level extra wear weight aff type durability\n\r", ch );
-      send_to_char( "\n\r", ch );
-      send_to_char( "String being one of:\n\r", ch );
-      send_to_char( "  name short long ed objfun\n\r", ch );
-      send_to_char( "Use [set] objfun - to clear objfun.\n\r", ch );
+      send_to_char( "Syntax: [set] <field>  <value>\r\n", ch );
+      send_to_char( "or:     [set] <string> <value>\r\n", ch );
+      send_to_char( "or:     aobj [<slot>]\r\n", ch );
+      send_to_char( "\r\n", ch );
+      send_to_char( "Field being one of:\r\n", ch );
+      send_to_char( "  value0 value1 value2 value3 speed magic\r\n", ch );
+      send_to_char( "  level extra wear weight aff type durability\r\n", ch );
+      send_to_char( "\r\n", ch );
+      send_to_char( "String being one of:\r\n", ch );
+      send_to_char( "  name short long ed objfun\r\n", ch );
+      send_to_char( "Use [set] objfun - to clear objfun.\r\n", ch );
       return;
    }
 
    if( ( pObj = get_obj_index( atoi( arg1 ) ) ) == NULL )
    {
-      send_to_char( "Vnum not found.\n\r", ch );
+      send_to_char( "Vnum not found.\r\n", ch );
       return;
    }
 
@@ -2422,7 +2422,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
     */
    if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && get_trust( ch ) != 85 )
    {
-      send_to_char( "Only a Creator can set Clan-Eq.\n\r", ch );
+      send_to_char( "Only a Creator can set Clan-Eq.\r\n", ch );
       return;
    }
 
@@ -2446,7 +2446,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
     if( pObj->level < 1 ) /* Should never happen anyhow, but sanity checks are never bad */
     {
-     send_to_char("You can only auto-object items that are at least level 1.\n\r",ch);
+     send_to_char("You can only auto-object items that are at least level 1.\r\n",ch);
      return;
     }
 
@@ -2455,7 +2455,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
     if( IS_OBJ_STAT(pObj,ITEM_EXTRA_RARE) )
     {
      mult += 0.15; /* Rares are 15% better by default */
-     send_to_char("Applying 15% bonus for rare flag.\n\r",ch);
+     send_to_char("Applying 15% bonus for rare flag.\r\n",ch);
     }
 
     ac = sysdata.build_obj_ac * mult;
@@ -2482,7 +2482,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
         snprintf(tmp,MSL," %s",tab_auto_obj[i].name);
         strncat(buf,tmp,MSL);
        }
-       strncat(buf,".\n\r",MSL);
+       strncat(buf,".\r\n",MSL);
        send_to_char(buf,ch);
        return;
       }
@@ -2501,7 +2501,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
      }
      if( found )
      {
-      snprintf(buf,MSL,"Values modified based on object type: %s.\n\r",tab_auto_obj[i].name);
+      snprintf(buf,MSL,"Values modified based on object type: %s.\r\n",tab_auto_obj[i].name);
       send_to_char(buf,ch);
      }
      else
@@ -2513,7 +2513,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
        snprintf(tmp,MSL," %s",tab_auto_obj[i].name);
        strncat(buf,tmp,MSL);
       }
-      strncat(buf,".\n\r",MSL);
+      strncat(buf,".\r\n",MSL);
       send_to_char(buf,ch);
      }
     }
@@ -2533,7 +2533,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
     snprintf(buf,MSL,"%d aff %ssaving_spell %.0f",pObj->vnum,svs == 0 ? "-" : "",svs);
     build_setobject(ch,buf);
 
-    snprintf(buf,MSL,"Auto-object complete based on item level %d. Stats are %0.2f%% of max.\n\r",pObj->level,(mult * 100));
+    snprintf(buf,MSL,"Auto-object complete based on item level %d. Stats are %0.2f%% of max.\r\n",pObj->level,(mult * 100));
     send_to_char(buf,ch);
 
     return;
@@ -2544,7 +2544,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       num = arg2[5] - '0';
       if( num < 0 || num > 9 )
       {
-         send_to_char( "Value0-9.\n\r", ch );
+         send_to_char( "Value0-9.\r\n", ch );
          return;
       }
       pObj->value[num] = value;
@@ -2554,7 +2554,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
    {
       if( value < 1 || value > 120 )
       {
-         send_to_char( "item level is 1 to 120.\n\r", ch );
+         send_to_char( "item level is 1 to 120.\r\n", ch );
          return;
       }
       if( pObj->item_type == ITEM_WEAPON )
@@ -2577,7 +2577,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
    {
       if( atof(arg3) < 0.01 || atof(arg3) > 4 )
       {
-         send_to_char("item speed is 0.01 to 4.00.\n\r", ch );
+         send_to_char("item speed is 0.01 to 4.00.\r\n", ch );
          return;
       }
       pObj->speed = atof(arg3);
@@ -2589,7 +2589,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       num = arg2[1] - '0';
       if( num < 0 || num > 9 )
       {
-         send_to_char( "v0-v9.\n\r", ch );
+         send_to_char( "v0-v9.\r\n", ch );
          return;
       }
       pObj->value[num] = value;
@@ -2610,7 +2610,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
       if( ( pObj->obj_fun = obj_fun_lookup( arg3 ) ) == 0 )
       {
-         snprintf( buf, MSL, "Valid obj funs are :\n\r" );
+         snprintf( buf, MSL, "Valid obj funs are :\r\n" );
          print_obj_fun_lookup( buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -2639,7 +2639,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       value = table_lookup( tab_obj_flags, argn );
       if( value == 0 )
       {
-         snprintf( buf, MSL, "Values for extra flags are +/- :\n\r" );
+         snprintf( buf, MSL, "Values for extra flags are +/- :\r\n" );
          table_printout( tab_obj_flags, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -2668,7 +2668,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
       if( value == 0 )
       {
-         snprintf( buf, MSL, "Values for magical applies are +/- :\n\r" );
+         snprintf( buf, MSL, "Values for magical applies are +/- :\r\n" );
          table_printout( tab_item_apply, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -2699,7 +2699,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
       if( value == 0 )
       {
-         snprintf( buf, MSL, "Values for wear flags are +/- :\n\r" );
+         snprintf( buf, MSL, "Values for wear flags are +/- :\r\n" );
          table_printout( tab_wear_flags, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -2718,7 +2718,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       value = table_lookup( tab_item_types, arg3 );
       if( value == 0 )
       {
-         snprintf( buf, MSL, "Values for item types are :\n\r" );
+         snprintf( buf, MSL, "Values for item types are :\r\n" );
          table_printout( tab_item_types, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -2726,7 +2726,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
       if( value == ITEM_EXTRA_CLAN_EQ && get_trust( ch ) != 85 )
       {
-         send_to_char( "Only a CREATOR may set this flag.\n\r", ch );
+         send_to_char( "Only a CREATOR may set this flag.\r\n", ch );
          return;
       }
 
@@ -2769,7 +2769,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       argument = one_argument( argument, arg3 );
       if( argument == NULL )
       {
-         send_to_char( "Syntax: setobject <object> ed [-]<keyword> <string>\n\r", ch );
+         send_to_char( "Syntax: setobject <object> ed [-]<keyword> <string>\r\n", ch );
          return;
       }
 
@@ -2792,7 +2792,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
          if( !found )
          {
-            send_to_char( "Keyword not found.\n\r", ch );
+            send_to_char( "Keyword not found.\r\n", ch );
             return;
          }
 
@@ -2835,7 +2835,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       argument = one_argument( argument, arg3 );
       if( argument == NULL )
       {
-         send_to_char( "Syntax: setobject <object> aff [-]<location> <mod>\n\r", ch );
+         send_to_char( "Syntax: setobject <object> aff [-]<location> <mod>\r\n", ch );
          return;
       }
 
@@ -2850,7 +2850,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       location = table_lookup( tab_obj_aff, argn );
       if( location == 0 )
       {
-         snprintf( buf, MSL, "Location can be one of the following [-]:\n\r" );
+         snprintf( buf, MSL, "Location can be one of the following [-]:\r\n" );
          table_printout( tab_obj_aff, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -2871,7 +2871,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       {
          if( !found )
          {  /* Commenting this to squelch auto-object. It's not that important to generate a message. --Kline
-            send_to_char( "Location not found.\n\r", ch ); */
+            send_to_char( "Location not found.\r\n", ch ); */
             return;
          }
 
@@ -2897,12 +2897,12 @@ void build_setobject( CHAR_DATA * ch, char *argument )
    {
     if( !is_number(arg3) )
     {
-     send_to_char("Durability must be a number.\n\r",ch);
+     send_to_char("Durability must be a number.\r\n",ch);
      return;
     }
     if( atoi(arg3) < 2 )
     {
-     send_to_char("Value must be at least 2. An object with only 1 durability is considered 'broken' and un-usable.\n\r",ch);
+     send_to_char("Value must be at least 2. An object with only 1 durability is considered 'broken' and un-usable.\r\n",ch);
      return;
     }
     pObj->max_durability = atoi(arg3);
@@ -2940,13 +2940,13 @@ void build_dig( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || arg2[0] == '\0' )
    {
-      send_to_char( "Syntax: dig <dir> <vnum> [onesided]\n\r", ch );
+      send_to_char( "Syntax: dig <dir> <vnum> [onesided]\r\n", ch );
       return;
    }
 
    if( !( temp = index( cDirs, UPPER( arg1[0] ) ) ) )
    {
-      send_to_char( "Direction must be one of NSEWUP\n\r", ch );
+      send_to_char( "Direction must be one of NSEWUP\r\n", ch );
       return;
    }
    dir = temp - cDirs;
@@ -2961,13 +2961,13 @@ void build_dig( CHAR_DATA * ch, char *argument )
 
    if( vnum < 0 || vnum > MAX_VNUM )
    {
-      send_to_char( "Vnum must be between 0 and 16777216.\n\r", ch );
+      send_to_char( "Vnum must be between 0 and 16777216.\r\n", ch );
       return;
    }
 
    if( get_room_index( vnum ) != NULL )
    {
-      send_to_char( "There is already a room with that vnum.\n\r", ch );
+      send_to_char( "There is already a room with that vnum.\r\n", ch );
       return;
    }
 
@@ -2979,7 +2979,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
 
    if( vnum < pArea->min_vnum || vnum > pArea->max_vnum )
    {
-      snprintf( buffer, MSL,  "Vnum must be between %i and %i.\n\r", pArea->min_vnum, pArea->max_vnum );
+      snprintf( buffer, MSL,  "Vnum must be between %i and %i.\r\n", pArea->min_vnum, pArea->max_vnum );
       send_to_char( buffer, ch );
       return;
    }
@@ -3033,20 +3033,20 @@ void build_dig( CHAR_DATA * ch, char *argument )
 void build_stop( CHAR_DATA * ch, char *argument )
 {
    ch->position = POS_STANDING;
-   send_to_char( "Building stopped.\n\r", ch );
+   send_to_char( "Building stopped.\r\n", ch );
 }
 
 void do_build( CHAR_DATA * ch, char *argument )
 {
    if( !ch->act.test(ACT_BUILDER) )
    {
-      send_to_char( "You aren't allowed to build!\n\r", ch );
+      send_to_char( "You aren't allowed to build!\r\n", ch );
       return;
    }
 
    ch->position = POS_BUILDING;
    do_help( ch, "build_bmotd" ); /* motd for builders -S- */
-   send_to_char( "Building commands are now operative. Type stop to stop building.\n\r", ch );
+   send_to_char( "Building commands are now operative. Type stop to stop building.\r\n", ch );
 }
 
 void build_addmob( CHAR_DATA * ch, char *argument )
@@ -3067,7 +3067,7 @@ void build_addmob( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || arg2[0] == '\0' )
    {
-      send_to_char( "Syntax: addmob <vnum> <name>\n\r", ch );
+      send_to_char( "Syntax: addmob <vnum> <name>\r\n", ch );
       return;
    }
 
@@ -3075,13 +3075,13 @@ void build_addmob( CHAR_DATA * ch, char *argument )
 
    if( vnum < 0 || vnum > MAX_VNUM )
    {
-      send_to_char( "Vnum must be between 0 and 16777216.\n\r", ch );
+      send_to_char( "Vnum must be between 0 and 16777216.\r\n", ch );
       return;
    }
 
    if( get_mob_index( vnum ) != NULL )
    {
-      send_to_char( "There is already a mob with that vnum.\n\r", ch );
+      send_to_char( "There is already a mob with that vnum.\r\n", ch );
       return;
    }
 
@@ -3092,7 +3092,7 @@ void build_addmob( CHAR_DATA * ch, char *argument )
 
    if( vnum < pArea->min_vnum || vnum > pArea->max_vnum )
    {
-      snprintf( buffer, MSL,  "Vnum must be between %i and %i.\n\r", pArea->min_vnum, pArea->max_vnum );
+      snprintf( buffer, MSL,  "Vnum must be between %i and %i.\r\n", pArea->min_vnum, pArea->max_vnum );
       send_to_char( buffer, ch );
       return;
    }
@@ -3134,7 +3134,7 @@ void build_addobject( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || arg2[0] == '\0' )
    {
-      send_to_char( "Syntax: addobject <vnum> <name>\n\r", ch );
+      send_to_char( "Syntax: addobject <vnum> <name>\r\n", ch );
       return;
    }
 
@@ -3142,13 +3142,13 @@ void build_addobject( CHAR_DATA * ch, char *argument )
 
    if( vnum < 0 || vnum > MAX_VNUM )
    {
-      send_to_char( "Vnum must be between 0 and 16777216.\n\r", ch );
+      send_to_char( "Vnum must be between 0 and 16777216.\r\n", ch );
       return;
    }
 
    if( get_obj_index( vnum ) != NULL )
    {
-      send_to_char( "There is already an object with that vnum.\n\r", ch );
+      send_to_char( "There is already an object with that vnum.\r\n", ch );
       return;
    }
 
@@ -3160,7 +3160,7 @@ void build_addobject( CHAR_DATA * ch, char *argument )
 
    if( vnum < pArea->min_vnum || vnum > pArea->max_vnum )
    {
-      snprintf( buffer, MSL,  "Vnum must be between %i and %i.\n\r", pArea->min_vnum, pArea->max_vnum );
+      snprintf( buffer, MSL,  "Vnum must be between %i and %i.\r\n", pArea->min_vnum, pArea->max_vnum );
       send_to_char( buffer, ch );
       return;
    }
@@ -3195,7 +3195,7 @@ void build_addroom( CHAR_DATA *ch, char *argument )
 
  if( argument[0] == '\0' )
  {
-    send_to_char( "Syntax: addroom <vnum>\n\r", ch );
+    send_to_char( "Syntax: addroom <vnum>\r\n", ch );
     return;
  }
 
@@ -3203,13 +3203,13 @@ void build_addroom( CHAR_DATA *ch, char *argument )
 
  if( vnum < 0 || vnum > MAX_VNUM )
  {
-    send_to_char( "Vnum must be between 0 and 16777216.\n\r", ch );
+    send_to_char( "Vnum must be between 0 and 16777216.\r\n", ch );
     return;
  }
 
  if( get_room_index( vnum ) != NULL )
  {
-    send_to_char( "There is already a room with that vnum.\n\r", ch );
+    send_to_char( "There is already a room with that vnum.\r\n", ch );
     return;
  }
 
@@ -3221,7 +3221,7 @@ void build_addroom( CHAR_DATA *ch, char *argument )
 
  if( vnum < pArea->min_vnum || vnum > pArea->max_vnum )
  {
-    snprintf( argument, MSL,  "Vnum must be between %i and %i.\n\r", pArea->min_vnum, pArea->max_vnum );
+    snprintf( argument, MSL,  "Vnum must be between %i and %i.\r\n", pArea->min_vnum, pArea->max_vnum );
     send_to_char( argument, ch );
     return;
  }
@@ -3284,13 +3284,13 @@ void build_addreset( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || ( arg2[0] == '\0' && strcmp( arg1, "message" ) ) )
    {
-      send_to_char( "addreset mob   <vnum> <limit>\n\r", ch );
-      send_to_char( "         obj   <vnum> <max number in room>\n\r", ch );
-      send_to_char( "         equip <n.mob-vnum> <obj-vnum> <location>\n\r", ch );
-      send_to_char( "         give  <n.mob-vnum> <obj-vnum>\n\r", ch );
-      send_to_char( "         door  <dir> <state>\n\r", ch );
-      send_to_char( "         rand  <num-dirs>\n\r", ch );
-      send_to_char( "         message <min_lev> <max_lev> <text>\n\r", ch );
+      send_to_char( "addreset mob   <vnum> <limit>\r\n", ch );
+      send_to_char( "         obj   <vnum> <max number in room>\r\n", ch );
+      send_to_char( "         equip <n.mob-vnum> <obj-vnum> <location>\r\n", ch );
+      send_to_char( "         give  <n.mob-vnum> <obj-vnum>\r\n", ch );
+      send_to_char( "         door  <dir> <state>\r\n", ch );
+      send_to_char( "         rand  <num-dirs>\r\n", ch );
+      send_to_char( "         message <min_lev> <max_lev> <text>\r\n", ch );
       return;
    }
 
@@ -3318,26 +3318,26 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       vnum = is_number( arg2 ) ? atoi( arg2 ) : -1;
       if( vnum < 0 || vnum > MAX_VNUM )
       {
-         snprintf( buf, MSL, "Vnum must be between 0 and %i.\n\r", MAX_VNUM );
+         snprintf( buf, MSL, "Vnum must be between 0 and %i.\r\n", MAX_VNUM );
          send_to_char( buf, ch );
          return;
       }
       if( !( pMob = get_mob_index( vnum ) ) )
       {
-         send_to_char( "Mob not found.\n\r", ch );
+         send_to_char( "Mob not found.\r\n", ch );
          return;
       }
 
       if( !build_canread( pMob->area, ch, 0 ) )
       {
-         send_to_char( "You cannot use that mob.\n\r", ch );
+         send_to_char( "You cannot use that mob.\r\n", ch );
          return;
       }
 
       num = is_number( arg3 ) ? atoi( arg3 ) : -1;
       if( num < 0 )
       {
-         send_to_char( "Limit must be a number more than 0.\n\r", ch );
+         send_to_char( "Limit must be a number more than 0.\r\n", ch );
          return;
       }
 
@@ -3351,7 +3351,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
    {
       if( !is_number( arg2 ) || !is_number( arg3 ) )
       {
-         send_to_char( "Must specify TWO levels: min and max before message.\n\r", ch );
+         send_to_char( "Must specify TWO levels: min and max before message.\r\n", ch );
          return;
       }
 
@@ -3368,26 +3368,26 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       vnum = is_number( arg2 ) ? atoi( arg2 ) : -1;
       if( vnum < 0 || vnum > MAX_VNUM )
       {
-         snprintf( buf, MSL, "Vnum must be between 0 and %i.\n\r", MAX_VNUM );
+         snprintf( buf, MSL, "Vnum must be between 0 and %i.\r\n", MAX_VNUM );
          send_to_char( buf, ch );
          return;
       }
       if( !( pObj = get_obj_index( vnum ) ) )
       {
-         send_to_char( "Object not found.\n\r", ch );
+         send_to_char( "Object not found.\r\n", ch );
          return;
       }
 
       if( !build_canread( pObj->area, ch, 0 ) )
       {
-         send_to_char( "You cannot use that object.\n\r", ch );
+         send_to_char( "You cannot use that object.\r\n", ch );
          return;
       }
 
 
       if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && !IS_IMMORTAL( ch ) )
       {
-         send_to_char( "You can't use that object for a reset.\n\r", ch );
+         send_to_char( "You can't use that object for a reset.\r\n", ch );
          return;
       }
 
@@ -3403,7 +3403,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       num = number_argument( arg2, buf );
       if( num == 0 )
       {
-         send_to_char( "Count portion of vnum cannot be 0. Indicate which instance of the mob, or -1 for all instances.\n\r",
+         send_to_char( "Count portion of vnum cannot be 0. Indicate which instance of the mob, or -1 for all instances.\r\n",
                        ch );
          return;
       }
@@ -3423,33 +3423,33 @@ void build_addreset( CHAR_DATA * ch, char *argument )
 
       if( found == num )
       {
-         send_to_char( "None of that mob loaded in the room resets.\n\r", ch );
+         send_to_char( "None of that mob loaded in the room resets.\r\n", ch );
          return;
       }
       if( num > 0 && found > 0 )
       {
-         send_to_char( "Not enough of that mob loaded in the room resets.\n\r", ch );
+         send_to_char( "Not enough of that mob loaded in the room resets.\r\n", ch );
          return;
       }
 
       vnum = is_number( arg3 ) ? atoi( arg3 ) : -1;
       if( !( pObj = get_obj_index( vnum ) ) )
       {
-         send_to_char( "Object not found.\n\r", ch );
+         send_to_char( "Object not found.\r\n", ch );
          return;
       }
 
 
       if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && !IS_IMMORTAL( ch ) )
       {
-         send_to_char( "You can't use that object for a reset.\n\r", ch );
+         send_to_char( "You can't use that object for a reset.\r\n", ch );
          return;
       }
 
 
       if( !build_canread( pObj->area, ch, 0 ) )
       {
-         send_to_char( "You cannot use that object.\n\r", ch );
+         send_to_char( "You cannot use that object.\r\n", ch );
          return;
       }
 
@@ -3458,7 +3458,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       num = table_lookup( tab_wear_loc, arg4 );
       if( num == -2 )
       {
-         snprintf( buf, MSL, "Location must be one of the following:\n\r" );
+         snprintf( buf, MSL, "Location must be one of the following:\r\n" );
          table_printout( tab_wear_loc, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -3474,7 +3474,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       num = number_argument( arg2, buf );
       if( num == 0 )
       {
-         send_to_char( "Count portion of vnum cannot be 0. Indicate which instance of the mob, or -1 for all instances.\n\r",
+         send_to_char( "Count portion of vnum cannot be 0. Indicate which instance of the mob, or -1 for all instances.\r\n",
                        ch );
          return;
       }
@@ -3494,32 +3494,32 @@ void build_addreset( CHAR_DATA * ch, char *argument )
 
       if( found == num )
       {
-         send_to_char( "None of that mob loaded in the room resets.\n\r", ch );
+         send_to_char( "None of that mob loaded in the room resets.\r\n", ch );
          return;
       }
       if( num > 0 && found > 0 )
       {
-         send_to_char( "Not enough of that mob loaded in the room resets.\n\r", ch );
+         send_to_char( "Not enough of that mob loaded in the room resets.\r\n", ch );
          return;
       }
 
       vnum = is_number( arg3 ) ? atoi( arg3 ) : -1;
       if( !( pObj = get_obj_index( vnum ) ) )
       {
-         send_to_char( "Object not found.\n\r", ch );
+         send_to_char( "Object not found.\r\n", ch );
          return;
       }
 
 
       if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && !IS_IMMORTAL( ch ) )
       {
-         send_to_char( "You can't use that object for a reset.\n\r", ch );
+         send_to_char( "You can't use that object for a reset.\r\n", ch );
          return;
       }
 
       if( !build_canread( pObj->area, ch, 0 ) )
       {
-         send_to_char( "You cannot use that object.\n\r", ch );
+         send_to_char( "You cannot use that object.\r\n", ch );
          return;
       }
 
@@ -3534,7 +3534,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       temp = index( cDirs, UPPER( arg2[0] ) );
       if( !temp )
       {
-         send_to_char( "Direction must be one of NSEWUP.\n\r", ch );
+         send_to_char( "Direction must be one of NSEWUP.\r\n", ch );
          return;
       }
 
@@ -3543,14 +3543,14 @@ void build_addreset( CHAR_DATA * ch, char *argument )
 
       if( ( pExit = pRoomIndex->exit[rarg2] ) == NULL || !pExit->exit_info.test(EX_ISDOOR) )
       {
-         send_to_char( "That exit isn't a door.\n\r", ch );
+         send_to_char( "That exit isn't a door.\r\n", ch );
          return;
       }
 
       num = table_lookup( tab_door_states, arg3 );
       if( num < 0 )
       {
-         snprintf( buf, MSL, "Door state can be one of the following:\n\r" );
+         snprintf( buf, MSL, "Door state can be one of the following:\r\n" );
          table_printout( tab_door_states, buf + strlen( buf ) );
          send_to_char( buf, ch );
          return;
@@ -3564,7 +3564,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       num = is_number( arg2 ) ? atoi( arg2 ) : -1;
       if( num < 1 || num > 6 )
       {
-         send_to_char( "Number of doors must be from 1 to 6.\n\r", ch );
+         send_to_char( "Number of doors must be from 1 to 6.\r\n", ch );
          return;
       }
       rarg1 = pRoomIndex->vnum;
@@ -3574,7 +3574,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
 
    if( command == '*' )
    {
-      bug( "build_addreset: Shouldn't have come this far.\n\r", 0 );
+      bug( "build_addreset: Shouldn't have come this far.\r\n", 0 );
       build_addreset( ch, "" );
       return;
    }
@@ -3640,7 +3640,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || !is_number( arg1 ) )
    {
-      send_to_char( "delreset <reset-number>  (type showresets for numbers)\n\r", ch );
+      send_to_char( "delreset <reset-number>  (type showresets for numbers)\r\n", ch );
       return;
    }
 
@@ -3648,7 +3648,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
 
    if( found <= 0 )
    {
-      send_to_char( "Reset number must be more than 0.\n\r", ch );
+      send_to_char( "Reset number must be more than 0.\r\n", ch );
       return;
    }
 
@@ -3666,7 +3666,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
 
    if( found > 0 || !pList )
    {
-      send_to_char( "Could not find reset.\n\r", ch );
+      send_to_char( "Could not find reset.\r\n", ch );
       return;
    }
 
@@ -3675,7 +3675,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
    if( !pReset )
    {
       bugf( "delreset: pList returned null in search for reset number %d", atoi( arg1 ) );
-      send_to_char( "bug: Could not do deletion.\n\r", ch );
+      send_to_char( "bug: Could not do deletion.\r\n", ch );
       return;
    }
 
@@ -3729,14 +3729,14 @@ void build_delreset( CHAR_DATA * ch, char *argument )
       delete pReset;
    }
 
-   send_to_char( "Done.\n\r", ch );
+   send_to_char( "Done.\r\n", ch );
    return;
 }
 
 
 void build_delwarn( CHAR_DATA * ch, char *argument )
 {
-   send_to_char( "You must spell out delroom, delobject, delmobile, or delhelp in full.\n\r", ch );
+   send_to_char( "You must spell out delroom, delobject, delmobile, or delhelp in full.\r\n", ch );
    return;
 }
 
@@ -3753,7 +3753,7 @@ void build_delhelp( CHAR_DATA *ch, char *argument )
 
  if( arg1[0] == '\0' )
  {
-  send_to_char("Syntax: delhelp <mort/imm> <keyword> ok.\n\r",ch);
+  send_to_char("Syntax: delhelp <mort/imm> <keyword> ok.\r\n",ch);
   return;
  }
  if( !str_prefix(arg1,"mort") )
@@ -3769,7 +3769,7 @@ void build_delhelp( CHAR_DATA *ch, char *argument )
  snprintf(arg1,MSL,"%s%s/%s.%s",HELP_DIR,initial(arg2),arg2,mort ? HELP_MORT : HELP_IMM);
  if( (fp = file_open(arg1,"r")) == NULL )
  {
-  send_to_char("Couldn't find that keyword.\n\r",ch);
+  send_to_char("Couldn't find that keyword.\r\n",ch);
   file_close(fp);
   return;
  }
@@ -3785,13 +3785,13 @@ void build_delhelp( CHAR_DATA *ch, char *argument )
   {
    file_close(fp);
    unlink(arg1);
-   send_to_char("Done.\n\r",ch);
+   send_to_char("Done.\r\n",ch);
    return;
   }
  }
  else
  {
-  send_to_char("An error has occured. Contact a shell owner.\n\r",ch);
+  send_to_char("An error has occured. Contact a shell owner.\r\n",ch);
   return;
  }
 
@@ -3815,7 +3815,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' )
    {
-      send_to_char( "Syntax: delroom <vnum>\n\r", ch );
+      send_to_char( "Syntax: delroom <vnum>\r\n", ch );
       return;
    }
 
@@ -3824,7 +3824,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       vnum = atoi( arg1 );
       if( !( pRoomIndex = get_room_index( vnum ) ) )
       {
-         send_to_char( "Vnum not found.\n\r", ch );
+         send_to_char( "Vnum not found.\r\n", ch );
          return;
       }
 
@@ -3833,13 +3833,13 @@ void build_delroom( CHAR_DATA * ch, char *argument )
 
       if( ( pRoomIndex->first_person ) != NULL )
       {
-         send_to_char( "You cannot delete the room while people are in it!.\n\r", ch );
+         send_to_char( "You cannot delete the room while people are in it!.\r\n", ch );
          return;
       }
       old_vnum = vnum;
 
-      snprintf( buf, MSL, "Are you sure you want to delete room [%d] %s?\n\r", vnum, pRoomIndex->name );
-      strncat( buf, "Type delroom ok if you are sure.\n\r", MSL );
+      snprintf( buf, MSL, "Are you sure you want to delete room [%d] %s?\r\n", vnum, pRoomIndex->name );
+      strncat( buf, "Type delroom ok if you are sure.\r\n", MSL );
       send_to_char( buf, ch );
       return;
    }
@@ -3855,7 +3855,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
 
    if( old_vnum == 0 )
    {
-      send_to_char( "First specify a room number.\n\r", ch );
+      send_to_char( "First specify a room number.\r\n", ch );
       return;
    }
 
@@ -3893,7 +3893,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
 
    if( ( pRoomIndex->first_person ) != NULL )
    {
-      send_to_char( "You cannot delete the room while people are in it!.\n\r", ch );
+      send_to_char( "You cannot delete the room while people are in it!.\r\n", ch );
       old_vnum = 0;
       return;
    }
@@ -4059,7 +4059,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
    top_room--;
 
 
-   send_to_char( "Done.\n\r", ch );
+   send_to_char( "Done.\r\n", ch );
    return;
 }
 
@@ -4083,7 +4083,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' )
    {
-      send_to_char( "Syntax: delobject <vnum>\n\r", ch );
+      send_to_char( "Syntax: delobject <vnum>\r\n", ch );
       return;
    }
 
@@ -4092,7 +4092,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
       vnum = atoi( arg1 );
       if( !( pObjIndex = get_obj_index( vnum ) ) )
       {
-         send_to_char( "Vnum not found.\n\r", ch );
+         send_to_char( "Vnum not found.\r\n", ch );
       }
 
       if( !build_canwrite( pObjIndex->area, ch, 1 ) )
@@ -4100,8 +4100,8 @@ void build_delobject( CHAR_DATA * ch, char *argument )
 
       old_ovnum = vnum;
 
-      snprintf( buf, MSL, "Are you sure you want to delete object: [%d] %s?\n\r", vnum, pObjIndex->name );
-      strncat( buf, "Type delobject ok if you are sure.\n\r", MSL );
+      snprintf( buf, MSL, "Are you sure you want to delete object: [%d] %s?\r\n", vnum, pObjIndex->name );
+      strncat( buf, "Type delobject ok if you are sure.\r\n", MSL );
       send_to_char( buf, ch );
       return;
    }
@@ -4117,7 +4117,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
 
    if( old_ovnum == 0 )
    {
-      send_to_char( "First specify a object number.\n\r", ch );
+      send_to_char( "First specify a object number.\r\n", ch );
       return;
    }
 
@@ -4243,7 +4243,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
 
    top_obj_index--;
 
-   send_to_char( "Done.\n\r", ch );
+   send_to_char( "Done.\r\n", ch );
    return;
 }
 
@@ -4267,7 +4267,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' )
    {
-      send_to_char( "Syntax: delmobile <vnum>\n\r", ch );
+      send_to_char( "Syntax: delmobile <vnum>\r\n", ch );
       return;
    }
 
@@ -4276,7 +4276,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
       vnum = atoi( arg1 );
       if( !( pMobIndex = get_mob_index( vnum ) ) )
       {
-         send_to_char( "Vnum not found.\n\r", ch );
+         send_to_char( "Vnum not found.\r\n", ch );
       }
 
       if( !build_canwrite( pMobIndex->area, ch, 1 ) )
@@ -4284,8 +4284,8 @@ void build_delmob( CHAR_DATA * ch, char *argument )
 
       old_mob_vnum = vnum;
 
-      snprintf( buf, MSL, "Are you sure you want to delete mobile: [%d] %s?\n\r", vnum, pMobIndex->player_name );
-      strncat( buf, "Type delmobile ok if you are sure.\n\r", MSL );
+      snprintf( buf, MSL, "Are you sure you want to delete mobile: [%d] %s?\r\n", vnum, pMobIndex->player_name );
+      strncat( buf, "Type delmobile ok if you are sure.\r\n", MSL );
       send_to_char( buf, ch );
       return;
    }
@@ -4301,7 +4301,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
 
    if( old_mob_vnum == 0 )
    {
-      send_to_char( "First specify a mobile number.\n\r", ch );
+      send_to_char( "First specify a mobile number.\r\n", ch );
       return;
    }
 
@@ -4455,7 +4455,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
 
    top_mob_index--;
 
-   send_to_char( "Done.\n\r", ch );
+   send_to_char( "Done.\r\n", ch );
    return;
 }
 
@@ -4482,14 +4482,14 @@ void build_forcereset( CHAR_DATA * ch, char *argument )
 
    if( !build_canwrite( pArea, ch, 0 ) )
    {
-      send_to_char( "You cannot reset this area.\n\r", ch );
+      send_to_char( "You cannot reset this area.\r\n", ch );
       return;
    }
 
    reset_area( pArea );
    build_save_flush(  );
 
-   send_to_char( "Done.\n\r", ch );
+   send_to_char( "Done.\r\n", ch );
    return;
 }
 
@@ -4562,7 +4562,7 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
          strncat( filename, src, 255 );
          infile = file_open( filename, "r" );
          if( !infile )
-            filechar = str_dup( "Could not open file.\n\r" );
+            filechar = str_dup( "Could not open file.\r\n" );
          else
          {
 /*       fBootDb=1; */
@@ -4662,7 +4662,7 @@ void build_editstr( char **dest, char *src, CHAR_DATA * ch )
 
    orig = str_dup( src );
 
-   send_to_char( "Editing string. Type .help for help.\n\r", ch );
+   send_to_char( "Editing string. Type .help for help.\r\n", ch );
    write_start( dest, (RET_FUN *)build_finishedstr, orig, ch );
 
    if( *dest != &str_empty[0] )
@@ -4703,7 +4703,7 @@ void build_set_oedit( CHAR_DATA * ch, char *argument )
    else
       ch->build_vnum = -1;
 
-   send_to_char( ch->build_vnum == -1 ? "No vnum set.  Use setvnum.\n\r" : "Vnum now set. ", ch );
+   send_to_char( ch->build_vnum == -1 ? "No vnum set.  Use setvnum.\r\n" : "Vnum now set. ", ch );
    return;
 }
 
@@ -4713,7 +4713,7 @@ void build_set_redit( CHAR_DATA * ch, char *argument )
 
    ch->act_build = ACT_BUILD_REDIT;
 
-   send_to_char( "Now in Redit mode.  Vnum set to current room.\n\r", ch );
+   send_to_char( "Now in Redit mode.  Vnum set to current room.\r\n", ch );
    return;
 }
 
@@ -4731,7 +4731,7 @@ void build_set_medit( CHAR_DATA * ch, char *argument )
    else
       ch->build_vnum = -1;
 
-   send_to_char( ch->build_vnum == -1 ? "No vnum set.  Use setvnum.\n\r" : "Vnum now set. ", ch );
+   send_to_char( ch->build_vnum == -1 ? "No vnum set.  Use setvnum.\r\n" : "Vnum now set. ", ch );
    return;
 }
 
@@ -4740,7 +4740,7 @@ void build_set_nedit( CHAR_DATA * ch, char *argument )
    ch->act_build = ACT_BUILD_NOWT;
    ch->build_vnum = -1;
 
-   send_to_char( "You are no longer in ANY editing mode.\n\r", ch );
+   send_to_char( "You are no longer in ANY editing mode.\r\n", ch );
    return;
 }
 
@@ -4761,7 +4761,7 @@ void build_setvnum( CHAR_DATA * ch, char *argument )
 
    if( argument[0] == '\0' )
    {
-      send_to_char( "USAGE: setvnum <vnum>, or v n(dec)/m(inc)\n\r", ch );
+      send_to_char( "USAGE: setvnum <vnum>, or v n(dec)/m(inc)\r\n", ch );
       return;
    }
 
@@ -4773,7 +4773,7 @@ void build_setvnum( CHAR_DATA * ch, char *argument )
          inc = -1;
       else
       {
-         send_to_char( "Argument must be numeric. [vnum]\n\r", ch );
+         send_to_char( "Argument must be numeric. [vnum]\r\n", ch );
          return;
       }
    }
@@ -4785,7 +4785,7 @@ void build_setvnum( CHAR_DATA * ch, char *argument )
       vnum = ch->build_vnum + inc;
    }
 
-   snprintf( buf, MSL, "Current vnum now set to: %d.\n\r", vnum );
+   snprintf( buf, MSL, "Current vnum now set to: %d.\r\n", vnum );
    found = TRUE;
 
    switch ( ch->act_build )
@@ -4793,11 +4793,11 @@ void build_setvnum( CHAR_DATA * ch, char *argument )
       case ACT_BUILD_OEDIT:
          if( ( obj = get_obj_index( vnum ) ) == NULL )
          {
-            snprintf( buf2, MSL, "No object with that vnum exists.  Use addobject first.\n\r" );
+            snprintf( buf2, MSL, "No object with that vnum exists.  Use addobject first.\r\n" );
             found = FALSE;
          }
          else
-            snprintf( buf2, MSL, "Object exists: %s\n\r", obj->short_descr );
+            snprintf( buf2, MSL, "Object exists: %s\r\n", obj->short_descr );
 
          break;
 
@@ -4806,22 +4806,22 @@ void build_setvnum( CHAR_DATA * ch, char *argument )
           * do_goto( ch, itoa( vnum ) );   
           */
          ch->build_vnum = ch->in_room->vnum;
-         send_to_char( "Vnum set to current room vnum.\n\r", ch );
+         send_to_char( "Vnum set to current room vnum.\r\n", ch );
          break;
 
       case ACT_BUILD_MEDIT:
          if( ( mob = get_mob_index( vnum ) ) == NULL )
          {
-            snprintf( buf2, MSL, "No mobile with that vnum exists.  Use addmob first.\n\r" );
+            snprintf( buf2, MSL, "No mobile with that vnum exists.  Use addmob first.\r\n" );
             found = FALSE;
          }
          else
-            snprintf( buf2, MSL, "Mobile exists: %s\n\r", mob->short_descr );
+            snprintf( buf2, MSL, "Mobile exists: %s\r\n", mob->short_descr );
 
          break;
 
       default:
-         snprintf( buf2, MSL, "Please set your editing mode first!!\n\r" );
+         snprintf( buf2, MSL, "Please set your editing mode first!!\r\n" );
 
    }
 
@@ -4831,12 +4831,12 @@ void build_setvnum( CHAR_DATA * ch, char *argument )
    if( found )
    {
       ch->build_vnum = vnum;
-      send_to_char( "New vnum IS set.\n\r", ch );
+      send_to_char( "New vnum IS set.\r\n", ch );
       build_list( ch, "" );
    }
    else
    {
-      send_to_char( "New vnum NOT set - still at old value.\n\r", ch );
+      send_to_char( "New vnum NOT set - still at old value.\r\n", ch );
    }
 
    return;
@@ -4858,11 +4858,11 @@ void build_list( CHAR_DATA * ch, char *argument )
       switch ( ch->act_build )
       {
          case ACT_BUILD_NOWT:
-            send_to_char( "Not in any editing mode.  Nothing to show!\n\r", ch );
+            send_to_char( "Not in any editing mode.  Nothing to show!\r\n", ch );
             break;
          case ACT_BUILD_OEDIT:
             if( ch->build_vnum == -1 )
-               send_to_char( "No vnum has been selected!\n\r", ch );
+               send_to_char( "No vnum has been selected!\r\n", ch );
             else
             {
                snprintf( buf, MSL, "%d", ch->build_vnum );
@@ -4871,7 +4871,7 @@ void build_list( CHAR_DATA * ch, char *argument )
             break;
          case ACT_BUILD_REDIT:
             if( ch->build_vnum == -1 )
-               send_to_char( "No vnum has been selected!\n\r", ch );
+               send_to_char( "No vnum has been selected!\r\n", ch );
             else
             {
                build_showroom( ch, argument );
@@ -4879,7 +4879,7 @@ void build_list( CHAR_DATA * ch, char *argument )
             break;
          case ACT_BUILD_MEDIT:
             if( ch->build_vnum == -1 )
-               send_to_char( "No vnum has been selected!\n\r", ch );
+               send_to_char( "No vnum has been selected!\r\n", ch );
             else
             {
                snprintf( buf, MSL, "%d", ch->build_vnum );
@@ -4893,7 +4893,7 @@ void build_list( CHAR_DATA * ch, char *argument )
 
    if( ch->act_build == ACT_BUILD_NOWT )
    {
-      send_to_char( "You must be in an editing mode first!\n\r", ch );
+      send_to_char( "You must be in an editing mode first!\r\n", ch );
       return;
    }
 
@@ -4907,17 +4907,17 @@ void build_list( CHAR_DATA * ch, char *argument )
       switch ( ch->act_build )
       {
          case ACT_BUILD_REDIT:
-            snprintf( buf, MSL, "Valid room flags are :\n\r" );
+            snprintf( buf, MSL, "Valid room flags are :\r\n" );
             wide_table_printout( tab_room_flags, buf + strlen( buf ) );
             send_to_char( buf, ch );
             break;
          case ACT_BUILD_MEDIT:
-            snprintf( buf, MSL, "Valid mob flags are :\n\r" );
+            snprintf( buf, MSL, "Valid mob flags are :\r\n" );
             wide_table_printout( tab_mob_act, buf + strlen( buf ) );
             send_to_char( buf, ch );
             break;
          case ACT_BUILD_OEDIT:
-            snprintf( buf, MSL, "Valid object flags are :\n\r" );
+            snprintf( buf, MSL, "Valid object flags are :\r\n" );
             wide_table_printout( tab_obj_flags, buf + strlen( buf ) );
             send_to_char( buf, ch );
             break;
@@ -4929,19 +4929,19 @@ void build_list( CHAR_DATA * ch, char *argument )
       switch ( ch->act_build )
       {
          case ACT_BUILD_OEDIT:
-            snprintf( buf, MSL, "Valid object affects are :\n\r" );
+            snprintf( buf, MSL, "Valid object affects are :\r\n" );
             wide_table_printout( tab_obj_aff, buf + strlen( buf ) );
             send_to_char( buf, ch );
             found = TRUE;
             break;
          case ACT_BUILD_MEDIT:
-            snprintf( buf, MSL, "Valid mob affects are :\n\r" );
+            snprintf( buf, MSL, "Valid mob affects are :\r\n" );
             wide_table_printout( tab_affected_by, buf + strlen( buf ) );
             send_to_char( buf, ch );
             found = TRUE;
             break;
          default:
-            send_to_char( "Only valid when in Oedit or Medit modes.\n\r", ch );
+            send_to_char( "Only valid when in Oedit or Medit modes.\r\n", ch );
       }
    }
 
@@ -4949,11 +4949,11 @@ void build_list( CHAR_DATA * ch, char *argument )
    {
       if( ch->act_build != ACT_BUILD_OEDIT )
       {
-         send_to_char( "Only valid when in Oedit mode.\n\r", ch );
+         send_to_char( "Only valid when in Oedit mode.\r\n", ch );
          return;
       }
       found = TRUE;
-      snprintf( buf, MSL, "Valid object types are :\n\r" );
+      snprintf( buf, MSL, "Valid object types are :\r\n" );
       wide_table_printout( tab_item_types, buf + strlen( buf ) );
       send_to_char( buf, ch );
    }
@@ -4962,11 +4962,11 @@ void build_list( CHAR_DATA * ch, char *argument )
    {
       if( ch->act_build != ACT_BUILD_OEDIT )
       {
-         send_to_char( "Only valid when in Oedit mode.\n\r", ch );
+         send_to_char( "Only valid when in Oedit mode.\r\n", ch );
          return;
       }
       found = TRUE;
-      snprintf( buf, MSL, "Valid object wear flags are :\n\r" );
+      snprintf( buf, MSL, "Valid object wear flags are :\r\n" );
       wide_table_printout( tab_wear_flags, buf + strlen( buf ) );
       send_to_char( buf, ch );
    }
@@ -4975,11 +4975,11 @@ void build_list( CHAR_DATA * ch, char *argument )
    {
       if( ch->act_build != ACT_BUILD_OEDIT )
       {
-         send_to_char( "Only valid when in Oedit mode.\n\r", ch );
+         send_to_char( "Only valid when in Oedit mode.\r\n", ch );
          return;
       }
       found = TRUE;
-      snprintf( buf, MSL, "Valid object wear locations are :\n\r" );
+      snprintf( buf, MSL, "Valid object wear locations are :\r\n" );
       wide_table_printout( tab_wear_loc, buf + strlen( buf ) );
       send_to_char( buf, ch );
    }
@@ -4988,11 +4988,11 @@ void build_list( CHAR_DATA * ch, char *argument )
    {
       if( ch->act_build != ACT_BUILD_REDIT )
       {
-         send_to_char( "Only valid when in Redit mode.\n\r", ch );
+         send_to_char( "Only valid when in Redit mode.\r\n", ch );
          return;
       }
       found = TRUE;
-      snprintf( buf, MSL, "Valid room sector types are :\n\r" );
+      snprintf( buf, MSL, "Valid room sector types are :\r\n" );
       wide_table_printout( tab_sector_types, buf + strlen( buf ) );
       send_to_char( buf, ch );
    }
@@ -5005,10 +5005,10 @@ void build_list( CHAR_DATA * ch, char *argument )
          return;
       }
       found = TRUE;
-      snprintf( buf, MSL, "Valid room door types are :\n\r" );
+      snprintf( buf, MSL, "Valid room door types are :\r\n" );
       wide_table_printout( tab_door_types, buf + strlen( buf ) );
       send_to_char( buf, ch );
-      snprintf( buf, MSL, "Valid room door states are :\n\r" );
+      snprintf( buf, MSL, "Valid room door states are :\r\n" );
       wide_table_printout( tab_door_states, buf + strlen( buf ) );
       send_to_char( buf, ch );
    }
@@ -5016,18 +5016,18 @@ void build_list( CHAR_DATA * ch, char *argument )
 
    if( !found )
    {
-      send_to_char( "You may display the following values:\n\r\n\r", ch );
-      send_to_char( "Edit Mode:      Values:\n\r----------      -------\n\r", ch );
-      send_to_char( "  Redit         FLAGS - room flags.\n\r", ch );
-      send_to_char( "                SEC   - room sector types.\n\r", ch );
-      send_to_char( "                EXIT  - door states / types.\n\r", ch );
-      send_to_char( "  Medit         FLAGS - mob flags.\n\r", ch );
-      send_to_char( "                AFF   - mob affected_by values.\n\r", ch );
-      send_to_char( "  Oedit         TYPES - object types.\n\r", ch );
-      send_to_char( "                FLAGS - object flags.\n\r", ch );
-      send_to_char( "                WEAR  - object wear flags.\n\r", ch );
-      send_to_char( "                LOC   - object wear locations.\n\r", ch );
-      send_to_char( "                AFF   - object affected_by values.\n\r", ch );
+      send_to_char( "You may display the following values:\r\n\r\n", ch );
+      send_to_char( "Edit Mode:      Values:\r\n----------      -------\r\n", ch );
+      send_to_char( "  Redit         FLAGS - room flags.\r\n", ch );
+      send_to_char( "                SEC   - room sector types.\r\n", ch );
+      send_to_char( "                EXIT  - door states / types.\r\n", ch );
+      send_to_char( "  Medit         FLAGS - mob flags.\r\n", ch );
+      send_to_char( "                AFF   - mob affected_by values.\r\n", ch );
+      send_to_char( "  Oedit         TYPES - object types.\r\n", ch );
+      send_to_char( "                FLAGS - object flags.\r\n", ch );
+      send_to_char( "                WEAR  - object wear flags.\r\n", ch );
+      send_to_char( "                LOC   - object wear locations.\r\n", ch );
+      send_to_char( "                AFF   - object affected_by values.\r\n", ch );
       return;
    }
    return;
@@ -5045,7 +5045,7 @@ void build_set( CHAR_DATA * ch, char *argument )
       case ACT_BUILD_OEDIT:
          if( ch->build_vnum == -1 )
          {
-            send_to_char( "No vnum is set!!\n\r", ch );
+            send_to_char( "No vnum is set!!\r\n", ch );
             return;
          }
          snprintf( buf, MSL, "%d %s", ch->build_vnum, argument );
@@ -5054,7 +5054,7 @@ void build_set( CHAR_DATA * ch, char *argument )
       case ACT_BUILD_REDIT:
          if( ch->build_vnum == -1 )
          {
-            send_to_char( "No vnum is set!!\n\r", ch );
+            send_to_char( "No vnum is set!!\r\n", ch );
             return;
          }
          build_setroom( ch, argument );
@@ -5062,14 +5062,14 @@ void build_set( CHAR_DATA * ch, char *argument )
       case ACT_BUILD_MEDIT:
          if( ch->build_vnum == -1 )
          {
-            send_to_char( "No vnum is set!!\n\r", ch );
+            send_to_char( "No vnum is set!!\r\n", ch );
             return;
          }
          snprintf( buf, MSL, "%d %s", ch->build_vnum, argument );
          build_setmob( ch, buf );
          break;
       default:
-         send_to_char( "You are not in any editing mode!\n\r", ch );
+         send_to_char( "You are not in any editing mode!\r\n", ch );
    }
    return;
 }
@@ -5086,25 +5086,25 @@ void build_listvalues( CHAR_DATA * ch, char *argument )
 
    if( argument[0] == '\0' )
    {
-      send_to_char( "USAGE: values <item-type-name>\n\r", ch );
-      send_to_char( "Eg: values staff\n\r", ch );
+      send_to_char( "USAGE: values <item-type-name>\r\n", ch );
+      send_to_char( "Eg: values staff\r\n", ch );
       return;
    }
 
    value = table_lookup( tab_item_types, argument );
    if( value == 0 )
    {
-      snprintf( buf, MSL, "Valid object types are :\n\r" );
+      snprintf( buf, MSL, "Valid object types are :\r\n" );
       wide_table_printout( tab_item_types, buf + strlen( buf ) );
       send_to_char( buf, ch );
       return;
    }
 
-   send_to_char( "Details for value0,...,value3 are:\n\r", ch );
+   send_to_char( "Details for value0,...,value3 are:\r\n", ch );
    value *= 10;
    for( foo = 0; foo < 4; foo++ )
    {
-      snprintf( buf, MSL, "@@W[Value@@y%d@@W] : @@y%s@@g\n\r", foo, rev_table_lookup( tab_value_meanings, value + foo ) );
+      snprintf( buf, MSL, "@@W[Value@@y%d@@W] : @@y%s@@g\r\n", foo, rev_table_lookup( tab_value_meanings, value + foo ) );
       send_to_char( buf, ch );
    }
    return;
@@ -5126,9 +5126,9 @@ void build_listweapons( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL, "@@W%2ld - @@y%10s.   ", tab_weapon_types[foo].value, tab_weapon_types[foo].text );
       send_to_char( buf, ch );
       if( ( foo + 1 ) % 2 == 0 )
-         send_to_char( "\n\r", ch );
+         send_to_char( "\r\n", ch );
    }
-   send_to_char( "@@g\n\r", ch );
+   send_to_char( "@@g\r\n", ch );
    return;
 }
 
@@ -5148,9 +5148,9 @@ void build_listliquids( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL, "%2ld - %12s.   ", tab_drink_types[foo].value, tab_drink_types[foo].text );
       send_to_char( buf, ch );
       if( ( foo + 1 ) % 2 == 0 )
-         send_to_char( "\n\r", ch );
+         send_to_char( "\r\n", ch );
    }
-   send_to_char( "\n\r", ch );
+   send_to_char( "\r\n", ch );
    return;
 }
 
@@ -5167,13 +5167,13 @@ void build_listspells( CHAR_DATA * ch, char *argument )
 
    if( argument[0] == '\0' )
    {
-      send_to_char( "USAGE: spells < target_type >\n\r", ch );
-      send_to_char( "target type being one of:  ign - picks own target\n\r", ch );
-      send_to_char( "                           off - offensive\n\r", ch );
-      send_to_char( "                           def - defensive\n\r", ch );
-      send_to_char( "                           slf - personal-only (self)\n\r", ch );
-      send_to_char( "                           obj - object-only\n\r", ch );
-      send_to_char( "                           all - list ALL spells\n\r", ch );
+      send_to_char( "USAGE: spells < target_type >\r\n", ch );
+      send_to_char( "target type being one of:  ign - picks own target\r\n", ch );
+      send_to_char( "                           off - offensive\r\n", ch );
+      send_to_char( "                           def - defensive\r\n", ch );
+      send_to_char( "                           slf - personal-only (self)\r\n", ch );
+      send_to_char( "                           obj - object-only\r\n", ch );
+      send_to_char( "                           all - list ALL spells\r\n", ch );
       return;
    }
 
@@ -5195,12 +5195,12 @@ void build_listspells( CHAR_DATA * ch, char *argument )
       type = TAR_OBJ_INV;
    else
    {
-      send_to_char( "Option not recognized.\n\r", ch );
+      send_to_char( "Option not recognized.\r\n", ch );
       build_listspells( ch, "" );   /* usage message */
       return;
    }
 
-   snprintf( buf2, MSL, "List of spells for option %s:\n\r", argument );
+   snprintf( buf2, MSL, "List of spells for option %s:\r\n", argument );
 
    for( sn = 0; sn < MAX_SKILL; sn++ )
    {
@@ -5211,7 +5211,7 @@ void build_listspells( CHAR_DATA * ch, char *argument )
 
       if( skill_table[sn].target == type || fall )
       {
-         snprintf( buf, MSL, "@@W[Spell No: %4d] @@y%s@@g\n\r", sn, skill_table[sn].name );
+         snprintf( buf, MSL, "@@W[Spell No: %4d] @@y%s@@g\r\n", sn, skill_table[sn].name );
          strncat( buf2, buf, MSL );
       }
    }
@@ -5346,7 +5346,7 @@ void build_urooms( CHAR_DATA * ch, char *argument )
       }
    }
 
-   snprintf( buf, MSL, "Room vnum usage summary:\n\r\n\r%s\n\r\n\r%s\n\r", used, free );
+   snprintf( buf, MSL, "Room vnum usage summary:\r\n\r\n%s\r\n\r\n%s\r\n", used, free );
    send_to_char( buf, ch );
    return;
 }
@@ -5471,7 +5471,7 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
       }
    }
 
-   snprintf( buf, MSL, "Object vnum usage summary:\n\r\n\r%s\n\r\n\r%s\n\r", used, free );
+   snprintf( buf, MSL, "Object vnum usage summary:\r\n\r\n%s\r\n\r\n%s\r\n", used, free );
    send_to_char( buf, ch );
    return;
 }
@@ -5592,7 +5592,7 @@ void build_umobs( CHAR_DATA * ch, char *argument )
       }
    }
 
-   snprintf( buf, MSL, "Mobile vnum usage summary:\n\r\n\r%s\n\r\n\r%s\n\r", used, free );
+   snprintf( buf, MSL, "Mobile vnum usage summary:\r\n\r\n%s\r\n\r\n%s\r\n", used, free );
    send_to_char( buf, ch );
    return;
 }
@@ -5612,12 +5612,12 @@ void build_findhelp( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Usage: Findhelp <keyword>\n\r", ch );
+      send_to_char( "Usage: Findhelp <keyword>\r\n", ch );
       return;
    }
 
    if( cnt == 0 )
-      send_to_char( "Couldn't find that keyword.\n\r", ch );
+      send_to_char( "Couldn't find that keyword.\r\n", ch );
    return;
 }
 
@@ -5636,7 +5636,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
 
  if( argument[0] == '\0' )
  {
-  send_to_char("Usage: HELPEDIT <mort/imm> <keyword>.\n\r",ch);
+  send_to_char("Usage: HELPEDIT <mort/imm> <keyword>.\r\n",ch);
   return;
  }
  if( !str_prefix(arg,"mort") )
@@ -5652,7 +5652,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
  snprintf(arg,MSL,"%s%s/%s.%s",HELP_DIR,initial(argument),argument,mort ? HELP_MORT : HELP_IMM);
  if( (fp = file_open(arg,"r")) == NULL )
  {
-  send_to_char("Couldn't find that keyword.\n\r",ch);
+  send_to_char("Couldn't find that keyword.\r\n",ch);
   file_close(fp);
   return;
  }
@@ -5679,7 +5679,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
  }
  else
  {
-  send_to_char("An error has occured. Contact a shell owner.\n\r",ch);
+  send_to_char("An error has occured. Contact a shell owner.\r\n",ch);
   return;
  }
 
@@ -5698,7 +5698,7 @@ void build_addhelp( CHAR_DATA * ch, char *argument )
 
  if( argument[0] == '\0' )
  {
-  send_to_char("Usage: ADDHELP <mort/imm> <keyword>.\n\r",ch);
+  send_to_char("Usage: ADDHELP <mort/imm> <keyword>.\r\n",ch);
   return;
  }
  if( !str_prefix(arg,"mort") )
@@ -5714,19 +5714,19 @@ void build_addhelp( CHAR_DATA * ch, char *argument )
  snprintf(arg,MSL,"%s%s/%s.%s",HELP_DIR,initial(argument),argument,mort ? HELP_MORT : HELP_IMM);
  if( (fp = file_open(arg,"r")) != NULL )
  {
-  send_to_char("Help already exists. Use HELPEDIT <keyword> to edit it.\n\r",ch);
+  send_to_char("Help already exists. Use HELPEDIT <keyword> to edit it.\r\n",ch);
   file_close(fp);
   return;
  }
  else if( (fp = file_open(arg,"w")) != NULL )
  {
-  send_to_char("Help added. Use HELPEDIT <keyword> to edit it.\n\r",ch);
+  send_to_char("Help added. Use HELPEDIT <keyword> to edit it.\r\n",ch);
   file_close(fp);
   return;
  }
  else
  {
-  send_to_char("An error has occured. Contact a shell owner.\n\r",ch);
+  send_to_char("An error has occured. Contact a shell owner.\r\n",ch);
   return;
  }
 
@@ -5749,10 +5749,10 @@ void build_clone( CHAR_DATA * ch, char *argument )
 
    if( argument[0] == '\0' )  /* Show help info */
    {
-      send_to_char( "Usage: CLONE <type> <vnum>\n\r", ch );
-      send_to_char( "Where <type> is one of: mob  room  obj\n\r", ch );
-      send_to_char( "      <vnum> is the vnum of the type you want to clone.\n\r", ch );
-      send_to_char( "[The item will be copied onto the exisiting item you are editing]\n\r", ch );
+      send_to_char( "Usage: CLONE <type> <vnum>\r\n", ch );
+      send_to_char( "Where <type> is one of: mob  room  obj\r\n", ch );
+      send_to_char( "      <vnum> is the vnum of the type you want to clone.\r\n", ch );
+      send_to_char( "[The item will be copied onto the exisiting item you are editing]\r\n", ch );
       return;
    }
 
@@ -5778,19 +5778,19 @@ void build_clone( CHAR_DATA * ch, char *argument )
 
       if( ch->act_build != ACT_BUILD_REDIT )
       {
-         send_to_char( "You must be in REDIT mode to clone a room.\n\r", ch );
+         send_to_char( "You must be in REDIT mode to clone a room.\r\n", ch );
          return;
       }
 
       if( ( room = get_room_index( atoi( arg2 ) ) ) == NULL )
       {
-         send_to_char( "Sorry, no such room with that vnum.\n\r", ch );
+         send_to_char( "Sorry, no such room with that vnum.\r\n", ch );
          return;
       }
 
       if( in_room == NULL )
       {
-         send_to_char( "Don't know what room you're in!!\n\r", ch );
+         send_to_char( "Don't know what room you're in!!\r\n", ch );
          return;
       }
 
@@ -5799,12 +5799,12 @@ void build_clone( CHAR_DATA * ch, char *argument )
        */
       if( !build_canread( room->area, ch, 0 ) )
       {
-         send_to_char( "Sorry, you don't have authorization to read that room.\n\r", ch );
+         send_to_char( "Sorry, you don't have authorization to read that room.\r\n", ch );
          return;
       }
       if( !build_canwrite( in_room->area, ch, 0 ) )
       {
-         send_to_char( "Sorry, you don't have authorization to write into this room.\n\r", ch );
+         send_to_char( "Sorry, you don't have authorization to write into this room.\r\n", ch );
          return;
       }
 
@@ -5826,7 +5826,7 @@ void build_clone( CHAR_DATA * ch, char *argument )
        */
 
 
-      send_to_char( "Room cloned.\n\r", ch );
+      send_to_char( "Room cloned.\r\n", ch );
       return;
    }
 
@@ -5837,30 +5837,30 @@ void build_clone( CHAR_DATA * ch, char *argument )
       int looper;
       if( ch->act_build != ACT_BUILD_OEDIT )
       {
-         send_to_char( "You must be in OEDIT mode to clone an object.\n\r", ch );
+         send_to_char( "You must be in OEDIT mode to clone an object.\r\n", ch );
          return;
       }
 
       if( ( this_obj = get_obj_index( ch->build_vnum ) ) == NULL )
       {
-         send_to_char( "You must select a valid object in OEDIT before you clone.\n\r", ch );
+         send_to_char( "You must select a valid object in OEDIT before you clone.\r\n", ch );
          return;
       }
 
       if( ( obj = get_obj_index( atoi( arg2 ) ) ) == NULL )
       {
-         send_to_char( "That object does not exist to be cloned.\n\r", ch );
+         send_to_char( "That object does not exist to be cloned.\r\n", ch );
          return;
       }
 
       if( !build_canread( obj->area, ch, 0 ) )
       {
-         send_to_char( "Sorry, you don't have authorization to read that object.\n\r", ch );
+         send_to_char( "Sorry, you don't have authorization to read that object.\r\n", ch );
          return;
       }
       if( !build_canwrite( this_obj->area, ch, 0 ) )
       {
-         send_to_char( "Sorry, you don't have authorization to write to this object.\n\r", ch );
+         send_to_char( "Sorry, you don't have authorization to write to this object.\r\n", ch );
          return;
       }
 
@@ -5892,7 +5892,7 @@ void build_clone( CHAR_DATA * ch, char *argument )
        * * handle obj_funs
        */
 
-      send_to_char( "Object cloned.\n\r", ch );
+      send_to_char( "Object cloned.\r\n", ch );
       return;
    }
 
@@ -5903,30 +5903,30 @@ void build_clone( CHAR_DATA * ch, char *argument )
 
       if( ch->act_build != ACT_BUILD_MEDIT )
       {
-         send_to_char( "You must be in MEDIT mode to clone mobiles.\n\r", ch );
+         send_to_char( "You must be in MEDIT mode to clone mobiles.\r\n", ch );
          return;
       }
 
       if( ( this_mob = get_mob_index( ch->build_vnum ) ) == NULL )
       {
-         send_to_char( "You must select a valid mobile in MEDIT before you clone mobiles.\n\r", ch );
+         send_to_char( "You must select a valid mobile in MEDIT before you clone mobiles.\r\n", ch );
          return;
       }
 
       if( ( mob = get_mob_index( atoi( arg2 ) ) ) == NULL )
       {
-         send_to_char( "That mobile does not exist to be cloned.\n\r", ch );
+         send_to_char( "That mobile does not exist to be cloned.\r\n", ch );
          return;
       }
 
       if( !build_canread( mob->area, ch, 0 ) )
       {
-         send_to_char( "Sorry, you do not have authorization to read that mobile.\n\r", ch );
+         send_to_char( "Sorry, you do not have authorization to read that mobile.\r\n", ch );
          return;
       }
       if( !build_canwrite( this_mob->area, ch, 0 ) )
       {
-         send_to_char( "Sorry, you do not have authorization to write to this mobile.\n\r", ch );
+         send_to_char( "Sorry, you do not have authorization to write to this mobile.\r\n", ch );
          return;
       }
 
@@ -5965,7 +5965,7 @@ void build_clone( CHAR_DATA * ch, char *argument )
        * * ignore mob_progs?
        */
 
-      send_to_char( "Mobile cloned.\n\r", ch );
+      send_to_char( "Mobile cloned.\r\n", ch );
       return;
    }
    return;
@@ -6001,7 +6001,7 @@ void check_autodig( CHAR_DATA *ch, int dir )
 
   if( vnum > pArea->max_vnum )
   {
-   send_to_char("AUTODIG: No more free vnums in area.\n\r",ch);
+   send_to_char("AUTODIG: No more free vnums in area.\r\n",ch);
    return;
   }
 
@@ -6032,9 +6032,9 @@ void build_sysdata( CHAR_DATA *ch, char *argument )
 
  if( arg1[0] == '\0' )
  {
-  send_to_char("Syntax for sysdata:\n\r",ch);
-  send_to_char("  sysdata help | show | <option> <value>\n\r",ch);
-  send_to_char("  options: obj[ac | dr | hp | hr | mp | mv | svs]\n\r",ch);
+  send_to_char("Syntax for sysdata:\r\n",ch);
+  send_to_char("  sysdata help | show | <option> <value>\r\n",ch);
+  send_to_char("  options: obj[ac | dr | hp | hr | mp | mv | svs]\r\n",ch);
   return;
  }
 
@@ -6046,28 +6046,28 @@ void build_sysdata( CHAR_DATA *ch, char *argument )
 
  if( !str_prefix(arg1,"show") )
  {
-  snprintf(outbuf,MSL,"%s","  Builder system data for " mudnamecolor ":\n\r");
-  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(outbuf,MSL,"%s","  Builder system data for " mudnamecolor ":\r\n");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Option         ]       [Value          ]\n\r");
+  snprintf(catbuf,MSL,"[Option         ]       [Value          ]\r\n");
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Obj AC         ]       [%15d]\n\r",sysdata.build_obj_ac);
+  snprintf(catbuf,MSL,"[Obj AC         ]       [%15d]\r\n",sysdata.build_obj_ac);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Obj DR         ]       [%15d]\n\r",sysdata.build_obj_dr);
+  snprintf(catbuf,MSL,"[Obj DR         ]       [%15d]\r\n",sysdata.build_obj_dr);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Obj HP         ]       [%15d]\n\r",sysdata.build_obj_hp);
+  snprintf(catbuf,MSL,"[Obj HP         ]       [%15d]\r\n",sysdata.build_obj_hp);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Obj HR         ]       [%15d]\n\r",sysdata.build_obj_hr);
+  snprintf(catbuf,MSL,"[Obj HR         ]       [%15d]\r\n",sysdata.build_obj_hr);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Obj MP         ]       [%15d]\n\r",sysdata.build_obj_mp);
+  snprintf(catbuf,MSL,"[Obj MP         ]       [%15d]\r\n",sysdata.build_obj_mp);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Obj MV         ]       [%15d]\n\r",sysdata.build_obj_mv);
+  snprintf(catbuf,MSL,"[Obj MV         ]       [%15d]\r\n",sysdata.build_obj_mv);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Obj SVS        ]       [%15d]\n\r",sysdata.build_obj_svs);
+  snprintf(catbuf,MSL,"[Obj SVS        ]       [%15d]\r\n",sysdata.build_obj_svs);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
   strncat(outbuf,catbuf,MSL);
   send_to_char(outbuf,ch);
   return;
