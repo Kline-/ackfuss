@@ -491,7 +491,7 @@ int hit_gain( CHAR_DATA * ch )
 
    }
 
-   return UMIN( (int)gain, ch->max_hit - ch->hit );
+   return UMIN( static_cast<int>(gain), ch->max_hit - ch->hit );
 }
 
 
@@ -590,7 +590,7 @@ int mana_gain( CHAR_DATA * ch )
       if( MAGIC_STANCE( ch ) )
          gain = gain * int_app[get_curr_int( ch )].mana_regen / 10;
    }
-   return UMIN( (int)gain, ch->max_mana - ch->mana );
+   return UMIN( static_cast<int>(gain), ch->max_mana - ch->mana );
 }
 
 
@@ -640,7 +640,7 @@ int move_gain( CHAR_DATA * ch )
       gain /= 4;
 
 
-   return UMIN( (int)gain, ch->max_move - ch->move );
+   return UMIN( static_cast<int>(gain), ch->max_move - ch->move );
 }
 
 void gain_rage( CHAR_DATA * ch )
@@ -2533,7 +2533,7 @@ void auction_update( void )
                int bid;
                char changebuf[MSL];
                char *change;
-               bid = UMIN( money_value( auction_owner->money ), (int)(auction_reserve * .1) );
+               bid = UMIN( money_value( auction_owner->money ), static_cast<int>(auction_reserve * .1) );
                change = take_best_coins( auction_owner->money, bid );
                change = one_argument( change, changebuf );
                money_to_value( auction_owner, change );
@@ -2570,7 +2570,7 @@ void auction_update( void )
                int bid;
                char changebuf[MSL];
                char *change;
-               bid = UMIN( money_value( auction_owner->money ), (int)(auction_reserve * .1) );
+               bid = UMIN( money_value( auction_owner->money ), static_cast<int>(auction_reserve * .1) );
                change = take_best_coins( auction_owner->money, bid );
                change = one_argument( change, changebuf );
                money_to_value( auction_owner, change );
@@ -2606,7 +2606,7 @@ void auction_update( void )
                extract_obj( auction_item );
             }
             if( good_seller )
-               join_money( round_money( (int)(auction_bid - ( auction_bid * .1 )), TRUE ), auction_owner->money );
+               join_money( round_money( static_cast<int>(auction_bid - ( auction_bid * .1 )), TRUE ), auction_owner->money );
 
          }
 

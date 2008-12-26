@@ -280,8 +280,8 @@ void SHA256_Update(SHA256_CTX * ctx, const unsigned char *src, size_t len)
 	r = (ctx->count[1] >> 3) & 0x3f;
 
 	/* Convert the length into a number of bits */
-	bitlen[1] = ((int)len) << 3;
-	bitlen[0] = (int)(len >> 29);
+	bitlen[1] = (static_cast<int>(len)) << 3;
+	bitlen[0] = static_cast<int>((len >> 29));
 
 	/* Update number of bits */
 	if ((ctx->count[1] += bitlen[1]) < bitlen[1])
