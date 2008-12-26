@@ -645,13 +645,13 @@ void mquest_complete_message( CHAR_DATA *ch )
   {
    tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
    tmp *= 0.90;
-   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = (int)tmp;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = static_cast<int>(tmp);
    tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD];
    tmp *= 0.90;
-   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = (int)tmp;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = static_cast<int>(tmp);
    tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP];
    tmp *= 0.90;
-   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = (int)tmp;
+   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = static_cast<int>(tmp);
    hint--;
   }
 
@@ -698,20 +698,20 @@ void mquest_calc_rewards( CHAR_DATA *ch )
  tot_tsk = 0;
  clev = get_psuedo_level(ch);
  exp = (exp_mob_base(clev) * sysdata.killperlev);
- exp = number_range((int)(exp * 0.04),(int)(exp * 0.08));
+ exp = number_range(static_cast<int>(exp * 0.04),static_cast<int>(exp * 0.08));
 
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = number_range((int)(clev / 40),(int)(clev / 20));
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range((int)(clev * 15),(int)(clev * 30));
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = number_range(static_cast<int>(clev / 40),static_cast<int>(clev / 20));
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range(static_cast<int>(clev * 15),static_cast<int>(clev * 30));
 
  if( is_adept(ch) )
-  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range((int)(exp_to_level_adept(ch) * 0.04),(int)(exp_to_level_adept(ch) * 0.08));
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range(static_cast<int>(exp_to_level_adept(ch) * 0.04),static_cast<int>(exp_to_level_adept(ch) * 0.08));
  else
   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = exp;
 
  /* Add some randomness */
  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] += number_range(-1,1);
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range((int)(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 0.9),(int)(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 1.1));
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range((int)(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 0.9),(int)(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 1.1));
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range(static_cast<int>(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 0.9),static_cast<int>(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] * 1.1));
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range(static_cast<int>(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 0.9),static_cast<int>(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] * 1.1));
 
  for( tot_tsk = 0; tot_tsk < QUEST_MAX_DATA; tot_tsk++ )
  {
@@ -760,13 +760,13 @@ void mquest_calc_rewards( CHAR_DATA *ch )
 
  tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
  tmp *= mod;
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = (int)tmp;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = static_cast<int>(tmp);
  tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD];
  tmp *= mod;
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = (int)tmp;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = static_cast<int>(tmp);
  tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP];
  tmp *= mod;
- ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = (int)tmp;
+ ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = static_cast<int>(tmp);
        
  /* Bonus! */
  if( number_percent() < 5 )
@@ -775,13 +775,13 @@ void mquest_calc_rewards( CHAR_DATA *ch )
  {
   tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD];
   tmp *= 1.5;
-  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = (int)tmp;
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = static_cast<int>(tmp);
  }
  if( number_percent() < 5 )
  {
   tmp = ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP];
   tmp *= 1.5;
-  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = (int)tmp;
+  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = static_cast<int>(tmp);
  }
 
  /* No negative rewards */
@@ -842,8 +842,8 @@ void generate_killing_quest( CHAR_DATA *ch )
   race = TRUE;
 
  clev = get_psuedo_level(ch);
- min_lev = (int)(clev * 0.7);
- max_lev = (int)(clev * 1.1);
+ min_lev = static_cast<int>(clev * 0.7);
+ max_lev = static_cast<int>(clev * 1.1);
 
  if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL || ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R )
   max = number_range(3,5);
@@ -981,8 +981,8 @@ void generate_retrieval_quest( CHAR_DATA *ch )
   return;
 
  clev = get_psuedo_level(ch);
- min_lev = (int)(clev * 0.7);
- max_lev = (int)(clev * 1.1);
+ min_lev = static_cast<int>(clev * 0.7);
+ max_lev = static_cast<int>(clev * 1.1);
 
  if(ch->pcdata->quest_info->quest_type == QUEST_MULTI_RETRIEVE )
   max = number_range(3,5);

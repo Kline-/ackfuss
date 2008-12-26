@@ -2994,7 +2994,7 @@ void do_title( CHAR_DATA * ch, char *argument )
    }
    changed = FALSE;
 
-   for( cnt = 0; cnt < (int)strlen( argument ); cnt++ )
+   for( cnt = 0; cnt < static_cast<int>(strlen( argument )); cnt++ )
    {
       if( argument[cnt] == '[' || argument[cnt] == ']' )
       {

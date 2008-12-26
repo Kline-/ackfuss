@@ -452,19 +452,25 @@ bool spec_cast_adept( CHAR_DATA * ch )
       case 5:
       {
          time_t cur_time, xmas_time;
-         struct tm tm_xmas;
+         struct tm tm_xmas, *tm_local;
          int days;
          char buffer[255];
+
+         time(&cur_time);
+         tm_local = localtime(&cur_time);
 
          tm_xmas.tm_sec = 0;
          tm_xmas.tm_min = 0;
          tm_xmas.tm_hour = 0;
          tm_xmas.tm_mday = 25;
          tm_xmas.tm_mon = 11;
-         tm_xmas.tm_year = 98;
+         tm_xmas.tm_year = tm_local->tm_year;
+
+         if( tm_local->tm_mon >= 11 && tm_local->tm_mday >= 25 ) /* Christmas has past this year, go to next year! */
+          tm_xmas.tm_year++;
 
          xmas_time = mktime( &tm_xmas );
-         days = (int)difftime( xmas_time, time( &cur_time ) ) / ( 3600 * 24 );
+         days = static_cast<int>(difftime( xmas_time, time( &cur_time ) ) / ( 3600 * 24 ));
 
          snprintf( buffer, 255, "$n utters the words '%i days to Christmas!'.", days );
 
@@ -1080,7 +1086,7 @@ bool spec_policeman( CHAR_DATA * ch )
 
    if( ch->hunting || ch->hunt_obj )
       /*
-       * if ( (int) (ch->hunting) > 0)
+       * if ( static_cast<int>(ch->hunting) > 0)
        *//*
        * Don't hunt someone if already hunting 
        */
