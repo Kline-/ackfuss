@@ -2504,7 +2504,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *gch;
    CHAR_DATA *lch;
-   int members = 0, tot_level = 0;
+   int members = 0, tot_level = 0, xp = 0;
    float old_gain = 0, gain = 0, percent = 0;
 
    /*
@@ -2577,12 +2577,13 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
 
       /* Support changing exp on the fly. --Kline */
       gain *= sysdata.expmult;
+      xp = static_cast<int>(gain);
 
-      snprintf( buf, MSL, "You Receive %.0f Experience Points.\n\r", gain );
+      snprintf( buf, MSL, "You Receive %d Experience Points.\n\r", xp );
       send_to_char( buf, gch );
       if( AI_MOB(gch) )
-         gch->intell_exp += (int)gain;
-      gain_exp( gch, (int)gain );
+         gch->intell_exp += xp;
+      gain_exp( gch, xp );
 
       if( !IS_NPC(gch) && (IS_VAMP( gch ) || IS_WOLF( gch )) )
 
