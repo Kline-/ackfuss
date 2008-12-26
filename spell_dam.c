@@ -134,7 +134,7 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
    int looper;
    /*
     * For debugging purposes  
-    * snprintf( buf, MSL, "dt: %d max_dt: %d\n\r", dt, max_dt );
+    * snprintf( buf, MSL, "dt: %d max_dt: %d\r\n", dt, max_dt );
     * notify( buf, 1 );  
     */
 
@@ -952,7 +952,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    {
     if( dam > ch->pcdata->records->mdam_amt )
     {
-     send_to_char("@@yYou've broken your magical damage record!@@N\n\r",ch);
+     send_to_char("@@yYou've broken your magical damage record!@@N\r\n",ch);
      ch->pcdata->records->mdam_amt = dam;
      ch->pcdata->records->mdam_gsn = sn;
     }
@@ -972,29 +972,29 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       {
          case POS_MORTAL:
             act( "$n is mortally wounded, and will die soon, if not aided.", victim, NULL, NULL, TO_ROOM );
-            send_to_char( "You are mortally wounded, and will die soon, if not aided.\n\r", victim );
+            send_to_char( "You are mortally wounded, and will die soon, if not aided.\r\n", victim );
             break;
 
          case POS_INCAP:
             act( "$n is incapacitated and will slowly die, if not aided.", victim, NULL, NULL, TO_ROOM );
-            send_to_char( "You are incapacitated and will slowly die, if not aided.\n\r", victim );
+            send_to_char( "You are incapacitated and will slowly die, if not aided.\r\n", victim );
             break;
 
          case POS_STUNNED:
             act( "$n is too stunned to do anything!", victim, NULL, NULL, TO_ROOM );
-            send_to_char( "You are too stunned to do anything!\n\r", victim );
+            send_to_char( "You are too stunned to do anything!\r\n", victim );
             break;
 
          case POS_DEAD:
             act( "$n is DEAD!!", victim, 0, 0, TO_ROOM );
-            send_to_char( "You have been KILLED!!\n\r\n\r", victim );
+            send_to_char( "You have been KILLED!!\r\n\r\n", victim );
             break;
 
          default:
             if( dam > victim->max_hit / 4 )
-               send_to_char( "That really did HURT!\n\r", victim );
+               send_to_char( "That really did HURT!\r\n", victim );
             if( victim->hit < victim->max_hit / 4 )
-               send_to_char( "You sure are BLEEDING!\n\r", victim );
+               send_to_char( "You sure are BLEEDING!\r\n", victim );
             break;
       }
    }  /* end of if statement */

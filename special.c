@@ -254,33 +254,33 @@ char *rev_spec_lookup( SPEC_FUN *func )
 
 void print_spec_lookup( char *buf )
 {
-   strncat( buf, "       spec_breath_any         \n\r", MSL );
-   strncat( buf, "       spec_breath_acid        \n\r", MSL );
-   strncat( buf, "       spec_breath_fire        \n\r", MSL );
-   strncat( buf, "       spec_breath_frost       \n\r", MSL );
-   strncat( buf, "       spec_breath_gas         \n\r", MSL );
-   strncat( buf, "       spec_breath_lightning   \n\r", MSL );
-   strncat( buf, "       spec_cast_adept         \n\r", MSL );
-   strncat( buf, "       spec_cast_cleric        \n\r", MSL );
-   strncat( buf, "       spec_cast_judge         \n\r", MSL );
-   strncat( buf, "       spec_cast_mage          \n\r", MSL );
-   strncat( buf, "       spec_cast_undead        \n\r", MSL );
-   strncat( buf, "       spec_executioner        \n\r", MSL );
-   strncat( buf, "       spec_fido               \n\r", MSL );
-   strncat( buf, "       spec_guard              \n\r", MSL );
-   strncat( buf, "       spec_janitor            \n\r", MSL );
-   strncat( buf, "       spec_mayor              \n\r", MSL );
-   strncat( buf, "       spec_poison             \n\r", MSL );
-   strncat( buf, "       spec_thief              \n\r", MSL );
-   strncat( buf, "       spec_policeman          \n\r", MSL );
-   strncat( buf, "       spec_cast_cadaver       \n\r", MSL );
-   strncat( buf, "       spec_undead             \n\r", MSL );
-   strncat( buf, "       spec_rewield            \n\r", MSL );
-   strncat( buf, "	 spec_cast_bigtime       \n\r", MSL );
-   strncat( buf, "       spec_wizardofoz         \n\r", MSL );
-   strncat( buf, "       spec_vamp_hunter (Int mobs only) \n\r", MSL );
-   strncat( buf, "       spec_mino_guard \n\r", MSL );
-   strncat( buf, "       spec_tax_man \n\r", MSL );
+   strncat( buf, "       spec_breath_any         \r\n", MSL );
+   strncat( buf, "       spec_breath_acid        \r\n", MSL );
+   strncat( buf, "       spec_breath_fire        \r\n", MSL );
+   strncat( buf, "       spec_breath_frost       \r\n", MSL );
+   strncat( buf, "       spec_breath_gas         \r\n", MSL );
+   strncat( buf, "       spec_breath_lightning   \r\n", MSL );
+   strncat( buf, "       spec_cast_adept         \r\n", MSL );
+   strncat( buf, "       spec_cast_cleric        \r\n", MSL );
+   strncat( buf, "       spec_cast_judge         \r\n", MSL );
+   strncat( buf, "       spec_cast_mage          \r\n", MSL );
+   strncat( buf, "       spec_cast_undead        \r\n", MSL );
+   strncat( buf, "       spec_executioner        \r\n", MSL );
+   strncat( buf, "       spec_fido               \r\n", MSL );
+   strncat( buf, "       spec_guard              \r\n", MSL );
+   strncat( buf, "       spec_janitor            \r\n", MSL );
+   strncat( buf, "       spec_mayor              \r\n", MSL );
+   strncat( buf, "       spec_poison             \r\n", MSL );
+   strncat( buf, "       spec_thief              \r\n", MSL );
+   strncat( buf, "       spec_policeman          \r\n", MSL );
+   strncat( buf, "       spec_cast_cadaver       \r\n", MSL );
+   strncat( buf, "       spec_undead             \r\n", MSL );
+   strncat( buf, "       spec_rewield            \r\n", MSL );
+   strncat( buf, "	 spec_cast_bigtime       \r\n", MSL );
+   strncat( buf, "       spec_wizardofoz         \r\n", MSL );
+   strncat( buf, "       spec_vamp_hunter (Int mobs only) \r\n", MSL );
+   strncat( buf, "       spec_mino_guard \r\n", MSL );
+   strncat( buf, "       spec_tax_man \r\n", MSL );
 
    return;
 }
@@ -1145,7 +1145,7 @@ bool spec_cast_cadaver( CHAR_DATA * ch )
     * {
     * char   buf[MAX_STRING_LENGTH];
     * 
-    * snprintf( buf, MSL, "Try 'get all %d.corpse' to recover your belongings, %s.\n\r",
+    * snprintf( buf, MSL, "Try 'get all %d.corpse' to recover your belongings, %s.\r\n",
     * count, PERS( ch, vch ) );
     * do_say( ch, buf );
     * }
@@ -1498,7 +1498,7 @@ bool spec_sylai_priest( CHAR_DATA * ch )
 
    if( location == NULL )
    {
-      notify( "Fucked up spec_sylai_priest.\n\r", 82 );
+      notify( "Fucked up spec_sylai_priest.\r\n", 82 );
       return FALSE;
    }
 
@@ -1510,7 +1510,7 @@ bool spec_sylai_priest( CHAR_DATA * ch )
 
    char_to_room( victim, location );
    act( "$n lands on the floor, having fallen from the outcrop above!", victim, NULL, NULL, TO_NOTVICT );
-   send_to_char( "You crash to the floor below!\n\r", victim );
+   send_to_char( "You crash to the floor below!\r\n", victim );
    do_look( victim, "" );
    return TRUE;
 }
@@ -1771,7 +1771,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
          break;
       case 6:
          snprintf( buf, MSL, "%s", ch->hunting->name );
-         snprintf( buf1, MSL, "@@eI know that you are a Vampyre, and I shall not rest until your are destroyed!!!@@N\n\r" );
+         snprintf( buf1, MSL, "@@eI know that you are a Vampyre, and I shall not rest until your are destroyed!!!@@N\r\n" );
          strncat( buf, buf1, MSL );
          do_tell( ch, buf );
          break;
@@ -1783,7 +1783,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
          break;
       case 12:
       case 13:
-         snprintf( buf, MSL, "My informants have told me that %s is a Vampyre, and I have vowed to destroy him!!\n\r",
+         snprintf( buf, MSL, "My informants have told me that %s is a Vampyre, and I have vowed to destroy him!!\r\n",
                   ch->hunting->name );
          do_yell( ch, buf );
          break;
@@ -1794,7 +1794,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
          break;
       case 17:
          snprintf( buf, MSL, " %s ", ch->hunting->name );
-         snprintf( buf1, MSL, "@@Do you finally know fear? I shall not rest until ALL of your kind are destroyed!!!@@N\n\r" );
+         snprintf( buf1, MSL, "@@Do you finally know fear? I shall not rest until ALL of your kind are destroyed!!!@@N\r\n" );
          strncat( buf, buf1, MSL );
          do_tell( ch, buf );
          break;
@@ -1804,7 +1804,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
          break;
       case 20:
          snprintf( buf, MSL, 
-                  "All the realm shall know that %s is a Vampyre, and I shall eridicate all of these vile creatures!!\n\r",
+                  "All the realm shall know that %s is a Vampyre, and I shall eridicate all of these vile creatures!!\r\n",
                   ch->hunting->name );
          do_yell( ch, buf );
          break;
@@ -1921,9 +1921,9 @@ bool spec_tax_man( CHAR_DATA * ch )
          victim->gold = UMIN( victim->gold, loss );
    }
    snprintf( mon_buf, MSL, "Tax Collector visited %s ", victim->name );
-   snprintf( cat_buf, MSL, "Collected %i from bank, and %i from gold on hand.\n\r", bank_loss, char_loss );
+   snprintf( cat_buf, MSL, "Collected %i from bank, and %i from gold on hand.\r\n", bank_loss, char_loss );
    strncat( mon_buf, cat_buf, MSL );
-   snprintf( cat_buf, MSL, "New totals are balance: %i/%i  on hand: %i/%i\n\r",
+   snprintf( cat_buf, MSL, "New totals are balance: %i/%i  on hand: %i/%i\r\n",
             victim->balance, old_bank, victim->gold, old_char );
    strncat( mon_buf, cat_buf, MSL );
    monitor_chan( mon_buf, MONITOR_MOB );

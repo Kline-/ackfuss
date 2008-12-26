@@ -517,7 +517,7 @@ void game_loop( int control )
           */
          if( d->connected < 0 && d->timeout < current_time )
          {
-            write_to_descriptor( d->descriptor, "Login timeout (180s)\n\r", 0 );
+            write_to_descriptor( d->descriptor, "Login timeout (180s)\r\n", 0 );
             close_socket( d );
             continue;
          }
@@ -713,7 +713,7 @@ void new_descriptor( int control )
     * snprintf( buf, MSL, "Denying access to banned site %s", dnew->host );
     * monitor_chan( buf, MONITOR_CONNECT );
     * write_to_descriptor( desc,
-    * "Your site has been banned from this Mud.  BYE BYE!\n\r", 0 );
+    * "Your site has been banned from this Mud.  BYE BYE!\r\n", 0 );
     * free_desc(dnew);
     * PUT_FREE(dnew, desc_free);
     * return;
@@ -781,7 +781,7 @@ void close_socket( DESCRIPTOR_DATA * dclose )
 
    if( dclose->snoop_by != NULL )
    {
-      write_to_buffer( dclose->snoop_by, "Your victim has left the game.\n\r", 0 );
+      write_to_buffer( dclose->snoop_by, "Your victim has left the game.\r\n", 0 );
    }
 
    {
@@ -861,7 +861,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d )
       log_string( log_buf );
       snprintf( log_buf, (2 * MIL), "input overflow by %s (%s)", ( d->character == NULL ) ? "[login]" : d->character->name, d->host );
       monitor_chan( log_buf, MONITOR_CONNECT );
-      write_to_descriptor( d->descriptor, "\n\r SPAMMING IS RUDE, BYE BYE! \n\r", 0 );
+      write_to_descriptor( d->descriptor, "\r\n SPAMMING IS RUDE, BYE BYE! \r\n", 0 );
       return FALSE;
    }
 
@@ -925,7 +925,7 @@ void read_from_buffer( DESCRIPTOR_DATA * d )
    {
       if( k >= MAX_INPUT_LENGTH - 2 )
       {
-         write_to_descriptor( d->descriptor, "Line too long.\n\r", 0 );
+         write_to_descriptor( d->descriptor, "Line too long.\r\n", 0 );
 
          /*
           * skip the rest of the line 
@@ -972,7 +972,7 @@ void read_from_buffer( DESCRIPTOR_DATA * d )
                log_string( log_buf );
                monitor_chan( log_buf, MONITOR_CONNECT );
             }
-            write_to_descriptor( d->descriptor, "\n\r***** SHUT UP!! *****\n\r", 0 );
+            write_to_descriptor( d->descriptor, "\r\n***** SHUT UP!! *****\r\n", 0 );
             close_socket( d );
             /*
              * old way: strcpy( d->incomm, "quit" ); 
@@ -1020,7 +1020,7 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
 
          ch = d->original ? d->original : d->character;
          if( !IS_NPC(ch) && ch->act.test(ACT_BLANK) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !ch->act.test(ACT_AUTOBRIEF)) )
-            write_to_buffer( d, "\n\r", 2 );
+            write_to_buffer( d, "\r\n", 2 );
          if( ch->hunting || ch->hunt_obj )
             char_hunt( ch );
          if( !IS_NPC(ch) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !ch->act.test(ACT_AUTOBRIEF)) )
@@ -1435,7 +1435,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             break;
          case 'c':
             if( !IS_NPC( ch ) )
-               snprintf( buf2, MSL, "\n\r" );
+               snprintf( buf2, MSL, "\r\n" );
             else
                snprintf( buf2, MSL, " " );
             i = buf2;
@@ -1506,7 +1506,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                   snprintf( buf2, MSL, "OK" );
             }
             else
-               snprintf( buf2, MSL, "Mquest Error.\n\r" );
+               snprintf( buf2, MSL, "Mquest Error.\r\n" );
             i = buf2; 
             break;
 
@@ -1610,9 +1610,9 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       else
          snprintf( wound, MSL, "@@2@@WALMOST DEAD!!!@@N" );
       if( ch->act.test(ACT_BLIND_PLAYER) )
-         snprintf( buf, MSL, "@@WVictim %s @@N\n\r", wound );
+         snprintf( buf, MSL, "@@WVictim %s @@N\r\n", wound );
       else
-         snprintf( buf, MSL, "@@a[@@WVictim@@a:%s@@a]@@N\n\r", wound );
+         snprintf( buf, MSL, "@@a[@@WVictim@@a:%s@@a]@@N\r\n", wound );
 
       /*
        * buf[0] = UPPER(buf[0]); 
@@ -1656,7 +1656,7 @@ void write_to_buffer( DESCRIPTOR_DATA * d, const char *txt, int length )
       length = strlen( txt );
 
    /*
-    * Initial \n\r if needed.
+    * Initial \r\n if needed.
     */
    if( d->outtop == 0 && !d->fcommand )
    {
@@ -1865,24 +1865,24 @@ void show_menu_to( DESCRIPTOR_DATA * d )
    char buf[MAX_STRING_LENGTH];
    char menu[MAX_STRING_LENGTH];
 
-   snprintf( menu, MSL, "\n\rCharacter Creation Menu.\n\r\n\r" );
-   strncat( menu, "Options:\n\r", MSL );
+   snprintf( menu, MSL, "\r\nCharacter Creation Menu.\r\n\r\n" );
+   strncat( menu, "Options:\r\n", MSL );
 
-   snprintf( buf, MSL, "        1. Set Gender       Currently:%s\n\r",
+   snprintf( buf, MSL, "        1. Set Gender       Currently:%s\r\n",
             !IS_SET( d->check, CHECK_SEX ) ? "Not Set" :
             ch->sex == SEX_NEUTRAL ? "Neutral." : ch->sex == SEX_MALE ? "Male." : "Female." );
    strncat( menu, buf, MSL );
 
-   snprintf( buf, MSL, "        2. Set Race         Currently:%s\n\r",
+   snprintf( buf, MSL, "        2. Set Race         Currently:%s\r\n",
             !IS_SET( d->check, CHECK_RACE ) ? "Not Set" : race_table[ch->race].race_title );
    strncat( menu, buf, MSL );
 
    strncat( menu, "        3. Roll Attributes  Currently:", MSL );
    if( IS_SET( d->check, CHECK_STATS ) )
-      snprintf( buf, MSL, "\n\r        Str: [%d]  Int: [%d]  Wis: [%d]\n\r        Dex: [%d]  Con: [%d]\n\r",
+      snprintf( buf, MSL, "\r\n        Str: [%d]  Int: [%d]  Wis: [%d]\r\n        Dex: [%d]  Con: [%d]\r\n",
                ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
    else
-      snprintf( buf, MSL, "Not Set\n\r" );
+      snprintf( buf, MSL, "Not Set\r\n" );
 
 
    strncat( menu, buf, MSL );
@@ -1891,20 +1891,20 @@ void show_menu_to( DESCRIPTOR_DATA * d )
    if( IS_SET( d->check, CHECK_CLASS ) )
    {
       short i;
-      snprintf( buf, MSL, "\n\r        " );
+      snprintf( buf, MSL, "\r\n        " );
       for( i = 0; i < MAX_CLASS; i++ )
       {
          snprintf( buf, MSL, "%s ", class_table[ch->pcdata->order[i]].who_name );
          strncat( menu, buf, MSL );
       }
-      strncat( menu, "\n\r", MSL );
+      strncat( menu, "\r\n", MSL );
    }
    else
-      strncat( menu, "Not Set\n\r", MSL );
+      strncat( menu, "Not Set\r\n", MSL );
 
-   strncat( menu, "        5. Exit Creation Process\n\r", MSL );
+   strncat( menu, "        5. Exit Creation Process\r\n", MSL );
 
-   strncat( menu, "\n\rPlease Select 1-5: ", MSL );
+   strncat( menu, "\r\nPlease Select 1-5: ", MSL );
    write_to_buffer( d, menu, 0 );
    return;
 }
@@ -1915,21 +1915,21 @@ void show_smenu_to( DESCRIPTOR_DATA * d )
    char buf[MAX_STRING_LENGTH];
    char menu[MAX_STRING_LENGTH];
 
-   snprintf( menu, MSL, "\n\rCharacter Creation: Gender.\n\r\n\r" );
+   snprintf( menu, MSL, "\r\nCharacter Creation: Gender.\r\n\r\n" );
 
-   strncat( menu, "Please Select:\n\r", MSL );
-   strncat( menu, "              M : Male\n\r", MSL );
-   strncat( menu, "              F : Female\n\r", MSL );
-   strncat( menu, "              N : Neutral\n\r\n\r", MSL );
+   strncat( menu, "Please Select:\r\n", MSL );
+   strncat( menu, "              M : Male\r\n", MSL );
+   strncat( menu, "              F : Female\r\n", MSL );
+   strncat( menu, "              N : Neutral\r\n\r\n", MSL );
 
    if( IS_SET( d->check, CHECK_SEX ) )
-      snprintf( buf, MSL, "Current Choice: %s\n\r",
+      snprintf( buf, MSL, "Current Choice: %s\r\n",
                ch->sex == SEX_NEUTRAL ? "Neutral" : ch->sex == SEX_MALE ? "Male" : "Female" );
    else
-      snprintf( buf, MSL, "No Current Selection.\n\r" );
+      snprintf( buf, MSL, "No Current Selection.\r\n" );
 
    strncat( menu, buf, MSL );
-   strncat( menu, "\n\rPlease Select M/F/N: ", MSL );
+   strncat( menu, "\r\nPlease Select M/F/N: ", MSL );
 
    write_to_buffer( d, menu, 0 );
    return;
@@ -1941,12 +1941,12 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
    char buf[MAX_STRING_LENGTH];
    int iRace;
 
-   snprintf( menu, MSL, "\n\rCharacter Creation: Race.\n\r\n\r" );
-   strncat( menu, "Notes: a) Race determines abilities in different classes.\n\r", MSL );
-   strncat( menu, "       b) Each Race will soon have seperate hometowns.\n\r", MSL );
-   strncat( menu, "       c) Race determines your attributes.\n\r\n\r", MSL );
-   strncat( menu, "Abr   Name             Class Abilities       Str Int Wis Dex Con\n\r", MSL );
-   strncat( menu, "---   ----             ---------------       --- --- --- --- ---\n\r", MSL );
+   snprintf( menu, MSL, "\r\nCharacter Creation: Race.\r\n\r\n" );
+   strncat( menu, "Notes: a) Race determines abilities in different classes.\r\n", MSL );
+   strncat( menu, "       b) Each Race will soon have seperate hometowns.\r\n", MSL );
+   strncat( menu, "       c) Race determines your attributes.\r\n\r\n", MSL );
+   strncat( menu, "Abr   Name             Class Abilities       Str Int Wis Dex Con\r\n", MSL );
+   strncat( menu, "---   ----             ---------------       --- --- --- --- ---\r\n", MSL );
 
    for( iRace = 0; iRace < MAX_RACE; iRace++ )
    {
@@ -1956,14 +1956,14 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
                race_table[iRace].race_title, race_table[iRace].comment );
       strncat( menu, buf, MSL );
 
-      snprintf( buf, MSL, "  %-2d  %-2d  %-2d  %-2d  %-2d\n\r",
+      snprintf( buf, MSL, "  %-2d  %-2d  %-2d  %-2d  %-2d\r\n",
                race_table[iRace].race_str,
                race_table[iRace].race_int,
                race_table[iRace].race_wis, race_table[iRace].race_dex, race_table[iRace].race_con );
       strncat( menu, buf, MSL );
    }
 
-   strncat( menu, "\n\rPlease Select Your Race (Abr), or type the full race name for race info: ", MSL );
+   strncat( menu, "\r\nPlease Select Your Race (Abr), or type the full race name for race info: ", MSL );
    write_to_buffer( d, menu, 0 );
    return;
 }
@@ -1978,7 +1978,7 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
     */
    if( !IS_SET( d->check, CHECK_RACE ) )
    {
-      snprintf( menu, MSL, "\n\rYou must select a race first.\n\r" );
+      snprintf( menu, MSL, "\r\nYou must select a race first.\r\n" );
       write_to_buffer( d, menu, 0 );
       d->connected = CON_MENU;
       show_menu_to( d );
@@ -1991,14 +1991,14 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
    ch->pcdata->max_dex = number_range(3,(race_table[ch->race].race_dex-5));
    ch->pcdata->max_con = number_range(3,(race_table[ch->race].race_con-5));
 
-   snprintf( menu, MSL, "\n\rCharacter Creation: Attributes.\n\r\n\r" );
-   strncat( menu, "There is no way to increase your MAX attributes, so choose wisely!\n\r", MSL );
-   strncat( menu, "Current Attributes:\n\r", MSL );
+   snprintf( menu, MSL, "\r\nCharacter Creation: Attributes.\r\n\r\n" );
+   strncat( menu, "There is no way to increase your MAX attributes, so choose wisely!\r\n", MSL );
+   strncat( menu, "Current Attributes:\r\n", MSL );
    write_to_buffer(d,menu,0);
 
    show_stotal_to(d);
 
-   write_to_buffer( d, "\n\rPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): ",0);
+   write_to_buffer( d, "\r\nPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): ",0);
 
    return;
 }
@@ -2008,12 +2008,12 @@ void show_ahelp_menu_to( DESCRIPTOR_DATA * d )
 
    char menu[MAX_STRING_LENGTH];
    snprintf( menu, MSL, "%s", "" );
-   strncat( menu, "Str affects items you can wear and weight you can carry, and your hitroll and damroll.\n\r", MSL );
-   strncat( menu, "Int affects your mana gain, how many Npcs you can control effectively, and spell success.\n\r", MSL );
-   strncat( menu, "Wis affects how many practices you get, your mana, and your saving against spells.\n\r", MSL );
-   strncat( menu, "Dex affects your ac, how many items you can carry, and your ability to dodge.\n\r", MSL );
-   strncat( menu, "Con affects how many hitpoints you gain per level.\n\r", MSL );
-   strncat( menu, "\n\rPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): ", MSL );
+   strncat( menu, "Str affects items you can wear and weight you can carry, and your hitroll and damroll.\r\n", MSL );
+   strncat( menu, "Int affects your mana gain, how many Npcs you can control effectively, and spell success.\r\n", MSL );
+   strncat( menu, "Wis affects how many practices you get, your mana, and your saving against spells.\r\n", MSL );
+   strncat( menu, "Dex affects your ac, how many items you can carry, and your ability to dodge.\r\n", MSL );
+   strncat( menu, "Con affects how many hitpoints you gain per level.\r\n", MSL );
+   strncat( menu, "\r\nPlease Select: (A)ccept, return to menu, (H)elp stats, +(stat), or -(stat): ", MSL );
 
    write_to_buffer( d, menu, 0 );
    return;
@@ -2025,25 +2025,25 @@ void show_cmenu_to( DESCRIPTOR_DATA * d )
    char buf[MAX_STRING_LENGTH];
    int iClass;
 
-   snprintf( menu, MSL, "Character Creation: Class Order.\n\r\n\r" );
-   strncat( menu, "This option allows you to select the order of your classes.\n\r", MSL );
-   strncat( menu, "Being a MultiClass Mud, this order is very important, as it\n\r", MSL );
-   strncat( menu, "will determine how easily you progress in each class, and\n\r", MSL );
-   strncat( menu, "how well you can use the skills/spells of each class.\n\r", MSL );
-   strncat( menu, "There are five classes.  Please list, in order of best to\n\r", MSL );
-   strncat( menu, "worst, the order your classes will be.\n\r", MSL );
-   strncat( menu, "(The 1st you pick will be your prime class, gaining a +1 bonus.\n\r", MSL );
-   strncat( menu, "For example, psi mag cle thi war.\n\r", MSL );
-   strncat( menu, "Abr    Prime Atr    Name\n\r", MSL );
-   strncat( menu, "---    ---------    ----\n\r", MSL );
+   snprintf( menu, MSL, "Character Creation: Class Order.\r\n\r\n" );
+   strncat( menu, "This option allows you to select the order of your classes.\r\n", MSL );
+   strncat( menu, "Being a MultiClass Mud, this order is very important, as it\r\n", MSL );
+   strncat( menu, "will determine how easily you progress in each class, and\r\n", MSL );
+   strncat( menu, "how well you can use the skills/spells of each class.\r\n", MSL );
+   strncat( menu, "There are five classes.  Please list, in order of best to\r\n", MSL );
+   strncat( menu, "worst, the order your classes will be.\r\n", MSL );
+   strncat( menu, "(The 1st you pick will be your prime class, gaining a +1 bonus.\r\n", MSL );
+   strncat( menu, "For example, psi mag cle thi war.\r\n", MSL );
+   strncat( menu, "Abr    Prime Atr    Name\r\n", MSL );
+   strncat( menu, "---    ---------    ----\r\n", MSL );
 
    for( iClass = 0; iClass < MAX_CLASS; iClass++ )
    {
-      snprintf( buf, MSL, "%3s    %3s    %-10s\n\r", class_table[iClass].who_name, class_table[iClass].attr,
+      snprintf( buf, MSL, "%3s    %3s    %-10s\r\n", class_table[iClass].who_name, class_table[iClass].attr,
                class_table[iClass].class_name );
       strncat( menu, buf, MSL );
    }
-   strncat( menu, "\n\rOrder: ", MSL );
+   strncat( menu, "\r\nOrder: ", MSL );
    write_to_buffer( d, menu, 0 );
    return;
 }
@@ -2090,7 +2090,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       {
          snprintf( buf, MSL, "Illegal name %s from site %s.", argument, d->host );
          monitor_chan( buf, MONITOR_CONNECT );
-         write_to_buffer( d, "Illegal name, try another.\n\rName: ", 0 );
+         write_to_buffer( d, "Illegal name, try another.\r\nName: ", 0 );
          return;
       }
 
@@ -2104,7 +2104,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          snprintf( log_buf, (2 * MIL), "Denying access to %s@%s.", argument, d->host );
          log_string( log_buf );
          monitor_chan( log_buf, MONITOR_CONNECT );
-         write_to_buffer( d, "You are denied access.\n\r", 0 );
+         write_to_buffer( d, "You are denied access.\r\n", 0 );
          close_socket( d );
          return;
       }
@@ -2119,19 +2119,19 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       {
          if( wizlock && !IS_HERO( ch ) && !ch->wizbit && !is_name( argument, sysdata.playtesters ) )
          {
-            write_to_buffer( d, "\n\r             " mudnamenocolor " IS CURRENTLY WIZLOCKED.\n\r", 0 );
-            write_to_buffer( d, "Please Try Connecting Again In A Little While, When Any Problems\n\r", 0 );
-            write_to_buffer( d, "       We Are Working On Have Been Solved.  Thank You.\n\r", 0 );
+            write_to_buffer( d, "\r\n             " mudnamenocolor " IS CURRENTLY WIZLOCKED.\r\n", 0 );
+            write_to_buffer( d, "Please Try Connecting Again In A Little While, When Any Problems\r\n", 0 );
+            write_to_buffer( d, "       We Are Working On Have Been Solved.  Thank You.\r\n", 0 );
             close_socket( d );
             return;
          }
          if( deathmatch && !IS_HERO( ch ) && !ch->wizbit )
          {
-            write_to_buffer( d, "\n\r             " mudnamenocolor " IS CURRENTLY WIZLOCKED.\n\r", 0 );
-            write_to_buffer( d, "Sorry, The Players Connected At This Time Are Currently Participating\n\r", 0 );
-            write_to_buffer( d, "     In A DEATHMATCH Murder-Fest.  Please try later!\n\r", 0 );
-            write_to_buffer( d, "  Deathmatches are usually held on Thursdays and Sundays.  They\n\r", 0 );
-            write_to_buffer( d, " normally last about 30 minutes.  Please be patient!\n\r", 0 );
+            write_to_buffer( d, "\r\n             " mudnamenocolor " IS CURRENTLY WIZLOCKED.\r\n", 0 );
+            write_to_buffer( d, "Sorry, The Players Connected At This Time Are Currently Participating\r\n", 0 );
+            write_to_buffer( d, "     In A DEATHMATCH Murder-Fest.  Please try later!\r\n", 0 );
+            write_to_buffer( d, "  Deathmatches are usually held on Thursdays and Sundays.  They\r\n", 0 );
+            write_to_buffer( d, " normally last about 30 minutes.  Please be patient!\r\n", 0 );
             close_socket( d );
             return;
          }
@@ -2152,7 +2152,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                char buf[MAX_STRING_LENGTH];
                snprintf( buf, MSL, "Denying access to banned site %s", d->host );
                monitor_chan( buf, MONITOR_CONNECT );
-               write_to_descriptor( d->descriptor, "Your site has been banned from this Mud.  BYE BYE!\n\r", 0 );
+               write_to_descriptor( d->descriptor, "Your site has been banned from this Mud.  BYE BYE!\r\n", 0 );
                d->connected = CON_QUITTING;
                close_socket( d );
                return;
@@ -2187,7 +2187,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                char buf[MAX_STRING_LENGTH];
                snprintf( buf, MSL, "Denying access to banned site %s", d->host );
                monitor_chan( buf, MONITOR_CONNECT );
-               write_to_descriptor( d->descriptor, "Your site has been banned from this Mud.  BYE BYE!\n\r", 0 );
+               write_to_descriptor( d->descriptor, "Your site has been banned from this Mud.  BYE BYE!\r\n", 0 );
                d->connected = CON_QUITTING;
                close_socket( d );
                return;
@@ -2204,10 +2204,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
    if( d->connected == CON_GET_OLD_PASSWORD )
    {
-      write_to_buffer( d, "\n\r", 2 );
+      write_to_buffer( d, "\r\n", 2 );
       if( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
       {
-         write_to_buffer( d, "Wrong password.\n\r", 0 );
+         write_to_buffer( d, "Wrong password.\r\n", 0 );
          snprintf( buf, MSL, "FAILED LOGIN for %s from site %s.", ch->name, d->host );
          monitor_chan( buf, MONITOR_CONNECT );
          ch->pcdata->failures++;
@@ -2244,11 +2244,11 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          char msgbuf[MSL];
          for( brands = first_brand, numbrands = 0; brands; brands = brands->next, numbrands++ );
          do_help( ch, "imotd" );
-         snprintf( msgbuf, MSL, "There are currently %d outstanding brands.\n\r%s",
+         snprintf( msgbuf, MSL, "There are currently %d outstanding brands.\r\n%s",
                   numbrands,
                   ( ( numbrands < 50 ) ?
                     "" :
-                    "@@eWarning: Process these brands immediately using immbrand list, immbrand read, and immbrand remove to avoid disk overflow!!@@N\n\r" ) );
+                    "@@eWarning: Process these brands immediately using immbrand list, immbrand read, and immbrand remove to avoid disk overflow!!@@N\r\n" ) );
          send_to_char( msgbuf, ch );
 
       }
@@ -2266,7 +2266,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       {
          case 'y':
          case 'Y':
-            snprintf( buf, MSL, "New character.\n\rGive me a password for %s: %s", ch->name, echo_off_str );
+            snprintf( buf, MSL, "New character.\r\nGive me a password for %s: %s", ch->name, echo_off_str );
             write_to_buffer( d, buf, 0 );
             d->connected = CON_GET_NEW_PASSWORD;
             return;
@@ -2288,11 +2288,11 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
    if( d->connected == CON_GET_NEW_PASSWORD )
    {
-      write_to_buffer( d, "\n\r", 2 );
+      write_to_buffer( d, "\r\n", 2 );
 
       if( strlen( argument ) < 5 )
       {
-         write_to_buffer( d, "Password must be at least five characters long.\n\rPassword: ", 0 );
+         write_to_buffer( d, "Password must be at least five characters long.\r\nPassword: ", 0 );
          return;
       }
 
@@ -2301,7 +2301,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       {
          if( *p == '~' )
          {
-            write_to_buffer( d, "New password not acceptable, try again.\n\rPassword: ", 0 );
+            write_to_buffer( d, "New password not acceptable, try again.\r\nPassword: ", 0 );
             return;
          }
       }
@@ -2315,11 +2315,11 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
    if( d->connected == CON_CONFIRM_NEW_PASSWORD )
    {
-      write_to_buffer( d, "\n\r", 2 );
+      write_to_buffer( d, "\r\n", 2 );
 
       if( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
       {
-         write_to_buffer( d, "Passwords don't match.\n\rRetype password: ", 0 );
+         write_to_buffer( d, "Passwords don't match.\r\nRetype password: ", 0 );
          d->connected = CON_GET_NEW_PASSWORD;
          return;
       }
@@ -2335,14 +2335,14 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       if( !is_number( argument ) )
       {
-         write_to_buffer( d, "\n\rPlease Enter A Number.\n\r", 0 );
+         write_to_buffer( d, "\r\nPlease Enter A Number.\r\n", 0 );
          show_menu_to( d );
          return;
       }
       number = atoi( argument );
       if( number < 1 && number > 5 )
       {
-         write_to_buffer( d, "\n\rPlease Enter A Number Between 1 And 5.\n\r", 0 );
+         write_to_buffer( d, "\r\nPlease Enter A Number Between 1 And 5.\r\n", 0 );
          show_menu_to( d );
          return;
       }
@@ -2369,14 +2369,14 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             if( !IS_SET( d->check, CHECK_SEX ) || !IS_SET( d->check, CHECK_CLASS )
                 || !IS_SET( d->check, CHECK_STATS ) || !IS_SET( d->check, CHECK_RACE ) )
             {
-               write_to_buffer( d, "ALL Options Must Be Selected First.\n\r", 0 );
+               write_to_buffer( d, "ALL Options Must Be Selected First.\r\n", 0 );
                show_menu_to( d );
                return;
             }
             snprintf( log_buf, (2 * MIL), "%s@%s new player.", ch->name, d->host );
             log_string( log_buf );
             monitor_chan( log_buf, MONITOR_CONNECT );
-            write_to_buffer( d, "\n\r", 2 );
+            write_to_buffer( d, "\r\n", 2 );
             ch->pcdata->pagelen = 20;
 
             /*
@@ -2577,11 +2577,11 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             ch->login_sex = SEX_NEUTRAL;
             break;
          default:
-            write_to_buffer( d, "That's not a sex.\n\rWhat IS your sex? ", 0 );
+            write_to_buffer( d, "That's not a sex.\r\nWhat IS your sex? ", 0 );
             show_smenu_to( d );
             return;
       }
-      write_to_buffer( d, "\n\r\n\r", 0 );
+      write_to_buffer( d, "\r\n\r\n", 0 );
       if( !IS_SET( d->check, CHECK_SEX ) )
          SET_BIT( d->check, CHECK_SEX );
       d->connected = CON_MENU;
@@ -2636,7 +2636,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       if( !ok )
       {
          write_to_buffer( d,
-                          "Invalid Order... Please Try Again. You must list each class, by abbreviation, such as CLE WAR MAG THI PSI.\n\r",
+                          "Invalid Order... Please Try Again. You must list each class, by abbreviation, such as CLE WAR MAG THI PSI.\r\n",
                           0 );
          show_cmenu_to( d );
          return;
@@ -2673,7 +2673,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       if( ( iClass == MAX_RACE ) || ( race_table[iClass].player_allowed == FALSE ) )
       {
-         write_to_buffer( d, "Invalid Choice.\n\r", 0 );
+         write_to_buffer( d, "Invalid Choice.\r\n", 0 );
          show_rmenu_to( d );
          return;
       }
@@ -2710,7 +2710,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                   CRS_RESET, CRS_CLS, CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13 );
          send_to_char( scrollbuf, ch );
       }
-      send_to_char( "\n\rWelcome to " mudnamecolor ".  May your visit here be ... mutated.\n\r", ch );
+      send_to_char( "\r\nWelcome to " mudnamecolor ".  May your visit here be ... mutated.\r\n", ch );
 
       if( ch->level == 0 )
       {
@@ -2795,14 +2795,14 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
        */
       if( ch->pcdata->failures != 0 && ch->level != 1 )
       {
-         snprintf( msg, MSL, "WARNING:  There have been %d failed login attempts.\n\r", ch->pcdata->failures );
+         snprintf( msg, MSL, "WARNING:  There have been %d failed login attempts.\r\n", ch->pcdata->failures );
          send_to_char( msg, ch );
          ch->pcdata->failures = 0;
       }
 
       if( ch->level > 1 )
       {
-         snprintf( msg, MSL, "\n\rLast successful login from: %s\n\r\n\r", ch->pcdata->host );
+         snprintf( msg, MSL, "\r\nLast successful login from: %s\r\n\r\n", ch->pcdata->host );
          send_to_char( msg, ch );
          if( strcmp( d->host, ch->pcdata->host ) )
          {
@@ -2811,7 +2811,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             monitor_chan( msg, MONITOR_CONNECT );
             if( ( ch->level > 80 ) )
             {
-               snprintf( msg, MSL, "WARNING!!! %s logged in with level %d.\n\r", ch->name, ch->level );
+               snprintf( msg, MSL, "WARNING!!! %s logged in with level %d.\r\n", ch->name, ch->level );
                log_string( msg );
             }
 
@@ -2831,10 +2831,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             notes++;
 
       if( notes == 1 )
-         send_to_char( "\n\rYou have one new letter waiting.\n\r", ch );
+         send_to_char( "\r\nYou have one new letter waiting.\r\n", ch );
       else if( notes > 1 )
       {
-         snprintf( buf, MSL, "\n\rYou have %d new letters waiting.\n\r", notes );
+         snprintf( buf, MSL, "\r\nYou have %d new letters waiting.\r\n", notes );
          send_to_char( buf, ch );
       }
 
@@ -3088,7 +3088,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
             d->character = ch;
             ch->desc = d;
             ch->timer = 0;
-            send_to_char( "Reconnecting.\n\r", ch );
+            send_to_char( "Reconnecting.\r\n", ch );
             act( "$n reconnects.", ch, NULL, NULL, TO_ROOM );
             snprintf( log_buf, (2 * MIL), "%s@%s reconnected.", ch->name, d->host );
             log_string( log_buf );
@@ -3136,7 +3136,7 @@ bool check_playing( DESCRIPTOR_DATA * d, char *name )
 */
          d->connected = CON_RECONNECTING;
          do_quit( dold->character, "" );
-         write_to_buffer( d, "Already playing. If you were not fighting or dead, you were disconnected\n\rName: ", 0 );
+         write_to_buffer( d, "Already playing. If you were not fighting or dead, you were disconnected\r\nName: ", 0 );
          d->connected = CON_GET_NAME;
          if( d->character != NULL )
          {
@@ -3238,8 +3238,8 @@ void show_string( struct descriptor_data *d, char *input )
          break;
 
       case 'H':  /* Show some help */
-         write_to_buffer( d, "C, or Return = continue, R = redraw this page,\n\r", 0 );
-         write_to_buffer( d, "B = back one page, H = this help, Q or other keys = exit.\n\r\n\r", 0 );
+         write_to_buffer( d, "C, or Return = continue, R = redraw this page,\r\n", 0 );
+         write_to_buffer( d, "B = back one page, H = this help, Q or other keys = exit.\r\n\r\n", 0 );
          lines = -1 - ( d->character->pcdata->pagelen );
          break;
 
@@ -3559,7 +3559,7 @@ void do_finger( CHAR_DATA * ch, char *argument )
 
    if( !found )
    {
-      snprintf( buf, MSL, "No pFile found for '%s'.\n\r", capitalize( name ) );
+      snprintf( buf, MSL, "No pFile found for '%s'.\r\n", capitalize( name ) );
       send_to_char( buf, ch );
       return;
    }
@@ -3568,10 +3568,10 @@ void do_finger( CHAR_DATA * ch, char *argument )
    d.character = NULL;
    victim->desc = NULL;
 
-   snprintf( buf, MSL, "Name: %s.\n\r", capitalize( victim->name ) );
+   snprintf( buf, MSL, "Name: %s.\r\n", capitalize( victim->name ) );
    send_to_char( buf, ch );
 
-   snprintf( buf, MSL, "Last Login was from: %s.\n\r", victim->pcdata->host );
+   snprintf( buf, MSL, "Last Login was from: %s.\r\n", victim->pcdata->host );
    send_to_char( buf, ch );
 
    snprintf( buf, MSL, "pFile was last saved at: %s.", victim->pcdata->lastlogin );
@@ -3603,7 +3603,7 @@ void copyover_recover(  )
    if( !fp )   /* there are some descriptors open which will hang forever then ? */
    {
       perror( "copyover_recover:file_open" );
-      log_f( "Copyover file not found. Exitting.\n\r" );
+      log_f( "Copyover file not found. Exitting.\r\n" );
       exit( 1 );
    }
 
@@ -3618,7 +3618,7 @@ void copyover_recover(  )
       /*
        * Write something, and check if it goes error-free 
        */
-      if( !write_to_descriptor( desc, "\n\rRestoring from HOTreboot...\n\r", 0 ) )
+      if( !write_to_descriptor( desc, "\r\nRestoring from HOTreboot...\r\n", 0 ) )
       {
          close( desc ); /* nope */
          continue;
@@ -3642,7 +3642,7 @@ void copyover_recover(  )
 
       if( !fOld ) /* Player file not found?! */
       {
-         write_to_descriptor( desc, "\n\rSomehow, your character was lost in the HOTreboot. Sorry, you must relog in.\n\r",
+         write_to_descriptor( desc, "\r\nSomehow, your character was lost in the HOTreboot. Sorry, you must relog in.\r\n",
                               0 );
          close_socket( d );
       }
@@ -3651,7 +3651,7 @@ void copyover_recover(  )
          CHAR_DATA *this_char;
 
 
-         write_to_descriptor( desc, "\n\rCopyover recovery complete.\n\r", 0 );
+         write_to_descriptor( desc, "\r\nCopyover recovery complete.\r\n", 0 );
 
          /*
           * Just In Case 

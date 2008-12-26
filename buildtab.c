@@ -1140,7 +1140,7 @@ void table_printout( LOOKUP_TYPE *table, char *buf )
       {
          strncat( buf, "          ", MSL );
          strncat( buf, table[a].text, MSL );
-         strncat( buf, "\n\r", MSL );
+         strncat( buf, "\r\n", MSL );
       }
    }
 
@@ -1170,10 +1170,10 @@ void wide_table_printout( LOOKUP_TYPE *table, char *buf )
          snprintf( tmp, MSL, "%12s", table[a].text );
          strncat( buf, tmp, MSL );
          if( ++foo % 4 == 0 )
-            strncat( buf, "\n\r", MSL );
+            strncat( buf, "\r\n", MSL );
       }
    }
-   strncat( buf, "\n\r", MSL );
+   strncat( buf, "\r\n", MSL );
    return;
 }
 
@@ -1200,10 +1200,10 @@ char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit )
                   ( value == table[a].value ? "@@y*" : "@@g " ), table[a].text );
          strncat( buf, tmp, MSL );
          if( ++foo % 4 == 0 )
-            strncat( buf, "\n\r", MSL );
+            strncat( buf, "\r\n", MSL );
       }
    }
-   strncat( buf, "@@g\n\r", MSL );
+   strncat( buf, "@@g\r\n", MSL );
    return ( buf );
 }
 
@@ -1229,9 +1229,9 @@ char *bs_show_values( LOOKUP_TYPE *table, std::bitset<MAX_BITSET> &bit )
                   bit.test(table[a].value) ? "@@y*" : "@@g ",table[a].text);
          strncat( buf, tmp, MSL );
          if( ++foo % 4 == 0 )
-            strncat( buf, "\n\r", MSL );
+            strncat( buf, "\r\n", MSL );
       }
    }
-   strncat( buf, "@@g\n\r", MSL );
+   strncat( buf, "@@g\r\n", MSL );
    return ( buf );
 }

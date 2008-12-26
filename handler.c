@@ -930,7 +930,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
    if( IS_SET( ch->in_room->affected_by, ROOM_BV_FIRE_RUNE ) )
    {
       send_to_char
-         ( "@@NAs you step into the room, you fleetingly see a mystical @@eFire@@N Rune suspended in front of you, which then @@eEXPLODES@@N!!!\n\r",
+         ( "@@NAs you step into the room, you fleetingly see a mystical @@eFire@@N Rune suspended in front of you, which then @@eEXPLODES@@N!!!\r\n",
            ch );
       act( "@@NThe @@eFire@@N Rune explodes as $n enters the room!", ch, NULL, NULL, TO_ROOM );
 
@@ -950,7 +950,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
    if( IS_SET( ch->in_room->affected_by, ROOM_BV_SHOCK_RUNE ) && ( ch->is_free == FALSE ) )
    {
       send_to_char
-         ( "@@NAs you step into the room, you fleetingly see a mystical @@lShock@@N Rune suspended in front of you, which then @@lZAPS@@N You!!!\n\r",
+         ( "@@NAs you step into the room, you fleetingly see a mystical @@lShock@@N Rune suspended in front of you, which then @@lZAPS@@N You!!!\r\n",
            ch );
       act( "@@NThe @@lShock@@N Rune flashes as $n enters the room!", ch, NULL, NULL, TO_ROOM );
 
@@ -970,7 +970,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
    if( IS_SET( ch->in_room->affected_by, ROOM_BV_POISON_RUNE ) && ( ch->is_free == FALSE ) )
    {
       send_to_char
-         ( "@@NAs you step into the room, you fleetingly see a mystical @@dPoison@@N Rune suspended in front of you, which then @@dEXPLODES@@N!!!\n\r",
+         ( "@@NAs you step into the room, you fleetingly see a mystical @@dPoison@@N Rune suspended in front of you, which then @@dEXPLODES@@N!!!\r\n",
            ch );
       act( "@@NThe @@dPoison@@N Rune explodes as $n enters the room!", ch, NULL, NULL, TO_ROOM );
 
@@ -997,7 +997,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
                af.modifier = -2;
                af.bitvector = AFF_POISON;
                affect_join( ch, &af );
-               send_to_char( "You feel very sick.\n\r", ch );
+               send_to_char( "You feel very sick.\r\n", ch );
                act( "$n looks very sick.", ch, NULL, NULL, TO_ROOM );
             }
             r_affect_remove( ch->in_room, raf );
@@ -1279,52 +1279,52 @@ void equip_char( CHAR_DATA * ch, OBJ_DATA * obj, int iWear )
    if( IS_SET( obj->item_apply, ITEM_APPLY_INFRA ) )
    {
       act( "$n's eyes glow brightly.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "Your eyes glow brightly!\n\r", ch );
+      send_to_char( "Your eyes glow brightly!\r\n", ch );
    }
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_INV ) )
    {
       act( "$n slowly fades out of existance.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You slowly fade out of existance.\n\r", ch );
+      send_to_char( "You slowly fade out of existance.\r\n", ch );
    }
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_DET_INV ) )
-      send_to_char( "You feel more aware of your surroundings.\n\r", ch );
+      send_to_char( "You feel more aware of your surroundings.\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_SANC ) )
    {
       act( "$n is surrounded by a white aura.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You are surrounded by a white aura.\n\r", ch );
+      send_to_char( "You are surrounded by a white aura.\r\n", ch );
    }
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_SNEAK ) )
-      send_to_char( "You feel all sneaky!\n\r", ch );
+      send_to_char( "You feel all sneaky!\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_HIDE ) )
-      send_to_char( "You feel almost hidden.\n\r", ch );
+      send_to_char( "You feel almost hidden.\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_PROT ) )
-      send_to_char( "You feel more protected.\n\r", ch );
+      send_to_char( "You feel more protected.\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_ENHANCED ) )
-      send_to_char( "You feel much meaner!\n\r", ch );
+      send_to_char( "You feel much meaner!\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_DET_MAG )
        || IS_SET( obj->item_apply, ITEM_APPLY_DET_HID )
        || IS_SET( obj->item_apply, ITEM_APPLY_DET_EVIL )
        || IS_SET( obj->item_apply, ITEM_APPLY_KNOW_ALIGN ) || IS_SET( obj->item_apply, ITEM_APPLY_DET_POISON ) )
-      send_to_char( "Your eyes tingle slightly.\n\r", ch );
+      send_to_char( "Your eyes tingle slightly.\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_PASS_DOOR ) )
    {
       act( "$n turns turns very pale.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You feel almost weightless!\n\r", ch );
+      send_to_char( "You feel almost weightless!\r\n", ch );
    }
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_FLY ) )
    {
       act( "$n gently floats into the air!", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You gently float upwards!\n\r", ch );
+      send_to_char( "You gently float upwards!\r\n", ch );
    }
 
 
@@ -1373,52 +1373,52 @@ void unequip_char( CHAR_DATA * ch, OBJ_DATA * obj )
    if( IS_SET( obj->item_apply, ITEM_APPLY_INFRA ) )
    {
       act( "$n's eyes become dim.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "Your eyes become dim!\n\r", ch );
+      send_to_char( "Your eyes become dim!\r\n", ch );
    }
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_INV ) )
    {
       act( "$n slowly fades back into existance.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You slowly fade into existance.\n\r", ch );
+      send_to_char( "You slowly fade into existance.\r\n", ch );
    }
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_DET_INV ) )
-      send_to_char( "You feel less aware of your surroundings.\n\r", ch );
+      send_to_char( "You feel less aware of your surroundings.\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_SANC ) )
    {
       act( "The white aura around $n fades.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "The white aura around you fades.\n\r", ch );
+      send_to_char( "The white aura around you fades.\r\n", ch );
    }
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_SNEAK ) )
-      send_to_char( "You feel less sneaky!\n\r", ch );
+      send_to_char( "You feel less sneaky!\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_HIDE ) )
-      send_to_char( "You feel less hidden.\n\r", ch );
+      send_to_char( "You feel less hidden.\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_PROT ) )
-      send_to_char( "You feel less protected.\n\r", ch );
+      send_to_char( "You feel less protected.\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_ENHANCED ) )
-      send_to_char( "You feel much wimpier!\n\r", ch );
+      send_to_char( "You feel much wimpier!\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_DET_MAG )
        || IS_SET( obj->item_apply, ITEM_APPLY_DET_HID )
        || IS_SET( obj->item_apply, ITEM_APPLY_DET_EVIL )
        || IS_SET( obj->item_apply, ITEM_APPLY_KNOW_ALIGN ) || IS_SET( obj->item_apply, ITEM_APPLY_DET_POISON ) )
-      send_to_char( "Your feel less well-informed.\n\r", ch );
+      send_to_char( "Your feel less well-informed.\r\n", ch );
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_PASS_DOOR ) )
    {
       act( "$n becomes solid again.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You feel more solid!\n\r", ch );
+      send_to_char( "You feel more solid!\r\n", ch );
    }
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_FLY ) )
    {
       act( "$n gently floats to the ground!", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You gently float to the ground!\n\r", ch );
+      send_to_char( "You gently float to the ground!\r\n", ch );
    }
    if( ch->mana > ch->max_mana )
       ch->mana = ch->max_mana;
@@ -1808,7 +1808,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
        char_to_room(ch,ch->was_in_room);
        ch->act.set(ACT_GHOST);
        ch->death_cnt = number_range(3,5);
-       send_to_char("Your spirit rises up from your fallen body!\n\r",ch);
+       send_to_char("Your spirit rises up from your fallen body!\r\n",ch);
        act("$n's spirit rises up from $s fallen body!",ch,NULL,NULL,TO_ROOM);
       }
       else
@@ -1960,12 +1960,12 @@ CHAR_DATA *get_char_room( CHAR_DATA * ch, char *argument )
    {
       if( ch->fighting == NULL )
       {
-         send_to_char( "You aren't fighting anyone!\n\r", ch );
+         send_to_char( "You aren't fighting anyone!\r\n", ch );
          return NULL;
       }
       else if( ch->fighting->fighting == NULL )
       {
-         send_to_char( "Hmm, that's wierd..where did he go?\n\r", ch );
+         send_to_char( "Hmm, that's wierd..where did he go?\r\n", ch );
          return NULL;
       }
       else
@@ -1978,17 +1978,17 @@ CHAR_DATA *get_char_room( CHAR_DATA * ch, char *argument )
    {
       if( ch->fighting == NULL )
       {
-         send_to_char( "You aren't fighting anyone!\n\r", ch );
+         send_to_char( "You aren't fighting anyone!\r\n", ch );
          return NULL;
       }
       else if( ch->fighting->fighting == NULL )
       {
-         send_to_char( "Hmm, that's wierd..where did he go?\n\r", ch );
+         send_to_char( "Hmm, that's wierd..where did he go?\r\n", ch );
          return NULL;
       }
       if( ch->fighting->fighting->fighting == NULL )
       {
-         send_to_char( "Hmm, that's wierd..where did he go?\n\r", ch );
+         send_to_char( "Hmm, that's wierd..where did he go?\r\n", ch );
          return NULL;
       }
 
@@ -2536,7 +2536,7 @@ void notify( char *message, int lv )
    DESCRIPTOR_DATA *d;
    char buf[MAX_STRING_LENGTH];
 
-   snprintf( buf, MSL, "[NOTE]: %s\n\r", message );
+   snprintf( buf, MSL, "[NOTE]: %s\r\n", message );
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
           && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_NOTIFY) )
@@ -2549,7 +2549,7 @@ void auction( char *message )
    DESCRIPTOR_DATA *d;
    char buf[MAX_STRING_LENGTH];
 
-   snprintf( buf, MSL, "[AUCTION]: %s\n\r", message );
+   snprintf( buf, MSL, "[AUCTION]: %s\r\n", message );
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_AUCTION) )
          send_to_char( buf, d->character );
@@ -2573,7 +2573,7 @@ void info( char *message, int lv )
       if( ( d->connected == CON_PLAYING )
           && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_INFO) )
       {
-         snprintf( buf, MSL, "%s[INFO]: %s%s\n\r",
+         snprintf( buf, MSL, "%s[INFO]: %s%s\r\n",
                   color_string( d->character, "info" ), message, color_string( d->character, "normal" ) );
          send_to_char( buf, d->character );
       }
@@ -2590,7 +2590,7 @@ void log_chan( const char *message, int lv )
    DESCRIPTOR_DATA *d;
    char buf[MAX_STRING_LENGTH];
 
-   snprintf( buf, MSL, "[LOG]: %s\n\r", message );
+   snprintf( buf, MSL, "[LOG]: %s\r\n", message );
    for( d = first_desc; d; d = d->next )
       if( ( d->connected == CON_PLAYING )
           && ( get_trust( d->character ) == MAX_LEVEL )

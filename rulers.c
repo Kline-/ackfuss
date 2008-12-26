@@ -237,14 +237,14 @@ void do_rulers( CHAR_DATA * ch, char *argument )
    if( arg1[0] == '\0' )   /* show current rulers */
    {
 
-      snprintf( outbuf, MSL, "\n\rCurrent Rulers of " mudnamecolor "\n\r\n\r" );
+      snprintf( outbuf, MSL, "\r\nCurrent Rulers of " mudnamecolor "\r\n\r\n" );
 
       for( ruler = first_ruler_list; ruler; ruler = ruler->next )
       {
          short sex;
          sex = ( IS_SET( ruler->this_one->flags, RULER_NEUTRAL ) ? SEX_NEUTRAL
                  : IS_SET( ruler->this_one->flags, RULER_MALE ) ? SEX_MALE : SEX_FEMALE );
-         snprintf( catbuf, MSL, " %s %s : %s \n\r",
+         snprintf( catbuf, MSL, " %s %s : %s \r\n",
                   get_ruler_title( ruler->this_one->ruler_rank, sex ),
                   capitalize( ruler->this_one->name ),
                   ( IS_SET( ruler->this_one->flags, RULER_GROUP ) ? ruler->this_one->affiliation_name : "Not Affiliated" ) );
@@ -256,7 +256,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
             strncat( catbuf, outbuf, MSL );
             for( control = ruler->this_one->first_control; control; control = control->next )
             {
-               snprintf( catbuf, MSL, "%s\n\r", control->this_one->area->name );
+               snprintf( catbuf, MSL, "%s\r\n", control->this_one->area->name );
                strncat( outbuf, catbuf, MSL );
             }
          }
@@ -269,13 +269,13 @@ void do_rulers( CHAR_DATA * ch, char *argument )
    {
       if( get_trust( ch ) < L_SUP )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
 
       if( arg2[0] == '\0' )
       {
-         send_to_char( "What name?\n\r", ch );
+         send_to_char( "What name?\r\n", ch );
          return;
       }
 
@@ -307,20 +307,20 @@ void do_rulers( CHAR_DATA * ch, char *argument )
 
       if( get_trust( ch ) < L_SUP )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
 
       if( arg2[0] == '\0' )
       {
-         send_to_char( "What name?\n\r", ch );
+         send_to_char( "What name?\r\n", ch );
          return;
       }
 
       argument = one_argument( argument, arg3 );
       if( arg3[0] == '\0' )
       {
-         send_to_char( "What Clan Number?\n\r", ch );
+         send_to_char( "What Clan Number?\r\n", ch );
          return;
       }
       if( is_number( arg3 ) )
@@ -328,7 +328,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          clan_number = atoi( arg3 );
          if( ( clan_number < 1 ) || ( clan_number > MAX_CLAN ) )
          {
-            send_to_char( "Clan number must be between 1 and you Max Number of clans.\n\r", ch );
+            send_to_char( "Clan number must be between 1 and you Max Number of clans.\r\n", ch );
             return;
          }
          for( ruler = first_ruler_list; ruler; ruler = ruler->next )
@@ -338,7 +338,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          }
          if( ruler == NULL )
          {
-            send_to_char( "That ruler is not in the current list.\n\r", ch );
+            send_to_char( "That ruler is not in the current list.\r\n", ch );
             return;
          }
          if( ruler->this_one->affiliation_name != NULL )
@@ -351,20 +351,20 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          do_rulers( ch, "" );
          return;
       }
-      send_to_char( "That is not a legitimate clan number.\n\r", ch );
+      send_to_char( "That is not a legitimate clan number.\r\n", ch );
       return;
    }
    if( !str_prefix( arg1, "delete" ) )
    {
       if( get_trust( ch ) < L_SUP )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
 
       if( arg2[0] == '\0' )
       {
-         send_to_char( "What name?\n\r", ch );
+         send_to_char( "What name?\r\n", ch );
          return;
       }
       for( ruler = first_ruler_list; ruler; ruler = ruler->next )
@@ -374,7 +374,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
       }
       if( ruler == NULL )
       {
-         send_to_char( "That ruler is not in the current list.\n\r", ch );
+         send_to_char( "That ruler is not in the current list.\r\n", ch );
          return;
       }
       UNLINK( ruler, first_ruler_list, last_ruler_list, next, prev );
@@ -402,13 +402,13 @@ void do_rulers( CHAR_DATA * ch, char *argument )
    {
       if( get_trust( ch ) < L_SUP )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
 
       if( arg2[0] == '\0' )
       {
-         send_to_char( "What name?\n\r", ch );
+         send_to_char( "What name?\r\n", ch );
          return;
       }
       for( ruler = first_ruler_list; ruler; ruler = ruler->next )
@@ -418,7 +418,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
       }
       if( ruler == NULL )
       {
-         send_to_char( "That ruler is not in the current list.\n\r", ch );
+         send_to_char( "That ruler is not in the current list.\r\n", ch );
          return;
       }
       argument = one_argument( argument, arg3 );
@@ -437,7 +437,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          SET_BIT( ruler->this_one->flags, RULER_NEUTRAL );
       else
       {
-         send_to_char( "Use male/female/it\n\r", ch );
+         send_to_char( "Use male/female/it\r\n", ch );
          SET_BIT( ruler->this_one->flags, RULER_MALE );
          return;
       }
@@ -450,20 +450,20 @@ void do_rulers( CHAR_DATA * ch, char *argument )
    {
       if( get_trust( ch ) < L_SUP )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
 
       if( arg2[0] == '\0' )
       {
-         send_to_char( "What name?\n\r", ch );
+         send_to_char( "What name?\r\n", ch );
          return;
       }
       argument = one_argument( argument, arg3 );
 
       if( arg3[0] == '\0' )
       {
-         send_to_char( "What rank?\n\r", ch );
+         send_to_char( "What rank?\r\n", ch );
          return;
       }
       if( is_number( arg3 ) )
@@ -472,7 +472,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          rank = atoi( arg3 );
          if( ( rank < 1 ) || ( rank > 5 ) )
          {
-            send_to_char( "Rank must be between 1 and 5.\n\r", ch );
+            send_to_char( "Rank must be between 1 and 5.\r\n", ch );
             return;
          }
          for( ruler = first_ruler_list; ruler; ruler = ruler->next )
@@ -482,7 +482,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          }
          if( ruler == NULL )
          {
-            send_to_char( "That ruler is not in the current list.\n\r", ch );
+            send_to_char( "That ruler is not in the current list.\r\n", ch );
             return;
          }
          ruler->this_one->ruler_rank = rank;
@@ -490,13 +490,13 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          do_rulers( ch, "" );
          return;
       }
-      send_to_char( "That is not a legitimate rank.\n\r", ch );
+      send_to_char( "That is not a legitimate rank.\r\n", ch );
       return;
    }
 
 
-   send_to_char( "Syntax for rulers:\n\r", ch );
-   send_to_char( "rulers new/affiliation/delete/sex name <clan number>\n\r", ch );
+   send_to_char( "Syntax for rulers:\r\n", ch );
+   send_to_char( "rulers new/affiliation/delete/sex name <clan number>\r\n", ch );
    return;
 
 }

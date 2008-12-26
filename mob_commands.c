@@ -117,7 +117,7 @@ void do_mpasound( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -154,7 +154,7 @@ void do_mpkill( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -207,7 +207,7 @@ void do_mpjunk( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -256,7 +256,7 @@ void do_mpechoaround( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -287,7 +287,7 @@ void do_mpechoat( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -315,7 +315,7 @@ void do_mpecho( CHAR_DATA * ch, char *argument )
 {
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -342,7 +342,7 @@ void do_mpmload( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -375,7 +375,7 @@ void do_mpoload( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -442,7 +442,7 @@ void do_mppurge( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -505,7 +505,7 @@ void do_mpgoto( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -542,7 +542,7 @@ void do_mpat( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 
@@ -595,7 +595,7 @@ void do_mptransfer( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
    argument = one_argument( argument, arg1 );
@@ -674,7 +674,7 @@ void do_mpforce( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
 

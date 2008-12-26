@@ -197,10 +197,10 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
 
  if( arg1[0] == '\0' )
  {
-  send_to_char("Syntax for sysdata:\n\r",ch);
-  send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\n\r",ch);
-  send_to_char("  strings: playtesters\n\r",ch);
-  send_to_char("  options: damcap expmult killsperlev mob[ac | dr | hp | hr | mp | mv | svs] pulse shownumbers\n\r",ch);
+  send_to_char("Syntax for sysdata:\r\n",ch);
+  send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\r\n",ch);
+  send_to_char("  strings: playtesters\r\n",ch);
+  send_to_char("  options: damcap expmult killsperlev mob[ac | dr | hp | hr | mp | mv | svs] pulse shownumbers\r\n",ch);
   return;
  }
 
@@ -212,42 +212,42 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
 
  if( !str_prefix(arg1,"show") )
  {
-  snprintf(outbuf,MSL,"%s","      System data for " mudnamecolor ":\n\r");
-  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(outbuf,MSL,"%s","      System data for " mudnamecolor ":\r\n");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Option         ]       [Value          ]\n\r");
+  snprintf(catbuf,MSL,"[Option         ]       [Value          ]\r\n");
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Damcap         ]       [%15d]\n\r",sysdata.damcap);
+  snprintf(catbuf,MSL,"[Damcap         ]       [%15d]\r\n",sysdata.damcap);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Exp Multiplier ]       [%15.4f]\n\r",sysdata.expmult);
+  snprintf(catbuf,MSL,"[Exp Multiplier ]       [%15.4f]\r\n",sysdata.expmult);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Kills Per Lev  ]       [%15d]\n\r",sysdata.killperlev);
+  snprintf(catbuf,MSL,"[Kills Per Lev  ]       [%15d]\r\n",sysdata.killperlev);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Mob AC         ]       [%15.4f]\n\r",sysdata.mob_ac);
+  snprintf(catbuf,MSL,"[Mob AC         ]       [%15.4f]\r\n",sysdata.mob_ac);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Mob DR         ]       [%15.4f]\n\r",sysdata.mob_dr);
+  snprintf(catbuf,MSL,"[Mob DR         ]       [%15.4f]\r\n",sysdata.mob_dr);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Mob HP         ]       [%15.4f]\n\r",sysdata.mob_hp);
+  snprintf(catbuf,MSL,"[Mob HP         ]       [%15.4f]\r\n",sysdata.mob_hp);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Mob HR         ]       [%15.4f]\n\r",sysdata.mob_hr);
+  snprintf(catbuf,MSL,"[Mob HR         ]       [%15.4f]\r\n",sysdata.mob_hr);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Mob MP         ]       [%15.4f]\n\r",sysdata.mob_mp);
+  snprintf(catbuf,MSL,"[Mob MP         ]       [%15.4f]\r\n",sysdata.mob_mp);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Mob MV         ]       [%15.4f]\n\r",sysdata.mob_mv);
+  snprintf(catbuf,MSL,"[Mob MV         ]       [%15.4f]\r\n",sysdata.mob_mv);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Mob SVS        ]       [%15.4f]\n\r",sysdata.mob_svs);
+  snprintf(catbuf,MSL,"[Mob SVS        ]       [%15.4f]\r\n",sysdata.mob_svs);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Playtesters    ]       [%15s]\n\r",sysdata.playtesters);
+  snprintf(catbuf,MSL,"[Playtesters    ]       [%15s]\r\n",sysdata.playtesters);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Pulse Per Sec  ]       [%15d]\n\r",sysdata.pulse);
+  snprintf(catbuf,MSL,"[Pulse Per Sec  ]       [%15d]\r\n",sysdata.pulse);
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Show Damage    ]       [%15s]\n\r",(sysdata.shownumbers ? "Yes" : "No"));
+  snprintf(catbuf,MSL,"[Show Damage    ]       [%15s]\r\n",(sysdata.shownumbers ? "Yes" : "No"));
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"[Wizlocked      ]       [%15s]\n\r",(wizlock ? "Yes" : "No"));
+  snprintf(catbuf,MSL,"[Wizlocked      ]       [%15s]\r\n",(wizlock ? "Yes" : "No"));
   strncat(outbuf,catbuf,MSL);
-  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
+  snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
   strncat(outbuf,catbuf,MSL);
   send_to_char(outbuf,ch);
   return;

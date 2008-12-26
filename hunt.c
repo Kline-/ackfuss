@@ -552,25 +552,25 @@ void char_hunt( CHAR_DATA * ch )
       {
          if( !can_see_obj( ch, ch->hunt_obj ) || !ch->hunt_obj->in_room )
          {
-            snprintf( buf, MSL, "@@RYou seem to have lost the trail to %s.@@N\n\r", ch->hunt_obj->short_descr );
+            snprintf( buf, MSL, "@@RYou seem to have lost the trail to %s.@@N\r\n", ch->hunt_obj->short_descr );
             send_to_char( buf, ch );
             end_hunt( ch );
          }
          else if( ch->hunt_obj->in_room == ch->in_room )
          {
-            snprintf( buf, MSL, "@@RAhhh.  You have found %s!@@N\n\r", ch->hunt_obj->short_descr );
+            snprintf( buf, MSL, "@@RAhhh.  You have found %s!@@N\r\n", ch->hunt_obj->short_descr );
             send_to_char( buf, ch );
             end_hunt( ch );
          }
          else if( ( dir = h_find_dir( ch->in_room, ch->hunt_obj->in_room, ch->hunt_flags ) ) < 0 )
          {
-            snprintf( buf, MSL, "@@RYou seem to have lost the trail to %s.@@N\n\r", ch->hunt_obj->short_descr );
+            snprintf( buf, MSL, "@@RYou seem to have lost the trail to %s.@@N\r\n", ch->hunt_obj->short_descr );
             send_to_char( buf, ch );
             end_hunt( ch );
          }
          else
          {
-            snprintf( buf, MSL, "@@RYou sense that %s is %s of here.@@N\n\r", ch->hunt_obj->short_descr, dir_name[dir] );
+            snprintf( buf, MSL, "@@RYou sense that %s is %s of here.@@N\r\n", ch->hunt_obj->short_descr, dir_name[dir] );
             send_to_char( buf, ch );
          }
       }
@@ -578,22 +578,22 @@ void char_hunt( CHAR_DATA * ch )
    }
    if( !can_see( ch, ch->hunting ) )
    {
-      send_to_char( "@@RYou seem to have lost your prey.@@N\n\r", ch );
+      send_to_char( "@@RYou seem to have lost your prey.@@N\r\n", ch );
       end_hunt( ch );
    }
    else if( ch->in_room == ch->hunting->in_room )
    {
-      send_to_char( "@@RAhhh.  You have found your prey!@@N\n\r", ch );
+      send_to_char( "@@RAhhh.  You have found your prey!@@N\r\n", ch );
       end_hunt( ch );
    }
    else if( ( dir = h_find_dir( ch->in_room, ch->hunting->in_room, ch->hunt_flags ) ) < 0 )
    {
-      send_to_char( "@@RYou seem to have lost your prey.@@N\n\r", ch );
+      send_to_char( "@@RYou seem to have lost your prey.@@N\r\n", ch );
       end_hunt( ch );
    }
    else
    {
-      snprintf( buf, MSL, "@@RYou sense your prey is %s of here.@@N\n\r", dir_name[dir] );
+      snprintf( buf, MSL, "@@RYou sense your prey is %s of here.@@N\r\n", dir_name[dir] );
       send_to_char( buf, ch );
    }
    return;
@@ -610,7 +610,7 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg );
    if( !*arg )
    {
-      send_to_char( "Hunt for whom?\n\r", ch );
+      send_to_char( "Hunt for whom?\r\n", ch );
       return;
    }
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
@@ -621,24 +621,24 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    {
       if( ch->hunting )
       {
-         snprintf( arg, MIL, "You stop hunting %s.\n\r", NAME( ch->hunting ) );
+         snprintf( arg, MIL, "You stop hunting %s.\r\n", NAME( ch->hunting ) );
          send_to_char( arg, ch );
       }
       else if( ch->hunt_obj )
       {
-         snprintf( arg, MIL, "You stop looking for %s.\n\r", ch->hunt_obj->short_descr );
+         snprintf( arg, MIL, "You stop looking for %s.\r\n", ch->hunt_obj->short_descr );
          send_to_char( arg, ch );
       }
       else
       {
-         send_to_char( "You find yourself right where you're standing!\n\r", ch );
+         send_to_char( "You find yourself right where you're standing!\r\n", ch );
       }
       end_hunt( ch );
       return;
    }
    else if( !IS_IMMORTAL( ch ) && ( victim != NULL ) && !IS_NPC( victim ) && IS_IMMORTAL( victim ) )
    {
-      snprintf( arg, MIL, "You can't hunt Immortal %s!\n\r", NAME( victim ) );
+      snprintf( arg, MIL, "You can't hunt Immortal %s!\r\n", NAME( victim ) );
       send_to_char( arg, ch );
       return;
    }
@@ -648,7 +648,7 @@ void do_hunt( CHAR_DATA * ch, char *argument )
     */
    if( victim != NULL && victim->in_room == ch->in_room )
    {
-      send_to_char( "You're already there!\n\r", ch );
+      send_to_char( "You're already there!\r\n", ch );
       return;
    }
    /*
@@ -683,7 +683,7 @@ void do_hunt( CHAR_DATA * ch, char *argument )
          | ( ch->pcdata->learned[gsn_hunt] >= 70 ? HUNT_OPENDOOR | HUNT_UNLOCKDOOR | HUNT_PICKDOOR : 0 );
    if( !victim || !set_hunt( ch, NULL, victim, NULL, 0, HUNT_CR | HUNT_MERC ) )
    {
-      send_to_char( "You couldn't find a trail.\n\r", ch );
+      send_to_char( "You couldn't find a trail.\r\n", ch );
       return;
    }
    return;

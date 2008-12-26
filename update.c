@@ -212,7 +212,7 @@ void alarm_handler( int signo )
       log_f( "current usage: %d, last checkpoint: %d", usage_now, last_checkpoint );
       log_f( "SSM dups: %d, loops: %d, recent: %d", ssm_dup_count, ssm_loops, ssm_recent_loops );
 
-      snprintf( buf, MSL, "%s\n\r", szFrozenMessage );
+      snprintf( buf, MSL, "%s\r\n", szFrozenMessage );
       bug( buf, 0 );
       raise( SIGABRT ); /* kill ourselves on return */
    }
@@ -284,7 +284,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
       ch->pcdata->super->energy_max += add_bloodlust;
       ch->pcdata->super->pracs += add_prac;
       ch->pcdata->super->skills_max += add_max_skills;
-      snprintf( buf, MSL, "@@NYou gain: %d @@rRage Ability@@N, and %d @@bWerewolf Practices. .@@N\n\r", add_bloodlust, add_prac );
+      snprintf( buf, MSL, "@@NYou gain: %d @@rRage Ability@@N, and %d @@bWerewolf Practices. .@@N\r\n", add_bloodlust, add_prac );
 
 
       send_to_char( buf, ch );
@@ -304,7 +304,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
       ch->pcdata->super->skills_max += add_max_skills;
 
 
-      snprintf( buf, MSL, "You gain: %d @@eBloodlust@@N, and %d Vampyre Practices. .\n\r", add_bloodlust, add_prac );
+      snprintf( buf, MSL, "You gain: %d @@eBloodlust@@N, and %d Vampyre Practices. .\r\n", add_bloodlust, add_prac );
 
 
       send_to_char( buf, ch );
@@ -353,7 +353,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
    if( !IS_NPC( ch ) )
     ch->act.reset(ACT_BOUGHT_PET);
 
-   snprintf( buf, MSL, "You gain: %d Hit Points, %d Mana, %d Movement and %d pracs.\n\r", add_hp, add_mana, add_move, add_prac );
+   snprintf( buf, MSL, "You gain: %d Hit Points, %d Mana, %d Movement and %d pracs.\r\n", add_hp, add_mana, add_move, add_prac );
 
    if( show )
       send_to_char( buf, ch );
@@ -700,11 +700,11 @@ void gain_bloodlust( CHAR_DATA * ch, int value )
    if( ( ch->pcdata->super->energy < 0 ) && ( ch->pcdata->super->energy != -10 ) )
       ch->pcdata->super->energy = 0;
    if( ch->pcdata->super->energy < 2 )
-      send_to_char( "Your body burns with the need for blood!\n\r", ch );
+      send_to_char( "Your body burns with the need for blood!\r\n", ch );
    else if( ch->pcdata->super->energy < 7 )
-      send_to_char( "You start to feel weaker... more blood needed!\n\r", ch );
+      send_to_char( "You start to feel weaker... more blood needed!\r\n", ch );
    else if( ch->pcdata->super->energy < 10 )
-      send_to_char( "You find yourself missing the taste of blood.\n\r", ch );
+      send_to_char( "You find yourself missing the taste of blood.\r\n", ch );
    return;
 }
 
@@ -728,16 +728,16 @@ void gain_condition( CHAR_DATA * ch, int iCond, int value )
       switch ( iCond )
       {
          case COND_FULL:
-            send_to_char( "You are hungry.\n\r", ch );
+            send_to_char( "You are hungry.\r\n", ch );
             break;
 
          case COND_THIRST:
-            send_to_char( "You are thirsty.\n\r", ch );
+            send_to_char( "You are thirsty.\r\n", ch );
             break;
 
          case COND_DRUNK:
             if( condition != 0 )
-               send_to_char( "You are sober.\n\r", ch );
+               send_to_char( "You are sober.\r\n", ch );
             break;
       }
    }
@@ -1074,12 +1074,12 @@ void weather_update( void )
    {
       case 5:
          weather_info.sunlight = SUN_LIGHT;
-         strncat( buf, "The sky shows signs of daybreak.\n\r", MSL );
+         strncat( buf, "The sky shows signs of daybreak.\r\n", MSL );
          break;
 
       case 6:
          weather_info.sunlight = SUN_RISE;
-         strncat( buf, "The sun rises in the east.\n\r", MSL );
+         strncat( buf, "The sun rises in the east.\r\n", MSL );
          for( x = 1; x < MAX_CLAN; x++ )
             for( y = 1; y < MAX_CLAN; y++ )
                politics_data.daily_negotiate_table[x][y] = FALSE;
@@ -1094,7 +1094,7 @@ void weather_update( void )
 
       case 19:
          weather_info.sunlight = SUN_SET;
-         strncat( buf, "The sun slowly disappears in the west.\n\r", MSL );
+         strncat( buf, "The sun slowly disappears in the west.\r\n", MSL );
          for( x = 1; x < MAX_CLAN; x++ )
             for( y = 1; y < MAX_CLAN; y++ )
                politics_data.daily_negotiate_table[x][y] = FALSE;
@@ -1102,7 +1102,7 @@ void weather_update( void )
 
       case 20:
          weather_info.sunlight = SUN_DARK;
-         strncat( buf, "The night has begun.\n\r", MSL );
+         strncat( buf, "The night has begun.\r\n", MSL );
          break;
 
       case 24:
@@ -1130,32 +1130,32 @@ void weather_update( void )
    {
       case 5:
          weather_info.moon_loc = MOON_RISE;
-         snprintf( buf2, MSL, "@@NA %s @@yMoon @@Nhas risen.\n\r", get_moon_phase_name(  ) );
+         snprintf( buf2, MSL, "@@NA %s @@yMoon @@Nhas risen.\r\n", get_moon_phase_name(  ) );
          strncat( buf, buf2, MSL );
          break;
       case 10:
          weather_info.moon_loc = MOON_LOW;
-         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nrides low on the horizon.\n\r", get_moon_phase_name(  ) );
+         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nrides low on the horizon.\r\n", get_moon_phase_name(  ) );
          strncat( buf, buf2, MSL );
          break;
       case 15:
          weather_info.moon_loc = MOON_PEAK;
-         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nreaches it's zenith.\n\r", get_moon_phase_name(  ) );
+         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nreaches it's zenith.\r\n", get_moon_phase_name(  ) );
          strncat( buf, buf2, MSL );
          break;
       case 20:
          weather_info.moon_loc = MOON_FALL;
-         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nfalls.\n\r", get_moon_phase_name(  ) );
+         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nfalls.\r\n", get_moon_phase_name(  ) );
          strncat( buf, buf2, MSL );
          break;
       case 25:
          weather_info.moon_loc = MOON_SET;
-         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nis setting.\n\r", get_moon_phase_name(  ) );
+         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nis setting.\r\n", get_moon_phase_name(  ) );
          strncat( buf, buf2, MSL );
          break;
       case 30:
          weather_info.moon_loc = MOON_DOWN;
-         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nhas left the sky.\n\r", get_moon_phase_name(  ) );
+         snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nhas left the sky.\r\n", get_moon_phase_name(  ) );
          strncat( buf, buf2, MSL );
          break;
 
@@ -1217,7 +1217,7 @@ void weather_update( void )
       case SKY_CLOUDLESS:
          if( weather_info.mmhg < 990 || ( weather_info.mmhg < 1010 && number_bits( 2 ) == 0 ) )
          {
-            strncat( buf, "The sky is getting cloudy.\n\r", MSL );
+            strncat( buf, "The sky is getting cloudy.\r\n", MSL );
             weather_info.sky = SKY_CLOUDY;
          }
          break;
@@ -1225,13 +1225,13 @@ void weather_update( void )
       case SKY_CLOUDY:
          if( weather_info.mmhg < 970 || ( weather_info.mmhg < 990 && number_bits( 2 ) == 0 ) )
          {
-            strncat( buf, "It starts to rain.\n\r", MSL );
+            strncat( buf, "It starts to rain.\r\n", MSL );
             weather_info.sky = SKY_RAINING;
          }
 
          if( weather_info.mmhg > 1030 && number_bits( 2 ) == 0 )
          {
-            strncat( buf, "The clouds disappear.\n\r", MSL );
+            strncat( buf, "The clouds disappear.\r\n", MSL );
             weather_info.sky = SKY_CLOUDLESS;
          }
          break;
@@ -1239,13 +1239,13 @@ void weather_update( void )
       case SKY_RAINING:
          if( weather_info.mmhg < 970 && number_bits( 2 ) == 0 )
          {
-            strncat( buf, "Lightning flashes in the sky.\n\r", MSL );
+            strncat( buf, "Lightning flashes in the sky.\r\n", MSL );
             weather_info.sky = SKY_LIGHTNING;
          }
 
          if( weather_info.mmhg > 1030 || ( weather_info.mmhg > 1010 && number_bits( 2 ) == 0 ) )
          {
-            strncat( buf, "The rain stopped.\n\r", MSL );
+            strncat( buf, "The rain stopped.\r\n", MSL );
             weather_info.sky = SKY_CLOUDY;
          }
          break;
@@ -1253,7 +1253,7 @@ void weather_update( void )
       case SKY_LIGHTNING:
          if( weather_info.mmhg > 1010 || ( weather_info.mmhg > 990 && number_bits( 2 ) == 0 ) )
          {
-            strncat( buf, "The lightning has stopped.\n\r", MSL );
+            strncat( buf, "The lightning has stopped.\r\n", MSL );
             weather_info.sky = SKY_RAINING;
             break;
          }
@@ -1301,7 +1301,7 @@ void gain_update( void )
                for( imember = super_councils[council_index].first_member; imember != NULL; imember = imember_next )
                {
                   imember_next = imember->next;
-                  send_to_char( "The current council is disbanded.\n\r", imember->this_member );
+                  send_to_char( "The current council is disbanded.\r\n", imember->this_member );
                   UNLINK( imember, super_councils[council_index].first_member, super_councils[council_index].last_member,
                           next, prev );
                   imember->this_member = NULL;
@@ -1325,7 +1325,7 @@ void gain_update( void )
                super_councils[council_index].quorum = TRUE;
                super_councils[council_index].council_time = 10;
                for( imember = super_councils[council_index].first_member; imember != NULL; imember = imember->next )
-                  send_to_char( "The Council is in Session!\n\r", imember->this_member );
+                  send_to_char( "The Council is in Session!\r\n", imember->this_member );
             }
          }
       }
@@ -1353,7 +1353,7 @@ void gain_update( void )
             ch->move += move_gain( ch );
          else if( ch->carry_weight >= can_carry_w( ch ) )
          {
-            send_to_char( "You are carrying so much weight that you are @@eEXHAUSTED@@N!!\n\r", ch );
+            send_to_char( "You are carrying so much weight that you are @@eEXHAUSTED@@N!!\r\n", ch );
             ch->move = 0;
          }
 
@@ -1402,7 +1402,7 @@ void char_update( void )
        {
         char_from_room(ch);
         char_to_room(ch,get_room_index(ROOM_VNUM_ALTAR));
-        send_to_char("The gods have taken pity upon your ghostly plight...\n\r",ch);
+        send_to_char("The gods have taken pity upon your ghostly plight...\r\n",ch);
         resurrect(ch);
         do_mpcr(ch,ch->name);
         do_look(ch,"auto");
@@ -1442,9 +1442,9 @@ void char_update( void )
          if( ch->position != POS_WRITING && ch->position != POS_BUILDING )
          {
             if( ch->in_room->room_flags.test(RFLAG_HOT) )
-               send_to_char( "You feel your skin burning.\n\r", ch );
+               send_to_char( "You feel your skin burning.\r\n", ch );
             else if( ch->in_room->room_flags.test(RFLAG_COLD) )
-               send_to_char( "You feel your skin freezing.\n\r", ch );
+               send_to_char( "You feel your skin freezing.\r\n", ch );
          }
 
 
@@ -1498,7 +1498,7 @@ void char_update( void )
                if( ch->fighting != NULL )
                   stop_fighting( ch, TRUE );
                act( "$n disappears into the void.", ch, NULL, NULL, TO_ROOM );
-               send_to_char( "You disappear into the void.\n\r", ch );
+               send_to_char( "You disappear into the void.\r\n", ch );
                save_char_obj( ch );
                char_from_room( ch );
                char_to_room( ch, get_room_index( ROOM_VNUM_LIMBO ) );
@@ -1542,7 +1542,7 @@ void char_update( void )
             {
                if( paf->caster != NULL && !IS_NPC( paf->caster ) )
                {
-                  send_to_char( "You feel the blood leach sapping your strength.\n\r", ch );
+                  send_to_char( "You feel the blood leach sapping your strength.\r\n", ch );
                   act( "You feel a surge of blood, coming from your blood leach on $N.", paf->caster, NULL, ch, TO_CHAR );
                   paf->caster->pcdata->super->energy += ( 10 - paf->caster->pcdata->super->generation );
                   if( paf->caster->pcdata->super->energy > paf->caster->pcdata->super->energy_max )
@@ -1554,7 +1554,7 @@ void char_update( void )
             {
                if( paf->caster != NULL && !IS_NPC( paf->caster ) )
                {
-                  send_to_char( "You feel the Black Hand choking you.\n\r", ch );
+                  send_to_char( "You feel the Black Hand choking you.\r\n", ch );
                   ch->hit -= paf->modifier;
                }
             }
@@ -1562,7 +1562,7 @@ void char_update( void )
             {
                ch->hit = UMAX( 10, ( ch->hit - ( paf->duration * 30 ) ) );
                ch->move = UMAX( 10, ( ch->move - ( paf->duration * 80 ) ) );
-               send_to_char( "@@NYou feel the affects of your @@eadrenaline rush@@N wear off, leaving you exhausted.\n\r",
+               send_to_char( "@@NYou feel the affects of your @@eadrenaline rush@@N wear off, leaving you exhausted.\r\n",
                              ch );
                affect_remove( ch, paf );
             }
@@ -1576,7 +1576,7 @@ void char_update( void )
                if( paf->type > 0 && skill_table[paf->type].msg_off )
                {
                   send_to_char( skill_table[paf->type].msg_off, ch );
-                  send_to_char( "\n\r", ch );
+                  send_to_char( "\r\n", ch );
                }
                if( paf->type > 0 && skill_table[paf->type].room_off )
                   act( skill_table[paf->type].room_off, ch, NULL, NULL, TO_ROOM );
@@ -1640,7 +1640,7 @@ void char_update( void )
       if( IS_AFFECTED( ch, AFF_POISON ) )
       {
          act( "$n shivers and suffers.", ch, NULL, NULL, TO_ROOM );
-         send_to_char( "You shiver and suffer.\n\r", ch );
+         send_to_char( "You shiver and suffer.\r\n", ch );
          damage( ch, ch, number_range( 2, 8 ), gsn_poison );
       }
       else if( ch->position == POS_INCAP && !IS_VAMP( ch ) )
@@ -1672,7 +1672,7 @@ void char_update( void )
     save_char_obj(ch_save);
    if( ch_quit != NULL )
    {
-    send_to_char("Idle for too long. Bye bye!\n\r",ch_quit);
+    send_to_char("Idle for too long. Bye bye!\r\n",ch_quit);
     do_quit(ch_quit,"");
    }
    CUREF( ch_next );
@@ -2080,7 +2080,7 @@ void rooms_update( void )
                   if( raf->type > 0 && skill_table[raf->type].msg_off )
                   {
                      send_to_room( skill_table[raf->type].msg_off, room );
-                     send_to_room( "\n\r", room );
+                     send_to_room( "\r\n", room );
                   }
                   r_affect_remove( room, raf );
                }

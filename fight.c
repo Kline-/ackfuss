@@ -272,7 +272,7 @@ void violence_update( void )
          else
          {
             ch->position = POS_STANDING;
-            send_to_char( "You are no longer stunned.\n\r", ch );
+            send_to_char( "You are no longer stunned.\r\n", ch );
             continue;
          }
       }
@@ -608,7 +608,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
 
    if( !IS_NPC( ch ) && ( ( ch->stance == STANCE_AMBUSH ) || ( ch->stance == STANCE_AC_BEST ) ) )
    {
-      send_to_char( "You step out of the shadows.\n\r", ch );
+      send_to_char( "You step out of the shadows.\r\n", ch );
       ch->stance = STANCE_WARRIOR;
       ch->stance_ac_mod = 0;
       ch->stance_dr_mod = 0;
@@ -1018,7 +1018,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
    {
     if( dam > ch->pcdata->records->pdam_amt )
     {
-     send_to_char("@@yYou've broken your physical damage record!@@N\n\r",ch);
+     send_to_char("@@yYou've broken your physical damage record!@@N\r\n",ch);
      ch->pcdata->records->pdam_amt = (int)dam;
      ch->pcdata->records->pdam_gsn = tmp_dt;
     }
@@ -1119,7 +1119,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                      rch_next = rch->next_in_room;
                      if( get_psuedo_level( rch ) < 70 )
                         continue;
-                     send_to_char( "\n\r@@NYou are @@ablasted@@N by the @@econflagration@@N!\n\r", rch );
+                     send_to_char( "\r\n@@NYou are @@ablasted@@N by the @@econflagration@@N!\r\n", rch );
                      if( number_range( 0, 99 ) < 50 )
                         obj_cast_spell( skill_lookup( "frost breath" ), 120, elemental, rch, explosion );
                      else
@@ -1200,17 +1200,17 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
       {
          case POS_MORTAL:
             act( "$n is mortally wounded, and will die soon, if not aided.", victim, NULL, NULL, TO_ROOM );
-            send_to_char( "You are mortally wounded, and will die soon, if not aided.\n\r", victim );
+            send_to_char( "You are mortally wounded, and will die soon, if not aided.\r\n", victim );
             break;
 
          case POS_INCAP:
             act( "$n is incapacitated and will slowly die, if not aided.", victim, NULL, NULL, TO_ROOM );
-            send_to_char( "You are incapacitated and will slowly die, if not aided.\n\r", victim );
+            send_to_char( "You are incapacitated and will slowly die, if not aided.\r\n", victim );
             break;
 
          case POS_STUNNED:
             act( "$n is too stunned to do anything!", victim, NULL, NULL, TO_ROOM );
-            send_to_char( "You are too stunned to do anything!\n\r", victim );
+            send_to_char( "You are too stunned to do anything!\r\n", victim );
             break;
 
          case POS_DEAD:
@@ -1233,8 +1233,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                   act( "$n DECAPITATES $N's head off with one skillful stroke!", ch, NULL, victim, TO_NOTVICT );
                   send_to_char( "You suddenly feel the world is spinning away from you!", victim );
                   send_to_char( "You have been DECAPITATED!!", victim );
-                  send_to_char( "You feel the rage of the wolf flow from your body.....\n\r", victim );
-                  send_to_char( "You THINK you are dead!  Ooops....\n\r", victim );
+                  send_to_char( "You feel the rage of the wolf flow from your body.....\r\n", victim );
+                  send_to_char( "You THINK you are dead!  Ooops....\r\n", victim );
                }
 
                victim->act.reset(ACT_WEREWOLF);
@@ -1252,14 +1252,14 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
             }
 
             act( "$n is DEAD!!", victim, 0, 0, TO_ROOM );
-            send_to_char( "You have been KILLED!!\n\r\n\r", victim );
+            send_to_char( "You have been KILLED!!\r\n\r\n", victim );
             break;
 
          default:
             if( dam > victim->max_hit / 4 )
-               send_to_char( "That really did HURT!\n\r", victim );
+               send_to_char( "That really did HURT!\r\n", victim );
             if( victim->hit < victim->max_hit / 4 )
-               send_to_char( "You sure are BLEEDING!\n\r", victim );
+               send_to_char( "You sure are BLEEDING!\r\n", victim );
             break;
       }
    }  /* end of if statement */
@@ -1421,7 +1421,7 @@ bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
     */
    if( ( victim->in_room != NULL ) && victim->in_room->room_flags.test(RFLAG_SAFE) )
    {
-      send_to_char( "Not a chance!  This is a safe room.\n\r", ch );
+      send_to_char( "Not a chance!  This is a safe room.\r\n", ch );
       return true;
    }
 
@@ -1441,7 +1441,7 @@ bool is_safe( CHAR_DATA * ch, CHAR_DATA * victim )
 
    if( ( ( victim->level < 10 ) || ( victim->level + 20 < ch->level ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC( ch ) ) )
    {
-      send_to_char( "The Gods prevent your foul deed.\n\r", ch );
+      send_to_char( "The Gods prevent your foul deed.\r\n", ch );
       return true;
    }
 
@@ -1596,7 +1596,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
    if( IS_NPC( ch ) || ch == victim )
       return;
 
-   send_to_char( "*** You are a PLAYER KILLER!! ***\n\r", ch );
+   send_to_char( "*** You are a PLAYER KILLER!! ***\r\n", ch );
 
    {
       char buf[MAX_STRING_LENGTH];
@@ -2006,7 +2006,7 @@ void update_pos( CHAR_DATA * victim )
       if( victim->hit == -20 )
       {
          act( "$n's body slowly regains it's shape!", victim, NULL, NULL, TO_ROOM );
-         send_to_char( "Your body slowly regains it's shape!\n\r", victim );
+         send_to_char( "Your body slowly regains it's shape!\r\n", victim );
          victim->hit++;
          victim->position = POS_MORTAL;
       }
@@ -2015,7 +2015,7 @@ void update_pos( CHAR_DATA * victim )
       else if( victim->hit == -15 )
       {
          act( "$n's skin grows back into place!", victim, NULL, NULL, TO_ROOM );
-         send_to_char( "Your skin grows back into place!\n\r", victim );
+         send_to_char( "Your skin grows back into place!\r\n", victim );
          victim->hit++;
       }
       else if( victim->hit > -15 && victim->hit < -10 )
@@ -2023,7 +2023,7 @@ void update_pos( CHAR_DATA * victim )
       else if( victim->hit == -10 )
       {
          act( "$n's wounds form scar tissue and vanish!", victim, NULL, NULL, TO_ROOM );
-         send_to_char( "Your wounds form scar tissue and vanish!\n\r", victim );
+         send_to_char( "Your wounds form scar tissue and vanish!\r\n", victim );
          victim->hit++;
       }
       else if( victim->hit > -10 && victim->hit < -5 )
@@ -2031,7 +2031,7 @@ void update_pos( CHAR_DATA * victim )
       else if( victim->hit == -5 )
       {
          act( "$n's looks like $s old self again.", victim, NULL, NULL, TO_ROOM );
-         send_to_char( "Your look like your old self again.\n\r", victim );
+         send_to_char( "Your look like your old self again.\r\n", victim );
          victim->hit++;
       }
       else if( victim->hit > -5 && victim->hit < -1 )
@@ -2579,7 +2579,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       gain *= sysdata.expmult;
       xp = static_cast<int>(gain);
 
-      snprintf( buf, MSL, "You Receive %d Experience Points.\n\r", xp );
+      snprintf( buf, MSL, "You Receive %d Experience Points.\r\n", xp );
       send_to_char( buf, gch );
       if( AI_MOB(gch) )
          gch->intell_exp += xp;
@@ -2965,7 +2965,7 @@ void disarm( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj )
       if( ( ( obj = get_eq_char( victim, WEAR_HOLD_HAND_L ) ) == NULL ) || ( obj->item_type != ITEM_WEAPON ) )
          if( ( ( obj = get_eq_char( victim, WEAR_HOLD_HAND_R ) ) == NULL ) || ( obj->item_type != ITEM_WEAPON ) )
          {
-            send_to_char( "Your opponent is not wielding a weapon.\n\r", ch );
+            send_to_char( "Your opponent is not wielding a weapon.\r\n", ch );
             return;
          }
    }
@@ -3057,13 +3057,13 @@ void do_kill( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Kill whom?\n\r", ch );
+      send_to_char( "Kill whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
 
@@ -3071,7 +3071,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
    {
       if( !victim->act.test(ACT_KILLER ) && !victim->act.test(ACT_THIEF ) )
       {
-         send_to_char( "You must MURDER a player.\n\r", ch );
+         send_to_char( "You must MURDER a player.\r\n", ch );
          return;
       }
    }
@@ -3079,14 +3079,14 @@ void do_kill( CHAR_DATA * ch, char *argument )
    {
       if( IS_AFFECTED( victim, AFF_CHARM ) && victim->master != NULL )
       {
-         send_to_char( "You must MURDER a charmed creature.\n\r", ch );
+         send_to_char( "You must MURDER a charmed creature.\r\n", ch );
          return;
       }
    }
 
    if( victim == ch )
    {
-      send_to_char( "You hit yourself.  Ouch!\n\r", ch );
+      send_to_char( "You hit yourself.  Ouch!\r\n", ch );
       one_hit( ch, ch, TYPE_UNDEFINED );
       return;
    }
@@ -3102,7 +3102,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
 
    if( ch->position == POS_FIGHTING )
    {
-      send_to_char( "You do the best you can!\n\r", ch );
+      send_to_char( "You do the best you can!\r\n", ch );
       return;
    }
 
@@ -3118,20 +3118,20 @@ void do_target( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
    if( ( !IS_NPC( ch ) ) && ( ch->pcdata->learned[gsn_target] < 65 ) )
    {
-      send_to_char( "You are not trained enough in this skill!!\n\r", ch );
+      send_to_char( "You are not trained enough in this skill!!\r\n", ch );
       return;
    }
    one_argument( argument, arg );
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Target whom?\n\r", ch );
+      send_to_char( "Target whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
 
@@ -3139,7 +3139,7 @@ void do_target( CHAR_DATA * ch, char *argument )
    {
       if( !victim->act.test(ACT_KILLER ) && !victim->act.test(ACT_THIEF ) )
       {
-         send_to_char( "You must MURDER a player.\n\r", ch );
+         send_to_char( "You must MURDER a player.\r\n", ch );
          return;
       }
    }
@@ -3147,14 +3147,14 @@ void do_target( CHAR_DATA * ch, char *argument )
    {
       if( IS_AFFECTED( victim, AFF_CHARM ) && victim->master != NULL )
       {
-         send_to_char( "You must MURDER a charmed creature.\n\r", ch );
+         send_to_char( "You must MURDER a charmed creature.\r\n", ch );
          return;
       }
    }
 
    if( victim == ch )
    {
-      send_to_char( "You hit yourself.  Ouch!\n\r", ch );
+      send_to_char( "You hit yourself.  Ouch!\r\n", ch );
       one_hit( ch, ch, TYPE_UNDEFINED );
       return;
    }
@@ -3170,7 +3170,7 @@ void do_target( CHAR_DATA * ch, char *argument )
 
    if( ch->position == POS_FIGHTING )
    {
-      send_to_char( "@@rTracking, tracking, tracking...@@eGOT HIM!!!@@N\n\r", ch );
+      send_to_char( "@@rTracking, tracking, tracking...@@eGOT HIM!!!@@N\r\n", ch );
       stop_fighting( ch, FALSE );
    }
 
@@ -3184,7 +3184,7 @@ void do_target( CHAR_DATA * ch, char *argument )
 
 void do_murde( CHAR_DATA * ch, char *argument )
 {
-   send_to_char( "If you want to MURDER, spell it out.\n\r", ch );
+   send_to_char( "If you want to MURDER, spell it out.\r\n", ch );
    return;
 }
 
@@ -3199,25 +3199,25 @@ void do_murder( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Murder whom?\n\r", ch );
+      send_to_char( "Murder whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
 
    if( victim == ch )
    {
-      send_to_char( "Suicide is a mortal sin.\n\r", ch );
+      send_to_char( "Suicide is a mortal sin.\r\n", ch );
       return;
    }
 
    if( is_safe( ch, victim ) )
    {
-      send_to_char( "Not here.\n\r", ch );
+      send_to_char( "Not here.\r\n", ch );
       return;
    }
 
@@ -3229,12 +3229,12 @@ void do_murder( CHAR_DATA * ch, char *argument )
 
    if( ch->position == POS_FIGHTING )
    {
-      send_to_char( "You do the best you can!\n\r", ch );
+      send_to_char( "You do the best you can!\r\n", ch );
       return;
    }
 
    WAIT_STATE( ch, 150 );
-   snprintf( log_buf, (2 * MIL), "%s attacked by %s.\n\r", victim->name, ch->name );
+   snprintf( log_buf, (2 * MIL), "%s attacked by %s.\r\n", victim->name, ch->name );
    notify( log_buf, MAX_LEVEL - 2 );
 
    if( IS_NPC( ch ) || IS_NPC( victim )
@@ -3278,7 +3278,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
-      send_to_char( "You cannot do that while in this form.\n\r", ch );
+      send_to_char( "You cannot do that while in this form.\r\n", ch );
       return;
    }
 
@@ -3301,7 +3301,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
 
    if( best == -1 )
    {
-      send_to_char( "You better leave the assassin trade to thieves.\n\r", ch );
+      send_to_char( "You better leave the assassin trade to thieves.\r\n", ch );
       return;
    }
 
@@ -3309,13 +3309,13 @@ void do_backstab( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Backstab whom?\n\r", ch );
+      send_to_char( "Backstab whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
    if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
@@ -3328,7 +3328,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
 
    if( victim == ch )
    {
-      send_to_char( "How can you sneak up on yourself?\n\r", ch );
+      send_to_char( "How can you sneak up on yourself?\r\n", ch );
       return;
    }
 
@@ -3338,13 +3338,13 @@ void do_backstab( CHAR_DATA * ch, char *argument )
    if( ( obj = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) == NULL || obj->value[3] != 11 )
       if( ( obj = get_eq_char( ch, WEAR_HOLD_HAND_R ) ) == NULL || obj->value[3] != 11 )
       {
-         send_to_char( "You need to wield a piercing weapon.\n\r", ch );
+         send_to_char( "You need to wield a piercing weapon.\r\n", ch );
          return;
       }
 
    if( victim->fighting != NULL )
    {
-      send_to_char( "You can't backstab a fighting person.\n\r", ch );
+      send_to_char( "You can't backstab a fighting person.\r\n", ch );
       return;
    }
 
@@ -3427,7 +3427,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
          act( "$N places $p into your back.  OUCH!", victim, obj, ch, TO_CHAR );
       }
       if( crack )
-         send_to_room( "You hear a large CRACK!\n\r", ch->in_room );
+         send_to_room( "You hear a large CRACK!\r\n", ch->in_room );
 
       damage( ch, victim, dam, gsn_backstab );
    }
@@ -3451,7 +3451,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
    {
       if( ch->position == POS_FIGHTING )
          ch->position = POS_STANDING;
-      send_to_char( "You aren't fighting anyone.\n\r", ch );
+      send_to_char( "You aren't fighting anyone.\r\n", ch );
       return;
    }
 
@@ -3461,8 +3461,8 @@ void do_flee( CHAR_DATA * ch, char *argument )
 
    if( victim->act.test(ACT_NO_FLEE ) && !IS_NPC( ch ) && IS_NPC( victim ) )
    {
-      send_to_char( "You attempt to flee from battle, but fail!\n\r", ch );
-      snprintf( buf, MSL, "%s tells you 'No way will you escape ME!!'\n\r", PERS(ch,victim) );
+      send_to_char( "You attempt to flee from battle, but fail!\r\n", ch );
+      snprintf( buf, MSL, "%s tells you 'No way will you escape ME!!'\r\n", PERS(ch,victim) );
       send_to_char( buf, ch );
       return;
    }
@@ -3470,12 +3470,12 @@ void do_flee( CHAR_DATA * ch, char *argument )
    {
       if( ch->hit < 200 )
       {
-         send_to_char( "@@eYou are in too much pain!!@@N\n\r", ch );
+         send_to_char( "@@eYou are in too much pain!!@@N\r\n", ch );
          return;
       }
       else
       {
-         send_to_char( "@@eYour enemy nails you one more time!@@N\n\r", ch );
+         send_to_char( "@@eYour enemy nails you one more time!@@N\r\n", ch );
          ch->hit -= 150;
       }
    }
@@ -3509,7 +3509,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
          if( ch->adept_level > 0 )
             cost /= 1000;
          cost = UMIN( cost, ch->exp );
-         snprintf( buf, MSL, "You flee from combat!  You lose %d exps.\n\r", cost );
+         snprintf( buf, MSL, "You flee from combat!  You lose %d exps.\r\n", cost );
          send_to_char( buf, ch );
          gain_exp( ch, ( 0 - cost ) );
       }
@@ -3531,7 +3531,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
    if( ch->adept_level > 0 )
       cost = 0;
    cost = UMIN( cost, ch->exp );
-   snprintf( buf, MSL, "You failed!  You lose %d exps.\n\r", cost );
+   snprintf( buf, MSL, "You failed!  You lose %d exps.\r\n", cost );
    send_to_char( buf, ch );
    gain_exp( ch, ( 0 - cost ) );
    return;
@@ -3559,7 +3559,7 @@ void do_rescue( CHAR_DATA * ch, char *argument )
 
    if( best == -1 )
    {
-      send_to_char( "You don't know how to rescue!!\n\r", ch );
+      send_to_char( "You don't know how to rescue!!\r\n", ch );
       return;
    }
 
@@ -3567,44 +3567,44 @@ void do_rescue( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Rescue whom?\n\r", ch );
+      send_to_char( "Rescue whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
 
    if( victim == ch )
    {
-      send_to_char( "What about fleeing instead?\n\r", ch );
+      send_to_char( "What about fleeing instead?\r\n", ch );
       return;
    }
 
    if( !IS_NPC( ch ) && IS_NPC( victim ) )
    {
-      send_to_char( "Doesn't need your help!\n\r", ch );
+      send_to_char( "Doesn't need your help!\r\n", ch );
       return;
    }
 
    if( ch->fighting == victim )
    {
-      send_to_char( "Too late.\n\r", ch );
+      send_to_char( "Too late.\r\n", ch );
       return;
    }
 
    if( ( fch = victim->fighting ) == NULL )
    {
-      send_to_char( "That person is not fighting right now.\n\r", ch );
+      send_to_char( "That person is not fighting right now.\r\n", ch );
       return;
    }
 
    WAIT_STATE( ch, skill_table[gsn_rescue].beats );
    if( !IS_NPC( ch ) && number_percent(  ) > ch->pcdata->learned[gsn_rescue] )
    {
-      send_to_char( "You fail the rescue.\n\r", ch );
+      send_to_char( "You fail the rescue.\r\n", ch );
       return;
    }
 
@@ -3633,7 +3633,7 @@ void do_disarm( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
-      send_to_char( "You cannot do that while in this form.\n\r", ch );
+      send_to_char( "You cannot do that while in this form.\r\n", ch );
       return;
    }
 
@@ -3649,31 +3649,31 @@ void do_disarm( CHAR_DATA * ch, char *argument )
 
    if( best == -1 )
    {
-      send_to_char( "You don't know how to disarm!\n\r", ch );
+      send_to_char( "You don't know how to disarm!\r\n", ch );
       return;
    }
 
    if( ( !IS_WEAPON( get_eq_char( ch, WEAR_HOLD_HAND_L ) ) ) && ( !IS_WEAPON( get_eq_char( ch, WEAR_HOLD_HAND_R ) ) ) )
    {
-      send_to_char( "You must wield a weapon to disarm.\n\r", ch );
+      send_to_char( "You must wield a weapon to disarm.\r\n", ch );
       return;
    }
 
    if( ( victim = ch->fighting ) == NULL )
    {
-      send_to_char( "You aren't fighting anyone.\n\r", ch );
+      send_to_char( "You aren't fighting anyone.\r\n", ch );
       return;
    }
    if( !IS_NPC( victim ) && IS_WOLF( victim ) && ( IS_SHIFTED( victim ) || IS_RAGED( victim ) ) )
    {
-      send_to_char( "Try slicing off their claws instead!\n\r", ch );
+      send_to_char( "Try slicing off their claws instead!\r\n", ch );
       return;
    }
 
    if( ( ( obj = get_eq_char( victim, WEAR_HOLD_HAND_L ) ) == NULL ) || ( obj->item_type != ITEM_WEAPON ) )
       if( ( ( obj = get_eq_char( victim, WEAR_HOLD_HAND_R ) ) == NULL ) || ( obj->item_type != ITEM_WEAPON ) )
       {
-         send_to_char( "Your opponent is not wielding a weapon.\n\r", ch );
+         send_to_char( "Your opponent is not wielding a weapon.\r\n", ch );
          return;
       }
    if( IS_OBJ_STAT(obj,ITEM_EXTRA_NO_DISARM) )
@@ -3685,7 +3685,7 @@ void do_disarm( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) || percent < ch->pcdata->learned[gsn_disarm] * 2 / 3 )
       disarm( ch, victim, obj );
    else
-      send_to_char( "You failed.\n\r", ch );
+      send_to_char( "You failed.\r\n", ch );
    return;
 }
 
@@ -3705,7 +3705,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
-      send_to_char( "You cannot do that while in this form.\n\r", ch );
+      send_to_char( "You cannot do that while in this form.\r\n", ch );
       return;
    }
 
@@ -3740,7 +3740,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
 
    if( best == -1 )
    {
-      send_to_char( "You better leave the assassin trade to thieves.\n\r", ch );
+      send_to_char( "You better leave the assassin trade to thieves.\r\n", ch );
       return;
    }
 
@@ -3748,13 +3748,13 @@ void do_circle( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Backstab whom?\n\r", ch );
+      send_to_char( "Backstab whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
    if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
@@ -3768,7 +3768,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
 
    if( victim == ch )
    {
-      send_to_char( "How can you sneak up on yourself?\n\r", ch );
+      send_to_char( "How can you sneak up on yourself?\r\n", ch );
       return;
    }
 
@@ -3778,13 +3778,13 @@ void do_circle( CHAR_DATA * ch, char *argument )
    if( ( obj = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) == NULL || obj->value[3] != 11 )
       if( ( obj = get_eq_char( ch, WEAR_HOLD_HAND_R ) ) == NULL || obj->value[3] != 11 )
       {
-         send_to_char( "You need to wield a piercing weapon.\n\r", ch );
+         send_to_char( "You need to wield a piercing weapon.\r\n", ch );
          return;
       }
 
    if( victim->fighting == NULL )
    {
-      send_to_char( "You're victim must be fighting!\n\r", ch );
+      send_to_char( "You're victim must be fighting!\r\n", ch );
       return;
    }
 
@@ -3869,7 +3869,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
       }
 
       if( crack )
-         send_to_room( "You hear a large CRACK!\n\r", ch->in_room );
+         send_to_room( "You hear a large CRACK!\r\n", ch->in_room );
 
       damage( ch, victim, dam, gsn_circle );
    }
@@ -3905,7 +3905,7 @@ void do_trip( CHAR_DATA * ch, char *argument )
 
    if( best == -1 )
    {
-      send_to_char( "You don't know of such a skill.\n\r", ch );
+      send_to_char( "You don't know of such a skill.\r\n", ch );
       return;
    }
 
@@ -3913,19 +3913,19 @@ void do_trip( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Trip whom?\n\r", ch );
+      send_to_char( "Trip whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
 
    if( victim == ch )
    {
-      send_to_char( "That wouldn't even be funny.\n\r", ch );
+      send_to_char( "That wouldn't even be funny.\r\n", ch );
       return;
    }
 
@@ -3934,7 +3934,7 @@ void do_trip( CHAR_DATA * ch, char *argument )
 
    if( victim->fighting == NULL )
    {
-      send_to_char( "You can't trip someone who isn't fighting.\n\r", ch );
+      send_to_char( "You can't trip someone who isn't fighting.\r\n", ch );
       return;
    }
 
@@ -3980,7 +3980,7 @@ void do_dirt( CHAR_DATA * ch, char *argument )
 
    if( best == -1 )
    {
-      send_to_char( "You don't know of such a skill.\n\r", ch );
+      send_to_char( "You don't know of such a skill.\r\n", ch );
       return;
    }
 
@@ -3988,13 +3988,13 @@ void do_dirt( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' && ch->fighting == NULL )
    {
-      send_to_char( "Kick dirt at whom?\n\r", ch );
+      send_to_char( "Kick dirt at whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL && ch->fighting == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
 
@@ -4003,7 +4003,7 @@ void do_dirt( CHAR_DATA * ch, char *argument )
 
    if( victim == ch )
    {
-      send_to_char( "That wouldn't be too smart, would it??.\n\r", ch );
+      send_to_char( "That wouldn't be too smart, would it??.\r\n", ch );
       return;
    }
 
@@ -4012,7 +4012,7 @@ void do_dirt( CHAR_DATA * ch, char *argument )
 
    if( victim->fighting == NULL )
    {
-      send_to_char( "Try doing this to them, when fighting...\n\r", ch );
+      send_to_char( "Try doing this to them, when fighting...\r\n", ch );
       return;
    }
 
@@ -4070,7 +4070,7 @@ void do_bash( CHAR_DATA * ch, char *argument )
 
    if( best == -1 )
    {
-      send_to_char( "You don't know of such a skill.\n\r", ch );
+      send_to_char( "You don't know of such a skill.\r\n", ch );
       return;
    }
 
@@ -4078,19 +4078,19 @@ void do_bash( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Bash whom?\n\r", ch );
+      send_to_char( "Bash whom?\r\n", ch );
       return;
    }
 
    if( ( victim = get_char_room( ch, arg ) ) == NULL )
    {
-      send_to_char( "They aren't here.\n\r", ch );
+      send_to_char( "They aren't here.\r\n", ch );
       return;
    }
 
    if( victim == ch )
    {
-      send_to_char( "Forget it!\n\r", ch );
+      send_to_char( "Forget it!\r\n", ch );
       return;
    }
 
@@ -4099,7 +4099,7 @@ void do_bash( CHAR_DATA * ch, char *argument )
 
    if( victim->fighting == NULL )
    {
-      send_to_char( "It might help if you were fighting.....\n\r", ch );
+      send_to_char( "It might help if you were fighting.....\r\n", ch );
       return;
    }
 
@@ -4169,19 +4169,19 @@ void do_berserk( CHAR_DATA * ch, char *argument )
 
    if( ch->fighting == NULL )
    {
-      send_to_char( "You can only go berserk when fighting!\n\r", ch );
+      send_to_char( "You can only go berserk when fighting!\r\n", ch );
       return;
    }
 
    if( is_affected( ch, gsn_berserk ) )
    {
-      send_to_char( "You are already berserk!!\n\r", ch );
+      send_to_char( "You are already berserk!!\r\n", ch );
       return;
    }
 
    if( ch->pcdata->learned[gsn_berserk] == 0 )
    {
-      send_to_char( "You don't know how to use this skill!\n\r", ch );
+      send_to_char( "You don't know how to use this skill!\r\n", ch );
       return;
    }
 
@@ -4229,7 +4229,7 @@ void do_berserk( CHAR_DATA * ch, char *argument )
    affect_to_char( ch, &af );
 
    act( "$n calls on the Dark Powers, who answer!!!", ch, NULL, NULL, TO_ROOM );
-   send_to_char( "You call on the Dark Powers.  They answer!!!\n\r", ch );
+   send_to_char( "You call on the Dark Powers.  They answer!!!\r\n", ch );
    return;
 }
 
@@ -4246,7 +4246,7 @@ void do_punch( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_punch] == 0 )
    {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
+      send_to_char( "You are not trained in this skill!\r\n", ch );
       return;
    }
 
@@ -4254,7 +4254,7 @@ void do_punch( CHAR_DATA * ch, char *argument )
 
    if( ( ( victim = get_char_room( ch, argument ) ) == NULL ) && ch->fighting == NULL )
    {
-      send_to_char( "No such victim!\n\r", ch );
+      send_to_char( "No such victim!\r\n", ch );
       return;
    }
 
@@ -4329,7 +4329,7 @@ void do_headbutt( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_headbutt] == 0 )
    {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
+      send_to_char( "You are not trained in this skill!\r\n", ch );
       return;
    }
 
@@ -4337,7 +4337,7 @@ void do_headbutt( CHAR_DATA * ch, char *argument )
 
    if( ( ( victim = get_char_room( ch, argument ) ) == NULL ) && ch->fighting == NULL )
    {
-      send_to_char( "No such victim!\n\r", ch );
+      send_to_char( "No such victim!\r\n", ch );
       return;
    }
 
@@ -4347,7 +4347,7 @@ void do_headbutt( CHAR_DATA * ch, char *argument )
 
    if( victim == ch )
    {
-      send_to_char( "You can't reach!\n\r", ch );
+      send_to_char( "You can't reach!\r\n", ch );
       return;
    }
 
@@ -4423,7 +4423,7 @@ void do_charge( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_charge] == 0 )
    {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
+      send_to_char( "You are not trained in this skill!\r\n", ch );
       return;
    }
 
@@ -4432,7 +4432,7 @@ void do_charge( CHAR_DATA * ch, char *argument )
 
    if( ( ( victim = get_char_room( ch, argument ) ) == NULL ) && ch->fighting == NULL )
    {
-      send_to_char( "No such victim!\n\r", ch );
+      send_to_char( "No such victim!\r\n", ch );
       return;
    }
 
@@ -4442,7 +4442,7 @@ void do_charge( CHAR_DATA * ch, char *argument )
 
    if( victim == ch )
    {
-      send_to_char( "You can't reach!\n\r", ch );
+      send_to_char( "You can't reach!\r\n", ch );
       return;
    }
 
@@ -4522,7 +4522,7 @@ void do_knee( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_knee] == 0 )
    {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
+      send_to_char( "You are not trained in this skill!\r\n", ch );
       return;
    }
 
@@ -4530,7 +4530,7 @@ void do_knee( CHAR_DATA * ch, char *argument )
 
    if( ( ( victim = get_char_room( ch, argument ) ) == NULL ) && ch->fighting == NULL )
    {
-      send_to_char( "No such victim!\n\r", ch );
+      send_to_char( "No such victim!\r\n", ch );
       return;
    }
 
@@ -4617,7 +4617,7 @@ void do_kick( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_kick] == 0 )
    {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
+      send_to_char( "You are not trained in this skill!\r\n", ch );
       return;
    }
 
@@ -4629,7 +4629,7 @@ void do_kick( CHAR_DATA * ch, char *argument )
 
    if( ( ( victim = get_char_room( ch, argument ) ) == NULL ) && ch->fighting == NULL )
    {
-      send_to_char( "No such victim!\n\r", ch );
+      send_to_char( "No such victim!\r\n", ch );
       return;
    }
 
@@ -4728,29 +4728,29 @@ void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, float dam )
    {
       case POS_MORTAL:
          act( "$n is mortally wounded, and will die soon, if not aided.", victim, NULL, NULL, TO_ROOM );
-         send_to_char( "You are mortally wounded, and will die soon, if not aided.\n\r", victim );
+         send_to_char( "You are mortally wounded, and will die soon, if not aided.\r\n", victim );
          break;
 
       case POS_INCAP:
          act( "$n is incapacitated and will slowly die, if not aided.", victim, NULL, NULL, TO_ROOM );
-         send_to_char( "You are incapacitated and will slowly die, if not aided.\n\r", victim );
+         send_to_char( "You are incapacitated and will slowly die, if not aided.\r\n", victim );
          break;
 
       case POS_STUNNED:
          act( "$n is stunned, but will probably recover.", victim, NULL, NULL, TO_ROOM );
-         send_to_char( "You are stunned, but will probably recover.\n\r", victim );
+         send_to_char( "You are stunned, but will probably recover.\r\n", victim );
          break;
 
       case POS_DEAD:
          act( "$n is DEAD!!", victim, 0, 0, TO_ROOM );
-         send_to_char( "You have been KILLED!!\n\r\n\r", victim );
+         send_to_char( "You have been KILLED!!\r\n\r\n", victim );
          break;
 
       default:
          if( dam > victim->max_hit / 4 )
-            send_to_char( "That really did HURT!\n\r", victim );
+            send_to_char( "That really did HURT!\r\n", victim );
          if( victim->hit < victim->max_hit / 4 )
-            send_to_char( "You sure are BLEEDING!\n\r", victim );
+            send_to_char( "You sure are BLEEDING!\r\n", victim );
          break;
    }
 
@@ -4813,7 +4813,7 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
 
    /*
     * For debugging purposes  
-    * snprintf( buf, MSL, "dt: %d max_dt: %d\n\r", dt, max_dt );
+    * snprintf( buf, MSL, "dt: %d max_dt: %d\r\n", dt, max_dt );
     * notify( buf, 1 );  
     */
 
@@ -5144,12 +5144,12 @@ void do_assist( CHAR_DATA * ch, char *argument )
    {
       if( ( assist = get_char_room( ch, argument ) ) == NULL )
       {
-         send_to_char( "They don't seem to be here right now...\n\r", ch );
+         send_to_char( "They don't seem to be here right now...\r\n", ch );
          return;
       }
       if( assist == ch )
       {
-         send_to_char( "You sure need help!\n\r", ch );
+         send_to_char( "You sure need help!\r\n", ch );
          return;
       }
       if( !is_same_group( ch, assist ) )
@@ -5166,7 +5166,7 @@ void do_assist( CHAR_DATA * ch, char *argument )
          set_fighting( ch, assist->fighting, TRUE );
          return;
       }
-      send_to_char( "Doesn't look like anyone needs your help right now...\n\r", ch );
+      send_to_char( "Doesn't look like anyone needs your help right now...\r\n", ch );
       return;
    }
 
@@ -5180,7 +5180,7 @@ void do_assist( CHAR_DATA * ch, char *argument )
 
    if( ppl == NULL )
    {
-      send_to_char( "Doesn't look like anyone needs your help right now...\n\r", ch );
+      send_to_char( "Doesn't look like anyone needs your help right now...\r\n", ch );
       return;
    }
 
@@ -5214,7 +5214,7 @@ void do_assist( CHAR_DATA * ch, char *argument )
       }
 
 
-   send_to_char( "Doesn't look like anyone needs your help right now...\n\r", ch );
+   send_to_char( "Doesn't look like anyone needs your help right now...\r\n", ch );
    return;
 }
 
@@ -5238,7 +5238,7 @@ void do_stake( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Stake who?\n\r", ch );
+      send_to_char( "Stake who?\r\n", ch );
       return;
    }
 
@@ -5246,12 +5246,12 @@ void do_stake( CHAR_DATA * ch, char *argument )
 
    if( victim == NULL )
    {
-      send_to_char( "Couldn't find the target.\n\r", ch );
+      send_to_char( "Couldn't find the target.\r\n", ch );
       return;
    }
    if( victim == ch )
    {
-      send_to_char( "Oh yeah, that would be a really good idea!\n\r", ch );
+      send_to_char( "Oh yeah, that would be a really good idea!\r\n", ch );
       return;
    }
 
@@ -5259,12 +5259,12 @@ void do_stake( CHAR_DATA * ch, char *argument )
       stake = get_eq_char( ch, WEAR_HOLD_HAND_R );
    if( stake == NULL || stake->item_type != ITEM_STAKE )
    {
-      send_to_char( "You have to be holding some sort of stake to do that\n\r", ch );
+      send_to_char( "You have to be holding some sort of stake to do that\r\n", ch );
       return;
    }
    if( IS_NPC( victim ) )
    {
-      send_to_char( "This is only used against PLAYER @@dVampyres@@N!!\n\r", ch );
+      send_to_char( "This is only used against PLAYER @@dVampyres@@N!!\r\n", ch );
       return;
    }
 
@@ -5296,11 +5296,11 @@ void do_stake( CHAR_DATA * ch, char *argument )
       act( "You raise $p above your head and plunge it into $N's heart!", ch, stake, victim, TO_CHAR );
       act( "$n raises $p above his head and plunges it into your heart!", ch, stake, victim, TO_VICT );
       act( "$n screams in agony and withers to black dust!", victim, NULL, NULL, TO_ROOM );
-      send_to_char( "You scream in agony and withers to black dust!\n\r", victim );
-      send_to_char( "@@NYou find yourself back in Moribund....\n\r", victim );
-      send_to_char( "@@NSuddenly, you realize that your @@eKindred@@Nknowledge\n\r", victim );
-      send_to_char( "@@Nis gone! So, THAT's what the sun looks like to mortals!\n\r", victim );
-      send_to_char( "@@NYou had almost forgotten.....\n\r", victim );
+      send_to_char( "You scream in agony and withers to black dust!\r\n", victim );
+      send_to_char( "@@NYou find yourself back in Moribund....\r\n", victim );
+      send_to_char( "@@NSuddenly, you realize that your @@eKindred@@Nknowledge\r\n", victim );
+      send_to_char( "@@Nis gone! So, THAT's what the sun looks like to mortals!\r\n", victim );
+      send_to_char( "@@NYou had almost forgotten.....\r\n", victim );
 
 
 
@@ -5347,7 +5347,7 @@ void do_stun( CHAR_DATA * ch, char *argument )
 
    if( ( ( victim = ch->fighting ) == NULL ) || ( victim->in_room == NULL ) )
    {
-      send_to_char( "You must be fighting someone first!\n\r", ch );
+      send_to_char( "You must be fighting someone first!\r\n", ch );
       return;
    }
    if( !IS_NPC( ch ) && ( ch->pcdata->learned[gsn_stun] == 0 ) )
@@ -5416,25 +5416,25 @@ void do_feed( CHAR_DATA * ch, char *argument )
 
    if( !IS_VAMP( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
    if( ( victim = ch->fighting ) == NULL )
    {
-      send_to_char( "You must be fighting someone first!\n\r", ch );
+      send_to_char( "You must be fighting someone first!\r\n", ch );
       return;
 
    }
 
    if( victim == ch )
    {
-      send_to_char( "What are you?  A blood donor?\n\r", ch );
+      send_to_char( "What are you?  A blood donor?\r\n", ch );
       return;
    }
 
    if( victim->in_room->room_flags.test(RFLAG_SAFE) )
    {
-      send_to_char( "The Gods prevent your foul deed.  This is a safe room!\n\r", ch );
+      send_to_char( "The Gods prevent your foul deed.  This is a safe room!\r\n", ch );
       return;
    }
 
@@ -5461,7 +5461,7 @@ void do_feed( CHAR_DATA * ch, char *argument )
       if( ch->pcdata->super->energy <= -5 )
       {
          ch->pcdata->super->energy = ch->pcdata->super->energy_max;
-         send_to_char( " You have now entered the ranks of the @@dKINDRED@@N!!!!\n\r", ch );
+         send_to_char( " You have now entered the ranks of the @@dKINDRED@@N!!!!\r\n", ch );
       }
       else
       {
@@ -5539,7 +5539,7 @@ void check_adrenaline( CHAR_DATA * ch, float damage )
       af.modifier = 1;
       af.bitvector = 0;
       affect_join( ch, &af );
-      send_to_char( "You feel a surge of @@eadrenaline@@N!!!\n\r", ch );
+      send_to_char( "You feel a surge of @@eadrenaline@@N!!!\r\n", ch );
    }
    return;
 
@@ -5557,20 +5557,20 @@ void do_frenzy( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_frenzy] == 0 )
    {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
+      send_to_char( "You are not trained in this skill!\r\n", ch );
       return;
    }
 
 
    if( !IS_NPC( ch ) && ch->move < 100 && ch->position == POS_FIGHTING )
    {
-      send_to_char( "You're too tired to go into a frenzy!\n\r", ch );
+      send_to_char( "You're too tired to go into a frenzy!\r\n", ch );
       return;
    }
 
    if( !IS_NPC( ch ) && number_percent(  ) > ch->pcdata->learned[gsn_frenzy] )
    {
-      send_to_char( "You try to go into a frenzy, but nearly cut your leg off!\n\r", ch );
+      send_to_char( "You try to go into a frenzy, but nearly cut your leg off!\r\n", ch );
       return;
    }
 
@@ -5599,7 +5599,7 @@ void do_frenzy( CHAR_DATA * ch, char *argument )
          if( vch != ch && ( vch->in_room == ch->in_room )
              && ( IS_NPC( ch ) ? !IS_NPC( vch ) : IS_NPC( vch ) ) && ( vch->master != ch ) && ( !is_same_group( ch, vch ) ) )
          {
-            act( "$N is @@Wgored@@N by your FRENZY!!!\n\r", ch, NULL, vch, TO_CHAR );
+            act( "$N is @@Wgored@@N by your FRENZY!!!\r\n", ch, NULL, vch, TO_CHAR );
             act( "$n goes into a FRENZY, @@Wgoring@@N $N!!!", ch, NULL, vch, TO_ROOM );
             check_killer( ch, vch );
             one_hit( ch, vch, -1 );
@@ -5627,12 +5627,12 @@ void do_rage( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) || !IS_WOLF( ch ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return;
    }
    if( IS_RAGED( ch ) )
    {
-      send_to_char( "You are already @@rRAGING@@N!!!\n\r", ch );
+      send_to_char( "You are already @@rRAGING@@N!!!\r\n", ch );
       return;
    }
 
@@ -5742,7 +5742,7 @@ void do_rage( CHAR_DATA * ch, char *argument )
 
 
       }
-      send_to_char( "You are @@eENRAGED!!!!!!\n\r", ch );
+      send_to_char( "You are @@eENRAGED!!!!!!\r\n", ch );
       ch->act.set(ACT_RAGED);
       ch->pcdata->super->energy = ( ch->pcdata->super->energy_max - number_range( 0, ch->pcdata->super->generation * 3 ) );
       ch->stance = STANCE_WARRIOR;
@@ -5751,7 +5751,7 @@ void do_rage( CHAR_DATA * ch, char *argument )
       ch->stance_hr_mod = 0;
    }
    else
-      send_to_char( "You fail to become @@eENRAGED@@N.\n\r", ch );
+      send_to_char( "You fail to become @@eENRAGED@@N.\r\n", ch );
    return;
 
 
@@ -5955,7 +5955,7 @@ void do_disguise( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_disguise] == 0 )
    {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
+      send_to_char( "You are not trained in this skill!\r\n", ch );
       return;
    }
 
@@ -5963,7 +5963,7 @@ void do_disguise( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( " Enter the disguise name, or reset to reset your description to normal.\n\r", ch );
+      send_to_char( " Enter the disguise name, or reset to reset your description to normal.\r\n", ch );
       return;
    }
 
@@ -5978,7 +5978,7 @@ void do_disguise( CHAR_DATA * ch, char *argument )
 
       free_string( ch->long_descr );
       ch->long_descr = str_dup( argument );
-      send_to_char( "You are now Disguised!!!\n\r", ch );
+      send_to_char( "You are now Disguised!!!\r\n", ch );
       return;
    }
 
@@ -5995,12 +5995,12 @@ void do_stance( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) )
    {
-      send_to_char( "Not for Npcs!\n\r", ch );
+      send_to_char( "Not for Npcs!\r\n", ch );
       return;
    }
    if( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
-      send_to_char( "This form is not capable of fighting Stances.\n\r", ch );
+      send_to_char( "This form is not capable of fighting Stances.\r\n", ch );
       return;
    }
 
@@ -6012,7 +6012,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
       char msg_buf[MSL];
 
 
-      snprintf( msg_buf, MSL, "\n\r%s\n\r", "Fighting Stances available to you:\n\r" );
+      snprintf( msg_buf, MSL, "\r\n%s\r\n", "Fighting Stances available to you:\r\n" );
 
       for( i = 0; i < MAX_STANCE; i++ )
       {
@@ -6020,62 +6020,62 @@ void do_stance( CHAR_DATA * ch, char *argument )
          switch ( i )
          {
             case STANCE_WARRIOR:
-               snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+               snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_CASTER:
                if( ( ch->lvl[0] > 50 ) /* mage */
                    || ( ch->lvl[1] > 70 ) /* cleric */
                    || ( ch->lvl[4] > 60 ) )  /* psi */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_WIZARD:
                if( ( ch->lvl2[0] > 20 )   /* sorc */
                    || ( ch->lvl2[3] > 40 )   /* necro */
                    || ( ch->lvl2[4] > 60 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_MAGI:
                if( ( ch->adept_level > 10 ) )   /*adept */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_AMBUSH:
                if( ch->lvl2[1] > 30 )  /* assassin */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_AC_BEST:
                if( ( ch->lvl2[2] > 65 )   /* knight */
                    || ( ch->lvl2[4] > 30 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_HR_BEST:
                if( ( ch->lvl2[2] > 45 )   /* knight */
                    || ( ch->lvl2[4] > 20 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_DR_BEST:
                if( ( ch->lvl2[2] > 35 )   /* knight */
                    || ( ch->lvl2[4] > 10 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_AC_WORST:
                if( ch->lvl2[4] > 45 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_HR_WORST:
                if( ch->lvl2[4] > 60 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_DR_WORST:
                if( ch->lvl2[4] > 70 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_SUPER_FIGHTER:
                if( ( ch->lvl2[4] > 79 ) && ( ch->lvl2[2] > 79 ) ) /* both knight and monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_SUPER_SPEED:
                if( ( ch->lvl2[4] > 70 ) && ( ch->lvl2[2] > 70 ) ) /* both knight and monk */
-                  snprintf( cat_buf, MSL, "%s\n\r", stance_app[i].name );
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
 
          }
@@ -6084,7 +6084,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
          snprintf( cat_buf, MSL, "%s", "" );
       }
       snprintf( cat_buf, MSL, "%s",
-               "Type stance <stance name> to change your current fighting stance.\n\r You may place your current Stance in your prompt with a \%s\n\r" );
+               "Type stance <stance name> to change your current fighting stance.\r\n You may place your current Stance in your prompt with a \%s\r\n" );
       strncat( msg_buf, cat_buf, MSL );
       send_to_char( msg_buf, ch );
       return;
@@ -6097,7 +6097,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
    {
       do_stance( ch, "" );
       act( "$n poses in a strange fashion, looking rather silly.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "You twist about wildly, but are unable to figure out just the right Stance.\n\r", ch );
+      send_to_char( "You twist about wildly, but are unable to figure out just the right Stance.\r\n", ch );
    }
 
    else
@@ -6143,7 +6143,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
                      break;
                if( other != NULL )
                {
-                  send_to_char( "You can't set an ambush with people watching you!\n\r", ch );
+                  send_to_char( "You can't set an ambush with people watching you!\r\n", ch );
                }
                else
                {
@@ -6243,7 +6243,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
          ch->stance = i;
          snprintf( stance_buf, MSL, "$n assumes the Stance of the %s!", stance_app[i].name );
          act( stance_buf, ch, NULL, NULL, TO_ROOM );
-         snprintf( stance_buf, MSL,"You assume the Stance of the %s!\n\r", stance_app[i].name );
+         snprintf( stance_buf, MSL,"You assume the Stance of the %s!\r\n", stance_app[i].name );
          send_to_char( stance_buf, ch );
       }
       WAIT_STATE( ch, 350 );
@@ -6260,7 +6260,7 @@ void resurrect( CHAR_DATA *ch )
  ch->hit = number_range(1,(int)(ch->max_hit * 0.10));
  ch->move = number_range(1,(int)(ch->max_move * 0.10));
  ch->mana = number_range(1,(int)(ch->max_mana * 0.10));
- send_to_char("@@yYou have been granted life!@@N\n\r",ch);
+ send_to_char("@@yYou have been granted life!@@N\r\n",ch);
  save_char_obj(ch);
 
  act("$n's soul returns to $s body!",ch,NULL,NULL,TO_ROOM);

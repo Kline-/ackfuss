@@ -228,12 +228,12 @@ void do_quest( CHAR_DATA * ch, char *argument )
    {
       if( !quest )
       {
-         send_to_char( "There is no quest currently running.\n\r", ch );
+         send_to_char( "There is no quest currently running.\r\n", ch );
          if( auto_quest )
-            send_to_char( "Quests are currently running automatically.\n\r", ch );
+            send_to_char( "Quests are currently running automatically.\r\n", ch );
          if( quest_wait > 0 )
          {
-            snprintf( buf, MSL, "The next quest may occur in %d minutes.\n\r", quest_wait );
+            snprintf( buf, MSL, "The next quest may occur in %d minutes.\r\n", quest_wait );
             send_to_char( buf, ch );
          }
          return;
@@ -244,34 +244,34 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( auto_quest )
          send_to_char( "(Automatically)", ch );
 
-      send_to_char( "\n\rQuest Details:\n\r\n\r", ch );
+      send_to_char( "\r\nQuest Details:\r\n\r\n", ch );
       if( quest_mob )
       {
 
-         snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\n\r", NAME(quest_mob), quest_mob->in_room->vnum );
+         snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\r\n", NAME(quest_mob), quest_mob->in_room->vnum );
          send_to_char( buf, ch );
       }
       else
       {
-         send_to_char( "The questing mobile is dead!\n\r", ch );
+         send_to_char( "The questing mobile is dead!\r\n", ch );
       }
       if( quest_target )
       {
-         snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\n\r", NAME(quest_target), quest_target->in_room->vnum );
+         snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\r\n", NAME(quest_target), quest_target->in_room->vnum );
          send_to_char( buf, ch );
       }
       else
-         send_to_char( "The target mobile is dead!\n\r", ch );
+         send_to_char( "The target mobile is dead!\r\n", ch );
 
-      snprintf( buf, MSL, "Target Object is: %s.\n\r", quest_object->short_descr );
+      snprintf( buf, MSL, "Target Object is: %s.\r\n", quest_object->short_descr );
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "Quest Object is worth: %d QP, %d Prac, %s\n\r",
+      snprintf( buf, MSL, "Quest Object is worth: %d QP, %d Prac, %s\r\n",
                quest_object->value[0], quest_object->value[1], cost_to_money(quest_object->value[2]) );
       send_to_char( buf, ch );
 
 
-      snprintf( buf, MSL, "The Quest has been running for %d/15 minutes.\n\r", quest_timer );
+      snprintf( buf, MSL, "The Quest has been running for %d/15 minutes.\r\n", quest_timer );
       send_to_char( buf, ch );
 
       return;
@@ -300,14 +300,14 @@ void do_quest( CHAR_DATA * ch, char *argument )
        */
       if( quest )
       {
-         send_to_char( "There is already a quest running...\n\r", ch );
+         send_to_char( "There is already a quest running...\r\n", ch );
          return;
       }
 
       if( auto_quest )
       {
          auto_quest = FALSE;
-         send_to_char( "Automatic Quests now OFF.\n\r", ch );
+         send_to_char( "Automatic Quests now OFF.\r\n", ch );
       }
 
       /*
@@ -326,7 +326,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       quest_mob = get_quest_giver( a, b );
       if( quest_mob == NULL )
       {
-         send_to_char( "Failed to find a quest mob\n\r", ch );
+         send_to_char( "Failed to find a quest mob\r\n", ch );
          return;
       }
       b = UMIN( b, 110 );
@@ -335,13 +335,13 @@ void do_quest( CHAR_DATA * ch, char *argument )
       quest_target = get_quest_target( a, b );
       if( ( quest_target == NULL ) || ( quest_target == quest_mob ) )
       {
-         send_to_char( "Failed to find a quest target\n\r", ch );
+         send_to_char( "Failed to find a quest target\r\n", ch );
          return;
       }
       quest_object = load_quest_object( quest_target );
       if( quest_object == NULL )
       {
-         send_to_char( "An invalid quest object was encountered.  Check log files.\n\r", ch );
+         send_to_char( "An invalid quest object was encountered.  Check log files.\r\n", ch );
          quest = FALSE;
          return;
       }
@@ -366,7 +366,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_mob->long_descr_orig != NULL )
          free_string( quest_mob->long_descr_orig );
       quest_mob->long_descr_orig = str_dup( quest_mob->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\n\r", NAME(quest_mob), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\r\n", NAME(quest_mob), quest_object->short_descr );
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
@@ -378,7 +378,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_target->long_descr_orig != NULL )
          free_string( quest_target->long_descr_orig );
       quest_target->long_descr_orig = str_dup( quest_target->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\n\r", NAME(quest_target), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\r\n", NAME(quest_target), quest_object->short_descr );
       if( quest_target->long_descr != NULL )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
@@ -387,18 +387,18 @@ void do_quest( CHAR_DATA * ch, char *argument )
       quest_target->act.set(ACT_NO_VISIT );
       quest_target->act.set(ACT_NO_BLOOD );
 
-      send_to_char( "QUEST STARTED!\n\r\n\r", ch );
+      send_to_char( "QUEST STARTED!\r\n\r\n", ch );
 
-      snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\n\r", NAME(quest_mob), quest_mob->in_room->vnum );
+      snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\r\n", NAME(quest_mob), quest_mob->in_room->vnum );
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\n\r", NAME(quest_target), quest_target->in_room->vnum );
+      snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\r\n", NAME(quest_target), quest_target->in_room->vnum );
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "Target Object is: %s.\n\r", quest_object->short_descr );
+      snprintf( buf, MSL, "Target Object is: %s.\r\n", quest_object->short_descr );
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "Quest Object is worth: %d QP, %d Prac, %d GP\n\r",
+      snprintf( buf, MSL, "Quest Object is worth: %d QP, %d Prac, %d GP\r\n",
                quest_object->value[0], quest_object->value[1], quest_object->value[2] );
       send_to_char( buf, ch );
 
@@ -406,7 +406,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
    }
    if( !str_cmp( argument, "auto" ) )
    {
-      send_to_char( "AutoQuest now initiated!\n\r", ch );
+      send_to_char( "AutoQuest now initiated!\r\n", ch );
       auto_quest = TRUE;
       return;
    }
@@ -770,7 +770,7 @@ void generate_auto_quest(  )
       if( quest_mob->long_descr_orig != NULL )
          free_string( quest_mob->long_descr_orig );
       quest_mob->long_descr_orig = str_dup( quest_mob->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\n\r", NAME(quest_mob), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\r\n", NAME(quest_mob), quest_object->short_descr );
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
@@ -783,7 +783,7 @@ void generate_auto_quest(  )
       if( quest_target->long_descr_orig != NULL )
          free_string( quest_target->long_descr_orig );
       quest_target->long_descr_orig = str_dup( quest_target->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\n\r", NAME(quest_target), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\r\n", NAME(quest_target), quest_object->short_descr );
       if( quest_target->long_descr != NULL )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
@@ -804,29 +804,29 @@ void crusade_reward( CHAR_DATA *ch )
  ch->pcdata->records->crusade++;
 
  reward = number_range((get_psuedo_level(ch)/15),(get_psuedo_level(ch)/20));
- snprintf( buf, MSL, "You receive %d quest points!\n\r", reward );
+ snprintf( buf, MSL, "You receive %d quest points!\r\n", reward );
  send_to_char( buf, ch );
  ch->pcdata->quest_points += reward;
  ch->pcdata->records->qp_tot += reward;
  if( ch->pcdata->quest_points > ch->pcdata->records->qp )
  {
-  send_to_char("@@yYou've broken your quest point record!@@N\n\r",ch);
+  send_to_char("@@yYou've broken your quest point record!@@N\r\n",ch);
   ch->pcdata->records->qp = ch->pcdata->quest_points;
  }
 
  reward = number_range((get_psuedo_level(ch)/5),(get_psuedo_level(ch)/20));
- snprintf( buf, MSL, "You receive %s!\n\r", cost_to_money( reward ) );
+ snprintf( buf, MSL, "You receive %s!\r\n", cost_to_money( reward ) );
  send_to_char( buf, ch );
  join_money( round_money( reward, TRUE ), ch->money );
 
  reward = number_range((get_psuedo_level(ch)/20),(get_psuedo_level(ch)/10));
- snprintf( buf, MSL, "You receive %d practices!\n\r", reward );
+ snprintf( buf, MSL, "You receive %d practices!\r\n", reward );
  send_to_char( buf, ch );
  ch->practice += reward;
 
  reward = (exp_mob_base(get_psuedo_level(ch)) * sysdata.killperlev);
  reward = number_range((int)(reward * 0.03),(int)(reward * 0.06));
- snprintf( buf, MSL, "You receive %d experience points!\n\r", reward );
+ snprintf( buf, MSL, "You receive %d experience points!\r\n", reward );
  send_to_char( buf, ch );
  ch->exp += reward;
 

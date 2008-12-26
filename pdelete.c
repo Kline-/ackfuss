@@ -89,19 +89,19 @@ void do_sdelete( CHAR_DATA * ch, char *argument )
 
    if( ( ch->pcdata->pwd != '\0' ) && ( arg1[0] == '\0' ) )
    {
-      send_to_char( "Syntax: pdelete <password>.\n\r", ch );
+      send_to_char( "Syntax: pdelete <password>.\r\n", ch );
       return;
    }
    if( ( ch->pcdata->pwd != '\0' ) && ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) ) )
    {
       WAIT_STATE( ch, 1000 );
-      send_to_char( "Wrong password.  Wait 10 seconds.\n\r", ch );
+      send_to_char( "Wrong password.  Wait 10 seconds.\r\n", ch );
       return;
    }
 
 
    unlink( strsave );
-   send_to_char( "Character deleted.\n\r", ch );
+   send_to_char( "Character deleted.\r\n", ch );
 
    d = ch->desc;
    extract_char( ch, TRUE );

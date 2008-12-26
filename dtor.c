@@ -109,7 +109,7 @@ char_data::~char_data()
     rch->searching = str_dup(name);
    }
    else if( !IS_NPC(rch) )
-    send_to_char("@@RYou seem to have lost your prey.\n\r",rch);
+    send_to_char("@@RYou seem to have lost your prey.\r\n",rch);
    end_hunt(rch);
   }
   if( rch->hunt_for == this )

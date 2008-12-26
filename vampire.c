@@ -91,7 +91,7 @@ bool spell_blood_leach( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
     */
    if( !IS_VAMP( ch ) )
    {
-      send_to_char( "Only vampires are evil enough to use this spell!\n\r", ch );
+      send_to_char( "Only vampires are evil enough to use this spell!\r\n", ch );
       return FALSE;
    }
 
@@ -99,7 +99,7 @@ bool spell_blood_leach( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       for( paf = check->first_affect; paf != NULL; paf = paf->next )
          if( paf->type == sn && paf->caster == ch )
          {
-            send_to_char( "You are already maintaining a blood leach on someone else!\n\r", ch );
+            send_to_char( "You are already maintaining a blood leach on someone else!\r\n", ch );
             return FALSE;
          }
 
@@ -109,8 +109,8 @@ bool spell_blood_leach( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 
    if( saves_spell( level, victim ) || IS_VAMP( victim ) || is_affected( victim, sn ) )
    {
-      send_to_char( "The blood leach misses you, and vanishes!\n\r", victim );
-      send_to_char( "The blood leach misses, and vanishes!\n\r", ch );
+      send_to_char( "The blood leach misses you, and vanishes!\r\n", victim );
+      send_to_char( "The blood leach misses, and vanishes!\r\n", ch );
       act( "The blood leach misses $N, and vanishes!", ch, NULL, victim, TO_NOTVICT );
       return TRUE;
    }
@@ -125,7 +125,7 @@ bool spell_blood_leach( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    affect_to_char( victim, &af );
 
    act( "The blood leach hits $N and burrows into $S skin!", ch, NULL, victim, TO_ROOM );
-   send_to_char( "The blood leach hits you, and burrows into your skin!\n\r", victim );
+   send_to_char( "The blood leach hits you, and burrows into your skin!\r\n", victim );
    return TRUE;
 }
 
@@ -141,18 +141,18 @@ bool spell_shade( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 
    if( IS_SET( room->affected_by, ROOM_BV_SHADE ) )
    {
-      send_to_char( "There is already a shade spell operating here!\n\r", ch );
+      send_to_char( "There is already a shade spell operating here!\r\n", ch );
       return FALSE;
    }
 
    if( !IS_OUTSIDE( ch ) )
    {
-      send_to_char( "It might help if you tried this outside...\n\r", ch );
+      send_to_char( "It might help if you tried this outside...\r\n", ch );
       return FALSE;
    }
 
    act( "$n throws a dark shadow into the air.", ch, NULL, NULL, TO_ROOM );
-   send_to_char( "You throw a dark shadow into the air.\n\r", ch );
+   send_to_char( "You throw a dark shadow into the air.\r\n", ch );
 
    raf.type = sn;
    raf.duration = ( level / 8 ) + number_range( 1, 3 );
@@ -170,24 +170,24 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
 
    if( !IS_VAMP( ch ) )
    {
-      send_to_char( "Better leave that to the REAL Vampyres, you wanna be!!!\n\r", ch );
+      send_to_char( "Better leave that to the REAL Vampyres, you wanna be!!!\r\n", ch );
       return FALSE;
    }
    if( ch->pcdata->super->bloodline == 0 )
    {
-      send_to_char( "@@dRENEGADES@@n can't embrace!!!\n\r", ch );
+      send_to_char( "@@dRENEGADES@@n can't embrace!!!\r\n", ch );
       return FALSE;
    }
 
    if( IS_VAMP( victim ) )
    {
-      send_to_char( "@@NYour @@dchosen@@N has already been @@eEmbraced@@N!!!.\n\r", ch );
+      send_to_char( "@@NYour @@dchosen@@N has already been @@eEmbraced@@N!!!.\r\n", ch );
       return FALSE;
    }
 
    if( IS_WOLF( victim ) )
    {
-      send_to_char( "A sudden awareness comes over you, as you peer into their soul and see a @@bGarou@@N!!!\n\r", ch );
+      send_to_char( "A sudden awareness comes over you, as you peer into their soul and see a @@bGarou@@N!!!\r\n", ch );
       if( !IS_AWAKE( victim ) )
          do_wake( victim, "" );
       if( victim->position < POS_STANDING )
@@ -200,13 +200,13 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
 
    if( IS_NPC( victim ) )
    {
-      send_to_char( "Fergit it bub!!\n\r", ch );
+      send_to_char( "Fergit it bub!!\r\n", ch );
       return FALSE;
    }
 
 /*    if ( victim->pcdata->clan == 7 )
      {
-       send_to_char( "@@mNO WAY!!!!!@@W They are @@dKindred @@eKillers!!!!!@@N\n\r", ch );
+       send_to_char( "@@mNO WAY!!!!!@@W They are @@dKindred @@eKillers!!!!!@@N\r\n", ch );
        return FALSE;
      }
 */
@@ -244,24 +244,24 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
       victim->pcdata->recall_vnum = 9001;
 
 
-      send_to_char( "@@NYou sink your fangs into your helpless victim.\n\r", ch );
-      send_to_char( "Then, in the final death throes, you bite your own arm and allow the @@eblood@@N\n\r", ch );
-      send_to_char( "to drip into their mouth, damning them to @@dETERNAL NIGHT@@N!!!\n\r", ch );
-      send_to_char( "you feel some of your essential @@eblood@@N potential drain into your victim!\n\r", ch );
-      send_to_char( "@@NYou feel your soul ripped asunder as the Vampyre draws your lifeblood into it's mouth!!\n\r",
+      send_to_char( "@@NYou sink your fangs into your helpless victim.\r\n", ch );
+      send_to_char( "Then, in the final death throes, you bite your own arm and allow the @@eblood@@N\r\n", ch );
+      send_to_char( "to drip into their mouth, damning them to @@dETERNAL NIGHT@@N!!!\r\n", ch );
+      send_to_char( "you feel some of your essential @@eblood@@N potential drain into your victim!\r\n", ch );
+      send_to_char( "@@NYou feel your soul ripped asunder as the Vampyre draws your lifeblood into it's mouth!!\r\n",
                     victim );
-      send_to_char( "As your last breath escapes you, and you begin to submit to death itself, you suddenly feel\n\r",
+      send_to_char( "As your last breath escapes you, and you begin to submit to death itself, you suddenly feel\r\n",
                     victim );
       send_to_char
-         ( "a hot, coppery tasting fluid enter your mouth.  As the strength of the @@dKindred@@N begins to fill\n\r",
+         ( "a hot, coppery tasting fluid enter your mouth.  As the strength of the @@dKindred@@N begins to fill\r\n",
            victim );
-      send_to_char( "your veins, your mind is flooded with the sudden knowledge of damnation and @@dEternal Night@@N!!!\n\r",
+      send_to_char( "your veins, your mind is flooded with the sudden knowledge of damnation and @@dEternal Night@@N!!!\r\n",
                     victim );
-      send_to_char( "Awakening to a new knowledge of your status as a @@eChosen@@N, you know that upon your\n\r", victim );
-      send_to_char( "first taste of mortal @@eblood@@N, you shall forever enter the ranks of the @@dKindred@@N!!\n\r",
+      send_to_char( "Awakening to a new knowledge of your status as a @@eChosen@@N, you know that upon your\r\n", victim );
+      send_to_char( "first taste of mortal @@eblood@@N, you shall forever enter the ranks of the @@dKindred@@N!!\r\n",
                     victim );
-      send_to_char( "A choice awaits you....shall you accept this destiny and feed upon mortals, or shall you\n\r", victim );
-      send_to_char( "seek @@Wcleansing@@N from this @@dEternal Damnation@@N???\n\r", victim );
+      send_to_char( "A choice awaits you....shall you accept this destiny and feed upon mortals, or shall you\r\n", victim );
+      send_to_char( "seek @@Wcleansing@@N from this @@dEternal Damnation@@N???\r\n", victim );
 
       victim->pcdata->learned[skill_lookup( "feed" )] = 90;
    }
@@ -285,7 +285,7 @@ void do_family( CHAR_DATA * ch, char *argument )
    if( ch->level < 85 )
       if( !IS_VAMP( ch ) )
       {
-         send_to_char( "Huh?\n\r", ch );
+         send_to_char( "Huh?\r\n", ch );
          return;
       }
    if( get_trust( ch ) == 85 )
@@ -295,19 +295,19 @@ void do_family( CHAR_DATA * ch, char *argument )
          switch ( index )
          {
             case 0:
-               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\r\n@@WNOT SET@@N\r\n" );
                break;
             case 1:
-               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\r\n@@WNOT SET@@N\r\n" );
                break;
             case 2:
-               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\r\n@@WNOT SET@@N\r\n" );
                break;
             case 3:
-               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\r\n@@WNOT SET@@N\r\n" );
                break;
             case 4:
-               snprintf( buf, MSL, "\n\r@@WNOT SET@@N\n\r" );
+               snprintf( buf, MSL, "\r\n@@WNOT SET@@N\r\n" );
                break;
          }
 
@@ -327,7 +327,7 @@ void do_family( CHAR_DATA * ch, char *argument )
 
 
 
-               snprintf( buf, MSL, "%-15s @@NGen: @@r%d   @@NRank: @@d%d@@N  @@NBloodlust: @@e%d@@N/@@e%d@@N   %-15s\n\r",
+               snprintf( buf, MSL, "%-15s @@NGen: @@r%d   @@NRank: @@d%d@@N  @@NBloodlust: @@e%d@@N/@@e%d@@N   %-15s\r\n",
                         victim->name, victim->pcdata->super->generation, victim->pcdata->super->level, victim->pcdata->super->energy,
                         victim->pcdata->super->energy_max, victim->in_room->name );
                send_to_char( buf, ch );
@@ -335,14 +335,14 @@ void do_family( CHAR_DATA * ch, char *argument )
          }
 
          if( !found )
-            send_to_char( "@@NNo @@dKindred@@N Family members were found.\n\r", ch );
+            send_to_char( "@@NNo @@dKindred@@N Family members were found.\r\n", ch );
 
       }
    }
    else
    {
 
-      snprintf( buf, MSL, "@@WMembers of the @@dKindred @@NFamily %s\n\r", get_family_name( ch ) );
+      snprintf( buf, MSL, "@@WMembers of the @@dKindred @@NFamily %s\r\n", get_family_name( ch ) );
       send_to_char( buf, ch );
       found = FALSE;
       for( d = first_desc; d != NULL; d = d->next )
@@ -355,14 +355,14 @@ void do_family( CHAR_DATA * ch, char *argument )
                continue;
 
             found = TRUE;
-            snprintf( buf, MSL, "%-15s @@NGeneration: @@r%d     @@NRank: @@d%d@@N\n\r",
+            snprintf( buf, MSL, "%-15s @@NGeneration: @@r%d     @@NRank: @@d%d@@N\r\n",
                      victim->name, victim->pcdata->super->generation, victim->pcdata->super->level );
             send_to_char( buf, ch );
          }
       }
 
       if( !found )
-         send_to_char( "@@NNo other @@dKindred @@N Family members were found.\n\r", ch );
+         send_to_char( "@@NNo other @@dKindred @@N Family members were found.\r\n", ch );
 
    }
    return;
@@ -378,7 +378,7 @@ void do_instruct( CHAR_DATA * ch, char *argument )
 
    if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_instruct] == 0 )
    {
-      send_to_char( "You are not trained in this skill!\n\r", ch );
+      send_to_char( "You are not trained in this skill!\r\n", ch );
       return;
    }
 
@@ -387,19 +387,19 @@ void do_instruct( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "Instruct who?\n\r", ch );
+      send_to_char( "Instruct who?\r\n", ch );
       return;
    }
 
    victim = get_char_room( ch, arg );
    if( victim == NULL )
    {
-      send_to_char( "Couldn't find the target.\n\r", ch );
+      send_to_char( "Couldn't find the target.\r\n", ch );
       return;
    }
    if( victim == ch )
    {
-      send_to_char( "Oh yeah, that would help a lot!\n\r", ch );
+      send_to_char( "Oh yeah, that would help a lot!\r\n", ch );
       return;
    }
 
@@ -416,7 +416,7 @@ void do_instruct( CHAR_DATA * ch, char *argument )
 
    if( ch->pcdata->super->bloodline != victim->pcdata->super->bloodline )
    {
-      send_to_char( "There not a member of your family!!\n\r", ch );
+      send_to_char( "There not a member of your family!!\r\n", ch );
       return;
    }
 
@@ -424,26 +424,26 @@ void do_instruct( CHAR_DATA * ch, char *argument )
    if( ch->pcdata->learned[sn] == 0 || skill_table[sn].flag2 != VAMP )
 
    {
-      send_to_char( "@@NYou don't know that @@dKindred@@N skill!.\n\r", ch );
+      send_to_char( "@@NYou don't know that @@dKindred@@N skill!.\r\n", ch );
       return;
    }
    if( victim->pcdata->learned[sn] != 0 )
    {
-      send_to_char( "They already know that skill.\n\r", ch );
+      send_to_char( "They already know that skill.\r\n", ch );
       return;
    }
 
    if( victim->pcdata->super->level < skill_table[sn].skill_level[victim->pcdata->super->bloodline] )
    {
-      send_to_char( "@@NThey are too inexperienced in the ways of the @@dKindred@@N to learn this skill.\n\r", ch );
-      send_to_char( "@@NYou are to inexperienced in the ways of the @@dKindred@@N to learn this skill.\n\r", victim );
+      send_to_char( "@@NThey are too inexperienced in the ways of the @@dKindred@@N to learn this skill.\r\n", ch );
+      send_to_char( "@@NYou are to inexperienced in the ways of the @@dKindred@@N to learn this skill.\r\n", victim );
       return;
    }
 
    if( victim->pcdata->super->skills_learned >= victim->pcdata->super->skills_max )
    {
-      send_to_char( "They seem unable to grasp the knowledge.\n\r", ch );
-      send_to_char( "@@NYou are unable to learn any more @@dKindred@@N knowledge at this time.\n\r", victim );
+      send_to_char( "They seem unable to grasp the knowledge.\r\n", ch );
+      send_to_char( "@@NYou are unable to learn any more @@dKindred@@N knowledge at this time.\r\n", victim );
       return;
    }
 
@@ -453,8 +453,8 @@ void do_instruct( CHAR_DATA * ch, char *argument )
    victim->pcdata->super->pracs -= 1;
    victim->pcdata->super->skills_learned += 1;
 
-   send_to_char( "You have taught them another way of the @@dKindred@@N!!!\n\r", ch );
-   snprintf( buf, MSL, "You are now learned in the way of @@e%s@@N!!!\n\r", skill_table[sn].name );
+   send_to_char( "You have taught them another way of the @@dKindred@@N!!!\r\n", ch );
+   snprintf( buf, MSL, "You are now learned in the way of @@e%s@@N!!!\r\n", skill_table[sn].name );
    send_to_char( buf, victim );
 
 
@@ -469,7 +469,7 @@ bool spell_mesmerise( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
     */
    if( !IS_VAMP( ch ) )
    {
-      send_to_char( "Only vampires are evil enough to use this spell!\n\r", ch );
+      send_to_char( "Only vampires are evil enough to use this spell!\r\n", ch );
       return FALSE;
    }
 
@@ -484,12 +484,12 @@ bool spell_mesmerise( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 
       return TRUE;
    }
-   send_to_char( " Spell removed for now.\n\r", ch );
+   send_to_char( " Spell removed for now.\r\n", ch );
    return FALSE;
    set_stun( victim, level / 1 );
 
    act( "$N seems to be mesmerized!", ch, NULL, victim, TO_ROOM );
-   send_to_char( "You are mesmerised!\n\r", victim );
+   send_to_char( "You are mesmerised!\r\n", victim );
    return TRUE;
 }
 
@@ -499,7 +499,7 @@ bool spell_cloak_darkness( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
    AFFECT_DATA af;
    if( IS_NPC( ch ) )
    {
-      send_to_char( "Not for NPCS!\n\r", ch );
+      send_to_char( "Not for NPCS!\r\n", ch );
       return FALSE;
    }
 
@@ -525,7 +525,7 @@ bool spell_blood_walk( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
    if( deathmatch )
    {
-      send_to_char( "Not during a @@eDeath Match@@N!!\n\r", ch );
+      send_to_char( "Not during a @@eDeath Match@@N!!\r\n", ch );
       return FALSE;
    }
    if( ( victim = get_char_world( ch, target_name ) ) == NULL
@@ -539,31 +539,31 @@ bool spell_blood_walk( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
        || victim->in_room->room_flags.test(RFLAG_NO_BLOODWALK)
        || ( ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) > 20 ) )
    {
-      send_to_char( "Your @@eblood@@N burns with rage, as your efforts are shaken off.\n\r", ch );
+      send_to_char( "Your @@eblood@@N burns with rage, as your efforts are shaken off.\r\n", ch );
       return TRUE;
    }
    if( ( time_info.hour < 19 ) && ( time_info.hour > 5 ) )
    {
-      send_to_char( "@@NYou may only @@eblood walk@@N at night!!\n\r", ch );
+      send_to_char( "@@NYou may only @@eblood walk@@N at night!!\r\n", ch );
       return FALSE;
    }
 
 
    if( victim->act.test(ACT_NO_VISIT) )
    {
-      send_to_char( "You cannot sense your target's @@eblood@@N!\n\r", ch );
+      send_to_char( "You cannot sense your target's @@eblood@@N!\r\n", ch );
       return TRUE;
    }
 
    if( victim->in_room->room_flags.test(RFLAG_NO_BLOODWALK) )
    {
-      send_to_char( "You cannot sense your target's @@eblood@@N!\n\r", ch );
+      send_to_char( "You cannot sense your target's @@eblood@@N!\r\n", ch );
       return FALSE;
    }
 
    if( victim->act.test(ACT_NO_BLOOD) )
    {
-      send_to_char( "You cannot sense your target's @@eblood@@N!\n\r", ch );
+      send_to_char( "You cannot sense your target's @@eblood@@N!\r\n", ch );
       return FALSE;
    }
 
@@ -571,7 +571,7 @@ bool spell_blood_walk( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    char_from_room( ch );
    char_to_room( ch, victim->in_room );
    act( "$n steps forth from the shadows.", ch, NULL, NULL, TO_ROOM );
-   send_to_char( "@@NYou feel yourself drawn to the @@eblood@@N within your victim!\n\r", ch );
+   send_to_char( "@@NYou feel yourself drawn to the @@eblood@@N within your victim!\r\n", ch );
    do_look( ch, "auto" );
    return TRUE;
 }
@@ -625,13 +625,13 @@ bool spell_blood_sense( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 
    if( IS_NPC( ch ) || ( !IS_VAMP( ch ) ) )
    {
-      send_to_char( "Huh?\n\r", ch );
+      send_to_char( "Huh?\r\n", ch );
       return FALSE;
    }
 
    if( ch->in_room->first_mark_list == NULL )
    {
-      send_to_char( "You do not sense any @@eBloodSign@@N here.\n\r", ch );
+      send_to_char( "You do not sense any @@eBloodSign@@N here.\r\n", ch );
       return FALSE;
    }
 
@@ -641,7 +641,7 @@ bool spell_blood_sense( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       if( mark_list->mark->type != VAMP )
          continue;
 
-      snprintf( buf, MSL, "%s : %s\n\r", mark_list->mark->author, mark_list->mark->message );
+      snprintf( buf, MSL, "%s : %s\r\n", mark_list->mark->author, mark_list->mark->message );
       send_to_char( buf, ch );
    }
    return TRUE;

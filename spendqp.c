@@ -196,18 +196,18 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) )
    {
-      send_to_char( "Not for NPC's.\n\r", ch );
+      send_to_char( "Not for NPC's.\r\n", ch );
       return;
    }
 
    if( arg1[0] == '\0' )
    {
-      send_to_char( "Syntax: qpspend enter | exit | assist <message> \n\r", ch );
-      send_to_char( "or:     qpspend show | buy | clear | recall | home | corpse | rescue\n\r", ch );
-      send_to_char( "or:     qpspend set name |short | long <message>\n\r", ch );
-      send_to_char( "To set your enter or exit message, for example, type:\n\r", ch );
-      send_to_char( "qpspend enter waddles in from\n\r", ch );
-      send_to_char( "qpspend show to see a test, then qpspend buy\n\r", ch );
+      send_to_char( "Syntax: qpspend enter | exit | assist <message> \r\n", ch );
+      send_to_char( "or:     qpspend show | buy | clear | recall | home | corpse | rescue\r\n", ch );
+      send_to_char( "or:     qpspend set name |short | long <message>\r\n", ch );
+      send_to_char( "To set your enter or exit message, for example, type:\r\n", ch );
+      send_to_char( "qpspend enter waddles in from\r\n", ch );
+      send_to_char( "qpspend show to see a test, then qpspend buy\r\n", ch );
       return;
    }
 
@@ -252,7 +252,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
       free_string( ch->pcdata->pedit_string[0] );
       if( !is_name( "*name*", argument ) )
       {
-         send_to_char( "You must include *name* by itself somewhere in your assist message!\n\r", ch );
+         send_to_char( "You must include *name* by itself somewhere in your assist message!\r\n", ch );
          ch->pcdata->pedit_string[0] = str_dup( "none" );
          return;
       }
@@ -298,13 +298,13 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), test_string );
          act( move_buf, ch, NULL, dir_name[1], TO_CHAR );
 
-         snprintf( buf, MSL, "Purchase cost is %d qps.\n\r", qp_cost );
+         snprintf( buf, MSL, "Purchase cost is %d qps.\r\n", qp_cost );
          send_to_char( buf, ch );
          return;
       }
       else if( !str_cmp( ch->pcdata->pedit_state, "assist" ) )
       {
-         snprintf( buf, MSL, "Current message:\n\r  %s\n\r",
+         snprintf( buf, MSL, "Current message:\r\n  %s\r\n",
                   ( !str_cmp( ch->pcdata->pedit_string[0], "none" ) ?
                     ch->pcdata->assist_msg : ch->pcdata->pedit_string[0] ) );
          send_to_char( buf, ch );
@@ -326,7 +326,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             qp_cost++;
          if( ch->pcdata->quest_points < qp_cost )
          {
-            send_to_char( "You don't have enough quest points!\n\r", ch );
+            send_to_char( "You don't have enough quest points!\r\n", ch );
             for( i = 0; i < 5; i++ )
             {
                if( str_cmp( ch->pcdata->pedit_string[i], "none" ) )
@@ -339,7 +339,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          }
          else if( qp_cost == 0 )
          {
-            send_to_char( "No changes.\n\r", ch );
+            send_to_char( "No changes.\r\n", ch );
             return;
          }
          else
@@ -350,7 +350,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                ch->pcdata->room_enter = str_dup( ch->pcdata->pedit_string[0] );
                free_string( ch->pcdata->pedit_string[0] );
                ch->pcdata->pedit_string[0] = str_dup( "none" );
-               snprintf( catbuf, MSL, "Enter message changed to %s\n\r", ch->pcdata->room_enter );
+               snprintf( catbuf, MSL, "Enter message changed to %s\r\n", ch->pcdata->room_enter );
                strncat( brandbuf, catbuf, MSL );
             }
             if( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
@@ -359,7 +359,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                ch->pcdata->room_exit = str_dup( ch->pcdata->pedit_string[1] );
                free_string( ch->pcdata->pedit_string[1] );
                ch->pcdata->pedit_string[1] = str_dup( "none" );
-               snprintf( catbuf, MSL, "Exit message changed to %s\n\r", ch->pcdata->room_exit );
+               snprintf( catbuf, MSL, "Exit message changed to %s\r\n", ch->pcdata->room_exit );
                strncat( brandbuf, catbuf, MSL );
             }
             free_string( ch->pcdata->pedit_string[0] );
@@ -388,7 +388,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                brand_member->this_one = brand;
                LINK( brand_member, first_brand, last_brand, next, prev );
                save_brands(  );
-               send_to_char( "Your messages have been updated, and logged for inspection by an Immortal.\n\r", ch );
+               send_to_char( "Your messages have been updated, and logged for inspection by an Immortal.\r\n", ch );
             }
             return;
          }
@@ -401,7 +401,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          assistbuf[0] = '\0';
          if( ch->pcdata->quest_points < 3 )
          {
-            send_to_char( "You do not have enough quest points!\n\r", ch );
+            send_to_char( "You do not have enough quest points!\r\n", ch );
             for( i = 0; i < 5; i++ )
             {
                if( str_cmp( ch->pcdata->pedit_string[i], "none" ) )
@@ -442,7 +442,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          }
          free_string( ch->pcdata->pedit_state );
          ch->pcdata->pedit_state = str_dup( "none" );
-         send_to_char( "Done!\n\r", ch );
+         send_to_char( "Done!\r\n", ch );
          ch->pcdata->quest_points -= 3;
          do_save( ch, "auto" );
          {
@@ -453,7 +453,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             brand->branded = str_dup( ch->name );
             brand->branded_by = str_dup( "@@rSystem@@N" );
             brand->priority = str_dup( "normal" );
-            snprintf( brandbuf, MSL, "Assist message changed to %s\n\r", ch->pcdata->assist_msg );
+            snprintf( brandbuf, MSL, "Assist message changed to %s\r\n", ch->pcdata->assist_msg );
             brand->message = str_dup( brandbuf );
             strtime = ctime( &current_time );
             strtime[strlen( strtime ) - 1] = '\0';
@@ -463,7 +463,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             brand_member->this_one = brand;
             LINK( brand_member, first_brand, last_brand, next, prev );
             save_brands(  );
-            send_to_char( "Your messages have been updated, and logged for inspection by an Immortal.\n\r", ch );
+            send_to_char( "Your messages have been updated, and logged for inspection by an Immortal.\r\n", ch );
          }
          return;
       }
@@ -473,13 +473,13 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
    {
       if( ch->in_room->vnum == ROOM_VNUM_JAIL )
       {
-         send_to_char( "No one can rescue you from here.\n\r", ch );
+         send_to_char( "No one can rescue you from here.\r\n", ch );
          return;
       }
 
       if( ch->pcdata->quest_points < 10 )
       {
-         send_to_char( "You don't have enough quest points. Cost is 10 qp.\n\r", ch );
+         send_to_char( "You don't have enough quest points. Cost is 10 qp.\r\n", ch );
          return;
       }
       else
@@ -502,19 +502,19 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
    {
       if( ch->pcdata->quest_points < 50 )
       {
-         send_to_char( "You don't have enough quest points. Cost is 50 qp.\n\r", ch );
+         send_to_char( "You don't have enough quest points. Cost is 50 qp.\r\n", ch );
          return;
       }
       else
       {
          if( ch->in_room->sector_type != SECT_RECALL_OK )
          {
-            send_to_char( "This is not a legal location to call your home.\n\r", ch );
+            send_to_char( "This is not a legal location to call your home.\r\n", ch );
             return;
          }
          else if( ( ch->in_room == NULL ) || ( ch->in_room->vnum < 3 ) )
          {
-            send_to_char( "You are LOST!\n\r", ch );
+            send_to_char( "You are LOST!\r\n", ch );
             return;
          }
          else
@@ -523,7 +523,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             ch->pcdata->recall_vnum = ch->in_room->vnum;
             ch->pcdata->quest_points -= 50;
             do_save( ch, "auto" );
-            send_to_char( "You know call this room your home, and will recall here!\n\r", ch );
+            send_to_char( "You know call this room your home, and will recall here!\r\n", ch );
             return;
          }
       }
@@ -533,12 +533,12 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
    {
       if( ch->pcdata->quest_points < 10 )
       {
-         send_to_char( "You don't have enough quest points. Cost is 10 qp.\n\r", ch );
+         send_to_char( "You don't have enough quest points. Cost is 10 qp.\r\n", ch );
          return;
       }
       else if( ( ch->in_room == NULL ) || ( ch->in_room->vnum < 3 ) )
       {
-         send_to_char( "You are completly LOST!!\n\r", ch );
+         send_to_char( "You are completly LOST!!\r\n", ch );
          return;
       }
       else
@@ -575,7 +575,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
    {
       if( !is_name( arg2, "unique rename" ) )
       {
-         send_to_char( "That is not a currently implemented editing state.\n\r", ch );
+         send_to_char( "That is not a currently implemented editing state.\r\n", ch );
          return;
       }
       free_string( ch->pcdata->pedit_state );
@@ -627,19 +627,19 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       for( brand_list = first_brand; brand_list; brand_list = brand_list->next )
       {
          brand = (BRAND_DATA *)brand_list->this_one;
-         snprintf( buf, MSL, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
+         snprintf( buf, MSL, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\r\n",
                   vnum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
          strncat( buf1, buf, MSL );
          vnum++;
          if( vnum > 100 )
          {
-            strncat( buf1, "---More Follow---\n\r", MSL );
+            strncat( buf1, "---More Follow---\r\n", MSL );
             break;
          }
       }
 
       if( vnum == 0 )
-         send_to_char( "There are no outstanding brands.\n\r", ch );
+         send_to_char( "There are no outstanding brands.\r\n", ch );
       else
       {
          /*
@@ -658,7 +658,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       }
       else
       {
-         send_to_char( "Read which brand?\n\r", ch );
+         send_to_char( "Read which brand?\r\n", ch );
          return;
       }
 
@@ -669,7 +669,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
          if( vnum++ == anum )
          {
             brand = (BRAND_DATA *)brand_list->this_one;
-            snprintf( buf, MSL, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\n\r",
+            snprintf( buf, MSL, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\r\n",
                      anum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
             strncat( buf1, buf, MSL );
             strncat( buf1, brand->message, MSL );
@@ -678,7 +678,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
          }
          else
             continue;
-         send_to_char( "No such brand.\n\r", ch );
+         send_to_char( "No such brand.\r\n", ch );
          return;
       }
    }
@@ -701,7 +701,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
       free_string( ch->current_brand->branded );
       ch->current_brand->branded = str_dup( argument );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       return;
    }
 
@@ -712,7 +712,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
       free_string( ch->current_brand->priority );
       ch->current_brand->priority = str_dup( argument );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       return;
    }
 
@@ -724,7 +724,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
          ch->current_brand = NULL;
       }
       save_brands(  );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       return;
    }
 
@@ -732,11 +732,11 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
    {
       if( !ch->current_brand )
       {
-         send_to_char( "You have no brand in progress.\n\r", ch );
+         send_to_char( "You have no brand in progress.\r\n", ch );
          return;
       }
       buf1[0] = '\0';
-      snprintf( buf, MSL, "[%3d] %s: Brander: %s  Date: %s Priority: %s\n\r",
+      snprintf( buf, MSL, "[%3d] %s: Brander: %s  Date: %s Priority: %s\r\n",
                vnum,
                ch->current_brand->branded,
                ch->current_brand->branded_by, ch->current_brand->dt_stamp, ch->current_brand->priority );
@@ -753,19 +753,19 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
       if( !ch->current_brand )
       {
-         send_to_char( "You have no brand in progress.\n\r", ch );
+         send_to_char( "You have no brand in progress.\r\n", ch );
          return;
       }
 
       if( !str_cmp( ch->current_brand->branded, "" ) )
       {
-         send_to_char( "You need to provide a player name .\n\r", ch );
+         send_to_char( "You need to provide a player name .\r\n", ch );
          return;
       }
 
       if( !str_cmp( ch->current_brand->message, "" ) )
       {
-         send_to_char( "You need to provide a message.\n\r", ch );
+         send_to_char( "You need to provide a message.\r\n", ch );
          return;
       }
 
@@ -782,7 +782,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       LINK( this_brand, first_brand, last_brand, next, prev );
       ch->current_brand = NULL;
       save_brands(  );
-      send_to_char( "Ok.\n\r", ch );
+      send_to_char( "Ok.\r\n", ch );
       return;
    }
 
@@ -790,7 +790,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
    {
       if( !is_number( argument ) )
       {
-         send_to_char( "Remove which letter number?\n\r", ch );
+         send_to_char( "Remove which letter number?\r\n", ch );
          return;
       }
 
@@ -814,11 +814,11 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      send_to_char( "No such brand.\n\r", ch );
+      send_to_char( "No such brand.\r\n", ch );
       return;
    }
 
-   send_to_char( "Huh?  Type 'help letter' for usage.\n\r", ch );
+   send_to_char( "Huh?  Type 'help letter' for usage.\r\n", ch );
    return;
 }
 
@@ -838,28 +838,28 @@ void do_statraise(CHAR_DATA *ch, char *argument)
 
  if( argument[0] == '\0' ) /* No arg supplied, show the syntax */
  {
-  send_to_char("Syntax is: statraise <str/int/wis/dex/con>\n\r",ch);
+  send_to_char("Syntax is: statraise <str/int/wis/dex/con>\r\n",ch);
   return;
  }
  if( !str_prefix(argument,"str") ) /* Matches on 's', 'st', 'str' */
  {
   if( ch->pcdata->max_str >= statcap )
   {
-   snprintf(buf,MSL,"You can not raise your Str any further. The limit is %d.\n\r",statcap);
+   snprintf(buf,MSL,"You can not raise your Str any further. The limit is %d.\r\n",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_str; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   snprintf(buf,MSL,"It costs %d QP to raise your Str, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   snprintf(buf,MSL,"It costs %d QP to raise your Str, but you only have %d.\r\n",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_str++; /* Raise the actual cap */
   ch->pcdata->perm_str++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  snprintf(buf,MSL,"You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_str,ch->pcdata->quest_points);
+  snprintf(buf,MSL,"You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\r\n",cost,ch->pcdata->max_str,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
@@ -867,21 +867,21 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_int >= statcap )
   {
-   snprintf(buf,MSL,"You can not raise your Int any further. The limit is %d.\n\r",statcap);
+   snprintf(buf,MSL,"You can not raise your Int any further. The limit is %d.\r\n",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_int; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   snprintf(buf,MSL,"It costs %d QP to raise your Int, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   snprintf(buf,MSL,"It costs %d QP to raise your Int, but you only have %d.\r\n",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_int++; /* Raise the actual cap */
   ch->pcdata->perm_int++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  snprintf(buf,MSL,"You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_int,ch->pcdata->quest_points);
+  snprintf(buf,MSL,"You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\r\n",cost,ch->pcdata->max_int,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
@@ -889,21 +889,21 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_wis >= statcap )
   {
-   snprintf(buf,MSL,"You can not raise your Wis any further. The limit is %d.\n\r",statcap);
+   snprintf(buf,MSL,"You can not raise your Wis any further. The limit is %d.\r\n",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_wis; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   snprintf(buf,MSL,"It costs %d QP to raise your Wis, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   snprintf(buf,MSL,"It costs %d QP to raise your Wis, but you only have %d.\r\n",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_wis++; /* Raise the actual cap */
   ch->pcdata->perm_wis++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  snprintf(buf,MSL,"You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_wis,ch->pcdata->quest_points);
+  snprintf(buf,MSL,"You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\r\n",cost,ch->pcdata->max_wis,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
@@ -911,21 +911,21 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_dex >= statcap )
   {
-   snprintf(buf,MSL,"You can not raise your Dex any further. The limit is %d.\n\r",statcap);
+   snprintf(buf,MSL,"You can not raise your Dex any further. The limit is %d.\r\n",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_dex; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   snprintf(buf,MSL,"It costs %d QP to raise your Dex, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   snprintf(buf,MSL,"It costs %d QP to raise your Dex, but you only have %d.\r\n",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_dex++; /* Raise the actual cap */
   ch->pcdata->perm_dex++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  snprintf(buf,MSL,"You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_dex,ch->pcdata->quest_points);
+  snprintf(buf,MSL,"You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\r\n",cost,ch->pcdata->max_dex,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
@@ -933,27 +933,27 @@ void do_statraise(CHAR_DATA *ch, char *argument)
  {
   if( ch->pcdata->max_con >= statcap )
   {
-   snprintf(buf,MSL,"You can not raise your Con any further. The limit is %d.\n\r",statcap);
+   snprintf(buf,MSL,"You can not raise your Con any further. The limit is %d.\r\n",statcap);
    send_to_char(buf,ch);
    return;
   }
   cost *= ch->pcdata->max_con; /* Take base cost (5) mult by current value */
   if( ch->pcdata->quest_points < cost )
   {
-   snprintf(buf,MSL,"It costs %d QP to raise your Con, but you only have %d.\n\r",cost,ch->pcdata->quest_points);
+   snprintf(buf,MSL,"It costs %d QP to raise your Con, but you only have %d.\r\n",cost,ch->pcdata->quest_points);
    send_to_char(buf,ch);
    return;
   }
   ch->pcdata->max_con++; /* Raise the actual cap */
   ch->pcdata->perm_con++; /* Give them a free stat train */
   ch->pcdata->quest_points -= cost;
-  snprintf(buf,MSL,"You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\n\r",cost,ch->pcdata->max_con,ch->pcdata->quest_points);
+  snprintf(buf,MSL,"You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\r\n",cost,ch->pcdata->max_con,ch->pcdata->quest_points);
   send_to_char(buf,ch);
   return;
  }
  else /* Invalid argument, display syntax */
  {
-  send_to_char("Syntax is: statraise <str/int/wis/dex/con>\n\r",ch);
+  send_to_char("Syntax is: statraise <str/int/wis/dex/con>\r\n",ch);
   return;
  }
 }

@@ -177,7 +177,7 @@ char *break_arg( char *str, char *first_arg, int bufsize, int max, int *buflen, 
       ++str;
    if( *str == '\\' && str[1] == 'b' && str[2] == 'r' )
    {
-      strcpy( first_arg, "\n\r" );
+      strcpy( first_arg, "\r\n" );
       if( buflen )
          *buflen = 0;
       if( len )
@@ -234,7 +234,7 @@ char *string_justify( char *str, int len, int width, int numwords, int *rlen )
    spaces_needed = minspaces + ( width - ( len + 1 ) );
    if( spaces_needed <= minspaces || minspaces <= 0 )
    {
-      snprintf( buf, MSL, "%s\n\r", str );
+      snprintf( buf, MSL, "%s\r\n", str );
       return buf;
    }
    space_ratio = ( float )spaces_needed / ( float )minspaces;
@@ -251,8 +251,8 @@ char *string_justify( char *str, int len, int width, int numwords, int *rlen )
    str = break_arg( str, arg, sizeof( arg ), width, &alen, NULL );
    strcpy( bp, arg );
    bp += alen;
-/*  bp += snprintf(bp, MSL, "\n\r%d:%d:%d", len, width, numwords);
-  bp += snprintf(bp, MSL, "\n\r%d:%d:%f", minspaces, spaces_needed, space_ratio);*/
+/*  bp += snprintf(bp, MSL, "\r\n%d:%d:%d", len, width, numwords);
+  bp += snprintf(bp, MSL, "\r\n%d:%d:%f", minspaces, spaces_needed, space_ratio);*/
    *bp++ = '\n';
    *bp++ = '\r';
    *bp = '\0';
@@ -557,7 +557,7 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
    {
       x = disp + strlen( disp );
       while( y < MAP_Y )
-         x += snprintf( x, MSL, "%s\n\r", bufs[y] ), ++y;
+         x += snprintf( x, MSL, "%s\r\n", bufs[y] ), ++y;
    }
    send_to_char( disp, ch );
 #ifdef ACK_43
@@ -668,7 +668,7 @@ void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
    char colorbuf[MSL];
    char displaybuf[MSL];
    outbuf[0] = '\0';
-   snprintf( outbuf, MSL, "%s", "\n\r" );
+   snprintf( outbuf, MSL, "%s", "\r\n" );
    snprintf( borderbuf, MSL, "%s", "@@y+@@W" );
    for( looper = 0; looper <= size + 1; looper++ )
    {
@@ -705,7 +705,7 @@ void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
          }
 
       }
-      strncat( outbuf, " @@W|@@N\n\r", MSL );
+      strncat( outbuf, " @@W|@@N\r\n", MSL );
    }
 
    disp_map( borderbuf, outbuf, ch );
@@ -730,7 +730,7 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
    char colorbuf[MSL];
    char displaybuf[MSL];
    outbuf[0] = '\0';
-   snprintf( outbuf, MSL, "%s", "\n\r" );
+   snprintf( outbuf, MSL, "%s", "\r\n" );
    snprintf( borderbuf, MSL, "%s", "@@y+@@W" );
    for( looper = 0; looper <= size + 1; looper++ )
    {
@@ -767,9 +767,9 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
          }
 
       }
-      strncat( outbuf, " @@W|@@N\n\r", MSL );
+      strncat( outbuf, " @@W|@@N\r\n", MSL );
    }
-   send_to_char( "\n\r", ch );
+   send_to_char( "\r\n", ch );
    /*
     * this is the top line of the map itself, currently not part of the mapstring 
     */
@@ -782,8 +782,8 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
     * this is the bottom line of the map 
     */
    send_to_char( borderbuf, ch );
-   send_to_char( "\n\r", ch );
-   send_to_char( "Also try map legend.\n\r", ch );
+   send_to_char( "\r\n", ch );
+   send_to_char( "Also try map legend.\r\n", ch );
 
    return;
 }
@@ -797,16 +797,16 @@ void do_mapper( CHAR_DATA * ch, char *argument )
    one_argument( argument, arg1 );
    if( is_name( arg1, "legend key help" ) )
    {
-      snprintf( outbuf, MSL, "@@WMap Legend:@@N\n\r" );
+      snprintf( outbuf, MSL, "@@WMap Legend:@@N\r\n" );
       for( looper = 0; looper < SECT_TOP - 1; looper++ )
       {
-         snprintf( catbuf, MSL, "%s%s : @@N%s\n\r",
+         snprintf( catbuf, MSL, "%s%s : @@N%s\r\n",
                   map_info[looper].display_color, map_info[looper].display_code, map_info[looper].desc );
          strncat( outbuf, catbuf, MSL );
       }
       for( looper = 0; looper < 5; looper++ )
       {
-         snprintf( catbuf, MSL, "%s%s : @@N%s\n\r",
+         snprintf( catbuf, MSL, "%s%s : @@N%s\r\n",
                   door_info[looper].display_color, door_info[looper].display_code, door_info[looper].desc );
          strncat( outbuf, catbuf, MSL );
       }
