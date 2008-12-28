@@ -1358,6 +1358,34 @@ const char *affect_bit_name( int vector )
 }
 
 /*
+ * Return ascii name of exit flags bitset.
+ */
+const char *exit_bit_name( std::bitset<MAX_BITSET> &exit_flags )
+{
+   static char buf[MSL];
+
+   buf[0] = '\0';
+   if( exit_flags.test(EX_CLOSED) )
+      strncat( buf, " closed", MSL );
+   if( exit_flags.test(EX_LOCKED) )
+      strncat( buf, " locked", MSL );
+   if( exit_flags.test(EX_CLIMB) )
+      strncat( buf, " climb", MSL );
+   if( exit_flags.test(EX_IMMORTAL) )
+      strncat( buf, " immortal", MSL );
+   if( exit_flags.test(EX_PICKPROOF) )
+      strncat( buf, " pickproof", MSL );
+   if( exit_flags.test(EX_SMASHPROOF) )
+      strncat( buf, " smashproof", MSL );
+   if( exit_flags.test(EX_PASSPROOF) )
+      strncat( buf, " passproof", MSL );
+   if( exit_flags.test(EX_NODETECT) )
+      strncat( buf, " nodetect", MSL );
+
+   return ( buf[0] != '\0' ) ? buf + 1 : "none";
+}
+
+/*
  * Return ascii name of extra flags bitset.
  */
 const char *extra_bit_name( std::bitset<MAX_BITSET> &extra_flags )

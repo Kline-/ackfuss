@@ -173,6 +173,7 @@ void do_get( CHAR_DATA * ch, char *argument )
    bool get_ok = FALSE;
    bool found_money = FALSE;
    victim_name[0] = '\0';
+   object_list[0] = '\0';
 
 /* hack to take care of players used to old system */
    if( ( !is_name( "from", argument ) ) && ( is_name( "corpse", argument ) ) )
