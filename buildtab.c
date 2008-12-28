@@ -118,9 +118,9 @@ LOOKUP_TYPE tab_value_meanings[] = {
    {"Unused", 48, 0},
    {"Unused", 49, 0},
 
-   {"Minimum Damage", 50, 0},
-   {"Maximum Damage", 51, 0},
-   {"Unused", 52, 0},
+   {"Unused", 50, 0},
+   {"Minimum Damage", 51, 0},
+   {"Maximum Damage", 52, 0},
    {"Weapon Type", 53, -1},
    {"Unused", 54, 0},
    {"Unused", 55, 0},
