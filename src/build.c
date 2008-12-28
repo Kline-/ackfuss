@@ -756,11 +756,11 @@ void build_showroom( CHAR_DATA * ch, char *argument )
                 * New way of showing doors... move to relevant place if it works 
                 */
 
-               snprintf( buf, MSL, "\r\n%s: (%s)  @@WTo: @@y(%i) %s\r\n@@WExit flags:@@N\r\n%s\r\n", sDirs[door],
+               snprintf( buf, MSL, "\r\n%s: (%s)  @@WTo: @@y(%i) %s\r\n@@WExit flags:@@N %s\r\n", sDirs[door],
                         pexit->keyword,
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "Unknown",
-                        bs_show_values( tab_door_types, pexit->exit_info ) );
+                        exit_bit_name( pexit->exit_info ));
                strncat( buf1, buf, MSL );
             }
          }

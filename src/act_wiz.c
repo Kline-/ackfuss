@@ -694,7 +694,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
       strncat( buf1, "'.\r\n", MSL );
    }
 
-   strncat( buf1, "Characters:", MSL );
+   strncat( buf1, ".\r\nCharacters:", MSL );
    for( rch = location->first_person; rch; rch = rch->next_in_room )
    {
       strncat( buf1, " ", MSL );
@@ -718,11 +718,11 @@ void do_rstat( CHAR_DATA * ch, char *argument )
       if( ( pexit = location->exit[door] ) != NULL )
       {
          snprintf( buf, MSL,
-                  "Door: %d.  To: %d.  Key: %d.  Keyword: '%s'.  Description: %s\r\nExit flags:\r\n%s\r\n",
+                  "Door: %d.  To: %d.  Key: %d.  Keyword: '%s'.  Description: %s\r\nExit flags: %s\r\n",
                   door,
                   pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                   pexit->key, pexit->keyword, pexit->description[0] != '\0' ? pexit->description : "(none).",
-                  bs_show_values( tab_door_types,pexit->exit_info) );
+                  exit_bit_name(pexit->exit_info) );
          strncat( buf1, buf, MSL );
       }
    }

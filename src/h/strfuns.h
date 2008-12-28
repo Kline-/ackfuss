@@ -48,6 +48,7 @@ char *item_type_name P_((OBJ_DATA *obj));
 char *affect_loc_name P_((int location));
 const char *raffect_bit_name P_((int vector));
 const char *affect_bit_name P_((int vector));
+const char *exit_bit_name P_((std::bitset<MAX_BITSET> &exit_flags));
 const char *extra_bit_name P_((std::bitset<MAX_BITSET> &extra_flags));
 const char *wear_bit_name P_((std::bitset<MAX_BITSET> &wear_flags));
 char *race_name P_((CHAR_DATA *ch));

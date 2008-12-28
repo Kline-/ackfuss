@@ -456,7 +456,7 @@ End
 
 #ROOM
 Vnum  1016
-Desc  @@yY@@bou stand at the base of the western watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter road of @@yC@@balor continues to the north and south, while the market square lies to the eas@@yt.@@N~
+Desc  @@yY@@bou stand at the base of the western watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter wall of @@yC@@balor continues to the north and south, while the market square lies to the eas@@yt.@@N~
 Flags EOL
 Name  @@yB@@beneath the @@yW@@best @@yT@@bower@@N~
 Sect  1
@@ -544,7 +544,7 @@ End
 
 #ROOM
 Vnum  1019
-Desc  @@yY@@bou stand at the base of the northwestern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter road of @@yC@@balor continues to the east and sout@@yh.@@N~
+Desc  @@yY@@bou stand at the base of the northwestern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter wall of @@yC@@balor continues to the east and sout@@yh.@@N~
 Flags EOL
 Name  @@yB@@beneath the @@yN@@borthwest @@yT@@bower@@N~
 Sect  1
@@ -624,7 +624,7 @@ End
 
 #ROOM
 Vnum  1022
-Desc  @@yY@@bou stand at the base of the northern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter road of @@yC@@balor continues to the east and west, while the market square lies to the sout@@yh.@@N~
+Desc  @@yY@@bou stand at the base of the northern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter wall of @@yC@@balor continues to the east and west, while the market square lies to the sout@@yh.@@N~
 Flags EOL
 Name  @@yB@@beneath the @@yN@@borth @@yT@@bower@@N~
 Sect  1
@@ -736,7 +736,7 @@ End
 
 #ROOM
 Vnum  1026
-Desc  @@yY@@bou stand at the base of the northeastern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter road of @@yC@@balor continues to the south and wes@@yt.@@N~
+Desc  @@yY@@bou stand at the base of the northeastern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter wall of @@yC@@balor continues to the south and wes@@yt.@@N~
 Flags EOL
 Name  @@yB@@beneath the @@yN@@bortheast @@yT@@bower@@N~
 Sect  1
@@ -816,7 +816,7 @@ End
 
 #ROOM
 Vnum  1029
-Desc  @@yY@@bou stand at the base of the eastern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter road of @@yC@@balor continues to the north and south, while the market square lies to the wes@@yt.@@N~
+Desc  @@yY@@bou stand at the base of the eastern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter wall of @@yC@@balor continues to the north and south, while the market square lies to the wes@@yt.@@N~
 Flags EOL
 Name  @@yB@@beneath the @@yE@@bast @@yT@@bower@@N~
 Sect  1
@@ -928,7 +928,7 @@ End
 
 #ROOM
 Vnum  1033
-Desc  @@yY@@bou stand at the base of the southeastern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter road of @@yC@@balor continues to the north and wes@@yt.@@N~
+Desc  @@yY@@bou stand at the base of the southeastern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter wall of @@yC@@balor continues to the north and wes@@yt.@@N~
 Flags EOL
 Name  @@yB@@beneath the @@yS@@boutheast @@yT@@bower@@N~
 Sect  1
@@ -1008,7 +1008,7 @@ End
 
 #ROOM
 Vnum  1036
-Desc  @@yY@@bou stand at the base of the southern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter road of @@yC@@balor continues to the east and west, while the market square lies to the nort@@yh.@@N~
+Desc  @@yY@@bou stand at the base of the southern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter wall of @@yC@@balor continues to the east and west, while the market square lies to the nort@@yh.@@N~
 Flags EOL
 Name  @@yB@@beneath the @@yS@@bouth @@yT@@bower@@N~
 Sect  1
@@ -1120,7 +1120,7 @@ End
 
 #ROOM
 Vnum  1040
-Desc  @@yY@@bou stand at the base of the southwestern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter road of @@yC@@balor continues to the north and eas@@yt.@@N~
+Desc  @@yY@@bou stand at the base of the southwestern watch tower of @@yC@@balor. A small ladder leads up to the tower. The perimeter wall of @@yC@@balor continues to the north and eas@@yt.@@N~
 Flags EOL
 Name  @@yB@@beneath the @@yS@@bouthwest @@yT@@bower@@N~
 Sect  1
@@ -1200,7 +1200,7 @@ End
 
 #ROOM
 Vnum  1043
-Desc  ~
+Desc  @@yT@@bhe northwest tower looks just like any other. A ladder leads up from perimeter wall below and there are few other items here besides a chair and table for the guard on watch. The tower offers an impressive view over the city of @@yC@@balor, as well as the surrounding land@@ys.@@N~
 Flags EOL
 Name  @@yT@@bhe @@yN@@borthwest @@yT@@bower@@N~
 Sect  1
@@ -1216,7 +1216,7 @@ End
 
 #ROOM
 Vnum  1044
-Desc  ~
+Desc  @@yT@@bhe northeast tower looks just like any other. A ladder leads up from perimeter wall below and there are few other items here besides a chair and table for the guard on watch. The tower offers an impressive view over the city of @@yC@@balor, as well as the surrounding land@@ys.@@N~
 Flags EOL
 Name  @@yT@@bhe @@yN@@bortheast @@yT@@bower@@N~
 Sect  1
@@ -1232,7 +1232,7 @@ End
 
 #ROOM
 Vnum  1045
-Desc  ~
+Desc  @@yT@@bhe southeast tower looks just like any other. A ladder leads up from perimeter wall below and there are few other items here besides a chair and table for the guard on watch. The tower offers an impressive view over the city of @@yC@@balor, as well as the surrounding land@@ys.@@N~
 Flags EOL
 Name  @@yT@@bhe @@yS@@boutheast @@yT@@bower@@N~
 Sect  1
@@ -1248,7 +1248,7 @@ End
 
 #ROOM
 Vnum  1046
-Desc  ~
+Desc  @@yT@@bhe southwest tower looks just like any other. A ladder leads up from perimeter wall below and there are few other items here besides a chair and table for the guard on watch. The tower offers an impressive view over the city of @@yC@@balor, as well as the surrounding land@@ys.@@N~
 Flags EOL
 Name  @@yT@@bhe @@yS@@bouthwest @@yT@@bower@@N~
 Sect  1
@@ -1264,7 +1264,7 @@ End
 
 #ROOM
 Vnum  1047
-Desc  ~
+Desc  @@yT@@bhe west tower looks just like any other. A ladder leads up from perimeter wall below and there are few other items here besides a chair and table for the guard on watch. The tower offers an impressive view over the city of @@yC@@balor, as well as the surrounding land@@ys.@@N~
 Flags EOL
 Name  @@yT@@bhe @@yW@@best @@yT@@bower@@N~
 Sect  1
@@ -1280,7 +1280,7 @@ End
 
 #ROOM
 Vnum  1048
-Desc  ~
+Desc  @@yT@@bhe north tower looks just like any other. A ladder leads up from perimeter wall below and there are few other items here besides a chair and table for the guard on watch. The tower offers an impressive view over the city of @@yC@@balor, as well as the surrounding land@@ys.@@N~
 Flags EOL
 Name  @@yT@@bhe @@yN@@borth @@yT@@bower@@N~
 Sect  1
@@ -1296,7 +1296,7 @@ End
 
 #ROOM
 Vnum  1049
-Desc  ~
+Desc  @@yT@@bhe east tower looks just like any other. A ladder leads up from perimeter wall below and there are few other items here besides a chair and table for the guard on watch. The tower offers an impressive view over the city of @@yC@@balor, as well as the surrounding land@@ys.@@N~
 Flags EOL
 Name  @@yT@@bhe @@yE@@bast @@yT@@bower@@N~
 Sect  1
@@ -1312,7 +1312,7 @@ End
 
 #ROOM
 Vnum  1050
-Desc  ~
+Desc  @@yT@@bhe south tower looks just like any other. A ladder leads up from perimeter wall below and there are few other items here besides a chair and table for the guard on watch. The tower offers an impressive view over the city of @@yC@@balor, as well as the surrounding land@@ys.@@N~
 Flags EOL
 Name  @@yT@@bhe @@yS@@bouth @@yT@@bower@@N~
 Sect  1
@@ -2038,23 +2038,42 @@ O 1015 1 1045
 O 1009 1 1050 
 
 M 1004 1 1023 
+
 E 1023 0 0 
+
 M 1004 1 1015 
+
 E 1023 0 0 
+
 M 1004 1 1030 
+
 E 1023 0 0 
+
 M 1004 1 1037 
+
 E 1023 0 0 
+
 M 1005 1 1043 
+
 E 1024 0 0 
+
 E 1024 0 0 
+
 M 1005 1 1046 
+
 E 1024 0 0 
+
 M 1005 1 1045 
+
 E 1024 0 0 
+
 E 1024 0 0 
+
 M 1005 1 1044 
+
 E 1024 0 0 
+
 E 1024 0 0 
+
 S
 #$
