@@ -366,7 +366,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_mob->long_descr_orig != NULL )
          free_string( quest_mob->long_descr_orig );
       quest_mob->long_descr_orig = str_dup( quest_mob->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\r\n", NAME(quest_mob), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?", NAME(quest_mob), quest_object->short_descr );
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
@@ -378,7 +378,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       if( quest_target->long_descr_orig != NULL )
          free_string( quest_target->long_descr_orig );
       quest_target->long_descr_orig = str_dup( quest_target->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\r\n", NAME(quest_target), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!", NAME(quest_target), quest_object->short_descr );
       if( quest_target->long_descr != NULL )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );
@@ -770,7 +770,7 @@ void generate_auto_quest(  )
       if( quest_mob->long_descr_orig != NULL )
          free_string( quest_mob->long_descr_orig );
       quest_mob->long_descr_orig = str_dup( quest_mob->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?\r\n", NAME(quest_mob), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?", NAME(quest_mob), quest_object->short_descr );
       if( quest_mob->long_descr != NULL )
          free_string( quest_mob->long_descr );
       quest_mob->long_descr = str_dup( new_long_desc );
@@ -783,7 +783,7 @@ void generate_auto_quest(  )
       if( quest_target->long_descr_orig != NULL )
          free_string( quest_target->long_descr_orig );
       quest_target->long_descr_orig = str_dup( quest_target->long_descr );
-      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!\r\n", NAME(quest_target), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!", NAME(quest_target), quest_object->short_descr );
       if( quest_target->long_descr != NULL )
          free_string( quest_target->long_descr );
       quest_target->long_descr = str_dup( new_long_desc );

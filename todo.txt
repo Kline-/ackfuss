@@ -12,3 +12,5 @@ cloth/leather/mail/plate armor
 weapon skill types (class based)
 Abel [><*><]: 'Just add the wear slot to the equipment screen, do_wear/remove/dualwield checks and whatnot'.
 fix builder clone
+make class order matter
+adjust max class down to 3 perm
