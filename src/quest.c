@@ -266,8 +266,11 @@ void do_quest( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL, "Target Object is: %s.\r\n", quest_object->short_descr );
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "Quest Object is worth: %d QP, %d Prac, %s\r\n",
-               quest_object->value[0], quest_object->value[1], cost_to_money(quest_object->value[2]) );
+      snprintf( buf, MSL, "Quest Object is worth: %d QP, %d Prac, %d to %d Exp, %s\r\n",
+               quest_object->value[0], quest_object->value[1],
+               static_cast<int>((exp_mob_base(quest_mob->level) * sysdata.killperlev) * 0.02),
+               static_cast<int>((exp_mob_base(quest_mob->level) * sysdata.killperlev) * 0.04),
+               cost_to_money(quest_object->value[2]) );
       send_to_char( buf, ch );
 
 
@@ -351,14 +354,14 @@ void do_quest( CHAR_DATA * ch, char *argument )
       quest_object->value[0] = UMAX( 1, ( quest_target->level / 30 ) );
       quest_object->value[1] = UMAX( 1, ( quest_target->level / 25 ) );
       quest_object->value[2] = ( quest_target->level * 20 );
+      quest_object->value[3] = average_level;
 
-      if( number_percent(  ) < 10 )
-      {
-         quest_object->value[0] += 2;
-         quest_object->value[1] += 3;
-         quest_object->value[2] *= 2;
-
-      }
+      if( number_percent() < 10 )
+       quest_object->value[0] *= 2;
+      if( number_percent() < 10 )
+       quest_object->value[1] *= 2;
+      if( number_percent() < 10 )
+       quest_object->value[2] *= 2;
 
       quest_timer = 0;
       quest = TRUE;
@@ -398,8 +401,11 @@ void do_quest( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL, "Target Object is: %s.\r\n", quest_object->short_descr );
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "Quest Object is worth: %d QP, %d Prac, %d GP\r\n",
-               quest_object->value[0], quest_object->value[1], quest_object->value[2] );
+      snprintf( buf, MSL, "Quest Object is worth: %d QP, %d Prac, %d to %d Exp, %s\r\n",
+               quest_object->value[0], quest_object->value[1],
+               static_cast<int>((exp_mob_base(quest_mob->level) * sysdata.killperlev) * 0.02),
+               static_cast<int>((exp_mob_base(quest_mob->level) * sysdata.killperlev) * 0.04),
+               cost_to_money(quest_object->value[2]) );
       send_to_char( buf, ch );
 
       return;
@@ -505,7 +511,7 @@ CHAR_DATA *get_quest_giver( int min_level, int max_level )
 
 /*   int max_distance = 20; unused */
 /*   char *dirs = NULL; unused */
-   min_index = number_range( 0, 1000 );
+   min_index = number_range(0,top_mob_index-1);
 
    for( target = first_char; target != NULL; target = target->next )
    {
@@ -673,7 +679,7 @@ void generate_auto_quest(  )
             continue;
          if( IS_IMMORTAL(d->character) ) /* Imms shouldn't count against the quest level. --Kline */
             continue;
-         player_count += 1;
+         player_count++;
          total_levels += d->character->level;
       }
       player_count = UMAX( 1, player_count );
@@ -756,13 +762,12 @@ void generate_auto_quest(  )
       quest_object->value[2] = ( quest_target->level * 20 );
       quest_object->value[3] = average_level;
 
-      if( number_percent(  ) < 10 )
-      {
-         quest_object->value[0] += 2;
-         quest_object->value[1] += 3;
-         quest_object->value[2] *= 2;
-
-      }
+      if( number_percent() < 10 )
+       quest_object->value[0] *= 2;
+      if( number_percent() < 10 )
+       quest_object->value[1] *= 2;
+      if( number_percent() < 10 )
+       quest_object->value[2] *= 2;
 
       quest_timer = 0;
       quest = TRUE;
@@ -803,7 +808,7 @@ void crusade_reward( CHAR_DATA *ch )
 
  ch->pcdata->records->crusade++;
 
- reward = number_range((get_psuedo_level(ch)/15),(get_psuedo_level(ch)/20));
+ reward = quest_object->value[0];
  snprintf( buf, MSL, "You receive %d quest points!\r\n", reward );
  send_to_char( buf, ch );
  ch->pcdata->quest_points += reward;
@@ -814,21 +819,21 @@ void crusade_reward( CHAR_DATA *ch )
   ch->pcdata->records->qp = ch->pcdata->quest_points;
  }
 
- reward = number_range((get_psuedo_level(ch)/5),(get_psuedo_level(ch)/20));
- snprintf( buf, MSL, "You receive %s!\r\n", cost_to_money( reward ) );
- send_to_char( buf, ch );
- join_money( round_money( reward, TRUE ), ch->money );
-
- reward = number_range((get_psuedo_level(ch)/20),(get_psuedo_level(ch)/10));
+ reward = quest_object->value[1];
  snprintf( buf, MSL, "You receive %d practices!\r\n", reward );
  send_to_char( buf, ch );
  ch->practice += reward;
 
- reward = (exp_mob_base(get_psuedo_level(ch)) * sysdata.killperlev);
- reward = number_range((int)(reward * 0.03),(int)(reward * 0.06));
+ reward = (exp_mob_base(quest_mob->level) * sysdata.killperlev);
+ reward = number_range(static_cast<int>(reward * 0.02),static_cast<int>(reward * 0.04));
  snprintf( buf, MSL, "You receive %d experience points!\r\n", reward );
  send_to_char( buf, ch );
  ch->exp += reward;
+
+ reward = quest_object->value[2];
+ snprintf( buf, MSL, "You receive %s!\r\n", cost_to_money( reward ) );
+ send_to_char( buf, ch );
+ join_money( round_money( reward, TRUE ), ch->money );
 
  return;
 }
