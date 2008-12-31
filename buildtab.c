@@ -439,6 +439,28 @@ LOOKUP_TYPE tab_value_meanings[] = {
    {"Unused", 358, 0},
    {"Unused", 359, 0},
 
+   {"Unused", 360, 0},
+   {"Unused", 361, 0},
+   {"Unused", 362, 0},
+   {"Unused", 363, 0},
+   {"Unused", 364, 0},
+   {"Unused", 365, 0},
+   {"Replacer Vnum", 366, 0},
+   {"Forced extract timer", 367, 0},
+   {"Unused", 368, 0},
+   {"Unused", 369, 0},
+
+   {"Unused", 370, 0},
+   {"Unused", 371, 0},
+   {"Unused", 372, 0},
+   {"Unused", 373, 0},
+   {"Unused", 374, 0},
+   {"Unused", 375, 0},
+   {"Replacer Vnum", 376, 0},
+   {"Forced extract timer", 377, 0},
+   {"Unused", 378, 0},
+   {"Unused", 379, 0},
+
    {NULL, 0}
 };
 

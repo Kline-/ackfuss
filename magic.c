@@ -2523,21 +2523,21 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
          snprintf( buf, MSL, "Level %d spells of:", ob->value[0] );
          send_to_char( buf, ch );
 
-         if( ob->value[1] >= 0 && ob->value[1] < MAX_SKILL )
+         if( ob->value[1] > 0 && ob->value[1] < MAX_SKILL )
          {
             send_to_char( " '", ch );
             send_to_char( skill_table[ob->value[1]].name, ch );
             send_to_char( "'", ch );
          }
 
-         if( ob->value[2] >= 0 && ob->value[2] < MAX_SKILL )
+         if( ob->value[2] > 0 && ob->value[2] < MAX_SKILL )
          {
             send_to_char( " '", ch );
             send_to_char( skill_table[ob->value[2]].name, ch );
             send_to_char( "'", ch );
          }
 
-         if( ob->value[3] >= 0 && ob->value[3] < MAX_SKILL )
+         if( ob->value[3] > 0 && ob->value[3] < MAX_SKILL )
          {
             send_to_char( " '", ch );
             send_to_char( skill_table[ob->value[3]].name, ch );
@@ -4408,21 +4408,21 @@ bool spell_know_item( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
          snprintf( buf, MSL, "Level %d spells of:", ob->value[0] );
          send_to_char( buf, ch );
 
-         if( ob->value[1] >= 0 && ob->value[1] < MAX_SKILL )
+         if( ob->value[1] > 0 && ob->value[1] < MAX_SKILL )
          {
             send_to_char( " '", ch );
             send_to_char( skill_table[ob->value[1]].name, ch );
             send_to_char( "'", ch );
          }
 
-         if( ob->value[2] >= 0 && ob->value[2] < MAX_SKILL )
+         if( ob->value[2] > 0 && ob->value[2] < MAX_SKILL )
          {
             send_to_char( " '", ch );
             send_to_char( skill_table[ob->value[2]].name, ch );
             send_to_char( "'", ch );
          }
 
-         if( ob->value[3] >= 0 && ob->value[3] < MAX_SKILL )
+         if( ob->value[3] > 0 && ob->value[3] < MAX_SKILL )
          {
             send_to_char( " '", ch );
             send_to_char( skill_table[ob->value[3]].name, ch );

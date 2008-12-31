@@ -1045,11 +1045,16 @@
 #define ITEM_FOUNTAIN                25
 #define ITEM_PILL                    26
 #define ITEM_BOARD                   27
-#define ITEM_SOUL				 28
-#define ITEM_PIECE			 29
-#define ITEM_SPELL_MATRIX		30
-#define ITEM_ENCHANTMENT		31
-#define ITEM_WRAPPED_PRESENT 32
+#define ITEM_SOUL		     28
+#define ITEM_PIECE		     29
+#define ITEM_SPELL_MATRIX	     30
+#define ITEM_ENCHANTMENT	     31
+#define ITEM_WRAPPED_PRESENT         32
+#define ITEM_ANVIL                   33
+#define ITEM_COOKING_FIRE            34
+#define ITEM_ALCHEMY_LAB             35
+#define ITEM_FORGE                   36
+#define ITEM_LOOM                    37
 
 /*
  * Extra flags.

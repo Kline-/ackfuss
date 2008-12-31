@@ -529,7 +529,7 @@ void build_save_shops(  )
 
    pShop = (SHOP_DATA *)Pointer->data;
 
-   fprintf( SaveFile, "\n#SHOP#\n" );
+   fprintf( SaveFile, "\n#SHOP\n" );
    fprintf( SaveFile, "Keeper    %d\n", pShop->keeper ); /* Must be first for sanity checks --Kline */
 
    fprintf( SaveFile, "BuyType   " );
