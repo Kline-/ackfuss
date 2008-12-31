@@ -954,6 +954,13 @@ void do_drink( CHAR_DATA * ch, char *argument )
          return;
       }
    }
+
+   if( get_psuedo_level(ch) < obj->level )
+   {
+      send_to_char( "You are not knowledgeable enough to drink such a liquid.\n\r", ch );
+      return;
+   }
+
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_THIRST] > 40 )
    {
       send_to_char( "You do not feel thirsty.\r\n", ch );
@@ -1107,6 +1114,12 @@ void do_eat( CHAR_DATA * ch, char *argument )
    if( ( obj = get_obj_carry( ch, arg ) ) == NULL )
    {
       send_to_char( "You do not have that item.\r\n", ch );
+      return;
+   }
+
+   if( get_psuedo_level(ch) < obj->level )
+   {
+      send_to_char( "You are not knowledgeable enough to eat such a food.\n\r", ch );
       return;
    }
 
@@ -2136,6 +2149,11 @@ void do_quaff( CHAR_DATA * ch, char *argument )
       return;
    }
 
+   if( get_psuedo_level(ch) < obj->level )
+   {
+      send_to_char( "You are not knowledgeable enough to use such a potion.\n\r", ch );
+      return;
+   }
 
    act( "$n quaffs $p.", ch, obj, NULL, TO_ROOM );
    act( "You quaff $p.", ch, obj, NULL, TO_CHAR );
@@ -2187,6 +2205,12 @@ void do_recite( CHAR_DATA * ch, char *argument )
          send_to_char( "You can't find it.\r\n", ch );
          return;
       }
+   }
+
+   if( get_psuedo_level(ch) < obj->level )
+   {
+      send_to_char( "You are not knowledgeable enough to use such a scroll.\n\r", ch );
+      return;
    }
 
    act( "$n recites $p.", ch, scroll, NULL, TO_ROOM );
