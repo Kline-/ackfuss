@@ -14,3 +14,5 @@ Abel [><*><]: 'Just add the wear slot to the equipment screen, do_wear/remove/du
 fix builder clone
 make class order matter
 adjust max class down to 3 perm
+use std::string omg amazing
+professions (added anvil/forge, alchemy lab, etc)

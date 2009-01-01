@@ -131,6 +131,19 @@
 #define SPEED_FANG 3
 
 /*
+ * For charm item bonuses. --Kline
+ */
+#define CHARM_AFF               0
+#define CHARM_BONUS             1
+
+#define CHARM_AFF_EXP           0 /* Boost exp while in inv...shhhh */
+#define CHARM_AFF_GOLD          1 /* Boost gold drops while in inv...shhhh */
+#define CHARM_AFF_BATTLE        2 /* Boost melee dealt / reduce melee taken while in inv...shhhh */
+#define CHARM_AFF_MAGE          3 /* Reduce spell cost / incrase spell dmg while in inv...shhhh */
+#define CHARM_AFF_REGEN         4 /* Increase regen while in inv...shhhh */
+#define CHARM_AFF_HUNGERLESS    5 /* Prevents hunger/thirst while in inv...shhhh */
+
+/*
  *  Target types.
  */
 #define TAR_IGNORE                  0
@@ -1050,11 +1063,12 @@
 #define ITEM_SPELL_MATRIX	     30
 #define ITEM_ENCHANTMENT	     31
 #define ITEM_WRAPPED_PRESENT         32
-#define ITEM_ANVIL                   33
-#define ITEM_COOKING_FIRE            34
-#define ITEM_ALCHEMY_LAB             35
-#define ITEM_FORGE                   36
-#define ITEM_LOOM                    37
+#define ITEM_CHARM                   33
+#define ITEM_ANVIL                   34
+#define ITEM_COOKING_FIRE            35
+#define ITEM_ALCHEMY_LAB             36
+#define ITEM_FORGE                   37
+#define ITEM_LOOM                    38
 
 /*
  * Extra flags.

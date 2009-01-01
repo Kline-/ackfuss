@@ -857,6 +857,10 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
 
    tmp = dam;
    tmp *= dam_modifier;
+
+   if( check_charm_aff(ch,CHARM_AFF_MAGE) )
+    tmp *= ((100 + get_charm_bonus(ch,CHARM_AFF_MAGE)) / 100);
+
    dam = static_cast<int>(tmp);
    dam += number_range(static_cast<int>((dam * -0.10)),static_cast<int>((dam * 0.10))); /* Lets add a little randomness to things. --Kline */
 

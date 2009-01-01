@@ -535,6 +535,9 @@ void do_cast( CHAR_DATA * ch, char *argument )
    if( char_login )
       mana = 0;
 
+   if( check_charm_aff(ch,CHARM_AFF_MAGE) )
+    mana *= ((100 - get_charm_bonus(ch,CHARM_AFF_MAGE)) / 100);
+
    /*
     * Locate targets.
     */

@@ -184,7 +184,6 @@ LOOKUP_TYPE tab_value_meanings[] = {
    {"Unused", 118, 0},
    {"Unused", 119, 0},
 
-
    {"Number of people that can use it.", 120, 0},
    {"Unused", 121, 0},
    {"Unused", 122, 0},
@@ -217,7 +216,6 @@ LOOKUP_TYPE tab_value_meanings[] = {
    {"Forced extract timer", 147, 0},
    {"Unused", 148, 0},
    {"Unused", 149, 0},
-
 
    {"Weight Capacity", 150, 10},
    {"Flags: 1:closeable 2:pickproof 4:closed 8:locked", 151, 0},
@@ -406,8 +404,8 @@ LOOKUP_TYPE tab_value_meanings[] = {
    {"Unused", 328, 0},
    {"Unused", 329, 0},
 
-   {"Unused", 330, 0},
-   {"Unused", 331, 0},
+   {"Charm Affect", 330, 0},
+   {"Bonus (%)", 331, 0},
    {"Unused", 332, 0},
    {"Unused", 333, 0},
    {"Unused", 334, 0},
@@ -461,6 +459,17 @@ LOOKUP_TYPE tab_value_meanings[] = {
    {"Unused", 378, 0},
    {"Unused", 379, 0},
 
+   {"Unused", 380, 0},
+   {"Unused", 381, 0},
+   {"Unused", 382, 0},
+   {"Unused", 383, 0},
+   {"Unused", 384, 0},
+   {"Unused", 385, 0},
+   {"Replacer Vnum", 386, 0},
+   {"Forced extract timer", 387, 0},
+   {"Unused", 388, 0},
+   {"Unused", 389, 0},
+
    {NULL, 0}
 };
 
@@ -500,6 +509,16 @@ LOOKUP_TYPE tab_weapon_types[] = {
    {"bite", 10, 10},
    {"pierce", 11, 10},
    {"suction", 12, 10}, /* kinky */
+   {NULL, 0}
+};
+
+LOOKUP_TYPE tab_charm_types[] = {
+   {"exp",        CHARM_AFF_EXP,        10},
+   {"gold",       CHARM_AFF_GOLD,       10},
+   {"melee",      CHARM_AFF_BATTLE,     10},
+   {"magic",      CHARM_AFF_MAGE,       10},
+   {"regen",      CHARM_AFF_REGEN,      10},
+   {"hungerless", CHARM_AFF_HUNGERLESS, 10},
    {NULL, 0}
 };
 
@@ -761,6 +780,12 @@ LOOKUP_TYPE tab_item_types[] = {
    {"matrix", 30, 50},
    {"enchantment", 31, 50},
    {"present", 32, 0},
+   {"charm", 33, 1000},
+   {"anvil", 34, 0},
+   {"cooking_fire", 35, 0},
+   {"alchemy_lab", 36, 0},
+   {"forge", 37, 0},
+   {"loom", 38, 0},
    {NULL, 0}
 };
 

@@ -1339,7 +1339,7 @@ Def       64
 Desc      Loki is a Frost Wyrm, a rare creature of old. His enormous body casts a shadow across the entire altar. He sits perched high upon the monument, nearly on the dais above, keeping vigilant watch over Calor.~
 DrMod     1000
 HrMod     1000
-Level     120
+Level     140
 LongDesc  @@cL@@aoki @@Nthe @@cF@@arost @@cW@@ayrm@@N is here perched atop the monument.~
 PlrName   guardian altar loki frost wyrm~
 Position  0
@@ -1350,7 +1350,7 @@ Sex       1
 ShortDesc @@cL@@aoki@@N~
 Skills    982670
 SMagic    32
-SpecFun   spec_breath_frost
+SpecFun   spec_executioner
 Suscept   1
 WMagic    1
 End
@@ -1368,7 +1368,7 @@ Def       0
 Desc      ~
 DrMod     0
 HrMod     0
-Level     1
+Level     140
 LongDesc  @@bThe @@yB@@bank @@yt@@beller stands ready to assist you with your transactions.@@N~
 PlrName   banker bank clerk teller~
 Position  0
@@ -1397,7 +1397,7 @@ Def       80
 Desc      ~
 DrMod     0
 HrMod     0
-Level     120
+Level     140
 LongDesc  The @@RAvatar @@Wof @@yU@@bn@@y'@@bKresh@@N tends to the wounded citizens of @@yC@@balor@@N.~
 PlrName   avatar un'kresh~
 Position  0
@@ -1467,6 +1467,122 @@ ShortDesc @@yC@@balor Thief Catcher@@N~
 Skills    786560
 SMagic    0
 SpecFun   spec_policeman
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1006
+AcMod     0
+Act       2 EOL
+Affected  184
+Alignment 0
+Cast      0
+Clan      0
+Class     3
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     140
+LongDesc  @@eS@@Rerei @@bthe blacksmith is here crafting new armor and weapons.@@N~
+PlrName   serei blacksmith~
+Position  0
+Race      2
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@eS@@Rerei@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1007
+AcMod     0
+Act       2 EOL
+Affected  184
+Alignment 0
+Cast      0
+Clan      0
+Class     1
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     140
+LongDesc  @@lA@@Bnnibelle @@bthe baker is here selling delicious smelling treats!@@N~
+PlrName   annibelle baker~
+Position  0
+Race      4
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@lA@@Bnnibelle@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1008
+AcMod     0
+Act       2 EOL
+Affected  184
+Alignment 0
+Cast      0
+Clan      0
+Class     0
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     140
+LongDesc  @@rE@@Gvindrix @@bthe alchemist is brewing up magical potions!@@N~
+PlrName   evindrix alchemist~
+Position  0
+Race      4
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@rE@@Gvindrix@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1009
+AcMod     0
+Act       2 EOL
+Affected  184
+Alignment 0
+Cast      0
+Clan      0
+Class     2
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     140
+LongDesc  @@pG@@mriftah @@bis slyly trying to sell his shiny baubles...@@N~
+PlrName   griftah trinket~
+Position  0
+Race      13
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@pG@@mriftah@@N~
+Skills    0
+SMagic    0
+SpecFun   spec_thief
 Suscept   0
 WMagic    0
 End
@@ -2002,6 +2118,358 @@ End
 Location   18
 Modifier   62
 End
+
+#OBJECT
+Vnum       1025
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   An old @@diron sword @@Nis discarded here.~
+Name       iron sword~
+ObjFun     (null)
+ShortDesc  @@dIron Sword@@N~
+Speed      3.30
+Type       5
+Values     0 4 10 3 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     10
+End
+#OAFFECT
+Location   19
+Modifier   7
+End
+#OAFFECT
+Location   18
+Modifier   5
+End
+
+#OBJECT
+Vnum       1026
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   An old @@diron helm@@N is discarded here.~
+Name       iron helm~
+ObjFun     (null)
+ShortDesc  @@dIron Helm@@N~
+Speed      3.23
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  4 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -6
+End
+#OAFFECT
+Location   13
+Modifier   3
+End
+
+#OBJECT
+Vnum       1027
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   An old suit of @@diron platemail @@Nis discarded here.~
+Name       iron platemail~
+ObjFun     (null)
+ShortDesc  @@dIron Platemail@@N~
+Speed      2.21
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  19 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -18
+End
+#OAFFECT
+Location   13
+Modifier   10
+End
+#OAFFECT
+Location   18
+Modifier   2
+End
+#OAFFECT
+Location   12
+Modifier   3
+End
+
+#OBJECT
+Vnum       1028
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   An old @@diron shield@@N is discarded here.~
+Name       iron shield~
+ObjFun     (null)
+ShortDesc  @@dIron Shield@@N~
+Speed      2.21
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -15
+End
+#OAFFECT
+Location   13
+Modifier   7
+End
+#OAFFECT
+Location   24
+Modifier   -1
+End
+
+#OBJECT
+Vnum       1029
+Durability 35
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@bA @@dcho@@bcol@@date @@Wcupcake@@N sits here waiting to be eaten!~
+Name       chocolate cupcake~
+ObjFun     (null)
+ShortDesc  @@ba @@dCho@@bcol@@date @@WCupcake@@N~
+Speed      2.11
+Type       19
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1030
+Durability 30
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A bottle of @@Rcherry @@dflavored @@awater@@N sits here waiting to be drank!~
+Name       cherry flavored water~
+ObjFun     (null)
+ShortDesc  @@RCherry @@dFlavored @@aWater@@N~
+Speed      4.00
+Type       17
+Values     20 20 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1031
+Durability 15
+ExtraFlags EOL
+ItemApply  1
+Level      3
+LongDesc   A @@Rlight healing potion@@N has been carelessly discarded.~
+Name       light healing potion~
+ObjFun     (null)
+ShortDesc  @@RLight Healing Potion@@N~
+Speed      2.40
+Type       10
+Values     3 26 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1032
+Durability 190
+ExtraFlags EOL
+ItemApply  1
+Level      38
+LongDesc   A @@ese@@Rrio@@eus @@Rhealing potion@@N has been carelessly discarded.~
+Name       serious healing potion~
+ObjFun     (null)
+ShortDesc  @@eSe@@Rrio@@eus @@RHealing Potion@@N~
+Speed      4.00
+Type       10
+Values     38 28 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1033
+Durability 285
+ExtraFlags EOL
+ItemApply  1
+Level      57
+LongDesc   A @@ecri@@Rti@@ecal @@Rhealing potion@@N has been carelessly discarded.~
+Name       critical healing potion~
+ObjFun     (null)
+ShortDesc  @@eCri@@Rti@@ecal @@RHealing Potion@@N~
+Speed      3.01
+Type       10
+Values     57 25 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1034
+Durability 365
+ExtraFlags EOL
+ItemApply  1
+Level      73
+LongDesc   A @@ehealing @@Rpotion@@N has been carelessly discarded.~
+Name       healing potion~
+ObjFun     (null)
+ShortDesc  @@eHealing @@RPotion@@N~
+Speed      1.32
+Type       10
+Values     73 56 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1035
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   A @@Gt@@roa@@Gd @@Nshaped @@Gch@@ra@@Grm @@Nsparkles brightly.~
+Name       small toad charm~
+ObjFun     (null)
+ShortDesc  @@ra @@Gsm@@ra@@Gll t@@roa@@Gd ch@@ra@@Grm@@N~
+Speed      2.01
+Type       33
+Values     1 2 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1037
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   A @@pu@@mn@@pi@@mc@@po@@mrn @@Nshaped ch@@pa@@mrm@@N sparkles brightly.~
+Name       small unicorn charm~
+ObjFun     (null)
+ShortDesc  @@pa @@msm@@pa@@mll @@pu@@mn@@pi@@mc@@po@@mrn ch@@pa@@mrm@@N~
+Speed      2.41
+Type       33
+Values     0 2 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1036
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   A @@Rrh@@ei@@Rn@@eo @@Nshaped @@Rch@@ea@@Rrm@@N sparkles brightly.~
+Name       small rhino charm~
+ObjFun     (null)
+ShortDesc  @@ea @@Rsm@@ea@@Rll rh@@ei@@Rn@@eo @@Rch@@ea@@Rrm@@N~
+Speed      1.11
+Type       33
+Values     2 2 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1038
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   A c@@Wo@@dw @@Nshaped @@dch@@Wa@@drm@@N sparkles brightly.~
+Name       small cow charm~
+ObjFun     (null)
+ShortDesc  @@Wa @@dsm@@Wa@@dll c@@Wo@@dw ch@@Wa@@drm@@N~
+Speed      2.11
+Type       33
+Values     3 2 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1039
+Durability 50
+ExtraFlags EOL
+ItemApply  1
+Level      10
+LongDesc   A l@@yi@@bz@@ya@@brd @@Nshaped @@bch@@ya@@brm@@N sparkles brightly.~
+Name       small lizard charm~
+ObjFun     (null)
+ShortDesc  @@ya @@bsm@@ya@@bll l@@yi@@bz@@ya@@brd ch@@ya@@brm@@N~
+Speed      3.03
+Type       33
+Values     4 2 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1040
+Durability 600
+ExtraFlags EOL
+ItemApply  1
+Level      120
+LongDesc   A @@zm@@zu@@zs@@zh@@zr@@zo@@zo@@zm @@Nshaped @@zc@@zh@@za@@zr@@zm@@N sparkles brightly.~
+Name       mushroom charm~
+ObjFun     (null)
+ShortDesc  @@za @@zm@@zu@@zs@@zh@@zr@@zo@@zo@@zm @@zc@@zh@@za@@zr@@zm@@N~
+Speed      4.00
+Type       33
+Values     5 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#SHOP
+Keeper    1006
+BuyType   1 9 5 0 0 
+HourClose 22
+HourOpen  6
+ProfBuy   110
+ProfSell  85
+End
+
+#SHOP
+Keeper    1007
+BuyType   17 19 0 0 0 
+HourClose 22
+HourOpen  6
+ProfBuy   110
+ProfSell  85
+End
+
+#SHOP
+Keeper    1008
+BuyType   10 26 0 0 0 
+HourClose 22
+HourOpen  6
+ProfBuy   110
+ProfSell  85
+End
+
+#SHOP
+Keeper    1009
+BuyType   8 0 0 0 0 
+HourClose 22
+HourOpen  6
+ProfBuy   1000
+ProfSell  85
+End
 #RESETS
 O 1001 1 1001 
 
@@ -2074,6 +2542,45 @@ M 1005 1 1044
 E 1024 0 0 
 
 E 1024 0 0 
+
+M 1006 1 1007 
+
+G 1028 0 
+
+G 1027 0 
+
+G 1026 0 
+
+G 1025 0 
+
+M 1007 1 1009 
+
+G 1030 0 
+
+G 1029 0 
+
+M 1008 1 1010 
+
+G 1034 0 
+
+G 1033 0 
+
+G 1032 0 
+
+G 1031 0 
+
+M 1009 1 1008 
+
+G 1040 0 
+G 1038 0 
+
+G 1039 0 
+
+G 1036 0 
+
+G 1037 0 
+
+G 1035 0 
 
 S
 #$

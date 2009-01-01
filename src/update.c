@@ -460,6 +460,9 @@ int hit_gain( CHAR_DATA * ch )
          gain *= 2;
    }
 
+   if( check_charm_aff(ch,CHARM_AFF_REGEN) )
+    gain *= ((100 + get_charm_bonus(ch,CHARM_AFF_REGEN)) / 100);
+
    if( IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_STEAL ) )
       if( gain > 0 )
          gain *= -1;
@@ -555,6 +558,9 @@ int mana_gain( CHAR_DATA * ch )
    if( IS_AFFECTED( ch, AFF_POISON ) )
       gain /= 4;
 
+   if( check_charm_aff(ch,CHARM_AFF_REGEN) )
+    gain *= ((100 + get_charm_bonus(ch,CHARM_AFF_REGEN)) / 100);
+
    if( !IS_NPC( ch ) && ( gain > 0 ) )
    {
       if( IS_SET( race_table[ch->race].race_flags, RACE_MOD_NO_MAGIC ) )
@@ -639,6 +645,8 @@ int move_gain( CHAR_DATA * ch )
    if( IS_AFFECTED( ch, AFF_POISON ) )
       gain /= 4;
 
+   if( check_charm_aff(ch,CHARM_AFF_REGEN) )
+    gain *= ((100 + get_charm_bonus(ch,CHARM_AFF_REGEN)) / 100);
 
    return UMIN( static_cast<int>(gain), ch->max_move - ch->move );
 }
@@ -1517,12 +1525,14 @@ void char_update( void )
             check_vamp( ch );
          }
 
-         gain_condition( ch, COND_THIRST, 0 - number_range( 1, 2 ) );
+         if( !check_charm_aff(ch,CHARM_AFF_HUNGERLESS) )
+          gain_condition( ch, COND_THIRST, 0 - number_range( 1, 2 ) );
          if( ch->pcdata->condition[COND_THIRST] <= 10 )
             ch->pcdata->condition[COND_THIRST] = 10;
          gain_condition( ch, COND_DRUNK, 0 - number_range( 1, 2 ) );
          if( !IS_VAMP( ch ) )
          {
+          if( !check_charm_aff(ch,CHARM_AFF_HUNGERLESS) )
             gain_condition( ch, COND_FULL, 0 - number_range( 1, 2 ) );
 
          }

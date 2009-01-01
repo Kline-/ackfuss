@@ -1168,6 +1168,18 @@ char *item_type_name( OBJ_DATA * obj )
          return "enchantment";
       case ITEM_PORTAL:
          return "portal";
+      case ITEM_CHARM:
+         return "charm";
+      case ITEM_ANVIL:
+         return "anvil";
+      case ITEM_COOKING_FIRE:
+         return "cooking fire";
+      case ITEM_ALCHEMY_LAB:
+         return "alchemy lab";
+      case ITEM_FORGE:
+         return "forge";
+      case ITEM_LOOM:
+         return "loom";
 
    }
 
