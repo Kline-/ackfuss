@@ -2744,6 +2744,12 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
       default:
          bugf( "create_object: vnum %d bad type %d.", pObjIndex->vnum, obj->item_type );
          break;
+      case ITEM_CHARM:
+      case ITEM_ANVIL:
+      case ITEM_COOKING_FIRE:
+      case ITEM_ALCHEMY_LAB:
+      case ITEM_FORGE:
+      case ITEM_LOOM:
       case ITEM_SPELL_MATRIX:
       case ITEM_ENCHANTMENT:
       case ITEM_LIGHT:

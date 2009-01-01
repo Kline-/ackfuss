@@ -2668,7 +2668,13 @@ int get_cost( CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy )
       return 0;
    if( fBuy )
    {
-      cost = obj->cost * pShop->profit_buy / 100;
+      cost = obj->cost;
+      if( obj->item_type == ITEM_CHARM )
+      {
+       cost += 1000;
+       cost += (obj->level * 100);
+      }
+      cost *= pShop->profit_buy / 100;
    }
    else
    {

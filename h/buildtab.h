@@ -27,6 +27,7 @@ extern LOOKUP_TYPE tab_mob_class[];
 extern LOOKUP_TYPE tab_value_meanings[];
 extern LOOKUP_TYPE tab_drink_types[];
 extern LOOKUP_TYPE tab_weapon_types[];
+extern LOOKUP_TYPE tab_charm_types[];
 extern LOOKUP_TYPE tab_mob_act[];
 extern LOOKUP_TYPE tab_player_act[];
 extern LOOKUP_TYPE tab_affected_by[];

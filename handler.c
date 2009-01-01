@@ -2808,3 +2808,31 @@ void remove_shield( CHAR_DATA * ch, MAGIC_SHIELD * shield )
 
    return;
 }
+
+bool check_charm_aff( CHAR_DATA *ch, short charm_aff )
+{
+ OBJ_DATA *obj;
+
+ if( ch == NULL || charm_aff < 1 )
+  return false;
+
+ for( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
+  if( obj->wear_loc == WEAR_NONE && obj->item_type == ITEM_CHARM && obj->value[CHARM_AFF] == charm_aff )
+   return true;
+
+ return false;
+}
+
+short get_charm_bonus( CHAR_DATA *ch, short charm_aff )
+{
+ OBJ_DATA *obj;
+
+ if( ch == NULL || charm_aff < 1 )
+  return 0;
+
+ for( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
+  if( obj->wear_loc == WEAR_NONE && obj->item_type == ITEM_CHARM && obj->value[CHARM_AFF] == charm_aff )
+   return obj->value[CHARM_BONUS];
+
+ return 0;
+}

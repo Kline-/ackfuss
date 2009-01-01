@@ -89,5 +89,7 @@ CHAR_DATA *unswitch_char P_((CHAR_DATA *victim));
 void set_stun P_((CHAR_DATA *victim, int stunTime));
 bool is_shielded P_((CHAR_DATA *ch, short shield_type));
 void remove_shield P_((CHAR_DATA *ch, MAGIC_SHIELD *shield));
+bool check_charm_aff P_((CHAR_DATA *ch, short charm_aff));
+short get_charm_bonus P_((CHAR_DATA *ch, short charm_aff));
 
 #undef P_

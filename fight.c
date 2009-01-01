@@ -732,7 +732,6 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
       else
          dam = UMAX( number_range( 2, 4 ), ch->level / 4 );
    }
-
    /*
     * Bonuses.
     */
@@ -764,8 +763,12 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
       dam *= 1.1;
    if( IS_AFFECTED( ch, AFF_CLOAK_ADEPT ) )
       dam *= 1.2;
-   if( dam <= 0 )
-      dam = 1;
+   if( check_charm_aff(ch,CHARM_AFF_BATTLE) )
+      dam *= ((100 + get_charm_bonus(ch,CHARM_AFF_BATTLE)) / 100);
+   if( check_charm_aff(victim,CHARM_AFF_BATTLE) )
+      dam *= ((100 - get_charm_bonus(victim,CHARM_AFF_BATTLE)) / 100);
+   if( dam < 0 )
+      dam = 0;
    shield = NULL;
    if( IS_SHIELD( shield = get_eq_char( victim, WEAR_HOLD_HAND_R ) ) )
    {
@@ -2565,6 +2568,9 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
        */
 
       gain = old_gain;
+
+      if( check_charm_aff(gch,CHARM_AFF_EXP) )
+       gain *= ((100 + get_charm_bonus(ch,CHARM_AFF_EXP)) / 100);
 
       percent = (get_psuedo_level(gch) / tot_level);
       gain *= percent;

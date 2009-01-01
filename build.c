@@ -598,6 +598,14 @@ void build_showobj( CHAR_DATA * ch, char *argument )
          else
             snprintf( buf, MSL, "                  @@y(%s)@@g\r\n", foo );
       }
+      else if( is_name( "Charm", rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) ) )
+      {
+         foo = rev_table_lookup( tab_charm_types, obj->value[cnt] );
+         if( foo[0] == '\0' )
+            snprintf( buf, MSL, "                  @@R(INVALID!)@@g\r\n" );
+         else
+            snprintf( buf, MSL, "                  @@y(%s)@@g\r\n", foo );
+      }
       else
          snprintf( buf, MSL, "@@g\r\n" );
       strncat( buf1, buf, MSL );
