@@ -126,6 +126,7 @@ extern int control;
 void do_transdm( CHAR_DATA * ch, char *argument )
 {
    CHAR_DATA *wch;
+   std::list<CHAR_DATA *>::iterator li;
    int room;
    char buf[MAX_STRING_LENGTH];
    ROOM_INDEX_DATA *location;
@@ -136,8 +137,9 @@ void do_transdm( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   for( wch = first_char; wch != NULL; wch = wch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      wch = *li;
       if( !IS_NPC( wch ) && ( ch != wch ) )
       {
          if( IS_IMMORTAL( wch ) && ( wch != ch ) )
@@ -243,7 +245,6 @@ void do_deny( CHAR_DATA * ch, char *argument )
 //      victim = d.character;
 //      d.character = NULL;
 //      victim->desc = NULL;
-//      LINK( victim, first_char, last_char, next, prev );
    }
 
    if( IS_NPC( victim ) )
@@ -513,7 +514,6 @@ void do_transfer( CHAR_DATA * ch, char *argument )
 //      victim = df.character;
 //      df.character = NULL;
 //      victim->desc = NULL;
-//      LINK( victim, first_char, last_char, next, prev );
    }
    if( victim->in_room == NULL )
    {
@@ -544,6 +544,7 @@ void do_at( CHAR_DATA * ch, char *argument )
    ROOM_INDEX_DATA *location;
    ROOM_INDEX_DATA *original;
    CHAR_DATA *wch;
+   std::list<CHAR_DATA *>::iterator li;
 
    argument = one_argument( argument, arg );
 
@@ -574,8 +575,9 @@ void do_at( CHAR_DATA * ch, char *argument )
     * See if 'ch' still exists before continuing!
     * Handles 'at XXXX quit' case.
     */
-   for( wch = first_char; wch != NULL; wch = wch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      wch = *li;
       if( wch == ch )
       {
          char_from_room( ch );
@@ -1434,6 +1436,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
+   std::list<CHAR_DATA *>::iterator li;
    bool found;
 
    one_argument( argument, arg );
@@ -1444,8 +1447,9 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
    }
    if( !str_cmp( arg, "int" ) )
    {
-      for( victim = first_char; victim != NULL; victim = victim->next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
+         victim = *li;
          if( AI_MOB(victim) && victim->in_room != NULL )
          {
             snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\r\n",
@@ -1458,8 +1462,9 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
    }
 
    found = FALSE;
-   for( victim = first_char; victim != NULL; victim = victim->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      victim = *li;
       if( IS_NPC( victim ) && victim->in_room != NULL && is_name( arg, victim->name ) )
       {
          found = TRUE;
@@ -1902,12 +1907,11 @@ void do_restore( CHAR_DATA * ch, char *argument )
        * then loop through all players and restore them 
        */
       CHAR_DATA *vch;
-      CHAR_DATA *vch_next;
+      std::list<CHAR_DATA *>::iterator li;
 
-
-      for( vch = first_char; vch != NULL; vch = vch_next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
-         vch_next = vch->next;
+         vch = *li;
          if( !IS_NPC( vch ) )
          {
             if( IS_IMMORTAL( vch ) && ( vch != ch ) )
@@ -2054,7 +2058,6 @@ void do_log( CHAR_DATA * ch, char *argument )
 //      victim = d.character;
 //      d.character = NULL;
 //      victim->desc = NULL;
-//      LINK( victim, first_char, last_char, next, prev );
    }
 
    if( IS_NPC( victim ) )
@@ -2297,6 +2300,7 @@ void do_ban( CHAR_DATA * ch, char *argument )
    char buf2[MSL];
 
    BAN_DATA *pban;
+   std::list<BAN_DATA *>::iterator li;
    buf[0] = '\0';
    buf2[0] = '\0';
 
@@ -2311,8 +2315,9 @@ void do_ban( CHAR_DATA * ch, char *argument )
    if( arg[0] == '\0' )
    {
       strcpy( buf, "Banned sites:\r\n" );
-      for( pban = first_ban; pban != NULL; pban = pban->next )
+      for( li = ban_list.begin(); li != ban_list.end(); li++ )
       {
+         pban = *li;
          strncat( buf, pban->name, MSL );
          snprintf( buf2, MSL, ( pban->newbie ? " Newbies" : " All" ) );
          strncat( buf, buf2, MSL );
@@ -2324,8 +2329,9 @@ void do_ban( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   for( pban = first_ban; pban != NULL; pban = pban->next )
+   for( li = ban_list.begin(); li != ban_list.end(); li++ )
    {
+      pban = *li;
       if( !str_cmp( arg, pban->name ) )
       {
          send_to_char( "That site is already banned!\r\n", ch );
@@ -2341,7 +2347,7 @@ void do_ban( CHAR_DATA * ch, char *argument )
 
    pban->name = str_dup( arg );
    pban->banned_by = str_dup( ch->name );
-   LINK( pban, first_ban, last_ban, next, prev );
+   ban_list.push_back(pban);
    save_bans(  );
    send_to_char( "Ok.\r\n", ch );
    return;
@@ -2353,6 +2359,7 @@ void do_allow( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    BAN_DATA *curr;
+   std::list<BAN_DATA *>::iterator li;
 
    one_argument( argument, arg );
 
@@ -2362,12 +2369,12 @@ void do_allow( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   for( curr = first_ban; curr != NULL; curr = curr->next )
+   for( li = ban_list.begin(); li != ban_list.end(); li++ )
    {
+      curr = *li;
       if( !str_cmp( arg, curr->name ) )
       {
-         UNLINK( curr, first_ban, last_ban, next, prev );
-
+         ban_list.remove(curr);
          delete curr;
          send_to_char( "Ok.\r\n", ch );
          save_bans(  );
@@ -2407,11 +2414,11 @@ void do_deathmatch( CHAR_DATA * ch, char *argument )
    if( deathmatch )
    {
       CHAR_DATA *vch;
-      CHAR_DATA *vch_next;
+      std::list<CHAR_DATA *>::iterator li;
 
-      for( vch = first_char; vch != NULL; vch = vch_next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
-         vch_next = vch->next;
+         vch = *li;
          if( !IS_NPC( vch ) )
             do_help( vch, "dm" );
       }
@@ -3684,6 +3691,7 @@ void do_force( CHAR_DATA * ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    int trust;
    int cmd;
+   std::list<CHAR_DATA *>::iterator li;
 
    argument = one_argument( argument, arg );
 
@@ -3718,7 +3726,6 @@ void do_force( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg, "everymob" ) )
    {
       CHAR_DATA *vch;
-      CHAR_DATA *vch_next;
 
       if( ch->level < MAX_LEVEL )
       {
@@ -3726,9 +3733,9 @@ void do_force( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      for( vch = first_char; vch != NULL; vch = vch_next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
-         vch_next = vch->next;
+         vch = *li;
 
          if( IS_NPC( vch ) )
          {
@@ -3745,11 +3752,10 @@ void do_force( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg, "localmobs" ) )
    {
       CHAR_DATA *vim;
-      CHAR_DATA *vim_next;
 
-      for( vim = first_char; vim != NULL; vim = vim_next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
-         vim_next = vim->next;
+         vim = *li;
 
          if( IS_NPC( vim ) && ( vim->in_room->area == ch->in_room->area ) )
          {
@@ -3762,11 +3768,10 @@ void do_force( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg, "all" ) )
    {
       CHAR_DATA *vch;
-      CHAR_DATA *vch_next;
 
-      for( vch = first_char; vch != NULL; vch = vch_next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
-         vch_next = vch->next;
+         vch = *li;
 
          if( !IS_NPC( vch ) && !IS_IMMORTAL( vch ) )
          {
@@ -4193,6 +4198,7 @@ void do_iwhere( CHAR_DATA * ch, char *argument )
     */
 
    CHAR_DATA *vch;
+   std::list<CHAR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    char buf2[MAX_STRING_LENGTH];
    int count = 0;
@@ -4202,8 +4208,9 @@ void do_iwhere( CHAR_DATA * ch, char *argument )
    send_to_char( "Name          Room        Area\r\n", ch );
    send_to_char( "----          ----        ----\r\n", ch );
 
-   for( vch = first_char; vch != NULL; vch = vch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      vch = *li;
       if( !IS_NPC( vch ) && can_see( ch, vch ) && !vch->switched )
       {
 
@@ -4785,11 +4792,13 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
     * Rewritten to suit new hunt functions.. :) -- Alty 
     */
    CHAR_DATA *lch;
+   std::list<CHAR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    bool found = FALSE;
 
-   for( lch = first_char; lch; lch = lch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      lch = *li;
       if( !lch->hunting && !lch->hunt_obj )
       {
          if( lch->searching )
@@ -4821,59 +4830,6 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
       send_to_char( "No one is currently hunting.\r\n", ch );
    return;
 }
-
-/*   char buf[MAX_STRING_LENGTH];
-   CHAR_DATA *victim;
-   
-   for ( victim = first_char; victim != NULL; victim = victim->next )
-   {
-    if ( IS_NPC( victim ) 
-    && IS_SET( victim->act_hunt, ACT_HUNT_MOVE )
-    && victim->move_to != NO_VNUM )
-    {
-       snprintf( buf, MSL, "[%s] Moving to (%d) %s.g\r\n", 
-          victim->short_descr,
-          victim->move_to,
-          victim->movename );
-       strncat( buf1, buf, MSL );
-    }
-    
-    
-    if ( IS_NPC(victim) && victim->hunting != NULL)
-    {
-       switch( (int) victim->hunting)
-       {
-        case -1:
-         snprintf(buf, "[%s] Hunting: %s (waiting)\r\n",
-            victim->short_descr,
-            victim->huntname);
-         strncat(buf1,buf,MSL);
-         break;
-         
-        case -2:
-         snprintf(buf, "[%s] Returning home\r\n", victim->short_descr);
-         strncat(buf1,buf,MSL);
-         break;
-         
-        default:
-         snprintf(buf, "[%s] Hunting: %s",
-                victim->short_descr,
-                IS_NPC(victim->hunting) ? victim->hunting->short_descr
-                                        : victim->hunting->name );
-         strncat(buf1, buf, MSL);
-         if (victim->huntdirs != NULL)
-         {
-          snprintf(buf," (%i steps)",
-                             strlen(victim->huntdirs)-victim->huntdirno);
-          strncat(buf1,buf,MSL);
-         }
-         strncat( buf1, "\r\n", MSL );
-       }
-    }
-   } 
-    send_to_char( buf1, ch );
-    return;
-}*/
 
 void do_sstat( CHAR_DATA * ch, char *argument )
 {
@@ -5506,7 +5462,8 @@ void do_for( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    bool fGods = FALSE, fMortals = FALSE, fMobs = FALSE, fEverywhere = FALSE, found;
    ROOM_INDEX_DATA *room, *old_room;
-   CHAR_DATA *p, *p_next;
+   CHAR_DATA *p;
+   std::list<CHAR_DATA *>::iterator li;
    int i;
 
    disable_timer_abort = TRUE;
@@ -5563,9 +5520,9 @@ void do_for( CHAR_DATA * ch, char *argument )
 
    if( strchr( argument, '#' ) ) /* replace # ? */
    {
-      for( p = first_char; p; p = p_next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
-         p_next = p->next; /* In case someone DOES try to AT MOBS SLAY # */
+         p = *li;
          found = FALSE;
 
          if( !( p->in_room ) || room_is_private( p->in_room ) || ( p == ch ) )
@@ -5798,12 +5755,12 @@ void do_owear( CHAR_DATA * ch, char *argument )
 
 void do_areasave( CHAR_DATA * ch, char *argument )
 {
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    AREA_DATA *pArea;
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       area_modified( pArea );
    }
    send_to_char( "Done.\r\n", ch );
@@ -5864,7 +5821,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
    snprintf( outbuf, MSL, "Resets for %s %d:\r\n", arg1, vnum );
    if( mworld )
    {
-      std::list<AREA_DATA *>::iterator i;
+      std::list<AREA_DATA *>::iterator li;
       AREA_DATA *pArea;
 
       pMob = get_mob_index( vnum );
@@ -5873,9 +5830,9 @@ void do_findreset( CHAR_DATA * ch, char *argument )
          send_to_char( "Invalid mobile.\r\n", ch );
          return;
       }
-      for( i = area_list.begin(); i != area_list.end(); i++ )
+      for( li = area_list.begin(); li != area_list.end(); li++ )
       {
-         pArea = *i;
+         pArea = *li;
          for( reset = pArea->first_reset; reset; reset = reset->next )
          {
             if( fmob )
@@ -5950,6 +5907,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
 void do_census( CHAR_DATA *ch, char *argument )
 {
  CHAR_DATA *vch;
+ std::list<CHAR_DATA *>::iterator li;
  char buf[MSL];
  int rcnt[MAX_RACE];
  int ccnt[MAX_CLASS];
@@ -5976,8 +5934,9 @@ void do_census( CHAR_DATA *ch, char *argument )
   snprintf(buf,MSL,"Census For: %s",mudnamecolor);
   send_to_char(center_text(buf,132),ch);
   send_to_char("\r\n------------------------------------------------------------------------------------------------------------------------------------\r\n",ch);
-  for( vch = first_char; vch != NULL; vch = vch->next )
+  for( li = char_list.begin(); li != char_list.end(); li++ )
   {
+   vch = *li;
    if( !IS_NPC(vch) )
     continue;
    rcnt[vch->race]++;
@@ -5990,8 +5949,9 @@ void do_census( CHAR_DATA *ch, char *argument )
   snprintf(buf,MSL,"Census For: %s",ch->in_room->area->name);
   send_to_char(center_text(buf,132),ch);
   send_to_char("\r\n------------------------------------------------------------------------------------------------------------------------------------\r\n",ch);
-  for( vch = first_char; vch != NULL; vch = vch->next )
+  for( li = char_list.begin(); li != char_list.end(); li++ )
   {
+   vch = *li;
    if( !IS_NPC(vch) )
     continue;
    if( vch->in_room->area != ch->in_room->area )

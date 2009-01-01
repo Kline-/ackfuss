@@ -230,9 +230,11 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   }
   else if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R || ch->pcdata->quest_info->quest_type == QUEST_KILLING_R )
   {
-   CHAR_DATA *mob;
-   for( mob = first_char; mob != NULL; mob = mob->next )
+   CHAR_DATA *mob = NULL;
+   std::list<CHAR_DATA *>::iterator li;
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+    mob = *li;
     if( !IS_NPC(mob) )
      continue;
     if( mob->in_room == NULL )
@@ -564,11 +566,13 @@ void mquest_info( CHAR_DATA *ch )
 
     if( ch->pcdata->quest_info->amount[0] > 0 )
     {
-     CHAR_DATA *mob;
+     CHAR_DATA *mob = NULL;
+     std::list<CHAR_DATA *>::iterator li;
      snprintf(buf,MSL,"Your quest contract states that you must slay %d more of them.\r\n",ch->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
-     for( mob = first_char; mob != NULL; mob = mob->next )
+     for( li = char_list.begin(); li != char_list.end(); li++ )
      {
+      mob = *li;
       if( !IS_NPC(mob) )
        continue;
       if( mob->in_room == NULL )
@@ -595,9 +599,11 @@ void mquest_info( CHAR_DATA *ch )
    {
     if( ch->pcdata->quest_info->quest_mob_vnum[i] > -1 )
     {
-     CHAR_DATA *mob;
-     for( mob = first_char; mob != NULL; mob = mob->next )
+     CHAR_DATA *mob = NULL;
+     std::list<CHAR_DATA *>::iterator li;
+     for( li = char_list.begin(); li != char_list.end(); li++ )
      {
+      mob = *li;
       if( !IS_NPC(mob) )
        continue;
       if( mob->in_room == NULL )
@@ -939,11 +945,13 @@ void generate_killing_quest( CHAR_DATA *ch )
 
 CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
 {
- CHAR_DATA *mob;
+ CHAR_DATA *mob = NULL;
+ std::list<CHAR_DATA *>::iterator li;
  int i = number_range(0,top_mob_index-1);
 
- for( mob = first_char; mob != NULL; mob  = mob->next )
+ for( li = char_list.begin(); li != char_list.end(); li++ )
  {
+  mob = *li;
   i--;
 
   if( i > 0 )  /* Add some variety to where we start in the ch_list */

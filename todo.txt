@@ -16,3 +16,4 @@ make class order matter
 adjust max class down to 3 perm
 use std::string omg amazing
 professions (added anvil/forge, alchemy lab, etc)
+update aoe spells to use room lists not global (see influx)

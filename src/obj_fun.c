@@ -202,7 +202,7 @@ void objfun_infused_soul( OBJ_DATA * obj, CHAR_DATA * keeper )
          if( victim->fighting == keeper && number_bits( 1 ) == 0 )
             break;
 
-      if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
+      if( victim == NULL )
          return;
 
       switch ( number_range( 0, 3 ) )
@@ -270,7 +270,7 @@ void objfun_cast_fight( OBJ_DATA * obj, CHAR_DATA * keeper )
       if( victim->fighting == keeper && number_bits( 2 ) == 0 )
          break;
 
-   if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
+   if( victim == NULL )
       return;
    switch ( number_range( 0, 5 ) )
    {
@@ -375,7 +375,7 @@ void objfun_flaming( OBJ_DATA * obj, CHAR_DATA * keeper )
       }
       return;
    }
-   if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
+   if( victim == NULL )
       return;
 
    if( ( get_eq_char( keeper, WEAR_HOLD_HAND_L ) != obj ) && ( get_eq_char( keeper, WEAR_HOLD_HAND_R ) != obj ) )
@@ -519,7 +519,7 @@ void objfun_dispeller( OBJ_DATA * obj, CHAR_DATA * keeper )
       }
       return;
    }
-   if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
+   if( victim == NULL )
       return;
 
    if( ( get_eq_char( keeper, WEAR_HOLD_HAND_L ) != obj ) && ( get_eq_char( keeper, WEAR_HOLD_HAND_R ) != obj ) )

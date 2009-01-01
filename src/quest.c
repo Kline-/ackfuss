@@ -432,18 +432,20 @@ void do_quest( CHAR_DATA * ch, char *argument )
 
 CHAR_DATA *get_quest_target( int min_level, int max_level )
 {
-   CHAR_DATA *target;
+   CHAR_DATA *target = NULL;
+   std::list<CHAR_DATA *>::iterator li;
    int min_index = 0;   /* the minimum number of times to go through the list */
 
    if( max_level > 140 )
       max_level = 140;
    min_index = number_range(0,top_mob_index-1);
 
-   for( target = first_char; target != NULL; target = target->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      target = *li;
       if( !IS_NPC( target ) )
          continue;
-      min_index -= 1;
+      min_index--;
 
       if( min_index > 0 )
          continue;
@@ -504,20 +506,18 @@ OBJ_DATA *load_quest_object( CHAR_DATA * target )
 
 CHAR_DATA *get_quest_giver( int min_level, int max_level )
 {
-   CHAR_DATA *target;
+   CHAR_DATA *target = NULL;
+   std::list<CHAR_DATA *>::iterator li;
    int min_index = 0;
 
-
-
-/*   int max_distance = 20; unused */
-/*   char *dirs = NULL; unused */
    min_index = number_range(0,top_mob_index-1);
 
-   for( target = first_char; target != NULL; target = target->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      target = *li;
       if( !IS_NPC( target ) )
          continue;
-      min_index -= 1;
+      min_index--;
 
       if( min_index > 0 )
          continue;

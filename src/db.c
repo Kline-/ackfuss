@@ -408,8 +408,7 @@ void boot_db( void )
    /*
     * Clear lists out!
     */
-   area_list.clear();
-
+   clear_lists();
 
    /*
     * Start loading up data files!
@@ -916,7 +915,7 @@ void load_bans( void )
                pban->newbie = FALSE;
             pban->name = fread_string( bansfp );
             pban->banned_by = fread_string( bansfp );
-            LINK( pban, first_ban, last_ban, next, prev );
+            ban_list.push_back(pban);
             free_string( word );
          }
          else if( !str_cmp( word, "#END" ) )
@@ -1950,12 +1949,12 @@ void check_resets( void )
    RESET_DATA *pReset;
    RESET_DATA *nextReset;
    ROOM_INDEX_DATA *last_mob_room;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    int previous_bug = 0;
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       last_mob_room = NULL;
 
       for( pReset = pArea->first_reset; pReset; pReset = nextReset )
@@ -2105,21 +2104,23 @@ void check_resets( void )
 void area_update( void )
 {
    AREA_DATA *pArea;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
       CHAR_DATA *pch;
+      std::list<CHAR_DATA *>::iterator pi;
 
-      pArea = *i;
+      pArea = *li;
       pArea->age++;
       /*
        * Check for PC's.
        */
       if( ( pArea->nplayer > 0 ) && ( pArea->age >= ( pArea->reset_rate - 1 ) ) )
       {
-         for( pch = first_char; pch != NULL; pch = pch->next )
+         for( pi = char_list.begin(); pi != char_list.end(); pi++ )
          {
+            pch = *pi;
             if( !IS_NPC( pch ) && IS_AWAKE( pch ) && pch->in_room != NULL && pch->in_room->area == pArea && str_cmp(pArea->reset_msg,"off") )
             {
                char reset_buf[MSL];
@@ -2602,7 +2603,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    /*
     * Insert in list.
     */
-   LINK( mob, first_char, last_char, next, prev );
+   char_list.push_back(mob);
 
 //  Create group data for mob
 
@@ -3240,7 +3241,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
    char arg1[MSL];
    short foo;
    AREA_DATA *pArea;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    bool fall = FALSE;
 
    argument = one_argument( argument, arg1 );
@@ -3254,9 +3255,9 @@ void do_areas( CHAR_DATA * ch, char *argument )
    strncat( buf, "+-------+------------+------------------------------------------------+\r\n", MSL );
 
    foo = 0;
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       if( pArea->flags.test(AFLAG_NOSHOW) || pArea->flags.test(AFLAG_BUILDING) )
          continue;   /* for non-finished areas - don't show */
       if( ( !fall )
@@ -3965,11 +3966,11 @@ void message_update( void )
    AREA_DATA *pArea;
    ROOM_INDEX_DATA *pRoom;
    CHAR_DATA *ch;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       for( pReset = pArea->first_reset; pReset != NULL; pReset = pReset->next )
       {
          if( pReset->command != 'A' )
@@ -4273,4 +4274,11 @@ void file_close( FILE *file )
  fp_close++;
 
  return;
+}
+
+void clear_lists( void )
+{
+ area_list.clear();
+ ban_list.clear();
+// char_list.clear();
 }

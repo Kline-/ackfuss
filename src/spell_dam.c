@@ -663,10 +663,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    bool can_reflect = TRUE;
    bool can_absorb = TRUE;
 
-/*   char buf[MAX_STRING_LENGTH];   this is unused now -- uni */
-
-
-   if( ( victim->is_free == TRUE ) )
+   if( victim == NULL )
       return FALSE;
 
 /*

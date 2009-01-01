@@ -133,9 +133,6 @@ class ban_data
  public:
   ban_data();
   ~ban_data();
-  bool is_free;
-  BAN_DATA *next;
-  BAN_DATA *prev;
   char *name;
   char *banned_by;
   bool newbie;
@@ -620,7 +617,6 @@ class char_data
   MONEY_TYPE *money;
   int move;
   char *name;
-  CHAR_DATA *next;
   CHAR_DATA *next_in_room;
   bool npc; /* For NPC's, no more flag */
   NPC_DATA *npcdata;
@@ -633,7 +629,6 @@ class char_data
   int poly_level;
   short position;
   short practice;
-  CHAR_DATA *prev;
   CHAR_DATA *prev_in_room;
   char *prompt;
   short p_class;
@@ -1093,7 +1088,6 @@ class area_data
   BUILD_DATA_LIST         *first_area_shop;
   RESET_DATA              *first_reset;
   int                     gold;
-  bool                    is_free;
   char                    *keyword;
   BUILD_DATA_LIST         *last_area_mobile;
   BUILD_DATA_LIST         *last_area_mobprog;

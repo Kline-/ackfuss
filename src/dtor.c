@@ -46,7 +46,6 @@ area_data::~area_data()
  free_string(can_read);
  free_string(can_write);
  free_string(filename);
- is_free = true;
  free_string(keyword);
  free_string(level_label);
  free_string(name);
@@ -82,6 +81,7 @@ char_data::~char_data()
  AFFECT_DATA *paf;
  ROOM_INDEX_DATA *room;
  ROOM_AFFECT_DATA *raf;
+ std::list<CHAR_DATA *>::iterator li;
 
  is_free = true;
 
@@ -91,8 +91,9 @@ char_data::~char_data()
  while( first_affect != NULL )
   affect_remove(this,first_affect);
 
- for( rch = first_char; rch; rch = rch->next )
+ for( li = char_list.begin(); li != char_list.end(); li++ )
  {
+  rch = *li;
   if( rch->master == this )
    rch->master = NULL;
   if( rch->leader == this )

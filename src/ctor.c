@@ -58,7 +58,6 @@ area_data::area_data()
  first_area_shop = NULL;
  first_reset = NULL;
  gold = 0;
- is_free = false;
  keyword = &str_empty[0];
  last_area_mobile = NULL;
  last_area_mobprog = NULL;
@@ -81,9 +80,6 @@ area_data::area_data()
 
 ban_data::ban_data()
 {
- is_free = false;
- next = NULL;
- prev = NULL;
  name = &str_empty[0];
  banned_by = &str_empty[0];
  newbie = false;
@@ -181,7 +177,6 @@ char_data::char_data()
  money = NULL;
  move = 50;
  name = &str_empty[0];
- next = NULL;
  next_in_room = NULL;
  npc = false;
  npcdata = NULL;
@@ -194,7 +189,6 @@ char_data::char_data()
  poly_level = 0;
  position = POS_STANDING;
  practice = 21;
- prev = NULL;
  prev_in_room = NULL;
  prompt = &str_empty[0];
  p_class = 0;

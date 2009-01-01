@@ -181,7 +181,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
    FILE *out_file;
    int a;
    RESET_DATA *pReset;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    AREA_DATA *CurArea;
    BUILD_DATA_LIST *pList;
    ROOM_INDEX_DATA *pRoomIndex;
@@ -198,9 +198,9 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
 
    out_file = file_open( "area_changes.txt", "a" );
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      CurArea = *i;
+      CurArea = *li;
       min_vnum = CurArea->min_vnum;
       max_vnum = CurArea->max_vnum;
       fprintf( out_file, "%s:\n", CurArea->name );
@@ -329,9 +329,9 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
     * *      
     */
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      CurArea = *i;
+      CurArea = *li;
       for( pList = CurArea->first_area_room; pList != NULL; pList = pList->next )
       {
          /*

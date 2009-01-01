@@ -2689,6 +2689,7 @@ void do_where( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
+   std::list<CHAR_DATA *>::iterator li;
    DESCRIPTOR_DATA *d;
    bool found;
    buf[0] = '\0';
@@ -2721,8 +2722,9 @@ void do_where( CHAR_DATA * ch, char *argument )
    else
    {
       found = FALSE;
-      for( victim = first_char; victim != NULL; victim = victim->next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
+         victim = *li;
          /*
           * &&   victim->in_room->area == ch->in_room->area 
           * * taken out from below to allow global where use

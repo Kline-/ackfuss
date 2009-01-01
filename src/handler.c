@@ -910,9 +910,9 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
 
    ch->in_room = pRoomIndex;
    if( IS_NPC( ch ) )
-      TOPLINK( ch, pRoomIndex->first_person, pRoomIndex->last_person, next_in_room, prev_in_room );
+      TOPLINK( ch, ch->in_room->first_person, ch->in_room->last_person, next_in_room, prev_in_room );
    else
-      LINK( ch, pRoomIndex->first_person, pRoomIndex->last_person, next_in_room, prev_in_room );
+      LINK( ch, ch->in_room->first_person, ch->in_room->last_person, next_in_room, prev_in_room );
 
    if( !IS_NPC( ch ) )
       ++ch->in_room->area->nplayer;
@@ -947,7 +947,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
       }
    }
 
-   if( IS_SET( ch->in_room->affected_by, ROOM_BV_SHOCK_RUNE ) && ( ch->is_free == FALSE ) )
+   if( IS_SET( ch->in_room->affected_by, ROOM_BV_SHOCK_RUNE ) )
    {
       send_to_char
          ( "@@NAs you step into the room, you fleetingly see a mystical @@lShock@@N Rune suspended in front of you, which then @@lZAPS@@N You!!!\r\n",
@@ -967,7 +967,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
       }
    }
 
-   if( IS_SET( ch->in_room->affected_by, ROOM_BV_POISON_RUNE ) && ( ch->is_free == FALSE ) )
+   if( IS_SET( ch->in_room->affected_by, ROOM_BV_POISON_RUNE ) )
    {
       send_to_char
          ( "@@NAs you step into the room, you fleetingly see a mystical @@dPoison@@N Rune suspended in front of you, which then @@dEXPLODES@@N!!!\r\n",
@@ -1607,6 +1607,7 @@ void obj_from_obj( OBJ_DATA * obj )
  */
 void extract_obj( OBJ_DATA * obj )
 {
+   std::list<CHAR_DATA *>::iterator li;
    CHAR_DATA *wch;
    OBJ_DATA *obj_content;
    struct obj_ref_type *ref;
@@ -1685,10 +1686,11 @@ void extract_obj( OBJ_DATA * obj )
       }
    }
 
-   for( wch = first_char; wch; wch = wch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       MPROG_ACT_LIST *mpact;
 
+      wch = *li;
       if( wch->hunt_obj == obj )
          end_hunt( wch );
 /*        wch->hunt_obj = NULL;*/
@@ -1739,6 +1741,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
 {
    CHAR_DATA *wch;
    OBJ_DATA *this_object;
+   std::list<CHAR_DATA *>::iterator li;
    struct char_ref_type *ref;
 
 /*
@@ -1766,9 +1769,6 @@ void extract_char( CHAR_DATA * ch, bool fPull )
       if( *ref->var == ch )
          switch ( ref->type )
          {
-            case CHAR_NEXT:
-               *ref->var = ch->next;
-               break;
             case CHAR_NEXTROOM:
                *ref->var = ch->next_in_room;
                break;
@@ -1824,10 +1824,11 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    if( ch->desc != NULL && ch->desc->original != NULL )
       do_return( ch, "" );
 
-   for( wch = first_char; wch != NULL; wch = wch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       AFFECT_DATA *paf;
 
+      wch = *li;
       if( wch->reply == ch )
          wch->reply = NULL;
       if( wch->hunting == ch || wch->hunt_for == ch )
@@ -1930,9 +1931,10 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    if( IS_NPC(ch) && ch->npcdata->reset )
     ch->npcdata->reset->count--;
 
-   UNLINK( ch, first_char, last_char, next, prev );
    if( ch->desc )
       ch->desc->character = NULL;
+
+   char_list.remove(ch);
    delete ch;
    return;
 }
@@ -2019,6 +2021,7 @@ CHAR_DATA *get_char_world( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *wch;
+   std::list<CHAR_DATA *>::iterator li;
    int number;
    int count;
 
@@ -2027,8 +2030,9 @@ CHAR_DATA *get_char_world( CHAR_DATA * ch, char *argument )
 
    number = number_argument( argument, arg );
    count = 0;
-   for( wch = first_char; wch != NULL; wch = wch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      wch = *li;
       if( !can_see( ch, wch ) || !is_name( arg, wch->name ) )
          continue;
       if( ++count == number )
@@ -2042,6 +2046,7 @@ CHAR_DATA *get_char_area( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *ach;
+   std::list<CHAR_DATA *>::iterator li;
    int number;
    int count;
 
@@ -2050,8 +2055,9 @@ CHAR_DATA *get_char_area( CHAR_DATA * ch, char *argument )
 
    number = number_argument( argument, arg );
    count = 0;
-   for( ach = first_char; ach != NULL; ach = ach->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      ach = *li;
       if( ach->in_room->area != ch->in_room->area || !can_see( ch, ach ) || !is_name( arg, ach->name ) )
          continue;
       if( ++count == number )

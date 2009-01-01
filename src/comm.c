@@ -2144,9 +2144,11 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       if( fOld )
       {
          BAN_DATA *pban;
+         std::list<BAN_DATA *>::iterator li;
 
-         for( pban = first_ban; pban != NULL; pban = pban->next )
+         for( li = ban_list.begin(); li != ban_list.end(); li++ )
          {
+            pban = *li;
             if( !str_prefix( pban->name, d->host ) && ( pban->newbie == FALSE ) )
             {
                char buf[MAX_STRING_LENGTH];
@@ -2170,6 +2172,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       else
       {
          BAN_DATA *pban;
+         std::list<BAN_DATA *>::iterator li;
          /*
           * New player 
           */
@@ -2179,8 +2182,9 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          if( check_playing( d, ch->name ) )
             return;
 
-         for( pban = first_ban; pban != NULL; pban = pban->next )
+         for( li = ban_list.begin(); li != ban_list.end(); li++ )
          {
+            pban = *li;
             if( !str_prefix( pban->name, d->host ) )
 
             {
@@ -2699,7 +2703,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->lvl[ch->p_class] = 1;
       }
 
-      LINK( ch, first_char, last_char, next, prev );
+      char_list.push_back(ch);
       d->connected = CON_PLAYING;
 
 
@@ -3072,9 +3076,11 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
 {
    CHAR_DATA *ch;
    OBJ_DATA *obj;
+   std::list<CHAR_DATA *>::iterator li;
 
-   for( ch = first_char; ch != NULL; ch = ch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      ch = *li;
       if( !IS_NPC( ch ) && ( !fConn || ch->desc == NULL ) && !str_cmp( d->character->name, ch->name ) )
       {
          if( fConn == FALSE )
@@ -3340,7 +3346,7 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
    if( ch == NULL )
       return;
 
-   if( ( ch->is_free != FALSE ) || ( ch->in_room == NULL ) )
+   if( ch->in_room == NULL )
    {
       bugf( "bad ch, string=%s", format );
       return;
@@ -3662,11 +3668,9 @@ void copyover_recover(  )
          /*
           * Insert in the char_list 
           */
-         d->character->next = NULL;
-         d->character->prev = NULL;
          this_char = d->character;
 
-         LINK( this_char, first_char, last_char, next, prev );
+         char_list.push_back(this_char);
 
          char_to_room( d->character, d->character->in_room );
          if( d->character->position == POS_RIDING )

@@ -83,6 +83,7 @@ bool spell_blood_leach( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    CHAR_DATA *check;
+   std::list<CHAR_DATA *>::iterator li;
    AFFECT_DATA *paf;
    AFFECT_DATA af;
 
@@ -95,13 +96,16 @@ bool spell_blood_leach( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       return FALSE;
    }
 
-   for( check = first_char; check != NULL; check = check->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
+   {
+      check = *li;
       for( paf = check->first_affect; paf != NULL; paf = paf->next )
          if( paf->type == sn && paf->caster == ch )
          {
             send_to_char( "You are already maintaining a blood leach on someone else!\r\n", ch );
             return FALSE;
          }
+   }
 
    act( "You create a blood leach and hurl it at $N!", ch, NULL, victim, TO_CHAR );
    act( "$n creates a blood leach and hurls it at $N!", ch, NULL, victim, TO_NOTVICT );

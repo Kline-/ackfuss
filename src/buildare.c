@@ -124,7 +124,7 @@ int build_canwrite( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 
 void build_save_area_list( void )
 {
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    AREA_DATA *pArea;
    FILE *fpArea;
    char buf[MSL];
@@ -139,9 +139,9 @@ void build_save_area_list( void )
       return;
    }
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       fprintf( fpArea, "%s\n", pArea->filename );
    }
 
@@ -160,7 +160,7 @@ void build_save_area_list( void )
 
 void build_save_area_gold( void )
 {
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    AREA_DATA *pArea;
    FILE *fpArea;
 
@@ -172,9 +172,9 @@ void build_save_area_gold( void )
       return;
    }
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       fprintf( fpArea, "%i %i\r\n", pArea->area_num, pArea->gold );
    }
 
@@ -205,7 +205,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    int iHash;
    int rooms;
 
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    BUILD_DATA_LIST *pList;
    AREA_DATA *pArea = NULL;
    AREA_DATA *fpadd = NULL;
@@ -236,9 +236,9 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    }
 
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       fpadd = pArea;
       svnum = pArea->min_vnum;
       a = svnum - envnum - 1;
@@ -690,7 +690,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    AREA_DATA *pArea;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    ROOM_INDEX_DATA *pRoomIndex = NULL;
    int nMatch;
    bool fAll;
@@ -709,9 +709,9 @@ void build_findarea( CHAR_DATA * ch, char *argument )
    found = FALSE;
    nMatch = 0;
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       nMatch++;
       if( ( fAll || is_name( arg, pArea->name ) ) && build_canread( pArea, ch, 0 ) )
       {
@@ -799,14 +799,14 @@ void build_arealist( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char msg[MAX_STRING_LENGTH];
    AREA_DATA *pArea;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
    short stop_counter = 0;
 
    buf[0] = '\0';
    snprintf( msg, MSL, "%s", "Areas of " mudnamecolor ":\r\n" );
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      pArea = *i;
+      pArea = *li;
       snprintf( buf, MSL, "%12s [%8d to %8d] %s\r\n", capitalize( pArea->owner ), pArea->min_vnum, pArea->max_vnum, pArea->name );
       stop_counter++;
       if( stop_counter > 40 )

@@ -2256,6 +2256,7 @@ void do_scout( CHAR_DATA * ch, char *argument )
 void do_abandon( CHAR_DATA *ch, char *argument ) /* Thanks to Koron & Abel for the idea! */
 {
  CHAR_DATA *vch;
+ std::list<CHAR_DATA *>::iterator li;
 
  if( ch->num_followers < 1 )
  {
@@ -2263,8 +2264,9 @@ void do_abandon( CHAR_DATA *ch, char *argument ) /* Thanks to Koron & Abel for t
   return;
  }
 
- for( vch = first_char; vch != NULL; vch = vch->next )
+ for( li = char_list.begin(); li != char_list.end(); li++ )
  {
+  vch = *li;
   if( vch->master == ch )
    stop_follower(vch);
  }

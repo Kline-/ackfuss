@@ -2423,6 +2423,7 @@ void save_bans(  )
    FILE *fp;
    char ban_file_name[MAX_STRING_LENGTH];
    BAN_DATA *pban;
+   std::list<BAN_DATA *>::iterator li;
 
    snprintf( ban_file_name, MSL, "%s", BANS_FILE );
 
@@ -2433,8 +2434,9 @@ void save_bans(  )
    }
    else
    {
-      for( pban = first_ban; pban != NULL; pban = pban->next )
+      for( li = ban_list.begin(); li != ban_list.end(); li++ )
       {
+         pban = *li;
          fprintf( fp, "#BAN~\n" );
          fprintf( fp, "%d\n", ( pban->newbie ? 1 : 0 ) );
          fprintf( fp, "%s~\n", pban->name );

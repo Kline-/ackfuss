@@ -397,7 +397,7 @@ void gain_exp( CHAR_DATA * ch, int gain )
 int hit_gain( CHAR_DATA * ch )
 {
    float gain;
-   if( ch->is_free != FALSE )
+   if( ch == NULL )
       return 0;
 
    if( IS_NPC( ch ) && !ch->act.test(ACT_INTELLIGENT) )
@@ -502,7 +502,7 @@ int hit_gain( CHAR_DATA * ch )
 int mana_gain( CHAR_DATA * ch )
 {
    float gain;
-   if( ch->is_free != FALSE )
+   if( ch == NULL )
       return 0;
    if( IS_NPC( ch ) && !ch->act.test(ACT_INTELLIGENT) )
    {
@@ -763,22 +763,21 @@ void gain_condition( CHAR_DATA * ch, int iCond, int value )
 void mobile_update( void )
 {
    CHAR_DATA *ch;
-   CHAR_DATA *ch_next;
    CHAR_DATA *target;
    EXIT_DATA *pexit;
    int door;
    CHAR_DATA *quitter;
+   std::list<CHAR_DATA *>::iterator li;
 
    /*
     * Examine all mobs. 
     */
-   CREF( ch_next, CHAR_NEXT );
 
-   for( ch = first_char; ch != NULL; ch = ch_next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      ch_next = ch->next;
+      ch = *li;
 
-      if( !IS_NPC( ch ) || ch->in_room == NULL || IS_AFFECTED( ch, AFF_CHARM ) )
+      if( ch == NULL || !IS_NPC( ch ) || ch->in_room == NULL || IS_AFFECTED( ch, AFF_CHARM ) )
          continue;
 
       /*
@@ -947,7 +946,6 @@ void mobile_update( void )
       }
 
    }
-   CUREF( ch_next );
    return;
 }
 
@@ -1288,6 +1286,7 @@ void weather_update( void )
 void gain_update( void )
 {
    CHAR_DATA *ch;
+   std::list<CHAR_DATA *>::iterator li;
 /* Update super_councils info  */
 
    {
@@ -1339,14 +1338,10 @@ void gain_update( void )
       }
    }
 
-
-
-
-
-
-   for( ch = first_char; ch != NULL; ch = ch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      if( ch->is_free != FALSE )
+      ch = *li;
+      if( ch == NULL )
          continue;
       if( ch->position >= POS_STUNNED && !IS_SET( ch->affected_by, AFF_VAMP_HEALING ) && !IS_GHOST(ch) )
       {
@@ -1382,24 +1377,22 @@ void gain_update( void )
 void char_update( void )
 {
    CHAR_DATA *ch;
-   CHAR_DATA *ch_next;
    CHAR_DATA *ch_save;
    CHAR_DATA *ch_quit;
+   std::list<CHAR_DATA *>::iterator li;
    time_t save_time;
 
    save_time = current_time;
    ch_save = NULL;
    ch_quit = NULL;
 
-   CREF( ch_next, CHAR_NEXT );
-   for( ch = first_char; ch != NULL; ch = ch_next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       AFFECT_DATA *paf;
       AFFECT_DATA *paf_next;
 
-
-      ch_next = ch->next;
-      if( ch->is_free != FALSE )
+      ch = *li;
+      if( ch == NULL )
          continue;
 
       if( IS_GHOST(ch) )
@@ -1671,13 +1664,11 @@ void char_update( void )
       }
 
    }
-   CUREF( ch_next );
 
    /*
     * Autosave and autoquit.
     * Check that these chars still exist.
     */
-   CREF( ch_next, CHAR_NEXT );
    if( ch_save != NULL )
     save_char_obj(ch_save);
    if( ch_quit != NULL )
@@ -1685,7 +1676,6 @@ void char_update( void )
     send_to_char("Idle for too long. Bye bye!\r\n",ch_quit);
     do_quit(ch_quit,"");
    }
-   CUREF( ch_next );
 
    return;
 }
@@ -1920,20 +1910,18 @@ void aggr_update( void )
     */
 
    CHAR_DATA *wch;
-   CHAR_DATA *wch_next;
    CHAR_DATA *ch;
    CHAR_DATA *ch_next;
    CHAR_DATA *vch;
    CHAR_DATA *vch_next;
    CHAR_DATA *victim;
    OBJ_DATA *wield;
+   std::list<CHAR_DATA *>::iterator li;
 
-   CREF( wch_next, CHAR_NEXT );
-
-   for( wch = first_char; wch != NULL; wch = wch_next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      wch_next = wch->next;
-      if( wch->is_free != FALSE )
+      wch = *li;
+      if( wch == NULL )
          continue;
       if( IS_NPC( wch ) && wch->npcdata->mpactnum > 0 && wch->in_room->area->nplayer > 0 )
       {
@@ -2028,7 +2016,6 @@ void aggr_update( void )
       }
       CUREF( ch_next );
    }
-   CUREF( wch_next );
    return;
 }
 
@@ -2047,11 +2034,11 @@ void rooms_update( void )
    ROOM_AFFECT_DATA *raf_next;
    MARK_LIST_MEMBER *this_mark;
    MARK_LIST_MEMBER *next_mark;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      area = *i;
+      area = *li;
       for( thing = area->first_area_room; thing != NULL; thing = thing->next )
       {
          room = (ROOM_INDEX_DATA *)thing->data;
@@ -2489,9 +2476,9 @@ bool check_re_equip( CHAR_DATA * ch )
 void auction_update( void )
 {
    char buf[MAX_STRING_LENGTH];
-
+   std::list<CHAR_DATA *>::iterator li;
    CHAR_DATA *ach;
-   bool good_seller = FALSE, good_buyer = FALSE;
+   bool good_seller = false, good_buyer = false;
 
    /*
     * Stages: 0) No/New bid.  
@@ -2531,8 +2518,9 @@ void auction_update( void )
          {
             auction( "No bidders.  Auction Ended." );
 
-            for( ach = first_char; ach != NULL; ach = ach->next )
+            for( li = char_list.begin(); li != char_list.end(); li++ )
             {
+               ach = *li;
                if( auction_owner == ach )
                   good_seller = TRUE;
                if( auction_bidder == ach )
@@ -2567,8 +2555,9 @@ void auction_update( void )
       case 4:
          if( auction_bid < auction_reserve )
          {
-            for( ach = first_char; ach != NULL; ach = ach->next )
+            for( li = char_list.begin(); li != char_list.end(); li++ )
             {
+               ach = *li;
                if( auction_owner == ach )
                   good_seller = TRUE;
                if( auction_bidder == ach )
@@ -2597,8 +2586,9 @@ void auction_update( void )
          else
          {
 
-            for( ach = first_char; ach != NULL; ach = ach->next )
+            for( li = char_list.begin(); li != char_list.end(); li++ )
             {
+               ach = *li;
                if( auction_owner == ach )
                   good_seller = TRUE;
                if( auction_bidder == ach )

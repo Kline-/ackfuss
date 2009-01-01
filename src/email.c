@@ -236,7 +236,7 @@ void do_email( CHAR_DATA * ch, char *argument )
             victim = d.character;
             d.character = NULL;
             victim->desc = NULL;
-            LINK( victim, first_char, last_char, next, prev );
+            char_list.push_back(victim);
          }
          else
          {

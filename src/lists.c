@@ -46,10 +46,8 @@
  * -- Altrag
  */
 std::list<AREA_DATA *> area_list;
-BAN_DATA *first_ban = NULL;
-BAN_DATA *last_ban = NULL;
-CHAR_DATA *first_char = NULL;
-CHAR_DATA *last_char = NULL;
+std::list<BAN_DATA *> ban_list;
+std::list<CHAR_DATA *> char_list;
 DESCRIPTOR_DATA *first_desc = NULL;
 DESCRIPTOR_DATA *last_desc = NULL;
 NOTE_DATA *first_note = NULL;

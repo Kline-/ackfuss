@@ -413,8 +413,6 @@ void do_cast( CHAR_DATA * ch, char *argument )
    bool char_login = FALSE;
    int cast_chance = 0;
    bool multi_cast = FALSE;
-   if( ch->is_free == TRUE )
-      return;
 /* ZENFIX --ch's are surviving multiple kills per combat round */
 
    if( ( !IS_NPC( ch ) ) && ( ch->desc != NULL ) && ( ch->desc->connected == CON_SETTING_STATS ) )
@@ -768,7 +766,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
 
       if( arg2[0] == '\0' )
       {
-         if( ( ( victim = ch->fighting ) == NULL ) || ( victim->in_room == NULL ) || ( victim->is_free == TRUE ) )
+         if( ( ( victim = ch->fighting ) == NULL ) || ( victim->in_room == NULL ) )
          {
             ch->fighting = NULL;
             still_here = FALSE;
@@ -815,7 +813,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
 
       if( arg2[0] == '\0' )
       {
-         if( ( ( victim = ch->fighting ) == NULL ) || ( victim->in_room == NULL ) || ( victim->is_free == TRUE ) )
+         if( ( ( victim = ch->fighting ) == NULL ) || ( victim->in_room == NULL ) )
          {
             ch->fighting = NULL;
             still_here = FALSE;
@@ -858,7 +856,7 @@ void do_cast( CHAR_DATA * ch, char *argument )
 
    if( ( skill_table[sn].target == TAR_CHAR_OFFENSIVE )
        && ( ch != NULL )
-       && ( victim != NULL ) && ( ch != victim ) && ( ch->is_free == FALSE ) && ( victim->is_free == FALSE ) )
+       && ( victim != NULL ) && ( ch != victim ) )
    {
       CHAR_DATA *vch;
       CHAR_DATA *vch_next;
@@ -1129,7 +1127,7 @@ bool spell_burning_hands( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
 bool spell_call_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *vch;
-   CHAR_DATA *vch_next;
+   std::list<CHAR_DATA *>::iterator li;
    int dam;
 
    if( !IS_OUTSIDE( ch ) )
@@ -1157,10 +1155,9 @@ bool spell_call_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
       act( "$p summons lightning to strike $n's foes!", ch, obj, NULL, TO_ROOM );
       act( "$p summons lightning to strike your foes!", ch, obj, NULL, TO_CHAR );
    }
-   CREF( vch_next, CHAR_NEXTROOM );
-   for( vch = first_char; vch != NULL; vch = vch_next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      vch_next = vch->next;
+      vch = *li;
       if( vch->in_room == NULL )
          continue;
       if( vch->in_room == ch->in_room )
@@ -1176,7 +1173,6 @@ bool spell_call_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
       if( vch->in_room->area == ch->in_room->area && IS_OUTSIDE( vch ) && IS_AWAKE( vch ) )
          send_to_char( "Lightning flashes in the sky.\r\n", vch );
    }
-   CUREF( vch_next );
    return TRUE;
 }
 
@@ -2028,7 +2024,7 @@ bool spell_dispel_evil( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 bool spell_earthquake( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *vch;
-   CHAR_DATA *vch_next;
+   std::list<CHAR_DATA *>::iterator li;
 
    if( obj == NULL )
    {
@@ -2040,10 +2036,10 @@ bool spell_earthquake( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       act( "$p vibrates violently, making the earth tremble!", ch, obj, NULL, TO_CHAR );
       act( "$p vibrates violenty, making the earth around $n tremble!", ch, obj, NULL, TO_ROOM );
    }
-   CREF( vch_next, CHAR_NEXT );
-   for( vch = first_char; vch != NULL; vch = vch_next )
+
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      vch_next = vch->next;
+      vch = *li;
       if( vch->in_room == NULL )
          continue;
       if( vch->in_room == ch->in_room )
@@ -2065,7 +2061,7 @@ bool spell_earthquake( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       if( vch->in_room->area == ch->in_room->area )
          send_to_char( "The earth trembles and shivers.\r\n", vch );
    }
-   CUREF( vch_next );
+
    return TRUE;
 }
 
@@ -2444,18 +2440,6 @@ bool spell_influx( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
       update_pos( vch );
    }
 
-/*    for ( vch=first_char; vch != NULL; vch = vch->next )
-    {
-	
-	if ( vch->in_room == NULL )
-	    continue;
-	if ( vch->in_room == ch->in_room )
-	{
-	    CHAR_DATA *victim = (CHAR_DATA *) vo;
-	    victim->hit = UMIN( victim->hit + 40, victim->max_hit );
-	    update_pos( victim );
-	}
-    }*/
    return TRUE;
 }
 
@@ -3758,11 +3742,8 @@ bool spell_mindflame( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    /*
     * Psi Multiple Attack - screws up all those affected 
     */
-
-
-
    CHAR_DATA *vch;
-   CHAR_DATA *vch_next;
+   std::list<CHAR_DATA *>::iterator li;
 
    if( obj == NULL )
    {
@@ -3774,10 +3755,10 @@ bool spell_mindflame( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
       act( "$p glows, and initiates a mindflame attack!", ch, obj, NULL, TO_ROOM );
       act( "$p glows, and initiates a mindflame attack!", ch, obj, NULL, TO_CHAR );
    }
-   CREF( vch_next, CHAR_NEXT );
-   for( vch = first_char; vch != NULL; vch = vch_next )
+
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      vch_next = vch->next;
+      vch = *li;
       if( vch->in_room == NULL )
          continue;
       if( vch->in_room == ch->in_room )
@@ -3795,7 +3776,7 @@ bool spell_mindflame( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
       if( vch->in_room->area == ch->in_room->area )
          send_to_char( "You notice a slight burning feeling in your mind.\r\n", vch );
    }
-   CUREF( vch_next );
+
    return TRUE;
 }
 
@@ -3960,7 +3941,7 @@ bool spell_mind_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 bool spell_nerve_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *vch;
-   CHAR_DATA *vch_next;
+   std::list<CHAR_DATA *>::iterator li;
 
    if( obj == NULL )
    {
@@ -3972,10 +3953,10 @@ bool spell_nerve_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       act( "$p glows with the power of Nerve Fire!", ch, obj, NULL, TO_ROOM );
       act( "$p glows with the power of Nerve Fire!", ch, obj, NULL, TO_CHAR );
    }
-   CREF( vch_next, CHAR_NEXT );
-   for( vch = first_char; vch != NULL; vch = vch_next )
+
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      vch_next = vch->next;
+      vch = *li;
       if( vch->in_room == NULL )
          continue;
       if( vch->in_room == ch->in_room )
@@ -3990,7 +3971,7 @@ bool spell_nerve_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       if( vch->in_room->area == ch->in_room->area )
          send_to_char( "You notice a slight burning feeling in your body.\r\n", vch );
    }
-   CUREF( vch_next );
+
    return TRUE;
 }
 
@@ -6612,8 +6593,8 @@ bool spell_heat_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 bool spell_retri_strike( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *vch;
-   CHAR_DATA *vch_next;
    OBJ_DATA *staff_obj = NULL;
+   std::list<CHAR_DATA *>::iterator li;
 
    if( ( staff_obj = get_eq_char( ch, WEAR_HOLD_HAND_R ) ) == NULL )
       if( ( staff_obj = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) == NULL )
@@ -6639,11 +6620,10 @@ bool spell_retri_strike( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
       act( "$p vibrates violently, making the earth tremble!", ch, obj, NULL, TO_CHAR );
       act( "$p vibrates violenty, making the earth around $n tremble!", ch, obj, NULL, TO_ROOM );
    }
-   CREF( vch_next, CHAR_NEXT );
 
-   for( vch = first_char; vch != NULL; vch = vch_next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      vch_next = vch->next;
+      vch = *li;
       if( vch->in_room == NULL )
          continue;
       if( vch->in_room == ch->in_room )
@@ -6698,7 +6678,6 @@ bool spell_retri_strike( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
          send_to_char( "@@WSuddenly, a @@ybright flash@@W sears your eyes, then is gone.@@N\r\n", vch );
    }
 
-   CUREF( vch_next );
    extract_obj( staff_obj );
    return TRUE;
 }
