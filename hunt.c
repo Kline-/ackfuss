@@ -661,11 +661,13 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    if( chance < number_percent(  ) )
    {
       CHAR_DATA *vch;
+      std::list<CHAR_DATA *>::iterator li;
       short vcnt = 0;
 
       victim = NULL;
-      for( vch = first_char; vch; vch = vch->next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
+         vch = *li;
          if( IS_NPC( vch ) && vch->in_room &&
              vch->in_room->area == ch->in_room->area && vch->in_room != ch->in_room && number_range( 0, vcnt ) == 0 )
             victim = vch;

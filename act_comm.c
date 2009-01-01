@@ -1915,14 +1915,16 @@ void stop_follower( CHAR_DATA * ch )
 void die_follower( CHAR_DATA * ch )
 {
    CHAR_DATA *fch;
+   std::list<CHAR_DATA *>::iterator li;
 
    if( ch->master != NULL )
       stop_follower( ch );
 
    ch->leader = NULL;
 
-   for( fch = first_char; fch != NULL; fch = fch->next )
+   for( li = char_list.begin(); li!= char_list.end(); li++ )
    {
+      fch = *li;
       if( fch->master == ch )
          stop_follower( fch );
       if( fch->leader == ch )
@@ -2046,7 +2048,7 @@ void do_order( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ( fAll != TRUE ) && ( victim->master == ch ) && ( victim->is_free == FALSE ) )
+   if( ( fAll != TRUE ) && ( victim->master == ch ) )
    {
       act( "$n orders you to '$t'.", ch, argument, victim, TO_VICT );
       interpret( victim, argument );
@@ -2063,7 +2065,7 @@ void do_order( CHAR_DATA * ch, char *argument )
    for( och = ch->in_room->first_person; och != NULL; och = och_next )
    {
       och_next = och->next_in_room;
-      if( ( och->is_free == FALSE ) && ( IS_NPC( och ) ) && ( IS_AFFECTED( och, AFF_CHARM ) ) && ( och->master == ch ) )
+      if( ( IS_NPC( och ) ) && ( IS_AFFECTED( och, AFF_CHARM ) ) && ( och->master == ch ) )
       {
          num_followers++;
          if( num_followers <= max_orders )
@@ -2093,6 +2095,7 @@ void do_group( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
+   std::list<CHAR_DATA *>::iterator li;
    short new_members = 0;
    float percent = 0.00;
    int tot_level = 0;
@@ -2102,16 +2105,20 @@ void do_group( CHAR_DATA * ch, char *argument )
    {
       CHAR_DATA *leader;
 
-      for( victim = first_char; victim != NULL; victim = victim->next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
+      {
+       victim = *li;
        if( is_same_group(victim,ch) )
         tot_level += get_psuedo_level(victim);
+      }
 
       leader = ( ch->leader != NULL ) ? ch->leader : ch;
       snprintf( buf, MSL, "%s's group:\r\n", PERS( leader, ch ) );
       send_to_char( buf, ch );
 
-      for( victim = first_char; victim != NULL; victim = victim->next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
+         victim = *li;
          if( is_same_group( victim, ch ) )
          {
             percent = ((get_psuedo_level(victim) * 100) / tot_level);
@@ -2273,6 +2280,8 @@ void do_gtell( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *gch;
+   std::list<CHAR_DATA *>::iterator li;
+
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
       send_to_char( "You are too @@rENRAGED @@NTo talk to mortals!\r\n", ch );
@@ -2299,8 +2308,9 @@ void do_gtell( CHAR_DATA * ch, char *argument )
       argument = slur_text( argument );
 
    snprintf( buf, MSL, "%s tells the group '%s'.\r\n", ch->name, argument );
-   for( gch = first_char; gch != NULL; gch = gch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      gch = *li;
       if( is_same_group( gch, ch ) )
          send_to_char( buf, gch );
    }
@@ -2740,12 +2750,17 @@ void do_ask( CHAR_DATA * ch, char *argument )
 void send_to_room( char *message, ROOM_INDEX_DATA * room )
 {
    CHAR_DATA *vch;
-   for( vch = first_char; vch != NULL; vch = vch->next )
+   std::list<CHAR_DATA *>::iterator li;
+
+   for( li = char_list.begin(); li != char_list.end(); li++ )
+   {
+      vch = *li;
       if( IS_AWAKE( vch ) && vch->in_room == room )
       {
          send_to_char( message, vch );
          send_to_char( "\r\n", vch );
       }
+   }
    return;
 }
 

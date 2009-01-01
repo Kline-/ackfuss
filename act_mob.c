@@ -74,6 +74,8 @@
 #include "h/magic.h"
 #endif
 
+extern int top_mob_index;
+
 bool able_to_level( CHAR_DATA * ch )
 {
    bool in_need = FALSE;
@@ -593,6 +595,7 @@ void mob_is_standing( CHAR_DATA * ch )
    short dir;
    CHAR_DATA *vch;
    CHAR_DATA *tch;
+   std::list<CHAR_DATA *>::iterator li;
    bool ready = TRUE;
    bool prey_still_exist = FALSE;
    int number_got_up = 0;
@@ -817,8 +820,9 @@ void mob_is_standing( CHAR_DATA * ch )
    {
       if( ch->hunting != NULL )
       {
-         for( vch = first_char; vch != NULL; vch = vch->next )
+         for( li = char_list.begin(); li != char_list.end(); li++ )
          {
+            vch = *li;
             if( vch == ch->hunting )
             {
                prey_still_exist = TRUE;
@@ -940,6 +944,7 @@ void select_target( CHAR_DATA * ch )
 //   int        tmp   = 0;
    CHAR_DATA *vch;
    CHAR_DATA *victim = NULL;
+   std::list<CHAR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    int force_index = 0;
    bool alone = TRUE;
@@ -996,11 +1001,11 @@ void select_target( CHAR_DATA * ch )
          attempts++;
          average_level = get_psuedo_level( ch );
 
-         force_index = number_range( 1, 1200 );
-/* we currently have about 1300 mobs..this should get a random enough sample */
+         force_index = number_range( 1, top_mob_index-1 );
 
-         for( vch = first_char; vch != NULL; vch = vch->next )
+         for( li = char_list.begin(); li != char_list.end(); li++ )
          {
+            vch = *li;
             if( victim != NULL )
                break;
             force_index--;

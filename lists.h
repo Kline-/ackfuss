@@ -42,10 +42,8 @@
  * -- Altrag
  */
 extern std::list<AREA_DATA *> area_list;
-extern BAN_DATA *first_ban;
-extern BAN_DATA *last_ban;
-extern CHAR_DATA *first_char;
-extern CHAR_DATA *last_char;
+extern std::list<BAN_DATA *> ban_list;
+extern std::list<CHAR_DATA *> char_list;
 extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;
 extern NOTE_DATA *first_note;

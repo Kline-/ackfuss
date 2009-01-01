@@ -207,6 +207,7 @@ void do_get( CHAR_DATA * ch, char *argument )
    {
       char name[MSL];
       CHAR_DATA *gch;
+      std::list<CHAR_DATA *>::iterator li;
       char *pd;
       if( IS_NPC( ch ) )
       {
@@ -221,8 +222,9 @@ void do_get( CHAR_DATA * ch, char *argument )
       {
          bool fGroup = FALSE;
          victim = NULL;
-         for( gch = first_char; gch != NULL; gch = gch->next )
+         for( li = char_list.begin(); li != char_list.end(); li++ )
          {
+            gch = *li;
             if( !IS_NPC( gch ) && !str_cmp( name, gch->name ) )
             {
                victim = gch;
@@ -2608,8 +2610,12 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
 void check_guards( CHAR_DATA * ch )
 {
    CHAR_DATA *guard;
+   std::list<CHAR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
-   for( guard = first_char; guard != NULL; guard = guard->next )
+
+   for( li = char_list.begin(); li != char_list.end(); li++ )
+   {
+      guard = *li;
       if( IS_NPC( guard )
           && ( guard->in_room->area == ch->in_room->area )
           && guard->npcdata->spec_fun != 0
@@ -2655,6 +2661,7 @@ void check_guards( CHAR_DATA * ch )
             }
          }
       }
+   }
    return;
 }
 
@@ -3819,10 +3826,12 @@ void do_auction( CHAR_DATA * ch, char *argument )
       if( auction_item != NULL )
       {
          CHAR_DATA *ach;
+         std::list<CHAR_DATA *>::iterator li;
          bool good_seller = FALSE;
          bool good_buyer = FALSE;
-         for( ach = first_char; ach != NULL; ach = ach->next )
+         for( li = char_list.begin(); li != char_list.end(); li++ )
          {
+            ach = *li;
             if( auction_owner == ach )
                good_seller = TRUE;
             if( auction_bidder == ach )

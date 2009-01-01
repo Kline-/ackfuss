@@ -242,19 +242,15 @@ void violence_update( void )
    CHAR_DATA *victim;
    CHAR_DATA *rch;
    CHAR_DATA *rch_next;
-   /*
-    * CHAR_DATA *check_char;   
-    */
-/*  CHAR_DATA	*marker;  */
+   std::list<CHAR_DATA *>::iterator li;
    bool has_cast = FALSE;
 
 
 
    CREF( ch_next, CHAR_NEXT );
-   for( ch = first_char; ch; ch = ch_next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-
-      ch_next = ch->next;
+      ch = *li;
 
 
       /*
@@ -340,7 +336,7 @@ void violence_update( void )
        */
 
 
-      if( ( ch->is_free == FALSE ) && ( IS_NPC( ch ) ) && ch->act.test(ACT_SOLO) && ch->hit > 0 )
+      if( IS_NPC( ch ) && ch->act.test(ACT_SOLO) && ch->hit > 0 )
       {
          if( ( ch->hit < ch->max_hit * 3 / 4 ) && ( ch->mana > mana_cost( ch, skill_lookup( "heal" ) ) ) )
          {
@@ -360,7 +356,7 @@ void violence_update( void )
       }
 
       area_resetting_global = TRUE;
-      if( ( ch->is_free == FALSE ) && ( IS_NPC( ch ) ) && ( !IS_SET( ch->def, DEF_NONE ) ) && ch->hit > 0 )
+      if( IS_NPC( ch ) && !IS_SET( ch->def, DEF_NONE ) && ch->hit > 0 )
       {
          if( ch->hit < ch->max_hit * 2 / 3 )
          {
@@ -408,8 +404,7 @@ void violence_update( void )
          continue;
       }
 
-      if( ( ch->is_free == FALSE )
-          && ( IS_NPC( ch ) )
+      if( ( IS_NPC( ch ) )
           && ( !IS_SET( ch->def, DEF_NONE ) )
           && ( ch->hit > 0 ) && ( ch->first_shield == NULL ) && ( !has_cast ) && ( ch->fighting == NULL ) )
       {
@@ -441,12 +436,10 @@ void violence_update( void )
 /* Offensive spell handler, only use when actually fighting.. */
 
       if( ( IS_NPC( ch ) )
-          && ( ch->is_free == FALSE )
           && ( ch->cast > 1 )
           && ( !has_cast )
           && ( ch->position > POS_RESTING )
           && ( ch->fighting != NULL )
-          && ( ch->fighting->is_free != TRUE )
           && ( ch->in_room != NULL ) && ( ch->hit > 1 ) && ( ch->position == POS_FIGHTING ) )
 
       {
@@ -488,8 +481,6 @@ void violence_update( void )
 
 
       if( ( IS_AWAKE( ch ) )
-          && ( ch->is_free == FALSE )
-          && ( victim->is_free == FALSE )
           && ( ch->in_room != NULL ) && ( victim->in_room != NULL ) && ( ch->in_room == victim->in_room ) )
       {
          check_brawl(ch);
@@ -529,6 +520,7 @@ void violence_update( void )
                   {
                      CHAR_DATA *vch;
                      CHAR_DATA *target;
+                     std::list<CHAR_DATA *>::iterator li;
                      int number;
 
                      target = NULL;
@@ -537,8 +529,9 @@ void violence_update( void )
                      /*
                       * vch is the target of the lazy mob...a player 
                       */
-                     for( vch = ch->in_room->first_person; vch; vch = vch->next )
+                     for( li = char_list.begin(); li != char_list.end(); li++ )
                      {
+                        vch = *li;
                         if( ( can_see( rch, vch ) ) && ( !IS_NPC( vch ) ) )
                         {
                            target = vch;
@@ -858,12 +851,6 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
    if( dt == gsn_circle || dt == gsn_backstab || dt == gsn_charge ) /* Ugly workarounds for records and dam management --Kline */
     dt = -1;
-
-   if( victim->is_free == TRUE )
-   {
-      bug( "Freed victim in one_hit", 0 );
-      return;
-   }
 
    if( victim != ch )
    {
@@ -1873,6 +1860,7 @@ void update_pos( CHAR_DATA * victim )
        && ( victim->hit < 1 ) && !IS_SET( victim->affected_by, AFF_VAMP_HEALING ) && !IS_NPC( victim ) && !( deathmatch ) )
    {
       CHAR_DATA *check;
+      std::list<CHAR_DATA *>::iterator li;
 
       if( !IS_NPC( victim ) )
          gain_exp( victim, 0 - ( victim->exp / 4 ) );
@@ -1989,8 +1977,9 @@ void update_pos( CHAR_DATA * victim )
 
       stop_fighting( victim, TRUE );
       victim->hit = -20;
-      for( check = first_char; check != NULL; check = check->next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
+         check = *li;
          if( check->hunting == victim )
             end_hunt( check );
       }
@@ -2116,7 +2105,7 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
        */
       if( victim->target != NULL )
          free_string( victim->target );
-      if( ch != NULL && ch->is_free == FALSE )
+      if( ch != NULL )
          victim->target = str_dup( ch->name );
    }
 
@@ -2142,8 +2131,7 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
  */
 void stop_fighting( CHAR_DATA * ch, bool fBoth )
 {
-   CHAR_DATA *fch;
-   CHAR_DATA *fch_next;
+   FIGHT_DATA *fight;
 
    ch->fighting = NULL;
    ch->position = POS_STANDING;
@@ -2152,18 +2140,15 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
    if( !fBoth )
       return;
 
-   CREF( fch_next, CHAR_NEXT );
-   for( fch = first_char; fch != NULL; fch = fch_next )
+   for( fight = first_fight; fight != NULL; fight = fight->next )
    {
-      fch_next = fch->next;
-      if( fch->fighting == ch )
+      if( fight->ch->fighting == ch )
       {
-         fch->fighting = NULL;
-         fch->position = POS_STANDING;
-         update_pos( fch );
+         fight->ch->fighting = NULL;
+         fight->ch->fighting->position = POS_STANDING;
+         update_pos( fight->ch->fighting );
       }
    }
-   CUREF( fch_next );
    return;
 }
 
@@ -2181,6 +2166,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    OBJ_DATA *obj_next;
    CHAR_DATA *target = NULL;
    CHAR_DATA *wch;
+   std::list<CHAR_DATA *>::iterator li;
    char *name;
 
    one_argument( argument, arg );
@@ -2273,8 +2259,9 @@ void make_corpse( CHAR_DATA * ch, char *argument )
       if( ( arg[0] != '\0' ) && ( !IS_NPC( ch ) ) )
       {
          target = NULL;
-         for( wch = first_char; wch != NULL; wch = wch->next )
+         for( li = char_list.begin(); li != char_list.end(); li++ )
          {
+            wch = *li;
             if( !IS_NPC( wch ) && is_name( arg, wch->name ) )
             {
                target = wch;
@@ -2411,6 +2398,7 @@ void death_cry( CHAR_DATA * ch )
 void raw_kill( CHAR_DATA * victim, char *argument )
 {
    CHAR_DATA *check;
+   std::list<CHAR_DATA *>::iterator li;
    char arg[MAX_STRING_LENGTH];
    char buf[MAX_STRING_LENGTH];
 
@@ -2430,11 +2418,12 @@ void raw_kill( CHAR_DATA * victim, char *argument )
 
 
 
-   if( !IS_VAMP( victim ) && ( victim->is_free == FALSE ) && ( victim->in_room != NULL ) )
+   if( !IS_VAMP( victim ) && ( victim->in_room != NULL ) )
       make_corpse( victim, arg );
 
-   for( check = first_char; check != NULL; check = check->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      check = *li;
       if( check->hunting == victim )
          end_hunt( check );
 /*        unhunt(check);*/
@@ -3324,7 +3313,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
       send_to_char( "They aren't here.\r\n", ch );
       return;
    }
-   if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
+   if( victim == NULL )
       return;
    if( IS_NPC( victim ) && victim->act.test(ACT_NO_BODY ) )
    {
@@ -3763,7 +3752,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
       send_to_char( "They aren't here.\r\n", ch );
       return;
    }
-   if( ( victim == NULL ) || ( victim->is_free != FALSE ) )
+   if( victim == NULL )
       return;
 
    if( IS_NPC( victim ) && victim->act.test(ACT_NO_BODY ) )
@@ -4705,7 +4694,7 @@ void do_kick( CHAR_DATA * ch, char *argument )
 
 void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, float dam )
 {
-   if( ( victim->position == POS_DEAD ) || ( victim->is_free == TRUE ) )
+   if( victim->position == POS_DEAD )
       return;
 
    /*

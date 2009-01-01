@@ -84,5 +84,6 @@ char *search_helps P_((const char *string));
 char *_popen P_((const char *string));
 FILE *file_open P_((const char *file, const char *opt));
 void file_close P_((FILE *file));
+void clear_lists P_((void));
 
 #undef P_

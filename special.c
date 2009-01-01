@@ -1179,7 +1179,8 @@ bool spec_cast_cadaver( CHAR_DATA * ch )
 bool spec_undead( CHAR_DATA * ch )
 {
    CHAR_DATA *victim;
-   CHAR_DATA *ach;
+   CHAR_DATA *ach = NULL;
+   std::list<CHAR_DATA *>::iterator li;
    char *spell;
    int sn, sum_lev;
 
@@ -1258,8 +1259,9 @@ bool spec_undead( CHAR_DATA * ch )
    if( !str_cmp( spell, "summon" ) )   /* CHECK FOR NPC!!!!!!!!!!!!! */
    {
       sum_lev = ch->level * 2 / 3;
-      for( ach = first_char; ach != NULL; ach = ach->next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
+         ach = *li;
          if( !ach->act.test(ACT_UNDEAD) || ach->level > sum_lev || !IS_NPC( ach ) /* Kavir got summoned!  :P */
              || ach->in_room == ch->in_room || !can_see( ch, ach ) || number_bits( 2 ) != 0 )
             continue;

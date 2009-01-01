@@ -4083,6 +4083,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
    OBJ_INDEX_DATA *pObjIndex;
    AREA_DATA *pArea;
    BUILD_DATA_LIST *pList;
+   std::list<CHAR_DATA *>::iterator li;
    int vnum;
 
    smash_tilde( argument );
@@ -4132,9 +4133,12 @@ void build_delobject( CHAR_DATA * ch, char *argument )
    /*
     * make sure that NO one else has build_vnum set to this room!! 
     */
-   for( vch = first_char; vch != NULL; vch = vch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
+   {
+      vch = *li;
       if( vch->build_vnum == old_ovnum )
          vch->build_vnum = -1;
+   }
 
 
    /*
@@ -4267,6 +4271,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
    MOB_INDEX_DATA *pMobIndex;
    AREA_DATA *pArea;
    BUILD_DATA_LIST *pList;
+   std::list<CHAR_DATA *>::iterator li;
    int vnum;
 
    smash_tilde( argument );
@@ -4316,9 +4321,12 @@ void build_delmob( CHAR_DATA * ch, char *argument )
    /*
     * make sure that NO one else has build_vnum set to this mob!! 
     */
-   for( vch = first_char; vch != NULL; vch = vch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
+   {
+      vch = *li;
       if( vch->build_vnum == old_ovnum )
          vch->build_vnum = -1;
+   }
 
 
    /*
@@ -4353,10 +4361,10 @@ void build_delmob( CHAR_DATA * ch, char *argument )
     */
    {
       CHAR_DATA *wch;
-      CHAR_DATA *wchnext;
-      for( wch = first_char; wch != NULL; wch = wchnext )
+      std::list<CHAR_DATA *>::iterator li;
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
-         wchnext = wch->next;
+         wch = *li;
          if( wch->npcdata->pIndexData == pMobIndex )
             extract_char( wch, TRUE );
       }

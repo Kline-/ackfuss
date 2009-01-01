@@ -508,9 +508,13 @@ static void walk_socials( void )
 static void walk_chars( void )
 {
    CHAR_DATA *ch;
+   std::list<CHAR_DATA *>::iterator li;
 
-   for( ch = first_char; ch; ch = ch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
+   {
+      ch = *li;
       walk_char_data( ch );
+   }
 }
 
 static void walk_descriptors( void )
@@ -532,11 +536,11 @@ static void walk_objects( void )
 static void walk_areas( void )
 {
    AREA_DATA *ad;
-   std::list<AREA_DATA *>::iterator i;
+   std::list<AREA_DATA *>::iterator li;
 
-   for( i = area_list.begin(); i != area_list.end(); i++ )
+   for( li = area_list.begin(); li != area_list.end(); li++ )
    {
-      ad = *i;
+      ad = *li;
       walk_area_data( ad );
    }
 }
@@ -589,9 +593,13 @@ static void walk_notes( void )
 static void walk_bans( void )
 {
    BAN_DATA *b;
+   std::list<BAN_DATA *>::iterator li;
 
-   for( b = first_ban; b; b = b->next )
+   for( li = ban_list.begin(); li != ban_list.end(); li++ )
+   {
+      b = *li;
       walk_ban_data( b );
+   }
 }
 
 static void walk_mark_data( MARK_DATA * m )

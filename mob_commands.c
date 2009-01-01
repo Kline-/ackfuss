@@ -539,6 +539,7 @@ void do_mpat( CHAR_DATA * ch, char *argument )
    ROOM_INDEX_DATA *location;
    ROOM_INDEX_DATA *original;
    CHAR_DATA *wch;
+   std::list<CHAR_DATA *>::iterator li;
 
    if( !IS_NPC( ch ) )
    {
@@ -569,8 +570,9 @@ void do_mpat( CHAR_DATA * ch, char *argument )
     * See if 'ch' still exists before continuing!
     * Handles 'at XXXX quit' case.
     */
-   for( wch = first_char; wch != NULL; wch = wch->next )
+   for( li = char_list.begin(); li != char_list.end(); li++ )
    {
+      wch = *li;
       if( wch == ch )
       {
          char_from_room( ch );
@@ -689,11 +691,11 @@ void do_mpforce( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg, "all" ) )
    {
       CHAR_DATA *vch;
-      CHAR_DATA *vch_next;
+      std::list<CHAR_DATA *>::iterator li;
 
-      for( vch = first_char; vch != NULL; vch = vch_next )
+      for( li = char_list.begin(); li != char_list.end(); li++ )
       {
-         vch_next = vch->next;
+         vch = *li;
 
          if( vch->in_room == ch->in_room && get_trust( vch ) < get_trust( ch ) && can_see( ch, vch ) )
          {
