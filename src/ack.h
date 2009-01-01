@@ -1108,10 +1108,8 @@ class area_data
   short                   min_level;
   int                     min_vnum;
   char                    *name;
-  AREA_DATA               *next;
   short                   nplayer;
   char                    *owner;
-  AREA_DATA               *prev;
   char                    *reset_msg;
   short                   reset_rate;
 };

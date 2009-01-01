@@ -611,13 +611,15 @@ void build_save_end(  )
 
 void build_save_flush(  )
 {
+   std::list<AREA_DATA *>::iterator i;
    AREA_DATA *pArea;
 
    if( AreasModified == 0 )
       return;
 
-   for( pArea = first_area; pArea != NULL; pArea = pArea->next )
+   for( i = area_list.begin(); i != area_list.end(); i++ )
    {
+      pArea = *i;
       if( pArea->modified )
       {
          pArea->modified = 0;

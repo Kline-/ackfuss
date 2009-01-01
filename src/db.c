@@ -405,6 +405,10 @@ void boot_db( void )
 
    }
 
+   /*
+    * Clear lists out!
+    */
+   area_list.clear();
 
 
    /*
@@ -642,7 +646,7 @@ void load_area( FILE * fp )
    area_used[pArea->area_num] = pArea;
    area_load = pArea;
 
-   LINK( pArea, first_area, last_area, next, prev );
+   area_list.push_back(pArea);
 
    top_area++;
    return;
@@ -1946,10 +1950,12 @@ void check_resets( void )
    RESET_DATA *pReset;
    RESET_DATA *nextReset;
    ROOM_INDEX_DATA *last_mob_room;
+   std::list<AREA_DATA *>::iterator i;
    int previous_bug = 0;
 
-   for( pArea = first_area; pArea; pArea = pArea->next )
+   for( i = area_list.begin(); i != area_list.end(); i++ )
    {
+      pArea = *i;
       last_mob_room = NULL;
 
       for( pReset = pArea->first_reset; pReset; pReset = nextReset )
@@ -2099,11 +2105,13 @@ void check_resets( void )
 void area_update( void )
 {
    AREA_DATA *pArea;
+   std::list<AREA_DATA *>::iterator i;
 
-   for( pArea = first_area; pArea != NULL; pArea = pArea->next )
+   for( i = area_list.begin(); i != area_list.end(); i++ )
    {
       CHAR_DATA *pch;
 
+      pArea = *i;
       pArea->age++;
       /*
        * Check for PC's.
@@ -3232,6 +3240,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
    char arg1[MSL];
    short foo;
    AREA_DATA *pArea;
+   std::list<AREA_DATA *>::iterator i;
    bool fall = FALSE;
 
    argument = one_argument( argument, arg1 );
@@ -3245,8 +3254,9 @@ void do_areas( CHAR_DATA * ch, char *argument )
    strncat( buf, "+-------+------------+------------------------------------------------+\r\n", MSL );
 
    foo = 0;
-   for( pArea = first_area; pArea != NULL; pArea = pArea->next )
+   for( i = area_list.begin(); i != area_list.end(); i++ )
    {
+      pArea = *i;
       if( pArea->flags.test(AFLAG_NOSHOW) || pArea->flags.test(AFLAG_BUILDING) )
          continue;   /* for non-finished areas - don't show */
       if( ( !fall )
@@ -3955,9 +3965,11 @@ void message_update( void )
    AREA_DATA *pArea;
    ROOM_INDEX_DATA *pRoom;
    CHAR_DATA *ch;
+   std::list<AREA_DATA *>::iterator i;
 
-   for( pArea = first_area; pArea != NULL; pArea = pArea->next )
+   for( i = area_list.begin(); i != area_list.end(); i++ )
    {
+      pArea = *i;
       for( pReset = pArea->first_reset; pReset != NULL; pReset = pReset->next )
       {
          if( pReset->command != 'A' )

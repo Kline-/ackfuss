@@ -73,10 +73,8 @@ area_data::area_data()
  min_level = 1;
  min_vnum = 0;
  name = str_dup("New Area");
- next = NULL;
  nplayer = 0;
  owner = &str_empty[0];
- prev = NULL;
  reset_msg = str_dup("The area resets. How mystical...");
  reset_rate = 15;
 }
@@ -213,7 +211,7 @@ char_data::char_data()
  sitting = NULL;
  for( short i = 0; i < MAX_SPEED; i++ )
   speed[i] = 0;
- stance = 0;
+ stance = STANCE_WARRIOR;
  stance_ac_mod = 0;
  stance_dr_mod = 0;
  stance_hr_mod = 0;

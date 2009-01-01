@@ -5798,10 +5798,14 @@ void do_owear( CHAR_DATA * ch, char *argument )
 
 void do_areasave( CHAR_DATA * ch, char *argument )
 {
+   std::list<AREA_DATA *>::iterator i;
    AREA_DATA *pArea;
 
-   for( pArea = first_area; pArea != NULL; pArea = pArea->next )
+   for( i = area_list.begin(); i != area_list.end(); i++ )
+   {
+      pArea = *i;
       area_modified( pArea );
+   }
    send_to_char( "Done.\r\n", ch );
 
    return;
@@ -5860,6 +5864,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
    snprintf( outbuf, MSL, "Resets for %s %d:\r\n", arg1, vnum );
    if( mworld )
    {
+      std::list<AREA_DATA *>::iterator i;
       AREA_DATA *pArea;
 
       pMob = get_mob_index( vnum );
@@ -5868,8 +5873,9 @@ void do_findreset( CHAR_DATA * ch, char *argument )
          send_to_char( "Invalid mobile.\r\n", ch );
          return;
       }
-      for( pArea = first_area; pArea; pArea = pArea->next )
+      for( i = area_list.begin(); i != area_list.end(); i++ )
       {
+         pArea = *i;
          for( reset = pArea->first_reset; reset; reset = reset->next )
          {
             if( fmob )

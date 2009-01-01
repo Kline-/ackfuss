@@ -2047,10 +2047,11 @@ void rooms_update( void )
    ROOM_AFFECT_DATA *raf_next;
    MARK_LIST_MEMBER *this_mark;
    MARK_LIST_MEMBER *next_mark;
+   std::list<AREA_DATA *>::iterator i;
 
-
-   for( area = first_area; area != NULL; area = area->next )
+   for( i = area_list.begin(); i != area_list.end(); i++ )
    {
+      area = *i;
       for( thing = area->first_area_room; thing != NULL; thing = thing->next )
       {
          room = (ROOM_INDEX_DATA *)thing->data;

@@ -45,8 +45,7 @@
  * declarations in lists.h
  * -- Altrag
  */
-AREA_DATA *first_area = NULL;
-AREA_DATA *last_area = NULL;
+std::list<AREA_DATA *> area_list;
 BAN_DATA *first_ban = NULL;
 BAN_DATA *last_ban = NULL;
 CHAR_DATA *first_char = NULL;

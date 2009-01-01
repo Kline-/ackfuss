@@ -32,6 +32,8 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
+#include <list>
+
 #define DEC_LISTS_H
 
 /*
@@ -39,8 +41,7 @@
  * actual variables in lists.c
  * -- Altrag
  */
-extern AREA_DATA *first_area;
-extern AREA_DATA *last_area;
+extern std::list<AREA_DATA *> area_list;
 extern BAN_DATA *first_ban;
 extern BAN_DATA *last_ban;
 extern CHAR_DATA *first_char;
