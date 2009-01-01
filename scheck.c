@@ -532,9 +532,13 @@ static void walk_objects( void )
 static void walk_areas( void )
 {
    AREA_DATA *ad;
+   std::list<AREA_DATA *>::iterator i;
 
-   for( ad = first_area; ad; ad = ad->next )
+   for( i = area_list.begin(); i != area_list.end(); i++ )
+   {
+      ad = *i;
       walk_area_data( ad );
+   }
 }
 
 /* spec- more rulers stuff */
