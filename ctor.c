@@ -221,6 +221,10 @@ char_data::char_data()
  wizbit = false;
 }
 
+descriptor_data::descriptor_data()
+{
+}
+
 exit_data::exit_data()
 {
  description = &str_empty[0];

@@ -520,9 +520,13 @@ static void walk_chars( void )
 static void walk_descriptors( void )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
 
-   for( d = first_desc; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
+   {
+      d = *li;
       walk_descriptor_data( d );
+   }
 }
 
 static void walk_objects( void )

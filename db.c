@@ -190,15 +190,6 @@ ROOM_INDEX_DATA *room_load;
 MOB_INDEX_DATA *mob_load;
 OBJ_INDEX_DATA *obj_load;
 
-int top_affect;
-int top_area;
-int top_ed;
-int top_exit;
-int top_mob_index;
-int top_obj_index;
-int top_reset;
-int top_room;
-int top_shop;
 int fp_open;
 int fp_close;
 
@@ -445,6 +436,7 @@ void boot_db( void )
       MOBtrigger = TRUE;
       booting_up = FALSE;
    }
+   boot_done();
    auto_quest = TRUE;
    return;
 }
@@ -647,7 +639,6 @@ void load_area( FILE * fp )
 
    area_list.push_back(pArea);
 
-   top_area++;
    return;
 }
 
@@ -735,7 +726,8 @@ void load_door( FILE *fp )
  }
 
  room_load->exit[dir] = pExit;
- top_exit++;
+
+ exit_list.push_back(pExit);
 
  return;
 }
@@ -1103,7 +1095,7 @@ void load_mobile( FILE * fp )
    LINK( pList, area_load->first_area_mobile, area_load->last_area_mobile, next, prev );
 
    mob_load = pMobIndex;
-   top_mob_index++;
+   mob_index_list.push_back(pMobIndex);
    kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
 
    return;
@@ -1156,7 +1148,7 @@ void load_oaffect( FILE * fp )
  }
 
  LINK( pAf, obj_load->first_apply, obj_load->last_apply, next, prev );
- top_affect++;
+ affect_list.push_back(pAf);
 
  return;
 }
@@ -1320,7 +1312,7 @@ void load_object( FILE * fp )
    LINK( pList, area_load->first_area_object, area_load->last_area_object, next, prev );
 
    obj_load = pObjIndex;
-   top_obj_index++;
+   obj_index_list.push_back(pObjIndex);
 
    return;
 }
@@ -1372,7 +1364,7 @@ void load_oextra( FILE * fp )
  }
 
  LINK( pEd, obj_load->first_exdesc, obj_load->last_exdesc, next, prev );
- top_ed++;
+ exdesc_list.push_back(pEd);
 
  return;
 }
@@ -1516,9 +1508,9 @@ void load_resets( FILE * fp )
          pReset->arg2 = Targ2;
          pReset->arg3 = Targ3;
          pReset->notes = fsave_to_eol( fp );
+         reset_list.push_back(pReset);
 
          LINK( pReset, area_load->first_reset, area_load->last_reset, next, prev );
-         top_reset++;
          GET_FREE( pList, build_free );
          pList->data = pReset;
          LINK( pList, pRoomIndex->first_room_reset, pRoomIndex->last_room_reset, next, prev );
@@ -1576,7 +1568,7 @@ void load_rextra( FILE * fp )
  }
 
  LINK( pEd, room_load->first_exdesc, room_load->last_exdesc, next, prev );
- top_ed++;
+ exdesc_list.push_back(pEd);
 
  return;
 }
@@ -1687,7 +1679,7 @@ void load_room( FILE * fp )
    LINK( pList, area_load->first_area_room, area_load->last_area_room, next, prev );
 
    room_load = pRoomIndex;
-   top_room++;
+   room_list.push_back(pRoomIndex);
 
    return;
 }
@@ -1776,9 +1768,8 @@ void load_shop( FILE * fp )
    GET_FREE( pList, build_free );
    pList->data = pShop;
    LINK( pList, area_load->first_area_shop, area_load->last_area_shop, next, prev );
-   LINK( pShop, first_shop, last_shop, next, prev );
 
-   top_shop++;
+   shop_list.push_back(pShop);
 
    return;
 }
@@ -3331,25 +3322,25 @@ void do_memory( CHAR_DATA * ch, char *argument )
 
    
 
-   snprintf( buf, MSL, "Affects %5d\r\n", top_affect );
+   snprintf( buf, MSL, "Affects %5d\r\n", affect_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Areas   %5d\r\n", top_area );
+   snprintf( buf, MSL, "Areas   %5d\r\n", area_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "ExDes   %5d\r\n", top_ed );
+   snprintf( buf, MSL, "ExDes   %5d\r\n", exdesc_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Exits   %5d\r\n", top_exit );
+   snprintf( buf, MSL, "Exits   %5d\r\n", exit_list.size() );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Mobs    %5d\r\n", top_mob_index );
+   snprintf( buf, MSL, "Mobs    %5d\r\n", mob_index_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Objs    %5d\r\n", top_obj_index );
+   snprintf( buf, MSL, "Objs    %5d\r\n", obj_index_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Resets  %5d\r\n", top_reset );
+   snprintf( buf, MSL, "Resets  %5d\r\n", reset_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Rooms   %5d\r\n", top_room );
+   snprintf( buf, MSL, "Rooms   %5d\r\n", room_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Shops   %5d\r\n", top_shop );
+   snprintf( buf, MSL, "Shops   %5d\r\n", shop_list.size() );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Shared String Info:\r\n" );
    send_to_char( buf, ch );
@@ -3388,15 +3379,15 @@ void do_status( CHAR_DATA * ch, char *argument )
    send_to_char( "\r\n", ch );
    send_to_char( "The following counts are for *distinct* mobs/objs/rooms, not a count\r\n", ch );
    send_to_char( "of how many are actually in the game at this time.\r\n", ch );
-   snprintf( buf, MSL, "Areas   %5d\r\n", top_area );
+   snprintf( buf, MSL, "Areas   %5d\r\n", area_list.size() );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Mobs    %5d\r\n", top_mob_index );
+   snprintf( buf, MSL, "Mobs    %5d\r\n", mob_index_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Objs    %5d\r\n", top_obj_index );
+   snprintf( buf, MSL, "Objs    %5d\r\n", obj_index_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Rooms   %5d\r\n", top_room );
+   snprintf( buf, MSL, "Rooms   %5d\r\n", room_list.size() );
    send_to_char( buf, ch );
 
    return;
@@ -4278,7 +4269,43 @@ void file_close( FILE *file )
 
 void clear_lists( void )
 {
+ affect_list.clear();
  area_list.clear();
  ban_list.clear();
-// char_list.clear();
+ char_list.clear();
+ descriptor_list.clear();
+ exdesc_list.clear();
+ exit_list.clear();
+ mob_index_list.clear();
+ obj_index_list.clear();
+ room_list.clear();
+ shop_list.clear();
+}
+
+static bool delete_all_affect( AFFECT_DATA * pAf ) { delete pAf; return true; }
+static bool delete_all_area( AREA_DATA * pArea ) { delete pArea; return true; }
+static bool delete_all_exdesc( EXTRA_DESCR_DATA * pEd ) { delete pEd; return true; }
+static bool delete_all_exit( EXIT_DATA * pExit ) { delete pExit; return true; }
+static bool delete_all_mob_index( MOB_INDEX_DATA *pMob ) { delete pMob; return true; }
+static bool delete_all_obj_index( OBJ_INDEX_DATA *pObj ) { delete pObj; return true; }
+static bool delete_all_room( ROOM_INDEX_DATA * pRoom ) { delete pRoom; return true; }
+static bool delete_all_shop( SHOP_DATA * pShop ) { delete pShop; return true; }
+
+void mem_cleanup( void )
+{
+ affect_list.remove_if(delete_all_affect);
+ area_list.remove_if(delete_all_area);
+ exdesc_list.remove_if(delete_all_exdesc);
+ exit_list.remove_if(delete_all_exit);
+ mob_index_list.remove_if(delete_all_mob_index);
+ obj_index_list.remove_if(delete_all_obj_index);
+ room_list.remove_if(delete_all_room);
+ shop_list.remove_if(delete_all_shop);
+
+ clear_lists();
+ free(string_space);         /* ssm.c */
+ free(social_table);         /* social-edit.c */
+#ifdef IMC                   /* imc.c */
+ free_imcdata( true );
+#endif
 }

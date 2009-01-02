@@ -21,7 +21,6 @@
 #endif
 
 #if defined(IMCACK)
-#define first_descriptor first_desc
 #define CH_IMCRANK(ch)           (str_cmp(ch->pcdata->who_name,"off") ? ch->pcdata->who_name : IS_IMMORTAL(ch) ? "Imm" : class_table[(ch)->p_class].who_name)
 #endif
 

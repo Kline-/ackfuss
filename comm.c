@@ -119,7 +119,6 @@ const char go_ahead_str[] = { IAC, GA, '\0' };
 /*
  * Global variables.
  */
-DESCRIPTOR_DATA *d_next;   /* Next descriptor in loop      */
 FILE *fpReserve;  /* Reserved file handle         */
 bool god;   /* All new chars are gods!      */
 bool merc_down;   /* Shutdown                     */
@@ -261,6 +260,7 @@ int main( int argc, char **argv )
    /*
     * That's all, folks.
     */
+   mem_cleanup();
    log_string( "Normal termination of game." );
    exit( 0 );
    return 0;
@@ -369,6 +369,8 @@ void game_loop( int control )
       fd_set out_set;
       fd_set exc_set;
       DESCRIPTOR_DATA *d;
+      std::list<DESCRIPTOR_DATA *>::iterator li;
+      std::list<DESCRIPTOR_DATA *>::iterator li_next;
       int maxdesc;
 
       /*
@@ -393,8 +395,9 @@ void game_loop( int control )
       FD_SET( control, &in_set );
       maxdesc = control;
 
-      for( d = first_desc; d; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( ( d->flags && DESC_FLAG_PASSTHROUGH ) == 0 )
          {
             maxdesc = UMAX( maxdesc, d->descriptor );
@@ -433,9 +436,11 @@ void game_loop( int control )
       /*
        * Kick out the freaky folks.
        */
-      for( d = first_desc; d != NULL; d = d_next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); )
       {
-         d_next = d->next;
+         li_next = li;
+         d = *li_next;
+         li++;
          if( FD_ISSET( d->descriptor, &exc_set ) )
          {
             FD_CLR( d->descriptor, &in_set );
@@ -450,9 +455,11 @@ void game_loop( int control )
       /*
        * Process input.
        */
-      for( d = first_desc; d != NULL; d = d_next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); )
       {
-         d_next = d->next;
+         li_next = li;
+         d = *li_next;
+         li++;
          d->fcommand = FALSE;
 
          if( FD_ISSET( d->descriptor, &in_set ) )
@@ -508,9 +515,12 @@ void game_loop( int control )
       /*
        * Output.
        */
-      for( d = first_desc; d != NULL; d = d_next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); )
       {
-         d_next = d->next;
+         li_next = li;
+         d = *li_next;
+         li++;
+
 
          /*
           * spec: disconnect people idling on login 
@@ -599,11 +609,15 @@ void game_loop( int control )
 void free_desc( DESCRIPTOR_DATA * d )
 {
    DESCRIPTOR_DATA *sd;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
 
    d->snoop_by = NULL;
-   for( sd = first_desc; sd; sd = sd->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
+   {
+      sd = *li;
       if( sd->snoop_by == d )
          sd->snoop_by = NULL;
+   }
    if( d->original )
       do_return( d->character, "" );
    if( d->character )
@@ -618,7 +632,6 @@ void free_desc( DESCRIPTOR_DATA * d )
 
 void new_descriptor( int control )
 {
-   static DESCRIPTOR_DATA d_zero;
    char buf[MSL];
    DESCRIPTOR_DATA *dnew;
    /*
@@ -648,8 +661,7 @@ void new_descriptor( int control )
    /*
     * Cons a new descriptor.
     */
-   GET_FREE( dnew, desc_free );
-   *dnew = d_zero;
+   dnew = new DESCRIPTOR_DATA;
    init_descriptor( dnew, desc );   /* Not sure is this right? */
    dnew->descriptor = desc;
    dnew->connected = CON_GET_NAME;
@@ -692,40 +704,9 @@ void new_descriptor( int control )
    }
 
    /*
-    * Swiftest: I added the following to ban sites.  I don't
-    * endorse banning of sites, but Copper has few descriptors now
-    * and some people from certain sites keep abusing access by
-    * using automated 'autodialers' and leaving connections hanging.
-    *
-    * Furey: added suffix check by request of Nickel of HiddenWorlds.
-    *
-    * Stephen: As we use IP address now, want to use prefix check,
-    * so we can ban whole domains....
-    */
-   /*
-    * MOVED TO LOWER FOR NEWBIEBAN     
-    * 
-    * for ( pban = first_ban; pban != NULL; pban = pban->next )
-    * {
-    * if ( !str_prefix( pban->name, dnew->host ) && !( pban->newbie ) )
-    * {
-    * char buf[MAX_STRING_LENGTH];
-    * snprintf( buf, MSL, "Denying access to banned site %s", dnew->host );
-    * monitor_chan( buf, MONITOR_CONNECT );
-    * write_to_descriptor( desc,
-    * "Your site has been banned from this Mud.  BYE BYE!\r\n", 0 );
-    * free_desc(dnew);
-    * PUT_FREE(dnew, desc_free);
-    * return;
-    * }
-    * }
-    * 
-    * 
-    */
-   /*
     * Init descriptor data.
     */
-   LINK( dnew, first_desc, last_desc, next, prev );
+   descriptor_list.push_back(dnew);
 
    /*
     * spec: set initial login timeout 
@@ -786,9 +767,11 @@ void close_socket( DESCRIPTOR_DATA * dclose )
 
    {
       DESCRIPTOR_DATA *d;
+      std::list<DESCRIPTOR_DATA *>::iterator li;
 
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( d->snoop_by == dclose )
             d->snoop_by = NULL;
       }
@@ -819,23 +802,21 @@ void close_socket( DESCRIPTOR_DATA * dclose )
       else
       {
          delete dclose->character;
-      }
-/*      stop_fighting( ch, TRUE );
+      }/*
+      stop_fighting( ch, TRUE );
       save_char_obj( ch );
       extract_char( ch, TRUE );  */
    }
 
-   if( d_next == dclose )
-      d_next = d_next->next;
-
-   UNLINK( dclose, first_desc, last_desc, next, prev );
    close( dclose->descriptor );
    free_string( dclose->host );
    if( dclose->outbuf )
       dispose( dclose->outbuf, dclose->outsize );
    if( dclose->showstr_head )
       free(dclose->showstr_head);
-   PUT_FREE( dclose, desc_free );
+
+   descriptor_list.remove(dclose);
+   delete dclose;
 
    cur_players--;
    return;
@@ -3123,10 +3104,12 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
 bool check_playing( DESCRIPTOR_DATA * d, char *name )
 {
    DESCRIPTOR_DATA *dold;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
 
-   for( dold = first_desc; dold; dold = dold->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      dold = *li;
       if( dold != d
           && dold->character != NULL
           && dold->connected != CON_GET_NAME
@@ -3548,12 +3531,13 @@ void do_finger( CHAR_DATA * ch, char *argument )
    bool found = FALSE;
    DESCRIPTOR_DATA d;
    DESCRIPTOR_DATA *this_d;
-
+   std::list<DESCRIPTOR_DATA *>::iterator li;
 
    argument = one_argument( argument, name );
 
-   for( this_d = first_desc; this_d != NULL; this_d = this_d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      this_d = *li;
       if( ( this_d->connected > 0 ) && !str_cmp( this_d->character->name, name ) )
       {
          do_whois( ch, name );
@@ -3630,15 +3614,13 @@ void copyover_recover(  )
          continue;
       }
 
-      GET_FREE( d, desc_free );
+      d = new DESCRIPTOR_DATA;
       init_descriptor( d, desc );   /* set up various stuff */
 
       d->host = str_dup( host );
-      d->next = NULL;
-      d->prev = NULL;
 
       d->connected = CON_COPYOVER_RECOVER;   /* -15, so close_socket frees the char */
-      LINK( d, first_desc, last_desc, next, prev );
+      descriptor_list.push_back(d);
 
       /*
        * Now, find the pfile 
@@ -3670,7 +3652,7 @@ void copyover_recover(  )
           */
          this_char = d->character;
 
-         char_list.push_back(this_char);
+         char_list.push_back(d->character);
 
          char_to_room( d->character, d->character->in_room );
          if( d->character->position == POS_RIDING )

@@ -283,6 +283,7 @@ void do_family( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    bool found;
    short index;
 
@@ -317,8 +318,9 @@ void do_family( CHAR_DATA * ch, char *argument )
 
          send_to_char( buf, ch );
          found = FALSE;
-         for( d = first_desc; d != NULL; d = d->next )
+         for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
          {
+            d = *li;
             if( d->connected == CON_PLAYING
                 && ( victim = d->character ) != NULL && !IS_NPC( victim ) && victim->in_room != NULL )
             {
@@ -349,8 +351,9 @@ void do_family( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL, "@@WMembers of the @@dKindred @@NFamily %s\r\n", get_family_name( ch ) );
       send_to_char( buf, ch );
       found = FALSE;
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( d->connected == CON_PLAYING
              && ( victim = d->character ) != NULL
              && !IS_NPC( victim ) && victim->in_room != NULL && IS_VAMP( victim ) && !IS_IMMORTAL( victim ) )

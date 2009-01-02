@@ -235,11 +235,11 @@ struct council_data
 /*
  * Descriptor (channel) structure.
  */
-struct descriptor_data
+class descriptor_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   DESCRIPTOR_DATA *next;
-   DESCRIPTOR_DATA *prev;
+ public:
+  descriptor_data();
+  ~descriptor_data();
    DESCRIPTOR_DATA *snoop_by;
    CHAR_DATA *character;
    CHAR_DATA *original;

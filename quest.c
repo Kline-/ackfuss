@@ -81,7 +81,6 @@ extern int quest_timer;
 extern short quest_personality;
 extern bool auto_quest;
 extern bool quest;
-extern int top_mob_index;
 
 /* 17 messages, organised by blocks for each personality 
    indented messages are for when the target mob gets killed  */
@@ -294,6 +293,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
    if( !strcmp( argument, "start" ) )
    {
       DESCRIPTOR_DATA *d;
+      std::list<DESCRIPTOR_DATA *>::iterator li;
       int a = 80;
       int b = 0;
       short player_count = 0, average_level = 0, total_levels = 0;
@@ -316,11 +316,14 @@ void do_quest( CHAR_DATA * ch, char *argument )
       /*
        * Work out levels of currently playing folks 
        */
-      for( d = first_desc; d; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
-         if( ( d->connected != CON_PLAYING ) || ( IS_IMMORTAL( d->character ) ) )
+         d = *li;
+         if( d->connected != CON_PLAYING )
             continue;
-         player_count += 1;
+         if( IS_IMMORTAL(d->character) ) /* Imms shouldn't count against the quest level. --Kline */
+            continue;
+         player_count++;
          total_levels += d->character->level;
       }
       average_level = ( ( ( total_levels == 0 ) ? 30 : total_levels ) / ( ( player_count == 0 ) ? 1 : player_count ) );
@@ -438,7 +441,7 @@ CHAR_DATA *get_quest_target( int min_level, int max_level )
 
    if( max_level > 140 )
       max_level = 140;
-   min_index = number_range(0,top_mob_index-1);
+   min_index = number_range(0,mob_index_list.size()-1);
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
@@ -510,7 +513,7 @@ CHAR_DATA *get_quest_giver( int min_level, int max_level )
    std::list<CHAR_DATA *>::iterator li;
    int min_index = 0;
 
-   min_index = number_range(0,top_mob_index-1);
+   min_index = number_range(0,mob_index_list.size()-1);
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
@@ -652,6 +655,7 @@ void clear_quest(  )
 void generate_auto_quest(  )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    int hunt_flags = 0;
    char new_long_desc[MAX_STRING_LENGTH];
    short loop_counter = 0;
@@ -671,10 +675,11 @@ void generate_auto_quest(  )
    /*
     * Work out levels of currently playing folks 
     */
-   if( first_desc && first_desc->connected == CON_PLAYING )
+   if( descriptor_list.size() > 0 )
    {
-      for( d = first_desc; d; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( d->connected != CON_PLAYING )
             continue;
          if( IS_IMMORTAL(d->character) ) /* Imms shouldn't count against the quest level. --Kline */
@@ -682,11 +687,9 @@ void generate_auto_quest(  )
          player_count++;
          total_levels += d->character->level;
       }
-      player_count = UMAX( 1, player_count );
-      if( total_levels > 0 ) /* If we don't have any players on, don't want a div by 0 error. --Kline */
-       average_level = ( total_levels / player_count );
-      else
-       average_level = 1;
+      average_level = ( ( ( total_levels == 0 ) ? 30 : total_levels ) / ( ( player_count == 0 ) ? 1 : player_count ) );
+      a = average_level - 20;
+      b = average_level + 20;
 
       quest_mob = NULL;
       quest_target = NULL;

@@ -242,18 +242,6 @@ extern char *string_space;
 extern char *top_string;
 extern char str_empty[1];
 
-extern int top_affect;
-extern int top_area;
-extern int top_ed;
-extern int top_exit;
-extern int top_mob_index;
-extern int top_obj_index;
-extern int top_reset;
-extern int top_room;
-extern int top_shop;
-
-extern AREA_DATA *area_last;
-extern AREA_DATA *area_first;
 #define                 MAX_PERM_BLOCK  131072
 extern long int nAllocString;
 extern long int sAllocString;
@@ -1083,7 +1071,6 @@ void build_findmobroom( CHAR_DATA * ch, char *argument )
 
 void build_findobject( CHAR_DATA * ch, char *argument )
 {
-/*    extern int top_obj_index; Unused Var */
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1146,7 +1133,6 @@ void build_findobject( CHAR_DATA * ch, char *argument )
 
 void build_findroom( CHAR_DATA * ch, char *argument )
 {
-/*    extern int top_room_index; Unused Var */
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1723,10 +1709,6 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       {
          if( pShop != NULL )
          {
-            UNLINK( pShop, first_shop, last_shop, next, prev );
-
-            top_shop--; /* Reduce shop count */
-
             for( pList = pArea->first_area_shop; pList != NULL; pList = pList->next )
             {
                if( pShop == pList->data )
@@ -1740,6 +1722,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
             }
 
             pMob->pShop = NULL;  /* Take away link from mob */
+            shop_list.remove(pShop);
             delete pShop; /* Free the memory it occupies */
          }
          area_modified( pArea );
@@ -1777,14 +1760,13 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          pList->data = pShop; /* Add to area list */
          LINK( pList, pArea->first_area_shop, pArea->last_area_shop, next, prev );
 
-         LINK( pShop, first_shop, last_shop, next, prev );
-         top_shop++; /* Increment number of shops */
          for( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
             pShop->buy_type[iTrade] = 0;
          pShop->profit_buy = 100;
          pShop->profit_sell = 100;
          pShop->open_hour = 0;
          pShop->close_hour = 23;
+         shop_list.push_back(pShop);
       }
 
 
@@ -2043,8 +2025,8 @@ void build_setroom( CHAR_DATA * ch, char *argument )
           * Delete description 
           */
          UNLINK( ed, location->first_exdesc, location->last_exdesc, next, prev );
+         exdesc_list.remove(ed);
          delete ed;
-         top_ed--;
 
          return;
       }
@@ -2064,7 +2046,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          build_strdup( &ed->keyword, arg2, FALSE, FALSE, ch );
          build_strdup( &ed->description, arg3, FALSE, FALSE, ch );
          LINK( ed, location->first_exdesc, location->last_exdesc, next, prev );
-         top_ed++;
+         exdesc_list.push_back(ed);
          return;
       }
 
@@ -2128,9 +2110,9 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          /*
           * Delete exit 
           */
-         delete pExit;
          location->exit[door] = NULL;
-         top_exit--;
+         exit_list.remove(pExit);
+         delete pExit;
 
          /*
           * spec: nuke any resets for it 
@@ -2146,9 +2128,9 @@ void build_setroom( CHAR_DATA * ch, char *argument )
             if( pExit != NULL )
                if( pExit->vnum == location->vnum )
                {
-                  delete pExit;
                   pDestRoom->exit[RevDirs[door]] = NULL;
-                  top_exit--;
+                  exit_list.remove(pExit);
+                  delete pExit;
 
                   /*
                    * spec: nuke any resets for it 
@@ -2173,8 +2155,8 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       if( pExit == NULL )
       {
          pExit = new EXIT_DATA;
-         top_exit++;
          location->exit[door] = pExit;
+         exit_list.push_back(pExit);
       }
 
       pDestRoom = pExit->to_room;   /* Setup pDestRoom to point to dest. room */
@@ -2223,9 +2205,9 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          {
             if( pDestRoom != NULL && pDestExit != NULL ) /* If already connected */
             {
-               delete pDestExit;
                pDestRoom->exit[RevDirs[door]] = NULL;
-               top_exit--;
+               exit_list.remove(pDestExit);
+               delete pDestExit;
 
                /*
                 * spec: nuke exit resets 
@@ -2246,7 +2228,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
                build_strdup( &pDestExit->keyword, pExit->keyword, FALSE, FALSE, ch );
                pDestExit->exit_info = pExit->exit_info;
                pDestExit->key = pExit->vnum;
-               top_exit++;
+               exit_list.push_back(pDestExit);
                pRoom->exit[RevDirs[door]] = pDestExit;
                area_modified( pRoom->area );
             }
@@ -2884,6 +2866,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          }
 
          UNLINK( paf, pObj->first_apply, pObj->last_apply, next, prev );
+         affect_list.remove(paf);
          delete paf;
          return;
       }
@@ -2895,6 +2878,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          paf->location = location;
          paf->modifier = atoi( argument );
          LINK( paf, pObj->first_apply, pObj->last_apply, next, prev );
+         affect_list.push_back(paf);
       }
       else
          paf->modifier = atoi( argument );
@@ -2999,6 +2983,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
    pRoomIndex->area = pArea;
    pRoomIndex->vnum = vnum;
    pRoomIndex->sector_type = ch->in_room->sector_type;
+   room_list.push_back(pRoomIndex);
 
    /*
     * Add room to hash table 
@@ -3013,7 +2998,6 @@ void build_dig( CHAR_DATA * ch, char *argument )
    GET_FREE( pList, build_free );
    pList->data = pRoomIndex;
    LINK( pList, pCurRoom->area->first_area_room, pCurRoom->area->last_area_room, next, prev );
-   top_room++;
 
    /*
     * Create door 
@@ -3021,7 +3005,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
    pExit = new EXIT_DATA;
    pExit->to_room = pRoomIndex;
    pExit->vnum = vnum;
-   top_exit++;
+   exit_list.push_back(pExit);
    pCurRoom->exit[dir] = pExit;
 
    if( str_cmp( arg3, "onesided" ) )   /* If NOT onesided */
@@ -3029,7 +3013,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
       pExit = new EXIT_DATA;
       pExit->to_room = pCurRoom;
       pExit->vnum = pCurRoom->vnum;
-      top_exit++;
+      exit_list.push_back(pExit);
       pRoomIndex->exit[RevDirs[dir]] = pExit;
    }
 
@@ -3113,13 +3097,13 @@ void build_addmob( CHAR_DATA * ch, char *argument )
    pMobIndex->vnum = vnum;
    pMobIndex->area = pArea;
    pMobIndex->player_name = str_dup( arg2 );
+   mob_index_list.push_back(pMobIndex);
 
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pMobIndex, mob_index_hash[iHash], next );
    GET_FREE( pList, build_free );
    pList->data = pMobIndex;
    LINK( pList, pArea->first_area_mobile, pArea->last_area_mobile, next, prev );
-   top_mob_index++;
    kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
 
    return;
@@ -3180,13 +3164,13 @@ void build_addobject( CHAR_DATA * ch, char *argument )
    pObjIndex->vnum = vnum;
    pObjIndex->area = pArea;
    pObjIndex->name = str_dup(arg2);
+   obj_index_list.push_back(pObjIndex);
 
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pObjIndex, obj_index_hash[iHash], next );
    GET_FREE( pList, build_free );
    pList->data = pObjIndex;
    LINK( pList, pArea->first_area_object, pArea->last_area_object, next, prev );
-   top_obj_index++;
 
    return;
 }
@@ -3241,6 +3225,7 @@ void build_addroom( CHAR_DATA *ch, char *argument )
  pRoomIndex->area = pArea;
  pRoomIndex->vnum = vnum;
  pRoomIndex->sector_type = ch->in_room->sector_type;
+ room_list.push_back(pRoomIndex);
 
  ch->build_vnum = vnum;
  ch->act_build = ACT_BUILD_REDIT;
@@ -3258,7 +3243,6 @@ void build_addroom( CHAR_DATA *ch, char *argument )
  GET_FREE( pList, build_free );
  pList->data = pRoomIndex;
  LINK( pList, pCurRoom->area->first_area_room, pCurRoom->area->last_area_room, next, prev );
- top_room++;
 }
 
 void build_addreset( CHAR_DATA * ch, char *argument )
@@ -3928,9 +3912,9 @@ void build_delroom( CHAR_DATA * ch, char *argument )
                /*
                 * Get rid of exit. 
                 */
-               delete pExit;
                pSrchRoom->exit[door] = NULL;
-               top_exit--;
+               exit_list.remove(pExit);
+               delete pExit;
 
                /*
                 * spec: do the resets thing 
@@ -4019,8 +4003,8 @@ void build_delroom( CHAR_DATA * ch, char *argument )
          if( found )
          {
             UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
+            reset_list.remove(pReset);
             delete pReset;
-            top_reset--;
          }
       }
    }
@@ -4037,9 +4021,9 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       {
          if( ( pExit = pRoomIndex->exit[door] ) != NULL )
          {
-            delete pExit;
             pRoomIndex->exit[door] = NULL;
-            top_exit--;
+            exit_list.remove(pExit);
+            delete pExit;
 
             /*
              * spec: resets aren't a problem, since they will get freed anyway 
@@ -4062,10 +4046,8 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       }
    }
    PUT_FREE( pRoomIndex->treasure, money_type_free );
+   room_list.remove(pRoomIndex);
    delete pRoomIndex;
-
-   top_room--;
-
 
    send_to_char( "Done.\r\n", ch );
    return;
@@ -4214,8 +4196,8 @@ void build_delobject( CHAR_DATA * ch, char *argument )
          if( found )
          {
             UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
+            reset_list.remove(pReset);
             delete pReset;
-            top_reset--;
          }
       }
    }
@@ -4230,6 +4212,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
       for( pEd = pObjIndex->first_exdesc; pEd != NULL; pEd = pNext )
       {
          pNext = pEd->next;
+         exdesc_list.remove(pEd);
          delete pEd;
       }
    }
@@ -4244,6 +4227,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
       for( paf = pObjIndex->first_apply; paf != NULL; paf = pNext )
       {
          pNext = paf->next;
+         affect_list.remove(paf);
          delete paf;
       }
    }
@@ -4251,9 +4235,8 @@ void build_delobject( CHAR_DATA * ch, char *argument )
    /*
     * Now delete structure 
     */
+   obj_index_list.remove(pObjIndex);
    delete pObjIndex;
-
-   top_obj_index--;
 
    send_to_char( "Done.\r\n", ch );
    return;
@@ -4416,8 +4399,8 @@ void build_delmob( CHAR_DATA * ch, char *argument )
          if( found )
          {
             UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
+            reset_list.remove(pReset);
             delete pReset;
-            top_reset--;
          }
       }
    }
@@ -4439,13 +4422,9 @@ void build_delmob( CHAR_DATA * ch, char *argument )
       PUT_FREE( pList, build_free );
 
       /*
-       * Take out of pShop linked list 
-       */
-      UNLINK( pShop, first_shop, last_shop, next, prev );
-
-      /*
        * Now free shop structure 
        */
+      shop_list.remove(pShop);
       delete pShop;
    }
 
@@ -4467,9 +4446,8 @@ void build_delmob( CHAR_DATA * ch, char *argument )
    /*
     * Now delete structure 
     */
+   mob_index_list.remove(pMobIndex);
    delete pMobIndex;
-
-   top_mob_index--;
 
    send_to_char( "Done.\r\n", ch );
    return;

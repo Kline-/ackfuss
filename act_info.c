@@ -1936,7 +1936,7 @@ void do_help( CHAR_DATA * ch, char *argument )
 void do_who( CHAR_DATA * ch, char *argument )
 {
    DESCRIPTOR_DATA *d;
-
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH * 10];
    char buf2[MAX_STRING_LENGTH * 4];
    char buf3[MAX_STRING_LENGTH * 4];
@@ -2075,10 +2075,11 @@ void do_who( CHAR_DATA * ch, char *argument )
    {
       number[list] = 0;
 
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
          CHAR_DATA *wch;
 
+         d = *li;
          if( d->connected != CON_PLAYING || !can_see( ch, d->character ) )
             continue;
 
@@ -2205,7 +2206,7 @@ void do_who( CHAR_DATA * ch, char *argument )
       true_cnt = 0;
 
 
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
          CHAR_DATA *wch;
          char const *p_class;
@@ -2215,6 +2216,7 @@ void do_who( CHAR_DATA * ch, char *argument )
           */
          true_cnt++;
 
+         d = *li;
          if( d->connected != CON_PLAYING || !can_see( ch, d->character ) )
             continue;
 
@@ -2689,7 +2691,6 @@ void do_where( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
-   std::list<CHAR_DATA *>::iterator li;
    DESCRIPTOR_DATA *d;
    bool found;
    buf[0] = '\0';
@@ -2698,12 +2699,15 @@ void do_where( CHAR_DATA * ch, char *argument )
 
    if( arg[0] == '\0' )
    {
+      std::list<DESCRIPTOR_DATA *>::iterator li;
+
       send_to_char( "Players near you:\r\n", ch );
       snprintf( buf, MSL, "In %s %s @@N:\r\n", ch->in_room->area->level_label, ch->in_room->area->name );
       send_to_char( buf, ch );
       found = FALSE;
-      for( d = first_desc; d; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( d->connected == CON_PLAYING
              && ( victim = d->character ) != NULL
              && !IS_NPC( victim )
@@ -2721,6 +2725,8 @@ void do_where( CHAR_DATA * ch, char *argument )
    }
    else
    {
+      std::list<CHAR_DATA *>::iterator li;
+
       found = FALSE;
       for( li = char_list.begin(); li != char_list.end(); li++ )
       {

@@ -112,8 +112,6 @@
 #include "h/strfuns.h"
 #endif
 
-extern int top_mob_index;
-extern int top_obj_index;
 extern bool merc_down;
 extern int saving_area;
 extern bool deathmatch;
@@ -280,6 +278,7 @@ void do_disconnect( CHAR_DATA * ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    DESCRIPTOR_DATA *d;
    CHAR_DATA *victim;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
 
    one_argument( argument, arg );
    if( arg[0] == '\0' )
@@ -300,8 +299,9 @@ void do_disconnect( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   for( d = first_desc; d != NULL; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( d == victim->desc )
       {
          close_socket( d );
@@ -376,6 +376,7 @@ void do_pardon( CHAR_DATA * ch, char *argument )
 void do_echo( CHAR_DATA * ch, char *argument )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
 
    if( argument[0] == '\0' )
    {
@@ -383,8 +384,9 @@ void do_echo( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   for( d = first_desc; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( d->connected == CON_PLAYING )
       {
          send_to_char( argument, d->character );
@@ -400,6 +402,7 @@ void do_echo( CHAR_DATA * ch, char *argument )
 void do_recho( CHAR_DATA * ch, char *argument )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
 
    if( argument[0] == '\0' )
    {
@@ -407,8 +410,9 @@ void do_recho( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   for( d = first_desc; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( d->connected == CON_PLAYING && d->character->in_room == ch->in_room )
       {
          send_to_char( argument, d->character );
@@ -447,8 +451,7 @@ void do_transfer( CHAR_DATA * ch, char *argument )
    ROOM_INDEX_DATA *location;
    DESCRIPTOR_DATA *d;
    CHAR_DATA *victim;
-//    DESCRIPTOR_DATA df;
-//    bool found = FALSE;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    argument = one_argument( argument, arg1 );
    argument = one_argument( argument, arg2 );
 
@@ -460,8 +463,9 @@ void do_transfer( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "all" ) )
    {
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( d->connected == CON_PLAYING
              && !IS_IMMORTAL( d->character )
              && d->character != ch && d->character->in_room != NULL && can_see( ch, d->character ) )
@@ -1199,7 +1203,7 @@ void do_ofindlev( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_obj_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
    {
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {
@@ -1267,7 +1271,7 @@ void do_mfind( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_mob_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(mob_index_list.size()); vnum++ )
    {
       if( ( pMobIndex = get_mob_index( vnum ) ) != NULL )
       {
@@ -1337,7 +1341,7 @@ void do_mfindlev( CHAR_DATA * ch, char *argument )
     * -- Furey
     */
    snprintf(buf1,MSL,"[Kls] [Lvl] [Vnum ] [Name ]\r\n");
-   for( vnum = 0; nMatch < top_mob_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(mob_index_list.size()); vnum++ )
    {
       if( ( pMobIndex = get_mob_index( vnum ) ) != NULL )
       {
@@ -1402,7 +1406,7 @@ void do_ofind( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_obj_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
    {
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {
@@ -1547,6 +1551,7 @@ void do_snoop( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -1572,8 +1577,9 @@ void do_snoop( CHAR_DATA * ch, char *argument )
    if( victim == ch )
    {
       send_to_char( "Cancelling all snoops.\r\n", ch );
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( d->snoop_by == ch->desc )
             d->snoop_by = NULL;
       }
@@ -3605,8 +3611,8 @@ void do_users( CHAR_DATA * ch, char *argument )
    char buf2[MAX_STRING_LENGTH];
    char buf3[MAX_STRING_LENGTH];
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    int count;
-
 
    count = 0;
    buf[0] = '\0';
@@ -3619,8 +3625,9 @@ void do_users( CHAR_DATA * ch, char *argument )
       send_to_char( "\r\n", ch );
 
 
-   for( d = first_desc; d != NULL; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( d->character != NULL )
       {
          count++;
@@ -4496,9 +4503,8 @@ void do_isnoop( CHAR_DATA * ch, char *argument )
     * Creator-only command.  Lists who (if anyone) is being snooped.
     * * -S- 
     */
-
-
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    int count = 0;
 
@@ -4506,8 +4512,9 @@ void do_isnoop( CHAR_DATA * ch, char *argument )
    send_to_char( "Snoop List:\r\n-=-=-=-=-=-\r\n", ch );
 
 
-   for( d = first_desc; d != NULL; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( d->snoop_by != NULL )
       {
          count++;
@@ -5098,6 +5105,7 @@ void monitor_chan( const char *message, int channel )
 {
    char buf[MAX_STRING_LENGTH];
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    int a;
    int level = 85;
 
@@ -5113,8 +5121,9 @@ void monitor_chan( const char *message, int channel )
 
    snprintf( buf, MSL, "%s[%7s]@@N %s@@N\r\n", monitor_table[a].col, monitor_table[a].id, strip_out( message, "\r\n" ) );
 
-   for( d = first_desc; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( d->connected == CON_PLAYING
           && !IS_NPC( d->character )
           && d->character->pcdata->monitor.test(channel) && level <= get_trust( d->character ) )
@@ -5664,7 +5673,7 @@ void do_otype( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_obj_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
    {
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {
@@ -5723,7 +5732,7 @@ void do_owear( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_obj_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
    {
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {
@@ -6072,7 +6081,9 @@ void do_hotreboo( CHAR_DATA * ch, char *argument )
 void do_hotreboot( CHAR_DATA * ch, char *argument )
 {
    FILE *fp;
-   DESCRIPTOR_DATA *d, *d_next;
+   DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
+   std::list<DESCRIPTOR_DATA *>::iterator li_next;
    char buf[256], buf2[100], buf3[100];
    extern int saving_area;
 
@@ -6101,10 +6112,12 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
    /*
     * For each PLAYING descriptor( non-negative ), save its state
     */
-   for( d = first_desc; d; d = d_next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); )
    {
+      li_next = li;
+      d = *li_next;
+      li++;
       CHAR_DATA *och = CH( d );
-      d_next = d->next; /* We delete from the list , so need to save this */
 
       if( !d->character || d->connected < 0 )   /* drop those logging on */
       {

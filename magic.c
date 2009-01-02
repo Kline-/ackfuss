@@ -2102,7 +2102,6 @@ bool spell_enchant_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
    paf->modifier = UMIN( ( level / 40 ) + 1, ob->level );
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
-
    if( IS_GOOD( ch ) )
    {
       ob->extra_flags.set(ITEM_EXTRA_ANTI_EVIL);
@@ -6100,7 +6099,6 @@ bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    paf->location = APPLY_MANA;
    paf->modifier = obj_soul->level / 3;
    LINK( paf, ob->first_apply, ob->last_apply, next, prev );
-
 
    paf = new AFFECT_DATA;
    paf->type = sn;

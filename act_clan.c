@@ -674,6 +674,7 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    bool found;
    if( IS_NPC( ch ) )
       return;
@@ -686,8 +687,9 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
 
    send_to_char( "Clan members visible to you:\r\n", ch );
    found = FALSE;
-   for( d = first_desc; d != NULL; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( d->connected == CON_PLAYING
           && ( victim = d->character ) != NULL
           && !IS_NPC( victim )

@@ -1744,12 +1744,6 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    std::list<CHAR_DATA *>::iterator li;
    struct char_ref_type *ref;
 
-/*
- * Updated pointer referencing, curtesy of Spectrum, from Beyond the Veil
- *
- */
-
-
    if( ch->in_room == NULL )
    {
       char buf[MAX_STRING_LENGTH];
@@ -1779,7 +1773,6 @@ void extract_char( CHAR_DATA * ch, bool fPull )
                bugf( "Bad char_ref_list type %d", ref->type );
                break;
          }
-
 
 
    if( ( ch == quest_mob ) || ( ch == quest_target ) )
@@ -2540,29 +2533,35 @@ void notify( char *message, int lv )
     */
 
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
 
    snprintf( buf, MSL, "[NOTE]: %s\r\n", message );
-   for( d = first_desc; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
+   {
+      d = *li;
       if( ( d->connected == CON_PLAYING )
           && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_NOTIFY) )
          send_to_char( buf, d->character );
+   }
    return;
 }
 
 void auction( char *message )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
 
    snprintf( buf, MSL, "[AUCTION]: %s\r\n", message );
-   for( d = first_desc; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
+   {
+      d = *li;
       if( ( d->connected == CON_PLAYING ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_AUCTION) )
          send_to_char( buf, d->character );
+   }
    return;
 }
-
-
 
 void info( char *message, int lv )
 {
@@ -2573,9 +2572,12 @@ void info( char *message, int lv )
     * * - Stephen
     */
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
 
-   for( d = first_desc; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
+   {
+      d = *li;
       if( ( d->connected == CON_PLAYING )
           && ( d->character->level >= lv ) && !IS_NPC( d->character ) && !d->character->deaf.test(CHANNEL_INFO) )
       {
@@ -2583,6 +2585,7 @@ void info( char *message, int lv )
                   color_string( d->character, "info" ), message, color_string( d->character, "normal" ) );
          send_to_char( buf, d->character );
       }
+   }
    return;
 }
 
@@ -2594,14 +2597,18 @@ void log_chan( const char *message, int lv )
     * * Level is used to determine WHO gets the message... 
     */
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
 
    snprintf( buf, MSL, "[LOG]: %s\r\n", message );
-   for( d = first_desc; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
+   {
+      d = *li;
       if( ( d->connected == CON_PLAYING )
           && ( get_trust( d->character ) == MAX_LEVEL )
           && ( !IS_NPC( d->character ) ) && ( d->character->level >= lv ) && ( !d->character->deaf.test(CHANNEL_LOG) ) )
          send_to_char( buf, d->character );
+   }
    return;
 }
 

@@ -1537,8 +1537,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
 #define TEMP_VNUM 3090
 
-extern int top_obj_index;
-
 void fread_obj( CHAR_DATA * ch, FILE * fp )
 {
    OBJ_DATA *obj;
@@ -1698,7 +1696,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                         /*
                          * Scan through objects, trying to find a matching description 
                          */
-                        for( vnum = 0; nMatch < top_obj_index; vnum++ )
+                        for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
                         {
                            if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
                            {
@@ -2057,7 +2055,7 @@ void fread_corpse( FILE * fp )
                         /*
                          * Scan through objects, trying to find a matching description 
                          */
-                        for( vnum = 0; nMatch < top_obj_index; vnum++ )
+                        for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
                         {
                            if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
                            {

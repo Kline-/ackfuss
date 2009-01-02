@@ -155,7 +155,6 @@ extern char log_buf[2 * MAX_INPUT_LENGTH];
 extern char testerbuf[MSL];
 extern TIME_INFO_DATA time_info;
 extern WEATHER_DATA weather_info;
-extern DESCRIPTOR_DATA *descriptor_list;
 extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
 extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
 extern MOB_INDEX_DATA *mob_index_hash[MAX_KEY_HASH];

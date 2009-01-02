@@ -689,10 +689,12 @@ char *escape_string( const char *src )
 CHAR_DATA *imc_find_user( char *name )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    CHAR_DATA *vch = NULL;
 
-   for( d = first_descriptor; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( ( vch = d->character ? d->character : d->original ) != NULL && !strcasecmp( CH_IMCNAME( vch ), name )
           && d->connected == CON_PLAYING )
          return vch;
@@ -1700,6 +1702,7 @@ PFUN( imc_recv_tell )
 PFUN( imc_recv_emote )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    CHAR_DATA *ch;
    char txt[LGST], lvl[SMST];
    int level;
@@ -1711,8 +1714,9 @@ PFUN( imc_recv_emote )
    if( level < 0 || level > IMCPERM_IMP )
       level = IMCPERM_IMM;
 
-   for( d = first_descriptor; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       if( d->connected == CON_PLAYING && ( ch = d->original ? d->original : d->character ) != NULL
           && IMCPERM( ch ) >= level )
          imc_printf( ch, "~p[~GIMC~p] %s %s\r\n", imcgetname( q->from ), txt );
@@ -1810,6 +1814,7 @@ void update_imchistory( IMC_CHANNEL * channel, char *message )
 void imc_display_channel( IMC_CHANNEL * c, const char *from, char *txt, int emote )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    CHAR_DATA *ch;
    char buf[LGST], name[SMST];
 
@@ -1821,8 +1826,9 @@ void imc_display_channel( IMC_CHANNEL * c, const char *from, char *txt, int emot
    else
       snprintf( buf, LGST, c->socformat, txt );
 
-   for( d = first_descriptor; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       ch = d->original ? d->original : d->character;
 
       if( !ch || d->connected != CON_PLAYING )
@@ -1952,6 +1958,7 @@ PFUN( imc_recv_chanwhoreply )
 char *get_local_chanwho( IMC_CHANNEL *c )
 {
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    CHAR_DATA *person;
    static char buf[IMC_BUFF_SIZE];
    int count = 0, col = 0;
@@ -1959,8 +1966,9 @@ char *get_local_chanwho( IMC_CHANNEL *c )
    snprintf( buf, IMC_BUFF_SIZE, "The following people are listening to %s on %s:\r\n\r\n",
       c->local_name, this_imcmud->localname );
 
-   for( d = first_descriptor; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       person = d->original ? d->original : d->character;
 
       if( !person )
@@ -2056,6 +2064,7 @@ PFUN( imc_recv_channelnotify )
 {
    IMC_CHANNEL *c;
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    CHAR_DATA *ch;
    char buf[LGST];
    char chan[SMST], cstat[SMST];
@@ -2076,8 +2085,9 @@ PFUN( imc_recv_channelnotify )
    else
       snprintf( buf, LGST, c->emoteformat, q->from, "has left the channel." );
 
-   for( d = first_descriptor; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       ch = d->original ? d->original : d->character;
 
       if( !ch || d->connected != CON_PLAYING )
@@ -2308,6 +2318,7 @@ char *imc_assemble_who( void )
 {
    CHAR_DATA *person;
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    int pcount = 0;
    bool plr = FALSE, imm = FALSE;
    char plrheader[SMST], immheader[SMST], rank[SMST], flags[SMST], name[SMST], title[SMST], plrline[SMST], immline[SMST];
@@ -2319,8 +2330,9 @@ char *imc_assemble_who( void )
    plrheader[0] = '\0';
    immheader[0] = '\0';
 
-   for( d = first_descriptor; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       person = d->original ? d->original : d->character;
 
       if( person && d->connected == CON_PLAYING )
@@ -2354,8 +2366,9 @@ char *imc_assemble_who( void )
    }
 
    imm = FALSE;
-   for( d = first_descriptor; d; d = d->next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
+      d = *li;
       person = d->original ? d->original : d->character;
 
       if( person && d->connected == CON_PLAYING )
@@ -5282,6 +5295,7 @@ void free_imcdata( bool complete )
    if( complete )
    {
       imc_delete_templates();
+      imc_delete_info();
 
       for( cmd = first_imc_command; cmd; cmd = cmd_next )
       {

@@ -167,6 +167,10 @@ char_data::~char_data()
   delete pcdata;
 }
 
+descriptor_data::~descriptor_data()
+{
+}
+
 exit_data::~exit_data()
 {
  free_string(description);

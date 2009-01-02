@@ -45,17 +45,22 @@
  * declarations in lists.h
  * -- Altrag
  */
+std::list<AFFECT_DATA *> affect_list;
 std::list<AREA_DATA *> area_list;
 std::list<BAN_DATA *> ban_list;
 std::list<CHAR_DATA *> char_list;
-DESCRIPTOR_DATA *first_desc = NULL;
-DESCRIPTOR_DATA *last_desc = NULL;
+std::list<DESCRIPTOR_DATA *> descriptor_list;
+std::list<EXTRA_DESCR_DATA *> exdesc_list;
+std::list<EXIT_DATA *> exit_list;
+std::list<MOB_INDEX_DATA *> mob_index_list;
+std::list<OBJ_INDEX_DATA *> obj_index_list;
+std::list<RESET_DATA *> reset_list;
+std::list<ROOM_INDEX_DATA *> room_list;
+std::list<SHOP_DATA *> shop_list;
 NOTE_DATA *first_note = NULL;
 NOTE_DATA *last_note = NULL;
 OBJ_DATA *first_obj = NULL;
 OBJ_DATA *last_obj = NULL;
-SHOP_DATA *first_shop = NULL;
-SHOP_DATA *last_shop = NULL;
 CORPSE_DATA *first_corpse = NULL;
 CORPSE_DATA *last_corpse = NULL;
 MARK_DATA *first_mark = NULL;

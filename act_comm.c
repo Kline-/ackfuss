@@ -481,6 +481,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
 {
    char buf[MAX_STRING_LENGTH];
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    int position;
    char ansi[MAX_STRING_LENGTH];
 
@@ -659,8 +660,9 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
    {
       bool has_howled = FALSE;
 
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          CHAR_DATA *och;
          CHAR_DATA *vch;
 
@@ -1703,7 +1705,7 @@ void do_quit( CHAR_DATA * ch, char *argument )
 {
    DESCRIPTOR_DATA *d;
    DESCRIPTOR_DATA *other_logins;
-   DESCRIPTOR_DATA *other_logins_next;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
 
    if( IS_NPC( ch ) )
       return;
@@ -1743,9 +1745,9 @@ void do_quit( CHAR_DATA * ch, char *argument )
     */
    d = ch->desc;
 
-   for( other_logins = first_desc; other_logins != NULL; other_logins = other_logins_next )
+   for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
    {
-      other_logins_next = other_logins->next;
+     other_logins = *li;
 
       if( ( other_logins != d )
           && ( other_logins->character != NULL )

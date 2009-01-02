@@ -37,9 +37,6 @@
 #include "h/money.h"
 #endif
 
-extern int top_mob_index;
-extern int top_obj_index;
-
 void do_mquest( CHAR_DATA *ch, char *argument )
 {
  CHAR_DATA *mob;
@@ -947,7 +944,7 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
 {
  CHAR_DATA *mob = NULL;
  std::list<CHAR_DATA *>::iterator li;
- int i = number_range(0,top_mob_index-1);
+ int i = number_range(0,mob_index_list.size()-1);
 
  for( li = char_list.begin(); li != char_list.end(); li++ )
  {
@@ -1063,7 +1060,7 @@ void generate_retrieval_quest( CHAR_DATA *ch )
 OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
 {
  OBJ_DATA *obj;
- int i = number_range(0,top_obj_index-1);
+ int i = number_range(0,obj_index_list.size()-1);
 
  for( obj = first_obj; obj != NULL; obj = obj->next )
  {

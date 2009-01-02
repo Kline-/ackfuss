@@ -1068,6 +1068,7 @@ void weather_update( void )
    char buf[MAX_STRING_LENGTH];
    char buf2[MSL];
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    int diff;
    short x, y;
 #ifdef IMC
@@ -1268,8 +1269,9 @@ void weather_update( void )
 
    if( buf[0] != '\0' )
    {
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( d->connected == CON_PLAYING
              && IS_OUTSIDE( d->character ) && ( d->character->position != POS_WRITING ) && IS_AWAKE( d->character ) )
             send_to_char( buf, d->character );

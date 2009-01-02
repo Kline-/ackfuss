@@ -593,6 +593,7 @@ void do_mptransfer( CHAR_DATA * ch, char *argument )
    char arg2[MAX_INPUT_LENGTH];
    ROOM_INDEX_DATA *location;
    DESCRIPTOR_DATA *d;
+   std::list<DESCRIPTOR_DATA *>::iterator li;
    CHAR_DATA *victim;
 
    if( !IS_NPC( ch ) )
@@ -611,8 +612,9 @@ void do_mptransfer( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg1, "all" ) )
    {
-      for( d = first_desc; d != NULL; d = d->next )
+      for( li = descriptor_list.begin(); li != descriptor_list.end(); li++ )
       {
+         d = *li;
          if( d->connected == CON_PLAYING
              && d->character != ch && d->character->in_room != NULL && can_see( ch, d->character ) )
          {

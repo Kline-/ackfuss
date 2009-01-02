@@ -41,17 +41,22 @@
  * actual variables in lists.c
  * -- Altrag
  */
+extern std::list<AFFECT_DATA *> affect_list;
 extern std::list<AREA_DATA *> area_list;
 extern std::list<BAN_DATA *> ban_list;
 extern std::list<CHAR_DATA *> char_list;
-extern DESCRIPTOR_DATA *first_desc;
-extern DESCRIPTOR_DATA *last_desc;
+extern std::list<DESCRIPTOR_DATA *> descriptor_list;
+extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
+extern std::list<EXIT_DATA *> exit_list;
+extern std::list<MOB_INDEX_DATA *> mob_index_list;
+extern std::list<OBJ_INDEX_DATA *> obj_index_list;
+extern std::list<RESET_DATA *> reset_list;
+extern std::list<ROOM_INDEX_DATA *> room_list;
+extern std::list<SHOP_DATA *> shop_list;
 extern NOTE_DATA *first_note;
 extern NOTE_DATA *last_note;
 extern OBJ_DATA *first_obj;
 extern OBJ_DATA *last_obj;
-extern SHOP_DATA *first_shop;
-extern SHOP_DATA *last_shop;
 extern CORPSE_DATA *first_corpse;
 extern CORPSE_DATA *last_corpse;
 extern MARK_LIST_MEMBER *first_mark_list;
