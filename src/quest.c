@@ -474,6 +474,9 @@ CHAR_DATA *get_quest_target( int min_level, int max_level )
          break;
    }
 
+   if( !IS_NPC(target) )
+    target = NULL;
+
    return target;
 }
 
@@ -545,6 +548,9 @@ CHAR_DATA *get_quest_giver( int min_level, int max_level )
       }
 
    }
+
+   if( !IS_NPC(target) )
+    target = NULL;
 
    return target;
 }
