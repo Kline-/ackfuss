@@ -142,12 +142,8 @@ typedef struct room_index_data ROOM_INDEX_DATA;
 typedef struct shop_data SHOP_DATA;
 typedef struct time_info_data TIME_INFO_DATA;
 typedef struct weather_data WEATHER_DATA;
-typedef struct mob_prog_data MPROG_DATA;  /* MOBprogram */
-typedef struct mob_prog_act_list MPROG_ACT_LIST;   /* MOBprogram */
 /* MAG Mod */
 typedef struct build_data_list BUILD_DATA_LIST; /* Online Building */
-typedef struct mobprog_item MOBPROG_ITEM; /* Mobprogs */
-
 /* Zen Mod */
 typedef struct vamp_exp_table VAMP_EXP_TABLE;
 typedef struct magic_shield MAGIC_SHIELD;

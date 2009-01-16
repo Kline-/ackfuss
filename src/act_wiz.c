@@ -100,10 +100,6 @@
 #include "h/magic.h"
 #endif
 
-#ifndef DEC_MOB_COMMANDS_H
-#include "h/mob_commands.h"
-#endif
-
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -889,7 +885,6 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    AFFECT_DATA *paf;
    CHAR_DATA *victim;
-   MPROG_DATA *mprg;
 
    one_argument( argument, arg );
 
@@ -1039,16 +1034,6 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    {
     if( victim->npcdata->spec_fun != 0 )
       strncat( buf1, "Mobile has spec fun.\r\n", MSL );
-    if( victim->npcdata->pIndexData->progtypes != 0 )
-    {
-     strncat( buf1, "MOB Progs:", MSL );
-     for( mprg = victim->npcdata->pIndexData->first_mprog; mprg != NULL; mprg = mprg->next )
-     {
-      char tmp[MSL];
-      snprintf( tmp, MSL, "\r\n    >%s [%s] [%s]\r\n", mprog_type_to_name( mprg->type ), mprg->arglist, mprg->comlist );
-      strncat(buf1,tmp,MSL);
-     }
-    }
    }
 
 /*    if ( IS_NPC( victim ) 
@@ -2347,7 +2332,6 @@ void do_ban( CHAR_DATA * ch, char *argument )
 
    pban->name = str_dup( arg );
    pban->banned_by = str_dup( ch->name );
-   ban_list.push_back(pban);
    save_bans(  );
    send_to_char( "Ok.\r\n", ch );
    return;
@@ -3775,7 +3759,6 @@ void do_force( CHAR_DATA * ch, char *argument )
 
          if( !IS_NPC( vch ) && !IS_IMMORTAL( vch ) )
          {
-            MOBtrigger = FALSE;
             act( "$n forces you to '$t'.", ch, argument, vch, TO_VICT );
             interpret( vch, argument );
          }
@@ -3803,7 +3786,6 @@ void do_force( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      MOBtrigger = FALSE;
       act( "$n forces you to '$t'.", ch, argument, victim, TO_VICT );
       interpret( victim, argument );
    }

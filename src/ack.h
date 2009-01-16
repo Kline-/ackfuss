@@ -68,6 +68,12 @@
 #include "h/utils.h"
 #endif
 
+struct DeleteObject
+{
+ template <typename T>
+ void operator() (const T* ptr) const { delete ptr; };
+};
+
 struct board_data
 {
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
@@ -515,18 +521,15 @@ class mob_index_data
   char *description;
   short dr_mod;
   short hr_mod;
-  MPROG_DATA *first_mprog;
   int hunt_flags;
   bool is_free;
   short killed;
-  MPROG_DATA *last_mprog;
   short learned[MAX_SKILL];
   short level;
   char *long_descr;
   MOB_INDEX_DATA *next;
   char *player_name;
   short position;
-  int progtypes;
   SHOP_DATA *pShop;
   short p_class;
   short race;
@@ -668,9 +671,6 @@ class npc_data
  public:
   npc_data();
   ~npc_data();
-  MPROG_ACT_LIST *first_mpact;
-  MPROG_ACT_LIST *last_mpact;
-  int mpactnum;
   NPC_GROUP_DATA *ngroup;
   MOB_INDEX_DATA *pIndexData;
   RESET_DATA *reset;
@@ -756,45 +756,12 @@ class pc_data
   char *who_name;   /* To show on who name */
 };
 
-/*
- * MOBprogram block
-*/
-struct mob_prog_act_list
-{
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   MPROG_ACT_LIST *next;
-   MPROG_ACT_LIST *prev;
-   char *buf;
-   CHAR_DATA *ch;
-   OBJ_DATA *obj;
-   void *vo;
-};
-
-struct mob_prog_data
-{
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   MPROG_DATA *next;
-   MPROG_DATA *prev;
-   int type;
-   char *arglist;
-   char *comlist;
-   char *filename;
-};
-
-extern bool MOBtrigger;
-
-
-
-
-
 struct liq_type
 {
    char *liq_name;
    char *liq_color;
    short liq_affect[3];
 };
-
-
 
 /*
  * Extra description data for a room or object.
@@ -1082,7 +1049,6 @@ class area_data
   char                    *filename;
   std::bitset<MAX_BITSET> flags;
   BUILD_DATA_LIST         *first_area_mobile;
-  BUILD_DATA_LIST         *first_area_mobprog;
   BUILD_DATA_LIST         *first_area_object;
   BUILD_DATA_LIST         *first_area_room;
   BUILD_DATA_LIST         *first_area_shop;
@@ -1090,7 +1056,6 @@ class area_data
   int                     gold;
   char                    *keyword;
   BUILD_DATA_LIST         *last_area_mobile;
-  BUILD_DATA_LIST         *last_area_mobprog;
   BUILD_DATA_LIST         *last_area_object;
   BUILD_DATA_LIST         *last_area_room;
   BUILD_DATA_LIST         *last_area_shop;
@@ -1154,13 +1119,6 @@ struct build_data_list  /* Used for storing area file data. */
    BUILD_DATA_LIST *prev;
    void *data;
 };
-
-struct mobprog_item  /* For re-creating #MOBPROGS section */
-{
-   MOB_INDEX_DATA *mob;
-   char *filename;
-};
-
 
 struct lookup_type
 {
@@ -1400,24 +1358,6 @@ int    exp_to_level_adept args( ( CHAR_DATA * ch ) );
 void   reset_gain_stats   args( ( CHAR_DATA * ch ) );
 int    exp_to_level_wolf  args( ( int level ) );
 int    get_item_value     args( ( OBJ_DATA * obj ) );
-
-/* mob_prog.c */
-#ifdef DUNNO_STRSTR
-char *strstr args( ( const char *s1, const char *s2 ) );
-#endif
-
-void mprog_wordlist_check args( ( char *arg, CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA * object, void *vo, int type ) );
-void mprog_percent_check args( ( CHAR_DATA * mob, CHAR_DATA * actor, OBJ_DATA * object, void *vo, int type ) );
-void mprog_act_trigger args( ( char *buf, CHAR_DATA * mob, CHAR_DATA * ch, OBJ_DATA * obj, void *vo ) );
-void mprog_bribe_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch, int amount ) );
-void mprog_entry_trigger args( ( CHAR_DATA * mob ) );
-void mprog_give_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch, OBJ_DATA * obj ) );
-void mprog_greet_trigger args( ( CHAR_DATA * mob ) );
-void mprog_fight_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch ) );
-void mprog_hitprcnt_trigger args( ( CHAR_DATA * mob, CHAR_DATA * ch ) );
-void mprog_death_trigger args( ( CHAR_DATA * mob ) );
-void mprog_random_trigger args( ( CHAR_DATA * mob ) );
-void mprog_speech_trigger args( ( char *txt, CHAR_DATA * mob ) );
 
 
            /*-------*\

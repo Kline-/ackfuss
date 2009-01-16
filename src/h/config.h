@@ -774,20 +774,6 @@
 #define HUNT_MERC	0x00000040  /* Is gonna assassinate someone  */
 #define HUNT_ALL	0x0000001E  /* can hunt through anything    */
 
-#define ERROR_PROG        -1
-#define IN_FILE_PROG       0
-#define ACT_PROG           1
-#define SPEECH_PROG        2
-#define RAND_PROG          4
-#define FIGHT_PROG         8
-#define DEATH_PROG        16
-#define HITPRCNT_PROG     32
-#define ENTRY_PROG        64
-#define GREET_PROG       128
-#define ALL_GREET_PROG   256
-#define GIVE_PROG        512
-#define BRIBE_PROG      1024
-
 /***************************************************************************
  *                                                                         *
  *                   VALUES OF INTEREST TO AREA BUILDERS                   *
@@ -1240,14 +1226,12 @@
 #define PLAYER_DIR      "../player/"   /* Player files                 */
 #define NPC_DIR		"../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
-#define MOB_DIR         "../mobprog/" /* MOBProg files                */
 #endif
 
 #if defined(linux)
 #define PLAYER_DIR      "../player/"   /* Player files                 */
 #define NPC_DIR		"../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
-#define MOB_DIR         "../mobprog/" /* MOBProg files                */
 #endif
 
 #define MAIL_DIR        "../mail/"

@@ -1474,7 +1474,7 @@ End
 #MOBILE
 Vnum      1006
 AcMod     0
-Act       2 EOL
+Act       2 30 EOL
 Affected  184
 Alignment 0
 Cast      0
@@ -1503,7 +1503,7 @@ End
 #MOBILE
 Vnum      1007
 AcMod     0
-Act       2 EOL
+Act       2 30 EOL
 Affected  184
 Alignment 0
 Cast      0
@@ -1532,7 +1532,7 @@ End
 #MOBILE
 Vnum      1008
 AcMod     0
-Act       2 EOL
+Act       2 30 EOL
 Affected  184
 Alignment 0
 Cast      0
@@ -1561,7 +1561,7 @@ End
 #MOBILE
 Vnum      1009
 AcMod     0
-Act       2 EOL
+Act       2 30 EOL
 Affected  184
 Alignment 0
 Cast      0
@@ -2572,6 +2572,7 @@ G 1031 0
 M 1009 1 1008 
 
 G 1040 0 
+
 G 1038 0 
 
 G 1039 0 

@@ -5282,6 +5282,7 @@ void free_imcdata( bool complete )
    if( complete )
    {
       imc_delete_templates();
+      imc_delete_info();
 
       for( cmd = first_imc_command; cmd; cmd = cmd_next )
       {

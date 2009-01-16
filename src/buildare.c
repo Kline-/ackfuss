@@ -342,9 +342,6 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    pArea->flags.set(AFLAG_NOSHOW);   /* don't list on 'areas' -S- */
 
    area_used[pArea->area_num] = pArea;
-
-   area_list.push_back(pArea);
-
    top_area++;
 
    /*

@@ -65,8 +65,6 @@
  *  different from ptr->usage and log them
  */
 
-static void walk_mprog_act args(( MPROG_ACT_LIST * act ));
-
 /*
  * Things which are walked (anything else must be touched from these):
  *
@@ -150,29 +148,8 @@ static long dump( void )
    return count;
 }
 
-static void walk_mprog_data( MPROG_DATA * prog )
-{
-   if( !prog )
-      return;
-
-   touch( prog->arglist );
-   touch( prog->comlist );
-   touch( prog->filename );
-
-}
-static void walk_mprog_act_data( MPROG_ACT_LIST * act )
-{
-   if( !act )
-      return;
-
-   touch( act->buf );
-
-}
-
-
 static void walk_mob_index_data( MOB_INDEX_DATA * m )
 {
-   MPROG_DATA *mobprog;
    if( !m )
       return;
 
@@ -181,8 +158,6 @@ static void walk_mob_index_data( MOB_INDEX_DATA * m )
    touch( m->long_descr );
    touch( m->description );
    touch( m->target );
-   for( mobprog = m->first_mprog; mobprog; mobprog = mobprog->next )
-      walk_mprog_data( mobprog );
 
 }
 
@@ -212,7 +187,6 @@ static void walk_npcdata( NPC_DATA * n )
    if( !n )
      return;
 
-   walk_mprog_act( n->first_mpact );
    touch( n->short_descr );
 }
 
@@ -303,12 +277,6 @@ static void walk_shieldlist( MAGIC_SHIELD * shield )
 {
    for( ; shield; shield = shield->next )
       walk_shield_data( shield );
-}
-
-static void walk_mprog_act( MPROG_ACT_LIST * act )
-{
-   for( ; act; act = act->next )
-      walk_mprog_act_data( act );
 }
 
 void walk_notelist( NOTE_DATA * pnote )

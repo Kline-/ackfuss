@@ -492,9 +492,6 @@ void violence_update( void )
       if( ( victim = ch->fighting ) == NULL )
          continue;
 
-      mprog_hitprcnt_trigger( ch, victim );
-      mprog_fight_trigger( ch, victim );
-
       /*
        * Fun for the whole family!   RCH is a non-fighting mob
        */
@@ -2405,7 +2402,6 @@ void raw_kill( CHAR_DATA * victim, char *argument )
    one_argument( argument, arg );
 
    stop_fighting( victim, TRUE );
-   mprog_death_trigger( victim );
    if( victim == quest_target )
       quest_target = NULL;
    if( victim == quest_mob )

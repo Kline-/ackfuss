@@ -426,14 +426,11 @@ void do_cast( CHAR_DATA * ch, char *argument )
 
 
    /*
-    * Only MOBprogrammed mobs not charmed can cast spells
-    * like PC's - 
     * -S- Mod: intelligent mobs can cast too.    NOT ANYMORE :P  Zen
     */
    /*
     * if ( IS_NPC(ch)
     * && ( !ch->act.test(ACT_INTELLIGENT ) )
-    * && ( !ch->pIndexData->progtypes
     * || IS_AFFECTED( ch, AFF_CHARM ) ) )
     * return;
     */

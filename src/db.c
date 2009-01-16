@@ -406,11 +406,6 @@ void boot_db( void )
    }
 
    /*
-    * Clear lists out!
-    */
-   clear_lists();
-
-   /*
     * Start loading up data files!
     */
 
@@ -429,7 +424,6 @@ void boot_db( void )
     * Declare db booting over.
     * Reset all areas once.
     * Load up the notes file.
-    * Set the MOBtrigger.
     */
    {
       log_f( "Fixing exits..." );
@@ -442,9 +436,9 @@ void boot_db( void )
       log_f( "Updating areas..." );
       area_update(  );
       log_f("Done.");
-      MOBtrigger = TRUE;
       booting_up = FALSE;
    }
+   boot_done();
    auto_quest = TRUE;
    return;
 }
@@ -510,8 +504,6 @@ void load_areas( void )
             load_door( fpArea );
          else if( !str_cmp( word, "MOBILE" ) )
             load_mobile( fpArea );
-         else if( !str_cmp( word, "MOBPROGS" ) )
-            load_mobprogs( fpArea );
          else if( !str_cmp( word, "OAFFECT" ) )
             load_oaffect( fpArea );
          else if( !str_cmp( word, "OBJECT" ) )
@@ -644,8 +636,6 @@ void load_area( FILE * fp )
 
    area_used[pArea->area_num] = pArea;
    area_load = pArea;
-
-   area_list.push_back(pArea);
 
    top_area++;
    return;
@@ -915,7 +905,6 @@ void load_bans( void )
                pban->newbie = FALSE;
             pban->name = fread_string( bansfp );
             pban->banned_by = fread_string( bansfp );
-            ban_list.push_back(pban);
             free_string( word );
          }
          else if( !str_cmp( word, "#END" ) )
@@ -1078,15 +1067,6 @@ void load_mobile( FILE * fp )
             break;
 
       }
-/*
-      if( letter == '>' )
-      {
-         ungetc( letter, fp );
-         mprog_read_programs( fp, pMobIndex );
-      }
-      else
-         ungetc( letter, fp );
-*/
    }
 
    if( !fMatch )
@@ -2600,11 +2580,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
       money->cash_unit[cnt] = 0;
    mob->bank_money = money;
 
-   /*
-    * Insert in list.
-    */
-   char_list.push_back(mob);
-
 //  Create group data for mob
 
    if( AI_MOB( mob ) )
@@ -3793,173 +3768,6 @@ void tail_chain( void )
    return;
 }
 
-/*
- * MOBprogram code block
-*/
-/* the functions */
-
-/* This routine transfers between alpha and numeric forms of the
- *  mob_prog bitvector types. This allows the use of the words in the
- *  mob/script files.
- */
-int mprog_name_to_type( char *name )
-{
-   if( !str_cmp( name, "in_file_prog" ) )
-      return IN_FILE_PROG;
-   if( !str_cmp( name, "act_prog" ) )
-      return ACT_PROG;
-   if( !str_cmp( name, "speech_prog" ) )
-      return SPEECH_PROG;
-   if( !str_cmp( name, "rand_prog" ) )
-      return RAND_PROG;
-   if( !str_cmp( name, "fight_prog" ) )
-      return FIGHT_PROG;
-   if( !str_cmp( name, "hitprcnt_prog" ) )
-      return HITPRCNT_PROG;
-   if( !str_cmp( name, "death_prog" ) )
-      return DEATH_PROG;
-   if( !str_cmp( name, "entry_prog" ) )
-      return ENTRY_PROG;
-   if( !str_cmp( name, "greet_prog" ) )
-      return GREET_PROG;
-   if( !str_cmp( name, "all_greet_prog" ) )
-      return ALL_GREET_PROG;
-   if( !str_cmp( name, "give_prog" ) )
-      return GIVE_PROG;
-   if( !str_cmp( name, "bribe_prog" ) )
-      return BRIBE_PROG;
-   return ( ERROR_PROG );
-}
-
-/* Had to redo mobprog loading to work with double linked lists. -- Altrag */
-void mprog_file_read( char *f, MOB_INDEX_DATA * pMobIndex )
-{
-   MPROG_DATA *mprog;
-   FILE *fp;
-   char letter;
-   char name[128];
-   char *permf;
-   int type;
-
-   snprintf( name, MSL, "%s%s", MOB_DIR, f );
-   if( !( fp = file_open( name, "r" ) ) )
-   {
-      bug( "Mob: %d couldn't open mobprog file.", pMobIndex->vnum );
-      return;
-   }
-   permf = str_dup( f );
-   for( ;; )
-   {
-      if( ( letter = fread_letter( fp ) ) == '|' )
-         break;
-      else if( letter != '>' )
-      {
-         bug( "Mprog_file_read: Invalid letter mob %d.", pMobIndex->vnum );
-         return;
-      }
-      switch ( ( type = fread_number( fp ) ) )
-      {
-         case ERROR_PROG:
-            bug( "Mob %d: in file prog error.", pMobIndex->vnum );
-            return;
-         case IN_FILE_PROG:
-            bug( "Mob %d: nested in file progs.", pMobIndex->vnum );
-            return;
-         default:
-            SET_BIT( pMobIndex->progtypes, type );
-            GET_FREE( mprog, mprog_free );
-            mprog->type = type;
-            mprog->arglist = fread_string( fp );
-            fread_to_eol( fp );
-            mprog->comlist = fread_string( fp );
-            fread_to_eol( fp );
-            mprog->filename = permf;
-            break;
-      }
-   }
-   file_close( fp );
-   return;
-}
-
-void load_mobprogs( FILE * fp )
-{
-   char letter;
-   MOB_INDEX_DATA *iMob;
-   int value;
-
-   for( ;; )
-      switch ( LOWER( letter = fread_letter( fp ) ) )
-      {
-         default:
-            bug( "Load_mobprogs: bad command '%c'.", letter );
-            fread_to_eol( fp );
-            break;
-         case 's':
-            fread_to_eol( fp );
-            return;
-         case '*':
-            fread_to_eol( fp );
-            break;
-         case 'm':
-            value = fread_number( fp );
-            if( !( iMob = get_mob_index( value ) ) )
-            {
-               bug( "Load_mobprogs: vnum %d doesn't exist.", value );
-               fread_to_eol( fp );
-               break;
-            }
-            mprog_file_read( fread_word( fp ), iMob );
-            fread_to_eol( fp );
-            break;
-      }
-   return;
-}
-
-void mprog_read_programs( FILE * fp, MOB_INDEX_DATA * pMobIndex )
-{
-   MPROG_DATA *mprog;
-   char letter;
-   int type;
-
-   for( ;; )
-   {
-      if( ( letter = fread_letter( fp ) ) == '|' )
-         break;
-      else if( letter != '>' )
-      {
-         bug( "Load_mobile: vnum %d MOBPROG char", pMobIndex->vnum );
-         ungetc( letter, fp );
-         return;
-      }
-      type = mprog_name_to_type( fread_word( fp ) );
-      switch ( type )
-      {
-         case ERROR_PROG:
-            bug( "Load_mobile: vnum %d MOBPROG type.", pMobIndex->vnum );
-            fread_to_eol( fp );
-            return;
-         case IN_FILE_PROG:
-            mprog_file_read( fread_string( fp ), pMobIndex );
-            fread_to_eol( fp );
-            break;
-         default:
-            SET_BIT( pMobIndex->progtypes, type );
-            GET_FREE( mprog, mprog_free );
-            mprog->type = type;
-            mprog->arglist = fread_string( fp );
-            fread_to_eol( fp );
-            mprog->comlist = fread_string( fp );
-            fread_to_eol( fp );
-            LINK( mprog, pMobIndex->first_mprog, pMobIndex->last_mprog, next, prev );
-            break;
-      }
-   }
-   return;
-}
-
-
-
-
 void message_update( void )
 {
    RESET_DATA *pReset;
@@ -4278,7 +4086,13 @@ void file_close( FILE *file )
 
 void clear_lists( void )
 {
- area_list.clear();
- ban_list.clear();
-// char_list.clear();
+ for_each(area_list.begin(),area_list.end(),DeleteObject());
+ for_each(ban_list.begin(),ban_list.end(),DeleteObject());
+ for_each(char_list.begin(),char_list.end(),DeleteObject());
+
+ free(string_space);
+ free(social_table);
+#ifdef IMC
+ free_imcdata(true);
+#endif
 }

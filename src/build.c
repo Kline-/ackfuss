@@ -4449,21 +4449,6 @@ void build_delmob( CHAR_DATA * ch, char *argument )
       delete pShop;
    }
 
-
-   /*
-    * Get rid of mobprogs 
-    */
-   {
-      MPROG_DATA *pMobProg;
-      MPROG_DATA *pNextMobProg;
-
-      for( pMobProg = pMobIndex->first_mprog; pMobProg != NULL; pMobProg = pNextMobProg )
-      {
-         pNextMobProg = pMobProg->next;
-         PUT_FREE( pMobProg, mprog_free );
-      }
-   }
-
    /*
     * Now delete structure 
     */

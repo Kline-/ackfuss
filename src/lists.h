@@ -74,8 +74,6 @@ extern NPC_GROUP_DATA *last_npc_group;
 extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
 extern DESCRIPTOR_DATA *desc_free;
-extern MPROG_DATA *mprog_free;
-extern MPROG_ACT_LIST *mpact_free;
 extern BUILD_DATA_LIST *build_free;
 extern MAGIC_SHIELD *shield_free;
 extern MEMBER_DATA *member_free;
@@ -117,8 +115,6 @@ extern void ( *board_free_destructor ) ( BOARD_DATA * bdat );
 void money_type_free_destructor( MONEY_TYPE * mtdat );
 #endif
 
-void mprog_free_destructor( MPROG_DATA * mpdat );
-void mpact_free_destructor( MPROG_ACT_LIST * mpadat );
 void mark_free_destructor( MARK_DATA * mdat );
 void shield_free_destructor( MAGIC_SHIELD * msdat );
 void ruler_data_free_destructor( RULER_DATA * rdat );

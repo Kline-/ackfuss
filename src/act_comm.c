@@ -1048,7 +1048,6 @@ void do_say( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL, "$n says '%s$t%s'.", color_string( ppl, "say" ), color_string( ppl, "normal" ) );
       act( buf, ch, IS_GHOST(ch) ? IS_GHOST(ppl) ? argument : ghost_text(argument) : argument, ppl, TO_VICT );
    }
-   mprog_speech_trigger( argument, ch );
    return;
 }
 

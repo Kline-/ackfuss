@@ -1688,24 +1688,12 @@ void extract_obj( OBJ_DATA * obj )
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
-      MPROG_ACT_LIST *mpact;
-
       wch = *li;
       if( wch->hunt_obj == obj )
          end_hunt( wch );
 /*        wch->hunt_obj = NULL;*/
       if( wch->sitting == obj )
          do_stand( wch, "" );
-      if( IS_NPC(wch) )
-      {
-       for( mpact = wch->npcdata->first_mpact; mpact; mpact = mpact->next )
-       {
-         if( mpact->obj == obj )
-            mpact->obj = NULL;
-         if( mpact->vo == obj )
-            mpact->vo = NULL;
-       }
-      }
    }
 
    if( obj->item_type == ITEM_CORPSE_PC )
@@ -1741,6 +1729,8 @@ void extract_char( CHAR_DATA * ch, bool fPull )
 {
    CHAR_DATA *wch;
    OBJ_DATA *this_object;
+   ROOM_INDEX_DATA *room;
+   ROOM_AFFECT_DATA *raf;
    std::list<CHAR_DATA *>::iterator li;
    struct char_ref_type *ref;
 
@@ -1829,8 +1819,15 @@ void extract_char( CHAR_DATA * ch, bool fPull )
       AFFECT_DATA *paf;
 
       wch = *li;
+
+      if( wch->master == ch )
+       wch->master = NULL;
+      if( wch->leader == ch )
+       wch->leader = NULL;
+      if( wch->fighting == ch )
+       wch->fighting = NULL;
       if( wch->reply == ch )
-         wch->reply = NULL;
+       wch->reply = NULL;
       if( wch->hunting == ch || wch->hunt_for == ch )
       {
          end_hunt( wch );
@@ -1841,6 +1838,13 @@ void extract_char( CHAR_DATA * ch, bool fPull )
          {
             wch->searching = ch->name;
          }
+         else
+          send_to_char("@@RYou seem to have lost your prey.@@N\r\n",wch);
+      }
+      if( wch->old_body == ch )
+      {
+         do_return(wch,"");
+         wch->old_body = NULL;
       }
       if( !str_cmp( wch->target, ch->name ) )
       {
@@ -1858,6 +1862,12 @@ void extract_char( CHAR_DATA * ch, bool fPull )
          if( paf->caster == ch )
             paf->caster = NULL;
    }
+
+   for( short i = 0; i < MAX_KEY_HASH; i++ )
+    for( room = room_index_hash[i]; room; room = room->next )
+     for( raf = room->first_room_affect; raf; raf = raf->next )
+      if( raf->caster == ch )
+       raf->caster = NULL;
 
 /* free up any shields  */
 

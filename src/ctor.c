@@ -52,7 +52,6 @@ area_data::area_data()
  filename = &str_empty[0];
  flags.reset();
  first_area_mobile = NULL;
- first_area_mobprog = NULL;
  first_area_object = NULL;
  first_area_room = NULL;
  first_area_shop = NULL;
@@ -60,7 +59,6 @@ area_data::area_data()
  gold = 0;
  keyword = &str_empty[0];
  last_area_mobile = NULL;
- last_area_mobprog = NULL;
  last_area_object = NULL;
  last_area_room = NULL;
  last_area_shop = NULL;
@@ -76,6 +74,8 @@ area_data::area_data()
  owner = &str_empty[0];
  reset_msg = str_dup("The area resets. How mystical...");
  reset_rate = 15;
+
+ area_list.push_back(this);
 }
 
 ban_data::ban_data()
@@ -83,6 +83,8 @@ ban_data::ban_data()
  name = &str_empty[0];
  banned_by = &str_empty[0];
  newbie = false;
+
+ ban_list.push_back(this);
 }
 
 brand_data::brand_data()
@@ -219,6 +221,8 @@ char_data::char_data()
  was_in_room = NULL;
  wimpy = 0;
  wizbit = false;
+
+ char_list.push_back(this);
 }
 
 exit_data::exit_data()
@@ -283,11 +287,9 @@ mob_index_data::mob_index_data()
  description = &str_empty[0];
  dr_mod = 0;
  hr_mod = 0;
- first_mprog = NULL;
  hunt_flags = 0;
  is_free = false;
  killed = 0;
- last_mprog = NULL;
  for( short i = 0; i < MAX_SKILL; i++ )
   learned[i] = 0;
  level = 1;
@@ -295,7 +297,6 @@ mob_index_data::mob_index_data()
  next = NULL;
  player_name = &str_empty[0];
  position = 0;
- progtypes = 0;
  pShop = NULL;
  p_class = 0;
  race = 0;
@@ -329,9 +330,6 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
- first_mpact = NULL;
- last_mpact = NULL;
- mpactnum = 0;
  ngroup = NULL;
  pIndexData = NULL;
  reset = NULL;

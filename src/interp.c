@@ -107,10 +107,6 @@
 #include "h/magic.h"
 #endif
 
-#ifndef DEC_MOB_COMMANDS_H
-#include "h/mob_commands.h"
-#endif
-
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif
@@ -130,8 +126,6 @@
 #ifndef DEC_WEREWOLF_H
 #include "h/werewolf.h"
 #endif
-
-bool MP_Commands args( ( CHAR_DATA * ch ) );
 
 /*
  * Command logging types.
@@ -875,24 +869,6 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_ACTION, C_SHOW_SKILL,false},
 
    /*
-    * MOBprogram commands.
-    */
-   {"mpasound", do_mpasound, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpjunk", do_mpjunk, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpecho", do_mpecho, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpechoat", do_mpechoat, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpechoaround", do_mpechoaround, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpkill", do_mpkill, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpmload", do_mpmload, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpoload", do_mpoload, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mppurge", do_mppurge, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpgoto", do_mpgoto, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpat", do_mpat, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mptransfer", do_mptransfer, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpforce", do_mpforce, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-   {"mpforce", do_mpforce, POS_DEAD, 90, LOG_NORMAL, C_TYPE_IMM, C_SHOW_NEVER,false},
-
-   /*
     * End of list.
     */
    {"", 0, POS_DEAD, 0, LOG_NORMAL,
@@ -1053,7 +1029,7 @@ void interpret( CHAR_DATA * ch, char *argument )
 
 
       if( command[0] == cmd_table[cmd].name[0]
-          && !str_prefix( command, cmd_table[cmd].name ) && ( cmd_table[cmd].level <= trust || MP_Commands( ch ) ) )
+          && !str_prefix( command, cmd_table[cmd].name ) && ( cmd_table[cmd].level <= trust ) )
       {
 
 
@@ -1342,17 +1318,4 @@ bool IS_SWITCHED( CHAR_DATA * ch )
 
    return TRUE;
 
-}
-
-bool MP_Commands( CHAR_DATA * ch )  /* Can MOBProged mobs
-                                     * use mpcommands? TRUE if yes.
-                                     * - Kahn */
-{
-   if( IS_SWITCHED( ch ) )
-      return FALSE;
-
-   if( IS_NPC( ch ) && ch->npcdata->pIndexData->progtypes && !IS_AFFECTED( ch, AFF_CHARM ) )
-      return TRUE;
-
-   return FALSE;
 }

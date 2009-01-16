@@ -24,7 +24,7 @@ o/act_wiz.o: act_wiz.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_info.h h/act_mob.h h/act_obj.h h/act_wiz.h h/areasave.h h/build.h \
   h/buildtab.h h/comm.h h/db.h h/email.h h/fight.h h/handler.h h/magic.h \
-  h/mob_commands.h h/ssm.h
+  h/ssm.h
 o/areachk.o: areachk.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h hash.h h/areasave.h \
   h/comm.h h/db.h
@@ -90,8 +90,8 @@ o/interp.o: interp.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_clan.h \
   h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h \
   h/board.h h/build.h h/buildare.h h/clutch.h h/comm.h h/db.h h/email.h \
-  h/enchant.h h/fight.h h/handler.h h/magic.h h/mob_commands.h h/money.h \
-  h/mount.h h/spendqp.h h/vampire.h h/werewolf.h
+  h/enchant.h h/fight.h h/handler.h h/magic.h h/money.h h/mount.h \
+  h/spendqp.h h/vampire.h h/werewolf.h
 o/lists.o: lists.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/ssm.h
 o/macros.o: macros.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
@@ -104,12 +104,6 @@ o/magic.o: magic.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
 o/mapper.o: mapper.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/comm.h h/cursor.h h/db.h h/handler.h h/mapper.h
-o/mob_commands.o: mob_commands.c globals.h h/typedefs.h ack.h h/config.h \
-  h/imc.h h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h \
-  h/comm.h h/db.h h/fight.h h/handler.h
-o/mob_prog.o: mob_prog.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
-  h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/db.h \
-  h/fight.h h/handler.h h/ssm.h
 o/money.o: money.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_wiz.h h/comm.h h/db.h h/handler.h h/money.h

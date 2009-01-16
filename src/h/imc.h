@@ -431,6 +431,7 @@ void imc_freechardata( CHAR_DATA * ch );
 void imc_loop( void );
 IMC_CHANNEL *imc_findchannel( char *name );  /* Externalized for comm.c spamguard checks */
 void imc_register_packet_handler( char *name, PACKET_FUN * func );
+void free_imcdata( bool complete );
 #if defined(_DISKIO_H_)
 void imc_load_pfile( CHAR_DATA * ch, char *tag, int num, char *line );
 void imc_save_pfile( struct CHAR_DATA *ch, FBFILE * fp );

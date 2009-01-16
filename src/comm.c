@@ -262,6 +262,7 @@ int main( int argc, char **argv )
     * That's all, folks.
     */
    log_string( "Normal termination of game." );
+   clear_lists();
    exit( 0 );
    return 0;
 }
@@ -2703,7 +2704,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->lvl[ch->p_class] = 1;
       }
 
-      char_list.push_back(ch);
       d->connected = CON_PLAYING;
 
 
@@ -3365,7 +3365,7 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
 
    for( ; to != NULL; to = to->next_in_room )
    {
-      if( ( to->desc == NULL && ( IS_NPC( to ) && !( to->npcdata->pIndexData->progtypes & ACT_PROG ) ) ) || !IS_AWAKE( to ) )
+      if( ( !to->desc && IS_NPC( to ) ) || !IS_AWAKE( to ) )
          continue;
 
       if( type == TO_CHAR && to != ch )
@@ -3529,14 +3529,11 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
       *point = '\0';
       if( to->desc && can_see_message )
          write_to_buffer( to->desc, buf, point - buf );
-      if( MOBtrigger )
-         mprog_act_trigger( buf, to, ch, obj1, vch );
       /*
        * Added by Kahn 
        */
    }
 
-   MOBtrigger = TRUE;
    return;
 }
 
@@ -3669,8 +3666,6 @@ void copyover_recover(  )
           * Insert in the char_list 
           */
          this_char = d->character;
-
-         char_list.push_back(this_char);
 
          char_to_room( d->character, d->character->in_room );
          if( d->character->position == POS_RIDING )

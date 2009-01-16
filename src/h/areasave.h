@@ -19,7 +19,6 @@ void do_savearea P_((CHAR_DATA *ch, char *argument));
 void build_save P_((void));
 void build_save_area P_((void));
 void build_save_mobs P_((void));
-void build_save_mobprogs P_((void));
 void build_save_objects P_((void));
 void build_save_rooms P_((void));
 void build_save_shops P_((void));
@@ -43,9 +42,8 @@ void area_modified P_((AREA_DATA *pArea));
 #define BUILD_SEC_AREA     1
 #define BUILD_SEC_ROOMS    2
 #define BUILD_SEC_MOBILES  3
-#define BUILD_SEC_MOBPROGS 4
-#define BUILD_SEC_OBJECTS  5
-#define BUILD_SEC_SHOPS    6
-#define BUILD_SEC_RESETS   7
-#define BUILD_SEC_END      8
+#define BUILD_SEC_OBJECTS  4
+#define BUILD_SEC_SHOPS    5
+#define BUILD_SEC_RESETS   6
+#define BUILD_SEC_END      7
 #define AREA_VERSION       22

@@ -851,24 +851,6 @@ void mobile_update( void )
 	}
 	*/
 
-
-      /*
-       * MOBprogram random trigger 
-       */
-      if( ch->in_room->area->nplayer > 0 )
-      {
-         mprog_random_trigger( ch );
-         /*
-          * If ch dies or changes
-          * position due to it's random
-          * trigger continue - Kahn 
-          */
-         if( ch->position < POS_STANDING )
-            continue;
-      }
-
-
-
       /*
        * Scavenge 
        */
@@ -1923,28 +1905,6 @@ void aggr_update( void )
       wch = *li;
       if( wch == NULL )
          continue;
-      if( IS_NPC( wch ) && wch->npcdata->mpactnum > 0 && wch->in_room->area->nplayer > 0 )
-      {
-         MPROG_ACT_LIST *mpact;
-
-         while( ( mpact = wch->npcdata->first_mpact ) != NULL )
-         {
-            mprog_wordlist_check( mpact->buf, wch, mpact->ch, mpact->obj, mpact->vo, ACT_PROG );
-            /*
-             * Lets hope this check works until something better is in place.
-             * * -- Alty 
-             */
-            if( wch->hit < -10 )
-               break;
-            wch->npcdata->first_mpact = mpact->next;
-            PUT_FREE( mpact, mpact_free );
-         }
-         if( wch->hit < -10 )
-            continue;
-         wch->npcdata->mpactnum = 0;
-         wch->npcdata->first_mpact = NULL;
-         wch->npcdata->last_mpact = NULL;
-      }
 
       if( ( IS_NPC( wch ) ) || wch->level >= LEVEL_IMMORTAL || wch->in_room == NULL )
          continue;

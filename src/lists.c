@@ -81,8 +81,6 @@ NPC_GROUP_DATA *last_npc_group = NULL;
 FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
 DESCRIPTOR_DATA *desc_free = NULL;
-MPROG_DATA *mprog_free = NULL;
-MPROG_ACT_LIST *mpact_free = NULL;
 BUILD_DATA_LIST *build_free = NULL;
 MAGIC_SHIELD *shield_free = NULL;
 MEMBER_DATA *member_free = NULL;
@@ -126,18 +124,6 @@ void money_type_free_destructor( MONEY_TYPE * mtdat )
    free_string( mtdat->money_key );
 }
 #endif
-
-void mprog_free_destructor( MPROG_DATA * mpdat )
-{
-   free_string( mpdat->arglist );
-   free_string( mpdat->comlist );
-   free_string( mpdat->filename );
-}
-
-void mpact_free_destructor( MPROG_ACT_LIST * mpadat )
-{
-   free_string( mpadat->buf );
-}
 
 void mark_free_destructor( MARK_DATA * mdat )
 {

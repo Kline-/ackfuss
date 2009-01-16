@@ -75,14 +75,6 @@ buf_data_struct::~buf_data_struct()
 
 char_data::~char_data()
 {
- short i = 0;
- MPROG_ACT_LIST *mpact;
- CHAR_DATA *rch;
- AFFECT_DATA *paf;
- ROOM_INDEX_DATA *room;
- ROOM_AFFECT_DATA *raf;
- std::list<CHAR_DATA *>::iterator li;
-
  is_free = true;
 
  while( first_carry != NULL )
@@ -90,56 +82,6 @@ char_data::~char_data()
 
  while( first_affect != NULL )
   affect_remove(this,first_affect);
-
- for( li = char_list.begin(); li != char_list.end(); li++ )
- {
-  rch = *li;
-  if( rch->master == this )
-   rch->master = NULL;
-  if( rch->leader == this )
-   rch->leader = NULL;
-  if( rch->fighting == this )
-   rch->fighting = NULL;
-  if( rch->reply == this )
-   rch->reply = NULL;
-  if( rch->hunting == this )
-  {
-   if( IS_NPC(rch) && !IS_NPC(this) )
-   {
-    free_string(rch->searching);
-    rch->searching = str_dup(name);
-   }
-   else if( !IS_NPC(rch) )
-    send_to_char("@@RYou seem to have lost your prey.\r\n",rch);
-   end_hunt(rch);
-  }
-  if( rch->hunt_for == this )
-   rch->hunt_for = NULL;
-  if( rch->old_body == this )
-  {
-   do_return(rch,"");
-   rch->old_body = NULL;
-  }
-  if( IS_NPC(rch) )
-  {
-   for( mpact = rch->npcdata->first_mpact; mpact; mpact = mpact->next )
-   {
-    if( mpact->ch == this )
-     mpact->ch = NULL;
-    if( mpact->vo == this )
-     mpact->vo = NULL;
-   }
-  }
-  for( paf = rch->first_affect; paf; paf = paf->next )
-   if( paf->caster == this )
-    paf->caster = NULL;
- }
-
- for( i = 0; i < MAX_KEY_HASH; i++ )
-  for( room = room_index_hash[i]; room; room = room->next )
-   for( raf = room->first_room_affect; raf; raf = raf->next )
-    if( raf->caster == this )
-     raf->caster = NULL;
 
  free_string(name);
  free_string(long_descr);
@@ -219,13 +161,6 @@ note_data::~note_data()
 
 npc_data::~npc_data()
 {
- MPROG_ACT_LIST *mpact;
-
- while( (mpact = first_mpact) != NULL )
- {
-  first_mpact = mpact->next;
-  PUT_FREE(mpact,mpact_free);
- }
  free_string(short_descr);
 }
 

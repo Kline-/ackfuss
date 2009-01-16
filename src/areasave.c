@@ -196,9 +196,6 @@ void build_save(  )
          case BUILD_SEC_MOBILES:
             build_save_mobs(  );
             break;
-         case BUILD_SEC_MOBPROGS:
-            build_save_mobprogs(  );
-            break;
          case BUILD_SEC_OBJECTS:
             build_save_objects(  );
             break;
@@ -250,7 +247,6 @@ void build_save_area(  )
 void build_save_mobs(  )
 {
    MOB_INDEX_DATA *pMobIndex;
-   MPROG_DATA *mprg;
    short i = 0;
 
    if( Pointer == NULL )   /* Start */
@@ -301,53 +297,10 @@ void build_save_mobs(  )
    fprintf( SaveFile, "WMagic    %d\n", pMobIndex->weak_magic );
    fprintf( SaveFile, "End\n" );
 
-   mprg = pMobIndex->first_mprog;
-   while( mprg )
-   {
-      fprintf( SaveFile, "#MOBPROG\n" );
-      fprintf( SaveFile, "ArgList %s~\n", mprg->arglist );
-      fprintf( SaveFile, "ComList %s~\n", mprg->comlist );
-      fprintf( SaveFile, "Type    %d\n", mprg->type );
-      fprintf( SaveFile, "End\n" );
-      mprg = mprg->next;
-   }
-
    Pointer = Pointer->next;
    if( Pointer == NULL ) /* End */
     Section++;
 
-   return;
-}
-
-void build_save_mobprogs(  )
-{
-   MOB_INDEX_DATA *pMobIndex;
-   MOBPROG_ITEM *pItem;
-
-   if( Pointer == NULL )   /* Start */
-   {
-      if( CurSaveArea->first_area_mobprog == NULL )
-      {
-         Section++;
-         return;
-      }
-      send_to_char( "Saving mobprogs.\n", CurSaveChar );
-      fprintf( SaveFile, "#MOBPROGS\n" );
-
-      Pointer = CurSaveArea->first_area_mobprog;
-   }
-
-   pItem = (MOBPROG_ITEM *)Pointer->data;
-   pMobIndex = pItem->mob;
-
-   fprintf( SaveFile, "M %i %s\n", pMobIndex->vnum, pItem->filename );
-
-   Pointer = Pointer->next;
-   if( Pointer == NULL )   /* End */
-   {
-      fprintf( SaveFile, "S\n" );
-      Section++;
-   }
    return;
 }
 
