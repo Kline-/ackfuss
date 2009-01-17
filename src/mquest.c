@@ -38,7 +38,6 @@
 #endif
 
 extern int top_mob_index;
-extern int top_obj_index;
 
 void do_mquest( CHAR_DATA *ch, char *argument )
 {
@@ -1063,7 +1062,7 @@ void generate_retrieval_quest( CHAR_DATA *ch )
 OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
 {
  OBJ_DATA *obj;
- int i = number_range(0,top_obj_index-1);
+ int i = number_range(0,obj_index_list.size()-1);
 
  for( obj = first_obj; obj != NULL; obj = obj->next )
  {

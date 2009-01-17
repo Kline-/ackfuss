@@ -44,6 +44,11 @@
 extern std::list<AREA_DATA *> area_list;
 extern std::list<BAN_DATA *> ban_list;
 extern std::list<CHAR_DATA *> char_list;
+extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
+extern std::list<EXIT_DATA *> exit_list;
+extern std::list<OBJ_INDEX_DATA *> obj_index_list;
+extern std::list<ROOM_INDEX_DATA *> room_index_list;
+
 extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;
 extern NOTE_DATA *first_note;
@@ -105,15 +110,8 @@ extern void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat
 extern void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat );
 extern void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat );
 extern void ( *dl_list_free_destructor ) ( DL_LIST * dldat );
-
-#ifndef DEBUG_MONEY
-extern void ( *money_type_free_destructor ) ( MONEY_TYPE * mtdat );
-#endif
 extern void ( *board_free_destructor ) ( BOARD_DATA * bdat );
-
-#ifdef DEBUG_MONEY
-void money_type_free_destructor( MONEY_TYPE * mtdat );
-#endif
+extern void ( *money_type_free_destructor ) ( MONEY_TYPE * money );
 
 void mark_free_destructor( MARK_DATA * mdat );
 void shield_free_destructor( MAGIC_SHIELD * msdat );

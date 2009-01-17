@@ -48,12 +48,6 @@
 #include "h/db.h"
 #endif
 
-#ifdef DEBUG_MONEY
-#ifndef DEC_MONEY_H
-#include "money.h"
-#endif
-#endif
-
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -303,14 +297,6 @@ static void walk_char_data( CHAR_DATA * ch )
    touch( ch->old_prompt );
    touch( ch->searching );
    touch( ch->target );
-#ifdef DEBUG_MONEY
-   if( ch->money )
-      touch( ch->money->money_key );
-   if( ch->bank_money )
-      touch( ch->bank_money->money_key );
-#endif
-
-
 }
 
 static void walk_extra_descr_data( EXTRA_DESCR_DATA * ed )
@@ -353,12 +339,6 @@ static void walk_obj_data( OBJ_DATA * o )
    touch( o->name );
    touch( o->short_descr );
    touch( o->long_descr );
-#ifdef DEBUG_MONEY
-   if( o->money )
-      touch( o->money->money_key );
-#endif
-
-
 }
 
 static void walk_exit_data( EXIT_DATA * e )
@@ -424,9 +404,6 @@ static void walk_room_index_data( ROOM_INDEX_DATA * r )
       walk_extra_descr_data( ed );
    touch( r->name );
    touch( r->description );
-#ifdef DEBUG_MONEY
-   touch( r->treasure->money_key );
-#endif
 }
 
 

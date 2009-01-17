@@ -32,6 +32,10 @@
 #include "hash.h"
 #endif
 
+#ifndef DEC_MONEY_H
+#include "h/money.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -179,6 +183,7 @@ obj_data::~obj_data()
  free_string(owner);
  free_string(short_descr);
  free_string(long_descr);
+ PUT_FREE( money, money_type_free );
 }
 
 obj_index_data::~obj_index_data()
@@ -243,6 +248,7 @@ room_index_data::~room_index_data()
 {
  free_string(name);
  free_string(description);
+ PUT_FREE( treasure, money_type_free );
 }
 
 shop_data::~shop_data()

@@ -76,13 +76,8 @@ extern char *top_string;
 extern char str_empty[1];
 extern AREA_DATA *area_used[MAX_AREAS];
 extern int top_affect;
-extern int top_area;
-extern int top_ed;
-extern int top_exit;
 extern int top_mob_index;
-extern int top_obj_index;
 extern int top_reset;
-extern int top_room;
 extern int top_shop;
 extern long int nAllocString;
 extern long int sAllocString;
@@ -342,7 +337,6 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    pArea->flags.set(AFLAG_NOSHOW);   /* don't list on 'areas' -S- */
 
    area_used[pArea->area_num] = pArea;
-   top_area++;
 
    /*
     * Now add it to area.lst 
@@ -371,7 +365,6 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    GET_FREE( pList, build_free );
    pList->data = pRoomIndex;
    LINK( pList, pArea->first_area_room, pArea->last_area_room, next, prev );
-   top_room++;
 
    send_to_char( "Ok.\r\n", ch );
 }
@@ -682,7 +675,6 @@ void build_setarea( CHAR_DATA * ch, char *argument )
 
 void build_findarea( CHAR_DATA * ch, char *argument )
 {
-/*    extern int top_room_index; Unused Var */
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];

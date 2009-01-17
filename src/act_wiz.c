@@ -109,7 +109,6 @@
 #endif
 
 extern int top_mob_index;
-extern int top_obj_index;
 extern bool merc_down;
 extern int saving_area;
 extern bool deathmatch;
@@ -1184,7 +1183,7 @@ void do_ofindlev( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_obj_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
    {
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {
@@ -1387,7 +1386,7 @@ void do_ofind( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_obj_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
    {
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {
@@ -5646,7 +5645,7 @@ void do_otype( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_obj_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
    {
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {
@@ -5705,7 +5704,7 @@ void do_owear( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_obj_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
    {
       if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
       {

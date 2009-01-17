@@ -1689,7 +1689,7 @@ void extract_obj( OBJ_DATA * obj )
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       wch = *li;
-      if( wch->hunt_obj == obj )
+      if( wch->hunt_obj != NULL && wch->hunt_obj == obj )
          end_hunt( wch );
 /*        wch->hunt_obj = NULL;*/
       if( wch->sitting == obj )
@@ -1708,10 +1708,6 @@ void extract_obj( OBJ_DATA * obj )
          PUT_FREE( this_corpse, corpse_free );
       }
       save_corpses(  );
-   }
-   if( obj->money != NULL )
-   {
-      PUT_FREE( obj->money, money_type_free );
    }
 
    if( obj->reset )

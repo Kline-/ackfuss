@@ -796,29 +796,13 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 
    {
       MONEY_TYPE *money;
+
       GET_FREE( money, money_type_free );
-#ifdef DEBUG_MONEY
-      {
-         char testbuf[MSL];
-         snprintf( testbuf, MSL, "loading player money, %s", ch->name );
-         if( money->money_key != NULL )
-            free_string( money->money_key );
-         money->money_key = str_dup( testbuf );
-      }
-#endif
       for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
          money->cash_unit[cnt] = 0;
       ch->money = money;
+
       GET_FREE( money, money_type_free );
-#ifdef DEBUG_MONEY
-      {
-         char testbuf[MSL];
-         snprintf( testbuf, MSL, "loading player bank, %s", ch->name );
-         if( money->money_key != NULL )
-            free_string( money->money_key );
-         money->money_key = str_dup( testbuf );
-      }
-#endif
       for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
          money->cash_unit[cnt] = 0;
       ch->bank_money = money;
@@ -1080,14 +1064,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                MONEY_TYPE *transfer;
                int num_coins;
+
                GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-               {
-                  char testbuf[MSL];
-                  snprintf( testbuf, MSL, "reading player money, %s", ch->name );
-                  transfer->money_key = str_dup( testbuf );
-               }
-#endif
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
@@ -1269,14 +1247,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                MONEY_TYPE *transfer;
                int num_coins;
+
                GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-               {
-                  char testbuf[MSL];
-                  snprintf( testbuf, MSL, "reading player money, %s", ch->name );
-                  transfer->money_key = str_dup( testbuf );
-               }
-#endif
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
@@ -1537,7 +1509,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
 #define TEMP_VNUM 3090
 
-extern int top_obj_index;
 
 void fread_obj( CHAR_DATA * ch, FILE * fp )
 {
@@ -1553,14 +1524,8 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
    {
       MONEY_TYPE *money;
       short cnt;
+
       GET_FREE( money, money_type_free );
-#ifdef DEBUG_MONEY
-      {
-         char testbuf[MSL];
-         snprintf( testbuf, MSL, "loading obj money, %s", obj->name );
-         money->money_key = str_dup( testbuf );
-      }
-#endif
       for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
          money->cash_unit[cnt] = 0;
       obj->money = money;
@@ -1698,7 +1663,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                         /*
                          * Scan through objects, trying to find a matching description 
                          */
-                        for( vnum = 0; nMatch < top_obj_index; vnum++ )
+                        for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
                         {
                            if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
                            {
@@ -1740,14 +1705,8 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
             {
                MONEY_TYPE *transfer;
                int num_coins, cnt;
+
                GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-               {
-                  char testbuf[MSL];
-                  snprintf( testbuf, MSL, "loading obj money, %s", obj->name );
-                  transfer->money_key = str_dup( testbuf );
-               }
-#endif
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
@@ -1921,14 +1880,8 @@ void fread_corpse( FILE * fp )
    {
       MONEY_TYPE *money;
       short cnt;
+
       GET_FREE( money, money_type_free );
-#ifdef DEBUG_MONEY
-      {
-         char testbuf[MSL];
-         snprintf( testbuf, MSL, "loading obj money, %s", obj->name );
-         money->money_key = str_dup( testbuf );
-      }
-#endif
       for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
          money->cash_unit[cnt] = 0;
       obj->money = money;
@@ -2057,7 +2010,7 @@ void fread_corpse( FILE * fp )
                         /*
                          * Scan through objects, trying to find a matching description 
                          */
-                        for( vnum = 0; nMatch < top_obj_index; vnum++ )
+                        for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
                         {
                            if( ( pObjIndex = get_obj_index( vnum ) ) != NULL )
                            {
@@ -2096,14 +2049,8 @@ void fread_corpse( FILE * fp )
             {
                MONEY_TYPE *transfer;
                int num_coins, cnt;
+
                GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-               {
-                  char testbuf[MSL];
-                  snprintf( testbuf, MSL, "loading obj money, %s", obj->name );
-                  transfer->money_key = str_dup( testbuf );
-               }
-#endif
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );

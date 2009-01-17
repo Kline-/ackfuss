@@ -84,9 +84,6 @@ struct money_type
    bool is_free;
    MONEY_TYPE *next;
    MONEY_TYPE *prev;
-#ifdef DEBUG_MONEY
-   char *money_key;
-#endif
    int cash_unit[MAX_CURRENCY];
 };
 

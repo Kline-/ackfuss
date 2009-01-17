@@ -235,15 +235,19 @@ exit_data::exit_data()
  next = NULL;
  to_room = NULL;
  vnum = 0;
+
+ exit_list.push_back(this);
 }
 
 extra_descr_data::extra_descr_data()
 {
- description = &str_empty[0];
  is_free = false;
+ description = &str_empty[0];
  keyword = &str_empty[0];
  next = NULL;
  prev = NULL;
+
+ exdesc_list.push_back(this);
 }
 
 fight_data::fight_data()
@@ -360,6 +364,8 @@ npc_group_data::npc_group_data()
 
 obj_data::obj_data()
 {
+ static MONEY_TYPE *money_zero;
+
  is_free = false;
  next = NULL;
  prev = NULL;
@@ -402,7 +408,8 @@ obj_data::obj_data()
   value[i] = 0;
  durability = 0;
  max_durability = 0;
- money = NULL;
+ GET_FREE( money_zero, money_type_free );
+ money = money_zero;
  speed = 1.00;
 }
 
@@ -434,6 +441,8 @@ obj_index_data::obj_index_data()
  vnum = 0;
  wear_flags.reset();
  weight = 1;
+
+ obj_index_list.push_back(this);
 }
 
 pc_data::pc_data()
@@ -603,15 +612,10 @@ room_index_data::room_index_data()
  room_flags.reset();
  sector_type = SECT_INSIDE;
  GET_FREE( room_treasure, money_type_free );
-#ifdef DEBUG_MONEY
- {
-  char testbuf[MSL];
-  snprintf( testbuf, MSL,  "loading rooms, vnum %d", pRoomIndex->vnum );
-  room_treasure->money_key = str_dup( testbuf );
- }
-#endif
  treasure = room_treasure;
  vnum = 0;
+
+ room_index_list.push_back(this);
 }
 
 shop_data::shop_data()

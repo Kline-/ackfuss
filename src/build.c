@@ -243,13 +243,8 @@ extern char *top_string;
 extern char str_empty[1];
 
 extern int top_affect;
-extern int top_area;
-extern int top_ed;
-extern int top_exit;
 extern int top_mob_index;
-extern int top_obj_index;
 extern int top_reset;
-extern int top_room;
 extern int top_shop;
 
 extern AREA_DATA *area_last;
@@ -1083,7 +1078,6 @@ void build_findmobroom( CHAR_DATA * ch, char *argument )
 
 void build_findobject( CHAR_DATA * ch, char *argument )
 {
-/*    extern int top_obj_index; Unused Var */
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1146,7 +1140,6 @@ void build_findobject( CHAR_DATA * ch, char *argument )
 
 void build_findroom( CHAR_DATA * ch, char *argument )
 {
-/*    extern int top_room_index; Unused Var */
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -2043,8 +2036,8 @@ void build_setroom( CHAR_DATA * ch, char *argument )
           * Delete description 
           */
          UNLINK( ed, location->first_exdesc, location->last_exdesc, next, prev );
+         exdesc_list.remove(ed);
          delete ed;
-         top_ed--;
 
          return;
       }
@@ -2064,7 +2057,6 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          build_strdup( &ed->keyword, arg2, FALSE, FALSE, ch );
          build_strdup( &ed->description, arg3, FALSE, FALSE, ch );
          LINK( ed, location->first_exdesc, location->last_exdesc, next, prev );
-         top_ed++;
          return;
       }
 
@@ -2128,9 +2120,9 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          /*
           * Delete exit 
           */
+         exit_list.remove(pExit);
          delete pExit;
          location->exit[door] = NULL;
-         top_exit--;
 
          /*
           * spec: nuke any resets for it 
@@ -2146,9 +2138,9 @@ void build_setroom( CHAR_DATA * ch, char *argument )
             if( pExit != NULL )
                if( pExit->vnum == location->vnum )
                {
+                  exit_list.remove(pExit);
                   delete pExit;
                   pDestRoom->exit[RevDirs[door]] = NULL;
-                  top_exit--;
 
                   /*
                    * spec: nuke any resets for it 
@@ -2173,7 +2165,6 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       if( pExit == NULL )
       {
          pExit = new EXIT_DATA;
-         top_exit++;
          location->exit[door] = pExit;
       }
 
@@ -2223,9 +2214,9 @@ void build_setroom( CHAR_DATA * ch, char *argument )
          {
             if( pDestRoom != NULL && pDestExit != NULL ) /* If already connected */
             {
+               exit_list.remove(pDestExit);
                delete pDestExit;
                pDestRoom->exit[RevDirs[door]] = NULL;
-               top_exit--;
 
                /*
                 * spec: nuke exit resets 
@@ -2246,7 +2237,6 @@ void build_setroom( CHAR_DATA * ch, char *argument )
                build_strdup( &pDestExit->keyword, pExit->keyword, FALSE, FALSE, ch );
                pDestExit->exit_info = pExit->exit_info;
                pDestExit->key = pExit->vnum;
-               top_exit++;
                pRoom->exit[RevDirs[door]] = pDestExit;
                area_modified( pRoom->area );
             }
@@ -2805,6 +2795,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
          }
 
          UNLINK( ed, pObj->first_exdesc, pObj->last_exdesc, next, prev );
+         exdesc_list.remove(ed);
          delete ed;
 
          return;
@@ -3013,7 +3004,6 @@ void build_dig( CHAR_DATA * ch, char *argument )
    GET_FREE( pList, build_free );
    pList->data = pRoomIndex;
    LINK( pList, pCurRoom->area->first_area_room, pCurRoom->area->last_area_room, next, prev );
-   top_room++;
 
    /*
     * Create door 
@@ -3021,7 +3011,6 @@ void build_dig( CHAR_DATA * ch, char *argument )
    pExit = new EXIT_DATA;
    pExit->to_room = pRoomIndex;
    pExit->vnum = vnum;
-   top_exit++;
    pCurRoom->exit[dir] = pExit;
 
    if( str_cmp( arg3, "onesided" ) )   /* If NOT onesided */
@@ -3029,7 +3018,6 @@ void build_dig( CHAR_DATA * ch, char *argument )
       pExit = new EXIT_DATA;
       pExit->to_room = pCurRoom;
       pExit->vnum = pCurRoom->vnum;
-      top_exit++;
       pRoomIndex->exit[RevDirs[dir]] = pExit;
    }
 
@@ -3186,7 +3174,6 @@ void build_addobject( CHAR_DATA * ch, char *argument )
    GET_FREE( pList, build_free );
    pList->data = pObjIndex;
    LINK( pList, pArea->first_area_object, pArea->last_area_object, next, prev );
-   top_obj_index++;
 
    return;
 }
@@ -3258,7 +3245,6 @@ void build_addroom( CHAR_DATA *ch, char *argument )
  GET_FREE( pList, build_free );
  pList->data = pRoomIndex;
  LINK( pList, pCurRoom->area->first_area_room, pCurRoom->area->last_area_room, next, prev );
- top_room++;
 }
 
 void build_addreset( CHAR_DATA * ch, char *argument )
@@ -3928,9 +3914,9 @@ void build_delroom( CHAR_DATA * ch, char *argument )
                /*
                 * Get rid of exit. 
                 */
+               exit_list.remove(pExit);
                delete pExit;
                pSrchRoom->exit[door] = NULL;
-               top_exit--;
 
                /*
                 * spec: do the resets thing 
@@ -4037,9 +4023,9 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       {
          if( ( pExit = pRoomIndex->exit[door] ) != NULL )
          {
+            exit_list.remove(pExit);
             delete pExit;
             pRoomIndex->exit[door] = NULL;
-            top_exit--;
 
             /*
              * spec: resets aren't a problem, since they will get freed anyway 
@@ -4058,14 +4044,12 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       for( pEd = pRoomIndex->first_exdesc; pEd != NULL; pEd = pNext )
       {
          pNext = pEd->next;
+         exdesc_list.remove(pEd);
          delete pEd;
       }
    }
-   PUT_FREE( pRoomIndex->treasure, money_type_free );
+   room_index_list.remove(pRoomIndex);
    delete pRoomIndex;
-
-   top_room--;
-
 
    send_to_char( "Done.\r\n", ch );
    return;
@@ -4230,6 +4214,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
       for( pEd = pObjIndex->first_exdesc; pEd != NULL; pEd = pNext )
       {
          pNext = pEd->next;
+         exdesc_list.remove(pEd);
          delete pEd;
       }
    }
@@ -4251,9 +4236,8 @@ void build_delobject( CHAR_DATA * ch, char *argument )
    /*
     * Now delete structure 
     */
+   obj_index_list.remove(pObjIndex);
    delete pObjIndex;
-
-   top_obj_index--;
 
    send_to_char( "Done.\r\n", ch );
    return;
@@ -5773,9 +5757,6 @@ void build_clone( CHAR_DATA * ch, char *argument )
    {
       ROOM_INDEX_DATA *room;
       ROOM_INDEX_DATA *in_room = ch->in_room;
-      /*
-       * EXTRA_DESCR_DATA *ed 
-       */
 
       if( ch->act_build != ACT_BUILD_REDIT )
       {

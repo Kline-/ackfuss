@@ -48,6 +48,11 @@
 std::list<AREA_DATA *> area_list;
 std::list<BAN_DATA *> ban_list;
 std::list<CHAR_DATA *> char_list;
+std::list<EXTRA_DESCR_DATA *> exdesc_list;
+std::list<EXIT_DATA *> exit_list;
+std::list<OBJ_INDEX_DATA *> obj_index_list;
+std::list<ROOM_INDEX_DATA *> room_index_list;
+
 DESCRIPTOR_DATA *first_desc = NULL;
 DESCRIPTOR_DATA *last_desc = NULL;
 NOTE_DATA *first_note = NULL;
@@ -112,18 +117,8 @@ void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat ) = NU
 void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat ) = NULL;
 void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat ) = NULL;
 void ( *dl_list_free_destructor ) ( DL_LIST * dldat ) = NULL;
-
-#ifndef DEBUG_MONEY
-void ( *money_type_free_destructor ) ( MONEY_TYPE * mtdat ) = NULL;
-#endif
 void ( *board_free_destructor ) ( BOARD_DATA * bdat ) = NULL;
-
-#ifdef DEBUG_MONEY
-void money_type_free_destructor( MONEY_TYPE * mtdat )
-{
-   free_string( mtdat->money_key );
-}
-#endif
+void ( *money_type_free_destructor ) ( MONEY_TYPE * money ) = NULL;
 
 void mark_free_destructor( MARK_DATA * mdat )
 {

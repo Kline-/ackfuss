@@ -171,9 +171,7 @@ MONEY_TYPE *round_money( int base, bool round_up )
    int unit_worth;
    int looper;
    GET_FREE( money, money_type_free );
-#ifdef DEBUG_MONEY
-   money->money_key = str_dup( "Rounding money" );
-#endif
+
    switch ( round_up )
    {
       case TRUE:
@@ -223,9 +221,7 @@ MONEY_TYPE *round_money_off( int base, short accuracy )
    int unit_worth;
    int looper;
    GET_FREE( money, money_type_free );
-#ifdef DEBUG_MONEY
-   money->money_key = str_dup( "Round_money_off" );
-#endif
+
    for( looper = MAX_CURRENCY - 1; ( looper >= 0 ) && ( accuracy >= 0 ); looper-- )
    {
       if( ( unit_worth = ( money_left / currency_table[looper].exchange_val ) ) > 0 )
@@ -319,13 +315,7 @@ bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
    char outbuf[MSL];
 
    GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "give_money, %s, %s, %s", ch->name, victim->name, argument );
-      transfer->money_key = str_dup( testbuf );
-   }
-#endif
+
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
       transfer->cash_unit[looper] = 0;
@@ -379,13 +369,6 @@ bool withdraw_money( CHAR_DATA * ch, char *argument )
    char outbuf[MSL];
 
    GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "withdraw_money, %s, %s", ch->name, argument );
-      transfer->money_key = str_dup( testbuf );
-   }
-#endif
 
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
@@ -438,13 +421,6 @@ void deposit_money( CHAR_DATA * ch, char *argument )
    char outbuf[MSL];
 
    GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "deposit_money, %s, %s", ch->name, argument );
-      transfer->money_key = str_dup( testbuf );
-   }
-#endif
 
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
@@ -490,14 +466,8 @@ int exchange_money( CHAR_DATA * ch, char *argument )
    char outbuf[MSL];
    int base_val;
    float taxed = 0;
+
    GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "exchange_money, %s, %s", ch->name, argument );
-      transfer->money_key = str_dup( testbuf );
-   }
-#endif
 
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
@@ -574,15 +544,8 @@ void do_mgive( CHAR_DATA * ch, char *argument )
          send_to_char( "No such money unit.\r\n", ch );
          return;
       }
-      GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-      {
-         char testbuf[MSL];
-         snprintf( testbuf, MSL, "mgive, %s, %s", ch->name, argument );
-         transfer->money_key = str_dup( testbuf );
-      }
-#endif
 
+      GET_FREE( transfer, money_type_free );
       for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
          transfer->cash_unit[cnt] = 0;
       transfer->cash_unit[mn] += ( is_number( m_number ) ? atoi( m_number ) : 10 );
@@ -627,15 +590,8 @@ void do_mgive( CHAR_DATA * ch, char *argument )
          send_to_char( "No such money unit.\r\n", ch );
          return;
       }
-      GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-      {
-         char testbuf[MSL];
-         snprintf( testbuf, MSL, "mgive, %s, %s", ch->name, argument );
-         transfer->money_key = str_dup( testbuf );
-      }
-#endif
 
+      GET_FREE( transfer, money_type_free );
       for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
          transfer->cash_unit[cnt] = 0;
       transfer->cash_unit[mn] -= ( is_number( m_number ) ? atoi( m_number ) : 10 );
@@ -661,13 +617,7 @@ void drop_money( CHAR_DATA * ch, char *argument )
    char outbuf[MSL];
 
    GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "drop_money, %s, %s", ch->name, argument );
-      transfer->money_key = str_dup( testbuf );
-   }
-#endif
+
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
       transfer->cash_unit[looper] = 0;
@@ -712,14 +662,9 @@ int money_to_value( CHAR_DATA * ch, char *argument )
    char m_name[MSL];
    char outbuf[MSL];
    int value = 0;
+
    GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "money_to_value, %s, %s", ch->name, argument );
-      transfer->money_key = str_dup( testbuf );
-   }
-#endif
+
    for( looper = 0; looper < MAX_CURRENCY; looper++ )
    {
       transfer->cash_unit[looper] = 0;
@@ -765,15 +710,8 @@ bool get_money_room( CHAR_DATA * ch, char *argument )
    char m_name[MSL];
    char outbuf[MSL];
 
-
    GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "get_money_room, %s, %s", ch->name, argument );
-      transfer->money_key = str_dup( testbuf );
-   }
-#endif
+
    if( !str_cmp( "all", argument ) )
    {
       for( looper = 0; looper < MAX_CURRENCY; looper++ )
@@ -839,16 +777,8 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
    char m_name[MSL];
    char outbuf[MSL];
 
-
-
    GET_FREE( transfer, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "get_money_obj, %s, %s", ch->name, argument );
-      transfer->money_key = str_dup( testbuf );
-   }
-#endif
+
    if( !str_cmp( "all", argument ) )
    {
       for( looper = 0; looper < MAX_CURRENCY; looper++ )
@@ -1042,17 +972,10 @@ char *take_best_coins( MONEY_TYPE * money, int cost )
    MONEY_TYPE *transaction;
    MONEY_TYPE *debug_money;
 
-
    unit_level = 0;   /* start at smallest currency unit */
    change = 0;
+
    GET_FREE( transaction, money_type_free );
-#ifdef DEBUG_MONEY
-   {
-      char testbuf[MSL];
-      snprintf( testbuf, MSL, "take_best_coins, %s, %d", money->money_key, cost );
-      transaction->money_key = str_dup( testbuf );
-   }
-#endif
    for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
       transaction->cash_unit[cnt] = money->cash_unit[cnt];
    takebuf[0] = '\0';

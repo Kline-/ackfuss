@@ -1,4 +1,4 @@
-CC   = ccache g++
+CC   = g++
 VERS = AckFUSS 4.4.0
 #PROF    = -pg
 
@@ -39,7 +39,7 @@ O_FILES = $(patsubst %.c,o/%.o,$(C_FILES))
 H_FILES = $(wildcard h/*.h)
 
 all:
-	@$(MAKE) -j1 ack
+	@$(MAKE) -j2 ack
 
 # pull in dependency info for *existing* .o files
 -include dependencies.d
