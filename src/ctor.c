@@ -317,6 +317,8 @@ mob_index_data::mob_index_data()
  target = &str_empty[0];
  vnum = 0;
  weak_magic = 0;
+
+ mob_index_list.push_back(this);
 }
 
 note_data::note_data()

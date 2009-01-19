@@ -191,7 +191,6 @@ MOB_INDEX_DATA *mob_load;
 OBJ_INDEX_DATA *obj_load;
 
 int top_affect;
-int top_mob_index;
 int top_reset;
 int top_shop;
 int fp_open;
@@ -1076,7 +1075,6 @@ void load_mobile( FILE * fp )
    LINK( pList, area_load->first_area_mobile, area_load->last_area_mobile, next, prev );
 
    mob_load = pMobIndex;
-   top_mob_index++;
    kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
 
    return;
@@ -3260,7 +3258,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Mobs    %5d\r\n", top_mob_index );
+   snprintf( buf, MSL, "Mobs    %5d\r\n", mob_index_list.size() );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Objs    %5d\r\n", obj_index_list.size() );
    send_to_char( buf, ch );
@@ -3311,7 +3309,7 @@ void do_status( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Mobs    %5d\r\n", top_mob_index );
+   snprintf( buf, MSL, "Mobs    %5d\r\n", mob_index_list.size() );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Objs    %5d\r\n", obj_index_list.size() );
    send_to_char( buf, ch );
@@ -4031,12 +4029,14 @@ void file_close( FILE *file )
 void clear_lists( void )
 {
  MONEY_TYPE *mny, *mny_next;
+ MAGIC_SHIELD *shield, *shield_next;
 
  for_each( area_list.begin(),       area_list.end(),       DeleteObject() );
  for_each( ban_list.begin(),        ban_list.end(),        DeleteObject() );
  for_each( char_list.begin(),       char_list.end(),       DeleteObject() );
  for_each( exdesc_list.begin(),     exdesc_list.end(),     DeleteObject() );
  for_each( exit_list.begin(),       exit_list.end(),       DeleteObject() );
+ for_each( mob_index_list.begin(),  mob_index_list.end(),  DeleteObject() );
  for_each( obj_list.begin(),        obj_list.end(),        DeleteObject() );
  for_each( obj_index_list.begin(),  obj_index_list.end(),  DeleteObject() );
  for_each( room_index_list.begin(), room_index_list.end(), DeleteObject() );
@@ -4045,6 +4045,12 @@ void clear_lists( void )
  {
   mny_next = mny->next;
   free(mny);
+ }
+
+ for( shield = shield_free; shield != NULL; shield = shield_next )
+ {
+  shield_next = shield->next;
+  free(shield);
  }
 
  free(string_space);

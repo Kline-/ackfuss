@@ -108,7 +108,6 @@
 #include "h/strfuns.h"
 #endif
 
-extern int top_mob_index;
 extern bool merc_down;
 extern int saving_area;
 extern bool deathmatch;
@@ -1251,7 +1250,7 @@ void do_mfind( CHAR_DATA * ch, char *argument )
     * Do you?
     * -- Furey
     */
-   for( vnum = 0; nMatch < top_mob_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(mob_index_list.size()); vnum++ )
    {
       if( ( pMobIndex = get_mob_index( vnum ) ) != NULL )
       {
@@ -1321,7 +1320,7 @@ void do_mfindlev( CHAR_DATA * ch, char *argument )
     * -- Furey
     */
    snprintf(buf1,MSL,"[Kls] [Lvl] [Vnum ] [Name ]\r\n");
-   for( vnum = 0; nMatch < top_mob_index; vnum++ )
+   for( vnum = 0; nMatch < static_cast<int>(mob_index_list.size()); vnum++ )
    {
       if( ( pMobIndex = get_mob_index( vnum ) ) != NULL )
       {

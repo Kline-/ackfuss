@@ -50,6 +50,7 @@ std::list<BAN_DATA *> ban_list;
 std::list<CHAR_DATA *> char_list;
 std::list<EXTRA_DESCR_DATA *> exdesc_list;
 std::list<EXIT_DATA *> exit_list;
+std::list<MOB_INDEX_DATA *> mob_index_list;
 std::list<OBJ_DATA *> obj_list;
 std::list<OBJ_INDEX_DATA *> obj_index_list;
 std::list<ROOM_INDEX_DATA *> room_index_list;

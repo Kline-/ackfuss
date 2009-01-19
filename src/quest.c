@@ -81,7 +81,6 @@ extern int quest_timer;
 extern short quest_personality;
 extern bool auto_quest;
 extern bool quest;
-extern int top_mob_index;
 
 /* 17 messages, organised by blocks for each personality 
    indented messages are for when the target mob gets killed  */
@@ -438,7 +437,7 @@ CHAR_DATA *get_quest_target( int min_level, int max_level )
 
    if( max_level > 140 )
       max_level = 140;
-   min_index = number_range(0,top_mob_index-1);
+   min_index = number_range(0,mob_index_list.size()-1);
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
@@ -513,7 +512,7 @@ CHAR_DATA *get_quest_giver( int min_level, int max_level )
    std::list<CHAR_DATA *>::iterator li;
    int min_index = 0;
 
-   min_index = number_range(0,top_mob_index-1);
+   min_index = number_range(0,mob_index_list.size()-1);
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {

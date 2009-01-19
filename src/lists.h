@@ -46,6 +46,7 @@ extern std::list<BAN_DATA *> ban_list;
 extern std::list<CHAR_DATA *> char_list;
 extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
 extern std::list<EXIT_DATA *> exit_list;
+extern std::list<MOB_INDEX_DATA *> mob_index_list;
 extern std::list<OBJ_DATA *> obj_list;
 extern std::list<OBJ_INDEX_DATA *> obj_index_list;
 extern std::list<ROOM_INDEX_DATA *> room_index_list;

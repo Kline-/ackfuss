@@ -76,7 +76,6 @@ extern char *top_string;
 extern char str_empty[1];
 extern AREA_DATA *area_used[MAX_AREAS];
 extern int top_affect;
-extern int top_mob_index;
 extern int top_reset;
 extern int top_shop;
 extern long int nAllocString;

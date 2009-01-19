@@ -243,7 +243,6 @@ extern char *top_string;
 extern char str_empty[1];
 
 extern int top_affect;
-extern int top_mob_index;
 extern int top_reset;
 extern int top_shop;
 
@@ -3107,7 +3106,6 @@ void build_addmob( CHAR_DATA * ch, char *argument )
    GET_FREE( pList, build_free );
    pList->data = pMobIndex;
    LINK( pList, pArea->first_area_mobile, pArea->last_area_mobile, next, prev );
-   top_mob_index++;
    kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
 
    return;
@@ -4436,9 +4434,8 @@ void build_delmob( CHAR_DATA * ch, char *argument )
    /*
     * Now delete structure 
     */
+   mob_index_list.remove(pMobIndex);
    delete pMobIndex;
-
-   top_mob_index--;
 
    send_to_char( "Done.\r\n", ch );
    return;

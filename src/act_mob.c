@@ -74,8 +74,6 @@
 #include "h/magic.h"
 #endif
 
-extern int top_mob_index;
-
 bool able_to_level( CHAR_DATA * ch )
 {
    bool in_need = FALSE;
@@ -1001,7 +999,7 @@ void select_target( CHAR_DATA * ch )
          attempts++;
          average_level = get_psuedo_level( ch );
 
-         force_index = number_range( 1, top_mob_index-1 );
+         force_index = number_range( 1, mob_index_list.size() );
 
          for( li = char_list.begin(); li != char_list.end(); li++ )
          {
