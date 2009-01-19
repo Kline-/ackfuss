@@ -1061,11 +1061,13 @@ void generate_retrieval_quest( CHAR_DATA *ch )
 
 OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
 {
- OBJ_DATA *obj;
+ OBJ_DATA *obj = NULL;
  int i = number_range(0,obj_index_list.size()-1);
+ std::list<OBJ_DATA *>::iterator li;
 
- for( obj = first_obj; obj != NULL; obj = obj->next )
+ for( li = obj_list.begin(); li != obj_list.end(); li++ )
  {
+  obj = *li;
   i--;
 
   if( i > 0 ) /* Add some variety to where we start in the obj_list */

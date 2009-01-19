@@ -857,7 +857,6 @@ void do_cast( CHAR_DATA * ch, char *argument )
    {
       CHAR_DATA *vch;
       CHAR_DATA *vch_next;
-      CREF( vch_next, CHAR_NEXTROOM );
       for( vch = ch->in_room->first_person; vch; vch = vch_next )
       {
          vch_next = vch->next_in_room;
@@ -868,7 +867,6 @@ void do_cast( CHAR_DATA * ch, char *argument )
             break;
          }
       }
-      CUREF( vch_next );
    }
 
    return;
@@ -1749,7 +1747,7 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
          act( "@@N$n's @@lc@@el@@ro@@ya@@ak@@N glows brightly as $N's spell hits it@@N!!", victim, NULL, ch, TO_ROOM );
          act( "@@N$N's @@lc@@el@@ro@@ya@@ak@@N glows brightly@@N!!", ch, NULL, victim, TO_CHAR );
          act( "@@NYour @@lc@@el@@ro@@ya@@ak@@N glows brightly@@N!!!", victim, NULL, ch, TO_CHAR );
-         CREF( vch_next, CHAR_NEXTROOM );
+
          for( vch = ch->in_room->first_person; vch; vch = vch_next )
          {
             vch_next = vch->next_in_room;
@@ -1760,7 +1758,6 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
                break;
             }
          }
-         CUREF( vch_next );
          return TRUE;
       }
 
@@ -1772,7 +1769,6 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
          act( "@@N$n's @@lcloak@@N glows brightly as $N's spell hits it, then fades@@N!!", victim, NULL, ch, TO_ROOM );
          act( "@@N$N's @@lcloak@@N glows brightly, and absorbs your spell@@N!!", ch, NULL, victim, TO_CHAR );
          act( "@@NYour @@lcloak@@N glows brightly, and absorbs $N's spell@@N!!!", victim, NULL, ch, TO_CHAR );
-         CREF( vch_next, CHAR_NEXTROOM );
 
          for( vch = ch->in_room->first_person; vch; vch = vch_next )
          {
@@ -1784,8 +1780,6 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
                break;
             }
          }
-         CUREF( vch_next );
-
          return TRUE;
       }
 
@@ -1899,15 +1893,8 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
             send_to_char( "@@NYour @@ecloak@@N is ripped from your body!\r\n", victim );
             REMOVE_BIT( victim->affected_by, AFF_CLOAK_FLAMING );
          }
-
-
-
       }
 
-
-
-
-      CREF( vch_next, CHAR_NEXTROOM );
       for( vch = ch->in_room->first_person; vch; vch = vch_next )
       {
          vch_next = vch->next_in_room;
@@ -1918,7 +1905,6 @@ bool spell_dispel_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
             break;
          }
       }
-      CUREF( vch_next );
 
       return TRUE;
    }
@@ -2700,10 +2686,12 @@ bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    OBJ_DATA *ob;
    OBJ_DATA *in_obj;
    bool found;
+   std::list<OBJ_DATA *>::iterator li;
 
    found = FALSE;
-   for( ob = first_obj; ob != NULL; ob = ob->next )
+   for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
+      ob = *li;
       if( !can_see_obj( ch, ob ) || !is_name( target_name, ob->name )
           || IS_OBJ_STAT(ob,ITEM_EXTRA_RARE)
           || ( ob->item_type == ITEM_PIECE )
@@ -3225,7 +3213,6 @@ bool spell_acid_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 
    if( number_percent(  ) < 2 * level && !saves_spell( level, victim ) )
    {
-      OREF( obj_next, OBJ_NEXTCONTENT );
       for( obj_lose = victim->first_carry; obj_lose != NULL; obj_lose = obj_next )
       {
          int iWear;
@@ -3267,7 +3254,6 @@ bool spell_acid_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
             }
          }
       }
-      OUREF( obj_next );
 
    }
 
@@ -3301,7 +3287,6 @@ bool spell_fire_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 
    if( number_percent(  ) < 2 * level && !saves_spell( level, victim ) )
    {
-      OREF( obj_next, OBJ_NEXTCONTENT );
       for( obj_lose = victim->first_carry; obj_lose != NULL; obj_lose = obj_next )
       {
          char *msg;
@@ -3342,18 +3327,16 @@ bool spell_fire_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
          {
             OBJ_DATA *content;
             OBJ_DATA *content_next;
-            OREF( content_next, OBJ_NEXTCONTENT );
+
             for( content = obj_lose->first_in_carry_list; content; content = content_next )
             {
                content_next = content->next_in_carry_list;
                obj_from_obj( content );
                obj_to_room( content, victim->in_room != NULL ? victim->in_room : get_room_index( ROOM_VNUM_LIMBO ) );
             }
-            OUREF( content_next );
             extract_obj( obj_lose );
          }
       }
-      OUREF( obj_next );
    }
 
    hpch = UMAX( 10, ch->hit );
@@ -3376,7 +3359,6 @@ bool spell_frost_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
 
    if( number_percent(  ) < 2 * level && !saves_spell( level, victim ) )
    {
-      OREF( obj_next, OBJ_NEXTCONTENT );
       for( obj_lose = victim->first_carry; obj_lose != NULL; obj_lose = obj_next )
       {
          char *msg;
@@ -3401,17 +3383,15 @@ bool spell_frost_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
          {
             OBJ_DATA *content;
             OBJ_DATA *content_next;
-            OREF( content_next, OBJ_NEXTCONTENT );
+
             for( content = obj_lose->first_in_carry_list; content; content = content_next )
             {
                content_next = content->next_in_carry_list;
                obj_from_obj( content );
                obj_to_room( content, victim->in_room != NULL ? victim->in_room : get_room_index( ROOM_VNUM_LIMBO ) );
             }
-            OUREF( content_next );
          }
       }
-      OUREF( obj_next );
    }
 
    hpch = UMAX( 10, ch->hit );
@@ -3430,7 +3410,6 @@ bool spell_gas_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    CHAR_DATA *vch_next;
    int dam;
    int hpch;
-   CREF( vch_next, CHAR_NEXTROOM );
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )
    {
@@ -3444,7 +3423,6 @@ bool spell_gas_breath( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
          sp_damage( obj, ch, vch, dam, REALM_GAS | NO_REFLECT | NO_ABSORB, sn, TRUE );
       }
    }
-   CUREF( vch_next );
    return TRUE;
 }
 
@@ -3782,8 +3760,6 @@ bool spell_chain_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
    /*
     * affects all in a room, can also hit caster <grin> 
     */
-
-
    CHAR_DATA *vch;
    CHAR_DATA *vch_next;
    int dam;
@@ -3803,7 +3779,6 @@ bool spell_chain_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
       act( "A lightning bolt flashes from $p!", ch, obj, NULL, TO_ROOM );
       act( "A lightning bolt flashes from $p!", ch, obj, NULL, TO_CHAR );
    }
-   CREF( vch_next, CHAR_NEXTROOM );
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )
    {
@@ -3817,7 +3792,6 @@ bool spell_chain_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
          dam = ( 4 * dam / 5 );
       }
    }
-   CUREF( vch_next );
 
 
 
@@ -4176,12 +4150,12 @@ bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    OBJ_DATA *ob;
    OBJ_DATA *in_obj;
    bool found;
+   std::list<OBJ_DATA *>::iterator li;
 
    found = FALSE;
-   for( ob = first_obj; ob != NULL; ob = ob->next )
+   for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
-
-
+      ob = *li;
       if( !can_see_obj( ch, ob ) || !is_name( target_name, ob->name )
           || IS_OBJ_STAT(ob,ITEM_EXTRA_RARE)
           || ( ob->item_type == ITEM_PIECE )

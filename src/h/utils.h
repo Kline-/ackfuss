@@ -74,46 +74,6 @@
 #define _caller __FILE__ ":" SX(__LINE__)
 
 /*
- * Updated pointer referencing, curtesy of Spectrum, from Beyond the Veil
- *
- */
-
-#define OBJ_NEXT          1
-#define OBJ_NEXTCONTENT   2
-#define OBJ_NULL          3
-
-struct obj_ref_type
-{
-   bool inuse;
-   struct obj_ref_type *next;
-   OBJ_DATA **var;
-   int type;   /* OBJ_xxxx */
-};
-
-#define CHAR_NEXT         1
-#define CHAR_NEXTROOM     2
-#define CHAR_NULL         3
-
-struct char_ref_type
-{
-   bool inuse;
-   struct char_ref_type *next;
-   CHAR_DATA **var;
-   int type;
-};
-
-#define OREF(v, type) do { \
-static struct obj_ref_type s={FALSE,NULL,NULL,type}; s.var=&v; \
-obj_reference(&s); } while(0)
-#define OUREF(var) obj_unreference(&var);
-
-#define CREF(v, type) do { \
-static struct char_ref_type s={FALSE,NULL,NULL,type}; s.var=&v; \
-char_reference(&s); } while(0)
-#define CUREF(var) char_unreference(&var);
-
-
-/*
  * Utility macros.
  */
 #define UMIN(a, b)              ((a) < (b) ? (a) : (b))
@@ -126,8 +86,6 @@ char_reference(&s); } while(0)
 #define REMOVE_BIT(var, bit)    ((var) &= ~(bit))
 #define IS_LETTER(c)            ( ((c) >= 'A' && (c) <= 'Z' ) \
                                 ||((c) >= 'a' && (c) <= 'z' ) )
-
-
 /*
  * Character macros.
  */

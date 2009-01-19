@@ -15,10 +15,6 @@
 #endif
 
 /* handler.c */
-void obj_reference P_((struct obj_ref_type *ref));
-void obj_unreference P_((OBJ_DATA **var));
-void char_reference P_((struct char_ref_type *ref));
-void char_unreference P_((CHAR_DATA **var));
 int get_trust P_((CHAR_DATA *ch));
 void my_get_age P_((CHAR_DATA *ch, char *buf));
 int my_get_hours P_((CHAR_DATA *ch));

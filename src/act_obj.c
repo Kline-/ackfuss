@@ -956,7 +956,7 @@ void do_drink( CHAR_DATA * ch, char *argument )
       }
    }
 
-   if( get_psuedo_level(ch) < obj->level )
+   if( get_psuedo_level(ch) < obj->level && !IS_IMMORTAL(ch) )
    {
       send_to_char( "You are not knowledgeable enough to drink such a liquid.\n\r", ch );
       return;
@@ -1118,7 +1118,7 @@ void do_eat( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( get_psuedo_level(ch) < obj->level )
+   if( get_psuedo_level(ch) < obj->level && !IS_IMMORTAL(ch) )
    {
       send_to_char( "You are not knowledgeable enough to eat such a food.\n\r", ch );
       return;
@@ -2150,7 +2150,7 @@ void do_quaff( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( get_psuedo_level(ch) < obj->level )
+   if( get_psuedo_level(ch) < obj->level && !IS_IMMORTAL(ch) )
    {
       send_to_char( "You are not knowledgeable enough to use such a potion.\n\r", ch );
       return;
@@ -2208,7 +2208,7 @@ void do_recite( CHAR_DATA * ch, char *argument )
       }
    }
 
-   if( get_psuedo_level(ch) < obj->level )
+   if( get_psuedo_level(ch) < obj->level && !IS_IMMORTAL(ch) )
    {
       send_to_char( "You are not knowledgeable enough to use such a scroll.\n\r", ch );
       return;
@@ -2255,7 +2255,7 @@ void do_brandish( CHAR_DATA * ch, char *argument )
    {
       act( "$n brandishes $p.", ch, staff, NULL, TO_ROOM );
       act( "You brandish $p.", ch, staff, NULL, TO_CHAR );
-      CREF( vch_next, CHAR_NEXTROOM );
+
       for( vch = ch->in_room->first_person; vch; vch = vch_next )
       {
          vch_next = vch->next_in_room;
@@ -2284,7 +2284,6 @@ void do_brandish( CHAR_DATA * ch, char *argument )
 
          obj_cast_spell( staff->value[3], staff->value[0], ch, vch, staff );
       }
-      CUREF( vch_next );
    }
 
    if( --staff->value[2] <= 0 )

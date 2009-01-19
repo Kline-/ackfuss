@@ -545,9 +545,11 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
       {
          OBJ_DATA *obj;
          bool found = FALSE;
+         std::list<OBJ_DATA *>::iterator li;
 
-         for( obj = first_obj; obj != NULL; obj = obj->next )
+         for( li = obj_list.begin(); li != obj_list.end(); li++ )
          {
+            obj = *li;
             if( ( ( obj->pIndexData->vnum ) == OBJ_VNUM_CORPSE_PC ) && ( !str_cmp( ch->name, obj->owner ) ) && ( !( obj->in_room == ch->in_room ) ) ) /*don't work! */
             {
                found = TRUE;

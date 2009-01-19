@@ -3922,6 +3922,8 @@ void do_owhere( CHAR_DATA * ch, char *argument )
    OBJ_DATA *in_obj;
    int obj_counter = 1;
    bool mailme = FALSE;
+   std::list<OBJ_DATA *>::iterator li;
+
    if( is_name( "mailme", argument ) )
       mailme = TRUE;
    one_argument( argument, arg );
@@ -3933,8 +3935,9 @@ void do_owhere( CHAR_DATA * ch, char *argument )
    }
    else if( !str_prefix(arg,"rare") ) /* Check for outstanding rares not held by players --Kline */
    {
-    for( obj = first_obj; obj != NULL; obj = obj->next )
+    for( li = obj_list.begin(); li != obj_list.end(); li++ )
     {
+     obj = *li;
      if( obj == auction_item )
       continue;
      if( !IS_OBJ_STAT(obj,ITEM_EXTRA_RARE) )
@@ -3966,8 +3969,9 @@ void do_owhere( CHAR_DATA * ch, char *argument )
    }
    else
    {
-      for( obj = first_obj; obj != NULL; obj = obj->next )
+      for( li = obj_list.begin(); li != obj_list.end(); li++ )
       {
+         obj = *li;
          if( !is_name( arg, obj->name ) )
             continue;
          if( obj == auction_item )
@@ -4022,6 +4026,7 @@ void do_mpcr( CHAR_DATA * ch, char *victim )
    OBJ_DATA *obj;
    bool found = FALSE;
    char arg[MAX_INPUT_LENGTH];
+   std::list<OBJ_DATA *>::iterator li;
 
    one_argument( victim, arg );
 
@@ -4031,8 +4036,9 @@ void do_mpcr( CHAR_DATA * ch, char *victim )
       return;
    }
 
-   for( obj = first_obj; obj != NULL; obj = obj->next )
+   for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
+      obj = *li;
       if( ( ( obj->pIndexData->vnum ) == OBJ_VNUM_CORPSE_PC ) && ( !str_cmp( arg, obj->owner ) ) && ( !( obj->in_room == ch->in_room ) ) )   /*don't work! */
       {
          found = TRUE;

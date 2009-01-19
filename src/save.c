@@ -1625,8 +1625,6 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                }
                else
                {
-                  LINK( obj, first_obj, last_obj, next, prev );
-
                   if( Temp_Obj )
                   {
                      int newvnum;
@@ -1972,8 +1970,6 @@ void fread_corpse( FILE * fp )
                }
                else
                {
-                  LINK( obj, first_obj, last_obj, next, prev );
-
                   if( Temp_Obj )
                   {
                      int newvnum;

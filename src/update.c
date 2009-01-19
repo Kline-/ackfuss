@@ -955,7 +955,6 @@ void clean_donate_rooms( void )
       for( room_count = 0, object = room->first_content; object; room_count++, object = object->next_in_room );
       if( room_count > 150 )
       {
-         OREF( obj_next, OBJ_NEXT );
          for( object = room->first_content; object; object = obj_next )
          {
             obj_next = object->next_in_room;
@@ -969,7 +968,6 @@ void clean_donate_rooms( void )
             if( number_range( 0, 99 ) < chance )
                extract_obj( object );
          }
-         OUREF( obj_next );
       }
    }
    if( ( room = get_room_index( ROOM_VNUM_WEAPON_DONATE ) ) != NULL )
@@ -977,7 +975,6 @@ void clean_donate_rooms( void )
       for( room_count = 0, object = room->first_content; object; room_count++, object = object->next_in_room );
       if( room_count > 150 )
       {
-         OREF( obj_next, OBJ_NEXT );
          for( object = room->first_content; object; object = obj_next )
          {
             obj_next = object->next_in_room;
@@ -990,7 +987,6 @@ void clean_donate_rooms( void )
             if( number_range( 0, 99 ) < chance )
                extract_obj( object );
          }
-         OUREF( obj_next );
       }
    }
    if( ( room = get_room_index( ROOM_VNUM_ARMOR_DONATE ) ) != NULL )
@@ -998,7 +994,6 @@ void clean_donate_rooms( void )
       for( room_count = 0, object = room->first_content; object; room_count++, object = object->next_in_room );
       if( room_count > 150 )
       {
-         OREF( obj_next, OBJ_NEXT );
          for( object = room->first_content; object; object = obj_next )
          {
             obj_next = object->next_in_room;
@@ -1011,7 +1006,6 @@ void clean_donate_rooms( void )
             if( number_range( 0, 99 ) < chance )
                extract_obj( object );
          }
-         OUREF( obj_next );
       }
    }
 
@@ -1027,7 +1021,6 @@ void clean_donate_rooms( void )
          for( room_count = 0, object = room->first_content; object; room_count++, object = object->next_in_room );
          if( room_count > 150 )
          {
-            OREF( obj_next, OBJ_NEXT );
             for( object = room->first_content; object; object = obj_next )
             {
                obj_next = object->next_in_room;
@@ -1040,7 +1033,6 @@ void clean_donate_rooms( void )
                if( number_range( 0, 99 ) < chance )
                   extract_obj( object );
             }
-            OUREF( obj_next );
          }
       }
    }
@@ -1720,8 +1712,11 @@ void check_vamp( CHAR_DATA * ch )
 void objfun_update( void )
 {
    OBJ_DATA *obj;
+   std::list<OBJ_DATA *>::iterator li;
 
-   for( obj = first_obj; obj != NULL; obj = obj->next )
+   for( li = obj_list.begin(); li != obj_list.end(); li++ )
+   {
+      obj = *li;
       if( obj->obj_fun != NULL )
       {
          if( obj->carried_by != NULL )
@@ -1734,6 +1729,7 @@ void objfun_update( void )
          }
          ( *obj->obj_fun ) ( obj, obj->carried_by );
       }
+   }
 
    return;
 }
@@ -1745,16 +1741,8 @@ void objfun_update( void )
  */
 void obj_update( void )
 {
-   OBJ_DATA *marker;
    OBJ_DATA *obj;
-
-   /*
-    * Create dummy object and add to end of list.  This object is
-    * only a marker, and will not actually be processed by this
-    * routine.
-    */
-   marker = new OBJ_DATA;
-   LINK( marker, first_obj, last_obj, next, prev );
+   std::list<OBJ_DATA *>::iterator li;
 
    /*
     * Repeatedly remove object from front of list, add to tail, and process
@@ -1762,14 +1750,12 @@ void obj_update( void )
     * objects have been processed.
     */
    disable_timer_abort = FALSE;
-   while( ( obj = first_obj ) != marker )
+   for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
-
       CHAR_DATA *rch;
       char *message;
 
-      UNLINK( obj, first_obj, last_obj, next, prev );
-      LINK( obj, first_obj, last_obj, next, prev );
+      obj = *li;
 
       if( obj == auction_item )
          continue;
@@ -1852,15 +1838,7 @@ void obj_update( void )
          }
       }
       extract_obj( obj );
-   }
-
-
-   /*
-    * All objects have been processed.  Remove the marker object and
-    * put it back on the free list.
-    */
-   UNLINK( marker, first_obj, last_obj, next, prev );
-   delete marker;
+   };
 
    disable_timer_abort = FALSE;
    return;
@@ -1908,7 +1886,7 @@ void aggr_update( void )
 
       if( ( IS_NPC( wch ) ) || wch->level >= LEVEL_IMMORTAL || wch->in_room == NULL )
          continue;
-      CREF( ch_next, CHAR_NEXTROOM );
+
       for( ch = wch->in_room->first_person; ch != NULL; ch = ch_next )
       {
          int count;
@@ -1935,7 +1913,7 @@ void aggr_update( void )
           */
          count = 0;
          victim = NULL;
-         CREF( vch_next, CHAR_NEXTROOM );
+
          for( vch = wch->in_room->first_person; vch != NULL; vch = vch_next )
          {
             vch_next = vch->next_in_room;
@@ -1950,7 +1928,7 @@ void aggr_update( void )
                count++;
             }
          }
-         CUREF( vch_next );
+
          if( victim == NULL )
          {
             /*
@@ -1974,7 +1952,6 @@ void aggr_update( void )
          else
             one_hit( ch, victim, TYPE_UNDEFINED );
       }
-      CUREF( ch_next );
    }
    return;
 }

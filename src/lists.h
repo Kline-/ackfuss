@@ -46,6 +46,7 @@ extern std::list<BAN_DATA *> ban_list;
 extern std::list<CHAR_DATA *> char_list;
 extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
 extern std::list<EXIT_DATA *> exit_list;
+extern std::list<OBJ_DATA *> obj_list;
 extern std::list<OBJ_INDEX_DATA *> obj_index_list;
 extern std::list<ROOM_INDEX_DATA *> room_index_list;
 
@@ -53,8 +54,6 @@ extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;
 extern NOTE_DATA *first_note;
 extern NOTE_DATA *last_note;
-extern OBJ_DATA *first_obj;
-extern OBJ_DATA *last_obj;
 extern SHOP_DATA *first_shop;
 extern SHOP_DATA *last_shop;
 extern CORPSE_DATA *first_corpse;

@@ -2742,9 +2742,6 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
    if( pObjIndex->value[7] > 0 )
       obj->timer = pObjIndex->value[7];
 
-
-   LINK( obj, first_obj, last_obj, next, prev );
-
    return obj;
 }
 
@@ -4040,6 +4037,7 @@ void clear_lists( void )
  for_each( char_list.begin(),       char_list.end(),       DeleteObject() );
  for_each( exdesc_list.begin(),     exdesc_list.end(),     DeleteObject() );
  for_each( exit_list.begin(),       exit_list.end(),       DeleteObject() );
+ for_each( obj_list.begin(),        obj_list.end(),        DeleteObject() );
  for_each( obj_index_list.begin(),  obj_index_list.end(),  DeleteObject() );
  for_each( room_index_list.begin(), room_index_list.end(), DeleteObject() );
 

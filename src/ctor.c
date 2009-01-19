@@ -367,8 +367,6 @@ obj_data::obj_data()
  static MONEY_TYPE *money_zero;
 
  is_free = false;
- next = NULL;
- prev = NULL;
  extra_flags.reset();
  wear_flags.reset();
  reset = NULL;
@@ -411,6 +409,8 @@ obj_data::obj_data()
  GET_FREE( money_zero, money_type_free );
  money = money_zero;
  speed = 1.00;
+
+ obj_list.push_back(this);
 }
 
 obj_index_data::obj_index_data()

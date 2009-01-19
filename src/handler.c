@@ -100,80 +100,6 @@ extern CHAR_DATA *quest_mob;
 extern CHAR_DATA *quest_target;
 extern COUNCIL_DATA super_councils[MAX_SUPER];
 
-struct obj_ref_type *obj_ref_list;
-
-void obj_reference( struct obj_ref_type *ref )
-{
-   if( ref->inuse )
-   {
-      bugf( "Reused obj_reference!" );
-      abort(  );
-   }
-
-   ref->inuse = TRUE;
-   ref->next = obj_ref_list;
-   obj_ref_list = ref;
-}
-
-void obj_unreference( OBJ_DATA ** var )
-{
-   struct obj_ref_type *p, *last;
-
-   for( p = obj_ref_list, last = NULL; p && p->var != var; last = p, p = p->next )
-      ;
-
-   if( !p )
-   {
-      bugf( "obj_unreference: var not found" );
-      return;
-   }
-
-   p->inuse = FALSE;
-
-   if( !last )
-      obj_ref_list = obj_ref_list->next;
-   else
-      last->next = p->next;
-}
-
-struct char_ref_type *char_ref_list;
-
-void char_reference( struct char_ref_type *ref )
-{
-   if( ref->inuse )
-   {
-      bugf( "Reused char_reference!" );
-      abort(  );
-   }
-
-   ref->inuse = TRUE;
-   ref->next = char_ref_list;
-   char_ref_list = ref;
-}
-
-void char_unreference( CHAR_DATA ** var )
-{
-   struct char_ref_type *p, *last;
-
-   for( p = char_ref_list, last = NULL; p && p->var != var; last = p, p = p->next )
-      ;
-
-   if( !p )
-   {
-      bugf( "char_unreference: var not found" );
-      return;
-   }
-
-   p->inuse = FALSE;
-
-   if( !last )
-      char_ref_list = char_ref_list->next;
-   else
-      last->next = p->next;
-}
-
-
-
 /*
  * Retrieve a character's trusted level for permission checking.
  */
@@ -193,7 +119,6 @@ int get_trust( CHAR_DATA * ch )
    else
       return ch->level;
 }
-
 
 /* 
  * Replacement for retrieving a character's age
@@ -1610,26 +1535,7 @@ void extract_obj( OBJ_DATA * obj )
    std::list<CHAR_DATA *>::iterator li;
    CHAR_DATA *wch;
    OBJ_DATA *obj_content;
-   struct obj_ref_type *ref;
    ROOM_INDEX_DATA *drop_room = NULL;
-   for( ref = obj_ref_list; ref; ref = ref->next )
-      if( *ref->var == obj )
-         switch ( ref->type )
-         {
-            case OBJ_NEXT:
-               *ref->var = obj->next;
-               break;
-            case OBJ_NEXTCONTENT:
-               *ref->var = obj->next_in_carry_list;
-               break;
-            case OBJ_NULL:
-               *ref->var = NULL;
-               break;
-            default:
-               bugf( "Bad obj_ref_list type %d", ref->type );
-               break;
-         }
-
 
    if( ( obj == quest_object ) && quest )
    {
@@ -1663,8 +1569,6 @@ void extract_obj( OBJ_DATA * obj )
 
    while( ( obj_content = obj->last_in_carry_list ) != NULL )
       extract_obj( obj_content );
-
-   UNLINK( obj, first_obj, last_obj, next, prev );
 
    {
       AFFECT_DATA *paf;
@@ -1713,6 +1617,7 @@ void extract_obj( OBJ_DATA * obj )
    if( obj->reset )
     obj->reset->count--;
 
+   obj_list.remove(obj);
    delete obj;
    return;
 }
@@ -1728,13 +1633,6 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    ROOM_INDEX_DATA *room;
    ROOM_AFFECT_DATA *raf;
    std::list<CHAR_DATA *>::iterator li;
-   struct char_ref_type *ref;
-
-/*
- * Updated pointer referencing, curtesy of Spectrum, from Beyond the Veil
- *
- */
-
 
    if( ch->in_room == NULL )
    {
@@ -1750,23 +1648,6 @@ void extract_char( CHAR_DATA * ch, bool fPull )
 
       return;
    }
-
-   for( ref = char_ref_list; ref; ref = ref->next )
-      if( *ref->var == ch )
-         switch ( ref->type )
-         {
-            case CHAR_NEXTROOM:
-               *ref->var = ch->next_in_room;
-               break;
-            case CHAR_NULL:
-               *ref->var = NULL;
-               break;
-            default:
-               bugf( "Bad char_ref_list type %d", ref->type );
-               break;
-         }
-
-
 
    if( ( ch == quest_mob ) || ( ch == quest_target ) )
       quest_cancel(  );
@@ -2090,9 +1971,11 @@ CHAR_DATA *get_char( CHAR_DATA * ch )
 OBJ_DATA *get_obj_type( OBJ_INDEX_DATA * pObjIndex )
 {
    OBJ_DATA *obj;
+   std::list<OBJ_DATA *>::iterator li;
 
-   for( obj = first_obj; obj != NULL; obj = obj->next )
+   for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
+      obj = *li;
       if( obj->pIndexData == pObjIndex )
          return obj;
    }
@@ -2235,14 +2118,16 @@ OBJ_DATA *get_obj_world( CHAR_DATA * ch, char *argument )
    OBJ_DATA *obj;
    int number;
    int count;
+   std::list<OBJ_DATA *>::iterator li;
 
    if( ( obj = get_obj_here( ch, argument ) ) != NULL )
       return obj;
 
    number = number_argument( argument, arg );
    count = 0;
-   for( obj = first_obj; obj != NULL; obj = obj->next )
+   for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
+      obj = *li;
       if( can_see_obj( ch, obj ) && is_name( arg, obj->name ) )
       {
          if( ++count == number )

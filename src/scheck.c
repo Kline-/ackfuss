@@ -473,9 +473,13 @@ static void walk_descriptors( void )
 static void walk_objects( void )
 {
    OBJ_DATA *o;
+   std::list<OBJ_DATA *>::iterator li;
 
-   for( o = first_obj; o; o = o->next )
+   for( li = obj_list.begin(); li != obj_list.end(); li++ )
+   {
+      o = *li;
       walk_obj_data( o );
+   }
 }
 
 static void walk_areas( void )

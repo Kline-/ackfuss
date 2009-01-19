@@ -2060,7 +2060,6 @@ void do_order( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) && ( ch->pcdata->learned[gsn_unit_tactics] > 10 ) )
       max_orders += ch->pcdata->learned[gsn_unit_tactics] / 28;
 
-   CREF( och_next, CHAR_NEXTROOM );
    for( och = ch->in_room->first_person; och != NULL; och = och_next )
    {
       och_next = och->next_in_room;
@@ -2080,7 +2079,6 @@ void do_order( CHAR_DATA * ch, char *argument )
          }
       }
    }
-   CUREF( och_next );
 
    if( found )
       send_to_char( "Ok.\r\n", ch );

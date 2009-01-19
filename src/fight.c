@@ -238,20 +238,15 @@ const float hr_damTable[121] = {
 void violence_update( void )
 {
    CHAR_DATA *ch;
-   CHAR_DATA *ch_next;
    CHAR_DATA *victim;
    CHAR_DATA *rch;
    CHAR_DATA *rch_next;
    std::list<CHAR_DATA *>::iterator li;
    bool has_cast = FALSE;
 
-
-
-   CREF( ch_next, CHAR_NEXT );
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       ch = *li;
-
 
       /*
        * For stunning during combat
@@ -497,7 +492,6 @@ void violence_update( void )
        */
       if( IS_NPC( victim ) && ( get_psuedo_level( victim ) > 15 ) )
       {
-         CREF( rch_next, CHAR_NEXTROOM );
          for( rch = ch->in_room->first_person; rch != NULL; rch = rch_next )
          {
             rch_next = rch->next_in_room;
@@ -545,10 +539,8 @@ void violence_update( void )
                }
             }
          }
-         CUREF( rch_next );
       }
    }
-   CUREF( ch_next );
    return;
 }
 
@@ -1100,7 +1092,6 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                   obj_cast_spell( skill_lookup( "Retributive strike" ), 100, elemental, NULL, explosion );
                else
                {
-                  CREF( rch_next, CHAR_NEXTROOM );
                   for( rch = ch->in_room->first_person; rch != NULL; rch = rch_next )
                   {
                      rch_next = rch->next_in_room;
@@ -1124,7 +1115,6 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                         one_hit( elemental, victim, TYPE_UNDEFINED );
                      }
                   }
-                  CUREF( rch_next );
                }
             }
       }
@@ -2187,14 +2177,14 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          corpse = create_object( get_obj_index( OBJ_VNUM_CAPTURED_SOUL ), ch->level );
          corpse->level = ch->level;
          obj_to_room( corpse, ch->in_room );
-         OREF( obj_next, OBJ_NEXTCONTENT );
+
          for( obj = ch->first_carry; obj != NULL; obj = obj_next )
          {
             obj_next = obj->next_in_carry_list;
             obj_from_char( obj );
             extract_obj( obj );
          }
-         OUREF( obj_next );
+
          act( "@@eAs $n's soul attempts to fade from the room, the @@dSoul Net@@e quickly collapses, entombing the soul into a small figurine!!", ch, NULL, NULL, TO_ROOM );
          room = ch->in_room;
          for( raf = room->first_room_affect; raf != NULL; raf = raf_next )
@@ -2302,7 +2292,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, corpse->long_descr, name );
    free_string( corpse->long_descr );
    corpse->long_descr = str_dup( buf );
-   OREF( obj_next, OBJ_NEXTCONTENT );
+
    for( obj = ch->first_carry; obj != NULL; obj = obj_next )
    {
       obj_next = obj->next_in_carry_list;
@@ -2318,7 +2308,6 @@ void make_corpse( CHAR_DATA * ch, char *argument )
       else
          obj_to_obj( obj, corpse );
    }
-   OUREF( obj_next );
 
    if( !IS_NPC( ch ) )
    {
@@ -5578,7 +5567,7 @@ void do_frenzy( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) && ch->position == POS_FIGHTING )
       ch->move -= moves;
    ch->hit -= damage;
-   CREF( vch_next, CHAR_NEXTROOM );
+
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )
    {
       vch_next = vch->next_in_room;
@@ -5598,7 +5587,6 @@ void do_frenzy( CHAR_DATA * ch, char *argument )
          }
       }
    }
-   CUREF( vch_next );
 
    return;
 }

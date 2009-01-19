@@ -837,8 +837,6 @@ class obj_data
   obj_data();
   ~obj_data();
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   OBJ_DATA *next;
-   OBJ_DATA *prev;
    OBJ_DATA *next_in_carry_list; /* carry list is the list on a char, or in a container */
    OBJ_DATA *prev_in_carry_list;
    OBJ_DATA *first_in_carry_list;
