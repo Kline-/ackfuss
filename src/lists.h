@@ -41,6 +41,7 @@
  * actual variables in lists.c
  * -- Altrag
  */
+extern std::list<AFFECT_DATA *> affect_list;
 extern std::list<AREA_DATA *> area_list;
 extern std::list<BAN_DATA *> ban_list;
 extern std::list<CHAR_DATA *> char_list;
@@ -49,10 +50,13 @@ extern std::list<EXIT_DATA *> exit_list;
 extern std::list<MOB_INDEX_DATA *> mob_index_list;
 extern std::list<OBJ_DATA *> obj_list;
 extern std::list<OBJ_INDEX_DATA *> obj_index_list;
+extern std::list<RESET_DATA *> reset_list;
 extern std::list<ROOM_INDEX_DATA *> room_index_list;
 
 extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;
+extern BUILD_DATA_LIST *first_build;
+extern BUILD_DATA_LIST *last_build;
 extern NOTE_DATA *first_note;
 extern NOTE_DATA *last_note;
 extern SHOP_DATA *first_shop;
@@ -78,6 +82,7 @@ extern NPC_GROUP_DATA *first_npc_group;
 extern NPC_GROUP_DATA *last_npc_group;
 extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
+
 extern DESCRIPTOR_DATA *desc_free;
 extern BUILD_DATA_LIST *build_free;
 extern MAGIC_SHIELD *shield_free;

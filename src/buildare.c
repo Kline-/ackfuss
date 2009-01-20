@@ -75,8 +75,6 @@ extern char *string_space;
 extern char *top_string;
 extern char str_empty[1];
 extern AREA_DATA *area_used[MAX_AREAS];
-extern int top_affect;
-extern int top_reset;
 extern int top_shop;
 extern long int nAllocString;
 extern long int sAllocString;
@@ -362,6 +360,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
     * Add room into area list. 
     */
    GET_FREE( pList, build_free );
+   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pRoomIndex;
    LINK( pList, pArea->first_area_room, pArea->last_area_room, next, prev );
 

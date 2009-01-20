@@ -1115,6 +1115,8 @@ struct build_data_list  /* Used for storing area file data. */
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    BUILD_DATA_LIST *next;
    BUILD_DATA_LIST *prev;
+   BUILD_DATA_LIST *db_next;
+   BUILD_DATA_LIST *db_prev;
    void *data;
 };
 

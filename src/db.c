@@ -190,8 +190,6 @@ ROOM_INDEX_DATA *room_load;
 MOB_INDEX_DATA *mob_load;
 OBJ_INDEX_DATA *obj_load;
 
-int top_affect;
-int top_reset;
 int top_shop;
 int fp_open;
 int fp_close;
@@ -1071,6 +1069,7 @@ void load_mobile( FILE * fp )
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pMobIndex, mob_index_hash[iHash], next );
    GET_FREE( pList, build_free );
+   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pMobIndex;
    LINK( pList, area_load->first_area_mobile, area_load->last_area_mobile, next, prev );
 
@@ -1093,6 +1092,7 @@ void load_oaffect( FILE * fp )
  }
 
  pAf = new AFFECT_DATA;
+ affect_list.push_back(pAf); //Done manually due to how the "affects list" could be shared in the ctor --Kline
 
  for( ;; )
  {
@@ -1127,7 +1127,6 @@ void load_oaffect( FILE * fp )
  }
 
  LINK( pAf, obj_load->first_apply, obj_load->last_apply, next, prev );
- top_affect++;
 
  return;
 }
@@ -1287,6 +1286,7 @@ void load_object( FILE * fp )
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pObjIndex, obj_index_hash[iHash], next );
    GET_FREE( pList, build_free );
+   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pObjIndex;
    LINK( pList, area_load->first_area_object, area_load->last_area_object, next, prev );
 
@@ -1487,8 +1487,8 @@ void load_resets( FILE * fp )
          pReset->notes = fsave_to_eol( fp );
 
          LINK( pReset, area_load->first_reset, area_load->last_reset, next, prev );
-         top_reset++;
          GET_FREE( pList, build_free );
+         LINK( pList, first_build, last_build, db_next, db_prev );
          pList->data = pReset;
          LINK( pList, pRoomIndex->first_room_reset, pRoomIndex->last_room_reset, next, prev );
 
@@ -1651,6 +1651,7 @@ void load_room( FILE * fp )
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pRoomIndex, room_index_hash[iHash], next );
    GET_FREE( pList, build_free );
+   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pRoomIndex;
    LINK( pList, area_load->first_area_room, area_load->last_area_room, next, prev );
 
@@ -1741,6 +1742,7 @@ void load_shop( FILE * fp )
    pMobIndex = get_mob_index( pShop->keeper );
    pMobIndex->pShop = pShop;
    GET_FREE( pList, build_free );
+   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pShop;
    LINK( pList, area_load->first_area_shop, area_load->last_area_shop, next, prev );
    LINK( pShop, first_shop, last_shop, next, prev );
@@ -2052,6 +2054,7 @@ void check_resets( void )
                {
                   UNLINK( guilty_reset, reset_room->first_room_reset, reset_room->last_room_reset, next, prev );
                   guilty_reset->data = NULL;
+                  UNLINK( guilty_reset, first_build, last_build, db_next, db_prev );
                   PUT_FREE( guilty_reset, build_free );
                }
             }
@@ -3248,7 +3251,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
 
    
 
-   snprintf( buf, MSL, "Affects %5d\r\n", top_affect );
+   snprintf( buf, MSL, "Affects %5d\r\n", affect_list.size() );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Areas   %5d\r\n", area_list.size() );
    send_to_char( buf, ch );
@@ -3262,7 +3265,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Objs    %5d\r\n", obj_index_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Resets  %5d\r\n", top_reset );
+   snprintf( buf, MSL, "Resets  %5d\r\n", reset_list.size() );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Rooms   %5d\r\n", room_index_list.size() );
    send_to_char( buf, ch );
@@ -4028,9 +4031,11 @@ void file_close( FILE *file )
 
 void clear_lists( void )
 {
- MONEY_TYPE *mny, *mny_next;
+ BUILD_DATA_LIST *list, *list_next;
  MAGIC_SHIELD *shield, *shield_next;
+ MONEY_TYPE *mny, *mny_next;
 
+ for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
  for_each( area_list.begin(),       area_list.end(),       DeleteObject() );
  for_each( ban_list.begin(),        ban_list.end(),        DeleteObject() );
  for_each( char_list.begin(),       char_list.end(),       DeleteObject() );
@@ -4039,18 +4044,25 @@ void clear_lists( void )
  for_each( mob_index_list.begin(),  mob_index_list.end(),  DeleteObject() );
  for_each( obj_list.begin(),        obj_list.end(),        DeleteObject() );
  for_each( obj_index_list.begin(),  obj_index_list.end(),  DeleteObject() );
+ for_each( reset_list.begin(),      reset_list.end(),      DeleteObject() );
  for_each( room_index_list.begin(), room_index_list.end(), DeleteObject() );
 
- for( mny = money_type_free; mny != NULL; mny = mny_next )
+ for( list = first_build; list != NULL; list = list_next )
  {
-  mny_next = mny->next;
-  free(mny);
+  list_next = list->db_next;
+  free(list);
  }
 
  for( shield = shield_free; shield != NULL; shield = shield_next )
  {
   shield_next = shield->next;
   free(shield);
+ }
+
+ for( mny = money_type_free; mny != NULL; mny = mny_next )
+ {
+  mny_next = mny->next;
+  free(mny);
  }
 
  free(string_space);

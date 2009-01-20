@@ -45,6 +45,7 @@
  * declarations in lists.h
  * -- Altrag
  */
+std::list<AFFECT_DATA *> affect_list;
 std::list<AREA_DATA *> area_list;
 std::list<BAN_DATA *> ban_list;
 std::list<CHAR_DATA *> char_list;
@@ -53,10 +54,13 @@ std::list<EXIT_DATA *> exit_list;
 std::list<MOB_INDEX_DATA *> mob_index_list;
 std::list<OBJ_DATA *> obj_list;
 std::list<OBJ_INDEX_DATA *> obj_index_list;
+std::list<RESET_DATA *> reset_list;
 std::list<ROOM_INDEX_DATA *> room_index_list;
 
 DESCRIPTOR_DATA *first_desc = NULL;
 DESCRIPTOR_DATA *last_desc = NULL;
+BUILD_DATA_LIST *first_build = NULL;
+BUILD_DATA_LIST *last_build = NULL;
 NOTE_DATA *first_note = NULL;
 NOTE_DATA *last_note = NULL;
 SHOP_DATA *first_shop = NULL;
@@ -85,6 +89,7 @@ NPC_GROUP_DATA *first_npc_group = NULL;
 NPC_GROUP_DATA *last_npc_group = NULL;
 FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
+
 DESCRIPTOR_DATA *desc_free = NULL;
 BUILD_DATA_LIST *build_free = NULL;
 MAGIC_SHIELD *shield_free = NULL;

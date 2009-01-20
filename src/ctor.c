@@ -40,6 +40,8 @@ affect_data::affect_data()
  next = NULL;
  prev = NULL;
  type = -1;
+
+ //affect_list.push_back(this); -- Added manually when allocing new perm affects on first boot. --Kline
 }
 
 area_data::area_data()
@@ -569,6 +571,8 @@ reset_data::reset_data()
  arg3 = 0;
  notes = &str_empty[0];
  count = 0;
+
+ reset_list.push_back(this);
 }
 
 room_affect_data::room_affect_data()
