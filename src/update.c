@@ -1757,6 +1757,8 @@ void obj_update( void )
 
       obj = *li;
 
+      monitor_chan(obj->name,MONITOR_OBJ);
+
       if( obj == auction_item )
          continue;
       if( IS_SET( obj->item_apply, ITEM_APPLY_HEATED ) && number_range( 0, 100 ) < 25 )
@@ -1838,7 +1840,7 @@ void obj_update( void )
          }
       }
       extract_obj( obj );
-   };
+   }
 
    disable_timer_abort = FALSE;
    return;

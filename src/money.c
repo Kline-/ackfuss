@@ -96,7 +96,7 @@ MONEY_TYPE *join_money( MONEY_TYPE * source, MONEY_TYPE * receiver )
    {
       receiver->cash_unit[looper] += source->cash_unit[looper];
    }
-   PUT_FREE( source, money_type_free );
+   delete source;
    return receiver;
 }
 
@@ -114,10 +114,10 @@ float money_weight( MONEY_TYPE * money )
 char *cost_to_money( int cost )
 {
    static char outbuf[MSL];
-   MONEY_TYPE *money;
+   MONEY_TYPE *money = new MONEY_TYPE;
    money = round_money( cost, TRUE );
    snprintf( outbuf, MSL, "%s", money_string( money ) );
-   PUT_FREE( money, money_type_free );
+   delete money;
    return outbuf;
 }
 
@@ -166,11 +166,10 @@ int money_to_cost( char *money_list )
 
 MONEY_TYPE *round_money( int base, bool round_up )
 {
-   MONEY_TYPE *money;
+   MONEY_TYPE *money = new MONEY_TYPE;
    int money_left = base;
    int unit_worth;
    int looper;
-   GET_FREE( money, money_type_free );
 
    switch ( round_up )
    {
@@ -216,11 +215,10 @@ MONEY_TYPE *round_money( int base, bool round_up )
 
 MONEY_TYPE *round_money_off( int base, short accuracy )
 {
-   MONEY_TYPE *money;
+   MONEY_TYPE *money = new MONEY_TYPE;
    int money_left = base;
    int unit_worth;
    int looper;
-   GET_FREE( money, money_type_free );
 
    for( looper = MAX_CURRENCY - 1; ( looper >= 0 ) && ( accuracy >= 0 ); looper-- )
    {
@@ -308,18 +306,11 @@ char *unit_string( MONEY_TYPE * money )
 
 bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
 {
-   MONEY_TYPE *transfer;
-   short looper;
+   MONEY_TYPE *transfer = new MONEY_TYPE;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
 
-   GET_FREE( transfer, money_type_free );
-
-   for( looper = 0; looper < MAX_CURRENCY; looper++ )
-   {
-      transfer->cash_unit[looper] = 0;
-   }
    for( ;; )
    {
       short mn;
@@ -362,18 +353,11 @@ bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
 
 bool withdraw_money( CHAR_DATA * ch, char *argument )
 {
-   MONEY_TYPE *transfer;
-   short looper;
+   MONEY_TYPE *transfer = new MONEY_TYPE;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
 
-   GET_FREE( transfer, money_type_free );
-
-   for( looper = 0; looper < MAX_CURRENCY; looper++ )
-   {
-      transfer->cash_unit[looper] = 0;
-   }
    for( ;; )
    {
       short mn;
@@ -414,18 +398,11 @@ bool withdraw_money( CHAR_DATA * ch, char *argument )
 
 void deposit_money( CHAR_DATA * ch, char *argument )
 {
-   MONEY_TYPE *transfer;
-   short looper;
+   MONEY_TYPE *transfer = new MONEY_TYPE;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
 
-   GET_FREE( transfer, money_type_free );
-
-   for( looper = 0; looper < MAX_CURRENCY; looper++ )
-   {
-      transfer->cash_unit[looper] = 0;
-   }
    for( ;; )
    {
       short mn;
@@ -459,20 +436,13 @@ void deposit_money( CHAR_DATA * ch, char *argument )
 
 int exchange_money( CHAR_DATA * ch, char *argument )
 {
-   MONEY_TYPE *transfer;
-   short looper;
+   MONEY_TYPE *transfer = new MONEY_TYPE;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
    int base_val;
    float taxed = 0;
 
-   GET_FREE( transfer, money_type_free );
-
-   for( looper = 0; looper < MAX_CURRENCY; looper++ )
-   {
-      transfer->cash_unit[looper] = 0;
-   }
    for( ;; )
    {
       short mn;
@@ -503,7 +473,7 @@ int exchange_money( CHAR_DATA * ch, char *argument )
    base_val = money_value( transfer );
    taxed = EXCHANGE_COST * base_val;
    base_val -= (int)taxed;
-   PUT_FREE( transfer, money_type_free );
+   delete transfer;
    transfer = round_money( base_val, TRUE );
    ch->carry_weight += money_weight( transfer );
    join_money( transfer, ch->money );
@@ -529,8 +499,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       char m_name[MSL];
       char m_number[MSL];
       short mn;
-      short cnt;
-      MONEY_TYPE *transfer;
+      MONEY_TYPE *transfer = new MONEY_TYPE;
       if( get_trust( ch ) < 84 )
       {
          send_to_char( "Huh?\r\n", ch );
@@ -545,9 +514,6 @@ void do_mgive( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      GET_FREE( transfer, money_type_free );
-      for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-         transfer->cash_unit[cnt] = 0;
       transfer->cash_unit[mn] += ( is_number( m_number ) ? atoi( m_number ) : 10 );
       victim->carry_weight += money_weight( transfer );
       join_money( transfer, victim->money );
@@ -564,7 +530,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       }
       m_val = money_value( victim->money );
       victim->carry_weight -= money_weight( victim->money );
-      PUT_FREE( victim->money, money_type_free );
+      delete victim->money;
       victim->money = round_money( m_val, TRUE );
       victim->carry_weight += money_weight( victim->money );
       send_to_char( "Done.\r\n", ch );
@@ -575,8 +541,7 @@ void do_mgive( CHAR_DATA * ch, char *argument )
       char m_name[MSL];
       char m_number[MSL];
       short mn;
-      short cnt;
-      MONEY_TYPE *transfer;
+      MONEY_TYPE *transfer = new MONEY_TYPE;
       if( get_trust( ch ) < 84 )
       {
          send_to_char( "Huh?\r\n", ch );
@@ -591,9 +556,6 @@ void do_mgive( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      GET_FREE( transfer, money_type_free );
-      for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-         transfer->cash_unit[cnt] = 0;
       transfer->cash_unit[mn] -= ( is_number( m_number ) ? atoi( m_number ) : 10 );
       victim->carry_weight -= money_weight( transfer );
       join_money( transfer, victim->money );
@@ -610,18 +572,11 @@ void do_mgive( CHAR_DATA * ch, char *argument )
 
 void drop_money( CHAR_DATA * ch, char *argument )
 {
-   MONEY_TYPE *transfer;
-   short looper;
+   MONEY_TYPE *transfer = new MONEY_TYPE;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
 
-   GET_FREE( transfer, money_type_free );
-
-   for( looper = 0; looper < MAX_CURRENCY; looper++ )
-   {
-      transfer->cash_unit[looper] = 0;
-   }
    for( ;; )
    {
       short mn;
@@ -656,19 +611,12 @@ void drop_money( CHAR_DATA * ch, char *argument )
 int money_to_value( CHAR_DATA * ch, char *argument )
 {
 /* if successful, takes money from player */
-   MONEY_TYPE *transfer;
-   short looper;
+   MONEY_TYPE *transfer = new MONEY_TYPE;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
    int value = 0;
 
-   GET_FREE( transfer, money_type_free );
-
-   for( looper = 0; looper < MAX_CURRENCY; looper++ )
-   {
-      transfer->cash_unit[looper] = 0;
-   }
    for( ;; )
    {
       short mn;
@@ -697,20 +645,18 @@ int money_to_value( CHAR_DATA * ch, char *argument )
    }
    ch->carry_weight -= money_weight( transfer );
    value = money_value( transfer );
-   PUT_FREE( transfer, money_type_free );
+   delete transfer;
    return value;
 
 }
 
 bool get_money_room( CHAR_DATA * ch, char *argument )
 {
-   MONEY_TYPE *transfer;
+   MONEY_TYPE *transfer = new MONEY_TYPE;
    short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
-
-   GET_FREE( transfer, money_type_free );
 
    if( !str_cmp( "all", argument ) )
    {
@@ -771,13 +717,11 @@ bool get_money_room( CHAR_DATA * ch, char *argument )
 
 bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
 {
-   MONEY_TYPE *transfer;
+   MONEY_TYPE *transfer = new MONEY_TYPE;
    short looper;
    char m_number[MSL];
    char m_name[MSL];
    char outbuf[MSL];
-
-   GET_FREE( transfer, money_type_free );
 
    if( !str_cmp( "all", argument ) )
    {
@@ -915,7 +859,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
          ex_cost = round_money( taxes, TRUE );
          snprintf( buf, MSL, "You exchange %s. You were charged %s for the transaction.\r\n", argument, money_string( ex_cost ) );
          send_to_char( buf, ch );
-         PUT_FREE( ex_cost, money_type_free );
+         delete ex_cost;
       }
 
       return;
@@ -969,13 +913,12 @@ char *take_best_coins( MONEY_TYPE * money, int cost )
    int unit_level, cnt, can_take_this, change;
    char takecatbuf[MSL], debug_moneybuf[MSL], takebuf[MSL];
    static char returnbuf[MSL];
-   MONEY_TYPE *transaction;
+   MONEY_TYPE *transaction = new MONEY_TYPE;
    MONEY_TYPE *debug_money;
 
    unit_level = 0;   /* start at smallest currency unit */
    change = 0;
 
-   GET_FREE( transaction, money_type_free );
    for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
       transaction->cash_unit[cnt] = money->cash_unit[cnt];
    takebuf[0] = '\0';
@@ -1011,8 +954,8 @@ char *take_best_coins( MONEY_TYPE * money, int cost )
    snprintf( log_buf, (2 * MIL), "Buy: cost: %d ( %s )\r\n, money has %s\r\n, wants to take %s\r\n, change %d.",
             cost, debug_moneybuf, money_string( money ), takebuf, change );
    monitor_chan( log_buf, MONITOR_DEBUG );
-   PUT_FREE( transaction, money_type_free );
-   PUT_FREE( debug_money, money_type_free );
+   delete transaction;
+   delete debug_money;
    snprintf( returnbuf, MSL, "%d %s", change, takebuf );
    return returnbuf;
 }

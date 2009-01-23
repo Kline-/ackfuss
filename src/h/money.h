@@ -79,12 +79,12 @@ struct currency_type
    int exchange_val; /* this is in base units, your lowest money form */
 };
 
-struct money_type
+class money_type
 {
-   bool is_free;
-   MONEY_TYPE *next;
-   MONEY_TYPE *prev;
-   int cash_unit[MAX_CURRENCY];
+ public:
+  money_type();
+  ~money_type();
+  int cash_unit[MAX_CURRENCY];
 };
 
 extern const struct currency_type currency_table[MAX_CURRENCY];

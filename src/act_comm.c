@@ -102,6 +102,7 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
    char *to_list;
    char to_new[MAX_INPUT_LENGTH];
    char to_one[MAX_INPUT_LENGTH];
+   std::list<NOTE_DATA *>::iterator li;
 
    /*
     * Build a new to_list.
@@ -134,8 +135,7 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
    /*
     * Remove note from linked list.
     */
-   UNLINK( pnote, first_note, last_note, next, prev );
-
+   note_list.remove(pnote);
    delete pnote;
 
    /*
@@ -147,8 +147,9 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
    }
    else
    {
-      for( pnote = first_note; pnote; pnote = pnote->next )
+      for( li = note_list.begin(); li != note_list.end(); li++ )
       {
+         pnote = *li;
          fprintf( fp, "Sender  %s~\n", pnote->sender );
          fprintf( fp, "Date    %s~\n", pnote->date );
          fprintf( fp, "Stamp   %ld\n", pnote->date_stamp );
@@ -167,6 +168,7 @@ void do_note( CHAR_DATA * ch, char *argument )
 {
    CHAR_DATA *postie;
    NOTE_DATA *pnote;
+   std::list<NOTE_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH * 7];
    char arg[MAX_INPUT_LENGTH];
@@ -203,8 +205,9 @@ void do_note( CHAR_DATA * ch, char *argument )
    {
       vnum = 0;
       buf1[0] = '\0';
-      for( pnote = first_note; pnote; pnote = pnote->next )
+      for( li = note_list.begin(); li != note_list.end(); li++ )
       {
+         pnote = *li;
          if( is_note_to( ch, pnote ) )
          {
             snprintf( buf, MSL, "[%3d%s] %s: %s\r\n",
@@ -243,8 +246,9 @@ void do_note( CHAR_DATA * ch, char *argument )
       {
          vnum = 0;
          buf1[0] = '\0';
-         for( pnote = first_note; pnote; pnote = pnote->next )
+         for( li = note_list.begin(); li != note_list.end(); li++ )
          {
+            pnote = *li;
             if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && ch->last_note < pnote->date_stamp )
             {
                snprintf( buf, MSL, "The letter is postmarked %d:%s\r\n", vnum, pnote->date );
@@ -282,8 +286,9 @@ void do_note( CHAR_DATA * ch, char *argument )
 
       vnum = 0;
       buf1[0] = '\0';
-      for( pnote = first_note; pnote; pnote = pnote->next )
+      for( li = note_list.begin(); li != note_list.end(); li++ )
       {
+         pnote = *li;
          if( is_note_to( ch, pnote ) && ( vnum++ == anum || fAll ) )
          {
             snprintf( buf, MSL, "The letter is postmarked %d:%s\r\n", vnum, pnote->date );
@@ -413,14 +418,12 @@ void do_note( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      ch->pnote->next = NULL;
       strtime = ctime( &current_time );
       strtime[strlen( strtime ) - 1] = '\0';
       free_string( ch->pnote->date );
       ch->pnote->date = str_dup( strtime );
       ch->pnote->date_stamp = current_time;
 
-      LINK( ch->pnote, first_note, last_note, next, prev );
       pnote = ch->pnote;
       ch->pnote = NULL;
 
@@ -453,8 +456,9 @@ void do_note( CHAR_DATA * ch, char *argument )
 
       anum = atoi( argument );
       vnum = 0;
-      for( pnote = first_note; pnote; pnote = pnote->next )
+      for( li = note_list.begin(); li != note_list.end(); li++ )
       {
+         pnote = *li;
          if( is_note_to( ch, pnote ) && vnum++ == anum )
          {
             note_remove( ch, pnote );

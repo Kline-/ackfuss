@@ -47,20 +47,19 @@ extern std::list<BAN_DATA *> ban_list;
 extern std::list<CHAR_DATA *> char_list;
 extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
 extern std::list<EXIT_DATA *> exit_list;
+extern std::list<FILE *> file_list;
 extern std::list<MOB_INDEX_DATA *> mob_index_list;
+extern std::list<NOTE_DATA *> note_list;
 extern std::list<OBJ_DATA *> obj_list;
 extern std::list<OBJ_INDEX_DATA *> obj_index_list;
 extern std::list<RESET_DATA *> reset_list;
 extern std::list<ROOM_INDEX_DATA *> room_index_list;
+extern std::list<SHOP_DATA *> shop_list;
 
 extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;
 extern BUILD_DATA_LIST *first_build;
 extern BUILD_DATA_LIST *last_build;
-extern NOTE_DATA *first_note;
-extern NOTE_DATA *last_note;
-extern SHOP_DATA *first_shop;
-extern SHOP_DATA *last_shop;
 extern CORPSE_DATA *first_corpse;
 extern CORPSE_DATA *last_corpse;
 extern MARK_LIST_MEMBER *first_mark_list;
@@ -85,7 +84,6 @@ extern FIGHT_DATA *last_fight;
 
 extern DESCRIPTOR_DATA *desc_free;
 extern BUILD_DATA_LIST *build_free;
-extern MAGIC_SHIELD *shield_free;
 extern MEMBER_DATA *member_free;
 extern CORPSE_DATA *corpse_free;
 extern MARK_DATA *mark_free;
@@ -99,7 +97,6 @@ extern QUEUED_INTERACT_LIST *queued_interact_free;
 extern INFLUENCE_LIST *influence_list_free;
 extern RULER_LIST *ruler_list_free;
 extern DL_LIST *dl_list_free;
-extern MONEY_TYPE *money_type_free;
 extern BOARD_DATA *board_free;
 
 extern void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat );
@@ -116,10 +113,8 @@ extern void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat );
 extern void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat );
 extern void ( *dl_list_free_destructor ) ( DL_LIST * dldat );
 extern void ( *board_free_destructor ) ( BOARD_DATA * bdat );
-extern void ( *money_type_free_destructor ) ( MONEY_TYPE * money );
 
 void mark_free_destructor( MARK_DATA * mdat );
-void shield_free_destructor( MAGIC_SHIELD * msdat );
 void ruler_data_free_destructor( RULER_DATA * rdat );
 
 extern int free_get;

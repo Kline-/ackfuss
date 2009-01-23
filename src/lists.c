@@ -51,20 +51,19 @@ std::list<BAN_DATA *> ban_list;
 std::list<CHAR_DATA *> char_list;
 std::list<EXTRA_DESCR_DATA *> exdesc_list;
 std::list<EXIT_DATA *> exit_list;
+std::list<FILE *> file_list;
 std::list<MOB_INDEX_DATA *> mob_index_list;
+std::list<NOTE_DATA *> note_list;
 std::list<OBJ_DATA *> obj_list;
 std::list<OBJ_INDEX_DATA *> obj_index_list;
 std::list<RESET_DATA *> reset_list;
 std::list<ROOM_INDEX_DATA *> room_index_list;
+std::list<SHOP_DATA *> shop_list;
 
 DESCRIPTOR_DATA *first_desc = NULL;
 DESCRIPTOR_DATA *last_desc = NULL;
 BUILD_DATA_LIST *first_build = NULL;
 BUILD_DATA_LIST *last_build = NULL;
-NOTE_DATA *first_note = NULL;
-NOTE_DATA *last_note = NULL;
-SHOP_DATA *first_shop = NULL;
-SHOP_DATA *last_shop = NULL;
 CORPSE_DATA *first_corpse = NULL;
 CORPSE_DATA *last_corpse = NULL;
 MARK_DATA *first_mark = NULL;
@@ -92,7 +91,6 @@ FIGHT_DATA *last_fight = NULL;
 
 DESCRIPTOR_DATA *desc_free = NULL;
 BUILD_DATA_LIST *build_free = NULL;
-MAGIC_SHIELD *shield_free = NULL;
 MEMBER_DATA *member_free = NULL;
 CORPSE_DATA *corpse_free = NULL;
 MARK_DATA *mark_free = NULL;
@@ -106,7 +104,6 @@ QUEUED_INTERACT_LIST *queued_interact_free = NULL;
 INFLUENCE_LIST *influence_list_free = NULL;
 RULER_LIST *ruler_list_free = NULL;
 DL_LIST *dl_list_free = NULL;
-MONEY_TYPE *money_type_free = NULL;
 BOARD_DATA *board_free = NULL;
 
 void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat ) = NULL;
@@ -123,22 +120,11 @@ void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat ) = NULL;
 void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat ) = NULL;
 void ( *dl_list_free_destructor ) ( DL_LIST * dldat ) = NULL;
 void ( *board_free_destructor ) ( BOARD_DATA * bdat ) = NULL;
-void ( *money_type_free_destructor ) ( MONEY_TYPE * money ) = NULL;
 
 void mark_free_destructor( MARK_DATA * mdat )
 {
    free_string( mdat->author );
    free_string( mdat->message );
-}
-
-void shield_free_destructor( MAGIC_SHIELD * msdat )
-{
-   free_string( msdat->absorb_message_self );
-   free_string( msdat->absorb_message_room );
-   free_string( msdat->absorb_message_victim );
-   free_string( msdat->name );
-   free_string( msdat->wearoff_room );
-   free_string( msdat->wearoff_self );
 }
 
 void ruler_data_free_destructor( RULER_DATA * rdat )

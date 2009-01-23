@@ -122,7 +122,7 @@ char_data::char_data()
  alignment = 0;
  armor = 100;
  balance = 0;
- bank_money = NULL;
+ bank_money = new MONEY_TYPE;
  build_vnum = 0;
  carry_number = 0;
  carry_weight = 0;
@@ -178,7 +178,7 @@ char_data::char_data()
  max_hit = 50;
  max_mana = 50;
  max_move = 50;
- money = NULL;
+ money = new MONEY_TYPE;
  move = 50;
  name = &str_empty[0];
  next_in_room = NULL;
@@ -260,12 +260,36 @@ fight_data::fight_data()
  prev = NULL;
 }
 
+generic_list::generic_list()
+{
+ data = NULL;
+}
+
 hash_entry_tp::hash_entry_tp()
 {
  is_free = false;
  next = NULL;
  reference = NULL;
  key = 0;
+}
+
+magic_shield::magic_shield()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ type = 0;
+ harmful = false;
+ attack_dam = 0;
+ percent = 0;
+ hits = 0;
+ sn = 0;
+ absorb_message_room = &str_empty[0];
+ absorb_message_victim = &str_empty[0];
+ absorb_message_self = &str_empty[0];
+ name = &str_empty[0];
+ wearoff_room = &str_empty[0];
+ wearoff_self = &str_empty[0];
 }
 
 message_data::message_data()
@@ -323,17 +347,22 @@ mob_index_data::mob_index_data()
  mob_index_list.push_back(this);
 }
 
+money_type::money_type()
+{
+ for( short i = 0; i < MAX_CURRENCY; i++ )
+  cash_unit[i] = 0;
+}
+
 note_data::note_data()
 {
  date = &str_empty[0];
  date_stamp = 0;
- is_free = false;
- next = NULL;
- prev = NULL;
  sender = &str_empty[0];
  subject = &str_empty[0];
  text = &str_empty[0];
  to_list = &str_empty[0];
+
+ note_list.push_back(this);
 }
 
 npc_data::npc_data()
@@ -368,8 +397,6 @@ npc_group_data::npc_group_data()
 
 obj_data::obj_data()
 {
- static MONEY_TYPE *money_zero;
-
  is_free = false;
  extra_flags.reset();
  wear_flags.reset();
@@ -410,8 +437,7 @@ obj_data::obj_data()
   value[i] = 0;
  durability = 0;
  max_durability = 0;
- GET_FREE( money_zero, money_type_free );
- money = money_zero;
+ money = new MONEY_TYPE;
  speed = 1.00;
 
  obj_list.push_back(this);
@@ -592,8 +618,6 @@ room_affect_data::room_affect_data()
 
 room_index_data::room_index_data()
 {
- static MONEY_TYPE *room_treasure;
-
  affected_by = 0;
  area = NULL;
  description = &str_empty[0];
@@ -617,8 +641,7 @@ room_index_data::room_index_data()
  next = NULL;
  room_flags.reset();
  sector_type = SECT_INSIDE;
- GET_FREE( room_treasure, money_type_free );
- treasure = room_treasure;
+ treasure = new MONEY_TYPE;
  vnum = 0;
 
  room_index_list.push_back(this);
@@ -629,13 +652,12 @@ shop_data::shop_data()
  for( short i = 0; i < MAX_TRADE; i++  )
   buy_type[i] = 0;
  close_hour = 0;
- is_free = false;
  keeper = 0;
- next = NULL;
  open_hour = 0;
- prev = NULL;
  profit_buy = 1;
  profit_sell = 1;
+
+ shop_list.push_back(this);
 }
 
 super_data::super_data()

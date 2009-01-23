@@ -794,20 +794,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    else
       ch->npc = false;
 
-   {
-      MONEY_TYPE *money;
-
-      GET_FREE( money, money_type_free );
-      for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-         money->cash_unit[cnt] = 0;
-      ch->money = money;
-
-      GET_FREE( money, money_type_free );
-      for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-         money->cash_unit[cnt] = 0;
-      ch->bank_money = money;
-   }
-
    found = FALSE;
 
    /*
@@ -1062,10 +1048,9 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             }
             if( !str_cmp( word, "BankMoney" ) )
             {
-               MONEY_TYPE *transfer;
+               MONEY_TYPE *transfer = new MONEY_TYPE;
                int num_coins;
 
-               GET_FREE( transfer, money_type_free );
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
@@ -1245,10 +1230,9 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             }
             if( !str_cmp( word, "Money" ) )
             {
-               MONEY_TYPE *transfer;
+               MONEY_TYPE *transfer = new MONEY_TYPE;
                int num_coins;
 
-               GET_FREE( transfer, money_type_free );
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
@@ -1521,15 +1505,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
    int Temp_Obj = 0, OldVnum = 0;
 
    obj = new OBJ_DATA;
-   {
-      MONEY_TYPE *money;
-      short cnt;
 
-      GET_FREE( money, money_type_free );
-      for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-         money->cash_unit[cnt] = 0;
-      obj->money = money;
-   }
    fNest = FALSE;
    fVnum = TRUE;
    iNest = 0;
@@ -1701,10 +1677,9 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
          case 'M':
             if( !str_cmp( word, "Money" ) )
             {
-               MONEY_TYPE *transfer;
+               MONEY_TYPE *transfer = new MONEY_TYPE;
                int num_coins, cnt;
 
-               GET_FREE( transfer, money_type_free );
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
@@ -1875,15 +1850,7 @@ void fread_corpse( FILE * fp )
    int this_room_vnum;
 
    obj = new OBJ_DATA;
-   {
-      MONEY_TYPE *money;
-      short cnt;
 
-      GET_FREE( money, money_type_free );
-      for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-         money->cash_unit[cnt] = 0;
-      obj->money = money;
-   }
    fNest = FALSE;
    fVnum = TRUE;
    iNest = 0;
@@ -2043,10 +2010,9 @@ void fread_corpse( FILE * fp )
          case 'M':
             if( !str_cmp( word, "Money" ) )
             {
-               MONEY_TYPE *transfer;
+               MONEY_TYPE *transfer = new MONEY_TYPE;
                int num_coins, cnt;
 
-               GET_FREE( transfer, money_type_free );
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );

@@ -626,7 +626,8 @@ void new_descriptor( int control )
     * BAN_DATA *pban;   
     */
    struct sockaddr_in sock;
-   size_t desc, size;
+   size_t desc;
+   socklen_t size;
 
    size = sizeof( sock );
    getsockname( control, ( struct sockaddr * )&sock, &size );
@@ -2695,6 +2696,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
    if( d->connected == CON_READ_MOTD )
    {
+      std::list<NOTE_DATA *>::iterator li;
       /*
        * Prime level idea dropped.  Give ch 1 level in their best class 
        */
@@ -2830,9 +2832,12 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
        */
       notes = 0;
 
-      for( pnote = first_note; pnote; pnote = pnote->next )
+      for( li = note_list.begin(); li != note_list.end(); li++ )
+      {
+         pnote = *li;
          if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && pnote->date_stamp > ch->last_note )
             notes++;
+      }
 
       if( notes == 1 )
          send_to_char( "\r\nYou have one new letter waiting.\r\n", ch );

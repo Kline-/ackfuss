@@ -176,6 +176,18 @@ static void walk_ngroups( void )
    }
 }
 
+static void walk_note_data( NOTE_DATA * note )
+{
+   if( !note )
+      return;
+
+   touch( note->sender );
+   touch( note->date );
+   touch( note->to_list );
+   touch( note->subject );
+   touch( note->text );
+}
+
 static void walk_npcdata( NPC_DATA * n )
 {
    if( !n )
@@ -234,17 +246,6 @@ static void walk_shield_data( MAGIC_SHIELD * shield )
 
 }
 
-static void walk_note_data( NOTE_DATA * note )
-{
-   if( !note )
-      return;
-
-   touch( note->sender );
-   touch( note->date );
-   touch( note->to_list );
-   touch( note->subject );
-   touch( note->text );
-}
 static void walk_brand_data( BRAND_DATA * brand )
 {
    if( !brand )
@@ -273,18 +274,11 @@ static void walk_shieldlist( MAGIC_SHIELD * shield )
       walk_shield_data( shield );
 }
 
-void walk_notelist( NOTE_DATA * pnote )
-{
-   for( ; pnote; pnote = pnote->next )
-      walk_note_data( pnote );
-}
-
 static void walk_char_data( CHAR_DATA * ch )
 {
    if( !ch )
       return;
 
-   walk_notelist( ch->pnote );
    walk_npcdata( ch->npcdata );
    walk_pcdata( ch->pcdata );
    walk_shieldlist( ch->first_shield );
@@ -536,7 +530,14 @@ static void walk_room_indexes( void )
 
 static void walk_notes( void )
 {
-   walk_notelist( first_note );
+ NOTE_DATA *n;
+ std::list<NOTE_DATA *>::iterator li;
+
+ for( li = note_list.begin(); li != note_list.end(); li++ )
+ {
+   n = *li;
+   walk_note_data( n );
+ }
 }
 
 static void walk_bans( void )

@@ -598,6 +598,7 @@ void r_affect_remove( ROOM_INDEX_DATA * room, ROOM_AFFECT_DATA * raf )
    REMOVE_BIT( room->affected_by, raf->bitvector );
 
    UNLINK( raf, room->first_room_affect, room->last_room_affect, next, prev );
+
    delete raf;
    return;
 }
@@ -684,7 +685,7 @@ void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
          act( buf2, ch, NULL, NULL, TO_CHAR );
 
          UNLINK( this_shield, ch->first_shield, ch->last_shield, next, prev );
-         PUT_FREE( this_shield, shield_free );
+         delete this_shield;
       }
    }
 
@@ -1757,11 +1758,9 @@ void extract_char( CHAR_DATA * ch, bool fPull )
       {
          this_shield_next = this_shield->next;
          UNLINK( this_shield, ch->first_shield, ch->last_shield, next, prev );
-         PUT_FREE( this_shield, shield_free );
+         delete this_shield;
       }
    }
-   PUT_FREE( ch->money, money_type_free );
-   PUT_FREE( ch->bank_money, money_type_free );
    if( ch->act.test(ACT_COUNCIL) )
    {
       short this_council;
@@ -2701,7 +2700,7 @@ void remove_shield( CHAR_DATA * ch, MAGIC_SHIELD * shield )
    }
 
    UNLINK( shield, ch->first_shield, ch->last_shield, next, prev );
-   PUT_FREE( shield, shield_free );
+   delete shield;
 
    return;
 }

@@ -5128,10 +5128,10 @@ bool spell_fireshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    af.bitvector = 0;
    affect_to_char( ch, &af );
 
-   GET_FREE( shield, shield_free );
+   shield = new MAGIC_SHIELD;
    shield->name = str_dup( "@@eFIRE@@N" );
    shield->type = FLAME_SHIELD;
-   shield->harmfull = TRUE;
+   shield->harmful = TRUE;
    shield->attack_dam = number_range( ( level * 3 ), ( level * 5 ) );
    shield->percent = 10 + ( get_psuedo_level( ch ) / 10 );
    shield->hits = 5000 + ( get_psuedo_level( ch ) * 10 );
@@ -5182,10 +5182,10 @@ bool spell_iceshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    af.bitvector = 0;
    affect_to_char( ch, &af );
 
-   GET_FREE( shield, shield_free );
+   shield = new MAGIC_SHIELD;
    shield->name = str_dup( "@@aICE@@N" );
    shield->type = ICE_SHIELD;
-   shield->harmfull = FALSE;
+   shield->harmful = FALSE;
    shield->attack_dam = 0;
    shield->percent = 50 + ( get_psuedo_level( ch ) / 6 );
    shield->hits = 15000 + ( get_psuedo_level( ch ) * 50 );
@@ -5236,10 +5236,10 @@ bool spell_shockshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    af.bitvector = 0;
    affect_to_char( ch, &af );
 
-   GET_FREE( shield, shield_free );
+   shield = new MAGIC_SHIELD;
    shield->name = str_dup( "@@lSHOCK@@N" );
    shield->type = SHOCK_SHIELD;
-   shield->harmfull = TRUE;
+   shield->harmful = TRUE;
    shield->attack_dam = number_range( ( level * 2 ), ( level * 4 ) );
    shield->percent = 25 + get_psuedo_level( ch ) / 9;
    shield->hits = 7000 + get_psuedo_level( ch ) * 20;
@@ -5290,10 +5290,10 @@ bool spell_shadowshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    af.bitvector = 0;
    affect_to_char( ch, &af );
 
-   GET_FREE( shield, shield_free );
+   shield = new MAGIC_SHIELD;
    shield->name = str_dup( "@@dSHADOW@@N" );
    shield->type = FLAME_SHIELD;
-   shield->harmfull = TRUE;
+   shield->harmful = TRUE;
    shield->attack_dam = number_range( (int)( level * 2 ), (int)( level * 4.5 ) );
    shield->percent = 20;
    shield->hits = 3000;
@@ -5344,10 +5344,10 @@ bool spell_thoughtshield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    af.bitvector = 0;
    affect_to_char( ch, &af );
 
-   GET_FREE( shield, shield_free );
+   shield = new MAGIC_SHIELD;
    shield->name = str_dup( "@@mTHOUGHT@@N" );
    shield->type = FLAME_SHIELD;
-   shield->harmfull = TRUE;
+   shield->harmful = TRUE;
    shield->attack_dam = number_range( (int)( level * 2 ), (int)( level * 4.5 ) );
    shield->percent = 20;
    shield->hits = 3000;

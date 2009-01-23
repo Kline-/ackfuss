@@ -2953,7 +2953,7 @@ void do_list( CHAR_DATA * ch, char *argument )
             snprintf( costbuf, MSL, "%s", money_string( rounded_cost ) );
             snprintf( buf, MSL, "[ @@W%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \r\n", pet->level, ccode_len( pet->npcdata->short_descr, 30 ),
                      capitalize( pet->npcdata->short_descr ), ccode_len( costbuf, 35 ), costbuf );
-            PUT_FREE( rounded_cost, money_type_free );
+            delete rounded_cost;
             strncat( buf1, buf, MSL );
             if( stopcounter > 45 )
             {
@@ -2991,7 +2991,7 @@ void do_list( CHAR_DATA * ch, char *argument )
             snprintf( buf, MSL, "@@g[%s%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \r\n", ( IS_OBJ_STAT(obj,ITEM_EXTRA_REMORT) ? "@@m" : "@@a" ),
                      obj->level, ccode_len( obj->short_descr, 30 ), capitalize( obj->short_descr ), ccode_len( costbuf, 30 ),
                      costbuf );
-            PUT_FREE( rounded_cost, money_type_free );
+            delete rounded_cost;
             strncat( buf1, buf, MSL );
             if( stopcounter > 45 )
             {
@@ -3091,7 +3091,7 @@ void do_sell( CHAR_DATA * ch, char *argument )
       return;
    }
    cur_money -= cost;
-   PUT_FREE( keeper->money, money_type_free );
+   delete keeper->money;
    keeper->money = round_money( cur_money, TRUE );
    transfer = round_money( cost, TRUE );
    snprintf( buf, MSL, "You sell $p for %s.", money_string( transfer ) );
@@ -3181,7 +3181,7 @@ void do_value( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "$n tells you 'I'll give you %s for $p'.", money_string( moneycost ) );
    act( buf, keeper, obj, ch, TO_VICT );
    ch->reply = keeper;
-   PUT_FREE( moneycost, money_type_free );
+   delete moneycost;
    return;
 }
 

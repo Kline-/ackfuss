@@ -190,7 +190,6 @@ ROOM_INDEX_DATA *room_load;
 MOB_INDEX_DATA *mob_load;
 OBJ_INDEX_DATA *obj_load;
 
-int top_shop;
 int fp_open;
 int fp_close;
 
@@ -1069,7 +1068,6 @@ void load_mobile( FILE * fp )
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pMobIndex, mob_index_hash[iHash], next );
    GET_FREE( pList, build_free );
-   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pMobIndex;
    LINK( pList, area_load->first_area_mobile, area_load->last_area_mobile, next, prev );
 
@@ -1286,7 +1284,6 @@ void load_object( FILE * fp )
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pObjIndex, obj_index_hash[iHash], next );
    GET_FREE( pList, build_free );
-   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pObjIndex;
    LINK( pList, area_load->first_area_object, area_load->last_area_object, next, prev );
 
@@ -1488,7 +1485,6 @@ void load_resets( FILE * fp )
 
          LINK( pReset, area_load->first_reset, area_load->last_reset, next, prev );
          GET_FREE( pList, build_free );
-         LINK( pList, first_build, last_build, db_next, db_prev );
          pList->data = pReset;
          LINK( pList, pRoomIndex->first_room_reset, pRoomIndex->last_room_reset, next, prev );
 
@@ -1651,7 +1647,6 @@ void load_room( FILE * fp )
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pRoomIndex, room_index_hash[iHash], next );
    GET_FREE( pList, build_free );
-   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pRoomIndex;
    LINK( pList, area_load->first_area_room, area_load->last_area_room, next, prev );
 
@@ -1742,12 +1737,8 @@ void load_shop( FILE * fp )
    pMobIndex = get_mob_index( pShop->keeper );
    pMobIndex->pShop = pShop;
    GET_FREE( pList, build_free );
-   LINK( pList, first_build, last_build, db_next, db_prev );
    pList->data = pShop;
    LINK( pList, area_load->first_area_shop, area_load->last_area_shop, next, prev );
-   LINK( pShop, first_shop, last_shop, next, prev );
-
-   top_shop++;
 
    return;
 }
@@ -1810,8 +1801,6 @@ void load_notes( void )
       if( str_cmp( fread_word( fp ), "text" ) )
          break;
       pnote->text = fread_string( fp );
-
-      LINK( pnote, first_note, last_note, next, prev );
    }
 
    strcpy( strArea, NOTE_FILE );
@@ -2054,7 +2043,6 @@ void check_resets( void )
                {
                   UNLINK( guilty_reset, reset_room->first_room_reset, reset_room->last_room_reset, next, prev );
                   guilty_reset->data = NULL;
-                  UNLINK( guilty_reset, first_build, last_build, db_next, db_prev );
                   PUT_FREE( guilty_reset, build_free );
                }
             }
@@ -2438,8 +2426,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 {
    CHAR_DATA *mob;
    char buf[255];
-   MONEY_TYPE *money;
-   short cnt;
    float hold = 0;
 
    if( pMobIndex == NULL )
@@ -2545,16 +2531,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    hold = mob->saving_throw;
    hold *= sysdata.mob_svs;
    mob->saving_throw = (int)hold;
-
-   GET_FREE( money, money_type_free );
-   for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-      money->cash_unit[cnt] = pMobIndex->pShop ? 10 : 0;
-   mob->money = money;
-
-   GET_FREE( money, money_type_free );
-   for( cnt = 0; cnt < MAX_CURRENCY; cnt++ )
-      money->cash_unit[cnt] = 0;
-   mob->bank_money = money;
 
 //  Create group data for mob
 
@@ -3269,7 +3245,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Rooms   %5d\r\n", room_index_list.size() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Shops   %5d\r\n", top_shop );
+   snprintf( buf, MSL, "Shops   %5d\r\n", shop_list.size() );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Shared String Info:\r\n" );
    send_to_char( buf, ch );
@@ -3995,7 +3971,9 @@ char *_popen( const char *string )
 
  fclose(fp);
  if( fpReserve == NULL )
+ {
   fpReserve = fopen(NULL_FILE,"r");
+ }
 
  return ret;
 }
@@ -4010,7 +3988,6 @@ FILE *file_open( const char *file, const char *opt )
   fpReserve = NULL;
  }
  fp = fopen(file,opt);
- fp_open++;
 
  return fp;
 }
@@ -4023,47 +4000,29 @@ void file_close( FILE *file )
   fclose(file);
  }
  if( fpReserve == NULL )
+ {
   fpReserve = fopen(NULL_FILE,"r");
- fp_close++;
+ }
 
  return;
 }
 
 void clear_lists( void )
 {
- BUILD_DATA_LIST *list, *list_next;
- MAGIC_SHIELD *shield, *shield_next;
- MONEY_TYPE *mny, *mny_next;
-
  for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
  for_each( area_list.begin(),       area_list.end(),       DeleteObject() );
  for_each( ban_list.begin(),        ban_list.end(),        DeleteObject() );
  for_each( char_list.begin(),       char_list.end(),       DeleteObject() );
  for_each( exdesc_list.begin(),     exdesc_list.end(),     DeleteObject() );
  for_each( exit_list.begin(),       exit_list.end(),       DeleteObject() );
+ for_each( file_list.begin(),       file_list.end(),       DeleteObject() );
  for_each( mob_index_list.begin(),  mob_index_list.end(),  DeleteObject() );
+ for_each( note_list.begin(),       note_list.end(),       DeleteObject() );
  for_each( obj_list.begin(),        obj_list.end(),        DeleteObject() );
  for_each( obj_index_list.begin(),  obj_index_list.end(),  DeleteObject() );
  for_each( reset_list.begin(),      reset_list.end(),      DeleteObject() );
  for_each( room_index_list.begin(), room_index_list.end(), DeleteObject() );
-
- for( list = first_build; list != NULL; list = list_next )
- {
-  list_next = list->db_next;
-  free(list);
- }
-
- for( shield = shield_free; shield != NULL; shield = shield_next )
- {
-  shield_next = shield->next;
-  free(shield);
- }
-
- for( mny = money_type_free; mny != NULL; mny = mny_next )
- {
-  mny_next = mny->next;
-  free(mny);
- }
+ for_each( shop_list.begin(),       shop_list.end(),       DeleteObject() );
 
  free(string_space);
  free(social_table);

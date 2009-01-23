@@ -967,7 +967,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
          snprintf( buf3, MSL, "%s", victim->first_shield->absorb_message_self );
       victim->first_shield->hits -= (short)dam;
       dam = dam - dam * ( victim->first_shield->percent / 100 );
-      if( victim->first_shield->harmfull == TRUE )
+      if( victim->first_shield->harmful == TRUE )
       {
 
          ch->hit = UMAX( 10, ( ch->hit - victim->first_shield->attack_dam ) );

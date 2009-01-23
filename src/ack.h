@@ -72,6 +72,15 @@ struct DeleteObject
 {
  template <typename T>
  void operator() (const T* ptr) const { delete ptr; };
+ void operator() (FILE* ptr) const { if( ptr != NULL ) fclose(ptr); };
+};
+
+class generic_list
+{
+ public:
+  generic_list();
+  ~generic_list();
+  void *data;
 };
 
 struct board_data
@@ -346,11 +355,8 @@ class shop_data
   ~shop_data();
   short buy_type[MAX_TRADE]; /* Item types shop will buy     */
   short close_hour;          /* First closing hour           */
-  bool is_free;
   int keeper;                /* Vnum of shop keeper mob      */
-  SHOP_DATA *next;
   short open_hour;           /* First opening hour           */
-  SHOP_DATA *prev;
   short profit_buy;          /* Cost multiplier for buying   */
   short profit_sell;         /* Cost multiplier for selling  */
 };
@@ -422,9 +428,6 @@ class note_data
   ~note_data();
   char *date;
   time_t date_stamp;
-  bool is_free;
-  NOTE_DATA *next;
-  NOTE_DATA *prev;
   char *sender;
   char *subject;
   char *text;
@@ -481,24 +484,26 @@ struct kill_data
 };
 
 
-struct magic_shield
+class magic_shield
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   MAGIC_SHIELD *next;
-   MAGIC_SHIELD *prev;
-   short type;   /* what kind is it? Electric, Fire, etc... */
-   bool harmfull; /* does the shield damage the attacker? */
-   short attack_dam;   /* then hurt the attacker ;) */
-   short percent;   /* percent of damage it absorbs per attack */
-   short hits;   /* Shield hitpoints */
-   int sn;
-   char *absorb_message_room;
-   char *absorb_message_victim;
-   char *absorb_message_self;
-   char *name;
-   char *wearoff_room;
-   char *wearoff_self;
-
+ public:
+  magic_shield();
+  ~magic_shield();
+  bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
+  MAGIC_SHIELD *next;
+  MAGIC_SHIELD *prev;
+  short type;   /* what kind is it? Electric, Fire, etc... */
+  bool harmful; /* does the shield damage the attacker? */
+  short attack_dam;   /* then hurt the attacker ;) */
+  short percent;   /* percent of damage it absorbs per attack */
+  short hits;   /* Shield hitpoints */
+  int sn;
+  char *absorb_message_room;
+  char *absorb_message_victim;
+  char *absorb_message_self;
+  char *name;
+  char *wearoff_room;
+  char *wearoff_self;
 };
 
 /*
@@ -1115,8 +1120,6 @@ struct build_data_list  /* Used for storing area file data. */
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    BUILD_DATA_LIST *next;
    BUILD_DATA_LIST *prev;
-   BUILD_DATA_LIST *db_next;
-   BUILD_DATA_LIST *db_prev;
    void *data;
 };
 

@@ -111,6 +111,8 @@ char_data::~char_data()
   delete pnote;
  if( pcdata )
   delete pcdata;
+ delete money;
+ delete bank_money;
 }
 
 exit_data::~exit_data()
@@ -131,9 +133,25 @@ fight_data::~fight_data()
 {
 }
 
+generic_list::~generic_list()
+{
+ free(data);
+}
+
 hash_entry_tp::~hash_entry_tp()
 {
  is_free = true;
+}
+
+magic_shield::~magic_shield()
+{
+ is_free = true;
+ free_string(absorb_message_room);
+ free_string(absorb_message_victim);
+ free_string(absorb_message_self);
+ free_string(name);
+ free_string(wearoff_room);
+ free_string(wearoff_self);
 }
 
 message_data::~message_data()
@@ -153,10 +171,13 @@ mob_index_data::~mob_index_data()
  free_string(target);
 }
 
+money_type::~money_type()
+{
+}
+
 note_data::~note_data()
 {
  free_string(date);
- is_free = true;
  free_string(sender);
  free_string(subject);
  free_string(text);
@@ -183,7 +204,7 @@ obj_data::~obj_data()
  free_string(owner);
  free_string(short_descr);
  free_string(long_descr);
- PUT_FREE( money, money_type_free );
+ delete money;
 }
 
 obj_index_data::~obj_index_data()
@@ -246,14 +267,21 @@ room_affect_data::~room_affect_data()
 
 room_index_data::~room_index_data()
 {
+ ROOM_AFFECT_DATA *raf, *raf_next;
+
+ for( raf = this->first_room_affect; raf != NULL; raf = raf_next )
+ {
+  raf_next = raf->next;
+  r_affect_remove(this,raf);
+ }
+
  free_string(name);
  free_string(description);
- PUT_FREE( treasure, money_type_free );
+ delete treasure;
 }
 
 shop_data::~shop_data()
 {
- is_free = true;
 }
 
 super_data::~super_data()
