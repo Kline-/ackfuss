@@ -2046,8 +2046,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       fOld = load_char_obj( d, argument, FALSE );
       ch = d->character;
-
-
+      char_list.remove(d->character); // ctor adds to list automatically, we need to exempt still-logging-in folks and re-add later --Kline
 
       if( ch->act.test(ACT_DENY) )
       {
@@ -2061,6 +2060,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 /* TEMP FIX ZEN */
       if( ch->act.test(ACT_JUSTIFY) )
          ch->act.reset(ACT_JUSTIFY);
+
       if( check_reconnect( d, argument, FALSE ) )
       {
          fOld = TRUE;
@@ -2088,8 +2088,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          if( check_playing( d, ch->name ) )
             return;
       }
-
-
 
       if( fOld )
       {
@@ -2145,7 +2143,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                return;
             }
          }
-
 
          snprintf( buf, MSL, "Did I get that right, %s (Y/N)? ", argument );
          write_to_buffer( d, buf, 0 );
@@ -2794,6 +2791,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
 
       act( "$n enters " mudnamecolor ".", ch, NULL, NULL, TO_ROOM );
+      char_list.push_back(ch); // we removed them earlier in the function, now put them back that login is done --Kline
 
       snprintf( buf, MSL, "%s has entered the game.", ch->name );
       monitor_chan( buf, MONITOR_CONNECT );
