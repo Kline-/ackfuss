@@ -71,7 +71,7 @@
 struct DeleteObject
 {
  template <typename T>
- void operator() (const T* ptr) const { delete ptr; };
+ void operator() (const T* ptr) const { if( ptr ) delete ptr; };
  void operator() (FILE* ptr) const { if( ptr != NULL ) fclose(ptr); };
 };
 
@@ -250,8 +250,11 @@ struct council_data
 /*
  * Descriptor (channel) structure.
  */
-struct descriptor_data
+class descriptor_data
 {
+ public:
+  descriptor_data();
+  ~descriptor_data();
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    DESCRIPTOR_DATA *next;
    DESCRIPTOR_DATA *prev;

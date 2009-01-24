@@ -90,7 +90,6 @@ NPC_GROUP_DATA *last_npc_group = NULL;
 FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
 
-DESCRIPTOR_DATA *desc_free = NULL;
 MEMBER_DATA *member_free = NULL;
 CORPSE_DATA *corpse_free = NULL;
 MARK_DATA *mark_free = NULL;
@@ -106,7 +105,6 @@ RULER_LIST *ruler_list_free = NULL;
 DL_LIST *dl_list_free = NULL;
 BOARD_DATA *board_free = NULL;
 
-void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat ) = NULL;
 void ( *member_free_destructor ) ( MEMBER_DATA * mdat ) = NULL;
 void ( *corpse_free_destructor ) ( CORPSE_DATA * cdat ) = NULL;
 void ( *mark_list_free_destructor ) ( MARK_LIST_MEMBER * mldat ) = NULL;

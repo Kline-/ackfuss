@@ -120,6 +120,11 @@ char_data::~char_data()
  delete bank_money;
 }
 
+descriptor_data::~descriptor_data()
+{
+ free(outbuf);
+}
+
 exit_data::~exit_data()
 {
  free_string(description);

@@ -237,6 +237,10 @@ char_data::char_data()
  char_list.push_back(this);
 }
 
+descriptor_data::descriptor_data()
+{
+}
+
 exit_data::exit_data()
 {
  description = &str_empty[0];

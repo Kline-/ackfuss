@@ -4010,6 +4010,14 @@ void file_close( FILE *file )
 
 void clear_lists( void )
 {
+ DESCRIPTOR_DATA *d, *d_next;
+
+ for( d = first_desc; d != NULL; d = d_next )
+ {
+  d_next = d->next;
+  delete d;
+ }
+
  for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
  for_each( area_list.begin(),       area_list.end(),       DeleteObject() );
  for_each( ban_list.begin(),        ban_list.end(),        DeleteObject() );

@@ -83,7 +83,6 @@ extern NPC_GROUP_DATA *last_npc_group;
 extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
 
-extern DESCRIPTOR_DATA *desc_free;
 extern MEMBER_DATA *member_free;
 extern CORPSE_DATA *corpse_free;
 extern MARK_DATA *mark_free;
@@ -99,7 +98,6 @@ extern RULER_LIST *ruler_list_free;
 extern DL_LIST *dl_list_free;
 extern BOARD_DATA *board_free;
 
-extern void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat );
 extern void ( *member_free_destructor ) ( MEMBER_DATA * mdat );
 extern void ( *corpse_free_destructor ) ( CORPSE_DATA * cdat );
 extern void ( *mark_list_free_destructor ) ( MARK_LIST_MEMBER * mldat );

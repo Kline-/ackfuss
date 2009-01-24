@@ -597,26 +597,6 @@ void game_loop( int game_control )
    return;
 }
 
-void free_desc( DESCRIPTOR_DATA * d )
-{
-   DESCRIPTOR_DATA *sd;
-
-   d->snoop_by = NULL;
-   for( sd = first_desc; sd; sd = sd->next )
-      if( sd->snoop_by == d )
-         sd->snoop_by = NULL;
-   if( d->original )
-      do_return( d->character, "" );
-   if( d->character )
-      delete d->character;
-   free_string( d->host );
-   close( d->descriptor );
-   if( d->showstr_head )
-      free(d->showstr_head);
-   if( d->outbuf )
-      dispose( d->outbuf, d->outsize );
-}
-
 void new_descriptor( int d_control )
 {
    static DESCRIPTOR_DATA d_zero;
@@ -650,7 +630,7 @@ void new_descriptor( int d_control )
    /*
     * Cons a new descriptor.
     */
-   GET_FREE( dnew, desc_free );
+   dnew = new DESCRIPTOR_DATA;
    *dnew = d_zero;
    init_descriptor( dnew, desc );   /* Not sure is this right? */
    dnew->descriptor = desc;
@@ -693,37 +673,6 @@ void new_descriptor( int d_control )
       dnew->host = str_dup( buf );
    }
 
-   /*
-    * Swiftest: I added the following to ban sites.  I don't
-    * endorse banning of sites, but Copper has few descriptors now
-    * and some people from certain sites keep abusing access by
-    * using automated 'autodialers' and leaving connections hanging.
-    *
-    * Furey: added suffix check by request of Nickel of HiddenWorlds.
-    *
-    * Stephen: As we use IP address now, want to use prefix check,
-    * so we can ban whole domains....
-    */
-   /*
-    * MOVED TO LOWER FOR NEWBIEBAN     
-    * 
-    * for ( pban = first_ban; pban != NULL; pban = pban->next )
-    * {
-    * if ( !str_prefix( pban->name, dnew->host ) && !( pban->newbie ) )
-    * {
-    * char buf[MAX_STRING_LENGTH];
-    * snprintf( buf, MSL, "Denying access to banned site %s", dnew->host );
-    * monitor_chan( buf, MONITOR_CONNECT );
-    * write_to_descriptor( desc,
-    * "Your site has been banned from this Mud.  BYE BYE!\r\n", 0 );
-    * free_desc(dnew);
-    * PUT_FREE(dnew, desc_free);
-    * return;
-    * }
-    * }
-    * 
-    * 
-    */
    /*
     * Init descriptor data.
     */
@@ -836,7 +785,8 @@ void close_socket( DESCRIPTOR_DATA * dclose )
       dispose( dclose->outbuf, dclose->outsize );
    if( dclose->showstr_head )
       free(dclose->showstr_head);
-   PUT_FREE( dclose, desc_free );
+
+   delete dclose;
 
    cur_players--;
    return;
@@ -3625,7 +3575,7 @@ void copyover_recover(  )
          continue;
       }
 
-      GET_FREE( d, desc_free );
+      d = new DESCRIPTOR_DATA;
       init_descriptor( d, desc );   /* set up various stuff */
 
       d->host = str_dup( host );
