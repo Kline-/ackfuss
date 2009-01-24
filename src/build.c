@@ -222,19 +222,6 @@ const struct cmd_type build_cmd_table[] = {
 
 };
 
-
-
-/* Building memory management
- * Using the linked list approach for various sized bits.
- * Store array of sizes, pointing to linked list.
- */
-
-#define MAX_MEM_SIZES 20
-
-int build_freesize[MAX_MEM_SIZES];
-void *build_freepointer[MAX_MEM_SIZES];
-int build_numsizes = 0;
-
 /* Variables declared in db.c, which we need */
 extern char *string_hash[MAX_KEY_HASH];
 
@@ -1720,7 +1707,8 @@ void build_setmob( CHAR_DATA * ch, char *argument )
             if( pList != NULL )
             {
                UNLINK( pList, pArea->first_area_shop, pArea->last_area_shop, next, prev );
-               PUT_FREE( pList, build_free );
+               build_dat_list.remove(pList);
+               delete pList;
             }
 
             pMob->pShop = NULL;  /* Take away link from mob */
@@ -1750,7 +1738,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
             send_to_char( "Out of memory, please reboot ASAP.\r\n", ch );
             return;
          }
-         GET_FREE( pList, build_free );
+         pList = new BUILD_DATA_LIST;
          if( pList == NULL )
          {
             send_to_char( "Out of memory, please reboot ASAP.\r\n", ch );
@@ -1878,7 +1866,8 @@ void nuke_exit_resets( ROOM_INDEX_DATA * pRoomIndex, int door )
           * nuke this reset 
           */
          UNLINK( pList, pRoomIndex->first_room_reset, pRoomIndex->last_room_reset, next, prev );
-         PUT_FREE( pList, build_free );
+         build_dat_list.remove(pList);
+         delete pList;
 
          UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
          delete pReset;
@@ -2989,7 +2978,7 @@ void build_dig( CHAR_DATA * ch, char *argument )
    /*
     * Add room into area list. 
     */
-   GET_FREE( pList, build_free );
+   pList = new BUILD_DATA_LIST;
    pList->data = pRoomIndex;
    LINK( pList, pCurRoom->area->first_area_room, pCurRoom->area->last_area_room, next, prev );
 
@@ -3092,7 +3081,7 @@ void build_addmob( CHAR_DATA * ch, char *argument )
 
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pMobIndex, mob_index_hash[iHash], next );
-   GET_FREE( pList, build_free );
+   pList = new BUILD_DATA_LIST;
    pList->data = pMobIndex;
    LINK( pList, pArea->first_area_mobile, pArea->last_area_mobile, next, prev );
    kill_table[URANGE( 0, pMobIndex->level, MAX_LEVEL - 1 )].number++;
@@ -3158,7 +3147,7 @@ void build_addobject( CHAR_DATA * ch, char *argument )
 
    iHash = vnum % MAX_KEY_HASH;
    SING_TOPLINK( pObjIndex, obj_index_hash[iHash], next );
-   GET_FREE( pList, build_free );
+   pList = new BUILD_DATA_LIST;
    pList->data = pObjIndex;
    LINK( pList, pArea->first_area_object, pArea->last_area_object, next, prev );
 
@@ -3229,7 +3218,7 @@ void build_addroom( CHAR_DATA *ch, char *argument )
  /*
   * Add room into area list.
   */
- GET_FREE( pList, build_free );
+ pList = new BUILD_DATA_LIST;
  pList->data = pRoomIndex;
  LINK( pList, pCurRoom->area->first_area_room, pCurRoom->area->last_area_room, next, prev );
 }
@@ -3571,7 +3560,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
    if( command == 'A' )
       pReset->notes = rauto;
 
-   GET_FREE( pList, build_free );
+   pList = new BUILD_DATA_LIST;
    pList->data = pReset;
 
    if( pMobReset != NULL )
@@ -3674,7 +3663,8 @@ void build_delreset( CHAR_DATA * ch, char *argument )
        */
 
       UNLINK( pList, pRoomIndex->first_room_reset, pRoomIndex->last_room_reset, next, prev );
-      PUT_FREE( pList, build_free );
+      build_dat_list.remove(pList);
+      delete pList;
 
       UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
       delete pReset;
@@ -3690,7 +3680,8 @@ void build_delreset( CHAR_DATA * ch, char *argument )
             break;
 
          UNLINK( pList, pRoomIndex->first_room_reset, pRoomIndex->last_room_reset, next, prev );
-         PUT_FREE( pList, build_free );
+         build_dat_list.remove(pList);
+         delete pList;
 
          UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
          delete pReset;
@@ -3704,7 +3695,8 @@ void build_delreset( CHAR_DATA * ch, char *argument )
       pNextList = pList->next;
 
       UNLINK( pList, pRoomIndex->first_room_reset, pRoomIndex->last_room_reset, next, prev );
-      PUT_FREE( pList, build_free );
+      build_dat_list.remove(pList);
+      delete pList;
 
       UNLINK( pReset, pArea->first_reset, pArea->last_reset, next, prev );
       delete pReset;
@@ -3924,7 +3916,8 @@ void build_delroom( CHAR_DATA * ch, char *argument )
    if( pList )
    {
       UNLINK( pList, pArea->first_area_room, pArea->last_area_room, next, prev );
-      PUT_FREE( pList, build_free );
+      build_dat_list.remove(pList);
+      delete pList;
    }
 
    /*
@@ -3953,7 +3946,8 @@ void build_delroom( CHAR_DATA * ch, char *argument )
       for( pList = pRoomIndex->first_room_reset; pList != NULL; pList = pNext )
       {
          pNext = pList->next;
-         PUT_FREE( pList, build_free );
+         build_dat_list.remove(pList);
+         delete pList;
       }
 
       /*
@@ -4131,7 +4125,8 @@ void build_delobject( CHAR_DATA * ch, char *argument )
          break;
    {
       UNLINK( pList, pArea->first_area_object, pArea->last_area_object, next, prev );
-      PUT_FREE( pList, build_free );
+      build_dat_list.remove(pList);
+      delete pList;
    }
 
 
@@ -4322,7 +4317,8 @@ void build_delmob( CHAR_DATA * ch, char *argument )
    if( pList )
    {
       UNLINK( pList, pArea->first_area_mobile, pArea->last_area_mobile, next, prev );
-      PUT_FREE( pList, build_free );
+      build_dat_list.remove(pList);
+      delete pList;
    }
 
 
@@ -4406,7 +4402,8 @@ void build_delmob( CHAR_DATA * ch, char *argument )
        * Take out of pList 
        */
       UNLINK( pList, pArea->first_area_shop, pArea->last_area_shop, next, prev );
-      PUT_FREE( pList, build_free );
+      build_dat_list.remove(pList);
+      delete pList;
 
       /*
        * Now free shop structure 

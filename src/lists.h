@@ -44,6 +44,7 @@
 extern std::list<AFFECT_DATA *> affect_list;
 extern std::list<AREA_DATA *> area_list;
 extern std::list<BAN_DATA *> ban_list;
+extern std::list<BUILD_DATA_LIST *> build_dat_list;
 extern std::list<CHAR_DATA *> char_list;
 extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
 extern std::list<EXIT_DATA *> exit_list;
@@ -83,7 +84,6 @@ extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
 
 extern DESCRIPTOR_DATA *desc_free;
-extern BUILD_DATA_LIST *build_free;
 extern MEMBER_DATA *member_free;
 extern CORPSE_DATA *corpse_free;
 extern MARK_DATA *mark_free;
@@ -100,7 +100,6 @@ extern DL_LIST *dl_list_free;
 extern BOARD_DATA *board_free;
 
 extern void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat );
-extern void ( *build_free_destructor ) ( BUILD_DATA_LIST * bddat );
 extern void ( *member_free_destructor ) ( MEMBER_DATA * mdat );
 extern void ( *corpse_free_destructor ) ( CORPSE_DATA * cdat );
 extern void ( *mark_list_free_destructor ) ( MARK_LIST_MEMBER * mldat );

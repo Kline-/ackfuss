@@ -77,6 +77,11 @@ buf_data_struct::~buf_data_struct()
  free_string(buf);
 }
 
+build_data_list::~build_data_list()
+{
+ is_free = true;
+}
+
 char_data::~char_data()
 {
  is_free = true;

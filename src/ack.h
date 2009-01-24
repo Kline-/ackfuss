@@ -1115,12 +1115,15 @@ class room_index_data
 /* Big MAG mod */
 /* Area building stuff */
 
-struct build_data_list  /* Used for storing area file data. */
+class build_data_list  /* Used for storing area file data. */
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   BUILD_DATA_LIST *next;
-   BUILD_DATA_LIST *prev;
-   void *data;
+ public:
+  build_data_list();
+  ~build_data_list();
+  bool is_free;
+  BUILD_DATA_LIST *next;
+  BUILD_DATA_LIST *prev;
+  void *data;
 };
 
 struct lookup_type

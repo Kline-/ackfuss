@@ -358,7 +358,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    /*
     * Add room into area list. 
     */
-   GET_FREE( pList, build_free );
+   pList = new BUILD_DATA_LIST;
    pList->data = pRoomIndex;
    LINK( pList, pArea->first_area_room, pArea->last_area_room, next, prev );
 

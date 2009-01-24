@@ -112,6 +112,16 @@ buf_data_struct::buf_data_struct()
  old_char_pos = 0;
 }
 
+build_data_list::build_data_list()
+{
+ is_free = false;
+ next = NULL;
+ prev = NULL;
+ data = NULL;
+
+ build_dat_list.push_back(this);
+}
+
 char_data::char_data()
 {
  act.reset();

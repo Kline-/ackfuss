@@ -48,6 +48,7 @@
 std::list<AFFECT_DATA *> affect_list;
 std::list<AREA_DATA *> area_list;
 std::list<BAN_DATA *> ban_list;
+std::list<BUILD_DATA_LIST *> build_dat_list;
 std::list<CHAR_DATA *> char_list;
 std::list<EXTRA_DESCR_DATA *> exdesc_list;
 std::list<EXIT_DATA *> exit_list;
@@ -90,7 +91,6 @@ FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
 
 DESCRIPTOR_DATA *desc_free = NULL;
-BUILD_DATA_LIST *build_free = NULL;
 MEMBER_DATA *member_free = NULL;
 CORPSE_DATA *corpse_free = NULL;
 MARK_DATA *mark_free = NULL;
@@ -107,7 +107,6 @@ DL_LIST *dl_list_free = NULL;
 BOARD_DATA *board_free = NULL;
 
 void ( *desc_free_destructor ) ( DESCRIPTOR_DATA * ddat ) = NULL;
-void ( *build_free_destructor ) ( BUILD_DATA_LIST * bddat ) = NULL;
 void ( *member_free_destructor ) ( MEMBER_DATA * mdat ) = NULL;
 void ( *corpse_free_destructor ) ( CORPSE_DATA * cdat ) = NULL;
 void ( *mark_list_free_destructor ) ( MARK_LIST_MEMBER * mldat ) = NULL;
