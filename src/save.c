@@ -702,38 +702,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 
       d->character = ch;
 
-      for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-       ch->pcdata->quest_info->amount[foo] = -1;
-      ch->pcdata->quest_info->is_questing = FALSE;
-      ch->pcdata->quest_info->quest_complete = FALSE;
-      for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-       ch->pcdata->quest_info->quest_hint[foo] = FALSE;
-      for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-       ch->pcdata->quest_info->quest_item_vnum[foo] = -1;
-      for( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-       ch->pcdata->quest_info->quest_mob_vnum[foo] = -1;
-      for( foo = 0; foo < QUEST_MAX_REWARD; foo++ )
-       ch->pcdata->quest_info->quest_reward[foo] = 0;
-      ch->pcdata->quest_info->quest_type = 0;
-      ch->pcdata->quest_info->time_left = 0;
-      ch->pcdata->quest_info->wait_time = 0;
-
-      ch->pcdata->records->crusade = 0;
-      ch->pcdata->records->mdam_amt = 0;
-      ch->pcdata->records->mdam_gsn = 0;
-      ch->pcdata->records->pdam_amt = 0;
-      ch->pcdata->records->pdam_gsn = 0;
-      ch->pcdata->records->pd = 0;
-      ch->pcdata->records->pk = 0;
-      ch->pcdata->records->md = 0;
-      ch->pcdata->records->mk = 0;
-      ch->pcdata->records->mquest_c = 0;
-      ch->pcdata->records->mquest_f = 0;
-      ch->pcdata->records->qp = 0;
-      ch->pcdata->records->qp_tot = 0;
-
       ch->pcdata->super->energy = 24;
-
       ch->pcdata->perm_str = 13;
       ch->pcdata->perm_int = 13;
       ch->pcdata->perm_wis = 13;
