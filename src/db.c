@@ -4011,6 +4011,7 @@ void file_close( FILE *file )
 void clear_lists( void )
 {
  DESCRIPTOR_DATA *d, *d_next;
+ extern hash_table *hash_changed_vnums;
 
  for( d = first_desc; d != NULL; d = d_next )
  {
@@ -4034,6 +4035,7 @@ void clear_lists( void )
  for_each( room_index_list.begin(), room_index_list.end(), DeleteObject() );
  for_each( shop_list.begin(),       shop_list.end(),       DeleteObject() );
 
+ delete_hash_table(hash_changed_vnums);
  free(string_space);
  free(social_table);
 #ifdef IMC
