@@ -77,5 +77,6 @@ void do_colist P_((CHAR_DATA *ch, char *argument));
 void do_loot P_((CHAR_DATA *ch, char *argument));
 char *output_race_wear P_((int iRace));
 void do_safe P_((CHAR_DATA *ch, char *argument));
+void area_message P_((AREA_DATA *area, const char *message));
 
 #undef P_

@@ -1150,7 +1150,7 @@ bool spell_call_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
       act( "$p summons lightning to strike $n's foes!", ch, obj, NULL, TO_ROOM );
       act( "$p summons lightning to strike your foes!", ch, obj, NULL, TO_CHAR );
    }
-   for( li = char_list.begin(); li != char_list.end(); li++ )
+   for( li = ch->in_room->area->player_list.begin(); li != ch->in_room->area->player_list.end(); li++ )
    {
       vch = *li;
       if( vch->in_room == NULL )
@@ -1165,9 +1165,10 @@ bool spell_call_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
          continue;
       }
 
-      if( vch->in_room->area == ch->in_room->area && IS_OUTSIDE( vch ) && IS_AWAKE( vch ) )
+      if( IS_OUTSIDE( vch ) && IS_AWAKE( vch ) )
          send_to_char( "Lightning flashes in the sky.\r\n", vch );
    }
+
    return TRUE;
 }
 
@@ -2020,7 +2021,7 @@ bool spell_earthquake( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       act( "$p vibrates violenty, making the earth around $n tremble!", ch, obj, NULL, TO_ROOM );
    }
 
-   for( li = char_list.begin(); li != char_list.end(); li++ )
+   for( li = ch->in_room->area->player_list.begin(); li != ch->in_room->area->player_list.end(); li++ )
    {
       vch = *li;
       if( vch->in_room == NULL )
@@ -2041,8 +2042,7 @@ bool spell_earthquake( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
          continue;
       }
 
-      if( vch->in_room->area == ch->in_room->area )
-         send_to_char( "The earth trembles and shivers.\r\n", vch );
+      send_to_char( "The earth trembles and shivers.\r\n", vch );
    }
 
    return TRUE;
@@ -3731,7 +3731,7 @@ bool spell_mindflame( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
       act( "$p glows, and initiates a mindflame attack!", ch, obj, NULL, TO_CHAR );
    }
 
-   for( li = char_list.begin(); li != char_list.end(); li++ )
+   for( li = ch->in_room->area->player_list.begin(); li != ch->in_room->area->player_list.end(); li++ )
    {
       vch = *li;
       if( vch->in_room == NULL )
@@ -3748,8 +3748,7 @@ bool spell_mindflame( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
          continue;
       }
 
-      if( vch->in_room->area == ch->in_room->area )
-         send_to_char( "You notice a slight burning feeling in your mind.\r\n", vch );
+      send_to_char( "You notice a slight burning feeling in your mind.\r\n", vch );
    }
 
    return TRUE;
@@ -3925,7 +3924,7 @@ bool spell_nerve_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
       act( "$p glows with the power of Nerve Fire!", ch, obj, NULL, TO_CHAR );
    }
 
-   for( li = char_list.begin(); li != char_list.end(); li++ )
+   for( li = ch->in_room->area->player_list.begin(); li != ch->in_room->area->player_list.end(); li++ )
    {
       vch = *li;
       if( vch->in_room == NULL )
@@ -3939,8 +3938,7 @@ bool spell_nerve_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
          continue;
       }
 
-      if( vch->in_room->area == ch->in_room->area )
-         send_to_char( "You notice a slight burning feeling in your body.\r\n", vch );
+      send_to_char( "You notice a slight burning feeling in your body.\r\n", vch );
    }
 
    return TRUE;
@@ -6592,7 +6590,7 @@ bool spell_retri_strike( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
       act( "$p vibrates violenty, making the earth around $n tremble!", ch, obj, NULL, TO_ROOM );
    }
 
-   for( li = char_list.begin(); li != char_list.end(); li++ )
+   for( li = ch->in_room->area->player_list.begin(); li != ch->in_room->area->player_list.end(); li++ )
    {
       vch = *li;
       if( vch->in_room == NULL )
@@ -6645,8 +6643,8 @@ bool spell_retri_strike( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
          act( "@@W$n @@Wis protected by the fury of the @@W$p@@W.", vch, staff_obj, NULL, TO_ROOM );
          continue;
       }
-      if( vch->in_room->area == ch->in_room->area )
-         send_to_char( "@@WSuddenly, a @@ybright flash@@W sears your eyes, then is gone.@@N\r\n", vch );
+
+      send_to_char( "@@WSuddenly, a @@ybright flash@@W sears your eyes, then is gone.@@N\r\n", vch );
    }
 
    extract_obj( staff_obj );

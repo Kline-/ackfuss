@@ -1900,7 +1900,7 @@ void aggr_update( void )
              || ch->fighting != NULL
              || ch->hunting != NULL
              || IS_AFFECTED( ch, AFF_CHARM )
-             || !IS_AWAKE( ch ) || ( ch->act.test(ACT_WIMPY) && IS_AWAKE( wch ) ) || !can_see( ch, wch ) || ch->in_room->area->nplayer < 1 )
+             || !IS_AWAKE( ch ) || ( ch->act.test(ACT_WIMPY) && IS_AWAKE( wch ) ) || !can_see( ch, wch ) || ch->in_room->area->player_list.empty() )
             continue;
 
 

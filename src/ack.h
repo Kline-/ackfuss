@@ -1072,8 +1072,8 @@ class area_data
   short                   min_level;
   int                     min_vnum;
   char                    *name;
-  short                   nplayer;
   char                    *owner;
+  std::list<CHAR_DATA *>  player_list;
   char                    *reset_msg;
   short                   reset_rate;
 };

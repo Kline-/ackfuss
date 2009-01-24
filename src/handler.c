@@ -793,7 +793,7 @@ void char_from_room( CHAR_DATA * ch )
    }
 
    if( !IS_NPC( ch ) )
-      --ch->in_room->area->nplayer;
+      ch->in_room->area->player_list.remove(ch);
 
    if( ( obj = get_light_char( ch ) ) != NULL )
       --ch->in_room->light;
@@ -841,7 +841,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
       LINK( ch, ch->in_room->first_person, ch->in_room->last_person, next_in_room, prev_in_room );
 
    if( !IS_NPC( ch ) )
-      ++ch->in_room->area->nplayer;
+      ch->in_room->area->player_list.push_back(ch);
 
    if( ( obj = get_light_char( ch ) ) != NULL )
       ++ch->in_room->light;

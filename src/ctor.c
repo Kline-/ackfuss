@@ -72,7 +72,6 @@ area_data::area_data()
  min_level = 1;
  min_vnum = 0;
  name = str_dup("New Area");
- nplayer = 0;
  owner = &str_empty[0];
  reset_msg = str_dup("The area resets. How mystical...");
  reset_rate = 15;

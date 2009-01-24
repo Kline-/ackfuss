@@ -5898,3 +5898,20 @@ void do_safe( CHAR_DATA *ch, char *argument )
   send_to_char("@@RYou are not safe from attacks here.@@N\r\n",ch);
  return;
 }
+
+void area_message( AREA_DATA *area, const char *message )
+{
+ std::list<CHAR_DATA *>::iterator li;
+ CHAR_DATA *ch;
+
+ if( area == NULL )
+  return;
+
+ for( li = area->player_list.begin(); li != area->player_list.end(); li++ )
+ {
+  ch = *li;
+  send_to_char(message,ch);
+ }
+
+ return;
+}

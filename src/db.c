@@ -2075,12 +2075,12 @@ void area_update( void )
       /*
        * Check for PC's.
        */
-      if( ( pArea->nplayer > 0 ) && ( pArea->age >= ( pArea->reset_rate - 1 ) ) )
+      if( !pArea->player_list.empty() && ( pArea->age >= ( pArea->reset_rate - 1 ) ) )
       {
-         for( pi = char_list.begin(); pi != char_list.end(); pi++ )
+         for( pi = pArea->player_list.begin(); pi != pArea->player_list.end(); pi++ )
          {
             pch = *pi;
-            if( !IS_NPC( pch ) && IS_AWAKE( pch ) && pch->in_room != NULL && pch->in_room->area == pArea && str_cmp(pArea->reset_msg,"off") )
+            if( !IS_NPC( pch ) && IS_AWAKE( pch ) && pch->in_room != NULL && str_cmp(pArea->reset_msg,"off") )
             {
                char reset_buf[MSL];
                snprintf( reset_buf, MSL, "%s\r\n", pArea->reset_msg );
@@ -2094,7 +2094,7 @@ void area_update( void )
        * Check age and reset.
        * Note: Mud School resets every 3 minutes (not 15).
        */
-      if( ( ( pArea->nplayer == 0 ) && ( pArea->age >= 5 ) ) || ( pArea->age >= pArea->reset_rate ) )
+      if( ( pArea->player_list.empty() && ( pArea->age >= 5 ) ) || ( pArea->age >= pArea->reset_rate ) )
       {
          reset_area( pArea );
          pArea->age = UMIN( pArea->reset_rate - 1, number_range( 0, 3 ) );
@@ -2257,7 +2257,7 @@ void reset_area( AREA_DATA * pArea )
                continue;
             }
 
-            if( pArea->nplayer > 0
+            if( !pArea->player_list.empty()
                 || ( obj_to = get_obj_type( pObjToIndex ) ) == NULL
                 || count_obj_list( pObjIndex, obj_to->first_in_carry_list ) > 0 )
             {
