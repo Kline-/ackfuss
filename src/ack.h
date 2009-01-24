@@ -71,8 +71,7 @@
 struct DeleteObject
 {
  template <typename T>
- void operator() (const T* ptr) const { if( ptr ) delete ptr; };
- void operator() (FILE* ptr) const { if( ptr != NULL ) fclose(ptr); };
+ void operator() (const T* ptr) const { delete ptr; };
 };
 
 class generic_list
@@ -1350,6 +1349,7 @@ struct eq_type
 void interpret args( ( CHAR_DATA * ch, char *argument ) );
 bool IS_SWITCHED args( ( CHAR_DATA * ch ) );
 bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
+void comlog args( ( CHAR_DATA * ch, bool cleanup, int cmd, char *args ) );
 
 /* macros.c */
 short get_remort_level   args( ( CHAR_DATA * ch ) );

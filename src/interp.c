@@ -876,7 +876,7 @@ const struct cmd_type cmd_table[] = {
 };
 
 /* Log all commands.. rewrite every 5 mins.. */
-void comlog( CHAR_DATA * ch, int cmd, char *args )
+void comlog( CHAR_DATA * ch, bool cleanup, int cmd, char *args )
 {
    static FILE *fplog;
    static time_t ltime;
@@ -889,6 +889,14 @@ void comlog( CHAR_DATA * ch, int cmd, char *args )
          return;
       ltime = current_time;
    }
+
+   if( cleanup )
+   {
+    if( fplog )
+     file_close( fplog );
+    return;
+   }
+
    fprintf( fplog, "%.24s :: %12.12s (%5d): %s %s\n", ctime( &current_time ),
             ch->name, ( IS_NPC( ch ) ? ch->npcdata->pIndexData->vnum : -1 ), cmd_table[cmd].name,
             ( cmd_table[cmd].log == LOG_NEVER ? "XXX" : args ) );
@@ -1172,7 +1180,7 @@ void interpret( CHAR_DATA * ch, char *argument )
       ch->stance_hr_mod = 0;
       act( "$n steps out of the Shadows!", ch, NULL, NULL, TO_ROOM );
    }
-   comlog( ch, cmd, argument );
+   comlog( ch, false, cmd, argument );
    ( *cmd_table[cmd].do_fun ) ( ch, argument );
 
    /* Check for movement */

@@ -4035,6 +4035,8 @@ void clear_lists( void )
  for_each( room_index_list.begin(), room_index_list.end(), DeleteObject() );
  for_each( shop_list.begin(),       shop_list.end(),       DeleteObject() );
 
+ comlog(NULL,true,0,NULL);
+ fclose(fpReserve);
  delete_hash_table(hash_changed_vnums);
  free(string_space);
  free(social_table);
