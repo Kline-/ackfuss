@@ -2820,8 +2820,6 @@ void do_mset( CHAR_DATA * ch, char *argument )
    {
       if( value < 0 || value >= MAX_CLASS )
       {
-         char buf[MAX_STRING_LENGTH];
-
          snprintf( buf, MSL, "Class range is 0 to %d.\n", MAX_CLASS - 1 );
          send_to_char( buf, ch );
          return;
@@ -2834,8 +2832,6 @@ void do_mset( CHAR_DATA * ch, char *argument )
    {
       if( value < 0 || value >= MAX_RACE )
       {
-         char buf[MAX_STRING_LENGTH];
-
          snprintf( buf, MSL, "Race range is 0 to %d.\n", MAX_RACE - 1 );
          send_to_char( buf, ch );
          return;
@@ -2857,8 +2853,6 @@ void do_mset( CHAR_DATA * ch, char *argument )
       }
       if( value < 0 || value > 5 )
       {
-         char buf[MAX_STRING_LENGTH];
-
          snprintf( buf, MSL, "%s", "Ruler Rank is 1 to 5.\r\n" );
          send_to_char( buf, ch );
          return;

@@ -1865,14 +1865,14 @@ void fix_exits( void )
 /* Load up gold into areas */
 void load_gold( void )
 {
-   FILE *fpArea;
+   FILE *fpGold;
    int area_num;
    int gold;
    AREA_DATA *pArea;
 
-   fpArea = file_open( "area.gld", "r" );
+   fpGold = file_open( "area.gld", "r" );
 
-   if( fpArea == NULL )
+   if( fpGold == NULL )
    {
       bug( "Could not open area.gld for reading.", 0 );
       return;
@@ -1880,17 +1880,17 @@ void load_gold( void )
 
    for( ;; )
    {
-      area_num = fread_number( fpArea );
+      area_num = fread_number( fpGold );
       if( area_num == -1 )
          break;
 
-      gold = fread_number( fpArea );
+      gold = fread_number( fpGold );
 
       if( ( pArea = area_used[area_num] ) != NULL )
          pArea->gold = gold;
    }
 
-   file_close( fpArea );
+   file_close( fpGold );
 
 }
 

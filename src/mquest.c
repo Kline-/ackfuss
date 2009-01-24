@@ -39,7 +39,7 @@
 
 void do_mquest( CHAR_DATA *ch, char *argument )
 {
- CHAR_DATA *mob;
+ CHAR_DATA *mob = NULL;
  OBJ_DATA *obj;
  OBJ_DATA *obj_next;
  char buf[MSL];
@@ -113,7 +113,6 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  }
  else if( !str_prefix(arg1,"giveup") )
  {
-  CHAR_DATA *mob;
   int pqp = 0, pgold = 0, pexp = 0, mn = 0;
   char *cost;
   char change[MSL], mbuf[MSL];
@@ -221,13 +220,12 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   }
   if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL || ch->pcdata->quest_info->quest_type == QUEST_KILLING )
   {
-   MOB_INDEX_DATA *mob = get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[hint-1]);
-   snprintf(buf,MSL,"%s can be found somewhere in %s.\r\n",mob->short_descr,mob->area->name);
+   MOB_INDEX_DATA *imob = get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[hint-1]);
+   snprintf(buf,MSL,"%s can be found somewhere in %s.\r\n",imob->short_descr,imob->area->name);
    send_to_char(buf,ch);
   }
   else if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R || ch->pcdata->quest_info->quest_type == QUEST_KILLING_R )
   {
-   CHAR_DATA *mob = NULL;
    std::list<CHAR_DATA *>::iterator li;
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
@@ -273,7 +271,6 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  }
  else if( !str_prefix(arg1,"complete") )
  {
-  CHAR_DATA *mob;
   short i = 0, x = 0;
 
   for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )

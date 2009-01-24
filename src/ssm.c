@@ -381,27 +381,27 @@ void _free_string( char *str, const char *caller )
 
       if( fBootDb )
       {
-         TempHash *ptr;
+         TempHash *hptr;
          TempHash *walk;
          int ihash = strlen( str ) % MAX_KEY_HASH;
 
-         for( ptr = temp_string_hash[ihash]; ptr; ptr = ptr->next )
+         for( hptr = temp_string_hash[ihash]; hptr; hptr = hptr->next )
          {
-            if( ptr->str != str )
+            if( hptr->str != str )
                continue;
-            else if( ptr == temp_string_hash[ihash] )
-               temp_string_hash[ihash] = ptr->next;
+            else if( hptr == temp_string_hash[ihash] )
+               temp_string_hash[ihash] = hptr->next;
             else
                for( walk = temp_string_hash[ihash]; walk; walk = walk->next )
                {
-                  if( walk->next == ptr )
+                  if( walk->next == hptr )
                   {
-                     walk->next = ptr->next;
+                     walk->next = hptr->next;
                      break;
                   }
                }
 
-            free( ptr );
+            free( hptr );
             break;
          }
       }

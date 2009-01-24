@@ -2908,6 +2908,7 @@ void do_list( CHAR_DATA * ch, char *argument )
    char costbuf[MSL];
    CHAR_DATA *keeper;
    int cost;
+
    buf1[0] = '\0';
    if( ( keeper = find_keeper( ch ) ) == NULL )
       return;
@@ -2928,7 +2929,7 @@ void do_list( CHAR_DATA * ch, char *argument )
    {
       ROOM_INDEX_DATA *pRoomIndexNext;
       CHAR_DATA *pet;
-      bool found;
+
       pRoomIndexNext = get_room_index( ch->in_room->vnum + 1 );
       if( pRoomIndexNext == NULL )
       {

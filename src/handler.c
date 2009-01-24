@@ -2149,7 +2149,6 @@ OBJ_DATA *create_money( int amount )
 
    if( amount <= 0 )
    {
-      char buf[MAX_STRING_LENGTH];
       snprintf( buf, MSL, "create_money: %d provided as amount.", amount );
       monitor_chan( buf, MONITOR_OBJ );
 

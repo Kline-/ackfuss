@@ -267,7 +267,7 @@ int main( int argc, char **argv )
    return 0;
 }
 
-int init_socket( int port )
+int init_socket( int sock_port )
 {
    static struct sockaddr_in sa_zero;
    struct sockaddr_in sa;
@@ -304,7 +304,7 @@ int init_socket( int port )
 #endif
    sa = sa_zero;
    sa.sin_family = AF_INET;
-   sa.sin_port = htons( port );
+   sa.sin_port = htons( sock_port );
 
    /* Uncomment the below if your server requires IP_Binding
     * and fill it in with the address they give you --Kline
@@ -342,7 +342,7 @@ void reopen_socket( int sig )
 
 /* + */
 
-void game_loop( int control )
+void game_loop( int game_control )
 {
    static struct timeval null_time;
    struct timeval last_time;
@@ -380,8 +380,8 @@ void game_loop( int control )
       if( reopen_flag )
       {
          log_string( "SIGUSR1 received, reopening control socket" );
-         close( control );
-         control = init_socket( global_port );
+         close( game_control );
+         game_control = init_socket( global_port );
          reopen_flag = 0;
       }
 
@@ -391,8 +391,8 @@ void game_loop( int control )
       FD_ZERO( &in_set );
       FD_ZERO( &out_set );
       FD_ZERO( &exc_set );
-      FD_SET( control, &in_set );
-      maxdesc = control;
+      FD_SET( game_control, &in_set );
+      maxdesc = game_control;
 
       for( d = first_desc; d; d = d->next )
       {
@@ -428,8 +428,8 @@ void game_loop( int control )
       /*
        * New connection?
        */
-      if( FD_ISSET( control, &in_set ) )
-         new_descriptor( control );
+      if( FD_ISSET( game_control, &in_set ) )
+         new_descriptor( game_control );
 
       /*
        * Kick out the freaky folks.
@@ -617,7 +617,7 @@ void free_desc( DESCRIPTOR_DATA * d )
       dispose( d->outbuf, d->outsize );
 }
 
-void new_descriptor( int control )
+void new_descriptor( int d_control )
 {
    static DESCRIPTOR_DATA d_zero;
    char buf[MSL];
@@ -630,8 +630,8 @@ void new_descriptor( int control )
    socklen_t size;
 
    size = sizeof( sock );
-   getsockname( control, ( struct sockaddr * )&sock, &size );
-   if( ( desc = accept( control, ( struct sockaddr * )&sock, &size ) ) < 0 )
+   getsockname( d_control, ( struct sockaddr * )&sock, &size );
+   if( ( desc = accept( d_control, ( struct sockaddr * )&sock, &size ) ) < 0 )
    {
       perror( "New_descriptor: accept" );
       return;
@@ -738,10 +738,9 @@ void new_descriptor( int control )
     * Send the greeting.
     */
    {
-      char buf[MAX_STRING_LENGTH];
       FILE *fp;
 
-      snprintf( buf, MSL, "%s/g/greeting%d.%s", HELP_DIR, number_range(0,4), HELP_MORT );
+      snprintf( buf, MSL, "%s/g/greeting%d.%s", HELP_DIR, number_range(0,5), HELP_MORT );
 
       if( (fp = file_open(buf,"r")) != NULL )
        while( fgets(buf,MAX_STRING_LENGTH,fp) )
@@ -1533,7 +1532,6 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
        * We'll just show a percentage for people in the group 
        */
       CHAR_DATA *tank;
-      char buf[200];
 
       buf[0] = '\0';
 
@@ -1588,7 +1586,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
        * int percent2; 
        */
       char wound[100];
-      char buf[MAX_STRING_LENGTH];
+      buf[0] = '\0';
 
       if( victim->max_hit > 0 )
          percent = victim->hit * 100 / victim->max_hit;
@@ -2153,7 +2151,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             pban = *li;
             if( !str_prefix( pban->name, d->host ) && ( pban->newbie == FALSE ) )
             {
-               char buf[MAX_STRING_LENGTH];
                snprintf( buf, MSL, "Denying access to banned site %s", d->host );
                monitor_chan( buf, MONITOR_CONNECT );
                write_to_descriptor( d->descriptor, "Your site has been banned from this Mud.  BYE BYE!\r\n", 0 );
@@ -2190,7 +2187,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             if( !str_prefix( pban->name, d->host ) )
 
             {
-               char buf[MAX_STRING_LENGTH];
                snprintf( buf, MSL, "Denying access to banned site %s", d->host );
                monitor_chan( buf, MONITOR_CONNECT );
                write_to_descriptor( d->descriptor, "Your site has been banned from this Mud.  BYE BYE!\r\n", 0 );
@@ -2404,7 +2400,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
    if( d->connected == CON_GET_STATS )
    {
       int total = (ch->pcdata->max_str + ch->pcdata->max_int + ch->pcdata->max_wis + ch->pcdata->max_dex + ch->pcdata->max_con);
-      char buf[MSL];
 
       switch ( argument[0] )
       {
@@ -2600,7 +2595,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       short classes[MAX_CLASS];
       short parity[MAX_CLASS];  /* Nowt to do with parity really */
       char arg[MAX_STRING_LENGTH];
-      int cnt;
       int foo;
       bool ok = TRUE;
 

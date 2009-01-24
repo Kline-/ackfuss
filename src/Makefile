@@ -18,8 +18,8 @@ VERS = AckFUSS 4.4.0
 #Uncomment to compile in Cygwin
 #CYGWIN = -DCYGWIN -DWIN32
 
-#-Wshadow -Werror -Wconversion -Wwrite-strings
-W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align
+#-Werror -Wconversion -Wwrite-strings
+W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow
 C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF)
 L_FLAGS = -lcrypt -lm
 

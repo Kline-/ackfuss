@@ -372,7 +372,7 @@ char *string_format( char *str, int *numlines, int width, int height, bool unjus
    return ret;
 }
 
-char *map_format( char *str, int start, char map[MAP_Y][MSL], int *numlines, int term_width, int height, bool unjust )
+char *map_format( char *str, int start, char cmap[MAP_Y][MSL], int *numlines, int term_width, int height, bool unjust )
 {
    static char ret[MSL];
    char buf[MSL];
@@ -402,7 +402,7 @@ char *map_format( char *str, int start, char map[MAP_Y][MSL], int *numlines, int
          *pbuf = '\0';
          c = last_color( buf );
          if( currline < MAP_Y )
-            pret += snprintf( pret, MSL, "%s   ", map[currline] );
+            pret += snprintf( pret, MSL, "%s   ", cmap[currline] );
          else if( currline == MAP_Y )
             strcpy( pret, "              " ), pret += 14;
          if( unjust || iseol( *arg ) )
@@ -472,7 +472,7 @@ char *map_format( char *str, int start, char map[MAP_Y][MSL], int *numlines, int
          *pbuf++ = '\n';
          *pbuf++ = '\r';
          if( currline < MAP_Y )
-            pret += snprintf( pret, MSL, "%s   ", map[currline] );
+            pret += snprintf( pret, MSL, "%s   ", cmap[currline] );
          else if( currline == MAP_Y || ( currline == MAP_Y + 1 && blen <= term_width - 15 ) )
             strcpy( pret, "              " ), pret += 14;
          ++currline;
@@ -514,7 +514,7 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
    return buf;
 }
 
-void disp_map( char *border, char *map, CHAR_DATA * ch )
+void disp_map( char *border, char *pmap, CHAR_DATA * ch )
 {
 #ifdef ACK_43
    int cols = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );
@@ -530,7 +530,7 @@ void disp_map( char *border, char *map, CHAR_DATA * ch )
 
    strcpy( bufs[0], border );
    strcpy( bufs[ty], border );
-   x = map;
+   x = pmap;
    for( y = 1; y < ty && *x; ++y )
    {
       while( *x == '\n' || *x == '\r' )

@@ -101,7 +101,7 @@ void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
 }
 
 
-void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
+void write_interpret( CHAR_DATA * ch, char *argument )
 {
 
    BUF_DATA_STRUCT *buf_data;
@@ -155,7 +155,6 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
    {
       bool save;
       char **dest;
-      CHAR_DATA *ch;
 
       if( !str_prefix(argument,"quit") )
          save = false;
@@ -231,7 +230,6 @@ void write_interpret args( ( CHAR_DATA * ch, char *argument ) )
       /*
        * Help 
        */
-      CHAR_DATA *ch;
       ch = buf_data->ch;
 
       send_to_char( "Normal type will be appended to the string, line by line.\r\n", ch );

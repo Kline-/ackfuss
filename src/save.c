@@ -845,7 +845,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    snprintf( tempstrsave, MIL, "%s%s", strsave, ".gz" );
    if( ( fp = file_open( tempstrsave, "r" ) ) != NULL )
    {
-      char buf[MAX_STRING_LENGTH];
       file_close( fp );
       snprintf( buf, MSL, "gzip -dfq %s", tempstrsave );
       system( buf );

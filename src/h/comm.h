@@ -16,11 +16,11 @@
 
 /* comm.c */
 int main P_((int argc, char **argv));
-int init_socket P_((int port));
+int init_socket P_((int sock_port));
 void reopen_socket P_((int sig));
-void game_loop P_((int control));
+void game_loop P_((int game_control));
 void free_desc P_((DESCRIPTOR_DATA *d));
-void new_descriptor P_((int control));
+void new_descriptor P_((int d_control));
 void init_descriptor P_((DESCRIPTOR_DATA *dnew, int desc));
 void close_socket P_((DESCRIPTOR_DATA *dclose));
 bool read_from_descriptor P_((DESCRIPTOR_DATA *d));

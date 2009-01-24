@@ -511,7 +511,7 @@ void violence_update( void )
                   {
                      CHAR_DATA *vch;
                      CHAR_DATA *target;
-                     std::list<CHAR_DATA *>::iterator li;
+                     std::list<CHAR_DATA *>::iterator li2;
                      int number;
 
                      target = NULL;
@@ -520,9 +520,9 @@ void violence_update( void )
                      /*
                       * vch is the target of the lazy mob...a player 
                       */
-                     for( li = char_list.begin(); li != char_list.end(); li++ )
+                     for( li2 = char_list.begin(); li2 != char_list.end(); li2++ )
                      {
-                        vch = *li;
+                        vch = *li2;
                         if( ( can_see( rch, vch ) ) && ( !IS_NPC( vch ) ) )
                         {
                            target = vch;

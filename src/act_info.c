@@ -2005,8 +2005,6 @@ void do_who( CHAR_DATA * ch, char *argument )
       }
       else
       {
-         int iClass;
-
          if( strlen( arg ) < 3 )
          {
             send_to_char( "Classes must be longer than that.\r\n", ch );

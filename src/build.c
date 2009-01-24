@@ -2093,8 +2093,6 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 
       if( !str_cmp( arg3, "clear" ) )
       {
-         ROOM_INDEX_DATA *pDestRoom;
-
          if( pExit == NULL )
             return;
 
@@ -4334,7 +4332,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
     */
    {
       CHAR_DATA *wch;
-      std::list<CHAR_DATA *>::iterator li;
+
       for( li = char_list.begin(); li != char_list.end(); li++ )
       {
          wch = *li;

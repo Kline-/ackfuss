@@ -4560,11 +4560,11 @@ bool spell_stalker( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
       act( "$n sniffs the air in search of $s prey.", stalker, NULL, NULL, TO_ROOM );
    else
    {
-      int sn;
+      int slot;
 
-      sn = skill_lookup( "hellspawn" );
-      if( sn != 0 )  /* Check to be sure... should never == 0 */
-         ( *skill_table[sn].spell_fun ) ( sn, stalker->level, stalker, ch, NULL );
+      slot = skill_lookup( "hellspawn" );
+      if( slot != 0 )  /* Check to be sure... should never == 0 */
+         ( *skill_table[slot].spell_fun ) ( slot, stalker->level, stalker, ch, NULL );
 
       do_say( stalker, "How dare you waste my time!!" );
       act( "$n returns to the dark planes, vanishing suddenly!", stalker, NULL, NULL, TO_ROOM );
