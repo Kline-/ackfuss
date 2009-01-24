@@ -1787,7 +1787,7 @@ void do_save( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ch->level < 1 )
+   if( ch->level < 2 )
    {
       send_to_char( "You must be at least second level to save.\r\n", ch );
       return;
