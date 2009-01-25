@@ -132,7 +132,8 @@ void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
     */
 
    MESSAGE_DATA *msg;
-   BOARD_DATA *board;
+   std::list<BOARD_DATA *>::iterator li;
+   BOARD_DATA *board = NULL;
    OBJ_INDEX_DATA *pObj;
    char buf[MAX_INPUT_LENGTH];
    int cnt = 0;
@@ -144,8 +145,9 @@ void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
    /*
     * First find the board, and if not there, create one. 
     */
-   for( board = first_board; board != NULL; board = board->next )
+   for( li = board_list.begin(); li != board_list.end(); li++ )
    {
+      board = *li;
       if( board->vnum == board_num )
          break;
    }
@@ -206,8 +208,7 @@ BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj )
    BOARD_DATA *board;
    MESSAGE_DATA *message;
 
-   GET_FREE( board, board_free );
-   LINK( board, first_board, last_board, next, prev );
+   board = new BOARD_DATA;
 
    board->expiry_time = pObj->value[0];
    board->min_read_lev = pObj->value[1];
@@ -373,7 +374,8 @@ void save_board( BOARD_DATA * board, CHAR_DATA * ch )
 void do_delete( CHAR_DATA * ch, char *argument )
 {
    OBJ_DATA *object;
-   BOARD_DATA *board;
+   BOARD_DATA *board = NULL;
+   std::list<BOARD_DATA *>::iterator li;
    MESSAGE_DATA *msg;
    OBJ_INDEX_DATA *pObj;
    int vnum;
@@ -410,8 +412,9 @@ void do_delete( CHAR_DATA * ch, char *argument )
    /*
     * First find the board, and if not there, create one. 
     */
-   for( board = first_board; board != NULL; board = board->next )
+   for( li = board_list.begin(); li != board_list.end(); li++ )
    {
+      board = *li;
       if( board->vnum == vnum )
          break;
    }
@@ -479,7 +482,8 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
     * * check that message vnum == board vnum
     */
 
-   BOARD_DATA *board;
+   std::list<BOARD_DATA *>::iterator li;
+   BOARD_DATA *board = NULL;
    OBJ_INDEX_DATA *pObj;
    int vnum;
    MESSAGE_DATA *msg;
@@ -496,8 +500,9 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
    /*
     * First find the board, and if not there, create one. 
     */
-   for( board = first_board; board != NULL; board = board->next )
+   for( li = board_list.begin(); li != board_list.end(); li++ )
    {
+      board = *li;
       if( board->vnum == vnum )
          break;
    }
@@ -551,7 +556,8 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 void do_write( CHAR_DATA * ch, char *argument )
 {
    OBJ_DATA *object;
-   BOARD_DATA *board;
+   BOARD_DATA *board = NULL;
+   std::list<BOARD_DATA *>::iterator li;
    MESSAGE_DATA *msg;
    OBJ_INDEX_DATA *pObj;
    int vnum;
@@ -588,8 +594,9 @@ void do_write( CHAR_DATA * ch, char *argument )
    /*
     * First find the board, and if not there, create one. 
     */
-   for( board = first_board; board != NULL; board = board->next )
+   for( li = board_list.begin(); li != board_list.end(); li++ )
    {
+      board = *li;
       if( board->vnum == vnum )
          break;
    }
@@ -721,7 +728,8 @@ void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
     * * check that message vnum == board vnum
     */
 
-   BOARD_DATA *board;
+   std::list<BOARD_DATA *>::iterator li;
+   BOARD_DATA *board = NULL;
    OBJ_INDEX_DATA *pObj;
    int vnum;
    MESSAGE_DATA *msg;
@@ -734,8 +742,9 @@ void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
    /*
     * First find the board, and if not there, create one. 
     */
-   for( board = first_board; board != NULL; board = board->next )
+   for( li = board_list.begin(); li != board_list.end(); li++ )
    {
+      board = *li;
       if( board->vnum == vnum )
          break;
    }

@@ -63,6 +63,17 @@ ban_data::~ban_data()
  free_string(banned_by);
 }
 
+board_data::~board_data()
+{
+ MESSAGE_DATA *p, *p_next;
+
+ for( p = first_message; p != NULL; p = p_next )
+ {
+  p_next = p->next;
+  delete p;
+ }
+}
+
 brand_data::~brand_data()
 {
  free_string(branded);

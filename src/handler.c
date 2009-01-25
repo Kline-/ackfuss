@@ -1594,9 +1594,9 @@ void extract_obj( OBJ_DATA * obj )
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       wch = *li;
+
       if( wch->hunt_obj != NULL && wch->hunt_obj == obj )
          end_hunt( wch );
-/*        wch->hunt_obj = NULL;*/
       if( wch->sitting != NULL && wch->sitting == obj )
          do_stand( wch, "" );
    }

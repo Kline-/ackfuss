@@ -88,6 +88,19 @@ ban_data::ban_data()
  ban_list.push_back(this);
 }
 
+board_data::board_data()
+{
+ vnum = 0;
+ first_message = NULL;
+ last_message = NULL;
+ min_read_lev = 0;
+ min_write_lev = 0;
+ expiry_time = 0;
+ clan = 0;
+
+ board_list.push_back(this);
+}
+
 brand_data::brand_data()
 {
  branded = &str_empty[0];

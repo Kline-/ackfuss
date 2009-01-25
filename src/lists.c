@@ -48,6 +48,7 @@
 std::list<AFFECT_DATA *> affect_list;
 std::list<AREA_DATA *> area_list;
 std::list<BAN_DATA *> ban_list;
+std::list<BOARD_DATA *> board_list;
 std::list<BUILD_DATA_LIST *> build_dat_list;
 std::list<CHAR_DATA *> char_list;
 std::list<DISABLED_DATA *> disabled_list;
@@ -82,8 +83,6 @@ RULER_LIST *first_ruler_list = NULL;
 RULER_LIST *last_ruler_list = NULL;
 DL_LIST *first_brand = NULL;
 DL_LIST *last_brand = NULL;
-BOARD_DATA *first_board = NULL;
-BOARD_DATA *last_board = NULL;
 BUF_DATA_STRUCT *first_buf = NULL;
 BUF_DATA_STRUCT *last_buf = NULL;
 NPC_GROUP_DATA *first_npc_group = NULL;
@@ -104,7 +103,6 @@ QUEUED_INTERACT_LIST *queued_interact_free = NULL;
 INFLUENCE_LIST *influence_list_free = NULL;
 RULER_LIST *ruler_list_free = NULL;
 DL_LIST *dl_list_free = NULL;
-BOARD_DATA *board_free = NULL;
 
 void ( *member_free_destructor ) ( MEMBER_DATA * mdat ) = NULL;
 void ( *corpse_free_destructor ) ( CORPSE_DATA * cdat ) = NULL;
@@ -117,7 +115,6 @@ void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat ) = NU
 void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat ) = NULL;
 void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat ) = NULL;
 void ( *dl_list_free_destructor ) ( DL_LIST * dldat ) = NULL;
-void ( *board_free_destructor ) ( BOARD_DATA * bdat ) = NULL;
 
 void mark_free_destructor( MARK_DATA * mdat )
 {

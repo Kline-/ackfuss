@@ -4114,6 +4114,7 @@ void clear_lists( void )
  for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
  for_each( area_list.begin(),       area_list.end(),       DeleteObject() );
  for_each( ban_list.begin(),        ban_list.end(),        DeleteObject() );
+ for_each( board_list.begin(),      board_list.end(),      DeleteObject() );
  for_each( build_dat_list.begin(),  build_dat_list.end(),  DeleteObject() );
  for_each( char_list.begin(),       char_list.end(),       DeleteObject() );
  for_each( disabled_list.begin(),   disabled_list.end(),   DeleteObject() );

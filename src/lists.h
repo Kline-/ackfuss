@@ -44,6 +44,7 @@
 extern std::list<AFFECT_DATA *> affect_list;
 extern std::list<AREA_DATA *> area_list;
 extern std::list<BAN_DATA *> ban_list;
+extern std::list<BOARD_DATA *> board_list;
 extern std::list<BUILD_DATA_LIST *> build_dat_list;
 extern std::list<CHAR_DATA *> char_list;
 extern std::list<DISABLED_DATA *> disabled_list;
@@ -75,8 +76,6 @@ extern RULER_LIST *first_ruler_list;
 extern RULER_LIST *last_ruler_list;
 extern DL_LIST *first_brand;
 extern DL_LIST *last_brand;
-extern BOARD_DATA *first_board;
-extern BOARD_DATA *last_board;
 extern BUF_DATA_STRUCT *first_buf;
 extern BUF_DATA_STRUCT *last_buf;
 extern NPC_GROUP_DATA *first_npc_group;
@@ -97,7 +96,6 @@ extern QUEUED_INTERACT_LIST *queued_interact_free;
 extern INFLUENCE_LIST *influence_list_free;
 extern RULER_LIST *ruler_list_free;
 extern DL_LIST *dl_list_free;
-extern BOARD_DATA *board_free;
 
 extern void ( *member_free_destructor ) ( MEMBER_DATA * mdat );
 extern void ( *corpse_free_destructor ) ( CORPSE_DATA * cdat );
@@ -110,7 +108,6 @@ extern void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat
 extern void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat );
 extern void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat );
 extern void ( *dl_list_free_destructor ) ( DL_LIST * dldat );
-extern void ( *board_free_destructor ) ( BOARD_DATA * bdat );
 
 void mark_free_destructor( MARK_DATA * mdat );
 void ruler_data_free_destructor( RULER_DATA * rdat );

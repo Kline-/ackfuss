@@ -586,9 +586,13 @@ void walk_messages( MESSAGE_DATA * m )
 void walk_boards( void )
 {
    BOARD_DATA *board;
+   std::list<BOARD_DATA *>::iterator li;
 
-   for( board = first_board; board; board = board->next )
+   for( li = board_list.begin(); li != board_list.end(); li++ )
+   {
+      board = *li;
       walk_messages( board->first_message );
+   }
 }
 
 

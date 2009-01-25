@@ -82,18 +82,18 @@ class generic_list
   void *data;
 };
 
-struct board_data
+class board_data
 {
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   BOARD_DATA *next;
-   BOARD_DATA *prev;
-   int vnum;
-   MESSAGE_DATA *first_message;
-   MESSAGE_DATA *last_message;
-   int min_read_lev;
-   int min_write_lev;
-   int expiry_time;
-   int clan;
+ public:
+  board_data();
+  ~board_data();
+  int vnum;
+  MESSAGE_DATA *first_message;
+  MESSAGE_DATA *last_message;
+  int min_read_lev;
+  int min_write_lev;
+  int expiry_time;
+  int clan;
 };
 
 class disabled_data
