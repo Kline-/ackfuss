@@ -1,0 +1,8 @@
+DISABLE
+
+Disable will temporarily disable a command from use. To view currently disabled
+commands, type 'disable'. To toggle a command's disabled status, use 'disable <cmd>'.
+
+Commands are saved and persist through reboots and shutdowns. An immortal can not
+disable a command with a level higher than theirs, nor re-enable a command that was
+disabled by a higher level immortal.

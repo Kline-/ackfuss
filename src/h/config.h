@@ -1261,6 +1261,7 @@
 #define BRANDS_FILE    DATA_DIR "brands.dat"
 #define SYSDAT_FILE    DATA_DIR "sysdat.dat"
 #define SOCIAL_FILE    DATA_DIR "socials.dat"   /* or whatever fits you */
+#define DISABLED_FILE  DATA_DIR "disabled.dat"
 
 /* Other Stuff - Flar */
 #define COPYOVER_FILE	"COPYOVER.TXT" /* Temp data file used for copyover */

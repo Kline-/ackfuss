@@ -125,6 +125,11 @@ descriptor_data::~descriptor_data()
  free(outbuf);
 }
 
+disabled_data::~disabled_data()
+{
+ free_string(disabled_by);
+}
+
 exit_data::~exit_data()
 {
  free_string(description);

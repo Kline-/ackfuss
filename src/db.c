@@ -409,6 +409,7 @@ void boot_db( void )
    load_rulers();
    load_brands();
    load_corpses();
+   load_disabled();
    /*
     * Fix up exits.
     * MAG Mod: Check resets. (Allows loading objects of later areas.)
@@ -1734,6 +1735,13 @@ void load_shop( FILE * fp )
       }
    }
 
+   if( !fMatch )
+   {
+    snprintf( log_buf, (2 * MIL), "Loading in shop :%s (%s), no match for ( %s ).", area_load->name, get_mob_index(pShop->keeper)->short_descr, word );
+    monitor_chan( log_buf, MONITOR_BAD );
+    fread_to_eol( fp );
+   }
+
    pMobIndex = get_mob_index( pShop->keeper );
    pMobIndex->pShop = pShop;
    pList = new BUILD_DATA_LIST;
@@ -1894,8 +1902,92 @@ void load_gold( void )
 
 }
 
-/* Spec: see the comments on load_resets about what check_resets does */
+void load_disabled( void )
+{
+ FILE *fp;
+ DISABLED_DATA *p;
+ const char *word;
+ short i;
 
+ snprintf( log_buf, (2 * MIL), "Loading %s", DISABLED_FILE);
+ log_f( "%s", log_buf );
+
+ if( (fp = file_open(DISABLED_FILE,"r")) == NULL )
+ {
+  log_f("Done.");
+  file_close(fp);
+  return;
+ }
+
+ for( ;; )
+ {
+  word = feof(fp) ? "End" : fread_word(fp);
+ 
+  if( !str_cmp(word,"End") )
+  {
+   file_close(fp);
+   log_f("Done.");
+   return;
+  }
+
+  for( i = 0; cmd_table[i].name[0] != '\0'; i++ )
+   if( !str_cmp(cmd_table[i].name,word) )
+    break;
+
+  if( cmd_table[i].name[0] == '\0' ) // Old command now removed?
+  {
+   snprintf(log_buf,(2 * MIL),"Skipping unknown command (%s) in disabled commands.",word);
+   log_f("%",log_buf);
+   fread_number(fp); // Level
+   fread_word(fp); // Disabled by
+  }
+  else
+  {
+   p = new DISABLED_DATA;
+   p->command = &cmd_table[i];
+   p->level = fread_number(fp);
+   p->disabled_by = str_dup(fread_word(fp));
+  }
+ }
+
+ log_f("Done.");
+ file_close(fp);
+
+ return;
+}
+
+void save_disabled( void )
+{
+ FILE *fp;
+ DISABLED_DATA *p;
+ std::list<DISABLED_DATA *>::iterator li;
+
+ if( disabled_list.empty() )
+ {
+  unlink(DISABLED_FILE);
+  return;
+ }
+
+ if( (fp = file_open(DISABLED_FILE,"w")) == NULL )
+ {
+  bug("Couldn't open " DISABLED_FILE " for writing.",0);
+  file_close(fp);
+  return;
+ }
+
+ for( li = disabled_list.begin(); li != disabled_list.end(); li++ )
+ {
+  p = *li;
+  fprintf(fp,"%s %d %s\n",p->command->name,p->level,p->disabled_by);
+ }
+
+ fprintf(fp,"End\n\n");
+ file_close(fp);
+
+ return;
+}
+
+/* Spec: see the comments on load_resets about what check_resets does */
 #define VALID_RESET 0
 #define INVAL_ROOM  1
 #define INVAL_OBJ   2
@@ -4024,6 +4116,7 @@ void clear_lists( void )
  for_each( ban_list.begin(),        ban_list.end(),        DeleteObject() );
  for_each( build_dat_list.begin(),  build_dat_list.end(),  DeleteObject() );
  for_each( char_list.begin(),       char_list.end(),       DeleteObject() );
+ for_each( disabled_list.begin(),   disabled_list.end(),   DeleteObject() );
  for_each( exdesc_list.begin(),     exdesc_list.end(),     DeleteObject() );
  for_each( exit_list.begin(),       exit_list.end(),       DeleteObject() );
  for_each( file_list.begin(),       file_list.end(),       DeleteObject() );
@@ -4038,6 +4131,7 @@ void clear_lists( void )
  comlog(NULL,true,0,NULL);
  fclose(fpReserve);
  delete_hash_table(hash_changed_vnums);
+ h_clear();
  free(string_space);
  free(social_table);
 #ifdef IMC

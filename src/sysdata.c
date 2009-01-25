@@ -79,6 +79,7 @@ void load_sysdata( void )
 
  if( (fp = file_open(SYSDAT_FILE,"r")) == NULL )
  {
+  file_close(fp);
   log_f("Failed to load system data.");
   return;
  }
@@ -152,6 +153,7 @@ void save_sysdata( void )
 
  if( (fp = file_open(SYSDAT_FILE,"w")) == NULL )
  {
+  file_close(fp);
   log_f("Failed to save system data.");
   return;
  }

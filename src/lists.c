@@ -50,6 +50,7 @@ std::list<AREA_DATA *> area_list;
 std::list<BAN_DATA *> ban_list;
 std::list<BUILD_DATA_LIST *> build_dat_list;
 std::list<CHAR_DATA *> char_list;
+std::list<DISABLED_DATA *> disabled_list;
 std::list<EXTRA_DESCR_DATA *> exdesc_list;
 std::list<EXIT_DATA *> exit_list;
 std::list<FILE *> file_list;

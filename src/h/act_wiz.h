@@ -104,5 +104,6 @@ void do_sla P_((CHAR_DATA *ch, char *argument));
 void do_slay P_((CHAR_DATA *ch, char *argument));
 void do_hotreboo P_((CHAR_DATA *ch, char *argument));
 void do_hotreboot P_((CHAR_DATA *ch, char *argument));
+void do_disable P_((CHAR_DATA *ch, char *argument));
 
 #undef P_

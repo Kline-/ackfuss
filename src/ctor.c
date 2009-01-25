@@ -240,6 +240,15 @@ descriptor_data::descriptor_data()
 {
 }
 
+disabled_data::disabled_data()
+{
+ command = NULL;
+ disabled_by = &str_empty[0];
+ level = 0;
+
+ disabled_list.push_back(this);
+}
+
 exit_data::exit_data()
 {
  description = &str_empty[0];

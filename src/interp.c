@@ -616,7 +616,7 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_INFO, C_SHOW_ALWAYS,true},
 
    /*
-    * AckFUSS Continual Additions -Kline
+    * AckFUSS additions -Kline
     */
    {"statraise", do_statraise, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_ALWAYS,false},
@@ -630,6 +630,8 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_INFO, C_SHOW_ALWAYS,true},
    {"repair", do_repair, POS_STANDING, 0, LOG_NORMAL,
     C_TYPE_INFO, C_SHOW_ALWAYS,false},
+   {"disable", do_disable, POS_DEAD, L_HER, LOG_NORMAL,
+    C_TYPE_IMM, C_SHOW_ALWAYS,false},
 
 
    /*
@@ -1116,6 +1118,11 @@ void interpret( CHAR_DATA * ch, char *argument )
       return;
    }
 
+   if( check_disabled(&cmd_table[cmd]) )
+   {
+    send_to_char("This command has been temporarily disabled.\r\n",ch);
+    return;
+   }
    /*
     * Character not in position for command?
     */
@@ -1312,7 +1319,25 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
    return TRUE;
 }
 
+/*
+ * Check if that command is disabled
+ * Note that we check for equivalence of the do_fun pointers; this means
+ * that disabling 'chat' will also disable the '.' command
+ */
+bool check_disabled( const struct cmd_type *command )
+{
+ DISABLED_DATA *p;
+ std::list<DISABLED_DATA *>::iterator li;
 
+ for( li = disabled_list.begin(); li != disabled_list.end(); li++ )
+ {
+  p = *li;
+  if( p->command->do_fun == command->do_fun )
+   return true;
+ }
+
+ return false;
+}
 
 
 

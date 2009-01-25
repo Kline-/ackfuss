@@ -46,6 +46,7 @@ extern std::list<AREA_DATA *> area_list;
 extern std::list<BAN_DATA *> ban_list;
 extern std::list<BUILD_DATA_LIST *> build_dat_list;
 extern std::list<CHAR_DATA *> char_list;
+extern std::list<DISABLED_DATA *> disabled_list;
 extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
 extern std::list<EXIT_DATA *> exit_list;
 extern std::list<FILE *> file_list;

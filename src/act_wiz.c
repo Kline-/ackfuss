@@ -6154,3 +6154,91 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
    perror( "do_copyover: execl" );
    send_to_char( "HOTreboot FAILED! Something is wrong in the shell!\r\n", ch );
 }
+
+/* Syntax is:
+ * disable - shows disabled commands
+ * disable <command> - toggles disable status of command
+ */
+void do_disable( CHAR_DATA *ch, char *argument )
+{
+ short i;
+ DISABLED_DATA *p = NULL;
+ std::list<DISABLED_DATA *>::iterator li;
+ char buf[MSL];
+
+ if( IS_NPC(ch) )
+  return;
+
+ if( argument[0] == '\0' )
+ {
+  if( disabled_list.empty() )
+  {
+   send_to_char("There are no disabled commands.\r\n",ch);
+   return;
+  }
+
+  send_to_char("Disabled commands:\r\nCommand      Level   Disabled by\r\n",ch);
+  for( li = disabled_list.begin(); li != disabled_list.end(); li++ )
+  {
+   p = *li;
+
+   snprintf(buf,MSL,"%-12s %5d   %-12s\r\n",p->command->name,p->level,p->disabled_by);
+   send_to_char(buf,ch);
+  }
+
+  return;
+ } 
+
+ for( li = disabled_list.begin(); li != disabled_list.end(); li++ )
+ {
+  p = *li;
+
+  if( !str_cmp(argument,p->command->name) )
+  {
+
+   if( get_trust(ch) < p->level )
+   {
+    send_to_char("This command was disabled by a higher power.\r\n",ch);
+    return;
+   }
+
+   disabled_list.remove(p);
+   delete p;
+   save_disabled();
+   send_to_char("Command enabled.\r\n",ch);
+   return;
+  }
+ }
+
+ if( !str_cmp(argument,"disable") )
+ {
+  send_to_char("You can't disable the disable command.\r\n",ch);
+  return;
+ }
+
+ for( i = 0; cmd_table[i].name[0] != '\0'; i++ )
+  if( !str_cmp(argument,cmd_table[i].name) )
+   break;
+
+ if( cmd_table[i].name[0] == '\0' )
+ {
+  send_to_char("No such command.\r\n",ch);
+  return;
+ }
+
+ if( cmd_table[i].level > get_trust(ch) )
+ {
+  send_to_char("You can't disable a command that you cannot use.\r\n",ch);
+  return;
+ }
+
+ p = new DISABLED_DATA;
+ p->disabled_by = str_dup(ch->name);
+ p->level = get_trust(ch);
+ p->command = &cmd_table[i];
+
+ save_disabled();
+ send_to_char("Command disabled.\r\n",ch);
+
+ return;
+}
