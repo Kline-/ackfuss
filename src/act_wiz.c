@@ -6088,7 +6088,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
 
       if( !d->character || d->connected < 0 )   /* drop those logging on */
       {
-         write_to_descriptor( d->descriptor, "\r\n@Sorry, ACK! MUD rebooting. Come back in a few minutes.\r\n", 0 );
+         write_to_descriptor( d->descriptor, "\r\n@Sorry, " mudnamecolor " is rebooting. Come back in a few minutes.\r\n", 0 );
          close_socket( d );   /* throw'em out */
       }
       else
@@ -6145,7 +6145,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
    signal( SIGPROF, SIG_IGN );
 #endif
 
-   execl( EXE_FILE, "ACK! MUD", buf, "HOTreboot", buf2, buf3, ( char * )NULL );
+   execl( EXE_FILE, "AckFUSS", buf, "HOTreboot", buf2, buf3, ( char * )NULL );
 
    /*
     * Failed - sucessful exec will not return
