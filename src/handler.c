@@ -678,11 +678,15 @@ void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
       {
          char buf1[MSL];
          char buf2[MSL];
+         extern bool merc_down;
 
-         snprintf( buf1, MSL, "%s", this_shield->wearoff_room );
-         snprintf( buf2, MSL, "%s", this_shield->wearoff_self );
-         act( buf1, ch, NULL, NULL, TO_ROOM );
-         act( buf2, ch, NULL, NULL, TO_CHAR );
+         if( !merc_down ) // Don't send out messages on shutdown cleanup; it creates errors. --Kline
+         {
+           snprintf( buf1, MSL, "%s", this_shield->wearoff_room );
+           snprintf( buf2, MSL, "%s", this_shield->wearoff_self );
+           act( buf1, ch, NULL, NULL, TO_ROOM );
+           act( buf2, ch, NULL, NULL, TO_CHAR );
+         }
 
          UNLINK( this_shield, ch->first_shield, ch->last_shield, next, prev );
          delete this_shield;
@@ -1537,6 +1541,7 @@ void extract_obj( OBJ_DATA * obj )
    CHAR_DATA *wch;
    OBJ_DATA *obj_content;
    ROOM_INDEX_DATA *drop_room = NULL;
+   extern bool merc_down;
 
    if( ( obj == quest_object ) && quest )
    {
@@ -1591,14 +1596,17 @@ void extract_obj( OBJ_DATA * obj )
       }
    }
 
-   for( li = char_list.begin(); li != char_list.end(); li++ )
+   if( !merc_down ) //Chars get cleaned before objs on shutdown; checking past this point creates errors. --Kline
    {
-      wch = *li;
+     for( li = char_list.begin(); li != char_list.end(); li++ )
+     {
+       wch = *li;
 
-      if( wch->hunt_obj != NULL && wch->hunt_obj == obj )
+       if( wch->hunt_obj != NULL && wch->hunt_obj == obj )
          end_hunt( wch );
-      if( wch->sitting != NULL && wch->sitting == obj )
+       if( wch->sitting != NULL && wch->sitting == obj )
          do_stand( wch, "" );
+     }
    }
 
    if( obj->item_type == ITEM_CORPSE_PC )
