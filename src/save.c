@@ -1204,8 +1204,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                num_coins = fread_number( fp );
                for( cnt = 0; cnt < num_coins; cnt++ )
                   transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
-               join_money( transfer, ch->money );
                ch->carry_weight += money_weight( transfer );
+               join_money( transfer, ch->money );
                fMatch = TRUE;
                break;
             }
