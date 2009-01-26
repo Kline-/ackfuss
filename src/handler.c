@@ -1603,15 +1603,16 @@ void extract_obj( OBJ_DATA * obj )
 
    if( obj->item_type == ITEM_CORPSE_PC )
    {
-      CORPSE_DATA *this_corpse;
-      for( this_corpse = first_corpse; this_corpse != NULL; this_corpse = this_corpse->next )
-         if( this_corpse->this_corpse == obj )
-            break;
-      if( this_corpse != NULL )
+      OBJ_DATA *this_corpse;
+      std::list<OBJ_DATA *>::iterator ci;
+      for( ci = corpse_list.begin(); ci != corpse_list.end(); ci++ )
       {
-         UNLINK( this_corpse, first_corpse, last_corpse, next, prev );
-         PUT_FREE( this_corpse, corpse_free );
+         this_corpse = *ci;
+         if( this_corpse == obj )
+            break;
       }
+      if( this_corpse != NULL )
+         corpse_list.remove(this_corpse);
       save_corpses(  );
    }
 

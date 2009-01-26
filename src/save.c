@@ -2237,7 +2237,8 @@ void save_corpses(  )
 
    FILE *fp;
    char corpse_file_name[MAX_STRING_LENGTH];
-   CORPSE_DATA *this_corpse;
+   OBJ_DATA *this_corpse;
+   std::list<OBJ_DATA *>::iterator li;
 
    snprintf( corpse_file_name, MSL, "%s", CORPSE_FILE );
 
@@ -2248,9 +2249,10 @@ void save_corpses(  )
    }
    else
    {
-      for( this_corpse = first_corpse; this_corpse != NULL; this_corpse = this_corpse->next )
+      for( li = corpse_list.begin(); li != corpse_list.end(); li++ )
       {
-         fwrite_corpse( this_corpse->this_corpse, fp, 0 );
+         this_corpse = *li;
+         fwrite_corpse( this_corpse, fp, 0 );
       }
       fprintf( fp, "#END\n\n" );
 

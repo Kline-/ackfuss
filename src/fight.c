@@ -2312,12 +2312,9 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) )
    {
       obj_to_room( corpse, ch->in_room );
-      CORPSE_DATA *this_corpse;
-      GET_FREE( this_corpse, corpse_free );
-      this_corpse->next = NULL;
-      this_corpse->prev = NULL;
-      this_corpse->this_corpse = corpse;
-      LINK( this_corpse, first_corpse, last_corpse, next, prev );
+      OBJ_DATA *this_corpse = new OBJ_DATA;
+      this_corpse = corpse;
+      corpse_list.push_back(this_corpse);
       save_corpses(  );
       return;
    }

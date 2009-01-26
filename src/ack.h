@@ -211,14 +211,6 @@ struct weather_data
    bool phase_changed;
 };
 
-struct corpse_data
-{
-   bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
-   CORPSE_DATA *next;
-   CORPSE_DATA *prev;
-   OBJ_DATA *this_corpse;
-};
-
 struct member_data
 {
    bool is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
