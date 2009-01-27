@@ -225,7 +225,16 @@ npc_group_data::~npc_group_data()
 
 obj_data::~obj_data()
 {
+ AFFECT_DATA *a, *a_next;
+
  is_free = true;
+
+ for( a = first_apply; a != NULL; a = a_next )
+ {
+  a_next = a->next;
+  delete a;
+ }
+
  free_string(name);
  free_string(owner);
  free_string(short_descr);

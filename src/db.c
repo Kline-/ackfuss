@@ -4103,12 +4103,19 @@ void file_close( FILE *file )
 void clear_lists( void )
 {
  DESCRIPTOR_DATA *d, *d_next;
+ H_QUEUE *h, *h_next;
+ extern H_QUEUE *h_free;
  extern hash_table *hash_changed_vnums;
 
  for( d = first_desc; d != NULL; d = d_next )
  {
   d_next = d->next;
   delete d;
+ }
+ for( h = h_free; h != NULL; h = h_next )
+ {
+  h_next = h->next;
+  free(h);
  }
 
  for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
@@ -4132,7 +4139,6 @@ void clear_lists( void )
  comlog(NULL,true,0,NULL);
  fclose(fpReserve);
  delete_hash_table(hash_changed_vnums);
- h_clear();
  free(string_space);
  free(social_table);
 #ifdef IMC

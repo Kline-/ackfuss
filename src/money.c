@@ -114,7 +114,7 @@ float money_weight( MONEY_TYPE * money )
 char *cost_to_money( int cost )
 {
    static char outbuf[MSL];
-   MONEY_TYPE *money = new MONEY_TYPE;
+   MONEY_TYPE *money;
    money = round_money( cost, TRUE );
    snprintf( outbuf, MSL, "%s", money_string( money ) );
    delete money;
