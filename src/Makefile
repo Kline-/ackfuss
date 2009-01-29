@@ -20,7 +20,7 @@ VERS = AckFUSS 4.4.0
 
 #-Werror -Wwrite-strings
 W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wconversion
-C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF)
+C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(CYGWIN)
 L_FLAGS = -lcrypt -lm
 
 #IMC2 - Comment out to disable IMC2 support
