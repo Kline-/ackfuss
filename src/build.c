@@ -5735,6 +5735,7 @@ void build_clone( CHAR_DATA * ch, char *argument )
    {
       ROOM_INDEX_DATA *room;
       ROOM_INDEX_DATA *in_room = ch->in_room;
+      EXTRA_DESCR_DATA *pEd, *pEd_new;
 
       if( ch->act_build != ACT_BUILD_REDIT )
       {
@@ -5780,11 +5781,13 @@ void build_clone( CHAR_DATA * ch, char *argument )
       in_room->sector_type = room->sector_type;
       in_room->room_flags = room->room_flags;
 
-      /*
-       * FIXME:
-       * * Copy extra descriptions
-       */
-
+      for( pEd = room->first_exdesc; pEd != NULL; pEd = pEd->next )
+      {
+       pEd_new = new EXTRA_DESCR_DATA;
+       pEd_new->keyword = str_dup(pEd->keyword);
+       pEd_new->description = str_dup(pEd->description);
+       LINK( pEd_new, in_room->first_exdesc, in_room->last_exdesc, next, prev );
+      }
 
       send_to_char( "Room cloned.\r\n", ch );
       return;
@@ -5794,7 +5797,9 @@ void build_clone( CHAR_DATA * ch, char *argument )
    {
       OBJ_INDEX_DATA *obj;
       OBJ_INDEX_DATA *this_obj;
+      EXTRA_DESCR_DATA *pEd, *pEd_new;
       int looper;
+
       if( ch->act_build != ACT_BUILD_OEDIT )
       {
          send_to_char( "You must be in OEDIT mode to clone an object.\r\n", ch );
@@ -5841,16 +5846,22 @@ void build_clone( CHAR_DATA * ch, char *argument )
       this_obj->extra_flags = obj->extra_flags;
       this_obj->wear_flags = obj->wear_flags;
       this_obj->item_apply = obj->item_apply;
-      for( looper = 0; looper < 10; looper++ )
+      for( looper = 0; looper < MAX_OBJ_VALUE; looper++ )
          this_obj->value[looper] = obj->value[looper];
 
       this_obj->weight = obj->weight;
+      this_obj->speed = obj->speed;
+      this_obj->durability = obj->durability;
+      this_obj->max_durability = obj->max_durability;
+      this_obj->obj_fun = obj->obj_fun;
 
-      /*
-       * FIXME:
-       * * Copy extra descriptions
-       * * handle obj_funs
-       */
+      for( pEd = obj->first_exdesc; pEd != NULL; pEd = pEd->next )
+      {
+       pEd_new = new EXTRA_DESCR_DATA;
+       pEd_new->keyword = str_dup(pEd->keyword);
+       pEd_new->description = str_dup(pEd->description);
+       LINK( pEd_new, this_obj->first_exdesc, this_obj->last_exdesc, next, prev );
+      }
 
       send_to_char( "Object cloned.\r\n", ch );
       return;
@@ -5860,6 +5871,8 @@ void build_clone( CHAR_DATA * ch, char *argument )
    {
       MOB_INDEX_DATA *mob;
       MOB_INDEX_DATA *this_mob;
+      SHOP_DATA *pShop, *pShop_new;
+      BUILD_DATA_LIST *pList, *pList_new;
 
       if( ch->act_build != ACT_BUILD_MEDIT )
       {
@@ -5917,13 +5930,37 @@ void build_clone( CHAR_DATA * ch, char *argument )
       this_mob->cast = mob->cast;
       this_mob->def = mob->def;
       this_mob->skills = mob->skills;
+      this_mob->p_class = mob->p_class;
+      this_mob->race = mob->race;
+      this_mob->race_mods = mob->race_mods;
+      this_mob->resist = mob->resist;
+      this_mob->strong_magic = mob->strong_magic;
+      this_mob->suscept = mob->suscept;
+      this_mob->weak_magic = mob->weak_magic;
+      this_mob->spec_fun = mob->spec_fun;
 
-      /*
-       * FIXME:
-       * * Copy shop details (if any) across
-       * * handle spec_fun
-       * * ignore mob_progs?
-       */
+      for( pList = mob->area->first_area_shop; pList != NULL; pList = pList->next )
+      {
+       pShop = (SHOP_DATA *)pList->data;
+       if( pShop->keeper != mob->vnum )
+        continue;
+
+       pShop_new = new SHOP_DATA;
+       pList_new = new BUILD_DATA_LIST;
+
+       for( short i = 0; i < MAX_TRADE; i++ )
+        pShop_new->buy_type[i] = pShop->buy_type[i];
+       pShop_new->close_hour = pShop->close_hour;
+       pShop_new->keeper = this_mob->vnum;
+       pShop_new->open_hour = pShop->open_hour;
+       pShop_new->profit_buy = pShop->profit_buy;
+       pShop_new->profit_sell = pShop->profit_sell;
+
+       this_mob->pShop = pShop_new;
+
+       pList_new->data = pShop_new;
+       LINK( pList_new, this_mob->area->first_area_shop, this_mob->area->last_area_shop, next, prev );
+      }
 
       send_to_char( "Mobile cloned.\r\n", ch );
       return;
