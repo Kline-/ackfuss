@@ -2706,7 +2706,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->pcdata->hp_from_gain = ch->max_hit;
          ch->pcdata->move_from_gain = ch->max_move;
 
-         ch->pcdata->clan = 0;   /* no clan */
+         ch->clan = 0;   /* no clan */
          snprintf( buf, MSL, " needs a new title!" );
          set_title( ch, buf );
 

@@ -85,7 +85,6 @@ void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
    buf_data->ch = ch;
    buf_data->dest = dest;
    buf_data->buf = buf;
-   buf_data->pos = 0;
    buf_data->returnfunc = (RET_FUN *)retfunc;
    buf_data->returnparm = (MESSAGE_DATA *)retparm;
 

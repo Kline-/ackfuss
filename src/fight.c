@@ -1507,8 +1507,8 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
    if( !IS_NPC( ch ) && !IS_NPC( victim ) )
    {
 
-      if( ( ch->pcdata->clan != 0 ) && ( victim->pcdata->clan != 0 )
-          && ( politics_data.diplomacy[ch->pcdata->clan][victim->pcdata->clan] < -450 ) )
+      if( ( ch->clan != 0 ) && ( victim->clan != 0 )
+          && ( politics_data.diplomacy[ch->clan][victim->clan] < -450 ) )
          return;
 
       if( ch->act.test(ACT_PKOK ) && victim->act.test(ACT_PKOK ) )
@@ -2261,12 +2261,12 @@ void make_corpse( CHAR_DATA * ch, char *argument )
                corpse->value[0] = 1;
             if( ch->act.test(ACT_PKOK ) )
                corpse->value[0] = 1;
-            if( ch->pcdata->clan > 0 )
+            if( ch->clan > 0 )
             {
-               if( target->pcdata->clan != ch->pcdata->clan &&
-                   ( politics_data.diplomacy[ch->pcdata->clan][target->pcdata->clan] < -450 ) )
+               if( target->clan != ch->clan &&
+                   ( politics_data.diplomacy[ch->clan][target->clan] < -450 ) )
                {
-                  corpse->value[2] = target->pcdata->clan;
+                  corpse->value[2] = target->clan;
                }
             }
             else

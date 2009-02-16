@@ -381,7 +381,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    }
    else
    {
-      fprintf( fp, "Clan           %d\n", ch->pcdata->clan );
+      fprintf( fp, "Clan           %d\n", ch->clan );
       fprintf( fp, "Order          %d %d %d %d %d\n",
                ch->pcdata->order[0], ch->pcdata->order[1], ch->pcdata->order[2],
                ch->pcdata->order[3], ch->pcdata->order[4] );
@@ -1031,7 +1031,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'C':
             if( !IS_NPC( ch ) )
             {
-               KEY( "Clan", ch->pcdata->clan, fread_number( fp ) );
+               KEY( "Clan", ch->clan, fread_number( fp ) );
             }
             KEY( "Class", ch->p_class, fread_number( fp ) );
             if( !str_cmp( word, "Colors" ) && !IS_NPC( ch ) )

@@ -332,7 +332,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
       {
          if( to_room->vnum == clan_table[iClan].clan_room )
          {
-            if( ( IS_NPC( ch ) ) || ( ( !IS_IMMORTAL( ch ) ) && ( iClan != ch->pcdata->clan ) ) )
+            if( ( IS_NPC( ch ) ) || ( ( !IS_IMMORTAL( ch ) ) && ( iClan != ch->clan ) ) )
             {
                send_to_char( "You aren't allowed in there.\r\n", ch );
                ch->using_named_door = FALSE;
@@ -1461,13 +1461,13 @@ void do_clan_recall( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ch->pcdata->clan == 0 )
+   if( ch->clan == 0 )
    {
       send_to_char( "You must be in a clan to use this command!!\r\n", ch );
       return;
    }
    else
-      location = get_room_index( clan_table[ch->pcdata->clan].clan_room );
+      location = get_room_index( clan_table[ch->clan].clan_room );
 
    if( location == NULL )
    {

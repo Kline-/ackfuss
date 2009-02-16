@@ -118,7 +118,6 @@ buf_data_struct::buf_data_struct()
  ch = NULL;
  dest = NULL;
  buf = &str_empty[0];
- pos = 0;
  returnfunc = NULL;
  returnparm = NULL;
  old_char_pos = 0;
@@ -520,7 +519,6 @@ pc_data::pc_data()
  assist_msg = &str_empty[0];
  bamfin = &str_empty[0];
  bamfout = &str_empty[0];
- clan = 0;
  for( short i = 0; i < MAX_COND; i++ )
   condition[i] = 0;
  for( short i = 0; i < MAX_COLOR; i++ )

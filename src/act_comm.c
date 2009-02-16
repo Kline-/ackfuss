@@ -690,7 +690,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
             if( channel == CHANNEL_RACE && vch->race != ch->race
                 && ( och->level != 85 || och->deaf.test(CHANNEL_ALLRACE) ) )
                continue;
-            if( channel == CHANNEL_CLAN && och->pcdata->clan != ch->pcdata->clan
+            if( channel == CHANNEL_CLAN && och->clan != ch->clan
                 && ( och->deaf.test(CHANNEL_ALLCLAN) || get_trust( och ) != MAX_LEVEL ) )
                continue;
             if( ( channel == CHANNEL_FAMILY )
@@ -838,13 +838,13 @@ void do_clan( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ch->pcdata->clan == 0 )
+   if( ch->clan == 0 )
    {
       send_to_char( "Only players in clans may use this channel.\r\n", ch );
       return;
    }
 
-   snprintf( buf, MSL, "[%s]", clan_table[ch->pcdata->clan].clan_abbr );
+   snprintf( buf, MSL, "[%s]", clan_table[ch->clan].clan_abbr );
    talk_channel( ch, argument, CHANNEL_CLAN, buf );
    return;
 }

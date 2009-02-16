@@ -1303,7 +1303,7 @@ void do_score( CHAR_DATA * ch, char *argument )
             IS_NPC( ch ) ? "" : ch->pcdata->title,
             IS_NPC( ch ) ? "n/a" : race_table[ch->race].race_title,
             IS_VAMP( ch ) ? "@@e(Vampire)@@N" : IS_WOLF( ch ) ? "@@r(Werewolf)@@N" : "",
-            IS_NPC( ch ) ? "n/a" : clan_table[ch->pcdata->clan].clan_name );
+            IS_NPC( ch ) ? "n/a" : clan_table[ch->clan].clan_name );
    my_get_age( ch, buf );
    send_to_char( buf, ch );
    snprintf( buf, MSL, " (%d hours RL)\r\n", my_get_hours( ch ) );
@@ -1317,7 +1317,7 @@ void do_score( CHAR_DATA * ch, char *argument )
     * get_age(ch),
     * (get_age(ch) - 17) * 2, 
     * IS_NPC(ch) ? "n/a"  : IS_VAMP(ch) ? "Vampire" : race_table[ch->race].race_title,
-    * IS_NPC(ch) ? " n/a" : clan_table[ch->pcdata->clan].clan_name );
+    * IS_NPC(ch) ? " n/a" : clan_table[ch->clan].clan_name );
     * send_to_char( buf, ch );
     */
 
@@ -2404,7 +2404,7 @@ void do_who( CHAR_DATA * ch, char *argument )
 
          snprintf( fgs, MSL, "%3s %5s %s%s%s%s%s",
                   race_table[wch->race].race_name,
-                  clan_table[wch->pcdata->clan].clan_abbr,
+                  clan_table[wch->clan].clan_abbr,
                   wch->act.test(ACT_AFK) ? "A" : " ",
                   wch->position == POS_BUILDING ? "B" : " ",
                   clan_job,
@@ -3480,7 +3480,7 @@ void do_socials( CHAR_DATA * ch, char *argument )
   * {
   * 
   * if ( cmd_table[cmd].level == CLAN_ONLY 
-  * && ch->pcdata->clan == 0 )
+  * && ch->clan == 0 )
   * continue;
   * 
   * if ( cmd_table[cmd].level == VAMP_ONLY
@@ -3571,7 +3571,7 @@ void do_commands( CHAR_DATA * ch, char *argument )
       if( cmd_table[cmd].level <= L_GOD && cmd_table[cmd].level <= get_trust( ch ) )
       {
 
-         if( cmd_table[cmd].level == CLAN_ONLY && ch->pcdata->clan == 0 )
+         if( cmd_table[cmd].level == CLAN_ONLY && ch->clan == 0 )
             continue;
 
          if( cmd_table[cmd].level == BOSS_ONLY && !ch->act.test(ACT_CLEADER) )
@@ -5628,7 +5628,7 @@ void do_whois( CHAR_DATA * ch, char *argument )
    snprintf( buf + strlen( buf ), MSL, "Sex: %s.  Race: %s.  Clan: %s.\r\n",
             ( victim->sex == SEX_MALE ) ? "Male" :
             ( victim->sex == SEX_FEMALE ) ? "Female" : "None",
-            race_table[victim->race].race_name, clan_table[victim->pcdata->clan].clan_name );
+            race_table[victim->race].race_name, clan_table[victim->clan].clan_name );
 
    /*
     * if (victim->act != 0)
@@ -5779,7 +5779,7 @@ void do_loot( CHAR_DATA * ch, char *argument )
     * begin checking for lootability 
     */
 
-   if( ( ch->pcdata->clan == 0 ) && ( !ch->act.test(ACT_PKOK) ) && ( !IS_VAMP( ch ) && !IS_WOLF( ch ) ) )
+   if( ( ch->clan == 0 ) && ( !ch->act.test(ACT_PKOK) ) && ( !IS_VAMP( ch ) && !IS_WOLF( ch ) ) )
    {
       send_to_char( "You cannot loot corpses.\r\n", ch );
       return;
@@ -5791,7 +5791,7 @@ void do_loot( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ( ch->pcdata->clan == corpse->value[2] )
+   if( ( ch->clan == corpse->value[2] )
        || ( ( ch->act.test(ACT_PKOK) )
             && ( corpse->value[0] == 1 ) ) || ( ( IS_WOLF( ch ) || IS_VAMP( ch ) ) && ( corpse->value[0] == 1 ) ) )
    {

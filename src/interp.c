@@ -1024,7 +1024,7 @@ void interpret( CHAR_DATA * ch, char *argument )
        * == -4 wolf  
        */
 
-      if( cmd_table[cmd].level == CLAN_ONLY && !IS_NPC( ch ) && ch->pcdata->clan == 0 )
+      if( cmd_table[cmd].level == CLAN_ONLY && !IS_NPC( ch ) && ch->clan == 0 )
          continue;
 
       if( cmd_table[cmd].level == BOSS_ONLY && !IS_NPC( ch ) && ch->act.test(ACT_CLEADER) )
@@ -1205,14 +1205,17 @@ void interpret( CHAR_DATA * ch, char *argument )
 
 
 
-bool check_social( CHAR_DATA * ch, char *command, char *argument )
+bool check_social( CHAR_DATA * ch, const char *command, const char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
+   char *fargument = NULL;
    CHAR_DATA *victim;
    int cmd;
    bool found;
 
    found = FALSE;
+   strcpy(fargument,argument);
+
    for( cmd = 0; social_table[cmd].name[0] != '\0'; cmd++ )
    {
       if( command[0] == social_table[cmd].name[0] && !str_prefix( command, social_table[cmd].name ) )
@@ -1264,7 +1267,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
 
    }
 
-   one_argument( argument, arg );
+   one_argument( fargument, arg );
    victim = NULL;
    if( arg[0] == '\0' )
    {

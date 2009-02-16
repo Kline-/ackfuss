@@ -185,10 +185,9 @@ class buf_data_struct
   CHAR_DATA *ch;
   char **dest;
   char *buf;
-  int pos;
   RET_FUN *returnfunc;
   MESSAGE_DATA *returnparm;
-  int old_char_pos;
+  short old_char_pos;
 };
 
 struct time_info_data
@@ -705,7 +704,6 @@ class pc_data
   char *assist_msg;
   char *bamfin;
   char *bamfout;
-  short clan;   /* will be used to denote clan membership */
   short condition[MAX_COND];
   int color[MAX_COLOR];
   char dimcol;
@@ -1350,7 +1348,7 @@ struct eq_type
 /* interp.c */
 void interpret args( ( CHAR_DATA * ch, char *argument ) );
 bool IS_SWITCHED args( ( CHAR_DATA * ch ) );
-bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
+bool check_social args( ( CHAR_DATA * ch, const char *command, const char *argument ) );
 bool check_disabled args( ( const struct cmd_type *command ) );
 void comlog args( ( CHAR_DATA * ch, bool cleanup, int cmd, char *args ) );
 

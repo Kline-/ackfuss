@@ -3465,7 +3465,7 @@ void do_cdonate( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ch->pcdata->clan == 0 )
+   if( ch->clan == 0 )
    {
       send_to_char( "You must be in a clan to use this command!\r\n", ch );
       return;
@@ -3526,7 +3526,7 @@ void do_cdonate( CHAR_DATA * ch, char *argument )
     * Remove object from inventory and put into donation room 
     */
 
-   place_to_put_it = clan_table[ch->pcdata->clan].donat_room;
+   place_to_put_it = clan_table[ch->clan].donat_room;
    if( ( room = get_room_index( place_to_put_it ) ) == NULL )
    {
       snprintf( log_buf, (2 * MIL), "Cdonate: no valid room for vnum %d", place_to_put_it );

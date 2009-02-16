@@ -208,7 +208,7 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
       return FALSE;
    }
 
-/*    if ( victim->pcdata->clan == 7 )
+/*    if ( victim->clan == 7 )
      {
        send_to_char( "@@mNO WAY!!!!!@@W They are @@dKindred @@eKillers!!!!!@@N\r\n", ch );
        return FALSE;

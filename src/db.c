@@ -32,6 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
+#include <algorithm>
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -3619,7 +3620,7 @@ void append_file( CHAR_DATA * ch, char *file, char *str )
  * Nice little functions that limit the amount of typing you have to do with    
  * each and every log File entry and bug report.---Flar
  */
-void bugf( char *fmt, ... )
+void bugf( const char *fmt, ... )
 {
    char buf[MSL];
    va_list args;
@@ -3630,7 +3631,7 @@ void bugf( char *fmt, ... )
    bug( buf, 0 );
 }
 
-void log_f( char *fmt, ... )
+void log_f( const char *fmt, ... )
 {
    char buf[2 * MSL];
    va_list args;
@@ -3888,7 +3889,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
       }
       break;
      case CHANNEL_CLAN:
-      if( ch->pcdata->clan == chan_history.cbit[x][y] )
+      if( ch->clan == chan_history.cbit[x][y] )
       {
        send_to_char(buf,ch);
        found = TRUE;
@@ -3945,7 +3946,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    {
     default: break;
     case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,"%s",ch->in_room->area->name);      break;
-    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                               break;
+    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->clan;                               break;
     case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
     case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
     case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
@@ -3978,7 +3979,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    {
     default: break;
     case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,"%s",ch->in_room->area->name);      break;
-    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->pcdata->clan;                               break;
+    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->clan;                               break;
     case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
     case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
     case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
@@ -4118,7 +4119,7 @@ void clear_lists( void )
   free(h);
  }
 
- for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
+ std::for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
  for_each( area_list.begin(),       area_list.end(),       DeleteObject() );
  for_each( ban_list.begin(),        ban_list.end(),        DeleteObject() );
  for_each( board_list.begin(),      board_list.end(),      DeleteObject() );

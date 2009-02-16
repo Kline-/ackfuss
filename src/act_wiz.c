@@ -964,7 +964,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
                victim->race,
                race_table[victim->race].race_name,
                IS_VAMP( victim ) ? "[VAMPIRE]" : "",
-               victim->pcdata->clan, clan_table[victim->pcdata->clan].clan_abbr, victim->balance );
+               victim->clan, clan_table[victim->clan].clan_abbr, victim->balance );
       strncat( buf1, buf, MSL );
    }
 
