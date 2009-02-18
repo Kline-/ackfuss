@@ -18,8 +18,8 @@ VERS = AckFUSS 4.4.0
 #Uncomment to compile in Cygwin
 #CYGWIN = -DCYGWIN -DWIN32
 
-#-Werror -Wwrite-strings
-W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wconversion
+#-Werror -Wwrite-strings -Wconversion
+W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings
 C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(CYGWIN)
 L_FLAGS = -lcrypt -lm
 
@@ -77,7 +77,3 @@ endif
 o/%.o: %.c
 	@echo "Compiling `echo $@ | cut -c 3-` ...";
 	@$(CC) -c $(C_FLAGS) $< -o $@
-
-scan: scan.o
-	rm -f scan
-	$(CC) $(L_FLAGS) -o scan scan.o

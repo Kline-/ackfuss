@@ -3620,7 +3620,7 @@ void append_file( CHAR_DATA * ch, char *file, char *str )
  * Nice little functions that limit the amount of typing you have to do with    
  * each and every log File entry and bug report.---Flar
  */
-void bugf( const char *fmt, ... )
+void bugf( char *fmt, ... )
 {
    char buf[MSL];
    va_list args;
@@ -3631,7 +3631,7 @@ void bugf( const char *fmt, ... )
    bug( buf, 0 );
 }
 
-void log_f( const char *fmt, ... )
+void log_f( char *fmt, ... )
 {
    char buf[2 * MSL];
    va_list args;
@@ -4119,7 +4119,7 @@ void clear_lists( void )
   free(h);
  }
 
- std::for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
+ for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
  for_each( area_list.begin(),       area_list.end(),       DeleteObject() );
  for_each( ban_list.begin(),        ban_list.end(),        DeleteObject() );
  for_each( board_list.begin(),      board_list.end(),      DeleteObject() );

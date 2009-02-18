@@ -2114,8 +2114,7 @@ void do_enter( CHAR_DATA * ch, char *argument )
       send_to_char( "Nothing happens.\r\n", ch );
       return;
    }
-   if( ch->in_room->room_flags.test(RFLAG_NO_PORTAL) || to_room->room_flags.test(RFLAG_NO_PORTAL )
-       && number_range( 0, 100 ) < 75 )
+   if( (ch->in_room->room_flags.test(RFLAG_NO_PORTAL) || to_room->room_flags.test(RFLAG_NO_PORTAL )) && number_range( 0, 100 ) < 75 )
    {
       act( "The anti-magic zone causes the portal to @@eIMPLODE@@N!!!", ch, NULL, NULL, TO_ROOM );
       send_to_char( "The anti-magic zone causes the portal to @@eIMPLODE@@N!!!", ch );

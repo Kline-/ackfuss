@@ -187,7 +187,7 @@ class buf_data_struct
   char *buf;
   RET_FUN *returnfunc;
   MESSAGE_DATA *returnparm;
-  short old_char_pos;
+  int old_char_pos;
 };
 
 struct time_info_data
@@ -1348,7 +1348,7 @@ struct eq_type
 /* interp.c */
 void interpret args( ( CHAR_DATA * ch, char *argument ) );
 bool IS_SWITCHED args( ( CHAR_DATA * ch ) );
-bool check_social args( ( CHAR_DATA * ch, const char *command, const char *argument ) );
+bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
 bool check_disabled args( ( const struct cmd_type *command ) );
 void comlog args( ( CHAR_DATA * ch, bool cleanup, int cmd, char *args ) );
 

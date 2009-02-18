@@ -254,10 +254,10 @@ void do_ctoggle( CHAR_DATA * ch, char *argument )
 
 
 
-const char *get_diplo_name( short value )
+char *get_diplo_name( short value )
 {
 
-   const char *name = '\0';
+   char *name = '\0';
 
    if( value < -450 )
       name = "@@R  WAR  @@N";
@@ -375,7 +375,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   target_clan = static_cast<short>(atoi( arg1 ));
+   target_clan = atoi( arg1 );
    if( ( target_clan < 1 ) || ( target_clan > ( MAX_CLAN - 1 ) ) )
    {
       send_to_char( "That is not a clan!\r\n", ch );
