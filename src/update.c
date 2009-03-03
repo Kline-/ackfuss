@@ -1971,9 +1971,8 @@ void rooms_update( void )
    BUILD_DATA_LIST *thing;
    ROOM_AFFECT_DATA *raf;
    ROOM_AFFECT_DATA *raf_next;
-   MARK_LIST_MEMBER *this_mark;
-   MARK_LIST_MEMBER *next_mark;
    std::list<AREA_DATA *>::iterator li;
+   std::list<MARK_DATA *>::iterator mi;
 
    for( li = area_list.begin(); li != area_list.end(); li++ )
    {
@@ -1987,17 +1986,14 @@ void rooms_update( void )
           * continue;   
           */
 
-         for( this_mark = room->first_mark_list; this_mark != NULL; this_mark = next_mark )
+         for( mi = room->mark_list.begin(); mi != room->mark_list.end(); mi++ )
          {
-            next_mark = this_mark->next;
-            if( this_mark->mark->duration > 0 )
-               this_mark->mark->duration--;
-            else if( this_mark->mark->duration < 0 )
-               ;
-            else
-            {
-               mark_from_room( room->vnum, this_mark->mark );
-            }
+           static_cast<MARK_DATA *>(*mi)->duration--;
+           if( static_cast<MARK_DATA *>(*mi)->duration <= 0 )
+           {
+            mi = room->mark_list.erase(mi);
+            save_marks();
+           }
          }
 
 

@@ -2262,38 +2262,45 @@ void save_corpses(  )
 
 }
 
-void save_marks(  )
+void save_marks( void )
 {
+ FILE *fp;
+ MARK_DATA *mk = NULL;
+ ROOM_INDEX_DATA *room = NULL;
+ std::list<ROOM_INDEX_DATA *>::iterator ri;
+ std::list<MARK_DATA *>::iterator mi;
 
-   FILE *fp;
-   char mark_file_name[MAX_STRING_LENGTH];
-   MARK_LIST_MEMBER *mark_list;
+ if( booting_up )
+  return;
 
-   snprintf( mark_file_name, MSL, "%s", MARKS_FILE );
+ if( (fp = file_open(MARKS_FILE,"w")) == NULL )
+ {
+  file_close(fp);
+  log_f("Failed to save marks.");
+  return;
+ }
 
-   if( ( fp = file_open( mark_file_name, "w" ) ) == NULL )
+ for( ri = room_index_list.begin(); ri != room_index_list.end(); ri++ )
+ {
+  room = *ri;
+
+  if( !room->mark_list.empty() )
+  {
+   for( mi = room->mark_list.begin(); mi != room->mark_list.end(); mi++ )
    {
-      bug( "Save Mark list: file_open", 0 );
-      perror( "failed open of roommarks.lst in save_marks" );
+    mk = *mi;
+
+    fprintf( fp, "Room     %d\n", mk->room_vnum ); /* must be first for sanity checks --Kline */
+    fprintf( fp, "Author   %s~\n", mk->author );
+    fprintf( fp, "Duration %d\n", mk->duration );
+    fprintf( fp, "Message  %s~\n", mk->message );
+    fprintf( fp, "Type     %d\n", mk->type );
    }
-   else
-   {
-      for( mark_list = first_mark_list; mark_list != NULL; mark_list = mark_list->next )
-      {
-         fprintf( fp, "#MARK~\n" );
-         fprintf( fp, "%d\n", mark_list->mark->room_vnum );
-         fprintf( fp, "%s~\n", mark_list->mark->message );
-         fprintf( fp, "%s~\n", mark_list->mark->author );
-         fprintf( fp, "%d\n", mark_list->mark->duration );
-         fprintf( fp, "%d\n", mark_list->mark->type );
-      }
-      fprintf( fp, "#END~\n\n" );
-   }
+  }
+ }
 
-
-   file_close(fp);
-   return;
-
+ file_close(fp);
+ return;
 }
 
 void save_bans(  )

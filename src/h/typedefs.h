@@ -153,7 +153,6 @@ typedef struct council_data COUNCIL_DATA;
 typedef struct member_data MEMBER_DATA;
 typedef struct trigger_data TRIGGER_DATA;
 typedef struct mark_data MARK_DATA;
-typedef struct mark_list_member MARK_LIST_MEMBER;
 typedef struct lookup_type LOOKUP_TYPE;
 typedef struct message_data MESSAGE_DATA;
 typedef struct board_data BOARD_DATA;

@@ -382,20 +382,30 @@ static void walk_ruler_data( RULER_DATA * ruler )
    touch( ruler->keywords );
 }
 
+static void walk_mark_data( MARK_DATA * m )
+{
+   if( !m )
+      return;
+
+   touch( m->message );
+   touch( m->author );
+}
+
 static void walk_room_index_data( ROOM_INDEX_DATA * r )
 {
    int i;
    EXTRA_DESCR_DATA *ed;
+   std::list<MARK_DATA *>::iterator li;
 /*  BUILD_DATA_LIST *reset;  */
    if( !r )
       return;
 
    for( i = 0; i < 6; i++ )
       walk_exit_data( r->exit[i] );
-
-
    for( ed = r->first_exdesc; ed; ed = ed->next )
       walk_extra_descr_data( ed );
+   for( li = r->mark_list.begin(); li != r->mark_list.end(); li++ )
+      walk_mark_data( *li );
    touch( r->name );
    touch( r->description );
 }
@@ -552,22 +562,6 @@ static void walk_bans( void )
    }
 }
 
-static void walk_mark_data( MARK_DATA * m )
-{
-   if( !m )
-      return;
-
-   touch( m->message );
-   touch( m->author );
-}
-
-void walk_marklist( void )
-{
-   MARK_LIST_MEMBER *tmark;
-   for( tmark = first_mark_list; tmark; tmark = tmark->next )
-      walk_mark_data( tmark->mark );
-}
-
 static void walk_message_data( MESSAGE_DATA * m )
 {
    if( !m )
@@ -627,7 +621,6 @@ void do_scheck( CHAR_DATA * ch, char *argument )
    walk_obj_indexes(  );
    walk_room_indexes(  );
    walk_notes(  );
-   walk_marklist(  );
    walk_councils(  );
    walk_boards(  );
    walk_rulers(  );

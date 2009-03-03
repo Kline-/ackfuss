@@ -861,15 +861,18 @@ void do_look( CHAR_DATA * ch, char *argument )
       }
 
       if( !IS_NPC( ch ) && ( IS_VAMP( ch ) || IS_WOLF( ch ) ) )
-         if( ch->in_room->first_mark_list != NULL )
+         if( !ch->in_room->mark_list.empty() )
          {
-            MARK_LIST_MEMBER *marks;
+            std::list<MARK_DATA *>::iterator li;
+            MARK_DATA *mk = NULL;
             short num_marks = 0;
 
-            for( marks = ch->in_room->first_mark_list; marks != NULL; marks = marks->next )
-
-               if( ( ( marks->mark->type == WOLF ) && IS_WOLF( ch ) ) || ( ( marks->mark->type == VAMP ) && IS_VAMP( ch ) ) )
+            for( li = ch->in_room->mark_list.begin(); li != ch->in_room->mark_list.end(); li++ )
+            {
+             mk = *li;
+               if( ( ( mk->type == WOLF ) && IS_WOLF( ch ) ) || ( ( mk->type == VAMP ) && IS_VAMP( ch ) ) )
                   num_marks++;
+            }
             if( num_marks > 0 )
             {
                char marksbuf[MSL];

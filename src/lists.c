@@ -68,10 +68,6 @@ DESCRIPTOR_DATA *first_desc = NULL;
 DESCRIPTOR_DATA *last_desc = NULL;
 BUILD_DATA_LIST *first_build = NULL;
 BUILD_DATA_LIST *last_build = NULL;
-MARK_DATA *first_mark = NULL;
-MARK_DATA *last_mark = NULL;
-MARK_LIST_MEMBER *first_mark_list = NULL;
-MARK_LIST_MEMBER *last_mark_list = NULL;
 CONTROL_LIST *first_control_list = NULL;
 CONTROL_LIST *last_control_list = NULL;
 QUEUED_INTERACT_LIST *first_queued_interact = NULL;
@@ -90,8 +86,6 @@ FIGHT_DATA *first_fight = NULL;
 FIGHT_DATA *last_fight = NULL;
 
 MEMBER_DATA *member_free = NULL;
-MARK_DATA *mark_free = NULL;
-MARK_LIST_MEMBER *mark_list_free = NULL;
 INTERACT_DATA *interact_free = NULL;
 INFLUENCE_DATA *influence_free = NULL;
 RULER_DATA *ruler_data_free = NULL;
@@ -103,7 +97,6 @@ RULER_LIST *ruler_list_free = NULL;
 DL_LIST *dl_list_free = NULL;
 
 void ( *member_free_destructor ) ( MEMBER_DATA * mdat ) = NULL;
-void ( *mark_list_free_destructor ) ( MARK_LIST_MEMBER * mldat ) = NULL;
 void ( *interact_free_destructor ) ( INTERACT_DATA * idat ) = NULL;
 void ( *influence_free_destructor ) ( INFLUENCE_DATA * idat ) = NULL;
 void ( *control_data_free_destructor ) ( CONTROL_DATA * cdat ) = NULL;
@@ -112,12 +105,6 @@ void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat ) = NU
 void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat ) = NULL;
 void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat ) = NULL;
 void ( *dl_list_free_destructor ) ( DL_LIST * dldat ) = NULL;
-
-void mark_free_destructor( MARK_DATA * mdat )
-{
-   free_string( mdat->author );
-   free_string( mdat->message );
-}
 
 void ruler_data_free_destructor( RULER_DATA * rdat )
 {

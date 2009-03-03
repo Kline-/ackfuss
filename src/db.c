@@ -792,67 +792,71 @@ void load_corpses( void )
 
 void load_marks( void )
 {
+ FILE *fp;
 
-   FILE *marksfp;
-   char marks_file_name[MAX_STRING_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+ snprintf(log_buf,(2 * MIL),"Loading %s",MARKS_FILE);
+ log_f("%s",log_buf);
 
+ if( (fp = file_open(MARKS_FILE,"r")) == NULL )
+ {
+  file_close(fp);
+  log_f("No marks file to read.");
+  return;
+ }
 
-   snprintf( marks_file_name, MSL, "%s", MARKS_FILE );
+ for( ;; )
+ {
+  MARK_DATA *mark;
+  std::list<MARK_DATA *>::iterator li;
+  char letter;
 
-   snprintf( buf, MSL, "Loading %s",MARKS_FILE);
-   log_f( "%s", buf );
+  do
+  {
+   letter = getc(fp);
 
-
-
-   if( ( marksfp = file_open( marks_file_name, "r" ) ) == NULL )
+   if( feof(fp) )
    {
-      log_f( "Load marks Table: file_open" );
-      perror( "failed open of marks_table.dat in load_marks_table" );
+    file_close(fp);
+    log_f("Done.");
+    return;
    }
-   else
-   {
-      fpArea = marksfp;
-      snprintf( strArea, MSL, "%s", marks_file_name );
+  }
+  while( isspace(letter) );
 
-      for( ;; )
-      {
-         char *word;
-         int rvnum = 0;
-         MARK_DATA *mark;
+  ungetc(letter,fp);
 
+  mark = new MARK_DATA;
 
-         word = fread_string( marksfp );
-         if( !str_cmp( word, "#MARK" ) )
-         {
-            GET_FREE( mark, mark_free );
-            rvnum = fread_number( marksfp );
-            mark->message = fread_string( marksfp );
-            mark->author = fread_string( marksfp );
-            mark->duration = fread_number( marksfp );
-            mark->type = fread_number( marksfp );
+  if( str_cmp(fread_word(fp),"Room") )
+   break;
+  mark->room_vnum = fread_number(fp);
+  if( get_room_index(mark->room_vnum) == NULL )
+  {
+   bug("NULL room %d loading marks!",mark->room_vnum);
+   delete mark;
+   file_close(fp);
+   log_f("Done.");
+   return;
+  }
 
-            mark_to_room( rvnum, mark );
-            free_string( word );
-         }
-         else if( !str_cmp( word, "#END" ) )
-         {
-            free_string( word );
-            break;
-         }
-         else
-         {
-            free_string( word );
-            log_f( "Load_marks: bad section." );
-            break;
-         }
-      }
+  if( str_cmp(fread_word(fp),"Author") )
+   break;
+  mark->author = fread_string(fp);
+  if( str_cmp(fread_word(fp),"Duration") )
+   break;
+  mark->duration = fread_number(fp);
+  if( str_cmp(fread_word(fp),"Message") )
+   break;
+  mark->message = fread_string(fp);
+  if( str_cmp(fread_word(fp),"Type") )
+   break;
+  mark->type = fread_number(fp);
+  get_room_index(mark->room_vnum)->mark_list.push_back(mark);
+ }
 
-      file_close( marksfp );
-      fpArea = NULL;
-      log_f("Done.");
-
-   }
+ bug("Load_marks: bad key word.",0);
+ hang("Loading marks in db.c");
+ return;
 }
 
 void load_bans( void )

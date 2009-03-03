@@ -64,8 +64,6 @@ extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;
 extern BUILD_DATA_LIST *first_build;
 extern BUILD_DATA_LIST *last_build;
-extern MARK_LIST_MEMBER *first_mark_list;
-extern MARK_LIST_MEMBER *last_mark_list;
 extern CONTROL_LIST *first_control_list;
 extern CONTROL_LIST *last_control_list;
 extern QUEUED_INTERACT_LIST *first_queued_interact;
@@ -83,8 +81,6 @@ extern FIGHT_DATA *first_fight;
 extern FIGHT_DATA *last_fight;
 
 extern MEMBER_DATA *member_free;
-extern MARK_DATA *mark_free;
-extern MARK_LIST_MEMBER *mark_list_free;
 extern INTERACT_DATA *interact_free;
 extern INFLUENCE_DATA *influence_free;
 extern RULER_DATA *ruler_data_free;
@@ -96,7 +92,6 @@ extern RULER_LIST *ruler_list_free;
 extern DL_LIST *dl_list_free;
 
 extern void ( *member_free_destructor ) ( MEMBER_DATA * mdat );
-extern void ( *mark_list_free_destructor ) ( MARK_LIST_MEMBER * mldat );
 extern void ( *interact_free_destructor ) ( INTERACT_DATA * idat );
 extern void ( *influence_free_destructor ) ( INFLUENCE_DATA * idat );
 extern void ( *control_data_free_destructor ) ( CONTROL_DATA * cdat );
@@ -106,7 +101,6 @@ extern void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat );
 extern void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat );
 extern void ( *dl_list_free_destructor ) ( DL_LIST * dldat );
 
-void mark_free_destructor( MARK_DATA * mdat );
 void ruler_data_free_destructor( RULER_DATA * rdat );
 
 extern int free_get;

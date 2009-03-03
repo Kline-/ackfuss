@@ -326,6 +326,15 @@ magic_shield::magic_shield()
  wearoff_self = &str_empty[0];
 }
 
+mark_data::mark_data()
+{
+ room_vnum = 0;
+ message = &str_empty[0];
+ author = &str_empty[0];
+ duration = 0;
+ type = 0;
+}
+
 message_data::message_data()
 {
  is_free = false;
@@ -658,18 +667,17 @@ room_index_data::room_index_data()
   exit[i] = 0;
  first_content = NULL;
  first_exdesc = NULL;
- first_mark_list = NULL;
  first_person = NULL;
  first_room_affect = NULL;
  first_room_reset = NULL;
  is_free = false;
  last_content = NULL;
  last_exdesc = NULL;
- last_mark_list = NULL;
  last_person = NULL;
  last_room_affect = NULL;
  last_room_reset = NULL;
  light = 0;
+ mark_list.clear();
  name = str_dup("New Room");
  next = NULL;
  room_flags.reset();

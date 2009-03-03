@@ -526,7 +526,7 @@ bool spell_wolf_mark( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    if( IS_NPC( ch ) || ( !IS_WOLF( ch ) ) )
       return FALSE;
 
-   GET_FREE( mark, mark_free );
+   mark = new MARK_DATA;
 
    mark->room_vnum = ch->in_room->vnum;
    mark->message = str_dup( target_name );
@@ -553,16 +553,18 @@ bool spell_wolf_mark( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    }
    snprintf( buf, MSL, "%s%s @@W: %s", costring, ch->name, get_tribe_standing_name( ch->pcdata->super->generation ) );
    mark->author = str_dup( buf );
-   mark->duration = ( ( MAX_WOLF_LEVEL ) - ch->pcdata->super->generation ) * ( ch->pcdata->super->level ) * 10;
+   mark->duration = ( ( MAX_WOLF_LEVEL ) - ch->pcdata->super->generation ) * ( ch->pcdata->super->level );
    mark->type = WOLF;
-   mark_to_room( ch->in_room->vnum, mark );
+   ch->in_room->mark_list.push_back(mark);
+   save_marks();
    check_social( ch, "dogleg", "" );
    return TRUE;
 }
 
 void do_scent( CHAR_DATA * ch, char *argument )
 {
-   MARK_LIST_MEMBER *mark_list;
+   std::list<MARK_DATA *>::iterator li;
+   MARK_DATA *mk = NULL;
 
    if( IS_NPC( ch ) || ( !IS_WOLF( ch ) ) )
    {
@@ -570,19 +572,20 @@ void do_scent( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ch->in_room->first_mark_list == NULL )
+   if( ch->in_room->mark_list.empty() )
    {
       send_to_char( "You do not smell any information here.\r\n", ch );
       return;
    }
 
-   for( mark_list = ch->in_room->first_mark_list; mark_list != NULL; mark_list = mark_list->next )
+   for( li = ch->in_room->mark_list.begin(); li != ch->in_room->mark_list.end(); li++ )
    {
       char buf[MSL];
-      if( mark_list->mark->type != WOLF )
+      mk = *li;
+      if( mk->type != WOLF )
          continue;
 
-      snprintf( buf, MSL, "%s : %s\r\n", mark_list->mark->author, mark_list->mark->message );
+      snprintf( buf, MSL, "%s : %s\r\n", mk->author, mk->message );
       send_to_char( buf, ch );
    }
    check_social( ch, "sniff", "" );

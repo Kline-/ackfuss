@@ -590,7 +590,7 @@ bool spell_blood_sign( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    if( IS_NPC( ch ) || ( !IS_VAMP( ch ) ) )
       return FALSE;
 
-   GET_FREE( mark, mark_free );
+   mark = new MARK_DATA;
 
    mark->room_vnum = ch->in_room->vnum;
    mark->message = str_dup( target_name );
@@ -617,15 +617,17 @@ bool spell_blood_sign( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    }
    snprintf( buf, MSL, "%s%s @@W: %s", costring, ch->name, get_family_name( ch ) );
    mark->author = str_dup( buf );
-   mark->duration = ( ( MAX_VAMP_LEVEL ) - ch->pcdata->super->generation ) * ( ch->pcdata->super->level ) * 10;
+   mark->duration = ( ( MAX_VAMP_LEVEL ) - ch->pcdata->super->generation ) * ( ch->pcdata->super->level );
    mark->type = VAMP;
-   mark_to_room( ch->in_room->vnum, mark );
+   ch->in_room->mark_list.push_back(mark);
+   save_marks();
    return TRUE;
 }
 
 bool spell_blood_sense( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
-   MARK_LIST_MEMBER *mark_list;
+   std::list<MARK_DATA *>::iterator li;
+   MARK_DATA *mk = NULL;
 
    if( IS_NPC( ch ) || ( !IS_VAMP( ch ) ) )
    {
@@ -633,19 +635,20 @@ bool spell_blood_sense( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       return FALSE;
    }
 
-   if( ch->in_room->first_mark_list == NULL )
+   if( ch->in_room->mark_list.empty() )
    {
       send_to_char( "You do not sense any @@eBloodSign@@N here.\r\n", ch );
       return FALSE;
    }
 
-   for( mark_list = ch->in_room->first_mark_list; mark_list != NULL; mark_list = mark_list->next )
+   for( li = ch->in_room->mark_list.begin(); li != ch->in_room->mark_list.end(); li++ )
    {
       char buf[MSL];
-      if( mark_list->mark->type != VAMP )
+      mk = *li;
+      if( mk->type != VAMP )
          continue;
 
-      snprintf( buf, MSL, "%s : %s\r\n", mark_list->mark->author, mark_list->mark->message );
+      snprintf( buf, MSL, "%s : %s\r\n", mk->author, mk->message );
       send_to_char( buf, ch );
    }
    return TRUE;

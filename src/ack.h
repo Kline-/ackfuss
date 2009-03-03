@@ -218,24 +218,16 @@ struct member_data
    MEMBER_DATA *prev;
 };
 
-struct mark_data
+class mark_data
 {
-   bool is_free;
-   int room_vnum;
-   char *message;
-   char *author;
-   short duration;
-   short type;   /* VAMP, WOLF */
-   MARK_DATA *next;
-   MARK_DATA *prev;  /* for freelist only */
-};
-
-struct mark_list_member
-{
-   bool is_free;
-   MARK_LIST_MEMBER *next;
-   MARK_LIST_MEMBER *prev;
-   MARK_DATA *mark;
+ public:
+  mark_data();
+  ~mark_data();
+  int room_vnum;
+  char *message;
+  char *author;
+  short duration;
+  short type;   /* VAMP, WOLF */
 };
 
 struct council_data
@@ -1094,18 +1086,17 @@ class room_index_data
    EXIT_DATA               *exit[MAX_DIR];
    OBJ_DATA                *first_content;
    EXTRA_DESCR_DATA        *first_exdesc;
-   MARK_LIST_MEMBER        *first_mark_list;
    CHAR_DATA               *first_person;
    ROOM_AFFECT_DATA        *first_room_affect;
    BUILD_DATA_LIST         *first_room_reset;
    bool                    is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    OBJ_DATA                *last_content;
    EXTRA_DESCR_DATA        *last_exdesc;
-   MARK_LIST_MEMBER        *last_mark_list;
    CHAR_DATA               *last_person;
    ROOM_AFFECT_DATA        *last_room_affect;
    BUILD_DATA_LIST         *last_room_reset;
    short                   light;
+   std::list<MARK_DATA *>  mark_list;
    char                    *name;
    ROOM_INDEX_DATA         *next;
    std::bitset<MAX_BITSET> room_flags;

@@ -6,6 +6,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
+#include <algorithm>
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
@@ -180,6 +181,12 @@ magic_shield::~magic_shield()
  free_string(wearoff_self);
 }
 
+mark_data::~mark_data()
+{
+ free_string(message);
+ free_string(author);
+}
+
 message_data::~message_data()
 {
  free_string(author);
@@ -310,6 +317,7 @@ room_index_data::~room_index_data()
   r_affect_remove(this,raf);
  }
 
+ for_each( mark_list.begin(), mark_list.end(), DeleteObject() );
  free_string(name);
  free_string(description);
  delete treasure;

@@ -27,8 +27,6 @@ int get_curr_con P_((CHAR_DATA *ch));
 int can_carry_n P_((CHAR_DATA *ch));
 int can_carry_w P_((CHAR_DATA *ch));
 void affect_modify P_((CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd));
-void mark_to_room P_((int this_room_vnum, MARK_DATA *mark));
-void mark_from_room P_((int this_room_vnum, MARK_DATA *mark));
 void affect_to_room P_((ROOM_INDEX_DATA *room, ROOM_AFFECT_DATA *raf));
 void r_affect_remove P_((ROOM_INDEX_DATA *room, ROOM_AFFECT_DATA *raf));
 void affect_to_char P_((CHAR_DATA *ch, AFFECT_DATA *paf));
