@@ -1986,14 +1986,15 @@ void rooms_update( void )
           * continue;   
           */
 
-         for( mi = room->mark_list.begin(); mi != room->mark_list.end(); mi++ )
+         if( !room->mark_list.empty() )
          {
+          for( mi = room->mark_list.begin(); mi != room->mark_list.end(); mi++ )
+          {
            static_cast<MARK_DATA *>(*mi)->duration--;
            if( static_cast<MARK_DATA *>(*mi)->duration <= 0 )
-           {
             mi = room->mark_list.erase(mi);
-            save_marks();
-           }
+          }
+          save_marks();
          }
 
 
