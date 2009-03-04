@@ -299,6 +299,12 @@ generic_list::generic_list()
  data = NULL;
 }
 
+h_queue::h_queue()
+{
+ room = NULL;
+ dir = 0;
+}
+
 hash_entry_tp::hash_entry_tp()
 {
  is_free = false;

@@ -1298,11 +1298,13 @@ class quest_info
   short wait_time;
 };
 
-struct h_queue
+class h_queue
 {
-   struct h_queue *next;
-   ROOM_INDEX_DATA *room;
-   short dir;
+ public:
+  h_queue();
+  ~h_queue();
+  ROOM_INDEX_DATA *room;
+  short dir;
 };
 
 struct clutch_type
@@ -1442,7 +1444,6 @@ bool set_hunt args( ( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA
 void end_hunt args( ( CHAR_DATA * ch ) );
 short h_find_dir args(( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags ));
 void hunt_move args(( CHAR_DATA * mob, short dir ));
-void h_clear args(( void ));
 
   /*
    * update.c 

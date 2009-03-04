@@ -4108,19 +4108,12 @@ void file_close( FILE *file )
 void clear_lists( void )
 {
  DESCRIPTOR_DATA *d, *d_next;
- H_QUEUE *h, *h_next;
- extern H_QUEUE *h_free;
  extern hash_table *hash_changed_vnums;
 
  for( d = first_desc; d != NULL; d = d_next )
  {
   d_next = d->next;
   delete d;
- }
- for( h = h_free; h != NULL; h = h_next )
- {
-  h_next = h->next;
-  free(h);
  }
 
  for_each( affect_list.begin(),     affect_list.end(),     DeleteObject() );
@@ -4133,6 +4126,7 @@ void clear_lists( void )
  for_each( exdesc_list.begin(),     exdesc_list.end(),     DeleteObject() );
  for_each( exit_list.begin(),       exit_list.end(),       DeleteObject() );
  for_each( file_list.begin(),       file_list.end(),       DeleteObject() );
+ for_each( hunt_list.begin(),       hunt_list.end(),       DeleteObject() );
  for_each( mob_index_list.begin(),  mob_index_list.end(),  DeleteObject() );
  for_each( note_list.begin(),       note_list.end(),       DeleteObject() );
  for_each( obj_list.begin(),        obj_list.end(),        DeleteObject() );
