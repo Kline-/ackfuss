@@ -590,6 +590,12 @@ bool spell_blood_sign( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    if( IS_NPC( ch ) || ( !IS_VAMP( ch ) ) )
       return FALSE;
 
+   if( target_name[0] == '\0' )
+   {
+    send_to_char("You can't leave an empty sign!\r\n",ch);
+    return FALSE;
+   }
+
    mark = new MARK_DATA;
 
    mark->room_vnum = ch->in_room->vnum;

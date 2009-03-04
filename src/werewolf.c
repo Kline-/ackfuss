@@ -526,6 +526,12 @@ bool spell_wolf_mark( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    if( IS_NPC( ch ) || ( !IS_WOLF( ch ) ) )
       return FALSE;
 
+   if( target_name[0] == '\0' )
+   {
+    send_to_char("You can't leave an empty mark!\r\n",ch);
+    return FALSE;
+   }
+
    mark = new MARK_DATA;
 
    mark->room_vnum = ch->in_room->vnum;
