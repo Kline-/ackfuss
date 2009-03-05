@@ -49,7 +49,7 @@ o/clutch.o: clutch.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
 o/comm.o: comm.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h h/act_info.h \
   h/act_obj.h h/act_wiz.h h/comm.h h/cursor.h h/db.h h/handler.h \
-  h/magic.h h/ssm.h
+  h/magic.h h/ssm.h h/telopt.h
 o/const.o: const.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/magic.h \
   h/vampire.h h/werewolf.h
@@ -154,6 +154,9 @@ o/strfuns.o: strfuns.c ack.h h/config.h globals.h h/typedefs.h h/imc.h \
 o/sysdata.o: sysdata.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
   h/act_wiz.h h/comm.h h/db.h h/ssm.h
+o/telopt.o: telopt.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
+  h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/telnet.h \
+  h/telopt.h
 o/trigger.o: trigger.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
   h/comm.h h/db.h h/fight.h h/handler.h

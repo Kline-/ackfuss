@@ -104,6 +104,10 @@
 #include "h/ssm.h"
 #endif
 
+#ifndef DEC_TELOPT_H
+#include "h/telopt.h"
+#endif
+
 /*
  * Socket and TCP/IP stuff.
  */
@@ -127,6 +131,7 @@ bool wizlock;  /* Game is wizlocked            */
 extern bool deathmatch;  /* Deathmatch happening?        */
 extern bool disable_timer_abort;
 char str_boot_time[MAX_INPUT_LENGTH];
+int int_boot_time;
 time_t current_time; /* Time of this pulse           */
 
 /* port and control moved from local to global for HOTreboot - Flar */
@@ -183,6 +188,7 @@ int main( int argc, char **argv )
    gettimeofday( &now_time, NULL );
    current_time = ( time_t ) now_time.tv_sec;
    strcpy( str_boot_time, ctime( &current_time ) );
+   int_boot_time = now_time.tv_sec;
 
    /*
     * Reserve one channel for our use.
@@ -689,6 +695,8 @@ void new_descriptor( int d_control )
    {
       FILE *fp;
 
+      send_telopts(dnew);
+
       snprintf( buf, MSL, "%s/g/greeting%d.%s", HELP_DIR, number_range(0,5), HELP_MORT );
 
       if( (fp = file_open(buf,"r")) != NULL )
@@ -821,12 +829,13 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d )
     */
    for( ;; )
    {
+      char tmp[MSL];
       int nRead;
 
-      nRead = read( d->descriptor, d->inbuf + iStart, sizeof( d->inbuf ) - 10 - iStart );
+      nRead = read( d->descriptor, tmp, sizeof( tmp ) - 10 - iStart );
       if( nRead > 0 )
       {
-         iStart += nRead;
+         iStart += telopt_handler(d,tmp,nRead,(d->inbuf + iStart));
          if( d->inbuf[iStart - 1] == '\n' || d->inbuf[iStart - 1] == '\r' )
             break;
       }
