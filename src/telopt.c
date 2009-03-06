@@ -36,7 +36,7 @@ const struct telopt_type telopt_table [] =
 
 void send_telopts( DESCRIPTOR_DATA *d )
 {
- write_to_descriptor(d->descriptor,IAC_WILL_MSSP,0);
+ write_to_buffer(d,IAC_WILL_MSSP);
  return;
 }
 
@@ -119,14 +119,14 @@ void mssp_reply( DESCRIPTOR_DATA* d, const char* key, const char* value )
 {
  char buf[MSL];
  snprintf(buf,MSL,"%c%s%c%s",MSSP_VAR,key,MSSP_VAL,value);
- write_to_descriptor(d->descriptor,buf,0);
+ write_to_buffer(d,buf);
 }
 
 void mssp_reply( DESCRIPTOR_DATA* d, const char* key, int value )
 {
  char buf[MSL];
  snprintf(buf,MSL,"%c%s%c%d",MSSP_VAR,key,MSSP_VAL,value);
- write_to_descriptor(d->descriptor,buf,0);
+ write_to_buffer(d,buf);
 }
 
 int process_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
@@ -139,7 +139,7 @@ int process_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
   if( dc->character != NULL )
    cnt++;
 
- write_to_descriptor(d->descriptor,IAC_SB_MSSP,0);
+ write_to_buffer(d,IAC_SB_MSSP);
 
  mssp_reply(d,"PLAYERS",cnt);
  mssp_reply(d,"UPTIME",int_boot_time);
@@ -151,6 +151,6 @@ int process_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
  mssp_reply(d,"PORT","3000");
  mssp_reply(d,"WEBSITE","http://www.ackmud.net");
 
- write_to_descriptor(d->descriptor,IAC_SE,0);
+ write_to_buffer(d,IAC_SE);
  return 3;
 }

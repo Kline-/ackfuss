@@ -6088,7 +6088,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
 
       if( !d->character || d->connected < 0 )   /* drop those logging on */
       {
-         write_to_descriptor( d->descriptor, "\r\n@Sorry, " mudnamecolor " is rebooting. Come back in a few minutes.\r\n", 0 );
+         write_to_descriptor( d->descriptor, "\r\n@Sorry, " mudnamecolor " is rebooting. Come back in a few minutes.\r\n" );
          close_socket( d );   /* throw'em out */
       }
       else
@@ -6097,14 +6097,12 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
          if( och->level == 1 )
          {
 
-            write_to_descriptor( d->descriptor,
-                                 "Since you are level one, and level one characters do not save....you have been advanced!\r\n",
-                                 0 );
+            write_to_descriptor( d->descriptor, "Since you are level one, and level one characters do not save....you have been advanced!\r\n" );
             och->level = 2;
             och->lvl[och->p_class] = 2;
          }
          save_char_obj( och );
-         write_to_descriptor( d->descriptor, buf, 0 );
+         write_to_descriptor( d->descriptor, buf );
       }
    }
 

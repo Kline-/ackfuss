@@ -1077,7 +1077,7 @@ void interpret( CHAR_DATA * ch, char *argument )
    {
       char snp[MAX_STRING_LENGTH];
       snprintf( snp, MSL, "[Snoop:%s] %s\r\n", ch->name, logline );
-      write_to_buffer( ch->desc->snoop_by, snp, 0 );
+      write_to_buffer( ch->desc->snoop_by, snp );
    }
 
    if( !found && !IS_NPC( ch ) && ( !alias_call ) )
