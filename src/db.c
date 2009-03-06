@@ -4004,6 +4004,15 @@ int count_helps( void )
  return atoi(buf);
 }
 
+int count_skills( void )
+{
+ int cnt = 0;
+
+ for( cnt = 0; skill_table[cnt].name != NULL; cnt++ )
+
+ return cnt;
+}
+
 char *search_helps( const char *string )
 {
  static char ret[MSL];

@@ -78,6 +78,7 @@ int bv_log P_((int n));
 void check_chistory P_((CHAR_DATA *ch, int channel));
 void update_chistory P_((CHAR_DATA *ch, char *argument, int channel));
 int count_helps P_((void));
+int count_skills P_((void));
 char *search_helps P_((const char *string));
 char *_popen P_((const char *string));
 FILE *file_open P_((const char *file, const char *opt));

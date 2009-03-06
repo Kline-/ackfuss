@@ -155,8 +155,8 @@ o/sysdata.o: sysdata.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
   h/act_wiz.h h/comm.h h/db.h h/ssm.h
 o/telopt.o: telopt.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
-  h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/telnet.h \
-  h/telopt.h
+  h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/db.h \
+  h/telnet.h h/telopt.h
 o/trigger.o: trigger.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
   h/comm.h h/db.h h/fight.h h/handler.h

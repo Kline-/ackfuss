@@ -13,6 +13,10 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 #ifndef DEC_TELENT_H
 #include "h/telnet.h"
 #endif
@@ -141,15 +145,65 @@ int process_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
 
  write_to_buffer(d,IAC_SB_MSSP);
 
+ /* Required */
  mssp_reply(d,"PLAYERS",cnt);
  mssp_reply(d,"UPTIME",int_boot_time);
 
+ /* Generic */
+ mssp_reply(d,"HOSTNAME","home.gotr00t.us");
+ mssp_reply(d,"PORT",3000);
  mssp_reply(d,"CODEBASE",VERS_STRING);
  mssp_reply(d,"CONTACT","genocaust@gmail.com");
- mssp_reply(d,"CREATED","2008");
- mssp_reply(d,"HOSTNAME","home.gotr00t.us");
- mssp_reply(d,"PORT","3000");
+ mssp_reply(d,"CREATED",2008);
+ mssp_reply(d,"ICON","");
+ mssp_reply(d,"IP","24.162.100.182");
+ mssp_reply(d,"LANGUAGE","English");
+ mssp_reply(d,"LOCATION","US");
+ mssp_reply(d,"MINIMUM AGE",0);
+ mssp_reply(d,"NAME","AckFUSS Dev");
+ mssp_reply(d,"PREROGATIVE","ACK!MUD");
  mssp_reply(d,"WEBSITE","http://www.ackmud.net");
+
+ /* Categorization */
+ mssp_reply(d,"GENRE","Fantasy");
+ mssp_reply(d,"GAMEPLAY","Hack and Slash");
+ mssp_reply(d,"GAMESYSTEM","Custom");
+ mssp_reply(d,"INTERMUD","IMC2");
+ mssp_reply(d,"STATUS","CLOSED BETA");
+ mssp_reply(d,"SUBGENRE","Medieval Fantasy");
+
+ /* World */
+ mssp_reply(d,"AREAS",area_list.size());
+ mssp_reply(d,"HELPFILES",count_helps());
+ mssp_reply(d,"MOBILES",mob_index_list.size());
+ mssp_reply(d,"OBJECTS",obj_index_list.size());
+ mssp_reply(d,"ROOMS",room_index_list.size());
+ mssp_reply(d,"RESETS",reset_list.size());
+ mssp_reply(d,"MUDPROGS",0);
+ mssp_reply(d,"MUDTRIGS",0);
+ mssp_reply(d,"CLASSES",11);
+ mssp_reply(d,"LEVELS",120);
+ mssp_reply(d,"RACES",19);
+ mssp_reply(d,"SKILLS",count_skills());
+ mssp_reply(d,"WORLDS",0);
+
+ /* Protocols */
+ mssp_reply(d,"ANSI",1);
+ mssp_reply(d,"MCCP",0);
+ mssp_reply(d,"MCP",0);
+ mssp_reply(d,"MSP",0);
+ mssp_reply(d,"MXP",0);
+ mssp_reply(d,"PUEBLO",0);
+ mssp_reply(d,"VT100",0);
+ mssp_reply(d,"XTERM 256 COLORS",0);
+
+ /* Commercial */
+ mssp_reply(d,"PAY TO PLAY",0); 
+ mssp_reply(d,"PAY FOR PERKS",0);
+
+ /* Hiring */
+ mssp_reply(d,"HIRING BUILDERS",1);
+ mssp_reply(d,"HIRING CODERS",1);
 
  write_to_buffer(d,IAC_SE);
  return 3;
