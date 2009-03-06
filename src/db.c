@@ -4008,7 +4008,8 @@ int count_skills( void )
 {
  int cnt = 0;
 
- for( cnt = 0; skill_table[cnt].name != NULL; cnt++ )
+ while( skill_table[cnt].name != NULL )
+  cnt++;
 
  return cnt;
 }

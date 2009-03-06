@@ -17,7 +17,7 @@
 /* act_clan.c */
 void save_clan_table P_((void));
 void do_ctoggle P_((CHAR_DATA *ch, char *argument));
-const char *get_diplo_name P_((short value));
+char *get_diplo_name P_((short value));
 void do_politics P_((CHAR_DATA *ch, char *argument));
 void do_negotiate P_((CHAR_DATA *ch, char *argument));
 void do_leav P_((CHAR_DATA *ch, char *argument));
