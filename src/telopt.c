@@ -34,13 +34,15 @@ struct telopt_type
 
 const struct telopt_type telopt_table [] =
 {
- {3, IAC_DO_MSSP, &process_mssp},
+ {3, IAC_DO_MCCP, &process_do_mccp},
+ {3, IAC_DO_MSSP, &process_do_mssp},
  {0, NULL, NULL}
 };
 
 void send_telopts( DESCRIPTOR_DATA *d )
 {
  write_to_buffer(d,IAC_WILL_MSSP);
+// write_to_buffer(d,IAC_WILL_MCCP);
  return;
 }
 
@@ -133,7 +135,7 @@ void mssp_reply( DESCRIPTOR_DATA* d, const char* key, int value )
  write_to_buffer(d,buf);
 }
 
-int process_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
+int process_do_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
 {
  DESCRIPTOR_DATA *dc;
  int cnt = 0;
@@ -206,5 +208,10 @@ int process_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
  mssp_reply(d,"HIRING CODERS",1);
 
  write_to_buffer(d,IAC_SE);
+ return 3;
+}
+
+int process_do_mccp( DESCRIPTOR_DATA *d, char *src, int srclen )
+{
  return 3;
 }

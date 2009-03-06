@@ -6,20 +6,15 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#define DEC_TELOPT_H
+/*
+ * mccp.c - support functions for mccp (the Mud Client Compression Protocol)
+ *
+ * see http://homepages.ihug.co.nz/~icecube/compress/ and README.Rom24-mccp
+ *
+ * Copyright (c) 1999, Oliver Jowett <icecube@ihug.co.nz>.
+ *
+ * This code may be freely distributed and used if this copyright notice is
+ * retained intact.
+ */
 
-#if __STDC__ || defined(__cplusplus)
-#define P_(s) s
-#else
-#define P_(s) ()
-#endif
-
-/* telopt.c */
-void send_telopts P_((DESCRIPTOR_DATA *d));
-int telopt_handler P_((DESCRIPTOR_DATA *d, char *src, int srclen, char *out));
-void mssp_reply P_((DESCRIPTOR_DATA* d, const char* key, const char* value));
-void mssp_reply P_((DESCRIPTOR_DATA* d, const char* key, int value));
-int process_do_mssp P_((DESCRIPTOR_DATA *d, char *src, int srclen));
-int process_do_mccp P_((DESCRIPTOR_DATA *d, char *src, int srclen));
-
-#undef P_
+#include "globals.h"

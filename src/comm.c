@@ -1782,25 +1782,152 @@ void write_to_buffer( DESCRIPTOR_DATA * d, const char *txt, int length )
  * If this gives errors on very long blocks (like 'ofind all'),
  *   try lowering the max block size.
  */
+/*
+ *
+ * Added block checking to prevent random booting of the descriptor. Thanks go
+ * out to Rustry for his suggestions. -Orion
+ */
 bool write_to_descriptor( int desc, char *txt, int length )
 {
-   int iStart;
-   int nWrite;
-   int nBlock;
+ int iStart = 0;
+ int nWrite = 0;
+ int nBlock = 0;
+ int iErr = 0;
 
-   if( length <= 0 )
-      length = strlen( txt );
+ if( length <= 0 )
+  length = strlen( txt );
 
-   for( iStart = 0; iStart < length; iStart += nWrite )
+ for( iStart = 0; iStart < length; iStart += nWrite )
+ {
+  nBlock = UMIN( length - iStart, 4096 );
+  nWrite = send( desc, txt + iStart, nBlock, 0 );
+
+  if( nWrite == -1 )
+  {
+   iErr = errno;
+
+   if( iErr == EWOULDBLOCK )
    {
-      nBlock = UMIN( length - iStart, 4096 );
-      if( ( nWrite = write( desc, txt + iStart, nBlock ) ) < 0 )
-      {
-         perror( "Write_to_descriptor" );
-         return FALSE;
-      }
+    /*
+     * This is a SPAMMY little bug error. I would suggest
+     * not using it, but I've included it in case. -Orion
+     *
+     * perror( "Write_to_descriptor: Send is blocking" );
+     */
+    nWrite = 0;
+    continue;
    }
-   return TRUE;
+   else
+   {
+    perror( "Write_to_descriptor" );
+    return false;
+   }
+  }
+ }
+ return true;
+}
+
+/* mccp wrapper */
+bool write_to_descriptor( DESCRIPTOR_DATA *d, char *txt, int length )
+{
+ int iStart = 0;
+ int nWrite = 0;
+ int nBlock;
+ int iErr;
+ int len;
+
+ if( length <= 0 )
+  length = strlen(txt);
+
+ if( d && d->mccp->out_compress )
+ {
+  d->mccp->out_compress->next_in = (unsigned char *)txt;
+  d->mccp->out_compress->avail_in = length;
+
+  while( d->mccp->out_compress->avail_in )
+  {
+   d->mccp->out_compress->avail_out = (COMPRESS_BUF_SIZE - (d->mccp->out_compress->next_out - d->mccp->out_compress_buf));
+
+   if( d->mccp->out_compress->avail_out )
+   {
+    int status = deflate(d->mccp->out_compress,Z_SYNC_FLUSH);
+
+    if( status != Z_OK )
+     return false;
+   }
+
+   len = d->mccp->out_compress->next_out - d->mccp->out_compress_buf;
+   if( len > 0 )
+   {
+    for( iStart = 0; iStart < len; iStart += nWrite )
+    {
+     nBlock = UMIN((len - iStart),4096);
+     nWrite = send(d->descriptor,d->mccp->out_compress_buf + iStart,nBlock,0);
+
+     if( nWrite == -1 )
+     {
+      iErr = errno;
+      if( iErr == EWOULDBLOCK )
+      {
+       /*
+        * This is a SPAMMY little bug error. I would suggest
+        * not using it, but I've included it in case. -Orion
+        *
+        * perror( "Write_to_descriptor: Send is blocking" );
+        */
+       nWrite = 0;
+       continue;
+      }
+      else
+      {
+       perror("Write_to_descriptor");
+       return false;
+      }
+     }
+
+     if( !nWrite )
+      break;
+    }
+
+    if( !iStart )
+     break;
+
+    if( iStart < len )
+     memmove(d->mccp->out_compress_buf,(d->mccp->out_compress_buf + iStart),(len - iStart));
+
+    d->mccp->out_compress->next_out = d->mccp->out_compress_buf + len - iStart;
+   }
+  }
+  return true;
+ }
+
+ for( iStart = 0; iStart < length; iStart += nWrite )
+ {
+  nBlock = UMIN((length - iStart),4096);
+  nWrite = send(d->descriptor,(txt + iStart),nBlock,0);
+
+  if( nWrite == -1 )
+  {
+   iErr = errno;
+   if( iErr == EWOULDBLOCK )
+   {
+    /*
+     * This is a SPAMMY little bug error. I would suggest
+     * not using it, but I've included it in case. -Orion
+     *
+     * perror( "Write_to_descriptor: Send is blocking" );
+     */
+    nWrite = 0;
+    continue;
+   }
+   else
+   {
+    perror("Write_to_descriptor");
+    return false;
+   }
+  }
+ }
+ return true;
 }
 
 void show_stotal_to( DESCRIPTOR_DATA * d )

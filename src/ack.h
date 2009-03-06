@@ -31,6 +31,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 #include <bitset>
+#include <zlib.h>
 
 #define DEC_ACK_H
 
@@ -104,6 +105,15 @@ class disabled_data
   struct cmd_type const *command;
   char                  *disabled_by;
   short                 level;
+};
+
+class mccp_data
+{
+ public:
+  mccp_data();
+  ~mccp_data();
+  z_stream *out_compress;
+  unsigned char *out_compress_buf;
 };
 
 class message_data
@@ -271,6 +281,7 @@ class descriptor_data
    int flags;
    int childpid;  /* Child process id */
    time_t timeout;
+   MCCP *mccp; /* Mud Client Compression Protocol */
 };
 
 #define DESC_FLAG_PASSTHROUGH 1  /* Used when data is being passed to */
@@ -1336,7 +1347,7 @@ struct eq_type
 #define OID     OBJ_INDEX_DATA
 #define RID     ROOM_INDEX_DATA
 #define SF      SPEC_FUN
-#define OF	OBJ_FUN
+#define OBF	OBJ_FUN
 
 /* interp.c */
 void interpret args( ( CHAR_DATA * ch, char *argument ) );
@@ -1401,7 +1412,7 @@ void load_social_table args( ( void ) );
           /*---------*\
 			 ) obj_fun.c (
 			 \*---------*/
-OF *obj_fun_lookup args( ( const char *name ) );
+OBF *obj_fun_lookup args( ( const char *name ) );
 char *rev_obj_fun_lookup args( ( OBJ_FUN *func ) );
 void print_obj_fun_lookup args( ( char *buf ) );
 
@@ -1474,4 +1485,4 @@ void save_sysdata args( ( void ) );
 #undef  OID
 #undef  RID
 #undef  SF
-#undef  OF
+#undef  OBF

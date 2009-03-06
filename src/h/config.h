@@ -59,6 +59,7 @@
 #define MAX_VNUM                 16777216
 #define MAX_BITSET               256    /* Total bits per bitset */
 #define MAX_PERM_BLOCK           131072
+#define COMPRESS_BUF_SIZE        MAX_STRING_LENGTH
 
 #define BOOT_DB_ABORT_THRESHOLD			  25
 #define RUNNING_ABORT_THRESHOLD			  10

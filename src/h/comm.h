@@ -28,6 +28,7 @@ bool process_output P_((DESCRIPTOR_DATA *d, bool fPrompt));
 void bust_a_prompt P_((DESCRIPTOR_DATA *d));
 void write_to_buffer P_((DESCRIPTOR_DATA *d, const char *txt, int length = 0));
 bool write_to_descriptor P_((int desc, char *txt, int length = 0));
+bool write_to_descriptor P_((DESCRIPTOR_DATA *d, char *txt, int length = 0));
 void show_stotal_to P_((DESCRIPTOR_DATA *d));
 void show_menu_to P_((DESCRIPTOR_DATA *d));
 void show_smenu_to P_((DESCRIPTOR_DATA *d));

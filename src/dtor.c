@@ -134,6 +134,7 @@ char_data::~char_data()
 
 descriptor_data::~descriptor_data()
 {
+ delete mccp;
  free(outbuf);
 }
 
@@ -190,6 +191,10 @@ mark_data::~mark_data()
 {
  free_string(message);
  free_string(author);
+}
+
+mccp_data::~mccp_data()
+{
 }
 
 message_data::~message_data()
