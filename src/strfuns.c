@@ -1465,6 +1465,8 @@ const char *extra_bit_name( std::bitset<MAX_BITSET> &extra_flags )
       strncat( buf, " silver", MSL );
    if( extra_flags.test(ITEM_EXTRA_NO_QUEST) )
       strncat( buf, " noquest", MSL );
+   if( extra_flags.test(ITEM_EXTRA_NO_TAKE) )
+      strncat( buf, " notake", MSL );
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }

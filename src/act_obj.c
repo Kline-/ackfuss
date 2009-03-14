@@ -99,7 +99,7 @@ void get_obj( CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container )
       return;
    }
 
-   if( !CAN_WEAR( obj, ITEM_TAKE ) || obj->item_type == ITEM_CORPSE_PC )
+   if( !CAN_WEAR( obj, ITEM_TAKE ) || obj->item_type == ITEM_CORPSE_PC || obj->extra_flags.test(ITEM_EXTRA_NO_TAKE) )
    {
 /*	send_to_char( "You can't take that.\r\n", ch );  */
       return;

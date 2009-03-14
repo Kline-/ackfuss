@@ -1091,6 +1091,7 @@
 #define ITEM_EXTRA_LIFESTEALER	        26
 #define ITEM_EXTRA_SILVER		27
 #define ITEM_EXTRA_NO_QUEST             28 /* disable for mquest */
+#define ITEM_EXTRA_NO_TAKE              29 /* can't get this item */
 
 /* Class-restricted stuff dropped. */
 #define ITEM_APPLY_NONE                 1

@@ -819,6 +819,7 @@ LOOKUP_TYPE tab_obj_flags[] = {
    {"lifestealer",     ITEM_EXTRA_LIFESTEALER,  100   },
    {"silver",          ITEM_EXTRA_SILVER,       100   },
    {"noquest",         ITEM_EXTRA_NO_QUEST,     0     },
+   {"notake",          ITEM_EXTRA_NO_TAKE,      0     },
    {NULL, 0}
 };
 
