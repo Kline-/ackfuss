@@ -1041,7 +1041,7 @@ End
 #MOBILE
 Vnum      1051
 AcMod     0
-Act       2 10 11 17 19 26 29 30 EOL
+Act       2 10 11 17 19 26 29 30 31 EOL
 Affected  188
 Alignment 1000
 Cast      0
@@ -1060,6 +1060,325 @@ RaceMods  0
 Resist    0
 Sex       1
 ShortDesc @@WOld @@RWar @@dVeteran@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1052
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     3
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     3
+LongDesc  The @@WLord @@Nof @@RT@@dhe @@RP@@dit@@N, @@RB@@ea@@dln@@eo@@Rr@@N, surveys the area.~
+PlrName   pit lord balnor~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@RB@@ea@@dln@@eo@@Rr@@N~
+Skills    16
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1053
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     3
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@dmale @@Rwarrior@@N wanders throughout @@RT@@dhe @@RP@@dit.@@N~
+PlrName   novice male warrior~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@GNovice @@dMale @@RWarrior@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1054
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     3
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@bfemale @@Rwarrior@@N wanders throughout @@RT@@dhe @@RP@@dit.@@N~
+PlrName   novice female warrior~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       2
+ShortDesc @@GNovice @@bFemale @@RWarrior@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1055
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     0
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@dmale @@emage@@N is studying his spells.~
+PlrName   novice male mage~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@GNovice @@dMale @@eMage@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1056
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     0
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@bfemale @@emage@@N is studying her spells.~
+PlrName   novice female mage~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       2
+ShortDesc @@GNovice @@bFemale @@eMage@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1057
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     1
+Def       2
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@dmale @@acleric@@N diligently prays to his god.~
+PlrName   novice male cleric~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@GNovice @@dMale @@aCleric@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1058
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     1
+Def       2
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@bfemale @@acleric@@N diligently prays to her god.~
+PlrName   novice female cleric~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       2
+ShortDesc @@GNovice @@bFemale @@aCleric@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1059
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     2
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@dmale @@ythief@@N stalks about.~
+PlrName   novice male thief~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@GNovice @@dMale @@yThief@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1060
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     2
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@bfemale @@ythief@@N stalks about.~
+PlrName   novice female thief~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       2
+ShortDesc @@GNovice @@bFemale @@yThief@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1061
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     4
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@dmale @@mpsionicist@@N focuses his mental energies.~
+PlrName   novice male psionicist~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@GNovice @@dMale @@mPsionicist@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
+#MOBILE
+Vnum      1062
+AcMod     0
+Act       EOL
+Affected  0
+Alignment 0
+Cast      0
+Clan      0
+Class     4
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     1
+LongDesc  A @@Gnovice @@bfemale @@mpsionicist@@N focuses her mental energies.~
+PlrName   novice female psionicist~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       2
+ShortDesc @@GNovice @@bFemale @@mPsionicist@@N~
 Skills    0
 SMagic    0
 SpecFun   (null)
@@ -1087,7 +1406,7 @@ End
 #OBJECT
 Vnum       1052
 Durability 34
-ExtraFlags EOL
+ExtraFlags 28 EOL
 ItemApply  1
 Level      1
 LongDesc   @@dA training key is here, perhaps you should take it?@@N~
@@ -1104,7 +1423,7 @@ End
 #OBJECT
 Vnum       1053
 Durability 75
-ExtraFlags EOL
+ExtraFlags 28 29 EOL
 ItemApply  1
 Level      1
 LongDesc   @@dA weapon rack holds a few @@Rblood caked @@dswords, spears, and axes.@@N~
@@ -1114,14 +1433,14 @@ ShortDesc  @@da weapon rack@@N~
 Speed      3.20
 Type       15
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  EOL
+WearFlags  24 EOL
 Weight     1
 End
 
 #OBJECT
 Vnum       1054
 Durability 65
-ExtraFlags EOL
+ExtraFlags 28 29 EOL
 ItemApply  1
 Level      1
 LongDesc   @@dAn armor rack has some battered shields left on it.@@N~
@@ -1283,6 +1602,474 @@ End
 Location   24
 Modifier   0
 End
+
+#OBJECT
+Vnum       1060
+Durability 86
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA @@yminor @@Rblood@@dstone @@Nhas been discarded.~
+Name       minor bloodstone~
+ObjFun     (null)
+ShortDesc  @@da @@yminor @@Rblood@@dstone@@N~
+Speed      1.02
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  1 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   19
+Modifier   0
+End
+#OAFFECT
+Location   18
+Modifier   0
+End
+#OAFFECT
+Location   12
+Modifier   2
+End
+#OAFFECT
+Location   24
+Modifier   0
+End
+#OAFFECT
+Location   13
+Modifier   6
+End
+
+#OBJECT
+Vnum       1061
+Durability 82
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   An @@baura@@N, ever so @@csa@@ycr@@aed@@N...~
+Name       sacred aura~
+ObjFun     (null)
+ShortDesc  @@cSa@@ycr@@aed @@bAura@@N~
+Speed      4.00
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  2 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   24
+Modifier   -2
+End
+#OAFFECT
+Location   12
+Modifier   2
+End
+
+#OBJECT
+Vnum       1062
+Durability 20
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@Ws@@dk@@Wu@@dl@@Wl @@dcap@@N has been left here.~
+Name       skull cap~
+ObjFun     (null)
+ShortDesc  a @@WS@@dk@@Wu@@dl@@Wl @@dCap@@N~
+Speed      4.00
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  3 4 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -2
+End
+#OAFFECT
+Location   13
+Modifier   2
+End
+
+#OBJECT
+Vnum       1063
+Durability 92
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A mixture of @@zface @@zpaint@@N.~
+Name       face paint~
+ObjFun     (null)
+ShortDesc  @@zFace @@zPaint@@N~
+Speed      2.24
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  5 6 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -2
+End
+#OAFFECT
+Location   13
+Modifier   2
+End
+
+#OBJECT
+Vnum       1064
+Durability 28
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@Wsi@@glv@@Wer @@dstud @@Nsparkles on the ground.~
+Name       silver stud~
+ObjFun     (null)
+ShortDesc  @@WSi@@glv@@Wer @@dStud@@N~
+Speed      2.22
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  7 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   12
+Modifier   1
+End
+#OAFFECT
+Location   14
+Modifier   1
+End
+#OAFFECT
+Location   24
+Modifier   0
+End
+
+#OBJECT
+Vnum       1065
+Durability 85
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@brat @@Wb@@do@@gn@@We @@Nnecklace has been carelessly discarded.~
+Name       rat bone necklace~
+ObjFun     (null)
+ShortDesc  a @@brat @@Wb@@do@@gn@@We @@Nnecklace~
+Speed      3.12
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  8 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   12
+Modifier   2
+End
+#OAFFECT
+Location   14
+Modifier   2
+End
+#OAFFECT
+Location   24
+Modifier   -1
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+
+#OBJECT
+Vnum       1066
+Durability 37
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dSpaulders @@Nmade of a @@bB@@yoa@@br@@y'@@bs @@Rt@@eu@@Rsks @@Nsit unused.~
+Name       boar tusk spaulders~
+ObjFun     (null)
+ShortDesc  @@bB@@yoa@@br @@RT@@eu@@Rsk @@dSpaulders@@N~
+Speed      4.00
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  10 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -2
+End
+#OAFFECT
+Location   19
+Modifier   3
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+
+#OBJECT
+Vnum       1067
+Durability 34
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A pair of @@bleather arm splints@@N.~
+Name       leather arm splits~
+ObjFun     (null)
+ShortDesc  @@bLeather Arm Splints@@N~
+Speed      3.42
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  11 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -2
+End
+#OAFFECT
+Location   19
+Modifier   1
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+
+#OBJECT
+Vnum       1068
+Durability 45
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@zm@@zu@@zl@@zt@@zi@@W-@@zc@@zo@@zl@@zo@@zr@@ze@@zd @@rbracelet @@Nlooks...awfully ugly.~
+Name       multi-colored bracelet beads~
+ObjFun     (null)
+ShortDesc  @@zM@@zu@@zl@@zt@@zi@@W-@@zC@@zo@@zl@@zo@@zr@@ze@@zd @@rBracelet of Beads@@N~
+Speed      2.14
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  12 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -2
+End
+#OAFFECT
+Location   19
+Modifier   2
+End
+#OAFFECT
+Location   13
+Modifier   1
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+
+#OBJECT
+Vnum       1069
+Durability 79
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A pair of @@Rb@@el@@Ro@@eo@@Rd@@ey @@dknuckles@@N has been left behind.~
+Name       bloody knuckles~
+ObjFun     (null)
+ShortDesc  @@RB@@el@@Ro@@eo@@Rd@@ey @@dKnuckles@@N~
+Speed      3.02
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  13 15 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -1
+End
+#OAFFECT
+Location   19
+Modifier   5
+End
+#OAFFECT
+Location   18
+Modifier   2
+End
+
+#OBJECT
+Vnum       1070
+Durability 22
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@yA simple golden band@@N shines in the dust.~
+Name       simple golden band~
+ObjFun     (null)
+ShortDesc  @@ya simple golden band@@N~
+Speed      4.00
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  14 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   12
+Modifier   1
+End
+#OAFFECT
+Location   14
+Modifier   1
+End
+#OAFFECT
+Location   24
+Modifier   0
+End
+
+#OBJECT
+Vnum       1071
+Durability 6
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A tattered piece of cloth has been discarded here.~
+Name       tattered piece of cloth~
+ObjFun     (null)
+ShortDesc  a tattered piece of cloth~
+Speed      3.12
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  17 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -4
+End
+#OAFFECT
+Location   14
+Modifier   2
+End
+
+#OBJECT
+Vnum       1072
+Durability 57
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@bA hemp cord @@Nsits here in a pile.~
+Name       hemp cord~
+ObjFun     (null)
+ShortDesc  @@ba hemp cord@@N~
+Speed      1.00
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  18 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -4
+End
+
+#OBJECT
+Vnum       1073
+Durability 54
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@bbreastplate @@Nmade of solid @@ybrass @@Nlooks like it might offer some protection.~
+Name       brass breastplate~
+ObjFun     (null)
+ShortDesc  @@ba @@ybrass @@bbreastplate@@N~
+Speed      4.00
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  19 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -5
+End
+#OAFFECT
+Location   13
+Modifier   3
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+#OAFFECT
+Location   12
+Modifier   1
+End
+
+#OBJECT
+Vnum       1074
+Durability 10
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A pair of  @@bleather leggings@@N look like they might offer some protection.~
+Name       leather leggings~
+ObjFun     (null)
+ShortDesc  @@bLeather Leggings@@N~
+Speed      1.32
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  21 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -2
+End
+#OAFFECT
+Location   19
+Modifier   1
+End
+#OAFFECT
+Location   13
+Modifier   3
+End
+#OAFFECT
+Location   18
+Modifier   2
+End
+
+#OBJECT
+Vnum       1075
+Durability 49
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A pair of @@bwell-worn @@ysandals@@N look like they're falling apart.~
+Name       pair well-worn sandals~
+ObjFun     (null)
+ShortDesc  a pair of @@bwell-worn @@ysandals@@N~
+Speed      2.33
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  22 23 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -2
+End
+#OAFFECT
+Location   19
+Modifier   0
+End
+#OAFFECT
+Location   13
+Modifier   3
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
 #RESETS
 O 1051 1 1051 
 
@@ -1298,14 +2085,73 @@ O 1053 1 1065
 
 O 1054 1 1065 
 
-P 1055 6 1054 
+O 1059 3 1065 
 
-P 1056 2 1053 
+P 1055 3 1054 
 
-P 1057 2 1053 
+P 1056 1 1053 
 
-P 1058 2 1053 
+P 1057 1 1053 
 
-O 1059 6 1065 
+P 1058 1 1053 
+
+M 1052 1 1067 
+E 1062 0 4 
+E 1069 0 16 
+E 1066 0 12 
+M 1053 1 1080 
+E 1065 0 9 
+M 1053 1 1081 
+M 1053 1 1085 
+M 1053 1 1075 
+M 1054 1 1068 
+E 1073 0 24 
+M 1054 1 1071 
+M 1054 1 1072 
+M 1054 1 1067 
+M 1055 1 1074 
+E 1071 0 0 
+E 1064 0 7 
+M 1055 1 1073 
+E 1065 0 9 
+E 1064 0 7 
+M 1055 1 1084 
+M 1055 1 1082 
+M 1056 1 1083 
+E 1070 0 17 
+E 1068 0 14 
+M 1056 1 1084 
+E 1070 0 17 
+E 1068 0 14 
+M 1057 1 1070 
+E 1061 0 2 
+M 1057 1 1085 
+M 1057 1 1077 
+M 1057 1 1076 
+M 1058 1 1076 
+E 1063 0 5 
+E 1075 0 27 
+M 1058 1 1069 
+M 1058 1 1074 
+M 1058 1 1079 
+M 1059 1 1079 
+E 1072 0 23 
+M 1059 1 1078 
+E 1067 0 13 
+M 1059 1 1072 
+E 1074 0 26 
+M 1059 1 1082 
+M 1060 1 1081 
+M 1060 1 1083 
+M 1060 1 1077 
+M 1061 1 1071 
+E 1060 0 0 
+M 1061 1 1070 
+M 1061 1 1078 
+M 1061 1 1066 
+M 1062 1 1066 
+M 1062 1 1068 
+M 1062 1 1075 
+M 1062 1 1073 
 S
 #$

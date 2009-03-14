@@ -214,7 +214,7 @@ void imclog( const char *format, ... )
    snprintf( buf2, LGST, "IMC: %s", buf );
 
    #if defined(IMCACK)
-    monitor_chan(buf2,MONITOR_IMC);
+    monitor_chan(buf2+5,MONITOR_IMC);
    #endif
 
    strtime = ctime( &imc_time );
@@ -235,10 +235,10 @@ void imcbug( const char *format, ... )
    vsnprintf( buf, LGST, format, ap );
    va_end( ap );
 
-   snprintf( buf2, LGST, "***BUG*** IMC: %s", buf );
+   snprintf( buf2, LGST, "IMC: ***BUG*** %s", buf );
 
    #if defined(IMCACK)
-    monitor_chan(buf2,MONITOR_IMC);
+    monitor_chan(buf2+5,MONITOR_IMC);
    #endif
 
    strtime = ctime( &imc_time );
