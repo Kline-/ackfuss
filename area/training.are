@@ -304,7 +304,7 @@ End
 
 #ROOM
 Vnum  1063
-Desc  ~
+Desc  @@dGrouping can be a vital part of adventuring. When in a @@Rgroup@@d, not only are experience gains increased, but gold is automatically split among @@Rgroup @@dmembers and you can use the @@Rgroup @@dcommand to keep better track of one another's status. To make a @@Rgroup, one player must first @@Rfollow @@dthe other. Then the other player will @@Rgroup <target> @@dwho is following them. Once your @@Rgroup @@dis formed, simply typing @@Rgroup @@dwill display vital stats on all members. All members can use the special @@Rgtalk @@dcommand to message the entire @@Rgroup @@dat once. To leave a @@Rgroup @@dsimply @@Rfollow self @@dinstead of the leader. Head @@Rnorth @@dto the next lesson.@@N~
 Flags EOL
 Name  @@dLesson@@R: @@WGrouping@@N~
 Sect  11
@@ -328,9 +328,9 @@ End
 
 #ROOM
 Vnum  1064
-Desc  ~
+Desc  @@dQuests provide an alternative way to gain experience rather than fighting monsters. Auto-run quests will feature a NPC seeking assistance to find an item via the @@Rcrusade @@dchannel. You can also find a @@RQuest Master @@din the world and gain a @@Rmquest @@dfrom them. @@RMquests @@dare varied; some may require you to retrieve items, kill monsters, or even a combination of both. Questing can be a fast, fun way to earn gold, experience, and even special @@Rquest points @@dthat can be spent on enhancing items or other bonuses! The final lesson is to the @@Reast@@d.@@N~
 Flags EOL
-Name  quests~
+Name  @@dLesson@@R: @@WQuests@@N~
 Sect  11
 End
 #DOOR
@@ -354,7 +354,7 @@ End
 Vnum  1065
 Desc  ~
 Flags EOL
-Name  equipment spawn/advanced entry~
+Name  @@RT@@dhe @@RA@@drmory@@N~
 Sect  11
 End
 #DOOR
@@ -1100,6 +1100,69 @@ Values     0 0 0 0 0 0 0 0 0 0
 WearFlags  24 EOL
 Weight     1
 End
+
+#OBJECT
+Vnum       1053
+Durability 75
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA weapon rack holds a few @@Rblood caked @@dswords, spears, and axes.@@N~
+Name       weapon rack~
+ObjFun     (null)
+ShortDesc  @@da weapon rack@@N~
+Speed      3.20
+Type       15
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1054
+Durability 65
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dAn armor rack has some battered shields left on it.@@N~
+Name       armor rack~
+ObjFun     (null)
+ShortDesc  @@dan armor rack@@N~
+Speed      1.03
+Type       15
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1055
+Durability 15
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   ~
+Name       battered shield~
+ObjFun     (null)
+ShortDesc  @@dA @@bBattered @@yShield@@N~
+Speed      3.12
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -1
+End
+#OAFFECT
+Location   13
+Modifier   1
+End
+#OAFFECT
+Location   24
+Modifier   0
+End
 #RESETS
 O 1051 1 1051 
 
@@ -1111,5 +1174,10 @@ D 1056 1 1
 
 D 1056 1 2 
 
+O 1053 1 1065 
+
+O 1054 1 1065 
+
+P 1055 5 1054 
 S
 #$

@@ -1446,14 +1446,12 @@ void load_resets( FILE * fp )
                last_obj_room = pRoomIndex;
             }
             break;
-         case 'P':  /* apparently these resets are no longer in use */
-            /*
-             * if ( last_obj_room )
-             * {
-             * pRoomIndex = last_obj_room;
-             * reset_ok = TRUE;
-             * } 
-             */
+         case 'P':
+            if ( last_obj_room )
+            {
+               pRoomIndex = last_obj_room;
+               reset_ok = TRUE;
+            } 
             break;
          case 'G':
          case 'E':
@@ -2354,9 +2352,8 @@ void reset_area( AREA_DATA * pArea )
                continue;
             }
 
-            if( !pArea->player_list.empty()
-                || ( obj_to = get_obj_type( pObjToIndex ) ) == NULL
-                || count_obj_list( pObjIndex, obj_to->first_in_carry_list ) > 0 )
+            if( ( obj_to = get_obj_type( pObjToIndex ) ) == NULL
+                || count_obj_list( pObjIndex, obj_to->first_in_carry_list ) >= pReset->arg2 )
             {
                last = FALSE;
                break;

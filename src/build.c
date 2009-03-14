@@ -794,7 +794,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
    char buf[MAX_STRING_LENGTH];
    static char buf1[MAX_STRING_LENGTH];
    MOB_INDEX_DATA *pMob;
-   OBJ_INDEX_DATA *pObj;
+   OBJ_INDEX_DATA *pObj, *to_obj;
    RESET_DATA *pReset;
 
    buf[0] = '\0';
@@ -895,6 +895,20 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             snprintf( buf, MSL, " [%d] %s no more than %d in room.\r\n", pObj->vnum, pObj->name, pReset->arg2 );
          else
             snprintf( buf, MSL, " [%d] unknown object reset!\r\n", pReset->arg1 );
+         strncat( buf1, buf, MSL );
+         break;
+      case 'P':
+         pObj = get_obj_index( pReset->arg1 );
+         to_obj = get_obj_index( pReset->arg3 );
+         if( pObj )
+         {
+            if( to_obj )
+               snprintf( buf, MSL, " object [%d] %s inside object [%d] %s. (limit %d)\r\n", pReset->arg1, pObj->name, pReset->arg3, to_obj->name, pReset->arg2 );
+            else
+               snprintf( buf, MSL, " object [%d] %s inside object [%d] (unknown). (limit %d)\r\n", pReset->arg1, pObj->name, pReset->arg3, pReset->arg2 );
+         }
+         else
+            snprintf( buf, MSL, " object [%d] (unknown) inside object [%d] (unknown). (limit %d)\r\n", pReset->arg1, pReset->arg3, pReset->arg2 );
          strncat( buf1, buf, MSL );
          break;
       case 'D':  /* close/lock doors */
@@ -3227,8 +3241,10 @@ void build_addreset( CHAR_DATA * ch, char *argument )
 {
    RESET_DATA *pReset;
    RESET_DATA *pMobReset;
+   RESET_DATA *pObjReset;
    BUILD_DATA_LIST *pList;
    BUILD_DATA_LIST *pMobList;
+   BUILD_DATA_LIST *pObjList;
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
    char arg3[MAX_INPUT_LENGTH];
@@ -3254,17 +3270,18 @@ void build_addreset( CHAR_DATA * ch, char *argument )
 
    if( arg1[0] == '\0' || ( arg2[0] == '\0' && strcmp( arg1, "message" ) ) )
    {
-      send_to_char( "addreset mob   <vnum> <limit>\r\n", ch );
-      send_to_char( "         obj   <vnum> <max number in room>\r\n", ch );
-      send_to_char( "         equip <n.mob-vnum> <obj-vnum> <location>\r\n", ch );
-      send_to_char( "         give  <n.mob-vnum> <obj-vnum>\r\n", ch );
-      send_to_char( "         door  <dir> <state>\r\n", ch );
-      send_to_char( "         rand  <num-dirs>\r\n", ch );
+      send_to_char( "addreset mob     <vnum> <limit>\r\n", ch );
+      send_to_char( "         obj     <vnum> <max number in room>\r\n", ch );
+      send_to_char( "         equip   <n.mob-vnum> <obj-vnum> <location>\r\n", ch );
+      send_to_char( "         give    <n.mob-vnum> <obj-vnum>\r\n", ch );
+      send_to_char( "         within  <n.obj-vnum> <obj-vnum> <max num>\r\n", ch);
+      send_to_char( "         door    <dir> <state>\r\n", ch );
+      send_to_char( "         rand    <num-dirs>\r\n", ch );
       send_to_char( "         message <min_lev> <max_lev> <text>\r\n", ch );
       return;
    }
 
-   if( !is_name( arg1, "mob obj equip message give door rand" ) )
+   if( !is_name( arg1, "mob obj equip message give within door rand" ) )
    {
       build_addreset( ch, "" );
       return;
@@ -3497,6 +3514,80 @@ void build_addreset( CHAR_DATA * ch, char *argument )
       rarg2 = 0;
       rarg3 = 0;
       command = 'G';
+   }
+
+   if( !str_cmp( arg1, "within" ) )
+   {
+      int vnum1;
+
+      num = number_argument( arg2, buf );
+      if( num == 0 )
+      {
+         send_to_char( "Count portion of vnum cannot be 0. Indicate which instance of the obj, or -1 for all instances.\r\n",
+                       ch );
+         return;
+      }
+      vnum = is_number( buf ) ? atoi( buf ) : -1;
+
+      found = num;
+      for( pObjList = pRoomIndex->first_room_reset; pObjList != NULL; pObjList = pObjList->next )
+      {
+         pObjReset = (RESET_DATA *)pObjList->data;
+         if( pObjReset->command == 'O' && pObjReset->arg1 == vnum )
+         {
+            found--;
+            if( found <= 0 )
+               break;
+         }
+      }
+
+      if( found == num )
+      {
+         send_to_char( "None of that obj loaded in the room resets.\r\n", ch );
+         return;
+      }
+      if( num > 0 && found > 0 )
+      {
+         send_to_char( "Not enough of that obj loaded in the room resets.\r\n", ch );
+         return;
+      }
+
+      vnum = is_number( arg3 ) ? atoi( arg3 ) : -1;
+      if( !( pObj = get_obj_index( vnum ) ) )
+      {
+         send_to_char( "Object not found.\r\n", ch );
+         return;
+      }
+
+      if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && !IS_IMMORTAL( ch ) )
+      {
+         send_to_char( "You can't use that object for a reset.\r\n", ch );
+         return;
+      }
+
+      vnum1 = is_number( arg2 ) ? atoi( arg2 ) : -1;
+      if( !( pObj = get_obj_index( vnum1 ) ) )
+      {
+         send_to_char( "Object not found.\r\n", ch );
+         return;
+      }
+
+      if( IS_OBJ_STAT(pObj,ITEM_EXTRA_CLAN_EQ) && !IS_IMMORTAL( ch ) )
+      {
+         send_to_char( "You can't use that object for a reset.\r\n", ch );
+         return;
+      }
+
+      if( !build_canread( pObj->area, ch, 0 ) )
+      {
+         send_to_char( "You cannot use that object.\r\n", ch );
+         return;
+      }
+
+      rarg1 = vnum;
+      rarg2 = is_number( arg4 ) ? atoi ( arg4 ) : 1;
+      rarg3 = vnum1;
+      command = 'P';
    }
 
    if( !str_cmp( arg1, "door" ) )
