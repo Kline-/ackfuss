@@ -1492,7 +1492,7 @@ void do_score( CHAR_DATA * ch, char *argument )
       }
 
    }
-   snprintf( buf, MSL, "%s", "" );
+   snprintf( buf, MSL, "%s", "@@N" );
    snprintf( buf2, MSL, "@@c|%s @@c|\r\n", center_text( buf, 62 ) );
    send_to_char( buf2, ch );
    snprintf( buf, MSL, "@@WYou have assumed the @@yStance @@Wof the@@N %s.", stance_app[ch->stance].name );
