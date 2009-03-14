@@ -49,7 +49,7 @@
 #endif
 
 const char *where_name[] = {
-   "                      ",  /* light  */
+   "-*used as light*-     ",  /* light  */
    "-*floating above*-    ",
    "-*enveloped by*-      ",
    "-*worn on horns*-     ",

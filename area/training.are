@@ -208,9 +208,9 @@ End
 
 #ROOM
 Vnum  1059
-Desc  @@RConsider @@dwill allow you to gauge the relative strength of an opponent against your own. This will give you a better idea if you stand to win or lose a fight before attempting it! Always be sure to @@Rconsider @@dan opponent before combat if you can, as it may save you from some very nasty surprises. To proceed, continue @@Rwest@@d.@@N~
+Desc  @@dIf you ever find yourself lost you may simply @@Rrecall @@dback to your home. New adventurers start with their @@Rrecall @@dset in @@yC@@balor@@d, @@dbut there are other places throughout the realm you may call your home. Recalling from combat is a trickier situation, however, and may not always work. Some classes, however, have access to a @@RWord of Recall @@dspell that has a better success rate. To proceed, continue @@Rwest@@d.@@N~
 Flags EOL
-Name  @@dLesson@@R: @@WConsider@@N~
+Name  @@dLesson@@R: @@WRecall@@N~
 Sect  11
 End
 #DOOR
@@ -352,7 +352,7 @@ End
 
 #ROOM
 Vnum  1065
-Desc  ~
+Desc  @@dYou stand within the armory. There is a @@Rweapon rack @@dwith a few assorted weapons left in it, and an @@Rarmor rack @@dholding some badly dented shields. Torches from past adventurers are scattered about the floor. Below you is @@RT@@dhe @@RP@@dit, where new adventurers fight in a free-for-all gladiator style battle honing their skills. Once you have equipped yourself, proceed @@Rdown @@dto test your mettle.@@N~
 Flags EOL
 Name  @@RT@@dhe @@RA@@drmory@@N~
 Sect  11
@@ -376,10 +376,10 @@ End
 
 #ROOM
 Vnum  1066
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you, while above is the safety of the school.@@N~
 Flags EOL
-Name  combat pit~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -424,10 +424,10 @@ End
 
 #ROOM
 Vnum  1067
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -464,10 +464,10 @@ End
 
 #ROOM
 Vnum  1068
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -504,10 +504,10 @@ End
 
 #ROOM
 Vnum  1069
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -536,10 +536,10 @@ End
 
 #ROOM
 Vnum  1070
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -576,10 +576,10 @@ End
 
 #ROOM
 Vnum  1071
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -616,10 +616,10 @@ End
 
 #ROOM
 Vnum  1072
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -656,10 +656,10 @@ End
 
 #ROOM
 Vnum  1073
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -688,10 +688,10 @@ End
 
 #ROOM
 Vnum  1074
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -720,10 +720,10 @@ End
 
 #ROOM
 Vnum  1075
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north and east, while the south and west walls prevent any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -744,10 +744,10 @@ End
 
 #ROOM
 Vnum  1076
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and south, while the west wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -776,10 +776,10 @@ End
 
 #ROOM
 Vnum  1077
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and south, while the west wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -808,10 +808,10 @@ End
 
 #ROOM
 Vnum  1078
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, south, and west, while the east wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -840,10 +840,10 @@ End
 
 #ROOM
 Vnum  1079
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, south, and west, while the east wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -872,10 +872,10 @@ End
 
 #ROOM
 Vnum  1080
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north and west, while the south and east walls prevent any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     0
@@ -896,10 +896,10 @@ End
 
 #ROOM
 Vnum  1081
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the south and west, while the north and east walls prevent any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     2
@@ -920,10 +920,10 @@ End
 
 #ROOM
 Vnum  1082
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     1
@@ -952,10 +952,10 @@ End
 
 #ROOM
 Vnum  1083
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     1
@@ -984,10 +984,10 @@ End
 
 #ROOM
 Vnum  1084
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     1
@@ -1016,10 +1016,10 @@ End
 
 #ROOM
 Vnum  1085
-Desc  ~
+Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the south and east, while the north and west walls prevent any from escaping.@@N~
 Flags EOL
-Name  New Room~
-Sect  11
+Name  @@RT@@dhe @@RP@@dit@@N~
+Sect  10
 End
 #DOOR
 Dir     1
@@ -1163,6 +1163,126 @@ End
 Location   24
 Modifier   0
 End
+
+#OBJECT
+Vnum       1056
+Durability 60
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA sword, caked in @@Rblood@@d.@@N~
+Name       blood caked sword~
+ObjFun     (null)
+ShortDesc  @@RBlood @@dCaked Sword@@N~
+Speed      2.00
+Type       5
+Values     0 0 0 1 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   19
+Modifier   1
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+
+#OBJECT
+Vnum       1057
+Durability 93
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dAn axe, caked in @@Rblood@@d.@@N~
+Name       blood caked axe~
+ObjFun     (null)
+ShortDesc  @@RBlood @@dCaked Axe@@N~
+Speed      3.00
+Type       5
+Values     0 0 0 3 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   19
+Modifier   1
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+
+#OBJECT
+Vnum       1058
+Durability 3
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA spear, caked in @@Rblood@@d.@@N~
+Name       blood caked spear~
+ObjFun     (null)
+ShortDesc  @@RBlood @@dCaked Spear@@N~
+Speed      4.00
+Type       5
+Values     0 0 0 2 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   19
+Modifier   1
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+
+#OBJECT
+Vnum       1059
+Durability 22
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@eto@@yrc@@Rh @@Nflickers @@bdimly @@Non the floor.~
+Name       dimly glowing torch~
+ObjFun     (null)
+ShortDesc  @@bDimly @@yGlowing @@eTo@@yrc@@Rh@@N~
+Speed      2.33
+Type       1
+Values     0 0 -1 0 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -4
+End
+#OAFFECT
+Location   19
+Modifier   1
+End
+#OAFFECT
+Location   13
+Modifier   2
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+#OAFFECT
+Location   12
+Modifier   2
+End
+#OAFFECT
+Location   14
+Modifier   2
+End
+#OAFFECT
+Location   24
+Modifier   0
+End
 #RESETS
 O 1051 1 1051 
 
@@ -1178,6 +1298,14 @@ O 1053 1 1065
 
 O 1054 1 1065 
 
-P 1055 5 1054 
+P 1055 6 1054 
+
+P 1056 2 1053 
+
+P 1057 2 1053 
+
+P 1058 2 1053 
+
+O 1059 6 1065 
 S
 #$

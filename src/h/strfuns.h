@@ -57,5 +57,6 @@ char *get_family_name P_((CHAR_DATA *ch));
 char *get_tribe_name P_((CHAR_DATA *ch));
 char *strlower P_((char *ip));
 char *strupper P_((char *ip));
+void ch_printf P_((CHAR_DATA * ch, const char *fmt, ...)) __attribute__ ((format (printf, 2, 3)));
 
 #undef P_

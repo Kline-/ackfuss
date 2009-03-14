@@ -377,9 +377,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
  */
    if( IS_GHOST(victim) )
    {
-    buf[0] = '\0';
-    snprintf(buf,MSL,"@@d(@@gGhost@@d) @@N%s floats here morbidly.\r\n", PERS(victim,ch) );
-    send_to_char(buf,ch);
+    ch_printf(ch,"@@d(@@gGhost@@d) @@N%s floats here morbidly.\r\n", PERS(victim,ch) );
     return;
    }
 

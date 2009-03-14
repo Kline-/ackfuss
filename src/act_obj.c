@@ -1804,7 +1804,7 @@ void do_wear( CHAR_DATA * ch, char *argument )
       OBJ_DATA *worn;
       extern const char *where_name[];
       snprintf( outbuf, MSL, "%s", "Wear slots for your race:\r\n" );
-      for( location = 1; location < MAX_WEAR; location++ )
+      for( location = 0; location < MAX_WEAR; location++ )
       {
          if( race_table[ch->race].wear_locs[location] == TRUE )
          {

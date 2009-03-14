@@ -55,6 +55,10 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_COMM_H
+#include "h/comm.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -1624,3 +1628,16 @@ char *strupper( char *ip )
  buf[i] = '\0';
  return buf;
 }
+
+void ch_printf( CHAR_DATA * ch, const char *fmt, ... )
+{
+    char buf[MAX_STRING_LENGTH];
+
+    va_list args;
+
+    va_start( args, fmt );
+    vsprintf( buf, fmt, args );
+    va_end( args );
+
+    send_to_char( buf, ch );
+} 
