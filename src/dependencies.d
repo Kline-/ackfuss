@@ -104,8 +104,6 @@ o/magic.o: magic.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
 o/mapper.o: mapper.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/comm.h h/cursor.h h/db.h h/handler.h h/mapper.h
-o/mccp.o: mccp.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
-  lists.h h/mquest.h h/strfuns.h h/utils.h
 o/money.o: money.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_wiz.h h/comm.h h/db.h h/handler.h h/money.h

@@ -31,7 +31,6 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 #include <bitset>
-#include <zlib.h>
 
 #define DEC_ACK_H
 
@@ -105,15 +104,6 @@ class disabled_data
   struct cmd_type const *command;
   char                  *disabled_by;
   short                 level;
-};
-
-class mccp_data
-{
- public:
-  mccp_data();
-  ~mccp_data();
-  z_stream *out_compress;
-  unsigned char *out_compress_buf;
 };
 
 class message_data
@@ -281,7 +271,6 @@ class descriptor_data
    int flags;
    int childpid;  /* Child process id */
    time_t timeout;
-   MCCP *mccp; /* Mud Client Compression Protocol */
 };
 
 #define DESC_FLAG_PASSTHROUGH 1  /* Used when data is being passed to */

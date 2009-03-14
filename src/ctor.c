@@ -250,7 +250,6 @@ char_data::char_data()
 
 descriptor_data::descriptor_data()
 {
- mccp = new MCCP;
 }
 
 disabled_data::disabled_data()
@@ -334,10 +333,6 @@ mark_data::mark_data()
  author = &str_empty[0];
  duration = 0;
  type = 0;
-}
-
-mccp_data::mccp_data()
-{
 }
 
 message_data::message_data()

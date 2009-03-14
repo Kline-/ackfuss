@@ -1766,7 +1766,7 @@ void do_quit( CHAR_DATA * ch, char *argument )
    }
 
    save_char_obj( ch );
-   ch->is_quitting = TRUE;
+   ch->is_quitting = true;
 
    extract_char( ch, TRUE );
    if( d != NULL )

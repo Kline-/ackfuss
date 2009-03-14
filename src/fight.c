@@ -2456,7 +2456,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
       else
       {
          OBJ_DATA *obj;
-         victim->is_quitting = FALSE;
+         victim->is_quitting = false;
          do_stand( victim, "" );
          for( obj = my_corpse->first_content; obj; obj = obj->next_content )
          {

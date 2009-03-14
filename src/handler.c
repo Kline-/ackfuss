@@ -454,7 +454,7 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
     * Check for weapon wielding.
     * Guard against recursion (for weapons with affects).
     */
-   if( ( ch->is_quitting == FALSE ) && ( ch->desc != NULL ) && ( ch->desc->connected != CON_SETTING_STATS ) )
+   if( ( ch->is_quitting == false ) && ( ch->desc != NULL ) && ( ch->desc->connected != CON_SETTING_STATS ) )
    {
       short i;
       for( i = 0; i < MAX_WEAR; i++ )
@@ -467,6 +467,7 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
             if( depth == 0 )
             {
                depth++;
+
                act( "You stop using $p since it is too heavy.", ch, wield, NULL, TO_CHAR );
                act( "$n stops using $p. since it is too heavy", ch, wield, NULL, TO_ROOM );
                unequip_char( ch, wield );
@@ -1586,7 +1587,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
       die_follower( ch );
 
    stop_fighting( ch, TRUE );
-   ch->is_quitting = TRUE;
+   ch->is_quitting = true;
    while( ( this_object = ch->last_carry ) != NULL )
       extract_obj( this_object );
 

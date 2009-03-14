@@ -73,7 +73,7 @@
 #include "h/ssm.h"
 #endif
 
-#define NEVER_FREE_HUNT
+#undef NEVER_FREE_HUNT
  
 H_QUEUE *h_head = NULL;
 H_QUEUE *h_tail = NULL;

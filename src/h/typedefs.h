@@ -183,7 +183,6 @@ typedef struct h_queue H_QUEUE;
 typedef struct social_type SOCIAL_TYPE;
 typedef struct clutch_type CLUTCH_TYPE;
 typedef struct disabled_data DISABLED_DATA;
-typedef struct mccp_data MCCP;
 
 /*
  * Function types.
