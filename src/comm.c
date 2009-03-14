@@ -1120,31 +1120,31 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       if( ch->hit < ch->max_hit )
       {
          check = 1;
-         snprintf( buf, MSL, "<%dhp", ch->hit );
+         snprintf( buf, MSL, "@@W<@@e%d@@RH", ch->hit );
          strncat( buf2, buf, MSL );
       }
       if( ch->mana < ch->max_mana )
       {
          if( check == 1 )
-            snprintf( buf, MSL, " %dmn", ch->mana );
+            snprintf( buf, MSL, " @@l%d@@BM", ch->mana );
          else
-            snprintf( buf, MSL, "<%dmn", ch->mana );
+            snprintf( buf, MSL, "@@W<@@l%d@@BMn", ch->mana );
          check = 1;
          strncat( buf2, buf, MSL );
       }
       if( ch->move < ch->max_move )
       {
          if( check == 1 )
-            snprintf( buf, MSL, " %dmv", ch->move );
+            snprintf( buf, MSL, " @@r%d@@GV", ch->move );
          else
-            snprintf( buf, MSL, "<%dmv", ch->move );
+            snprintf( buf, MSL, "@@W<@@r%d@@GV", ch->move );
          strncat( buf2, buf, MSL );
          check = 1;
       }
       if( check == 1 )
          send_to_char( buf2, ch );
 
-      send_to_char( "> ", ch );
+      send_to_char( "@@W>@@N ", ch );
       return;
    }
 
