@@ -72,16 +72,9 @@
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
-
-#undef NEVER_FREE_HUNT
  
 H_QUEUE *h_head = NULL;
 H_QUEUE *h_tail = NULL;
- 
-#ifdef NEVER_FREE_HUNT
-H_QUEUE *h_free = NULL;
-void setup_hunt( void );
-#endif
 
 #ifdef DEBUG_HUNT_CODE
 static FILE *h_fp;
@@ -101,12 +94,7 @@ hunt->room->room_flags.reset(RFLAG_HUNT_MARK);
 fprintf( h_fp, "Dequeue: %5d\n", hunt->room->vnum );
 fflush( h_fp );
 #endif
-#ifdef NEVER_FREE_HUNT
-hunt->next = h_free;
-h_free = hunt;
-#else
 dispose( hunt, sizeof( *hunt ) );
-#endif
 return;
 }
  
@@ -128,24 +116,16 @@ void h_enqueue( ROOM_INDEX_DATA * room, short dir )
 {
    H_QUEUE *hunt;
 
-#ifdef NEVER_FREE_HUNT
-if( h_free )
-{
-hunt = h_free;
-h_free = h_free->next;
-}
-else
-#endif
-hunt = (H_QUEUE *)getmem( sizeof( *hunt ) );
-hunt->next = NULL;
+   hunt = (H_QUEUE *)getmem( sizeof( *hunt ) );
+   hunt->next = NULL;
    hunt->room = room;
    hunt->dir = dir;
    room->room_flags.set(RFLAG_HUNT_MARK);
- if( !h_head )
-h_head = hunt;
-else
-h_tail->next = hunt;
-h_tail = hunt;
+   if( !h_head )
+    h_head = hunt;
+   else
+    h_tail->next = hunt;
+   h_tail = hunt;
 #ifdef DEBUG_HUNT_CODE
    fprintf( h_fp, "Enqueue: %5d - %s\n", room->vnum, room->room_flags.test(RFLAG_HUNT_MARK) ? "set" : "unset" );
    fflush( h_fp );
@@ -210,10 +190,6 @@ short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags 
       h_fp = file_open( "hunt.out", "w" );
    fprintf( h_fp, "h_find_dir\n" );
    fflush( h_fp );
-#endif
-#ifdef NEVER_FREE_HUNT
-if( !h_free && !h_head && !h_tail )
-setup_hunt( );
 #endif
    room->room_flags.set(RFLAG_HUNT_MARK);
    h_enqueue_room( room, -1, h_flags );
@@ -686,22 +662,3 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    }
    return;
 }
-
-#ifdef NEVER_FREE_HUNT
-#define MAX_BUCKET_SIZE 4096
-#define TOP_BUCKET_LIST 4095
-void setup_hunt( void )
-{
-H_QUEUE *bucket;
-int bcnt;
- 
-bucket = (H_QUEUE *)getmem( MAX_BUCKET_SIZE * sizeof( *bucket ) );
-for( bcnt = 0; bcnt < MAX_BUCKET_SIZE; bcnt++ )
-bucket[bcnt].next = ( bcnt < TOP_BUCKET_LIST ? &bucket[bcnt + 1] : h_free );
-h_free = &bucket[0];
-return;
-}
- 
-#undef TOP_BUCKET_SIZE
-#undef MAX_BUCKET_SIZE
-#endif
