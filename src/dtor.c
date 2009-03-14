@@ -166,11 +166,6 @@ generic_list::~generic_list()
  free(data);
 }
 
-h_queue::~h_queue()
-{
- this->room->room_flags.reset(RFLAG_HUNT_MARK);
-}
-
 hash_entry_tp::~hash_entry_tp()
 {
  is_free = true;

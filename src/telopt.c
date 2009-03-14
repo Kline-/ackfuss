@@ -157,16 +157,16 @@ int process_do_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
  mssp_reply(d,"CODEBASE",VERS_STRING);
  mssp_reply(d,"CONTACT","genocaust@gmail.com");
  mssp_reply(d,"CREATED",2008);
- mssp_reply(d,"ICON","");
+ mssp_reply(d,"ICON","http://www.ackmud.net/ack_mccp.gif");
  mssp_reply(d,"IP","24.162.100.182");
  mssp_reply(d,"LANGUAGE","English");
- mssp_reply(d,"LOCATION","US");
+ mssp_reply(d,"LOCATION","United States");
  mssp_reply(d,"MINIMUM AGE",0);
  mssp_reply(d,"NAME","AckFUSS Dev");
- mssp_reply(d,"PREROGATIVE","ACK!MUD");
  mssp_reply(d,"WEBSITE","http://www.ackmud.net");
 
  /* Categorization */
+ mssp_reply(d,"FAMILY","DikuMUD");
  mssp_reply(d,"GENRE","Fantasy");
  mssp_reply(d,"GAMEPLAY","Hack and Slash");
  mssp_reply(d,"GAMESYSTEM","Custom");
@@ -194,6 +194,7 @@ int process_do_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
  mssp_reply(d,"MCCP",0);
  mssp_reply(d,"MCP",0);
  mssp_reply(d,"MSP",0);
+ mssp_reply(d,"SSL",0);
  mssp_reply(d,"MXP",0);
  mssp_reply(d,"PUEBLO",0);
  mssp_reply(d,"VT100",0);

@@ -4136,7 +4136,6 @@ void clear_lists( void )
  for_each( exdesc_list.begin(),     exdesc_list.end(),     DeleteObject() );
  for_each( exit_list.begin(),       exit_list.end(),       DeleteObject() );
  for_each( file_list.begin(),       file_list.end(),       DeleteObject() );
- for_each( hunt_list.begin(),       hunt_list.end(),       DeleteObject() );
  for_each( mob_index_list.begin(),  mob_index_list.end(),  DeleteObject() );
  for_each( note_list.begin(),       note_list.end(),       DeleteObject() );
  for_each( obj_list.begin(),        obj_list.end(),        DeleteObject() );

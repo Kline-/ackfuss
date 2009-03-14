@@ -56,7 +56,6 @@ std::list<DISABLED_DATA *> disabled_list;
 std::list<EXTRA_DESCR_DATA *> exdesc_list;
 std::list<EXIT_DATA *> exit_list;
 std::list<FILE *> file_list;
-std::list<H_QUEUE *> hunt_list;
 std::list<MOB_INDEX_DATA *> mob_index_list;
 std::list<NOTE_DATA *> note_list;
 std::list<OBJ_DATA *> obj_list;

@@ -35,7 +35,6 @@
 /* Mob/player hunting.. */
 /* Copied this from one of my old MUDs..  Much cleaner than the sillymud
    hunt routines  -- Alty */
-#include <algorithm>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -74,19 +73,79 @@
 #include "h/ssm.h"
 #endif
 
+#define NEVER_FREE_HUNT
+ 
+H_QUEUE *h_head = NULL;
+H_QUEUE *h_tail = NULL;
+ 
+#ifdef NEVER_FREE_HUNT
+H_QUEUE *h_free = NULL;
+void setup_hunt( void );
+#endif
+
 #ifdef DEBUG_HUNT_CODE
 static FILE *h_fp;
 #endif
+
+void h_dequeue( void )
+{
+H_QUEUE *hunt;
+ 
+if( !( hunt = h_head ) )
+return;
+h_head = hunt->next;
+if( h_tail == hunt )
+h_tail = NULL;
+hunt->room->room_flags.reset(RFLAG_HUNT_MARK);
+#ifdef DEBUG_HUNT_CODE
+fprintf( h_fp, "Dequeue: %5d\n", hunt->room->vnum );
+fflush( h_fp );
+#endif
+#ifdef NEVER_FREE_HUNT
+hunt->next = h_free;
+h_free = hunt;
+#else
+dispose( hunt, sizeof( *hunt ) );
+#endif
+return;
+}
+ 
+void h_clear( void )
+{
+#ifdef DEBUG_HUNT_CODE
+fprintf( h_fp, "h_clear\n" );
+fflush( h_fp );
+#endif
+while( h_head != NULL )
+h_dequeue( );
+#ifdef DEBUG_HUNT_CODE
+fprintf( h_fp, "Cleared\n" );
+fflush( h_fp );
+#endif
+}
 
 void h_enqueue( ROOM_INDEX_DATA * room, short dir )
 {
    H_QUEUE *hunt;
 
-   hunt = new H_QUEUE;
+#ifdef NEVER_FREE_HUNT
+if( h_free )
+{
+hunt = h_free;
+h_free = h_free->next;
+}
+else
+#endif
+hunt = (H_QUEUE *)getmem( sizeof( *hunt ) );
+hunt->next = NULL;
    hunt->room = room;
    hunt->dir = dir;
    room->room_flags.set(RFLAG_HUNT_MARK);
-   hunt_list.push_back(hunt);
+ if( !h_head )
+h_head = hunt;
+else
+h_tail->next = hunt;
+h_tail = hunt;
 #ifdef DEBUG_HUNT_CODE
    fprintf( h_fp, "Enqueue: %5d - %s\n", room->vnum, room->room_flags.test(RFLAG_HUNT_MARK) ? "set" : "unset" );
    fflush( h_fp );
@@ -142,8 +201,7 @@ void h_enqueue_room( ROOM_INDEX_DATA * room, short dir, int h_flags )
 
 short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags )
 {
-   H_QUEUE *hunt = NULL;
-   std::list<H_QUEUE *>::iterator li;
+   H_QUEUE *hunt;
 
    if( room == target )
       return -1;
@@ -153,11 +211,14 @@ short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags 
    fprintf( h_fp, "h_find_dir\n" );
    fflush( h_fp );
 #endif
+#ifdef NEVER_FREE_HUNT
+if( !h_free && !h_head && !h_tail )
+setup_hunt( );
+#endif
    room->room_flags.set(RFLAG_HUNT_MARK);
    h_enqueue_room( room, -1, h_flags );
-   for( li = hunt_list.begin(); li != hunt_list.end(); li++ )
+   for( hunt = h_head; hunt; hunt = hunt->next )
    {
-      hunt = *li;
       if( hunt->room == target )
       {
          short dir = hunt->dir;
@@ -166,9 +227,8 @@ short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags 
          fprintf( h_fp, "Found dir %d\n", dir );
          fflush( h_fp );
 #endif
+         h_clear();
          room->room_flags.reset(RFLAG_HUNT_MARK);
-         hunt_list.remove(hunt);
-         delete hunt;
          return dir;
       }
       h_enqueue_room( hunt->room, hunt->dir, h_flags );
@@ -177,6 +237,7 @@ short h_find_dir( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags 
    fprintf( h_fp, "Invalid dir\n" );
    fflush( h_fp );
 #endif
+   h_clear();
    room->room_flags.reset(RFLAG_HUNT_MARK);
    return -1;
 }
@@ -625,3 +686,22 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    }
    return;
 }
+
+#ifdef NEVER_FREE_HUNT
+#define MAX_BUCKET_SIZE 4096
+#define TOP_BUCKET_LIST 4095
+void setup_hunt( void )
+{
+H_QUEUE *bucket;
+int bcnt;
+ 
+bucket = (H_QUEUE *)getmem( MAX_BUCKET_SIZE * sizeof( *bucket ) );
+for( bcnt = 0; bcnt < MAX_BUCKET_SIZE; bcnt++ )
+bucket[bcnt].next = ( bcnt < TOP_BUCKET_LIST ? &bucket[bcnt + 1] : h_free );
+h_free = &bucket[0];
+return;
+}
+ 
+#undef TOP_BUCKET_SIZE
+#undef MAX_BUCKET_SIZE
+#endif
