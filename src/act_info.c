@@ -3086,7 +3086,6 @@ void do_report( CHAR_DATA * ch, char *argument )
 void do_practice( CHAR_DATA * ch, char *argument )
 {
    char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
    CHAR_DATA *mob;
    int cnt;
    int sn;
@@ -3101,7 +3100,6 @@ void do_practice( CHAR_DATA * ch, char *argument )
     * * if ch->p_class was used here! -S-
     */
    buf[0] = '\0';
-   buf1[0] = '\0';
 
    if( IS_NPC( ch ) )
       return;
@@ -3156,19 +3154,22 @@ void do_practice( CHAR_DATA * ch, char *argument )
             }
             if( ch->pcdata->learned[sn] > 0 )
             {
-               snprintf( buf, MSL, "@@W%16s-@@y%-7s@@g  ", skill_table[sn].name, learnt_name( ch->pcdata->learned[sn] ) );
+               snprintf( buf + strlen(buf), MSL, "@@W%25s-@@y%-7s@@g  ", skill_table[sn].name, learnt_name( ch->pcdata->learned[sn] ) );
 
-               strncat( buf1, buf, MSL );
                if( ++col % 3 == 0 )
-                  strncat( buf1, "\r\n", MSL );
+               {
+                  strncat( buf, "\r\n", MSL );
+                  send_to_char(buf,ch);
+                  buf[0] = '\0';
+               }
             }
          }
       }
 
       if( col % 3 != 0 )
-         strncat( buf1, "\r\n", MSL );
+         strncat( buf, "\r\n", MSL );
 
-      send_to_char( buf1, ch );
+      send_to_char( buf, ch );
 
       snprintf( buf, MSL, "\r\nYou have %d practice sessions left.\r\n", ch->practice );
       send_to_char( buf, ch );

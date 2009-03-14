@@ -64,7 +64,7 @@ End
 
 #ROOM
 Vnum  1053
-Desc  ~
+Desc  @@dYou are standing within the training room. Here you can @@Rtrain @@dand @@Rpractice @@dyour attributes, skills, and spells. There is a @@Rsmall sign @@daffixed to the northern wall. Perhaps you should @@Rlook @@dat it? You may also @@Rgain @@dlevels here, if needed.@@N~
 Flags EOL
 Name  @@RT@@draining @@RR@@doom@@N~
 Sect  11
@@ -76,6 +76,14 @@ Flags   EOL
 Key     0
 Keyword ~
 Vnum    1052
+End
+#REXTRA
+Desc       You can train attributes: Strength, Intellect, Wisdom, Dexterity, and Constitution. Skills and spells must be practiced, instead. To see available skills or spells, you can slist <3 letter class abbr>, ie: slist mag, for Mage.~
+Keyword    small~
+End
+#REXTRA
+Desc       You can train attributes: Strength, Intellect, Wisdom, Dexterity, and Constitution. Skills and spells must be practiced, instead. To see available skills or spells, you can slist <3 letter class abbr>, ie: slist mag, for Mage.~
+Keyword    sign~
 End
 
 #ROOM
@@ -1030,6 +1038,35 @@ Keyword ~
 Vnum    1077
 End
 
+#MOBILE
+Vnum      1051
+AcMod     0
+Act       2 10 11 17 19 26 29 30 EOL
+Affected  188
+Alignment 1000
+Cast      0
+Clan      0
+Class     3
+Def       0
+Desc      ~
+DrMod     0
+HrMod     0
+Level     140
+LongDesc  The @@WOld @@RWar @@dVeteran stands ready to assist in your training.@@N~
+PlrName   war veteran trainer old~
+Position  0
+Race      0
+RaceMods  0
+Resist    0
+Sex       1
+ShortDesc @@WOld @@RWar @@dVeteran@@N~
+Skills    0
+SMagic    0
+SpecFun   (null)
+Suscept   0
+WMagic    0
+End
+
 #OBJECT
 Vnum       1051
 Durability 41
@@ -1048,5 +1085,8 @@ Weight     1
 End
 #RESETS
 O 1051 1 1051 
+
+M 1051 1 1053 
+
 S
 #$
