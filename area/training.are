@@ -88,9 +88,9 @@ End
 
 #ROOM
 Vnum  1054
-Desc  ~
+Desc  @@dThe @@Rconfig @@dcommand is very useful. It will let you setup some actions to be automated and even change the look and feel of the game. You can see the list of options by just typing @@Rconfig@@d. Some recommended defaults are @@Rconfig +autoexit @@dand @@Rconfig +color@@d; this way you will automatically see the exits to rooms and can view colors. To proceed further, head @@Rnorth@@d.@@N~
 Flags EOL
-Name  config command~
+Name  @@dLesson@@R: @@WConfig@@N~
 Sect  11
 End
 #DOOR
@@ -112,9 +112,9 @@ End
 
 #ROOM
 Vnum  1055
-Desc  ~
+Desc  @@dThe @@Rchannel @@dcommand will toggle listening to different channels on the MUD. To turn a channel off (mute it) use @@Rchannel -name@@d, ie: channel -ooc to stop hearing OOC chat. To turn a channel on (un-mute it) use @@Rchannel +name @@dinstead. Setting the @@Rhermit channel @@doff or on will mute or un-mute all channels at once. To proceed to the next lesson, head @@Rdown@@d.@@N~
 Flags EOL
-Name  channels command~
+Name  @@dLesson@@R: @@WChannels@@N~
 Sect  11
 End
 #DOOR
@@ -136,16 +136,16 @@ End
 
 #ROOM
 Vnum  1056
-Desc  ~
+Desc  @@dDoors are very important parts of the game. Some conceal hidden treasures and others are just meant to keep you (or monsters!) out. This door, to the east, happens to be locked and requires a key. To open it you'll need to @@Rget @@dthe @@Rkey @@din the room, @@Runlock east@@d, @@Ropen east@@d, @@dand then proceed on your way.@@N~
 Flags EOL
-Name  get/open/unlock~
+Name  @@dLesson@@R: @@WDoors@@N~
 Sect  11
 End
 #DOOR
 Dir     1
 Desc    ~
-Flags   EOL
-Key     0
+Flags   1 6 7 8 EOL
+Key     1052
 Keyword ~
 Vnum    1057
 End
@@ -160,9 +160,9 @@ End
 
 #ROOM
 Vnum  1057
-Desc  ~
+Desc  @@dThe @@Rpray @@dcommand can be used to send a message to all immortals online, visible or not. It should only be used in dire situations and may or may not always get a response. Abusing the @@Rpray @@dcommand, will, however, lead to the gods quickly ignoring your pleas.  Go a head and try it now; type: @@Rpray Hi, I'm new and learning to use pray! @@dWhen ready to proceed, head @@Rnorth @@dto continue on.@@N~
 Flags EOL
-Name  pray test~
+Name  @@dLesson@@R: @@WPray@@N~
 Sect  11
 End
 #DOOR
@@ -176,17 +176,17 @@ End
 #DOOR
 Dir     3
 Desc    ~
-Flags   EOL
-Key     0
+Flags   1 6 7 8 EOL
+Key     1052
 Keyword ~
 Vnum    1056
 End
 
 #ROOM
 Vnum  1058
-Desc  ~
+Desc  @@dMany questions can be answered through the in-game @@Rhelp @@dsystem. To view a topic simply type @@Rhelp <keyword> @@d. So to get help about setting up a custom prompt, you can @@Rhelp prompt @@dand read more about it there. There is a separate help system for all skills and spells called @@Rshelp @@dand it works exactly like @@Rhelp@@d. So to see the @@Rshelp @@dfor the @@Rmagic missile @@dspell, use @@Rshelp magic missile@@d. When ready to proceed, head @@Rnorth@@d.@@N~
 Flags EOL
-Name  help system~
+Name  @@dLesson@@R: @@WHelp System@@N~
 Sect  11
 End
 #DOOR
@@ -208,9 +208,9 @@ End
 
 #ROOM
 Vnum  1059
-Desc  ~
+Desc  @@RConsider @@dwill allow you to gauge the relative strength of an opponent against your own. This will give you a better idea if you stand to win or lose a fight before attempting it! Always be sure to @@Rconsider @@dan opponent before combat if you can, as it may save you from some very nasty surprises. To proceed, continue @@Rwest@@d.@@N~
 Flags EOL
-Name  consider~
+Name  @@dLesson@@R: @@WConsider@@N~
 Sect  11
 End
 #DOOR
@@ -232,9 +232,9 @@ End
 
 #ROOM
 Vnum  1060
-Desc  ~
+Desc  @@dExperience is gained through defeating enemies in combat. With enough experience, you can gain levels and advance your classes. You gain experience more quickly when grouped with others as you are able to learn from each other in the process, and it is also rumored that there are some magical items capable of increasing experience gained too! To continue, go @@Rup@@d.@@N~
 Flags EOL
-Name  exp~
+Name  @@dLesson@@R: @@WExperience@@N~
 Sect  11
 End
 #DOOR
@@ -256,9 +256,9 @@ End
 
 #ROOM
 Vnum  1061
-Desc  ~
+Desc  @@dOnce you have enough experience saved you can @@Rgain @@da level in any of the classes selected during creation. To see the cost to level each class, type @@Rworth@@d. If the difference for a class is 0, you have enough experience to @@Rgain @@da level! You'll need to visit a trainer and then use the @@Rgain @@dcommand to advance that class. Hint: there's a trainer right here in @@RT@@dhe @@RT@@draining @@RG@@drounds! The next lesson lies to the @@Rnorth@@d.@@N~
 Flags EOL
-Name  levels and classes~
+Name  @@dLesson@@R: @@WLevels and Classes@@N~
 Sect  11
 End
 #DOOR
@@ -280,9 +280,9 @@ End
 
 #ROOM
 Vnum  1062
-Desc  ~
+Desc  @@dDeath is a part of life. Whenever you die your spirit will separate from your body. As a ghost, you will only be able to communicate with other ghosts. All worldly possessions (items, money, etc) will remain on your physical body where you died, and you will lose a portion of any experience you have gained. A @@RCleric @@dknowledgeable of the @@Rredemption @@dspell can restore life to your ghostly form. There are also @@Rcertain NPCs @@din the game who will @@Rresurrect @@dany ghost they see, too. If you wander the world as a ghostly spirit long enough, the gods will take pity upon your plight; restoring you to life and giving you back your corpse in the event it was un-retrievable. The next lesson lies to the @@Rnorth@@d.@@N~
 Flags EOL
-Name  death~
+Name  @@dLesson@@R: @@WDeath@@N~
 Sect  11
 End
 #DOOR
@@ -306,7 +306,7 @@ End
 Vnum  1063
 Desc  ~
 Flags EOL
-Name  grouping~
+Name  @@dLesson@@R: @@WGrouping@@N~
 Sect  11
 End
 #DOOR
@@ -368,7 +368,7 @@ End
 #DOOR
 Dir     5
 Desc    ~
-Flags   EOL
+Flags   10 EOL
 Key     0
 Keyword ~
 Vnum    1066
@@ -416,7 +416,7 @@ End
 #DOOR
 Dir     4
 Desc    ~
-Flags   EOL
+Flags   10 EOL
 Key     0
 Keyword ~
 Vnum    1065
@@ -1070,7 +1070,7 @@ End
 #OBJECT
 Vnum       1051
 Durability 41
-ExtraFlags EOL
+ExtraFlags 28 EOL
 ItemApply  1
 Level      1
 LongDesc   ~
@@ -1083,10 +1083,33 @@ Values     9 0 1065 0 0 0 0 0 0 0
 WearFlags  EOL
 Weight     1
 End
+
+#OBJECT
+Vnum       1052
+Durability 34
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA training key is here, perhaps you should take it?@@N~
+Name       training key~
+ObjFun     (null)
+ShortDesc  @@d a training key@@N~
+Speed      4.00
+Type       18
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
 #RESETS
 O 1051 1 1051 
 
 M 1051 1 1053 
+
+O 1052 1 1056 
+
+D 1056 1 1 
+
+D 1056 1 2 
 
 S
 #$

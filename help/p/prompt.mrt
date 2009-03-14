@@ -34,5 +34,5 @@ only certain features or by color (type help color). They are as follows:
 The command "prompt all" will set your prompt to the example below.
 To disable seeing a prompt, use config -prompt.
  
-Example: PROMPT @@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N
+Example: PROMPT @@@@g<@@@@d[@@@@W%x@@@@d] [@@@@e%h@@@@RH @@@@l%m@@@@BM @@@@r%v@@@@GV@@@@d]@@@@g>@@@@N
 Will set your prompt to "@@g<@@d[@@W100@@d] [@@e10@@RH @@l100@@BM @@r100@@GV@@d]@@g>@@N"

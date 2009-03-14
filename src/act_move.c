@@ -116,6 +116,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
       ch->using_named_door = FALSE;
       return;
    }
+
    if( !IS_NPC( ch ) && ( ( ch->stance == STANCE_AMBUSH ) || ( ch->stance == STANCE_AC_BEST ) ) )
    {
       send_to_char( "You step out of the shadows.\r\n", ch );
@@ -136,6 +137,10 @@ void move_char( CHAR_DATA * ch, int door, bool look )
       ch->using_named_door = FALSE;
       return;
    }
+
+   if( IS_NPC(ch) && pexit->exit_info.test(EX_NOMOB) )
+    return;
+
    if( str_cmp( pexit->keyword, "" ) )
    {
       if( pexit->keyword[0] == '^' )

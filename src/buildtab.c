@@ -994,6 +994,7 @@ LOOKUP_TYPE tab_door_types[] = {
    {"smashproof", EX_SMASHPROOF, 500   },
    {"passproof",  EX_PASSPROOF,  500   },
    {"nodetect",   EX_NODETECT,   900   },
+   {"nomob",      EX_NOMOB,      0     },
    {NULL, 0}
 };
 

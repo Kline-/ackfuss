@@ -526,6 +526,7 @@
 #define EX_SMASHPROOF		      7
 #define EX_PASSPROOF		      8
 #define EX_NODETECT		      9
+#define EX_NOMOB                     10
 
 /*
  * Sector types.

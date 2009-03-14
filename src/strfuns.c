@@ -1393,6 +1393,8 @@ const char *exit_bit_name( std::bitset<MAX_BITSET> &exit_flags )
       strncat( buf, " passproof", MSL );
    if( exit_flags.test(EX_NODETECT) )
       strncat( buf, " nodetect", MSL );
+   if( exit_flags.test(EX_NOMOB) )
+      strncat( buf, " nomob", MSL );
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }
@@ -1457,6 +1459,8 @@ const char *extra_bit_name( std::bitset<MAX_BITSET> &extra_flags )
       strncat( buf, " lifestealer", MSL );
    if( extra_flags.test(ITEM_EXTRA_SILVER) )
       strncat( buf, " silver", MSL );
+   if( extra_flags.test(ITEM_EXTRA_NO_QUEST) )
+      strncat( buf, " noquest", MSL );
 
    return ( buf[0] != '\0' ) ? buf + 1 : "none";
 }

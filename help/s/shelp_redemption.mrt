@@ -1,0 +1,11 @@
+*******************************************************************************
+       Name: Redemption
+    Classes: Cleric(15)
+   Duration: N/A
+   Modifies: N/A
+       Type: Defensive
+Description: This spell allows the caster to restore life back into a fallen
+             player. A raised player will be healed for an amount of health,
+             mana, and moves relative to the caster's level. They will also
+             regain some of their experience lost through death.
+*******************************************************************************
