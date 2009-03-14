@@ -2738,7 +2738,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->pcdata->move_from_gain = ch->max_move;
 
          ch->clan = 0;   /* no clan */
-         snprintf( buf, MSL, " needs a new title!" );
+         snprintf( buf, MSL, "@@N needs a new title!" );
          set_title( ch, buf );
 
          {

@@ -391,10 +391,10 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "Bamfout        %s~\n", ch->pcdata->bamfout );
       fprintf( fp, "Roomenter      %s~\n", ch->pcdata->room_enter );
       fprintf( fp, "Roomexit       %s~\n", ch->pcdata->room_exit );
+      fprintf( fp, "Title          %s~\n", ch->pcdata->title );
       /*
        * We add a '*' to preserve leading spaces... strip * on load
        */
-      fprintf( fp, "Title          *%s~\n", ch->pcdata->title );
       fprintf( fp, "Whoname        *%s~\n", ch->pcdata->who_name );
       fprintf( fp, "Host           %s~\n", ch->pcdata->host );
       fprintf( fp, "Failures       %d\n", ch->pcdata->failures );
@@ -1401,20 +1401,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                KEY( "TermRows", ch->pcdata->term_rows, fread_number( fp ) );
                KEY( "TermColumns", ch->pcdata->term_columns, fread_number( fp ) );
-               if( !str_cmp(word, "Title" ) )
-               {
-                 char buf[MSL];
-
-                 if( ch->pcdata->title != NULL )
-                    free_string( ch->pcdata->title );
-                 ch->pcdata->title = fread_string( fp );
-                 snprintf( buf, MSL, "%s", ch->pcdata->title + 1 );
-
-                 free_string( ch->pcdata->title );
-                 ch->pcdata->title = str_dup( buf );
-                 fMatch = TRUE;
-                 break;
-               }
+               SKEY( "Title", ch->pcdata->title, fread_string( fp ) );
             }
             break;
 
