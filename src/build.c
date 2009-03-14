@@ -2897,6 +2897,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
     }
     pObj->max_durability = atoi(arg3);
     pObj->durability = pObj->max_durability;
+    return;
    }
 
    /*
