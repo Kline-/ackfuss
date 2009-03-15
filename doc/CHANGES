@@ -1,3 +1,61 @@
+4.4.0 - 14 Mar 09:
+ Fix in dam messages and charm checks.
+ Fixed a bug in peace(), make level 1 items not lose durability, NPC-equipped items not lose durability, and the chance to lose durability much less.
+ Cosmetic log fix for IMC, but importantly newbie school is DONE.
+ Added a notake flag for items to be able to leave items in a room as a reset, spawn on mobs gear that players shouldn't get, etc.
+ Added ch_printf from Smaug with printf-style type-checking, too.
+ Fixed a display issue with light wear slot.
+ 'Within' resets have been added, to allow spawning one object within another. within 1054 1055 5 would spawn up to 5 copies of obj 1055 inside of obj 1054.
+ Added a NO_MOB flag to doors to give better control of blocking mobs from places at an exit level, instead of per room.
+ Fixed practice segfaulting, yay!
+ Minor display fix in score when super flags are toggled.
+ Now sending all currently supported MSSP vars.
+ write_to_buffer() and write_to_descriptor() now take an optional size argument. If you need to specify a size, do so, as the last argument, otherwise it can be omitted and let the func determine the size itself.
+ Marks got an overhaul. They are now an STL list attached to each room, instead of a global list of room containers.
+ The Makefile now (dirtilly) has -Wno-write-strings to suppressed const errors at the moment -- it's a huge undertaking to update them when it hasn't caused problems (afaik) yet. They will be fixed; just not right now.
+ Moved clan out of pcdata to char_data; let mobs play a role.
+ All room/obj/mob fields should now clone (unless I missed something -- please let me know). This includes shops, extra descrs, everything.
+ Added a 'disable' command for immortals. 
+ Removed some redundant code already handled in ctor.
+ Fixed an error in do_save() with displaying level checks.
+ No longer do any magic spells cycle the entire freaking char_list() just to send a same-area message.
+ Added in area_message() to message all PCs within an area.
+ Added -Wconversion too, luckily the code is already compliant, no fixes :D
+ Added -Wshadow to the Makefile and fixed things accordingly.
+ Changed new_descriptor() to use socklen_t vs size_t for the socket size due to OSX compat issues -- works fine on Debian, so hopefully it's good (more modern?) across the board.
+ Ripped out the hardly used pointer referencing system. Not sure what it did in the first place!
+ Removed mobprogs -- looking into Ruby or Lua to be embedded instead instead of a hack psuedo language.
+ Fixed quest liking to return !NPC targets for some reason.
+ Calor area is complete! Added in "charm" items. Different charms apply different bonuses (% based). Current charms available in Calor affect: exp, gold, melee combat, magic combat, regen, and hunger.
+ Added item level checks to quaff, eat, and drink. Zap and brandish already have these by virtue of having to equip the item first.
+ Added some item types for future use (professions).
+ Fixed a typo in SHOP saving format.
+ Fixed identify displaying 'reserved' spell on pots.
+ Fixed a bad debug message with do_give.
+ Improved output for exit flags in redit and rstat.
+ Pushed reward values back into the object for easy display with iquest.
+ Optimized loop for finding a quest mob based on top index.
+ Mis-labeled weapon values in buildtab, fixed an extra newline display in the auto quest system.
+ Some (int) -> static_cast<int>(val) updates to be more precise. Also fixed spec_cast_adept() to account for the current Christmas date.
+ \n\r -> \r\n -- We now do things "proper" :P Also removed a line of debug code I missed way back in channel history, oops!
+ Slightly improved performance on aggro mobs.
+ Groups now split xp evenly based on level / tot_level for all members. This also displays in the group command for all to see.
+ Anybody can now follow/group with anybody.
+ Weapons now load v0 (mindam) and v1 (maxdam) based on builder values.
+ Setting an obj level now gives it a durability of (level * 5) by default. This can be overriden with durability.
+ Rare objs get +15% stats in autoobj.
+ Fixed a display issue of long_desc objs using look.
+ Recall during DM now recalls to ROOM_VNUM_DM_RECALL instead of psuedo-random.
+ Updated some more common vnum defines, started making default zones to go along with it. (Etheral, city, newbie school)
+ Typo, Idea, and Bug now have associated monitor channels. So do routine logfile messages.
+ Removed more outdated free_list lists.
+ A lot of NPC-only fields are now in ch->npcdata similar to PC-only fields in ch->pcdata.
+ Ghost code! You die, drop corpse, turn ghost, can be rezzed (auto after 3-5m, by healer, or Cle spell)...Fun!
+ Updated "look in" for portals some. Fixed obj resets.
+ Exdesc autonewline fixes.
+ Newline append fix.
+ Fixed a crash in note writing. Adding more areas and vnum defines in config.
+ Re-organized a lot of code. Most C files are now have their own headers. Lots of dead cruft gone, too.
 4.3.9 - 17 Dec 08:
  A -LOT- of C++ conversion has happened in this release! Area files are entirely different, too!
  Added two new types to mquest based on mob race.
