@@ -817,7 +817,8 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
          ch->alignment = UMAX( -1000, ch->alignment - 50 );
       }
    }
-   damage_gear(victim);
+   if( !IS_NPC(victim) )
+    damage_gear(victim);
    damage( ch, victim, (int)dam, dt );
 
 
@@ -1254,6 +1255,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
    if( victim->position == POS_DEAD && ( IS_NPC( victim ) || !IS_VAMP( victim ) || ( deathmatch ) ) )
    {
+      stop_fighting(ch,false);
       group_gain( ch, victim );
 
       /* Update mquest */
@@ -2131,9 +2133,9 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
    {
       if( fight->ch->fighting == ch )
       {
-         fight->ch->fighting = NULL;
          fight->ch->fighting->position = POS_STANDING;
          update_pos( fight->ch->fighting );
+         fight->ch->fighting = NULL;
       }
    }
    return;
@@ -5911,9 +5913,11 @@ void damage_gear( CHAR_DATA *ch )
 
  for( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
  {
+  if( obj->level == 1 ) // Save newbie gear
+   continue;
   if( obj->wear_loc == WEAR_NONE )
    continue;
-  if( number_percent() < 50 )
+  if( number_percent() < 15 )
    obj->durability--;
   if( obj->durability == 1 )
   {

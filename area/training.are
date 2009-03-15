@@ -1098,7 +1098,7 @@ End
 
 #MOBILE
 Vnum      1053
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1107,8 +1107,8 @@ Clan      0
 Class     3
 Def       0
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@dmale @@Rwarrior@@N wanders throughout @@RT@@dhe @@RP@@dit.@@N~
 PlrName   novice male warrior~
@@ -1127,7 +1127,7 @@ End
 
 #MOBILE
 Vnum      1054
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1136,8 +1136,8 @@ Clan      0
 Class     3
 Def       0
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@bfemale @@Rwarrior@@N wanders throughout @@RT@@dhe @@RP@@dit.@@N~
 PlrName   novice female warrior~
@@ -1156,7 +1156,7 @@ End
 
 #MOBILE
 Vnum      1055
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1165,8 +1165,8 @@ Clan      0
 Class     0
 Def       0
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@dmale @@emage@@N is studying his spells.~
 PlrName   novice male mage~
@@ -1185,7 +1185,7 @@ End
 
 #MOBILE
 Vnum      1056
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1194,8 +1194,8 @@ Clan      0
 Class     0
 Def       0
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@bfemale @@emage@@N is studying her spells.~
 PlrName   novice female mage~
@@ -1214,7 +1214,7 @@ End
 
 #MOBILE
 Vnum      1057
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1223,8 +1223,8 @@ Clan      0
 Class     1
 Def       2
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@dmale @@acleric@@N diligently prays to his god.~
 PlrName   novice male cleric~
@@ -1243,7 +1243,7 @@ End
 
 #MOBILE
 Vnum      1058
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1252,8 +1252,8 @@ Clan      0
 Class     1
 Def       2
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@bfemale @@acleric@@N diligently prays to her god.~
 PlrName   novice female cleric~
@@ -1272,7 +1272,7 @@ End
 
 #MOBILE
 Vnum      1059
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1281,8 +1281,8 @@ Clan      0
 Class     2
 Def       0
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@dmale @@ythief@@N stalks about.~
 PlrName   novice male thief~
@@ -1301,7 +1301,7 @@ End
 
 #MOBILE
 Vnum      1060
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1310,8 +1310,8 @@ Clan      0
 Class     2
 Def       0
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@bfemale @@ythief@@N stalks about.~
 PlrName   novice female thief~
@@ -1330,7 +1330,7 @@ End
 
 #MOBILE
 Vnum      1061
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1339,8 +1339,8 @@ Clan      0
 Class     4
 Def       0
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@dmale @@mpsionicist@@N focuses his mental energies.~
 PlrName   novice male psionicist~
@@ -1359,7 +1359,7 @@ End
 
 #MOBILE
 Vnum      1062
-AcMod     0
+AcMod     10
 Act       EOL
 Affected  0
 Alignment 0
@@ -1368,8 +1368,8 @@ Clan      0
 Class     4
 Def       0
 Desc      ~
-DrMod     0
-HrMod     0
+DrMod     -10
+HrMod     -10
 Level     1
 LongDesc  A @@Gnovice @@bfemale @@mpsionicist@@N focuses her mental energies.~
 PlrName   novice female psionicist~
@@ -1501,11 +1501,11 @@ Weight     1
 End
 #OAFFECT
 Location   19
-Modifier   1
+Modifier   5
 End
 #OAFFECT
 Location   18
-Modifier   1
+Modifier   5
 End
 
 #OBJECT
@@ -1526,11 +1526,11 @@ Weight     1
 End
 #OAFFECT
 Location   19
-Modifier   1
+Modifier   5
 End
 #OAFFECT
 Location   18
-Modifier   1
+Modifier   5
 End
 
 #OBJECT
@@ -1551,11 +1551,11 @@ Weight     1
 End
 #OAFFECT
 Location   19
-Modifier   1
+Modifier   5
 End
 #OAFFECT
 Location   18
-Modifier   1
+Modifier   5
 End
 
 #OBJECT
@@ -2096,62 +2096,120 @@ P 1057 1 1053
 P 1058 1 1053 
 
 M 1052 1 1067 
+
 E 1062 0 4 
+
 E 1069 0 16 
+
 E 1066 0 12 
+
 M 1053 1 1080 
+
 E 1065 0 9 
+
 M 1053 1 1081 
+
 M 1053 1 1085 
+
 M 1053 1 1075 
+
 M 1054 1 1068 
+
 E 1073 0 24 
+
 M 1054 1 1071 
+
 M 1054 1 1072 
+
 M 1054 1 1067 
+
 M 1055 1 1074 
+
 E 1071 0 0 
+
 E 1064 0 7 
+
 M 1055 1 1073 
+
 E 1065 0 9 
+
 E 1064 0 7 
+
 M 1055 1 1084 
+
 M 1055 1 1082 
+
 M 1056 1 1083 
+
 E 1070 0 17 
+
 E 1068 0 14 
+
 M 1056 1 1084 
+
 E 1070 0 17 
+
 E 1068 0 14 
+
 M 1057 1 1070 
+
 E 1061 0 2 
+
 M 1057 1 1085 
+
 M 1057 1 1077 
+
 M 1057 1 1076 
+
 M 1058 1 1076 
+
 E 1063 0 5 
+
 E 1075 0 27 
+
 M 1058 1 1069 
+
 M 1058 1 1074 
+
 M 1058 1 1079 
+
 M 1059 1 1079 
+
 E 1072 0 23 
+
 M 1059 1 1078 
+
 E 1067 0 13 
+
 M 1059 1 1072 
+
 E 1074 0 26 
+
 M 1059 1 1082 
+
 M 1060 1 1081 
+
 M 1060 1 1083 
+
 M 1060 1 1077 
+
 M 1061 1 1071 
+
 E 1060 0 0 
+
 M 1061 1 1070 
+
 M 1061 1 1078 
+
 M 1061 1 1066 
+
 M 1062 1 1066 
+
 M 1062 1 1068 
+
 M 1062 1 1075 
+
 M 1062 1 1073 
+
 S
 #$
