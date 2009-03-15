@@ -2543,7 +2543,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       gain = old_gain;
 
       if( check_charm_aff(gch,CHARM_AFF_EXP) )
-       gain *= ((100 + get_charm_bonus(ch,CHARM_AFF_EXP)) / 100);
+       gain *= ((100 + get_charm_bonus(gch,CHARM_AFF_EXP)) / 100);
 
       percent = (get_psuedo_level(gch) / tot_level);
       gain *= percent;
@@ -2650,8 +2650,8 @@ struct dam_table_str dam_table[] = {
    {10, "@@b", "bonk", "bonks", " on the head with"},
    {7, "@@b", "scratch", "scratches", " roughly with"},
    {5, "@@b", "nick", "nicks", " gently with"},
-   {2, "@@b", " tickle", "tickles", " softly with"},
-   {0, "@@g", " fail to hit", "fails to hit", " with"}
+   {2, "@@b", "tickle", "tickles", " softly with"},
+   {0, "@@g", "fail to hit", "fails to hit", " with"}
 };
 
 void dam_message( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )

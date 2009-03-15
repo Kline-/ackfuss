@@ -407,7 +407,7 @@ int exp_mob_base( int level )
  float value = 0;
  short i = 0;
 
- for( i = 0; i < level; i++ )
+ for( i = -1; i < level; i++ )
  {
   value += 100;
   value *= 1.04;

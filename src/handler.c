@@ -2638,7 +2638,7 @@ bool check_charm_aff( CHAR_DATA *ch, short charm_aff )
 {
  OBJ_DATA *obj;
 
- if( ch == NULL || charm_aff < 1 )
+ if( ch == NULL || charm_aff < 0 )
   return false;
 
  for( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
@@ -2652,7 +2652,7 @@ short get_charm_bonus( CHAR_DATA *ch, short charm_aff )
 {
  OBJ_DATA *obj;
 
- if( ch == NULL || charm_aff < 1 )
+ if( ch == NULL || charm_aff < 0 )
   return 0;
 
  for( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
