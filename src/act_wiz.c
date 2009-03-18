@@ -4148,23 +4148,23 @@ void do_iscore( CHAR_DATA * ch, char *argument )
 
 void do_fights( CHAR_DATA * ch, char *argument )
 {
- FIGHT_DATA *fight;
- int cnt = 0;
+ std::list<CHAR_DATA *>::iterator li;
+ CHAR_DATA *vict = NULL;
  char buf[MAX_STRING_LENGTH];
 
  send_to_char("Active Fights:\r\n",ch);
 
- for( fight = first_fight; fight != NULL; fight = fight->next )
+ for( li = fight_list.begin(); li != fight_list.end(); li++ )
  {
-  cnt++;
-  snprintf(buf,MSL,"%s vs %s [Room:%5d]\r\n",NAME(fight->ch->fighting),NAME(fight->ch),fight->ch->in_room->vnum);
+  vict = *li;
+  snprintf(buf,MSL,"%s vs %s [Room:%5d]\r\n",NAME(vict->fighting),NAME(vict),vict->in_room->vnum);
   send_to_char(buf,ch);
  }
- if( cnt == 0 )
+ if( fight_list.empty() )
   send_to_char("No fights right now!\r\n",ch);
  else
  {
-  snprintf(buf,MSL,"%d fight%s right now.\r\n",cnt,( cnt > 1 ) ? "s" : "");
+  snprintf(buf,MSL,"%d fight%s right now.\r\n",fight_list.size(),( fight_list.size() > 1 ) ? "s" : "");
   send_to_char(buf,ch);
  }
  return;

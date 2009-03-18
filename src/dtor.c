@@ -156,10 +156,6 @@ extra_descr_data::~extra_descr_data()
  free_string(keyword);
 }
 
-fight_data::~fight_data()
-{
-}
-
 generic_list::~generic_list()
 {
  free(data);

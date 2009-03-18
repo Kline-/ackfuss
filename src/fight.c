@@ -2053,8 +2053,7 @@ void update_pos( CHAR_DATA * victim )
  */
 void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
 {
-   static FIGHT_DATA *fight;
-   FIGHT_DATA *vfight;
+   std::list<CHAR_DATA *>::iterator li;
 
    if( ch->fighting != NULL )
    {
@@ -2099,16 +2098,14 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
    }
 
    /* Keep out duplicates */
-   for( vfight = first_fight; vfight != NULL; vfight = vfight->next )
-    if( vfight->ch == ch )
+   for( li = fight_list.begin(); li != fight_list.end(); li++ )
+    if( *li == ch )
      return;
    /*
    snprintf_2(log_buf,"Adding %s vs %s to the fight queue.",ch->name,victim->name);
    monitor_chan(log_buf,MONITOR_DEBUG);
    */
-   fight = new FIGHT_DATA;
-   fight->ch = ch;
-   LINK(fight,first_fight,last_fight,next,prev);
+   fight_list.push_back(ch);
 
    return;
 }
@@ -2120,22 +2117,25 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
  */
 void stop_fighting( CHAR_DATA * ch, bool fBoth )
 {
-   FIGHT_DATA *fight;
+   std::list<CHAR_DATA *>::iterator li;
+   CHAR_DATA *victim = ch->fighting;
 
    ch->fighting = NULL;
    ch->position = POS_STANDING;
    update_pos( ch );
+   fight_list.remove(ch);
 
    if( !fBoth )
       return;
 
-   for( fight = first_fight; fight != NULL; fight = fight->next )
+   for( li = fight_list.begin(); li != fight_list.end(); li++ )
    {
-      if( fight->ch->fighting == ch )
+      if( *li == victim )
       {
-         fight->ch->fighting->position = POS_STANDING;
-         update_pos( fight->ch->fighting );
-         fight->ch->fighting = NULL;
+         victim->position = POS_STANDING;
+         update_pos( victim );
+         victim->fighting = NULL;
+         li = fight_list.erase(li);
       }
    }
    return;
@@ -5780,27 +5780,25 @@ float get_speed( CHAR_DATA *ch, int slot )
 
 void combat_update( void )
 {
- FIGHT_DATA *fight;
+ std::list<CHAR_DATA *>::iterator li;
  CHAR_DATA *ch;
  CHAR_DATA *victim;
 
- for( fight = first_fight; fight != NULL; fight = fight->next )
+ for( li = fight_list.begin(); li != fight_list.end(); li++ )
  {
-  if( fight->ch == NULL )
+  ch = *li;
+  if( ch == NULL )
   {
-   //monitor_chan("Removing a null fight->ch from queue.",MONITOR_DEBUG);
-   UNLINK(fight,first_fight,last_fight,next,prev);
-   delete fight;
+   monitor_chan("Removing a null fight->ch from queue.",MONITOR_DEBUG);
+   li = fight_list.erase(li);
    return;
   }
-  if( fight->ch->fighting == NULL )
+  if( ch->fighting == NULL )
   {
-   //monitor_chan("Removing a null fight->ch->fighting from queue.",MONITOR_DEBUG);
-   UNLINK(fight,first_fight,last_fight,next,prev);
-   delete fight;
+   monitor_chan("Removing a null fight->ch->fighting from queue.",MONITOR_DEBUG);
+   li = fight_list.erase(li);
    return;
   }
-  ch = fight->ch;
   victim = ch->fighting;
 
   /*

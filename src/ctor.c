@@ -286,14 +286,6 @@ extra_descr_data::extra_descr_data()
  exdesc_list.push_back(this);
 }
 
-fight_data::fight_data()
-{
- is_free = false;
- ch = NULL;
- next = NULL;
- prev = NULL;
-}
-
 generic_list::generic_list()
 {
  data = NULL;

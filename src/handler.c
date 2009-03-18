@@ -2214,26 +2214,16 @@ bool room_is_private( ROOM_INDEX_DATA * pRoomIndex )
  */
 bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
 {
-
-
-
+   if( !IS_NPC( ch ) && ch->act.test(ACT_HOLYLIGHT) )
+      return TRUE;
    if( IS_AFFECTED( ch, AFF_BLIND ) )
       return FALSE;
-
-
    if( ch == victim )
       return TRUE;
    if( is_same_group( ch, victim ) )
       return TRUE;
    if( victim->leader == ch )
       return TRUE;
-
-
-   if( !IS_NPC( ch ) && !IS_NPC( victim ) && !str_cmp( ch->name, "bash" ) && !str_cmp( victim->name, "vannevar" ) )
-      return FALSE;
-
-   if( !IS_NPC( ch ) && !IS_NPC( victim ) && !str_cmp( ch->name, "vannevar" ) && !str_cmp( victim->name, "bash" ) )
-      return FALSE;
 
 
    if( !IS_NPC( victim ) && victim->act.test(ACT_WIZINVIS) && get_trust( ch ) < victim->invis )
@@ -2244,8 +2234,6 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
 
       return FALSE;
 
-   if( !IS_NPC( ch ) && ch->act.test(ACT_HOLYLIGHT) )
-      return TRUE;
    if( ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) ) && ch->in_room == victim->in_room )
       return FALSE;
 

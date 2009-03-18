@@ -51,6 +51,7 @@ extern std::list<OBJ_DATA *> corpse_list;
 extern std::list<DISABLED_DATA *> disabled_list;
 extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
 extern std::list<EXIT_DATA *> exit_list;
+extern std::list<CHAR_DATA *> fight_list;
 extern std::list<FILE *> file_list;
 extern std::list<MOB_INDEX_DATA *> mob_index_list;
 extern std::list<NOTE_DATA *> note_list;
@@ -77,8 +78,6 @@ extern BUF_DATA_STRUCT *first_buf;
 extern BUF_DATA_STRUCT *last_buf;
 extern NPC_GROUP_DATA *first_npc_group;
 extern NPC_GROUP_DATA *last_npc_group;
-extern FIGHT_DATA *first_fight;
-extern FIGHT_DATA *last_fight;
 
 extern MEMBER_DATA *member_free;
 extern INTERACT_DATA *interact_free;

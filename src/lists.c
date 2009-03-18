@@ -55,6 +55,7 @@ std::list<OBJ_DATA *> corpse_list;
 std::list<DISABLED_DATA *> disabled_list;
 std::list<EXTRA_DESCR_DATA *> exdesc_list;
 std::list<EXIT_DATA *> exit_list;
+std::list<CHAR_DATA *> fight_list;
 std::list<FILE *> file_list;
 std::list<MOB_INDEX_DATA *> mob_index_list;
 std::list<NOTE_DATA *> note_list;
@@ -82,8 +83,6 @@ BUF_DATA_STRUCT *first_buf = NULL;
 BUF_DATA_STRUCT *last_buf = NULL;
 NPC_GROUP_DATA *first_npc_group = NULL;
 NPC_GROUP_DATA *last_npc_group = NULL;
-FIGHT_DATA *first_fight = NULL;
-FIGHT_DATA *last_fight = NULL;
 
 MEMBER_DATA *member_free = NULL;
 INTERACT_DATA *interact_free = NULL;

@@ -1270,17 +1270,6 @@ struct sysdata_type
  bool w_lock;
 };
 
-class fight_data
-{
- public:
-  fight_data();
-  ~fight_data();
-  bool is_free;
-  FIGHT_DATA *next;
-  FIGHT_DATA *prev;
-  CHAR_DATA *ch;
-};
-
 class quest_info
 {
  public:
