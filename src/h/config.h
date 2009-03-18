@@ -36,8 +36,8 @@
 /*
  *  Your mud info here :) Zen
  */
-#define mudnamecolor  "@@lAckFUSS@@N"
-#define mudnamenocolor  "AckFUSS"
+#define mudnamecolor  "@@lAckFUSS Dev@@N"
+#define mudnamenocolor  "AckFUSS Dev"
 #define sacgodname  "Kline"
 #define goodgodname  "Good"
 #define neutralgodname  "Neutral"
@@ -1269,4 +1269,30 @@
 /* Other Stuff - Flar */
 #define COPYOVER_FILE	"COPYOVER.TXT" /* Temp data file used for copyover */
 #define EXE_FILE		"../src/ack"   /* The one that runs the ACK! */
-#define VERS_STRING "AckFUSS 4.4.0"
+
+/* Kline Stuff */
+#define VERS_STRING "AckFUSS 4.4.1"
+// MSSP -- Update these to properly report your MUD to automated crawlers
+#define MSSP_HOSTNAME     "home.gotr00t.us"                    //MUD hostname
+#define MSSP_PORT         3000                                 //MUD port
+#define MSSP_CONTACT      "genocaust@gmail.com"                //Admin email
+#define MSSP_CREATED      2008                                 //Year MUD opened
+#define MSSP_ICON         "http://www.ackmud.net/ack_mssp.gif" //32x32 256 color icon
+#define MSSP_IP           "24.162.100.182"                     //MUD IP address
+#define MSSP_LANGUAGE     "English"                            //Primary language spoken
+#define MSSP_LOCATION     "United States"                      //Full country name per ISO standard
+#define MSSP_MIN_AGE      0                                    //Minimum age to play, 0 for none
+#define MSSP_NAME         mudnamenocolor                       //MUD name -- just copy from the top of config.h
+#define MSSP_WEBSITE      "http://www.ackmud.net"              //MUD website
+#define MSSP_FAMILY       "DikuMUD"                            //Most distant ancestor -- leave this alone :P
+#define MSSP_GENRE        "Fantasy"                            //Duh...
+#define MSSP_GAMEPLAY     "Hack and Slash"                     //Kill lots of mobs!
+#define MSSP_GAMESYSTEM   "Custom"                             //Cuz AckFUSS is so badass
+#define MSSP_INTERMUD     "IMC2"                               //Included by default
+#define MSSP_STATUS       "CLOSED BETA"                        //Dev game is always closed
+#define MSSP_SUBGENRE     "Medieval Fantasy"                   //Duh...
+#define MSSP_CLASSES      11                                   //5 mort + 5 remort + 1 adept
+#define MSSP_RACES        19                                   //Total count so far
+#define MSSP_LEVELS       120                                  //Adept is psuedo-level 120
+#define MSSP_HIRE_BUILDER 1                                    //Hiring builders? 1 for yes 0 for no
+#define MSSP_HIRE_CODER   1                                    //Hiring coders? 1 for yes 0 for no

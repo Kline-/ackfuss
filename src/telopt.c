@@ -152,27 +152,27 @@ int process_do_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
  mssp_reply(d,"UPTIME",int_boot_time);
 
  /* Generic */
- mssp_reply(d,"HOSTNAME","home.gotr00t.us");
- mssp_reply(d,"PORT",3000);
+ mssp_reply(d,"HOSTNAME",MSSP_HOSTNAME);
+ mssp_reply(d,"PORT",MSSP_PORT);
  mssp_reply(d,"CODEBASE",VERS_STRING);
- mssp_reply(d,"CONTACT","genocaust@gmail.com");
- mssp_reply(d,"CREATED",2008);
- mssp_reply(d,"ICON","http://www.ackmud.net/ack_mccp.gif");
- mssp_reply(d,"IP","24.162.100.182");
- mssp_reply(d,"LANGUAGE","English");
- mssp_reply(d,"LOCATION","United States");
- mssp_reply(d,"MINIMUM AGE",0);
- mssp_reply(d,"NAME","AckFUSS Dev");
- mssp_reply(d,"WEBSITE","http://www.ackmud.net");
+ mssp_reply(d,"CONTACT",MSSP_CONTACT);
+ mssp_reply(d,"CREATED",MSSP_CREATED);
+ mssp_reply(d,"ICON",MSSP_ICON);
+ mssp_reply(d,"IP",MSSP_IP);
+ mssp_reply(d,"LANGUAGE",MSSP_LANGUAGE);
+ mssp_reply(d,"LOCATION",MSSP_LOCATION);
+ mssp_reply(d,"MINIMUM AGE",MSSP_MIN_AGE);
+ mssp_reply(d,"NAME",MSSP_NAME);
+ mssp_reply(d,"WEBSITE",MSSP_WEBSITE);
 
  /* Categorization */
- mssp_reply(d,"FAMILY","DikuMUD");
- mssp_reply(d,"GENRE","Fantasy");
- mssp_reply(d,"GAMEPLAY","Hack and Slash");
- mssp_reply(d,"GAMESYSTEM","Custom");
- mssp_reply(d,"INTERMUD","IMC2");
- mssp_reply(d,"STATUS","CLOSED BETA");
- mssp_reply(d,"SUBGENRE","Medieval Fantasy");
+ mssp_reply(d,"FAMILY",MSSP_FAMILY);
+ mssp_reply(d,"GENRE",MSSP_GENRE);
+ mssp_reply(d,"GAMEPLAY",MSSP_GAMEPLAY);
+ mssp_reply(d,"GAMESYSTEM",MSSP_GAMESYSTEM);
+ mssp_reply(d,"INTERMUD",MSSP_INTERMUD);
+ mssp_reply(d,"STATUS",MSSP_STATUS);
+ mssp_reply(d,"SUBGENRE",MSSP_SUBGENRE);
 
  /* World */
  mssp_reply(d,"AREAS",area_list.size());
@@ -183,9 +183,9 @@ int process_do_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
  mssp_reply(d,"RESETS",reset_list.size());
  mssp_reply(d,"MUDPROGS",0);
  mssp_reply(d,"MUDTRIGS",0);
- mssp_reply(d,"CLASSES",11);
- mssp_reply(d,"LEVELS",120);
- mssp_reply(d,"RACES",19);
+ mssp_reply(d,"CLASSES",MSSP_CLASSES);
+ mssp_reply(d,"LEVELS",MSSP_LEVELS);
+ mssp_reply(d,"RACES",MSSP_RACES);
  mssp_reply(d,"SKILLS",count_skills());
  mssp_reply(d,"WORLDS",0);
 
@@ -205,8 +205,8 @@ int process_do_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
  mssp_reply(d,"PAY FOR PERKS",0);
 
  /* Hiring */
- mssp_reply(d,"HIRING BUILDERS",1);
- mssp_reply(d,"HIRING CODERS",1);
+ mssp_reply(d,"HIRING BUILDERS",MSSP_HIRE_BUILDER);
+ mssp_reply(d,"HIRING CODERS",MSSP_HIRE_CODER);
 
  write_to_buffer(d,IAC_SE);
  return 3;
