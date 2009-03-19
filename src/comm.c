@@ -215,19 +215,18 @@ int main( int argc, char **argv )
          fprintf( stderr, "Port number must be above 1024.\n" );
          exit( 1 );
       }
+      /* Check for HOTreboot parameter - Flar */
+      if( argv[2] && argv[2][0] )
+      {
+         fCopyOver = TRUE;
+         control = atoi( argv[3] );
+        #ifdef IMC
+         imcsocket = atoi( argv[4] );
+        #endif
+      }
+      else
+         fCopyOver = FALSE;
    }
-/* Check for HOTreboot parameter - Flar */
-   if( argv[2] && argv[2][0] )
-   {
-      fCopyOver = TRUE;
-      control = atoi( argv[3] );
-#ifdef IMC
-      imcsocket = atoi( argv[4] );
-#endif
-   }
-
-   else
-      fCopyOver = FALSE;
 
    rename( "../log/comlog.old", "../log/comlog.crash" );
    rename( "../log/comlog.txt", "../log/comlog.old" );

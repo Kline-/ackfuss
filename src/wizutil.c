@@ -249,7 +249,7 @@ void do_vlist( CHAR_DATA * ch, char *argument )
             /*
              * something there or unused ? 
              */
-            strncat( buffer, buf2, MSL );
+            strncat( buffer, buf2, (MAX_ROW * 100) );
          }
       }  /* for columns */
 

@@ -187,7 +187,6 @@ int process_do_mssp( DESCRIPTOR_DATA *d, char *src, int srclen )
  mssp_reply(d,"LEVELS",MSSP_LEVELS);
  mssp_reply(d,"RACES",MSSP_RACES);
  mssp_reply(d,"SKILLS",count_skills());
- mssp_reply(d,"WORLDS",0);
 
  /* Protocols */
  mssp_reply(d,"ANSI",1);
