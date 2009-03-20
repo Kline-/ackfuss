@@ -64,6 +64,14 @@ void load_mudinfo( void )
      return;
     }
     break;
+   case 'M':
+    KEY("MK_By_NPC",    mudinfo.mk_by_npc,    fread_number(fp));
+    KEY("MK_By_PC",     mudinfo.mk_by_pc,     fread_number(fp));
+    break;
+   case 'P':
+    KEY("PK_By_NPC",    mudinfo.pk_by_npc,    fread_number(fp));
+    KEY("PK_By_PC",     mudinfo.pk_by_pc,     fread_number(fp));
+    break;
    case 'T':
     KEY("Total_Pfiles", mudinfo.total_pfiles, fread_number(fp));
     break;
@@ -90,7 +98,11 @@ void save_mudinfo( void )
   return;
  }
 
- fprintf(fp, "Total_Pfiles %d\n", mudinfo.total_pfiles);
+ fprintf(fp, "MK_By_NPC    %lu\n", mudinfo.mk_by_npc);
+ fprintf(fp, "MK_By_PC     %lu\n", mudinfo.mk_by_pc);
+ fprintf(fp, "PK_By_NPC    %lu\n", mudinfo.pk_by_npc);
+ fprintf(fp, "PK_By_PC     %lu\n", mudinfo.pk_by_pc);
+ fprintf(fp, "Total_Pfiles %d\n",  mudinfo.total_pfiles);
  fprintf(fp, "End\n\n");
 
  file_close(fp);
@@ -103,6 +115,12 @@ void do_mudinfo( CHAR_DATA * ch, char *argument )
 {
  send_to_char("      MUD info for " mudnamecolor ":\r\n",ch);
  send_to_char("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n",ch);
+ if( mudinfo.mk_by_npc == 0 )
+  send_to_char("No mobs have died to other mobs yet!\r\n",ch);
+ else if( mudinfo.mk_by_npc == 1 )
+  send_to_char("1 mob has died to another mob. How sad :(.\r\n",ch);
+ else
+  ch_printf(ch,"%lu mobs have died to other mobs.\r\n",mudinfo.mk_by_npc);
  if( mudinfo.total_pfiles == 1 )
   send_to_char("There is only a single pfile. How lonely :(.\r\n",ch);
  else
@@ -113,6 +131,10 @@ void do_mudinfo( CHAR_DATA * ch, char *argument )
 
 void init_mudinfo( void )
 {
+ mudinfo.mk_by_npc = 0;
+ mudinfo.mk_by_pc = 0;
+ mudinfo.pk_by_npc = 0;
+ mudinfo.pk_by_pc = 0;
  mudinfo.total_pfiles = 0;
 
  return;

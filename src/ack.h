@@ -1247,7 +1247,11 @@ class super_data
 
 struct mudinfo
 {
- int total_pfiles;
+ unsigned long int mk_by_npc;
+ unsigned long int mk_by_pc;
+ unsigned long int pk_by_npc;
+ unsigned long int pk_by_pc;
+ unsigned int      total_pfiles;
 };
 
 struct sysdata_type

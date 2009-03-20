@@ -4061,7 +4061,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
  char *cbuf = '\0';
  char changebuf[MSL], mbuf[MSL];
  int cost = 0, change = 0;
- short mod = 3;
+ short mod = 1.05;
  bool found = FALSE;
 
  changebuf[0] = '\0';
