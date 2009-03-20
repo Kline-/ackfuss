@@ -927,7 +927,7 @@
 #define CAST_MAGIC_MISSILE		     2
 #define CAST_SHOCKING_GRASP		     4
 #define CAST_BURNING_HANDS		     8
-#define CAST_color_SPRAY		    16
+#define CAST_COLOR_SPRAY		    16
 #define CAST_FIREBALL			    32
 #define CAST_HELLSPAWN			    64
 #define CAST_ACID_BLAST			   128
@@ -1188,8 +1188,6 @@
 #define APPLY_SAVING_BREATH          23
 #define APPLY_SAVING_SPELL           24
 
-
-
 /*
  * Values for containers (value[1]).
  * Used in #OBJECTS.
@@ -1273,6 +1271,10 @@
 
 /* Kline Stuff */
 #define VERS_STRING "AckFUSS 4.4.1"
+
+// Some string defaults
+#define DEFAULT_PROMPT    "@@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N"
+
 // MSSP -- Update these to properly report your MUD to automated crawlers
 #define MSSP_HOSTNAME     "home.gotr00t.us"                    //MUD hostname
 #define MSSP_PORT         3000                                 //MUD port

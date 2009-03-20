@@ -123,11 +123,11 @@ static long dump( void )
       {
          /*
           * things to ignore:
-          * * the common <%hhp %mm %vmv> prompt string
+          * * the common DEFAULT_PROMPT prompt string
           * * a '$' (from socials)
           */
 
-         if( !str_cmp( p->buf, "<%hhp %mm %vmv> " ) || !str_cmp( p->buf, "$" ) )
+         if( !str_cmp( p->buf, DEFAULT_PROMPT ) || !str_cmp( p->buf, "$" ) )
             continue;
 
          fprintf( dumpf, "usage %2d/%2d, caller %s, string %s\n", p->ref, p->usage, p->caller, p->buf );

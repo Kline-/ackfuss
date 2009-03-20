@@ -754,9 +754,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    if( ch->name != NULL )
     free_string( ch->name );
    ch->name = str_dup( name );
-   ch->prompt = str_dup( "" );
-   ch->old_prompt = str_dup( "" );
-   ch->prompt = str_dup( "@@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N" );
+   ch->prompt = str_dup(DEFAULT_PROMPT);
    ch->last_note = 0;
    if( is_npc )
       ch->npc = true;
@@ -1443,7 +1441,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          if( !ch->pcdata->pagelen )
             ch->pcdata->pagelen = 20;
          if( !ch->prompt || *ch->prompt == '\0' )
-            ch->prompt = str_dup( "<%h %m %mv> " );
+            ch->prompt = str_dup(DEFAULT_PROMPT);
       }
 
       ch->long_descr_orig = str_dup( ch->long_descr );

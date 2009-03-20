@@ -1334,7 +1334,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
          snprintf( name_buf, MSL, "%s", ch->name );
          raw_kill( victim, name_buf );
       }
-
+      /* Victim is no longer valid past this point. raw_kill() will extract_char() and deallocate memory --Kline
       if( deathmatch && !IS_NPC( victim ) )
          do_quit( victim, "" );
 
@@ -1356,7 +1356,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
          if( ch->act.test(ACT_AUTOSAC ) )
             do_sacrifice( ch, "corpse" );
       }
-
+*/
       return;
    }
 
@@ -2129,13 +2129,15 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
    std::list<CHAR_DATA *>::iterator li;
    CHAR_DATA *victim = ch->fighting;
 
-   ch->fighting = NULL;
    ch->position = POS_STANDING;
    update_pos( ch );
    fight_list.remove(ch);
 
    if( !fBoth )
+   {
+      ch->fighting = NULL;
       return;
+   }
 
    for( li = fight_list.begin(); li != fight_list.end(); li++ )
    {
@@ -2147,6 +2149,7 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
          li = fight_list.erase(li);
       }
    }
+   ch->fighting = NULL;
    return;
 }
 

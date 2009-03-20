@@ -2364,12 +2364,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             write_to_buffer( d, "\r\n", 2 );
             ch->pcdata->pagelen = 20;
 
-            /*
-             * prompt already set?
-             * ch->prompt = str_dup("<%hhp %mm %vmv> ");
-             * old crash bug was b/c of prompts somehow 
-             */
-
             do_save(ch,"auto");
             do_help( ch, "newun" );
             mudinfo.total_pfiles++;

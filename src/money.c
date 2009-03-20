@@ -764,6 +764,12 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
          transfer->cash_unit[mn] += atoi( m_number );
       }
    }
+   if( money_value( transfer ) <= 0 )
+   {
+      delete transfer;
+      return FALSE;
+   }
+
    if( ( ch->carry_weight + money_weight( transfer ) ) > can_carry_w( ch ) )
    {
       snprintf( outbuf, MSL, "%s", "You cannot carry that much weight!\r\n" );
@@ -771,9 +777,8 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
       join_money( transfer, obj->money );
       return FALSE;
    }
+
    ch->carry_weight += money_weight( transfer );
-   if( money_value( transfer ) <= 0 )
-      return FALSE;
    if( check_charm_aff(ch,CHARM_AFF_GOLD) )
     for( looper = 0; looper < MAX_CURRENCY; looper++ )
      transfer->cash_unit[looper] *= ((100 + get_charm_bonus(ch,CHARM_AFF_GOLD)) / 100);

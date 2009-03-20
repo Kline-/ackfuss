@@ -2563,7 +2563,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->long_descr = str_dup( pMobIndex->long_descr );
    mob->description = str_dup( pMobIndex->description );
    mob->npcdata->spec_fun = pMobIndex->spec_fun;
-   mob->prompt = str_dup( "<%h %m %v> " );
+   mob->prompt = str_dup(DEFAULT_PROMPT);
    mob->level = pMobIndex->level;
    mob->npc = true; /* New check for NPC's */
    mob->act = pMobIndex->act;
