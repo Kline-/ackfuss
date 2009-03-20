@@ -1265,10 +1265,11 @@
 #define SYSDAT_FILE    DATA_DIR "sysdat.dat"
 #define SOCIAL_FILE    DATA_DIR "socials.dat"   /* or whatever fits you */
 #define DISABLED_FILE  DATA_DIR "disabled.dat"
+#define MUDINFO_FILE   DATA_DIR "mudinfo.dat"
 
 /* Other Stuff - Flar */
-#define COPYOVER_FILE	"COPYOVER.TXT" /* Temp data file used for copyover */
-#define EXE_FILE		"../src/ack"   /* The one that runs the ACK! */
+#define COPYOVER_FILE  "COPYOVER.TXT" /* Temp data file used for copyover */
+#define EXE_FILE       "../src/ack"   /* The one that runs the ACK! */
 
 /* Kline Stuff */
 #define VERS_STRING "AckFUSS 4.4.1"

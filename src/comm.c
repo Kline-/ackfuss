@@ -100,6 +100,10 @@
 #include "h/magic.h"
 #endif
 
+#ifndef DEC_MUDINFO_H
+#include "h/mudinfo.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -2366,7 +2370,9 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
              * old crash bug was b/c of prompts somehow 
              */
 
+            do_save(ch,"auto");
             do_help( ch, "newun" );
+            mudinfo.total_pfiles++;
             d->connected = CON_READ_MOTD;
             /*
              * Display motd, and all other malarky 
@@ -2727,6 +2733,16 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          for( cnt = 0; cnt < MAX_CLASS; cnt++ )
             if( cnt != ch->p_class )
                ch->lvl[cnt] = 0;
+
+         if( mudinfo.total_pfiles == 1 ) /* First user, grand full admin. --Kline */
+         {
+          ch->level = MAX_LEVEL;
+          ch->lvl[ch->p_class] = MAX_LEVEL;;
+          ch->trust = MAX_LEVEL;
+          send_to_char("@@e@@f*** AS THE FIRST LOGIN, YOU HAVE BEEN ADVANCED TO MAX LEVEL ***@@N\r\n",ch);
+          do_save(ch,"auto");            /* Lets write the pfile and mudinfo to ensure    */
+          save_mudinfo();                /* if we crash that no one else logs in first to */
+         }                               /* steal power. --Kline                          */
 
          ch->exp = 0;
          ch->hit = ch->max_hit;

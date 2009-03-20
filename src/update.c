@@ -88,6 +88,10 @@
 #include "h/money.h"
 #endif
 
+#ifndef DEC_MUDINFO_H
+#include "h/mudinfo.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -1092,6 +1096,7 @@ void weather_update( void )
             for( y = 1; y < MAX_CLAN; y++ )
                politics_data.daily_negotiate_table[x][y] = FALSE;
          clean_donate_rooms(  );
+         save_mudinfo();
 #ifdef IMC
          if( this_imcmud->autoconnect ) /* Don't attempt a re-connect if we don't want to. --Kline */
          {

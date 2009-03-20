@@ -80,6 +80,10 @@
 #include "h/money.h"
 #endif
 
+#ifndef DEC_MUDINFO_H
+#include "h/mudinfo.h"
+#endif
+
 #ifndef DEC_SPENDQP_H
 #include "h/spendqp.h"
 #endif
@@ -102,6 +106,7 @@ KILL_DATA kill_table[MAX_LEVEL];
 TIME_INFO_DATA time_info;
 WEATHER_DATA weather_info;
 SYS_DATA_TYPE sysdata;
+MUDINFO mudinfo;
 CHAN_HISTORY chan_history;
 
 bool booting_up;
@@ -411,6 +416,7 @@ void boot_db( void )
    load_brands();
    load_corpses();
    load_disabled();
+   load_mudinfo();
    /*
     * Fix up exits.
     * MAG Mod: Check resets. (Allows loading objects of later areas.)

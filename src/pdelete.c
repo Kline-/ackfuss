@@ -101,6 +101,7 @@ void do_sdelete( CHAR_DATA * ch, char *argument )
 
 
    unlink( strsave );
+   mudinfo.total_pfiles--;
    send_to_char( "Character deleted.\r\n", ch );
 
    d = ch->desc;

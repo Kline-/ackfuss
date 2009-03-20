@@ -49,7 +49,7 @@ o/clutch.o: clutch.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
 o/comm.o: comm.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h h/act_info.h \
   h/act_obj.h h/act_wiz.h h/comm.h h/cursor.h h/db.h h/handler.h \
-  h/magic.h h/ssm.h h/telopt.h
+  h/magic.h h/mudinfo.h h/ssm.h h/telopt.h
 o/const.o: const.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/magic.h \
   h/vampire.h h/werewolf.h
@@ -59,7 +59,7 @@ o/ctor.o: ctor.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
 o/db.o: db.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h hash.h h/act_info.h \
   h/act_mob.h h/act_obj.h h/act_wiz.h h/comm.h h/db.h h/handler.h \
-  h/money.h h/spendqp.h h/ssm.h
+  h/money.h h/mudinfo.h h/spendqp.h h/ssm.h
 o/dtor.o: dtor.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h h/comm.h h/db.h \
   h/handler.h hash.h h/money.h h/ssm.h
@@ -91,7 +91,7 @@ o/interp.o: interp.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h \
   h/board.h h/build.h h/buildare.h h/clutch.h h/comm.h h/db.h h/email.h \
   h/enchant.h h/fight.h h/handler.h h/magic.h h/money.h h/mount.h \
-  h/spendqp.h h/vampire.h h/werewolf.h
+  h/mudinfo.h h/spendqp.h h/vampire.h h/werewolf.h
 o/lists.o: lists.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/ssm.h
 o/macros.o: macros.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
@@ -113,6 +113,9 @@ o/mount.o: mount.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
 o/mquest.o: mquest.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/comm.h h/db.h h/handler.h h/money.h
+o/mudinfo.o: mudinfo.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
+  h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h h/db.h \
+  h/comm.h h/mudinfo.h
 o/obj_fun.o: obj_fun.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/db.h \
   h/fight.h h/handler.h h/magic.h
@@ -163,7 +166,7 @@ o/trigger.o: trigger.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
 o/update.o: update.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h h/areasave.h h/comm.h \
-  h/db.h h/fight.h h/handler.h h/magic.h h/money.h h/ssm.h
+  h/db.h h/fight.h h/handler.h h/magic.h h/money.h h/mudinfo.h h/ssm.h
 o/vampire.o: vampire.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
   h/act_move.h h/comm.h h/db.h h/fight.h h/handler.h h/magic.h h/ssm.h

@@ -2,7 +2,7 @@ Welcome to AckFUSS!
 
 Now that you've successfully untarred the mud, you'll want to do a few
 things to help you along.  In the /src dir, there are some adjustments you
-will want to make:  The config.h file contains user customizable strings,
+will want to make:  The h/config.h file contains user customizable strings,
 take a look.
 
 Edit the port number in your startup script for the port you want to use
@@ -11,20 +11,16 @@ for your mud.
 If you are familiar with the IMC config file, you may hand edit it, or you
 can configure it once online.
 
-Once you have edited config.h cd to your /src dir, and type make.  You should
+Once you have edited h/config.h cd to your /src dir, and type make.  You should
 get a clean make, with no errors _or_ warnings...if not, please let Kline know
 of any problems. Once your make is complete, again from the /src dir, type:
 ./startup &
 
 You will get a message, hit return.  Your mud should now be running!
-Telnet to the address and port of your mud, and connect with the name
-Creator and hit return when it asks for a password if you are running a
-non-bsd system, or use Creatorbsd and the password creator if you are on a
-bsd OS.  This is the admin pfile, and should only be used to create your own
-admin character.  Once you have successfully logged in, create another (new)
-character, log them in, then with the Creator char, type setc
-<yournewcharname> war 85.  At this point, the Creator pfile is no longer
-required, and should be deleted from the shell to avoid security problems.
+Telnet to the address and port of your mud, and connect with any name of
+your choosing. The first user created will be auto-set to max level with
+full admin privileges. After this, to create other immortals, you will need
+to setclass them to the appropriate level and grant them trust.
 
 Enjoy AckFUSS, please be sure to notify Kline with any errors/bugs, and
 consider our web site: http://www.ackmud.net as a source of information.

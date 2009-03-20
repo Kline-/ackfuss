@@ -1245,6 +1245,11 @@ class super_data
   int pracs;
 };
 
+struct mudinfo
+{
+ int total_pfiles;
+};
+
 struct sysdata_type
 {
  short build_obj_ac;

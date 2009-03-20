@@ -1787,12 +1787,6 @@ void do_save( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ch->level < 2 )
-   {
-      send_to_char( "You must be at least second level to save.\r\n", ch );
-      return;
-   }
-
    save_char_obj( ch );
    snprintf( buf, MSL, "Saving %s.\r\n", ch->name );
    if( str_cmp(argument,"auto") )
