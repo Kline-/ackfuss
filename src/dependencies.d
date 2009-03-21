@@ -24,7 +24,7 @@ o/act_wiz.o: act_wiz.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_info.h h/act_mob.h h/act_obj.h h/act_wiz.h h/areasave.h h/build.h \
   h/buildtab.h h/comm.h h/db.h h/email.h h/fight.h h/handler.h h/magic.h \
-  h/ssm.h
+  h/mudinfo.h h/ssm.h
 o/areachk.o: areachk.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h hash.h h/areasave.h \
   h/comm.h h/db.h

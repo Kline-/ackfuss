@@ -1697,8 +1697,6 @@ void extract_char( CHAR_DATA * ch, bool fPull )
       MEMBER_DATA *imember;
       MEMBER_DATA *imember_next;
 
-
-
       if( IS_VAMP( ch ) )
          this_council = SUPER_VAMP;
       else

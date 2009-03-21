@@ -100,6 +100,10 @@
 #include "h/magic.h"
 #endif
 
+#ifndef DEC_MUDINFO_H
+#include "h/mudinfo.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -1488,6 +1492,8 @@ void do_reboot( CHAR_DATA * ch, char *argument )
       return;
    }
 
+   save_mudinfo();
+
    snprintf( buf, MSL, "Reboot by %s.", ch->name );
    do_echo( ch, buf );
    merc_down = TRUE;
@@ -1515,6 +1521,8 @@ void do_shutdown( CHAR_DATA * ch, char *argument )
       send_to_char( "Please wait until area saving is complete.\n", ch );
       return;
    }
+
+   save_mudinfo();
 
    snprintf( buf, MSL, "Shutdown by %s.", ch->name );
    append_file( ch, SHUTDOWN_FILE, buf );
@@ -6061,6 +6069,8 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
       send_to_char( "Please wait until area saving is complete.\n", ch );
       return;
    }
+
+   save_mudinfo();
 
    fp = fopen( COPYOVER_FILE, "w" );
 

@@ -836,6 +836,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
    OBJ_DATA *sil_weapon;
    int sn;
    int tmp_dt;
+   bool npc_vict = true;
 
    tmp_dt = dt;
 
@@ -1253,13 +1254,13 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
 
 
-   if( IS_NPC(ch) && IS_NPC(victim) )
+   if( IS_NPC(victim) && IS_NPC(ch) )
     mudinfo.mk_by_npc++;
-   if( !IS_NPC(ch) && IS_NPC(victim) )
+   if( IS_NPC(victim) && !IS_NPC(ch) )
     mudinfo.mk_by_pc++;
-   if( IS_NPC(ch) && !IS_NPC(victim) )
+   if( !IS_NPC(victim) && IS_NPC(ch) )
     mudinfo.pk_by_npc++;
-   if( !IS_NPC(ch) && !IS_NPC(victim) )
+   if( !IS_NPC(victim) && !IS_NPC(ch) )
     mudinfo.pk_by_pc++;
 
    if( victim->position == POS_DEAD && ( IS_NPC( victim ) || !IS_VAMP( victim ) || ( deathmatch ) ) )
@@ -1326,6 +1327,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
       }
 
+      npc_vict = IS_NPC(victim);
+
       if( IS_NPC( ch ) )
          raw_kill( victim, "" );
       else
@@ -1334,11 +1337,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
          snprintf( name_buf, MSL, "%s", ch->name );
          raw_kill( victim, name_buf );
       }
-      /* Victim is no longer valid past this point. raw_kill() will extract_char() and deallocate memory --Kline
-      if( deathmatch && !IS_NPC( victim ) )
+      /* NPC victims are no longer valid past this point. raw_kill() will extract_char() and deallocate memory. --Kline */
+      if( deathmatch && !npc_vict )
          do_quit( victim, "" );
 
-      if( IS_NPC( ch ) && IS_NPC( victim ) && ch->act.test(ACT_INTELLIGENT ) )
+      if( IS_NPC( ch ) && npc_vict && ch->act.test(ACT_INTELLIGENT ) )
       {
          do_get( ch, "all from corpse" );
          do_sacrifice( ch, "corpse" );
@@ -1346,7 +1349,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
          check_rewield( ch );
       }
 
-      if( !IS_NPC( ch ) && IS_NPC( victim ) )
+      if( !IS_NPC( ch ) && npc_vict )
       {
          if( ch->act.test(ACT_AUTOLOOT ) )
             do_get( ch, "all from corpse" );
@@ -1356,7 +1359,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
          if( ch->act.test(ACT_AUTOSAC ) )
             do_sacrifice( ch, "corpse" );
       }
-*/
+
       return;
    }
 

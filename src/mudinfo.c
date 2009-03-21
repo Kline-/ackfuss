@@ -115,12 +115,35 @@ void do_mudinfo( CHAR_DATA * ch, char *argument )
 {
  send_to_char("      MUD info for " mudnamecolor ":\r\n",ch);
  send_to_char("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n",ch);
+
  if( mudinfo.mk_by_npc == 0 )
   send_to_char("No mobs have died to other mobs yet!\r\n",ch);
  else if( mudinfo.mk_by_npc == 1 )
   send_to_char("1 mob has died to another mob. How sad :(.\r\n",ch);
  else
   ch_printf(ch,"%lu mobs have died to other mobs.\r\n",mudinfo.mk_by_npc);
+
+ if( mudinfo.mk_by_pc == 0 )
+  send_to_char("No mobs have died to players yet!\r\n",ch);
+ else if( mudinfo.mk_by_pc == 1 )
+  send_to_char("1 mob has died to a player. How sad :(.\r\n",ch);
+ else
+  ch_printf(ch,"%lu mobs have died to players.\r\n",mudinfo.mk_by_pc);
+
+ if( mudinfo.pk_by_npc == 0 )
+  send_to_char("No players have died to mobs yet!\r\n",ch);
+ else if( mudinfo.pk_by_npc == 1 )
+  send_to_char("1 player has died to a mob. How sad :(.\r\n",ch);
+ else
+  ch_printf(ch,"%lu players have died to mobs.\r\n",mudinfo.pk_by_npc);
+
+ if( mudinfo.pk_by_pc == 0 )
+  send_to_char("No players have died to other players yet!\r\n",ch);
+ else if( mudinfo.pk_by_pc == 1 )
+  send_to_char("1 player has died to another player. How sad :(.\r\n",ch);
+ else
+  ch_printf(ch,"%lu players have died to other players.\r\n",mudinfo.pk_by_pc);
+
  if( mudinfo.total_pfiles == 1 )
   send_to_char("There is only a single pfile. How lonely :(.\r\n",ch);
  else
