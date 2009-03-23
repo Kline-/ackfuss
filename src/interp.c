@@ -1193,8 +1193,6 @@ void interpret( CHAR_DATA * ch, char *argument )
       ch->stance_hr_mod = 0;
       act( "$n steps out of the Shadows!", ch, NULL, NULL, TO_ROOM );
    }
-   comlog( ch, false, cmd, argument );
-   ( *cmd_table[cmd].do_fun ) ( ch, argument );
 
    /* Check for movement */
    if( !IS_NPC(ch) )
@@ -1204,6 +1202,9 @@ void interpret( CHAR_DATA * ch, char *argument )
     else
      ch->pcdata->movement = 0;
    }
+
+   comlog( ch, false, cmd, argument );
+   ( *cmd_table[cmd].do_fun ) ( ch, argument );
 
    tail_chain(  );
    return;
