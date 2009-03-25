@@ -2142,7 +2142,8 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
       return;
    }
 
-   for( li = fight_list.begin(); li != fight_list.end(); li++ )
+   li = fight_list.begin();
+   while( li != fight_list.end() )
    {
       if( *li == victim )
       {
@@ -2151,6 +2152,8 @@ void stop_fighting( CHAR_DATA * ch, bool fBoth )
          victim->fighting = NULL;
          li = fight_list.erase(li);
       }
+      else
+       ++li;
    }
    ch->fighting = NULL;
    return;
@@ -5799,20 +5802,14 @@ void combat_update( void )
  CHAR_DATA *ch;
  CHAR_DATA *victim;
 
- for( li = fight_list.begin(); li != fight_list.end(); li++ )
+ li = fight_list.begin();
+ while( li != fight_list.end() )
  {
   ch = *li;
-  if( ch == NULL )
+  if( ch == NULL || (ch != NULL && ch->fighting == NULL) )
   {
-   monitor_chan("Removing a null fight->ch from queue.",MONITOR_DEBUG);
+   monitor_chan("Removing a null ch or ch->fighting from queue.",MONITOR_DEBUG);
    li = fight_list.erase(li);
-   return;
-  }
-  if( ch->fighting == NULL )
-  {
-   monitor_chan("Removing a null fight->ch->fighting from queue.",MONITOR_DEBUG);
-   li = fight_list.erase(li);
-   return;
   }
   victim = ch->fighting;
 
@@ -5855,6 +5852,7 @@ void combat_update( void )
     }
    }
   }
+  ++li;
  }
 }
 
