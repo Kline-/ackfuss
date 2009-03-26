@@ -1480,11 +1480,6 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          ++point, ++i;
    }
 
-
-   /*
-    * possible HUGE string bug here 
-    */
-
    /*
     * Also have part of battle prompt showing tank status -S- 
     */
@@ -1494,8 +1489,9 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
        * We'll just show a percentage for people in the group 
        */
       CHAR_DATA *tank;
+      char cbuf[200];
 
-      buf[0] = '\0';
+      cbuf[0] = '\0';
 
       /*
        * See who the target (ch->fighting) is fighting (->fighting) 
@@ -1505,7 +1501,6 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       {
          int percent;
          char wound[100];
-
 
          if( tank->max_hit > 0 )
             percent = tank->hit * 100 / tank->max_hit;
@@ -1529,10 +1524,10 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          else
             snprintf( wound, MSL, "@@2@@W@@fALMOST DEAD!!!@@N" );
          if( ch->act.test(ACT_BLIND_PLAYER) )
-            snprintf( buf, MSL, "@@W%s %s @@N ", tank == ch ? "YOU" : "Tank", wound );
+            snprintf( cbuf, 200, "@@W%s %s @@N ", tank == ch ? "YOU" : "Tank", wound );
          else
-            snprintf( buf, MSL, "@@a[@@W%s@@a:%s@@a]@@N ", tank == ch ? "YOU" : "Tank", wound );
-         write_to_buffer( d, buf );
+            snprintf( cbuf, 200, "@@a[@@W%s@@a:%s@@a]@@N ", tank == ch ? "YOU" : "Tank", wound );
+         write_to_buffer( d, cbuf );
       }
    }
 
@@ -1544,11 +1539,10 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
 
    {
       int percent;
-      /*
-       * int percent2; 
-       */
       char wound[100];
-      buf[0] = '\0';
+      char cbuf[200];
+
+      cbuf[0] = '\0';
 
       if( victim->max_hit > 0 )
          percent = victim->hit * 100 / victim->max_hit;
@@ -1572,14 +1566,11 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       else
          snprintf( wound, MSL, "@@2@@WALMOST DEAD!!!@@N" );
       if( ch->act.test(ACT_BLIND_PLAYER) )
-         snprintf( buf, MSL, "@@WVictim %s @@N\r\n", wound );
+         snprintf( cbuf, 200, "@@WVictim %s @@N\r\n", wound );
       else
-         snprintf( buf, MSL, "@@a[@@WVictim@@a:%s@@a]@@N\r\n", wound );
+         snprintf( cbuf, 200, "@@a[@@WVictim@@a:%s@@a]@@N\r\n", wound );
 
-      /*
-       * buf[0] = UPPER(buf[0]); 
-       */
-      write_to_buffer( d, buf );
+      write_to_buffer( d, cbuf );
       /*
        * No newline, to keep both prompts on one line... 
        */
