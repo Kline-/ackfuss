@@ -299,6 +299,12 @@ hash_entry_tp::hash_entry_tp()
  key = 0;
 }
 
+lookup_data::lookup_data()
+{
+ buf = &str_empty[0];
+ d = NULL;
+}
+
 magic_shield::magic_shield()
 {
  is_free = false;

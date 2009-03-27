@@ -166,6 +166,11 @@ hash_entry_tp::~hash_entry_tp()
  is_free = true;
 }
 
+lookup_data::~lookup_data()
+{
+ free_string(buf);
+}
+
 magic_shield::~magic_shield()
 {
  is_free = true;

@@ -56,6 +56,7 @@
 #include <string.h>
 #include <time.h>
 #include <signal.h>
+#include <pthread.h>
 #if defined(__CYGWIN__)
 #include <crypt.h>
 #endif
@@ -606,6 +607,26 @@ void game_loop( int game_control )
    return;
 }
 
+void *lookup_address( void *input )
+{
+ struct hostent *from = 0;
+ struct hostent ent;
+ char buf[16384];
+ int err;
+ LOOKUP_DATA *ld = static_cast<LOOKUP_DATA *>(input);
+
+ gethostbyaddr_r( ld->buf, sizeof(ld->buf), AF_INET, &ent, buf, 16384, &from, &err);
+
+ if( from && from->h_name )
+ {
+  free_string(ld->d->host);
+  ld->d->host = str_dup(from->h_name);
+ }
+
+ delete ld;
+ pthread_exit(0);
+}
+
 void new_descriptor( int d_control )
 {
    static DESCRIPTOR_DATA d_zero;
@@ -663,6 +684,8 @@ void new_descriptor( int d_control )
        * which ain't very compatible between gcc and system libraries.
        */
       int addr;
+      pthread_t lookup_thread;
+      pthread_attr_t attr;
 
       addr = ntohl( sock.sin_addr.s_addr );
       snprintf( buf, MSL, "%d.%d.%d.%d", ( addr >> 24 ) & 0xFF, ( addr >> 16 ) & 0xFF, ( addr >> 8 ) & 0xFF, ( addr ) & 0xFF );
@@ -672,14 +695,14 @@ void new_descriptor( int d_control )
       monitor_chan( log_buf, MONITOR_CONNECT );
 
       dnew->remote_port = ntohs( sock.sin_port );
-
-      /*
-       * From unused to prevent possible ns lockup 
-       * from = gethostbyaddr( (char*) &sock.sin_addr,
-       * sizeof(sock.sin_addr), AF_INET ); 
-       */
-
       dnew->host = str_dup( buf );
+
+      LOOKUP_DATA *ld = new LOOKUP_DATA;
+      ld->d = dnew;
+      ld->buf = str_dup((char *)&sock.sin_addr);
+      pthread_attr_init(&attr);
+      pthread_attr_setdetachstate(&attr,PTHREAD_CREATE_DETACHED);
+      pthread_create(&lookup_thread,&attr,&lookup_address,(void *)ld);
    }
 
    /*

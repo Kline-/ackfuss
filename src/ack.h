@@ -1201,6 +1201,15 @@ struct social_type
 };
 
 /* Kline */
+class lookup_data
+{
+ public:
+  lookup_data();
+  ~lookup_data();
+  DESCRIPTOR_DATA *d;
+  char *buf;
+};
+
 struct chanhistory
 {
  time_t time[30][MAX_HISTORY];
