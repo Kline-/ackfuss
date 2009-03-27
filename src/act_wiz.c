@@ -3605,57 +3605,53 @@ void do_users( CHAR_DATA * ch, char *argument )
 
    for( d = first_desc; d != NULL; d = d->next )
    {
-      if( d->character != NULL )
-      {
-         count++;
-         switch ( d->connected )
-         {
-            case CON_PLAYING:
-               snprintf( buf3, MSL, "%s", "Playing         " );
-               break;
-            case CON_GET_NAME:
-               snprintf( buf3, MSL, "%s", "Get Name        " );
-               break;
-            case CON_GET_OLD_PASSWORD:
-               snprintf( buf3, MSL, "%s", "Get Old Passwd  " );
-               break;
-            case CON_CONFIRM_NEW_NAME:
-               snprintf( buf3, MSL, "%s", "Cnrm New Name   " );
-               break;
-            case CON_GET_NEW_PASSWORD:
-               snprintf( buf3, MSL, "%s", "Get New Passwd  " );
-               break;
-            case CON_CONFIRM_NEW_PASSWORD:
-               snprintf( buf3, MSL, "%s", "Cnfm New Passwd " );
-               break;
-            case CON_GET_NEW_SEX:
-               snprintf( buf3, MSL, "%s", "Get New Sex     " );
-               break;
-            case CON_GET_NEW_CLASS:
-               snprintf( buf3, MSL, "%s", "Get New Class   " );
-               break;
-            case CON_GET_RACE:
-               snprintf( buf3, MSL, "%s", "Get New Race    " );
-               break;
-            case CON_READ_MOTD:
-               snprintf( buf3, MSL, "%s", "Reading MOTD    " );
-               break;
-            default:
-               snprintf( buf3, MSL, "%s", "Unknown...      " );
-               break;
-         }
+     count++;
+     switch ( d->connected )
+     {
+        case CON_PLAYING:
+           snprintf( buf3, MSL, "%s", "Playing         " );
+           break;
+        case CON_GET_NAME:
+           snprintf( buf3, MSL, "%s", "Get Name        " );
+           break;
+        case CON_GET_OLD_PASSWORD:
+           snprintf( buf3, MSL, "%s", "Get Old Passwd  " );
+           break;
+        case CON_CONFIRM_NEW_NAME:
+           snprintf( buf3, MSL, "%s", "Cnrm New Name   " );
+           break;
+        case CON_GET_NEW_PASSWORD:
+           snprintf( buf3, MSL, "%s", "Get New Passwd  " );
+           break;
+        case CON_CONFIRM_NEW_PASSWORD:
+           snprintf( buf3, MSL, "%s", "Cnfm New Passwd " );
+           break;
+        case CON_GET_NEW_SEX:
+           snprintf( buf3, MSL, "%s", "Get New Sex     " );
+           break;
+        case CON_GET_NEW_CLASS:
+           snprintf( buf3, MSL, "%s", "Get New Class   " );
+           break;
+        case CON_GET_RACE:
+           snprintf( buf3, MSL, "%s", "Get New Race    " );
+           break;
+        case CON_READ_MOTD:
+           snprintf( buf3, MSL, "%s", "Reading MOTD    " );
+           break;
+        default:
+           snprintf( buf3, MSL, "%s", "Unknown...      " );
+           break;
+     }
 
-         snprintf( buf + strlen( buf ), MSL, "[%3d %2d %18s] %-12s %-30s",
-                  d->descriptor,
-                  d->connected,
-                  buf3, d->original ? d->original->name : d->character ? d->character->name : "(none)", d->host );
-         if( get_trust( ch ) == 85 )
-            snprintf( buf + strlen( buf ), MSL, "  %5d\r\n", d->remote_port );
-         else
-            snprintf( buf + strlen( buf ), MSL, "\r\n" );
+     snprintf( buf + strlen( buf ), MSL, "[%3d %2d %18s] %-12s %-30s",
+              d->descriptor,
+              d->connected,
+              buf3, d->original ? d->original->name : d->character ? d->character->name : "(none)", d->host );
+     if( get_trust( ch ) == 85 )
+        snprintf( buf + strlen( buf ), MSL, "  %5d\r\n", d->remote_port );
+     else
+        snprintf( buf + strlen( buf ), MSL, "\r\n" );
 
-
-      }
    }
 
    snprintf( buf2, MSL, "%d user%s\r\n", count, count == 1 ? "" : "s" );
