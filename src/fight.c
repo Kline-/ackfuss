@@ -3476,6 +3476,8 @@ void do_flee( CHAR_DATA * ch, char *argument )
     * Check if mob will "allow" ch to flee... 
     */
 
+   if( IS_CASTING(ch) )
+    do_stop(ch,"");
    if( victim->act.test(ACT_NO_FLEE ) && !IS_NPC( ch ) && IS_NPC( victim ) )
    {
       send_to_char( "You attempt to flee from battle, but fail!\r\n", ch );

@@ -726,6 +726,9 @@ void char_from_room( CHAR_DATA * ch )
       return;
    }
 
+   if( IS_CASTING(ch) )
+    stop_casting(ch);
+
    if( !IS_NPC( ch ) )
       ch->in_room->area->player_list.remove(ch);
 

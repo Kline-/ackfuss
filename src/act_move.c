@@ -1520,6 +1520,9 @@ void do_recall( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
    ROOM_INDEX_DATA *location;
+
+   if( IS_CASTING(ch) )
+    do_stop(ch,"");
    act( "$n makes the Holy Sign for transportation!", ch, 0, 0, TO_ROOM );
    buf[0] = '\0';
 
