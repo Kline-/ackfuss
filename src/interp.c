@@ -622,6 +622,8 @@ const struct cmd_type cmd_table[] = {
    /*
     * AckFUSS additions -Kline
     */
+   {"stop", do_stop, POS_FIGHTING, 0, LOG_NORMAL,
+    C_TYPE_ACTION, C_SHOW_ALWAYS,false},
    {"statraise", do_statraise, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_ALWAYS,false},
    {"census", do_census, POS_STANDING, L_HER, LOG_NORMAL,

@@ -106,6 +106,8 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    door_name_leave[0] = '\0';
    tmp[0] = '\0';
 
+   if( IS_CASTING(ch) )
+    do_stop(ch,"");
    check_autodig(ch,door);
    if( !IS_NPC(ch) && ch->pcdata->movement >= MAX_MOVE_DISPLAY && ch->act.test(ACT_AUTOBRIEF) )
     look = FALSE;

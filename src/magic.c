@@ -408,7 +408,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
  tmp[0] = '\0';
  one_argument(argument,tmp);
 
- if( ch->casting->time > 0 )
+ if( IS_CASTING(ch) )
  {
   send_to_char("You are already casting a spell. Move or use @@Rstop@@N to cancel.\r\n",ch);
   return;
@@ -438,6 +438,27 @@ void do_cast( CHAR_DATA *ch, char *argument )
  ch->casting->time = skill_table[sn].beats;
  cast_list.push_back(ch);
 
+ return;
+}
+
+void do_stop( CHAR_DATA *ch, char *argument )
+{
+ if( !IS_CASTING(ch) )
+ {
+  send_to_char("You're not casting a spell right now!\r\n",ch);
+  return;
+ }
+ send_to_char("You stop casting your spell.\r\n",ch);
+ stop_casting(ch);
+ return;
+}
+
+void stop_casting( CHAR_DATA *ch )
+{
+ free_string(ch->casting->arg);
+ ch->casting->arg = &str_empty[0];
+ ch->casting->time = 0;
+ cast_list.remove(ch);
  return;
 }
 

@@ -47,6 +47,8 @@ int slot_lookup P_((int slot));
 void say_spell P_((CHAR_DATA *ch, int sn));
 bool saves_spell P_((int level, CHAR_DATA *victim));
 void do_cast P_((CHAR_DATA *ch, char *argument));
+void do_stop P_((CHAR_DATA *ch, char *argument));
+void stop_casting P_((CHAR_DATA *ch));
 void cast P_((CHAR_DATA *ch, char *argument));
 void obj_cast_spell P_((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj));
 bool spell_acid_blast P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));

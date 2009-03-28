@@ -422,7 +422,7 @@ bool spec_cast_adept( CHAR_DATA * ch )
     spell_redemption( skill_lookup( "redemption" ), cl, ch, victim, NULL );
    }
 
-   switch ( number_bits( 3 ) )
+   switch ( number_range(0,6) )
    {
       case 0:
          act( "$n utters the word 'tehctah'.", ch, NULL, NULL, TO_ROOM );
@@ -466,16 +466,53 @@ bool spec_cast_adept( CHAR_DATA * ch )
          tm_xmas.tm_mon = 11;
          tm_xmas.tm_year = tm_local->tm_year;
 
-         if( tm_local->tm_mon >= 11 && tm_local->tm_mday >= 25 ) /* Christmas has past this year, go to next year! */
+         if( tm_local->tm_mon >= 11 && tm_local->tm_mday >= 25 ) /* Christmas has passed this year, go to next year! */
           tm_xmas.tm_year++;
 
          xmas_time = mktime( &tm_xmas );
          days = static_cast<int>(difftime( xmas_time, time( &cur_time ) ) / ( 3600 * 24 ));
 
-         snprintf( buffer, 255, "$n utters the words '%i days to Christmas!'.", days );
+         if( days > 0 )
+          snprintf( buffer, 255, "$n utters the words '%i day%s to Christmas!'.", days, days == 1 ? "" : "s" );
+         else
+          snprintf( buffer, 255, "$n utters the words 'Christmas is here! Rejoice!'." );
 
          act( buffer, ch, NULL, NULL, TO_ROOM );
          spell_refresh( skill_lookup( "refresh" ), ch->level, ch, victim, NULL );
+         return TRUE;
+      }
+
+      case 6:
+      {
+         time_t cur_time, bday_time;
+         struct tm tm_bday, *tm_local;
+         int days;
+         char buffer[255];
+
+         time(&cur_time);
+         tm_local = localtime(&cur_time);
+
+         tm_bday.tm_sec = 0;
+         tm_bday.tm_min = 0;
+         tm_bday.tm_hour = 0;
+         tm_bday.tm_mday = 4;
+         tm_bday.tm_mon = 3;
+         tm_bday.tm_year = tm_local->tm_year;
+
+         if( tm_local->tm_mon >= 4 && tm_local->tm_mday >= 4 ) /* My birthday has passed this year, go to next year! */
+          tm_bday.tm_year++;
+
+         bday_time = mktime( &tm_bday );
+         days = static_cast<int>(difftime( bday_time, time( &cur_time ) ) / ( 3600 * 24 ));
+
+         if( days > 0 )
+          snprintf( buffer, 255, "$n utters the words '%i day%s to Kline's birthday!'.", days, days == 1 ? "" : "s" );
+         else
+          snprintf( buffer, 255, "$n utters the words 'Kline's birthday is here! Rejoice!'." );
+
+         act( buffer, ch, NULL, NULL, TO_ROOM );
+         spell_heal( skill_lookup( "heal" ), ch->level, ch, victim, NULL );
+
          return TRUE;
       }
 

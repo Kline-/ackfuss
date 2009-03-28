@@ -568,7 +568,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
     * Can't beat a dead char!
     * Guard against weird room-leavings.
     */
-   if( ( ch->stance == STANCE_CASTER ) || ( ch->stance == STANCE_WIZARD ) )
+   if( ( ch->stance == STANCE_CASTER ) || ( ch->stance == STANCE_WIZARD ) || IS_CASTING(ch) )
       return;
    if( IS_GHOST(ch) || IS_GHOST(victim) )
       return;
