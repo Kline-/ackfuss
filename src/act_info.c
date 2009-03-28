@@ -4140,7 +4140,7 @@ void do_spells( CHAR_DATA * ch, char *argument )
        * continue; 
        */
 
-      snprintf( buf, MSL, "%18s %3dpts ", skill_table[sn].name, mana_cost( ch, sn ) );
+      snprintf( buf, MSL, "%20s (%0.2fs) %4dmp ", skill_table[sn].name, skill_table[sn].beats, mana_cost( ch, sn ) );
       strncat( buf1, buf, MSL );
       if( ++col % 3 == 0 )
          strncat( buf1, "\r\n", MSL );

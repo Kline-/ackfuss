@@ -998,8 +998,21 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
    {
     if( victim->casting->pushback < victim->casting->max_time )
     {
-     victim->casting->pushback += 0.10;
-     victim->casting->time += 0.10;
+     switch( number_range(0,2) )
+     {
+      case 0:
+       victim->casting->pushback += 0.05;
+       victim->casting->time += 0.05;
+       break;
+      case 1:
+       victim->casting->pushback += 0.10;
+       victim->casting->time += 0.10;
+       break;
+      case 2:
+       victim->casting->pushback += 0.15;
+       victim->casting->time += 0.15;
+       break;
+     }
     }
    }
 

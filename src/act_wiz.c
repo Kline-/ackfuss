@@ -1000,6 +1000,12 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    strncat(buf1,buf,MSL);
 
 
+   if( IS_CASTING(victim) )
+    snprintf(buf,MSL,"Casting: %s Time: %0.2f (Max: %0.2f) Pushback: %0.2f\r\n", victim->casting->arg,victim->casting->time, victim->casting->max_time, victim->casting->pushback );
+   else
+    snprintf(buf,MSL,"Casting: nothing Time: 0.00 (Max: 0.00) Pushback: 0.00\r\n" );
+   strncat(buf1,buf,MSL);
+
    if( !IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "@@RBLOODLUST@@g: %d\r\n", victim->pcdata->super->energy );
