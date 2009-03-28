@@ -2019,7 +2019,6 @@ void rooms_update( void )
                   if( raf->type > 0 && skill_table[raf->type].msg_off )
                   {
                      send_to_room( skill_table[raf->type].msg_off, room );
-                     send_to_room( "\r\n", room );
                   }
                   r_affect_remove( room, raf );
                }
