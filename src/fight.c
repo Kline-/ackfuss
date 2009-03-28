@@ -1252,20 +1252,10 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
     * Payoff for killing things.
     */
 
-
-
-   if( IS_NPC(victim) && IS_NPC(ch) )
-    mudinfo.mk_by_npc++;
-   if( IS_NPC(victim) && !IS_NPC(ch) )
-    mudinfo.mk_by_pc++;
-   if( !IS_NPC(victim) && IS_NPC(ch) )
-    mudinfo.pk_by_npc++;
-   if( !IS_NPC(victim) && !IS_NPC(ch) )
-    mudinfo.pk_by_pc++;
-
    if( victim->position == POS_DEAD && ( IS_NPC( victim ) || !IS_VAMP( victim ) || ( deathmatch ) ) )
    {
       stop_fighting(ch,false);
+      stop_casting(victim);
       group_gain( ch, victim );
 
       /* Update mquest */
@@ -1274,6 +1264,15 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
       /*
        * Sort out kill counts..... 
        */
+      if( IS_NPC(victim) && IS_NPC(ch) )
+       mudinfo.mk_by_npc++;
+      if( IS_NPC(victim) && !IS_NPC(ch) )
+       mudinfo.mk_by_pc++;
+      if( !IS_NPC(victim) && IS_NPC(ch) )
+       mudinfo.pk_by_npc++;
+      if( !IS_NPC(victim) && !IS_NPC(ch) )
+       mudinfo.pk_by_pc++;
+
       if( !IS_NPC( ch ) )
       {
          if( !IS_NPC( victim ) )
