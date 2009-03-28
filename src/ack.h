@@ -1207,6 +1207,8 @@ class cast_data
  public:
   cast_data();
   ~cast_data();
+  float max_time;
+  float pushback;
   float time;
   char *arg;
 };
@@ -1285,6 +1287,7 @@ struct sysdata_type
  short damcap;
  float expmult;
  short killperlev;
+ float max_pushback;
  float mob_ac;
  float mob_dr;
  float mob_hp;

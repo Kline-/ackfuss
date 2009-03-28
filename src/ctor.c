@@ -135,6 +135,8 @@ build_data_list::build_data_list()
 
 cast_data::cast_data()
 {
+ max_time = 0;
+ pushback = 0;
  time = 0;
  arg = &str_empty[0];
 }

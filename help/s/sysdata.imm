@@ -8,6 +8,10 @@ Exp Multiplier       All exp gained is multiplied by this number.
 Kills Per Lev        This adjusts how many same-level mobs a player needs to
                      kill, on average, per level. Decreasing will make the
                      game easier to level, increasing will make it slower.
+Max Pushback         This adjusts how much pushback casters take per spell
+                     by multiplying this value * the spell's cast time. For
+                     example: 1 would disable pushback entirely, while 2 would
+                     allow spells to take a maximum of (2 * cast_time) to cast.
 Mob AC               Every mob's AC is multiplied by this number each load.
 Mob DR               Every mob's DR is multiplied by this number each load.
 Mob HP               Every mob's HP is multiplied by this number each load.

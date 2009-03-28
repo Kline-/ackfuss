@@ -8,6 +8,7 @@ Build_Obj_SVS -25
 Damcap        3000
 Expmult       1.0000
 KillPerLev    30
+Max_Pushback  1.2500
 Mob_AC        1.0000
 Mob_DR        1.0000
 Mob_HP        1.0000

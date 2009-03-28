@@ -117,6 +117,7 @@ void load_sysdata( void )
     KEY("KillPerLev",    sysdata.killperlev,    fread_number(fp));
     break;
    case 'M':
+    KEY("Max_Pushback",  sysdata.max_pushback,  fread_float(fp));
     KEY("Mob_AC",        sysdata.mob_ac,        fread_float(fp));
     KEY("Mob_DR",        sysdata.mob_dr,        fread_float(fp));
     KEY("Mob_HP",        sysdata.mob_hp,        fread_float(fp));
@@ -168,6 +169,7 @@ void save_sysdata( void )
  fprintf(fp, "Damcap        %d\n",    sysdata.damcap);
  fprintf(fp, "Expmult       %0.4f\n", sysdata.expmult);
  fprintf(fp, "KillPerLev    %d\n",    sysdata.killperlev);
+ fprintf(fp, "Max_Pushback  %0.4f\n", sysdata.max_pushback);
  fprintf(fp, "Mob_AC        %0.4f\n", sysdata.mob_ac);
  fprintf(fp, "Mob_DR        %0.4f\n", sysdata.mob_dr);
  fprintf(fp, "Mob_HP        %0.4f\n", sysdata.mob_hp);
@@ -202,7 +204,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   send_to_char("Syntax for sysdata:\r\n",ch);
   send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\r\n",ch);
   send_to_char("  strings: playtesters\r\n",ch);
-  send_to_char("  options: damcap expmult killsperlev mob[ac | dr | hp | hr | mp | mv | svs] pulse shownumbers\r\n",ch);
+  send_to_char("  options: damcap expmult killsperlev maxpushback mob[ac | dr | hp | hr | mp | mv | svs] pulse shownumbers\r\n",ch);
   return;
  }
 
@@ -226,6 +228,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   snprintf(catbuf,MSL,"[Exp Multiplier ]       [%15.4f]\r\n",sysdata.expmult);
   strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Kills Per Lev  ]       [%15d]\r\n",sysdata.killperlev);
+  strncat(outbuf,catbuf,MSL);
+  snprintf(catbuf,MSL,"[Max Pushback   ]       [%15.4f]\r\n",sysdata.max_pushback);
   strncat(outbuf,catbuf,MSL);
   snprintf(catbuf,MSL,"[Mob AC         ]       [%15.4f]\r\n",sysdata.mob_ac);
   strncat(outbuf,catbuf,MSL);
@@ -261,6 +265,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   sysdata.expmult = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_prefix(arg1,"killsperlev") )
   sysdata.killperlev = atoi(arg2) > 0 ? atoi(arg2) : 1;
+ else if( !str_prefix(arg1,"maxpushback") )
+  sysdata.maxpushback = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_cmp(arg1,"mobac") )
   sysdata.mob_ac = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_cmp(arg1,"mobdr") )
@@ -305,6 +311,7 @@ void init_sysdata( void )
  sysdata.damcap = 3000;
  sysdata.expmult = 1;
  sysdata.killperlev = 60;
+ sysdata.max_pushback = 1;
  sysdata.mob_ac = 1;
  sysdata.mob_dr = 1;
  sysdata.mob_hp = 1;

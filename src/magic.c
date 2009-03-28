@@ -436,6 +436,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
  free_string(ch->casting->arg);
  ch->casting->arg = str_dup(argument);
  ch->casting->time = skill_table[sn].beats;
+ ch->casting->max_time = (skill_table[sn].beats * sysdata.max_pushback);
  cast_list.push_back(ch);
 
  return;
@@ -458,6 +459,8 @@ void stop_casting( CHAR_DATA *ch )
  free_string(ch->casting->arg);
  ch->casting->arg = &str_empty[0];
  ch->casting->time = 0;
+ ch->casting->max_time = 0;
+ ch->casting->pushback = 0;
  cast_list.remove(ch);
  return;
 }
