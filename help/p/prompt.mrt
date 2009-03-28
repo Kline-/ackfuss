@@ -25,6 +25,7 @@ only certain features or by color (type help color). They are as follows:
         %+ :  Damroll
         %* :  AC
         %Q :  Time remaining until next mquest is available
+        %C :  Time remaining on current spell cast
 
         Immortal Only:
 

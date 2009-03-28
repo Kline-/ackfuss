@@ -266,7 +266,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
  else if( !str_prefix(arg1,"killsperlev") )
   sysdata.killperlev = atoi(arg2) > 0 ? atoi(arg2) : 1;
  else if( !str_prefix(arg1,"maxpushback") )
-  sysdata.maxpushback = atof(arg2) != 0 ? atof(arg2) : 1;
+  sysdata.max_pushback = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_cmp(arg1,"mobac") )
   sysdata.mob_ac = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_cmp(arg1,"mobdr") )

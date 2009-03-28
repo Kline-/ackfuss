@@ -994,6 +994,14 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
     * Inform the victim of his new state.
     */
    victim->hit -= (int)dam;
+   if( IS_CASTING(victim) )
+   {
+    if( victim->casting->pushback < victim->casting->max_time )
+    {
+     victim->casting->pushback += 0.10;
+     victim->casting->time += 0.10;
+    }
+   }
 
    if( !IS_NPC(ch) )
    {

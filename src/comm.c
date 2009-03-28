@@ -1203,6 +1203,13 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          default:
             i = "> ";
             break;
+         case 'C':
+            if( IS_CASTING(ch) )
+             snprintf( buf2, MSL, "%0.2f", ch->casting->time );
+            else
+             snprintf( buf2, MSL, "N/A" );
+            i = buf2;
+            break;
          case 'w':
          {
             short cl_index = -1;
