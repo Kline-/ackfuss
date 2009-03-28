@@ -568,6 +568,7 @@ class char_data
   short carry_number;
   float carry_weight;
   int cast;
+  CAST_DATA *casting;
   short clan;   /* need to convert from pcdata to this */
   BRAND_DATA *current_brand;
   short damroll;
@@ -1201,6 +1202,15 @@ struct social_type
 };
 
 /* Kline */
+class cast_data
+{
+ public:
+  cast_data();
+  ~cast_data();
+  float time;
+  char *arg;
+};
+
 class lookup_data
 {
  public:

@@ -94,6 +94,11 @@ build_data_list::~build_data_list()
  is_free = true;
 }
 
+cast_data::~cast_data()
+{
+ free_string(arg);
+}
+
 char_data::~char_data()
 {
  is_free = true;
@@ -130,6 +135,7 @@ char_data::~char_data()
   delete pcdata;
  delete money;
  delete bank_money;
+ delete casting;
 }
 
 descriptor_data::~descriptor_data()

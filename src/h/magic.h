@@ -47,6 +47,7 @@ int slot_lookup P_((int slot));
 void say_spell P_((CHAR_DATA *ch, int sn));
 bool saves_spell P_((int level, CHAR_DATA *victim));
 void do_cast P_((CHAR_DATA *ch, char *argument));
+void cast P_((CHAR_DATA *ch, char *argument));
 void obj_cast_spell P_((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj));
 bool spell_acid_blast P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
 bool spell_armor P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
@@ -234,6 +235,7 @@ bool spell_poison_arsenic P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DA
 bool spell_sonic_blast P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
 bool spell_mystical_focus P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
 bool spell_redemption P_((int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj));
+void cast_update P_((void));
 
 #undef P_
 

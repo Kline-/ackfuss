@@ -173,6 +173,7 @@ typedef struct hash_entry_tp HASH_ENTRY;
 typedef struct npc_group_data NPC_GROUP_DATA;
 
 /* Kline */
+typedef struct cast_data CAST_DATA;
 typedef struct lookup_data LOOKUP_DATA;
 typedef struct chanhistory CHAN_HISTORY;
 typedef struct super_data SUPER_DATA;

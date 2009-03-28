@@ -2101,6 +2101,7 @@ void update_handler( void )
    {
     pulse_combat = PULSE_COMBAT;
     combat_update( );
+    cast_update( );
    }
 
    if( --pulse_mobile <= 0 )

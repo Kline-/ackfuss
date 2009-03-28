@@ -133,6 +133,12 @@ build_data_list::build_data_list()
  build_dat_list.push_back(this);
 }
 
+cast_data::cast_data()
+{
+ time = 0;
+ arg = &str_empty[0];
+}
+
 char_data::char_data()
 {
  act.reset();
@@ -148,6 +154,7 @@ char_data::char_data()
  carry_number = 0;
  carry_weight = 0;
  cast = 0;
+ casting = new CAST_DATA;
  clan = 0;
  current_brand = NULL;
  damroll = 5;

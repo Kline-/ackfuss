@@ -398,7 +398,19 @@ bool saves_spell( int level, CHAR_DATA * victim )
  */
 char *target_name;
 
-void do_cast( CHAR_DATA * ch, char *argument )
+void do_cast( CHAR_DATA *ch, char *argument )
+{
+ free_string(ch->casting->arg);
+ ch->casting->arg = str_dup(argument);
+ ch->casting->time = 2.75;
+ cast_list.push_back(ch);
+ return;
+}
+
+/* Note this is void cast, not do_cast. This will fire a spell from the casting timer,
+ * do_cast will enqueue it to begin with. --Kline
+ */
+void cast( CHAR_DATA * ch, char *argument )
 {
    char *typed = argument;
    char arg1[MAX_INPUT_LENGTH];
@@ -675,7 +687,6 @@ void do_cast( CHAR_DATA * ch, char *argument )
    if( str_cmp( skill_table[sn].name, "ventriloquate" ) )
       say_spell( ch, sn );
 
-   WAIT_STATE( ch, skill_table[sn].beats );
    cast_chance = ( ( IS_NPC( ch ) ? ch->level : ch->pcdata->learned[sn] ) + ( int_app[get_curr_int( ch )].spell_mod ) );
 
    if( !IS_NPC( ch ) && ( skill_table[sn].flag2 == NORM ) )
@@ -7118,4 +7129,35 @@ bool spell_redemption( int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj
  update_pos(victim);
 
  return true;
+}
+
+void cast_update( void )
+{
+ std::list<CHAR_DATA *>::iterator li;
+ CHAR_DATA *ch;
+
+ li = cast_list.begin();
+ while( li != cast_list.end() )
+ {
+  ch = *li;
+  if( ch == NULL )
+  {
+   monitor_chan("Removing a null ch from queue.",MONITOR_DEBUG);
+   li = cast_list.erase(li);
+  }
+
+  /*
+   * Speed based casting. Spells fire when done, and stop if
+   * interrupted (movement, etc). It's also possible to take knockback. --Kline
+   */
+  if( ch->casting->time > 0 )
+   ch->casting->time -= 0.01;
+  if( ch->casting->time <= 0 )
+  {
+   cast(ch,ch->casting->arg);
+   li = cast_list.erase(li);
+  }
+  else
+   ++li;
+ }
 }

@@ -50,6 +50,7 @@ std::list<AREA_DATA *> area_list;
 std::list<BAN_DATA *> ban_list;
 std::list<BOARD_DATA *> board_list;
 std::list<BUILD_DATA_LIST *> build_dat_list;
+std::list<CHAR_DATA *> cast_list;
 std::list<CHAR_DATA *> char_list;
 std::list<OBJ_DATA *> corpse_list;
 std::list<DISABLED_DATA *> disabled_list;
