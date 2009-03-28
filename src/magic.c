@@ -400,10 +400,44 @@ char *target_name;
 
 void do_cast( CHAR_DATA *ch, char *argument )
 {
+ char tmp[100];
+ char buf[MSL];
+ char *color;
+ int sn = -1;
+
+ tmp[0] = '\0';
+ one_argument(argument,tmp);
+
+ if( ch->casting->time > 0 )
+ {
+  send_to_char("You are already casting a spell. Move or use @@Rstop@@N to cancel.\r\n",ch);
+  return;
+ }
+
+ if( (sn = skill_lookup(tmp)) < 0 )
+ {
+  send_to_char("Wiggle swiggle biggle?\r\n",ch);
+  return;
+ }
+
+ switch( skill_table[sn].target )
+ {
+  default:                 color = "@@N"; break;
+  case TAR_IGNORE:         color = "@@p"; break;
+  case TAR_CHAR_OFFENSIVE: color = "@@e"; break;
+  case TAR_CHAR_DEFENSIVE: color = "@@l"; break;
+  case TAR_CHAR_SELF:      color = "@@r"; break;
+  case TAR_OBJ_INV:        color = "@@y"; break;
+ }
+ snprintf(buf,MSL,"$n's eyes begin %sglowing@@N as $e begins to utter magical incantations!",color);
+ act(buf,ch,NULL,NULL,TO_ROOM);
+ ch_printf(ch,"You begin casting %s%s@@N.\r\n",color,skill_table[sn].name);
+
  free_string(ch->casting->arg);
  ch->casting->arg = str_dup(argument);
- ch->casting->time = 2.75;
+ ch->casting->time = skill_table[sn].beats;
  cast_list.push_back(ch);
+
  return;
 }
 

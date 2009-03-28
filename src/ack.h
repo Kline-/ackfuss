@@ -1161,7 +1161,7 @@ struct skill_type
    short *pgsn;  /* Pointer to associated gsn    */
    short slot;   /* Slot for #OBJECT loading     */
    short min_mana;  /* Minimum mana used            */
-   short beats;  /* Waiting time after use       */
+   float beats;  /* Waiting time after use       */
    char *noun_damage;   /* Damage message               */
    char *msg_off; /* Wear off message             */
    char *room_off;   /* Wear off msg TO_ROOM    */

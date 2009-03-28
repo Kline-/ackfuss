@@ -885,7 +885,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "acid blast", {50, 82, 82, 82, 82},
     spell_acid_blast, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 70 ), 20, 275,
+    NULL, SLOT( 70 ), 20, 2.75,
     "acid blast", "!Acid Blast!",
     ""},
 
@@ -893,7 +893,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "armor", {3, 82, 82, 82, 82},
     spell_armor, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 1 ), 5, 275,
+    NULL, SLOT( 1 ), 5, 1.00,
     "", "You feel less protected.",
     ""},
 
@@ -901,7 +901,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     REMORT, NORM,
     "animate", {82, 82, 82, 82, 70},
     spell_animate, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 525 ), 50, 550,
+    NULL, SLOT( 525 ), 50, 5.50,
     "", "!Animate!",
     ""},
 
@@ -909,7 +909,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "bad breath", {4, 82, 82, 82, 82},
     spell_badbreath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 502 ), 10, 275,
+    NULL, SLOT( 502 ), 10, 2.75,
     "bad breath", "!Bad Breath!",
     ""},
 
@@ -917,7 +917,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "bark skin", {82, 20, 82, 82, 82},
     spell_bark_skin, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 514 ), 20, 550,
+    NULL, SLOT( 514 ), 20, 1.00,
     "", "Your skin feels softer.",
     "$n's skin looks less wooden."},
 
@@ -925,7 +925,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "bless", {82, 8, 82, 82, 82},
     spell_bless, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 3 ), 5, 275,
+    NULL, SLOT( 3 ), 5, 1.00,
     "", "You feel less righteous.",
     "$n looks less Holy."},
 
@@ -933,7 +933,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "blindness", {16, 82, 82, 82, 82},
     spell_blindness, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    &gsn_blindness, SLOT( 4 ), 5, 275,
+    &gsn_blindness, SLOT( 4 ), 5, 3.50,
     "", "You can see again.",
     "$n's vision returns."},
 
@@ -941,7 +941,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "bloody tears", {82, 82, 82, 82, 26},
     spell_bloody_tears, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 518 ), 12, 275,
+    NULL, SLOT( 518 ), 12, 3.50,
     "Bloody Tears", "!Bloody Tears!",
     ""},
 
@@ -949,7 +949,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "burning hands", {6, 82, 82, 82, 82},
     spell_burning_hands, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 5 ), 15, 275,
+    NULL, SLOT( 5 ), 15, 1.50,
     "burning hands", "!Burning Hands!",
     ""},
 
@@ -957,7 +957,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "call lightning", {82, 36, 82, 82, 82},
     spell_call_lightning, TAR_IGNORE, POS_FIGHTING,
-    NULL, SLOT( 6 ), 15, 275,
+    NULL, SLOT( 6 ), 15, 4.00,
     "lightning bolt", "!Call Lightning!",
     ""},
 
@@ -965,7 +965,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "calm", {82, 82, 82, 82, 52},
     spell_calm, TAR_IGNORE, POS_FIGHTING,
-    NULL, SLOT( 531 ), 30, 550,
+    NULL, SLOT( 531 ), 30, 4.50,
     "", "!Calm!",
     ""},
 
@@ -973,7 +973,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "cause critical", {82, 58, 82, 82, 82},
     spell_cause_critical, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 63 ), 20, 275,
+    NULL, SLOT( 63 ), 20, 3.00,
     "spell", "!Cause Critical!",
     ""},
 
@@ -981,7 +981,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "cause light", {82, 4, 82, 82, 82},
     spell_cause_light, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 62 ), 15, 275,
+    NULL, SLOT( 62 ), 15, 1.00,
     "spell", "!Cause Light!",
     ""},
 
@@ -989,7 +989,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "cause serious", {82, 40, 82, 82, 82},
     spell_cause_serious, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 64 ), 17, 275,
+    NULL, SLOT( 64 ), 17, 2.00,
     "spell", "!Cause Serious!",
     ""},
 
@@ -997,16 +997,15 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "change sex", {66, 82, 82, 82, 82},
     spell_change_sex, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 82 ), 15, 275,
+    NULL, SLOT( 82 ), 15, 1.50,
     "", "Your body feels familiar again.",
     "$n looks $mself again."},
-/* 7, 15, 82, 82, 82    SRZ take out charm until fix wanted flag */
-/* It's not a bug... attacking charmed mob is murder to owner -S- :P */
+
    {
     MORTAL, NORM,
     "charm person", {49, 60, 82, 82, 82},
     spell_charm_person, TAR_CHAR_OFFENSIVE, POS_STANDING,
-    &gsn_charm_person, SLOT( 7 ), 5, 275,
+    &gsn_charm_person, SLOT( 7 ), 5, 2.75,
     "", "You feel more self-confident.",
     "The glazed look in $n's eyes fades."},
 
@@ -1014,7 +1013,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "chill touch", {8, 82, 82, 82, 82},
     spell_chill_touch, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 8 ), 15, 275,
+    NULL, SLOT( 8 ), 15, 1.25,
     "chilling touch", "You feel less cold.",
     ""},
 
@@ -1022,7 +1021,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "color spray", {7, 82, 82, 82, 82},
     spell_color_spray, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 10 ), 15, 275,
+    NULL, SLOT( 10 ), 15, 1.30,
     "color spray", "!color Spray!",
     ""},
 
@@ -1030,7 +1029,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "continual light", {11, 27, 82, 82, 82},
     spell_continual_light, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 57 ), 7, 275,
+    NULL, SLOT( 57 ), 7, 0.50,
     "", "!Continual Light!",
     ""},
 
@@ -1038,7 +1037,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "control weather", {58, 79, 82, 82, 82},
     spell_control_weather, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 11 ), 25, 275,
+    NULL, SLOT( 11 ), 25, 2.80,
     "", "!Control Weather!",
     ""},
 
@@ -1046,7 +1045,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "create food", {82, 26, 82, 82, 82},
     spell_create_food, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 12 ), 5, 275,
+    NULL, SLOT( 12 ), 5, 0.25,
     "", "!Create Food!",
     ""},
 
@@ -1054,7 +1053,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "create spring", {82, 65, 82, 82, 82},
     spell_create_spring, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 80 ), 20, 275,
+    NULL, SLOT( 80 ), 20, 0.25,
     "", "!Create Spring!",
     ""},
 
@@ -1062,7 +1061,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "create water", {82, 9, 82, 82, 82},
     spell_create_water, TAR_OBJ_INV, POS_STANDING,
-    NULL, SLOT( 13 ), 5, 275,
+    NULL, SLOT( 13 ), 5, 0.25,
     "", "!Create Water!",
     ""},
 
@@ -1070,7 +1069,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "cure blindness", {82, 28, 82, 82, 82},
     spell_cure_blindness, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 14 ), 5, 275,
+    NULL, SLOT( 14 ), 5, 1.75,
     "", "!Cure Blindness!",
     ""},
 
@@ -1078,7 +1077,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "cure critical", {82, 59, 82, 82, 82},
     spell_cure_critical, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 15 ), 20, 275,
+    NULL, SLOT( 15 ), 20, 3.00,
     "", "!Cure Critical!",
     ""},
 
@@ -1086,7 +1085,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "cure light", {82, 5, 82, 82, 82},
     spell_cure_light, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 16 ), 10, 275,
+    NULL, SLOT( 16 ), 10, 1.00,
     "", "!Cure Light!",
     ""},
 
@@ -1102,7 +1101,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "cure serious", {82, 41, 82, 82, 82},
     spell_cure_serious, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 61 ), 15, 275,
+    NULL, SLOT( 61 ), 15, 2.00,
     "", "!Cure Serious!",
     ""},
 
@@ -1110,7 +1109,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "curse", {35, 26, 82, 82, 82},
     spell_curse, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    &gsn_curse, SLOT( 17 ), 20, 275,
+    &gsn_curse, SLOT( 17 ), 20, 1.35,
     "curse", "The curse wears off.",
     "$n starts to look more Holy."},
 
@@ -1118,7 +1117,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "detect evil", {12, 8, 82, 82, 82},
     spell_detect_evil, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 18 ), 5, 275,
+    NULL, SLOT( 18 ), 5, 1.00,
     "", "The red in your vision disappears.",
     ""},
 
@@ -1126,7 +1125,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "detect hidden", {17, 16, 82, 82, 82},
     spell_detect_hidden, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 44 ), 5, 275,
+    NULL, SLOT( 44 ), 5, 1.00,
     "", "You feel less aware of your suroundings.",
     ""},
 
@@ -1134,7 +1133,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "detect invis", {19, 82, 82, 82, 82},
     spell_detect_invis, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 19 ), 5, 275,
+    NULL, SLOT( 19 ), 5, 1.00,
     "", "You no longer see invisible objects.",
     ""},
 
@@ -1142,7 +1141,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "detect magic", {7, 7, 82, 82, 82},
     spell_detect_magic, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 20 ), 5, 275,
+    NULL, SLOT( 20 ), 5, 1.00,
     "", "The detect magic wears off.",
     ""},
 
@@ -1150,7 +1149,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "detect poison", {82, 10, 82, 82, 82},
     spell_detect_poison, TAR_OBJ_INV, POS_STANDING,
-    NULL, SLOT( 21 ), 5, 275,
+    NULL, SLOT( 21 ), 5, 1.00,
     "", "!Detect Poison!",
     ""},
 
@@ -1158,7 +1157,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "detect undead", {8, 82, 82, 82, 82},
     spell_detect_undead, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 513 ), 8, 275,
+    NULL, SLOT( 513 ), 8, 1.00,
     "", "You no longer sense undead beings.",
     ""},
 
@@ -1166,7 +1165,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "detection", {82, 82, 82, 82, 22},
     spell_detection, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 527 ), 12, 550,
+    NULL, SLOT( 527 ), 12, 1.00,
     "", "!Detection!",
     ""},
 
@@ -1174,7 +1173,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "dimension blade", {86, 86, 86, 86, 86},
     spell_dimension_blade, TAR_OBJ_INV, POS_STANDING,
-    NULL, SLOT( 523 ), 100, 675,
+    NULL, SLOT( 523 ), 100, 6.75,
     "", "!Dimension Blade!",
     ""},
 
@@ -1184,7 +1183,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "dispel evil", {82, 82, 82, 82, 82},  /* was 82, 63, ... */
     spell_dispel_evil, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 22 ), 15, 275,
+    NULL, SLOT( 22 ), 15, 2.75,
     "dispel evil", "!Dispel Evil!",
     ""},
 
@@ -1192,7 +1191,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "dispel magic", {68, 85, 85, 85, 85},
     spell_dispel_magic, TAR_IGNORE, POS_FIGHTING,
-    NULL, SLOT( 59 ), 15, 275,
+    NULL, SLOT( 59 ), 15, 2.25,
     "", "!Dispel Magic!",
     ""},
 
@@ -1200,7 +1199,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "earthquake", {82, 78, 82, 82, 82},
     spell_earthquake, TAR_IGNORE, POS_FIGHTING,
-    NULL, SLOT( 23 ), 15, 275,
+    NULL, SLOT( 23 ), 15, 3.00,
     "earthquake", "!Earthquake!",
     ""},
 
@@ -1208,7 +1207,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "ego whip", {82, 82, 82, 82, 25},
     spell_ego_whip, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 535 ), 35, 550,
+    NULL, SLOT( 535 ), 35, 5.50,
     "ego whip", "!Ego Whip!",
     ""},
 
@@ -1216,7 +1215,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "enchant weapon", {39, 82, 82, 82, 82},
     spell_enchant_weapon, TAR_OBJ_INV, POS_STANDING,
-    NULL, SLOT( 24 ), 100, 550,
+    NULL, SLOT( 24 ), 100, 5.50,
     "", "!Enchant Weapon!",
     ""},
 
@@ -1224,7 +1223,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, VAMP,
     "energy drain", {15, 7, 8, 11, 9},
     spell_energy_drain, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 25 ), 12, 275,
+    NULL, SLOT( 25 ), 12, 2.75,
     "energy drain", "!Energy Drain!",
     ""},
 
@@ -1232,7 +1231,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "enhance weapon", {86, 86, 86, 86, 86},
     spell_enhance_weapon, TAR_OBJ_INV, POS_STANDING,
-    NULL, SLOT( 517 ), 50, 550,
+    NULL, SLOT( 517 ), 50, 5.50,
     "", "!Enhance Weapon!",
     ""},
 
@@ -1240,7 +1239,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "faerie fire", {3, 82, 82, 82, 82},
     spell_faerie_fire, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 72 ), 5, 275,
+    NULL, SLOT( 72 ), 5, 1.45,
     "faerie fire", "The pink aura around you fades away.",
     "The pink aura around $n fades away."},
 
@@ -1248,7 +1247,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "faerie fog", {82, 14, 82, 82, 82},
     spell_faerie_fog, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 73 ), 12, 275,
+    NULL, SLOT( 73 ), 12, 1.30,
     "faerie fog", "!Faerie Fog!",
     ""},
 
@@ -1256,7 +1255,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "fighting trance", {82, 82, 82, 82, 60},
     spell_fighting_trance, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 521 ), 60, 550,
+    NULL, SLOT( 521 ), 60, 1.00,
     "", "Your fighting trance fades.",
     "$n's fighting trance fades."},
 
@@ -1264,7 +1263,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "fireball", {28, 82, 82, 82, 82},
     spell_fireball, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 26 ), 15, 275,
+    NULL, SLOT( 26 ), 15, 3.10,
     "fireball", "!Fireball!",
     ""},
 
@@ -1272,7 +1271,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "fire blade", {82, 82, 82, 82, 50},
     spell_fire_blade, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 528 ), 50, 550,
+    NULL, SLOT( 528 ), 50, 5.50,
     "", "!FireBlade!",
     ""},
 
@@ -1280,7 +1279,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "flamestrike", {82, 54, 82, 82, 82},
     spell_flamestrike, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 65 ), 20, 275,
+    NULL, SLOT( 65 ), 20, 3.45,
     "flamestrike", "!Flamestrike!",
     ""},
 
@@ -1288,7 +1287,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "flare", {82, 20, 82, 82, 82},
     spell_flare, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 591 ), 18, 275,
+    NULL, SLOT( 591 ), 18, 2.75,
     "flare", "Your vision returns.",
     "$n blinks, and starts to see again."},
 
@@ -1297,7 +1296,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "fly", {24, 82, 82, 82, 82},
     spell_fly, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 56 ), 10, 275,
+    NULL, SLOT( 56 ), 10, 1.00,
     "", "You slowly float to the ground.",
     "$n slowly floats to the ground."},
 
@@ -1305,7 +1304,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "gate", {82, 82, 82, 82, 82},
     spell_gate, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 83 ), 50, 275,
+    NULL, SLOT( 83 ), 50, 2.75,
     "", "!Gate!",
     ""},
 
@@ -1313,7 +1312,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "giant strength", {18, 82, 82, 82, 82},
     spell_giant_strength, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 39 ), 20, 275,
+    NULL, SLOT( 39 ), 20, 1.00,
     "", "You feel weaker.",
     "$n looks weaker."},
 
@@ -1321,7 +1320,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "harm", {82, 74, 82, 82, 82},
     spell_harm, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 27 ), 35, 275,
+    NULL, SLOT( 27 ), 35, 4.00,
     "harm spell", "!Harm!",
     ""},
 
@@ -1329,7 +1328,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "heal", {82, 75, 82, 82, 82},
     spell_heal, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 28 ), 50, 275,
+    NULL, SLOT( 28 ), 50, 4.00,
     "", "!Heal!",
     ""},
 
@@ -1337,7 +1336,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "hypnosis", {82, 82, 82, 82, 14},
     spell_hypnosis, TAR_CHAR_OFFENSIVE, POS_STANDING,
-    NULL, SLOT( 532 ), 30, 550,
+    NULL, SLOT( 532 ), 30, 5.50,
     "", "!Hypnosis!",
     ""},
 
@@ -1345,7 +1344,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "identify", {9, 82, 82, 82, 82},
     spell_identify, TAR_OBJ_INV, POS_STANDING,
-    NULL, SLOT( 53 ), 12, 275,
+    NULL, SLOT( 53 ), 12, 1.00,
     "", "!Identify!",
     ""},
 
@@ -1353,7 +1352,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "infravision", {20, 82, 82, 82, 82},
     spell_infravision, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 77 ), 5, 275,
+    NULL, SLOT( 77 ), 5, 1.00,
     "", "You no longer see in the dark.",
     ""},
 
@@ -1361,7 +1360,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "influx", {82, 65, 82, 82, 82},
     spell_influx, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 503 ), 75, 550,
+    NULL, SLOT( 503 ), 75, 2.70,
     "", "!Influx!",
     ""},
 
@@ -1369,7 +1368,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "invis", {17, 82, 82, 82, 82},
     spell_invis, TAR_IGNORE, POS_STANDING,
-    &gsn_invis, SLOT( 29 ), 5, 275,
+    &gsn_invis, SLOT( 29 ), 5, 1.00,
     "", "You are no longer invisible.",
     "$n's invisibilty fades."},
 
@@ -1377,7 +1376,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "know alignment", {13, 22, 82, 82, 82},
     spell_know_alignment, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 58 ), 9, 275,
+    NULL, SLOT( 58 ), 9, 1.00,
     "", "!Know Alignment!",
     ""},
 
@@ -1385,7 +1384,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "know weakness", {82, 82, 82, 82, 18},
     spell_know_weakness, TAR_CHAR_SELF, POS_FIGHTING,
-    NULL, SLOT( 530 ), 15, 275,
+    NULL, SLOT( 530 ), 15, 1.00,
     "", "You are less aware of your enemy's weaknesses.",
     ""},
 
@@ -1393,7 +1392,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "know critical", {82, 82, 82, 82, 28},
     spell_know_weakness, TAR_CHAR_SELF, POS_FIGHTING,
-    NULL, SLOT( 530 ), 15, 275,
+    NULL, SLOT( 530 ), 15, 1.00,
     "", "You are less aware of critical damage points.",
     ""},
 
@@ -1401,7 +1400,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "know item", {82, 82, 82, 82, 9},
     spell_know_item, TAR_OBJ_INV, POS_STANDING,
-    NULL, SLOT( 533 ), 20, 550,
+    NULL, SLOT( 533 ), 20, 1.00,
     "", "!Know Item!",
     ""},
 
@@ -1409,7 +1408,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "laser bolt", {82, 82, 82, 82, 82},
     spell_laserbolt, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 511 ), 35, 275,
+    NULL, SLOT( 511 ), 35, 2.75,
     "laserbolt", "!laserbolt!",
     ""},
 
@@ -1417,7 +1416,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "lightning bolt", {24, 82, 82, 82, 82},
     spell_lightning_bolt, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 30 ), 15, 275,
+    NULL, SLOT( 30 ), 15, 2.75,
     "lightning bolt", "!Lightning Bolt!",
     ""},
 
@@ -1425,7 +1424,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "locate object", {16, 30, 82, 82, 82},
     spell_locate_object, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 31 ), 20, 275,
+    NULL, SLOT( 31 ), 20, 2.00,
     "", "!Locate Object!",
     ""},
 
@@ -1433,7 +1432,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "magic missile", {3, 82, 82, 82, 82},
     spell_magic_missile, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 32 ), 15, 275,
+    NULL, SLOT( 32 ), 15, 1.15,
     "magic missile", "!Magic Missile!",
     ""},
 
@@ -1441,7 +1440,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "mass invis", {60, 82, 82, 82, 82},
     spell_mass_invis, TAR_IGNORE, POS_STANDING,
-    &gsn_mass_invis, SLOT( 69 ), 20, 550,
+    &gsn_mass_invis, SLOT( 69 ), 20, 5.50,
     "", "!Mass Invis!",
     ""},
 
@@ -1450,7 +1449,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "mind flail", {82, 82, 82, 82, 4},
     spell_mind_flail, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 536 ), 12, 550,
+    NULL, SLOT( 536 ), 12, 2.25,
     "mind flail", "!Mind Flail!",
     ""},
 
@@ -1458,7 +1457,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "mystic armor", {10, 82, 82, 82, 82},
     spell_mystic_armor, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 590 ), 18, 275,
+    NULL, SLOT( 590 ), 18, 1.00,
     "" "Your Mystic Armor fades away",
     "The Mystic Armor around someone in the room fades away."},
 
@@ -1467,7 +1466,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "nerve fire", {82, 82, 82, 82, 60},
     spell_nerve_fire, TAR_IGNORE, POS_FIGHTING,
-    NULL, SLOT( 520 ), 50, 550,
+    NULL, SLOT( 520 ), 50, 5.50,
     "nerve fire", "!Nerve Fire!",
     ""},
 
@@ -1476,7 +1475,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "night vision", {82, 82, 82, 82, 19},
     spell_night_vision, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 538 ), 17, 275,
+    NULL, SLOT( 538 ), 17, 1.00,
     "", "Your eyes feel weaker.",
     ""},
 
@@ -1485,7 +1484,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "pass door", {46, 82, 82, 82, 82},
     spell_pass_door, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 74 ), 20, 275,
+    NULL, SLOT( 74 ), 20, 1.00,
     "", "You feel solid again.",
     "$n's body becomes more solid."},
 
@@ -1493,7 +1492,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "phase", {82, 82, 82, 82, 45},
     spell_phase, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 522 ), 20, 275,
+    NULL, SLOT( 522 ), 20, 1.00,
     "", "You feel solid again.",
     "$n's body becomes more solid."},
 
@@ -1501,7 +1500,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "psychic crush", {82, 82, 82, 82, 19},
     spell_physic_thrust, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 537 ), 33, 550,
+    NULL, SLOT( 537 ), 33, 2.15,
     "psychic crush", "!Psychic Crush!",
     ""},
 
@@ -1509,7 +1508,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "psychic thrust", {82, 82, 82, 82, 7},
     spell_physic_thrust, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 537 ), 22, 550,
+    NULL, SLOT( 537 ), 22, 1.10,
     "psychic thrust", "!Physic Thrust!",
     ""},
 
@@ -1517,7 +1516,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "poison", {82, 31, 82, 82, 82},
     spell_poison, TAR_CHAR_OFFENSIVE, POS_STANDING,
-    &gsn_poison, SLOT( 33 ), 10, 275,
+    &gsn_poison, SLOT( 33 ), 10, 2.75,
     "poison", "You feel less sick.",
     "$n looks less sick."},
 
@@ -1525,7 +1524,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "produce food", {82, 82, 82, 82, 24},
     spell_produce_food, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 524 ), 16, 275,
+    NULL, SLOT( 524 ), 16, 0.50,
     "", "!Produce Food!",
     ""},
 
@@ -1533,7 +1532,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "protection", {9, 12, 82, 82, 82},
     spell_protection, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 34 ), 5, 275,
+    NULL, SLOT( 34 ), 5, 1.00,
     "", "You feel less protected.",
     ""},
 
@@ -1541,7 +1540,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "refresh", {82, 11, 82, 82, 82},
     spell_refresh, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 81 ), 12, 275,
+    NULL, SLOT( 81 ), 12, 1.30,
     "refresh", "!Refresh!",
     ""},
 
@@ -1549,7 +1548,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "remove curse", {36, 27, 82, 82, 82},
     spell_remove_curse, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 35 ), 5, 275,
+    NULL, SLOT( 35 ), 5, 2.85,
     "", "!Remove Curse!",
     ""},
 
@@ -1557,7 +1556,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "sanctuary", {82, 70, 82, 82, 82},
     spell_sanctuary, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 36 ), 75, 275,
+    NULL, SLOT( 36 ), 75, 1.00,
     "", "The white aura around your body fades.",
     "The white aura around $n's body fades."},
 
@@ -1565,7 +1564,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "seal room", {70, 50, 82, 82, 50},
     spell_seal_room, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 541 ), 75, 275,
+    NULL, SLOT( 541 ), 75, 3.75,
     "", "The Energy web around this room fades.",
     ""},
 
@@ -1573,7 +1572,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "see magic", {82, 82, 82, 82, 7},
     spell_see_magic, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 526 ), 8, 275,
+    NULL, SLOT( 526 ), 8, 1.00,
     "", "You no longer see magical auras.",
     ""},
 
@@ -1581,7 +1580,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "sense evil", {82, 82, 82, 82, 10},
     spell_sense_evil, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 515 ), 12, 275,
+    NULL, SLOT( 515 ), 12, 1.00,
     "", "You no longer sense evil.",
     ""},
 
@@ -1589,7 +1588,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, VAMP,
     "shade", {12, 7, 6, 8, 7},
     spell_shade, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 542 ), 5, 275,
+    NULL, SLOT( 542 ), 5, 3.75,
     "", "The room gets lighter.",
     ""},
 
@@ -1597,7 +1596,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "shield", {9, 82, 82, 82, 82},
     spell_shield, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 67 ), 12, 275,
+    NULL, SLOT( 67 ), 12, 1.00,
     "", "Your force shield shimmers, then fades away.",
     "$n's force field shimmers, then fades away."},
 
@@ -1605,7 +1604,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "shocking grasp", {5, 82, 82, 82, 82},
     spell_shocking_grasp, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 82 ), 15, 275,
+    NULL, SLOT( 82 ), 15, 0.75,
     "shocking grasp", "!Shocking Grasp!",
     ""},
 
@@ -1613,7 +1612,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "sight", {30, 82, 82, 82, 82},
     spell_cure_blindness, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 592 ), 20, 550,
+    NULL, SLOT( 592 ), 20, 3.30,
     "", "!Sight!",
     ""},
 
@@ -1621,7 +1620,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "sleep", {9, 82, 82, 82, 82},
     spell_sleep, TAR_CHAR_OFFENSIVE, POS_STANDING,
-    &gsn_sleep, SLOT( 38 ), 15, 275,
+    &gsn_sleep, SLOT( 38 ), 15, 2.75,
     "", "You feel less tired.",
     "$n starts looking much more awake."},
 
@@ -1629,7 +1628,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "stalker", {82, 82, 82, 82, 82},
     spell_stalker, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 401 ), 100, 550,
+    NULL, SLOT( 401 ), 100, 5.50,
     "", "!Stalker!",
     ""},
 
@@ -1637,7 +1636,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "stone skin", {36, 82, 82, 82, 82},
     spell_stone_skin, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 66 ), 12, 275,
+    NULL, SLOT( 66 ), 12, 1.00,
     "", "Your skin feels soft again.",
     "$n's skin loses it's stone-like look."},
 
@@ -1645,7 +1644,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "suffocate", {82, 82, 82, 82, 46},
     spell_suffocate, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 516 ), 30, 550,
+    NULL, SLOT( 516 ), 30, 2.40,
     "a choking hand", "!Suffocate!",
     ""},
 
@@ -1653,7 +1652,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "summon", {35, 82, 82, 82, 82},
     spell_summon, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 40 ), 50, 275,
+    NULL, SLOT( 40 ), 50, 2.75,
     "", "!Summon!",
     ""},
 
@@ -1661,7 +1660,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "teleport", {40, 82, 82, 82, 82},
     spell_teleport, TAR_CHAR_SELF, POS_FIGHTING,
-    NULL, SLOT( 2 ), 35, 275,
+    NULL, SLOT( 2 ), 35, 2.75,
     "", "!Teleport!",
     ""},
 
@@ -1669,7 +1668,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "travel", {82, 82, 82, 82, 82},
     spell_travel, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 599 ), 50, 550,
+    NULL, SLOT( 599 ), 50, 5.50,
     "", "!Travel!",
     ""},
 
@@ -1677,7 +1676,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "vampire bite", {86, 86, 86, 86, 86},
     spell_null, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 0 ), 5, 275,
+    NULL, SLOT( 0 ), 5, 2.75,
     "", "Your blood feels cooler.",
     ""},
 
@@ -1686,7 +1685,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "ventriloquate", {3, 82, 82, 82, 82},
     spell_ventriloquate, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 41 ), 5, 275,
+    NULL, SLOT( 41 ), 5, 0.25,
     "", "!Ventriloquate!",
     ""},
 
@@ -1694,7 +1693,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "warcry", {82, 82, 82, 5, 82},
     spell_null, TAR_CHAR_SELF, POS_STANDING,
-    &gsn_warcry, SLOT( 501 ), 5, 275,
+    &gsn_warcry, SLOT( 501 ), 5, 1.00,
     "", "You feel your courage subside.",
     ""},
 
@@ -1702,7 +1701,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "weaken", {82, 20, 82, 82, 82},
     spell_weaken, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 68 ), 20, 275,
+    NULL, SLOT( 68 ), 20, 2.20,
     "spell", "You feel stronger.",
     "$n looks stronger."},
 
@@ -1710,7 +1709,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "beacon", {70, 82, 82, 82, 70},
     spell_beacon, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 399 ), 25, 275,
+    NULL, SLOT( 399 ), 25, 0.50,
     "", "!Beacon!",
     ""},
 
@@ -1718,7 +1717,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "portal", {80, 82, 82, 82, 82},
     spell_portal, TAR_IGNORE, POS_FIGHTING,
-    NULL, SLOT( 334 ), 100, 275,
+    NULL, SLOT( 334 ), 100, 6.00,
     "", "!Portal!",
     ""},
 
@@ -1726,7 +1725,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "window", {70, 82, 82, 82, 70},
     spell_window, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 333 ), 100, 275,
+    NULL, SLOT( 333 ), 100, 4.00,
     "", "!Window!",
     ""},
 
@@ -1734,7 +1733,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "word of recall", {82, 66, 82, 82, 82},
     spell_word_of_recall, TAR_CHAR_SELF, POS_RESTING,
-    NULL, SLOT( 42 ), 5, 275,
+    NULL, SLOT( 42 ), 5, 2.75,
     "", "!Word of Recall!",
     ""},
 
@@ -1742,7 +1741,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "hellspawn", {43, 82, 82, 82, 82},
     spell_hellspawn, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 512 ), 50, 275,
+    NULL, SLOT( 512 ), 50, 2.75,
     "HellSpawn", "!Hellspawn!",
     ""},
 
@@ -1750,7 +1749,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "planergy", {82, 82, 82, 82, 5},
     spell_planergy, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 504 ), 25, 550,
+    NULL, SLOT( 504 ), 25, 1.10,
     "energy", "!planergy!",
     ""},
 
@@ -1758,7 +1757,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "visit", {82, 82, 82, 82, 32},
     spell_visit, TAR_IGNORE, POS_STANDING,
-    NULL, SLOT( 505 ), 50, 550,
+    NULL, SLOT( 505 ), 50, 2.75,
     "", "!visit!",
     ""},
 
@@ -1766,7 +1765,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "barrier", {82, 82, 82, 82, 8},
     spell_barrier, TAR_CHAR_SELF, POS_STANDING,
-    NULL, SLOT( 506 ), 30, 550,
+    NULL, SLOT( 506 ), 30, 1.00,
     "", "Your barrier slowly fades.",
     "The barrier around $n fades."},
 
@@ -1774,7 +1773,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "phobia", {82, 82, 82, 82, 10},
     spell_phobia, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 507 ), 32, 550,
+    NULL, SLOT( 507 ), 32, 5.50,
     "phobia attack", "!phobia!",
     ""},
 
@@ -1782,7 +1781,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "mind bolt", {82, 82, 82, 82, 12},
     spell_mind_bolt, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 519 ), 40, 275,
+    NULL, SLOT( 519 ), 40, 2.75,
     "Mind Bolt", "!MindBolt!",
     ""},
 
@@ -1798,7 +1797,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "chain lightning", {65, 82, 82, 82, 82},
     spell_chain_lightning, TAR_IGNORE, POS_FIGHTING,
-    NULL, SLOT( 509 ), 25, 550,
+    NULL, SLOT( 509 ), 25, 5.50,
     "lightening bolt", "!chain-light!",
     ""},
 
@@ -1806,7 +1805,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "static", {82, 82, 82, 82, 20},
     spell_static, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 510 ), 40, 550,
+    NULL, SLOT( 510 ), 40, 5.50,
     "discharge", "!static!",
     ""},
 
@@ -1814,7 +1813,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     REMORT, NORM,
     "cloak:absorption", {60, 43, 82, 82, 82},
     spell_cloak_absorb, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 221 ), 500, 275,
+    NULL, SLOT( 221 ), 500, 1.00,
     "", "@@NThe @@lcloak@@N around your body fades.",
     "@@NThe @@lcloak@@N around $n's body fades."},
 
@@ -1822,7 +1821,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     REMORT, NORM,
     "cloak:reflection", {48, 82, 82, 82, 82},
     spell_cloak_reflect, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 222 ), 500, 275,
+    NULL, SLOT( 222 ), 500, 1.00,
     "", "@@NThe @@lc@@el@@ro@@ya@@ak@@N around your body fades.",
     "@@NThe @@lc@@el@@ro@@ya@@ak@@N around $n's body fades."},
 
@@ -1830,7 +1829,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     REMORT, NORM,
     "cloak:flaming", {70, 82, 78, 82, 60},
     spell_cloak_flaming, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 223 ), 750, 275,
+    NULL, SLOT( 223 ), 750, 1.00,
     "", "@@NThe @@ecloak@@N around your body fades.",
     "@@NThe @@ecloak@@N around $n's body fades."},
 
@@ -1838,7 +1837,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, VAMP,
     "cloak:darkness", {18, 13, 14, 14, 16},
     spell_cloak_darkness, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 224 ), 45, 275,
+    NULL, SLOT( 224 ), 45, 1.00,
     "", "The @@dcloak@@N around your body fades.",
     "@@NThe @@dcloak@@N around $n's body fades."},
 
@@ -1846,7 +1845,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     ADEPT, NORM,
     "cloak:adept", {1, 82, 82, 82, 82},
     spell_cloak_adept, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 226 ), 500, 275,
+    NULL, SLOT( 226 ), 500, 1.00,
     "", "@@NThe @@Wcloak@@N around your body fades.",
     "@@NThe @@Wcloak@@N around $n's body fades."},
 
@@ -1854,7 +1853,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     REMORT, NORM,
     "cloak:regeneration", {82, 73, 82, 52, 82},
     spell_cloak_regen, TAR_CHAR_DEFENSIVE, POS_STANDING,
-    NULL, SLOT( 227 ), 500, 275,
+    NULL, SLOT( 227 ), 500, 1.00,
     "", "@@NThe @@rcloak@@N around your body fades.",
     "@@NThe @@rcloak@@N around $n's body fades."},
 
@@ -1865,7 +1864,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "acid breath", {82, 82, 82, 82, 82},
     spell_acid_breath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 200 ), 0, 125,
+    NULL, SLOT( 200 ), 0, 1.25,
     "blast of acid", "!Acid Breath!",
     ""},
 
@@ -1873,7 +1872,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "fire breath", {82, 82, 82, 82, 82},
     spell_fire_breath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 201 ), 0, 125,
+    NULL, SLOT( 201 ), 0, 1.25,
     "blast of flame", "!Fire Breath!",
     ""},
 
@@ -1881,7 +1880,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "frost breath", {82, 82, 82, 82, 82},
     spell_frost_breath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 202 ), 0, 125,
+    NULL, SLOT( 202 ), 0, 1.25,
     "blast of frost", "!Frost Breath!",
     ""},
 
@@ -1889,7 +1888,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "gas breath", {82, 82, 82, 82, 82},
     spell_gas_breath, TAR_IGNORE, POS_FIGHTING,
-    NULL, SLOT( 203 ), 0, 125,
+    NULL, SLOT( 203 ), 0, 1.25,
     "blast of gas", "!Gas Breath!",
     ""},
 
@@ -1897,7 +1896,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, NORM,
     "lightning breath", {82, 82, 82, 82, 82},
     spell_lightning_breath, TAR_CHAR_OFFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 204 ), 0, 125,
+    NULL, SLOT( 204 ), 0, 1.25,
     "blast of lightning", "!Lightning Breath!",
     ""},
 
@@ -1905,7 +1904,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     MORTAL, VAMP,
     "blood leach", {8, 4, 3, 4, 4},
     spell_blood_leach, TAR_CHAR_DEFENSIVE, POS_FIGHTING,
-    NULL, SLOT( 540 ), 6, 275,
+    NULL, SLOT( 540 ), 6, 2.75,
     "", "Your body feels stronger again.",
     ""},
 /*
