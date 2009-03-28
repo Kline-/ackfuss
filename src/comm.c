@@ -621,7 +621,11 @@ void *lookup_address( void *input )
  {
   free_string(ld->d->host);
   ld->d->host = str_dup(from->h_name);
+  snprintf( log_buf, (2 * MIL), "Hostname resolved to: %s.", from->h_name );
+  monitor_chan( log_buf, MONITOR_CONNECT );
  }
+ else
+  monitor_chan( "Unable to resolve hostname.", MONITOR_CONNECT );
 
  delete ld;
  pthread_exit(0);
