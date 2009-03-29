@@ -1062,6 +1062,7 @@ LOOKUP_TYPE tab_mob_race_mods_col[] = {
    {"@@yTough Skin@@N", BIT_15, 0},
    {"@@yStone Skin@@N", BIT_16, 0},
    {"@@yIron Skin@@N", BIT_17, 0},
+   {"@@eFast Casting@@N", BIT_18, 0},
    {NULL, 0}
 
 };
@@ -1086,6 +1087,7 @@ LOOKUP_TYPE tab_mob_race_mods[] = {
    {"tough_skin", BIT_15, 0},
    {"stone_skin", BIT_16, 0},
    {"iron_skin", BIT_17, 0},
+   {"fast_cast", BIT_18, 0},
    {NULL, 0}
 
 };

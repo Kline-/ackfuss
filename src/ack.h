@@ -570,6 +570,7 @@ class char_data
   int cast;
   CAST_DATA *casting;
   short clan;   /* need to convert from pcdata to this */
+  float cooldown[MAX_COOLDOWN];
   BRAND_DATA *current_brand;
   short damroll;
   int def;

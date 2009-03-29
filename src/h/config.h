@@ -132,6 +132,14 @@
 #define SPEED_FANG 3
 
 /*
+ * Melee cooldown system. --Kline
+ */
+#define MAX_COOLDOWN 3
+#define COOLDOWN_OFF 0
+#define COOLDOWN_DEF 1
+#define COOLDOWN_OTH 2
+
+/*
  * For charm item bonuses. --Kline
  */
 #define CHARM_AFF               0
@@ -341,6 +349,7 @@
 #define RACE_MOD_TOUGH_SKIN   BIT_15
 #define RACE_MOD_STONE_SKIN   BIT_16
 #define RACE_MOD_IRON_SKIN    BIT_17
+#define RACE_MOD_FAST_CAST    BIT_18
 
 /*
  *   Spell Damage Types

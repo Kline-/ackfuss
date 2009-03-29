@@ -158,6 +158,8 @@ char_data::char_data()
  cast = 0;
  casting = new CAST_DATA;
  clan = 0;
+ for( short i = 0; i < MAX_COOLDOWN; i++ )
+  cooldown[i] = 0;
  current_brand = NULL;
  damroll = 5;
  def = 0;

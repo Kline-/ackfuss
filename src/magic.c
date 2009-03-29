@@ -404,6 +404,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
  char buf[MSL];
  char *color;
  int sn = -1;
+ float mod_time;
 
  tmp[0] = '\0';
  one_argument(argument,tmp);
@@ -433,10 +434,15 @@ void do_cast( CHAR_DATA *ch, char *argument )
  act(buf,ch,NULL,NULL,TO_ROOM);
  ch_printf(ch,"You begin casting %s%s@@N.\r\n",color,skill_table[sn].name);
 
+ mod_time = skill_table[sn].beats;
+
+ if( IS_SET(race_table[ch->race].race_flags,RACE_MOD_FAST_CAST) )
+  mod_time *= 0.85;
+
  free_string(ch->casting->arg);
  ch->casting->arg = str_dup(argument);
- ch->casting->time = skill_table[sn].beats;
- ch->casting->max_time = (skill_table[sn].beats * sysdata.max_pushback);
+ ch->casting->time = mod_time;
+ ch->casting->max_time = (mod_time * sysdata.max_pushback);
  cast_list.push_back(ch);
 
  return;
@@ -7218,4 +7224,6 @@ void cast_update( void )
   else
    ++li;
  }
+
+ return;
 }
