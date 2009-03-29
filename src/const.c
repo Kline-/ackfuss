@@ -2033,7 +2033,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     ""},
 
    {
-    MORTAL, VAMP, COOLDOWN_NONE,
+    MORTAL, VAMP, COOLDOWN_OFF,
     "feed", {1, 1, 1, 1, 1},
     spell_null, TAR_IGNORE, POS_STANDING,
     &gsn_feed, SLOT( 0 ), 0, 5.50,
@@ -2177,7 +2177,7 @@ const struct skill_type skill_table[MAX_SKILL] = {
     ""},
 
    {
-    MORTAL, NORM, COOLDOWN_NONE,
+    MORTAL, NORM, COOLDOWN_OFF,
     "stake", {85, 85, 85, 85, 85},
     spell_null, TAR_IGNORE, POS_STANDING,
     &gsn_stake, SLOT( 0 ), 0, 5.50,

@@ -555,6 +555,11 @@ class char_data
  public:
   char_data();
   ~char_data();
+  bool check_cooldown( const char *skill );
+  bool check_cooldown( int pos );
+  void set_cooldown( const char *skill );
+  void set_cooldown( int pos, float duration );
+
   std::bitset<MAX_BITSET> act;
   int act_build; /* for setting what ya editing */
   short ac_mod; /* ac modifier */

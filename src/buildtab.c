@@ -610,6 +610,7 @@ LOOKUP_TYPE tab_player_act[] = {
  {"autodig",      ACT_AUTODIG,      0},
  {"autobrief",    ACT_AUTOBRIEF,    0},
  {"ghost",        ACT_GHOST,        0},
+ {"cooldown",     ACT_NO_COOLDOWN,  0},
  {NULL, 0}
 };
 

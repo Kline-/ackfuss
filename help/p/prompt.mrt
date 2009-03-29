@@ -26,6 +26,8 @@ only certain features or by color (type help color). They are as follows:
         %* :  AC
         %Q :  Time remaining until next mquest is available
         %C :  Time remaining on current spell cast
+        %O :  Time remaining on offensive cooldown
+        %D :  Time remaining on defensive cooldown
 
         Immortal Only:
 

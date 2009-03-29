@@ -3900,6 +3900,10 @@ void do_config( CHAR_DATA * ch, char *argument )
                     ? "@@d[@@a+JUSTIFY  @@d]@@a You are viewing rooms in space justified format.@@N\r\n"
                     : "@@d[@@c-justify  @@d]@@c Your are not viewing rooms space justified.@@N\r\n", ch );
 
+      send_to_char( ch->act.test(ACT_NO_COOLDOWN)
+                    ? "@@d[@@a+COOLDOWN @@d]@@a You are not seeing cooldown messages.@@N\r\n"
+                    : "@@d[@@c-cooldown @@d]@@c You are seeing cooldown messages.@@N\r\n", ch );
+
       send_to_char( !ch->act.test(ACT_NO_PRAY) ? "" : "@@d[@@a+NOPRAY   @@d]@@a You cannot use 'pray'.@@N\r\n", ch );
 
       send_to_char( !ch->act.test(ACT_SILENCE) ? "" : "@@d[@@a+SILENCE  @@d]@@a You are silenced.@@N\r\n", ch );
@@ -5916,4 +5920,70 @@ void area_message( AREA_DATA *area, const char *message )
  }
 
  return;
+}
+
+void char_data::set_cooldown( const char *skill )
+{
+ int sn = skill_lookup(skill);
+
+ if( sn < 0 )
+  return;
+
+ if( skill_table[sn].cooldown <= COOLDOWN_NONE )
+  return;
+
+ this->cooldown[skill_table[sn].cooldown] += skill_table[sn].beats;
+
+ return;
+}
+
+void char_data::set_cooldown( int pos, float duration )
+{
+ if( pos <= COOLDOWN_NONE )
+  return;
+
+ this->cooldown[pos] += duration;
+
+ return;
+}
+
+bool char_data::check_cooldown( const char *skill )
+{
+ int sn = skill_lookup(skill);
+
+ if( sn < 0 )
+  return false;
+
+ if( skill_table[sn].cooldown <= COOLDOWN_NONE )
+  return false;
+
+ if( this->cooldown[skill_table[sn].cooldown] > 0 )
+ {
+  switch( skill_table[sn].cooldown )
+  {
+   case COOLDOWN_OFF: send_to_char("@@eYour offensive abilities are on cooldown right now.\r\n",this); break;
+   case COOLDOWN_DEF: send_to_char("@@lYour defensive abilities are on cooldown right now.\r\n",this); break;
+  }
+  return true;
+ }
+
+ return false;
+}
+
+bool char_data::check_cooldown( int pos )
+{
+ if( pos <= COOLDOWN_NONE )
+  return false;
+
+ if( this->cooldown[pos] > 0 )
+ {
+  switch( pos )
+  {
+   case COOLDOWN_OFF: send_to_char("@@eYour offensive abilities are on cooldown right now.\r\n",this); break;
+   case COOLDOWN_DEF: send_to_char("@@lYour defensive abilities are on cooldown right now.\r\n",this); break;
+  }
+  return true;
+ }
+
+ return false;
 }

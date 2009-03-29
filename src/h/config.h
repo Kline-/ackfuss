@@ -710,6 +710,7 @@
 #define ACT_AUTODIG      74   /* Automatically dig in builder   */
 #define ACT_AUTOBRIEF    75   /* Hide room descrs on speedwalk  */
 #define ACT_GHOST        76   /* You're dead! A ghost!          */
+#define ACT_NO_COOLDOWN  77   /* suppress showing cooldown msgs */
 
 /*
  * Channel bits.

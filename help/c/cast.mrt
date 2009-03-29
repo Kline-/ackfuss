@@ -1,0 +1,10 @@
+CAST
+
+Casting a spell takes time. The time to cast varies from spell to spell, and
+can be seen with the "spells" commands. To stop a spell mid-cast you can use the
+"stop" command, move, or recall. While casting you are unable to perform melee
+attacks in battle, and any damage suffered from combat will slow your casting
+progress in the form of "knockback".
+
+Certain races have an innate ability to cast more quickly, and there may be items
+or spells in-game that also reduce your casting speed.

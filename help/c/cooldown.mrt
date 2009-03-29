@@ -1,0 +1,7 @@
+COOLDOWN
+
+Every ability has a cooldown, there are two categories: offensive and defense.
+Abilities that harm another are classified offensive, those that don't are
+defensive. While a cooldown is active, you are unable to use any other abilities
+from that cooldown category. Some skills will place you on cooldown longer than
+others, so be careful!

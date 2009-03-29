@@ -1203,6 +1203,18 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          default:
             i = "> ";
             break;
+         case 'O':
+            if( ch->cooldown[COOLDOWN_OFF] > 0 )
+             snprintf( buf2, MSL, "%0.2f", ch->cooldown[COOLDOWN_OFF] );
+            else
+             snprintf( buf2, MSL, "N/A" );
+            break;
+         case 'D':
+            if( ch->cooldown[COOLDOWN_DEF] > 0 )
+             snprintf( buf2, MSL, "%0.2f", ch->cooldown[COOLDOWN_DEF] );
+            else
+             snprintf( buf2, MSL, "N/A" );
+            break;
          case 'C':
             if( IS_CASTING(ch) )
              snprintf( buf2, MSL, "%0.2f", ch->casting->time );

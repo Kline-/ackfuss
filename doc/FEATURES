@@ -11,6 +11,8 @@ AckFUSS Feature List
   Combat:
     -Unique fighting stances based on class selection
     -Speed based combat; no static round "ticks"
+    -Speed based casting; no "lag" after spells, damage causes cast pushback
+    -Cooldown based abilities; offensive and defensive, use your skills wisely
     -Realm based spell damage (fire/ice/mind/etc)
     -Limited PVP looting depending on law / clan war status of combatants
     -Deathmatch mode -- free for all PVP with no consequences

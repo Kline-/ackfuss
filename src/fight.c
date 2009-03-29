@@ -3034,31 +3034,31 @@ void disarm( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj )
  */
 void trip( CHAR_DATA * ch, CHAR_DATA * victim )
 {
-   if( victim->wait == 0 )
+   int chance;
+
+   if( ch->check_cooldown("trip") )
+    return;
+   chance = IS_NPC( victim ) ? IS_SET( victim->npcdata->skills, MOB_NOTRIP ) ? 75 : 0 : victim->pcdata->learned[gsn_notrip];
+
+   /*
+    * Check for no-trip 
+    */
+   if( number_percent(  ) < chance )
    {
-      int chance;
-
-      chance = IS_NPC( victim ) ? IS_SET( victim->npcdata->skills, MOB_NOTRIP ) ? 75 : 0 : victim->pcdata->learned[gsn_notrip];
-
-      /*
-       * Check for no-trip 
-       */
-      if( number_percent(  ) < chance )
-      {
-         act( "You sidestep $n's attempt to trip you!", ch, NULL, victim, TO_VICT );
-         act( "$N sidesteps your attempt to trip $M!", ch, NULL, victim, TO_CHAR );
-         act( "$N sidesteps $n's attempt to trip $m!", ch, NULL, victim, TO_NOTVICT );
-         return;
-      }
-
-      act( "$n trips you and you go down!", ch, NULL, victim, TO_VICT );
-      act( "You trip $N and $N goes down!", ch, NULL, victim, TO_CHAR );
-      act( "$n trips $N and $N goes down!", ch, NULL, victim, TO_NOTVICT );
-
-      WAIT_STATE( ch, 100 );
-      WAIT_STATE( victim, 300 );
-      victim->position = POS_RESTING;
+      act( "You sidestep $n's attempt to trip you!", ch, NULL, victim, TO_VICT );
+      act( "$N sidesteps your attempt to trip $M!", ch, NULL, victim, TO_CHAR );
+      act( "$N sidesteps $n's attempt to trip $m!", ch, NULL, victim, TO_NOTVICT );
+      return;
    }
+
+   act( "$n trips you and you go down!", ch, NULL, victim, TO_VICT );
+   act( "You trip $N and $N goes down!", ch, NULL, victim, TO_CHAR );
+   act( "$n trips $N and $N goes down!", ch, NULL, victim, TO_NOTVICT );
+
+   ch->set_cooldown("trip");
+   victim->set_cooldown(COOLDOWN_OFF,3.00);
+   victim->set_cooldown(COOLDOWN_DEF,3.00);
+   victim->position = POS_RESTING;
 
    return;
 }
@@ -3071,6 +3071,9 @@ void do_kill( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
+
+   if( ch->check_cooldown(COOLDOWN_OFF) )
+    return;
 
    if( arg[0] == '\0' )
    {
@@ -3123,7 +3126,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   WAIT_STATE( ch, 150 );
+   ch->set_cooldown(COOLDOWN_OFF,1.50);
    check_killer( ch, victim );
    one_hit( ch, victim, TYPE_UNDEFINED );
    return;
@@ -3138,6 +3141,10 @@ void do_target( CHAR_DATA * ch, char *argument )
       send_to_char( "You are not trained enough in this skill!!\r\n", ch );
       return;
    }
+
+   if( ch->check_cooldown("target") )
+    return;
+
    one_argument( argument, arg );
 
    if( arg[0] == '\0' )
@@ -3191,7 +3198,7 @@ void do_target( CHAR_DATA * ch, char *argument )
       stop_fighting( ch, FALSE );
    }
 
-   WAIT_STATE( ch, 150 );
+   ch->set_cooldown("target");
    check_killer( ch, victim );
    one_hit( ch, victim, TYPE_UNDEFINED );
    return;
@@ -3211,6 +3218,9 @@ void do_murder( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
+
+   if( ch->check_cooldown(COOLDOWN_OFF) )
+    return;
 
    one_argument( argument, arg );
 
@@ -3250,7 +3260,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   WAIT_STATE( ch, 150 );
+   ch->set_cooldown(COOLDOWN_OFF,1.50);
    snprintf( log_buf, (2 * MIL), "%s attacked by %s.\r\n", victim->name, ch->name );
    notify( log_buf, MAX_LEVEL - 2 );
 
@@ -3282,6 +3292,8 @@ void do_backstab( CHAR_DATA * ch, char *argument )
    float dam;
    bool crack = FALSE;
 
+   if( ch->check_cooldown("backstab") )
+    return;
 
     /******************************************************************
      * Modified:  'damage' may now be called with sn = -1, in order to *
@@ -3449,7 +3461,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
       damage( ch, victim, dam, gsn_backstab );
    }
 
-   WAIT_STATE( ch, skill_table[gsn_backstab].beats );
+   ch->set_cooldown("backstab");
    return;
 }
 
@@ -3464,6 +3476,9 @@ void do_flee( CHAR_DATA * ch, char *argument )
    int attempt;
    int cost;   /* xp cost for a flee */
 
+   if( ch->check_cooldown(COOLDOWN_DEF) )
+    return;
+
    if( ( victim = ch->fighting ) == NULL )
    {
       if( ch->position == POS_FIGHTING )
@@ -3476,6 +3491,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
     * Check if mob will "allow" ch to flee... 
     */
 
+   ch->set_cooldown(COOLDOWN_DEF,4.50);
    if( IS_CASTING(ch) )
     do_stop(ch,"");
    if( victim->act.test(ACT_NO_FLEE ) && !IS_NPC( ch ) && IS_NPC( victim ) )
@@ -3565,6 +3581,9 @@ void do_rescue( CHAR_DATA * ch, char *argument )
    int best;
    int cnt;
 
+   if( ch->check_cooldown("rescue") )
+    return;
+
    best = -1;
 
    if( !IS_NPC( ch ) )
@@ -3620,7 +3639,7 @@ void do_rescue( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   WAIT_STATE( ch, skill_table[gsn_rescue].beats );
+   ch->set_cooldown("rescue");
    if( !IS_NPC( ch ) && number_percent(  ) > ch->pcdata->learned[gsn_rescue] )
    {
       send_to_char( "You fail the rescue.\r\n", ch );
@@ -3647,6 +3666,9 @@ void do_disarm( CHAR_DATA * ch, char *argument )
    int percent;
    int best;
    int cnt;
+
+   if( ch->check_cooldown("disarm") )
+    return;
 
    best = -1;
 
@@ -3699,7 +3721,7 @@ void do_disarm( CHAR_DATA * ch, char *argument )
       return;
 
 
-   WAIT_STATE( ch, skill_table[gsn_disarm].beats );
+   ch->set_cooldown("disarm");
    percent = number_percent(  ) + victim->level - ch->level;
    if( IS_NPC( ch ) || percent < ch->pcdata->learned[gsn_disarm] * 2 / 3 )
       disarm( ch, victim, obj );
@@ -3721,6 +3743,8 @@ void do_circle( CHAR_DATA * ch, char *argument )
    float dam;
    bool crack = FALSE;
 
+   if( ch->check_cooldown("circle") )
+    return;
 
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
@@ -3893,7 +3917,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
       damage( ch, victim, dam, gsn_circle );
    }
 
-   WAIT_STATE( ch, skill_table[gsn_circle].beats );
+   ch->set_cooldown("circle");
    return;
 }
 
@@ -3905,6 +3929,9 @@ void do_trip( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
    int best;
 /*    int cnt;  */
+
+   if( ch->check_cooldown("trip") )
+    return;
 
    best = -1;
 
@@ -3963,7 +3990,7 @@ void do_trip( CHAR_DATA * ch, char *argument )
    {
       check_killer( ch, victim );
       trip( ch, victim );
-      WAIT_STATE( ch, skill_table[gsn_trip].beats );
+      ch->set_cooldown("trip");
 
    }
 
@@ -3980,6 +4007,9 @@ void do_dirt( CHAR_DATA * ch, char *argument )
    /*
     * int cnt;   
     */
+
+   if( ch->check_cooldown("dirt") )
+    return;
 
    best = -1;
 
@@ -4038,7 +4068,7 @@ void do_dirt( CHAR_DATA * ch, char *argument )
    if( IS_AFFECTED( victim, AFF_BLIND ) )
       return;
 
-   WAIT_STATE( ch, skill_table[gsn_dirt].beats );
+   ch->set_cooldown("dirt");
 
    if( number_percent(  ) > ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_dirt] ) )
    {
@@ -4070,6 +4100,9 @@ void do_bash( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
    int best;
 /*    int cnt;  */
+
+   if( ch->check_cooldown("bash") )
+    return;
 
    best = -1;
 
@@ -4122,7 +4155,7 @@ void do_bash( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   WAIT_STATE( ch, skill_table[gsn_bash].beats );
+   ch->set_cooldown("bash");
 
    if( ( IS_NPC( ch ) && ( number_percent(  ) > 75 + ( ch->level ) / 2 ) )
        || ( !IS_NPC( ch ) && ( 2 * number_percent(  ) > ch->pcdata->learned[gsn_bash] ) ) )
@@ -4170,8 +4203,10 @@ void do_berserk( CHAR_DATA * ch, char *argument )
    AFFECT_DATA af;
    int best;
    int level;
-
    bool prime;
+
+   if( ch->check_cooldown("berserk") )
+    return;
 
    prime = FALSE;
    best = -1;
@@ -4204,9 +4239,7 @@ void do_berserk( CHAR_DATA * ch, char *argument )
       return;
    }
 
-
-
-   WAIT_STATE( ch, skill_table[gsn_berserk].beats );
+   ch->set_cooldown("berserk");
 
 
    if( number_percent(  ) < ( ch->pcdata->learned[gsn_berserk] / 2 ) )
@@ -4260,6 +4293,9 @@ void do_punch( CHAR_DATA * ch, char *argument )
    bool prime;
    int chance;
 
+   if( ch->check_cooldown("punch") )
+    return;
+
    prime = FALSE;
 
 
@@ -4293,8 +4329,7 @@ void do_punch( CHAR_DATA * ch, char *argument )
 
    chance += ( ch->lvl[3] - victim->level );
 
-
-   WAIT_STATE( ch, skill_table[gsn_punch].beats );
+   ch->set_cooldown("punch");
 
    check_killer( ch, victim );
    if( number_percent(  ) < chance )
@@ -4343,6 +4378,9 @@ void do_headbutt( CHAR_DATA * ch, char *argument )
    bool prime;
    int chance;
 
+   if( ch->check_cooldown("headbutt") )
+    return;
+
    prime = FALSE;
 
 
@@ -4382,8 +4420,7 @@ void do_headbutt( CHAR_DATA * ch, char *argument )
 
    chance += ( ch->lvl[3] - victim->level );
 
-
-   WAIT_STATE( ch, skill_table[gsn_headbutt].beats );
+   ch->set_cooldown("headbutt");
 
 
    if( number_percent(  ) < chance )
@@ -4437,6 +4474,9 @@ void do_charge( CHAR_DATA * ch, char *argument )
    bool prime;
    int chance;
 
+   if( ch->check_cooldown("charge") )
+    return;
+
    prime = FALSE;
 
 
@@ -4478,8 +4518,7 @@ void do_charge( CHAR_DATA * ch, char *argument )
 
    chance += ( ( get_psuedo_level( ch ) - ( get_psuedo_level( victim ) - 30 ) ) / 2 );
 
-
-   WAIT_STATE( ch, skill_table[gsn_charge].beats );
+   ch->set_cooldown("charge");
 
    check_killer( ch, victim );
 
@@ -4536,6 +4575,9 @@ void do_knee( CHAR_DATA * ch, char *argument )
    bool prime;
    int chance;
 
+   if( ch->check_cooldown("knee") )
+    return;
+
    prime = FALSE;
 
 
@@ -4577,8 +4619,7 @@ void do_knee( CHAR_DATA * ch, char *argument )
 
    chance += ( ch->lvl[3] - victim->level );
 
-
-   WAIT_STATE( ch, skill_table[gsn_knee].beats );
+   ch->set_cooldown("knee");
 
    check_killer( ch, victim );
 
@@ -4631,6 +4672,9 @@ void do_kick( CHAR_DATA * ch, char *argument )
    bool prime;
    int chance;
 
+   if( ch->check_cooldown("kick") )
+    return;
+
    prime = FALSE;
 
 
@@ -4668,8 +4712,7 @@ void do_kick( CHAR_DATA * ch, char *argument )
 
    chance += ( ch->lvl[3] - ( victim->level + 5 ) );
 
-
-   WAIT_STATE( ch, skill_table[gsn_kick].beats );
+   ch->set_cooldown("kick");
 
    check_killer( ch, victim );
    if( number_percent(  ) < chance )
@@ -5253,6 +5296,9 @@ void do_stake( CHAR_DATA * ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    int sn;
 
+   if( ch->check_cooldown("stake") )
+    return;
+
    one_argument( argument, arg );
 
    if( arg[0] == '\0' )
@@ -5303,7 +5349,7 @@ void do_stake( CHAR_DATA * ch, char *argument )
    if( !IS_VAMP( victim ) )
       chance = 0;
 
-   WAIT_STATE( ch, skill_table[gsn_stake].beats );
+   ch->set_cooldown("stake");
    check_killer( ch, victim );
 
    if( number_percent(  ) < chance )
@@ -5360,6 +5406,9 @@ void do_stun( CHAR_DATA * ch, char *argument )
    int chance;
    int chance2;
 
+   if( ch->check_cooldown("stun") )
+    return;
+
    if( IS_NPC( ch ) )   /* for now */
       return;
 
@@ -5382,7 +5431,7 @@ void do_stun( CHAR_DATA * ch, char *argument )
 
    chance2 = IS_NPC( ch ) ? ch->level * 2 : ch->pcdata->learned[gsn_stun];
 
-   WAIT_STATE( ch, skill_table[gsn_stun].beats );
+   ch->set_cooldown("stun");
 
    if( ( number_percent(  ) + number_percent(  ) ) < ( chance + chance2 ) )
    {
@@ -5438,6 +5487,10 @@ void do_feed( CHAR_DATA * ch, char *argument )
       send_to_char( "Huh?\r\n", ch );
       return;
    }
+
+   if( ch->check_cooldown("feed") )
+    return;
+
    if( ( victim = ch->fighting ) == NULL )
    {
       send_to_char( "You must be fighting someone first!\r\n", ch );
@@ -5467,7 +5520,7 @@ void do_feed( CHAR_DATA * ch, char *argument )
    }
 
    chance = IS_NPC( ch ) ? ch->level : ch->pcdata->learned[gsn_feed];
-   WAIT_STATE( ch, skill_table[gsn_feed].beats );
+   ch->set_cooldown("feed");
    check_killer( ch, victim );
    if( number_percent(  ) < chance )
    {
@@ -5571,6 +5624,9 @@ void do_frenzy( CHAR_DATA * ch, char *argument )
    int moves = 0;
    int damage = 0;
 
+   if( ch->check_cooldown("frenzy") )
+    return;
+
    if( IS_NPC( ch ) )
       return;
 
@@ -5601,7 +5657,7 @@ void do_frenzy( CHAR_DATA * ch, char *argument )
    if( ch->hit > 200 )
       damage = 20;
 
-   WAIT_STATE( ch, skill_table[gsn_frenzy].beats );
+   ch->set_cooldown("frenzy");
 
    if( !IS_NPC( ch ) && ch->position == POS_FIGHTING )
       ch->move -= moves;
@@ -6006,6 +6062,9 @@ void do_stance( CHAR_DATA * ch, char *argument )
    bool legal_stance = FALSE;
    short i;
 
+   if( ch->check_cooldown(COOLDOWN_DEF) )
+    return;
+
    if( IS_NPC( ch ) )
    {
       send_to_char( "Not for Npcs!\r\n", ch );
@@ -6259,7 +6318,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
          snprintf( stance_buf, MSL,"You assume the Stance of the %s!\r\n", stance_app[i].name );
          send_to_char( stance_buf, ch );
       }
-      WAIT_STATE( ch, 350 );
+      ch->set_cooldown(COOLDOWN_DEF,3.50);
       return;
    }
 }
@@ -6294,14 +6353,18 @@ void cooldown_update( void )
    continue;
 
   if( ch->cooldown[COOLDOWN_OFF] > 0 )
+  {
    ch->cooldown[COOLDOWN_OFF] -= 0.01;
-  if( ch->cooldown[COOLDOWN_OFF] <= 0 )
-   send_to_char("@@eYour offensive cooldown has been refreshed!@@N\r\n",ch);
+   if( ch->cooldown[COOLDOWN_OFF] <= 0 && !ch->act.test(ACT_NO_COOLDOWN) )
+    send_to_char("@@eYour offensive cooldown has been refreshed!@@N\r\n",ch);
+  }
 
   if( ch->cooldown[COOLDOWN_DEF] > 0 )
+  {
    ch->cooldown[COOLDOWN_DEF] -= 0.01;
-  if( ch->cooldown[COOLDOWN_DEF] <= 0 )
-   send_to_char("@@lYour defensive cooldown has been refreshed!@@N\r\n",ch);
+   if( ch->cooldown[COOLDOWN_DEF] <= 0 && !ch->act.test(ACT_NO_COOLDOWN) )
+    send_to_char("@@lYour defensive cooldown has been refreshed!@@N\r\n",ch);
+  }
  }
 
  return;

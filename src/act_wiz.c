@@ -1006,6 +1006,9 @@ void do_mstat( CHAR_DATA * ch, char *argument )
     snprintf(buf,MSL,"Casting: nothing Time: 0.00 (Max: 0.00) Pushback: 0.00\r\n" );
    strncat(buf1,buf,MSL);
 
+   snprintf(buf,MSL,"Cooldowns: OFF: %0.2f DEF: %0.2f\r\n", victim->cooldown[COOLDOWN_OFF], victim->cooldown[COOLDOWN_DEF] );
+   strncat(buf1,buf,MSL);
+
    if( !IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "@@RBLOODLUST@@g: %d\r\n", victim->pcdata->super->energy );

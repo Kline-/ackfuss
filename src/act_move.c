@@ -1040,13 +1040,16 @@ void do_pick( CHAR_DATA * ch, char *argument )
 
    one_argument( argument, arg );
 
+   if( ch->check_cooldown("pick lock") )
+    return;
+
    if( arg[0] == '\0' )
    {
       send_to_char( "Pick what?\r\n", ch );
       return;
    }
 
-   WAIT_STATE( ch, skill_table[gsn_pick_lock].beats );
+   ch->set_cooldown("pick lock");
 
    /*
     * look for guards 
@@ -1383,6 +1386,9 @@ void do_warcry( CHAR_DATA *ch, char *argument ) /* Thanks Koron, saved me re-inv
  AFFECT_DATA af;
  short chance;
 
+ if( ch->check_cooldown("warcry") )
+  return;
+
  if( is_affected(ch,skill_lookup("warcry")) )
  {
   send_to_char("You've already let out a warcry!\r\n",ch);
@@ -1400,7 +1406,7 @@ void do_warcry( CHAR_DATA *ch, char *argument ) /* Thanks Koron, saved me re-inv
   return;
  }
 
- WAIT_STATE(ch,skill_table[gsn_warcry].beats);
+ ch->set_cooldown("warcry");
 
  if( number_percent() > chance )
  {
@@ -1521,8 +1527,11 @@ void do_recall( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
    ROOM_INDEX_DATA *location;
 
+   if( ch->check_cooldown(COOLDOWN_DEF) )
+    return;
    if( IS_CASTING(ch) )
     do_stop(ch,"");
+
    act( "$n makes the Holy Sign for transportation!", ch, 0, 0, TO_ROOM );
    buf[0] = '\0';
 
@@ -1582,7 +1591,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
 
       if( number_bits( 1 ) == 0 )
       {
-         WAIT_STATE( ch, 275 );
+         ch->set_cooldown(COOLDOWN_DEF,2.75);
          lose = ( ch->level / 4 ) + 1;
          lose = UMIN( lose, ch->exp );
          gain_exp( ch, 0 - lose );

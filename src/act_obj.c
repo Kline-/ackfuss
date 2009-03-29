@@ -2231,6 +2231,10 @@ void do_brandish( CHAR_DATA * ch, char *argument )
    CHAR_DATA *vch_next;
    OBJ_DATA *staff;
    int sn;
+
+   if( ch->check_cooldown(COOLDOWN_OFF) )
+    return;
+
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
       send_to_char( "Your claws are too clumsy!!!@@N\r\n", ch );
@@ -2250,7 +2254,7 @@ void do_brandish( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   WAIT_STATE( ch, 225 );
+   ch->set_cooldown(COOLDOWN_OFF,2.25);
    if( staff->value[2] > 0 )
    {
       act( "$n brandishes $p.", ch, staff, NULL, TO_ROOM );
@@ -2304,6 +2308,10 @@ void do_zap( CHAR_DATA * ch, char *argument )
    CHAR_DATA *victim;
    OBJ_DATA *wand;
    OBJ_DATA *obj;
+
+   if( ch->check_cooldown(COOLDOWN_OFF) )
+    return;
+
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
       send_to_char( "Your claws are too clumsy!!!@@N\r\n", ch );
@@ -2348,7 +2356,7 @@ void do_zap( CHAR_DATA * ch, char *argument )
       }
    }
 
-   WAIT_STATE( ch, 225 );
+   ch->set_cooldown(COOLDOWN_OFF,2.25);
    if( wand->value[2] > 0 )
    {
       if( victim != NULL )
@@ -2388,6 +2396,10 @@ void do_steal( CHAR_DATA * ch, char *argument )
    /*
     * do not allow steal in LIMBO 
     */
+
+   if( ch->check_cooldown("steal") )
+    return;
+
    if( ch->in_room == get_room_index( ROOM_VNUM_LIMBO ) )
    {
       send_to_char( "You failed.\r\n", ch );
@@ -2426,7 +2438,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
     return;
    }
 
-   WAIT_STATE( ch, skill_table[gsn_steal].beats );
+   ch->set_cooldown("steal");
    chance = IS_NPC( ch ) ? ( get_psuedo_level( ch ) / 4 )
       : ( ch->pcdata->learned[gsn_steal] / 3 + ( get_curr_dex( ch ) / 2 ) );
    chance = chance - ( ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) / 2 );
