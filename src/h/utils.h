@@ -94,6 +94,7 @@
 #define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
 #define IS_AFFECTED(ch, sn)     (IS_SET((ch)->affected_by, (sn)))
 
+#define HAS_COOLDOWN(ch)        ( ch->cooldown[COOLDOWN_OFF] > 0 || ch->cooldown[COOLDOWN_DEF] > 0 )
 #define IS_CASTING(ch)          ( ch->casting->time > 0 )
 #define IS_GHOST(ch)            ( ch->act.test(ACT_GHOST) )
 #define IS_GOOD(ch)             (ch->alignment >= 350)

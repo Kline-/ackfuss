@@ -68,5 +68,6 @@ void damage_gear P_((CHAR_DATA *ch));
 void do_disguise P_((CHAR_DATA *ch, char *argument));
 void do_stance P_((CHAR_DATA *ch, char *argument));
 void resurrect P_((CHAR_DATA *ch));
+void cooldown_update P_((void));
 
 #undef P_

@@ -134,10 +134,10 @@
 /*
  * Melee cooldown system. --Kline
  */
-#define MAX_COOLDOWN 3
-#define COOLDOWN_OFF 0
-#define COOLDOWN_DEF 1
-#define COOLDOWN_OTH 2
+#define MAX_COOLDOWN 2
+#define COOLDOWN_NONE -1
+#define COOLDOWN_OFF   0
+#define COOLDOWN_DEF   1
 
 /*
  * For charm item bonuses. --Kline

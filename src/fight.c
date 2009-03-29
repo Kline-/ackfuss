@@ -6280,3 +6280,29 @@ void resurrect( CHAR_DATA *ch )
 
  return;
 }
+
+void cooldown_update( void )
+{
+ std::list<CHAR_DATA *>::iterator li;
+ CHAR_DATA *ch;
+
+ for( li = char_list.begin(); li != char_list.end(); li++ )
+ {
+  ch = *li;
+
+  if( !HAS_COOLDOWN(ch) )
+   continue;
+
+  if( ch->cooldown[COOLDOWN_OFF] > 0 )
+   ch->cooldown[COOLDOWN_OFF] -= 0.01;
+  if( ch->cooldown[COOLDOWN_OFF] <= 0 )
+   send_to_char("@@eYour offensive cooldown has been refreshed!@@N\r\n",ch);
+
+  if( ch->cooldown[COOLDOWN_DEF] > 0 )
+   ch->cooldown[COOLDOWN_DEF] -= 0.01;
+  if( ch->cooldown[COOLDOWN_DEF] <= 0 )
+   send_to_char("@@lYour defensive cooldown has been refreshed!@@N\r\n",ch);
+ }
+
+ return;
+}

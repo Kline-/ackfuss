@@ -1154,6 +1154,7 @@ struct skill_type
 {
    short flag1;  /* mort or remort?      */
    short flag2;  /* normal and/or vamp?     */
+   short cooldown; /* what cooldown slot does it use? */
    char *name; /* Name of skill                */
    short skill_level[MAX_CLASS];   /* Level needed by class        */
    SPELL_FUN *spell_fun;   /* Spell pointer (for spells)   */
