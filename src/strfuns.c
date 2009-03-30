@@ -1771,6 +1771,7 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
  switch( UPPER(arg1[0]) )
  {
   case 'A':
+   if( !str_cmp(arg1,"ac") && evaluate_tag(arg2,GET_AC(ch),value) )   { retval = true; break; }
    if( !str_cmp(arg1,"age") && evaluate_tag(arg2,get_age(ch),value) ) { retval = true; break; }
    if( !str_cmp(arg1,"alignment") )
    {
@@ -1788,12 +1789,16 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    break;
 
   case 'D':
-   if( !str_cmp(arg1,"day") && evaluate_tag(arg2,time_info.day,value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"day") && evaluate_tag(arg2,time_info.day,value) )    { retval = true; break; }
    if( !str_cmp(arg1,"dex") && evaluate_tag(arg2,get_curr_dex(ch),value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"dr") && evaluate_tag(arg2,GET_DAMROLL(ch),value) )   { retval = true; break; }
+   if( !str_cmp(arg1,"drunk") && IS_DRUNK(ch) )                            { retval = true; break; }
    break;
 
   case 'H':
-   if( !str_cmp(arg1,"hp") && evaluate_tag(arg2,ch->hit,value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"hp") && evaluate_tag(arg2,ch->hit,value) )         { retval = true; break; }
+   if( !str_cmp(arg1,"hr") && evaluate_tag(arg2,GET_HITROLL(ch),value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"hungry") && IS_HUNGRY(ch) )                        { retval = true; break; }
    break;
 
   case 'I':
@@ -1836,6 +1841,16 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    if( !str_cmp(arg1,"mv" ) && evaluate_tag(arg2,ch->move,value) ) { retval = true; break; }
    break;
 
+  case 'P':
+   if( !str_cmp(arg1,"position") )
+   {
+    if( !str_cmp(arg2,"resting") && ch->position == POS_RESTING )   { retval = true; break; }
+    if( !str_cmp(arg2,"standing") && ch->position == POS_STANDING ) { retval = true; break; }
+    if( !str_cmp(arg2,"fighting") && ch->position == POS_FIGHTING ) { retval = true; break; }
+    break;
+   }
+   break;
+
   case 'R':
    if( !str_cmp(arg1,"race") && !str_cmp(arg2,race_table[ch->race].race_title) ) { retval = true; break; }
    if( !str_cmp(arg1,"remort") )
@@ -1866,6 +1881,7 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    break;
 
   case 'T':
+   if( !str_cmp(arg1,"thirsty") && IS_THIRSTY(ch) )                       { retval = true; break; }
    if( !str_cmp(arg1,"time") && evaluate_tag(arg2,time_info.hour,value) ) { retval = true; break; }
    break;
 

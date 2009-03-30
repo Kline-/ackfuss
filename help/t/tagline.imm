@@ -24,6 +24,9 @@ mv                                 [#mv <= 50: Your movement is critical!]
 maxhp                              [#maxhp > 1000: You have more than 1000 health.]
 maxmp                              [#maxmp < 1000: You have less than 100 mana.]
 maxmv                              [#maxmv == 1000: You have exactly 1000 moves.]
+hr                                 [#hr > 100: Your attacks are amazingly accurate.]
+dr                                 [#dr > 100: Your attacks are very strong.]
+ac                                 [#ac < -100: You take little damage.]
 age                                [#age != 17: You're not 17!]
 sun                                [#sun sunrise: The sun is coming up.]
 time                               [#time > 19: Thieves come out with the night.]
@@ -38,6 +41,11 @@ sex                                [#sex male: You're a dude, dude.]
 race                               [#race human: Humans are the most versitile race.]
 class                              [#class mag: Mages are adept in the arts of magic.]
 remort                             [#remort ass: Stealthy and quick is the Assassin.]
+hungry                             [#hungry: The bread looks very inviting...]
+thirsty                            [#thirsty: The water fountain looks cool and refreshing.]
+immortal                           [#immortal: You're an imm, woo!]
+drunk                              [#drunk: Hic! .. You can't see your feet anymore...]
+position                           [#position standing: Standing tall for all to see is you!]
 
 Tag Name                           Arguments
 ----------                         ----------
@@ -56,3 +64,8 @@ sex                                neutral, male, female
 race                               any race name
 class                              any mortal class abbr (Checks for primary class)
 remort                             any remortal class abbr
+hungry                             none
+thirsty                            none
+immortal                           none
+drunk                              none
+position                           resting, standing, fighting
