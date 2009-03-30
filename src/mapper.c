@@ -552,7 +552,7 @@ void disp_map( char *border, char *pmap, CHAR_DATA * ch )
 #endif
    strcpy( disp, map_format( ch->in_room->name, 0, bufs, &y, cols, rows, TRUE ) );
    strncat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ), MSL );
-   strncat( disp, map_format( ch->in_room->description, y, bufs, &y, cols, rows, !ch->act.test(ACT_JUSTIFY ) ), MSL );
+   strncat( disp, map_format( tagline_format(ch->in_room->description,ch), y, bufs, &y, cols, rows, !ch->act.test(ACT_JUSTIFY ) ), MSL );
    if( y < MAP_Y )
    {
       x = disp + strlen( disp );

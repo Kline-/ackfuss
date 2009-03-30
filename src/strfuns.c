@@ -59,6 +59,10 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_HANDLER_H
+#include "h/handler.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -1643,3 +1647,192 @@ void ch_printf( CHAR_DATA * ch, const char *fmt, ... )
 
     send_to_char( buf, ch );
 } 
+
+/*
+ * This code is originally by imapopsyckle@hotmail.com
+ * Modified by Chris for Merc/Rom
+ */
+char *tagline_format( const char *txt, CHAR_DATA *ch )
+{
+ char output[MSL];
+ char tagline[MSL];
+ char buf[MSL];
+ char arg1[256];
+ char arg2[256];
+ int value;
+ bool tag = false;
+ const char *desc;
+ char *p_output;
+ char *common;
+ static char *retc;
+
+ p_output = output;
+
+ for( desc = txt; *desc; desc++ )
+ {
+  /* reset */
+  tag = false;
+  value = 0;
+
+  if( *desc != '[' )
+  {
+   *p_output = *desc;
+   *++p_output = '\0';
+   continue;
+  }
+
+  if( *++desc != '#' )
+  {
+   *p_output = *--desc;
+   *++p_output = '\0';
+   continue;
+  }
+
+  /* Skip beginning '[#'. */
+  ++desc;
+
+  /* Read in the tag. */
+  common = buf;
+  while( *desc != ':' )
+  {
+   if( *desc == '\0' )
+   {
+    snprintf(log_buf,(2 * MIL),"Error: tag has no parser ':'. Room: %d.",ch->in_room->vnum);
+    log_f(log_buf);
+    *common = *desc;
+    break;
+   }
+   *common = *desc;
+   *++common = '\0';
+   ++desc;
+  }
+
+  /* Skip the colon and space ': '. */
+  desc += 2;
+
+  /* Read in the description. */
+  common = tagline;
+  while( *desc != ']' )
+  {
+   if( *desc == '\0' )
+   {
+    snprintf(log_buf,(2 * MIL),"Error: tag has no ending ']'. Room: %d.",ch->in_room->vnum);
+    log_f(log_buf);
+    *common = *desc;
+    break;
+   }
+   *common = *desc;
+   *++common = '\0';
+   ++desc;
+  }
+
+  /* Separate the arguments. */
+  common = buf;
+  common = one_argument(common,arg1);
+  common = one_argument(common,arg2);
+
+  if( is_number(common) )
+   value = atoi(common);
+  else if( strlen(common) > 0 )
+  {
+   snprintf(log_buf,(2 * MIL),"Tag in room %d is odd: %s %s %s.",ch->in_room->vnum,arg1,arg2,common);
+   log_f(log_buf);
+  }
+
+  if( check_tag(arg1,arg2,value,ch) )
+   tag = true;
+
+  /* Copy in the tagline. */
+  if( tag )
+  {
+   common = tagline;
+
+   while( *common != '\0' )
+   {
+    if( strlen(output) >= (MAX_STRING_LENGTH - 1) )
+     break;
+
+    *p_output = *common;
+    ++common;
+    *++p_output = '\0';
+   }
+  }
+
+ }
+
+ retc = output;
+ return retc;
+}
+
+bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
+{
+ bool retval = false;
+
+ switch( UPPER(arg1[0]) )
+ {
+  case 'A':
+   if( !str_cmp(arg1,"age") && evaluate_tag(arg2,get_age(ch),value) ) { retval = true; break; }
+   break;
+
+  case 'C':
+   if( !str_cmp(arg1,"con") && evaluate_tag(arg2,get_curr_con(ch),value) ) { retval = true; break; }
+   break;
+
+  case 'D':
+   if( !str_cmp(arg1,"dex") && evaluate_tag(arg2,get_curr_dex(ch),value) ) { retval = true; break; }
+   break;
+
+  case 'I':
+   if( !str_cmp(arg1,"immortal") && IS_IMMORTAL(ch) ) { retval = true; break; }
+   if( !str_cmp(arg1,"int") && evaluate_tag(arg2,get_curr_int(ch),value) ) { retval = true; break; }
+   break;
+
+  case 'S':
+   if( !str_cmp(arg1,"str") && evaluate_tag(arg2,get_curr_str(ch),value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"sun") )
+   {
+    if( !str_cmp(arg2,"day") && weather_info.sunlight == SUN_LIGHT )
+     retval = true;
+    if( !str_cmp(arg2,"night") && weather_info.sunlight == SUN_DARK )
+     retval = true;
+    if( !str_cmp(arg2,"sunrise") && weather_info.sunlight == SUN_RISE )
+     retval = true;
+    if( !str_cmp(arg2,"sunset") && weather_info.sunlight == SUN_SET )
+     retval = true;
+    break;
+   }
+   break;
+
+  case 'T':
+   if( !str_cmp(arg1,"time") && evaluate_tag(arg2,time_info.hour,value) ) { retval = true; break; }
+   break;
+
+  case 'W':
+   if( !str_cmp(arg1,"wis") && evaluate_tag(arg2,get_curr_wis(ch),value) ) { retval = true; break; }
+   break;
+ }
+
+ return retval;
+}
+
+bool evaluate_tag( const char *opr, int v1, int v2 )
+{
+ bool retval = false;
+
+ if( !str_cmp(opr,">") && v1 > v2 )
+  retval = true;
+ if( !str_cmp(opr,">") && v1 > v2 )
+  retval = true;
+ if( !str_cmp(opr,"<") && v1 < v2 )
+  retval = true;
+ if( !str_cmp(opr,"==") && v1 == v2 )
+  retval = true;
+ if( !str_cmp(opr,">=") && v1 >= v2 )
+  retval = true;
+ if( !str_cmp(opr,"<=") && v1 <= v2 )
+  retval = true;
+ if( !str_cmp(opr,"!=") && v1 != v2 )
+  retval = true;
+
+ return retval;
+}

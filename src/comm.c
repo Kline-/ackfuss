@@ -3197,7 +3197,6 @@ void stop_idling( CHAR_DATA * ch )
    return;
 }
 
-
 /*
  * Write to one char.
  */

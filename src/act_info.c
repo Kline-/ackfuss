@@ -628,7 +628,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
 
    if( victim->description[0] != '\0' )
    {
-      send_to_char( victim->description, ch );
+      send_to_char( tagline_format(victim->description,ch), ch );
       send_to_char( "\r\n", ch);
    }
    else
@@ -818,7 +818,7 @@ void do_look( CHAR_DATA * ch, char *argument )
             int wid = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );
 
             snprintf( out, MSL, "%s%s%s\r\n", color_string( ch, "rooms" ),
-                     string_format( ch->in_room->description, NULL, wid, 10000,
+                     string_format( tagline_format(ch->in_room->description,ch), NULL, wid, 10000,
                                     !ch->act.test(ACT_JUSTIFY) ), color_string( ch, "normal" ) );
             send_to_char( out, ch );
          }
@@ -1042,7 +1042,7 @@ void do_look( CHAR_DATA * ch, char *argument )
 
       if( is_name( arg1, obj->name ) )
       {
-         send_to_char( obj->long_descr, ch );
+         send_to_char( tagline_format(obj->long_descr,ch), ch );
          return;
       }
    }

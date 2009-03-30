@@ -35,6 +35,7 @@ AckFUSS Feature List
     -Auto dig feature to rapidly create zone layouts
     -Auto object feature to set baseline stats based on absolute maximums, editable per slot
     -Obj funs -- create code to make objects unique
+    -Dynamic room/obj/mob descriptions with HTML-like code tags
 
   Quest Points:
     -Auto-run quests based on average online player level

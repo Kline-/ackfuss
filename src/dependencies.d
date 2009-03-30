@@ -153,7 +153,7 @@ o/ssm.o: ssm.c globals.h h/typedefs.h ack.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/db.h h/ssm.h
 o/strfuns.o: strfuns.c ack.h h/config.h globals.h h/typedefs.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h h/db.h \
-  h/comm.h h/ssm.h
+  h/comm.h h/handler.h h/ssm.h
 o/sysdata.o: sysdata.c globals.h h/typedefs.h ack.h h/config.h h/imc.h \
   h/imccfg.h lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
   h/act_wiz.h h/comm.h h/db.h h/ssm.h

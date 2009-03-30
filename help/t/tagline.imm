@@ -1,0 +1,28 @@
+TAGLINE
+
+Taglines are HTML-like tags that can be used in room, mob, and obj descriptions
+to make them more dynamic. If a tagline matches, the portion within it will be
+displayed, if it doesn't match, it won't be shown.
+
+Example description:
+ You are in a large room with no exits, oh no! [#immortal: Hey, you're an imm!
+ you can make your own exit!]
+
+To a non-immortal, it would display only the first half, prior to the [#immortal:]
+tag. Immortals, however, would see the first half and the extra text within the tag.
+
+Tag Name                           Usage
+----------                         ----------
+str                                [#str < 9: You're a weakling!]
+int                                [#int > 15: You're a smart cookie.]
+wis                                [#wis == 10: You're no wiser than normal.]
+dex                                [#dex >= 9: You're no more nimble than normal.]
+con                                [#con <= 17: You've been sick an average amount.]
+age                                [#age != 17: You're not 17!]
+sun                                [#sun sunrise: The sun is coming up.]
+
+Tag Name                           Arguments
+----------                         ----------
+All Stats                          >, <, ==, >=, <=, !=
+Age                                >, <, ==, >=, <=, !=
+Sun                                day, night, sunrise, sunset
