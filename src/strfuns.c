@@ -1772,14 +1772,28 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
  {
   case 'A':
    if( !str_cmp(arg1,"age") && evaluate_tag(arg2,get_age(ch),value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"alignment") )
+   {
+    if( !str_cmp(arg2,"good") && IS_GOOD(ch) )       { retval = true; break; }
+    if( !str_cmp(arg2,"neutral") && IS_NEUTRAL(ch) ) { retval = true; break; }
+    if( !str_cmp(arg2,"evil") && IS_EVIL(ch) )       { retval = true; break; }
+    if( evaluate_tag(arg2,ch->alignment,value) )     { retval = true; break; }
+    break;
+   }
    break;
 
   case 'C':
+   if( !str_cmp(arg1,"class") && !IS_NPC(ch) && !str_cmp(arg2,class_table[ch->pcdata->order[0]].who_name) ) { retval = true; break; }
    if( !str_cmp(arg1,"con") && evaluate_tag(arg2,get_curr_con(ch),value) ) { retval = true; break; }
    break;
 
   case 'D':
+   if( !str_cmp(arg1,"day") && evaluate_tag(arg2,time_info.day,value) ) { retval = true; break; }
    if( !str_cmp(arg1,"dex") && evaluate_tag(arg2,get_curr_dex(ch),value) ) { retval = true; break; }
+   break;
+
+  case 'H':
+   if( !str_cmp(arg1,"hp") && evaluate_tag(arg2,ch->hit,value) ) { retval = true; break; }
    break;
 
   case 'I':
@@ -1787,18 +1801,66 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    if( !str_cmp(arg1,"int") && evaluate_tag(arg2,get_curr_int(ch),value) ) { retval = true; break; }
    break;
 
+  case 'L':
+   if( !str_cmp(arg1,"level") && evaluate_tag(arg2,get_psuedo_level(ch),value) ) { retval = true; break; }
+   break;
+
+  case 'M':
+   if( !str_cmp(arg1,"maxhp") && evaluate_tag(arg2,ch->max_hit,value) )     { retval = true; break; }
+   if( !str_cmp(arg1,"maxmp") && evaluate_tag(arg2,ch->max_mana,value) )    { retval = true; break; }
+   if( !str_cmp(arg1,"maxmv") && evaluate_tag(arg2,ch->max_move,value) )    { retval = true; break; }
+   if( !str_cmp(arg1,"month") && evaluate_tag(arg2,time_info.month,value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"moonloc") )
+   {
+    if( !str_cmp(arg2,"down") && weather_info.moon_loc == MOON_DOWN ) { retval = true; break; }
+    if( !str_cmp(arg2,"rise") && weather_info.moon_loc == MOON_RISE ) { retval = true; break; }
+    if( !str_cmp(arg2,"low") && weather_info.moon_loc == MOON_LOW )   { retval = true; break; }
+    if( !str_cmp(arg2,"peak") && weather_info.moon_loc == MOON_PEAK ) { retval = true; break; }
+    if( !str_cmp(arg2,"fall") && weather_info.moon_loc == MOON_FALL ) { retval = true; break; }
+    if( !str_cmp(arg2,"set") && weather_info.moon_loc == MOON_SET )   { retval = true; break; }
+    break;
+   }
+   if( !str_cmp(arg1,"moonphase") )
+   {
+    if( !str_cmp(arg2,"new") && weather_info.moon_phase == MOON_NEW )          { retval = true; break; }
+    if( !str_cmp(arg2,"waxcre") && weather_info.moon_phase == MOON_WAX_CRE )   { retval = true; break; }
+    if( !str_cmp(arg2,"waxhalf") && weather_info.moon_phase == MOON_WAX_HALF ) { retval = true; break; }
+    if( !str_cmp(arg2,"waxgib") && weather_info.moon_phase == MOON_WAX_GIB )   { retval = true; break; }
+    if( !str_cmp(arg2,"full") && weather_info.moon_phase == MOON_FULL )        { retval = true; break; }
+    if( !str_cmp(arg2,"wangib") && weather_info.moon_phase == MOON_WAN_GIB )   { retval = true; break; }
+    if( !str_cmp(arg2,"wanhalf") && weather_info.moon_phase == MOON_WAN_HALF ) { retval = true; break; }
+    if( !str_cmp(arg2,"wancre") && weather_info.moon_phase == MOON_WAN_CRE )   { retval = true; break; }
+    break;
+   }
+   if( !str_cmp(arg1,"mp" ) && evaluate_tag(arg2,ch->mana,value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"mv" ) && evaluate_tag(arg2,ch->move,value) ) { retval = true; break; }
+   break;
+
+  case 'R':
+   if( !str_cmp(arg1,"race") && !str_cmp(arg2,race_table[ch->race].race_title) ) { retval = true; break; }
+   if( !str_cmp(arg1,"remort") )
+   {
+    for( short i = 0; i < MAX_CLASS; i++ )
+     if( !str_cmp(arg2,remort_table[i].who_name) && ch->lvl2[i] > 0 ) { retval = true; break; }
+    break;
+   }
+   break;
+
   case 'S':
+   if( !str_cmp(arg1,"sex") )
+   {
+    if( !str_cmp(arg2,"neutral") && ch->sex == SEX_NEUTRAL ) { retval = true; break; }
+    if( !str_cmp(arg2,"male") && ch->sex == SEX_MALE )       { retval = true; break; }
+    if( !str_cmp(arg2,"female") && ch->sex == SEX_FEMALE )   { retval = true; break; }
+    break;
+   }
    if( !str_cmp(arg1,"str") && evaluate_tag(arg2,get_curr_str(ch),value) ) { retval = true; break; }
    if( !str_cmp(arg1,"sun") )
    {
-    if( !str_cmp(arg2,"day") && weather_info.sunlight == SUN_LIGHT )
-     retval = true;
-    if( !str_cmp(arg2,"night") && weather_info.sunlight == SUN_DARK )
-     retval = true;
-    if( !str_cmp(arg2,"sunrise") && weather_info.sunlight == SUN_RISE )
-     retval = true;
-    if( !str_cmp(arg2,"sunset") && weather_info.sunlight == SUN_SET )
-     retval = true;
+    if( !str_cmp(arg2,"day") && weather_info.sunlight == SUN_LIGHT )    { retval = true; break; }
+    if( !str_cmp(arg2,"night") && weather_info.sunlight == SUN_DARK )   { retval = true; break; }
+    if( !str_cmp(arg2,"sunrise") && weather_info.sunlight == SUN_RISE ) { retval = true; break; }
+    if( !str_cmp(arg2,"sunset") && weather_info.sunlight == SUN_SET )   { retval = true; break; }
     break;
    }
    break;
@@ -1808,6 +1870,14 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    break;
 
   case 'W':
+   if( !str_cmp(arg1,"weather") )
+   {
+    if( !str_cmp(arg2,"clear") && weather_info.sky == SKY_CLOUDLESS )     { retval = true; break; }
+    if( !str_cmp(arg2,"cloudy") && weather_info.sky == SKY_CLOUDY )       { retval = true; break; }
+    if( !str_cmp(arg2,"rain") && weather_info.sky == SKY_RAINING )        { retval = true; break; }
+    if( !str_cmp(arg2,"lightning") && weather_info.sky == SKY_LIGHTNING ) { retval = true; break; }
+    break;
+   }
    if( !str_cmp(arg1,"wis") && evaluate_tag(arg2,get_curr_wis(ch),value) ) { retval = true; break; }
    break;
  }

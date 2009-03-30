@@ -18,11 +18,41 @@ int                                [#int > 15: You're a smart cookie.]
 wis                                [#wis == 10: You're no wiser than normal.]
 dex                                [#dex >= 9: You're no more nimble than normal.]
 con                                [#con <= 17: You've been sick an average amount.]
+hp                                 [#hp < 100: Your health is too low for this area.]
+mp                                 [#mp > 1000: You have a lot of mana!]
+mv                                 [#mv <= 50: Your movement is critical!]
+maxhp                              [#maxhp > 1000: You have more than 1000 health.]
+maxmp                              [#maxmp < 1000: You have less than 100 mana.]
+maxmv                              [#maxmv == 1000: You have exactly 1000 moves.]
 age                                [#age != 17: You're not 17!]
 sun                                [#sun sunrise: The sun is coming up.]
+time                               [#time > 19: Thieves come out with the night.]
+day                                [#day >= 10: Half the month has already passed.]
+month                              [#month == 1: This is the first month of the year!]
+moonloc                            [#moonloc low: The moon is low in the sky.]
+moonphase                          [#moonphase full: A full moon is visible tonight.]
+weather                            [#weather rain: Puddles of rain pool on the ground.]
+level                              [#level > 80: You're no longer a mortal, woohoo!]
+alignment                          [#alignment good: You bask in the glory of God.]
+sex                                [#sex male: You're a dude, dude.]
+race                               [#race human: Humans are the most versitile race.]
+class                              [#class mag: Mages are adept in the arts of magic.]
+remort                             [#remort ass: Stealthy and quick is the Assassin.]
 
 Tag Name                           Arguments
 ----------                         ----------
-All Stats                          >, <, ==, >=, <=, !=
-Age                                >, <, ==, >=, <=, !=
-Sun                                day, night, sunrise, sunset
+all stats                          >, <, ==, >=, <=, !=
+age                                >, <, ==, >=, <=, !=
+sun                                day, night, sunrise, sunset
+time                               >, <, ==, >=, <=, != (Time is in hours, from 0 - 24)
+day                                >, <, ==, >=, <=, != (There are 20 days to a month)
+month                              >, <, ==, >=, <=, != (There are 8 months in a year)
+moonloc                            down, rise, low, peak, fall, set
+moonphase                          new, waxcre, waxhalf, waxgib, full, wangib, wanhalf, wancre
+weather                            clear, cloudy, rain, lightning
+level                              >, <, ==, >=, <=, != (Uses psuedo level: mort + (remort / 4))
+alignment                          >, <, ==, >=, <=, !=, good, neutral, evil
+sex                                neutral, male, female
+race                               any race name
+class                              any mortal class abbr (Checks for primary class)
+remort                             any remortal class abbr
