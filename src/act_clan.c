@@ -282,7 +282,7 @@ char *get_diplo_name( short value )
 void do_politics( CHAR_DATA * ch, char *argument )
 {
    short x, y;
-   char buf[MAX_STRING_LENGTH], buf2[MAX_STRING_LENGTH];
+   std::string str;
 
    if( IS_NPC( ch ) )
    {
@@ -291,65 +291,59 @@ void do_politics( CHAR_DATA * ch, char *argument )
    }
 
    send_to_char( "@@NCurrent Politics of " mudnamecolor "\r\n\r\n", ch );
-   buf[0] = '\0';
-   buf2[0] = '\0';
 
-   snprintf( buf, MSL, "        " );
-   strncat( buf2, buf, MSL );
-
+   str +=  "        ";
    for( x = 1; x < MAX_CLAN; x++ )
    {
-      snprintf( buf, MSL, " %s  ", clan_table[x].clan_abbr );
-      strncat( buf2, buf, MSL );
+      str += " ";
+      str += clan_table[x].clan_abbr;
+      str += "  ";
    }
-   buf[0] = '\0';
-   snprintf( buf, MSL, "\r\n\r\n" );
-   strncat( buf2, buf, MSL );
+   str += "\r\n\r\n";
 
-   send_to_char( buf2, ch );
+   send_to_char( str, ch );
+   str.clear();
 
    for( x = 1; x < MAX_CLAN; x++ )
    {
       /*
        * clan symbol here 
        */
-      buf[0] = '\0';
-      buf2[0] = '\0';
-      snprintf( buf, MSL, "%1i %s ", x, clan_table[x].clan_abbr );
-      strncat( buf2, buf, MSL );
+      char tmp[4] = {'\0'};
+      str.clear();
+      snprintf(tmp,4,"%d",x);
+
+      str += tmp;
+      str += " ";
+      str += clan_table[x].clan_abbr;
+      str += " ";
 
       for( y = 1; y < MAX_CLAN; y++ )
       {
-         buf[0] = '\0';
          if( x != y )
          {
-            snprintf( buf, MSL, "%s ", get_diplo_name( politics_data.diplomacy[x][y] ) );
-            strncat( buf2, buf, MSL );
+            str += " ";
+            str += get_diplo_name(politics_data.diplomacy[x][y]);
          }
          else
-         {
-            snprintf( buf, MSL, "        " );
-            strncat( buf2, buf, MSL );
-         }
-
-
-
+            str += "        " ;
       }
-      snprintf( buf, MSL, "\r\n\r\n" );
-      strncat( buf2, buf, MSL );
-      send_to_char( buf2, ch );
+      str += "\r\n\r\n";
+      send_to_char( str, ch );
    }
+
    if( ch->act.test(ACT_CDIPLOMAT) )
       for( x = 1; x < MAX_CLAN; x++ )
       {
          if( politics_data.end_current_state[ch->clan][x] )
          {
-            snprintf( buf, MSL, "%s has requested an end to your current state of affairs", clan_table[x].clan_name );
-            send_to_char( buf, ch );
+            str.clear();
+            str += clan_table[x].clan_name;
+            str += " has requested an end to your current state of affairs.\r\n";
+            send_to_char( str, ch );
          }
       }
-
-
+   return;
 }
 
 void do_negotiate( CHAR_DATA * ch, char *argument )

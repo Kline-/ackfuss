@@ -3200,6 +3200,12 @@ void stop_idling( CHAR_DATA * ch )
 /*
  * Write to one char.
  */
+void send_to_char( std::string txt, CHAR_DATA *ch )
+{
+ send_to_char(txt.c_str(),ch);
+ return;
+}
+
 void send_to_char( const char *txt, CHAR_DATA * ch )
 {
    if( ch == NULL )
