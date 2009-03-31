@@ -115,6 +115,7 @@
 #define IS_WOLF(ch)    ( ch->act.test(ACT_WEREWOLF) )
 #define IS_SHIFTED(ch) ( ch->act.test(ACT_SHIFTED)  )
 #define IS_RAGED(ch)   ( ch->act.test(ACT_RAGED)    )
+#define IS_HUNTER(ch)  ( ch->act.test(ACT_SHUNTER)  )
 
 /* Added bonus to hit and dam for higher levl players */
 /* High level naked players should still be able to fight ok */

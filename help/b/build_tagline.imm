@@ -1,4 +1,5 @@
-TAGLINE
+BUILD HELP : TAGLINE
+------------------
 
 Taglines are HTML-like tags that can be used in room, mob, and obj descriptions
 to make them more dynamic. If a tagline matches, the portion within it will be
@@ -46,6 +47,11 @@ thirsty                            [#thirsty: The water fountain looks cool and 
 immortal                           [#immortal: You're an imm, woo!]
 drunk                              [#drunk: Hic! .. You can't see your feet anymore...]
 position                           [#position standing: Standing tall for all to see is you!]
+isname                             [#isname Kline: You're Kline. You RULE!]
+istitle                            [#istitle ' the pious': You seem like a very Holy person.]
+clan                               [#clan Alpha: You seem to be a clan Alpha member...Look out!]
+super                              [#super vamp: Vampire! Run from the guards!]
+name                               [#name: I see you there, $.]
 
 Tag Name                           Arguments
 ----------                         ----------
@@ -69,3 +75,8 @@ thirsty                            none
 immortal                           none
 drunk                              none
 position                           resting, standing, fighting
+isname                             any name (1 word)
+istitle                            any string within 'quotes', add a leading space, ie: ' cool title'
+clan                               any clan name, multiple words within 'quotes'
+super                              vamp, wolf, hunter
+name                               none

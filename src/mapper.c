@@ -384,11 +384,12 @@ char *map_format( char *str, int start, char cmap[MAP_Y][MSL], int *numlines, in
    int len;
    int currline = start;
    int last;
-   char *sp;
+   char *sp = NULL;
    char c;
    int numwords = 0;
    int jlen;
 
+   arg[0] = '\0';
    --height;
    *pret = '\0';
    for( sp = break_arg( str, arg, sizeof( arg ), width, &len, &alen ); *arg;

@@ -1666,6 +1666,11 @@ char *tagline_format( const char *txt, CHAR_DATA *ch )
  char *common;
  static char *retc;
 
+ output[0] = '\0';
+ tagline[0] = '\0';
+ buf[0] = '\0';
+ arg1[0] = '\0';
+ arg2[0] = '\0';
  p_output = output;
 
  for( desc = txt; *desc; desc++ )
@@ -1739,7 +1744,39 @@ char *tagline_format( const char *txt, CHAR_DATA *ch )
    log_f(log_buf);
   }
 
-  if( check_tag(arg1,arg2,value,ch) )
+  if( !str_cmp(arg1,"name") ) /* Special exception so we can search and replace */
+  {
+   char p_name[128];
+   char *t = tagline;
+   char *n;
+   common = buf;
+   tag = true;
+
+   while( *t != '\0' )
+   {
+    if( *t != '$' )
+    {
+     *common = *t;
+     *++common = '\0';
+     ++t;
+     continue;
+    }
+
+    snprintf(p_name,128,"%s",ch->name);
+    n = p_name;
+
+    while( *n != '\0' )
+    {
+     *common = *n;
+     *++common = '\0';
+     ++n;
+    }
+    ++t;
+   }
+
+   snprintf(tagline,MSL,"%s",buf);
+  }
+  else if( check_tag(arg1,arg2,value,ch) )
    tag = true;
 
   /* Copy in the tagline. */
@@ -1784,6 +1821,7 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    break;
 
   case 'C':
+   if( !str_cmp(arg1,"clan") && !str_cmp(arg2,strip_color(clan_table[ch->clan].clan_name,"@@")) )           { retval = true; break; }
    if( !str_cmp(arg1,"class") && !IS_NPC(ch) && !str_cmp(arg2,class_table[ch->pcdata->order[0]].who_name) ) { retval = true; break; }
    if( !str_cmp(arg1,"con") && evaluate_tag(arg2,get_curr_con(ch),value) ) { retval = true; break; }
    break;
@@ -1802,8 +1840,10 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    break;
 
   case 'I':
-   if( !str_cmp(arg1,"immortal") && IS_IMMORTAL(ch) ) { retval = true; break; }
-   if( !str_cmp(arg1,"int") && evaluate_tag(arg2,get_curr_int(ch),value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"immortal") && IS_IMMORTAL(ch) )                                                  { retval = true; break; }
+   if( !str_cmp(arg1,"int") && evaluate_tag(arg2,get_curr_int(ch),value) )                             { retval = true; break; }
+   if( !str_cmp(arg1,"isname") && !str_cmp(arg2,ch->name) )                                            { retval = true; break; }
+   if( !str_cmp(arg1,"istitle") && !IS_NPC(ch) && !str_cmp(arg2,strip_color(ch->pcdata->title,"@@")) ) { retval = true; break; }
    break;
 
   case 'L':
@@ -1877,6 +1917,12 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
     if( !str_cmp(arg2,"sunrise") && weather_info.sunlight == SUN_RISE ) { retval = true; break; }
     if( !str_cmp(arg2,"sunset") && weather_info.sunlight == SUN_SET )   { retval = true; break; }
     break;
+   }
+   if( !str_cmp(arg1,"super") )
+   {
+    if( !str_cmp(arg2,"vamp") && IS_VAMP(ch) )     { retval = true; break; }
+    if( !str_cmp(arg2,"wolf") && IS_WOLF(ch) )     { retval = true; break; }
+    if( !str_cmp(arg2,"hunter") && IS_HUNTER(ch) ) { retval = true; break; }
    }
    break;
 

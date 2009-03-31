@@ -556,6 +556,7 @@ LOOKUP_TYPE tab_mob_act[] = {
    {"questmaster", ACT_QUESTMASTER, 0      },
    {"shifted",     ACT_SHIFTED,     NO_USE },
    {"raged",       ACT_RAGED,       NO_USE },
+   {"shunter",     ACT_SHUNTER,     0      },
    {NULL, 0}
 };
 
@@ -611,6 +612,7 @@ LOOKUP_TYPE tab_player_act[] = {
  {"autobrief",    ACT_AUTOBRIEF,    0},
  {"ghost",        ACT_GHOST,        0},
  {"cooldown",     ACT_NO_COOLDOWN,  0},
+ {"shunter",      ACT_SHUNTER,      0},
  {NULL, 0}
 };
 

@@ -6,7 +6,7 @@ BUILD HELP : INDEX
 +-------------------------------------------+---------------------------+
 | Objects	Rooms		Vnums       |	Editor		Doors   |
 | Mobiles	Resets		Building    |	Extra		Shops   |
-| Flags		Strings		            |   Specials		|
+| Flags		Strings		Tagline     |   Specials		|
 +-------------------------------------------+---------------------------+
 |				COMMANDS	                        |
 +-----------------------------------------------------------------------+
