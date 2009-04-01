@@ -1,4 +1,4 @@
-The help pages for ACK! MUD have been updated, rewritten and reformatted.
+The help pages for AckFUSS have been updated, rewritten and reformatted.
 The following topics now have sub-pages, and then sub-sub-pages!
 
 These are the main sub-pages available:
@@ -16,3 +16,7 @@ And also, other help pages of interest:
 
 So, to view the list of GROUP related commands, type "HELP GROUP".
    Or, to view the help page for Damage, type "HELP DAMAGE".
+
+
+To search all helpfile titles use @@ahelp -find <string>@@N. To search for a
+word or phrase in all helpfiles use @@ahelp -search <string>@@N.

@@ -1821,8 +1821,22 @@ void do_help( CHAR_DATA * ch, char *argument )
 {
  FILE *fp;
  char buf[MSL];
+ char *farg = argument;
  bool found = FALSE;
  bool shelp = FALSE;
+
+ farg = one_argument(farg,buf);
+
+ if( !str_prefix("-find",buf) )
+ {
+  send_to_char(find_helps(farg,IS_IMMORTAL(ch) ? true : false),ch);
+  return;
+ }
+ if( !str_prefix("-search",buf) )
+ {
+  send_to_char(grep_helps(farg,IS_IMMORTAL(ch) ? true : false),ch);
+  return;
+ }
 
  buf[0] = '\0';
  argument = strlower(argument);

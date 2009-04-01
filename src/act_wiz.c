@@ -4908,7 +4908,7 @@ void do_test( CHAR_DATA * ch, char *argument )
 */
  char buf[MSL];
 
- snprintf(buf,MSL,"%s",search_helps(argument));
+ snprintf(buf,MSL,"%s",find_helps(argument,IS_IMMORTAL(ch) ? true : false));
  send_to_char(buf,ch);
 }
 

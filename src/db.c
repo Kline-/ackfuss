@@ -4016,36 +4016,83 @@ int count_skills( void )
  return cnt;
 }
 
-char *search_helps( const char *string )
+char *find_helps( const char *string, bool imm )
 {
  static char ret[MSL];
  char tmp[MSL] = {'\0'};
- char *t_buf;
- char *t_out;
- char *pipe;
+ char split[MSL] = {'\0'};
+ std::string str;
+ size_t pos;
 
- t_buf = (char *)calloc(1,sizeof(char));
- t_out = (char *)calloc(1,sizeof(char));
- pipe = (char *)calloc(1,sizeof(char));
+ if( !isalpha(*string) )
+  return "You can only search for letters.\r\n";
 
- snprintf(tmp,MSL,"%s",_popen(string));
- pipe = tmp;
+ if( strlen(string) < 2 )
+  return "Searches must be at least two letters.\r\n";
 
- for( t_out = strtok_r(pipe,"\n",&t_buf); t_out != NULL; t_out = strtok_r(NULL,"\n",&t_buf) )
+ if( imm )
+  snprintf(split,MSL,"find %s -maxdepth 2 -iname \\*%s\\* -printf '%%f '",HELP_DIR,string);
+ else
+  snprintf(split,MSL,"find %s -maxdepth 2 -iname \\*%s\\*.%s -printf '%%f '",HELP_DIR,string,HELP_MORT);
+ snprintf(tmp,MSL,"%s",_popen(split));
+
+ str = tmp;
+
+ if( str.empty() )
+  return "Nothing found.\r\n";
+
+ snprintf(tmp,MSL,".%s",HELP_MORT);
+ while( (pos = str.find(tmp)) < str.size() )
+  str.replace(pos,strlen(tmp),"");
+
+ if( imm )
  {
-  t_out += 9;                /* Strip off ../helps/ at the start, edit if you change your HELP_DIR */
-  snprintf(tmp,MSL,"%s",t_out);
-  tmp[strlen(tmp)-4] = '\0'; /* Strip off .ext at the end, edit if you change HELP_MORT or HELP_IMM */
-  snprintf(ret,MSL,"%s ",tmp);
+  snprintf(tmp,MSL,".%s",HELP_IMM);
+  while( (pos = str.find(tmp)) < str.size() )
+   str.replace(pos,strlen(tmp),"");
  }
 
- t_buf = NULL;
-  free(t_buf);
- t_out = NULL;
-  free(t_out);
- pipe = NULL;
-  free(pipe);
+ snprintf(ret,MSL,"Found the following possible matches:\r\n%s\r\n",str.c_str());
+ return ret;
+}
 
+char *grep_helps( const char *string, bool imm )
+{
+ static char ret[MSL];
+ char tmp[MSL] = {'\0'};
+ char split[MSL] = {'\0'};
+ std::string str;
+ size_t pos;
+
+ if( !isalpha(*string) )
+  return "You can only search for letters.\r\n";
+
+ if( strlen(string) < 2 )
+  return "Searches must be at least two letters.\r\n";
+
+ if( imm )
+  snprintf(split,MSL,"grep -i -l -R '%s' %s*/* | cut -c %d-",string,HELP_DIR,strlen(HELP_DIR)+3);
+ else
+  snprintf(split,MSL,"grep -i -l -R '%s' %s*/*.%s | cut -c %d-",string,HELP_DIR,HELP_MORT,strlen(HELP_DIR)+3);
+ snprintf(tmp,MSL,"%s",_popen(split));
+
+ str = tmp;
+
+ if( str.empty() )
+  return "Nothing found.\r\n";
+
+ snprintf(tmp,MSL,".%s",HELP_MORT);
+ while( (pos = str.find(tmp)) < str.size() )
+  str.replace(pos,strlen(tmp),"");
+
+ if( imm )
+ {
+  snprintf(tmp,MSL,".%s",HELP_IMM);
+  while( (pos = str.find(tmp)) < str.size() )
+   str.replace(pos,strlen(tmp),"");
+ }
+
+ snprintf(ret,MSL,"Found the following possible matches:\r\n%s",str.c_str());
  return ret;
 }
 
