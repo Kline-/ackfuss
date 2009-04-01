@@ -1827,12 +1827,12 @@ void do_help( CHAR_DATA * ch, char *argument )
 
  farg = one_argument(farg,buf);
 
- if( !str_prefix("-find",buf) )
+ if( !str_prefix(buf,"-find") )
  {
   send_to_char(find_helps(farg,IS_IMMORTAL(ch) ? true : false),ch);
   return;
  }
- if( !str_prefix("-search",buf) )
+ if( !str_prefix(buf,"-search") )
  {
   send_to_char(grep_helps(farg,IS_IMMORTAL(ch) ? true : false),ch);
   return;
