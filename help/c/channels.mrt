@@ -1,0 +1,6 @@
+CHANNELS
+
+You can use the channels command to display all channels available for you to listen to
+in the MUD. A channel can be enabled with channels +<name>. It can be silenced with
+channels -<name>. The HERMIT channel is a special channel to enable/disable everything
+at once.

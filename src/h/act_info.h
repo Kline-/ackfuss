@@ -60,8 +60,6 @@ void do_autodig P_((CHAR_DATA *ch, char *argument));
 void do_autobrief P_((CHAR_DATA *ch, char *argument));
 void do_pagelen P_((CHAR_DATA *ch, char *argument));
 void do_prompt P_((CHAR_DATA *ch, char *argument));
-void do_auto P_((CHAR_DATA *ch, char *argument));
-void do_players P_((CHAR_DATA *ch, char *argument));
 void do_diagnose P_((CHAR_DATA *ch, char *argument));
 void do_heal P_((CHAR_DATA *ch, char *argument));
 void do_gain P_((CHAR_DATA *ch, char *argument));

@@ -1,0 +1,5 @@
+BLANK
+
+The blank command is used as a shortcut to config +/- blank. With blank
+enabled you will receive a blank line before your prompt. With it disabled
+you will not.

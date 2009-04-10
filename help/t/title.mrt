@@ -1,0 +1,5 @@
+TITLE
+
+Title will let you set a title to be displayed after your character name. To add a leading space to
+your title you need to prepend with a color code, ie: "title @@@@N has a cool title" will display as
+"Player has a cool title" while "title has a cool title" would look like "Playerhas a cool title".

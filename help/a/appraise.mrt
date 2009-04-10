@@ -1,0 +1,4 @@
+APPRAISE
+
+Appraise will give an estimated value of an item if it were to be sold to a vendor. All vendors buy
+and sell at different rates, though, so things may vary slightly.

@@ -1,0 +1,4 @@
+WIMPY
+
+Wimpy will allow you to set a specified number of hitpoints to start automatically fleeing at.
+To remove your wimpy, set it to 0.

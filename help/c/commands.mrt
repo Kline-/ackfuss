@@ -1,0 +1,5 @@
+COMMANDS
+
+Typing commands will display a categorized list of all commands in the MUD. You can also display only a
+single category at a time by specifying it with commands <category>. Valid options are as follows: misc,
+communication, configuration, information, actions, objects, imm.

@@ -1,0 +1,5 @@
+CONFIG
+
+Config allows you to set various automatic or display options to better customize your
+game experience. All values can be toggled with config +/- <name>. Most can also be toggled
+simply by typing the value, ie, brief, to toggle brief on or off.

@@ -1,0 +1,6 @@
+DESCRIPTION
+
+Description lets you set a more detailed description about yourself. Other people will
+see this when they look at you. To display your current description, use no argument.
+To reset or remove your description, use description clear. You can also append to your
+description by using a +, ie: description + <additional text>.

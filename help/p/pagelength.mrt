@@ -1,0 +1,4 @@
+PAGELENGTH
+
+Setting your pagelength will allow you to control when the automatic page pauser breaks on lines.
+The higher the number you set, the more lines that will be displayed without a pause.

@@ -3046,7 +3046,13 @@ void do_description( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    buf[0] = '\0';
 
-   if( argument[0] != '\0' )
+   if( !str_cmp(argument,"clear") )
+   {
+      free_string(ch->description);
+      ch->description = &str_empty[0];
+   }
+
+   if( argument[0] != '\0' && str_cmp(argument,"clear") )
    {
       buf[0] = '\0';
       smash_tilde( argument );
@@ -4419,22 +4425,6 @@ void do_prompt( CHAR_DATA * ch, char *argument )
    free_string( ch->prompt );
    ch->prompt = str_dup( buf );
    send_to_char( "Ok.\r\n", ch );
-   return;
-}
-
-void do_auto( CHAR_DATA * ch, char *argument )
-{
-
-   do_config( ch, "" );
-   return;
-
-}
-
-
-void do_players( CHAR_DATA * ch, char *argument )
-{
-
-   send_to_char( "This command is no longer needed, as 'WHO' carries all details.\r\n", ch );
    return;
 }
 
