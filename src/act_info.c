@@ -3525,6 +3525,8 @@ void do_commands( CHAR_DATA * ch, char *argument )
    {
     if( show > -1 && cmd_table[cmd].type != show )
      continue;
+    if( show == -1 && cmd_table[cmd].type != i )
+     continue;
     if( cmd_table[cmd].level == CLAN_ONLY && ch->clan == 0 )
      continue;
     if( cmd_table[cmd].level == BOSS_ONLY && !ch->act.test(ACT_CLEADER) )
