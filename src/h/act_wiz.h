@@ -85,7 +85,6 @@ void do_togleader P_((CHAR_DATA *ch, char *argument));
 void do_whoname P_((CHAR_DATA *ch, char *argument));
 void do_lhunt P_((CHAR_DATA *ch, char *argument));
 void do_sstat P_((CHAR_DATA *ch, char *argument));
-void do_test P_((CHAR_DATA *ch, char *argument));
 void do_monitor P_((CHAR_DATA *ch, char *argument));
 void monitor_chan P_((const char *message, int channel));
 void do_reward P_((CHAR_DATA *ch, char *argument));

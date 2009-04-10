@@ -215,8 +215,6 @@ const struct cmd_type cmd_table[] = {
    /*
     * Informational commands.
     */
-   {"test", do_test, POS_DEAD, 0, LOG_NORMAL,
-    C_TYPE_INFO, C_SHOW_ALWAYS,false},
    {"abandon", do_abandon, POS_STANDING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_ALWAYS,false},
    {"affected", do_affected, POS_DEAD, 0, LOG_NORMAL,

@@ -1,0 +1,5 @@
+LOOK
+
+Look with no arguments will display the current room you are in and all characters and objects
+in it. You may also 'look <char/obj>' for a more detailed view of a person or object, or
+'look in <container>' to see the contents of a container.

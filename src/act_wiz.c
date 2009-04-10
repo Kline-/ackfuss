@@ -4895,23 +4895,6 @@ void do_sstat( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_test( CHAR_DATA * ch, char *argument )
-{/*
-   char testing[MSL];
-   char catbuf[MSL];
-   snprintf( testing, "%s", "Testing anti-color capitalize:" );
-   snprintf( catbuf, argument );
-   strncat( testing, capitalize( catbuf ) );
-   strncat( testing, "\r\n" );
-   send_to_char( testing, ch );
-   return;
-*/
- char buf[MSL];
-
- snprintf(buf,MSL,"%s",find_helps(argument,IS_IMMORTAL(ch) ? true : false));
- send_to_char(buf,ch);
-}
-
 struct monitor_type
 {
    char *name;
