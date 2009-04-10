@@ -3545,9 +3545,12 @@ void do_commands( CHAR_DATA * ch, char *argument )
 
     if( ++cnt % 6 == 0 )
      buf += "\r\n";
+    else if( cnt % 6 != 0 && cmd_table[cmd].name[0] == '\0' )
+      buf += "\r\n";
    }
   }
   i++;
+  cnt = 0;
  }
 
  buf += "\r\n";
