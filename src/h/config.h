@@ -181,15 +181,13 @@
 #define QUEST_COOL	8
 #define QUEST_MEAN	16
 
-
 #define C_TYPE_MISC     0
 #define C_TYPE_COMM     1
 #define C_TYPE_CONFIG   2
 #define C_TYPE_INFO     3
 #define C_TYPE_ACTION   4
 #define C_TYPE_OBJECT   5
-#define C_TYPE_IMC      6
-#define C_TYPE_IMM      7
+#define C_TYPE_IMM      6
 
 #define C_SHOW_NEVER    -1
 #define C_SHOW_ALWAYS     0

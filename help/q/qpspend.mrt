@@ -1,0 +1,12 @@
+QPSPEND
+
+Qpspend allows you to spend your hard earned quest points on vanity upgrades and other
+useful things. Syntax is providied by typing 'qpspend' with no arguments. Costs are listed
+below.
+
+room enter message: 1
+room exit message : 1
+assist message    : 3
+teleport to recall: 10
+corpse retrieval  : 10
+change your recall: 50

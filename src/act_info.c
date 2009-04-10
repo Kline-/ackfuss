@@ -1827,15 +1827,18 @@ void do_help( CHAR_DATA * ch, char *argument )
 
  farg = one_argument(farg,buf);
 
- if( !str_prefix(buf,"-find") )
+ if( argument[0] != '\0' )
  {
-  send_to_char(find_helps(farg,IS_IMMORTAL(ch) ? true : false),ch);
-  return;
- }
- if( !str_prefix(buf,"-search") )
- {
-  send_to_char(grep_helps(farg,IS_IMMORTAL(ch) ? true : false),ch);
-  return;
+  if( !str_prefix(buf,"-find") )
+  {
+   send_to_char(find_helps(farg,IS_IMMORTAL(ch) ? true : false),ch);
+   return;
+  }
+  if( !str_prefix(buf,"-search") )
+  {
+   send_to_char(grep_helps(farg,IS_IMMORTAL(ch) ? true : false),ch);
+   return;
+  }
  }
 
  buf[0] = '\0';
@@ -3467,162 +3470,87 @@ void do_socials( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-/* for old command table--Aeria */
-/*
- * Contributed by Alander.
- */
- /*
-  * void do_commands( CHAR_DATA *ch, char *argument )
-  * {
-  * char buf[MAX_STRING_LENGTH];
-  * char buf1[MAX_STRING_LENGTH];
-  * int cmd;
-  * int col;
-  * 
-  * buf[0] = '\0';
-  * 
-  * if ( IS_NPC(ch) )
-  * return;
-  * 
-  * 
-  * 
-  * buf1[0] = '\0';
-  * col = 0;
-  * for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
-  * {
-  * if ( cmd_table[cmd].level <  LEVEL_HERO
-  * &&   cmd_table[cmd].level <= get_trust( ch ) )
-  * {
-  * 
-  * if ( cmd_table[cmd].level == CLAN_ONLY 
-  * && ch->clan == 0 )
-  * continue;
-  * 
-  * if ( cmd_table[cmd].level == VAMP_ONLY
-  * && !IS_VAMP( ch ) )
-  * continue;
-  * if ( cmd_table[cmd].level == WOLF_ONLY
-  * && !IS_WOLF( ch ) )
-  * continue;
-  * 
-  * snprintf( buf, MSL, "%-12s", cmd_table[cmd].name );
-  * strncat(MAX_STRING_LENGTH, buf1, buf, MSL );
-  * if ( ++col % 6 == 0 )
-  * strncat(MAX_STRING_LENGTH, buf1, "\r\n", MSL );
-  * }
-  * }
-  * 
-  * if ( col % 6 != 0 )
-  * strncat(MAX_STRING_LENGTH, buf1, "\r\n", MSL );
-  * 
-  * send_to_char( buf1, ch );
-  * return;
-  * }
-  */
-
-
-struct show_cmds
-{
-   char buf[MSL];
-   short col;
-};
-
 static char *const cmd_group_names[] = {
-   "@@WMisc", "@@aCommunication", "@@mConfiguration", "@@eInformation", "@@rActions",
-   "@@dItem Manipulation", "@@cInterMud", "@@yImm"
+   "@@WMisc\r\n", "@@aCommunication\r\n", "@@mConfiguration\r\n", "@@eInformation\r\n", "@@rActions\r\n",
+   "@@dItem Manipulation\r\n", "@@yImm\r\n"
 };
 
 void do_commands( CHAR_DATA * ch, char *argument )
 {
-   static struct show_cmds show_table[8];
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg1[MSL];
-   int cmd;
-   int col = 0;
-   short show_only = -1;
+ short cnt = 0, i = 0, cmd = 0, show = 0, total = 0;
+ std::string buf;
+ char tmp[MSL];
 
+ if( IS_NPC(ch) )
+  return;
 
-   buf[0] = '\0';
-   buf1[0] = '\0';
+ total = IS_IMMORTAL(ch) ? C_TYPE_IMM+1 : C_TYPE_IMM;
 
-   if( IS_NPC( ch ) )
-      return;
-/* NOTE: This is better coded via a build_tab.c style lookup, but this is
-   quicker to code right now :) Zen */
+ if( argument[0] != '\0' )
+ {
+  show = -1;
+  if( !str_prefix(argument,"miscellaneous") )
+   show = 0;
+  else if( !str_prefix(argument,"communication") )
+   show = 1;
+  else if( !str_prefix(argument,"configuration") )
+   show = 2;
+  else if( !str_prefix(argument,"information") )
+   show = 3;
+  else if( !str_prefix(argument,"actions") )
+   show = 4;
+  else if( !str_prefix(argument,"objects") || !str_prefix(argument,"manipulation") )
+   show = 5;
+  else if( !str_prefix(argument,"imm") )
+   show = 6;
+ }
+ else
+  show = -1;
 
-   argument = one_argument( argument, arg1 );
-   if( arg1[0] != '\0' )
+ if( show > -1 )
+ {
+  i = show;
+  total = i + 1;
+ }
+
+ while( i < total )
+ {
+  if( i > 0 )
+   buf += "\r\n";
+  buf += cmd_group_names[i];
+
+  for( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
+  {
+   if( cmd_table[cmd].level <= L_GOD && cmd_table[cmd].level <= get_trust(ch) )
    {
-      if( !str_prefix( arg1, "miscellaneous" ) )
-         show_only = 0;
-      else if( !str_prefix( arg1, "communication" ) )
-         show_only = 1;
-      else if( !str_prefix( arg1, "configuration" ) )
-         show_only = 2;
-      else if( !str_prefix( arg1, "information" ) )
-         show_only = 3;
-      else if( !str_prefix( arg1, "actions" ) )
-         show_only = 4;
-      else if( !str_prefix( arg1, "objects" ) || !str_prefix( arg1, "manipulation" ) )
-         show_only = 5;
-      else if( !str_prefix( arg1, "intermud" ) || !str_prefix( arg1, "imc" ) )
-         show_only = 6;
-      else if( !str_prefix( arg1, "imm" ) )
-         show_only = 7;
+    if( show > -1 && cmd_table[cmd].type != show )
+     continue;
+    if( cmd_table[cmd].level == CLAN_ONLY && ch->clan == 0 )
+     continue;
+    if( cmd_table[cmd].level == BOSS_ONLY && !ch->act.test(ACT_CLEADER) )
+     continue;
+    if( cmd_table[cmd].level == VAMP_ONLY && !IS_VAMP(ch) )
+     continue;
+    if( cmd_table[cmd].level == WOLF_ONLY && !IS_WOLF(ch) )
+     continue;
+    if( cmd_table[cmd].show == C_SHOW_NEVER )
+     continue;
+    if( cmd_table[cmd].show == C_SHOW_SKILL && ch->pcdata->learned[skill_lookup(cmd_table[cmd].name)] < 10 )
+     continue;
+
+    snprintf(tmp,MSL,"%-12s",cmd_table[cmd].name);
+    buf += tmp;
+
+    if( ++cnt % 6 == 0 )
+     buf += "\r\n";
    }
+  }
+  i++;
+ }
 
-   for( col = 0; col < 8; col++ )
-   {
-      snprintf( show_table[col].buf, MSL, "%s:\r\n", cmd_group_names[col] );
-      show_table[col].col = 0;
-   }
-
-   col = 0;
-
-
-   for( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
-   {
-      if( cmd_table[cmd].level <= L_GOD && cmd_table[cmd].level <= get_trust( ch ) )
-      {
-
-         if( cmd_table[cmd].level == CLAN_ONLY && ch->clan == 0 )
-            continue;
-
-         if( cmd_table[cmd].level == BOSS_ONLY && !ch->act.test(ACT_CLEADER) )
-            continue;
-
-         if( cmd_table[cmd].level == VAMP_ONLY && !IS_VAMP( ch ) )
-            continue;
-         if( cmd_table[cmd].level == WOLF_ONLY && !IS_WOLF( ch ) )
-            continue;
-/*	     if ( cmd_table[cmd].level == SYSTEM_ONLY
-	      && get_trust( ch ) < L_SUP )
-		 continue;
-*/
-         if( cmd_table[cmd].show == C_SHOW_NEVER )
-            continue;
-         if( ( cmd_table[cmd].show == C_SHOW_SKILL ) && ( ch->pcdata->learned[skill_lookup( cmd_table[cmd].name )] < 10 ) )
-            continue;
-
-         snprintf( buf, MSL, "%-12s", cmd_table[cmd].name );
-         strncat( show_table[cmd_table[cmd].type].buf, buf, MSL );
-         if( ++show_table[cmd_table[cmd].type].col % 6 == 0 )
-            strncat( show_table[cmd_table[cmd].type].buf, "\r\n", MSL );
-      }
-   }
-
-   send_to_char( buf1, ch );
-   for( col = 0; col < 8; col++ )
-   {
-      if( ( show_only > -1 ) && ( show_only != col ) )
-         continue;
-      strncat( show_table[col].buf, "\r\n", MSL );
-      send_to_char( show_table[col].buf, ch );
-   }
-
-   return;
+ buf += "\r\n";
+ send_to_char(buf,ch);
+ return;
 }
 
 

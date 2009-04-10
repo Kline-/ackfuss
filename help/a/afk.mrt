@@ -1,0 +1,5 @@
+AFK
+
+The AFK command will flag you AFK. While AFK you will be unable to receive tells from
+other players. Immortals will still be able to send you tells, though. Sending a tell
+will automatically remove you from being AFK.

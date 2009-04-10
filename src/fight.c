@@ -1311,22 +1311,24 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
       if( !IS_NPC( victim ) || victim->act.test(ACT_INTELLIGENT ) )
       {
-/*	    if ( !IS_NPC(ch) && !IS_NPC(victim)
-	         && is_set(ch->act,ACT_PKOK)
-	         && is_set(victim->act,ACT_PKOK) )
+       char buf[MSL];
+
+	    if ( !IS_NPC(ch) && !IS_NPC(victim)
+	         && ch->act.test(ACT_PKOK)
+	         && victim->act.test(ACT_PKOK) )
 	    {
 
-	     snprintf(buf, "%s kills %s in mortal combat.", ch->name, victim->name);
+	     snprintf(buf, MSL, "%s kills %s in mortal combat.", ch->name, victim->name);
 	     info(buf, 1);
 	    }
 	    else
 	    {
              snprintf( buf, MSL, "%s turns %s into a corpse.  Whooops.",
-               ( IS_NPC(ch) ? ch->short_descr : ch->name ),
-               ( IS_NPC(victim) ? victim->short_descr : victim->name) );
+               ( IS_NPC(ch) ? ch->npcdata->short_descr : ch->name ),
+               ( IS_NPC(victim) ? victim->npcdata->short_descr : victim->name) );
              info( buf, 1 );	   
             }
-*/
+
 
          snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", NAME(victim), NAME(ch), victim->in_room->vnum );
          log_string( log_buf );

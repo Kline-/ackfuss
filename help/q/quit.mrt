@@ -1,0 +1,5 @@
+QUIT
+
+The quit command will save and remove your character from the game after closing your
+connection. Some events may prevent you from quitting, such as recent combat or special
+rooms, but you can generally quit anyplace.

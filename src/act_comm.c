@@ -1251,7 +1251,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
       send_to_char( "They aren't here.\r\n", ch );
       return;
    }
-   if( !IS_NPC( victim ) && IS_WOLF( victim ) && ( IS_SHIFTED( victim ) || IS_RAGED( victim ) ) )
+   if( !IS_NPC( victim ) && IS_WOLF( victim ) && ( IS_SHIFTED( victim ) || IS_RAGED( victim ) ) && !IS_IMMORTAL(ch) )
    {
       send_to_char( "They can't hear you.\r\n", ch );
       return;
@@ -1263,7 +1263,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( victim->act.test(ACT_AFK) )
+   if( victim->act.test(ACT_AFK) && !IS_IMMORTAL(ch) )
    {
       act( "$N is currently away from keyboard.", ch, NULL, victim, TO_CHAR );
       return;
@@ -1278,7 +1278,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
 
    if( ( !IS_NPC( victim ) )
        && ( !str_cmp( victim->pcdata->ignore_list[0], ch->name ) ||
-            !str_cmp( victim->pcdata->ignore_list[1], ch->name ) || !str_cmp( victim->pcdata->ignore_list[2], ch->name ) ) )
+            !str_cmp( victim->pcdata->ignore_list[1], ch->name ) || !str_cmp( victim->pcdata->ignore_list[2], ch->name ) ) && !IS_IMMORTAL(ch) )
    {
       snprintf( buf, MSL, "%s @@Ris ignoring you!!@@g\r\n", victim->name );
       send_to_char( buf, ch );
