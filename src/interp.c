@@ -412,6 +412,8 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_COMM, C_SHOW_ALWAYS,true},
    {"vamp", do_familytalk, POS_RESTING, VAMP_ONLY, LOG_NORMAL,
     C_TYPE_COMM, C_SHOW_ALWAYS,true},
+   {"remort", do_remorttalk, POS_RESTING, 0, LOG_NORMAL,
+    C_TYPE_COMM, C_SHOW_ALWAYS,true},
    {"{", do_remorttalk, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_COMM, C_SHOW_ALWAYS,true},
    {"diplomat", do_diptalk, POS_RESTING, CLAN_ONLY, LOG_NORMAL,

@@ -1,0 +1,4 @@
+BEEP
+
+The beep command will send an audible signal to another player to get their attention. Beeps
+can be enabled or disabled with use of the channels command.
