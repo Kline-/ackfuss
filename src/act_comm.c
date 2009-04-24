@@ -2246,7 +2246,7 @@ void do_split( CHAR_DATA * ch, char *argument )
          return;
       }
       snprintf( catbuf, MSL, "%d %s ", share, coinbuf );
-      strncat( givebuf, catbuf, MSL );
+      strncat( givebuf, catbuf, MSL-1 );
    }
    if( valid )
    {
@@ -2494,7 +2494,7 @@ void do_tongue( CHAR_DATA * ch, char *argument )
       {
          if( !str_prefix( syl_table[iSyl].sold, pName ) )
          {
-            strncat( buf, syl_table[iSyl].snew, MSL );
+            strncat( buf, syl_table[iSyl].snew, MSL-1 );
             break;
          }
       }

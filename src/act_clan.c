@@ -966,7 +966,7 @@ void do_council( CHAR_DATA * ch, char *argument )
       for( imember = super_councils[this_council].first_member; imember != NULL; imember = imember->next )
       {
          snprintf( buf2, MSL, "%s\r\n", imember->this_member->name );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
       }
       send_to_char( buf, ch );
 

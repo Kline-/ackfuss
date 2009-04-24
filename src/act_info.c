@@ -369,7 +369,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    buf2[0] = '\0';
 
    /* Check for mquest target */
-   strncat(buf,display_mob_target(ch,victim),MSL);
+   strncat(buf,display_mob_target(ch,victim),MSL-1);
 
 /* This is temporary....
  * Zen  WOLF
@@ -406,154 +406,146 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
        snprintf( buf2, MSL, "(%d) [%s] ",victim->npcdata->pIndexData->vnum, race_table[victim->race].race_name );
       else
        snprintf( buf2, MSL, "[%s] ", race_table[victim->race].race_name );
-      strncat( buf, buf2, MSL );
+      strncat( buf, buf2, MSL-1 );
    }
 
    if( IS_NPC( victim ) )
    {
       if( victim->act.test(ACT_UNDEAD) && ( is_affected( ch, skill_lookup( "detect undead" ) ) || item_has_apply( ch, ITEM_APPLY_DET_UNDEAD ) ) )
-         strncat( buf, "(UnDead) ", MSL );
+         strncat( buf, "(UnDead) ", MSL-1 );
 
       if( victim->act.test(ACT_INTELLIGENT) )
-         strncat( buf, "(Int) ", MSL );
+         strncat( buf, "(Int) ", MSL-1 );
 
    }
 
 
    if( IS_AFFECTED( victim, AFF_INVISIBLE ) )
-      strncat( buf, "(Invis) ", MSL );
-
+      strncat( buf, "(Invis) ", MSL-1 );
    if( IS_AFFECTED( victim, AFF_HIDE ) || item_has_apply( victim, ITEM_APPLY_HIDE ) )
-      strncat( buf, "(Hide) ", MSL );
-
+      strncat( buf, "(Hide) ", MSL-1 );
    if( IS_AFFECTED( victim, AFF_CHARM ) )
-      strncat( buf, "(Charm) ", MSL );
-
+      strncat( buf, "(Charm) ", MSL-1 );
    if( IS_AFFECTED( victim, AFF_PASS_DOOR ) || item_has_apply( victim, ITEM_APPLY_PASS_DOOR ) )
-      strncat( buf, "(Clear) ", MSL );
-
+      strncat( buf, "(Clear) ", MSL-1 );
    if( IS_AFFECTED( victim, AFF_FAERIE_FIRE ) )
-      strncat( buf, "(Pink) ", MSL );
-
+      strncat( buf, "(Pink) ", MSL-1 );
    if( IS_EVIL( victim ) && ( IS_AFFECTED( ch, AFF_DETECT_EVIL ) || item_has_apply( ch, ITEM_APPLY_DET_EVIL ) ) )
-      strncat( buf, "(Red) ", MSL );
-
+      strncat( buf, "(Red) ", MSL-1 );
    if( IS_AFFECTED( victim, AFF_SANCTUARY ) || item_has_apply( victim, ITEM_APPLY_SANC ) )
-      strncat( buf, "(White) ", MSL );
-
+      strncat( buf, "(White) ", MSL-1 );
    if( !IS_NPC( victim ) && victim->act.test(ACT_KILLER) )
-      strncat( buf, "(KILLER) ", MSL );
-
+      strncat( buf, "(KILLER) ", MSL-1 );
    if( !IS_NPC( victim ) && victim->act.test(ACT_THIEF) )
-      strncat( buf, "(THIEF) ", MSL );
+      strncat( buf, "(THIEF) ", MSL-1 );
 
    /*
     * strncat to buf *linkdead* if not connected? 
     */
    if( !IS_NPC( victim ) )
       if( ( victim->desc ) != NULL && victim->desc->connected != CON_PLAYING )
-         strncat( buf, "(LINKDEAD)", MSL );
+         strncat( buf, "(LINKDEAD)", MSL-1 );
 
    if( victim->act.test(ACT_RULER) )
-      strncat( buf, get_ruler_title( victim->pcdata->ruler_rank, victim->login_sex ), MSL );
+      strncat( buf, get_ruler_title( victim->pcdata->ruler_rank, victim->login_sex ), MSL-1 );
    if( victim->position == POS_STANDING && victim->long_descr[0] != '\0' )
    {
-      strncat( buf, victim->long_descr, MSL );
-      strncat( buf, "\r\n", MSL );
-      strncat( buf, color_string( ch, "normal" ), MSL );
+      strncat( buf, victim->long_descr, MSL-1 );
+      strncat( buf, "\r\n", MSL-1 );
+      strncat( buf, color_string( ch, "normal" ), MSL-1 );
 
       if( ( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
           || ( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
           || ( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) ) || ( is_affected( victim, skill_lookup( "cloak:misery" ) ) ) )
       {
-         strncat( buf, "  @@NCLOAK:", MSL );
+         strncat( buf, "  @@NCLOAK:", MSL-1 );
          if( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
-            strncat( buf, " @@eFLAMING@@N", MSL );
+            strncat( buf, " @@eFLAMING@@N", MSL-1 );
          if( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
-            strncat( buf, " @@lABSORB@@N", MSL );
+            strncat( buf, " @@lABSORB@@N", MSL-1 );
          if( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) )
-            strncat( buf, " @@mREFLECT@@N", MSL );
+            strncat( buf, " @@mREFLECT@@N", MSL-1 );
          if( is_affected( victim, skill_lookup( "cloak:misery" ) ) )
-            strncat( buf, " @@RMISERY@@N", MSL );
-         strncat( buf, "\r\n", MSL );
+            strncat( buf, " @@RMISERY@@N", MSL-1 );
+         strncat( buf, "\r\n", MSL-1 );
       }
 
       if( victim->first_shield != NULL )
       {
          MAGIC_SHIELD *this_shield;
-         strncat( buf, "   @@WSHIELD: @@N", MSL );
+         strncat( buf, "   @@WSHIELD: @@N", MSL-1 );
          for( this_shield = victim->first_shield; this_shield != NULL; this_shield = this_shield->next )
-            strncat( buf, this_shield->name, MSL );
-         strncat( buf, "\r\n", MSL );
+            strncat( buf, this_shield->name, MSL-1 );
+         strncat( buf, "\r\n", MSL-1 );
       }
 
       send_to_char( buf, ch );
       return;
    }
 
-   strncat( buf, PERS( victim, ch ), MSL );
+   strncat( buf, PERS( victim, ch ), MSL-1 );
    if( !IS_NPC( victim ) && !ch->act.test(ACT_BRIEF) )
-      strncat( buf, victim->pcdata->title, MSL );
+      strncat( buf, victim->pcdata->title, MSL-1 );
 
    switch ( victim->position )
    {
       case POS_DEAD:
-         strncat( buf, " is DEAD!!", MSL );
+         strncat( buf, " is DEAD!!", MSL-1 );
          break;
       case POS_MORTAL:
-         strncat( buf, " is mortally wounded.", MSL );
+         strncat( buf, " is mortally wounded.", MSL-1 );
          break;
       case POS_INCAP:
-         strncat( buf, " is incapacitated.", MSL );
+         strncat( buf, " is incapacitated.", MSL-1 );
          break;
       case POS_STUNNED:
-         strncat( buf, " is lying here stunned.", MSL );
+         strncat( buf, " is lying here stunned.", MSL-1 );
          break;
       case POS_SLEEPING:
-         strncat( buf, " is sleeping here.", MSL );
+         strncat( buf, " is sleeping here.", MSL-1 );
          break;
       case POS_RESTING:
          if( victim->sitting != NULL && victim->sitting->in_room == victim->in_room )
          {
             char sit[MAX_INPUT_LENGTH];
             snprintf( sit, MSL, " is here, resting on %s.", victim->sitting->short_descr );
-            strncat( buf, sit, MSL );
+            strncat( buf, sit, MSL-1 );
          }
          else
-            strncat( buf, " is resting here.", MSL );
+            strncat( buf, " is resting here.", MSL-1 );
          break;
       case POS_STANDING:
       {
-         strncat( buf, " is here", MSL );
+         strncat( buf, " is here", MSL-1 );
          if( !IS_NPC( victim ) && ( victim->stance > 0 ) && ( victim->stance != STANCE_AMBUSH ) )
          {
             char stance_buf[MSL];
             snprintf( stance_buf, MSL, " in the Stance of the %s.", stance_app[victim->stance].name );
-            strncat( buf, stance_buf, MSL );
+            strncat( buf, stance_buf, MSL-1 );
          }
          else
-            strncat( buf, ".", MSL );
+            strncat( buf, ".", MSL-1 );
          break;
       }
       case POS_WRITING:
-         strncat( buf, " is writing a note.", MSL );
+         strncat( buf, " is writing a note.", MSL-1 );
          break;
       case POS_BUILDING:
-         strncat( buf, " is BUILDING!!", MSL );
+         strncat( buf, " is BUILDING!!", MSL-1 );
          break;
       case POS_FIGHTING:
-         strncat( buf, " is here, fighting ", MSL );
+         strncat( buf, " is here, fighting ", MSL-1 );
          if( victim->fighting == NULL )
-            strncat( buf, "thin air??", MSL );
+            strncat( buf, "thin air??", MSL-1 );
          else if( victim->fighting == ch )
-            strncat( buf, "YOU!", MSL );
+            strncat( buf, "YOU!", MSL-1 );
          else if( victim->in_room == victim->fighting->in_room )
          {
-            strncat( buf, PERS( victim->fighting, ch ), MSL );
-            strncat( buf, ".", MSL );
+            strncat( buf, PERS( victim->fighting, ch ), MSL-1 );
+            strncat( buf, ".", MSL-1 );
          }
          else
-            strncat( buf, "somone who left??", MSL );
+            strncat( buf, "somone who left??", MSL-1 );
          break;
    }
 
@@ -561,8 +553,8 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    /*
     * buf[0] = UPPER(buf[0]); 
     */
-   strncat( buf, color_string( ch, "normal" ), MSL );
-   strncat( buf, "\r\n", MSL );
+   strncat( buf, color_string( ch, "normal" ), MSL-1 );
+   strncat( buf, "\r\n", MSL-1 );
 
    if( ( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
        || ( IS_AFFECTED( victim, AFF_CLOAK_ADEPT ) )
@@ -570,21 +562,20 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
        || ( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
        || ( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) ) || ( is_affected( victim, skill_lookup( "cloak:misery" ) ) ) )
    {
-      strncat( buf, "  @@NCLOAK:", MSL );
+      strncat( buf, "  @@NCLOAK:", MSL-1 );
       if( IS_AFFECTED( victim, AFF_CLOAK_FLAMING ) )
-         strncat( buf, " @@eFLAMING@@N", MSL );
+         strncat( buf, " @@eFLAMING@@N", MSL-1 );
       if( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
-         strncat( buf, " @@lABSORB@@N", MSL );
+         strncat( buf, " @@lABSORB@@N", MSL-1 );
       if( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) )
-         strncat( buf, " @@mREFLECT@@N", MSL );
-
+         strncat( buf, " @@mREFLECT@@N", MSL-1 );
       if( IS_AFFECTED( victim, AFF_CLOAK_ADEPT ) )
-         strncat( buf, " @@WADEPT@@N", MSL );
+         strncat( buf, " @@WADEPT@@N", MSL-1 );
       if( IS_AFFECTED( victim, AFF_CLOAK_REGEN ) )
-         strncat( buf, " @@rREGEN@@N", MSL );
+         strncat( buf, " @@rREGEN@@N", MSL-1 );
       if( is_affected( victim, skill_lookup( "cloak:misery" ) ) )
-         strncat( buf, " @@RMISERY@@N", MSL );
-      strncat( buf, "\r\n", MSL );
+         strncat( buf, " @@RMISERY@@N", MSL-1 );
+      strncat( buf, "\r\n", MSL-1 );
 
    }
    if( victim->first_shield != NULL )
@@ -593,13 +584,13 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
       strncat( buf, "   @@WSHIELD: @@N", MSL );
       for( this_shield = victim->first_shield; this_shield != NULL; this_shield = this_shield->next )
          strncat( buf, this_shield->name, MSL );
-      strncat( buf, "\r\n", MSL );
+      strncat( buf, "\r\n", MSL-1 );
    }
 
    if( victim->riding != NULL )
    {
       snprintf( buf2, MSL, "  riding %s.\r\n", NAME(victim->riding) );
-      strncat( buf, buf2, MSL );
+      strncat( buf, buf2, MSL-1 );
    }
 
    send_to_char( buf, ch );
@@ -1225,7 +1216,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
             {
                snprintf( buf2, MSL, " %s", ( !str_cmp( pexit->keyword, "" ) ? compass_name[door] : pexit->keyword ) );
             }
-            strncat( buf, buf2, MSL );
+            strncat( buf, buf2, MSL-1 );
             continue;
          }
       }
@@ -1247,7 +1238,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
             else
                snprintf( buf2, MSL, "%-5s - Door.\r\n", capitalize( compass_name[door] ) );
 
-            strncat( buf, buf2, MSL );
+            strncat( buf, buf2, MSL-1 );
             continue;
          }
 
@@ -1257,8 +1248,8 @@ void do_exits( CHAR_DATA * ch, char *argument )
          found = TRUE;
          if( fAuto || fAutonr )
          {
-            strncat( buf, " ", MSL );
-            strncat( buf, compass_name[door], MSL );
+            strncat( buf, " ", MSL-1 );
+            strncat( buf, compass_name[door], MSL-1 );
          }
          else
          {
@@ -1359,7 +1350,7 @@ void do_score( CHAR_DATA * ch, char *argument )
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       {
          snprintf( buf, MSL, "%s ", class_table[ch->pcdata->order[cnt]].who_name );
-         strncat( buf2, buf, MSL );
+         strncat( buf2, buf, MSL-1 );
       }
       snprintf( buf, MSL, "@@c|%s @@c|\r\n", center_text( buf2, 62 ) );
       send_to_char( buf, ch );
@@ -1368,12 +1359,12 @@ void do_score( CHAR_DATA * ch, char *argument )
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       {
          snprintf( buf, MSL, "@@c%s", class_table[cnt].who_name );
-         strncat( buf2, buf, MSL );
+         strncat( buf2, buf, MSL-1 );
          if( ch->lvl[cnt] != -1 )
             snprintf( buf, MSL, ":@@W%2d ", ch->lvl[cnt] );
          else
             snprintf( buf, MSL, "@@c:@@W%s ", " 0" );
-         strncat( buf2, buf, MSL );
+         strncat( buf2, buf, MSL-1 );
       }
    }
    else
@@ -1391,7 +1382,7 @@ void do_score( CHAR_DATA * ch, char *argument )
          if( ch->lvl2[cnt] != -1 )
          {
             snprintf( buf, MSL, "@@m%s:@@W%2d ", remort_table[cnt].who_name, ch->lvl2[cnt] );
-            strncat( buf2, buf, MSL );
+            strncat( buf2, buf, MSL-1 );
 
          }
       }
@@ -1403,7 +1394,7 @@ void do_score( CHAR_DATA * ch, char *argument )
    {
       snprintf( buf, MSL, "@@WADEPT@@N: %s ", get_adept_name( ch ) );
       buf2[0] = '\0';
-      strncat( buf2, buf, MSL );
+      strncat( buf2, buf, MSL-1 );
       snprintf( buf, MSL, "@@c|%s @@c|\r\n", center_text( buf2, 62 ) );
       send_to_char( buf, ch );
    }
@@ -1787,27 +1778,27 @@ void do_weather( CHAR_DATA * ch, char *argument )
    switch ( weather_info.moon_loc )
    {
       case MOON_DOWN:
-         strncat( buf, "The moon is not in the sky.\r\n", MSL );
+         strncat( buf, "The moon is not in the sky.\r\n", MSL-1 );
          break;
       case MOON_RISE:
          snprintf( buf2, MSL, "A %s @@yMoon@@N is just rising.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case MOON_LOW:
          snprintf( buf2, MSL, "A %s @@yMoon@@N is low on the horizon.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case MOON_PEAK:
          snprintf( buf2, MSL, "A %s @@yMoon@@N is high above you.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case MOON_FALL:
          snprintf( buf2, MSL, "A %s @@yMoon@@N is falling.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case MOON_SET:
          snprintf( buf2, MSL, "A %s @@yMoon@@N has just set.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
    }
 
@@ -3692,7 +3683,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
 
       trust = get_trust( ch );
       buffer[0] = '\0';
-      strncat( buffer, "Channels:\r\n", MSL );
+      strncat( buffer, "Channels:\r\n", MSL-1 );
 
       for( a = 0; channels[a].bit != 0; a++ )
       {
@@ -3708,7 +3699,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
                   snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
                   strncat( buffer, colbuf, MSL );
                }
-               strncat( buffer, channels[a].off_string, MSL );
+               strncat( buffer, channels[a].off_string, MSL-1 );
             }
             else
             {
@@ -3717,11 +3708,11 @@ void do_channels( CHAR_DATA * ch, char *argument )
                   snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
                   strncat( buffer, colbuf, MSL );
                }
-               strncat( buffer, channels[a].on_string, MSL );
+               strncat( buffer, channels[a].on_string, MSL-1 );
             }
          }
 
-         strncat( buffer, "@@N", MSL );
+         strncat( buffer, "@@N", MSL-1 );
       }
       send_to_char( buffer, ch );
    }
