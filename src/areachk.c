@@ -344,12 +344,12 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
             if( pRoomIndex->exit[a] != NULL )
             {
                if( pRoomIndex->exit[a]->key != 0
-                   && ( new_vnum = ( int )get_hash_entry( obj_hash, pRoomIndex->exit[a]->key ) ) != 0 )
+                   && ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pRoomIndex->exit[a]->key ) ) ) != 0 )
                {
                   pRoomIndex->exit[a]->key = new_vnum;
                   area_modified( CurArea );
                }
-               if( ( new_vnum = ( int )get_hash_entry( room_hash, pRoomIndex->exit[a]->vnum ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pRoomIndex->exit[a]->vnum ) ) ) != 0 )
                {
                   pRoomIndex->exit[a]->vnum = new_vnum;
                   area_modified( CurArea );
@@ -367,12 +367,12 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
          switch ( pReset->command )
          {
             case 'M':
-               if( ( new_vnum = ( int )get_hash_entry( mob_hash, pReset->arg1 ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( mob_hash, pReset->arg1 ) ) ) != 0 )
                {
                   area_modified( CurArea );
                   pReset->arg1 = new_vnum;
                }
-               if( ( new_vnum = ( int )get_hash_entry( room_hash, pReset->arg3 ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg3 ) ) ) != 0 )
                {
                   area_modified( CurArea );
                   pReset->arg3 = new_vnum;
@@ -380,12 +380,12 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
                break;
 
             case 'O':
-               if( ( new_vnum = ( int )get_hash_entry( obj_hash, pReset->arg1 ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
                {
                   area_modified( CurArea );
                   pReset->arg1 = new_vnum;
                }
-               if( ( new_vnum = ( int )get_hash_entry( room_hash, pReset->arg3 ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg3 ) ) ) != 0 )
                {
                   area_modified( CurArea );
                   pReset->arg3 = new_vnum;
@@ -393,12 +393,12 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
                break;
 
             case 'P':
-               if( ( new_vnum = ( int )get_hash_entry( obj_hash, pReset->arg1 ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
                {
                   area_modified( CurArea );
                   pReset->arg1 = new_vnum;
                }
-               if( ( new_vnum = ( int )get_hash_entry( obj_hash, pReset->arg3 ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg3 ) ) ) != 0 )
                {
                   area_modified( CurArea );
                   pReset->arg3 = new_vnum;
@@ -407,7 +407,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
 
             case 'G':
             case 'E':
-               if( ( new_vnum = ( int )get_hash_entry( obj_hash, pReset->arg1 ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
                {
                   area_modified( CurArea );
                   pReset->arg1 = new_vnum;
@@ -416,7 +416,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
 
             case 'D':
             case 'R':
-               if( ( new_vnum = ( int )get_hash_entry( room_hash, pReset->arg1 ) ) != 0 )
+               if( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg1 ) ) ) != 0 )
                {
                   area_modified( CurArea );
                   pReset->arg1 = new_vnum;
