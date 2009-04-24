@@ -213,7 +213,7 @@ int area_revision = -1;
 #define SHOW_AREA \
   if (!previous_bug) \
   { \
-    bug ("      In %s.",(int) pArea->filename); \
+    bugf ("      In %s.", pArea->filename); \
     previous_bug=1; \
   }
 

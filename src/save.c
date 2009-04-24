@@ -1587,7 +1587,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                         /*
                          * Check on move table 
                          */
-                        if( ( newvnum = ( int )get_hash_entry( hash_changed_vnums, OldVnum ) ) != 0 )
+                        if( ( newvnum = *static_cast<int *>( get_hash_entry( hash_changed_vnums, OldVnum ) ) ) != 0 )
                         {
                            obj->pIndexData = get_obj_index( newvnum );
                            if( obj->pIndexData == NULL )
@@ -1923,7 +1923,7 @@ void fread_corpse( FILE * fp )
                         /*
                          * Check on move table 
                          */
-                        if( ( newvnum = ( int )get_hash_entry( hash_changed_vnums, OldVnum ) ) != 0 )
+                        if( ( newvnum = *static_cast<int *>( get_hash_entry( hash_changed_vnums, OldVnum ) ) ) != 0 )
                         {
                            obj->pIndexData = get_obj_index( newvnum );
                            if( obj->pIndexData == NULL )
