@@ -177,7 +177,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
    hash_table *mob_hash;
    int min_vnum, max_vnum;
    int new_vnum, old_vnum;
-   char buffer[MAX_INPUT_LENGTH];
+   char buffer[MAX_STRING_LENGTH];
    FILE *out_file;
    int a;
    RESET_DATA *pReset;

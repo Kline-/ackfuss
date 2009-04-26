@@ -135,7 +135,7 @@ void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
    std::list<BOARD_DATA *>::iterator li;
    BOARD_DATA *board = NULL;
    OBJ_INDEX_DATA *pObj;
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MAX_STRING_LENGTH];
    int cnt = 0;
    int board_num;
 
@@ -218,7 +218,7 @@ BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj )
    board->first_message = NULL;
    board->last_message = NULL;
 
-   snprintf( buf, MSL, "%s/board.%i", BOARD_DIR, board->vnum );
+   snprintf( buf, 255, "%s/board.%i", BOARD_DIR, board->vnum );
 
    if( ( board_file = file_open( buf, "r" ) ) != NULL )
    {

@@ -1850,7 +1850,7 @@ void do_trust( CHAR_DATA * ch, char *argument )
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
    int level;
 

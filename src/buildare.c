@@ -723,7 +723,7 @@ void build_showarea( CHAR_DATA * ch, char *argument )
 {
    AREA_DATA *pArea;
    char buf[MAX_STRING_LENGTH];
-   char buffer[MAX_INPUT_LENGTH];
+   char buffer[MAX_STRING_LENGTH];
 
    pArea = ch->in_room->area;
 
@@ -733,44 +733,44 @@ void build_showarea( CHAR_DATA * ch, char *argument )
    buf[0] = '\0';
 
    snprintf( buffer, MSL, "\r\nTitle: %s\r\n", pArea->name );
-   strncat( buf, buffer, MSL );
+   strncat( buf, buffer, MSL-1 );
    snprintf( buffer, MSL, "Keyword: %s\r\n", pArea->keyword );
-   strncat( buf, buffer, MSL );
+   strncat( buf, buffer, MSL-1 );
    snprintf( buffer, MSL, "Level Label: %s\r\n", pArea->level_label );
-   strncat( buf, buffer, MSL );
+   strncat( buf, buffer, MSL-1 );
    snprintf( buffer, MSL, "Repop Rate: %i\r\n", pArea->reset_rate );
-   strncat( buf, buffer, MSL );
+   strncat( buf, buffer, MSL-1 );
    snprintf( buffer, MSL, "Reset Message: %s\r\n", pArea->reset_msg );
-   strncat( buf, buffer, MSL );
+   strncat( buf, buffer, MSL-1 );
 
    if( get_trust( ch ) >= MAX_LEVEL - 1 )
    {
       snprintf( buffer, MSL, "Filename: %s\r\n", pArea->filename );
-      strncat( buf, buffer, MSL );
+      strncat( buf, buffer, MSL-1 );
    }
 
    snprintf( buffer, MSL, "Owner: %s\r\nCan Read: %s\r\nCan Write: %s\r\n", pArea->owner, pArea->can_read, pArea->can_write );
-   strncat( buf, buffer, MSL );
+   strncat( buf, buffer, MSL-1 );
 
    snprintf( buffer, MSL, "Min Vnum: %5d    Max Vnum: %5d      Gold: %i\r\n", pArea->min_vnum, pArea->max_vnum, pArea->gold );
-   strncat( buf, buffer, MSL );
+   strncat( buf, buffer, MSL-1 );
    snprintf( buffer, MSL, "Min Level: %5d    Max Level: %5d \r\n", pArea->min_level, pArea->max_level );
-   strncat( buf, buffer, MSL );
+   strncat( buf, buffer, MSL-1 );
 
    if( pArea->flags.test(AFLAG_PAYAREA) )
-      strncat( buf, "This is a pay area.\r\n", MSL );
+      strncat( buf, "This is a pay area.\r\n", MSL-1 );
    if( pArea->flags.test(AFLAG_TELEPORT) )
-      strncat( buf, "You cannot teleport into here.\r\n", MSL );
+      strncat( buf, "You cannot teleport into here.\r\n", MSL-1 );
    if( pArea->flags.test(AFLAG_BUILDING) )
-      strncat( buf, "Area currently being built.\r\n", MSL );
+      strncat( buf, "Area currently being built.\r\n", MSL-1 );
    if( pArea->flags.test(AFLAG_NOSHOW) )
-      strncat( buf, "Area title will not be shown on area list.\r\n", MSL );
+      strncat( buf, "Area title will not be shown on area list.\r\n", MSL-1 );
    else
-      strncat( buf, "Area title will show on area list.\r\n", MSL );
+      strncat( buf, "Area title will show on area list.\r\n", MSL-1 );
    if( pArea->flags.test(AFLAG_NO_ROOM_AFF) )
-      strncat( buf, "Bad Room Affect spells are not allowed.\r\n", MSL );
+      strncat( buf, "Bad Room Affect spells are not allowed.\r\n", MSL-1 );
    else
-      strncat( buf, "Bad Room Affect spells may be used.\r\n", MSL );
+      strncat( buf, "Bad Room Affect spells may be used.\r\n", MSL-1 );
 
    send_to_char( buf, ch );
    return;

@@ -106,39 +106,34 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
    if( IS_IMMORTAL(ch) && ch->position == POS_BUILDING ) /* Imms should see vnums, <3 builders :) --Kline */
    {
     snprintf(buf2,MSL,"(%d) ",obj->pIndexData->vnum);
-    strncat(buf,buf2,MSL);
+    strncat(buf,buf2,MSL-1);
    }
 
    /* Check for mquest target */
-   strncat(buf,display_obj_target(ch,obj),MSL);
+   strncat(buf,display_obj_target(ch,obj),MSL-1);
 
    if( IS_OBJ_STAT( obj, ITEM_EXTRA_INVIS ) )
-      strncat( buf, "(Invis) ", MSL );
-
+      strncat( buf, "(Invis) ", MSL-1 );
    if( ( IS_AFFECTED( ch, AFF_DETECT_EVIL ) || item_has_apply( ch, ITEM_APPLY_DET_EVIL ) ) && IS_OBJ_STAT( obj, ITEM_EXTRA_EVIL ) )
-      strncat( buf, "(Red Aura) ", MSL );
-
-   if( ( IS_AFFECTED( ch, AFF_DETECT_MAGIC ) || item_has_apply( ch, ITEM_APPLY_DET_MAG ) )
-       && IS_OBJ_STAT( obj, ITEM_EXTRA_MAGIC ) )
-      strncat( buf, "(Magical) ", MSL );
-
+      strncat( buf, "(Red Aura) ", MSL-1 );
+   if( ( IS_AFFECTED( ch, AFF_DETECT_MAGIC ) || item_has_apply( ch, ITEM_APPLY_DET_MAG ) ) && IS_OBJ_STAT( obj, ITEM_EXTRA_MAGIC ) )
+      strncat( buf, "(Magical) ", MSL-1 );
    if( IS_OBJ_STAT( obj, ITEM_EXTRA_GLOW ) )
-      strncat( buf, "(Glowing) ", MSL );
-
+      strncat( buf, "(Glowing) ", MSL-1 );
    if( IS_OBJ_STAT( obj, ITEM_EXTRA_HUM ) )
-      strncat( buf, "(Humming) ", MSL );
+      strncat( buf, "(Humming) ", MSL-1 );
 
    if( fShort )
    {
       if( obj->short_descr != NULL )
-         strncat( buf, obj->short_descr, MSL );
+         strncat( buf, obj->short_descr, MSL-1 );
    }
    else
    {
       if( obj->long_descr != NULL )
-         strncat( buf, obj->long_descr, MSL );
+         strncat( buf, obj->long_descr, MSL-1 );
    }
-   strncat( buf, color_string( ch, "normal" ), MSL );
+   strncat( buf, color_string( ch, "normal" ), MSL-1 );
    return buf;
 }
 
@@ -823,29 +818,29 @@ void do_look( CHAR_DATA * ch, char *argument )
       {
          snprintf( out, MSL, "%s", color_string( ch, "rooms" ) );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_SHADE ) )
-            strncat( out, "@@NA menacing @@ddark shadow@@N hangs in the sky above you.\r\n", MSL );
+            strncat( out, "@@NA menacing @@ddark shadow@@N hangs in the sky above you.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_ENCAPS ) )
-            strncat( out, "@@NA barely visible @@renergy web@@N is blocking all exits here.\r\n", MSL );
+            strncat( out, "@@NA barely visible @@renergy web@@N is blocking all exits here.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_FIRE_RUNE ) )
-            strncat( out, "@@NA mystical @@eFire @@NRune@@N hangs in the air above you.\r\n", MSL );
+            strncat( out, "@@NA mystical @@eFire @@NRune@@N hangs in the air above you.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_SHOCK_RUNE ) )
-            strncat( out, "@@NA mystical @@lShock@@N Rune@@N hangs in the air above you.\r\n", MSL );
+            strncat( out, "@@NA mystical @@lShock@@N Rune@@N hangs in the air above you.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_POISON_RUNE ) )
-            strncat( out, "@@NA mystical @@dPoison@@N Rune hangs in the air above you.\r\n", MSL );
+            strncat( out, "@@NA mystical @@dPoison@@N Rune hangs in the air above you.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_REGEN ) )
-            strncat( out, "@@NA majestic @@mHealing Light@@N encompasses the room.\r\n", MSL );
+            strncat( out, "@@NA majestic @@mHealing Light@@N encompasses the room.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_STEAL ) )
-            strncat( out, "@@NA menacing @@dWithering shadow@@N enfolds the room.\r\n", MSL );
+            strncat( out, "@@NA menacing @@dWithering shadow@@N enfolds the room.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_MANA_REGEN ) )
-            strncat( out, "@@NA powerful @@eMana Flare@@N empowers the room.\r\n", MSL );
+            strncat( out, "@@NA powerful @@eMana Flare@@N empowers the room.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_MANA_STEAL ) )
-            strncat( out, "@@NA mind sapping @@dMana Drain@@N enfolds the room.\r\n", MSL );
+            strncat( out, "@@NA mind sapping @@dMana Drain@@N enfolds the room.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_HOLD ) )
-            strncat( out, "@@NThe magical bars of a @@rCage@@N surround the room.\r\n", MSL );
+            strncat( out, "@@NThe magical bars of a @@rCage@@N surround the room.\r\n", MSL-1 );
          if( IS_SET( ch->in_room->affected_by, ROOM_BV_SOUL_NET ) )
-            strncat( out, "@@NA demonic @@dSoul Net@@N enshrouds the room.\r\n", MSL );
+            strncat( out, "@@NA demonic @@dSoul Net@@N enshrouds the room.\r\n", MSL-1 );
 
-         strncat( out, color_string( ch, "normal" ), MSL );
+         strncat( out, color_string( ch, "normal" ), MSL-1 );
          send_to_char( out, ch );
       }
 
@@ -3697,7 +3692,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
                if( !IS_NPC( ch ) )
                {
                   snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
-                  strncat( buffer, colbuf, MSL );
+                  strncat( buffer, colbuf, MSL-1 );
                }
                strncat( buffer, channels[a].off_string, MSL-1 );
             }
@@ -3706,7 +3701,7 @@ void do_channels( CHAR_DATA * ch, char *argument )
                if( !IS_NPC( ch ) )
                {
                   snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
-                  strncat( buffer, colbuf, MSL );
+                  strncat( buffer, colbuf, MSL-1 );
                }
                strncat( buffer, channels[a].on_string, MSL-1 );
             }
