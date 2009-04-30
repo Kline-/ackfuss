@@ -1244,6 +1244,7 @@
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
 #endif
 
+#define AREA_DIR        "../area/"
 #define MAIL_DIR        "../mail/"
 #define DATA_DIR        "../data/"
 #define BUG_DIR         "../report/"

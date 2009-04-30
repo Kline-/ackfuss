@@ -1280,7 +1280,7 @@ char *bs_show_values( LOOKUP_TYPE *table, std::bitset<MAX_BITSET> &bit )
          strncat( buf, "     ", MSL );
          snprintf( tmp, MSL, "%s%-13s",
                   bit.test(table[a].value) ? "@@y*" : "@@g ",table[a].text);
-         strncat( buf, tmp, MSL );
+         strncat( buf, tmp, MSL-1 );
          if( ++foo % 4 == 0 )
             strncat( buf, "\r\n", MSL );
       }

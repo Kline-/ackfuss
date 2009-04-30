@@ -11,8 +11,6 @@ if [ "$1" != "" ]; then port=$1; fi
 cd ../report
 if [ -f shutdown.txt ]; then rm -f shutdown.txt; fi
 
-cd ../area
-
 # allow cores
 #ulimit -c 50000
 # stack limit
@@ -46,14 +44,12 @@ do
 
   # shutdown?
 
-cd ../report
+  cd ../report
 
   if [ -e shutdown.txt ]; then
     echo "startup: shutting down" >>$logfile
     exit 1
   fi
-
-cd ../area
   
   # sleep, so if we fail on boot we don't get massive looping
   sleep 10

@@ -475,7 +475,13 @@ void load_areas( void )
       }
       else
       {
-         if( ( fpArea = file_open( strArea, "r" ) ) == NULL )
+         std::string file;
+
+         file.clear();
+         file += AREA_DIR;
+         file += strArea;
+
+         if( ( fpArea = file_open( file.c_str(), "r" ) ) == NULL )
          {
             log_string( strArea );
             kill( getpid(  ), SIGQUIT );
