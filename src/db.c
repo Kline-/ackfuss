@@ -207,7 +207,7 @@ int sAllocPerm;
  */
 bool fBootDb;
 FILE *fpArea;
-char strArea[MAX_INPUT_LENGTH];
+char strArea[MAX_STRING_LENGTH];
 int area_revision = -1;
 
 #define SHOW_AREA \
@@ -2100,21 +2100,21 @@ void check_resets( void )
             switch ( ValReset )
             {
                case INVAL_ROOM:
-                  snprintf( buf, MSL, "Invalid room for reset: " );
+                  snprintf( buf, 128, "Invalid room for reset: " );
                   break;
                case INVAL_OBJ:
-                  snprintf( buf, MSL, "Invalid obj  for reset: " );
+                  snprintf( buf, 128, "Invalid obj  for reset: " );
                   break;
                case INVAL_MOB:
-                  snprintf( buf, MSL, "Invalid mob  for reset: " );
+                  snprintf( buf, 128, "Invalid mob  for reset: " );
                   break;
                case INVAL_GEN:
                default:
-                  snprintf( buf, MSL, "Invalid arg  for reset: " );
+                  snprintf( buf, 128, "Invalid arg  for reset: " );
                   break;
             }
             SHOW_AREA;
-            snprintf( buf + strlen( buf ), MSL, "%c %d %d %d.", pReset->command,
+            snprintf( buf + strlen( buf ), 128, "%c %d %d %d.", pReset->command,
                      pReset->arg1, pReset->arg2, pReset->arg3 );
             bug( buf, 0 );
             {
@@ -2542,9 +2542,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
        * Only load one with the same name 
        */
 #if !defined(machintosh) && !defined(MSDOS)
-      snprintf( buf, MSL, "%s n%i", pMobIndex->player_name, 1 );
+      snprintf( buf, 255, "%s n%i", pMobIndex->player_name, 1 );
 #else
-      snprintf( buf, MSL, "n%i %s", 1, pMobIndex->player_name );
+      snprintf( buf, 255, "n%i %s", 1, pMobIndex->player_name );
 #endif
 
    }
@@ -3262,10 +3262,10 @@ void do_areas( CHAR_DATA * ch, char *argument )
 
       foo++;
       snprintf( msg, MSL, " %s %12s          %s\r\n", pArea->level_label, capitalize( pArea->owner ), pArea->name );
-      strncat( buf, msg, MSL );
+      strncat( buf, msg, MSL-1 );
    }
    snprintf( msg, MSL, "@@R%d Areas listed.\r\n@@N Type areas all to list the entire " mudnamecolor " realm.\r\n@@N", foo );
-   strncat( buf, msg, MSL );
+   strncat( buf, msg, MSL-1 );
    send_to_char( buf, ch );
    return;
 }
@@ -3865,7 +3865,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
     snprintf(buf,MSL,"[%s",ctime(&chan_history.time[x][y]));
     buf[(strlen(buf)-1)] = '\0';           /* I realize how ugly this chunk looks but it was */
     strncat(buf,"] ",MSL);                        /* necessary to get around ctime adding a newline --Kline */
-    strncat(buf,chan_history.message[x][y],MSL);
+    strncat(buf,chan_history.message[x][y],MSL-1);
     send_to_char(buf,ch);
    }
    else if( ch->logon <= chan_history.time[x][y] )

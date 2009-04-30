@@ -3642,7 +3642,8 @@ void copyover_recover(  )
 
    for( ;; )
    {
-      fscanf( fp, "%d %s %s\n", &desc, name, host );
+      if( fscanf( fp, "%d %s %s\n", &desc, name, host ) < 1 )
+       bugf("Didn't read anything from COPYOVER_FILE, this is bad!");
       if( desc == -1 )
          break;
 

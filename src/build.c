@@ -241,9 +241,8 @@ void build_interpret( CHAR_DATA * ch, char *argument )
 {
    char command[MAX_INPUT_LENGTH];
    char logline[MAX_INPUT_LENGTH];
-   char buffer[MAX_INPUT_LENGTH];
+   char buffer[MAX_STRING_LENGTH];
    int cmd;
-/*    int trust; Unused var*/
    bool found;
 
    /*
@@ -944,7 +943,7 @@ char *build_docount( int *pcount )
 
    buf[0] = '\0';
    if( pcount != NULL )
-      snprintf( buf, MSL, "%d) ", ++*pcount );
+      snprintf( buf, 20, "%d) ", ++*pcount );
    else
       buf[0] = '\0';
    return buf;

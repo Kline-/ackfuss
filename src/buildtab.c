@@ -1164,14 +1164,14 @@ char *bit_table_lookup( LOOKUP_TYPE *table, unsigned long int number )
       if( ( number & table[a].value ) == table[a].value &&
           str_cmp( table[a].text, "nada" ) && str_cmp( table[a].text, "placeholder" ) )
       {
-         strncat( buf, table[a].text, MSL );
-         strncat( buf, ", ", MSL );
+         strncat( buf, table[a].text, MSL-1 );
+         strncat( buf, ", ", MSL-1 );
          number &= ~table[a].value;
       }
    }
 
    if( buf[0] == '\0' )
-      strncat( buf, "None.", MSL );
+      strncat( buf, "None.", MSL-1 );
    else
    {
       a = strlen( buf );
@@ -1220,20 +1220,19 @@ void wide_table_printout( LOOKUP_TYPE *table, char *buf )
       if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
           && ( strcmp( table[a].text, "nada" ) ) )
       {
-         strncat( buf, "     ", MSL );
+         strncat( buf, "     ", MSL-1 );
          snprintf( tmp, MSL, "%12s", table[a].text );
-         strncat( buf, tmp, MSL );
+         strncat( buf, tmp, MSL-1 );
          if( ++foo % 4 == 0 )
-            strncat( buf, "\r\n", MSL );
+            strncat( buf, "\r\n", MSL-1 );
       }
    }
-   strncat( buf, "\r\n", MSL );
+   strncat( buf, "\r\n", MSL-1 );
    return;
 }
 
 char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit )
 {
-
    char tmp[MAX_STRING_LENGTH];
    static char buf[MAX_STRING_LENGTH];
    int a;
@@ -1248,16 +1247,16 @@ char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit )
       if( ( strcmp( table[a].text, "nada" ) )   /* If not an invalid choice */
           && ( strcmp( table[a].text, "placeholder" ) ) )
       {
-         strncat( buf, "     ", MSL );
+         strncat( buf, "     ", MSL-1 );
          snprintf( tmp, MSL, "%s%-13s",
                   fBit ? ( IS_SET( value, table[a].value ) ? "@@y*" : "@@g " ) :
                   ( value == table[a].value ? "@@y*" : "@@g " ), table[a].text );
-         strncat( buf, tmp, MSL );
+         strncat( buf, tmp, MSL-1 );
          if( ++foo % 4 == 0 )
-            strncat( buf, "\r\n", MSL );
+            strncat( buf, "\r\n", MSL-1 );
       }
    }
-   strncat( buf, "@@g\r\n", MSL );
+   strncat( buf, "@@g\r\n", MSL-1 );
    return ( buf );
 }
 

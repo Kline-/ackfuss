@@ -502,7 +502,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
       case POS_RESTING:
          if( victim->sitting != NULL && victim->sitting->in_room == victim->in_room )
          {
-            char sit[MAX_INPUT_LENGTH];
+            char sit[MAX_STRING_LENGTH];
             snprintf( sit, MSL, " is here, resting on %s.", victim->sitting->short_descr );
             strncat( buf, sit, MSL-1 );
          }
@@ -576,9 +576,9 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    if( victim->first_shield != NULL )
    {
       MAGIC_SHIELD *this_shield;
-      strncat( buf, "   @@WSHIELD: @@N", MSL );
+      strncat( buf, "   @@WSHIELD: @@N", MSL-1 );
       for( this_shield = victim->first_shield; this_shield != NULL; this_shield = this_shield->next )
-         strncat( buf, this_shield->name, MSL );
+         strncat( buf, this_shield->name, MSL-1 );
       strncat( buf, "\r\n", MSL-1 );
    }
 
@@ -1256,13 +1256,13 @@ void do_exits( CHAR_DATA * ch, char *argument )
    }
 
    if( !found )
-      strncat( buf, (fAuto || fAutonr) ? " none" : "None.\r\n", MSL );
+      strncat( buf, (fAuto || fAutonr) ? " none" : "None.\r\n", MSL-1 );
 
    if( fAuto )
-      strncat( buf, "]\r\n", MSL );
+      strncat( buf, "]\r\n", MSL-1 );
 
    if( fAutonr )
-      strncat( buf, "]", MSL );
+      strncat( buf, "]", MSL-1 );
 
    send_to_char( buf, ch );
    return;

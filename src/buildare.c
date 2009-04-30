@@ -184,9 +184,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
-
-
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MAX_STRING_LENGTH];
    ROOM_INDEX_DATA *pRoomIndex;
    int vnum = 0;
    int svnum = 0;
@@ -410,7 +408,7 @@ void build_setarea( CHAR_DATA * ch, char *argument )
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
    char name[MAX_INPUT_LENGTH];
-   char buffer[MAX_INPUT_LENGTH];
+   char buffer[MAX_STRING_LENGTH];
    char buf2[MAX_STRING_LENGTH];
    char *argn, *oldperm;
    AREA_DATA *pArea;
@@ -704,7 +702,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
          if( pArea->first_area_room != NULL )
             pRoomIndex = (ROOM_INDEX_DATA *)pArea->first_area_room->data;
          snprintf( buf, MSL, "[%5d] %s\r\n", pArea->first_area_room != NULL ? pRoomIndex->vnum : 0, pArea->name );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
       }
    }
 
@@ -796,14 +794,14 @@ void build_arealist( CHAR_DATA * ch, char *argument )
       stop_counter++;
       if( stop_counter > 40 )
       {
-         strncat( msg, buf, MSL );
+         strncat( msg, buf, MSL-1 );
          stop_counter = 0;
          send_to_char( msg, ch );
          msg[0] = '\0';
       }
       else
       {
-         strncat( msg, buf, MSL );
+         strncat( msg, buf, MSL-1 );
       }
    }
 
