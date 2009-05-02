@@ -1274,6 +1274,7 @@
 #define SOCIAL_FILE    DATA_DIR "socials.dat"   /* or whatever fits you */
 #define DISABLED_FILE  DATA_DIR "disabled.dat"
 #define MUDINFO_FILE   DATA_DIR "mudinfo.dat"
+#define PLAYERNUM_FILE DATA_DIR "playernum.dat"
 
 /* Other Stuff - Flar */
 #define COPYOVER_FILE  "COPYOVER.TXT" /* Temp data file used for copyover */

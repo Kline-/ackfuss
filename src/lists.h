@@ -60,6 +60,7 @@ extern std::list<OBJ_DATA *> obj_list;
 extern std::list<OBJ_INDEX_DATA *> obj_index_list;
 extern std::list<RESET_DATA *> reset_list;
 extern std::list<ROOM_INDEX_DATA *> room_index_list;
+extern std::list<RULER_DATA *> ruler_list;
 extern std::list<SHOP_DATA *> shop_list;
 
 extern DESCRIPTOR_DATA *first_desc;
@@ -71,8 +72,6 @@ extern CONTROL_LIST *last_control_list;
 extern QUEUED_INTERACT_LIST *first_queued_interact;
 extern INFLUENCE_LIST *first_influence_list;
 extern INFLUENCE_LIST *last_influence_list;
-extern RULER_LIST *first_ruler_list;
-extern RULER_LIST *last_ruler_list;
 extern DL_LIST *first_brand;
 extern DL_LIST *last_brand;
 extern BUF_DATA_STRUCT *first_buf;
@@ -88,7 +87,6 @@ extern CONTROL_DATA *control_data_free;
 extern CONTROL_LIST *control_list_free;
 extern QUEUED_INTERACT_LIST *queued_interact_free;
 extern INFLUENCE_LIST *influence_list_free;
-extern RULER_LIST *ruler_list_free;
 extern DL_LIST *dl_list_free;
 
 extern void ( *member_free_destructor ) ( MEMBER_DATA * mdat );
@@ -98,7 +96,6 @@ extern void ( *control_data_free_destructor ) ( CONTROL_DATA * cdat );
 extern void ( *control_list_free_destructor ) ( CONTROL_LIST * cldat );
 extern void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat );
 extern void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat );
-extern void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat );
 extern void ( *dl_list_free_destructor ) ( DL_LIST * dldat );
 
 void ruler_data_free_destructor( RULER_DATA * rdat );

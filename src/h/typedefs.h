@@ -163,7 +163,6 @@ typedef struct interact_data INTERACT_DATA;
 typedef struct influence_list INFLUENCE_LIST;
 typedef struct control_list CONTROL_LIST;
 typedef struct queued_interact_list QUEUED_INTERACT_LIST;
-typedef struct ruler_list RULER_LIST;
 typedef struct dl_list DL_LIST;
 typedef struct brand_data BRAND_DATA;
 typedef struct sysdata_type SYS_DATA_TYPE;

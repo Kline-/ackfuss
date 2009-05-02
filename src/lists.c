@@ -64,6 +64,7 @@ std::list<OBJ_DATA *> obj_list;
 std::list<OBJ_INDEX_DATA *> obj_index_list;
 std::list<RESET_DATA *> reset_list;
 std::list<ROOM_INDEX_DATA *> room_index_list;
+std::list<RULER_DATA *> ruler_list;
 std::list<SHOP_DATA *> shop_list;
 
 DESCRIPTOR_DATA *first_desc = NULL;
@@ -76,8 +77,6 @@ QUEUED_INTERACT_LIST *first_queued_interact = NULL;
 QUEUED_INTERACT_LIST *last_queued_interact = NULL;
 INFLUENCE_LIST *first_influence_list = NULL;
 INFLUENCE_LIST *last_influence_list = NULL;
-RULER_LIST *first_ruler_list = NULL;
-RULER_LIST *last_ruler_list = NULL;
 DL_LIST *first_brand = NULL;
 DL_LIST *last_brand = NULL;
 BUF_DATA_STRUCT *first_buf = NULL;
@@ -93,7 +92,6 @@ CONTROL_DATA *control_data_free = NULL;
 CONTROL_LIST *control_list_free = NULL;
 QUEUED_INTERACT_LIST *queued_interact_free = NULL;
 INFLUENCE_LIST *influence_list_free = NULL;
-RULER_LIST *ruler_list_free = NULL;
 DL_LIST *dl_list_free = NULL;
 
 void ( *member_free_destructor ) ( MEMBER_DATA * mdat ) = NULL;
@@ -103,7 +101,6 @@ void ( *control_data_free_destructor ) ( CONTROL_DATA * cdat ) = NULL;
 void ( *control_list_free_destructor ) ( CONTROL_LIST * cldat ) = NULL;
 void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat ) = NULL;
 void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat ) = NULL;
-void ( *ruler_list_free_destructor ) ( RULER_LIST * rldat ) = NULL;
 void ( *dl_list_free_destructor ) ( DL_LIST * dldat ) = NULL;
 
 void ruler_data_free_destructor( RULER_DATA * rdat )

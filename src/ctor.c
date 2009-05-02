@@ -697,6 +697,18 @@ room_index_data::room_index_data()
  room_index_list.push_back(this);
 }
 
+ruler_data::ruler_data()
+{
+ name = &str_empty[0];
+ ruler_rank = 0;
+ affiliation_name = &str_empty[0];
+ affiliation_index  = 0;
+ keywords = &str_empty[0];
+ flags = 0;
+ first_control = NULL;
+ last_control = NULL;
+}
+
 shop_data::shop_data()
 {
  for( short i = 0; i < MAX_TRADE; i++  )

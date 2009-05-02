@@ -351,7 +351,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                free_string( ch->pcdata->pedit_string[0] );
                ch->pcdata->pedit_string[0] = str_dup( "none" );
                snprintf( catbuf, MSL, "Enter message changed to %s\r\n", ch->pcdata->room_enter );
-               strncat( brandbuf, catbuf, MSL );
+               strncat( brandbuf, catbuf, MSL-1 );
             }
             if( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
             {
@@ -360,7 +360,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                free_string( ch->pcdata->pedit_string[1] );
                ch->pcdata->pedit_string[1] = str_dup( "none" );
                snprintf( catbuf, MSL, "Exit message changed to %s\r\n", ch->pcdata->room_exit );
-               strncat( brandbuf, catbuf, MSL );
+               strncat( brandbuf, catbuf, MSL-1 );
             }
             free_string( ch->pcdata->pedit_string[0] );
             ch->pcdata->pedit_string[0] = str_dup( "none" );
@@ -421,13 +421,13 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                break;
             if( !str_cmp( "*name*", word1 ) )
             {
-               strncat( assistbuf, "$N ", MSL );
+               strncat( assistbuf, "$N ", MSL-1 );
                continue;
             }
             else
             {
                snprintf( catbuf, MSL, "%s ", word1 );
-               strncat( assistbuf, catbuf, MSL );
+               strncat( assistbuf, catbuf, MSL-1 );
             }
          }
          free_string( ch->pcdata->assist_msg );

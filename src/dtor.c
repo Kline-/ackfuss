@@ -330,6 +330,13 @@ room_index_data::~room_index_data()
  delete treasure;
 }
 
+ruler_data::~ruler_data()
+{
+ free_string(name);
+ free_string(affiliation_name);
+ free_string(keywords);
+}
+
 shop_data::~shop_data()
 {
 }

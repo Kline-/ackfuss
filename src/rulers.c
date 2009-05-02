@@ -92,7 +92,8 @@ void save_rulers(  )
 
    FILE *fp;
    char ruler_file_name[MAX_STRING_LENGTH];
-   RULER_LIST *ruler;
+   std::list<RULER_DATA *>::iterator li;
+   RULER_DATA *ruler = NULL;
    CONTROL_LIST *control;
 
    snprintf( ruler_file_name, MSL, "%s", RULERS_FILE );
@@ -104,23 +105,24 @@ void save_rulers(  )
    }
    else
    {
-      for( ruler = first_ruler_list; ruler != NULL; ruler = ruler->next )
+      for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
       {
          char keybuf[MSL];
          char catkeybuf[MSL];
 
+         ruler = *li;
          fprintf( fp, "#RULER~\n" );
-         fprintf( fp, "%s~\n", ruler->this_one->name );
-         fprintf( fp, "%d\n", ruler->this_one->affiliation_index );
-         fprintf( fp, "%d\n", ruler->this_one->flags );
-         fprintf( fp, "%d\n", ruler->this_one->ruler_rank );
+         fprintf( fp, "%s~\n", ruler->name );
+         fprintf( fp, "%d\n", ruler->affiliation_index );
+         fprintf( fp, "%d\n", ruler->flags );
+         fprintf( fp, "%d\n", ruler->ruler_rank );
 
          snprintf( keybuf, MSL, "%s", "" );
 
-         for( control = ruler->this_one->first_control; control; control = control->next )
+         for( control = ruler->first_control; control; control = control->next )
          {
             snprintf( catkeybuf, MSL, "%s ", control->this_one->keyword );
-            strncat( keybuf, catkeybuf, MSL );
+            strncat( keybuf, catkeybuf, MSL-1 );
          }
          fprintf( fp, "%s~\n", keybuf );
       }
@@ -145,7 +147,6 @@ void load_rulers( void )
    char rulers_file_name[MAX_STRING_LENGTH];
    char buf[MAX_STRING_LENGTH];
    RULER_DATA *ruler;
-   RULER_LIST *ruler_member;
 
 
    snprintf( rulers_file_name, MSL, "%s", RULERS_FILE );
@@ -170,8 +171,7 @@ void load_rulers( void )
          word = fread_string( rulersfp );
          if( !str_cmp( word, "#RULER" ) )
          {
-            GET_FREE( ruler, ruler_data_free );
-            GET_FREE( ruler_member, ruler_list_free );
+            ruler = new RULER_DATA;
             ruler->name = fread_string( rulersfp );
             ruler->affiliation_index = fread_number( rulersfp );
             if( ruler->affiliation_index == 0 )
@@ -186,10 +186,7 @@ void load_rulers( void )
 
             free_string( word );
 
-            ruler_member->this_one = ruler;
-            ruler_member->next = NULL;
-            ruler_member->prev = NULL;
-            LINK( ruler_member, first_ruler_list, last_ruler_list, next, prev );
+            ruler_list.push_back(ruler);
 
          }
          else if( !str_cmp( word, "#END" ) )
@@ -221,8 +218,8 @@ void do_rulers( CHAR_DATA * ch, char *argument )
    char arg3[MSL];
    char outbuf[MSL];
    char catbuf[MSL];
-   RULER_LIST *ruler;
-   RULER_DATA *this_ruler;
+   RULER_DATA *ruler = NULL;
+   std::list<RULER_DATA *>::iterator li;
 /*  CONTROL_DATA	* this_control;  */
 
    argument = one_argument( argument, arg1 );
@@ -239,25 +236,26 @@ void do_rulers( CHAR_DATA * ch, char *argument )
 
       snprintf( outbuf, MSL, "\r\nCurrent Rulers of " mudnamecolor "\r\n\r\n" );
 
-      for( ruler = first_ruler_list; ruler; ruler = ruler->next )
+      for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
       {
          short sex;
-         sex = ( IS_SET( ruler->this_one->flags, RULER_NEUTRAL ) ? SEX_NEUTRAL
-                 : IS_SET( ruler->this_one->flags, RULER_MALE ) ? SEX_MALE : SEX_FEMALE );
+         ruler = *li;
+         sex = ( IS_SET( ruler->flags, RULER_NEUTRAL ) ? SEX_NEUTRAL
+                 : IS_SET( ruler->flags, RULER_MALE ) ? SEX_MALE : SEX_FEMALE );
          snprintf( catbuf, MSL, " %s %s : %s \r\n",
-                  get_ruler_title( ruler->this_one->ruler_rank, sex ),
-                  capitalize( ruler->this_one->name ),
-                  ( IS_SET( ruler->this_one->flags, RULER_GROUP ) ? ruler->this_one->affiliation_name : "Not Affiliated" ) );
-         strncat( outbuf, catbuf, MSL );
-         if( ruler->this_one->first_control != NULL )
+                  get_ruler_title( ruler->ruler_rank, sex ),
+                  capitalize( ruler->name ),
+                  ( IS_SET( ruler->flags, RULER_GROUP ) ? ruler->affiliation_name : "Not Affiliated" ) );
+         strncat( outbuf, catbuf, MSL-1 );
+         if( ruler->first_control != NULL )
          {
             CONTROL_LIST *control;
             snprintf( catbuf, MSL, "  Ruler of :" );
-            strncat( catbuf, outbuf, MSL );
-            for( control = ruler->this_one->first_control; control; control = control->next )
+            strncat( catbuf, outbuf, MSL-1 );
+            for( control = ruler->first_control; control; control = control->next )
             {
                snprintf( catbuf, MSL, "%s\r\n", control->this_one->area->name );
-               strncat( outbuf, catbuf, MSL );
+               strncat( outbuf, catbuf, MSL-1 );
             }
          }
       }
@@ -279,23 +277,17 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      GET_FREE( ruler, ruler_list_free );
-      GET_FREE( this_ruler, ruler_data_free );
-      this_ruler->name = str_dup( arg2 );
-      this_ruler->ruler_rank = 1;
-      this_ruler->affiliation_index = 0;
-      this_ruler->affiliation_name = str_dup( "" );
-      this_ruler->keywords = str_dup( "" );
-      this_ruler->flags = RULER_NEUTRAL;
-      this_ruler->first_control = NULL;
-      this_ruler->last_control = NULL;
-      this_ruler->next = NULL;
-      this_ruler->prev = NULL;
-      ruler->this_one = this_ruler;
-      ruler->next = NULL;
-      ruler->prev = NULL;
+      ruler = new RULER_DATA;
+      ruler->name = str_dup( arg2 );
+      ruler->ruler_rank = 1;
+      ruler->affiliation_index = 0;
+      ruler->affiliation_name = str_dup( "" );
+      ruler->keywords = str_dup( "" );
+      ruler->flags = RULER_NEUTRAL;
+      ruler->first_control = NULL;
+      ruler->last_control = NULL;
 
-      LINK( ruler, first_ruler_list, last_ruler_list, next, prev );
+      ruler_list.push_back(ruler);
       save_rulers(  );
       do_rulers( ch, "" );
       return;
@@ -331,9 +323,10 @@ void do_rulers( CHAR_DATA * ch, char *argument )
             send_to_char( "Clan number must be between 1 and you Max Number of clans.\r\n", ch );
             return;
          }
-         for( ruler = first_ruler_list; ruler; ruler = ruler->next )
+         for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
          {
-            if( !str_cmp( arg2, ruler->this_one->name ) )
+            ruler = *li;
+            if( !str_cmp( arg2, ruler->name ) )
                break;
          }
          if( ruler == NULL )
@@ -341,12 +334,12 @@ void do_rulers( CHAR_DATA * ch, char *argument )
             send_to_char( "That ruler is not in the current list.\r\n", ch );
             return;
          }
-         if( ruler->this_one->affiliation_name != NULL )
-            free_string( ruler->this_one->affiliation_name );
+         if( ruler->affiliation_name != NULL )
+            free_string( ruler->affiliation_name );
 
-         ruler->this_one->affiliation_name = str_dup( clan_table[clan_number].clan_abbr );
-         SET_BIT( ruler->this_one->flags, RULER_GROUP );
-         ruler->this_one->affiliation_index = clan_number;
+         ruler->affiliation_name = str_dup( clan_table[clan_number].clan_abbr );
+         SET_BIT( ruler->flags, RULER_GROUP );
+         ruler->affiliation_index = clan_number;
          save_rulers(  );
          do_rulers( ch, "" );
          return;
@@ -367,9 +360,10 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          send_to_char( "What name?\r\n", ch );
          return;
       }
-      for( ruler = first_ruler_list; ruler; ruler = ruler->next )
+      for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
       {
-         if( !str_cmp( arg2, ruler->this_one->name ) )
+         ruler = *li;
+         if( !str_cmp( arg2, ruler->name ) )
             break;
       }
       if( ruler == NULL )
@@ -377,22 +371,21 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          send_to_char( "That ruler is not in the current list.\r\n", ch );
          return;
       }
-      UNLINK( ruler, first_ruler_list, last_ruler_list, next, prev );
 
-      if( ruler->this_one->first_control != NULL )
+      if( ruler->first_control != NULL )
       {
          CONTROL_LIST *control;
          CONTROL_LIST *control_next;
-         for( control = ruler->this_one->first_control; control; control = control_next )
+         for( control = ruler->first_control; control; control = control_next )
          {
             control_next = control->next;
-            UNLINK( control, ruler->this_one->first_control, ruler->this_one->last_control, next, prev );
+            UNLINK( control, ruler->first_control, ruler->last_control, next, prev );
             control->this_one = NULL;
             PUT_FREE( control, control_list_free );
          }
       }
-      PUT_FREE( ruler->this_one, ruler_data_free );
-      PUT_FREE( ruler, ruler_list_free );
+      ruler_list.remove(ruler);
+      delete ruler;
       save_rulers(  );
       do_rulers( ch, "" );
       return;
@@ -411,9 +404,10 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          send_to_char( "What name?\r\n", ch );
          return;
       }
-      for( ruler = first_ruler_list; ruler; ruler = ruler->next )
+      for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
       {
-         if( !str_cmp( arg2, ruler->this_one->name ) )
+         ruler = *li;
+         if( !str_cmp( arg2, ruler->name ) )
             break;
       }
       if( ruler == NULL )
@@ -422,23 +416,23 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          return;
       }
       argument = one_argument( argument, arg3 );
-      if( IS_SET( ruler->this_one->flags, RULER_MALE ) )
-         REMOVE_BIT( ruler->this_one->flags, RULER_MALE );
-      if( IS_SET( ruler->this_one->flags, RULER_FEMALE ) )
-         REMOVE_BIT( ruler->this_one->flags, RULER_FEMALE );
-      if( IS_SET( ruler->this_one->flags, RULER_NEUTRAL ) )
-         REMOVE_BIT( ruler->this_one->flags, RULER_NEUTRAL );
+      if( IS_SET( ruler->flags, RULER_MALE ) )
+         REMOVE_BIT( ruler->flags, RULER_MALE );
+      if( IS_SET( ruler->flags, RULER_FEMALE ) )
+         REMOVE_BIT( ruler->flags, RULER_FEMALE );
+      if( IS_SET( ruler->flags, RULER_NEUTRAL ) )
+         REMOVE_BIT( ruler->flags, RULER_NEUTRAL );
 
       if( !str_cmp( arg3, "male" ) )
-         SET_BIT( ruler->this_one->flags, RULER_MALE );
+         SET_BIT( ruler->flags, RULER_MALE );
       else if( !str_cmp( arg3, "female" ) )
-         SET_BIT( ruler->this_one->flags, RULER_FEMALE );
+         SET_BIT( ruler->flags, RULER_FEMALE );
       else if( !str_cmp( arg3, "it" ) )
-         SET_BIT( ruler->this_one->flags, RULER_NEUTRAL );
+         SET_BIT( ruler->flags, RULER_NEUTRAL );
       else
       {
          send_to_char( "Use male/female/it\r\n", ch );
-         SET_BIT( ruler->this_one->flags, RULER_MALE );
+         SET_BIT( ruler->flags, RULER_MALE );
          return;
       }
       save_rulers(  );
@@ -475,9 +469,10 @@ void do_rulers( CHAR_DATA * ch, char *argument )
             send_to_char( "Rank must be between 1 and 5.\r\n", ch );
             return;
          }
-         for( ruler = first_ruler_list; ruler; ruler = ruler->next )
+         for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
          {
-            if( !str_cmp( arg2, ruler->this_one->name ) )
+            ruler = *li;
+            if( !str_cmp( arg2, ruler->name ) )
                break;
          }
          if( ruler == NULL )
@@ -485,7 +480,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
             send_to_char( "That ruler is not in the current list.\r\n", ch );
             return;
          }
-         ruler->this_one->ruler_rank = rank;
+         ruler->ruler_rank = rank;
          save_rulers(  );
          do_rulers( ch, "" );
          return;

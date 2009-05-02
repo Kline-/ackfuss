@@ -566,7 +566,7 @@ void game_loop( int game_control )
          if( now_bd_time->tm_hour != cur_hour )
          {
             cur_hour = now_bd_time->tm_hour;
-            out_file = file_open( "players.num", "a" );
+            out_file = file_open( PLAYERNUM_FILE, "a" );
             fprintf( out_file, "%i %i %i\n", now_bd_time->tm_mday, cur_hour, max_players );
             file_close( out_file );
             max_players = cur_players;

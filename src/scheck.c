@@ -501,10 +501,14 @@ static void walk_areas( void )
 /* spec- more rulers stuff */
 static void walk_rulers( void )
 {
-   RULER_LIST *r;
+   RULER_DATA *r;
+   std::list<RULER_DATA *>::iterator li;
 
-   for( r = first_ruler_list; r; r = r->next )
-      walk_ruler_data( r->this_one );
+   for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
+   {
+      r = *li;
+      walk_ruler_data( r );
+   }
 }
 
 static void walk_mob_indexes( void )

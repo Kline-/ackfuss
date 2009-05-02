@@ -973,14 +973,6 @@ struct control_list
    CONTROL_DATA *this_one;
 };
 
-struct ruler_list
-{
-   bool is_free;
-   RULER_LIST *next;
-   RULER_LIST *prev;
-   RULER_DATA *this_one;
-};
-
 
 struct control_data
 {
@@ -1024,19 +1016,19 @@ struct interact_data
 
 
 
-struct ruler_data
+class ruler_data
 {
-   bool is_free;
-   RULER_DATA *next;
-   RULER_DATA *prev;
-   char *name;
-   short ruler_rank;
-   char *affiliation_name;
-   short affiliation_index;
-   char *keywords;
-   short flags;
-   CONTROL_LIST *first_control;
-   CONTROL_LIST *last_control;
+ public:
+  ruler_data();
+  ~ruler_data();
+  char *name;
+  short ruler_rank;
+  char *affiliation_name;
+  short affiliation_index;
+  char *keywords;
+  short flags;
+  CONTROL_LIST *first_control;
+  CONTROL_LIST *last_control;
 };
 
 

@@ -4197,6 +4197,7 @@ void clear_lists( void )
  for_each( obj_index_list.begin(),  obj_index_list.end(),  DeleteObject() );
  for_each( reset_list.begin(),      reset_list.end(),      DeleteObject() );
  for_each( room_index_list.begin(), room_index_list.end(), DeleteObject() );
+ for_each( ruler_list.begin(),      ruler_list.end(),      DeleteObject() );
  for_each( shop_list.begin(),       shop_list.end(),       DeleteObject() );
 
  comlog(NULL,true,0,NULL);

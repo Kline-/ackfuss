@@ -1817,7 +1817,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 6:
          snprintf( buf, MSL, "%s", ch->hunting->name );
          snprintf( buf1, MSL, "@@eI know that you are a Vampyre, and I shall not rest until your are destroyed!!!@@N\r\n" );
-         strncat( buf, buf1, MSL );
+         strncat( buf, buf1, MSL-1 );
          do_tell( ch, buf );
          break;
       case 7:
@@ -1840,7 +1840,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 17:
          snprintf( buf, MSL, " %s ", ch->hunting->name );
          snprintf( buf1, MSL, "@@Do you finally know fear? I shall not rest until ALL of your kind are destroyed!!!@@N\r\n" );
-         strncat( buf, buf1, MSL );
+         strncat( buf, buf1, MSL-1 );
          do_tell( ch, buf );
          break;
 
@@ -1967,10 +1967,10 @@ bool spec_tax_man( CHAR_DATA * ch )
    }
    snprintf( mon_buf, MSL, "Tax Collector visited %s ", victim->name );
    snprintf( cat_buf, MSL, "Collected %i from bank, and %i from gold on hand.\r\n", bank_loss, char_loss );
-   strncat( mon_buf, cat_buf, MSL );
+   strncat( mon_buf, cat_buf, MSL-1 );
    snprintf( cat_buf, MSL, "New totals are balance: %i/%i  on hand: %i/%i\r\n",
             victim->balance, old_bank, victim->gold, old_char );
-   strncat( mon_buf, cat_buf, MSL );
+   strncat( mon_buf, cat_buf, MSL-1 );
    monitor_chan( mon_buf, MONITOR_MOB );
 
    do_save( victim, "auto" );
