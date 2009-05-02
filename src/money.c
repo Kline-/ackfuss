@@ -279,7 +279,7 @@ char *money_string( MONEY_TYPE * money )
                                                                                                                                                                                                                                                        * ( last_found == looper ?
                                                                                                                                                                                                                                                        * "" :
                                                                                                                                                                                                                                                        * " " ) */  );
-         strncat( outbuf, catbuf, MSL );
+         strncat( outbuf, catbuf, MSL-1 );
          first = FALSE;
       }
    }
@@ -298,7 +298,7 @@ char *unit_string( MONEY_TYPE * money )
       if( money->cash_unit[looper] > 0 )
       {
          snprintf( catbuf, MSL, "%d %s ", money->cash_unit[looper], currency_table[looper].keyword );
-         strncat( outbuf, catbuf, MSL );
+         strncat( outbuf, catbuf, MSL-1 );
       }
    }
    return outbuf;

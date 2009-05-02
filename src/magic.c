@@ -381,7 +381,7 @@ bool saves_spell( int level, CHAR_DATA * victim )
    if( number_percent(  ) < save )
       saved = TRUE;
 
-   snprintf( log_buf, MSL, "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
+   snprintf( log_buf, (2 * MIL), "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
             victim->name, get_psuedo_level( victim ),
             wis_app[get_curr_wis( victim )].spell_save,
             victim->saving_throw, save, level, ( saved ? "@@aSAVED@@N" : "@@eFAILED@@N" ) );
@@ -2757,7 +2757,7 @@ bool spell_lightning_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
 
 bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MSL];
    OBJ_DATA *ob;
    OBJ_DATA *in_obj;
    bool found;
@@ -4219,7 +4219,7 @@ bool spell_see_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 
 bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MSL];
    OBJ_DATA *ob;
    OBJ_DATA *in_obj;
    bool found;

@@ -814,7 +814,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    {
       file_close( fp );
       snprintf( buf, MSL, "gzip -dfq %s", tempstrsave );
-      system( buf );
+      if( system( buf ) ) {} /* See around line 314 in email.c to explain this --Kline */
    }
 #endif
 

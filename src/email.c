@@ -106,26 +106,26 @@ void do_email( CHAR_DATA * ch, char *argument )
    {
       snprintf( outbuf, MSL, "%s", "Syntax for email:\r\n" );
       snprintf( catbuf, MSL, "%s", "set <email address>\r\n" );
-      strncat( outbuf, catbuf, MSL );
+      strncat( outbuf, catbuf, MSL-1 );
       if( get_trust( ch ) == MAX_LEVEL )
       {
          snprintf( catbuf, MSL, "%s", "validate <playername>\r\n" );
-         strncat( outbuf, catbuf, MSL );
+         strncat( outbuf, catbuf, MSL-1 );
       }
       if( ch->pcdata->valid_email )
       {
          snprintf( catbuf, MSL, "Your email address is currently set to %s.\r\n", ch->pcdata->email_address );
-         strncat( outbuf, catbuf, MSL );
+         strncat( outbuf, catbuf, MSL-1 );
       }
       else
       {
          if( !str_cmp( ch->pcdata->email_address, "not set" ) )
-            strncat( outbuf, "Your email address has not been set.\r\n", MSL );
+            strncat( outbuf, "Your email address has not been set.\r\n", MSL-1 );
          else
          {
             snprintf( catbuf, MSL, "Your email address has been set to %s, but has not been authorized by an Implementor.\r\n",
                      ch->pcdata->email_address );
-            strncat( outbuf, catbuf, MSL );
+            strncat( outbuf, catbuf, MSL-1 );
          }
       }
       send_to_char( outbuf, ch );
@@ -311,9 +311,13 @@ void send_email( const char *m_address, const char *m_subject, const char *mfile
    }
 
    file_close(mailfp);
-   system( mailbuf );
+   /*
+    * system() is if() encapsulated to suppress a warning. system() returns different results on different distros,
+    * so there is no reliable return value to check against. --Kline
+    */
+   if( system( mailbuf ) ) {}
    snprintf( delbuf, MSL, "rm %s%s", MAIL_DIR, mfilename );
-   system( delbuf );
+   if( system( delbuf ) ) {}
    kill( getpid(  ), SIGKILL );
    return;
 }

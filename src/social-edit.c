@@ -92,7 +92,8 @@ void load_social_table(  )
       exit( 1 );
    }
 
-   fscanf( fp, "%d\n", &maxSocial );
+   if( fscanf( fp, "%d\n", &maxSocial ) < 1 )
+    bugf("Didn't get a count for MAX_SOCAIALS, this is bad!");
 
    /*
     * IMPORTANT to use malloc so we can realloc later on 

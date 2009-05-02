@@ -209,7 +209,7 @@ bool check_level_use( CHAR_DATA * ch, int level )
          break;
       default:
          snprintf( buf, MSL, "level %d players and higher.\r\n", level );
-         strncat( out, buf, MSL );
+         strncat( out, buf, MSL-1 );
    }
    send_to_char( out, ch );
    return FALSE;

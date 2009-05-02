@@ -5389,7 +5389,8 @@ bool imc_startup_network( bool connected )
       {
          unlink( IMC_HOTBOOT_FILE );
 
-         fscanf( fp, "%s %s\n", netname, server );
+         if( fscanf( fp, "%s %s\n", netname, server ) < 1 )
+          bugf("Didn't read anything during IMC2 bootup, this is bad!");
 
          IMCSTRFREE( this_imcmud->network );
          this_imcmud->network = IMCSTRALLOC( netname );
