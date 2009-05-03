@@ -4177,7 +4177,7 @@ void do_fights( CHAR_DATA * ch, char *argument )
   send_to_char("No fights right now!\r\n",ch);
  else
  {
-  snprintf(buf,MSL,"%d fight%s right now.\r\n",fight_list.size(),( fight_list.size() > 1 ) ? "s" : "");
+  snprintf(buf,MSL,"%d fight%s right now.\r\n",static_cast<int>(fight_list.size()),( fight_list.size() > 1 ) ? "s" : "");
   send_to_char(buf,ch);
  }
  return;

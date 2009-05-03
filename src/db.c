@@ -3333,25 +3333,25 @@ void do_memory( CHAR_DATA * ch, char *argument )
 
    
 
-   snprintf( buf, MSL, "Affects %5d\r\n", affect_list.size() );
+   snprintf( buf, MSL, "Affects %5d\r\n", static_cast<int>(affect_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Areas   %5d\r\n", area_list.size() );
+   snprintf( buf, MSL, "Areas   %5d\r\n", static_cast<int>(area_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "ExDes   %5d\r\n", exdesc_list.size() );
+   snprintf( buf, MSL, "ExDes   %5d\r\n", static_cast<int>(exdesc_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Exits   %5d\r\n", exit_list.size() );
+   snprintf( buf, MSL, "Exits   %5d\r\n", static_cast<int>(exit_list.size()) );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Mobs    %5d\r\n", mob_index_list.size() );
+   snprintf( buf, MSL, "Mobs    %5d\r\n", static_cast<int>(mob_index_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Objs    %5d\r\n", obj_index_list.size() );
+   snprintf( buf, MSL, "Objs    %5d\r\n", static_cast<int>(obj_index_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Resets  %5d\r\n", reset_list.size() );
+   snprintf( buf, MSL, "Resets  %5d\r\n", static_cast<int>(reset_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Rooms   %5d\r\n", room_index_list.size() );
+   snprintf( buf, MSL, "Rooms   %5d\r\n", static_cast<int>(room_index_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Shops   %5d\r\n", shop_list.size() );
+   snprintf( buf, MSL, "Shops   %5d\r\n", static_cast<int>(shop_list.size()) );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Shared String Info:\r\n" );
    send_to_char( buf, ch );
@@ -3390,15 +3390,15 @@ void do_status( CHAR_DATA * ch, char *argument )
    send_to_char( "\r\n", ch );
    send_to_char( "The following counts are for *distinct* mobs/objs/rooms, not a count\r\n", ch );
    send_to_char( "of how many are actually in the game at this time.\r\n", ch );
-   snprintf( buf, MSL, "Areas   %5d\r\n", area_list.size() );
+   snprintf( buf, MSL, "Areas   %5d\r\n", static_cast<int>(area_list.size()) );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Mobs    %5d\r\n", mob_index_list.size() );
+   snprintf( buf, MSL, "Mobs    %5d\r\n", static_cast<int>(mob_index_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Objs    %5d\r\n", obj_index_list.size() );
+   snprintf( buf, MSL, "Objs    %5d\r\n", static_cast<int>(obj_index_list.size()) );
    send_to_char( buf, ch );
-   snprintf( buf, MSL, "Rooms   %5d\r\n", room_index_list.size() );
+   snprintf( buf, MSL, "Rooms   %5d\r\n", static_cast<int>(room_index_list.size()) );
    send_to_char( buf, ch );
 
    return;
@@ -4077,9 +4077,9 @@ char *grep_helps( const char *string, bool imm )
   return "Searches must be at least two letters.\r\n";
 
  if( imm )
-  snprintf(split,MSL,"grep -i -l -R '%s' %s*/* | cut -c %d-",string,HELP_DIR,strlen(HELP_DIR)+3);
+  snprintf(split,MSL,"grep -i -l -R '%s' %s*/* | cut -c %d-",string,HELP_DIR,static_cast<int>(strlen(HELP_DIR)+3));
  else
-  snprintf(split,MSL,"grep -i -l -R '%s' %s*/*.%s | cut -c %d-",string,HELP_DIR,HELP_MORT,strlen(HELP_DIR)+3);
+  snprintf(split,MSL,"grep -i -l -R '%s' %s*/*.%s | cut -c %d-",string,HELP_DIR,HELP_MORT,static_cast<int>(strlen(HELP_DIR)+3));
  snprintf(tmp,MSL,"%s",_popen(split));
 
  str = tmp;

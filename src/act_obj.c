@@ -4073,7 +4073,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
  char *cbuf = '\0';
  char changebuf[MSL], mbuf[MSL];
  int cost = 0, change = 0;
- short mod = 1.05;
+ double mod = 1.05;
  bool found = FALSE;
 
  changebuf[0] = '\0';
@@ -4102,7 +4102,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
    if( obj->durability < obj->max_durability )
    {
     found = TRUE;
-    cost = ((((obj->durability - obj->max_durability) * mod) * obj->level) * -1);
+    cost = static_cast<int>(((((obj->durability - obj->max_durability) * mod) * obj->level) * -1));
     if( money_value(ch->money) - cost < 0 )
     {
      act("You don't have enough money to repair $p.",ch,obj,NULL,TO_CHAR);
@@ -4138,7 +4138,7 @@ void do_repair( CHAR_DATA *ch, char *argument )
   send_to_char("That item is not in need of repair.\r\n",ch);
   return;
  }
- cost = ((((obj->durability - obj->max_durability) * mod) * obj->level) * -1);
+ cost = static_cast<int>(((((obj->durability - obj->max_durability) * mod) * obj->level) * -1));
  if( money_value(ch->money) - cost < 0 )
  {
   act("You don't have enough money to repair $p.",ch,obj,NULL,TO_CHAR);

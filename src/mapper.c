@@ -539,7 +539,7 @@ void disp_map( char *border, char *pmap, CHAR_DATA * ch )
       ox = x;
       while( *x != '\n' && *x != '\r' && *x != '\0' )
          ++x;
-      snprintf( bufs[y], MSL, "%.*s", ( x - ox ), ox );
+      snprintf( bufs[y], MSL, "%.*s", static_cast<int>(( x - ox )), ox );
    }
 #ifdef ACK_43
    if( !IS_NPC( ch ) && ch->act.test(ACT_FULL_ANSI ) )
