@@ -97,6 +97,7 @@
 #define MAX_MOVE_DISPLAY             5   /* Number of rooms to auto-look while moving before they go brief */
 #define MAX_PEDIT                    5
 #define MAX_COND                     3
+#define MAX_GREETING                 5   /* Number of different login screen files: greeting1, greeting2, etc */
                      /*
                       * total number of supernatural types in the game  
                       */

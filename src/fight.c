@@ -6154,12 +6154,12 @@ void do_stance( CHAR_DATA * ch, char *argument )
 
          }
 
-         strncat( msg_buf, cat_buf, MSL );
+         strncat( msg_buf, cat_buf, MSL-1 );
          snprintf( cat_buf, MSL, "%s", "" );
       }
       snprintf( cat_buf, MSL, "%s",
                "Type stance <stance name> to change your current fighting stance.\r\n You may place your current Stance in your prompt with a \%s\r\n" );
-      strncat( msg_buf, cat_buf, MSL );
+      strncat( msg_buf, cat_buf, MSL-1 );
       send_to_char( msg_buf, ch );
       return;
    }

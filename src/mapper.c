@@ -595,7 +595,7 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
       if( ( can_see( ch, victim ) ) && ( !is_same_group( ch, victim ) ) )
          looper++;
    if( looper > 0 )
-      snprintf( contents[x][y].string, MSL, "%i@@N", UMIN( looper, 9 ) );
+      snprintf( contents[x][y].string, 10, "%i@@N", UMIN( looper, 9 ) );
    else
       contents[x][y].string[0] = '\0';
 
@@ -803,13 +803,13 @@ void do_mapper( CHAR_DATA * ch, char *argument )
       {
          snprintf( catbuf, MSL, "%s%s : @@N%s\r\n",
                   map_info[looper].display_color, map_info[looper].display_code, map_info[looper].desc );
-         strncat( outbuf, catbuf, MSL );
+         strncat( outbuf, catbuf, MSL-1 );
       }
       for( looper = 0; looper < 5; looper++ )
       {
          snprintf( catbuf, MSL, "%s%s : @@N%s\r\n",
                   door_info[looper].display_color, door_info[looper].display_code, door_info[looper].desc );
-         strncat( outbuf, catbuf, MSL );
+         strncat( outbuf, catbuf, MSL-1 );
       }
       send_to_char( outbuf, ch );
       return;
@@ -842,7 +842,7 @@ void do_mapper( CHAR_DATA * ch, char *argument )
    MapArea( ch->in_room, ch, center, center, min - 1, max, LOS_INITIAL );
 
 /* marks the center, where ch is */
-   snprintf( contents[center][center].string, MSL, "%s", "@@f*@@N" );
+   snprintf( contents[center][center].string, 10, "%s", "@@f*@@N" );
    if( size == 7 )
       ShowRoom( ch, min, max, size, center );
    else

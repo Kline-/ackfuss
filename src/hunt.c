@@ -294,7 +294,7 @@ void hunt_move( CHAR_DATA * mob, short dir )
 bool mob_hunt( CHAR_DATA * mob )
 {
    short dir;
-   char buf[128];
+   char buf[MSL];
 
    if( !mob || !IS_NPC( mob ) )
       return FALSE;
