@@ -1267,6 +1267,7 @@ class super_data
 
 struct mudinfo
 {
+ time_t            first_boot;
  unsigned long int mk_by_npc;
  unsigned long int mk_by_pc;
  unsigned long int pk_by_npc;

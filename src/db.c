@@ -417,6 +417,8 @@ void boot_db( void )
    load_corpses();
    load_disabled();
    load_mudinfo();
+   if( mudinfo.first_boot == 0 ) /* First game boot, record it! */
+    mudinfo.first_boot = current_time;
    /*
     * Fix up exits.
     * MAG Mod: Check resets. (Allows loading objects of later areas.)
@@ -3869,7 +3871,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
    {
     found = TRUE;
     snprintf(buf,MSL,"[%s",ctime(&chan_history.time[x][y]));
-    buf[(strlen(buf)-1)] = '\0';           /* I realize how ugly this chunk looks but it was */
+    buf[(strlen(buf)-1)] = '\0';                  /* I realize how ugly this chunk looks but it was         */
     strncat(buf,"] ",MSL);                        /* necessary to get around ctime adding a newline --Kline */
     strncat(buf,chan_history.message[x][y],MSL-1);
     send_to_char(buf,ch);

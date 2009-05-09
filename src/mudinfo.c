@@ -64,6 +64,9 @@ void load_mudinfo( void )
      return;
     }
     break;
+   case 'F':
+    KEY("First_Boot",   mudinfo.first_boot,   fread_number(fp));
+    break;
    case 'M':
     KEY("MK_By_NPC",    mudinfo.mk_by_npc,    fread_number(fp));
     KEY("MK_By_PC",     mudinfo.mk_by_pc,     fread_number(fp));
@@ -98,6 +101,7 @@ void save_mudinfo( void )
   return;
  }
 
+ fprintf(fp, "First_Boot   %lu\n", mudinfo.first_boot);
  fprintf(fp, "MK_By_NPC    %lu\n", mudinfo.mk_by_npc);
  fprintf(fp, "MK_By_PC     %lu\n", mudinfo.mk_by_pc);
  fprintf(fp, "PK_By_NPC    %lu\n", mudinfo.pk_by_npc);
@@ -113,8 +117,14 @@ void save_mudinfo( void )
 
 void do_mudinfo( CHAR_DATA * ch, char *argument )
 {
+ std::string str;
+
  send_to_char("      MUD info for " mudnamecolor ":\r\n",ch);
  send_to_char("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n",ch);
+
+ str = ctime(&mudinfo.first_boot);
+ str.erase(str.end()-1,str.end());
+ ch_printf(ch,"The MUD was first booted on: %s.\r\n",str.c_str());
 
  if( mudinfo.mk_by_npc == 0 )
   send_to_char("No mobs have died to other mobs yet!\r\n",ch);
@@ -154,6 +164,7 @@ void do_mudinfo( CHAR_DATA * ch, char *argument )
 
 void init_mudinfo( void )
 {
+ mudinfo.first_boot = 0;
  mudinfo.mk_by_npc = 0;
  mudinfo.mk_by_pc = 0;
  mudinfo.pk_by_npc = 0;
