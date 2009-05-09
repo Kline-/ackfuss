@@ -1204,7 +1204,6 @@ void interpret( CHAR_DATA * ch, char *argument )
    comlog( ch, false, cmd, argument );
    ( *cmd_table[cmd].do_fun ) ( ch, argument );
 
-   tail_chain(  );
    return;
 }
 

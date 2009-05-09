@@ -685,7 +685,6 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
       dam_mod = 0.0;
 
       damage( ch, victim, 0, dt );
-      tail_chain(  );
       return;
    }
    else if( ix <= MAX_IX )
@@ -821,8 +820,6 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
     damage_gear(victim);
    damage( ch, victim, (int)dam, dt );
 
-
-   tail_chain(  );
    return;
 }
 
@@ -1414,7 +1411,6 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
    if( !IS_NPC( victim ) && victim->hit > 0 && victim->hit <= victim->wimpy && victim->wait == 0 )
       do_flee( victim, "" );
 
-   tail_chain(  );
    return;
 
 }
@@ -4855,8 +4851,6 @@ void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, float dam )
       return;
    }
 
-
-   tail_chain(  );
    return;
 }
 

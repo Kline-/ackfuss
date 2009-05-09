@@ -71,7 +71,6 @@ void log_f P_((char *fmt, ...));
 void bug P_((const char *str, int param));
 void bug_string P_((const char *str, const char *str2));
 void log_string P_((const char *str));
-void tail_chain P_((void));
 void message_update P_((void));
 bool char_exists P_((char *argument));
 int bv_log P_((int n));

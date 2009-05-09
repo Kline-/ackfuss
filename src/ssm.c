@@ -469,7 +469,6 @@ char *_fread_string( FILE * fp, const char *caller )
             }
 
             ptr = _str_dup( buf, caller );
-            tail_chain(  );
             return ptr;
       }
    }

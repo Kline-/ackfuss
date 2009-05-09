@@ -328,8 +328,6 @@ void build_interpret( CHAR_DATA * ch, char *argument )
       ch->build_vnum = ch->in_room->vnum;
       send_to_char( "Redit: Vnum changed to new room.\r\n", ch );
    }
-
-   tail_chain(  );
    return;
 }
 

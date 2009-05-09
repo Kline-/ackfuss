@@ -1118,7 +1118,6 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
    if( !IS_NPC( victim ) && victim->hit > 0 && victim->hit <= victim->wimpy && victim->wait == 0 )
       do_flee( victim, "" );
 
-   tail_chain(  );
    return TRUE;
 
 }
