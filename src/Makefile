@@ -1,4 +1,4 @@
-CC   = g++
+CC   = ccache g++
 VERS = AckFUSS 4.4.1
 #PROF    = -pg
 
@@ -21,7 +21,7 @@ VERS = AckFUSS 4.4.1
 #-Werror -Wwrite-strings -Wconversion
 W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings
 C_FLAGS = -O2 -g $(W_FLAGS) -DACK_43 $(PROF) $(CYGWIN)
-L_FLAGS = -lcrypt -lm -lpthread
+L_FLAGS = -lcrypt -lm -lpthread -ldl -L./ -llua
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1

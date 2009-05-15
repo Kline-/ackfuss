@@ -31,7 +31,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 #include <bitset>
-#include <lua.hpp>
+#include "h/lua.hpp"
 
 #define DEC_ACK_H
 
