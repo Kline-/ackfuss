@@ -36,6 +36,7 @@ AckFUSS Feature List
     -Auto object feature to set baseline stats based on absolute maximums, editable per slot
     -Obj funs -- create code to make objects unique
     -Dynamic room/obj/mob descriptions with HTML-like code tags
+    -Lua scripting support to replace "mobprogs"; scripts can be attached to a room, obj, or mob
 
   Quest Points:
     -Auto-run quests based on average online player level

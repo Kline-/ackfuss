@@ -1,5 +1,10 @@
 Welcome to AckFUSS!
 
+Lua 5.1 is required to run AckFUSS. If it is not already installed on your
+server, it can be downloaded and compiled, freely, from www.lua.org. You may
+have to edit the include in ack.h and the linker options in the Makefile to
+point to where you have installed your copy of Lua, if it is not the same.
+
 Now that you've successfully untarred the mud, you'll want to do a few
 things to help you along.  In the /src dir, there are some adjustments you
 will want to make:  The h/config.h file contains user customizable strings,
