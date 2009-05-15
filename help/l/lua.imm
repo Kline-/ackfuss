@@ -1,0 +1,13 @@
+LUA
+
+Lua is the programming language that AckFUSS embeds to provide scripting capability
+instead of MOBPROGS. There is also a lua command for immortals to use in testing
+scripts manually. To invoke a script, use 'lua <script>', ie, 'lua myscript.lua'.
+
+All players by default have Lua scripts enabled on them; NPCs do not. To enable
+scripting on an NPC you need to associate a script with the NPC's vnum in the OLC.
+
+This is settable in medit by using 'script <script>' or 'script -' to remove it.
+
+Rooms and objects are also scriptable in the same manner; all being turned off
+by default.

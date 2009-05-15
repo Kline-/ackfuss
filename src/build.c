@@ -446,6 +446,12 @@ void build_showmob( CHAR_DATA * ch, char *argument )
       strncat( buf1, buf, MSL );
    }
 
+   if( pMob->script_name != &str_empty[0] )
+   {
+      snprintf( buf, MSL, "@@WMobile has Lua script: @@y%s\r\n", pMob->script_name );
+      strncat( buf1, buf, MSL );
+   }
+
    if( ( pShop = pMob->pShop ) != 0 )
    {
       is_shopkeeper = 1;
@@ -1235,8 +1241,9 @@ void build_setmob( CHAR_DATA * ch, char *argument )
       send_to_char( "  skill cast def rmod\r\n", ch );
       send_to_char( "  hr_mod dr_mod ac_mod\r\n", ch );
       send_to_char( "String being one of:\r\n", ch );
-      send_to_char( "  name short long desc spec\r\n", ch );
+      send_to_char( "  name short long desc spec script\r\n", ch );
       send_to_char( "Use [set] spec - to clear spec_fun\r\n", ch );
+      send_to_char( "Use [set] script - to clear script\r\n", ch );
       send_to_char( "Shopspec being one of:\r\n", ch );
       send_to_char( "  trade0 - trade4 profbuy profsell openhour\r\n", ch );
       send_to_char( "  closehour clear\r\n", ch );
@@ -1677,7 +1684,7 @@ void build_setmob( CHAR_DATA * ch, char *argument )
             return;
 
          pMob->spec_fun = NULL;
-
+         area_modified( pArea );
          return;
       }
 
@@ -1689,6 +1696,21 @@ void build_setmob( CHAR_DATA * ch, char *argument )
          return;
       }
 
+      area_modified( pArea );
+      return;
+   }
+
+   if( !str_cmp( arg2, "script" ) )
+   {
+      if( arg3[0] == '-' )
+      {
+       free_string(pMob->script_name);
+       pMob->script_name = &str_empty[0];
+       area_modified( pArea );
+       return;
+      }
+
+      pMob->script_name = str_dup(arg3);
       area_modified( pArea );
       return;
    }

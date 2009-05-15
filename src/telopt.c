@@ -5,7 +5,7 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-/* Telopt handling by Igor van den Hoven (Scandum) */
+/* Telopt handling by Igor van den Hoven (Scandum)                         */
 
 #include "globals.h"
 

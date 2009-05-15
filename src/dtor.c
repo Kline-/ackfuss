@@ -127,6 +127,8 @@ char_data::~char_data()
 
  if( current_brand )
   delete current_brand;
+ if( L )
+  lua_close(L);
  if( npcdata )
   delete npcdata;
  if( pnote )
@@ -207,6 +209,7 @@ mob_index_data::~mob_index_data()
  is_free = true;
  free_string(long_descr);
  free_string(player_name);
+ free_string(script_name);
  free_string(short_descr);
  free_string(target);
 }
@@ -279,7 +282,6 @@ pc_data::~pc_data()
  free_string(host);
  for( short i = 0; i < MAX_IGNORES; i++ )
   free_string(ignore_list[i]);
- is_free = true;
  free_string(lastlogin);
  free_string(load_msg);
  free_string(message);

@@ -1045,6 +1045,11 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    {
     if( victim->npcdata->spec_fun != 0 )
       strncat( buf1, "Mobile has spec fun.\r\n", MSL );
+    if( victim->npcdata->pIndexData->script_name != &str_empty[0] )
+    {
+     snprintf( buf, MSL, "Mobile has Lua script: %s\r\n", victim->npcdata->pIndexData->script_name );
+     strncat( buf1, buf, MSL );
+    }
    }
 
 /*    if ( IS_NPC( victim ) 
@@ -6229,5 +6234,14 @@ void do_disable( CHAR_DATA *ch, char *argument )
  save_disabled();
  send_to_char("Command disabled.\r\n",ch);
 
+ return;
+}
+
+void do_lua( CHAR_DATA *ch, char *argument )
+{
+ std::string str = SCRIPT_DIR;
+ str += argument;
+ if( ch->L )
+  luaL_dofile(ch->L,str.c_str());
  return;
 }

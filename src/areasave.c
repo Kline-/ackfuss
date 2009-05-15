@@ -161,7 +161,7 @@ void build_save(  )
          CurLoops = SaveQ[CurrentSaving].loops;
          send_to_char( "Starting Save.\n", CurSaveChar );
 
-         snprintf( filename, 255, "%s.new", CurSaveArea->filename );
+         snprintf( filename, 255, "%s%s.new", AREA_DIR, CurSaveArea->filename );
          SaveFile = file_open( filename, "w" );
          if( SaveFile == NULL )
          {
@@ -272,29 +272,30 @@ void build_save_mobs(  )
      fprintf( SaveFile, "%d ", i );
    fprintf( SaveFile, "EOL\n" );
 
-   fprintf( SaveFile, "Affected  %d\n", pMobIndex->affected_by );
-   fprintf( SaveFile, "Alignment %d\n", pMobIndex->alignment );
-   fprintf( SaveFile, "Cast      %d\n", pMobIndex->cast );
-   fprintf( SaveFile, "Clan      %d\n", pMobIndex->clan );
-   fprintf( SaveFile, "Class     %d\n", pMobIndex->p_class );
-   fprintf( SaveFile, "Def       %d\n", pMobIndex->def );
-   fprintf( SaveFile, "Desc      %s~\n", pMobIndex->description );
-   fprintf( SaveFile, "DrMod     %d\n", pMobIndex->dr_mod );
-   fprintf( SaveFile, "HrMod     %d\n", pMobIndex->hr_mod );
-   fprintf( SaveFile, "Level     %d\n", pMobIndex->level );
-   fprintf( SaveFile, "LongDesc  %s~\n", pMobIndex->long_descr );
-   fprintf( SaveFile, "PlrName   %s~\n", pMobIndex->player_name );
-   fprintf( SaveFile, "Position  %d\n", pMobIndex->position );
-   fprintf( SaveFile, "Race      %d\n", pMobIndex->race );
-   fprintf( SaveFile, "RaceMods  %d\n", pMobIndex->race_mods );
-   fprintf( SaveFile, "Resist    %d\n", pMobIndex->resist );
-   fprintf( SaveFile, "Sex       %d\n", pMobIndex->sex );
-   fprintf( SaveFile, "ShortDesc %s~\n", pMobIndex->short_descr );
-   fprintf( SaveFile, "Skills    %d\n", pMobIndex->skills );
-   fprintf( SaveFile, "SMagic    %d\n", pMobIndex->strong_magic );
-   fprintf( SaveFile, "SpecFun   %s\n", rev_spec_lookup(pMobIndex->spec_fun) );
-   fprintf( SaveFile, "Suscept   %d\n", pMobIndex->suscept );
-   fprintf( SaveFile, "WMagic    %d\n", pMobIndex->weak_magic );
+   fprintf( SaveFile, "Affected   %d\n", pMobIndex->affected_by );
+   fprintf( SaveFile, "Alignment  %d\n", pMobIndex->alignment );
+   fprintf( SaveFile, "Cast       %d\n", pMobIndex->cast );
+   fprintf( SaveFile, "Clan       %d\n", pMobIndex->clan );
+   fprintf( SaveFile, "Class      %d\n", pMobIndex->p_class );
+   fprintf( SaveFile, "Def        %d\n", pMobIndex->def );
+   fprintf( SaveFile, "Desc       %s~\n", pMobIndex->description );
+   fprintf( SaveFile, "DrMod      %d\n", pMobIndex->dr_mod );
+   fprintf( SaveFile, "HrMod      %d\n", pMobIndex->hr_mod );
+   fprintf( SaveFile, "Level      %d\n", pMobIndex->level );
+   fprintf( SaveFile, "LongDesc   %s~\n", pMobIndex->long_descr );
+   fprintf( SaveFile, "PlrName    %s~\n", pMobIndex->player_name );
+   fprintf( SaveFile, "Position   %d\n", pMobIndex->position );
+   fprintf( SaveFile, "Race       %d\n", pMobIndex->race );
+   fprintf( SaveFile, "RaceMods   %d\n", pMobIndex->race_mods );
+   fprintf( SaveFile, "Resist     %d\n", pMobIndex->resist );
+   fprintf( SaveFile, "ScriptName %s~\n", pMobIndex->script_name );
+   fprintf( SaveFile, "Sex        %d\n", pMobIndex->sex );
+   fprintf( SaveFile, "ShortDesc  %s~\n", pMobIndex->short_descr );
+   fprintf( SaveFile, "Skills     %d\n", pMobIndex->skills );
+   fprintf( SaveFile, "SMagic     %d\n", pMobIndex->strong_magic );
+   fprintf( SaveFile, "SpecFun    %s\n", rev_spec_lookup(pMobIndex->spec_fun) );
+   fprintf( SaveFile, "Suscept    %d\n", pMobIndex->suscept );
+   fprintf( SaveFile, "WMagic     %d\n", pMobIndex->weak_magic );
    fprintf( SaveFile, "End\n" );
 
    Pointer = Pointer->next;
@@ -546,12 +547,12 @@ void build_save_end(  )
    /*
     * Save backup 
     */
-   snprintf( filename, 255, "%s.old", CurSaveArea->filename );
+   snprintf( filename, 255, "%s%s.old", AREA_DIR, CurSaveArea->filename );
    rename( CurSaveArea->filename, filename );
    /*
     * And rename .new to area filename 
     */
-   snprintf( filename, 255, "%s.new", CurSaveArea->filename );
+   snprintf( filename, 255, "%s%s.new", AREA_DIR, CurSaveArea->filename );
    rename( filename, CurSaveArea->filename );
 
    Section = 0;

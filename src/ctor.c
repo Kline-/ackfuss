@@ -20,6 +20,10 @@
 #include "hash.h"
 #endif
 
+#ifndef DEC_LUASCRIPT_H
+#include "h/luascript.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif
@@ -190,6 +194,7 @@ char_data::char_data()
  in_room = NULL;
  is_free = false;
  is_quitting = false;
+ L = NULL;
  last_affect = NULL;
  last_carry = NULL;
  last_note = 0;
@@ -384,6 +389,7 @@ mob_index_data::mob_index_data()
  race = 0;
  race_mods = 0;
  resist = 0;
+ script_name = &str_empty[0];
  sex = 0;
  short_descr = &str_empty[0];
  skills = 0;
@@ -553,7 +559,6 @@ pc_data::pc_data()
 #ifdef IMC
  imcchardata = NULL;
 #endif
- is_free = false;
  lastlogin = str_dup("Unknown!");
  for( short i = 0; i < MAX_SKILL; i++ )
   learned[i] = 0;
@@ -573,7 +578,6 @@ pc_data::pc_data()
  monitor.reset();
  move_from_gain = 0;
  movement = 0;
- next = NULL;
  for( short i = 0; i < MAX_CLASS; i++ )
   order[i] = 0;
  pagelen = 0;
@@ -585,7 +589,6 @@ pc_data::pc_data()
  perm_int = 0;
  perm_str = 0;
  perm_wis = 0;
- prev = NULL;
  pwd = &str_empty[0];
  quest_info = new QUEST_INFO;
  quest_points = 0;
@@ -599,7 +602,7 @@ pc_data::pc_data()
  term_rows = 0;
  title = &str_empty[0];
  valid_email = false;
- who_name = str_dup("off");;
+ who_name = str_dup("off");
 }
 
 quest_info::quest_info()

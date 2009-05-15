@@ -59,6 +59,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_LUASCRIPT_H
+#include "h/luascript.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
 #endif
@@ -701,6 +705,9 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata = new PC_DATA;
 
       d->character = ch;
+
+      ch->L = luaL_newstate();
+      init_lua(ch);
 
       ch->pcdata->super->energy = 24;
       ch->pcdata->perm_str = 13;

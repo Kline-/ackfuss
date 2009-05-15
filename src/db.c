@@ -72,6 +72,10 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_LUASCRIPT_H
+#include "h/luascript.h"
+#endif
+
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
 #endif
@@ -955,7 +959,6 @@ void load_mobile( FILE * fp )
     hang( "Loading Mobiles in db.c" );
    }
 
-
    pMobIndex = new MOB_INDEX_DATA;
    pMobIndex->area = area_load;
 
@@ -1026,6 +1029,7 @@ void load_mobile( FILE * fp )
             break;
 
          case 'S':
+            SKEY("ScriptName",pMobIndex->script_name,fread_string(fp));
             KEY("Sex",pMobIndex->sex,fread_number(fp));
             SKEY("ShortDesc",pMobIndex->short_descr,fread_string(fp));
             KEY("Skills",pMobIndex->skills,fread_number(fp));
@@ -2543,7 +2547,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
       hang( "Create Mobile in db.c" );
    }
 
-
    if( pMobIndex->act.test(ACT_INTELLIGENT) )
    {
       /*
@@ -2566,6 +2569,12 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
       mob->name = str_dup( buf );
    else
       mob->name = str_dup( pMobIndex->player_name );
+
+   if( pMobIndex->script_name != &str_empty[0] ) /* Mob has a script attached */
+   {
+    mob->L = luaL_newstate();
+    init_lua(mob);
+   }
 
    mob->npcdata->short_descr = str_dup( pMobIndex->short_descr );
    mob->long_descr = str_dup( pMobIndex->long_descr );

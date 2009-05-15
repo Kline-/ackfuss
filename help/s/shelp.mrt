@@ -1,0 +1,5 @@
+SHELP
+
+Shelp is the help system for all skills and spells. Shelp will display detailed information
+about a given skill or spell. Search exactly as the spell is spelled, for example: to display
+the shelp for cloak:reflect use "shelp cloak:reflect". For magic missile you would shelp magic missile.

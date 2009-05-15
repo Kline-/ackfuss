@@ -664,7 +664,7 @@ End
 
 #ROOM
 Vnum  1023
-Desc  @@yT@@bhe northern wall of @@yC@@balor can be seen to the north; towering over the city and casting a dark shadow. This room serves as a critical choke point in the city's defense. The sound of the market square can still be heard to the sout@@yh.@@N~
+Desc  @@yT@@bhe northern wall of @@yC@@balor can be seen to the north; towering over the city and casting a dark shadow. This room serves as a critical choke point in the city's defense. The sound of the market square can still be heard to the south, while a manhole provides access to the sewers belo@@yw.@@N~
 Flags EOL
 Name  @@yB@@before the @@yN@@borthern @@yW@@ball@@N~
 Sect  1
@@ -684,6 +684,14 @@ Flags   EOL
 Key     0
 Keyword ~
 Vnum    1004
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   1 EOL
+Key     0
+Keyword manhole~
+Vnum    1086
 End
 
 #ROOM
@@ -1048,7 +1056,7 @@ End
 
 #ROOM
 Vnum  1037
-Desc  @@yT@@bhe southern wall of @@yC@@balor can be seen to the south; towering over the city and casting a dark shadow. This room serves as a critical choke point in the city's defense. The sound of the market square can still be heard to the nort@@yh.@@N~
+Desc  @@yT@@bhe southern wall of @@yC@@balor can be seen to the south; towering over the city and casting a dark shadow. This room serves as a critical choke point in the city's defense. The sound of the market square can still be heard to the north, while a manhole provides access to the sewers belo@@yw.@@N~
 Flags EOL
 Name  @@yB@@before the @@yS@@bouthern @@yW@@ball@@N~
 Sect  1
@@ -1068,6 +1076,14 @@ Flags   EOL
 Key     0
 Keyword ~
 Vnum    1036
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   1 EOL
+Key     0
+Keyword manhole~
+Vnum    1090
 End
 
 #ROOM
@@ -2583,5 +2599,7 @@ G 1037 0
 
 G 1035 0 
 
+D 1037 5 1 
+D 1023 5 1 
 S
 #$

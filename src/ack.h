@@ -31,6 +31,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 #include <bitset>
+#include <lua.hpp>
 
 #define DEC_ACK_H
 
@@ -535,6 +536,7 @@ class mob_index_data
   short race;
   int race_mods;
   int resist;
+  char *script_name;
   short sex;
   char *short_descr;
   int skills;
@@ -606,6 +608,7 @@ class char_data
   ROOM_INDEX_DATA *in_room;
   bool is_free;
   bool is_quitting;
+  lua_State *L; /* Lua scripting */
   AFFECT_DATA *last_affect;
   OBJ_DATA *last_carry;
   time_t last_note;
@@ -716,7 +719,6 @@ class pc_data
 #ifdef IMC
   IMC_CHARDATA *imcchardata;
 #endif
-  bool is_free;
   char *lastlogin;
   short learned[MAX_SKILL];
   char *load_msg;
@@ -735,7 +737,6 @@ class pc_data
   std::bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
   int move_from_gain;
   short movement; /* Quick movement */
-  PC_DATA *next;
   short order[MAX_CLASS];   /* Class Order */
   short pagelen;
   char *pedit_state;
@@ -745,7 +746,6 @@ class pc_data
   short perm_int;
   short perm_str;
   short perm_wis;
-  PC_DATA *prev;
   char *pwd;
   QUEST_INFO *quest_info;
   short quest_points;

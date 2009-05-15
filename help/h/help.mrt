@@ -1,0 +1,7 @@
+HELP
+
+You used the help command to get here, how clever! :D Help will first search for a
+helpfile with your specified keyword, and if none is found, attempt to search for a
+plural, ie: help room -> not found -> attempts help rooms -> found. You can also
+search the titles of all helpfiles with @@ahelp -find <string>@@N or search for
+keywords within all helpfiles with @@ahelp -search <string>@@N.

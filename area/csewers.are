@@ -1,0 +1,1280 @@
+#AREA
+Revision  22
+CanRead   Kline~
+CanWrite  Kline~
+Flags     5 EOL
+Keyword   ~
+LevLabel  @@W[@@r01@@W-@@r05@@W]@@N~
+LevRange  1 5
+Name      @@yC@@balor @@dS@@ge@@dw@@ge@@drs@@N~
+Number    8
+Owner     Kline~
+ResetMsg  off~
+ResetRate 10
+VnumRange 1086 1135
+End
+
+#ROOM
+Vnum  1086
+Desc  ~
+Flags 3 EOL
+Name  @@dBeneath the @@gNorth @@dManhole@@N~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1112
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1118
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1087
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1117
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   1 EOL
+Key     0
+Keyword ~
+Vnum    1023
+End
+
+#ROOM
+Vnum  1087
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1086
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1095
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1088
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1091
+End
+
+#ROOM
+Vnum  1088
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1087
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1120
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1089
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1119
+End
+
+#ROOM
+Vnum  1089
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1088
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1103
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1090
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1099
+End
+
+#ROOM
+Vnum  1090
+Desc  ~
+Flags EOL
+Name  @@dBeneath the @@gSouth @@dManhole@@N~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1089
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1134
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1107
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1133
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   1 EOL
+Key     0
+Keyword ~
+Vnum    1037
+End
+
+#ROOM
+Vnum  1091
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1117
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1087
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1119
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1092
+End
+
+#ROOM
+Vnum  1092
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1093
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1091
+End
+
+#ROOM
+Vnum  1093
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1092
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1094
+End
+
+#ROOM
+Vnum  1094
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1093
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1121
+End
+
+#ROOM
+Vnum  1095
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1118
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1096
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1120
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1087
+End
+
+#ROOM
+Vnum  1096
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1097
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1095
+End
+
+#ROOM
+Vnum  1097
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1098
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1096
+End
+
+#ROOM
+Vnum  1098
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1097
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1124
+End
+
+#ROOM
+Vnum  1099
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1089
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1100
+End
+
+#ROOM
+Vnum  1100
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1099
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1101
+End
+
+#ROOM
+Vnum  1101
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1100
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1102
+End
+
+#ROOM
+Vnum  1102
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1101
+End
+
+#ROOM
+Vnum  1103
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1104
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1089
+End
+
+#ROOM
+Vnum  1104
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1105
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1103
+End
+
+#ROOM
+Vnum  1105
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1104
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1106
+End
+
+#ROOM
+Vnum  1106
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1105
+End
+
+#ROOM
+Vnum  1107
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1090
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1110
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1135
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1108
+End
+
+#ROOM
+Vnum  1108
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1109
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1107
+End
+
+#ROOM
+Vnum  1109
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1108
+End
+
+#ROOM
+Vnum  1110
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1111
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1107
+End
+
+#ROOM
+Vnum  1111
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1110
+End
+
+#ROOM
+Vnum  1112
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1115
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1086
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1113
+End
+
+#ROOM
+Vnum  1113
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1112
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1114
+End
+
+#ROOM
+Vnum  1114
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1113
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1127
+End
+
+#ROOM
+Vnum  1115
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1116
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1112
+End
+
+#ROOM
+Vnum  1116
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1115
+End
+#DOOR
+Dir     5
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1130
+End
+
+#ROOM
+Vnum  1117
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1086
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1091
+End
+
+#ROOM
+Vnum  1118
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1095
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1086
+End
+
+#ROOM
+Vnum  1119
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1091
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1088
+End
+
+#ROOM
+Vnum  1120
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1095
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1088
+End
+
+#ROOM
+Vnum  1121
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1122
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1094
+End
+
+#ROOM
+Vnum  1122
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1123
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1121
+End
+
+#ROOM
+Vnum  1123
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1122
+End
+
+#ROOM
+Vnum  1124
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1125
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1098
+End
+
+#ROOM
+Vnum  1125
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1124
+End
+#DOOR
+Dir     2
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1126
+End
+
+#ROOM
+Vnum  1126
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1125
+End
+
+#ROOM
+Vnum  1127
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1128
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1114
+End
+
+#ROOM
+Vnum  1128
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1129
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1127
+End
+
+#ROOM
+Vnum  1129
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1128
+End
+
+#ROOM
+Vnum  1130
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1131
+End
+#DOOR
+Dir     4
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1116
+End
+
+#ROOM
+Vnum  1131
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1130
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1132
+End
+
+#ROOM
+Vnum  1132
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1131
+End
+
+#ROOM
+Vnum  1133
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     1
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1090
+End
+
+#ROOM
+Vnum  1134
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     3
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1090
+End
+
+#ROOM
+Vnum  1135
+Desc  ~
+Flags EOL
+Name  New Room~
+Sect  11
+End
+#DOOR
+Dir     0
+Desc    ~
+Flags   EOL
+Key     0
+Keyword ~
+Vnum    1107
+End
+#$
