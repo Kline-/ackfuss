@@ -1,4 +1,4 @@
-CC   = ccache g++
+CC   = g++
 VERS = AckFUSS 4.4.1
 #PROF    = -pg
 
