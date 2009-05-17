@@ -564,7 +564,6 @@ class char_data
 
   std::bitset<MAX_BITSET> act;
   int act_build; /* for setting what ya editing */
-  short ac_mod; /* ac modifier */
   int adept_level;
   int affected_by;
   short alignment;
@@ -574,18 +573,15 @@ class char_data
   int build_vnum;   /* the current vnum for w-y-e  */
   short carry_number;
   float carry_weight;
-  int cast;
   CAST_DATA *casting;
   short clan;   /* need to convert from pcdata to this */
   float cooldown[MAX_COOLDOWN];
   BRAND_DATA *current_brand;
   short damroll;
-  int def;
   std::bitset<MAX_BITSET> deaf;
   short death_cnt;
   DESCRIPTOR_DATA *desc;
   char *description;
-  short dr_mod; /* damroll modifier */
   int exp;
   short extract_timer;   /* same as object timer, only use for charmies */
   CHAR_DATA *fighting;
@@ -596,7 +592,6 @@ class char_data
   int gold;
   int hit;
   short hitroll;
-  short hr_mod; /* hitroll modifier */
   CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
   int hunt_flags;   /* Action flags         */
   CHAR_DATA *hunt_for; /* Employer (crs, mercs)   */
@@ -681,6 +676,11 @@ class npc_data
  public:
   npc_data();
   ~npc_data();
+  short ac_mod;
+  int cast;
+  int def;
+  short dr_mod;
+  short hr_mod;
   NPC_GROUP_DATA *ngroup;
   MOB_INDEX_DATA *pIndexData;
   RESET_DATA *reset;

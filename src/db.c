@@ -2587,9 +2587,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->affected_by = pMobIndex->affected_by;
    mob->alignment = pMobIndex->alignment;
    mob->sex = pMobIndex->sex;
-   mob->ac_mod = pMobIndex->ac_mod;
-   mob->hr_mod = pMobIndex->hr_mod;
-   mob->dr_mod = pMobIndex->dr_mod;
+   mob->npcdata->ac_mod = pMobIndex->ac_mod;
+   mob->npcdata->hr_mod = pMobIndex->hr_mod;
+   mob->npcdata->dr_mod = pMobIndex->dr_mod;
 
    mob->armor = interpolate( mob->level / 2, 100, -100 );
    hold = mob->armor;
@@ -2632,8 +2632,8 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->move = mob->max_move;
 
    mob->npcdata->skills = pMobIndex->skills;
-   mob->cast = pMobIndex->cast;
-   mob->def = pMobIndex->def;
+   mob->npcdata->cast = pMobIndex->cast;
+   mob->npcdata->def = pMobIndex->def;
    mob->p_class = pMobIndex->p_class;
    mob->clan = pMobIndex->clan;
    mob->npcdata->strong_magic = pMobIndex->strong_magic;

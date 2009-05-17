@@ -979,7 +979,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( victim ) )
    {
-      snprintf( buf, MSL, "MODIFIERS: AC: %d.  Hitroll: %d.  Damroll: %d.\r\n", victim->ac_mod, victim->hr_mod, victim->dr_mod );
+      snprintf( buf, MSL, "MODIFIERS: AC: %d.  Hitroll: %d.  Damroll: %d.\r\n", victim->npcdata->ac_mod, victim->npcdata->hr_mod, victim->npcdata->dr_mod );
       strncat( buf1, buf, MSL );
       snprintf( buf, MSL, "TARGET: %s\r\n", victim->target );
       strncat( buf1, buf, MSL );
@@ -6242,6 +6242,10 @@ void do_lua( CHAR_DATA *ch, char *argument )
  std::string str = SCRIPT_DIR;
  str += argument;
  if( ch->L )
+ {
   luaL_dofile(ch->L,str.c_str());
+  const char * sError = lua_tostring(ch->L,-1);
+  ch_printf(ch,"%s",sError);
+ }
  return;
 }

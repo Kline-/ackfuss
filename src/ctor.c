@@ -149,7 +149,6 @@ char_data::char_data()
 {
  act.reset();
  act_build = 0;
- ac_mod = 0;
  adept_level = 0;
  affected_by = 0;
  alignment = 0;
@@ -159,19 +158,16 @@ char_data::char_data()
  build_vnum = 0;
  carry_number = 0;
  carry_weight = 0;
- cast = 0;
  casting = new CAST_DATA;
  clan = 0;
  for( short i = 0; i < MAX_COOLDOWN; i++ )
   cooldown[i] = 0;
  current_brand = NULL;
  damroll = 5;
- def = 0;
  deaf.reset();
  death_cnt = 0;
  desc = NULL;
  description = &str_empty[0];
- dr_mod = 0;
  exp = 0;
  extract_timer = 0;
  fighting = NULL;
@@ -182,7 +178,6 @@ char_data::char_data()
  gold = 0;
  hit = 50;
  hitroll = 5;
- hr_mod = 0;
  hunting = NULL;
  hunt_flags = 0;
  hunt_for = NULL;
@@ -425,6 +420,11 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
+ ac_mod = 0;
+ cast = 0;
+ def = 0;
+ dr_mod = 0;
+ hr_mod = 0;
  ngroup = NULL;
  pIndexData = NULL;
  reset = NULL;

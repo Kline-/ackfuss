@@ -2840,9 +2840,9 @@ void do_consider( CHAR_DATA * ch, char *argument )
     */
    if( IS_NPC( victim ) )
    {
-      diff += victim->hr_mod / 4;
-      diff += victim->dr_mod / 4;
-      diff -= victim->ac_mod / 30;
+      diff += victim->npcdata->hr_mod / 4;
+      diff += victim->npcdata->dr_mod / 4;
+      diff -= victim->npcdata->ac_mod / 30;
    }
 
    if( diff >= 10 )

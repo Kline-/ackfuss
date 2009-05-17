@@ -29,16 +29,33 @@
 #define MUD_LIBRARY  "mud"
 #define CH_STARTUP   SCRIPT_DIR "ch_startup.lua"
 
-#define CH_STR_ITEM(arg) \
-  if (ch->arg)  \
-  {   \
-  lua_pushstring (L, ch->arg);  \
-  lua_setfield (L, -2, #arg); \
-  }
-  
-#define CH_NUM_ITEM(arg) \
-  lua_pushnumber (L, ch->arg);  \
-  lua_setfield (L, -2, #arg)
+#define PUSH_STR(from,x) \
+ lua_pushstring(L,from->x); \
+ lua_setfield(L,-2,#x)
+
+#define PUSH_STRA(from,x,max) \
+ lua_newtable(L); \
+ for( int i = 0; i < max; ) \
+ { \
+  lua_pushstring(L,from->x[i]); \
+  i++; \
+  lua_rawseti(L,-2,i); \
+ } \
+ lua_setfield(L,-2,#x)
+
+#define PUSH_NUM(from,x) \
+ lua_pushnumber(L,from->x); \
+ lua_setfield(L,-2,#x)
+
+#define PUSH_NUMA(from,x,max) \
+ lua_newtable(L); \
+ for( int i = 0; i < max; ) \
+ { \
+  lua_pushnumber(L,from->x[i]); \
+  i++; \
+  lua_rawseti(L,-2,i); \
+ } \
+ lua_setfield(L,-2,#x)
 
 static const struct luaL_reg mudlib [] = 
 {
@@ -169,9 +186,116 @@ int L_character_info( lua_State *L )
  lua_newtable(L);  /* table for the info */
   
  /* strings */
- CH_STR_ITEM(name);
- CH_STR_ITEM(long_descr);
- CH_STR_ITEM(description);
+ PUSH_STR(ch,description);
+ PUSH_STR(ch,long_descr);
+ PUSH_STR(ch,long_descr_orig);
+ PUSH_STR(ch,name);
+ PUSH_STR(ch,old_prompt);
+ PUSH_STR(ch,prompt);
+ PUSH_STR(ch,searching);
+ PUSH_STR(ch,target);
+
+ /* numbers */
+ PUSH_NUM(ch,adept_level);
+ PUSH_NUM(ch,alignment);
+ PUSH_NUM(ch,armor);
+ PUSH_NUM(ch,carry_number);
+ PUSH_NUM(ch,carry_weight);
+ PUSH_NUM(ch,clan);
+ PUSH_NUMA(ch,cooldown,MAX_COOLDOWN);
+ PUSH_NUM(ch,damroll);
+ PUSH_NUM(ch,death_cnt);
+ PUSH_NUM(ch,exp);
+ PUSH_NUM(ch,extract_timer);
+ PUSH_NUM(ch,hit);
+ PUSH_NUM(ch,hitroll);
+ PUSH_NUM(ch,incog);
+ PUSH_NUM(ch,invis);
+ PUSH_NUM(ch,level);
+ PUSH_NUMA(ch,lvl,MAX_CLASS);
+ PUSH_NUMA(ch,lvl2,MAX_CLASS);
+ PUSH_NUM(ch,mana);
+ PUSH_NUM(ch,max_hit);
+ PUSH_NUM(ch,max_mana);
+ PUSH_NUM(ch,max_move);
+ PUSH_NUM(ch,move);
+ PUSH_NUM(ch,npc);
+ PUSH_NUM(ch,num_followers);
+ PUSH_NUM(ch,played);
+ PUSH_NUM(ch,poly_level);
+ PUSH_NUM(ch,position);
+ PUSH_NUM(ch,practice);
+ PUSH_NUM(ch,p_class);
+ PUSH_NUM(ch,race);
+ PUSH_NUM(ch,saving_throw);
+ PUSH_NUM(ch,sentence);
+ PUSH_NUM(ch,sex);
+ PUSH_NUMA(ch,speed,MAX_SPEED);
+ PUSH_NUM(ch,stance);
+ PUSH_NUM(ch,stun_timer);
+ PUSH_NUM(ch,switched);
+ PUSH_NUM(ch,timer);
+ PUSH_NUM(ch,trust);
+ PUSH_NUM(ch,wait);
+ PUSH_NUM(ch,wimpy);
+ PUSH_NUM(ch,wizbit);
+
+ if( !IS_NPC(ch) )
+ {
+  lua_newtable(L);
+  /* strings */
+  PUSH_STR(ch->pcdata,assist_msg);
+  PUSH_STR(ch->pcdata,bamfin);
+  PUSH_STR(ch->pcdata,bamfout);
+  PUSH_STR(ch->pcdata,email_address);
+  PUSH_STR(ch->pcdata,load_msg);
+  PUSH_STR(ch->pcdata,room_enter);
+  PUSH_STR(ch->pcdata,room_exit);
+  PUSH_STR(ch->pcdata,title);
+  PUSH_STR(ch->pcdata,who_name);
+
+  /* numbers */
+  PUSH_NUMA(ch->pcdata,condition,MAX_COND);
+  PUSH_NUMA(ch->pcdata,learned,MAX_SKILL);
+  PUSH_NUM(ch->pcdata,max_con);
+  PUSH_NUM(ch->pcdata,max_dex);
+  PUSH_NUM(ch->pcdata,max_int);
+  PUSH_NUM(ch->pcdata,max_str);
+  PUSH_NUM(ch->pcdata,max_wis);
+  PUSH_NUM(ch->pcdata,mod_con);
+  PUSH_NUM(ch->pcdata,mod_dex);
+  PUSH_NUM(ch->pcdata,mod_int);
+  PUSH_NUM(ch->pcdata,mod_str);
+  PUSH_NUM(ch->pcdata,mod_wis);
+  PUSH_NUMA(ch->pcdata,order,MAX_CLASS);
+  PUSH_NUM(ch->pcdata,perm_con);
+  PUSH_NUM(ch->pcdata,perm_dex);
+  PUSH_NUM(ch->pcdata,perm_int);
+  PUSH_NUM(ch->pcdata,perm_str);
+  PUSH_NUM(ch->pcdata,perm_wis);
+  PUSH_NUM(ch->pcdata,quest_points);
+  PUSH_NUM(ch->pcdata,recall_vnum);
+  PUSH_NUM(ch->pcdata,ruler_rank);
+
+  lua_setfield(L,-2,"pcdata");
+ }
+ else
+ {
+  lua_newtable(L);
+  /* strings */
+  PUSH_STR(ch->npcdata,short_descr);
+
+  /* numbers */
+  PUSH_NUM(ch->npcdata,cast);
+  PUSH_NUM(ch->npcdata,def);
+  PUSH_NUM(ch->npcdata,resist);
+  PUSH_NUM(ch->npcdata,skills);
+  PUSH_NUM(ch->npcdata,strong_magic);
+  PUSH_NUM(ch->npcdata,suscept);
+  PUSH_NUM(ch->npcdata,weak_magic);
+
+  lua_setfield(L,-2,"npcdata");
+ }
 
  return 1;
 }

@@ -351,11 +351,11 @@ void violence_update( void )
       }
 
       area_resetting_global = TRUE;
-      if( IS_NPC( ch ) && !IS_SET( ch->def, DEF_NONE ) && ch->hit > 0 )
+      if( IS_NPC( ch ) && !IS_SET( ch->npcdata->def, DEF_NONE ) && ch->hit > 0 )
       {
          if( ch->hit < ch->max_hit * 2 / 3 )
          {
-            if( IS_SET( ch->def, DEF_CURE_LIGHT ) )
+            if( IS_SET( ch->npcdata->def, DEF_CURE_LIGHT ) )
             {
                if( ch->mana > mana_cost( ch, skill_lookup( "cure light" ) ) )
                {
@@ -363,7 +363,7 @@ void violence_update( void )
                   has_cast = TRUE;
                }
             }
-            else if( IS_SET( ch->def, DEF_CURE_SERIOUS ) )
+            else if( IS_SET( ch->npcdata->def, DEF_CURE_SERIOUS ) )
             {
                if( ch->mana > mana_cost( ch, skill_lookup( "cure serious" ) ) )
                {
@@ -371,7 +371,7 @@ void violence_update( void )
                   has_cast = TRUE;
                }
             }
-            else if( IS_SET( ch->def, DEF_CURE_CRITIC ) )
+            else if( IS_SET( ch->npcdata->def, DEF_CURE_CRITIC ) )
             {
                if( ch->mana > mana_cost( ch, skill_lookup( "cure critical" ) ) )
                {
@@ -379,7 +379,7 @@ void violence_update( void )
                   has_cast = TRUE;
                }
             }
-            else if( IS_SET( ch->def, DEF_CURE_HEAL ) )
+            else if( IS_SET( ch->npcdata->def, DEF_CURE_HEAL ) )
             {
                if( ch->mana > mana_cost( ch, skill_lookup( "heal" ) ) )
                {
@@ -400,10 +400,10 @@ void violence_update( void )
       }
 
       if( ( IS_NPC( ch ) )
-          && ( !IS_SET( ch->def, DEF_NONE ) )
+          && ( !IS_SET( ch->npcdata->def, DEF_NONE ) )
           && ( ch->hit > 0 ) && ( ch->first_shield == NULL ) && ( !has_cast ) && ( ch->fighting == NULL ) )
       {
-         if( ( IS_SET( ch->def, DEF_SHIELD_FIRE ) )
+         if( ( IS_SET( ch->npcdata->def, DEF_SHIELD_FIRE ) )
              && ( !is_affected( ch, skill_lookup( "fireshield" ) ) )
              && ( ch->mana > mana_cost( ch, skill_lookup( "fireshield" ) ) ) )
          {
@@ -411,7 +411,7 @@ void violence_update( void )
             has_cast = TRUE;
          }
          else
-            if( ( IS_SET( ch->def, DEF_SHIELD_ICE ) )
+            if( ( IS_SET( ch->npcdata->def, DEF_SHIELD_ICE ) )
                 && ( !is_affected( ch, skill_lookup( "iceshield" ) ) )
                 && ( ch->mana > mana_cost( ch, skill_lookup( "iceshield" ) ) ) )
          {
@@ -419,7 +419,7 @@ void violence_update( void )
             has_cast = TRUE;
          }
          else
-            if( ( IS_SET( ch->def, DEF_SHIELD_SHOCK ) )
+            if( ( IS_SET( ch->npcdata->def, DEF_SHIELD_SHOCK ) )
                 && ( !is_affected( ch, skill_lookup( "shockshield" ) ) )
                 && ( ch->mana > mana_cost( ch, skill_lookup( "shockshield" ) ) ) )
          {
@@ -431,7 +431,7 @@ void violence_update( void )
 /* Offensive spell handler, only use when actually fighting.. */
 
       if( ( IS_NPC( ch ) )
-          && ( ch->cast > 1 )
+          && ( ch->npcdata->cast > 1 )
           && ( !has_cast )
           && ( ch->position > POS_RESTING )
           && ( ch->fighting != NULL )
@@ -446,7 +446,7 @@ void violence_update( void )
          {
             for( index = 1; index < 32; index++ )
             {
-               if( ( IS_SET( ch->cast, ( 1 << index ) ) )
+               if( ( IS_SET( ch->npcdata->cast, ( 1 << index ) ) )
                    && ( number_range( 0, 99 ) < ( index * 3 + number_range( 0, 25 ) ) )
                    && ( ch->mana > mana_cost( ch, skill_lookup( rev_table_lookup( tab_cast_name, ( 1 << index ) ) ) ) ) )
                {

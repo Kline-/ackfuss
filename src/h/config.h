@@ -1305,7 +1305,7 @@
 #define MSSP_GAMEPLAY     "Hack and Slash"                     //Kill lots of mobs!
 #define MSSP_GAMESYSTEM   "Custom"                             //Cuz AckFUSS is so badass
 #define MSSP_INTERMUD     "IMC2"                               //Included by default
-#define MSSP_STATUS       "CLOSED BETA"                        //Dev game is always closed
+#define MSSP_STATUS       "Closed Beta"                        //Dev game is always closed
 #define MSSP_SUBGENRE     "Medieval Fantasy"                   //Duh...
 #define MSSP_CLASSES      11                                   //5 mort + 5 remort + 1 adept
 #define MSSP_RACES        19                                   //Total count so far
