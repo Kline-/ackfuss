@@ -596,6 +596,12 @@ void build_showobj( CHAR_DATA * ch, char *argument )
       strncat( buf1, buf, MSL );
    }
 
+   if( obj->script_name != &str_empty[0] )
+   {
+      snprintf( buf, MSL, "@@WObject has Lua script: @@y%s\r\n", obj->script_name );
+      strncat( buf1, buf, MSL );
+   }
+
    if( obj->first_exdesc != NULL )
    {
       EXTRA_DESCR_DATA *ed;
@@ -2410,8 +2416,9 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       send_to_char( "  level extra wear weight aff type durability\r\n", ch );
       send_to_char( "\r\n", ch );
       send_to_char( "String being one of:\r\n", ch );
-      send_to_char( "  name short long ed objfun\r\n", ch );
+      send_to_char( "  name short long ed objfun script\r\n", ch );
       send_to_char( "Use [set] objfun - to clear objfun.\r\n", ch );
+      send_to_char( "Use [set] script - to clear script\r\n", ch );
       return;
    }
 
@@ -2612,6 +2619,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
             return;
 
          pObj->obj_fun = NULL;
+         area_modified( pArea );
 
          return;
       }
@@ -2628,7 +2636,20 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       return;
    }
 
+   if( !str_cmp( arg2, "script" ) )
+   {
+      if( arg3[0] == '-' )
+      {
+       free_string(pObj->script_name);
+       pObj->script_name = &str_empty[0];
+       area_modified( pArea );
+       return;
+      }
 
+      pObj->script_name = str_dup(arg3);
+      area_modified( pArea );
+      return;
+   }
 
    if( !str_cmp( arg2, "extra" ) )
    {

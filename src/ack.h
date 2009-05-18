@@ -826,6 +826,7 @@ class obj_index_data
    OBJ_INDEX_DATA *next;
    OBJ_FUN *obj_fun;
    char *owner;
+   char *script_name;
    char *short_descr;
    float speed;
    int value[MAX_OBJ_VALUE];
@@ -866,6 +867,7 @@ class obj_data
    ROOM_INDEX_DATA *in_room;
    char *owner;
    char *name;
+   char *script_name;
    char *short_descr;
    char *long_descr;
    int item_type;
@@ -883,6 +885,7 @@ class obj_data
    MONEY_TYPE *money;
    float speed;
    RESET_DATA *reset;
+   lua_State *L;
 };
 
 /*

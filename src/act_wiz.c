@@ -393,11 +393,24 @@ void do_echo( CHAR_DATA * ch, char *argument )
    return;
 }
 
+void recho( ROOM_INDEX_DATA *room, const char *argument )
+{
+ std::string str = argument;
+ DESCRIPTOR_DATA *d;
 
+ str += "@@N\r\n";
+
+ for( d = first_desc; d; d = d->next )
+ {
+  if( d->connected == CON_PLAYING && d->character->in_room == room )
+   send_to_char(str.c_str(),d->character);
+ }
+
+ return;
+}
 
 void do_recho( CHAR_DATA * ch, char *argument )
 {
-   DESCRIPTOR_DATA *d;
 
    if( argument[0] == '\0' )
    {
@@ -405,14 +418,7 @@ void do_recho( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   for( d = first_desc; d; d = d->next )
-   {
-      if( d->connected == CON_PLAYING && d->character->in_room == ch->in_room )
-      {
-         send_to_char( argument, d->character );
-         send_to_char( "@@g\r\n", d->character );
-      }
-   }
+   recho(ch->in_room,argument);
 
    return;
 }
@@ -796,6 +802,18 @@ void do_ostat( CHAR_DATA * ch, char *argument )
 
    snprintf(buf, MSL, "Speed %4.2f\r\n", obj->speed);
    strncat(buf1,buf,MSL);
+
+   if( obj->obj_fun != NULL )
+   {
+      snprintf( buf, MSL, "@@WObject has objfun: @@y%s.@@N\r\n", rev_obj_fun_lookup( obj->obj_fun ) );
+      strncat( buf1, buf, MSL );
+   }
+
+   if( obj->pIndexData->script_name != &str_empty[0] )
+   {
+      snprintf( buf, MSL, "@@WObject has Lua script: @@y%s@@N\r\n", obj->pIndexData->script_name );
+      strncat( buf1, buf, MSL );
+   }
 
    snprintf( buf, MSL,
             "In room: %d.  In object: %s.  Carried by: %s.  Wear_loc: %d.\r\n",
@@ -3330,7 +3348,7 @@ void do_oset( CHAR_DATA * ch, char *argument )
       send_to_char( "  extra wear level weight cost timer durability\r\n", ch );
       send_to_char( "\r\n", ch );
       send_to_char( "String being one of:\r\n", ch );
-      send_to_char( "  name short long ed\r\n", ch );
+      send_to_char( "  name short long ed script\r\n", ch );
       return;
    }
 
@@ -3504,6 +3522,16 @@ void do_oset( CHAR_DATA * ch, char *argument )
    {
       free_string( obj->long_descr );
       obj->long_descr = str_dup( arg3 );
+      return;
+   }
+
+   if( !str_cmp( arg2, "script" ) )
+   {
+      free_string( obj->script_name );
+      if( !str_cmp( arg3, "-" ) )
+       obj->script_name = &str_empty[0];
+      else
+       obj->script_name = str_dup( arg3 );
       return;
    }
 
@@ -6245,7 +6273,31 @@ void do_lua( CHAR_DATA *ch, char *argument )
  {
   luaL_dofile(ch->L,str.c_str());
   const char * sError = lua_tostring(ch->L,-1);
-  ch_printf(ch,"%s",sError);
+  if( str_cmp(sError,"(null)") && sError != NULL )
+   monitor_chan(sError,MONITOR_DEBUG);
  }
+ return;
+}
+
+void do_olua( CHAR_DATA *ch, char *argument )
+{
+ char arg[MSL];
+
+ argument = one_argument(argument,arg);
+ std::string str = SCRIPT_DIR;
+ str += argument;
+ OBJ_DATA *obj;
+
+ if( (obj = get_obj_world(ch,arg)) == NULL )
+  return;
+
+ if( obj->L )
+ {
+  luaL_dofile(obj->L,str.c_str());
+  const char * sError = lua_tostring(obj->L,-1);
+  if( str_cmp(sError,"(null)") && sError != NULL )
+   monitor_chan(sError,MONITOR_DEBUG);
+ }
+
  return;
 }

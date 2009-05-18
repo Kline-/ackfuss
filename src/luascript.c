@@ -9,6 +9,10 @@
 
 #include "globals.h"
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -26,8 +30,10 @@
 #endif
 
 #define CH_STATE     "ch.state"
+#define OBJ_STATE    "obj.state"
 #define MUD_LIBRARY  "mud"
 #define CH_STARTUP   SCRIPT_DIR "ch_startup.lua"
+#define OBJ_STARTUP  SCRIPT_DIR "obj_startup.lua"
 
 #define PUSH_STR(from,x) \
  lua_pushstring(L,from->x); \
@@ -61,6 +67,7 @@ static const struct luaL_reg mudlib [] =
 {
  {"char_info",    L_character_info},
  {"send_to_char", L_send_to_char  },
+ {"recho",        L_recho         },
  {NULL, NULL}
 };
 
@@ -79,11 +86,33 @@ void init_lua( CHAR_DATA *ch )
  {
   const char * sError = lua_tostring(ch->L,-1);
 
-  if( IS_IMMORTAL(ch) )
-   ch_printf(ch,"Error loading Lua startup file:\n %s\n",sError);
+  snprintf(log_buf,(2 * MIL),"Error loading ch Lua startup file:\n %s\n",sError);
+  monitor_chan(log_buf,MONITOR_DEBUG);
  }
 
  lua_settop(ch->L,0); /* get rid of stuff lying around */
+ return;
+}
+
+void init_lua( OBJ_DATA *obj )
+{
+ luaL_openlibs(obj->L);
+
+ lua_pushcfunction(obj->L,RegisterLuaRoutines);
+ lua_pushstring(obj->L,OBJ_STATE);
+ lua_pushlightuserdata(obj->L,(void *)obj);
+ lua_call(obj->L,2,0);
+
+ if( luaL_loadfile(obj->L,OBJ_STARTUP) || CallLuaWithTraceBack(obj->L,0,0) )
+ {
+  const char * sError = lua_tostring(obj->L,-1);
+
+  snprintf(log_buf,(2 * MIL),"Error loading obj Lua startup file:\n %s\n",sError);
+  monitor_chan(log_buf,MONITOR_DEBUG);
+ }
+
+ lua_settop(obj->L,0);
+ return;
 }
 
 int RegisterLuaRoutines( lua_State *L )
@@ -150,6 +179,45 @@ void GetTracebackFunction( lua_State *L )
  }
 
  lua_remove (L, -2);   /* remove debug table, leave traceback function  */
+}
+
+ROOM_INDEX_DATA *L_getroom( lua_State *L )
+{
+ CHAR_DATA *ch, *cv;
+ OBJ_DATA *ob, *ov;
+ std::list<CHAR_DATA *>::iterator ci;
+ std::list<OBJ_DATA *>::iterator oi;
+
+ for( ci = char_list.begin(); ci != char_list.end(); ci++ )
+ {
+  ch = *ci;
+  if( ch->L == L )
+  {
+   lua_pushstring(L,CH_STATE);
+   lua_gettable(L,LUA_ENVIRONINDEX);
+   cv = (CHAR_DATA *)lua_touserdata(L,-1);
+   lua_pop(L,1);
+   return cv->in_room;
+  }
+ }
+
+ for( oi = obj_list.begin(); oi != obj_list.end(); oi++ )
+ {
+  ob = *oi;
+  if( ob->L == L )
+  {
+   lua_pushstring(L,OBJ_STATE);
+   lua_gettable(L,LUA_ENVIRONINDEX);
+   ov = (OBJ_DATA *)lua_touserdata(L,-1);
+   lua_pop(L,1);
+   if( ov->carried_by )
+    return ov->carried_by->in_room;
+   else
+    return ov->in_room;
+  }
+ }
+
+ return NULL;
 }
 
 CHAR_DATA *L_getchar( lua_State *L )
@@ -303,5 +371,11 @@ int L_character_info( lua_State *L )
 int L_send_to_char( lua_State *L )
 {
  send_to_char(luaL_checkstring(L,1),L_getchar(L));
+ return 0;
+}
+
+int L_recho( lua_State *L )
+{
+ recho(L_getroom(L),luaL_checkstring(L,1));
  return 0;
 }

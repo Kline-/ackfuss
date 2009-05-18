@@ -15,3 +15,5 @@ end
 if ch.npc == 0 then
  fsend("Your title is: %s",ch.pcdata.title)
 end
+
+frsend("%s",ch.name)

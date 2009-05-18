@@ -254,15 +254,19 @@ obj_data::~obj_data()
 
  free_string(name);
  free_string(owner);
+ free_string(script_name);
  free_string(short_descr);
  free_string(long_descr);
  delete money;
+ if( L )
+  lua_close(L);
 }
 
 obj_index_data::~obj_index_data()
 {
  is_free = true;
  free_string(name);
+ free_string(script_name);
  free_string(short_descr);
  free_string(long_descr);
 }

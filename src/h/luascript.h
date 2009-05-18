@@ -16,11 +16,14 @@
 
 /* luascript.c */
 void init_lua P_((CHAR_DATA *ch));
+void init_lua P_((OBJ_DATA *obj));
 int RegisterLuaRoutines P_((lua_State *L));
 int CallLuaWithTraceBack P_((lua_State *L, const int iArguments, const int iReturn));
 void GetTracebackFunction P_((lua_State *L));
+ROOM_INDEX_DATA *L_getroom P_((lua_State *L));
 CHAR_DATA *L_getchar P_((lua_State *L));
 int L_character_info P_((lua_State *L));
 int L_send_to_char P_((lua_State *L));
+int L_recho P_((lua_State *L));
 
 #undef P_

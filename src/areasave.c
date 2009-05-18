@@ -339,6 +339,7 @@ void build_save_objects(  )
    fprintf( SaveFile, "LongDesc   %s~\n", pObjIndex->long_descr );
    fprintf( SaveFile, "Name       %s~\n", pObjIndex->name );
    fprintf( SaveFile, "ObjFun     %s\n", rev_obj_fun_lookup( pObjIndex->obj_fun ) );
+   fprintf( SaveFile, "ScriptName %s~\n", pObjIndex->script_name );
    fprintf( SaveFile, "ShortDesc  %s~\n", pObjIndex->short_descr );
    fprintf( SaveFile, "Speed      %0.2f\n", pObjIndex->speed );
    fprintf( SaveFile, "Type       %d\n", pObjIndex->item_type );
@@ -548,12 +549,14 @@ void build_save_end(  )
     * Save backup 
     */
    snprintf( filename, 255, "%s%s.old", AREA_DIR, CurSaveArea->filename );
-   rename( CurSaveArea->filename, filename );
+   snprintf( buf, MSL, "%s%s", AREA_DIR, CurSaveArea->filename );
+   rename( buf, filename );
    /*
     * And rename .new to area filename 
     */
    snprintf( filename, 255, "%s%s.new", AREA_DIR, CurSaveArea->filename );
-   rename( filename, CurSaveArea->filename );
+   snprintf( buf, MSL, "%s%s", AREA_DIR, CurSaveArea->filename );
+   rename( filename, buf );
 
    Section = 0;
    if( ToBeSaved == ( CurrentSaving + 1 ) % SAVEQUEUESIZE )

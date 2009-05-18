@@ -482,6 +482,7 @@ obj_data::obj_data()
  in_room = NULL;
  owner = &str_empty[0];
  name = &str_empty[0];
+ script_name = &str_empty[0];
  short_descr = &str_empty[0];
  long_descr = &str_empty[0];
  item_type = 0;
@@ -497,6 +498,7 @@ obj_data::obj_data()
  max_durability = 0;
  money = new MONEY_TYPE;
  speed = 1.00;
+ L = NULL;
 
  obj_list.push_back(this);
 }
@@ -522,6 +524,7 @@ obj_index_data::obj_index_data()
  next = NULL;
  obj_fun = NULL;
  owner = &str_empty[0];
+ script_name = &str_empty[0];
  short_descr = &str_empty[0];
  speed = number_speed();
  for( short i = 0; i < MAX_OBJ_VALUE; i++ )

@@ -122,8 +122,8 @@ o/lists.o: lists.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/ssm.h
 o/luascript.o: luascript.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
-  lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/db.h h/handler.h \
-  h/luascript.h
+  lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h h/comm.h h/db.h \
+  h/handler.h h/luascript.h
 o/macros.o: macros.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h h/comm.h h/db.h \

@@ -23,6 +23,7 @@ void do_deny P_((CHAR_DATA *ch, char *argument));
 void do_disconnect P_((CHAR_DATA *ch, char *argument));
 void do_pardon P_((CHAR_DATA *ch, char *argument));
 void do_echo P_((CHAR_DATA *ch, char *argument));
+void recho P_((ROOM_INDEX_DATA *room, const char *argument));
 void do_recho P_((CHAR_DATA *ch, char *argument));
 ROOM_INDEX_DATA *find_location P_((CHAR_DATA *ch, char *arg));
 void do_transfer P_((CHAR_DATA *ch, char *argument));
@@ -105,5 +106,6 @@ void do_hotreboo P_((CHAR_DATA *ch, char *argument));
 void do_hotreboot P_((CHAR_DATA *ch, char *argument));
 void do_disable P_((CHAR_DATA *ch, char *argument));
 void do_lua P_((CHAR_DATA *ch, char *argument));
+void do_olua P_((CHAR_DATA *ch, char *argument));
 
 #undef P_

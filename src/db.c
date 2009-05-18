@@ -1247,6 +1247,7 @@ void load_object( FILE * fp )
             break;
 
          case 'S':
+            SKEY("ScriptName",pObjIndex->script_name,fread_string(fp));
             SKEY("ShortDesc",pObjIndex->short_descr,fread_string(fp));
             KEY("Speed",pObjIndex->speed,fread_float(fp));
             break;
@@ -2697,6 +2698,13 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
    obj = new OBJ_DATA;
    obj->pIndexData = pObjIndex;
    obj->in_room = NULL;
+
+   if( pObjIndex->script_name != &str_empty[0] ) /* Obj has a script attached */
+   {
+    obj->L = luaL_newstate();
+    init_lua(obj);
+   }
+
    if( pObjIndex->level < 3 )
    {
       if( pObjIndex->level == 2 )
