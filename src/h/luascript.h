@@ -23,6 +23,7 @@ void GetTracebackFunction P_((lua_State *L));
 ROOM_INDEX_DATA *L_getroom P_((lua_State *L));
 CHAR_DATA *L_getchar P_((lua_State *L));
 int L_character_info P_((lua_State *L));
+int L_obj_info P_((lua_State *L));
 int L_send_to_char P_((lua_State *L));
 int L_recho P_((lua_State *L));
 

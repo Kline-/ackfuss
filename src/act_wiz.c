@@ -398,7 +398,7 @@ void recho( ROOM_INDEX_DATA *room, const char *argument )
  std::string str = argument;
  DESCRIPTOR_DATA *d;
 
- str += "@@N\r\n";
+ str += "@@N";
 
  for( d = first_desc; d; d = d->next )
  {
@@ -411,6 +411,8 @@ void recho( ROOM_INDEX_DATA *room, const char *argument )
 
 void do_recho( CHAR_DATA * ch, char *argument )
 {
+   std::string str = argument;
+   str += "\r\n";
 
    if( argument[0] == '\0' )
    {
@@ -418,7 +420,7 @@ void do_recho( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   recho(ch->in_room,argument);
+   recho(ch->in_room,str.c_str());
 
    return;
 }

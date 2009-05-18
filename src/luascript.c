@@ -66,6 +66,7 @@
 static const struct luaL_reg mudlib [] = 
 {
  {"char_info",    L_character_info},
+ {"obj_info",     L_obj_info      },
  {"send_to_char", L_send_to_char  },
  {"recho",        L_recho         },
  {NULL, NULL}
@@ -364,6 +365,45 @@ int L_character_info( lua_State *L )
 
   lua_setfield(L,-2,"npcdata");
  }
+
+ return 1;
+}
+
+int L_obj_info( lua_State *L )
+{
+ OBJ_DATA *ob = NULL;
+ bool found = false;
+ std::list<OBJ_DATA *>::iterator li;
+
+ for( li = obj_list.begin(); li != obj_list.end(); li++ )
+ {
+  ob = *li;
+  if( ob->L == L )
+   found = true;
+ }
+
+ if( !found )
+ return 0;
+
+ lua_newtable(L);
+
+ PUSH_STR(ob,owner);
+ PUSH_STR(ob,name);
+ PUSH_STR(ob,script_name);
+ PUSH_STR(ob,short_descr);
+ PUSH_STR(ob,long_descr);
+
+ PUSH_NUM(ob,item_type);
+ PUSH_NUM(ob,item_apply);
+ PUSH_NUM(ob,wear_loc);
+ PUSH_NUM(ob,weight);
+ PUSH_NUM(ob,cost);
+ PUSH_NUM(ob,level);
+ PUSH_NUM(ob,timer);
+ PUSH_NUMA(ob,value,MAX_OBJ_VALUE);
+ PUSH_NUM(ob,durability);
+ PUSH_NUM(ob,max_durability);
+ PUSH_NUM(ob,speed);
 
  return 1;
 }
