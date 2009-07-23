@@ -925,20 +925,20 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    buf1[0] = '\0';
 
    snprintf( buf, MSL, "Name: %s.  Race %i\r\n", victim->name, victim->race );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Vnum: %d.  Sex: %s.  Room: %d.\r\n",
             IS_NPC( victim ) ? victim->npcdata->pIndexData->vnum : 0,
             victim->sex == SEX_MALE ? "male" :
             victim->sex == SEX_FEMALE ? "female" : "neutral", victim->in_room == NULL ? 0 : victim->in_room->vnum );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    if( IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "Str: %d.  Int: %d.  Wis: %d.  Dex: %d.  Con: %d.\r\n",
                get_curr_str( victim ),
                get_curr_int( victim ), get_curr_wis( victim ), get_curr_dex( victim ), get_curr_con( victim ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
    else
    {
@@ -947,7 +947,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
                get_curr_int( victim ), victim->pcdata->max_int,
                get_curr_wis( victim ), victim->pcdata->max_wis,
                get_curr_dex( victim ), victim->pcdata->max_dex, get_curr_con( victim ), victim->pcdata->max_con );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( !IS_NPC( victim ) )
@@ -955,32 +955,32 @@ void do_mstat( CHAR_DATA * ch, char *argument )
       snprintf( buf, MSL,
                "Mag: %d Cle: %d Thi:%d War:%d Psi:%d\r\n",
                victim->lvl[0], victim->lvl[1], victim->lvl[2], victim->lvl[3], victim->lvl[4] );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
 
       snprintf( buf, MSL, "Age: " );
       my_get_age( victim, buf );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
       snprintf( buf, MSL, "   (%d Hours RL play).\r\n", my_get_hours( victim ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
 
       snprintf( buf, MSL, "Class Order: %s %s %s %s %s\r\n",
                class_table[victim->pcdata->order[0]].who_name,
                class_table[victim->pcdata->order[1]].who_name,
                class_table[victim->pcdata->order[2]].who_name,
                class_table[victim->pcdata->order[3]].who_name, class_table[victim->pcdata->order[4]].who_name );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
 
 
    }
 
    snprintf( buf, MSL, "Hp: %d/%d.  Mana: %d/%d.  Move: %d/%d.  Practices: %d.\r\n",
             victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->practice );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL,
             "Lv: %d.  Class: %d.  Align: %d.  AC: %d.  Gold: %d.  Exp: %d.\r\n",
             victim->level, victim->p_class, victim->alignment, GET_AC( victim ), victim->gold, victim->exp );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    if( !IS_NPC( victim ) )
    {
@@ -989,77 +989,77 @@ void do_mstat( CHAR_DATA * ch, char *argument )
                race_table[victim->race].race_name,
                IS_VAMP( victim ) ? "[VAMPIRE]" : "",
                victim->clan, clan_table[victim->clan].clan_abbr, victim->balance );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
 
    snprintf( buf, MSL, "Hitroll: %d.  Damroll: %d.  Position: %d.  Wimpy: %d.\r\n",
             GET_HITROLL( victim ), GET_DAMROLL( victim ), victim->position, victim->wimpy );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    if( IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "MODIFIERS: AC: %d.  Hitroll: %d.  Damroll: %d.\r\n", victim->npcdata->ac_mod, victim->npcdata->hr_mod, victim->npcdata->dr_mod );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
       snprintf( buf, MSL, "TARGET: %s\r\n", victim->target );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
       snprintf( buf, MSL, "TIMER: %d\r\n", victim->extract_timer );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( !IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "Page Lines: %d.\r\n", victim->pcdata->pagelen );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    snprintf( buf, MSL, "Fighting: %s.\r\n", victim->fighting ? victim->fighting->name : "(none)" );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf(buf,MSL,"Fight speed: LH: %4.2f (%4.2f) RH: %4.2f (%4.2f)\r\n", get_speed(victim,SPEED_LH), victim->speed[SPEED_LH], get_speed(victim,SPEED_RH), victim->speed[SPEED_RH]);
-   strncat(buf1,buf,MSL);
+   strncat(buf1,buf,MSL-1);
 
 
    if( IS_CASTING(victim) )
     snprintf(buf,MSL,"Casting: %s Time: %0.2f (Max: %0.2f) Pushback: %0.2f\r\n", victim->casting->arg,victim->casting->time, victim->casting->max_time, victim->casting->pushback );
    else
     snprintf(buf,MSL,"Casting: nothing Time: 0.00 (Max: 0.00) Pushback: 0.00\r\n" );
-   strncat(buf1,buf,MSL);
+   strncat(buf1,buf,MSL-1);
 
    snprintf(buf,MSL,"Cooldowns: OFF: %0.2f DEF: %0.2f\r\n", victim->cooldown[COOLDOWN_OFF], victim->cooldown[COOLDOWN_DEF] );
-   strncat(buf1,buf,MSL);
+   strncat(buf1,buf,MSL-1);
 
    if( !IS_NPC( victim ) )
    {
       snprintf( buf, MSL, "@@RBLOODLUST@@g: %d\r\n", victim->pcdata->super->energy );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
 
       snprintf( buf, MSL,
                "Thirst: %d.  Full: %d.  Drunk: %d.  Saving throw: %d.\r\n",
                victim->pcdata->condition[COND_THIRST],
                victim->pcdata->condition[COND_FULL], victim->pcdata->condition[COND_DRUNK], victim->saving_throw );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    snprintf( buf, MSL, "Carry number: %d.  Carry weight: %4.2f.   @@aQuest Points@@W: @@y%3d@@N\r\n",
             victim->carry_number, victim->carry_weight, IS_NPC(victim) ? 0 : victim->pcdata->quest_points );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Age: %d.  Played: %d.  Timer: %d.\r\n",
             get_age( victim ), ( int )victim->played, victim->timer );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Act:\r\n%s\r\n", bs_show_values( IS_NPC(victim) ? tab_mob_act : tab_player_act, victim->act ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Master: %s.  Leader: %s.  Affected by: %s.\r\n",
             victim->master ? victim->master->name : "(none)",
             victim->leader ? victim->leader->name : "(none)", affect_bit_name( victim->affected_by ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Short description: %s.\r\nLong  description: %s\r\n",
             IS_NPC(victim) ? victim->npcdata->short_descr : "(none)", victim->long_descr[0] != '\0' ? victim->long_descr : "(none)." );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    if( IS_NPC( victim ) )
    {
@@ -1068,7 +1068,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
     if( victim->npcdata->pIndexData->script_name != &str_empty[0] )
     {
      snprintf( buf, MSL, "Mobile has Lua script: %s\r\n", victim->npcdata->pIndexData->script_name );
-     strncat( buf1, buf, MSL );
+     strncat( buf1, buf, MSL-1 );
     }
    }
 
@@ -1133,12 +1133,12 @@ void do_mstat( CHAR_DATA * ch, char *argument )
          snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( victim->hunt_for ) );
       strncat( buf, ".\r\n", MSL );
       buf[1] = UPPER( buf[1] );
-      strncat( buf1, buf + 1, MSL );
+      strncat( buf1, buf + 1, MSL-1 );
    }
    else if( victim->searching )
    {
       snprintf( buf, MSL, "Searching for %s.\r\n", victim->searching );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    for( paf = victim->first_affect; paf != NULL; paf = paf->next )
@@ -1147,7 +1147,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
                "Spell: '%s' modifies %s by %d for %d hours with bits %s.\r\n",
                skill_table[( int )paf->type].name,
                affect_loc_name( paf->location ), paf->modifier, paf->duration, affect_bit_name( paf->bitvector ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    send_to_char( buf1, ch );
@@ -1235,13 +1235,13 @@ void do_ofindlev( CHAR_DATA * ch, char *argument )
             {
                snprintf( buf, MSL, "\r\n(@@mREMORT@@N) [%3d] [%5d] %s", pObjIndex->level,
                         pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             else
             {
                snprintf( buf, MSL, "\r\n(@@aMORTAL@@N) [%3d] [%5d] %s", pObjIndex->level,
                         pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
          }
       }
@@ -1435,7 +1435,7 @@ void do_ofind( CHAR_DATA * ch, char *argument )
                      pObjIndex->vnum, pObjIndex->level,
                      ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), capitalize( pObjIndex->short_descr ) );
-            strncat( buf1, buf, MSL );
+            strncat( buf1, buf, MSL-1 );
          }
       }
    }
@@ -1978,7 +1978,7 @@ void do_restore( CHAR_DATA * ch, char *argument )
 void do_freeze( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -4005,7 +4005,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
 
      obj_counter++;
      buf[0] = UPPER( buf[0] );
-     strncat( buf, catbuf, MSL );
+     strncat( buf, catbuf, MSL-1 );
     }
    }
    else
@@ -4036,7 +4036,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
 
          obj_counter++;
          buf[0] = UPPER( buf[0] );
-         strncat( buf, catbuf, MSL );
+         strncat( buf, catbuf, MSL-1 );
 
       }
    }
@@ -5060,9 +5060,9 @@ void do_monitor( CHAR_DATA * ch, char *argument )
             if( !IS_NPC( ch ) )
             {
                snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
-               strncat( buf, colbuf, MSL );
+               strncat( buf, colbuf, MSL-1 );
             }
-            strncat( buf, monitor_table[a].on_name, MSL );
+            strncat( buf, monitor_table[a].on_name, MSL-1 );
          }
 
          else
@@ -5070,9 +5070,9 @@ void do_monitor( CHAR_DATA * ch, char *argument )
             if( !IS_NPC( ch ) )
             {
                snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
-               strncat( buf, colbuf, MSL );
+               strncat( buf, colbuf, MSL-1 );
             }
-            strncat( buf, monitor_table[a].off_name, MSL );
+            strncat( buf, monitor_table[a].off_name, MSL-1 );
          }
 
       }
@@ -5686,7 +5686,7 @@ void do_otype( CHAR_DATA * ch, char *argument )
             snprintf( buf, MSL, "<%d> %s [%5d] %s\r\n", pObjIndex->level,
                      ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->vnum, pObjIndex->short_descr );
-            strncat( buf1, buf, MSL );
+            strncat( buf1, buf, MSL-1 );
          }
       }
    }
@@ -5748,7 +5748,7 @@ void do_owear( CHAR_DATA * ch, char *argument )
                      pObjIndex->level,
                      ( IS_OBJ_STAT(pObjIndex,ITEM_EXTRA_REMORT) ?
                        "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->short_descr );
-            strncat( buf1, buf, MSL );
+            strncat( buf1, buf, MSL-1 );
          }
       }
    }

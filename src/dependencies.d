@@ -44,15 +44,15 @@ o/board.o: board.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/board.h h/build.h h/comm.h \
   h/db.h h/handler.h h/ssm.h
+o/buildare.o: buildare.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
+  h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
+  lists.h h/mquest.h h/strfuns.h h/utils.h h/areasave.h h/build.h \
+  h/buildare.h h/comm.h h/db.h h/handler.h h/ssm.h
 o/build.o: build.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h h/act_move.h \
   h/act_wiz.h h/areachk.h h/areasave.h h/build.h h/buildare.h \
   h/buildtab.h h/comm.h h/db.h h/handler.h h/money.h h/ssm.h
-o/buildare.o: buildare.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
-  h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
-  lists.h h/mquest.h h/strfuns.h h/utils.h h/areasave.h h/build.h \
-  h/buildare.h h/comm.h h/db.h h/handler.h h/ssm.h
 o/buildtab.o: buildtab.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h
