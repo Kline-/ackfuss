@@ -3782,10 +3782,10 @@ void do_config( CHAR_DATA * ch, char *argument )
       }
 
       send_to_char( ch->act.test(ACT_NO_SUMMON)
-                    ? "@@d[@@a+NOSUMMON @@d]@@a You may not be summoned.@@N\r\n" : "@@d[@@c-nosummon @@d]@@c You may be summoned.@@N\r\n", ch );
+                    ? "@@d[@@a+NO_SUMMON@@d]@@a You may not be summoned.@@N\r\n" : "@@d[@@c-no_summon@@d]@@c You may be summoned.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_NO_VISIT)
-                    ? "@@d[@@a+NOVISIT  @@d]@@a You may not be 'visited'.@@N\r\n" : "@@d[@@c-novisit  @@d]@@c You may be 'visited'.@@N\r\n", ch );
+                    ? "@@d[@@a+NO_VISIT @@d]@@a You may not be 'visited'.@@N\r\n" : "@@d[@@c-no_visit @@d]@@c You may be 'visited'.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_COLOR)
                     ? "@@d[@@a+COLOR    @@d]@@a You recieve 'ANSI' color.@@N\r\n"
