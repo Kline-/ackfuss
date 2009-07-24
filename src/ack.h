@@ -71,16 +71,17 @@
 
 struct DeleteObject
 {
- template <typename T>
- void operator() (const T* ptr) const { delete ptr; };
+ template <typename T> void operator() (const T* ptr) const { delete ptr; };
 };
 
-class generic_list
+class lua_data
 {
  public:
-  generic_list();
-  ~generic_list();
-  void *data;
+  lua_data();
+  ~lua_data();
+  lua_State *L;
+  void *owner;
+  int type;
 };
 
 class board_data
@@ -603,7 +604,7 @@ class char_data
   ROOM_INDEX_DATA *in_room;
   bool is_free;
   bool is_quitting;
-  lua_State *L; /* Lua scripting */
+  LUA_DATA *lua; /* Lua scripting */
   AFFECT_DATA *last_affect;
   OBJ_DATA *last_carry;
   time_t last_note;
@@ -885,7 +886,7 @@ class obj_data
    MONEY_TYPE *money;
    float speed;
    RESET_DATA *reset;
-   lua_State *L;
+   LUA_DATA *lua;
 };
 
 /*

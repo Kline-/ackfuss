@@ -127,8 +127,8 @@ char_data::~char_data()
 
  if( current_brand )
   delete current_brand;
- if( L )
-  lua_close(L);
+ if( lua )
+  delete lua;
  if( npcdata )
   delete npcdata;
  if( pnote )
@@ -164,11 +164,6 @@ extra_descr_data::~extra_descr_data()
  free_string(keyword);
 }
 
-generic_list::~generic_list()
-{
- free(data);
-}
-
 hash_entry_tp::~hash_entry_tp()
 {
  is_free = true;
@@ -177,6 +172,14 @@ hash_entry_tp::~hash_entry_tp()
 lookup_data::~lookup_data()
 {
  free_string(buf);
+}
+
+lua_data::~lua_data()
+{
+ lua_close(L);
+ owner = NULL;
+
+ lua_list.remove(this);
 }
 
 magic_shield::~magic_shield()
@@ -258,8 +261,8 @@ obj_data::~obj_data()
  free_string(short_descr);
  free_string(long_descr);
  delete money;
- if( L )
-  lua_close(L);
+ if( lua )
+  delete lua;
 }
 
 obj_index_data::~obj_index_data()

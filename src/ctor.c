@@ -189,7 +189,7 @@ char_data::char_data()
  in_room = NULL;
  is_free = false;
  is_quitting = false;
- L = NULL;
+ lua = NULL;
  last_affect = NULL;
  last_carry = NULL;
  last_note = 0;
@@ -297,11 +297,6 @@ extra_descr_data::extra_descr_data()
  exdesc_list.push_back(this);
 }
 
-generic_list::generic_list()
-{
- data = NULL;
-}
-
 hash_entry_tp::hash_entry_tp()
 {
  is_free = false;
@@ -314,6 +309,15 @@ lookup_data::lookup_data()
 {
  buf = &str_empty[0];
  d = NULL;
+}
+
+lua_data::lua_data()
+{
+ L = luaL_newstate();
+ owner = NULL;
+ type = LUA_TYPE_NONE;
+
+ lua_list.push_back(this);
 }
 
 magic_shield::magic_shield()
@@ -498,7 +502,7 @@ obj_data::obj_data()
  max_durability = 0;
  money = new MONEY_TYPE;
  speed = 1.00;
- L = NULL;
+ lua = NULL;
 
  obj_list.push_back(this);
 }

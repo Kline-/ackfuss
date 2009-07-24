@@ -74,45 +74,49 @@ static const struct luaL_reg mudlib [] =
 
 void init_lua( CHAR_DATA *ch )
 {
- luaL_openlibs(ch->L); /* open all standard libraries */
+ ch->lua->owner = ch;
+ ch->lua->type = LUA_TYPE_CH;
+ luaL_openlibs(ch->lua->L); /* open all standard libraries */
 
  /* call as Lua function because we need the environment  */
- lua_pushcfunction(ch->L,RegisterLuaRoutines);
- lua_pushstring(ch->L,CH_STATE);  /* push address */
- lua_pushlightuserdata(ch->L,(void *)ch);    /* push value */
- lua_call(ch->L,2,0);
+ lua_pushcfunction(ch->lua->L,RegisterLuaRoutines);
+ lua_pushstring(ch->lua->L,CH_STATE);  /* push address */
+ lua_pushlightuserdata(ch->lua->L,(void *)ch);    /* push value */
+ lua_call(ch->lua->L,2,0);
  
  /* run initialiation script */
- if( luaL_loadfile(ch->L,CH_STARTUP) || CallLuaWithTraceBack(ch->L,0,0) )
+ if( luaL_loadfile(ch->lua->L,CH_STARTUP) || CallLuaWithTraceBack(ch->lua->L,0,0) )
  {
-  const char * sError = lua_tostring(ch->L,-1);
+  const char * sError = lua_tostring(ch->lua->L,-1);
 
   snprintf(log_buf,(2 * MIL),"Error loading ch Lua startup file:\n %s\n",sError);
   monitor_chan(log_buf,MONITOR_DEBUG);
  }
 
- lua_settop(ch->L,0); /* get rid of stuff lying around */
+ lua_settop(ch->lua->L,0); /* get rid of stuff lying around */
  return;
 }
 
 void init_lua( OBJ_DATA *obj )
 {
- luaL_openlibs(obj->L);
+ obj->lua->owner = obj;
+ obj->lua->type = LUA_TYPE_OB;
+ luaL_openlibs(obj->lua->L);
 
- lua_pushcfunction(obj->L,RegisterLuaRoutines);
- lua_pushstring(obj->L,OBJ_STATE);
- lua_pushlightuserdata(obj->L,(void *)obj);
- lua_call(obj->L,2,0);
+ lua_pushcfunction(obj->lua->L,RegisterLuaRoutines);
+ lua_pushstring(obj->lua->L,OBJ_STATE);
+ lua_pushlightuserdata(obj->lua->L,(void *)obj);
+ lua_call(obj->lua->L,2,0);
 
- if( luaL_loadfile(obj->L,OBJ_STARTUP) || CallLuaWithTraceBack(obj->L,0,0) )
+ if( luaL_loadfile(obj->lua->L,OBJ_STARTUP) || CallLuaWithTraceBack(obj->lua->L,0,0) )
  {
-  const char * sError = lua_tostring(obj->L,-1);
+  const char * sError = lua_tostring(obj->lua->L,-1);
 
   snprintf(log_buf,(2 * MIL),"Error loading obj Lua startup file:\n %s\n",sError);
   monitor_chan(log_buf,MONITOR_DEBUG);
  }
 
- lua_settop(obj->L,0);
+ lua_settop(obj->lua->L,0);
  return;
 }
 
@@ -185,36 +189,49 @@ void GetTracebackFunction( lua_State *L )
 ROOM_INDEX_DATA *L_getroom( lua_State *L )
 {
  CHAR_DATA *ch, *cv;
- OBJ_DATA *ob, *ov;
- std::list<CHAR_DATA *>::iterator ci;
- std::list<OBJ_DATA *>::iterator oi;
+ OBJ_DATA *oh, *ov;
+ LUA_DATA *lua;
+ std::list<LUA_DATA *>::iterator li;
 
- for( ci = char_list.begin(); ci != char_list.end(); ci++ )
+ for( li = lua_list.begin(); li != lua_list.end(); li++ )
  {
-  ch = *ci;
-  if( ch->L == L )
-  {
-   lua_pushstring(L,CH_STATE);
-   lua_gettable(L,LUA_ENVIRONINDEX);
-   cv = (CHAR_DATA *)lua_touserdata(L,-1);
-   lua_pop(L,1);
-   return cv->in_room;
-  }
- }
+  lua = *li;
 
- for( oi = obj_list.begin(); oi != obj_list.end(); oi++ )
- {
-  ob = *oi;
-  if( ob->L == L )
+  switch( lua->type )
   {
-   lua_pushstring(L,OBJ_STATE);
-   lua_gettable(L,LUA_ENVIRONINDEX);
-   ov = (OBJ_DATA *)lua_touserdata(L,-1);
-   lua_pop(L,1);
-   if( ov->carried_by )
-    return ov->carried_by->in_room;
-   else
-    return ov->in_room;
+   default:
+   {
+    snprintf(log_buf,(2 * MIL),"Invalid Lua owner type in lua_list: %d",lua->type);
+    monitor_chan(log_buf,MONITOR_DEBUG);
+    return NULL;
+   }
+   case LUA_TYPE_CH:
+   {
+    ch = static_cast<CHAR_DATA *>(lua->owner);
+    if( ch->lua->L == L )
+    {
+     lua_pushstring(L,CH_STATE);
+     lua_gettable(L,LUA_ENVIRONINDEX);
+     cv = (CHAR_DATA *)lua_touserdata(L,-1);
+     lua_pop(L,1);
+     return cv->in_room;
+    }
+   }
+   case LUA_TYPE_OB:
+   {
+    oh = static_cast<OBJ_DATA *>(lua->owner);
+    if( oh->lua->L == L )
+    {
+     lua_pushstring(L,OBJ_STATE);
+     lua_gettable(L,LUA_ENVIRONINDEX);
+     ov = (OBJ_DATA *)lua_touserdata(L,-1);
+     lua_pop(L,1);
+     if( ov->carried_by )
+     return ov->carried_by->in_room;
+     else
+      return ov->in_room;
+    }
+   }
   }
  }
 
@@ -240,17 +257,23 @@ int L_character_info( lua_State *L )
 {
  CHAR_DATA *ch = NULL;
  bool found = false;
- std::list<CHAR_DATA *>::iterator li;
+ std::list<LUA_DATA *>::iterator li;
+ LUA_DATA *lua = NULL;
 
- for( li = char_list.begin(); li != char_list.end(); li++ )
+ for( li = lua_list.begin(); li != lua_list.end(); li++ )
  {
-  ch = *li;
-  if( ch->L == L )
-   found = true;
+  lua = *li;
+  if( lua->type == LUA_TYPE_CH )
+  {
+   ch = static_cast<CHAR_DATA *>(lua->owner);
+
+   if( ch->lua->L == L )
+    found = true;
+  }
  }
 
  if( !found )
- return 0;
+  return 0;
 
  lua_newtable(L);  /* table for the info */
   
@@ -373,17 +396,23 @@ int L_obj_info( lua_State *L )
 {
  OBJ_DATA *ob = NULL;
  bool found = false;
- std::list<OBJ_DATA *>::iterator li;
+ std::list<LUA_DATA *>::iterator li;
+ LUA_DATA *lua = NULL;
 
- for( li = obj_list.begin(); li != obj_list.end(); li++ )
+ for( li = lua_list.begin(); li != lua_list.end(); li++ )
  {
-  ob = *li;
-  if( ob->L == L )
-   found = true;
+  lua = *li;
+  if( lua->type == LUA_TYPE_OB )
+  {
+   ob = static_cast<OBJ_DATA *>(lua->owner);
+
+   if( ob->lua->L == L )
+    found = true;
+  }
  }
 
  if( !found )
- return 0;
+  return 0;
 
  lua_newtable(L);
 

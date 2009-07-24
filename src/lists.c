@@ -58,6 +58,7 @@ std::list<EXTRA_DESCR_DATA *> exdesc_list;
 std::list<EXIT_DATA *> exit_list;
 std::list<CHAR_DATA *> fight_list;
 std::list<FILE *> file_list;
+std::list<LUA_DATA *> lua_list;
 std::list<MOB_INDEX_DATA *> mob_index_list;
 std::list<NOTE_DATA *> note_list;
 std::list<OBJ_DATA *> obj_list;

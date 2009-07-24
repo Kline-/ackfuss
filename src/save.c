@@ -707,7 +707,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 
       d->character = ch;
 
-      ch->L = luaL_newstate();
+      ch->lua = new LUA_DATA;
       init_lua(ch);
 
       ch->pcdata->super->energy = 24;
@@ -1695,7 +1695,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
          case 'S':
             if( !str_cmp( word, "ScriptName" ) )
             {
-             obj->L = luaL_newstate();
+             obj->lua = new LUA_DATA;
              init_lua(obj);
              free_string(obj->script_name);
              obj->script_name = fread_string(fp);

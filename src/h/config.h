@@ -124,6 +124,14 @@
 #define TYPE_HIT                     1000
 
 /*
+ * Lua owner types. --Kline
+ */
+#define LUA_TYPE_NONE 0
+#define LUA_TYPE_CH   1
+#define LUA_TYPE_OB   2
+#define LUA_TYPE_RM   3
+
+/*
  * For speed combat, hands. --Kline
  */
 #define MAX_SPEED  4

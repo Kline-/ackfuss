@@ -6271,10 +6271,10 @@ void do_lua( CHAR_DATA *ch, char *argument )
 {
  std::string str = SCRIPT_DIR;
  str += argument;
- if( ch->L )
+ if( ch->lua->L )
  {
-  luaL_dofile(ch->L,str.c_str());
-  const char * sError = lua_tostring(ch->L,-1);
+  luaL_dofile(ch->lua->L,str.c_str());
+  const char * sError = lua_tostring(ch->lua->L,-1);
   if( str_cmp(sError,"(null)") && sError != NULL )
    monitor_chan(sError,MONITOR_DEBUG);
  }
@@ -6293,10 +6293,10 @@ void do_olua( CHAR_DATA *ch, char *argument )
  if( (obj = get_obj_world(ch,arg)) == NULL )
   return;
 
- if( obj->L )
+ if( obj->lua->L )
  {
-  luaL_dofile(obj->L,str.c_str());
-  const char * sError = lua_tostring(obj->L,-1);
+  luaL_dofile(obj->lua->L,str.c_str());
+  const char * sError = lua_tostring(obj->lua->L,-1);
   if( str_cmp(sError,"(null)") && sError != NULL )
    monitor_chan(sError,MONITOR_DEBUG);
  }

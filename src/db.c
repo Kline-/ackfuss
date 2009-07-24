@@ -2573,7 +2573,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 
    if( pMobIndex->script_name != &str_empty[0] ) /* Mob has a script attached */
    {
-    mob->L = luaL_newstate();
+    mob->lua = new LUA_DATA;
     init_lua(mob);
    }
 
@@ -2701,7 +2701,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 
    if( pObjIndex->script_name != &str_empty[0] ) /* Obj has a script attached */
    {
-    obj->L = luaL_newstate();
+    obj->lua = new LUA_DATA;
     init_lua(obj);
    }
 
@@ -4189,6 +4189,7 @@ void clear_lists( void )
  for_each( exdesc_list.begin(),     exdesc_list.end(),     DeleteObject() );
  for_each( exit_list.begin(),       exit_list.end(),       DeleteObject() );
  for_each( file_list.begin(),       file_list.end(),       DeleteObject() );
+ for_each( lua_list.begin(),        lua_list.end(),        DeleteObject() );
  for_each( mob_index_list.begin(),  mob_index_list.end(),  DeleteObject() );
  for_each( note_list.begin(),       note_list.end(),       DeleteObject() );
  for_each( obj_list.begin(),        obj_list.end(),        DeleteObject() );

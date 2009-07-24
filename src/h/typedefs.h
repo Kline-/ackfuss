@@ -123,14 +123,12 @@ char *crypt args( ( const char *key, const char *salt ) );
  * Structure types.
  */
 typedef struct affect_data AFFECT_DATA;
-typedef struct room_affect_data ROOM_AFFECT_DATA;
 typedef struct area_data AREA_DATA;
 typedef struct ban_data BAN_DATA;
 typedef struct char_data CHAR_DATA;
 typedef struct descriptor_data DESCRIPTOR_DATA;
 typedef struct exit_data EXIT_DATA;
 typedef struct extra_descr_data EXTRA_DESCR_DATA;
-typedef struct generic_list GENERIC_LIST;
 typedef struct kill_data KILL_DATA;
 typedef struct mob_index_data MOB_INDEX_DATA;
 typedef struct note_data NOTE_DATA;
@@ -139,6 +137,7 @@ typedef struct obj_index_data OBJ_INDEX_DATA;
 typedef struct npc_data NPC_DATA;
 typedef struct pc_data PC_DATA;
 typedef struct reset_data RESET_DATA;
+typedef struct room_affect_data ROOM_AFFECT_DATA;
 typedef struct room_index_data ROOM_INDEX_DATA;
 typedef struct shop_data SHOP_DATA;
 typedef struct time_info_data TIME_INFO_DATA;
@@ -184,6 +183,7 @@ typedef struct social_type SOCIAL_TYPE;
 typedef struct clutch_type CLUTCH_TYPE;
 typedef struct disabled_data DISABLED_DATA;
 typedef struct mudinfo MUDINFO;
+typedef struct lua_data LUA_DATA;
 
 /*
  * Function types.
