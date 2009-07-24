@@ -6084,7 +6084,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
 {
    FILE *fp;
    DESCRIPTOR_DATA *d, *d_next;
-   char buf[256], buf2[100], buf3[100];
+   char buf[256], buf2[256], buf3[256];
    extern int saving_area;
 
    if( saving_area )
@@ -6108,7 +6108,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
    if( auction_item != NULL )
       do_auction( ch, "stop" );
 
-   snprintf( buf, MSL,
+   snprintf( buf, 256,
             "\r\n**** HOTreboot by An Immortal - Please remain ONLINE ****\r\n*********** We will be back in 30 seconds!! *************\n\r\n");
 
    /*
@@ -6149,15 +6149,15 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
     * exec - descriptors are inherited
     */
 
-   snprintf( buf, MSL, "%d", port );
-   snprintf( buf2, MSL, "%d", control );
+   snprintf( buf, 256, "%d", port );
+   snprintf( buf2, 256, "%d", control );
 #ifdef IMC
    if( this_imcmud )
-      snprintf( buf3, 100, "%d", this_imcmud->desc );
+      snprintf( buf3, 256, "%d", this_imcmud->desc );
    else
-      strncpy( buf3, "-1", 100 );
+      strncpy( buf3, "-1", 256 );
 #else
-   strncpy( buf3, "-1", 100 );
+   strncpy( buf3, "-1", 256 );
 #endif
 
    /*
