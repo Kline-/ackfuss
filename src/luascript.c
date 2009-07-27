@@ -120,6 +120,60 @@ void init_lua( OBJ_DATA *obj )
  return;
 }
 
+lua_State *find_lua_function( CHAR_DATA *ch, std::string arg )
+{
+ lua_State *L = ch->lua->L;
+  
+ if( !L || arg.empty() )
+  return NULL;  /* can't do it */
+    
+ /* find requested function */
+  
+ lua_getglobal(L,arg.c_str());  
+ if( !lua_isfunction(L,-1) )
+ {
+  lua_pop(L,1);
+  snprintf(log_buf,(2 * MIL),"Warning: Lua script function '%s' does not exist",arg.c_str());
+  monitor_chan(log_buf,MONITOR_DEBUG);
+  return NULL;  /* not there */
+ }
+      
+ return L;  
+}
+
+lua_State *find_lua_function( OBJ_DATA *ob, std::string arg )
+{
+ lua_State *L = ob->lua->L;
+
+ if( !L || arg.empty() )
+  return NULL;  /* can't do it */
+
+ /* find requested function */
+
+ lua_getglobal(L,arg.c_str());
+ if( !lua_isfunction(L,-1) )
+ {
+  lua_pop(L,1);
+  snprintf(log_buf,(2 * MIL),"Warning: Lua script function '%s' does not exist",arg.c_str());
+  monitor_chan(log_buf,MONITOR_DEBUG);
+  return NULL;  /* not there */
+ }
+
+ return L;
+}
+
+void call_lua_function( lua_State *L, std::string str, const int nArgs )
+{
+ if( CallLuaWithTraceBack(L,nArgs,0) )
+ {
+  snprintf(log_buf,(2 * MIL),"Error executing Lua function %s:\n %s",str.c_str(),lua_tostring(L,-1));
+  monitor_chan(log_buf,MONITOR_DEBUG);
+  lua_pop(L,1);  /* pop error */
+ }  /* end of error */
+
+ return;   
+}
+
 int RegisterLuaRoutines( lua_State *L )
 {
 
@@ -188,8 +242,8 @@ void GetTracebackFunction( lua_State *L )
 
 ROOM_INDEX_DATA *L_getroom( lua_State *L )
 {
- CHAR_DATA *ch, *cv;
- OBJ_DATA *oh, *ov;
+ CHAR_DATA *ch;
+ OBJ_DATA *ob;
  LUA_DATA *lua;
  std::list<LUA_DATA *>::iterator li;
 
@@ -212,24 +266,19 @@ ROOM_INDEX_DATA *L_getroom( lua_State *L )
     {
      lua_pushstring(L,CH_STATE);
      lua_gettable(L,LUA_ENVIRONINDEX);
-     cv = (CHAR_DATA *)lua_touserdata(L,-1);
      lua_pop(L,1);
-     return cv->in_room;
+     return ch->in_room;
     }
    }
    case LUA_TYPE_OB:
    {
-    oh = static_cast<OBJ_DATA *>(lua->owner);
-    if( oh->lua->L == L )
+    ob = static_cast<OBJ_DATA *>(lua->owner);
+    if( ob->lua->L == L )
     {
      lua_pushstring(L,OBJ_STATE);
      lua_gettable(L,LUA_ENVIRONINDEX);
-     ov = (OBJ_DATA *)lua_touserdata(L,-1);
      lua_pop(L,1);
-     if( ov->carried_by )
-     return ov->carried_by->in_room;
-     else
-      return ov->in_room;
+     return in_loc(ob);
     }
    }
   }
@@ -447,4 +496,65 @@ int L_recho( lua_State *L )
 {
  recho(L_getroom(L),luaL_checkstring(L,1));
  return 0;
+}
+
+void call_lua( LUA_DATA *lua, std::string str, std::string arg )
+{
+ if( lua )
+ {
+  if( lua->type == LUA_TYPE_CH )
+   call_lua(static_cast<CHAR_DATA *>(lua->owner),str,arg);
+  else if( lua->type == LUA_TYPE_OB )
+   call_lua(static_cast<OBJ_DATA *>(lua->owner),str,arg);
+  else
+   monitor_chan("Invalid Lua type in call_lua().",MONITOR_DEBUG);
+ }
+}
+
+void call_lua( CHAR_DATA *ch, std::string str, std::string arg )
+{
+ int cnt = 0;
+
+ if( !ch || str.empty() )  /* note, argument is OPTIONAL */
+  return;
+
+ lua_State *L = find_lua_function(ch,str.c_str());
+   
+ if( !L )
+  return;
+  
+ /* if they want to send an argument, push it now */  
+ if( !arg.empty() )
+ {
+  cnt++;
+  lua_pushstring(L,arg.c_str());  /* push argument, if any */
+ }
+
+ call_lua_function(L,str,cnt);
+
+ return;
+}
+
+void call_lua( OBJ_DATA *ob, std::string str, std::string arg )
+{
+ int cnt = 0;
+
+ if( !ob || str.empty() )  /* note, argument is OPTIONAL */
+  return;
+
+ lua_State *L = find_lua_function(ob,str.c_str());
+
+ if( !L )
+  return;
+
+ /* if they want to send an argument, push it now */
+ if( !arg.empty() )
+ {
+  cnt++;
+  lua_pushstring(L,arg.c_str());  /* push argument, if any */
+ }
+
+ call_lua_function(L,str,cnt);
+
+ return;
 }

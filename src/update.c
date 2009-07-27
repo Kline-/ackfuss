@@ -80,6 +80,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_LUASCRIPT_H
+#include "h/luascript.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
 #endif
@@ -131,6 +135,7 @@ void objfun_update args( ( void ) );
 void rooms_update args( ( void ) );
 void remember_attack args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void quest_update args( ( void ) );
+void lua_update args ( ( void ) );
 /*
  * IMC2 keeps quietly losing sync to the server. Going to let
  * it run the keepalive routine so I can stay connected. --Kline
@@ -1043,7 +1048,7 @@ void clean_donate_rooms( void )
 }
 void weather_update( void )
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    char buf2[MSL];
    DESCRIPTOR_DATA *d;
    int diff;
@@ -1116,32 +1121,32 @@ void weather_update( void )
       case 5:
          weather_info.moon_loc = MOON_RISE;
          snprintf( buf2, MSL, "@@NA %s @@yMoon @@Nhas risen.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case 10:
          weather_info.moon_loc = MOON_LOW;
          snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nrides low on the horizon.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case 15:
          weather_info.moon_loc = MOON_PEAK;
          snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nreaches it's zenith.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case 20:
          weather_info.moon_loc = MOON_FALL;
          snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nfalls.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case 25:
          weather_info.moon_loc = MOON_SET;
          snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nis setting.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
       case 30:
          weather_info.moon_loc = MOON_DOWN;
          snprintf( buf2, MSL, "@@NThe %s @@yMoon @@Nhas left the sky.\r\n", get_moon_phase_name(  ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          break;
 
       default:
@@ -2102,6 +2107,7 @@ void update_handler( void )
     combat_update( );
     cast_update( );
     cooldown_update( );
+    lua_update( );
    }
 
    if( --pulse_mobile <= 0 )
@@ -2667,4 +2673,23 @@ void quest_update(  )
       if( auto_quest )
          generate_auto_quest(  );
    }
+}
+
+void lua_update( )
+{
+ LUA_DATA *lua;
+ std::list<LUA_DATA *>::iterator li;
+ std::string str;
+ std::string arg;
+ 
+ for( li = lua_list.begin(); li != lua_list.end(); li++ )
+ {
+  lua = *li;
+  str = "";
+
+  str += "wait_update";
+  call_lua(lua,str,arg);
+ }
+ 
+ return;
 }

@@ -1,4 +1,4 @@
-package.path = "/home/matt/muds/active/ackfuss/script/?.lua;" .. package.path
+package.path = "/home/matt/workspace/ackfuss/script/?.lua;" .. package.path
 
 -- send to player - with newline
 function send (...)
@@ -40,5 +40,7 @@ function frsend (s, ...)
   mud.recho (string.format (s, ...))
 end
 
-
 require "tprint"
+require "wait"
+
+wait_update = require("wait").update

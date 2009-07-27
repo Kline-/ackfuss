@@ -2650,3 +2650,26 @@ short get_charm_bonus( CHAR_DATA *ch, short charm_aff )
 
  return 0;
 }
+
+ROOM_INDEX_DATA *in_loc( OBJ_DATA *obj )
+{
+ ROOM_INDEX_DATA *ret_val = get_room_index(ROOM_VNUM_LIMBO);
+
+ if( !obj )
+  return ret_val;
+
+ if( obj->in_room )
+  ret_val = obj->in_room;
+
+ if( obj->in_obj )
+ {
+  if( obj->in_obj->carried_by )
+   ret_val = obj->in_obj->carried_by->in_room;
+  ret_val = obj->in_obj->in_room;
+ }
+
+ if( obj->carried_by )
+  ret_val = obj->carried_by->in_room;
+
+ return ret_val;
+}

@@ -217,7 +217,8 @@ o/update.o: update.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h h/act_info.h \
   h/act_move.h h/act_obj.h h/act_wiz.h h/areasave.h h/comm.h h/db.h \
-  h/fight.h h/handler.h h/magic.h h/money.h h/mudinfo.h h/ssm.h
+  h/fight.h h/handler.h h/luascript.h h/magic.h h/money.h h/mudinfo.h \
+  h/ssm.h
 o/vampire.o: vampire.c globals.h h/typedefs.h ack.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/config.h h/imc.h h/imccfg.h \
   lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h h/act_move.h \

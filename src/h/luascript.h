@@ -17,6 +17,9 @@
 /* luascript.c */
 void init_lua P_((CHAR_DATA *ch));
 void init_lua P_((OBJ_DATA *obj));
+lua_State *find_lua_function P_((CHAR_DATA *ch, std::string arg));
+lua_State *find_lua_function P_((OBJ_DATA *ob, std::string arg));
+void call_lua_function P_((lua_State *L, std::string str, const int nArgs));
 int RegisterLuaRoutines P_((lua_State *L));
 int CallLuaWithTraceBack P_((lua_State *L, const int iArguments, const int iReturn));
 void GetTracebackFunction P_((lua_State *L));
@@ -26,5 +29,8 @@ int L_character_info P_((lua_State *L));
 int L_obj_info P_((lua_State *L));
 int L_send_to_char P_((lua_State *L));
 int L_recho P_((lua_State *L));
+void call_lua P_((LUA_DATA *lua, std::string str, std::string arg));
+void call_lua P_((CHAR_DATA *ch, std::string str, std::string arg));
+void call_lua P_((OBJ_DATA *ob, std::string str, std::string arg));
 
 #undef P_
