@@ -54,7 +54,6 @@ area_data::area_data()
  area_num = 0;
  can_read = &str_empty[0];
  can_write = &str_empty[0];
- control = NULL;
  filename = &str_empty[0];
  flags.reset();
  first_area_mobile = NULL;
@@ -715,8 +714,6 @@ ruler_data::ruler_data()
  affiliation_index  = 0;
  keywords = &str_empty[0];
  flags = 0;
- first_control = NULL;
- last_control = NULL;
 }
 
 shop_data::shop_data()

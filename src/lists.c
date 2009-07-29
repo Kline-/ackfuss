@@ -72,12 +72,6 @@ DESCRIPTOR_DATA *first_desc = NULL;
 DESCRIPTOR_DATA *last_desc = NULL;
 BUILD_DATA_LIST *first_build = NULL;
 BUILD_DATA_LIST *last_build = NULL;
-CONTROL_LIST *first_control_list = NULL;
-CONTROL_LIST *last_control_list = NULL;
-QUEUED_INTERACT_LIST *first_queued_interact = NULL;
-QUEUED_INTERACT_LIST *last_queued_interact = NULL;
-INFLUENCE_LIST *first_influence_list = NULL;
-INFLUENCE_LIST *last_influence_list = NULL;
 DL_LIST *first_brand = NULL;
 DL_LIST *last_brand = NULL;
 BUF_DATA_STRUCT *first_buf = NULL;
@@ -86,27 +80,7 @@ NPC_GROUP_DATA *first_npc_group = NULL;
 NPC_GROUP_DATA *last_npc_group = NULL;
 
 MEMBER_DATA *member_free = NULL;
-INTERACT_DATA *interact_free = NULL;
-INFLUENCE_DATA *influence_free = NULL;
-RULER_DATA *ruler_data_free = NULL;
-CONTROL_DATA *control_data_free = NULL;
-CONTROL_LIST *control_list_free = NULL;
-QUEUED_INTERACT_LIST *queued_interact_free = NULL;
-INFLUENCE_LIST *influence_list_free = NULL;
 DL_LIST *dl_list_free = NULL;
 
 void ( *member_free_destructor ) ( MEMBER_DATA * mdat ) = NULL;
-void ( *interact_free_destructor ) ( INTERACT_DATA * idat ) = NULL;
-void ( *influence_free_destructor ) ( INFLUENCE_DATA * idat ) = NULL;
-void ( *control_data_free_destructor ) ( CONTROL_DATA * cdat ) = NULL;
-void ( *control_list_free_destructor ) ( CONTROL_LIST * cldat ) = NULL;
-void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat ) = NULL;
-void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat ) = NULL;
 void ( *dl_list_free_destructor ) ( DL_LIST * dldat ) = NULL;
-
-void ruler_data_free_destructor( RULER_DATA * rdat )
-{
-   free_string( rdat->name );
-   free_string( rdat->affiliation_name );
-   free_string( rdat->keywords );
-}

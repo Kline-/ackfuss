@@ -68,11 +68,6 @@ extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;
 extern BUILD_DATA_LIST *first_build;
 extern BUILD_DATA_LIST *last_build;
-extern CONTROL_LIST *first_control_list;
-extern CONTROL_LIST *last_control_list;
-extern QUEUED_INTERACT_LIST *first_queued_interact;
-extern INFLUENCE_LIST *first_influence_list;
-extern INFLUENCE_LIST *last_influence_list;
 extern DL_LIST *first_brand;
 extern DL_LIST *last_brand;
 extern BUF_DATA_STRUCT *first_buf;
@@ -81,25 +76,10 @@ extern NPC_GROUP_DATA *first_npc_group;
 extern NPC_GROUP_DATA *last_npc_group;
 
 extern MEMBER_DATA *member_free;
-extern INTERACT_DATA *interact_free;
-extern INFLUENCE_DATA *influence_free;
-extern RULER_DATA *ruler_data_free;
-extern CONTROL_DATA *control_data_free;
-extern CONTROL_LIST *control_list_free;
-extern QUEUED_INTERACT_LIST *queued_interact_free;
-extern INFLUENCE_LIST *influence_list_free;
 extern DL_LIST *dl_list_free;
 
 extern void ( *member_free_destructor ) ( MEMBER_DATA * mdat );
-extern void ( *interact_free_destructor ) ( INTERACT_DATA * idat );
-extern void ( *influence_free_destructor ) ( INFLUENCE_DATA * idat );
-extern void ( *control_data_free_destructor ) ( CONTROL_DATA * cdat );
-extern void ( *control_list_free_destructor ) ( CONTROL_LIST * cldat );
-extern void ( *queued_interact_free_destructor ) ( QUEUED_INTERACT_LIST * qildat );
-extern void ( *influence_list_free_destructor ) ( INFLUENCE_LIST * ildat );
 extern void ( *dl_list_free_destructor ) ( DL_LIST * dldat );
-
-void ruler_data_free_destructor( RULER_DATA * rdat );
 
 extern int free_get;
 extern int free_put;

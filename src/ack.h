@@ -944,81 +944,12 @@ class reset_data
 /*
  * Area definition.
  */
-
-/*
- *   Npc Interaction stuff  Zen
- */
-
-struct queued_interact_list
-{
-   bool is_free;
-   QUEUED_INTERACT_LIST *next;
-   QUEUED_INTERACT_LIST *prev;
-   CHAR_DATA *mob;
-};
-
-
-
-
-struct influence_list
-{
-   bool is_free;
-   INFLUENCE_LIST *next;
-   INFLUENCE_LIST *prev;
-   INFLUENCE_DATA *this_one;
-};
-
-
-struct control_list
-{
-   bool is_free;
-   CONTROL_LIST *next;
-   CONTROL_LIST *prev;
-   CONTROL_DATA *this_one;
-};
-
-
-struct control_data
-{
-   bool is_free;
-   char *keyword;
-   AREA_DATA *area;
-   RULER_DATA *ruler;   /* what entity controls the area */
-   INFLUENCE_LIST *first_influence; /* what current influences are for the area */
-   INFLUENCE_LIST *last_influence;
-   INTERACT_DATA *first_interact;   /* tells the mobs what to do */
-   INTERACT_DATA *last_interact;
-};
-
-
-struct influence_data
-{
-   bool is_free;
-   RULER_DATA *actor;
-   int influence;
-};
-
-
-struct interact_data
-{
-   bool is_free;
-   INTERACT_DATA *next;
-   INTERACT_DATA *prev;
-   int type;
-   int min_value;
-   int max_value;
-   int action;
-   char *say;
-   CHAR_DATA *target;
-};
 #define	RULER_NONE	BIT_0
 #define RULER_SOLO	BIT_1
 #define RULER_GROUP	BIT_2
 #define RULER_MALE	BIT_3
 #define RULER_FEMALE	BIT_4
 #define RULER_NEUTRAL	BIT_5
-
-
 
 class ruler_data
 {
@@ -1031,8 +962,6 @@ class ruler_data
   short affiliation_index;
   char *keywords;
   short flags;
-  CONTROL_LIST *first_control;
-  CONTROL_LIST *last_control;
 };
 
 
@@ -1045,7 +974,6 @@ class area_data
   short                   area_num;
   char                    *can_read;
   char                    *can_write;
-  CONTROL_DATA            *control;
   char                    *filename;
   std::bitset<MAX_BITSET> flags;
   BUILD_DATA_LIST         *first_area_mobile;

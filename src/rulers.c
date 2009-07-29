@@ -94,7 +94,6 @@ void save_rulers(  )
    char ruler_file_name[MAX_STRING_LENGTH];
    std::list<RULER_DATA *>::iterator li;
    RULER_DATA *ruler = NULL;
-   CONTROL_LIST *control;
 
    snprintf( ruler_file_name, MSL, "%s", RULERS_FILE );
 
@@ -107,24 +106,12 @@ void save_rulers(  )
    {
       for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
       {
-         char keybuf[MSL];
-         char catkeybuf[MSL];
-
          ruler = *li;
          fprintf( fp, "#RULER~\n" );
          fprintf( fp, "%s~\n", ruler->name );
          fprintf( fp, "%d\n", ruler->affiliation_index );
          fprintf( fp, "%d\n", ruler->flags );
          fprintf( fp, "%d\n", ruler->ruler_rank );
-
-         snprintf( keybuf, MSL, "%s", "" );
-
-         for( control = ruler->first_control; control; control = control->next )
-         {
-            snprintf( catkeybuf, MSL, "%s ", control->this_one->keyword );
-            strncat( keybuf, catkeybuf, MSL-1 );
-         }
-         fprintf( fp, "%s~\n", keybuf );
       }
       fprintf( fp, "#END~\n\n" );
    }
@@ -181,8 +168,6 @@ void load_rulers( void )
             ruler->flags = fread_number( rulersfp );
             ruler->ruler_rank = fread_number( rulersfp );
             ruler->keywords = fread_string( rulersfp );
-            ruler->first_control = NULL;
-            ruler->last_control = NULL;
 
             free_string( word );
 
@@ -220,7 +205,6 @@ void do_rulers( CHAR_DATA * ch, char *argument )
    char catbuf[MSL];
    RULER_DATA *ruler = NULL;
    std::list<RULER_DATA *>::iterator li;
-/*  CONTROL_DATA	* this_control;  */
 
    argument = one_argument( argument, arg1 );
    argument = one_argument( argument, arg2 );
@@ -247,17 +231,6 @@ void do_rulers( CHAR_DATA * ch, char *argument )
                   capitalize( ruler->name ),
                   ( IS_SET( ruler->flags, RULER_GROUP ) ? ruler->affiliation_name : "Not Affiliated" ) );
          strncat( outbuf, catbuf, MSL-1 );
-         if( ruler->first_control != NULL )
-         {
-            CONTROL_LIST *control;
-            snprintf( catbuf, MSL, "  Ruler of :" );
-            strncat( catbuf, outbuf, MSL-1 );
-            for( control = ruler->first_control; control; control = control->next )
-            {
-               snprintf( catbuf, MSL, "%s\r\n", control->this_one->area->name );
-               strncat( outbuf, catbuf, MSL-1 );
-            }
-         }
       }
       send_to_char( outbuf, ch );
       return;
@@ -284,8 +257,6 @@ void do_rulers( CHAR_DATA * ch, char *argument )
       ruler->affiliation_name = str_dup( "" );
       ruler->keywords = str_dup( "" );
       ruler->flags = RULER_NEUTRAL;
-      ruler->first_control = NULL;
-      ruler->last_control = NULL;
 
       ruler_list.push_back(ruler);
       save_rulers(  );
@@ -372,18 +343,6 @@ void do_rulers( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( ruler->first_control != NULL )
-      {
-         CONTROL_LIST *control;
-         CONTROL_LIST *control_next;
-         for( control = ruler->first_control; control; control = control_next )
-         {
-            control_next = control->next;
-            UNLINK( control, ruler->first_control, ruler->last_control, next, prev );
-            control->this_one = NULL;
-            PUT_FREE( control, control_list_free );
-         }
-      }
       ruler_list.remove(ruler);
       delete ruler;
       save_rulers(  );
