@@ -176,7 +176,8 @@ lookup_data::~lookup_data()
 
 lua_data::~lua_data()
 {
- lua_close(L);
+ if( L )
+  lua_close(L);
  owner = NULL;
 
  lua_list.remove(this);

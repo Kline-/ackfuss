@@ -3824,12 +3824,12 @@ void do_config( CHAR_DATA * ch, char *argument )
                     : "@@d[@@c-prompt   @@d]@@c You don't have a prompt.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_TELNET_GA)
-                    ? "@@d[@@a+TELNETGA @@d]@@a You receive a telnet GA sequence.@@N\r\n"
-                    : "@@d[@@c-telnetga @@d]@@c You don't receive a telnet GA sequence.@@N\r\n", ch );
+                    ? "@@d[@@a+TELNET_GA@@d]@@a You receive a telnet GA sequence.@@N\r\n"
+                    : "@@d[@@c-telnet_ga@@d]@@c You don't receive a telnet GA sequence.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_FULL_ANSI)
-                    ? "@@d[@@a+FULLANSI @@d]@@a Your client supports FULL ANSI.@@N\r\n"
-                    : "@@d[@@c-fullansi @@d]@@c Your client does not support full ANSI (GMUD).@@N\r\n", ch );
+                    ? "@@d[@@a+FULL_ANSI@@d]@@a Your client supports FULL ANSI.@@N\r\n"
+                    : "@@d[@@c-full_ansi@@d]@@c Your client does not support full ANSI (GMUD).@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_MAPPER)
                     ? "@@d[@@a+MAPPER   @@d]@@a You are viewing the ASCII display map!@@N\r\n"

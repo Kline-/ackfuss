@@ -171,7 +171,7 @@ char *get_sector_name( int sector )
 char *break_arg( char *str, char *first_arg, int bufsize, int max, int *buflen, int *len )
 {
    int slen = 0;
-   char *arg;
+   char *arg = NULL;
 
    while( isspace( *str ) )
       ++str;
@@ -263,7 +263,7 @@ char *string_justify( char *str, int len, int width, int numwords, int *rlen )
 
 char last_color( char *str )
 {
-   char *end;
+   char *end = '\0';
 
    for( end = str + strlen( str ) - 2; end > str; --end )
       if( *end == '@' && end[-1] == '@' )
@@ -275,25 +275,30 @@ char *string_format( char *str, int *numlines, int width, int height, bool unjus
 {
    static char ret[MSL];
    char buf[MSL];
-   char arg[MAX_INPUT_LENGTH];
-   int alen;
+   char arg[MIL];
+   int alen = 0;
    int blen = 0;
    char *pbuf = buf, *pret = ret;
-   int len;
+   int len = 0;
    int currline = 0;
-   int last;
-   char *sp;
-   char c;
+   int last = 0;
+   char *sp = NULL;
+   char c = '\0';
    int numwords = 0;
-   int jlen;
+   int jlen = 0;
 
    --height;
    --width;
    *pret = '\0';
+   *pbuf = '\0';
+   buf[0] = '\0';
+   arg[0] = '\0';
+
    for( sp = break_arg( str, arg, sizeof( arg ), width, &len, &alen ); *arg;
         sp = break_arg( sp, arg, sizeof( arg ), width, &len, &alen ) )
    {
       blen += alen;
+
       if( blen + 1 >= width || iseol( *arg ) )
       {
          *pbuf++ = '\n';
@@ -376,21 +381,23 @@ char *map_format( char *str, int start, char cmap[MAP_Y][MSL], int *numlines, in
 {
    static char ret[MSL];
    char buf[MSL];
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MIL];
    int width = ( start < MAP_Y ? term_width - 15 : term_width - 1 );
-   int alen;
+   int alen = 0;
    int blen = 0;
    char *pbuf = buf, *pret = ret;
-   int len;
+   int len = 0;
    int currline = start;
-   int last;
+   int last = 0;
    char *sp = NULL;
-   char c;
+   char c = '\0';
    int numwords = 0;
-   int jlen;
+   int jlen = 0;
 
+   buf[0] = '\0';
    arg[0] = '\0';
    --height;
+   *pbuf = '\0';
    *pret = '\0';
    for( sp = break_arg( str, arg, sizeof( arg ), width, &len, &alen ); *arg;
         sp = break_arg( sp, arg, sizeof( arg ), width, &len, &alen ) )
@@ -517,13 +524,8 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
 
 void disp_map( char *border, char *pmap, CHAR_DATA * ch )
 {
-#ifdef ACK_43
    int cols = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );
    int rows = ( IS_NPC( ch ) || !ch->act.test(ACT_FULL_ANSI ) ? 9999 : 10 );
-#else
-   int cols = 80;
-   int rows = 9999;
-#endif
    char bufs[MAP_Y][MSL];
    char disp[MSL];
    int y, ty = MAP_Y - 1;
@@ -541,7 +543,6 @@ void disp_map( char *border, char *pmap, CHAR_DATA * ch )
          ++x;
       snprintf( bufs[y], MSL, "%.*s", static_cast<int>(( x - ox )), ox );
    }
-#ifdef ACK_43
    if( !IS_NPC( ch ) && ch->act.test(ACT_FULL_ANSI ) )
    {
       snprintf( disp, MSL, "%s%s%i;%ir%s%i;%iH%s%s",
@@ -550,7 +551,6 @@ void disp_map( char *border, char *pmap, CHAR_DATA * ch )
                ch->pcdata->term_rows - 11, ch->pcdata->term_rows - 1, CRS_CMD, ch->pcdata->term_rows - 11, 0, CRS_CMD, "J" );
       send_to_char( disp, ch );
    }
-#endif
    strcpy( disp, map_format( ch->in_room->name, 0, bufs, &y, cols, rows, TRUE ) );
    strncat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ), MSL );
    strncat( disp, map_format( tagline_format(ch->in_room->description,ch), y, bufs, &y, cols, rows, !ch->act.test(ACT_JUSTIFY ) ), MSL );
@@ -561,13 +561,11 @@ void disp_map( char *border, char *pmap, CHAR_DATA * ch )
          x += snprintf( x, MSL, "%s\r\n", bufs[y] ), ++y;
    }
    send_to_char( disp, ch );
-#ifdef ACK_43
    if( !IS_NPC( ch ) && ch->act.test(ACT_FULL_ANSI ) )
    {
       snprintf( disp, MSL, "%s%i;%ir%s%i;%iH", CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13, 0 );
       send_to_char( disp, ch );
    }
-#endif
    return;
 }
 
