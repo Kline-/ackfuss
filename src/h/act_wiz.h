@@ -107,5 +107,6 @@ void do_hotreboot P_((CHAR_DATA *ch, char *argument));
 void do_disable P_((CHAR_DATA *ch, char *argument));
 void do_lua P_((CHAR_DATA *ch, char *argument));
 void do_olua P_((CHAR_DATA *ch, char *argument));
+void do_rlua P_((CHAR_DATA *ch, char *argument));
 
 #undef P_

@@ -337,7 +337,10 @@ room_index_data::~room_index_data()
  for_each( mark_list.begin(), mark_list.end(), DeleteObject() );
  free_string(name);
  free_string(description);
+ free_string(script_name);
  delete treasure;
+ if( lua )
+  delete lua;
 }
 
 ruler_data::~ruler_data()

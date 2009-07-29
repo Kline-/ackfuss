@@ -18,8 +18,8 @@
 #define AREA_SHOWERROR 1
 
 /* buildare.c */
-int build_canread P_((AREA_DATA *Area, CHAR_DATA *ch, int showerror));
-int build_canwrite P_((AREA_DATA *Area, CHAR_DATA *ch, int showerror));
+bool build_canread P_((AREA_DATA *Area, CHAR_DATA *ch, int showerror));
+bool build_canwrite P_((AREA_DATA *Area, CHAR_DATA *ch, int showerror));
 void build_save_area_list P_((void));
 void build_save_area_gold P_((void));
 void build_makearea P_((CHAR_DATA *ch, char *argument));

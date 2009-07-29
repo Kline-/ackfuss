@@ -407,17 +407,18 @@ void build_save_rooms(  )
    pRoomIndex = (ROOM_INDEX_DATA *)Pointer->data;
 
    fprintf( SaveFile, "\n#ROOM\n" );
-   fprintf( SaveFile, "Vnum  %d\n", pRoomIndex->vnum );  /* Must be first for sanity checks --Kline */
-   fprintf( SaveFile, "Desc  %s~\n", pRoomIndex->description );
+   fprintf( SaveFile, "Vnum       %d\n", pRoomIndex->vnum );  /* Must be first for sanity checks --Kline */
+   fprintf( SaveFile, "Desc       %s~\n", pRoomIndex->description );
 
-   fprintf( SaveFile, "Flags " );
+   fprintf( SaveFile, "Flags      " );
    for( i = 0; i < MAX_BITSET; i++ )
     if( pRoomIndex->room_flags.test(i) )
      fprintf( SaveFile, "%d ", i );
    fprintf( SaveFile, "EOL\n" );
 
-   fprintf( SaveFile, "Name  %s~\n", pRoomIndex->name );
-   fprintf( SaveFile, "Sect  %d\n", pRoomIndex->sector_type );
+   fprintf( SaveFile, "Name       %s~\n", pRoomIndex->name );
+   fprintf( SaveFile, "ScriptName %s~\n", pRoomIndex->script_name );
+   fprintf( SaveFile, "Sect       %d\n", pRoomIndex->sector_type );
    fprintf( SaveFile, "End\n" );
 
    /*
@@ -428,19 +429,19 @@ void build_save_rooms(  )
       if( pRoomIndex->exit[d] )
       {
          fprintf( SaveFile, "#DOOR\n" );
-         fprintf( SaveFile, "Dir     %d\n", d );  /* Must be first for sanity checks --Kline */
+         fprintf( SaveFile, "Dir        %d\n", d );  /* Must be first for sanity checks --Kline */
          pexit = pRoomIndex->exit[d];
-         fprintf( SaveFile, "Desc    %s~\n", pexit->description );
+         fprintf( SaveFile, "Desc       %s~\n", pexit->description );
 
-         fprintf( SaveFile, "Flags   " );
+         fprintf( SaveFile, "Flags      " );
          for( i = 0; i < MAX_BITSET; i++ )
           if( pexit->exit_info.test(i) && i != EX_LOCKED && i != EX_CLOSED )
            fprintf( SaveFile, "%d ", i );
          fprintf( SaveFile, "EOL\n" );
 
-         fprintf( SaveFile, "Key     %d\n", pexit->key );
-         fprintf( SaveFile, "Keyword %s~\n", pexit->keyword );
-         fprintf( SaveFile, "Vnum    %d\n", pexit->vnum );
+         fprintf( SaveFile, "Key        %d\n", pexit->key );
+         fprintf( SaveFile, "Keyword    %s~\n", pexit->keyword );
+         fprintf( SaveFile, "Vnum       %d\n", pexit->vnum );
          fprintf( SaveFile, "End\n" );
       }
    }
@@ -453,8 +454,8 @@ void build_save_rooms(  )
    while( pEd )
    {
       fprintf( SaveFile, "#REXTRA\n" );
-      fprintf( SaveFile, "Desc       %s~\n", pEd->description );
-      fprintf( SaveFile, "Keyword    %s~\n", pEd->keyword );
+      fprintf( SaveFile, "Desc          %s~\n", pEd->description );
+      fprintf( SaveFile, "Keyword       %s~\n", pEd->keyword );
       fprintf( SaveFile, "End\n" );
       pEd = pEd->next;
    }

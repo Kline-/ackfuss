@@ -1020,17 +1020,18 @@ class room_index_data
    CHAR_DATA               *first_person;
    ROOM_AFFECT_DATA        *first_room_affect;
    BUILD_DATA_LIST         *first_room_reset;
-   bool                    is_free;  /* Ramias:for run-time checks of LINK/UNLINK */
    OBJ_DATA                *last_content;
    EXTRA_DESCR_DATA        *last_exdesc;
    CHAR_DATA               *last_person;
    ROOM_AFFECT_DATA        *last_room_affect;
    BUILD_DATA_LIST         *last_room_reset;
    short                   light;
+   LUA_DATA                *lua;
    std::list<MARK_DATA *>  mark_list;
    char                    *name;
    ROOM_INDEX_DATA         *next;
    std::bitset<MAX_BITSET> room_flags;
+   char                    *script_name;
    short                   sector_type;
    MONEY_TYPE              *treasure;
    int                     vnum;

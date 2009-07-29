@@ -32,6 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
+#include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -675,7 +676,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
 
    buf1[0] = '\0';
 
-   snprintf( buf, MSL, "Name: '%s.'\r\nArea: '%s'.\r\n", location->name, location->area->name );
+   snprintf( buf, MSL, "Name: '%s'\r\nArea: '%s'.\r\n", location->name, location->area->name );
    strncat( buf1, buf, MSL );
 
    snprintf( buf, MSL,
@@ -687,6 +688,12 @@ void do_rstat( CHAR_DATA * ch, char *argument )
             "Room flags: %s.\r\nDescription:\r\n%s",
             bs_show_values( tab_room_flags, location->room_flags ), location->description );
    strncat( buf1, buf, MSL );
+
+   if( location->script_name != &str_empty[0] )
+   {
+      snprintf( buf, MSL, "\r\nRoom has Lua script: %s\r\n", location->script_name );
+      strncat( buf1, buf, MSL );
+   }
 
    if( location->first_exdesc != NULL )
    {
@@ -6293,10 +6300,37 @@ void do_olua( CHAR_DATA *ch, char *argument )
  if( (obj = get_obj_world(ch,arg)) == NULL )
   return;
 
- if( obj->lua->L )
+ if( obj->lua )
  {
   luaL_dofile(obj->lua->L,str.c_str());
   const char * sError = lua_tostring(obj->lua->L,-1);
+  if( str_cmp(sError,"(null)") && sError != NULL )
+   monitor_chan(sError,MONITOR_DEBUG);
+ }
+
+ return;
+}
+
+struct ShowObject
+{
+ template <typename T> void operator() (const T* ptr) const { snprintf(log_buf,(2 * MIL),"ptr: %p ptr->type: %d ptr->L: %p, ptr->owner: %p",ptr,ptr->type,ptr->L,ptr->owner); 
+monitor_chan(log_buf,MONITOR_DEBUG); };
+};
+
+void do_rlua( CHAR_DATA *ch, char *argument )
+{
+ for_each( lua_list.begin(), lua_list.end(), ShowObject() );
+ std::string str = SCRIPT_DIR;
+ str += argument;
+ ROOM_INDEX_DATA *room = ch->in_room;
+
+ if( room == NULL )
+  return;
+
+ if( room->lua )
+ {
+  luaL_dofile(room->lua->L,str.c_str());
+  const char * sError = lua_tostring(room->lua->L,-1);
   if( str_cmp(sError,"(null)") && sError != NULL )
    monitor_chan(sError,MONITOR_DEBUG);
  }

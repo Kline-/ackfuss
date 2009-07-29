@@ -82,6 +82,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_LUASCRIPT_H
+#include "h/luascript.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif
@@ -688,6 +692,12 @@ void build_showroom( CHAR_DATA * ch, char *argument )
 
    snprintf( buf, MSL, "@@WFlags:\r\n@@y%s", bs_show_values( tab_room_flags, location->room_flags ) );
    strncat( buf1, buf, MSL );
+
+   if( location->script_name != &str_empty[0] )
+   {
+      snprintf( buf, MSL, "@@WRoom has Lua script: @@y%s\r\n", location->script_name );
+      strncat( buf1, buf, MSL );
+   }
 
    if( ( display & DISPLAY_DESC ) )
    {
@@ -1716,9 +1726,17 @@ void build_setmob( CHAR_DATA * ch, char *argument )
        return;
       }
 
-      pMob->script_name = str_dup(arg3);
-      area_modified( pArea );
-      return;
+      if( strlen(arg3) >= 3 )
+      {
+       pMob->script_name = str_dup(arg3);
+       area_modified( pArea );
+       return;
+      }
+      else
+      {
+       send_to_char("Script must be at least 3 characters.\r\n",ch);
+       return;
+      }
    }
 
    if( !str_cmp( arg2, "shop" ) )
@@ -1946,9 +1964,10 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       send_to_char( "                         type <ascii-type> [onesided]\r\n", ch );
       send_to_char( "                         clear [onesided]\r\n", ch );
       send_to_char( "      extra <keyword> <string>\r\n", ch );
-      send_to_char( "      extra -<keyword>\r\n", ch );
       send_to_char( "String being one of:\r\n", ch );
-      send_to_char( "      name desc\r\n", ch );
+      send_to_char( "      name desc script\r\n", ch );
+      send_to_char( "Use [set] extra - to clear extra keyword\r\n", ch );
+      send_to_char( "Use [set] script - to clear script\r\n", ch );
       return;
    }
 
@@ -2081,6 +2100,30 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       build_strdup( &ed->description, arg3, TRUE, FALSE, ch );
       return;
 
+   }
+
+   if( !str_cmp( arg1, "script" ) )
+   {
+      if( arg2[0] == '-' )
+      {
+       delete location->lua;
+       free_string(location->script_name);
+       location->script_name = &str_empty[0];
+       return;
+      }
+
+      if( strlen(arg2) >= 3 )
+      {
+       location->lua = new LUA_DATA;
+       init_lua(location);
+       location->script_name = str_dup(arg2);
+       return;
+      }
+      else
+      {
+       send_to_char("Script must be at least 3 characters.\r\n",ch);
+       return;
+      }
    }
 
    /*
@@ -2646,9 +2689,17 @@ void build_setobject( CHAR_DATA * ch, char *argument )
        return;
       }
 
-      pObj->script_name = str_dup(arg3);
-      area_modified( pArea );
-      return;
+      if( strlen(arg3) >= 3 )
+      {
+       pObj->script_name = str_dup(arg3);
+       area_modified( pArea );
+       return;
+      }
+      else
+      {
+       send_to_char("Script must be at least 3 characters.\r\n",ch);
+       return;
+      }
    }
 
    if( !str_cmp( arg2, "extra" ) )

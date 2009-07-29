@@ -81,36 +81,36 @@ extern int nAllocPerm;
 extern int sAllocPerm;
 extern int fBootDb;
 
-int build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
+bool build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 {
    if( get_trust( ch ) >= MAX_LEVEL - 1 )
-      return 1;
+      return true;
 
    if( Area->can_read != NULL )
       if( is_name( "all", Area->can_read )
           || is_name( ch->name, Area->can_read ) || ( is_name( "gods", Area->can_read ) && IS_IMMORTAL( ch ) ) )
-         return 1;
+         return true;
 
    if( showerror == AREA_SHOWERROR )
       send_to_char( "You are not allowed to use this area.\r\n", ch );
 
-   return 0;
+   return false;
 }
 
-int build_canwrite( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
+bool build_canwrite( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 {
    if( get_trust( ch ) >= MAX_LEVEL - 1 )
-      return 1;
+      return true;
 
    if( Area->can_write != NULL )
       if( is_name( "all", Area->can_write )
           || is_name( ch->name, Area->can_write ) || ( is_name( "gods", Area->can_write ) && IS_IMMORTAL( ch ) ) )
-         return 1;
+         return true;
 
    if( showerror == AREA_SHOWERROR )
       send_to_char( "You are not allowed to edit this area.\r\n", ch );
 
-   return 0;
+   return false;
 }
 
 void build_save_area_list( void )

@@ -1629,6 +1629,18 @@ void load_room( FILE * fp )
             break;
 
          case 'S':
+            if( !str_cmp( word, "ScriptName" ) )
+            {
+             free_string(pRoomIndex->script_name);
+             pRoomIndex->script_name = fread_string(fp);
+             if( pRoomIndex->script_name != &str_empty[0] ) /* Room has a script attached */
+             {
+              pRoomIndex->lua = new LUA_DATA;
+              init_lua(pRoomIndex);
+             }
+             fMatch = true;
+             break;
+            }
             KEY("Sect", pRoomIndex->sector_type, fread_number( fp ) );
             break;
 
@@ -3361,6 +3373,8 @@ void do_memory( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "Exits   %5d\r\n", static_cast<int>(exit_list.size()) );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
+   send_to_char( buf, ch );
+   snprintf( buf, MSL, "Lua     %5d\r\n", static_cast<int>(lua_list.size()) );
    send_to_char( buf, ch );
    snprintf( buf, MSL, "Mobs    %5d\r\n", static_cast<int>(mob_index_list.size()) );
    send_to_char( buf, ch );
