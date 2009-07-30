@@ -80,6 +80,7 @@ class lua_data
   lua_data();
   ~lua_data();
   lua_State *L;
+  bool loaded;
   void *owner;
   int type;
 };

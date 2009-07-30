@@ -1,4 +1,6 @@
 package.path = "/home/matt/workspace/ackfuss/script/?.lua;" .. package.path
+require "wait"
+wait_update = require("wait").update
 
 -- send to room - with newline
 function rsend (...)
@@ -19,6 +21,3 @@ end
 function frsend (s, ...)
   mud.recho (string.format (s, ...))
 end
-
-require "wait"
-wait_update = require("wait").update

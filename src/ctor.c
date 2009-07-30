@@ -313,6 +313,7 @@ lookup_data::lookup_data()
 lua_data::lua_data()
 {
  L = luaL_newstate();
+ loaded = false;
  owner = NULL;
  type = LUA_TYPE_NONE;
 

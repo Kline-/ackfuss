@@ -120,9 +120,7 @@ void save_clan_table(  )
 
 }
 
-
-
-void do_ctoggle( CHAR_DATA * ch, char *argument )
+DO_FUN(do_ctoggle)
 {
    /*
     * Toggles clan members various clan job flags
@@ -279,7 +277,7 @@ char *get_diplo_name( short value )
 
 
 
-void do_politics( CHAR_DATA * ch, char *argument )
+DO_FUN(do_politics)
 {
    short x, y;
    std::string str;
@@ -346,7 +344,7 @@ void do_politics( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_negotiate( CHAR_DATA * ch, char *argument )
+DO_FUN(do_negotiate)
 {
    char buf[MAX_STRING_LENGTH];
    char arg1[MAX_STRING_LENGTH];
@@ -509,7 +507,7 @@ void do_negotiate( CHAR_DATA * ch, char *argument )
 
 /* These set of clan functions by [ -S- ] Stephen */
 
-void do_leav( CHAR_DATA * ch, char *argument )
+DO_FUN(do_leav)
 {
    send_to_char( "If you want to LEAVE, spell it out!!\r\n", ch );
    return;
@@ -522,7 +520,7 @@ void do_leav( CHAR_DATA * ch, char *argument )
  * it is also used by other functions.
  */
 
-void do_cset( CHAR_DATA * ch, char *argument )
+DO_FUN(do_cset)
 {
    /*
     * This is basically do_mset, but with its guts ripped out,
@@ -596,7 +594,7 @@ void do_cset( CHAR_DATA * ch, char *argument )
  * note that the victim must NOT be in a clan to be accepted.
  */
 
-void do_accept( CHAR_DATA * ch, char *argument )
+DO_FUN(do_accept)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
@@ -661,7 +659,7 @@ void do_accept( CHAR_DATA * ch, char *argument )
  * clan members, and operates globally.
  */
 
-void do_cwhere( CHAR_DATA * ch, char *argument )
+DO_FUN(do_cwhere)
 {
 
 
@@ -727,7 +725,7 @@ void do_cwhere( CHAR_DATA * ch, char *argument )
  * stuff, and to generate the usage 'text'.  ??? ummm ???
  */
 
-void do_leave( CHAR_DATA * ch, char *argument )
+DO_FUN(do_leave)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -751,7 +749,7 @@ void do_leave( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_banish( CHAR_DATA * ch, char *argument )
+DO_FUN(do_banish)
 {
    CHAR_DATA *victim;
    char buf[MAX_STRING_LENGTH];
@@ -813,7 +811,7 @@ void do_banish( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_make( CHAR_DATA * ch, char *argument )
+DO_FUN(do_make)
 {
    char buf[MAX_STRING_LENGTH];
    char arg1[MAX_STRING_LENGTH];
@@ -927,7 +925,7 @@ void do_make( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_council( CHAR_DATA * ch, char *argument )
+DO_FUN(do_council)
 {
    char buf[MAX_STRING_LENGTH];
    char buf2[MAX_STRING_LENGTH];

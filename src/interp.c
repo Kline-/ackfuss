@@ -642,6 +642,8 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_IMM, C_SHOW_ALWAYS,false},
    {"rlua", do_rlua, POS_DEAD, L_HER, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS,false},
+   {"ldebug", do_ldebug, POS_DEAD, L_HER, LOG_NORMAL,
+    C_TYPE_IMM, C_SHOW_ALWAYS,false},
 
    /*
     *    Vampyre and REMORT SKILLS Zen

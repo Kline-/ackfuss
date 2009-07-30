@@ -32,7 +32,6 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -122,7 +121,7 @@ extern bool disable_timer_abort;
 extern int port;
 extern int control;
 
-void do_transdm( CHAR_DATA * ch, char *argument )
+DO_FUN(do_transdm)
 {
    CHAR_DATA *wch;
    std::list<CHAR_DATA *>::iterator li;
@@ -6311,15 +6310,8 @@ void do_olua( CHAR_DATA *ch, char *argument )
  return;
 }
 
-struct ShowObject
-{
- template <typename T> void operator() (const T* ptr) const { snprintf(log_buf,(2 * MIL),"ptr: %p ptr->type: %d ptr->L: %p, ptr->owner: %p",ptr,ptr->type,ptr->L,ptr->owner); 
-monitor_chan(log_buf,MONITOR_DEBUG); };
-};
-
 void do_rlua( CHAR_DATA *ch, char *argument )
 {
- for_each( lua_list.begin(), lua_list.end(), ShowObject() );
  std::string str = SCRIPT_DIR;
  str += argument;
  ROOM_INDEX_DATA *room = ch->in_room;
@@ -6334,6 +6326,22 @@ void do_rlua( CHAR_DATA *ch, char *argument )
   if( str_cmp(sError,"(null)") && sError != NULL )
    monitor_chan(sError,MONITOR_DEBUG);
  }
+
+ return;
+}
+
+/* Just debug stuff past here, will remove it later. --Kline */
+#include <algorithm>
+
+struct ShowObject
+{
+ template <typename T> void operator() (const T* ptr) const { snprintf(log_buf,(2 * MIL),"ptr: %p ptr->loaded: %d ptr->L: %p ptr->owner: %p ptr->type: %d",ptr,ptr->loaded,ptr->L,ptr->owner,ptr->type);
+ monitor_chan(log_buf,MONITOR_DEBUG); };
+};
+
+void do_ldebug( CHAR_DATA *ch, char *argument )
+{
+ for_each( lua_list.begin(), lua_list.end(), ShowObject() );
 
  return;
 }

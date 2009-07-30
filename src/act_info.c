@@ -733,9 +733,7 @@ bool check_blind( CHAR_DATA * ch )
    return TRUE;
 }
 
-
-
-void do_look( CHAR_DATA * ch, char *argument )
+DO_FUN(do_look)
 {
    char buf[MAX_STRING_LENGTH];
    char arg1[MAX_INPUT_LENGTH];
@@ -1123,9 +1121,7 @@ void do_look( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_examine( CHAR_DATA * ch, char *argument )
+DO_FUN(do_examine)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1164,12 +1160,10 @@ void do_examine( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
 /*
  * Thanks to Zrin for auto-exit part.
  */
-void do_exits( CHAR_DATA * ch, char *argument )
+DO_FUN(do_exits)
 {
    extern char *const compass_name[];
    char buf[MAX_STRING_LENGTH];
@@ -1268,9 +1262,7 @@ void do_exits( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_score( CHAR_DATA * ch, char *argument )
+DO_FUN(do_score)
 {
 
    /*
@@ -1612,7 +1604,7 @@ void do_score( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_affected( CHAR_DATA * ch, char *argument )
+DO_FUN(do_affected)
 {
 
    char buf[MAX_STRING_LENGTH];
@@ -1709,7 +1701,7 @@ char *const month_name[] = {
    "the Ancient Darkness", "the Great Evil"
 };
 
-void do_time( CHAR_DATA * ch, char *argument )
+DO_FUN(do_time)
 {
    extern char str_boot_time[];
    char buf[MAX_STRING_LENGTH];
@@ -1739,9 +1731,7 @@ void do_time( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_weather( CHAR_DATA * ch, char *argument )
+DO_FUN(do_weather)
 {
    char buf[MAX_STRING_LENGTH];
    char buf2[MSL];
@@ -1801,9 +1791,7 @@ void do_weather( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_help( CHAR_DATA * ch, char *argument )
+DO_FUN(do_help)
 {
  FILE *fp;
  char buf[MSL];
@@ -1937,7 +1925,7 @@ void do_help( CHAR_DATA * ch, char *argument )
 #define SHOW_MORTAL     3
 #define SHOW_FINISH     4
 
-void do_who( CHAR_DATA * ch, char *argument )
+DO_FUN(do_who)
 {
    DESCRIPTOR_DATA *d;
 
@@ -2550,8 +2538,7 @@ void do_who( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-void do_inventory( CHAR_DATA * ch, char *argument )
+DO_FUN(do_inventory)
 {
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
@@ -2564,18 +2551,14 @@ void do_inventory( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_equipment( CHAR_DATA * ch, char *argument )
+DO_FUN(do_equipment)
 {
    do_wear( ch, "" );
    return;
 
 }
 
-
-
-void do_compare( CHAR_DATA * ch, char *argument )
+DO_FUN(do_compare)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -2675,18 +2658,14 @@ void do_compare( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_credits( CHAR_DATA * ch, char *argument )
+DO_FUN(do_credits)
 {
    do_help( ch, "diku" );
    do_help( ch, "ack" );
    return;
 }
 
-
-
-void do_where( CHAR_DATA * ch, char *argument )
+DO_FUN(do_where)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -2753,10 +2732,7 @@ void do_where( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-
-void do_consider( CHAR_DATA * ch, char *argument )
+DO_FUN(do_consider)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2975,9 +2951,7 @@ void set_title( CHAR_DATA * ch, char *title )
    return;
 }
 
-
-
-void do_title( CHAR_DATA * ch, char *argument )
+DO_FUN(do_title)
 {
    /*
     * Changed this to limit title length, and to remove and brackets. -S- 
@@ -3025,9 +2999,7 @@ void do_title( CHAR_DATA * ch, char *argument )
    send_to_char( buf, ch );
 }
 
-
-
-void do_description( CHAR_DATA * ch, char *argument )
+DO_FUN(do_description)
 {
    char buf[MAX_STRING_LENGTH];
    buf[0] = '\0';
@@ -3068,9 +3040,7 @@ void do_description( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_report( CHAR_DATA * ch, char *argument )
+DO_FUN(do_report)
 {
    char buf[MAX_INPUT_LENGTH];
 
@@ -3088,9 +3058,7 @@ void do_report( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_practice( CHAR_DATA * ch, char *argument )
+DO_FUN(do_practice)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *mob;
@@ -3296,12 +3264,10 @@ void do_practice( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
 /*
  * 'Wimpy' originally by Dionysos.
  */
-void do_wimpy( CHAR_DATA * ch, char *argument )
+DO_FUN(do_wimpy)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -3338,9 +3304,7 @@ void do_wimpy( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_password( CHAR_DATA * ch, char *argument )
+DO_FUN(do_password)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -3435,9 +3399,7 @@ void do_password( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_socials( CHAR_DATA * ch, char *argument )
+DO_FUN(do_socials)
 {
    char buf[MAX_STRING_LENGTH];
    char out[MAX_STRING_LENGTH * 2];
@@ -3467,7 +3429,7 @@ static char *const cmd_group_names[] = {
    "@@dItem Manipulation\r\n", "@@yImm\r\n"
 };
 
-void do_commands( CHAR_DATA * ch, char *argument )
+DO_FUN(do_commands)
 {
  short cnt = 0, i = 0, cmd = 0, show = 0, total = 0;
  std::string buf;
@@ -3653,14 +3615,7 @@ struct chan_type channels[] = {
    {0, 0, NULL, NULL}
 };
 
-
-
-
-
-
-
-
-void do_channels( CHAR_DATA * ch, char *argument )
+DO_FUN(do_channels)
 {
    char arg[MAX_INPUT_LENGTH];
    char buffer[MAX_STRING_LENGTH];
@@ -3757,12 +3712,10 @@ void do_channels( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
 /*
  * Contributed by Grodyn.
  */
-void do_config( CHAR_DATA * ch, char *argument )
+DO_FUN(do_config)
 {
    char arg[MAX_INPUT_LENGTH];
    char buf[MSL];
@@ -3920,7 +3873,7 @@ void do_config( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_wizlist( CHAR_DATA * ch, char *argument )
+DO_FUN(do_wizlist)
 {
 
    do_help( ch, "wizlist" );
@@ -3928,7 +3881,7 @@ void do_wizlist( CHAR_DATA * ch, char *argument )
 
 }
 
-void do_race_list( CHAR_DATA * ch, char *argument )
+DO_FUN(do_race_list)
 {
    int iRace;
    char buf[MAX_STRING_LENGTH];
@@ -4006,7 +3959,7 @@ void do_race_list( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_clan_list( CHAR_DATA * ch, char *argument )
+DO_FUN(do_clan_list)
 {
    int iClan;
    char buf[MAX_STRING_LENGTH];
@@ -4038,7 +3991,7 @@ void do_clan_list( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_spells( CHAR_DATA * ch, char *argument )
+DO_FUN(do_spells)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -4097,7 +4050,7 @@ void do_spells( CHAR_DATA * ch, char *argument )
 
 }
 
-void do_slist( CHAR_DATA * ch, char *argument )
+DO_FUN(do_slist)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -4305,63 +4258,63 @@ void do_slist( CHAR_DATA * ch, char *argument )
 
 /* by passing the conf command - Kahn */
 
-void do_autoexit( CHAR_DATA * ch, char *argument )
+DO_FUN(do_autoexit)
 {
 
    ( ch->act.test(ACT_AUTOEXIT) ? do_config( ch, "-autoexit" ) : do_config( ch, "+autoexit" ) );
 
 }
 
-void do_autoloot( CHAR_DATA * ch, char *argument )
+DO_FUN(do_autoloot)
 {
 
    ( ch->act.test(ACT_AUTOLOOT) ? do_config( ch, "-autoloot" ) : do_config( ch, "+autoloot" ) );
 
 }
 
-void do_autosac( CHAR_DATA * ch, char *argument )
+DO_FUN(do_autosac)
 {
 
    ( ch->act.test(ACT_AUTOSAC)  ? do_config( ch, "-autosac" ) : do_config( ch, "+autosac" ) );
 
 }
 
-void do_blank( CHAR_DATA * ch, char *argument )
+DO_FUN(do_blank)
 {
 
    ( ch->act.test(ACT_BLANK) ? do_config( ch, "-blank" ) : do_config( ch, "+blank" ) );
 
 }
 
-void do_brief( CHAR_DATA * ch, char *argument )
+DO_FUN(do_brief)
 {
 
    ( ch->act.test(ACT_BRIEF) ? do_config( ch, "-brief" ) : do_config( ch, "+brief" ) );
 
 }
 
-void do_combine( CHAR_DATA * ch, char *argument )
+DO_FUN(do_combine)
 {
 
    ( ch->act.test(ACT_COMBINE) ? do_config( ch, "-combine" ) : do_config( ch, "+combine" ) );
 
 }
 
-void do_autodig( CHAR_DATA * ch, char *argument )
+DO_FUN(do_autodig)
 {
 
    ( ch->act.test(ACT_AUTODIG) ? do_config( ch, "-autodig" ) : do_config( ch, "+autodig" ) );
 
 }
 
-void do_autobrief( CHAR_DATA * ch, char *argument )
+DO_FUN(do_autobrief)
 {
 
    ( ch->act.test(ACT_AUTOBRIEF) ? do_config( ch, "-autobrief" ) : do_config( ch, "+autobrief" ) );
 
 }
 
-void do_pagelen( CHAR_DATA * ch, char *argument )
+DO_FUN(do_pagelen)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -4387,7 +4340,7 @@ void do_pagelen( CHAR_DATA * ch, char *argument )
 }
 
 /* Do_prompt from Morgenes from Aldara Mud */
-void do_prompt( CHAR_DATA * ch, char *argument )
+DO_FUN(do_prompt)
 {
    char buf[MAX_STRING_LENGTH];
    buf[0] = '\0';
@@ -4414,7 +4367,7 @@ void do_prompt( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_diagnose( CHAR_DATA * ch, char *argument )
+DO_FUN(do_diagnose)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -4473,10 +4426,7 @@ void do_diagnose( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-
-void do_heal( CHAR_DATA * ch, char *argument )
+DO_FUN(do_heal)
 {
    /*
     * This function used when a player types heal when in a room with
@@ -4687,9 +4637,7 @@ void do_heal( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_gain( CHAR_DATA * ch, char *argument )
+DO_FUN(do_gain)
 {
    /*
     * Allow ch to gain a level in a chosen class.     
@@ -5065,8 +5013,7 @@ void do_gain( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-void do_assassinate( CHAR_DATA * ch, char *argument )
+DO_FUN(do_assassinate)
 {
    char buf[MAX_STRING_LENGTH];
    int cost;
@@ -5155,8 +5102,7 @@ void do_assassinate( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-void do_alias( CHAR_DATA * ch, char *argument )
+DO_FUN(do_alias)
 {
    /*
     * Handle aliases - setting and clearing, as well as listing. 
@@ -5246,8 +5192,7 @@ void do_alias( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-void do_color( CHAR_DATA * ch, char *argument )
+DO_FUN(do_color)
 {
    /*
     * Allow users to set which color they get certain texts in. -S- 
@@ -5430,7 +5375,7 @@ char *color_string( CHAR_DATA * ch, char *argument )
    return ( ansi_table[ch->pcdata->color[num]].value );
 }
 
-void do_worth( CHAR_DATA * ch, char *argument )
+DO_FUN(do_worth)
 {
    /*
     * Show details regarding cost to level each class, etc 
@@ -5497,7 +5442,7 @@ void do_worth( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_whois( CHAR_DATA * ch, char *argument )
+DO_FUN(do_whois)
 {
    /*
     * Show ch some details about the 'victim'
@@ -5585,7 +5530,7 @@ void do_whois( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_shelp( CHAR_DATA * ch, char *argument )
+DO_FUN(do_shelp)
 {
  /*
   * Like help, except for spells and skills. 
@@ -5612,7 +5557,7 @@ void do_shelp( CHAR_DATA * ch, char *argument )
  return;
 }
 
-void do_afk( CHAR_DATA * ch, char *argument )
+DO_FUN(do_afk)
 {
    if( IS_NPC( ch ) )
       return;
@@ -5627,7 +5572,7 @@ void do_afk( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_colist( CHAR_DATA * ch, char *argument )
+DO_FUN(do_colist)
 {
    int col, n;
    char buf[MAX_STRING_LENGTH];
@@ -5658,7 +5603,7 @@ void do_colist( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_loot( CHAR_DATA * ch, char *argument )
+DO_FUN(do_loot)
 {
 
    char arg[MAX_INPUT_LENGTH];
@@ -5819,7 +5764,7 @@ char *output_race_wear( int iRace )
  return buf;
 }
 
-void do_safe( CHAR_DATA *ch, char *argument )
+DO_FUN(do_safe)
 {
  if( ch->in_room != NULL && ch->in_room->room_flags.test(RFLAG_SAFE) )
   send_to_char("@@GYou are safe from attacks here.@@N\r\n",ch);

@@ -164,7 +164,7 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
 
 
 /* Date stamp idea comes from Alander of ROM */
-void do_note( CHAR_DATA * ch, char *argument )
+DO_FUN(do_note)
 {
    CHAR_DATA *postie;
    NOTE_DATA *pnote;
@@ -768,20 +768,20 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
    } //no reason
 }
 
-void do_creator( CHAR_DATA * ch, char *argument )
+DO_FUN(do_creator)
 {
    talk_channel( ch, argument, CHANNEL_CREATOR, "[C-Net]" );
    return;
 }
 
 
-void do_gossip( CHAR_DATA * ch, char *argument )
+DO_FUN(do_gossip)
 {
    talk_channel( ch, argument, CHANNEL_GOSSIP, "gossip" );
    return;
 }
 
-void do_crusade( CHAR_DATA * ch, char *argument )
+DO_FUN(do_crusade)
 {
    talk_channel( ch, argument, CHANNEL_CRUSADE, "@@lcrusade" );
    if( ( !str_cmp( argument, "what mob?" ) )
@@ -796,24 +796,25 @@ void do_crusade( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_music( CHAR_DATA * ch, char *argument )
+DO_FUN(do_music)
 {
    talk_channel( ch, argument, CHANNEL_MUSIC, "music" );
    return;
 }
 
-void do_quest2( CHAR_DATA * ch, char *argument )
+DO_FUN(do_quest2)
 {
    talk_channel( ch, argument, CHANNEL_QUEST, "@@a[@@cQUEST@@a]@@W" );
    return;
 }
-void do_game( CHAR_DATA * ch, char *argument )
+
+DO_FUN(do_game)
 {
    talk_channel( ch, argument, CHANNEL_GAME, "@@y[@@rGAME@@y]@@W" );
    return;
 }
 
-void do_race( CHAR_DATA * ch, char *argument )
+DO_FUN(do_race)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -828,7 +829,7 @@ void do_race( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_clan( CHAR_DATA * ch, char *argument )
+DO_FUN(do_clan)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -848,7 +849,8 @@ void do_clan( CHAR_DATA * ch, char *argument )
    talk_channel( ch, argument, CHANNEL_CLAN, buf );
    return;
 }
-void do_familytalk( CHAR_DATA * ch, char *argument )
+
+DO_FUN(do_familytalk)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -869,7 +871,7 @@ void do_familytalk( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_howl( CHAR_DATA * ch, char *argument )
+DO_FUN(do_howl)
 {
    /*
     * char buf[MAX_STRING_LENGTH];    
@@ -894,31 +896,25 @@ void do_howl( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_newbie( CHAR_DATA * ch, char *argument )
+DO_FUN(do_newbie)
 {
    talk_channel( ch, argument, CHANNEL_NEWBIE, "newbie" );
    return;
 }
 
-
-
-void do_question( CHAR_DATA * ch, char *argument )
+DO_FUN(do_question)
 {
    talk_channel( ch, argument, CHANNEL_QUESTION, "question" );
    return;
 }
 
-
-
-void do_answer( CHAR_DATA * ch, char *argument )
+DO_FUN(do_answer)
 {
    talk_channel( ch, argument, CHANNEL_QUESTION, "answer" );
    return;
 }
 
-
-
-void do_shout( CHAR_DATA * ch, char *argument )
+DO_FUN(do_shout)
 {
    talk_channel( ch, argument, CHANNEL_SHOUT, "shout" );
    return;
@@ -929,7 +925,7 @@ void do_shout( CHAR_DATA * ch, char *argument )
  * zzz will only be available to sleeping chars ;)
  */
 
-void do_flame( CHAR_DATA * ch, char *argument )
+DO_FUN(do_flame)
 {
    if( ch->level < 3 )
    {
@@ -941,7 +937,7 @@ void do_flame( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_zzz( CHAR_DATA * ch, char *argument )
+DO_FUN(do_zzz)
 {
    if( ch->level < 3 )
    {
@@ -965,19 +961,19 @@ void do_zzz( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_yell( CHAR_DATA * ch, char *argument )
+DO_FUN(do_yell)
 {
    talk_channel( ch, argument, CHANNEL_YELL, "yell" );
    return;
 }
 
-void do_immtalk( CHAR_DATA * ch, char *argument )
+DO_FUN(do_immtalk)
 {
    talk_channel( ch, argument, CHANNEL_IMMTALK, "immtalk" );
    return;
 }
 
-void do_diptalk( CHAR_DATA * ch, char *argument )
+DO_FUN(do_diptalk)
 {
    if( !ch->act.test(ACT_CDIPLOMAT) )
    {
@@ -988,7 +984,7 @@ void do_diptalk( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_remorttalk( CHAR_DATA * ch, char *argument )
+DO_FUN(do_remorttalk)
 {
    if( !is_remort( ch ) )
    {
@@ -999,13 +995,13 @@ void do_remorttalk( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_ooc( CHAR_DATA * ch, char *argument )
+DO_FUN(do_ooc)
 {
    talk_channel( ch, argument, CHANNEL_OOC, "[OOC]" );
    return;
 }
 
-void do_adepttalk( CHAR_DATA * ch, char *argument )
+DO_FUN(do_adepttalk)
 {
    if( ch->adept_level < 1 )
    {
@@ -1018,7 +1014,7 @@ void do_adepttalk( CHAR_DATA * ch, char *argument )
 
 }
 
-void do_say( CHAR_DATA * ch, char *argument )
+DO_FUN(do_say)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *ppl;
@@ -1057,7 +1053,7 @@ void do_say( CHAR_DATA * ch, char *argument )
 
 /* added by Eligan, July 10 */
 
-void do_ignore( CHAR_DATA * ch, char *argument )
+DO_FUN(do_ignore)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
@@ -1201,7 +1197,7 @@ void do_ignore( CHAR_DATA * ch, char *argument )
 /*    }  */
 }
 
-void do_tell( CHAR_DATA * ch, char *argument )
+DO_FUN(do_tell)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1322,9 +1318,7 @@ void do_tell( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_reply( CHAR_DATA * ch, char *argument )
+DO_FUN(do_reply)
 {
    CHAR_DATA *victim;
    int position;
@@ -1379,9 +1373,7 @@ void do_reply( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_emote( CHAR_DATA * ch, char *argument )
+DO_FUN(do_emote)
 {
    char buf[MAX_STRING_LENGTH];
    char *plast;
@@ -1640,9 +1632,7 @@ const struct pose_table_type pose_table[] = {
     }
 };
 
-
-
-void do_pose( CHAR_DATA * ch, char *argument )
+DO_FUN(do_pose)
 {
    short level;
    short pose;
@@ -1665,44 +1655,34 @@ void do_pose( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_bug( CHAR_DATA * ch, char *argument )
+DO_FUN(do_bug)
 {
    append_file( ch, BUG_FILE, argument );
    send_to_char( "Ok.  Thanks.\r\n", ch );
    return;
 }
 
-
-
-void do_idea( CHAR_DATA * ch, char *argument )
+DO_FUN(do_idea)
 {
    append_file( ch, IDEA_FILE, argument );
    send_to_char( "Ok.  Thanks.\r\n", ch );
    return;
 }
 
-
-
-void do_typo( CHAR_DATA * ch, char *argument )
+DO_FUN(do_typo)
 {
    append_file( ch, TYPO_FILE, argument );
    send_to_char( "Ok.  Thanks.\r\n", ch );
    return;
 }
 
-
-
-void do_qui( CHAR_DATA * ch, char *argument )
+DO_FUN(do_qui)
 {
    send_to_char( "If you want to QUIT, you have to spell it out.\r\n", ch );
    return;
 }
 
-
-
-void do_quit( CHAR_DATA * ch, char *argument )
+DO_FUN(do_quit)
 {
    DESCRIPTOR_DATA *d;
    DESCRIPTOR_DATA *other_logins;
@@ -1775,9 +1755,7 @@ void do_quit( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_save( CHAR_DATA * ch, char *argument )
+DO_FUN(do_save)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -1794,9 +1772,7 @@ void do_save( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_follow( CHAR_DATA * ch, char *argument )
+DO_FUN(do_follow)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -1931,9 +1907,7 @@ void die_follower( CHAR_DATA * ch )
    return;
 }
 
-
-
-void do_order( CHAR_DATA * ch, char *argument )
+DO_FUN(do_order)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2085,7 +2059,7 @@ void do_order( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_group( CHAR_DATA * ch, char *argument )
+DO_FUN(do_group)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -2199,7 +2173,7 @@ void do_group( CHAR_DATA * ch, char *argument )
 /*
  * 'Split' originally by Gnort, God of Chaos.
  */
-void do_split( CHAR_DATA * ch, char *argument )
+DO_FUN(do_split)
 {
    char givebuf[MSL], numbuf[MSL], coinbuf[MSL], catbuf[MSL];
    CHAR_DATA *gch;
@@ -2269,9 +2243,7 @@ void do_split( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_gtell( CHAR_DATA * ch, char *argument )
+DO_FUN(do_gtell)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *gch;
@@ -2348,7 +2320,7 @@ bool is_group_leader( CHAR_DATA * ch )
    return rvalue;
 }
 
-void do_pemote( CHAR_DATA * ch, char *argument )
+DO_FUN(do_pemote)
 {
    char buf[MAX_STRING_LENGTH];
    char *plast;
@@ -2377,7 +2349,7 @@ void do_pemote( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_pray( CHAR_DATA * ch, char *argument )
+DO_FUN(do_pray)
 {
    char buf[MAX_INPUT_LENGTH];
 
@@ -2418,7 +2390,7 @@ void do_pray( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_tongue( CHAR_DATA * ch, char *argument )
+DO_FUN(do_tongue)
 {
    char buf[MAX_STRING_LENGTH];
    char buf2[MAX_STRING_LENGTH];
@@ -2610,8 +2582,7 @@ char *slur_text( char *argument )
    return ( buf );
 }
 
-
-void do_whisper( CHAR_DATA * ch, char *argument )
+DO_FUN(do_whisper)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2676,8 +2647,7 @@ void do_whisper( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-void do_ask( CHAR_DATA * ch, char *argument )
+DO_FUN(do_ask)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2759,7 +2729,7 @@ void send_to_room( char *message, ROOM_INDEX_DATA * room )
    return;
 }
 
-void do_beep( CHAR_DATA * ch, char *argument )
+DO_FUN(do_beep)
 {
    int pos;
    char arg1[MAX_INPUT_LENGTH];
@@ -2820,7 +2790,7 @@ void do_beep( CHAR_DATA * ch, char *argument )
 }
 
 
-void ask_quest_question( CHAR_DATA * ch, char *argument )
+void ask_quest_question( CHAR_DATA *ch, char *argument )
 {
    extern CHAR_DATA *quest_mob;
    extern CHAR_DATA *quest_target;

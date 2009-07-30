@@ -15,7 +15,7 @@ function update ()
 end
 
 function pause (seconds)
-  threads [assert(coroutine.running(),"Not in couroutine!")] = os.time () + (seconds or 1)
+  threads [assert(coroutine.running(),"Not in coroutine!")] = os.time () + (seconds or 1)
   return coroutine.yield ()
 end
 

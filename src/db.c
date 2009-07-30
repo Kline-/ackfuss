@@ -2576,6 +2576,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob = new CHAR_DATA;
    mob->npcdata = new NPC_DATA;
 
+   mob->npc = true;
    mob->npcdata->pIndexData = pMobIndex;
 
    if( pMobIndex->act.test(ACT_INTELLIGENT) )
@@ -2595,7 +2596,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->npcdata->spec_fun = pMobIndex->spec_fun;
    mob->prompt = str_dup(DEFAULT_PROMPT);
    mob->level = pMobIndex->level;
-   mob->npc = true; /* New check for NPC's */
    mob->act = pMobIndex->act;
    mob->affected_by = pMobIndex->affected_by;
    mob->alignment = pMobIndex->alignment;
@@ -2713,6 +2713,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
 
    if( pObjIndex->script_name != &str_empty[0] ) /* Obj has a script attached */
    {
+    obj->script_name = str_dup(pObjIndex->script_name);
     obj->lua = new LUA_DATA;
     init_lua(obj);
    }
