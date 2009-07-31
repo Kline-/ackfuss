@@ -1,6 +1,5 @@
 package.path = "/home/matt/workspace/ackfuss/script/?.lua;" .. package.path
 require "wait"
-wait_update = require("wait").update
 
 -- send to player - with newline
 function send (...)

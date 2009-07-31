@@ -15,7 +15,9 @@ tprint (some_table)
 
 --]]
 
-function tprint (t, indent, done)
+module("tprint", package.seeall)
+
+function print (t, indent, done)
   -- show strings differently to distinguish them from numbers
   local function show (val)
     if type (val) == "string" then

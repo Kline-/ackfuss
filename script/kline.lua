@@ -5,7 +5,6 @@ require "tprint"
 send("tprint loaded")
 
 local ch = mud.char_info()
---tprint(ch)
 
 if ch.name == "Kline" then
  send("Hi Kline!")
@@ -28,5 +27,4 @@ wait.make( function ()
  end
 )
 
-local rm = mud.room_info()
-tprint(rm)
+--tprint(ch)

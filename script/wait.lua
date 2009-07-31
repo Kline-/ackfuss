@@ -2,7 +2,7 @@ module("wait", package.seeall)
 
 local threads = {}
 
-function update ()
+function wait.update ()
 
   -- for each active thread, see if the time is up
   
@@ -14,12 +14,14 @@ function update ()
   end
 end
 
-function pause (seconds)
+function wait.pause (seconds)
   threads [assert(coroutine.running(),"Not in coroutine!")] = os.time () + (seconds or 1)
   return coroutine.yield ()
 end
 
-function make (f)
+function wait.make (f)
   assert (type (f) == "function", "wait.make requires a function")
   coroutine.wrap (f) () -- make coroutine, resume it
 end -- make
+
+return wait
