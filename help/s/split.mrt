@@ -1,0 +1,5 @@
+SPLIT
+
+SPLIT will let you divvy up an amount of money equally among
+your current party. There is also a config option for AUTOSPLIT
+to do this automatically after looting money from a monster.

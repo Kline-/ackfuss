@@ -1,0 +1,5 @@
+WAKE
+
+WAKE will rouse you from sleeping and stand up if you are not
+under the affects of a magical sleep spell. You can also wake
+someone else by using "wake <target>".

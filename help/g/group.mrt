@@ -1,7 +1,7 @@
-			--GROUP--
+GROUP
 
-The following commands are available:
-follow          group           gtell           split     whogroup
-assist
-
-For more detailed help, type "HELP <command>".
+GROUP will display your current group, listing the members and their
+health, mana, move, experience, primary class, and level. To add a
+person to you group they must be following you, then you can
+"group <name>" to add them. You can remove a person at any time by
+typing "group <name>" again.
