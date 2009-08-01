@@ -3042,7 +3042,7 @@ DO_FUN(do_description)
 
 DO_FUN(do_report)
 {
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MSL];
 
    snprintf( buf, MSL,
             "You report: %d/%d hp %d/%d mana %d/%d mv %d xp.\r\n",

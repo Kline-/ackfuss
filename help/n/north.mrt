@@ -1,0 +1,4 @@
+NORTH
+
+NORTH moves you one room north. Any players or mobiles following you
+will move into the room after you, provided there is room for them.

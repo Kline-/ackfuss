@@ -1,0 +1,5 @@
+SOUTH
+
+SOUTH moves you one room south. Any players or mobiles following you
+will move into the room after you, provided there is room for them.
+

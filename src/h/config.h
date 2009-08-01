@@ -1030,8 +1030,20 @@
 #define SEX_FEMALE                    2
 
 
+/*
+ * Class defines. I hate magic numbers! --Kline
+ */
+#define CLS_MAG 0
+#define CLS_CLE 1
+#define CLS_THI 2
+#define CLS_WAR 3
+#define CLS_PSI 4
 
-
+#define CLS_SOR 0
+#define CLS_MON 1
+#define CLS_ASS 2
+#define CLS_KNI 3
+#define CLS_NEC 4
 
 /*
  * Item types.

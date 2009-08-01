@@ -1,4 +1,4 @@
-BOARD BOARDS NOTE NOTES READ WRITE DELETE
+BOARD BOARDS NOTE NOTES READ WRITE DELETE EDIT
 
 To use boards, you must be in a room with one :)
 
@@ -6,5 +6,6 @@ Type: WRITE <header> to leave a message, with the specified header/title.
       WRITE to:<name> to leave a private message.
       READ <number> to read a message.
       DELETE <number> to delete a message.
+      EDIT <number> to edit a message.
 
 To find out what messages are on a board, simply look at it.

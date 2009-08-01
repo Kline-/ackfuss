@@ -1,0 +1,24 @@
+STANCE
+
+STANCE will change your current fighting stance. Different stances
+provide different benefits or penalties, these have been left up
+to you to experiment with and find what works best for you.
+
+The available stances, and their level requirements, are listed
+below.
+
+NAME               CLASS/LEVEL
+---------------------------------------------------------
+Adventurer         None
+Mage               Mag > 50 [or ] Psi > 70 [or ] Cle > 60
+Ninja              Ass > 30
+Shadows            Ass > 30 [or ] Mon > 65
+Essence            Mon > 20 [or ] Kni > 45
+Beast              Mon > 10 [or ] Kni > 35
+Flame              Mon > 45
+Spirit             Mon > 60
+Void               Mon > 70
+Dragon             Mon > 79 [and] Kni > 79
+Snake              Mon > 70 [and] Kni > 70
+Wizard             Sor > 20 [or ] Nec > 40 [or ] Mon > 60
+Magi               Adept > 10

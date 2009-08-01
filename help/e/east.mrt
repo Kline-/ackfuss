@@ -1,0 +1,5 @@
+EAST
+
+EAST moves you one room east. Any players or mobiles following you
+will move into the room after you, provided there is room for them.
+

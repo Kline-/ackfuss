@@ -1,0 +1,5 @@
+UP
+
+UP moves you one room up. Any players or mobiles following you
+will move into the room after you, provided there is room for them.
+

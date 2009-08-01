@@ -6087,62 +6087,62 @@ void do_stance( CHAR_DATA * ch, char *argument )
 
          switch ( i )
          {
-            case STANCE_WARRIOR:
+            case STANCE_WARRIOR: /* Adventurer */
                snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
-            case STANCE_CASTER:
-               if( ( ch->lvl[0] > 50 ) /* mage */
-                   || ( ch->lvl[1] > 70 ) /* cleric */
-                   || ( ch->lvl[4] > 60 ) )  /* psi */
+            case STANCE_CASTER: /* Mage */
+               if( ( ch->lvl[CLS_MAG] > 50 ) /* mage */
+                   || ( ch->lvl[CLS_CLE] > 70 ) /* cleric */
+                   || ( ch->lvl[CLS_PSI] > 60 ) )  /* psi */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
-            case STANCE_WIZARD:
-               if( ( ch->lvl2[0] > 20 )   /* sorc */
-                   || ( ch->lvl2[3] > 40 )   /* necro */
-                   || ( ch->lvl2[4] > 60 ) ) /* monk */
+            case STANCE_AMBUSH: /* Ninja */
+               if( ch->lvl2[CLS_ASS] > 30 )  /* assassin */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
-            case STANCE_MAGI:
+            case STANCE_AC_BEST: /* Shadows */
+               if( ( ch->lvl2[CLS_MON] > 65 )   /* monk */
+                   || ( ch->lvl2[CLS_ASS] > 30 ) ) /* assassin */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_HR_BEST: /* Essence */
+               if( ( ch->lvl2[CLS_KNI] > 45 )   /* knight */
+                   || ( ch->lvl2[CLS_MON] > 20 ) ) /* monk */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_DR_BEST: /* Beast */
+               if( ( ch->lvl2[CLS_KNI] > 35 )   /* knight */
+                   || ( ch->lvl2[CLS_MON] > 10 ) ) /* monk */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_AC_WORST: /* Flame */
+               if( ch->lvl2[CLS_MON] > 45 )  /* monk */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_HR_WORST: /* Spirit */
+               if( ch->lvl2[CLS_MON] > 60 )  /* monk */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_DR_WORST: /* Void */
+               if( ch->lvl2[CLS_MON] > 70 )  /* monk */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_SUPER_FIGHTER: /* Dragon */
+               if( ( ch->lvl2[CLS_MON] > 79 ) && ( ch->lvl2[CLS_KNI] > 79 ) ) /* both knight and monk */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_SUPER_SPEED: /* Snake */
+               if( ( ch->lvl2[CLS_MON] > 70 ) && ( ch->lvl2[CLS_KNI] > 70 ) ) /* both knight and monk */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_WIZARD: /* Wizard */
+               if( ( ch->lvl2[CLS_SOR] > 20 )   /* sorc */
+                   || ( ch->lvl2[CLS_NEC] > 40 )   /* necro */
+                   || ( ch->lvl2[CLS_MON] > 60 ) ) /* monk */
+                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
+               break;
+            case STANCE_MAGI: /* Magi */
                if( ( ch->adept_level > 10 ) )   /*adept */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_AMBUSH:
-               if( ch->lvl2[1] > 30 )  /* assassin */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_AC_BEST:
-               if( ( ch->lvl2[2] > 65 )   /* knight */
-                   || ( ch->lvl2[4] > 30 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_HR_BEST:
-               if( ( ch->lvl2[2] > 45 )   /* knight */
-                   || ( ch->lvl2[4] > 20 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_DR_BEST:
-               if( ( ch->lvl2[2] > 35 )   /* knight */
-                   || ( ch->lvl2[4] > 10 ) ) /* monk */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_AC_WORST:
-               if( ch->lvl2[4] > 45 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_HR_WORST:
-               if( ch->lvl2[4] > 60 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_DR_WORST:
-               if( ch->lvl2[4] > 70 )  /* monk */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_SUPER_FIGHTER:
-               if( ( ch->lvl2[4] > 79 ) && ( ch->lvl2[2] > 79 ) ) /* both knight and monk */
-                  snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
-               break;
-            case STANCE_SUPER_SPEED:
-               if( ( ch->lvl2[4] > 70 ) && ( ch->lvl2[2] > 70 ) ) /* both knight and monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
 
