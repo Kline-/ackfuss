@@ -1,0 +1,6 @@
+MUDINFO
+
+MUDINFO displays long-running MUD statistics different from that of STATUS.
+While STATUS displays more "game size" information, the things tracked by
+MUDINFO are more of a "fun" or "gee whiz" nature, and are counted from the
+first time the MUD was -ever- booted up.

@@ -1,0 +1,11 @@
+POLITICS
+
+POLITICS displays the current politics between clans. Relations move
+on a scale, displayed below.
+
+NEGATIVE                               POSITIVE
+ WAR HATRED DISLIKE NEUTRAL RESPECT TRUST ALLY
+
+All relations start at neutral and move up/down as clan diplomats
+negotiate. When relations reach a WAR state two clans may freely PK
+one another and loot bodies.

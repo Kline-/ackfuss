@@ -549,7 +549,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
 
 
-void do_north( CHAR_DATA * ch, char *argument )
+DO_FUN(do_north)
 {
    move_char( ch, DIR_NORTH, TRUE );
    return;
@@ -557,7 +557,7 @@ void do_north( CHAR_DATA * ch, char *argument )
 
 
 
-void do_east( CHAR_DATA * ch, char *argument )
+DO_FUN(do_east)
 {
    move_char( ch, DIR_EAST, TRUE );
    return;
@@ -565,7 +565,7 @@ void do_east( CHAR_DATA * ch, char *argument )
 
 
 
-void do_south( CHAR_DATA * ch, char *argument )
+DO_FUN(do_south)
 {
    move_char( ch, DIR_SOUTH, TRUE );
    return;
@@ -573,7 +573,7 @@ void do_south( CHAR_DATA * ch, char *argument )
 
 
 
-void do_west( CHAR_DATA * ch, char *argument )
+DO_FUN(do_west)
 {
    move_char( ch, DIR_WEST, TRUE );
    return;
@@ -581,7 +581,7 @@ void do_west( CHAR_DATA * ch, char *argument )
 
 
 
-void do_up( CHAR_DATA * ch, char *argument )
+DO_FUN(do_up)
 {
    move_char( ch, DIR_UP, TRUE );
    return;
@@ -589,7 +589,7 @@ void do_up( CHAR_DATA * ch, char *argument )
 
 
 
-void do_down( CHAR_DATA * ch, char *argument )
+DO_FUN(do_down)
 {
    move_char( ch, DIR_DOWN, TRUE );
    return;
@@ -644,7 +644,7 @@ int find_door( CHAR_DATA * ch, char *arg )
 
 
 
-void do_open( CHAR_DATA * ch, char *argument )
+DO_FUN(do_open)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -734,7 +734,7 @@ void do_open( CHAR_DATA * ch, char *argument )
 
 
 
-void do_close( CHAR_DATA * ch, char *argument )
+DO_FUN(do_close)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -829,7 +829,7 @@ bool has_key( CHAR_DATA * ch, int key )
 
 
 
-void do_lock( CHAR_DATA * ch, char *argument )
+DO_FUN(do_lock)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -930,7 +930,7 @@ void do_lock( CHAR_DATA * ch, char *argument )
 
 
 
-void do_unlock( CHAR_DATA * ch, char *argument )
+DO_FUN(do_unlock)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -1031,7 +1031,7 @@ void do_unlock( CHAR_DATA * ch, char *argument )
 
 
 
-void do_pick( CHAR_DATA * ch, char *argument )
+DO_FUN(do_pick)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *gch;
@@ -1157,7 +1157,7 @@ void do_pick( CHAR_DATA * ch, char *argument )
 
 
 
-void do_stand( CHAR_DATA * ch, char *argument )
+DO_FUN(do_stand)
 {
    switch ( ch->position )
    {
@@ -1202,7 +1202,7 @@ void do_stand( CHAR_DATA * ch, char *argument )
 
 
 
-void do_rest( CHAR_DATA * ch, char *argument )
+DO_FUN(do_rest)
 {
 
    OBJ_DATA *furn = NULL;
@@ -1266,7 +1266,7 @@ void do_rest( CHAR_DATA * ch, char *argument )
 
 
 
-void do_sleep( CHAR_DATA * ch, char *argument )
+DO_FUN(do_sleep)
 {
    switch ( ch->position )
    {
@@ -1295,7 +1295,7 @@ void do_sleep( CHAR_DATA * ch, char *argument )
 
 
 
-void do_wake( CHAR_DATA * ch, char *argument )
+DO_FUN(do_wake)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -1340,7 +1340,7 @@ void do_wake( CHAR_DATA * ch, char *argument )
 
 
 
-void do_shadowform( CHAR_DATA * ch, char *argument )
+DO_FUN(do_shadowform)
 {
    AFFECT_DATA af;
 
@@ -1361,7 +1361,7 @@ void do_shadowform( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_sneak( CHAR_DATA * ch, char *argument )
+DO_FUN(do_sneak)
 {
    AFFECT_DATA af;
 
@@ -1381,7 +1381,7 @@ void do_sneak( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_warcry( CHAR_DATA *ch, char *argument ) /* Thanks Koron, saved me re-inventing the wheel ;) */
+DO_FUN(do_warcry) /* Thanks Koron, saved me re-inventing the wheel :) --Kline */
 {
  AFFECT_DATA af;
  short chance;
@@ -1431,7 +1431,7 @@ void do_warcry( CHAR_DATA *ch, char *argument ) /* Thanks Koron, saved me re-inv
  return;
 }
 
-void do_hide( CHAR_DATA * ch, char *argument )
+DO_FUN(do_hide)
 {
    send_to_char( "You attempt to hide.\r\n", ch );
 
@@ -1449,7 +1449,7 @@ void do_hide( CHAR_DATA * ch, char *argument )
 /*
  * Contributed by Alander.
  */
-void do_visible( CHAR_DATA * ch, char *argument )
+DO_FUN(do_visible)
 {
    affect_strip( ch, gsn_invis );
    affect_strip( ch, gsn_mass_invis );
@@ -1461,7 +1461,7 @@ void do_visible( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_clan_recall( CHAR_DATA * ch, char *argument )
+DO_FUN(do_clan_recall)
 {
    ROOM_INDEX_DATA *location;
 
@@ -1521,7 +1521,7 @@ void do_clan_recall( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_recall( CHAR_DATA * ch, char *argument )
+DO_FUN(do_recall)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
@@ -1626,7 +1626,7 @@ void do_recall( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_train( CHAR_DATA * ch, char *argument )
+DO_FUN(do_train)
 {
    char buf[MAX_STRING_LENGTH];
    char buf2[20];
@@ -1852,17 +1852,7 @@ void do_train( CHAR_DATA * ch, char *argument )
    return;
 }
 
-
-
-void do_guild( CHAR_DATA * ch, char *argument )
-{
-   send_to_char( "This command is no longer employed here!\r\n", ch );
-   return;
-}
-
-
-
-void do_halls( CHAR_DATA * ch, char *argument )
+DO_FUN(do_halls)
     /*
      * Quite a lot of the following code derives from the original
      * * MERC2.2 code, although the tweaks are my own.
@@ -1905,7 +1895,7 @@ void do_halls( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_smash( CHAR_DATA * ch, char *argument )
+DO_FUN(do_smash)
 {
    char arg[MAX_INPUT_LENGTH];
    int door;
@@ -2010,7 +2000,7 @@ void do_smash( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_scan( CHAR_DATA * ch, char *argument )
+DO_FUN(do_scan)
 /* Informs ch if there are any (N)PCs in the 6 adjacent rooms.
  * I'm sure this could be written better.... ;)
  * -- Stephen
@@ -2091,7 +2081,7 @@ void do_scan( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_enter( CHAR_DATA * ch, char *argument )
+DO_FUN(do_enter)
 {
    OBJ_DATA *portal;
    ROOM_INDEX_DATA *to_room;
@@ -2178,7 +2168,7 @@ void do_enter( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_scout( CHAR_DATA * ch, char *argument )
+DO_FUN(do_scout)
 {
    ROOM_INDEX_DATA *loc;
    ROOM_INDEX_DATA *tmploc;
@@ -2269,7 +2259,7 @@ void do_scout( CHAR_DATA * ch, char *argument )
    }
 }
 
-void do_abandon( CHAR_DATA *ch, char *argument ) /* Thanks to Koron & Abel for the idea! */
+DO_FUN(do_abandon) /* Thanks to Koron & Abel for the idea! --Kline */
 {
  CHAR_DATA *vch;
  std::list<CHAR_DATA *>::iterator li;

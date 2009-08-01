@@ -2686,9 +2686,11 @@ void lua_update( )
  {
   lua = *li;
   str = "";
+  arg = "";
 
-  str += "wait_update";
-  call_lua(lua,str,arg);
+  str += "wait.update";
+  arg += "";
+  //call_lua(lua,str,arg);
  }
  
  return;

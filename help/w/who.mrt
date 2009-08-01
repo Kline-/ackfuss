@@ -1,0 +1,8 @@
+WHO
+
+WHO displays all visible online players and immortals, as well
+as the maximum player count since the last reboot. You can also
+who <class abbr> such as "who cle" to see all Cleric primaries,
+or "who adept" for Adepts. Who also allows you to "who group"
+to see who is in grouping range, and "who imm" to only show
+visible imms.

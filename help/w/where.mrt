@@ -1,0 +1,4 @@
+WHERE
+
+WHERE displays the current area and players in it. You can also
+"where <name>" to see if a certain player/mob is in the area.

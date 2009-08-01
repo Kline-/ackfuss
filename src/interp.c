@@ -556,8 +556,6 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_INFO, C_SHOW_ALWAYS,true},
    {"group", do_group, POS_FIGHTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_ALWAYS,true},
-   {"guild", do_guild, POS_FIGHTING, 0, LOG_NORMAL,
-    C_TYPE_MISC, C_SHOW_NEVER,true},
    {"hide", do_hide, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_ACTION, C_SHOW_SKILL,false},
    {"hunt", do_hunt, POS_STANDING, 0, LOG_NORMAL,

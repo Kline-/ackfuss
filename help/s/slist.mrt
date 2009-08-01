@@ -1,0 +1,5 @@
+SLIST
+
+SLIST is used to display the skills/spells of a class. You can
+slist <3 letter class abbr>. So, to see Warrior skills/spells,
+you would "slist war", etc.

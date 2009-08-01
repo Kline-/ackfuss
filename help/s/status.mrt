@@ -1,0 +1,4 @@
+STATUS
+
+STATUS displays various statistics about the MUD, such as current
+time, when the game was last rebooted, room/obj/mob counts, etc.
