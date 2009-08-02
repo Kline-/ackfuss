@@ -5486,18 +5486,20 @@ DO_FUN(do_whois)
    else
    {
       snprintf( buf + strlen( buf ), MSL, "Levels: [ Mag:%2d  Cle:%2d  Thi:%2d  War:%2d  Psi:%2d ]\r\n",
-               victim->lvl[0] > 0 ? victim->lvl[0] : 0,
-               victim->lvl[1] > 0 ? victim->lvl[1] : 0,
-               victim->lvl[2] > 0 ? victim->lvl[2] : 0,
-               victim->lvl[3] > 0 ? victim->lvl[3] : 0, victim->lvl[4] > 0 ? victim->lvl[4] : 0 );
+               victim->lvl[CLS_MAG] > 0 ? victim->lvl[CLS_MAG] : 0,
+               victim->lvl[CLS_CLE] > 0 ? victim->lvl[CLS_CLE] : 0,
+               victim->lvl[CLS_THI] > 0 ? victim->lvl[CLS_THI] : 0,
+               victim->lvl[CLS_WAR] > 0 ? victim->lvl[CLS_WAR] : 0,
+               victim->lvl[CLS_PSI] > 0 ? victim->lvl[CLS_PSI] : 0 );
 
       if( is_remort( victim ) )
 
-         snprintf( buf + strlen( buf ), MSL, "Levels: [ Sor:%2d  Ass:%2d  Kni:%2d  Nec:%2d  Mon:%2d ]\r\n",
-                  victim->lvl2[0] > 0 ? victim->lvl2[0] : 0,
-                  victim->lvl2[1] > 0 ? victim->lvl2[1] : 0,
-                  victim->lvl2[2] > 0 ? victim->lvl2[2] : 0,
-                  victim->lvl2[3] > 0 ? victim->lvl2[3] : 0, victim->lvl2[4] > 0 ? victim->lvl2[4] : 0 );
+         snprintf( buf + strlen( buf ), MSL, "Levels: [ Sor:%2d  Mon:%2d  Ass:%2d  Kni:%2d  Nec:%2d ]\r\n",
+                  victim->lvl2[CLS_SOR] > 0 ? victim->lvl2[CLS_SOR] : 0,
+                  victim->lvl2[CLS_MON] > 0 ? victim->lvl2[CLS_MON] : 0,
+                  victim->lvl2[CLS_ASS] > 0 ? victim->lvl2[CLS_ASS] : 0,
+                  victim->lvl2[CLS_KNI] > 0 ? victim->lvl2[CLS_KNI] : 0,
+                  victim->lvl2[CLS_NEC] > 0 ? victim->lvl2[CLS_NEC] : 0 );
    }
    snprintf( buf + strlen( buf ), MSL, "Sex: %s.  Race: %s.  Clan: %s.\r\n",
             ( victim->sex == SEX_MALE ) ? "Male" :

@@ -960,7 +960,11 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    {
       snprintf( buf, MSL,
                "Mag: %d Cle: %d Thi:%d War:%d Psi:%d\r\n",
-               victim->lvl[0], victim->lvl[1], victim->lvl[2], victim->lvl[3], victim->lvl[4] );
+               victim->lvl[CLS_MAG], victim->lvl[CLS_CLE], victim->lvl[CLS_THI], victim->lvl[CLS_WAR], victim->lvl[CLS_PSI] );
+      strncat( buf1, buf, MSL-1 );
+      snprintf( buf, MSL,
+               "Sor: %d Mon: %d Ass:%d Kni:%d Nec:%d\r\n",
+               victim->lvl2[CLS_SOR], victim->lvl2[CLS_MON], victim->lvl2[CLS_ASS], victim->lvl2[CLS_KNI], victim->lvl2[CLS_NEC] );
       strncat( buf1, buf, MSL-1 );
 
       snprintf( buf, MSL, "Age: " );
