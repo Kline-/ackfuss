@@ -1,0 +1,18 @@
+EXPERIENCE LEVEL XP
+Your character advances in power by gaining experience.  The amount of exp
+you need to gain a level is determined by your race.  To gain a level, use
+the GAIN command.
+
+You gain experience by:
+    Being part of a group that kills a monster,
+    or by killing monsters on your own.
+You lose experience by:
+    Fleeing from combat
+    Recalling out of combat
+    Being the target of certain spells
+    Dying
+
+The experience you get from a kill depends on several things: how many players
+are in your group; your level versus the level of the monster; your alignment
+versus the monster's alignment; how many of this monster have been killed
+lately; and some random variation.

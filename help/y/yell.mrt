@@ -1,6 +1,6 @@
-AUCTION GOSSIP . NEWBIE QUESTION ANSWER SHOUT YELL FLAME ZZZ MUSIC QUEST GAME REMORT ADEPT OOC
+GOSSIP . NEWBIE QUESTION ANSWER SHOUT YELL FLAME ZZZ MUSIC QUEST GAME REMORT ADEPT OOC
 
-Syntax: auction  <message>      Syntax: gossip   <message>
+Syntax: gossip   <message>      Syntax: ooc      <message>
 Syntax: newbie   <message>      Syntax: question <message>
 Syntax: answer   <message>      Syntax: shout    <message>
 Syntax: yell     <message>      Syntax: zzz      <message>
@@ -8,22 +8,21 @@ Syntax: flame    <message>      Syntax: race     <message>
 Syntax: clan     <message>      Syntax: music    <message>
 Syntax: quest    <message>      Syntax: game     <message>
 Syntax: remort   <message>      Syntax: adept    <message>
-Syntax: ooc      <message>
 
 These commands send messages through communication channels to other players.
-SHOUT sends a message to all awake players in the world.  To curb excessive
+SHOUT sends a message to all awake players in the world. To curb excessive
 shouting, SHOUT imposes a three-second delay on the shouter.
 
-OOC, GAME, MUSIC, QUEST, AUCTION, GOSSIP, NEWBIE, and QUESTION and ANSWER also
-send messages to all interested players.  '.' is a synonym for GOSSIP.  The QUESTION
+OOC, GAME, MUSIC, QUEST, GOSSIP, NEWBIE, and QUESTION and ANSWER also send
+messages to all interested players. '.' is a synonym for GOSSIP. The QUESTION
 and ANSWER commands both use the same 'question' channel
 
-FLAME is similar to auction, gossip, etc, but is intended for moaning about
-life, players, etc.  ZZZ may only be used when sleeping.
+FLAME is similar to gossip, etc, but is intended for moaning about life,
+players, etc. ZZZ may only be used when sleeping.
 
 YELL sends a message to all awake players within your area.
 
-RACE sends a message to members of your own race.  CLAN sends a message to
+RACE sends a message to members of your own race. CLAN sends a message to
 those in your clan.
 
 REMORT sends a message to all players who are remortals or above. { is a synonym

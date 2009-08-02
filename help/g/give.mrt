@@ -1,0 +1,6 @@
+GIVE
+
+GIVE will give an ietm you are carrying to the recipient, provided
+they have space in their inventory and are able to hold the weight.
+Some items may have magical properties that prevent them from being
+given away, though.

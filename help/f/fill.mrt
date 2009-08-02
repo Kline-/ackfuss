@@ -1,0 +1,5 @@
+FILL
+
+FILL will let you fill a container that is capable of holding
+liquid for future use. Use "fill <container> <source>". So, to
+fill your jug from the fountain, you would "fill jug fountain".

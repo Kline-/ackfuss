@@ -1,0 +1,5 @@
+DROP
+
+DROP will place an item from your inventory into the current room.
+Some items have magical properties that may prevent them from being
+dropped, though.

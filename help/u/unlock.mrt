@@ -1,5 +1,5 @@
 UNLOCK
 
-UNLOCK will attempt to open a locked door or container with
+UNLOCK will attempt to unlock a locked door or container with
 the appropriate key. If the key is not in your inventory, you
 will be unable to unlock it.

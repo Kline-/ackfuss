@@ -1,0 +1,5 @@
+WIELD
+
+WIELD will display your available equipment slots and what is being
+worn in them (if anything). You can also "wield <item>" to wear the
+item.

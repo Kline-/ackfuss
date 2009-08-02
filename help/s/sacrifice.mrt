@@ -1,0 +1,11 @@
+SACRIFICE
+
+SACRIFICE will destroy a corpse or object in the room, possibly granting a
+small sum of money, experience, or a small bonus. You may simply "sacrifice <item>"
+or you can sacrifice "Good", "Neutral", "Evil", or "Judge". Sacrificing to
+one of the alignments will attempt to shift your character's alignment
+closer to that alignment, ie, sacrificing evil items to "good" will make
+you turn good.
+
+Sacrificing to the Judge is necessary to clear a wanted flag should you
+acquire one by breaking the law (stealing or PVPing, usually).

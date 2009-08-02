@@ -1,0 +1,5 @@
+PUT
+
+PUT will place an item into a container either in your inventory
+or within the room, provided there is space in the container and
+that it is open.

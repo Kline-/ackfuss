@@ -1,0 +1,7 @@
+BUY
+
+BUY will let you buy an item from a merchant, provided you have
+enough money. To buy multiples of the same item, use "buy <amt> <item>".
+To buy a specific item when there are many with a common name, use
+"buy <num>.item"; ie, if a merchant has two swords, and you want the
+second sword, you would "buy 2.sword".

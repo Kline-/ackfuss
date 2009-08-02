@@ -1930,7 +1930,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
    if( arg[0] == '\0' || !str_cmp( arg, ch->name ) )
    {
       act( "@@N$n offers $mself to @@e" sacgodname "@@N, who graciously declines.", ch, NULL, NULL, TO_ROOM );
-      send_to_char( "@@e" sacgodname "@@N appreciates your offer and may accept it later.", ch );
+      send_to_char( "@@e" sacgodname "@@N appreciates your offer and may accept it later.\r\n", ch );
       return;
    }
 
@@ -2552,7 +2552,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
 
    if( pShop == NULL || IS_AFFECTED( keeper, AFF_CHARM ) )
    {
-      send_to_char( "You can't do that here.\r\n", ch );
+      send_to_char( "There does not appear to be a shop here.\r\n",ch);
       return NULL;
    }
 
@@ -2726,14 +2726,15 @@ void do_buy( CHAR_DATA * ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *keeper;
    argument = one_argument( argument, arg );
+
+   if( ( keeper = find_keeper( ch ) ) == NULL )
+    return;
+
    if( arg[0] == '\0' )
    {
       send_to_char( "Buy what?\r\n", ch );
       return;
    }
-
-   if( ( keeper = find_keeper( ch ) ) == NULL )
-      return;
    if( IS_VAMP( ch ) && !IS_VAMP( keeper ) )
    {
       do_say( keeper, "I don't serve VAMPIRES!! Be gone evil one!" );
@@ -2922,9 +2923,11 @@ void do_list( CHAR_DATA * ch, char *argument )
    int cost;
 
    buf1[0] = '\0';
+   found = false;
+
    if( ( keeper = find_keeper( ch ) ) == NULL )
-      return;
-   found = FALSE;
+    return;
+
    if( IS_VAMP( ch ) && !IS_VAMP( keeper ) )
    {
       do_say( keeper, "I don't serve VAMPIRES!! Be gone evil one!" );
@@ -3045,14 +3048,15 @@ void do_sell( CHAR_DATA * ch, char *argument )
    bool good_trade = FALSE;
    MONEY_TYPE *transfer;
    one_argument( argument, arg );
+
+   if( ( keeper = find_keeper( ch ) ) == NULL )
+    return;
+
    if( arg[0] == '\0' )
    {
       send_to_char( "Sell what?\r\n", ch );
       return;
    }
-
-   if( ( keeper = find_keeper( ch ) ) == NULL )
-      return;
    if( IS_VAMP( ch ) && !IS_VAMP( keeper ) )
    {
       do_say( keeper, "I don't serve VAMPIRES!! Be gone evil one!" );
@@ -3152,14 +3156,15 @@ void do_value( CHAR_DATA * ch, char *argument )
    int cost;
    MONEY_TYPE *moneycost;
    one_argument( argument, arg );
+
+   if( ( keeper = find_keeper( ch ) ) == NULL )
+    return;
+
    if( arg[0] == '\0' )
    {
       send_to_char( "Value what?\r\n", ch );
       return;
    }
-
-   if( ( keeper = find_keeper( ch ) ) == NULL )
-      return;
    if( IS_VAMP( ch ) && !IS_VAMP( keeper ) )
    {
       do_say( keeper, "I don't serve VAMPIRES!! Be gone evil one!" );

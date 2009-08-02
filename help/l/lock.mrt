@@ -1,0 +1,5 @@
+LOCK
+
+LOCK will attempt to lock an unlocked door or container with
+the appropriate key. If the key is not in your inventory, you
+will be unable to lock it.

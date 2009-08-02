@@ -1,0 +1,8 @@
+GET TAKE
+
+GET will retrieve an item and place it in your inventory, if you have
+space, and can hold the weight. To get an item from within a room
+simply "get <item>". To take an item from inside a container (either
+within the room or your inventory) use "get <item> from <container>".
+
+TAKE is a synonym for GET.

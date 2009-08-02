@@ -3453,7 +3453,7 @@ DO_FUN(do_commands)
    show = 3;
   else if( !str_prefix(argument,"actions") )
    show = 4;
-  else if( !str_prefix(argument,"objects") || !str_prefix(argument,"manipulation") )
+  else if( !str_prefix(argument,"objects") || !str_prefix(argument,"manipulation") || !str_prefix(argument,"items") )
    show = 5;
   else if( !str_prefix(argument,"imm") )
    show = 6;

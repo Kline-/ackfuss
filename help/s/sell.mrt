@@ -1,0 +1,4 @@
+SELL
+
+SELL will sell an item from your inventory to a merchant if there
+is one in the room and they have the funds to pay you.
