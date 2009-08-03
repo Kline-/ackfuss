@@ -2130,6 +2130,24 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          close_socket( d );
          return;
       }
+      if( ch->act.test(ACT_WHITELIST) )
+      {
+       bool found = false;
+
+       for( short i = 0; i < MAX_HOSTS; i++ )
+        if( ch->pcdata->whitelist[i] != str_empty && !str_prefix(ch->pcdata->whitelist[i],d->host) )
+         found = true;
+
+       if( !found )
+       {
+        snprintf(log_buf,(2 * MIL),"Whitelist prohibited login %s@%s.",argument,d->host);
+        log_string(log_buf);
+        monitor_chan(log_buf,MONITOR_CONNECT);
+        write_to_buffer(d,"This is not an approved connection domain for this character.\r\n");
+        close_socket(d);
+        return;
+       }
+      }
 /* TEMP FIX ZEN */
       if( ch->act.test(ACT_JUSTIFY) )
          ch->act.reset(ACT_JUSTIFY);
@@ -2826,23 +2844,38 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       if( ch->level > 1 )
       {
-         snprintf( msg, MSL, "\r\nLast successful login from: %s\r\n\r\n", ch->pcdata->host );
-         send_to_char( msg, ch );
-         if( strcmp( d->host, ch->pcdata->host ) )
-         {
-            snprintf( msg, MSL, "%s connected from %s ( last login was from %s ) !", ch->name, d->host, ch->pcdata->host );
-            log_string( msg );
-            monitor_chan( msg, MONITOR_CONNECT );
-            if( ( ch->level > 80 ) )
-            {
-               snprintf( msg, MSL, "WARNING!!! %s logged in with level %d.\r\n", ch->name, ch->level );
-               log_string( msg );
-            }
+         do_logins(ch);
 
+         for( short i = 0; i < MAX_HOSTS; i++ )
+         {
+          if( strcmp( d->host, ch->pcdata->host[i] ) )
+          {
+             snprintf( msg, MSL, "%s connected from %s ( last login was from %s ) !", ch->name, d->host, ch->pcdata->host[0] );
+             log_string( msg );
+             monitor_chan( msg, MONITOR_CONNECT );
+             if( ( ch->level > 80 ) )
+             {
+                snprintf( msg, MSL, "WARNING!!! %s logged in with level %d.\r\n", ch->name, ch->level );
+                log_string( msg );
+             }
+
+          }
          }
-         if( ch->pcdata->host != NULL )
-            free_string( ch->pcdata->host );
-         ch->pcdata->host = str_dup( d->host );
+
+         for( short i = 0; i < MAX_HOSTS; i++ )
+         {
+          if( !str_cmp(ch->pcdata->host[i],"Unknown!") )
+          {
+           free_string(ch->pcdata->host[i]);
+           ch->pcdata->host[i] = str_dup(d->host);
+           break;
+          }
+          if( i == (MAX_HOSTS -1 ) )
+          {
+           free_string(ch->pcdata->host[(i-1)]);
+           ch->pcdata->host[(i-1)] = str_dup(ch->pcdata->host[i]);
+          }
+         }
       }
 
       /*
@@ -3602,7 +3635,7 @@ void do_finger( CHAR_DATA * ch, char *argument )
    snprintf( buf, MSL, "Name: %s.\r\n", capitalize( victim->name ) );
    send_to_char( buf, ch );
 
-   snprintf( buf, MSL, "Last Login was from: %s.\r\n", victim->pcdata->host );
+   snprintf( buf, MSL, "Last Login was from: %s.\r\n", victim->pcdata->host[0] );
    send_to_char( buf, ch );
 
    snprintf( buf, MSL, "pFile was last saved at: %s.", victim->pcdata->lastlogin );

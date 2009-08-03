@@ -209,12 +209,14 @@ static void walk_pcdata( PC_DATA * p )
    touch( p->title );
    touch( p->room_enter );
    touch( p->room_exit );
-   touch( p->host );
    touch( p->who_name );
    touch( p->header );
    touch( p->message );
    touch( p->lastlogin );
    touch( p->load_msg );
+
+   for( i = 0; i < MAX_HOSTS; i++ )
+      touch( p->host[i] );
 
    for( i = 0; i < MAX_IGNORES; i++ )
       touch( p->ignore_list[i] );

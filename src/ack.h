@@ -715,7 +715,7 @@ class pc_data
   short failures;  /* Failed logins */
   char *header;  /* filename for helpedit */
   char hicol;
-  char *host; /* Used to tell PC last login site */
+  char *host[MAX_HOSTS]; /* Used to tell PC last login sites */
   int hp_from_gain; /* same for hitpoints */
   char *ignore_list[MAX_IGNORES];  /* Ignore this person */
 #ifdef IMC
@@ -761,6 +761,7 @@ class pc_data
   short term_rows;
   char *title;
   bool valid_email;
+  char *whitelist[MAX_HOSTS]; /* Used to restrict login domains */
   char *who_name;   /* To show on who name */
 };
 

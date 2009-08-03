@@ -76,5 +76,7 @@ DECLARE_DO_FUN(do_loot);
 char *output_race_wear P_((int iRace));
 DECLARE_DO_FUN(do_safe);
 void area_message P_((AREA_DATA *area, const char *message));
+DECLARE_DO_FUN(do_whitelist);
+DECLARE_DO_FUN(do_logins);
 
 #undef P_

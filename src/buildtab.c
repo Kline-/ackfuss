@@ -613,6 +613,7 @@ LOOKUP_TYPE tab_player_act[] = {
  {"ghost",        ACT_GHOST,        0},
  {"cooldown",     ACT_NO_COOLDOWN,  0},
  {"shunter",      ACT_SHUNTER,      0},
+ {"whitelist",    ACT_WHITELIST,    0},
  {NULL, 0}
 };
 

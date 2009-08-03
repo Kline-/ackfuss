@@ -287,7 +287,8 @@ pc_data::~pc_data()
  free_string(bamfout);
  free_string(email_address);
  free_string(header);
- free_string(host);
+ for( short i = 0; i < MAX_HOSTS; i++ )
+  free_string(host[i]);
  for( short i = 0; i < MAX_IGNORES; i++ )
   free_string(ignore_list[i]);
  free_string(lastlogin);
@@ -303,6 +304,8 @@ pc_data::~pc_data()
  free_string(room_exit);
  delete super;
  free_string(title);
+ for( short i = 0; i < MAX_HOSTS; i++ )
+  free_string(whitelist[i]);
  free_string(who_name);
 }
 

@@ -3726,75 +3726,82 @@ DO_FUN(do_config)
 
    if( arg[0] == '\0' )
    {
-      send_to_char( "@@d[@@W Keyword  @@d]@@W Option@@N\r\n", ch );
+      send_to_char( "@@d[@@W Keyword   @@d]@@W Option@@N\r\n", ch );
 
       if( IS_IMMORTAL(ch) )
       {
        send_to_char( ch->act.test(ACT_AUTODIG)
-                     ? "@@d[@@a+AUTODIG  @@d]@@a You can dig new zones by walking.@@N\r\n" : "@@d[@@c-autodig  @@d]@@c You must manually dig new zones.@@N\r\n", ch );
+                     ? "@@d[@@a+AUTODIG   @@d]@@a You can dig new zones by walking.@@N\r\n"
+                     : "@@d[@@c-autodig   @@d]@@c You must manually dig new zones.@@N\r\n", ch );
       }
 
       send_to_char( ch->act.test(ACT_NO_SUMMON)
-                    ? "@@d[@@a+NO_SUMMON@@d]@@a You may not be summoned.@@N\r\n" : "@@d[@@c-no_summon@@d]@@c You may be summoned.@@N\r\n", ch );
+                    ? "@@d[@@a+NO_SUMMON @@d]@@a You may not be summoned.@@N\r\n"
+                    : "@@d[@@c-no_summon @@d]@@c You may be summoned.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_NO_VISIT)
-                    ? "@@d[@@a+NO_VISIT @@d]@@a You may not be 'visited'.@@N\r\n" : "@@d[@@c-no_visit @@d]@@c You may be 'visited'.@@N\r\n", ch );
+                    ? "@@d[@@a+NO_VISIT  @@d]@@a You may not be 'visited'.@@N\r\n"
+                    : "@@d[@@c-no_visit  @@d]@@c You may be 'visited'.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_COLOR)
-                    ? "@@d[@@a+COLOR    @@d]@@a You recieve 'ANSI' color.@@N\r\n"
-                    : "@@d[@@c-color    @@d]@@c You don't receive 'ANSI' color.@@N\r\n", ch );
+                    ? "@@d[@@a+COLOR     @@d]@@a You recieve 'ANSI' color.@@N\r\n"
+                    : "@@d[@@c-color     @@d]@@c You don't receive 'ANSI' color.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_AUTOBRIEF)
-                    ? "@@d[@@a+AUTOBRIEF@@d]@@a You automatically hide room descriptions when traveling.@@N\r\n"
-                    : "@@d[@@c-autobrief@@d]@@c You don't automatically hide room descriptions when traveling.@@N\r\n", ch );
+                    ? "@@d[@@a+AUTOBRIEF @@d]@@a You automatically hide room descriptions when traveling.@@N\r\n"
+                    : "@@d[@@c-autobrief @@d]@@c You don't automatically hide room descriptions when traveling.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_AUTOEXIT)
-                    ? "@@d[@@a+AUTOEXIT @@d]@@a You automatically see exits.@@N\r\n"
-                    : "@@d[@@c-autoexit @@d]@@c You don't automatically see exits.@@N\r\n", ch );
+                    ? "@@d[@@a+AUTOEXIT  @@d]@@a You automatically see exits.@@N\r\n"
+                    : "@@d[@@c-autoexit  @@d]@@c You don't automatically see exits.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_AUTOLOOT)
-                    ? "@@d[@@a+AUTOLOOT @@d]@@a You automatically loot corpses.@@N\r\n"
-                    : "@@d[@@c-autoloot @@d]@@c You don't automatically loot corpses.@@N\r\n", ch );
+                    ? "@@d[@@a+AUTOLOOT  @@d]@@a You automatically loot corpses.@@N\r\n"
+                    : "@@d[@@c-autoloot  @@d]@@c You don't automatically loot corpses.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_AUTOSAC)
-                    ? "@@d[@@a+AUTOSAC  @@d]@@a You automatically sacrifice corpses.@@N\r\n"
-                    : "@@d[@@c-autosac  @@d]@@c You don't automatically sacrifice corpses.@@N\r\n", ch );
+                    ? "@@d[@@a+AUTOSAC   @@d]@@a You automatically sacrifice corpses.@@N\r\n"
+                    : "@@d[@@c-autosac   @@d]@@c You don't automatically sacrifice corpses.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_BLANK)
-                    ? "@@d[@@a+BLANK    @@d]@@a You have a blank line before your prompt.@@N\r\n"
-                    : "@@d[@@c-blank    @@d]@@c You have no blank line before your prompt.@@N\r\n", ch );
+                    ? "@@d[@@a+BLANK     @@d]@@a You have a blank line before your prompt.@@N\r\n"
+                    : "@@d[@@c-blank     @@d]@@c You have no blank line before your prompt.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_BRIEF)
-                    ? "@@d[@@a+BRIEF    @@d]@@a You see brief descriptions.\r\n"
-                    : "@@d[@@c-brief    @@d]@@c You see long descriptions.@@N\r\n", ch );
+                    ? "@@d[@@a+BRIEF     @@d]@@a You see brief descriptions.\r\n"
+                    : "@@d[@@c-brief     @@d]@@c You see long descriptions.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_COMBINE)
-                    ? "@@d[@@a+COMBINE  @@d]@@a You see object lists in combined format.@@N\r\n"
-                    : "@@d[@@c-combine  @@d]@@c You see object lists in single format.@@N\r\n", ch );
+                    ? "@@d[@@a+COMBINE   @@d]@@a You see object lists in combined format.@@N\r\n"
+                    : "@@d[@@c-combine   @@d]@@c You see object lists in single format.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_PROMPT)
-                    ? "@@d[@@a+PROMPT   @@d]@@a You have a prompt.\r\n"
-                    : "@@d[@@c-prompt   @@d]@@c You don't have a prompt.@@N\r\n", ch );
+                    ? "@@d[@@a+PROMPT    @@d]@@a You have a prompt.\r\n"
+                    : "@@d[@@c-prompt    @@d]@@c You don't have a prompt.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_TELNET_GA)
-                    ? "@@d[@@a+TELNET_GA@@d]@@a You receive a telnet GA sequence.@@N\r\n"
-                    : "@@d[@@c-telnet_ga@@d]@@c You don't receive a telnet GA sequence.@@N\r\n", ch );
+                    ? "@@d[@@a+TELNET_GA @@d]@@a You receive a telnet GA sequence.@@N\r\n"
+                    : "@@d[@@c-telnet_ga @@d]@@c You don't receive a telnet GA sequence.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_FULL_ANSI)
-                    ? "@@d[@@a+FULL_ANSI@@d]@@a Your client supports FULL ANSI.@@N\r\n"
-                    : "@@d[@@c-full_ansi@@d]@@c Your client does not support full ANSI (GMUD).@@N\r\n", ch );
+                    ? "@@d[@@a+FULL_ANSI @@d]@@a Your client supports FULL ANSI.@@N\r\n"
+                    : "@@d[@@c-full_ansi @@d]@@c Your client does not support full ANSI (GMUD).@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_MAPPER)
-                    ? "@@d[@@a+MAPPER   @@d]@@a You are viewing the ASCII display map!@@N\r\n"
-                    : "@@d[@@c-MAPPER   @@d]@@c Your are not viewing the ASCII display map.@@N\r\n", ch );
+                    ? "@@d[@@a+MAPPER    @@d]@@a You are viewing the ASCII display map!@@N\r\n"
+                    : "@@d[@@c-MAPPER    @@d]@@c Your are not viewing the ASCII display map.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_JUSTIFY)
-                    ? "@@d[@@a+JUSTIFY  @@d]@@a You are viewing rooms in space justified format.@@N\r\n"
-                    : "@@d[@@c-justify  @@d]@@c Your are not viewing rooms space justified.@@N\r\n", ch );
+                    ? "@@d[@@a+JUSTIFY   @@d]@@a You are viewing rooms in space justified format.@@N\r\n"
+                    : "@@d[@@c-justify   @@d]@@c Your are not viewing rooms space justified.@@N\r\n", ch );
 
       send_to_char( ch->act.test(ACT_NO_COOLDOWN)
-                    ? "@@d[@@a+COOLDOWN @@d]@@a You are not seeing cooldown messages.@@N\r\n"
-                    : "@@d[@@c-cooldown @@d]@@c You are seeing cooldown messages.@@N\r\n", ch );
+                    ? "@@d[@@a+COOLDOWN  @@d]@@a You are not seeing cooldown messages.@@N\r\n"
+                    : "@@d[@@c-cooldown  @@d]@@c You are seeing cooldown messages.@@N\r\n", ch );
+
+      send_to_char( ch->act.test(ACT_WHITELIST)
+                    ? "@@d[@@a+WHITELIST @@d]@@a You may only login from your whitelist domains.@@N\r\n"
+                    : "@@d[@@c-whitelist @@d]@@c You may login from any domain.@@N\r\n", ch );
 
       send_to_char( !ch->act.test(ACT_NO_PRAY) ? "" : "@@d[@@a+NOPRAY   @@d]@@a You cannot use 'pray'.@@N\r\n", ch );
 
@@ -5856,4 +5863,79 @@ bool char_data::check_cooldown( int pos )
  }
 
  return false;
+}
+
+DO_FUN(do_whitelist)
+{
+ char *farg;
+ char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'};
+ short i = 0;
+
+ farg = argument;
+ farg = one_argument(farg,arg1);
+ farg = one_argument(farg,arg2);
+
+ if( arg1[0] == '\0' )
+ {
+  ch_printf(ch,"You are limited to [%2d] whitelist sites. Whitelist status: [%14s]\r\n",MAX_HOSTS,ch->act.test(ACT_WHITELIST) ? "@@rACTIVE@@N" : "@@eINACTIVE@@N" );
+  send_to_char("---------------------------------------------------------------------\r\n",ch);
+  for( i = 0; i < MAX_HOSTS; i++ )
+   ch_printf(ch,"  [%2d] %s\r\n",i,ch->pcdata->whitelist[i]);
+  return;
+ }
+ if( !str_prefix(arg1,"add") )
+ {
+  for( i = 0; i < MAX_HOSTS; i++ )
+  {
+   if( ch->pcdata->whitelist[i] == &str_empty[0] )
+   {
+    if( arg2[0] == '\0' || strlen(arg2) < 8 )
+    {
+     send_to_char("Host must be at least 8 characters long.\r\n",ch);
+     return;
+    }
+    ch->pcdata->whitelist[i] = str_dup(arg2);
+    send_to_char("Whitelist updated.\r\n",ch);
+    return;
+   }
+  }
+  send_to_char("Your whitelist is full. Please delete an entry first.\r\n",ch);
+  return;
+ }
+ else if( !str_prefix(arg1,"del") )
+ {
+  if( arg2[0] == '\0' )
+  {
+   send_to_char("You must supply a host to delete.\r\n",ch);
+   return;
+  }
+  for( i = 0; i < MAX_HOSTS; i++ )
+  {
+   if( !str_cmp(arg2,ch->pcdata->whitelist[i]) )
+   {
+    ch_printf(ch,"Host %s has been removed from your whitelist.\r\n",ch->pcdata->whitelist[i]);
+    free_string(ch->pcdata->whitelist[i]);
+    ch->pcdata->whitelist[i] = &str_empty[0];
+    return;
+   }
+  }
+  send_to_char("That host was not found. Did you spell it exactly as it is listed in your whitelist?\r\n",ch);
+  return;
+ }
+ else
+  do_whitelist(ch);
+
+ return;
+}
+
+DO_FUN(do_logins)
+{
+ if( IS_NPC(ch) )
+  return;
+
+ ch_printf(ch,"Last [%2d] successful logins:\r\n",MAX_HOSTS);
+ for( short i = 0; i < MAX_HOSTS; i++ )
+  ch_printf(ch,"  [%2d] %s\r\n",i,ch->pcdata->host[i]);
+
+ return;
 }

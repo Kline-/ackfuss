@@ -3971,7 +3971,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    {
     default: break;
     case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,"%s",ch->in_room->area->name);      break;
-    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->clan;                               break;
+    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->clan;                                       break;
     case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
     case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
     case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
@@ -4004,7 +4004,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    {
     default: break;
     case CHANNEL_YELL:   snprintf(chan_history.aname[x][y],128,"%s",ch->in_room->area->name);      break;
-    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->clan;                               break;
+    case CHANNEL_CLAN:   chan_history.cbit[x][y] = ch->clan;                                       break;
     case CHANNEL_RACE:   chan_history.cbit[x][y] = ch->race;                                       break;
     case CHANNEL_FAMILY: if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;
     case CHANNEL_HOWL:   if( !IS_NPC(ch) ) chan_history.cbit[x][y] = ch->pcdata->super->bloodline; break;

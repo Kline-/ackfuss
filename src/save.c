@@ -82,34 +82,16 @@ extern int _filbuf args( ( FILE * ) );
 
 
 /* SAVE_REVISION number defines what has changed:
-   0 -> 1:
-     Went multi-char then lost 3 classes.
-     Need to convert pre-multi-char to Ver.1 multi-char.
-     Need to loose 3 classes off Ver.0 multi-char.        
-   1 -> 2:  
-     Changed exp system - need to void old player's exp 
-     added sentence integer into ch structure - old ver's set to 0
-     (Sentence is unused, btw)
-   2 -> 3:
-     Player-selectable order of class abilities.
-     Need to convert Ver.1- racial class order to player class order.
-     Spells/Skills re-ordered, changed, so Ver.1- lose spells, get pracs.
-   3 -> 4:
-     Needed to fix a bug.  I screwed up.  
-   4 -> 5:
-      Arrggghhh.
-   5 -> 6:
-      Redid exp.. set all exp to 0.
-   6 -> 7:
-      Reduced number of clans.
-   7 ->8:
-      Multiple changes for ackmud 4.3
-      race wear slots
+   15:
+     AckFUSS started here!
 
-     */
+   15 -> 16:
+     Expanded pcdata->host to an array of MAX_HOSTS
+     Added pcdata->whitelist also based on MAX_HOSTS
+*/
 
 
-#define SAVE_REVISION 15
+#define SAVE_REVISION 16
 char *cap_nocol( const char *str )
 {
    static char strcap[MAX_STRING_LENGTH];
@@ -400,7 +382,14 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
        * We add a '*' to preserve leading spaces... strip * on load
        */
       fprintf( fp, "Whoname        *%s~\n", ch->pcdata->who_name );
-      fprintf( fp, "Host           %s~\n", ch->pcdata->host );
+      fprintf( fp, "Host           ");
+       for( cnt = 0; cnt < MAX_HOSTS; cnt++ )
+        fprintf(fp,"%s~",ch->pcdata->host[cnt]);
+      fprintf( fp, "\n");
+      fprintf( fp, "Whitelist      ");
+       for( cnt = 0; cnt < MAX_HOSTS; cnt++ )
+        fprintf(fp,"%s~",ch->pcdata->whitelist[cnt]);
+      fprintf( fp, "\n");
       fprintf( fp, "Failures       %d\n", ch->pcdata->failures );
       fprintf( fp, "LastLogin      %s~\n", time_buf );
       fprintf( fp, "HiCol          %c~\n", ch->pcdata->hicol );
@@ -1133,20 +1122,28 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "Hitroll", ch->hitroll, fread_number( fp ) );
             if( !IS_NPC( ch ) )
 	    {
-               SKEY( "Host", ch->pcdata->host, fread_string( fp ) );
-            }
+               if( !str_cmp( word, "Host" ) )
+               {
+                if( cur_revision >= SAVE_REVISION )
+                {
+                 for( short i = 0; i < MAX_HOSTS; i++ )
+                  ch->pcdata->host[i] = fread_string( fp );
+                }
+                else
+                 SKEY("Host",ch->pcdata->host[0],fread_string(fp));
+               }
 
-            if( !str_cmp( word, "HiCol" ) && !IS_NPC( ch ) )
-            {
-               char *temp;
-               temp = fread_string( fp );
-               ch->pcdata->hicol = temp[0];
-/*              fread_to_eol( fp );   */
-               free_string( temp );
-               fMatch = TRUE;
-               break;
+               if( !str_cmp( word, "HiCol" ) )
+               {
+                char *temp;
+                temp = fread_string( fp );
+                ch->pcdata->hicol = temp[0];
+/*               fread_to_eol( fp );   */
+                free_string( temp );
+                fMatch = TRUE;
+                break;
+               }
             }
-
             if( !str_cmp( word, "HpManaMove" ) )
             {
                ch->hit = fread_number( fp );
@@ -1421,6 +1418,16 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'W':
+            if( !str_cmp( word, "Whitelist" ) && !IS_NPC(ch) )
+            {
+             if( cur_revision >= SAVE_REVISION )
+             {
+              for( short i = 0; i < MAX_HOSTS; i++ )
+               ch->pcdata->whitelist[i] = fread_string( fp );
+             }
+             else
+              SKEY("Host",ch->pcdata->whitelist[0],fread_string(fp));
+            }
             KEY( "Wimpy", ch->wimpy, fread_number( fp ) );
             KEY( "Wizbit", ch->wizbit, fread_number( fp ) );
             if( !str_cmp( word, "Whoname" ) && !IS_NPC( ch ) )

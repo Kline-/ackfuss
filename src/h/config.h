@@ -74,6 +74,7 @@
 #define MAX_COLOR		    22   /* eg look, prompt, shout */
 #define MAX_ANSI		    28   /* eg red, black, etc (was 11) */
 #define MAX_ALIASES		     6
+#define MAX_HOSTS                    3   /* number of login sites/whitelist */
 #define MAX_IGNORES		     3
 #define MAX_RACE                     20
 #define MAX_CLAN                     9 /* number of clans */
@@ -719,6 +720,7 @@
 #define ACT_GHOST        76   /* You're dead! A ghost!          */
 #define ACT_NO_COOLDOWN  77   /* suppress showing cooldown msgs */
 #define ACT_SHUNTER      78   /* vamp/wolf 'hunter' super race  */
+#define ACT_WHITELIST    79   /* utilize login whitelist        */
 
 /*
  * Channel bits.

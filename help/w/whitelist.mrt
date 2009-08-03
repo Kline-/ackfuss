@@ -1,0 +1,23 @@
+WHITELIST
+
+WHITELIST will let you restrict the domains you are allowed to login
+to your character from. To activate it, use "config +whitelist", to
+deactivate, use "config -whitelist". Typing "whitelist" by itself
+will display your whitelist, you can add or remove sites by using
+"whitelist <add/del> <site>".
+
+Whitelist sites function the same as sitebans, only in reverse. You
+may supply an IP address or a domain host. Every connection is
+guaranteed to have an IP address to match against, but they may change
+more frequently. Hostname lookups are performed on each connection
+but may not always be successful. Wildcards are automatic if one
+side of a period is left blank.
+
+Example: allow all logins from "mydomain.com"
+  whitelist add .mydomain.com
+
+Example: allow all logins from IP address 123.456.789.123
+  whitelist add 123.456.789.123
+
+Example: allow all logins from IP block 789.456.123
+  whitelist add 789.456.123.
