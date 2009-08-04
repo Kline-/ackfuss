@@ -8,6 +8,12 @@
 
 #define DEC_HASH_H
 
+#if __STDC__ || defined(__cplusplus)
+#define P_(s) s
+#else
+#define P_(s) ()
+#endif
+
 class hash_entry_tp
 {
  public:
@@ -28,10 +34,12 @@ struct hash_table_tp
 };
 
 
+/* hash.c */
+hash_table *create_hash_table P_((int max_hash));
+void del_hash_entry P_((hash_table * hash_head, int key));
+void add_hash_entry P_((hash_table * hash_head, int key, void *entry));
+void *get_hash_entry P_((hash_table * hash_head, int key));
+void clear_hash_table P_((hash_table * hash_head));
+void delete_hash_table P_((hash_table * hash_head));
 
-hash_table *create_hash_table( int max_hash );
-void del_hash_entry( hash_table * hash_head, int key );
-void add_hash_entry( hash_table * hash_head, int key, void *entry );
-void *get_hash_entry( hash_table * hash_head, int key );
-void clear_hash_table( hash_table * hash_head );
-void delete_hash_table( hash_table * hash_head );
+#undef P_

@@ -32,16 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#if defined(macintosh)
-include < types.h >
-#else
-#include <sys/types.h>
-#endif
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_BOARD_H
 #include "h/board.h"
@@ -132,7 +123,7 @@ void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
     */
 
    MESSAGE_DATA *msg;
-   std::list<BOARD_DATA *>::iterator li;
+   list<BOARD_DATA *>::iterator li;
    BOARD_DATA *board = NULL;
    OBJ_INDEX_DATA *pObj;
    char buf[MAX_STRING_LENGTH];
@@ -375,7 +366,7 @@ void do_delete( CHAR_DATA * ch, char *argument )
 {
    OBJ_DATA *object;
    BOARD_DATA *board = NULL;
-   std::list<BOARD_DATA *>::iterator li;
+   list<BOARD_DATA *>::iterator li;
    MESSAGE_DATA *msg;
    OBJ_INDEX_DATA *pObj;
    int vnum;
@@ -482,7 +473,7 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
     * * check that message vnum == board vnum
     */
 
-   std::list<BOARD_DATA *>::iterator li;
+   list<BOARD_DATA *>::iterator li;
    BOARD_DATA *board = NULL;
    OBJ_INDEX_DATA *pObj;
    int vnum;
@@ -557,7 +548,7 @@ void do_write( CHAR_DATA * ch, char *argument )
 {
    OBJ_DATA *object;
    BOARD_DATA *board = NULL;
-   std::list<BOARD_DATA *>::iterator li;
+   list<BOARD_DATA *>::iterator li;
    MESSAGE_DATA *msg;
    OBJ_INDEX_DATA *pObj;
    int vnum;
@@ -728,7 +719,7 @@ void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
     * * check that message vnum == board vnum
     */
 
-   std::list<BOARD_DATA *>::iterator li;
+   list<BOARD_DATA *>::iterator li;
    BOARD_DATA *board = NULL;
    OBJ_INDEX_DATA *pObj;
    int vnum;

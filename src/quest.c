@@ -32,12 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -432,7 +427,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
 CHAR_DATA *get_quest_target( int min_level, int max_level )
 {
    CHAR_DATA *target = NULL;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int min_index = 0;   /* the minimum number of times to go through the list */
 
    if( max_level > 140 )
@@ -509,7 +504,7 @@ OBJ_DATA *load_quest_object( CHAR_DATA * target )
 CHAR_DATA *get_quest_giver( int min_level, int max_level )
 {
    CHAR_DATA *target = NULL;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int min_index = 0;
 
    min_index = number_range(0,mob_index_list.size()-1);

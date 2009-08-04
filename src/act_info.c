@@ -32,17 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <unistd.h>
-#if defined(__CYGWIN__)
-#include <crypt.h>
-#endif
-#include "globals.h"
-#include <math.h>
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -845,7 +835,7 @@ DO_FUN(do_look)
       if( !IS_NPC( ch ) && ( IS_VAMP( ch ) || IS_WOLF( ch ) ) )
          if( !ch->in_room->mark_list.empty() )
          {
-            std::list<MARK_DATA *>::iterator li;
+            list<MARK_DATA *>::iterator li;
             MARK_DATA *mk = NULL;
             short num_marks = 0;
 
@@ -2670,7 +2660,7 @@ DO_FUN(do_where)
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    DESCRIPTOR_DATA *d;
    bool found;
    buf[0] = '\0';
@@ -3432,7 +3422,7 @@ static char *const cmd_group_names[] = {
 DO_FUN(do_commands)
 {
  short cnt = 0, i = 0, cmd = 0, show = 0, total = 0;
- std::string buf;
+ string buf;
  char tmp[MSL];
 
  if( IS_NPC(ch) )
@@ -5784,7 +5774,7 @@ DO_FUN(do_safe)
 
 void area_message( AREA_DATA *area, const char *message )
 {
- std::list<CHAR_DATA *>::iterator li;
+ list<CHAR_DATA *>::iterator li;
  CHAR_DATA *ch;
 
  if( area == NULL )

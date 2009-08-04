@@ -32,9 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"

@@ -42,12 +42,7 @@
 /* PLEASE mail me if you use this or like it, that way I will keep it up*/
 /************************************************************************/
 
-#include <ctype.h>   /* for isalpha */
-#include <string.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"

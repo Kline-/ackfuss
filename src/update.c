@@ -32,13 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <sys/time.h>
-#include <sys/resource.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
-#include <signal.h>
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -133,7 +127,6 @@ void obj_update args( ( void ) );
 void aggr_update args( ( void ) );
 void objfun_update args( ( void ) );
 void rooms_update args( ( void ) );
-void remember_attack args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
 void quest_update args( ( void ) );
 void lua_update args ( ( void ) );
 /*
@@ -772,14 +765,13 @@ void gain_condition( CHAR_DATA * ch, int iCond, int value )
 void mobile_update( void )
 {
    CHAR_DATA *ch;
-   CHAR_DATA *target;
    EXIT_DATA *pexit;
    int door;
    CHAR_DATA *quitter;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    /*
-    * Examine all mobs. 
+    * Examine all mobs.
     */
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
@@ -835,17 +827,6 @@ void mobile_update( void )
       if( ch->act.test(ACT_RE_EQUIP) )
          if( check_re_equip( ch ) )
             continue;
-
-
-      /*
-       * Check for remember victims 
-       */
-      if( ch->target != NULL && ( target = get_char_room( ch, ch->target ) ) != NULL )
-      {
-         remember_attack( ch, target );
-         continue;
-      }
-
 
       /*
        * Check to see if mob is moving somewhere 
@@ -1270,7 +1251,7 @@ void weather_update( void )
 void gain_update( void )
 {
    CHAR_DATA *ch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 /* Update super_councils info  */
 
    {
@@ -1363,7 +1344,7 @@ void char_update( void )
    CHAR_DATA *ch;
    CHAR_DATA *ch_save;
    CHAR_DATA *ch_quit;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    time_t save_time;
 
    save_time = current_time;
@@ -1580,11 +1561,9 @@ void char_update( void )
        */
       if( IS_NPC( ch ) )
       {
-         if( ch->target != NULL && number_bits( 4 ) == 0 )
-         {
-            free_string( ch->target );
-            ch->target = NULL;
-         }
+         if( !ch->target.empty() && number_bits( 4 ) == 0 ) /* And all was forgiven ... --Kline */
+          ch->target.clear();
+
          if( ch->extract_timer > 0 )
          {
             ch->extract_timer--;
@@ -1722,7 +1701,7 @@ void check_vamp( CHAR_DATA * ch )
 void objfun_update( void )
 {
    OBJ_DATA *obj;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
@@ -1752,7 +1731,7 @@ void objfun_update( void )
 void obj_update( void )
 {
    OBJ_DATA *obj;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    /*
     * Repeatedly remove object from front of list, add to tail, and process
@@ -1872,100 +1851,58 @@ void obj_update( void )
  *
  * -- Furey
  */
+ /*
+  * for each aggressive mob
+  *  for each mortal PC in room
+  *   aggress on some random PC
+  *
+  * Less intensive this way ;)
+  * --Kline
+  *
+  */
 void aggr_update( void )
 {
+ CHAR_DATA *ch = NULL, *vch = NULL, *vch_next = NULL, *victim = NULL;
+ list<CHAR_DATA *>::iterator li;
+ vector<CHAR_DATA *> vict_list;
 
-   /*
-    * Check to see if ch has encountered a mob with ACT_REMEMBER set,
-    * * and with victim->target == ch->name...    tbc ;)
-    * * -- Stephen
-    */
+ for( li = aggro_list.begin(); li != aggro_list.end(); li++ )
+ {
+  ch = *li;
+  vict_list.clear();
 
-   CHAR_DATA *wch;
-   CHAR_DATA *ch;
-   CHAR_DATA *ch_next;
-   CHAR_DATA *vch;
-   CHAR_DATA *vch_next;
-   CHAR_DATA *victim;
-   OBJ_DATA *wield;
-   std::list<CHAR_DATA *>::iterator li;
+  if( ch == NULL || ch->in_room == NULL || ch->in_room->area->player_list.empty() )
+   continue;
 
-   for( li = char_list.begin(); li != char_list.end(); li++ )
-   {
-      wch = *li;
-      if( wch == NULL )
-         continue;
+  if( ch->fighting != NULL || ch->hunting != NULL || IS_AFFECTED(ch,AFF_CHARM) || !IS_AWAKE(ch) || ch->in_room->room_flags.test(RFLAG_SAFE) || ch == quest_mob )
+   continue;
 
-      if( ( IS_NPC( wch ) ) || wch->level >= LEVEL_IMMORTAL || wch->in_room == NULL )
-         continue;
+  for( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )
+  {
+   vch_next = vch->next_in_room;
 
-      for( ch = wch->in_room->first_person; ch != NULL; ch = ch_next )
-      {
-         int count;
+   if( (IS_NPC(vch) && !vch->act.test(ACT_INTELLIGENT)) || vch->level >= LEVEL_IMMORTAL || (ch->act.test(ACT_WIMPY) && IS_AWAKE(vch)) || !can_see(ch,vch) || (IS_UNDEAD(ch) && IS_VAMP(vch)) )
+    continue;
 
-         ch_next = ch->next_in_room;
+   if( (IS_AFFECTED(vch,AFF_SNEAK) || item_has_apply(vch,ITEM_APPLY_SNEAK)) && (number_percent() < 50 + (2 * (get_psuedo_level(vch) - get_psuedo_level(ch)))) )
+    continue;
 
-         if( !IS_NPC( ch )
-             || !ch->act.test(ACT_AGGRESSIVE)
-             || ch->fighting != NULL
-             || ch->hunting != NULL
-             || IS_AFFECTED( ch, AFF_CHARM )
-             || !IS_AWAKE( ch ) || ( ch->act.test(ACT_WIMPY) && IS_AWAKE( wch ) ) || !can_see( ch, wch ) || ch->in_room->area->player_list.empty() )
-            continue;
+   vict_list.push_back(vch);
+  }
 
+ /*
+  * We have a 'ch' NPC aggressor and a vict_list of player characters / intelligent NPCs.
+  * Now make the aggressor fight a random target in the room, giving each an equal chance
+  * of selection.
+  */
+  if( vict_list.empty() )
+   continue;
 
-         if( ( IS_AFFECTED( wch, AFF_SNEAK ) || item_has_apply( wch, ITEM_APPLY_SNEAK ) )
-             && ( number_percent(  ) < 50 + ( 2 * ( get_psuedo_level( wch ) - get_psuedo_level( ch ) ) ) ) )
-            continue;
-         /*
-          * Ok we have a 'wch' player character and a 'ch' npc aggressor.
-          * MAG - wch can be an intelligent NPC.
-          * Now make the aggressor fight a RANDOM pc victim in the room,
-          *   giving each 'vch' an equal chance of selection.
-          */
-         count = 0;
-         victim = NULL;
-
-         for( vch = wch->in_room->first_person; vch != NULL; vch = vch_next )
-         {
-            vch_next = vch->next_in_room;
-
-            if( ( !IS_NPC( vch ) || vch->act.test(ACT_INTELLIGENT) )
-                && vch->level < LEVEL_IMMORTAL
-                && ( !ch->act.test(ACT_WIMPY) || !IS_AWAKE( vch ) )
-                && can_see( ch, vch ) && ( !( IS_UNDEAD( ch ) && IS_VAMP( vch ) ) ) )
-            {
-               if( number_range( 0, count ) == 0 )
-                  victim = vch;
-               count++;
-            }
-         }
-
-         if( victim == NULL )
-         {
-            /*
-             * bug( "Aggr_update: null victim.", count );    
-             */
-            continue;
-         }
-         if( victim->in_room->room_flags.test(RFLAG_SAFE) )
-            continue;
-
-         if( ch == quest_mob ) /* Stop the quest mob from fighting folks trying to help it! --Kline */
-          continue;
-
-         act( "$n growls at $N!", victim, NULL, ch, TO_NOTVICT );
-         act( "$N growls at you!  Uh-oh!!", victim, NULL, ch, TO_CHAR );
-         act( "You growl at $N.  Get $M!!", ch, NULL, victim, TO_CHAR );
-
-         wield = get_eq_char( ch, WEAR_HOLD_HAND_L );
-         if( wield != NULL && wield->item_type == ITEM_WEAPON && wield->value[3] == 11 && victim->fighting == NULL )
-            do_backstab( ch, victim->name );
-         else
-            one_hit( ch, victim, TYPE_UNDEFINED );
-      }
-   }
-   return;
+  random_shuffle(vict_list.begin(),vict_list.end());
+  victim = *vict_list.begin();
+  aggro_attack(ch,victim);
+ }
+ return;
 }
 
 /*
@@ -1981,8 +1918,8 @@ void rooms_update( void )
    BUILD_DATA_LIST *thing;
    ROOM_AFFECT_DATA *raf;
    ROOM_AFFECT_DATA *raf_next;
-   std::list<AREA_DATA *>::iterator li;
-   std::list<MARK_DATA *>::iterator mi;
+   list<AREA_DATA *>::iterator li;
+   list<MARK_DATA *>::iterator mi;
 
    for( li = area_list.begin(); li != area_list.end(); li++ )
    {
@@ -2423,7 +2360,7 @@ bool check_re_equip( CHAR_DATA * ch )
 void auction_update( void )
 {
    char buf[MAX_STRING_LENGTH];
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    CHAR_DATA *ach;
    bool good_seller = false, good_buyer = false;
 
@@ -2571,75 +2508,6 @@ void auction_update( void )
    return;
 }
 
-void remember_attack( CHAR_DATA * ch, CHAR_DATA * victim )
-{
-   /*
-    * Called when an NPC ch encounters a PC victim, that tried to
-    * * kill it previously.
-    * * --Stephen
-    */
-
-   char buf[MAX_STRING_LENGTH];
-
-   /*
-    * Pick a random response for ch to give, before attacking 
-    */
-
-   switch ( number_range( 0, 7 ) )
-   {
-      case 0:
-         snprintf( buf, MSL, "%s returns!  I shall have my revenge at last!", victim->name );
-         do_yell( ch, buf );
-         break;
-      case 1:
-         snprintf( buf, MSL, "%s You should never have returned.  Ye shall DIE!", victim->name );
-         do_whisper( ch, buf );
-         break;
-      case 2:
-         act( "$n looks at $N, remembering $S attack", ch, NULL, victim, TO_ROOM );
-         act( "$n looks at you, remembering your attack", ch, NULL, victim, TO_VICT );
-         act( "You look at $N, remembering $S attack.", ch, NULL, victim, TO_CHAR );
-         do_say( ch, "I SHALL HAVE MY REVENGE!!!" );
-         break;
-      case 3:
-         snprintf( buf, MSL, "%s has wronged me, and now I will seek my revenge!", victim->name );
-         do_gossip( ch, buf );
-         snprintf( buf, MSL, "Prepare to die, %s.", victim->name );
-         do_say( ch, buf );
-         break;
-      case 4:
-         snprintf( buf, MSL, "So, %s.  You have returned.  Let us finish our fight this time!", victim->name );
-         do_say( ch, buf );
-         break;
-      case 5:
-         snprintf( buf, MSL, "Only cowards flee from me, %s!", victim->name );
-         do_say( ch, buf );
-         break;
-      case 6:
-         act( "$n looks at $N, and recognizes $M!!", ch, NULL, victim, TO_ROOM );
-         act( "$n looks at you, and recognizes you!!", ch, NULL, victim, TO_VICT );
-         act( "You look at $N, and recognize $M!", ch, NULL, victim, TO_CHAR );
-         snprintf( buf, MSL, "There can only be one winner, %s.", victim->name );
-         do_say( ch, buf );
-         break;
-   }
-
-   /*
-    * Check if has intelligence, and call correct attack? 
-    */
-
-   one_hit( ch, victim, TYPE_UNDEFINED );
-   /*
-    * spec- plug leak here 
-    */
-   if( ch->target )
-   {
-      free_string( ch->target );
-      ch->target = NULL;
-   }
-   return;
-}
-
 void quest_update(  )
 {
    if( !quest && !auto_quest )
@@ -2678,9 +2546,9 @@ void quest_update(  )
 void lua_update( )
 {
  LUA_DATA *lua;
- std::list<LUA_DATA *>::iterator li;
- std::string str;
- std::string arg;
+ list<LUA_DATA *>::iterator li;
+ string str;
+ string arg;
  
  for( li = lua_list.begin(); li != lua_list.end(); li++ )
  {

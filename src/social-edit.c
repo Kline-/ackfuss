@@ -32,16 +32,12 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-/* Online Social Editting Module, 
+/* Online Social Editting Module,
  * (c) 1996 Erwin S. Andreasen <erwin@pip.dknet.dk>
  * See the file "License" for important licensing information
  */
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+
+#include "h/globals.h"
 
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"

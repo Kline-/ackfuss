@@ -6,10 +6,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -117,7 +114,7 @@ void save_mudinfo( void )
 
 void do_mudinfo( CHAR_DATA * ch, char *argument )
 {
- std::string str;
+ string str;
 
  send_to_char("      MUD info for " mudnamecolor ":\r\n",ch);
  send_to_char("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n",ch);

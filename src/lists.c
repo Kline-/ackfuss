@@ -32,9 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
@@ -45,28 +43,29 @@
  * declarations in lists.h
  * -- Altrag
  */
-std::list<AFFECT_DATA *> affect_list;
-std::list<AREA_DATA *> area_list;
-std::list<BAN_DATA *> ban_list;
-std::list<BOARD_DATA *> board_list;
-std::list<BUILD_DATA_LIST *> build_dat_list;
-std::list<CHAR_DATA *> cast_list;
-std::list<CHAR_DATA *> char_list;
-std::list<OBJ_DATA *> corpse_list;
-std::list<DISABLED_DATA *> disabled_list;
-std::list<EXTRA_DESCR_DATA *> exdesc_list;
-std::list<EXIT_DATA *> exit_list;
-std::list<CHAR_DATA *> fight_list;
-std::list<FILE *> file_list;
-std::list<LUA_DATA *> lua_list;
-std::list<MOB_INDEX_DATA *> mob_index_list;
-std::list<NOTE_DATA *> note_list;
-std::list<OBJ_DATA *> obj_list;
-std::list<OBJ_INDEX_DATA *> obj_index_list;
-std::list<RESET_DATA *> reset_list;
-std::list<ROOM_INDEX_DATA *> room_index_list;
-std::list<RULER_DATA *> ruler_list;
-std::list<SHOP_DATA *> shop_list;
+list<AFFECT_DATA *> affect_list;
+list<CHAR_DATA *> aggro_list;
+list<AREA_DATA *> area_list;
+list<BAN_DATA *> ban_list;
+list<BOARD_DATA *> board_list;
+list<BUILD_DATA_LIST *> build_dat_list;
+list<CHAR_DATA *> cast_list;
+list<CHAR_DATA *> char_list;
+list<OBJ_DATA *> corpse_list;
+list<DISABLED_DATA *> disabled_list;
+list<EXTRA_DESCR_DATA *> exdesc_list;
+list<EXIT_DATA *> exit_list;
+list<CHAR_DATA *> fight_list;
+list<FILE *> file_list;
+list<LUA_DATA *> lua_list;
+list<MOB_INDEX_DATA *> mob_index_list;
+list<NOTE_DATA *> note_list;
+list<OBJ_DATA *> obj_list;
+list<OBJ_INDEX_DATA *> obj_index_list;
+list<RESET_DATA *> reset_list;
+list<ROOM_INDEX_DATA *> room_index_list;
+list<RULER_DATA *> ruler_list;
+list<SHOP_DATA *> shop_list;
 
 DESCRIPTOR_DATA *first_desc = NULL;
 DESCRIPTOR_DATA *last_desc = NULL;

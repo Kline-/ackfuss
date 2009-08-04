@@ -6,16 +6,14 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include "globals.h"
-#include "hash.h"
+#include "h/globals.h"
 
 #ifndef DEC_DB_H
 #include "h/db.h"
+#endif
+
+#ifndef DEC_HASH_H
+#include "h/hash.h"
 #endif
 
 /*

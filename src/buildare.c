@@ -35,11 +35,7 @@
 /* This file deals with adding/deleting and manipulating areas
    as a whole, also checking on permissions and deals with area bank. */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_AREASAVE_H
 #include "h/areasave.h"
@@ -115,7 +111,7 @@ bool build_canwrite( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 
 void build_save_area_list( void )
 {
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    AREA_DATA *pArea;
    FILE *fpArea;
    char buf[MSL];
@@ -151,7 +147,7 @@ void build_save_area_list( void )
 
 void build_save_area_gold( void )
 {
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    AREA_DATA *pArea;
    FILE *fpArea;
 
@@ -194,7 +190,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    int iHash;
    int rooms;
 
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    BUILD_DATA_LIST *pList;
    AREA_DATA *pArea = NULL;
    AREA_DATA *fpadd = NULL;
@@ -673,7 +669,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
    char buf1[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    AREA_DATA *pArea;
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    ROOM_INDEX_DATA *pRoomIndex = NULL;
    int nMatch;
    bool fAll;
@@ -782,7 +778,7 @@ void build_arealist( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char msg[MAX_STRING_LENGTH];
    AREA_DATA *pArea;
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    short stop_counter = 0;
 
    buf[0] = '\0';

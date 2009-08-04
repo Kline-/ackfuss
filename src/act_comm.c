@@ -32,12 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -102,7 +97,7 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
    char *to_list;
    char to_new[MAX_INPUT_LENGTH];
    char to_one[MAX_INPUT_LENGTH];
-   std::list<NOTE_DATA *>::iterator li;
+   list<NOTE_DATA *>::iterator li;
 
    /*
     * Build a new to_list.
@@ -168,7 +163,7 @@ DO_FUN(do_note)
 {
    CHAR_DATA *postie;
    NOTE_DATA *pnote;
-   std::list<NOTE_DATA *>::iterator li;
+   list<NOTE_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH * 7];
    char arg[MAX_INPUT_LENGTH];
@@ -1888,7 +1883,7 @@ void stop_follower( CHAR_DATA * ch )
 void die_follower( CHAR_DATA * ch )
 {
    CHAR_DATA *fch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    if( ch->master != NULL )
       stop_follower( ch );
@@ -2064,7 +2059,7 @@ DO_FUN(do_group)
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    short new_members = 0;
    float percent = 0.00;
    int tot_level = 0;
@@ -2247,7 +2242,7 @@ DO_FUN(do_gtell)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *gch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
    {
@@ -2715,7 +2710,7 @@ DO_FUN(do_ask)
 void send_to_room( char *message, ROOM_INDEX_DATA * room )
 {
    CHAR_DATA *vch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {

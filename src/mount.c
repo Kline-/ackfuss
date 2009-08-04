@@ -34,19 +34,15 @@
 
 /* Mount, ok ppl lets mount them damn horses, i knew they had to be good
  * for something.
- * 
+ *
  * Code written by Celestian on Oct 1st 1996
  *
  * Originally written for ThrynnMUD 2.0, Merc 2.2 based.
  *
  * Copyright (c) 1996 Virtual Research
  */
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"

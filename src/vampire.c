@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"
@@ -83,7 +79,7 @@ bool spell_blood_leach( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    CHAR_DATA *check;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    AFFECT_DATA *paf;
    AFFECT_DATA af;
 
@@ -632,7 +628,7 @@ bool spell_blood_sign( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
 bool spell_blood_sense( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
-   std::list<MARK_DATA *>::iterator li;
+   list<MARK_DATA *>::iterator li;
    MARK_DATA *mk = NULL;
 
    if( IS_NPC( ch ) || ( !IS_VAMP( ch ) ) )

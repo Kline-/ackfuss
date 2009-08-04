@@ -47,23 +47,7 @@
  * -- Furey  26 Jan 1993
  */
 
-#include <sys/types.h>
-#include <sys/time.h>
-#include <ctype.h>
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <signal.h>
-#include <pthread.h>
-#if defined(__CYGWIN__)
-#include <crypt.h>
-#endif
-/* For child forking and stuff */
-#include <sys/wait.h>
-#include <unistd.h>  /* for execl */
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -113,14 +97,6 @@
 #include "h/telopt.h"
 #endif
 
-/*
- * Socket and TCP/IP stuff.
- */
-#include <fcntl.h>
-#include <netdb.h>
-#include <netinet/in.h>
-#include <sys/socket.h>
-#include <arpa/telnet.h>
 const char echo_off_str[] = { IAC, WILL, TELOPT_ECHO, '\0' };
 const char echo_on_str[] = { IAC, WONT, TELOPT_ECHO, '\0' };
 const char go_ahead_str[] = { IAC, GA, '\0' };
@@ -1059,8 +1035,8 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
  */
 void bust_a_prompt( DESCRIPTOR_DATA * d )
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf2[MSL];
    const char *str;
    const char *i = " ";
    char *point;
@@ -1087,9 +1063,9 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       ROOM_INDEX_DATA *room;
       OBJ_INDEX_DATA *obj;
       MOB_INDEX_DATA *mob;
-      char msg[MAX_STRING_LENGTH];  /* Mode */
-      char msg2[MAX_STRING_LENGTH]; /* what */
-      char msg3[MAX_STRING_LENGTH]; /* all */
+      char msg[MSL];  /* Mode */
+      char msg2[MSL]; /* what */
+      char msg3[MSL]; /* all */
 
       if( ch->act_build == ACT_BUILD_NOWT )
       {
@@ -1151,7 +1127,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       {
          check = 1;
          snprintf( buf, MSL, "@@W<@@e%d@@RH", ch->hit );
-         strncat( buf2, buf, MSL );
+         strncat( buf2, buf, MSL-1 );
       }
       if( ch->mana < ch->max_mana )
       {
@@ -1160,7 +1136,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          else
             snprintf( buf, MSL, "@@W<@@l%d@@BMn", ch->mana );
          check = 1;
-         strncat( buf2, buf, MSL );
+         strncat( buf2, buf, MSL-1 );
       }
       if( ch->move < ch->max_move )
       {
@@ -1168,7 +1144,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             snprintf( buf, MSL, " @@r%d@@GV", ch->move );
          else
             snprintf( buf, MSL, "@@W<@@r%d@@GV", ch->move );
-         strncat( buf2, buf, MSL );
+         strncat( buf2, buf, MSL-1 );
          check = 1;
       }
       if( check == 1 )
@@ -1554,21 +1530,21 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             percent = -1;
 
          if( percent >= 95 )
-            snprintf( wound, MSL, "@@rExcellent@@N" );
+            snprintf( wound, 100, "@@rExcellent@@N" );
          else if( percent >= 85 )
-            snprintf( wound, MSL, "@@GScratches@@N" );
+            snprintf( wound, 100, "@@GScratches@@N" );
          else if( percent >= 70 )
-            snprintf( wound, MSL, "@@ySmall wounds@@N" );
+            snprintf( wound, 100, "@@ySmall wounds@@N" );
          else if( percent >= 55 )
-            snprintf( wound, MSL, "@@bLarger wounds@@N" );
+            snprintf( wound, 100, "@@bLarger wounds@@N" );
          else if( percent >= 45 )
-            snprintf( wound, MSL, "@@mBleeding freely@@N" );
+            snprintf( wound, 100, "@@mBleeding freely@@N" );
          else if( percent >= 30 )
-            snprintf( wound, MSL, "@@RLeaking guts@@N" );
+            snprintf( wound, 100, "@@RLeaking guts@@N" );
          else if( percent >= 15 )
-            snprintf( wound, MSL, "@@eA MESS!@@N" );
+            snprintf( wound, 100, "@@eA MESS!@@N" );
          else
-            snprintf( wound, MSL, "@@2@@W@@fALMOST DEAD!!!@@N" );
+            snprintf( wound, 100, "@@2@@W@@fALMOST DEAD!!!@@N" );
          if( ch->act.test(ACT_BLIND_PLAYER) )
             snprintf( cbuf, 200, "@@W%s %s @@N ", tank == ch ? "YOU" : "Tank", wound );
          else
@@ -1596,21 +1572,21 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
          percent = -1;
 
       if( percent >= 95 )
-         snprintf( wound, MSL, "@@rExcellent@@N" );
+         snprintf( wound, 100, "@@rExcellent@@N" );
       else if( percent >= 85 )
-         snprintf( wound, MSL, "@@GScratches@@N" );
+         snprintf( wound, 100, "@@GScratches@@N" );
       else if( percent >= 70 )
-         snprintf( wound, MSL, "@@ySmall wounds@@N" );
+         snprintf( wound, 100, "@@ySmall wounds@@N" );
       else if( percent >= 55 )
-         snprintf( wound, MSL, "@@bLarger wounds@@N" );
+         snprintf( wound, 100, "@@bLarger wounds@@N" );
       else if( percent >= 45 )
-         snprintf( wound, MSL, "@@mBleeding freely@@N" );
+         snprintf( wound, 100, "@@mBleeding freely@@N" );
       else if( percent >= 30 )
-         snprintf( wound, MSL, "@@RLeaking guts@@N" );
+         snprintf( wound, 100, "@@RLeaking guts@@N" );
       else if( percent >= 15 )
-         snprintf( wound, MSL, "@@eA MESS!@@N" );
+         snprintf( wound, 100, "@@eA MESS!@@N" );
       else
-         snprintf( wound, MSL, "@@2@@WALMOST DEAD!!!@@N" );
+         snprintf( wound, 100, "@@2@@WALMOST DEAD!!!@@N" );
       if( ch->act.test(ACT_BLIND_PLAYER) )
          snprintf( cbuf, 200, "@@WVictim %s @@N\r\n", wound );
       else
@@ -2183,7 +2159,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       if( fOld )
       {
          BAN_DATA *pban;
-         std::list<BAN_DATA *>::iterator li;
+         list<BAN_DATA *>::iterator li;
 
          for( li = ban_list.begin(); li != ban_list.end(); li++ )
          {
@@ -2210,7 +2186,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       else
       {
          BAN_DATA *pban;
-         std::list<BAN_DATA *>::iterator li;
+         list<BAN_DATA *>::iterator li;
          /*
           * New player 
           */
@@ -2722,7 +2698,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
    if( d->connected == CON_READ_MOTD )
    {
-      std::list<NOTE_DATA *>::iterator li;
+      list<NOTE_DATA *>::iterator li;
       /*
        * Prime level idea dropped.  Give ch 1 level in their best class 
        */
@@ -3133,7 +3109,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
 {
    CHAR_DATA *ch;
    OBJ_DATA *obj;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
@@ -3233,7 +3209,7 @@ void stop_idling( CHAR_DATA * ch )
 /*
  * Write to one char.
  */
-void send_to_char( std::string txt, CHAR_DATA *ch )
+void send_to_char( string txt, CHAR_DATA *ch )
 {
  send_to_char(txt.c_str(),ch);
  return;
@@ -3386,8 +3362,8 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
    static char *const him_her[] = { "it", "him", "her" };
    static char *const his_her[] = { "its", "his", "her" };
 
-   char buf[MAX_STRING_LENGTH];
-   char fname[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char fname[MSL];
    char tmp_str[MSL];
    CHAR_DATA *to;
    CHAR_DATA *vch = ( CHAR_DATA * ) arg2;
@@ -3437,15 +3413,6 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
          continue;
       if( type == TO_NOTVICT && ( to == ch || to == vch ) )
          continue;
-
-      /*
-       * Check for Bash and vannevar *sigh* 
-       */
-      if( !IS_NPC( ch ) && !IS_NPC( ch ) && !str_cmp( ch->name, "bash" ) && !str_cmp( to->name, "vannevar" ) )
-         continue;
-      if( !IS_NPC( ch ) && !IS_NPC( ch ) && !str_cmp( ch->name, "vannevar" ) && !str_cmp( to->name, "bash" ) )
-         continue;
-
 
       point = buf;
       str = format;

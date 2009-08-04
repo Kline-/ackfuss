@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <stdlib.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -544,6 +540,11 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    if( !IS_NPC( ch ) && IS_VAMP( ch ) && !IS_IMMORTAL( ch ) )
       check_vamp( ch ); /* burn the vampire! */
    ch->using_named_door = FALSE;
+
+   for( fch = ch->in_room->first_person; fch != NULL; fch = fch->next_in_room )
+    if( IS_NPC(fch) && fch->act.test(ACT_REMEMBER) && fch->target.find(ch->name) != string::npos )
+     remember_attack(fch,ch);
+
    return;
 }
 
@@ -2262,7 +2263,7 @@ DO_FUN(do_scout)
 DO_FUN(do_abandon) /* Thanks to Koron & Abel for the idea! --Kline */
 {
  CHAR_DATA *vch;
- std::list<CHAR_DATA *>::iterator li;
+ list<CHAR_DATA *>::iterator li;
 
  if( ch->num_followers < 1 )
  {

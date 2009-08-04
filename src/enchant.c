@@ -32,15 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <assert.h>
-#include <unistd.h>
-#include <string.h>
-#include <ctype.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -97,7 +89,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
    int mod = 0;
    short min_level = 10;
    int new_apply = ITEM_APPLY_NONE;
-   std::bitset<MAX_BITSET> new_extras;
+   bitset<MAX_BITSET> new_extras;
 
    new_extras.reset();
 

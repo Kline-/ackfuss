@@ -35,11 +35,8 @@
 /* Mob/player hunting.. */
 /* Copied this from one of my old MUDs..  Much cleaner than the sillymud
    hunt routines  -- Alty */
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include "globals.h"
+
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -633,7 +630,7 @@ void do_hunt( CHAR_DATA * ch, char *argument )
    if( chance < number_percent(  ) )
    {
       CHAR_DATA *vch;
-      std::list<CHAR_DATA *>::iterator li;
+      list<CHAR_DATA *>::iterator li;
       short vcnt = 0;
 
       victim = NULL;

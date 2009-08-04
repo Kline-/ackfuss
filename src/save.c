@@ -32,12 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
-#include "hash.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_OBJ_H
 #include "h/act_obj.h"
@@ -57,6 +52,10 @@
 
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
+#endif
+
+#ifndef DEC_HASH_H
+#include "h/hash.h"
 #endif
 
 #ifndef DEC_LUASCRIPT_H
@@ -2260,7 +2259,7 @@ void save_corpses(  )
    FILE *fp;
    char corpse_file_name[MAX_STRING_LENGTH];
    OBJ_DATA *this_corpse;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    snprintf( corpse_file_name, MSL, "%s", CORPSE_FILE );
 
@@ -2289,8 +2288,8 @@ void save_marks( void )
  FILE *fp;
  MARK_DATA *mk = NULL;
  ROOM_INDEX_DATA *room = NULL;
- std::list<ROOM_INDEX_DATA *>::iterator ri;
- std::list<MARK_DATA *>::iterator mi;
+ list<ROOM_INDEX_DATA *>::iterator ri;
+ list<MARK_DATA *>::iterator mi;
 
  if( booting_up )
   return;
@@ -2331,7 +2330,7 @@ void save_bans(  )
    FILE *fp;
    char ban_file_name[MAX_STRING_LENGTH];
    BAN_DATA *pban;
-   std::list<BAN_DATA *>::iterator li;
+   list<BAN_DATA *>::iterator li;
 
    snprintf( ban_file_name, MSL, "%s", BANS_FILE );
 

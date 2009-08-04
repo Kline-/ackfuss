@@ -32,12 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_CLAN_H
 #include "h/act_clan.h"
@@ -280,7 +275,7 @@ char *get_diplo_name( short value )
 DO_FUN(do_politics)
 {
    short x, y;
-   std::string str;
+   string str;
 
    if( IS_NPC( ch ) )
    {

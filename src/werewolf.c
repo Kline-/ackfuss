@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -569,7 +565,7 @@ bool spell_wolf_mark( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 
 void do_scent( CHAR_DATA * ch, char *argument )
 {
-   std::list<MARK_DATA *>::iterator li;
+   list<MARK_DATA *>::iterator li;
    MARK_DATA *mk = NULL;
 
    if( IS_NPC( ch ) || ( !IS_WOLF( ch ) ) )

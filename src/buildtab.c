@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "globals.h"
+#include "h/globals.h"
 
 /* The tables in here are:
      Mob act flags       :    tab_mob_act         : bitset
@@ -53,7 +49,6 @@
      Sector types        :    tab_sector_types    : number
      Door types          :    tab_door_types      : bitset
      Door states         :    tab_door_states     : number
-     
 */
 
 
@@ -1261,7 +1256,7 @@ char *show_values( LOOKUP_TYPE *table, unsigned long int value, bool fBit )
    return ( buf );
 }
 
-char *bs_show_values( LOOKUP_TYPE *table, std::bitset<MAX_BITSET> &bit )
+char *bs_show_values( LOOKUP_TYPE *table, bitset<MAX_BITSET> &bit )
 {
 
    char tmp[MAX_STRING_LENGTH];

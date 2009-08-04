@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -207,7 +203,7 @@ void do_get( CHAR_DATA * ch, char *argument )
    {
       char name[MSL];
       CHAR_DATA *gch;
-      std::list<CHAR_DATA *>::iterator li;
+      list<CHAR_DATA *>::iterator li;
       char *pd;
       if( IS_NPC( ch ) )
       {
@@ -2620,7 +2616,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
 void check_guards( CHAR_DATA * ch )
 {
    CHAR_DATA *guard;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
@@ -3842,7 +3838,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
       if( auction_item != NULL )
       {
          CHAR_DATA *ach;
-         std::list<CHAR_DATA *>::iterator li;
+         list<CHAR_DATA *>::iterator li;
          bool good_seller = FALSE;
          bool good_buyer = FALSE;
          for( li = char_list.begin(); li != char_list.end(); li++ )

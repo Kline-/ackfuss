@@ -30,22 +30,18 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-#include <bitset>
-#include "h/lua.hpp"
+
+using namespace std;
 
 #define DEC_ACK_H
 
 #ifndef DEC_CONFIG_H
-#include "h/config.h"
-#endif
-
-#ifndef DEC_GLOBALS_H
-#include "globals.h"
+#include "config.h"
 #endif
 
 #ifdef IMC
 #ifndef DEC_IMC_H
-#include "h/imc.h"
+#include "imc.h"
 #endif
 #endif
 
@@ -54,19 +50,19 @@
 #endif
 
 #ifndef DEC_MQUEST_H
-#include "h/mquest.h"
+#include "mquest.h"
 #endif
 
 #ifndef DEC_STRFUNS_H
-#include "h/strfuns.h"
+#include "strfuns.h"
 #endif
 
 #ifndef DEC_TYPEDEFS_H
-#include "h/typedefs.h"
+#include "typedefs.h"
 #endif
 
 #ifndef DEC_UTILS_H
-#include "h/utils.h"
+#include "utils.h"
 #endif
 
 struct DeleteObject
@@ -513,7 +509,7 @@ class mob_index_data
  public:
   mob_index_data();
   ~mob_index_data();
-  std::bitset<MAX_BITSET> act;
+  bitset<MAX_BITSET> act;
   short ac_mod;
   int affected_by;
   short alignment;
@@ -546,7 +542,6 @@ class mob_index_data
   float speed[MAX_SPEED];
   int strong_magic;
   int suscept;
-  char *target;
   int vnum;
   int weak_magic;
 };
@@ -564,7 +559,7 @@ class char_data
   void set_cooldown( const char *skill );
   void set_cooldown( int pos, float duration );
 
-  std::bitset<MAX_BITSET> act;
+  bitset<MAX_BITSET> act;
   int act_build; /* for setting what ya editing */
   int adept_level;
   int affected_by;
@@ -580,7 +575,7 @@ class char_data
   float cooldown[MAX_COOLDOWN];
   BRAND_DATA *current_brand;
   short damroll;
-  std::bitset<MAX_BITSET> deaf;
+  bitset<MAX_BITSET> deaf;
   short death_cnt;
   DESCRIPTOR_DATA *desc;
   char *description;
@@ -660,7 +655,7 @@ class char_data
   short stance_hr_mod;
   short stun_timer;
   bool switched; /* = not isnull(descriptor->original) */
-  char *target;  /* last ch to attack */
+  string target;  /* For Hunting and ACT_REMEMBER */
   short timer;
   short trust;
   bool using_named_door;
@@ -736,7 +731,7 @@ class pc_data
   short mod_int;
   short mod_str;
   short mod_wis;
-  std::bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
+  bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
   int move_from_gain;
   short movement; /* Quick movement */
   short order[MAX_CLASS];   /* Class Order */
@@ -812,7 +807,7 @@ class obj_index_data
   ~obj_index_data();
    AREA_DATA *area;
    short durability;
-   std::bitset<MAX_BITSET> extra_flags;
+   bitset<MAX_BITSET> extra_flags;
    AFFECT_DATA *first_apply;
    EXTRA_DESCR_DATA *first_exdesc;
    TRIGGER_DATA *first_trigger;
@@ -834,7 +829,7 @@ class obj_index_data
    float speed;
    int value[MAX_OBJ_VALUE];
    int vnum;
-   std::bitset<MAX_BITSET> wear_flags;
+   bitset<MAX_BITSET> wear_flags;
    short weight;
 };
 
@@ -874,8 +869,8 @@ class obj_data
    char *short_descr;
    char *long_descr;
    int item_type;
-   std::bitset<MAX_BITSET> extra_flags;
-   std::bitset<MAX_BITSET> wear_flags;
+   bitset<MAX_BITSET> extra_flags;
+   bitset<MAX_BITSET> wear_flags;
    int item_apply;
    int wear_loc;
    short weight;
@@ -900,7 +895,7 @@ class exit_data
   exit_data();
   ~exit_data();
   char *description;
-  std::bitset<MAX_BITSET> exit_info;
+  bitset<MAX_BITSET> exit_info;
   bool is_free;
   short key;
   char *keyword;
@@ -977,7 +972,7 @@ class area_data
   char                    *can_read;
   char                    *can_write;
   char                    *filename;
-  std::bitset<MAX_BITSET> flags;
+  bitset<MAX_BITSET> flags;
   BUILD_DATA_LIST         *first_area_mobile;
   BUILD_DATA_LIST         *first_area_object;
   BUILD_DATA_LIST         *first_area_room;
@@ -998,7 +993,7 @@ class area_data
   int                     min_vnum;
   char                    *name;
   char                    *owner;
-  std::list<CHAR_DATA *>  player_list;
+  list<CHAR_DATA *>  player_list;
   char                    *reset_msg;
   short                   reset_rate;
 };
@@ -1029,10 +1024,10 @@ class room_index_data
    BUILD_DATA_LIST         *last_room_reset;
    short                   light;
    LUA_DATA                *lua;
-   std::list<MARK_DATA *>  mark_list;
+   list<MARK_DATA *>  mark_list;
    char                    *name;
    ROOM_INDEX_DATA         *next;
-   std::bitset<MAX_BITSET> room_flags;
+   bitset<MAX_BITSET> room_flags;
    char                    *script_name;
    short                   sector_type;
    MONEY_TYPE              *treasure;

@@ -6,18 +6,14 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_DB_H
 #include "h/db.h"
 #endif
 
 #ifndef DEC_HASH_H
-#include "hash.h"
+#include "h/hash.h"
 #endif
 
 #ifndef DEC_LUASCRIPT_H
@@ -246,7 +242,6 @@ char_data::char_data()
  stance_hr_mod = 0;
  stun_timer = 0;
  switched = false;
- target = &str_empty[0];
  timer = 0;
  trust = 0;
  using_named_door = false;
@@ -397,7 +392,6 @@ mob_index_data::mob_index_data()
   speed[i] = 0;
  strong_magic = 0;
  suscept = 0;
- target = &str_empty[0];
  vnum = 0;
  weak_magic = 0;
 

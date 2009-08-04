@@ -7,7 +7,7 @@
  ***************************************************************************/
 /* Telopt handling by Igor van den Hoven (Scandum)                         */
 
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_COMM_H
 #include "h/comm.h"

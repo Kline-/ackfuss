@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -765,6 +761,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
    ROOM_AFFECT_DATA *raf;
    ROOM_AFFECT_DATA *raf_next;
    AFFECT_DATA af;
+
    if( pRoomIndex == NULL )
    {
       char buf[MAX_STRING_LENGTH];
@@ -779,7 +776,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
 
    if( ch->lua && !ch->lua->loaded )     // Fire scripts on first movement to a room.
    {                                     // Scripts should set their own recurring functions after this. --Kline
-    std::string script = IS_NPC(ch) ? SCRIPT_DIR : PLAYER_DIR;
+    string script = IS_NPC(ch) ? SCRIPT_DIR : PLAYER_DIR;
     if( !IS_NPC(ch) ) { script += LOWER(ch->name[0]); script += "/"; }
     script += IS_NPC(ch) ? ch->npcdata->pIndexData->script_name : ch->name;
     if( !IS_NPC(ch) ) { script += ".lua"; }
@@ -788,8 +785,8 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
    }
    if( pRoomIndex->lua )
    {
-    std::string str = "room_enter";
-    std::string arg;
+    string str = "room_enter";
+    string arg;
     call_lua(pRoomIndex,str,arg);
    }
 
@@ -1491,7 +1488,7 @@ void obj_from_obj( OBJ_DATA * obj )
  */
 void extract_obj( OBJ_DATA * obj )
 {
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    CHAR_DATA *wch;
    OBJ_DATA *obj_content;
    ROOM_INDEX_DATA *drop_room = NULL;
@@ -1587,7 +1584,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    OBJ_DATA *this_object;
    ROOM_INDEX_DATA *room;
    ROOM_AFFECT_DATA *raf;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    if( ch->in_room == NULL )
    {
@@ -1678,10 +1675,13 @@ void extract_char( CHAR_DATA * ch, bool fPull )
          do_return(wch,"");
          wch->old_body = NULL;
       }
-      if( !str_cmp( wch->target, ch->name ) )
+      if( wch->target.find(ch->name) != string::npos )
       {
-         free_string( wch->target );
-         wch->target = NULL;  /* spec- fix the evil nasty duplicate frees */
+         int first = 0, last = 0;
+
+         first = static_cast<int>(wch->target.find(ch->name));
+         last = (strlen(ch->name) + 1);
+         wch->target.erase(first,last);
       }
       if( wch->riding == ch )
       {
@@ -1859,7 +1859,7 @@ CHAR_DATA *get_char_world( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *wch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int number;
    int count;
 
@@ -1884,7 +1884,7 @@ CHAR_DATA *get_char_area( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *ach;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int number;
    int count;
 
@@ -1922,7 +1922,7 @@ CHAR_DATA *get_char( CHAR_DATA * ch )
 OBJ_DATA *get_obj_type( OBJ_INDEX_DATA * pObjIndex )
 {
    OBJ_DATA *obj;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
@@ -2069,7 +2069,7 @@ OBJ_DATA *get_obj_world( CHAR_DATA * ch, char *argument )
    OBJ_DATA *obj;
    int number;
    int count;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    if( ( obj = get_obj_here( ch, argument ) ) != NULL )
       return obj;

@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -1204,7 +1200,7 @@ bool spell_burning_hands( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
 bool spell_call_lightning( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *vch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int dam;
 
    if( !IS_OUTSIDE( ch ) )
@@ -2090,7 +2086,7 @@ bool spell_dispel_evil( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
 bool spell_earthquake( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *vch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    if( obj == NULL )
    {
@@ -2768,7 +2764,7 @@ bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    OBJ_DATA *ob;
    OBJ_DATA *in_obj;
    bool found;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    found = FALSE;
    for( li = obj_list.begin(); li != obj_list.end(); li++ )
@@ -3800,7 +3796,7 @@ bool spell_mindflame( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
     * Psi Multiple Attack - screws up all those affected 
     */
    CHAR_DATA *vch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    if( obj == NULL )
    {
@@ -3993,7 +3989,7 @@ bool spell_mind_bolt( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 bool spell_nerve_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 {
    CHAR_DATA *vch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    if( obj == NULL )
    {
@@ -4230,7 +4226,7 @@ bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    OBJ_DATA *ob;
    OBJ_DATA *in_obj;
    bool found;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    found = FALSE;
    for( li = obj_list.begin(); li != obj_list.end(); li++ )
@@ -6645,7 +6641,7 @@ bool spell_retri_strike( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
 {
    CHAR_DATA *vch;
    OBJ_DATA *staff_obj = NULL;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    if( ( staff_obj = get_eq_char( ch, WEAR_HOLD_HAND_R ) ) == NULL )
       if( ( staff_obj = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) == NULL )
@@ -7204,7 +7200,7 @@ bool spell_redemption( int sn, int level, CHAR_DATA *ch, void *vo, OBJ_DATA *obj
 
 void cast_update( void )
 {
- std::list<CHAR_DATA *>::iterator li;
+ list<CHAR_DATA *>::iterator li;
  CHAR_DATA *ch;
 
  li = cast_list.begin();

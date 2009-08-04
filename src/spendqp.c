@@ -32,14 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <ctype.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -545,7 +538,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
       {
          OBJ_DATA *obj;
          bool found = FALSE;
-         std::list<OBJ_DATA *>::iterator li;
+         list<OBJ_DATA *>::iterator li;
 
          for( li = obj_list.begin(); li != obj_list.end(); li++ )
          {

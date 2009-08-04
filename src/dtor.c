@@ -6,12 +6,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <algorithm>
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -30,7 +25,7 @@
 #endif
 
 #ifndef DEC_HASH_H
-#include "hash.h"
+#include "h/hash.h"
 #endif
 
 #ifndef DEC_MONEY_H
@@ -116,7 +111,6 @@ char_data::~char_data()
  free_string(prompt);
  free_string(old_prompt);
  free_string(searching);
- free_string(target);
 
  #ifdef IMC
   imc_freechardata(this);
@@ -138,6 +132,8 @@ char_data::~char_data()
  delete money;
  delete bank_money;
  delete casting;
+
+ aggro_list.remove(this);
 }
 
 descriptor_data::~descriptor_data()
@@ -215,7 +211,6 @@ mob_index_data::~mob_index_data()
  free_string(player_name);
  free_string(script_name);
  free_string(short_descr);
- free_string(target);
 }
 
 money_type::~money_type()

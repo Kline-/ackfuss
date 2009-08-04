@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include <math.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -593,7 +589,7 @@ void mob_is_standing( CHAR_DATA * ch )
    short dir;
    CHAR_DATA *vch;
    CHAR_DATA *tch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    bool ready = TRUE;
    bool prey_still_exist = FALSE;
    int number_got_up = 0;
@@ -942,7 +938,7 @@ void select_target( CHAR_DATA * ch )
 //   int        tmp   = 0;
    CHAR_DATA *vch;
    CHAR_DATA *victim = NULL;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    int force_index = 0;
    bool alone = TRUE;

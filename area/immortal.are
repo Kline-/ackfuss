@@ -15,192 +15,201 @@ VnumRange 301 400
 End
 
 #ROOM
-Vnum  301
-Desc  Colors and shapes rapidly swirl around this room as the ether tries to take form, yet can't. Everything imaginable seems to exist here, yet is always out of phase with reality. Is there anything truly here? Or is there nothing...?~
-Flags 3 4 17 18 EOL
-Name  The Void~
-Sect  11
+Vnum       301
+Desc       Colors and shapes rapidly swirl around this room as the ether tries to take form, yet can't. Everything imaginable seems to exist here, yet is always out of phase with reality. Is there anything truly here? Or is there nothing...?~
+Flags      3 4 17 18 EOL
+Name       The Void~
+ScriptName ~
+Sect       11
 End
 
 #ROOM
-Vnum  302
-Desc  You stand in the hub of the Halls of Immortals. From here the rest of the structure branches outward. There are various monitoring stations around the room displaying vital statistics about the world and its populace~
-Flags 3 EOL
-Name  The Hub~
-Sect  11
+Vnum       302
+Desc       You stand in the hub of the Halls of Immortals. From here the rest of the structure branches outward. There are various monitoring stations around the room displaying vital statistics about the world and its populace~
+Flags      3 EOL
+Name       The Hub~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    305
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       305
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    308
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       308
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    307
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       307
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    306
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       306
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    304
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       304
 End
 #DOOR
-Dir     5
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    303
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       303
 End
 
 #ROOM
-Vnum  303
-Desc  The Bank of Eternity transcends all time. There is but a single teller to serve your needs, yet the vault stretches on as far as the eye can see. This is the central bank of the world, though which all other banking transactions pass.~
-Flags 4 EOL
-Name  Bank of Eternity~
-Sect  11
+Vnum       303
+Desc       The Bank of Eternity transcends all time. There is but a single teller to serve your needs, yet the vault stretches on as far as the eye can see. This is the central bank of the world, though which all other banking transactions pass.~
+Flags      4 EOL
+Name       Bank of Eternity~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    302
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       302
 End
 
 #ROOM
-Vnum  304
-Desc  The Apex serves as an office for Kline. It is sparsely decorated save from two small dolls, and a handful of windows looking out into key areas of the world.~
-Flags 4 EOL
-Name  The Apex~
-Sect  11
+Vnum       304
+Desc       The Apex serves as an office for Kline. It is sparsely decorated save from two small dolls, and a handful of windows looking out into key areas of the world.~
+Flags      4 EOL
+Name       The Apex~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     5
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    302
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       302
 End
 
 #ROOM
-Vnum  305
-Desc  This hallway seems empty and unfinished. Perhaps it's the perfect place for expansion?~
-Flags EOL
-Name  An Empty Hallway~
-Sect  11
+Vnum       305
+Desc       This hallway seems empty and unfinished. Perhaps it's the perfect place for expansion?~
+Flags      EOL
+Name       An Empty Hallway~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    302
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       302
 End
 
 #ROOM
-Vnum  306
-Desc  This hallway seems empty and unfinished. Perhaps it's the perfect place for expansion?~
-Flags EOL
-Name  An Empty Hallway~
-Sect  11
+Vnum       306
+Desc       This hallway seems empty and unfinished. Perhaps it's the perfect place for expansion?~
+Flags      EOL
+Name       An Empty Hallway~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    302
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       302
 End
 
 #ROOM
-Vnum  307
-Desc  The room is constantly shifting and changing shape! Different rooms from around the realm coalesce and vanish before your eyes in rapid succession! One thing remains constant, though, a large board in the center of the room plastered with various sticky notes and scribbles seemingly stands defiant to all the chaos swirling around it.~
-Flags EOL
-Name  Identity Crisis~
-Sect  11
+Vnum       307
+Desc       The room is constantly shifting and changing shape! Different rooms from around the realm coalesce and vanish before your eyes in rapid succession! One thing remains constant, though, a large board in the center of the room plastered with various sticky notes and scribbles seemingly stands defiant to all the chaos swirling around it.~
+Flags      EOL
+Name       Identity Crisis~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    302
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       302
 End
 
 #ROOM
-Vnum  308
-Desc  This hallway seems empty and unfinished. Perhaps it's the perfect place for expansion?~
-Flags EOL
-Name  An Empty Hallway~
-Sect  11
+Vnum       308
+Desc       This hallway seems empty and unfinished. Perhaps it's the perfect place for expansion?~
+Flags      EOL
+Name       An Empty Hallway~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    302
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       302
 End
 
 #MOBILE
 Vnum      301
 AcMod     0
 Act       2 16 EOL
-Affected  524860
-Alignment 0
-Cast      0
-Clan      0
-Class     1
-Def       0
-Desc      ~
-DrMod     0
-HrMod     0
-Level     120
-LongDesc  The @@WEt@@ahe@@lre@@cal @@lBa@@ank@@Wer@@N floats here, phasing in and out of existence.~
-PlrName   eternal ethereal banker~
-Position  0
-Race      17
-RaceMods  0
-Resist    0
-Sex       2
-ShortDesc @@WEt@@ahe@@lre@@cal @@lBa@@ank@@Wer@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   524860
+Alignment  0
+Cast       0
+Clan       0
+Class      1
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      120
+LongDesc   The @@WEt@@ahe@@lre@@cal @@lBa@@ank@@Wer@@N floats here, phasing in and out of existence.~
+PlrName    eternal ethereal banker~
+Position   0
+Race       17
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        2
+ShortDesc  @@WEt@@ahe@@lre@@cal @@lBa@@ank@@Wer@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #OBJECT
@@ -212,6 +221,7 @@ Level      1
 LongDesc   The board of ages is here, exploding with knowledge!~
 Name       immortal board~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  the Board of Ages~
 Speed      4.00
 Type       27
@@ -229,6 +239,7 @@ Level      1
 LongDesc   A @@ytoy @@b"@@WHunter@@b" @@Ndoll sits here.~
 Name       toy doll hunter~
 ObjFun     objfun_giggle
+ScriptName ~
 ShortDesc  a @@ytoy @@b"@@WHunter@@b" @@Ndoll~
 Speed      2.43
 Type       8
@@ -258,6 +269,7 @@ Level      1
 LongDesc   A @@ytoy @@b"@@WHannah@@b" @@Ndoll sits here.~
 Name       toy doll hannah~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@ytoy @@b"@@WHannah@@b" @@Ndoll~
 Speed      2.00
 Type       8
@@ -287,6 +299,7 @@ Level      1
 LongDesc   a @@bmonitor @@Nlabeled @@y"@@bLimbo@@y"@@N glows brightly.~
 Name       monitor limbo~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@bmonitor @@Nlabeled @@y"@@bLimbo@@y"@@N~
 Speed      4.00
 Type       7
@@ -304,6 +317,7 @@ Level      1
 LongDesc   a @@Rmonitor @@Nlabeled @@e"@@RJail@@e"@@N glows brightly.~
 Name       monitor jail~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@Rmonitor @@Nlabeled @@e"@@RJail@@e"@@N~
 Speed      2.30
 Type       7
@@ -321,6 +335,7 @@ Level      1
 LongDesc   a @@cmonitor @@Nlabeled @@a"@@cBody Storage@@a"@@N glows brightly.~
 Name       monitor body storage~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@cmonitor @@Nlabeled @@a"@@cBody Storage@@a"@@N~
 Speed      4.00
 Type       7
@@ -338,6 +353,7 @@ Level      1
 LongDesc   The builder board stands defiant amongst the chaos!~
 Name       builder board~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  the Builder Board~
 Speed      1.34
 Type       1
@@ -345,16 +361,48 @@ Values     0 81 81 307 0 0 0 0 0 0
 WearFlags  EOL
 Weight     1
 End
+
+#OBJECT
+Vnum       308
+Durability 87
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   A @@ytoy @@b"@@WZayne@@b" @@Ndoll sits here.~
+Name       toy doll zayne~
+ObjFun     objfun_giggle
+ScriptName ~
+ShortDesc  a @@ytoy @@b"@@WZayne@@b" @@Ndoll~
+Speed      2.43
+Type       8
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OEXTRA
+Desc       The doll is an exact replica of Kline's son, Zayne. The features are so lifelike it's almost scary...~
+Keyword    zayne~
+End
+#OEXTRA
+Desc       The doll is an exact replica of Kline's son, Zayne. The features are so lifelike it's almost scary...~
+Keyword    toy~
+End
+#OEXTRA
+Desc       The doll is an exact replica of Kline's son, Zayne. The features are so lifelike it's almost scary...~
+Keyword    doll~
+End
 #RESETS
 O 301 1 302 
 
 M 301 1 303 
 
-O 302 1 304 
-
 O 303 1 304 
 
-O 304 1 304 
+O 302 1 304 
+
+O 308 1 304 
+
+O 304 1 304
 
 O 305 1 304 
 

@@ -69,5 +69,7 @@ void do_disguise P_((CHAR_DATA *ch, char *argument));
 void do_stance P_((CHAR_DATA *ch, char *argument));
 void resurrect P_((CHAR_DATA *ch));
 void cooldown_update P_((void));
+void aggro_attack P_((CHAR_DATA *mob, CHAR_DATA *player));
+void remember_attack P_((CHAR_DATA *mob, CHAR_DATA *player));
 
 #undef P_

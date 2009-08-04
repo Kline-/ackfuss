@@ -32,13 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <sys/types.h>
-#include <sys/time.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_COMM_H
 #include "h/comm.h"
@@ -151,7 +145,6 @@ static void walk_mob_index_data( MOB_INDEX_DATA * m )
    touch( m->short_descr );
    touch( m->long_descr );
    touch( m->description );
-   touch( m->target );
 
 }
 
@@ -292,7 +285,6 @@ static void walk_char_data( CHAR_DATA * ch )
    touch( ch->prompt );
    touch( ch->old_prompt );
    touch( ch->searching );
-   touch( ch->target );
 }
 
 static void walk_extra_descr_data( EXTRA_DESCR_DATA * ed )
@@ -397,7 +389,7 @@ static void walk_room_index_data( ROOM_INDEX_DATA * r )
 {
    int i;
    EXTRA_DESCR_DATA *ed;
-   std::list<MARK_DATA *>::iterator li;
+   list<MARK_DATA *>::iterator li;
 /*  BUILD_DATA_LIST *reset;  */
    if( !r )
       return;
@@ -459,7 +451,7 @@ static void walk_socials( void )
 static void walk_chars( void )
 {
    CHAR_DATA *ch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
@@ -479,7 +471,7 @@ static void walk_descriptors( void )
 static void walk_objects( void )
 {
    OBJ_DATA *o;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    for( li = obj_list.begin(); li != obj_list.end(); li++ )
    {
@@ -491,7 +483,7 @@ static void walk_objects( void )
 static void walk_areas( void )
 {
    AREA_DATA *ad;
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
 
    for( li = area_list.begin(); li != area_list.end(); li++ )
    {
@@ -504,7 +496,7 @@ static void walk_areas( void )
 static void walk_rulers( void )
 {
    RULER_DATA *r;
-   std::list<RULER_DATA *>::iterator li;
+   list<RULER_DATA *>::iterator li;
 
    for( li = ruler_list.begin(); li != ruler_list.end(); li++ )
    {
@@ -547,7 +539,7 @@ static void walk_room_indexes( void )
 static void walk_notes( void )
 {
  NOTE_DATA *n;
- std::list<NOTE_DATA *>::iterator li;
+ list<NOTE_DATA *>::iterator li;
 
  for( li = note_list.begin(); li != note_list.end(); li++ )
  {
@@ -559,7 +551,7 @@ static void walk_notes( void )
 static void walk_bans( void )
 {
    BAN_DATA *b;
-   std::list<BAN_DATA *>::iterator li;
+   list<BAN_DATA *>::iterator li;
 
    for( li = ban_list.begin(); li != ban_list.end(); li++ )
    {
@@ -586,7 +578,7 @@ void walk_messages( MESSAGE_DATA * m )
 void walk_boards( void )
 {
    BOARD_DATA *board;
-   std::list<BOARD_DATA *>::iterator li;
+   list<BOARD_DATA *>::iterator li;
 
    for( li = board_list.begin(); li != board_list.end(); li++ )
    {

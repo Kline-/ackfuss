@@ -8,17 +8,6 @@
  * License terms are available in the imc2freedom.license file.
  */
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <unistd.h>
-#include <sys/time.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <sys/file.h>
-#include <time.h>
 #ifdef WIN32
 #include <io.h>
 #undef EINTR
@@ -30,14 +19,8 @@
 #define MAXHOSTNAMELEN 32
 #else
 #include <fnmatch.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <netdb.h>
 #endif
-#if defined(__OpenBSD__) || defined(__FreeBSD__)
-#include <sys/types.h>
-#endif
+
 #ifdef IMCSTANDALONE
 #ifndef DEC_IMC_H
    #include "h/imc.h"
@@ -48,7 +31,7 @@
 #endif
 
 #if defined(IMCACK)
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"

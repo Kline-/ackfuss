@@ -32,12 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_CLAN_H
 #include "h/act_clan.h"
@@ -1340,7 +1335,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
 bool check_disabled( const struct cmd_type *command )
 {
  DISABLED_DATA *p;
- std::list<DISABLED_DATA *>::iterator li;
+ list<DISABLED_DATA *>::iterator li;
 
  for( li = disabled_list.begin(); li != disabled_list.end(); li++ )
  {

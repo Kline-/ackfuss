@@ -58,15 +58,7 @@
  *  Removed ROM 2.4 modifications as Envy doesnt need *fread_string_eol -Kahn *
  ******************************************************************************/
 
-#include <sys/types.h>
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
-#include <signal.h>
-#include <memory.h>
+#include "h/globals.h"
 
 #ifndef DEC_DB_H
 #include "h/db.h"

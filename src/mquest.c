@@ -10,12 +10,7 @@
  * Original mquest code kindly donated by Abel@StormHunters. Thanks!
  */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -226,7 +221,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
   }
   else if( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R || ch->pcdata->quest_info->quest_type == QUEST_KILLING_R )
   {
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
     mob = *li;
@@ -561,7 +556,7 @@ void mquest_info( CHAR_DATA *ch )
     if( ch->pcdata->quest_info->amount[0] > 0 )
     {
      CHAR_DATA *mob = NULL;
-     std::list<CHAR_DATA *>::iterator li;
+     list<CHAR_DATA *>::iterator li;
      snprintf(buf,MSL,"Your quest contract states that you must slay %d more of them.\r\n",ch->pcdata->quest_info->amount[0]);
      send_to_char(buf,ch);
      for( li = char_list.begin(); li != char_list.end(); li++ )
@@ -594,7 +589,7 @@ void mquest_info( CHAR_DATA *ch )
     if( ch->pcdata->quest_info->quest_mob_vnum[i] > -1 )
     {
      CHAR_DATA *mob = NULL;
-     std::list<CHAR_DATA *>::iterator li;
+     list<CHAR_DATA *>::iterator li;
      for( li = char_list.begin(); li != char_list.end(); li++ )
      {
       mob = *li;
@@ -940,7 +935,7 @@ void generate_killing_quest( CHAR_DATA *ch )
 CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
 {
  CHAR_DATA *mob = NULL;
- std::list<CHAR_DATA *>::iterator li;
+ list<CHAR_DATA *>::iterator li;
  int i = number_range(0,mob_index_list.size()-1);
 
  for( li = char_list.begin(); li != char_list.end(); li++ )
@@ -1058,7 +1053,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
 {
  OBJ_DATA *obj = NULL;
  int i = number_range(0,obj_index_list.size()-1);
- std::list<OBJ_DATA *>::iterator li;
+ list<OBJ_DATA *>::iterator li;
 
  for( li = obj_list.begin(); li != obj_list.end(); li++ )
  {

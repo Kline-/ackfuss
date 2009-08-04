@@ -31,10 +31,12 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
+#include "includes.h"
+
 #define DEC_GLOBALS_H
 
 #ifndef DEC_TYPEDEFS_H
-#include "h/typedefs.h"
+#include "typedefs.h"
 #endif
 
 #ifndef DEC_ACK_H

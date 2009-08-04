@@ -32,20 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <ctype.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <signal.h>
-#include <stdarg.h>
-
-#ifndef  DEC_ACK_H
-#include "ack.h"
-#endif
+#include "h/globals.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -1380,7 +1367,7 @@ const char *affect_bit_name( int vector )
 /*
  * Return ascii name of exit flags bitset.
  */
-const char *exit_bit_name( std::bitset<MAX_BITSET> &exit_flags )
+const char *exit_bit_name( bitset<MAX_BITSET> &exit_flags )
 {
    static char buf[MSL];
 
@@ -1410,7 +1397,7 @@ const char *exit_bit_name( std::bitset<MAX_BITSET> &exit_flags )
 /*
  * Return ascii name of extra flags bitset.
  */
-const char *extra_bit_name( std::bitset<MAX_BITSET> &extra_flags )
+const char *extra_bit_name( bitset<MAX_BITSET> &extra_flags )
 {
    static char buf[MSL];
 
@@ -1478,7 +1465,7 @@ const char *extra_bit_name( std::bitset<MAX_BITSET> &extra_flags )
 /*
  * Return ascii name of wear flags bitset.
  */
-const char *wear_bit_name( std::bitset<MAX_BITSET> &wear_flags )
+const char *wear_bit_name( bitset<MAX_BITSET> &wear_flags )
 {
    static char buf[MSL];
 

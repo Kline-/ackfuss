@@ -6,6 +6,8 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
+#include <cstdlib>
+
 #define DEC_SHA256_H
 
 /*-
@@ -38,8 +40,6 @@
 
 #ifndef _SHA256_H_
 #define _SHA256_H_
-
-#include <sys/types.h>
 
 typedef struct SHA256Context
 {

@@ -32,15 +32,8 @@
  * SUCH DAMAGE.
  */
 
-#include <stdio.h>
-#include <string.h>
-#include <sys/cdefs.h>
-#include <sys/param.h>
-#if defined(__FreeBSD__)
-#include <sys/endian.h>
-#else
-#include <endian.h>
-#endif
+#include "h/globals.h"
+
 #ifndef DEC_SHA256_H
 #include "h/sha256.h"
 #endif

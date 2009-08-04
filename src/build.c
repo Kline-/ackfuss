@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"
@@ -1963,10 +1959,10 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       send_to_char( "                         key <vnum> [onesided]\r\n", ch );
       send_to_char( "                         type <ascii-type> [onesided]\r\n", ch );
       send_to_char( "                         clear [onesided]\r\n", ch );
-      send_to_char( "      extra <keyword> <string>\r\n", ch );
+      send_to_char( "      ed <keyword> <string>\r\n", ch );
       send_to_char( "String being one of:\r\n", ch );
       send_to_char( "      name desc script\r\n", ch );
-      send_to_char( "Use [set] extra - to clear extra keyword\r\n", ch );
+      send_to_char( "Use [set] ed - to clear extra keyword\r\n", ch );
       send_to_char( "Use [set] script - to clear script\r\n", ch );
       return;
    }
@@ -2033,7 +2029,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !str_cmp( arg1, "extra" ) )
+   if( !str_cmp( arg1, "ed" ) )
    {
 
       EXTRA_DESCR_DATA *ed;
@@ -2847,12 +2843,12 @@ void build_setobject( CHAR_DATA * ch, char *argument )
       int found;
 
       argument = one_argument( argument, arg3 );
-      if( argument == NULL )
-      {
-         send_to_char( "Syntax: setobject <object> ed [-]<keyword> <string>\r\n", ch );
-         return;
-      }
 
+      if( strlen(argument) < 1 || strlen(arg3) < 1 )
+      {
+        send_to_char("Extra descrs must have a keyword and description.\r\n",ch );
+        return;
+      }
       if( arg3[0] == '-' )
       {
          /*
@@ -4231,7 +4227,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
    OBJ_INDEX_DATA *pObjIndex;
    AREA_DATA *pArea;
    BUILD_DATA_LIST *pList;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int vnum;
 
    smash_tilde( argument );
@@ -4420,7 +4416,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
    MOB_INDEX_DATA *pMobIndex;
    AREA_DATA *pArea;
    BUILD_DATA_LIST *pList;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int vnum;
 
    smash_tilde( argument );

@@ -32,17 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <ctype.h>
-#include <unistd.h>
-#include <fcntl.h>
-#if defined(__CYGWIN__)
-#include <crypt.h>
-#endif
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -124,7 +114,7 @@ extern int control;
 DO_FUN(do_transdm)
 {
    CHAR_DATA *wch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int room;
    char buf[MAX_STRING_LENGTH];
    ROOM_INDEX_DATA *location;
@@ -395,7 +385,7 @@ void do_echo( CHAR_DATA * ch, char *argument )
 
 void recho( ROOM_INDEX_DATA *room, const char *argument )
 {
- std::string str = argument;
+ string str = argument;
  DESCRIPTOR_DATA *d;
 
  str += "@@N";
@@ -411,7 +401,7 @@ void recho( ROOM_INDEX_DATA *room, const char *argument )
 
 void do_recho( CHAR_DATA * ch, char *argument )
 {
-   std::string str = argument;
+   string str = argument;
    str += "\r\n";
 
    if( argument[0] == '\0' )
@@ -550,7 +540,7 @@ void do_at( CHAR_DATA * ch, char *argument )
    ROOM_INDEX_DATA *location;
    ROOM_INDEX_DATA *original;
    CHAR_DATA *wch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    argument = one_argument( argument, arg );
 
@@ -1011,7 +1001,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    {
       snprintf( buf, MSL, "MODIFIERS: AC: %d.  Hitroll: %d.  Damroll: %d.\r\n", victim->npcdata->ac_mod, victim->npcdata->hr_mod, victim->npcdata->dr_mod );
       strncat( buf1, buf, MSL-1 );
-      snprintf( buf, MSL, "TARGET: %s\r\n", victim->target );
+      snprintf( buf, MSL, "TARGET: %s\r\n", victim->target.c_str() );
       strncat( buf1, buf, MSL-1 );
       snprintf( buf, MSL, "TIMER: %d\r\n", victim->extract_timer );
       strncat( buf1, buf, MSL-1 );
@@ -1467,7 +1457,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    bool found;
 
    one_argument( argument, arg );
@@ -1942,7 +1932,7 @@ void do_restore( CHAR_DATA * ch, char *argument )
        * then loop through all players and restore them 
        */
       CHAR_DATA *vch;
-      std::list<CHAR_DATA *>::iterator li;
+      list<CHAR_DATA *>::iterator li;
 
       for( li = char_list.begin(); li != char_list.end(); li++ )
       {
@@ -2335,7 +2325,7 @@ void do_ban( CHAR_DATA * ch, char *argument )
    char buf2[MSL];
 
    BAN_DATA *pban;
-   std::list<BAN_DATA *>::iterator li;
+   list<BAN_DATA *>::iterator li;
    buf[0] = '\0';
    buf2[0] = '\0';
 
@@ -2393,7 +2383,7 @@ void do_allow( CHAR_DATA * ch, char *argument )
 {
    char arg[MAX_INPUT_LENGTH];
    BAN_DATA *curr;
-   std::list<BAN_DATA *>::iterator li;
+   list<BAN_DATA *>::iterator li;
 
    one_argument( argument, arg );
 
@@ -2448,7 +2438,7 @@ void do_deathmatch( CHAR_DATA * ch, char *argument )
    if( deathmatch )
    {
       CHAR_DATA *vch;
-      std::list<CHAR_DATA *>::iterator li;
+      list<CHAR_DATA *>::iterator li;
 
       for( li = char_list.begin(); li != char_list.end(); li++ )
       {
@@ -3725,7 +3715,7 @@ void do_force( CHAR_DATA * ch, char *argument )
    char arg[MAX_INPUT_LENGTH];
    int trust;
    int cmd;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    argument = one_argument( argument, arg );
 
@@ -3973,7 +3963,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
    OBJ_DATA *in_obj;
    int obj_counter = 1;
    bool mailme = FALSE;
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    if( is_name( "mailme", argument ) )
       mailme = TRUE;
@@ -4077,7 +4067,7 @@ void do_mpcr( CHAR_DATA * ch, char *victim )
    OBJ_DATA *obj;
    bool found = FALSE;
    char arg[MAX_INPUT_LENGTH];
-   std::list<OBJ_DATA *>::iterator li;
+   list<OBJ_DATA *>::iterator li;
 
    one_argument( victim, arg );
 
@@ -4206,7 +4196,7 @@ void do_iscore( CHAR_DATA * ch, char *argument )
 
 void do_fights( CHAR_DATA * ch, char *argument )
 {
- std::list<CHAR_DATA *>::iterator li;
+ list<CHAR_DATA *>::iterator li;
  CHAR_DATA *vict = NULL;
  char buf[MAX_STRING_LENGTH];
 
@@ -4236,7 +4226,7 @@ void do_iwhere( CHAR_DATA * ch, char *argument )
     */
 
    CHAR_DATA *vch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    char buf2[MAX_STRING_LENGTH];
    int count = 0;
@@ -4830,7 +4820,7 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
     * Rewritten to suit new hunt functions.. :) -- Alty 
     */
    CHAR_DATA *lch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    char buf[MAX_STRING_LENGTH];
    bool found = FALSE;
 
@@ -5484,7 +5474,7 @@ void do_for( CHAR_DATA * ch, char *argument )
    bool fGods = FALSE, fMortals = FALSE, fMobs = FALSE, fEverywhere = FALSE, found;
    ROOM_INDEX_DATA *room, *old_room;
    CHAR_DATA *p;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    int i;
 
    disable_timer_abort = TRUE;
@@ -5776,7 +5766,7 @@ void do_owear( CHAR_DATA * ch, char *argument )
 
 void do_areasave( CHAR_DATA * ch, char *argument )
 {
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    AREA_DATA *pArea;
 
    for( li = area_list.begin(); li != area_list.end(); li++ )
@@ -5842,7 +5832,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
    snprintf( outbuf, MSL, "Resets for %s %d:\r\n", arg1, vnum );
    if( mworld )
    {
-      std::list<AREA_DATA *>::iterator li;
+      list<AREA_DATA *>::iterator li;
       AREA_DATA *pArea;
 
       pMob = get_mob_index( vnum );
@@ -5928,7 +5918,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
 void do_census( CHAR_DATA *ch, char *argument )
 {
  CHAR_DATA *vch;
- std::list<CHAR_DATA *>::iterator li;
+ list<CHAR_DATA *>::iterator li;
  char buf[MSL];
  int rcnt[MAX_RACE];
  int ccnt[MAX_CLASS];
@@ -6197,7 +6187,7 @@ void do_disable( CHAR_DATA *ch, char *argument )
 {
  short i;
  DISABLED_DATA *p = NULL;
- std::list<DISABLED_DATA *>::iterator li;
+ list<DISABLED_DATA *>::iterator li;
  char buf[MSL];
 
  if( IS_NPC(ch) )
@@ -6279,7 +6269,7 @@ void do_disable( CHAR_DATA *ch, char *argument )
 
 void do_lua( CHAR_DATA *ch, char *argument )
 {
- std::string str = SCRIPT_DIR;
+ string str = SCRIPT_DIR;
  str += argument;
  if( ch->lua->L )
  {
@@ -6296,7 +6286,7 @@ void do_olua( CHAR_DATA *ch, char *argument )
  char arg[MSL];
 
  argument = one_argument(argument,arg);
- std::string str = SCRIPT_DIR;
+ string str = SCRIPT_DIR;
  str += argument;
  OBJ_DATA *obj;
 
@@ -6316,7 +6306,7 @@ void do_olua( CHAR_DATA *ch, char *argument )
 
 void do_rlua( CHAR_DATA *ch, char *argument )
 {
- std::string str = SCRIPT_DIR;
+ string str = SCRIPT_DIR;
  str += argument;
  ROOM_INDEX_DATA *room = ch->in_room;
 
@@ -6335,7 +6325,6 @@ void do_rlua( CHAR_DATA *ch, char *argument )
 }
 
 /* Just debug stuff past here, will remove it later. --Kline */
-#include <algorithm>
 
 struct ShowObject
 {

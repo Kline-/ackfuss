@@ -7,7 +7,7 @@
  ***************************************************************************/
 /* Lua embedding inspired by Nick Gammon's work on Smaug                   */
 
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -146,7 +146,7 @@ void init_lua( ROOM_INDEX_DATA *room )
  return;
 }
 
-lua_State *find_lua_function( CHAR_DATA *ch, std::string arg )
+lua_State *find_lua_function( CHAR_DATA *ch, string arg )
 {
  lua_State *L = ch->lua->L;
   
@@ -167,7 +167,7 @@ lua_State *find_lua_function( CHAR_DATA *ch, std::string arg )
  return L;  
 }
 
-lua_State *find_lua_function( OBJ_DATA *ob, std::string arg )
+lua_State *find_lua_function( OBJ_DATA *ob, string arg )
 {
  lua_State *L = ob->lua->L;
 
@@ -188,7 +188,7 @@ lua_State *find_lua_function( OBJ_DATA *ob, std::string arg )
  return L;
 }
 
-lua_State *find_lua_function( ROOM_INDEX_DATA *rm, std::string arg )
+lua_State *find_lua_function( ROOM_INDEX_DATA *rm, string arg )
 {
  lua_State *L = rm->lua->L;
 
@@ -209,7 +209,7 @@ lua_State *find_lua_function( ROOM_INDEX_DATA *rm, std::string arg )
  return L;
 }
 
-void call_lua_function( lua_State *L, std::string str, const int nArgs )
+void call_lua_function( lua_State *L, string str, const int nArgs )
 {
  if( CallLuaWithTraceBack(L,nArgs,0) )
  {
@@ -292,7 +292,7 @@ ROOM_INDEX_DATA *L_getroom( lua_State *L )
  OBJ_DATA *ob;
  ROOM_INDEX_DATA *rm;
  LUA_DATA *lua;
- std::list<LUA_DATA *>::iterator li;
+ list<LUA_DATA *>::iterator li;
 
  for( li = lua_list.begin(); li != lua_list.end(); li++ )
  {
@@ -364,7 +364,7 @@ int L_character_info( lua_State *L )
 {
  CHAR_DATA *ch = NULL;
  bool found = false;
- std::list<LUA_DATA *>::iterator li;
+ list<LUA_DATA *>::iterator li;
  LUA_DATA *lua = NULL;
 
  for( li = lua_list.begin(); li != lua_list.end(); li++ )
@@ -392,7 +392,6 @@ int L_character_info( lua_State *L )
  PUSH_STR(ch,old_prompt);
  PUSH_STR(ch,prompt);
  PUSH_STR(ch,searching);
- PUSH_STR(ch,target);
 
  /* numbers */
  PUSH_NUM(ch,adept_level);
@@ -503,7 +502,7 @@ int L_obj_info( lua_State *L )
 {
  OBJ_DATA *ob = NULL;
  bool found = false;
- std::list<LUA_DATA *>::iterator li;
+ list<LUA_DATA *>::iterator li;
  LUA_DATA *lua = NULL;
 
  for( li = lua_list.begin(); li != lua_list.end(); li++ )
@@ -548,7 +547,7 @@ int L_room_info( lua_State *L )
 {
  ROOM_INDEX_DATA *rm = NULL;
  bool found = false;
- std::list<LUA_DATA *>::iterator li;
+ list<LUA_DATA *>::iterator li;
  LUA_DATA *lua = NULL;
 
  for( li = lua_list.begin(); li != lua_list.end(); li++ )
@@ -592,7 +591,7 @@ int L_recho( lua_State *L )
  return 0;
 }
 
-void call_lua( LUA_DATA *lua, std::string str, std::string arg )
+void call_lua( LUA_DATA *lua, string str, string arg )
 {
  if( lua )
  {
@@ -607,7 +606,7 @@ void call_lua( LUA_DATA *lua, std::string str, std::string arg )
  }
 }
 
-void call_lua( CHAR_DATA *ch, std::string str, std::string arg )
+void call_lua( CHAR_DATA *ch, string str, string arg )
 {
  int cnt = 0;
 
@@ -631,7 +630,7 @@ void call_lua( CHAR_DATA *ch, std::string str, std::string arg )
  return;
 }
 
-void call_lua( OBJ_DATA *ob, std::string str, std::string arg )
+void call_lua( OBJ_DATA *ob, string str, string arg )
 {
  int cnt = 0;
 
@@ -655,7 +654,7 @@ void call_lua( OBJ_DATA *ob, std::string str, std::string arg )
  return;
 }
 
-void call_lua( ROOM_INDEX_DATA *rm, std::string str, std::string arg )
+void call_lua( ROOM_INDEX_DATA *rm, string str, string arg )
 {
  int cnt = 0;
 

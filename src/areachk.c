@@ -38,12 +38,7 @@
  *  references.
  */
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "globals.h"
-#include "hash.h"
+#include "h/globals.h"
 
 #ifndef DEC_AREASAVE_H
 #include "h/areasave.h"
@@ -55,6 +50,10 @@
 
 #ifndef DEC_DB_H
 #include "h/db.h"
+#endif
+
+#ifndef DEC_HASH_H
+#include "h/hash.h"
 #endif
 
 void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
@@ -181,7 +180,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
    FILE *out_file;
    int a;
    RESET_DATA *pReset;
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    AREA_DATA *CurArea;
    BUILD_DATA_LIST *pList;
    ROOM_INDEX_DATA *pRoomIndex;

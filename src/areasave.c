@@ -32,11 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -569,7 +565,7 @@ void build_save_end(  )
 
 void build_save_flush(  )
 {
-   std::list<AREA_DATA *>::iterator i;
+   list<AREA_DATA *>::iterator i;
    AREA_DATA *pArea;
 
    if( AreasModified == 0 )

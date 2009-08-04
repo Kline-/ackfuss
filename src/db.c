@@ -32,21 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <algorithm>
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <assert.h>
-#include <stdarg.h>
-#include "globals.h"
-#include "hash.h"
-#include <unistd.h>  /* for execl */
-#include <math.h> /* For fread_float */
-#include <sys/wait.h>
-#include <errno.h>
-#include <signal.h>
+#include "h/globals.h"
 
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"
@@ -72,12 +58,16 @@
 #include "h/db.h"
 #endif
 
-#ifndef DEC_LUASCRIPT_H
-#include "h/luascript.h"
-#endif
-
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
+#endif
+
+#ifndef DEC_HASH_H
+#include "h/hash.h"
+#endif
+
+#ifndef DEC_LUASCRIPT_H
+#include "h/luascript.h"
 #endif
 
 #ifndef DEC_MONEY_H
@@ -481,7 +471,7 @@ void load_areas( void )
       }
       else
       {
-         std::string file;
+         string file;
 
          file.clear();
          file += AREA_DIR;
@@ -825,7 +815,7 @@ void load_marks( void )
  for( ;; )
  {
   MARK_DATA *mark;
-  std::list<MARK_DATA *>::iterator li;
+  list<MARK_DATA *>::iterator li;
   char letter;
 
   do
@@ -1994,7 +1984,7 @@ void save_disabled( void )
 {
  FILE *fp;
  DISABLED_DATA *p;
- std::list<DISABLED_DATA *>::iterator li;
+ list<DISABLED_DATA *>::iterator li;
 
  if( disabled_list.empty() )
  {
@@ -2033,7 +2023,7 @@ void check_resets( void )
    RESET_DATA *pReset;
    RESET_DATA *nextReset;
    ROOM_INDEX_DATA *last_mob_room;
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    int previous_bug = 0;
 
    for( li = area_list.begin(); li != area_list.end(); li++ )
@@ -2189,12 +2179,12 @@ void check_resets( void )
 void area_update( void )
 {
    AREA_DATA *pArea;
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
 
    for( li = area_list.begin(); li != area_list.end(); li++ )
    {
       CHAR_DATA *pch;
-      std::list<CHAR_DATA *>::iterator pi;
+      list<CHAR_DATA *>::iterator pi;
 
       pArea = *li;
       pArea->age++;
@@ -2578,6 +2568,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 
    mob->npc = true;
    mob->npcdata->pIndexData = pMobIndex;
+
+   if( pMobIndex->act.test(ACT_AGGRESSIVE) )
+    aggro_list.push_back(mob);
 
    if( pMobIndex->act.test(ACT_INTELLIGENT) )
       mob->name = str_dup( buf );
@@ -3275,7 +3268,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
    char arg1[MSL];
    short foo;
    AREA_DATA *pArea;
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
    bool fall = FALSE;
 
    argument = one_argument( argument, arg1 );
@@ -3814,7 +3807,7 @@ void message_update( void )
    AREA_DATA *pArea;
    ROOM_INDEX_DATA *pRoom;
    CHAR_DATA *ch;
-   std::list<AREA_DATA *>::iterator li;
+   list<AREA_DATA *>::iterator li;
 
    for( li = area_list.begin(); li != area_list.end(); li++ )
    {
@@ -4035,24 +4028,24 @@ int count_skills( void )
  return cnt;
 }
 
-char *find_helps( const char *string, bool imm )
+char *find_helps( const char *search, bool imm )
 {
  static char ret[MSL];
  char tmp[MSL] = {'\0'};
  char split[MSL] = {'\0'};
- std::string str;
+ string str;
  size_t pos;
 
- if( !isalpha(*string) )
+ if( !isalpha(*search) )
   return "You can only search for letters.\r\n";
 
- if( strlen(string) < 2 )
+ if( strlen(search) < 2 )
   return "Searches must be at least two letters.\r\n";
 
  if( imm )
-  snprintf(split,MSL,"find %s -maxdepth 2 -iname \\*%s\\* -printf '%%f '",HELP_DIR,string);
+  snprintf(split,MSL,"find %s -maxdepth 2 -iname \\*%s\\* -printf '%%f '",HELP_DIR,search);
  else
-  snprintf(split,MSL,"find %s -maxdepth 2 -iname \\*%s\\*.%s -printf '%%f '",HELP_DIR,string,HELP_MORT);
+  snprintf(split,MSL,"find %s -maxdepth 2 -iname \\*%s\\*.%s -printf '%%f '",HELP_DIR,search,HELP_MORT);
  snprintf(tmp,MSL,"%s",_popen(split));
 
  str = tmp;
@@ -4075,24 +4068,24 @@ char *find_helps( const char *string, bool imm )
  return ret;
 }
 
-char *grep_helps( const char *string, bool imm )
+char *grep_helps( const char *search, bool imm )
 {
  static char ret[MSL];
  char tmp[MSL] = {'\0'};
  char split[MSL] = {'\0'};
- std::string str;
+ string str;
  size_t pos;
 
- if( !isalpha(*string) )
+ if( !isalpha(*search) )
   return "You can only search for letters.\r\n";
 
- if( strlen(string) < 2 )
+ if( strlen(search) < 2 )
   return "Searches must be at least two letters.\r\n";
 
  if( imm )
-  snprintf(split,MSL,"grep -i -l -R '%s' %s*/* | cut -c %d-",string,HELP_DIR,static_cast<int>(strlen(HELP_DIR)+3));
+  snprintf(split,MSL,"grep -i -l -R '%s' %s*/* | cut -c %d-",search,HELP_DIR,static_cast<int>(strlen(HELP_DIR)+3));
  else
-  snprintf(split,MSL,"grep -i -l -R '%s' %s*/*.%s | cut -c %d-",string,HELP_DIR,HELP_MORT,static_cast<int>(strlen(HELP_DIR)+3));
+  snprintf(split,MSL,"grep -i -l -R '%s' %s*/*.%s | cut -c %d-",search,HELP_DIR,HELP_MORT,static_cast<int>(strlen(HELP_DIR)+3));
  snprintf(tmp,MSL,"%s",_popen(split));
 
  str = tmp;
@@ -4115,7 +4108,7 @@ char *grep_helps( const char *string, bool imm )
  return ret;
 }
 
-char *_popen( const char *string )
+char *_popen( const char *search )
 {
  static char ret[MSL];
  char tmp[MSL];
@@ -4129,7 +4122,7 @@ char *_popen( const char *string )
   fpReserve = NULL;
  }
 
- if( (fp = popen(string,"r")) == NULL )
+ if( (fp = popen(search,"r")) == NULL )
   snprintf(ret,MSL,"%s","");
  else
  {

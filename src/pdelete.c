@@ -32,19 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <assert.h>
-#include <unistd.h>
-#include <string.h>
-#if defined(__CYGWIN__)
-#include <crypt.h>
-#endif
-#include "globals.h"
-#include <math.h>
-#include <ctype.h>
+#include "h/globals.h"
 
 #ifndef DEC_COMM_H
 #include "h/comm.h"

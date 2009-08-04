@@ -32,14 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <ctype.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "globals.h"
+#include "h/globals.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -92,7 +85,7 @@ void save_rulers(  )
 
    FILE *fp;
    char ruler_file_name[MAX_STRING_LENGTH];
-   std::list<RULER_DATA *>::iterator li;
+   list<RULER_DATA *>::iterator li;
    RULER_DATA *ruler = NULL;
 
    snprintf( ruler_file_name, MSL, "%s", RULERS_FILE );
@@ -204,7 +197,7 @@ void do_rulers( CHAR_DATA * ch, char *argument )
    char outbuf[MSL];
    char catbuf[MSL];
    RULER_DATA *ruler = NULL;
-   std::list<RULER_DATA *>::iterator li;
+   list<RULER_DATA *>::iterator li;
 
    argument = one_argument( argument, arg1 );
    argument = one_argument( argument, arg2 );

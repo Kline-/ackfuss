@@ -32,12 +32,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include <stdio.h>
-#include <stdlib.h>  /* For div_t, div() */
-#include <string.h>
-#include <time.h>
-#include "globals.h"
-#include <math.h>
+#include "h/globals.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -241,7 +236,7 @@ void violence_update( void )
    CHAR_DATA *victim;
    CHAR_DATA *rch;
    CHAR_DATA *rch_next;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    bool has_cast = FALSE;
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
@@ -511,7 +506,7 @@ void violence_update( void )
                   {
                      CHAR_DATA *vch;
                      CHAR_DATA *target;
-                     std::list<CHAR_DATA *>::iterator li2;
+                     list<CHAR_DATA *>::iterator li2;
                      int number;
 
                      target = NULL;
@@ -1879,7 +1874,7 @@ void update_pos( CHAR_DATA * victim )
        && ( victim->hit < 1 ) && !IS_SET( victim->affected_by, AFF_VAMP_HEALING ) && !IS_NPC( victim ) && !( deathmatch ) )
    {
       CHAR_DATA *check;
-      std::list<CHAR_DATA *>::iterator li;
+      list<CHAR_DATA *>::iterator li;
 
       if( !IS_NPC( victim ) )
          gain_exp( victim, 0 - ( victim->exp / 4 ) );
@@ -2083,7 +2078,7 @@ void update_pos( CHAR_DATA * victim )
  */
 void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
 {
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
 
    if( ch->fighting != NULL )
    {
@@ -2102,7 +2097,7 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
 
 /*    if ( IS_NPC(victim) && is_set(victim->act, ACT_HUNTER ) )
                 make_hunt( victim, ch );*//*
-    * fun fun FUN! 
+    * fun fun FUN!
     */
 
 
@@ -2113,18 +2108,19 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
    ch->position = POS_FIGHTING;
 
    /*
-    * Check if mob has ACT_REMEMBER (ch to attack) SET 
+    * Check if mob has ACT_REMEMBER (ch to attack) SET
     */
 
    if( IS_NPC( victim ) && !IS_NPC( ch ) && victim->act.test(ACT_REMEMBER ) )
    {
       /*
-       * Then set victim->target to player's name... 
+       * Then set victim->target to player's name...
        */
-      if( victim->target != NULL )
-         free_string( victim->target );
-      if( ch != NULL )
-         victim->target = str_dup( ch->name );
+      if( ch != NULL && victim->target.find(ch->name) == string::npos )
+      {
+       victim->target += ch->name;
+       victim->target += " ";
+      }
    }
 
    /* Keep out duplicates */
@@ -2147,7 +2143,7 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
  */
 void stop_fighting( CHAR_DATA * ch, bool fBoth )
 {
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    CHAR_DATA *victim = ch->fighting;
 
    ch->position = POS_STANDING;
@@ -2191,7 +2187,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    OBJ_DATA *obj_next;
    CHAR_DATA *target = NULL;
    CHAR_DATA *wch;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    char *name;
 
    one_argument( argument, arg );
@@ -2419,7 +2415,7 @@ void death_cry( CHAR_DATA * ch )
 void raw_kill( CHAR_DATA * victim, char *argument )
 {
    CHAR_DATA *check;
-   std::list<CHAR_DATA *>::iterator li;
+   list<CHAR_DATA *>::iterator li;
    char arg[MAX_STRING_LENGTH];
    char buf[MAX_STRING_LENGTH];
 
@@ -5872,7 +5868,7 @@ float get_speed( CHAR_DATA *ch, int slot )
 
 void combat_update( void )
 {
- std::list<CHAR_DATA *>::iterator li;
+ list<CHAR_DATA *>::iterator li;
  CHAR_DATA *ch;
  CHAR_DATA *victim;
 
@@ -6338,7 +6334,7 @@ void resurrect( CHAR_DATA *ch )
 
 void cooldown_update( void )
 {
- std::list<CHAR_DATA *>::iterator li;
+ list<CHAR_DATA *>::iterator li;
  CHAR_DATA *ch;
 
  for( li = char_list.begin(); li != char_list.end(); li++ )
@@ -6362,6 +6358,90 @@ void cooldown_update( void )
     send_to_char("@@lYour defensive cooldown has been refreshed!@@N\r\n",ch);
   }
  }
+
+ return;
+}
+
+void aggro_attack( CHAR_DATA *mob, CHAR_DATA *player )
+{
+ act("$n growls at $N!",player,NULL,mob,TO_NOTVICT);
+ act("$N growls at you! Uh-oh!!",player,NULL,mob,TO_CHAR);
+ act("You growl at $N. Get $M!!",mob,NULL,player,TO_CHAR);
+
+ OBJ_DATA *wield = get_eq_char(mob,WEAR_HOLD_HAND_L);
+ if( wield != NULL && wield->item_type == ITEM_WEAPON && wield->value[3] == 11 && player->fighting == NULL )
+  do_backstab(mob,player->name);
+ else
+  one_hit(mob,player,TYPE_UNDEFINED);
+
+ return;
+}
+
+void remember_attack( CHAR_DATA *mob, CHAR_DATA *player )
+{
+ /*
+  * Called when an NPC ch encounters a PC victim, that tried to
+  * kill it previously.
+  * --Stephen
+  *
+  * Spruced up a bit. --Kline
+  */
+
+  int first = 0, last = 0;
+  char buf[MSL];
+
+ /*
+  * Pick a random response for mob to give before attacking.
+  */
+
+  switch( number_range(0,6) )
+  {
+   case 0:
+    snprintf(buf,MSL,"%s returns! I shall have my revenge at last!",player->name);
+    do_yell(mob,buf);
+    break;
+   case 1:
+    snprintf(buf,MSL,"You should never have returned %s. Ye shall DIE!",player->name);
+    do_whisper(mob,buf);
+    break;
+   case 2:
+    act("$n looks at $N, remembering $S attack.",mob,NULL,player,TO_ROOM);
+    act("$n looks at you, remembering your attack.",mob,NULL,player,TO_VICT);
+    act("You look at $N, remembering $S attack.",mob,NULL,player,TO_CHAR);
+    do_say(mob,"I SHALL HAVE MY REVENGE!!!");
+    break;
+   case 3:
+    snprintf(buf,MSL,"%s has wronged me, and now I will seek my revenge!",player->name);
+    do_gossip(mob,buf);
+    snprintf(buf,MSL,"Prepare to die, %s.",player->name);
+    do_say(mob,buf);
+    break;
+   case 4:
+    snprintf(buf,MSL,"So, %s. You have returned. Let us finish our fight this time!",player->name);
+    do_say(mob,buf);
+    break;
+   case 5:
+    snprintf(buf,MSL,"Only cowards flee from me, %s!",player->name);
+    do_say(mob,buf);
+    break;
+   case 6:
+    act("$n looks at $N, and recognizes $M!!",mob,NULL,player,TO_ROOM);
+    act("$n looks at you, and recognizes you!!",mob,NULL,player,TO_VICT);
+    act("You look at $N, and recognize $M!",mob,NULL,player,TO_CHAR);
+    snprintf(buf,MSL,"There can only be one winner, %s.",player->name);
+    do_say(mob,buf);
+    break;
+ }
+
+ OBJ_DATA *wield = get_eq_char(mob,WEAR_HOLD_HAND_L);
+ if( wield != NULL && wield->item_type == ITEM_WEAPON && wield->value[3] == 11 && player->fighting == NULL )
+  do_backstab(mob,player->name);
+ else
+  one_hit(mob,player,TYPE_UNDEFINED);
+
+ first = static_cast<int>(mob->target.find(player->name));
+ last = (strlen(player->name) + 1);
+ mob->target.erase(first,last);
 
  return;
 }

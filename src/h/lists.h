@@ -41,28 +41,29 @@
  * actual variables in lists.c
  * -- Altrag
  */
-extern std::list<AFFECT_DATA *> affect_list;
-extern std::list<AREA_DATA *> area_list;
-extern std::list<BAN_DATA *> ban_list;
-extern std::list<BOARD_DATA *> board_list;
-extern std::list<BUILD_DATA_LIST *> build_dat_list;
-extern std::list<CHAR_DATA *> cast_list;
-extern std::list<CHAR_DATA *> char_list;
-extern std::list<OBJ_DATA *> corpse_list;
-extern std::list<DISABLED_DATA *> disabled_list;
-extern std::list<EXTRA_DESCR_DATA *> exdesc_list;
-extern std::list<EXIT_DATA *> exit_list;
-extern std::list<CHAR_DATA *> fight_list;
-extern std::list<FILE *> file_list;
-extern std::list<LUA_DATA *> lua_list;
-extern std::list<MOB_INDEX_DATA *> mob_index_list;
-extern std::list<NOTE_DATA *> note_list;
-extern std::list<OBJ_DATA *> obj_list;
-extern std::list<OBJ_INDEX_DATA *> obj_index_list;
-extern std::list<RESET_DATA *> reset_list;
-extern std::list<ROOM_INDEX_DATA *> room_index_list;
-extern std::list<RULER_DATA *> ruler_list;
-extern std::list<SHOP_DATA *> shop_list;
+extern list<AFFECT_DATA *> affect_list;
+extern list<CHAR_DATA *> aggro_list;
+extern list<AREA_DATA *> area_list;
+extern list<BAN_DATA *> ban_list;
+extern list<BOARD_DATA *> board_list;
+extern list<BUILD_DATA_LIST *> build_dat_list;
+extern list<CHAR_DATA *> cast_list;
+extern list<CHAR_DATA *> char_list;
+extern list<OBJ_DATA *> corpse_list;
+extern list<DISABLED_DATA *> disabled_list;
+extern list<EXTRA_DESCR_DATA *> exdesc_list;
+extern list<EXIT_DATA *> exit_list;
+extern list<CHAR_DATA *> fight_list;
+extern list<FILE *> file_list;
+extern list<LUA_DATA *> lua_list;
+extern list<MOB_INDEX_DATA *> mob_index_list;
+extern list<NOTE_DATA *> note_list;
+extern list<OBJ_DATA *> obj_list;
+extern list<OBJ_INDEX_DATA *> obj_index_list;
+extern list<RESET_DATA *> reset_list;
+extern list<ROOM_INDEX_DATA *> room_index_list;
+extern list<RULER_DATA *> ruler_list;
+extern list<SHOP_DATA *> shop_list;
 
 extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;

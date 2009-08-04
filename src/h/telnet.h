@@ -5,7 +5,6 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-#include <arpa/telnet.h>
 
 /* Telopt handling by Igor van den Hoven (Scandum) */
 
