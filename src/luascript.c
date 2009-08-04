@@ -394,7 +394,6 @@ int L_character_info( lua_State *L )
  PUSH_STR(ch,searching);
 
  /* numbers */
- PUSH_NUM(ch,adept_level);
  PUSH_NUM(ch,alignment);
  PUSH_NUM(ch,armor);
  PUSH_NUM(ch,carry_number);
@@ -453,6 +452,7 @@ int L_character_info( lua_State *L )
   PUSH_STR(ch->pcdata,who_name);
 
   /* numbers */
+  PUSH_NUM(ch->pcdata,adept_level);
   PUSH_NUMA(ch->pcdata,condition,MAX_COND);
   PUSH_NUMA(ch->pcdata,learned,MAX_SKILL);
   PUSH_NUM(ch->pcdata,max_con);

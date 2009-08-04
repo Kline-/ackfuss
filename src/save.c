@@ -281,9 +281,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "EOL\n" );
 
    if( IS_NPC(ch) )
-   {
     fprintf( fp, "ShortDescr     %s~\n", ch->npcdata->short_descr );
-   }
    fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig );
    fprintf( fp, "Description    %s~\n", ch->description );
    fprintf( fp, "Prompt         %s~\n", ch->prompt );
@@ -306,7 +304,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
       fprintf( fp, "%2d ", ch->lvl2[cnt] );
    fprintf( fp, "\n" );
 
-   fprintf( fp, "Adeptlevel     %d\n", ch->adept_level );
+   if( !IS_NPC(ch) )
+    fprintf( fp, "Adeptlevel     %d\n", ch->pcdata->adept_level );
    fprintf( fp, "Trust          %d\n", ch->trust );
    fprintf( fp, "Wizbit         %d\n", ch->wizbit );
    fprintf( fp, "Played         %d\n", ch->played + ( int )( current_time - ch->logon ) );
@@ -725,7 +724,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->pcdata->quest_points = 0;
       for( foo = 0; foo < MAX_CLASS; foo++ )
          ch->lvl2[foo] = -1;
-      ch->adept_level = -1;
       for( cnt = 0; cnt < MAX_ALIASES; cnt++ )
       {
          ch->pcdata->alias_name[cnt] = str_dup( "<none>" );
@@ -887,16 +885,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
    bool fMatch;
    int cnt;
    /*
-    * Save revision control: 
-    */
-
-
-   /*
-    * Ugly fix for pfiles with no balance value 
-    */
-   ch->balance = 0;
-   /*
-    * Another fix for m/c levels.. this is getting to be a habit... 
+    * Another fix for m/c levels.. this is getting to be a habit...
     */
 
    for( cnt = 0; cnt < MAX_CLASS; cnt++ )
@@ -930,11 +919,10 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "AffectedBy", ch->affected_by, fread_number( fp ) );
             KEY( "Alignment", ch->alignment, fread_number( fp ) );
             KEY( "Armor", ch->armor, fread_number( fp ) );
-            KEY( "Adeptlevel", ch->adept_level, fread_number( fp ) );
-            if( !IS_NPC( ch ) )
+            if( !IS_NPC(ch) )
             {
+               KEY( "Adeptlevel", ch->pcdata->adept_level, fread_number( fp ) );
                SKEY( "AssistMsg", ch->pcdata->assist_msg, fread_string( fp ) );
-
                SKEY( "Alias_Name0", ch->pcdata->alias_name[0], fread_string( fp ) );
                SKEY( "Alias_Name1", ch->pcdata->alias_name[1], fread_string( fp ) );
                SKEY( "Alias_Name2", ch->pcdata->alias_name[2], fread_string( fp ) );
@@ -996,13 +984,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'B':
-/*	    KEY( "Balance",     ch->balance,            fread_number( fp ) );  */
-            if( !str_cmp( word, "Balance" ) )
-            {
-               join_money( round_money( fread_number( fp ), TRUE ), ch->bank_money );
-               fMatch = TRUE;
-               break;
-            }
             if( !IS_NPC( ch ) )
             {
                SKEY( "Bamfin", ch->pcdata->bamfin, fread_string( fp ) );
@@ -1106,14 +1087,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                KEY( "GainMana", ch->pcdata->mana_from_gain, fread_number( fp ) );
                KEY( "GainHp", ch->pcdata->hp_from_gain, fread_number( fp ) );
                KEY( "GainMove", ch->pcdata->move_from_gain, fread_number( fp ) );
-            }
-/*	    KEY( "Gold",        ch->gold,               fread_number( fp ) );  */
-
-            if( !str_cmp( word, "Gold" ) )
-            {
-               join_money( round_money( fread_number( fp ), TRUE ), ch->money );
-               fMatch = TRUE;
-               break;
             }
             break;
 

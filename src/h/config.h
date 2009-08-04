@@ -496,26 +496,26 @@
  * Room flags.
  * Used in #ROOMS.
  */
-#define RFLAG_NONE          0
-#define RFLAG_DARK          1
+#define RFLAG_NONE          0   /* durrr...                     */
+#define RFLAG_DARK          1   /* room is dark, need a light   */
 #define RFLAG_REGEN         2   /* increased regen in this room */
-#define RFLAG_NO_MOB        3
-#define RFLAG_INDOORS       4
-#define RFLAG_NO_MAGIC      5
-#define RFLAG_HOT           6   /* players lose hp each tick   */
-#define RFLAG_COLD          7   /* players lose hp each tick   */
-#define RFLAG_PK            8   /* players may freely pk here  */
-#define RFLAG_QUIET         9   /* room is quiet               */
-#define RFLAG_PRIVATE       10
-#define RFLAG_SAFE          11
-#define RFLAG_SOLITARY      12
-#define RFLAG_PET_SHOP      13
-#define RFLAG_NO_RECALL     14
-#define RFLAG_NO_TELEPORT   15
-#define RFLAG_HUNT_MARK	    16   /* Dont ever set! */
-#define RFLAG_NO_BLOODWALK  17
-#define RFLAG_NO_PORTAL     18
-#define RFLAG_NO_REPOP      19
+#define RFLAG_NO_MOB        3   /* NPCs can't enter             */
+#define RFLAG_INDOORS       4   /* indoors, no weather          */
+#define RFLAG_NO_MAGIC      5   /* no casting                   */
+#define RFLAG_HOT           6   /* players lose hp each tick    */
+#define RFLAG_COLD          7   /* players lose hp each tick    */
+#define RFLAG_PK            8   /* players may freely pk here   */
+#define RFLAG_QUIET         9   /* room is quiet                */
+#define RFLAG_PRIVATE       10  /* 2 pc/npc maximum             */
+#define RFLAG_SAFE          11  /* no fighting                  */
+#define RFLAG_SOLITARY      12  /* 1 pc/npc maximum             */
+#define RFLAG_PET_SHOP      13  /* respawn mobs are pets        */
+#define RFLAG_NO_RECALL     14  /* no recalling                 */
+#define RFLAG_NO_TELEPORT   15  /* can't teleport in/out of     */
+#define RFLAG_HUNT_MARK	    16  /* Dont ever set!               */
+#define RFLAG_NO_BLOODWALK  17  /* vamps can't bloodwalk in     */
+#define RFLAG_NO_PORTAL     18  /* portals will collapse on use */
+#define RFLAG_NO_REPOP      19  /* objs only spawn if no chars  */
 
 /*
  * Directions.
@@ -533,15 +533,15 @@
  * Exit flags.
  * Used in #DOOR.
  */
-#define EX_NONE                       0
-#define EX_ISDOOR                     1
-#define EX_CLOSED                     2
-#define EX_LOCKED                     3
-#define EX_CLIMB		      4
-#define EX_IMMORTAL		      5
-#define EX_PICKPROOF                  6
-#define EX_SMASHPROOF		      7
-#define EX_PASSPROOF		      8
+#define EX_NONE                       0  /* durrrr                         */
+#define EX_ISDOOR                     1  /* must be set to set other flags */
+#define EX_CLOSED                     2  /* auto-close on repop            */
+#define EX_LOCKED                     3  /* auto-lock on repop             */
+#define EX_CLIMB		      4  /* must have climb/fly to enter   */
+#define EX_IMMORTAL		      5  /* must be immortal to enter      */
+#define EX_PICKPROOF                  6  /* can not pick lock              */
+#define EX_SMASHPROOF		      7  /* can not smash                  */
+#define EX_PASSPROOF		      8  /* can not pass door              */
 #define EX_NODETECT		      9
 #define EX_NOMOB                     10
 
@@ -896,18 +896,18 @@
 #define ROOM_BV_POISON_RUNE    65536   /* room gives poison to entering ch */
 #define ROOM_BV_SOUL_NET	131072   /* makes soul instead of corpse */
 
-/* build bits for OLC -S- */
-#define ACT_BUILD_NOWT                0   /* not doing anything   */
-#define ACT_BUILD_REDIT               1   /* editing rooms        */
-#define ACT_BUILD_OEDIT               2   /* editing objects      */
-#define ACT_BUILD_MEDIT               3   /* editing mobiles      */
+/* OLC modes */
+#define BUILD_MODE_NONE                0   /* not doing anything   */
+#define BUILD_MODE_REDIT               1   /* editing rooms        */
+#define BUILD_MODE_OEDIT               2   /* editing objects      */
+#define BUILD_MODE_MEDIT               3   /* editing mobiles      */
 
 #define NO_USE			   -999  /* this table entry can */
                   /*
-                   * NOT be used, except  
+                   * NOT be used, except
                    */
                   /*
-                   * by a Creator      
+                   * by a Creator
                    */
 
 
@@ -1209,7 +1209,7 @@
 #define APPLY_MANA                   12
 #define APPLY_HIT                    13
 #define APPLY_MOVE                   14
-#define APPLY_GOLD                   15
+/* 15 is empty                       */
 #define APPLY_EXP                    16
 #define APPLY_AC                     17
 #define APPLY_HITROLL                18

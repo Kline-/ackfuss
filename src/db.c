@@ -402,7 +402,6 @@ void boot_db( void )
 
    load_areas();
    load_social_table();
-/* load_gold(); */
    load_notes();
    load_marks();
    load_bans();
@@ -1891,39 +1890,6 @@ void fix_exits( void )
       }
    }
    return;
-}
-
-
-/* Load up gold into areas */
-void load_gold( void )
-{
-   FILE *fpGold;
-   int area_num;
-   int gold;
-   AREA_DATA *pArea;
-
-   fpGold = file_open( "area.gld", "r" );
-
-   if( fpGold == NULL )
-   {
-      bug( "Could not open area.gld for reading.", 0 );
-      return;
-   }
-
-   for( ;; )
-   {
-      area_num = fread_number( fpGold );
-      if( area_num == -1 )
-         break;
-
-      gold = fread_number( fpGold );
-
-      if( ( pArea = area_used[area_num] ) != NULL )
-         pArea->gold = gold;
-   }
-
-   file_close( fpGold );
-
 }
 
 void load_disabled( void )

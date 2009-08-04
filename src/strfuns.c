@@ -544,11 +544,14 @@ char *learnt_name( int learnt )
 char *get_adept_name( CHAR_DATA * ch )
 {
    /*
-    * this is weak for now..will eventually have like 200 total names, based on the remort 
-    * classes the adept has   
+    * this is weak for now..will eventually have like 200 total names, based on the remort
+    * classes the adept has
     */
 
-   switch ( ch->adept_level )
+   if( !IS_ADEPT(ch) )
+    return "@@e    Bugged    @@N";
+
+   switch ( ch->pcdata->adept_level )
    {
 
       case 1:
@@ -1217,23 +1220,18 @@ char *affect_loc_name( int location )
          return "level";
       case APPLY_AGE:
          return "age";
-
       case APPLY_HEIGHT:
          return "height";
       case APPLY_WEIGHT:
          return "weight";
-
       case APPLY_MANA:
          return "mana";
       case APPLY_HIT:
          return "hp";
       case APPLY_MOVE:
          return "moves";
-      case APPLY_GOLD:
-         return "gold";
       case APPLY_EXP:
          return "experience";
-
       case APPLY_AC:
          return "armor class";
       case APPLY_HITROLL:
@@ -1244,7 +1242,6 @@ char *affect_loc_name( int location )
          return "save vs paralysis";
       case APPLY_SAVING_ROD:
          return "save vs rod";
-
       case APPLY_SAVING_PETRI:
          return "save vs petrification";
       case APPLY_SAVING_BREATH:

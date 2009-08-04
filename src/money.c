@@ -186,8 +186,8 @@ MONEY_TYPE *round_money( int base, bool round_up )
          }
          break;
       }
-      case FALSE:   /* NOTE: this will always turn base into your smallest unit, just here for 
-                      * completeness 
+      case FALSE:   /* NOTE: this will always turn base into your smallest unit, just here for
+                      * completeness
                       */
       {
          for( looper = 0; looper < MAX_CURRENCY; looper++ )

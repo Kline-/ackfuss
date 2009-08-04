@@ -104,8 +104,8 @@ void reset_gain_stats( CHAR_DATA * ch )
    }
 
 
-   if( ch->adept_level > 0 )
-      for( index2 = 1; index2 <= ch->adept_level; index2++ )
+   if( IS_ADEPT(ch) )
+      for( index2 = 1; index2 <= ADEPT_LEVEL(ch); index2++ )
       {
 
          add_hp = con_app[ch->pcdata->max_con].hitp + number_range( 10, 50 );
@@ -215,8 +215,8 @@ int exp_to_level_adept( CHAR_DATA * ch )
 {
    int exp;
 
-   exp = ( 30000 + ( ch->adept_level * 5000 ) );
-   exp = UMAX( exp, exp * ch->adept_level / 2 );
+   exp = ( 30000 + ( ADEPT_LEVEL(ch) * 5000 ) );
+   exp = UMAX( exp, exp * ADEPT_LEVEL(ch) / 2 );
    return exp;
 }
 
@@ -593,17 +593,6 @@ bool is_remort( CHAR_DATA * ch )
    return FALSE;
 }
 
-bool is_adept( CHAR_DATA * ch )
-{
-   if( IS_NPC( ch ) )
-      return FALSE;
-
-   if( ch->adept_level > 0 )
-      return TRUE;
-
-   return FALSE;
-}
-
 int get_item_value( OBJ_DATA * obj )
 {
    AFFECT_DATA *this_aff;
@@ -612,9 +601,7 @@ int get_item_value( OBJ_DATA * obj )
    int hp_mod = 0;
    int hr_mod = 0;
    int mana_mod = 0;
-   /*
-    * int     move_mod = 0;  
-    */
+   int move_mod = 0;
    int save_mod = 0;
    float cost = 0;
    short wear_loc = WEAR_NONE;
@@ -632,7 +619,7 @@ int get_item_value( OBJ_DATA * obj )
    {
       /*
        * snprintf( buf, MSL, "Object has no wear loc" );
-       * monitor_chan( buf, MONITOR_OBJ );  
+       * monitor_chan( buf, MONITOR_OBJ );
        */
       ac_mod = 0;
    }
@@ -679,8 +666,7 @@ int get_item_value( OBJ_DATA * obj )
             hp_mod += this_aff->modifier;
             break;
          case APPLY_MOVE:
-            break;
-         case APPLY_GOLD:
+            move_mod += this_aff->modifier;
             break;
          case APPLY_EXP:
             break;
@@ -703,7 +689,7 @@ int get_item_value( OBJ_DATA * obj )
       }
    }
 
-   cost = obj->level * 1 + ac_mod * -8 + dr_mod * 5 + hr_mod * 5 + save_mod * 2 + hp_mod * 4 + mana_mod * 3;
+   cost = obj->level * 1 + ac_mod * -8 + dr_mod * 5 + hr_mod * 5 + save_mod * 2 + hp_mod * 4 + mana_mod * 3 + move_mod;
 
    if( IS_SET( obj->item_apply, ITEM_APPLY_ENHANCED ) )
       cost = cost * 1.3;

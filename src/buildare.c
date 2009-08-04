@@ -145,37 +145,6 @@ void build_save_area_list( void )
    rename( buf, AREA_LIST );
 }
 
-void build_save_area_gold( void )
-{
-   list<AREA_DATA *>::iterator li;
-   AREA_DATA *pArea;
-   FILE *fpArea;
-
-   fpArea = file_open( "area.gld.new", "w" );
-
-   if( fpArea == NULL )
-   {
-      bug( "Could not open area.gld.new for saving.", 0 );
-      return;
-   }
-
-   for( li = area_list.begin(); li != area_list.end(); li++ )
-   {
-      pArea = *li;
-      fprintf( fpArea, "%i %i\r\n", pArea->area_num, pArea->gold );
-   }
-
-   fprintf( fpArea, "-1\r\n" );
-
-   file_close( fpArea );
-
-   /*
-    * Save backup 
-    */
-   rename( "area.gld", "area.gld.old" );
-   rename( "area.gld.new", "area.gld" );
-}
-
 void build_makearea( CHAR_DATA * ch, char *argument )
 {
    char arg1[MAX_INPUT_LENGTH];
@@ -359,46 +328,6 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    send_to_char( "Ok.\r\n", ch );
 }
 
-void do_change_gold( CHAR_DATA * ch, char *argument )
-{
-   char arg1[MAX_INPUT_LENGTH];
-   int value;
-   AREA_DATA *pArea;
-
-   argument = one_argument( argument, arg1 );
-
-   pArea = ch->in_room->area;
-
-   if( !build_canwrite( pArea, ch, AREA_SHOWERROR ) )
-      return;
-
-
-   if( !is_number( arg1 ) )
-   {
-      send_to_char( "Must be a number.\r\n", ch );
-      return;
-   }
-
-   value = atoi( arg1 );
-   if( value > ch->gold )
-   {
-      send_to_char( "You cannot put in more gold than you have!\r\n", ch );
-      return;
-   }
-
-   if( value < -pArea->gold )
-   {
-      send_to_char( "You cannot take out more gold than there is here!\r\n", ch );
-      return;
-   }
-
-   pArea->gold = pArea->gold + value;
-   ch->gold = ch->gold - value;
-
-   build_save_area_gold(  );
-   return;
-}
-
 void build_setarea( CHAR_DATA * ch, char *argument )
 {
    char arg1[MAX_INPUT_LENGTH];
@@ -426,7 +355,6 @@ void build_setarea( CHAR_DATA * ch, char *argument )
       send_to_char( "      owner       <name>  \r\n", ch );
       send_to_char( "      read        [-]<name>  \r\n", ch );
       send_to_char( "      write       [-]<name>  \r\n", ch );
-      send_to_char( "      gold        <amount>\r\n", ch );
       send_to_char( "      title       <string>\r\n", ch );
       send_to_char( "      payarea     Yes/No  \r\n", ch );
       send_to_char( "      min         <min_vnum>\r\n", ch );
@@ -606,14 +534,6 @@ void build_setarea( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( !str_cmp( arg1, "gold" ) )
-   {
-      if( is_number( arg2 ) )
-      {
-         pArea->gold = atoi( arg2 );
-         return;
-      }
-   }
    if( !str_cmp( arg1, "repop_rate" ) )
    {
       if( is_number( arg2 ) )
@@ -746,7 +666,7 @@ void build_showarea( CHAR_DATA * ch, char *argument )
    snprintf( buffer, MSL, "Owner: %s\r\nCan Read: %s\r\nCan Write: %s\r\n", pArea->owner, pArea->can_read, pArea->can_write );
    strncat( buf, buffer, MSL-1 );
 
-   snprintf( buffer, MSL, "Min Vnum: %5d    Max Vnum: %5d      Gold: %i\r\n", pArea->min_vnum, pArea->max_vnum, pArea->gold );
+   snprintf( buffer, MSL, "Min Vnum: %5d    Max Vnum: %5d\r\n", pArea->min_vnum, pArea->max_vnum );
    strncat( buf, buffer, MSL-1 );
    snprintf( buffer, MSL, "Min Level: %5d    Max Level: %5d \r\n", pArea->min_level, pArea->max_level );
    strncat( buf, buffer, MSL-1 );

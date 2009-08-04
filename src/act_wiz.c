@@ -978,17 +978,17 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL,
-            "Lv: %d.  Class: %d.  Align: %d.  AC: %d.  Gold: %d.  Exp: %d.\r\n",
-            victim->level, victim->p_class, victim->alignment, GET_AC( victim ), victim->gold, victim->exp );
+            "Lv: %d.  Class: %d.  Align: %d.  AC: %d.  Exp: %d.\r\n",
+            victim->level, victim->p_class, victim->alignment, GET_AC( victim ), victim->exp );
    strncat( buf1, buf, MSL-1 );
 
    if( !IS_NPC( victim ) )
    {
-      snprintf( buf, MSL, "Race: %d (%s)%s.   Clan: %d (%s).  Balance: %d.\r\n",
+      snprintf( buf, MSL, "Race: %d (%s)%s.   Clan: %d (%s).\r\n",
                victim->race,
                race_table[victim->race].race_name,
                IS_VAMP( victim ) ? "[VAMPIRE]" : "",
-               victim->clan, clan_table[victim->clan].clan_abbr, victim->balance );
+               victim->clan, clan_table[victim->clan].clan_abbr );
       strncat( buf1, buf, MSL-1 );
    }
 
@@ -2629,7 +2629,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
       send_to_char( "\r\n", ch );
       send_to_char( "Field being one of:\r\n", ch );
       send_to_char( "  str int wis dex con sex class level exp\r\n", ch );
-      send_to_char( "  gold hp mana move practice align mquest_time\r\n", ch );
+      send_to_char( "  hp mana move practice align mquest_time\r\n", ch );
       send_to_char( "  thirst drunk full race hunt flags aff recall\r\n", ch );
       send_to_char( "  order (Sumpremes and higher only)\r\n", ch );
       send_to_char( "\r\n", ch );
@@ -2974,12 +2974,6 @@ void do_mset( CHAR_DATA * ch, char *argument )
       }
 
       victim->extract_timer = value;
-      return;
-   }
-
-   if( !str_cmp( arg2, "gold" ) )
-   {
-      victim->gold = value;
       return;
    }
 
@@ -4299,6 +4293,13 @@ void do_setclass( CHAR_DATA * ch, char *argument )
       send_to_char( "They aren't here.\r\n", ch );
       return;
    }
+
+   if( IS_NPC(victim) )
+   {
+    send_to_char("Not on NPCs.\r\n",ch);
+    return;
+   }
+
    cok = FALSE;
    remort = FALSE;
 
@@ -4325,7 +4326,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
    }
    if( !str_prefix( arg2, "ADEPT" ) )
    {
-      if( victim->adept_level > 0 )
+      if( IS_ADEPT(victim) )
       {
          send_to_char( "They are already an adept.\r\n", ch );
          return;
@@ -4334,7 +4335,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
       {
          p_class = ADVANCE_ADEPT;
          advance_level( victim, p_class, TRUE, FALSE );
-         victim->adept_level = 1;
+         victim->pcdata->adept_level = 1;
          snprintf( buf, MSL, " %s %s", victim->name, get_adept_name( victim ) );
          do_whoname( ch, buf );
          victim->exp = 0;

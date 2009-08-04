@@ -128,16 +128,7 @@ void get_obj( CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container )
 
    if( obj->item_type == ITEM_MONEY )
    {
-      if( ch->gold + obj->value[0] > 100000000 )
-      {
-         send_to_char( "You can't carry anymore gold.\r\n", ch );
-         if( container != NULL )
-            obj_to_obj( obj, container );
-         else
-            obj_to_room( obj, ch->in_room );
-         return;
-      }
-      ch->gold += obj->value[0];
+      join_money(ch->money,round_money(obj->value[0],true));
       extract_obj( obj );
    }
    else
@@ -2438,7 +2429,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
    chance = IS_NPC( ch ) ? ( get_psuedo_level( ch ) / 4 )
       : ( ch->pcdata->learned[gsn_steal] / 3 + ( get_curr_dex( ch ) / 2 ) );
    chance = chance - ( ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) / 2 );
-   if( ( !IS_NPC( ch ) && !IS_NPC( victim ) ) && ( victim->adept_level > 0 ) && ( ch->adept_level <= 0 ) )
+   if( IS_ADEPT(victim) && !IS_ADEPT(ch) )
       chance = chance - 25;
    if( !IS_NPC( ch ) )
       chance += ch->lvl2[1] / 4;
@@ -2478,23 +2469,6 @@ void do_steal( CHAR_DATA * ch, char *argument )
             log_string( buf );
          }
       }
-      return;
-   }
-
-   if( !str_cmp( arg1, "coin" ) || !str_cmp( arg1, "coins" ) || !str_cmp( arg1, "gold" ) )
-   {
-      int amount;
-      amount = victim->gold * number_range( 1, 10 ) / 100;
-      if( amount <= 0 )
-      {
-         send_to_char( "You couldn't get any gold.\r\n", ch );
-         return;
-      }
-
-      ch->gold += amount;
-      victim->gold -= amount;
-      snprintf( buf, MSL, "Bingo!  You got %d gold coins.\r\n", amount );
-      send_to_char( buf, ch );
       return;
    }
 
@@ -3361,7 +3335,7 @@ void do_adapt( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Check to see if item in inventory :) 
+    * Check to see if item in inventory :)
     */
 
    if( ( obj = get_obj_carry( ch, arg ) ) == NULL )
@@ -3384,7 +3358,7 @@ void do_adapt( CHAR_DATA * ch, char *argument )
       return;
    }
    pen *= 2;   /* Double difference in levels as penalty. */
-   if( ch->gold < cost )
+   if( money_value(ch->money) < cost )
    {
       send_to_char( "You can't afford to have it adapted!\r\n", ch );
       return;
@@ -3435,7 +3409,25 @@ void do_adapt( CHAR_DATA * ch, char *argument )
       }
    }
 
-   ch->gold -= cost; /* Take the cost from char's gold. */
+   char *coststring;
+   char change[MSL], mbuf[MSL];
+   change[0] = '\0';
+   coststring = take_best_coins(ch->money,cost); /* Gives a string of the coins we need to steal. */
+   coststring = one_argument(coststring,change); /* First arg is change, skip it. Rest is what we take. */
+   for( short mn = 0; mn < MAX_CURRENCY; mn++ )
+   {
+    char m_number[MSL], m_name[MSL];
+    coststring = one_argument(coststring,m_number);
+    if( m_number[0] == '\0' )
+     break;
+    coststring = one_argument(coststring,m_name);
+    if( m_name[0] == '\0' )
+     break;
+    if( m_number > 0 )
+     snprintf(mbuf,MSL,"%s %s",m_number,m_name);
+   }
+   money_to_value(ch,mbuf);
+
    obj->level = ch->level; /* Allow ch to use the eq... */
    snprintf( buf, MSL, "%s <adapted>", obj->short_descr );
    free_string( obj->short_descr );
@@ -3802,10 +3794,10 @@ void do_bid( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Ok, so now set the variables to reflect the new bidder 
+    * Ok, so now set the variables to reflect the new bidder
     */
    /*
-    * refund gold to last bidder, take gold from new one 
+    * refund gold to last bidder, take gold from new one
     */
 
    if( auction_bidder != NULL )

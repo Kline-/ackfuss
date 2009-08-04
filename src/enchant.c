@@ -221,8 +221,6 @@ void do_enchant( CHAR_DATA * ch, char *argument )
             case APPLY_MOVE:
                mod_move += mod;
                break;
-            case APPLY_GOLD:
-               break;
             case APPLY_EXP:
                break;
             case APPLY_AC:
@@ -328,8 +326,6 @@ void do_enchant( CHAR_DATA * ch, char *argument )
             break;
          case APPLY_MOVE:
             cur_move += mod;
-            break;
-         case APPLY_GOLD:
             break;
          case APPLY_EXP:
             break;

@@ -928,7 +928,7 @@ LOOKUP_TYPE tab_obj_aff[] = {
    {"mana", 12, 400},
    {"hit", 13, 500},
    {"move", 14, 200},
-   {"gold", 15, 10},
+   /* 15 is empty */
    {"exp", 16, 50},
    {"ac", 17, 200},
    {"hitroll", 18, 500},

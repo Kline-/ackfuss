@@ -420,8 +420,6 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
       case APPLY_MOVE:
          ch->max_move += mod;
          break;
-      case APPLY_GOLD:
-         break;
       case APPLY_EXP:
          break;
       case APPLY_AC:
@@ -2440,7 +2438,7 @@ bool item_has_apply( CHAR_DATA * ch, int bit )
 {
    /*
     * Used to see if ch is HOLDING any object(s) with the specified
-    * * ITEM_APPLY bit set.  
+    * * ITEM_APPLY bit set.
     * * -S-
     */
 
@@ -2455,7 +2453,7 @@ bool item_has_apply( CHAR_DATA * ch, int bit )
 
 
 /* For new spells, etc, eg Polymorph.  Transfer a PC to safe room, then
-   'switches' them into the given mob.  The mob is placed into the 
+   'switches' them into the given mob.  The mob is placed into the
    room 'victim' was in. */
 
 CHAR_DATA *switch_char( CHAR_DATA * victim, int mvnum, int poly_level )
@@ -2465,7 +2463,7 @@ CHAR_DATA *switch_char( CHAR_DATA * victim, int mvnum, int poly_level )
     * 0 : equivalent to switch
     * 1 : pc with pcdata.
     * 2 : pc with pcdata + objects
-    * 3 : pc with pcdata + objs, levels and exp, pract, gold
+    * 3 : pc with pcdata + objs, levels and exp, pract, money
     * 4 : as 3, but same stats(hp/mana/move)
     */
 
@@ -2497,7 +2495,7 @@ CHAR_DATA *switch_char( CHAR_DATA * victim, int mvnum, int poly_level )
 
       case 3: /* Level 3 */
          mob->level = victim->level;
-         mob->gold = victim->gold;
+         mob->money = victim->money;
          mob->exp = victim->exp;
          for( foo = 0; foo < MAX_CLASS; foo++ )
             mob->lvl[foo] = victim->lvl[foo];
@@ -2574,7 +2572,7 @@ CHAR_DATA *unswitch_char( CHAR_DATA * victim )
       case 3:
          original->level = victim->level;
          original->exp = victim->exp;
-         original->gold = victim->gold;
+         original->money = victim->money;
          for( foo = 0; foo < MAX_CLASS; foo++ )
             original->lvl[foo] = victim->lvl[foo];
 

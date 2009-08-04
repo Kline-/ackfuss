@@ -698,7 +698,7 @@ void mquest_calc_rewards( CHAR_DATA *ch )
  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP] = number_range(static_cast<int>(clev / 40),static_cast<int>(clev / 20));
  ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD] = number_range(static_cast<int>(clev * 15),static_cast<int>(clev * 30));
 
- if( is_adept(ch) )
+ if( IS_ADEPT(ch) )
   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = number_range(static_cast<int>(exp_to_level_adept(ch) * 0.04),static_cast<int>(exp_to_level_adept(ch) * 0.08));
  else
   ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP] = exp;

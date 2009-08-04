@@ -92,6 +92,7 @@
 #define IS_NPC(ch)              ( (ch)->npc )
 #define IS_IMMORTAL(ch)         (get_trust(ch) >= LEVEL_IMMORTAL)
 #define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
+#define IS_ADEPT(ch)            ( !IS_NPC(ch) && ch->pcdata->adept_level > 0 )
 #define IS_AFFECTED(ch, sn)     (IS_SET((ch)->affected_by, (sn)))
 #define IS_HUNGRY(ch)           ( !IS_NPC(ch) && ch->pcdata->condition[COND_FULL] <= 0 )
 #define IS_THIRSTY(ch)          ( !IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] <= 0 )
@@ -128,7 +129,7 @@
 #define WAIT_STATE(ch, npulse)  ((ch)->wait = UMAX((ch)->wait, (npulse)))
 #define MANA_COST(ch, sn)       (IS_NPC(ch) ? 0 : UMAX ( skill_table[sn].min_mana, 100 / (2 + ch->level - skill_table[sn].skill_level[ch->class] ) ) )
 #define IS_RIDING(ch)           (!IS_NPC(ch) && ((ch)->riding))
-#define ADEPT_LEVEL(ch)         (IS_NPC(ch) ? (ch)->level/7 : (ch)->adept_level )
+#define ADEPT_LEVEL(ch)         (IS_NPC(ch) ? (ch)->level/7 : (ch)->pcdata->adept_level )
 #define MAGIC_STANCE(ch)        ( IS_NPC(ch) ? FALSE : \
                                    ( (ch)->stance == STANCE_CASTER ) \
                                 || ( (ch)->stance == STANCE_WIZARD ) \

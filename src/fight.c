@@ -1616,7 +1616,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
          diff = 5;
    }
    ch->sentence += diff * get_psuedo_level( ch ) * 3; /* Magic # - Ramias */
-   if( ch->adept_level > 0 )
+   if( IS_ADEPT(ch) )
       ch->sentence += diff * get_psuedo_level( ch ) * 2;
 
    ch->act.set(ACT_KILLER);
@@ -2241,18 +2241,14 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          corpse->timer = number_range( 3, 6 );
          corpse->level = ch->level; /* for animate spell */
          /*
-          * Takes a mob 8 rl hours to gain full gold. 
+          * Takes a mob 8 rl hours to gain full gold.
           */
          lifetime = current_time - ( ch->logon );
          gold = 5 * ( ch->level ) * ( UMIN( 100, lifetime * 100 / ( 8 * 3600 ) ) ) / 100;
          /*
-          * Then take from 1/5 of maximum (i.e. level) to maximum gold. 
+          * Then take from 1/5 of maximum (i.e. level) to maximum gold.
           */
          gold = number_range( gold / 5, gold );
-         /*
-          * Add special gold. 
-          */
-         gold += ch->gold;
 
          /*
           * Not everybody is rich. --Kline
@@ -2261,10 +2257,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
           gold = 0;
 
          if( gold > 0 )
-         {
             join_money( round_money( gold, TRUE ), corpse->money );
-         }
-         ch->gold = 0;
       }
    }
    else  /* player */
@@ -2583,7 +2576,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       if( gain < 0 )
        gain = 0;
 
-      if( gch->adept_level > 0 )
+      if( IS_ADEPT(gch) )
          gain /= 1000;
 
       /* Support changing exp on the fly. --Kline */
@@ -3535,7 +3528,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
       if( !IS_NPC( ch ) )
       {
          cost = number_range( ch->exp / 15, ch->exp / 10 );
-         if( ch->adept_level > 0 )
+         if( IS_ADEPT(ch) )
             cost /= 1000;
          cost = UMIN( cost, ch->exp );
          snprintf( buf, MSL, "You flee from combat!  You lose %d exps.\r\n", cost );
@@ -3557,7 +3550,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
    }
 
    cost = get_psuedo_level( ch ) * 3;
-   if( ch->adept_level > 0 )
+   if( IS_ADEPT(ch) )
       cost = 0;
    cost = UMIN( cost, ch->exp );
    snprintf( buf, MSL, "You failed!  You lose %d exps.\r\n", cost );
@@ -6138,7 +6131,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_MAGI: /* Magi */
-               if( ( ch->adept_level > 10 ) )   /*adept */
+               if( IS_ADEPT(ch) && ADEPT_LEVEL(ch) > 10 )   /*adept */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
 
@@ -6192,7 +6185,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
             }
             break;
          case STANCE_MAGI:
-            if( ( ch->adept_level > 10 ) )   /*adept */
+            if( IS_ADEPT(ch) && ADEPT_LEVEL(ch) > 10 )   /*adept */
             {
                legal_stance = TRUE;
                break;

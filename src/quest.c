@@ -457,12 +457,11 @@ CHAR_DATA *get_quest_target( int min_level, int max_level )
           || ( target->in_room->area->flags.test(AFLAG_NOSHOW) )
           || ( target->act.test(ACT_SENTINEL) )
           || ( target->act.test(ACT_PET) )
-          || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_stephen" ) )
-          || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_tax_man" ) ) )
+          || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_stephen" ) ) )
          continue;
 
       /*
-       * Lastly, some random choice 
+       * Lastly, some random choice
        */
       if( number_percent(  ) < 2 )
          break;

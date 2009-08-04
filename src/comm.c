@@ -85,6 +85,10 @@
 #include "h/magic.h"
 #endif
 
+#ifndef DEC_MONEY_H
+#include "h/money.h"
+#endif
+
 #ifndef DEC_MUDINFO_H
 #include "h/mudinfo.h"
 #endif
@@ -1067,49 +1071,49 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       char msg2[MSL]; /* what */
       char msg3[MSL]; /* all */
 
-      if( ch->act_build == ACT_BUILD_NOWT )
+      if( ch->pcdata->build_mode == BUILD_MODE_NONE )
       {
          snprintf( msg, MSL, "Mode:  None" );
          snprintf( msg2, MSL, "Use Redit, Medit or Oedit to select mode." );
       }
 
-      if( ch->act_build == ACT_BUILD_REDIT )
+      if( ch->pcdata->build_mode == BUILD_MODE_REDIT )
       {
          snprintf( msg, MSL, "Mode: Redit" );
-         if( ch->build_vnum == -1 )
+         if( ch->pcdata->build_vnum < 1 )
             snprintf( msg2, MSL, "No vnum is set." );
          else
          {
-            room = get_room_index( ch->build_vnum );
+            room = get_room_index( ch->pcdata->build_vnum );
             if( room != NULL )
-               snprintf( msg2, MSL, "[%5d]: %s", ch->build_vnum, room->name );
+               snprintf( msg2, MSL, "[%5d]: %s", ch->pcdata->build_vnum, room->name );
          }
       }
 
-      if( ch->act_build == ACT_BUILD_OEDIT )
+      if( ch->pcdata->build_mode == BUILD_MODE_OEDIT )
       {
          snprintf( msg, MSL, "Mode: Oedit" );
-         if( ch->build_vnum == -1 )
+         if( ch->pcdata->build_vnum < 1 )
             snprintf( msg2, MSL, "No vnum set." );
          else
          {
-            obj = get_obj_index( ch->build_vnum );
+            obj = get_obj_index( ch->pcdata->build_vnum );
             if( obj != NULL )
-               snprintf( msg2, MSL, "[%5d]: %s", ch->build_vnum, obj->short_descr );
+               snprintf( msg2, MSL, "[%5d]: %s", ch->pcdata->build_vnum, obj->short_descr );
          }
       }
 
 
-      if( ch->act_build == ACT_BUILD_MEDIT )
+      if( ch->pcdata->build_mode == BUILD_MODE_MEDIT )
       {
          snprintf( msg, MSL, "Mode: Medit" );
-         if( ch->build_vnum == -1 )
+         if( ch->pcdata->build_vnum < 1 )
             snprintf( msg2, MSL, "No vnum set." );
          else
          {
-            mob = get_mob_index( ch->build_vnum );
+            mob = get_mob_index( ch->pcdata->build_vnum );
             if( mob != NULL )
-               snprintf( msg2, MSL, "[%5d]: %s", ch->build_vnum, mob->short_descr );
+               snprintf( msg2, MSL, "[%5d]: %s", ch->pcdata->build_vnum, mob->short_descr );
          }
       }
       snprintf( msg3, MSL, "< %s %s >", msg, msg2 );
@@ -1362,7 +1366,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             i = buf2;
             break;
          case 'g':
-            snprintf( buf2, MSL, "%d", ch->gold );
+            snprintf( buf2, MSL, "%d", money_value(ch->money) );
             i = buf2;
             break;
          case 'a':
@@ -2877,20 +2881,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
 
       act( "$n enters " mudnamecolor ".", ch, NULL, NULL, TO_ROOM );
-      char_list.push_back(ch); // we removed them earlier in the function, now put them back that login is done --Kline
+      char_list.push_back(ch); /* we removed them earlier in the function, now put them back that login is done --Kline */
 
       snprintf( buf, MSL, "%s has entered the game.", ch->name );
       monitor_chan( buf, MONITOR_CONNECT );
-
-      if( ( number_range( 0, 99 ) < ( ch->balance / 10000000 ) ) && ( ch->balance > ( get_psuedo_level( ch ) * 100000 ) ) )
-      {
-         int loss;
-         int new_balance;
-         loss = number_range( (int)(ch->balance * .3), (int)(ch->balance * .6) );
-         new_balance = UMAX( ch->balance - loss, get_psuedo_level( ch ) * 100000 );
-         ch->balance = UMIN( ch->balance, new_balance );
-      }
-
 
       if( !IS_NPC( ch ) )
       {

@@ -1367,7 +1367,7 @@ DO_FUN(do_score)
       send_to_char( buf, ch );
    }
 
-   if( ch->adept_level > 0 )
+   if( IS_ADEPT(ch) )
    {
       snprintf( buf, MSL, "@@WADEPT@@N: %s ", get_adept_name( ch ) );
       buf2[0] = '\0';
@@ -2066,17 +2066,17 @@ DO_FUN(do_who)
          if( ( list == SHOW_IMMORT && wch->level < LEVEL_HERO )
              || ( list == SHOW_REMORT && ( !is_remort( wch ) || wch->level >= LEVEL_HERO ) )
              || ( list == SHOW_MORTAL && ( is_remort( wch ) || wch->level >= LEVEL_HERO ) )
-             || ( list == SHOW_ADEPT && ( wch->adept_level < 1 ) )
+             || ( list == SHOW_ADEPT && ( !IS_ADEPT(wch) ) )
              || ( list == SHOW_ADEPT && ( wch->level >= LEVEL_HERO ) )
-             || ( list == SHOW_REMORT && ( wch->adept_level > 0 ) ) )
+             || ( list == SHOW_REMORT && ( IS_ADEPT(wch) ) ) )
             continue;
 
          if( wch->level < iLevelLower
              || wch->level > iLevelUpper
              || ( fImmortalOnly && wch->level < LEVEL_HERO )
-             || ( fadeptonly && ( ( wch->adept_level < 1 ) || wch->level >= LEVEL_HERO ) )
+             || ( fadeptonly && ( ( !IS_ADEPT(wch) ) || wch->level >= LEVEL_HERO ) )
              || ( fClassRestrict && !rgfClass[wch->p_class] )
-             || ( fremortonly && ( !is_remort( wch ) || ( wch->level >= LEVEL_HERO ) || ( wch->adept_level > 0 ) ) ) )
+             || ( fremortonly && ( !is_remort( wch ) || ( wch->level >= LEVEL_HERO ) || ( IS_ADEPT(wch) ) ) ) )
             continue;
 
 /* Multiple grouping restriction checks  Zen */
@@ -2085,9 +2085,9 @@ DO_FUN(do_who)
             bool ch_adept = FALSE, ch_dremort = FALSE, ch_sremort = FALSE, victim_adept = FALSE,
                victim_dremort = FALSE, victim_sremort = FALSE, legal_group = FALSE;
 
-            if( ch->adept_level > 0 )
+            if( IS_ADEPT(ch) )
                ch_adept = TRUE;
-            if( wch->adept_level > 0 )
+            if( IS_ADEPT(wch) )
                victim_adept = TRUE;
 
             if( get_psuedo_level( ch ) > 97 )
@@ -2206,17 +2206,17 @@ DO_FUN(do_who)
          if( ( list == SHOW_IMMORT && wch->level < LEVEL_HERO )
              || ( list == SHOW_REMORT && ( !is_remort( wch ) || wch->level >= LEVEL_HERO ) )
              || ( list == SHOW_MORTAL && ( is_remort( wch ) || wch->level >= LEVEL_HERO ) )
-             || ( list == SHOW_ADEPT && ( wch->adept_level < 1 ) )
+             || ( list == SHOW_ADEPT && ( !IS_ADEPT(wch) ) )
              || ( list == SHOW_ADEPT && ( wch->level >= LEVEL_HERO ) )
-             || ( list == SHOW_REMORT && ( wch->adept_level > 0 ) ) )
+             || ( list == SHOW_REMORT && ( IS_ADEPT(wch) ) ) )
             continue;
 
          if( wch->level < iLevelLower
              || wch->level > iLevelUpper
              || ( fImmortalOnly && wch->level < LEVEL_HERO )
-             || ( fadeptonly && ( ( wch->adept_level < 1 ) || wch->level >= LEVEL_HERO ) )
+             || ( fadeptonly && ( ( !IS_ADEPT(wch) ) || wch->level >= LEVEL_HERO ) )
              || ( fClassRestrict && !rgfClass[wch->p_class] )
-             || ( fremortonly && ( !is_remort( wch ) || ( wch->level >= LEVEL_HERO ) || ( wch->adept_level > 0 ) ) ) )
+             || ( fremortonly && ( !is_remort( wch ) || ( wch->level >= LEVEL_HERO ) || ( IS_ADEPT(wch) ) ) ) )
 
             continue;
 
@@ -2226,9 +2226,9 @@ DO_FUN(do_who)
             bool ch_adept = FALSE, ch_dremort = FALSE, ch_sremort = FALSE, victim_adept = FALSE,
                victim_dremort = FALSE, victim_sremort = FALSE, legal_group = FALSE;
 
-            if( ch->adept_level > 0 )
+            if( IS_ADEPT(ch) )
                ch_adept = TRUE;
-            if( wch->adept_level > 0 )
+            if( IS_ADEPT(wch) )
                victim_adept = TRUE;
 
             if( get_psuedo_level( ch ) > 97 )
@@ -3185,7 +3185,7 @@ DO_FUN(do_practice)
          send_to_char( "You can't practice that.\r\n", ch );
          return;
       }
-      if( ( skill_table[sn].flag1 == ADEPT ) && ( ch->adept_level >= skill_table[sn].skill_level[0] ) )
+      if( ( skill_table[sn].flag1 == ADEPT ) && IS_ADEPT(ch) && ( ADEPT_LEVEL(ch) >= skill_table[sn].skill_level[0] ) )
       {
          p_class = 0;
          ok = TRUE;
@@ -4163,7 +4163,7 @@ DO_FUN(do_slist)
                strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
-                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
+                     ( adept_class ? ADEPT_LEVEL(ch) : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
                strncat( buf1, buf, MSL );
@@ -4195,7 +4195,7 @@ DO_FUN(do_slist)
                strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
-                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
+                     ( adept_class ? ADEPT_LEVEL(ch) : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
                strncat( buf1, buf, MSL );
@@ -4227,7 +4227,7 @@ DO_FUN(do_slist)
                strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
-                     ( adept_class ? ch->adept_level : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
+                     ( adept_class ? ADEPT_LEVEL(ch) : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
                strncat( buf1, buf, MSL );
@@ -4712,7 +4712,7 @@ DO_FUN(do_gain)
 
 /* second case..can adept */
 
-   if( ( morts_at_eighty == 5 ) && ( remorts_at_eighty == 2 ) && ( ch->adept_level < 1 ) )
+   if( ( morts_at_eighty == 5 ) && ( remorts_at_eighty == 2 ) && ( !IS_ADEPT(ch) ) )
    {
       allow_adept = TRUE;
    }
@@ -4748,7 +4748,7 @@ DO_FUN(do_gain)
             snprintf( buf, MSL, "%s : %d Exp.\r\n", remort_table[cnt].who_name, cost );
             send_to_char( buf, ch );
          }
-      if( ( ch->adept_level > 0 ) && ( ch->adept_level < 20 ) )
+      if( IS_ADEPT(ch) && ADEPT_LEVEL(ch) < 20 )
       {
          any = TRUE;
          cost = exp_to_level_adept( ch );
@@ -4822,7 +4822,7 @@ DO_FUN(do_gain)
 
    if( !str_prefix( "ADEPT", argument ) )
    {
-      if( ( ch->adept_level < 0 ) && !allow_adept )
+      if( !IS_ADEPT(ch) && !allow_adept )
          return;
 
       any = TRUE;
@@ -4846,7 +4846,7 @@ DO_FUN(do_gain)
       cost = exp_to_level( ch, c, 5 );
    else if( adept )
    {
-      if( ch->adept_level < 1 )
+      if( !IS_ADEPT(ch) )
          cost = 0;
       else
          cost = exp_to_level_adept( ch );
@@ -4910,19 +4910,19 @@ DO_FUN(do_gain)
       send_to_char( "@@NYou have reached the epitome of Rank in the ways of the @@eKindred@@N.\r\n", ch );
       return;
    }
-   if( ( adept ) && ( ch->adept_level < 20 ) )
+   if( ( adept ) && ( ADEPT_LEVEL(ch) < 20 ) )
    {
       c = ADVANCE_ADEPT;
       send_to_char( "@@WYou have reached another step on the stairway to Wisdom!!!@@N\r\n", ch );
       ch->exp -= cost;
       advance_level( ch, c, TRUE, FALSE );
-      ch->adept_level = UMAX( 1, ch->adept_level + 1 );
+      ch->pcdata->adept_level++;
       snprintf( buf, MSL, "%s @@W advances in the way of the Adept!!\r\n", ch->name );
       info( buf, 1 );
       free_string( ch->pcdata->who_name );
       ch->pcdata->who_name = str_dup( get_adept_name( ch ) );
       do_save( ch, "auto" );
-      if( ch->adept_level == 1 )
+      if( ADEPT_LEVEL(ch) == 1 )
          ch->exp /= 1000;
       return;
    }
@@ -5014,13 +5014,16 @@ DO_FUN(do_assassinate)
 {
    char buf[MAX_STRING_LENGTH];
    int cost;
+   int change = 0;
+   char givebuf[MSL], changebuf[MSL];
+   char *cost_string;
    CHAR_DATA *mob;
    CHAR_DATA *victim;
    buf[0] = '\0';
 
 
    /*
-    * Check for mob with act->merc 
+    * Check for mob with act->merc
     */
    for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    {
@@ -5072,7 +5075,7 @@ DO_FUN(do_assassinate)
    }
 
 
-   if( ch->gold < cost )
+   if( money_value(ch->money) < cost )
    {
       act( "$N tells you, 'You can't afford my services!'", ch, NULL, mob, TO_CHAR );
       return;
@@ -5090,8 +5093,19 @@ DO_FUN(do_assassinate)
       return;
    }*/
 
+   cost_string = take_best_coins( ch->money, cost );
+   cost_string = one_argument( cost_string, changebuf );
+   change = is_number( changebuf ) ? atoi( changebuf ) : 0;
+   snprintf( givebuf, MSL, "%s to %s", cost_string, mob->name );
+   do_give( ch, givebuf );
 
-   ch->gold -= cost;
+   if( change > 0 )
+   {
+      MONEY_TYPE *transaction;
+      transaction = round_money( change, TRUE );
+      join_money( transaction, ch->money );
+   }
+
    act( "$n gives $N some gold coins.", ch, NULL, mob, TO_NOTVICT );
    act( "$n says '$N shall die by my hand!`", mob, NULL, victim, TO_ROOM );
    snprintf( buf, MSL, "%s employs the services of %s to assassinate %s!!", ch->name, NAME(mob), victim->name );
@@ -5394,7 +5408,7 @@ DO_FUN(do_worth)
    send_to_char( "Cost is shown first, followed by how much more exp you need.\r\n\r\n", ch );
    send_to_char( "CLASS NAME:        COST:    DIFFERENCE:\r\n\r\n", ch );
 
-   if( ch->adept_level > 0 )
+   if( IS_ADEPT(ch) )
    {
 
       cost = exp_to_level_adept( ch );
@@ -5476,7 +5490,7 @@ DO_FUN(do_whois)
    {
       snprintf( buf + strlen( buf ), MSL, " [ %3s ]\r\n", victim->pcdata->who_name );
    }
-   else if( victim->adept_level > 0 )
+   else if( IS_ADEPT(victim) )
    {
       snprintf( buf + strlen( buf ), MSL, " %s \r\n", get_adept_name( victim ) );
    }

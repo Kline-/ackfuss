@@ -131,8 +131,8 @@ int mana_cost( CHAR_DATA * ch, int sn )
    if( skill_table[sn].flag1 == ADEPT )
    {
       best = -1;
-      if( ch->adept_level >= skill_table[sn].skill_level[0] )
-         best = ch->adept_level * 4;
+      if( IS_ADEPT(ch) && ADEPT_LEVEL(ch) >= skill_table[sn].skill_level[0] )
+         best = ADEPT_LEVEL(ch) * 4;
    }
 
    if( ( best == -1 ) && ( IS_NPC( ch ) ) )
@@ -572,8 +572,8 @@ void cast( CHAR_DATA * ch, char *argument )
    if( !IS_NPC( ch ) )
       if( ( IS_VAMP( ch ) ) && ( skill_table[sn].flag2 == VAMP ) )
          best = ch->pcdata->super->level * 4;
-   if( ( ch->adept_level > 0 ) && ( skill_table[sn].flag1 == ADEPT ) )
-      best = ch->adept_level * 4;
+   if( IS_ADEPT(ch) && ( skill_table[sn].flag1 == ADEPT ) )
+      best = ADEPT_LEVEL(ch) * 4;
    if( IS_NPC( ch ) && ( skill_table[sn].flag1 == ADEPT ) )
       best = -1;
    if( !IS_NPC( ch ) )

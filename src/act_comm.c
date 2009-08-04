@@ -692,7 +692,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                 && ( ( !IS_VAMP( och ) || !IS_VAMP( ch ) )
                      || ( och->pcdata->super->bloodline != ch->pcdata->super->bloodline ) ) )
                continue;
-            if( channel == CHANNEL_ADEPT && vch->adept_level < 1 )
+            if( channel == CHANNEL_ADEPT && !IS_ADEPT(vch) )
                continue;
             if( ( channel == CHANNEL_HOWL ) && ( !IS_WOLF( och ) ) )
             {
@@ -998,7 +998,7 @@ DO_FUN(do_ooc)
 
 DO_FUN(do_adepttalk)
 {
-   if( ch->adept_level < 1 )
+   if( !IS_ADEPT(ch) )
    {
       send_to_char( "You are not @@cADEPT!!@@N\r\n", ch );
       return;

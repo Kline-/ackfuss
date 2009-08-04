@@ -32,7 +32,6 @@ void load_room P_((FILE *fp));
 void load_shop P_((FILE *fp));
 void load_notes P_((void));
 void fix_exits P_((void));
-void load_gold P_((void));
 void load_disabled P_((void));
 void save_disabled P_((void));
 void check_resets P_((void));

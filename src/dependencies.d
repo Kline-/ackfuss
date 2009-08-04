@@ -68,7 +68,7 @@ o/comm.o: comm.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_info.h h/act_obj.h h/act_wiz.h h/comm.h h/cursor.h h/db.h \
-  h/handler.h h/magic.h h/mudinfo.h h/ssm.h h/telopt.h
+  h/handler.h h/magic.h h/money.h h/mudinfo.h h/ssm.h h/telopt.h
 o/const.o: const.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/magic.h \

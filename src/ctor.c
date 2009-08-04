@@ -57,7 +57,6 @@ area_data::area_data()
  first_area_room = NULL;
  first_area_shop = NULL;
  first_reset = NULL;
- gold = 0;
  keyword = &str_empty[0];
  last_area_mobile = NULL;
  last_area_object = NULL;
@@ -143,14 +142,10 @@ cast_data::cast_data()
 char_data::char_data()
 {
  act.reset();
- act_build = 0;
- adept_level = 0;
  affected_by = 0;
  alignment = 0;
  armor = 100;
- balance = 0;
  bank_money = new MONEY_TYPE;
- build_vnum = 0;
  carry_number = 0;
  carry_weight = 0;
  casting = new CAST_DATA;
@@ -170,7 +165,6 @@ char_data::char_data()
  first_carry = NULL;
  first_saved_aff = NULL;
  first_shield = NULL;
- gold = 0;
  hit = 50;
  hitroll = 5;
  hunting = NULL;
@@ -536,6 +530,7 @@ obj_index_data::obj_index_data()
 
 pc_data::pc_data()
 {
+ adept_level = 0;
  for( short i = 0; i < MAX_ALIASES; i++ )
  {
   alias[i] = &str_empty[0];
@@ -544,6 +539,8 @@ pc_data::pc_data()
  assist_msg = &str_empty[0];
  bamfin = &str_empty[0];
  bamfout = &str_empty[0];
+ build_mode = 0;
+ build_vnum = 0;
  for( short i = 0; i < MAX_COND; i++ )
   condition[i] = 0;
  for( short i = 0; i < MAX_COLOR; i++ )

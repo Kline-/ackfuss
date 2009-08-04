@@ -560,14 +560,10 @@ class char_data
   void set_cooldown( int pos, float duration );
 
   bitset<MAX_BITSET> act;
-  int act_build; /* for setting what ya editing */
-  int adept_level;
   int affected_by;
   short alignment;
   short armor;
-  int balance;   /* Amount of gold (if any) in bank */
   MONEY_TYPE *bank_money;
-  int build_vnum;   /* the current vnum for w-y-e  */
   short carry_number;
   float carry_weight;
   CAST_DATA *casting;
@@ -586,7 +582,6 @@ class char_data
   OBJ_DATA *first_carry;
   AFFECT_DATA *first_saved_aff;
   MAGIC_SHIELD *first_shield;
-  int gold;
   int hit;
   short hitroll;
   CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
@@ -698,11 +693,14 @@ class pc_data
  public:
   pc_data();
   ~pc_data();
+  short adept_level;
   char *alias[MAX_ALIASES];
   char *alias_name[MAX_ALIASES];
   char *assist_msg;
   char *bamfin;
   char *bamfout;
+  short build_mode;
+  int build_vnum;
   short condition[MAX_COND];
   int color[MAX_COLOR];
   char dimcol;
@@ -978,7 +976,6 @@ class area_data
   BUILD_DATA_LIST         *first_area_room;
   BUILD_DATA_LIST         *first_area_shop;
   RESET_DATA              *first_reset;
-  int                     gold;
   char                    *keyword;
   BUILD_DATA_LIST         *last_area_mobile;
   BUILD_DATA_LIST         *last_area_object;
