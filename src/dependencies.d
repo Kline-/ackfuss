@@ -114,10 +114,10 @@ o/hunt.o: hunt.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_move.h h/act_wiz.h h/comm.h h/db.h h/fight.h h/handler.h h/ssm.h
-o/imc.o: imc.c h/sha256.h h/globals.h h/includes.h h/lua.hpp h/lua.h \
-  h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
-  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
-  h/act_wiz.h h/comm.h h/db.h h/handler.h
+o/imc.o: imc.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
+  h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
+  h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h \
+  h/comm.h h/db.h h/handler.h h/sha256.h
 o/interp.o: interp.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_clan.h \

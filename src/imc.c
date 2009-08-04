@@ -21,16 +21,6 @@
 #include <fnmatch.h>
 #endif
 
-#ifdef IMCSTANDALONE
-#ifndef DEC_IMC_H
-   #include "h/imc.h"
-#endif
-#endif
-#ifndef DEC_SHA256_H
-#include "h/sha256.h"
-#endif
-
-#if defined(IMCACK)
 #include "h/globals.h"
 
 #ifndef DEC_ACT_WIZ_H
@@ -49,6 +39,8 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_SHA256_H
+#include "h/sha256.h"
 #endif
 
 #define IMCKEY( literal, field, value ) \
@@ -196,9 +188,7 @@ void imclog( const char *format, ... )
 
    snprintf( buf2, LGST, "IMC: %s", buf );
 
-   #if defined(IMCACK)
-    monitor_chan(buf2+5,MONITOR_IMC);
-   #endif
+   monitor_chan(buf2+5,MONITOR_IMC);
 
    strtime = ctime( &imc_time );
    strtime[strlen( strtime ) - 1] = '\0';
@@ -220,9 +210,7 @@ void imcbug( const char *format, ... )
 
    snprintf( buf2, LGST, "IMC: ***BUG*** %s", buf );
 
-   #if defined(IMCACK)
-    monitor_chan(buf2+5,MONITOR_IMC);
-   #endif
+   monitor_chan(buf2+5,MONITOR_IMC);
 
    strtime = ctime( &imc_time );
    strtime[strlen( strtime ) - 1] = '\0';
@@ -409,11 +397,8 @@ void imc_to_char( const char *txt, CHAR_DATA * ch )
    char buf[LGST * 2];
 
    snprintf( buf, LGST * 2, "%s\033[0m", color_itom( txt, ch ) );
-#if defined(IMCSTANDALONE)
-   fprintf( stderr, "%s\n", buf );
-#else
    send_to_char( buf, ch );
-#endif
+
    return;
 }
 
@@ -1811,13 +1796,11 @@ void imc_display_channel( IMC_CHANNEL * c, const char *from, char *txt, int emot
       if( !ch || d->connected != CON_PLAYING )
          continue;
 
-#if !defined(IMCSTANDALONE)
       /*
-       * Freaking stupid PC_DATA crap! 
+       * Freaking stupid PC_DATA crap!
        */
       if( IS_NPC( ch ) )
          continue;
-#endif
 
       if( IMCPERM( ch ) < c->level || !imc_hasname( IMC_LISTEN( ch ), c->local_name ) )
          continue;
@@ -2066,13 +2049,11 @@ PFUN( imc_recv_channelnotify )
       if( !ch || d->connected != CON_PLAYING )
          continue;
 
-#if !defined(IMCSTANDALONE)
       /*
        * Freaking stupid PC_DATA crap! 
        */
       if( IS_NPC( ch ) )
          continue;
-#endif
 
       if( IMCPERM( ch ) < c->level || !imc_hasname( IMC_LISTEN( ch ), c->local_name ) )
          continue;
@@ -3552,10 +3533,8 @@ bool imc_loadchar( CHAR_DATA * ch, FILE * fp, const char *word )
 {
    bool fMatch = FALSE;
 
-#if !defined(IMCSTANDALONE)
    if( IS_NPC( ch ) )
       return FALSE;
-#endif
 
    if( IMCPERM( ch ) == IMCPERM_NOTSET )
       imc_adjust_perms( ch );
@@ -3650,10 +3629,8 @@ void imc_savechar( CHAR_DATA * ch, FILE * fp )
 {
    IMC_IGNORE *temp;
 
-#if !defined(IMCSTANDALONE)
    if( IS_NPC( ch ) )
       return;
-#endif
 
    fprintf( fp, "IMCPerm        %d\n", IMCPERM( ch ) );
    fprintf( fp, "IMCFlags       %ld\n", ( long int )IMCFLAG( ch ) );
@@ -3680,129 +3657,13 @@ void imc_savechar( CHAR_DATA * ch, FILE * fp )
    return;
 }
 
-#if defined(_DISKIO_H_)
-/* This is used only by CircleMUDs which have the ASCII Pfile code installed */
-void imc_load_pfile( CHAR_DATA * ch, char *tag, int num, char *line )
-{
-   if( !strcmp( tag, "IMCPrm" ) )
-      IMCPERM( ch ) = num;
-   if( !strcmp( tag, "IMCEml" ) )
-      IMC_EMAIL( ch ) = IMCSTRALLOC( line );
-   if( !strcmp( tag, "IMCAIM" ) )
-      IMC_AIM( ch ) = IMCSTRALLOC( line );
-   if( !strcmp( tag, "IMCICQ" ) )
-      IMC_ICQ( ch ) = num;
-   if( !strcmp( tag, "IMCYah" ) )
-      IMC_YAHOO( ch ) = IMCSTRALLOC( line );
-   if( !strcmp( tag, "IMCMSN" ) )
-      IMC_MSN( ch ) = IMCSTRALLOC( line );
-   if( !strcmp( tag, "IMCURL" ) )
-      IMC_HOMEPAGE( ch ) = IMCSTRALLOC( line );
-   if( !strcmp( tag, "IMCCMT" ) )
-      IMC_COMMENT( ch ) = IMCSTRALLOC( line );
-   if( !strcmp( tag, "IMCFLG" ) )
-      IMCFLAG( ch ) = num;
-   if( !strcmp( tag, "IMCLSN" ) )
-   {
-      IMC_LISTEN( ch ) = IMCSTRALLOC( line );
-      if( IMC_LISTEN( ch ) != NULL && imc_active == IA_UP )
-      {
-         IMC_CHANNEL *channel = NULL;
-         char *channels = IMC_LISTEN( ch );
-         char arg[SMST];
-
-         while( 1 )
-         {
-            if( channels[0] == '\0' )
-               break;
-            channels = imcone_argument( channels, arg );
-
-            if( !( channel = imc_findlchannel( arg ) ) )
-               imc_removename( &IMC_LISTEN( ch ), arg );
-            if( channel && IMCPERM( ch ) < channel->level )
-               imc_removename( &IMC_LISTEN( ch ), arg );
-            if( imc_hasname( IMC_LISTEN( ch ), arg ) )
-               imc_sendnotify( ch, arg, TRUE );
-         }
-      }
-   }
-
-   if( !strcmp( tag, "IMCDNY" ) )
-   {
-      IMC_DENY( ch ) = IMCSTRALLOC( line );
-      if( IMC_DENY( ch ) != NULL && imc_active == IA_UP )
-      {
-         IMC_CHANNEL *channel = NULL;
-         char *channels = IMC_DENY( ch );
-         char arg[SMST];
-
-         while( 1 )
-         {
-            if( channels[0] == '\0' )
-               break;
-            channels = imcone_argument( channels, arg );
-
-            if( !( channel = imc_findlchannel( arg ) ) )
-               imc_removename( &IMC_DENY( ch ), arg );
-            if( channel && IMCPERM( ch ) < channel->level )
-               imc_removename( &IMC_DENY( ch ), arg );
-         }
-      }
-   }
-
-   if( !strcmp( tag, "IMCIGN" ) )
-   {
-      IMC_IGNORE *temp;
-
-      IMCCREATE( temp, IMC_IGNORE, 1 );
-      temp->name = IMCSTRALLOC( line );
-      IMCLINK( temp, FIRST_IMCIGNORE( ch ), LAST_IMCIGNORE( ch ), next, prev );
-   }
-}
-
-/* This is used only by CircleMUDs which have the ASCII Pfile code installed */
-void imc_save_pfile( struct CHAR_DATA *ch, FBFILE * fp )
-{
-   IMC_IGNORE *temp;
-
-   if( IS_NPC( ch ) )
-      return;
-
-   fbprintf( fp, "IMCPrm      %d\n", IMCPERM( ch ) );
-   fbprintf( fp, "IMCFLG     %d\n", IMCFLAG( ch ) );
-   if( IMC_LISTEN( ch ) && IMC_LISTEN( ch )[0] != '\0' )
-      fbprintf( fp, "IMCLSN %s\n", IMC_LISTEN( ch ) );
-   if( IMC_DENY( ch ) && IMC_DENY( ch )[0] != '\0' )
-      fbprintf( fp, "IMCDNY   %s\n", IMC_DENY( ch ) );
-   if( IMC_EMAIL( ch ) && IMC_EMAIL( ch )[0] != '\0' )
-      fbprintf( fp, "IMCEml   %s\n", IMC_EMAIL( ch ) );
-   if( IMC_HOMEPAGE( ch ) && IMC_HOMEPAGE( ch )[0] != '\0' )
-      fbprintf( fp, "IMCURL   %s\n", IMC_HOMEPAGE( ch ) );
-   if( IMC_ICQ( ch ) )
-      fbprintf( fp, "IMCICQ   %d\n", IMC_ICQ( ch ) );
-   if( IMC_AIM( ch ) && IMC_AIM( ch )[0] != '\0' )
-      fbprintf( fp, "IMCAIM   %s\n", IMC_AIM( ch ) );
-   if( IMC_YAHOO( ch ) && IMC_YAHOO( ch )[0] != '\0' )
-      fbprintf( fp, "IMCYah   %s\n", IMC_YAHOO( ch ) );
-   if( IMC_MSN( ch ) && IMC_MSN( ch )[0] != '\0' )
-      fbprintf( fp, "IMCMSN   %s\n", IMC_MSN( ch ) );
-   if( IMC_COMMENT( ch ) && IMC_COMMENT( ch )[0] != '\0' )
-      fbprintf( fp, "IMCCMT   %s\n", IMC_COMMENT( ch ) );
-   for( temp = FIRST_IMCIGNORE( ch ); temp; temp = temp->next )
-      fbprintf( fp, "IMCIGN   %s\n", temp->name );
-   return;
-}
-#endif
-
 void imc_freechardata( CHAR_DATA * ch )
 {
    IMC_IGNORE *ign, *ign_next;
    int x;
 
-#if !defined(IMCSTANDALONE)
    if( IS_NPC( ch ) )
       return;
-#endif
 
    if( CH_IMCDATA( ch ) == NULL )
       return;
@@ -3832,10 +3693,8 @@ void imc_freechardata( CHAR_DATA * ch )
 
 void imc_initchar( CHAR_DATA * ch )
 {
-#if !defined(IMCSTANDALONE)
    if( IS_NPC( ch ) )
       return;
-#endif
 
    IMCCREATE( CH_IMCDATA( ch ), IMC_CHARDATA, 1 );
    IMC_LISTEN( ch ) = NULL;
@@ -7705,101 +7564,15 @@ IMC_CMD( imc_other )
    return;
 }
 
-#if defined(IMCSTANDALONE)
-/* Standalone compile won't have social structure at all */
-char *imc_send_social( CHAR_DATA *ch, char *argument, int telloption )
-{
-   return "";
-}
-#else
 char *imc_find_social( CHAR_DATA * ch, char *sname, char *person, char *mud, int victim )
 {
    static char socname[LGST];
-#if defined(SMAUGSOCIAL)
-   SOCIAL_DATA *social;
-   char *c;
-#else
    int cmd;
    bool found;
-#endif
 
    socname[0] = '\0';
-
-#if defined(SMAUGSOCIAL)
-   for( c = sname; *c; *c = tolower( *c ), c++ );
-
-   if( ( social = find_social( sname ) ) == NULL )
-   {
-      imc_printf( ch, "~YSocial ~W%s~Y does not exist on this mud.\r\n", sname );
-      return socname;
-   }
-
-   if( person && person[0] != '\0' && mud && mud[0] != '\0' )
-   {
-      if( person && person[0] != '\0' && !strcasecmp( person, CH_IMCNAME( ch ) )
-          && mud && mud[0] != '\0' && !strcasecmp( mud, this_imcmud->localname ) )
-      {
-         if( !social->others_auto )
-         {
-            imc_printf( ch, "~YSocial ~W%s~Y: Missing others_auto.\r\n", sname );
-            return socname;
-         }
-         imcstrlcpy( socname, social->others_auto, LGST );
-      }
-      else
-      {
-         if( victim == 0 )
-         {
-            if( !social->others_found )
-            {
-               imc_printf( ch, "~YSocial ~W%s~Y: Missing others_found.\r\n", sname );
-               return socname;
-            }
-            imcstrlcpy( socname, social->others_found, LGST );
-         }
-         else if( victim == 1 )
-         {
-            if( !social->vict_found )
-            {
-               imc_printf( ch, "~YSocial ~W%s~Y: Missing vict_found.\r\n", sname );
-               return socname;
-            }
-            imcstrlcpy( socname, social->vict_found, LGST );
-         }
-         else
-         {
-            if( !social->char_found )
-            {
-               imc_printf( ch, "~YSocial ~W%s~Y: Missing char_found.\r\n", sname );
-               return socname;
-            }
-            imcstrlcpy( socname, social->char_found, LGST );
-         }
-      }
-   }
-   else
-   {
-      if( victim == 0 || victim == 1 )
-      {
-         if( !social->others_no_arg )
-         {
-            imc_printf( ch, "~YSocial ~W%s~Y: Missing others_no_arg.\r\n", sname );
-            return socname;
-         }
-         imcstrlcpy( socname, social->others_no_arg, LGST );
-      }
-      else
-      {
-         if( !social->char_no_arg )
-         {
-            imc_printf( ch, "~YSocial ~W%s~Y: Missing char_no_arg.\r\n", sname );
-            return socname;
-         }
-         imcstrlcpy( socname, social->char_no_arg, LGST );
-      }
-   }
-#else
    found = FALSE;
+
    for( cmd = 0; social_table[cmd].name[0] != '\0'; cmd++ )
    {
       if( sname[0] == social_table[cmd].name[0] && !imcstr_prefix( sname, social_table[cmd].name ) )
@@ -7879,7 +7652,7 @@ char *imc_find_social( CHAR_DATA * ch, char *sname, char *person, char *mud, int
          imcstrlcpy( socname, social_table[cmd].char_no_arg, LGST );
       }
    }
-#endif
+
    return socname;
 }
 
@@ -8091,7 +7864,6 @@ char *imc_send_social( CHAR_DATA * ch, char *argument, int telloption )
       imc_purge_skeleton( skeleton );
    return ( color_mtoi( msg ) );
 }
-#endif /* IMCSTANDALONE */
 
 char *imc_funcname( IMC_FUN * func )
 {
@@ -8252,10 +8024,8 @@ bool imc_command_hook( CHAR_DATA * ch, char *command, char *argument )
    IMC_CHANNEL *c;
    char *p;
 
-#if !defined(IMCSTANDALONE)
    if( IS_NPC( ch ) )
       return FALSE;
-#endif
 
    if( !this_imcmud )
    {
@@ -8398,23 +8168,3 @@ bool imc_command_hook( CHAR_DATA * ch, char *command, char *argument )
    }
    return TRUE;
 }
-
-#if defined(IMCSTANDALONE)
-int main( int argc, char **argv )
-{
-   bool client_down = FALSE;
-
-   first_descriptor = last_descriptor = NULL;
-
-   imclog( "IMC2 Standalone connection startup: %s", IMC_VERSION_STRING );
-   imc_startup( FALSE, -1, FALSE );
-   while( !client_down )
-   {
-      imc_loop();
-      usleep( 250000 );
-   }
-   imclog( "%s", "Something caused me to close!" );
-   exit(0);
-   return 0;
-}
-#endif

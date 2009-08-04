@@ -3030,7 +3030,7 @@ float fread_float( FILE *fp )
    else
    {
     place++;
-    number += pow( 10, ( -1 * place ) ) * ( c - '0' );
+    number += pow( 10.0, ( -1 * place ) ) * ( c - '0' );
    }
    c      = getc( fp );
   }

@@ -31,7 +31,7 @@ C_FILES = $(filter-out $(IMC_FILES),$(wildcard *.c))
 
 ifdef IMC
    C_FILES = $(wildcard *.c)
-   C_FLAGS := $(C_FLAGS) -DIMC -DIMCACK
+   C_FLAGS := $(C_FLAGS) -DIMC
 endif
 
 O_FILES = $(patsubst %.c,o/%.o,$(C_FILES))
