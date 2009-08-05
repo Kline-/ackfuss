@@ -286,13 +286,15 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "Description    %s~\n", ch->description );
    fprintf( fp, "Prompt         %s~\n", ch->prompt );
    fprintf( fp, "Sex            %d\n", ch->sex );
-   fprintf( fp, "LoginSex       %d\n", ch->login_sex );
+
+   if( !IS_NPC(ch) )
+    fprintf( fp, "LoginSex       %d\n", ch->pcdata->login_sex );
    fprintf( fp, "Class          %d\n", ch->p_class );
    fprintf( fp, "Race           %d\n", ch->race );
    fprintf( fp, "Level          %d\n", ch->level );
    fprintf( fp, "Sentence       %d\n", ch->sentence );
-   fprintf( fp, "Invis          %d\n", ch->invis );
-   fprintf( fp, "Incog          %d\n", ch->incog );
+   if( !IS_NPC(ch) )
+    fprintf( fp, "Invis          %d\n", ch->pcdata->invis );
 
    fprintf( fp, "m/c            " );
    for( cnt = 0; cnt < MAX_CLASS; cnt++ )
@@ -309,7 +311,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "Trust          %d\n", ch->trust );
    fprintf( fp, "Wizbit         %d\n", ch->wizbit );
    fprintf( fp, "Played         %d\n", ch->played + ( int )( current_time - ch->logon ) );
-   fprintf( fp, "Note           %ld\n", ch->last_note );
+   if( !IS_NPC(ch) )
+    fprintf( fp, "Note           %ld\n", ch->pcdata->last_note );
    fprintf( fp, "Room           %d\n",
             ( ch->in_room == get_room_index( ROOM_VNUM_LIMBO )
               && ch->was_in_room != NULL ) ? ch->was_in_room->vnum : ch->in_room == NULL ? get_room_index(ROOM_VNUM_LIMBO)->vnum : ch->in_room->vnum );
@@ -329,13 +332,16 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    }
    fprintf( fp, "EOL\n" );
 
-   fprintf( fp, "BankMoney      %d ", MAX_CURRENCY );
-   for( foo = 0; foo < MAX_CURRENCY; foo++ )
-      fprintf( fp, "%d ", ch->bank_money->cash_unit[foo] );
-   fprintf( fp, "\n" );
+   if( !IS_NPC(ch) )
+   {
+    fprintf( fp, "BankMoney      %d ", MAX_CURRENCY );
+    for( foo = 0; foo < MAX_CURRENCY; foo++ )
+      fprintf( fp, "%d ", ch->pcdata->bank_money->cash_unit[foo] );
+    fprintf( fp, "\n" );
+   }
 
    fprintf( fp, "Exp            %d\n", ch->exp );
-   
+
    fprintf( fp, "Act            " );
    for( foo = 0; foo < MAX_BITSET; foo++ )
    {
@@ -346,7 +352,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
    /*
-    * Bug fix from Alander 
+    * Bug fix from Alander
     */
    fprintf( fp, "Position       %d\n", ch->position == POS_FIGHTING ? POS_STANDING : ch->position );
 
@@ -355,9 +361,9 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "Alignment      %d\n", ch->alignment );
    fprintf( fp, "Hitroll        %d\n", ch->hitroll );
    fprintf( fp, "Damroll        %d\n", ch->damroll );
-   fprintf( fp, "DeathCnt       %d\n", ch->death_cnt );
    fprintf( fp, "Armor          %d\n", ch->armor );
    fprintf( fp, "Wimpy          %d\n", ch->wimpy );
+   fprintf( fp, "Clan           %d\n", ch->clan );
 
    if( IS_NPC( ch ) )
    {
@@ -365,7 +371,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    }
    else
    {
-      fprintf( fp, "Clan           %d\n", ch->clan );
+      fprintf( fp, "DeathCnt       %d\n", ch->pcdata->death_cnt );
       fprintf( fp, "Order          %d %d %d %d %d\n",
                ch->pcdata->order[0], ch->pcdata->order[1], ch->pcdata->order[2],
                ch->pcdata->order[3], ch->pcdata->order[4] );
@@ -736,20 +742,12 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       i3init_char( ch );
 #endif
    }
-   else
-   {
-      /*
-       * is NPC 
-       */
-      ch->pcdata = NULL;
-   }
 
    ch->desc = d;
    if( ch->name != NULL )
     free_string( ch->name );
    ch->name = str_dup( name );
    ch->prompt = str_dup(DEFAULT_PROMPT);
-   ch->last_note = 0;
    if( is_npc )
       ch->npc = true;
    else
@@ -988,26 +986,23 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             {
                SKEY( "Bamfin", ch->pcdata->bamfin, fread_string( fp ) );
                SKEY( "Bamfout", ch->pcdata->bamfout, fread_string( fp ) );
-            }
-            if( !str_cmp( word, "BankMoney" ) )
-            {
-               MONEY_TYPE *transfer = new MONEY_TYPE;
-               int num_coins;
+               if( !str_cmp( word, "BankMoney" ) )
+               {
+                  MONEY_TYPE *transfer = new MONEY_TYPE;
+                  int num_coins;
 
-               num_coins = fread_number( fp );
-               for( cnt = 0; cnt < num_coins; cnt++ )
-                  transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
-               join_money( transfer, ch->bank_money );
-               fMatch = TRUE;
-               break;
+                  num_coins = fread_number( fp );
+                  for( cnt = 0; cnt < num_coins; cnt++ )
+                     transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
+                  join_money( transfer, ch->pcdata->bank_money );
+                  fMatch = TRUE;
+                  break;
+               }
             }
             break;
 
          case 'C':
-            if( !IS_NPC( ch ) )
-            {
-               KEY( "Clan", ch->clan, fread_number( fp ) );
-            }
+            KEY( "Clan", ch->clan, fread_number( fp ) );
             KEY( "Class", ch->p_class, fread_number( fp ) );
             if( !str_cmp( word, "Colors" ) && !IS_NPC( ch ) )
             {
@@ -1042,7 +1037,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
              break;
             }
 
-            KEY("DeathCnt", ch->death_cnt, fread_number(fp) );
+            if( !IS_NPC(ch) )
+             KEY("DeathCnt", ch->pcdata->death_cnt, fread_number(fp) );
             SKEY( "Description", ch->description, fread_string( fp ) );
 
             if( !str_cmp( word, "DimCol" ) && !IS_NPC( ch ) )
@@ -1062,8 +1058,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'E':
             if( !str_cmp( word, "End" ) )
             {
-               if( ch->login_sex < 0 )
-                  ch->login_sex = ch->sex;
+               if( !IS_NPC(ch) && ch->pcdata->login_sex < 0 )
+                  ch->pcdata->login_sex = ch->sex;
                return;
             }
             KEY( "Exp", ch->exp, fread_number( fp ) );
@@ -1130,8 +1126,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             break;
 
          case 'I':
-            KEY( "Incog", ch->incog, fread_number( fp ) );
-            KEY( "Invis", ch->invis, fread_number( fp ) );
+            if( !IS_NPC(ch) )
+             KEY( "Invis", ch->pcdata->invis, fread_number( fp ) );
 #ifdef IMC
             if( ( fMatch = imc_loadchar( ch, fp, word ) ) )
                break;
@@ -1147,10 +1143,10 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
          case 'L':
             KEY( "Level", ch->level, fread_number( fp ) );
             SKEY( "LongDescr", ch->long_descr, fread_string( fp ) );
-            KEY( "LoginSex", ch->login_sex, fread_number( fp ) );
 
             if( !IS_NPC( ch ) )
             {
+               KEY( "LoginSex", ch->pcdata->login_sex, fread_number( fp ) );
                SKEY( "LastLogin", ch->pcdata->lastlogin, fread_string( fp ) );
                SKEY( "LoadMsg", ch->pcdata->load_msg, fread_string( fp ) );
             }
@@ -1208,7 +1204,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                fMatch = TRUE;
                break;
             }
-            KEY( "Note", ch->last_note, fread_number( fp ) );
+            if( !IS_NPC(ch) )
+             KEY( "Note", ch->pcdata->last_note, fread_number( fp ) );
             break;
 
          case 'O':

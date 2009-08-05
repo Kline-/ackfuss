@@ -119,8 +119,6 @@ char_data::~char_data()
   free_i3chardata(this);
  #endif
 
- if( current_brand )
-  delete current_brand;
  if( lua )
   delete lua;
  if( npcdata )
@@ -130,7 +128,6 @@ char_data::~char_data()
  if( pcdata )
   delete pcdata;
  delete money;
- delete bank_money;
  delete casting;
 
  aggro_list.remove(this);
@@ -280,6 +277,9 @@ pc_data::~pc_data()
  free_string(assist_msg);
  free_string(bamfin);
  free_string(bamfout);
+ delete bank_money;
+ if( current_brand )
+  delete current_brand;
  free_string(email_address);
  free_string(header);
  for( short i = 0; i < MAX_HOSTS; i++ )

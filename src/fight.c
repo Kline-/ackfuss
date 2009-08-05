@@ -1318,7 +1318,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
              snprintf( buf, MSL, "%s turns %s into a corpse.  Whooops.",
                ( IS_NPC(ch) ? ch->npcdata->short_descr : ch->name ),
                ( IS_NPC(victim) ? victim->npcdata->short_descr : victim->name) );
-             info( buf, 1 );	   
+             info( buf, 1 );
             }
 
 
@@ -1329,14 +1329,15 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
          /*
           * As level gain is no longer automatic, a dead char loses
-          * * 1/2 their gained exp.  -S- 
+          * * 1/2 their gained exp.  -S-
           * * Fixed my bug here too, hehe!
           */
 
          if( victim->exp > 0 )
          {
-            gain_exp( victim, ( 0 - ( victim->exp / 2 ) ) );
-            victim->exp = UMAX( victim->exp, 0 );
+            int lose = victim->exp / 2;
+            lose *= -1;
+            victim->gain_exp(lose);
          }
 
       }
@@ -1877,7 +1878,11 @@ void update_pos( CHAR_DATA * victim )
       list<CHAR_DATA *>::iterator li;
 
       if( !IS_NPC( victim ) )
-         gain_exp( victim, 0 - ( victim->exp / 4 ) );
+      {
+         int lose = victim->exp / 4;
+         lose *= -1;
+         victim->gain_exp(lose);
+      }
 
       snprintf( buf, MSL, "%s (vampire) has been misted!", victim->name );
       monitor_chan( buf, MONITOR_COMBAT );
@@ -2585,9 +2590,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
 
       snprintf( buf, MSL, "You Receive %d Experience Points.\r\n", xp );
       send_to_char( buf, gch );
-      if( AI_MOB(gch) )
-         gch->intell_exp += xp;
-      gain_exp( gch, xp );
+      gch->gain_exp(xp);
 
       if( !IS_NPC(gch) && (IS_VAMP( gch ) || IS_WOLF( gch )) )
 
@@ -3533,7 +3536,8 @@ void do_flee( CHAR_DATA * ch, char *argument )
          cost = UMIN( cost, ch->exp );
          snprintf( buf, MSL, "You flee from combat!  You lose %d exps.\r\n", cost );
          send_to_char( buf, ch );
-         gain_exp( ch, ( 0 - cost ) );
+         cost *= -1;
+         ch->gain_exp(cost);
       }
       if( ( ch->fighting != NULL ) && ( AI_MOB( ch->fighting ) ) )
       {
@@ -3555,7 +3559,8 @@ void do_flee( CHAR_DATA * ch, char *argument )
    cost = UMIN( cost, ch->exp );
    snprintf( buf, MSL, "You failed!  You lose %d exps.\r\n", cost );
    send_to_char( buf, ch );
-   gain_exp( ch, ( 0 - cost ) );
+   cost *= -1;
+   ch->gain_exp(cost);
    return;
 }
 
@@ -4819,14 +4824,15 @@ void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, float dam )
 
          /*
           * As level gain is no longer automatic, a dead char loses
-          * * 1/2 their gained exp.  -S- 
+          * * 1/2 their gained exp.  -S-
           * * Fixed my bug here too, hehe!
           */
 
          if( victim->exp > 0 )
          {
-            gain_exp( victim, ( 0 - ( victim->exp / 2 ) ) );
-            victim->exp = UMAX( victim->exp, 0 );
+            int lose = victim->exp / 2;
+            lose *= -1;
+            victim->gain_exp(lose);
          }
 
       }
@@ -5370,7 +5376,11 @@ void do_stake( CHAR_DATA * ch, char *argument )
             victim->pcdata->learned[sn] = 0;
 
       if( !IS_NPC( victim ) )
-         gain_exp( victim, 0 - ( 3 * victim->exp / 4 ) );
+      {
+         int lose = 3 * victim->exp / 4;
+         lose *= -1;
+         victim->gain_exp(lose);
+      }
 
       raw_kill( victim, "" );
       return;

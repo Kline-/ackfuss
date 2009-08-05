@@ -366,24 +366,24 @@ bool withdraw_money( CHAR_DATA * ch, char *argument )
       {
          snprintf( outbuf, MSL, "%s %s isn't a valid money type!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
-         join_money( transfer, ch->bank_money );
+         join_money( transfer, ch->pcdata->bank_money );
          return FALSE;
       }
-      if( ch->bank_money->cash_unit[mn] < atoi( m_number ) )
+      if( ch->pcdata->bank_money->cash_unit[mn] < atoi( m_number ) )
       {
          snprintf( outbuf, MSL, "You don't have %s %s in the bank!\r\n", m_number, m_name );
          send_to_char( outbuf, ch );
-         join_money( transfer, ch->bank_money );
+         join_money( transfer, ch->pcdata->bank_money );
          return FALSE;
       }
-      ch->bank_money->cash_unit[mn] -= atoi( m_number );
+      ch->pcdata->bank_money->cash_unit[mn] -= atoi( m_number );
       transfer->cash_unit[mn] += atoi( m_number );
    }
    if( ( ch->carry_weight + money_weight( transfer ) ) > can_carry_w( ch ) )
    {
       snprintf( outbuf, MSL, "%s", "You cannot carry that much weight!\r\n" );
       send_to_char( outbuf, ch );
-      join_money( transfer, ch->bank_money );
+      join_money( transfer, ch->pcdata->bank_money );
       return FALSE;
    }
    ch->carry_weight += money_weight( transfer );
@@ -425,7 +425,7 @@ void deposit_money( CHAR_DATA * ch, char *argument )
       transfer->cash_unit[mn] += atoi( m_number );
    }
    ch->carry_weight -= money_weight( transfer );
-   join_money( transfer, ch->bank_money );
+   join_money( transfer, ch->pcdata->bank_money );
    return;
 }
 
@@ -804,7 +804,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Check for mob with act->heal 
+    * Check for mob with act->banker
     */
    for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    {
@@ -832,13 +832,13 @@ void do_bank( CHAR_DATA * ch, char *argument )
 /*   argument = one_argument( argument, arg2 ); */
 
    /*
-    * Now work out what to do... 
+    * Now work out what to do...
     */
 
 
    if( !str_cmp( arg1, "balance" ) )
    {
-      snprintf( buf, MSL, "Your current balance is: %s.\r\n", money_string( ch->bank_money ) );
+      snprintf( buf, MSL, "Your current balance is: %s.\r\n", money_string( ch->pcdata->bank_money ) );
       send_to_char( buf, ch );
       return;
    }
@@ -867,7 +867,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
    if( !str_cmp( arg1, "deposit" ) )
    {
       deposit_money( ch, argument );
-      snprintf( buf, MSL, "You deposit %s.  Your new balance is %s.\r\n", argument, money_string( ch->bank_money ) );
+      snprintf( buf, MSL, "You deposit %s.  Your new balance is %s.\r\n", argument, money_string( ch->pcdata->bank_money ) );
       send_to_char( buf, ch );
       do_save( ch, "auto" );
       return;
@@ -880,7 +880,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
       good_withdraw = withdraw_money( ch, argument );
       if( good_withdraw )
       {
-         snprintf( buf, MSL, "You withdraw %s.  Your new balance is %s.\r\n", argument, money_string( ch->bank_money ) );
+         snprintf( buf, MSL, "You withdraw %s.  Your new balance is %s.\r\n", argument, money_string( ch->pcdata->bank_money ) );
       }
       else
       {

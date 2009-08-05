@@ -1620,11 +1620,11 @@ void extract_char( CHAR_DATA * ch, bool fPull )
          char_to_room( ch, get_room_index( ROOM_VNUM_INT_HEAL ) );
 
       }
-      else if( !IS_VAMP( ch ) )
+      else if( !IS_NPC(ch) && !IS_VAMP( ch ) )
       {
        char_to_room(ch,ch->was_in_room);
        ch->act.set(ACT_GHOST);
-       ch->death_cnt = number_range(3,5);
+       ch->pcdata->death_cnt = number_range(3,5);
        send_to_char("Your spirit rises up from your fallen body!\r\n",ch);
        act("$n's spirit rises up from $s fallen body!",ch,NULL,NULL,TO_ROOM);
       }
@@ -1655,7 +1655,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
        wch->fighting = NULL;
       if( wch->reply == ch )
        wch->reply = NULL;
-      if( wch->hunting == ch || wch->hunt_for == ch )
+      if( wch->hunting == ch || (IS_NPC(wch) && wch->npcdata->hunt_for == ch) )
       {
          end_hunt( wch );
          /*
@@ -2246,12 +2246,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
       return TRUE;
 
 
-   if( !IS_NPC( victim ) && victim->act.test(ACT_WIZINVIS) && get_trust( ch ) < victim->invis )
-
-      /*
-       * &&   get_trust( ch ) < get_trust( victim ) ) 
-       */
-
+   if( !IS_NPC( victim ) && victim->act.test(ACT_WIZINVIS) && get_trust( ch ) < victim->pcdata->invis )
       return FALSE;
 
    if( ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) ) && ch->in_room == victim->in_room )

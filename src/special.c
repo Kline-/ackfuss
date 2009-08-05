@@ -1268,7 +1268,7 @@ bool spec_undead( CHAR_DATA * ch )
          break;
       /*
        * Can put infinite loop checking here if you want, but its pointless
-       * * since nothing can have a ch->level < 0. -- Alty 
+       * * since nothing can have a ch->level < 0. -- Alty
        */
    }
 

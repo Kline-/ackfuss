@@ -227,11 +227,10 @@ bool set_hunt( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj
       return FALSE;
    ch->hunting = vch;
    ch->hunt_obj = vobj;
-   ch->hunt_for = fch;
+   if( IS_NPC(ch) )
+    ch->npcdata->hunt_for = fch;
    if( IS_NPC( ch ) )
-      ch->hunt_home = ( ch->hunt_home ? ch->hunt_home : ch->in_room );
-   else
-      ch->hunt_home = NULL;
+      ch->npcdata->hunt_home = ( ch->npcdata->hunt_home ? ch->npcdata->hunt_home : ch->in_room );
    if( ch->searching )
    {
       free_string( ch->searching );
@@ -251,12 +250,13 @@ void end_hunt( CHAR_DATA * ch )
 {
    ch->hunting = NULL;
    ch->hunt_obj = NULL;
-   ch->hunt_for = NULL;
-   if( !IS_NPC( ch ) )
+   if( IS_NPC(ch) )
    {
-      ch->hunt_home = NULL;
-      ch->hunt_flags = 0;
+    ch->npcdata->hunt_for = NULL;
+    ch->npcdata->hunt_home = NULL;
    }
+   if( !IS_NPC( ch ) )
+      ch->hunt_flags = 0;
    else
       ch->hunt_flags = ch->npcdata->pIndexData->hunt_flags;
    if( ch->searching )
@@ -301,28 +301,28 @@ bool mob_hunt( CHAR_DATA * mob )
       {
          if( mob->hunt_obj->in_room == NULL )
          {
-            if( IS_SET( mob->hunt_flags, HUNT_CR ) && mob->hunt_for && mob->hunt_obj->item_type == ITEM_CORPSE_PC )
+            if( IS_SET( mob->hunt_flags, HUNT_CR ) && mob->npcdata->hunt_for && mob->hunt_obj->item_type == ITEM_CORPSE_PC )
                act( "$N tells you 'Someone else seems to have gotten to your "
-                    "corpse before me.'", mob->hunt_for, NULL, mob, TO_CHAR );
+                    "corpse before me.'", mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
             end_hunt( mob );
             return TRUE;
          }
          if( can_see_obj( mob, mob->hunt_obj ) && mob->in_room == mob->hunt_obj->in_room )
          {
-            if( IS_SET( mob->hunt_flags, HUNT_CR ) && mob->hunt_for && mob->hunt_obj->item_type == ITEM_CORPSE_PC )
+            if( IS_SET( mob->hunt_flags, HUNT_CR ) && mob->npcdata->hunt_for && mob->hunt_obj->item_type == ITEM_CORPSE_PC )
                act( "$N tell you 'I have found your corpse.  I shall return it "
-                    "to you now.", mob->hunt_for, NULL, mob, TO_CHAR );
+                    "to you now.", mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
             obj_from_room( mob->hunt_obj );
             obj_to_char( mob->hunt_obj, mob );
             act( "$n gets $o.", mob, mob->hunt_obj, NULL, TO_ROOM );
-            set_hunt( mob, NULL, mob->hunt_for, mob->hunt_obj, 0, 0 );
+            set_hunt( mob, NULL, mob->npcdata->hunt_for, mob->hunt_obj, 0, 0 );
             return TRUE;
          }
          if( !can_see_obj( mob, mob->hunt_obj ) ||
              ( dir = h_find_dir( mob->in_room, mob->hunt_obj->in_room, mob->hunt_flags ) ) < 0 )
          {
-            if( IS_SET( mob->hunt_flags, HUNT_CR ) && mob->hunt_for && mob->hunt_obj->item_type == ITEM_CORPSE_PC )
-               act( "$N tells you 'I seem to have lost the way to your corpse.'", mob->hunt_for, NULL, mob, TO_CHAR );
+            if( IS_SET( mob->hunt_flags, HUNT_CR ) && mob->npcdata->hunt_for && mob->hunt_obj->item_type == ITEM_CORPSE_PC )
+               act( "$N tells you 'I seem to have lost the way to your corpse.'", mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
             end_hunt( mob );
             return TRUE;
          }
@@ -340,12 +340,12 @@ bool mob_hunt( CHAR_DATA * mob )
        * }
        * --Aeria 
        */
-      else if( mob->hunt_home )
+      else if( mob->npcdata->hunt_home )
       {
          dir = -1;
-         if( mob->in_room == mob->hunt_home || ( dir = h_find_dir( mob->in_room, mob->hunt_home, mob->hunt_flags ) ) < 0 )
+         if( mob->in_room == mob->npcdata->hunt_home || ( dir = h_find_dir( mob->in_room, mob->npcdata->hunt_home, mob->hunt_flags ) ) < 0 )
          {
-            mob->hunt_home = NULL;
+            mob->npcdata->hunt_home = NULL;
             mob->hunt_flags = mob->npcdata->pIndexData->hunt_flags;
          }
          else if( dir >= 0 )
@@ -359,7 +359,7 @@ bool mob_hunt( CHAR_DATA * mob )
    }
    if( !can_see( mob, mob->hunting ) )
    {
-      if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->hunt_for )
+      if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->npcdata->hunt_for )
       {
          /*
           * 6.25% chance of giving up, 18.75% chance of telling employer. 
@@ -368,7 +368,7 @@ bool mob_hunt( CHAR_DATA * mob )
          {
             case 0:
                snprintf( buf, MSL, "$N tells you '%s seems to have disappeared!'", NAME( mob->hunting ) );
-               act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
+               act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
                end_hunt( mob );
                return TRUE;
             case 1:
@@ -377,7 +377,7 @@ bool mob_hunt( CHAR_DATA * mob )
                snprintf( buf, MSL, "$N tells you '%s seems to have disappeared!  I shall "
                         "find %s though!'", NAME( mob->hunting ),
                         ( mob->hunting->sex == SEX_MALE ? "him" : mob->hunting->sex == SEX_FEMALE ? "her" : "it" ) );
-               act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
+               act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
                return TRUE;
          }
       }
@@ -424,12 +424,12 @@ bool mob_hunt( CHAR_DATA * mob )
          end_hunt( mob );
          return TRUE;
       }
-      if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->hunt_for )
+      if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->npcdata->hunt_for )
       {
          snprintf( buf, MSL, "$N tells you 'I have found %s!  Now %s shall die!'",
                   NAME( mob->hunting ),
                   ( mob->hunting->sex == SEX_FEMALE ? "she" : mob->hunting->sex == SEX_MALE ? "he" : "it" ) );
-         act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
+         act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
       }
       switch ( number_bits( 2 ) )
       {
@@ -457,7 +457,7 @@ bool mob_hunt( CHAR_DATA * mob )
 
    if( ( dir = h_find_dir( mob->in_room, mob->hunting->in_room, mob->hunt_flags ) ) == -1 )
    {
-      if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->hunt_for )
+      if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->npcdata->hunt_for )
       {
          /*
           * 6.25% chance of giving up, 18.75% chance of informing employer 
@@ -466,7 +466,7 @@ bool mob_hunt( CHAR_DATA * mob )
          {
             case 0:
                snprintf( buf, MSL, "$N tells you 'I seem to have lost %s's trail.'", NAME( mob->hunting ) );
-               act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
+               act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
                end_hunt( mob );
                return TRUE;
             case 1:
@@ -474,7 +474,7 @@ bool mob_hunt( CHAR_DATA * mob )
             case 3:
                snprintf( buf, MSL, "$N tells you 'I seem to have lost %s's trail.  I shall "
                         "find it again, though!'", NAME( mob->hunting ) );
-               act( buf, mob->hunt_for, NULL, mob, TO_CHAR );
+               act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
                return TRUE;
          }
       }

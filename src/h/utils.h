@@ -93,7 +93,7 @@
 #define IS_IMMORTAL(ch)         (get_trust(ch) >= LEVEL_IMMORTAL)
 #define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
 #define IS_ADEPT(ch)            ( !IS_NPC(ch) && ch->pcdata->adept_level > 0 )
-#define IS_AFFECTED(ch, sn)     (IS_SET((ch)->affected_by, (sn)))
+#define IS_AFFECTED(ch, sn)     ( IS_SET((ch)->affected_by, (sn)))
 #define IS_HUNGRY(ch)           ( !IS_NPC(ch) && ch->pcdata->condition[COND_FULL] <= 0 )
 #define IS_THIRSTY(ch)          ( !IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] <= 0 )
 #define IS_DRUNK(ch)            ( !IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10 )

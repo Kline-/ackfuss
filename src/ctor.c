@@ -94,7 +94,7 @@ board_data::board_data()
  min_read_lev = 0;
  min_write_lev = 0;
  expiry_time = 0;
- clan = 0;
+ clan = -1;
 
  board_list.push_back(this);
 }
@@ -145,21 +145,17 @@ char_data::char_data()
  affected_by = 0;
  alignment = 0;
  armor = 100;
- bank_money = new MONEY_TYPE;
  carry_number = 0;
  carry_weight = 0;
  casting = new CAST_DATA;
- clan = 0;
+ clan = -1;
  for( short i = 0; i < MAX_COOLDOWN; i++ )
   cooldown[i] = 0;
- current_brand = NULL;
  damroll = 5;
  deaf.reset();
- death_cnt = 0;
  desc = NULL;
  description = &str_empty[0];
  exp = 0;
- extract_timer = 0;
  fighting = NULL;
  first_affect = NULL;
  first_carry = NULL;
@@ -169,24 +165,17 @@ char_data::char_data()
  hitroll = 5;
  hunting = NULL;
  hunt_flags = 0;
- hunt_for = NULL;
- hunt_home = NULL;
  hunt_obj = NULL;
- incog = 0;
- invis = 0;
- intell_exp = 0;
  in_room = NULL;
  is_free = false;
  is_quitting = false;
  lua = NULL;
  last_affect = NULL;
  last_carry = NULL;
- last_note = 0;
  last_saved_aff = NULL;
  last_shield = NULL;
  leader = NULL;
  level = 0;
- login_sex = -1;
  logon = current_time;
  long_descr = &str_empty[0];
  long_descr_orig = &str_empty[0];
@@ -357,7 +346,7 @@ mob_index_data::mob_index_data()
  alignment = 0;
  area = NULL;
  cast = 0;
- clan = 0;
+ clan = -1;
  def = 0;
  description = &str_empty[0];
  dr_mod = 0;
@@ -416,7 +405,10 @@ npc_data::npc_data()
  cast = 0;
  def = 0;
  dr_mod = 0;
+ extract_timer = -1;
  hr_mod = 0;
+ hunt_for = NULL;
+ hunt_home = NULL;
  ngroup = NULL;
  pIndexData = NULL;
  reset = NULL;
@@ -539,12 +531,15 @@ pc_data::pc_data()
  assist_msg = &str_empty[0];
  bamfin = &str_empty[0];
  bamfout = &str_empty[0];
+ bank_money = new MONEY_TYPE;
  build_mode = 0;
  build_vnum = 0;
  for( short i = 0; i < MAX_COND; i++ )
   condition[i] = 0;
  for( short i = 0; i < MAX_COLOR; i++ )
   color[i] = 0;
+ current_brand = NULL;
+ death_cnt = -1;
  dimcol = '\0';
  email_address = &str_empty[0];
  failures = 0;
@@ -558,10 +553,13 @@ pc_data::pc_data()
 #ifdef IMC
  imcchardata = NULL;
 #endif
+ invis = 0;
  lastlogin = str_dup("Unknown!");
+ last_note = 0;
  for( short i = 0; i < MAX_SKILL; i++ )
   learned[i] = 0;
  load_msg = &str_empty[0];
+ login_sex = SEX_NEUTRAL;
  mana_from_gain = 0;
  max_con = 0;
  max_dex = 0;

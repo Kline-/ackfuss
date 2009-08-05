@@ -2615,7 +2615,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->race_mods = pMobIndex->race_mods;
    mob->race = pMobIndex->race;
    mob->position = POS_STANDING;
-   mob->extract_timer = -1;
    mob->saving_throw = (get_psuedo_level(mob) / 10);
    hold = mob->saving_throw;
    hold *= sysdata.mob_svs;

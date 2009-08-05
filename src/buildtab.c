@@ -572,7 +572,7 @@ LOOKUP_TYPE tab_player_act[] = {
  {"killer",       ACT_KILLER,       0},
  {"no_summon",    ACT_NO_SUMMON,    0},
  {"no_visit",     ACT_NO_VISIT,     0},
- {"incog",        ACT_INCOG,        0},
+ /* 46, empty, ACT_INCOG -- unused   */
  {"undead",       ACT_UNDEAD,       0},
  {"vampire",      ACT_VAMPIRE,      0},
  {"werewolf",     ACT_WEREWOLF,     0},

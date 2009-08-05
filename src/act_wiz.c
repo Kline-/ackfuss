@@ -1003,7 +1003,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
       strncat( buf1, buf, MSL-1 );
       snprintf( buf, MSL, "TARGET: %s\r\n", victim->target.c_str() );
       strncat( buf1, buf, MSL-1 );
-      snprintf( buf, MSL, "TIMER: %d\r\n", victim->extract_timer );
+      snprintf( buf, MSL, "TIMER: %d\r\n", victim->npcdata->extract_timer );
       strncat( buf1, buf, MSL-1 );
    }
 
@@ -1096,12 +1096,12 @@ void do_mstat( CHAR_DATA * ch, char *argument )
          snprintf(buf, MSL, "Hunting victim: %s (waiting)\r\n",victim->huntname);
          strncat(buf1,buf, MSL);
          break;
-         
+
         case -2:
          snprintf(buf, MSL, "Returning home\r\n");
          strncat(buf1,buf, MSL);
          break;
-         
+
         default:
          snprintf(buf, MSL, "Hunting victim: %s (%s)\r\n",
                 NAME(victim->hunting),
@@ -1129,8 +1129,8 @@ void do_mstat( CHAR_DATA * ch, char *argument )
          else
             snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", victim->hunt_obj->short_descr );
       }
-      if( IS_NPC( victim ) && IS_SET( victim->hunt_flags, HUNT_MERC | HUNT_CR ) && victim->hunt_for )
-         snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( victim->hunt_for ) );
+      if( IS_NPC( victim ) && IS_SET( victim->hunt_flags, HUNT_MERC | HUNT_CR ) && victim->npcdata->hunt_for )
+         snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( victim->npcdata->hunt_for ) );
       strncat( buf, ".\r\n", MSL );
       buf[1] = UPPER( buf[1] );
       strncat( buf1, buf + 1, MSL-1 );
@@ -2854,7 +2854,8 @@ void do_mset( CHAR_DATA * ch, char *argument )
          return;
       }
       victim->sex = value;
-      victim->login_sex = value;
+      if( !IS_NPC(victim) )
+       victim->pcdata->login_sex = value;
       return;
    }
 
@@ -2936,7 +2937,8 @@ void do_mset( CHAR_DATA * ch, char *argument )
       {
          victim->hunting = NULL;
          victim->hunt_obj = NULL;
-         victim->hunt_for = NULL;
+         if( IS_NPC(victim) )
+          victim->npcdata->hunt_for = NULL;
          if( victim->searching )
          {
             free_string( victim->searching );
@@ -2973,7 +2975,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      victim->extract_timer = value;
+      victim->npcdata->extract_timer = value;
       return;
    }
 
@@ -3841,6 +3843,9 @@ void do_invis( CHAR_DATA * ch, char *argument )
 
    level = -1;
 
+   if( IS_NPC(ch) )
+    return;
+
    if( argument[0] != '\0' )
       /*
        * Then we have a level argument 
@@ -3855,7 +3860,7 @@ void do_invis( CHAR_DATA * ch, char *argument )
 
       if( ch->act.test(ACT_WIZINVIS) )
       {
-         ch->invis = level;
+         ch->pcdata->invis = level;
          snprintf( buf, MSL, "Wizinvis changed to level: %d\r\n", level );
          send_to_char( buf, ch );
          return;
@@ -3867,11 +3872,7 @@ void do_invis( CHAR_DATA * ch, char *argument )
    if( level == -1 )
       level = get_trust( ch );
 
-   ch->invis = level;
-
-
-   if( IS_NPC( ch ) )
-      return;
+   ch->pcdata->invis = level;
 
    ch->act.flip(ACT_WIZINVIS);
 
@@ -4169,9 +4170,9 @@ void do_iscore( CHAR_DATA * ch, char *argument )
             ch->act.test(ACT_WIZINVIS) ? "YES" : "NO ", ch->act.test(ACT_HOLYLIGHT) ? "YES" : "NO " );
    send_to_char( buf, ch );
 
-   if( ch->act.test(ACT_WIZINVIS) )
+   if( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) )
    {
-      snprintf( buf, MSL, "You are wizinvis at level %d.\r\n", ch->invis );
+      snprintf( buf, MSL, "You are wizinvis at level %d.\r\n", ch->pcdata->invis );
       send_to_char( buf, ch );
    }
 
@@ -4850,8 +4851,8 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
          else
             snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", lch->hunt_obj->short_descr );
       }
-      if( IS_NPC( lch ) && IS_SET( lch->hunt_flags, HUNT_MERC | HUNT_CR ) && lch->hunt_for )
-         snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( lch->hunt_for ) );
+      if( IS_NPC( lch ) && IS_SET( lch->hunt_flags, HUNT_MERC | HUNT_CR ) && lch->npcdata->hunt_for )
+         snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( lch->npcdata->hunt_for ) );
       strncat( buf, ".\r\n", MSL );
       send_to_char( buf, ch );
    }

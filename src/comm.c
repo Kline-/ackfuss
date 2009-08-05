@@ -396,12 +396,12 @@ void game_loop( int game_control )
          else
          {
             /*
-             * Check to see if child process has terminated 
+             * Check to see if child process has terminated
              */
             if( waitpid( d->childpid, NULL, WNOHANG ) != 0 )
             {
                /*
-                * Terminated or error 
+                * Terminated or error
                 */
                d->childpid = 0;
                REMOVE_BIT( d->flags, DESC_FLAG_PASSTHROUGH );
@@ -1433,7 +1433,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             if( IS_NPC( ch ) )
                break;
             if( IS_IMMORTAL( ch ) )
-               snprintf( buf2, MSL, "INVIS: %d", ch->act.test(ACT_WIZINVIS) ? ch->invis : 0 );
+               snprintf( buf2, MSL, "INVIS: %d", ch->act.test(ACT_WIZINVIS) ? ch->pcdata->invis : 0 );
             else
             {
                if( ( IS_AFFECTED( ch, AFF_INVISIBLE ) )
@@ -2579,17 +2579,17 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          case 'm':
          case 'M':
             ch->sex = SEX_MALE;
-            ch->login_sex = SEX_MALE;
+            ch->pcdata->login_sex = SEX_MALE;
             break;
          case 'f':
          case 'F':
             ch->sex = SEX_FEMALE;
-            ch->login_sex = SEX_FEMALE;
+            ch->pcdata->login_sex = SEX_FEMALE;
             break;
          case 'n':
          case 'N':
             ch->sex = SEX_NEUTRAL;
-            ch->login_sex = SEX_NEUTRAL;
+            ch->pcdata->login_sex = SEX_NEUTRAL;
             break;
          default:
             write_to_buffer( d, "That's not a sex.\r\nWhat IS your sex? " );
@@ -2859,14 +2859,14 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       }
 
       /*
-       * Check for new notes waiting at the post office 
+       * Check for new notes waiting at the post office
        */
       notes = 0;
 
       for( li = note_list.begin(); li != note_list.end(); li++ )
       {
          pnote = *li;
-         if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && pnote->date_stamp > ch->last_note )
+         if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && pnote->date_stamp > ch->pcdata->last_note )
             notes++;
       }
 
@@ -2987,8 +2987,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->hitroll = 0;
          ch->damroll = 0;
          ch->armor = 100;
-         if( ch->login_sex != -1 )
-            ch->sex = ch->login_sex;
+         if( ch->pcdata->login_sex != -1 )
+            ch->sex = ch->pcdata->login_sex;
          ch->affected_by = 0;
 
 
@@ -3450,16 +3450,12 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
                   can_see_message = TRUE;
                   if( IS_IMMORTAL( to ) )
                   {
-                     if( ch->act.test(ACT_WIZINVIS) && ch->invis > get_trust( to )
-                         /*
-                          * || ( ch->act.test(PLR_INCOG)
-                          * && ch->incog > get_trust( to )
-                          */  )
+                     if( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && ch->pcdata->invis > get_trust( to ) )
                         can_see_message = FALSE;
                   }
                   else
                   {
-                     if( ch->act.test(ACT_WIZINVIS) && get_trust( to ) < ch->invis )
+                     if( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && get_trust( to ) < ch->pcdata->invis )
                         can_see_message = FALSE;
                      if( ( IS_AFFECTED( ch, AFF_SNEAK ) || item_has_apply( ch, ITEM_APPLY_SNEAK ) )
                          && ( ( get_psuedo_level( ch ) - 20 + number_range( 1, 30 ) ) > get_psuedo_level( to ) ) )
@@ -3695,7 +3691,7 @@ void copyover_recover(  )
          do_look( d->character, "" );
          act( "$n's atoms materialize and reform.", d->character, NULL, NULL, TO_ROOM );
          /*
-          * d->connected = CON_PLAYING;  
+          * d->connected = CON_PLAYING;
           */
 
          if( this_char->pcdata->hp_from_gain < 0 )
@@ -3717,8 +3713,8 @@ void copyover_recover(  )
             this_char->hitroll = 0;
             this_char->damroll = 0;
             this_char->armor = 100;
-            if( this_char->login_sex != -1 )
-               this_char->sex = this_char->login_sex;
+            if( this_char->pcdata->login_sex != -1 )
+               this_char->sex = this_char->pcdata->login_sex;
             this_char->affected_by = 0;
 
 

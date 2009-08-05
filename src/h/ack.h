@@ -272,12 +272,7 @@ class descriptor_data
    time_t timeout;
 };
 
-#define DESC_FLAG_PASSTHROUGH 1  /* Used when data is being passed to */
-                 /*
-                  * Another prog.                     
-                  */
-
-
+#define DESC_FLAG_PASSTHROUGH 1  /* Used when data is being passed to another program */
 
 struct family_name_type
 {
@@ -556,6 +551,8 @@ class char_data
   ~char_data();
   bool check_cooldown( const char *skill );
   bool check_cooldown( int pos );
+  void gain_exp( int gain );
+  short get_level( const char *what );
   void set_cooldown( const char *skill );
   void set_cooldown( int pos, float duration );
 
@@ -563,20 +560,16 @@ class char_data
   int affected_by;
   short alignment;
   short armor;
-  MONEY_TYPE *bank_money;
   short carry_number;
   float carry_weight;
   CAST_DATA *casting;
-  short clan;   /* need to convert from pcdata to this */
+  short clan;
   float cooldown[MAX_COOLDOWN];
-  BRAND_DATA *current_brand;
   short damroll;
   bitset<MAX_BITSET> deaf;
-  short death_cnt;
   DESCRIPTOR_DATA *desc;
   char *description;
   int exp;
-  short extract_timer;   /* same as object timer, only use for charmies */
   CHAR_DATA *fighting;
   AFFECT_DATA *first_affect;
   OBJ_DATA *first_carry;
@@ -586,24 +579,17 @@ class char_data
   short hitroll;
   CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
   int hunt_flags;   /* Action flags         */
-  CHAR_DATA *hunt_for; /* Employer (crs, mercs)   */
-  ROOM_INDEX_DATA *hunt_home;   /* Return to after hunting */
   OBJ_DATA *hunt_obj;  /* Looking for objects     */
-  short incog;  /* Same as above except for incognito --Flar */
-  short invis;  /* For wizinvis imms - lvl invis to */
-  int intell_exp;
   ROOM_INDEX_DATA *in_room;
-  bool is_free;
+  bool is_free; /* kept for room lists link/unlink */
   bool is_quitting;
   LUA_DATA *lua; /* Lua scripting */
   AFFECT_DATA *last_affect;
   OBJ_DATA *last_carry;
-  time_t last_note;
   AFFECT_DATA *last_saved_aff;
   MAGIC_SHIELD *last_shield;
   CHAR_DATA *leader;
   short level;  /* For m/c this = max of levels */
-  short login_sex;
   time_t logon;
   char *long_descr;
   char *long_descr_orig;
@@ -672,7 +658,10 @@ class npc_data
   int cast;
   int def;
   short dr_mod;
+  short extract_timer; /* charmie timer */
   short hr_mod;
+  CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
+  ROOM_INDEX_DATA *hunt_home; /* return to loc */
   NPC_GROUP_DATA *ngroup;
   MOB_INDEX_DATA *pIndexData;
   RESET_DATA *reset;
@@ -699,10 +688,13 @@ class pc_data
   char *assist_msg;
   char *bamfin;
   char *bamfout;
+  MONEY_TYPE *bank_money;
   short build_mode;
   int build_vnum;
   short condition[MAX_COND];
   int color[MAX_COLOR];
+  BRAND_DATA *current_brand;
+  short death_cnt;
   char dimcol;
   char *email_address;
   short failures;  /* Failed logins */
@@ -714,9 +706,12 @@ class pc_data
 #ifdef IMC
   IMC_CHARDATA *imcchardata;
 #endif
+  short invis; /* wizinvis imm, level invis to */
   char *lastlogin;
+  time_t last_note;
   short learned[MAX_SKILL];
   char *load_msg;
+  short login_sex;
   int mana_from_gain;  /* saves non-item oriented mana total */
   short max_con;
   short max_dex;
@@ -1362,7 +1357,6 @@ void trigger_handler args( ( CHAR_DATA * ch, OBJ_DATA * obj, int trigger ) );
 			 ) update.c# (
 			 \*--------*/
 void advance_level args( ( CHAR_DATA * ch, int p_class, bool show, bool remort ) );
-void gain_exp args( ( CHAR_DATA * ch, int gain ) );
 void gain_bloodlust args( ( CHAR_DATA * ch, int value ) );
 void gain_condition args( ( CHAR_DATA * ch, int iCond, int value ) );
 void update_handler args( ( void ) );

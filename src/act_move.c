@@ -468,12 +468,12 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          else if( ch->riding == NULL )
          {
             snprintf( move_buf, MSL, "$L%s$n %s $T.",
-                     get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->pcdata->room_exit );
+                     get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), ch->pcdata->room_exit );
          }
          else if( ch->riding != NULL )
          {
             snprintf( move_buf, MSL, "$L%s$n rides $T on %s.",
-                     get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), NAME(ch->riding) );
+                     get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), NAME(ch->riding) );
          }
          act( move_buf, ch, NULL, door_name_leave, TO_ROOM );
       }
@@ -494,7 +494,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
    /*
     * if ( ( !IS_AFFECTED(ch, AFF_SNEAK) && !item_has_apply( ch, ITEM_APPLY_SNEAK ) )
-    * && ( IS_NPC(ch) || !ch->act.test(PLR_WIZINVIS) ) )   
+    * && ( IS_NPC(ch) || !ch->act.test(PLR_WIZINVIS) ) )
     */
    {
       if( IS_NPC( ch ) || ( !IS_NPC( ch ) && ( IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) ) ) )
@@ -502,12 +502,12 @@ void move_char( CHAR_DATA * ch, int door, bool look )
       else if( ch->riding == NULL )
       {
          snprintf( move_buf, MSL, "$L%s$n %s $T.",
-                  get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), ch->pcdata->room_enter );
+                  get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), ch->pcdata->room_enter );
       }
       else if( ch->riding != NULL )
       {
          snprintf( move_buf, MSL, "$L%s$n rides in from $T on %s.",
-                  get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), NAME(ch->riding) );
+                  get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), NAME(ch->riding) );
       }
       act( move_buf, ch, NULL, door_name_enter, TO_ROOM );
 
@@ -1595,7 +1595,8 @@ DO_FUN(do_recall)
          ch->set_cooldown(COOLDOWN_DEF,2.75);
          lose = ( ch->level / 4 ) + 1;
          lose = UMIN( lose, ch->exp );
-         gain_exp( ch, 0 - lose );
+         lose *= -1;
+         ch->gain_exp(lose);
          snprintf( buf, MSL, "You failed!  You lose %d exps.\r\n", lose );
          send_to_char( buf, ch );
          return;
@@ -1603,7 +1604,8 @@ DO_FUN(do_recall)
 
       lose = ( ch->level / 4 ) + 25;
       lose = UMIN( lose, ch->exp );
-      gain_exp( ch, 0 - lose );
+      lose *= -1;
+      ch->gain_exp(lose);
       snprintf( buf, MSL, "You recall from combat!  You lose %d exps.\r\n", lose );
       send_to_char( buf, ch );
       stop_fighting( ch, TRUE );

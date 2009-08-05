@@ -74,7 +74,7 @@ bool able_to_level( CHAR_DATA * ch )
 {
    bool in_need = FALSE;
 
-   if( ch->intell_exp > ( 5 * exp_for_mobile( ch->level, ch ) ) )
+   if( ch->exp > ( 5 * exp_for_mobile( ch->level, ch ) ) )
       in_need = TRUE;
 
    return in_need;
@@ -86,10 +86,10 @@ void gain_level( CHAR_DATA * ch )
    char buf[MAX_STRING_LENGTH];
 
    cost = 5 * exp_for_mobile( ch->level, ch );
-   if( ch->intell_exp < cost )
+   if( ch->exp < cost )
       return;
 
-   ch->intell_exp -= cost;
+   ch->exp -= cost;
    ch->level = UMIN( 140, ch->level++ );
 
    snprintf( buf, MSL, "%s gains a level!", NAME(ch) );

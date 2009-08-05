@@ -431,8 +431,8 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
       if( ( victim->desc ) != NULL && victim->desc->connected != CON_PLAYING )
          strncat( buf, "(LINKDEAD)", MSL-1 );
 
-   if( victim->act.test(ACT_RULER) )
-      strncat( buf, get_ruler_title( victim->pcdata->ruler_rank, victim->login_sex ), MSL-1 );
+   if( !IS_NPC(victim) && victim->act.test(ACT_RULER) )
+      strncat( buf, get_ruler_title( victim->pcdata->ruler_rank, victim->pcdata->login_sex ), MSL-1 );
    if( victim->position == POS_STANDING && victim->long_descr[0] != '\0' )
    {
       strncat( buf, victim->long_descr, MSL-1 );
@@ -687,7 +687,7 @@ void show_char_to_char( CHAR_DATA * list, CHAR_DATA * ch )
       if( rch == ch )
          continue;
 
-      if( !IS_NPC( rch ) && rch->act.test(ACT_WIZINVIS) && get_trust( ch ) < rch->invis )
+      if( !IS_NPC( rch ) && rch->act.test(ACT_WIZINVIS) && get_trust( ch ) < rch->pcdata->invis )
          continue;
 
       if( ( rch->rider != NULL ) && ( rch->rider != ch ) )
@@ -5801,72 +5801,6 @@ void area_message( AREA_DATA *area, const char *message )
  }
 
  return;
-}
-
-void char_data::set_cooldown( const char *skill )
-{
- int sn = skill_lookup(skill);
-
- if( sn < 0 )
-  return;
-
- if( skill_table[sn].cooldown <= COOLDOWN_NONE )
-  return;
-
- this->cooldown[skill_table[sn].cooldown] += skill_table[sn].beats;
-
- return;
-}
-
-void char_data::set_cooldown( int pos, float duration )
-{
- if( pos <= COOLDOWN_NONE )
-  return;
-
- this->cooldown[pos] += duration;
-
- return;
-}
-
-bool char_data::check_cooldown( const char *skill )
-{
- int sn = skill_lookup(skill);
-
- if( sn < 0 )
-  return false;
-
- if( skill_table[sn].cooldown <= COOLDOWN_NONE )
-  return false;
-
- if( this->cooldown[skill_table[sn].cooldown] > 0 )
- {
-  switch( skill_table[sn].cooldown )
-  {
-   case COOLDOWN_OFF: send_to_char("@@eYour offensive abilities are on cooldown right now.\r\n",this); break;
-   case COOLDOWN_DEF: send_to_char("@@lYour defensive abilities are on cooldown right now.\r\n",this); break;
-  }
-  return true;
- }
-
- return false;
-}
-
-bool char_data::check_cooldown( int pos )
-{
- if( pos <= COOLDOWN_NONE )
-  return false;
-
- if( this->cooldown[pos] > 0 )
- {
-  switch( pos )
-  {
-   case COOLDOWN_OFF: send_to_char("@@eYour offensive abilities are on cooldown right now.\r\n",this); break;
-   case COOLDOWN_DEF: send_to_char("@@lYour defensive abilities are on cooldown right now.\r\n",this); break;
-  }
-  return true;
- }
-
- return false;
 }
 
 DO_FUN(do_whitelist)

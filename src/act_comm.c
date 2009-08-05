@@ -207,7 +207,7 @@ DO_FUN(do_note)
          {
             snprintf( buf, MSL, "[%3d%s] %s: %s\r\n",
                      vnum,
-                     ( pnote->date_stamp > ch->last_note
+                     ( pnote->date_stamp > ch->pcdata->last_note
                        && str_cmp( pnote->sender, ch->name ) ) ? "N" : " ", pnote->sender, pnote->subject );
             strncat( buf1, buf, MSL );
             vnum++;
@@ -244,7 +244,7 @@ DO_FUN(do_note)
          for( li = note_list.begin(); li != note_list.end(); li++ )
          {
             pnote = *li;
-            if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && ch->last_note < pnote->date_stamp )
+            if( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && ch->pcdata->last_note < pnote->date_stamp )
             {
                snprintf( buf, MSL, "The letter is postmarked %d:%s\r\n", vnum, pnote->date );
                strncat( buf1, buf, MSL );
@@ -258,7 +258,7 @@ DO_FUN(do_note)
                strncat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", MSL );
 
                strncat( buf1, pnote->text, MSL );
-               ch->last_note = UMAX( ch->last_note, pnote->date_stamp );
+               ch->pcdata->last_note = UMAX( ch->pcdata->last_note, pnote->date_stamp );
                send_to_char( buf1, ch );
                return;
             }
@@ -302,7 +302,7 @@ DO_FUN(do_note)
                send_to_char( buf1, ch );
             else
                strncat( buf1, "\r\n", MSL );
-            ch->last_note = UMAX( ch->last_note, pnote->date_stamp );
+            ch->pcdata->last_note = UMAX( ch->pcdata->last_note, pnote->date_stamp );
             if( !fAll )
                return;
          }
@@ -1834,7 +1834,7 @@ void add_follower( CHAR_DATA * ch, CHAR_DATA * master )
       if( max_orders <= master->num_followers )
       {
          send_to_char( "You cannot control anymore followers.\r\n", master );
-         ch->extract_timer = 1;
+         ch->npcdata->extract_timer = 1;
          return;
       }
       else

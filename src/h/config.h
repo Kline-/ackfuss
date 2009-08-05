@@ -99,6 +99,7 @@
 #define MAX_PEDIT                    5
 #define MAX_COND                     3
 #define MAX_GREETING                 5   /* Number of different login screen files: greeting1, greeting2, etc */
+#define MAX_EXP                      2000000000 /* signed int is 2147483647, safely below this limit */
                      /*
                       * total number of supernatural types in the game  
                       */
@@ -687,7 +688,7 @@
 #define ACT_KILLER       43   /* Pker! Wanted!                  */
 #define ACT_NO_SUMMON    44   /* Doesn't want to be summoned    */
 #define ACT_NO_VISIT     45   /* Doesn't want to be visited     */
-#define ACT_INCOG        46   /* Invis except in-room           */
+/* 46, empty, used to be ACT_INCOG -- unused                    */
 #define ACT_SHIFTED      47   /* Wolf-form Werewolf             */
 #define ACT_RAGED        48   /* Enraged Werewolf               */
 #define ACT_AFK          49   /* AFK -- duh? :P                 */

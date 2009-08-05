@@ -363,36 +363,6 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
    return;
 }
 
-
-
-void gain_exp( CHAR_DATA * ch, int gain )
-{
-   /*
-    * Not much happens here, as no-longer auto-level... -S- 
-    */
-
-   /*
-    * -S- Mod:  mobs CAN gain exp as well as players 
-    */
-
-   if( IS_NPC( ch ) && !ch->act.test(ACT_INTELLIGENT) )
-      return;
-
-   if( IS_IMMORTAL( ch ) )
-      return;
-
-
-   /*
-    * Changed exp system AGAIN old 'cap' was screwy!! -S- 
-    */
-
-   ch->exp += gain;
-
-   return;
-}
-
-
-
 /*
  * Regeneration stuff.
  */
@@ -1360,11 +1330,11 @@ void char_update( void )
       if( ch == NULL )
          continue;
 
-      if( IS_GHOST(ch) )
+      if( !IS_NPC(ch) && IS_GHOST(ch) )
       {
-       if( ch->death_cnt > 0 )
-        ch->death_cnt--;
-       if( ch->death_cnt == 0 )
+       if( ch->pcdata->death_cnt > 0 )
+        ch->pcdata->death_cnt--;
+       if( ch->pcdata->death_cnt == 0 )
        {
         char_from_room(ch);
         char_to_room(ch,get_room_index(ROOM_VNUM_ALTAR));
@@ -1564,11 +1534,9 @@ void char_update( void )
          if( !ch->target.empty() && number_bits( 4 ) == 0 ) /* And all was forgiven ... --Kline */
           ch->target.clear();
 
-         if( ch->extract_timer > 0 )
-         {
-            ch->extract_timer--;
-         }
-         else if( ch->extract_timer == 0 )
+         if( ch->npcdata->extract_timer > 0 )
+            ch->npcdata->extract_timer--;
+         if( ch->npcdata->extract_timer == 0 )
          {
 /*            if ( IS_SET( ch->affected_by, AFF_CHARM ) )
             {  */

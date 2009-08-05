@@ -401,13 +401,9 @@ int L_character_info( lua_State *L )
  PUSH_NUM(ch,clan);
  PUSH_NUMA(ch,cooldown,MAX_COOLDOWN);
  PUSH_NUM(ch,damroll);
- PUSH_NUM(ch,death_cnt);
  PUSH_NUM(ch,exp);
- PUSH_NUM(ch,extract_timer);
  PUSH_NUM(ch,hit);
  PUSH_NUM(ch,hitroll);
- PUSH_NUM(ch,incog);
- PUSH_NUM(ch,invis);
  PUSH_NUM(ch,level);
  PUSH_NUMA(ch,lvl,MAX_CLASS);
  PUSH_NUMA(ch,lvl2,MAX_CLASS);
@@ -454,6 +450,8 @@ int L_character_info( lua_State *L )
   /* numbers */
   PUSH_NUM(ch->pcdata,adept_level);
   PUSH_NUMA(ch->pcdata,condition,MAX_COND);
+  PUSH_NUM(ch->pcdata,death_cnt);
+  PUSH_NUM(ch->pcdata,invis);
   PUSH_NUMA(ch->pcdata,learned,MAX_SKILL);
   PUSH_NUM(ch->pcdata,max_con);
   PUSH_NUM(ch->pcdata,max_dex);
@@ -486,6 +484,7 @@ int L_character_info( lua_State *L )
   /* numbers */
   PUSH_NUM(ch->npcdata,cast);
   PUSH_NUM(ch->npcdata,def);
+  PUSH_NUM(ch->npcdata,extract_timer);
   PUSH_NUM(ch->npcdata,resist);
   PUSH_NUM(ch->npcdata,skills);
   PUSH_NUM(ch->npcdata,strong_magic);

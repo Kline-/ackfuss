@@ -1041,14 +1041,15 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
 
          /*
           * As level gain is no longer automatic, a dead char loses
-          * * 1/2 their gained exp.  -S- 
+          * * 1/2 their gained exp.  -S-
           * * Fixed my bug here too, hehe!
           */
 
          if( victim->exp > 0 )
          {
-            gain_exp( victim, ( 0 - ( victim->exp / 2 ) ) );
-            victim->exp = UMAX( victim->exp, 0 );
+            int lose = (victim->exp / 2);
+            lose *= -1;
+            victim->gain_exp(lose);
          }
 
       }

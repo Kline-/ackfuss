@@ -275,7 +275,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             snprintf( test_string, MSL, "%s", ch->pcdata->pedit_string[0] );
             qp_cost++;
          }
-         snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), test_string );
+         snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), test_string );
          act( move_buf, ch, NULL, rev_name[1], TO_CHAR );
          if( !str_cmp( ch->pcdata->pedit_string[1], "none" ) )
          {
@@ -288,7 +288,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
          }
 
 
-         snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->login_sex ), test_string );
+         snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), test_string );
          act( move_buf, ch, NULL, dir_name[1], TO_CHAR );
 
          snprintf( buf, MSL, "Purchase cost is %d qps.\r\n", qp_cost );
@@ -680,10 +680,10 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg, "write" ) || !str_cmp( arg, "edit" ) )
    {
-      if( ch->current_brand == NULL )
-         ch->current_brand = new BRAND_DATA;
+      if( ch->pcdata->current_brand == NULL )
+         ch->pcdata->current_brand = new BRAND_DATA;
 
-      build_strdup( &ch->current_brand->message, "$edit", TRUE, FALSE, ch );
+      build_strdup( &ch->pcdata->current_brand->message, "$edit", TRUE, FALSE, ch );
       return;
    }
 
@@ -691,32 +691,32 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg, "player" ) )
    {
-      if( ch->current_brand == NULL )
-         ch->current_brand = new BRAND_DATA;
+      if( ch->pcdata->current_brand == NULL )
+         ch->pcdata->current_brand = new BRAND_DATA;
 
-      free_string( ch->current_brand->branded );
-      ch->current_brand->branded = str_dup( argument );
+      free_string( ch->pcdata->current_brand->branded );
+      ch->pcdata->current_brand->branded = str_dup( argument );
       send_to_char( "Ok.\r\n", ch );
       return;
    }
 
    if( !str_cmp( arg, "priority" ) )
    {
-      if( ch->current_brand == NULL )
-         ch->current_brand = new BRAND_DATA;
+      if( ch->pcdata->current_brand == NULL )
+         ch->pcdata->current_brand = new BRAND_DATA;
 
-      free_string( ch->current_brand->priority );
-      ch->current_brand->priority = str_dup( argument );
+      free_string( ch->pcdata->current_brand->priority );
+      ch->pcdata->current_brand->priority = str_dup( argument );
       send_to_char( "Ok.\r\n", ch );
       return;
    }
 
    if( !str_cmp( arg, "clear" ) )
    {
-      if( ch->current_brand )
+      if( ch->pcdata->current_brand )
       {
-         delete ch->current_brand;
-         ch->current_brand = NULL;
+         delete ch->pcdata->current_brand;
+         ch->pcdata->current_brand = NULL;
       }
       save_brands(  );
       send_to_char( "Ok.\r\n", ch );
@@ -725,7 +725,7 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg, "show" ) )
    {
-      if( !ch->current_brand )
+      if( !ch->pcdata->current_brand )
       {
          send_to_char( "You have no brand in progress.\r\n", ch );
          return;
@@ -733,10 +733,10 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
       buf1[0] = '\0';
       snprintf( buf, MSL, "[%3d] %s: Brander: %s  Date: %s Priority: %s\r\n",
                vnum,
-               ch->current_brand->branded,
-               ch->current_brand->branded_by, ch->current_brand->dt_stamp, ch->current_brand->priority );
+               ch->pcdata->current_brand->branded,
+               ch->pcdata->current_brand->branded_by, ch->pcdata->current_brand->dt_stamp, ch->pcdata->current_brand->priority );
       strncat( buf1, buf, MSL );
-      strncat( buf1, ch->current_brand->message, MSL );
+      strncat( buf1, ch->pcdata->current_brand->message, MSL );
       send_to_char( buf1, ch );
       return;
    }
@@ -746,19 +746,19 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
       char *strtime;
 
-      if( !ch->current_brand )
+      if( !ch->pcdata->current_brand )
       {
          send_to_char( "You have no brand in progress.\r\n", ch );
          return;
       }
 
-      if( !str_cmp( ch->current_brand->branded, "" ) )
+      if( !str_cmp( ch->pcdata->current_brand->branded, "" ) )
       {
          send_to_char( "You need to provide a player name .\r\n", ch );
          return;
       }
 
-      if( !str_cmp( ch->current_brand->message, "" ) )
+      if( !str_cmp( ch->pcdata->current_brand->message, "" ) )
       {
          send_to_char( "You need to provide a message.\r\n", ch );
          return;
@@ -766,16 +766,16 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
 
       strtime = ctime( &current_time );
       strtime[strlen( strtime ) - 1] = '\0';
-      free_string( ch->current_brand->dt_stamp );
-      ch->current_brand->dt_stamp = str_dup( strtime );
-      free_string( ch->current_brand->branded_by );
-      ch->current_brand->branded_by = str_dup( ch->name );
+      free_string( ch->pcdata->current_brand->dt_stamp );
+      ch->pcdata->current_brand->dt_stamp = str_dup( strtime );
+      free_string( ch->pcdata->current_brand->branded_by );
+      ch->pcdata->current_brand->branded_by = str_dup( ch->name );
       GET_FREE( this_brand, dl_list_free );
       this_brand->next = NULL;
       this_brand->prev = NULL;
-      this_brand->this_one = ch->current_brand;
+      this_brand->this_one = ch->pcdata->current_brand;
       LINK( this_brand, first_brand, last_brand, next, prev );
-      ch->current_brand = NULL;
+      ch->pcdata->current_brand = NULL;
       save_brands(  );
       send_to_char( "Ok.\r\n", ch );
       return;
