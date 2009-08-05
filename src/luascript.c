@@ -417,11 +417,9 @@ int L_character_info( lua_State *L )
  PUSH_NUM(ch,played);
  PUSH_NUM(ch,poly_level);
  PUSH_NUM(ch,position);
- PUSH_NUM(ch,practice);
  PUSH_NUM(ch,p_class);
  PUSH_NUM(ch,race);
  PUSH_NUM(ch,saving_throw);
- PUSH_NUM(ch,sentence);
  PUSH_NUM(ch,sex);
  PUSH_NUMA(ch,speed,MAX_SPEED);
  PUSH_NUM(ch,stance);
@@ -469,9 +467,11 @@ int L_character_info( lua_State *L )
   PUSH_NUM(ch->pcdata,perm_int);
   PUSH_NUM(ch->pcdata,perm_str);
   PUSH_NUM(ch->pcdata,perm_wis);
+  PUSH_NUM(ch->pcdata,practice);
   PUSH_NUM(ch->pcdata,quest_points);
   PUSH_NUM(ch->pcdata,recall_vnum);
   PUSH_NUM(ch->pcdata,ruler_rank);
+  PUSH_NUM(ch->pcdata,sentence);
 
   lua_setfield(L,-2,"pcdata");
  }

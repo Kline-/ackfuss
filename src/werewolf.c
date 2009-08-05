@@ -262,7 +262,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
                victim->pcdata->learned[sn] = 0;
          char_from_room( victim );
          char_to_room( victim, get_room_index( victim->pcdata->recall_vnum ) );
-         victim->sentence += 15000;
+         victim->pcdata->sentence += 15000;
          if( !victim->act.test(ACT_KILLER) )
           victim->act.set(ACT_KILLER);
          do_save( victim, "" );

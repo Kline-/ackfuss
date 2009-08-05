@@ -123,8 +123,6 @@ char_data::~char_data()
   delete lua;
  if( npcdata )
   delete npcdata;
- if( pnote )
-  delete pnote;
  if( pcdata )
   delete pcdata;
  delete money;
@@ -292,6 +290,8 @@ pc_data::~pc_data()
  free_string(pedit_state);
  for( short i = 0; i < MAX_PEDIT; i++ )
   free_string(pedit_string[i]);
+ if( pnote )
+  delete pnote;
  free_string(pwd);
  delete quest_info;
  delete records;

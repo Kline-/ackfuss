@@ -779,7 +779,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
             ( IS_NPC( victim ) ?
               victim->get_level("psuedo") / 7 :
               victim->pcdata->learned[gsn_shield_block] / 5 )
-            + ( IS_NPC( victim ) ? 10 : ( 1 * ( victim->lvl[CLS_WAR] - ch->level ) + victim->lvl2[CLS_KNI] / 8 ) ) ) )
+            + ( IS_NPC( victim ) ? 10 : ( 1 * ( victim->get_level("war") - ch->level ) + victim->get_level("kni") / 8 ) ) ) )
       /*
        * Shield Block! 
        */
@@ -799,7 +799,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
          act( "@@WYou feel a surge of health as $p sucks the life of $N@@N!!", ch, wield, victim, TO_CHAR );
          act( "@@WYou scream in @@Ragony@@W as $p shrieks, and shrouds you in an evil @@da@@eur@@da@@N!!", victim, wield, ch,
               TO_CHAR );
-         if( ( ch->lvl2[CLS_SOR] > 0 ) || ( ch->lvl2[CLS_NEC] > 0 ) )
+         if( ( ch->get_level("sor") > 0 ) || ( ch->get_level("nec") > 0 ) )
          {
             ch->hit = UMIN( ch->max_hit, ch->hit + number_range( (int)(dam * .075), (int)(dam * 1.72) ) );
          }
@@ -1506,7 +1506,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
    if( ( ch->fighting == victim ) )
       return;
 /*
-   if ( ( IS_AFFECTED(victim, AFF_CHARM) && victim->master != NULL ) 
+   if ( ( IS_AFFECTED(victim, AFF_CHARM) && victim->master != NULL )
       && ( ch->fighting != victim )  )
 	victim = victim->master;   */
 
@@ -1521,15 +1521,15 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
       return;
 
    /*
-    * if in deathmatch, anything goes 
+    * if in deathmatch, anything goes
     */
    if( deathmatch )
       return;
-   if( ch->sentence > 5000 )
+   if( !IS_NPC(ch) && ch->pcdata->sentence > 5000 )
       return;
 
    /*
-    * Check to see if ch & victim are in clans, and enemies 
+    * Check to see if ch & victim are in clans, and enemies
     */
 
    if( !IS_NPC( ch ) && !IS_NPC( victim ) )
@@ -1616,9 +1616,9 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
       if( diff > 5 )
          diff = 5;
    }
-   ch->sentence += diff * ch->get_level("psuedo") * 3; /* Magic # - Ramias */
+   ch->pcdata->sentence += diff * ch->get_level("psuedo") * 3; /* Magic # - Ramias */
    if( IS_ADEPT(ch) )
-      ch->sentence += diff * ch->get_level("psuedo") * 2;
+      ch->pcdata->sentence += diff * ch->get_level("psuedo") * 2;
 
    ch->act.set(ACT_KILLER);
    save_char_obj( ch );
@@ -1759,8 +1759,8 @@ bool check_dodge( CHAR_DATA * ch, CHAR_DATA * victim )
    else
    {
       chance = ( victim->pcdata->learned[gsn_dodge] / 3.5 ) + get_curr_dex( victim ) * 3 / 5;
-      if( ch->lvl2[CLS_MON] > 0 )   /* Monk  */
-         chance += ch->lvl2[CLS_MON] / 8;
+      if( ch->get_level("mon") > 0 )   /* Monk  */
+         chance += ch->get_level("mon") / 8;
    }
    if( IS_AFFECTED( victim, AFF_CLOAK_ADEPT ) )
       chance += 5;
@@ -3309,8 +3309,8 @@ void do_backstab( CHAR_DATA * ch, char *argument )
             best = cnt;
             level = ch->lvl[cnt];
          }
-      if( ch->lvl2[CLS_ASS] > 0 )
-         level = level + ch->lvl2[CLS_ASS] / 2;
+      if( ch->get_level("ass") > 0 )
+         level = level + ch->get_level("ass") / 2;
    }
    else
    {
@@ -3764,8 +3764,8 @@ void do_circle( CHAR_DATA * ch, char *argument )
             best = cnt;
             level = ch->lvl[cnt];
          }
-      if( ch->lvl2[CLS_ASS] > 0 )
-         level += ch->lvl2[CLS_ASS] / 2;
+      if( ch->get_level("ass") > 0 )
+         level += ch->get_level("ass") / 2;
    }
    else
    {
@@ -4210,7 +4210,7 @@ void do_berserk( CHAR_DATA * ch, char *argument )
    if( ch->pcdata->order[0] == 2 )
       prime = TRUE;
 
-   level = ch->lvl[CLS_WAR];
+   level = ch->get_level("war");
 
 
    if( ch->fighting == NULL )
@@ -4315,11 +4315,11 @@ void do_punch( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       dam = number_range( ch->level / 3, ch->level / 2 );
    else
-      dam = number_range( ch->lvl[CLS_WAR] / 2, ch->lvl[CLS_WAR] * ( prime ? 2 : 1 ) );
+      dam = number_range( ch->get_level("war") / 2, ch->get_level("war") * ( prime ? 2 : 1 ) );
 
    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_punch] / 2 );
 
-   chance += ( ch->lvl[CLS_WAR] - victim->level );
+   chance += ( ch->get_level("war") - victim->level );
 
    ch->set_cooldown("punch");
 
@@ -4406,11 +4406,11 @@ void do_headbutt( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       dam = number_range( ch->level / 3, ch->level / 2 );
    else
-      dam = number_range( ch->lvl[CLS_WAR] / 2, ch->lvl[CLS_WAR] * ( prime ? 2 : 1 ) );
+      dam = number_range( ch->get_level("war") / 2, ch->get_level("war") * ( prime ? 2 : 1 ) );
 
    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_headbutt] / 2 );
 
-   chance += ( ch->lvl[CLS_WAR] - victim->level );
+   chance += ( ch->get_level("war") - victim->level );
 
    ch->set_cooldown("headbutt");
 
@@ -4605,11 +4605,11 @@ void do_knee( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       dam = number_range( ch->level / 3, ch->level / 2 );
    else
-      dam = number_range( ch->lvl[CLS_WAR] / 2, ch->lvl[CLS_WAR] * ( prime ? 2 : 1 ) );
+      dam = number_range( ch->get_level("war") / 2, ch->get_level("war") * ( prime ? 2 : 1 ) );
 
    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_knee] / 2 );
 
-   chance += ( ch->lvl[CLS_WAR] - victim->level );
+   chance += ( ch->get_level("war") - victim->level );
 
    ch->set_cooldown("knee");
 
@@ -4698,11 +4698,11 @@ void do_kick( CHAR_DATA * ch, char *argument )
    if( IS_NPC( ch ) )
       dam = number_range( ch->level / 3, ch->level / 2 );
    else
-      dam = number_range( ch->lvl[CLS_WAR] / 2, ch->lvl[CLS_WAR] * ( prime ? 2 : 1 ) );
+      dam = number_range( ch->get_level("war") / 2, ch->get_level("war") * ( prime ? 2 : 1 ) );
 
    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_kick] / 2 );
 
-   chance += ( ch->lvl[CLS_WAR] - ( victim->level + 5 ) );
+   chance += ( ch->get_level("war") - ( victim->level + 5 ) );
 
    ch->set_cooldown("kick");
 
@@ -5438,19 +5438,19 @@ void do_stun( CHAR_DATA * ch, char *argument )
       act( "$n slams into $N, leaving $M stunned.", ch, NULL, victim, TO_NOTVICT );
 
       victim->stun_timer += number_range( 1, ch->get_level("psuedo") / 30 );
-      if( ch->lvl2[CLS_KNI] > 40 )
+      if( ch->get_level("kni") > 40 )
          victim->stun_timer += number_range( 1, 2 );
 
 /*      if ( !IS_NPC( ch ) )
       {
-        if( ch->lvl2[CLS_MON] > ch->lvl2[CLS_KNI] )
+        if( ch->get_level("mon") > ch->get_level("kni") )
         {
-  	  victim->stun_timer += ch->lvl2[CLS_MON] / 15;
+  	  victim->stun_timer += ch->get_level("mon") / 15;
 	  return;
         }      
         else 
         {
-          set_stun( victim, ch->lvl2[CLS_KNI] / 15 );
+          set_stun( victim, ch->get_level("kni") / 15 );
           return;
         }
       }   */
@@ -6090,54 +6090,54 @@ void do_stance( CHAR_DATA * ch, char *argument )
                snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_CASTER: /* Mage */
-               if( ( ch->lvl[CLS_MAG] > 50 ) /* mage */
-                   || ( ch->lvl[CLS_CLE] > 70 ) /* cleric */
-                   || ( ch->lvl[CLS_PSI] > 60 ) )  /* psi */
+               if( ( ch->get_level("mag") > 50 ) /* mage */
+                   || ( ch->get_level("cle") > 70 ) /* cleric */
+                   || ( ch->get_level("psi") > 60 ) )  /* psi */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_AMBUSH: /* Ninja */
-               if( ch->lvl2[CLS_ASS] > 30 )  /* assassin */
+               if( ch->get_level("ass") > 30 )  /* assassin */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_AC_BEST: /* Shadows */
-               if( ( ch->lvl2[CLS_MON] > 65 )   /* monk */
-                   || ( ch->lvl2[CLS_ASS] > 30 ) ) /* assassin */
+               if( ( ch->get_level("mon") > 65 )   /* monk */
+                   || ( ch->get_level("ass") > 30 ) ) /* assassin */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_HR_BEST: /* Essence */
-               if( ( ch->lvl2[CLS_KNI] > 45 )   /* knight */
-                   || ( ch->lvl2[CLS_MON] > 20 ) ) /* monk */
+               if( ( ch->get_level("kni") > 45 )   /* knight */
+                   || ( ch->get_level("mon") > 20 ) ) /* monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_DR_BEST: /* Beast */
-               if( ( ch->lvl2[CLS_KNI] > 35 )   /* knight */
-                   || ( ch->lvl2[CLS_MON] > 10 ) ) /* monk */
+               if( ( ch->get_level("kni") > 35 )   /* knight */
+                   || ( ch->get_level("mon") > 10 ) ) /* monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_AC_WORST: /* Flame */
-               if( ch->lvl2[CLS_MON] > 45 )  /* monk */
+               if( ch->get_level("mon") > 45 )  /* monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_HR_WORST: /* Spirit */
-               if( ch->lvl2[CLS_MON] > 60 )  /* monk */
+               if( ch->get_level("mon") > 60 )  /* monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_DR_WORST: /* Void */
-               if( ch->lvl2[CLS_MON] > 70 )  /* monk */
+               if( ch->get_level("mon") > 70 )  /* monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_SUPER_FIGHTER: /* Dragon */
-               if( ( ch->lvl2[CLS_MON] > 79 ) && ( ch->lvl2[CLS_KNI] > 79 ) ) /* both knight and monk */
+               if( ( ch->get_level("mon") > 79 ) && ( ch->get_level("kni") > 79 ) ) /* both knight and monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_SUPER_SPEED: /* Snake */
-               if( ( ch->lvl2[CLS_MON] > 70 ) && ( ch->lvl2[CLS_KNI] > 70 ) ) /* both knight and monk */
+               if( ( ch->get_level("mon") > 70 ) && ( ch->get_level("kni") > 70 ) ) /* both knight and monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_WIZARD: /* Wizard */
-               if( ( ch->lvl2[CLS_SOR] > 20 )   /* sorc */
-                   || ( ch->lvl2[CLS_NEC] > 40 )   /* necro */
-                   || ( ch->lvl2[CLS_MON] > 60 ) ) /* monk */
+               if( ( ch->get_level("sor") > 20 )   /* sorc */
+                   || ( ch->get_level("nec") > 40 )   /* necro */
+                   || ( ch->get_level("mon") > 60 ) ) /* monk */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_MAGI: /* Magi */
@@ -6177,18 +6177,18 @@ void do_stance( CHAR_DATA * ch, char *argument )
             break;
          }
          case STANCE_CASTER:
-            if( ( ch->lvl[CLS_MAG] > 50 ) /* mage */
-                || ( ch->lvl[CLS_CLE] > 70 ) /* cleric */
-                || ( ch->lvl[CLS_PSI] > 60 ) )  /* psi */
+            if( ( ch->get_level("mag") > 50 ) /* mage */
+                || ( ch->get_level("cle") > 70 ) /* cleric */
+                || ( ch->get_level("psi") > 60 ) )  /* psi */
             {
                legal_stance = TRUE;
                break;
             }
             break;
          case STANCE_WIZARD:
-            if( ( ch->lvl2[CLS_SOR] > 20 )   /* sorc */
-                || ( ch->lvl2[CLS_NEC] > 40 )   /* necro */
-                || ( ch->lvl2[CLS_MON] > 60 ) ) /* monk */
+            if( ( ch->get_level("sor") > 20 )   /* sorc */
+                || ( ch->get_level("nec") > 40 )   /* necro */
+                || ( ch->get_level("mon") > 60 ) ) /* monk */
             {
                legal_stance = TRUE;
                break;
@@ -6202,7 +6202,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
             }
             break;
          case STANCE_AMBUSH:
-            if( ch->lvl2[CLS_ASS] > 30 )  /* assassin */
+            if( ch->get_level("ass") > 30 )  /* assassin */
             {
                CHAR_DATA *other;
                for( other = ch->in_room->first_person; other != NULL; other = other->next_in_room )
@@ -6220,8 +6220,8 @@ void do_stance( CHAR_DATA * ch, char *argument )
             }
             break;
          case STANCE_AC_BEST:
-            if( ( ch->lvl2[CLS_KNI] > 65 )   /* knight */
-                || ( ch->lvl2[CLS_ASS] > 30 ) ) /* assassin */
+            if( ( ch->get_level("kni") > 65 )   /* knight */
+                || ( ch->get_level("ass") > 30 ) ) /* assassin */
             {
                legal_stance = TRUE;
                break;
@@ -6229,8 +6229,8 @@ void do_stance( CHAR_DATA * ch, char *argument )
             break;
 
          case STANCE_HR_BEST:
-            if( ( ch->lvl2[CLS_KNI] > 45 )   /* knight */
-                || ( ch->lvl2[CLS_MON] > 20 ) ) /* monk */
+            if( ( ch->get_level("kni") > 45 )   /* knight */
+                || ( ch->get_level("mon") > 20 ) ) /* monk */
             {
                legal_stance = TRUE;
                break;
@@ -6238,8 +6238,8 @@ void do_stance( CHAR_DATA * ch, char *argument )
             break;
 
          case STANCE_DR_BEST:
-            if( ( ch->lvl2[CLS_KNI] > 35 )   /* knight */
-                || ( ch->lvl2[CLS_MON] > 10 ) ) /* monk */
+            if( ( ch->get_level("kni") > 35 )   /* knight */
+                || ( ch->get_level("mon") > 10 ) ) /* monk */
             {
                legal_stance = TRUE;
                break;
@@ -6247,7 +6247,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
             break;
 
          case STANCE_AC_WORST:
-            if( ch->lvl2[CLS_MON] > 45 )  /* monk */
+            if( ch->get_level("mon") > 45 )  /* monk */
             {
                legal_stance = TRUE;
                break;
@@ -6255,7 +6255,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
             break;
 
          case STANCE_HR_WORST:
-            if( ch->lvl2[CLS_MON] > 60 )  /* monk */
+            if( ch->get_level("mon") > 60 )  /* monk */
             {
                legal_stance = TRUE;
                break;
@@ -6263,7 +6263,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
             break;
 
          case STANCE_DR_WORST:
-            if( ch->lvl2[CLS_MON] > 70 )  /* monk */
+            if( ch->get_level("mon") > 70 )  /* monk */
             {
                legal_stance = TRUE;
                break;
@@ -6271,7 +6271,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
             break;
 
          case STANCE_SUPER_FIGHTER:
-            if( ( ch->lvl2[CLS_KNI] > 79 ) && ( ch->lvl2[CLS_MON] > 79 ) ) /* both knight and monk */
+            if( ( ch->get_level("kni") > 79 ) && ( ch->get_level("mon") > 79 ) ) /* both knight and monk */
             {
                legal_stance = TRUE;
                break;
@@ -6279,7 +6279,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
             break;
 
          case STANCE_SUPER_SPEED:
-            if( ( ch->lvl2[CLS_KNI] > 70 ) && ( ch->lvl2[CLS_MON] > 70 ) ) /* both knight and monk */
+            if( ( ch->get_level("kni") > 70 ) && ( ch->get_level("mon") > 70 ) ) /* both knight and monk */
             {
                legal_stance = TRUE;
                break;

@@ -2458,7 +2458,7 @@ CHAR_DATA *switch_char( CHAR_DATA * victim, int mvnum, int poly_level )
     * 0 : equivalent to switch
     * 1 : pc with pcdata.
     * 2 : pc with pcdata + objects
-    * 3 : pc with pcdata + objs, levels and exp, pract, money
+    * 3 : pc with pcdata + objs, levels and exp, money
     * 4 : as 3, but same stats(hp/mana/move)
     */
 
@@ -2494,7 +2494,6 @@ CHAR_DATA *switch_char( CHAR_DATA * victim, int mvnum, int poly_level )
          mob->exp = victim->exp;
          for( foo = 0; foo < MAX_CLASS; foo++ )
             mob->lvl[foo] = victim->lvl[foo];
-         mob->practice = victim->practice;
 
       case 2: /* Level 2 */
          while( ( eq = victim->first_carry ) != NULL )

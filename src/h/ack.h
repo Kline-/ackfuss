@@ -611,10 +611,8 @@ class char_data
   char *old_prompt; /* used to hold prompt when writing */
   PC_DATA *pcdata;
   int played;
-  NOTE_DATA *pnote;
   int poly_level;
   short position;
-  short practice;
   CHAR_DATA *prev_in_room;
   char *prompt;
   short p_class;
@@ -623,10 +621,8 @@ class char_data
   CHAR_DATA *reply;
   CHAR_DATA *rider;
   CHAR_DATA *riding;
-  time_t save_time;
   short saving_throw;
-  char *searching;  /* For PC's that quit      */
-  int sentence;  /* For new legal system */
+  char *searching; /* For NPCs hunting continuously */
   short sex;
   OBJ_DATA *sitting;   /* What they're resting or sleeping on */
   float speed[MAX_SPEED];
@@ -736,6 +732,8 @@ class pc_data
   short perm_int;
   short perm_str;
   short perm_wis;
+  NOTE_DATA *pnote;
+  short practice;
   char *pwd;
   QUEST_INFO *quest_info;
   short quest_points;
@@ -744,6 +742,8 @@ class pc_data
   char *room_enter;
   char *room_exit;
   short ruler_rank;
+  time_t save_time;
+  short sentence;
   SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
   short term_columns;
   short term_rows;
@@ -1292,8 +1292,6 @@ int    exp_to_level       args( ( CHAR_DATA * ch, int p_class, int index ) );
 int    exp_for_mobile     args( ( int level, CHAR_DATA * mob ) );
 int    exp_mob_base       args( ( int level ) );
 int    skill_table_lookup args( ( CHAR_DATA * ch, int sn, int return_type ) );
-bool   is_remort          args( ( CHAR_DATA * ch ) );
-bool   is_adept           args( ( CHAR_DATA * ch ) );
 int    exp_to_level_vamp  args( ( int level ) );
 int    exp_to_level_adept args( ( CHAR_DATA * ch ) );
 void   reset_gain_stats   args( ( CHAR_DATA * ch ) );

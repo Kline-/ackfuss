@@ -551,7 +551,7 @@ char *get_adept_name( CHAR_DATA * ch )
    if( !IS_ADEPT(ch) )
     return "@@e    Bugged    @@N";
 
-   switch ( ch->pcdata->adept_level )
+   switch ( ch->get_level("adept") )
    {
 
       case 1:

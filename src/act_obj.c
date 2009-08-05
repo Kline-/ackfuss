@@ -1974,9 +1974,14 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
     */
    if( paying_fine )
    {
-
+      if( IS_NPC(ch) )
+      {
+       send_to_char("NPCs don't have fines.\r\n",ch);
+       return;
+      }
       short plevel = ch->get_level("psuedo");
-      if( ch->sentence <= 0 )
+
+      if( ch->pcdata->sentence <= 0 )
       {
 
          send_to_char( "You have no fines outstanding.\r\n", ch );
@@ -2003,19 +2008,19 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
          obj_value *= .6;
       if( ( obj->item_type == ITEM_FOOD ) || ( obj->item_type == ITEM_BEACON ) || ( obj->item_type == ITEM_SOUL ) )
          obj_value = 0;
-      ch->sentence -= (int)obj_value;
-      if( ch->sentence > 0 )
+      ch->pcdata->sentence -= (int)obj_value;
+      if( ch->pcdata->sentence > 0 )
       {
 
          snprintf( buf, MSL, "%s: Sentence reduced to %d ( - %.0f ) by sacrificing %s.", ch->name,
-                  ch->sentence, obj_value, obj->short_descr );
+                  ch->pcdata->sentence, obj_value, obj->short_descr );
          monitor_chan( buf, MONITOR_OBJ );
          act( "The judge accepts $p as partial payment of your fine.", ch, obj, 0, TO_CHAR );
       }
       else
       {
 
-         ch->sentence = 0;
+         ch->pcdata->sentence = 0;
          ch->act.reset(ACT_KILLER | ACT_THIEF);
          send_to_char( "Your debt to society has been paid!  Please more careful in the future.\r\n", ch );
          snprintf( monbuf, MSL, "%s has had a WANTED flag removed by the judge.\r\n", ch->name );
@@ -2432,7 +2437,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
    if( IS_ADEPT(victim) && !IS_ADEPT(ch) )
       chance = chance - 25;
    if( !IS_NPC( ch ) )
-      chance += ch->lvl2[1] / 4;
+      chance += ch->get_level("assassin") / 4;
    if( ch->get_level("psuedo") > ( victim->get_level("psuedo") + 30 ) )
    {
       send_to_char( "Coward!!! Trying to steal from the weak..\r\n", ch );
@@ -2464,7 +2469,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
             diff = ( abs( ch->get_level("psuedo") - victim->get_level("psuedo") ) + 10 ) * 20;
             ch->act.set(ACT_THIEF);
             send_to_char( "*** You are now a THIEF!! ***\r\n", ch );
-            ch->sentence += diff;
+            ch->pcdata->sentence += diff;
             save_char_obj( ch );
             log_string( buf );
          }

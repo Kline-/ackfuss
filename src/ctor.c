@@ -180,9 +180,9 @@ char_data::char_data()
  long_descr = &str_empty[0];
  long_descr_orig = &str_empty[0];
  for( short i = 0; i < MAX_CLASS; i++ )
-  lvl[i] = 0;
+  lvl[i] = -1;
  for( short i = 0; i < MAX_CLASS; i++ )
-  lvl2[i] = 0;
+  lvl2[i] = -1;
  mana = 50;
  master = NULL;
  max_hit = 50;
@@ -199,10 +199,8 @@ char_data::char_data()
  old_prompt = &str_empty[0];
  pcdata = NULL;
  played = 0;
- pnote = NULL;
  poly_level = 0;
  position = POS_STANDING;
- practice = 21;
  prev_in_room = NULL;
  prompt = &str_empty[0];
  p_class = 0;
@@ -211,10 +209,8 @@ char_data::char_data()
  reply = NULL;
  rider = NULL;
  riding = NULL;
- save_time = 0;
  saving_throw = 0;
  searching = &str_empty[0];
- sentence = 0;
  sex = SEX_NEUTRAL;
  sitting = NULL;
  for( short i = 0; i < MAX_SPEED; i++ )
@@ -522,7 +518,7 @@ obj_index_data::obj_index_data()
 
 pc_data::pc_data()
 {
- adept_level = 0;
+ adept_level = -1;
  for( short i = 0; i < MAX_ALIASES; i++ )
  {
   alias[i] = &str_empty[0];
@@ -586,6 +582,8 @@ pc_data::pc_data()
  perm_int = 0;
  perm_str = 0;
  perm_wis = 0;
+ pnote = NULL;
+ practice = 21;
  pwd = &str_empty[0];
  quest_info = new QUEST_INFO;
  quest_points = 0;
@@ -594,6 +592,8 @@ pc_data::pc_data()
  room_enter = &str_empty[0];
  room_exit = &str_empty[0];
  ruler_rank = 0;
+ save_time = 0;
+ sentence = 0;
  super = new SUPER_DATA;
  term_columns = 0;
  term_rows = 0;

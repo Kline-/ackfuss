@@ -1279,12 +1279,12 @@ DO_FUN(do_score)
    send_to_char( buf, ch );
 
    /*
-    * snprintf( buf, MSL, 
+    * snprintf( buf, MSL,
     * "@@WYou are: @@y%s%s  \r\n@@WAge: @@y%d @@W( @@y%d @@Whrs ) Race: @@y%s  @@WClan: @@y%s.@@g\r\n",
     * IS_NPC(ch) ? ch->short_descr : ch->name,
-    * IS_NPC(ch) ? "" : ch->pcdata->title,    
+    * IS_NPC(ch) ? "" : ch->pcdata->title,
     * get_age(ch),
-    * (get_age(ch) - 17) * 2, 
+    * (get_age(ch) - 17) * 2,
     * IS_NPC(ch) ? "n/a"  : IS_VAMP(ch) ? "Vampire" : race_table[ch->race].race_title,
     * IS_NPC(ch) ? " n/a" : clan_table[ch->clan].clan_name );
     * send_to_char( buf, ch );
@@ -1295,7 +1295,7 @@ DO_FUN(do_score)
 
    snprintf( buf, MSL,
             "| @@y%4d/%4d @@WHit @@y%4d/%4d @@WMana @@y%4d/%4d @@WMovement @@y%3d @@WPractices@@c |\r\n",
-            ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move, ch->practice );
+            ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move, IS_NPC(ch) ? 0 : ch->pcdata->practice );
    send_to_char( buf, ch );
 
    if( IS_NPC( ch ) )
@@ -1351,7 +1351,7 @@ DO_FUN(do_score)
    send_to_char( buf, ch );
    buf2[0] = '\0';
 
-   if( is_remort( ch ) )
+   if( IS_REMORT( ch ) )
    {
 
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
@@ -2064,8 +2064,8 @@ DO_FUN(do_who)
 
          wch = ( d->original != NULL ) ? d->original : d->character;
          if( ( list == SHOW_IMMORT && wch->level < LEVEL_HERO )
-             || ( list == SHOW_REMORT && ( !is_remort( wch ) || wch->level >= LEVEL_HERO ) )
-             || ( list == SHOW_MORTAL && ( is_remort( wch ) || wch->level >= LEVEL_HERO ) )
+             || ( list == SHOW_REMORT && ( !IS_REMORT( wch ) || wch->level >= LEVEL_HERO ) )
+             || ( list == SHOW_MORTAL && ( IS_REMORT( wch ) || wch->level >= LEVEL_HERO ) )
              || ( list == SHOW_ADEPT && ( !IS_ADEPT(wch) ) )
              || ( list == SHOW_ADEPT && ( wch->level >= LEVEL_HERO ) )
              || ( list == SHOW_REMORT && ( IS_ADEPT(wch) ) ) )
@@ -2076,7 +2076,7 @@ DO_FUN(do_who)
              || ( fImmortalOnly && wch->level < LEVEL_HERO )
              || ( fadeptonly && ( ( !IS_ADEPT(wch) ) || wch->level >= LEVEL_HERO ) )
              || ( fClassRestrict && !rgfClass[wch->p_class] )
-             || ( fremortonly && ( !is_remort( wch ) || ( wch->level >= LEVEL_HERO ) || ( IS_ADEPT(wch) ) ) ) )
+             || ( fremortonly && ( !IS_REMORT( wch ) || ( wch->level >= LEVEL_HERO ) || ( IS_ADEPT(wch) ) ) ) )
             continue;
 
 /* Multiple grouping restriction checks  Zen */
@@ -2204,8 +2204,8 @@ DO_FUN(do_who)
           * * each segment of the loop... 
           */
          if( ( list == SHOW_IMMORT && wch->level < LEVEL_HERO )
-             || ( list == SHOW_REMORT && ( !is_remort( wch ) || wch->level >= LEVEL_HERO ) )
-             || ( list == SHOW_MORTAL && ( is_remort( wch ) || wch->level >= LEVEL_HERO ) )
+             || ( list == SHOW_REMORT && ( !IS_REMORT( wch ) || wch->level >= LEVEL_HERO ) )
+             || ( list == SHOW_MORTAL && ( IS_REMORT( wch ) || wch->level >= LEVEL_HERO ) )
              || ( list == SHOW_ADEPT && ( !IS_ADEPT(wch) ) )
              || ( list == SHOW_ADEPT && ( wch->level >= LEVEL_HERO ) )
              || ( list == SHOW_REMORT && ( IS_ADEPT(wch) ) ) )
@@ -2216,7 +2216,7 @@ DO_FUN(do_who)
              || ( fImmortalOnly && wch->level < LEVEL_HERO )
              || ( fadeptonly && ( ( !IS_ADEPT(wch) ) || wch->level >= LEVEL_HERO ) )
              || ( fClassRestrict && !rgfClass[wch->p_class] )
-             || ( fremortonly && ( !is_remort( wch ) || ( wch->level >= LEVEL_HERO ) || ( IS_ADEPT(wch) ) ) ) )
+             || ( fremortonly && ( !IS_REMORT( wch ) || ( wch->level >= LEVEL_HERO ) || ( IS_ADEPT(wch) ) ) ) )
 
             continue;
 
@@ -3098,7 +3098,7 @@ DO_FUN(do_practice)
 
 
          /*
-          * Check ch->lvl[] 
+          * Check ch->lvl[]
           */
          for( cnt = 0; cnt < MAX_CLASS; cnt++ )
             if( ( ( ( ch->lvl[cnt] >= skill_table[sn].skill_level[cnt] ) && ( skill_table[sn].flag1 == MORTAL ) )
@@ -3134,7 +3134,7 @@ DO_FUN(do_practice)
 
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "\r\nYou have %d practice sessions left.\r\n", ch->practice );
+      snprintf( buf, MSL, "\r\nYou have %d practice sessions left.\r\n", ch->pcdata->practice );
       send_to_char( buf, ch );
    }
    else
@@ -3159,7 +3159,7 @@ DO_FUN(do_practice)
          return;
       }
 
-      if( ch->practice <= 0 )
+      if( ch->pcdata->practice <= 0 )
       {
          send_to_char( "You have no practice sessions left.\r\n", ch );
          return;
@@ -3234,7 +3234,7 @@ DO_FUN(do_practice)
       }
       else
       {
-         ch->practice--;
+         ch->pcdata->practice--;
          ch->pcdata->learned[sn] += int_app[get_curr_int( ch )].learn;
          if( ch->pcdata->learned[sn] < adept )
          {
@@ -4702,7 +4702,7 @@ DO_FUN(do_gain)
    }
 /* first case.. remort  */
    if( ( ( morts_at_seventy >= 2 )
-         && ( is_remort( ch ) == FALSE ) )
+         && ( IS_REMORT( ch ) == FALSE ) )
        || ( ( morts_at_eighty == 5 ) && ( remorts_at_seventy == 1 ) && ( num_remorts == 1 ) ) )
    {
       allow_remort = TRUE;
@@ -4799,7 +4799,7 @@ DO_FUN(do_gain)
          remort = TRUE;
          c = cnt;
       }
-   if( !str_prefix( "VAMPYRE", argument ) )
+   if( !str_prefix( "VAMPIRE", argument ) )
    {
       if( IS_VAMP( ch ) )
       {
@@ -4914,7 +4914,7 @@ DO_FUN(do_gain)
       send_to_char( "@@WYou have reached another step on the stairway to Wisdom!!!@@N\r\n", ch );
       ch->exp -= cost;
       advance_level( ch, c, TRUE, FALSE );
-      ch->pcdata->adept_level++;
+      ch->pcdata->adept_level = UMAX( 1, ch->pcdata->adept_level + 1 );
       snprintf( buf, MSL, "%s @@W advances in the way of the Adept!!\r\n", ch->name );
       info( buf, 1 );
       free_string( ch->pcdata->who_name );
@@ -5432,7 +5432,7 @@ DO_FUN(do_worth)
       }
 
    /*
-    * Check for remort classes 
+    * Check for remort classes
     */
    for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       if( ch->lvl2[cnt] != -1 && ch->lvl2[cnt] < LEVEL_HERO - 1 )
@@ -5495,20 +5495,20 @@ DO_FUN(do_whois)
    else
    {
       snprintf( buf + strlen( buf ), MSL, "Levels: [ Mag:%2d  Cle:%2d  Thi:%2d  War:%2d  Psi:%2d ]\r\n",
-               victim->lvl[CLS_MAG] > 0 ? victim->lvl[CLS_MAG] : 0,
-               victim->lvl[CLS_CLE] > 0 ? victim->lvl[CLS_CLE] : 0,
-               victim->lvl[CLS_THI] > 0 ? victim->lvl[CLS_THI] : 0,
-               victim->lvl[CLS_WAR] > 0 ? victim->lvl[CLS_WAR] : 0,
-               victim->lvl[CLS_PSI] > 0 ? victim->lvl[CLS_PSI] : 0 );
+               victim->get_level("mag") > 0 ? victim->get_level("mag") : 0,
+               victim->get_level("cle") > 0 ? victim->get_level("cle") : 0,
+               victim->get_level("thi") > 0 ? victim->get_level("thi") : 0,
+               victim->get_level("war") > 0 ? victim->get_level("war") : 0,
+               victim->get_level("psi") > 0 ? victim->get_level("psi") : 0 );
 
-      if( is_remort( victim ) )
+      if( IS_REMORT( victim ) )
 
          snprintf( buf + strlen( buf ), MSL, "Levels: [ Sor:%2d  Mon:%2d  Ass:%2d  Kni:%2d  Nec:%2d ]\r\n",
-                  victim->lvl2[CLS_SOR] > 0 ? victim->lvl2[CLS_SOR] : 0,
-                  victim->lvl2[CLS_MON] > 0 ? victim->lvl2[CLS_MON] : 0,
-                  victim->lvl2[CLS_ASS] > 0 ? victim->lvl2[CLS_ASS] : 0,
-                  victim->lvl2[CLS_KNI] > 0 ? victim->lvl2[CLS_KNI] : 0,
-                  victim->lvl2[CLS_NEC] > 0 ? victim->lvl2[CLS_NEC] : 0 );
+                  victim->get_level("sor") > 0 ? victim->get_level("sor") : 0,
+                  victim->get_level("mon") > 0 ? victim->get_level("mon") : 0,
+                  victim->get_level("ass") > 0 ? victim->get_level("ass") : 0,
+                  victim->get_level("kni") > 0 ? victim->get_level("kni") : 0,
+                  victim->get_level("nec") > 0 ? victim->get_level("nec") : 0 );
    }
    snprintf( buf + strlen( buf ), MSL, "Sex: %s.  Race: %s.  Clan: %s.\r\n",
             ( victim->sex == SEX_MALE ) ? "Male" :

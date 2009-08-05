@@ -534,20 +534,6 @@ int skill_table_lookup( CHAR_DATA * ch, int sn, int return_type )
    return ( return_value );
 }
 
-bool is_remort( CHAR_DATA * ch )
-{
-   int cnt;
-
-   if( IS_NPC( ch ) )
-      return FALSE;
-
-   for( cnt = 0; cnt < MAX_CLASS; cnt++ )
-      if( ch->lvl2[cnt] != -1 )
-         return TRUE;
-
-   return FALSE;
-}
-
 int get_item_value( OBJ_DATA * obj )
 {
    AFFECT_DATA *this_aff;

@@ -338,7 +338,7 @@ bool mob_hunt( CHAR_DATA * mob )
        * free_string(mob->searching);
        * mob->searching = NULL;
        * }
-       * --Aeria 
+       * --Aeria
        */
       else if( mob->npcdata->hunt_home )
       {

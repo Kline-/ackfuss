@@ -79,13 +79,13 @@ void note_attach( CHAR_DATA * ch )
 {
    NOTE_DATA *pnote;
 
-   if( ch->pnote )
+   if( ch->pcdata->pnote )
       return;
 
    pnote = new NOTE_DATA;
 
    pnote->sender = str_dup(ch->name);
-   ch->pnote = pnote;
+   ch->pcdata->pnote = pnote;
    return;
 }
 
@@ -318,7 +318,7 @@ DO_FUN(do_note)
    if( !str_cmp( arg, "write" ) || !str_cmp( arg, "edit" ) )
    {
       note_attach( ch );
-      build_strdup( &ch->pnote->text, "$edit", TRUE, FALSE, ch );
+      build_strdup( &ch->pcdata->pnote->text, "$edit", TRUE, FALSE, ch );
       return;
    }
 
@@ -326,7 +326,7 @@ DO_FUN(do_note)
    if( !str_cmp( arg, "+" ) )
    {
       note_attach( ch );
-      strcpy( buf, ch->pnote->text );
+      strcpy( buf, ch->pcdata->pnote->text );
       if( strlen( buf ) + strlen( argument ) >= MAX_STRING_LENGTH - 200 )
       {
          send_to_char( "Letter too long.\r\n", ch );
@@ -340,8 +340,8 @@ DO_FUN(do_note)
 
       strncat( buf, argument, MSL );
       strncat( buf, "\r\n", MSL );
-      free_string( ch->pnote->text );
-      ch->pnote->text = str_dup( buf );
+      free_string( ch->pcdata->pnote->text );
+      ch->pcdata->pnote->text = str_dup( buf );
       send_to_char( "Ok.\r\n", ch );
       return;
    }
@@ -349,8 +349,8 @@ DO_FUN(do_note)
    if( !str_cmp( arg, "subject" ) )
    {
       note_attach( ch );
-      free_string( ch->pnote->subject );
-      ch->pnote->subject = str_dup( argument );
+      free_string( ch->pcdata->pnote->subject );
+      ch->pcdata->pnote->subject = str_dup( argument );
       send_to_char( "Ok.\r\n", ch );
       return;
    }
@@ -358,18 +358,18 @@ DO_FUN(do_note)
    if( !str_cmp( arg, "to" ) )
    {
       note_attach( ch );
-      free_string( ch->pnote->to_list );
-      ch->pnote->to_list = str_dup( argument );
+      free_string( ch->pcdata->pnote->to_list );
+      ch->pcdata->pnote->to_list = str_dup( argument );
       send_to_char( "Ok.\r\n", ch );
       return;
    }
 
    if( !str_cmp( arg, "clear" ) )
    {
-      if( ch->pnote )
+      if( ch->pcdata->pnote )
       {
-         delete ch->pnote;
-         ch->pnote = NULL;
+         delete ch->pcdata->pnote;
+         ch->pcdata->pnote = NULL;
       }
 
       send_to_char( "Ok.\r\n", ch );
@@ -378,15 +378,15 @@ DO_FUN(do_note)
 
    if( !str_cmp( arg, "show" ) )
    {
-      if( !ch->pnote )
+      if( !ch->pcdata->pnote )
       {
          send_to_char( "You have no letter in progress.\r\n", ch );
          return;
       }
 
-      snprintf( buf, MSL, "%s: %s\r\nTo: %s\r\n", ch->pnote->sender, ch->pnote->subject, ch->pnote->to_list );
+      snprintf( buf, MSL, "%s: %s\r\nTo: %s\r\n", ch->pcdata->pnote->sender, ch->pcdata->pnote->subject, ch->pcdata->pnote->to_list );
       send_to_char( buf, ch );
-      send_to_char( ch->pnote->text, ch );
+      send_to_char( ch->pcdata->pnote->text, ch );
       return;
    }
 
@@ -395,19 +395,19 @@ DO_FUN(do_note)
       FILE *fp;
       char *strtime;
 
-      if( !ch->pnote )
+      if( !ch->pcdata->pnote )
       {
          send_to_char( "You have no letter in progress.\r\n", ch );
          return;
       }
 
-      if( !str_cmp( ch->pnote->to_list, "" ) )
+      if( !str_cmp( ch->pcdata->pnote->to_list, "" ) )
       {
          send_to_char( "You need to provide recipient name(s).\r\n", ch );
          return;
       }
 
-      if( !str_cmp( ch->pnote->subject, "" ) )
+      if( !str_cmp( ch->pcdata->pnote->subject, "" ) )
       {
          send_to_char( "You need to provide a subject.\r\n", ch );
          return;
@@ -415,12 +415,12 @@ DO_FUN(do_note)
 
       strtime = ctime( &current_time );
       strtime[strlen( strtime ) - 1] = '\0';
-      free_string( ch->pnote->date );
-      ch->pnote->date = str_dup( strtime );
-      ch->pnote->date_stamp = current_time;
+      free_string( ch->pcdata->pnote->date );
+      ch->pcdata->pnote->date = str_dup( strtime );
+      ch->pcdata->pnote->date_stamp = current_time;
 
-      pnote = ch->pnote;
-      ch->pnote = NULL;
+      pnote = ch->pcdata->pnote;
+      ch->pcdata->pnote = NULL;
 
       if( !( fp = file_open( NOTE_FILE, "a" ) ) )
       {
@@ -676,7 +676,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                continue;
             if( channel == CHANNEL_DIPLOMAT && !och->act.test(ACT_CDIPLOMAT) )
                continue;
-            if( channel == CHANNEL_REMORTTALK && !is_remort( och ) )
+            if( channel == CHANNEL_REMORTTALK && !IS_REMORT( och ) )
                continue;
             if( channel == CHANNEL_YELL && vch->in_room->area != ch->in_room->area )
                continue;
@@ -981,7 +981,7 @@ DO_FUN(do_diptalk)
 
 DO_FUN(do_remorttalk)
 {
-   if( !is_remort( ch ) )
+   if( !IS_REMORT( ch ) )
    {
       send_to_char( "You are not a @@mREMORT@@N!!!\r\n", ch );
       return;

@@ -150,10 +150,10 @@ void save_char_obj( CHAR_DATA * ch )
    if( deathmatch )
    {
       /*
-       * Then a deathmatch is in progress... 
+       * Then a deathmatch is in progress...
        */
       /*
-       * And therefore don't save... 
+       * And therefore don't save...
        */
       return;
    }
@@ -165,11 +165,11 @@ void save_char_obj( CHAR_DATA * ch )
    if( !IS_NPC( ch ) && ch->desc != NULL && ch->desc->original != NULL )
       ch = ch->desc->original;
 
-   ch->save_time = current_time;
+   ch->pcdata->save_time = current_time;
 
 
    /*
-    * player files parsed directories by Yaz 4th Realm 
+    * player files parsed directories by Yaz 4th Realm
     */
 #if !defined(machintosh) && !defined(MSDOS)
    if( IS_NPC( ch ) )   /* convert spaces to . */
@@ -292,9 +292,11 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "Class          %d\n", ch->p_class );
    fprintf( fp, "Race           %d\n", ch->race );
    fprintf( fp, "Level          %d\n", ch->level );
-   fprintf( fp, "Sentence       %d\n", ch->sentence );
    if( !IS_NPC(ch) )
+   {
+    fprintf( fp, "Sentence       %d\n", ch->pcdata->sentence );
     fprintf( fp, "Invis          %d\n", ch->pcdata->invis );
+   }
 
    fprintf( fp, "m/c            " );
    for( cnt = 0; cnt < MAX_CLASS; cnt++ )
@@ -307,7 +309,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "\n" );
 
    if( !IS_NPC(ch) )
-    fprintf( fp, "Adeptlevel     %d\n", ch->pcdata->adept_level );
+    fprintf( fp, "Adeptlevel     %d\n", ch->get_level("adept") );
    fprintf( fp, "Trust          %d\n", ch->trust );
    fprintf( fp, "Wizbit         %d\n", ch->wizbit );
    fprintf( fp, "Played         %d\n", ch->played + ( int )( current_time - ch->logon ) );
@@ -356,7 +358,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     */
    fprintf( fp, "Position       %d\n", ch->position == POS_FIGHTING ? POS_STANDING : ch->position );
 
-   fprintf( fp, "Practice       %d\n", ch->practice );
    fprintf( fp, "SavingThrow    %d\n", ch->saving_throw );
    fprintf( fp, "Alignment      %d\n", ch->alignment );
    fprintf( fp, "Hitroll        %d\n", ch->hitroll );
@@ -371,6 +372,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    }
    else
    {
+      fprintf( fp, "Practice       %d\n", ch->pcdata->practice );
       fprintf( fp, "DeathCnt       %d\n", ch->pcdata->death_cnt );
       fprintf( fp, "Order          %d %d %d %d %d\n",
                ch->pcdata->order[0], ch->pcdata->order[1], ch->pcdata->order[2],
@@ -1226,7 +1228,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             }
             KEY( "Played", ch->played, fread_number( fp ) );
             KEY( "Position", ch->position, fread_number( fp ) );
-            KEY( "Practice", ch->practice, fread_number( fp ) );
+            if( !IS_NPC(ch) )
+             KEY( "Practice", ch->pcdata->practice, fread_number( fp ) );
             SKEY( "Prompt", ch->prompt, fread_string( fp ) );
             break;
 
@@ -1328,12 +1331,11 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
          case 'S':
             KEY( "SavingThrow", ch->saving_throw, fread_number( fp ) );
-            KEY( "Sentence", ch->sentence, fread_number( fp ) );
+            if( !IS_NPC(ch ) )
+             KEY( "Sentence", ch->pcdata->sentence, fread_number( fp ) );
             KEY( "Sex", ch->sex, fread_number( fp ) );
             if( IS_NPC( ch ) )
-            {
-               SKEY( "ShortDescr", ch->npcdata->short_descr, fread_string( fp ) );
-            }
+             SKEY( "ShortDescr", ch->npcdata->short_descr, fread_string( fp ) );
 
             if( !str_cmp( word, "Skill" ) && !IS_NPC( ch ) )
             {

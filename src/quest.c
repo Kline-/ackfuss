@@ -821,7 +821,7 @@ void crusade_reward( CHAR_DATA *ch )
  reward = quest_object->value[1];
  snprintf( buf, MSL, "You receive %d practices!\r\n", reward );
  send_to_char( buf, ch );
- ch->practice += reward;
+ ch->pcdata->practice += reward;
 
  reward = (exp_mob_base(quest_mob->level) * sysdata.killperlev);
  reward = number_range(static_cast<int>(reward * 0.02),static_cast<int>(reward * 0.04));

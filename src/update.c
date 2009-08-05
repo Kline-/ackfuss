@@ -350,7 +350,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
    ch->max_hit += add_hp;
    ch->max_mana += add_mana;
    ch->max_move += add_move;
-   ch->practice += add_prac;
+   ch->pcdata->practice += add_prac;
 
    if( !IS_NPC( ch ) )
     ch->act.reset(ACT_BOUGHT_PET);
@@ -1352,10 +1352,10 @@ void char_update( void )
        * Find dude with oldest save time.
        */
       if( !IS_NPC( ch )
-          && ( ch->desc == NULL || ch->desc->connected == CON_PLAYING ) && ch->level >= 2 && ch->save_time < save_time )
+          && ( ch->desc == NULL || ch->desc->connected == CON_PLAYING ) && ch->level >= 2 && ch->pcdata->save_time < save_time )
       {
          ch_save = ch;
-         save_time = ch->save_time;
+         save_time = ch->pcdata->save_time;
       }
 
       if( ( IS_NPC( ch ) ) && ( ch->hit < -15 ) )
@@ -1445,7 +1445,7 @@ void char_update( void )
             ch_quit = ch;
 
          /*
-          * Move this inside the if loop below to stop imms getting bloodlust 
+          * Move this inside the if loop below to stop imms getting bloodlust
           */
          if( ( IS_VAMP( ch ) ) && ( !IS_NPC( ch ) ) )
          {
@@ -1474,7 +1474,7 @@ void char_update( void )
             paf->duration--;
 
             /*
-             * We need a check here for spells that keep working... 
+             * We need a check here for spells that keep working...
              */
             if( paf->type == skill_lookup( "blood leach" ) )
             {

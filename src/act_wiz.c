@@ -950,11 +950,11 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    {
       snprintf( buf, MSL,
                "Mag: %d Cle: %d Thi:%d War:%d Psi:%d\r\n",
-               victim->lvl[CLS_MAG], victim->lvl[CLS_CLE], victim->lvl[CLS_THI], victim->lvl[CLS_WAR], victim->lvl[CLS_PSI] );
+               victim->get_level("mag"), victim->get_level("cle"), victim->get_level("thi"), victim->get_level("war"), victim->get_level("psi") );
       strncat( buf1, buf, MSL-1 );
       snprintf( buf, MSL,
                "Sor: %d Mon: %d Ass:%d Kni:%d Nec:%d\r\n",
-               victim->lvl2[CLS_SOR], victim->lvl2[CLS_MON], victim->lvl2[CLS_ASS], victim->lvl2[CLS_KNI], victim->lvl2[CLS_NEC] );
+               victim->get_level("sor"), victim->get_level("mon"), victim->get_level("ass"), victim->get_level("kni"), victim->get_level("nec") );
       strncat( buf1, buf, MSL-1 );
 
       snprintf( buf, MSL, "Age: " );
@@ -974,7 +974,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    }
 
    snprintf( buf, MSL, "Hp: %d/%d.  Mana: %d/%d.  Move: %d/%d.  Practices: %d.\r\n",
-            victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->practice );
+            victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, IS_NPC(victim) ? 0 : victim->pcdata->practice );
    strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL,
@@ -3015,12 +3015,17 @@ void do_mset( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "practice" ) )
    {
+      if( IS_NPC(victim) )
+      {
+       send_to_char("Not on NPCs.\r\n",ch);
+       return;
+      }
       if( value < 0 || value > 100 )
       {
          send_to_char( "Practice range is 0 to 100 sessions.\r\n", ch );
          return;
       }
-      victim->practice = value;
+      victim->pcdata->practice = value;
       return;
    }
 
@@ -4447,7 +4452,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
       victim->max_move = 100;
       for( sn = 0; sn < MAX_SKILL; sn++ )
          victim->pcdata->learned[sn] = 0;
-      victim->practice = 0;
+      victim->pcdata->practice = 0;
       victim->hit = victim->max_hit;
       victim->mana = victim->max_mana;
       victim->move = victim->max_move;

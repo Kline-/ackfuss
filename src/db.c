@@ -3858,7 +3858,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
       }
       break;
      case CHANNEL_REMORTTALK:
-      if( is_remort(ch) )
+      if( IS_REMORT(ch) )
       {
        found = TRUE;
        send_to_char(chan_history.message[x][y],ch);
