@@ -2090,14 +2090,14 @@ DO_FUN(do_who)
             if( IS_ADEPT(wch) )
                victim_adept = TRUE;
 
-            if( get_psuedo_level( ch ) > 97 )
+            if( ch->get_level("psuedo") > 97 )
                ch_dremort = TRUE;
-            if( get_psuedo_level( wch ) > 97 )
+            if( wch->get_level("psuedo") > 97 )
                victim_dremort = TRUE;
 
-            if( get_psuedo_level( ch ) > 80 )
+            if( ch->get_level("psuedo") > 80 )
                ch_sremort = TRUE;
-            if( get_psuedo_level( wch ) > 80 )
+            if( wch->get_level("psuedo") > 80 )
                victim_sremort = TRUE;
 
 
@@ -2107,7 +2107,7 @@ DO_FUN(do_who)
             }
             else if( ( ch_adept && victim_dremort ) || ( victim_adept && ch_dremort ) )
             {
-               if( abs( get_psuedo_level( ch ) - get_psuedo_level( wch ) ) < 9 )
+               if( abs( ch->get_level("psuedo") - wch->get_level("psuedo") ) < 9 )
                   legal_group = TRUE;
                else
                   legal_group = FALSE;
@@ -2115,14 +2115,14 @@ DO_FUN(do_who)
             }
             else if( ch_dremort || victim_dremort || ch_sremort || victim_sremort )
             {
-               if( abs( get_psuedo_level( ch ) - get_psuedo_level( wch ) < 8 ) )
+               if( abs( ch->get_level("psuedo") - wch->get_level("psuedo") < 8 ) )
                   legal_group = TRUE;
 
             }
 
             else
             {
-               if( abs( get_psuedo_level( ch ) - get_psuedo_level( wch ) ) < 21 )
+               if( abs( ch->get_level("psuedo") - wch->get_level("psuedo") ) < 21 )
                   legal_group = TRUE;
                /*
                 * send_to_char( "No Remorts\r\n", ch );  
@@ -2231,14 +2231,14 @@ DO_FUN(do_who)
             if( IS_ADEPT(wch) )
                victim_adept = TRUE;
 
-            if( get_psuedo_level( ch ) > 97 )
+            if( ch->get_level("psuedo") > 97 )
                ch_dremort = TRUE;
-            if( get_psuedo_level( wch ) > 97 )
+            if( wch->get_level("psuedo") > 97 )
                victim_dremort = TRUE;
 
-            if( get_psuedo_level( ch ) > 80 )
+            if( ch->get_level("psuedo") > 80 )
                ch_sremort = TRUE;
-            if( get_psuedo_level( wch ) > 80 )
+            if( wch->get_level("psuedo") > 80 )
                victim_sremort = TRUE;
 
 
@@ -2248,13 +2248,13 @@ DO_FUN(do_who)
             }
             else if( ( ch_adept && victim_dremort ) || ( victim_adept && ch_dremort ) )
             {
-               if( abs( get_psuedo_level( ch ) - get_psuedo_level( wch ) ) < 9 )
+               if( abs( ch->get_level("psuedo") - wch->get_level("psuedo") ) < 9 )
                   legal_group = TRUE;
 
             }
             else if( ch_dremort || victim_dremort || ch_sremort || victim_sremort )
             {
-               if( abs( get_psuedo_level( ch ) - get_psuedo_level( wch ) ) < 8 )
+               if( abs( ch->get_level("psuedo") - wch->get_level("psuedo") ) < 8 )
                   legal_group = TRUE;
                else
                   legal_group = FALSE;
@@ -2263,7 +2263,7 @@ DO_FUN(do_who)
 
             else
             {
-               if( abs( get_psuedo_level( ch ) - get_psuedo_level( wch ) ) < 21 )
+               if( abs( ch->get_level("psuedo") - wch->get_level("psuedo") ) < 21 )
                   legal_group = TRUE;
                /*
                 * send_to_char( "No Remorts\r\n", ch );  
@@ -2761,9 +2761,7 @@ DO_FUN(do_consider)
     * Also, only look at modifiers if victim == NPC 
     */
 
-/*    diff = victim->level - ch->level; */
-
-   diff = ( get_psuedo_level( victim ) - get_psuedo_level( ch ) );
+   diff = ( victim->get_level("psuedo") - ch->get_level("psuedo") );
    /*
     * Additions for difficulty. 
     */
@@ -3185,7 +3183,7 @@ DO_FUN(do_practice)
          send_to_char( "You can't practice that.\r\n", ch );
          return;
       }
-      if( ( skill_table[sn].flag1 == ADEPT ) && IS_ADEPT(ch) && ( ADEPT_LEVEL(ch) >= skill_table[sn].skill_level[0] ) )
+      if( ( skill_table[sn].flag1 == ADEPT ) && IS_ADEPT(ch) && ( ch->get_level("adept") >= skill_table[sn].skill_level[0] ) )
       {
          p_class = 0;
          ok = TRUE;
@@ -4163,7 +4161,7 @@ DO_FUN(do_slist)
                strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
-                     ( adept_class ? ADEPT_LEVEL(ch) : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
+                     ( adept_class ? ch->get_level("adept") : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
                strncat( buf1, buf, MSL );
@@ -4195,7 +4193,7 @@ DO_FUN(do_slist)
                strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
-                     ( adept_class ? ADEPT_LEVEL(ch) : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
+                     ( adept_class ? ch->get_level("adept") : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
                strncat( buf1, buf, MSL );
@@ -4227,7 +4225,7 @@ DO_FUN(do_slist)
                strncat( buf1, buf, MSL );
             }
             else if( skill_table[sn].skill_level[p_class] >
-                     ( adept_class ? ADEPT_LEVEL(ch) : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
+                     ( adept_class ? ch->get_level("adept") : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
                strncat( buf1, buf, MSL );
@@ -4455,7 +4453,7 @@ DO_FUN(do_heal)
       return;
    }
 
-   mult = UMAX( 10, get_psuedo_level( ch ) / 2 );
+   mult = UMAX( 10, ch->get_level("psuedo") / 2 );
 
    if( argument[0] == '\0' )
    {
@@ -4637,7 +4635,7 @@ DO_FUN(do_heal)
 DO_FUN(do_gain)
 {
    /*
-    * Allow ch to gain a level in a chosen class.     
+    * Allow ch to gain a level in a chosen class.
     * * Only can be done at prac/train mob. -S-
     * * Now handles remort chars
     */
@@ -4721,7 +4719,7 @@ DO_FUN(do_gain)
    {
 
       /*
-       * Display details... 
+       * Display details...
        */
       send_to_char( "You can gain levels in:\r\n", ch );
       any = FALSE;
@@ -4748,7 +4746,7 @@ DO_FUN(do_gain)
             snprintf( buf, MSL, "%s : %d Exp.\r\n", remort_table[cnt].who_name, cost );
             send_to_char( buf, ch );
          }
-      if( IS_ADEPT(ch) && ADEPT_LEVEL(ch) < 20 )
+      if( IS_ADEPT(ch) && ch->get_level("adept") < 20 )
       {
          any = TRUE;
          cost = exp_to_level_adept( ch );
@@ -4782,7 +4780,7 @@ DO_FUN(do_gain)
    }
 
    /*
-    * If an argument supplied, make sure it's valid :P 
+    * If an argument supplied, make sure it's valid :P
     */
 
    any = FALSE;
@@ -4836,7 +4834,7 @@ DO_FUN(do_gain)
    }
 
    /*
-    * Ok, so now class should be valid.  Check if enough exp 
+    * Ok, so now class should be valid.  Check if enough exp
     */
    if( wolf )
       vamp_cost = exp_to_level_wolf( ch->pcdata->super->level );
@@ -4910,7 +4908,7 @@ DO_FUN(do_gain)
       send_to_char( "@@NYou have reached the epitome of Rank in the ways of the @@eKindred@@N.\r\n", ch );
       return;
    }
-   if( ( adept ) && ( ADEPT_LEVEL(ch) < 20 ) )
+   if( ( adept ) && ( ch->get_level("adept") < 20 ) )
    {
       c = ADVANCE_ADEPT;
       send_to_char( "@@WYou have reached another step on the stairway to Wisdom!!!@@N\r\n", ch );
@@ -4922,7 +4920,7 @@ DO_FUN(do_gain)
       free_string( ch->pcdata->who_name );
       ch->pcdata->who_name = str_dup( get_adept_name( ch ) );
       do_save( ch, "auto" );
-      if( ADEPT_LEVEL(ch) == 1 )
+      if( ch->get_level("adept") == 1 )
          ch->exp /= 1000;
       return;
    }
@@ -4934,12 +4932,12 @@ DO_FUN(do_gain)
       return;
    }
    /*
-    * Don't bother adapting for remort... dropped num classes yrs ago! 
+    * Don't bother adapting for remort... dropped num classes yrs ago!
     */
    if( ch->lvl[c] < 0 )
    {
       /*
-       * Check to see if max. num of classes has been reached. 
+       * Check to see if max. num of classes has been reached.
        */
       numclasses = 0;
 
@@ -4950,7 +4948,7 @@ DO_FUN(do_gain)
       if( numclasses >= race_table[ch->race].classes )
       {
          /*
-          * Already got max. number of classes 
+          * Already got max. number of classes
           */
          send_to_char( "Cannot level in that class, already have maximum number of classes.\r\n", ch );
          return;
@@ -4960,7 +4958,7 @@ DO_FUN(do_gain)
    }
 
    /*
-    * Ok,ok now we know ch has enough exps.  Do the advancement stuff 
+    * Ok,ok now we know ch has enough exps.  Do the advancement stuff
     */
 
    if( ( remort ? ch->lvl2[c] : ch->lvl[c] ) + 1 >= LEVEL_HERO )
@@ -4969,7 +4967,7 @@ DO_FUN(do_gain)
       return;
    }
    /*
-    * Check to see if able to reach new level 
+    * Check to see if able to reach new level
     */
    if( remort )
       snprintf( buf, MSL, "You gain a %s level!\r\n", remort_table[c].class_name );
@@ -4978,7 +4976,7 @@ DO_FUN(do_gain)
    send_to_char( buf, ch );
 
    /*
-    * Use info channel to inform of level gained! 
+    * Use info channel to inform of level gained!
     */
 
    if( remort )
@@ -4997,7 +4995,7 @@ DO_FUN(do_gain)
 
 
    /*
-    * Maintain ch->level as max level of the lot 
+    * Maintain ch->level as max level of the lot
     */
    for( subpop = 0; subpop < MAX_CLASS; subpop++ )
    {

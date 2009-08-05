@@ -92,7 +92,7 @@
 #define IS_NPC(ch)              ( (ch)->npc )
 #define IS_IMMORTAL(ch)         (get_trust(ch) >= LEVEL_IMMORTAL)
 #define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
-#define IS_ADEPT(ch)            ( !IS_NPC(ch) && ch->pcdata->adept_level > 0 )
+#define IS_ADEPT(ch)            ( !IS_NPC(ch) && ch->get_level("adept") > 0 )
 #define IS_AFFECTED(ch, sn)     ( IS_SET((ch)->affected_by, (sn)))
 #define IS_HUNGRY(ch)           ( !IS_NPC(ch) && ch->pcdata->condition[COND_FULL] <= 0 )
 #define IS_THIRSTY(ch)          ( !IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] <= 0 )
@@ -108,8 +108,8 @@
 #define GET_AC(ch)              ( IS_NPC(ch) ? (REAL_AC( ch ) + ch->npcdata->ac_mod) : REAL_AC( ch ) + ch->stance_ac_mod )
 #define REAL_AC(ch)             ((ch)->armor  + ( IS_AWAKE(ch) \
                                                 ? ( IS_NPC( ch ) \
-                                                ? ( dex_app[get_curr_dex(ch)].defensive * get_psuedo_level( ch )/20 ) \
-                                                : ( dex_app[get_curr_dex(ch)].defensive * get_psuedo_level( ch )/10 ) ): 0 ))
+                                                ? ( dex_app[get_curr_dex(ch)].defensive * ch->get_level("psuedo") / 20 ) \
+                                                : ( dex_app[get_curr_dex(ch)].defensive * ch->get_level("psuedo") / 10 ) ): 0 ))
 /* Super macros */
 #define IS_VAMP(ch)    ( ch->act.test(ACT_VAMPIRE)  )
 #define IS_UNDEAD(ch)  ( ch->act.test(ACT_UNDEAD)   )
@@ -121,15 +121,14 @@
 /* Added bonus to hit and dam for higher levl players */
 /* High level naked players should still be able to fight ok */
 
-#define GET_HITROLL(ch)         ( IS_NPC(ch) ? (REAL_HITROLL(ch) + ch->npcdata->hr_mod + (get_psuedo_level( ch ) / 4 )) : REAL_HITROLL(ch)+(ch->level/8) + ch->stance_hr_mod )
-#define REAL_HITROLL(ch)        ((ch)->hitroll+ (str_app[get_curr_str(ch)].tohit * get_psuedo_level( ch )/10) )
+#define GET_HITROLL(ch)         ( IS_NPC(ch) ? (REAL_HITROLL(ch) + ch->npcdata->hr_mod + (ch->get_level("psuedo") / 4 )) : REAL_HITROLL(ch)+(ch->level/8) + ch->stance_hr_mod )
+#define REAL_HITROLL(ch)        ((ch)->hitroll+ (str_app[get_curr_str(ch)].tohit * ch->get_level("psuedo") / 10) )
 #define GET_DAMROLL(ch)         ( IS_NPC(ch) ? (REAL_DAMROLL(ch) + ch->npcdata->dr_mod + (ch->level / 3 ))  : REAL_DAMROLL(ch)+(ch->level/10) + ch->stance_dr_mod )
-#define REAL_DAMROLL(ch)        ((ch)->damroll+( str_app[get_curr_str(ch)].todam * get_psuedo_level( ch ) /10 ) )
+#define REAL_DAMROLL(ch)        ((ch)->damroll+( str_app[get_curr_str(ch)].todam * ch->get_level("psuedo") / 10 ) )
 #define IS_OUTSIDE(ch)          (!(ch)->in_room->room_flags.test(RFLAG_INDOORS))
 #define WAIT_STATE(ch, npulse)  ((ch)->wait = UMAX((ch)->wait, (npulse)))
 #define MANA_COST(ch, sn)       (IS_NPC(ch) ? 0 : UMAX ( skill_table[sn].min_mana, 100 / (2 + ch->level - skill_table[sn].skill_level[ch->class] ) ) )
 #define IS_RIDING(ch)           (!IS_NPC(ch) && ((ch)->riding))
-#define ADEPT_LEVEL(ch)         (IS_NPC(ch) ? (ch)->level/7 : (ch)->pcdata->adept_level )
 #define MAGIC_STANCE(ch)        ( IS_NPC(ch) ? FALSE : \
                                    ( (ch)->stance == STANCE_CASTER ) \
                                 || ( (ch)->stance == STANCE_WIZARD ) \

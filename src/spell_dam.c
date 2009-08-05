@@ -682,7 +682,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       if( ( can_reflect )
           && ( skill_table[sn].target == TAR_CHAR_OFFENSIVE )
           && ( IS_AFFECTED( victim, AFF_CLOAK_REFLECTION ) )
-          && ( ch != victim ) && ( number_percent(  ) < ( get_psuedo_level( victim ) - 70 ) ) )
+          && ( ch != victim ) && ( number_percent(  ) < ( victim->get_level("psuedo") - 70 ) ) )
       {
 
          act( "@@N$n's @@lc@@el@@ro@@ya@@ak@@N glows brightly as $Nn's spell hits it, and the spell is reflected@@N!!", ch,
@@ -700,7 +700,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       else if( ( can_reflect )
                && ( skill_table[sn].target == TAR_CHAR_OFFENSIVE )
                && ( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
-               && ( ch != victim ) && ( number_percent(  ) < ( get_psuedo_level( victim ) - 55 ) ) )
+               && ( ch != victim ) && ( number_percent(  ) < ( victim->get_level("psuedo") - 55 ) ) )
       {
          int mana;
          mana = mana_cost( ch, sn );

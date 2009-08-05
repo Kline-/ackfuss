@@ -1831,7 +1831,7 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    break;
 
   case 'L':
-   if( !str_cmp(arg1,"level") && evaluate_tag(arg2,get_psuedo_level(ch),value) ) { retval = true; break; }
+   if( !str_cmp(arg1,"level") && evaluate_tag(arg2,ch->get_level("psuedo"),value) ) { retval = true; break; }
    break;
 
   case 'M':
@@ -1880,7 +1880,7 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    if( !str_cmp(arg1,"remort") )
    {
     for( short i = 0; i < MAX_CLASS; i++ )
-     if( !str_cmp(arg2,remort_table[i].who_name) && ch->lvl2[i] > 0 ) { retval = true; break; }
+     if( !str_cmp(arg2,remort_table[i].who_name) && ch->get_level("remortal") > 0 ) { retval = true; break; }
     break;
    }
    break;

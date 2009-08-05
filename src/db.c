@@ -2568,11 +2568,11 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    hold *= sysdata.mob_ac;
    mob->armor = (int)hold;
 
-   mob->hitroll += (get_psuedo_level(mob) / 4);
+   mob->hitroll += (mob->get_level("psuedo") / 4);
    hold = mob->hitroll;
    hold *= sysdata.mob_hr;
    mob->hitroll = (int)hold;
-   mob->damroll += (get_psuedo_level(mob) / 4);
+   mob->damroll += (mob->get_level("psuedo") / 4);
    hold = mob->damroll;
    hold *= sysdata.mob_dr;
    mob->damroll = (int)hold;
@@ -2615,7 +2615,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
    mob->race_mods = pMobIndex->race_mods;
    mob->race = pMobIndex->race;
    mob->position = POS_STANDING;
-   mob->saving_throw = (get_psuedo_level(mob) / 10);
+   mob->saving_throw = (mob->get_level("psuedo") / 10);
    hold = mob->saving_throw;
    hold *= sysdata.mob_svs;
    mob->saving_throw = (int)hold;
@@ -3253,7 +3253,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
       if( pArea->flags.test(AFLAG_NOSHOW) || pArea->flags.test(AFLAG_BUILDING) )
          continue;   /* for non-finished areas - don't show */
       if( ( !fall )
-          && ( ( pArea->min_level > ( get_psuedo_level( ch ) ) ) || ( pArea->max_level < ( get_psuedo_level( ch ) ) ) ) )
+          && ( ( pArea->min_level > ( ch->get_level("psuedo") ) ) || ( pArea->max_level < ( ch->get_level("psuedo") ) ) ) )
          continue;
 
       foo++;

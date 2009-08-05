@@ -8,6 +8,10 @@
 
 #include "h/globals.h"
 
+#ifndef DEC_ACT_WIZ_H
+#include "h/act_wiz.h"
+#endif
+
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -81,11 +85,34 @@ void char_data::gain_exp( int gain )
 
 short char_data::get_level( const char *what )
 {
- if( IS_NPC(this) )
+ short i = 0, max = 0;;
+
+ if( what == '\0' )
   return this->level;
 
- if( !str_cmp(what,"adept") )
-  return this->pcdata->adept_level;
+ if( !str_prefix(what,"maxmortal") )
+ {
+  for( i = 0; i < MAX_CLASS; i++ )
+   if( this->lvl[i] > max )
+    max = this->lvl[i];
+  return max;
+ }
+ if( !str_prefix(what,"maxremortal") )
+ {
+  for( i = 0; i < MAX_CLASS; i++ )
+   if( this->lvl2[i] > max )
+    max = this->lvl2[i];
+  return max;
+ }
+ if( !str_prefix(what,"mortal") )
+  return (this->lvl[CLS_MAG] + this->lvl[CLS_CLE] + this->lvl[CLS_THI] + this->lvl[CLS_WAR] + this->lvl[CLS_PSI]);
+ if( !str_prefix(what,"remortal") )
+  return (this->lvl2[CLS_SOR] + this->lvl2[CLS_MON] + this->lvl2[CLS_ASS] + this->lvl2[CLS_KNI] + this->lvl2[CLS_NEC]);
+ if( !str_prefix(what,"psuedo") )
+  return (this->level + (this->get_level("remortal")/4));
+
+ if( !str_prefix(what,"adept") )
+  return IS_NPC(this) ? this->level / 7 : this->pcdata->adept_level;
  if( !str_prefix(what,"mage") )
   return this->lvl[CLS_MAG];
  if( !str_prefix(what,"cleric") )
@@ -107,6 +134,8 @@ short char_data::get_level( const char *what )
  if( !str_prefix(what,"necromancer") )
   return this->lvl2[CLS_NEC];
 
+ snprintf(log_buf,(2 * MIL),"char_data::get_level(): Received invalid request for '%s'.",what);
+ monitor_chan(log_buf,MONITOR_DEBUG);
  return this->level;
 }
 

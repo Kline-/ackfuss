@@ -105,7 +105,7 @@ void reset_gain_stats( CHAR_DATA * ch )
 
 
    if( IS_ADEPT(ch) )
-      for( index2 = 1; index2 <= ADEPT_LEVEL(ch); index2++ )
+      for( index2 = 1; index2 <= ch->get_level("adept"); index2++ )
       {
 
          add_hp = con_app[ch->pcdata->max_con].hitp + number_range( 10, 50 );
@@ -118,51 +118,6 @@ void reset_gain_stats( CHAR_DATA * ch )
 
       }
 }
-
-
-
-short get_remort_level( CHAR_DATA * ch )
-{
-   short index;
-   short max_remort_level = 0;
-
-   if( !is_remort( ch ) )
-      return 0;
-
-   for( index = 0; index < MAX_CLASS; index++ )
-      if( ch->lvl2[index] > max_remort_level )
-         max_remort_level = ch->lvl2[index];
-   return max_remort_level;
-}
-
-
-
-short get_psuedo_level( CHAR_DATA * ch )
-{
-
-   short psuedo_level = 0;
-   short index, total_remort_level = 0;
-
-
-   if( !is_remort( ch ) || IS_NPC( ch ) )
-      return ch->level;
-   else
-   {
-
-      for( index = 0; index < MAX_CLASS; index++ )
-
-         if( ch->lvl2[index] > 0 )
-
-            total_remort_level += ch->lvl2[index];
-
-
-
-      psuedo_level = ( ch->level + ( total_remort_level / 4 ) );
-   }
-   return psuedo_level;
-
-}
-
 
 bool ok_to_use( CHAR_DATA * ch, int value )
 {
@@ -215,8 +170,8 @@ int exp_to_level_adept( CHAR_DATA * ch )
 {
    int exp;
 
-   exp = ( 30000 + ( ADEPT_LEVEL(ch) * 5000 ) );
-   exp = UMAX( exp, exp * ADEPT_LEVEL(ch) / 2 );
+   exp = ( 30000 + ( ch->get_level("adept") * 5000 ) );
+   exp = UMAX( exp, exp * ch->get_level("adept") / 2 );
    return exp;
 }
 

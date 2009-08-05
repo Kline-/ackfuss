@@ -530,10 +530,10 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
     */
 
    /*
-    * Also bypass no-save objects -S- 
+    * Also bypass no-save objects -S-
     */
 
-   if( get_psuedo_level( ch ) + 5 < ( obj->level )
+   if( ch->get_level("psuedo") + 5 < ( obj->level )
        || obj->item_type == ITEM_KEY || obj->item_type == ITEM_BEACON || IS_OBJ_STAT(obj,ITEM_EXTRA_NO_SAVE) )
       return;
 

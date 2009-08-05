@@ -279,7 +279,7 @@ void violence_update( void )
       if( !IS_NPC( ch ) && ( stance_app[ch->stance].speed_mod > 0 ) )
       {
          ch->hit =
-            UMAX( 10, ch->hit - number_range( get_psuedo_level( ch ) * 5 / 1000, get_psuedo_level( ch ) * 10 / 1000 ) );
+            UMAX( 10, ch->hit - number_range( ch->get_level("psuedo") * 5 / 1000, ch->get_level("psuedo") * 10 / 1000 ) );
       }
 
 /*
@@ -436,7 +436,7 @@ void violence_update( void )
          short cast_frequency;
          short index;
 
-         cast_frequency = get_psuedo_level( ch ) / 2; /* maybe set in olc later? */
+         cast_frequency = ch->get_level("psuedo") / 2; /* maybe set in olc later? */
          if( ( number_range( 0, 99 ) < cast_frequency ) && ( ch->mana >= ( 40 * ch->max_mana / 100 ) ) )
          {
             for( index = 1; index < 32; index++ )
@@ -485,7 +485,7 @@ void violence_update( void )
       /*
        * Fun for the whole family!   RCH is a non-fighting mob
        */
-      if( IS_NPC( victim ) && ( get_psuedo_level( victim ) > 15 ) )
+      if( IS_NPC( victim ) && ( victim->get_level("psuedo") > 15 ) )
       {
          for( rch = ch->in_room->first_person; rch != NULL; rch = rch_next )
          {
@@ -502,7 +502,7 @@ void violence_update( void )
                {
                   if( ( rch->npcdata->pIndexData == victim->npcdata->pIndexData )   /* is it the same as a target here?  */
                       || ( ( number_percent(  ) < 20 )
-                           && ( abs( get_psuedo_level( rch ) - get_psuedo_level( victim ) ) < 35 ) ) )
+                           && ( abs( rch->get_level("psuedo") - victim->get_level("psuedo") ) < 35 ) ) )
                   {
                      CHAR_DATA *vch;
                      CHAR_DATA *target;
@@ -630,28 +630,28 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
    /*
     * The moment of excitement!
     */
-   diceroll = number_range( ( get_psuedo_level( ch ) * 5 ), ( get_psuedo_level( ch ) * 21 ) ) + GET_HITROLL( ch );
+   diceroll = number_range( ( ch->get_level("psuedo") * 5 ), ( ch->get_level("psuedo") * 21 ) ) + GET_HITROLL( ch );
 
 /* players get a tohit bonus for now  */
 
    if( !IS_NPC( ch ) )
-      diceroll += number_range( get_psuedo_level( ch ), ( get_psuedo_level( ch ) * 1 ) );
-   if( ( remort_bonus = get_psuedo_level( ch ) > 100 ) )
+      diceroll += number_range( ch->get_level("psuedo"), ( ch->get_level("psuedo") * 1 ) );
+   if( ( remort_bonus = ch->get_level("psuedo") > 100 ) )
       diceroll += remort_bonus * 1;
 
    if( IS_NPC( ch ) )
    {
-      diceroll += ( get_psuedo_level( ch ) * 5 );
+      diceroll += ( ch->get_level("psuedo") * 5 );
       if( ch->act.test(ACT_SOLO) )
-         diceroll += ( get_psuedo_level( ch ) * 5 );
+         diceroll += ( ch->get_level("psuedo") * 5 );
    }
    if( IS_AFFECTED( ch, AFF_CLOAK_ADEPT ) )
-      diceroll += get_psuedo_level( ch ) * 2;
+      diceroll += ch->get_level("psuedo") * 2;
 
 /* Player vs player bonus, to handle unbalanced hitroll vs ac */
-   if( !IS_NPC( ch ) && !IS_NPC( victim ) && get_psuedo_level( ch ) > 80 && get_psuedo_level( victim ) > 80 )
+   if( !IS_NPC( ch ) && !IS_NPC( victim ) && ch->get_level("psuedo") > 80 && victim->get_level("psuedo") > 80 )
       diceroll += number_range( 1000, 2000 );
-   if( IS_NPC( ch ) && victim_ac < -3000 && get_psuedo_level( ch ) > 110 && ( number_range( 0, 100 ) < 10 ) )
+   if( IS_NPC( ch ) && victim_ac < -3000 && ch->get_level("psuedo") > 110 && ( number_range( 0, 100 ) < 10 ) )
       diceroll += 3000;
 
    if( victim_ac > -100 )
@@ -777,7 +777,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
        && ( number_range( 1, 4 ) != 3 )
        && ( number_percent(  ) <
             ( IS_NPC( victim ) ?
-              get_psuedo_level( victim ) / 7 :
+              victim->get_level("psuedo") / 7 :
               victim->pcdata->learned[gsn_shield_block] / 5 )
             + ( IS_NPC( victim ) ? 10 : ( 1 * ( victim->lvl[CLS_WAR] - ch->level ) + victim->lvl2[CLS_KNI] / 8 ) ) ) )
       /*
@@ -1110,7 +1110,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                   for( rch = ch->in_room->first_person; rch != NULL; rch = rch_next )
                   {
                      rch_next = rch->next_in_room;
-                     if( get_psuedo_level( rch ) < 70 )
+                     if( rch->get_level("psuedo") < 70 )
                         continue;
                      send_to_char( "\r\n@@NYou are @@ablasted@@N by the @@econflagration@@N!\r\n", rch );
                      if( number_range( 0, 99 ) < 50 )
@@ -1136,7 +1136,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
       else
       {
          float flame_damage;
-         flame_damage = dam * get_psuedo_level( victim ) / 300;
+         flame_damage = dam * victim->get_level("psuedo") / 300;
          if( IS_NPC( ch ) )
          {
             if( ch->act.test(ACT_SOLO ) )
@@ -1610,15 +1610,15 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
       monitor_chan( buf, MONITOR_COMBAT );
    }
    diff = 3;
-   if( get_psuedo_level( ch ) > get_psuedo_level( victim ) )
+   if( ch->get_level("psuedo") > victim->get_level("psuedo") )
    {
-      diff += ( get_psuedo_level( ch ) - get_psuedo_level( victim ) ) / 7;
+      diff += ( ch->get_level("psuedo") - victim->get_level("psuedo") ) / 7;
       if( diff > 5 )
          diff = 5;
    }
-   ch->sentence += diff * get_psuedo_level( ch ) * 3; /* Magic # - Ramias */
+   ch->sentence += diff * ch->get_level("psuedo") * 3; /* Magic # - Ramias */
    if( IS_ADEPT(ch) )
-      ch->sentence += diff * get_psuedo_level( ch ) * 2;
+      ch->sentence += diff * ch->get_level("psuedo") * 2;
 
    ch->act.set(ACT_KILLER);
    save_char_obj( ch );
@@ -1627,15 +1627,15 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
    /*
     * MAG Create a hunter for the person 
     */
-   diff = get_psuedo_level( ch );
+   diff = ch->get_level("psuedo");
 
    /*
     * Added if check back... meant to penalize for attacking lower
     * * level players -S-
     */
 
-   if( get_psuedo_level( ch ) > get_psuedo_level( victim ) )
-      diff += get_psuedo_level( ch ) - get_psuedo_level( victim );
+   if( ch->get_level("psuedo") > victim->get_level("psuedo") )
+      diff += ch->get_level("psuedo") - victim->get_level("psuedo");
 /*     
     if (diff > MAX_LEVEL)
      diff=MAX_LEVEL;
@@ -1699,7 +1699,7 @@ bool check_parry( CHAR_DATA * ch, CHAR_DATA * victim )
       /*
        * Tuan was here.  :) 
        */
-      chance = get_psuedo_level( victim ) / 3.2 + get_curr_str( victim ) * 2 / 5;
+      chance = victim->get_level("psuedo") / 3.2 + get_curr_str( victim ) * 2 / 5;
       if( victim->act.test(ACT_SOLO ) )
          chance += 15;
    }
@@ -1720,7 +1720,7 @@ bool check_parry( CHAR_DATA * ch, CHAR_DATA * victim )
    if( IS_AFFECTED( victim, AFF_CLOAK_ADEPT ) )
       chance += 5;
 
-   if( number_percent(  ) < ( chance + ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) / 2 ) )
+   if( number_percent(  ) < ( chance + ( victim->get_level("psuedo") - ch->get_level("psuedo") ) / 2 ) )
    {
 
       /*
@@ -1752,7 +1752,7 @@ bool check_dodge( CHAR_DATA * ch, CHAR_DATA * victim )
       /*
        * Tuan was here.  :) 
        */
-      chance = get_psuedo_level( victim ) / 3.1 + get_curr_dex( victim ) * 2 / 5;
+      chance = victim->get_level("psuedo") / 3.1 + get_curr_dex( victim ) * 2 / 5;
       if( victim->act.test(ACT_SOLO ) )
          chance += 15;
    }
@@ -1769,7 +1769,7 @@ bool check_dodge( CHAR_DATA * ch, CHAR_DATA * victim )
       chance += 20;
 
 
-   if( number_percent(  ) < ( chance + ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) / 2 ) )
+   if( number_percent(  ) < ( chance + ( victim->get_level("psuedo") - ch->get_level("psuedo") ) / 2 ) )
    {
 
       /*
@@ -2534,7 +2534,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       if( is_same_group( gch, ch ) )
       {
          members++;
-         tot_level += get_psuedo_level(gch);
+         tot_level += gch->get_level("psuedo");
          gain *= 1.10; /* Group bonus */
       }
    }
@@ -2567,7 +2567,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
          continue;
 
       /*
-       * Calc each char's xp seperately, but mult by ch->lev/tot_group_lev. 
+       * Calc each char's xp seperately, but mult by ch->lev/tot_group_lev.
        */
 
       gain = old_gain;
@@ -2575,7 +2575,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
       if( check_charm_aff(gch,CHARM_AFF_EXP) )
        gain *= ((100 + get_charm_bonus(gch,CHARM_AFF_EXP)) / 100);
 
-      percent = (get_psuedo_level(gch) / tot_level);
+      percent = (gch->get_level("psuedo") / tot_level);
       gain *= percent;
 
       if( gain < 0 )
@@ -3388,7 +3388,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
    if( IS_AFFECTED( victim, AFF_INVISIBLE ) || item_has_apply( victim, ITEM_APPLY_INV ) )
       chance -= 10;
 
-   if( get_psuedo_level( ch ) >= get_psuedo_level( victim ) )
+   if( ch->get_level("psuedo") >= victim->get_level("psuedo") )
       chance += 10;
    else
       chance -= 10;
@@ -3553,7 +3553,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   cost = get_psuedo_level( ch ) * 3;
+   cost = ch->get_level("psuedo") * 3;
    if( IS_ADEPT(ch) )
       cost = 0;
    cost = UMIN( cost, ch->exp );
@@ -3844,7 +3844,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
    if( IS_AFFECTED( victim, AFF_INVISIBLE ) || item_has_apply( victim, ITEM_APPLY_INV ) )
       chance -= 10;
 
-   if( get_psuedo_level( ch ) >= get_psuedo_level( victim ) )
+   if( ch->get_level("psuedo") >= victim->get_level("psuedo") )
       chance += 10;
    else
       chance -= 10;
@@ -3936,7 +3936,7 @@ void do_trip( CHAR_DATA * ch, char *argument )
        * best = cnt;  
        */
       if( ch->pcdata->learned[gsn_trip] > 75 )
-         best = UMAX( 79, get_psuedo_level( ch ) );
+         best = UMAX( 79, ch->get_level("psuedo") );
    }
    else
       best = ch->level;
@@ -4014,7 +4014,7 @@ void do_dirt( CHAR_DATA * ch, char *argument )
        * best = cnt;  
        */
       if( ch->pcdata->learned[gsn_dirt] > 75 )
-         best = UMAX( 79, get_psuedo_level( ch ) );
+         best = UMAX( 79, ch->get_level("psuedo") );
    }
    else
       best = ch->level;
@@ -4107,7 +4107,7 @@ void do_bash( CHAR_DATA * ch, char *argument )
        * best = cnt;  
        */
       if( ch->pcdata->learned[gsn_bash] > 75 )
-         best = UMAX( 79, get_psuedo_level( ch ) );
+         best = UMAX( 79, ch->get_level("psuedo") );
    }
    else
       best = ch->level;
@@ -4478,7 +4478,7 @@ void do_charge( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( ( IS_NPC( ch ) ) && ( get_psuedo_level( ch ) < 80 ) )
+   if( ( IS_NPC( ch ) ) && ( ch->get_level("psuedo") < 80 ) )
       return;
 
    if( ( ( victim = get_char_room( ch, argument ) ) == NULL ) && ch->fighting == NULL )
@@ -4501,14 +4501,14 @@ void do_charge( CHAR_DATA * ch, char *argument )
       prime = TRUE;
 
 
-   dam = number_range( get_psuedo_level( ch ), get_psuedo_level( ch ) * 3 );
+   dam = number_range( ch->get_level("psuedo"), ch->get_level("psuedo") * 3 );
 
    if( !IS_NPC( ch ) )
       chance = ch->pcdata->learned[gsn_charge] / 2;
    else
       chance = 50;
 
-   chance += ( ( get_psuedo_level( ch ) - ( get_psuedo_level( victim ) - 30 ) ) / 2 );
+   chance += ( ( ch->get_level("psuedo") - ( victim->get_level("psuedo") - 30 ) ) / 2 );
 
    ch->set_cooldown("charge");
 
@@ -5437,7 +5437,7 @@ void do_stun( CHAR_DATA * ch, char *argument )
       act( "$n slams into you, leaving you stunned.", ch, NULL, victim, TO_VICT );
       act( "$n slams into $N, leaving $M stunned.", ch, NULL, victim, TO_NOTVICT );
 
-      victim->stun_timer += number_range( 1, get_psuedo_level( ch ) / 30 );
+      victim->stun_timer += number_range( 1, ch->get_level("psuedo") / 30 );
       if( ch->lvl2[CLS_KNI] > 40 )
          victim->stun_timer += number_range( 1, 2 );
 
@@ -6141,7 +6141,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
             case STANCE_MAGI: /* Magi */
-               if( IS_ADEPT(ch) && ADEPT_LEVEL(ch) > 10 )   /*adept */
+               if( IS_ADEPT(ch) && ch->get_level("adept") > 10 )   /*adept */
                   snprintf( cat_buf, MSL, "%s\r\n", stance_app[i].name );
                break;
 
@@ -6195,7 +6195,7 @@ void do_stance( CHAR_DATA * ch, char *argument )
             }
             break;
          case STANCE_MAGI:
-            if( IS_ADEPT(ch) && ADEPT_LEVEL(ch) > 10 )   /*adept */
+            if( IS_ADEPT(ch) && ch->get_level("adept") > 10 )   /*adept */
             {
                legal_stance = TRUE;
                break;
@@ -6293,19 +6293,19 @@ void do_stance( CHAR_DATA * ch, char *argument )
       {
          char stance_buf[MSL];
          if( stance_app[i].ac_mod > 0 )
-            ch->stance_ac_mod = ( stance_app[i].ac_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
+            ch->stance_ac_mod = ( stance_app[i].ac_mod * ( 20 - ch->get_level("psuedo") / 12 ) );
          else
-            ch->stance_ac_mod = stance_app[i].ac_mod * get_psuedo_level( ch ) / 12;
+            ch->stance_ac_mod = stance_app[i].ac_mod * ch->get_level("psuedo") / 12;
 
          if( stance_app[i].dr_mod < 0 )
-            ch->stance_dr_mod = ( stance_app[i].dr_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
+            ch->stance_dr_mod = ( stance_app[i].dr_mod * ( 20 - ch->get_level("psuedo") / 12 ) );
          else
-            ch->stance_dr_mod = stance_app[i].dr_mod * get_psuedo_level( ch ) / 10;
+            ch->stance_dr_mod = stance_app[i].dr_mod * ch->get_level("psuedo") / 10;
 
          if( stance_app[i].hr_mod < 0 )
-            ch->stance_hr_mod = ( stance_app[i].hr_mod * ( 20 - get_psuedo_level( ch ) / 12 ) );
+            ch->stance_hr_mod = ( stance_app[i].hr_mod * ( 20 - ch->get_level("psuedo") / 12 ) );
          else
-            ch->stance_hr_mod = stance_app[i].hr_mod * get_psuedo_level( ch ) / 10;
+            ch->stance_hr_mod = stance_app[i].hr_mod * ch->get_level("psuedo") / 10;
 
          ch->stance = i;
          snprintf( stance_buf, MSL, "$n assumes the Stance of the %s!", stance_app[i].name );

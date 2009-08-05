@@ -943,7 +943,7 @@ void do_drink( CHAR_DATA * ch, char *argument )
       }
    }
 
-   if( get_psuedo_level(ch) < obj->level && !IS_IMMORTAL(ch) )
+   if( ch->get_level("psuedo") < obj->level && !IS_IMMORTAL(ch) )
    {
       send_to_char( "You are not knowledgeable enough to drink such a liquid.\n\r", ch );
       return;
@@ -1105,7 +1105,7 @@ void do_eat( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( get_psuedo_level(ch) < obj->level && !IS_IMMORTAL(ch) )
+   if( ch->get_level("psuedo") < obj->level && !IS_IMMORTAL(ch) )
    {
       send_to_char( "You are not knowledgeable enough to eat such a food.\n\r", ch );
       return;
@@ -1349,7 +1349,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
       return;
    }
 
-   if( get_psuedo_level( ch ) < obj->level )
+   if( ch->get_level("psuedo") < obj->level )
    {
       snprintf( buf, MSL, "You must be level %d to use this object.\r\n", obj->level );
       send_to_char( buf, ch );
@@ -1357,7 +1357,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
       return;
    }
 
-   if( ( get_psuedo_level( ch ) < obj->level )
+   if( ( ch->get_level("psuedo") < obj->level )
        && ( IS_OBJ_STAT( obj, ITEM_EXTRA_VAMP ) ) && ( IS_VAMP( ch ) ) && ( !IS_NPC( ch ) ) )
    {
       snprintf( buf, MSL, "You must be level %d to use this object.\r\n", obj->level );
@@ -1374,7 +1374,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
       return;
    }
 
-   if( ( get_remort_level( ch ) < obj->level ) && ( IS_OBJ_STAT( obj, ITEM_EXTRA_REMORT ) ) && ( !IS_NPC( ch ) ) )
+   if( ( ch->get_level("maxremortal") < obj->level ) && ( IS_OBJ_STAT( obj, ITEM_EXTRA_REMORT ) ) && ( !IS_NPC( ch ) ) )
    {
       snprintf( buf, MSL, "You must be level %d in a remort class to use this object.\r\n", obj->level );
       send_to_char( buf, ch );
@@ -1975,7 +1975,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
    if( paying_fine )
    {
 
-      short plevel = get_psuedo_level( ch );
+      short plevel = ch->get_level("psuedo");
       if( ch->sentence <= 0 )
       {
 
@@ -2137,7 +2137,7 @@ void do_quaff( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   if( get_psuedo_level(ch) < obj->level && !IS_IMMORTAL(ch) )
+   if( ch->get_level("psuedo") < obj->level && !IS_IMMORTAL(ch) )
    {
       send_to_char( "You are not knowledgeable enough to use such a potion.\n\r", ch );
       return;
@@ -2195,7 +2195,7 @@ void do_recite( CHAR_DATA * ch, char *argument )
       }
    }
 
-   if( get_psuedo_level(ch) < obj->level && !IS_IMMORTAL(ch) )
+   if( ch->get_level("psuedo") < obj->level && !IS_IMMORTAL(ch) )
    {
       send_to_char( "You are not knowledgeable enough to use such a scroll.\n\r", ch );
       return;
@@ -2426,14 +2426,14 @@ void do_steal( CHAR_DATA * ch, char *argument )
    }
 
    ch->set_cooldown("steal");
-   chance = IS_NPC( ch ) ? ( get_psuedo_level( ch ) / 4 )
+   chance = IS_NPC( ch ) ? ( ch->get_level("psuedo") / 4 )
       : ( ch->pcdata->learned[gsn_steal] / 3 + ( get_curr_dex( ch ) / 2 ) );
-   chance = chance - ( ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) / 2 );
+   chance = chance - ( ( victim->get_level("psuedo") - ch->get_level("psuedo") ) / 2 );
    if( IS_ADEPT(victim) && !IS_ADEPT(ch) )
       chance = chance - 25;
    if( !IS_NPC( ch ) )
       chance += ch->lvl2[1] / 4;
-   if( get_psuedo_level( ch ) > ( get_psuedo_level( victim ) + 30 ) )
+   if( ch->get_level("psuedo") > ( victim->get_level("psuedo") + 30 ) )
    {
       send_to_char( "Coward!!! Trying to steal from the weak..\r\n", ch );
       return;
@@ -2461,7 +2461,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
          else
          {
             int diff = 0;
-            diff = ( abs( get_psuedo_level( ch ) - get_psuedo_level( victim ) ) + 10 ) * 20;
+            diff = ( abs( ch->get_level("psuedo") - victim->get_level("psuedo") ) + 10 ) * 20;
             ch->act.set(ACT_THIEF);
             send_to_char( "*** You are now a THIEF!! ***\r\n", ch );
             ch->sentence += diff;
@@ -2828,7 +2828,7 @@ void do_buy( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      if( obj->level > get_psuedo_level( ch ) )
+      if( obj->level > ch->get_level("psuedo") )
       {
          act( "$n tells you 'You can't use $p yet'.", keeper, obj, ch, TO_VICT );
          ch->reply = keeper;

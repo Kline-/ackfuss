@@ -2983,7 +2983,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->max_mana = ch->pcdata->mana_from_gain;
          ch->max_hit = ch->pcdata->hp_from_gain;
          ch->max_move = ch->pcdata->move_from_gain;
-         ch->saving_throw = get_psuedo_level( ch ) / 10;
+         ch->saving_throw = ch->get_level("psuedo") / 10;
          ch->hitroll = 0;
          ch->damroll = 0;
          ch->armor = 100;
@@ -3458,7 +3458,7 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
                      if( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && get_trust( to ) < ch->pcdata->invis )
                         can_see_message = FALSE;
                      if( ( IS_AFFECTED( ch, AFF_SNEAK ) || item_has_apply( ch, ITEM_APPLY_SNEAK ) )
-                         && ( ( get_psuedo_level( ch ) - 20 + number_range( 1, 30 ) ) > get_psuedo_level( to ) ) )
+                         && ( ( ch->get_level("psuedo") - 20 + number_range( 1, 30 ) ) > to->get_level("psuedo") ) )
                         can_see_message = FALSE;
                   }
                   break;
@@ -3709,7 +3709,7 @@ void copyover_recover(  )
             this_char->max_mana = this_char->pcdata->mana_from_gain;
             this_char->max_hit = this_char->pcdata->hp_from_gain;
             this_char->max_move = this_char->pcdata->move_from_gain;
-            this_char->saving_throw = get_psuedo_level( this_char ) / 10;
+            this_char->saving_throw = this_char->get_level("psuedo") / 10;
             this_char->hitroll = 0;
             this_char->damroll = 0;
             this_char->armor = 100;

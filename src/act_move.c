@@ -1417,14 +1417,14 @@ DO_FUN(do_warcry) /* Thanks Koron, saved me re-inventing the wheel :) --Kline */
  }
 
  af.type      = skill_lookup("warcry");
- af.duration  = 4 + (get_psuedo_level(ch) * 6);
+ af.duration  = 4 + (ch->get_level("psuedo") * 6);
  af.location  = APPLY_HITROLL;
- af.modifier  = 10 + (get_psuedo_level(ch) / 12);
+ af.modifier  = 10 + (ch->get_level("psuedo") / 12);
  af.bitvector = 0;
  affect_to_char(ch,&af);
 
  af.location  = APPLY_SAVING_SPELL;
- af.modifier  = -1 - (get_psuedo_level(ch) / 12);
+ af.modifier  = -1 - (ch->get_level("psuedo") / 12);
  affect_to_char(ch,&af);
 
  send_to_char("You feel ready for battle!\r\n",ch);

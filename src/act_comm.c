@@ -2073,7 +2073,7 @@ DO_FUN(do_group)
       {
        victim = *li;
        if( is_same_group(victim,ch) )
-        tot_level += get_psuedo_level(victim);
+        tot_level += victim->get_level("psuedo");
       }
 
       leader = ( ch->leader != NULL ) ? ch->leader : ch;
@@ -2085,7 +2085,7 @@ DO_FUN(do_group)
          victim = *li;
          if( is_same_group( victim, ch ) )
          {
-            percent = ((get_psuedo_level(victim) * 100) / tot_level);
+            percent = ((victim->get_level("psuedo") * 100) / tot_level);
 
             if( ch->act.test(ACT_BLIND_PLAYER) )
             {

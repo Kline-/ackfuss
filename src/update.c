@@ -1552,7 +1552,7 @@ void char_update( void )
             }
             else
             {
-               if( number_range( 0, 99 ) < get_psuedo_level( ch->master ) - 25 )
+               if( number_range( 0, 99 ) < ch->master->get_level("psuedo") - 25 )
                {
                   CHAR_DATA *this_master;
                   this_master = ch->master;
@@ -1852,7 +1852,7 @@ void aggr_update( void )
    if( (IS_NPC(vch) && !vch->act.test(ACT_INTELLIGENT)) || vch->level >= LEVEL_IMMORTAL || (ch->act.test(ACT_WIMPY) && IS_AWAKE(vch)) || !can_see(ch,vch) || (IS_UNDEAD(ch) && IS_VAMP(vch)) )
     continue;
 
-   if( (IS_AFFECTED(vch,AFF_SNEAK) || item_has_apply(vch,ITEM_APPLY_SNEAK)) && (number_percent() < 50 + (2 * (get_psuedo_level(vch) - get_psuedo_level(ch)))) )
+   if( (IS_AFFECTED(vch,AFF_SNEAK) || item_has_apply(vch,ITEM_APPLY_SNEAK)) && (number_percent() < 50 + (2 * (vch->get_level("psuedo") - ch->get_level("psuedo")))) )
     continue;
 
    vict_list.push_back(vch);

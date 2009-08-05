@@ -255,9 +255,9 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
    WAIT_STATE( ch, 275 );
 
    /*
-    * check to see which of the two is higher. the higher mob will lead 
+    * check to see which of the two is higher. the higher mob will lead
     */
-   if( get_psuedo_level( ch ) >= get_psuedo_level( target ) )
+   if( ch->get_level("psuedo") >= target->get_level("psuedo") )
       ch_is_higher = TRUE;
 
    /*
@@ -384,7 +384,7 @@ void need_to_stand( CHAR_DATA * ch )
 
 
    /*
-    * Do you need heal? if so, can you heal? 
+    * Do you need heal? if so, can you heal?
     */
    if( ch->hit < ch->max_hit * 85 / 100 )
    {
@@ -399,8 +399,8 @@ void need_to_stand( CHAR_DATA * ch )
    }
 
    /*
-    * if there is an int mob in the room stand so that you can group with 
-    * * it 
+    * if there is an int mob in the room stand so that you can group with
+    * * it
     */
    if( ch->leader == NULL )
    {
@@ -411,8 +411,8 @@ void need_to_stand( CHAR_DATA * ch )
              && ( !is_same_group( vch, ch ) )
              && ( AI_MOB(vch) )
              && ( vch != ch )
-             && ( ( get_psuedo_level( vch ) - get_psuedo_level( ch ) <= 20 )
-                  && ( get_psuedo_level( vch ) - get_psuedo_level( ch ) >= -20 ) ) )
+             && ( ( vch->get_level("psuedo") - ch->get_level("psuedo") <= 20 )
+                  && ( vch->get_level("psuedo") - ch->get_level("psuedo") >= -20 ) ) )
          {
             get_up( ch, current_state );
             return;
@@ -656,10 +656,10 @@ void mob_is_standing( CHAR_DATA * ch )
                 && ( AI_MOB(vch) )
                 && ( !is_same_group( ch, vch ) )
                 && ( vch->position == POS_STANDING )
-                && ( ( get_psuedo_level( vch ) - get_psuedo_level( ch ) <= 20
-                       && get_psuedo_level( vch ) - get_psuedo_level( ch ) >= -20 )
-                     || ( get_psuedo_level( ch ) - get_psuedo_level( vch ) <= 20
-                          && get_psuedo_level( ch ) - get_psuedo_level( vch ) >= -20 ) )
+                && ( ( vch->get_level("psuedo") - ch->get_level("psuedo") <= 20
+                       && vch->get_level("psuedo") - ch->get_level("psuedo") >= -20 )
+                     || ( ch->get_level("psuedo") - vch->get_level("psuedo") <= 20
+                          && ch->get_level("psuedo") - vch->get_level("psuedo") >= -20 ) )
                 && ( can_see( vch, ch ) ) && ( can_see( ch, vch ) ) )
 
             {
@@ -878,13 +878,13 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
       return FALSE;
 
    /*
-    * Don't attack players.... except for have spec_vamp_hunter 
+    * Don't attack players.... except for have spec_vamp_hunter
     */
    if( ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
       return FALSE;
 
    /*
-    * don't attack fairy godmother 
+    * don't attack fairy godmother
     */
    if( IS_NPC( victim ) )
       if( victim->npcdata->pIndexData->vnum == 1026 )
@@ -892,23 +892,23 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
 
 
    /*
-    * if IS vamp_hunter, make sure target is a player vamp 
+    * if IS vamp_hunter, make sure target is a player vamp
     */
 
    if( ( IS_VAMP( victim ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
       return FALSE;
 
    /*
-    * don't attack NPC VAMPS (they can't die ) 
+    * don't attack NPC VAMPS (they can't die )
     */
    if( ( IS_VAMP( victim ) ) && ( IS_NPC( victim ) ) )
       return FALSE;
 
    /*
-    * Only kill victims of similar level 
+    * Only kill victims of similar level
     */
-   if( ( ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) > -7 )
-       || ( ( get_psuedo_level( ch ) - get_psuedo_level( victim ) ) > 12 ) )
+   if( ( ( victim->get_level("psuedo") - ch->get_level("psuedo") ) > -7 )
+       || ( ( ch->get_level("psuedo") - victim->get_level("psuedo") ) > 12 ) )
       return FALSE;
 
 //   if ( ( IS_GOOD( ch )    && IS_GOOD( victim    ) )
@@ -986,14 +986,14 @@ void select_target( CHAR_DATA * ch )
    else
    {
       /*
-       * keeps checking until you've found a valid target 
+       * keeps checking until you've found a valid target
        */
       attempts = 0;
       while( ( victim == NULL ) && ( attempts < 15 ) )
       {
 // ZEN FIX set average level based on level of ngroup
          attempts++;
-         average_level = get_psuedo_level( ch );
+         average_level = ch->get_level("psuedo");
 
          force_index = number_range( 1, mob_index_list.size() );
 

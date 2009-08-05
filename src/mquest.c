@@ -46,7 +46,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
 
  if( IS_NPC(ch) )
   return;
- if( get_psuedo_level(ch) < 20 )
+ if( ch->get_level("psuedo") < 20 )
  {
   send_to_char("You must be level 20 to request quests from the questmaster.\r\n",ch);
   return;
@@ -691,7 +691,7 @@ void mquest_calc_rewards( CHAR_DATA *ch )
 
  tot_amt = 0;
  tot_tsk = 0;
- clev = get_psuedo_level(ch);
+ clev = ch->get_level("psuedo");
  exp = (exp_mob_base(clev) * sysdata.killperlev);
  exp = number_range(static_cast<int>(exp * 0.04),static_cast<int>(exp * 0.08));
 
@@ -836,7 +836,7 @@ void generate_killing_quest( CHAR_DATA *ch )
  if( ch->pcdata->quest_info->quest_type == QUEST_KILLING_R || ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R )
   race = TRUE;
 
- clev = get_psuedo_level(ch);
+ clev = ch->get_level("psuedo");
  min_lev = static_cast<int>(clev * 0.7);
  max_lev = static_cast<int>(clev * 1.1);
 
@@ -948,8 +948,8 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
   if( !IS_NPC(mob) )
    continue;
 
-  if( (get_psuedo_level(mob) < min_lev || get_psuedo_level(mob) > max_lev)
-   || (mob->in_room->area->min_level > get_psuedo_level(ch) || mob->in_room->area->max_level < get_psuedo_level(ch))
+  if( (mob->get_level("psuedo") < min_lev || mob->get_level("psuedo") > max_lev)
+   || (mob->in_room->area->min_level > ch->get_level("psuedo") || mob->in_room->area->max_level < ch->get_level("psuedo"))
    || (mob->in_room->area->flags.test(AFLAG_NOSHOW) || mob->in_room->area->flags.test(AFLAG_NO_QUEST))
    || (!str_cmp(rev_spec_lookup(mob->npcdata->spec_fun),"spec_cast_adept"))
    || (!str_cmp(rev_spec_lookup(mob->npcdata->spec_fun),"spec_executioner"))
@@ -977,7 +977,7 @@ void generate_retrieval_quest( CHAR_DATA *ch )
  if( IS_NPC(ch) )
   return;
 
- clev = get_psuedo_level(ch);
+ clev = ch->get_level("psuedo");
  min_lev = static_cast<int>(clev * 0.7);
  max_lev = static_cast<int>(clev * 1.1);
 
@@ -1066,7 +1066,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
   if( obj->in_room )
   {
    if( (obj->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->in_room->area->flags.test(AFLAG_NOSHOW)) /* Hide places we don't want to use. */
-    || (obj->in_room->area->min_level > get_psuedo_level(ch) || obj->in_room->area->max_level < get_psuedo_level(ch))
+    || (obj->in_room->area->min_level > ch->get_level("psuedo") || obj->in_room->area->max_level < ch->get_level("psuedo"))
     || (obj->pIndexData->vnum > obj->in_room->area->max_vnum || obj->pIndexData->vnum < obj->in_room->area->min_vnum) /* outside obj's own area */
     || (!CAN_WEAR(obj,ITEM_TAKE)) /* ensure we can pick it up */
     || (IS_OBJ_STAT(obj,ITEM_EXTRA_RARE)) /* don't waste rares */
@@ -1088,7 +1088,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
   else if( obj->carried_by && obj->carried_by->in_room )
   {
    if( (obj->carried_by->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->carried_by->in_room->area->flags.test(AFLAG_NOSHOW)) /* Hide places we don't want to use. */
-    || (obj->carried_by->in_room->area->min_level > get_psuedo_level(ch) || obj->carried_by->in_room->area->max_level < get_psuedo_level(ch))
+    || (obj->carried_by->in_room->area->min_level > ch->get_level("psuedo") || obj->carried_by->in_room->area->max_level < ch->get_level("psuedo"))
     || (obj->pIndexData->vnum > obj->carried_by->in_room->area->max_vnum || obj->pIndexData->vnum < obj->carried_by->in_room->area->min_vnum) /* outside obj's own area */
     || (!CAN_WEAR(obj,ITEM_TAKE)) /* ensure we can pick it up */
     || (IS_OBJ_STAT(obj,ITEM_EXTRA_RARE)) /* don't waste rares */
@@ -1136,7 +1136,7 @@ char *display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
    if( ch->pcdata->quest_info->quest_mob_vnum[i] > -1
     && ch->pcdata->quest_info->amount[i] > 0
     && ch->pcdata->quest_info->quest_mob_vnum[i] == victim->race
-    && (get_psuedo_level(ch) < get_psuedo_level(victim) || (get_psuedo_level(victim) - get_psuedo_level(ch)) >= -10) )
+    && (ch->get_level("psuedo") < victim->get_level("psuedo") || (victim->get_level("psuedo") - ch->get_level("psuedo")) >= -10) )
      return "@@e[@@yTARGET@@e] @@N";
  }
  return "";
@@ -1209,7 +1209,7 @@ void update_mquest_kill( CHAR_DATA *ch, CHAR_DATA *victim )
   {
    if( ch->pcdata->quest_info->quest_mob_vnum[i] < 0 )
     continue;
-   if( ch->pcdata->quest_info->amount[i] > 0 && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->race) && (get_psuedo_level(ch) < get_psuedo_level(victim) || (get_psuedo_level(victim) - get_psuedo_level(ch)) >= -10) )
+   if( ch->pcdata->quest_info->amount[i] > 0 && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->race) && (ch->get_level("psuedo") < victim->get_level("psuedo") || (victim->get_level("psuedo") - ch->get_level("psuedo")) >= -10) )
    {
     ch->pcdata->quest_info->amount[i]--;
     send_to_char("You have completed a quest kill!\r\n",ch);

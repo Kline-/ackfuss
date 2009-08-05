@@ -552,7 +552,7 @@ class char_data
   bool check_cooldown( const char *skill );
   bool check_cooldown( int pos );
   void gain_exp( int gain );
-  short get_level( const char *what );
+  short get_level( const char *what = '\0' );
   void set_cooldown( const char *skill );
   void set_cooldown( int pos, float duration );
 
@@ -1286,8 +1286,6 @@ bool check_disabled args( ( const struct cmd_type *command ) );
 void comlog args( ( CHAR_DATA * ch, bool cleanup, int cmd, char *args ) );
 
 /* macros.c */
-short get_remort_level   args( ( CHAR_DATA * ch ) );
-short get_psuedo_level   args( ( CHAR_DATA * ch ) );
 bool   ok_to_use          args( ( CHAR_DATA * ch, int value ) );
 bool   check_level_use    args( ( CHAR_DATA * ch, int level ) );
 int    exp_to_level       args( ( CHAR_DATA * ch, int p_class, int index ) );

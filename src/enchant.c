@@ -264,8 +264,8 @@ void do_enchant( CHAR_DATA * ch, char *argument )
       }
       return;
    }
-   if( ( ( get_remort_level( ch ) < unique->level )
-         && ( IS_OBJ_STAT(unique,ITEM_EXTRA_REMORT) ) ) || ( get_psuedo_level( ch ) < unique->level ) )
+   if( ( ( ch->get_level("maxremortal") < unique->level )
+         && ( IS_OBJ_STAT(unique,ITEM_EXTRA_REMORT) ) ) || ( ch->get_level("psuedo") < unique->level ) )
    {
       send_to_char( "You can't use this item in the first place..enchanting it is NOT going to help!\r\n", ch );
       return;
@@ -612,7 +612,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
             snprintf( cat_buf, MSL, "%s", "You do not have enough quest points for this upgrade.\r\n" );
          }
          strncat( msg_buf, cat_buf, MSL-1 );
-         if( ( min_level > unique->level ) && ( min_level > get_psuedo_level( ch ) ) )
+         if( ( min_level > unique->level ) && ( min_level > ch->get_level("psuedo") ) )
          {
             snprintf( cat_buf, MSL,
                      "@@eWARNING: @@WEnchanting %s with these affects will make the item level %d, which is higher than your current ability to use.\r\n",

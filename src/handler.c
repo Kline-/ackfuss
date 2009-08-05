@@ -862,7 +862,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
          {
             if( raf->caster == NULL )
             {
-               caster_level = get_psuedo_level( ch );
+               caster_level = ch->get_level("psuedo");
             }
             else
             {
@@ -907,15 +907,15 @@ void obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch )
 
       if( IS_IMMORTAL(ch) )
        valid_questor = TRUE;
-      else if( ( average_level < 20 ) && ( get_psuedo_level( ch ) < 45 ) )
+      else if( ( average_level < 20 ) && ( ch->get_level("psuedo") < 45 ) )
       {
          valid_questor = TRUE;
       }
-      else if( ( average_level < 65 ) && ( get_psuedo_level( ch ) > 45 ) && ( get_psuedo_level( ch ) < 95 ) )
+      else if( ( average_level < 65 ) && ( ch->get_level("psuedo") > 45 ) && ( ch->get_level("psuedo") < 95 ) )
       {
          valid_questor = TRUE;
       }
-      else if( ( get_psuedo_level( ch ) > 90 ) && ( average_level > 65 ) )
+      else if( ( ch->get_level("psuedo") > 90 ) && ( average_level > 65 ) )
       {
          valid_questor = TRUE;
       }
@@ -2261,13 +2261,13 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
 
    if( IS_AFFECTED( victim, AFF_INVISIBLE )
        && ( IS_AFFECTED( ch, AFF_DETECT_INVIS ) || item_has_apply( ch, ITEM_APPLY_DET_INV ) )
-       && get_psuedo_level( victim ) - 10 > get_psuedo_level( ch ) )
+       && victim->get_level("psuedo") - 10 > ch->get_level("psuedo") )
       return FALSE;
 
 
    /*
     * if ( ( IS_AFFECTED( victim, AFF_SNEAK ) || item_has_apply( victim, ITEM_APPLY_SNEAK ) )
-    * && ( number_percent() < 50 + ( 5 * ( get_psuedo_level( victim ) - get_psuedo_level( ch ) ) ) ) )
+    * && ( number_percent() < 50 + ( 5 * ( victim->get_level("psuedo") - ch->get_level("psuedo") ) ) ) )
     * return FALSE;  
     */
 
