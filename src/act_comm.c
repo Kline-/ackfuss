@@ -69,7 +69,7 @@
 /* Added back-in the note code, but made more like PO system */
 bool is_note_to( CHAR_DATA * ch, NOTE_DATA * pnote )
 {
-   if( is_name( ch->name, pnote->to_list ) )
+   if( is_name( ch->name.c_str(), pnote->to_list ) )
       return TRUE;
 
    return FALSE;
@@ -84,7 +84,7 @@ void note_attach( CHAR_DATA * ch )
 
    pnote = new NOTE_DATA;
 
-   pnote->sender = str_dup(ch->name);
+   pnote->sender = str_dup(ch->name.c_str());
    ch->pcdata->pnote = pnote;
    return;
 }
@@ -95,8 +95,8 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
 {
    FILE *fp;
    char *to_list;
-   char to_new[MAX_INPUT_LENGTH];
-   char to_one[MAX_INPUT_LENGTH];
+   char to_new[MSL];
+   char to_one[MSL];
    list<NOTE_DATA *>::iterator li;
 
    /*
@@ -113,7 +113,7 @@ void note_remove( CHAR_DATA * ch, NOTE_DATA * pnote )
       if( to_one[0] != '\0' && str_cmp( ch->name, to_one ) )
       {
          strncat( to_new, " ", MSL );
-         strncat( to_new, to_one, MSL );
+         strncat( to_new, to_one, MSL-1 );
       }
    }
 
@@ -338,7 +338,7 @@ DO_FUN(do_note)
          *tilde = '-';
       }
 
-      strncat( buf, argument, MSL );
+      strncat( buf, argument, MSL-1 );
       strncat( buf, "\r\n", MSL );
       free_string( ch->pcdata->pnote->text );
       ch->pcdata->pnote->text = str_dup( buf );
@@ -567,7 +567,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_ADEPT:
-         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name, color_string( ch, "adept" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name.c_str(), color_string( ch, "adept" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "$n %s: '$t'.", verb );
          break;
@@ -585,13 +585,13 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_CLAN:
-         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name, color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name.c_str(), color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "$n %s: '$t'.", verb );
          break;
 
       case CHANNEL_FAMILY:
-         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name, color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name.c_str(), color_string( ch, "clan" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "$n %s: '$t'.", verb );
          break;
@@ -603,7 +603,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_RACE:
-         snprintf( buf, MSL, "%s%s %s: '%s'.%s\r\n", color_string( ch, "race" ), verb, ch->name, argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s%s %s: '%s'.%s\r\n", color_string( ch, "race" ), verb, ch->name.c_str(), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "$n %s: '$t'.", verb );
          break;
@@ -625,31 +625,31 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
          break;
 
       case CHANNEL_REMORTTALK:
-         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name, color_string( ch, "remort" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name.c_str(), color_string( ch, "remort" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
       case CHANNEL_DIPLOMAT:
-         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name, color_string( ch, "diplomat" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name.c_str(), color_string( ch, "diplomat" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
       case CHANNEL_QUEST:
-         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name, color_string( ch, "quest" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name.c_str(), color_string( ch, "quest" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
       case CHANNEL_OOC:
-         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name, color_string( ch, "ooc" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name.c_str(), color_string( ch, "ooc" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
 
       case CHANNEL_GAME:
-         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name, color_string( ch, "game" ), argument, color_string( ch, "normal" ) );
+         snprintf( buf, MSL, "%s %s: '%s%s%s'.\r\n", verb, ch->name.c_str(), color_string( ch, "game" ), argument, color_string( ch, "normal" ) );
          send_to_char( buf, ch );
          snprintf( buf, MSL, "%s $n: $t.", verb );
          break;
@@ -1271,13 +1271,13 @@ DO_FUN(do_tell)
        && ( !str_cmp( victim->pcdata->ignore_list[0], ch->name ) ||
             !str_cmp( victim->pcdata->ignore_list[1], ch->name ) || !str_cmp( victim->pcdata->ignore_list[2], ch->name ) ) && !IS_IMMORTAL(ch) )
    {
-      snprintf( buf, MSL, "%s @@Ris ignoring you!!@@g\r\n", victim->name );
+      snprintf( buf, MSL, "%s @@Ris ignoring you!!@@g\r\n", victim->name.c_str() );
       send_to_char( buf, ch );
       return;
    }
 
 /*    if( victim->pcdata->ignore_list == ch->name ){ */
-/*    if( !str_cmp(victim->pcdata->ignore_list, ch->name) ){ 
+/*    if( !str_cmp(victim->pcdata->ignore_list, ch->name) ){
 	send_to_char( "They are ignoring you\r\n", ch);
 	return;
     }
@@ -1711,7 +1711,7 @@ DO_FUN(do_quit)
    send_to_char( "@@W-- George Orwell, '1984'@@g\r\n", ch );
 
    act( "$n waves, and leaves the game.", ch, NULL, NULL, TO_ROOM );
-   snprintf( log_buf, (2 * MIL), "%s quits ACK!", ch->name );
+   snprintf( log_buf, (2 * MIL), "%s quits ACK!", ch->name.c_str() );
    if( ch->level != 85 )
       notify( log_buf, MAX_LEVEL - 2 );
    log_string( log_buf );
@@ -1727,12 +1727,12 @@ DO_FUN(do_quit)
 
       if( ( other_logins != d )
           && ( other_logins->character != NULL )
-          && ( other_logins->connected != CON_RECONNECTING ) && ( !str_cmp( other_logins->character->name, ch->name ) ) )
+          && ( other_logins->connected != CON_RECONNECTING ) && ( other_logins->character->name == ch->name ) )
       {
          if( other_logins->connected == CON_GET_OLD_PASSWORD )
          {
             char logbuf[MSL];
-            snprintf( logbuf, MSL, "CHEATER!!! Possible attempt to utilize eq dup bug, %s", other_logins->character->name );
+            snprintf( logbuf, MSL, "CHEATER!!! Possible attempt to utilize eq dup bug, %s", other_logins->character->name.c_str() );
 
             log_string( logbuf );
          }
@@ -1761,7 +1761,7 @@ DO_FUN(do_save)
    }
 
    save_char_obj( ch );
-   snprintf( buf, MSL, "Saving %s.\r\n", ch->name );
+   snprintf( buf, MSL, "Saving %s.\r\n", ch->name.c_str() );
    if( str_cmp(argument,"auto") )
     send_to_char( buf, ch );
    return;
@@ -1804,7 +1804,7 @@ DO_FUN(do_follow)
    }
 
    if( IS_RIDING( ch ) && is_same_group( ch, ch->riding ) )
-      do_group( ch, ch->riding->name );
+      do_group( ch, const_cast<char *>(ch->riding->name.c_str()) );
 
    if( ch->master != NULL )
       stop_follower( ch );
@@ -2269,7 +2269,7 @@ DO_FUN(do_gtell)
    if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
       argument = slur_text( argument );
 
-   snprintf( buf, MSL, "%s tells the group '%s'.\r\n", ch->name, argument );
+   snprintf( buf, MSL, "%s tells the group '%s'.\r\n", ch->name.c_str(), argument );
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       gch = *li;
@@ -2346,7 +2346,7 @@ DO_FUN(do_pemote)
 
 DO_FUN(do_pray)
 {
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MSL];
 
    if( ch->level > LEVEL_HERO )
    {
@@ -2379,7 +2379,7 @@ DO_FUN(do_pray)
    }
 
    send_to_char( "You pray, concentrating on your message.\r\n", ch );
-   snprintf( buf, MSL, "%s sends the following message via prayer:\r\n`%s'\r\n", ch->name, argument );
+   snprintf( buf, MSL, "%s sends the following message via prayer:\r\n`%s'\r\n", ch->name.c_str(), argument );
    notify( buf, LEVEL_HERO );
 
    return;

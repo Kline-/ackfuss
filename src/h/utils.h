@@ -151,8 +151,8 @@
 /*
  * Description macros.
  */
-#define PERS(ch, looker) ( can_see( looker, (ch) ) ? ( IS_NPC(ch) ? (ch)->npcdata->short_descr : (IS_WOLF(ch) && (IS_SHIFTED(ch) || IS_RAGED(ch))) ? "A Large @@bWolf@@N" :(ch)->name ) : IS_IMMORTAL( ch ) ? "A Mystical Being" : "Someone" )
-#define NAME(ch)		( IS_NPC(ch) ? (ch)->npcdata->short_descr : (ch)->name )
+#define PERS(ch, looker) ( can_see( looker, (ch) ) ? ( IS_NPC(ch) ? (ch)->npcdata->short_descr : (IS_WOLF(ch) && (IS_SHIFTED(ch) || IS_RAGED(ch))) ? "A Large @@bWolf@@N" :(ch)->name.c_str() ) : IS_IMMORTAL( ch ) ? "A Mystical Being" : "Someone" )
+#define NAME(ch)		( IS_NPC(ch) ? (ch)->npcdata->short_descr : (ch)->name.c_str() )
 
 
 /* Added stuff - Flar */

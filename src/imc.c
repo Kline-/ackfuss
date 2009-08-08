@@ -592,7 +592,7 @@ char *imc_channel_nameof( char *src )
    return name;
 }
 
-char *imc_makename( char *person, char *mud )
+char *imc_makename( const char *person, char *mud )
 {
    static char name[SMST];
 
@@ -1872,7 +1872,7 @@ void imc_sendmessage( IMC_CHANNEL * c, char *name, char *text, int emote )
    IMC_PACKET *p;
 
    /*
-    * Private channel 
+    * Private channel
     */
    if( !c->open )
    {
@@ -1882,7 +1882,7 @@ void imc_sendmessage( IMC_CHANNEL * c, char *name, char *text, int emote )
       p = imc_newpacket( name, "ice-msg-p", to );
    }
    /*
-    * Public channel 
+    * Public channel
     */
    else
       p = imc_newpacket( name, "ice-msg-b", "*@*" );
@@ -5871,7 +5871,7 @@ IMC_CMD( imctell )
       return;
 
    /*
-    * Tell socials. Suggested by Darien@Sandstorm 
+    * Tell socials. Suggested by Darien@Sandstorm
     */
    if( argument[0] == '%' )
    {
@@ -5886,7 +5886,7 @@ IMC_CMD( imctell )
       if( !p || p[0] == '\0' )
          return;
 
-      imc_send_tell( CH_IMCNAME( ch ), buf, p, 2 );
+      imc_send_tell( static_cast<char *>(CH_IMCNAME( ch )), buf, p, 2 );
       p2 = imc_send_social( ch, buf2, 2 );
       if( !p2 || p2[0] == '\0' )
          return;
@@ -7761,7 +7761,7 @@ CHAR_DATA *imc_make_skeleton( char *name )
 
    IMCCREATE( skeleton, CHAR_DATA, 1 );
 
-   skeleton->name = IMCSTRALLOC( name );
+   skeleton->name = name;
    skeleton->in_room = get_room_index( ROOM_VNUM_LIMBO );
 
    return skeleton;
@@ -7771,8 +7771,6 @@ void imc_purge_skeleton( CHAR_DATA * skeleton )
 {
    if( !skeleton )
       return;
-
-   IMCSTRFREE( skeleton->name );
 
    IMCDISPOSE( skeleton );
 
@@ -8143,7 +8141,7 @@ bool imc_command_hook( CHAR_DATA * ch, char *command, char *argument )
    {
       case ',':
          /*
-          * Strip the , and then extra spaces - Remcon 6-28-03 
+          * Strip the , and then extra spaces - Remcon 6-28-03
           */
          argument++;
          while( isspace( *argument ) )
@@ -8152,7 +8150,7 @@ bool imc_command_hook( CHAR_DATA * ch, char *command, char *argument )
          break;
       case '%':
          /*
-          * Strip the @ and then extra spaces - Remcon 6-28-03 
+          * Strip the @ and then extra spaces - Remcon 6-28-03
           */
          argument++;
          while( isspace( *argument ) )

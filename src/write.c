@@ -112,7 +112,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
 
    if( buf_data == NULL )
    {
-      bugf( "Call to write_interpret when not writing (char=%s)\r\n", ch->name );
+      bugf( "Call to write_interpret when not writing (char=%s)\r\n", ch->name.c_str() );
       ch->position = POS_STANDING;
       return;
    }
@@ -121,7 +121,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
 
 
    /*
-    * Check to see if text was a command or simply addition 
+    * Check to see if text was a command or simply addition
     */
    if( argument[0] != '.' )
    {

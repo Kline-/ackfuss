@@ -752,7 +752,7 @@ void mobile_update( void )
          continue;
 
       /*
-       * Examine call for special procedure 
+       * Examine call for special procedure
        */
       if( IS_NPC(ch) && ch->npcdata->spec_fun != 0 )
       {
@@ -761,11 +761,11 @@ void mobile_update( void )
       }
 
       /*
-       * Added by Aeria for mob hunting continuously 
+       * Added by Aeria for mob hunting continuously
        */
-      if( ch->searching != NULL )
+      if( !ch->searching.empty() )
       {
-         if( ( quitter = get_char_world( ch, ch->searching ) ) != NULL )
+         if( ( quitter = get_char_world( ch, const_cast<char *>(ch->searching.c_str()) ) ) != NULL )
             set_hunt( ch, NULL, quitter, NULL, HUNT_WORLD | HUNT_OPENDOOR | HUNT_PICKDOOR | HUNT_UNLOCKDOOR | HUNT_INFORM,
                       HUNT_CR | HUNT_MERC );
 
@@ -773,10 +773,10 @@ void mobile_update( void )
 
 
       /*
-       * DISABLED 
+       * DISABLED
        */
       /*
-       * Intelligent mob? 
+       * Intelligent mob?
        */
 /*	if ( ch->act.test(ACT_INTELLIGENT) )
 	   int_handler( ch ); Disabled for now, for bugs.  */
@@ -1340,7 +1340,7 @@ void char_update( void )
         char_to_room(ch,get_room_index(ROOM_VNUM_ALTAR));
         send_to_char("The gods have taken pity upon your ghostly plight...\r\n",ch);
         resurrect(ch);
-        do_mpcr(ch,ch->name);
+        do_mpcr(ch,const_cast<char *>(ch->name.c_str()));
         do_look(ch,"auto");
        }
       }
@@ -1558,7 +1558,7 @@ void char_update( void )
                   this_master = ch->master;
                   do_say( ch, "Whaa?? Where am I? How did I get here?" );
                   do_scan( ch, "" );
-                  check_social( ch, "growl", ch->master->name );
+                  check_social( ch, "growl", const_cast<char *>(ch->master->name.c_str()) );
                   do_say( ch, "How dare you order me around!!!" );
                   stop_follower( ch );
                   one_hit( ch, this_master, TYPE_UNDEFINED );
@@ -1566,7 +1566,7 @@ void char_update( void )
                }
             }
             /*
-             * }  
+             * }
              */
          }
       }
@@ -2354,7 +2354,7 @@ void auction_update( void )
          }
          else
          {
-            snprintf( buf, MSL, "%s has bid %s for %s.", auction_bidder->name,
+            snprintf( buf, MSL, "%s has bid %s for %s.", auction_bidder->name.c_str(),
                      cost_to_money( auction_bid ), auction_item->short_descr );
          }
          break;
@@ -2449,7 +2449,7 @@ void auction_update( void )
 
             if( good_buyer )
             {
-               snprintf( buf, MSL, "%s - SOLD! to %s.", auction_item->short_descr, auction_bidder->name );
+               snprintf( buf, MSL, "%s - SOLD! to %s.", auction_item->short_descr, auction_bidder->name.c_str() );
 
                obj_to_char( auction_item, auction_bidder );
             }

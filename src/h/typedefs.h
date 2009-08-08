@@ -172,7 +172,7 @@ typedef struct lua_data LUA_DATA;
 #define DO_FUN(name) void (name) (CHAR_DATA *ch, char *argument)
 
 typedef void CLUTCH_FUN args( ( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj ) );
-typedef void DO_FUN     args( ( CHAR_DATA * ch, char *argument = NULL ) );
+typedef void DO_FUN     args( ( CHAR_DATA * ch, char *argument = '\0' ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA * ch ) );
 typedef bool SPELL_FUN  args( ( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj ) );
 typedef void OBJ_FUN    args( ( OBJ_DATA * obj, CHAR_DATA * keeper ) );

@@ -575,10 +575,10 @@ DO_FUN(do_cset)
 
 
    victim->clan = value;
-   snprintf( buf, MSL, "%s now belongs to clan %s.\r\n", victim->name, clan_table[value].clan_name );
+   snprintf( buf, MSL, "%s now belongs to clan %s.\r\n", victim->name.c_str(), clan_table[value].clan_name );
    send_to_char( buf, ch );
 
-   snprintf( buf, MSL, "%s has cset %s into clan %s.", ch->name, victim->name, clan_table[value].clan_name );
+   snprintf( buf, MSL, "%s has cset %s into clan %s.", ch->name.c_str(), victim->name.c_str(), clan_table[value].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    return;
@@ -629,14 +629,14 @@ DO_FUN(do_accept)
 
    if( victim->clan != 0 )
    {
-      snprintf( buf, MSL, "%s is already in a clan.  Maybe they should leave it first?\r\n", victim->name );
+      snprintf( buf, MSL, "%s is already in a clan.  Maybe they should leave it first?\r\n", victim->name.c_str() );
       send_to_char( buf, ch );
       return;
    }
 
    if( victim->level < 20 )
    {
-      snprintf( buf, MSL, "%s must be at least 20th level to enter a clan.\r\n", victim->name );
+      snprintf( buf, MSL, "%s must be at least 20th level to enter a clan.\r\n", victim->name.c_str() );
       send_to_char( buf, ch );
       return;
    }
@@ -644,7 +644,7 @@ DO_FUN(do_accept)
    act( "$N accepts you into $S clan!", victim, NULL, ch, TO_VICT );
    act( "You accept $N into your clan!", ch, NULL, victim, TO_VICT );
 
-   snprintf( buf, MSL, "%s has accepted %s into clan %s.", ch->name, victim->name, clan_table[ch->clan].clan_name );
+   snprintf( buf, MSL, "%s has accepted %s into clan %s.", ch->name.c_str(), victim->name.c_str(), clan_table[ch->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    return;
@@ -686,7 +686,7 @@ DO_FUN(do_cwhere)
             continue;
 
          found = TRUE;
-         snprintf( buf, MSL, "%-28s %s ", victim->name, victim->in_room->name );
+         snprintf( buf, MSL, "%-28s %s ", victim->name.c_str(), victim->in_room->name );
          if( ch->act.test(ACT_CBOSS) )
          {
             if( victim->act.test(ACT_CLEADER) )
@@ -733,7 +733,7 @@ DO_FUN(do_leave)
       return;
    }
 
-   snprintf( buf, MSL, "%s has left clan %s.", ch->name, clan_table[ch->clan].clan_name );
+   snprintf( buf, MSL, "%s has left clan %s.", ch->name.c_str(), clan_table[ch->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
    ch->clan = 0;
@@ -797,10 +797,10 @@ DO_FUN(do_banish)
    victim->clan = 0;
    victim->act.reset(ACT_CDIPLOMAT | ACT_CTREASURER | ACT_CARMORER | ACT_CLEADER | ACT_CBOSS);
 
-   snprintf( buf, MSL, "%s has banished %s from clan %s.", ch->name, victim->name, clan_table[ch->clan].clan_name );
+   snprintf( buf, MSL, "%s has banished %s from clan %s.", ch->name.c_str(), victim->name.c_str(), clan_table[ch->clan].clan_name );
    monitor_chan( buf, MONITOR_CLAN );
 
-   snprintf( buf, MSL, "%s banishes you from clan %s!\r\n", ch->name, clan_table[ch->clan].clan_name );
+   snprintf( buf, MSL, "%s banishes you from clan %s!\r\n", ch->name.c_str(), clan_table[ch->clan].clan_name );
    send_to_char( buf, victim );
    act( "$N has been banished.", ch, NULL, victim, TO_CHAR );
    return;
@@ -904,7 +904,7 @@ DO_FUN(do_make)
       act( "You create $p, and hand it to $N.", ch, obj, target, TO_CHAR );
       act( "$N creates $p, and hands it to you.", target, obj, ch, TO_CHAR );
       obj_to_char( obj, target );
-      snprintf( buf, MSL, "%s has made %s for %s.", ch->name, obj->short_descr, target->name );
+      snprintf( buf, MSL, "%s has made %s for %s.", ch->name.c_str(), obj->short_descr, target->name.c_str() );
    }
    else
    {
@@ -912,7 +912,7 @@ DO_FUN(do_make)
       act( "You create $p, and put it away.", ch, obj, NULL, TO_CHAR );
       act( "$n creates $p, and puts it away.", ch, obj, NULL, TO_ROOM );
       obj_to_char( obj, ch );
-      snprintf( buf, MSL, "%s has made themself %s.", ch->name, obj->short_descr );
+      snprintf( buf, MSL, "%s has made themself %s.", ch->name.c_str(), obj->short_descr );
    }
    monitor_chan( buf, MONITOR_CLAN );
 
@@ -958,7 +958,7 @@ DO_FUN(do_council)
 
       for( imember = super_councils[this_council].first_member; imember != NULL; imember = imember->next )
       {
-         snprintf( buf2, MSL, "%s\r\n", imember->this_member->name );
+         snprintf( buf2, MSL, "%s\r\n", imember->this_member->name.c_str() );
          strncat( buf, buf2, MSL-1 );
       }
       send_to_char( buf, ch );
@@ -1037,7 +1037,7 @@ DO_FUN(do_council)
             }
             else
             {
-               snprintf( buf, MSL, "%s is now a member of the Council of %s!\r\n", victim->name,
+               snprintf( buf, MSL, "%s is now a member of the Council of %s!\r\n", victim->name.c_str(),
                         super_councils[this_council].council_name );
                send_to_char( buf, ch );
                snprintf( buf, MSL, "You are now a member of the Council of %s!\r\n", super_councils[this_council].council_name );
@@ -1077,7 +1077,7 @@ DO_FUN(do_council)
             else
             {
                snprintf( buf, MSL, "%s has been outcast from the @@eKindred@@N by the %s, and is now a @@dRENEGADE@@N!!!!\r\n",
-                        victim->name, super_councils[this_council].council_name );
+                        victim->name.c_str(), super_councils[this_council].council_name );
                send_to_char( buf, ch );
                snprintf( buf, MSL,
                         "You have been @@ROUTCAST@@N from the @@eKindred@@N by the %s, and are now a @@dRenegade@@N!!!!!\r\n",

@@ -434,7 +434,7 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
    act( buf3, ch, NULL, victim, TO_VICT );
 
    /*
-    * Load up object, if needed. 
+    * Load up object, if needed.
     */
    if( vnum != 0 )
    {
@@ -442,7 +442,7 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       OBJ_DATA *obj;
       char *name;
 
-      name = NAME(ch);
+      name = const_cast<char *>(NAME(ch));
       obj = create_object( get_obj_index( vnum ), 0 );
       obj->timer = number_range( 4, 7 );
 
@@ -1059,7 +1059,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       else
       {
          char name_buf[MAX_STRING_LENGTH];
-         snprintf( name_buf, MSL, "%s", ch->name );
+         snprintf( name_buf, MSL, "%s", ch->name.c_str() );
          raw_kill( victim, name_buf );
       }
 

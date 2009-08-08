@@ -908,7 +908,7 @@ void comlog( CHAR_DATA * ch, bool cleanup, int cmd, char *args )
    }
 
    fprintf( fplog, "%.24s :: %12.12s (%5d): %s %s\n", ctime( &current_time ),
-            ch->name, ( IS_NPC( ch ) ? ch->npcdata->pIndexData->vnum : -1 ), cmd_table[cmd].name,
+            ch->name.c_str(), ( IS_NPC( ch ) ? ch->npcdata->pIndexData->vnum : -1 ), cmd_table[cmd].name,
             ( cmd_table[cmd].log == LOG_NEVER ? "XXX" : args ) );
    fflush( fplog );
 }
@@ -1070,7 +1070,7 @@ void interpret( CHAR_DATA * ch, char *argument )
 
    if( ( !IS_NPC( ch ) && ch->act.test(ACT_LOG) ) || fLogAll || cmd_table[cmd].log == LOG_ALWAYS )
    {
-      snprintf( log_buf, (2 * MIL), "Log %s: %s", ch->name, logline );
+      snprintf( log_buf, (2 * MIL), "Log %s: %s", ch->name.c_str(), logline );
       log_string( log_buf );
       if( ch->act.test(ACT_LOG) )
          monitor_chan( log_buf, MONITOR_BAD );
@@ -1084,7 +1084,7 @@ void interpret( CHAR_DATA * ch, char *argument )
    if( ch->desc != NULL && ch->desc->snoop_by != NULL )  /* -S- Mod */
    {
       char snp[MAX_STRING_LENGTH];
-      snprintf( snp, MSL, "[Snoop:%s] %s\r\n", ch->name, logline );
+      snprintf( snp, MSL, "[Snoop:%s] %s\r\n", ch->name.c_str(), logline );
       write_to_buffer( ch->desc->snoop_by, snp );
    }
 

@@ -24,6 +24,10 @@
 #include "h/magic.h"
 #endif
 
+#ifndef DEC_SSM_H
+#include "h/ssm.h"
+#endif
+
 bool char_data::check_cooldown( const char *skill )
 {
  int sn = skill_lookup(skill);
@@ -34,7 +38,7 @@ bool char_data::check_cooldown( const char *skill )
  if( skill_table[sn].cooldown <= COOLDOWN_NONE )
   return false;
 
- if( this->cooldown[skill_table[sn].cooldown] > 0 )
+ if( cooldown[skill_table[sn].cooldown] > 0 )
  {
   switch( skill_table[sn].cooldown )
   {
@@ -52,7 +56,7 @@ bool char_data::check_cooldown( int pos )
  if( pos <= COOLDOWN_NONE )
   return false;
 
- if( this->cooldown[pos] > 0 )
+ if( cooldown[pos] > 0 )
  {
   switch( pos )
   {
@@ -67,18 +71,18 @@ bool char_data::check_cooldown( int pos )
 
 void char_data::gain_exp( int gain )
 {
- if( IS_NPC(this) && !this->act.test(ACT_INTELLIGENT) )
+ if( IS_NPC(this) && !act.test(ACT_INTELLIGENT) )
   return;
  if( IS_IMMORTAL(this) )
   return;
 
- if( (this->exp + gain) >= MAX_EXP )
-  this->exp = MAX_EXP;
+ if( (exp + gain) >= MAX_EXP )
+  exp = MAX_EXP;
  else
-  this->exp += gain;
+  exp += gain;
 
- if( this->exp < 0 )
-  this->exp = 0;
+ if( exp < 0 )
+  exp = 0;
 
  return;
 }
@@ -88,55 +92,63 @@ short char_data::get_level( const char *what )
  short i = 0, max = 0;;
 
  if( what == '\0' )
-  return this->level;
+  return level;
 
  if( !str_prefix(what,"maxmortal") )
  {
   for( i = 0; i < MAX_CLASS; i++ )
-   if( this->lvl[i] > max )
-    max = this->lvl[i];
+   if( lvl[i] > max )
+    max = lvl[i];
   return max;
  }
  if( !str_prefix(what,"maxremortal") )
  {
   for( i = 0; i < MAX_CLASS; i++ )
-   if( this->lvl2[i] > max )
-    max = this->lvl2[i];
+   if( lvl2[i] > max )
+    max = lvl2[i];
   return max;
  }
  if( !str_prefix(what,"mortal") )
-  return (this->lvl[CLS_MAG] + this->lvl[CLS_CLE] + this->lvl[CLS_THI] + this->lvl[CLS_WAR] + this->lvl[CLS_PSI]);
+  return (lvl[CLS_MAG] + lvl[CLS_CLE] + lvl[CLS_THI] + lvl[CLS_WAR] + lvl[CLS_PSI]);
  if( !str_prefix(what,"remortal") )
-  return (this->lvl2[CLS_SOR] + this->lvl2[CLS_MON] + this->lvl2[CLS_ASS] + this->lvl2[CLS_KNI] + this->lvl2[CLS_NEC]);
+  return (lvl2[CLS_SOR] + lvl2[CLS_MON] + lvl2[CLS_ASS] + lvl2[CLS_KNI] + lvl2[CLS_NEC]);
  if( !str_prefix(what,"psuedo") )
-  return (this->level + (this->get_level("remortal")/4));
+  return (level + (get_level("remortal")/4));
 
  if( !str_prefix(what,"adept") )
-  return IS_NPC(this) ? this->level / 7 : this->pcdata->adept_level;
+  return IS_NPC(this) ? level / 7 : pcdata->adept_level;
  if( !str_prefix(what,"mage") )
-  return this->lvl[CLS_MAG];
+  return lvl[CLS_MAG];
  if( !str_prefix(what,"cleric") )
-  return this->lvl[CLS_CLE];
+  return lvl[CLS_CLE];
  if( !str_prefix(what,"thief") )
-  return this->lvl[CLS_THI];
+  return lvl[CLS_THI];
  if( !str_prefix(what,"warrior") )
-  return this->lvl[CLS_WAR];
+  return lvl[CLS_WAR];
  if( !str_prefix(what,"psionicist") )
-  return this->lvl[CLS_PSI];
+  return lvl[CLS_PSI];
  if( !str_prefix(what,"sorcerer") )
-  return this->lvl2[CLS_SOR];
+  return lvl2[CLS_SOR];
  if( !str_prefix(what,"monk") )
-  return this->lvl2[CLS_MON];
+  return lvl2[CLS_MON];
  if( !str_prefix(what,"assassin") )
-  return this->lvl2[CLS_ASS];
+  return lvl2[CLS_ASS];
  if( !str_prefix(what,"knight") )
-  return this->lvl2[CLS_KNI];
+  return lvl2[CLS_KNI];
  if( !str_prefix(what,"necromancer") )
-  return this->lvl2[CLS_NEC];
+  return lvl2[CLS_NEC];
 
  snprintf(log_buf,(2 * MIL),"char_data::get_level(): Received invalid request for '%s'.",what);
  monitor_chan(log_buf,MONITOR_DEBUG);
- return this->level;
+ return level;
+}
+
+const char *char_data::get_title( )
+{
+ if( IS_NPC(this) )
+  return "";
+ else
+  return pcdata->title;
 }
 
 void char_data::set_cooldown( const char *skill )
@@ -149,7 +161,7 @@ void char_data::set_cooldown( const char *skill )
  if( skill_table[sn].cooldown <= COOLDOWN_NONE )
   return;
 
- this->cooldown[skill_table[sn].cooldown] += skill_table[sn].beats;
+ cooldown[skill_table[sn].cooldown] += skill_table[sn].beats;
 
  return;
 }
@@ -159,7 +171,18 @@ void char_data::set_cooldown( int pos, float duration )
  if( pos <= COOLDOWN_NONE )
   return;
 
- this->cooldown[pos] += duration;
+ cooldown[pos] += duration;
+
+ return;
+}
+
+void char_data::set_title( const char *title )
+{
+ if( IS_NPC(this) )
+  return;
+
+ free_string(pcdata->title);
+ pcdata->title = str_dup(title);
 
  return;
 }

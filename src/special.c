@@ -824,7 +824,7 @@ bool spec_executioner( CHAR_DATA * ch )
    if( undead )
       snprintf( buf, MSL, "BANZAI!!! UNDEAD HAVE ARRIVED!!! PROTECT THE LIVING!!!" );
    else
-      snprintf( buf, MSL, "%s is a %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!", victim->name, crime );
+      snprintf( buf, MSL, "%s is a %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!", victim->name.c_str(), crime );
 
    do_yell( ch, buf );
    one_hit( ch, victim, TYPE_UNDEFINED );
@@ -1107,12 +1107,12 @@ bool spec_policeman( CHAR_DATA * ch )
       /*
        * if ( static_cast<int>(ch->hunting) > 0)
        *//*
-       * Don't hunt someone if already hunting 
+       * Don't hunt someone if already hunting
        */
       return FALSE;
 
 
-   snprintf( buf, MSL, "%s is a %s, I shall not rest till justice is done!", victim->name, crime );
+   snprintf( buf, MSL, "%s is a %s, I shall not rest till justice is done!", victim->name.c_str(), crime );
    do_yell( ch, buf );
 
    set_hunt( ch, NULL, victim, NULL, 0, 0 );
@@ -1797,7 +1797,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 5:
          break;
       case 6:
-         snprintf( buf, MSL, "%s", ch->hunting->name );
+         snprintf( buf, MSL, "%s", ch->hunting->name.c_str() );
          snprintf( buf1, MSL, "@@eI know that you are a Vampyre, and I shall not rest until your are destroyed!!!@@N\r\n" );
          strncat( buf, buf1, MSL-1 );
          do_tell( ch, buf );
@@ -1811,7 +1811,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 12:
       case 13:
          snprintf( buf, MSL, "My informants have told me that %s is a Vampyre, and I have vowed to destroy him!!\r\n",
-                  ch->hunting->name );
+                  ch->hunting->name.c_str() );
          do_yell( ch, buf );
          break;
 
@@ -1820,7 +1820,7 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 16:
          break;
       case 17:
-         snprintf( buf, MSL, " %s ", ch->hunting->name );
+         snprintf( buf, MSL, " %s ", ch->hunting->name.c_str() );
          snprintf( buf1, MSL, "@@Do you finally know fear? I shall not rest until ALL of your kind are destroyed!!!@@N\r\n" );
          strncat( buf, buf1, MSL-1 );
          do_tell( ch, buf );
@@ -1830,9 +1830,9 @@ bool spec_vamp_hunter( CHAR_DATA * ch )
       case 19:
          break;
       case 20:
-         snprintf( buf, MSL, 
+         snprintf( buf, MSL,
                   "All the realm shall know that %s is a Vampyre, and I shall eridicate all of these vile creatures!!\r\n",
-                  ch->hunting->name );
+                  ch->hunting->name.c_str() );
          do_yell( ch, buf );
          break;
       default:

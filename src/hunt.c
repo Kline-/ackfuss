@@ -231,11 +231,8 @@ bool set_hunt( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj
     ch->npcdata->hunt_for = fch;
    if( IS_NPC( ch ) )
       ch->npcdata->hunt_home = ( ch->npcdata->hunt_home ? ch->npcdata->hunt_home : ch->in_room );
-   if( ch->searching )
-   {
-      free_string( ch->searching );
-      ch->searching = NULL;
-   }
+   if( !ch->searching.empty() )
+    ch->searching.clear();
    ch->hunt_flags = nflags;
    snprintf( buf, MSL, "%s has started hunting (%s) %s",
             NAME( ch ),
@@ -259,11 +256,8 @@ void end_hunt( CHAR_DATA * ch )
       ch->hunt_flags = 0;
    else
       ch->hunt_flags = ch->npcdata->pIndexData->hunt_flags;
-   if( ch->searching )
-   {
-      free_string( ch->searching );
-      ch->searching = NULL;
-   }
+   if( !ch->searching.empty() )
+    ch->searching.clear();
 }
 
 bool has_key args( ( CHAR_DATA * ch, int key ) );

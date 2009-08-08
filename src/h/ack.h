@@ -553,8 +553,10 @@ class char_data
   bool check_cooldown( int pos );
   void gain_exp( int gain );
   short get_level( const char *what = '\0' );
+  const char *get_title( void );
   void set_cooldown( const char *skill );
   void set_cooldown( int pos, float duration );
+  void set_title( const char *title );
 
   bitset<MAX_BITSET> act;
   int affected_by;
@@ -568,7 +570,7 @@ class char_data
   short damroll;
   bitset<MAX_BITSET> deaf;
   DESCRIPTOR_DATA *desc;
-  char *description;
+  string description;
   int exp;
   CHAR_DATA *fighting;
   AFFECT_DATA *first_affect;
@@ -591,8 +593,8 @@ class char_data
   CHAR_DATA *leader;
   short level;  /* For m/c this = max of levels */
   time_t logon;
-  char *long_descr;
-  char *long_descr_orig;
+  string long_descr;
+  string long_descr_orig;
   int lvl[MAX_CLASS];  /* Holds details for m/c levels */
   int lvl2[MAX_CLASS]; /* for remort (if any) */
   int mana;
@@ -602,19 +604,19 @@ class char_data
   int max_move;
   MONEY_TYPE *money;
   int move;
-  char *name;
+  string name;
   CHAR_DATA *next_in_room;
   bool npc; /* For NPC's, no more flag */
   NPC_DATA *npcdata;
   short num_followers;
   CHAR_DATA *old_body; /* = descriptor->original */
-  char *old_prompt; /* used to hold prompt when writing */
+  string old_prompt; /* used to hold prompt when writing */
   PC_DATA *pcdata;
   int played;
   int poly_level;
   short position;
   CHAR_DATA *prev_in_room;
-  char *prompt;
+  string prompt;
   short p_class;
   short race;
   int race_mods;
@@ -622,7 +624,7 @@ class char_data
   CHAR_DATA *rider;
   CHAR_DATA *riding;
   short saving_throw;
-  char *searching; /* For NPCs hunting continuously */
+  string searching; /* For NPCs hunting continuously */
   short sex;
   OBJ_DATA *sitting;   /* What they're resting or sleeping on */
   float speed[MAX_SPEED];

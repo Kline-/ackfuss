@@ -104,14 +104,6 @@ char_data::~char_data()
  while( first_affect != NULL )
   affect_remove(this,first_affect);
 
- free_string(name);
- free_string(long_descr);
- free_string(long_descr_orig);
- free_string(description);
- free_string(prompt);
- free_string(old_prompt);
- free_string(searching);
-
  #ifdef IMC
   imc_freechardata(this);
  #endif

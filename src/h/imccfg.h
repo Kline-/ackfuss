@@ -14,9 +14,9 @@
 
 #define CH_IMCDATA(ch)           ((ch)->pcdata->imcchardata)
 #define CH_IMCLEVEL(ch)          ((ch)->level)
-#define CH_IMCNAME(ch)           ((ch)->name)
+#define CH_IMCNAME(ch)           (const_cast<char *>((ch)->name.c_str()))
 #define CH_IMCSEX(ch)            ((ch)->sex)
-#define CH_IMCTITLE(ch)          ((ch)->pcdata->title)
+#define CH_IMCTITLE(ch)          ((ch)->get_title())
 
 #define first_descriptor first_desc
 #define CH_IMCRANK(ch)           (str_cmp(ch->pcdata->who_name,"off") ? ch->pcdata->who_name : IS_IMMORTAL(ch) ? "Imm" : class_table[(ch)->p_class].who_name)

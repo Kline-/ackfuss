@@ -154,7 +154,7 @@ char_data::char_data()
  damroll = 5;
  deaf.reset();
  desc = NULL;
- description = &str_empty[0];
+ description.clear();
  exp = 0;
  fighting = NULL;
  first_affect = NULL;
@@ -177,8 +177,8 @@ char_data::char_data()
  leader = NULL;
  level = 0;
  logon = current_time;
- long_descr = &str_empty[0];
- long_descr_orig = &str_empty[0];
+ long_descr.clear();
+ long_descr_orig.clear();
  for( short i = 0; i < MAX_CLASS; i++ )
   lvl[i] = -1;
  for( short i = 0; i < MAX_CLASS; i++ )

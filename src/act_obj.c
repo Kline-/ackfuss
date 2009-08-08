@@ -142,7 +142,7 @@ void get_obj( CHAR_DATA * ch, OBJ_DATA * obj, OBJ_DATA * container )
 
 
 
-void do_get( CHAR_DATA * ch, char *argument )
+DO_FUN(do_get)
 {
 
    char container_name[MSL];
@@ -421,7 +421,7 @@ void do_get( CHAR_DATA * ch, char *argument )
 
 
 
-void do_put( CHAR_DATA * ch, char *argument )
+DO_FUN(do_put)
 {
    char object_list[MAX_INPUT_LENGTH];
    char container_name[MSL];
@@ -576,7 +576,7 @@ void do_put( CHAR_DATA * ch, char *argument )
 
 
 
-void do_drop( CHAR_DATA * ch, char *argument )
+DO_FUN(do_drop)
 {
    char arg[MAX_INPUT_LENGTH];
    char container_name[MSL];
@@ -694,7 +694,7 @@ void do_drop( CHAR_DATA * ch, char *argument )
 
 
 
-void do_give( CHAR_DATA * ch, char *argument )
+DO_FUN(do_give)
 {
    char victim_name[MSL];
    char container_name[MSL];
@@ -842,7 +842,7 @@ void do_give( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_fill( CHAR_DATA * ch, char *argument )
+DO_FUN(do_fill)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -911,7 +911,7 @@ void do_fill( CHAR_DATA * ch, char *argument )
 
 
 
-void do_drink( CHAR_DATA * ch, char *argument )
+DO_FUN(do_drink)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -1087,7 +1087,7 @@ void do_drink( CHAR_DATA * ch, char *argument )
 
 
 
-void do_eat( CHAR_DATA * ch, char *argument )
+DO_FUN(do_eat)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -1761,7 +1761,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
    }
 }
 
-void do_wear( CHAR_DATA * ch, char *argument )
+DO_FUN(do_wear)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -1806,7 +1806,7 @@ void do_wear( CHAR_DATA * ch, char *argument )
                snprintf( eqbuf, MSL, "%s", "@@dNothing@@N" );
             }
             snprintf( catbuf, MSL, "%s%25s@@N %-*s\r\n", colbuf, where_name[location], ccode_len( eqbuf, 40 ), eqbuf );
-            strncat( outbuf, catbuf, MSL );
+            strncat( outbuf, catbuf, MSL-1 );
          }
       }
       send_to_char( outbuf, ch );
@@ -1864,7 +1864,7 @@ void remove_all( CHAR_DATA * ch )
    return;
 }
 
-void do_remove( CHAR_DATA * ch, char *argument )
+DO_FUN(do_remove)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -1899,7 +1899,7 @@ void do_remove( CHAR_DATA * ch, char *argument )
 
 
 
-void do_sacrifice( CHAR_DATA * ch, char *argument )
+DO_FUN(do_sacrifice)
 {
    char arg[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -2012,7 +2012,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
       if( ch->pcdata->sentence > 0 )
       {
 
-         snprintf( buf, MSL, "%s: Sentence reduced to %d ( - %.0f ) by sacrificing %s.", ch->name,
+         snprintf( buf, MSL, "%s: Sentence reduced to %d ( - %.0f ) by sacrificing %s.", ch->name.c_str(),
                   ch->pcdata->sentence, obj_value, obj->short_descr );
          monitor_chan( buf, MONITOR_OBJ );
          act( "The judge accepts $p as partial payment of your fine.", ch, obj, 0, TO_CHAR );
@@ -2023,7 +2023,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
          ch->pcdata->sentence = 0;
          ch->act.reset(ACT_KILLER | ACT_THIEF);
          send_to_char( "Your debt to society has been paid!  Please more careful in the future.\r\n", ch );
-         snprintf( monbuf, MSL, "%s has had a WANTED flag removed by the judge.\r\n", ch->name );
+         snprintf( monbuf, MSL, "%s has had a WANTED flag removed by the judge.\r\n", ch->name.c_str() );
          monitor_chan( monbuf, MONITOR_GEN_MORT );
       }
 
@@ -2113,7 +2113,7 @@ void do_sacrifice( CHAR_DATA * ch, char *argument )
 
 
 
-void do_quaff( CHAR_DATA * ch, char *argument )
+DO_FUN(do_quaff)
 {
    char arg[MAX_INPUT_LENGTH];
    OBJ_DATA *obj;
@@ -2159,7 +2159,7 @@ void do_quaff( CHAR_DATA * ch, char *argument )
 
 
 
-void do_recite( CHAR_DATA * ch, char *argument )
+DO_FUN(do_recite)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -2217,7 +2217,7 @@ void do_recite( CHAR_DATA * ch, char *argument )
 
 
 
-void do_brandish( CHAR_DATA * ch, char *argument )
+DO_FUN(do_brandish)
 {
    CHAR_DATA *vch;
    CHAR_DATA *vch_next;
@@ -2294,7 +2294,7 @@ void do_brandish( CHAR_DATA * ch, char *argument )
 
 
 
-void do_zap( CHAR_DATA * ch, char *argument )
+DO_FUN(do_zap)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2377,7 +2377,7 @@ void do_zap( CHAR_DATA * ch, char *argument )
 
 
 
-void do_steal( CHAR_DATA * ch, char *argument )
+DO_FUN(do_steal)
 {
    char buf[MAX_STRING_LENGTH];
    char arg1[MAX_INPUT_LENGTH];
@@ -2454,7 +2454,7 @@ void do_steal( CHAR_DATA * ch, char *argument )
       if( !IS_NPC( ch ) && !IS_NPC( victim )
           && ch->act.test(ACT_PKOK) && victim->act.test(ACT_PKOK) )
          return;
-      snprintf( buf, MSL, "%s is a bloody thief!", ch->name );
+      snprintf( buf, MSL, "%s is a bloody thief!", ch->name.c_str() );
       do_yell( victim, buf );
       if( !IS_NPC( ch ) )
       {
@@ -2538,7 +2538,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
    if( !IS_NPC( ch ) && ch->act.test(ACT_KILLER) )
    {
       do_say( keeper, "Killers are not welcome!" );
-      snprintf( buf, MSL, "%s the KILLER is over here!", ch->name );
+      snprintf( buf, MSL, "%s the KILLER is over here!", ch->name.c_str() );
       do_shout( keeper, buf );
       check_guards( ch );
       return NULL;
@@ -2547,7 +2547,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
    if( !IS_NPC( ch ) && ch->act.test(ACT_THIEF) )
    {
       do_say( keeper, "Thieves are not welcome!" );
-      snprintf( buf, MSL, "%s the THIEF is over here!", ch->name );
+      snprintf( buf, MSL, "%s the THIEF is over here!", ch->name.c_str() );
       do_shout( keeper, buf );
       check_guards( ch );
       return NULL;
@@ -2627,12 +2627,12 @@ void check_guards( CHAR_DATA * ch )
                   interpret( guard, "grin" );
                   break;
                case 4:
-                  snprintf( buf, MSL, "leaves in search of %s.", ch->name );
+                  snprintf( buf, MSL, "leaves in search of %s.", ch->name.c_str() );
                   do_emote( guard, buf );
                   break;
                case 5:
                   interpret( guard, "wave" );
-                  snprintf( buf, MSL, "Laters... i'm off to get %s.", ch->name );
+                  snprintf( buf, MSL, "Laters... i'm off to get %s.", ch->name.c_str() );
                   do_say( guard, buf );
                   break;
                case 6:
@@ -2640,7 +2640,7 @@ void check_guards( CHAR_DATA * ch )
                   do_say( guard, "Yes!  Someone to go kill!" );
                   break;
                case 7:
-                  snprintf( buf, MSL, "%s Watch it mate... i'm after you!", ch->name );
+                  snprintf( buf, MSL, "%s Watch it mate... i'm after you!", ch->name.c_str() );
                   do_tell( guard, buf );
                   break;
             }
@@ -2696,7 +2696,7 @@ int get_cost( CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy )
 
 
 
-void do_buy( CHAR_DATA * ch, char *argument )
+DO_FUN(do_buy)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *keeper;
@@ -2770,7 +2770,7 @@ void do_buy( CHAR_DATA * ch, char *argument )
       cost_string = take_best_coins( ch->money, 10 * pet->level * pet->level );
       cost_string = one_argument( cost_string, changebuf );
       change = is_number( changebuf ) ? atoi( changebuf ) : 0;
-      snprintf( givebuf, MSL, "%s to %s", cost_string, keeper->name );
+      snprintf( givebuf, MSL, "%s to %s", cost_string, keeper->name.c_str() );
       do_give( ch, givebuf );
       if( change > 0 )
       {
@@ -2795,14 +2795,12 @@ void do_buy( CHAR_DATA * ch, char *argument )
       argument = one_argument( argument, arg );
       if( arg[0] != '\0' )
       {
-         snprintf( buf, MSL, "%s %s", pet->name, arg );
-         free_string( pet->name );
-         pet->name = str_dup( buf );
+         snprintf( buf, MSL, "%s %s", pet->name.c_str(), arg );
+         pet->name = buf;
       }
 
-      snprintf( buf, MSL, "%sA neck tag says 'I belong to %s'.\r\n", pet->description, ch->name );
-      free_string( pet->description );
-      pet->description = str_dup( buf );
+      snprintf( buf, MSL, "%sA neck tag says 'I belong to %s'.\r\n", pet->description.c_str(), ch->name.c_str() );
+      pet->description = buf;
       char_to_room( pet, ch->in_room );
       add_follower( pet, ch );
       send_to_char( "Enjoy your pet.\r\n", ch );
@@ -2855,7 +2853,7 @@ void do_buy( CHAR_DATA * ch, char *argument )
       cost_string = take_best_coins( ch->money, cost );
       cost_string = one_argument( cost_string, changebuf );
       change = is_number( changebuf ) ? atoi( changebuf ) : 0;
-      snprintf( givebuf, MSL, "%s to %s", cost_string, keeper->name );
+      snprintf( givebuf, MSL, "%s to %s", cost_string, keeper->name.c_str() );
       do_give( ch, givebuf );
       act( "$n buys $p.", ch, obj, NULL, TO_ROOM );
       act( "You buy $p.", ch, obj, NULL, TO_CHAR );
@@ -2886,7 +2884,7 @@ void do_buy( CHAR_DATA * ch, char *argument )
 
 
 
-void do_list( CHAR_DATA * ch, char *argument )
+DO_FUN(do_list)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -2945,7 +2943,7 @@ void do_list( CHAR_DATA * ch, char *argument )
             snprintf( buf, MSL, "[ @@W%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \r\n", pet->level, ccode_len( pet->npcdata->short_descr, 30 ),
                      capitalize( pet->npcdata->short_descr ), ccode_len( costbuf, 35 ), costbuf );
             delete rounded_cost;
-            strncat( buf1, buf, MSL );
+            strncat( buf1, buf, MSL-1 );
             if( stopcounter > 45 )
             {
                send_to_char( buf1, ch );
@@ -2983,7 +2981,7 @@ void do_list( CHAR_DATA * ch, char *argument )
                      obj->level, ccode_len( obj->short_descr, 30 ), capitalize( obj->short_descr ), ccode_len( costbuf, 30 ),
                      costbuf );
             delete rounded_cost;
-            strncat( buf1, buf, MSL );
+            strncat( buf1, buf, MSL-1 );
             if( stopcounter > 45 )
             {
                send_to_char( buf1, ch );
@@ -3011,7 +3009,7 @@ void do_list( CHAR_DATA * ch, char *argument )
 
 
 
-void do_sell( CHAR_DATA * ch, char *argument )
+DO_FUN(do_sell)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -3122,7 +3120,7 @@ void do_sell( CHAR_DATA * ch, char *argument )
 
 
 
-void do_value( CHAR_DATA * ch, char *argument )
+DO_FUN(do_value)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -3178,7 +3176,7 @@ void do_value( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_donate( CHAR_DATA * ch, char *argument )
+DO_FUN(do_donate)
 /*  This function removes *one* object from a player,
  *  and instead of dropping it in the curent room, it is 
  *  placed in the donation room, vnum 3206
@@ -3281,7 +3279,7 @@ void do_donate( CHAR_DATA * ch, char *argument )
    do_save( ch, "auto" );
 }
 
-void do_adapt( CHAR_DATA * ch, char *argument )
+DO_FUN(do_adapt)
 {
    /*
     * Take one piece of eq, the ch's level, and reset the eq's stats
@@ -3291,8 +3289,8 @@ void do_adapt( CHAR_DATA * ch, char *argument )
     * * -- Stephen
     */
 
-   char arg[MAX_INPUT_LENGTH];
-   char buf[MAX_INPUT_LENGTH];
+   char arg[MSL];
+   char buf[MSL];
    OBJ_DATA *obj;
    AFFECT_DATA *paf;
    CHAR_DATA *mob;
@@ -3309,7 +3307,7 @@ void do_adapt( CHAR_DATA * ch, char *argument )
    cost = ( ch->level * 250 );
    argument = one_argument( argument, arg );
    /*
-    * Check for mob with act->adapt 
+    * Check for mob with act->adapt
     */
    for( mob = ch->in_room->first_person; mob; mob = mob->next_in_room )
    {
@@ -3445,7 +3443,7 @@ void do_adapt( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_cdonate( CHAR_DATA * ch, char *argument )
+DO_FUN(do_cdonate)
 /*  This function removes *one* object from a player,
  *  and instead of dropping it in the curent room, it is 
  *  placed in the donation room.
@@ -3560,7 +3558,7 @@ void do_cdonate( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_appraise( CHAR_DATA * ch, char *argument )
+DO_FUN(do_appraise)
 {
    OBJ_DATA *obj;
    char buf[MAX_STRING_LENGTH];
@@ -3745,7 +3743,7 @@ void do_appraise( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_bid( CHAR_DATA * ch, char *argument )
+DO_FUN(do_bid)
 {
    int amount;
    if( !IS_NPC( ch ) && IS_WOLF( ch ) && ( IS_SHIFTED( ch ) || IS_RAGED( ch ) ) )
@@ -3815,7 +3813,7 @@ void do_bid( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_auction( CHAR_DATA * ch, char *argument )
+DO_FUN(do_auction)
 {
    int auction_reserve = 0;
    char buf[MAX_STRING_LENGTH];
@@ -3851,8 +3849,8 @@ void do_auction( CHAR_DATA * ch, char *argument )
          if( !str_cmp( arg, "take" ) )
          {
             char buf2[MSL];
-            snprintf( buf2, MSL, " The item has been taken by %s.\r\n", ch->name );
-            strncat( buf, buf2, MSL );
+            snprintf( buf2, MSL, " The item has been taken by %s.\r\n", ch->name.c_str() );
+            strncat( buf, buf2, MSL-1 );
          }
          do_echo( ch, buf );
          if( good_seller )
@@ -3898,7 +3896,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
       char lastbidbuf[MSL];
       snprintf( buf, MSL, "The current object being auctioned is: %s\r\n", auction_item->short_descr );
       send_to_char( buf, ch );
-      snprintf( buf, MSL, "Item was offered for sale by %s.\r\n", auction_owner->name );
+      snprintf( buf, MSL, "Item was offered for sale by %s.\r\n", auction_owner->name.c_str() );
       send_to_char( buf, ch );
       snprintf( lastbidbuf, MSL, "%s", cost_to_money( auction_bid ) );
       snprintf( buf, MSL, "The estimated value is %s, and last bid was for %s.\r\n",
@@ -3992,7 +3990,7 @@ void do_auction( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_connect( CHAR_DATA * ch, char *argument )
+DO_FUN(do_connect)
 {
    OBJ_DATA *first_ob;
    OBJ_DATA *second_ob;
@@ -4064,7 +4062,7 @@ void do_connect( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_repair( CHAR_DATA *ch, char *argument )
+DO_FUN(do_repair)
 {
  OBJ_DATA *obj;
  CHAR_DATA *mob;
@@ -4110,14 +4108,14 @@ void do_repair( CHAR_DATA *ch, char *argument )
     cbuf = take_best_coins(ch->money,cost); /* Gives a string of the coins we need to steal. */
     cbuf = one_argument(cbuf,changebuf);
     change = is_number(changebuf) ? atoi(changebuf) : 0;
-    snprintf(changebuf,MSL,"%s to %s",cbuf,mob->name);
+    snprintf(changebuf,MSL,"%s to %s",cbuf,mob->name.c_str());
     do_give(ch,changebuf);
     act("$N repairs $p.",ch,obj,mob,TO_CHAR);
     if( change > 0 )
     {
      MONEY_TYPE *transaction;
-     transaction = round_money( change, TRUE );
-     join_money( transaction, ch->money );
+     transaction = round_money(change,TRUE);
+     join_money(transaction,ch->money);
     }
    }
   }
@@ -4146,13 +4144,13 @@ void do_repair( CHAR_DATA *ch, char *argument )
  cbuf = take_best_coins(ch->money,cost); /* Gives a string of the coins we need to steal. */
  cbuf = one_argument(cbuf,changebuf);
  change = is_number(changebuf) ? atoi(changebuf) : 0;
- snprintf(changebuf,MSL,"%s to %s",cbuf,mob->name);
+ snprintf(changebuf,MSL,"%s to %s",cbuf,mob->name.c_str());
  do_give(ch,changebuf);
  act("$N repairs $p.",ch,obj,mob,TO_CHAR);
  if( change > 0 )
  {
   MONEY_TYPE *transaction;
-  transaction = round_money( change, TRUE );
-  join_money( transaction, ch->money );
+  transaction = round_money(change,TRUE);
+  join_money(transaction,ch->money);
  }
 }

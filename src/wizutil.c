@@ -375,35 +375,34 @@ void do_rename( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Save the filename of the old name 
+    * Save the filename of the old name
     */
 
 #if !defined(machintosh) && !defined(MSDOS)
-   snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( victim->name ), "/", capitalize( victim->name ) );
+   snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( victim->name.c_str() ), "/", capitalize( victim->name.c_str() ) );
 #else
-   snprintf( strsave, MIL, "%s%s", PLAYER_DIR, capitalize( victim->name ) );
+   snprintf( strsave, MIL, "%s%s", PLAYER_DIR, capitalize( victim->name.c_str() ) );
 #endif
 
 
    /*
-    * Rename the character and save him to a new file 
+    * Rename the character and save him to a new file
     */
    /*
-    * NOTE: Players who are level 1 do NOT get saved under a new name 
+    * NOTE: Players who are level 1 do NOT get saved under a new name
     */
 
-   free_string( victim->name );
-   victim->name = str_dup( capitalize( new_name ) );
+   victim->name = capitalize( new_name );
 
    save_char_obj( victim );
 
    /*
-    * unlink the old file 
+    * unlink the old file
     */
    unlink( strsave );   /* unlink does return a value.. but we do not care */
 
    /*
-    * That's it! 
+    * That's it!
     */
 
    send_to_char( "Character renamed.\r\n", ch );

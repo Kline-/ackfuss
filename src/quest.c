@@ -360,25 +360,19 @@ void do_quest( CHAR_DATA * ch, char *argument )
       quest_timer = 0;
       quest = TRUE;
       new_long_desc[0] = '\0';
-      if( quest_mob->long_descr_orig != NULL )
-         free_string( quest_mob->long_descr_orig );
-      quest_mob->long_descr_orig = str_dup( quest_mob->long_descr );
+
+      quest_mob->long_descr_orig = quest_mob->long_descr;
       snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?", NAME(quest_mob), quest_object->short_descr );
-      if( quest_mob->long_descr != NULL )
-         free_string( quest_mob->long_descr );
-      quest_mob->long_descr = str_dup( new_long_desc );
+      quest_mob->long_descr = new_long_desc;
       quest_mob->act.set(ACT_NO_SUMMON );
       quest_mob->act.set(ACT_NO_VISIT );
       quest_mob->act.set(ACT_NO_BLOOD );
 
       new_long_desc[0] = '\0';
-      if( quest_target->long_descr_orig != NULL )
-         free_string( quest_target->long_descr_orig );
-      quest_target->long_descr_orig = str_dup( quest_target->long_descr );
+
+      quest_target->long_descr_orig = quest_target->long_descr;
       snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!", NAME(quest_target), quest_object->short_descr );
-      if( quest_target->long_descr != NULL )
-         free_string( quest_target->long_descr );
-      quest_target->long_descr = str_dup( new_long_desc );
+      quest_target->long_descr = new_long_desc;
 
       quest_target->act.set(ACT_NO_SUMMON );
       quest_target->act.set(ACT_NO_VISIT );
@@ -617,25 +611,21 @@ void quest_cancel(  )
 void clear_quest(  )
 {
    /*
-    * Clear ALL values, ready for next quest 
+    * Clear ALL values, ready for next quest
     */
 
    quest = FALSE;
    extract_obj( quest_object );
    if( quest_mob )
    {
-      free_string( quest_mob->long_descr );
-      quest_mob->long_descr = str_dup( quest_mob->long_descr_orig );
-      free_string( quest_mob->long_descr_orig );
-      quest_mob->long_descr_orig = NULL;
+      quest_mob->long_descr = quest_mob->long_descr_orig;
+      quest_mob->long_descr_orig.clear();
    }
    if( quest_target )
    {
-      free_string( quest_target->long_descr );
-      quest_target->long_descr = str_dup( quest_target->long_descr_orig );
-      free_string( quest_target->long_descr_orig );
-      quest_target->long_descr_orig = NULL;
-   };
+      quest_target->long_descr = quest_target->long_descr_orig;
+      quest_target->long_descr_orig.clear();
+   }
 
 
    quest_mob = NULL;
@@ -754,7 +744,7 @@ void generate_auto_quest(  )
          return;
       }
       /*
-       * Set values on quest item for Qp, Pracs, Exp, Gold 
+       * Set values on quest item for Qp, Pracs, Exp, Gold
        */
       quest_object->value[0] = UMAX( 1, ( quest_target->level / 20 ) );
       quest_object->value[1] = UMAX( 1, ( quest_target->level / 18 ) );
@@ -771,26 +761,20 @@ void generate_auto_quest(  )
       quest_timer = 0;
       quest = TRUE;
       new_long_desc[0] = '\0';
-      if( quest_mob->long_descr_orig != NULL )
-         free_string( quest_mob->long_descr_orig );
-      quest_mob->long_descr_orig = str_dup( quest_mob->long_descr );
+
+      quest_mob->long_descr_orig = quest_mob->long_descr;
       snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?", NAME(quest_mob), quest_object->short_descr );
-      if( quest_mob->long_descr != NULL )
-         free_string( quest_mob->long_descr );
-      quest_mob->long_descr = str_dup( new_long_desc );
+      quest_mob->long_descr = new_long_desc;
       quest_mob->act.set(ACT_NO_SUMMON );
       quest_mob->act.set(ACT_NO_VISIT );
       quest_mob->act.set(ACT_NO_BLOOD );
 
 
       new_long_desc[0] = '\0';
-      if( quest_target->long_descr_orig != NULL )
-         free_string( quest_target->long_descr_orig );
-      quest_target->long_descr_orig = str_dup( quest_target->long_descr );
+
+      quest_target->long_descr_orig = quest_target->long_descr;
       snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!", NAME(quest_target), quest_object->short_descr );
-      if( quest_target->long_descr != NULL )
-         free_string( quest_target->long_descr );
-      quest_target->long_descr = str_dup( new_long_desc );
+      quest_target->long_descr = new_long_desc;
 
       quest_target->act.set(ACT_NO_SUMMON );
       quest_target->act.set(ACT_NO_VISIT );

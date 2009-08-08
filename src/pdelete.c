@@ -53,7 +53,7 @@ void do_sdelete( CHAR_DATA * ch, char *argument )
 
    if( IS_NPC( ch ) )
       return;
-   strcpy( buf, ch->name );
+   strcpy( buf, ch->name.c_str() );
    snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", capitalize( buf ) );
 
    pArg = arg1;

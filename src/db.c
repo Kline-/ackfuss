@@ -472,7 +472,6 @@ void load_areas( void )
       {
          string file;
 
-         file.clear();
          file += AREA_DIR;
          file += strArea;
 
@@ -2551,7 +2550,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
 
    mob->npcdata->short_descr = str_dup( pMobIndex->short_descr );
    mob->long_descr = str_dup( pMobIndex->long_descr );
-   mob->description = str_dup( pMobIndex->description );
+   mob->description = pMobIndex->description;
    mob->npcdata->spec_fun = pMobIndex->spec_fun;
    mob->prompt = str_dup(DEFAULT_PROMPT);
    mob->level = pMobIndex->level;
@@ -3292,7 +3291,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
    if( !str_cmp( argument, "defrag" ) )
    {
       send_to_char( "Defragmenting SSM heap.", ch );
-      log_f( "SSM: %s called defrag_heap.", ch->name );
+      log_f( "SSM: %s called defrag_heap.", ch->name.c_str() );
       defrag_heap(  );
       return;
    }
@@ -3309,14 +3308,14 @@ void do_memory( CHAR_DATA * ch, char *argument )
       {
          mem_log = FALSE;
          send_to_char( "Memory logging is now OFF.\r\n", ch );
-         log_f( "%s turned off memory logging", ch->name );
+         log_f( "%s turned off memory logging", ch->name.c_str() );
          return;
       }
       else
       {
          mem_log = TRUE;
          send_to_char( "Memory logging is now ON.. remember to turn it off!\r\n", ch );
-         log_f( "%s turned on memory logging", ch->name );
+         log_f( "%s turned on memory logging", ch->name.c_str() );
          return;
       }
    }
@@ -3602,7 +3601,7 @@ void append_file( CHAR_DATA * ch, char *file, char *str )
    }
    else
    {
-      snprintf( buf, MSL, "[%5d] %s: %s\n", ch->in_room ? ch->in_room->vnum : 0, ch->name, str );
+      snprintf( buf, MSL, "[%5d] %s: %s\n", ch->in_room ? ch->in_room->vnum : 0, ch->name.c_str(), str );
       fprintf(fp,"%s",buf);
 
       buf[strlen(buf)-1] = '\0'; /* Strip newline */

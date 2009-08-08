@@ -182,7 +182,7 @@ void smash_tilde( char *str )
 /*
  * Remove and replace in a string.
  * Easier than making X smash_Y functions. --Kline
- */ 
+ */
 void smash_replace( char *str, char *sold, char *snew )
 {
  for( ; *str != '\0'; str++ )
@@ -191,6 +191,81 @@ void smash_replace( char *str, char *sold, char *snew )
    *str = *snew;
  }
  return;
+}
+
+/* Lets start working strings in here. Helping slowly do the conversion. --Kline */
+bool str_cmp( const char *astr, string str )
+{
+ int count = 0;
+ bool notrunc = false;
+ const char *bstr = str.c_str();
+
+ if( astr == NULL )
+  return true;
+ if( bstr == NULL )
+  return true;
+ if( *astr == '^' )
+ {
+  notrunc = true;
+  astr++;
+ }
+ if( *bstr == '^' )
+ {
+  notrunc = true;
+  bstr++;
+ }
+ if( astr == NULL )
+  return true;
+ if( bstr == NULL )
+  return true;
+ for( ; *astr || *bstr; astr++, bstr++ )
+ {
+  if( !notrunc )
+   if( *astr == '*' && count )
+    return false;
+  if( LOWER(*astr) != LOWER(*bstr) )
+   return true;
+  count++;
+ }
+
+ return false;
+}
+
+bool str_cmp( string str, const char *bstr )
+{
+ int count = 0;
+ bool notrunc = false;
+ const char *astr = str.c_str();
+
+ if( astr == NULL )
+  return true;
+ if( bstr == NULL )
+  return true;
+ if( *astr == '^' )
+ {
+  notrunc = true;
+  astr++;
+ }
+ if( *bstr == '^' )
+ {
+  notrunc = true;
+  bstr++;
+ }
+ if( astr == NULL )
+  return true;
+ if( bstr == NULL )
+  return true;
+ for( ; *astr || *bstr; astr++, bstr++ )
+ {
+  if( !notrunc )
+   if( *astr == '*' && count )
+    return false;
+  if( LOWER(*astr) != LOWER(*bstr) )
+   return true;
+  count++;
+ }
+
+ return false;
 }
 
 /*
@@ -205,7 +280,7 @@ bool str_cmp( const char *astr, const char *bstr )
    if( astr == NULL )
    {
       /*
-       * bug( "Str_cmp: null astr.", 0 );   
+       * bug( "Str_cmp: null astr.", 0 );
        */
       return TRUE;
    }
@@ -228,7 +303,7 @@ bool str_cmp( const char *astr, const char *bstr )
    if( astr == NULL )
    {
       /*
-       * bug( "Str_cmp: null astr.", 0 );   
+       * bug( "Str_cmp: null astr.", 0 );
        */
       return TRUE;
    }
@@ -1746,7 +1821,7 @@ char *tagline_format( const char *txt, CHAR_DATA *ch )
      continue;
     }
 
-    snprintf(p_name,128,"%s",ch->name);
+    snprintf(p_name,128,"%s",ch->name.c_str());
     n = p_name;
 
     while( *n != '\0' )
@@ -1824,10 +1899,10 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
    break;
 
   case 'I':
-   if( !str_cmp(arg1,"immortal") && IS_IMMORTAL(ch) )                                                  { retval = true; break; }
-   if( !str_cmp(arg1,"int") && evaluate_tag(arg2,get_curr_int(ch),value) )                             { retval = true; break; }
-   if( !str_cmp(arg1,"isname") && !str_cmp(arg2,ch->name) )                                            { retval = true; break; }
-   if( !str_cmp(arg1,"istitle") && !IS_NPC(ch) && !str_cmp(arg2,strip_color(ch->pcdata->title,"@@")) ) { retval = true; break; }
+   if( !str_cmp(arg1,"immortal") && IS_IMMORTAL(ch) )                                 { retval = true; break; }
+   if( !str_cmp(arg1,"int") && evaluate_tag(arg2,get_curr_int(ch),value) )            { retval = true; break; }
+   if( !str_cmp(arg1,"isname") && !str_cmp(arg2,ch->name) )                           { retval = true; break; }
+   if( !str_cmp(arg1,"istitle") && !str_cmp(arg2,strip_color(ch->get_title(),"@@")) ) { retval = true; break; }
    break;
 
   case 'L':

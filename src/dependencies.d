@@ -148,7 +148,7 @@ o/mapper.o: mapper.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
 o/mbr_fun.o: mbr_fun.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
-  h/act_wiz.h h/comm.h h/handler.h h/magic.h
+  h/act_wiz.h h/comm.h h/handler.h h/magic.h h/ssm.h
 o/money.o: money.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \

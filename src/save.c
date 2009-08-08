@@ -174,7 +174,7 @@ void save_char_obj( CHAR_DATA * ch )
 #if !defined(machintosh) && !defined(MSDOS)
    if( IS_NPC( ch ) )   /* convert spaces to . */
    {
-      for( nmptr = ch->name, bufptr = buf; *nmptr != 0; nmptr++ )
+      for( nmptr = const_cast<char *>(ch->name.c_str()), bufptr = buf; *nmptr != 0; nmptr++ )
       {
          if( *nmptr == ' ' )
             *( bufptr++ ) = '.';
@@ -184,11 +184,11 @@ void save_char_obj( CHAR_DATA * ch )
       *( bufptr ) = *nmptr;
    }
    else
-      strcpy( buf, ch->name );
+      strcpy( buf, ch->name.c_str() );
    snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", cap_nocol( buf ) );
 #else
    /*
-    * Convert npc names to dos compat name.... yuk 
+    * Convert npc names to dos compat name.... yuk
     */
    if( IS_NPC( ch ) )
    {
@@ -270,7 +270,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
    fprintf( fp, "#%s\n", IS_NPC( ch ) ? "MOB" : "PLAYER" );
 
    fprintf( fp, "Revision       %d\n", SAVE_REVISION );
-   fprintf( fp, "Name           %s~\n", ch->name );
+   fprintf( fp, "Name           %s~\n", ch->name.c_str() );
 
    fprintf( fp, "Deaf           " );
    for( foo = 0; foo < MAX_BITSET; foo++ )
@@ -282,9 +282,9 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    if( IS_NPC(ch) )
     fprintf( fp, "ShortDescr     %s~\n", ch->npcdata->short_descr );
-   fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig );
-   fprintf( fp, "Description    %s~\n", ch->description );
-   fprintf( fp, "Prompt         %s~\n", ch->prompt );
+   fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig.c_str() );
+   fprintf( fp, "Description    %s~\n", ch->description.c_str() );
+   fprintf( fp, "Prompt         %s~\n", ch->prompt.c_str() );
    fprintf( fp, "Sex            %d\n", ch->sex );
 
    if( !IS_NPC(ch) )
@@ -746,10 +746,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    }
 
    ch->desc = d;
-   if( ch->name != NULL )
-    free_string( ch->name );
-   ch->name = str_dup( name );
-   ch->prompt = str_dup(DEFAULT_PROMPT);
+   ch->name = name;
+   ch->prompt = DEFAULT_PROMPT;
    if( is_npc )
       ch->npc = true;
    else
@@ -758,10 +756,10 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    found = FALSE;
 
    /*
-    * parsed player file directories by Yaz of 4th Realm 
+    * parsed player file directories by Yaz of 4th Realm
     */
    /*
-    * decompress if .gz file exists - Thx Alander 
+    * decompress if .gz file exists - Thx Alander
     */
 
 #if !defined(machintosh) && !defined(MSDOS)
@@ -1041,7 +1039,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
             if( !IS_NPC(ch) )
              KEY("DeathCnt", ch->pcdata->death_cnt, fread_number(fp) );
-            SKEY( "Description", ch->description, fread_string( fp ) );
+            KEY( "Description", ch->description, fread_string( fp ) );
 
             if( !str_cmp( word, "DimCol" ) && !IS_NPC( ch ) )
             {
@@ -1144,7 +1142,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
          case 'L':
             KEY( "Level", ch->level, fread_number( fp ) );
-            SKEY( "LongDescr", ch->long_descr, fread_string( fp ) );
+            KEY( "LongDescr", ch->long_descr, fread_string( fp ) );
 
             if( !IS_NPC( ch ) )
             {
@@ -1230,7 +1228,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             KEY( "Position", ch->position, fread_number( fp ) );
             if( !IS_NPC(ch) )
              KEY( "Practice", ch->pcdata->practice, fread_number( fp ) );
-            SKEY( "Prompt", ch->prompt, fread_string( fp ) );
+            KEY( "Prompt", ch->prompt, fread_string( fp ) );
             break;
 
          case 'Q':
@@ -1347,7 +1345,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                sn = skill_lookup( skill_word );
                if( sn < 0 )
                {
-                  snprintf( log_buf, (2 * MIL), "Loading pfile %s, unknown skill %s.", ch->name, skill_word );
+                  snprintf( log_buf, (2 * MIL), "Loading pfile %s, unknown skill %s.", ch->name.c_str(), skill_word );
                   monitor_chan( log_buf, MONITOR_BAD );
                }
                else
@@ -1420,20 +1418,20 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
       }
 
       /*
-       * Make sure old chars have this field - Kahn 
+       * Make sure old chars have this field - Kahn
        */
       if( !IS_NPC( ch ) )
       {
          if( !ch->pcdata->pagelen )
             ch->pcdata->pagelen = 20;
-         if( !ch->prompt || *ch->prompt == '\0' )
-            ch->prompt = str_dup(DEFAULT_PROMPT);
+         if( ch->prompt.empty() )
+            ch->prompt = DEFAULT_PROMPT;
       }
 
-      ch->long_descr_orig = str_dup( ch->long_descr );
+      ch->long_descr_orig = ch->long_descr;
       if( !fMatch )
       {
-         snprintf( log_buf, (2 * MIL), "Loading in pfile :%s, no match for ( %s ).", ch->name, word );
+         snprintf( log_buf, (2 * MIL), "Loading in pfile :%s, no match for ( %s ).", ch->name.c_str(), word );
          monitor_chan( log_buf, MONITOR_BAD );
          fread_to_eol( fp );
       }

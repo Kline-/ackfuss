@@ -463,7 +463,7 @@ void do_transfer( CHAR_DATA * ch, char *argument )
              && d->character != ch && d->character->in_room != NULL && can_see( ch, d->character ) )
          {
             char buf[MAX_STRING_LENGTH];
-            snprintf( buf, MSL, "%s %s", d->character->name, arg2 );
+            snprintf( buf, MSL, "%s %s", d->character->name.c_str(), arg2 );
             do_transfer( ch, buf );
          }
       }
@@ -702,7 +702,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
    for( rch = location->first_person; rch; rch = rch->next_in_room )
    {
       strncat( buf1, " ", MSL );
-      one_argument( rch->name, buf );
+      one_argument( const_cast<char *>(rch->name.c_str()), buf );
       strncat( buf1, buf, MSL );
    }
 
@@ -817,7 +817,7 @@ void do_ostat( CHAR_DATA * ch, char *argument )
             "In room: %d.  In object: %s.  Carried by: %s.  Wear_loc: %d.\r\n",
             obj->in_room == NULL ? 0 : obj->in_room->vnum,
             obj->in_obj == NULL ? "(none)" : obj->in_obj->short_descr,
-            obj->carried_by == NULL ? "(none)" : obj->carried_by->name, obj->wear_loc );
+            obj->carried_by == NULL ? "(none)" : obj->carried_by->name.c_str(), obj->wear_loc );
    strncat( buf1, buf, MSL );
 
    strncat( buf1, "Item Values:\r\n", MSL );
@@ -920,7 +920,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
 
    buf1[0] = '\0';
 
-   snprintf( buf, MSL, "Name: %s.  Race %i\r\n", victim->name, victim->race );
+   snprintf( buf, MSL, "Name: %s.  Race %i\r\n", victim->name.c_str(), victim->race );
    strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Vnum: %d.  Sex: %s.  Room: %d.\r\n",
@@ -1013,7 +1013,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
       strncat( buf1, buf, MSL-1 );
    }
 
-   snprintf( buf, MSL, "Fighting: %s.\r\n", victim->fighting ? victim->fighting->name : "(none)" );
+   snprintf( buf, MSL, "Fighting: %s.\r\n", victim->fighting ? victim->fighting->name.c_str() : "(none)" );
    strncat( buf1, buf, MSL-1 );
 
    snprintf(buf,MSL,"Fight speed: LH: %4.2f (%4.2f) RH: %4.2f (%4.2f)\r\n", get_speed(victim,SPEED_LH), victim->speed[SPEED_LH], get_speed(victim,SPEED_RH), victim->speed[SPEED_RH]);
@@ -1053,12 +1053,12 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Master: %s.  Leader: %s.  Affected by: %s.\r\n",
-            victim->master ? victim->master->name : "(none)",
-            victim->leader ? victim->leader->name : "(none)", affect_bit_name( victim->affected_by ) );
+            victim->master ? victim->master->name.c_str() : "(none)",
+            victim->leader ? victim->leader->name.c_str() : "(none)", affect_bit_name( victim->affected_by ) );
    strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Short description: %s.\r\nLong  description: %s\r\n",
-            IS_NPC(victim) ? victim->npcdata->short_descr : "(none)", victim->long_descr[0] != '\0' ? victim->long_descr : "(none)." );
+            IS_NPC(victim) ? victim->npcdata->short_descr : "(none)", !victim->long_descr.empty() ? victim->long_descr.c_str() : "(none)." );
    strncat( buf1, buf, MSL-1 );
 
    if( IS_NPC( victim ) )
@@ -1135,9 +1135,9 @@ void do_mstat( CHAR_DATA * ch, char *argument )
       buf[1] = UPPER( buf[1] );
       strncat( buf1, buf + 1, MSL-1 );
    }
-   else if( victim->searching )
+   else if( !victim->searching.empty() )
    {
-      snprintf( buf, MSL, "Searching for %s.\r\n", victim->searching );
+      snprintf( buf, MSL, "Searching for %s.\r\n", victim->searching.c_str() );
       strncat( buf1, buf, MSL-1 );
    }
 
@@ -1486,7 +1486,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       victim = *li;
-      if( IS_NPC( victim ) && victim->in_room != NULL && is_name( arg, victim->name ) )
+      if( IS_NPC( victim ) && victim->in_room != NULL && is_name( arg, const_cast<char *>(victim->name.c_str()) ) )
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\r\n",
@@ -1528,7 +1528,7 @@ void do_reboot( CHAR_DATA * ch, char *argument )
 
    save_mudinfo();
 
-   snprintf( buf, MSL, "Reboot by %s.", ch->name );
+   snprintf( buf, MSL, "Reboot by %s.", ch->name.c_str() );
    do_echo( ch, buf );
    merc_down = TRUE;
    return;
@@ -1558,7 +1558,7 @@ void do_shutdown( CHAR_DATA * ch, char *argument )
 
    save_mudinfo();
 
-   snprintf( buf, MSL, "Shutdown by %s.", ch->name );
+   snprintf( buf, MSL, "Shutdown by %s.", ch->name.c_str() );
    append_file( ch, SHUTDOWN_FILE, buf );
    strncat( buf, "\r\n", MSL );
    do_echo( ch, buf );
@@ -2017,11 +2017,11 @@ void do_freeze( CHAR_DATA * ch, char *argument )
    else
    {
       send_to_char( "You can't do ANYthing!\r\n", victim );
-      snprintf( buf, MSL, "You have been FROZEN by %s!!\r\n", ch->name );
+      snprintf( buf, MSL, "You have been FROZEN by %s!!\r\n", ch->name.c_str() );
       send_to_char( buf, victim );
       send_to_char( "Freeze set.\r\n", ch );
 
-      snprintf( buf, MSL, "%s has been FROZEN by %s.\r\n", victim->name, ch->name );
+      snprintf( buf, MSL, "%s has been FROZEN by %s.\r\n", victim->name.c_str(), ch->name.c_str() );
       notify( buf, ch->level + 1 );
    }
 
@@ -2371,7 +2371,7 @@ void do_ban( CHAR_DATA * ch, char *argument )
       pban->newbie = FALSE;
 
    pban->name = str_dup( arg );
-   pban->banned_by = str_dup( ch->name );
+   pban->banned_by = str_dup(ch->name.c_str());
    save_bans(  );
    send_to_char( "Ok.\r\n", ch );
    return;
@@ -2468,12 +2468,12 @@ void do_wizlock( CHAR_DATA * ch, char *argument )
    if( wizlock )
    {
       send_to_char( "Game wizlocked.\r\n", ch );
-      snprintf( buf, MSL, "%s wizlocks ACK! Mud.\r\n", ch->name );
+      snprintf( buf, MSL, "%s wizlocks ACK! Mud.\r\n", ch->name.c_str() );
    }
    else
    {
       send_to_char( "Game un-wizlocked.\r\n", ch );
-      snprintf( buf, MSL, "%s un-wizlocks ACK! Mud.\r\n", ch->name );
+      snprintf( buf, MSL, "%s un-wizlocks ACK! Mud.\r\n", ch->name.c_str() );
    }
    notify( buf, get_trust( ch ) );
    return;
@@ -2939,11 +2939,8 @@ void do_mset( CHAR_DATA * ch, char *argument )
          victim->hunt_obj = NULL;
          if( IS_NPC(victim) )
           victim->npcdata->hunt_for = NULL;
-         if( victim->searching )
-         {
-            free_string( victim->searching );
-            victim->searching = NULL;
-         }
+         if( !victim->searching.empty() )
+            victim->searching.clear();
          victim->hunt_flags = victim->npcdata->pIndexData->hunt_flags;
       }
 
@@ -3168,8 +3165,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
          return;
       }
 
-      free_string( victim->name );
-      victim->name = str_dup( arg3 );
+      victim->name = arg3;
       return;
    }
 
@@ -3188,28 +3184,20 @@ void do_mset( CHAR_DATA * ch, char *argument )
 
    if( !str_cmp( arg2, "long" ) )
    {
-      free_string( victim->long_descr );
-
-      snprintf( buf, MSL, "%s\r\n", arg3 );
-      victim->long_descr = str_dup( buf );
+      victim->long_descr = arg3;
+      victim->long_descr += "\r\n";
       return;
    }
 
    if( !str_cmp( arg2, "title" ) )
    {
-      if( IS_NPC( victim ) )
-      {
-         send_to_char( "Not on NPC's.\r\n", ch );
-         return;
-      }
-
       if( ch->level < 85 )
       {
          send_to_char( "This option only available to Creators.\r\n", ch );
          return;
       }
 
-      set_title( victim, arg3 );
+      victim->set_title(arg3);
       return;
    }
 
@@ -3691,7 +3679,7 @@ void do_users( CHAR_DATA * ch, char *argument )
      snprintf( buf + strlen( buf ), MSL, "[%3d %2d %18s] %-12s %-30s",
               d->descriptor,
               d->connected,
-              buf3, d->original ? d->original->name : d->character ? d->character->name : "(none)", d->host );
+              buf3, d->original ? d->original->name.c_str() : d->character ? d->character->name.c_str() : "(none)", d->host );
      if( get_trust( ch ) == 85 )
         snprintf( buf + strlen( buf ), MSL, "  %5d\r\n", d->remote_port );
      else
@@ -4151,7 +4139,7 @@ void do_resetpassword( CHAR_DATA * ch, char *argument )
       return;
    }
 
-   pwdnew = crypt( arg2, victim->name );
+   pwdnew = crypt( arg2, victim->name.c_str() );
 
 
    free_string( victim->pcdata->pwd );
@@ -4244,7 +4232,7 @@ void do_iwhere( CHAR_DATA * ch, char *argument )
 
          count++;
          snprintf( buf, MSL, "%-12s [%5d] %-20s\r\n",
-                  vch->name, vch->in_room == NULL ? 0 : vch->in_room->vnum, vch->in_room->area->name );
+                  vch->name.c_str(), vch->in_room == NULL ? 0 : vch->in_room->vnum, vch->in_room->area->name );
          strncat( buf2, buf, MSL );
       }
    }
@@ -4342,7 +4330,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
          p_class = ADVANCE_ADEPT;
          advance_level( victim, p_class, TRUE, FALSE );
          victim->pcdata->adept_level = 1;
-         snprintf( buf, MSL, " %s %s", victim->name, get_adept_name( victim ) );
+         snprintf( buf, MSL, " %s %s", victim->name.c_str(), get_adept_name( victim ) );
          do_whoname( ch, buf );
          victim->exp = 0;
          do_save( victim, "auto" );
@@ -4546,7 +4534,7 @@ void do_isnoop( CHAR_DATA * ch, char *argument )
       if( d->snoop_by != NULL )
       {
          count++;
-         snprintf( buf, MSL, "%s by %s.\r\n", d->character->name, d->snoop_by->character->name );
+         snprintf( buf, MSL, "%s by %s.\r\n", d->character->name.c_str(), d->snoop_by->character->name.c_str() );
          send_to_char( buf, ch );
       }
    }
@@ -4824,7 +4812,7 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
     * * shows details of any currently hunting someone. -S-
     */
    /*
-    * Rewritten to suit new hunt functions.. :) -- Alty 
+    * Rewritten to suit new hunt functions.. :) -- Alty
     */
    CHAR_DATA *lch;
    list<CHAR_DATA *>::iterator li;
@@ -4836,9 +4824,9 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
       lch = *li;
       if( !lch->hunting && !lch->hunt_obj )
       {
-         if( lch->searching )
+         if( !lch->searching.empty() )
          {
-            snprintf( buf, MSL, "%s searching for %s.\r\n", NAME( lch ), lch->searching );
+            snprintf( buf, MSL, "%s searching for %s.\r\n", NAME( lch ), lch->searching.c_str() );
             send_to_char( buf, ch );
             found = TRUE;
          }
@@ -5194,9 +5182,9 @@ void do_reward( CHAR_DATA * ch, char *argument )
       send_to_char( "Value range is -100 to 100.\r\n", ch );
       return;
    }
-   snprintf( buf, MSL, "@@NYou have been rewarded @@y%3d @@aQuest Points@@N by @@m %s @@N!!!\r\n", value, ch->name );
+   snprintf( buf, MSL, "@@NYou have been rewarded @@y%3d @@aQuest Points@@N by @@m %s @@N!!!\r\n", value, ch->name.c_str() );
    send_to_char( buf, victim );
-   snprintf( buf, MSL, "@@NYou have rewarded @@r%s  @@y%3d @@aQuest Points@@N!!!\r\n", victim->name, value );
+   snprintf( buf, MSL, "@@NYou have rewarded @@r%s  @@y%3d @@aQuest Points@@N!!!\r\n", victim->name.c_str(), value );
    send_to_char( buf, ch );
 
    victim->pcdata->quest_points += value;
@@ -5447,14 +5435,14 @@ const char *name_expand( CHAR_DATA * ch )
 {
    int count = 1;
    CHAR_DATA *rch;
-   char name[MAX_INPUT_LENGTH];  /*  HOPEFULLY no mob has a name longer than THAT */
+   char name[MSL];  /*  HOPEFULLY no mob has a name longer than THAT */
 
-   static char outbuf[MAX_INPUT_LENGTH];
+   static char outbuf[MSL];
 
    if( !IS_NPC( ch ) )
-      return ch->name;
+      return ch->name.c_str();
 
-   one_argument( ch->name, name );  /* copy the first word into name */
+   one_argument( const_cast<char *>(ch->name.c_str()), name );  /* copy the first word into name */
 
    if( !name[0] ) /* weird mob .. no keywords */
    {
@@ -5463,7 +5451,7 @@ const char *name_expand( CHAR_DATA * ch )
    }
 
    for( rch = ch->in_room->first_person; rch && ( rch != ch ); rch = rch->next_in_room )
-      if( is_name( name, rch->name ) )
+      if( is_name( name, const_cast<char *>(rch->name.c_str()) ) )
          count++;
 
 
@@ -6133,7 +6121,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
       }
       else
       {
-         fprintf( fp, "%d %s %s\n", d->descriptor, och->name, d->host );
+         fprintf( fp, "%d %s %s\n", d->descriptor, och->name.c_str(), d->host );
          save_char_obj( och );
          write_to_descriptor( d->descriptor, buf );
       }
@@ -6264,7 +6252,7 @@ void do_disable( CHAR_DATA *ch, char *argument )
  }
 
  p = new DISABLED_DATA;
- p->disabled_by = str_dup(ch->name);
+ p->disabled_by = str_dup(ch->name.c_str());
  p->level = get_trust(ch);
  p->command = &cmd_table[i];
 

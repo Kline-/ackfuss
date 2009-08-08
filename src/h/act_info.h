@@ -34,7 +34,6 @@ DECLARE_DO_FUN(do_compare);
 DECLARE_DO_FUN(do_credits);
 DECLARE_DO_FUN(do_where);
 DECLARE_DO_FUN(do_consider);
-void set_title P_((CHAR_DATA *ch, char *title));
 DECLARE_DO_FUN(do_title);
 DECLARE_DO_FUN(do_description);
 DECLARE_DO_FUN(do_report);

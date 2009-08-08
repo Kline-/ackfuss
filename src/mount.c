@@ -225,7 +225,7 @@ void do_dismount( CHAR_DATA * ch, char *argument )
             act( "You dismount $N.", ch, 0, ch->riding, TO_CHAR );
             act( "$n dismounts $N.", ch, 0, ch->riding, TO_ROOM );
             if( is_same_group( ch, ch->riding ) )
-               do_group( ch, ch->riding->name );
+               do_group( ch, const_cast<char *>(ch->riding->name.c_str()) );
             ch->position = POS_STANDING;
             ch->riding->rider = 0;
             ch->riding = 0;
@@ -315,7 +315,7 @@ void stop_riding( CHAR_DATA * ch )
          if( IS_RIDING( t_ch ) )
          {
             char buf[MAX_STRING_LENGTH];
-            snprintf( buf, MSL, "%s on mount, but not RIDING", t_ch->name );
+            snprintf( buf, MSL, "%s on mount, but not RIDING", t_ch->name.c_str() );
             log_string( buf );
             t_ch->position = POS_RIDING;
          }
@@ -356,7 +356,7 @@ void stop_riding( CHAR_DATA * ch )
             act( "You stop riding $N.", t_ch, 0, mount, TO_CHAR );
             if( is_same_group( ch, mount ) )
             {
-               do_group( ch, mount->name );
+               do_group( ch, const_cast<char *>(mount->name.c_str()) );
             }
             t_ch->riding = NULL;
             mount->rider = NULL;

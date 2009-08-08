@@ -171,10 +171,10 @@ void do_email( CHAR_DATA * ch, char *argument )
             }
             snprintf( brandbuf, MSL,
                      "Email address validation request for %s, address %s\r\nPlease type email validate %s to authorize.\r\n",
-                     ch->name, ch->pcdata->email_address, ch->name );
+                     ch->name.c_str(), ch->pcdata->email_address, ch->name.c_str() );
             brand = new BRAND_DATA;
             GET_FREE( brand_member, dl_list_free );
-            brand->branded = str_dup( ch->name );
+            brand->branded = str_dup( ch->name.c_str() );
             brand->branded_by = str_dup( "@@rSystem@@N" );
             brand->priority = str_dup( "Email Validation" );
             brand->message = str_dup( brandbuf );
@@ -350,7 +350,7 @@ void send_rep_out( CHAR_DATA * ch, char *outbuf, bool mailme, char *msub )
       if( ( !IS_NPC( ch ) ) && ( str_cmp( ch->pcdata->email_address, "not set" ) ) )
       {
          char mailfilename[MSL];
-         snprintf( mailfilename, MSL, "%s.mail", ch->name );
+         snprintf( mailfilename, MSL, "%s.mail", ch->name.c_str() );
          saved_mail = save_mail_file( mailfilename, outbuf );
          if( saved_mail )
          {

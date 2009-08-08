@@ -776,7 +776,7 @@ void close_socket( DESCRIPTOR_DATA * dclose )
 
    if( ( ch = dclose->character ) != NULL )
    {
-      snprintf( log_buf, (2 * MIL), "Closing link to %s.", ch->name );
+      snprintf( log_buf, (2 * MIL), "Closing link to %s.", ch->name.c_str() );
       log_string( log_buf );
       monitor_chan( log_buf, MONITOR_CONNECT );
       if( dclose->connected == CON_PLAYING )
@@ -828,7 +828,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d )
    {
       snprintf( log_buf, (2 * MIL), "%s input overflow!", d->host );
       log_string( log_buf );
-      snprintf( log_buf, (2 * MIL), "input overflow by %s (%s)", ( d->character == NULL ) ? "[login]" : d->character->name, d->host );
+      snprintf( log_buf, (2 * MIL), "input overflow by %s (%s)", ( d->character == NULL ) ? "[login]" : d->character->name.c_str(), d->host );
       monitor_chan( log_buf, MONITOR_CONNECT );
       write_to_descriptor( d->descriptor, "\r\n SPAMMING IS RUDE, BYE BYE! \r\n" );
       return FALSE;
@@ -938,7 +938,7 @@ void read_from_buffer( DESCRIPTOR_DATA * d )
          {
             if( d->connected == CON_PLAYING )
             {
-               snprintf( log_buf, (2 * MIL), "%s input spamming!", d->character->name );
+               snprintf( log_buf, (2 * MIL), "%s input spamming!", d->character->name.c_str() );
                log_string( log_buf );
                monitor_chan( log_buf, MONITOR_CONNECT );
             }
@@ -1014,7 +1014,7 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
 
       snoop_ch = d->original != NULL ? d->original : d->character;
       if( snoop_ch != NULL )
-         snprintf( foo, MSL, "[SNOOP:%s] ", snoop_ch->name );
+         snprintf( foo, MSL, "[SNOOP:%s] ", snoop_ch->name.c_str() );
       write_to_buffer( d->snoop_by, foo );
       write_to_buffer( d->snoop_by, d->outbuf, d->outtop );
    }
@@ -1158,14 +1158,14 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
       return;
    }
 
-   if( ch->prompt == NULL || ch->prompt[0] == '\0' )
+   if( ch->prompt.empty() )
    {
       send_to_char( "@@N> ", ch );
       return;
    }
 
    point = buf;
-   str = d->original != NULL ? d->original->prompt : d->character->prompt;
+   str = d->original != NULL ? d->original->prompt.c_str() : d->character->prompt.c_str();
    snprintf( buf2, MSL, "%s", "@@N" );
    i = buf2;
    while( ( *point = *i ) != '\0' )
@@ -1874,11 +1874,11 @@ void show_menu_to( DESCRIPTOR_DATA * d )
    snprintf( buf, MSL, "        1. Set Gender       Currently:%s\r\n",
             !IS_SET( d->check, CHECK_SEX ) ? "Not Set" :
             ch->sex == SEX_NEUTRAL ? "Neutral." : ch->sex == SEX_MALE ? "Male." : "Female." );
-   strncat( menu, buf, MSL );
+   strncat( menu, buf, MSL-1 );
 
    snprintf( buf, MSL, "        2. Set Race         Currently:%s\r\n",
             !IS_SET( d->check, CHECK_RACE ) ? "Not Set" : race_table[ch->race].race_title );
-   strncat( menu, buf, MSL );
+   strncat( menu, buf, MSL-1 );
 
    strncat( menu, "        3. Roll Attributes  Currently:", MSL );
    if( IS_SET( d->check, CHECK_STATS ) )
@@ -1888,7 +1888,7 @@ void show_menu_to( DESCRIPTOR_DATA * d )
       snprintf( buf, MSL, "Not Set\r\n" );
 
 
-   strncat( menu, buf, MSL );
+   strncat( menu, buf, MSL-1 );
 
    strncat( menu, "        4. Set Class Order  Currently:", MSL );
    if( IS_SET( d->check, CHECK_CLASS ) )
@@ -1898,7 +1898,7 @@ void show_menu_to( DESCRIPTOR_DATA * d )
       for( i = 0; i < MAX_CLASS; i++ )
       {
          snprintf( buf, MSL, "%s ", class_table[ch->pcdata->order[i]].who_name );
-         strncat( menu, buf, MSL );
+         strncat( menu, buf, MSL-1 );
       }
       strncat( menu, "\r\n", MSL );
    }
@@ -1931,7 +1931,7 @@ void show_smenu_to( DESCRIPTOR_DATA * d )
    else
       snprintf( buf, MSL, "No Current Selection.\r\n" );
 
-   strncat( menu, buf, MSL );
+   strncat( menu, buf, MSL-1 );
    strncat( menu, "\r\nPlease Select M/F/N: ", MSL );
 
    write_to_buffer( d, menu );
@@ -1957,13 +1957,13 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
          continue;
       snprintf( buf, MSL, "%3s   %-10s     %s", race_table[iRace].race_name,
                race_table[iRace].race_title, race_table[iRace].comment );
-      strncat( menu, buf, MSL );
+      strncat( menu, buf, MSL-1 );
 
       snprintf( buf, MSL, "  %-2d  %-2d  %-2d  %-2d  %-2d\r\n",
                race_table[iRace].race_str,
                race_table[iRace].race_int,
                race_table[iRace].race_wis, race_table[iRace].race_dex, race_table[iRace].race_con );
-      strncat( menu, buf, MSL );
+      strncat( menu, buf, MSL-1 );
    }
 
    strncat( menu, "\r\nPlease Select Your Race (Abr), or type the full race name for race info: ", MSL );
@@ -1977,7 +1977,7 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
    char menu[MAX_STRING_LENGTH];
 
    /*
-    * Make the 'rolls', set ch->max_*, and display 
+    * Make the 'rolls', set ch->max_*, and display
     */
    if( !IS_SET( d->check, CHECK_RACE ) )
    {
@@ -2044,7 +2044,7 @@ void show_cmenu_to( DESCRIPTOR_DATA * d )
    {
       snprintf( buf, MSL, "%3s    %3s    %-10s\r\n", class_table[iClass].who_name, class_table[iClass].attr,
                class_table[iClass].class_name );
-      strncat( menu, buf, MSL );
+      strncat( menu, buf, MSL-1 );
    }
    strncat( menu, "\r\nOrder: ", MSL );
    write_to_buffer( d, menu );
@@ -2132,7 +2132,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       if( ch->act.test(ACT_JUSTIFY) )
          ch->act.reset(ACT_JUSTIFY);
 
-      if( check_reconnect( d, argument, FALSE ) )
+      if( check_reconnect( d, FALSE ) )
       {
          fOld = TRUE;
       }
@@ -2192,10 +2192,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          BAN_DATA *pban;
          list<BAN_DATA *>::iterator li;
          /*
-          * New player 
+          * New player
           */
          /*
-          * New characters with same name fix by Salem's Lot 
+          * New characters with same name fix by Salem's Lot
           */
          if( check_playing( d, ch->name ) )
             return;
@@ -2228,7 +2228,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       if( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
       {
          write_to_buffer( d, "Wrong password.\r\n" );
-         snprintf( buf, MSL, "FAILED LOGIN for %s from site %s.", ch->name, d->host );
+         snprintf( buf, MSL, "FAILED LOGIN for %s from site %s.", ch->name.c_str(), d->host );
          monitor_chan( buf, MONITOR_CONNECT );
          ch->pcdata->failures++;
          save_char_obj( ch );
@@ -2238,13 +2238,13 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       write_to_buffer( d, echo_on_str );
 
-      if( check_reconnect( d, ch->name, TRUE ) )
+      if( check_reconnect( d, TRUE ) )
          return;
 
       if( check_playing( d, ch->name ) )
          return;
 
-      snprintf( log_buf, (2 * MIL), "%s has connected.", ch->name );
+      snprintf( log_buf, (2 * MIL), "%s has connected.", ch->name.c_str() );
       monitor_chan( log_buf, MONITOR_CONNECT );
 
       snprintf( log_buf, (2 * MIL), "Site Name: %s.", d->host );
@@ -2286,7 +2286,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       {
          case 'y':
          case 'Y':
-            snprintf( buf, MSL, "New character.\r\nGive me a password for %s: %s", ch->name, echo_off_str );
+            snprintf( buf, MSL, "New character.\r\nGive me a password for %s: %s", ch->name.c_str(), echo_off_str );
             write_to_buffer( d, buf );
             d->connected = CON_GET_NEW_PASSWORD;
             return;
@@ -2316,7 +2316,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          return;
       }
 
-      pwdnew = crypt( argument, ch->name );
+      pwdnew = crypt( argument, ch->name.c_str() );
       for( p = pwdnew; *p != '\0'; p++ )
       {
          if( *p == '~' )
@@ -2393,7 +2393,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                show_menu_to( d );
                return;
             }
-            snprintf( log_buf, (2 * MIL), "%s@%s new player.", ch->name, d->host );
+            snprintf( log_buf, (2 * MIL), "%s@%s new player.", ch->name.c_str(), d->host );
             log_string( log_buf );
             monitor_chan( log_buf, MONITOR_CONNECT );
             write_to_buffer( d, "\r\n", 2 );
@@ -2404,7 +2404,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             mudinfo.total_pfiles++;
             d->connected = CON_READ_MOTD;
             /*
-             * Display motd, and all other malarky 
+             * Display motd, and all other malarky
              */
             break;
       }
@@ -2782,8 +2782,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->pcdata->move_from_gain = ch->max_move;
 
          ch->clan = 0;   /* no clan */
-         snprintf( buf, MSL, "@@N needs a new title!" );
-         set_title( ch, buf );
+         ch->set_title("@@N needs a new title!");
 
          {
             char race_skill[MSL];
@@ -2830,12 +2829,12 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          {
           if( strcmp( d->host, ch->pcdata->host[i] ) )
           {
-             snprintf( msg, MSL, "%s connected from %s ( last login was from %s ) !", ch->name, d->host, ch->pcdata->host[0] );
+             snprintf( msg, MSL, "%s connected from %s ( last login was from %s ) !", ch->name.c_str(), d->host, ch->pcdata->host[0] );
              log_string( msg );
              monitor_chan( msg, MONITOR_CONNECT );
              if( ( ch->level > 80 ) )
              {
-                snprintf( msg, MSL, "WARNING!!! %s logged in with level %d.\r\n", ch->name, ch->level );
+                snprintf( msg, MSL, "WARNING!!! %s logged in with level %d.\r\n", ch->name.c_str(), ch->level );
                 log_string( msg );
              }
 
@@ -2883,7 +2882,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       act( "$n enters " mudnamecolor ".", ch, NULL, NULL, TO_ROOM );
       char_list.push_back(ch); /* we removed them earlier in the function, now put them back that login is done --Kline */
 
-      snprintf( buf, MSL, "%s has entered the game.", ch->name );
+      snprintf( buf, MSL, "%s has entered the game.", ch->name.c_str() );
       monitor_chan( buf, MONITOR_CONNECT );
 
       if( !IS_NPC( ch ) )
@@ -3099,7 +3098,7 @@ bool check_parse_name( char *name )
 /*
  * Look for link-dead player to reconnect.
  */
-bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
+bool check_reconnect( DESCRIPTOR_DATA * d, bool fConn )
 {
    CHAR_DATA *ch;
    OBJ_DATA *obj;
@@ -3108,7 +3107,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       ch = *li;
-      if( !IS_NPC( ch ) && ( !fConn || ch->desc == NULL ) && !str_cmp( d->character->name, ch->name ) )
+      if( !IS_NPC( ch ) && ( !fConn || ch->desc == NULL ) && d->character->name == ch->name )
       {
          if( fConn == FALSE )
          {
@@ -3123,7 +3122,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
             ch->timer = 0;
             send_to_char( "Reconnecting.\r\n", ch );
             act( "$n reconnects.", ch, NULL, NULL, TO_ROOM );
-            snprintf( log_buf, (2 * MIL), "%s@%s reconnected.", ch->name, d->host );
+            snprintf( log_buf, (2 * MIL), "%s@%s reconnected.", ch->name.c_str(), d->host );
             log_string( log_buf );
             monitor_chan( log_buf, MONITOR_CONNECT );
             d->connected = CON_PLAYING;
@@ -3147,7 +3146,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, char *name, bool fConn )
 /*
  * Check if already playing.
  */
-bool check_playing( DESCRIPTOR_DATA * d, char *name )
+bool check_playing( DESCRIPTOR_DATA * d, string name )
 {
    DESCRIPTOR_DATA *dold;
    char buf[MAX_STRING_LENGTH];
@@ -3158,9 +3157,9 @@ bool check_playing( DESCRIPTOR_DATA * d, char *name )
           && dold->character != NULL
           && dold->connected != CON_GET_NAME
           && dold->connected != CON_GET_OLD_PASSWORD
-          && !str_cmp( name, dold->original ? dold->original->name : dold->character->name ) )
+          && name == ( dold->original ? dold->original->name : dold->character->name ) )
       {
-         snprintf( buf, MSL, "Player from site %s tried to login as %s (already playing) !", d->host, name );
+         snprintf( buf, MSL, "Player from site %s tried to login as %s (already playing) !", d->host, name.c_str() );
          monitor_chan( buf, MONITOR_CONNECT );
 /* Not sure if we want to do this..players can cheat and try to log back in as themselves to end a fight Zen
 	    dold->character->position = POS_STANDING;
@@ -3493,11 +3492,11 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
                   i = his_her[URANGE( 0, vch->sex, 2 )];
                   break;
                case 'k':
-                  one_argument( ch->name, tmp_str );
+                  one_argument( const_cast<char *>(ch->name.c_str()), tmp_str );
                   i = ( char * )tmp_str;
                   break;
                case 'K':
-                  one_argument( vch->name, tmp_str );
+                  one_argument( const_cast<char *>(ch->name.c_str()), tmp_str );
                   i = ( char * )tmp_str;
                   break;
 
@@ -3589,7 +3588,7 @@ void do_finger( CHAR_DATA * ch, char *argument )
    d.character = NULL;
    victim->desc = NULL;
 
-   snprintf( buf, MSL, "Name: %s.\r\n", capitalize( victim->name ) );
+   snprintf( buf, MSL, "Name: %s.\r\n", capitalize( victim->name.c_str() ) );
    send_to_char( buf, ch );
 
    snprintf( buf, MSL, "Last Login was from: %s.\r\n", victim->pcdata->host[0] );

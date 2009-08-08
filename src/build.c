@@ -295,7 +295,7 @@ void build_interpret( CHAR_DATA * ch, char *argument )
 
    if( ( !IS_NPC( ch ) && ch->act.test(ACT_LOG) ) || fLogAll || build_cmd_table[cmd].log == LOG_ALWAYS )
    {
-      snprintf( log_buf, (2 * MIL),  "Log %s: %s", ch->name, logline );
+      snprintf( log_buf, (2 * MIL),  "Log %s: %s", ch->name.c_str(), logline );
       log_string( log_buf );
       monitor_chan( log_buf, MONITOR_BUILD );
    }
@@ -4648,12 +4648,35 @@ char *build_simpstrdup( char *buf )
 
 #define STRING_FILE_DIR "temp/"
 
+/* New build strdup to handle string objects as we move away from SSM --Kline */
+void build_strdup( string dest, char *src, bool newline, CHAR_DATA *ch )
+{
+ if( src[0] == '$' ) /* Special functions */
+ {
+  src++;
+
+  if( src[0] != '$' )
+  {
+   if( is_name(src,"edit new clear") && ch != NULL )
+   {
+    if( !str_cmp(src,"clear") )
+    {
+     dest.clear();
+     return;
+    }
+   }
+  }
+ }
+
+ return;
+}
+
 /* spec- rewritten to work correctly with SSM */
 
 void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA * ch )
 {
    /*
-    * Does the same as fread_string plus more, if there is enough memory. 
+    * Does the same as fread_string plus more, if there is enough memory.
     */
    FILE *infile;
    char *filechar;
@@ -4668,7 +4691,7 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
       if( src[0] != '$' )
       {
          /*
-          * Check for edit, new, clear 
+          * Check for edit, new, clear
           */
          if( is_name( src, "edit new clear" ) && ch != NULL )
          {
@@ -4690,7 +4713,7 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
             }
 
             /*
-             * If clear, or freesrc is FALSE, start with a blank sheet. 
+             * If clear, or freesrc is FALSE, start with a blank sheet.
              */
             build_editstr( dest, "", ch );
             return;
@@ -4700,7 +4723,7 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
             free_string( *dest );
 
          /*
-          * Read in a file 
+          * Read in a file
           */
          filename[0] = '\0';
          strncat( filename, STRING_FILE_DIR, 255 );
@@ -4729,11 +4752,11 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
 
 
    /*
-    * spec- call str_dup to do most of the work 
+    * spec- call str_dup to do most of the work
     */
 
    /*
-    * SSM still uses a single string block, so we're relatively safe here 
+    * SSM still uses a single string block, so we're relatively safe here
     */
    if( src >= string_space && src < top_string )
    {
@@ -4742,14 +4765,14 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
    }
 
    /*
-    * spec- rewrite of the ugly fread_string close, to use str_dup 
+    * spec- rewrite of the ugly fread_string close, to use str_dup
     */
 
    /*
-    * do literal \n -> LF etc. conversions to a buffer, then str_dup it 
+    * do literal \n -> LF etc. conversions to a buffer, then str_dup it
     */
    /*
-    * we assume here that the src string is <MSL (should be safe to do so) 
+    * we assume here that the src string is <MSL (should be safe to do so)
     */
 
    out = buf;

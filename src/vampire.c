@@ -328,7 +328,7 @@ void do_family( CHAR_DATA * ch, char *argument )
 
 
                snprintf( buf, MSL, "%-15s @@NGen: @@r%d   @@NRank: @@d%d@@N  @@NBloodlust: @@e%d@@N/@@e%d@@N   %-15s\r\n",
-                        victim->name, victim->pcdata->super->generation, victim->pcdata->super->level, victim->pcdata->super->energy,
+                        victim->name.c_str(), victim->pcdata->super->generation, victim->pcdata->super->level, victim->pcdata->super->energy,
                         victim->pcdata->super->energy_max, victim->in_room->name );
                send_to_char( buf, ch );
             }
@@ -356,7 +356,7 @@ void do_family( CHAR_DATA * ch, char *argument )
 
             found = TRUE;
             snprintf( buf, MSL, "%-15s @@NGeneration: @@r%d     @@NRank: @@d%d@@N\r\n",
-                     victim->name, victim->pcdata->super->generation, victim->pcdata->super->level );
+                     victim->name.c_str(), victim->pcdata->super->generation, victim->pcdata->super->level );
             send_to_char( buf, ch );
          }
       }
@@ -617,7 +617,7 @@ bool spell_blood_sign( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
          costring = "@@m";
          break;
    }
-   snprintf( buf, MSL, "%s%s @@W: %s", costring, ch->name, get_family_name( ch ) );
+   snprintf( buf, MSL, "%s%s @@W: %s", costring, ch->name.c_str(), get_family_name( ch ) );
    mark->author = str_dup( buf );
    mark->duration = ( ( MAX_VAMP_LEVEL ) - ch->pcdata->super->generation ) * ( ch->pcdata->super->level );
    mark->type = VAMP;

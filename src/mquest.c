@@ -374,7 +374,7 @@ void do_qstat( CHAR_DATA *ch, char *argument )
   return;
  }
 
- snprintf(buf,MSL,"@@y%s@@b's current quest status:@@N\r\n",victim->name);
+ snprintf(buf,MSL,"@@y%s@@b's current quest status:@@N\r\n",victim->name.c_str());
  send_to_char(buf,ch);
 
  switch( victim->pcdata->quest_info->quest_type )

@@ -435,7 +435,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
       strncat( buf, get_ruler_title( victim->pcdata->ruler_rank, victim->pcdata->login_sex ), MSL-1 );
    if( victim->position == POS_STANDING && victim->long_descr[0] != '\0' )
    {
-      strncat( buf, victim->long_descr, MSL-1 );
+      strncat( buf, victim->long_descr.c_str(), MSL-1 );
       strncat( buf, "\r\n", MSL-1 );
       strncat( buf, color_string( ch, "normal" ), MSL-1 );
 
@@ -469,8 +469,8 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
    }
 
    strncat( buf, PERS( victim, ch ), MSL-1 );
-   if( !IS_NPC( victim ) && !ch->act.test(ACT_BRIEF) )
-      strncat( buf, victim->pcdata->title, MSL-1 );
+   if( !ch->act.test(ACT_BRIEF) )
+      strncat( buf, victim->get_title(), MSL-1 );
 
    switch ( victim->position )
    {
@@ -604,7 +604,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
 
    if( victim->description[0] != '\0' )
    {
-      send_to_char( tagline_format(victim->description,ch), ch );
+      send_to_char( tagline_format(victim->description.c_str(),ch), ch );
       send_to_char( "\r\n", ch);
    }
    else
@@ -1269,7 +1269,7 @@ DO_FUN(do_score)
 
    snprintf( buf, MSL, "@@y%s%s, Race: %s%s, Clan: %s\r\nAge: ",
             NAME(ch),
-            IS_NPC( ch ) ? "" : ch->pcdata->title,
+            ch->get_title(),
             IS_NPC( ch ) ? "n/a" : race_table[ch->race].race_title,
             IS_VAMP( ch ) ? "@@e(Vampire)@@N" : IS_WOLF( ch ) ? "@@r(Werewolf)@@N" : "",
             IS_NPC( ch ) ? "n/a" : clan_table[ch->clan].clan_name );
@@ -1277,18 +1277,6 @@ DO_FUN(do_score)
    send_to_char( buf, ch );
    snprintf( buf, MSL, " (%d hours RL)\r\n", my_get_hours( ch ) );
    send_to_char( buf, ch );
-
-   /*
-    * snprintf( buf, MSL,
-    * "@@WYou are: @@y%s%s  \r\n@@WAge: @@y%d @@W( @@y%d @@Whrs ) Race: @@y%s  @@WClan: @@y%s.@@g\r\n",
-    * IS_NPC(ch) ? ch->short_descr : ch->name,
-    * IS_NPC(ch) ? "" : ch->pcdata->title,
-    * get_age(ch),
-    * (get_age(ch) - 17) * 2,
-    * IS_NPC(ch) ? "n/a"  : IS_VAMP(ch) ? "Vampire" : race_table[ch->race].race_title,
-    * IS_NPC(ch) ? " n/a" : clan_table[ch->clan].clan_name );
-    * send_to_char( buf, ch );
-    */
 
    snprintf( buf, MSL, "@@c+===============================================================+\r\n" );
    send_to_char( buf, ch );
@@ -1843,13 +1831,13 @@ DO_FUN(do_help)
   if( !shelp )
   {
    send_to_char("No help on that word.\r\n",ch);
-   snprintf(buf,MSL,"Missing help: %s attempted by %s.",argument,ch->name);
+   snprintf(buf,MSL,"Missing help: %s attempted by %s.",argument,ch->name.c_str());
    monitor_chan(buf,MONITOR_HELPS);
   }
   else
   {
    send_to_char("No sHelp for that skill/spell.\r\n",ch);
-   snprintf(buf,MSL,"Missing sHelp: %s attempted by %s.",argument,ch->name);
+   snprintf(buf,MSL,"Missing sHelp: %s attempted by %s.",argument,ch->name.c_str());
    monitor_chan(buf,MONITOR_HELPS);
   }
   file_close(fp);
@@ -1884,13 +1872,13 @@ DO_FUN(do_help)
    if( !shelp )
    {
     send_to_char("No help on that word.\r\n",ch);
-    snprintf(buf,MSL,"Missing help: %s attempted by %s.",argument,ch->name);
+    snprintf(buf,MSL,"Missing help: %s attempted by %s.",argument,ch->name.c_str());
     monitor_chan(buf,MONITOR_HELPS);
    }
    else
    {
     send_to_char("No sHelp for that skill/spell.\r\n",ch);
-    snprintf(buf,MSL,"Missing sHelp: %s attempted by %s.",argument,ch->name);
+    snprintf(buf,MSL,"Missing sHelp: %s attempted by %s.",argument,ch->name.c_str());
     monitor_chan(buf,MONITOR_HELPS);
    }
    file_close(fp);
@@ -2392,16 +2380,16 @@ DO_FUN(do_who)
                   clan_job,
                   wch->act.test(ACT_PKOK) ? "P" : " ", wch->position == POS_WRITING ? "W" : " " );
          /*
-          * Oh look... another hack needed due to change in who format! 
+          * Oh look... another hack needed due to change in who format!
           */
          /*
-          * Make sure that the title (and wanted/idle flag) will fit ok 
+          * Make sure that the title (and wanted/idle flag) will fit ok
           */
          /*
-          * excess holds number of chars we have to lose ): 
+          * excess holds number of chars we have to lose ):
           */
-         nlength = strlen( wch->name );
-         slength = 1 + my_strlen( wch->pcdata->title ) + nlength;
+         nlength = strlen( wch->name.c_str() );
+         slength = 1 + my_strlen( wch->get_title() ) + nlength;
 
          excess = 0;
 
@@ -2427,20 +2415,20 @@ DO_FUN(do_who)
                idle = TRUE;
             }
          }
-         snprintf( buf4, MSL, "%s", wch->pcdata->title );
+         snprintf( buf4, MSL, "%s", wch->get_title() );
 
          if( slength + excess > 43 )
          {
             if( invis )
-               snprintf( buf4, MSL, "%1.26s", wch->pcdata->title );
+               snprintf( buf4, MSL, "%1.26s", wch->get_title() );
             else if( idle && !wanted )
-               snprintf( buf4, MSL, "%1.24s", wch->pcdata->title );
+               snprintf( buf4, MSL, "%1.24s", wch->get_title() );
             else if( !idle && wanted )
-               snprintf( buf4, MSL, "%1.28s", wch->pcdata->title );
+               snprintf( buf4, MSL, "%1.28s", wch->get_title() );
             else if( idle && wanted )
-               snprintf( buf4, MSL, "%1.18s", wch->pcdata->title );
+               snprintf( buf4, MSL, "%1.18s", wch->get_title() );
             else
-               snprintf( buf4, MSL, "%1.31s", wch->pcdata->title );
+               snprintf( buf4, MSL, "%1.31s", wch->get_title() );
 
 
          }
@@ -2460,7 +2448,7 @@ DO_FUN(do_who)
                         buf3,
                         color_string( ch, "stats" ),
                         fgs,
-                        color_string( ch, "stats" ), wch->name, buf4, wch->act.test(ACT_WIZINVIS) ? "(WIZI)" : "" );
+                        color_string( ch, "stats" ), wch->name.c_str(), buf4, wch->act.test(ACT_WIZINVIS) ? "(WIZI)" : "" );
                snprintf( buf + strlen( buf ), MSL, "@@R|@@g\r\n" );
             }
             else
@@ -2470,7 +2458,7 @@ DO_FUN(do_who)
                         buf3,
                         color_string( ch, "stats" ),
                         fgs,
-                        color_string( ch, "stats" ), wch->name, buf4, wch->act.test(ACT_WIZINVIS) ? " (WIZI) " : "" );
+                        color_string( ch, "stats" ), wch->name.c_str(), buf4, wch->act.test(ACT_WIZINVIS) ? " (WIZI) " : "" );
                snprintf( buf + strlen( buf ), MSL, "@@R|@@g\r\n" );
             }
          }
@@ -2482,7 +2470,7 @@ DO_FUN(do_who)
                      color_string( ch, "stats" ),
                      fgs,
                      color_string( ch, "stats" ),
-                     wch->name,
+                     wch->name.c_str(),
                      buf4, ( wch->act.test(ACT_KILLER) || wch->act.test(ACT_THIEF) ) ? "(WANTED)" : "" );
 
 
@@ -2683,7 +2671,7 @@ DO_FUN(do_where)
              && can_see( ch, victim ) && ( !IS_WOLF( victim ) || ( !IS_SHIFTED( victim ) && !IS_RAGED( victim ) ) ) )
          {
             found = TRUE;
-            snprintf( buf, MSL, "%-28s %s\r\n", victim->name, victim->in_room->name );
+            snprintf( buf, MSL, "%-28s %s\r\n", victim->name.c_str(), victim->in_room->name );
             send_to_char( buf, ch );
          }
       }
@@ -2697,7 +2685,7 @@ DO_FUN(do_where)
       {
          victim = *li;
          /*
-          * &&   victim->in_room->area == ch->in_room->area 
+          * &&   victim->in_room->area == ch->in_room->area
           * * taken out from below to allow global where use
           * * and then put back in... global where no fun at all. ;)
           * * -- Stephen
@@ -2707,7 +2695,7 @@ DO_FUN(do_where)
              && ( !IS_AFFECTED( victim, AFF_HIDE ) && !item_has_apply( victim, ITEM_APPLY_HIDE ) )
              && ( victim->in_room->area == ch->in_room->area )
              && ( !IS_AFFECTED( victim, AFF_SNEAK ) && !item_has_apply( victim, ITEM_APPLY_SNEAK ) )
-             && can_see( ch, victim ) && is_name( arg, victim->name ) )
+             && can_see( ch, victim ) && is_name( arg, const_cast<char *>(victim->name.c_str()) ) )
          {
             found = TRUE;
             snprintf( buf, MSL, "%-28s %s\r\n", PERS( victim, ch ), victim->in_room->name );
@@ -2919,30 +2907,10 @@ DO_FUN(do_consider)
    return;
 }
 
-
-
-void set_title( CHAR_DATA * ch, char *title )
-{
-   char buf[MAX_STRING_LENGTH];
-   buf[0] = '\0';
-
-   if( IS_NPC( ch ) )
-   {
-      bug( "Set_title: NPC.", 0 );
-      return;
-   }
-
-   strcpy( buf, title );
-
-   free_string( ch->pcdata->title );
-   ch->pcdata->title = str_dup( buf );
-   return;
-}
-
 DO_FUN(do_title)
 {
    /*
-    * Changed this to limit title length, and to remove and brackets. -S- 
+    * Changed this to limit title length, and to remove and brackets. -S-
     */
 
    char buf[MAX_STRING_LENGTH];
@@ -2973,7 +2941,7 @@ DO_FUN(do_title)
       send_to_char( "You used either [ or ] in your title.  They have been removed!\r\n", ch );
 
    /*
-    * my_strlen handles color codes as zero length 
+    * my_strlen handles color codes as zero length
     */
    if( my_strlen( argument ) > 32 )
    {
@@ -2982,50 +2950,56 @@ DO_FUN(do_title)
    }
 
    smash_tilde( argument );
-   set_title( ch, argument );
-   snprintf( buf, MSL, "You are now: %s%s.\r\n", ch->name, ch->pcdata->title );
+   ch->set_title(argument);
+   snprintf( buf, MSL, "You are now: %s%s.\r\n", ch->name.c_str(), ch->get_title() );
    send_to_char( buf, ch );
 }
 
 DO_FUN(do_description)
 {
-   char buf[MAX_STRING_LENGTH];
-   buf[0] = '\0';
+ char *farg = argument;
 
-   if( !str_cmp(argument,"clear") )
+ if( !str_cmp(argument,"clear") )
+ {
+  ch->description.clear();
+  return;
+ }
+
+ if( farg[0] != '\0' )
+ {
+  smash_tilde(farg);
+
+  if( farg[0] == '+' )
+  {
+   *farg++; *farg++; /* Skip '+' and ' '. */
+   if( strlen(ch->description.c_str()) + strlen(farg) >= MSL )
    {
-      free_string(ch->description);
-      ch->description = &str_empty[0];
+    send_to_char("Description too long.\r\n",ch);
+    return;
    }
 
-   if( argument[0] != '\0' && str_cmp(argument,"clear") )
+   if( !ch->description.empty() )
    {
-      buf[0] = '\0';
-      smash_tilde( argument );
-      if( argument[0] == '+' )
-      {
-         if( ch->description != NULL )
-            strncat( buf, ch->description, MSL );
-         argument++;
-         while( isspace( *argument ) )
-            argument++;
-      }
-
-      if( strlen( buf ) + strlen( argument ) >= MAX_STRING_LENGTH - 2 )
-      {
-         send_to_char( "Description too long.\r\n", ch );
-         return;
-      }
-
-      strncat( buf, argument, MSL );
-      strncat( buf, "\r\n", MSL );
-      free_string( ch->description );
-      ch->description = str_dup( buf );
+    ch->description += farg;
+    ch->description += "\r\n";
    }
+  }
+  else
+  {
+   if( strlen(farg) >= MSL )
+   {
+    send_to_char("Description too long.\r\n",ch);
+    return;
+   }
+   ch->description = farg;
+   ch->description += "\r\n";
+  }
+ }
 
-   send_to_char( "Your description is:\r\n", ch );
-   send_to_char( ch->description ? ch->description : "(None).\r\n", ch );
-   return;
+ send_to_char( "Your description is:\r\n", ch );
+ send_to_char( !ch->description.empty() ? ch->description : "(None).\r\n", ch );
+
+ return;
 }
 
 DO_FUN(do_report)
@@ -3370,7 +3344,7 @@ DO_FUN(do_password)
    /*
     * No tilde allowed because of player file format.
     */
-   pwdnew = crypt( arg2, ch->name );
+   pwdnew = crypt( arg2, ch->name.c_str() );
    for( p = pwdnew; *p != '\0'; p++ )
    {
       if( *p == '~' )
@@ -4334,32 +4308,29 @@ DO_FUN(do_pagelen)
    return;
 }
 
-/* Do_prompt from Morgenes from Aldara Mud */
 DO_FUN(do_prompt)
 {
-   char buf[MAX_STRING_LENGTH];
-   buf[0] = '\0';
+ char *farg = argument;
 
-   if( argument[0] == '\0' )
-   {
-      ( ch->act.test(ACT_PROMPT) ? do_config( ch, "-prompt" ) : do_config( ch, "+prompt" ) );
-      return;
-   }
+ if( farg[0] == '\0' )
+ {
+  ch->act.test(ACT_PROMPT) ? do_config(ch,"-prompt") : do_config(ch,"+prompt");
+  return;
+ }
+ if( !str_cmp(farg,"all") )
+ {
+  ch->prompt = DEFAULT_PROMPT;
+  send_to_char("Ok.\r\n",ch);
+  return;
+ }
+ if( strlen(farg) > 200 )
+  farg[200] = '\0';
 
-   if( !strcmp( argument, "all" ) )
-      strcpy( buf, "@@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N" );
-   else
-   {
-      if( strlen( argument ) > 200 )
-         argument[200] = '\0';
-      strcpy( buf, argument );
-      smash_tilde( buf );
-   }
+ smash_tilde(farg);
+ ch->prompt = farg;
+ send_to_char("Ok.\r\n",ch);
 
-   free_string( ch->prompt );
-   ch->prompt = str_dup( buf );
-   send_to_char( "Ok.\r\n", ch );
-   return;
+ return;
 }
 
 DO_FUN(do_diagnose)
@@ -4506,7 +4477,7 @@ DO_FUN(do_heal)
          spell_sanctuary( skill_lookup( "sanc" ), mult, ch, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 100 ) );
          give = one_argument( give, changebuf );
-         snprintf( givebuf, MSL, "%s to %s", give, mob->name );
+         snprintf( givebuf, MSL, "%s to %s", give, mob->name.c_str() );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\r\n", ch );
@@ -4522,7 +4493,7 @@ DO_FUN(do_heal)
          give = take_best_coins( ch->money, 1000 );
          ch->mana = UMIN( ch->max_mana, ch->mana + 50 );
          give = one_argument( give, changebuf );
-         snprintf( givebuf, MSL, "%s to %s", give, mob->name );
+         snprintf( givebuf, MSL, "%s to %s", give, mob->name.c_str() );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\r\n", ch );
@@ -4539,7 +4510,7 @@ DO_FUN(do_heal)
          spell_heal( skill_lookup( "heal" ), mult, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 50 ) );
          give = one_argument( give, changebuf );
-         snprintf( givebuf, MSL, "%s to %s", give, mob->name );
+         snprintf( givebuf, MSL, "%s to %s", give, mob->name.c_str() );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\r\n", ch );
@@ -4555,7 +4526,7 @@ DO_FUN(do_heal)
          spell_invis( skill_lookup( "invis" ), mult, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 20 ) );
          give = one_argument( give, changebuf );
-         snprintf( givebuf, MSL, "%s to %s", give, mob->name );
+         snprintf( givebuf, MSL, "%s to %s", give, mob->name.c_str() );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\r\n", ch );
@@ -4571,7 +4542,7 @@ DO_FUN(do_heal)
          spell_detect_invis( skill_lookup( "detect invis" ), mult, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 10 ) );
          give = one_argument( give, changebuf );
-         snprintf( givebuf, MSL, "%s to %s", give, mob->name );
+         snprintf( givebuf, MSL, "%s to %s", give, mob->name.c_str() );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\r\n", ch );
@@ -4587,7 +4558,7 @@ DO_FUN(do_heal)
          spell_refresh( skill_lookup( "refresh" ), mult, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 10 ) );
          give = one_argument( give, changebuf );
-         snprintf( givebuf, MSL, "%s to %s", give, mob->name );
+         snprintf( givebuf, MSL, "%s to %s", give, mob->name.c_str() );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\r\n", ch );
@@ -4603,7 +4574,7 @@ DO_FUN(do_heal)
          spell_infravision( skill_lookup( "infra" ), mult, ch, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 20 ) );
          give = one_argument( give, changebuf );
-         snprintf( givebuf, MSL, "%s to %s", give, mob->name );
+         snprintf( givebuf, MSL, "%s to %s", give, mob->name.c_str() );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\r\n", ch );
@@ -4615,12 +4586,12 @@ DO_FUN(do_heal)
             return;
          }
          /*
-          * No acts, as they are in spell_dispel_magic.  Doh. 
+          * No acts, as they are in spell_dispel_magic.  Doh.
           */
          spell_dispel_magic( skill_lookup( "dispel magic" ), mult * 5, mob, ch, NULL );
          give = take_best_coins( ch->money, ( mult * 200 ) );
          give = one_argument( give, changebuf );
-         snprintf( givebuf, MSL, "%s to %s", give, mob->name );
+         snprintf( givebuf, MSL, "%s to %s", give, mob->name.c_str() );
          do_give( ch, givebuf );
          join_money( round_money( atoi( changebuf ), TRUE ), ch->money );
          send_to_char( "The healer hands you some change.\r\n", ch );
@@ -4915,7 +4886,7 @@ DO_FUN(do_gain)
       ch->exp -= cost;
       advance_level( ch, c, TRUE, FALSE );
       ch->pcdata->adept_level = UMAX( 1, ch->pcdata->adept_level + 1 );
-      snprintf( buf, MSL, "%s @@W advances in the way of the Adept!!\r\n", ch->name );
+      snprintf( buf, MSL, "%s @@W advances in the way of the Adept!!\r\n", ch->name.c_str() );
       info( buf, 1 );
       free_string( ch->pcdata->who_name );
       ch->pcdata->who_name = str_dup( get_adept_name( ch ) );
@@ -4980,9 +4951,9 @@ DO_FUN(do_gain)
     */
 
    if( remort )
-      snprintf( buf, MSL, "%s advances in the way of the %s.", ch->name, remort_table[c].class_name );
+      snprintf( buf, MSL, "%s advances in the way of the %s.", ch->name.c_str(), remort_table[c].class_name );
    else
-      snprintf( buf, MSL, "%s advances in the way of the %s.", ch->name, class_table[c].class_name );
+      snprintf( buf, MSL, "%s advances in the way of the %s.", ch->name.c_str(), class_table[c].class_name );
    info( buf, 1 );
 
    ch->exp -= cost;
@@ -5094,7 +5065,7 @@ DO_FUN(do_assassinate)
    cost_string = take_best_coins( ch->money, cost );
    cost_string = one_argument( cost_string, changebuf );
    change = is_number( changebuf ) ? atoi( changebuf ) : 0;
-   snprintf( givebuf, MSL, "%s to %s", cost_string, mob->name );
+   snprintf( givebuf, MSL, "%s to %s", cost_string, mob->name.c_str() );
    do_give( ch, givebuf );
 
    if( change > 0 )
@@ -5106,7 +5077,7 @@ DO_FUN(do_assassinate)
 
    act( "$n gives $N some gold coins.", ch, NULL, mob, TO_NOTVICT );
    act( "$n says '$N shall die by my hand!`", mob, NULL, victim, TO_ROOM );
-   snprintf( buf, MSL, "%s employs the services of %s to assassinate %s!!", ch->name, NAME(mob), victim->name );
+   snprintf( buf, MSL, "%s employs the services of %s to assassinate %s!!", ch->name.c_str(), NAME(mob), victim->name.c_str() );
    info( buf, 1 );
    return;
 }
@@ -5481,9 +5452,9 @@ DO_FUN(do_whois)
    }
 
    /*
-    * Ok, so now show the details! 
+    * Ok, so now show the details!
     */
-   snprintf( buf, MSL, "-=-=-=-=-=-=-=-=-=-=- %9s -=-=-=-=-=-=-=-=-=-=-\r\n", victim->name );
+   snprintf( buf, MSL, "-=-=-=-=-=-=-=-=-=-=- %9s -=-=-=-=-=-=-=-=-=-=-\r\n", victim->name.c_str() );
    if( IS_IMMORTAL( victim ) )
    {
       snprintf( buf + strlen( buf ), MSL, " [ %3s ]\r\n", victim->pcdata->who_name );
@@ -5530,7 +5501,7 @@ DO_FUN(do_whois)
 
    if( IS_IMMORTAL( victim ) )
    {
-      snprintf( buf + strlen( buf ), MSL, "%s is an Immortal.\r\n", victim->name );
+      snprintf( buf + strlen( buf ), MSL, "%s is an Immortal.\r\n", victim->name.c_str() );
    }
    /*
     * Description here, or email address? 

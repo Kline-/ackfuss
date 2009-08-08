@@ -444,9 +444,9 @@ void do_delete( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * See if person is writer or is recipient 
+    * See if person is writer or is recipient
     */
-   if( str_cmp( ch->name, msg->author ) && !is_name( ch->name, msg->title )
+   if( str_cmp( ch->name, msg->author ) && !is_name( ch->name.c_str(), msg->title )
        && get_trust( ch ) < MAX_LEVEL && str_cmp( ch->name, clan_table[board->clan].leader ) )
    {
       send_to_char( "Not your message.\r\n", ch );
@@ -454,7 +454,7 @@ void do_delete( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Now delete message 
+    * Now delete message
     */
 
    UNLINK( msg, board->first_message, board->last_message, next, prev );
@@ -525,7 +525,7 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 
          to_person = one_argument( msg->title, to_check );
          to_person = one_argument( to_person, private_name );
-         if( !str_cmp( to_check, "to:" ) && str_prefix( private_name, ch->name ) && str_cmp( msg->author, ch->name ) )
+         if( !str_cmp( to_check, "to:" ) && str_prefix( private_name, ch->name.c_str() ) && str_cmp( msg->author, ch->name ) )
          {
             send_to_char( "This is a private message.\r\n", ch );
             break;
@@ -619,12 +619,12 @@ void do_write( CHAR_DATA * ch, char *argument )
    msg->title = str_dup( buf );
    if( msg->author != NULL )
       free_string( msg->author );
-   msg->author = str_dup( ch->name );
+   msg->author = str_dup( ch->name.c_str() );
    msg->message = NULL;
    msg->board = board;
 
    /*
-    * Now actually run the edit prog. 
+    * Now actually run the edit prog.
     */
    write_start( &msg->message, finished_editing, msg, ch );
 

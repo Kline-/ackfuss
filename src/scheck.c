@@ -277,14 +277,6 @@ static void walk_char_data( CHAR_DATA * ch )
    walk_npcdata( ch->npcdata );
    walk_pcdata( ch->pcdata );
    walk_shieldlist( ch->first_shield );
-
-   touch( ch->name );
-   touch( ch->long_descr );
-   touch( ch->long_descr_orig );
-   touch( ch->description );
-   touch( ch->prompt );
-   touch( ch->old_prompt );
-   touch( ch->searching );
 }
 
 static void walk_extra_descr_data( EXTRA_DESCR_DATA * ed )

@@ -22,6 +22,8 @@ bool is_name_pfx P_((const char *str, char *namelist));
 char *space_pad P_((const char *str, short final_size));
 void smash_tilde P_((char *str));
 void smash_replace P_((char *str, char *sold, char *snew));
+bool str_cmp P_((const char *astr, string str));
+bool str_cmp P_((string str, const char *bstr));
 bool str_cmp P_((const char *astr, const char *bstr));
 bool str_prefix P_((const char *astr, const char *bstr));
 bool str_infix P_((const char *astr, const char *bstr));

@@ -893,7 +893,7 @@ void do_enchant( CHAR_DATA * ch, char *argument )
          strncat( brandbuf, enchant_buf, MSL-1 );
          brand = new BRAND_DATA;
          GET_FREE( brand_member, dl_list_free );
-         brand->branded = str_dup( ch->name );
+         brand->branded = str_dup( ch->name.c_str() );
          brand->branded_by = str_dup( "@@rSystem@@N" );
          brand->priority = str_dup( "unique" );
          brand->message = str_dup( brandbuf );

@@ -245,7 +245,7 @@ void violence_update( void )
 
       /*
        * For stunning during combat
-       * -Damane-    4/26/96 
+       * -Damane-    4/26/96
        */
 
       if( ch->position == POS_STUNNED )
@@ -446,7 +446,7 @@ void violence_update( void )
                    && ( ch->mana > mana_cost( ch, skill_lookup( rev_table_lookup( tab_cast_name, ( 1 << index ) ) ) ) ) )
                {
                   char cast_name[MSL];
-                  snprintf( cast_name, MSL, "%s %s", rev_table_lookup( tab_cast_name, ( 1 << index ) ), ch->fighting->name );
+                  snprintf( cast_name, MSL, "%s %s", rev_table_lookup( tab_cast_name, ( 1 << index ) ), ch->fighting->name.c_str() );
                   do_cast( ch, cast_name );
                   has_cast = TRUE;
                   break;
@@ -1091,12 +1091,10 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                explosion->long_descr = str_dup( "@@N A @@eFlaming @@NStaff of @@aIce@@N is supsended in mid air!" );
 
                elemental->level = 140;
-               free_string( elemental->name );
-               elemental->name = str_dup( ".hidden" );
+               elemental->name = ".hidden";
                free_string( elemental->npcdata->short_descr );
                elemental->npcdata->short_descr = str_dup( "@@NThe @@rConflict@@N of @@eFire @@Nand @@aIce@@N" );
-               free_string( elemental->long_descr );
-               elemental->long_descr = str_dup( "@@NA @@rPillar@@N of @@eFire @@Nand @@aIce@@N immolates itself!" );
+               elemental->long_descr = "@@NA @@rPillar@@N of @@eFire @@Nand @@aIce@@N immolates itself!";
 
                char_to_room( elemental, ch->in_room );
                obj_to_char( explosion, elemental );
@@ -1310,14 +1308,14 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 	         && victim->act.test(ACT_PKOK) )
 	    {
 
-	     snprintf(buf, MSL, "%s kills %s in mortal combat.", ch->name, victim->name);
+	     snprintf(buf, MSL, "%s kills %s in mortal combat.", ch->name.c_str(), victim->name.c_str());
 	     info(buf, 1);
 	    }
 	    else
 	    {
              snprintf( buf, MSL, "%s turns %s into a corpse.  Whooops.",
-               ( IS_NPC(ch) ? ch->npcdata->short_descr : ch->name ),
-               ( IS_NPC(victim) ? victim->npcdata->short_descr : victim->name) );
+               ( IS_NPC(ch) ? ch->npcdata->short_descr : ch->name.c_str() ),
+               ( IS_NPC(victim) ? victim->npcdata->short_descr : victim->name.c_str()) );
              info( buf, 1 );
             }
 
@@ -1349,7 +1347,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
       else
       {
          char name_buf[MAX_STRING_LENGTH];
-         snprintf( name_buf, MSL, "%s", ch->name );
+         snprintf( name_buf, MSL, "%s", ch->name.c_str() );
          raw_kill( victim, name_buf );
       }
       /* NPC victims are no longer valid past this point. raw_kill() will extract_char() and deallocate memory. --Kline */
@@ -1606,7 +1604,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
    {
       char buf[MAX_STRING_LENGTH];
 
-      snprintf( buf, MSL, "%s flagged as a KILLER for attack on %s.", ch->name, victim->name );
+      snprintf( buf, MSL, "%s flagged as a KILLER for attack on %s.", ch->name.c_str(), victim->name.c_str() );
       monitor_chan( buf, MONITOR_COMBAT );
    }
    diff = 3;
@@ -1884,7 +1882,7 @@ void update_pos( CHAR_DATA * victim )
          victim->gain_exp(lose);
       }
 
-      snprintf( buf, MSL, "%s (vampire) has been misted!", victim->name );
+      snprintf( buf, MSL, "%s (vampire) has been misted!", victim->name.c_str() );
       monitor_chan( buf, MONITOR_COMBAT );
 
       act( "$n turns to mist and floats away....", victim, NULL, NULL, TO_ROOM );
@@ -2193,7 +2191,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    CHAR_DATA *target = NULL;
    CHAR_DATA *wch;
    list<CHAR_DATA *>::iterator li;
-   char *name;
+   char *name = NULL;
 
    one_argument( argument, arg );
 
@@ -2201,7 +2199,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
       return;
 
    /*
-    * Vampire bodies crumble to dust when really killed 
+    * Vampire bodies crumble to dust when really killed
     */
    if( IS_VAMP( ch ) && !IS_NPC( ch ) )
       return;
@@ -2241,7 +2239,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          int gold;
          time_t lifetime;
 
-         name = NAME(ch);
+         snprintf(name,MSL,"%s",NAME(ch));
          corpse = create_object( get_obj_index( OBJ_VNUM_CORPSE_NPC ), 0 );
          corpse->timer = number_range( 3, 6 );
          corpse->level = ch->level; /* for animate spell */
@@ -2267,11 +2265,11 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    }
    else  /* player */
    {
-      name = ch->name;
+      snprintf(name,MSL,"%s",ch->name.c_str());
       corpse = create_object( get_obj_index( OBJ_VNUM_CORPSE_PC ), 0 );
       corpse->timer = number_range( 20, 30 );
 
-      snprintf( buf, MSL, "%s", ch->name );
+      snprintf( buf, MSL, "%s", ch->name.c_str() );
       free_string( corpse->owner );
       corpse->owner = str_dup( buf );
 
@@ -2281,7 +2279,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          for( li = char_list.begin(); li != char_list.end(); li++ )
          {
             wch = *li;
-            if( !IS_NPC( wch ) && is_name( arg, wch->name ) )
+            if( !IS_NPC( wch ) && is_name( arg, const_cast<char *>(wch->name.c_str()) ) )
             {
                target = wch;
                break;
@@ -2482,7 +2480,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
       {
          char monbuf[MSL];
          snprintf( monbuf, MSL, "%s is looking for their corpse in room %d, but it's not there",
-                  victim->name, victim->in_room->vnum );
+                  victim->name.c_str(), victim->in_room->vnum );
          monitor_chan( monbuf, MONITOR_MOB );
       }
       else
@@ -3251,7 +3249,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
    }
 
    ch->set_cooldown(COOLDOWN_OFF,1.50);
-   snprintf( log_buf, (2 * MIL), "%s attacked by %s.\r\n", victim->name, ch->name );
+   snprintf( log_buf, (2 * MIL), "%s attacked by %s.\r\n", victim->name.c_str(), ch->name.c_str() );
    notify( log_buf, MAX_LEVEL - 2 );
 
    if( IS_NPC( ch ) || IS_NPC( victim )
@@ -4817,7 +4815,7 @@ void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, float dam )
       if( !IS_NPC( victim ) )
       {
 
-         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", victim->name, obj->short_descr, victim->in_room->vnum );
+         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", victim->name.c_str(), obj->short_descr, victim->in_room->vnum );
          log_string( log_buf );
 
          notify( log_buf, 82 );
@@ -5153,15 +5151,15 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
    act( buf3, ch, NULL, victim, TO_VICT );
 
    /*
-    * Load up object, if needed. 
+    * Load up object, if needed.
     */
    if( vnum != 0 )
    {
       char buf[MAX_STRING_LENGTH];
       OBJ_DATA *obj;
-      char *name;
+      char *name = NULL;
 
-      name = NAME(ch);
+      snprintf(name,MSL,"%s",NAME(ch));
       obj = create_object( get_obj_index( vnum ), 0 );
       obj->timer = number_range( 4, 7 );
 
@@ -5829,12 +5827,13 @@ void do_rage( CHAR_DATA * ch, char *argument )
 float get_speed( CHAR_DATA *ch, int slot )
 {
  float value = 4.00;
- int i;
+ int i = 0;
  OBJ_DATA *wield;
 
  if( !IS_NPC(ch) )
  {
-  switch(slot) {
+  switch(slot)
+  {
    case SPEED_LH:   wield = get_eq_char(ch,WEAR_HOLD_HAND_L);  break;
    case SPEED_RH:   wield = get_eq_char(ch,WEAR_HOLD_HAND_R);  break;
    case SPEED_TAIL: wield = NULL;                              break;
@@ -6014,41 +6013,32 @@ void damage_gear( CHAR_DATA *ch )
 
 void do_disguise( CHAR_DATA * ch, char *argument )
 {
-   char arg[MAX_STRING_LENGTH];
+ char *farg = argument;
 
+ if( !IS_NPC(ch) && ch->pcdata->learned[gsn_disguise] == 0 )
+ {
+  send_to_char("You are not trained in this skill!\r\n",ch);
+  return;
+ }
+ if( farg[0] == '\0' )
+ {
+  send_to_char("Enter the disguise name or [reset] to reset your description to normal.\r\n",ch);
+  return;
+ }
+ if( !str_cmp(farg,"reset") )
+ {
+  ch->long_descr = ch->long_descr_orig;
+  send_to_char("You have removed your disguise.\r\n",ch);
+  return;
+ }
+ else
+ {
+  ch->long_descr = farg;
+  send_to_char("You are now Disguised!!!\r\n",ch);
+  return;
+ }
 
-   if( !IS_NPC( ch ) && ch->pcdata->learned[gsn_disguise] == 0 )
-   {
-      send_to_char( "You are not trained in this skill!\r\n", ch );
-      return;
-   }
-
-   one_argument( argument, arg );
-
-   if( arg[0] == '\0' )
-   {
-      send_to_char( " Enter the disguise name, or reset to reset your description to normal.\r\n", ch );
-      return;
-   }
-
-   if( !str_cmp( arg, "reset" ) )
-   {
-      free_string( ch->long_descr );
-      ch->long_descr = str_dup( ch->long_descr_orig );
-      return;
-   }
-   else
-   {
-
-      free_string( ch->long_descr );
-      ch->long_descr = str_dup( argument );
-      send_to_char( "You are now Disguised!!!\r\n", ch );
-      return;
-   }
-
-
-
-   return;
+ return;
 }
 
 void do_stance( CHAR_DATA * ch, char *argument )
@@ -6373,7 +6363,7 @@ void aggro_attack( CHAR_DATA *mob, CHAR_DATA *player )
 
  OBJ_DATA *wield = get_eq_char(mob,WEAR_HOLD_HAND_L);
  if( wield != NULL && wield->item_type == ITEM_WEAPON && wield->value[3] == 11 && player->fighting == NULL )
-  do_backstab(mob,player->name);
+  do_backstab(mob,const_cast<char *>(player->name.c_str()));
  else
   one_hit(mob,player,TYPE_UNDEFINED);
 
@@ -6400,11 +6390,11 @@ void remember_attack( CHAR_DATA *mob, CHAR_DATA *player )
   switch( number_range(0,6) )
   {
    case 0:
-    snprintf(buf,MSL,"%s returns! I shall have my revenge at last!",player->name);
+    snprintf(buf,MSL,"%s returns! I shall have my revenge at last!",player->name.c_str());
     do_yell(mob,buf);
     break;
    case 1:
-    snprintf(buf,MSL,"You should never have returned %s. Ye shall DIE!",player->name);
+    snprintf(buf,MSL,"You should never have returned %s. Ye shall DIE!",player->name.c_str());
     do_whisper(mob,buf);
     break;
    case 2:
@@ -6414,36 +6404,36 @@ void remember_attack( CHAR_DATA *mob, CHAR_DATA *player )
     do_say(mob,"I SHALL HAVE MY REVENGE!!!");
     break;
    case 3:
-    snprintf(buf,MSL,"%s has wronged me, and now I will seek my revenge!",player->name);
+    snprintf(buf,MSL,"%s has wronged me, and now I will seek my revenge!",player->name.c_str());
     do_gossip(mob,buf);
-    snprintf(buf,MSL,"Prepare to die, %s.",player->name);
+    snprintf(buf,MSL,"Prepare to die, %s.",player->name.c_str());
     do_say(mob,buf);
     break;
    case 4:
-    snprintf(buf,MSL,"So, %s. You have returned. Let us finish our fight this time!",player->name);
+    snprintf(buf,MSL,"So, %s. You have returned. Let us finish our fight this time!",player->name.c_str());
     do_say(mob,buf);
     break;
    case 5:
-    snprintf(buf,MSL,"Only cowards flee from me, %s!",player->name);
+    snprintf(buf,MSL,"Only cowards flee from me, %s!",player->name.c_str());
     do_say(mob,buf);
     break;
    case 6:
     act("$n looks at $N, and recognizes $M!!",mob,NULL,player,TO_ROOM);
     act("$n looks at you, and recognizes you!!",mob,NULL,player,TO_VICT);
     act("You look at $N, and recognize $M!",mob,NULL,player,TO_CHAR);
-    snprintf(buf,MSL,"There can only be one winner, %s.",player->name);
+    snprintf(buf,MSL,"There can only be one winner, %s.",player->name.c_str());
     do_say(mob,buf);
     break;
  }
 
  OBJ_DATA *wield = get_eq_char(mob,WEAR_HOLD_HAND_L);
  if( wield != NULL && wield->item_type == ITEM_WEAPON && wield->value[3] == 11 && player->fighting == NULL )
-  do_backstab(mob,player->name);
+  do_backstab(mob,const_cast<char *>(player->name.c_str()));
  else
   one_hit(mob,player,TYPE_UNDEFINED);
 
  first = static_cast<int>(mob->target.find(player->name));
- last = (strlen(player->name) + 1);
+ last = (strlen(player->name.c_str()) + 1);
  mob->target.erase(first,last);
 
  return;

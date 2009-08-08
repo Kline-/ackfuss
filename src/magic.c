@@ -378,7 +378,7 @@ bool saves_spell( int level, CHAR_DATA * victim )
       saved = TRUE;
 
    snprintf( log_buf, (2 * MIL), "%s lvl %d wismod %d savemod %d save total %d against level %d, %s ).",
-            victim->name, victim->get_level("psuedo"),
+            victim->name.c_str(), victim->get_level("psuedo"),
             wis_app[get_curr_wis( victim )].spell_save,
             victim->saving_throw, save, level, ( saved ? "@@aSAVED@@N" : "@@eFAILED@@N" ) );
    monitor_chan( log_buf, MONITOR_MAGIC );
@@ -689,7 +689,7 @@ void cast( CHAR_DATA * ch, char *argument )
          break;
 
       case TAR_CHAR_SELF:
-         if( arg2[0] != '\0' && !is_name( arg2, ch->name ) )
+         if( arg2[0] != '\0' && !is_name( arg2, const_cast<char *>(ch->name.c_str()) ) )
          {
             send_to_char( "You cannot cast this spell on another.\r\n", ch );
             return;
@@ -819,8 +819,8 @@ void cast( CHAR_DATA * ch, char *argument )
        && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
    {
       snprintf( log_buf, (2 * MIL), "%s typed %s, Spell %s, room %s(%d), target %s",
-               ch->name, typed, skill_table[sn].name,
-               ch->in_room->name, ch->in_room->vnum, ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
+               ch->name.c_str(), typed, skill_table[sn].name,
+               ch->in_room->name, ch->in_room->vnum, ( victim != NULL ? victim->name.c_str() : obj != NULL ? obj->name : "NONE" ) );
       monitor_chan( log_buf, MONITOR_MAGIC );
    }
    if( ( *skill_table[sn].spell_fun ) ( sn, best, ch, vo, NULL ) )
@@ -862,9 +862,9 @@ void cast( CHAR_DATA * ch, char *argument )
              && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
          {
             snprintf( log_buf, (2 * MIL), "%s typed %s, Spell %s, room %s(%d), target %s",
-                     ch->name, typed, skill_table[sn].name,
+                     ch->name.c_str(), typed, skill_table[sn].name,
                      ch->in_room->name, ch->in_room->vnum,
-                     ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
+                     ( victim != NULL ? victim->name.c_str() : obj != NULL ? obj->name : "NONE" ) );
             monitor_chan( log_buf, MONITOR_MAGIC );
          }
          if( ( *skill_table[sn].spell_fun ) ( sn, best, ch, vo, NULL ) )
@@ -909,9 +909,9 @@ void cast( CHAR_DATA * ch, char *argument )
              && ( sn != skill_lookup( "cure critical" ) ) && ( sn != skill_lookup( "heal" ) ) )
          {
             snprintf( log_buf, (2 * MIL), "%s typed %s, Spell %s, room %s(%d), target %s",
-                     ch->name, typed, skill_table[sn].name,
+                     ch->name.c_str(), typed, skill_table[sn].name,
                      ch->in_room->name, ch->in_room->vnum,
-                     ( victim != NULL ? victim->name : obj != NULL ? obj->name : "NONE" ) );
+                     ( victim != NULL ? victim->name.c_str() : obj != NULL ? obj->name : "NONE" ) );
             monitor_chan( log_buf, MONITOR_MAGIC );
          }
          if( ( *skill_table[sn].spell_fun ) ( sn, best, ch, vo, NULL ) )
@@ -3136,7 +3136,7 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    char_from_room( victim );
    char_to_room( victim, ch->in_room );
    act( "$n arrives suddenly.", victim, NULL, NULL, TO_ROOM );
-   snprintf( buf, MSL, "%s has summoned you!!", ch->name );
+   snprintf( buf, MSL, "%s has summoned you!!", ch->name.c_str() );
    send_to_char( buf, victim );
    do_look( victim, "auto" );
    return TRUE;
@@ -3199,7 +3199,7 @@ bool spell_ventriloquate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
    {
-      if( !is_name( speaker, vch->name ) )
+      if( !is_name( speaker, const_cast<char *>(vch->name.c_str()) ) )
          send_to_char( saves_spell( level, vch ) ? buf2 : buf1, vch );
    }
 
@@ -4872,7 +4872,7 @@ bool spell_beacon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    snprintf( buf, MSL, "%s", arg );
    free_string( ob->name );
    ob->name = str_dup( arg );
-   snprintf( buf, MSL, "%s", ch->name );
+   snprintf( buf, MSL, "%s", ch->name.c_str() );
    free_string( ob->owner );
    ob->owner = str_dup( buf );
    ob->timer = 20 + (level / 3);
@@ -6077,7 +6077,7 @@ bool spell_restoration( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
       ch->pcdata->super->energy = ch->pcdata->super->energy_max;
 
    send_to_char( "@@eTHe life force of tha captured soul restores you!\r\n", ch );
-   snprintf( buf, MSL, " %s has used a restoration spell.\r\n", ch->name );
+   snprintf( buf, MSL, " %s has used a restoration spell.\r\n", ch->name.c_str() );
    monitor_chan( buf, MONITOR_BAD );
    return TRUE;
 }
@@ -6091,7 +6091,7 @@ bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
       return FALSE;
 
    /*
-    * Quick way to stop imms (Bash?) enchanting weapons for players 
+    * Quick way to stop imms (Bash?) enchanting weapons for players
     */
    if( IS_IMMORTAL( ch ) && ch->level != 85 )
    {

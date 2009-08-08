@@ -385,13 +385,13 @@ int L_character_info( lua_State *L )
  lua_newtable(L);  /* table for the info */
   
  /* strings */
- PUSH_STR(ch,description);
- PUSH_STR(ch,long_descr);
- PUSH_STR(ch,long_descr_orig);
- PUSH_STR(ch,name);
- PUSH_STR(ch,old_prompt);
- PUSH_STR(ch,prompt);
- PUSH_STR(ch,searching);
+ PUSH_STR(ch,description.c_str());
+ PUSH_STR(ch,long_descr.c_str());
+ PUSH_STR(ch,long_descr_orig.c_str());
+ PUSH_STR(ch,name.c_str());
+ PUSH_STR(ch,old_prompt.c_str());
+ PUSH_STR(ch,prompt.c_str());
+ PUSH_STR(ch,searching.c_str());
 
  /* numbers */
  PUSH_NUM(ch,alignment);

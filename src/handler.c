@@ -377,7 +377,7 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
    {
       default:
          bug( "Affect_modify: unknown location %d.", paf->location );
-         snprintf( buf, MSL, "Affect_modify: called for %s - unknown location %d.", ch->name, paf->location );
+         snprintf( buf, MSL, "Affect_modify: called for %s - unknown location %d.", ch->name.c_str(), paf->location );
          monitor_chan( buf, MONITOR_OBJ );
          return;
 
@@ -503,7 +503,7 @@ void affect_to_room( ROOM_INDEX_DATA * room, ROOM_AFFECT_DATA * raf )
    SET_BIT( room->affected_by, raf->bitvector );
 
    snprintf( buf, MSL, "@@e%s@@N has cast @@d%s@@N in @@Narea: @@r%s@@N, @@Nroom: @@r%d@@N.",
-            raf->caster->name, raffect_bit_name( raf->bitvector ), room->area->name, room->vnum );
+            raf->caster->name.c_str(), raffect_bit_name( raf->bitvector ), room->area->name, room->vnum );
    monitor_chan( buf, MONITOR_GEN_MORT );
 
 
@@ -1678,7 +1678,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
          int first = 0, last = 0;
 
          first = static_cast<int>(wch->target.find(ch->name));
-         last = (strlen(ch->name) + 1);
+         last = (strlen(ch->name.c_str()) + 1);
          wch->target.erase(first,last);
       }
       if( wch->riding == ch )
@@ -1838,7 +1838,7 @@ CHAR_DATA *get_char_room( CHAR_DATA * ch, char *argument )
 
    for( rch = ch->in_room->first_person; rch != NULL; rch = rch->next_in_room )
    {
-      if( !can_see( ch, rch ) || !is_name( arg, rch->name ) )
+      if( !can_see( ch, rch ) || !is_name( arg, const_cast<char *>(rch->name.c_str()) ) )
          continue;
       if( ++count == number )
          return rch;
@@ -1869,7 +1869,7 @@ CHAR_DATA *get_char_world( CHAR_DATA * ch, char *argument )
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       wch = *li;
-      if( !can_see( ch, wch ) || !is_name( arg, wch->name ) )
+      if( !can_see( ch, wch ) || !is_name( arg, const_cast<char *>(wch->name.c_str()) ) )
          continue;
       if( ++count == number )
          return wch;
@@ -1894,7 +1894,7 @@ CHAR_DATA *get_char_area( CHAR_DATA * ch, char *argument )
    for( li = char_list.begin(); li != char_list.end(); li++ )
    {
       ach = *li;
-      if( ach->in_room->area != ch->in_room->area || !can_see( ch, ach ) || !is_name( arg, ach->name ) )
+      if( ach->in_room->area != ch->in_room->area || !can_see( ch, ach ) || !is_name( arg, const_cast<char *>(ach->name.c_str()) ) )
          continue;
       if( ++count == number )
          return ach;
