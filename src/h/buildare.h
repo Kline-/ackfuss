@@ -21,10 +21,10 @@
 bool build_canread P_((AREA_DATA *Area, CHAR_DATA *ch, int showerror));
 bool build_canwrite P_((AREA_DATA *Area, CHAR_DATA *ch, int showerror));
 void build_save_area_list P_((void));
-void build_makearea P_((CHAR_DATA *ch, char *argument));
-void build_setarea P_((CHAR_DATA *ch, char *argument));
-void build_findarea P_((CHAR_DATA *ch, char *argument));
-void build_showarea P_((CHAR_DATA *ch, char *argument));
-void build_arealist P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(build_makearea);
+DECLARE_DO_FUN(build_setarea);
+DECLARE_DO_FUN(build_findarea);
+DECLARE_DO_FUN(build_showarea);
+DECLARE_DO_FUN(build_arealist);
 
 #undef P_

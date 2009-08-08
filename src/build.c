@@ -237,7 +237,7 @@ extern long int sAllocString;
 extern int nAllocPerm;
 extern int sAllocPerm;
 
-void build_interpret( CHAR_DATA * ch, char *argument )
+DO_FUN(build_interpret)
 {
    char command[MAX_INPUT_LENGTH];
    char logline[MAX_INPUT_LENGTH];
@@ -321,7 +321,7 @@ void build_interpret( CHAR_DATA * ch, char *argument )
    ( *build_cmd_table[cmd].do_fun ) ( ch, argument );
 
    /*
-    * make sure that if in Redit, vnum is at new room. 
+    * make sure that if in Redit, vnum is at new room.
     */
    if( ch->pcdata->build_mode == BUILD_MODE_REDIT && ch->pcdata->build_vnum != ch->in_room->vnum )
    {
@@ -332,7 +332,7 @@ void build_interpret( CHAR_DATA * ch, char *argument )
 }
 
 /* -S- Addition: */
-void build_commands( CHAR_DATA * ch, char *argument )
+DO_FUN(build_commands)
 {
    char buf[MAX_STRING_LENGTH];
    char out[MAX_STRING_LENGTH];
@@ -357,7 +357,7 @@ void build_commands( CHAR_DATA * ch, char *argument )
 
 
 
-void build_showmob( CHAR_DATA * ch, char *argument )
+DO_FUN(build_showmob)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -475,7 +475,7 @@ void build_showmob( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_showobj( CHAR_DATA * ch, char *argument )
+DO_FUN(build_showobj)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -633,7 +633,7 @@ void build_showobj( CHAR_DATA * ch, char *argument )
 #define DISPLAY_FULLDOORS   4
 #define DISPLAY_DESC        8
 
-void build_showroom( CHAR_DATA * ch, char *argument )
+DO_FUN(build_showroom)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -781,7 +781,7 @@ void build_showroom( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_showresets( CHAR_DATA * ch, char *argument )
+DO_FUN(build_showresets)
 {
    char buf1[MAX_STRING_LENGTH];
    ROOM_INDEX_DATA *location;
@@ -966,7 +966,7 @@ char *build_docount( int *pcount )
 }
 
 
-void build_findmob( CHAR_DATA * ch, char *argument )
+DO_FUN(build_findmob)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1027,7 +1027,7 @@ void build_findmob( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_findmobroom( CHAR_DATA * ch, char *argument )
+DO_FUN(build_findmobroom)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1087,7 +1087,7 @@ void build_findmobroom( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_findobject( CHAR_DATA * ch, char *argument )
+DO_FUN(build_findobject)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1149,7 +1149,7 @@ void build_findobject( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_findroom( CHAR_DATA * ch, char *argument )
+DO_FUN(build_findroom)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1212,7 +1212,7 @@ void build_findroom( CHAR_DATA * ch, char *argument )
 }
 
 /* -S- : More 'intelligent' way to handle things perhaps? */
-void build_setmob( CHAR_DATA * ch, char *argument )
+DO_FUN(build_setmob)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -1916,7 +1916,7 @@ void nuke_exit_resets( ROOM_INDEX_DATA * pRoomIndex, int door )
       if( pReset->command == 'D' && pReset->arg2 == door )
       {
          /*
-          * nuke this reset 
+          * nuke this reset
           */
          UNLINK( pList, pRoomIndex->first_room_reset, pRoomIndex->last_room_reset, next, prev );
          build_dat_list.remove(pList);
@@ -1928,7 +1928,7 @@ void nuke_exit_resets( ROOM_INDEX_DATA * pRoomIndex, int door )
    }
 }
 
-void build_setroom( CHAR_DATA * ch, char *argument )
+DO_FUN(build_setroom)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -2428,7 +2428,7 @@ void build_setroom( CHAR_DATA * ch, char *argument )
 }
 
 
-void build_setobject( CHAR_DATA * ch, char *argument )
+DO_FUN(build_setobject)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -2996,7 +2996,7 @@ void build_setobject( CHAR_DATA * ch, char *argument )
 
 
 
-void build_dig( CHAR_DATA * ch, char *argument )
+DO_FUN(build_dig)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -3105,13 +3105,13 @@ void build_dig( CHAR_DATA * ch, char *argument )
 }
 
 
-void build_stop( CHAR_DATA * ch, char *argument )
+DO_FUN(build_stop)
 {
    ch->position = POS_STANDING;
    send_to_char( "Building stopped.\r\n", ch );
 }
 
-void do_build( CHAR_DATA * ch, char *argument )
+DO_FUN(do_build)
 {
    if( IS_NPC(ch) ) /* Just...no. --Kline */
     return;
@@ -3127,7 +3127,7 @@ void do_build( CHAR_DATA * ch, char *argument )
    send_to_char( "Building commands are now operative. Type stop to stop building.\r\n", ch );
 }
 
-void build_addmob( CHAR_DATA * ch, char *argument )
+DO_FUN(build_addmob)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -3195,7 +3195,7 @@ void build_addmob( CHAR_DATA * ch, char *argument )
 }
 
 
-void build_addobject( CHAR_DATA * ch, char *argument )
+DO_FUN(build_addobject)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -3259,7 +3259,7 @@ void build_addobject( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_addroom( CHAR_DATA *ch, char *argument )
+DO_FUN(build_addroom)
 {
  ROOM_INDEX_DATA *pRoomIndex;
  AREA_DATA *pArea;
@@ -3328,7 +3328,7 @@ void build_addroom( CHAR_DATA *ch, char *argument )
  LINK( pList, pCurRoom->area->first_area_room, pCurRoom->area->last_area_room, next, prev );
 }
 
-void build_addreset( CHAR_DATA * ch, char *argument )
+DO_FUN(build_addreset)
 {
    RESET_DATA *pReset;
    RESET_DATA *pMobReset;
@@ -3775,7 +3775,7 @@ void build_addreset( CHAR_DATA * ch, char *argument )
 /* spec: rewrote the internals of this, it might work somewhat more reliably
  * now :) .. please, someone put the reset lists out of their misery.. */
 
-void build_delreset( CHAR_DATA * ch, char *argument )
+DO_FUN(build_delreset)
 {
    RESET_DATA *pReset;
    BUILD_DATA_LIST *pList;
@@ -3872,7 +3872,7 @@ void build_delreset( CHAR_DATA * ch, char *argument )
    else
    {
       /*
-       * Just get rid of the one reset 
+       * Just get rid of the one reset
        */
       pNextList = pList->next;
 
@@ -3889,13 +3889,13 @@ void build_delreset( CHAR_DATA * ch, char *argument )
 }
 
 
-void build_delwarn( CHAR_DATA * ch, char *argument )
+DO_FUN(build_delwarn)
 {
    send_to_char( "You must spell out delroom, delobject, delmobile, or delhelp in full.\r\n", ch );
    return;
 }
 
-void build_delhelp( CHAR_DATA *ch, char *argument )
+DO_FUN(build_delhelp)
 {
  FILE *fp;
  char arg1[MSL];
@@ -3953,7 +3953,7 @@ void build_delhelp( CHAR_DATA *ch, char *argument )
  return;
 }
 
-void build_delroom( CHAR_DATA * ch, char *argument )
+DO_FUN(build_delroom)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -4198,7 +4198,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Get rid of extra descriptions 
+    * Get rid of extra descriptions
     */
    {
       EXTRA_DESCR_DATA *pNext;
@@ -4221,7 +4221,7 @@ void build_delroom( CHAR_DATA * ch, char *argument )
 
 int old_ovnum = 0;
 
-void build_delobject( CHAR_DATA * ch, char *argument )
+DO_FUN(build_delobject)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -4384,7 +4384,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Get rid of affects 
+    * Get rid of affects
     */
    {
       AFFECT_DATA *paf;
@@ -4398,7 +4398,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Now delete structure 
+    * Now delete structure
     */
    obj_index_list.remove(pObjIndex);
    delete pObjIndex;
@@ -4410,7 +4410,7 @@ void build_delobject( CHAR_DATA * ch, char *argument )
 
 int old_mob_vnum = 0;
 
-void build_delmob( CHAR_DATA * ch, char *argument )
+DO_FUN(build_delmob)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -4581,21 +4581,21 @@ void build_delmob( CHAR_DATA * ch, char *argument )
       pShop = pMobIndex->pShop;
 
       /*
-       * Take out of pList 
+       * Take out of pList
        */
       UNLINK( pList, pArea->first_area_shop, pArea->last_area_shop, next, prev );
       build_dat_list.remove(pList);
       delete pList;
 
       /*
-       * Now free shop structure 
+       * Now free shop structure
        */
       shop_list.remove(pShop);
       delete pShop;
    }
 
    /*
-    * Now delete structure 
+    * Now delete structure
     */
    mob_index_list.remove(pMobIndex);
    delete pMobIndex;
@@ -4604,7 +4604,7 @@ void build_delmob( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_help( CHAR_DATA * ch, char *argument )
+DO_FUN(build_help)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -4619,7 +4619,7 @@ void build_help( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_forcereset( CHAR_DATA * ch, char *argument )
+DO_FUN(build_forcereset)
 {
    AREA_DATA *pArea;
 
@@ -4857,7 +4857,7 @@ void build_finishedstr( char *orig, char **dest, CHAR_DATA * ch, bool saved )
 }
 
 
-void build_set_oedit( CHAR_DATA * ch, char *argument )
+DO_FUN(build_set_oedit)
 {
    OBJ_INDEX_DATA *obj;
 
@@ -4875,7 +4875,7 @@ void build_set_oedit( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_set_redit( CHAR_DATA * ch, char *argument )
+DO_FUN(build_set_redit)
 {
    ch->pcdata->build_vnum = ch->in_room->vnum;
 
@@ -4885,7 +4885,7 @@ void build_set_redit( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_set_medit( CHAR_DATA * ch, char *argument )
+DO_FUN(build_set_medit)
 {
    MOB_INDEX_DATA *mob;
 
@@ -4903,7 +4903,7 @@ void build_set_medit( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_set_nedit( CHAR_DATA * ch, char *argument )
+DO_FUN(build_set_nedit)
 {
    ch->pcdata->build_mode = BUILD_MODE_NONE;
    ch->pcdata->build_vnum = 0;
@@ -4915,7 +4915,7 @@ void build_set_nedit( CHAR_DATA * ch, char *argument )
 
 
 
-void build_setvnum( CHAR_DATA * ch, char *argument )
+DO_FUN(build_setvnum)
 {
    char buf[MAX_STRING_LENGTH];
    char buf2[MAX_STRING_LENGTH];
@@ -5010,10 +5010,10 @@ void build_setvnum( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_list( CHAR_DATA * ch, char *argument )
+DO_FUN(build_list)
 {
    /*
-    * do show obj|mob|room according to ch->pcdata->build_mode -S- 
+    * do show obj|mob|room according to ch->pcdata->build_mode -S-
     */
 
    char buf[MAX_STRING_LENGTH];
@@ -5066,7 +5066,7 @@ void build_list( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Ok, now arg is valid.  See if it applic. to edit mode 
+    * Ok, now arg is valid.  See if it applic. to edit mode
     */
 
    if( !strcmp( argument, "flags" ) )
@@ -5201,10 +5201,10 @@ void build_list( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_set( CHAR_DATA * ch, char *argument )
+DO_FUN(build_set)
 {
    /*
-    * Call setroom/mob/obj with argument, and vnum, etc. 
+    * Call setroom/mob/obj with argument, and vnum, etc.
     */
    char buf[MAX_STRING_LENGTH];
 
@@ -5242,10 +5242,10 @@ void build_set( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_listvalues( CHAR_DATA * ch, char *argument )
+DO_FUN(build_listvalues)
 {
    /*
-    * Lookup what the 4 values mean for the given object type -S- 
+    * Lookup what the 4 values mean for the given object type -S-
     */
    int value;
    int foo;
@@ -5278,16 +5278,16 @@ void build_listvalues( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_listweapons( CHAR_DATA * ch, char *argument )
+DO_FUN(build_listweapons)
 {
    /*
-    * list weapon types, along with values 
+    * list weapon types, along with values
     */
    char buf[MAX_STRING_LENGTH];
    int foo;
 
    /*
-    * Need values as well, so rehash table_printout 
+    * Need values as well, so rehash table_printout
     */
    for( foo = 0; tab_weapon_types[foo].text != NULL; foo++ )
    {
@@ -5300,16 +5300,16 @@ void build_listweapons( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_listliquids( CHAR_DATA * ch, char *argument )
+DO_FUN(build_listliquids)
 {
    /*
-    * list liquid types, along with values 
+    * list liquid types, along with values
     */
    char buf[MAX_STRING_LENGTH];
    int foo;
 
    /*
-    * Need values as well, so rehash table_printout 
+    * Need values as well, so rehash table_printout
     */
    for( foo = 0; tab_drink_types[foo].text != NULL; foo++ )
    {
@@ -5322,10 +5322,10 @@ void build_listliquids( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_listspells( CHAR_DATA * ch, char *argument )
+DO_FUN(build_listspells)
 {
    /*
-    * List spells -S- 
+    * List spells -S-
     */
    int sn;
    char buf[MAX_STRING_LENGTH];
@@ -5396,7 +5396,7 @@ int get_dir( char dir )
    return temp - cDirs;
 }
 
-void build_urooms( CHAR_DATA * ch, char *argument )
+DO_FUN(build_urooms)
 {
    /*
     * List vnum usage for area... 
@@ -5521,7 +5521,7 @@ void build_urooms( CHAR_DATA * ch, char *argument )
 
 
 
-void build_uobjs( CHAR_DATA * ch, char *argument )
+DO_FUN(build_uobjs)
 {
    /*
     * List vnum usage for area... 
@@ -5645,7 +5645,7 @@ void build_uobjs( CHAR_DATA * ch, char *argument )
 }
 
 
-void build_umobs( CHAR_DATA * ch, char *argument )
+DO_FUN(build_umobs)
 {
    /*
     * List vnum usage for area... 
@@ -5767,11 +5767,11 @@ void build_umobs( CHAR_DATA * ch, char *argument )
 
 
 
-/** Help Editor 
+/** Help Editor
     We want to be able to edit ANY help, so 3.bank etc should work,
     in case we have helps with the same keyword(s).
  **/
-void build_findhelp( CHAR_DATA * ch, char *argument )
+DO_FUN(build_findhelp)
 {
    char arg[MAX_STRING_LENGTH];
    int cnt = 0;
@@ -5792,7 +5792,7 @@ void build_findhelp( CHAR_DATA * ch, char *argument )
 
 
 
-void build_helpedit( CHAR_DATA * ch, char *argument )
+DO_FUN(build_helpedit)
 {
  char arg[MAX_STRING_LENGTH];
  bool mort = FALSE;
@@ -5854,7 +5854,7 @@ void build_helpedit( CHAR_DATA * ch, char *argument )
  return;
 }
 
-void build_addhelp( CHAR_DATA * ch, char *argument )
+DO_FUN(build_addhelp)
 {
  char arg[MAX_STRING_LENGTH];
  bool mort = FALSE;
@@ -5901,10 +5901,8 @@ void build_addhelp( CHAR_DATA * ch, char *argument )
  return;
 }
 
-/* NOTE--NEED TO MAKE SURE WE GET MOTD, TOO--I THINK IT WIL BE OKAY ZEN */
 
-
-void build_clone( CHAR_DATA * ch, char *argument )
+DO_FUN(build_clone)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -5928,7 +5926,7 @@ void build_clone( CHAR_DATA * ch, char *argument )
    argument = one_argument( argument, arg2 );   /* vnum to clone to */
 
    /*
-    * Check arguments 
+    * Check arguments
     */
    if( arg1[0] == '\0' || arg2[0] == '\0' || !is_number( arg2 ) || !is_name( arg1, "room obj mob" ) )
    {
@@ -6222,7 +6220,7 @@ void check_autodig( CHAR_DATA *ch, int dir )
  }
 }
 
-void build_sysdata( CHAR_DATA *ch, char *argument )
+DO_FUN(build_sysdata)
 {
  char outbuf[MSL];
  char catbuf[MSL];

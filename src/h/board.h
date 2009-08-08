@@ -15,16 +15,16 @@
 #endif
 
 /* board.c */
-void do_show_contents P_((CHAR_DATA *ch, OBJ_DATA *obj));
+void show_contents P_((CHAR_DATA *ch, OBJ_DATA *obj));
 BOARD_DATA *load_board P_((OBJ_INDEX_DATA *pObj));
 void save_board P_((BOARD_DATA *board, CHAR_DATA *ch));
-void do_delete P_((CHAR_DATA *ch, char *argument));
-void do_show_message P_((CHAR_DATA *ch, int mess_num, OBJ_DATA *obj));
-void do_write P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_delete);
+void show_message P_((CHAR_DATA *ch, int mess_num, OBJ_DATA *obj));
+DECLARE_DO_FUN(do_write);
 void finished_editing P_((MESSAGE_DATA *msg, char **dest, CHAR_DATA *ch, bool saved));
-void do_read P_((CHAR_DATA *ch, char *argument));
-void do_edit_message P_((CHAR_DATA *ch, int mess_num, OBJ_DATA *obj));
-void do_edit P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_read);
+void edit_message P_((CHAR_DATA *ch, int mess_num, OBJ_DATA *obj));
+DECLARE_DO_FUN(do_edit);
 
 #undef P_
 

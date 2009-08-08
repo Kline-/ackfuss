@@ -15,7 +15,7 @@
 #endif
 
 /* areasave.c */
-void do_savearea P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_savearea);
 void build_save P_((void));
 void build_save_area P_((void));
 void build_save_mobs P_((void));

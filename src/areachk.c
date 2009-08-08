@@ -69,7 +69,7 @@ void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
    {
       case 'R':
          /*
-          * Delete old hash table entry 
+          * Delete old hash table entry
           */
 
          iHash = old_vnum % MAX_KEY_HASH;
@@ -90,7 +90,7 @@ void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
          }
 
          /*
-          * Add another 
+          * Add another
           */
 
          iHash = new_vnum % MAX_KEY_HASH;
@@ -122,7 +122,7 @@ void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
          }
 
          /*
-          * Add another 
+          * Add another
           */
 
          iHash = new_vnum % MAX_KEY_HASH;
@@ -133,7 +133,7 @@ void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
 
       case 'O':
          /*
-          * Delete old hash table entry 
+          * Delete old hash table entry
           */
 
          iHash = old_vnum % MAX_KEY_HASH;
@@ -154,7 +154,7 @@ void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
          }
 
          /*
-          * Add another 
+          * Add another
           */
 
          iHash = new_vnum % MAX_KEY_HASH;
@@ -169,7 +169,7 @@ void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
 }
 
 
-void do_check_areas( CHAR_DATA * ch, char *argument )
+DO_FUN(do_check_areas)
 {
    hash_table *room_hash;
    hash_table *obj_hash;
@@ -427,7 +427,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * FINISHED 
+    * FINISHED
     */
 
    delete_hash_table( room_hash );
@@ -437,7 +437,7 @@ void do_check_areas( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_check_area( CHAR_DATA * ch, char *argument )
+DO_FUN(do_check_area)
 {
    send_to_char( "You must say check_areas in full.\r\n", ch );
    return;

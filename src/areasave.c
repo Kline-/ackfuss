@@ -85,7 +85,7 @@ FILE *SaveFile;
 FILE *Envy;
 int AreasModified = 0;
 
-void do_savearea( CHAR_DATA * ch, char *argument )
+DO_FUN(do_savearea)
 {
    AREA_DATA *SaveArea;
    int loops;

@@ -115,7 +115,7 @@
  * general merc memory functions.  -- Altrag                              *
  **************************************************************************/
 
-void do_show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
+void show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
 {
    /*
     * Show the list of messages that are present on the board that ch is
@@ -362,7 +362,7 @@ void save_board( BOARD_DATA * board, CHAR_DATA * ch )
    return;
 }
 
-void do_delete( CHAR_DATA * ch, char *argument )
+DO_FUN(do_delete)
 {
    OBJ_DATA *object;
    BOARD_DATA *board = NULL;
@@ -466,10 +466,10 @@ void do_delete( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
+void show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 {
    /*
-    * Show message <mess_num> to character. 
+    * Show message <mess_num> to character.
     * * check that message vnum == board vnum
     */
 
@@ -544,7 +544,7 @@ void do_show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
    return;
 }
 
-void do_write( CHAR_DATA * ch, char *argument )
+DO_FUN(do_write)
 {
    OBJ_DATA *object;
    BOARD_DATA *board = NULL;
@@ -660,7 +660,7 @@ void finished_editing( MESSAGE_DATA * msg, char **dest, CHAR_DATA * ch, bool sav
       if( SrchMsg == NULL )
       {
          /*
-          * Could not find this message in board list, just lose memory. 
+          * Could not find this message in board list, just lose memory.
           */
          return;
       }
@@ -676,7 +676,7 @@ void finished_editing( MESSAGE_DATA * msg, char **dest, CHAR_DATA * ch, bool sav
    return;
 }
 
-void do_read( CHAR_DATA * ch, char *argument )
+DO_FUN(do_read)
 {
    OBJ_DATA *obj;
 
@@ -704,7 +704,7 @@ void do_read( CHAR_DATA * ch, char *argument )
     * * player should have supplied some sort of argument....
     */
 
-   do_show_message( ch, atoi( argument ), obj );
+   show_message( ch, atoi( argument ), obj );
    return;
 }
 
@@ -712,10 +712,10 @@ void do_read( CHAR_DATA * ch, char *argument )
 
 
 
-void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
+void edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 {
    /*
-    * Show message <mess_num> to character. 
+    * Show message <mess_num> to character.
     * * check that message vnum == board vnum
     */
 
@@ -783,7 +783,7 @@ void do_edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
    return;
 }
 
-void do_edit( CHAR_DATA * ch, char *argument )
+DO_FUN(do_edit)
 {
    OBJ_DATA *obj;
 
@@ -811,6 +811,6 @@ void do_edit( CHAR_DATA * ch, char *argument )
     * * player should have supplied some sort of argument....
     */
 
-   do_edit_message( ch, atoi( argument ), obj );
+   edit_message( ch, atoi( argument ), obj );
    return;
 }

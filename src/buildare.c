@@ -145,7 +145,7 @@ void build_save_area_list( void )
    rename( buf, AREA_LIST );
 }
 
-void build_makearea( CHAR_DATA * ch, char *argument )
+DO_FUN(build_makearea)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -303,7 +303,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    build_save_area_list(  );
 
    /*
-    * Now add room 
+    * Now add room
     */
    pRoomIndex = new ROOM_INDEX_DATA;
    pRoomIndex->area = pArea;
@@ -311,7 +311,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    pRoomIndex->sector_type = SECT_INSIDE;
 
    /*
-    * Add room to hash table 
+    * Add room to hash table
     */
 
 
@@ -319,7 +319,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    SING_TOPLINK( pRoomIndex, room_index_hash[iHash], next );
 
    /*
-    * Add room into area list. 
+    * Add room into area list.
     */
    pList = new BUILD_DATA_LIST;
    pList->data = pRoomIndex;
@@ -328,7 +328,7 @@ void build_makearea( CHAR_DATA * ch, char *argument )
    send_to_char( "Ok.\r\n", ch );
 }
 
-void build_setarea( CHAR_DATA * ch, char *argument )
+DO_FUN(build_setarea)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -583,7 +583,7 @@ void build_setarea( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_findarea( CHAR_DATA * ch, char *argument )
+DO_FUN(build_findarea)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -633,7 +633,7 @@ void build_findarea( CHAR_DATA * ch, char *argument )
 }
 
 
-void build_showarea( CHAR_DATA * ch, char *argument )
+DO_FUN(build_showarea)
 {
    AREA_DATA *pArea;
    char buf[MAX_STRING_LENGTH];
@@ -690,7 +690,7 @@ void build_showarea( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void build_arealist( CHAR_DATA * ch, char *argument )
+DO_FUN(build_arealist)
 {
    /*
     * -S- : Show list of areas, vnum range and owners. 

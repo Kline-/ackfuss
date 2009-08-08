@@ -982,7 +982,7 @@ DO_FUN(do_look)
 
       }
 
-      do_show_contents( ch, obj );
+      show_contents( ch, obj );
       return;
    }
 
