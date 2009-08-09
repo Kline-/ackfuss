@@ -533,7 +533,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    {
     snprintf( buf, MSL, "%s%s%s\r\n", color_string( ch, "rooms" ), ch->in_room->name, color_string( ch, "normal" ) );
     send_to_char( buf, ch );
-    if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && ch->act.test(ACT_AUTOEXIT) ) )
+    if( is_switched(ch) || ( !IS_NPC( ch ) && ch->act.test(ACT_AUTOEXIT) ) )
      do_exits( ch, "autonr" );
    }
 

@@ -1280,13 +1280,6 @@ struct eq_type
 #define SF      SPEC_FUN
 #define OBF	OBJ_FUN
 
-/* interp.c */
-void interpret args( ( CHAR_DATA * ch, char *argument ) );
-bool IS_SWITCHED args( ( CHAR_DATA * ch ) );
-bool check_social args( ( CHAR_DATA * ch, char *command, char *argument ) );
-bool check_disabled args( ( const struct cmd_type *command ) );
-void comlog args( ( CHAR_DATA * ch, bool cleanup, int cmd, char *args ) );
-
 /* macros.c */
 bool   ok_to_use          args( ( CHAR_DATA * ch, int value ) );
 bool   check_level_use    args( ( CHAR_DATA * ch, int level ) );
@@ -1299,17 +1292,6 @@ int    exp_to_level_adept args( ( CHAR_DATA * ch ) );
 void   reset_gain_stats   args( ( CHAR_DATA * ch ) );
 int    exp_to_level_wolf  args( ( int level ) );
 int    get_item_value     args( ( OBJ_DATA * obj ) );
-
-
-           /*-------*\
-			  ) quest.c (
-			  \*-------*/
-
-void quest_inform args( ( void ) );
-void quest_complete args( ( CHAR_DATA * ch ) );
-void quest_cancel args( ( void ) );
-void generate_auto_quest args( ( void ) );
-void crusade_reward args( ( CHAR_DATA *ch ) );
 
 
             /*------*\

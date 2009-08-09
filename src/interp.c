@@ -102,6 +102,10 @@
 #include "h/hunt.h"
 #endif
 
+#ifndef DEC_INTERP_H
+#include "h/interp.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
 #endif
@@ -120,6 +124,14 @@
 
 #ifndef DEC_MUDINFO_H
 #include "h/mudinfo.h"
+#endif
+
+#ifndef DEC_PDELETE_H
+#include "h/pdelete.h"
+#endif
+
+#ifndef DEC_QUEST_H
+#include "h/quest.h"
 #endif
 
 #ifndef DEC_SPENDQP_H
@@ -385,7 +397,7 @@ const struct cmd_type cmd_table[] = {
 /* one or more of the poses crash us  */
    {"pray", do_pray, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_COMM, C_SHOW_ALWAYS,true},
-   {"quest", do_quest2, POS_RESTING, 0, LOG_NORMAL,
+   {"quest", do_quest, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_COMM, C_SHOW_ALWAYS,true},
    {"question", do_question, POS_SLEEPING, 0, LOG_NORMAL,
     C_TYPE_COMM, C_SHOW_ALWAYS,true},
@@ -781,7 +793,7 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_IMM, C_SHOW_ALWAYS,true},
    {"purge", do_purge, POS_DEAD, L_HER, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS,true},
-   {"iquest", do_quest, POS_DEAD, L_DEI, LOG_NORMAL,
+   {"iquest", do_iquest, POS_DEAD, L_DEI, LOG_NORMAL,
     C_TYPE_IMM, C_SHOW_ALWAYS,true},
    {"restore", do_restore, POS_DEAD, L_DEI, LOG_ALWAYS,
     C_TYPE_IMM, C_SHOW_ALWAYS,true},
@@ -947,7 +959,7 @@ void interpret( CHAR_DATA * ch, char *argument )
 
    if( ch->position == POS_WRITING )
       /*
-       * if player is writing, pass argument straight to write_interpret 
+       * if player is writing, pass argument straight to write_interpret
        */
    {
       write_interpret( ch, argument );
@@ -1035,9 +1047,9 @@ void interpret( CHAR_DATA * ch, char *argument )
 
       /*
        * Stephen Mod:  if level == CLAN_ONLY then for clan member only.
-       * == BOSS_ONLY have to be leader.  
+       * == BOSS_ONLY have to be leader.
        * == -3 vamp
-       * == -4 wolf  
+       * == -4 wolf
        */
 
       if( cmd_table[cmd].level == CLAN_ONLY && !IS_NPC( ch ) && ch->clan == 0 )
@@ -1052,21 +1064,12 @@ void interpret( CHAR_DATA * ch, char *argument )
       if( cmd_table[cmd].level == WOLF_ONLY && !IS_NPC( ch ) && !IS_WOLF( ch ) && ( ch->level != L_GOD ) )
          continue;
 
-
-
       if( command[0] == cmd_table[cmd].name[0]
           && !str_prefix( command, cmd_table[cmd].name ) && ( cmd_table[cmd].level <= trust ) )
       {
-
-
-
          found = TRUE;
          break;
       }
-
-
-
-
 
    }
 
@@ -1101,7 +1104,7 @@ void interpret( CHAR_DATA * ch, char *argument )
       int cnt;
       char foo[MAX_STRING_LENGTH];
       /*
-       * Check aliases -S- 
+       * Check aliases -S-
        */
 
       for( cnt = 0; cnt < MAX_ALIASES; cnt++ )
@@ -1353,18 +1356,4 @@ bool check_disabled( const struct cmd_type *command )
  }
 
  return false;
-}
-
-
-
-bool IS_SWITCHED( CHAR_DATA * ch )
-{
-   if( !IS_NPC( ch ) )
-      return FALSE;
-
-   if( ch->desc == NULL )
-      return FALSE;
-
-   return TRUE;
-
 }

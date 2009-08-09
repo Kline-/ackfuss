@@ -175,10 +175,8 @@ extern char *target_name;
 DECLARE_DO_FUN( do_exlist );
 DECLARE_DO_FUN( do_vlist );
 DECLARE_DO_FUN( do_rename );
-DECLARE_DO_FUN( do_sdelete );
 DECLARE_DO_FUN( do_rbid );
 DECLARE_DO_FUN( do_mbid );
-DECLARE_DO_FUN( do_quest );
 DECLARE_DO_FUN( do_listspells );
 
 /****************************
@@ -188,21 +186,8 @@ DECLARE_DO_FUN( do_rauction );
 DECLARE_DO_FUN( do_mauction );
 DECLARE_DO_FUN( do_autosplit );
 DECLARE_DO_FUN( do_autoassist );
-
-/*   
-      NEW SKILLS  (SRZ)
-
-*/
 DECLARE_DO_FUN( do_adrenaline );
-
-/*
- *   New Channels (ZEN)
- */
 DECLARE_DO_FUN( do_rulers );
-
-/*
- *  New immcommands
- */
 DECLARE_DO_FUN( do_sedit );
 DECLARE_DO_FUN( do_scheck );
 DECLARE_DO_FUN( do_sysdata );

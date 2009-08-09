@@ -58,6 +58,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_INTERP_H
+#include "h/interp.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif
@@ -797,7 +801,7 @@ DO_FUN(do_music)
    return;
 }
 
-DO_FUN(do_quest2)
+DO_FUN(do_quest)
 {
    talk_channel( ch, argument, CHANNEL_QUEST, "@@a[@@cQUEST@@a]@@W" );
    return;

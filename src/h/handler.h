@@ -86,5 +86,6 @@ void remove_shield P_((CHAR_DATA *ch, MAGIC_SHIELD *shield));
 bool check_charm_aff P_((CHAR_DATA *ch, short charm_aff));
 short get_charm_bonus P_((CHAR_DATA *ch, short charm_aff));
 ROOM_INDEX_DATA *in_loc P_((OBJ_DATA *obj));
+bool is_switched P_((CHAR_DATA *ch));
 
 #undef P_

@@ -74,6 +74,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_INTERP_H
+#include "h/interp.h"
+#endif
+
 #ifndef DEC_LUASCRIPT_H
 #include "h/luascript.h"
 #endif
@@ -88,6 +92,10 @@
 
 #ifndef DEC_MUDINFO_H
 #include "h/mudinfo.h"
+#endif
+
+#ifndef DEC_QUEST_H
+#include "h/quest.h"
 #endif
 
 #ifndef DEC_SSM_H

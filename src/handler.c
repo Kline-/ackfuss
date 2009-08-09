@@ -90,6 +90,10 @@
 #include "h/mount.h"
 #endif
 
+#ifndef DEC_QUEST_H
+#include "h/quest.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -2685,4 +2689,15 @@ ROOM_INDEX_DATA *in_loc( OBJ_DATA *obj )
   ret_val = obj->carried_by->in_room;
 
  return ret_val;
+}
+
+bool is_switched( CHAR_DATA * ch )
+{
+ if( !IS_NPC(ch) )
+  return false;
+
+ if( ch->desc == NULL )
+  return false;
+
+ return true;
 }

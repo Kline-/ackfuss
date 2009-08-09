@@ -66,6 +66,10 @@
 #include "h/hash.h"
 #endif
 
+#ifndef DEC_INTERP_H
+#include "h/interp.h"
+#endif
+
 #ifndef DEC_LUASCRIPT_H
 #include "h/luascript.h"
 #endif

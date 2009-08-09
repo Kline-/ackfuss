@@ -32,68 +32,37 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#include "h/globals.h"
+#define DEC_MAPPERC_H
 
-#ifndef DEC_COMM_H
-#include "h/comm.h"
-#endif
+#define MAX_MAP 40
+#define MAX_MAP_DIR 4
 
-#ifndef DEC_HANDLER_H
-#include "h/handler.h"
-#endif
+#define DOOR_LOCKED -1
+#define DOOR_CLOSED -2
+#define DOOR_OPEN -3
+#define DOOR_NS -4
+#define DOOR_EW -5
+#define DOOR_NULL -6
 
-DO_FUN(do_sdelete)
+#define LOS_INITIAL -5
+#define MAP_Y		9
+
+struct room_content_type
 {
-   DESCRIPTOR_DATA *d;
-   char strsave[MAX_INPUT_LENGTH];
-   char arg1[MAX_INPUT_LENGTH];
-   char *pArg;
-   char cEnd;
-   char buf[MAX_INPUT_LENGTH];
+   char string[10];
+};
 
-   if( IS_NPC( ch ) )
-      return;
-   strcpy( buf, ch->name.c_str() );
-   snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", capitalize( buf ) );
+struct room_content_type contents[MAX_MAP][MAX_MAP];
 
-   pArg = arg1;
-   while( isspace( *argument ) )
-      argument++;
+int map[MAX_MAP][MAX_MAP];
 
-   cEnd = ' ';
-   if( *argument == '\'' || *argument == '"' )
-      cEnd = *argument++;
+extern const char* compass_name[];
 
-   while( *argument != '\0' )
-   {
-      if( *argument == cEnd )
-      {
-         argument++;
-         break;
-      }
-      *pArg++ = *argument++;
-   }
-   *pArg = '\0';
-
-   if( ( ch->pcdata->pwd != '\0' ) && ( arg1[0] == '\0' ) )
-   {
-      send_to_char( "Syntax: pdelete <password>.\r\n", ch );
-      return;
-   }
-   if( ( ch->pcdata->pwd != '\0' ) && ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) ) )
-   {
-      WAIT_STATE( ch, 1000 );
-      send_to_char( "Wrong password.  Wait 10 seconds.\r\n", ch );
-      return;
-   }
-
-
-   unlink( strsave );
-   mudinfo.total_pfiles--;
-   send_to_char( "Character deleted.\r\n", ch );
-
-   d = ch->desc;
-   extract_char( ch, TRUE );
-   if( d != NULL )
-      close_socket( d );
-}
+struct map_info_type
+{
+   int sector_type;
+   char *display_color;
+   char *display_code;
+   char *invert_color;
+   char *desc;
+};

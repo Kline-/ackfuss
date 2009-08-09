@@ -66,12 +66,20 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_INTERP_H
+#include "h/interp.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
 #endif
 
 #ifndef DEC_MONEY_H
 #include "h/money.h"
+#endif
+
+#ifndef DEC_QUEST_H
+#include "h/quest.h"
 #endif
 
 #ifndef DEC_SSM_H

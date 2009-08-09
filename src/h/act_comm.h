@@ -23,7 +23,7 @@ DECLARE_DO_FUN(do_creator);
 DECLARE_DO_FUN(do_gossip);
 DECLARE_DO_FUN(do_crusade);
 DECLARE_DO_FUN(do_music);
-DECLARE_DO_FUN(do_quest2);
+DECLARE_DO_FUN(do_quest);
 DECLARE_DO_FUN(do_game);
 DECLARE_DO_FUN(do_race);
 DECLARE_DO_FUN(do_clan);

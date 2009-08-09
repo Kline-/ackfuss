@@ -773,11 +773,11 @@ DO_FUN(do_look)
    if( arg1[0] == '\0' || !str_cmp( arg1, "auto" ) )
    {
       /*
-       * 'look' or 'look auto' 
+       * 'look' or 'look auto'
        */
 
 
-      if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && ch->act.test(ACT_MAPPER) ) )
+      if( is_switched(ch) || ( !IS_NPC( ch ) && ch->act.test(ACT_MAPPER) ) )
       {
          send_to_char( "\r\n", ch );
          do_mapper( ch, "7" );
@@ -788,9 +788,9 @@ DO_FUN(do_look)
          snprintf( out, MSL, "%s%s%s\r\n", color_string( ch, "rooms" ), ch->in_room->name, color_string( ch, "normal" ) );
 
          send_to_char( out, ch );
-         if( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && ch->act.test(ACT_AUTOEXIT) ) )
+         if( is_switched(ch) || ( !IS_NPC( ch ) && ch->act.test(ACT_AUTOEXIT) ) )
             do_exits( ch, "auto" );
-         if( arg1[0] == '\0' || ( IS_SWITCHED( ch ) || ( !IS_NPC( ch ) && !ch->act.test(ACT_BRIEF) ) ) )
+         if( arg1[0] == '\0' || ( is_switched(ch) || ( !IS_NPC( ch ) && !ch->act.test(ACT_BRIEF) ) ) )
          {
             char *string_format( char *str, int *numlines, int width, int height, bool unjust );
             int wid = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );

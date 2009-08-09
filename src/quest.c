@@ -58,15 +58,13 @@
 #include "h/money.h"
 #endif
 
+#ifndef DEC_QUEST_H
+#include "h/quest.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
-
-/**** Local Functions ****/
-CHAR_DATA *get_quest_target args( ( int min_level, int max_level ) );
-CHAR_DATA *get_quest_giver args( ( int min_level, int max_level ) );
-OBJ_DATA *load_quest_object args( ( CHAR_DATA * target ) );
-void clear_quest args( ( void ) );
 
 extern CHAR_DATA *quest_mob;
 extern CHAR_DATA *quest_target;
@@ -77,14 +75,13 @@ extern short quest_personality;
 extern bool auto_quest;
 extern bool quest;
 
-/* 17 messages, organised by blocks for each personality 
+/* 17 messages, organised by blocks for each personality
    indented messages are for when the target mob gets killed  */
 struct qmessage_type
 {
    char *const message1;
    char *const message2;
 };
-
 
 const struct qmessage_type qmessages[4][17] = {
    {
@@ -174,7 +171,7 @@ const struct qmessage_type qmessages[4][17] = {
 		"I give up! I never want to see my %s @@lagain!" 					},
 	{ "I give up! %s @@lcan keep my %s @@lfor all I care!",
 		"I give up! I never want to see my %s @@lagain!"					},
-	{ "I give up! %s @@lcan keep my %s @@lfor all I care!", 
+	{ "I give up! %s @@lcan keep my %s @@lfor all I care!",
 		"I give up! I never want to see my %s @@lagain!"					},
 	{ "Shoot! Just forget about recovering ANYTHING for me, ok?" , 				"" },
 	{ "At Last! %s @@lhas recovered %s @@lfor me!", 						"" }
@@ -213,7 +210,7 @@ const struct qmessage_type qmessages[4][17] = {
 };
 
 
-void do_quest( CHAR_DATA * ch, char *argument )
+DO_FUN(do_iquest)
 {
    char buf[MAX_STRING_LENGTH];
    char new_long_desc[MAX_STRING_LENGTH];
@@ -293,7 +290,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       short player_count = 0, average_level = 0, total_levels = 0;
 
       /*
-       * generate a new quest! 
+       * generate a new quest!
        */
       if( quest )
       {
@@ -308,7 +305,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
       }
 
       /*
-       * Work out levels of currently playing folks 
+       * Work out levels of currently playing folks
        */
       for( d = first_desc; d; d = d->next )
       {
@@ -343,7 +340,7 @@ void do_quest( CHAR_DATA * ch, char *argument )
          return;
       }
       /*
-       * Set values on quest item for Qp, Pracs, Exp, Gold 
+       * Set values on quest item for Qp, Pracs, Exp, Gold
        */
       quest_object->value[0] = UMAX( 1, ( quest_target->level / 30 ) );
       quest_object->value[1] = UMAX( 1, ( quest_target->level / 25 ) );
@@ -553,10 +550,10 @@ void quest_inform( void )
    char buf[MAX_STRING_LENGTH];
 
    /*
-    * Work out what the mob should tell the players.... 
+    * Work out what the mob should tell the players....
     */
    /*
-    * Add random element to each case so quests look different each time? 
+    * Add random element to each case so quests look different each time?
     */
    if( quest_timer < 7 )
    {
@@ -650,7 +647,7 @@ void generate_auto_quest(  )
    short player_count = 0, average_level = 0, total_levels = 0;
 
    /*
-    * generate a new quest! 
+    * generate a new quest!
     */
    if( quest )
    {
@@ -658,7 +655,7 @@ void generate_auto_quest(  )
    }
 
    /*
-    * Work out levels of currently playing folks 
+    * Work out levels of currently playing folks
     */
    if( first_desc && first_desc->connected == CON_PLAYING )
    {
