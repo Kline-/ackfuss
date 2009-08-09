@@ -54,10 +54,12 @@
 #include "h/ssm.h"
 #endif
 
+#ifndef DEC_SYSDATA_H
+#include "h/sysdata.h"
+#endif
+
 #define KEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { field  = value; fMatch = TRUE;  break;}
 #define SKEY( literal, field, value )  if ( !str_cmp( word, literal ) ) { if (field!=NULL) free_string(field);field  = value; fMatch = TRUE;  break;}
-
-void init_sysdata args( ( void ) );
 
 extern bool wizlock;
 

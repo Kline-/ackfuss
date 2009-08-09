@@ -74,6 +74,14 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HUNT_H
+#include "h/hunt.h"
+#endif
+
+#ifndef DEC_MACROS_H
+#include "h/macros.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
 #endif
@@ -84,6 +92,10 @@
 
 #ifndef DEC_MONEY_H
 #include "h/money.h"
+#endif
+
+#ifndef DEC_RULERS_H
+#include "h/rulers.h"
 #endif
 
 #ifndef DEC_SSM_H

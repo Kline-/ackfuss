@@ -24,6 +24,7 @@ DECLARE_DO_FUN(do_down);
 int find_door P_((CHAR_DATA *ch, char *arg));
 DECLARE_DO_FUN(do_open);
 DECLARE_DO_FUN(do_close);
+bool has_key P_((CHAR_DATA *ch, int key));
 DECLARE_DO_FUN(do_lock);
 DECLARE_DO_FUN(do_unlock);
 DECLARE_DO_FUN(do_pick);

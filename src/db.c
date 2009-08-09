@@ -74,6 +74,10 @@
 #include "h/luascript.h"
 #endif
 
+#ifndef DEC_MACROS_H
+#include "h/macros.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif
@@ -82,12 +86,24 @@
 #include "h/mudinfo.h"
 #endif
 
+#ifndef DEC_OBJ_FUN_H
+#include "h/obj_fun.h"
+#endif
+
+#ifndef DEC_RULERS_H
+#include "h/rulers.h"
+#endif
+
 #ifndef DEC_SPENDQP_H
 #include "h/spendqp.h"
 #endif
 
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
+#endif
+
+#ifndef DEC_SYSDATA_H
+#include "h/sysdata.h"
 #endif
 
 #if !defined(macintosh)

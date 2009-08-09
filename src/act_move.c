@@ -78,6 +78,10 @@
 #include "h/mount.h"
 #endif
 
+#ifndef DEC_RULERS_H
+#include "h/rulers.h"
+#endif
+
 extern bool deathmatch;
 extern const short rev_dir[];
 extern const short movement_loss[];

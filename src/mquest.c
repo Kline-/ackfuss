@@ -28,6 +28,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_MACROS_H
+#include "h/macros.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif

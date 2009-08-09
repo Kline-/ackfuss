@@ -74,6 +74,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HUNT_H
+#include "h/hunt.h"
+#endif
+
 #ifndef DEC_INTERP_H
 #include "h/interp.h"
 #endif
@@ -84,6 +88,10 @@
 
 #ifndef DEC_MONEY_H
 #include "h/money.h"
+#endif
+
+#ifndef DEC_OBJ_FUN_H
+#include "h/obj_fun.h"
 #endif
 
 #ifndef DEC_SPELL_DAM_H

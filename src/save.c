@@ -70,6 +70,10 @@
 #include "h/money.h"
 #endif
 
+#ifndef DEC_OBJ_FUN_H
+#include "h/obj_fun.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif

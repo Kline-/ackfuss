@@ -80,7 +80,7 @@ static FILE *h_fp;
 void h_dequeue( void )
 {
 H_QUEUE *hunt;
- 
+
 if( !( hunt = h_head ) )
 return;
 h_head = hunt->next;
@@ -94,7 +94,7 @@ fflush( h_fp );
 dispose( hunt, sizeof( *hunt ) );
 return;
 }
- 
+
 void h_clear( void )
 {
 #ifdef DEBUG_HUNT_CODE
@@ -260,7 +260,6 @@ void end_hunt( CHAR_DATA * ch )
     ch->searching.clear();
 }
 
-bool has_key args( ( CHAR_DATA * ch, int key ) );
 void hunt_move( CHAR_DATA * mob, short dir )
 {
    EXIT_DATA *exit = mob->in_room->exit[dir];

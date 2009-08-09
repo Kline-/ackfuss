@@ -54,16 +54,9 @@
 #include "h/magic.h"
 #endif
 
-DECLARE_OBJ_FUN( objfun_giggle );   /* test obj_fun   */
-DECLARE_OBJ_FUN( objfun_cast_fight );  /* Casts in fights   */
-DECLARE_OBJ_FUN( objfun_sword_aggro ); /* starts fights  */
-DECLARE_OBJ_FUN( objfun_soul_moan );   /* moaning souls  */
-DECLARE_OBJ_FUN( objfun_infused_soul );   /* objs with a soul in them */
-DECLARE_OBJ_FUN( objfun_flaming );  /* test obj_fun   */
-DECLARE_OBJ_FUN( objfun_healing );  /* test obj_fun   */
-DECLARE_OBJ_FUN( objfun_dispeller );   /* test obj_fun   */
-DECLARE_OBJ_FUN( objfun_regen ); /* test obj_fun   */
-
+#ifndef DEC_OBJ_FUN_H
+#include "h/obj_fun.h"
+#endif
 
 OBJ_FUN *obj_fun_lookup( const char *name )
 {
@@ -131,13 +124,13 @@ void print_obj_fun_lookup( char *buf )
 
 /********************* OBJFUN FUNCTIONS ********************************/
 
-void objfun_giggle( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_giggle)
 {
    if( keeper == NULL || keeper->in_room == NULL )
       return;
 
    /*
-    * Come on... it was SO annoying! 
+    * Come on... it was SO annoying!
     */
 
    if( number_percent(  ) < 5 )
@@ -149,13 +142,13 @@ void objfun_giggle( OBJ_DATA * obj, CHAR_DATA * keeper )
    return;
 }
 
-void objfun_soul_moan( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_soul_moan)
 {
    if( keeper == NULL || keeper->in_room == NULL )
       return;
 
    /*
-    * Come on... it was SO annoying! 
+    * Come on... it was SO annoying!
     */
    if( number_percent(  ) < 2 )
    {
@@ -175,7 +168,7 @@ void objfun_soul_moan( OBJ_DATA * obj, CHAR_DATA * keeper )
    return;
 }
 
-void objfun_infused_soul( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_infused_soul)
 {
 
    int sn;
@@ -231,7 +224,7 @@ void objfun_infused_soul( OBJ_DATA * obj, CHAR_DATA * keeper )
    else
    {
       /*
-       * Come on... it was SO annoying! 
+       * Come on... it was SO annoying!
        */
       if( number_percent(  ) < 2 )
       {
@@ -251,7 +244,7 @@ void objfun_infused_soul( OBJ_DATA * obj, CHAR_DATA * keeper )
    return;
 }
 
-void objfun_cast_fight( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_cast_fight)
 {
    int sn;
    CHAR_DATA *victim;
@@ -303,13 +296,13 @@ void objfun_cast_fight( OBJ_DATA * obj, CHAR_DATA * keeper )
    return;
 }
 
-void objfun_sword_aggro( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_sword_aggro)
 {
    /*
-    * Weapon 'draws' an aggro mob's attention to the player 
+    * Weapon 'draws' an aggro mob's attention to the player
     */
    /*
-    * If fighting,  make cast spells? 
+    * If fighting,  make cast spells?
     */
    CHAR_DATA *vch;
    if( obj->item_type != ITEM_WEAPON )
@@ -339,7 +332,7 @@ void objfun_sword_aggro( OBJ_DATA * obj, CHAR_DATA * keeper )
    return;
 }
 
-void objfun_flaming( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_flaming)
 {
    int sn;
    CHAR_DATA *victim;
@@ -413,7 +406,7 @@ void objfun_flaming( OBJ_DATA * obj, CHAR_DATA * keeper )
    return;
 }
 
-void objfun_healing( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_healing)
 {
    int sn;
    CHAR_DATA *victim;
@@ -483,7 +476,7 @@ void objfun_healing( OBJ_DATA * obj, CHAR_DATA * keeper )
    return;
 }
 
-void objfun_dispeller( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_dispeller)
 {
    int sn;
    CHAR_DATA *victim;
@@ -554,7 +547,7 @@ void objfun_dispeller( OBJ_DATA * obj, CHAR_DATA * keeper )
    return;
 }
 
-void objfun_regen( OBJ_DATA * obj, CHAR_DATA * keeper )
+OBJ_FUN(objfun_regen)
 {
    if( keeper == NULL || keeper->in_room == NULL )
       return;

@@ -86,8 +86,16 @@
 #include "h/money.h"
 #endif
 
+#ifndef DEC_OBJ_FUN_H
+#include "h/obj_fun.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
+#endif
+
+#ifndef DEC_SYSDATA_H
+#include "h/sysdata.h"
 #endif
 
 /* This program provides the interpreting of building commands */

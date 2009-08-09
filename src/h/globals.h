@@ -168,26 +168,8 @@ extern CHAN_HISTORY chan_history;
 /* YUCK! */
 extern char *target_name;
 
-/**************************
- * This bunch of commands *
- * added by Stephen ;)    *
- **************************/
 DECLARE_DO_FUN( do_exlist );
 DECLARE_DO_FUN( do_vlist );
 DECLARE_DO_FUN( do_rename );
-DECLARE_DO_FUN( do_rbid );
-DECLARE_DO_FUN( do_mbid );
-DECLARE_DO_FUN( do_listspells );
-
-/****************************
- * Now the 'standard' stuff:*
- ****************************/
-DECLARE_DO_FUN( do_rauction );
-DECLARE_DO_FUN( do_mauction );
-DECLARE_DO_FUN( do_autosplit );
-DECLARE_DO_FUN( do_autoassist );
-DECLARE_DO_FUN( do_adrenaline );
-DECLARE_DO_FUN( do_rulers );
 DECLARE_DO_FUN( do_sedit );
 DECLARE_DO_FUN( do_scheck );
-DECLARE_DO_FUN( do_sysdata );

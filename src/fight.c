@@ -78,6 +78,14 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HUNT_H
+#include "h/hunt.h"
+#endif
+
+#ifndef DEC_MACROS_H
+#include "h/macros.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
 #endif

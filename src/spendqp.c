@@ -62,6 +62,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_RULERS_H
+#include "h/rulers.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif

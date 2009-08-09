@@ -74,6 +74,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HUNT_H
+#include "h/hunt.h"
+#endif
+
 #ifndef DEC_INTERP_H
 #include "h/interp.h"
 #endif

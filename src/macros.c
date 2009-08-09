@@ -50,6 +50,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_MACROS_H
+#include "h/macros.h"
+#endif
+
 void reset_gain_stats( CHAR_DATA * ch )
 {
    short index = 0;
@@ -180,7 +184,7 @@ int exp_to_level_adept( CHAR_DATA * ch )
 int exp_to_level( CHAR_DATA * ch, int p_class, int index )
 {
  /*
-  * To get remort costs, call with index == 5 
+  * To get remort costs, call with index == 5
   */
 
  int max_level = 0;
@@ -212,7 +216,7 @@ int exp_to_level( CHAR_DATA * ch, int p_class, int index )
   level = UMAX(0,ch->lvl[p_class]);  /* Grab the mortal class level */
 
  /*
-  * Adjust level to make costs higher 
+  * Adjust level to make costs higher
   */
  for( i = 0; i < MAX_CLASS; i++ )
  {
@@ -242,18 +246,18 @@ int exp_to_level( CHAR_DATA * ch, int p_class, int index )
   diff = 10;
 
  /*
-  * Discourage uneven levelling 
+  * Discourage uneven levelling
   */
  cost *= (diff / 10);
 
  /*
-  * REALLY discourage uneven levelling :P  
+  * REALLY discourage uneven levelling :P
   */
  if( (index != 5) && ((ch->level - ch->lvl[p_class]) > 25) )
   cost *= (diff / 7);
 
  /*
-  * Now multiply by order index/remort index...other factors will come here later, like race mod, etc. 
+  * Now multiply by order index/remort index...other factors will come here later, like race mod, etc.
   */
  cost *= mult;
 
@@ -376,7 +380,7 @@ int exp_for_mobile( int level, CHAR_DATA * mob )
    base_value = exp_mob_base(level);
    value = base_value;
 
-/* now we have the base for the mobs level..let's add multipliers based on the skills it has 
+/* now we have the base for the mobs level..let's add multipliers based on the skills it has
    thse multpliers should add up to no more than 150% of the base, for a total of 2.5 times base
    max exp for the mob--that's with EVERY skill in the book :)   */
 
@@ -467,7 +471,7 @@ int exp_for_mobile( int level, CHAR_DATA * mob )
 
 
 /*
- * Functions to return details regarding a PC and skill_table 
+ * Functions to return details regarding a PC and skill_table
  * Uses 2 #defined values in merc.h to determine what to return
  * These also make adapting to remort classes a lot easier - all
  * the code goes here instead of in all the skills and do_cast()

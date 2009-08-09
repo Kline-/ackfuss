@@ -1280,19 +1280,6 @@ struct eq_type
 #define SF      SPEC_FUN
 #define OBF	OBJ_FUN
 
-/* macros.c */
-bool   ok_to_use          args( ( CHAR_DATA * ch, int value ) );
-bool   check_level_use    args( ( CHAR_DATA * ch, int level ) );
-int    exp_to_level       args( ( CHAR_DATA * ch, int p_class, int index ) );
-int    exp_for_mobile     args( ( int level, CHAR_DATA * mob ) );
-int    exp_mob_base       args( ( int level ) );
-int    skill_table_lookup args( ( CHAR_DATA * ch, int sn, int return_type ) );
-int    exp_to_level_vamp  args( ( int level ) );
-int    exp_to_level_adept args( ( CHAR_DATA * ch ) );
-void   reset_gain_stats   args( ( CHAR_DATA * ch ) );
-int    exp_to_level_wolf  args( ( int level ) );
-int    get_item_value     args( ( OBJ_DATA * obj ) );
-
 
             /*------*\
 			   ) save.c (
@@ -1316,14 +1303,6 @@ void print_spec_lookup args( ( char *buf ) );
 /* social-edit.c  */
 
 void load_social_table args( ( void ) );
-
-
-          /*---------*\
-			 ) obj_fun.c (
-			 \*---------*/
-OBF *obj_fun_lookup args( ( const char *name ) );
-char *rev_obj_fun_lookup args( ( OBJ_FUN *func ) );
-void print_obj_fun_lookup args( ( char *buf ) );
 
 
          /*---------*\
@@ -1350,43 +1329,12 @@ int move_gain args( ( CHAR_DATA * ch ) );
 void write_start args( ( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch ) );
 void write_interpret args( ( CHAR_DATA * ch, char *argument ) );
 
-/* hunt.c */
-void hunt_victim args( ( CHAR_DATA * ch ) );
-void unhunt args( ( CHAR_DATA * ch ) );
-int make_hunt args( ( CHAR_DATA * ch, CHAR_DATA * victim ) );
-void hunt_obj args( ( CHAR_DATA * ch ) );
-bool make_move args( ( CHAR_DATA * ch, int vnum ) );
-char *find_path args( ( int, int, CHAR_DATA *, int, int, int ) );
-bool mob_hunt args( ( CHAR_DATA * mob ) );
-void char_hunt args( ( CHAR_DATA * ch ) );
-bool set_hunt args( ( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj, int set_flags, int rem_flags ) );
-void end_hunt args( ( CHAR_DATA * ch ) );
-short h_find_dir args(( ROOM_INDEX_DATA * room, ROOM_INDEX_DATA * target, int h_flags ));
-void hunt_move args(( CHAR_DATA * mob, short dir ));
-void h_clear args(( void ));
-
   /*
-   * update.c 
+   * update.c
    */
 
 void init_alarm_handler args( ( void ) );
 void alarm_update args( ( void ) );
-
-/*
- *      Rulers
- *
- */
-
-void save_rulers args( ( void ) );
-void load_rulers args( ( void ) );
-const char *get_ruler_title args( ( int ruler_rank, int sex ) );
-
-/*
- *  sysdat.c
- */
-void load_sysdata args( ( void ) );
-void save_sysdata args( ( void ) );
-
 
 #undef  CD
 #undef  MID

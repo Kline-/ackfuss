@@ -134,8 +134,16 @@
 #include "h/quest.h"
 #endif
 
+#ifndef DEC_RULERS_H
+#include "h/rulers.h"
+#endif
+
 #ifndef DEC_SPENDQP_H
 #include "h/spendqp.h"
+#endif
+
+#ifndef DEC_SYSDATA_H
+#include "h/sysdata.h"
 #endif
 
 #ifndef DEC_VAMPIRE_H

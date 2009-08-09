@@ -86,8 +86,16 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HUNT_H
+#include "h/hunt.h"
+#endif
+
 #ifndef DEC_INTERP_H
 #include "h/interp.h"
+#endif
+
+#ifndef DEC_MACROS_H
+#include "h/macros.h"
 #endif
 
 #ifndef DEC_MAGIC_H
@@ -98,12 +106,20 @@
 #include "h/mudinfo.h"
 #endif
 
+#ifndef DEC_OBJ_FUN_H
+#include "h/obj_fun.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
 
 #ifndef DEC_STRFUNS_H
 #include "h/strfuns.h"
+#endif
+
+#ifndef DEC_SYSDATA_H
+#include "h/sysdata.h"
 #endif
 
 extern bool merc_down;

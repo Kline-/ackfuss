@@ -12,29 +12,31 @@ o/act_info.o: act_info.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_info.h h/act_obj.h h/act_wiz.h h/board.h \
-  h/buildtab.h h/comm.h h/cursor.h h/db.h h/handler.h h/magic.h \
-  h/mapper.h h/money.h h/ssm.h
+  h/buildtab.h h/comm.h h/cursor.h h/db.h h/handler.h h/hunt.h h/macros.h \
+  h/magic.h h/mapper.h h/money.h h/rulers.h h/ssm.h
 o/act_mob.o: act_mob.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_mob.h h/act_move.h h/act_obj.h h/act_wiz.h h/db.h \
-  h/fight.h h/handler.h h/interp.h h/magic.h
+  h/fight.h h/handler.h h/hunt.h h/interp.h h/macros.h h/magic.h
 o/act_move.o: act_move.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_info.h h/act_mob.h h/act_move.h h/build.h h/comm.h \
-  h/db.h h/fight.h h/handler.h h/magic.h h/mount.h
+  h/db.h h/fight.h h/handler.h h/magic.h h/mount.h h/rulers.h
 o/act_obj.o: act_obj.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_info.h h/act_obj.h h/act_wiz.h h/comm.h h/db.h \
-  h/fight.h h/handler.h h/interp.h h/magic.h h/money.h h/quest.h h/ssm.h
+  h/fight.h h/handler.h h/hunt.h h/interp.h h/macros.h h/magic.h \
+  h/money.h h/quest.h h/ssm.h
 o/act_wiz.o: act_wiz.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_info.h h/act_mob.h h/act_obj.h h/act_wiz.h \
   h/areasave.h h/build.h h/buildtab.h h/comm.h h/db.h h/email.h h/fight.h \
-  h/handler.h h/interp.h h/magic.h h/mudinfo.h h/ssm.h
+  h/handler.h h/hunt.h h/interp.h h/macros.h h/magic.h h/mudinfo.h \
+  h/obj_fun.h h/ssm.h h/sysdata.h
 o/areachk.o: areachk.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
@@ -42,7 +44,7 @@ o/areachk.o: areachk.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
 o/areasave.o: areasave.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
-  h/act_wiz.h h/areasave.h h/build.h h/comm.h h/db.h
+  h/act_wiz.h h/areasave.h h/build.h h/comm.h h/db.h h/obj_fun.h
 o/board.o: board.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/board.h \
@@ -56,7 +58,7 @@ o/build.o: build.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
   h/act_move.h h/act_wiz.h h/areachk.h h/areasave.h h/build.h \
   h/buildare.h h/buildtab.h h/comm.h h/db.h h/handler.h h/luascript.h \
-  h/money.h h/ssm.h
+  h/money.h h/obj_fun.h h/ssm.h h/sysdata.h
 o/buildtab.o: buildtab.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h
@@ -68,8 +70,8 @@ o/comm.o: comm.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_info.h h/act_obj.h h/act_wiz.h h/comm.h h/cursor.h h/db.h \
-  h/handler.h h/interp.h h/magic.h h/money.h h/mudinfo.h h/ssm.h \
-  h/telopt.h
+  h/handler.h h/hunt.h h/interp.h h/macros.h h/magic.h h/money.h \
+  h/mudinfo.h h/ssm.h h/telopt.h
 o/const.o: const.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/magic.h \
@@ -82,8 +84,8 @@ o/db.o: db.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
   h/act_mob.h h/act_obj.h h/act_wiz.h h/comm.h h/db.h h/handler.h \
-  h/hash.h h/interp.h h/luascript.h h/money.h h/mudinfo.h h/spendqp.h \
-  h/ssm.h
+  h/hash.h h/interp.h h/luascript.h h/macros.h h/money.h h/mudinfo.h \
+  h/obj_fun.h h/rulers.h h/spendqp.h h/ssm.h h/sysdata.h
 o/dtor.o: dtor.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h \
@@ -101,14 +103,15 @@ o/fight.o: fight.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_info.h h/act_mob.h h/act_move.h h/act_obj.h h/act_wiz.h \
-  h/buildtab.h h/comm.h h/db.h h/fight.h h/handler.h h/magic.h h/money.h \
-  h/mount.h h/ssm.h
+  h/buildtab.h h/comm.h h/db.h h/fight.h h/handler.h h/hunt.h h/macros.h \
+  h/magic.h h/money.h h/mount.h h/ssm.h
 o/handler.o: handler.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_info.h h/act_mob.h h/act_move.h h/act_obj.h \
-  h/act_wiz.h h/comm.h h/db.h h/fight.h h/handler.h h/luascript.h \
-  h/magic.h h/money.h h/mount.h h/quest.h h/ssm.h
+  h/act_wiz.h h/comm.h h/db.h h/fight.h h/handler.h h/hunt.h \
+  h/luascript.h h/macros.h h/magic.h h/money.h h/mount.h h/quest.h \
+  h/ssm.h
 o/hash.o: hash.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/db.h h/hash.h
@@ -127,7 +130,7 @@ o/interp.o: interp.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/board.h h/build.h h/buildare.h h/clutch.h h/comm.h h/db.h h/email.h \
   h/enchant.h h/fight.h h/handler.h h/hunt.h h/interp.h h/magic.h \
   h/mapper.h h/money.h h/mount.h h/mudinfo.h h/pdelete.h h/quest.h \
-  h/spendqp.h h/vampire.h h/werewolf.h
+  h/rulers.h h/spendqp.h h/sysdata.h h/vampire.h h/werewolf.h
 o/lists.o: lists.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/ssm.h
@@ -138,13 +141,13 @@ o/luascript.o: luascript.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
 o/macros.o: macros.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h \
-  h/comm.h h/db.h h/handler.h
+  h/comm.h h/db.h h/handler.h h/macros.h
 o/magic.o: magic.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h h/buildtab.h h/comm.h \
-  h/db.h h/fight.h h/handler.h h/interp.h h/magic.h h/money.h \
-  h/spell_dam.h h/ssm.h
+  h/db.h h/fight.h h/handler.h h/hunt.h h/interp.h h/magic.h h/money.h \
+  h/obj_fun.h h/spell_dam.h h/ssm.h
 o/mapper.o: mapper.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
@@ -164,7 +167,7 @@ o/mount.o: mount.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
 o/mquest.o: mquest.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
-  h/comm.h h/db.h h/handler.h h/money.h
+  h/comm.h h/db.h h/handler.h h/macros.h h/money.h
 o/mudinfo.o: mudinfo.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
@@ -172,7 +175,7 @@ o/mudinfo.o: mudinfo.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
 o/obj_fun.o: obj_fun.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h \
-  h/db.h h/fight.h h/handler.h h/magic.h
+  h/db.h h/fight.h h/handler.h h/magic.h h/obj_fun.h
 o/pdelete.o: pdelete.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h \
@@ -180,7 +183,8 @@ o/pdelete.o: pdelete.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
 o/quest.o: quest.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
-  h/act_wiz.h h/comm.h h/db.h h/handler.h h/money.h h/quest.h h/ssm.h
+  h/act_wiz.h h/comm.h h/db.h h/handler.h h/hunt.h h/macros.h h/money.h \
+  h/quest.h h/ssm.h
 o/rulers.o: rulers.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h \
@@ -189,7 +193,7 @@ o/save.o: save.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_obj.h \
   h/act_wiz.h h/comm.h h/db.h h/handler.h h/hash.h h/luascript.h \
-  h/magic.h h/money.h h/ssm.h
+  h/magic.h h/money.h h/obj_fun.h h/ssm.h
 o/scheck.o: scheck.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/db.h \
@@ -205,7 +209,7 @@ o/special.o: special.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h h/comm.h \
-  h/db.h h/fight.h h/handler.h h/magic.h
+  h/db.h h/fight.h h/handler.h h/hunt.h h/magic.h
 o/spell_dam.o: spell_dam.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
@@ -215,7 +219,7 @@ o/spendqp.o: spendqp.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_info.h h/act_wiz.h h/build.h h/comm.h h/db.h \
-  h/handler.h h/ssm.h
+  h/handler.h h/rulers.h h/ssm.h
 o/ssm.o: ssm.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/db.h h/ssm.h
@@ -226,7 +230,7 @@ o/strfuns.o: strfuns.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
 o/sysdata.o: sysdata.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
-  h/act_info.h h/act_wiz.h h/comm.h h/db.h h/ssm.h
+  h/act_info.h h/act_wiz.h h/comm.h h/db.h h/ssm.h h/sysdata.h
 o/telopt.o: telopt.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/db.h \
@@ -239,8 +243,8 @@ o/update.o: update.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
   h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h h/areasave.h h/comm.h \
-  h/db.h h/fight.h h/handler.h h/interp.h h/luascript.h h/magic.h \
-  h/money.h h/mudinfo.h h/quest.h h/ssm.h
+  h/db.h h/fight.h h/handler.h h/hunt.h h/interp.h h/luascript.h \
+  h/magic.h h/money.h h/mudinfo.h h/quest.h h/ssm.h
 o/vampire.o: vampire.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
