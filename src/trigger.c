@@ -54,21 +54,9 @@
 #include "h/handler.h"
 #endif
 
-#define DEC_TRIGGER( fun )		TRIGGER_FUN  fun
-
-typedef void TRIGGER_FUN args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );
-
-struct trigger_type
-{
-   char *name;
-   bool always_extract;
-   TRIGGER_FUN *func;
-};
-
-DEC_TRIGGER( trig_transfer );
-DEC_TRIGGER( trig_restore );
-DEC_TRIGGER( trig_slay );
-DEC_TRIGGER( trig_transform );
+#ifndef DEC_TRIGGER_H
+#include "h/trigger.h"
+#endif
 
 const struct trigger_type trigger_table[] = {
    {"Transfer", FALSE, trig_transfer},
@@ -105,7 +93,7 @@ void trigger_handler( CHAR_DATA * ch, OBJ_DATA * obj, int trigger )
       return;
 
    /*
-    * Find trigger in table and call function 
+    * Find trigger in table and call function
     */
    for( a = 0; trigger_table[a].name != NULL; a++ )
       if( a == obj->value[1] )
@@ -122,7 +110,7 @@ void trigger_handler( CHAR_DATA * ch, OBJ_DATA * obj, int trigger )
    return;
 }
 
-void trig_transfer( CHAR_DATA * ch, OBJ_DATA * obj )
+TRIG_FUN(trig_transfer)
 {
    ROOM_INDEX_DATA *location;
 
@@ -149,7 +137,7 @@ void trig_transfer( CHAR_DATA * ch, OBJ_DATA * obj )
    return;
 }
 
-void trig_restore( CHAR_DATA * ch, OBJ_DATA * obj )
+TRIG_FUN(trig_restore)
 {
    act( "A beam of white light from $p sweeps over $n!", ch, obj, NULL, TO_ROOM );
    act( "A beam of white light from $p sweeps over you!", ch, obj, NULL, TO_ROOM );
@@ -160,7 +148,7 @@ void trig_restore( CHAR_DATA * ch, OBJ_DATA * obj )
    return;
 }
 
-void trig_slay( CHAR_DATA * ch, OBJ_DATA * obj )
+TRIG_FUN(trig_slay)
 {
    act( "A beam of black light from $p obliterates $n!!", ch, obj, NULL, TO_ROOM );
    act( "A beam of black light from $p obliterates you!", ch, obj, NULL, TO_CHAR );
@@ -168,7 +156,7 @@ void trig_slay( CHAR_DATA * ch, OBJ_DATA * obj )
    return;
 }
 
-void trig_transform( CHAR_DATA * ch, OBJ_DATA * obj )
+TRIG_FUN(trig_transform)
 {
    MOB_INDEX_DATA *mob;
    CHAR_DATA *cnew;

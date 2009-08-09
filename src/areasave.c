@@ -58,6 +58,10 @@
 #include "h/obj_fun.h"
 #endif
 
+#ifndef DEC_SPEC_FUN_H
+#include "h/spec_fun.h"
+#endif
+
 /* Way this works:
 	Mud reads in area files, stores details in data lists.
 	Edit rooms, objects, resets.

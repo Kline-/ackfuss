@@ -138,6 +138,14 @@
 #include "h/rulers.h"
 #endif
 
+#ifndef DEC_SCHECK_H
+#include "h/scheck.h"
+#endif
+
+#ifndef DEC_SOCIAL_EDIT_H
+#include "h/social_edit.h"
+#endif
+
 #ifndef DEC_SPENDQP_H
 #include "h/spendqp.h"
 #endif
@@ -152,6 +160,14 @@
 
 #ifndef DEC_WEREWOLF_H
 #include "h/werewolf.h"
+#endif
+
+#ifndef DEC_WIZUTIL_H
+#include "h/wizutil.h"
+#endif
+
+#ifndef DEC_WRITE_H
+#include "h/write.h"
 #endif
 
 /*

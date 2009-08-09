@@ -82,6 +82,10 @@
 #include "h/rulers.h"
 #endif
 
+#ifndef DEC_UPDATE_H
+#include "h/update.h"
+#endif
+
 extern bool deathmatch;
 extern const short rev_dir[];
 extern const short movement_loss[];

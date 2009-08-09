@@ -34,25 +34,13 @@
 
 #define DEC_TYPEDEFS_H
 
-/*
- * Accommodate old non-Ansi compilers.
- */
-#if defined(TRADITIONAL)
-#define const
-#define args( list )                    ( )
-#define DECLARE_DO_FUN( fun )           void fun( )
-#define DECLARE_SPEC_FUN( fun )         bool fun( )
-#define DECLARE_SPELL_FUN( fun )        bool fun( )
-#define DECLARE_OBJ_FUN( fun )		void fun( )
-#define DECLARE_CLUTCH_FUN( fun )       void fun( )
-#else
 #define args( list )                    list
 #define DECLARE_DO_FUN( fun )           DO_FUN    fun
 #define DECLARE_SPEC_FUN( fun )         SPEC_FUN  fun
 #define DECLARE_SPELL_FUN( fun )        SPELL_FUN fun
 #define DECLARE_OBJ_FUN( fun )          OBJ_FUN   fun
 #define DECLARE_SPEC_FUN( fun )         SPEC_FUN  fun
-#endif
+#define DECLARE_TRIG_FUN( fun )         TRIG_FUN  fun
 
 /*
  * Short scalar types.
@@ -165,12 +153,15 @@ typedef struct disabled_data DISABLED_DATA;
 typedef struct mudinfo MUDINFO;
 typedef struct lua_data LUA_DATA;
 
+typedef enum { exit_from, exit_to, exit_both } exit_status;
 /*
  * Function types.
  */
 
-#define DO_FUN(name) void (name) (CHAR_DATA *ch, char *argument)
-#define OBJ_FUN(name) void (name) (OBJ_DATA *obj, CHAR_DATA *keeper)
+#define DO_FUN(name)   void (name) (CHAR_DATA *ch, char *argument)
+#define SPEC_FUN(name) bool (name) (CHAR_DATA *ch)
+#define OBJ_FUN(name)  void (name) (OBJ_DATA *obj, CHAR_DATA *keeper)
+#define TRIG_FUN(name) void (name) (CHAR_DATA *ch, OBJ_DATA *obj)
 
 typedef void CLUTCH_FUN args( ( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj ) );
 typedef void DO_FUN     args( ( CHAR_DATA * ch, char *argument = '\0' ) );
@@ -178,3 +169,4 @@ typedef bool SPEC_FUN   args( ( CHAR_DATA * ch ) );
 typedef bool SPELL_FUN  args( ( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj ) );
 typedef void OBJ_FUN    args( ( OBJ_DATA * obj, CHAR_DATA * keeper ) );
 typedef void RET_FUN    args( ( MESSAGE_DATA *, char **, CHAR_DATA *, bool ) );
+typedef void TRIG_FUN   args( ( CHAR_DATA * ch, OBJ_DATA * obj ) );

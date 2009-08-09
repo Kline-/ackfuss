@@ -105,12 +105,20 @@
 #include "h/mudinfo.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
 
 #ifndef DEC_TELOPT_H
 #include "h/telopt.h"
+#endif
+
+#ifndef DEC_UPDATE_H
+#include "h/update.h"
 #endif
 
 const char echo_off_str[] = { IAC, WILL, TELOPT_ECHO, '\0' };

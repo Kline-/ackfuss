@@ -92,7 +92,7 @@ void load_social_table(  )
     bugf("Didn't get a count for MAX_SOCAIALS, this is bad!");
 
    /*
-    * IMPORTANT to use malloc so we can realloc later on 
+    * IMPORTANT to use malloc so we can realloc later on
     */
 
    social_table = (SOCIAL_TYPE *)malloc( sizeof( SOCIAL_TYPE ) * ( maxSocial + 1 ) );
@@ -101,7 +101,7 @@ void load_social_table(  )
       load_social( fp, &social_table[i] );
 
    /*
-    * For backwards compatibility 
+    * For backwards compatibility
     */
 
    social_table[maxSocial].name = str_dup( "" );   /* empty! */
@@ -174,7 +174,7 @@ int social_lookup( const char *name )
  */
 
 #ifndef CONST_SOCIAL
-void do_sedit( CHAR_DATA * ch, char *argument )
+DO_FUN(do_sedit)
 {
    char cmd[MAX_INPUT_LENGTH], social[MAX_INPUT_LENGTH];
    char buf[MAX_STRING_LENGTH];
@@ -215,7 +215,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
       }
 
       /*
-       * Copy all elements of old table into new table, except the deleted social 
+       * Copy all elements of old table into new table, except the deleted social
        */
       for( i = 0, j = 0; i < maxSocial + 1; i++ )
          if( i != iSocial )   /* copy, increase only if copied */
@@ -244,10 +244,10 @@ void do_sedit( CHAR_DATA * ch, char *argument )
       }
 
       /*
-       * reallocate the table 
+       * reallocate the table
        */
       /*
-       * Note that the table contains maxSocial socials PLUS one empty spot! 
+       * Note that the table contains maxSocial socials PLUS one empty spot!
        */
 
       maxSocial++;
@@ -392,7 +392,7 @@ void do_sedit( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * We have done something. update social table 
+    * We have done something. update social table
     */
 
    save_social_table(  );

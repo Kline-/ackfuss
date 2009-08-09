@@ -56,10 +56,10 @@ void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
    char *buf;
 
    /*
-    * Check that *dest != &str_empty[0]  when calling this func. 
+    * Check that *dest != &str_empty[0]  when calling this func.
     */
    /*
-    * If it is, it's because we've run out of memory. 
+    * If it is, it's because we've run out of memory.
     */
 
 
@@ -73,7 +73,7 @@ void write_start( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch )
    }
 
    /*
-    * Alloc mem. for a new buffer. 
+    * Alloc mem. for a new buffer.
     */
    buf_data = new BUF_DATA_STRUCT;
    LINK( buf_data, first_buf, last_buf, next, prev );
@@ -140,10 +140,10 @@ void write_interpret( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * We have a command. 
+    * We have a command.
     */
    /*
-    * Commands are .help .save .preview .- .clear .lines 
+    * Commands are .help .save .preview .- .clear .lines
     */
    argument++;
    if( argument[0] == '\0' || !str_prefix(argument,"save") || !str_prefix(argument,"quit") )
@@ -160,13 +160,13 @@ void write_interpret( CHAR_DATA * ch, char *argument )
       ch = buf_data->ch;
 
       /*
-       * Save routine. 
+       * Save routine.
        */
 
       if( save )
       {
          /*
-          * Check that dest still points to buf (to check for corruption) 
+          * Check that dest still points to buf (to check for corruption)
           */
          if( *dest != buf )
          {
@@ -210,7 +210,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
       UNLINK( buf_data, first_buf, last_buf, next, prev );
 
       /*
-       * Re-set char 
+       * Re-set char
        */
       ch->position = buf_data->old_char_pos;
 
@@ -223,7 +223,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
    if( !str_prefix(argument,"help") )
    {
       /*
-       * Help 
+       * Help
        */
       ch = buf_data->ch;
 
@@ -243,7 +243,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
    if( !str_prefix(argument,"replace") )
    {
       /*
-       * Mag:  I bet you take one look at this, and change it :) -S- 
+       * Mag:  I bet you take one look at this, and change it :) -S-
        */
 
       char arg1[MAX_STRING_LENGTH];
@@ -322,7 +322,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
             else
             {
                /*
-                * Do nothing (much). 
+                * Do nothing (much).
                 */
                if( npos > 0 )
                   npos--;
@@ -340,7 +340,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
       }
 
       /*
-       * -gulp-  Copy new_buf into message structure... 
+       * -gulp-  Copy new_buf into message structure...
        */
 
       src = buf;
@@ -412,10 +412,10 @@ void write_interpret( CHAR_DATA * ch, char *argument )
       int lastcol;
 
       /*
-       * Format text 
+       * Format text
        */
       /*
-       * Go through line by line, doing word wrapping 
+       * Go through line by line, doing word wrapping
        */
 
       lastcol = 79;
@@ -434,7 +434,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
                if( ( *src == '\r' ) && ( *( src + 1 ) == '\n' ) && ( *( src + 2 ) == '\r' ) )
                {
                   /*
-                   * Do not convert paragraph endings. 
+                   * Do not convert paragraph endings.
                    */
                   dest[n++] = c; /* \n */
                   dest[n++] = *( src++ ); /* \r */
@@ -447,7 +447,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
                }
 
                /*
-                * Also if there is a space on the next line, don't merge. 
+                * Also if there is a space on the next line, don't merge.
                 */
                if( ( *src == '\r' ) && ( *( src + 1 ) == ' ' ) )
                {
@@ -461,10 +461,10 @@ void write_interpret( CHAR_DATA * ch, char *argument )
 
 
                /*
-                * Otherwise convert to a space 
+                * Otherwise convert to a space
                 */
                /*
-                * Get rid of spaces at end of a line. 
+                * Get rid of spaces at end of a line.
                 */
                if( n > 0 )
                {
@@ -514,12 +514,12 @@ void write_interpret( CHAR_DATA * ch, char *argument )
          if( col >= lastcol )
          {
             /*
-             * Need to do a line break 
+             * Need to do a line break
              */
             if( srcspc == NULL )
             {
                /*
-                * there were no breakable characters on the line. 
+                * there were no breakable characters on the line.
                 */
                dest[n++] = '\n';
                dest[n++] = '\r';
@@ -540,7 +540,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
                while( *src == ' ' )
                   src++;
                /*
-                * src now points to the new line to be put in dest. 
+                * src now points to the new line to be put in dest.
                 */
                dest[n++] = '\n';
                dest[n++] = '\r';
@@ -552,7 +552,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
       }
 
       /*
-       * Get rid of spaces at end, and add a newline. 
+       * Get rid of spaces at end, and add a newline.
        */
 
       while( dest[--n] == ' ' );
@@ -561,7 +561,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
       dest[n++] = '\r';
 
       /*
-       * Copy from dest back into buffer 
+       * Copy from dest back into buffer
        */
 
       src = buf;

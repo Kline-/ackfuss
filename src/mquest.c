@@ -36,6 +36,10 @@
 #include "h/money.h"
 #endif
 
+#ifndef DEC_SPEC_FUN_H
+#include "h/spec_fun.h"
+#endif
+
 DO_FUN(do_mquest)
 {
  CHAR_DATA *mob = NULL;

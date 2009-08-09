@@ -88,7 +88,7 @@ static void touch( char *str )
 static void clear( void )
 {
    /*
-    * Set all reference counts to 0 
+    * Set all reference counts to 0
     */
 
    BufEntry *p;
@@ -102,7 +102,7 @@ static BufEntry *dump_ptr[2];
 static long dump( void )
 {
    /*
-    * Dump strings that have ref!=usage 
+    * Dump strings that have ref!=usage
     */
 
    FILE *dumpf;
@@ -594,7 +594,7 @@ void walk_sysdata( void )
 }
 
 
-void do_scheck( CHAR_DATA * ch, char *argument )
+DO_FUN(do_scheck)
 {
    char buf[MAX_STRING_LENGTH];
    extern bool disable_timer_abort;

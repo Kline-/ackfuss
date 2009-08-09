@@ -1256,6 +1256,13 @@ struct clutch_type
    CLUTCH_FUN *func_name;  /* The name of the function.... */
 };
 
+struct trigger_type
+{
+   char *name;
+   bool always_extract;
+   TRIG_FUN *func;
+};
+
 struct eq_type
 {
  char *const name;
@@ -1267,79 +1274,3 @@ struct eq_type
  float mv;
  float svs;
 };
-
-/*
- * Our function prototypes.
- * One big lump ... this is every function in Merc.
- */
-#define CD      CHAR_DATA
-#define MID     MOB_INDEX_DATA
-#define OD      OBJ_DATA
-#define OID     OBJ_INDEX_DATA
-#define RID     ROOM_INDEX_DATA
-#define SF      SPEC_FUN
-#define OBF	OBJ_FUN
-
-
-            /*------*\
-			   ) save.c (
-			   \*------*/
-void save_char_obj args( ( CHAR_DATA * ch ) );
-bool load_char_obj args( ( DESCRIPTOR_DATA * d, char *name, bool system_call ) );
-void save_corpses args( ( void ) );
-void fread_corpse args( ( FILE * fp ) );
-void save_marks args( ( void ) );
-void save_bans args( ( void ) );
-char *initial args( ( const char *str ) );
-
-
-          /*---------*\
-			 ) special.c (
-			 \*---------*/
-SF *spec_lookup args( ( const char *name ) );
-char *rev_spec_lookup args( ( SPEC_FUN *func ) );
-void print_spec_lookup args( ( char *buf ) );
-
-/* social-edit.c  */
-
-void load_social_table args( ( void ) );
-
-
-         /*---------*\
-			) trigger.c (
-			\*---------*/
-
-void trigger_handler args( ( CHAR_DATA * ch, OBJ_DATA * obj, int trigger ) );
-
-
-          /*--------*\
-			 ) update.c# (
-			 \*--------*/
-void advance_level args( ( CHAR_DATA * ch, int p_class, bool show, bool remort ) );
-void gain_bloodlust args( ( CHAR_DATA * ch, int value ) );
-void gain_condition args( ( CHAR_DATA * ch, int iCond, int value ) );
-void update_handler args( ( void ) );
-bool check_rewield args( ( CHAR_DATA * ch ) );
-bool check_re_equip args( ( CHAR_DATA * ch ) );
-void auction_update args( ( void ) );
-void check_vamp args( ( CHAR_DATA * ch ) );
-int move_gain args( ( CHAR_DATA * ch ) );
-
-/* write.c */
-void write_start args( ( char **dest, RET_FUN *retfunc, void *retparm, CHAR_DATA * ch ) );
-void write_interpret args( ( CHAR_DATA * ch, char *argument ) );
-
-  /*
-   * update.c
-   */
-
-void init_alarm_handler args( ( void ) );
-void alarm_update args( ( void ) );
-
-#undef  CD
-#undef  MID
-#undef  OD
-#undef  OID
-#undef  RID
-#undef  SF
-#undef  OBF

@@ -102,6 +102,10 @@
 #include "h/quest.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif

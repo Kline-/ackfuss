@@ -78,6 +78,11 @@
 #include "h/hunt.h"
 #endif
 
+#ifdef IMC
+void imc_delete_reminfo(REMOTEINFO * p);
+void imc_request_keepalive(void);
+#endif
+
 #ifndef DEC_INTERP_H
 #include "h/interp.h"
 #endif
@@ -102,8 +107,16 @@
 #include "h/quest.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
+#endif
+
+#ifndef DEC_UPDATE_H
+#include "h/update.h"
 #endif
 
 extern POL_DATA politics_data;
@@ -126,29 +139,6 @@ extern bool quest;
 extern int quest_timer;
 extern int quest_wait;
 
-/*
- * Local functions.
- */
-int hit_gain args( ( CHAR_DATA * ch ) );
-int mana_gain args( ( CHAR_DATA * ch ) );
-void mobile_update args( ( void ) );
-void weather_update args( ( void ) );
-void char_update args( ( void ) );
-void gain_update args( ( void ) );
-void obj_update args( ( void ) );
-void aggr_update args( ( void ) );
-void objfun_update args( ( void ) );
-void rooms_update args( ( void ) );
-void quest_update args( ( void ) );
-void lua_update args ( ( void ) );
-/*
- * IMC2 keeps quietly losing sync to the server. Going to let
- * it run the keepalive routine so I can stay connected. --Kline
- */
-#ifdef IMC
-void imc_delete_reminfo args(( REMOTEINFO * p ));
-void imc_request_keepalive args(( void ));
-#endif
 int abort_threshold = BOOT_DB_ABORT_THRESHOLD;
 bool disable_timer_abort = FALSE;
 int last_checkpoint;
@@ -193,7 +183,7 @@ void reset_itimer(  )
    itimer.it_value.tv_sec = ALARM_FREQUENCY;
 
    /*
-    * start the timer - in that many CPU seconds, alarm_handler will be called 
+    * start the timer - in that many CPU seconds, alarm_handler will be called
     */
    if( setitimer( ITIMER_VIRTUAL, &itimer, NULL ) < 0 )
    {
@@ -211,17 +201,17 @@ void alarm_handler( int signo )
    int usage_now = get_user_seconds(  );
 
    /*
-    * Has there gone abort_threshold CPU seconds without alarm_update? 
+    * Has there gone abort_threshold CPU seconds without alarm_update?
     */
    if( !disable_timer_abort && ( usage_now - last_checkpoint > abort_threshold ) )
    {
       /*
-       * For the log file 
+       * For the log file
        */
       char buf[MAX_STRING_LENGTH];
 
       /*
-       * spec: log usage values 
+       * spec: log usage values
        */
       log_f( "current usage: %d, last checkpoint: %d", usage_now, last_checkpoint );
       log_f( "SSM dups: %d, loops: %d, recent: %d", ssm_dup_count, ssm_loops, ssm_recent_loops );
@@ -232,7 +222,7 @@ void alarm_handler( int signo )
    }
 
    /*
-    * The timer resets to the values specified in it_interval 
+    * The timer resets to the values specified in it_interval
     * * automatically.
     * *
     * * Spec: additionally, SIGABRT is blocked in this handler, and will
@@ -269,13 +259,10 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
 {
 
    /*
-    * class used instead of ch->p_class.  -S- 
+    * show added to allow no display of gain ( when using setclass )
     */
    /*
-    * show added to allow no display of gain ( when using setclass ) 
-    */
-   /*
-    * remort indicates remortal class or normal mortal class 
+    * remort indicates remortal class or normal mortal class
     */
 
    char buf[MAX_STRING_LENGTH];
@@ -286,7 +273,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
    int add_bloodlust, add_max_skills;
 
    /*
-    * title no longer changed..... 
+    * title no longer changed.....
     */
    if( p_class == ADVANCE_WOLF )
    {
@@ -635,7 +622,7 @@ int move_gain( CHAR_DATA * ch )
    return UMIN( static_cast<int>(gain), ch->max_move - ch->move );
 }
 
-void gain_rage( CHAR_DATA * ch )
+void rage_gain( CHAR_DATA * ch )
 {
 
    short rage_gain = 0;
@@ -661,10 +648,10 @@ void gain_rage( CHAR_DATA * ch )
 
 }
 
-void gain_bloodlust( CHAR_DATA * ch, int value )
+void bloodlust_gain( CHAR_DATA * ch, int value )
 {
    /*
-    * Kinda like gain_condition, but handles vampires -S- 
+    * Kinda like condition_gain, but handles vampires -S-
     */
 
    int condition;
@@ -676,7 +663,7 @@ void gain_bloodlust( CHAR_DATA * ch, int value )
 
    /*
     * in case vamp bites off more than he can chew ;)
-    * -Damane- 4/26/96 
+    * -Damane- 4/26/96
     */
 
    if( ( ch->pcdata->super->energy + value ) > ch->pcdata->super->energy_max )
@@ -700,7 +687,7 @@ void gain_bloodlust( CHAR_DATA * ch, int value )
    return;
 }
 
-void gain_condition( CHAR_DATA * ch, int iCond, int value )
+void condition_gain( CHAR_DATA * ch, int iCond, int value )
 {
    int condition;
 
@@ -794,28 +781,28 @@ void mobile_update( void )
 	   int_handler( ch ); Disabled for now, for bugs.  */
 
       /*
-       * That's all for sleeping / busy monster 
+       * That's all for sleeping / busy monster
        */
       if( ch->position < POS_STANDING )
          continue;
 
       /*
-       * Check for rewield, and re-equip (specials not used anymore) 
+       * Check for rewield, and re-equip (specials not used anymore)
        */
       if( ch->act.test(ACT_RE_WIELD) )
          if( check_rewield( ch ) )
             continue;
 
       if( ch->act.test(ACT_RE_EQUIP) )
-         if( check_re_equip( ch ) )
+         if( check_reequip( ch ) )
             continue;
 
       /*
-       * Check to see if mob is moving somewhere 
+       * Check to see if mob is moving somewhere
        */
 /*	if ( mob_hunt(ch) )
 	  continue;
-	if ( IS_SET( ch->act_hunt, ACT_HUNT_MOVE ) 
+	if ( IS_SET( ch->act_hunt, ACT_HUNT_MOVE )
 	&& ch->move_to != NO_VNUM )
 	{
 	   hunt_move( ch );
@@ -824,7 +811,7 @@ void mobile_update( void )
 	*/
 
       /*
-       * Scavenge 
+       * Scavenge
        */
       if( ch->act.test(ACT_SCAVENGER) && ch->in_room->first_content != NULL && number_bits( 2 ) == 0 )
       {
@@ -852,7 +839,7 @@ void mobile_update( void )
       }
 
       /*
-       * Wander 
+       * Wander
        */
       if( !ch->act.test(ACT_SENTINEL)
           && ch->leader == NULL
@@ -868,14 +855,14 @@ void mobile_update( void )
           * If ch changes position due
           * to it's or someother mob's
           * movement via MOBProgs,
-          * continue - Kahn 
+          * continue - Kahn
           */
          if( ch->position < POS_STANDING )
             continue;
       }
 
       /*
-       * Flee 
+       * Flee
        */
       if( ch->hit < ( ch->max_hit / 2 )
           && ( door = number_bits( 3 ) ) <= 5
@@ -904,13 +891,6 @@ void mobile_update( void )
 }
 
 
-
-/*
- * Update the weather.
- */
-
-
-
 void clean_donate_rooms( void )
 {
    ROOM_INDEX_DATA *room = NULL;
@@ -920,7 +900,7 @@ void clean_donate_rooms( void )
 
 
    /*
-    * normal donate rooms 
+    * normal donate rooms
     */
    if( ( room = get_room_index( ROOM_VNUM_MISC_DONATE ) ) != NULL )
    {
@@ -982,7 +962,7 @@ void clean_donate_rooms( void )
    }
 
    /*
-    * clan donate rooms 
+    * clan donate rooms
     */
    for( looper = 1; looper < MAX_CLAN; looper++ )
    {
@@ -1009,6 +989,7 @@ void clean_donate_rooms( void )
       }
    }
 }
+
 void weather_update( void )
 {
    char buf[MSL];
@@ -1358,7 +1339,7 @@ void char_update( void )
       }
 
       if( !IS_NPC( ch ) && IS_WOLF( ch ) )
-         gain_rage( ch );
+         rage_gain( ch );
 
       /*
        * Find dude with oldest save time.
@@ -1385,7 +1366,7 @@ void char_update( void )
       if( ch->position >= POS_STUNNED )
       {
          /*
-          * -S- mod. 
+          * -S- mod.
           */
          if( ch->position != POS_WRITING && ch->position != POS_BUILDING )
          {
@@ -1461,19 +1442,19 @@ void char_update( void )
           */
          if( ( IS_VAMP( ch ) ) && ( !IS_NPC( ch ) ) )
          {
-            gain_bloodlust( ch, 0 - number_range( 1, 2 ) );
+            bloodlust_gain( ch, 0 - number_range( 1, 2 ) );
             check_vamp( ch );
          }
 
          if( !check_charm_aff(ch,CHARM_AFF_HUNGERLESS) )
-          gain_condition( ch, COND_THIRST, 0 - number_range( 1, 2 ) );
+          condition_gain( ch, COND_THIRST, 0 - number_range( 1, 2 ) );
          if( ch->pcdata->condition[COND_THIRST] <= 10 )
             ch->pcdata->condition[COND_THIRST] = 10;
-         gain_condition( ch, COND_DRUNK, 0 - number_range( 1, 2 ) );
+         condition_gain( ch, COND_DRUNK, 0 - number_range( 1, 2 ) );
          if( !IS_VAMP( ch ) )
          {
           if( !check_charm_aff(ch,CHARM_AFF_HUNGERLESS) )
-            gain_condition( ch, COND_FULL, 0 - number_range( 1, 2 ) );
+            condition_gain( ch, COND_FULL, 0 - number_range( 1, 2 ) );
 
          }
       }
@@ -1626,7 +1607,7 @@ void char_update( void )
 void check_vamp( CHAR_DATA * ch )
 {
    /*
-    * If vampire is outside, then (s)he suffers damage 
+    * If vampire is outside, then (s)he suffers damage
     */
 
    if( is_affected( ch, skill_lookup( "cloak:darkness" ) ) )
@@ -1635,7 +1616,7 @@ void check_vamp( CHAR_DATA * ch )
    if( IS_OUTSIDE( ch ) && !IS_SET( ch->in_room->affected_by, ROOM_BV_SHADE ) && time_info.hour > 5 && time_info.hour < 19 )
    {
       /*
-       * Oh dear 
+       * Oh dear
        */
       int dam;
 
@@ -1655,7 +1636,7 @@ void check_vamp( CHAR_DATA * ch )
             break;
       }
       /*
-       * Take bloodlust into account when calculating dam! 
+       * Take bloodlust into account when calculating dam!
        */
 
       dam *= 40 - ch->pcdata->super->level;
@@ -1781,7 +1762,7 @@ void obj_update( void )
       }
 /*
       if ( obj->in_room == NULL )
-        continue; 
+        continue;
       if ( obj->item_type == ITEM_CORPSE_NPC )
         continue;
 */
@@ -1910,7 +1891,7 @@ void rooms_update( void )
 
          /*
           * if ( room->first_room_affect == NULL )
-          * continue;   
+          * continue;
           */
 
          if( !room->mark_list.empty() )
@@ -2053,7 +2034,7 @@ void update_handler( void )
        */
 
       /*
-       * perm_update( ); 
+       * perm_update( );
        */
    }
 
@@ -2088,7 +2069,7 @@ bool check_rewield( CHAR_DATA * ch )
 
 
       /*
-       * Then check inventory and room for any weapons 
+       * Then check inventory and room for any weapons
        */
       for( obj = ch->in_room->first_content; obj != NULL; obj = obj->next_in_room )
       {
@@ -2121,7 +2102,7 @@ bool check_rewield( CHAR_DATA * ch )
       if( weapon != NULL )
       {
          /*
-          * Now make the mob get the weapon 
+          * Now make the mob get the weapon
           */
          if( pickup )
             get_obj( ch, weapon, NULL );
@@ -2129,7 +2110,7 @@ bool check_rewield( CHAR_DATA * ch )
          do_wear( ch, weapon->name );
 
          /*
-          * Check is mob wielded weapon ok... 
+          * Check is mob wielded weapon ok...
           */
          if( weapon->wear_loc == WEAR_NONE && weapon != quest_object )
          {
@@ -2147,7 +2128,7 @@ bool check_rewield( CHAR_DATA * ch )
    return FALSE;
 }
 
-bool check_re_equip( CHAR_DATA * ch )
+bool check_reequip( CHAR_DATA * ch )
 {
    OBJ_DATA *obj;
    OBJ_DATA *obj2;
@@ -2171,7 +2152,7 @@ bool check_re_equip( CHAR_DATA * ch )
    if( number_percent(  ) < chance )
    {
       /*
-       * Check each armor in room against ch's equipment 
+       * Check each armor in room against ch's equipment
        */
 
       ident = FALSE;
@@ -2187,13 +2168,13 @@ bool check_re_equip( CHAR_DATA * ch )
          if( obj->item_type == ITEM_ARMOR )
          {
             /*
-             * Check this object against our equiped objects 
+             * Check this object against our equiped objects
              */
             ident = FALSE;
             for( obj2 = ch->first_carry; obj2 != NULL; obj2 = obj2->next_in_carry_list )
             {
                /*
-                * Only scan against worn objects. 
+                * Only scan against worn objects.
                 * * If obj2 is being worn in a position that obj can be worn in,
                 * * and obj2->value[0] is better, then choose it.
                 */
@@ -2209,7 +2190,7 @@ bool check_re_equip( CHAR_DATA * ch )
             }
 
             /*
-             * Found no match for locations, so get and wear. 
+             * Found no match for locations, so get and wear.
              */
             if( !ident )
             {
@@ -2228,12 +2209,12 @@ bool check_re_equip( CHAR_DATA * ch )
 
       /*
        * MAG Modification. Only check one item each time, against currently
-       * worn object. 
+       * worn object.
        */
 
       /*
        * Check one inv item against worn eq, incase we've picked up some nicer
-       * stuff 
+       * stuff
        */
 
       objnum = number_percent(  ) * ch->carry_number / 100;
@@ -2271,7 +2252,7 @@ bool check_re_equip( CHAR_DATA * ch )
       if( armor->carried_by != ch )
       {
          /*
-          * Pick up off ground 
+          * Pick up off ground
           */
          if( pickup )
          {
@@ -2280,7 +2261,7 @@ bool check_re_equip( CHAR_DATA * ch )
          }
 
          /*
-          * Now make the mob get the armor 
+          * Now make the mob get the armor
           */
          if( pickup )
             get_obj( ch, armor, NULL );
@@ -2289,7 +2270,7 @@ bool check_re_equip( CHAR_DATA * ch )
       do_wear( ch, armor->name );
 
       /*
-       * Check is mob wielded weapon ok... 
+       * Check is mob wielded weapon ok...
        */
       if( armor->wear_loc == WEAR_NONE && armor != quest_object )
       {
@@ -2305,7 +2286,7 @@ bool check_re_equip( CHAR_DATA * ch )
       if( light->carried_by != ch )
       {
          /*
-          * Pick up off ground 
+          * Pick up off ground
           */
          if( pickup )
          {
@@ -2314,7 +2295,7 @@ bool check_re_equip( CHAR_DATA * ch )
          }
 
          /*
-          * Now make the mob get the light 
+          * Now make the mob get the light
           */
          if( pickup )
             get_obj( ch, light, NULL );
@@ -2323,7 +2304,7 @@ bool check_re_equip( CHAR_DATA * ch )
       do_wear( ch, light->name );
 
       /*
-       * Check is mob wielded weapon ok... 
+       * Check is mob wielded weapon ok...
        */
       if( light->wear_loc == WEAR_NONE && light != quest_object )
       {
@@ -2345,11 +2326,11 @@ void auction_update( void )
    bool good_seller = false, good_buyer = false;
 
    /*
-    * Stages: 0) No/New bid.  
+    * Stages: 0) No/New bid.
     * 1) Waiting.  (If no bid here, then give up next time)
-    * 2) Going once.  
-    * 3) Going Twice.  
-    * 4) GONE! 
+    * 2) Going once.
+    * 3) Going Twice.
+    * 4) GONE!
     */
 
    if( auction_item == NULL )
@@ -2529,7 +2510,7 @@ void lua_update( )
  list<LUA_DATA *>::iterator li;
  string str;
  string arg;
- 
+
  for( li = lua_list.begin(); li != lua_list.end(); li++ )
  {
   lua = *li;
@@ -2540,6 +2521,6 @@ void lua_update( )
   arg += "";
   //call_lua(lua,str,arg);
  }
- 
+
  return;
 }

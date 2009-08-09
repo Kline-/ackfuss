@@ -98,8 +98,20 @@
 #include "h/mount.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
+#ifndef DEC_SPEC_FUN_H
+#include "h/spec_fun.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
+#endif
+
+#ifndef DEC_UPDATE_H
+#include "h/update.h"
 #endif
 
 bool deathmatch;
@@ -1366,7 +1378,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
       {
          do_get( ch, "all from corpse" );
          do_sacrifice( ch, "corpse" );
-         check_re_equip( ch );
+         check_reequip( ch );
          check_rewield( ch );
       }
 

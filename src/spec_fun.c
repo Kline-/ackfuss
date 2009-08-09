@@ -78,44 +78,13 @@
 #include "h/magic.h"
 #endif
 
-/*
- * The following special functions are available for mobiles.
- */
-DECLARE_SPEC_FUN( spec_breath_any );
-DECLARE_SPEC_FUN( spec_breath_acid );
-DECLARE_SPEC_FUN( spec_breath_fire );
-DECLARE_SPEC_FUN( spec_breath_frost );
-DECLARE_SPEC_FUN( spec_breath_gas );
-DECLARE_SPEC_FUN( spec_breath_lightning );
-DECLARE_SPEC_FUN( spec_cast_adept );
-DECLARE_SPEC_FUN( spec_cast_cleric );
-DECLARE_SPEC_FUN( spec_cast_judge );
-DECLARE_SPEC_FUN( spec_cast_mage );
-DECLARE_SPEC_FUN( spec_cast_undead );
-DECLARE_SPEC_FUN( spec_executioner );
-DECLARE_SPEC_FUN( spec_fido );
-DECLARE_SPEC_FUN( spec_guard );
-DECLARE_SPEC_FUN( spec_janitor );
-DECLARE_SPEC_FUN( spec_mayor );
-DECLARE_SPEC_FUN( spec_poison );
-DECLARE_SPEC_FUN( spec_thief );
-DECLARE_SPEC_FUN( spec_policeman );
-DECLARE_SPEC_FUN( spec_cast_cadaver );
-DECLARE_SPEC_FUN( spec_undead );
-DECLARE_SPEC_FUN( spec_stephen );
-DECLARE_SPEC_FUN( spec_rewield );
-DECLARE_SPEC_FUN( spec_sylai_priest );
-DECLARE_SPEC_FUN( spec_cast_bigtime );
-DECLARE_SPEC_FUN( spec_sage );
-DECLARE_SPEC_FUN( spec_wizardofoz );
-DECLARE_SPEC_FUN( spec_vamp_hunter );
-DECLARE_SPEC_FUN( spec_mino_guard );
+#ifndef DEC_SPEC_FUN_H
+#include "h/spec_fun.h"
+#endif
 
 /*
  * Given a name, return the appropriate spec fun.
  */
-
-
 SPEC_FUN *spec_lookup( const char *name )
 {
    if( !str_cmp( name, "spec_breath_any" ) )
@@ -144,8 +113,6 @@ SPEC_FUN *spec_lookup( const char *name )
       return spec_executioner;
    if( !str_cmp( name, "spec_fido" ) )
       return spec_fido;
-   if( !str_cmp( name, "spec_guard" ) )
-      return spec_policeman;
    if( !str_cmp( name, "spec_janitor" ) )
       return spec_janitor;
    if( !str_cmp( name, "spec_mayor" ) )
@@ -170,8 +137,6 @@ SPEC_FUN *spec_lookup( const char *name )
       return spec_cast_bigtime;
    if( !str_cmp( name, "spec_sage" ) )
       return spec_sage;
-   if( !str_cmp( name, "spec_wizardofoz" ) )
-      return spec_wizardofoz;
    if( !str_cmp( name, "spec_vamp_hunter" ) )
       return spec_vamp_hunter;
    if( !str_cmp( name, "spec_mino_guard" ) )
@@ -211,8 +176,6 @@ char *rev_spec_lookup( SPEC_FUN *func )
       return "spec_executioner";
    if( func == spec_fido )
       return "spec_fido";
-   if( func == spec_guard )
-      return "spec_policeman";
    if( func == spec_janitor )
       return "spec_janitor";
    if( func == spec_mayor )
@@ -237,8 +200,6 @@ char *rev_spec_lookup( SPEC_FUN *func )
       return "spec_cast_bigtime";
    if( func == spec_sage )
       return "spec_sage";
-   if( func == spec_wizardofoz )
-      return "spec_wizardofoz";
    if( func == spec_vamp_hunter )
       return "spec_vamp_hunter";
    if( func == spec_mino_guard )
@@ -262,7 +223,6 @@ void print_spec_lookup( char *buf )
    strncat( buf, "       spec_cast_undead        \r\n", MSL );
    strncat( buf, "       spec_executioner        \r\n", MSL );
    strncat( buf, "       spec_fido               \r\n", MSL );
-   strncat( buf, "       spec_guard              \r\n", MSL );
    strncat( buf, "       spec_janitor            \r\n", MSL );
    strncat( buf, "       spec_mayor              \r\n", MSL );
    strncat( buf, "       spec_poison             \r\n", MSL );
@@ -272,7 +232,6 @@ void print_spec_lookup( char *buf )
    strncat( buf, "       spec_undead             \r\n", MSL );
    strncat( buf, "       spec_rewield            \r\n", MSL );
    strncat( buf, "	 spec_cast_bigtime       \r\n", MSL );
-   strncat( buf, "       spec_wizardofoz         \r\n", MSL );
    strncat( buf, "       spec_vamp_hunter (Int mobs only) \r\n", MSL );
    strncat( buf, "       spec_mino_guard \r\n", MSL );
 
@@ -311,7 +270,7 @@ bool dragon( CHAR_DATA * ch, char *spell_name )
 /*
  * Special procedures for mobiles.
  */
-bool spec_breath_any( CHAR_DATA * ch )
+SPEC_FUN(spec_breath_any)
 {
    if( ch->position != POS_FIGHTING )
       return FALSE;
@@ -338,28 +297,28 @@ bool spec_breath_any( CHAR_DATA * ch )
 
 
 
-bool spec_breath_acid( CHAR_DATA * ch )
+SPEC_FUN(spec_breath_acid)
 {
    return dragon( ch, "acid breath" );
 }
 
 
 
-bool spec_breath_fire( CHAR_DATA * ch )
+SPEC_FUN(spec_breath_fire)
 {
    return dragon( ch, "fire breath" );
 }
 
 
 
-bool spec_breath_frost( CHAR_DATA * ch )
+SPEC_FUN(spec_breath_frost)
 {
    return dragon( ch, "frost breath" );
 }
 
 
 
-bool spec_breath_gas( CHAR_DATA * ch )
+SPEC_FUN(spec_breath_gas)
 {
    int sn;
 
@@ -374,14 +333,14 @@ bool spec_breath_gas( CHAR_DATA * ch )
 
 
 
-bool spec_breath_lightning( CHAR_DATA * ch )
+SPEC_FUN(spec_breath_lightning)
 {
    return dragon( ch, "lightning breath" );
 }
 
 
 
-bool spec_cast_adept( CHAR_DATA * ch )
+SPEC_FUN(spec_cast_adept)
 {
    CHAR_DATA *victim;
    int cl;  /* cast level */
@@ -517,7 +476,7 @@ bool spec_cast_adept( CHAR_DATA * ch )
 
 
 
-bool spec_cast_cleric( CHAR_DATA * ch )
+SPEC_FUN(spec_cast_cleric)
 {
    CHAR_DATA *victim;
    char *spell;
@@ -587,7 +546,7 @@ bool spec_cast_cleric( CHAR_DATA * ch )
          break;
       /*
        * Can add infinite loop checking here, but its kinda pointless,
-       * * as no mob can have ch->level < 0 
+       * * as no mob can have ch->level < 0
        */
    }
 
@@ -601,7 +560,7 @@ bool spec_cast_cleric( CHAR_DATA * ch )
 
 
 
-bool spec_cast_judge( CHAR_DATA * ch )
+SPEC_FUN(spec_cast_judge)
 {
    CHAR_DATA *victim;
    char *spell;
@@ -626,7 +585,7 @@ bool spec_cast_judge( CHAR_DATA * ch )
 
 
 
-bool spec_cast_mage( CHAR_DATA * ch )
+SPEC_FUN(spec_cast_mage)
 {
    CHAR_DATA *victim;
    char *spell;
@@ -692,7 +651,7 @@ bool spec_cast_mage( CHAR_DATA * ch )
          break;
       /*
        * Can add infinite loop checking here, but its kinda pointless,
-       * * as no mob can have ch->level < 0.  -- Alty 
+       * * as no mob can have ch->level < 0.  -- Alty
        */
    }
 
@@ -706,7 +665,7 @@ bool spec_cast_mage( CHAR_DATA * ch )
 
 
 
-bool spec_cast_undead( CHAR_DATA * ch )
+SPEC_FUN(spec_cast_undead)
 {
    CHAR_DATA *victim;
    char *spell;
@@ -770,7 +729,7 @@ bool spec_cast_undead( CHAR_DATA * ch )
          break;
       /*
        * Can add infinite loop checking here, but its kinda pointless,
-       * * as no mob can have ch->level < 0. -- Alty 
+       * * as no mob can have ch->level < 0. -- Alty
        */
    }
 
@@ -783,7 +742,7 @@ bool spec_cast_undead( CHAR_DATA * ch )
 
 
 
-bool spec_executioner( CHAR_DATA * ch )
+SPEC_FUN(spec_executioner)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
@@ -837,7 +796,7 @@ bool spec_executioner( CHAR_DATA * ch )
    return TRUE;
 }
 
-bool spec_mino_guard( CHAR_DATA * ch )
+SPEC_FUN(spec_mino_guard)
 {
 
    CHAR_DATA *victim;
@@ -877,7 +836,7 @@ bool spec_mino_guard( CHAR_DATA * ch )
 }
 
 
-bool spec_fido( CHAR_DATA * ch )
+SPEC_FUN(spec_fido)
 {
    OBJ_DATA *corpse;
    OBJ_DATA *obj;
@@ -905,16 +864,7 @@ bool spec_fido( CHAR_DATA * ch )
    return FALSE;
 }
 
-
-
-bool spec_guard( CHAR_DATA * ch )
-{
-   return spec_policeman( ch );
-}
-
-
-
-bool spec_janitor( CHAR_DATA * ch )
+SPEC_FUN(spec_janitor)
 {
    OBJ_DATA *trash;
 
@@ -939,7 +889,7 @@ bool spec_janitor( CHAR_DATA * ch )
 
 
 
-bool spec_mayor( CHAR_DATA * ch )
+SPEC_FUN(spec_mayor)
 {
    static const char open_path[] = "W3a3003b33000c111d0d111Oe333333Oe22c222112212111a1S.";
 
@@ -1037,7 +987,7 @@ bool spec_mayor( CHAR_DATA * ch )
 
 
 
-bool spec_poison( CHAR_DATA * ch )
+SPEC_FUN(spec_poison)
 {
    CHAR_DATA *victim;
 
@@ -1053,7 +1003,7 @@ bool spec_poison( CHAR_DATA * ch )
 
 
 
-bool spec_thief( CHAR_DATA * ch )
+SPEC_FUN(spec_thief)
 {
    CHAR_DATA *victim;
 
@@ -1076,7 +1026,7 @@ bool spec_thief( CHAR_DATA * ch )
    return FALSE;
 }
 
-bool spec_policeman( CHAR_DATA * ch )
+SPEC_FUN(spec_policeman)
 {
    char buf[MAX_STRING_LENGTH];
    CHAR_DATA *victim;
@@ -1125,7 +1075,7 @@ bool spec_policeman( CHAR_DATA * ch )
 }
 
 
-bool spec_cast_cadaver( CHAR_DATA * ch )
+SPEC_FUN(spec_cast_cadaver)
 {
    /*
     * Quick rip-off of spec_cast_adept, to make cadaver cast detect invis
@@ -1152,12 +1102,12 @@ bool spec_cast_cadaver( CHAR_DATA * ch )
     * OBJ_DATA *obj;
     * short    count = 0;
     * bool    match = FALSE;
-    * 
-    * 
+    *
+    *
     * if ( IS_NPC( vch ) )
     * continue;
-    * 
-    * 
+    *
+    *
     * for ( obj = ch->in_room->first_content; obj != NULL; obj = obj->in_room->first_content->next ) 
     * {
     * if ( obj->item_type != ITEM_CORPSE_PC )
@@ -1173,7 +1123,7 @@ bool spec_cast_cadaver( CHAR_DATA * ch )
     * if ( match )
     * {
     * char   buf[MAX_STRING_LENGTH];
-    * 
+    *
     * snprintf( buf, MSL, "Try 'get all %d.corpse' to recover your belongings, %s.\r\n",
     * count, PERS( ch, vch ) );
     * do_say( ch, buf );
@@ -1199,7 +1149,7 @@ bool spec_cast_cadaver( CHAR_DATA * ch )
    return FALSE;
 }
 
-bool spec_undead( CHAR_DATA * ch )
+SPEC_FUN(spec_undead)
 {
    CHAR_DATA *victim;
    CHAR_DATA *ach = NULL;
@@ -1310,7 +1260,7 @@ bool spec_undead( CHAR_DATA * ch )
    return TRUE;
 }
 
-bool spec_stephen( CHAR_DATA * ch )
+SPEC_FUN(spec_stephen)
 {
    /*
     * Award winner for daftest spec_fun of the week contest.
@@ -1330,7 +1280,7 @@ bool spec_stephen( CHAR_DATA * ch )
        return FALSE;*/
 
    /*
-    * Uhh.. sleeping mobs and the like shouldn't either. -- Alty 
+    * Uhh.. sleeping mobs and the like shouldn't either. -- Alty
     */
    if( ch->position < POS_STANDING )
       return FALSE;
@@ -1342,13 +1292,13 @@ bool spec_stephen( CHAR_DATA * ch )
        if ( room == NULL )
 	  continue;*/
    /*
-    * No checking for private rooms, etc. :P 
+    * No checking for private rooms, etc. :P
     */
 /*       break;
     }*/
 
    /*
-    * Check this loop.. -- Alty 
+    * Check this loop.. -- Alty
     */
    for( room = get_room_index( number_range( 0, 65535 ) ); !room; room = get_room_index( number_range( 0, 65535 ) ) )
       ;
@@ -1389,10 +1339,10 @@ bool spec_stephen( CHAR_DATA * ch )
    return TRUE;
 }
 
-bool spec_rewield( CHAR_DATA * ch )
+SPEC_FUN(spec_rewield)
 {
    /*
-    * If mob is fighting, try and get weapon and wield it 
+    * If mob is fighting, try and get weapon and wield it
     * * if not fighting, check room and inv to see if any better weapons
     * * -Stephen
     */
@@ -1422,7 +1372,7 @@ bool spec_rewield( CHAR_DATA * ch )
 
 
       /*
-       * Then check inventory and room for any weapons 
+       * Then check inventory and room for any weapons
        */
       for( obj = ch->in_room->first_content; obj != NULL; obj = obj->next_in_room )
       {
@@ -1455,7 +1405,7 @@ bool spec_rewield( CHAR_DATA * ch )
       if( weapon != NULL )
       {
          /*
-          * Now make the mob get the weapon 
+          * Now make the mob get the weapon
           */
          if( pickup )
             get_obj( ch, weapon, NULL );
@@ -1463,7 +1413,7 @@ bool spec_rewield( CHAR_DATA * ch )
          do_wear( ch, weapon->name );
 
          /*
-          * Check is mob wielded weapon ok... 
+          * Check is mob wielded weapon ok...
           */
          if( weapon->wear_loc == WEAR_NONE )
          {
@@ -1485,7 +1435,7 @@ bool spec_rewield( CHAR_DATA * ch )
 }
 
 
-bool spec_sylai_priest( CHAR_DATA * ch )
+SPEC_FUN(spec_sylai_priest)
 {
    /*
     * For sylai priest only.  Pushes player from overhang into pit below.
@@ -1547,7 +1497,7 @@ bool spec_sylai_priest( CHAR_DATA * ch )
 }
 
 
-bool spec_cast_bigtime( CHAR_DATA * ch )
+SPEC_FUN(spec_cast_bigtime)
 {
    CHAR_DATA *victim;
    char *spell;
@@ -1612,7 +1562,7 @@ bool spec_cast_bigtime( CHAR_DATA * ch )
          break;
       /*
        * Stop infinite recursion on low level mobs.. (ch->level < 12)
-       * * -- Alty 
+       * * -- Alty
        */
       if( crun > 10 )
          return FALSE;
@@ -1627,15 +1577,15 @@ bool spec_cast_bigtime( CHAR_DATA * ch )
 
 
 
-bool spec_sage( CHAR_DATA * ch )
+SPEC_FUN(spec_sage)
 {
 
    /*
-    * Give the Sage some life.  He should chat with player, heal too, etc 
+    * Give the Sage some life.  He should chat with player, heal too, etc
     */
 
    /*
-    * What the options are: 
+    * What the options are:
     * * W - Wake;   H - Greet;       C - make some food
     * * 1 - First Part of Story;      2-Second Part;    3-3rd part;
     * * 4- 4th part    5- 5th part;
@@ -1674,7 +1624,7 @@ bool spec_sage( CHAR_DATA * ch )
    {
       case 'D':
          /*
-          * Do Nothing. 
+          * Do Nothing.
           */
          break;
       case 'W':
@@ -1769,16 +1719,7 @@ bool spec_sage( CHAR_DATA * ch )
    return FALSE;
 }
 
-bool spec_wizardofoz( CHAR_DATA * ch )
-{
-   /*
-    * This disabled - intel mobs dropped 
-    */
-   return FALSE;
-}
-
-
-bool spec_vamp_hunter( CHAR_DATA * ch )
+SPEC_FUN(spec_vamp_hunter)
 {
 
    char buf[MAX_STRING_LENGTH];

@@ -82,6 +82,10 @@
 #include "h/magic.h"
 #endif
 
+#ifndef DEC_SPEC_FUN_H
+#include "h/spec_fun.h"
+#endif
+
 bool able_to_level( CHAR_DATA * ch )
 {
    bool in_need = FALSE;

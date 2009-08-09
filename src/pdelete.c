@@ -42,6 +42,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
 DO_FUN(do_sdelete)
 {
    DESCRIPTOR_DATA *d;

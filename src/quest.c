@@ -70,6 +70,10 @@
 #include "h/quest.h"
 #endif
 
+#ifndef DEC_SPEC_FUN_H
+#include "h/spec_fun.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif

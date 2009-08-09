@@ -74,6 +74,10 @@
 #include "h/obj_fun.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -116,16 +120,6 @@ static OBJ_DATA *rgObjNest[MAX_NEST];
 
 extern bool deathmatch;  /* Deathmatch happening?        */
 
-
-/*
- * Local functions.
- */
-void fwrite_char args( ( CHAR_DATA * ch, FILE * fp ) );
-void fwrite_obj args( ( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest ) );
-void fread_char args( ( CHAR_DATA * ch, FILE * fp ) );
-void fread_obj args( ( CHAR_DATA * ch, FILE * fp ) );
-
-void abort_wrapper( void );
 
 /* Courtesy of Yaz of 4th Realm */
 char *initial( const char *str )
@@ -211,7 +205,7 @@ void save_char_obj( CHAR_DATA * ch )
    snprintf( strsave, MIL, "%s%s", IS_NPC( ch ) ? NPC_DIR : PLAYER_DIR, cap_nocol( buf ) );
 #endif
    /*
-    * Tack on a .temp to strsave, use as tempstrsave 
+    * Tack on a .temp to strsave, use as tempstrsave
     */
 
    snprintf( tempstrsave, MIL, "%s.temp", strsave );
@@ -232,12 +226,12 @@ void save_char_obj( CHAR_DATA * ch )
    file_close(fp);
 
    /*
-    * Now make temp file the actual pfile... 
+    * Now make temp file the actual pfile...
     */
 
    rename( tempstrsave, strsave );
    /*
-    * THAT easy?? 
+    * THAT easy??
     */
 
    return;
@@ -250,11 +244,6 @@ void save_char_obj( CHAR_DATA * ch )
  */
 void fwrite_char( CHAR_DATA * ch, FILE * fp )
 {
-   /*
-    * UUURRRGGGGHHHHHH!  When writing out ch->lvl[x] no loop used,
-    * * instead, the values are just done 0,1,2,etc.. yuck.  -S- 
-    */
-
    AFFECT_DATA *paf;
    int cnt;
    int sn;
@@ -263,13 +252,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
    snprintf(time_buf,MSL,"%s",ctime(&current_time)); /* ctime adding a newline annoyed me --Kline */
    time_buf[strlen(time_buf)-1] = '\0';
-
-   /*
-    * Really cool fix for m/c prob.. *laugh* 
-    */
-   for( cnt = 0; cnt < MAX_CLASS; cnt++ )
-      if( ch->lvl[cnt] < 0 || ch->lvl[cnt] == 0 )
-         ch->lvl[cnt] = -1;
 
    fprintf( fp, "#%s\n", IS_NPC( ch ) ? "MOB" : "PLAYER" );
 
@@ -574,7 +556,7 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
 
    fprintf( fp, "ClassFlags   %d\n", obj->item_apply );
    /*
-    * ClassFlags still used to save fucking with pfiles 
+    * ClassFlags still used to save fucking with pfiles
     */
    fprintf( fp, "ItemType     %d\n", obj->item_type );
    fprintf( fp, "Weight       %d\n", obj->weight );
@@ -652,7 +634,6 @@ int cur_revision = 0;
 
 bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
 {
-   int cnt;
    char strsave[MAX_INPUT_LENGTH];
    char tempstrsave[MAX_INPUT_LENGTH];
    char *bufptr, *nmptr;
@@ -662,12 +643,11 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    bool found;
    bool is_npc;
    int oldvnum, newvnum;
-   int foo;
 
    if( hash_changed_vnums == NULL )
    {
       /*
-       * Initialise hash table for changed vnums, and read in file. 
+       * Initialise hash table for changed vnums, and read in file.
        */
       hash_changed_vnums = create_hash_table( 1024 );
 
@@ -709,38 +689,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
       ch->lua = new LUA_DATA;
       init_lua(ch);
 
-      ch->pcdata->super->energy = 24;
-      ch->pcdata->perm_str = 13;
-      ch->pcdata->perm_int = 13;
-      ch->pcdata->perm_wis = 13;
-      ch->pcdata->perm_dex = 13;
-      ch->pcdata->perm_con = 13;
-      ch->pcdata->condition[COND_THIRST] = 48;
-      ch->pcdata->pagelen = 20;
-      ch->pcdata->condition[COND_FULL] = 48;
-      ch->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
-      ch->pcdata->mana_from_gain = -1;
-      ch->pcdata->hp_from_gain = -1;
-      ch->pcdata->move_from_gain = -1;
-      ch->pcdata->hicol = 'y';
-      ch->pcdata->dimcol = 'b';
-      ch->pcdata->ruler_rank = 0;
-      for( foo = 0; foo < MAX_PEDIT; foo++ )
-         ch->pcdata->pedit_string[foo] = str_dup( "none" );
-      ch->pcdata->pedit_state = str_dup( "none" );
-      ch->pcdata->term_rows = 25;
-      ch->pcdata->term_columns = 80;
-      ch->pcdata->valid_email = FALSE;
-      ch->pcdata->email_address = str_dup( "not set" );
-      ch->pcdata->assist_msg = str_dup( "'@@eBANZAI!!@@N $N must be assisted!!@@N'" );
-      ch->pcdata->quest_points = 0;
-      for( foo = 0; foo < MAX_CLASS; foo++ )
-         ch->lvl2[foo] = -1;
-      for( cnt = 0; cnt < MAX_ALIASES; cnt++ )
-      {
-         ch->pcdata->alias_name[cnt] = str_dup( "<none>" );
-         ch->pcdata->alias[cnt] = str_dup( "<none>" );
-      }
 #ifdef IMC
       imc_initchar( ch );
 #endif
@@ -783,7 +731,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    snprintf( strsave, MIL, "%s%s%s%s", is_npc ? NPC_DIR : PLAYER_DIR, initial( buf ), "/", cap_nocol( buf ) );
 #else
    /*
-    * Convert npc names to dos compat name.... yuk 
+    * Convert npc names to dos compat name.... yuk
     */
    if( is_npc )
    {
@@ -861,7 +809,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
    if( !found && is_npc )
    {
       /*
-       * return memory for char back to system. 
+       * return memory for char back to system.
        */
     delete ch;
    }
@@ -886,13 +834,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
    const char *word;
    bool fMatch;
    int cnt;
-   /*
-    * Another fix for m/c levels.. this is getting to be a habit...
-    */
-
-   for( cnt = 0; cnt < MAX_CLASS; cnt++ )
-      ch->lvl[cnt] = -1;   /* -1 means no-use of that class */
-
 
    for( ;; )
    {
@@ -1566,14 +1507,14 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                       * One of three things:
                       * Obj Vnum was deleted
                       * Obj Vnum was moved
-                      * Obj Vnum was previously deleted 
+                      * Obj Vnum was previously deleted
                       */
                      newvnum = TEMP_VNUM;
 
                      if( OldVnum != TEMP_VNUM )
                      {
                         /*
-                         * Check on move table 
+                         * Check on move table
                          */
                         if( ( newvnum = *static_cast<int *>( get_hash_entry( hash_changed_vnums, OldVnum ) ) ) != 0 )
                         {
@@ -1589,7 +1530,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                      if( newvnum == TEMP_VNUM )
                      {
                         /*
-                         * Scan through objects, trying to find a matching description 
+                         * Scan through objects, trying to find a matching description
                          */
                         for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
                         {
@@ -1745,7 +1686,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                if( ( obj->pIndexData = get_obj_index( vnum ) ) == NULL || vnum == TEMP_VNUM )
                {
                   /*
-                   * Set flag saying that object is temporary 
+                   * Set flag saying that object is temporary
                    */
                   Temp_Obj = 1;
                   OldVnum = vnum;
@@ -1753,7 +1694,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                   obj->pIndexData = get_obj_index( vnum );
                }
                /*
-                * bug( "Fread_obj: bad vnum %d.", vnum ); This killed it. 
+                * bug( "Fread_obj: bad vnum %d.", vnum ); This killed it.
                 */
                else
                   fVnum = TRUE;
@@ -1911,14 +1852,14 @@ void fread_corpse( FILE * fp )
                       * One of three things:
                       * Obj Vnum was deleted
                       * Obj Vnum was moved
-                      * Obj Vnum was previously deleted 
+                      * Obj Vnum was previously deleted
                       */
                      newvnum = TEMP_VNUM;
 
                      if( OldVnum != TEMP_VNUM )
                      {
                         /*
-                         * Check on move table 
+                         * Check on move table
                          */
                         if( ( newvnum = *static_cast<int *>( get_hash_entry( hash_changed_vnums, OldVnum ) ) ) != 0 )
                         {
@@ -1934,7 +1875,7 @@ void fread_corpse( FILE * fp )
                      if( newvnum == TEMP_VNUM )
                      {
                         /*
-                         * Scan through objects, trying to find a matching description 
+                         * Scan through objects, trying to find a matching description
                          */
                         for( vnum = 0; nMatch < static_cast<int>(obj_index_list.size()); vnum++ )
                         {
@@ -2068,7 +2009,7 @@ void fread_corpse( FILE * fp )
                if( ( obj->pIndexData = get_obj_index( vnum ) ) == NULL || vnum == TEMP_VNUM )
                {
                   /*
-                   * Set flag saying that object is temporary 
+                   * Set flag saying that object is temporary
                    */
                   Temp_Obj = 1;
                   OldVnum = vnum;
@@ -2076,7 +2017,7 @@ void fread_corpse( FILE * fp )
                   obj->pIndexData = get_obj_index( vnum );
                }
                /*
-                * bug( "Fread_obj: bad vnum %d.", vnum ); This killed it. 
+                * bug( "Fread_obj: bad vnum %d.", vnum ); This killed it.
                 */
                else
                   fVnum = TRUE;
@@ -2164,7 +2105,7 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
 
    fprintf( fp, "ClassFlags   %d\n", obj->item_apply );
    /*
-    * ClassFlags still used to save fucking with pfiles 
+    * ClassFlags still used to save fucking with pfiles
     */
    fprintf( fp, "ItemType     %d\n", obj->item_type );
    fprintf( fp, "Weight       %d\n", obj->weight );

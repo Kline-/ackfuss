@@ -98,8 +98,20 @@
 #include "h/rulers.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
+#endif
+
+#ifndef DEC_TRIGGER_H
+#include "h/trigger.h"
+#endif
+
+#ifndef DEC_UPDATE_H
+#include "h/update.h"
 #endif
 
 char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )

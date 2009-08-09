@@ -1,0 +1,21 @@
+AckFUSS FAQ
+
+I've written this document to help answer common questions about running a copy of
+AckFUSS, and how to do some basic things. This guide will be updated as I think of
+new information to share, or have people asking me the same things over and over :)
+--Kline
+
+Q. I want to add a new .c file, how do I do this?
+
+A. Drop your new .c file in the src folder and be sure you put #include "h/globals.h"
+   at the top of it. That's all! If you start to reference functions elsewhere then
+   you'll need to include other headers as needed (comm.h for send_to_char, for example).
+
+
+Q. How do I add new commands?
+
+A. Either create a new .c file as outlined above or open an existing one and scroll
+   to the bottom. Define your command as DO_FUN(do_my_cool_cmd) and write it. Then
+   add a DECLARE_DO_FUN(do_my_cool_cmd); to the bottom of the appropriate header file
+   and place an entry for it in the cmd_table located in interp.c. If in doubt, just
+   look at another command for reference.

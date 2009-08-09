@@ -46,11 +46,13 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
-
-const char wizutil_id[] = "$Id: wizutil.c,v 1.6 1996/01/04 21:30:45 root Exp root $";
 
 /*
 ===========================================================================
@@ -82,11 +84,7 @@ the /pub/pip1773 directory.
   A rename command which renames a player. Search for do_rename to see
   more info on it.
 
-  A FOR command which executes a command at/on every player/mob/location.  
-
   Fixes since last release: None.
-  
-  
 */
 
 /* To have VLIST show more than vnum 0 - 9900, change the number below: */
@@ -115,9 +113,6 @@ char *area_name( AREA_DATA * pArea )
 
    return buffer;
 }
-
-typedef enum
-{ exit_from, exit_to, exit_both } exit_status;
 
 /* depending on status print > or < or <> between the 2 rooms */
 void room_pair( ROOM_INDEX_DATA * left, ROOM_INDEX_DATA * right, exit_status ex, char *buffer )
@@ -166,7 +161,7 @@ void checkexits( ROOM_INDEX_DATA * room, AREA_DATA * pArea, char *buffer )
          if( ( room->area == pArea ) && ( to_room->area != pArea ) )
          {  /* an exit from our area to another area */
             /*
-             * check first if it is a two-way exit 
+             * check first if it is a two-way exit
              */
 
             if( to_room->exit[opposite_dir[i]] && to_room->exit[opposite_dir[i]]->to_room == room )
@@ -181,7 +176,7 @@ void checkexits( ROOM_INDEX_DATA * room, AREA_DATA * pArea, char *buffer )
 
             if( !( to_room->exit[opposite_dir[i]] && to_room->exit[opposite_dir[i]]->to_room == room ) )
                /*
-                * two-way exits are handled in the other if 
+                * two-way exits are handled in the other if
                 */
             {
                room_pair( to_room, room, exit_from, buf );
@@ -196,7 +191,7 @@ void checkexits( ROOM_INDEX_DATA * room, AREA_DATA * pArea, char *buffer )
 }
 
 /* for now, no arguments, just list the current area */
-void do_exlist( CHAR_DATA * ch, char *argument )
+DO_FUN(do_exlist)
 {
    AREA_DATA *pArea;
    ROOM_INDEX_DATA *room;
@@ -207,7 +202,7 @@ void do_exlist( CHAR_DATA * ch, char *argument )
    for( i = 0; i < MAX_KEY_HASH; i++ ) /* room index hash table */
       for( room = room_index_hash[i]; room != NULL; room = room->next )
          /*
-          * run through all the rooms on the MUD 
+          * run through all the rooms on the MUD
           */
 
       {
@@ -221,7 +216,7 @@ void do_exlist( CHAR_DATA * ch, char *argument )
 #define COLUMNS 		5  /* number of columns */
 #define MAX_ROW 		((MAX_SHOW_VNUM / COLUMNS)+1) /* rows */
 
-void do_vlist( CHAR_DATA * ch, char *argument )
+DO_FUN(do_vlist)
 {
    int i, j, vnum;
    ROOM_INDEX_DATA *room;
@@ -240,7 +235,7 @@ void do_vlist( CHAR_DATA * ch, char *argument )
             room = get_room_index( vnum * 100 + 1 );  /* each zone has to have a XXX01 room */
             snprintf( buf2, 100, "%3d %-8.8s  ", vnum, room ? area_name( room->area ) : "-" );
             /*
-             * something there or unused ? 
+             * something there or unused ?
              */
             strncat( buffer, buf2, (MAX_ROW * 100)-1 );
          }
@@ -256,11 +251,11 @@ void do_vlist( CHAR_DATA * ch, char *argument )
  * PCs only. Previous file is deleted, if it exists.
  * Char is then saved to new file.
  * New name is checked against std. checks, existing offline players and
- * online players. 
+ * online players.
  * .gz files are checked for too, just in case.
  */
 
-void do_rename( CHAR_DATA * ch, char *argument )
+DO_FUN(do_rename)
 {
    char old_name[MAX_INPUT_LENGTH], new_name[MAX_INPUT_LENGTH], strsave[MAX_INPUT_LENGTH];
 
@@ -271,7 +266,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
    one_argument( argument, new_name );
 
    /*
-    * Trivial checks 
+    * Trivial checks
     */
    if( !old_name[0] )
    {
@@ -294,7 +289,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * allow rename self new_name,but otherwise only lower level 
+    * allow rename self new_name,but otherwise only lower level
     */
    if( ( victim != ch ) && ( get_trust( victim ) >= get_trust( ch ) ) )
    {
@@ -315,10 +310,10 @@ void do_rename( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Insert check for clan here!! 
+    * Insert check for clan here!!
     */
    /*
-    * 
+    *
     * if (victim->clan)
     * {
     * send_to_char ("This player is member of a clan, remove him from there first.\r\n",ch);
@@ -333,7 +328,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * First, check if there is a player named that off-line 
+    * First, check if there is a player named that off-line
     */
 #if !defined(machintosh) && !defined(MSDOS)
    snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
@@ -351,7 +346,7 @@ void do_rename( CHAR_DATA * ch, char *argument )
    file_close( file );
 
    /*
-    * Check .gz file ! 
+    * Check .gz file !
     */
 #if !defined(machintosh) && !defined(MSDOS)
    snprintf( strsave, MIL, "%s%s%s%s.gz", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
@@ -411,40 +406,3 @@ void do_rename( CHAR_DATA * ch, char *argument )
    act( "$n has renamed you to $N!", ch, NULL, victim, TO_VICT );
 
 }  /* do_rename */
-
-
-/* Super-AT command:
-
-FOR ALL <action>
-FOR MORTALS <action>
-FOR GODS <action>
-FOR MOBS <action>
-FOR EVERYWHERE <action>
-
-
-Executes action several times, either on ALL players (not including yourself),
-MORTALS (including trusted characters), GODS (characters with level higher than
-L_HERO), MOBS (Not recommended) or every room (not recommended either!)
-
-If you insert a # in the action, it will be replaced by the name of the target.
-
-If # is a part of the action, the action will be executed for every target
-in game. If there is no #, the action will be executed for every room containg
-at least one target, but only once per room. # cannot be used with FOR EVERY-
-WHERE. # can be anywhere in the action.
-
-Example: 
-
-FOR ALL SMILE -> you will only smile once in a room with 2 players.
-FOR ALL TWIDDLE # -> In a room with A and B, you will twiddle A then B.
-
-Destroying the characters this command acts upon MAY cause it to fail. Try to
-avoid something like FOR MOBS PURGE (although it actually works at my MUD).
-
-FOR MOBS TRANS 3054 (transfer ALL the mobs to Midgaard temple) does NOT work
-though :)
-
-The command works by transporting the character to each of the rooms with 
-target in them. Private rooms are not violated.
-
-*/

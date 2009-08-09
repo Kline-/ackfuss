@@ -117,7 +117,7 @@ struct sp_dam_str_type sp_dam_str[] = {
 void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
 {
    /*
-    * Used to display assorted death messages, based on dt 
+    * Used to display assorted death messages, based on dt
     * * max_dt == number of entries in attack table in dam_message,
     * * so we know if kill was unarmed, armed, or through spells or skills.
     * * Stephen
@@ -129,9 +129,9 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
    int vnum;
    int looper;
    /*
-    * For debugging purposes  
+    * For debugging purposes
     * snprintf( buf, MSL, "dt: %d max_dt: %d\r\n", dt, max_dt );
-    * notify( buf, 1 );  
+    * notify( buf, 1 );
     */
 
    vnum = 0;   /* Used to load up body parts.... eewwwwww! */
@@ -464,7 +464,7 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
 
 
 
-/* 
+/*
  * assumes a base damage, after initial save checks.
  * will modify damage as it sees fit for weaknesses and strengths.
  *
@@ -509,12 +509,12 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
 
 
 /* notes:
-  2000+ stress color    
+  2000+ stress color
   1000+ normal color
   0+ no backcolor
   500+ stress verb
   0+ normal verb
-  each 50 is a symbol 
+  each 50 is a symbol
 */
 
    if( dam > 2000 )
@@ -1012,7 +1012,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       group_gain( ch, victim );
 
       /*
-       * Sort out kill counts..... 
+       * Sort out kill counts.....
        */
       if( !IS_NPC( ch ) )
       {

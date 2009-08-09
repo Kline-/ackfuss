@@ -58,6 +58,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
 #ifndef DEC_SPENDQP_H
 #include "h/spendqp.h"
 #endif

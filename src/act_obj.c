@@ -90,8 +90,24 @@
 #include "h/quest.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
+#ifndef DEC_SPEC_FUN_H
+#include "h/spec_fun.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
+#endif
+
+#ifndef DEC_TRIGGER_H
+#include "h/trigger.h"
+#endif
+
+#ifndef DEC_UPDATE_H
+#include "h/update.h"
 #endif
 
 extern OBJ_DATA *quest_object;
@@ -1000,13 +1016,13 @@ DO_FUN(do_drink)
          if( liquid == LIQUID_BLOOD && IS_VAMP( ch ) && !IS_NPC( ch ) )
          {
             send_to_char( "Ahhhh! Blood!\r\n", ch );
-            gain_bloodlust( ch, amount + 2 );
+            bloodlust_gain( ch, amount + 2 );
          }
 
 
-         gain_condition( ch, COND_DRUNK, amount * liq_table[liquid].liq_affect[COND_DRUNK] );
-         gain_condition( ch, COND_FULL, amount * liq_table[liquid].liq_affect[COND_FULL] );
-         gain_condition( ch, COND_THIRST, amount * liq_table[liquid].liq_affect[COND_THIRST] );
+         condition_gain( ch, COND_DRUNK, amount * liq_table[liquid].liq_affect[COND_DRUNK] );
+         condition_gain( ch, COND_FULL, amount * liq_table[liquid].liq_affect[COND_FULL] );
+         condition_gain( ch, COND_THIRST, amount * liq_table[liquid].liq_affect[COND_THIRST] );
 
          if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
             send_to_char( "You feel drunk.\r\n", ch );
@@ -1056,12 +1072,12 @@ DO_FUN(do_drink)
          if( liquid == LIQUID_BLOOD && IS_VAMP( ch ) && !IS_NPC( ch ) )
          {
             send_to_char( "@@eAhh, only if it was fresh, would taste much better!@@N\r\n", ch );
-            gain_bloodlust( ch, 2 );
+            bloodlust_gain( ch, 2 );
          }
 
-         gain_condition( ch, COND_DRUNK, amount * liq_table[liquid].liq_affect[COND_DRUNK] );
-         gain_condition( ch, COND_FULL, amount * liq_table[liquid].liq_affect[COND_FULL] );
-         gain_condition( ch, COND_THIRST, amount * liq_table[liquid].liq_affect[COND_THIRST] );
+         condition_gain( ch, COND_DRUNK, amount * liq_table[liquid].liq_affect[COND_DRUNK] );
+         condition_gain( ch, COND_FULL, amount * liq_table[liquid].liq_affect[COND_FULL] );
+         condition_gain( ch, COND_THIRST, amount * liq_table[liquid].liq_affect[COND_THIRST] );
 
          if( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
             send_to_char( "You feel drunk.\r\n", ch );
@@ -1154,7 +1170,7 @@ DO_FUN(do_eat)
             int condition;
 
             condition = ch->pcdata->condition[COND_FULL];
-            gain_condition( ch, COND_FULL, obj->value[0] );
+            condition_gain( ch, COND_FULL, obj->value[0] );
             if( condition == 0 && ch->pcdata->condition[COND_FULL] > 0 )
                send_to_char( "You are no longer hungry.\r\n", ch );
             else if( ch->pcdata->condition[COND_FULL] > 40 )

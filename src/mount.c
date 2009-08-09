@@ -68,6 +68,10 @@
 #include "h/mount.h"
 #endif
 
+#ifndef DEC_UPDATE_H
+#include "h/update.h"
+#endif
+
 DO_FUN(do_mount)
 {
    char arg[MAX_INPUT_LENGTH];

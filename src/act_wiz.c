@@ -110,6 +110,14 @@
 #include "h/obj_fun.h"
 #endif
 
+#ifndef DEC_SAVE_H
+#include "h/save.h"
+#endif
+
+#ifndef DEC_SPEC_FUN_H
+#include "h/spec_fun.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -120,6 +128,10 @@
 
 #ifndef DEC_SYSDATA_H
 #include "h/sysdata.h"
+#endif
+
+#ifndef DEC_UPDATE_H
+#include "h/update.h"
 #endif
 
 extern bool merc_down;
@@ -5482,6 +5494,42 @@ const char *name_expand( CHAR_DATA * ch )
 /*
  * For by Erwin S. Andreasen (4u2@aabc.dk)
  */
+/* Super-AT command:
+
+FOR ALL <action>
+FOR MORTALS <action>
+FOR GODS <action>
+FOR MOBS <action>
+FOR EVERYWHERE <action>
+
+
+Executes action several times, either on ALL players (not including yourself),
+MORTALS (including trusted characters), GODS (characters with level higher than
+L_HERO), MOBS (Not recommended) or every room (not recommended either!)
+
+If you insert a # in the action, it will be replaced by the name of the target.
+
+If # is a part of the action, the action will be executed for every target
+in game. If there is no #, the action will be executed for every room containg
+at least one target, but only once per room. # cannot be used with FOR EVERY-
+WHERE. # can be anywhere in the action.
+
+Example:
+
+FOR ALL SMILE -> you will only smile once in a room with 2 players.
+FOR ALL TWIDDLE # -> In a room with A and B, you will twiddle A then B.
+
+Destroying the characters this command acts upon MAY cause it to fail. Try to
+avoid something like FOR MOBS PURGE (although it actually works at my MUD).
+
+FOR MOBS TRANS 3054 (transfer ALL the mobs to Midgaard temple) does NOT work
+though :)
+
+The command works by transporting the character to each of the rooms with
+target in them. Private rooms are not violated.
+
+*/
+
 void do_for( CHAR_DATA * ch, char *argument )
 {
    char range[MAX_INPUT_LENGTH];

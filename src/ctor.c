@@ -524,7 +524,7 @@ pc_data::pc_data()
   alias[i] = &str_empty[0];
   alias_name[i] = &str_empty[0];
  }
- assist_msg = &str_empty[0];
+ assist_msg = str_dup("'@@eBANZAI!!@@N $N must be assisted!!'");;
  bamfin = &str_empty[0];
  bamfout = &str_empty[0];
  bank_money = new MONEY_TYPE;
@@ -532,18 +532,20 @@ pc_data::pc_data()
  build_vnum = 0;
  for( short i = 0; i < MAX_COND; i++ )
   condition[i] = 0;
+ condition[COND_THIRST] = 48;
+ condition[COND_FULL] = 48;
  for( short i = 0; i < MAX_COLOR; i++ )
   color[i] = 0;
  current_brand = NULL;
  death_cnt = -1;
- dimcol = '\0';
+ dimcol = 'b';
  email_address = &str_empty[0];
  failures = 0;
  header = &str_empty[0];
- hicol = '\0';
+ hicol = 'y';
  for( short i = 0; i < MAX_HOSTS; i++ )
   host[i] = str_dup("Unknown!");
- hp_from_gain = 0;
+ hp_from_gain = -1;
  for( short i = 0; i < MAX_IGNORES; i++ )
   ignore_list[i] = &str_empty[0];
 #ifdef IMC
@@ -556,7 +558,7 @@ pc_data::pc_data()
   learned[i] = 0;
  load_msg = &str_empty[0];
  login_sex = SEX_NEUTRAL;
- mana_from_gain = 0;
+ mana_from_gain = -1;
  max_con = 0;
  max_dex = 0;
  max_int = 0;
@@ -569,25 +571,25 @@ pc_data::pc_data()
  mod_str = 0;
  mod_wis = 0;
  monitor.reset();
- move_from_gain = 0;
+ move_from_gain = -1;
  movement = 0;
  for( short i = 0; i < MAX_CLASS; i++ )
   order[i] = 0;
- pagelen = 0;
+ pagelen = 20;
  pedit_state = &str_empty[0];
  for( short i = 0; i < MAX_PEDIT; i++ )
   pedit_string[i] = &str_empty[0];
- perm_con = 0;
- perm_dex = 0;
- perm_int = 0;
- perm_str = 0;
- perm_wis = 0;
+ perm_con = 13;
+ perm_dex = 13;
+ perm_int = 13;
+ perm_str = 13;
+ perm_wis = 13;
  pnote = NULL;
  practice = 21;
  pwd = &str_empty[0];
  quest_info = new QUEST_INFO;
  quest_points = 0;
- recall_vnum = 0;
+ recall_vnum = ROOM_VNUM_TEMPLE;
  records = new RECORD_DATA;
  room_enter = &str_empty[0];
  room_exit = &str_empty[0];
@@ -595,8 +597,8 @@ pc_data::pc_data()
  save_time = 0;
  sentence = 0;
  super = new SUPER_DATA;
- term_columns = 0;
- term_rows = 0;
+ term_columns = 80;
+ term_rows = 25;
  title = &str_empty[0];
  valid_email = false;
  for( short i = 0; i < MAX_HOSTS; i++ )
@@ -726,7 +728,7 @@ shop_data::shop_data()
 super_data::super_data()
 {
  bloodline = 0;
- energy = 0;
+ energy = 24;
  energy_max = 0;
  exp = 0;
  generation = 0;

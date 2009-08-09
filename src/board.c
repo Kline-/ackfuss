@@ -58,8 +58,8 @@
 #include "h/ssm.h"
 #endif
 
-#ifndef DEC_LISTS_H
-#include "lists.h"
+#ifndef DEC_WRITE_H
+#include "h/write.h"
 #endif
 
 /**************************************************************************
