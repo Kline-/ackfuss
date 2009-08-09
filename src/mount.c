@@ -295,7 +295,7 @@ void stop_riding( CHAR_DATA * ch )
       {
          char buf[MAX_STRING_LENGTH];
 
-         snprintf( buf, MSL, "NPC %s got on a mount somehow", NAME(t_ch) );
+         snprintf( buf, MSL, "NPC %s got on a mount somehow", t_ch->get_name() );
          log_string( buf );
          t_ch->rider = NULL;
          update_pos( t_ch );

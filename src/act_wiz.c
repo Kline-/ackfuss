@@ -181,7 +181,7 @@ DO_FUN(do_transdm)
    send_to_char( "Everyone has been transferred to the DM arena.\r\n", ch );
 }
 
-void do_wizhelp( CHAR_DATA * ch, char *argument )
+DO_FUN(do_wizhelp)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -207,7 +207,7 @@ void do_wizhelp( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_bamfin( CHAR_DATA * ch, char *argument )
+DO_FUN(do_bamfin)
 {
    if( !IS_NPC( ch ) )
    {
@@ -221,7 +221,7 @@ void do_bamfin( CHAR_DATA * ch, char *argument )
 
 
 
-void do_bamfout( CHAR_DATA * ch, char *argument )
+DO_FUN(do_bamfout)
 {
    if( !IS_NPC( ch ) )
    {
@@ -235,7 +235,7 @@ void do_bamfout( CHAR_DATA * ch, char *argument )
 
 
 
-void do_deny( CHAR_DATA * ch, char *argument )
+DO_FUN(do_deny)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -295,7 +295,7 @@ void do_deny( CHAR_DATA * ch, char *argument )
 
 
 
-void do_disconnect( CHAR_DATA * ch, char *argument )
+DO_FUN(do_disconnect)
 {
    char arg[MAX_INPUT_LENGTH];
    DESCRIPTOR_DATA *d;
@@ -337,7 +337,7 @@ void do_disconnect( CHAR_DATA * ch, char *argument )
 
 
 
-void do_pardon( CHAR_DATA * ch, char *argument )
+DO_FUN(do_pardon)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -393,7 +393,7 @@ void do_pardon( CHAR_DATA * ch, char *argument )
 
 
 
-void do_echo( CHAR_DATA * ch, char *argument )
+DO_FUN(do_echo)
 {
    DESCRIPTOR_DATA *d;
 
@@ -431,7 +431,7 @@ void recho( ROOM_INDEX_DATA *room, const char *argument )
  return;
 }
 
-void do_recho( CHAR_DATA * ch, char *argument )
+DO_FUN(do_recho)
 {
    string str = argument;
    str += "\r\n";
@@ -468,7 +468,7 @@ ROOM_INDEX_DATA *find_location( CHAR_DATA * ch, char *arg )
 
 
 
-void do_transfer( CHAR_DATA * ch, char *argument )
+DO_FUN(do_transfer)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -566,7 +566,7 @@ void do_transfer( CHAR_DATA * ch, char *argument )
    send_to_char( "Ok.\r\n", ch );
 }
 
-void do_at( CHAR_DATA * ch, char *argument )
+DO_FUN(do_at)
 {
    char arg[MAX_INPUT_LENGTH];
    ROOM_INDEX_DATA *location;
@@ -619,7 +619,7 @@ void do_at( CHAR_DATA * ch, char *argument )
 
 
 
-void do_goto( CHAR_DATA * ch, char *argument )
+DO_FUN(do_goto)
 {
    char arg[MAX_INPUT_LENGTH];
    ROOM_INDEX_DATA *location;
@@ -646,7 +646,7 @@ void do_goto( CHAR_DATA * ch, char *argument )
    if( ch->fighting != NULL )
       stop_fighting( ch, TRUE );
    /*
-    * if ( !is_set(ch->act, ACT_WIZINVIS) )  
+    * if ( !is_set(ch->act, ACT_WIZINVIS) )
     */
    {
       act( "$L$n $T.", ch, NULL,
@@ -670,7 +670,7 @@ void do_goto( CHAR_DATA * ch, char *argument )
 
 
 
-void do_rstat( CHAR_DATA * ch, char *argument )
+DO_FUN(do_rstat)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -779,7 +779,7 @@ void do_rstat( CHAR_DATA * ch, char *argument )
 
 
 
-void do_ostat( CHAR_DATA * ch, char *argument )
+DO_FUN(do_ostat)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -928,7 +928,7 @@ void do_ostat( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_mstat( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mstat)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1136,7 +1136,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
 
         default:
          snprintf(buf, MSL, "Hunting victim: %s (%s)\r\n",
-                NAME(victim->hunting),
+                victim->hunting->get_name(),
                 IS_NPC(victim->hunting) ? "MOB" : "PLAYER" );
          strncat(buf1, buf, MSL);
          if (victim->huntdirs != NULL)
@@ -1153,7 +1153,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
       buf[0] = '\0';
       if( victim->hunting )
          snprintf( buf + strlen( buf ), MSL, " hunting for (%s) %s",
-                  ( IS_NPC( victim->hunting ) ? "mobile" : "player" ), NAME( victim->hunting ) );
+                  ( IS_NPC( victim->hunting ) ? "mobile" : "player" ), victim->hunting->get_name() );
       if( victim->hunt_obj )
       {
          if( victim->hunting && IS_SET( victim->hunt_flags, HUNT_CR ) && victim->hunt_obj->item_type == ITEM_CORPSE_PC )
@@ -1162,7 +1162,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
             snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", victim->hunt_obj->short_descr );
       }
       if( IS_NPC( victim ) && IS_SET( victim->hunt_flags, HUNT_MERC | HUNT_CR ) && victim->npcdata->hunt_for )
-         snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( victim->npcdata->hunt_for ) );
+         snprintf( buf + strlen( buf ), MSL, ", employed by %s", victim->npcdata->hunt_for->get_name() );
       strncat( buf, ".\r\n", MSL );
       buf[1] = UPPER( buf[1] );
       strncat( buf1, buf + 1, MSL-1 );
@@ -1186,7 +1186,7 @@ void do_mstat( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_olmsg( CHAR_DATA * ch, char *argument )
+DO_FUN(do_olmsg)
 {
  if( argument[0] == '\0' )
  {
@@ -1206,7 +1206,7 @@ void do_olmsg( CHAR_DATA * ch, char *argument )
  return;
 }
 
-void do_ofindlev( CHAR_DATA * ch, char *argument )
+DO_FUN(do_ofindlev)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1289,7 +1289,7 @@ void do_ofindlev( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_mfind( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mfind)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1345,7 +1345,7 @@ void do_mfind( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_mfindlev( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mfindlev)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1423,7 +1423,7 @@ void do_mfindlev( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_ofind( CHAR_DATA * ch, char *argument )
+DO_FUN(do_ofind)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -1484,7 +1484,7 @@ void do_ofind( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_mwhere( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mwhere)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -1506,7 +1506,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
          if( AI_MOB(victim) && victim->in_room != NULL )
          {
             snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\r\n",
-                     victim->npcdata->pIndexData->vnum, NAME(victim), victim->in_room->vnum, victim->in_room->name );
+                     victim->npcdata->pIndexData->vnum, victim->get_name(), victim->in_room->vnum, victim->in_room->name );
             send_to_char( buf, ch );
          }
 
@@ -1522,7 +1522,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\r\n",
-                  victim->npcdata->pIndexData->vnum, NAME(victim), victim->in_room->vnum, victim->in_room->name );
+                  victim->npcdata->pIndexData->vnum, victim->get_name(), victim->in_room->vnum, victim->in_room->name );
          send_to_char( buf, ch );
       }
    }
@@ -1538,7 +1538,7 @@ void do_mwhere( CHAR_DATA * ch, char *argument )
 
 
 
-void do_reboo( CHAR_DATA * ch, char *argument )
+DO_FUN(do_reboo)
 {
    send_to_char( "If you want to REBOOT, spell it out.\r\n", ch );
    return;
@@ -1546,7 +1546,7 @@ void do_reboo( CHAR_DATA * ch, char *argument )
 
 
 
-void do_reboot( CHAR_DATA * ch, char *argument )
+DO_FUN(do_reboot)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -1568,7 +1568,7 @@ void do_reboot( CHAR_DATA * ch, char *argument )
 
 
 
-void do_shutdow( CHAR_DATA * ch, char *argument )
+DO_FUN(do_shutdow)
 {
    send_to_char( "If you want to SHUTDOWN, spell it out.\r\n", ch );
    return;
@@ -1576,7 +1576,7 @@ void do_shutdow( CHAR_DATA * ch, char *argument )
 
 
 
-void do_shutdown( CHAR_DATA * ch, char *argument )
+DO_FUN(do_shutdown)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -1600,7 +1600,7 @@ void do_shutdown( CHAR_DATA * ch, char *argument )
 
 
 
-void do_snoop( CHAR_DATA * ch, char *argument )
+DO_FUN(do_snoop)
 {
    char arg[MAX_INPUT_LENGTH];
    DESCRIPTOR_DATA *d;
@@ -1668,7 +1668,7 @@ void do_snoop( CHAR_DATA * ch, char *argument )
 
 
 
-void do_switch( CHAR_DATA * ch, char *argument )
+DO_FUN(do_switch)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -1727,7 +1727,7 @@ void do_switch( CHAR_DATA * ch, char *argument )
 
 
 
-void do_return( CHAR_DATA * ch, char *argument )
+DO_FUN(do_return)
 {
    if( ch->desc == NULL )
       return;
@@ -1748,7 +1748,7 @@ void do_return( CHAR_DATA * ch, char *argument )
 
 
 
-void do_mload( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mload)
 {
    char arg[MAX_INPUT_LENGTH];
    MOB_INDEX_DATA *pMobIndex;
@@ -1777,7 +1777,7 @@ void do_mload( CHAR_DATA * ch, char *argument )
 
 
 
-void do_oload( CHAR_DATA * ch, char *argument )
+DO_FUN(do_oload)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -1851,7 +1851,7 @@ void do_oload( CHAR_DATA * ch, char *argument )
 
 
 
-void do_purge( CHAR_DATA * ch, char *argument )
+DO_FUN(do_purge)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -1903,7 +1903,7 @@ void do_purge( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_trust( CHAR_DATA * ch, char *argument )
+DO_FUN(do_trust)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -1945,7 +1945,7 @@ void do_trust( CHAR_DATA * ch, char *argument )
 
 
 
-void do_restore( CHAR_DATA * ch, char *argument )
+DO_FUN(do_restore)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2007,7 +2007,7 @@ void do_restore( CHAR_DATA * ch, char *argument )
 
 
 
-void do_freeze( CHAR_DATA * ch, char *argument )
+DO_FUN(do_freeze)
 {
    char arg[MAX_INPUT_LENGTH];
    char buf[MAX_STRING_LENGTH];
@@ -2064,7 +2064,7 @@ void do_freeze( CHAR_DATA * ch, char *argument )
 
 
 
-void do_log( CHAR_DATA * ch, char *argument )
+DO_FUN(do_log)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2137,7 +2137,7 @@ void do_log( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_noemote( CHAR_DATA * ch, char *argument )
+DO_FUN(do_noemote)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2186,7 +2186,7 @@ void do_noemote( CHAR_DATA * ch, char *argument )
 
 
 
-void do_notell( CHAR_DATA * ch, char *argument )
+DO_FUN(do_notell)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2235,7 +2235,7 @@ void do_notell( CHAR_DATA * ch, char *argument )
 
 
 
-void do_silence( CHAR_DATA * ch, char *argument )
+DO_FUN(do_silence)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -2282,7 +2282,7 @@ void do_silence( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_nopray( CHAR_DATA * ch, char *argument )
+DO_FUN(do_nopray)
 {
    /*
     * Remove victim's ability to use pray channel.. -S- 
@@ -2333,7 +2333,7 @@ void do_nopray( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_peace( CHAR_DATA * ch, char *argument )
+DO_FUN(do_peace)
 {
    CHAR_DATA *rch;
 
@@ -2349,7 +2349,7 @@ void do_peace( CHAR_DATA * ch, char *argument )
 
 
 
-void do_ban( CHAR_DATA * ch, char *argument )
+DO_FUN(do_ban)
 {
    char buf[MAX_STRING_LENGTH];
    char arg[MAX_INPUT_LENGTH];
@@ -2411,7 +2411,7 @@ void do_ban( CHAR_DATA * ch, char *argument )
 
 
 
-void do_allow( CHAR_DATA * ch, char *argument )
+DO_FUN(do_allow)
 {
    char arg[MAX_INPUT_LENGTH];
    BAN_DATA *curr;
@@ -2443,14 +2443,14 @@ void do_allow( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_deathmatc( CHAR_DATA * ch, char *argument )
+DO_FUN(do_deathmatc)
 {
    send_to_char( "If you want to start or end a DEATHMATCH, say it in full!\r\n", ch );
    return;
 }
 
 
-void do_deathmatch( CHAR_DATA * ch, char *argument )
+DO_FUN(do_deathmatch)
 {
    /*
     * This basically locks the mud, and stops saving.
@@ -2490,7 +2490,7 @@ void do_deathmatch( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_wizlock( CHAR_DATA * ch, char *argument )
+DO_FUN(do_wizlock)
 {
    char buf[MAX_INPUT_LENGTH];
    wizlock = !wizlock;
@@ -2513,7 +2513,7 @@ void do_wizlock( CHAR_DATA * ch, char *argument )
 
 
 
-void do_slookup( CHAR_DATA * ch, char *argument )
+DO_FUN(do_slookup)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -2556,7 +2556,7 @@ void do_slookup( CHAR_DATA * ch, char *argument )
 
 
 
-void do_sset( CHAR_DATA * ch, char *argument )
+DO_FUN(do_sset)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -2639,7 +2639,7 @@ void do_sset( CHAR_DATA * ch, char *argument )
 
 
 
-void do_mset( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mset)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -3344,7 +3344,7 @@ void do_mset( CHAR_DATA * ch, char *argument )
 
 
 
-void do_oset( CHAR_DATA * ch, char *argument )
+DO_FUN(do_oset)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -3591,7 +3591,7 @@ void do_oset( CHAR_DATA * ch, char *argument )
 
 
 
-void do_rset( CHAR_DATA * ch, char *argument )
+DO_FUN(do_rset)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -3648,7 +3648,7 @@ void do_rset( CHAR_DATA * ch, char *argument )
 
 
 
-void do_users( CHAR_DATA * ch, char *argument )
+DO_FUN(do_users)
 {
    char buf[MAX_STRING_LENGTH];
    char buf2[MAX_STRING_LENGTH];
@@ -3731,7 +3731,7 @@ void do_users( CHAR_DATA * ch, char *argument )
 /*
  * Thanks to Grodyn for pointing out bugs in this function.
  */
-void do_force( CHAR_DATA * ch, char *argument )
+DO_FUN(do_force)
 {
    char arg[MAX_INPUT_LENGTH];
    int trust;
@@ -3860,7 +3860,7 @@ void do_force( CHAR_DATA * ch, char *argument )
 /*
  * New routines by Dionysos.
  */
-void do_invis( CHAR_DATA * ch, char *argument )
+DO_FUN(do_invis)
 {
 
    short level;
@@ -3917,7 +3917,7 @@ void do_invis( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_holylight( CHAR_DATA * ch, char *argument )
+DO_FUN(do_holylight)
 {
    if( IS_NPC( ch ) )
       return;
@@ -3934,7 +3934,7 @@ void do_holylight( CHAR_DATA * ch, char *argument )
 
 /* Wizify and Wizbit sent in by M. B. King */
 
-void do_wizify( CHAR_DATA * ch, char *argument )
+DO_FUN(do_wizify)
 {
    char arg1[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -3973,7 +3973,7 @@ void do_wizify( CHAR_DATA * ch, char *argument )
 
 /* Idea from Talen of Vego's do_where command */
 
-void do_owhere( CHAR_DATA * ch, char *argument )
+DO_FUN(do_owhere)
 {
    char buf[MAX_STRING_LENGTH];
    char catbuf[MSL];
@@ -4002,7 +4002,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
      if( obj == auction_item )
       continue;
      if( !IS_OBJ_STAT(obj,ITEM_EXTRA_RARE) )
-      continue; 
+      continue;
      found = TRUE;
 
      for( in_obj = obj; in_obj->in_obj != NULL; in_obj = in_obj->in_obj );
@@ -4013,7 +4013,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
        continue;
       else
        snprintf( catbuf, MSL, "[%2d] %s carried by %s [Room:%d].\r\n",
-                obj_counter, obj->short_descr, PERS( in_obj->carried_by, ch ), in_obj->carried_by->in_room->vnum );
+                obj_counter, obj->short_descr, in_obj->carried_by->get_name(ch), in_obj->carried_by->in_room->vnum );
      }
      else
      {
@@ -4044,7 +4044,7 @@ void do_owhere( CHAR_DATA * ch, char *argument )
          if( in_obj->carried_by != NULL )
          {
             snprintf( catbuf, MSL, "[%2d] %s carried by %s [Room:%d].\r\n",
-                     obj_counter, obj->short_descr, PERS( in_obj->carried_by, ch ), in_obj->carried_by->in_room->vnum );
+                     obj_counter, obj->short_descr, in_obj->carried_by->get_name(ch), in_obj->carried_by->in_room->vnum );
          }
          else
          {
@@ -4073,9 +4073,9 @@ void do_owhere( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_mpcr( CHAR_DATA * ch, char *victim )
+DO_FUN(do_mpcr)
 {
-/* A Function to perform Corpse Retrivals (CRs) 
+/* A Function to perform Corpse Retrivals (CRs)
  * Gets first corpse (if any) matching argument.
  * Will NOT get corpses from the room ch is in, allowing the
  * (N)PC to keep calling this function, and to 'pile up' all the
@@ -4089,7 +4089,7 @@ void do_mpcr( CHAR_DATA * ch, char *victim )
    char arg[MAX_INPUT_LENGTH];
    list<OBJ_DATA *>::iterator li;
 
-   one_argument( victim, arg );
+   one_argument( argument, arg );
 
    if( arg[0] == '\0' )
    {
@@ -4113,7 +4113,7 @@ void do_mpcr( CHAR_DATA * ch, char *victim )
    }
 
    /*
-    * act used to enable mobiles to check for CR triggers... 
+    * act used to enable mobiles to check for CR triggers...
     */
 
    if( !found && !IS_IMMORTAL(ch) )
@@ -4123,7 +4123,7 @@ void do_mpcr( CHAR_DATA * ch, char *victim )
    return;
 }
 
-void do_resetpassword( CHAR_DATA * ch, char *argument )
+DO_FUN(do_resetpassword)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -4182,7 +4182,7 @@ void do_resetpassword( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_iscore( CHAR_DATA * ch, char *argument )
+DO_FUN(do_iscore)
 {
    /*
     * Show the imm bamfin/out if invis, and if wizlock/deathmatch 
@@ -4214,7 +4214,7 @@ void do_iscore( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_fights( CHAR_DATA * ch, char *argument )
+DO_FUN(do_fights)
 {
  list<CHAR_DATA *>::iterator li;
  CHAR_DATA *vict = NULL;
@@ -4225,7 +4225,7 @@ void do_fights( CHAR_DATA * ch, char *argument )
  for( li = fight_list.begin(); li != fight_list.end(); li++ )
  {
   vict = *li;
-  snprintf(buf,MSL,"%s vs %s [Room:%5d]\r\n",NAME(vict->fighting),NAME(vict),vict->in_room->vnum);
+  snprintf(buf,MSL,"%s vs %s [Room:%5d]\r\n",vict->fighting->get_name(),vict->get_name(),vict->in_room->vnum);
   send_to_char(buf,ch);
  }
  if( fight_list.empty() )
@@ -4238,7 +4238,7 @@ void do_fights( CHAR_DATA * ch, char *argument )
  return;
 }
 
-void do_iwhere( CHAR_DATA * ch, char *argument )
+DO_FUN(do_iwhere)
 {
    /*
     * Like WHERE, except is global, and shows area & room.
@@ -4281,7 +4281,7 @@ void do_iwhere( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_setclass( CHAR_DATA * ch, char *argument )
+DO_FUN(do_setclass)
 {
    /*
     * New version of advance, using some of old code.
@@ -4526,7 +4526,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
    victim->trust = 0;
 
    /*
-    * Make sure that ch->level holds vicitm's max level 
+    * Make sure that ch->level holds vicitm's max level
     */
    victim->level = 0;
    for( cnt = 0; cnt < MAX_CLASS; cnt++ )
@@ -4534,7 +4534,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
          victim->level = victim->lvl[cnt];
 
    /*
-    * check for remort levels too... 
+    * check for remort levels too...
     */
    for( cnt = 0; cnt < MAX_CLASS; cnt++ )
       if( victim->lvl2[cnt] > victim->level )
@@ -4545,7 +4545,7 @@ void do_setclass( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_isnoop( CHAR_DATA * ch, char *argument )
+DO_FUN(do_isnoop)
 {
    /*
     * Creator-only command.  Lists who (if anyone) is being snooped.
@@ -4580,7 +4580,7 @@ void do_isnoop( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_dog( CHAR_DATA * ch, char *argument )
+DO_FUN(do_dog)
 {
    /*
     * A real silly command which switches the (mortal) victim into
@@ -4646,7 +4646,7 @@ void do_dog( CHAR_DATA * ch, char *argument )
     */
 
    /*
-    * Instead of calling do switch, just do the relevant bit here 
+    * Instead of calling do switch, just do the relevant bit here
     */
    victim->desc->character = mob;
    victim->desc->original = victim;
@@ -4659,7 +4659,7 @@ void do_dog( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_togbuild( CHAR_DATA * ch, char *argument )
+DO_FUN(do_togbuild)
 {
    /*
     * Toggles PC's ch->act ACT_BUILDER value 
@@ -4704,7 +4704,7 @@ void do_togbuild( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_togleader( CHAR_DATA * ch, char *argument )
+DO_FUN(do_togleader)
 {
    CHAR_DATA *victim;
 
@@ -4744,7 +4744,7 @@ void do_togleader( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_whoname( CHAR_DATA * ch, char *argument )
+DO_FUN(do_whoname)
 {
    /*
     * Set victim's who name - 
@@ -4837,7 +4837,7 @@ void do_whoname( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_lhunt( CHAR_DATA * ch, char *argument )
+DO_FUN(do_lhunt)
 {
    /*
     * Simple function for Imms... loops through all mobs, and
@@ -4858,17 +4858,17 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
       {
          if( !lch->searching.empty() )
          {
-            snprintf( buf, MSL, "%s searching for %s.\r\n", NAME( lch ), lch->searching.c_str() );
+            snprintf( buf, MSL, "%s searching for %s.\r\n", lch->get_name(), lch->searching.c_str() );
             send_to_char( buf, ch );
             found = TRUE;
          }
          continue;
       }
       found = TRUE;
-      snprintf( buf, MSL, "%s (%s)", NAME( lch ), ( IS_NPC( lch ) ? "mobile" : "player" ) );
+      snprintf( buf, MSL, "%s (%s)", lch->get_name(), ( IS_NPC( lch ) ? "mobile" : "player" ) );
       if( lch->hunting )
          snprintf( buf + strlen( buf ), MSL, " hunting for (%s) %s",
-                  ( IS_NPC( lch->hunting ) ? "mobile" : "player" ), NAME( lch->hunting ) );
+                  ( IS_NPC( lch->hunting ) ? "mobile" : "player" ), lch->hunting->get_name() );
       if( lch->hunt_obj )
       {
          if( lch->hunting && IS_SET( lch->hunt_flags, HUNT_CR ) && lch->hunt_obj->item_type == ITEM_CORPSE_PC )
@@ -4877,7 +4877,7 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
             snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", lch->hunt_obj->short_descr );
       }
       if( IS_NPC( lch ) && IS_SET( lch->hunt_flags, HUNT_MERC | HUNT_CR ) && lch->npcdata->hunt_for )
-         snprintf( buf + strlen( buf ), MSL, ", employed by %s", NAME( lch->npcdata->hunt_for ) );
+         snprintf( buf + strlen( buf ), MSL, ", employed by %s", lch->npcdata->hunt_for->get_name() );
       strncat( buf, ".\r\n", MSL );
       send_to_char( buf, ch );
    }
@@ -4886,7 +4886,7 @@ void do_lhunt( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_sstat( CHAR_DATA * ch, char *argument )
+DO_FUN(do_sstat)
 {
    /*
     * Lists the % for a player's skill(s)
@@ -5064,7 +5064,7 @@ struct monitor_type monitor_table[] = {
    {NULL, 0, 0, NULL, NULL}
 };
 
-void do_monitor( CHAR_DATA * ch, char *argument )
+DO_FUN(do_monitor)
 {
    int a;
    bool found = FALSE;
@@ -5111,7 +5111,7 @@ void do_monitor( CHAR_DATA * ch, char *argument )
       return;
    }
    /*
-    * Search for monitor channel to turn on/off 
+    * Search for monitor channel to turn on/off
     */
    for( a = 0; monitor_table[a].min_level != 0; a++ )
    {
@@ -5164,7 +5164,7 @@ void monitor_chan( const char *message, int channel )
    return;
 }
 
-void do_reward( CHAR_DATA * ch, char *argument )
+DO_FUN(do_reward)
 {
    char arg1[MAX_INPUT_LENGTH];
    char arg2[MAX_INPUT_LENGTH];
@@ -5225,7 +5225,7 @@ void do_reward( CHAR_DATA * ch, char *argument )
 
 
 
-void do_fhunt( CHAR_DATA * ch, char *argument )
+DO_FUN(do_fhunt)
 {
    char buf[MAX_STRING_LENGTH];
    char arg1[MAX_INPUT_LENGTH];
@@ -5249,7 +5249,7 @@ void do_fhunt( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Do not force players to hunt. Can only force mobs 
+    * Do not force players to hunt. Can only force mobs
     */
    if( !IS_NPC( victim ) )
    {
@@ -5258,13 +5258,13 @@ void do_fhunt( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * force a mob to stop hunting 
+    * force a mob to stop hunting
     */
    if( str_cmp( arg2, "stop" ) )
    {
       if( victim->hunting != NULL )
       {
-         snprintf( buf, MSL, "%s stops hunting %s.\r\n", NAME(victim), NAME(victim->hunting) );
+         snprintf( buf, MSL, "%s stops hunting %s.\r\n", victim->get_name(), victim->hunting->get_name() );
          end_hunt( victim );
          send_to_char( buf, ch );
          return;
@@ -5283,7 +5283,7 @@ void do_fhunt( CHAR_DATA * ch, char *argument )
    }
 
    /*
-    * Can not force mobs to hunt non-vamp players 
+    * Can not force mobs to hunt non-vamp players
     */
    if( ( !IS_VAMP( target ) ) && ( !IS_NPC( target ) ) )
    {
@@ -5298,30 +5298,21 @@ void do_fhunt( CHAR_DATA * ch, char *argument )
     */
 
    /*
-    * if victim is currently in a group, leave group 
+    * if victim is currently in a group, leave group
     */
 /*   if (  ( victim->leader != NULL )
       || ( victim->master != NULL )  )
       do_follow ( victim, victim );  */
 
-   /*
-    * once i put this skill in, remember to take out the brackets
-    * * -- do_abandon will kick everyone out of the victim's group if the victim
-    * * is the group leader -- or i guess the whole group can go hunting *shrug*
-    * *          - Uni 
-    */
-/* do_abandon ( victim, "all" ); */
-
-
    if( victim->hunting != NULL )
    {
-      snprintf( buf, MSL, "%s stops hunting %s.\r\n", NAME(victim), NAME(victim->hunting) );
+      snprintf( buf, MSL, "%s stops hunting %s.\r\n", victim->get_name(), victim->hunting->get_name() );
       end_hunt( victim );
       send_to_char( buf, ch );
    }
 
    victim->hunting = target;
-   snprintf( buf, MSL, "%s starts hunting %s.\r\n", NAME(victim), NAME(victim->hunting) );
+   snprintf( buf, MSL, "%s starts hunting %s.\r\n", victim->get_name(), victim->hunting->get_name() );
    send_to_char( buf, ch );
 
    return;
@@ -5329,7 +5320,7 @@ void do_fhunt( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_alink( CHAR_DATA * ch, char *argument )
+DO_FUN(do_alink)
 {
 
    AREA_DATA *this_area;
@@ -5371,7 +5362,7 @@ void do_alink( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_togcouncil( CHAR_DATA * ch, char *argument )
+DO_FUN(do_togcouncil)
 {
    CHAR_DATA *victim;
 
@@ -5410,7 +5401,7 @@ void do_togcouncil( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_gain_stat_reset( CHAR_DATA * ch, char *argument )
+DO_FUN(do_gain_stat_reset)
 {
    CHAR_DATA *victim;
    OBJ_DATA *wear_object;
@@ -5530,7 +5521,7 @@ target in them. Private rooms are not violated.
 
 */
 
-void do_for( CHAR_DATA * ch, char *argument )
+DO_FUN(do_for)
 {
    char range[MAX_INPUT_LENGTH];
    char buf[MAX_STRING_LENGTH];
@@ -5703,8 +5694,7 @@ void do_for( CHAR_DATA * ch, char *argument )
    disable_timer_abort = FALSE;
 }  /* do_for */
 
-
-void do_otype( CHAR_DATA * ch, char *argument )
+DO_FUN(do_otype)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -5765,7 +5755,7 @@ void do_otype( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_owear( CHAR_DATA * ch, char *argument )
+DO_FUN(do_owear)
 {
    char buf[MAX_STRING_LENGTH];
    char buf1[MAX_STRING_LENGTH];
@@ -5827,7 +5817,7 @@ void do_owear( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_areasave( CHAR_DATA * ch, char *argument )
+DO_FUN(do_areasave)
 {
    list<AREA_DATA *>::iterator li;
    AREA_DATA *pArea;
@@ -5842,7 +5832,7 @@ void do_areasave( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_findreset( CHAR_DATA * ch, char *argument )
+DO_FUN(do_findreset)
 {
    char arg1[MSL], arg2[MSL];
    char outbuf[MSL], catbuf[MSL];
@@ -5978,7 +5968,7 @@ void do_findreset( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_census( CHAR_DATA *ch, char *argument )
+DO_FUN(do_census)
 {
  CHAR_DATA *vch;
  list<CHAR_DATA *>::iterator li;
@@ -6077,7 +6067,7 @@ void do_census( CHAR_DATA *ch, char *argument )
   if( ++ti1 % 5 == 0 && i < (MAX_RACE -1) )
    strncat(buf,"\r\n[RACE ] ",MSL);
  }
- 
+
  snprintf(argument,MSL,"\r\n\r\nFound %0.0f total mobs.\r\n",tf0);
  strncat(buf,argument,MSL);
  send_to_char(buf,ch);
@@ -6085,13 +6075,13 @@ void do_census( CHAR_DATA *ch, char *argument )
  return;
 }
 
-void do_sla( CHAR_DATA * ch, char *argument )
+DO_FUN(do_sla)
 {
    send_to_char( "If you want to SLAY, spell it out.\r\n", ch );
    return;
 }
 
-void do_slay( CHAR_DATA * ch, char *argument )
+DO_FUN(do_slay)
 {
    CHAR_DATA *victim;
    char arg[MAX_INPUT_LENGTH];
@@ -6137,13 +6127,13 @@ void do_slay( CHAR_DATA * ch, char *argument )
 
 /* Here it is boys and girls the HOT reboot function and all its nifty  * little parts!! - Flar
  */
-void do_hotreboo( CHAR_DATA * ch, char *argument )
+DO_FUN(do_hotreboo)
 {
    send_to_char( "If you want to do a @@R@@fHOT@@Breboot@@N....spell it out.\r\n", ch );
    return;
 }
 
-void do_hotreboot( CHAR_DATA * ch, char *argument )
+DO_FUN(do_hotreboot)
 {
    FILE *fp;
    DESCRIPTOR_DATA *d, *d_next;
@@ -6246,7 +6236,7 @@ void do_hotreboot( CHAR_DATA * ch, char *argument )
  * disable - shows disabled commands
  * disable <command> - toggles disable status of command
  */
-void do_disable( CHAR_DATA *ch, char *argument )
+DO_FUN(do_disable)
 {
  short i;
  DISABLED_DATA *p = NULL;
@@ -6330,7 +6320,7 @@ void do_disable( CHAR_DATA *ch, char *argument )
  return;
 }
 
-void do_lua( CHAR_DATA *ch, char *argument )
+DO_FUN(do_lua)
 {
  string str = SCRIPT_DIR;
  str += argument;
@@ -6344,7 +6334,7 @@ void do_lua( CHAR_DATA *ch, char *argument )
  return;
 }
 
-void do_olua( CHAR_DATA *ch, char *argument )
+DO_FUN(do_olua)
 {
  char arg[MSL];
 
@@ -6367,7 +6357,7 @@ void do_olua( CHAR_DATA *ch, char *argument )
  return;
 }
 
-void do_rlua( CHAR_DATA *ch, char *argument )
+DO_FUN(do_rlua)
 {
  string str = SCRIPT_DIR;
  str += argument;
@@ -6395,7 +6385,7 @@ struct ShowObject
  monitor_chan(log_buf,MONITOR_DEBUG); };
 };
 
-void do_ldebug( CHAR_DATA *ch, char *argument )
+DO_FUN(do_ldebug)
 {
  for_each( lua_list.begin(), lua_list.end(), ShowObject() );
 

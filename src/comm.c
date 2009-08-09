@@ -3488,10 +3488,10 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
                   i = ( char * )arg2;
                   break;
                case 'n':
-                  i = PERS( ch, to );
+                  i = ch->get_name(to);
                   break;
                case 'N':
-                  i = PERS( vch, to );
+                  i = vch->get_name(to);
                   break;
                case 'e':
                   i = he_she[URANGE( 0, ch->sex, 2 )];

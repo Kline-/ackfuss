@@ -3951,7 +3951,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
  {
   if( chan_history.message[x][y] == '\0' )
   {
-   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\r\n",NAME(ch),argument);
+   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\r\n",ch->get_name(),argument);
    chan_history.time[x][y] = current_time;
    snprintf(chan_history.aname[x][y],128,"none");
    chan_history.cbit[x][y] = -1;
@@ -3984,7 +3984,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
    chan_history.aname[x][y][0] = '\0';
    chan_history.cbit[x][y] = 0;
 
-   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\r\n",NAME(ch),argument);
+   snprintf(chan_history.message[x][y],MSL,"%s: %s@@N\r\n",ch->get_name(),argument);
    chan_history.time[x][y] = current_time;
    snprintf(chan_history.aname[x][y],128,"none");
    chan_history.cbit[x][y] = -1;

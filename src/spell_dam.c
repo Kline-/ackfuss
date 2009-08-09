@@ -442,7 +442,7 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
       OBJ_DATA *obj;
       char *name;
 
-      name = const_cast<char *>(NAME(ch));
+      name = const_cast<char *>(ch->get_name());
       obj = create_object( get_obj_index( vnum ), 0 );
       obj->timer = number_range( 4, 7 );
 
@@ -926,7 +926,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
      if( dam > sysdata.damcap )
      {
         char buf[MAX_STRING_LENGTH];
-        snprintf( buf, MSL, "Spell: %d damage by %s, spell %s", dam, ( obj == NULL ) ? NAME(ch) : obj->short_descr, skill_table[sn].name );
+        snprintf( buf, MSL, "Spell: %d damage by %s, spell %s", dam, ( obj == NULL ) ? ch->get_name() : obj->short_descr, skill_table[sn].name );
         if( ch->level < 82 )
          monitor_chan( buf, MONITOR_MAGIC );
         log_f( "%s", buf );
@@ -1034,7 +1034,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
       {
 
 
-         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", NAME(victim), NAME(ch), victim->in_room->vnum );
+         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", victim->get_name(), ch->get_name(), victim->in_room->vnum );
          log_string( log_buf );
 
          notify( log_buf, 82 );

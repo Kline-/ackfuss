@@ -591,7 +591,7 @@ void affect_remove( CHAR_DATA * ch, AFFECT_DATA * paf )
    if( ch->first_affect == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "affect_remove: %s did not have aff %d to remove.", NAME(ch), paf->type );
+      snprintf( buf, MSL, "affect_remove: %s did not have aff %d to remove.", ch->get_name(), paf->type );
       monitor_chan( buf, MONITOR_MOB );
 
       bug( "Affect_remove: no affect.", 0 );
@@ -733,7 +733,7 @@ void char_from_room( CHAR_DATA * ch )
    if( ch->in_room == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "char_from_room: %s in NULL room.", NAME(ch) );
+      snprintf( buf, MSL, "char_from_room: %s in NULL room.", ch->get_name() );
       monitor_chan( buf, MONITOR_ROOM );
 
       bug( "Char_from_room: NULL.", 0 );
@@ -779,7 +779,7 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
    if( pRoomIndex == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "char_to_room: Attempted to move %s to a NULL room.", NAME( ch ) );
+      snprintf( buf, MSL, "char_to_room: Attempted to move %s to a NULL room.", ch->get_name() );
       monitor_chan( buf, MONITOR_ROOM );
 
       bug( "Char_to_room: NULL.", 0 );
@@ -1123,7 +1123,7 @@ void equip_char( CHAR_DATA * ch, OBJ_DATA * obj, int iWear )
    if( ( !IS_NPC( ch ) && ch->desc->connected != CON_SETTING_STATS ) && ( get_eq_char( ch, iWear ) != NULL ) )
    {
       snprintf( log, MSL, "equip_char: %s (room %d) cannot be equiped with %s, as wear slot (%d) not empty.",
-               NAME( ch ), ch->in_room->vnum, obj->short_descr, iWear );
+               ch->get_name(), ch->in_room->vnum, obj->short_descr, iWear );
       monitor_chan( log, MONITOR_OBJ );
 
       bug( log, 0 );
@@ -1238,7 +1238,7 @@ void unequip_char( CHAR_DATA * ch, OBJ_DATA * obj )
    if( obj->wear_loc == WEAR_NONE )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "unequip_char: %s is not wearing %s.", NAME( ch ), obj->short_descr );
+      snprintf( buf, MSL, "unequip_char: %s is not wearing %s.", ch->get_name(), obj->short_descr );
       monitor_chan( buf, MONITOR_OBJ );
 
       bug( "Unequip_char: already unequipped.", 0 );
@@ -1603,7 +1603,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
    if( ch->in_room == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "extract_char: %s in NULL room., Moved to room 2", NAME( ch ) );
+      snprintf( buf, MSL, "extract_char: %s in NULL room., Moved to room 2", ch->get_name() );
       monitor_chan( buf, MONITOR_MOB );
 
       bug( "Extract_char: NULL.", 0 );
@@ -2639,7 +2639,7 @@ void remove_shield( CHAR_DATA * ch, MAGIC_SHIELD * shield )
    if( ch->first_shield == NULL )
    {
       char buf[MAX_STRING_LENGTH];
-      snprintf( buf, MSL, "shield_remove: %s did not have a shield to remove.", NAME(ch) );
+      snprintf( buf, MSL, "shield_remove: %s did not have a shield to remove.", ch->get_name() );
       monitor_chan( buf, MONITOR_MOB );
 
       bug( "Remove_shield: no shield.", 0 );

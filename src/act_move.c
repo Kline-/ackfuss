@@ -453,9 +453,9 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    {
       if( check_valid_ride( ch ) )
       {
-         snprintf( tmp, MSL, "You ride %s on %s.\r\n", door_name_leave, NAME(ch->riding) );
+         snprintf( tmp, MSL, "You ride %s on %s.\r\n", door_name_leave, ch->riding->get_name() );
          send_to_char( tmp, ch );
-         snprintf( tmp, MSL, "$n rides %s on %s.", door_name_leave, NAME(ch->riding) );
+         snprintf( tmp, MSL, "$n rides %s on %s.", door_name_leave, ch->riding->get_name() );
       }
    }
 
@@ -481,7 +481,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
          else if( ch->riding != NULL )
          {
             snprintf( move_buf, MSL, "$L%s$n rides $T on %s.",
-                     get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), NAME(ch->riding) );
+                     get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), ch->riding->get_name() );
          }
          act( move_buf, ch, NULL, door_name_leave, TO_ROOM );
       }
@@ -515,7 +515,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
       else if( ch->riding != NULL )
       {
          snprintf( move_buf, MSL, "$L%s$n rides in from $T on %s.",
-                  get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), NAME(ch->riding) );
+                  get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), ch->riding->get_name() );
       }
       act( move_buf, ch, NULL, door_name_enter, TO_ROOM );
 
@@ -2040,7 +2040,7 @@ DO_FUN(do_scan)
           || ( str_cmp( pexit->keyword, "" ) ) || ( pexit->to_room->vnum == ch->in_room->vnum ) )
       {
          /*
-          * Then this direction is "invalid" 
+          * Then this direction is "invalid"
           */
          continue;
       }
@@ -2055,16 +2055,16 @@ DO_FUN(do_scan)
                found = TRUE;
 
                /*
-                * bit here to set person to (N)PC name 
+                * bit here to set person to (N)PC name
                 */
 
                if( IS_NPC( d ) )
                {
-                  snprintf( person, MIL, "%s (NPC)", NAME(d) );
+                  snprintf( person, MIL, "%s (NPC)", d->get_name() );
                }
                else
                {
-                  snprintf( person, MIL, "%s", PERS( d, ch ) );
+                  snprintf( person, MIL, "%s", d->get_name(ch) );
                }
 
                snprintf( buf, MSL, "%s : %s\r\n", dir_name[door], person );
@@ -2260,7 +2260,7 @@ DO_FUN(do_scout)
             else if( depth == 4 )
                snprintf( pre, MIL, "Distant %s : ", dir_name[door] );
 
-            snprintf( buf, MIL, "%s%s\r\n", pre, NAME(target) );
+            snprintf( buf, MIL, "%s%s\r\n", pre, target->get_name() );
 
             send_to_char( buf, ch );
          }

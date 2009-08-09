@@ -1340,7 +1340,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
             }
 
 
-         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", NAME(victim), NAME(ch), victim->in_room->vnum );
+         snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", victim->get_name(), ch->get_name(), victim->in_room->vnum );
          log_string( log_buf );
 
          notify( log_buf, 82 );
@@ -2259,7 +2259,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          int gold;
          time_t lifetime;
 
-         snprintf(name,MSL,"%s",NAME(ch));
+         snprintf(name,MSL,"%s",ch->get_name());
          corpse = create_object( get_obj_index( OBJ_VNUM_CORPSE_NPC ), 0 );
          corpse->timer = number_range( 3, 6 );
          corpse->level = ch->level; /* for animate spell */
@@ -3496,7 +3496,7 @@ DO_FUN(do_flee)
    }
 
    /*
-    * Check if mob will "allow" ch to flee... 
+    * Check if mob will "allow" ch to flee...
     */
 
    ch->set_cooldown(COOLDOWN_DEF,4.50);
@@ -3505,7 +3505,7 @@ DO_FUN(do_flee)
    if( victim->act.test(ACT_NO_FLEE ) && !IS_NPC( ch ) && IS_NPC( victim ) )
    {
       send_to_char( "You attempt to flee from battle, but fail!\r\n", ch );
-      snprintf( buf, MSL, "%s tells you 'No way will you escape ME!!'\r\n", PERS(ch,victim) );
+      snprintf( buf, MSL, "%s tells you 'No way will you escape ME!!'\r\n", ch->get_name(victim) );
       send_to_char( buf, ch );
       return;
    }
@@ -5179,7 +5179,7 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
       OBJ_DATA *obj;
       char *name = NULL;
 
-      snprintf(name,MSL,"%s",NAME(ch));
+      snprintf(name,MSL,"%s",ch->get_name());
       obj = create_object( get_obj_index( vnum ), 0 );
       obj->timer = number_range( 4, 7 );
 
@@ -5954,7 +5954,7 @@ float combat_damcap( CHAR_DATA *ch, CHAR_DATA *victim, float dam, int dt )
 
  if( dam > sysdata.damcap )
  {
-  snprintf( buf, MSL, "Combat: %1.0f damage by %s, attacking %s, dt %d", dam, NAME(ch), NAME(victim), dt );
+  snprintf( buf, MSL, "Combat: %1.0f damage by %s, attacking %s, dt %d", dam, ch->get_name(), victim->get_name(), dt );
   if( ch->level < 82 )
   {
    monitor_chan( buf, MONITOR_COMBAT );

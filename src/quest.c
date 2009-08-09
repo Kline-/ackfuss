@@ -251,7 +251,7 @@ DO_FUN(do_iquest)
       if( quest_mob )
       {
 
-         snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\r\n", NAME(quest_mob), quest_mob->in_room->vnum );
+         snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\r\n", quest_mob->get_name(), quest_mob->in_room->vnum );
          send_to_char( buf, ch );
       }
       else
@@ -260,7 +260,7 @@ DO_FUN(do_iquest)
       }
       if( quest_target )
       {
-         snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\r\n", NAME(quest_target), quest_target->in_room->vnum );
+         snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\r\n", quest_target->get_name(), quest_target->in_room->vnum );
          send_to_char( buf, ch );
       }
       else
@@ -371,7 +371,7 @@ DO_FUN(do_iquest)
       new_long_desc[0] = '\0';
 
       quest_mob->long_descr_orig = quest_mob->long_descr;
-      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?", NAME(quest_mob), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?", quest_mob->get_name(), quest_object->short_descr );
       quest_mob->long_descr = new_long_desc;
       quest_mob->act.set(ACT_NO_SUMMON );
       quest_mob->act.set(ACT_NO_VISIT );
@@ -380,7 +380,7 @@ DO_FUN(do_iquest)
       new_long_desc[0] = '\0';
 
       quest_target->long_descr_orig = quest_target->long_descr;
-      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!", NAME(quest_target), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!", quest_target->get_name(), quest_object->short_descr );
       quest_target->long_descr = new_long_desc;
 
       quest_target->act.set(ACT_NO_SUMMON );
@@ -389,10 +389,10 @@ DO_FUN(do_iquest)
 
       send_to_char( "QUEST STARTED!\r\n\r\n", ch );
 
-      snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\r\n", NAME(quest_mob), quest_mob->in_room->vnum );
+      snprintf( buf, MSL, "The questing mobile is: %s [In Room %d]\r\n", quest_mob->get_name(), quest_mob->in_room->vnum );
       send_to_char( buf, ch );
 
-      snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\r\n", NAME(quest_target), quest_target->in_room->vnum );
+      snprintf( buf, MSL, "Target Mobile is: %s [In Room %d]\r\n", quest_target->get_name(), quest_target->in_room->vnum );
       send_to_char( buf, ch );
 
       snprintf( buf, MSL, "Target Object is: %s.\r\n", quest_object->short_descr );
@@ -575,7 +575,7 @@ void quest_inform( void )
    {
       if( quest_target )
          snprintf( buf, MSL, qmessages[quest_personality][quest_timer].message1,
-                  NAME(quest_target), quest_object->short_descr );
+                  quest_target->get_name(), quest_object->short_descr );
       else
          snprintf( buf, MSL, qmessages[quest_personality][quest_timer].message2, quest_object->short_descr );
    }
@@ -587,7 +587,7 @@ void quest_inform( void )
       do_crusade( quest_mob, buf );
    if( quest_timer == 1 )
    {
-      snprintf( buf, MSL, "%s is crusading for %s ", NAME( quest_mob ), quest_object->short_descr );
+      snprintf( buf, MSL, "%s is crusading for %s ", quest_mob->get_name(), quest_object->short_descr );
       info( buf, 5 );
    }
    if( !quest_mob )
@@ -601,7 +601,7 @@ void quest_complete( CHAR_DATA * ch )
 {
    char buf[MAX_STRING_LENGTH];
 
-   snprintf( buf, MSL, qmessages[quest_personality][16].message1, NAME( ch ), quest_object->short_descr );
+   snprintf( buf, MSL, qmessages[quest_personality][16].message1, ch->get_name(), quest_object->short_descr );
    do_crusade( quest_mob, buf );
    clear_quest(  );
    return;
@@ -772,7 +772,7 @@ void generate_auto_quest(  )
       new_long_desc[0] = '\0';
 
       quest_mob->long_descr_orig = quest_mob->long_descr;
-      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?", NAME(quest_mob), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays have you found my %s ?", quest_mob->get_name(), quest_object->short_descr );
       quest_mob->long_descr = new_long_desc;
       quest_mob->act.set(ACT_NO_SUMMON );
       quest_mob->act.set(ACT_NO_VISIT );
@@ -782,7 +782,7 @@ void generate_auto_quest(  )
       new_long_desc[0] = '\0';
 
       quest_target->long_descr_orig = quest_target->long_descr;
-      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!", NAME(quest_target), quest_object->short_descr );
+      snprintf( new_long_desc, MSL, "%s @@Nsays I stole the %s !!!", quest_target->get_name(), quest_object->short_descr );
       quest_target->long_descr = new_long_desc;
 
       quest_target->act.set(ACT_NO_SUMMON );

@@ -334,7 +334,7 @@ bool give_money( CHAR_DATA * ch, CHAR_DATA * victim, char *argument )
    }
    if( ( victim->carry_weight + money_weight( transfer ) ) > can_carry_w( victim ) )
    {
-      snprintf( outbuf, MSL, "%s cannot carry that much weight!\r\n", PERS( ch, victim ) );
+      snprintf( outbuf, MSL, "%s cannot carry that much weight!\r\n", ch->get_name(victim) );
       send_to_char( outbuf, ch );
       join_money( transfer, ch->money );
       return FALSE;
@@ -907,7 +907,7 @@ DO_FUN(do_gold)
 
 char *take_best_coins( MONEY_TYPE * money, int cost )
 {
-/* best fits a money to a base cost, returns a buf with change val as first arg, 
+/* best fits a money to a base cost, returns a buf with change val as first arg,
    then the coin string in keyword format to take */
    int still_needs = cost;
    int unit_level, cnt, can_take_this, change;
@@ -925,7 +925,7 @@ char *take_best_coins( MONEY_TYPE * money, int cost )
    for( ; still_needs > 0; )
    {
       /*
-       * take smallest unit, see what happens 
+       * take smallest unit, see what happens
        */
       can_take_this = transaction->cash_unit[unit_level] * currency_table[unit_level].exchange_val;
       if( can_take_this >= still_needs )
@@ -936,13 +936,13 @@ char *take_best_coins( MONEY_TYPE * money, int cost )
          change = change + ( how_many * currency_table[unit_level].exchange_val ) - still_needs;
          still_needs = 0;
          snprintf( takecatbuf, MSL, " %d %s", how_many, currency_table[unit_level].keyword );
-         strncat( takebuf, takecatbuf, MSL );
+         strncat( takebuf, takecatbuf, MSL-1 );
          break;
       }
       else
       {
          snprintf( takecatbuf, MSL, " %d %s", transaction->cash_unit[unit_level], currency_table[unit_level].keyword );
-         strncat( takebuf, takecatbuf, MSL );
+         strncat( takebuf, takecatbuf, MSL-1 );
          transaction->cash_unit[unit_level] = 0;
          still_needs -= can_take_this;
          unit_level++;

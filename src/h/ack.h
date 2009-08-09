@@ -553,6 +553,7 @@ class char_data
   bool check_cooldown( int pos );
   void gain_exp( int gain );
   short get_level( const char *what = '\0' );
+  const char *get_name( CHAR_DATA *looker = NULL );
   const char *get_title( void );
   void set_cooldown( const char *skill );
   void set_cooldown( int pos, float duration );

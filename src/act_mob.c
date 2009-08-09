@@ -108,7 +108,7 @@ void gain_level( CHAR_DATA * ch )
    ch->exp -= cost;
    ch->level = UMIN( 140, ch->level++ );
 
-   snprintf( buf, MSL, "%s gains a level!", NAME(ch) );
+   snprintf( buf, MSL, "%s gains a level!", ch->get_name() );
    info( buf, 1 );
    return;
 }
@@ -161,7 +161,7 @@ void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target )
       monitor_chan( buf, MONITOR_MOB );
       return;
    }
-   snprintf( buf, MSL, "Ok guys, let's all follow %s.", NAME(target) );
+   snprintf( buf, MSL, "Ok guys, let's all follow %s.", target->get_name() );
    do_say( ch, buf );
 
    for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
@@ -186,7 +186,7 @@ void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target )
          else if( num > 29 )
          {
             if( num > 32 )
-               snprintf( buf, MSL, "Man I don't want to join %s's group!", NAME(target) );
+               snprintf( buf, MSL, "Man I don't want to join %s's group!", target->get_name() );
             else
                snprintf( buf, MSL, "I hate big groups." );
             do_say( vch, buf );
@@ -257,11 +257,11 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
       is_hunting = TRUE;
       if( tar_is_leader == TRUE )
       {
-         snprintf( buf, MSL, "We're planning on killing %s.", NAME(target->hunting) );
+         snprintf( buf, MSL, "We're planning on killing %s.", target->hunting->get_name() );
       }
       else
       {
-         snprintf( buf, MSL, "I'm planning on killing %s.", NAME(target->hunting) );
+         snprintf( buf, MSL, "I'm planning on killing %s.", target->hunting->get_name() );
       }
       do_say( target, buf );
    }
@@ -279,8 +279,8 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
       ch_is_higher = TRUE;
 
    /*
-    * if ch is higher in levels and victim is hunting, then say 
-    * * appropriate line. 
+    * if ch is higher in levels and victim is hunting, then say
+    * * appropriate line.
     */
    if( ( ch_is_higher == FALSE ) && ( is_hunting == TRUE ) )
    {
@@ -294,12 +294,12 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
    {
       if( ch_is_leader == TRUE )
       {
-         snprintf( buf, MSL, "Want to help us kill %s instead?", NAME(ch->hunting) );
+         snprintf( buf, MSL, "Want to help us kill %s instead?", ch->hunting->get_name() );
          do_say( ch, buf );
       }
       else if( ch_is_leader == FALSE )
       {
-         snprintf( buf, MSL, "Want to help me kill %s instead?", NAME(ch->hunting) );
+         snprintf( buf, MSL, "Want to help me kill %s instead?", ch->hunting->get_name() );
          do_say( ch, buf );
       }
    }
@@ -1066,7 +1066,7 @@ void select_target( CHAR_DATA * ch )
 
       if( set_hunt( ch, NULL, victim, NULL, HUNT_WORLD | HUNT_PICKDOOR | HUNT_CR, HUNT_MERC ) )
       {
-         snprintf( buf, MSL, "Right!  %s is our new target!!", NAME(victim) );
+         snprintf( buf, MSL, "Right!  %s is our new target!!", victim->get_name() );
          do_say( ch, buf );
       }
 

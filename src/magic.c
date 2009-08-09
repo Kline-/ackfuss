@@ -2805,7 +2805,7 @@ bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
       {
          found = TRUE;
          snprintf( buf, MSL, "%s carried by %s.\r\n",
-                  ob->short_descr, can_see( ch, in_obj->carried_by ) ? PERS( in_obj->carried_by, ch ) : "someone" );
+                  ob->short_descr, in_obj->carried_by->get_name(ch) );
       }
       else
       {
@@ -4270,7 +4270,7 @@ bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
       {
          found = TRUE;
          snprintf( buf, MSL, "%s carried by %s.\r\n",
-                  ob->short_descr, can_see( ch, in_obj->carried_by ) ? PERS( in_obj->carried_by, ch ) : "someone" );
+                  ob->short_descr, in_obj->carried_by->get_name(ch) );
       }
       else
       {

@@ -393,7 +393,7 @@ DO_FUN(do_qstat)
   case QUEST_RETRIEVAL:
    if( victim->pcdata->quest_info->quest_item_vnum[0] > -1 )
    {
-    snprintf(buf,MSL,"%s is seeking item %d-%s...\r\n",PERS(victim,ch),victim->pcdata->quest_info->quest_item_vnum[0],get_obj_index(victim->pcdata->quest_info->quest_item_vnum[0])->short_descr);
+    snprintf(buf,MSL,"%s is seeking item %d-%s...\r\n",victim->get_name(ch),victim->pcdata->quest_info->quest_item_vnum[0],get_obj_index(victim->pcdata->quest_info->quest_item_vnum[0])->short_descr);
     send_to_char(buf,ch);
 
     if( victim->pcdata->quest_info->amount[0] > 0 )
@@ -408,7 +408,7 @@ DO_FUN(do_qstat)
   case QUEST_KILLING:
    if( victim->pcdata->quest_info->quest_mob_vnum[0] > -1 )
    {
-    snprintf(buf,MSL,"%s is seeking mob %d-%s...\r\n",PERS(victim,ch),victim->pcdata->quest_info->quest_mob_vnum[0],get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
+    snprintf(buf,MSL,"%s is seeking mob %d-%s...\r\n",victim->get_name(ch),victim->pcdata->quest_info->quest_mob_vnum[0],get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
     send_to_char(buf,ch);
 
     if( victim->pcdata->quest_info->amount[0] > 0 )
@@ -445,7 +445,7 @@ DO_FUN(do_qstat)
   case QUEST_KILLING_R:
    if( victim->pcdata->quest_info->quest_mob_vnum[0] > -1 )
    {
-    snprintf(buf,MSL,"%s is seeking %s mobs...\r\n",PERS(victim,ch),race_table[victim->pcdata->quest_info->quest_mob_vnum[0]].race_title);
+    snprintf(buf,MSL,"%s is seeking %s mobs...\r\n",victim->get_name(ch),race_table[victim->pcdata->quest_info->quest_mob_vnum[0]].race_title);
     send_to_char(buf,ch);
 
     if( victim->pcdata->quest_info->amount[0] > 0 )

@@ -14,7 +14,7 @@
 
 #define CH_IMCDATA(ch)           ((ch)->pcdata->imcchardata)
 #define CH_IMCLEVEL(ch)          ((ch)->level)
-#define CH_IMCNAME(ch)           (const_cast<char *>((ch)->name.c_str()))
+#define CH_IMCNAME(ch)           (const_cast<char *>(ch->get_name()))
 #define CH_IMCSEX(ch)            ((ch)->sex)
 #define CH_IMCTITLE(ch)          ((ch)->get_title())
 

@@ -235,10 +235,10 @@ bool set_hunt( CHAR_DATA * ch, CHAR_DATA * fch, CHAR_DATA * vch, OBJ_DATA * vobj
     ch->searching.clear();
    ch->hunt_flags = nflags;
    snprintf( buf, MSL, "%s has started hunting (%s) %s",
-            NAME( ch ),
-            ( vch ? IS_NPC( vch ) ? "mobile" : "player" : "object" ), ( vch ? NAME( vch ) : vobj->short_descr ) );
+            ch->get_name(),
+            ( vch ? IS_NPC( vch ) ? "mobile" : "player" : "object" ), ( vch ? vch->get_name() : vobj->short_descr ) );
    if( fch )
-      snprintf( buf + strlen( buf ), (2 * MIL), " for %s", NAME( fch ) );
+      snprintf( buf + strlen( buf ), (2 * MIL), " for %s", fch->get_name() );
    monitor_chan( buf, MONITOR_HUNTING );
    return TRUE;
 }
@@ -355,12 +355,12 @@ bool mob_hunt( CHAR_DATA * mob )
       if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->npcdata->hunt_for )
       {
          /*
-          * 6.25% chance of giving up, 18.75% chance of telling employer. 
+          * 6.25% chance of giving up, 18.75% chance of telling employer.
           */
          switch ( number_bits( 4 ) )
          {
             case 0:
-               snprintf( buf, MSL, "$N tells you '%s seems to have disappeared!'", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "$N tells you '%s seems to have disappeared!'", mob->hunting->get_name() );
                act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
                end_hunt( mob );
                return TRUE;
@@ -368,7 +368,7 @@ bool mob_hunt( CHAR_DATA * mob )
             case 2:
             case 3:
                snprintf( buf, MSL, "$N tells you '%s seems to have disappeared!  I shall "
-                        "find %s though!'", NAME( mob->hunting ),
+                        "find %s though!'", mob->hunting->get_name(),
                         ( mob->hunting->sex == SEX_MALE ? "him" : mob->hunting->sex == SEX_FEMALE ? "her" : "it" ) );
                act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
                return TRUE;
@@ -379,16 +379,16 @@ bool mob_hunt( CHAR_DATA * mob )
          switch ( number_bits( 5 ) )
          {
             case 0:
-               snprintf( buf, MSL, "Where are you, %s?", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "Where are you, %s?", mob->hunting->get_name() );
                break;
             case 1:
-               snprintf( buf, MSL, "Why can't I find you, %s?", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "Why can't I find you, %s?", mob->hunting->get_name() );
                break;
             case 2:
-               snprintf( buf, MSL, "I know you're out there, %s!", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "I know you're out there, %s!", mob->hunting->get_name() );
                break;
             case 3:
-               snprintf( buf, MSL, "I'll find you, %s, just wait!", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "I'll find you, %s, just wait!", mob->hunting->get_name() );
                break;
             default:
                return FALSE;
@@ -404,7 +404,7 @@ bool mob_hunt( CHAR_DATA * mob )
       {
          act( "$N tells you 'I have returned with your corpse!'", mob->hunting, NULL, mob, TO_CHAR );
          /*
-          * Ok maybe im a little paranoid here.. :).. -- Alty 
+          * Ok maybe im a little paranoid here.. :).. -- Alty
           */
          if( mob->hunt_obj->carried_by == mob )
          {
@@ -420,23 +420,23 @@ bool mob_hunt( CHAR_DATA * mob )
       if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->npcdata->hunt_for )
       {
          snprintf( buf, MSL, "$N tells you 'I have found %s!  Now %s shall die!'",
-                  NAME( mob->hunting ),
+                  mob->hunting->get_name(),
                   ( mob->hunting->sex == SEX_FEMALE ? "she" : mob->hunting->sex == SEX_MALE ? "he" : "it" ) );
          act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
       }
       switch ( number_bits( 2 ) )
       {
          case 0:
-            snprintf( buf, MSL, "Now I have you, %s!", NAME( mob->hunting ) );
+            snprintf( buf, MSL, "Now I have you, %s!", mob->hunting->get_name() );
             break;
          case 1:
-            snprintf( buf, MSL, "I knew you'd be here, %s!", NAME( mob->hunting ) );
+            snprintf( buf, MSL, "I knew you'd be here, %s!", mob->hunting->get_name() );
             break;
          case 2:
-            snprintf( buf, MSL, "Did you really think you were safe, %s?", NAME( mob->hunting ) );
+            snprintf( buf, MSL, "Did you really think you were safe, %s?", mob->hunting->get_name() );
             break;
          case 3:
-            snprintf( buf, MSL, "So here you are, %s!", NAME( mob->hunting ) );
+            snprintf( buf, MSL, "So here you are, %s!", mob->hunting->get_name() );
             break;
       }
       if( IS_SET( mob->hunt_flags, HUNT_INFORM ) )
@@ -453,12 +453,12 @@ bool mob_hunt( CHAR_DATA * mob )
       if( IS_SET( mob->hunt_flags, HUNT_MERC ) && mob->npcdata->hunt_for )
       {
          /*
-          * 6.25% chance of giving up, 18.75% chance of informing employer 
+          * 6.25% chance of giving up, 18.75% chance of informing employer
           */
          switch ( number_bits( 4 ) )
          {
             case 0:
-               snprintf( buf, MSL, "$N tells you 'I seem to have lost %s's trail.'", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "$N tells you 'I seem to have lost %s's trail.'", mob->hunting->get_name() );
                act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
                end_hunt( mob );
                return TRUE;
@@ -466,7 +466,7 @@ bool mob_hunt( CHAR_DATA * mob )
             case 2:
             case 3:
                snprintf( buf, MSL, "$N tells you 'I seem to have lost %s's trail.  I shall "
-                        "find it again, though!'", NAME( mob->hunting ) );
+                        "find it again, though!'", mob->hunting->get_name() );
                act( buf, mob->npcdata->hunt_for, NULL, mob, TO_CHAR );
                return TRUE;
          }
@@ -476,16 +476,16 @@ bool mob_hunt( CHAR_DATA * mob )
          switch ( number_bits( 6 ) )
          {
             case 0:
-               snprintf( buf, MSL, "Where are you hiding, %s?", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "Where are you hiding, %s?", mob->hunting->get_name() );
                break;
             case 1:
-               snprintf( buf, MSL, "You can't run forever, %s!", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "You can't run forever, %s!", mob->hunting->get_name() );
                break;
             case 2:
-               snprintf( buf, MSL, "Come out, come out, wherever you are, %s!", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "Come out, come out, wherever you are, %s!", mob->hunting->get_name() );
                break;
             case 3:
-               snprintf( buf, MSL, "I promise I won't hurt you, %s.", NAME( mob->hunting ) );
+               snprintf( buf, MSL, "I promise I won't hurt you, %s.", mob->hunting->get_name() );
                break;
             default:
                return FALSE;
@@ -583,7 +583,7 @@ DO_FUN(do_hunt)
    {
       if( ch->hunting )
       {
-         snprintf( arg, MIL, "You stop hunting %s.\r\n", NAME( ch->hunting ) );
+         snprintf( arg, MIL, "You stop hunting %s.\r\n", ch->hunting->get_name() );
          send_to_char( arg, ch );
       }
       else if( ch->hunt_obj )
@@ -600,7 +600,7 @@ DO_FUN(do_hunt)
    }
    else if( !IS_IMMORTAL( ch ) && ( victim != NULL ) && !IS_NPC( victim ) && IS_IMMORTAL( victim ) )
    {
-      snprintf( arg, MIL, "You can't hunt Immortal %s!\r\n", NAME( victim ) );
+      snprintf( arg, MIL, "You can't hunt Immortal %s!\r\n", victim->get_name() );
       send_to_char( arg, ch );
       return;
    }

@@ -143,6 +143,41 @@ short char_data::get_level( const char *what )
  return level;
 }
 
+const char *char_data::get_name( CHAR_DATA *looker )
+{
+ if( looker != NULL )
+ {
+  if( can_see(looker,this) )
+  {
+   if( IS_NPC(this) )
+    return npcdata->short_descr;
+   else
+   {
+    if( IS_WOLF(this) && (IS_SHIFTED(this) || IS_RAGED(this)) )
+     return "A Large @@bWolf@@N";
+    else
+     return name.c_str();
+   }
+  }
+  else
+  {
+   if( IS_IMMORTAL(this) )
+    return "A Mystical Being";
+   else
+    return "Someone";
+  }
+ }
+ else
+ {
+  if( IS_NPC(this) )
+   return npcdata->short_descr;
+  else
+   return name.c_str();
+ }
+
+ return "Unknown!";
+}
+
 const char *char_data::get_title( )
 {
  if( IS_NPC(this) )

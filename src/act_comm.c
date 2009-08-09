@@ -2085,7 +2085,7 @@ DO_FUN(do_group)
       }
 
       leader = ( ch->leader != NULL ) ? ch->leader : ch;
-      snprintf( buf, MSL, "%s's group:\r\n", PERS( leader, ch ) );
+      snprintf( buf, MSL, "%s's group:\r\n", leader->get_name(ch) );
       send_to_char( buf, ch );
 
       for( li = char_list.begin(); li != char_list.end(); li++ )
@@ -2099,7 +2099,7 @@ DO_FUN(do_group)
             {
                snprintf( buf, MSL,
                         "%-16s %4d of %4d hp %4d of %4d mana %4d of %4d move %5d xp %0.2f%% split\r\n",
-                        capitalize( PERS( victim, ch ) ),
+                        capitalize( victim->get_name(ch) ),
                         victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->exp, percent );
             }
             else
@@ -2108,7 +2108,7 @@ DO_FUN(do_group)
                         "[%2d %s] %-16s %4d/%4d hp %4d/%4d mana %4d/%4d mv %5d xp [%0.2f%%]\r\n",
                         victim->level,
                         IS_NPC( victim ) ? "Mob" : class_table[victim->p_class].who_name,
-                        capitalize( PERS( victim, ch ) ),
+                        capitalize( victim->get_name(ch) ),
                         victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, victim->exp, percent );
             }
 
@@ -2234,7 +2234,7 @@ DO_FUN(do_split)
          if( gch != ch && is_same_group( gch, ch ) )
          {
             give_money( ch, gch, givebuf );
-            snprintf( outbuf, MSL, "%s gives you %s.\r\n", PERS( ch, gch ), cost_to_money( money_to_cost( givebuf ) ) );
+            snprintf( outbuf, MSL, "%s gives you %s.\r\n", ch->get_name(gch), cost_to_money( money_to_cost( givebuf ) ) );
             send_to_char( outbuf, gch );
          }
       }
@@ -2818,7 +2818,7 @@ void ask_quest_question( CHAR_DATA *ch, char *argument )
          }
          else if( quest_object && quest_target )
          {
-            snprintf( buf, MSL, "@@NIt was %s @@N who stole my %s@@N.", NAME(quest_target), quest_object->short_descr );
+            snprintf( buf, MSL, "@@NIt was %s @@N who stole my %s@@N.", quest_target->get_name(), quest_object->short_descr );
          }
       }
       else if( quest_object )
@@ -2857,12 +2857,12 @@ void ask_quest_question( CHAR_DATA *ch, char *argument )
          {
             if( quest_timer < 10 )
             {
-               snprintf( buf, MSL, "@@NI don't really know where %s@@N is, let me try and find out.", NAME(quest_target) );
+               snprintf( buf, MSL, "@@NI don't really know where %s@@N is, let me try and find out.", quest_target->get_name() );
             }
             else if( quest_target )
             {
                snprintf( buf, MSL, "@@NI'm not really sure, but I THINK %s@@N is in %s@@N",
-                        NAME(quest_target), quest_target->in_room->area->name );
+                        quest_target->get_name(), quest_target->in_room->area->name );
             }
 
          }

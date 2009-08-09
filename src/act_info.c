@@ -390,7 +390,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
  */
    if( IS_GHOST(victim) )
    {
-    ch_printf(ch,"@@d(@@gGhost@@d) @@N%s floats here morbidly.\r\n", PERS(victim,ch) );
+    ch_printf(ch,"@@d(@@gGhost@@d) @@N%s floats here morbidly.\r\n", victim->get_name(ch) );
     return;
    }
 
@@ -496,7 +496,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
       return;
    }
 
-   strncat( buf, PERS( victim, ch ), MSL-1 );
+   strncat( buf, victim->get_name(ch), MSL-1 );
    if( !ch->act.test(ACT_BRIEF) )
       strncat( buf, victim->get_title(), MSL-1 );
 
@@ -554,7 +554,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
             strncat( buf, "YOU!", MSL-1 );
          else if( victim->in_room == victim->fighting->in_room )
          {
-            strncat( buf, PERS( victim->fighting, ch ), MSL-1 );
+            strncat( buf, victim->fighting->get_name(ch), MSL-1 );
             strncat( buf, ".", MSL-1 );
          }
          else
@@ -602,7 +602,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
 
    if( victim->riding != NULL )
    {
-      snprintf( buf2, MSL, "  riding %s.\r\n", NAME(victim->riding) );
+      snprintf( buf2, MSL, "  riding %s.\r\n", victim->riding->get_name() );
       strncat( buf, buf2, MSL-1 );
    }
 
@@ -645,7 +645,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
    else
       pct = -1;
 
-   strcpy( buf, PERS( victim, ch ) );
+   strcpy( buf, victim->get_name(ch) );
 
    if( pct >= 100 )
       strncat( buf, " is in pristine condition.\r\n", MSL );
@@ -1296,7 +1296,7 @@ DO_FUN(do_score)
 
 
    snprintf( buf, MSL, "@@y%s%s, Race: %s%s, Clan: %s\r\nAge: ",
-            NAME(ch),
+            ch->get_name(),
             ch->get_title(),
             IS_NPC( ch ) ? "n/a" : race_table[ch->race].race_title,
             IS_VAMP( ch ) ? "@@e(Vampire)@@N" : IS_WOLF( ch ) ? "@@r(Werewolf)@@N" : "",
@@ -2726,7 +2726,7 @@ DO_FUN(do_where)
              && can_see( ch, victim ) && is_name( arg, const_cast<char *>(victim->name.c_str()) ) )
          {
             found = TRUE;
-            snprintf( buf, MSL, "%-28s %s\r\n", PERS( victim, ch ), victim->in_room->name );
+            snprintf( buf, MSL, "%-28s %s\r\n", victim->get_name(ch), victim->in_room->name );
             send_to_char( buf, ch );
             break;
          }
@@ -4400,7 +4400,7 @@ DO_FUN(do_diagnose)
    else
       pct = -1;
 
-   strcpy( buf, PERS( victim, ch ) );
+   strcpy( buf, victim->get_name(ch) );
 
    if( pct >= 100 )
       strncat( buf, " --  [5] 4  3  2  1   \r\n", MSL );
@@ -5105,7 +5105,7 @@ DO_FUN(do_assassinate)
 
    act( "$n gives $N some gold coins.", ch, NULL, mob, TO_NOTVICT );
    act( "$n says '$N shall die by my hand!`", mob, NULL, victim, TO_ROOM );
-   snprintf( buf, MSL, "%s employs the services of %s to assassinate %s!!", ch->name.c_str(), NAME(mob), victim->name.c_str() );
+   snprintf( buf, MSL, "%s employs the services of %s to assassinate %s!!", ch->name.c_str(), mob->get_name(), victim->name.c_str() );
    info( buf, 1 );
    return;
 }

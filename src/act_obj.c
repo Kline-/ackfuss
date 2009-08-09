@@ -842,21 +842,21 @@ DO_FUN(do_give)
             act( "You give $p to $N.", ch, obj, victim, TO_CHAR );
             act( "$n gives you $p.", ch, obj, victim, TO_VICT );
             /*
-             * trigger_handler( ch, obj, TRIGGER_DROP );   
+             * trigger_handler( ch, obj, TRIGGER_DROP );
              */
 
             if( ( quest || auto_quest ) && IS_NPC( victim ) && victim == quest_mob && obj == quest_object )
             {
                /*
-                * Then ch has recovered the quest object!!!!! 
+                * Then ch has recovered the quest object!!!!!
                 */
-               snprintf( buf, MSL, "Oh! %s you found %s for me!  Thank You!", NAME( ch ), obj->short_descr );
+               snprintf( buf, MSL, "Oh! %s you found %s for me!  Thank You!", ch->get_name(), obj->short_descr );
                do_say( victim, buf );
                interpret( victim, "hop" );
 
                if( !IS_NPC( ch ) )
                {
-                  snprintf( buf, MSL, "%s I shall reward you well for recovering this for me!", NAME( ch ) );
+                  snprintf( buf, MSL, "%s I shall reward you well for recovering this for me!", ch->get_name() );
                   do_tell( victim, buf );
                   crusade_reward(ch);
                }
@@ -3119,7 +3119,7 @@ DO_FUN(do_sell)
    snprintf( buf, MSL, "You sell $p for %s.", money_string( transfer ) );
    if( ( ch->carry_weight + money_weight( transfer ) ) > can_carry_w( ch ) )
    {
-      snprintf( buf, MSL, "%s cannot carry that much weight!\r\n", PERS( keeper, ch ) );
+      snprintf( buf, MSL, "%s cannot carry that much weight!\r\n", keeper->get_name(ch) );
       send_to_char( buf, keeper );
       send_to_char( "You cannot carry that much money with your current load!\r\n", ch );
       join_money( transfer, keeper->money );
