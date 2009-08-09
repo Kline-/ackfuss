@@ -112,7 +112,7 @@ void save_mudinfo( void )
 }
 
 
-void do_mudinfo( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mudinfo)
 {
  string str;
 

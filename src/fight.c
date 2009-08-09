@@ -3053,7 +3053,7 @@ void trip( CHAR_DATA * ch, CHAR_DATA * victim )
 
 
 
-void do_kill( CHAR_DATA * ch, char *argument )
+DO_FUN(do_kill)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -3120,7 +3120,7 @@ void do_kill( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_target( CHAR_DATA * ch, char *argument )
+DO_FUN(do_target)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -3194,7 +3194,7 @@ void do_target( CHAR_DATA * ch, char *argument )
 
 
 
-void do_murde( CHAR_DATA * ch, char *argument )
+DO_FUN(do_murde)
 {
    send_to_char( "If you want to MURDER, spell it out.\r\n", ch );
    return;
@@ -3202,7 +3202,7 @@ void do_murde( CHAR_DATA * ch, char *argument )
 
 
 
-void do_murder( CHAR_DATA * ch, char *argument )
+DO_FUN(do_murder)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -3267,7 +3267,7 @@ void do_murder( CHAR_DATA * ch, char *argument )
 
 
 
-void do_backstab( CHAR_DATA * ch, char *argument )
+DO_FUN(do_backstab)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -3455,7 +3455,7 @@ void do_backstab( CHAR_DATA * ch, char *argument )
 
 
 
-void do_flee( CHAR_DATA * ch, char *argument )
+DO_FUN(do_flee)
 {
    ROOM_INDEX_DATA *was_in;
    ROOM_INDEX_DATA *now_in;
@@ -3563,7 +3563,7 @@ void do_flee( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_rescue( CHAR_DATA * ch, char *argument )
+DO_FUN(do_rescue)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -3649,7 +3649,7 @@ void do_rescue( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_disarm( CHAR_DATA * ch, char *argument )
+DO_FUN(do_disarm)
 {
    CHAR_DATA *victim;
    OBJ_DATA *obj;
@@ -3720,7 +3720,7 @@ void do_disarm( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_circle( CHAR_DATA * ch, char *argument )
+DO_FUN(do_circle)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -3913,7 +3913,7 @@ void do_circle( CHAR_DATA * ch, char *argument )
 
 
 
-void do_trip( CHAR_DATA * ch, char *argument )
+DO_FUN(do_trip)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *victim;
@@ -3987,7 +3987,7 @@ void do_trip( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_dirt( CHAR_DATA * ch, char *argument )
+DO_FUN(do_dirt)
 {
 
    AFFECT_DATA af;
@@ -4083,7 +4083,7 @@ void do_dirt( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_bash( CHAR_DATA * ch, char *argument )
+DO_FUN(do_bash)
 {
 
    char arg[MAX_INPUT_LENGTH];
@@ -4188,7 +4188,7 @@ void do_bash( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_berserk( CHAR_DATA * ch, char *argument )
+DO_FUN(do_berserk)
 {
    AFFECT_DATA af;
    int best;
@@ -4275,7 +4275,7 @@ void do_berserk( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_punch( CHAR_DATA * ch, char *argument )
+DO_FUN(do_punch)
 {
 
    CHAR_DATA *victim;
@@ -4360,7 +4360,7 @@ void do_punch( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_headbutt( CHAR_DATA * ch, char *argument )
+DO_FUN(do_headbutt)
 {
 
    CHAR_DATA *victim;
@@ -4456,7 +4456,7 @@ void do_headbutt( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_charge( CHAR_DATA * ch, char *argument )
+DO_FUN(do_charge)
 {
 
    CHAR_DATA *victim;
@@ -4557,7 +4557,7 @@ void do_charge( CHAR_DATA * ch, char *argument )
 
 
 
-void do_knee( CHAR_DATA * ch, char *argument )
+DO_FUN(do_knee)
 {
 
    CHAR_DATA *victim;
@@ -4654,7 +4654,7 @@ void do_knee( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_kick( CHAR_DATA * ch, char *argument )
+DO_FUN(do_kick)
 {
 
    CHAR_DATA *victim;
@@ -5179,7 +5179,7 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
    return;
 }
 
-void do_assist( CHAR_DATA * ch, char *argument )
+DO_FUN(do_assist)
 {
    /*
     * Allow players to join in fight, by typing assist, 
@@ -5269,7 +5269,7 @@ void do_assist( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_stake( CHAR_DATA * ch, char *argument )
+DO_FUN(do_stake)
 {
    /*
     * If player has an object of TYPE_STAKE (s)he can try and stake
@@ -5393,7 +5393,7 @@ void do_stake( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_stun( CHAR_DATA * ch, char *argument )
+DO_FUN(do_stun)
 {
    CHAR_DATA *victim;
    int chance;
@@ -5467,7 +5467,7 @@ void do_stun( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_feed( CHAR_DATA * ch, char *argument )
+DO_FUN(do_feed)
 {
    CHAR_DATA *victim;
    char arg[MAX_INPUT_LENGTH];
@@ -5610,7 +5610,7 @@ void check_adrenaline( CHAR_DATA * ch, float damage )
 
 }
 
-void do_frenzy( CHAR_DATA * ch, char *argument )
+DO_FUN(do_frenzy)
 {
    CHAR_DATA *vch;
    CHAR_DATA *vch_next;
@@ -5682,7 +5682,7 @@ void do_frenzy( CHAR_DATA * ch, char *argument )
 
 
 
-void do_rage( CHAR_DATA * ch, char *argument )
+DO_FUN(do_rage)
 {
    char arg[MAX_INPUT_LENGTH];
    int chance = 0;
@@ -6011,7 +6011,7 @@ void damage_gear( CHAR_DATA *ch )
  }
 }
 
-void do_disguise( CHAR_DATA * ch, char *argument )
+DO_FUN(do_disguise)
 {
  char *farg = argument;
 
@@ -6041,7 +6041,7 @@ void do_disguise( CHAR_DATA * ch, char *argument )
  return;
 }
 
-void do_stance( CHAR_DATA * ch, char *argument )
+DO_FUN(do_stance)
 {
    char arg[MAX_STRING_LENGTH];
    bool legal_stance = FALSE;

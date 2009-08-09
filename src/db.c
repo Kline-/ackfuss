@@ -3225,7 +3225,7 @@ void *_getmem( int size, const char *caller, int log )
    return mem;
 }
 
-void do_areas( CHAR_DATA * ch, char *argument )
+DO_FUN(do_areas)
 {
    char buf[MAX_STRING_LENGTH];
    char msg[MAX_STRING_LENGTH];
@@ -3268,7 +3268,7 @@ void do_areas( CHAR_DATA * ch, char *argument )
 void perm_update(  )
 {
    /*
-    * output perm usage to log file 
+    * output perm usage to log file
     */
    FILE *po;
    char *strtime;
@@ -3284,7 +3284,7 @@ void perm_update(  )
 }
 
 
-void do_memory( CHAR_DATA * ch, char *argument )
+DO_FUN(do_memory)
 {
    char buf[MAX_STRING_LENGTH];
 
@@ -3370,7 +3370,7 @@ void do_memory( CHAR_DATA * ch, char *argument )
 }
 
 
-void do_status( CHAR_DATA * ch, char *argument )
+DO_FUN(do_status)
 {
    char buf[MAX_STRING_LENGTH];
 

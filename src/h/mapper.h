@@ -50,38 +50,6 @@ char *get_sector_name P_((int sector));
 char *break_arg P_((char *str, char *first_arg, int bufsize, int max, int *buflen, int *len));
 char *string_justify P_((char *str, int len, int width, int numwords, int *rlen));
 char last_color P_((char *str));
+DECLARE_DO_FUN(do_mapper);
 
 #undef P_
-
-#define MAX_MAP 40
-#define MAX_MAP_DIR 4
-
-#define DOOR_LOCKED -1
-#define DOOR_CLOSED -2
-#define DOOR_OPEN -3
-#define DOOR_NS -4
-#define DOOR_EW -5
-#define DOOR_NULL -6
-
-#define LOS_INITIAL -5
-#define MAP_Y		9
-
-struct room_content_type
-{
-   char string[10];
-};
-
-struct room_content_type contents[MAX_MAP][MAX_MAP];
-
-int map[MAX_MAP][MAX_MAP];
-
-extern const char* compass_name[];
-
-struct map_info_type
-{
-   int sector_type;
-   char *display_color;
-   char *display_code;
-   char *invert_color;
-   char *desc;
-};

@@ -62,7 +62,7 @@
 #include "h/ssm.h"
 #endif
 
-void do_enchant( CHAR_DATA * ch, char *argument )
+DO_FUN(do_enchant)
 {
    char arg1[MSL];
    char arg2[MSL];

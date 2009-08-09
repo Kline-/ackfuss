@@ -45,7 +45,7 @@ void send_to_char P_((std::string txt, CHAR_DATA *ch));
 void send_to_char P_((const char *txt, CHAR_DATA *ch));
 void show_string P_((struct descriptor_data *d, char *input));
 void act P_((const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type));
-void do_finger P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_finger);
 void send_to_descrips P_((const char *message));
 void copyover_recover P_((void));
 void hang P_((const char *str));

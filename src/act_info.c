@@ -78,6 +78,10 @@
 #include "h/magic.h"
 #endif
 
+#ifndef DEC_MAPPER_H
+#include "h/mapper.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif

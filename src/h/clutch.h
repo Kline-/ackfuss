@@ -18,7 +18,7 @@
 
 /* clutch.c */
 bool valid_clutch_number P_((int number));
-void do_clutch P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_clutch);
 void clutch_portal P_((int v1, int v2, int v3, CHAR_DATA *ch, OBJ_DATA *obj));
 void clutch_gate P_((int v1, int v2, int v3, CHAR_DATA *ch, OBJ_DATA *obj));
 

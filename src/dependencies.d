@@ -12,8 +12,8 @@ o/act_info.o: act_info.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
   h/act_comm.h h/act_info.h h/act_obj.h h/act_wiz.h h/board.h \
-  h/buildtab.h h/comm.h h/cursor.h h/db.h h/handler.h h/magic.h h/money.h \
-  h/ssm.h
+  h/buildtab.h h/comm.h h/cursor.h h/db.h h/handler.h h/magic.h \
+  h/mapper.h h/money.h h/ssm.h
 o/act_mob.o: act_mob.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
@@ -123,8 +123,8 @@ o/interp.o: interp.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_clan.h \
   h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h \
   h/board.h h/build.h h/buildare.h h/clutch.h h/comm.h h/db.h h/email.h \
-  h/enchant.h h/fight.h h/handler.h h/magic.h h/money.h h/mount.h \
-  h/mudinfo.h h/spendqp.h h/vampire.h h/werewolf.h
+  h/enchant.h h/fight.h h/handler.h h/hunt.h h/magic.h h/mapper.h \
+  h/money.h h/mount.h h/mudinfo.h h/spendqp.h h/vampire.h h/werewolf.h
 o/lists.o: lists.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/ssm.h
@@ -144,7 +144,7 @@ o/magic.o: magic.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
 o/mapper.o: mapper.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
-  h/comm.h h/cursor.h h/db.h h/handler.h h/mapper.h
+  h/comm.h h/cursor.h h/db.h h/handler.h h/mapperc.h
 o/mbr_fun.o: mbr_fun.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \

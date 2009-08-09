@@ -64,8 +64,8 @@
 #include "h/handler.h"
 #endif
 
-#ifndef DEC_MAPPER_H
-#include "h/mapper.h"
+#ifndef DEC_MAPPERC_H
+#include "h/mapperc.h"
 #endif
 
 int door_marks[4][2] = { {-1, 0}, {0, 1}, {1, 0}, {0, -1} };
@@ -765,15 +765,15 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
    }
    send_to_char( "\r\n", ch );
    /*
-    * this is the top line of the map itself, currently not part of the mapstring 
+    * this is the top line of the map itself, currently not part of the mapstring
     */
    send_to_char( borderbuf, ch );
    /*
-    * this is the contents of the map 
+    * this is the contents of the map
     */
    send_to_char( outbuf, ch );
    /*
-    * this is the bottom line of the map 
+    * this is the bottom line of the map
     */
    send_to_char( borderbuf, ch );
    send_to_char( "\r\n", ch );
@@ -782,7 +782,7 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
    return;
 }
 
-void do_mapper( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mapper)
 {
    int size, center, x, y, min, max, looper;
    char arg1[MSL];

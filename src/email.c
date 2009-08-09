@@ -90,7 +90,7 @@ bool valid_email_addy( char *address )
 }
 
 
-void do_email( CHAR_DATA * ch, char *argument )
+DO_FUN(do_email)
 {
 /* interface for setting up email addresses */
    char arg1[MSL];

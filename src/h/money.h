@@ -55,13 +55,13 @@ bool give_money P_((CHAR_DATA *ch, CHAR_DATA *victim, char *argument));
 bool withdraw_money P_((CHAR_DATA *ch, char *argument));
 void deposit_money P_((CHAR_DATA *ch, char *argument));
 int exchange_money P_((CHAR_DATA *ch, char *argument));
-void do_mgive P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_mgive);
 void drop_money P_((CHAR_DATA *ch, char *argument));
 int money_to_value P_((CHAR_DATA *ch, char *argument));
 bool get_money_room P_((CHAR_DATA *ch, char *argument));
 bool get_money_obj P_((CHAR_DATA *ch, char *argument, OBJ_DATA *obj));
-void do_bank P_((CHAR_DATA *ch, char *argument));
-void do_gold P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_bank);
+DECLARE_DO_FUN(do_gold);
 char *take_best_coins P_((MONEY_TYPE *money, int cost));
 
 #undef P_

@@ -68,7 +68,7 @@
 #include "h/mount.h"
 #endif
 
-void do_mount( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mount)
 {
    char arg[MAX_INPUT_LENGTH];
    CHAR_DATA *mount;
@@ -196,7 +196,7 @@ static int valid_ride( int room, CHAR_DATA * ch )
    return FALSE;
 }
 
-void do_dismount( CHAR_DATA * ch, char *argument )
+DO_FUN(do_dismount)
 {
    if( IS_NPC( ch ) )
    {

@@ -178,7 +178,6 @@ DECLARE_DO_FUN( do_rename );
 DECLARE_DO_FUN( do_sdelete );
 DECLARE_DO_FUN( do_rbid );
 DECLARE_DO_FUN( do_mbid );
-DECLARE_DO_FUN( do_hunt );
 DECLARE_DO_FUN( do_quest );
 DECLARE_DO_FUN( do_listspells );
 
@@ -206,5 +205,4 @@ DECLARE_DO_FUN( do_rulers );
  */
 DECLARE_DO_FUN( do_sedit );
 DECLARE_DO_FUN( do_scheck );
-DECLARE_DO_FUN( do_mapper );
 DECLARE_DO_FUN( do_sysdata );

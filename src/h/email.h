@@ -16,7 +16,7 @@
 
 /* email.c */
 bool valid_email_addy P_((char *address));
-void do_email P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_email);
 void send_email P_((const char *m_address, const char *m_subject, const char *mfilename));
 bool save_mail_file P_((const char *mfilename, char *mtext));
 void send_rep_out P_((CHAR_DATA *ch, char *outbuf, bool mailme, char *msub));

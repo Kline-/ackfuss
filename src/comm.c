@@ -3547,14 +3547,14 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
       if( to->desc && can_see_message )
          write_to_buffer( to->desc, buf, point - buf );
       /*
-       * Added by Kahn 
+       * Added by Kahn
        */
    }
 
    return;
 }
 
-void do_finger( CHAR_DATA * ch, char *argument )
+DO_FUN(do_finger)
 {
    CHAR_DATA *victim;
    char name[MAX_STRING_LENGTH];

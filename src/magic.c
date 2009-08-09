@@ -394,7 +394,7 @@ bool saves_spell( int level, CHAR_DATA * victim )
  */
 char *target_name;
 
-void do_cast( CHAR_DATA *ch, char *argument )
+DO_FUN(do_cast)
 {
  char tmp[100];
  char buf[MSL];
@@ -451,7 +451,7 @@ float cast_speed( CHAR_DATA *ch, int sn )
  return ret_val;
 }
 
-void do_stop( CHAR_DATA *ch, char *argument )
+DO_FUN(do_stop)
 {
  if( !IS_CASTING(ch) )
  {

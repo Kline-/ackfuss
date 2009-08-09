@@ -562,7 +562,7 @@ void char_hunt( CHAR_DATA * ch )
    return;
 }
 
-void do_hunt( CHAR_DATA * ch, char *argument )
+DO_FUN(do_hunt)
 {
    CHAR_DATA *victim;
    char arg[MAX_INPUT_LENGTH];

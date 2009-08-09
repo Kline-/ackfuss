@@ -32,7 +32,7 @@
 #include "h/money.h"
 #endif
 
-void do_mquest( CHAR_DATA *ch, char *argument )
+DO_FUN(do_mquest)
 {
  CHAR_DATA *mob = NULL;
  OBJ_DATA *obj;
@@ -352,7 +352,7 @@ void do_mquest( CHAR_DATA *ch, char *argument )
  return;
 }
 
-void do_qstat( CHAR_DATA *ch, char *argument )
+DO_FUN(do_qstat)
 {
  CHAR_DATA *victim;
  char buf[MSL];

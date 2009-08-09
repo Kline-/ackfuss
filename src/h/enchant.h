@@ -15,6 +15,6 @@
 #endif
 
 /* enchant.c */
-void do_enchant P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_enchant);
 
 #undef P_

@@ -98,8 +98,16 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HUNT_H
+#include "h/hunt.h"
+#endif
+
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
+#endif
+
+#ifndef DEC_MAPPER_H
+#include "h/mapper.h"
 #endif
 
 #ifndef DEC_MONEY_H

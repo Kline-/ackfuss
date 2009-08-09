@@ -71,7 +71,7 @@ CLUTCH_TYPE clutch_table[SPELL_NUMBER] = {
 bool valid_clutch_number( int number )
 {
    /*
-    * Simply check if number is valid... 
+    * Simply check if number is valid...
     */
 
    if( ( number + 1 ) > 0 && number < SPELL_NUMBER )
@@ -80,7 +80,7 @@ bool valid_clutch_number( int number )
    return FALSE;
 }
 
-void do_clutch( CHAR_DATA * ch, char *argument )
+DO_FUN(do_clutch)
 {
    /*
     * Big top-level clutch funciton. 

@@ -15,8 +15,8 @@
 #endif
 
 /* mount.c */
-void do_mount P_((CHAR_DATA *ch, char *argument));
-void do_dismount P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_mount);
+DECLARE_DO_FUN(do_dismount);
 void stop_riding P_((CHAR_DATA *ch));
 bool check_valid_ride P_((CHAR_DATA *ch));
 

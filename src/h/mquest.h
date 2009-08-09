@@ -19,8 +19,8 @@
 #endif
 
 /* mquest.c */
-void do_mquest P_((CHAR_DATA *ch, char *argument));
-void do_qstat P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_mquest);
+DECLARE_DO_FUN(do_qstat);
 void mquest_info P_((CHAR_DATA *ch));
 void mquest_complete_message P_((CHAR_DATA *ch));
 void mquest_calc_rewards P_((CHAR_DATA *ch));

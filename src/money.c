@@ -475,7 +475,7 @@ int exchange_money( CHAR_DATA * ch, char *argument )
    return (int)taxed;
 }
 
-void do_mgive( CHAR_DATA * ch, char *argument )
+DO_FUN(do_mgive)
 {
    char v_name[MSL];
    CHAR_DATA *victim;
@@ -783,7 +783,7 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
    return TRUE;
 }
 
-void do_bank( CHAR_DATA * ch, char *argument )
+DO_FUN(do_bank)
 {
    /*
     * Simple banking system.  Allow ch to check balance, make a 
@@ -895,7 +895,7 @@ void do_bank( CHAR_DATA * ch, char *argument )
    return;
 }
 
-void do_gold( CHAR_DATA * ch, char *argument )
+DO_FUN(do_gold)
 {
    char buf[MAX_STRING_LENGTH];
 

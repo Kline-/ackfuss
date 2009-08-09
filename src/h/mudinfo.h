@@ -17,6 +17,6 @@
 void init_mudinfo P_((void));
 void load_mudinfo P_((void));
 void save_mudinfo P_((void));
-void do_mudinfo P_((CHAR_DATA *ch, char *argument));
+DECLARE_DO_FUN(do_mudinfo);
 
 #undef P_
