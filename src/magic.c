@@ -317,7 +317,7 @@ void say_spell( CHAR_DATA * ch, int sn )
       {
          if( !str_prefix( syl_table[iSyl].sold, pName ) )
          {
-            strncat( buf, syl_table[iSyl].snew, MSL );
+            strncat( buf, syl_table[iSyl].snew, MSL-1 );
             break;
          }
       }

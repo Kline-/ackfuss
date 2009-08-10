@@ -148,7 +148,7 @@ DO_FUN(do_transdm)
    CHAR_DATA *wch;
    list<CHAR_DATA *>::iterator li;
    int room;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    ROOM_INDEX_DATA *location;
 
    if( !deathmatch )
@@ -183,8 +183,8 @@ DO_FUN(do_transdm)
 
 DO_FUN(do_wizhelp)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
    int cmd;
    int col;
 
@@ -195,7 +195,7 @@ DO_FUN(do_wizhelp)
       if( cmd_table[cmd].level >= LEVEL_HERO && cmd_table[cmd].level <= get_trust( ch ) )
       {
          snprintf( buf, MSL, "%-12s", cmd_table[cmd].name );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          if( ++col % 6 == 0 )
             strncat( buf1, "\r\n", MSL );
       }
@@ -237,7 +237,7 @@ DO_FUN(do_bamfout)
 
 DO_FUN(do_deny)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 //    DESCRIPTOR_DATA d;
    one_argument( argument, arg );
@@ -297,7 +297,7 @@ DO_FUN(do_deny)
 
 DO_FUN(do_disconnect)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    DESCRIPTOR_DATA *d;
    CHAR_DATA *victim;
 
@@ -339,8 +339,8 @@ DO_FUN(do_disconnect)
 
 DO_FUN(do_pardon)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
    CHAR_DATA *victim;
 
    argument = one_argument( argument, arg1 );
@@ -470,8 +470,8 @@ ROOM_INDEX_DATA *find_location( CHAR_DATA * ch, char *arg )
 
 DO_FUN(do_transfer)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
    ROOM_INDEX_DATA *location;
    DESCRIPTOR_DATA *d;
    CHAR_DATA *victim;
@@ -494,7 +494,7 @@ DO_FUN(do_transfer)
              && !IS_IMMORTAL( d->character )
              && d->character != ch && d->character->in_room != NULL && can_see( ch, d->character ) )
          {
-            char buf[MAX_STRING_LENGTH];
+            char buf[MSL];
             snprintf( buf, MSL, "%s %s", d->character->name.c_str(), arg2 );
             do_transfer( ch, buf );
          }
@@ -568,7 +568,7 @@ DO_FUN(do_transfer)
 
 DO_FUN(do_at)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    ROOM_INDEX_DATA *location;
    ROOM_INDEX_DATA *original;
    CHAR_DATA *wch;
@@ -621,7 +621,7 @@ DO_FUN(do_at)
 
 DO_FUN(do_goto)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    ROOM_INDEX_DATA *location;
 
    one_argument( argument, arg );
@@ -672,9 +672,9 @@ DO_FUN(do_goto)
 
 DO_FUN(do_rstat)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    ROOM_INDEX_DATA *location;
    ROOM_AFFECT_DATA *raf;
    OBJ_DATA *obj;
@@ -698,22 +698,22 @@ DO_FUN(do_rstat)
    buf1[0] = '\0';
 
    snprintf( buf, MSL, "Name: '%s'\r\nArea: '%s'.\r\n", location->name, location->area->name );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL,
             "Vnum: %d.  Light: %d.  Sector: %s.\r\n",
             location->vnum, location->light, rev_table_lookup( tab_sector_types, location->sector_type ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL,
             "Room flags: %s.\r\nDescription:\r\n%s",
             bs_show_values( tab_room_flags, location->room_flags ), location->description );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    if( location->script_name != &str_empty[0] )
    {
       snprintf( buf, MSL, "\r\nRoom has Lua script: %s\r\n", location->script_name );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( location->first_exdesc != NULL )
@@ -723,7 +723,7 @@ DO_FUN(do_rstat)
       strncat( buf1, "Extra description keywords: '", MSL );
       for( ed = location->first_exdesc; ed; ed = ed->next )
       {
-         strncat( buf1, ed->keyword, MSL );
+         strncat( buf1, ed->keyword, MSL-1 );
          if( ed->next != NULL )
             strncat( buf1, " ", MSL );
       }
@@ -735,7 +735,7 @@ DO_FUN(do_rstat)
    {
       strncat( buf1, " ", MSL );
       one_argument( const_cast<char *>(rch->name.c_str()), buf );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    strncat( buf1, ".\r\nObjects:   ", MSL );
@@ -743,7 +743,7 @@ DO_FUN(do_rstat)
    {
       strncat( buf1, " ", MSL );
       one_argument( obj->name, buf );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
    strncat( buf1, ".\r\n", MSL );
 
@@ -759,7 +759,7 @@ DO_FUN(do_rstat)
                   pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                   pexit->key, pexit->keyword, pexit->description[0] != '\0' ? pexit->description : "(none).",
                   exit_bit_name(pexit->exit_info) );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
       }
    }
 
@@ -769,7 +769,7 @@ DO_FUN(do_rstat)
       {
          snprintf( buf, MSL, "Room_Affect: '%s', level %d, duration %d\r\n",
                   skill_table[raf->type].name, raf->level, raf->duration );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
       }
    }
 
@@ -781,9 +781,9 @@ DO_FUN(do_rstat)
 
 DO_FUN(do_ostat)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    AFFECT_DATA *paf;
    OBJ_DATA *obj;
    int cnt;
@@ -806,43 +806,43 @@ DO_FUN(do_ostat)
    }
 
    snprintf( buf, MSL, "Name: %s.\r\n", obj->name );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Vnum: %d.  Type: %s.\r\n", obj->pIndexData->vnum, item_type_name( obj ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Short description: %s.\r\nLong description: %s\r\n", obj->short_descr, obj->long_descr );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Wear bits: %s.\r\nExtra bits: %s\r\n",
             wear_bit_name( obj->wear_flags ), extra_bit_name( obj->extra_flags ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "ITEM_APPLY: %d.\r\n", obj->item_apply );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Number: %d/%d.  Weight: %d/%d.\r\n", 1, get_obj_number( obj ), obj->weight, get_obj_weight( obj ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Cost: %d.  Timer: %d.  Level: %d.\r\n", obj->cost, obj->timer, obj->level );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "Durability: %d/%d (%1.0f%%).\r\n", obj->durability, obj->max_durability, (float)(((float)obj->durability / (float)obj->max_durability) * 100) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf(buf, MSL, "Speed %4.2f\r\n", obj->speed);
-   strncat(buf1,buf,MSL);
+   strncat(buf1,buf,MSL-1);
 
    if( obj->obj_fun != NULL )
    {
       snprintf( buf, MSL, "@@WObject has objfun: @@y%s.@@N\r\n", rev_obj_fun_lookup( obj->obj_fun ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( obj->pIndexData->script_name != &str_empty[0] )
    {
       snprintf( buf, MSL, "@@WObject has Lua script: @@y%s@@N\r\n", obj->pIndexData->script_name );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    snprintf( buf, MSL,
@@ -850,14 +850,14 @@ DO_FUN(do_ostat)
             obj->in_room == NULL ? 0 : obj->in_room->vnum,
             obj->in_obj == NULL ? "(none)" : obj->in_obj->short_descr,
             obj->carried_by == NULL ? "(none)" : obj->carried_by->name.c_str(), obj->wear_loc );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    strncat( buf1, "Item Values:\r\n", MSL );
    for( cnt = 0; cnt < 10; cnt++ )
    {
       snprintf( buf, MSL, "@@W[Value%d : @@y%6d@@W] %s",
                cnt, obj->value[cnt], rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
       if( is_name( "Spell", rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) ) )
       {
          fubar = obj->value[cnt];
@@ -885,13 +885,13 @@ DO_FUN(do_ostat)
       }
       else
          snprintf( buf, MSL, "@@g\r\n" );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    /*
     * snprintf( buf, MSL, "Values: %d %d %d %d.\r\n",
     * obj->value[0], obj->value[1], obj->value[2], obj->value[3] );
-    * strncat( buf1, buf, MSL );
+    * strncat( buf1, buf, MSL-1 );
     */
 
    if( obj->first_exdesc != NULL || obj->pIndexData->first_exdesc != NULL )
@@ -902,14 +902,14 @@ DO_FUN(do_ostat)
 
       for( ed = obj->first_exdesc; ed != NULL; ed = ed->next )
       {
-         strncat( buf1, ed->keyword, MSL );
+         strncat( buf1, ed->keyword, MSL-1 );
          if( ed->next != NULL )
             strncat( buf1, " ", MSL );
       }
 
       for( ed = obj->pIndexData->first_exdesc; ed != NULL; ed = ed->next )
       {
-         strncat( buf1, ed->keyword, MSL );
+         strncat( buf1, ed->keyword, MSL-1 );
          if( ed->next != NULL )
             strncat( buf1, " ", MSL );
       }
@@ -920,7 +920,7 @@ DO_FUN(do_ostat)
    for( paf = obj->first_apply; paf != NULL; paf = paf->next )
    {
       snprintf( buf, MSL, "Affects %s by %d.\r\n", affect_loc_name( paf->location ), paf->modifier );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    send_to_char( buf1, ch );
@@ -930,9 +930,9 @@ DO_FUN(do_ostat)
 
 DO_FUN(do_mstat)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    AFFECT_DATA *paf;
    CHAR_DATA *victim;
 
@@ -1208,9 +1208,9 @@ DO_FUN(do_olmsg)
 
 DO_FUN(do_ofindlev)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    char arg2[MSL];
    OBJ_INDEX_DATA *pObjIndex;
    int vnum;
@@ -1291,9 +1291,9 @@ DO_FUN(do_ofindlev)
 
 DO_FUN(do_mfind)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    MOB_INDEX_DATA *pMobIndex;
    int vnum;
    int nMatch;
@@ -1329,7 +1329,7 @@ DO_FUN(do_mfind)
          {
             found = TRUE;
             snprintf( buf, MSL, "[%5d] [%3d] %s\r\n", pMobIndex->vnum, pMobIndex->level, capitalize( pMobIndex->short_descr ) );
-            strncat( buf1, buf, MSL );
+            strncat( buf1, buf, MSL-1 );
          }
       }
    }
@@ -1347,9 +1347,9 @@ DO_FUN(do_mfind)
 
 DO_FUN(do_mfindlev)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    char arg2[MSL];
    MOB_INDEX_DATA *pMobIndex;
    int vnum;
@@ -1406,7 +1406,7 @@ DO_FUN(do_mfindlev)
 
             snprintf( buf, MSL, "(%3d) [%3d] [%5d] %s\r\n",
                      perkills, pMobIndex->level, pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
-            strncat( buf1, buf, MSL );
+            strncat( buf1, buf, MSL-1 );
          }
       }
    }
@@ -1425,9 +1425,9 @@ DO_FUN(do_mfindlev)
 
 DO_FUN(do_ofind)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    OBJ_INDEX_DATA *pObjIndex;
    int vnum;
    int nMatch;
@@ -1486,8 +1486,8 @@ DO_FUN(do_ofind)
 
 DO_FUN(do_mwhere)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char arg[MSL];
    CHAR_DATA *victim;
    list<CHAR_DATA *>::iterator li;
    bool found;
@@ -1548,7 +1548,7 @@ DO_FUN(do_reboo)
 
 DO_FUN(do_reboot)
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    build_save_flush(  );
 
@@ -1578,7 +1578,7 @@ DO_FUN(do_shutdow)
 
 DO_FUN(do_shutdown)
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    build_save_flush(  );
 
@@ -1602,7 +1602,7 @@ DO_FUN(do_shutdown)
 
 DO_FUN(do_snoop)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    DESCRIPTOR_DATA *d;
    CHAR_DATA *victim;
 
@@ -1670,7 +1670,7 @@ DO_FUN(do_snoop)
 
 DO_FUN(do_switch)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -1750,7 +1750,7 @@ DO_FUN(do_return)
 
 DO_FUN(do_mload)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    MOB_INDEX_DATA *pMobIndex;
    CHAR_DATA *victim;
 
@@ -1779,8 +1779,8 @@ DO_FUN(do_mload)
 
 DO_FUN(do_oload)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
    OBJ_INDEX_DATA *pObjIndex;
    OBJ_DATA *obj;
    int level;
@@ -1853,7 +1853,7 @@ DO_FUN(do_oload)
 
 DO_FUN(do_purge)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
    OBJ_DATA *obj;
 
@@ -1905,9 +1905,9 @@ DO_FUN(do_purge)
 
 DO_FUN(do_trust)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char buf[MSL];
    CHAR_DATA *victim;
    int level;
 
@@ -1947,7 +1947,7 @@ DO_FUN(do_trust)
 
 DO_FUN(do_restore)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -2009,8 +2009,8 @@ DO_FUN(do_restore)
 
 DO_FUN(do_freeze)
 {
-   char arg[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char arg[MSL];
+   char buf[MSL];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -2066,7 +2066,7 @@ DO_FUN(do_freeze)
 
 DO_FUN(do_log)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 
 // If anyone has a way to do this with the character not logged in,
@@ -2139,7 +2139,7 @@ DO_FUN(do_log)
 
 DO_FUN(do_noemote)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -2188,7 +2188,7 @@ DO_FUN(do_noemote)
 
 DO_FUN(do_notell)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -2237,7 +2237,7 @@ DO_FUN(do_notell)
 
 DO_FUN(do_silence)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -2288,7 +2288,7 @@ DO_FUN(do_nopray)
     * Remove victim's ability to use pray channel.. -S- 
     */
 
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -2351,8 +2351,8 @@ DO_FUN(do_peace)
 
 DO_FUN(do_ban)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char arg[MSL];
    char arg2[MSL];
    char buf2[MSL];
 
@@ -2375,11 +2375,11 @@ DO_FUN(do_ban)
       for( li = ban_list.begin(); li != ban_list.end(); li++ )
       {
          pban = *li;
-         strncat( buf, pban->name, MSL );
+         strncat( buf, pban->name, MSL-1 );
          snprintf( buf2, MSL, ( pban->newbie ? " Newbies" : " All" ) );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          snprintf( buf2, MSL, "  Banned by: %s", pban->banned_by );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
          strncat( buf, "\r\n", MSL );
       }
       send_to_char( buf, ch );
@@ -2413,7 +2413,7 @@ DO_FUN(do_ban)
 
 DO_FUN(do_allow)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    BAN_DATA *curr;
    list<BAN_DATA *>::iterator li;
 
@@ -2492,7 +2492,7 @@ DO_FUN(do_deathmatch)
 
 DO_FUN(do_wizlock)
 {
-   char buf[MAX_INPUT_LENGTH];
+   char buf[MSL];
    wizlock = !wizlock;
    sysdata.w_lock = wizlock;
    save_sysdata(  );
@@ -2515,9 +2515,9 @@ DO_FUN(do_wizlock)
 
 DO_FUN(do_slookup)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    int sn;
 
    one_argument( argument, arg );
@@ -2535,7 +2535,7 @@ DO_FUN(do_slookup)
          if( skill_table[sn].name == NULL )
             break;
          snprintf( buf, MSL, "Sn: %4d Slot: %4d Skill/spell: '%s'\r\n", sn, skill_table[sn].slot, skill_table[sn].name );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
       }
       send_to_char( buf1, ch );
    }
@@ -2558,9 +2558,9 @@ DO_FUN(do_slookup)
 
 DO_FUN(do_sset)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
    CHAR_DATA *victim;
    int value;
    int sn;
@@ -2641,10 +2641,10 @@ DO_FUN(do_sset)
 
 DO_FUN(do_mset)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
+   char buf[MSL];
    CHAR_DATA *victim;
    int value, max;
 
@@ -2694,7 +2694,7 @@ DO_FUN(do_mset)
       int parity[MAX_CLASS];
       int foo;
       bool ok = TRUE;
-      char arg[MAX_STRING_LENGTH];
+      char arg[MSL];
 
 
       if( IS_NPC( victim ) )
@@ -3346,10 +3346,10 @@ DO_FUN(do_mset)
 
 DO_FUN(do_oset)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
+   char buf[MSL];
    OBJ_DATA *obj;
    int value;
    int num;
@@ -3593,9 +3593,9 @@ DO_FUN(do_oset)
 
 DO_FUN(do_rset)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
    ROOM_INDEX_DATA *location;
    int value;
 
@@ -3650,9 +3650,9 @@ DO_FUN(do_rset)
 
 DO_FUN(do_users)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
-   char buf3[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf2[MSL];
+   char buf3[MSL];
    DESCRIPTOR_DATA *d;
    int count;
 
@@ -3720,7 +3720,7 @@ DO_FUN(do_users)
    }
 
    snprintf( buf2, MSL, "%d user%s\r\n", count, count == 1 ? "" : "s" );
-   strncat( buf, buf2, MSL );
+   strncat( buf, buf2, MSL-1 );
    snprintf( buf2, MSL, "%s%s%s", color_string( ch, "stats" ), buf, color_string( ch, "normal" ) );
    send_to_char( buf2, ch );
    return;
@@ -3733,7 +3733,7 @@ DO_FUN(do_users)
  */
 DO_FUN(do_force)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    int trust;
    int cmd;
    list<CHAR_DATA *>::iterator li;
@@ -3864,7 +3864,7 @@ DO_FUN(do_invis)
 {
 
    short level;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    level = -1;
 
@@ -3936,7 +3936,7 @@ DO_FUN(do_holylight)
 
 DO_FUN(do_wizify)
 {
-   char arg1[MAX_INPUT_LENGTH];
+   char arg1[MSL];
    CHAR_DATA *victim;
 
    argument = one_argument( argument, arg1 );
@@ -3975,9 +3975,9 @@ DO_FUN(do_wizify)
 
 DO_FUN(do_owhere)
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    char catbuf[MSL];
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    bool found = FALSE;
    OBJ_DATA *obj;
    OBJ_DATA *in_obj;
@@ -4086,7 +4086,7 @@ DO_FUN(do_mpcr)
 
    OBJ_DATA *obj;
    bool found = FALSE;
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    list<OBJ_DATA *>::iterator li;
 
    one_argument( argument, arg );
@@ -4125,10 +4125,10 @@ DO_FUN(do_mpcr)
 
 DO_FUN(do_resetpassword)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
    /*
-    * char buf[MAX_STRING_LENGTH];  
+    * char buf[MSL];  
     */
    CHAR_DATA *victim;
    char *pwdnew;
@@ -4189,7 +4189,7 @@ DO_FUN(do_iscore)
     * * iscore = immortal 'score' --Stephen
     */
 
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    snprintf( buf, MSL, "(wiz) Invis: %s   Holylight: %s\r\n",
             ch->act.test(ACT_WIZINVIS) ? "YES" : "NO ", ch->act.test(ACT_HOLYLIGHT) ? "YES" : "NO " );
@@ -4218,7 +4218,7 @@ DO_FUN(do_fights)
 {
  list<CHAR_DATA *>::iterator li;
  CHAR_DATA *vict = NULL;
- char buf[MAX_STRING_LENGTH];
+ char buf[MSL];
 
  send_to_char("Active Fights:\r\n",ch);
 
@@ -4247,8 +4247,8 @@ DO_FUN(do_iwhere)
 
    CHAR_DATA *vch;
    list<CHAR_DATA *>::iterator li;
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf2[MSL];
    int count = 0;
    buf2[0] = '\0';
 
@@ -4265,7 +4265,7 @@ DO_FUN(do_iwhere)
          count++;
          snprintf( buf, MSL, "%-12s [%5d] %-20s\r\n",
                   vch->name.c_str(), vch->in_room == NULL ? 0 : vch->in_room->vnum, vch->in_room->area->name );
-         strncat( buf2, buf, MSL );
+         strncat( buf2, buf, MSL-1 );
       }
    }
 
@@ -4274,7 +4274,7 @@ DO_FUN(do_iwhere)
    else
    {
       snprintf( buf, MSL, "%d Player%s found.\r\n", count, ( count > 1 ) ? "s" : "" );
-      strncat( buf2, buf, MSL );
+      strncat( buf2, buf, MSL-1 );
    }
 
    send_to_char( buf2, ch );
@@ -4289,10 +4289,10 @@ DO_FUN(do_setclass)
     * Added support for setting remort class levels.
     */
 
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
+   char buf[MSL];
    CHAR_DATA *victim;
    int value;
    int iClass;
@@ -4554,7 +4554,7 @@ DO_FUN(do_isnoop)
 
 
    DESCRIPTOR_DATA *d;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    int count = 0;
 
 
@@ -4753,8 +4753,8 @@ DO_FUN(do_whoname)
     */
 
    CHAR_DATA *victim;
-   char arg[MAX_INPUT_LENGTH];
-   char foo[MAX_STRING_LENGTH];
+   char arg[MSL];
+   char foo[MSL];
    int side;   /* -1 = left, +1 = right side */
 
 
@@ -4848,7 +4848,7 @@ DO_FUN(do_lhunt)
     */
    CHAR_DATA *lch;
    list<CHAR_DATA *>::iterator li;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    bool found = FALSE;
 
    for( li = char_list.begin(); li != char_list.end(); li++ )
@@ -4894,9 +4894,9 @@ DO_FUN(do_sstat)
     * * -S-
     */
 
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    int skill = -1;
    int sn;
    int col;
@@ -4945,7 +4945,7 @@ DO_FUN(do_sstat)
          break;
 
       snprintf( buf, MSL, "%16s - %3d%%  ", skill_table[sn].name, victim->pcdata->learned[sn] );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
 
       if( ++col % 3 == 0 )
          strncat( buf1, "\r\n", MSL );
@@ -5068,7 +5068,7 @@ DO_FUN(do_monitor)
 {
    int a;
    bool found = FALSE;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    buf[0] = '\0';
 
    if( argument[0] == '\0' )
@@ -5134,7 +5134,7 @@ DO_FUN(do_monitor)
 
 void monitor_chan( const char *message, int channel )
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    DESCRIPTOR_DATA *d;
    int a;
    int level = 85;
@@ -5166,9 +5166,9 @@ void monitor_chan( const char *message, int channel )
 
 DO_FUN(do_reward)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char buf[MSL];
    CHAR_DATA *victim;
    int value;
 
@@ -5227,9 +5227,9 @@ DO_FUN(do_reward)
 
 DO_FUN(do_fhunt)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char arg1[MSL];
+   char arg2[MSL];
    CHAR_DATA *target;
    CHAR_DATA *victim;
 
@@ -5330,7 +5330,7 @@ DO_FUN(do_alink)
    ROOM_INDEX_DATA *current_room;
    int area_top, area_bottom;
    short doorway;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
 
    this_room = ch->in_room;
@@ -5523,8 +5523,8 @@ target in them. Private rooms are not violated.
 
 DO_FUN(do_for)
 {
-   char range[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char range[MSL];
+   char buf[MSL];
    bool fGods = FALSE, fMortals = FALSE, fMobs = FALSE, fEverywhere = FALSE, found;
    ROOM_INDEX_DATA *room, *old_room;
    CHAR_DATA *p;
@@ -5696,9 +5696,9 @@ DO_FUN(do_for)
 
 DO_FUN(do_otype)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    OBJ_INDEX_DATA *pObjIndex;
    int vnum;
    int nMatch;
@@ -5757,9 +5757,9 @@ DO_FUN(do_otype)
 
 DO_FUN(do_owear)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    OBJ_INDEX_DATA *pObjIndex;
    int vnum;
    int nMatch;
@@ -5861,7 +5861,7 @@ DO_FUN(do_findreset)
       snprintf( outbuf, MSL, "%s", "Syntax for findreset:\r\n" );
       snprintf( catbuf, MSL, "%s",
                "findreset obj/mob <vnum> [+w]\r\n+w shows all resets in the world, default is current area only.\r\n" );
-      strncat( outbuf, catbuf, MSL );
+      strncat( outbuf, catbuf, MSL-1 );
       send_to_char( outbuf, ch );
       return;
    }
@@ -5912,7 +5912,7 @@ DO_FUN(do_findreset)
                      if( reset->arg1 != vnum )
                         continue;
                      snprintf( catbuf, MSL, "Room: %d, limit of: %d\r\n", reset->arg3, reset->arg2 );
-                     strncat( outbuf, catbuf, MSL );
+                     strncat( outbuf, catbuf, MSL-1 );
                      /*
                       * scan for give and equip commands for this mob 
                       */
@@ -5933,12 +5933,12 @@ DO_FUN(do_findreset)
                               else
                                  strncat( outbuf, "  with ", MSL );
                               snprintf( catbuf, MSL, "[%d] %s.\r\n", pObj->vnum, pObj->name );
-                              strncat( outbuf, catbuf, MSL );
+                              strncat( outbuf, catbuf, MSL-1 );
                            }
                            else
                            {
                               snprintf( catbuf, MSL, "[%d] unknown object in give reset!\r\n", similar->arg1 );
-                              strncat( outbuf, catbuf, MSL );
+                              strncat( outbuf, catbuf, MSL-1 );
                            }
                         }
                         else if( similar->command == 'E' )
@@ -5950,7 +5950,7 @@ DO_FUN(do_findreset)
                            else
                               snprintf( catbuf, MSL, "[%d] unknown object equipped on %s.\r\n",
                                        similar->arg1, tab_wear_loc[similar->arg3].text );
-                           strncat( outbuf, catbuf, MSL );
+                           strncat( outbuf, catbuf, MSL-1 );
                         }
                      }
                      break;
@@ -6049,7 +6049,7 @@ DO_FUN(do_census)
  for( i = 0; i < MAX_CLASS; i++ )
  {
   snprintf(argument,MSL,"%9s: %4d (%05.2f%%) ",class_table[i].who_name,ccnt[i],((ccnt[i] / tf0) * 100));
-  strncat(buf,argument,MSL);
+  strncat(buf,argument,MSL-1);
  }
  strncat(buf,"\r\n",MSL);
  send_to_char(buf,ch);
@@ -6063,13 +6063,13 @@ DO_FUN(do_census)
  for( i = 0; i < MAX_RACE; i++ )
  {
   snprintf(argument,MSL,"%9s: %4d (%05.2f%%) ",race_table[i].race_title,rcnt[i],((rcnt[i] / tf0) * 100));
-  strncat(buf,argument,MSL);
+  strncat(buf,argument,MSL-1);
   if( ++ti1 % 5 == 0 && i < (MAX_RACE -1) )
    strncat(buf,"\r\n[RACE ] ",MSL);
  }
 
  snprintf(argument,MSL,"\r\n\r\nFound %0.0f total mobs.\r\n",tf0);
- strncat(buf,argument,MSL);
+ strncat(buf,argument,MSL-1);
  send_to_char(buf,ch);
 
  return;
@@ -6084,7 +6084,7 @@ DO_FUN(do_sla)
 DO_FUN(do_slay)
 {
    CHAR_DATA *victim;
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
 
    one_argument( argument, arg );
    if( arg[0] == '\0' )
@@ -6388,6 +6388,5 @@ struct ShowObject
 DO_FUN(do_ldebug)
 {
  for_each( lua_list.begin(), lua_list.end(), ShowObject() );
-
  return;
 }

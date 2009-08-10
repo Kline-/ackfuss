@@ -3224,42 +3224,36 @@ void stop_idling( CHAR_DATA * ch )
  */
 void send_to_char( string txt, CHAR_DATA *ch )
 {
- send_to_char(txt.c_str(),ch);
+ if( ch == NULL )
+  return;
+ if( txt.empty() || ch->desc == NULL )
+  return;
+
+ if( ch->desc->showstr_head != NULL )
+ {
+  char *ssh;
+
+  ssh = (char *)qgetmem( strlen( ch->desc->showstr_head ) + txt.length() + 1 );
+  strcpy( ssh, ch->desc->showstr_head );
+  strcat( ssh, txt.c_str() );
+
+  if( ch->desc->showstr_point )
+   ch->desc->showstr_point += ( ssh - ch->desc->showstr_head );
+  else
+   ch->desc->showstr_point = ssh;
+
+  free(ch->desc->showstr_head);
+  ch->desc->showstr_head = ssh;
+ }
+ else
+ {
+  ch->desc->showstr_head = (char *)malloc( txt.length() + 1);
+  strcpy( ch->desc->showstr_head, txt.c_str() );
+  ch->desc->showstr_point = ch->desc->showstr_head;
+ }
+ if( ch->desc->showstr_point == ch->desc->showstr_head )
+  show_string( ch->desc, "" );
  return;
-}
-
-void send_to_char( const char *txt, CHAR_DATA * ch )
-{
-   if( ch == NULL )
-      return;
-   if( txt == NULL || ch->desc == NULL )
-      return;
-   /*
-    * Large leak fixed here.. -- Altrag 
-    */
-   if( ch->desc->showstr_head != NULL )
-   {
-      char *ssh;
-
-      ssh = (char *)qgetmem( strlen( ch->desc->showstr_head ) + strlen( txt ) + 1 );
-      strcpy( ssh, ch->desc->showstr_head );
-      strcat( ssh, txt );
-      if( ch->desc->showstr_point )
-         ch->desc->showstr_point += ( ssh - ch->desc->showstr_head );
-      else
-         ch->desc->showstr_point = ssh;
-      free(ch->desc->showstr_head);
-      ch->desc->showstr_head = ssh;
-   }
-   else
-   {
-      ch->desc->showstr_head = (char *)malloc( strlen(txt) + 1);
-      strcpy( ch->desc->showstr_head, txt );
-      ch->desc->showstr_point = ch->desc->showstr_head;
-   }
-   if( ch->desc->showstr_point == ch->desc->showstr_head )
-      show_string( ch->desc, "" );
-   return;
 }
 
 /* The heart of the pager.  Thanks to N'Atas-Ha, ThePrincedom

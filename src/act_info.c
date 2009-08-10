@@ -116,8 +116,8 @@
 
 char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
 {
-   static char buf[MAX_STRING_LENGTH];
-   static char buf2[MAX_STRING_LENGTH];
+   static char buf[MSL];
+   static char buf2[MSL];
 
    snprintf( buf, MSL, "%s", color_string( ch, "objects" ) );
 
@@ -163,7 +163,7 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
  */
 void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShowNothing )
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    char **prgpstrShow;
    int *prgnShow;
    char *pstrShow;
@@ -267,7 +267,7 @@ void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShow
 
 void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShowNothing )
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    char **prgpstrShow;
    int *prgnShow;
    char *pstrShow;
@@ -374,8 +374,8 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
 
 void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf2[MSL];
 
 
    snprintf( buf, MSL, "%s", color_string( ch, "mobiles" ) );
@@ -520,7 +520,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
       case POS_RESTING:
          if( victim->sitting != NULL && victim->sitting->in_room == victim->in_room )
          {
-            char sit[MAX_STRING_LENGTH];
+            char sit[MSL];
             snprintf( sit, MSL, " is here, resting on %s.", victim->sitting->short_descr );
             strncat( buf, sit, MSL-1 );
          }
@@ -614,7 +614,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
 
 void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    OBJ_DATA *obj;
    int iWear;
    int pct;
@@ -753,10 +753,10 @@ bool check_blind( CHAR_DATA * ch )
 
 DO_FUN(do_look)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char out[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char arg1[MSL];
+   char arg2[MSL];
+   char out[MSL];
    ROOM_INDEX_DATA *room;
    EXIT_DATA *pexit;
    CHAR_DATA *victim;
@@ -1141,8 +1141,8 @@ DO_FUN(do_look)
 
 DO_FUN(do_examine)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char arg[MSL];
    OBJ_DATA *obj;
    buf[0] = '\0';
 
@@ -1184,8 +1184,8 @@ DO_FUN(do_examine)
 DO_FUN(do_exits)
 {
    extern char *const compass_name[];
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf2[MSL];
    EXIT_DATA *pexit;
    bool found;
    bool fAuto;
@@ -1290,8 +1290,8 @@ DO_FUN(do_score)
     * *  -- Stephen
     */
 
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf2[MSL];
    int cnt;
 
 
@@ -1613,7 +1613,7 @@ DO_FUN(do_score)
 DO_FUN(do_affected)
 {
 
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    AFFECT_DATA *paf;
    buf[0] = '\0';
 
@@ -1710,7 +1710,7 @@ char *const month_name[] = {
 DO_FUN(do_time)
 {
    extern char str_boot_time[];
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    char *suf;
    int day;
 
@@ -1739,7 +1739,7 @@ DO_FUN(do_time)
 
 DO_FUN(do_weather)
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    char buf2[MSL];
 
    static char *const sky_look[4] = {
@@ -1841,7 +1841,7 @@ DO_FUN(do_help)
  if( (fp = file_open(buf,"r")) != NULL )
  {
   found = TRUE;
-  while( fgets(buf,MAX_STRING_LENGTH,fp) )
+  while( fgets(buf,MSL,fp) )
    send_to_char(buf,ch);
  }
  file_close(fp);
@@ -1850,7 +1850,7 @@ DO_FUN(do_help)
  if( (fp = file_open(buf,"r")) != NULL )
  {
   found = TRUE;
-  while( fgets(buf,MAX_STRING_LENGTH,fp) )
+  while( fgets(buf,MSL,fp) )
    send_to_char(buf,ch);
   file_close(fp);
  }
@@ -1880,7 +1880,7 @@ DO_FUN(do_help)
    if( found )
     send_to_char("\r\n",ch);
    found = TRUE;
-   while( fgets(buf,MAX_STRING_LENGTH,fp) )
+   while( fgets(buf,MSL,fp) )
     send_to_char(buf,ch);
   }
   file_close(fp);
@@ -1891,7 +1891,7 @@ DO_FUN(do_help)
    if( found )
     send_to_char("\r\n",ch);
    found = TRUE;
-   while( fgets(buf,MAX_STRING_LENGTH,fp) )
+   while( fgets(buf,MSL,fp) )
     send_to_char(buf,ch);
   }
   file_close(fp);
@@ -1935,12 +1935,12 @@ DO_FUN(do_who)
 {
    DESCRIPTOR_DATA *d;
 
-   char buf[MAX_STRING_LENGTH * 10];
-   char buf2[MAX_STRING_LENGTH * 4];
-   char buf3[MAX_STRING_LENGTH * 4];
-   char buf4[MAX_STRING_LENGTH * 4];
-   char fgs[MAX_STRING_LENGTH * 4];
-   char clan_job[MAX_STRING_LENGTH];
+   char buf[MSL * 10];
+   char buf2[MSL * 4];
+   char buf3[MSL * 4];
+   char buf4[MSL * 4];
+   char fgs[MSL * 4];
+   char clan_job[MSL];
    int iClass;
    int iLevelLower;
    int iLevelUpper;
@@ -1980,7 +1980,7 @@ DO_FUN(do_who)
    nNumber = 0;
    for( ;; )
    {
-      char arg[MAX_STRING_LENGTH];
+      char arg[MSL];
 
       argument = one_argument( argument, arg );
       if( arg[0] == '\0' )
@@ -2566,8 +2566,8 @@ DO_FUN(do_equipment)
 
 DO_FUN(do_compare)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
    OBJ_DATA *obj1;
    OBJ_DATA *obj2;
    int value1;
@@ -2673,8 +2673,8 @@ DO_FUN(do_credits)
 
 DO_FUN(do_where)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char arg[MSL];
    CHAR_DATA *victim;
    list<CHAR_DATA *>::iterator li;
    DESCRIPTOR_DATA *d;
@@ -2740,7 +2740,7 @@ DO_FUN(do_where)
 
 DO_FUN(do_consider)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
    char *msg = '\0';
    char *buf = '\0';
@@ -2941,7 +2941,7 @@ DO_FUN(do_title)
     * Changed this to limit title length, and to remove and brackets. -S-
     */
 
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    int cnt;
    bool changed;
    buf[0] = '\0';
@@ -3050,7 +3050,7 @@ DO_FUN(do_report)
 
 DO_FUN(do_practice)
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    CHAR_DATA *mob;
    int cnt;
    int sn;
@@ -3259,8 +3259,8 @@ DO_FUN(do_practice)
  */
 DO_FUN(do_wimpy)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char arg[MSL];
    int wimpy;
    if( deathmatch )
    {
@@ -3296,8 +3296,8 @@ DO_FUN(do_wimpy)
 
 DO_FUN(do_password)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
    char *pArg;
    char *pwdnew;
    char *p;
@@ -3391,8 +3391,8 @@ DO_FUN(do_password)
 
 DO_FUN(do_socials)
 {
-   char buf[MAX_STRING_LENGTH];
-   char out[MAX_STRING_LENGTH * 2];
+   char buf[MSL];
+   char out[MSL * 2];
    int iSocial;
    int col;
    buf[0] = '\0';
@@ -3607,8 +3607,8 @@ struct chan_type channels[] = {
 
 DO_FUN(do_channels)
 {
-   char arg[MAX_INPUT_LENGTH];
-   char buffer[MAX_STRING_LENGTH];
+   char arg[MSL];
+   char buffer[MSL];
    int a, trust;
 
    one_argument( argument, arg );
@@ -3707,7 +3707,7 @@ DO_FUN(do_channels)
  */
 DO_FUN(do_config)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    char buf[MSL];
    if( IS_NPC( ch ) )
       return;
@@ -3881,7 +3881,7 @@ DO_FUN(do_wizlist)
 DO_FUN(do_race_list)
 {
    int iRace;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    for( iRace = 0; iRace < MAX_RACE; iRace++ ) /* Lets display race info if people rlist <abbr> --Kline */
    {
@@ -3959,7 +3959,7 @@ DO_FUN(do_race_list)
 DO_FUN(do_clan_list)
 {
    int iClan;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    send_to_char( "\r\n    Here follows a list of current clans for " mudnamecolor ":\r\n", ch );
    send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", ch );
@@ -3990,8 +3990,8 @@ DO_FUN(do_clan_list)
 
 DO_FUN(do_spells)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
    int sn;
    int col;
    int cnt;
@@ -4029,12 +4029,12 @@ DO_FUN(do_spells)
          continue;
 
       /*
-       * if ( skill_table[sn].skill_level[ch->p_class] > LEVEL_HERO ) 
-       * continue; 
+       * if ( skill_table[sn].skill_level[ch->p_class] > LEVEL_HERO )
+       * continue;
        */
 
       snprintf( buf, MSL, "%20s (%0.2fs) %4dmp ", skill_table[sn].name, cast_speed( ch, sn ), mana_cost( ch, sn ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
       if( ++col % 3 == 0 )
          strncat( buf1, "\r\n", MSL );
    }
@@ -4049,8 +4049,8 @@ DO_FUN(do_spells)
 
 DO_FUN(do_slist)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
    int p_class;
    int foo;
    int sn;
@@ -4118,14 +4118,14 @@ DO_FUN(do_slist)
    else if( remort_class )
    {
       strncat( buf1, "@@m", MSL );
-      strncat( buf1, remort_table[p_class].class_name, MSL );
+      strncat( buf1, remort_table[p_class].class_name, MSL-1 );
       strncat( buf1, "@@N\r\n\r\n", MSL );
    }
    else
 
    {
       strncat( buf1, "@@b", MSL );
-      strncat( buf1, class_table[p_class].class_name, MSL );
+      strncat( buf1, class_table[p_class].class_name, MSL-1 );
       strncat( buf1, "@@N\r\n\r\n", MSL );
    }
 
@@ -4151,7 +4151,7 @@ DO_FUN(do_slist)
             {
 
                snprintf( buf, MSL, "@@r%2d:@@N", level );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
                pSpell = FALSE;
             }
 
@@ -4160,18 +4160,18 @@ DO_FUN(do_slist)
             if( ch->pcdata->learned[sn] > 0 )
             {
                snprintf( buf, MSL, "@@m%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             else if( skill_table[sn].skill_level[p_class] >
                      ( adept_class ? ch->get_level("adept") : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             else
             {
                snprintf( buf, MSL, "@@a%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             if( col % 4 == 0 )
                strncat( buf1, "\r\n", MSL );
@@ -4183,7 +4183,7 @@ DO_FUN(do_slist)
             {
 
                snprintf( buf, MSL, "@@r%2d:@@N", level );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
                pSpell = FALSE;
             }
 
@@ -4192,18 +4192,18 @@ DO_FUN(do_slist)
             if( ch->pcdata->learned[sn] > 0 )
             {
                snprintf( buf, MSL, "@@x@@m%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             else if( skill_table[sn].skill_level[p_class] >
                      ( adept_class ? ch->get_level("adept") : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             else
             {
                snprintf( buf, MSL, "@@a%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             if( col % 4 == 0 )
                strncat( buf1, "\r\n", MSL );
@@ -4213,7 +4213,7 @@ DO_FUN(do_slist)
             if( pSpell )
             {
                snprintf( buf, MSL, "@@r%2d:@@N", level );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
                pSpell = FALSE;
             }
 
@@ -4224,18 +4224,18 @@ DO_FUN(do_slist)
             if( ch->pcdata->learned[sn] > 0 )
             {
                snprintf( buf, MSL, "@@x@@m%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             else if( skill_table[sn].skill_level[p_class] >
                      ( adept_class ? ch->get_level("adept") : remort_class ? ch->lvl2[p_class] : ch->lvl[p_class] ) )
             {
                snprintf( buf, MSL, "@@d%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             else
             {
                snprintf( buf, MSL, "@@a%18s@@N", skill_table[sn].name );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             if( col % 4 == 0 )
                strncat( buf1, "\r\n", MSL );
@@ -4313,8 +4313,8 @@ DO_FUN(do_autobrief)
 
 DO_FUN(do_pagelen)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char arg[MSL];
    int lines;
 
    one_argument( argument, arg );
@@ -4363,8 +4363,8 @@ DO_FUN(do_prompt)
 
 DO_FUN(do_diagnose)
 {
-   char buf[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char arg[MSL];
    CHAR_DATA *victim;
    int pct;
 
@@ -4429,7 +4429,7 @@ DO_FUN(do_heal)
     */
 
    CHAR_DATA *mob;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    int mult;   /* Multiplier used to calculate costs. */
    char costbuf[MSL];
    char changebuf[MSL];
@@ -4640,7 +4640,7 @@ DO_FUN(do_gain)
     */
 
    CHAR_DATA *mob;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    int cost = 0;
    int cnt;
    int subpop;
@@ -5009,7 +5009,7 @@ DO_FUN(do_gain)
 
 DO_FUN(do_assassinate)
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    int cost;
    int change = 0;
    char givebuf[MSL], changebuf[MSL];
@@ -5118,10 +5118,10 @@ DO_FUN(do_alias)
 
    int cnt;
    int alias_no;
-   char buf[MAX_STRING_LENGTH];
-   char arg1[MAX_STRING_LENGTH];
-   char arg2[MAX_STRING_LENGTH];
-   char arg3[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
 
    buf[0] = '\0';
 
@@ -5206,9 +5206,9 @@ DO_FUN(do_color)
     * Allow users to set which color they get certain texts in. -S- 
     */
 
-   char buf[MAX_STRING_LENGTH];
-   char arg1[MAX_STRING_LENGTH];
-   char arg2[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char arg1[MSL];
+   char arg2[MSL];
    int col;
    int cnt;
    int ansi_number;
@@ -5389,7 +5389,7 @@ DO_FUN(do_worth)
     * Show details regarding cost to level each class, etc 
     */
    bool any;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    int numclasses;
    int a;
    int cost;
@@ -5459,7 +5459,7 @@ DO_FUN(do_whois)
     */
 
    CHAR_DATA *victim;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    if( ( victim = get_char_world( ch, argument ) ) == NULL )
    {
@@ -5546,7 +5546,7 @@ DO_FUN(do_shelp)
   * Like help, except for spells and skills. 
   */
  int sn;
- char buf[MAX_STRING_LENGTH];
+ char buf[MSL];
  buf[0] = '\0';
 
  if( argument[0] == '\0' )
@@ -5585,7 +5585,7 @@ DO_FUN(do_afk)
 DO_FUN(do_colist)
 {
    int col, n;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    if( IS_NPC( ch ) )
       return;
@@ -5616,7 +5616,7 @@ DO_FUN(do_colist)
 DO_FUN(do_loot)
 {
 
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    OBJ_DATA *corpse;
    OBJ_DATA *obj = NULL;
    int counter, num;

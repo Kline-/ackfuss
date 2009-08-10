@@ -1705,7 +1705,7 @@ void ch_printf( CHAR_DATA * ch, const char *fmt, ... )
     va_end( args );
 
     send_to_char( buf, ch );
-} 
+}
 
 /*
  * This code is originally by imapopsyckle@hotmail.com

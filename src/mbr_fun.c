@@ -16,6 +16,10 @@
 #include "h/comm.h"
 #endif
 
+#ifndef DEC_DB_H
+#include "h/db.h"
+#endif
+
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
 #endif
@@ -184,6 +188,48 @@ const char *char_data::get_title( )
   return "";
  else
   return pcdata->title;
+}
+
+void char_data::send( string txt, ... )
+{
+ char buf[MSL];
+ va_list args;
+
+ if( this == NULL || desc == NULL )
+  return;
+
+ if( txt.empty() )
+  return;
+
+ va_start(args,txt);
+ vsprintf(buf,txt.c_str(),args);
+ va_end(args);
+
+ if( desc->showstr_head != NULL )
+ {
+  char *ssh;
+
+  ssh = (char *)qgetmem( strlen( desc->showstr_head ) + strlen( buf ) + 1 );
+  strcpy( ssh, desc->showstr_head );
+  strcat( ssh, buf );
+
+  if( desc->showstr_point )
+   desc->showstr_point += ( ssh - desc->showstr_head );
+  else
+   desc->showstr_point = ssh;
+
+  free(desc->showstr_head);
+  desc->showstr_head = ssh;
+ }
+ else
+ {
+  desc->showstr_head = (char *)malloc( strlen( buf ) + 1);
+  strcpy( desc->showstr_head, buf );
+  desc->showstr_point = desc->showstr_head;
+ }
+ if( desc->showstr_point == desc->showstr_head )
+  show_string( desc, "" );
+ return;
 }
 
 void char_data::set_cooldown( const char *skill )

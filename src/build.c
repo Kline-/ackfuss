@@ -259,9 +259,9 @@ extern int sAllocPerm;
 
 DO_FUN(build_interpret)
 {
-   char command[MAX_INPUT_LENGTH];
-   char logline[MAX_INPUT_LENGTH];
-   char buffer[MAX_STRING_LENGTH];
+   char command[MSL];
+   char logline[MSL];
+   char buffer[MSL];
    int cmd;
    bool found;
 
@@ -354,8 +354,8 @@ DO_FUN(build_interpret)
 /* -S- Addition: */
 DO_FUN(build_commands)
 {
-   char buf[MAX_STRING_LENGTH];
-   char out[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char out[MSL];
    int cmd;
    int col = 0;
 
@@ -366,7 +366,7 @@ DO_FUN(build_commands)
       if( build_cmd_table[cmd].level > get_trust( ch ) )
          continue;
       snprintf( buf, MSL, "%-20s    ", build_cmd_table[cmd].name );
-      strncat( out, buf, MSL );
+      strncat( out, buf, MSL-1 );
       if( ++col % 3 == 0 )
          strncat( out, "\r\n", MSL );
    }
@@ -379,10 +379,10 @@ DO_FUN(build_commands)
 
 DO_FUN(build_showmob)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg1[MSL];
+   char arg2[MSL];
    MOB_INDEX_DATA *pMob;
 /*    RESET_DATA     *pReset; Unused var */
    SHOP_DATA *pShop;
@@ -417,59 +417,59 @@ DO_FUN(build_showmob)
    buf1[0] = '\0';
 
    snprintf( buf, MSL, "@@WName: @@y%s.    @@WClass: @@y%s.\r\n", pMob->player_name, tab_mob_class[pMob->p_class].text );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WSex: @@y%s.  @@WRace:@@y %s ",
             pMob->vnum,
             pMob->sex == SEX_MALE ? "male" :
             pMob->sex == SEX_FEMALE ? "female" : "neutral",
             ( ( pMob->race > -1 ) && ( pMob->race < MAX_RACE ) ) ? race_table[pMob->race].race_title : "Illegal Race" );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, " @@WLv: @@y%d.    @@WAlign: @@y%d.\r\n", pMob->level, pMob->alignment );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WModifiers: AC: @@y%d.  @@WHitroll: @@y%d.  @@WDamroll: @@y%d.\r\n",
             pMob->ac_mod, pMob->hr_mod, pMob->dr_mod );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WMob Flags:@@y\r\n%s", bs_show_values( tab_mob_act, pMob->act ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WAffected by:@@y\r\n%s", show_values( tab_affected_by, pMob->affected_by, TRUE ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WSkill Flags:@@y %s\r\n", bit_table_lookup( tab_mob_skill, pMob->skills ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
    snprintf( buf, MSL, "@@WCast Flags:@@y %s\r\n", bit_table_lookup( tab_mob_cast, pMob->cast ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
    snprintf( buf, MSL, "@@WDef Flags:@@y %s\r\n", bit_table_lookup( tab_mob_def, pMob->def ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
    snprintf( buf, MSL, "@@WStrong Magic Realms:@@y %s\r\n", bit_table_lookup( tab_magic_realms, pMob->strong_magic ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
    snprintf( buf, MSL, "@@WWeak Magic Realms:@@y %s\r\n", bit_table_lookup( tab_magic_realms, pMob->weak_magic ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
    snprintf( buf, MSL, "@@WResist Magic Realms:@@y %s\r\n", bit_table_lookup( tab_magic_realms, pMob->resist ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
    snprintf( buf, MSL, "@@WSuscept Magic Realms:@@y %s\r\n", bit_table_lookup( tab_magic_realms, pMob->suscept ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
    snprintf( buf, MSL, "@@WRace Mods:@@y %s\r\n", bit_table_lookup( tab_mob_race_mods, pMob->race_mods ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WShort description: @@y%s.\r\n@@WLong description: @@y%s\r\n",
             pMob->short_descr, pMob->long_descr[0] != '\0' ? pMob->long_descr : "(none)." );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    if( pMob->spec_fun != 0 )
    {
       snprintf( buf, MSL, "@@WMobile has spec fun: @@y%s\r\n", rev_spec_lookup( pMob->spec_fun ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( pMob->script_name != &str_empty[0] )
    {
       snprintf( buf, MSL, "@@WMobile has Lua script: @@y%s\r\n", pMob->script_name );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( ( pShop = pMob->pShop ) != 0 )
@@ -480,14 +480,14 @@ DO_FUN(build_showmob)
       {
          if( pShop->buy_type[iTrade] > 0 )
          {
-            strncat( buf1, tab_item_types[pShop->buy_type[iTrade] - 1].text, MSL );
+            strncat( buf1, tab_item_types[pShop->buy_type[iTrade] - 1].text, MSL-1 );
             strncat( buf1, " ", MSL );
          }
       }
       strncat( buf1, "\r\n", MSL );
       snprintf( buf, MSL, "@@WOpens at @@y%i @@Whrs, shuts at @@y%i @@Whours, profbuy:@@y%i, @@Wprofsell:@@y%i.\r\n",
                pShop->open_hour, pShop->close_hour, pShop->profit_buy, pShop->profit_sell );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
 
    }
    strncat( buf1, "@@g", MSL );
@@ -497,9 +497,9 @@ DO_FUN(build_showmob)
 
 DO_FUN(build_showobj)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    AFFECT_DATA *paf;
    OBJ_INDEX_DATA *obj;
    int cnt;
@@ -532,13 +532,13 @@ DO_FUN(build_showobj)
       return;
 
    snprintf( buf, MSL, "@@WName: @@y%s  @@WLevel: @@y%d.\r\n", obj->name, obj->level );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WType: @@y%s.\r\n", obj->vnum, tab_item_types[( obj->item_type ) - 1].text );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WShort description: @@y%s.\r\n@@WLong description: @@y%s\r\n", obj->short_descr, obj->long_descr );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    /*
     * snprintf( buf, MSL, "@@WItem type: @@y%s.\r\n",rev_table_lookup(tab_item_types,obj->item_type));
@@ -552,19 +552,19 @@ DO_FUN(build_showobj)
     * I think another bit_table_lookup is better!  Zen 
     */
 
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WItem_applies: @@y%s.\r\n", bit_table_lookup( tab_item_apply, obj->item_apply ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WWeight: @@y%d.\r\n", obj->weight );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WSpeed: @@y%4.2f\r\n", obj->speed );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WDurability: @@y%d.\r\n", obj->max_durability );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    strncat( buf1, "@@WObject Values:\r\n", MSL );
 
@@ -572,7 +572,7 @@ DO_FUN(build_showobj)
    {
       snprintf( buf, MSL, "@@W[Value%d : @@y%6d@@W] %s",
                cnt, obj->value[cnt], rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
       if( is_name( "Spell", rev_table_lookup( tab_value_meanings, ( obj->item_type * 10 ) + cnt ) ) )
       {
          fubar = obj->value[cnt];
@@ -608,18 +608,18 @@ DO_FUN(build_showobj)
       }
       else
          snprintf( buf, MSL, "@@g\r\n" );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
    if( obj->obj_fun != NULL )
    {
       snprintf( buf, MSL, "@@WObject has objfun: @@y%s.@@g\r\n", rev_obj_fun_lookup( obj->obj_fun ) );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( obj->script_name != &str_empty[0] )
    {
       snprintf( buf, MSL, "@@WObject has Lua script: @@y%s\r\n", obj->script_name );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( obj->first_exdesc != NULL )
@@ -630,7 +630,7 @@ DO_FUN(build_showobj)
 
       for( ed = obj->first_exdesc; ed != NULL; ed = ed->next )
       {
-         strncat( buf1, ed->keyword, MSL );
+         strncat( buf1, ed->keyword, MSL-1 );
          if( ed->next != NULL )
             strncat( buf1, " ", MSL );
       }
@@ -641,7 +641,7 @@ DO_FUN(build_showobj)
    for( paf = obj->first_apply; paf != NULL; paf = paf->next )
    {
       snprintf( buf, MSL, "@@WAffects @@y%s @@Wby @@y%d@@g.\r\n", affect_loc_name( paf->location ), paf->modifier );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    send_to_char( buf1, ch );
@@ -655,9 +655,9 @@ DO_FUN(build_showobj)
 
 DO_FUN(build_showroom)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg1[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg1[MSL];
    ROOM_INDEX_DATA *location;
    BUILD_DATA_LIST *Pointer;
    int door;
@@ -699,26 +699,26 @@ DO_FUN(build_showroom)
    buf1[0] = '\0';
 
    snprintf( buf, MSL, "@@WName: @@y%s.\r\n@@WArea: @@y%s.\r\n", location->name, location->area->name );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL,
             "@@WVnum: @@y%d.  @@WSector:\r\n @@y%s",
             location->vnum, show_values( tab_sector_types, location->sector_type, FALSE ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    snprintf( buf, MSL, "@@WFlags:\r\n@@y%s", bs_show_values( tab_room_flags, location->room_flags ) );
-   strncat( buf1, buf, MSL );
+   strncat( buf1, buf, MSL-1 );
 
    if( location->script_name != &str_empty[0] )
    {
       snprintf( buf, MSL, "@@WRoom has Lua script: @@y%s\r\n", location->script_name );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( ( display & DISPLAY_DESC ) )
    {
       snprintf( buf, MSL, "\r\n@@WDescr: @@y%s@@N\r\n", location->description[0] != '\0' ? location->description : "(none)." );
-      strncat( buf1, buf, MSL );
+      strncat( buf1, buf, MSL-1 );
    }
 
    if( location->first_exdesc != NULL )
@@ -728,7 +728,7 @@ DO_FUN(build_showroom)
       strncat( buf1, "@@WExtra description keywords:@@y '", MSL );
       for( ed = location->first_exdesc; ed; ed = ed->next )
       {
-         strncat( buf1, ed->keyword, MSL );
+         strncat( buf1, ed->keyword, MSL-1 );
          if( ed->next != NULL )
             strncat( buf1, " ", MSL );
       }
@@ -755,18 +755,18 @@ DO_FUN(build_showroom)
                snprintf( buf, MSL, "@@WExit: @@y%7s @@W: To @@y%5i %s@@N\r\n", sDirs[door],
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "" );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
                snprintf( buf, MSL, "             @@WKey: @@y%5i %s@@N\r\n@@WExit Type:@@y %s@@N\r\n",
                         pKeyObj != NULL ? pKeyObj->vnum : 0,
                         pKeyObj != NULL ? pKeyObj->name : "None", bs_show_values( tab_door_types, pexit->exit_info ) );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
                if( pexit->keyword != NULL && pexit->keyword[0] != '\0' )
                {
                   snprintf( buf, MSL, "@@WKeyword(s): @@y%s.  ", pexit->keyword );
-                  strncat( buf1, buf, MSL );
+                  strncat( buf1, buf, MSL-1 );
                }
                snprintf( buf, MSL, "@@WDesc: @@y%s", pexit->description[0] != '\0' ? pexit->description : "(none).\r\n" );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
             else
             {
@@ -781,20 +781,20 @@ DO_FUN(build_showroom)
                         pexit->to_room != NULL ? pexit->to_room->vnum : 0,
                         pexit->to_room != NULL ? pexit->to_room->name : "Unknown",
                         exit_bit_name( pexit->exit_info ));
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
          }
       }
 
 
    /*
-    * Show resets for room 
+    * Show resets for room
     */
    if( ( display & DISPLAY_RESETS ) && location->first_room_reset != NULL )
    {
       strncat( buf1, "@@WResets:\r\n", MSL );
       for( Pointer = location->first_room_reset; Pointer; )
-         strncat( buf1, reset_to_text( &Pointer, NULL ), MSL );
+         strncat( buf1, reset_to_text( &Pointer, NULL ), MSL-1 );
    }
    strncat( buf1, "@@g", MSL );
    send_to_char( buf1, ch );
@@ -803,7 +803,7 @@ DO_FUN(build_showroom)
 
 DO_FUN(build_showresets)
 {
-   char buf1[MAX_STRING_LENGTH];
+   char buf1[MSL];
    ROOM_INDEX_DATA *location;
    BUILD_DATA_LIST *Pointer;
    int count;
@@ -817,7 +817,7 @@ DO_FUN(build_showresets)
 
    strncat( buf1, "Room Resets:\r\n", MSL );
    for( Pointer = location->first_room_reset; Pointer != NULL; )
-      strncat( buf1, reset_to_text( &Pointer, &count ), MSL );
+      strncat( buf1, reset_to_text( &Pointer, &count ), MSL-1 );
 
    send_to_char( buf1, ch );
 }
@@ -826,8 +826,8 @@ DO_FUN(build_showresets)
 
 char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
 {
-   char buf[MAX_STRING_LENGTH];
-   static char buf1[MAX_STRING_LENGTH];
+   char buf[MSL];
+   static char buf1[MSL];
    MOB_INDEX_DATA *pMob;
    OBJ_INDEX_DATA *pObj, *to_obj;
    RESET_DATA *pReset;
@@ -848,7 +848,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
    {
       default:
          snprintf( buf, MSL, "  stray '%c' reset: %d %d %d.\r\n", pReset->command, pReset->arg1, pReset->arg2, pReset->arg3 );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          break;
       case 'G':
          pObj = get_obj_index( pReset->arg1 );
@@ -856,7 +856,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             snprintf( buf, MSL, "  stray 'give' reset: object [%d] %s.\r\n", pReset->arg1, pObj->name );
          else
             snprintf( buf, MSL, "  stray 'give' reset: object %d (unknown).\r\n", pReset->arg1 );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          break;
       case 'E':
          pObj = get_obj_index( pReset->arg1 );
@@ -866,11 +866,11 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
          else
             snprintf( buf, MSL, "  stray 'equip' reset: object [%d] (unknown), on %s.\r\n",
                      pReset->arg1, tab_wear_loc[( pReset->arg3 )].text );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          break;
       case 'A':  /* AutoMessage for room */
          snprintf( buf1, MSL, "Message: (%d-%d) %s\r\n", pReset->arg2, pReset->arg3, pReset->notes );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          break;
       case 'M':  /* Load mob */
          pMob = get_mob_index( pReset->arg1 );
@@ -878,7 +878,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             snprintf( buf, MSL, " [%d] %s (limit of %d).\r\n", pMob->vnum, pMob->player_name, pReset->arg2 );
          else
             snprintf( buf, MSL, " [%d] (unknown) (limit of %d).\r\n", pReset->arg1, pReset->arg2 );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
 
          /*
           * scan for give and equip commands for this mob 
@@ -904,12 +904,12 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                   else
                      strncat( buf1, "  with ", MSL );
                   snprintf( buf, MSL, "[%d] %s.\r\n", pObj->vnum, pObj->name );
-                  strncat( buf1, buf, MSL );
+                  strncat( buf1, buf, MSL-1 );
                }
                else
                {
                   snprintf( buf, MSL, "[%d] unknown object in give reset!\r\n", pReset->arg1 );
-                  strncat( buf1, buf, MSL );
+                  strncat( buf1, buf, MSL-1 );
                }
             }
             else if( pReset->command == 'E' )
@@ -920,7 +920,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                            pObj->name, tab_wear_loc[( pReset->arg3 )].text );
                else
                   snprintf( buf, MSL, "[%d] unknown object equipped on %s.\r\n", pReset->arg1, tab_wear_loc[pReset->arg3].text );
-               strncat( buf1, buf, MSL );
+               strncat( buf1, buf, MSL-1 );
             }
          }
          break;
@@ -930,7 +930,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
             snprintf( buf, MSL, " [%d] %s no more than %d in room.\r\n", pObj->vnum, pObj->name, pReset->arg2 );
          else
             snprintf( buf, MSL, " [%d] unknown object reset!\r\n", pReset->arg1 );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          break;
       case 'P':
          pObj = get_obj_index( pReset->arg1 );
@@ -944,7 +944,7 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
          }
          else
             snprintf( buf, MSL, " object [%d] (unknown) inside object [%d] (unknown). (limit %d)\r\n", pReset->arg1, pReset->arg3, pReset->arg2 );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          break;
       case 'D':  /* close/lock doors */
          buf[0] = '\0';
@@ -962,11 +962,11 @@ char *reset_to_text( BUILD_DATA_LIST ** pList, int *pcount )
                snprintf( buf, MSL, " Close and lock door %s.\r\n", sDirs[pReset->arg2] );
                break;
          }
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          break;
       case 'R':  /* randomise exits */
          snprintf( buf, MSL, " Randomize doors up to number %d.\r\n", pReset->arg2 );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
          break;
    }
 
@@ -988,9 +988,9 @@ char *build_docount( int *pcount )
 
 DO_FUN(build_findmob)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    MOB_INDEX_DATA *pMobIndex;
    BUILD_DATA_LIST *Pointer;
    AREA_DATA *Area;
@@ -1033,7 +1033,7 @@ DO_FUN(build_findmob)
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %s\r\n", pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
       }
    }
 
@@ -1049,9 +1049,9 @@ DO_FUN(build_findmob)
 
 DO_FUN(build_findmobroom)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    ROOM_INDEX_DATA *pRoom;
    RESET_DATA *pReset;
    AREA_DATA *Area;
@@ -1093,7 +1093,7 @@ DO_FUN(build_findmobroom)
             snprintf( buf, MSL, "[%5d] %s\r\n", pRoom->vnum, capitalize( pRoom->name ) );
          else
             snprintf( buf, MSL, "[%5d] Unknown\r\n", pReset->arg3 );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
       }
    }
 
@@ -1109,9 +1109,9 @@ DO_FUN(build_findmobroom)
 
 DO_FUN(build_findobject)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    OBJ_INDEX_DATA *pObjIndex;
    BUILD_DATA_LIST *pList;
    AREA_DATA *Area;
@@ -1155,7 +1155,7 @@ DO_FUN(build_findobject)
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %s\r\n", pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
       }
    }
 
@@ -1171,9 +1171,9 @@ DO_FUN(build_findobject)
 
 DO_FUN(build_findroom)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf1[MAX_STRING_LENGTH];
-   char arg[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char buf1[MSL];
+   char arg[MSL];
    ROOM_INDEX_DATA *pRoomIndex;
    BUILD_DATA_LIST *pList;
    AREA_DATA *Area;
@@ -1217,7 +1217,7 @@ DO_FUN(build_findroom)
       {
          found = TRUE;
          snprintf( buf, MSL, "[%5d] %s\r\n", pRoomIndex->vnum, capitalize( pRoomIndex->name ) );
-         strncat( buf1, buf, MSL );
+         strncat( buf1, buf, MSL-1 );
       }
    }
 
@@ -1234,14 +1234,14 @@ DO_FUN(build_findroom)
 /* -S- : More 'intelligent' way to handle things perhaps? */
 DO_FUN(build_setmob)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char arg4[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
-/*    char buf2 [MAX_STRING_LENGTH]; unused */
-/*    char buffer[MAX_STRING_LENGTH]; unused */
-/*    char name[MAX_INPUT_LENGTH]; unused */
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
+   char arg4[MSL];
+   char buf[MSL];
+/*    char buf2 [MSL]; unused */
+/*    char buffer[MSL]; unused */
+/*    char name[MSL]; unused */
    MOB_INDEX_DATA *pMob;
 /*    char *argn, *oldperm; unused */
    int value, num;
@@ -1557,7 +1557,7 @@ DO_FUN(build_setmob)
          for( looper = 0; looper < MAX_RACE; looper++ )
          {
             snprintf( catbuf, MSL, "[%i]:%s ", looper, race_table[looper].race_title );
-            strncat( buf, catbuf, MSL );
+            strncat( buf, catbuf, MSL-1 );
          }
          strncat( buf, "\r\n", MSL );
          send_to_char( buf, ch );
@@ -1950,12 +1950,12 @@ void nuke_exit_resets( ROOM_INDEX_DATA * pRoomIndex, int door )
 
 DO_FUN(build_setroom)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char arg4[MAX_INPUT_LENGTH];
-   char arg5[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
+   char arg4[MSL];
+   char arg5[MSL];
+   char buf[MSL];
    char *argn;
    ROOM_INDEX_DATA *location;
    int value, num;
@@ -2450,10 +2450,10 @@ DO_FUN(build_setroom)
 
 DO_FUN(build_setobject)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char buf[MAX_STRING_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
+   char buf[MSL];
    char *argn;
    OBJ_INDEX_DATA *pObj;
    AREA_DATA *pArea;
@@ -2554,7 +2554,7 @@ DO_FUN(build_setobject)
        {
         char tmp[MSL];
         snprintf(tmp,MSL," %s",tab_auto_obj[i].name);
-        strncat(buf,tmp,MSL);
+        strncat(buf,tmp,MSL-1);
        }
        strncat(buf,".\r\n",MSL);
        send_to_char(buf,ch);
@@ -2585,7 +2585,7 @@ DO_FUN(build_setobject)
       {
        char tmp[MSL];
        snprintf(tmp,MSL," %s",tab_auto_obj[i].name);
-       strncat(buf,tmp,MSL);
+       strncat(buf,tmp,MSL-1);
       }
       strncat(buf,".\r\n",MSL);
       send_to_char(buf,ch);
@@ -3018,10 +3018,10 @@ DO_FUN(build_setobject)
 
 DO_FUN(build_dig)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char buffer[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
+   char buffer[MSL];
    ROOM_INDEX_DATA *pRoomIndex;
    ROOM_INDEX_DATA *pCurRoom;
    int vnum, dir;
@@ -3149,9 +3149,9 @@ DO_FUN(do_build)
 
 DO_FUN(build_addmob)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char buffer[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char buffer[MSL];
    MOB_INDEX_DATA *pMobIndex;
 /*    ROOM_INDEX_DATA *room; unused */
    AREA_DATA *pArea;
@@ -3217,9 +3217,9 @@ DO_FUN(build_addmob)
 
 DO_FUN(build_addobject)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char buffer[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char buffer[MSL];
    OBJ_INDEX_DATA *pObjIndex;
    AREA_DATA *pArea;
    BUILD_DATA_LIST *pList;
@@ -3356,11 +3356,11 @@ DO_FUN(build_addreset)
    BUILD_DATA_LIST *pList;
    BUILD_DATA_LIST *pMobList;
    BUILD_DATA_LIST *pObjList;
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char arg3[MAX_INPUT_LENGTH];
-   char arg4[MAX_INPUT_LENGTH];
-   char buf[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char arg3[MSL];
+   char arg4[MSL];
+   char buf[MSL];
    char command;
    int rarg1, rarg2, rarg3;
    char *rauto = "";
@@ -3800,7 +3800,7 @@ DO_FUN(build_delreset)
    RESET_DATA *pReset;
    BUILD_DATA_LIST *pList;
    BUILD_DATA_LIST *pNextList;
-   char arg1[MAX_INPUT_LENGTH];
+   char arg1[MSL];
    ROOM_INDEX_DATA *pRoomIndex;
 
    int found;
@@ -3975,9 +3975,9 @@ DO_FUN(build_delhelp)
 
 DO_FUN(build_delroom)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char buf[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char buf[MSL];
    ROOM_INDEX_DATA *pRoomIndex;
    AREA_DATA *pArea;
    BUILD_DATA_LIST *pList;
@@ -4243,9 +4243,9 @@ int old_ovnum = 0;
 
 DO_FUN(build_delobject)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char buf[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char buf[MSL];
    CHAR_DATA *vch;
    OBJ_INDEX_DATA *pObjIndex;
    AREA_DATA *pArea;
@@ -4432,9 +4432,9 @@ int old_mob_vnum = 0;
 
 DO_FUN(build_delmob)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
-   char buf[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
+   char buf[MSL];
    CHAR_DATA *vch;
    MOB_INDEX_DATA *pMobIndex;
    AREA_DATA *pArea;
@@ -4626,7 +4626,7 @@ DO_FUN(build_delmob)
 
 DO_FUN(build_help)
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    if( argument[0] != '\0' )  /* If an argument supplied... */
    {
@@ -4746,8 +4746,8 @@ void build_strdup( char **dest, char *src, bool freesrc, bool newline, CHAR_DATA
           * Read in a file
           */
          filename[0] = '\0';
-         strncat( filename, STRING_FILE_DIR, 255 );
-         strncat( filename, src, 255 );
+         strncat( filename, STRING_FILE_DIR, 254 );
+         strncat( filename, src, 254 );
          infile = file_open( filename, "r" );
          if( !infile )
             filechar = str_dup( "Could not open file.\r\n" );
@@ -4937,8 +4937,8 @@ DO_FUN(build_set_nedit)
 
 DO_FUN(build_setvnum)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf2[MSL];
    int vnum;
    OBJ_INDEX_DATA *obj;
 /*   ROOM_INDEX_DATA *room; unused */
@@ -5036,7 +5036,7 @@ DO_FUN(build_list)
     * do show obj|mob|room according to ch->pcdata->build_mode -S-
     */
 
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    bool found;
 
    found = FALSE;
@@ -5226,7 +5226,7 @@ DO_FUN(build_set)
    /*
     * Call setroom/mob/obj with argument, and vnum, etc.
     */
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
    switch ( ch->pcdata->build_mode )
    {
@@ -5269,7 +5269,7 @@ DO_FUN(build_listvalues)
     */
    int value;
    int foo;
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
 
 
    if( argument[0] == '\0' )
@@ -5303,7 +5303,7 @@ DO_FUN(build_listweapons)
    /*
     * list weapon types, along with values
     */
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    int foo;
 
    /*
@@ -5325,7 +5325,7 @@ DO_FUN(build_listliquids)
    /*
     * list liquid types, along with values
     */
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    int foo;
 
    /*
@@ -5348,8 +5348,8 @@ DO_FUN(build_listspells)
     * List spells -S-
     */
    int sn;
-   char buf[MAX_STRING_LENGTH];
-   char buf2[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char buf2[MSL];
    int type;
    bool fall;
 
@@ -5400,7 +5400,7 @@ DO_FUN(build_listspells)
       if( skill_table[sn].target == type || fall )
       {
          snprintf( buf, MSL, "@@W[Spell No: %4d] @@y%s@@g\r\n", sn, skill_table[sn].name );
-         strncat( buf2, buf, MSL );
+         strncat( buf2, buf, MSL-1 );
       }
    }
    send_to_char( buf2, ch );
@@ -5422,9 +5422,9 @@ DO_FUN(build_urooms)
     * List vnum usage for area... 
     */
    int curvnum;
-   char buf[MAX_STRING_LENGTH];
-   char free[MAX_STRING_LENGTH];
-   char used[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char free[MSL];
+   char used[MSL];
    AREA_DATA *area;
    int last = 0;  /* 0 = start, 1 = used, 2 = free */
    int foo = 0;   /* holds start of free/used vnums, so no 3001-3001 */
@@ -5443,7 +5443,7 @@ DO_FUN(build_urooms)
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
                foo = curvnum;
                last = 1;
                break;
@@ -5453,10 +5453,10 @@ DO_FUN(build_urooms)
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  strncat( free, buf, MSL );
+                  strncat( free, buf, MSL-1 );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
                foo = curvnum;
                last = 1;
          }
@@ -5467,7 +5467,7 @@ DO_FUN(build_urooms)
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               strncat( free, buf, MSL );
+               strncat( free, buf, MSL-1 );
                foo = curvnum;
                last = 2;
                break;
@@ -5475,10 +5475,10 @@ DO_FUN(build_urooms)
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  strncat( used, buf, MSL );
+                  strncat( used, buf, MSL-1 );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               strncat( free, buf, MSL );
+               strncat( free, buf, MSL-1 );
                last = 2;
                foo = curvnum;
                break;
@@ -5498,16 +5498,16 @@ DO_FUN(build_urooms)
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            strncat( used, buf, MSL );
+            strncat( used, buf, MSL-1 );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
       }
    }
@@ -5519,17 +5519,17 @@ DO_FUN(build_urooms)
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
          case 2:
             if( foo != curvnum - 1 )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
       }
    }
@@ -5547,16 +5547,16 @@ DO_FUN(build_uobjs)
     * List vnum usage for area... 
     */
    int curvnum;
-   char buf[MAX_STRING_LENGTH];
-   char free[MAX_STRING_LENGTH];
-   char used[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char free[MSL];
+   char used[MSL];
    AREA_DATA *area;
    int last = 0;  /* 0 = start, 1 = used, 2 = free */
    int foo = 0;   /* holds start of free/used vnums, so no 3001-3001 */
 
    area = ch->in_room->area;
    /*
-    * Rooms 
+    * Rooms
     */
    snprintf( free, MSL, "(Free) " );
    snprintf( used, MSL, "(Used) " );
@@ -5568,7 +5568,7 @@ DO_FUN(build_uobjs)
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
                foo = curvnum;
                last = 1;
                break;
@@ -5578,10 +5578,10 @@ DO_FUN(build_uobjs)
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  strncat( free, buf, MSL );
+                  strncat( free, buf, MSL-1 );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
                foo = curvnum;
                last = 1;
          }
@@ -5592,7 +5592,7 @@ DO_FUN(build_uobjs)
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               strncat( free, buf, MSL );
+               strncat( free, buf, MSL-1 );
                foo = curvnum;
                last = 2;
                break;
@@ -5600,10 +5600,10 @@ DO_FUN(build_uobjs)
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  strncat( used, buf, MSL );
+                  strncat( used, buf, MSL-1 );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               strncat( free, buf, MSL );
+               strncat( free, buf, MSL-1 );
                last = 2;
                foo = curvnum;
                break;
@@ -5623,16 +5623,16 @@ DO_FUN(build_uobjs)
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            strncat( used, buf, MSL );
+            strncat( used, buf, MSL-1 );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
       }
    }
@@ -5644,17 +5644,17 @@ DO_FUN(build_uobjs)
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
          case 2:
             if( foo != curvnum - 1 )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
       }
    }
@@ -5668,12 +5668,12 @@ DO_FUN(build_uobjs)
 DO_FUN(build_umobs)
 {
    /*
-    * List vnum usage for area... 
+    * List vnum usage for area...
     */
    int curvnum;
-   char buf[MAX_STRING_LENGTH];
-   char free[MAX_STRING_LENGTH];
-   char used[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char free[MSL];
+   char used[MSL];
    AREA_DATA *area;
    int last = 0;  /* 0 = start, 1 = used, 2 = free */
    int foo = 0;   /* holds start of free/used vnums, so no 3001-3001 */
@@ -5689,7 +5689,7 @@ DO_FUN(build_umobs)
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
                foo = curvnum;
                last = 1;
                break;
@@ -5699,10 +5699,10 @@ DO_FUN(build_umobs)
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  strncat( free, buf, MSL );
+                  strncat( free, buf, MSL-1 );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
                foo = curvnum;
                last = 1;
          }
@@ -5713,7 +5713,7 @@ DO_FUN(build_umobs)
          {
             case 0:
                snprintf( buf, MSL, "%d", curvnum );
-               strncat( free, buf, MSL );
+               strncat( free, buf, MSL-1 );
                foo = curvnum;
                last = 2;
                break;
@@ -5721,10 +5721,10 @@ DO_FUN(build_umobs)
                if( foo != curvnum - 1 )
                {
                   snprintf( buf, MSL, "-%d", curvnum - 1 );
-                  strncat( used, buf, MSL );
+                  strncat( used, buf, MSL-1 );
                }
                snprintf( buf, MSL, " %d", curvnum );
-               strncat( free, buf, MSL );
+               strncat( free, buf, MSL-1 );
                last = 2;
                foo = curvnum;
                break;
@@ -5744,16 +5744,16 @@ DO_FUN(build_umobs)
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            strncat( used, buf, MSL );
+            strncat( used, buf, MSL-1 );
             break;
          case 2:
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
       }
    }
@@ -5765,17 +5765,17 @@ DO_FUN(build_umobs)
             if( foo != curvnum - 1 )
             {
                snprintf( buf, MSL, "-%d.", curvnum - 1 );
-               strncat( used, buf, MSL );
+               strncat( used, buf, MSL-1 );
             }
             snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
          case 2:
             if( foo != curvnum - 1 )
                snprintf( buf, MSL, "-%d.", curvnum );
             else
                snprintf( buf, MSL, " %d.", curvnum );
-            strncat( free, buf, MSL );
+            strncat( free, buf, MSL-1 );
             break;
       }
    }
@@ -5793,7 +5793,7 @@ DO_FUN(build_umobs)
  **/
 DO_FUN(build_findhelp)
 {
-   char arg[MAX_STRING_LENGTH];
+   char arg[MSL];
    int cnt = 0;
 
    one_argument( argument, arg );
@@ -5814,7 +5814,7 @@ DO_FUN(build_findhelp)
 
 DO_FUN(build_helpedit)
 {
- char arg[MAX_STRING_LENGTH];
+ char arg[MSL];
  bool mort = FALSE;
  FILE *fp;
 
@@ -5858,7 +5858,7 @@ DO_FUN(build_helpedit)
    if( buf2[0] == '\0' )
     snprintf(buf2,MSL,"%s",buf1);
    else
-    strncat(buf2,buf1,MSL);
+    strncat(buf2,buf1,MSL-1);
   }
   ch->pcdata->message = str_dup(buf2);
 
@@ -5876,7 +5876,7 @@ DO_FUN(build_helpedit)
 
 DO_FUN(build_addhelp)
 {
- char arg[MAX_STRING_LENGTH];
+ char arg[MSL];
  bool mort = FALSE;
  FILE *fp;
 
@@ -5924,8 +5924,8 @@ DO_FUN(build_addhelp)
 
 DO_FUN(build_clone)
 {
-   char arg1[MAX_INPUT_LENGTH];
-   char arg2[MAX_INPUT_LENGTH];
+   char arg1[MSL];
+   char arg2[MSL];
 
    /*
     * Allow builder to clone a room/mob/object -
@@ -6199,8 +6199,8 @@ void check_autodig( CHAR_DATA *ch, int dir )
   EXIT_DATA *pExit;
   int vnum;
   bool found = FALSE;
-  char buf[20];
-  char exit[6];
+  char buf[MSL];
+  char exit[MSL];
 
   pExit = ch->in_room->exit[dir];
   pArea = ch->in_room->area;
@@ -6268,27 +6268,27 @@ DO_FUN(build_sysdata)
  {
   snprintf(outbuf,MSL,"%s","  Builder system data for " mudnamecolor ":\r\n");
   snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Option         ]       [Value          ]\r\n");
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Obj AC         ]       [%15d]\r\n",sysdata.build_obj_ac);
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Obj DR         ]       [%15d]\r\n",sysdata.build_obj_dr);
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Obj HP         ]       [%15d]\r\n",sysdata.build_obj_hp);
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Obj HR         ]       [%15d]\r\n",sysdata.build_obj_hr);
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Obj MP         ]       [%15d]\r\n",sysdata.build_obj_mp);
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Obj MV         ]       [%15d]\r\n",sysdata.build_obj_mv);
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Obj SVS        ]       [%15d]\r\n",sysdata.build_obj_svs);
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n");
-  strncat(outbuf,catbuf,MSL);
+  strncat(outbuf,catbuf,MSL-1);
   send_to_char(outbuf,ch);
   return;
  }

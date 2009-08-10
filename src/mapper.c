@@ -547,8 +547,8 @@ void disp_map( char *border, char *pmap, CHAR_DATA * ch )
       send_to_char( disp, ch );
    }
    strcpy( disp, map_format( ch->in_room->name, 0, bufs, &y, cols, rows, TRUE ) );
-   strncat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ), MSL );
-   strncat( disp, map_format( tagline_format(ch->in_room->description,ch), y, bufs, &y, cols, rows, !ch->act.test(ACT_JUSTIFY ) ), MSL );
+   strncat( disp, map_format( exit_string( ch, ch->in_room ), y, bufs, &y, cols, rows, TRUE ), MSL-1 );
+   strncat( disp, map_format( tagline_format(ch->in_room->description,ch), y, bufs, &y, cols, rows, !ch->act.test(ACT_JUSTIFY ) ), MSL-1 );
    if( y < MAP_Y )
    {
       x = disp + strlen( disp );
@@ -667,7 +667,7 @@ void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
    for( looper = 0; looper <= size + 1; looper++ )
    {
       snprintf( catbuf, MSL, "%s", "-" );
-      strncat( borderbuf, catbuf, MSL );
+      strncat( borderbuf, catbuf, MSL-1 );
    }
    strncat( borderbuf, "@@y+@@N", MSL );
    for( x = min; x <= max; ++x )
@@ -689,13 +689,13 @@ void ShowRoom( CHAR_DATA * ch, int min, int max, int size, int center )
                        ( ( contents[x][y].string[0] == '\0' ) ?
                          get_sector_display( map[x][y] ) : contents[x][y].string ) ) );
             snprintf( catbuf, MSL, "%s%s", colorbuf, displaybuf );
-            strncat( outbuf, catbuf, MSL );
+            strncat( outbuf, catbuf, MSL-1 );
 
          }
          else
          {
             snprintf( catbuf, MSL, "%s", ( map[x][y] <= 0 ) ? get_door_display( map[x][y] ) : get_sector_display( map[x][y] ) );
-            strncat( outbuf, catbuf, MSL );
+            strncat( outbuf, catbuf, MSL-1 );
          }
 
       }
@@ -729,7 +729,7 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
    for( looper = 0; looper <= size + 1; looper++ )
    {
       snprintf( catbuf, MSL, "%s", "-" );
-      strncat( borderbuf, catbuf, MSL );
+      strncat( borderbuf, catbuf, MSL-1 );
    }
    strncat( borderbuf, "@@y+@@N", MSL );
    for( x = min; x <= max; ++x )
@@ -751,13 +751,13 @@ void ShowMap( CHAR_DATA * ch, int min, int max, int size, int center )
                        ( ( contents[x][y].string[0] == '\0' ) ?
                          get_sector_display( map[x][y] ) : contents[x][y].string ) ) );
             snprintf( catbuf, MSL, "%s%s", colorbuf, displaybuf );
-            strncat( outbuf, catbuf, MSL );
+            strncat( outbuf, catbuf, MSL-1 );
 
          }
          else
          {
             snprintf( catbuf, MSL, "%s", ( map[x][y] <= 0 ) ? get_door_display( map[x][y] ) : get_sector_display( map[x][y] ) );
-            strncat( outbuf, catbuf, MSL );
+            strncat( outbuf, catbuf, MSL-1 );
          }
 
       }

@@ -97,9 +97,9 @@ void move_char( CHAR_DATA * ch, int door, bool look )
    ROOM_INDEX_DATA *in_room;
    ROOM_INDEX_DATA *to_room;
    EXIT_DATA *pexit;
-   char buf[MAX_STRING_LENGTH];
-   char move_buf[MAX_STRING_LENGTH];
-   char tmp[MAX_STRING_LENGTH];
+   char buf[MSL];
+   char move_buf[MSL];
+   char tmp[MSL];
    int need_movement;
    char door_name_leave[MSL];
    char door_name_enter[MSL];
@@ -655,7 +655,7 @@ int find_door( CHAR_DATA * ch, char *arg )
 
 DO_FUN(do_open)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    OBJ_DATA *obj;
    int door;
 
@@ -745,7 +745,7 @@ DO_FUN(do_open)
 
 DO_FUN(do_close)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    OBJ_DATA *obj;
    int door;
 
@@ -840,7 +840,7 @@ bool has_key( CHAR_DATA * ch, int key )
 
 DO_FUN(do_lock)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    OBJ_DATA *obj;
    int door;
 
@@ -941,7 +941,7 @@ DO_FUN(do_lock)
 
 DO_FUN(do_unlock)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    OBJ_DATA *obj;
    int door;
 
@@ -1042,7 +1042,7 @@ DO_FUN(do_unlock)
 
 DO_FUN(do_pick)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *gch;
    OBJ_DATA *obj;
    int door;
@@ -1306,7 +1306,7 @@ DO_FUN(do_sleep)
 
 DO_FUN(do_wake)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    CHAR_DATA *victim;
 
    one_argument( argument, arg );
@@ -1532,7 +1532,7 @@ DO_FUN(do_clan_recall)
 
 DO_FUN(do_recall)
 {
-   char buf[MAX_STRING_LENGTH];
+   char buf[MSL];
    CHAR_DATA *victim;
    ROOM_INDEX_DATA *location;
 
@@ -1639,8 +1639,8 @@ DO_FUN(do_recall)
 
 DO_FUN(do_train)
 {
-   char buf[MAX_STRING_LENGTH];
-   char buf2[20];
+   char buf[MSL];
+   char buf2[MSL];
    CHAR_DATA *mob;
    int hp_gain = 0;
    int mana_gain = 0;
@@ -1774,31 +1774,31 @@ DO_FUN(do_train)
       {
          strncat( buf, "  str", MSL );
          snprintf( buf2, MSL, " (%d)", cost1 );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
       }
       if( ch->pcdata->perm_int < ch->pcdata->max_int )
       {
          strncat( buf, "  int", MSL );
          snprintf( buf2, MSL, " (%d)", cost2 );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
       }
       if( ch->pcdata->perm_wis < ch->pcdata->max_wis )
       {
          strncat( buf, "  wis", MSL );
          snprintf( buf2, MSL, " (%d)", cost3 );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
       }
       if( ch->pcdata->perm_dex < ch->pcdata->max_dex )
       {
          strncat( buf, "  dex", MSL );
          snprintf( buf2, MSL, " (%d)", cost4 );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
       }
       if( ch->pcdata->perm_con < ch->pcdata->max_con )
       {
          strncat( buf, "  con", MSL );
          snprintf( buf2, MSL, " (%d)", cost5 );
-         strncat( buf, buf2, MSL );
+         strncat( buf, buf2, MSL-1 );
       }
       if( buf[strlen( buf ) - 1] != ':' )
       {
@@ -1908,7 +1908,7 @@ DO_FUN(do_halls)
 
 DO_FUN(do_smash)
 {
-   char arg[MAX_INPUT_LENGTH];
+   char arg[MSL];
    int door;
    int best;
    int cnt;
@@ -2019,8 +2019,8 @@ DO_FUN(do_scan)
 {
    ROOM_INDEX_DATA *location;
    int door;
-   char buf[MAX_INPUT_LENGTH];
-   char person[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char person[MSL];
    CHAR_DATA *d;
    bool found = FALSE;
    buf[0] = '\0';
@@ -2187,8 +2187,8 @@ DO_FUN(do_scout)
    int depth = 0;
    int counter;
    CHAR_DATA *target;
-   char buf[MAX_INPUT_LENGTH];
-   char pre[MAX_INPUT_LENGTH];
+   char buf[MSL];
+   char pre[MSL];
    buf[0] = '\0';
    pre[0] = '\0';
 
