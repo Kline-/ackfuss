@@ -22,7 +22,8 @@
 
 void display_help();
 void cleanup_outfile ( string filename );
-void cleanup_flags   ( int typein, int typeout );
+void flag_handler    ( int typein, int typeout );
+void clear_area_flag ( string name );
 
 bool infile_init     ( string filename, ifstream &file );
 bool outfile_init    ( string filename, ofstream &file );
@@ -46,9 +47,12 @@ class area_data
   string keyword;
   string level_label;
   string reset_msg;
+  string flags_found;
 
-  bitset<MAX_BITSET> bitset_flags;
-  int int_flags;
+  bitset<MAX_BITSET> bitset_flags_in;
+  bitset<MAX_BITSET> bitset_flags_out;
+  int int_flags_in;
+  int int_flags_out;
   int min_vnum;
   int max_vnum;
   int min_level;

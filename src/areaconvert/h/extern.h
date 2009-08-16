@@ -5,4 +5,3 @@
  */
 
 extern area_data area;
-extern string area_flags_found;
