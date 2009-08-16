@@ -10,6 +10,7 @@
 void write_ackfuss( ofstream &file, int type )
 {
  write_ackfuss_area(file,type);
+ write_ackfuss_room(file,type);
 
  return;
 }
@@ -36,6 +37,27 @@ void write_ackfuss_area( ofstream &file, int type )
  file << "ResetRate " << area.reset_rate << endl;
  file << "VnumRange " << area.min_vnum << " " << area.max_vnum << endl;
  file << "End" << endl;
+
+ return;
+}
+
+void write_ackfuss_room( ofstream &file, int type )
+{
+ char delim = '~';
+ list<room_data *>::iterator it;
+ room_data *room;
+
+ for( it = room_list.begin(); it != room_list.end(); it++ )
+ {
+  room = *it;
+  file << "#ROOM" << endl;
+  file << "Vnum  " << room->vnum << endl;
+  file << "Desc " << room->description << delim << endl;
+  file << "Flags EOL" << endl;
+  file << "Name  " << room->name << delim << endl;
+  file << "Sect  " << room->sector << endl;
+  file << "End" << endl;
+ }
 
  return;
 }

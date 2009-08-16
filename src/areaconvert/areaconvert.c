@@ -32,7 +32,11 @@
  * S -- flag NO_SHOW
 */
 
-area_data area;
+area_data        area;
+list<room_data>  room_list;
+list<npc_data>   npc_list;
+list<obj_data>   obj_list;
+list<reset_data> reset_list;
 
 int main( int argc, char *argv[] )
 {

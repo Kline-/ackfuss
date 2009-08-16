@@ -15,6 +15,7 @@
 #define TYPE_ACKFUSS 1
 
 #define MAX_BITSET 256
+#define MAX_EXIT   6
 
 #define I_BIT(var,bit) (var & bit)
 #define S_BIT(var,bit) (var |= bit)
@@ -59,4 +60,48 @@ class area_data
   int max_level;
   int reset_rate;
   int revision;
+};
+
+class exit_data
+{
+ public:
+  string description;
+  string keyword;
+
+  bitset<MAX_BITSET> bitset_flags_in;
+  bitset<MAX_BITSET> bitset_flags_out;
+  int int_flags_in;
+  int int_flags_out;
+  int key;
+  int vnum;
+};
+
+class room_data
+{
+ public:
+  string name;
+  string description;
+
+  bitset<MAX_BITSET> bitset_flags_in;
+  bitset<MAX_BITSET> bitset_flags_out;
+  int vnum;
+  int int_flags_in;
+  int int_flags_out;
+  int sector;
+  exit_data *exit[MAX_EXIT];
+};
+
+class npc_data
+{
+ public:
+};
+
+class obj_data
+{
+ public:
+};
+
+class reset_data
+{
+ public:
 };

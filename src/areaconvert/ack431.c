@@ -11,7 +11,21 @@ void read_ack431( ifstream &file )
 {
  string tmp;
 
- read_ack431_area(file);
+ for( ;; )
+ {
+  getline(file,tmp);
+
+  if( tmp[0] == '#' )
+  {
+   if( tmp[1] == '$' )
+    break;
+
+   if( tmp == "#AREA" )
+    read_ack431_area(file);
+   else if( tmp == "#ROOMS" )
+    read_ack431_room(file);
+  }
+ }
 
  return;
 }
@@ -52,6 +66,61 @@ void read_ack431_area( ifstream &file )
    case 'W': getline(file,area.can_write,delim);                     break;
    case 'X': getline(file,tmp);                                      break;
   }
+ }
+
+ file.unget();
+ return;
+}
+
+void read_ack431_room( ifstream &file )
+{
+ string tmp;
+ room_data *room;
+ int vnum = 0;
+ char delim = '~';
+ char c;
+
+ for( ;; )
+ {
+  c = file.get();
+cout << " c = " << c;
+  if( c == '#' )
+   getline(file,tmp); vnum = str2int(tmp);
+
+  if( vnum == 0 ) /* reached the end */
+   break;
+
+  room = new room_data;
+  room->vnum = vnum;
+  getline(file,room->name,delim);
+  getline(file,room->description,delim);
+  getline(file,tmp,' '); room->int_flags_in = str2int(tmp);
+  getline(file,tmp); room->sector = str2int(tmp);
+
+  for( ;; )
+  {
+   c = file.get();
+
+   if( c == 'S' )
+   {
+    cout << "got S" << endl;
+    break;
+   }
+   if( c == 'D' )
+   {
+    cout << "got D" << endl;
+    exit_data *exit = new exit_data;
+    getline(file,tmp);
+    room->exit[str2int(tmp)] = exit;
+    getline(file,exit->description,delim);
+    getline(file,exit->keyword,delim);
+    getline(file,tmp,' '); /* locks */
+    getline(file,tmp,' '); exit->key = str2int(tmp);
+    getline(file,tmp); exit->vnum = str2int(tmp);
+   }
+  }
+cout << "ended loop" << endl;
+  room_list.push_back(room);
  }
 
  return;

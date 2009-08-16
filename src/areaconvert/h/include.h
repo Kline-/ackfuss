@@ -11,5 +11,6 @@
 #include <string>
 #include <sstream>
 #include <bitset>
+#include <list>
 
 using namespace std;
