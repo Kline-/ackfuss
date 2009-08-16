@@ -4,51 +4,7 @@
  * Support provided at www.ackmud.net
  */
 
-#include <cstdlib>
-#include <iostream>
-#include <istream>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <bitset>
-
-#include "ack431.h"
-#include "ackfuss.h"
-
-using namespace std;
-
-#define VERS "AreaConvert 1.0"
-#define SPACER "--------------------------------------------------"
-
-#define TYPE_ACK431  0
-#define TYPE_ACKFUSS 1
-
-#define MAX_BITSET 256
-
-#define I_BIT(var,bit) (var & bit)
-#define S_BIT(var,bit) (var |= bit)
-#define R_BIT(var,bit) (var &= ~bit)
-
-void display_help();
-void cleanup_outfile    ( string filename );
-void cleanup_flags      ( int typein, int typeout );
-
-bool infile_init        ( string filename, ifstream &file );
-bool outfile_init       ( string filename, ofstream &file );
-bool typein_init        ( string name, int &type );
-bool typeout_init       ( string name, int &type );
-
-void process_infile     ( ifstream &file, int type );
-void process_outfile    ( ofstream &file, int typein, int typeout );
-
-int str2int             ( string &str );
-string int2str          ( int i );
-
-void read_ack431        ( ifstream &file );
-void read_ack431_area   ( ifstream &file );
-
-void write_ackfuss      ( ofstream &file, int type );
-void write_ackfuss_area ( ofstream &file, int type );
+#include "h/areaconvert.h"
 
 /* Store variables for all formats we will support, just don't write the ones we don't need later :) */
 
@@ -75,27 +31,6 @@ void write_ackfuss_area ( ofstream &file, int type );
  * B -- flag BUILDING
  * S -- flag NO_SHOW
 */
-class area_data
-{
- public:
-  string filename;
-  string name;
-  string owner;
-  string can_read;
-  string can_write;
-  string keyword;
-  string level_label;
-  string reset_msg;
-
-  bitset<MAX_BITSET> bitset_flags;
-  int int_flags;
-  int min_vnum;
-  int max_vnum;
-  int min_level;
-  int max_level;
-  int reset_rate;
-  int revision;
-};
 
 area_data area;
 string area_flags_found;
@@ -270,94 +205,4 @@ string int2str( int i )
  stringstream ss;
  ss << i;
  return ss.str();
-}
-
-void read_ack431( ifstream &file )
-{
- string tmp;
-
- read_ack431_area(file);
-
- return;
-}
-
-void read_ack431_area( ifstream &file )
-{
- string tmp;
- char delim = '~';
- char c;
-
- file.ignore(6);    /* #AREA */
- getline(file,area.name,delim);
-
- for( ;; )
- {
-  c = file.get();
-
-  if( c == '#' )
-   break;
-
-  switch( c )
-  {
-   case 'B': getline(file,tmp); S_BIT(area.int_flags,ACK431_AFLAG_BUILDING); area_flags_found += "building ";        break;
-   case 'F': getline(file,tmp); area.reset_rate = str2int(tmp);      break;
-   case 'I': file.ignore(1); getline(file,tmp,' '); area.min_level = str2int(tmp); getline(file,tmp); area.max_level = str2int(tmp); break;
-   case 'K': getline(file,area.keyword,delim);                       break;
-   case 'L': getline(file,area.level_label,delim);                   break;
-   case 'M': getline(file,tmp); S_BIT(area.int_flags,ACK431_AFLAG_NO_ROOM_AFF); area_flags_found += "no_room_affs "; break;
-   case 'N': getline(file,tmp);                                      break;
-   case 'O': getline(file,area.owner,delim);                         break;
-   case 'P': getline(file,tmp); S_BIT(area.int_flags,ACK431_AFLAG_PAYAREA); area_flags_found += "pay_area ";         break;
-   case 'Q': getline(file,tmp); area.revision = str2int(tmp);        break;
-   case 'R': getline(file,area.can_read,delim);                      break;
-   case 'S': getline(file,tmp); S_BIT(area.int_flags,ACK431_AFLAG_NOSHOW); area_flags_found += "no_show ";           break;
-   case 'T': getline(file,tmp); S_BIT(area.int_flags,ACK431_AFLAG_TELEPORT); area_flags_found += "teleport ";        break;
-   case 'U': getline(file,area.reset_msg,delim);                     break;
-   case 'V': file.ignore(1); getline(file,tmp,' '); area.min_vnum = str2int(tmp); getline(file,tmp); area.max_vnum = str2int(tmp); break;
-   case 'W': getline(file,area.can_write,delim);                     break;
-   case 'X': getline(file,tmp);                                      break;
-  }
- }
-
- return;
-}
-
-void write_ackfuss( ofstream &file, int type )
-{
- write_ackfuss_area(file,type);
-
- return;
-}
-
-void write_ackfuss_area( ofstream &file, int type )
-{
- char delim = '~';
-
- file << "#AREA" << endl;
- file << "Revision  " << area.revision << endl;
- file << "CanRead  " << area.can_read << delim << endl;
- file << "CanWrite " << area.can_write << delim << endl;
- switch( type )
- {
-  case TYPE_ACK431:
-   file << "Flags     ";
-   if( I_BIT(area.int_flags,ACK431_AFLAG_BUILDING) )    { file << ACKFUSS_AFLAG_BUILDING << " "; }
-   if( I_BIT(area.int_flags,ACK431_AFLAG_NO_ROOM_AFF) ) { file << ACKFUSS_AFLAG_NO_ROOM_AFF << " "; }
-   if( I_BIT(area.int_flags,ACK431_AFLAG_PAYAREA) )     { file << ACKFUSS_AFLAG_PAYAREA << " "; }
-   if( I_BIT(area.int_flags,ACK431_AFLAG_NOSHOW) )      { file << ACKFUSS_AFLAG_NOSHOW << " "; }
-   if( I_BIT(area.int_flags,ACK431_AFLAG_TELEPORT) )    { file << ACKFUSS_AFLAG_TELEPORT << " "; }
-   file << "EOL" << endl;
-   break;
- }
- file << "Keyword  " << area.keyword << delim << endl;
- file << "LevLabel " << area.level_label << delim << endl;
- file << "LevRange  " << area.min_level << " " << area.max_level << endl;
- file << "Name      " << area.name << delim << endl;
- file << "Owner    " << area.owner << delim << endl;
- file << "ResetMsg " << area.reset_msg << delim << endl;
- file << "ResetRate " << area.reset_rate << endl;
- file << "VnumRange " << area.min_vnum << " " << area.max_vnum << endl;
- file << "End" << endl;
-
- return;
 }

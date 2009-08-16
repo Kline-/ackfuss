@@ -4,6 +4,11 @@
  * Support provided at www.ackmud.net
  */
 
+#include "include.h"
+
+void write_ackfuss      ( ofstream &file, int type );
+void write_ackfuss_area ( ofstream &file, int type );
+
 #define ACKFUSS_AFLAG_NONE           0
 #define ACKFUSS_AFLAG_PAYAREA        1
 #define ACKFUSS_AFLAG_TELEPORT       2

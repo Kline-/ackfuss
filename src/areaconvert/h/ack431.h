@@ -4,6 +4,11 @@
  * Support provided at www.ackmud.net
  */
 
+#include "include.h"
+
+void read_ack431      ( ifstream &file );
+void read_ack431_area ( ifstream &file );
+
 #define ACK431_AFLAG_NONE           0
 #define ACK431_AFLAG_PAYAREA        1
 #define ACK431_AFLAG_TELEPORT       2
