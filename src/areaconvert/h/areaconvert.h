@@ -22,21 +22,22 @@
 #define S_BIT(var,bit) (var |= bit)
 #define R_BIT(var,bit) (var &= ~bit)
 
-void display_help();
-void cleanup_outfile ( string filename );
-void flag_handler    ( int typein, int typeout );
-void clear_area_flag ( string name );
+void display_help     ( void );
+void cleanup_outfile  ( string filename );
+void flag_handler     ( int typein, int typeout );
+void clear_area_flag  ( string name );
 
-bool infile_init     ( string filename, ifstream &file );
-bool outfile_init    ( string filename, ofstream &file );
-bool typein_init     ( string name, int &type );
-bool typeout_init    ( string name, int &type );
+bool infile_init      ( string filename, ifstream &file );
+bool outfile_init     ( string filename, ofstream &file );
+bool typein_init      ( string name, int &type );
+bool typeout_init     ( string name, int &type );
 
-void process_infile  ( ifstream &file, int type );
-void process_outfile ( ofstream &file, int typein, int typeout );
+void process_infile   ( ifstream &file, int type );
+void process_outfile  ( ofstream &file, int typein, int typeout );
+void shutdown_cleanup ( void );
 
-int str2int          ( string &str );
-string int2str       ( int i );
+int str2int           ( string &str );
+string int2str        ( int i );
 
 class DeleteObject
 {

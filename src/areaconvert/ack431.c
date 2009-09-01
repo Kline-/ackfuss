@@ -36,7 +36,6 @@ void read_ack431_area( ifstream &file )
  char delim = '~';
  char c;
 
- file.ignore(6);    /* #AREA */
  getline(file,area.name,delim);
 
  while( !file.eof() )
@@ -82,14 +81,15 @@ void read_ack431_room( ifstream &file )
 
  while( !file.eof() )
  {
-  c = file.get();
-cout << " c = " << c;
+  tmp.clear();
+  while( (c = file.get()) != '#' );
+
   if( c == '#' )
    getline(file,tmp); vnum = str2int(tmp);
 
   if( vnum == 0 ) /* reached the end */
    break;
-cout << " tmp = " << tmp << endl;
+
   room = new room_data;
   room->vnum = vnum;
   getline(file,room->name,delim);
@@ -102,13 +102,9 @@ cout << " tmp = " << tmp << endl;
    c = file.get();
 
    if( c == 'S' ) /* stop */
-   {
-    cout << "got S" << endl;
     break;
-   }
    if( c == 'D' ) /* door */
    {
-    cout << "got D" << endl;
     exit_data *exit = new exit_data;
     getline(file,tmp);
     room->exit[str2int(tmp)] = exit;
@@ -125,7 +121,7 @@ cout << " tmp = " << tmp << endl;
     getline(file,extra->description,delim);
    }
   }
-cout << "ended loop" << endl;
+
   room_list.push_back(room);
  }
 

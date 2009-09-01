@@ -12,6 +12,8 @@ void write_ackfuss( ofstream &file, int type )
  write_ackfuss_area(file,type);
  write_ackfuss_room(file,type);
 
+ file << "#$" << endl; /* the end */
+
  return;
 }
 
@@ -27,7 +29,7 @@ void write_ackfuss_area( ofstream &file, int type )
  for( int i = 0; i < MAX_BITSET; i++ )
   if( area.bitset_flags_out.test(i) )
    file << i << " ";
- file << endl;
+ file << "EOL" << endl;
  file << "Keyword  " << area.keyword << delim << endl;
  file << "LevLabel " << area.level_label << delim << endl;
  file << "LevRange  " << area.min_level << " " << area.max_level << endl;

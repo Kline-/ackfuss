@@ -76,16 +76,12 @@ int main( int argc, char *argv[] )
 
  infile.close();
  outfile.close();
-
- for_each(room_list.begin(),room_list.end(),DeleteObject());
-
- if( !area.flags_found.empty() )
-  cout << "The following area flags were not converted: " << area.flags_found << endl;
+ shutdown_cleanup();
 
  return 0;
 }
 
-void display_help()
+void display_help( void )
 {
  cout << endl << VERS << endl;
  cout << SPACER << endl;
@@ -226,17 +222,33 @@ void process_outfile( ofstream &file, int typein, int typeout )
  return;
 }
 
+void shutdown_cleanup( void )
+{
+ if( !area.flags_found.empty() )
+  cout << "The following area flags were not converted: " << area.flags_found << endl;
+ else
+  cout << "Area converted successfully." << endl;
+
+ for_each(room_list.begin(),room_list.end(),DeleteObject());
+
+ return;
+}
+
 int str2int( string &str )
 {
  stringstream ss(str);
  int i = 0;
+
  ss >> i;
+
  return i;
 }
 
 string int2str( int i )
 {
  stringstream ss;
+
  ss << i;
+
  return ss.str();
 }
