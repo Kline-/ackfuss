@@ -11,7 +11,7 @@ void read_ack431( ifstream &file )
 {
  string tmp;
 
- for( ;; )
+ while( !file.eof() )
  {
   getline(file,tmp);
 
@@ -39,7 +39,7 @@ void read_ack431_area( ifstream &file )
  file.ignore(6);    /* #AREA */
  getline(file,area.name,delim);
 
- for( ;; )
+ while( !file.eof() )
  {
   c = file.get();
 
@@ -80,7 +80,7 @@ void read_ack431_room( ifstream &file )
  char delim = '~';
  char c;
 
- for( ;; )
+ while( !file.eof() )
  {
   c = file.get();
 cout << " c = " << c;
@@ -89,7 +89,7 @@ cout << " c = " << c;
 
   if( vnum == 0 ) /* reached the end */
    break;
-
+cout << " tmp = " << tmp << endl;
   room = new room_data;
   room->vnum = vnum;
   getline(file,room->name,delim);
@@ -97,16 +97,16 @@ cout << " c = " << c;
   getline(file,tmp,' '); room->int_flags_in = str2int(tmp);
   getline(file,tmp); room->sector = str2int(tmp);
 
-  for( ;; )
+  while( !file.eof() )
   {
    c = file.get();
 
-   if( c == 'S' )
+   if( c == 'S' ) /* stop */
    {
     cout << "got S" << endl;
     break;
    }
-   if( c == 'D' )
+   if( c == 'D' ) /* door */
    {
     cout << "got D" << endl;
     exit_data *exit = new exit_data;
@@ -117,6 +117,12 @@ cout << " c = " << c;
     getline(file,tmp,' '); /* locks */
     getline(file,tmp,' '); exit->key = str2int(tmp);
     getline(file,tmp); exit->vnum = str2int(tmp);
+   }
+   if( c == 'E' ) /* extra descrip */
+   {
+    extra_data *extra = new extra_data;
+    getline(file,extra->keyword,delim);
+    getline(file,extra->description,delim);
    }
   }
 cout << "ended loop" << endl;

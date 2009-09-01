@@ -43,7 +43,7 @@ int main( int argc, char *argv[] )
  string filename, source, dest;
  ifstream infile;
  ofstream outfile;
- int typein, typeout;
+ int typein = TYPE_NONE, typeout = TYPE_NONE;
 
  if( argc < 2 || argc > 4 )
  {
@@ -227,7 +227,7 @@ void process_outfile( ofstream &file, int typein, int typeout )
 int str2int( string &str )
 {
  stringstream ss(str);
- int i;
+ int i = 0;
  ss >> i;
  return i;
 }

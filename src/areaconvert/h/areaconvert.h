@@ -11,6 +11,7 @@
 #define VERS "AreaConvert 1.0"
 #define SPACER "--------------------------------------------------"
 
+#define TYPE_NONE   -1
 #define TYPE_ACK431  0
 #define TYPE_ACKFUSS 1
 
@@ -74,6 +75,13 @@ class exit_data
   int int_flags_out;
   int key;
   int vnum;
+};
+
+class extra_data
+{
+ public:
+  string keyword;
+  string description;
 };
 
 class room_data
