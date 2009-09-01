@@ -33,10 +33,10 @@
 */
 
 area_data        area;
-list<room_data>  room_list;
-list<npc_data>   npc_list;
-list<obj_data>   obj_list;
-list<reset_data> reset_list;
+list<room_data *>  room_list;
+list<npc_data *>   npc_list;
+list<obj_data *>   obj_list;
+list<reset_data *> reset_list;
 
 int main( int argc, char *argv[] )
 {
@@ -76,6 +76,8 @@ int main( int argc, char *argv[] )
 
  infile.close();
  outfile.close();
+
+ for_each(room_list.begin(),room_list.end(),DeleteObject());
 
  if( !area.flags_found.empty() )
   cout << "The following area flags were not converted: " << area.flags_found << endl;

@@ -38,6 +38,12 @@ void process_outfile ( ofstream &file, int typein, int typeout );
 int str2int          ( string &str );
 string int2str       ( int i );
 
+class DeleteObject
+{
+ public:
+  template <typename T> void operator() (const T* ptr) const { delete ptr; };
+};
+
 class area_data
 {
  public:
@@ -87,6 +93,8 @@ class extra_data
 class room_data
 {
  public:
+  room_data()  { for( short i = 0; i < MAX_EXIT; i++ ) exit[i] = NULL; };
+  ~room_data() { for( short i = 0; i < MAX_EXIT; i++ ) if(exit[i]) delete exit[i]; };
   string name;
   string description;
 

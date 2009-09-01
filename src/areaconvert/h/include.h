@@ -4,6 +4,7 @@
  * Support provided at www.ackmud.net
  */
 
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 #include <istream>
