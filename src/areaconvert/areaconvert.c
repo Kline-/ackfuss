@@ -196,6 +196,7 @@ void shutdown_cleanup( void )
   cout << "Area converted successfully." << endl;
 
  for_each(room_list.begin(),room_list.end(),DeleteObject());
+ for_each(npc_list.begin(),npc_list.end(),DeleteObject());
 
  return;
 }

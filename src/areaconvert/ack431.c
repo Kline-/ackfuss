@@ -24,6 +24,8 @@ void read_ack431( ifstream &file )
     read_ack431_area(file);
    else if( tmp == "#ROOMS" )
     read_ack431_room(file);
+   else if( tmp == "#MOBILES" )
+    read_ack431_npc(file);
   }
  }
 
@@ -124,6 +126,73 @@ void read_ack431_room( ifstream &file )
   }
 
   room_list.push_back(room);
+ }
+
+ return;
+}
+
+void read_ack431_npc( ifstream &file )
+{
+ string tmp;
+ npc_data *npc;
+ int vnum = 0;
+ char delim = '~';
+ char c;
+
+ while( !file.eof() )
+ {
+  tmp.clear();
+  while( (c = file.get()) != '#' );
+
+  if( c == '#' )
+   getline(file,tmp); vnum = str2int(tmp);
+
+  if( vnum == 0 ) /* reached the end */
+   break;
+
+  npc = new npc_data;
+  npc->vnum = vnum;
+  getline(file,npc->player_name,delim);
+  getline(file,npc->short_descr,delim);
+  getline(file,npc->long_descr,delim);
+  getline(file,npc->description,delim);
+  getline(file,tmp,' '); npc->int_act_flags_in = str2int(tmp);
+  getline(file,tmp,' '); npc->affected_by = str2int(tmp);
+  getline(file,tmp,' '); npc->alignment = str2int(tmp);
+  file.ignore(1); /* S */
+  getline(file,tmp,' '); npc->level = str2int(tmp);
+  getline(file,tmp); npc->sex = str2int(tmp);
+  getline(file,tmp,' '); npc->ac_mod = str2int(tmp);
+  getline(file,tmp,' '); npc->hr_mod = str2int(tmp);
+  getline(file,tmp); npc->dr_mod = str2int(tmp);
+  c = file.get(); /* ! */
+  if( c == '!' )
+  {
+   getline(file,tmp,' '); npc->pclass = str2int(tmp);
+   getline(file,tmp,' '); npc->clan = str2int(tmp);
+   getline(file,tmp,' '); npc->race = str2int(tmp);
+   getline(file,tmp,' '); npc->position = str2int(tmp);
+   getline(file,tmp,' '); npc->skills = str2int(tmp);
+   getline(file,tmp,' '); npc->cast = str2int(tmp);
+   getline(file,tmp); npc->def = str2int(tmp);
+  }
+  else
+   file.unget();
+  c = file.get(); /* | */
+  if( c == '|' )
+  {
+   getline(file,tmp,' '); npc->strong_magic = str2int(tmp);
+   getline(file,tmp,' '); npc->weak_magic = str2int(tmp);
+   getline(file,tmp,' '); npc->race_mod = str2int(tmp);
+   getline(file,tmp,' '); npc->power_skill = str2int(tmp);
+   getline(file,tmp,' '); npc->power_cast = str2int(tmp);
+   getline(file,tmp,' '); npc->resist = str2int(tmp);
+   getline(file,tmp); npc->suscept = str2int(tmp);
+  }
+  else
+   file.unget();
+
+  npc_list.push_back(npc);
  }
 
  return;

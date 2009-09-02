@@ -111,6 +111,35 @@ class room_data
 class npc_data
 {
  public:
+  string player_name;
+  string short_descr;
+  string long_descr;
+  string description;
+
+  bitset<MAX_BITSET> bitset_act_flags_out;
+  int affected_by;
+  int alignment;
+  int level;
+  int sex;
+  int ac_mod;
+  int hr_mod;
+  int dr_mod;
+  int pclass;
+  int clan;
+  int position;
+  int race;
+  int skills;
+  int cast;
+  int def;
+  int strong_magic;
+  int weak_magic;
+  int race_mod;
+  int power_skill;
+  int power_cast;
+  int resist;
+  int suscept;
+  int int_act_flags_in;
+  int vnum;
 };
 
 class obj_data

@@ -9,6 +9,7 @@
 void read_ack431      ( ifstream &file );
 void read_ack431_area ( ifstream &file );
 void read_ack431_room ( ifstream &file );
+void read_ack431_npc  ( ifstream &file );
 
 #define ACK431_AFLAG_NONE           0
 #define ACK431_AFLAG_PAYAREA        1

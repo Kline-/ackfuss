@@ -11,6 +11,7 @@ void write_ackfuss( ofstream &file, int type )
 {
  write_ackfuss_area(file,type);
  write_ackfuss_room(file,type);
+ write_ackfuss_npc(file,type);
 
  file << "#$" << endl; /* the end */
 
@@ -95,6 +96,47 @@ void write_ackfuss_room( ofstream &file, int type )
    file << "Keyword  " << extra->keyword << delim << endl;
    file << "End" << endl;
   }
+ }
+
+ return;
+}
+
+void write_ackfuss_npc( ofstream &file, int type )
+{
+ char delim = '~';
+ list<npc_data *>::iterator nt;
+ npc_data *npc;
+
+ for( nt = npc_list.begin(); nt != npc_list.end(); nt++ )
+ {
+  npc = *nt;
+  file << "#MOBILE" << endl;
+  file << "Vnum      " << npc->vnum << endl;
+  file << "AcMod     " << npc->ac_mod << endl;
+  file << "Act EOL" << endl;
+  file << "Affected  " << 0 << endl;
+  file << "Alignment " << npc->alignment << endl;
+  file << "Cast      " << npc->cast << endl;
+  file << "Clan      " << npc->clan << endl;
+  file << "Class     " << npc->pclass << endl;
+  file << "Def       " << npc->def << endl;
+  file << "Desc      " << npc->description << delim << endl;
+  file << "DrMod     " << npc->dr_mod << endl;
+  file << "HrMod     " << npc->hr_mod << endl;
+  file << "Level     " << npc->level << endl;
+  file << "LongDesc  " << npc->long_descr << delim << endl;
+  file << "PlrName   " << npc->player_name << delim << endl;
+  file << "Position  " << npc->position << endl;
+  file << "Race      " << npc->race << endl;
+  file << "RaceMods  " << npc->race_mod << endl;
+  file << "Resist    " << npc->resist << endl;
+  file << "Sex       " << npc->sex << endl;
+  file << "ShortDesc " << npc->short_descr << delim << endl;
+  file << "Skills    " << npc->skills << endl;
+  file << "SMagic    " << npc->strong_magic << endl;
+  file << "Suscept   " << npc->suscept << endl;
+  file << "WMagic    " << npc->weak_magic << endl;
+  file << "End" << endl;
  }
 
  return;

@@ -14,7 +14,7 @@ void flag_handler( int typein, int typeout )
   case TYPE_ACK431:
    switch( typeout )
    {
-    case TYPE_ACKFUSS: rflag_ack431_ackfuss(); break;
+    case TYPE_ACKFUSS: rflag_ack431_ackfuss(); nflag_ack431_ackfuss(); break;
    }
    break;
  }
@@ -86,6 +86,19 @@ void rflag_ack431_ackfuss( void )
     if( I_BIT(room->exit[i]->int_flags_in,ACK431_EXFLAG_NODETECT) )   room->exit[i]->bitset_flags_out.flip(ACKFUSS_EXFLAG_NODETECT);
    }
   }
+ }
+
+ return;
+}
+
+void nflag_ack431_ackfuss( void )
+{
+ list<npc_data *>::iterator nt;
+ npc_data *npc;
+
+ for( nt = npc_list.begin(); nt != npc_list.end(); nt++ )
+ {
+  npc = *nt;
  }
 
  return;
