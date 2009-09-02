@@ -109,40 +109,6 @@ void cleanup_outfile( string filename )
  return;
 }
 
-void flag_handler( int typein, int typeout )
-{
- switch( typein )
- {
-  case TYPE_ACK431:
-   switch( typeout )
-   {
-    case TYPE_ACKFUSS:
-     if( I_BIT(area.int_flags_in,ACK431_AFLAG_BUILDING) )
-      { area.bitset_flags_out.flip(ACKFUSS_AFLAG_BUILDING); clear_area_flag("building"); }
-     if( I_BIT(area.int_flags_in,ACK431_AFLAG_NO_ROOM_AFF) )
-      { area.bitset_flags_out.flip(ACKFUSS_AFLAG_NO_ROOM_AFF); clear_area_flag("no_room_affs"); }
-     if( I_BIT(area.int_flags_in,ACK431_AFLAG_PAYAREA) )
-      { area.bitset_flags_out.flip(ACKFUSS_AFLAG_PAYAREA); clear_area_flag("pay_area"); }
-     if( I_BIT(area.int_flags_in,ACK431_AFLAG_NOSHOW) )
-      { area.bitset_flags_out.flip(ACKFUSS_AFLAG_NOSHOW); clear_area_flag("no_show");}
-     if( I_BIT(area.int_flags_in,ACK431_AFLAG_TELEPORT) )
-      { area.bitset_flags_out.flip(ACKFUSS_AFLAG_TELEPORT); clear_area_flag("teleport");}
-     break;
-   }
-   break;
- }
- return;
-}
-
-void clear_area_flag( string name )
-{
- size_t first, last;
-
- first = area.flags_found.find(name);
- last = first + name.length() + 1;
- area.flags_found.erase(first,last);
-}
-
 bool infile_init( string filename, ifstream &file )
 {
  file.open(filename.c_str(),ios::in);
@@ -174,7 +140,7 @@ bool typein_init( string name, int &type )
  {
   if( name == "ack431" )
    type = TYPE_ACK431;
-  else
+  if( type == TYPE_NONE )
   {
    cout << "Unknown input type [" << name << "]. Aborting." << endl;
    return false;
@@ -192,7 +158,7 @@ bool typeout_init( string name, int &type )
  {
   if( name == "ackfuss" )
    type = TYPE_ACKFUSS;
-  else
+  if( type == TYPE_NONE )
   {
    cout << "Unknown output type [" << name << "]. Aborting." << endl;
    return false;

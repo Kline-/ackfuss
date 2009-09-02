@@ -7,6 +7,7 @@
 #include "include.h"
 #include "ack431.h"
 #include "ackfuss.h"
+#include "flags.h"
 
 #define VERS "AreaConvert 1.0"
 #define SPACER "--------------------------------------------------"
@@ -24,8 +25,6 @@
 
 void display_help     ( void );
 void cleanup_outfile  ( string filename );
-void flag_handler     ( int typein, int typeout );
-void clear_area_flag  ( string name );
 
 bool infile_init      ( string filename, ifstream &file );
 bool outfile_init     ( string filename, ofstream &file );
@@ -99,6 +98,7 @@ class room_data
   string name;
   string description;
 
+  list<extra_data *> extra_list;
   bitset<MAX_BITSET> bitset_flags_in;
   bitset<MAX_BITSET> bitset_flags_out;
   int vnum;

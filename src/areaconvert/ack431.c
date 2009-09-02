@@ -110,7 +110,7 @@ void read_ack431_room( ifstream &file )
     room->exit[str2int(tmp)] = exit;
     getline(file,exit->description,delim);
     getline(file,exit->keyword,delim);
-    getline(file,tmp,' '); /* locks */
+    getline(file,tmp,' '); exit->int_flags_in = str2int(tmp);
     getline(file,tmp,' '); exit->key = str2int(tmp);
     getline(file,tmp); exit->vnum = str2int(tmp);
    }
@@ -119,6 +119,7 @@ void read_ack431_room( ifstream &file )
     extra_data *extra = new extra_data;
     getline(file,extra->keyword,delim);
     getline(file,extra->description,delim);
+    room->extra_list.push_back(extra);
    }
   }
 
