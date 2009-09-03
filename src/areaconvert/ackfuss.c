@@ -106,6 +106,7 @@ void write_ackfuss_npc( ofstream &file, int type )
  char delim = '~';
  list<npc_data *>::iterator nt;
  npc_data *npc;
+ int x = 0;
 
  for( nt = npc_list.begin(); nt != npc_list.end(); nt++ )
  {
@@ -113,7 +114,11 @@ void write_ackfuss_npc( ofstream &file, int type )
   file << "#MOBILE" << endl;
   file << "Vnum      " << npc->vnum << endl;
   file << "AcMod     " << npc->ac_mod << endl;
-  file << "Act EOL" << endl;
+  file << "Act       ";
+  for( x = 0; x < MAX_BITSET; x++ )
+   if( npc->bitset_act_flags_out.test(x) )
+    file << x << " ";
+  file << "EOL" << endl;
   file << "Affected  " << 0 << endl;
   file << "Alignment " << npc->alignment << endl;
   file << "Cast      " << npc->cast << endl;

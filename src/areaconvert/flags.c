@@ -14,7 +14,7 @@ void flag_handler( int typein, int typeout )
   case TYPE_ACK431:
    switch( typeout )
    {
-    case TYPE_ACKFUSS: rflag_ack431_ackfuss(); nflag_ack431_ackfuss(); break;
+    case TYPE_ACKFUSS: flags_ack431_ackfuss(); break;
    }
    break;
  }
@@ -31,12 +31,16 @@ void clear_area_flag( string name )
  area.flags_found.erase(first,last);
 }
 
-void rflag_ack431_ackfuss( void )
+void flags_ack431_ackfuss( void )
 {
- list<room_data *>::iterator rt;
- room_data *room;
- int i = 0;
+ aflag_ack431_ackfuss();
+ rflag_ack431_ackfuss();
+ nflag_ack431_ackfuss();
+ return;
+}
 
+void aflag_ack431_ackfuss( void )
+{
  if( I_BIT(area.int_flags_in,ACK431_AFLAG_BUILDING) )
   { area.bitset_flags_out.flip(ACKFUSS_AFLAG_BUILDING); clear_area_flag("building"); }
  if( I_BIT(area.int_flags_in,ACK431_AFLAG_NO_ROOM_AFF) )
@@ -47,6 +51,15 @@ void rflag_ack431_ackfuss( void )
   { area.bitset_flags_out.flip(ACKFUSS_AFLAG_NOSHOW); clear_area_flag("no_show"); }
  if( I_BIT(area.int_flags_in,ACK431_AFLAG_TELEPORT) )
   { area.bitset_flags_out.flip(ACKFUSS_AFLAG_TELEPORT); clear_area_flag("teleport"); }
+
+ return;
+}
+
+void rflag_ack431_ackfuss( void )
+{
+ list<room_data *>::iterator rt;
+ room_data *room;
+ int i = 0;
 
  for( rt = room_list.begin(); rt != room_list.end(); rt++ )
  {
@@ -99,6 +112,35 @@ void nflag_ack431_ackfuss( void )
  for( nt = npc_list.begin(); nt != npc_list.end(); nt++ )
  {
   npc = *nt;
+  /* if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_IS_NPC) ) -- do something? this is an automatic bool in ackfuss */
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_SENTINEL) )    npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_SENTINEL);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_SCAVENGER) )   npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_SCAVENGER);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_REMEMBER) )    npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_REMEMBER);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_NO_FLEE) )     npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_NO_FLEE);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_AGGRESSIVE) )  npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_AGGRESSIVE);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_STAY_AREA) )   npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_STAY_AREA);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_WIMPY) )       npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_WIMPY);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_PET) )         npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_PET);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_TRAIN) )       npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_TRAIN);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_PRACTICE) )    npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_PRACTICE);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_MERCENARY) )   npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_MERCENARY);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_HEAL) )        npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_HEAL);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_ADAPT) )       npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_ADAPT);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_UNDEAD) )      npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_UNDEAD);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_BANKER) )      npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_BANKER);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_NO_BODY) )     npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_NO_BODY);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_HUNTER) )      npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_HUNTER);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_NOMIND) )      npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_NO_MIND);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_POSTMAN) )     npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_POSTMAN);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_REWIELD) )     npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_RE_WIELD);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_RE_EQUIP) )    npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_RE_EQUIP);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_INTELLIGENT) ) npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_INTELLIGENT);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_VAMPIRE) )     npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_VAMPIRE);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_BREEDER) )     npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_BREEDER);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_SOLO) )        npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_SOLO);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_WEREWOLF) )    npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_WEREWOLF);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_MOUNT) )       npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_MOUNT);
+  if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_NOBLOOD) )     npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_NO_BLOOD);
  }
 
  return;

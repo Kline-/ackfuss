@@ -18,6 +18,7 @@
 
 #define MAX_BITSET 256
 #define MAX_EXIT   6
+#define MAX_VALUE  4
 
 #define I_BIT(var,bit) (var & bit)
 #define S_BIT(var,bit) (var |= bit)
@@ -145,6 +146,19 @@ class npc_data
 class obj_data
 {
  public:
+  string name;
+  string short_descr;
+  string long_descr;
+
+  int type;
+  int int_extra_flags_in;
+  int wear_flags;
+  int item_apply;
+  int value[MAX_VALUE];
+  int weight;
+  int cost;
+  int level;
+  int vnum;
 };
 
 class reset_data

@@ -8,5 +8,8 @@
 
 void flag_handler         ( int typein, int typeout );
 void clear_area_flag      ( string name );
+
+void flags_ack431_ackfuss ( void );
+void aflag_ack431_ackfuss ( void );
 void rflag_ack431_ackfuss ( void );
 void nflag_ack431_ackfuss ( void );

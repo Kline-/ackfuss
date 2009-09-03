@@ -26,6 +26,8 @@ void read_ack431( ifstream &file )
     read_ack431_room(file);
    else if( tmp == "#MOBILES" )
     read_ack431_npc(file);
+   else if( tmp == "#OBJECTS" )
+    read_ack431_obj(file);
   }
  }
 
@@ -193,6 +195,34 @@ void read_ack431_npc( ifstream &file )
    file.unget();
 
   npc_list.push_back(npc);
+ }
+
+ return;
+}
+
+void read_ack431_obj( ifstream &file )
+{
+ string tmp;
+ obj_data *obj;
+ int vnum = 0;
+ char delim = '~';
+ char c;
+
+ while( !file.eof() )
+ {
+  tmp.clear();
+  while( (c = file.get()) != '#' );
+
+  if( c == '#' )
+   getline(file,tmp); vnum = str2int(tmp);
+
+  if( vnum == 0 ) /* reached the end */
+   break;
+
+  obj = new obj_data;
+  obj->vnum = vnum;
+
+  obj_list.push_back(obj);
  }
 
  return;
