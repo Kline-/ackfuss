@@ -12,6 +12,7 @@ void write_ackfuss( ofstream &file, int type )
  write_ackfuss_area(file,type);
  write_ackfuss_room(file,type);
  write_ackfuss_npc(file,type);
+ write_ackfuss_obj(file,type);
 
  file << "#$" << endl; /* the end */
 
@@ -141,6 +142,41 @@ void write_ackfuss_npc( ofstream &file, int type )
   file << "SMagic    " << npc->strong_magic << endl;
   file << "Suscept   " << npc->suscept << endl;
   file << "WMagic    " << npc->weak_magic << endl;
+  file << "End" << endl;
+ }
+
+ return;
+}
+
+void write_ackfuss_obj( ofstream &file, int type )
+{
+ char delim = '~';
+ list<obj_data *>::iterator ot;
+ obj_data *obj;
+ int x = 0;
+
+ for( ot = obj_list.begin(); ot != obj_list.end(); ot++ )
+ {
+  obj = *ot;
+  file << "#OBJECT" << endl;
+  file << "Vnum       " << obj->vnum << endl;
+  file << "ExtraFlags ";
+  for( x = 0; x < MAX_BITSET; x++ )
+   if( obj->bitset_extra_flags_out.test(x) )
+    file << x << " ";
+  file << "EOL" << endl;
+  file << "ItemApply  " << obj->item_apply << endl;
+  file << "Level      " << obj->level << endl;
+  file << "LongDesc   " << obj->long_descr << delim << endl;
+  file << "Name       " << obj->name << delim << endl;
+  file << "ShortDesc  " << obj->short_descr << delim << endl;
+  file << "Type       " << obj->type << endl;
+  file << "Values     ";
+  for( x = 0; x < MAX_OBJ_VALUE; x++ )
+   file << x << " ";
+  file << endl;
+  file << "WearFlags EOL" << endl;
+  file << "Weight     " << obj->weight << endl;
   file << "End" << endl;
  }
 

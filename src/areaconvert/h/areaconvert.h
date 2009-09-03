@@ -16,9 +16,9 @@
 #define TYPE_ACK431  0
 #define TYPE_ACKFUSS 1
 
-#define MAX_BITSET 256
-#define MAX_EXIT   6
-#define MAX_VALUE  4
+#define MAX_BITSET    256
+#define MAX_EXIT      6
+#define MAX_OBJ_VALUE 10
 
 #define I_BIT(var,bit) (var & bit)
 #define S_BIT(var,bit) (var |= bit)
@@ -150,13 +150,14 @@ class obj_data
   string short_descr;
   string long_descr;
 
+  bitset<MAX_BITSET> bitset_extra_flags_out;
+  bitset<MAX_BITSET> bitset_wear_flags_out;
   int type;
   int int_extra_flags_in;
-  int wear_flags;
+  int int_wear_flags_in;
   int item_apply;
-  int value[MAX_VALUE];
+  int value[MAX_OBJ_VALUE];
   int weight;
-  int cost;
   int level;
   int vnum;
 };

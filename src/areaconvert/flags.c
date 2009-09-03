@@ -36,6 +36,7 @@ void flags_ack431_ackfuss( void )
  aflag_ack431_ackfuss();
  rflag_ack431_ackfuss();
  nflag_ack431_ackfuss();
+ oflag_ack431_ackfuss();
  return;
 }
 
@@ -141,6 +142,46 @@ void nflag_ack431_ackfuss( void )
   if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_WEREWOLF) )    npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_WEREWOLF);
   if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_MOUNT) )       npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_MOUNT);
   if( I_BIT(npc->int_act_flags_in,ACK431_NFLAG_NOBLOOD) )     npc->bitset_act_flags_out.flip(ACKFUSS_NFLAG_NO_BLOOD);
+ }
+
+ return;
+}
+
+void oflag_ack431_ackfuss( void )
+{
+ list<obj_data *>::iterator ot;
+ obj_data *obj;
+
+ for( ot = obj_list.begin(); ot != obj_list.end(); ot++ )
+ {
+  obj = *ot;
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_GLOW) )         obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_GLOW);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_HUM) )          obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_HUM);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_NODISARM) )     obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_NO_DISARM);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_LOCK) )         obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_LOCK);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_EVIL) )         obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_EVIL);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_INVIS) )        obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_INVIS);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_MAGIC) )        obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_MAGIC);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_NODROP) )       obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_NO_DROP);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_BLESS) )        obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_BLESS);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_ANTI_GOOD) )    obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_ANTI_GOOD);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_ANTI_EVIL) )    obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_ANTI_EVIL);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_ANTI_NEUTRAL) ) obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_ANTI_NEUTRAL);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_NOREMOVE) )     obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_NO_REMOVE);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_INVENTORY) )    obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_INVENTORY);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_NOSAVE) )       obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_NO_SAVE);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_CLAN_EQ) )      obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_CLAN_EQ);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_TRIG_DESTROY) ) obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_TRIG_DESTROY);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_NO_AUCTION) )   obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_NO_AUCTION);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_REMORT) )       obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_REMORT);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_ADEPT) )        obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_ADEPT);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_RARE) )         obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_RARE);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_VAMP) )         obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_VAMP);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_NOLOOT) )       obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_NO_LOOT);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_NOSAC) )        obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_NO_SAC);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_UNIQUE) )       obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_UNIQUE);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_LIFESTEALER) )  obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_LIFESTEALER);
+  if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_SILVER) )       obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_SILVER);
  }
 
  return;

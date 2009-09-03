@@ -13,3 +13,4 @@ void flags_ack431_ackfuss ( void );
 void aflag_ack431_ackfuss ( void );
 void rflag_ack431_ackfuss ( void );
 void nflag_ack431_ackfuss ( void );
+void oflag_ack431_ackfuss ( void );

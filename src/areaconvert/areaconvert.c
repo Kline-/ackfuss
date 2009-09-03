@@ -197,6 +197,7 @@ void shutdown_cleanup( void )
 
  for_each(room_list.begin(),room_list.end(),DeleteObject());
  for_each(npc_list.begin(),npc_list.end(),DeleteObject());
+ for_each(obj_list.begin(),obj_list.end(),DeleteObject());
 
  return;
 }

@@ -205,6 +205,7 @@ void read_ack431_obj( ifstream &file )
  string tmp;
  obj_data *obj;
  int vnum = 0;
+ int i = 0;
  char delim = '~';
  char c;
 
@@ -221,6 +222,38 @@ void read_ack431_obj( ifstream &file )
 
   obj = new obj_data;
   obj->vnum = vnum;
+  getline(file,obj->name,delim);
+  getline(file,obj->short_descr,delim);
+  getline(file,obj->long_descr,delim);
+  getline(file,tmp,' '); obj->type = str2int(tmp);
+  getline(file,tmp,' '); obj->int_extra_flags_in = str2int(tmp);
+  getline(file,tmp,' '); obj->int_wear_flags_in = str2int(tmp);
+  getline(file,tmp); obj->item_apply = str2int(tmp);
+  for( i = 0; i < MAX_OBJ_VALUE-1; i++ )
+   getline(file,tmp,' '); obj->value[i] = str2int(tmp);
+  getline(file,tmp); obj->value[MAX_OBJ_VALUE-1] = str2int(tmp);
+  getline(file,tmp); obj->weight = str2int(tmp);
+
+  while( !file.eof() )
+  {
+   c = file.get();
+
+   if( c == 'A' ) /* affect */
+   {
+   }
+   else if( c == 'E' ) /* extra descr */
+   {
+   }
+   else if( c == 'L' ) /* item level */
+   {
+    getline(file,tmp); obj->level = str2int(tmp);
+   }
+   else /* nothing interesting found */
+   {
+    file.unget();
+    break;
+   }
+  }
 
   obj_list.push_back(obj);
  }
