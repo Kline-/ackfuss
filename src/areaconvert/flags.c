@@ -182,6 +182,31 @@ void oflag_ack431_ackfuss( void )
   if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_UNIQUE) )       obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_UNIQUE);
   if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_LIFESTEALER) )  obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_LIFESTEALER);
   if( I_BIT(obj->int_extra_flags_in,ACK431_OFLAG_SILVER) )       obj->bitset_extra_flags_out.flip(ACKFUSS_OFLAG_SILVER);
+
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_HALO) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_HALO);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_AURA) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_AURA);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_HORNS) )          obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_HORNS);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_HEAD) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_HEAD);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_FACE) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_FACE);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_BEAK) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_BEAK);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_EAR) )            obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_EAR);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_NECK) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_NECK);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_WINGS) )          obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_WINGS);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_SHOULDERS) )      obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_SHOULDERS);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_ARMS) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_ARMS);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_WRIST) )          obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_WRIST);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_HANDS) )          obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_HANDS);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_FINGER) )         obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_FINGER);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_CLAWS) )          obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_CLAWS);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_HOLD_HAND) )      obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_HOLD_HAND);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_ABOUT) )          obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_ABOUT);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_WAIST) )          obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_WAIST);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_BODY) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_BODY);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_TAIL) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_TAIL);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_LEGS) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_LEGS);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_FEET) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_FEET);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_HOOVES) )         obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_HOOVES);
+  if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_TAKE) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_TAKE);
  }
 
  return;

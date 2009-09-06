@@ -175,7 +175,11 @@ void write_ackfuss_obj( ofstream &file, int type )
   for( x = 0; x < MAX_OBJ_VALUE; x++ )
    file << x << " ";
   file << endl;
-  file << "WearFlags EOL" << endl;
+  file << "WearFlags  ";
+  for( x = 0; x < MAX_BITSET; x++ )
+   if( obj->bitset_wear_flags_out.test(x) )
+    file << x << " ";
+  file << "EOL" << endl;
   file << "Weight     " << obj->weight << endl;
   file << "End" << endl;
  }

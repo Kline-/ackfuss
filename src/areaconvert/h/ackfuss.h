@@ -164,3 +164,30 @@ void write_ackfuss_obj  ( ofstream &file, int type );
 #define ACKFUSS_OFLAG_SILVER       27
 #define ACKFUSS_OFLAG_NO_QUEST     28
 #define ACKFUSS_OFLAG_NO_TAKE      29
+
+#define ACKFUSS_WEAR_NONE          0
+#define ACKFUSS_WEAR_HALO          1
+#define ACKFUSS_WEAR_AURA          2
+#define ACKFUSS_WEAR_HORNS         3
+#define ACKFUSS_WEAR_HEAD          4
+#define ACKFUSS_WEAR_FACE          5
+#define ACKFUSS_WEAR_BEAK          6
+#define ACKFUSS_WEAR_EAR           7
+#define ACKFUSS_WEAR_NECK          8
+#define ACKFUSS_WEAR_WINGS         9
+#define ACKFUSS_WEAR_SHOULDERS     10
+#define ACKFUSS_WEAR_ARMS          11
+#define ACKFUSS_WEAR_WRIST         12
+#define ACKFUSS_WEAR_HANDS         13
+#define ACKFUSS_WEAR_FINGER        14
+#define ACKFUSS_WEAR_CLAWS         15
+#define ACKFUSS_WEAR_HOLD_HAND     16
+#define ACKFUSS_WEAR_ABOUT         17
+#define ACKFUSS_WEAR_WAIST         18
+#define ACKFUSS_WEAR_BODY          19
+#define ACKFUSS_WEAR_TAIL          20
+#define ACKFUSS_WEAR_LEGS          21
+#define ACKFUSS_WEAR_FEET          22
+#define ACKFUSS_WEAR_HOOVES        23
+#define ACKFUSS_WEAR_TAKE          24
+
