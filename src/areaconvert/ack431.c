@@ -222,6 +222,7 @@ void read_ack431_obj( ifstream &file )
 
   obj = new obj_data;
   obj->vnum = vnum;
+  obj->level = 1; /* Level may or may not be provided in some ACK431 area files */
   getline(file,obj->name,delim);
   getline(file,obj->short_descr,delim);
   getline(file,obj->long_descr,delim);
@@ -240,6 +241,10 @@ void read_ack431_obj( ifstream &file )
 
    if( c == 'A' ) /* affect */
    {
+    affect_data *aff = new affect_data;
+    getline(file,tmp,' '); aff->int_location_in = str2int(tmp);
+    getline(file,tmp); aff->modifier = str2int(tmp);
+    obj->apply_list.push_back(aff);
    }
    else if( c == 'E' ) /* extra descr */
    {

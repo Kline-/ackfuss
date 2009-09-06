@@ -150,7 +150,9 @@ void nflag_ack431_ackfuss( void )
 void oflag_ack431_ackfuss( void )
 {
  list<obj_data *>::iterator ot;
+ list<affect_data *>::iterator at;
  obj_data *obj;
+ affect_data *aff;
 
  for( ot = obj_list.begin(); ot != obj_list.end(); ot++ )
  {
@@ -207,6 +209,35 @@ void oflag_ack431_ackfuss( void )
   if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_FEET) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_FEET);
   if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_HOOVES) )         obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_HOOVES);
   if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_TAKE) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_TAKE);
+
+  for( at = obj->apply_list.begin(); at != obj->apply_list.end(); at++ )
+  {
+   aff = *at;
+   if( aff->int_location_in == ACK431_APPLY_STR )                aff->int_location_out = ACKFUSS_APPLY_STR;
+   if( aff->int_location_in == ACK431_APPLY_DEX )                aff->int_location_out = ACKFUSS_APPLY_DEX;
+   if( aff->int_location_in == ACK431_APPLY_INT )                aff->int_location_out = ACKFUSS_APPLY_INT;
+   if( aff->int_location_in == ACK431_APPLY_WIS )                aff->int_location_out = ACKFUSS_APPLY_WIS;
+   if( aff->int_location_in == ACK431_APPLY_CON )                aff->int_location_out = ACKFUSS_APPLY_CON;
+   if( aff->int_location_in == ACK431_APPLY_SEX )                aff->int_location_out = ACKFUSS_APPLY_SEX;
+   if( aff->int_location_in == ACK431_APPLY_CLASS )              aff->int_location_out = ACKFUSS_APPLY_CLASS;
+   if( aff->int_location_in == ACK431_APPLY_LEVEL )              aff->int_location_out = ACKFUSS_APPLY_LEVEL;
+   if( aff->int_location_in == ACK431_APPLY_AGE )                aff->int_location_out = ACKFUSS_APPLY_AGE;
+   if( aff->int_location_in == ACK431_APPLY_HEIGHT )             aff->int_location_out = ACKFUSS_APPLY_HEIGHT;
+   if( aff->int_location_in == ACK431_APPLY_WEIGHT )             aff->int_location_out = ACKFUSS_APPLY_WEIGHT;
+   if( aff->int_location_in == ACK431_APPLY_MANA )               aff->int_location_out = ACKFUSS_APPLY_MANA;
+   if( aff->int_location_in == ACK431_APPLY_HIT )                aff->int_location_out = ACKFUSS_APPLY_HIT;
+   if( aff->int_location_in == ACK431_APPLY_MOVE )               aff->int_location_out = ACKFUSS_APPLY_MOVE;
+   /* Skip APPLY_GOLD, unused in AckFUSS */
+   if( aff->int_location_in == ACK431_APPLY_EXP )                aff->int_location_out = ACKFUSS_APPLY_EXP;
+   if( aff->int_location_in == ACK431_APPLY_AC )                 aff->int_location_out = ACKFUSS_APPLY_AC;
+   if( aff->int_location_in == ACK431_APPLY_HITROLL )            aff->int_location_out = ACKFUSS_APPLY_HITROLL;
+   if( aff->int_location_in == ACK431_APPLY_DAMROLL )            aff->int_location_out = ACKFUSS_APPLY_DAMROLL;
+   if( aff->int_location_in == ACK431_APPLY_SAVING_PARA )        aff->int_location_out = ACKFUSS_APPLY_SAVING_PARA;
+   if( aff->int_location_in == ACK431_APPLY_SAVING_ROD )         aff->int_location_out = ACKFUSS_APPLY_SAVING_ROD;
+   if( aff->int_location_in == ACK431_APPLY_SAVING_PETRI )       aff->int_location_out = ACKFUSS_APPLY_SAVING_PETRI;
+   if( aff->int_location_in == ACK431_APPLY_SAVING_BREATH )      aff->int_location_out = ACKFUSS_APPLY_SAVING_BREATH;
+   if( aff->int_location_in == ACK431_APPLY_SAVING_SPELL )       aff->int_location_out = ACKFUSS_APPLY_SAVING_SPELL;
+  }
  }
 
  return;

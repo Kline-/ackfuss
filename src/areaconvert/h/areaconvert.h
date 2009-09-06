@@ -45,6 +45,14 @@ class DeleteObject
   template <typename T> void operator() (const T* ptr) const { delete ptr; };
 };
 
+class affect_data
+{
+ public:
+  int int_location_in;
+  int int_location_out;
+  int modifier;
+};
+
 class area_data
 {
  public:
@@ -95,7 +103,7 @@ class room_data
 {
  public:
   room_data()  { for( short i = 0; i < MAX_EXIT; i++ ) exit[i] = NULL; };
-  ~room_data() { for( short i = 0; i < MAX_EXIT; i++ ) if(exit[i]) delete exit[i]; };
+  ~room_data() { for( short i = 0; i < MAX_EXIT; i++ ) if(exit[i]) delete exit[i]; for_each(extra_list.begin(),extra_list.end(),DeleteObject()); };
   string name;
   string description;
 
@@ -146,10 +154,12 @@ class npc_data
 class obj_data
 {
  public:
+  ~obj_data() { for_each(apply_list.begin(),apply_list.end(),DeleteObject()); };
   string name;
   string short_descr;
   string long_descr;
 
+  list<affect_data *> apply_list;
   bitset<MAX_BITSET> bitset_extra_flags_out;
   bitset<MAX_BITSET> bitset_wear_flags_out;
   int type;
