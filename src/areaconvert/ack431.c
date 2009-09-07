@@ -248,6 +248,10 @@ void read_ack431_obj( ifstream &file )
    }
    else if( c == 'E' ) /* extra descr */
    {
+    extra_data *extra = new extra_data;
+    getline(file,extra->keyword,delim);
+    getline(file,extra->description,delim);
+    obj->extra_list.push_back(extra);
    }
    else if( c == 'L' ) /* item level */
    {

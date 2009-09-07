@@ -154,12 +154,13 @@ class npc_data
 class obj_data
 {
  public:
-  ~obj_data() { for_each(apply_list.begin(),apply_list.end(),DeleteObject()); };
+  ~obj_data() { for_each(apply_list.begin(),apply_list.end(),DeleteObject()); for_each(extra_list.begin(),extra_list.end(),DeleteObject()); };
   string name;
   string short_descr;
   string long_descr;
 
   list<affect_data *> apply_list;
+  list<extra_data *> extra_list;
   bitset<MAX_BITSET> bitset_extra_flags_out;
   bitset<MAX_BITSET> bitset_wear_flags_out;
   int type;

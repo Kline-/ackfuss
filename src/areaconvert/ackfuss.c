@@ -153,8 +153,10 @@ void write_ackfuss_obj( ofstream &file, int type )
  char delim = '~';
  list<obj_data *>::iterator ot;
  list<affect_data *>::iterator at;
+ list<extra_data *>::iterator et;
  obj_data *obj;
  affect_data *aff;
+ extra_data *extra;
  int x = 0;
 
  for( ot = obj_list.begin(); ot != obj_list.end(); ot++ )
@@ -190,6 +192,14 @@ void write_ackfuss_obj( ofstream &file, int type )
    file << "#OAFFECT" << endl;
    file << "Location   " << aff->int_location_out << endl;
    file << "Modifier   " << aff->modifier << endl;
+   file << "End" << endl;
+  }
+  for( et = obj->extra_list.begin(); et != obj->extra_list.end(); et++ )
+  {
+   extra = *et;
+   file << "#OEXTRA" << endl;
+   file << "Desc       " << extra->description << delim << endl;
+   file << "Keyword    " << extra->keyword << delim << endl;
    file << "End" << endl;
   }
  }
