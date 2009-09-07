@@ -166,7 +166,8 @@ class obj_data
   int type;
   int int_extra_flags_in;
   int int_wear_flags_in;
-  int item_apply;
+  int int_item_apply_in;
+  int int_item_apply_out;
   int value[MAX_OBJ_VALUE];
   int weight;
   int level;

@@ -229,7 +229,7 @@ void read_ack431_obj( ifstream &file )
   getline(file,tmp,' '); obj->type = str2int(tmp);
   getline(file,tmp,' '); obj->int_extra_flags_in = str2int(tmp);
   getline(file,tmp,' '); obj->int_wear_flags_in = str2int(tmp);
-  getline(file,tmp); obj->item_apply = str2int(tmp);
+  getline(file,tmp); obj->int_item_apply_in = str2int(tmp);
   for( i = 0; i < MAX_OBJ_VALUE-1; i++ )
    getline(file,tmp,' '); obj->value[i] = str2int(tmp);
   getline(file,tmp); obj->value[MAX_OBJ_VALUE-1] = str2int(tmp);

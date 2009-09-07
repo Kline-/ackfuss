@@ -217,3 +217,22 @@ void write_ackfuss_obj  ( ofstream &file, int type );
 #define ACKFUSS_APPLY_SAVING_BREATH 23
 #define ACKFUSS_APPLY_SAVING_SPELL  24
 
+#define ACKFUSS_IAPPLY_NONE         0
+/* used to be NONE, as bit 1 -- stupid */
+#define ACKFUSS_IAPPLY_INFRA        2
+#define ACKFUSS_IAPPLY_INV          4
+#define ACKFUSS_IAPPLY_DET_INV      8
+#define ACKFUSS_IAPPLY_SANC         16
+#define ACKFUSS_IAPPLY_SNEAK        32
+#define ACKFUSS_IAPPLY_HIDE         64
+#define ACKFUSS_IAPPLY_PROT         128
+#define ACKFUSS_IAPPLY_ENHANCED     256
+#define ACKFUSS_IAPPLY_DET_MAG      512
+#define ACKFUSS_IAPPLY_DET_HID      1024
+#define ACKFUSS_IAPPLY_DET_EVIL     2048
+#define ACKFUSS_IAPPLY_PASS_DOOR    4096
+#define ACKFUSS_IAPPLY_DET_POISON   8192
+#define ACKFUSS_IAPPLY_FLY          16384
+#define ACKFUSS_IAPPLY_KNOW_ALIGN   32768
+#define ACKFUSS_IAPPLY_DET_UNDEAD   65536
+#define ACKFUSS_IAPPLY_HEATED       131072

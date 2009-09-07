@@ -162,3 +162,23 @@ void read_ack431_obj  ( ifstream &file );
 #define ACK431_APPLY_SAVING_PETRI   22
 #define ACK431_APPLY_SAVING_BREATH  23
 #define ACK431_APPLY_SAVING_SPELL   24
+
+#define ACK431_IAPPLY_NONE          0
+/* used to be NONE, as bit 1 -- stupid */
+#define ACK431_IAPPLY_INFRA         2
+#define ACK431_IAPPLY_INV           4
+#define ACK431_IAPPLY_DET_INV       8
+#define ACK431_IAPPLY_SANC          16
+#define ACK431_IAPPLY_SNEAK         32
+#define ACK431_IAPPLY_HIDE          64
+#define ACK431_IAPPLY_PROT          128
+#define ACK431_IAPPLY_ENHANCED      256
+#define ACK431_IAPPLY_DET_MAG       512
+#define ACK431_IAPPLY_DET_HID       1024
+#define ACK431_IAPPLY_DET_EVIL      2048
+#define ACK431_IAPPLY_PASS_DOOR     4096
+#define ACK431_IAPPLY_DET_POISON    8192
+#define ACK431_IAPPLY_FLY           16384
+#define ACK431_IAPPLY_KNOW_ALIGN    32768
+#define ACK431_IAPPLY_DET_UNDEAD    65536
+#define ACK431_IAPPLY_HEATED        131072

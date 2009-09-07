@@ -169,7 +169,7 @@ void write_ackfuss_obj( ofstream &file, int type )
    if( obj->bitset_extra_flags_out.test(x) )
     file << x << " ";
   file << "EOL" << endl;
-  file << "ItemApply  " << obj->item_apply << endl;
+  file << "ItemApply  " << obj->int_item_apply_out << endl;
   file << "Level      " << obj->level << endl;
   file << "LongDesc   " << obj->long_descr << delim << endl;
   file << "Name       " << obj->name << delim << endl;

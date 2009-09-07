@@ -210,6 +210,23 @@ void oflag_ack431_ackfuss( void )
   if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_HOOVES) )         obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_HOOVES);
   if( I_BIT(obj->int_wear_flags_in,ACK431_WEAR_TAKE) )           obj->bitset_wear_flags_out.flip(ACKFUSS_WEAR_TAKE);
 
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_INFRA) )        S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_INFRA);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_INV) )          S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_INV);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_DET_INV) )      S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_DET_INV);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_SANC) )         S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_SANC);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_HIDE) )         S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_HIDE);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_PROT) )         S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_PROT);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_ENHANCED) )     S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_ENHANCED);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_DET_MAG) )      S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_DET_MAG);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_DET_HID) )      S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_DET_HID);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_DET_EVIL) )     S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_DET_EVIL);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_PASS_DOOR) )    S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_PASS_DOOR);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_DET_POISON) )   S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_DET_POISON);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_FLY) )          S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_FLY);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_KNOW_ALIGN) )   S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_KNOW_ALIGN);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_DET_UNDEAD) )   S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_DET_UNDEAD);
+  if( I_BIT(obj->int_item_apply_in,ACK431_IAPPLY_HEATED) )       S_BIT(obj->int_item_apply_out,ACKFUSS_IAPPLY_HEATED);
+
   for( at = obj->apply_list.begin(); at != obj->apply_list.end(); at++ )
   {
    aff = *at;
