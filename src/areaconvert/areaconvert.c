@@ -36,6 +36,7 @@ area_data        area;
 list<room_data *>  room_list;
 list<npc_data *>   npc_list;
 list<obj_data *>   obj_list;
+list<shop_data *>  shop_list;
 list<reset_data *> reset_list;
 
 int main( int argc, char *argv[] )
@@ -198,6 +199,8 @@ void shutdown_cleanup( void )
  for_each(room_list.begin(),room_list.end(),DeleteObject());
  for_each(npc_list.begin(),npc_list.end(),DeleteObject());
  for_each(obj_list.begin(),obj_list.end(),DeleteObject());
+ for_each(shop_list.begin(),shop_list.end(),DeleteObject());
+ for_each(reset_list.begin(),reset_list.end(),DeleteObject());
 
  return;
 }

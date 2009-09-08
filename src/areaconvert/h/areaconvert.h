@@ -19,6 +19,7 @@
 #define MAX_BITSET    256
 #define MAX_EXIT      6
 #define MAX_OBJ_VALUE 10
+#define MAX_TRADE     5
 
 #define I_BIT(var,bit) (var & bit)
 #define S_BIT(var,bit) (var |= bit)
@@ -174,7 +175,18 @@ class obj_data
   int vnum;
 };
 
+class shop_data
+{
+ public:
+};
+
 class reset_data
 {
  public:
+  int owner;
+  int buy_type[MAX_TRADE];
+  int profit_buy;
+  int profit_sell;
+  int open_hour;
+  int close_hour;
 };

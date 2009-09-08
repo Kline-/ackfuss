@@ -206,3 +206,8 @@ void write_ackfuss_obj( ofstream &file, int type )
 
  return;
 }
+
+void write_ackfuss_shop( ofstream &file, int type )
+{
+ return;
+}

@@ -28,6 +28,8 @@ void read_ack431( ifstream &file )
     read_ack431_npc(file);
    else if( tmp == "#OBJECTS" )
     read_ack431_obj(file);
+   else if( tmp == "#SHOPS" )
+    read_ack431_shop(file);
   }
  }
 
@@ -267,5 +269,10 @@ void read_ack431_obj( ifstream &file )
   obj_list.push_back(obj);
  }
 
+ return;
+}
+
+void read_ack431_shop( ifstream &file )
+{
  return;
 }
