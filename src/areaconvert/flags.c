@@ -25,9 +25,8 @@ void flag_handler( int typein, int typeout )
 void clear_area_flag( string name )
 {
  size_t first, last;
-
  first = area.flags_found.find(name);
- last = first + name.length() + 1;
+ last = name.length() + 1;
  area.flags_found.erase(first,last);
 }
 
