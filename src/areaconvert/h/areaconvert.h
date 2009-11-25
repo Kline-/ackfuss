@@ -155,6 +155,7 @@ class npc_data
 class obj_data
 {
  public:
+  obj_data()  { int i = 0; int_item_apply_out = 0; for( i = 0; i < MAX_OBJ_VALUE; i++ ) value[i] = 0; };
   ~obj_data() { for_each(apply_list.begin(),apply_list.end(),DeleteObject()); for_each(extra_list.begin(),extra_list.end(),DeleteObject()); };
   string name;
   string short_descr;
@@ -178,6 +179,7 @@ class obj_data
 class shop_data
 {
  public:
+  shop_data() { int i = 0; for( i = 0; i < MAX_TRADE; i++ ) buy_type[i] = 0; }
   int buy_type[MAX_TRADE];
   int hour_close;
   int hour_open;
@@ -189,10 +191,4 @@ class shop_data
 class reset_data
 {
  public:
-  int owner;
-  int buy_type[MAX_TRADE];
-  int profit_buy;
-  int profit_sell;
-  int open_hour;
-  int close_hour;
 };
