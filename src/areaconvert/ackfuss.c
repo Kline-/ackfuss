@@ -13,6 +13,7 @@ void write_ackfuss( ofstream &file, int type )
  write_ackfuss_room(file,type);
  write_ackfuss_npc(file,type);
  write_ackfuss_obj(file,type);
+ write_ackfuss_shop(file,type);
 
  file << "#$" << endl; /* the end */
 
@@ -107,7 +108,7 @@ void write_ackfuss_npc( ofstream &file, int type )
  char delim = '~';
  list<npc_data *>::iterator nt;
  npc_data *npc;
- int x = 0;
+ int i = 0;
 
  for( nt = npc_list.begin(); nt != npc_list.end(); nt++ )
  {
@@ -116,9 +117,9 @@ void write_ackfuss_npc( ofstream &file, int type )
   file << "Vnum      " << npc->vnum << endl;
   file << "AcMod     " << npc->ac_mod << endl;
   file << "Act       ";
-  for( x = 0; x < MAX_BITSET; x++ )
-   if( npc->bitset_act_flags_out.test(x) )
-    file << x << " ";
+  for( i = 0; i < MAX_BITSET; i++ )
+   if( npc->bitset_act_flags_out.test(i) )
+    file << i << " ";
   file << "EOL" << endl;
   file << "Affected  " << 0 << endl;
   file << "Alignment " << npc->alignment << endl;
@@ -157,7 +158,7 @@ void write_ackfuss_obj( ofstream &file, int type )
  obj_data *obj;
  affect_data *aff;
  extra_data *extra;
- int x = 0;
+ int i = 0;
 
  for( ot = obj_list.begin(); ot != obj_list.end(); ot++ )
  {
@@ -165,9 +166,9 @@ void write_ackfuss_obj( ofstream &file, int type )
   file << "#OBJECT" << endl;
   file << "Vnum       " << obj->vnum << endl;
   file << "ExtraFlags ";
-  for( x = 0; x < MAX_BITSET; x++ )
-   if( obj->bitset_extra_flags_out.test(x) )
-    file << x << " ";
+  for( i = 0; i < MAX_BITSET; i++ )
+   if( obj->bitset_extra_flags_out.test(i) )
+    file << i << " ";
   file << "EOL" << endl;
   file << "ItemApply  " << obj->int_item_apply_out << endl;
   file << "Level      " << obj->level << endl;
@@ -176,13 +177,13 @@ void write_ackfuss_obj( ofstream &file, int type )
   file << "ShortDesc  " << obj->short_descr << delim << endl;
   file << "Type       " << obj->type << endl;
   file << "Values     ";
-  for( x = 0; x < MAX_OBJ_VALUE; x++ )
-   file << x << " ";
+  for( i = 0; i < MAX_OBJ_VALUE; i++ )
+   file << obj->value[i] << " ";
   file << endl;
   file << "WearFlags  ";
-  for( x = 0; x < MAX_BITSET; x++ )
-   if( obj->bitset_wear_flags_out.test(x) )
-    file << x << " ";
+  for( i = 0; i < MAX_BITSET; i++ )
+   if( obj->bitset_wear_flags_out.test(i) )
+    file << i << " ";
   file << "EOL" << endl;
   file << "Weight     " << obj->weight << endl;
   file << "End" << endl;
@@ -209,5 +210,25 @@ void write_ackfuss_obj( ofstream &file, int type )
 
 void write_ackfuss_shop( ofstream &file, int type )
 {
+ list<shop_data *>::iterator st;
+ shop_data *shop;
+ int i = 0;
+
+ for( st = shop_list.begin(); st != shop_list.end(); st++ )
+ {
+  shop = *st;
+  file << "#SHOP" << endl;
+  file << "Keeper     " << shop->keeper << endl;
+  file << "BuyType    ";
+  for( i = 0; i < MAX_TRADE; i++ )
+   file << shop->buy_type[i] << " ";
+  file << endl;
+  file << "HourClose  " << shop->hour_close << endl;
+  file << "HourOpen   " << shop->hour_open << endl;
+  file << "ProfBuy    " << shop->prof_buy << endl;
+  file << "ProfSell   " << shop->prof_sell << endl;
+  file << "End" << endl;
+ }
+
  return;
 }

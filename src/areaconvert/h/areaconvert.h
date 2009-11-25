@@ -178,6 +178,12 @@ class obj_data
 class shop_data
 {
  public:
+  int buy_type[MAX_TRADE];
+  int hour_close;
+  int hour_open;
+  int keeper;
+  int prof_buy;
+  int prof_sell;
 };
 
 class reset_data

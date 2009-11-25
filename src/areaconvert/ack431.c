@@ -274,5 +274,31 @@ void read_ack431_obj( ifstream &file )
 
 void read_ack431_shop( ifstream &file )
 {
+ string tmp;
+ shop_data *shop;
+ int vnum = 0;
+ int i = 0;
+
+ while( !file.eof() )
+ {
+  tmp.clear();
+
+  getline(file,tmp,' '); vnum = str2int(tmp);
+
+  if( vnum == 0 ) /* reached the end */
+   break;
+
+  shop = new shop_data;
+  shop->keeper = vnum;
+  for( i = 0; i < MAX_TRADE-1; i++ )
+   getline(file,tmp,' '); shop->buy_type[i] = str2int(tmp);
+  getline(file,tmp,' '); shop->prof_buy = str2int(tmp);
+  getline(file,tmp,' '); shop->prof_sell = str2int(tmp);
+  getline(file,tmp,' '); shop->hour_open = str2int(tmp);
+  getline(file,tmp); shop->hour_close = str2int(tmp);
+
+  shop_list.push_back(shop);
+ }
+
  return;
 }
