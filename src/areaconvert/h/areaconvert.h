@@ -191,4 +191,11 @@ class shop_data
 class reset_data
 {
  public:
+  string command;
+  string notes;
+
+  int arg1;
+  int arg2;
+  int arg3;
+  int count;
 };

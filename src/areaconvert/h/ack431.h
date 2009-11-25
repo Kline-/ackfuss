@@ -12,6 +12,7 @@ void read_ack431_room ( ifstream &file );
 void read_ack431_npc  ( ifstream &file );
 void read_ack431_obj  ( ifstream &file );
 void read_ack431_shop ( ifstream &file );
+void read_ack431_reset( ifstream &file );
 
 #define ACK431_AFLAG_NONE           0
 #define ACK431_AFLAG_PAYAREA        1

@@ -12,6 +12,7 @@ void write_ackfuss_room ( ofstream &file, int type );
 void write_ackfuss_npc  ( ofstream &file, int type );
 void write_ackfuss_obj  ( ofstream &file, int type );
 void write_ackfuss_shop ( ofstream &file, int type );
+void write_ackfuss_reset( ofstream &file, int type );
 
 #define ACKFUSS_AFLAG_NONE          0
 #define ACKFUSS_AFLAG_PAYAREA       1

@@ -17,6 +17,7 @@ void read_ack431( ifstream &file )
 
   if( tmp[0] == '#' )
   {
+
    if( tmp[1] == '$' )
     break;
 
@@ -30,6 +31,8 @@ void read_ack431( ifstream &file )
     read_ack431_obj(file);
    else if( tmp == "#SHOPS" )
     read_ack431_shop(file);
+   else if( tmp == "#RESETS" )
+    read_ack431_reset(file);
   }
  }
 
@@ -278,15 +281,17 @@ void read_ack431_shop( ifstream &file )
  shop_data *shop;
  int vnum = 0;
  int i = 0;
+ char c;
 
  while( !file.eof() )
  {
   tmp.clear();
 
-  getline(file,tmp,' '); vnum = str2int(tmp);
-
-  if( vnum == 0 ) /* reached the end */
-   break;
+  c = file.peek();
+  if( c == '0' )
+   { break; cout << "hit the end" << endl;} /* reached the end, written this way due to how shops save */
+  else
+   { getline(file,tmp,' '); vnum = str2int(tmp); }
 
   shop = new shop_data;
   shop->keeper = vnum;
@@ -298,6 +303,46 @@ void read_ack431_shop( ifstream &file )
   getline(file,tmp); shop->hour_close = str2int(tmp);
 
   shop_list.push_back(shop);
+ }
+
+ return;
+}
+
+void read_ack431_reset( ifstream &file )
+{
+ string tmp;
+ reset_data *reset;
+ char c;
+
+ while( !file.eof() )
+ {
+  tmp.clear();
+  c = file.get();
+  while( c == ' ' )
+   c = file.get();
+
+  if( c == 'S' ) /* reached the end */
+   break;
+
+  reset = new reset_data;
+  reset->command = c;
+cout << "command = " << reset->command << endl;
+c = file.peek();
+cout << "peek = " << c << endl;
+//  getline(file,tmp,' '); /* old 'ifflag', unused */
+file.ignore(3);
+c = file.peek();
+cout << "peek2 = " << c << endl;
+  getline(file,tmp,' '); reset->arg1 = str2int(tmp);
+cout << "arg1 = " << reset->arg1 << endl;
+  getline(file,tmp,' '); reset->arg2 = str2int(tmp);
+cout << "arg2 = " << reset->arg2 << endl;
+  getline(file,tmp,' '); reset->arg3 = ( c == 'G' || c == 'R' ) ? 0 : str2int(tmp);
+cout << "arg3 = " << reset->arg3 << endl;
+  getline(file,reset->notes);
+cout << "notes = " << reset->notes << endl;
+
+  reset_list.push_back(reset);
  }
 
  return;

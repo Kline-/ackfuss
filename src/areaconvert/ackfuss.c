@@ -14,6 +14,7 @@ void write_ackfuss( ofstream &file, int type )
  write_ackfuss_npc(file,type);
  write_ackfuss_obj(file,type);
  write_ackfuss_shop(file,type);
+ write_ackfuss_reset(file,type);
 
  file << "#$" << endl; /* the end */
 
@@ -229,6 +230,26 @@ void write_ackfuss_shop( ofstream &file, int type )
   file << "ProfSell   " << shop->prof_sell << endl;
   file << "End" << endl;
  }
+
+ return;
+}
+
+void write_ackfuss_reset( ofstream &file, int type )
+{
+ list<reset_data *>::iterator rt;
+ reset_data *reset;
+
+ file << "#RESETS" << endl;
+ for( rt = reset_list.begin(); rt != reset_list.end(); rt++ )
+ {
+  reset = *rt;
+  file << reset->command << " " << reset->arg1 << " " << reset->arg2 << " ";
+  if( reset->command.compare("G") || reset->command.compare("R") )
+   file << reset->notes << endl;
+  else
+   file << reset->arg3 << " " << reset->notes << endl;
+ }
+ file << "S" << endl;
 
  return;
 }
