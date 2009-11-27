@@ -109,5 +109,4 @@ DECLARE_DO_FUN(do_lua);
 DECLARE_DO_FUN(do_olua);
 DECLARE_DO_FUN(do_rlua);
 DECLARE_DO_FUN(do_ldebug);
-
 #undef P_

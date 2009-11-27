@@ -49,10 +49,10 @@ void send_telopts( DESCRIPTOR_DATA *d )
 int telopt_handler( DESCRIPTOR_DATA *d, char *src, int srclen, char *out )
 {
  int cnt = 0, skip = 0;
- char *pti, *pto;
+ unsigned char *pti, *pto;
 
- pti = src;
- pto = out;
+ pti = (unsigned char *)src;
+ pto = (unsigned char *)out;
 
  while( srclen > 0 )
  {
@@ -63,7 +63,7 @@ int telopt_handler( DESCRIPTOR_DATA *d, char *src, int srclen, char *out )
     {
      if( srclen >= telopt_table[cnt].size && !memcmp(pti,telopt_table[cnt].code,telopt_table[cnt].size) )
      {
-      skip = telopt_table[cnt].func(d,pti,srclen);
+      skip = telopt_table[cnt].func(d,(char *)pti,srclen);
       break;
      }
     }
