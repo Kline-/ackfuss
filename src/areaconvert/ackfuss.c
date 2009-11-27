@@ -244,7 +244,7 @@ void write_ackfuss_reset( ofstream &file, int type )
  {
   reset = *rt;
   file << reset->command << " " << reset->arg1 << " " << reset->arg2 << " ";
-  if( reset->command.compare("G") || reset->command.compare("R") )
+  if( reset->command[0] == 'G' || reset->command[0] == 'R' )
    file << reset->notes << endl;
   else
    file << reset->arg3 << " " << reset->notes << endl;

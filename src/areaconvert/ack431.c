@@ -326,21 +326,12 @@ void read_ack431_reset( ifstream &file )
 
   reset = new reset_data;
   reset->command = c;
-cout << "command = " << reset->command << endl;
-c = file.peek();
-cout << "peek = " << c << endl;
-//  getline(file,tmp,' '); /* old 'ifflag', unused */
-file.ignore(3);
-c = file.peek();
-cout << "peek2 = " << c << endl;
+  file.ignore(3); /* old 'ifflag', unused */
   getline(file,tmp,' '); reset->arg1 = str2int(tmp);
-cout << "arg1 = " << reset->arg1 << endl;
   getline(file,tmp,' '); reset->arg2 = str2int(tmp);
-cout << "arg2 = " << reset->arg2 << endl;
   getline(file,tmp,' '); reset->arg3 = ( c == 'G' || c == 'R' ) ? 0 : str2int(tmp);
-cout << "arg3 = " << reset->arg3 << endl;
   getline(file,reset->notes);
-cout << "notes = " << reset->notes << endl;
+  getline(file,tmp); /* read the blank line */
 
   reset_list.push_back(reset);
  }
