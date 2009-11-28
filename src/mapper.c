@@ -499,11 +499,11 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
       {
          if( r->exit[e]->exit_info.test(EX_CLOSED) )
          {
-            if( r->exit[e]->exit_info.test(EX_NODETECT) )
+            if( r->exit[e]->exit_info.test(EX_NODETECT) && !IS_IMMORTAL(ch) )
             {
                continue;
             }
-            else if( ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_find_doors] ) > number_percent(  ) )
+            else if( (( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_find_doors] ) > number_percent(  )) || IS_IMMORTAL(ch) )
             {
                snprintf( buf + strlen( buf ), 128, " (%s)", compass_name[e] );
             }
@@ -634,7 +634,7 @@ void MapArea( ROOM_INDEX_DATA * room, CHAR_DATA * ch, int x, int y, int min, int
                   || ( !pexit->exit_info.test(EX_ISDOOR) )
                   || ( ( pexit->exit_info.test(EX_CLOSED) )
                        && ( !pexit->exit_info.test(EX_NODETECT) )
-                       && ( ch->pcdata->learned[gsn_find_doors] > number_percent(  ) )
+                       && ( (ch->pcdata->learned[gsn_find_doors] > number_percent(  )) || IS_IMMORTAL(ch) )
                        && ( !str_cmp( pexit->keyword, "" ) ) ) ) )
          {
             map[x + door_marks[door][0]][y + door_marks[door][1]] = door_type;

@@ -1237,7 +1237,7 @@ DO_FUN(do_exits)
              && pexit->to_room != NULL
              && pexit->exit_info.test(EX_CLOSED)
              && !pexit->exit_info.test(EX_NODETECT)
-             && ( ch->pcdata->learned[gsn_find_doors] > number_percent(  ) ) && ( !str_cmp( pexit->keyword, "" ) ) )
+             && ( (ch->pcdata->learned[gsn_find_doors] > number_percent(  )) || IS_IMMORTAL(ch) ) && ( !str_cmp( pexit->keyword, "" ) ) )
          {
             found = TRUE;
             if( fAuto || fAutonr )
