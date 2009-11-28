@@ -71,6 +71,13 @@ int main( int argc, char *argv[] )
   return 0;
  }
 
+ if( typein == typeout )
+ {
+  cout << "You can not have the same source and destination format. Aborting." << endl;
+  cleanup_outfile(filename);
+  return 0;
+ }
+
  process_infile(infile,typein);
  flag_handler(typein,typeout);
  process_outfile(outfile,typein,typeout);
