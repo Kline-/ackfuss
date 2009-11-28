@@ -1,3 +1,71 @@
+4.4.1 - 28 Nov 09:
+ AreaConvert 1.0 created. It currently converts ACK!MUD 4.3.1 format files to AckFUSS. More formats will be added, both to and from, as I have time.
+ Minor warning fixes after a G++ update.
+ ch->send() Is pretty magical...Now if only it would warn on invalid foring :(
+ NAME() and PERS() macros gone, use target->get_name() or target->get_name(looker).
+ All do_ and spell_ functions are prototyped  with macros to be more easily updated.
+ All header files were standardized.
+ Started a FAQ file :)
+ More prototype updates on commands, but most notably, char_data no longer has char* pointers, they are all strings. Yes, there is a lot of c_str() use for backward compat, but this is the beginning of moving forward -- one step at a time.
+ Finished with cleaning out char_data. All that's left in it are common PC/NPC fields, the rest are all in pcdata/npcdata.
+ Whew....Lots of changing to utilize ch->get_level(). It will prove invaluable down the road. Still more work ahead with this.
+ Added mbr_fun.c to hold member functions for classes. Added a few more functions to char_data().
+ Removed spec_tax_man.
+ Removing some more dead weight IMC code meant for other MUD bases -- don't need it!
+ Minor fix in db.c to get rib of ambiguity calling pow() in fread_float() on certain systems.
+ Entirely re-worked aggr_update() for efficiency. Larger games should see a noted CPU decrease.
+ ACT_REMEMBER mobs can now remember more than one person, and have an improved check (no more dodging them mid-tick).
+ All headers/includes were re-tooled/organized since I got bored.
+ All do_() commands now have a default argument of NULL, and only require a character to be called.
+ Added do_logins() for players to see their last MAX_LOGINS of successful login sites.
+ Added player domain whitelists, for players to enable/disable only logging in from specific domains.
+ Replaced all ch->lvl[] and ch->lvl2[] "magic number" references with the appropriate defines.
+ Minor updates to standardize output on all shop related commands.
+ Fixed a newline issue in sacrifice.
+ All Item Manipulation command helpfiles are going in with this commit.
+ All "action" commands have helps now -- onward to Item Manipulation!
+ Fixed a buffer overflow in do_report.
+ Corrected do_stance level checks.
+ Added #define values in config.h for classes, need to globaly use these some day (started with stance).
+ More command prototyping done, removed an obsolete "guild" command and helpfile.
+ 'Spells' now displays proper cast speed as calculated in 'cast'.
+ Finished adding all helpfiles for 'information' commands.
+ Rooms added to Lua, but crashing on some access. Committing now before I try a large re-org of how Lua lists are to try and fix this.
+ Ripped out the non-functioning (incomplete) structs/lists for area control by rulers. It will make a re-appearance, down the road, but for now it's dead weight.
+ Removed a depricated define (ACK_43). Added a safety check for the Lua dtor, initialized a few variables trying to sort out uninit errors with the mapper (still working this one), and corrected more display options that I missed in do_config().
+ Fixed an error regarding fgetc() in the IMC code. Added in_loc() to return the room of an object depending on carried/in_obj/etc status. Added non-blocking wait coroutine handling for players and objects to aid in scripting (think: timed delays), although the delays don't seem to process on objs yet -- need to look into this further, but comitting now before I forget everything.
+ Fixed a buffer overflow in hotreboot that only manifested on a few Ubuntu builds.
+ Moved Lua states into a lua_data structure with some tracking info. This allows for a single list of all active Lua instances to be iterated over instead of having to search the entire char, obj, and room lists each time we need to find something.
+ Minor display fixes on nosummon/novisit.
+ Obj data pushed over to Lua now.
+ Scripts now load/act properly on objs. Added an recho API function.
+ Exposed all pertinent values of char_data/pcdata/npcdata to Lua access.
+ Committing Lua 5.1 to be included, and pre-compiled. The library was built as "posix"; so it should feasibly run on any POSIX compliant OS without issue.
+ Forgot the doc updates. NOTE: LUA 5.1 IS REQUIRED TO RUN ACKFUSS NOW! This may require you to edit ack.h and Makefile to properly point to your own Lua install locations.
+ Fixed some issues with areas saving in the wrong place if the game wasn't started from the area dir.
+ Started work on a new zone.
+ Added Lua scripting support to players/mobs! It is very basic, and based on Nick Gammon's Smaug code, but except much more to come of this soon!
+ Removed tail_chain(). Really, we don't need it.
+ Tracking first boot in mudinfo now, because I can :).
+ 100% clean compile on Ubuntu now!
+ Stripped another depricated freelist.
+ Remove an erroneous command; add more helps.
+ Added "remort" for remorttalk instead of only "{". Some new helps, too.
+ Re-added death announces via INFO. Added some helpfiles. Redid the commands command (hah).
+ Allow Imms to always send tells to a player despite AFK status.
+ You can now help -find <help title> or help -search <word in help>.
+ Taglines are in for dynamic room/obj/mob descs. See the helpfile! Further commits will follow with more tags added.
+ More cooldown stuff added. Just need to make some functions to set them based on the const table, now.
+ Added initial framework for melee cooldowns. Added RMOD for fast casting, gives 15% spell haste. Gnome, Elf, Sidhe, and Elemental have this added to them.
+ Killed an extra newline in room affect messages.
+ Stop casting on recall or flee. Also added a silent stop to char_from_room() to catch things like transfer, summon, etc.
+ All const work done. Spells cmd now shows cast time in addition to mana cost. Mstat displays casting info.
+ Casting prompt token added, pushback fully added.
+ Fix for mudinfo, oops. Also stop_casting() on death.
+ Adding the first bits of pushback support, maximum controlled via sysdata.
+ Stop was added and stop_casting() to movement. No attacks in combat while casting.
+ Part of the skill table is updated for spells to use proper cast times, still have to finish most of the remort stuff.
+ Cast now gives feedback (player and room) and prevents casting if already casting.
 4.4.0 - 14 Mar 09:
  Fix in dam messages and charm checks.
  Fixed a bug in peace(), make level 1 items not lose durability, NPC-equipped items not lose durability, and the chance to lose durability much less.
