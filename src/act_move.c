@@ -196,7 +196,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
       }
    }
 
-   if( pexit->exit_info.test(EX_CLOSED) )
+   if( pexit->exit_info.test(EX_CLOSED) && !IS_IMMORTAL(ch) )
    {
       if( !IS_AFFECTED( ch, AFF_PASS_DOOR ) && ( !item_has_apply( ch, ITEM_APPLY_PASS_DOOR ) ) && !IS_GHOST(ch) )
       {
