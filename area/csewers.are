@@ -15,1266 +15,1834 @@ VnumRange 1086 1135
 End
 
 #ROOM
-Vnum  1086
-Desc  ~
-Flags 3 EOL
-Name  @@dBeneath the @@gNorth @@dManhole@@N~
-Sect  11
+Vnum       1086
+Desc       @@bL@@yi@@bght  @@dflickers in faintly from beneath the @@gnorth @@dmanhole above, shining down on the small platform. To the north the sewer pipes split east and west draining sewage deeper and out of @@yC@@balor@@d with access provided by small ledges on either side of the pipes. The sewers expand further to the south.@@N~
+Flags      EOL
+Name       @@dBeneath the @@gNorth @@dManhole@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1112
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1112
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1118
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1118
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1087
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1087
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1117
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1117
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   1 EOL
-Key     0
-Keyword ~
-Vnum    1023
-End
-
-#ROOM
-Vnum  1087
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
-End
-#DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1086
-End
-#DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1095
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1088
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1091
+Dir        4
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1023
 End
 
 #ROOM
-Vnum  1088
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1087
+Desc       @@dThe large platform continues in all directions. Sewage swirls about below. @@bL@@yi@@bght @@dis faintly visible to the north, near the manhole.@@N~
+Flags      EOL
+Name       @@dCentral Platform@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1087
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1086
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1120
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1095
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1089
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1088
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1119
-End
-
-#ROOM
-Vnum  1089
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
-End
-#DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1088
-End
-#DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1103
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1090
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1099
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1091
 End
 
 #ROOM
-Vnum  1090
-Desc  ~
-Flags EOL
-Name  @@dBeneath the @@gSouth @@dManhole@@N~
-Sect  11
+Vnum       1088
+Desc       @@dThe large platform continues in all directions. Sewage swirls about below. To the south lie the pumping stations and sewer intakes.@@N~
+Flags      EOL
+Name       @@dCentral Platform@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1089
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1087
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1134
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1120
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1107
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1089
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1133
-End
-#DOOR
-Dir     4
-Desc    ~
-Flags   1 EOL
-Key     0
-Keyword ~
-Vnum    1037
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1119
 End
 
 #ROOM
-Vnum  1091
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1089
+Desc       @@dThe sewer branches out in all directions from this point. To the north lies the central platform and northern manhole, with the four sewage drain pipes. Both east and west of here are the sewer intake pipes. Faint @@bl@@yi@@bght @@dcan be seen coming from the manhole to the south, and the sewer management controls lie further to the south.@@N~
+Flags      EOL
+Name       @@dAn Intersection@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1117
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1088
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1087
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1103
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1119
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1090
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1092
-End
-
-#ROOM
-Vnum  1092
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
-End
-#DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1093
-End
-#DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1091
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1099
 End
 
 #ROOM
-Vnum  1093
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1090
+Desc       @@bL@@yi@@bght @@dflickers in faintly from beneath the @@gsouth @@dmanhole above, shining down into the sewers. To the north lies the sewer intake and drain pipes, while the control consoles are to the south behind closed doors. Pumping stations hum quietly to the east and west.@@N~
+Flags      EOL
+Name       @@dBeneath the @@gSouth @@dManhole@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1092
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1089
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1094
-End
-
-#ROOM
-Vnum  1094
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1134
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1093
+Dir        2
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1107
 End
 #DOOR
-Dir     5
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1121
-End
-
-#ROOM
-Vnum  1095
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1133
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1118
-End
-#DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1096
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1120
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1087
+Dir        4
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1037
 End
 
 #ROOM
-Vnum  1096
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1091
+Desc       @@dThe large platform continues to the north, east, and south. To the west lie a set of drainage and filtration pipes. Sewage swirls about below.@@N~
+Flags      EOL
+Name       @@dCentral Platform@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1097
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1117
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1095
-End
-
-#ROOM
-Vnum  1097
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1087
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1098
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1119
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1096
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1092
 End
 
 #ROOM
-Vnum  1098
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1092
+Desc       @@dWithin the western pipe sewage continues to flow to the north, churning its way deeper into the sewer system. The access ledges narrow further as the pipes move further from the manhole.@@N~
+Flags      EOL
+Name       @@dWestern Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1097
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1093
 End
 #DOOR
-Dir     5
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1124
-End
-
-#ROOM
-Vnum  1099
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
-End
-#DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1089
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1100
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1091
 End
 
 #ROOM
-Vnum  1100
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1093
+Desc       @@dWithin the western pipe sewage continues to flow to the west, churning its way deeper into the sewer system. The access ledges narrow further as the pipes move further from the manhole.@@N~
+Flags      EOL
+Name       @@dWestern Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1099
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1092
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1101
-End
-
-#ROOM
-Vnum  1101
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
-End
-#DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1100
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1102
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1094
 End
 
 #ROOM
-Vnum  1102
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1094
+Desc       @@dThe pipe takes a vertical drop here; sewage gushing rapidly over the edge and into a final filtration pool below. Small small ladders on both access ledges provide access to those who would venture below.@@N~
+Flags      EOL
+Name       @@dWestern Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1101
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1093
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1121
 End
 
 #ROOM
-Vnum  1103
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1095
+Desc       @@dThe large platform continues to the north, west, and south. To the east lie a set of drainage and filtration pipes. Sewage swirls about below.@@N~
+Flags      EOL
+Name       @@dCentral Platform@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1104
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1118
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1089
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1096
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1120
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1087
 End
 
 #ROOM
-Vnum  1104
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1096
+Desc       @@dWithin the eastern pipe sewage continues to flow to the north, churning its way deeper into the sewer system. The access ledges narrow further as the pipes move further from the manhole.@@N~
+Flags      EOL
+Name       @@dEastern Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1105
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1097
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1103
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1095
 End
 
 #ROOM
-Vnum  1105
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1097
+Desc       @@dWithin the eastern pipe sewage continues to flow to the west, churning its way deeper into the sewer system. The access ledges narrow further as the pipes move further from the manhole.@@N~
+Flags      EOL
+Name       @@dEastern Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1104
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1098
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1106
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1096
 End
 
 #ROOM
-Vnum  1106
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1098
+Desc       @@dThe pipe takes a vertical drop here; sewage gushing rapidly over the edge and into a final filtration pool below. Small small ladders on both access ledges provide access to those who would venture below.@@N~
+Flags      EOL
+Name       @@dEastern Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1105
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1097
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1124
 End
 
 #ROOM
-Vnum  1107
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1099
+Desc       @@dAn intake pipe lies to the west: a large gaping maw that hauls half of the waste from @@yC@@balor @@dabove into the sewer system. Small access ledges provide perilous access to maintenance crews that may need to venture into the intake, while the rest of the sewers lie to the east.@@N~
+Flags      EOL
+Name       @@dBefore the West Intake@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1090
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1089
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1110
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1135
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1108
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1100
 End
 
 #ROOM
-Vnum  1108
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1100
+Desc       @@dSewage rains down from numerous openings above, creating a torrential rain of sludge and debris. The access ledge provides no cover from the falling waste, and scant room to maneuver. Faint @@bl@@yi@@bght @@dflickers in from drainage grates on the streets above casting shadows about the pipe. The intake pipe continues to the south, while escape from the waste lies to the east.@@N~
+Flags      EOL
+Name       @@dWithin the West Intake@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1109
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1099
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1107
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1101
 End
 
 #ROOM
-Vnum  1109
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1101
+Desc       @@dSewage rains down from numerous openings above, creating a torrential rain of sludge and debris. The access ledge provides no cover from the falling waste, and scant room to maneuver. Faint @@bl@@yi@@bght @@dflickers in from drainage grates on the streets above casting shadows about the pipe. The intake pipe continues to the west, while escape from the waste lies further north.@@N~
+Flags      EOL
+Name       @@dWithin the West Intake@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1108
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1100
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1102
 End
 
 #ROOM
-Vnum  1110
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1102
+Desc       @@dSewage rains down from numerous openings above, creating a torrential rain of sludge and debris. The access ledge provides no cover from the falling waste, and scant room to maneuver. Faint @@bl@@yi@@bght @@dflickers in from drainage grates on the streets above casting shadows about the pipe. Here the intake pipe ends; leaving only an exit back to the east.@@N~
+Flags      EOL
+Name       @@dWithin the West Intake@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1111
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1107
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1101
 End
 
 #ROOM
-Vnum  1111
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1103
+Desc       @@dAn intake pipe lies to the east: a large gaping maw that hauls half of the waste from @@yC@@balor @@dabove into the sewer system. Small access ledges provide perilous access to maintenance crews that may need to venture into the intake, while the rest of the sewers lie to the west.@@N~
+Flags      EOL
+Name       @@dBefore the East Intake@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1110
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1104
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1089
 End
 
 #ROOM
-Vnum  1112
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1104
+Desc       @@dSewage rains down from numerous openings above, creating a torrential rain of sludge and debris. The access ledge provides no cover from the falling waste, and scant room to maneuver. Faint @@bl@@yi@@bght @@dflickers in from drainage grates on the streets above casting shadows about the pipe. The intake pipe continues to the south, while escape from the waste lies to the west.@@N~
+Flags      EOL
+Name       @@dWithin the East Intake@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1115
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1105
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1086
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1113
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1103
 End
 
 #ROOM
-Vnum  1113
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1105
+Desc       @@dSewage rains down from numerous openings above, creating a torrential rain of sludge and debris. The access ledge provides no cover from the falling waste, and scant room to maneuver. Faint @@bl@@yi@@bght @@dflickers in from drainage grates on the streets above casting shadows about the pipe. The intake pipe continues to the east, while escape from the waste lies further north.@@N~
+Flags      EOL
+Name       @@dWithin the East Intake@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1112
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1104
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1114
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1106
 End
 
 #ROOM
-Vnum  1114
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1106
+Desc       @@dSewage rains down from numerous openings above, creating a torrential rain of sludge and debris. The access ledge provides no cover from the falling waste, and scant room to maneuver. Faint @@bl@@yi@@bght @@dflickers in from drainage grates on the streets above casting shadows about the pipe. Here the intake pipe ends; leaving only an exit back to the west.@@N~
+Flags      EOL
+Name       @@dWithin the East Intake@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1113
-End
-#DOOR
-Dir     5
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1127
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1105
 End
 
 #ROOM
-Vnum  1115
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1107
+Desc       @@dThe control room expands to the east and west. There is a soft hum of electrical equipment in the air and various panels and monitors display information about how the pumps and filtration systems are operating. A set of double doors to the north lead back into the sewers, while a single door in the south of the room leads to the manager's office.@@N~
+Flags      EOL
+Name       @@dControl Room@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1116
+Dir        0
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1090
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1112
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1110
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      1 10 EOL
+Key        1088
+Keyword    ~
+Vnum       1135
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1108
 End
 
 #ROOM
-Vnum  1116
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1108
+Desc       @@dThe control room continues to the east. There is a soft hum of electrical equipment in the air and various panels and monitors display information about how the pumps and filtration systems are operating. The operator console for the west sector of the sewers lies to the north.@@N~
+Flags      EOL
+Name       @@dControl Room@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1115
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1109
 End
 #DOOR
-Dir     5
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1130
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1107
 End
 
 #ROOM
-Vnum  1117
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1109
+Desc       @@dThe west control room is filled with a large operator console covered in screens, knobs, lights, and levers. The console takes a key to operate, however it seems someone carelessly left the key in it... The main control room is to the south.@@N~
+Flags      EOL
+Name       @@dWest Sector Controls@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1086
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1091
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1108
 End
 
 #ROOM
-Vnum  1118
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1110
+Desc       @@dThe control room continues to the west. There is a soft hum of electrical equipment in the air and various panels and monitors display information about how the pumps and filtration systems are operating. The operator console for the east sector of the sewers lies to the north.@@N~
+Flags      EOL
+Name       @@dControl Room@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1095
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1111
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1086
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1107
 End
 
 #ROOM
-Vnum  1119
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1111
+Desc       @@dThe east control room is filled with a large operator console covered in screens, knobs, lights, and levers. The console takes a key to operate, however it seems someone carelessly left the key in it... The main control room is to the south.@@N~
+Flags      EOL
+Name       @@dEast Sector Controls@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1091
-End
-#DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1088
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1110
 End
 
 #ROOM
-Vnum  1120
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1112
+Desc       @@dThe northern sewer pipes split east and west carrying waste deeper into the sewer system and out of @@yC@@balor@@d. Access here is restricted to a small ledge along either edge of the sewer pipes; sewage flows rapidly past. [#drunk: Don't fall in!]@@N~
+Flags      EOL
+Name       @@dThe Northern Pipes@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1095
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1115
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1088
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1086
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1113
 End
 
 #ROOM
-Vnum  1121
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1113
+Desc       @@dWithin the northwest pipe sewage continues to flow to the south, churning its way deeper into the sewer system. The access ledges narrow further as the pipes move further from the manhole.@@N~
+Flags      EOL
+Name       @@dNorthwest Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1122
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1112
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1094
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1114
 End
 
 #ROOM
-Vnum  1122
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1114
+Desc       @@dThe pipe takes a vertical drop here; sewage gushing rapidly over the edge and into a final filtration pool below. Small small ladders on both access ledges provide access to those who would venture below.@@N~
+Flags      EOL
+Name       @@dNorthwest Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1123
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1113
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1121
+Dir        5
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1127
 End
 
 #ROOM
-Vnum  1123
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1115
+Desc       @@dWithin the northeast pipe sewage continues to flow to the south, churning its way deeper into the sewer system. The access ledges narrow further as the pipes move further from the manhole.@@N~
+Flags      EOL
+Name       @@dNortheast Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1122
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1116
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1112
 End
 
 #ROOM
-Vnum  1124
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1116
+Desc       @@dThe pipe takes a vertical drop here; sewage gushing rapidly over the edge and into a final filtration pool below. Small small ladders on both access ledges provide access to those who would venture below.@@N~
+Flags      EOL
+Name       @@dNortheast Pipe@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1125
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1115
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1098
+Dir        5
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1130
 End
 
 #ROOM
-Vnum  1125
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1117
+Desc       @@dThe large platform continues to the east and south. Sewage swirls about below. @@bL@@yi@@bght @@dis faintly visible to the east, near the manhole.@@N~
+Flags      EOL
+Name       @@dCentral Platform@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1124
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1086
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1126
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1091
 End
 
 #ROOM
-Vnum  1126
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1118
+Desc       @@dThe large platform continues to the west and south. Sewage swirls about below. @@bL@@yi@@bght @@dis faintly visible to the west, near the manhole.@@N~
+Flags      EOL
+Name       @@dCentral Platform@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1125
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1095
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1086
 End
 
 #ROOM
-Vnum  1127
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1119
+Desc       @@dThe large platform continues to the north and east. Sewage swirls about below.@@N~
+Flags      EOL
+Name       @@dCentral Platform@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1128
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1091
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1114
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1088
 End
 
 #ROOM
-Vnum  1128
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1120
+Desc       @@dThe large platform continues to the north and west. Sewage swirls about below.@@N~
+Flags      EOL
+Name       @@dCentral Platform@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1129
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1095
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1127
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1088
 End
 
 #ROOM
-Vnum  1129
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1121
+Desc       @@dRaw sewage splashes in from above spattering fecal matter and all sorts of other interesting "things" along the access ledges. [#hungry: A half-eaten steak(?) can be seen floating by in the waste.] The pool continues to the north, while ladders provide access to climb back out of this cesspool.@@N~
+Flags      EOL
+Name       @@dFiltration Pool@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1128
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1122
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1094
 End
 
 #ROOM
-Vnum  1130
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1122
+Desc       @@dThe flow of sewage approaches its peak to the north, while escape from the cesspool lies to the south. A small vortex can faintly be seen to the north where sewage is draining out of the system.@@N~
+Flags      EOL
+Name       @@dFiltration Pool@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1131
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1123
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1116
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1121
 End
 
 #ROOM
-Vnum  1131
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1123
+Desc       @@dA swirling @@Gvortex @@dof sewage spins in the center of the room as the filtered waste is drained from the system and pumped back into the outlying wilderness surrounding @@yC@@balor@@d. Escape from the cesspool lies to the south.@@N~
+Flags      EOL
+Name       @@dFiltration Drain@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1130
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1132
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1122
 End
 
 #ROOM
-Vnum  1132
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1124
+Desc       @@dRaw sewage splashes in from above spattering fecal matter and all sorts of other interesting "things" along the access ledges. [#hungry: A half-eaten steak(?) can be seen floating by in the waste.] The pool continues to the south, while ladders provide access to climb back out of this cesspool.@@N~
+Flags      EOL
+Name       @@dFiltration Pool@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1131
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1125
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1098
 End
 
 #ROOM
-Vnum  1133
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1125
+Desc       @@dThe flow of sewage approaches its peak to the south, while escape from the cesspool lies to the north. A small vortex can faintly be seen to the north where sewage is draining out of the system.@@N~
+Flags      EOL
+Name       @@dFiltration Pool@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1090
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1124
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1126
 End
 
 #ROOM
-Vnum  1134
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1126
+Desc       @@dA swirling @@Gvortex @@dof sewage spins in the center of the room as the filtered waste is drained from the system and pumped back into the outlying wilderness surrounding @@yC@@balor@@d. Escape from the cesspool lies to the north.@@N~
+Flags      EOL
+Name       @@dFiltration Drain@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1090
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1125
 End
 
 #ROOM
-Vnum  1135
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       1127
+Desc       @@dRaw sewage splashes in from above spattering fecal matter and all sorts of other interesting @@W"@@dthings@@W" @@dalong the access ledges. [#hungry: A half-eaten steak(?) can be seen floating by in the waste.] The pool continues to the east, while ladders provide access to climb back out of this cesspool.@@N~
+Flags      EOL
+Name       @@dFiltration Pool@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1107
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1128
 End
+#DOOR
+Dir        4
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1114
+End
+
+#ROOM
+Vnum       1128
+Desc       @@dThe flow of sewage approaches its peak to the east, while escape from the cesspool lies to the west. A small vortex can faintly be seen to the east where sewage is draining out of the system.@@N~
+Flags      EOL
+Name       @@dFiltration Pool@@N~
+ScriptName ~
+Sect       11
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1129
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1127
+End
+
+#ROOM
+Vnum       1129
+Desc       @@dA swirling @@Gvortex @@dof sewage spins in the center of the room as the filtered waste is drained from the system and pumped back into the outlying wilderness surrounding @@yC@@balor@@d. Escape from the cesspool lies to the west.@@N~
+Flags      EOL
+Name       @@dFiltration Drain@@N~
+ScriptName ~
+Sect       11
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1128
+End
+
+#ROOM
+Vnum       1130
+Desc       @@dRaw sewage splashes in from above spattering fecal matter and all sorts of other interesting @@W"@@dthings@@W" @@dalong the access ledges. [#hungry: A half-eaten steak(?) can be seen floating by in the waste.] The pool continues to the west, while ladders provide access to climb back out of this cesspool.@@N~
+Flags      EOL
+Name       @@dNortheast Pipe@@N~
+ScriptName ~
+Sect       11
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1131
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      1 10 EOL
+Key        0
+Keyword    ~
+Vnum       1116
+End
+
+#ROOM
+Vnum       1131
+Desc       @@dThe flow of sewage approaches its peak to the west, while escape from the cesspool lies to the east. A small vortex can faintly be seen to the west where sewage is draining out of the system.@@N~
+Flags      EOL
+Name       @@dNortheast Pipe@@N~
+ScriptName ~
+Sect       11
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1130
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1132
+End
+
+#ROOM
+Vnum       1132
+Desc       @@dA swirling @@Gvortex @@dof sewage spins in the center of the room as the filtered waste is drained from the system and pumped back into the outlying wilderness surrounding @@yC@@balor@@d. Escape from the cesspool lies to the west.@@N~
+Flags      EOL
+Name       @@dNortheast Pipe@@N~
+ScriptName ~
+Sect       11
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1131
+End
+
+#ROOM
+Vnum       1133
+Desc       @@dThe west pump station hums quietly, processing the sludge from the intake pipe and re-routing it further north through the drain pipes.@@N~
+Flags      EOL
+Name       @@dWest Pump Station@@N~
+ScriptName ~
+Sect       11
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1090
+End
+
+#ROOM
+Vnum       1134
+Desc       @@dThe east pump station hums quietly, processing the sludge from the intake pipe and re-routing it further north through the drain pipes.@@N~
+Flags      EOL
+Name       @@dEast Pump Station@@N~
+ScriptName ~
+Sect       11
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1090
+End
+
+#ROOM
+Vnum       1135
+Desc       @@dThe manager's office is scarcely furnished sporting only a simple desk cluttered with paperwork. There is a single monitor on the wall that allows the manager to observe the workers in the control room. While the office door affords some privacy, the loud churn of the sewer equipment can still be heard from behind it.@@N~
+Flags      EOL
+Name       @@dManager's Office@@N~
+ScriptName ~
+Sect       11
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      1 10 EOL
+Key        1088
+Keyword    ~
+Vnum       1107
+End
+
+#MOBILE
+Vnum      1086
+AcMod     10
+Act       EOL
+Affected   0
+Alignment  0
+Cast       0
+Clan       -1
+Class      3
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      2
+LongDesc   @@GA vicious blob floats atop the waste.@@N~
+PlrName    vicious blob~
+Position   0
+Race       19
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        0
+ShortDesc  @@GA vicious blob@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
+End
+
+#MOBILE
+Vnum      1087
+AcMod     0
+Act       EOL
+Affected   0
+Alignment  0
+Cast       0
+Clan       -1
+Class      3
+Def        0
+Desc       ~
+DrMod      -2
+HrMod      -2
+Level      1
+LongDesc   @@bA sewer rat scurries about in the filth.@@N~
+PlrName    sewer rat~
+Position   0
+Race       19
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        2
+ShortDesc  @@ba sewer rat@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
+End
+
+#MOBILE
+Vnum      1088
+AcMod     5
+Act       EOL
+Affected   0
+Alignment  0
+Cast       0
+Clan       -1
+Class      3
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      1
+LongDesc   @@dA black cockroach skitters about.@@N~
+PlrName    black cockroach~
+Position   0
+Race       19
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@da black cockroach@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
+End
+
+#MOBILE
+Vnum      1089
+AcMod     0
+Act       EOL
+Affected   0
+Alignment  0
+Cast       0
+Clan       -1
+Class      0
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      3
+LongDesc   @@bA @@cjunior @@dsewer operator is busy checking monitors and lights.@@N~
+PlrName    junior sewer operator~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        2
+ShortDesc  @@bA @@cjunior @@dsewer operator@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
+End
+
+#MOBILE
+Vnum      1090
+AcMod     0
+Act       EOL
+Affected   0
+Alignment  0
+Cast       0
+Clan       -1
+Class      4
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      4
+LongDesc   @@bA @@Wsenior @@dsewer operator oversees the operations.@@N~
+PlrName    senior sewer operator~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@bA @@Wsenior @@dsewer operator@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
+End
+
+#MOBILE
+Vnum      1091
+AcMod     -1
+Act       EOL
+Affected   0
+Alignment  0
+Cast       0
+Clan       -1
+Class      2
+Def        0
+Desc       ~
+DrMod      2
+HrMod      2
+Level      5
+LongDesc   @@dThe @@Wsewer @@cmanager @@dis buried in paperwork behind his desk.@@N~
+PlrName    sewer manager~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@dthe @@Wsewer @@cmanager@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
+End
+
+#OBJECT
+Vnum       1086
+Durability 5
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA @@ckey has been discarded here.@@N~
+Name       eastern control key~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@bEastern @@WControl @@cKey@@N~
+Speed      4.00
+Type       29
+Values     1087 1087 1088 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1087
+Durability 37
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   @@dA @@ckey @@dhas been discarded here.@@N~
+Name       western control key~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@GWestern @@WControl @@cKey@@N~
+Speed      2.20
+Type       29
+Values     1086 1086 1088 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1088
+Durability 69
+ExtraFlags EOL
+ItemApply  1
+Level      1
+LongDesc   ~
+Name       key sewers~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@cKey @@dof the @@bS@@Ge@@bw@@Ge@@br@@Gs@@N~
+Speed      2.31
+Type       18
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  24 EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1089
+Durability 95
+ExtraFlags 29 EOL
+ItemApply  1
+Level      1
+LongDesc   @@dThe @@cconsole @@dfor the @@Gwest @@Wsector @@dsits here.@@N~
+Name       west sector console~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@Gwest @@Wsector @@cconsole@@N~
+Speed      4.00
+Type       15
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1090
+Durability 99
+ExtraFlags 29 EOL
+ItemApply  1
+Level      1
+LongDesc   @@dThe @@cconsole @@dfor the @@beast @@Wsector @@dsits here.@@N~
+Name       east sector console~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@beast @@Wsector @@cconsole@@N~
+Speed      4.00
+Type       15
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  EOL
+Weight     1
+End
+
+#OBJECT
+Vnum       1091
+Durability 25
+ExtraFlags 21 EOL
+ItemApply  1
+Level      5
+LongDesc   @@dThe @@Wsewer @@cmanager's @@dprized @@Bf@@lou@@Bnt@@lai@@Bn @@Wpen @@dlies discarded.@@N~
+Name       fountain pen~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@cA @@Bf@@lou@@Bnt@@lai@@Bn @@Wpen@@N~
+Speed      1.42
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  16 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -31
+End
+#OAFFECT
+Location   13
+Modifier   15
+End
+#OAFFECT
+Location   24
+Modifier   -2
+End
+
+#OBJECT
+Vnum       1092
+Durability 20
+ExtraFlags EOL
+ItemApply  1
+Level      4
+LongDesc   @@dA pair of @@Ggrime-covered @@bwading @@dboots have been discarded.@@N~
+Name       wading boots~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@bWading @@dBoots@@N~
+Speed      2.01
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  22 23 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -3
+End
+#OAFFECT
+Location   19
+Modifier   1
+End
+#OAFFECT
+Location   13
+Modifier   2
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+
+#OBJECT
+Vnum       1093
+Durability 15
+ExtraFlags EOL
+ItemApply  1
+Level      3
+LongDesc   @@dCovered in @@Ggrime@@d, a @@cjacket @@dhas been tossed aside carelessly.@@N~
+Name       grime covered jacket~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@GGrime @@dCovered @@cJacket@@N~
+Speed      3.20
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  19 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   17
+Modifier   -5
+End
+#OAFFECT
+Location   13
+Modifier   3
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+#OAFFECT
+Location   12
+Modifier   1
+End
+
+#OBJECT
+Vnum       1094
+Durability 25
+ExtraFlags EOL
+ItemApply  1
+Level      5
+LongDesc   @@dAll wrapped up in your own @@Bs@@luperiority@@d...@@N~
+Name       aura of superiority~
+ObjFun     (null)
+ScriptName ~
+ShortDesc  @@GA@@rura @@dof @@BS@@luperiority@@N~
+Speed      1.22
+Type       9
+Values     0 0 0 0 0 0 0 0 0 0 
+WearFlags  2 24 EOL
+Weight     1
+End
+#OAFFECT
+Location   24
+Modifier   -2
+End
+#OAFFECT
+Location   17
+Modifier   -6
+End
+#OAFFECT
+Location   18
+Modifier   1
+End
+#OAFFECT
+Location   19
+Modifier   1
+End
+#RESETS
+D 1090 2 1 
+
+D 1135 0 1 
+
+D 1135 0 2 
+
+D 1107 0 1 
+
+D 1107 2 2 
+
+O 1089 1 1109 
+
+P 1087 1 1089 
+
+O 1090 1 1111 
+
+P 1086 1 1090 
+
+M 1086 1 1129 
+
+M 1086 1 1128 
+
+M 1086 1 1132 
+
+M 1086 1 1131 
+
+M 1086 1 1123 
+
+M 1086 1 1122 
+
+M 1086 1 1126 
+
+M 1086 1 1125 
+
+M 1087 1 1114 
+
+M 1087 1 1112 
+
+M 1087 1 1116 
+
+M 1087 1 1091 
+
+M 1087 1 1095 
+
+M 1087 1 1093 
+
+M 1087 1 1097 
+
+M 1087 1 1089 
+
+M 1087 1 1100 
+
+M 1087 1 1102 
+
+M 1087 1 1104 
+
+M 1087 1 1106 
+
+M 1088 1 1094 
+
+M 1088 1 1098 
+
+M 1088 1 1120 
+
+M 1088 1 1119 
+
+M 1088 1 1117 
+
+M 1088 1 1118 
+
+M 1088 1 1133 
+
+M 1088 1 1134 
+
+M 1089 1 1108 
+
+E 1093 0 24 
+
+M 1089 1 1107 
+
+E 1093 0 24 
+
+E 1093 0 23 
+
+M 1089 1 1110 
+
+E 1093 0 24 
+
+M 1090 1 1109 
+
+E 1092 0 27 
+
+M 1090 1 1111 
+
+E 1092 0 27 
+
+M 1091 1 1135 
+
+E 1094 0 2 
+
+E 1091 0 20 
+
+M 1087 1 1113 
+M 1087 1 1115 
+M 1087 1 1086 
+M 1087 1 1087 
+M 1087 1 1088 
+M 1088 1 1092 
+M 1088 1 1096 
+M 1088 1 1101 
+M 1088 1 1099 
+M 1088 1 1103 
+M 1088 1 1105 
+M 1087 1 1090 
+S
 #$
