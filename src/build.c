@@ -3554,7 +3554,7 @@ DO_FUN(build_addreset)
       rarg1 = vnum;
 
       num = table_lookup( tab_wear_loc, arg4 );
-      if( num == -2 )
+      if( num == 0 )
       {
          snprintf( buf, MSL, "Location must be one of the following:\r\n" );
          table_printout( tab_wear_loc, buf + strlen( buf ) );

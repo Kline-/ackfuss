@@ -878,6 +878,7 @@ LOOKUP_TYPE tab_item_apply[] = {
 
 
 LOOKUP_TYPE tab_wear_loc[] = {
+   {"nada", 0, 0},
    {"halo", 1, 20},
    {"aura", 2, 20},
    {"horns", 3, 20},
