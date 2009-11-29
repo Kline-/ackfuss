@@ -117,7 +117,7 @@ short char_data::get_level( const char *what )
  if( !str_prefix(what,"remortal") )
   return (lvl2[CLS_SOR] + lvl2[CLS_MON] + lvl2[CLS_ASS] + lvl2[CLS_KNI] + lvl2[CLS_NEC]);
  if( !str_prefix(what,"psuedo") )
-  return (level + (get_level("remortal")/4));
+  return IS_NPC(this) ? level : (level + (get_level("remortal")/4) > 0 ? (get_level("remortal")/4) : 0);
 
  if( !str_prefix(what,"adept") )
   return IS_NPC(this) ? level / 7 : pcdata->adept_level;
