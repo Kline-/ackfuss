@@ -250,6 +250,8 @@ const struct cmd_type cmd_table[] = {
     C_TYPE_INFO, C_SHOW_ALWAYS,true},
    {"loot", do_loot, POS_STANDING, 20, LOG_ALWAYS,
     C_TYPE_OBJECT, C_SHOW_ALWAYS,false},
+   {"remove", do_remove, POS_RESTING, 0, LOG_NORMAL,
+    C_TYPE_OBJECT, C_SHOW_ALWAYS,false},
 
    /*
     * Informational commands.
@@ -560,8 +562,6 @@ const struct cmd_type cmd_table[] = {
    {"quaff", do_quaff, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_OBJECT, C_SHOW_ALWAYS,false},
    {"recite", do_recite, POS_RESTING, 0, LOG_NORMAL,
-    C_TYPE_OBJECT, C_SHOW_ALWAYS,false},
-   {"remove", do_remove, POS_RESTING, 0, LOG_NORMAL,
     C_TYPE_OBJECT, C_SHOW_ALWAYS,false},
    {"sedit", do_sedit, POS_DEAD, L_DEI, LOG_ALWAYS,
     C_TYPE_CONFIG, C_SHOW_NEVER,false},

@@ -1011,7 +1011,7 @@ DO_FUN(do_mstat)
 
    snprintf( buf, MSL,
             "Lv: %d.  Class: %d.  Align: %d.  AC: %d.  Exp: %d.\r\n",
-            victim->level, victim->p_class, victim->alignment, GET_AC( victim ), victim->exp );
+            victim->get_level(), victim->p_class, victim->alignment, GET_AC( victim ), victim->exp );
    strncat( buf1, buf, MSL-1 );
 
    if( !IS_NPC( victim ) )
