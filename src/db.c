@@ -2465,6 +2465,12 @@ void reset_area( AREA_DATA * pArea )
                pReset->count++;
             }
             obj_to_char( obj, mob );
+            if( ( IS_OBJ_STAT(obj,ITEM_EXTRA_RARE) ) && !( ( number_percent(  ) < 2 ) && ( number_percent(  ) < 8 ) ) )
+            {
+             extract_obj( obj );
+             last = true;
+             break;
+            }
             if( pReset->command == 'E' )
             {
                char objname[MSL];
