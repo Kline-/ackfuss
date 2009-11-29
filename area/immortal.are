@@ -99,7 +99,7 @@ End
 
 #ROOM
 Vnum       304
-Desc       The Apex serves as an office for Kline. It is sparsely decorated save from two small dolls, and a handful of windows looking out into key areas of the world.~
+Desc       The Apex serves as an office for Kline. It is sparsely decorated save from three small dolls and a handful of windows looking out into key areas of the world.~
 Flags      4 EOL
 Name       The Apex~
 ScriptName ~
@@ -402,7 +402,7 @@ O 302 1 304
 
 O 308 1 304 
 
-O 304 1 304
+O 304 1 304 
 
 O 305 1 304 
 
