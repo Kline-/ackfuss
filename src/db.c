@@ -2469,6 +2469,8 @@ void reset_area( AREA_DATA * pArea )
             {
                char objname[MSL];
                one_argument( obj->name, objname );
+               if( obj->level > mob->get_level() )
+                obj->level = mob->get_level();
                do_wear( mob, objname );
             }
             last = TRUE;
