@@ -1,3 +1,5 @@
+4.4.2 - ???:
+
 4.4.1 - 28 Nov 09:
  AreaConvert 1.0 created. It currently converts ACK!MUD 4.3.1 format files to AckFUSS. More formats will be added, both to and from, as I have time.
  Minor warning fixes after a G++ update.

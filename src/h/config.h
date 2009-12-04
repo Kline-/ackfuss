@@ -1306,7 +1306,7 @@
 #define EXE_FILE       "../src/ack"   /* The one that runs the ACK! */
 
 /* Kline Stuff */
-#define VERS_STRING "AckFUSS 4.4.1"
+#define VERS_STRING "AckFUSS 4.4.2"
 
 // Some string defaults
 #define DEFAULT_PROMPT    "@@g<@@d[@@W%x@@d] [@@e%h@@RH @@l%m@@BM @@r%v@@GV@@d]@@g>@@N"
