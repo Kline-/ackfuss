@@ -3703,12 +3703,30 @@ DO_FUN(do_users)
         case CON_READ_MOTD:
            snprintf( buf3, MSL, "%s", "Reading MOTD    " );
            break;
+        case CON_GET_STATS:
+           snprintf( buf3, MSL, "%s", "Get New Stats   " );
+           break;
+        case CON_FINISHED:
+           snprintf( buf3, MSL, "%s", "Finish Creating " );
+           break;
+        case CON_MENU:
+           snprintf( buf3, MSL, "%s", "Creation Menu   " );
+           break;
+        case CON_COPYOVER_RECOVER:
+           snprintf( buf3, MSL, "%s", "Copyover Recover" );
+           break;
+        case CON_QUITTING:
+           snprintf( buf3, MSL, "%s", "Quitting        " );
+           break;
+        case CON_RECONNECTING:
+           snprintf( buf3, MSL, "%s", "Reconnecting    " );
+           break;
         default:
            snprintf( buf3, MSL, "%s", "Unknown...      " );
            break;
      }
 
-     snprintf( buf + strlen( buf ), MSL, "[%3d %2d %18s] %-12s %-30s",
+     snprintf( buf + strlen( buf ), MSL, "[%3d %3d %18s] %-12s %-30s",
               d->descriptor,
               d->connected,
               buf3, d->original ? d->original->name.c_str() : d->character ? d->character->name.c_str() : "(none)", d->host );
