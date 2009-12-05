@@ -3661,7 +3661,7 @@ DO_FUN(do_users)
    buf[0] = '\0';
    buf2[0] = '\0';
 
-   send_to_char( "\r\n Desc.  Connection State.   Player Name.     Login Site.", ch );
+   send_to_char( "\r\n Desc.  Connection State.    Player Name.     Login Site.", ch );
    if( get_trust( ch ) == 85 )
       send_to_char( "                 Port.\r\n", ch );
    else
