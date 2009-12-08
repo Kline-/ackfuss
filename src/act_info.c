@@ -2569,9 +2569,33 @@ DO_FUN(do_inventory)
 
 DO_FUN(do_equipment)
 {
-   do_wear( ch, "" );
-   return;
+ int i;
+ string color, gear;
+ OBJ_DATA *worn;
+ extern const char *where_name[];
 
+ ch->send("Equipment slots for your race:\r\n");
+ for( i = 0; i < MAX_WEAR; i++ )
+ {
+  if( race_table[ch->race].wear_locs[i] == true )
+  {
+   if( (worn = get_eq_char(ch,i)) != NULL )
+   {
+    color = "@@!";
+    if( !str_cmp(argument,"name") )
+     gear = format_obj_to_char(worn,ch,true,true);
+    else
+     gear = format_obj_to_char(worn,ch,true,false);
+   }
+   else
+   {
+    color = "@@.";
+    gear = "@@dNothing@@N";
+   }
+   ch->send("%s%25s@@N %-*s\r\n",color.c_str(),where_name[i],ccode_len(gear.c_str(),40),gear.c_str());
+  }
+ }
+ return;
 }
 
 DO_FUN(do_compare)

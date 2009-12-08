@@ -1816,35 +1816,9 @@ DO_FUN(do_wear)
    one_argument( argument, arg );
    if( arg[0] == '\0' )
    {
-      short location;
-      char outbuf[MSL];
-      char catbuf[MSL];
-      char colbuf[MSL], eqbuf[MSL];
-      OBJ_DATA *worn;
-      extern const char *where_name[];
-      snprintf( outbuf, MSL, "%s", "Wear slots for your race:\r\n" );
-      for( location = 0; location < MAX_WEAR; location++ )
-      {
-         if( race_table[ch->race].wear_locs[location] == TRUE )
-         {
-            if( ( worn = get_eq_char( ch, location ) ) != NULL )
-            {
-               snprintf( colbuf, MSL, "%s", "@@!" );
-               snprintf( eqbuf, MSL, "%s", format_obj_to_char( worn, ch, true, false ) );
-            }
-            else
-            {
-               snprintf( colbuf, MSL, "%s", "@@." );
-               snprintf( eqbuf, MSL, "%s", "@@dNothing@@N" );
-            }
-            snprintf( catbuf, MSL, "%s%25s@@N %-*s\r\n", colbuf, where_name[location], ccode_len( eqbuf, 40 ), eqbuf );
-            strncat( outbuf, catbuf, MSL-1 );
-         }
-      }
-      send_to_char( outbuf, ch );
-      return;
+    ch->send("Wear, wield, or hold what?\r\n");
+    return;
    }
-
    if( !str_cmp( arg, "all" ) )
    {
       OBJ_DATA *obj_next;

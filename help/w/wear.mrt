@@ -1,5 +1,5 @@
 WEAR
 
-WEAR will display your available equipment slots and what is being
-worn in them (if anything). You can also "wear <item>" to wear the
-item.
+WEAR will equip an item, replacing the currently equipped item (if any). To use
+just "wear <item>". Be warned though, that you may not be able to remove certain
+items!

@@ -1,4 +1,4 @@
 EQUIPMENT
 
-Equipment will display all of your equipment slots, empty or where gear is worn. You can also
-(roughly) compare two items together with equipment <item1> <item2>.
+EQUIPMENT will display all of your equipment slots, both empty and those with items in them.
+You may also use "equipment name" to include the name of each item, in case you have forgotten.
