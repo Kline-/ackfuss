@@ -114,7 +114,7 @@
 #include "h/update.h"
 #endif
 
-char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
+char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort, bool iName )
 {
    static char buf[MSL];
    static char buf2[MSL];
@@ -152,6 +152,13 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
          strncat( buf, obj->long_descr, MSL-1 );
    }
    strncat( buf, color_string( ch, "normal" ), MSL-1 );
+
+   if( iName ) /* Display the name of items, in case you don't know or forgot them. --Kline */
+   {
+    snprintf(buf2,MSL," [%s]",obj->name);
+    strncat(buf,buf2,MSL-1);
+   }
+
    return buf;
 }
 
@@ -161,7 +168,7 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort )
  * Show a list to a character.
  * Can coalesce duplicated items.
  */
-void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShowNothing )
+void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShowNothing, bool iName )
 {
    char buf[MSL];
    char **prgpstrShow;
@@ -195,7 +202,7 @@ void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShow
    {
       if( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) )
       {
-         pstrShow = format_obj_to_char( obj, ch, fShort );
+         pstrShow = format_obj_to_char( obj, ch, fShort, iName );
          fCombine = FALSE;
 
          if( IS_NPC( ch ) || ch->act.test(ACT_COMBINE) )
@@ -299,7 +306,7 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
    {
       if( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) && str_cmp( obj->long_descr, "" ) )
       {
-         pstrShow = format_obj_to_char( obj, ch, fShort );
+         pstrShow = format_obj_to_char( obj, ch, fShort, false );
          fCombine = FALSE;
 
          if( IS_NPC( ch ) || ch->act.test(ACT_COMBINE) )
@@ -691,7 +698,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
                found = TRUE;
             }
             send_to_char( where_name[iWear], ch );
-            send_to_char( format_obj_to_char( obj, ch, TRUE ), ch );
+            send_to_char( format_obj_to_char( obj, ch, true, false ), ch );
             send_to_char( "\r\n", ch );
          }
       }
@@ -699,7 +706,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
       if( victim != ch && !IS_NPC( ch ) && number_percent(  ) < ch->pcdata->learned[gsn_peek] )
       {
          send_to_char( "\r\nYou peek at the inventory:\r\n", ch );
-         show_list_to_char( victim->first_carry, ch, TRUE, TRUE );
+         show_list_to_char( victim->first_carry, ch, true, true, false );
       }
    }
    return;
@@ -985,7 +992,7 @@ DO_FUN(do_look)
             }
 
             act( "$p contains:", ch, obj, NULL, TO_CHAR );
-            show_list_to_char( obj->first_in_carry_list, ch, TRUE, TRUE );
+            show_list_to_char( obj->first_in_carry_list, ch, true, true, false );
             {
                char money_show[MSL];
                snprintf( money_show, MSL, "%s lie within.\r\n", money_string( obj->money ) );
@@ -2553,7 +2560,10 @@ DO_FUN(do_inventory)
    }
 
    send_to_char( "You are carrying:\r\n", ch );
-   show_list_to_char( ch->first_carry, ch, TRUE, TRUE );
+   if( !str_cmp(argument,"name") )
+    show_list_to_char( ch->first_carry, ch, true, true, true );
+   else
+    show_list_to_char( ch->first_carry, ch, true, true, false );
    return;
 }
 

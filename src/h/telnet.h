@@ -21,12 +21,12 @@
 #define MSSP_VAL              2
 
 /* commands */
-char IAC_SE[]        = {IAC, SE, 0 };
+unsigned char IAC_SE[]        = {IAC, SE, 0 };
 
-char IAC_DO_MSSP[]   = {IAC, DO, TELOPT_MSSP, 0};
-char IAC_SB_MSSP[]   = {IAC, SB, TELOPT_MSSP, 0};
-char IAC_WILL_MSSP[] = {IAC, WILL, TELOPT_MSSP, 0};
+unsigned char IAC_DO_MSSP[]   = {IAC, DO, TELOPT_MSSP, 0};
+unsigned char IAC_SB_MSSP[]   = {IAC, SB, TELOPT_MSSP, 0};
+unsigned char IAC_WILL_MSSP[] = {IAC, WILL, TELOPT_MSSP, 0};
 
-char IAC_DO_MCCP[]   = {IAC, DO, TELOPT_MCCP, 0};
-char IAC_SB_MCCP[]   = {IAC, SB, TELOPT_MCCP, 0};
-char IAC_WILL_MCCP[] = {IAC, WILL, TELOPT_MCCP, 0};
+unsigned char IAC_DO_MCCP[]   = {IAC, DO, TELOPT_MCCP, 0};
+unsigned char IAC_SB_MCCP[]   = {IAC, SB, TELOPT_MCCP, 0};
+unsigned char IAC_WILL_MCCP[] = {IAC, WILL, TELOPT_MCCP, 0};

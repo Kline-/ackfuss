@@ -1213,6 +1213,7 @@ struct sysdata_type
  short damcap;
  float expmult;
  short killperlev;
+ short max_move_disp;
  float max_pushback;
  float mob_ac;
  float mob_dr;

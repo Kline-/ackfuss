@@ -15,7 +15,7 @@
 #endif
 
 /* act_info.c */
-char *format_obj_to_char P_((OBJ_DATA * obj, CHAR_DATA * ch, bool fShort));
+char *format_obj_to_char P_((OBJ_DATA * obj, CHAR_DATA * ch, bool fShort, bool iName));
 void show_char_to_char_0 P_((CHAR_DATA *victim, CHAR_DATA *ch));
 void show_char_to_char_1 P_((CHAR_DATA *victim, CHAR_DATA *ch));
 void show_char_to_char P_((CHAR_DATA *list, CHAR_DATA *ch));

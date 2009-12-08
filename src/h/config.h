@@ -95,7 +95,6 @@
 #define MAX_STANCE		13
 #define MAX_TOT_STATS               90   /* Total sum of player stats when creating */
 #define MAX_HISTORY                 20   /* History per channel */
-#define MAX_MOVE_DISPLAY             5   /* Number of rooms to auto-look while moving before they go brief */
 #define MAX_PEDIT                    5
 #define MAX_COND                     3
 #define MAX_GREETING                 5   /* Number of different login screen files: greeting1, greeting2, etc */
@@ -1313,11 +1312,11 @@
 
 // MSSP -- Update these to properly report your MUD to automated crawlers
 #define MSSP_HOSTNAME     "home.gotr00t.us"                    //MUD hostname
-#define MSSP_PORT         3000                                 //MUD port
+#define MSSP_PORT         1234                                 //MUD port
 #define MSSP_CONTACT      "genocaust@gmail.com"                //Admin email
 #define MSSP_CREATED      2008                                 //Year MUD opened
 #define MSSP_ICON         "http://www.ackmud.net/ack_mssp.gif" //32x32 256 color icon
-#define MSSP_IP           "24.162.100.182"                     //MUD IP address
+#define MSSP_IP           "75.132.161.253"                     //MUD IP address
 #define MSSP_LANGUAGE     "English"                            //Primary language spoken
 #define MSSP_LOCATION     "United States"                      //Full country name per ISO standard
 #define MSSP_MIN_AGE      0                                    //Minimum age to play, 0 for none

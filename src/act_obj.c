@@ -1830,7 +1830,7 @@ DO_FUN(do_wear)
             if( ( worn = get_eq_char( ch, location ) ) != NULL )
             {
                snprintf( colbuf, MSL, "%s", "@@!" );
-               snprintf( eqbuf, MSL, "%s", format_obj_to_char( worn, ch, TRUE ) );
+               snprintf( eqbuf, MSL, "%s", format_obj_to_char( worn, ch, true, false ) );
             }
             else
             {

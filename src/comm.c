@@ -859,13 +859,13 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d )
     */
    for( ;; )
    {
-      char tmp[MSL];
+      unsigned char tmp[MSL];
       int nRead;
 
       nRead = read( d->descriptor, tmp, sizeof( tmp ) - 10 - iStart );
       if( nRead > 0 )
       {
-         iStart += telopt_handler(d,tmp,nRead,(d->inbuf + iStart));
+         iStart += telopt_handler(d,tmp,nRead,(unsigned char *)(d->inbuf + iStart));
          if( d->inbuf[iStart - 1] == '\n' || d->inbuf[iStart - 1] == '\r' )
             break;
       }
@@ -1009,11 +1009,11 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
          CHAR_DATA *ch;
 
          ch = d->original ? d->original : d->character;
-         if( !IS_NPC(ch) && ch->act.test(ACT_BLANK) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !ch->act.test(ACT_AUTOBRIEF)) )
+         if( !IS_NPC(ch) && ch->act.test(ACT_BLANK) && (ch->pcdata->movement <= sysdata.max_move_disp || !ch->act.test(ACT_AUTOBRIEF)) )
             write_to_buffer( d, "\r\n", 2 );
          if( ch->hunting || ch->hunt_obj )
             char_hunt( ch );
-         if( !IS_NPC(ch) && (ch->pcdata->movement <= MAX_MOVE_DISPLAY || !ch->act.test(ACT_AUTOBRIEF)) )
+         if( !IS_NPC(ch) && (ch->pcdata->movement <= sysdata.max_move_disp || !ch->act.test(ACT_AUTOBRIEF)) )
           bust_a_prompt( d );
          if( ch->act.test(ACT_TELNET_GA) )
             write_to_buffer( d, go_ahead_str );
