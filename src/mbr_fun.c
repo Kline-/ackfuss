@@ -117,10 +117,20 @@ short char_data::get_level( const char *what )
  if( !str_prefix(what,"remortal") )
   return (lvl2[CLS_SOR] + lvl2[CLS_MON] + lvl2[CLS_ASS] + lvl2[CLS_KNI] + lvl2[CLS_NEC]);
  if( !str_prefix(what,"psuedo") )
-  return IS_NPC(this) ? level : (level + (get_level("remortal")/4) > 0 ? (get_level("remortal")/4) : 0);
+ {
+  if( IS_NPC(this) )
+   return get_level();
+  else
+  {
+   if( (get_level("remortal")/4) > 0 )
+    return (get_level() + (get_level("remortal")/4));
+   else
+    return get_level();
+  }
+ }
 
  if( !str_prefix(what,"adept") )
-  return IS_NPC(this) ? level / 7 : pcdata->adept_level;
+  return IS_NPC(this) ? get_level() / 7 : pcdata->adept_level;
  if( !str_prefix(what,"mage") )
   return lvl[CLS_MAG];
  if( !str_prefix(what,"cleric") )

@@ -1399,6 +1399,9 @@ DO_FUN(do_score)
       send_to_char( buf, ch );
    }
 
+   snprintf( buf2, MSL, "Psuedo Level: @@W%3d ", ch->get_level("psuedo") );
+   snprintf( buf, MSL, "@@c|%s @@c|\r\n", center_text( buf2, 62 ) );
+   send_to_char( buf, ch );
 
    snprintf( buf, MSL,
             "X========= @@WExps: @@y%9d @@c========= @@aQuest Points: @@y%4d @@c========X\r\n", ch->exp, IS_NPC(ch) ? 0 : ch->pcdata->quest_points );
