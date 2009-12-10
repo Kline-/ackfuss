@@ -554,29 +554,45 @@ void r_affect_remove( ROOM_INDEX_DATA * room, ROOM_AFFECT_DATA * raf )
  */
 void affect_to_char( CHAR_DATA * ch, AFFECT_DATA * paf )
 {
-   AFFECT_DATA *paf_new;
+ AFFECT_DATA *paf_new;
+ bool found = false;
 
-   paf_new = new AFFECT_DATA;
-/* Ramias... Don't copy uninitialized fields: next, prev, is_free */
-/*
-    *paf_new = *paf;
-*/
-   paf_new->type = paf->type;
+ /* Refresh duration on existing affects --Kline */
+ for( paf_new = ch->first_affect; paf_new != NULL; paf_new = paf_new->next )
+ {
+  if( paf_new->type == paf->type )
+  {
+   found = true;
    paf_new->duration = paf->duration;
    paf_new->location = paf->location;
    paf_new->modifier = paf->modifier;
    paf_new->bitvector = paf->bitvector;
    paf_new->caster = paf->caster;
    paf_new->level = paf->level;
-   LINK( paf_new, ch->first_affect, ch->last_affect, next, prev );
+  }
+ }
 
-   affect_modify( ch, paf_new, TRUE );
+ if( !found )
+ {
+  paf_new = new AFFECT_DATA;
 
-   if( paf_new->type == skill_lookup( "Enraged" ) )
-      if( IS_WOLF( ch ) )
-         ch->act.set(ACT_RAGED);
+  paf_new->type = paf->type;
+  paf_new->duration = paf->duration;
+  paf_new->location = paf->location;
+  paf_new->modifier = paf->modifier;
+  paf_new->bitvector = paf->bitvector;
+  paf_new->caster = paf->caster;
+  paf_new->level = paf->level;
+  LINK(paf_new,ch->first_affect,ch->last_affect,next,prev);
 
-   return;
+  affect_modify(ch,paf_new,TRUE);
+
+  if( paf_new->type == skill_lookup("Enraged") )
+   if( IS_WOLF(ch) )
+    ch->act.set(ACT_RAGED);
+ }
+
+ return;
 }
 
 

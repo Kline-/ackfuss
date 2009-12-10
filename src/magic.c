@@ -1167,7 +1167,7 @@ bool spell_blindness( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    if( !sp_damage( obj, ch, victim, 0, REALM_LIGHT, sn, FALSE ) )
       return TRUE;
 
-   if( IS_AFFECTED( victim, AFF_BLIND ) || saves_spell( level, victim ) )
+   if( saves_spell( level, victim ) )
       return TRUE;
 
    af.type = sn;
@@ -1331,8 +1331,7 @@ bool spell_charm_person( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
       return FALSE;
    }
 
-   if( IS_AFFECTED( victim, AFF_CHARM )
-       || IS_AFFECTED( ch, AFF_CHARM ) || level - 5 < victim->level || saves_spell( level, victim ) )
+   if( IS_AFFECTED( ch, AFF_CHARM ) || level - 5 < victim->level || saves_spell( level, victim ) )
       return TRUE;
 
    if( IS_VAMP( victim ) && ( IS_NPC( victim ) ) )
@@ -1607,11 +1606,6 @@ bool spell_curse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_CURSE ) )
-   {
-      send_to_char( "They are already weakened!\r\n", ch );
-      return FALSE;
-   }
    if( saves_spell( level, victim ) )
       return TRUE;
    af.type = sn;
@@ -1638,8 +1632,6 @@ bool spell_detect_evil( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_DETECT_EVIL ) )
-      return FALSE;
    af.type = sn;
    af.duration = 5 + ( level / 10 );
    af.modifier = 0;
@@ -1659,8 +1651,6 @@ bool spell_detect_hidden( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_DETECT_HIDDEN ) )
-      return FALSE;
    af.type = sn;
    af.duration = 4 + ( level / 8 );
    af.location = APPLY_NONE;
@@ -1680,8 +1670,6 @@ bool spell_detect_invis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_DETECT_INVIS ) )
-      return FALSE;
    af.type = sn;
    af.duration = 6 + ( level / 8 );
    af.modifier = 0;
@@ -1701,7 +1689,7 @@ bool spell_detect_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_DETECT_MAGIC ) || item_has_apply( victim, ITEM_APPLY_DET_MAG ) )
+   if( item_has_apply( victim, ITEM_APPLY_DET_MAG ) )
       return FALSE;
    af.type = sn;
    af.duration = 6 + ( level / 4 );
@@ -2311,8 +2299,6 @@ bool spell_faerie_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_FAERIE_FIRE ) )
-      return ( ch == victim ? FALSE : TRUE );
    af.type = sn;
    af.duration = 5 + ( level / 5 );
    af.location = APPLY_AC;
@@ -2368,8 +2354,6 @@ bool spell_fly( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_FLYING ) )
-      return ( ch == victim ? FALSE : TRUE );
    af.type = sn;
    af.duration = 3 + ( level / 6 );
    af.location = 0;
@@ -2653,7 +2637,7 @@ bool spell_infravision( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_INFRARED ) || item_has_apply( victim, ITEM_APPLY_INFRA ) )
+   if( item_has_apply( victim, ITEM_APPLY_INFRA ) )
       return ( ch == victim ? FALSE : TRUE );
    af.type = sn;
    af.duration = 4 + ( level / 3 );
@@ -2681,7 +2665,7 @@ bool spell_invis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
 
    if( ( victim = get_char_room( ch, target_name ) ) != NULL )
    {
-      if( IS_AFFECTED( victim, AFF_INVISIBLE ) || item_has_apply( victim, ITEM_APPLY_INV ) )
+      if( item_has_apply( victim, ITEM_APPLY_INV ) )
          return ( ch == victim ? FALSE : TRUE );
 
       act( "$n fades out of existence.", victim, NULL, NULL, TO_ROOM );
@@ -2864,7 +2848,7 @@ bool spell_mass_invis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
    for( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
    {
-      if( IS_AFFECTED( gch, AFF_INVISIBLE ) || item_has_apply( gch, ITEM_APPLY_INV ) )
+      if( item_has_apply( gch, ITEM_APPLY_INV ) )
          continue;
       act( "$n slowly fades out of existence.", gch, NULL, NULL, TO_ROOM );
       send_to_char( "You slowly fade out of existence.\r\n", gch );
@@ -2895,7 +2879,7 @@ bool spell_pass_door( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_PASS_DOOR ) || item_has_apply( victim, ITEM_APPLY_PASS_DOOR ) )
+   if( item_has_apply( victim, ITEM_APPLY_PASS_DOOR ) )
       return FALSE;
    af.type = sn;
    af.duration = 2 + ( level / 20 );
@@ -2935,7 +2919,7 @@ bool spell_protection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_PROTECT ) || item_has_apply( victim, ITEM_APPLY_PROT ) )
+   if( item_has_apply( victim, ITEM_APPLY_PROT ) )
       return ( ch == victim ? FALSE : TRUE );
    af.type = sn;
    af.duration = 8 + ( level / 5 );
@@ -2986,8 +2970,8 @@ bool spell_sanctuary( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_SANCTUARY ) || item_has_apply( victim, ITEM_APPLY_SANC ) )
-      return ( ch == victim ? FALSE : TRUE );
+   if( item_has_apply( victim, ITEM_APPLY_SANC ) )
+      return false;
    af.type = sn;
    af.duration = 5 + ( level / 20 );
    af.location = APPLY_NONE;
@@ -3006,8 +2990,6 @@ bool spell_sense_evil( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_DETECT_EVIL ) )
-      return FALSE;
    af.type = sn;
    af.duration = 5 + ( level / 10 );
    af.modifier = 0;
@@ -3070,7 +3052,7 @@ bool spell_sleep( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_SLEEP ) || level < victim->level || saves_spell( level, victim ) )
+   if( level < victim->level || saves_spell( level, victim ) )
       return TRUE;
 
    af.type = sn;
@@ -3965,7 +3947,7 @@ bool spell_bloody_tears( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
 {
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
 
-   if( IS_AFFECTED( victim, AFF_BLIND ) || saves_spell( level, victim ) )
+   if( saves_spell( level, victim ) )
       return TRUE;
 
    act( "$n's eyes start bleeding!", victim, NULL, NULL, TO_ROOM );
@@ -4074,7 +4056,7 @@ bool spell_phase( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_PASS_DOOR ) || item_has_apply( victim, ITEM_APPLY_PASS_DOOR ) )
+   if( item_has_apply( victim, ITEM_APPLY_PASS_DOOR ) )
       return FALSE;
 
    af.type = sn;
@@ -4221,7 +4203,7 @@ bool spell_see_magic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_DETECT_MAGIC ) || item_has_apply( victim, ITEM_APPLY_HIDE ) )
+   if( item_has_apply( victim, ITEM_APPLY_HIDE ) )
       return FALSE;
    af.type = sn;
    af.duration = 6 + ( level / 4 );
@@ -4386,8 +4368,7 @@ bool spell_hypnosis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
       return FALSE;
    }
 
-   if( IS_AFFECTED( victim, AFF_CHARM )
-       || IS_AFFECTED( ch, AFF_CHARM ) || level - 5 < victim->level || saves_spell( level, victim ) )
+   if( IS_AFFECTED( ch, AFF_CHARM ) || level - 5 < victim->level || saves_spell( level, victim ) )
       return TRUE;
    if( IS_VAMP( victim ) && ( IS_NPC( victim ) ) )
    {
@@ -4588,7 +4569,7 @@ bool spell_night_vision( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_INFRARED ) || item_has_apply( victim, ITEM_APPLY_INFRA ) )
+   if( item_has_apply( victim, ITEM_APPLY_INFRA ) )
       return ( ch == victim ? FALSE : TRUE );
    act( "$n's eyes glow red.\r\n", ch, NULL, NULL, TO_ROOM );
    af.type = sn;
@@ -4699,7 +4680,7 @@ bool spell_flare( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_BLIND ) || saves_spell( level, victim ) )
+   if( saves_spell( level, victim ) )
       return TRUE;
 
    if( victim == ch )
@@ -7022,15 +7003,9 @@ bool spell_black_curse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
    CHAR_DATA *victim = ( CHAR_DATA * ) vo;
    AFFECT_DATA af;
 
-   if( IS_AFFECTED( victim, AFF_CURSE ) )
-   {
-      send_to_char( "They are already weakened!\r\n", ch );
-      return FALSE;
-   }
    if( saves_spell( level, victim ) )
       return TRUE;
-   if( saves_spell( level, victim ) )
-      return TRUE;
+
    af.type = sn;
    af.duration = 2 * ( level / 8 );
    af.location = APPLY_HITROLL;
