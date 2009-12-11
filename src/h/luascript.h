@@ -31,7 +31,6 @@ int L_character_info P_((lua_State *L));
 int L_obj_info P_((lua_State *L));
 int L_room_info P_((lua_State *L));
 int L_send_to_char P_((lua_State *L));
-int L_recho P_((lua_State *L));
 void call_lua P_((LUA_DATA *lua, string str, string arg));
 void call_lua P_((CHAR_DATA *ch, string str, string arg));
 void call_lua P_((OBJ_DATA *ob, string str, string arg));

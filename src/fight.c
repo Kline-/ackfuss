@@ -952,7 +952,10 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
      act("@@WYou @@e*@@RCRUSH@@e* @@W$N's body with the force of your blow!@@N",ch,NULL,victim,TO_CHAR);
      act("@@W$n @@e*@@RCRUSHES@@e* @@Wyour body with the force of $s blow!@@N",ch,NULL,victim,TO_VICT);
      act("@@W$n @@e*@@RCRUSHES@@e* @@W$N's body with the force of $s blow!@@N",ch,NULL,victim,TO_NOTVICT);
-     dam *= 2.5;
+     if( !IS_NPC(ch) && ch->pcdata->order[0] == CLS_WAR )
+      dam *= 3.0;
+     else
+      dam *= 2.5;
     }
    }
 
@@ -2211,7 +2214,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    CHAR_DATA *target = NULL;
    CHAR_DATA *wch;
    list<CHAR_DATA *>::iterator li;
-   char *name = NULL;
+   const char *name = NULL;
 
    one_argument( argument, arg );
 
@@ -2259,7 +2262,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
          int gold;
          time_t lifetime;
 
-         snprintf(name,MSL,"%s",ch->get_name());
+         name = ch->get_name();
          corpse = create_object( get_obj_index( OBJ_VNUM_CORPSE_NPC ), 0 );
          corpse->timer = number_range( 3, 6 );
          corpse->level = ch->level; /* for animate spell */
@@ -2285,7 +2288,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
    }
    else  /* player */
    {
-      snprintf(name,MSL,"%s",ch->name.c_str());
+      name = ch->get_name();
       corpse = create_object( get_obj_index( OBJ_VNUM_CORPSE_PC ), 0 );
       corpse->timer = number_range( 20, 30 );
 
@@ -3438,8 +3441,8 @@ DO_FUN(do_backstab)
      /*
       * HIT!
       */
-
-      if( !IS_NPC( ch ) && ch->pcdata->order[0] == 2 && number_percent( ) == chance )
+ch->send("chance: %d",chance);
+      if( !IS_NPC( ch ) && ch->pcdata->order[0] == CLS_THI && number_percent( ) <= (chance/2) )
       {
        crack = TRUE;
        dam *= 2;
@@ -3896,7 +3899,7 @@ DO_FUN(do_circle)
        * HIT! 
        */
 
-      if( !IS_NPC( ch ) && ch->pcdata->order[0] == 2 && number_percent(  ) == chance )
+      if( !IS_NPC( ch ) && ch->pcdata->order[0] == CLS_THI && number_percent(  ) <= (chance/2) )
       {
        crack = TRUE;
        dam *= 2;

@@ -46,8 +46,8 @@ bool char_data::check_cooldown( const char *skill )
  {
   switch( skill_table[sn].cooldown )
   {
-   case COOLDOWN_OFF: send_to_char("@@eYour offensive abilities are on cooldown right now.\r\n",this); break;
-   case COOLDOWN_DEF: send_to_char("@@lYour defensive abilities are on cooldown right now.\r\n",this); break;
+   case COOLDOWN_OFF: send("@@eYour offensive abilities are on cooldown right now.\r\n"); break;
+   case COOLDOWN_DEF: send("@@lYour defensive abilities are on cooldown right now.\r\n"); break;
   }
   return true;
  }
@@ -64,8 +64,8 @@ bool char_data::check_cooldown( int pos )
  {
   switch( pos )
   {
-   case COOLDOWN_OFF: send_to_char("@@eYour offensive abilities are on cooldown right now.\r\n",this); break;
-   case COOLDOWN_DEF: send_to_char("@@lYour defensive abilities are on cooldown right now.\r\n",this); break;
+   case COOLDOWN_OFF: send("@@eYour offensive abilities are on cooldown right now.\r\n"); break;
+   case COOLDOWN_DEF: send("@@lYour defensive abilities are on cooldown right now.\r\n"); break;
   }
   return true;
  }
@@ -198,6 +198,22 @@ const char *char_data::get_title( )
   return "";
  else
   return pcdata->title;
+}
+
+void char_data::rsend( string txt, ... )
+{
+ DESCRIPTOR_DATA *d;
+
+ if( this->in_room == NULL )
+  return;
+
+ for( d = first_desc; d; d = d->next )
+ {
+  if( d->connected == CON_PLAYING && d->character->in_room == this->in_room )
+   d->character->send(txt);
+ }
+
+ return;
 }
 
 void char_data::send( string txt, ... )

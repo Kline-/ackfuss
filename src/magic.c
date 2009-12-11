@@ -205,6 +205,9 @@ int mana_cost( CHAR_DATA * ch, int sn )
       else if( IS_SET( race_table[ch->race].race_flags, RACE_MOD_STRONG_MAGIC ) )
          mincost *= .60;
    }
+   if( !IS_NPC(ch) && ch->pcdata->order[0] == CLS_CLE && skill_table[sn].target == TAR_CHAR_DEFENSIVE )
+    mincost *= 0.50;
+
    return (int)mincost;
 }
 
@@ -385,6 +388,12 @@ bool saves_spell( int level, CHAR_DATA * victim )
    if( !IS_NPC( victim ) && ( IS_SET( race_table[victim->race].race_flags, RACE_MOD_RESIST_SPELL ) ) )
       save += 20;
    save = URANGE( 5, save, 95 );
+
+   if( !IS_NPC(victim) && victim->pcdata->order[0] == CLS_PSI && number_percent() <= 10 )
+   {
+    victim->send("@@aYou stop the spell with the sheer power of your mind!@@N\r\n");
+    save = 101;
+   }
 
    if( number_percent(  ) < save )
       saved = TRUE;
@@ -623,6 +632,12 @@ void cast( CHAR_DATA * ch, char *argument )
 
    if( check_charm_aff(ch,CHARM_AFF_MAGE) )
     mana *= ((100 - get_charm_bonus(ch,CHARM_AFF_MAGE)) / 100);
+
+   if( !IS_NPC(ch) && ch->pcdata->order[0] == CLS_MAG && number_percent() <= 10 )
+   {
+    ch->send("@@aYou concentrate deeply as your mind gains a focused clarity!@@N");
+    mana = 0;
+   }
 
    /*
     * Locate targets.

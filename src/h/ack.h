@@ -555,6 +555,7 @@ class char_data
   short get_level( const char *what = '\0' );
   const char *get_name( CHAR_DATA *looker = NULL );
   const char *get_title( void );
+  void rsend( string txt, ... ); __attribute__ ((format (printf, 2, 3)));
   void send( string txt, ... ); __attribute__ ((format (printf, 2, 3)));
   void set_cooldown( const char *skill );
   void set_cooldown( int pos, float duration );

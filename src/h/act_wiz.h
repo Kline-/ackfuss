@@ -23,7 +23,6 @@ DECLARE_DO_FUN(do_deny);
 DECLARE_DO_FUN(do_disconnect);
 DECLARE_DO_FUN(do_pardon);
 DECLARE_DO_FUN(do_echo);
-void recho P_((ROOM_INDEX_DATA *room, const char *argument));
 DECLARE_DO_FUN(do_recho);
 ROOM_INDEX_DATA *find_location P_((CHAR_DATA *ch, char *arg));
 DECLARE_DO_FUN(do_transfer);

@@ -415,22 +415,6 @@ DO_FUN(do_echo)
    return;
 }
 
-void recho( ROOM_INDEX_DATA *room, const char *argument )
-{
- string str = argument;
- DESCRIPTOR_DATA *d;
-
- str += "@@N";
-
- for( d = first_desc; d; d = d->next )
- {
-  if( d->connected == CON_PLAYING && d->character->in_room == room )
-   send_to_char(str.c_str(),d->character);
- }
-
- return;
-}
-
 DO_FUN(do_recho)
 {
    string str = argument;
@@ -442,7 +426,7 @@ DO_FUN(do_recho)
       return;
    }
 
-   recho(ch->in_room,str.c_str());
+   ch->rsend(str);
 
    return;
 }

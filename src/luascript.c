@@ -71,7 +71,6 @@ static const struct luaL_reg mudlib [] =
  {"obj_info",     L_obj_info      },
  {"room_info",    L_room_info     },
  {"send_to_char", L_send_to_char  },
- {"recho",        L_recho         },
  {NULL, NULL}
 };
 
@@ -581,12 +580,6 @@ int L_room_info( lua_State *L )
 int L_send_to_char( lua_State *L )
 {
  send_to_char(luaL_checkstring(L,1),L_getchar(L));
- return 0;
-}
-
-int L_recho( lua_State *L )
-{
- recho(L_getroom(L),luaL_checkstring(L,1));
  return 0;
 }
 
