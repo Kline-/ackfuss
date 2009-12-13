@@ -755,6 +755,7 @@
 #define CHANNEL_OOC        27
 #define CHANNEL_QUEST      28
 #define CHANNEL_GAME       29
+#define CHANNEL_MAX        30
 
 /* 
  * Monitor channels - for imms to select what mud-based info they receive

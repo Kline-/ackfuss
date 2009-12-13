@@ -3870,7 +3870,7 @@ void check_chistory( CHAR_DATA *ch, int channel )
  bool found = FALSE;
  char buf[MAX_STRING_LENGTH];
 
- x = (bv_log(channel)-1);
+ x = channel;
 
  for( y = 0; y < MAX_HISTORY; y++ )
   if( chan_history.message[x][y][0] != '\0' )
@@ -3953,7 +3953,7 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
 {
  short x,y = 0;
 
- x = (bv_log(channel)-1);
+ x = channel;
 
  for( y = 0; y < MAX_HISTORY; y++ )
  {

@@ -1150,10 +1150,10 @@ class lookup_data
 
 struct chanhistory
 {
- time_t time[30][MAX_HISTORY];
- char message[30][MAX_HISTORY][MAX_STRING_LENGTH]; /* 30 channels, each with MAX_HISTORY, length of MSL */
- char aname[30][MAX_HISTORY][128]; /* To track area, for yell */
- int cbit[30][MAX_HISTORY]; /* To track which clan, family, tribe, or race */
+ time_t time[CHANNEL_MAX][MAX_HISTORY];
+ char message[CHANNEL_MAX][MAX_HISTORY][MAX_STRING_LENGTH]; /* 30 channels, each with MAX_HISTORY, length of MSL */
+ char aname[CHANNEL_MAX][MAX_HISTORY][128]; /* To track area, for yell */
+ int cbit[CHANNEL_MAX][MAX_HISTORY]; /* To track which clan, family, tribe, or race */
 };
 
 class record_data
