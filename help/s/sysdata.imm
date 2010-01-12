@@ -21,6 +21,8 @@ Mob HR               Every mob's HR is multiplied by this number each load.
 Mob MP               Every mob's MP is multiplied by this number each load.
 Mob MV               Every mob's MV is multiplied by this number each load.
 Mob SVS              Every mob's SVS is multiplied by this number each load.
+Num Greeting         Total number of greeting screens to randomly pick from.
+                     Setting this to 0 will only use greeting0.mrt and no others.
 Playtesters          These characters are allowed to login while the game
                      is wizlocked.
 Pulse Per Sec        The number of game 'pulses' each second. This will directly

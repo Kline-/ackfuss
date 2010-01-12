@@ -124,6 +124,9 @@ void load_sysdata( void )
     KEY("Mob_MV",        sysdata.mob_mv,        fread_float(fp));
     KEY("Mob_SVS",       sysdata.mob_svs,       fread_float(fp));
     break;
+   case 'N':
+    KEY("Num_Greeting",  sysdata.num_greeting,  fread_number(fp));
+    break;
    case 'P':
     KEY("Playtesters",   sysdata.playtesters,   fread_string(fp));
     KEY("Pulse",         sysdata.pulse,         fread_number(fp));
@@ -176,6 +179,7 @@ void save_sysdata( void )
  fprintf(fp, "Mob_MP        %0.4f\n", sysdata.mob_mp);
  fprintf(fp, "Mob_MV        %0.4f\n", sysdata.mob_mv);
  fprintf(fp, "Mob_SVS       %0.4f\n", sysdata.mob_svs);
+ fprintf(fp, "Num_Greeting  %d\n",    sysdata.num_greeting);
  fprintf(fp, "Playtesters   %s~\n",   sysdata.playtesters);
  fprintf(fp, "Pulse         %d\n",    sysdata.pulse);
  fprintf(fp, "Shownumbers   %d\n",    sysdata.shownumbers);
@@ -204,7 +208,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\r\n",ch);
   send_to_char("  strings: playtesters\r\n",ch);
   send_to_char("  options: damcap expmult killsperlev maxmovedisp maxpushback \r\n",ch);
-  send_to_char("           mob[ac | dr | hp | hr | mp | mv | svs] pulse shownumbers\r\n",ch);
+  send_to_char("           mob[ac | dr | hp | hr | mp | mv | svs] numgreeting pulse shownumbers\r\n",ch);
   return;
  }
 
@@ -247,6 +251,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Mob SVS        ]       [%15.4f]\r\n",sysdata.mob_svs);
   strncat(outbuf,catbuf,MSL-1);
+  snprintf(catbuf,MSL,"[Num Greeting   ]       [%15d]\r\n",sysdata.num_greeting);
+  strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Playtesters    ]       [%15s]\r\n",sysdata.playtesters);
   strncat(outbuf,catbuf,MSL-1);
   snprintf(catbuf,MSL,"[Pulse Per Sec  ]       [%15d]\r\n",sysdata.pulse);
@@ -285,6 +291,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   sysdata.mob_mv = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_cmp(arg1,"mobsvs") )
   sysdata.mob_svs = atof(arg2) != 0 ? atof(arg2) : 1;
+ else if( !str_cmp(arg1,"numgreeting") )
+  sysdata.num_greeting = atoi(arg2) >= 0 ? atoi(arg2) : 0;
  else if( !str_prefix(arg1,"playtesters") )
   sysdata.playtesters = str_mod(sysdata.playtesters,arg2);
  else if( !str_prefix(arg1,"pulse") )
@@ -324,6 +332,7 @@ void init_sysdata( void )
  sysdata.mob_mp = 1;
  sysdata.mob_mv = 1;
  sysdata.mob_svs = 1;
+ sysdata.num_greeting = 5;
  sysdata.playtesters = "";
  sysdata.pulse = 8;
  sysdata.shownumbers = TRUE;

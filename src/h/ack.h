@@ -1223,6 +1223,7 @@ struct sysdata_type
  float mob_mp;
  float mob_mv;
  float mob_svs;
+ short num_greeting;
  char *playtesters;
  short pulse;
  bool shownumbers;

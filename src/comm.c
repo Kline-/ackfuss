@@ -727,7 +727,7 @@ void new_descriptor( int d_control )
 
       send_telopts(dnew);
 
-      snprintf( buf, MSL, "%s/g/greeting%d.%s", HELP_DIR, number_range(0,MAX_GREETING), HELP_MORT );
+      snprintf( buf, MSL, "%s/g/greeting%d.%s", HELP_DIR, number_range(0,sysdata.num_greeting), HELP_MORT );
 
       if( (fp = file_open(buf,"r")) != NULL )
        while( fgets(buf,MAX_STRING_LENGTH,fp) )
