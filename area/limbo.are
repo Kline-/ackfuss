@@ -15,89 +15,124 @@ VnumRange 1 100
 End
 
 #ROOM
-Vnum  1
-Desc  You are floating in a formless void; detached from all sensation of physical matter. A swirling, glowing, light surrounds you as it  fades into the darkness around you without any trace of edges or shadow.~
-Flags 3 4 5 9 11 15 17 18 EOL
-Name  @@WLimbo@@N~
-Sect  11
+Vnum       1
+Desc       You are floating in a formless void; detached from all sensation of physical matter. A swirling, glowing, light surrounds you as it  fades into the darkness around you without any trace of edges or shadow.~
+Flags      3 4 5 9 11 15 17 18 EOL
+Name       @@WLimbo@@N~
+ScriptName ~
+Sect       11
 End
 #REXTRA
-Desc       There are steaming puff-droppings here.~
-Keyword    dropping~
+Desc          There are steaming puff-droppings here.~
+Keyword       dropping~
 End
 
 #ROOM
-Vnum  2
-Desc  Unfortunately you have been transferred to jail for breaking one of our rules. We are very laid back here but certain things must be adhered to. As you look around this cold, damp, bleak looking cell take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful realm.~
-Flags 3 4 5 9 11 14 15 17 18 19 EOL
-Name  @@dJail@@N~
-Sect  11
+Vnum       2
+Desc       Unfortunately you have been transferred to jail for breaking one of our rules. We are very laid back here but certain things must be adhered to. As you look around this cold, damp, bleak looking cell take some time to reflect on your crime and, hopefully, with an apology and repentance you'll be able to again enjoy our wonderful realm.~
+Flags      3 4 5 9 11 14 15 17 18 19 EOL
+Name       @@dJail@@N~
+ScriptName ~
+Sect       11
 End
 
 #ROOM
-Vnum  3
-Desc  If you're here, there is probably a problem. Please notify an immortal! Only polymorphed players should be here for the duration of their spell to ensure they are "safe" in their real self.~
-Flags 3 4 5 9 11 14 15 17 18 EOL
-Name  Body Storage~
-Sect  11
+Vnum       3
+Desc       If you're here, there is probably a problem. Please notify an immortal! Only polymorphed players should be here for the duration of their spell to ensure they are "safe" in their real self.~
+Flags      3 4 5 9 11 14 15 17 18 EOL
+Name       Body Storage~
+ScriptName ~
+Sect       11
 End
 
 #MOBILE
 Vnum      1
 AcMod     0
 Act       17 19 29 30 EOL
-Affected  524288
-Alignment 0
-Cast      0
-Clan      0
-Class     3
-Def       0
-Desc      ~
-DrMod     0
-HrMod     0
-Level     1
-LongDesc  @@yP@@buff @@dthe @@aM@@cagic @@rD@@Gragon @@dfly's around lazily in the void...@@N~
-PlrName   puff magic dragon~
-Position  0
-Race      8
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc @@yP@@buff @@dthe @@aM@@cagic @@rD@@Gragon@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   524288
+Alignment  0
+Cast       0
+Clan       0
+Class      3
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      1
+LongDesc   @@yP@@buff @@dthe @@aM@@cagic @@rD@@Gragon @@dfly's around lazily in the void...@@N~
+PlrName    puff magic dragon~
+Position   0
+Race       8
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@yP@@buff @@dthe @@aM@@cagic @@rD@@Gragon@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      2
 AcMod     0
 Act       17 18 19 21 29 30 EOL
-Affected  1680062
-Alignment -1000
-Cast      1024
-Clan      0
-Class     2
-Def       0
-Desc      The Dark Stalker is a product of the Dark Powers. It's only purpose in life is to search out it's victim, and try and kill it. It looks dark, powerful, and ready to kill.~
-DrMod     0
-HrMod     0
-Level     80
-LongDesc  A Dark Stalker stands here, searching for it's prey.~
-PlrName   dark stalker~
-Position  0
-Race      0
-RaceMods  66049
-Resist    0
-Sex       1
-ShortDesc the Dark Stalker~
-Skills    17928
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   1680062
+Alignment  -1000
+Cast       1024
+Clan       0
+Class      2
+Def        0
+Desc       The Dark Stalker is a product of the Dark Powers. It's only purpose in life is to search out it's victim, and try and kill it. It looks dark, powerful, and ready to kill.~
+DrMod      0
+HrMod      0
+Level      80
+LongDesc   A Dark Stalker stands here, searching for it's prey.~
+PlrName    dark stalker~
+Position   0
+Race       0
+RaceMods   66049
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  the Dark Stalker~
+Skills     17928
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
+End
+
+#MOBILE
+Vnum      3
+AcMod     0
+Act       EOL
+Affected   0
+Alignment  0
+Cast       0
+Clan       -1
+Class      0
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      1
+LongDesc   @@ba little brown doggy sniffs around the room@@N~
+PlrName    little brown doggy~
+Position   0
+Race       19
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        0
+ShortDesc  @@ba little brown doggy@@N~
+Skills     0
+SMagic     0
+SpecFun    spec_fido
+Suscept    0
+WMagic     0
 End
 
 #OBJECT
@@ -109,6 +144,7 @@ Level      1
 LongDesc   One miserable gold coin.~
 Name       coin gold~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a gold coin~
 Speed      4.00
 Type       20
@@ -126,6 +162,7 @@ Level      1
 LongDesc   A pile of gold coins.~
 Name       coins gold~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  %d gold coins~
 Speed      1.01
 Type       20
@@ -143,6 +180,7 @@ Level      1
 LongDesc   The corpse of %s is lying here.~
 Name       corpse~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  corpse of %s~
 Speed      4.00
 Type       23
@@ -160,6 +198,7 @@ Level      1
 LongDesc   The corpse of %s is lying here.~
 Name       corpse~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  corpse of %s~
 Speed      4.00
 Type       24
@@ -177,6 +216,7 @@ Level      1
 LongDesc   The severed head of %s is lying here.~
 Name       head~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  head of %s~
 Speed      3.20
 Type       13
@@ -194,6 +234,7 @@ Level      1
 LongDesc   The torn-out heart of %s is lying here.~
 Name       heart~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  heart of %s~
 Speed      3.32
 Type       13
@@ -211,6 +252,7 @@ Level      1
 LongDesc   The sliced-off arm of %s is lying here.~
 Name       arm~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  arm of %s~
 Speed      3.12
 Type       13
@@ -228,6 +270,7 @@ Level      1
 LongDesc   The sliced-off leg of %s is lying here.~
 Name       leg~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  leg of %s~
 Speed      3.00
 Type       13
@@ -245,6 +288,7 @@ Level      1
 LongDesc   The sloppy brain of %s has plopped out here.~
 Name       sloppy brain~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  sloppy brain of %s~
 Speed      4.00
 Type       13
@@ -262,6 +306,7 @@ Level      1
 LongDesc   A delicious @@am@@ya@@ag@@yi@@ac @@mm@@pu@@mshr@@poo@@mm@@N is here.~
 Name       magic mushroom~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@aM@@ya@@ag@@yi@@ac @@mM@@pu@@mshr@@poo@@mm@@N~
 Speed      3.04
 Type       19
@@ -279,6 +324,7 @@ Level      1
 LongDesc   A @@ybright@@N ball of @@blight@@N shimmers in the air.~
 Name       bright ball light~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@ybright@@N ball of @@blight@@N~
 Speed      2.21
 Type       1
@@ -296,6 +342,7 @@ Level      1
 LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@lspr@@Bi@@lng@@N flows from the ground here.~
 Name       magical spring~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@lspr@@Bi@@lng@@N~
 Speed      2.30
 Type       25
@@ -313,6 +360,7 @@ Level      1
 LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@Wwindow@@N floats before you. Where does it look?~
 Name       magical window~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@Wwindow@@N~
 Speed      2.44
 Type       7
@@ -330,6 +378,7 @@ Level      50
 LongDesc   @@Ra F@@ei@@Rr@@ee @@RBl@@ea@@Rd@@ee@@N smolders on the ground.~
 Name       fireblade fire blade~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@Ra F@@ei@@Rr@@ee @@RBl@@ea@@Rd@@ee@@N~
 Speed      2.80
 Type       5
@@ -355,6 +404,7 @@ Level      1
 LongDesc   A small @@bb@@yu@@bndl@@ye @@Nof @@Gf@@roo@@Gd@@N sits here.~
 Name       small food bundle~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a small @@bb@@yu@@bndl@@ye @@Nof @@Gf@@roo@@Gd@@N~
 Speed      2.13
 Type       19
@@ -372,6 +422,7 @@ Level      1
 LongDesc   A @@am@@ya@@ag@@yi@@ac@@ya@@al @@cbe@@aa@@cc@@ao@@cn@@N floats gently before you.~
 Name       magical beacon~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@cbe@@aa@@cc@@ao@@cn@@N~
 Speed      1.44
 Type       6
@@ -389,6 +440,7 @@ Level      1
 LongDesc   ~
 Name       magical portal~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@am@@ya@@ag@@yi@@ac@@ya@@al @@bp@@yo@@brt@@ya@@bl@@N~
 Speed      4.00
 Type       7
@@ -406,6 +458,7 @@ Level      1
 LongDesc   @@dA small, living figurine lies here, groaning in agony@@N.~
 Name       soul figurine~
 ObjFun     objfun_soul_moan
+ScriptName ~
 ShortDesc  @@da small, living figurine@@N~
 Speed      4.00
 Type       28
@@ -423,6 +476,7 @@ Level      1
 LongDesc   @@dA flask filled with an @@eevil@@d dark liquid lies here, screaming faintly.@@N~
 Name       soul potion~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@dA @@eSoul @@dPotion@@N~
 Speed      1.33
 Type       10
@@ -440,6 +494,7 @@ Level      120
 LongDesc   A staff of @@RE@@el@@lem@@Be@@an@@Wtal Expl@@ao@@Bs@@li@@eo@@Rn@@N glows brightly.~
 Name       staff elemental explosion~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a staff of @@RE@@el@@lem@@Be@@an@@Wtal Expl@@ao@@Bs@@li@@eo@@Rn@@N~
 Speed      1.01
 Type       4
@@ -469,6 +524,7 @@ Level      80
 LongDesc   @@dA @@lSecurity @@dPass@@N lies here discarded.~
 Name       security pass~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@lSecurity @@dPass@@N~
 Speed      2.33
 Type       9

@@ -4664,7 +4664,7 @@ DO_FUN(do_dog)
 DO_FUN(do_togbuild)
 {
    /*
-    * Toggles PC's ch->act ACT_BUILDER value 
+    * Toggles PC's ch->act ACT_BUILDER value
     * * -S-
     */
 

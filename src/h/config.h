@@ -296,7 +296,7 @@
 #define MOB_VNUM_STALKER           2
 #define MOB_VNUM_CITYGUARD         3060
 #define MOB_VNUM_VAMPIRE           3404
-#define MOB_VNUM_DOGGY             99
+#define MOB_VNUM_DOGGY             3
 #define MOB_VNUM_ZOMBIE           11004
 #define MOB_VNUM_WATERELEM        1028
 #define MOB_VNUM_SKELETON         1028
@@ -755,7 +755,8 @@
 #define CHANNEL_OOC        27
 #define CHANNEL_QUEST      28
 #define CHANNEL_GAME       29
-#define CHANNEL_MAX        30
+#define CHANNEL_QUESTMOB   30
+#define CHANNEL_MAX        31
 
 /* 
  * Monitor channels - for imms to select what mud-based info they receive

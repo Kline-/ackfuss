@@ -524,7 +524,7 @@ void game_loop( int game_control )
          d_next = d->next;
 
          /*
-          * spec: disconnect people idling on login 
+          * spec: disconnect people idling on login
           */
          if( d->connected < 0 && d->timeout < current_time )
          {
@@ -715,7 +715,7 @@ void new_descriptor( int d_control )
    LINK( dnew, first_desc, last_desc, next, prev );
 
    /*
-    * spec: set initial login timeout 
+    * spec: set initial login timeout
     */
    dnew->timeout = current_time + 180;
 
@@ -835,13 +835,13 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d )
    int iStart;
 
    /*
-    * Hold horses if pending command already. 
+    * Hold horses if pending command already.
     */
    if( d->incomm[0] != '\0' )
       return TRUE;
 
    /*
-    * Check for overflow. 
+    * Check for overflow.
     */
    iStart = strlen( d->inbuf );
    if( iStart >= (int)sizeof( d->inbuf ) - 10 )
@@ -855,7 +855,7 @@ bool read_from_descriptor( DESCRIPTOR_DATA * d )
    }
 
    /*
-    * Snarf input. 
+    * Snarf input.
     */
    for( ;; )
    {
@@ -1979,7 +1979,7 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
                race_table[iRace].race_title, race_table[iRace].comment );
       strncat( menu, buf, MSL-1 );
 
-      snprintf( buf, MSL, "  %-2d  %-2d  %-2d  %-2d  %-2d\r\n",
+      snprintf( buf, MSL, "      %-2d  %-2d  %-2d  %-2d  %-2d\r\n",
                race_table[iRace].race_str,
                race_table[iRace].race_int,
                race_table[iRace].race_wis, race_table[iRace].race_dex, race_table[iRace].race_con );
@@ -2200,7 +2200,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          }
 
          /*
-          * Old player 
+          * Old player
           */
          write_to_buffer( d, "Password: " );
          write_to_buffer( d, echo_off_str );
@@ -2633,7 +2633,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       bool ok = TRUE;
 
       /*
-       * Parity set to 1 for each class found. 
+       * Parity set to 1 for each class found.
        */
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
          parity[cnt] = -1;
@@ -2661,7 +2661,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       }
 
       /*
-       * If 5 unique classes given, parity[cnt] == 1 
+       * If 5 unique classes given, parity[cnt] == 1
        */
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
          if( parity[cnt] == -1 ) /* Then a class was missed */
@@ -2675,7 +2675,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
       }
 
       /*
-       * Copy classes across to pcdata 
+       * Copy classes across to pcdata
        */
       for( cnt = 0; cnt < MAX_CLASS; cnt++ )
        ch->pcdata->order[cnt] = classes[cnt];
@@ -2724,7 +2724,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
    {
       list<NOTE_DATA *>::iterator li;
       /*
-       * Prime level idea dropped.  Give ch 1 level in their best class 
+       * Prime level idea dropped.  Give ch 1 level in their best class
        */
       if( ch->level == 0 )
       {
@@ -2746,10 +2746,6 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
       if( ch->level == 0 )
       {
-         /*
-          * OBJ_DATA *obj; unused 
-          */
-
          switch ( class_table[ch->p_class].attr_prime )
          {
             case APPLY_STR:
@@ -2772,10 +2768,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          ch->level = 1;
 
          /*
-          * FIXME: this temp fix for m/c stuff 
+          * FIXME: this temp fix for m/c stuff
           */
          /*
-          * All Races get 5 classes now.. 
+          * All Races get 5 classes now..
           */
 
          ch->lvl[ch->p_class] = 1;
@@ -2788,6 +2784,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
           ch->level = MAX_LEVEL;
           ch->lvl[ch->p_class] = MAX_LEVEL;;
           ch->trust = MAX_LEVEL;
+          ch->act.flip(ACT_BUILDER);
           send_to_char("@@e@@f*** AS THE FIRST LOGIN, YOU HAVE BEEN ADVANCED TO MAX LEVEL ***@@N\r\n",ch);
           do_save(ch,"auto");            /* Lets write the pfile and mudinfo to ensure    */
           save_mudinfo();                /* if we crash that no one else logs in first to */

@@ -1042,348 +1042,360 @@ End
 Vnum      1051
 AcMod     0
 Act       2 10 11 17 19 26 29 30 31 EOL
-Affected  188
-Alignment 1000
-Cast      0
-Clan      0
-Class     3
-Def       0
-Desc      ~
-DrMod     0
-HrMod     0
-Level     140
-LongDesc  The @@WOld @@RWar @@dVeteran stands ready to assist in your training.@@N~
-PlrName   war veteran trainer old~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc @@WOld @@RWar @@dVeteran@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   188
+Alignment  1000
+Cast       0
+Clan       0
+Class      3
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      140
+LongDesc   The @@WOld @@RWar @@dVeteran stands ready to assist in your training.@@N~
+PlrName    war veteran trainer old~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@WOld @@RWar @@dVeteran@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1052
 AcMod     0
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     3
-Def       0
-Desc      ~
-DrMod     0
-HrMod     0
-Level     3
-LongDesc  The @@WLord @@Nof @@RT@@dhe @@RP@@dit@@N, @@RB@@ea@@dln@@eo@@Rr@@N, surveys the area.~
-PlrName   pit lord balnor~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc @@RB@@ea@@dln@@eo@@Rr@@N~
-Skills    16
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      3
+Def        0
+Desc       ~
+DrMod      0
+HrMod      0
+Level      3
+LongDesc   The @@WLord @@Nof @@RT@@dhe @@RP@@dit@@N, @@RB@@ea@@dln@@eo@@Rr@@N, surveys the area.~
+PlrName    pit lord balnor~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@RB@@ea@@dln@@eo@@Rr@@N~
+Skills     16
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1053
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     3
-Def       0
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@dmale @@Rwarrior@@N wanders throughout @@RT@@dhe @@RP@@dit.@@N~
-PlrName   novice male warrior~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc @@GNovice @@dMale @@RWarrior@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      3
+Def        0
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@dmale @@Rwarrior@@N wanders throughout @@RT@@dhe @@RP@@dit.@@N~
+PlrName    novice male warrior~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@GNovice @@dMale @@RWarrior@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1054
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     3
-Def       0
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@bfemale @@Rwarrior@@N wanders throughout @@RT@@dhe @@RP@@dit.@@N~
-PlrName   novice female warrior~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       2
-ShortDesc @@GNovice @@bFemale @@RWarrior@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      3
+Def        0
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@bfemale @@Rwarrior@@N wanders throughout @@RT@@dhe @@RP@@dit.@@N~
+PlrName    novice female warrior~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        2
+ShortDesc  @@GNovice @@bFemale @@RWarrior@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1055
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     0
-Def       0
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@dmale @@emage@@N is studying his spells.~
-PlrName   novice male mage~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc @@GNovice @@dMale @@eMage@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      0
+Def        0
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@dmale @@emage@@N is studying his spells.~
+PlrName    novice male mage~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@GNovice @@dMale @@eMage@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1056
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     0
-Def       0
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@bfemale @@emage@@N is studying her spells.~
-PlrName   novice female mage~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       2
-ShortDesc @@GNovice @@bFemale @@eMage@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      0
+Def        0
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@bfemale @@emage@@N is studying her spells.~
+PlrName    novice female mage~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        2
+ShortDesc  @@GNovice @@bFemale @@eMage@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1057
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     1
-Def       2
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@dmale @@acleric@@N diligently prays to his god.~
-PlrName   novice male cleric~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc @@GNovice @@dMale @@aCleric@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      1
+Def        2
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@dmale @@acleric@@N diligently prays to his god.~
+PlrName    novice male cleric~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@GNovice @@dMale @@aCleric@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1058
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     1
-Def       2
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@bfemale @@acleric@@N diligently prays to her god.~
-PlrName   novice female cleric~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       2
-ShortDesc @@GNovice @@bFemale @@aCleric@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      1
+Def        2
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@bfemale @@acleric@@N diligently prays to her god.~
+PlrName    novice female cleric~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        2
+ShortDesc  @@GNovice @@bFemale @@aCleric@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1059
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     2
-Def       0
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@dmale @@ythief@@N stalks about.~
-PlrName   novice male thief~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc @@GNovice @@dMale @@yThief@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      2
+Def        0
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@dmale @@ythief@@N stalks about.~
+PlrName    novice male thief~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@GNovice @@dMale @@yThief@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1060
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     2
-Def       0
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@bfemale @@ythief@@N stalks about.~
-PlrName   novice female thief~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       2
-ShortDesc @@GNovice @@bFemale @@yThief@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      2
+Def        0
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@bfemale @@ythief@@N stalks about.~
+PlrName    novice female thief~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        2
+ShortDesc  @@GNovice @@bFemale @@yThief@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1061
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     4
-Def       0
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@dmale @@mpsionicist@@N focuses his mental energies.~
-PlrName   novice male psionicist~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       1
-ShortDesc @@GNovice @@dMale @@mPsionicist@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      4
+Def        0
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@dmale @@mpsionicist@@N focuses his mental energies.~
+PlrName    novice male psionicist~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        1
+ShortDesc  @@GNovice @@dMale @@mPsionicist@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #MOBILE
 Vnum      1062
 AcMod     10
 Act       EOL
-Affected  0
-Alignment 0
-Cast      0
-Clan      0
-Class     4
-Def       0
-Desc      ~
-DrMod     -10
-HrMod     -10
-Level     1
-LongDesc  A @@Gnovice @@bfemale @@mpsionicist@@N focuses her mental energies.~
-PlrName   novice female psionicist~
-Position  0
-Race      0
-RaceMods  0
-Resist    0
-Sex       2
-ShortDesc @@GNovice @@bFemale @@mPsionicist@@N~
-Skills    0
-SMagic    0
-SpecFun   (null)
-Suscept   0
-WMagic    0
+Affected   0
+Alignment  0
+Cast       0
+Clan       0
+Class      4
+Def        0
+Desc       ~
+DrMod      -10
+HrMod      -10
+Level      1
+LongDesc   A @@Gnovice @@bfemale @@mpsionicist@@N focuses her mental energies.~
+PlrName    novice female psionicist~
+Position   0
+Race       0
+RaceMods   0
+Resist     0
+ScriptName ~
+Sex        2
+ShortDesc  @@GNovice @@bFemale @@mPsionicist@@N~
+Skills     0
+SMagic     0
+SpecFun    (null)
+Suscept    0
+WMagic     0
 End
 
 #OBJECT
@@ -1395,6 +1407,7 @@ Level      1
 LongDesc   ~
 Name       advanced~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  ~
 Speed      1.11
 Type       14
@@ -1412,6 +1425,7 @@ Level      1
 LongDesc   @@dA training key is here, perhaps you should take it?@@N~
 Name       training key~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@d a training key@@N~
 Speed      4.00
 Type       18
@@ -1429,6 +1443,7 @@ Level      1
 LongDesc   @@dA weapon rack holds a few @@Rblood caked @@dswords, spears, and axes.@@N~
 Name       weapon rack~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@da weapon rack@@N~
 Speed      3.20
 Type       15
@@ -1446,6 +1461,7 @@ Level      1
 LongDesc   @@dAn armor rack has some battered shields left on it.@@N~
 Name       armor rack~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@dan armor rack@@N~
 Speed      1.03
 Type       15
@@ -1463,6 +1479,7 @@ Level      1
 LongDesc   ~
 Name       battered shield~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@dA @@bBattered @@yShield@@N~
 Speed      3.12
 Type       9
@@ -1492,6 +1509,7 @@ Level      1
 LongDesc   @@dA sword, caked in @@Rblood@@d.@@N~
 Name       blood caked sword~
 ObjFun     (null)
+ScriptName obj_startup.lua~
 ShortDesc  @@RBlood @@dCaked Sword@@N~
 Speed      2.00
 Type       5
@@ -1517,6 +1535,7 @@ Level      1
 LongDesc   @@dAn axe, caked in @@Rblood@@d.@@N~
 Name       blood caked axe~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@RBlood @@dCaked Axe@@N~
 Speed      3.00
 Type       5
@@ -1542,6 +1561,7 @@ Level      1
 LongDesc   @@dA spear, caked in @@Rblood@@d.@@N~
 Name       blood caked spear~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@RBlood @@dCaked Spear@@N~
 Speed      4.00
 Type       5
@@ -1567,6 +1587,7 @@ Level      1
 LongDesc   A @@eto@@yrc@@Rh @@Nflickers @@bdimly @@Non the floor.~
 Name       dimly glowing torch~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@bDimly @@yGlowing @@eTo@@yrc@@Rh@@N~
 Speed      2.33
 Type       1
@@ -1612,6 +1633,7 @@ Level      1
 LongDesc   @@dA @@yminor @@Rblood@@dstone @@Nhas been discarded.~
 Name       minor bloodstone~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@da @@yminor @@Rblood@@dstone@@N~
 Speed      1.02
 Type       9
@@ -1649,6 +1671,7 @@ Level      1
 LongDesc   An @@baura@@N, ever so @@csa@@ycr@@aed@@N...~
 Name       sacred aura~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@cSa@@ycr@@aed @@bAura@@N~
 Speed      4.00
 Type       9
@@ -1674,6 +1697,7 @@ Level      1
 LongDesc   A @@Ws@@dk@@Wu@@dl@@Wl @@dcap@@N has been left here.~
 Name       skull cap~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@WS@@dk@@Wu@@dl@@Wl @@dCap@@N~
 Speed      4.00
 Type       9
@@ -1699,6 +1723,7 @@ Level      1
 LongDesc   A mixture of @@zface @@zpaint@@N.~
 Name       face paint~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@zFace @@zPaint@@N~
 Speed      2.24
 Type       9
@@ -1724,6 +1749,7 @@ Level      1
 LongDesc   A @@Wsi@@glv@@Wer @@dstud @@Nsparkles on the ground.~
 Name       silver stud~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@WSi@@glv@@Wer @@dStud@@N~
 Speed      2.22
 Type       9
@@ -1753,6 +1779,7 @@ Level      1
 LongDesc   A @@brat @@Wb@@do@@gn@@We @@Nnecklace has been carelessly discarded.~
 Name       rat bone necklace~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a @@brat @@Wb@@do@@gn@@We @@Nnecklace~
 Speed      3.12
 Type       9
@@ -1786,6 +1813,7 @@ Level      1
 LongDesc   @@dSpaulders @@Nmade of a @@bB@@yoa@@br@@y'@@bs @@Rt@@eu@@Rsks @@Nsit unused.~
 Name       boar tusk spaulders~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@bB@@yoa@@br @@RT@@eu@@Rsk @@dSpaulders@@N~
 Speed      4.00
 Type       9
@@ -1815,6 +1843,7 @@ Level      1
 LongDesc   A pair of @@bleather arm splints@@N.~
 Name       leather arm splits~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@bLeather Arm Splints@@N~
 Speed      3.42
 Type       9
@@ -1844,6 +1873,7 @@ Level      1
 LongDesc   A @@zm@@zu@@zl@@zt@@zi@@W-@@zc@@zo@@zl@@zo@@zr@@ze@@zd @@rbracelet @@Nlooks...awfully ugly.~
 Name       multi-colored bracelet beads~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@zM@@zu@@zl@@zt@@zi@@W-@@zC@@zo@@zl@@zo@@zr@@ze@@zd @@rBracelet of Beads@@N~
 Speed      2.14
 Type       9
@@ -1877,6 +1907,7 @@ Level      1
 LongDesc   A pair of @@Rb@@el@@Ro@@eo@@Rd@@ey @@dknuckles@@N has been left behind.~
 Name       bloody knuckles~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@RB@@el@@Ro@@eo@@Rd@@ey @@dKnuckles@@N~
 Speed      3.02
 Type       9
@@ -1906,6 +1937,7 @@ Level      1
 LongDesc   @@yA simple golden band@@N shines in the dust.~
 Name       simple golden band~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@ya simple golden band@@N~
 Speed      4.00
 Type       9
@@ -1935,6 +1967,7 @@ Level      1
 LongDesc   A tattered piece of cloth has been discarded here.~
 Name       tattered piece of cloth~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a tattered piece of cloth~
 Speed      3.12
 Type       9
@@ -1960,6 +1993,7 @@ Level      1
 LongDesc   @@bA hemp cord @@Nsits here in a pile.~
 Name       hemp cord~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@ba hemp cord@@N~
 Speed      1.00
 Type       9
@@ -1981,6 +2015,7 @@ Level      1
 LongDesc   A @@bbreastplate @@Nmade of solid @@ybrass @@Nlooks like it might offer some protection.~
 Name       brass breastplate~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@ba @@ybrass @@bbreastplate@@N~
 Speed      4.00
 Type       9
@@ -2014,6 +2049,7 @@ Level      1
 LongDesc   A pair of  @@bleather leggings@@N look like they might offer some protection.~
 Name       leather leggings~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  @@bLeather Leggings@@N~
 Speed      1.32
 Type       9
@@ -2047,6 +2083,7 @@ Level      1
 LongDesc   A pair of @@bwell-worn @@ysandals@@N look like they're falling apart.~
 Name       pair well-worn sandals~
 ObjFun     (null)
+ScriptName ~
 ShortDesc  a pair of @@bwell-worn @@ysandals@@N~
 Speed      2.33
 Type       9
