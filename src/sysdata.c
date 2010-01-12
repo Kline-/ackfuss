@@ -291,7 +291,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
   sysdata.mob_mv = atof(arg2) != 0 ? atof(arg2) : 1;
  else if( !str_cmp(arg1,"mobsvs") )
   sysdata.mob_svs = atof(arg2) != 0 ? atof(arg2) : 1;
- else if( !str_cmp(arg1,"numgreeting") )
+ else if( !str_prefix(arg1,"numgreeting") )
   sysdata.num_greeting = atoi(arg2) >= 0 ? atoi(arg2) : 0;
  else if( !str_prefix(arg1,"playtesters") )
   sysdata.playtesters = str_mod(sysdata.playtesters,arg2);
