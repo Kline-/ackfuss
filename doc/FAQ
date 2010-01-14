@@ -19,3 +19,14 @@ A. Either create a new .c file as outlined above or open an existing one and scr
    add a DECLARE_DO_FUN(do_my_cool_cmd); to the bottom of the appropriate header file
    and place an entry for it in the cmd_table located in interp.c. If in doubt, just
    look at another command for reference.
+
+
+Q. How do I associate multiple keywords with a single helpfile?
+
+A. You can make multiple keywords point to a single helpfile by symlinking to it.
+   For example, you want the "Warrior" file to also be accessible via the keyword
+   "Fighter". You would run the following commands in your shell, from within the
+   help dir: ln -s w/warrior.mrt f/fighter.mrt
+   Now when someone uses "help fighter" they will be displayed the contents of the
+   help/w/warrior.mrt file, just as if they had used "help warrior".
+   
