@@ -174,7 +174,7 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
 
     if ( !IS_VAMP( ch ) )
     {
-        send_to_char( "Better leave that to the REAL Vampyres, you wanna be!!!\r\n", ch );
+        send_to_char( "Better leave that to the REAL Vampires, you wanna be!!!\r\n", ch );
         return FALSE;
     }
     if ( ch->pcdata->super->bloodline == 0 )
@@ -252,7 +252,7 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
         send_to_char( "Then, in the final death throes, you bite your own arm and allow the @@eblood@@N\r\n", ch );
         send_to_char( "to drip into their mouth, damning them to @@dETERNAL NIGHT@@N!!!\r\n", ch );
         send_to_char( "you feel some of your essential @@eblood@@N potential drain into your victim!\r\n", ch );
-        send_to_char( "@@NYou feel your soul ripped asunder as the Vampyre draws your lifeblood into it's mouth!!\r\n",
+        send_to_char( "@@NYou feel your soul ripped asunder as the Vampire draws your lifeblood into it's mouth!!\r\n",
                       victim );
         send_to_char( "As your last breath escapes you, and you begin to submit to death itself, you suddenly feel\r\n",
                       victim );

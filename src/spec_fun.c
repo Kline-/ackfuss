@@ -1742,7 +1742,7 @@ SPEC_FUN(spec_vamp_hunter)
             break;
         case 6:
             snprintf( buf, MSL, "%s", ch->hunting->name.c_str() );
-            snprintf( buf1, MSL, "@@eI know that you are a Vampyre, and I shall not rest until your are destroyed!!!@@N\r\n" );
+            snprintf( buf1, MSL, "@@eI know that you are a Vampire, and I shall not rest until your are destroyed!!!@@N\r\n" );
             strncat( buf, buf1, MSL - 1 );
             do_tell( ch, buf );
             break;
@@ -1754,7 +1754,7 @@ SPEC_FUN(spec_vamp_hunter)
             break;
         case 12:
         case 13:
-            snprintf( buf, MSL, "My informants have told me that %s is a Vampyre, and I have vowed to destroy him!!\r\n",
+            snprintf( buf, MSL, "My informants have told me that %s is a Vampire, and I have vowed to destroy him!!\r\n",
                       ch->hunting->name.c_str() );
             do_yell( ch, buf );
             break;
@@ -1775,7 +1775,7 @@ SPEC_FUN(spec_vamp_hunter)
             break;
         case 20:
             snprintf( buf, MSL,
-                      "All the realm shall know that %s is a Vampyre, and I shall eridicate all of these vile creatures!!\r\n",
+                      "All the realm shall know that %s is a Vampire, and I shall eridicate all of these vile creatures!!\r\n",
                       ch->hunting->name.c_str() );
             do_yell( ch, buf );
             break;

@@ -1043,7 +1043,10 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                                 ch->pcdata->host[i] = fread_string( fp );
                         }
                         else
-                            SKEY("Host", ch->pcdata->host[0], fread_string(fp));
+                            ch->pcdata->host[0] = fread_string(fp);
+
+                        fMatch = TRUE;
+                        break;
                     }
 
                     if ( !str_cmp( word, "HiCol" ) )
@@ -1340,7 +1343,10 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                             ch->pcdata->whitelist[i] = fread_string( fp );
                     }
                     else
-                        SKEY("Host", ch->pcdata->whitelist[0], fread_string(fp));
+                        ch->pcdata->whitelist[0] = fread_string(fp);
+
+                   fMatch = TRUE;
+                   break;
                 }
                 KEY( "Wimpy", ch->wimpy, fread_number( fp ) );
                 KEY( "Wizbit", ch->wizbit, fread_number( fp ) );

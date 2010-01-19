@@ -3935,9 +3935,11 @@ DO_FUN(do_race_list)
             snprintf(buf, MSL, "[%3s] %9s (%s)\r\n", race_table[iRace].race_name, race_table[iRace].race_title, race_table[iRace].comment);
             send_to_char(buf, ch);
             send_to_char("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", ch);
-            snprintf(buf, MSL, "Max Stats     : Str [%d]  Int [%d]  Wis [%d]  Dex [%d]  Con [%d]\r\nRace Mods     : ",
+            snprintf(buf, MSL, "Max Stats     : Str [%d]  Int [%d]  Wis [%d]  Dex [%d]  Con [%d]\r\n",
                      race_table[iRace].race_str, race_table[iRace].race_int, race_table[iRace].race_wis, race_table[iRace].race_dex, race_table[iRace].race_con);
             send_to_char(buf, ch);
+            snprintf(buf, MSL, "Max Classes   : %d\r\nRace Mods     : ", race_table[iRace].classes);
+            send_to_char(buf,ch);
             send_to_char(bit_table_lookup(tab_mob_race_mods_col, race_table[iRace].race_flags), ch);
             send_to_char("\r\nStrong Realms : ", ch);
             send_to_char(bit_table_lookup(tab_magic_realms_col, race_table[iRace].strong_realms), ch);
@@ -4744,14 +4746,14 @@ DO_FUN(do_gain)
     /* first case.. remort  */
     if ( ( ( morts_at_seventy >= 2 )
             && ( IS_REMORT( ch ) == FALSE ) )
-            || ( ( morts_at_eighty == 5 ) && ( remorts_at_seventy == 1 ) && ( num_remorts == 1 ) ) )
+            || ( ( morts_at_eighty == race_table[ch->race].classes ) && ( remorts_at_seventy == 1 ) && ( num_remorts == 1 ) ) )
     {
         allow_remort = TRUE;
     }
 
     /* second case..can adept */
 
-    if ( ( morts_at_eighty == 5 ) && ( remorts_at_eighty == 2 ) && ( !IS_ADEPT(ch) ) )
+    if ( ( morts_at_eighty == race_table[ch->race].classes ) && ( remorts_at_eighty == 2 ) && ( !IS_ADEPT(ch) ) )
     {
         allow_adept = TRUE;
     }
@@ -4766,11 +4768,18 @@ DO_FUN(do_gain)
         any = FALSE;
         numclasses = 0;
         for ( a = 0; a < MAX_CLASS; a++ )
-            if ( ch->lvl[a] >= 0 )
+            if ( ch->lvl[a] >= 1 )
                 numclasses++;
 
         for ( cnt = 0; cnt < MAX_CLASS; cnt++ )
-            if ( ( ch->lvl[cnt] != -1 || numclasses < race_table[ch->race].classes ) && ch->lvl[cnt] < ( LEVEL_HERO - 1 ) )
+            if ( numclasses >= race_table[ch->race].classes && ch->lvl[cnt] >= 1 && ch->lvl[cnt] < ( LEVEL_HERO -1 ) )
+            {
+                any = TRUE;
+                cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
+
+                ch->send( "%s : %d Exp.\r\n", class_table[cnt].who_name, cost );
+            }
+            else if ( numclasses < race_table[ch->race].classes && ch->lvl[cnt] != -1 && ch->lvl[cnt] < ( LEVEL_HERO - 1 ) )
             {
                 any = TRUE;
                 cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
@@ -4805,13 +4814,13 @@ DO_FUN(do_gain)
             send_to_char( "You can @@WADEPT@@N!!! Type gain adept!!\r\n", ch );
         }
         if ( any )
-            send_to_char( ".\r\n", ch );
+            send_to_char( "\r\n", ch );
         else
             send_to_char( "None.\r\n", ch );
         if ( ( IS_VAMP( ch ) ) && ( ch->pcdata->super->level < ( MAX_VAMP_LEVEL - ( ch->pcdata->super->generation / 2 ) ) ) )
             if ( IS_VAMP( ch ) )
                 if ( ch->pcdata->super->exp >= exp_to_level_vamp( ch->pcdata->super->level ) )
-                    send_to_char( "@@NYou may gain a @@dVAMPYRE@@N level!!!\r\n", ch );
+                    send_to_char( "@@NYou may gain a @@dVampire@@N level!!!\r\n", ch );
         if ( ( IS_WOLF( ch ) ) && ( ch->pcdata->super->level < ( ( MAX_WOLF_LEVEL + 2 ) - ( ch->pcdata->super->generation * 2 ) ) ) )
             if ( IS_WOLF( ch ) )
                 if ( ch->pcdata->super->exp >= exp_to_level_wolf( ch->pcdata->super->level ) )
@@ -4967,15 +4976,11 @@ DO_FUN(do_gain)
     }
     else if ( adept )
     {
-        send_to_char
-        ( "@@aYou peer down upon all the hapless mortals, knowing that you have reached the final step upon the stairway of Wisdom.@@N\r\n",
-          ch );
+        send_to_char( "@@aYou peer down upon all the hapless mortals, knowing that you have reached the final step upon the stairway of Wisdom.@@N\r\n", ch );
         return;
     }
-    /*
-     * Don't bother adapting for remort... dropped num classes yrs ago!
-     */
-    if ( ch->lvl[c] < 0 )
+
+    if ( ch->lvl[c] < ( LEVEL_HERO - 1 ) )
     {
         /*
          * Check to see if max. num of classes has been reached.
@@ -4983,7 +4988,7 @@ DO_FUN(do_gain)
         numclasses = 0;
 
         for ( a = 0; a < MAX_CLASS; a++ )
-            if ( ch->lvl[a] >= 0 )
+            if ( ch->lvl[a] >= 1 )
                 numclasses++;
 
         if ( numclasses >= race_table[ch->race].classes )
@@ -4991,11 +4996,9 @@ DO_FUN(do_gain)
             /*
              * Already got max. number of classes
              */
-            send_to_char( "Cannot level in that class, already have maximum number of classes.\r\n", ch );
+            send_to_char( "You can't level in that class. You already have the maximum number of classes.\r\n", ch );
             return;
         }
-
-        ch->lvl[c] = 0;
     }
 
     /*
@@ -5459,11 +5462,19 @@ DO_FUN(do_worth)
     any = FALSE;
     numclasses = 0;
     for ( a = 0; a < MAX_CLASS; a++ )
-        if ( ch->lvl[a] >= 0 )
+        if ( ch->lvl[a] >= 1 )
             numclasses++;
 
     for ( cnt = 0; cnt < MAX_CLASS; cnt++ )
-        if ( ( ch->lvl[cnt] != -1 || numclasses < race_table[ch->race].classes ) && ch->lvl[cnt] < LEVEL_HERO - 1 )
+        if ( numclasses >= race_table[ch->race].classes && ch->lvl[cnt] >= 1 && ch->lvl[cnt] < LEVEL_HERO - 1 )
+        {
+            any = TRUE;
+            cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
+
+            snprintf( buf, MSL, "%-14s  %9d %9d.\r\n", class_table[cnt].who_name, cost, UMAX( 0, cost - ch->exp ) );
+            send_to_char( buf, ch );
+        }
+        else if ( numclasses < race_table[ch->race].classes && ch->lvl[cnt] != -1 && ch->lvl[cnt] < ( LEVEL_HERO - 1 ) )
         {
             any = TRUE;
             cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );

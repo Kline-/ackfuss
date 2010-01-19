@@ -5342,7 +5342,7 @@ DO_FUN(do_stake)
     }
     if ( IS_NPC( victim ) )
     {
-        send_to_char( "This is only used against PLAYER @@dVampyres@@N!!\r\n", ch );
+        send_to_char( "This is only used against PLAYER @@dVampires@@N!!\r\n", ch );
         return;
     }
 

@@ -383,7 +383,7 @@ struct race_type
     short race_con;
     int race_flags;   /* flags for the various racial stuff    */
     bool wear_locs[MAX_WEAR];  /* on/off for each wear loc */
-    int classes;   /* Number of classes for race   */
+    short classes;   /* Number of classes for race   */
     short limit[MAX_CLASS];   /* Max for each class */
     char *comment; /* comments shown for new players */
     char *skill1;

@@ -1032,7 +1032,7 @@ DO_FUN(do_council)
                 }
                 else if ( this_council == SUPER_VAMP && !IS_VAMP( victim ) )
                 {
-                    send_to_char( "They are not a VAMPYRE!!\r\n", ch );
+                    send_to_char( "They are not a Vampire!!\r\n", ch );
                     return;
                 }
                 else
@@ -1071,7 +1071,7 @@ DO_FUN(do_council)
                 }
                 else if ( this_council == SUPER_VAMP && !IS_VAMP( victim ) )
                 {
-                    send_to_char( "They are not a VAMPYRE!!\r\n", ch );
+                    send_to_char( "They are not a Vampire!!\r\n", ch );
                     return;
                 }
                 else

@@ -688,7 +688,7 @@ const struct cmd_type cmd_table[] =
      C_TYPE_INFO, C_SHOW_ALWAYS, false},
 
     /*
-     *    Vampyre and REMORT SKILLS Zen
+     *    Vampire and REMORT SKILLS Zen
      */
     {"family", do_family, POS_RESTING, VAMP_ONLY, LOG_NORMAL,
      C_TYPE_INFO, C_SHOW_ALWAYS, true},

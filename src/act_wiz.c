@@ -4347,7 +4347,7 @@ DO_FUN(do_setclass)
 
     }
 
-    if ( !str_prefix( arg2, "VAMPYRE" ) )
+    if ( !str_prefix( arg2, "Vampire" ) )
     {
         send_to_char( "@@eNO WAY!!!@@N", ch );
         return;

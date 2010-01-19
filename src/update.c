@@ -305,7 +305,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
         ch->pcdata->super->skills_max += add_max_skills;
 
 
-        snprintf( buf, MSL, "You gain: %d @@eBloodlust@@N, and %d Vampyre Practices. .\r\n", add_bloodlust, add_prac );
+        snprintf( buf, MSL, "You gain: %d @@eBloodlust@@N, and %d Vampire Practices. .\r\n", add_bloodlust, add_prac );
 
 
         send_to_char( buf, ch );
