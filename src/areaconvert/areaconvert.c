@@ -41,192 +41,192 @@ list<reset_data *> reset_list;
 
 int main( int argc, char *argv[] )
 {
- string filename, source, dest;
- ifstream infile;
- ofstream outfile;
- int typein = TYPE_NONE, typeout = TYPE_NONE;
+    string filename, source, dest;
+    ifstream infile;
+    ofstream outfile;
+    int typein = TYPE_NONE, typeout = TYPE_NONE;
 
- if( argc < 2 || argc > 4 )
- {
-  display_help();
-  return 0;
- }
+    if ( argc < 2 || argc > 4 )
+    {
+        display_help();
+        return 0;
+    }
 
- if( argc >= 2 )
-  filename = argv[1];
- if( argc >= 3 )
-  source = argv[2];
- if( argc == 4 )
-  dest = argv[3];
+    if ( argc >= 2 )
+        filename = argv[1];
+    if ( argc >= 3 )
+        source = argv[2];
+    if ( argc == 4 )
+        dest = argv[3];
 
- if( !infile_init(filename,infile) || !outfile_init(filename,outfile) )
- {
-  cleanup_outfile(filename);
-  return 0;
- }
+    if ( !infile_init(filename, infile) || !outfile_init(filename, outfile) )
+    {
+        cleanup_outfile(filename);
+        return 0;
+    }
 
- if( !typein_init(source,typein) || !typeout_init(dest,typeout) )
- {
-  cleanup_outfile(filename);
-  return 0;
- }
+    if ( !typein_init(source, typein) || !typeout_init(dest, typeout) )
+    {
+        cleanup_outfile(filename);
+        return 0;
+    }
 
- if( typein == typeout )
- {
-  cout << "You can not have the same source and destination format. Aborting." << endl;
-  cleanup_outfile(filename);
-  return 0;
- }
+    if ( typein == typeout )
+    {
+        cout << "You can not have the same source and destination format. Aborting." << endl;
+        cleanup_outfile(filename);
+        return 0;
+    }
 
- process_infile(infile,typein);
- flag_handler(typein,typeout);
- process_outfile(outfile,typein,typeout);
+    process_infile(infile, typein);
+    flag_handler(typein, typeout);
+    process_outfile(outfile, typein, typeout);
 
- infile.close();
- outfile.close();
- shutdown_cleanup();
+    infile.close();
+    outfile.close();
+    shutdown_cleanup();
 
- return 0;
+    return 0;
 }
 
 void display_help( void )
 {
- cout << endl << VERS << endl;
- cout << SPACER << endl;
- cout << "areaconvert filename [source format] [dest format]" << endl;
- cout << SPACER << endl;
- cout << "filename will be saved as filename.converted" << endl;
- cout << "default options are listed in (parenthesis)" << endl;
- cout << SPACER << endl;
- cout << "if a bit/flag is not converted you will receive" << endl;
- cout << "a list of them so you may manually attempt to" << endl;
- cout << SPACER << endl;
- cout << "supported src formats: (ack431)" << endl;
- cout << "supported dst formats: (ackfuss)" << endl << endl;
- return;
+    cout << endl << VERS << endl;
+    cout << SPACER << endl;
+    cout << "areaconvert filename [source format] [dest format]" << endl;
+    cout << SPACER << endl;
+    cout << "filename will be saved as filename.converted" << endl;
+    cout << "default options are listed in (parenthesis)" << endl;
+    cout << SPACER << endl;
+    cout << "if a bit/flag is not converted you will receive" << endl;
+    cout << "a list of them so you may manually attempt to" << endl;
+    cout << SPACER << endl;
+    cout << "supported src formats: (ack431)" << endl;
+    cout << "supported dst formats: (ackfuss)" << endl << endl;
+    return;
 }
 
 void cleanup_outfile( string filename )
 {
- string cmd = "rm -f ";
+    string cmd = "rm -f ";
 
- filename += ".converted";
- cmd += filename;             /* system returns different values on different platforms */
- if( system(cmd.c_str()) ) {} /* so we wrap it inside an if() to silence ignore the return result */
+    filename += ".converted";
+    cmd += filename;             /* system returns different values on different platforms */
+    if ( system(cmd.c_str()) ) {} /* so we wrap it inside an if() to silence ignore the return result */
 
- return;
+    return;
 }
 
 bool infile_init( string filename, ifstream &file )
 {
- file.open(filename.c_str(),ios::in);
- if( file.is_open() )
-  return true;
+    file.open(filename.c_str(), ios::in);
+    if ( file.is_open() )
+        return true;
 
- cout << "Unable to open input file [" << filename << "]. Aborting." << endl;
+    cout << "Unable to open input file [" << filename << "]. Aborting." << endl;
 
- return false;
+    return false;
 }
 
 bool outfile_init( string filename, ofstream &file )
 {
- filename += ".converted";
- file.open(filename.c_str(),ios::out);
- if( file.is_open() )
-  return true;
+    filename += ".converted";
+    file.open(filename.c_str(), ios::out);
+    if ( file.is_open() )
+        return true;
 
- cout << "Unable to open output file [" << filename << "]. Aborting." << endl;
+    cout << "Unable to open output file [" << filename << "]. Aborting." << endl;
 
- return false;
+    return false;
 }
 
 bool typein_init( string name, int &type )
 {
- if( name.empty() )
-  type = TYPE_ACK431;
- else
- {
-  if( name == "ack431" )
-   type = TYPE_ACK431;
-  if( type == TYPE_NONE )
-  {
-   cout << "Unknown input type [" << name << "]. Aborting." << endl;
-   return false;
-  }
- }
+    if ( name.empty() )
+        type = TYPE_ACK431;
+    else
+    {
+        if ( name == "ack431" )
+            type = TYPE_ACK431;
+        if ( type == TYPE_NONE )
+        {
+            cout << "Unknown input type [" << name << "]. Aborting." << endl;
+            return false;
+        }
+    }
 
- return true;
+    return true;
 }
 
 bool typeout_init( string name, int &type )
 {
- if( name.empty() )
-  type = TYPE_ACKFUSS;
- else
- {
-  if( name == "ackfuss" )
-   type = TYPE_ACKFUSS;
-  if( type == TYPE_NONE )
-  {
-   cout << "Unknown output type [" << name << "]. Aborting." << endl;
-   return false;
-  }
- }
+    if ( name.empty() )
+        type = TYPE_ACKFUSS;
+    else
+    {
+        if ( name == "ackfuss" )
+            type = TYPE_ACKFUSS;
+        if ( type == TYPE_NONE )
+        {
+            cout << "Unknown output type [" << name << "]. Aborting." << endl;
+            return false;
+        }
+    }
 
- return true;
+    return true;
 }
 
 void process_infile( ifstream &file, int type )
 {
- switch( type )
- {
-  case TYPE_ACK431: read_ack431(file); break;
- }
+    switch ( type )
+    {
+        case TYPE_ACK431: read_ack431(file); break;
+    }
 
- return;
+    return;
 }
 
 void process_outfile( ofstream &file, int typein, int typeout )
 {
- switch( typeout )
- {
-  case TYPE_ACKFUSS: write_ackfuss(file,typein); break;
- }
+    switch ( typeout )
+    {
+        case TYPE_ACKFUSS: write_ackfuss(file, typein); break;
+    }
 
- return;
+    return;
 }
 
 void shutdown_cleanup( void )
 {
- if( !area.flags_found.empty() )
-  cout << "The following area flags were not converted: " << area.flags_found << endl;
- else
-  cout << "Area converted successfully." << endl;
+    if ( !area.flags_found.empty() )
+        cout << "The following area flags were not converted: " << area.flags_found << endl;
+    else
+        cout << "Area converted successfully." << endl;
 
- for_each(room_list.begin(),room_list.end(),DeleteObject());
- for_each(npc_list.begin(),npc_list.end(),DeleteObject());
- for_each(obj_list.begin(),obj_list.end(),DeleteObject());
- for_each(shop_list.begin(),shop_list.end(),DeleteObject());
- for_each(reset_list.begin(),reset_list.end(),DeleteObject());
+    for_each(room_list.begin(), room_list.end(), DeleteObject());
+    for_each(npc_list.begin(), npc_list.end(), DeleteObject());
+    for_each(obj_list.begin(), obj_list.end(), DeleteObject());
+    for_each(shop_list.begin(), shop_list.end(), DeleteObject());
+    for_each(reset_list.begin(), reset_list.end(), DeleteObject());
 
- return;
+    return;
 }
 
 int str2int( string &str )
 {
- stringstream ss(str);
- int i = 0;
+    stringstream ss(str);
+    int i = 0;
 
- ss >> i;
+    ss >> i;
 
- return i;
+    return i;
 }
 
 string int2str( int i )
 {
- stringstream ss;
+    stringstream ss;
 
- ss << i;
+    ss << i;
 
- return ss.str();
+    return ss.str();
 }

@@ -36,7 +36,7 @@ void update_mquest_kill P_((CHAR_DATA *ch, CHAR_DATA *victim));
 
 #undef P_
 
-#define	QUEST_NONE            0
+#define QUEST_NONE            0
 #define QUEST_RETRIEVAL       1 /* Find X item(s) Y time           */
 #define QUEST_KILLING         2 /* Kill X mob(s) Y time            */
 #define QUEST_MULTI_KILL      3 /* Kill X mob(s) Y times           */

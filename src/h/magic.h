@@ -242,15 +242,15 @@ void cast_update P_((void));
 
 #undef P_
 
-#define REALM_NONE    	  BIT_0
-#define REALM_FIRE		    BIT_1
-#define REALM_SHOCK		    BIT_2
-#define REALM_LIGHT		    BIT_3
-#define REALM_GAS		      BIT_4
-#define REALM_POISON	    BIT_5
-#define REALM_COLD		    BIT_6
-#define REALM_SOUND		    BIT_7
-#define REALM_ACID		    BIT_8
+#define REALM_NONE        BIT_0
+#define REALM_FIRE          BIT_1
+#define REALM_SHOCK         BIT_2
+#define REALM_LIGHT         BIT_3
+#define REALM_GAS             BIT_4
+#define REALM_POISON        BIT_5
+#define REALM_COLD          BIT_6
+#define REALM_SOUND         BIT_7
+#define REALM_ACID          BIT_8
 #define REALM_DRAIN       BIT_9
 #define REALM_IMPACT      BIT_10
 #define REALM_MIND        BIT_11
@@ -258,15 +258,15 @@ void cast_update P_((void));
 #define NO_REFLECT        BIT_30
 #define NO_ABSORB          BIT_31
 
-#define RE_NONE    	  0
-#define RE_FIRE		    1
-#define RE_SHOCK		    2
-#define RE_LIGHT		    3
-#define RE_GAS		      4
-#define RE_POISON	    5
-#define RE_COLD		    6
-#define RE_SOUND		    7
-#define RE_ACID		    8
+#define RE_NONE       0
+#define RE_FIRE         1
+#define RE_SHOCK            2
+#define RE_LIGHT            3
+#define RE_GAS            4
+#define RE_POISON       5
+#define RE_COLD         6
+#define RE_SOUND            7
+#define RE_ACID         8
 #define RE_DRAIN       9
 #define RE_IMPACT      10
 #define RE_MIND        11
@@ -274,16 +274,16 @@ void cast_update P_((void));
 
 struct sp_dam_str_type
 {
-   int realm;
-   char *basecol;
-   char *invertcol;
-   char *stresscol;
-   char *backcol;
-   char *formatter;
-   char *vs;
-   char *vs_stress;
-   char *vp;
-   char *vp_stress;
+    int realm;
+    char *basecol;
+    char *invertcol;
+    char *stresscol;
+    char *backcol;
+    char *formatter;
+    char *vs;
+    char *vs_stress;
+    char *vp;
+    char *vp_stress;
 };
 
 extern struct sp_dam_str_type sp_dam_str[];

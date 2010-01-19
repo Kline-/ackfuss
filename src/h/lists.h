@@ -86,30 +86,30 @@ extern int free_get;
 extern int free_put;
 
 #define GET_FREE(item, freelist) \
-do { \
-  if ( !(freelist) ) \
-    (item) = (typeof(item))getmem(sizeof(*(item))); \
-  else { \
-    if ( !(freelist)->is_free ) { \
-      bug("GET_FREE: freelist head is NOT FREE!  Hanging...", 0); \
-      for (;;); \
-    } \
-    (item) = (freelist); \
-    (freelist) = (item)->next; \
-    memset((item), 0, sizeof(*(item))); /* This clears is_free flag */ \
-    free_get++; \
-  } \
-} while(0)
+    do { \
+        if ( !(freelist) ) \
+            (item) = (typeof(item))getmem(sizeof(*(item))); \
+        else { \
+            if ( !(freelist)->is_free ) { \
+                bug("GET_FREE: freelist head is NOT FREE!  Hanging...", 0); \
+                for (;;); \
+            } \
+            (item) = (freelist); \
+            (freelist) = (item)->next; \
+            memset((item), 0, sizeof(*(item))); /* This clears is_free flag */ \
+            free_get++; \
+        } \
+    } while(0)
 
 #define PUT_FREE(item, freelist) \
-do { \
-  if ( (item)->is_free ) { \
-    bug("PUT_FREE: item is ALREADY FREE!  Aborting...", 0); \
-    abort(); \
-  } \
-  (item)->next = (freelist); \
-  (item)->is_free = TRUE; /* This sets is_free flag */ \
-  (freelist) = (item); \
-  if( freelist##_destructor != NULL ) freelist##_destructor(item); \
-  free_put++; \
-} while(0)
+    do { \
+        if ( (item)->is_free ) { \
+            bug("PUT_FREE: item is ALREADY FREE!  Aborting...", 0); \
+            abort(); \
+        } \
+        (item)->next = (freelist); \
+        (item)->is_free = TRUE; /* This sets is_free flag */ \
+        (freelist) = (item); \
+        if( freelist##_destructor != NULL ) freelist##_destructor(item); \
+        free_put++; \
+    } while(0)

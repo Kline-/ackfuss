@@ -16,21 +16,21 @@
 
 class hash_entry_tp
 {
- public:
-  hash_entry_tp();
-  ~hash_entry_tp();
-  bool is_free;
-  HASH_ENTRY *next;
-  void *reference;
-  int key;
+    public:
+        hash_entry_tp();
+        ~hash_entry_tp();
+        bool is_free;
+        HASH_ENTRY *next;
+        void *reference;
+        int key;
 };
 
 typedef struct hash_table_tp hash_table;
 
 struct hash_table_tp
 {
-   int max_hash;
-   HASH_ENTRY **table;
+    int max_hash;
+    HASH_ENTRY **table;
 };
 
 

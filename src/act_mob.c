@@ -88,254 +88,254 @@
 
 bool able_to_level( CHAR_DATA * ch )
 {
-   bool in_need = FALSE;
+    bool in_need = FALSE;
 
-   if( ch->exp > ( 5 * exp_for_mobile( ch->level, ch ) ) )
-      in_need = TRUE;
+    if ( ch->exp > ( 5 * exp_for_mobile( ch->level, ch ) ) )
+        in_need = TRUE;
 
-   return in_need;
+    return in_need;
 }
 
 void gain_level( CHAR_DATA * ch )
 {
-   int cost;
-   char buf[MAX_STRING_LENGTH];
+    int cost;
+    char buf[MAX_STRING_LENGTH];
 
-   cost = 5 * exp_for_mobile( ch->level, ch );
-   if( ch->exp < cost )
-      return;
+    cost = 5 * exp_for_mobile( ch->level, ch );
+    if ( ch->exp < cost )
+        return;
 
-   ch->exp -= cost;
-   ch->level = UMIN( 140, ch->level++ );
+    ch->exp -= cost;
+    ch->level = UMIN( 140, ch->level++ );
 
-   snprintf( buf, MSL, "%s gains a level!", ch->get_name() );
-   info( buf, 1 );
-   return;
+    snprintf( buf, MSL, "%s gains a level!", ch->get_name() );
+    info( buf, 1 );
+    return;
 }
 
 int find_spell( CHAR_DATA * ch, int type )
 {
-   int sn;
-   int bar;
-   int level;
-   int spell = -1;
-   int spell_level = -1;
+    int sn;
+    int bar;
+    int level;
+    int spell = -1;
+    int spell_level = -1;
 
-   for( sn = 0; sn < MAX_SKILL; sn++ )
-   {
-      if( skill_table[sn].name == NULL )
-         break;
-      if( skill_table[sn].slot == 0 )
-         continue;
-      if( skill_table[sn].target != type )
-         continue;
+    for ( sn = 0; sn < MAX_SKILL; sn++ )
+    {
+        if ( skill_table[sn].name == NULL )
+            break;
+        if ( skill_table[sn].slot == 0 )
+            continue;
+        if ( skill_table[sn].target != type )
+            continue;
 
-      level = -1;
-      for( bar = 0; bar < MAX_CLASS; bar++ )
-         if( skill_table[sn].skill_level[bar] > level && ch->level >= skill_table[sn].skill_level[bar] )
-            level = skill_table[sn].skill_level[bar];
+        level = -1;
+        for ( bar = 0; bar < MAX_CLASS; bar++ )
+            if ( skill_table[sn].skill_level[bar] > level && ch->level >= skill_table[sn].skill_level[bar] )
+                level = skill_table[sn].skill_level[bar];
 
-      if( level == -1 ) /* not high enough to use */
-         continue;
+        if ( level == -1 ) /* not high enough to use */
+            continue;
 
-      if( level > spell_level && mana_cost( ch, sn ) < ch->mana )
-      {
-         spell = sn;
-         spell_level = level;
-      }
-   }
+        if ( level > spell_level && mana_cost( ch, sn ) < ch->mana )
+        {
+            spell = sn;
+            spell_level = level;
+        }
+    }
 
-   return spell;
+    return spell;
 }
 
 void mob_group_follow( CHAR_DATA * ch, CHAR_DATA * target )
 {
-   char buf[MAX_STRING_LENGTH];
-   CHAR_DATA *vch;
-   int num;
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *vch;
+    int num;
 
 
-   if( ( ch == NULL ) || ( target == NULL ) )
-   {
-      snprintf( buf, MSL, "%s", "Null ch and/or target in mob_group_follow, exiting." );
-      monitor_chan( buf, MONITOR_MOB );
-      return;
-   }
-   snprintf( buf, MSL, "Ok guys, let's all follow %s.", target->get_name() );
-   do_say( ch, buf );
+    if ( ( ch == NULL ) || ( target == NULL ) )
+    {
+        snprintf( buf, MSL, "%s", "Null ch and/or target in mob_group_follow, exiting." );
+        monitor_chan( buf, MONITOR_MOB );
+        return;
+    }
+    snprintf( buf, MSL, "Ok guys, let's all follow %s.", target->get_name() );
+    do_say( ch, buf );
 
-   for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-   {
-      if( ( ch != vch ) && ( AI_MOB( vch ) ) && ( is_same_group( ch, vch ) ) )
-      {
-         if( vch->position != POS_STANDING )
-            do_stand( vch, "" );
+    for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+    {
+        if ( ( ch != vch ) && ( AI_MOB( vch ) ) && ( is_same_group( ch, vch ) ) )
+        {
+            if ( vch->position != POS_STANDING )
+                do_stand( vch, "" );
 
-         num = number_percent(  );
+            num = number_percent(  );
 
 //  WAIT_STATE( vch, 275 );
 
-         if( num > 85 )
-            do_say( vch, "Ok boss.  Whatever you say." );
-         else if( num > 70 )
-            do_say( vch, "Alright!  More people, more power!" );
-         else if( num > 55 )
-            do_say( vch, "Whoo Hooo!" );
-         else if( num > 35 )
-            do_say( vch, "Sure thing." );
-         else if( num > 29 )
-         {
-            if( num > 32 )
-               snprintf( buf, MSL, "Man I don't want to join %s's group!", target->get_name() );
+            if ( num > 85 )
+                do_say( vch, "Ok boss.  Whatever you say." );
+            else if ( num > 70 )
+                do_say( vch, "Alright!  More people, more power!" );
+            else if ( num > 55 )
+                do_say( vch, "Whoo Hooo!" );
+            else if ( num > 35 )
+                do_say( vch, "Sure thing." );
+            else if ( num > 29 )
+            {
+                if ( num > 32 )
+                    snprintf( buf, MSL, "Man I don't want to join %s's group!", target->get_name() );
+                else
+                    snprintf( buf, MSL, "I hate big groups." );
+                do_say( vch, buf );
+                do_follow( vch, const_cast<char *>(vch->name.c_str()) );
+                do_say( vch, "I'm outta here." );
+                do_recall( vch, "" );
+                continue;
+            }
+
+            if ( !can_see( vch, target ) )
+            {
+                vch->master = target;
+                vch->leader = NULL;
+            }
             else
-               snprintf( buf, MSL, "I hate big groups." );
-            do_say( vch, buf );
-            do_follow( vch, const_cast<char *>(vch->name.c_str()) );
-            do_say( vch, "I'm outta here." );
-            do_recall( vch, "" );
-            continue;
-         }
+            {
+                do_follow( vch, const_cast<char *>(target->name.c_str()) );
+            }
+            do_group( target, "all" );
 
-         if( !can_see( vch, target ) )
-         {
-            vch->master = target;
-            vch->leader = NULL;
-         }
-         else
-         {
-            do_follow( vch, const_cast<char *>(target->name.c_str()) );
-         }
-         do_group( target, "all" );
-
-      }
-   }
-   return;
+        }
+    }
+    return;
 }
 
 
 void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
 {
-   CHAR_DATA *vch;
-   bool ch_is_leader = FALSE;
-   bool tar_is_leader = FALSE;
-   bool is_hunting = FALSE;
-   bool ch_is_higher = FALSE;
-   char buf[MAX_STRING_LENGTH];
-   int number_of_tar_group = 1;
-   int number_of_ch_group = 1;
+    CHAR_DATA *vch;
+    bool ch_is_leader = FALSE;
+    bool tar_is_leader = FALSE;
+    bool is_hunting = FALSE;
+    bool ch_is_higher = FALSE;
+    char buf[MAX_STRING_LENGTH];
+    int number_of_tar_group = 1;
+    int number_of_ch_group = 1;
 
-   ch_is_leader = is_group_leader( ch );
-   tar_is_leader = is_group_leader( target );
+    ch_is_leader = is_group_leader( ch );
+    tar_is_leader = is_group_leader( target );
 
-   if( tar_is_leader == TRUE )
-   {
-      for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-      {
-         if( !AI_MOB( vch ) )
-         {
-            continue;
-         }
-         if( vch != target && is_same_group( vch, target ) )
-         {
-            number_of_tar_group = number_of_tar_group + 1;
-            continue;
-         }
-         if( vch != ch && is_same_group( ch, vch ) )
-         {
-            number_of_ch_group = number_of_ch_group + 1;
-            continue;
-         }
-      }
-   }
+    if ( tar_is_leader == TRUE )
+    {
+        for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+        {
+            if ( !AI_MOB( vch ) )
+            {
+                continue;
+            }
+            if ( vch != target && is_same_group( vch, target ) )
+            {
+                number_of_tar_group = number_of_tar_group + 1;
+                continue;
+            }
+            if ( vch != ch && is_same_group( ch, vch ) )
+            {
+                number_of_ch_group = number_of_ch_group + 1;
+                continue;
+            }
+        }
+    }
 
-   do_say( ch, "Hello there.  What are you up to?" );
+    do_say( ch, "Hello there.  What are you up to?" );
 
 //   WAIT_STATE( target, 560 );
 
-   if( target->hunting != NULL )
-   {
-      is_hunting = TRUE;
-      if( tar_is_leader == TRUE )
-      {
-         snprintf( buf, MSL, "We're planning on killing %s.", target->hunting->get_name() );
-      }
-      else
-      {
-         snprintf( buf, MSL, "I'm planning on killing %s.", target->hunting->get_name() );
-      }
-      do_say( target, buf );
-   }
-   else
-   {
-      do_say( target, "Nothing.  Just hanging around." );
-   }
+    if ( target->hunting != NULL )
+    {
+        is_hunting = TRUE;
+        if ( tar_is_leader == TRUE )
+        {
+            snprintf( buf, MSL, "We're planning on killing %s.", target->hunting->get_name() );
+        }
+        else
+        {
+            snprintf( buf, MSL, "I'm planning on killing %s.", target->hunting->get_name() );
+        }
+        do_say( target, buf );
+    }
+    else
+    {
+        do_say( target, "Nothing.  Just hanging around." );
+    }
 
-   WAIT_STATE( ch, 275 );
+    WAIT_STATE( ch, 275 );
 
-   /*
-    * check to see which of the two is higher. the higher mob will lead
-    */
-   if( ch->get_level("psuedo") >= target->get_level("psuedo") )
-      ch_is_higher = TRUE;
+    /*
+     * check to see which of the two is higher. the higher mob will lead
+     */
+    if ( ch->get_level("psuedo") >= target->get_level("psuedo") )
+        ch_is_higher = TRUE;
 
-   /*
-    * if ch is higher in levels and victim is hunting, then say
-    * * appropriate line.
-    */
-   if( ( ch_is_higher == FALSE ) && ( is_hunting == TRUE ) )
-   {
-      do_say( ch, "Oh really?  Cool!  Need any help?" );
-   }
-   else if( ( ch_is_higher == FALSE ) && ( is_hunting == FALSE ) )
-   {
-      do_say( ch, "Great!  Since you're not doing anything, wanna group?" );
-   }
-   else if( ( ch_is_higher == TRUE ) && ( is_hunting == TRUE ) )
-   {
-      if( ch_is_leader == TRUE )
-      {
-         snprintf( buf, MSL, "Want to help us kill %s instead?", ch->hunting->get_name() );
-         do_say( ch, buf );
-      }
-      else if( ch_is_leader == FALSE )
-      {
-         snprintf( buf, MSL, "Want to help me kill %s instead?", ch->hunting->get_name() );
-         do_say( ch, buf );
-      }
-   }
-   else if( ( ch_is_higher == TRUE ) && ( ch->hunting == FALSE ) )
-   {
-      do_say( ch, "Want to group?" );
-   }
-   WAIT_STATE( target, 275 );
+    /*
+     * if ch is higher in levels and victim is hunting, then say
+     * * appropriate line.
+     */
+    if ( ( ch_is_higher == FALSE ) && ( is_hunting == TRUE ) )
+    {
+        do_say( ch, "Oh really?  Cool!  Need any help?" );
+    }
+    else if ( ( ch_is_higher == FALSE ) && ( is_hunting == FALSE ) )
+    {
+        do_say( ch, "Great!  Since you're not doing anything, wanna group?" );
+    }
+    else if ( ( ch_is_higher == TRUE ) && ( is_hunting == TRUE ) )
+    {
+        if ( ch_is_leader == TRUE )
+        {
+            snprintf( buf, MSL, "Want to help us kill %s instead?", ch->hunting->get_name() );
+            do_say( ch, buf );
+        }
+        else if ( ch_is_leader == FALSE )
+        {
+            snprintf( buf, MSL, "Want to help me kill %s instead?", ch->hunting->get_name() );
+            do_say( ch, buf );
+        }
+    }
+    else if ( ( ch_is_higher == TRUE ) && ( ch->hunting == FALSE ) )
+    {
+        do_say( ch, "Want to group?" );
+    }
+    WAIT_STATE( target, 275 );
 
-   if( ch_is_higher == TRUE )
-   {
-      do_say( target, "Ok sure!  Thanks for asking." );
+    if ( ch_is_higher == TRUE )
+    {
+        do_say( target, "Ok sure!  Thanks for asking." );
 
-      if( tar_is_leader == TRUE )
-      {
-         mob_group_follow( target, ch );
-      }
-      do_follow( target, const_cast<char *>(ch->name.c_str()) );
-      do_group( ch, const_cast<char *>(target->name.c_str()) );
-   }
-   else
-   {
-      do_say( target, "Ok, why not!?  Follow me." );
+        if ( tar_is_leader == TRUE )
+        {
+            mob_group_follow( target, ch );
+        }
+        do_follow( target, const_cast<char *>(ch->name.c_str()) );
+        do_group( ch, const_cast<char *>(target->name.c_str()) );
+    }
+    else
+    {
+        do_say( target, "Ok, why not!?  Follow me." );
 
-      WAIT_STATE( ch, 275 );
+        WAIT_STATE( ch, 275 );
 
-      do_say( ch, "Cool!" );
+        do_say( ch, "Cool!" );
 
-      if( ch_is_leader == TRUE )
-      {
-         mob_group_follow( ch, target );
-      }
-      do_follow( ch, const_cast<char *>(target->name.c_str()) );
-      do_group( target, const_cast<char *>(target->name.c_str()) );
-   }
-   return;
+        if ( ch_is_leader == TRUE )
+        {
+            mob_group_follow( ch, target );
+        }
+        do_follow( ch, const_cast<char *>(target->name.c_str()) );
+        do_group( target, const_cast<char *>(target->name.c_str()) );
+    }
+    return;
 }
 
 
@@ -343,1115 +343,1116 @@ void get_mob_group( CHAR_DATA * ch, CHAR_DATA * target )
 /* returns false if mob needed to cast a room affect spell */
 bool ready_heal_room( CHAR_DATA * ch )
 {
-   bool ready = TRUE;
+    bool ready = TRUE;
 
-   if( ( !IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_REGEN ) ) && ( ch->hit < ch->max_hit * 75 / 100 ) )
-   {
-      if( ch->mana >= mana_cost( ch, skill_lookup( "healing light" ) ) )
-      {
-         ready = FALSE;
-         do_cast( ch, "'healing light'" );
-         return ready;
-      }
-   }
+    if ( ( !IS_SET( ch->in_room->affected_by, ROOM_BV_HEAL_REGEN ) ) && ( ch->hit < ch->max_hit * 75 / 100 ) )
+    {
+        if ( ch->mana >= mana_cost( ch, skill_lookup( "healing light" ) ) )
+        {
+            ready = FALSE;
+            do_cast( ch, "'healing light'" );
+            return ready;
+        }
+    }
 
-   if( ( !IS_SET( ch->in_room->affected_by, ROOM_BV_MANA_REGEN ) ) && ( ch->mana < ch->max_mana * 75 / 100 ) )
-   {
-      if( ch->mana >= mana_cost( ch, skill_lookup( "mana flare" ) ) )
-      {
-         ready = FALSE;
-         do_cast( ch, "'mana flare'" );
-         return ready;
-      }
-   }
+    if ( ( !IS_SET( ch->in_room->affected_by, ROOM_BV_MANA_REGEN ) ) && ( ch->mana < ch->max_mana * 75 / 100 ) )
+    {
+        if ( ch->mana >= mana_cost( ch, skill_lookup( "mana flare" ) ) )
+        {
+            ready = FALSE;
+            do_cast( ch, "'mana flare'" );
+            return ready;
+        }
+    }
 
-   return ready;
+    return ready;
 }
 
 /* checks to see if mob needs to stand up for any reason, if so then stand. */
 void need_to_stand( CHAR_DATA * ch )
 {
-   int current_state;
-   CHAR_DATA *vch;
+    int current_state;
+    CHAR_DATA *vch;
 
-   current_state = ch->position;
+    current_state = ch->position;
 
-   /*
-    * if someone in your group is fighting, get up 
-    */
-   for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-   {
-      if( ( is_same_group( ch, vch ) ) && ( vch->position == POS_FIGHTING ) )
-      {
-         get_up( ch, current_state );
-         return;
-      }
-   }
-
-   /*
-    * if your leader is up and ready to move, get up 
-    */
-   if( ( ch->leader != NULL )
-       && ( ch->in_room == ch->leader->in_room )
-       && ( ch->leader->position == POS_STANDING )
-       && ( ch->leader->hit >= ch->leader->max_hit * 85 / 100 ) && ( ch->leader->mana >= ch->leader->max_mana * 85 / 100 ) )
-   {
-      get_up( ch, current_state );
-      return;
-   }
-
-
-   /*
-    * Do you need heal? if so, can you heal?
-    */
-   if( ch->hit < ch->max_hit * 85 / 100 )
-   {
-      if( ( ch->mana >= mana_cost( ch, skill_lookup( "heal" ) ) )
-          || ( ch->mana >= mana_cost( ch, skill_lookup( "cure critical" ) ) )
-          || ( ch->mana >= mana_cost( ch, skill_lookup( "cure serious" ) ) ) )
-      {
-         get_up( ch, current_state );
-         return;
-      }
-
-   }
-
-   /*
-    * if there is an int mob in the room stand so that you can group with
-    * * it
-    */
-   if( ch->leader == NULL )
-   {
-      for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-      {
-         if( ( AI_MOB( vch ) )
-             && ( vch->leader == NULL )
-             && ( !is_same_group( vch, ch ) )
-             && ( AI_MOB(vch) )
-             && ( vch != ch )
-             && ( ( vch->get_level("psuedo") - ch->get_level("psuedo") <= 20 )
-                  && ( vch->get_level("psuedo") - ch->get_level("psuedo") >= -20 ) ) )
-         {
+    /*
+     * if someone in your group is fighting, get up
+     */
+    for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+    {
+        if ( ( is_same_group( ch, vch ) ) && ( vch->position == POS_FIGHTING ) )
+        {
             get_up( ch, current_state );
             return;
-         }
-      }
-   }
+        }
+    }
 
-   /*
-    * if you're ready to move, stand 
-    */
-   if( ( ch->hit >= ch->max_hit * 85 / 100 ) && ( ch->mana >= ch->max_mana * 85 / 100 ) )
-      get_up( ch, current_state );
+    /*
+     * if your leader is up and ready to move, get up
+     */
+    if ( ( ch->leader != NULL )
+            && ( ch->in_room == ch->leader->in_room )
+            && ( ch->leader->position == POS_STANDING )
+            && ( ch->leader->hit >= ch->leader->max_hit * 85 / 100 ) && ( ch->leader->mana >= ch->leader->max_mana * 85 / 100 ) )
+    {
+        get_up( ch, current_state );
+        return;
+    }
 
-   return;
+
+    /*
+     * Do you need heal? if so, can you heal?
+     */
+    if ( ch->hit < ch->max_hit * 85 / 100 )
+    {
+        if ( ( ch->mana >= mana_cost( ch, skill_lookup( "heal" ) ) )
+                || ( ch->mana >= mana_cost( ch, skill_lookup( "cure critical" ) ) )
+                || ( ch->mana >= mana_cost( ch, skill_lookup( "cure serious" ) ) ) )
+        {
+            get_up( ch, current_state );
+            return;
+        }
+
+    }
+
+    /*
+     * if there is an int mob in the room stand so that you can group with
+     * * it
+     */
+    if ( ch->leader == NULL )
+    {
+        for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+        {
+            if ( ( AI_MOB( vch ) )
+                    && ( vch->leader == NULL )
+                    && ( !is_same_group( vch, ch ) )
+                    && ( AI_MOB(vch) )
+                    && ( vch != ch )
+                    && ( ( vch->get_level("psuedo") - ch->get_level("psuedo") <= 20 )
+                         && ( vch->get_level("psuedo") - ch->get_level("psuedo") >= -20 ) ) )
+            {
+                get_up( ch, current_state );
+                return;
+            }
+        }
+    }
+
+    /*
+     * if you're ready to move, stand
+     */
+    if ( ( ch->hit >= ch->max_hit * 85 / 100 ) && ( ch->mana >= ch->max_mana * 85 / 100 ) )
+        get_up( ch, current_state );
+
+    return;
 }
 
 void get_up( CHAR_DATA * ch, int current_state )
 {
 
-   if( current_state == POS_SLEEPING )
-      do_wake( ch, "" );
-   else if( current_state == POS_RESTING )
-      do_stand( ch, "" );
+    if ( current_state == POS_SLEEPING )
+        do_wake( ch, "" );
+    else if ( current_state == POS_RESTING )
+        do_stand( ch, "" );
 
-   return;
+    return;
 }
 
 
 void mob_regen_check( CHAR_DATA * ch, CHAR_DATA * target, bool need_flee )
 {
-   char buf[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH];
 
-   if( target == NULL )
-      target = ch;
+    if ( target == NULL )
+        target = ch;
 
-   if( ch->mana >= mana_cost( ch, skill_lookup( "heal" ) ) )
-      snprintf( buf, MSL, "'heal' %s", target->name.c_str() );
-   else if( ch->mana >= mana_cost( ch, skill_lookup( "cure critical" ) ) )
-      snprintf( buf, MSL, "'cure critical' %s", target->name.c_str() );
-   else if( ch->mana >= mana_cost( ch, skill_lookup( "cure serious" ) ) )
-      snprintf( buf, MSL, "'cure serious' %s", target->name.c_str() );
-   else if( need_flee == TRUE )
-   {
-      do_flee( ch, "" );
-      return;
-   }
-   else if( need_flee == FALSE )
-      return;
+    if ( ch->mana >= mana_cost( ch, skill_lookup( "heal" ) ) )
+        snprintf( buf, MSL, "'heal' %s", target->name.c_str() );
+    else if ( ch->mana >= mana_cost( ch, skill_lookup( "cure critical" ) ) )
+        snprintf( buf, MSL, "'cure critical' %s", target->name.c_str() );
+    else if ( ch->mana >= mana_cost( ch, skill_lookup( "cure serious" ) ) )
+        snprintf( buf, MSL, "'cure serious' %s", target->name.c_str() );
+    else if ( need_flee == TRUE )
+    {
+        do_flee( ch, "" );
+        return;
+    }
+    else if ( need_flee == FALSE )
+        return;
 
-   do_cast( ch, buf );
-   return;
+    do_cast( ch, buf );
+    return;
 }
 
 void mob_is_fighting( CHAR_DATA * ch )
 {
-   CHAR_DATA *vch;
-   CHAR_DATA *target = NULL;
-   bool is_being_attacked = FALSE;
-   bool need_flee = FALSE;
+    CHAR_DATA *vch;
+    CHAR_DATA *target = NULL;
+    bool is_being_attacked = FALSE;
+    bool need_flee = FALSE;
 
-   /*
-    * check to see if you are the one being attacked 
-    */
-   for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-   {
-      if( vch->fighting == ch )
-      {
-         is_being_attacked = TRUE;
-         break;
-      }
-   }
+    /*
+     * check to see if you are the one being attacked
+     */
+    for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+    {
+        if ( vch->fighting == ch )
+        {
+            is_being_attacked = TRUE;
+            break;
+        }
+    }
 
-   /*
-    * if you have a leader and he/she is present, they should rescue you if
-    * * you are being attacked, else you should check on them in case they
-    * * need heals
-    */
-   if( ( ch->leader != NULL ) && ( ch->leader->in_room == ch->in_room ) )
+    /*
+     * if you have a leader and he/she is present, they should rescue you if
+     * * you are being attacked, else you should check on them in case they
+     * * need heals
+     */
+    if ( ( ch->leader != NULL ) && ( ch->leader->in_room == ch->in_room ) )
 
-   {
-      target = ch->leader;
+    {
+        target = ch->leader;
 
-      if( is_being_attacked == TRUE && target != ch )
-      {
-         do_rescue( target, const_cast<char *>(ch->name.c_str()) );
-      }
-      else if( target->hit < target->max_hit * 50 / 100 )
-         mob_regen_check( ch, target, need_flee );
-      else
-      {
-         for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-         {
-            if( ( is_same_group( ch, vch ) ) && ( vch->hit < vch->max_hit * 20 / 100 ) )
+        if ( is_being_attacked == TRUE && target != ch )
+        {
+            do_rescue( target, const_cast<char *>(ch->name.c_str()) );
+        }
+        else if ( target->hit < target->max_hit * 50 / 100 )
+            mob_regen_check( ch, target, need_flee );
+        else
+        {
+            for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
             {
-               mob_regen_check( ch, vch, need_flee );
-               return;
+                if ( ( is_same_group( ch, vch ) ) && ( vch->hit < vch->max_hit * 20 / 100 ) )
+                {
+                    mob_regen_check( ch, vch, need_flee );
+                    return;
+                }
             }
-         }
-      }
+        }
 
-      return;
-   }
+        return;
+    }
 
 
-   /*
-    * if flow reaches here, you are the tank 
-    */
-   /*
-    * either heal yourself or flee 
-    */
-   if( ch->hit < ch->max_hit * 50 / 100 )
-   {
-      if( ch->hit < ch->max_hit * 20 / 100 )
-         need_flee = TRUE;
-      mob_regen_check( ch, target, need_flee );
-   }
+    /*
+     * if flow reaches here, you are the tank
+     */
+    /*
+     * either heal yourself or flee
+     */
+    if ( ch->hit < ch->max_hit * 50 / 100 )
+    {
+        if ( ch->hit < ch->max_hit * 20 / 100 )
+            need_flee = TRUE;
+        mob_regen_check( ch, target, need_flee );
+    }
 
-   return;
+    return;
 }
 
 void power_up_mob( CHAR_DATA * ch )
 {
-   int num_percent;
+    int num_percent;
 
-   /*
-    * you can only have one cloak spell 
-    */
-   if( !IS_AFFECTED( ch, AFF_CLOAK_ABSORPTION )
-       && !IS_AFFECTED( ch, AFF_CLOAK_REFLECTION ) && !IS_AFFECTED( ch, AFF_CLOAK_FLAMING ) )
-   {
-      num_percent = number_percent(  );
+    /*
+     * you can only have one cloak spell
+     */
+    if ( !IS_AFFECTED( ch, AFF_CLOAK_ABSORPTION )
+            && !IS_AFFECTED( ch, AFF_CLOAK_REFLECTION ) && !IS_AFFECTED( ch, AFF_CLOAK_FLAMING ) )
+    {
+        num_percent = number_percent(  );
 
-      if( num_percent > 75 )
-      {
-         if( ch->mana >= mana_cost( ch, skill_lookup( "cloak:flaming" ) ) )
-            do_cast( ch, "'cloak:flaming'" );
-         return;
-      }
+        if ( num_percent > 75 )
+        {
+            if ( ch->mana >= mana_cost( ch, skill_lookup( "cloak:flaming" ) ) )
+                do_cast( ch, "'cloak:flaming'" );
+            return;
+        }
 
-      if( num_percent > 50 )
-      {
-         if( ch->mana >= mana_cost( ch, skill_lookup( "cloak:reflection" ) ) )
-            do_cast( ch, "cloak:reflection" );
-         return;
-      }
+        if ( num_percent > 50 )
+        {
+            if ( ch->mana >= mana_cost( ch, skill_lookup( "cloak:reflection" ) ) )
+                do_cast( ch, "cloak:reflection" );
+            return;
+        }
 
-      if( num_percent > 25 )
-      {
-         if( ch->mana >= mana_cost( ch, skill_lookup( "cloak:absorption" ) ) )
-            do_cast( ch, "cloak:absorption" );
-         return;
-      }
-   }
+        if ( num_percent > 25 )
+        {
+            if ( ch->mana >= mana_cost( ch, skill_lookup( "cloak:absorption" ) ) )
+                do_cast( ch, "cloak:absorption" );
+            return;
+        }
+    }
 
-   /*
-    * usually i only have mobs do one thing per round but what they hell 
-    * * let the kids have their fun :) 
-    */
-   if( !IS_AFFECTED( ch, AFF_SANCTUARY ) )
-      if( ch->mana >= mana_cost( ch, skill_lookup( "sanctuary" ) ) )
-         do_cast( ch, "sanctuary" );
-   if( !IS_AFFECTED( ch, AFF_PROTECT ) )
-      if( ch->mana >= mana_cost( ch, skill_lookup( "protection" ) ) )
-         do_cast( ch, "protection" );
-   if( !IS_AFFECTED( ch, skill_lookup( "bless" ) ) )
-      if( ch->mana >= mana_cost( ch, skill_lookup( "bless" ) ) )
-         do_cast( ch, "bless" );
-   if( !IS_AFFECTED( ch, skill_lookup( "stone skin" ) ) )
-      if( ch->mana >= mana_cost( ch, skill_lookup( "stone skin" ) ) )
-         do_cast( ch, "stone" );
-   return;
+    /*
+     * usually i only have mobs do one thing per round but what they hell
+     * * let the kids have their fun :)
+     */
+    if ( !IS_AFFECTED( ch, AFF_SANCTUARY ) )
+        if ( ch->mana >= mana_cost( ch, skill_lookup( "sanctuary" ) ) )
+            do_cast( ch, "sanctuary" );
+    if ( !IS_AFFECTED( ch, AFF_PROTECT ) )
+        if ( ch->mana >= mana_cost( ch, skill_lookup( "protection" ) ) )
+            do_cast( ch, "protection" );
+    if ( !IS_AFFECTED( ch, skill_lookup( "bless" ) ) )
+        if ( ch->mana >= mana_cost( ch, skill_lookup( "bless" ) ) )
+            do_cast( ch, "bless" );
+    if ( !IS_AFFECTED( ch, skill_lookup( "stone skin" ) ) )
+        if ( ch->mana >= mana_cost( ch, skill_lookup( "stone skin" ) ) )
+            do_cast( ch, "stone" );
+    return;
 }
 
 void mob_is_standing( CHAR_DATA * ch )
 {
-   short dir;
-   CHAR_DATA *vch;
-   CHAR_DATA *tch;
-   list<CHAR_DATA *>::iterator li;
-   bool ready = TRUE;
-   bool prey_still_exist = FALSE;
-   int number_got_up = 0;
-   int number_of_group = 1;
-   int number_of_other_group = 1;
+    short dir;
+    CHAR_DATA *vch;
+    CHAR_DATA *tch;
+    list<CHAR_DATA *>::iterator li;
+    bool ready = TRUE;
+    bool prey_still_exist = FALSE;
+    int number_got_up = 0;
+    int number_of_group = 1;
+    int number_of_other_group = 1;
 
-   /*
-    * get a light source 
-    */
-   if( ch->in_room->light <= 0 )
-   {
-      if( ch->mana >= mana_cost( ch, skill_lookup( "continual light" ) ) )
-      {
-         do_cast( ch, "'continual light'" );
-         do_get( ch, "all" );
-         do_wear( ch, "all" );
-         return;
-      }
-   }
+    /*
+     * get a light source
+     */
+    if ( ch->in_room->light <= 0 )
+    {
+        if ( ch->mana >= mana_cost( ch, skill_lookup( "continual light" ) ) )
+        {
+            do_cast( ch, "'continual light'" );
+            do_get( ch, "all" );
+            do_wear( ch, "all" );
+            return;
+        }
+    }
 
-   if( ( IS_AFFECTED( ch, AFF_POISON ) ) || ( IS_AFFECTED( ch, AFF_BLIND ) ) )
-   {
-      if( IS_AFFECTED( ch, AFF_POISON ) )
-         if( ch->mana >= mana_cost( ch, skill_lookup( "cure poison" ) ) )
-            do_cast( ch, "'cure poison'" );
-      if( IS_AFFECTED( ch, AFF_BLIND ) )
-         if( ch->mana >= mana_cost( ch, skill_lookup( "cure blindness" ) ) )
-            do_cast( ch, "'cure blindness'" );
-      return;
-   }
+    if ( ( IS_AFFECTED( ch, AFF_POISON ) ) || ( IS_AFFECTED( ch, AFF_BLIND ) ) )
+    {
+        if ( IS_AFFECTED( ch, AFF_POISON ) )
+            if ( ch->mana >= mana_cost( ch, skill_lookup( "cure poison" ) ) )
+                do_cast( ch, "'cure poison'" );
+        if ( IS_AFFECTED( ch, AFF_BLIND ) )
+            if ( ch->mana >= mana_cost( ch, skill_lookup( "cure blindness" ) ) )
+                do_cast( ch, "'cure blindness'" );
+        return;
+    }
 
-   /*
-    * is anyone in group being attacked? if so, assist! 
-    */
-   /*
-    * -leaders will be forced to rescue in the 'mob_is_fighting' function
-    * * already so no need to check for it here 
-    */
-   for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-   {
-      if( ( is_same_group( ch, vch ) ) && ( vch->fighting != NULL ) && ( vch != ch ) )
-      {
-         do_assist( ch, "" );
-         return;
-      }
-   }
-   if( ch->leader == NULL )
-   {
-      for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-      {
-         if( is_same_group( ch, vch ) && ( ch != vch ) )
-         {
-            number_of_group = number_of_group + 1;
-         }
-      }
-      if( number_of_group < 4 )
-      {
-         for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-         {
-            if( vch->leader != NULL )
-               continue;
-
-            if( ( vch != ch ) && ( IS_NPC( vch ) )
-                && ( AI_MOB(vch) )
-                && ( !is_same_group( ch, vch ) )
-                && ( vch->position == POS_STANDING )
-                && ( ( vch->get_level("psuedo") - ch->get_level("psuedo") <= 20
-                       && vch->get_level("psuedo") - ch->get_level("psuedo") >= -20 )
-                     || ( ch->get_level("psuedo") - vch->get_level("psuedo") <= 20
-                          && ch->get_level("psuedo") - vch->get_level("psuedo") >= -20 ) )
-                && ( can_see( vch, ch ) ) && ( can_see( ch, vch ) ) )
-
+    /*
+     * is anyone in group being attacked? if so, assist!
+     */
+    /*
+     * -leaders will be forced to rescue in the 'mob_is_fighting' function
+     * * already so no need to check for it here
+     */
+    for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+    {
+        if ( ( is_same_group( ch, vch ) ) && ( vch->fighting != NULL ) && ( vch != ch ) )
+        {
+            do_assist( ch, "" );
+            return;
+        }
+    }
+    if ( ch->leader == NULL )
+    {
+        for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+        {
+            if ( is_same_group( ch, vch ) && ( ch != vch ) )
             {
-               if( vch->leader == NULL )
-               {
-                  for( tch = vch->in_room->first_person; tch != NULL; tch = tch->next_in_room )
-                  {
-                     if( is_same_group( tch, vch ) && ( tch != vch ) )
-                     {
-                        number_of_other_group = number_of_other_group + 1;
-                     }
-                  }
-               }
-
-               if( number_of_group + number_of_other_group <= 4 )
-               {
-                  get_mob_group( ch, vch );
-                  return;
-               }
+                number_of_group = number_of_group + 1;
             }
-         }
-      }
-   }
+        }
+        if ( number_of_group < 4 )
+        {
+            for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+            {
+                if ( vch->leader != NULL )
+                    continue;
 
-   /*
-    * do you need to heal? 
-    */
-   if( ch->hit < ch->max_hit * 85 / 100 )
-   {
-      if( ( ch->mana >= mana_cost( ch, skill_lookup( "heal" ) ) )
-          || ( ch->mana >= mana_cost( ch, skill_lookup( "cure critical" ) ) )
-          || ( ch->mana >= mana_cost( ch, skill_lookup( "cure serious" ) ) ) )
+                if ( ( vch != ch ) && ( IS_NPC( vch ) )
+                        && ( AI_MOB(vch) )
+                        && ( !is_same_group( ch, vch ) )
+                        && ( vch->position == POS_STANDING )
+                        && ( ( vch->get_level("psuedo") - ch->get_level("psuedo") <= 20
+                               && vch->get_level("psuedo") - ch->get_level("psuedo") >= -20 )
+                             || ( ch->get_level("psuedo") - vch->get_level("psuedo") <= 20
+                                  && ch->get_level("psuedo") - vch->get_level("psuedo") >= -20 ) )
+                        && ( can_see( vch, ch ) ) && ( can_see( ch, vch ) ) )
 
-         mob_regen_check( ch, NULL, FALSE );
+                {
+                    if ( vch->leader == NULL )
+                    {
+                        for ( tch = vch->in_room->first_person; tch != NULL; tch = tch->next_in_room )
+                        {
+                            if ( is_same_group( tch, vch ) && ( tch != vch ) )
+                            {
+                                number_of_other_group = number_of_other_group + 1;
+                            }
+                        }
+                    }
 
-      /*
-       * if leader is ready to move, just keep standing 
-       */
-      if( ( ch->leader != NULL )
-          && ( ch->leader->in_room == ch->in_room )
-          && ( ch->leader->position == POS_STANDING )
-          && ( ch->leader->mana >= ch->leader->max_mana * 85 / 100 )
-          && ( ch->leader->hit >= ch->leader->max_hit * 85 / 100 ) )
-         return;
-      else
-      {
-         if( ch->mana >= ch->max_mana * 75 / 100 )
-            ready = ready_heal_room( ch );
+                    if ( number_of_group + number_of_other_group <= 4 )
+                    {
+                        get_mob_group( ch, vch );
+                        return;
+                    }
+                }
+            }
+        }
+    }
 
-         if( ready == TRUE )
-            do_sleep( ch, "" );
+    /*
+     * do you need to heal?
+     */
+    if ( ch->hit < ch->max_hit * 85 / 100 )
+    {
+        if ( ( ch->mana >= mana_cost( ch, skill_lookup( "heal" ) ) )
+                || ( ch->mana >= mana_cost( ch, skill_lookup( "cure critical" ) ) )
+                || ( ch->mana >= mana_cost( ch, skill_lookup( "cure serious" ) ) ) )
 
-         return;
-      }
-   }
+            mob_regen_check( ch, NULL, FALSE );
+
+        /*
+         * if leader is ready to move, just keep standing
+         */
+        if ( ( ch->leader != NULL )
+                && ( ch->leader->in_room == ch->in_room )
+                && ( ch->leader->position == POS_STANDING )
+                && ( ch->leader->mana >= ch->leader->max_mana * 85 / 100 )
+                && ( ch->leader->hit >= ch->leader->max_hit * 85 / 100 ) )
+            return;
+        else
+        {
+            if ( ch->mana >= ch->max_mana * 75 / 100 )
+                ready = ready_heal_room( ch );
+
+            if ( ready == TRUE )
+                do_sleep( ch, "" );
+
+            return;
+        }
+    }
 
 
-   if( ch->mana < ch->max_mana * 85 / 100 )
-   {
-      do_sleep( ch, "" );
-      return;
-   }
+    if ( ch->mana < ch->max_mana * 85 / 100 )
+    {
+        do_sleep( ch, "" );
+        return;
+    }
 
 
-   /*
-    * do you need to level? if you have a group leader, have the leader 
-    * * find a the trainer. if you are the leader just go and find the
-    * * trainer 
-    */
+    /*
+     * do you need to level? if you have a group leader, have the leader
+     * * find a the trainer. if you are the leader just go and find the
+     * * trainer
+     */
 
 // ZEN FIX Have them recall then hunt the room
 
-   if( able_to_level( ch ) )
-   {
-      char_from_room( ch );
-      char_to_room( ch, get_room_index( 3758 ) );
-      gain_level( ch );
-      return;
-/*
-      dir = h_find_dir ( get_room_index(ch->in_room->vnum), 
-			 get_room_index(ROOM_VNUM_INT_HEAL),
-			 ch->hunt_flags );
+    if ( able_to_level( ch ) )
+    {
+        char_from_room( ch );
+        char_to_room( ch, get_room_index( 3758 ) );
+        gain_level( ch );
+        return;
+        /*
+              dir = h_find_dir ( get_room_index(ch->in_room->vnum),
+                     get_room_index(ROOM_VNUM_INT_HEAL),
+                     ch->hunt_flags );
 
-      if (  dir == -1  )
-	 gain_level ( ch );
-      else 
-      { 
-	 if (  ( ch->leader != NULL )
-	    && ( ch->leader->in_room == ch->in_room )  )
-	 {
-	    hunt_move ( ch->leader, dir );
-	    end_hunt ( ch->leader );
-	    return;
-	 }
-	 else
-	 {
-	    hunt_move ( ch, dir );
-	    return;
-	 }
-      }  */
-   }
+              if (  dir == -1  )
+             gain_level ( ch );
+              else
+              {
+             if (  ( ch->leader != NULL )
+                && ( ch->leader->in_room == ch->in_room )  )
+             {
+                hunt_move ( ch->leader, dir );
+                end_hunt ( ch->leader );
+                return;
+             }
+             else
+             {
+                hunt_move ( ch, dir );
+                return;
+             }
+              }  */
+    }
 
-   /*
-    * if you're leader and you don't need to gain level, does anyone else 
-    * * in the group? 
-    */
-   /*
-    * actually, the above function will force the leader to find a trainer 
-    * * already.  but since i don't want the leader to select a new target 
-    * * until the group gains the needed level, i'll put this check here 
-    */
-   for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-   {
-      if( ( is_same_group( vch, ch ) )
-          && ( vch->in_room == ch->in_room ) && ( vch->leader == ch ) && ( able_to_level( vch ) ) )
-      {
-         dir = h_find_dir( get_room_index( ch->in_room->vnum ), get_room_index( ROOM_VNUM_INT_HEAL ), ch->hunt_flags );
-         hunt_move( ch, dir );
-         return;
-      }
-   }
+    /*
+     * if you're leader and you don't need to gain level, does anyone else
+     * * in the group?
+     */
+    /*
+     * actually, the above function will force the leader to find a trainer
+     * * already.  but since i don't want the leader to select a new target
+     * * until the group gains the needed level, i'll put this check here
+     */
+    for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+    {
+        if ( ( is_same_group( vch, ch ) )
+                && ( vch->in_room == ch->in_room ) && ( vch->leader == ch ) && ( able_to_level( vch ) ) )
+        {
+            dir = h_find_dir( get_room_index( ch->in_room->vnum ), get_room_index( ROOM_VNUM_INT_HEAL ), ch->hunt_flags );
+            hunt_move( ch, dir );
+            return;
+        }
+    }
 
-   /*
-    * if noone needs to heal or gain level, then let's hunt! 
-    */
-   /*
-    * by the way, only leaders will hunt. followers will just follow and 
-    * * assist when needed 
-    */
-   if( ( ch->leader != NULL ) && ( ch->leader->in_room == ch->in_room ) && ( ch->hunting != NULL ) )
-   {
-      end_hunt( ch );
-   }
-   else if( ( ch->leader != NULL ) && ( ch->leader->in_room == ch->in_room ) && ( ch->hunting == NULL ) )
-   {
-      return;
-   }
-   else if( is_group_leader( ch ) )
-   {
-      for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-      {
-         if( ( vch != ch ) && ( is_same_group( vch, ch ) ) && ( vch->position != POS_STANDING ) )
-         {
-            get_up( vch, vch->position );
-            number_got_up = number_got_up + 1;
-         }
-      }
-      if( number_got_up != 0 )
-         return;
-   }
-   else
-   {
-      if( ch->hunting != NULL )
-      {
-         for( li = char_list.begin(); li != char_list.end(); li++ )
-         {
-            vch = *li;
-            if( vch == ch->hunting )
+    /*
+     * if noone needs to heal or gain level, then let's hunt!
+     */
+    /*
+     * by the way, only leaders will hunt. followers will just follow and
+     * * assist when needed
+     */
+    if ( ( ch->leader != NULL ) && ( ch->leader->in_room == ch->in_room ) && ( ch->hunting != NULL ) )
+    {
+        end_hunt( ch );
+    }
+    else if ( ( ch->leader != NULL ) && ( ch->leader->in_room == ch->in_room ) && ( ch->hunting == NULL ) )
+    {
+        return;
+    }
+    else if ( is_group_leader( ch ) )
+    {
+        for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+        {
+            if ( ( vch != ch ) && ( is_same_group( vch, ch ) ) && ( vch->position != POS_STANDING ) )
             {
-               prey_still_exist = TRUE;
-               return;
+                get_up( vch, vch->position );
+                number_got_up = number_got_up + 1;
             }
-         }
+        }
+        if ( number_got_up != 0 )
+            return;
+    }
+    else
+    {
+        if ( ch->hunting != NULL )
+        {
+            for ( li = char_list.begin(); li != char_list.end(); li++ )
+            {
+                vch = *li;
+                if ( vch == ch->hunting )
+                {
+                    prey_still_exist = TRUE;
+                    return;
+                }
+            }
 
-         if( prey_still_exist == FALSE )
-         {
-            ch->hunting = NULL;
-         }
-      }
-      if( ch->hunting == NULL && ch->leader == NULL )
-      {
-         select_target( ch );
-         return;
-      }
-   }
+            if ( prey_still_exist == FALSE )
+            {
+                ch->hunting = NULL;
+            }
+        }
+        if ( ch->hunting == NULL && ch->leader == NULL )
+        {
+            select_target( ch );
+            return;
+        }
+    }
 
-   /*
-    * power_up_mob ( ch ); 
-    */
+    /*
+     * power_up_mob ( ch );
+     */
 
-   /*
-    * if (  ch->leader != NULL 
-    * && ch->in_room != ch->leader->in_room )
-    * {
-    * do_follow( ch, ch->name );
-    * }  
-    */
+    /*
+     * if (  ch->leader != NULL
+     * && ch->in_room != ch->leader->in_room )
+     * {
+     * do_follow( ch, ch->name );
+     * }
+     */
 
-   return;
+    return;
 
 }
 
 
 bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
 {
-   /*
-    * Return TRUE if victim is a valid target for ch to kill. 
-    */
+    /*
+     * Return TRUE if victim is a valid target for ch to kill.
+     */
 
-   /*
-    * don't hunt people you can't even see 
-    */
-   if( !can_see( ch, victim ) )
-      return FALSE;
+    /*
+     * don't hunt people you can't even see
+     */
+    if ( !can_see( ch, victim ) )
+        return FALSE;
 
-   /*
-    * Don't attack group members or self! 
-    */
-   if( is_same_group( ch, victim ) )
-      return FALSE;
+    /*
+     * Don't attack group members or self!
+     */
+    if ( is_same_group( ch, victim ) )
+        return FALSE;
 
-   /*
-    * Don't attack other int mobs! 
-    */
-   if( IS_NPC( victim ) && AI_MOB(victim) )
-      return FALSE;
+    /*
+     * Don't attack other int mobs!
+     */
+    if ( IS_NPC( victim ) && AI_MOB(victim) )
+        return FALSE;
 
-   /*
-    * Don't attack players.... except for have spec_vamp_hunter
-    */
-   if( ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
-      return FALSE;
+    /*
+     * Don't attack players.... except for have spec_vamp_hunter
+     */
+    if ( ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
+        return FALSE;
 
-   /*
-    * don't attack fairy godmother
-    */
-   if( IS_NPC( victim ) )
-      if( victim->npcdata->pIndexData->vnum == 1026 )
-         return FALSE;
+    /*
+     * don't attack fairy godmother
+     */
+    if ( IS_NPC( victim ) )
+        if ( victim->npcdata->pIndexData->vnum == 1026 )
+            return FALSE;
 
 
-   /*
-    * if IS vamp_hunter, make sure target is a player vamp
-    */
+    /*
+     * if IS vamp_hunter, make sure target is a player vamp
+     */
 
-   if( ( IS_VAMP( victim ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
-      return FALSE;
+    if ( ( IS_VAMP( victim ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
+        return FALSE;
 
-   /*
-    * don't attack NPC VAMPS (they can't die )
-    */
-   if( ( IS_VAMP( victim ) ) && ( IS_NPC( victim ) ) )
-      return FALSE;
+    /*
+     * don't attack NPC VAMPS (they can't die )
+     */
+    if ( ( IS_VAMP( victim ) ) && ( IS_NPC( victim ) ) )
+        return FALSE;
 
-   /*
-    * Only kill victims of similar level
-    */
-   if( ( ( victim->get_level("psuedo") - ch->get_level("psuedo") ) > -7 )
-       || ( ( ch->get_level("psuedo") - victim->get_level("psuedo") ) > 12 ) )
-      return FALSE;
+    /*
+     * Only kill victims of similar level
+     */
+    if ( ( ( victim->get_level("psuedo") - ch->get_level("psuedo") ) > -7 )
+            || ( ( ch->get_level("psuedo") - victim->get_level("psuedo") ) > 12 ) )
+        return FALSE;
 
 //   if ( ( IS_GOOD( ch )    && IS_GOOD( victim    ) )
 //   || (   IS_EVIL( ch )    && IS_EVIL( victim    ) )
 //   || (   IS_NEUTRAL( ch ) && IS_NEUTRAL( victim ) ) )
 //      return FALSE;
 
-   if( ( !IS_NPC(ch) && ( ch->npcdata->spec_fun == spec_lookup( "spec_vamp_hunter" ) ) ) && ( IS_NPC( victim ) ) && ( number_percent(  ) < 20 ) )
-      return FALSE;
+    if ( ( !IS_NPC(ch) && ( ch->npcdata->spec_fun == spec_lookup( "spec_vamp_hunter" ) ) ) && ( IS_NPC( victim ) ) && ( number_percent(  ) < 20 ) )
+        return FALSE;
 
-   if( victim->in_room->room_flags.test(RFLAG_SAFE) || victim->act.test(ACT_SOLO) )
-       /*
-        * || ( IS_SET( victim->in_room->room_flags, ROOM_JAIL_CELL ) ) 
-        */
-      return FALSE;
+    if ( victim->in_room->room_flags.test(RFLAG_SAFE) || victim->act.test(ACT_SOLO) )
+        /*
+         * || ( IS_SET( victim->in_room->room_flags, ROOM_JAIL_CELL ) )
+         */
+        return FALSE;
 
-   return TRUE;
+    return TRUE;
 }
 
 
 void select_target( CHAR_DATA * ch )
 {
-   /*
-    * Find a new target for the group to go after 
-    */
-   int average_level;
+    /*
+     * Find a new target for the group to go after
+     */
+    int average_level;
 //   int        tmp   = 0;
-   CHAR_DATA *vch;
-   CHAR_DATA *victim = NULL;
-   list<CHAR_DATA *>::iterator li;
-   char buf[MAX_STRING_LENGTH];
-   int force_index = 0;
-   bool alone = TRUE;
-   bool mob_is_leader = FALSE;
-   short attempts;
+    CHAR_DATA *vch;
+    CHAR_DATA *victim = NULL;
+    list<CHAR_DATA *>::iterator li;
+    char buf[MAX_STRING_LENGTH];
+    int force_index = 0;
+    bool alone = TRUE;
+    bool mob_is_leader = FALSE;
+    short attempts;
 
-   /*
-    * mobs were doing ethereal travel too much... i've now lowered it to 
-    * * 15% of the time and only if they are not hunting 
-    */
+    /*
+     * mobs were doing ethereal travel too much... i've now lowered it to
+     * * 15% of the time and only if they are not hunting
+     */
 
-   mob_is_leader = is_group_leader( ch );
-   if( ( number_percent(  ) < 15 ) && ( ch->hunting == NULL ) && ( ch->in_room->vnum != ROOM_VNUM_ETHEREAL_PLANE ) )
+    mob_is_leader = is_group_leader( ch );
+    if ( ( number_percent(  ) < 15 ) && ( ch->hunting == NULL ) && ( ch->in_room->vnum != ROOM_VNUM_ETHEREAL_PLANE ) )
 
-/* was victim == NULL, that's always true at this point.. Zen */
+        /* was victim == NULL, that's always true at this point.. Zen */
 
-   {
-      if( mob_is_leader == TRUE )
-      {
-         for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-         {
-            if( ( is_same_group( ch, vch ) ) == TRUE )
+    {
+        if ( mob_is_leader == TRUE )
+        {
+            for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
             {
-               if( vch->mana < mana_cost( vch, skill_lookup( "ethereal travel" ) ) )
-               {
-                  return;
-               }
+                if ( ( is_same_group( ch, vch ) ) == TRUE )
+                {
+                    if ( vch->mana < mana_cost( vch, skill_lookup( "ethereal travel" ) ) )
+                    {
+                        return;
+                    }
+                }
             }
-         }
-      }
-      if( ch->mana < mana_cost( ch, skill_lookup( "ethereal travel" ) ) )
-         return;
+        }
+        if ( ch->mana < mana_cost( ch, skill_lookup( "ethereal travel" ) ) )
+            return;
 
-      do_say( ch, "This place is boring! I am gonna go somewhere else!" );
-      for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-      {
-         if( ( is_same_group( vch, ch ) ) && ( ch != vch ) )
-         {
-            do_say( vch, "Yeah, it is--we're outta here!" );
-            do_cast( vch, "ethereal" );
-         }
-      }
-      do_cast( ch, "ethereal" );
-   }
-   else
-   {
-      /*
-       * keeps checking until you've found a valid target
-       */
-      attempts = 0;
-      while( ( victim == NULL ) && ( attempts < 15 ) )
-      {
+        do_say( ch, "This place is boring! I am gonna go somewhere else!" );
+        for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+        {
+            if ( ( is_same_group( vch, ch ) ) && ( ch != vch ) )
+            {
+                do_say( vch, "Yeah, it is--we're outta here!" );
+                do_cast( vch, "ethereal" );
+            }
+        }
+        do_cast( ch, "ethereal" );
+    }
+    else
+    {
+        /*
+         * keeps checking until you've found a valid target
+         */
+        attempts = 0;
+        while ( ( victim == NULL ) && ( attempts < 15 ) )
+        {
 // ZEN FIX set average level based on level of ngroup
-         attempts++;
-         average_level = ch->get_level("psuedo");
+            attempts++;
+            average_level = ch->get_level("psuedo");
 
-         force_index = number_range( 1, mob_index_list.size() );
+            force_index = number_range( 1, mob_index_list.size() );
 
-         for( li = char_list.begin(); li != char_list.end(); li++ )
-         {
-            vch = *li;
-            if( victim != NULL )
-               break;
-            force_index--;
-            if( force_index > 0 )
-               continue;
-
-            if( valid_target( ch, vch, average_level ) )
+            for ( li = char_list.begin(); li != char_list.end(); li++ )
             {
-               /*
-                * Trick used in  something else... 
-                */
-               if( number_range( 0, 1 ) == 0 )
-               {
-                  victim = vch;
-               }
-               if( victim == NULL ) /* screwed up somehow */
-               {
-                  continue;
-               }
-               if( !IS_NPC( victim ) )
-               {
-                  for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-                  {
-                     if( is_same_group( ch, vch ) )
-                     {
-                        alone = FALSE;
-                        break;
-                     }
-                  }
-                  if( alone == FALSE )
-                  {
-                     snprintf( buf, MSL, "%s We're coming for you!", victim->name.c_str() );
-                     do_tell( ch, buf );
-                  }
-                  else
-                  {
-                     snprintf( buf, MSL, "%s I'm coming for you!", victim->name.c_str() );
-                     do_tell( ch, buf );
-                  }
-               }
+                vch = *li;
+                if ( victim != NULL )
+                    break;
+                force_index--;
+                if ( force_index > 0 )
+                    continue;
+
+                if ( valid_target( ch, vch, average_level ) )
+                {
+                    /*
+                     * Trick used in  something else...
+                     */
+                    if ( number_range( 0, 1 ) == 0 )
+                    {
+                        victim = vch;
+                    }
+                    if ( victim == NULL ) /* screwed up somehow */
+                    {
+                        continue;
+                    }
+                    if ( !IS_NPC( victim ) )
+                    {
+                        for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+                        {
+                            if ( is_same_group( ch, vch ) )
+                            {
+                                alone = FALSE;
+                                break;
+                            }
+                        }
+                        if ( alone == FALSE )
+                        {
+                            snprintf( buf, MSL, "%s We're coming for you!", victim->name.c_str() );
+                            do_tell( ch, buf );
+                        }
+                        else
+                        {
+                            snprintf( buf, MSL, "%s I'm coming for you!", victim->name.c_str() );
+                            do_tell( ch, buf );
+                        }
+                    }
+                }
             }
-         }
-      }
+        }
 
-      if( set_hunt( ch, NULL, victim, NULL, HUNT_WORLD | HUNT_PICKDOOR | HUNT_CR, HUNT_MERC ) )
-      {
-         snprintf( buf, MSL, "Right!  %s is our new target!!", victim->get_name() );
-         do_say( ch, buf );
-      }
+        if ( set_hunt( ch, NULL, victim, NULL, HUNT_WORLD | HUNT_PICKDOOR | HUNT_CR, HUNT_MERC ) )
+        {
+            snprintf( buf, MSL, "Right!  %s is our new target!!", victim->get_name() );
+            do_say( ch, buf );
+        }
 
-      return;
-   }
-   return;
+        return;
+    }
+    return;
 
 }
 
-static const char *group_state_table[] = {
-   "@@eFleeing@@N",
-   "@@rFighting@@N",
-   "@@eCritical Healing@@N",
-   "@@aReforming@@N",
-   "@@eCritical Mana@@N",
-   "@@lHunting@@N",
-   "@@cNormal Healing@@N",
-   "@@cNormal Mana@@N",
-   "@@WLevelling@@N",
-   "@@yGetting EQ@@N",
-   "@@pIdling@@N",
-   "@@eLost@@N"
+static const char *group_state_table[] =
+{
+    "@@eFleeing@@N",
+    "@@rFighting@@N",
+    "@@eCritical Healing@@N",
+    "@@aReforming@@N",
+    "@@eCritical Mana@@N",
+    "@@lHunting@@N",
+    "@@cNormal Healing@@N",
+    "@@cNormal Mana@@N",
+    "@@WLevelling@@N",
+    "@@yGetting EQ@@N",
+    "@@pIdling@@N",
+    "@@eLost@@N"
 };
 
-/* i have condensed this function to just three states: MOB_FIGHTING, 
- * MOB_RESTING/ MOB_SLEEPING, and MOB_STANDING. each of these three states 
+/* i have condensed this function to just three states: MOB_FIGHTING,
+ * MOB_RESTING/ MOB_SLEEPING, and MOB_STANDING. each of these three states
  * will call it's appropriate function. */
 void int_group_handler( NPC_GROUP_DATA * ngroup )
 {
-   CHAR_DATA *follower = NULL;
-   CHAR_DATA *leader = ngroup->leader;
-   DL_LIST *follower_ptr;
+    CHAR_DATA *follower = NULL;
+    CHAR_DATA *leader = ngroup->leader;
+    DL_LIST *follower_ptr;
 //  short followers_want = GRP_STATE_NO_CHANGE;
-   short leader_wants = GRP_STATE_NO_CHANGE;
-   short group_count = 1; // start with leader
-   char monbuf[MSL];
+    short leader_wants = GRP_STATE_NO_CHANGE;
+    short group_count = 1; // start with leader
+    char monbuf[MSL];
 
-   if( leader == NULL )
-   {
-      monitor_chan( "No Leader in NPC_GROUP", MONITOR_MOB );
-      return;
-   }
+    if ( leader == NULL )
+    {
+        monitor_chan( "No Leader in NPC_GROUP", MONITOR_MOB );
+        return;
+    }
 
 // check for followers needs
-   for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
-   {
-      // check for needing healing, levelling
-      follower = (CHAR_DATA *)follower_ptr->this_one;
-      group_count++;
-      continue;
-   }
+    for ( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
+    {
+        // check for needing healing, levelling
+        follower = (CHAR_DATA *)follower_ptr->this_one;
+        group_count++;
+        continue;
+    }
 
 // check for leader's needs
 
-   if( leader->hit < leader->max_hit * 25 / 100 )
-   {
-      leader_wants = GRP_STATE_CRIT_HEAL;
-   }
-   else if( leader->mana < leader->max_mana * 25 / 100 )
-   {
-      leader_wants = GRP_STATE_CRIT_MANA;
-   }
-   else if( leader->hit < leader->max_hit * 60 / 100 )
-   {
-      leader_wants = GRP_STATE_NORM_HEAL;
-   }
-   else if( leader->mana < leader->max_mana * 50 / 100 )
-   {
-      leader_wants = GRP_STATE_NORM_MANA;
-   }
-   else if( able_to_level( leader ) )
-   {
-      leader_wants = GRP_STATE_LEVELING;
-   }
-   snprintf( monbuf, MSL, "NPC Group Handler, Leader is %s, state is %s", ngroup->leader->name.c_str(), group_state_table[ngroup->state] );
-   monitor_chan( monbuf, MONITOR_MOB );
+    if ( leader->hit < leader->max_hit * 25 / 100 )
+    {
+        leader_wants = GRP_STATE_CRIT_HEAL;
+    }
+    else if ( leader->mana < leader->max_mana * 25 / 100 )
+    {
+        leader_wants = GRP_STATE_CRIT_MANA;
+    }
+    else if ( leader->hit < leader->max_hit * 60 / 100 )
+    {
+        leader_wants = GRP_STATE_NORM_HEAL;
+    }
+    else if ( leader->mana < leader->max_mana * 50 / 100 )
+    {
+        leader_wants = GRP_STATE_NORM_MANA;
+    }
+    else if ( able_to_level( leader ) )
+    {
+        leader_wants = GRP_STATE_LEVELING;
+    }
+    snprintf( monbuf, MSL, "NPC Group Handler, Leader is %s, state is %s", ngroup->leader->name.c_str(), group_state_table[ngroup->state] );
+    monitor_chan( monbuf, MONITOR_MOB );
 
-   switch ( ngroup->state )
-   {
+    switch ( ngroup->state )
+    {
 
 
-      case GRP_STATE_CRIT_HEAL:
-      case GRP_STATE_CRIT_MANA:
-      case GRP_STATE_NORM_HEAL:
-      case GRP_STATE_NORM_MANA:
-      {
-         bool everyone_ready = TRUE;
-         bool room_ready = FALSE;
+        case GRP_STATE_CRIT_HEAL:
+        case GRP_STATE_CRIT_MANA:
+        case GRP_STATE_NORM_HEAL:
+        case GRP_STATE_NORM_MANA:
+            {
+                bool everyone_ready = TRUE;
+                bool room_ready = FALSE;
 //      ready_heal_room( leader );
-         if( ( leader->mana < leader->max_mana * 85 / 100 ) || ( leader->hit < leader->max_hit * 85 / 100 ) )
-         {
-            everyone_ready = FALSE;
-            if( ( ( room_ready = ready_heal_room( leader ) ) == TRUE ) || ( leader->mana < leader->max_mana * 20 / 100 ) )
-            {
-               do_sleep( leader, "" );
+                if ( ( leader->mana < leader->max_mana * 85 / 100 ) || ( leader->hit < leader->max_hit * 85 / 100 ) )
+                {
+                    everyone_ready = FALSE;
+                    if ( ( ( room_ready = ready_heal_room( leader ) ) == TRUE ) || ( leader->mana < leader->max_mana * 20 / 100 ) )
+                    {
+                        do_sleep( leader, "" );
+                    }
+                }
+                else
+                {
+                    do_stand( leader, "" );
+                }
+                for ( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
+                {
+                    follower = (CHAR_DATA *)follower_ptr->this_one;
+                    if ( ( follower->mana < follower->max_mana * 75 / 100 ) || ( follower->hit < follower->max_hit * 75 / 100 ) )
+                    {
+                        everyone_ready = FALSE;
+                        do_sleep( follower, "" );
+                    }
+                    else
+                    {
+                        do_stand( follower, "" );
+                    }
+                }
+                if ( everyone_ready == TRUE )
+                {
+                    ngroup->state = GRP_STATE_IDLE;
+                }
+                break;
             }
-         }
-         else
-         {
-            do_stand( leader, "" );
-         }
-         for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
-         {
-            follower = (CHAR_DATA *)follower_ptr->this_one;
-            if( ( follower->mana < follower->max_mana * 75 / 100 ) || ( follower->hit < follower->max_hit * 75 / 100 ) )
-            {
-               everyone_ready = FALSE;
-               do_sleep( follower, "" );
-            }
-            else
-            {
-               do_stand( follower, "" );
-            }
-         }
-         if( everyone_ready == TRUE )
-         {
-            ngroup->state = GRP_STATE_IDLE;
-         }
-         break;
-      }
-      case GRP_STATE_FIGHT:
-      {  // violence_update will handle
-         if( ( leader_wants < GRP_STATE_HUNTING ) || ( leader->fighting == NULL ) )
-         {
-            bool someone_still_fighting = FALSE;
+        case GRP_STATE_FIGHT:
+            {  // violence_update will handle
+                if ( ( leader_wants < GRP_STATE_HUNTING ) || ( leader->fighting == NULL ) )
+                {
+                    bool someone_still_fighting = FALSE;
 
-            ngroup->state = GRP_STATE_FLEE;
-            for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
-            {
-               follower = (CHAR_DATA *)follower_ptr->this_one;
-               if( follower->fighting != NULL )
-               {
-                  do_flee( follower, "" );
-                  someone_still_fighting = TRUE;
-               }
-            }
-            if( someone_still_fighting == FALSE )
-            {
-               ngroup->state = GRP_STATE_REFORM;
-            }
-            if( leader->fighting != NULL )
-            {
-               do_flee( leader, "" );
-            }
-         }
+                    ngroup->state = GRP_STATE_FLEE;
+                    for ( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
+                    {
+                        follower = (CHAR_DATA *)follower_ptr->this_one;
+                        if ( follower->fighting != NULL )
+                        {
+                            do_flee( follower, "" );
+                            someone_still_fighting = TRUE;
+                        }
+                    }
+                    if ( someone_still_fighting == FALSE )
+                    {
+                        ngroup->state = GRP_STATE_REFORM;
+                    }
+                    if ( leader->fighting != NULL )
+                    {
+                        do_flee( leader, "" );
+                    }
+                }
 
-         break;
-      }
-
-      case GRP_STATE_FLEE:
-      {
-         bool someone_still_fighting = FALSE;
-         for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
-         {
-            follower = (CHAR_DATA *)follower_ptr->this_one;
-            if( follower->fighting != NULL )
-            {
-               do_flee( follower, "" );
-               someone_still_fighting = TRUE;
+                break;
             }
-         }
-         if( leader->fighting != NULL )
-         {
-            do_flee( leader, "" );
-            someone_still_fighting = TRUE;
-         }
-         if( someone_still_fighting == FALSE )
-         {
-            ngroup->state = GRP_STATE_REFORM;
-         }
 
-         break;
-      }
-      case GRP_STATE_IDLE:
-      {
+        case GRP_STATE_FLEE:
+            {
+                bool someone_still_fighting = FALSE;
+                for ( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
+                {
+                    follower = (CHAR_DATA *)follower_ptr->this_one;
+                    if ( follower->fighting != NULL )
+                    {
+                        do_flee( follower, "" );
+                        someone_still_fighting = TRUE;
+                    }
+                }
+                if ( leader->fighting != NULL )
+                {
+                    do_flee( leader, "" );
+                    someone_still_fighting = TRUE;
+                }
+                if ( someone_still_fighting == FALSE )
+                {
+                    ngroup->state = GRP_STATE_REFORM;
+                }
+
+                break;
+            }
+        case GRP_STATE_IDLE:
+            {
 //      check_re_equip( leader );
 //      check_rewield( leader );
-         if( leader_wants < GRP_STATE_NO_CHANGE )
-         {
-            ngroup->state = leader_wants;
-            break;
-         }
-         else if( number_percent(  ) < 40 )
-         {
-            select_target( ngroup->leader );
-            ngroup->state = GRP_STATE_HUNTING;
-            break;
-         }
-      }
-      case GRP_STATE_HUNTING:
-      {  // poll followers later
-         short move_dir;
+                if ( leader_wants < GRP_STATE_NO_CHANGE )
+                {
+                    ngroup->state = leader_wants;
+                    break;
+                }
+                else if ( number_percent(  ) < 40 )
+                {
+                    select_target( ngroup->leader );
+                    ngroup->state = GRP_STATE_HUNTING;
+                    break;
+                }
+            }
+        case GRP_STATE_HUNTING:
+            {  // poll followers later
+                short move_dir;
 
-         if( leader->fighting != NULL )
-         {
-            ngroup->state = GRP_STATE_FIGHT;
-            break;
-         }
-         if( leader->hunting == NULL )
-         {
+                if ( leader->fighting != NULL )
+                {
+                    ngroup->state = GRP_STATE_FIGHT;
+                    break;
+                }
+                if ( leader->hunting == NULL )
+                {
 //        snprintf( monbuf, MSL, "Leader %s not hunting anything in GRP_STATE_HUNTING",
 //              leader->name );
 //        monitor_chan( monbuf, MONITOR_MOB );
-            select_target( ngroup->leader );
-            break;
-         }
-         if( leader->in_room == leader->hunting->in_room )
-         {
-            ngroup->state = GRP_STATE_FIGHT;
-            one_hit( leader, leader->hunting, TYPE_UNDEFINED );
-            break;
-         }
-         move_dir = h_find_dir( leader->in_room, leader->hunting->in_room,
-                                HUNT_WORLD | HUNT_OPENDOOR | HUNT_UNLOCKDOOR | HUNT_PICKDOOR );
-         if( move_dir < 0 )   // can't get there from here
-         {
-            ngroup->state = GRP_STATE_LOST;
-            break;
-         }
-         hunt_move( leader, move_dir );
-         break;
-      }
-      case GRP_STATE_LEVELING:
-      {
-         char_from_room( leader );
-         char_to_room( leader, get_room_index( 3758 ) );
-         if( able_to_level( leader ) )
-         {
-            gain_level( leader );
-         }
-         for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
-         {
-            follower = (CHAR_DATA *)follower_ptr->this_one;
-            if( able_to_level( follower ) )
-            {
-               gain_level( follower );
+                    select_target( ngroup->leader );
+                    break;
+                }
+                if ( leader->in_room == leader->hunting->in_room )
+                {
+                    ngroup->state = GRP_STATE_FIGHT;
+                    one_hit( leader, leader->hunting, TYPE_UNDEFINED );
+                    break;
+                }
+                move_dir = h_find_dir( leader->in_room, leader->hunting->in_room,
+                                       HUNT_WORLD | HUNT_OPENDOOR | HUNT_UNLOCKDOOR | HUNT_PICKDOOR );
+                if ( move_dir < 0 )  // can't get there from here
+                {
+                    ngroup->state = GRP_STATE_LOST;
+                    break;
+                }
+                hunt_move( leader, move_dir );
+                break;
             }
-         }
-         ngroup->state = GRP_STATE_IDLE;
-         break;
-      }
-      case GRP_STATE_REFORM:
-      {
-         bool all_are_here = TRUE;
-         for( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
-         {
-            follower = (CHAR_DATA *)follower_ptr->this_one;
-            if( follower->in_room != leader->in_room )
+        case GRP_STATE_LEVELING:
             {
-               short move_dir;
-               all_are_here = FALSE;
-               move_dir = h_find_dir( follower->in_room, leader->in_room,
-                                      HUNT_WORLD | HUNT_OPENDOOR | HUNT_UNLOCKDOOR | HUNT_PICKDOOR );
-               if( move_dir < 0 )   // can't get there from here
-               {
-                  ngroup->state = GRP_STATE_LOST;
-                  break;
-               }
-               hunt_move( follower, move_dir );
+                char_from_room( leader );
+                char_to_room( leader, get_room_index( 3758 ) );
+                if ( able_to_level( leader ) )
+                {
+                    gain_level( leader );
+                }
+                for ( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
+                {
+                    follower = (CHAR_DATA *)follower_ptr->this_one;
+                    if ( able_to_level( follower ) )
+                    {
+                        gain_level( follower );
+                    }
+                }
+                ngroup->state = GRP_STATE_IDLE;
+                break;
             }
-         }
-         if( all_are_here == TRUE )
-         {
-            ngroup->state = GRP_STATE_IDLE;
-         }
-         break;
-      }
+        case GRP_STATE_REFORM:
+            {
+                bool all_are_here = TRUE;
+                for ( follower_ptr = ngroup->first_follower; follower_ptr; follower_ptr = follower_ptr->next )
+                {
+                    follower = (CHAR_DATA *)follower_ptr->this_one;
+                    if ( follower->in_room != leader->in_room )
+                    {
+                        short move_dir;
+                        all_are_here = FALSE;
+                        move_dir = h_find_dir( follower->in_room, leader->in_room,
+                                               HUNT_WORLD | HUNT_OPENDOOR | HUNT_UNLOCKDOOR | HUNT_PICKDOOR );
+                        if ( move_dir < 0 )  // can't get there from here
+                        {
+                            ngroup->state = GRP_STATE_LOST;
+                            break;
+                        }
+                        hunt_move( follower, move_dir );
+                    }
+                }
+                if ( all_are_here == TRUE )
+                {
+                    ngroup->state = GRP_STATE_IDLE;
+                }
+                break;
+            }
 
-   }
+    }
 }
 
 
 void int_handler( CHAR_DATA * ch )
 {
-   int current_state;
+    int current_state;
 
-   current_state = ch->position;
+    current_state = ch->position;
 
-   /*
-    * if you're fighting check on your condition 
-    */
-   if( current_state == POS_FIGHTING )
-   {
-      mob_is_fighting( ch );
-      return;
-   }
+    /*
+     * if you're fighting check on your condition
+     */
+    if ( current_state == POS_FIGHTING )
+    {
+        mob_is_fighting( ch );
+        return;
+    }
 
-   /*
-    * if you are resting or sleeping, check to see if you need to stand up 
-    */
-   if( current_state != POS_STANDING )
-   {
-      need_to_stand( ch );
-      return;
-   }
+    /*
+     * if you are resting or sleeping, check to see if you need to stand up
+     */
+    if ( current_state != POS_STANDING )
+    {
+        need_to_stand( ch );
+        return;
+    }
 
-   /*
-    * cheat so that players cannot get easy xp from almost dead int mobs 
-    */
-   /*
-    * not sure where to place this yet -- will look at this later 
-    */
-   if( ch->hit < 100 )
-   {
-      ch->hit = ch->max_hit * 50 / 100;
-      ch->mana = ch->max_mana * 50 / 100;
-   }
+    /*
+     * cheat so that players cannot get easy xp from almost dead int mobs
+     */
+    /*
+     * not sure where to place this yet -- will look at this later
+     */
+    if ( ch->hit < 100 )
+    {
+        ch->hit = ch->max_hit * 50 / 100;
+        ch->mana = ch->max_mana * 50 / 100;
+    }
 
-   /*
-    * by now you should be standing 
-    */
-   mob_is_standing( ch );
-   return;
+    /*
+     * by now you should be standing
+     */
+    mob_is_standing( ch );
+    return;
 }
 
-/* i've never learned cases before so i'm pretty much leaving this one 
+/* i've never learned cases before so i'm pretty much leaving this one
  * alone, except for taking out the one_arguement() function */
 void int_combat_handler( CHAR_DATA * ch, CHAR_DATA * victim )
 {
-   /*
-    * Called from fight.c during combat to enable mobs to use spells and
-    * skills.  ACT_INTELLIGENT mobs can call cast() now.
-    * --Stephen   
-    */
+    /*
+     * Called from fight.c during combat to enable mobs to use spells and
+     * skills.  ACT_INTELLIGENT mobs can call cast() now.
+     * --Stephen
+     */
 
-   char arg[MAX_STRING_LENGTH];
-   char buf[MAX_STRING_LENGTH];
-   CHAR_DATA *vch;
-   int sn;
-   int counter = 1;
+    char arg[MAX_STRING_LENGTH];
+    char buf[MAX_STRING_LENGTH];
+    CHAR_DATA *vch;
+    int sn;
+    int counter = 1;
 
-   if( number_percent(  ) < 65 )
-      return;
+    if ( number_percent(  ) < 65 )
+        return;
 
-   for( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
-   {
-      if( vch == victim )
-      {
-         snprintf( buf, MSL, "%d.%s", counter, vch->name.c_str() );
-         break;
-      }
+    for ( vch = ch->in_room->first_person; vch != NULL; vch = vch->next_in_room )
+    {
+        if ( vch == victim )
+        {
+            snprintf( buf, MSL, "%d.%s", counter, vch->name.c_str() );
+            break;
+        }
 
-      counter = counter + 1;
-   }
+        counter = counter + 1;
+    }
 
-   switch ( number_range( 0, 5 ) )  /* Pick a skill or a spell */
-   {
-      case 0:
-      case 1:
-      case 2:
-      case 3:
-         /*
-          * Use a skill 
-          */
-         switch ( number_range( 0, 5 ) )
-         {
-            case 0:
-               snprintf( arg, MSL, "frenzy" );
-               break;
-            case 1:
-               snprintf( arg, MSL, "punch %s", buf );
-               break;
-            case 2:
-               snprintf( arg, MSL, "knee %s", buf );
-               break;
-            case 3:
-               snprintf( arg, MSL, "headbutt %s", buf );
-               break;
-            case 4:
-               snprintf( arg, MSL, "punch %s", buf );
-               break;
-            case 5:
-               snprintf( arg, MSL, "dirt %s", buf );
-               break;
-         }
-         interpret( ch, arg );
-         do_say( ch, buf );
-         break;
-      default:
-         sn = find_spell( ch, TAR_CHAR_OFFENSIVE );
-         if( ( sn != -1 ) && ( ch->mana > mana_cost( ch, sn ) ) )
-         {
-            snprintf( arg, MSL, "cast '%s' %s", skill_table[sn].name, buf );
+    switch ( number_range( 0, 5 ) )  /* Pick a skill or a spell */
+    {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+            /*
+             * Use a skill
+             */
+            switch ( number_range( 0, 5 ) )
+            {
+                case 0:
+                    snprintf( arg, MSL, "frenzy" );
+                    break;
+                case 1:
+                    snprintf( arg, MSL, "punch %s", buf );
+                    break;
+                case 2:
+                    snprintf( arg, MSL, "knee %s", buf );
+                    break;
+                case 3:
+                    snprintf( arg, MSL, "headbutt %s", buf );
+                    break;
+                case 4:
+                    snprintf( arg, MSL, "punch %s", buf );
+                    break;
+                case 5:
+                    snprintf( arg, MSL, "dirt %s", buf );
+                    break;
+            }
             interpret( ch, arg );
-         }
-   }
-   return;
+            do_say( ch, buf );
+            break;
+        default:
+            sn = find_spell( ch, TAR_CHAR_OFFENSIVE );
+            if ( ( sn != -1 ) && ( ch->mana > mana_cost( ch, sn ) ) )
+            {
+                snprintf( arg, MSL, "cast '%s' %s", skill_table[sn].name, buf );
+                interpret( ch, arg );
+            }
+    }
+    return;
 }

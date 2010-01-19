@@ -70,12 +70,12 @@ typedef struct BE BufEntry;
 
 struct BE
 {
-   BufEntry *next;
-   uintType size; /* size of the chunk (regardless of NULL CHAR) */
-   intType usage; /* how many pointers to the string */
-   intType ref;   /* for reference checking */
-   const char *caller;  /* who allocated this chunk originally */
-   char buf[1];   /* chunk starts here */
+    BufEntry *next;
+    uintType size; /* size of the chunk (regardless of NULL CHAR) */
+    intType usage; /* how many pointers to the string */
+    intType ref;   /* for reference checking */
+    const char *caller;  /* who allocated this chunk originally */
+    char buf[1];   /* chunk starts here */
 };
 
 /*
@@ -87,9 +87,9 @@ typedef struct TH TempHash;
 
 struct TH
 {
-   TempHash *next;
-   intType len;
-   char *str;
+    TempHash *next;
+    intType len;
+    char *str;
 };
 
 extern TempHash **temp_string_hash;
@@ -121,7 +121,7 @@ extern int HEADER_SIZE;
 extern long tot;
 
 /*
- * Not sure what is a good value for MAX_FREE 
+ * Not sure what is a good value for MAX_FREE
  * If a dup fails str_dup will not defrag unless the number
  * of numFree >= MAX_FREE. numFree is NOT the current number of free blocks,
  * it is just a counter so defrag doesnt start dragging the game in the

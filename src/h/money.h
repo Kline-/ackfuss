@@ -72,19 +72,19 @@ char *take_best_coins P_((MONEY_TYPE *money, int cost));
 
 struct currency_type
 {
-   char *keyword;
-   char *singular;
-   char *plural;
-   float unit_weight;   /* in hundreths of a weight unit */
-   int exchange_val; /* this is in base units, your lowest money form */
+    char *keyword;
+    char *singular;
+    char *plural;
+    float unit_weight;   /* in hundreths of a weight unit */
+    int exchange_val; /* this is in base units, your lowest money form */
 };
 
 class money_type
 {
- public:
-  money_type();
-  ~money_type();
-  int cash_unit[MAX_CURRENCY];
+    public:
+        money_type();
+        ~money_type();
+        int cash_unit[MAX_CURRENCY];
 };
 
 extern const struct currency_type currency_table[MAX_CURRENCY];

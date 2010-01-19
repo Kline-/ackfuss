@@ -48,56 +48,56 @@
 
 DO_FUN(do_sdelete)
 {
-   DESCRIPTOR_DATA *d;
-   char strsave[MAX_INPUT_LENGTH];
-   char arg1[MAX_INPUT_LENGTH];
-   char *pArg;
-   char cEnd;
-   char buf[MAX_INPUT_LENGTH];
+    DESCRIPTOR_DATA *d;
+    char strsave[MAX_INPUT_LENGTH];
+    char arg1[MAX_INPUT_LENGTH];
+    char *pArg;
+    char cEnd;
+    char buf[MAX_INPUT_LENGTH];
 
-   if( IS_NPC( ch ) )
-      return;
-   strcpy( buf, ch->name.c_str() );
-   snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", capitalize( buf ) );
+    if ( IS_NPC( ch ) )
+        return;
+    strcpy( buf, ch->name.c_str() );
+    snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", capitalize( buf ) );
 
-   pArg = arg1;
-   while( isspace( *argument ) )
-      argument++;
+    pArg = arg1;
+    while ( isspace( *argument ) )
+        argument++;
 
-   cEnd = ' ';
-   if( *argument == '\'' || *argument == '"' )
-      cEnd = *argument++;
+    cEnd = ' ';
+    if ( *argument == '\'' || *argument == '"' )
+        cEnd = *argument++;
 
-   while( *argument != '\0' )
-   {
-      if( *argument == cEnd )
-      {
-         argument++;
-         break;
-      }
-      *pArg++ = *argument++;
-   }
-   *pArg = '\0';
+    while ( *argument != '\0' )
+    {
+        if ( *argument == cEnd )
+        {
+            argument++;
+            break;
+        }
+        *pArg++ = *argument++;
+    }
+    *pArg = '\0';
 
-   if( ( ch->pcdata->pwd != '\0' ) && ( arg1[0] == '\0' ) )
-   {
-      send_to_char( "Syntax: pdelete <password>.\r\n", ch );
-      return;
-   }
-   if( ( ch->pcdata->pwd != '\0' ) && ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) ) )
-   {
-      WAIT_STATE( ch, 1000 );
-      send_to_char( "Wrong password.  Wait 10 seconds.\r\n", ch );
-      return;
-   }
+    if ( ( ch->pcdata->pwd != '\0' ) && ( arg1[0] == '\0' ) )
+    {
+        send_to_char( "Syntax: pdelete <password>.\r\n", ch );
+        return;
+    }
+    if ( ( ch->pcdata->pwd != '\0' ) && ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) ) )
+    {
+        WAIT_STATE( ch, 1000 );
+        send_to_char( "Wrong password.  Wait 10 seconds.\r\n", ch );
+        return;
+    }
 
 
-   unlink( strsave );
-   mudinfo.total_pfiles--;
-   send_to_char( "Character deleted.\r\n", ch );
+    unlink( strsave );
+    mudinfo.total_pfiles--;
+    send_to_char( "Character deleted.\r\n", ch );
 
-   d = ch->desc;
-   extract_char( ch, TRUE );
-   if( d != NULL )
-      close_socket( d );
+    d = ch->desc;
+    extract_char( ch, TRUE );
+    if ( d != NULL )
+        close_socket( d );
 }

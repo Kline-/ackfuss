@@ -58,387 +58,387 @@
 
 void swap_global_hash( char Tp, void *Ptr, int old_vnum, int new_vnum )
 {
-   ROOM_INDEX_DATA *pRoomIndex, *prevRoomIndex;
-   OBJ_INDEX_DATA *pObjIndex, *prevObjIndex;
-   MOB_INDEX_DATA *pMobIndex, *prevMobIndex;
+    ROOM_INDEX_DATA *pRoomIndex, *prevRoomIndex;
+    OBJ_INDEX_DATA *pObjIndex, *prevObjIndex;
+    MOB_INDEX_DATA *pMobIndex, *prevMobIndex;
 
-   int iHash;
+    int iHash;
 
 
-   switch ( Tp )
-   {
-      case 'R':
-         /*
-          * Delete old hash table entry
-          */
+    switch ( Tp )
+    {
+        case 'R':
+            /*
+             * Delete old hash table entry
+             */
 
-         iHash = old_vnum % MAX_KEY_HASH;
-         prevRoomIndex = NULL;
-         for( pRoomIndex = room_index_hash[iHash]; pRoomIndex != NULL; pRoomIndex = pRoomIndex->next )
-         {
-            if( pRoomIndex == ( ROOM_INDEX_DATA * ) Ptr )
-               break;
-            prevRoomIndex = pRoomIndex;
-         }
+            iHash = old_vnum % MAX_KEY_HASH;
+            prevRoomIndex = NULL;
+            for ( pRoomIndex = room_index_hash[iHash]; pRoomIndex != NULL; pRoomIndex = pRoomIndex->next )
+            {
+                if ( pRoomIndex == ( ROOM_INDEX_DATA * ) Ptr )
+                    break;
+                prevRoomIndex = pRoomIndex;
+            }
 
-         if( pRoomIndex != NULL )
-         {
-            if( prevRoomIndex == NULL )
-               room_index_hash[iHash] = pRoomIndex->next;
-            else
-               prevRoomIndex->next = pRoomIndex->next;
-         }
+            if ( pRoomIndex != NULL )
+            {
+                if ( prevRoomIndex == NULL )
+                    room_index_hash[iHash] = pRoomIndex->next;
+                else
+                    prevRoomIndex->next = pRoomIndex->next;
+            }
 
-         /*
-          * Add another
-          */
+            /*
+             * Add another
+             */
 
-         iHash = new_vnum % MAX_KEY_HASH;
-         pRoomIndex->next = room_index_hash[iHash];
-         room_index_hash[iHash] = pRoomIndex;
+            iHash = new_vnum % MAX_KEY_HASH;
+            pRoomIndex->next = room_index_hash[iHash];
+            room_index_hash[iHash] = pRoomIndex;
 
-         break;
+            break;
 
-      case 'M':
-         /*
-          * Delete old hash table entry 
-          */
+        case 'M':
+            /*
+             * Delete old hash table entry
+             */
 
-         iHash = old_vnum % MAX_KEY_HASH;
-         prevMobIndex = NULL;
-         for( pMobIndex = mob_index_hash[iHash]; pMobIndex != NULL; pMobIndex = pMobIndex->next )
-         {
-            if( pMobIndex == ( MOB_INDEX_DATA * ) Ptr )
-               break;
-            prevMobIndex = pMobIndex;
-         }
+            iHash = old_vnum % MAX_KEY_HASH;
+            prevMobIndex = NULL;
+            for ( pMobIndex = mob_index_hash[iHash]; pMobIndex != NULL; pMobIndex = pMobIndex->next )
+            {
+                if ( pMobIndex == ( MOB_INDEX_DATA * ) Ptr )
+                    break;
+                prevMobIndex = pMobIndex;
+            }
 
-         if( pMobIndex != NULL )
-         {
-            if( prevMobIndex == NULL )
-               mob_index_hash[iHash] = pMobIndex->next;
-            else
-               prevMobIndex->next = pMobIndex->next;
-         }
+            if ( pMobIndex != NULL )
+            {
+                if ( prevMobIndex == NULL )
+                    mob_index_hash[iHash] = pMobIndex->next;
+                else
+                    prevMobIndex->next = pMobIndex->next;
+            }
 
-         /*
-          * Add another
-          */
+            /*
+             * Add another
+             */
 
-         iHash = new_vnum % MAX_KEY_HASH;
-         pMobIndex->next = mob_index_hash[iHash];
-         mob_index_hash[iHash] = pMobIndex;
+            iHash = new_vnum % MAX_KEY_HASH;
+            pMobIndex->next = mob_index_hash[iHash];
+            mob_index_hash[iHash] = pMobIndex;
 
-         break;
+            break;
 
-      case 'O':
-         /*
-          * Delete old hash table entry
-          */
+        case 'O':
+            /*
+             * Delete old hash table entry
+             */
 
-         iHash = old_vnum % MAX_KEY_HASH;
-         prevObjIndex = NULL;
-         for( pObjIndex = obj_index_hash[iHash]; pObjIndex != NULL; pObjIndex = pObjIndex->next )
-         {
-            if( pObjIndex == ( OBJ_INDEX_DATA * ) Ptr )
-               break;
-            prevObjIndex = pObjIndex;
-         }
+            iHash = old_vnum % MAX_KEY_HASH;
+            prevObjIndex = NULL;
+            for ( pObjIndex = obj_index_hash[iHash]; pObjIndex != NULL; pObjIndex = pObjIndex->next )
+            {
+                if ( pObjIndex == ( OBJ_INDEX_DATA * ) Ptr )
+                    break;
+                prevObjIndex = pObjIndex;
+            }
 
-         if( pObjIndex != NULL )
-         {
-            if( prevObjIndex == NULL )
-               obj_index_hash[iHash] = pObjIndex->next;
-            else
-               prevObjIndex->next = pObjIndex->next;
-         }
+            if ( pObjIndex != NULL )
+            {
+                if ( prevObjIndex == NULL )
+                    obj_index_hash[iHash] = pObjIndex->next;
+                else
+                    prevObjIndex->next = pObjIndex->next;
+            }
 
-         /*
-          * Add another
-          */
+            /*
+             * Add another
+             */
 
-         iHash = new_vnum % MAX_KEY_HASH;
-         pObjIndex->next = obj_index_hash[iHash];
-         obj_index_hash[iHash] = pObjIndex;
+            iHash = new_vnum % MAX_KEY_HASH;
+            pObjIndex->next = obj_index_hash[iHash];
+            obj_index_hash[iHash] = pObjIndex;
 
-         break;
+            break;
 
-   }
-   return;
+    }
+    return;
 
 }
 
 
 DO_FUN(do_check_areas)
 {
-   hash_table *room_hash;
-   hash_table *obj_hash;
-   hash_table *mob_hash;
-   int min_vnum, max_vnum;
-   int new_vnum, old_vnum;
-   char buffer[MAX_STRING_LENGTH];
-   FILE *out_file;
-   int a;
-   RESET_DATA *pReset;
-   list<AREA_DATA *>::iterator li;
-   AREA_DATA *CurArea;
-   BUILD_DATA_LIST *pList;
-   ROOM_INDEX_DATA *pRoomIndex;
-   OBJ_INDEX_DATA *pObjIndex;
-   MOB_INDEX_DATA *pMobIndex;
+    hash_table *room_hash;
+    hash_table *obj_hash;
+    hash_table *mob_hash;
+    int min_vnum, max_vnum;
+    int new_vnum, old_vnum;
+    char buffer[MAX_STRING_LENGTH];
+    FILE *out_file;
+    int a;
+    RESET_DATA *pReset;
+    list<AREA_DATA *>::iterator li;
+    AREA_DATA *CurArea;
+    BUILD_DATA_LIST *pList;
+    ROOM_INDEX_DATA *pRoomIndex;
+    OBJ_INDEX_DATA *pObjIndex;
+    MOB_INDEX_DATA *pMobIndex;
 
-   /*
-    * Create hash tables for rooms, mobiles, objects 
-    */
+    /*
+     * Create hash tables for rooms, mobiles, objects
+     */
 
-   room_hash = create_hash_table( MAX_KEY_HASH );
-   obj_hash = create_hash_table( MAX_KEY_HASH );
-   mob_hash = create_hash_table( MAX_KEY_HASH );
+    room_hash = create_hash_table( MAX_KEY_HASH );
+    obj_hash = create_hash_table( MAX_KEY_HASH );
+    mob_hash = create_hash_table( MAX_KEY_HASH );
 
-   out_file = file_open( "area_changes.txt", "a" );
+    out_file = file_open( "area_changes.txt", "a" );
 
-   for( li = area_list.begin(); li != area_list.end(); li++ )
-   {
-      CurArea = *li;
-      min_vnum = CurArea->min_vnum;
-      max_vnum = CurArea->max_vnum;
-      fprintf( out_file, "%s:\n", CurArea->name );
+    for ( li = area_list.begin(); li != area_list.end(); li++ )
+    {
+        CurArea = *li;
+        min_vnum = CurArea->min_vnum;
+        max_vnum = CurArea->max_vnum;
+        fprintf( out_file, "%s:\n", CurArea->name );
 
-      /*
-       * Go through rooms 
-       */
-      for( pList = CurArea->first_area_room; pList != NULL; pList = pList->next )
-      {
-         pRoomIndex = (ROOM_INDEX_DATA *)pList->data;
-         if( pRoomIndex->vnum < min_vnum || pRoomIndex->vnum > max_vnum )
-         {
-            old_vnum = pRoomIndex->vnum;
+        /*
+         * Go through rooms
+         */
+        for ( pList = CurArea->first_area_room; pList != NULL; pList = pList->next )
+        {
+            pRoomIndex = (ROOM_INDEX_DATA *)pList->data;
+            if ( pRoomIndex->vnum < min_vnum || pRoomIndex->vnum > max_vnum )
+            {
+                old_vnum = pRoomIndex->vnum;
+                /*
+                 * Find a free slot
+                 */
+                for ( new_vnum = min_vnum; new_vnum <= max_vnum; new_vnum++ )
+                    if ( get_room_index( new_vnum ) == NULL )
+                        break;
+
+                if ( new_vnum > max_vnum )
+                {
+                    snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
+                    send_to_char( buffer, ch );
+                }
+                else
+                {
+                    fprintf( out_file, "Room: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pRoomIndex->name );
+                    /*
+                     * Delete from room hashing table, and put new vnum in.
+                     */
+                    add_hash_entry( room_hash, old_vnum, ( void * )new_vnum );
+                    swap_global_hash( 'R', pRoomIndex, old_vnum, new_vnum );
+                    pRoomIndex->vnum = new_vnum;
+                    area_modified( CurArea );
+
+                }
+            }
+        }
+
+        /*
+         * Go through objs
+         */
+        for ( pList = CurArea->first_area_object; pList != NULL; pList = pList->next )
+        {
+            pObjIndex = (OBJ_INDEX_DATA *)pList->data;
+            if ( pObjIndex->vnum < min_vnum || pObjIndex->vnum > max_vnum )
+            {
+                old_vnum = pObjIndex->vnum;
+                /*
+                 * Find a free slot
+                 */
+                for ( new_vnum = min_vnum; new_vnum <= max_vnum; new_vnum++ )
+                    if ( get_obj_index( new_vnum ) == NULL )
+                        break;
+
+                if ( new_vnum > max_vnum )
+                {
+                    snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
+                    send_to_char( buffer, ch );
+                }
+                else
+                {
+                    fprintf( out_file, "Obj: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pObjIndex->short_descr );
+                    /*
+                     * Delete from obj hashing table, and put new vnum in.
+                     */
+                    add_hash_entry( obj_hash, old_vnum, ( void * )new_vnum );
+                    swap_global_hash( 'O', pObjIndex, old_vnum, new_vnum );
+                    pObjIndex->vnum = new_vnum;
+                    area_modified( CurArea );
+
+                }
+            }
+        }
+
+        /*
+         * Go through mobs
+         */
+        for ( pList = CurArea->first_area_mobile; pList != NULL; pList = pList->next )
+        {
+            pMobIndex = (MOB_INDEX_DATA *)pList->data;
+            if ( pMobIndex->vnum < min_vnum || pMobIndex->vnum > max_vnum )
+            {
+                old_vnum = pMobIndex->vnum;
+                /*
+                 * Find a free slot
+                 */
+                for ( new_vnum = min_vnum; new_vnum <= max_vnum; new_vnum++ )
+                    if ( get_mob_index( new_vnum ) == NULL )
+                        break;
+
+                if ( new_vnum > max_vnum )
+                {
+                    snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
+                    send_to_char( buffer, ch );
+                }
+                else
+                {
+                    fprintf( out_file, "Mob: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pMobIndex->short_descr );
+                    /*
+                     * Delete from mob hashing table, and put new vnum in.
+                     */
+                    add_hash_entry( mob_hash, old_vnum, ( void * )new_vnum );
+                    swap_global_hash( 'M', pMobIndex, old_vnum, new_vnum );
+                    pMobIndex->vnum = new_vnum;
+                    area_modified( CurArea );
+                    /*
+                     * Check for shops
+                     */
+                    if ( pMobIndex->pShop != NULL )
+                        pMobIndex->pShop->keeper = new_vnum;
+
+                }
+            }
+        }
+    }
+
+    file_close( out_file );
+
+    /*
+     * Now go through all things referencing the changes
+     * *
+     * *      Resets
+     * *      exit->key
+     * *
+     */
+
+    for ( li = area_list.begin(); li != area_list.end(); li++ )
+    {
+        CurArea = *li;
+        for ( pList = CurArea->first_area_room; pList != NULL; pList = pList->next )
+        {
             /*
-             * Find a free slot 
+             * Check keys and exits
              */
-            for( new_vnum = min_vnum; new_vnum <= max_vnum; new_vnum++ )
-               if( get_room_index( new_vnum ) == NULL )
-                  break;
+            pRoomIndex = (ROOM_INDEX_DATA *)pList->data;
 
-            if( new_vnum > max_vnum )
+            for ( a = 0; a <= 5; a++ )
             {
-               snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
-               send_to_char( buffer, ch );
-            }
-            else
-            {
-               fprintf( out_file, "Room: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pRoomIndex->name );
-               /*
-                * Delete from room hashing table, and put new vnum in. 
-                */
-               add_hash_entry( room_hash, old_vnum, ( void * )new_vnum );
-               swap_global_hash( 'R', pRoomIndex, old_vnum, new_vnum );
-               pRoomIndex->vnum = new_vnum;
-               area_modified( CurArea );
-
-            }
-         }
-      }
-
-      /*
-       * Go through objs 
-       */
-      for( pList = CurArea->first_area_object; pList != NULL; pList = pList->next )
-      {
-         pObjIndex = (OBJ_INDEX_DATA *)pList->data;
-         if( pObjIndex->vnum < min_vnum || pObjIndex->vnum > max_vnum )
-         {
-            old_vnum = pObjIndex->vnum;
-            /*
-             * Find a free slot 
-             */
-            for( new_vnum = min_vnum; new_vnum <= max_vnum; new_vnum++ )
-               if( get_obj_index( new_vnum ) == NULL )
-                  break;
-
-            if( new_vnum > max_vnum )
-            {
-               snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
-               send_to_char( buffer, ch );
-            }
-            else
-            {
-               fprintf( out_file, "Obj: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pObjIndex->short_descr );
-               /*
-                * Delete from obj hashing table, and put new vnum in. 
-                */
-               add_hash_entry( obj_hash, old_vnum, ( void * )new_vnum );
-               swap_global_hash( 'O', pObjIndex, old_vnum, new_vnum );
-               pObjIndex->vnum = new_vnum;
-               area_modified( CurArea );
+                if ( pRoomIndex->exit[a] != NULL )
+                {
+                    if ( pRoomIndex->exit[a]->key != 0
+                            && ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pRoomIndex->exit[a]->key ) ) ) != 0 )
+                    {
+                        pRoomIndex->exit[a]->key = new_vnum;
+                        area_modified( CurArea );
+                    }
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pRoomIndex->exit[a]->vnum ) ) ) != 0 )
+                    {
+                        pRoomIndex->exit[a]->vnum = new_vnum;
+                        area_modified( CurArea );
+                    }
+                }
 
             }
-         }
-      }
+        }
 
-      /*
-       * Go through mobs 
-       */
-      for( pList = CurArea->first_area_mobile; pList != NULL; pList = pList->next )
-      {
-         pMobIndex = (MOB_INDEX_DATA *)pList->data;
-         if( pMobIndex->vnum < min_vnum || pMobIndex->vnum > max_vnum )
-         {
-            old_vnum = pMobIndex->vnum;
-            /*
-             * Find a free slot 
-             */
-            for( new_vnum = min_vnum; new_vnum <= max_vnum; new_vnum++ )
-               if( get_mob_index( new_vnum ) == NULL )
-                  break;
-
-            if( new_vnum > max_vnum )
+        /*
+         * Scan through resets
+         */
+        for ( pReset = CurArea->first_reset; pReset != NULL; pReset = pReset->next )
+        {
+            switch ( pReset->command )
             {
-               snprintf( buffer, MSL, "Not enough vnums in area %s\r\n", CurArea->name );
-               send_to_char( buffer, ch );
-            }
-            else
-            {
-               fprintf( out_file, "Mob: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pMobIndex->short_descr );
-               /*
-                * Delete from mob hashing table, and put new vnum in. 
-                */
-               add_hash_entry( mob_hash, old_vnum, ( void * )new_vnum );
-               swap_global_hash( 'M', pMobIndex, old_vnum, new_vnum );
-               pMobIndex->vnum = new_vnum;
-               area_modified( CurArea );
-               /*
-                * Check for shops 
-                */
-               if( pMobIndex->pShop != NULL )
-                  pMobIndex->pShop->keeper = new_vnum;
+                case 'M':
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( mob_hash, pReset->arg1 ) ) ) != 0 )
+                    {
+                        area_modified( CurArea );
+                        pReset->arg1 = new_vnum;
+                    }
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg3 ) ) ) != 0 )
+                    {
+                        area_modified( CurArea );
+                        pReset->arg3 = new_vnum;
+                    }
+                    break;
 
-            }
-         }
-      }
-   }
+                case 'O':
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
+                    {
+                        area_modified( CurArea );
+                        pReset->arg1 = new_vnum;
+                    }
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg3 ) ) ) != 0 )
+                    {
+                        area_modified( CurArea );
+                        pReset->arg3 = new_vnum;
+                    }
+                    break;
 
-   file_close( out_file );
+                case 'P':
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
+                    {
+                        area_modified( CurArea );
+                        pReset->arg1 = new_vnum;
+                    }
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg3 ) ) ) != 0 )
+                    {
+                        area_modified( CurArea );
+                        pReset->arg3 = new_vnum;
+                    }
+                    break;
 
-   /*
-    * Now go through all things referencing the changes 
-    * * 
-    * *      Resets     
-    * *      exit->key
-    * *      
-    */
+                case 'G':
+                case 'E':
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
+                    {
+                        area_modified( CurArea );
+                        pReset->arg1 = new_vnum;
+                    }
+                    break;
 
-   for( li = area_list.begin(); li != area_list.end(); li++ )
-   {
-      CurArea = *li;
-      for( pList = CurArea->first_area_room; pList != NULL; pList = pList->next )
-      {
-         /*
-          * Check keys and exits
-          */
-         pRoomIndex = (ROOM_INDEX_DATA *)pList->data;
-
-         for( a = 0; a <= 5; a++ )
-         {
-            if( pRoomIndex->exit[a] != NULL )
-            {
-               if( pRoomIndex->exit[a]->key != 0
-                   && ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pRoomIndex->exit[a]->key ) ) ) != 0 )
-               {
-                  pRoomIndex->exit[a]->key = new_vnum;
-                  area_modified( CurArea );
-               }
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pRoomIndex->exit[a]->vnum ) ) ) != 0 )
-               {
-                  pRoomIndex->exit[a]->vnum = new_vnum;
-                  area_modified( CurArea );
-               }
+                case 'D':
+                case 'R':
+                    if ( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg1 ) ) ) != 0 )
+                    {
+                        area_modified( CurArea );
+                        pReset->arg1 = new_vnum;
+                    }
+                    break;
             }
 
-         }
-      }
+        }
+    }
 
-      /*
-       * Scan through resets 
-       */
-      for( pReset = CurArea->first_reset; pReset != NULL; pReset = pReset->next )
-      {
-         switch ( pReset->command )
-         {
-            case 'M':
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( mob_hash, pReset->arg1 ) ) ) != 0 )
-               {
-                  area_modified( CurArea );
-                  pReset->arg1 = new_vnum;
-               }
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg3 ) ) ) != 0 )
-               {
-                  area_modified( CurArea );
-                  pReset->arg3 = new_vnum;
-               }
-               break;
+    /*
+     * FINISHED
+     */
 
-            case 'O':
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
-               {
-                  area_modified( CurArea );
-                  pReset->arg1 = new_vnum;
-               }
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg3 ) ) ) != 0 )
-               {
-                  area_modified( CurArea );
-                  pReset->arg3 = new_vnum;
-               }
-               break;
+    delete_hash_table( room_hash );
+    delete_hash_table( obj_hash );
+    delete_hash_table( mob_hash );
 
-            case 'P':
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
-               {
-                  area_modified( CurArea );
-                  pReset->arg1 = new_vnum;
-               }
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg3 ) ) ) != 0 )
-               {
-                  area_modified( CurArea );
-                  pReset->arg3 = new_vnum;
-               }
-               break;
-
-            case 'G':
-            case 'E':
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( obj_hash, pReset->arg1 ) ) ) != 0 )
-               {
-                  area_modified( CurArea );
-                  pReset->arg1 = new_vnum;
-               }
-               break;
-
-            case 'D':
-            case 'R':
-               if( ( new_vnum = *static_cast<int *>( get_hash_entry( room_hash, pReset->arg1 ) ) ) != 0 )
-               {
-                  area_modified( CurArea );
-                  pReset->arg1 = new_vnum;
-               }
-               break;
-         }
-
-      }
-   }
-
-   /*
-    * FINISHED
-    */
-
-   delete_hash_table( room_hash );
-   delete_hash_table( obj_hash );
-   delete_hash_table( mob_hash );
-
-   return;
+    return;
 }
 
 DO_FUN(do_check_area)
 {
-   send_to_char( "You must say check_areas in full.\r\n", ch );
-   return;
+    send_to_char( "You must say check_areas in full.\r\n", ch );
+    return;
 }

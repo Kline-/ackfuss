@@ -43,9 +43,9 @@
 
 typedef struct SHA256Context
 {
-   int state[8];
-   int count[2];
-   unsigned char buf[64];
+    int state[8];
+    int count[2];
+    unsigned char buf[64];
 } SHA256_CTX;
 
 void SHA256_Init( SHA256_CTX * );

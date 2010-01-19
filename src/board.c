@@ -68,19 +68,19 @@
  *       Store a file for each board called board.vnum makes things a lot *
  *       easier, and means files can be transfered easily between boards  *
  *       use a time based means to get rid of messages.                   *
- *                                 					  *
- *       Values:							  *
+ *                                                    *
+ *       Values:                              *
  *          Value0  :  Expiry time for a message in days.                 *
  *          Value1  :  Min level of player to read the board.             *
  *          Value2  :  Max level of player to write to the board.         *
  *          Value3  :  Board number (usually it's vnum for simplicity)    *
- *									  *
+ *                                    *
  *       Uses commands in write.c for string editing.                     *
  *       This file does reading files, writing files and managing boards  *
- *									  *
+ *                                    *
  **************************************************************************/
 
-/************************************************************************** 
+/**************************************************************************
  *                        Outline of BOARD.C                              *
  *                        ^^^^^^^^^^^^^^^^^^                              *
  * This code was written for use in ACK! MUD.  It should be easy to       *
@@ -117,528 +117,528 @@
 
 void show_contents( CHAR_DATA * ch, OBJ_DATA * obj )
 {
-   /*
-    * Show the list of messages that are present on the board that ch is
-    * * looking at, indicated by board_vnum...
-    */
+    /*
+     * Show the list of messages that are present on the board that ch is
+     * * looking at, indicated by board_vnum...
+     */
 
-   MESSAGE_DATA *msg;
-   list<BOARD_DATA *>::iterator li;
-   BOARD_DATA *board = NULL;
-   OBJ_INDEX_DATA *pObj;
-   char buf[MAX_STRING_LENGTH];
-   int cnt = 0;
-   int board_num;
+    MESSAGE_DATA *msg;
+    list<BOARD_DATA *>::iterator li;
+    BOARD_DATA *board = NULL;
+    OBJ_INDEX_DATA *pObj;
+    char buf[MAX_STRING_LENGTH];
+    int cnt = 0;
+    int board_num;
 
-   pObj = obj->pIndexData;
-   board_num = pObj->value[3];
+    pObj = obj->pIndexData;
+    board_num = pObj->value[3];
 
-   /*
-    * First find the board, and if not there, create one. 
-    */
-   for( li = board_list.begin(); li != board_list.end(); li++ )
-   {
-      board = *li;
-      if( board->vnum == board_num )
-         break;
-   }
+    /*
+     * First find the board, and if not there, create one.
+     */
+    for ( li = board_list.begin(); li != board_list.end(); li++ )
+    {
+        board = *li;
+        if ( board->vnum == board_num )
+            break;
+    }
 
-   if( board == NULL )
-      board = load_board( pObj );
+    if ( board == NULL )
+        board = load_board( pObj );
 
-   /*
-    * check here to see if player allowed to read board 
-    */
+    /*
+     * check here to see if player allowed to read board
+     */
 
-   if( board->min_read_lev > get_trust( ch ) )
-   {
-      send_to_char( "You are not allowed to look at this board.\r\n", ch );
-      return;
-   }
+    if ( board->min_read_lev > get_trust( ch ) )
+    {
+        send_to_char( "You are not allowed to look at this board.\r\n", ch );
+        return;
+    }
 
-   if( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->clan != ( board->clan - 1 ) )
-   {
-      send_to_char( "You are not of the right clan to read this board.\r\n", ch );
-      return;
-   }
-
-
-   send_to_char( "This is a notice board.\r\n", ch );
-   send_to_char( "Type READ <num> to read message <num>, and WRITE <title> to post.\r\n", ch );
-   send_to_char( "Type WRITE to: <player> for a private message.\r\n", ch );
-   send_to_char( "Type DELETE <num> to delete message <num> that you have writen.\r\n", ch );
-   send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", ch );
+    if ( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->clan != ( board->clan - 1 ) )
+    {
+        send_to_char( "You are not of the right clan to read this board.\r\n", ch );
+        return;
+    }
 
 
-   for( msg = board->first_message; msg != NULL; msg = msg->next )
-   {
-      cnt++;
-      snprintf( buf, MSL, "[%3d] %12s : %s", cnt, msg->author, msg->title );
-      send_to_char( buf, ch );
+    send_to_char( "This is a notice board.\r\n", ch );
+    send_to_char( "Type READ <num> to read message <num>, and WRITE <title> to post.\r\n", ch );
+    send_to_char( "Type WRITE to: <player> for a private message.\r\n", ch );
+    send_to_char( "Type DELETE <num> to delete message <num> that you have writen.\r\n", ch );
+    send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", ch );
 
-   }
 
-   if( cnt == 0 ) /* then there were no messages here */
-   {
-      send_to_char( "         There are no messages right now!\r\n", ch );
-   }
+    for ( msg = board->first_message; msg != NULL; msg = msg->next )
+    {
+        cnt++;
+        snprintf( buf, MSL, "[%3d] %12s : %s", cnt, msg->author, msg->title );
+        send_to_char( buf, ch );
 
-   send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", ch );
+    }
 
-   return;
+    if ( cnt == 0 ) /* then there were no messages here */
+    {
+        send_to_char( "         There are no messages right now!\r\n", ch );
+    }
+
+    send_to_char( "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", ch );
+
+    return;
 }
 
 BOARD_DATA *load_board( OBJ_INDEX_DATA * pObj )
 {
-   FILE *board_file;
-   char buf[255];
-   char *word;
-   char letter;
-   time_t message_time;
-   time_t expiry_time;
-   BOARD_DATA *board;
-   MESSAGE_DATA *message;
+    FILE *board_file;
+    char buf[255];
+    char *word;
+    char letter;
+    time_t message_time;
+    time_t expiry_time;
+    BOARD_DATA *board;
+    MESSAGE_DATA *message;
 
-   board = new BOARD_DATA;
+    board = new BOARD_DATA;
 
-   board->expiry_time = pObj->value[0];
-   board->min_read_lev = pObj->value[1];
-   board->min_write_lev = pObj->value[2];
-   board->vnum = pObj->value[3];
-   board->clan = 0;
-   board->first_message = NULL;
-   board->last_message = NULL;
+    board->expiry_time = pObj->value[0];
+    board->min_read_lev = pObj->value[1];
+    board->min_write_lev = pObj->value[2];
+    board->vnum = pObj->value[3];
+    board->clan = 0;
+    board->first_message = NULL;
+    board->last_message = NULL;
 
-   snprintf( buf, 255, "%s/board.%i", BOARD_DIR, board->vnum );
+    snprintf( buf, 255, "%s/board.%i", BOARD_DIR, board->vnum );
 
-   if( ( board_file = file_open( buf, "r" ) ) != NULL )
-   {
-      /*
-       * Read in Optional board parameters 
-       */
-      for( ;; )
-      {
-         if( feof( board_file ) )
-            break;
+    if ( ( board_file = file_open( buf, "r" ) ) != NULL )
+    {
+        /*
+         * Read in Optional board parameters
+         */
+        for ( ;; )
+        {
+            if ( feof( board_file ) )
+                break;
 
-         word = fread_word( board_file );
-         if( !str_cmp( word, "ExpiryTime" ) )
-         {
-            board->expiry_time = fread_number( board_file );
-            fread_to_eol( board_file );
-         }
-         if( !str_cmp( word, "MinReadLev" ) )
-         {
-            board->min_read_lev = fread_number( board_file );
-            fread_to_eol( board_file );
-         }
-         if( !str_cmp( word, "MinWriteLev" ) )
-         {
-            board->min_write_lev = fread_number( board_file );
-            fread_to_eol( board_file );
-         }
-         if( !str_cmp( word, "Clan" ) )
-         {
-            board->clan = fread_number( board_file );
-            fread_to_eol( board_file );
-         }
-         if( !str_cmp( word, "Messages" ) )
-         {
-            fread_to_eol( board_file );
-            break;
-         }
-      }
+            word = fread_word( board_file );
+            if ( !str_cmp( word, "ExpiryTime" ) )
+            {
+                board->expiry_time = fread_number( board_file );
+                fread_to_eol( board_file );
+            }
+            if ( !str_cmp( word, "MinReadLev" ) )
+            {
+                board->min_read_lev = fread_number( board_file );
+                fread_to_eol( board_file );
+            }
+            if ( !str_cmp( word, "MinWriteLev" ) )
+            {
+                board->min_write_lev = fread_number( board_file );
+                fread_to_eol( board_file );
+            }
+            if ( !str_cmp( word, "Clan" ) )
+            {
+                board->clan = fread_number( board_file );
+                fread_to_eol( board_file );
+            }
+            if ( !str_cmp( word, "Messages" ) )
+            {
+                fread_to_eol( board_file );
+                break;
+            }
+        }
 
-      if( board->expiry_time > 0 )
-         expiry_time = time( NULL ) - ( board->expiry_time ) * 3600 * 24;
-      else
-         expiry_time = 0;
+        if ( board->expiry_time > 0 )
+            expiry_time = time( NULL ) - ( board->expiry_time ) * 3600 * 24;
+        else
+            expiry_time = 0;
 
-      /*
-       * Now read in messages 
-       */
-      for( ;; )
-      {
-         if( feof( board_file ) )
-            break;
+        /*
+         * Now read in messages
+         */
+        for ( ;; )
+        {
+            if ( feof( board_file ) )
+                break;
 
-         letter = fread_letter( board_file );
-         if( letter == 'S' )
-            break;
+            letter = fread_letter( board_file );
+            if ( letter == 'S' )
+                break;
 
-         if( letter != 'M' )
-         {
-            bug( "Letter in message file not M", 0 );
-            break;
-         }
+            if ( letter != 'M' )
+            {
+                bug( "Letter in message file not M", 0 );
+                break;
+            }
 
-         /*
-          * check time 
-          */
-         message_time = ( time_t ) fread_number( board_file );
-         if( feof( board_file ) )
-            break;
+            /*
+             * check time
+             */
+            message_time = ( time_t ) fread_number( board_file );
+            if ( feof( board_file ) )
+                break;
 
-         if( message_time < expiry_time )
-         {
-            char *dumpme;
+            if ( message_time < expiry_time )
+            {
+                char *dumpme;
 
-            dumpme = fread_string( board_file );   /* author  */
-            free_string( dumpme );
-            dumpme = fread_string( board_file );   /* title   */
-            free_string( dumpme );
-            dumpme = fread_string( board_file );   /* message */
-            free_string( dumpme );
-         }
-         else
-         {
-            message = new MESSAGE_DATA;
-            message->datetime = message_time;
-            message->author = fread_string( board_file );
-            message->title = fread_string( board_file );
-            message->message = fread_string( board_file );
-            LINK( message, board->first_message, board->last_message, next, prev );
-            message->board = board;
-         }
-      }
+                dumpme = fread_string( board_file );   /* author  */
+                free_string( dumpme );
+                dumpme = fread_string( board_file );   /* title   */
+                free_string( dumpme );
+                dumpme = fread_string( board_file );   /* message */
+                free_string( dumpme );
+            }
+            else
+            {
+                message = new MESSAGE_DATA;
+                message->datetime = message_time;
+                message->author = fread_string( board_file );
+                message->title = fread_string( board_file );
+                message->message = fread_string( board_file );
+                LINK( message, board->first_message, board->last_message, next, prev );
+                message->board = board;
+            }
+        }
 
-      /*
-       * Now close file 
-       */
-      file_close( board_file );
-   }
+        /*
+         * Now close file
+         */
+        file_close( board_file );
+    }
 
-   return board;
+    return board;
 }
 
 void save_board( BOARD_DATA * board, CHAR_DATA * ch )
 {
-   char buf[MAX_STRING_LENGTH];
-   FILE *board_file;
-   MESSAGE_DATA *message;
+    char buf[MAX_STRING_LENGTH];
+    FILE *board_file;
+    MESSAGE_DATA *message;
 
 
-   snprintf( buf, MSL, "%s/board.%i", BOARD_DIR, board->vnum );
-   if( ( board_file = file_open( buf, "w" ) ) == NULL )
-   {
-      send_to_char( "Cannot save board, please contact an immortal.\r\n", ch );
-      bug( "Could not save file board.%i.", board->vnum );
-      file_close(board_file);
-      return;
-   }
+    snprintf( buf, MSL, "%s/board.%i", BOARD_DIR, board->vnum );
+    if ( ( board_file = file_open( buf, "w" ) ) == NULL )
+    {
+        send_to_char( "Cannot save board, please contact an immortal.\r\n", ch );
+        bug( "Could not save file board.%i.", board->vnum );
+        file_close(board_file);
+        return;
+    }
 
-   fprintf( board_file, "ExpiryTime  %i\n", board->expiry_time );
-   fprintf( board_file, "MinReadLev  %i\n", board->min_read_lev );
-   fprintf( board_file, "MaxWriteLev %i\n", board->min_write_lev );
-   fprintf( board_file, "Clan        %i\n", board->clan );
+    fprintf( board_file, "ExpiryTime  %i\n", board->expiry_time );
+    fprintf( board_file, "MinReadLev  %i\n", board->min_read_lev );
+    fprintf( board_file, "MaxWriteLev %i\n", board->min_write_lev );
+    fprintf( board_file, "Clan        %i\n", board->clan );
 
-   /*
-    * Now print messages 
-    */
-   fprintf( board_file, "Messages\n" );
+    /*
+     * Now print messages
+     */
+    fprintf( board_file, "Messages\n" );
 
-   for( message = board->first_message; message; message = message->next )
-   {
-      fprintf( board_file, "M%i\n", ( int )( message->datetime ) );
+    for ( message = board->first_message; message; message = message->next )
+    {
+        fprintf( board_file, "M%i\n", ( int )( message->datetime ) );
 
-      strcpy( buf, message->author );  /* Must do copy, not allowed to change string directly */
-      smash_tilde( buf );
-      fprintf( board_file, "%s~\n", buf );
+        strcpy( buf, message->author );  /* Must do copy, not allowed to change string directly */
+        smash_tilde( buf );
+        fprintf( board_file, "%s~\n", buf );
 
-      strcpy( buf, message->title );
-      smash_tilde( buf );
-      fprintf( board_file, "%s~\n", buf );
+        strcpy( buf, message->title );
+        smash_tilde( buf );
+        fprintf( board_file, "%s~\n", buf );
 
-      strcpy( buf, message->message );
-      smash_tilde( buf );
-      fprintf( board_file, "%s~\n", buf );
+        strcpy( buf, message->message );
+        smash_tilde( buf );
+        fprintf( board_file, "%s~\n", buf );
 
-   }
+    }
 
-   fprintf( board_file, "S\n" );
+    fprintf( board_file, "S\n" );
 
-   file_close( board_file );
+    file_close( board_file );
 
-   return;
+    return;
 }
 
 DO_FUN(do_delete)
 {
-   OBJ_DATA *object;
-   BOARD_DATA *board = NULL;
-   list<BOARD_DATA *>::iterator li;
-   MESSAGE_DATA *msg;
-   OBJ_INDEX_DATA *pObj;
-   int vnum;
-   int mess_num;
-   int cnt = 0;
+    OBJ_DATA *object;
+    BOARD_DATA *board = NULL;
+    list<BOARD_DATA *>::iterator li;
+    MESSAGE_DATA *msg;
+    OBJ_INDEX_DATA *pObj;
+    int vnum;
+    int mess_num;
+    int cnt = 0;
 
-   if( IS_NPC( ch ) )
-   {
-      send_to_char( "NPCs may *not* delete messages.  So there.\r\n", ch );
-      return;
-   }
+    if ( IS_NPC( ch ) )
+    {
+        send_to_char( "NPCs may *not* delete messages.  So there.\r\n", ch );
+        return;
+    }
 
-   if( argument[0] == '\0' )
-   {
-      send_to_char( "You need to specify a message number to delete!\r\n", ch );
-      return;
-   }
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "You need to specify a message number to delete!\r\n", ch );
+        return;
+    }
 
-   for( object = ch->in_room->first_content; object != NULL; object = object->next_in_room )
-   {
-      if( object->item_type == ITEM_BOARD )
-         break;
-   }
+    for ( object = ch->in_room->first_content; object != NULL; object = object->next_in_room )
+    {
+        if ( object->item_type == ITEM_BOARD )
+            break;
+    }
 
-   if( object == NULL )
-   {
-      send_to_char( "Delete on what?\r\n.", ch );
-      return;
-   }
+    if ( object == NULL )
+    {
+        send_to_char( "Delete on what?\r\n.", ch );
+        return;
+    }
 
-   pObj = object->pIndexData;
-   vnum = pObj->value[3];
+    pObj = object->pIndexData;
+    vnum = pObj->value[3];
 
-   /*
-    * First find the board, and if not there, create one. 
-    */
-   for( li = board_list.begin(); li != board_list.end(); li++ )
-   {
-      board = *li;
-      if( board->vnum == vnum )
-         break;
-   }
+    /*
+     * First find the board, and if not there, create one.
+     */
+    for ( li = board_list.begin(); li != board_list.end(); li++ )
+    {
+        board = *li;
+        if ( board->vnum == vnum )
+            break;
+    }
 
-   if( board == NULL )
-      board = load_board( pObj );
+    if ( board == NULL )
+        board = load_board( pObj );
 
-   /*
-    * check here to see if player allowed to write to board 
-    */
+    /*
+     * check here to see if player allowed to write to board
+     */
 
-   if( board->min_write_lev > get_trust( ch ) )
-   {
-      send_to_char( "You are not allowed to delete on this board.\r\n", ch );
-      return;
-   }
+    if ( board->min_write_lev > get_trust( ch ) )
+    {
+        send_to_char( "You are not allowed to delete on this board.\r\n", ch );
+        return;
+    }
 
-   if( ( board->clan != 0 ) && ch->clan != ( board->clan - 1 ) )
-   {
-      send_to_char( "You are not of the right clan to delete on this board.\r\n", ch );
-      return;
-   }
+    if ( ( board->clan != 0 ) && ch->clan != ( board->clan - 1 ) )
+    {
+        send_to_char( "You are not of the right clan to delete on this board.\r\n", ch );
+        return;
+    }
 
 
-   cnt = 0;
-   mess_num = is_number( argument ) ? atoi( argument ) : 0;
+    cnt = 0;
+    mess_num = is_number( argument ) ? atoi( argument ) : 0;
 
-   for( msg = board->first_message; msg != NULL; msg = msg->next )
-      if( ++cnt == mess_num ) /* then this the message!!! */
-         break;
+    for ( msg = board->first_message; msg != NULL; msg = msg->next )
+        if ( ++cnt == mess_num ) /* then this the message!!! */
+            break;
 
-   if( msg == NULL )
-   {
-      send_to_char( "No such message!\r\n", ch );
-      return;
-   }
+    if ( msg == NULL )
+    {
+        send_to_char( "No such message!\r\n", ch );
+        return;
+    }
 
-   /*
-    * See if person is writer or is recipient
-    */
-   if( str_cmp( ch->name, msg->author ) && !is_name( ch->name.c_str(), msg->title )
-       && get_trust( ch ) < MAX_LEVEL && str_cmp( ch->name, clan_table[board->clan].leader ) )
-   {
-      send_to_char( "Not your message.\r\n", ch );
-      return;
-   }
+    /*
+     * See if person is writer or is recipient
+     */
+    if ( str_cmp( ch->name, msg->author ) && !is_name( ch->name.c_str(), msg->title )
+            && get_trust( ch ) < MAX_LEVEL && str_cmp( ch->name, clan_table[board->clan].leader ) )
+    {
+        send_to_char( "Not your message.\r\n", ch );
+        return;
+    }
 
-   /*
-    * Now delete message
-    */
+    /*
+     * Now delete message
+     */
 
-   UNLINK( msg, board->first_message, board->last_message, next, prev );
+    UNLINK( msg, board->first_message, board->last_message, next, prev );
 
-   delete msg;
+    delete msg;
 
-   save_board( board, ch );
+    save_board( board, ch );
 
-   return;
+    return;
 }
 
 void show_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 {
-   /*
-    * Show message <mess_num> to character.
-    * * check that message vnum == board vnum
-    */
+    /*
+     * Show message <mess_num> to character.
+     * * check that message vnum == board vnum
+     */
 
-   list<BOARD_DATA *>::iterator li;
-   BOARD_DATA *board = NULL;
-   OBJ_INDEX_DATA *pObj;
-   int vnum;
-   MESSAGE_DATA *msg;
-   int cnt = 0;
-   bool mfound = FALSE;
-   char buf[MAX_STRING_LENGTH];
-   char to_check[MAX_INPUT_LENGTH];
-   char *to_person;
-   char private_name[MAX_INPUT_LENGTH];
+    list<BOARD_DATA *>::iterator li;
+    BOARD_DATA *board = NULL;
+    OBJ_INDEX_DATA *pObj;
+    int vnum;
+    MESSAGE_DATA *msg;
+    int cnt = 0;
+    bool mfound = FALSE;
+    char buf[MAX_STRING_LENGTH];
+    char to_check[MAX_INPUT_LENGTH];
+    char *to_person;
+    char private_name[MAX_INPUT_LENGTH];
 
-   pObj = obj->pIndexData;
-   vnum = pObj->value[3];
+    pObj = obj->pIndexData;
+    vnum = pObj->value[3];
 
-   /*
-    * First find the board, and if not there, create one. 
-    */
-   for( li = board_list.begin(); li != board_list.end(); li++ )
-   {
-      board = *li;
-      if( board->vnum == vnum )
-         break;
-   }
-
-   if( board == NULL )
-      board = load_board( pObj );
-
-   /*
-    * check here to see if player allowed to read board 
-    */
-
-   if( board->min_read_lev > get_trust( ch ) )
-   {
-      send_to_char( "You are not allowed to look at this board.\r\n", ch );
-      return;
-   }
-
-   if( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->clan != ( board->clan - 1 ) )
-   {
-      send_to_char( "You are not of the right clan to read this board.\r\n", ch );
-      return;
-   }
-
-   for( msg = board->first_message; msg != NULL; msg = msg->next )
-   {
-      if( ++cnt == mess_num ) /* then this the message!!! */
-      {
-         mfound = TRUE;
-
-         to_person = one_argument( msg->title, to_check );
-         to_person = one_argument( to_person, private_name );
-         if( !str_cmp( to_check, "to:" ) && str_prefix( private_name, ch->name.c_str() ) && str_cmp( msg->author, ch->name ) )
-         {
-            send_to_char( "This is a private message.\r\n", ch );
+    /*
+     * First find the board, and if not there, create one.
+     */
+    for ( li = board_list.begin(); li != board_list.end(); li++ )
+    {
+        board = *li;
+        if ( board->vnum == vnum )
             break;
-         }
-         snprintf( buf, MSL, "** [%d] %12s : %s ** \r\n\r\n%s\r\n", cnt, msg->author, msg->title, msg->message );
-         send_to_char( buf, ch );
-         break;
-      }
-   }
+    }
 
-   if( !mfound )
-   {
-      send_to_char( "No such message!\r\n", ch );
-   }
+    if ( board == NULL )
+        board = load_board( pObj );
 
-   return;
+    /*
+     * check here to see if player allowed to read board
+     */
+
+    if ( board->min_read_lev > get_trust( ch ) )
+    {
+        send_to_char( "You are not allowed to look at this board.\r\n", ch );
+        return;
+    }
+
+    if ( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->clan != ( board->clan - 1 ) )
+    {
+        send_to_char( "You are not of the right clan to read this board.\r\n", ch );
+        return;
+    }
+
+    for ( msg = board->first_message; msg != NULL; msg = msg->next )
+    {
+        if ( ++cnt == mess_num ) /* then this the message!!! */
+        {
+            mfound = TRUE;
+
+            to_person = one_argument( msg->title, to_check );
+            to_person = one_argument( to_person, private_name );
+            if ( !str_cmp( to_check, "to:" ) && str_prefix( private_name, ch->name.c_str() ) && str_cmp( msg->author, ch->name ) )
+            {
+                send_to_char( "This is a private message.\r\n", ch );
+                break;
+            }
+            snprintf( buf, MSL, "** [%d] %12s : %s ** \r\n\r\n%s\r\n", cnt, msg->author, msg->title, msg->message );
+            send_to_char( buf, ch );
+            break;
+        }
+    }
+
+    if ( !mfound )
+    {
+        send_to_char( "No such message!\r\n", ch );
+    }
+
+    return;
 }
 
 DO_FUN(do_write)
 {
-   OBJ_DATA *object;
-   BOARD_DATA *board = NULL;
-   list<BOARD_DATA *>::iterator li;
-   MESSAGE_DATA *msg;
-   OBJ_INDEX_DATA *pObj;
-   int vnum;
-   extern char str_empty[1];
-   char buf[MAX_STRING_LENGTH];
+    OBJ_DATA *object;
+    BOARD_DATA *board = NULL;
+    list<BOARD_DATA *>::iterator li;
+    MESSAGE_DATA *msg;
+    OBJ_INDEX_DATA *pObj;
+    int vnum;
+    extern char str_empty[1];
+    char buf[MAX_STRING_LENGTH];
 
-   if( IS_NPC( ch ) )
-   {
-      send_to_char( "NPCs may *not* write messages.  So there.\r\n", ch );
-      return;
-   }
+    if ( IS_NPC( ch ) )
+    {
+        send_to_char( "NPCs may *not* write messages.  So there.\r\n", ch );
+        return;
+    }
 
-   if( argument[0] == '\0' )
-   {
-      send_to_char( "You need to specify a header for your message!\r\n", ch );
-      return;
-   }
+    if ( argument[0] == '\0' )
+    {
+        send_to_char( "You need to specify a header for your message!\r\n", ch );
+        return;
+    }
 
-   for( object = ch->in_room->first_content; object != NULL; object = object->next_in_room )
-   {
-      if( object->item_type == ITEM_BOARD )
-         break;
-   }
+    for ( object = ch->in_room->first_content; object != NULL; object = object->next_in_room )
+    {
+        if ( object->item_type == ITEM_BOARD )
+            break;
+    }
 
-   if( object == NULL )
-   {
-      send_to_char( "Write on what?\r\n.", ch );
-      return;
-   }
+    if ( object == NULL )
+    {
+        send_to_char( "Write on what?\r\n.", ch );
+        return;
+    }
 
-   pObj = object->pIndexData;
-   vnum = pObj->value[3];
+    pObj = object->pIndexData;
+    vnum = pObj->value[3];
 
-   /*
-    * First find the board, and if not there, create one. 
-    */
-   for( li = board_list.begin(); li != board_list.end(); li++ )
-   {
-      board = *li;
-      if( board->vnum == vnum )
-         break;
-   }
+    /*
+     * First find the board, and if not there, create one.
+     */
+    for ( li = board_list.begin(); li != board_list.end(); li++ )
+    {
+        board = *li;
+        if ( board->vnum == vnum )
+            break;
+    }
 
-   if( board == NULL )
-      board = load_board( pObj );
+    if ( board == NULL )
+        board = load_board( pObj );
 
-   /*
-    * check here to see if player allowed to write to board 
-    */
+    /*
+     * check here to see if player allowed to write to board
+     */
 
-   if( board->min_write_lev > get_trust( ch ) )
-   {
-      send_to_char( "You are not allowed to write on this board.\r\n", ch );
-      return;
-   }
+    if ( board->min_write_lev > get_trust( ch ) )
+    {
+        send_to_char( "You are not allowed to write on this board.\r\n", ch );
+        return;
+    }
 
-   if( ( board->clan != 0 ) && ch->clan != ( board->clan - 1 ) )
-   {
-      send_to_char( "You are not of the right clan to write on this board.\r\n", ch );
-      return;
-   }
+    if ( ( board->clan != 0 ) && ch->clan != ( board->clan - 1 ) )
+    {
+        send_to_char( "You are not of the right clan to write on this board.\r\n", ch );
+        return;
+    }
 
-   msg = new MESSAGE_DATA;
-   msg->datetime = time( NULL ); /* we are sure we can edit.          */
-   snprintf( buf, MSL, "%s @@a%s@@N", argument, ( char * )ctime( &current_time ) );
-   if( msg->title != NULL )
-      free_string( msg->title );
-   msg->title = str_dup( buf );
-   if( msg->author != NULL )
-      free_string( msg->author );
-   msg->author = str_dup( ch->name.c_str() );
-   msg->message = NULL;
-   msg->board = board;
+    msg = new MESSAGE_DATA;
+    msg->datetime = time( NULL ); /* we are sure we can edit.          */
+    snprintf( buf, MSL, "%s @@a%s@@N", argument, ( char * )ctime( &current_time ) );
+    if ( msg->title != NULL )
+        free_string( msg->title );
+    msg->title = str_dup( buf );
+    if ( msg->author != NULL )
+        free_string( msg->author );
+    msg->author = str_dup( ch->name.c_str() );
+    msg->message = NULL;
+    msg->board = board;
 
-   /*
-    * Now actually run the edit prog.
-    */
-   write_start( &msg->message, finished_editing, msg, ch );
+    /*
+     * Now actually run the edit prog.
+     */
+    write_start( &msg->message, finished_editing, msg, ch );
 
-   if( msg->message != &str_empty[0] )
-   {
-      send_to_char( "Editing message. Type .help for help.\r\n", ch );
-      LINK( msg, board->first_message, board->last_message, next, prev );
-   }
-   else
-   {
-      send_to_char( "Could not add message.\r\n", ch );
-      delete msg;
-   }
-   return;
+    if ( msg->message != &str_empty[0] )
+    {
+        send_to_char( "Editing message. Type .help for help.\r\n", ch );
+        LINK( msg, board->first_message, board->last_message, next, prev );
+    }
+    else
+    {
+        send_to_char( "Could not add message.\r\n", ch );
+        delete msg;
+    }
+    return;
 }
 
 
@@ -647,65 +647,65 @@ DO_FUN(do_write)
 void finished_editing( MESSAGE_DATA * msg, char **dest, CHAR_DATA * ch, bool saved )
 {
 #ifdef CHECK_VALID_BOARD
-   MESSAGE_DATA *SrchMsg;
+    MESSAGE_DATA *SrchMsg;
 #endif
 
-   if( !saved )
-   {
+    if ( !saved )
+    {
 #ifdef CHECK_VALID_BOARD
-      for( SrchMsg = msg->board->messages; SrchMsg != NULL; SrchMsg = SrchMsg->next )
-         if( SrchMsg == msg )
-            break;
+        for ( SrchMsg = msg->board->messages; SrchMsg != NULL; SrchMsg = SrchMsg->next )
+            if ( SrchMsg == msg )
+                break;
 
-      if( SrchMsg == NULL )
-      {
-         /*
-          * Could not find this message in board list, just lose memory.
-          */
-         return;
-      }
+        if ( SrchMsg == NULL )
+        {
+            /*
+             * Could not find this message in board list, just lose memory.
+             */
+            return;
+        }
 #endif
 
-      UNLINK( msg, msg->board->first_message, msg->board->last_message, next, prev );
-      delete msg;
-   }
-   else
-   {
-      save_board( msg->board, ch );
-   }
-   return;
+        UNLINK( msg, msg->board->first_message, msg->board->last_message, next, prev );
+        delete msg;
+    }
+    else
+    {
+        save_board( msg->board, ch );
+    }
+    return;
 }
 
 DO_FUN(do_read)
 {
-   OBJ_DATA *obj;
+    OBJ_DATA *obj;
 
 
-   if( ( argument[0] == '\0' ) || !is_number( argument ) )
-   {
-      send_to_char( "Read what??\r\n", ch );
-      return;
-   }
+    if ( ( argument[0] == '\0' ) || !is_number( argument ) )
+    {
+        send_to_char( "Read what??\r\n", ch );
+        return;
+    }
 
-   for( obj = ch->in_room->first_content; obj != NULL; obj = obj->next_in_room )
-   {
-      if( obj->item_type == ITEM_BOARD )
-         break;
-   }
+    for ( obj = ch->in_room->first_content; obj != NULL; obj = obj->next_in_room )
+    {
+        if ( obj->item_type == ITEM_BOARD )
+            break;
+    }
 
-   if( obj == NULL )
-   {
-      send_to_char( "Read What??\r\n", ch );
-      return;
-   }
+    if ( obj == NULL )
+    {
+        send_to_char( "Read What??\r\n", ch );
+        return;
+    }
 
-   /*
-    * Hopefully, by now there should be a board in the room, and the
-    * * player should have supplied some sort of argument....
-    */
+    /*
+     * Hopefully, by now there should be a board in the room, and the
+     * * player should have supplied some sort of argument....
+     */
 
-   show_message( ch, atoi( argument ), obj );
-   return;
+    show_message( ch, atoi( argument ), obj );
+    return;
 }
 
 
@@ -714,103 +714,103 @@ DO_FUN(do_read)
 
 void edit_message( CHAR_DATA * ch, int mess_num, OBJ_DATA * obj )
 {
-   /*
-    * Show message <mess_num> to character.
-    * * check that message vnum == board vnum
-    */
+    /*
+     * Show message <mess_num> to character.
+     * * check that message vnum == board vnum
+     */
 
-   list<BOARD_DATA *>::iterator li;
-   BOARD_DATA *board = NULL;
-   OBJ_INDEX_DATA *pObj;
-   int vnum;
-   MESSAGE_DATA *msg;
-   int cnt = 0;
-   bool mfound = FALSE;
+    list<BOARD_DATA *>::iterator li;
+    BOARD_DATA *board = NULL;
+    OBJ_INDEX_DATA *pObj;
+    int vnum;
+    MESSAGE_DATA *msg;
+    int cnt = 0;
+    bool mfound = FALSE;
 
-   pObj = obj->pIndexData;
-   vnum = pObj->value[3];
+    pObj = obj->pIndexData;
+    vnum = pObj->value[3];
 
-   /*
-    * First find the board, and if not there, create one. 
-    */
-   for( li = board_list.begin(); li != board_list.end(); li++ )
-   {
-      board = *li;
-      if( board->vnum == vnum )
-         break;
-   }
+    /*
+     * First find the board, and if not there, create one.
+     */
+    for ( li = board_list.begin(); li != board_list.end(); li++ )
+    {
+        board = *li;
+        if ( board->vnum == vnum )
+            break;
+    }
 
-   if( board == NULL )
-      board = load_board( pObj );
+    if ( board == NULL )
+        board = load_board( pObj );
 
-   /*
-    * check here to see if player allowed to read board 
-    */
+    /*
+     * check here to see if player allowed to read board
+     */
 
-   if( board->min_read_lev > get_trust( ch ) )
-   {
-      send_to_char( "You are not allowed to even look at this board!\r\n", ch );
-      return;
-   }
+    if ( board->min_read_lev > get_trust( ch ) )
+    {
+        send_to_char( "You are not allowed to even look at this board!\r\n", ch );
+        return;
+    }
 
-   if( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->clan != ( board->clan - 1 ) )
-   {
-      send_to_char( "You are not of the right clan to even read this board!\r\n", ch );
-      return;
-   }
+    if ( ( board->clan != 0 ) && !IS_NPC( ch ) && ch->clan != ( board->clan - 1 ) )
+    {
+        send_to_char( "You are not of the right clan to even read this board!\r\n", ch );
+        return;
+    }
 
-   for( msg = board->first_message; msg != NULL; msg = msg->next )
-   {
-      if( ++cnt == mess_num ) /* then this the message!!! */
-      {
-         mfound = TRUE;
+    for ( msg = board->first_message; msg != NULL; msg = msg->next )
+    {
+        if ( ++cnt == mess_num ) /* then this the message!!! */
+        {
+            mfound = TRUE;
 
-         if( str_cmp( msg->author, ch->name ) )
-         {
-            send_to_char( "Not your message to edit!\r\n", ch );
-            return;
-         }
-         else
-         {
-            build_strdup( &msg->message, "$edit", TRUE, FALSE, ch );
-         }
+            if ( str_cmp( msg->author, ch->name ) )
+            {
+                send_to_char( "Not your message to edit!\r\n", ch );
+                return;
+            }
+            else
+            {
+                build_strdup( &msg->message, "$edit", TRUE, FALSE, ch );
+            }
 
-      }
-   }
-   if( !mfound )
-      send_to_char( "No such message!\r\n", ch );
+        }
+    }
+    if ( !mfound )
+        send_to_char( "No such message!\r\n", ch );
 
-   return;
+    return;
 }
 
 DO_FUN(do_edit)
 {
-   OBJ_DATA *obj;
+    OBJ_DATA *obj;
 
 
-   if( ( argument[0] == '\0' ) || !is_number( argument ) )
-   {
-      send_to_char( "Read what??\r\n", ch );
-      return;
-   }
+    if ( ( argument[0] == '\0' ) || !is_number( argument ) )
+    {
+        send_to_char( "Read what??\r\n", ch );
+        return;
+    }
 
-   for( obj = ch->in_room->first_content; obj != NULL; obj = obj->next_in_room )
-   {
-      if( obj->item_type == ITEM_BOARD )
-         break;
-   }
+    for ( obj = ch->in_room->first_content; obj != NULL; obj = obj->next_in_room )
+    {
+        if ( obj->item_type == ITEM_BOARD )
+            break;
+    }
 
-   if( obj == NULL )
-   {
-      send_to_char( "Read What??\r\n", ch );
-      return;
-   }
+    if ( obj == NULL )
+    {
+        send_to_char( "Read What??\r\n", ch );
+        return;
+    }
 
-   /*
-    * Hopefully, by now there should be a board in the room, and the
-    * * player should have supplied some sort of argument....
-    */
+    /*
+     * Hopefully, by now there should be a board in the room, and the
+     * * player should have supplied some sort of argument....
+     */
 
-   edit_message( ch, atoi( argument ), obj );
-   return;
+    edit_message( ch, atoi( argument ), obj );
+    return;
 }

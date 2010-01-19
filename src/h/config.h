@@ -52,7 +52,7 @@
 #define MAX_KEY_HASH             2048
 #define MKH                      MAX_KEY_HASH
 #define MAX_STRING_LENGTH        8192
-#define MSL			 MAX_STRING_LENGTH
+#define MSL          MAX_STRING_LENGTH
 #define MAX_INPUT_LENGTH         2048
 #define MIL                      MAX_INPUT_LENGTH
 #define MAX_AREAS                1000
@@ -61,8 +61,8 @@
 #define MAX_PERM_BLOCK           131072
 #define COMPRESS_BUF_SIZE        MAX_STRING_LENGTH
 
-#define BOOT_DB_ABORT_THRESHOLD			  25
-#define RUNNING_ABORT_THRESHOLD			  10
+#define BOOT_DB_ABORT_THRESHOLD           25
+#define RUNNING_ABORT_THRESHOLD           10
 #define ALARM_FREQUENCY               20
 
 /*
@@ -70,12 +70,12 @@
  * Increase the max'es if you add more of something.
  * Adjust the pulse numbers to suit yourself.
  */
-#define MAX_CLAN_EQ		     6   /* Number of clan eq items */
-#define MAX_COLOR		    22   /* eg look, prompt, shout */
-#define MAX_ANSI		    28   /* eg red, black, etc (was 11) */
-#define MAX_ALIASES		     6
+#define MAX_CLAN_EQ          6   /* Number of clan eq items */
+#define MAX_COLOR           22   /* eg look, prompt, shout */
+#define MAX_ANSI            28   /* eg red, black, etc (was 11) */
+#define MAX_ALIASES          6
 #define MAX_HOSTS                    3   /* number of login sites/whitelist */
-#define MAX_IGNORES		     3
+#define MAX_IGNORES          3
 #define MAX_RACE                     20
 #define MAX_CLAN                     9 /* number of clans */
 #define MAX_SKILL                  300
@@ -85,26 +85,26 @@
 #define LEVEL_HERO                 (MAX_LEVEL - 4)
 #define LEVEL_IMMORTAL             (MAX_LEVEL - 3)
 #define MAX_VAMP_LEVEL              20
-#define MAX_WOLF_LEVEL		    20
+#define MAX_WOLF_LEVEL          20
 #define ADVANCE_VAMP                16
 #define ADVANCE_ADEPT               32
-#define ADVANCE_WOLF		    64
+#define ADVANCE_WOLF            64
 #define MAX_FAMILY                   5
-#define MAX_TRIBE		     5
+#define MAX_TRIBE            5
 #define MAX_SUPER                    4
-#define MAX_STANCE		13
+#define MAX_STANCE      13
 #define MAX_TOT_STATS               90   /* Total sum of player stats when creating */
 #define MAX_HISTORY                 20   /* History per channel */
 #define MAX_PEDIT                    5
 #define MAX_COND                     3
 #define MAX_EXP                      2000000000 /* signed int is 2147483647, safely below this limit */
-                     /*
-                      * total number of supernatural types in the game  
-                      */
-#define QUORUM_NUMBER			4
-                     /*
-                      * number of members to be a quorum for a council 
-                      */
+/*
+ * total number of supernatural types in the game
+ */
+#define QUORUM_NUMBER           4
+/*
+ * number of members to be a quorum for a council
+ */
 
 #define MAX_TRADE        5
 
@@ -119,7 +119,7 @@
  * Must be non-overlapping with spell/skill types,
  * but may be arbitrary beyond that.
  */
-#define TYPE_MARTIAL		     -3  /* for martial arts */
+#define TYPE_MARTIAL             -3  /* for martial arts */
 #define TYPE_UNDEFINED               -2
 #define TYPE_HIT                     1000
 
@@ -184,11 +184,11 @@
  * Quest mob personalities
  */
 
-#define QUEST_RUDE 	1
-#define QUEST_NICE	2
-#define QUEST_WIMPY	4
-#define QUEST_COOL	8
-#define QUEST_MEAN	16
+#define QUEST_RUDE  1
+#define QUEST_NICE  2
+#define QUEST_WIMPY 4
+#define QUEST_COOL  8
+#define QUEST_MEAN  16
 
 #define C_TYPE_MISC     0
 #define C_TYPE_COMM     1
@@ -211,8 +211,8 @@
  * As you add more items (for more variety!) incrase the max on this range.
  */
 
-#define OBJ_VNUM_QUEST_MIN		101
-#define OBJ_VNUM_QUEST_MAX		110
+#define OBJ_VNUM_QUEST_MIN      101
+#define OBJ_VNUM_QUEST_MAX      110
 
 /*
  * vnums for deathmatch arena.
@@ -227,18 +227,18 @@
 #define PULSE_COMBAT              (  1                     )
 #define PULSE_VIOLENCE            (  2  * PULSE_PER_SECOND )
 #define PULSE_MOBILE              (  4  * PULSE_PER_SECOND )
-#define PULSE_OBJFUN		  (  4  * PULSE_PER_SECOND )
+#define PULSE_OBJFUN          (  4  * PULSE_PER_SECOND )
 #define PULSE_TICK                ( 60  * PULSE_PER_SECOND )
-#define PULSE_MESSAGE		  ( 12  * PULSE_PER_SECOND )
-#define PULSE_ROOMS		  ( 30  * PULSE_PER_SECOND )
+#define PULSE_MESSAGE         ( 12  * PULSE_PER_SECOND )
+#define PULSE_ROOMS       ( 30  * PULSE_PER_SECOND )
 #define PULSE_AREA                ( 80  * PULSE_PER_SECOND )
-#define PULSE_AUCTION		  ( 30  * PULSE_PER_SECOND )
+#define PULSE_AUCTION         ( 30  * PULSE_PER_SECOND )
 #define PULSE_RAUCTION            ( 30  * PULSE_PER_SECOND )
 #define PULSE_MAUCTION            ( 30  * PULSE_PER_SECOND )
 
 
-#define VAMPIRE_RECALL		 9001
-#define LIQUID_BLOOD		 13
+#define VAMPIRE_RECALL       9001
+#define LIQUID_BLOOD         13
 #define WOLF_RECALL          3001
 
 /*
@@ -259,12 +259,12 @@
 #define OBJ_VNUM_SPRING              12
 #define OBJ_VNUM_WINDOW              13
 #define OBJ_VNUM_FIREBLADE           14
-#define OBJ_VNUM_FOOD		     15
+#define OBJ_VNUM_FOOD            15
 #define OBJ_VNUM_BEACON              16
-#define OBJ_VNUM_PORTAL		     17
+#define OBJ_VNUM_PORTAL          17
 #define OBJ_VNUM_SOUL_POTION         18
 #define OBJ_VNUM_CAPTURED_SOUL       19
-#define OBJ_VNUM_CONFLAGRATION	     20
+#define OBJ_VNUM_CONFLAGRATION       20
 #define OBJ_VNUM_MINO_PASS           21
 
 /*
@@ -283,10 +283,10 @@
 #define ROOM_VNUM_WEAPON_DONATE    1013
 #define ROOM_VNUM_MISC_DONATE      1014
 #define ROOM_VNUM_SCHOOL           1051
-#define ROOM_VNUM_BUILDER	   1019  /* Bulder-flagged players only */
-#define ROOM_VNUM_CLAN		   1022  /* for leaders only */
+#define ROOM_VNUM_BUILDER      1019  /* Bulder-flagged players only */
+#define ROOM_VNUM_CLAN         1022  /* for leaders only */
 #define ROOM_VNUM_DM_RECALL        ROOM_VNUM_ALTAR
-#define ROOM_VNUM_INT_HEAL	   ROOM_VNUM_ALTAR
+#define ROOM_VNUM_INT_HEAL     ROOM_VNUM_ALTAR
 
 /*
  * Well known mob virtual numbers.
@@ -313,17 +313,17 @@
 #define MOB_VNUM_DIAMOND_GOLEM  1032
 #define MOB_VNUM_COMBAT_ELEMENTAL 1036 /* this needs to be a new mob ZENFIX */
 
-#define STANCE_WARRIOR		0
-#define STANCE_CASTER		1
-#define STANCE_AMBUSH		2
-#define STANCE_AC_BEST		3
-#define STANCE_HR_BEST		4
-#define STANCE_DR_BEST		5
-#define STANCE_AC_WORST		6
-#define STANCE_HR_WORST		7
-#define STANCE_DR_WORST		8
-#define STANCE_SUPER_FIGHTER	9
-#define STANCE_SUPER_SPEED	10
+#define STANCE_WARRIOR      0
+#define STANCE_CASTER       1
+#define STANCE_AMBUSH       2
+#define STANCE_AC_BEST      3
+#define STANCE_HR_BEST      4
+#define STANCE_DR_BEST      5
+#define STANCE_AC_WORST     6
+#define STANCE_HR_WORST     7
+#define STANCE_DR_WORST     8
+#define STANCE_SUPER_FIGHTER    9
+#define STANCE_SUPER_SPEED  10
 #define STANCE_WIZARD           11
 #define STANCE_MAGI             12
 
@@ -334,25 +334,25 @@
 #define SUPER_HUNTER 4
 
 /* defines for enchant.c  */
-#define ENCHANT_EXTRA_FLAGS	-1
-#define ENCHANT_APPLY_FLAGS	-2
-#define ENCHANT_OBJFUNS		-3
+#define ENCHANT_EXTRA_FLAGS -1
+#define ENCHANT_APPLY_FLAGS -2
+#define ENCHANT_OBJFUNS     -3
 
-#define RACE_MOD_NONE		BIT_0
-#define RACE_MOD_FAST_HEAL	BIT_1
-#define RACE_MOD_SLOW_HEAL	BIT_2
-#define RACE_MOD_STRONG_MAGIC	BIT_3
-#define RACE_MOD_WEAK_MAGIC	BIT_4
-#define RACE_MOD_NO_MAGIC	BIT_5
+#define RACE_MOD_NONE       BIT_0
+#define RACE_MOD_FAST_HEAL  BIT_1
+#define RACE_MOD_SLOW_HEAL  BIT_2
+#define RACE_MOD_STRONG_MAGIC   BIT_3
+#define RACE_MOD_WEAK_MAGIC BIT_4
+#define RACE_MOD_NO_MAGIC   BIT_5
 #define RACE_MOD_IMMUNE_POISON  BIT_6
-#define RACE_MOD_RESIST_SPELL	BIT_7
-#define RACE_MOD_WOODLAND	BIT_8
-#define RACE_MOD_DARKNESS	BIT_9
-#define RACE_MOD_HUGE		BIT_10
-#define RACE_MOD_LARGE		BIT_11
-#define RACE_MOD_TINY		BIT_12
-#define RACE_MOD_SMALL		BIT_13
-#define RACE_MOD_TAIL		BIT_14
+#define RACE_MOD_RESIST_SPELL   BIT_7
+#define RACE_MOD_WOODLAND   BIT_8
+#define RACE_MOD_DARKNESS   BIT_9
+#define RACE_MOD_HUGE       BIT_10
+#define RACE_MOD_LARGE      BIT_11
+#define RACE_MOD_TINY       BIT_12
+#define RACE_MOD_SMALL      BIT_13
+#define RACE_MOD_TAIL       BIT_14
 #define RACE_MOD_TOUGH_SKIN   BIT_15
 #define RACE_MOD_STONE_SKIN   BIT_16
 #define RACE_MOD_IRON_SKIN    BIT_17
@@ -364,18 +364,18 @@
 
 
 /* Magic Shield types
-	-Damane 4/27/96 */
-#define SHIELD_NONE	0
-#define FLAME_SHIELD	1
-#define SHOCK_SHIELD	2
-#define SHADOW_SHIELD	3
-#define ICE_SHIELD	4
-#define PSI_SHIELD	5
+    -Damane 4/27/96 */
+#define SHIELD_NONE 0
+#define FLAME_SHIELD    1
+#define SHOCK_SHIELD    2
+#define SHADOW_SHIELD   3
+#define ICE_SHIELD  4
+#define PSI_SHIELD  5
 
 
 /* These are for skill_table lookup funcs... to save writing 2 functions */
-#define RETURN_BEST_LEVEL	1
-#define RETURN_BEST_CLASS	2
+#define RETURN_BEST_LEVEL   1
+#define RETURN_BEST_CLASS   2
 
 /*
  * God Levels
@@ -386,10 +386,10 @@
 #define L_ANG           L_DEI - 1
 #define L_HER           L_ANG - 1
 
-#define CLAN_ONLY	 -1
-#define BOSS_ONLY	 -2
-#define VAMP_ONLY	 -3
-#define WOLF_ONLY	 -4
+#define CLAN_ONLY    -1
+#define BOSS_ONLY    -2
+#define VAMP_ONLY    -3
+#define WOLF_ONLY    -4
 
 /*
  * Time and weather stuff.
@@ -404,21 +404,21 @@
 #define SKY_RAINING                 2
 #define SKY_LIGHTNING               3
 
-#define MOON_DOWN	0
-#define MOON_RISE	1
-#define MOON_LOW	2
-#define MOON_PEAK	3
-#define MOON_FALL	4
-#define MOON_SET	5
+#define MOON_DOWN   0
+#define MOON_RISE   1
+#define MOON_LOW    2
+#define MOON_PEAK   3
+#define MOON_FALL   4
+#define MOON_SET    5
 
-#define MOON_NEW	0
-#define MOON_WAX_CRE	1
-#define MOON_WAX_HALF	2
-#define MOON_WAX_GIB	3
-#define MOON_FULL	4
-#define MOON_WAN_GIB	5
-#define MOON_WAN_HALF	6
-#define MOON_WAN_CRE	7
+#define MOON_NEW    0
+#define MOON_WAX_CRE    1
+#define MOON_WAX_HALF   2
+#define MOON_WAX_GIB    3
+#define MOON_FULL   4
+#define MOON_WAN_GIB    5
+#define MOON_WAN_HALF   6
+#define MOON_WAN_CRE    7
 
 /*
  * Connected state for a channel.
@@ -429,47 +429,47 @@
 #define CON_SETTING_STATS                1
 #define CON_PLAYING                      0
 #define CON_GET_NAME                     -1
-                  /*
-                   * All non connected 
-                   */
+/*
+ * All non connected
+ */
 #define CON_GET_OLD_PASSWORD             -2
-                  /*
-                   * states changed to  
-                   */
+/*
+ * states changed to
+ */
 #define CON_CONFIRM_NEW_NAME             -3
-                  /*
-                   * negative so that   
-                   */
+/*
+ * negative so that
+ */
 #define CON_GET_NEW_PASSWORD             -4
-                  /*
-                   * Hotboot can shut out 
-                   */
+/*
+ * Hotboot can shut out
+ */
 #define CON_CONFIRM_NEW_PASSWORD         -5
-                  /*
-                   * All nonplaying chars 
-                   */
+/*
+ * All nonplaying chars
+ */
 #define CON_GET_NEW_SEX                  -6
-                  /*
-                   * ---Flar 
-                   */
+/*
+ * ---Flar
+ */
 #define CON_GET_NEW_CLASS                -7
 #define CON_GET_RACE                     -9
 #define CON_READ_MOTD                   -10
 #define CON_GET_STATS                   -11
-#define CON_FINISHED			-12
-#define CON_MENU		        -13
-#define CON_COPYOVER_RECOVER		-14
-                  /*
-                   * For Hotreboot 
-                   */
-#define CON_QUITTING			-15
+#define CON_FINISHED            -12
+#define CON_MENU                -13
+#define CON_COPYOVER_RECOVER        -14
+/*
+ * For Hotreboot
+ */
+#define CON_QUITTING            -15
 #define CON_RECONNECTING                -16
 
 /* values used to check a new player has selected all options.... */
-#define CHECK_RACE			  BIT_1
-#define CHECK_CLASS			  BIT_2
-#define CHECK_SEX			  BIT_3
-#define CHECK_STATS			  BIT_4
+#define CHECK_RACE            BIT_1
+#define CHECK_CLASS           BIT_2
+#define CHECK_SEX             BIT_3
+#define CHECK_STATS           BIT_4
 
 /*
  * TO types for act.
@@ -511,7 +511,7 @@
 #define RFLAG_PET_SHOP      13  /* respawn mobs are pets        */
 #define RFLAG_NO_RECALL     14  /* no recalling                 */
 #define RFLAG_NO_TELEPORT   15  /* can't teleport in/out of     */
-#define RFLAG_HUNT_MARK	    16  /* Dont ever set!               */
+#define RFLAG_HUNT_MARK     16  /* Dont ever set!               */
 #define RFLAG_NO_BLOODWALK  17  /* vamps can't bloodwalk in     */
 #define RFLAG_NO_PORTAL     18  /* portals will collapse on use */
 #define RFLAG_NO_REPOP      19  /* objs only spawn if no chars  */
@@ -536,12 +536,12 @@
 #define EX_ISDOOR                     1  /* must be set to set other flags */
 #define EX_CLOSED                     2  /* auto-close on repop            */
 #define EX_LOCKED                     3  /* auto-lock on repop             */
-#define EX_CLIMB		      4  /* must have climb/fly to enter   */
-#define EX_IMMORTAL		      5  /* must be immortal to enter      */
+#define EX_CLIMB              4  /* must have climb/fly to enter   */
+#define EX_IMMORTAL           5  /* must be immortal to enter      */
 #define EX_PICKPROOF                  6  /* can not pick lock              */
-#define EX_SMASHPROOF		      7  /* can not smash                  */
-#define EX_PASSPROOF		      8  /* can not pass door              */
-#define EX_NODETECT		      9
+#define EX_SMASHPROOF             7  /* can not smash                  */
+#define EX_PASSPROOF              8  /* can not pass door              */
+#define EX_NODETECT           9
 #define EX_NOMOB                     10
 
 /*
@@ -634,7 +634,7 @@
 #define POS_BUILDING                  9
 #define POS_RIDING                   10
 
-/* 
+/*
  * ACT bits for players and mobs. Uses a bitset.
  * I realize this could be an enum, but this allows comments next
  * to each define and, imo, is easier to read if you add/remove one.
@@ -666,7 +666,7 @@
 #define ACT_INTELLIGENT  23   /* For shitkicking mobs           */
 #define ACT_VAMPIRE      24   /* Vampire                        */
 #define ACT_BREEDER      25   /* Mob can breed                  */
-#define ACT_SOLO   	 26   /* Buffed for solo combat         */
+#define ACT_SOLO     26   /* Buffed for solo combat         */
 #define ACT_WEREWOLF     27   /* Werewolf                       */
 #define ACT_MOUNT        28   /* Mountable MOB                  */
 #define ACT_NO_BLOOD     29   /* No bloodwalk                   */
@@ -757,7 +757,7 @@
 #define CHANNEL_QUESTMOB   30
 #define CHANNEL_MAX        31
 
-/* 
+/*
  * Monitor channels - for imms to select what mud-based info they receive
  */
 #define MONITOR_NONE         0
@@ -788,14 +788,14 @@
 /*
  * Hunt flags for mobs
  */
-#define HUNT_WORLD	0x00000001  /* Search the whole world  */
-#define HUNT_OPENDOOR	0x00000002  /* Can open obstructung doors */
-#define HUNT_UNLOCKDOOR	0x00000004  /* Can unlock obstructing doors  */
-#define HUNT_PICKDOOR	0x00000008  /* Can pick obstructing doors */
-#define HUNT_INFORM	0x00000010  /* Yells while hunting     */
-#define HUNT_CR		0x00000020  /* Is preforming a CR      */
-#define HUNT_MERC	0x00000040  /* Is gonna assassinate someone  */
-#define HUNT_ALL	0x0000001E  /* can hunt through anything    */
+#define HUNT_WORLD  0x00000001  /* Search the whole world  */
+#define HUNT_OPENDOOR   0x00000002  /* Can open obstructung doors */
+#define HUNT_UNLOCKDOOR 0x00000004  /* Can unlock obstructing doors  */
+#define HUNT_PICKDOOR   0x00000008  /* Can pick obstructing doors */
+#define HUNT_INFORM 0x00000010  /* Yells while hunting     */
+#define HUNT_CR     0x00000020  /* Is preforming a CR      */
+#define HUNT_MERC   0x00000040  /* Is gonna assassinate someone  */
+#define HUNT_ALL    0x0000001E  /* can hunt through anything    */
 
 /***************************************************************************
  *                                                                         *
@@ -806,70 +806,70 @@
 
 
 /********************* Define Flags for hunting *************************/
-#define ACT_HUNT_CHAR		1  /* Hunting a character     */
-#define ACT_HUNT_OBJ		2  /* Hunting an object       */
-#define ACT_HUNT_INFORM		4  /* Mob will gossip when hunting  */
-#define ACT_HUNT_CR		8  /* Mob is doing a corpse retrival   */
-#define ACT_HUNT_MOVE	       16   /* Just walking somewhere      */
+#define ACT_HUNT_CHAR       1  /* Hunting a character     */
+#define ACT_HUNT_OBJ        2  /* Hunting an object       */
+#define ACT_HUNT_INFORM     4  /* Mob will gossip when hunting  */
+#define ACT_HUNT_CR     8  /* Mob is doing a corpse retrival   */
+#define ACT_HUNT_MOVE          16   /* Just walking somewhere      */
 
-#define NO_VNUM		       -1   /* For ch->move_to thingy      */
+#define NO_VNUM            -1   /* For ch->move_to thingy      */
 
 /************************************************************************/
 
 /** Define what is calling the trigger handler for objects ******/
-#define TRIGGER_OPEN		1
-              /*
-               * Opening a container      
-               */
-#define TRIGGER_CLOSE		2
-              /*
-               * Closing a container   
-               */
-#define TRIGGER_EAT		3
-              /*
-               * Eating some food      
-               */
-#define TRIGGER_C_DRINK		4
-              /*
-               * Drinking from container  
-               */
-#define TRIGGER_F_DRINK		5
-              /*
-               * Drinking from fountain   
-               */
-#define TRIGGER_WEAR		6
-              /*
-               * Wearing an object     
-               */
-#define TRIGGER_GET		7
-              /*
-               * Picking up an object  
-               */
-#define TRIGGER_DROP		8
-              /*
-               * Dropping an object    
-               */
-#define TRIGGER_EXAMINE		9
-              /*
-               * Examining an object   
-               */
+#define TRIGGER_OPEN        1
+/*
+ * Opening a container
+ */
+#define TRIGGER_CLOSE       2
+/*
+ * Closing a container
+ */
+#define TRIGGER_EAT     3
+/*
+ * Eating some food
+ */
+#define TRIGGER_C_DRINK     4
+/*
+ * Drinking from container
+ */
+#define TRIGGER_F_DRINK     5
+/*
+ * Drinking from fountain
+ */
+#define TRIGGER_WEAR        6
+/*
+ * Wearing an object
+ */
+#define TRIGGER_GET     7
+/*
+ * Picking up an object
+ */
+#define TRIGGER_DROP        8
+/*
+ * Dropping an object
+ */
+#define TRIGGER_EXAMINE     9
+/*
+ * Examining an object
+ */
 /** Define what actions the triggered object can do *************/
-#define ACTION_TRANSPORT	1
-              /*
-               * Transports victim to room   
-               */
-#define ACTION_RESTORE		2
-              /*
-               * Restores victim    
-               */
-#define ACTION_SLAY		3
-              /*
-               * Kills victim    
-               */
-#define ACTION_TRANSFORM	4
-              /*
-               * Loads mob(s) in its place   
-               */
+#define ACTION_TRANSPORT    1
+/*
+ * Transports victim to room
+ */
+#define ACTION_RESTORE      2
+/*
+ * Restores victim
+ */
+#define ACTION_SLAY     3
+/*
+ * Kills victim
+ */
+#define ACTION_TRANSFORM    4
+/*
+ * Loads mob(s) in its place
+ */
 /****************************************************************/
 
 /* BitVector flags for room-affect spells.  These are used in the
@@ -877,11 +877,11 @@
    functions.  They MUST be used whenever a room-affect spell is
    being cast (from within code) */
 
-#define ROOM_BV_NONE		0
-#define ROOM_BV_SILENCE		1  /* Like silence room flag  */
-#define ROOM_BV_SAFE		2  /* Like safe room flag     */
-#define ROOM_BV_ENCAPS		4  /* Magically blocks exits   */
-#define ROOM_BV_SHADE		8  /* Room is darkened      */
+#define ROOM_BV_NONE        0
+#define ROOM_BV_SILENCE     1  /* Like silence room flag  */
+#define ROOM_BV_SAFE        2  /* Like safe room flag     */
+#define ROOM_BV_ENCAPS      4  /* Magically blocks exits   */
+#define ROOM_BV_SHADE       8  /* Room is darkened      */
 #define ROOM_BV_HEAL_REGEN    16 /* room heals hits quicker     */
 #define ROOM_BV_HEAL_STEAL    32 /* room takes hits instead of giving */
 #define ROOM_BV_MANA_REGEN    64 /* room heals mana quicker     */
@@ -895,7 +895,7 @@
 #define ROOM_BV_SPELL_ALWAYS   16384   /* room casts spell continuously */
 #define ROOM_BV_HOLD           32768   /* room lets you in, but not out..recall works */
 #define ROOM_BV_POISON_RUNE    65536   /* room gives poison to entering ch */
-#define ROOM_BV_SOUL_NET	131072   /* makes soul instead of corpse */
+#define ROOM_BV_SOUL_NET    131072   /* makes soul instead of corpse */
 
 /* OLC modes */
 #define BUILD_MODE_NONE                0   /* not doing anything   */
@@ -903,13 +903,13 @@
 #define BUILD_MODE_OEDIT               2   /* editing objects      */
 #define BUILD_MODE_MEDIT               3   /* editing mobiles      */
 
-#define NO_USE			   -999  /* this table entry can */
-                  /*
-                   * NOT be used, except
-                   */
-                  /*
-                   * by a Creator
-                   */
+#define NO_USE             -999  /* this table entry can */
+/*
+ * NOT be used, except
+ */
+/*
+ * by a Creator
+ */
 
 
 /*
@@ -940,35 +940,35 @@
 /*
  * New bits to determine what spells a mob will cast in combat -S-
  * These are for offensive spells.
- * Remember spec_funs may still cast as well! - but spells cast 
+ * Remember spec_funs may still cast as well! - but spells cast
  *  this way WILL reduce the mob's mana <g>
  */
 
-#define CAST_NONE			     1
-#define CAST_MAGIC_MISSILE		     2
-#define CAST_SHOCKING_GRASP		     4
-#define CAST_BURNING_HANDS		     8
-#define CAST_COLOR_SPRAY		    16
-#define CAST_FIREBALL			    32
-#define CAST_HELLSPAWN			    64
-#define CAST_ACID_BLAST			   128
-#define CAST_CHAIN_LIGHTNING		   256
-#define CAST_FLARE			  1024
-#define CAST_FLAMESTRIKE		  2048
-#define CAST_EARTHQUAKE			  4096
-#define CAST_MIND_FLAIL			  8192
-#define CAST_PLANERGY			 16384
-#define CAST_PHOBIA			 32768
-#define CAST_MIND_BOLT			 65536
-#define CAST_STATIC			131072
-#define CAST_EGO_WHIP			262144
-#define CAST_BLOODY_TEARS		524288
-#define CAST_MINDFLAME		       1048576
-#define CAST_SUFFOCATE		       2097152
-#define CAST_NERVE_FIRE		       4194304
-#define CAST_LIGHTNING_BOLT	       8388608
-#define CAST_HEAT_ARMOR			16777216
-#define CAST_LAVA_BURST			33554432
+#define CAST_NONE                1
+#define CAST_MAGIC_MISSILE           2
+#define CAST_SHOCKING_GRASP          4
+#define CAST_BURNING_HANDS           8
+#define CAST_COLOR_SPRAY            16
+#define CAST_FIREBALL               32
+#define CAST_HELLSPAWN              64
+#define CAST_ACID_BLAST            128
+#define CAST_CHAIN_LIGHTNING           256
+#define CAST_FLARE            1024
+#define CAST_FLAMESTRIKE          2048
+#define CAST_EARTHQUAKE           4096
+#define CAST_MIND_FLAIL           8192
+#define CAST_PLANERGY            16384
+#define CAST_PHOBIA          32768
+#define CAST_MIND_BOLT           65536
+#define CAST_STATIC         131072
+#define CAST_EGO_WHIP           262144
+#define CAST_BLOODY_TEARS       524288
+#define CAST_MINDFLAME             1048576
+#define CAST_SUFFOCATE             2097152
+#define CAST_NERVE_FIRE            4194304
+#define CAST_LIGHTNING_BOLT        8388608
+#define CAST_HEAT_ARMOR         16777216
+#define CAST_LAVA_BURST         33554432
 
 /*
  * New bits to determine the defensive spells available to
@@ -976,14 +976,14 @@
  *  will deduct mana from the mob when cast.
  */
 
-#define DEF_NONE		1
-#define DEF_CURE_LIGHT		2
-#define DEF_CURE_SERIOUS	4
-#define DEF_CURE_CRITIC		8
-#define DEF_CURE_HEAL		16
-#define DEF_SHIELD_FIRE		32
-#define DEF_SHIELD_ICE		64
-#define DEF_SHIELD_SHOCK	128
+#define DEF_NONE        1
+#define DEF_CURE_LIGHT      2
+#define DEF_CURE_SERIOUS    4
+#define DEF_CURE_CRITIC     8
+#define DEF_CURE_HEAL       16
+#define DEF_SHIELD_FIRE     32
+#define DEF_SHIELD_ICE      64
+#define DEF_SHIELD_SHOCK    128
 
 /*
  * Bits for 'affected_by'.
@@ -1012,15 +1012,15 @@
 #define AFF_PASS_DOOR           1048576
 #define AFF_ANTI_MAGIC          2097152   /* -S- no magic hurts ch */
 #define AFF_BLASTED              BIT_23
-/* available 
+/* available
 #define AFF_                     BIT_24
 */
 #define AFF_CONFUSED           BIT_25
 #define AFF_VAMP_HEALING       BIT_26  /* DO NOT USE IN OLC! */
-#define AFF_HOLD			         BIT_27
-#define AFF_PARALYSIS	         BIT_28
-#define AFF_CLOAK_ADEPT		     BIT_29
-#define AFF_CLOAK_REGEN		     BIT_30
+#define AFF_HOLD                     BIT_27
+#define AFF_PARALYSIS            BIT_28
+#define AFF_CLOAK_ADEPT          BIT_29
+#define AFF_CLOAK_REGEN          BIT_30
 
 /* VAMP_HEALING is used to show that a vamp is currently healing after death*/
 
@@ -1058,31 +1058,31 @@
 #define ITEM_STAFF                    4
 #define ITEM_WEAPON                   5
 #define ITEM_BEACON                   6   /* for portals, etc */
-#define ITEM_PORTAL		      7
+#define ITEM_PORTAL           7
 #define ITEM_TREASURE                 8
 #define ITEM_ARMOR                    9
 #define ITEM_POTION                  10
 #define ITEM_CLUTCH                  11   /* for clutch location only! */
 #define ITEM_FURNITURE               12
 #define ITEM_TRASH                   13
-#define ITEM_TRIGGER		     14
+#define ITEM_TRIGGER             14
 #define ITEM_CONTAINER               15
-#define ITEM_QUEST		     16
+#define ITEM_QUEST           16
 #define ITEM_DRINK_CON               17
 #define ITEM_KEY                     18
 #define ITEM_FOOD                    19
 #define ITEM_MONEY                   20
-#define ITEM_STAKE		     21
+#define ITEM_STAKE           21
 #define ITEM_BOAT                    22
 #define ITEM_CORPSE_NPC              23
 #define ITEM_CORPSE_PC               24
 #define ITEM_FOUNTAIN                25
 #define ITEM_PILL                    26
 #define ITEM_BOARD                   27
-#define ITEM_SOUL		     28
-#define ITEM_PIECE		     29
-#define ITEM_SPELL_MATRIX	     30
-#define ITEM_ENCHANTMENT	     31
+#define ITEM_SOUL            28
+#define ITEM_PIECE           29
+#define ITEM_SPELL_MATRIX        30
+#define ITEM_ENCHANTMENT         31
 #define ITEM_WRAPPED_PRESENT         32
 #define ITEM_CHARM                   33
 #define ITEM_ANVIL                   34
@@ -1096,33 +1096,33 @@
  * Used in #OBJECTS.
  */
 #define ITEM_EXTRA_NONE                 0
-#define ITEM_EXTRA_GLOW			1
-#define ITEM_EXTRA_HUM			2
-#define ITEM_EXTRA_NO_DISARM		3
-#define ITEM_EXTRA_LOCK			4
-#define ITEM_EXTRA_EVIL			5
-#define ITEM_EXTRA_INVIS		6
-#define ITEM_EXTRA_MAGIC		7
-#define ITEM_EXTRA_NO_DROP		8
-#define ITEM_EXTRA_BLESS		9
-#define ITEM_EXTRA_ANTI_GOOD		10
-#define ITEM_EXTRA_ANTI_EVIL		11
-#define ITEM_EXTRA_ANTI_NEUTRAL		12
-#define ITEM_EXTRA_NO_REMOVE		13
-#define ITEM_EXTRA_INVENTORY		14
-#define ITEM_EXTRA_NO_SAVE		15 /* For "quest" items :) */
-#define ITEM_EXTRA_CLAN_EQ		16 /* only leaders and creators may load */
-#define ITEM_EXTRA_TRIG_DESTROY	 	17 /* Trigger object that destroy after use */
-#define ITEM_EXTRA_NO_AUCTION		18   /* Can't be auctioned */
-#define ITEM_EXTRA_REMORT		19   /* player must have a remort class of higher level than item level */
-#define ITEM_EXTRA_ADEPT		20
-#define ITEM_EXTRA_RARE			21
+#define ITEM_EXTRA_GLOW         1
+#define ITEM_EXTRA_HUM          2
+#define ITEM_EXTRA_NO_DISARM        3
+#define ITEM_EXTRA_LOCK         4
+#define ITEM_EXTRA_EVIL         5
+#define ITEM_EXTRA_INVIS        6
+#define ITEM_EXTRA_MAGIC        7
+#define ITEM_EXTRA_NO_DROP      8
+#define ITEM_EXTRA_BLESS        9
+#define ITEM_EXTRA_ANTI_GOOD        10
+#define ITEM_EXTRA_ANTI_EVIL        11
+#define ITEM_EXTRA_ANTI_NEUTRAL     12
+#define ITEM_EXTRA_NO_REMOVE        13
+#define ITEM_EXTRA_INVENTORY        14
+#define ITEM_EXTRA_NO_SAVE      15 /* For "quest" items :) */
+#define ITEM_EXTRA_CLAN_EQ      16 /* only leaders and creators may load */
+#define ITEM_EXTRA_TRIG_DESTROY     17 /* Trigger object that destroy after use */
+#define ITEM_EXTRA_NO_AUCTION       18   /* Can't be auctioned */
+#define ITEM_EXTRA_REMORT       19   /* player must have a remort class of higher level than item level */
+#define ITEM_EXTRA_ADEPT        20
+#define ITEM_EXTRA_RARE         21
 #define ITEM_EXTRA_VAMP                 22 /* player must be a vampire */
-#define ITEM_EXTRA_NO_LOOT		23
-#define ITEM_EXTRA_NO_SAC		24
-#define ITEM_EXTRA_UNIQUE		25
-#define ITEM_EXTRA_LIFESTEALER	        26
-#define ITEM_EXTRA_SILVER		27
+#define ITEM_EXTRA_NO_LOOT      23
+#define ITEM_EXTRA_NO_SAC       24
+#define ITEM_EXTRA_UNIQUE       25
+#define ITEM_EXTRA_LIFESTEALER          26
+#define ITEM_EXTRA_SILVER       27
 #define ITEM_EXTRA_NO_QUEST             28 /* disable for mquest */
 #define ITEM_EXTRA_NO_TAKE              29 /* can't get this item */
 
@@ -1143,8 +1143,8 @@
 #define ITEM_APPLY_DET_POISON        8192
 #define ITEM_APPLY_FLY              16384
 #define ITEM_APPLY_KNOW_ALIGN       32768
-#define ITEM_APPLY_DET_UNDEAD	    65536
-#define ITEM_APPLY_HEATED	   131072
+#define ITEM_APPLY_DET_UNDEAD       65536
+#define ITEM_APPLY_HEATED      131072
 
 
 /* Class-restricted object stuff
@@ -1244,27 +1244,27 @@
  */
 #if defined(macintosh)
 #define PLAYER_DIR      "" /* Player files                 */
-#define NPC_DIR		""
+#define NPC_DIR     ""
 #define NULL_FILE       "proto.are" /* To reserve one stream        */
 #define MOB_DIR         "" /* MOBProg files                */
 #endif
 
 #if defined(MSDOS)
 #define PLAYER_DIR      "" /* Player files                 */
-#define NPC_DIR		""
+#define NPC_DIR     ""
 #define NULL_FILE       "nul" /* To reserve one stream        */
 #define MOB_DIR         "" /* MOBProg files                */
 #endif
 
 #if defined(unix)
 #define PLAYER_DIR      "../player/"   /* Player files                 */
-#define NPC_DIR		"../npc/"
+#define NPC_DIR     "../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
 #endif
 
 #if defined(linux)
 #define PLAYER_DIR      "../player/"   /* Player files                 */
-#define NPC_DIR		"../npc/"
+#define NPC_DIR     "../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
 #endif
 
