@@ -1986,7 +1986,7 @@ void show_rmenu_to( DESCRIPTOR_DATA * d )
         strncat( menu, buf, MSL - 1 );
     }
 
-    strncat( menu, "\r\nPlease Select Your Race (Abr), or type the full race name for race info: ", MSL );
+    strncat( menu, "Please Select Your Race (Abr), or type info <abr> for race info, ie \"info hmn\": ", MSL );
     write_to_buffer( d, menu );
     return;
 }
@@ -2689,17 +2689,24 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
     if ( d->connected == CON_GET_RACE )
     {
+        char arg1[MSL], arg2[MSL];
+
+        argument = one_argument(argument,arg1);
+        argument = one_argument(argument,arg2);
+
         for ( iClass = 0; iClass < MAX_RACE; iClass++ )
         {
-            if ( ( !str_cmp( argument, race_table[iClass].race_name ) ) && ( race_table[iClass].player_allowed == TRUE ) )
+            if ( ( !str_cmp( arg1, race_table[iClass].race_name ) ) && ( race_table[iClass].player_allowed == TRUE ) )
             {
                 ch->race = iClass;
                 break;
             }
             /* curtesy of Sylvana@LCN */
-            else if ( !str_cmp( argument, race_table[iClass].race_title ) )
+            else if ( !str_cmp( arg1, "info" ) )
             {
-                do_help( ch, argument );
+                do_race_list( ch, arg2 );
+                write_to_buffer( d, "Please Select Your Race (Abr), or type info <abr> for race info, ie \"info hmn\": " );
+                return;
             }
         }
 
