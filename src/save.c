@@ -163,6 +163,10 @@ void save_char_obj( CHAR_DATA * ch )
     if ( !IS_NPC( ch ) && ch->desc != NULL && ch->desc->original != NULL )
         ch = ch->desc->original;
 
+   /* Stop auto-saving people during creation --Kline */
+   if ( ch->desc->connected < CON_PLAYING && ch->desc->connected != CON_READ_MOTD )
+        return;
+
     ch->pcdata->save_time = current_time;
 
 
