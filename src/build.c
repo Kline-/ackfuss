@@ -6112,6 +6112,7 @@ DO_FUN(build_clone)
         this_obj->durability = obj->durability;
         this_obj->max_durability = obj->max_durability;
         this_obj->obj_fun = obj->obj_fun;
+        this_obj->armor_type = obj->armor_type;
 
         for ( pEd = obj->first_exdesc; pEd != NULL; pEd = pEd->next )
         {
