@@ -567,6 +567,9 @@ DO_FUN(build_showobj)
     snprintf( buf, MSL, "@@WDurability: @@y%d.\r\n", obj->max_durability );
     strncat( buf1, buf, MSL - 1 );
 
+    snprintf( buf, MSL, "@@WArmor Type: @@y%s.\r\n", rev_table_lookup( tab_armor_type, obj->armor_type ) );
+    strncat( buf1, buf, MSL -1 );
+
     strncat( buf1, "@@WObject Values:\r\n", MSL );
 
     for ( cnt = 0; cnt < 10; cnt++ )
@@ -2474,6 +2477,7 @@ DO_FUN(build_setobject)
         send_to_char( "Field being one of:\r\n", ch );
         send_to_char( "  value0 value1 value2 value3 speed magic\r\n", ch );
         send_to_char( "  level extra wear weight aff type durability\r\n", ch );
+        send_to_char( "  armortype\r\n", ch );
         send_to_char( "\r\n", ch );
         send_to_char( "String being one of:\r\n", ch );
         send_to_char( "  name short long ed objfun script\r\n", ch );
@@ -2576,8 +2580,10 @@ DO_FUN(build_setobject)
             }
             if ( found )
             {
-                snprintf(buf, MSL, "Values modified based on object type: %s.\r\n", tab_auto_obj[i].name);
-                send_to_char(buf, ch);
+                if ( pObj->item_type == ITEM_ARMOR && pObj->armor_type > ITEM_ARMOR_NONE )
+                    ch->send( "Values modified based on object type %s and armor type %s.\r\n", tab_auto_obj[i].name, rev_table_lookup( tab_armor_type, pObj->armor_type ) );
+                else
+                    ch->send( "Values modified based on object type %s.\r\n", tab_auto_obj[i].name );
             }
             else
             {
@@ -2591,6 +2597,23 @@ DO_FUN(build_setobject)
                 strncat(buf, ".\r\n", MSL);
                 send_to_char(buf, ch);
             }
+        }
+
+        if ( pObj->item_type == ITEM_ARMOR && pObj->armor_type > ITEM_ARMOR_NONE )
+        {
+            short i = 0;
+
+            for ( i = 0; tab_auto_obj_armor[i].name != NULL; i++ )
+                if ( !str_cmp( rev_table_lookup( tab_armor_type, pObj->armor_type ), tab_auto_obj_armor[i].name ) )
+                {
+                    ac *= tab_auto_obj_armor[i].ac;
+                    dr *= tab_auto_obj_armor[i].dr;
+                    hp *= tab_auto_obj_armor[i].hp;
+                    hr *= tab_auto_obj_armor[i].hr;
+                    mp *= tab_auto_obj_armor[i].mp;
+                    mv *= tab_auto_obj_armor[i].mv;
+                    svs *= tab_auto_obj_armor[i].svs;
+                }
         }
 
         snprintf(buf, MSL, "%d aff %sac %.0f", pObj->vnum, ac == 0 ? "-" : "", ac);
@@ -3005,6 +3028,17 @@ DO_FUN(build_setobject)
         }
         pObj->max_durability = atoi(arg3);
         pObj->durability = pObj->max_durability;
+        return;
+    }
+
+    if ( !str_prefix( arg2, "armortype" ) )
+    {
+        if( pObj->item_type != ITEM_ARMOR )
+        {
+            ch->send("You can only set armor type on armor.\r\n");
+            return;
+        }
+        pObj->armor_type = table_lookup( tab_armor_type, arg3 );
         return;
     }
 

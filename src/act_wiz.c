@@ -3352,7 +3352,7 @@ DO_FUN(do_oset)
         send_to_char( "\r\n", ch );
         send_to_char( "Field being one of:\r\n", ch );
         send_to_char( "  value0 value1 value2 value3 [v0,v1,v2,v3] speed\r\n", ch );
-        send_to_char( "  extra wear level weight cost timer durability\r\n", ch );
+        send_to_char( "  extra wear level weight cost timer durability armortype\r\n", ch );
         send_to_char( "\r\n", ch );
         send_to_char( "String being one of:\r\n", ch );
         send_to_char( "  name short long ed script\r\n", ch );
@@ -3417,6 +3417,17 @@ DO_FUN(do_oset)
         }
         obj->max_durability = value;
         obj->durability = value;
+        return;
+    }
+
+    if ( !str_cmp( arg2, "armortype" ) )
+    {
+        if( obj->item_type != ITEM_ARMOR )
+        {
+            ch->send("You can only set armor type on armor.\r\n");
+            return;
+        }
+        obj->armor_type = table_lookup( tab_armor_type, arg3 );
         return;
     }
 

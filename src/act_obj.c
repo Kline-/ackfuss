@@ -1421,6 +1421,17 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
         return;
     }
 
+    if ( !IS_NPC(ch) && obj->item_type == ITEM_ARMOR && obj->armor_type != ITEM_ARMOR_NONE )
+    {
+        switch ( obj->armor_type )
+        {
+            case ITEM_ARMOR_CLOTH:   if ( ch->pcdata->learned[skill_lookup( "cloth armor" )] < 1 )   ch->send("You lack the skill to wear cloth armor.\r\n");   return;
+            case ITEM_ARMOR_LEATHER: if ( ch->pcdata->learned[skill_lookup( "leather armor" )] < 1 ) ch->send("You lack the skill to wear leather armor.\r\n"); return;
+            case ITEM_ARMOR_MAIL:    if ( ch->pcdata->learned[skill_lookup( "mail armor" )] < 1 )    ch->send("You lack the skill to wear mail armor.\r\n");    return;
+            case ITEM_ARMOR_PLATE:   if ( ch->pcdata->learned[skill_lookup( "plate armor" )] < 1 )   ch->send("You lack the skill to wear plate armor.\r\n");   return;
+        }
+    }
+
     if ( obj->item_type == ITEM_TRIGGER && obj->value[0] == 6 )
     {
         /*

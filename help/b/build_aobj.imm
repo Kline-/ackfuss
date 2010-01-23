@@ -7,3 +7,7 @@ These stats can be raw derived from max by just using 'aobj', or further refined
 slot by using 'aobj <slot>'. Currently tab_auto_object contains the modifiers to be changed
 in buildtab.c, but this may move to being online-editable in the future. You can use 'aobj list'
 to see all valid slots.
+
+Armor types also influence aobj values to help craft more distinct equipment. If you wish to not
+include armor type in the formula, simply set the type to none, use aobj, then set the type to
+whatever you wish afterwards.

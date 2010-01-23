@@ -1217,6 +1217,10 @@ void load_object( FILE * fp )
                 fread_to_eol( fp );
                 break;
 
+            case 'A':
+                KEY("ArmorType", pObjIndex->armor_type, fread_number(fp));
+                break;
+
             case 'D':
                 KEY("Durability", pObjIndex->max_durability, fread_number(fp));
                 break;
@@ -2748,6 +2752,7 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
     obj->item_apply = pObjIndex->item_apply;
     obj->obj_fun = pObjIndex->obj_fun;
     obj->weight = pObjIndex->weight;
+    obj->armor_type = pObjIndex->armor_type;
     if ( (obj->speed = pObjIndex->speed) < 0.01 || (obj->speed = pObjIndex->speed) > 4.00 )
         obj->speed = number_speed();
     if ( (obj->max_durability = pObjIndex->max_durability) < 1 )

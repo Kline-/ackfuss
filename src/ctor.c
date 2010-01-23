@@ -487,6 +487,7 @@ obj_data::obj_data()
 obj_index_data::obj_index_data()
 {
     area = NULL;
+    armor_type = 0;
     durability = max_durability;
     extra_flags.reset();
     first_apply = NULL;

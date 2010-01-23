@@ -330,6 +330,7 @@ void build_save_objects(  )
 
     fprintf( SaveFile, "\n#OBJECT\n" );
     fprintf( SaveFile, "Vnum       %d\n", pObjIndex->vnum );  /* Must be first for sanity checks --Kline */
+    fprintf( SaveFile, "ArmorType  %d\n", pObjIndex->armor_type );
     fprintf( SaveFile, "Durability %d\n", pObjIndex->max_durability );
 
     fprintf( SaveFile, "ExtraFlags " );

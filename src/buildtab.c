@@ -38,7 +38,7 @@
      Mob act flags       :    tab_mob_act         : bitset
      Player act flags    :    tab_player_act      : bitset
      Mob affected by     :    tab_affected_by     : bit_vector
-     Mob classes     :    tab_mob_class   : number
+     Mob classes         :    tab_mob_class       : number
      Object item type    :    tab_item_types      : number
      Object extra flags  :    tab_obj_flags       : bitset
      Object wear flags   :    tab_wear_flags      : bitset
@@ -50,6 +50,8 @@
      Door types          :    tab_door_types      : bitset
      Door states         :    tab_door_states     : number
      Armor Types         :    tab_armor_type      : number
+     Auto Object mods    :    tab_auto_obj        : float
+     Armor Type mods     :    tab_auto_obj_armor  : float
 */
 
 
@@ -1156,7 +1158,16 @@ EQ_TYPE tab_auto_obj[] =
     {"feet",      0.15, 0.20, 0.15, 0.17,    0,    0,    0},
     {"hooves",    0.15, 0.21, 0.15, 0.17,    0,    0,    0},
     {NULL, 0, 0, 0, 0, 0, 0, 0}
+};
 
+EQ_TYPE tab_auto_obj_armor[] =
+{
+    /*              ac    dr    hp    hr    mp    mv   svs */
+    {"cloth",     1.00, 1.00, 0.90, 1.00, 1.20, 1.00, 1.20},
+    {"leather",   1.00, 1.00, 1.00, 1.20, 0.90, 1.20, 1.00},
+    {"mail",      1.00, 1.20, 1.20, 0.90, 1.00, 1.00, 1.00},
+    {"plate",     1.20, 1.00, 1.20, 1.00, 1.00, 0.90, 1.00},
+    {NULL, 0, 0, 0, 0, 0, 0, 0}
 };
 
 /* Now for the functions */

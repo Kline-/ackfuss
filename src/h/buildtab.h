@@ -51,5 +51,6 @@ extern LOOKUP_TYPE tab_mob_race_mods_col[];
 extern LOOKUP_TYPE tab_cast_name[];
 extern LOOKUP_TYPE tab_mob_def[];
 extern EQ_TYPE tab_auto_obj[];
+extern EQ_TYPE tab_auto_obj_armor[];
 
 #undef P_

@@ -804,6 +804,7 @@ class obj_index_data
         obj_index_data();
         ~obj_index_data();
         AREA_DATA *area;
+        short armor_type;
         short durability;
         bitset<MAX_BITSET> extra_flags;
         AFFECT_DATA *first_apply;
