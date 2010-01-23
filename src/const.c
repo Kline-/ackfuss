@@ -152,28 +152,32 @@ const struct class_type class_table[MAX_CLASS] =
     {
         "Mag", "Mage", APPLY_INT, "Int",
         1107, 90, 18, 10, 1, 2, TRUE,
-        "faerie fire",
+        "\'faerie fire\' \'cloth armor\'",
     },
 
     {
         "Cle", "Cleric", APPLY_WIS, "Wis",
         1105, 90, 18, 12, 2, 2, TRUE,
-        "bless"},
+        "bless \'cloth armor\'"
+    },
 
     {
         "Thi", "Thief", APPLY_DEX, "Dex",
         1106, 90, 18, 8, 1, 3, FALSE,
-        "steal"},
+        "steal \'leather armor\'"
+    },
 
     {
         "War", "Warrior", APPLY_STR, "Str",
         1108, 90, 18, 6, 3, 4, FALSE,
-        "punch"},
+        "punch \'mail armor\'"
+    },
 
     {
         "Psi", "Psionicist", APPLY_CON, "Con",
         1125, 90, 18, 10, 2, 3, TRUE,
-        "mind flail"}
+        "\'mind flail\' \'cloth armor\'"
+    }
 
 };
 
@@ -2936,7 +2940,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         "mystical potency", {40, 82, 82, 82, 82},
         spell_null, TAR_IGNORE, POS_STANDING,
         &gsn_potency, SLOT( 0 ), 0, 0,
-        "", "!Enhanced Damage!",
+        "", "!Mystical Potency!",
         ""},
 
     {
@@ -2944,7 +2948,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         "thaumatergy", {26, 82, 82, 82, 82},
         spell_null, TAR_IGNORE, POS_STANDING,
         &gsn_thaumatergy, SLOT( 0 ), 0, 0,
-        "", "!Enhanced Damage!",
+        "", "!Thaumatergy!",
         ""},
 
     {
@@ -2963,6 +2967,53 @@ const struct skill_type skill_table[MAX_SKILL] =
         "", "!Redemption!",
         ""},
 
+    {
+        MORTAL, NORM, COOLDOWN_NONE,
+        "cloth armor", {1, 1, 82, 82, 1},
+        spell_null, TAR_IGNORE, POS_STANDING,
+        &gsn_armor_cloth, SLOT( 0 ), 0, 0,
+        "", "!Cloth Armor!",
+        ""},
+
+    {
+        MORTAL, NORM, COOLDOWN_NONE,
+        "leather armor", {82, 82, 1, 82, 82},     
+        spell_null, TAR_IGNORE, POS_STANDING,
+        &gsn_armor_leather, SLOT( 0 ), 0, 0,
+        "", "!Leather Armor!",
+        ""},
+
+    {
+        MORTAL, NORM, COOLDOWN_NONE,
+        "mail armor", {82, 82, 82, 1, 82},
+        spell_null, TAR_IGNORE, POS_STANDING,
+        &gsn_armor_mail, SLOT( 0 ), 0, 0,
+        "", "!Mail Armor!",
+        ""},
+
+    {
+        REMORT, NORM, COOLDOWN_NONE,
+        "plate armor", {82, 82, 82, 40, 82},
+        spell_null, TAR_IGNORE, POS_STANDING,
+        &gsn_armor_plate, SLOT( 0 ), 0, 0,
+        "", "!Plate Armor!",
+        ""},
+
+    {
+        REMORT, NORM, COOLDOWN_NONE,
+        "leather armor", {82, 40, 82, 82, 82},
+        spell_null, TAR_IGNORE, POS_STANDING,
+        &gsn_armor_leather, SLOT( 0 ), 0, 0,
+        "", "!Leather Armor!",
+        ""},
+
+    {
+        REMORT, NORM, COOLDOWN_NONE,
+        "mail armor", {82, 82, 40, 82, 82},
+        spell_null, TAR_IGNORE, POS_STANDING,
+        &gsn_armor_mail, SLOT( 0 ), 0, 0,
+        "", "!Mail Armor!",
+        ""},
 
 };
 

@@ -158,7 +158,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
             return 1000;
         }
     }
-    else if ( ( best == -1 ) && ( ( !IS_NPC( ch ) ) && ( !is_name( skill_table[sn].name, race_table[ch->race].skill1 ) ) ) )
+    else if ( ( best == -1 ) && ( ( !IS_NPC( ch ) ) && ( !is_name( skill_table[sn].name, race_table[ch->race].skill ) ) ) )
         return ( 1000 );
 
 
@@ -194,7 +194,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
         mincost /= 2;
     if ( !IS_NPC( ch ) && ( MAGIC_STANCE( ch ) ) )
         mincost = mincost - ( mincost * .3 );
-    if ( ( !IS_NPC( ch ) ) && ( is_name( skill_table[sn].name, race_table[ch->race].skill1 ) ) )
+    if ( ( !IS_NPC( ch ) ) && ( is_name( skill_table[sn].name, race_table[ch->race].skill ) ) )
         mincost = 10;
     if ( !IS_NPC( ch ) && ( skill_table[sn].flag2 == NORM ) )
     {
@@ -605,7 +605,7 @@ void cast( CHAR_DATA * ch, char *argument )
 
     if ( best == 80 )
         best = 79;
-    if ( ( !IS_NPC( ch ) ) && ( is_name( skill_table[sn].name, race_table[ch->race].skill1 ) ) )
+    if ( ( !IS_NPC( ch ) ) && ( is_name( skill_table[sn].name, race_table[ch->race].skill ) ) )
         best = 60;
 
     if ( ( best == -1 )

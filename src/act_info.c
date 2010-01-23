@@ -3950,7 +3950,7 @@ DO_FUN(do_race_list)
             send_to_char("\r\nSuscept Realms: ", ch);
             send_to_char(bit_table_lookup(tab_magic_realms_col, race_table[iRace].suscept_realms), ch);
             send_to_char("\r\nRacial Skills : ", ch);
-            send_to_char(race_table[iRace].skill1, ch);
+            send_to_char(race_table[iRace].skill, ch);
             for ( iWear = 0; iWear < MAX_WEAR; iWear++ )
                 if ( race_table[iRace].wear_locs[iWear] == TRUE )
                     cnt++;

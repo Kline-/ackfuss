@@ -114,6 +114,12 @@ extern short gsn_decapitate;
 extern short gsn_potency;
 extern short gsn_thaumatergy;
 
+/* New skills to handle armor types --Kline */
+extern short gsn_armor_cloth;
+extern short gsn_armor_leather;
+extern short gsn_armor_mail;
+extern short gsn_armor_plate;
+
 extern bool booting_up;
 extern bool area_resetting_global;
 extern char *const dir_name[];

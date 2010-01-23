@@ -366,7 +366,7 @@ struct class_type
     short hp_min; /* Min hp gained on leveling    */
     short hp_max; /* Max hp gained on leveling    */
     bool fMana; /* Class gains mana on level    */
-    char *skill1;  /* Auto-learnt skill if any     */
+    char *skill;  /* Auto-learnt skills if any     */
 };
 
 
@@ -386,7 +386,7 @@ struct race_type
     short classes;   /* Number of classes for race   */
     short limit[MAX_CLASS];   /* Max for each class */
     char *comment; /* comments shown for new players */
-    char *skill1;
+    char *skill; /* Auto-learnt skills if any     */
     int strong_realms;
     int weak_realms;
     int resist_realms;

@@ -2809,15 +2809,24 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             ch->set_title("@@N needs a new title!");
 
             {
-                char race_skill[MSL];
-                char *race_skill_list;
-                race_skill_list = race_table[ch->race].skill1;
+                char skill[MSL];
+                char *skill_list;
+                skill_list = race_table[ch->race].skill;
                 for ( ;; )
                 {
-                    race_skill_list = one_argument( race_skill_list, race_skill );
-                    if ( skill_lookup( race_skill ) < 0 )
+                    skill_list = one_argument( skill_list, skill );
+                    if ( skill_lookup( skill ) < 0 )
                         break;
-                    ch->pcdata->learned[skill_lookup( race_skill )] = 101;
+                    ch->pcdata->learned[skill_lookup( skill )] = 101;
+                }
+                /* Re-using this for armor too. --Kline */
+                skill_list = class_table[ch->pcdata->order[0]].skill;
+                for ( ;; )
+                {
+                    skill_list = one_argument( skill_list, skill );
+                    if ( skill_lookup( skill ) < 0 )
+                       break;
+                    ch->pcdata->learned[skill_lookup( skill )] = 101;
                 }
             }
             char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );

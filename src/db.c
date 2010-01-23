@@ -204,6 +204,12 @@ short gsn_decapitate;
 short gsn_potency;
 short gsn_thaumatergy;
 
+/* New skills to handle armor types --Kline */
+short gsn_armor_cloth;
+short gsn_armor_leather;
+short gsn_armor_mail;
+short gsn_armor_plate;
+
 extern bool auto_quest;
 extern COUNCIL_DATA super_councils[MAX_SUPER];
 
