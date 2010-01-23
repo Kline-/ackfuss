@@ -830,3 +830,96 @@ void crusade_reward( CHAR_DATA *ch )
 
     return;
 }
+
+void ask_quest_question( CHAR_DATA *ch, char *argument )
+{
+    char buf[MAX_STRING_LENGTH];
+    buf[0] = '\0';
+
+    if ( !quest || IS_NPC( ch ) )
+        return;
+
+    if ( ( !str_cmp( argument, "who is the thief?" ) )
+            || ( !str_cmp( argument, "who was the thief?" ) )
+            || ( !str_cmp( argument, "what mob?" ) ) || ( !str_cmp( argument, "who stole the item?" ) ) )
+    {
+        if ( quest_mob )
+        {
+            if ( quest_timer < 7 )
+            {
+                snprintf( buf, MSL, "@@eI don't even know who stole it yet!@@N" );
+            }
+            else if ( quest_object && quest_target )
+            {
+                snprintf( buf, MSL, "@@NIt was %s @@N who stole my %s@@N.", quest_target->get_name(), quest_object->short_descr );
+            }
+        }
+        else if ( quest_object )
+        {
+            snprintf( buf, MSL, "@@NDon't worry about who stole my %s@@N, he has recieved his just reward!",
+                      quest_object->short_descr );
+        }
+        if ( quest_mob != NULL )
+            do_crusade( quest_mob, buf );
+        return;
+    }
+
+    if ( !str_cmp( argument, "what item?" ) )
+    {
+        if ( quest_mob && quest_object )
+        {
+            snprintf( buf, MSL, "@@NMy %s @@Nwas stolen from me.", quest_object->short_descr );
+            do_crusade( quest_mob, buf );
+            return;
+        }
+    }
+
+    if ( !str_cmp( argument, "where are you?" ) )
+        if ( quest_mob )
+        {
+            snprintf( buf, MSL, "@@NYou can find me in %s@@N, please hurry!!", quest_mob->in_room->area->name );
+            do_crusade( quest_mob, buf );
+            return;
+        }
+
+    if ( !str_cmp( argument, "where is the thief?" ) )
+    {
+        if ( quest_mob )
+        {
+            if ( ( quest_target ) && ( quest_timer > 7 ) )
+            {
+                if ( quest_timer < 10 )
+                {
+                    snprintf( buf, MSL, "@@NI don't really know where %s@@N is, let me try and find out.", quest_target->get_name() );
+                }
+                else if ( quest_target )
+                {
+                    snprintf( buf, MSL, "@@NI'm not really sure, but I THINK %s@@N is in %s@@N",
+                              quest_target->get_name(), quest_target->in_room->area->name );
+                }
+
+            }
+            else if ( ( quest_target ) && ( quest_timer <= 7 ) )
+            {
+                snprintf( buf, MSL, "@@eI don't even know who stole it yet!@@N" );
+            }
+            else
+            {
+                snprintf( buf, MSL, "@@NDon't worry about where the thief who stole my %s@@N is, he has recieved his just reward",
+                          quest_object->short_descr );
+            }
+            do_crusade( quest_mob, buf );
+        }
+    }
+
+    if ( !str_cmp( argument, "what level are you?" ) )
+        if ( quest_mob )
+        {
+            int lvl = number_range( (quest_mob->level - 3), (quest_mob->level + 3) );
+            snprintf( buf, MSL, "@@NI am somewhere around the level of %d!", lvl > 0 ? lvl : 1 );
+            do_crusade( quest_mob, buf );
+        }
+
+    return;
+}
+

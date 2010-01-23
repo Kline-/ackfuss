@@ -3643,6 +3643,9 @@ struct chan_type channels[] =
     {CHANNEL_GAME, 0, "game",
      "[ +GAME     ] You hear players participating in games.\r\n",
      "[ -game     ] You no longer hear people playing games.\r\n"},
+    {CHANNEL_QUESTMOB, 0, "questmob",
+     "[ +QUESTMOB ] You hear the questing mob beg for help.\r\n",
+     "[ -questmob ] You are ignoring the questing mob beg for help.\r\n"},
 
     {0, 0, NULL, NULL}
 };

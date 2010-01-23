@@ -70,7 +70,6 @@ DECLARE_DO_FUN(do_whisper);
 DECLARE_DO_FUN(do_ask);
 void send_to_room P_((char *message, ROOM_INDEX_DATA *room));
 DECLARE_DO_FUN(do_beep);
-void ask_quest_question P_((CHAR_DATA *ch, char *argument));
 bool is_same_group P_(( CHAR_DATA * ach, CHAR_DATA * bch ));
 bool is_group_leader P_(( CHAR_DATA * ch ));
 bool is_note_to P_(( CHAR_DATA * ch, NOTE_DATA * pnote ));

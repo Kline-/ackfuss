@@ -24,5 +24,6 @@ void quest_cancel P_((void));
 void clear_quest P_((void));
 void generate_auto_quest P_((void));
 void crusade_reward P_((CHAR_DATA *ch));
+void ask_quest_question P_((CHAR_DATA *ch, char *argument));
 
 #undef P_
