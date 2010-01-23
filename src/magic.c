@@ -2636,7 +2636,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
             break;
 
         case ITEM_ARMOR:
-            snprintf( buf, MSL, "Armor class is %d.  Armor type is %s.\r\n", ob->value[0], rev_table_lookup( tab_armor_type, obj->armor_type ) );
+            snprintf( buf, MSL, "Armor class is %d.  Armor type is %s.\r\n", ob->value[0], rev_table_lookup( tab_armor_type, ob->armor_type ) );
             send_to_char( buf, ch );
             break;
     }
