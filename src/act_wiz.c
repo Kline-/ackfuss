@@ -811,7 +811,7 @@ DO_FUN(do_ostat)
     snprintf( buf, MSL, "Cost: %d.  Timer: %d.  Level: %d.\r\n", obj->cost, obj->timer, obj->level );
     strncat( buf1, buf, MSL - 1 );
 
-    snprintf( buf, MSL, "Durability: %d/%d (%1.0f%%).\r\n", obj->durability, obj->max_durability, (float)(((float)obj->durability / (float)obj->max_durability) * 100) );
+    snprintf( buf, MSL, "Armor Type: %s.  Durability: %d/%d (%1.0f%%).\r\n", rev_table_lookup( tab_armor_type, obj->armor_type ), obj->durability, obj->max_durability, (float)(((float)obj->durability / (float)obj->max_durability) * 100) );
     strncat( buf1, buf, MSL - 1 );
 
     snprintf(buf, MSL, "Speed %4.2f\r\n", obj->speed);

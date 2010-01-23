@@ -49,6 +49,7 @@
      Sector types        :    tab_sector_types    : number
      Door types          :    tab_door_types      : bitset
      Door states         :    tab_door_states     : number
+     Armor Types         :    tab_armor_type      : number
 */
 
 
@@ -1024,6 +1025,16 @@ LOOKUP_TYPE tab_door_states[] =
     {"open", 0, 0},
     {"closed", 1, 0},
     {"locked", 2, 0},
+    {NULL, 0}
+};
+
+LOOKUP_TYPE tab_armor_type[] =
+{
+    {"none",    ITEM_ARMOR_NONE,    0 },
+    {"cloth",   ITEM_ARMOR_CLOTH,   0 },
+    {"leather", ITEM_ARMOR_LEATHER, 0 },
+    {"mail",    ITEM_ARMOR_MAIL,    0 },
+    {"plate",   ITEM_ARMOR_PLATE,   0 },
     {NULL, 0}
 };
 

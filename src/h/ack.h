@@ -876,6 +876,7 @@ class obj_data
         short level;
         short timer;
         int value[MAX_OBJ_VALUE];
+        short armor_type;
         short durability;
         short max_durability;
         MONEY_TYPE *money;

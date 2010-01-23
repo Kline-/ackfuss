@@ -474,6 +474,7 @@ obj_data::obj_data()
     timer = 0;
     for ( short i = 0; i < MAX_OBJ_VALUE; i++ )
         value[i] = 0;
+    armor_type = 0;
     durability = 0;
     max_durability = 0;
     money = new MONEY_TYPE;

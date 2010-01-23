@@ -1126,6 +1126,13 @@
 #define ITEM_EXTRA_NO_QUEST             28 /* disable for mquest */
 #define ITEM_EXTRA_NO_TAKE              29 /* can't get this item */
 
+/* Item armor types */
+#define ITEM_ARMOR_NONE          0
+#define ITEM_ARMOR_CLOTH         1
+#define ITEM_ARMOR_LEATHER       2
+#define ITEM_ARMOR_MAIL          3
+#define ITEM_ARMOR_PLATE         4
+
 /* Class-restricted stuff dropped. */
 #define ITEM_APPLY_NONE                 1
 #define ITEM_APPLY_INFRA                2

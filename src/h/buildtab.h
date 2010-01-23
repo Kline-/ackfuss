@@ -41,6 +41,7 @@ extern LOOKUP_TYPE tab_room_flags[];
 extern LOOKUP_TYPE tab_sector_types[];
 extern LOOKUP_TYPE tab_door_types[];
 extern LOOKUP_TYPE tab_door_states[];
+extern LOOKUP_TYPE tab_armor_type[];
 extern LOOKUP_TYPE tab_mob_skill[];
 extern LOOKUP_TYPE tab_mob_cast[];
 extern LOOKUP_TYPE tab_magic_realms[];
