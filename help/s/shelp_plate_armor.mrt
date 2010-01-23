@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Plate Armor
-    Classes: Knight (40)
-   Duration: N/A
-   Modifies: N/A
-       Type: Passive
-Description: Allows the user to wear plate pieces of armor.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Plate Armor
+    @@cClasses:@@N Knight (40)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Passive
+@@mDescription:@@N Allows the user to wear plate pieces of armor.
+@@y*******************************************************************************@@N

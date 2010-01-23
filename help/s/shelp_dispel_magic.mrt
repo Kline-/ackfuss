@@ -1,11 +1,11 @@
-*******************************************************************************
-       Name: Dispel Magic		
-    Classes: Mage(68)
-   Duration: N/A
-   Modifies: N/A
-       Type: Defensive
-Description: This spell allows the caster to attempt to remove the affects
+@@y*******************************************************************************@@N
+       @@WName:@@N Dispel Magic		
+    @@cClasses:@@N Mage(68)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell allows the caster to attempt to remove the affects
              of certain spells from the victim.  Due to the effort involved,
              it becomes progressively difficult to remove further affects
              for each single use of this spell.
-*******************************************************************************
+@@y*******************************************************************************@@N

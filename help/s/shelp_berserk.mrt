@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Berserk
-    Classes: Warrior(34)
-   Duration: 3
-   Modifies: Hitroll, Damroll, Armor Class
-       Type: Offensive
-Description: By allowing the Dark Powers access to the fighting essence, this
+@@y*******************************************************************************@@N
+       @@WName:@@N Berserk
+    @@cClasses:@@N Warrior(34)
+   @@aDuration:@@N 3
+   @@bModifies:@@N Hitroll, Damroll, Armor Class
+       @@GType:@@N Offensive
+@@mDescription:@@N By allowing the Dark Powers access to the fighting essence, this
              ability will raise hitroll and damroll, however leaving your
              armor class worse off and making it easier to hit you.
-*******************************************************************************
+@@y*******************************************************************************@@N

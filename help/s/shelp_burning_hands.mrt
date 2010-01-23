@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Burning Hands 		
-    Classes: Mage(6)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell causes a jet of flame to shoot from the caster's
+@@y*******************************************************************************@@N
+       @@WName:@@N Burning Hands 		
+    @@cClasses:@@N Mage(6)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell causes a jet of flame to shoot from the caster's
              hands, which strike the target.
-*******************************************************************************
+@@y*******************************************************************************@@N

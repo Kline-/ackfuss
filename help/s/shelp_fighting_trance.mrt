@@ -1,11 +1,11 @@
-*******************************************************************************
-       Name: Fighting Trance		
-    Classes: Psionicist(60) 
-   Duration: 6 + ( Cast Level / 20 )
-   Modifies: HitRoll, DamRoll, Armor Class, Saving Throws
-       Type: Defensive - Self
-Description: This potent power allows the caster to focus him/herself on
+@@y*******************************************************************************@@N
+       @@WName:@@N Fighting Trance		
+    @@cClasses:@@N Psionicist(60) 
+   @@aDuration:@@N 6 + ( Cast Level / 20 )
+   @@bModifies:@@N HitRoll, DamRoll, Armor Class, Saving Throws
+       @@GType:@@N Defensive - Self
+@@mDescription:@@N This potent power allows the caster to focus him/herself on
              combat, providing bonuses to HitRoll, DamRoll and Saving
              Throws.  This increased combat ability also effectively
              provides an Armor Class bonus to the caster.
-*******************************************************************************
+@@y*******************************************************************************@@N

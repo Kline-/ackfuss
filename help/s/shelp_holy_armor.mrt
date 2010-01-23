@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Holy Armor
-    Classes: Knight(30)
-   Duration: ( 2 + ( Cast Level / 7 ) )
-   Modifies: AC
-       Type: Defensive
-Description: Surrounds target with a thick armor that increases their AC.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Holy Armor
+    @@cClasses:@@N Knight(30)
+   @@aDuration:@@N ( 2 + ( Cast Level / 7 ) )
+   @@bModifies:@@N AC
+       @@GType:@@N Defensive
+@@mDescription:@@N Surrounds target with a thick armor that increases their AC.
+@@y*******************************************************************************@@N
 

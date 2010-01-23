@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Identify		
-    Classes: Mage(9)
-   Duration: N/A
-   Modifies: N/A
-       Type: N/A
-Description: This spell, when cast upon an object reveals the the caster it's
+@@y*******************************************************************************@@N
+       @@WName:@@N Identify		
+    @@cClasses:@@N Mage(9)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell, when cast upon an object reveals the the caster it's
              characteristics - object type, and other information.
-*******************************************************************************
+@@y*******************************************************************************@@N

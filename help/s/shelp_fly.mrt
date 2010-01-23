@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Fly		
-    Classes: Mage(24)
-   Duration: 3 + ( Cast Level / 6 )
-   Modifies: N/A
-       Type: Defensive
-Description: This spell causes the target to float off the floor, making
+@@y*******************************************************************************@@N
+       @@WName:@@N Fly		
+    @@cClasses:@@N Mage(24)
+   @@aDuration:@@N 3 + ( Cast Level / 6 )
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell causes the target to float off the floor, making
              movement over land and water effortless.  It also enables
              entrance to certain parts of the sky...
-*******************************************************************************
+@@y*******************************************************************************@@N

@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Weaken		
-    Classes: Cleric(20)
-   Duration: 1 + ( Cast Level / 16 )
-   Modifies: Strength
-       Type: Offensive
-Description: This spell causes the caster to force the target to feel very
+@@y*******************************************************************************@@N
+       @@WName:@@N Weaken		
+    @@cClasses:@@N Cleric(20)
+   @@aDuration:@@N 1 + ( Cast Level / 16 )
+   @@bModifies:@@N Strength
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell causes the caster to force the target to feel very
              weak, suffering a Strength penalty as a result.
-*******************************************************************************
+@@y*******************************************************************************@@N

@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Hunt
-    Classes: Thief(70)
-   Duration: Instant
-   Modifies: N/A
-       Type: N/A
-Description: This skill will help track down creatures and players.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Hunt
+    @@cClasses:@@N Thief(70)
+   @@aDuration:@@N Instant
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This skill will help track down creatures and players.
+@@y*******************************************************************************@@N

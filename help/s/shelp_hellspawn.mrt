@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: HellSpawn		
-    Classes: Mage(43)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell allows the caster to invoke demonic powers to
+@@y*******************************************************************************@@N
+       @@WName:@@N HellSpawn		
+    @@cClasses:@@N Mage(43)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell allows the caster to invoke demonic powers to
              strike the target.
-*******************************************************************************
+@@y*******************************************************************************@@N

@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Retributive Strike
-    Classes: Necromancer(78), Sorcerer(72)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: High level attack spell that will attempt to ignite armor on
+@@y*******************************************************************************@@N
+       @@WName:@@N Retributive Strike
+    @@cClasses:@@N Necromancer(78), Sorcerer(72)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N High level attack spell that will attempt to ignite armor on
              everyone in the room.
-*******************************************************************************
+@@y*******************************************************************************@@N

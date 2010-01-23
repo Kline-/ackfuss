@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Knee
-    Classes: Warrior(8)
-   Duration: Instant
-   Modifies: N/A
-       Type: Offensive
-Description: Slightly stronger than headbutt, but with an increased chance
+@@y*******************************************************************************@@N
+       @@WName:@@N Knee
+    @@cClasses:@@N Warrior(8)
+   @@aDuration:@@N Instant
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N Slightly stronger than headbutt, but with an increased chance
              to miss.
-*******************************************************************************
+@@y*******************************************************************************@@N

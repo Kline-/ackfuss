@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Produce Food		
-    Classes: Psionicist(24)
-   Duration: Permanent
-   Modifies: N/A
-       Type: N/A
-Description: This spell allows the caster to magically create a small bundle
+@@y*******************************************************************************@@N
+       @@WName:@@N Produce Food		
+    @@cClasses:@@N Psionicist(24)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell allows the caster to magically create a small bundle
              of food.
-*******************************************************************************
+@@y*******************************************************************************@@N

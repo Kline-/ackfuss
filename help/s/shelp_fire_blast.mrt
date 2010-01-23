@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Fire Blast
-    Classes: Sorcerer(34), Necromancer(55)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: Medium damage spell that blasts your foe with a gout of flame.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Fire Blast
+    @@cClasses:@@N Sorcerer(34), Necromancer(55)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N Medium damage spell that blasts your foe with a gout of flame.
+@@y*******************************************************************************@@N

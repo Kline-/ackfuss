@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Bless		
-    Classes: Cleric(8)
-   Duration: 6 + ( Cast Level / 6 )
-   Modifies: HitRoll & Saving Spell
-       Type: Defensive
-Description: This spell allows the caster to raise the morale of the 
+@@y*******************************************************************************@@N
+       @@W@@WName:@@N@@N Bless		
+    @@c@@cClasses:@@N@@N Cleric(8)
+   @@a@@aDuration:@@N@@N 6 + ( Cast Level / 6 )
+   @@b@@bModifies:@@N@@N HitRoll & Saving Spell
+       @@G@@GType:@@N@@N Defensive
+@@m@@mDescription:@@N@@N This spell allows the caster to raise the morale of the 
              recipient, giving a bonus to their combat abilities.
-*******************************************************************************
+@@y*******************************************************************************@@N

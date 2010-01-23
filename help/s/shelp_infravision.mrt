@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Infravision		
-    Classes: Mage(20)
-   Duration: 4 + ( Cast Level / 3 )
-   Modifies: N/A
-       Type: Defensive
-Description: This spell enables the target to see better in darkness, 
+@@y*******************************************************************************@@N
+       @@WName:@@N Infravision		
+    @@cClasses:@@N Mage(20)
+   @@aDuration:@@N 4 + ( Cast Level / 3 )
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell enables the target to see better in darkness, 
              without the use of any external light source.
-*******************************************************************************
+@@y*******************************************************************************@@N

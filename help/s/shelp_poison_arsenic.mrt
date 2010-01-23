@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Posion:Arsenic	
-    Classes: Assassin(28)
-   Duration: 2 + ( Cast Level / 8 )
-   Modifies: Damroll, AC
-       Type: Offensive
-Description: A stronger poison that lowers damroll and AC of the victim.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Posion:Arsenic	
+    @@cClasses:@@N Assassin(28)
+   @@aDuration:@@N 2 + ( Cast Level / 8 )
+   @@bModifies:@@N Damroll, AC
+       @@GType:@@N Offensive
+@@mDescription:@@N A stronger poison that lowers damroll and AC of the victim.
+@@y*******************************************************************************@@N

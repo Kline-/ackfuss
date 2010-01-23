@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Cure Critical		
-    Classes: Cleric(59)
-   Duration: Permanent
-   Modifies: N/A
-       Type: Defensive
-Description: This spell allows the caster to cure critical wounds of the
+@@y*******************************************************************************@@N
+       @@WName:@@N Cure Critical		
+    @@cClasses:@@N Cleric(59)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell allows the caster to cure critical wounds of the
              target.
-*******************************************************************************
+@@y*******************************************************************************@@N

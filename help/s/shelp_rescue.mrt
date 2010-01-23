@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Rescue
-    Classes: Warrior(15)
-   Duration: Instant
-   Modifies: N/A
-       Type: Defensive
-Description: Training with this skill will allow the ability
+@@y*******************************************************************************@@N
+       @@WName:@@N Rescue
+    @@cClasses:@@N Warrior(15)
+   @@aDuration:@@N Instant
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N Training with this skill will allow the ability
              to rescue someone from combat and perhaps even death.
-*******************************************************************************
+@@y*******************************************************************************@@N

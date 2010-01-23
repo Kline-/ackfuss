@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Shock Storm
-    Classes: Sorcerer(42), Necromancer(68)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: Medium damage spell that electrocutes your foe with a storm of
+@@y*******************************************************************************@@N
+       @@WName:@@N Shock Storm
+    @@cClasses:@@N Sorcerer(42), Necromancer(68)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N Medium damage spell that electrocutes your foe with a storm of
              lightning.
-*******************************************************************************
+@@y*******************************************************************************@@N
 

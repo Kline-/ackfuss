@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Create Food		
-    Classes: Cleric(26)
-   Duration: Permanent
-   Modifies: N/A
-       Type: N/A
-Description: This spell allows the caster to magically produce some food, in
+@@y*******************************************************************************@@N
+       @@WName:@@N Create Food		
+    @@cClasses:@@N Cleric(26)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell allows the caster to magically produce some food, in
              the form of a mushroom.
-*******************************************************************************
+@@y*******************************************************************************@@N

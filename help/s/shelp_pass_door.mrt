@@ -1,11 +1,11 @@
-*******************************************************************************
-       Name: Pass Door		
-    Classes: Mage(46)
-   Duration: 2 + ( Cast Level / 20 )
-   Modifies: N/A
-       Type: Defensive - Self
-Description: This spell allows the caster's body and belongings to become
+@@y*******************************************************************************@@N
+       @@WName:@@N Pass Door		
+    @@cClasses:@@N Mage(46)
+   @@aDuration:@@N 2 + ( Cast Level / 20 )
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive - Self
+@@mDescription:@@N This spell allows the caster's body and belongings to become
              phased into a different plane.  Whilst phased, the caster is
              able to move through closed doors easily.  The phased part of
              the caster is at all times safe.
-*******************************************************************************
+@@y*******************************************************************************@@N

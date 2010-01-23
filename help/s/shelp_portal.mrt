@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Portal
-    Classes: Mage(80)
-   Duration: N/A
-   Modifies: N/A
-       Type: N/A
-Description: This spell allows you to create a magical gate to a
+@@y*******************************************************************************@@N
+       @@WName:@@N Portal
+    @@cClasses:@@N Mage(80)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell allows you to create a magical gate to a
              beacon that you have created, allowing you to enter into
              that particular room.
-*******************************************************************************
+@@y*******************************************************************************@@N

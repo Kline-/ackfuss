@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Mind Flail		
-    Classes: Psionicist(4)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell allows the caster to attack an enemy's mind.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Mind Flail		
+    @@cClasses:@@N Psionicist(4)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell allows the caster to attack an enemy's mind.
+@@y*******************************************************************************@@N

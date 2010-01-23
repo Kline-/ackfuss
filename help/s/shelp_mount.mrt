@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Mount
-    Classes: Warrior(20)
-   Duration: Instant
-   Modifies: N/A
-       Type: N/A
-Description: This ability will give access to riding certain mobiles
+@@y*******************************************************************************@@N
+       @@WName:@@N Mount
+    @@cClasses:@@N Warrior(20)
+   @@aDuration:@@N Instant
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This ability will give access to riding certain mobiles
              or charmed mobiles into combat.
-*******************************************************************************
+@@y*******************************************************************************@@N

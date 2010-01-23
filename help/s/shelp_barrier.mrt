@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Barrier		
-    Classes: Psionicist(8)
-   Duration: 4 + ( Cast Level / 20 )
-   Modifies: Armor Class
-       Type: Defensive - Self
-Description: This spell allows the caster to magically produce a mental
+@@y*******************************************************************************@@N
+       @@WName:@@N Barrier		
+    @@cClasses:@@N Psionicist(8)
+   @@aDuration:@@N 4 + ( Cast Level / 20 )
+   @@bModifies:@@N Armor Class
+       @@GType:@@N Defensive - Self
+@@mDescription:@@N This spell allows the caster to magically produce a mental
              barrier around him/her, which gives limited protection from
              attacks.
-*******************************************************************************
+@@y*******************************************************************************@@N

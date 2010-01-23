@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Color Spray 		
-    Classes: Mage(7)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell causes a rainbow-colored array of colors to shoot
+@@y*******************************************************************************@@N
+       @@WName:@@N Color Spray 		
+    @@cClasses:@@N Mage(7)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell causes a rainbow-colored array of colors to shoot
              out, causing injury to the specified target.
-*******************************************************************************
+@@y*******************************************************************************@@N

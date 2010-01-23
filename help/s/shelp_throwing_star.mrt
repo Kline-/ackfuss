@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Throwing Star
-    Classes: Assassin(43)
-   Duration: ( 12 + ( Cast Level / 10 ) )
-   Modifies: Poison
-       Type: Offensive
-Description: Is a medium to high damage attack spell that also applies poison.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Throwing Star
+    @@cClasses:@@N Assassin(43)
+   @@aDuration:@@N ( 12 + ( Cast Level / 10 ) )
+   @@bModifies:@@N Poison
+       @@GType:@@N Offensive
+@@mDescription:@@N Is a medium to high damage attack spell that also applies poison.
+@@y*******************************************************************************@@N

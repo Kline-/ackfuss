@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Kick
-    Classes: Warrior(14)
-   Duration: Instant
-   Modifies: N/A
-       Type: Offensive
-Description: Slightly stronger than knee, but with an increased chance
+@@y*******************************************************************************@@N
+       @@WName:@@N Kick
+    @@cClasses:@@N Warrior(14)
+   @@aDuration:@@N Instant
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N Slightly stronger than knee, but with an increased chance
              to miss.
-*******************************************************************************
+@@y*******************************************************************************@@N

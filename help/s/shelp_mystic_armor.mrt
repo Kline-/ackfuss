@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Mystic Armor
-    Classes: Mage(10)
-   Duration: 4 + ( Cast Level / 3 )
-   Modifies: Armor Class
-       Type: Defensive
-Description: Improves the Armor Class of another individual, and
+@@y*******************************************************************************@@N
+       @@WName:@@N Mystic Armor
+    @@cClasses:@@N Mage(10)
+   @@aDuration:@@N 4 + ( Cast Level / 3 )
+   @@bModifies:@@N Armor Class
+       @@GType:@@N Defensive
+@@mDescription:@@N Improves the Armor Class of another individual, and
              cannot be cast on yourself.
-*******************************************************************************
+@@y*******************************************************************************@@N

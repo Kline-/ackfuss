@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Iceshield
-    Classes: Sorcerer(65)
-   Duration: ( Cast Level / 15 )
-   Modifies: N/A
-       Type: Defensive
-Description: Creates a shield of ice around your character that reduces the
+@@y*******************************************************************************@@N
+       @@WName:@@N Iceshield
+    @@cClasses:@@N Sorcerer(65)
+   @@aDuration:@@N ( Cast Level / 15 )
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N Creates a shield of ice around your character that reduces the
              damage you take from hits.
-*******************************************************************************
+@@y*******************************************************************************@@N

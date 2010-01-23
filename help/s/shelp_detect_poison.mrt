@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Detect Posion		
-    Classes: Cleric(10)
-   Duration: N/A
-   Modifies: N/A
-       Type: N/A
-Description: This spell allows the caster to determine if drink or food
+@@y*******************************************************************************@@N
+       @@WName:@@N Detect Posion		
+    @@cClasses:@@N Cleric(10)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell allows the caster to determine if drink or food
              is poisoned.  It can only be cast upon items.
-*******************************************************************************
+@@y*******************************************************************************@@N

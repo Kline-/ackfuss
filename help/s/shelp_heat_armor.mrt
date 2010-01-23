@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Heat Armor
-    Classes: Monk(78), Sorcerer(57)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: Causes equipment to burn if it lands effectively.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Heat Armor
+    @@cClasses:@@N Monk(78), Sorcerer(57)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N Causes equipment to burn if it lands effectively.
+@@y*******************************************************************************@@N

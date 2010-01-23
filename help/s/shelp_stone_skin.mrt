@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Stone Skin		
-    Classes: Mage(36)
-   Duration: N/A
-   Modifies: Armor Class
-       Type: Defensive - Self
-Description: This spell allows the caster to cause his/her skin to harden,
+@@y*******************************************************************************@@N
+       @@WName:@@N Stone Skin		
+    @@cClasses:@@N Mage(36)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N Armor Class
+       @@GType:@@N Defensive - Self
+@@mDescription:@@N This spell allows the caster to cause his/her skin to harden,
              until it looks like stone.  Because of the increased protection
              this provides, the caster gains an Armor Class bonus.
-*******************************************************************************
+@@y*******************************************************************************@@N

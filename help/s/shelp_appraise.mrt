@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Appraise
-    Classes: Thief(12)
-   Duration: Instant
-   Modifies: N/A
-       Type: N/A
-Description: This skill provides you with a rough estimate of an object's
+@@y*******************************************************************************@@N
+       @@WName:@@N Appraise
+    @@cClasses:@@N Thief(12)
+   @@aDuration:@@N Instant
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This skill provides you with a rough estimate of an object's
              remaining life before its decay. It may also hint at objects hidden
              within.
-*******************************************************************************
+@@y*******************************************************************************@@N

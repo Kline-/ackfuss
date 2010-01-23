@@ -1,11 +1,11 @@
-*******************************************************************************
-       Name: Change Sex 		
-    Classes: Mage(66)
-   Duration: 5 + ( Cast Level / 10 )
-   Modifies: Gender
-       Type: Defensive
-Description: This spell, although not offensive, is not considered to be
+@@y*******************************************************************************@@N
+       @@WName:@@N Change Sex 		
+    @@cClasses:@@N Mage(66)
+   @@aDuration:@@N 5 + ( Cast Level / 10 )
+   @@bModifies:@@N Gender
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell, although not offensive, is not considered to be
              completely harmless by it's victims.  Upon casting of this spell,
              the victim will appear to be of a different gender to all those
              who that they encounter.
-*******************************************************************************
+@@y*******************************************************************************@@N

@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Charge
-    Classes: Knight(65)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: Charge is a skill that does damage to your enemies.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Charge
+    @@cClasses:@@N Knight(65)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N Charge is a skill that does damage to your enemies.
+@@y*******************************************************************************@@N

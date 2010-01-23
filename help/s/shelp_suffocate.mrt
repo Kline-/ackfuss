@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Suffocate		
-    Classes: Psionicist(46)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell allows the caster to manipulate the victim's
+@@y*******************************************************************************@@N
+       @@WName:@@N Suffocate		
+    @@cClasses:@@N Psionicist(46)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell allows the caster to manipulate the victim's
              body, causing a tightening of the throat.
-*******************************************************************************
+@@y*******************************************************************************@@N

@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Know Critical		
-    Classes: Psionicist(28)
-   Duration: 2-5 (Cast Level Based)
-   Modifies: Damroll
-       Type: Defensive - Self
-Description: This spell allows the caster to know the points on his/her
+@@y*******************************************************************************@@N
+       @@WName:@@N Know Critical		
+    @@cClasses:@@N Psionicist(28)
+   @@aDuration:@@N 2-5 (Cast Level Based)
+   @@bModifies:@@N Damroll
+       @@GType:@@N Defensive - Self
+@@mDescription:@@N This spell allows the caster to know the points on his/her
              enemy's that will inflicy greater damage.
-*******************************************************************************
+@@y*******************************************************************************@@N

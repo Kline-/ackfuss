@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Holy Light
-    Classes: Knight(43)
-   Duration: N/A
-   Modifies: N/A
-       Type: Defensive
-Description: Holy Light is a group healing spell.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Holy Light
+    @@cClasses:@@N Knight(43)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N Holy Light is a group healing spell.
+@@y*******************************************************************************@@N

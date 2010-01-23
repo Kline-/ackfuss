@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Cloak:Regeneration
-    Classes: Knight(52), Monk(73)
-   Duration: ( Cast Level / 10 )
-   Modifies: N/A
-       Type: Defensive
-Description: Is a cloak that can be cast to help regenerate your hitpoints.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Cloak:Regeneration
+    @@cClasses:@@N Knight(52), Monk(73)
+   @@aDuration:@@N ( Cast Level / 10 )
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N Is a cloak that can be cast to help regenerate your hitpoints.
+@@y*******************************************************************************@@N

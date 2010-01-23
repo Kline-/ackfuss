@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Black Curse
-    Classes: Necromancer(65)
-   Duration: ( 2 * ( Cast Level / 8 ) )
-   Modifies: AC, Hitroll
-       Type: Offensive
-Description: A stronger version of curse that weakens the target's hitroll
+@@y*******************************************************************************@@N
+       @@WName:@@N Black Curse
+    @@cClasses:@@N Necromancer(65)
+   @@aDuration:@@N ( 2 * ( Cast Level / 8 ) )
+   @@bModifies:@@N AC, Hitroll
+       @@GType:@@N Offensive
+@@mDescription:@@N A stronger version of curse that weakens the target's hitroll
              and AC while cursing them.
-*******************************************************************************
+@@y*******************************************************************************@@N

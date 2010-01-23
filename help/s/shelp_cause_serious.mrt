@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Cause Serious		
-    Classes: Cleric(40)
-   Duration: Permanent
-   Modifies: N/A
-       Type: Offensive
-Description: This spell inflicts serious wounds to the victim.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Cause Serious		
+    @@cClasses:@@N Cleric(40)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell inflicts serious wounds to the victim.
+@@y*******************************************************************************@@N

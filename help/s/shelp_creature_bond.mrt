@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Creature Bond
-    Classes: Monk(55), Sorcerer(77)
-   Duration: ( Cast Level / 3 )
-   Modifies: N/A
-       Type: Defensive/Charm
-Description: Will allow you to charm someone else's charmed mobiles for your
+@@y*******************************************************************************@@N
+       @@WName:@@N Creature Bond
+    @@cClasses:@@N Monk(55), Sorcerer(77)
+   @@aDuration:@@N ( Cast Level / 3 )
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive/Charm
+@@mDescription:@@N Will allow you to charm someone else's charmed mobiles for your
              own personal use.
-*******************************************************************************
+@@y*******************************************************************************@@N

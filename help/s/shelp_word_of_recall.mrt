@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Word of Recall		
-    Classes: Cleric(66)
-   Duration: N/A
-   Modifies: N/A
-       Type: Defensive - Self
-Description: This spell allows the caster assured recall, even under extreme
+@@y*******************************************************************************@@N
+       @@WName:@@N Word of Recall		
+    @@cClasses:@@N Cleric(66)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive - Self
+@@mDescription:@@N This spell allows the caster assured recall, even under extreme
              circumstances, by reinforcing the usual recall ability with 
              his/her magical abilities.
-*******************************************************************************
+@@y*******************************************************************************@@N

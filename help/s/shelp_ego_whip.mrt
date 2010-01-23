@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Ego Whip 		
-    Classes: Psionicist(25)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell allows the caster to mentally assualt the victim's
+@@y*******************************************************************************@@N
+       @@WName:@@N Ego Whip 		
+    @@cClasses:@@N Psionicist(25)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell allows the caster to mentally assualt the victim's
              ego, thus causing damage.
-*******************************************************************************
+@@y*******************************************************************************@@N

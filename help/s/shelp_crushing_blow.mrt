@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Crushing Blow
-    Classes: Warrior(50)
-   Duration: N/A
-   Modifies: Melee Damage
-       Type: Passive
-Description: This skill occasionally allows the warrior to strike with
+@@y*******************************************************************************@@N
+       @@WName:@@N Crushing Blow
+    @@cClasses:@@N Warrior(50)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N Melee Damage
+       @@GType:@@N Passive
+@@mDescription:@@N This skill occasionally allows the warrior to strike with
              crushing force, dealing 2.5x the damage of a regular blow.
-*******************************************************************************
+@@y*******************************************************************************@@N

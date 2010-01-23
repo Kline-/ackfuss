@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Sight
-    Classes: Mage(30)
-   Duration: N/A
-   Modifies: N/A
-       Type: Defensive - Self
-Description: This spell is similar to cure blindness, but cannot be
+@@y*******************************************************************************@@N
+       @@WName:@@N Sight
+    @@cClasses:@@N Mage(30)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive - Self
+@@mDescription:@@N This spell is similar to cure blindness, but cannot be
              cast during combat.
-*******************************************************************************
+@@y*******************************************************************************@@N

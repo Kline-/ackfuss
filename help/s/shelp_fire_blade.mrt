@@ -1,11 +1,11 @@
-*******************************************************************************
-       Name: Fire Blade		
-    Classes: Psionicist(50)
-   Duration: 2 + ( Cast Level / 20 )
-   Modifies: N/A
-       Type: N/A
-Description: This spell allows the caster to magically produce a blade
+@@y*******************************************************************************@@N
+       @@WName:@@N Fire Blade		
+    @@cClasses:@@N Psionicist(50)
+   @@aDuration:@@N 2 + ( Cast Level / 20 )
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell allows the caster to magically produce a blade
              of fire, which he/she will automatically wield.  The blade may
              not be removed, due to the way the caster maintains it's
              existence. 
-*******************************************************************************
+@@y*******************************************************************************@@N

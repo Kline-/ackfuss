@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Harm		
-    Classes: Cleric(74)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell causes a dramatic loss in Hit Points of the victim,
+@@y*******************************************************************************@@N
+       @@WName:@@N Harm		
+    @@cClasses:@@N Cleric(74)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell causes a dramatic loss in Hit Points of the victim,
              as well as him/her being infected with a disease.
-*******************************************************************************
+@@y*******************************************************************************@@N

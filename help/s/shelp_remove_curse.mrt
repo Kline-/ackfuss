@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Remove Curse		
-    Classes: Mage(36), Cleric(27)
-   Duration: Permanent
-   Modifies: HitRoll
-       Type: Defensive
-Description: This spell allows the caster to remove any affects of a curse
+@@y*******************************************************************************@@N
+       @@WName:@@N Remove Curse		
+    @@cClasses:@@N Mage(36), Cleric(27)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N HitRoll
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell allows the caster to remove any affects of a curse
              spell placed upon the target, negating the HitRoll penalty in
              the process.
-*******************************************************************************
+@@y*******************************************************************************@@N

@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Holy Wrath
-    Classes: Knight(80)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: Holy Wrath is a strong offensive spell that deals Holy damage to
+@@y*******************************************************************************@@N
+       @@WName:@@N Holy Wrath
+    @@cClasses:@@N Knight(80)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N Holy Wrath is a strong offensive spell that deals Holy damage to
              the victim.
-*******************************************************************************
+@@y*******************************************************************************@@N

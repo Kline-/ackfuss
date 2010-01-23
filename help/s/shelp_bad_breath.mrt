@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Bad Breath 		
-    Classes: Mage(4)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: The caster expells a blast of bad breath, which strikes the
+@@y*******************************************************************************@@N
+       @@WName:@@N Bad Breath 		
+    @@cClasses:@@N Mage(4)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N The caster expells a blast of bad breath, which strikes the
              victim.
-*******************************************************************************
+@@y*******************************************************************************@@N

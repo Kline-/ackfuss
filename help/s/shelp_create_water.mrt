@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Create Water		
-    Classes: Cleric(9)
-   Duration: Permanent
-   Modifies: N/A
-       Type: N/A
-Description: This spell is cast upon an object.  If the object is able to hold
+@@y*******************************************************************************@@N
+       @@WName:@@N Create Water		
+    @@cClasses:@@N Cleric(9)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell is cast upon an object.  If the object is able to hold
              liquids, and is empty, it will be magically filled with water.
-*******************************************************************************
+@@y*******************************************************************************@@N

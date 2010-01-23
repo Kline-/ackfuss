@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Teleport		
-    Classes: Mage(40)
-   Duration: N/A
-   Modifies: N/A
-       Type: N/A
-Description: This spell causes the caster to randomly teleport to a new
+@@y*******************************************************************************@@N
+       @@WName:@@N Teleport		
+    @@cClasses:@@N Mage(40)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell causes the caster to randomly teleport to a new
              location somewhere in the realms.  The caster has no control
              other where he/she ends up!
-*******************************************************************************
+@@y*******************************************************************************@@N

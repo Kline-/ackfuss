@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Divine Intervention
-    Classes: Knight(70)
-   Duration: Permanent
-   Modifies: N/A
-       Type: Defensive
-Description: Summons the hand of God to touch a victim's soul, powerfully
+@@y*******************************************************************************@@N
+       @@WName:@@N Divine Intervention
+    @@cClasses:@@N Knight(70)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N Summons the hand of God to touch a victim's soul, powerfully
              restoring life. Stronger than heal.
-*******************************************************************************
+@@y*******************************************************************************@@N

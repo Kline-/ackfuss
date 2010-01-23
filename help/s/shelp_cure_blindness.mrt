@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Cure Blindness		
-    Classes: Cleric(28)
-   Duration: Permanent
-   Modifies: N/A
-       Type: Defensive
-Description: This spells allows the caster to remove any affects of a
+@@y*******************************************************************************@@N
+       @@WName:@@N Cure Blindness		
+    @@cClasses:@@N Cleric(28)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N This spells allows the caster to remove any affects of a
              blindness spell, or similiar.
-*******************************************************************************
+@@y*******************************************************************************@@N

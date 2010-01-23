@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Know Item		
-    Classes: Psionicist(9)
-   Duration: Permanent
-   Modifies: N/A
-       Type: N/A
-Description: This spell, when cast on an object, provides the caster with
+@@y*******************************************************************************@@N
+       @@WName:@@N Know Item		
+    @@cClasses:@@N Psionicist(9)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell, when cast on an object, provides the caster with
              knowledge about that object.
-*******************************************************************************
+@@y*******************************************************************************@@N

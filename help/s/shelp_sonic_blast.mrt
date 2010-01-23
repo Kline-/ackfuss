@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Sonic Blast
-    Classes: Monk(80)
-   Duration: ( Cast Level / 20 )
-   Modifies: Hitroll, Damroll
-       Type: Offensive
-Description: Sonic blast damages your enemy with strong sound waves, lowering
+@@y*******************************************************************************@@N
+       @@WName:@@N Sonic Blast
+    @@cClasses:@@N Monk(80)
+   @@aDuration:@@N ( Cast Level / 20 )
+   @@bModifies:@@N Hitroll, Damroll
+       @@GType:@@N Offensive
+@@mDescription:@@N Sonic blast damages your enemy with strong sound waves, lowering
              their hitroll and damroll in the process. Stacks more than once.
-*******************************************************************************
+@@y*******************************************************************************@@N

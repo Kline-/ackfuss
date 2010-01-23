@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Leadership
-    Classes: Knight(13)
-   Duration: ( 4 + ( Cast Level / 5 ) )
-   Modifies: Hitroll
-       Type: Defensive
-Description: Morale is a group affecting spell that will increase hitroll
+@@y*******************************************************************************@@N
+       @@WName:@@N Leadership
+    @@cClasses:@@N Knight(13)
+   @@aDuration:@@N ( 4 + ( Cast Level / 5 ) )
+   @@bModifies:@@N Hitroll
+       @@GType:@@N Defensive
+@@mDescription:@@N Morale is a group affecting spell that will increase hitroll
              temporarily.
-*******************************************************************************
+@@y*******************************************************************************@@N

@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Mass Invisibilty		
-    Classes: Mage(60)
-   Duration: 4 + ( Cast Level / 5 )
-   Modifies: N/A
-       Type: Defensive
-Description: This spell enables the caster to make everyone in the present
+@@y*******************************************************************************@@N
+       @@WName:@@N Mass Invisibilty		
+    @@cClasses:@@N Mage(60)
+   @@aDuration:@@N 4 + ( Cast Level / 5 )
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell enables the caster to make everyone in the present
              location invisible.
-*******************************************************************************
+@@y*******************************************************************************@@N

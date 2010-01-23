@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Mind Bolt		
-    Classes: Psionicist(12)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell allows the caster to strike the victim's mind with
+@@y*******************************************************************************@@N
+       @@WName:@@N Mind Bolt		
+    @@cClasses:@@N Psionicist(12)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell allows the caster to strike the victim's mind with
              small, intense bursts of energy.  The number of bolts striking
              the victim is determined by the Cast Level.
 
@@ -15,4 +15,4 @@ Description: This spell allows the caster to strike the victim's mind with
               35 to 49                   Three
               50 to 65                   Four
               above 65                   Five
-*******************************************************************************
+@@y*******************************************************************************@@N

@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Cure Serious		
-    Classes: Cleric(41)
-   Duration: Permanent
-   Modifies: N/A
-       Type: Defensive
-Description: This spell allows the caster to cure serious wounds of the
+@@y*******************************************************************************@@N
+       @@WName:@@N Cure Serious		
+    @@cClasses:@@N Cleric(41)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell allows the caster to cure serious wounds of the
              target.
-*******************************************************************************
+@@y*******************************************************************************@@N

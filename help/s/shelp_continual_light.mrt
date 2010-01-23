@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Continual Light		
-    Classes: Mage(11), Cleric(27)
-   Duration: Permanent
-   Modifies: N/A
-       Type: N/A
-Description: This spell allows the caster to magically produce a small, 
+@@y*******************************************************************************@@N
+       @@WName:@@N Continual Light		
+    @@cClasses:@@N Mage(11), Cleric(27)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell allows the caster to magically produce a small, 
              glowing ball of light.
-*******************************************************************************
+@@y*******************************************************************************@@N

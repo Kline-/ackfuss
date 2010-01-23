@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Mail Armor
-    Classes: Warrior (1), Assassin (40)
-   Duration: N/A
-   Modifies: N/A
-       Type: Passive
-Description: Allows the user to wear mail pieces of armor.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Mail Armor
+    @@cClasses:@@N Warrior (1), Assassin (40)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Passive
+@@mDescription:@@N Allows the user to wear mail pieces of armor.
+@@y*******************************************************************************@@N

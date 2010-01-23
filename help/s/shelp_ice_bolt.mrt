@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Ice Bolt
-    Classes: Sorcerer(3)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: Attack spell that does severe damage based upon Sorcerer and Mage
+@@y*******************************************************************************@@N
+       @@WName:@@N Ice Bolt
+    @@cClasses:@@N Sorcerer(3)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N Attack spell that does severe damage based upon Sorcerer and Mage
              levels.
-*******************************************************************************
+@@y*******************************************************************************@@N

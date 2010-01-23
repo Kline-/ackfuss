@@ -1,10 +1,10 @@
-*******************************************************************************
-       Name: Visit		
-    Classes: Psionicist(32)
-   Duration: N/A
-   Modifies: N/A
-       Type: N/A
-Description: This spell allows the caster to attempt to transfer him/herself
+@@y*******************************************************************************@@N
+       @@WName:@@N Visit		
+    @@cClasses:@@N Psionicist(32)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N N/A
+@@mDescription:@@N This spell allows the caster to attempt to transfer him/herself
              to the target.  Note that this spell only works for fellow
              characters, and not NPCs.
-*******************************************************************************
+@@y*******************************************************************************@@N

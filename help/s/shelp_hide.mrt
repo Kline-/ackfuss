@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Hide
-    Classes: Thief(12)
-   Duration: Permanent
-   Modifies: N/A
-       Type: Defensive - Self
-Description: After practicing this skill, the ability to move
+@@y*******************************************************************************@@N
+       @@WName:@@N Hide
+    @@cClasses:@@N Thief(12)
+   @@aDuration:@@N Permanent
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive - Self
+@@mDescription:@@N After practicing this skill, the ability to move
              unnoticed becomes a little easier.
-*******************************************************************************
+@@y*******************************************************************************@@N

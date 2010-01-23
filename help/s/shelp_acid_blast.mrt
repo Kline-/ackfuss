@@ -1,8 +1,8 @@
-*******************************************************************************
-       Name: Acid Blast		
-    Classes: Mage(50)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell conjures forth a blast of acid to strike the victim.
-*******************************************************************************
+@@y*******************************************************************************@@N
+       @@WName:@@N Acid Blast		
+    @@cClasses:@@N Mage(50)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell conjures forth a blast of acid to strike the victim.
+@@y*******************************************************************************@@N

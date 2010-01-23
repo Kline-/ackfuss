@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Shield Block
-    Classes: Warrior(40)
-   Duration: N/A
-   Modifies: N/A
-       Type: Passive
-Description: Only with training in this skill will a person be able to block
+@@y*******************************************************************************@@N
+       @@WName:@@N Shield Block
+    @@cClasses:@@N Warrior(40)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Passive
+@@mDescription:@@N Only with training in this skill will a person be able to block
              certain attacks with their equipped shield.
-*******************************************************************************
+@@y*******************************************************************************@@N

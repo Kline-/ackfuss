@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Cloak:Misery
-    Classes: Assassin(80), Necromancer(73)
-   Duration: ( Cast Level / 8 )
-   Modifies: N/A
-       Type: Defensive
-Description: Surround you with a cloak that will curse enemies when they
+@@y*******************************************************************************@@N
+       @@WName:@@N Cloak:Misery
+    @@cClasses:@@N Assassin(80), Necromancer(73)
+   @@aDuration:@@N ( Cast Level / 8 )
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N Surround you with a cloak that will curse enemies when they
              strike you in combat.
-*******************************************************************************
+@@y*******************************************************************************@@N

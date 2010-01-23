@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Martial Arts
-    Classes: Thief(30), Warrior(20), Psionicist(30
-   Duration: N/A
-   Modifies: N/A
-       Type: Passive
-Description: Unarmed attacks now cause more damage after
+@@y*******************************************************************************@@N
+       @@WName:@@N Martial Arts
+    @@cClasses:@@N Thief(30), Warrior(20), Psionicist(30
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Passive
+@@mDescription:@@N Unarmed attacks now cause more damage after
              learning this skill.
-*******************************************************************************
+@@y*******************************************************************************@@N

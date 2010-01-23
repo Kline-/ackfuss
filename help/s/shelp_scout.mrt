@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Scout
-    Classes: Knight(45), Assassin(26)
-   Duration: N/A
-   Modifies: N/A
-       Type: Defensive
-Description: Is the advanced version of scan. It will show you the mobiles
+@@y*******************************************************************************@@N
+       @@WName:@@N Scout
+    @@cClasses:@@N Knight(45), Assassin(26)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N Is the advanced version of scan. It will show you the mobiles
              within several rooms of your character.
-*******************************************************************************
+@@y*******************************************************************************@@N

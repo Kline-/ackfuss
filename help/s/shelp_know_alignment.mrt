@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Know Alignment		
-    Classes: Mage(13), Cleric(22)
-   Duration: N/A
-   Modifies: N/A
-       Type: Defensive
-Description: This spell enables the caster to know the alignment of the
+@@y*******************************************************************************@@N
+       @@WName:@@N Know Alignment		
+    @@cClasses:@@N Mage(13), Cleric(22)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Defensive
+@@mDescription:@@N This spell enables the caster to know the alignment of the
              victim.
-*******************************************************************************
+@@y*******************************************************************************@@N

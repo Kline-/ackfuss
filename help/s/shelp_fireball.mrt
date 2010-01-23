@@ -1,9 +1,9 @@
-*******************************************************************************
-       Name: Fireball		
-    Classes: Mage(28)
-   Duration: N/A
-   Modifies: N/A
-       Type: Offensive
-Description: This spell allows the caster to project a ball of flame from
+@@y*******************************************************************************@@N
+       @@WName:@@N Fireball		
+    @@cClasses:@@N Mage(28)
+   @@aDuration:@@N N/A
+   @@bModifies:@@N N/A
+       @@GType:@@N Offensive
+@@mDescription:@@N This spell allows the caster to project a ball of flame from
              their hand, to strike down the target.
-*******************************************************************************
+@@y*******************************************************************************@@N
