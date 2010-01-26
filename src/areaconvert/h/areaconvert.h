@@ -4,17 +4,24 @@
  * Support provided at www.ackmud.net
  */
 
+/* Standard include */
 #include "include.h"
+
+/* Codebase includes */
 #include "ack431.h"
 #include "ackfuss.h"
+#include "rom246b.h"
+
+/* Sub-systems */
 #include "flags.h"
 
-#define VERS "AreaConvert 1.0"
+#define VERS "AreaConvert 1.01"
 #define SPACER "--------------------------------------------------"
 
 #define TYPE_NONE   -1
 #define TYPE_ACK431  0
 #define TYPE_ACKFUSS 1
+#define TYPE_ROM246B 2
 
 #define MAX_BITSET    256
 #define MAX_EXIT      6

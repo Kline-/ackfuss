@@ -101,7 +101,7 @@ void display_help( void )
     cout << "if a bit/flag is not converted you will receive" << endl;
     cout << "a list of them so you may manually attempt to" << endl;
     cout << SPACER << endl;
-    cout << "supported src formats: (ack431)" << endl;
+    cout << "supported src formats: (ack431) rom246b" << endl;
     cout << "supported dst formats: (ackfuss)" << endl << endl;
     return;
 }

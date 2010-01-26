@@ -1,5 +1,5 @@
 CC   = g++
-VERS = AreaConvert 1.0
+VERS = AreaConvert 1.01
 
 #-Werror -Wwrite-strings -Wconversion
 W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings
