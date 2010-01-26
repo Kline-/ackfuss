@@ -384,7 +384,7 @@ struct race_type
     int race_flags;   /* flags for the various racial stuff    */
     bool wear_locs[MAX_WEAR];  /* on/off for each wear loc */
     short classes;   /* Number of classes for race   */
-    short limit[MAX_CLASS];   /* Max for each class */
+    short class_order[MAX_CLASS];   /* Max for each class */
     char *comment; /* comments shown for new players */
     char *skill; /* Auto-learnt skills if any     */
     int strong_realms;

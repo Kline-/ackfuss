@@ -3266,7 +3266,19 @@ DO_FUN(do_practice)
                 break;
 
         adept = IS_NPC( ch ) ? 100 : ( 90 - ( cnt * 4 ) );
+
+        cnt = race_table[ch->race].class_order[p_class] - ch->pcdata->order[p_class];
+        if ( cnt < 0 )
+            cnt *= -1;
+        if ( cnt == 0 )
+            adept *= 1.10; /* Bonus for sticking to the racial order */
+        else
+            adept *= (1 - (cnt/10)); /* 10% penalty for how far you stray from racial order */
+
         if ( skill_table[sn].flag1 == ADEPT )
+            adept = 95;
+
+        if ( adept > 95 )
             adept = 95;
 
         if ( ch->pcdata->learned[sn] >= adept )

@@ -260,6 +260,14 @@ int exp_to_level( CHAR_DATA * ch, int p_class, int index )
      * Now multiply by order index/remort index...other factors will come here later, like race mod, etc.
      */
     cost *= mult;
+    /* Figure out racial order --Kline */
+    diff = race_table[ch->race].class_order[p_class] - ch->pcdata->order[p_class];
+    if ( diff < 0 )
+        diff *= -1;
+    if ( diff == 0 )
+        cost *= 0.90; /* Bonus for sticking to the racial order */
+    else
+        cost *= (1 + (diff/10)); /* 10% penalty for how far you stray from racial order */
 
     /*
      * Now refudge the order multiplier... Divide by some factor, 5.4 feels nice and arbitrary :P
