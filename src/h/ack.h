@@ -1054,6 +1054,15 @@ struct lookup_type
     int cost;   /* if == NO_USE, only creators can set. */
 };
 
+struct chan_type
+{
+    short bit;
+    int min_level;
+    char *name;
+    char *on_string;
+    char *off_string;
+};
+
 class npc_group_data
 {
     public:

@@ -46,4 +46,4 @@ void area_modified P_((AREA_DATA *pArea));
 #define BUILD_SEC_SHOPS    5
 #define BUILD_SEC_RESETS   6
 #define BUILD_SEC_END      7
-#define AREA_VERSION       22
+#define AREA_VERSION       23

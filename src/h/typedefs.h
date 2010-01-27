@@ -125,6 +125,7 @@ typedef struct member_data MEMBER_DATA;
 typedef struct trigger_data TRIGGER_DATA;
 typedef struct mark_data MARK_DATA;
 typedef struct lookup_type LOOKUP_TYPE;
+typedef struct chan_type CHAN_TYPE;
 typedef struct message_data MESSAGE_DATA;
 typedef struct board_data BOARD_DATA;
 typedef struct ruler_data RULER_DATA;

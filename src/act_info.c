@@ -3555,18 +3555,7 @@ DO_FUN(do_commands)
     return;
 }
 
-
-
-struct chan_type
-{
-    short bit;
-    int min_level;
-    char *name;
-    char *on_string;
-    char *off_string;
-};
-
-struct chan_type channels[] =
+CHAN_TYPE tab_channels[] =
 {
     {CHANNEL_AUCTION, 0, "auction",
         "[ +AUCTION  ] You hear biddings.\r\n",
@@ -3659,7 +3648,7 @@ struct chan_type channels[] =
      "[ +QUESTMOB ] You hear the questing mob beg for help.\r\n",
      "[ -questmob ] You are ignoring the questing mob beg for help.\r\n"},
 
-    {0, 0, NULL, NULL}
+    {0, 0, NULL, NULL, NULL}
 };
 
 DO_FUN(do_channels)
@@ -3682,21 +3671,21 @@ DO_FUN(do_channels)
         buffer[0] = '\0';
         strncat( buffer, "Channels:\r\n", MSL - 1 );
 
-        for ( a = 0; channels[a].bit != 0; a++ )
+        for ( a = 0; tab_channels[a].bit != 0; a++ )
         {
-            if ( trust >= channels[a].min_level )
+            if ( trust >= tab_channels[a].min_level )
             {
                 char colbuf[10];
                 colbuf[0] = '\0';
 
-                if ( ch->deaf.test(channels[a].bit) )
+                if ( ch->deaf.test(tab_channels[a].bit) )
                 {
                     if ( !IS_NPC( ch ) )
                     {
                         snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
                         strncat( buffer, colbuf, MSL - 1 );
                     }
-                    strncat( buffer, channels[a].off_string, MSL - 1 );
+                    strncat( buffer, tab_channels[a].off_string, MSL - 1 );
                 }
                 else
                 {
@@ -3705,7 +3694,7 @@ DO_FUN(do_channels)
                         snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
                         strncat( buffer, colbuf, MSL - 1 );
                     }
-                    strncat( buffer, channels[a].on_string, MSL - 1 );
+                    strncat( buffer, tab_channels[a].on_string, MSL - 1 );
                 }
             }
 
@@ -3732,13 +3721,13 @@ DO_FUN(do_channels)
          * Now check through table to set/unset channel...
          */
         bit = 0;
-        for ( a = 0; channels[a].bit != 0; a++ )
+        for ( a = 0; tab_channels[a].bit != 0; a++ )
         {
-            if ( channels[a].min_level > get_trust( ch ) )
+            if ( tab_channels[a].min_level > get_trust( ch ) )
                 continue;
-            if ( !str_prefix( arg + 1, channels[a].name ) )
+            if ( !str_prefix( arg + 1, tab_channels[a].name ) )
             {
-                bit = channels[a].bit;
+                bit = tab_channels[a].bit;
                 break;
             }
         }

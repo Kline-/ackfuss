@@ -16,7 +16,9 @@
 
 /* buildtab.c */
 unsigned long int table_lookup P_((LOOKUP_TYPE *table, char *name));
+short chan_table_lookup P_((CHAN_TYPE *table, char *iname));
 char *rev_table_lookup P_((LOOKUP_TYPE *table, unsigned long int number));
+char *rev_chan_table_lookup P_((CHAN_TYPE *table, short number));
 char *bit_table_lookup P_((LOOKUP_TYPE *table, unsigned long int number));
 void table_printout P_((LOOKUP_TYPE *table, char *buf));
 void wide_table_printout P_((LOOKUP_TYPE *table, char *buf));

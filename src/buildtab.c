@@ -1185,6 +1185,19 @@ unsigned long int table_lookup( LOOKUP_TYPE *table, char *name )
     return /* table[0].value-1  */ 0;
 }
 
+short chan_table_lookup( CHAN_TYPE *table, char *iname )
+{
+    int a;
+
+    if ( iname[0] == '\0' )
+        return /* table[0].value-1 */ 0;
+
+    for ( a = 0; table[a].name != NULL; a++ )
+        if ( !str_prefix( iname, table[a].name ) )
+            return ( ( !str_cmp( table[a].name, "nada" ) ) ? 0 : table[a].bit );
+    return /* table[0].value-1  */ 0;
+}
+
 char *rev_table_lookup( LOOKUP_TYPE *table, unsigned long int number )
 {
     int a;
@@ -1192,6 +1205,16 @@ char *rev_table_lookup( LOOKUP_TYPE *table, unsigned long int number )
     for ( a = 0; table[a].text != NULL; a++ )
         if ( table[a].value == number )
             return table[a].text;
+    return "";
+}
+
+char *rev_chan_table_lookup( CHAN_TYPE *table, short number )
+{
+    int a;
+
+    for ( a = 0; table[a].name != NULL; a++ )
+        if ( table[a].bit == number )
+            return table[a].name;
     return "";
 }
 

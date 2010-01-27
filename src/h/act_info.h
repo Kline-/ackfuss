@@ -78,4 +78,6 @@ void area_message P_((AREA_DATA *area, const char *message));
 DECLARE_DO_FUN(do_whitelist);
 DECLARE_DO_FUN(do_logins);
 
+extern CHAN_TYPE tab_channels[];
+
 #undef P_

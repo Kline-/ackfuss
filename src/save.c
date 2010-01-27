@@ -34,6 +34,10 @@
 
 #include "h/globals.h"
 
+#ifndef DEC_ACT_INFO_H
+#include "h/act_info.h"
+#endif
+
 #ifndef DEC_ACT_OBJ_H
 #include "h/act_obj.h"
 #endif
@@ -270,13 +274,29 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     fprintf( fp, "Revision       %d\n", SAVE_REVISION );
     fprintf( fp, "Name           %s~\n", ch->name.c_str() );
 
+    outstr.clear();
+    fprintf( fp, "Act            " );
+    for ( foo = 0; foo < MAX_BITSET; foo++ )
+    {
+        if ( ch->act.test(foo) )
+        {
+            outstr += rev_table_lookup( tab_player_act, foo );
+            outstr += " ";
+        }
+    }
+    fprintf( fp, "%sEOL\n", outstr.c_str() );
+
+    outstr.clear();
     fprintf( fp, "Deaf           " );
     for ( foo = 0; foo < MAX_BITSET; foo++ )
     {
         if ( ch->deaf.test(foo) )
-            fprintf( fp, "%d ", foo );
+        {
+            outstr += rev_chan_table_lookup( tab_channels, foo );
+            outstr += " ";
+        }
     }
-    fprintf( fp, "EOL\n" );
+    fprintf( fp, "%sEOL\n", outstr.c_str() );
 
     if ( IS_NPC(ch) )
         fprintf( fp, "ShortDescr     %s~\n", ch->npcdata->short_descr );
@@ -341,17 +361,6 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     }
 
     fprintf( fp, "Exp            %d\n", ch->exp );
-
-    fprintf( fp, "Act            " );
-    for ( foo = 0; foo < MAX_BITSET; foo++ )
-    {
-        if ( ch->act.test(foo) )
-        {
-            outstr += rev_table_lookup( tab_player_act, foo );
-            outstr += " ";
-        }
-    }
-    fprintf( fp, "%sEOL\n", outstr.c_str() );
 
     fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
     /*
@@ -1000,10 +1009,22 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 if ( !str_cmp( word, "Deaf" ) )
                 {
                     const char *tmp = fread_word(fp);
-                    while ( str_cmp(tmp, "EOL") )
+
+                    if( cur_revision >= SAVE_REVISION )
                     {
-                        ch->deaf.set(atoi(tmp));
-                        tmp = fread_word(fp);
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            ch->deaf.set(chan_table_lookup(tab_channels,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            ch->deaf.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
                     }
                     fMatch = TRUE;
                     break;
