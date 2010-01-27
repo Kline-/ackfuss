@@ -30,3 +30,10 @@ A. You can make multiple keywords point to a single helpfile by symlinking to it
    Now when someone uses "help fighter" they will be displayed the contents of the
    help/w/warrior.mrt file, just as if they had used "help warrior".
    
+
+Q. Somebody logged in and got the first admin account before me, how do I regain control?
+
+A. First kill the MUD. You can do this via your shell by using ps to find the PID
+   then kill -9 <PID>. Then remove the ackfuss/data/mudinfo.dat file and the other
+   person's pfile (player/<x>/<name>). Re-start the MUD and make a new character; you
+   should now be recognized as the first player and be granted full privileges.
