@@ -94,22 +94,6 @@
 extern int _filbuf args( ( FILE * ) );
 #endif
 
-
-
-/* SAVE_REVISION number defines what has changed:
-   15:
-     AckFUSS started here!
-
-   15 -> 16:
-     Expanded pcdata->host to an array of MAX_HOSTS
-     Added pcdata->whitelist also based on MAX_HOSTS
-
-  16 -> 17:
-     Moved bitset fields to read/write as strings instead of values.
-*/
-
-
-#define SAVE_REVISION 17
 char *cap_nocol( const char *str )
 {
     static char strcap[MAX_STRING_LENGTH];
@@ -1733,18 +1717,8 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                 {
                     int looper;
 
-                    if ( cur_revision < UPGRADE_REVISION )
-                    {
-                        obj->value[0] = fread_number( fp );
-                        obj->value[1] = fread_number( fp );
-                        obj->value[2] = fread_number( fp );
-                        obj->value[3] = fread_number( fp );
-                        for ( looper = 4; looper < 10; obj->value[looper] = 0, looper++ );
-                    }
-                    else
-                    {
-                        for ( looper = 0; looper < 10; obj->value[looper] = fread_number( fp ), looper++ );
-                    }
+                    for ( looper = 0; looper < MAX_OBJ_VALUE; obj->value[looper] = fread_number( fp ), looper++ );
+
                     fMatch = TRUE;
                     break;
                 }
@@ -1777,21 +1751,7 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'W':
-                if ( !str_cmp( word, "WearLoc" ) )
-                {
-                    if ( cur_revision < UPGRADE_REVISION )
-                    {
-                        int temp_loc;
-                        temp_loc = fread_number( fp );
-                        obj->wear_loc = -1;
-                        fMatch = TRUE;
-                        break;
-                    }
-                    else
-                    {
-                        KEY( "WearLoc", obj->wear_loc, fread_number( fp ) );
-                    }
-                }
+                KEY( "WearLoc", obj->wear_loc, fread_number( fp ) );
                 if ( !str_cmp( word, "WearFlags" ) )
                 {
                     const char *tmp = fread_word(fp);

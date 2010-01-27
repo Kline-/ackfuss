@@ -47,8 +47,8 @@ o/areachk.o: areachk.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
 o/areasave.o: areasave.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
-  h/act_wiz.h h/areasave.h h/build.h h/comm.h h/db.h h/obj_fun.h \
-  h/spec_fun.h
+  h/act_wiz.h h/areasave.h h/build.h h/buildtab.h h/comm.h h/db.h \
+  h/obj_fun.h h/spec_fun.h
 o/board.o: board.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/board.h \
@@ -88,10 +88,10 @@ o/ctor.o: ctor.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
 o/db.o: db.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
-  h/act_mob.h h/act_obj.h h/act_wiz.h h/comm.h h/db.h h/handler.h \
-  h/hash.h h/interp.h h/luascript.h h/macros.h h/money.h h/mudinfo.h \
-  h/obj_fun.h h/rulers.h h/save.h h/social_edit.h h/spec_fun.h \
-  h/spendqp.h h/ssm.h h/sysdata.h
+  h/act_mob.h h/act_obj.h h/act_wiz.h h/buildtab.h h/comm.h h/db.h \
+  h/handler.h h/hash.h h/interp.h h/luascript.h h/macros.h h/money.h \
+  h/mudinfo.h h/obj_fun.h h/rulers.h h/save.h h/social_edit.h \
+  h/spec_fun.h h/spendqp.h h/ssm.h h/sysdata.h
 o/dtor.o: dtor.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
   h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
   h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_wiz.h \

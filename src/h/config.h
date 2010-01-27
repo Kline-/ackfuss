@@ -42,7 +42,6 @@
 #define goodgodname  "Good"
 #define neutralgodname  "Neutral"
 #define evilgodname  "Evil"
-#define UPGRADE_REVISION 15
 
 /*
  * String and memory management parameters.
@@ -64,6 +63,28 @@
 #define BOOT_DB_ABORT_THRESHOLD           25
 #define RUNNING_ABORT_THRESHOLD           10
 #define ALARM_FREQUENCY               20
+
+/* AREA_REVISION number defines what has changed in area files:
+   23:
+     AckFUSS started here!
+
+   23 -> 24:
+     Moved bitset fields to read/write as strings instead of values.
+*/
+#define AREA_REVISION 24
+
+/* SAVE_REVISION number defines what has changed in player files:
+   15:
+     AckFUSS started here!
+
+   15 -> 16:
+     Expanded pcdata->host to an array of MAX_HOSTS
+     Added pcdata->whitelist also based on MAX_HOSTS
+
+   16 -> 17:
+     Moved bitset fields to read/write as strings instead of values.
+*/
+#define SAVE_REVISION 17
 
 /*
  * Game parameters.

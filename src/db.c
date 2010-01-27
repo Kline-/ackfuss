@@ -50,6 +50,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
+#endif
+
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -1006,16 +1010,27 @@ void load_mobile( FILE * fp )
 
             case 'A':
                 KEY("AcMod", pMobIndex->ac_mod, fread_number(fp));
-                if ( !str_cmp(word, "Act") )
+                if ( !str_cmp( word, "Act" ) )
                 {
                     tmp = fread_word(fp);
 
-                    while ( str_cmp(tmp, "EOL") )
+                    if( area_revision >= AREA_REVISION )
                     {
-                        pMobIndex->act.set(atoi(tmp));
-                        tmp = fread_word(fp);
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pMobIndex->act.set(table_lookup(tab_mob_act,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
                     }
-                    fMatch = true;
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pMobIndex->act.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    fMatch = TRUE;
                     break;
                 }
                 KEY("Affected", pMobIndex->affected_by, fread_number(fp));

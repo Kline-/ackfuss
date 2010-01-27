@@ -46,6 +46,10 @@
 #include "h/build.h"
 #endif
 
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
+#endif
+
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -224,7 +228,7 @@ void build_save_area(  )
     short i = 0;
 
     fprintf( SaveFile, "#AREA\n" );
-    fprintf( SaveFile, "Revision  %d\n", AREA_VERSION );  /* Must be first for sanity checks --Kline */
+    fprintf( SaveFile, "Revision  %d\n", AREA_REVISION );  /* Must be first for sanity checks --Kline */
     fprintf( SaveFile, "CanRead   %s~\n", CurSaveArea->can_read );
     fprintf( SaveFile, "CanWrite  %s~\n", CurSaveArea->can_write );
 
@@ -252,6 +256,7 @@ void build_save_mobs(  )
 {
     MOB_INDEX_DATA *pMobIndex;
     short i = 0;
+    string outstr;
 
     if ( Pointer == NULL )  /* Start */
     {
@@ -270,11 +275,17 @@ void build_save_mobs(  )
     fprintf( SaveFile, "Vnum      %d\n", pMobIndex->vnum );  /* Must be first for sanity checks --Kline */
     fprintf( SaveFile, "AcMod     %d\n", pMobIndex->ac_mod );
 
+    outstr.clear();
     fprintf( SaveFile, "Act       " );
     for ( i = 0; i < MAX_BITSET; i++ )
+    {
         if ( pMobIndex->act.test(i) )
-            fprintf( SaveFile, "%d ", i );
-    fprintf( SaveFile, "EOL\n" );
+        {
+            outstr += rev_table_lookup( tab_mob_act, i );
+            outstr += " ";
+        }
+    }
+    fprintf( SaveFile, "%sEOL\n", outstr.c_str() );
 
     fprintf( SaveFile, "Affected   %d\n", pMobIndex->affected_by );
     fprintf( SaveFile, "Alignment  %d\n", pMobIndex->alignment );
