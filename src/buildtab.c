@@ -1198,6 +1198,19 @@ short chan_table_lookup( CHAN_TYPE *table, char *iname )
     return /* table[0].value-1  */ 0;
 }
 
+short mon_table_lookup( MONITOR_TYPE *table, char *iname )
+{
+    int a;
+
+    if ( iname[0] == '\0' )
+        return /* table[0].value-1 */ 0;
+
+    for ( a = 0; table[a].name != NULL; a++ )
+        if ( !str_prefix( iname, table[a].name ) )
+            return ( ( !str_cmp( table[a].name, "nada" ) ) ? 0 : table[a].channel );
+    return /* table[0].value-1  */ 0;
+}
+
 char *rev_table_lookup( LOOKUP_TYPE *table, unsigned long int number )
 {
     int a;
@@ -1214,6 +1227,16 @@ char *rev_chan_table_lookup( CHAN_TYPE *table, short number )
 
     for ( a = 0; table[a].name != NULL; a++ )
         if ( table[a].bit == number )
+            return table[a].name;
+    return "";
+}
+
+char *rev_mon_table_lookup( MONITOR_TYPE *table, short number )
+{
+    int a;
+
+    for ( a = 0; table[a].name != NULL; a++ )
+        if ( table[a].channel == number )
             return table[a].name;
     return "";
 }

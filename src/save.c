@@ -344,13 +344,20 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "%d ", ch->money->cash_unit[foo] );
     fprintf( fp, "\n" );
 
-    fprintf( fp, "Monitor        " );
-    for ( foo = 0; foo < MAX_BITSET; foo++ )
+    if ( !IS_NPC( ch ) )
     {
-        if ( ch->pcdata->monitor.test(foo) )
-            fprintf( fp, "%d ", foo );
+        outstr.clear();
+        fprintf( fp, "Monitor        " );
+        for ( foo = 0; foo < MAX_BITSET; foo++ )
+        {
+            if ( ch->pcdata->monitor.test(foo) )
+            {
+                outstr += rev_mon_table_lookup( tab_monitor, foo );
+                outstr += " ";
+            }
+        }
+        fprintf( fp, "%sEOL\n", outstr.c_str() );
     }
-    fprintf( fp, "EOL\n" );
 
     if ( !IS_NPC(ch) )
     {
@@ -1154,10 +1161,22 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     if ( !str_cmp( word, "Monitor" ) )
                     {
                         const char *tmp = fread_word(fp);
-                        while ( str_cmp(tmp, "EOL") )
+
+                        if( cur_revision >= SAVE_REVISION )
                         {
-                            ch->pcdata->monitor.set(atoi(tmp));
-                            tmp = fread_word(fp);
+                            while ( str_cmp(tmp, "EOL") )
+                            {
+                                ch->pcdata->monitor.set(mon_table_lookup(tab_monitor,const_cast<char *>(tmp)));
+                                tmp = fread_word(fp);
+                            }
+                        }
+                        else
+                        {
+                            while ( str_cmp(tmp, "EOL") )
+                            {
+                                ch->pcdata->monitor.set(atoi(tmp));
+                                tmp = fread_word(fp);
+                            }
                         }
                         fMatch = TRUE;
                         break;

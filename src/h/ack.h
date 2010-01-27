@@ -1063,6 +1063,17 @@ struct chan_type
     char *off_string;
 };
 
+struct monitor_type
+{
+    char *name;
+    short channel;
+    short min_level;
+    char *col;
+    char *id;
+    char *on_name;
+    char *off_name;
+};
+
 class npc_group_data
 {
     public:

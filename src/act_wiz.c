@@ -4970,18 +4970,7 @@ DO_FUN(do_sstat)
     return;
 }
 
-struct monitor_type
-{
-    char *name;
-    int channel;
-    int min_level;
-    char *col;
-    char *id;
-    char *on_name;
-    char *off_name;
-};
-
-struct monitor_type monitor_table[] =
+MONITOR_TYPE tab_monitor[] =
 {
     {"connection", MONITOR_CONNECT, 83, "@@l", "CON",
         "[ CONNECTION   ] Shows details of players connecting to the mud.\r\n",
@@ -5075,7 +5064,7 @@ struct monitor_type monitor_table[] =
      "[ BUG          ] You are told of all submitted bugs.\r\n",
      "[ bug          ] Not told about submitted bugs.\r\n"},
 
-    {NULL, 0, 0, NULL, NULL}
+    {NULL, 0, 0, NULL, NULL, NULL, NULL}
 };
 
 DO_FUN(do_monitor)
@@ -5088,22 +5077,22 @@ DO_FUN(do_monitor)
     if ( argument[0] == '\0' )
     {
         send_to_char( "@@yMonitor Channel Details:@@g\r\n\r\n", ch );
-        for ( a = 0; monitor_table[a].min_level != 0; a++ )
+        for ( a = 0; tab_monitor[a].min_level != 0; a++ )
         {
             char colbuf[10];
             colbuf[0] = '\0';
 
-            if ( monitor_table[a].min_level > get_trust( ch ) )
+            if ( tab_monitor[a].min_level > get_trust( ch ) )
                 continue;
 
-            if ( ch->pcdata->monitor.test(monitor_table[a].channel) )
+            if ( ch->pcdata->monitor.test(tab_monitor[a].channel) )
             {
                 if ( !IS_NPC( ch ) )
                 {
                     snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
                     strncat( buf, colbuf, MSL - 1 );
                 }
-                strncat( buf, monitor_table[a].on_name, MSL - 1 );
+                strncat( buf, tab_monitor[a].on_name, MSL - 1 );
             }
 
             else
@@ -5113,7 +5102,7 @@ DO_FUN(do_monitor)
                     snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
                     strncat( buf, colbuf, MSL - 1 );
                 }
-                strncat( buf, monitor_table[a].off_name, MSL - 1 );
+                strncat( buf, tab_monitor[a].off_name, MSL - 1 );
             }
 
         }
@@ -5127,12 +5116,12 @@ DO_FUN(do_monitor)
     /*
      * Search for monitor channel to turn on/off
      */
-    for ( a = 0; monitor_table[a].min_level != 0; a++ )
+    for ( a = 0; tab_monitor[a].min_level != 0; a++ )
     {
-        if ( !strcmp( argument, monitor_table[a].name ) )
+        if ( !strcmp( argument, tab_monitor[a].name ) )
         {
             found = TRUE;
-            ch->pcdata->monitor.flip(monitor_table[a].channel);
+            ch->pcdata->monitor.flip(tab_monitor[a].channel);
             break;
         }
     }
@@ -5156,14 +5145,14 @@ void monitor_chan( const char *message, int channel )
 
     if ( ( area_resetting_global ) && ( channel == MONITOR_MAGIC ) )
         return;
-    for ( a = 0; monitor_table[a].min_level != 0; a++ )
-        if ( monitor_table[a].channel == channel )
+    for ( a = 0; tab_monitor[a].min_level != 0; a++ )
+        if ( tab_monitor[a].channel == channel )
         {
-            level = monitor_table[a].min_level;
+            level = tab_monitor[a].min_level;
             break;
         }
 
-    snprintf( buf, MSL, "%s[%7s]@@N %s@@N\r\n", monitor_table[a].col, monitor_table[a].id, strip_out( message, "\r\n" ) );
+    snprintf( buf, MSL, "%s[%7s]@@N %s@@N\r\n", tab_monitor[a].col, tab_monitor[a].id, strip_out( message, "\r\n" ) );
 
     for ( d = first_desc; d; d = d->next )
     {

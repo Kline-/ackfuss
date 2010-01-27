@@ -153,6 +153,7 @@ typedef struct clutch_type CLUTCH_TYPE;
 typedef struct disabled_data DISABLED_DATA;
 typedef struct mudinfo MUDINFO;
 typedef struct lua_data LUA_DATA;
+typedef struct monitor_type MONITOR_TYPE;
 
 typedef enum { exit_from, exit_to, exit_both } exit_status;
 /*
