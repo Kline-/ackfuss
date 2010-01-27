@@ -666,7 +666,7 @@
 #define ACT_INTELLIGENT  23   /* For shitkicking mobs           */
 #define ACT_VAMPIRE      24   /* Vampire                        */
 #define ACT_BREEDER      25   /* Mob can breed                  */
-#define ACT_SOLO     26   /* Buffed for solo combat         */
+#define ACT_SOLO         26   /* Buffed for solo combat         */
 #define ACT_WEREWOLF     27   /* Werewolf                       */
 #define ACT_MOUNT        28   /* Mountable MOB                  */
 #define ACT_NO_BLOOD     29   /* No bloodwalk                   */

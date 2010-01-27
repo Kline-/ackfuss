@@ -42,6 +42,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
+#endif
+
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -95,10 +99,13 @@ extern int _filbuf args( ( FILE * ) );
    15 -> 16:
      Expanded pcdata->host to an array of MAX_HOSTS
      Added pcdata->whitelist also based on MAX_HOSTS
+
+  16 -> 17:
+     Moved bitset fields to read/write as strings instead of values.
 */
 
 
-#define SAVE_REVISION 16
+#define SAVE_REVISION 17
 char *cap_nocol( const char *str )
 {
     static char strcap[MAX_STRING_LENGTH];
@@ -253,6 +260,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     int sn;
     int foo;
     char time_buf[MSL];
+    string outstr;
 
     snprintf(time_buf, MSL, "%s", ctime(&current_time)); /* ctime adding a newline annoyed me --Kline */
     time_buf[strlen(time_buf)-1] = '\0';
@@ -338,9 +346,12 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     for ( foo = 0; foo < MAX_BITSET; foo++ )
     {
         if ( ch->act.test(foo) )
-            fprintf( fp, "%d ", foo );
+        {
+            outstr += rev_table_lookup( tab_player_act, foo );
+            outstr += " ";
+        }
     }
-    fprintf( fp, "EOL\n" );
+    fprintf( fp, "%sEOL\n", outstr.c_str() );
 
     fprintf( fp, "AffectedBy     %d\n", ch->affected_by );
     /*
@@ -855,10 +866,22 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 if ( !str_cmp( word, "Act" ) )
                 {
                     const char *tmp = fread_word(fp);
-                    while ( str_cmp(tmp, "EOL") )
+
+                    if( cur_revision >= SAVE_REVISION )
                     {
-                        ch->act.set(atoi(tmp));
-                        tmp = fread_word(fp);
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            ch->act.set(table_lookup(tab_player_act,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            ch->act.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
                     }
                     fMatch = TRUE;
                     break;
