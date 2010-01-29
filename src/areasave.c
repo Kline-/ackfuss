@@ -325,6 +325,8 @@ void build_save_objects(  )
     OBJ_INDEX_DATA *pObjIndex;
     AFFECT_DATA *pAf;
     EXTRA_DESCR_DATA *pEd;
+    short i = 0;
+    string outstr;
 
     if ( Pointer == NULL )  /* Start */
     {
@@ -344,11 +346,17 @@ void build_save_objects(  )
     fprintf( SaveFile, "ArmorType  %d\n", pObjIndex->armor_type );
     fprintf( SaveFile, "Durability %d\n", pObjIndex->max_durability );
 
+    outstr.clear();
     fprintf( SaveFile, "ExtraFlags " );
-    for ( short i = 0; i < MAX_BITSET; i++ )
+    for ( i = 0; i < MAX_BITSET; i++ )
+    {
         if ( pObjIndex->extra_flags.test(i) )
-            fprintf( SaveFile, "%d ", i );
-    fprintf( SaveFile, "EOL\n" );
+        {
+            outstr += rev_table_lookup( tab_obj_flags, i );
+            outstr += " ";
+        }
+    }
+    fprintf( SaveFile, "%sEOL\n", outstr.c_str() );
 
     fprintf( SaveFile, "ItemApply  %d\n", pObjIndex->item_apply );
     fprintf( SaveFile, "Level      %d\n", pObjIndex->level );
@@ -361,15 +369,21 @@ void build_save_objects(  )
     fprintf( SaveFile, "Type       %d\n", pObjIndex->item_type );
 
     fprintf( SaveFile, "Values     " );
-    for ( short i = 0; i < MAX_OBJ_VALUE; i++ )
+    for ( i = 0; i < MAX_OBJ_VALUE; i++ )
         fprintf( SaveFile, "%d ", pObjIndex->value[i] );
     fprintf( SaveFile, "\n" );
 
+    outstr.clear();
     fprintf( SaveFile, "WearFlags  " );
-    for ( short i = 0; i < MAX_BITSET; i++ )
+    for ( i = 0; i < MAX_BITSET; i++ )
+    {
         if ( pObjIndex->wear_flags.test(i) )
-            fprintf( SaveFile, "%d ", i );
-    fprintf( SaveFile, "EOL\n" );
+        {
+            outstr += rev_table_lookup( tab_wear_flags, i );
+            outstr += " ";
+        }
+    }
+    fprintf( SaveFile, "%sEOL\n", outstr.c_str() );
 
     fprintf( SaveFile, "Weight     %d\n", pObjIndex->weight );
 
@@ -408,6 +422,7 @@ void build_save_rooms(  )
     EXTRA_DESCR_DATA *pEd;
     short d, i;
     EXIT_DATA *pexit;
+    string outstr;
 
     if ( Pointer == NULL )  /* Start */
     {
@@ -449,11 +464,17 @@ void build_save_rooms(  )
             pexit = pRoomIndex->exit[d];
             fprintf( SaveFile, "Desc       %s~\n", pexit->description );
 
+            outstr.clear();
             fprintf( SaveFile, "Flags      " );
             for ( i = 0; i < MAX_BITSET; i++ )
+            {
                 if ( pexit->exit_info.test(i) && i != EX_LOCKED && i != EX_CLOSED )
-                    fprintf( SaveFile, "%d ", i );
-            fprintf( SaveFile, "EOL\n" );
+                {
+                    outstr += rev_table_lookup( tab_door_types, i );
+                    outstr += " ";
+                }
+            }
+            fprintf( SaveFile, "%sEOL\n", outstr.c_str() );
 
             fprintf( SaveFile, "Key        %d\n", pexit->key );
             fprintf( SaveFile, "Keyword    %s~\n", pexit->keyword );

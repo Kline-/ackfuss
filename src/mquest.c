@@ -958,7 +958,7 @@ CHAR_DATA *get_quest_kill( int min_lev, int max_lev, CHAR_DATA *ch )
 
         if ( (mob->get_level("psuedo") < min_lev || mob->get_level("psuedo") > max_lev)
                 || (mob->in_room->area->min_level > ch->get_level("psuedo") || mob->in_room->area->max_level < ch->get_level("psuedo"))
-                || (mob->in_room->area->flags.test(AFLAG_NOSHOW) || mob->in_room->area->flags.test(AFLAG_NO_QUEST))
+                || (mob->in_room->area->flags.test(AFLAG_NO_SHOW) || mob->in_room->area->flags.test(AFLAG_NO_QUEST))
                 || (!str_cmp(rev_spec_lookup(mob->npcdata->spec_fun), "spec_cast_adept"))
                 || (!str_cmp(rev_spec_lookup(mob->npcdata->spec_fun), "spec_executioner"))
                 || (mob->npcdata->pIndexData->vnum > mob->in_room->area->max_vnum || mob->npcdata->pIndexData->vnum < mob->in_room->area->min_vnum)
@@ -1073,7 +1073,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
 
         if ( obj->in_room )
         {
-            if ( (obj->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->in_room->area->flags.test(AFLAG_NOSHOW)) /* Hide places we don't want to use. */
+            if ( (obj->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->in_room->area->flags.test(AFLAG_NO_SHOW)) /* Hide places we don't want to use. */
                     || (obj->in_room->area->min_level > ch->get_level("psuedo") || obj->in_room->area->max_level < ch->get_level("psuedo"))
                     || (obj->pIndexData->vnum > obj->in_room->area->max_vnum || obj->pIndexData->vnum < obj->in_room->area->min_vnum) /* outside obj's own area */
                     || (!CAN_WEAR(obj, ITEM_TAKE)) /* ensure we can pick it up */
@@ -1095,7 +1095,7 @@ OBJ_DATA *get_quest_item( int min_lev, int max_lev, CHAR_DATA *ch )
         }
         else if ( obj->carried_by && obj->carried_by->in_room )
         {
-            if ( (obj->carried_by->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->carried_by->in_room->area->flags.test(AFLAG_NOSHOW)) /* Hide places we don't want to use. */
+            if ( (obj->carried_by->in_room->area->flags.test(AFLAG_NO_QUEST) || obj->carried_by->in_room->area->flags.test(AFLAG_NO_SHOW)) /* Hide places we don't want to use. */
                     || (obj->carried_by->in_room->area->min_level > ch->get_level("psuedo") || obj->carried_by->in_room->area->max_level < ch->get_level("psuedo"))
                     || (obj->pIndexData->vnum > obj->carried_by->in_room->area->max_vnum || obj->pIndexData->vnum < obj->carried_by->in_room->area->min_vnum) /* outside obj's own area */
                     || (!CAN_WEAR(obj, ITEM_TAKE)) /* ensure we can pick it up */

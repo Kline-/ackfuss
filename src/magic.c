@@ -3134,7 +3134,7 @@ bool spell_summon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
             || victim->in_room == NULL
             || victim->in_room->room_flags.test(RFLAG_SAFE)
             || victim->in_room->room_flags.test(RFLAG_NO_RECALL)
-            || !victim->in_room->area->flags.test(AFLAG_TELEPORT)
+            || !victim->in_room->area->flags.test(AFLAG_NO_TELEPORT)
             || victim->level >= level + 10
             || victim->fighting != NULL
             || ( IS_NPC( victim ) && saves_spell( level, victim ) )
@@ -3187,7 +3187,7 @@ bool spell_teleport( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
         if ( pRoomIndex == NULL )
             continue;
         if ( !pRoomIndex->room_flags.test(RFLAG_PRIVATE)
-                && !pRoomIndex->room_flags.test(RFLAG_SOLITARY) && pRoomIndex->area->flags.test(AFLAG_TELEPORT) )
+                && !pRoomIndex->room_flags.test(RFLAG_SOLITARY) && pRoomIndex->area->flags.test(AFLAG_NO_TELEPORT) )
             break;
     }
 
@@ -3656,7 +3656,7 @@ bool spell_visit( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
             || victim->in_room->room_flags.test(RFLAG_PRIVATE)
             || victim->in_room->room_flags.test(RFLAG_SOLITARY)
             || victim->in_room->room_flags.test(RFLAG_SAFE)
-            || ch->in_room->room_flags.test(RFLAG_NO_RECALL) || !victim->in_room->area->flags.test(AFLAG_TELEPORT) )
+            || ch->in_room->room_flags.test(RFLAG_NO_RECALL) || !victim->in_room->area->flags.test(AFLAG_NO_TELEPORT) )
     {
         send_to_char( "You failed.\r\n", ch );
         return TRUE;

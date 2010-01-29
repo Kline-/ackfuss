@@ -506,9 +506,9 @@
  */
 #define AFLAG_NONE           0
 #define AFLAG_PAYAREA        1
-#define AFLAG_TELEPORT       2
+#define AFLAG_NO_TELEPORT    2
 #define AFLAG_BUILDING       3
-#define AFLAG_NOSHOW         4 /* Show area name on 'areas' command? */
+#define AFLAG_NO_SHOW        4 /* Show area name on 'areas' command? */
 #define AFLAG_NO_ROOM_AFF    5
 #define AFLAG_NO_QUEST       6
 

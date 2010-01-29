@@ -686,6 +686,7 @@ void load_door( FILE *fp )
     EXIT_DATA *pExit;
     short dir = 0;
     const char *word;
+    const char *tmp;
     bool fMatch = false;
 
     if ( room_load == NULL )
@@ -729,19 +730,27 @@ void load_door( FILE *fp )
                 break;
 
             case 'F':
-                if ( !str_cmp(word, "Flags") )
+                if ( !str_cmp( word, "Flags" ) )
                 {
-                    const char *tmp;
-
                     tmp = fread_word(fp);
 
-                    while ( str_cmp(tmp, "EOL") )
+                    if( area_revision >= AREA_REVISION )
                     {
-                        pExit->exit_info.set(atoi(tmp));
-                        tmp = fread_word(fp);
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pExit->exit_info.set(table_lookup(tab_door_types,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
                     }
-
-                    fMatch = true;
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pExit->exit_info.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    fMatch = TRUE;
                     break;
                 }
                 break;
@@ -1241,16 +1250,27 @@ void load_object( FILE * fp )
                 break;
 
             case 'E':
-                if ( !str_cmp(word, "ExtraFlags") )
+                if ( !str_cmp( word, "ExtraFlags" ) )
                 {
                     tmp = fread_word(fp);
 
-                    while ( str_cmp(tmp, "EOL") )
+                    if( area_revision >= AREA_REVISION )
                     {
-                        pObjIndex->extra_flags.set(atoi(tmp));
-                        tmp = fread_word(fp);
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pObjIndex->extra_flags.set(table_lookup(tab_obj_flags,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
                     }
-                    fMatch = true;
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pObjIndex->extra_flags.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    fMatch = TRUE;
                     break;
                 }
                 break;
@@ -1327,16 +1347,27 @@ void load_object( FILE * fp )
                 break;
 
             case 'W':
-                if ( !str_cmp(word, "WearFlags") )
+                if ( !str_cmp( word, "WearFlags" ) )
                 {
                     tmp = fread_word(fp);
 
-                    while ( str_cmp(tmp, "EOL") )
+                    if( area_revision >= AREA_REVISION )
                     {
-                        pObjIndex->wear_flags.set(atoi(tmp));
-                        tmp = fread_word(fp);
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pObjIndex->wear_flags.set(table_lookup(tab_wear_flags,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
                     }
-                    fMatch = true;
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pObjIndex->wear_flags.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    fMatch = TRUE;
                     break;
                 }
                 KEY("Weight", pObjIndex->weight, fread_number(fp));
@@ -3315,7 +3346,7 @@ DO_FUN(do_areas)
     for ( li = area_list.begin(); li != area_list.end(); li++ )
     {
         pArea = *li;
-        if ( pArea->flags.test(AFLAG_NOSHOW) || pArea->flags.test(AFLAG_BUILDING) )
+        if ( pArea->flags.test(AFLAG_NO_SHOW) || pArea->flags.test(AFLAG_BUILDING) )
             continue;   /* for non-finished areas - don't show */
         if ( ( !fall )
                 && ( ( pArea->min_level > ( ch->get_level("psuedo") ) ) || ( pArea->max_level < ( ch->get_level("psuedo") ) ) ) )

@@ -35,6 +35,7 @@
 #include "h/globals.h"
 
 /* The tables in here are:
+     Area flags          :    tab_area_flags      : bitset
      Mob act flags       :    tab_mob_act         : bitset
      Player act flags    :    tab_player_act      : bitset
      Mob affected by     :    tab_affected_by     : bit_vector
@@ -523,6 +524,18 @@ LOOKUP_TYPE tab_charm_types[] =
     {"regen",      CHARM_AFF_REGEN,      10},
     {"hungerless", CHARM_AFF_HUNGERLESS, 10},
     {NULL, 0}
+};
+
+LOOKUP_TYPE tab_area_flags[] =
+{
+    {"nada",        AFLAG_NONE,        0},
+    {"pay_area",    AFLAG_PAYAREA,     0},
+    {"no_teleport", AFLAG_NO_TELEPORT, 0},
+    {"building",    AFLAG_BUILDING,    0},
+    {"no_show",     AFLAG_NO_SHOW,     0},
+    {"no_room_aff", AFLAG_NO_ROOM_AFF, 0},
+    {"no_quest",    AFLAG_NO_QUEST,    0},
+    {NULL, 0, 0}
 };
 
 LOOKUP_TYPE tab_mob_act[] =

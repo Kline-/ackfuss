@@ -293,7 +293,7 @@ DO_FUN(build_makearea)
     pArea->owner = str_dup( ch->name.c_str() );
     pArea->can_read = str_dup( ch->name.c_str() );
     pArea->can_write = str_dup( ch->name.c_str() );
-    pArea->flags.set(AFLAG_NOSHOW);   /* don't list on 'areas' -S- */
+    pArea->flags.set(AFLAG_NO_SHOW);   /* don't list on 'areas' -S- */
 
     area_used[pArea->area_num] = pArea;
 
@@ -512,7 +512,7 @@ DO_FUN(build_setarea)
 
     if ( !str_cmp( arg1, "teleport" ) )
     {
-        pArea->flags.flip(AFLAG_TELEPORT);
+        pArea->flags.flip(AFLAG_NO_TELEPORT);
         return;
     }
 
@@ -530,7 +530,7 @@ DO_FUN(build_setarea)
 
     if ( !str_cmp( arg1, "show" ) )
     {
-        pArea->flags.flip(AFLAG_NOSHOW);
+        pArea->flags.flip(AFLAG_NO_SHOW);
         return;
     }
 
@@ -673,11 +673,11 @@ DO_FUN(build_showarea)
 
     if ( pArea->flags.test(AFLAG_PAYAREA) )
         strncat( buf, "This is a pay area.\r\n", MSL - 1 );
-    if ( pArea->flags.test(AFLAG_TELEPORT) )
+    if ( pArea->flags.test(AFLAG_NO_TELEPORT) )
         strncat( buf, "You cannot teleport into here.\r\n", MSL - 1 );
     if ( pArea->flags.test(AFLAG_BUILDING) )
         strncat( buf, "Area currently being built.\r\n", MSL - 1 );
-    if ( pArea->flags.test(AFLAG_NOSHOW) )
+    if ( pArea->flags.test(AFLAG_NO_SHOW) )
         strncat( buf, "Area title will not be shown on area list.\r\n", MSL - 1 );
     else
         strncat( buf, "Area title will show on area list.\r\n", MSL - 1 );
