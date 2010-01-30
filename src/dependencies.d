@@ -63,7 +63,8 @@ o/build.o: build.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
 o/buildare.o: buildare.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
-  h/areasave.h h/build.h h/buildare.h h/comm.h h/db.h h/handler.h h/ssm.h
+  h/areasave.h h/build.h h/buildare.h h/buildtab.h h/comm.h h/db.h \
+  h/handler.h h/ssm.h
 o/buildtab.o: buildtab.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
   h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
   h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h

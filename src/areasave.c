@@ -226,17 +226,24 @@ void build_save(  )
 void build_save_area(  )
 {
     short i = 0;
+    string outstr;
 
     fprintf( SaveFile, "#AREA\n" );
     fprintf( SaveFile, "Revision  %d\n", AREA_REVISION );  /* Must be first for sanity checks --Kline */
     fprintf( SaveFile, "CanRead   %s~\n", CurSaveArea->can_read );
     fprintf( SaveFile, "CanWrite  %s~\n", CurSaveArea->can_write );
 
+    outstr.clear();
     fprintf( SaveFile, "Flags     " );
     for ( i = 0; i < MAX_BITSET; i++ )
+    {
         if ( CurSaveArea->flags.test(i) )
-            fprintf( SaveFile, "%d ", i );
-    fprintf( SaveFile, "EOL\n" );
+        {
+            outstr += rev_table_lookup( tab_area_flags, i );
+            outstr += " ";
+        }
+    }
+    fprintf( SaveFile, "%sEOL\n", outstr.c_str() );
 
     fprintf( SaveFile, "Keyword   %s~\n", CurSaveArea->keyword );
     fprintf( SaveFile, "LevLabel  %s~\n", CurSaveArea->level_label );
@@ -441,11 +448,17 @@ void build_save_rooms(  )
     fprintf( SaveFile, "Vnum       %d\n", pRoomIndex->vnum );  /* Must be first for sanity checks --Kline */
     fprintf( SaveFile, "Desc       %s~\n", pRoomIndex->description );
 
+    outstr.clear();
     fprintf( SaveFile, "Flags      " );
     for ( i = 0; i < MAX_BITSET; i++ )
+    {
         if ( pRoomIndex->room_flags.test(i) )
-            fprintf( SaveFile, "%d ", i );
-    fprintf( SaveFile, "EOL\n" );
+        {
+            outstr += rev_table_lookup( tab_room_flags, i );
+            outstr += " ";
+        }
+    }
+    fprintf( SaveFile, "%sEOL\n", outstr.c_str() );
 
     fprintf( SaveFile, "Name       %s~\n", pRoomIndex->name );
     fprintf( SaveFile, "ScriptName %s~\n", pRoomIndex->script_name );

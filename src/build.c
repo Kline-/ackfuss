@@ -2685,7 +2685,7 @@ DO_FUN(build_setobject)
     if ( UPPER( arg2[0] ) == 'V' && arg2[2] == '\0' )
     {
         num = arg2[1] - '0';
-        if ( num < 0 || num > 9 )
+        if ( num < 0 || num > MAX_OBJ_VALUE-1 )
         {
             send_to_char( "v0-v9.\r\n", ch );
             return;

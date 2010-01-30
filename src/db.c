@@ -582,6 +582,7 @@ void load_area( FILE * fp )
 {
     AREA_DATA *pArea;
     const char *word;
+    const char *tmp;
     bool fMatch = false;
     int a;
 
@@ -610,11 +611,23 @@ void load_area( FILE * fp )
             case 'F':
                 if ( !str_cmp( word, "Flags" ) )
                 {
-                    const char *tmp = fread_word(fp);
-                    while ( str_cmp(tmp, "EOL") )
+                    tmp = fread_word(fp);
+
+                    if( area_revision >= AREA_REVISION )
                     {
-                        pArea->flags.set(atoi(tmp));
-                        tmp = fread_word(fp);
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pArea->flags.set(table_lookup(tab_area_flags,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pArea->flags.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
                     }
                     fMatch = TRUE;
                     break;
@@ -1686,16 +1699,27 @@ void load_room( FILE * fp )
                 break;
 
             case 'F':
-                if ( !str_cmp(word, "Flags") )
+                if ( !str_cmp( word, "Flags" ) )
                 {
                     tmp = fread_word(fp);
 
-                    while ( str_cmp(tmp, "EOL") )
+                    if( area_revision >= AREA_REVISION )
                     {
-                        pRoomIndex->room_flags.set(atoi(tmp));
-                        tmp = fread_word(fp);
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pRoomIndex->room_flags.set(table_lookup(tab_room_flags,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
                     }
-                    fMatch = true;
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            pRoomIndex->room_flags.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    fMatch = TRUE;
                     break;
                 }
                 break;

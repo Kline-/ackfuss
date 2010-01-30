@@ -49,6 +49,10 @@
 #include "h/buildare.h"
 #endif
 
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
+#endif
+
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -349,26 +353,21 @@ DO_FUN(build_setarea)
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' )
     {
-        send_to_char( "Syntax: setarea <arguments> \r\n", ch );
-        send_to_char( "\r\n", ch );
-        send_to_char( "Arguments being one of:\r\n", ch );
-        send_to_char( "      owner       <name>  \r\n", ch );
-        send_to_char( "      read        [-]<name>  \r\n", ch );
-        send_to_char( "      write       [-]<name>  \r\n", ch );
-        send_to_char( "      title       <string>\r\n", ch );
-        send_to_char( "      payarea     Yes/No  \r\n", ch );
-        send_to_char( "      min         <min_vnum>\r\n", ch );
-        send_to_char( "      max         <max_vnum>\r\n", ch );
-        send_to_char( "      teleport    Yes/No  \r\n", ch );
-        send_to_char( "      building    Yes/No  \r\n", ch );
-        send_to_char( "      show        Yes/No  \r\n", ch );
-        send_to_char( "      room_spells On/Off \r\n", ch );
-        send_to_char( "      min_level   <level>\r\n", ch );
-        send_to_char( "      max_level   <level>\r\n", ch );
-        send_to_char( "      level_label <label>\r\n", ch );
-        send_to_char( "      keyword     <keyword> \r\n", ch );
-        send_to_char( "      repop_rate  ticks( lower is faster ) \r\n", ch );
-        send_to_char( "      message     <message/off> \r\n", ch );
+        ch->send( "Syntax: setarea <arguments> \r\n\r\n" );
+        ch->send( "Arguments being one of:\r\n" );
+        ch->send( "      owner       <name>\r\n" );
+        ch->send( "      read        [-]<name>\r\n" );
+        ch->send( "      write       [-]<name>\r\n" );
+        ch->send( "      title       <string>\r\n" );
+        ch->send( "      min         <min_vnum>\r\n" );
+        ch->send( "      max         <max_vnum>\r\n" );
+        ch->send( "      min_level   <level>\r\n" );
+        ch->send( "      max_level   <level>\r\n" );
+        ch->send( "      level_label <label>\r\n" );
+        ch->send( "      keyword     <keyword>\r\n" );
+        ch->send( "      repop_rate  ticks( lower is faster )\r\n" );
+        ch->send( "      message     <message/off> \r\n" );
+        ch->send( "      flag        <name>\r\n" );
         return;
     }
 
@@ -504,33 +503,19 @@ DO_FUN(build_setarea)
         return;
     }
 
-    if ( !str_cmp( arg1, "payarea" ) )
+    if ( !str_cmp( arg1, "flag" ) )
     {
-        pArea->flags.flip(AFLAG_PAYAREA);
-        return;
-    }
+        num = table_lookup( tab_area_flags, arg2 );
 
-    if ( !str_cmp( arg1, "teleport" ) )
-    {
-        pArea->flags.flip(AFLAG_NO_TELEPORT);
-        return;
-    }
+        if( num == 0 )
+        {
+            snprintf( buffer, MSL, "Values for area flags are:\r\n" );
+            table_printout( tab_area_flags, buffer + strlen( buffer ) );
+            send_to_char( buffer, ch );
+            return;
+        }
 
-    if ( !str_cmp( arg1, "room_spells" ) )
-    {
-        pArea->flags.flip(AFLAG_NO_ROOM_AFF);
-        return;
-    }
-
-    if ( !str_cmp( arg1, "building" ) )
-    {
-        pArea->flags.flip(AFLAG_BUILDING);
-        return;
-    }
-
-    if ( !str_cmp( arg1, "show" ) )
-    {
-        pArea->flags.flip(AFLAG_NO_SHOW);
+        pArea->flags.flip(num);
         return;
     }
 
