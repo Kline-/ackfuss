@@ -239,8 +239,8 @@ const struct race_type race_table[MAX_RACE] =
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
             TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
             TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE},
-        4, {CLS_WAR, CLS_PSI, CLS_THI, CLS_MAG, CLS_CLE}, /* max num classes and class order */
-        "War Psi Thi Mag Cle",
+        4, {CLS_CLE, CLS_THI, CLS_WAR, CLS_MAG, CLS_PSI}, /* max num classes and class order */
+        "Cle Thi War Mag Psi",
         "",
         REALM_NONE,   /* strong magic realms for race */
         REALM_NONE,   /* weak */
@@ -270,16 +270,16 @@ const struct race_type race_table[MAX_RACE] =
 
     {
         "Dwf", "Dwarf", ROOM_VNUM_TEMPLE, 0,
-        23, 13, 23, 13, 23,
+        18, 16, 23, 18, 20,
         RACE_MOD_RESIST_SPELL | RACE_MOD_SMALL | RACE_MOD_IMMUNE_POISON,
 
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
             TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
             TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE},
-        3, {CLS_WAR, CLS_CLE, CLS_PSI, CLS_THI, CLS_MAG},
-        "War Cle Psi Thi Mag",
-        "smash",
-        REALM_NONE,
+        3, {CLS_CLE, CLS_PSI, CLS_THI, CLS_WAR, CLS_MAG},
+        "Cle Psi Thi War Mag",
+        "flare",
+        REALM_HOLY,
         REALM_ACID,
         REALM_ACID | REALM_FIRE | REALM_HOLY | REALM_POISON,
         REALM_NONE,
@@ -288,14 +288,14 @@ const struct race_type race_table[MAX_RACE] =
     },
 
     {
-        "Elf", "Elf", 9201, 0,
-        15, 20, 19, 23, 18,
+        "Elf", "Elf", ROOM_VNUM_TEMPLE, 0,
+        17, 22, 17, 19, 20,
         RACE_MOD_SMALL | RACE_MOD_WOODLAND | RACE_MOD_STRONG_MAGIC | RACE_MOD_FAST_CAST,
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
             TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
             TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE},
-        3, {CLS_MAG, CLS_THI, CLS_WAR, CLS_PSI, CLS_CLE},
-        "Mag Thi War Psi Cle",
+        3, {CLS_MAG, CLS_PSI, CLS_WAR, CLS_THI, CLS_CLE},
+        "Mag Psi War Thi Cle",
         "\'find doors\'",
         REALM_MIND | REALM_COLD,
         REALM_DRAIN | REALM_ACID,
@@ -306,7 +306,7 @@ const struct race_type race_table[MAX_RACE] =
     },
 
     {
-        "Gno", "Gnome", 6015, 0,
+        "Gno", "Gnome", ROOM_VNUM_TEMPLE, 0,
         14, 22, 20, 22, 17,
         RACE_MOD_TINY | RACE_MOD_IMMUNE_POISON | RACE_MOD_DARKNESS | RACE_MOD_FAST_CAST,
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -324,7 +324,7 @@ const struct race_type race_table[MAX_RACE] =
     },
 
     {
-        "Ogr", "Ogre", 3430, 0,
+        "Ogr", "Ogre", ROOM_VNUM_TEMPLE, 0,
         23, 13, 13, 23, 23,
         RACE_MOD_WEAK_MAGIC | RACE_MOD_RESIST_SPELL | RACE_MOD_LARGE | RACE_MOD_TOUGH_SKIN,
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -342,7 +342,7 @@ const struct race_type race_table[MAX_RACE] =
     },
 
     {
-        "Drw", "Drow", 9201, 0,
+        "Drw", "Drow", ROOM_VNUM_TEMPLE, 0,
         18, 23, 16, 23, 15,
         RACE_MOD_STRONG_MAGIC | RACE_MOD_SLOW_HEAL | RACE_MOD_DARKNESS,
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
@@ -421,8 +421,8 @@ const struct race_type race_table[MAX_RACE] =
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
             TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
             TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE},
-        3, {CLS_WAR, CLS_PSI, CLS_MAG, CLS_CLE, CLS_THI},
-        "War Psi Mag Cle Thi",
+        3, {CLS_PSI, CLS_WAR, CLS_MAG, CLS_CLE, CLS_THI},
+        "Psi War Mag Cle Thi",
         "\'enhanced damage\'",
         REALM_MIND,
         REALM_DRAIN | REALM_GAS,
@@ -470,13 +470,13 @@ const struct race_type race_table[MAX_RACE] =
 
     {
         "Trl", "Troll", ROOM_VNUM_TEMPLE, 0,
-        22, 15, 15, 20, 23,
+        16, 15, 21, 22, 21,
         RACE_MOD_FAST_HEAL | RACE_MOD_LARGE | RACE_MOD_DARKNESS | RACE_MOD_STONE_SKIN,
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
             TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
             TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE},
-        3, {CLS_WAR, CLS_CLE, CLS_THI, CLS_PSI, CLS_MAG},
-        "War Cle Thi Psi Mag",
+        3, {CLS_THI, CLS_CLE, CLS_PSI, CLS_WAR, CLS_MAG},
+        "Thi Cle Psi War Mag",
         "\'stone skin\'",
         REALM_NONE,
         REALM_LIGHT | REALM_FIRE | REALM_HOLY,
@@ -560,13 +560,13 @@ const struct race_type race_table[MAX_RACE] =
 
     {
         "Avn", "Avian", ROOM_VNUM_TEMPLE, 0,
-        22, 10, 23, 23, 17,
+        13, 16, 23, 22, 21,
         RACE_MOD_NO_MAGIC | RACE_MOD_IMMUNE_POISON | RACE_MOD_WOODLAND,
         {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
             TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,
             TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE},
-        3, {CLS_THI, CLS_WAR, CLS_CLE, CLS_MAG, CLS_PSI},
-        "Thi War Cle Mag Psi",
+        3, {CLS_CLE, CLS_THI, CLS_PSI, CLS_MAG, CLS_WAR},
+        "Cle Thi Psi Mag War",
         "fly circle",
         REALM_NONE,
         REALM_HOLY | REALM_MIND,
@@ -583,8 +583,8 @@ const struct race_type race_table[MAX_RACE] =
         {FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
             FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,
             FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE},
-        3, {CLS_WAR, CLS_THI, CLS_PSI, CLS_MAG, CLS_CLE},
-        "War Thi Psi Mag Cle",
+        3, {CLS_CLE, CLS_THI, CLS_PSI, CLS_MAG, CLS_WAR},
+        "Cle Thi Psi Mag War",
         "",
         REALM_NONE,
         REALM_NONE,
@@ -592,6 +592,24 @@ const struct race_type race_table[MAX_RACE] =
         REALM_NONE,
         FALSE,
         FALSE
+    },
+
+    {
+        "Kbd", "Kobold", ROOM_VNUM_TEMPLE, 0,
+        19, 13, 20, 21, 22,
+        RACE_MOD_WOODLAND | RACE_MOD_DARKNESS | RACE_MOD_SMALL,
+        {TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE,
+            TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE,
+            TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE},
+        3, {CLS_PSI, CLS_THI, CLS_CLE, CLS_WAR, CLS_MAG},
+        "Psi Thi Cle War Mag",
+        "\'emotion control\'",
+        REALM_NONE,
+        REALM_HOLY | REALM_MIND,
+        REALM_IMPACT | REALM_GAS | REALM_POISON,
+        REALM_FIRE | REALM_SHOCK,
+        TRUE,
+        TRUE
     }
 
 };

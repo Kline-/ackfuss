@@ -95,9 +95,9 @@
 #define MAX_COLOR           22   /* eg look, prompt, shout */
 #define MAX_ANSI            28   /* eg red, black, etc (was 11) */
 #define MAX_ALIASES          6
-#define MAX_HOSTS                    3   /* number of login sites/whitelist */
+#define MAX_HOSTS            3   /* number of login sites/whitelist */
 #define MAX_IGNORES          3
-#define MAX_RACE                     20
+#define MAX_RACE             21
 #define MAX_CLAN                     9 /* number of clans */
 #define MAX_SKILL                  300
 #define MAX_CLASS                    5
