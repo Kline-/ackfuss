@@ -2168,7 +2168,7 @@ DO_FUN(build_setroom)
             door = atoi( arg2 );
         else
         {
-            if ( ( temp = index( cDirs, UPPER( arg2[0] ) ) ) != NULL )
+            if ( ( temp = strchr( cDirs, UPPER( arg2[0] ) ) ) != NULL )
                 door = temp - cDirs;
             else
                 door = -1;
@@ -3077,7 +3077,7 @@ DO_FUN(build_dig)
         return;
     }
 
-    if ( !( temp = index( cDirs, UPPER( arg1[0] ) ) ) )
+    if ( !( temp = strchr( cDirs, UPPER( arg1[0] ) ) ) )
     {
         send_to_char( "Direction must be one of NSEWUP\r\n", ch );
         return;
@@ -3738,7 +3738,7 @@ DO_FUN(build_addreset)
 
     if ( !str_cmp( arg1, "door" ) )
     {
-        temp = index( cDirs, UPPER( arg2[0] ) );
+        temp = strchr( cDirs, UPPER( arg2[0] ) );
         if ( !temp )
         {
             send_to_char( "Direction must be one of NSEWUP.\r\n", ch );
