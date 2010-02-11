@@ -2041,7 +2041,10 @@ const char *gen_rand_string( int length )
     {
         r = rand() % strlen(valid);
         snprintf( tmp, 2, "%c", valid[r] );
-        strncat ( output, tmp, length+1 );
+        if ( i == 0 )
+            snprintf ( output, length+1, "%s", tmp );
+        else
+            strncat ( output, tmp, length+1 );
     }
 
     return output;
