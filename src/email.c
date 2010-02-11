@@ -120,6 +120,7 @@ DO_FUN(do_set_email)
     }
 
     ch->pcdata->email->address = argument;
+    ch->pcdata->email->confirmation_code.clear();
     ch->pcdata->email->confirmation_code = gen_rand_string(8);
     ch->pcdata->email->verified = false;
     ch->send( "An email has been sent to %s with a confirmation code. Please verify your address by typing everify <code> once your have received the email. If you do not receive an email, set your email again and a new code will be sent.\r\n", argument );
@@ -146,7 +147,7 @@ bool send_email( const char *address, const char *subject, const char *body, boo
         return false;
     }
 
-    snprintf( mailbuf, MSL, "echo \"%s\" | mail -a \"Content-type: text/html;\" -s \"%s\" %s", body, subject, ch == NULL ? address : ch->pcdata->email->address.c_str() );
+    snprintf( mailbuf, MSL, "echo \"%s\" | mail -a \"Content-type: text/html;\" -s \"%s\" \"%s\"", body, subject, ch == NULL ? address : ch->pcdata->email->address.c_str() );
 
     /*
      * system() is if() encapsulated to suppress a warning. system() returns different results on different distros,
