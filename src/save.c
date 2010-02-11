@@ -403,8 +403,9 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "DimCol         %c~\n", ch->pcdata->dimcol );
         fprintf( fp, "TermRows       %i\n", ch->pcdata->term_rows );
         fprintf( fp, "TermColumns    %i\n", ch->pcdata->term_columns );
-        fprintf( fp, "Email          %s~\n", ch->pcdata->email_address );
-        fprintf( fp, "EmailValid     %i\n", ch->pcdata->valid_email );
+        fprintf( fp, "Email          %s~\n", ch->pcdata->email->address.c_str() );
+        fprintf( fp, "EmailCode      %s~\n", ch->pcdata->email->confirmation_code.c_str() );
+        fprintf( fp, "EmailValid     %i\n", ch->pcdata->email->verified );
         fprintf( fp, "AssistMsg      %s~\n", ch->pcdata->assist_msg );
 
         for ( cnt = 0; cnt < MAX_ALIASES; cnt++ )
@@ -1049,8 +1050,9 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 KEY( "Exp", ch->exp, fread_number( fp ) );
                 if ( !IS_NPC( ch ) )
                 {
-                    KEY( "EmailValid", ch->pcdata->valid_email, fread_number( fp ) );
-                    SKEY( "Email", ch->pcdata->email_address, fread_string( fp ) );
+                    KEY( "Email", ch->pcdata->email->address, fread_string( fp ) );
+                    KEY( "EmailCode", ch->pcdata->email->confirmation_code, fread_string( fp ) );
+                    KEY( "EmailValid", ch->pcdata->email->verified, fread_number( fp ) );
                 }
                 break;
 

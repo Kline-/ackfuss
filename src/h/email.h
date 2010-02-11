@@ -15,10 +15,8 @@
 #endif
 
 /* email.c */
-bool valid_email_addy P_((char *address));
-DECLARE_DO_FUN(do_email);
-void send_email P_((const char *m_address, const char *m_subject, const char *mfilename));
-bool save_mail_file P_((const char *mfilename, char *mtext));
-void send_rep_out P_((CHAR_DATA *ch, char *outbuf, bool mailme, char *msub));
+DECLARE_DO_FUN(do_verify_email);
+DECLARE_DO_FUN(do_set_email);
+bool send_email P_((const char *address, const char *subject, const char *body, bool validate, CHAR_DATA *ch = NULL));
 
 #undef P_

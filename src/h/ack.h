@@ -697,7 +697,7 @@ class pc_data
         BRAND_DATA *current_brand;
         short death_cnt;
         char dimcol;
-        char *email_address;
+        EMAIL_DATA *email;
         short failures;  /* Failed logins */
         char *header;  /* filename for helpedit */
         char hicol;
@@ -753,7 +753,6 @@ class pc_data
         short term_columns;
         short term_rows;
         char *title;
-        bool valid_email;
         char *whitelist[MAX_HOSTS]; /* Used to restrict login domains */
         char *who_name;   /* To show on who name */
 };
@@ -1250,6 +1249,16 @@ struct sysdata_type
     short pulse;
     bool shownumbers;
     bool w_lock;
+};
+
+class email_data
+{
+    public:
+        email_data();
+        ~email_data();
+        bool verified;
+        string address;
+        string confirmation_code;
 };
 
 class quest_info

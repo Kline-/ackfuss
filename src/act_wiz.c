@@ -1269,7 +1269,7 @@ DO_FUN(do_ofindlev)
         return;
     }
     snprintf( buf, MSL, "Ofindlev report for level range %d to %d", level, level_top );
-    send_rep_out( ch, buf1, mailme, buf );
+    //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
 
@@ -1325,7 +1325,7 @@ DO_FUN(do_mfind)
     }
 
     snprintf( buf, MSL, "Mfind report for %s", arg );
-    send_rep_out( ch, buf1, mailme, buf );
+    //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
 
@@ -1402,7 +1402,7 @@ DO_FUN(do_mfindlev)
     }
 
     snprintf( buf, MSL, "Mfindlev report for level range %d to %d", level, level_top );
-    send_rep_out( ch, buf1, mailme, buf );
+    //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
 
@@ -1463,7 +1463,7 @@ DO_FUN(do_ofind)
     }
 
     snprintf( buf, MSL, "Ofind report for %s", arg );
-    send_rep_out( ch, buf1, mailme, buf );
+    //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
 
@@ -4081,7 +4081,7 @@ DO_FUN(do_owhere)
     else
     {
         snprintf( catbuf, MSL, "Owhere report for %s", arg );
-        send_rep_out( ch, buf, mailme, catbuf );
+        //TODO: email send_rep_out( ch, buf, mailme, catbuf );
     }
     return;
 }
@@ -5064,6 +5064,10 @@ MONITOR_TYPE tab_monitor[] =
      "[ BUG          ] You are told of all submitted bugs.\r\n",
      "[ bug          ] Not told about submitted bugs.\r\n"},
 
+    {"email", MONITOR_EMAIL, 85, "@@l", "EMAIL",
+     "[ EMAIL        ] You are told of emails sent from the MUD.\r\n",
+     "[ email        ] Not told about emails sent from the MUD.\r\n"},
+
     {NULL, 0, 0, NULL, NULL, NULL, NULL}
 };
 
@@ -5754,7 +5758,7 @@ DO_FUN(do_otype)
     }
 
     snprintf( buf, MSL, "Otype report for %s", arg );
-    send_rep_out( ch, buf1, mailme, buf );
+    //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
 
@@ -5816,7 +5820,7 @@ DO_FUN(do_owear)
     }
 
     snprintf( buf, MSL, "Owear report for %s", arg );
-    send_rep_out( ch, buf1, mailme, buf );
+    //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
 
@@ -5963,7 +5967,7 @@ DO_FUN(do_findreset)
             }  /* for reset */
         }  /* for pArea */
         snprintf( mailsub, MSL, "Findresets for %s %d:\r\n", arg1, vnum );
-        send_rep_out( ch, outbuf, mailme, mailsub );
+        //TODO: email send_rep_out( ch, outbuf, mailme, mailsub );
         return;
     }  /* if ( mworld ) */
 

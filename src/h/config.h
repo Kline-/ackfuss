@@ -805,6 +805,7 @@
 #define MONITOR_TYPO         21
 #define MONITOR_IDEA         22
 #define MONITOR_BUG          23
+#define MONITOR_EMAIL        24
 
 /*
  * Hunt flags for mobs

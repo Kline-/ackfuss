@@ -2027,3 +2027,22 @@ bool evaluate_tag( const char *opr, int v1, int v2 )
 
     return retval;
 }
+
+const char *gen_rand_string( int length )
+{
+    int i, r;
+    char tmp[2];
+    static char output[MSL];
+    const char valid[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    srand ( current_time );
+
+    for ( i = 0; i < length; i++ )
+    {
+        r = rand() % strlen(valid);
+        snprintf( tmp, 2, "%c", valid[r] );
+        strncat ( output, tmp, length+1 );
+    }
+
+    return output;
+}

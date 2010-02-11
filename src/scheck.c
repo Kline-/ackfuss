@@ -224,7 +224,6 @@ static void walk_pcdata( PC_DATA * p )
         touch( p->pedit_string[i] );
     }
     touch( p->pedit_state );
-    touch( p->email_address );
     touch( p->assist_msg );
 }
 static void walk_shield_data( MAGIC_SHIELD * shield )

@@ -379,7 +379,9 @@ const struct cmd_type cmd_table[] =
      C_TYPE_INFO, C_SHOW_ALWAYS, true},
     {"stance", do_stance, POS_FIGHTING, 0, LOG_NORMAL,
      C_TYPE_ACTION, C_SHOW_ALWAYS, false},
-    {"email", do_email, POS_RESTING, 20, LOG_NORMAL,
+    {"setemail", do_set_email, POS_RESTING, 20, LOG_NORMAL,
+     C_TYPE_CONFIG, C_SHOW_ALWAYS, true},
+    {"everify", do_verify_email, POS_RESTING, 0, LOG_NORMAL,
      C_TYPE_CONFIG, C_SHOW_ALWAYS, true},
 
     /*

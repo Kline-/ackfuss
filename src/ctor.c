@@ -245,6 +245,13 @@ disabled_data::disabled_data()
     disabled_list.push_back(this);
 }
 
+email_data::email_data()
+{
+    verified = false;
+    address.clear();
+    confirmation_code.clear();
+}
+
 exit_data::exit_data()
 {
     description = &str_empty[0];
@@ -541,7 +548,7 @@ pc_data::pc_data()
     current_brand = NULL;
     death_cnt = -1;
     dimcol = 'b';
-    email_address = &str_empty[0];
+    email = new EMAIL_DATA;
     failures = 0;
     header = &str_empty[0];
     hicol = 'y';
@@ -602,7 +609,6 @@ pc_data::pc_data()
     term_columns = 80;
     term_rows = 25;
     title = &str_empty[0];
-    valid_email = false;
     for ( short i = 0; i < MAX_HOSTS; i++ )
         whitelist[i] = &str_empty[0];
     who_name = str_dup("off");

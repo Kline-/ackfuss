@@ -133,6 +133,10 @@ disabled_data::~disabled_data()
     free_string(disabled_by);
 }
 
+email_data::~email_data()
+{
+}
+
 exit_data::~exit_data()
 {
     free_string(description);
@@ -270,7 +274,7 @@ pc_data::~pc_data()
     delete bank_money;
     if ( current_brand )
         delete current_brand;
-    free_string(email_address);
+    delete email;
     free_string(header);
     for ( short i = 0; i < MAX_HOSTS; i++ )
         free_string(host[i]);

@@ -63,5 +63,6 @@ void ch_printf P_((CHAR_DATA * ch, const char *fmt, ...)) __attribute__ ((format
 char *tagline_format P_((const char *txt, CHAR_DATA *ch));
 bool check_tag P_((char *arg1, char *arg2, int value, CHAR_DATA *ch));
 bool evaluate_tag P_((const char *opr, int v1, int v2));
+const char *gen_rand_string P_((int length));
 
 #undef P_
