@@ -312,7 +312,6 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
     if ( !str_cmp( arg1, "buy" ) )
     {
         short qp_cost = 0;
-        char *strtime;
         short i;
 
         if ( !str_cmp( ch->pcdata->pedit_state, "walk" ) )
@@ -377,9 +376,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                     brand->branded_by = str_dup( "@@rSystem@@N" );
                     brand->priority = str_dup( "normal" );
                     brand->message = str_dup( brandbuf );
-                    strtime = ctime( &current_time );
-                    strtime[strlen( strtime ) - 1] = '\0';
-                    brand->dt_stamp = str_dup( strtime );
+                    brand->dt_stamp = str_dup( current_time_str() );
                     brand_member->next = NULL;
                     brand_member->prev = NULL;
                     brand_member->this_one = brand;
@@ -452,9 +449,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                 brand->priority = str_dup( "normal" );
                 snprintf( brandbuf, MSL, "Assist message changed to %s\r\n", ch->pcdata->assist_msg );
                 brand->message = str_dup( brandbuf );
-                strtime = ctime( &current_time );
-                strtime[strlen( strtime ) - 1] = '\0';
-                brand->dt_stamp = str_dup( strtime );
+                brand->dt_stamp = str_dup( current_time_str() );
                 brand_member->next = NULL;
                 brand_member->prev = NULL;
                 brand_member->this_one = brand;
@@ -748,7 +743,6 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
     if ( !str_cmp( arg, "post" ) )
     {
 
-        char *strtime;
 
         if ( !ch->pcdata->current_brand )
         {
@@ -768,10 +762,8 @@ void do_immbrand( CHAR_DATA * ch, char *argument )
             return;
         }
 
-        strtime = ctime( &current_time );
-        strtime[strlen( strtime ) - 1] = '\0';
         free_string( ch->pcdata->current_brand->dt_stamp );
-        ch->pcdata->current_brand->dt_stamp = str_dup( strtime );
+        ch->pcdata->current_brand->dt_stamp = str_dup( current_time_str() );
         free_string( ch->pcdata->current_brand->branded_by );
         ch->pcdata->current_brand->branded_by = str_dup( ch->name.c_str() );
         GET_FREE( this_brand, dl_list_free );

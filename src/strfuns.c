@@ -2046,3 +2046,15 @@ const char *gen_rand_string( int length )
 
     return output;
 }
+
+const char *current_time_str( void )
+{
+    char *strtime;
+    static char output[MSL];
+
+    strtime = ctime( &current_time );
+    strtime[strlen( strtime ) - 1] = '\0';
+    snprintf( output, MSL, "%s", strtime );
+
+    return output;
+}

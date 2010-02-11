@@ -154,7 +154,6 @@ int get_user_seconds(  )
 /* Update the checkpoint */
 void alarm_update(  )
 {
-    char *strtime;
     char buf[MSL];
 
     ssm_dup_count = 0;
@@ -164,10 +163,8 @@ void alarm_update(  )
     if ( abort_threshold == BOOT_DB_ABORT_THRESHOLD )
     {
         abort_threshold = RUNNING_ABORT_THRESHOLD;
-        strtime = ctime( &current_time );
-        strtime[strlen( strtime ) - 1] = '\0';
         snprintf( buf, MSL, "Used %d user CPU seconds.", last_checkpoint );
-        fprintf( stderr, "%s :: %s\n", strtime, buf );
+        fprintf( stderr, "%s :: %s\n", current_time_str(), buf );
     }
 }
 

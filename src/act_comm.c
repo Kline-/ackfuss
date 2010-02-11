@@ -405,7 +405,6 @@ DO_FUN(do_note)
     if ( !str_cmp( arg, "post" ) || !str_prefix( arg, "send" ) )
     {
         FILE *fp;
-        char *strtime;
 
         if ( !ch->pcdata->pnote )
         {
@@ -425,10 +424,8 @@ DO_FUN(do_note)
             return;
         }
 
-        strtime = ctime( &current_time );
-        strtime[strlen( strtime ) - 1] = '\0';
         free_string( ch->pcdata->pnote->date );
-        ch->pcdata->pnote->date = str_dup( strtime );
+        ch->pcdata->pnote->date = str_dup( current_time_str() );
         ch->pcdata->pnote->date_stamp = current_time;
 
         pnote = ch->pcdata->pnote;

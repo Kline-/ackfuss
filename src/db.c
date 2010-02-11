@@ -3392,14 +3392,9 @@ void perm_update(  )
      * output perm usage to log file
      */
     FILE *po;
-    char *strtime;
     po = file_open( "perm.out", "a" );
 
-
-    strtime = ctime( &current_time );
-    strtime[strlen( strtime ) - 1] = '\0';
-
-    fprintf( po, "%s :: Perms   %5d blocks  of %7d bytes.\r\n", strtime, nAllocPerm, sAllocPerm );
+    fprintf( po, "%s :: Perms   %5d blocks  of %7d bytes.\r\n", current_time_str(), nAllocPerm, sAllocPerm );
     file_close( po );
     return;
 }
@@ -3722,7 +3717,7 @@ void append_file( CHAR_DATA * ch, char *file, char *str )
     }
     else
     {
-        snprintf( buf, MSL, "[%5d] %s: %s\n", ch->in_room ? ch->in_room->vnum : 0, ch->name.c_str(), str );
+        snprintf( buf, MSL, "%s :: [%5d] %s: %s\n", current_time_str(), ch->in_room ? ch->in_room->vnum : 0, ch->name.c_str(), str );
         fprintf(fp, "%s", buf);
 
         buf[strlen(buf)-1] = '\0'; /* Strip newline */
@@ -3766,8 +3761,6 @@ void log_f( char *fmt, ... )
     log_string( buf );
 }
 
-
-
 /*
  * Reports a bug.
  */
@@ -3802,7 +3795,7 @@ void bug( const char *str, int param )
 
         if ( ( fp = file_open( SHUTDOWN_FILE, "a" ) ) != NULL )
         {
-            fprintf( fp, "[*****] %s\n", buf );
+            fprintf( fp, "%s :: [*****] %s\n", current_time_str(), buf );
             file_close( fp );
         }
     }
@@ -3815,7 +3808,7 @@ void bug( const char *str, int param )
 
     if ( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
     {
-        fprintf( fp, "%s\n", buf );
+        fprintf( fp, "%s :: %s\n", current_time_str(), buf );
         file_close( fp );
     }
 
@@ -3853,7 +3846,7 @@ void bug_string( const char *str, const char *str2 )
 
         if ( ( fp = file_open( SHUTDOWN_FILE, "a" ) ) != NULL )
         {
-            fprintf( fp, "[*****] %s\n", buf );
+            fprintf( fp, "%s :: [*****] %s\n", current_time_str(), buf );
             file_close( fp );
         }
     }
@@ -3863,7 +3856,7 @@ void bug_string( const char *str, const char *str2 )
 
     if ( ( fp = file_open( BUG_FILE, "a" ) ) != NULL )
     {
-        fprintf( fp, "%s\n", buf );
+        fprintf( fp, "%s :: %s\n", current_time_str(), buf );
         file_close( fp );
     }
 
@@ -3877,12 +3870,9 @@ void bug_string( const char *str, const char *str2 )
  */
 void log_string( const char *str )
 {
-    char *strtime;
-
-    strtime = ctime( &current_time );
-    strtime[strlen( strtime ) - 1] = '\0';
-    fprintf( stderr, "%s :: %s\n", strtime, str );
+    fprintf( stderr, "%s :: %s\n", current_time_str(), str );
     monitor_chan(str, MONITOR_LOG);
+
     return;
 }
 

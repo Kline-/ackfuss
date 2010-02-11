@@ -94,6 +94,8 @@ DO_FUN(do_verify_email)
        ch->send( "Thank you for verifying your email address.\r\n");
        ch->pcdata->email->confirmation_code.clear();
        ch->pcdata->email->verified = true;
+       snprintf( log_buf, MSL, "%s (%s) has verified their email address.", ch->get_name(), ch->pcdata->email->address.c_str() );
+       monitor_chan( log_buf, MONITOR_EMAIL );
        return;
     }
     else
@@ -132,6 +134,7 @@ DO_FUN(do_set_email)
 bool send_email( const char *address, const char *subject, const char *body, bool validate, CHAR_DATA *ch )
 {
     char mailbuf[MSL];
+    FILE *fp;
 
     if( IS_NPC(ch) ) /* Safety check for later --Kline */
         ch = NULL;
@@ -156,6 +159,12 @@ bool send_email( const char *address, const char *subject, const char *body, boo
     else
         snprintf( log_buf, MSL, "An email was sent to %s (%s) with subject (%s).", ch->get_name(), ch->pcdata->email->address.c_str(), subject );
     monitor_chan( log_buf, MONITOR_EMAIL );
+
+    if ( ( fp = file_open( EMAIL_FILE, "a" ) ) != NULL )
+    {
+        fprintf( fp, "%s :: %s\n", current_time_str(), mailbuf );
+        file_close( fp );
+    }
 
     return true;
 }

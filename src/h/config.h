@@ -1311,6 +1311,7 @@
 #define SHELP_INDEX    "shelp_help.index" /* For 'shelp' with no arg               */
 #define BHELP_INDEX    "build_help.index" /* For 'help' with no arg while building */
 
+#define EMAIL_FILE     BUG_DIR  "emails.txt" /* For recording email the MUD sends */
 #define BUG_FILE       BUG_DIR  "bugs.txt"   /* For 'bug' and bug( )         */
 #define IDEA_FILE      BUG_DIR  "ideas.txt" /* For 'idea'                   */
 #define TYPO_FILE      BUG_DIR  "typos.txt" /* For 'typo'                   */

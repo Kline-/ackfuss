@@ -180,7 +180,6 @@ size_t imcstrlcat( char *dst, const char *src, size_t siz )
 void imclog( const char *format, ... )
 {
     char buf[LGST], buf2[LGST];
-    char *strtime;
     va_list ap;
 
     va_start( ap, format );
@@ -191,9 +190,7 @@ void imclog( const char *format, ... )
 
     monitor_chan(buf2 + 5, MONITOR_IMC);
 
-    strtime = ctime( &imc_time );
-    strtime[strlen( strtime ) - 1] = '\0';
-    fprintf( stderr, "%s :: %s\n", strtime, buf2 );
+    fprintf( stderr, "%s :: %s\n", current_time_str(), buf2 );
 
     return;
 }
@@ -202,7 +199,6 @@ void imclog( const char *format, ... )
 void imcbug( const char *format, ... )
 {
     char buf[LGST], buf2[LGST];
-    char *strtime;
     va_list ap;
 
     va_start( ap, format );
@@ -213,9 +209,7 @@ void imcbug( const char *format, ... )
 
     monitor_chan(buf2 + 5, MONITOR_IMC);
 
-    strtime = ctime( &imc_time );
-    strtime[strlen( strtime ) - 1] = '\0';
-    fprintf( stderr, "%s :: %s\n", strtime, buf2 );
+    fprintf( stderr, "%s :: %s\n", current_time_str(), buf2 );
 
     return;
 }

@@ -875,7 +875,6 @@ DO_FUN(do_enchant)
             char brandbuf[MSL];
             char cat2_buf[MSL];
             AFFECT_DATA *one_aff;
-            char *strtime;
 
             snprintf( brandbuf, MSL, "UNIQUE ITEM: keyword: %s, Name: %s, flags: %s \r\n level: %d, affects:\r\n",
                       unique->name, unique->short_descr, extra_bit_name( unique->extra_flags ), unique->level );
@@ -897,9 +896,7 @@ DO_FUN(do_enchant)
             brand->branded_by = str_dup( "@@rSystem@@N" );
             brand->priority = str_dup( "unique" );
             brand->message = str_dup( brandbuf );
-            strtime = ctime( &current_time );
-            strtime[strlen( strtime ) - 1] = '\0';
-            brand->dt_stamp = str_dup( strtime );
+            brand->dt_stamp = str_dup( current_time_str() );
             brand_member->next = NULL;
             brand_member->prev = NULL;
             brand_member->this_one = brand;
