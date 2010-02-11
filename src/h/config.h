@@ -36,12 +36,13 @@
 /*
  *  Your mud info here :) Zen
  */
-#define mudnamecolor  "@@lAckFUSS Dev@@N"
-#define mudnamenocolor  "AckFUSS Dev"
-#define sacgodname  "Kline"
-#define goodgodname  "Good"
-#define neutralgodname  "Neutral"
-#define evilgodname  "Evil"
+#define mudnamecolor   "@@lAckFUSS Dev@@N"
+#define mudnamenocolor "AckFUSS Dev"
+#define mudemailaddr   "webmaster@ackmud.net"
+#define sacgodname     "Kline"
+#define goodgodname    "Good"
+#define neutralgodname "Neutral"
+#define evilgodname    "Evil"
 
 /*
  * String and memory management parameters.

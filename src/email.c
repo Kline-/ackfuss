@@ -121,7 +121,7 @@ bool send_email( const char *address, const char *subject, const char *body, boo
         return false;
     }
 
-    snprintf( mailbuf, MSL, "echo \"%s\" | mail -a \"Content-type: text/html;\" -s \"%s\" \"%s\"", body, subject, ch == NULL ? address : ch->pcdata->email->address.c_str() );
+    snprintf( mailbuf, MSL, "echo \"%s\" | mail -a \"From: '%s' <%s>\" -a \"Content-type: text/html;\" -s \"%s\" \"%s\"", body, mudnamenocolor, mudemailaddr, subject, ch == NULL ? address : ch->pcdata->email->address.c_str() );
 
     /*
      * system() is if() encapsulated to suppress a warning. system() returns different results on different distros,
