@@ -437,7 +437,7 @@ int L_character_info( lua_State *L )
         PUSH_STR(ch->pcdata, assist_msg);
         PUSH_STR(ch->pcdata, bamfin);
         PUSH_STR(ch->pcdata, bamfout);
-        PUSH_STR(ch->pcdata, email_address);
+        PUSH_STR(ch->pcdata->email, address.c_str());
         PUSH_STR(ch->pcdata, load_msg);
         PUSH_STR(ch->pcdata, room_enter);
         PUSH_STR(ch->pcdata, room_exit);
