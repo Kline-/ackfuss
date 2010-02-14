@@ -2155,7 +2155,7 @@ DO_FUN(build_setroom)
     {
         EXIT_DATA *pExit;
         int door;
-        char *temp;
+        const char *temp;
         ROOM_INDEX_DATA *pDestRoom;
         EXIT_DATA *pDestExit;
 
@@ -3060,7 +3060,7 @@ DO_FUN(build_dig)
     ROOM_INDEX_DATA *pRoomIndex;
     ROOM_INDEX_DATA *pCurRoom;
     int vnum, dir;
-    char *temp;
+    const char *temp;
     int iHash;
     EXIT_DATA *pExit;
     BUILD_DATA_LIST *pList;
@@ -3402,7 +3402,7 @@ DO_FUN(build_addreset)
     ROOM_INDEX_DATA *pRoomIndex;
     int vnum, num;
     int found;
-    char *temp;
+    const char *temp;
     AREA_DATA *pArea;
     MOB_INDEX_DATA *pMob;
     OBJ_INDEX_DATA *pObj;
@@ -5444,7 +5444,7 @@ DO_FUN(build_listspells)
 
 int get_dir( char dir )
 {
-    char *temp;
+    const char *temp;
     if ( dir == '\0' || ( temp = strchr( cDirs, dir ) ) == NULL )
         return -1;
 

@@ -1017,7 +1017,8 @@ char *two_args( char *argument, char *arg_first, char *arg_second )
 char *strip_out( const char *orig, const char *strip )
 {
     static char buf[MAX_STRING_LENGTH];
-    char *i, *b = buf;
+    const char *i;
+    char *b = buf;
     int slen;
 
     if ( !orig || !strip )
@@ -1041,7 +1042,8 @@ char *strip_out( const char *orig, const char *strip )
 char *strip_color( const char *orig, const char *strip )
 {
     static char buf[MAX_STRING_LENGTH];
-    char *i, *b = buf;
+    const char *i;
+    char *b = buf;
     int slen;
 
     if ( !orig || !strip )
