@@ -39,10 +39,13 @@
 #define mudnamecolor   "@@lAckFUSS Dev@@N"
 #define mudnamenocolor "AckFUSS Dev"
 #define mudemailaddr   "webmaster@ackmud.net"
+
 #define sacgodname     "Kline"
 #define goodgodname    "Good"
 #define neutralgodname "Neutral"
 #define evilgodname    "Evil"
+
+#define LOGIN_STRING   "@@N\r\nFor a list of commands type 'help'.\r\nPlease enter your name:  "
 
 /*
  * String and memory management parameters.

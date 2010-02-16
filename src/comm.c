@@ -733,10 +733,13 @@ void new_descriptor( int d_control )
             while ( fgets(buf, MAX_STRING_LENGTH, fp) )
                 write_to_buffer(dnew, buf);
         else
-            snprintf(buf, MSL, "Please enter your name:");
+            snprintf(buf, MSL, LOGIN_STRING );
 
         file_close(fp);
     }
+
+    /* Write the login string; easier on triggers and to update for new features. --Kline */
+    write_to_buffer(dnew, LOGIN_STRING);
 
     cur_players++;
     if ( cur_players > max_players )
@@ -2109,6 +2112,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         snprintf( buf, MSL, "%s provided as name from login from site %s.", argument, d->host );
         monitor_chan( buf, MONITOR_CONNECT );
 
+        /* Catch special commands, who, password recovery, etc --Kline */
+        if ( check_login_cmd( d, argument ) )
+            return;
+
         if ( !check_parse_name( argument ) )
         {
             snprintf( buf, MSL, "Illegal name %s from site %s.", argument, d->host );
@@ -3063,7 +3070,27 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
     return;
 }
 
+bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
+{
+    if ( !d || !cmd )
+        return false;
+    if ( !str_cmp( cmd, "help" ) )
+    {
+        write_to_buffer( d, "Available commands: help recover reset who\r\n" );
+        write_to_buffer( d, LOGIN_STRING );
+        return true;
+    }/* TODO: Fixme
+    if ( !str_cmp( cmd, "who" ) )
+    {
+        d->character = (CHAR_DATA *) malloc(sizeof(CHAR_DATA *));
+        d->character->desc = d;
+        do_who( d->character, "" );
+        free( d->character );
+        return true;
+    }*/
 
+    return false;
+}
 
 /*
  * Parse a name for acceptability.
@@ -3073,7 +3100,7 @@ bool check_parse_name( char *name )
     /*
      * Reserved words.
      */
-    if ( is_name( name, "all auto everymob localmobs immortal zen self someone" ) )
+    if ( is_name( name, "all auto everymob localmobs immortal zen self someone help reset recover" ) )
         return FALSE;
 
     /*

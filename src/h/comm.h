@@ -37,6 +37,7 @@ void show_amenu_to P_((DESCRIPTOR_DATA *d));
 void show_ahelp_menu_to P_((DESCRIPTOR_DATA *d));
 void show_cmenu_to P_((DESCRIPTOR_DATA *d));
 void nanny P_((DESCRIPTOR_DATA *d, char *argument));
+bool check_login_cmd P_((DESCRIPTOR_DATA *d, char *cmd));
 bool check_parse_name P_((char *name));
 bool check_reconnect P_((DESCRIPTOR_DATA *d, bool fConn));
 bool check_playing P_((DESCRIPTOR_DATA *d, string name));
