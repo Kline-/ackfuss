@@ -3076,18 +3076,16 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
         return false;
     if ( !str_cmp( cmd, "help" ) )
     {
-        write_to_buffer( d, "Available commands: help recover reset who\r\n" );
+        write_to_buffer( d, "\r\nAvailable commands: help recover reset who\r\n" );
         write_to_buffer( d, LOGIN_STRING );
         return true;
-    }/* TODO: Fixme
+    }
     if ( !str_cmp( cmd, "who" ) )
     {
-        d->character = (CHAR_DATA *) malloc(sizeof(CHAR_DATA *));
-        d->character->desc = d;
-        do_who( d->character, "" );
-        free( d->character );
+        write_to_buffer( d, who() );
+        write_to_buffer( d, LOGIN_STRING );
         return true;
-    }*/
+    }
 
     return false;
 }

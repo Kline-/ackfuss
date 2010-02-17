@@ -167,7 +167,7 @@ typedef enum { exit_from, exit_to, exit_both } exit_status;
 #define TRIG_FUN(name) void (name) (CHAR_DATA *ch, OBJ_DATA *obj)
 
 typedef void CLUTCH_FUN args( ( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj ) );
-typedef void DO_FUN     args( ( CHAR_DATA * ch, char *argument = '\0' ) );
+typedef void DO_FUN     args( ( CHAR_DATA * ch, char *argument = "" ) );
 typedef bool SPEC_FUN   args( ( CHAR_DATA * ch ) );
 typedef bool SPELL_FUN  args( ( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj ) );
 typedef void OBJ_FUN    args( ( OBJ_DATA * obj, CHAR_DATA * keeper ) );

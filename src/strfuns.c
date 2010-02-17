@@ -2063,3 +2063,112 @@ const char *current_time_str( void )
 
     return output;
 }
+
+const char *who( const char *what )
+{
+    static string output;
+    char *_what = const_cast<char *>(what);
+    char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'};
+    bool imm = false, apt = false, rmt = false, mrt = false;
+    DESCRIPTOR_DATA *d;
+    CHAR_DATA *pers;
+
+    output.clear();
+    _what = one_argument( _what, arg1 );
+    _what = one_argument( _what, arg2 );
+
+    if ( arg1[0] != '\0' )
+    {
+        // Check for level/group/class/etc restrictions
+        return output.c_str();
+    }
+    else
+    {
+        // Default output
+        output += "\r\nWHO Listing: " mudnamecolor "\r\n";
+        output += "@@R+-----------------------------------------------------------------------------+\r\n";
+        output += "| @@mSo Mo An Ki Ne@@R                                                              |\r\n";
+        output += "| @@bMa Cl Th Wa Ps @@eRace Clan  ABJPW    Player    Title                  @@R(flags) @@R|\r\n";
+        output += "|---------------------------------+-------------------------------------------|\r\n";
+
+        // Find what tiers to show
+        for ( d = first_desc; d != NULL; d = d->next )
+        {
+            if ( d->connected != CON_PLAYING || d->character->act.test(ACT_WIZINVIS) || d->character->stance == STANCE_AMBUSH )
+                continue;
+            if ( d->character->get_level() >= LEVEL_HERO )
+                imm = true;
+            if ( d->character->get_level("adept") > 0 && d->character->get_level() < LEVEL_HERO )
+                apt = true;
+            if ( d->character->get_level("maxremortal") > 0 && d->character->get_level("adept") < 1 && d->character->get_level() < LEVEL_HERO )
+                rmt = true;
+            if ( d->character->get_level("maxremortal") < 1 && d->character->get_level("adept") < 1 && d->character->get_level() < LEVEL_HERO )
+                mrt = true;
+        }
+
+        if ( imm ) //Display imms
+        {
+            output += "@@R|---------------------------------|----------@@lImmortals@@R------------------------|@@N\r\n";
+            for ( d = first_desc; d != NULL; d = d->next )
+            {
+                if ( d->connected != CON_PLAYING || d->character->act.test(ACT_WIZINVIS) || d->character->stance == STANCE_AMBUSH )
+                    continue;
+                if ( d->character->get_level() < LEVEL_HERO )
+                    continue;
+                pers = ( d->original != NULL ) ? d->original : d->character;
+                output += "@@R| "; output += pers->get_name(); output += "\r\n";
+            }
+        }
+
+        if ( apt ) //Display adepts
+        {
+            output += "@@R|---------------------------------|------------@@WAdepts@@R-------------------------|@@N\r\n";
+            for ( d = first_desc; d != NULL; d = d->next )
+            {
+                if ( d->connected != CON_PLAYING || d->character->act.test(ACT_WIZINVIS) || d->character->stance == STANCE_AMBUSH )
+                    continue;
+                if ( d->character->get_level("adept") < 1 || d->character->get_level() >= LEVEL_HERO )
+                    continue;
+                pers = ( d->original != NULL ) ? d->original : d->character;
+                output += "@@R| "; output += pers->get_name(); output += "\r\n";
+            }
+        }
+
+        if ( rmt ) //Display remorts
+        {
+            output += "@@R|---------------------------------|----------@@mRemortals@@R------------------------|@@N\r\n";
+            for ( d = first_desc; d != NULL; d = d->next )
+            {
+                if ( d->connected != CON_PLAYING || d->character->act.test(ACT_WIZINVIS) || d->character->stance == STANCE_AMBUSH )
+                    continue;
+                if ( d->character->get_level("maxremortal") < 1 || d->character->get_level("adept") > 0 || d->character->get_level() >= LEVEL_HERO )
+                    continue;
+                pers = ( d->original != NULL ) ? d->original : d->character;
+                output += "@@R| "; output += pers->get_name(); output += "\r\n";
+            }
+        }
+
+        if ( mrt ) //Display morts
+        {
+            output += "@@R|---------------------------------|-----------@@cMortals@@R-------------------------|@@N\r\n";
+            for ( d = first_desc; d != NULL; d = d->next )
+            {
+                if ( d->connected != CON_PLAYING || d->character->act.test(ACT_WIZINVIS) || d->character->stance == STANCE_AMBUSH )
+                    continue;
+                if ( d->character->get_level("maxremortal") > 0 || d->character->get_level("adept") > 0 || d->character->get_level() >= LEVEL_HERO )
+                    continue;
+                pers = ( d->original != NULL ) ? d->original : d->character;
+                output += "@@R| "; output += pers->get_name(); output += "\r\n";
+            }
+
+        }
+
+        output += "@@R|---------------------------------+-------------------------------------------|\r\n";
+        output += "@@R| Stuff about flags and player counts\r\n";
+        output += "@@R+-----------------------------------------------------------------------------+\r\n@@N";
+
+        return output.c_str();
+    }
+
+    return output.c_str();
+}
