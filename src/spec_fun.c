@@ -352,6 +352,9 @@ SPEC_FUN(spec_cast_adept)
     if ( ch->position == POS_FIGHTING )
         return FALSE;
 
+    if ( number_percent() >= 15 ) /* Keep this from going off so often vs how the game ticks. --Kline */
+        return FALSE;
+
 
     if ( ch->in_room != NULL )
     {
