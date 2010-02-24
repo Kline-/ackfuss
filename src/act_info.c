@@ -1939,13 +1939,19 @@ DO_FUN(do_help)
  */
 
 #define SHOW_IMMORT     0
-#define SHOW_ADEPT  1
+#define SHOW_ADEPT      1
 #define SHOW_REMORT     2
 #define SHOW_MORTAL     3
 #define SHOW_FINISH     4
 
 DO_FUN(do_who)
 {
+    /* Pull from the new unified function, will clean the rest up
+     * once it's completed. --Kline
+     */
+    ch->send(who());
+    return;
+
     DESCRIPTOR_DATA *d;
 
     char buf[MSL * 10];
