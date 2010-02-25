@@ -1,6 +1,6 @@
 CC   = g++
 VERS = AckFUSS 4.4.2
-#PROF    = -pg
+#PROF = -pg
 
 # Debugging flags possible:  DEBUG_MEM DEBUG_MEM_CORRUPT DEBUG_MEM_DUP_FREE
 # DEBUG_MEM is most basic, just checks magic numbers when freeing
@@ -21,7 +21,7 @@ VERS = AckFUSS 4.4.2
 #-Werror -Wwrite-strings -Wconversion
 W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings
 C_FLAGS = -O2 -g $(W_FLAGS) $(PROF) $(CYGWIN)
-L_FLAGS = -lcrypt -lm -lpthread -ldl -L`pwd` -llua
+L_FLAGS = -lcrypt -lm -lpthread -ldl -L`pwd` -llua $(PROF)
 
 #IMC2 - Comment out to disable IMC2 support
 IMC = 1

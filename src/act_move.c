@@ -2106,6 +2106,9 @@ DO_FUN(do_enter)
         return;
     }
 
+    if ( IS_CASTING(ch) )
+        do_stop(ch, "");
+
     portal = get_obj_here( ch, argument );
     if ( portal == NULL || portal->item_type != ITEM_PORTAL || portal->value[2] == 0 )
     {
