@@ -159,7 +159,7 @@ void save_char_obj( CHAR_DATA * ch )
         ch = ch->desc->original;
 
    /* Stop auto-saving people during creation --Kline */
-   if ( ch->desc->connected < CON_PLAYING && ch->desc->connected != CON_READ_MOTD )
+   if ( ch->desc && ch->desc->connected < CON_PLAYING && ch->desc->connected != CON_READ_MOTD )
         return;
 
     ch->pcdata->save_time = current_time;
