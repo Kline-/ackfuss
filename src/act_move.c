@@ -174,7 +174,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
             if ( ch->mana > mana_cost( ch, skill_lookup( "room dispel" ) ) )
                 do_cast( ch, "room dispel" );
         }
-        else if ( !IS_GHOST(ch) )
+        else if ( !IS_GHOST(ch) && !IS_IMMORTAL(ch) )
         {
             send_to_char( "A barely visible energy web stops your movement!\r\n", ch );
             ch->using_named_door = FALSE;
@@ -188,7 +188,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
             if ( ch->mana > mana_cost( ch, skill_lookup( "room dispel" ) ) )
                 do_cast( ch, "room dispel" );
         }
-        else if ( !IS_GHOST(ch) )
+        else if ( !IS_GHOST(ch) && !IS_IMMORTAL(ch) )
         {
             send_to_char( "A fleeting vision of bars appears before the exit, and stops your movement!\r\n", ch );
             ch->using_named_door = FALSE;
@@ -198,7 +198,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
     if ( pexit->exit_info.test(EX_CLOSED) && !IS_IMMORTAL(ch) )
     {
-        if ( !IS_AFFECTED( ch, AFF_PASS_DOOR ) && ( !item_has_apply( ch, ITEM_APPLY_PASS_DOOR ) ) && !IS_GHOST(ch) )
+        if ( !IS_AFFECTED( ch, AFF_PASS_DOOR ) && ( !item_has_apply( ch, ITEM_APPLY_PASS_DOOR ) ) && !IS_GHOST(ch) && !IS_IMMORTAL(ch) )
         {
             if ( pexit->exit_info.test(EX_NODETECT) )
                 send_to_char( "Alas, you cannot go that way.\r\n", ch );
@@ -207,7 +207,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
             ch->using_named_door = FALSE;
             return;
         }
-        else if ( pexit->exit_info.test(EX_PASSPROOF) )
+        else if ( pexit->exit_info.test(EX_PASSPROOF) && !IS_IMMORTAL(ch) )
         {
             if ( pexit->exit_info.test(EX_NODETECT) )
                 send_to_char( "Alas, you cannot go that way.\r\n", ch );
@@ -220,7 +220,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
 
     if ( IS_AFFECTED( ch, AFF_CHARM ) && ch->master != NULL && in_room == ch->master->in_room )
     {
-        send_to_char( "What?  And leave your beloved master?\r\n", ch );
+        send_to_char( "What? And leave your beloved master?\r\n", ch );
         ch->using_named_door = FALSE;
         return;
     }
@@ -830,10 +830,14 @@ bool has_key( CHAR_DATA * ch, int key )
     for ( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
     {
         if ( obj->pIndexData->vnum == key )
-            return TRUE;
+            return true;
     }
 
-    return FALSE;
+    /* Immortals do not need keys. --Kline */
+    if ( IS_IMMORTAL( ch ) )
+        return true;
+
+    return false;
 }
 
 
