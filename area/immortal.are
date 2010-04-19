@@ -1,5 +1,5 @@
 #AREA
-Revision  22
+Revision  24
 CanRead   Kline~
 CanWrite  Kline~
 Flags     2 4 EOL
@@ -185,7 +185,7 @@ End
 #MOBILE
 Vnum      301
 AcMod     0
-Act       2 16 EOL
+Act       sentinel bank EOL
 Affected   524860
 Alignment  0
 Cast       0
@@ -214,6 +214,7 @@ End
 
 #OBJECT
 Vnum       301
+ArmorType  0
 Durability 3
 ExtraFlags EOL
 ItemApply  1
@@ -232,6 +233,7 @@ End
 
 #OBJECT
 Vnum       302
+ArmorType  0
 Durability 87
 ExtraFlags EOL
 ItemApply  1
@@ -262,6 +264,7 @@ End
 
 #OBJECT
 Vnum       303
+ArmorType  0
 Durability 2
 ExtraFlags EOL
 ItemApply  1
@@ -292,6 +295,7 @@ End
 
 #OBJECT
 Vnum       304
+ArmorType  0
 Durability 35
 ExtraFlags EOL
 ItemApply  1
@@ -310,6 +314,7 @@ End
 
 #OBJECT
 Vnum       305
+ArmorType  0
 Durability 81
 ExtraFlags EOL
 ItemApply  1
@@ -328,6 +333,7 @@ End
 
 #OBJECT
 Vnum       306
+ArmorType  0
 Durability 6
 ExtraFlags EOL
 ItemApply  1
@@ -346,6 +352,7 @@ End
 
 #OBJECT
 Vnum       307
+ArmorType  0
 Durability 10
 ExtraFlags EOL
 ItemApply  1
@@ -364,6 +371,7 @@ End
 
 #OBJECT
 Vnum       308
+ArmorType  0
 Durability 87
 ExtraFlags EOL
 ItemApply  1

@@ -31,7 +31,6 @@ bool str_suffix P_((const char *astr, const char *bstr));
 char *capitalize P_((const char *str));
 int my_strlen P_((const char *text));
 char *learnt_name P_((int learnt));
-char *get_adept_name P_((CHAR_DATA *ch));
 int nocol_strlen P_((const char *text));
 int ccode_len P_((const char *text, short desired));
 char *center_text P_((char *text, int width));
@@ -66,5 +65,6 @@ bool evaluate_tag P_((const char *opr, int v1, int v2));
 const char *gen_rand_string P_((int length));
 const char *current_time_str P_((void));
 const char *who P_((const char *what = ""));
+const char *who_pers P_((CHAR_DATA *pers));
 
 #undef P_

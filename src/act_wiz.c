@@ -4375,7 +4375,7 @@ DO_FUN(do_setclass)
             p_class = ADVANCE_ADEPT;
             advance_level( victim, p_class, TRUE, FALSE );
             victim->pcdata->adept_level = 1;
-            snprintf( buf, MSL, " %s %s", victim->name.c_str(), get_adept_name( victim ) );
+            snprintf( buf, MSL, " %s %s", victim->name.c_str(), victim->get_whoname() );
             do_whoname( ch, buf );
             victim->exp = 0;
             do_save( victim, "auto" );

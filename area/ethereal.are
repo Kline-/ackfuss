@@ -1,5 +1,5 @@
 #AREA
-Revision  22
+Revision  24
 CanRead   Kline~
 CanWrite  Kline~
 Flags     EOL
@@ -15,10 +15,11 @@ VnumRange 401 430
 End
 
 #ROOM
-Vnum  401
-Desc  ~
-Flags EOL
-Name  New Room~
-Sect  11
+Vnum       401
+Desc       ~
+Flags      3 EOL
+Name       New Room~
+ScriptName ~
+Sect       11
 End
 #$

@@ -1,10 +1,10 @@
 #AREA
-Revision  22
+Revision  24
 CanRead   Kline~
 CanWrite  Kline~
-Flags     4 EOL
+Flags     nada EOL
 Keyword   none~
-LevLabel  @@R[@@eSYSTEM@@R]@@N~
+LevLabel  @@R[@@e SYS @@R]@@N~
 LevRange  1 120
 Name      Ceiling~
 Number    2
@@ -15,10 +15,11 @@ VnumRange 16777216 16777216
 End
 
 #ROOM
-Vnum  16777216
-Desc  You're on top of the world up here!~
-Flags 3 4 5 9 11 15 17 18 EOL
-Name  @@WThe Ceiling@@N~
-Sect  11
+Vnum       16777216
+Desc       You're on top of the world up here!~
+Flags      nada no_mob EOL
+Name       @@WThe Ceiling@@N~
+ScriptName ~
+Sect       11
 End
 #$

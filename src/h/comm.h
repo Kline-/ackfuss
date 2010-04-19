@@ -49,5 +49,6 @@ DECLARE_DO_FUN(do_finger);
 void send_to_descrips P_((const char *message));
 void copyover_recover P_((void));
 void hang P_((const char *str));
+void update_player_cnt P_((void));
 
 #undef P_

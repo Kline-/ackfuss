@@ -200,6 +200,80 @@ const char *char_data::get_title( )
         return pcdata->title;
 }
 
+const char *char_data::get_whoname( )
+{
+    char buf[MSL] = {'\0'};
+    short s1, s2, s3, s4, s5;
+    const char *output;
+
+    if ( IS_NPC(this) )
+        return "";
+
+    if ( IS_IMMORTAL(this) )
+    {
+        if ( strcmp(pcdata->who_name,"off") )
+            return pcdata->who_name;
+
+        switch ( get_level() )
+        {
+            case MAX_LEVEL - 0: return "@@l~* CREATOR *~@@N ";
+            case MAX_LEVEL - 1: return "@@B-* SUPREME *-@@N ";
+            case MAX_LEVEL - 2: return "@@a-=MAJOR GOD=-@@N ";
+            case MAX_LEVEL - 3: return "@@a--MINOR GOD--@@N ";
+            case MAX_LEVEL - 4: return "@@c - IMMORTAL -@@N ";
+        }
+    }
+
+    if ( IS_ADEPT(this) )
+    {
+        if ( strcmp(pcdata->who_name,"off") )
+            return pcdata->who_name;
+
+        switch ( get_level("adept") )
+        {
+            case 1:  return "@@W    Mystic    @@N";
+            case 2:  return "@@a   Templar    @@N";
+            case 3:  return "@@l Illusionist  @@N";
+            case 4:  return "@@e   Crusader   @@N";
+            case 5:  return "@@d   Warlock    @@N";
+            case 6:  return "@@a   Paladin    @@N";
+            case 7:  return "@@r    Ranger    @@N";
+            case 8:  return "@@c  Gladiator   @@N";
+            case 9:  return "@@l    Shogun    @@N";
+            case 10: return "@@e    Shamen    @@N";
+            case 11: return "@@r    Druid     @@N";
+            case 12: return "@@b  Conjurer    @@N";
+            case 13: return "@@l Elementalist @@N";
+            case 14: return "@@m  Runemaster  @@N";
+            case 15: return "@@d Shadowmaster @@N";
+            case 16: return "@@b Beastmaster  @@N";
+            case 17: return "@@R   Warlord    @@N";
+            case 18: return "@@e  Dragonlord  @@N";
+            case 19: return "@@d  Demonlord   @@N";
+            case 20: return "@@m  Realm Lord  @@N";
+        }
+    }
+
+    if ( IS_REMORT(this) )
+    {
+        s1 = get_level("sor"); s2 = get_level("mon"); s3 = get_level("ass"); s4 = get_level("kni"); s5 = get_level("nec");
+        snprintf( buf, MSL, "@@m%2d %2d %2d %2d %2d@@N", s1 <= 0 ? 0 : s1, s2 <= 0 ? 0 : s2, s3 <= 0 ? 0 : s3, s4 <= 0 ? 0 : s4, s5 <= 0 ? 0 : s5 );
+        output = buf;
+
+        return output;
+    }
+    else
+    {
+        s1 = get_level("mag"); s2 = get_level("cle"); s3 = get_level("thi"); s4 = get_level("war"); s5 = get_level("psi");
+        snprintf( buf, MSL, "@@b%2d %2d %2d %2d %2d@@N", s1 <= 0 ? 0 : s1, s2 <= 0 ? 0 : s2, s3 <= 0 ? 0 : s3, s4 <= 0 ? 0 : s4, s5 <= 0 ? 0 : s5 );
+        output = buf;
+
+        return output;
+    }
+
+    return "";
+}
+
 void char_data::rsend( string txt, ... )
 {
     DESCRIPTOR_DATA *d;

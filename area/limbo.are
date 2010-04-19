@@ -1,5 +1,5 @@
 #AREA
-Revision  22
+Revision  24
 CanRead   Kline~
 CanWrite  Kline~
 Flags     2 4 EOL
@@ -48,7 +48,7 @@ End
 #MOBILE
 Vnum      1
 AcMod     0
-Act       17 19 29 30 EOL
+Act       no_body no_mind no_blood no_quest EOL
 Affected   524288
 Alignment  0
 Cast       0
@@ -78,7 +78,7 @@ End
 #MOBILE
 Vnum      2
 AcMod     0
-Act       17 18 19 21 29 30 EOL
+Act       no_body hunter no_mind rewield no_blood no_quest EOL
 Affected   1680062
 Alignment  -1000
 Cast       1024
@@ -137,6 +137,7 @@ End
 
 #OBJECT
 Vnum       1
+ArmorType  0
 Durability 9
 ExtraFlags EOL
 ItemApply  1
@@ -155,6 +156,7 @@ End
 
 #OBJECT
 Vnum       2
+ArmorType  0
 Durability 67
 ExtraFlags EOL
 ItemApply  1
@@ -173,6 +175,7 @@ End
 
 #OBJECT
 Vnum       3
+ArmorType  0
 Durability 8
 ExtraFlags EOL
 ItemApply  1
@@ -191,6 +194,7 @@ End
 
 #OBJECT
 Vnum       4
+ArmorType  0
 Durability 31
 ExtraFlags EOL
 ItemApply  1
@@ -209,6 +213,7 @@ End
 
 #OBJECT
 Vnum       5
+ArmorType  0
 Durability 42
 ExtraFlags EOL
 ItemApply  1
@@ -227,6 +232,7 @@ End
 
 #OBJECT
 Vnum       6
+ArmorType  0
 Durability 31
 ExtraFlags EOL
 ItemApply  1
@@ -245,6 +251,7 @@ End
 
 #OBJECT
 Vnum       7
+ArmorType  0
 Durability 14
 ExtraFlags EOL
 ItemApply  1
@@ -263,6 +270,7 @@ End
 
 #OBJECT
 Vnum       8
+ArmorType  0
 Durability 86
 ExtraFlags EOL
 ItemApply  1
@@ -281,6 +289,7 @@ End
 
 #OBJECT
 Vnum       9
+ArmorType  0
 Durability 95
 ExtraFlags EOL
 ItemApply  1
@@ -299,6 +308,7 @@ End
 
 #OBJECT
 Vnum       10
+ArmorType  0
 Durability 46
 ExtraFlags EOL
 ItemApply  1
@@ -317,6 +327,7 @@ End
 
 #OBJECT
 Vnum       11
+ArmorType  0
 Durability 82
 ExtraFlags EOL
 ItemApply  1
@@ -335,6 +346,7 @@ End
 
 #OBJECT
 Vnum       12
+ArmorType  0
 Durability 18
 ExtraFlags EOL
 ItemApply  1
@@ -353,6 +365,7 @@ End
 
 #OBJECT
 Vnum       13
+ArmorType  0
 Durability 42
 ExtraFlags EOL
 ItemApply  1
@@ -371,6 +384,7 @@ End
 
 #OBJECT
 Vnum       14
+ArmorType  0
 Durability 55
 ExtraFlags 1 3 7 EOL
 ItemApply  257
@@ -397,6 +411,7 @@ End
 
 #OBJECT
 Vnum       15
+ArmorType  0
 Durability 46
 ExtraFlags EOL
 ItemApply  1
@@ -415,6 +430,7 @@ End
 
 #OBJECT
 Vnum       16
+ArmorType  0
 Durability 34
 ExtraFlags EOL
 ItemApply  1
@@ -433,6 +449,7 @@ End
 
 #OBJECT
 Vnum       17
+ArmorType  0
 Durability 4
 ExtraFlags EOL
 ItemApply  1
@@ -451,6 +468,7 @@ End
 
 #OBJECT
 Vnum       19
+ArmorType  0
 Durability 52
 ExtraFlags 1 2 EOL
 ItemApply  1
@@ -469,6 +487,7 @@ End
 
 #OBJECT
 Vnum       18
+ArmorType  0
 Durability 27
 ExtraFlags 1 2 EOL
 ItemApply  1
@@ -487,6 +506,7 @@ End
 
 #OBJECT
 Vnum       20
+ArmorType  0
 Durability 48
 ExtraFlags 1 7 20 EOL
 ItemApply  1
@@ -517,6 +537,7 @@ End
 
 #OBJECT
 Vnum       21
+ArmorType  0
 Durability 30
 ExtraFlags EOL
 ItemApply  1

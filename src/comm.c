@@ -339,8 +339,6 @@ int init_socket( int sock_port )
 }
 
 int cur_hour = 0;
-int max_players = 0;
-int cur_players = 0;
 
 /* + */
 int reopen_flag;
@@ -567,9 +565,9 @@ void game_loop( int game_control )
             {
                 cur_hour = now_bd_time->tm_hour;
                 out_file = file_open( PLAYERNUM_FILE, "a" );
-                fprintf( out_file, "%i %i %i\n", now_bd_time->tm_mday, cur_hour, max_players );
+                fprintf( out_file, "%i %i %i\n", now_bd_time->tm_mday, cur_hour, mudinfo.max_players_reboot );
                 file_close( out_file );
-                max_players = cur_players;
+                update_player_cnt( );
             }
 
             usecDelta = ( ( int )last_time.tv_usec ) - ( ( int )now_time.tv_usec ) + 1000000 / PULSE_PER_SECOND;
@@ -741,10 +739,6 @@ void new_descriptor( int d_control )
     /* Write the login string; easier on triggers and to update for new features. --Kline */
     write_to_buffer(dnew, LOGIN_STRING);
 
-    cur_players++;
-    if ( cur_players > max_players )
-        max_players = cur_players;
-
     return;
 }
 
@@ -828,8 +822,8 @@ void close_socket( DESCRIPTOR_DATA * dclose )
         free(dclose->showstr_head);
 
     delete dclose;
+    update_player_cnt( );
 
-    cur_players--;
     return;
 }
 
@@ -2109,12 +2103,12 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
         argument[0] = UPPER( argument[0] );
 
-        snprintf( buf, MSL, "%s provided as name from login from site %s.", argument, d->host );
-        monitor_chan( buf, MONITOR_CONNECT );
-
         /* Catch special commands, who, password recovery, etc --Kline */
         if ( check_login_cmd( d, argument ) )
             return;
+
+        snprintf( buf, MSL, "%s provided as name from login from site %s.", argument, d->host );
+        monitor_chan( buf, MONITOR_CONNECT );
 
         if ( !check_parse_name( argument ) )
         {
@@ -2924,6 +2918,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
         snprintf( buf, MSL, "%s has entered the game.", ch->name.c_str() );
         monitor_chan( buf, MONITOR_CONNECT );
+        update_player_cnt( );
 
         if ( !IS_NPC( ch ) )
         {
@@ -3805,6 +3800,7 @@ void copyover_recover(  )
     }
 
     fclose( fp );
+    update_player_cnt( );
     disable_timer_abort = FALSE;
 }
 
@@ -3813,4 +3809,26 @@ void hang( const char *str )
 {
     bug( str, 0 );
     kill( getpid(  ), SIGQUIT );
+}
+
+void update_player_cnt( void )
+{
+ DESCRIPTOR_DATA *d;
+ int found = 0;
+
+ for( d = first_desc; d != NULL; d = d->next )
+ {
+     if( !d->character || d->character->name.empty() || (d->connected != CON_PLAYING) )
+         continue;
+     else
+         found++;
+ }
+
+ mudinfo.cur_players = found;
+ if( mudinfo.cur_players > mudinfo.max_players_reboot )
+     mudinfo.max_players_reboot = mudinfo.cur_players;
+ if( mudinfo.max_players_reboot > mudinfo.max_players )
+     mudinfo.max_players = mudinfo.max_players_reboot;
+
+ return;
 }

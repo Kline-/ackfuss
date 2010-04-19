@@ -555,6 +555,7 @@ class char_data
         short get_level( const char *what = '\0' );
         const char *get_name( CHAR_DATA *looker = NULL );
         const char *get_title( void );
+        const char *get_whoname( void );
         void rsend( string txt, ... ); __attribute__ ((format (printf, 2, 3)));
         void send( string txt, ... ); __attribute__ ((format (printf, 2, 3)));
         void set_cooldown( const char *skill );
@@ -1215,7 +1216,10 @@ class super_data
 
 struct mudinfo
 {
+    unsigned int      cur_players;
     time_t            first_boot;
+    unsigned int      max_players;
+    unsigned int      max_players_reboot;
     unsigned long int mk_by_npc;
     unsigned long int mk_by_pc;
     unsigned long int pk_by_npc;

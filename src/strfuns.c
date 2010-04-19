@@ -616,87 +616,6 @@ char *learnt_name( int learnt )
         return "Godlike";
 }
 
-char *get_adept_name( CHAR_DATA * ch )
-{
-    /*
-     * this is weak for now..will eventually have like 200 total names, based on the remort
-     * classes the adept has
-     */
-
-    if ( !IS_ADEPT(ch) )
-        return "@@e    Bugged    @@N";
-
-    switch ( ch->get_level("adept") )
-    {
-
-        case 1:
-            return "@@W    Mystic    @@N";
-            break;
-        case 2:
-            return "@@a   Templar    @@N";
-            break;
-        case 3:
-            return "@@l Illusionist  @@N";
-            break;
-        case 4:
-            return "@@e   Crusader   @@N";
-            break;
-        case 5:
-            return "@@d   Warlock    @@N";
-            break;
-        case 6:
-            return "@@a   Paladin    @@N";
-
-        case 7:
-            return "@@r    Ranger    @@N";
-            break;
-        case 8:
-            return "@@c  Gladiator   @@N";
-            break;
-        case 9:
-            return "@@l    Shogun    @@N";
-            break;
-        case 10:
-            return "@@e    Shamen    @@N";
-            break;
-        case 11:
-            return "@@r    Druid     @@N";
-            break;
-        case 12:
-            return "@@b  Conjurer    @@N";
-
-        case 13:
-            return "@@l Elementalist @@N";
-            break;
-        case 14:
-            return "@@m  Runemaster  @@N";
-
-        case 15:
-            return "@@d Shadowmaster @@N";
-            break;
-        case 16:
-            return "@@b Beastmaster  @@N";
-            break;
-        case 17:
-            return "@@R   Warlord    @@N";
-            break;
-        case 18:
-            return "@@e  Dragonlord  @@N";
-            break;
-        case 19:
-            return "@@d  Demonlord   @@N";
-            break;
-        case 20:
-            return "@@m  Realm Lord  @@N";
-
-
-
-    }
-    return "@@W    Adept     @@N";
-}
-
-
-
 int nocol_strlen( const char *text )
 {
     char c;
@@ -2068,8 +1987,9 @@ const char *who( const char *what )
 {
     static string output;
     char *_what = const_cast<char *>(what);
-    char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'};
+    char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'}, buf1[MSL] = {'\0'}, buf2[MSL] = {'\0'};
     bool imm = false, apt = false, rmt = false, mrt = false;
+    short found = 0;
     DESCRIPTOR_DATA *d;
     CHAR_DATA *pers;
 
@@ -2088,7 +2008,7 @@ const char *who( const char *what )
         output += "\r\nWHO Listing: " mudnamecolor "\r\n";
         output += "@@R+-----------------------------------------------------------------------------+\r\n";
         output += "| @@mSo Mo An Ki Ne@@R                                                              |\r\n";
-        output += "| @@bMa Cl Th Wa Ps @@eRace Clan  ABJPW    Player    Title                  @@R(flags) @@R|\r\n";
+        output += "| @@bMa Cl Th Wa Ps @@eRace Clan  ABJPW   Player     Title                  Flags   @@R|\r\n";
         output += "|---------------------------------+-------------------------------------------|\r\n";
 
         // Find what tiers to show
@@ -2104,6 +2024,7 @@ const char *who( const char *what )
                 rmt = true;
             if ( d->character->get_level("maxremortal") < 1 && d->character->get_level("adept") < 1 && d->character->get_level() < LEVEL_HERO )
                 mrt = true;
+            found++;
         }
 
         if ( imm ) //Display imms
@@ -2116,7 +2037,7 @@ const char *who( const char *what )
                 if ( d->character->get_level() < LEVEL_HERO )
                     continue;
                 pers = ( d->original != NULL ) ? d->original : d->character;
-                output += "@@R| "; output += pers->get_name(); output += "\r\n";
+                output += "@@R| "; output += who_pers( pers ); output += " @@R|@@N\r\n";
             }
         }
 
@@ -2130,7 +2051,7 @@ const char *who( const char *what )
                 if ( d->character->get_level("adept") < 1 || d->character->get_level() >= LEVEL_HERO )
                     continue;
                 pers = ( d->original != NULL ) ? d->original : d->character;
-                output += "@@R| "; output += pers->get_name(); output += "\r\n";
+                output += "@@R| "; output += who_pers( pers ); output += " @@R|@@N\r\n";
             }
         }
 
@@ -2144,7 +2065,7 @@ const char *who( const char *what )
                 if ( d->character->get_level("maxremortal") < 1 || d->character->get_level("adept") > 0 || d->character->get_level() >= LEVEL_HERO )
                     continue;
                 pers = ( d->original != NULL ) ? d->original : d->character;
-                output += "@@R| "; output += pers->get_name(); output += "\r\n";
+                output += "@@R| "; output += who_pers( pers ); output += " @@R|@@N\r\n";
             }
         }
 
@@ -2158,17 +2079,105 @@ const char *who( const char *what )
                 if ( d->character->get_level("maxremortal") > 0 || d->character->get_level("adept") > 0 || d->character->get_level() >= LEVEL_HERO )
                     continue;
                 pers = ( d->original != NULL ) ? d->original : d->character;
-                output += "@@R| "; output += pers->get_name(); output += "\r\n";
+                output += "@@R| "; output += who_pers( pers ); output += " @@R|@@N\r\n";
             }
 
         }
 
         output += "@@R|---------------------------------+-------------------------------------------|\r\n";
-        output += "@@R| Stuff about flags and player counts\r\n";
+        snprintf( buf1, MSL, "(%d Player%s)  KEY: (A)fk  (B)uilding  (K)iller  (P)kok  (T)hief  (W)riting", found, found == 1 ? "" : "s" );
+        snprintf( buf2, MSL, "@@R|@@N %s @@R|\r\n", center_text( buf1, 75 ) );
+        output += buf2;
+        snprintf( buf1, MSL, " (*) Clan Boss  (L) Clan Leader  (!) Clan Armorer " );
+        snprintf( buf2, MSL, "@@R|@@N %s @@R|\r\n", center_text( buf1, 75 ) );
+        output += buf2;
+        snprintf( buf1, MSL, "There has been a maximum of %d player%s logged on this session.", mudinfo.max_players_reboot, mudinfo.max_players_reboot == 1 ? "" : "s" );
+        snprintf( buf2, MSL, "@@R|@@N %s @@R|\r\n", center_text( buf1, 75 ) );
+        output += buf2;
         output += "@@R+-----------------------------------------------------------------------------+\r\n@@N";
 
         return output.c_str();
     }
 
     return output.c_str();
+}
+
+const char *who_pers( CHAR_DATA *pers )
+{
+ char buf[MSL] = {'\0'}, ntbuf[MSL] = {'\0'};
+ char cjob[2] = {'\0'};
+ char flags1[10] = {'\0'}, flags2[10] = {'\0'};
+ int nlen = 0, tlen = 0;
+ const char *output;
+
+ if( !pers )
+  return "";
+
+ /* Clan job, if any */
+ if ( pers->act.test(ACT_CBOSS) )
+     snprintf( cjob, 2, "*" );
+ else if ( pers->act.test(ACT_CLEADER) )
+     snprintf( cjob, 2, "L" );
+ else if ( pers->act.test(ACT_CARMORER) )
+     snprintf( cjob, 2, "!" );
+ else
+     snprintf( cjob, 2, " " );
+
+ /* Flags on left side of output */
+ if ( pers->act.test(ACT_AFK) )
+     snprintf( flags1, 10, "A" );
+ else
+     snprintf( flags1, 10, " " );
+ if ( pers->position == POS_BUILDING )
+     strncat( flags1, "B", 10 );
+ else
+     strncat( flags1, " ", 10 );
+ strncat( flags1, cjob, 10 );
+ if ( pers->act.test(ACT_PKOK) )
+     strncat( flags1, "P", 10 );
+ else
+     strncat( flags1, " ", 10 );
+ if ( pers->position == POS_WRITING )
+     strncat( flags1, "W", 10 );
+ else
+     strncat( flags1, " ", 10 );
+
+ /* Flags on right side of output */
+ if ( pers->act.test(ACT_WIZINVIS) )
+     snprintf( flags2, 10, "I" );
+ if ( pers->act.test(ACT_KILLER) )
+ {
+     if ( flags2[0] == '\0' )
+         snprintf( flags2, 10, "K" );
+     else
+         strncat( flags2, "K", 10 );
+ }
+ if ( pers->act.test(ACT_THIEF) )
+ {
+     if ( flags2[0] == '\0' )
+         snprintf( flags2, 10, "T" );
+     else
+         strncat( flags2, "T", 10 );
+ }
+ if ( pers->timer > 5 )
+     snprintf( flags2, 10, "IDLE:%2d", pers->timer );
+
+ /* Sort out name + title length */
+ nlen = strlen( pers->name.c_str() );
+ tlen = 3 + my_strlen( pers->get_title() ) + nlen; /* Add 3 for space padded on either end of the total string, and terminating NUL */
+ snprintf( ntbuf, MSL, "%s%s", pers->get_name(), pers->get_title() );
+ if ( tlen > 36 )
+     ntbuf[36] = '\0';
+ else
+ {
+     for ( short i = tlen; i < 36; i++ )
+        strncat( ntbuf, " ", 36 );
+ }
+
+ /* Make the magic happen */
+ snprintf( buf, MSL, "%s  %3s%5s  %s @@R|@@N %s @@e%-7s@@N", pers->get_whoname(), race_table[pers->race].race_name, clan_table[pers->clan].clan_name,
+                                                             flags1, ntbuf, flags2 );
+ output = buf;
+
+ return output;
 }
