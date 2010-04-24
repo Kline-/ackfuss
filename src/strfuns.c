@@ -158,11 +158,18 @@ bool is_name_pfx( const char *str, char *namelist )
 
 char *space_pad( const char *str, short final_size )
 {
-    short space_pad = my_strlen( str );
+    short space_pad = nocol_strlen( str );
     static char padbuf[MSL];
 
     snprintf( padbuf, MSL, "%s", str );
-    for ( ; space_pad != final_size; space_pad++ )
+
+    if ( space_pad > final_size )
+    {
+        padbuf[final_size] = '\0';
+        return padbuf;
+    }
+
+    for ( ; space_pad < final_size; space_pad++ )
         strncat( padbuf, " ", MSL );
     return padbuf;
 }
@@ -537,50 +544,6 @@ char *capitalize( const char *str )
     return ( strcap );
 }
 
-
-
-/*
- * We need a replacement for strlen() which will take the color
- * codes into account when reporting a string's length.
- * -- Stephen
- */
-
-int my_strlen( const char *text )
-{
-    char c;
-    int i;
-    int status;
-    int length;
-    int strlen_size;
-
-    status = 0;
-    length = 0;
-    strlen_size = strlen( text );
-
-    for ( i = 0; i < strlen_size; i++ )
-    {
-
-        c = text[i];
-        length++;
-
-        switch ( status )
-        {
-            case 0:
-            case 1:
-                if ( c == '@' )
-                    status++;
-                else
-                    status = 0;
-                break;
-            case 2:
-                length -= 3;   /* Subtract for '@@x' */
-                status = 0;
-                break;
-        }
-    }
-    return ( length );
-}
-
 char *learnt_name( int learnt )
 {
     /*
@@ -708,7 +671,7 @@ char *center_text( char *text, int width )
     /*
      * Don't bother with strings too long..
      */
-    if ( ( len = my_strlen( text ) ) >= width )
+    if ( ( len = nocol_strlen( text ) ) >= width )
         return text;
 
     diff = strlen( text ) - len;
@@ -811,6 +774,7 @@ char *str_mod( char *mod_string, char *argument )
     }
     return mod_string;
 }
+
 void rand_arg( char *argument, char *output )
 {
     char temp[MSL];
@@ -980,6 +944,7 @@ char *strip_color( const char *orig, const char *strip )
     strcpy( b, orig );
     return buf;
 }
+
 char *get_tribe_standing_name( int standing )
 {
 
@@ -1006,7 +971,7 @@ char *get_tribe_standing_name( int standing )
             break;
         case 6:
             return "@@yElder@@N";
-
+            break;
         case 7:
             return "@@rAdult@@N";
             break;
@@ -1205,7 +1170,6 @@ char *affect_loc_name( int location )
             return "intelligence";
         case APPLY_WIS:
             return "wisdom";
-
         case APPLY_CON:
             return "constitution";
         case APPLY_SEX:
@@ -1983,7 +1947,7 @@ const char *current_time_str( void )
     return output;
 }
 
-const char *who( const char *what )
+const char *who( const char *what, CHAR_DATA *looker )
 {
     static string output;
     char *_what = const_cast<char *>(what);
@@ -2109,6 +2073,7 @@ const char *who_pers( CHAR_DATA *pers )
  char flags1[10] = {'\0'}, flags2[10] = {'\0'};
  int nlen = 0, tlen = 0;
  const char *output;
+ string format;
 
  if( !pers )
   return "";
@@ -2163,16 +2128,16 @@ const char *who_pers( CHAR_DATA *pers )
      snprintf( flags2, 10, "IDLE:%2d", pers->timer );
 
  /* Sort out name + title length */
- nlen = strlen( pers->name.c_str() );
- tlen = 3 + my_strlen( pers->get_title() ) + nlen; /* Add 3 for space padded on either end of the total string, and terminating NUL */
+ nlen = nocol_strlen( pers->name.c_str() );
+ tlen = 3 + strlen( pers->get_title() ) + nlen; /* Add 3 for space padded on either end of the total string, and terminating NUL */
  snprintf( ntbuf, MSL, "%s%s", pers->get_name(), pers->get_title() );
- if ( tlen > 36 )
-     ntbuf[36] = '\0';
- else
- {
-     for ( short i = tlen; i < 36; i++ )
-        strncat( ntbuf, " ", 36 );
- }
+
+ /* Do some tricky shit to account for any color codes and not bork our length */
+ tlen = substr_cnt(ntbuf,"@@");
+ snprintf( buf, MSL, "%d", 33+(tlen*3) );
+ format = "%-"; format += buf; format += "."; format += buf; format += "s";
+ snprintf( buf, MSL, format.c_str(), ntbuf );
+ snprintf( ntbuf, MSL, "%s", buf );
 
  /* Make the magic happen */
  snprintf( buf, MSL, "%s  %3s%5s  %s @@R|@@N %s @@e%-7s@@N", pers->get_whoname(), race_table[pers->race].race_name, clan_table[pers->clan].clan_name,
@@ -2180,4 +2145,17 @@ const char *who_pers( CHAR_DATA *pers )
  output = buf;
 
  return output;
+}
+
+size_t substr_cnt( const char *input, const char *item )
+{
+ string output;
+ size_t pos = 0;
+ int cnt = 0;
+
+ output = input;
+ for ( (pos = output.find(item)); pos != string::npos; (pos = output.find(item,pos+1)) )
+  cnt++;
+
+ return cnt;
 }

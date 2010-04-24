@@ -29,7 +29,6 @@ bool str_prefix P_((const char *astr, const char *bstr));
 bool str_infix P_((const char *astr, const char *bstr));
 bool str_suffix P_((const char *astr, const char *bstr));
 char *capitalize P_((const char *str));
-int my_strlen P_((const char *text));
 char *learnt_name P_((int learnt));
 int nocol_strlen P_((const char *text));
 int ccode_len P_((const char *text, short desired));
@@ -64,7 +63,8 @@ bool check_tag P_((char *arg1, char *arg2, int value, CHAR_DATA *ch));
 bool evaluate_tag P_((const char *opr, int v1, int v2));
 const char *gen_rand_string P_((int length));
 const char *current_time_str P_((void));
-const char *who P_((const char *what = ""));
+const char *who P_((const char *what = "", CHAR_DATA *looker = NULL));
 const char *who_pers P_((CHAR_DATA *pers));
+size_t substr_cnt P_((const char *input, const char *item));
 
 #undef P_

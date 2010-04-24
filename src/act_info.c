@@ -2389,9 +2389,9 @@ DO_FUN(do_title)
         send_to_char( "You used either [ or ] in your title.  They have been removed!\r\n", ch );
 
     /*
-     * my_strlen handles color codes as zero length
+     * nocol_strlen handles color codes as zero length
      */
-    if ( my_strlen( argument ) > 32 )
+    if ( nocol_strlen( argument ) > 32 )
     {
         send_to_char( "Title too long.  Please try again.\r\n", ch );
         return;
