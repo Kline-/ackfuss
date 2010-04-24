@@ -2068,11 +2068,11 @@ const char *who( const char *what, CHAR_DATA *looker )
 
 const char *who_pers( CHAR_DATA *pers )
 {
- char buf[MSL] = {'\0'}, ntbuf[MSL] = {'\0'};
+ char buf1[MSL] = {'\0'}, buf2[MSL] = {'\0'}, ntbuf[MSL] = {'\0'};
  char cjob[2] = {'\0'};
  char flags1[10] = {'\0'}, flags2[10] = {'\0'};
  int nlen = 0, tlen = 0;
- const char *output;
+ static const char *output;
  string format;
 
  if( !pers )
@@ -2130,23 +2130,38 @@ const char *who_pers( CHAR_DATA *pers )
  /* Sort out name + title length */
  nlen = nocol_strlen( pers->name.c_str() );
  tlen = 3 + strlen( pers->get_title() ) + nlen; /* Add 3 for space padded on either end of the total string, and terminating NUL */
- snprintf( ntbuf, MSL, "%s%s", pers->get_name(), pers->get_title() );
-
- /* Do some tricky shit to account for any color codes and not bork our length */
- tlen = substr_cnt(ntbuf,"@@");
- snprintf( buf, MSL, "%d", 33+(tlen*3) );
- format = "%-"; format += buf; format += "."; format += buf; format += "s";
- snprintf( buf, MSL, format.c_str(), ntbuf );
- snprintf( ntbuf, MSL, "%s", buf );
+ snprintf( buf2, MSL, "%s%s", pers->get_name(), pers->get_title() );
+ snprintf( ntbuf, MSL, "%s", color_format(buf2,33,true) );
 
  /* Make the magic happen */
- snprintf( buf, MSL, "%s  %3s%5s  %s @@R|@@N %s @@e%-7s@@N", pers->get_whoname(), race_table[pers->race].race_name, clan_table[pers->clan].clan_name,
-                                                             flags1, ntbuf, flags2 );
+ snprintf( buf1, MSL, "%s  %3s%5s  %s @@R|@@N %s @@e%-7s@@N", pers->get_whoname(), race_table[pers->race].race_name, clan_table[pers->clan].clan_name,
+                                                              flags1, ntbuf, flags2 );
+ output = buf1;
+
+ return output;
+}
+
+/* Return a properly justified string of <length> while accounting for properly spacing due to color codes */
+const char *color_format( const char *input, int length, bool left_just )
+{
+ int len = substr_cnt(input,"@@");
+ char buf[MSL] = {'\0'};
+ static const char *output;
+ string format;
+
+ snprintf( buf, MSL, "%d", (length+(len*3)) );
+ if( left_just )
+  format = "%-";
+ else
+  format = "%";
+ format += buf; format += "."; format += buf; format += "s";
+ snprintf( buf, MSL, format.c_str(), input );
  output = buf;
 
  return output;
 }
 
+/* Count the number of times <item> appears in <input> */
 size_t substr_cnt( const char *input, const char *item )
 {
  string output;

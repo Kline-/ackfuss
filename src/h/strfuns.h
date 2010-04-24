@@ -65,6 +65,7 @@ const char *gen_rand_string P_((int length));
 const char *current_time_str P_((void));
 const char *who P_((const char *what = "", CHAR_DATA *looker = NULL));
 const char *who_pers P_((CHAR_DATA *pers));
+const char *color_format P_((const char *input, int length, bool left_just));
 size_t substr_cnt P_((const char *input, const char *item));
 
 #undef P_
