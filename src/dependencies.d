@@ -97,8 +97,8 @@ o/dtor.o: dtor.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
 o/email.o: email.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
  h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
  h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_comm.h \
- h/act_wiz.h h/comm.h h/db.h h/email.h h/handler.h h/save.h h/spendqp.h \
- h/ssm.h
+ h/act_wiz.h h/buildtab.h h/comm.h h/db.h h/email.h h/handler.h h/save.h \
+ h/spendqp.h h/ssm.h
 o/enchant.o: enchant.c h/globals.h h/includes.h h/lua.hpp h/lua.h \
  h/luaconf.h h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
@@ -197,8 +197,9 @@ o/rulers.o: rulers.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
 o/save.o: save.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
  h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
  h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/act_info.h \
- h/act_obj.h h/act_wiz.h h/buildtab.h h/comm.h h/db.h h/handler.h \
- h/hash.h h/luascript.h h/magic.h h/money.h h/obj_fun.h h/save.h h/ssm.h
+ h/act_obj.h h/act_wiz.h h/buildtab.h h/comm.h h/db.h h/email.h \
+ h/handler.h h/hash.h h/luascript.h h/magic.h h/money.h h/obj_fun.h \
+ h/save.h h/ssm.h
 o/scheck.o: scheck.c h/globals.h h/includes.h h/lua.hpp h/lua.h h/luaconf.h \
  h/lualib.h h/lauxlib.h h/typedefs.h h/ack.h h/config.h h/imc.h \
  h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/comm.h h/db.h \

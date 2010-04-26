@@ -58,6 +58,10 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_EMAIL_H
+#include "h/email.h"
+#endif
+
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
 #endif
@@ -405,6 +409,19 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "TermColumns    %i\n", ch->pcdata->term_columns );
         fprintf( fp, "Email          %s~\n", ch->pcdata->email->address.c_str() );
         fprintf( fp, "EmailCode      %s~\n", ch->pcdata->email->confirmation_code.c_str() );
+
+        outstr.clear();
+        fprintf( fp, "EmailFlags     " );
+        for ( foo = 0; foo < MAX_BITSET; foo++ )
+        {
+            if ( ch->pcdata->email->flags.test(foo) )
+            {
+                outstr += rev_table_lookup( tab_email, foo );
+                outstr += " ";
+            }
+        }
+        fprintf( fp, "%sEOL\n", outstr.c_str() );
+
         fprintf( fp, "EmailValid     %i\n", ch->pcdata->email->verified );
         fprintf( fp, "AssistMsg      %s~\n", ch->pcdata->assist_msg );
 
@@ -1054,6 +1071,19 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 {
                     KEY( "Email", ch->pcdata->email->address, fread_string( fp ) );
                     KEY( "EmailCode", ch->pcdata->email->confirmation_code, fread_string( fp ) );
+                    if ( !str_cmp( word, "EmailFlags" ) )
+                    {
+                        const char *tmp = fread_word(fp);
+
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            ch->pcdata->email->flags.set(table_lookup(tab_email,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
+                        }
+                        fMatch = TRUE;
+                        break;
+                    }
+
                     KEY( "EmailValid", ch->pcdata->email->verified, fread_number( fp ) );
                 }
                 break;

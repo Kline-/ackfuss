@@ -15,8 +15,11 @@
 #endif
 
 /* email.c */
+DECLARE_DO_FUN(do_email);
+DECLARE_DO_FUN(do_tog_email);
 DECLARE_DO_FUN(do_verify_email);
 DECLARE_DO_FUN(do_set_email);
 bool send_email P_((const char *address, const char *subject, const char *body, bool validate, CHAR_DATA *ch = NULL));
+extern LOOKUP_TYPE tab_email[];
 
 #undef P_

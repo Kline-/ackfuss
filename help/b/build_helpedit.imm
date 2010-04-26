@@ -1,0 +1,5 @@
+BUILD HELP : HELPEDIT
+----------------------
+
+The HELPEDIT command allows you to edit a helpfile.
+Syntax:  HELPEDIT <mort/imm> <name>

@@ -1262,6 +1262,7 @@ class email_data
         email_data();
         ~email_data();
         bool verified;
+        bitset<MAX_BITSET> flags;
         string address;
         string confirmation_code;
 };

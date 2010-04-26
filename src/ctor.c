@@ -248,6 +248,7 @@ disabled_data::disabled_data()
 email_data::email_data()
 {
     verified = false;
+    flags.reset();
     address.clear();
     confirmation_code.clear();
 }

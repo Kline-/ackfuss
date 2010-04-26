@@ -1,0 +1,5 @@
+BUILD HELP : DELHELP
+----------------------
+
+The DELHELP command allows you to delete a helpfile.
+Syntax:  DELHELP <mort/imm> <name> ok

@@ -748,6 +748,11 @@
 #define ACT_SHUNTER      78   /* vamp/wolf 'hunter' super race  */
 #define ACT_WHITELIST    79   /* utilize login whitelist        */
 
+/* Email bitset values --Kline */
+#define F_EMAIL_MORT       0
+#define F_EMAIL_IMM        1
+
+
 /*
  * Channel bits.
  */

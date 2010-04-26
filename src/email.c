@@ -16,6 +16,10 @@
 #include "h/act_wiz.h"
 #endif
 
+#ifndef DEC_BUILDTAB_H
+#include "h/buildtab.h"
+#endif
+
 #ifndef DEC_COMM_H
 #include "h/comm.h"
 #endif
@@ -43,6 +47,77 @@
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
+
+DO_FUN(do_email)
+{
+    if ( IS_NPC( ch ) )
+        return;
+    return;
+}
+
+DO_FUN(do_tog_email)
+{
+    bool mort = false, imm = false;
+    int value = 0;
+
+    if ( IS_NPC( ch ) )
+        return;
+
+    if ( argument[0] == '\0' )
+    {
+        if ( ch->pcdata->email->flags.test(table_lookup(tab_email,"mort")) )
+            mort = true;
+        if ( ch->pcdata->email->flags.test(table_lookup(tab_email,"imm")) )
+            imm = true;
+
+        ch->send("You are currently accepting emails from ");
+
+        if ( mort && imm )
+            ch->send("players and immortals.\r\n");
+        else if ( mort )
+            ch->send("players only.\r\n");
+        else if ( imm )
+            ch->send("immortals only.\r\n");
+        else
+            ch->send("no one.\r\n");
+
+        ch->send("To enable emails from players or immortals, use togemail <mortal/immortal>.\r\n");
+        return;
+    }
+
+    if ( !str_prefix( argument, "mortal" ) )
+    {
+        value = table_lookup(tab_email,"mort");
+
+        if ( ch->pcdata->email->flags.test(value) )
+            ch->send("You will no longer receive emails from other players.\r\n");
+        else
+            ch->send("You will now be able to receive emails from other players.\r\n");
+
+        ch->pcdata->email->flags.flip(value);
+
+        return;
+    }
+
+    if ( !str_prefix( argument, "immortal" ) )
+    {
+        value = table_lookup(tab_email,"imm");
+
+        if ( ch->pcdata->email->flags.test(value) )
+            ch->send("You will no longer receive emails from immortals.\r\n");
+        else
+            ch->send("You will now be able to receive emails from immortals.\r\n");
+
+        ch->pcdata->email->flags.flip(value);
+
+        return;
+    }
+
+    /* Generate usage message */
+    do_tog_email( ch );
+
+    return;
+}
 
 DO_FUN(do_verify_email)
 {
@@ -143,3 +218,10 @@ bool send_email( const char *address, const char *subject, const char *body, boo
 
     return true;
 }
+
+LOOKUP_TYPE tab_email[] =
+{
+ {"mort", F_EMAIL_MORT, 0},
+ {"imm",  F_EMAIL_IMM,  0},
+ {NULL,0}
+};

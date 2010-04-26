@@ -1,0 +1,5 @@
+BUILD HELP : ADDHELP
+----------------------
+
+The ADDHELP command allows you to add a helpfile.
+Syntax:  ADDHELP <mort/imm> <name>
