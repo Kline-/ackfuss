@@ -1880,7 +1880,22 @@ CHAR_DATA *get_char_room( CHAR_DATA * ch, char *argument )
 }
 
 
+/* See if a player with the name currently exists; mostly to deal with offline loading of pfiles --Kline */
+bool char_exists_world( const char *who )
+{
+    list<CHAR_DATA *>::iterator li;
+    CHAR_DATA *pers = NULL;
 
+    for ( li = char_list.begin(); li != char_list.end(); li++ )
+    {
+        pers = *li;
+
+        if ( is_name( who, const_cast<char *>(pers->name.c_str()) ) )
+            return true;
+    }
+
+    return false;
+}
 
 /*
  * Find a char in the world.

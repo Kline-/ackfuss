@@ -51,6 +51,7 @@ void obj_to_obj P_((OBJ_DATA *obj, OBJ_DATA *obj_to));
 void obj_from_obj P_((OBJ_DATA *obj));
 void extract_obj P_((OBJ_DATA *obj));
 void extract_char P_((CHAR_DATA *ch, bool fPull));
+bool char_exists_world P_((const char *who));
 CHAR_DATA *get_char_room P_((CHAR_DATA *ch, char *argument));
 CHAR_DATA *get_char_world P_((CHAR_DATA *ch, char *argument));
 CHAR_DATA *get_char_area P_((CHAR_DATA *ch, char *argument));

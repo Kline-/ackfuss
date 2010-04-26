@@ -3171,6 +3171,13 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
             return true;
         }
 
+        if ( char_exists_world( arg2 ) )
+        {
+            write_to_buffer( d, "\r\nThat player is currently online. Unable to initiate password recovery.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
         if ( (who = offline_load( arg2 ) ) == NULL )
         {
             write_to_buffer( d, "\r\nThere was an error loading that player.\r\n" );
@@ -3218,6 +3225,13 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
         if ( !char_exists( arg2 ) )
         {
             write_to_buffer( d, "\r\nNo player by that name exists.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        if ( char_exists_world( arg2 ) )
+        {
+            write_to_buffer( d, "\r\nThat player is currently online. Unable to initiate password recovery.\r\n" );
             write_to_buffer( d, LOGIN_STRING );
             return true;
         }
