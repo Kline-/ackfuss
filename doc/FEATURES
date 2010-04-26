@@ -55,4 +55,5 @@ AckFUSS Feature List
     -Race realism -- not everybody carries cash these days
     -Human readable area files; no more cryptic garbage that's impossible to modify
     -Numerous C++ and Makefile enhancements to improve maintainability and speed compile time
+    -Threaded hostname lookups: no game lag when new players connect
     -Commands available prior to login; including who display and password reset via email
