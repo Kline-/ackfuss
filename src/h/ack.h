@@ -745,6 +745,7 @@ class pc_data
         short quest_points;
         int recall_vnum;
         RECORD_DATA *records; /* kill/damage/etc records */
+        string recovery_code;
         char *room_enter;
         char *room_exit;
         short ruler_rank;

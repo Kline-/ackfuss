@@ -2620,6 +2620,52 @@ void reset_area( AREA_DATA * pArea )
     return;
 }
 
+/*Unload an offline pfile --Kline */
+void offline_unload( CHAR_DATA *who )
+{
+    DESCRIPTOR_DATA *d;
+    list<DESCRIPTOR_DATA *>::iterator li;
+
+    for ( li = pload_list.begin(); li != pload_list.end(); li++ )
+    {
+        d = *li;
+        if ( d->character == who )
+        {
+            pload_list.remove(d);
+            li = pload_list.begin();
+            delete d;
+        }
+    }
+
+    save_char_obj(who);
+    extract_char(who,true);
+
+    return;
+}
+
+/* Load up an offline pfile --Kline */
+CHAR_DATA *offline_load( char *name )
+{
+    DESCRIPTOR_DATA *d;
+
+    name[0] = UPPER(name[0]);
+
+    if( !char_exists( name ) )
+        return NULL;
+
+    d = new DESCRIPTOR_DATA;
+
+    if( load_char_obj( d, name, true ) )
+    {
+        d->connected = CON_PLAYING;
+        d->character->desc = NULL;
+        pload_list.push_back(d);
+        return d->character;
+    }
+
+    return NULL;
+}
+
 /*
  * Create an instance of a mobile.
  */

@@ -6137,15 +6137,13 @@ DO_FUN(do_slay)
 
 DO_FUN(do_pload)
 {
-    DESCRIPTOR_DATA *d;
+    CHAR_DATA *who = NULL;
 
-    argument[0] = UPPER(argument[0]);
-/*
     if( get_char_world( ch, argument ) )
     {
         ch->send("They are already connected.\r\n");
         return;
-    }*/
+    }
 
     if( !char_exists( argument ) )
     {
@@ -6153,14 +6151,10 @@ DO_FUN(do_pload)
         return;
     }
 
-    d = new DESCRIPTOR_DATA;
-
-    if( load_char_obj( d, argument, true ) )
+    if( ( who = offline_load( argument ) ) != NULL )
     {
-        d->connected = CON_PLAYING;
-        d->character->desc = NULL;
-        char_to_room(d->character,ch->in_room);
-        pload_list.push_back(d);
+        char_to_room(who,ch->in_room);
+        act( "$n has created $N!", ch, NULL, who, TO_ROOM );
         ch->send("Done.\r\n");
         return;
     }
@@ -6170,9 +6164,7 @@ DO_FUN(do_pload)
 
 DO_FUN(do_punload)
 {
-    CHAR_DATA *who;
-    DESCRIPTOR_DATA *d = NULL;
-    list<DESCRIPTOR_DATA *>::iterator li;
+    CHAR_DATA *who = NULL;
 
     if( (who = get_char_world( ch, argument ) ) == NULL )
     {
@@ -6192,19 +6184,7 @@ DO_FUN(do_punload)
         char_to_room(who,who->was_in_room);
     }
 
-    for ( li = pload_list.begin(); li != pload_list.end(); li++ )
-    {
-        d = *li;
-        if ( d->character == who )
-        {
-            pload_list.remove(d);
-            li = pload_list.begin();
-            delete d;
-        }
-    }
-
-    save_char_obj(who);
-    extract_char(who,true);
+    offline_unload(who);
 
     return;
 }

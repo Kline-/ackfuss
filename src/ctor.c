@@ -600,6 +600,7 @@ pc_data::pc_data()
     quest_points = 0;
     recall_vnum = ROOM_VNUM_TEMPLE;
     records = new RECORD_DATA;
+    recovery_code.clear();
     room_enter = &str_empty[0];
     room_exit = &str_empty[0];
     ruler_rank = 0;

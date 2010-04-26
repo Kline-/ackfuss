@@ -77,6 +77,10 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_EMAIL_H
+#include "h/email.h"
+#endif
+
 #ifndef DEC_HANDLER_H
 #include "h/handler.h"
 #endif
@@ -3067,13 +3071,14 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
 bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
 {
-    char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'};
+    char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'}, arg3[MSL] = {'\0'};
 
     if ( !d || !cmd )
         return false;
 
     cmd = one_argument( cmd, arg1 );
     cmd = one_argument( cmd, arg2 );
+    cmd = one_argument( cmd, arg3 );
 
     if ( !str_cmp( arg1, "help" ) )
     {
@@ -3085,6 +3090,51 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
             write_to_buffer( d, "\r\n@@creset @@B<@@Wplayer@@B> <@@Wrecover code@@B> @@Nwill allow you to reset a forgotten password.\r\n" );
         else if ( !str_cmp( arg2, "who" ) )
             write_to_buffer( d, "\r\n@@cwho @@Nwill display all visible players and immortals within the game.\r\n" );
+        write_to_buffer( d, LOGIN_STRING );
+        return true;
+    }
+
+    if ( !str_cmp( arg1, "recover" ) )
+    {
+        CHAR_DATA *who = NULL;
+        char subj[MSL] = {'\0'}, body[MSL] = {'\0'};
+
+        if ( !char_exists( arg2 ) )
+        {
+            write_to_buffer( d, "\r\nNo player by that name exists.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        if ( (who = offline_load( arg2 ) ) == NULL )
+        {
+            write_to_buffer( d, "\r\nThere was an error loading that player.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        if ( who->pcdata->email->address.empty() )
+        {
+            offline_unload(who);
+            write_to_buffer( d, "\r\nNo email has been set for that player. Unable to initiate password recovery.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        who->pcdata->recovery_code = gen_rand_string(8);
+        snprintf( subj, MSL, "%s Password Reset Code", mudnamenocolor );
+        snprintf( body, MSL, "<html>This email was used by a player of %s. If this was not you, please disregard it.<br><br>Reset code: <b>%s</b></html>", mudnamenocolor, who->pcdata->recovery_code.c_str() );
+        if ( !send_email( who->pcdata->email->address.c_str(), subj, body, true, who ) )
+        {
+            who->pcdata->recovery_code.clear();
+            offline_unload(who);
+            write_to_buffer( d, "\r\nThat player's email address has not been validated. Unable to initiate password recovery.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        offline_unload(who);
+        write_to_buffer( d, "\r\nA recovery code has been sent to the registered email address. If you do not receive it within 5 minutes, please check your spam folder or try again.\r\n" );
         write_to_buffer( d, LOGIN_STRING );
         return true;
     }

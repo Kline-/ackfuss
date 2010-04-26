@@ -476,6 +476,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "SupSkillLearn  %d\n", ch->pcdata->super->skills_learned );
         fprintf( fp, "SupSkillMax    %d\n", ch->pcdata->super->skills_max );
 
+        fprintf( fp, "RecoveryCode   %s~\n", ch->pcdata->recovery_code.c_str() );
         fprintf( fp, "QuestPoints    %d\n", ch->pcdata->quest_points );
         fprintf( fp, "RecallVnum     %d\n", ch->pcdata->recall_vnum );
         fprintf( fp, "GainMana       %d\n", ch->pcdata->mana_from_gain );
@@ -1295,6 +1296,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     KEY( "RecMK", ch->pcdata->records->mk, fread_number( fp ) );
                     KEY( "RecMquestC", ch->pcdata->records->mquest_c, fread_number( fp ) );
                     KEY( "RecMquestF", ch->pcdata->records->mquest_f, fread_number( fp ) );
+                    KEY( "RecoveryCode", ch->pcdata->recovery_code, fread_string( fp ) );
                     KEY( "RecQP", ch->pcdata->records->qp, fread_number( fp ) );
                     KEY( "RecQpTot", ch->pcdata->records->qp_tot, fread_number( fp ) );
                 }
