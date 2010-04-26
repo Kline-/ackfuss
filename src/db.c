@@ -2621,30 +2621,29 @@ void reset_area( AREA_DATA * pArea )
 }
 
 /*Unload an offline pfile --Kline */
-void offline_unload( CHAR_DATA *who )
+void offline_unload( DESCRIPTOR_DATA *who )
 {
-    DESCRIPTOR_DATA *d;
+    DESCRIPTOR_DATA *d = NULL;
     list<DESCRIPTOR_DATA *>::iterator li;
 
     for ( li = pload_list.begin(); li != pload_list.end(); li++ )
     {
         d = *li;
-        if ( d->character == who )
+        if ( d == who )
         {
+            save_char_obj(d->character);
+            extract_char(d->character,true);
             pload_list.remove(d);
             li = pload_list.begin();
             delete d;
         }
     }
 
-    save_char_obj(who);
-    extract_char(who,true);
-
     return;
 }
 
 /* Load up an offline pfile --Kline */
-CHAR_DATA *offline_load( char *name )
+DESCRIPTOR_DATA *offline_load( char *name )
 {
     DESCRIPTOR_DATA *d;
 
@@ -2660,7 +2659,7 @@ CHAR_DATA *offline_load( char *name )
         d->connected = CON_PLAYING;
         d->character->desc = NULL;
         pload_list.push_back(d);
-        return d->character;
+        return d;
     }
 
     return NULL;

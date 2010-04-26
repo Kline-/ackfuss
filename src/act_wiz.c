@@ -6137,7 +6137,7 @@ DO_FUN(do_slay)
 
 DO_FUN(do_pload)
 {
-    CHAR_DATA *who = NULL;
+    DESCRIPTOR_DATA *who = NULL;
 
     if( get_char_world( ch, argument ) )
     {
@@ -6153,8 +6153,8 @@ DO_FUN(do_pload)
 
     if( ( who = offline_load( argument ) ) != NULL )
     {
-        char_to_room(who,ch->in_room);
-        act( "$n has created $N!", ch, NULL, who, TO_ROOM );
+        char_to_room(who->character,ch->in_room);
+        act( "$n has created $N!", ch, NULL, who->character, TO_ROOM );
         ch->send("Done.\r\n");
         return;
     }
@@ -6165,6 +6165,8 @@ DO_FUN(do_pload)
 DO_FUN(do_punload)
 {
     CHAR_DATA *who = NULL;
+    list<DESCRIPTOR_DATA *>::iterator li;
+    DESCRIPTOR_DATA *d = NULL;
 
     if( (who = get_char_world( ch, argument ) ) == NULL )
     {
@@ -6184,7 +6186,15 @@ DO_FUN(do_punload)
         char_to_room(who,who->was_in_room);
     }
 
-    offline_unload(who);
+    for ( li = pload_list.begin(); li != pload_list.end(); li++ )
+    {
+        d = *li;
+        if ( d->character == who )
+        {
+            offline_unload(d);
+            return;
+        }
+    }
 
     return;
 }

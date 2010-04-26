@@ -489,6 +489,8 @@
  */
 #define CON_QUITTING                    -15
 #define CON_RECONNECTING                -16
+#define CON_RESET_PASSWORD              -17
+#define CON_CONFIRM_RESET_PASSWORD      -18
 
 /* values used to check a new player has selected all options.... */
 #define CHECK_RACE            BIT_1

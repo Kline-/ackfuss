@@ -807,7 +807,8 @@ void close_socket( DESCRIPTOR_DATA * dclose )
         }
         else
         {
-            delete dclose->character;
+            if ( dclose->connected > CON_RESET_PASSWORD )
+                delete dclose->character;
         }
         /*      stop_fighting( ch, TRUE );
               save_char_obj( ch );
@@ -2207,7 +2208,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             /*
              * Old player
              */
-            write_to_buffer( d, "Password: " );
+            write_to_buffer( d, "\r\nPassword: " );
             write_to_buffer( d, echo_off_str );
             d->connected = CON_GET_OLD_PASSWORD;
             return;
@@ -2371,6 +2372,63 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         write_to_buffer( d, echo_on_str );
         show_menu_to( d );
         d->connected = CON_MENU;
+        return;
+    }
+
+    if ( d->connected == CON_RESET_PASSWORD )
+    {
+        write_to_buffer( d, "\r\n", 2 );
+
+        if ( strlen( argument ) < 5 )
+        {
+            write_to_buffer( d, "Password must be at least five characters long.\r\nPassword: " );
+            return;
+        }
+
+        pwdnew = crypt( argument, d->character->name.c_str() );
+        for ( p = pwdnew; *p != '\0'; p++ )
+        {
+            if ( *p == '~' )
+            {
+                write_to_buffer( d, "New password not acceptable, try again.\r\nPassword: " );
+                return;
+            }
+        }
+
+        free_string( d->character->pcdata->pwd );
+        d->character->pcdata->pwd = str_dup( pwdnew );
+        write_to_buffer( d, "Please retype password: " );
+        d->connected = CON_CONFIRM_RESET_PASSWORD;
+        return;
+    }
+
+    if ( d->connected == CON_CONFIRM_RESET_PASSWORD )
+    {
+        list<DESCRIPTOR_DATA *>::iterator li;
+        DESCRIPTOR_DATA *dp = NULL;
+
+        write_to_buffer( d, "\r\n", 2 );
+
+        if ( strcmp( crypt( argument, d->character->pcdata->pwd ), d->character->pcdata->pwd ) )
+        {
+            write_to_buffer( d, "Passwords don't match.\r\nRetype password: " );
+            d->connected = CON_RESET_PASSWORD;
+            return;
+        }
+
+        d->character->pcdata->recovery_code.clear();
+        for ( li = pload_list.begin(); li != pload_list.end(); li++ )
+        {
+            dp = *li;
+            if ( dp->character == ch )
+            {
+                offline_unload(dp);
+                break;
+            }
+        }
+        write_to_buffer( d, echo_on_str );
+        write_to_buffer( d, "Please login with your new password now. Goodbye.\r\n" );
+        close_socket( d );
         return;
     }
 
@@ -3071,7 +3129,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
 bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
 {
-    char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'}, arg3[MSL] = {'\0'};
+    char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'}, arg3[MSL] = {'\0'}, buf[MSL] = {'\0'};
 
     if ( !d || !cmd )
         return false;
@@ -3096,8 +3154,15 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
 
     if ( !str_cmp( arg1, "recover" ) )
     {
-        CHAR_DATA *who = NULL;
+        DESCRIPTOR_DATA *who = NULL;
         char subj[MSL] = {'\0'}, body[MSL] = {'\0'};
+
+        if ( arg2[0] == '\0' )
+        {
+            write_to_buffer( d, "\r\nsyntax is: @@crecover @@B<@@Wplayer@@B>@@N\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
 
         if ( !char_exists( arg2 ) )
         {
@@ -3113,7 +3178,7 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
             return true;
         }
 
-        if ( who->pcdata->email->address.empty() )
+        if ( who->character->pcdata->email->address.empty() )
         {
             offline_unload(who);
             write_to_buffer( d, "\r\nNo email has been set for that player. Unable to initiate password recovery.\r\n" );
@@ -3121,12 +3186,12 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
             return true;
         }
 
-        who->pcdata->recovery_code = gen_rand_string(8);
+        who->character->pcdata->recovery_code = gen_rand_string(8);
         snprintf( subj, MSL, "%s Password Reset Code", mudnamenocolor );
-        snprintf( body, MSL, "<html>This email was used by a player of %s. If this was not you, please disregard it.<br><br>Reset code: <b>%s</b></html>", mudnamenocolor, who->pcdata->recovery_code.c_str() );
-        if ( !send_email( who->pcdata->email->address.c_str(), subj, body, true, who ) )
+        snprintf( body, MSL, "<html>This email was used by a player of %s. If this was not you, please disregard it.<br><br>Reset code: <b>%s</b></html>", mudnamenocolor, who->character->pcdata->recovery_code.c_str() );
+        if ( !send_email( who->character->pcdata->email->address.c_str(), subj, body, true, who->character ) )
         {
-            who->pcdata->recovery_code.clear();
+            who->character->pcdata->recovery_code.clear();
             offline_unload(who);
             write_to_buffer( d, "\r\nThat player's email address has not been validated. Unable to initiate password recovery.\r\n" );
             write_to_buffer( d, LOGIN_STRING );
@@ -3136,6 +3201,54 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
         offline_unload(who);
         write_to_buffer( d, "\r\nA recovery code has been sent to the registered email address. If you do not receive it within 5 minutes, please check your spam folder or try again.\r\n" );
         write_to_buffer( d, LOGIN_STRING );
+        return true;
+    }
+
+    if ( !str_cmp( arg1, "reset" ) )
+    {
+        DESCRIPTOR_DATA *who = NULL;
+
+        if ( arg2[0] == '\0' || arg3[0] == '\0' )
+        {
+            write_to_buffer( d, "\r\nsyntax is: @@creset @@B<@@Wplayer@@B> <@@Wrecover code@@B>@@N\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        if ( !char_exists( arg2 ) )
+        {
+            write_to_buffer( d, "\r\nNo player by that name exists.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        if ( (who = offline_load( arg2 ) ) == NULL )
+        {
+            write_to_buffer( d, "\r\nThere was an error loading that player.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        if ( who->character->pcdata->recovery_code.empty() )
+        {
+            offline_unload(who);
+            write_to_buffer( d, "\r\nNo recovery code has been requested for that player. Unable to initiate password reset.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        if ( str_cmp( who->character->pcdata->recovery_code.c_str(), arg3 ) )
+        {
+            offline_unload(who);
+            write_to_buffer( d, "\r\nInvalid recovery code. Unable to initiate password reset.\r\n" );
+            write_to_buffer( d, LOGIN_STRING );
+            return true;
+        }
+
+        snprintf( buf, MSL, "\r\nEnter a new password for %s: %s", who->character->name.c_str(), echo_off_str );
+        write_to_buffer( d, buf );
+        d->character = who->character;
+        d->connected = CON_RESET_PASSWORD;
         return true;
     }
 
