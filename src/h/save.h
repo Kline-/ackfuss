@@ -21,7 +21,7 @@ void save_char_obj P_((CHAR_DATA *ch));
 void fwrite_char P_((CHAR_DATA *ch, FILE *fp));
 void fwrite_obj P_((CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest));
 void abort_wrapper P_((void));
-bool load_char_obj P_((DESCRIPTOR_DATA *d, char *name, bool system_call));
+bool load_char_obj P_((DESCRIPTOR_DATA *d, const char *name, bool system_call));
 void fread_char P_((CHAR_DATA *ch, FILE *fp));
 void fread_obj P_((CHAR_DATA *ch, FILE *fp));
 void fread_corpse P_((FILE *fp));

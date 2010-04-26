@@ -648,11 +648,12 @@ hash_table *hash_changed_vnums = NULL;
 
 int cur_revision = 0;
 
-bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
+bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
 {
     char strsave[MAX_INPUT_LENGTH];
     char tempstrsave[MAX_INPUT_LENGTH];
-    char *bufptr, *nmptr;
+    char *bufptr;
+    const char *nmptr;
     CHAR_DATA *ch;
     char buf[MAX_STRING_LENGTH];
     FILE *fp;
@@ -688,8 +689,8 @@ bool load_char_obj( DESCRIPTOR_DATA * d, char *name, bool system_call )
         }
     }
 
-    if ( ( d == NULL ) /* load npc */
-            && ( !system_call ) )
+    /* load npc */
+    if ( ( d == NULL ) && ( !system_call ) )
         is_npc = TRUE;
     else
         is_npc = FALSE;

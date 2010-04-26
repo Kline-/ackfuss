@@ -4023,7 +4023,10 @@ DO_FUN(do_owhere)
             if ( in_obj->carried_by != NULL )
             {
                 if ( !IS_NPC(in_obj->carried_by) )
+                {
+                    found = FALSE;
                     continue;
+                }
                 else
                     snprintf( catbuf, MSL, "[%2d] %s carried by %s [Room:%d].\r\n",
                               obj_counter, obj->short_descr, in_obj->carried_by->get_name(ch), in_obj->carried_by->in_room->vnum );
@@ -4080,7 +4083,7 @@ DO_FUN(do_owhere)
     }
     else
     {
-        snprintf( catbuf, MSL, "Owhere report for %s", arg );
+        ch->send(buf);
         //TODO: email send_rep_out( ch, buf, mailme, catbuf );
     }
     return;
@@ -6132,6 +6135,80 @@ DO_FUN(do_slay)
     return;
 }
 
+DO_FUN(do_pload)
+{
+    DESCRIPTOR_DATA *d;
+
+    argument[0] = UPPER(argument[0]);
+/*
+    if( get_char_world( ch, argument ) )
+    {
+        ch->send("They are already connected.\r\n");
+        return;
+    }*/
+
+    if( !char_exists( argument ) )
+    {
+        ch->send("Unable to find that person.\r\n");
+        return;
+    }
+
+    d = new DESCRIPTOR_DATA;
+
+    if( load_char_obj( d, argument, true ) )
+    {
+        d->connected = CON_PLAYING;
+        d->character->desc = NULL;
+        char_to_room(d->character,ch->in_room);
+        pload_list.push_back(d);
+        ch->send("Done.\r\n");
+        return;
+    }
+
+    return;
+}
+
+DO_FUN(do_punload)
+{
+    CHAR_DATA *who;
+    DESCRIPTOR_DATA *d = NULL;
+    list<DESCRIPTOR_DATA *>::iterator li;
+
+    if( (who = get_char_world( ch, argument ) ) == NULL )
+    {
+        ch->send("Unable to find that person.\r\n");
+        return;
+    }
+
+    if( who->desc != NULL )
+    {
+        ch->send("That person was not ploaded.\r\n");
+        return;
+    }
+
+    if( who->was_in_room != NULL )
+    {
+        char_from_room(who);
+        char_to_room(who,who->was_in_room);
+    }
+
+    for ( li = pload_list.begin(); li != pload_list.end(); li++ )
+    {
+        d = *li;
+        if ( d->character == who )
+        {
+            pload_list.remove(d);
+            li = pload_list.begin();
+            delete d;
+        }
+    }
+
+    save_char_obj(who);
+    extract_char(who,true);
+
+    return;
+}
+
 /* Here it is boys and girls the HOT reboot function and all its nifty  * little parts!! - Flar
  */
 DO_FUN(do_hotreboo)
@@ -6398,5 +6475,6 @@ struct ShowObject
 DO_FUN(do_ldebug)
 {
     for_each( lua_list.begin(), lua_list.end(), ShowObject() );
+
     return;
 }

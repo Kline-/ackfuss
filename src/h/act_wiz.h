@@ -101,6 +101,8 @@ DECLARE_DO_FUN(do_findreset);
 DECLARE_DO_FUN(do_census);
 DECLARE_DO_FUN(do_sla);
 DECLARE_DO_FUN(do_slay);
+DECLARE_DO_FUN(do_pload);
+DECLARE_DO_FUN(do_punload);
 DECLARE_DO_FUN(do_hotreboo);
 DECLARE_DO_FUN(do_hotreboot);
 DECLARE_DO_FUN(do_disable);

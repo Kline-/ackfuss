@@ -3067,15 +3067,29 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
 bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
 {
+    char arg1[MSL] = {'\0'}, arg2[MSL] = {'\0'};
+
     if ( !d || !cmd )
         return false;
-    if ( !str_cmp( cmd, "help" ) )
+
+    cmd = one_argument( cmd, arg1 );
+    cmd = one_argument( cmd, arg2 );
+
+    if ( !str_cmp( arg1, "help" ) )
     {
-        write_to_buffer( d, "\r\nAvailable commands: help recover reset who\r\n" );
+        if ( arg2[0] == '\0' )
+            write_to_buffer( d, "\r\nTo see more info use help <cmd>.\r\nAvailable commands: help recover reset who\r\n" );
+        else if ( !str_cmp( arg2, "recover" ) )
+            write_to_buffer( d, "\r\n@@crecover @@B<@@Wplayer@@B> @@Nwill email a password reset code to the player's registered email.\r\n" );
+        else if ( !str_cmp( arg2, "reset" ) )
+            write_to_buffer( d, "\r\n@@creset @@B<@@Wplayer@@B> <@@Wrecover code@@B> @@Nwill allow you to reset a forgotten password.\r\n" );
+        else if ( !str_cmp( arg2, "who" ) )
+            write_to_buffer( d, "\r\n@@cwho @@Nwill display all visible players and immortals within the game.\r\n" );
         write_to_buffer( d, LOGIN_STRING );
         return true;
     }
-    if ( !str_cmp( cmd, "who" ) )
+
+    if ( !str_cmp( arg1, "who" ) )
     {
         write_to_buffer( d, who() );
         write_to_buffer( d, LOGIN_STRING );

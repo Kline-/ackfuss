@@ -481,13 +481,13 @@
 #define CON_GET_RACE                     -9
 #define CON_READ_MOTD                   -10
 #define CON_GET_STATS                   -11
-#define CON_FINISHED            -12
-#define CON_MENU                -13
-#define CON_COPYOVER_RECOVER        -14
+#define CON_FINISHED                    -12
+#define CON_MENU                        -13
+#define CON_COPYOVER_RECOVER            -14
 /*
  * For Hotreboot
  */
-#define CON_QUITTING            -15
+#define CON_QUITTING                    -15
 #define CON_RECONNECTING                -16
 
 /* values used to check a new player has selected all options.... */

@@ -60,6 +60,7 @@ extern list<MOB_INDEX_DATA *> mob_index_list;
 extern list<NOTE_DATA *> note_list;
 extern list<OBJ_DATA *> obj_list;
 extern list<OBJ_INDEX_DATA *> obj_index_list;
+extern list<DESCRIPTOR_DATA *> pload_list;
 extern list<RESET_DATA *> reset_list;
 extern list<ROOM_INDEX_DATA *> room_index_list;
 extern list<RULER_DATA *> ruler_list;

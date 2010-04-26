@@ -62,6 +62,7 @@ list<MOB_INDEX_DATA *> mob_index_list;
 list<NOTE_DATA *> note_list;
 list<OBJ_DATA *> obj_list;
 list<OBJ_INDEX_DATA *> obj_index_list;
+list<DESCRIPTOR_DATA *> pload_list;
 list<RESET_DATA *> reset_list;
 list<ROOM_INDEX_DATA *> room_index_list;
 list<RULER_DATA *> ruler_list;
