@@ -1,0 +1,8 @@
+EMAIL
+
+EMAIL will allow you to send an email message from the MUD to another player or
+immortal if they have provided an email address, validated it, and accept emails
+from players. Multi-word subjects may be enclosed in quotes. This command will
+work for both online and offline players.
+
+email <person> <subject> <body>

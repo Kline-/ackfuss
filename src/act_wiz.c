@@ -1324,7 +1324,7 @@ DO_FUN(do_mfind)
         return;
     }
 
-    snprintf( buf, MSL, "Mfind report for %s", arg );
+    ch->send(buf1);
     //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }

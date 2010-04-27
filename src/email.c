@@ -50,8 +50,105 @@
 
 DO_FUN(do_email)
 {
+    CHAR_DATA *pers = NULL;
+    DESCRIPTOR_DATA *d = NULL;
+    bool validate = true;
+    char who[MSL] = {'\0'}, subj1[MSL] = {'\0'}, subj2[MSL] = {'\0'}, body[MSL] = {'\0'};
+
     if ( IS_NPC( ch ) )
         return;
+
+    argument = one_argument( argument, who );
+    argument = one_argument( argument, subj1 );
+
+    snprintf( subj2, MSL, "Message from %s on %s: %s", ch->name.c_str(), mudnamenocolor, subj1 );
+    snprintf( body, MSL, "<html>%s from %s has sent you the following message via the MUD.<br><br>%s</html>", ch->name.c_str(), mudnamenocolor, argument );
+
+    /* Imms can attempt to mail a non-validated address */
+    if ( IS_IMMORTAL(ch) )
+        validate = false;
+
+    if ( who[0] == '\0' )
+    {
+        ch->send("Syntax to send an email is: email <person> <subject> <body>\r\n");
+        return;
+    }
+
+    if ( !char_exists( who ) )
+    {
+        ch->send("No player by that name exists.\r\n");
+        return;
+    }
+
+    if ( ( pers = get_char_world( ch, who ) ) != NULL ) /* They are online, snag email from live character and execute */
+    {
+        if ( pers->pcdata->email->address.empty() )
+        {
+            ch->send("Unable to send email. That person has not set an email address.\r\n");
+            return;
+        }
+
+        if ( validate && !pers->pcdata->email->flags.test(table_lookup(tab_email,"mort")) )
+        {
+            ch->send("Unable to send email. That person does not accept emails from players.\r\n");
+            return;
+        }
+
+        if ( !validate && !pers->pcdata->email->flags.test(table_lookup(tab_email,"imm")) )
+        {
+            ch->send("Unable to send email. That person does not accept emails from immortals.\r\n");
+            return;
+        }
+
+
+        if( send_email( pers->pcdata->email->address.c_str(), subj2, body, validate, pers ) )
+            ch->send("Email sent succesfully.\r\n");
+        else
+            ch->send("Unable to send email. That person has not validated their email address.\r\n");
+        return;
+    }
+    else /* Offline, load a dummy, snag email from dummy character and execute */
+    {
+        if ( ( d = offline_load( who ) ) == NULL )
+        {
+            ch->send("There was an error retrieving that person's email address. Please notify an immortal.\r\n");
+            return;
+        }
+
+        pers = d->character;
+
+        if ( pers->pcdata->email->address.empty() )
+        {
+            offline_unload( d );
+            ch->send("Unable to send email. That person has not set an email address.\r\n");
+            return;
+        }
+
+        if ( validate && !pers->pcdata->email->flags.test(table_lookup(tab_email,"mort")) )
+        {
+            ch->send("Unable to send email. That person does not accept emails from players.\r\n");
+            return;
+        }
+
+        if ( !validate && !pers->pcdata->email->flags.test(table_lookup(tab_email,"imm")) )
+        {
+            ch->send("Unable to send email. That person does not accept emails from immortals.\r\n");
+            return;
+        }
+
+        if( send_email( pers->pcdata->email->address.c_str(), subj2, body, validate, pers ) )
+            ch->send("Email sent succesfully.\r\n");
+        else
+            ch->send("Unable to send email. That person has not validated their email address.\r\n");
+
+        offline_unload( d );
+
+        return;
+    }
+
+    /* Generate usage message */
+    do_email( ch );
+
     return;
 }
 
@@ -162,6 +259,7 @@ DO_FUN(do_set_email)
 
     if ( IS_NPC( ch ) )
         return;
+
     if ( argument[0] == '\0' )
     {
         ch->send( "You didn't provide an email address. Syntax is setemail <email>.\r\n" );

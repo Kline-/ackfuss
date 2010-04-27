@@ -318,7 +318,7 @@
  * Defined in #MOBILES.
  */
 #define MOB_VNUM_STALKER           2
-#define MOB_VNUM_CITYGUARD         3060
+#define MOB_VNUM_CITYGUARD         1004
 #define MOB_VNUM_VAMPIRE           3404
 #define MOB_VNUM_DOGGY             3
 #define MOB_VNUM_ZOMBIE           11004
