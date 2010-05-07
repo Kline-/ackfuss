@@ -59,6 +59,7 @@
 #define MAX_INPUT_LENGTH         2048
 #define MIL                      MAX_INPUT_LENGTH
 #define MAX_AREAS                1000
+#define MAX_SYS_VNUM             1000
 #define MAX_VNUM                 16777216
 #define MAX_BITSET               256    /* Total bits per bitset */
 #define MAX_PERM_BLOCK           131072

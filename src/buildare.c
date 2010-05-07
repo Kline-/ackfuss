@@ -149,10 +149,13 @@ void build_save_area_list( void )
     rename( buf, AREA_LIST );
 }
 
+bool compare_vnum( const AREA_DATA *a1, const AREA_DATA *a2 ) { return a1->min_vnum < a2->min_vnum; }
+
 DO_FUN(build_makearea)
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
+    char arg3[MAX_INPUT_LENGTH];
     char buf[MAX_STRING_LENGTH];
     ROOM_INDEX_DATA *pRoomIndex;
     int vnum = 0;
@@ -173,13 +176,14 @@ DO_FUN(build_makearea)
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
+    argument = one_argument( argument, arg3 );
 
 
     strcpy( argument, arg2 );
 
     if ( arg1[0] == '\0' || arg2[0] == '\0' )
     {
-        send_to_char( "\r\nSyntax: makearea filename numrooms\r\n", ch );
+        send_to_char( "\r\nSyntax: makearea filename numrooms [system]\r\n", ch );
         return;
     }
     rooms = atoi( arg2 );
@@ -199,12 +203,13 @@ DO_FUN(build_makearea)
         pArea = *li;
         fpadd = pArea;
         svnum = pArea->min_vnum;
+
         a = svnum - envnum - 1;
         /*  snprintf(buf,MSL,"dif %d for rooms %d, %d-%d\r\n",a,rooms,pArea->min_vnum,pArea->max_vnum);
             send_to_char(buf,ch);
                 snprintf(buf,MSL,"%s\r\n",pArea->name);
                 send_to_char(buf,ch); */
-        if ( ( rooms <= a && buf != NULL ) )
+        if ( str_cmp( arg3, "system" ) ? ( svnum > MAX_SYS_VNUM && envnum > MAX_SYS_VNUM ) && ( rooms <= a && buf != NULL ) : ( rooms <= a && buf != NULL ) )
         {
             send_to_char( "found one!\r\n", ch );
             vnum = envnum + 1;
@@ -234,7 +239,9 @@ DO_FUN(build_makearea)
 
     strncat(arg1, ".are", MSL); /* Add file extension */
 
-    fpArea = file_open( arg1, "r" );
+    snprintf( buf, MSL, "%s%s", AREA_DIR, arg1 );
+
+    fpArea = file_open( buf, "r" );
     if ( fpArea != NULL )
     {
         send_to_char( "There is already a file with that name.\r\n", ch );
@@ -242,7 +249,7 @@ DO_FUN(build_makearea)
         return;
     }
 
-    fpArea = file_open( arg1, "w" );
+    fpArea = file_open( buf, "w" );
     if ( fpArea == NULL )
     {
         send_to_char( "Invalid filename, would not be able to save.\r\n", ch );
@@ -263,31 +270,6 @@ DO_FUN(build_makearea)
     }
 
 
-
-    /*
-     * set the new areanum, and resort the other area indexes.
-     * for(pArea=first_area;pArea;pArea=pArea->next)
-     * {
-     * if (pArea->area_num==a)
-     * b=TRUE;
-     *
-     * if(b==TRUE)
-     * pArea->area_num++;
-     *
-     *
-     * }
-     *
-     * for(pArea=first_area;pArea;pArea=pArea->next)
-     * {
-     * snprintf(buf,MSL,"area#%d, area name: %s\r\n",pArea->area_num,pArea->name);
-     * send_to_char(buf,ch);
-     *
-     * }
-     *
-     * Add area
-     */
-
-
     pArea = new AREA_DATA;
     pArea->area_num = a;
     pArea->modified = true;
@@ -300,6 +282,8 @@ DO_FUN(build_makearea)
     pArea->flags.set(AFLAG_NO_SHOW);   /* don't list on 'areas' -S- */
 
     area_used[pArea->area_num] = pArea;
+
+    area_list.sort(compare_vnum);
 
     /*
      * Now add it to area.lst

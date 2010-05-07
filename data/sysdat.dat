@@ -8,6 +8,7 @@ Build_Obj_SVS -25
 Damcap        3000
 Expmult       1.0000
 KillPerLev    30
+Max_Move_Disp 5
 Max_Pushback  1.2500
 Mob_AC        1.0000
 Mob_DR        1.0000
@@ -16,6 +17,7 @@ Mob_HR        1.0000
 Mob_MP        1.0000
 Mob_MV        1.0000
 Mob_SVS       1.0000
+Num_Greeting  5
 Playtesters   ~
 Pulse         100
 Shownumbers   1

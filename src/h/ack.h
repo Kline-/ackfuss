@@ -973,7 +973,7 @@ class area_data
         char                    *can_read;
         char                    *can_write;
         char                    *filename;
-        bitset<MAX_BITSET> flags;
+        bitset<MAX_BITSET>      flags;
         BUILD_DATA_LIST         *first_area_mobile;
         BUILD_DATA_LIST         *first_area_object;
         BUILD_DATA_LIST         *first_area_room;
@@ -993,12 +993,10 @@ class area_data
         int                     min_vnum;
         char                    *name;
         char                    *owner;
-        list<CHAR_DATA *>  player_list;
+        list<CHAR_DATA *>       player_list;
         char                    *reset_msg;
         short                   reset_rate;
 };
-
-
 
 /*
  * Room type.

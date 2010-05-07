@@ -1,0 +1,11 @@
+BUILD HELP : MAKEAREA
+------------------
+
+The MAKEAREA command lets you create a new zone to build in.
+Syntax:  makearea filename numrooms [system]
+
+Filename need not contain '.are', it will be prepended automatically. Numrooms
+is the total size of the zone. If 'system' is specified as a final argument, the
+zone will be created within the system reserved (typically 1-1000) range of vnums
+for system use. Otherwise, it will be created in the first available block of free
+space > 1000.
