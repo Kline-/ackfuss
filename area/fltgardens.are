@@ -4712,7 +4712,7 @@ End
 
 #ROOM
 Vnum       1256
-Desc       ~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4737,7 +4737,7 @@ End
 
 #ROOM
 Vnum       1257
-Desc       ~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4762,7 +4762,7 @@ End
 
 #ROOM
 Vnum       1258
-Desc       ~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4787,7 +4787,7 @@ End
 
 #ROOM
 Vnum       1259
-Desc       ~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4812,7 +4812,7 @@ End
 
 #ROOM
 Vnum       1260
-Desc       ~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4837,7 +4837,7 @@ End
 
 #ROOM
 Vnum       1261
-Desc       ~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4862,7 +4862,7 @@ End
 
 #ROOM
 Vnum       1262
-Desc       ~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4887,7 +4887,7 @@ End
 
 #ROOM
 Vnum       1263
-Desc       ~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4912,7 +4912,7 @@ End
 
 #ROOM
 Vnum       1264
-Desc       ~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4937,7 +4937,7 @@ End
 
 #ROOM
 Vnum       1265
-Desc       ~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4962,7 +4962,7 @@ End
 
 #ROOM
 Vnum       1266
-Desc       ~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -4987,7 +4987,7 @@ End
 
 #ROOM
 Vnum       1267
-Desc       ~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5012,7 +5012,7 @@ End
 
 #ROOM
 Vnum       1268
-Desc       ~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5037,7 +5037,7 @@ End
 
 #ROOM
 Vnum       1269
-Desc       ~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5062,7 +5062,7 @@ End
 
 #ROOM
 Vnum       1270
-Desc       ~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5087,7 +5087,7 @@ End
 
 #ROOM
 Vnum       1271
-Desc       ~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5112,7 +5112,7 @@ End
 
 #ROOM
 Vnum       1272
-Desc       ~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5137,7 +5137,7 @@ End
 
 #ROOM
 Vnum       1273
-Desc       ~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5162,7 +5162,7 @@ End
 
 #ROOM
 Vnum       1274
-Desc       ~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5187,7 +5187,7 @@ End
 
 #ROOM
 Vnum       1275
-Desc       ~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5212,7 +5212,7 @@ End
 
 #ROOM
 Vnum       1276
-Desc       ~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5237,7 +5237,7 @@ End
 
 #ROOM
 Vnum       1277
-Desc       ~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5262,7 +5262,7 @@ End
 
 #ROOM
 Vnum       1278
-Desc       ~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~
@@ -5287,7 +5287,7 @@ End
 
 #ROOM
 Vnum       1279
-Desc       ~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
 ScriptName ~

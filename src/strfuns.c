@@ -1856,10 +1856,10 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
             if ( !str_cmp(arg1, "str") && evaluate_tag(arg2, get_curr_str(ch), value) ) { retval = true; break; }
             if ( !str_cmp(arg1, "sun") )
             {
-                if ( !str_cmp(arg2, "day") && weather_info.sunlight == SUN_LIGHT )    { retval = true; break; }
-                if ( !str_cmp(arg2, "night") && weather_info.sunlight == SUN_DARK )   { retval = true; break; }
-                if ( !str_cmp(arg2, "sunrise") && weather_info.sunlight == SUN_RISE ) { retval = true; break; }
-                if ( !str_cmp(arg2, "sunset") && weather_info.sunlight == SUN_SET )   { retval = true; break; }
+                if ( !str_cmp(arg2, "sunrise") && weather_info.sunlight == SUN_LIGHT )  { retval = true; break; }
+                if ( !str_cmp(arg2, "night") && weather_info.sunlight == SUN_DARK )     { retval = true; break; }
+                if ( !str_cmp(arg2, "day") && weather_info.sunlight == SUN_RISE )       { retval = true; break; }
+                if ( !str_cmp(arg2, "sunset") && weather_info.sunlight == SUN_SET )     { retval = true; break; }
                 break;
             }
             if ( !str_cmp(arg1, "super") )
