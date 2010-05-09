@@ -1,0 +1,5312 @@
+#AREA
+Revision  24
+CanRead   Kline~
+CanWrite  Kline~
+Flags     EOL
+Keyword   ~
+LevLabel  @@W[@@r05@@W-@@r10@@W]@@N~
+LevRange  5 10
+Name      @@gT@@dh@@We @@cF@@aloa@@Wtin@@cg @@gGar@@dden@@Ws@@N~
+Number    9
+Owner     Kline~
+ResetMsg  off~
+ResetRate 15
+VnumRange 1136 1279
+End
+
+#ROOM
+Vnum       1136
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1143
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1137
+End
+
+#ROOM
+Vnum       1137
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1136
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1144
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1138
+End
+
+#ROOM
+Vnum       1138
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1137
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1145
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1139
+End
+
+#ROOM
+Vnum       1139
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1138
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1146
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1140
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1272
+End
+
+#ROOM
+Vnum       1140
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1139
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1147
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1141
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1273
+End
+
+#ROOM
+Vnum       1141
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1140
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1148
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1142
+End
+
+#ROOM
+Vnum       1142
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1141
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1149
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1199
+End
+
+#ROOM
+Vnum       1143
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1151
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1144
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1136
+End
+
+#ROOM
+Vnum       1144
+Desc       @@N~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1143
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1152
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1145
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1137
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1085
+End
+
+#ROOM
+Vnum       1145
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1144
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1153
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1146
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1138
+End
+
+#ROOM
+Vnum       1146
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1145
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1154
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1147
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1139
+End
+
+#ROOM
+Vnum       1147
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1146
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1155
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1148
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1140
+End
+
+#ROOM
+Vnum       1148
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1147
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1156
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1149
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1141
+End
+
+#ROOM
+Vnum       1149
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1148
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1157
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1150
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1142
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1075
+End
+
+#ROOM
+Vnum       1150
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1149
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1158
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1199
+End
+
+#ROOM
+Vnum       1151
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1159
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1152
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1143
+End
+
+#ROOM
+Vnum       1152
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1151
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1160
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1153
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1144
+End
+
+#ROOM
+Vnum       1153
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1152
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1161
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1154
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1145
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1201
+End
+
+#ROOM
+Vnum       1154
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1153
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1162
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1155
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1146
+End
+
+#ROOM
+Vnum       1155
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1154
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1163
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1156
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1147
+End
+
+#ROOM
+Vnum       1156
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1155
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1164
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1157
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1148
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1200
+End
+
+#ROOM
+Vnum       1157
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1156
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1165
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1158
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1149
+End
+
+#ROOM
+Vnum       1158
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1157
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1166
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1150
+End
+
+#ROOM
+Vnum       1159
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1274
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1167
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1160
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1151
+End
+
+#ROOM
+Vnum       1160
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1159
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1168
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1161
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1152
+End
+
+#ROOM
+Vnum       1161
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1160
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1169
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1162
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1153
+End
+
+#ROOM
+Vnum       1162
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1161
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1170
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1163
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1154
+End
+
+#ROOM
+Vnum       1163
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1162
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1171
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1164
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1155
+End
+
+#ROOM
+Vnum       1164
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1163
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1172
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1165
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1156
+End
+
+#ROOM
+Vnum       1165
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1164
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1173
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1166
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1157
+End
+
+#ROOM
+Vnum       1166
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1165
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1174
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1279
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1158
+End
+
+#ROOM
+Vnum       1167
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1275
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1175
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1168
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1159
+End
+
+#ROOM
+Vnum       1168
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1167
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1176
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1169
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1160
+End
+
+#ROOM
+Vnum       1169
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1168
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1177
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1170
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1161
+End
+
+#ROOM
+Vnum       1170
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1169
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1178
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1171
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1162
+End
+
+#ROOM
+Vnum       1171
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1170
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1179
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1172
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1163
+End
+
+#ROOM
+Vnum       1172
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1171
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1180
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1173
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1164
+End
+
+#ROOM
+Vnum       1173
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1172
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1181
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1174
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1165
+End
+
+#ROOM
+Vnum       1174
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1173
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1182
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1278
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1166
+End
+
+#ROOM
+Vnum       1175
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1183
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1176
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1167
+End
+
+#ROOM
+Vnum       1176
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1175
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1184
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1177
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1168
+End
+
+#ROOM
+Vnum       1177
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1176
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1185
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1178
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1169
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1202
+End
+
+#ROOM
+Vnum       1178
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1177
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1186
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1179
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1170
+End
+
+#ROOM
+Vnum       1179
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1178
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1187
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1180
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1171
+End
+
+#ROOM
+Vnum       1180
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1179
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1188
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1181
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1172
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1203
+End
+
+#ROOM
+Vnum       1181
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1180
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1189
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1182
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1173
+End
+
+#ROOM
+Vnum       1182
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1181
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1190
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1174
+End
+
+#ROOM
+Vnum       1183
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1191
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1184
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1175
+End
+
+#ROOM
+Vnum       1184
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1183
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1192
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1185
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1176
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1081
+End
+
+#ROOM
+Vnum       1185
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1184
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1193
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1186
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1177
+End
+
+#ROOM
+Vnum       1186
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1185
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1194
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1187
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1178
+End
+
+#ROOM
+Vnum       1187
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1186
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1195
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1188
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1179
+End
+
+#ROOM
+Vnum       1188
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1187
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1196
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1189
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1180
+End
+
+#ROOM
+Vnum       1189
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1188
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1197
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1190
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1181
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1080
+End
+
+#ROOM
+Vnum       1190
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1189
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1198
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1182
+End
+
+#ROOM
+Vnum       1191
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1192
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1183
+End
+
+#ROOM
+Vnum       1192
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1191
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1193
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1184
+End
+
+#ROOM
+Vnum       1193
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1192
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1194
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1185
+End
+
+#ROOM
+Vnum       1194
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1193
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1276
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1195
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1186
+End
+
+#ROOM
+Vnum       1195
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1194
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1277
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1196
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1187
+End
+
+#ROOM
+Vnum       1196
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1195
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1197
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1188
+End
+
+#ROOM
+Vnum       1197
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1196
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1198
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1189
+End
+
+#ROOM
+Vnum       1198
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1197
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1190
+End
+
+#ROOM
+Vnum       1199
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1142
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1150
+End
+
+#ROOM
+Vnum       1200
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1204
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1219
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1156
+End
+
+#ROOM
+Vnum       1201
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1208
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1207
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1153
+End
+
+#ROOM
+Vnum       1202
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1212
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1211
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1177
+End
+
+#ROOM
+Vnum       1203
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1215
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1216
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1180
+End
+
+#ROOM
+Vnum       1204
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1205
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1232
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1200
+End
+
+#ROOM
+Vnum       1205
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1206
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1233
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1204
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1268
+End
+
+#ROOM
+Vnum       1206
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1207
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1234
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1205
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1269
+End
+
+#ROOM
+Vnum       1207
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1201
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1235
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1206
+End
+
+#ROOM
+Vnum       1208
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1209
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1235
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1201
+End
+
+#ROOM
+Vnum       1209
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1270
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1210
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1231
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1208
+End
+
+#ROOM
+Vnum       1210
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1271
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1211
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1227
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1209
+End
+
+#ROOM
+Vnum       1211
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1202
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1223
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1210
+End
+
+#ROOM
+Vnum       1212
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1202
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1213
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1223
+End
+
+#ROOM
+Vnum       1213
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1212
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1264
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1214
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1222
+End
+
+#ROOM
+Vnum       1214
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1213
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1265
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1215
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1221
+End
+
+#ROOM
+Vnum       1215
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1214
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1203
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1220
+End
+
+#ROOM
+Vnum       1216
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1220
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1203
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1217
+End
+
+#ROOM
+Vnum       1217
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1224
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1216
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1266
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1218
+End
+
+#ROOM
+Vnum       1218
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1228
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1217
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1267
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1219
+End
+
+#ROOM
+Vnum       1219
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1232
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1218
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1200
+End
+
+#ROOM
+Vnum       1220
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1221
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1215
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1216
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1224
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1236
+End
+
+#ROOM
+Vnum       1221
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1222
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1214
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1220
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1225
+End
+
+#ROOM
+Vnum       1222
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1223
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1213
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1221
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1226
+End
+
+#ROOM
+Vnum       1223
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1211
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1212
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1222
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1227
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1239
+End
+
+#ROOM
+Vnum       1224
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1225
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1220
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1217
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1228
+End
+
+#ROOM
+Vnum       1225
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1226
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1221
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1224
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1229
+End
+
+#ROOM
+Vnum       1226
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1227
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1222
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1225
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1230
+End
+
+#ROOM
+Vnum       1227
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1210
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1223
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1226
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1231
+End
+
+#ROOM
+Vnum       1228
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1229
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1224
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1218
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1232
+End
+
+#ROOM
+Vnum       1229
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1230
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1225
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1228
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1233
+End
+
+#ROOM
+Vnum       1230
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1231
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1226
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1229
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1234
+End
+
+#ROOM
+Vnum       1231
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1209
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1227
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1230
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1235
+End
+
+#ROOM
+Vnum       1232
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1233
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1228
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1219
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1204
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1237
+End
+
+#ROOM
+Vnum       1233
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1234
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1229
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1232
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1205
+End
+
+#ROOM
+Vnum       1234
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1235
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1230
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1233
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1206
+End
+
+#ROOM
+Vnum       1235
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1208
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1231
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1234
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1207
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1238
+End
+
+#ROOM
+Vnum       1236
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1240
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1247
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1220
+End
+
+#ROOM
+Vnum       1237
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1245
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1246
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1232
+End
+
+#ROOM
+Vnum       1238
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1243
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1244
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1235
+End
+
+#ROOM
+Vnum       1239
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1241
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1242
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1223
+End
+
+#ROOM
+Vnum       1240
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1241
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1257
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1236
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1249
+End
+
+#ROOM
+Vnum       1241
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1239
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1256
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1240
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1248
+End
+
+#ROOM
+Vnum       1242
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1263
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1239
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1248
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1243
+End
+
+#ROOM
+Vnum       1243
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1262
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1242
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1251
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1238
+End
+
+#ROOM
+Vnum       1244
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1238
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1251
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1245
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1261
+End
+
+#ROOM
+Vnum       1245
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1244
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1250
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1237
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1260
+End
+
+#ROOM
+Vnum       1246
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1250
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1247
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1259
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1237
+End
+
+#ROOM
+Vnum       1247
+Desc       ~
+Flags      EOL
+Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
+ScriptName ~
+Sect       2
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1249
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1236
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1258
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1246
+End
+
+#ROOM
+Vnum       1248
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1242
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1241
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1249
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1251
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1253
+End
+
+#ROOM
+Vnum       1249
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1248
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1240
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1247
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1250
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1254
+End
+
+#ROOM
+Vnum       1250
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1251
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1249
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1246
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1245
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1255
+End
+
+#ROOM
+Vnum       1251
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1243
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1248
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1250
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1244
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1252
+End
+
+#ROOM
+Vnum       1252
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1253
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1255
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1251
+End
+
+#ROOM
+Vnum       1253
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1254
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1252
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1248
+End
+
+#ROOM
+Vnum       1254
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1253
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1255
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1249
+End
+
+#ROOM
+Vnum       1255
+Desc       ~
+Flags      EOL
+Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
+ScriptName ~
+Sect       9
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1252
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1254
+End
+#DOOR
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1250
+End
+
+#ROOM
+Vnum       1256
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1257
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1241
+End
+
+#ROOM
+Vnum       1257
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1256
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1240
+End
+
+#ROOM
+Vnum       1258
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1247
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1259
+End
+
+#ROOM
+Vnum       1259
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1246
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1258
+End
+
+#ROOM
+Vnum       1260
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1261
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1245
+End
+
+#ROOM
+Vnum       1261
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1244
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1260
+End
+
+#ROOM
+Vnum       1262
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1263
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1243
+End
+
+#ROOM
+Vnum       1263
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1242
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1262
+End
+
+#ROOM
+Vnum       1264
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1265
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1213
+End
+
+#ROOM
+Vnum       1265
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1264
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1214
+End
+
+#ROOM
+Vnum       1266
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1217
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1267
+End
+
+#ROOM
+Vnum       1267
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1218
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1266
+End
+
+#ROOM
+Vnum       1268
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1269
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1205
+End
+
+#ROOM
+Vnum       1269
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1206
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1268
+End
+
+#ROOM
+Vnum       1270
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1271
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1209
+End
+
+#ROOM
+Vnum       1271
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1210
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1270
+End
+
+#ROOM
+Vnum       1272
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1139
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1273
+End
+
+#ROOM
+Vnum       1273
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1272
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1140
+End
+
+#ROOM
+Vnum       1274
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1275
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1159
+End
+
+#ROOM
+Vnum       1275
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1167
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1274
+End
+
+#ROOM
+Vnum       1276
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1277
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1194
+End
+
+#ROOM
+Vnum       1277
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1276
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1195
+End
+
+#ROOM
+Vnum       1278
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1174
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1279
+End
+
+#ROOM
+Vnum       1279
+Desc       ~
+Flags      EOL
+Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
+ScriptName ~
+Sect       3
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1166
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1278
+End
+#$
