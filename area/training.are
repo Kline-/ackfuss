@@ -1,8 +1,8 @@
 #AREA
-Revision  22
+Revision  24
 CanRead   Kline~
 CanWrite  Kline~
-Flags     5 EOL
+Flags     no_room_aff EOL
 Keyword   ~
 LevLabel  @@W[@@r01@@W-@@r05@@W]@@N~
 LevRange  1 5
@@ -15,1033 +15,1100 @@ VnumRange 1051 1085
 End
 
 #ROOM
-Vnum  1051
-Desc  @@dYou stand before @@RT@@dhe @@RT@@draining @@RG@@drounds; here is where new adventurers come to learn basic survival skills and prove their mettle in combat. To proceed, head @@Rnorth@@d. If you wish to skip directly to the advanced training, you may @@R'@@dexamine advanced@@R'@@d.@@N~
-Flags 3 EOL
-Name  @@dEntrance to @@RT@@dhe @@RT@@draining @@RG@@drounds@@N~
-Sect  11
+Vnum       1051
+Desc       @@dYou stand before @@RT@@dhe @@RT@@draining @@RG@@drounds; here is where new adventurers come to learn basic survival skills and prove their mettle in combat. To proceed, head @@Rnorth@@d. If you wish to skip directly to the advanced training, you may @@R'@@dexamine advanced@@R'@@d.@@N~
+Flags      no_mob EOL
+Name       @@dEntrance to @@RT@@dhe @@RT@@draining @@RG@@drounds@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1052
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1052
 End
 
 #ROOM
-Vnum  1052
-Desc  @@dYou can see a wealth of information about your character with the @@Rscore @@dcommand. This will display things such as vitals (health, mana, move), attributes, lifetime records, and more. You can also learn a little about other online players with the @@Rwhois @@dcommand. To learn more about skills, spells, and stats head @@Rwest @@dfirst, then come back and proceed @@Rnorth @@dafterwards.@@N~
-Flags EOL
-Name  @@RW@@dithin @@RT@@dhe @@RT@@draining @@RG@@drounds@@N~
-Sect  11
+Vnum       1052
+Desc       @@dYou can see a wealth of information about your character with the @@Rscore @@dcommand. This will display things such as vitals (health, mana, move), attributes, lifetime records, and more. You can also learn a little about other online players with the @@Rwhois @@dcommand. To learn more about skills, spells, and stats head @@Rwest @@dfirst, then come back and proceed @@Rnorth @@dafterwards.@@N~
+Flags      EOL
+Name       @@RW@@dithin @@RT@@dhe @@RT@@draining @@RG@@drounds@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1054
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1054
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1051
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1051
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1053
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1053
 End
 
 #ROOM
-Vnum  1053
-Desc  @@dYou are standing within the training room. Here you can @@Rtrain @@dand @@Rpractice @@dyour attributes, skills, and spells. There is a @@Rsmall sign @@daffixed to the northern wall. Perhaps you should @@Rlook @@dat it? You may also @@Rgain @@dlevels here, if needed.@@N~
-Flags EOL
-Name  @@RT@@draining @@RR@@doom@@N~
-Sect  11
+Vnum       1053
+Desc       @@dYou are standing within the training room. Here you can @@Rtrain @@dand @@Rpractice @@dyour attributes, skills, and spells. There is a @@Rsmall sign @@daffixed to the northern wall. Perhaps you should @@Rlook @@dat it? You may also @@Rgain @@dlevels here, if needed.@@N~
+Flags      EOL
+Name       @@RT@@draining @@RR@@doom@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1052
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1052
 End
 #REXTRA
-Desc       You can train attributes: Strength, Intellect, Wisdom, Dexterity, and Constitution. Skills and spells must be practiced, instead. To see available skills or spells, you can slist <3 letter class abbr>, ie: slist mag, for Mage.~
-Keyword    small~
+Desc          You can train attributes: Strength, Intellect, Wisdom, Dexterity, and Constitution. Skills and spells must be practiced, instead. To see available skills or spells, you can slist <3 letter class abbr>, ie: slist mag, for Mage.~
+Keyword       small~
 End
 #REXTRA
-Desc       You can train attributes: Strength, Intellect, Wisdom, Dexterity, and Constitution. Skills and spells must be practiced, instead. To see available skills or spells, you can slist <3 letter class abbr>, ie: slist mag, for Mage.~
-Keyword    sign~
+Desc          You can train attributes: Strength, Intellect, Wisdom, Dexterity, and Constitution. Skills and spells must be practiced, instead. To see available skills or spells, you can slist <3 letter class abbr>, ie: slist mag, for Mage.~
+Keyword       sign~
 End
 
 #ROOM
-Vnum  1054
-Desc  @@dThe @@Rconfig @@dcommand is very useful. It will let you setup some actions to be automated and even change the look and feel of the game. You can see the list of options by just typing @@Rconfig@@d. Some recommended defaults are @@Rconfig +autoexit @@dand @@Rconfig +color@@d; this way you will automatically see the exits to rooms and can view colors. To proceed further, head @@Rnorth@@d.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WConfig@@N~
-Sect  11
+Vnum       1054
+Desc       @@dThe @@Rconfig @@dcommand is very useful. It will let you setup some actions to be automated and even change the look and feel of the game. You can see the list of options by just typing @@Rconfig@@d. Some recommended defaults are @@Rconfig +autoexit @@dand @@Rconfig +color@@d; this way you will automatically see the exits to rooms and can view colors. To proceed further, head @@Rnorth@@d.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WConfig@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1055
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1055
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1052
-End
-
-#ROOM
-Vnum  1055
-Desc  @@dThe @@Rchannel @@dcommand will toggle listening to different channels on the MUD. To turn a channel off (mute it) use @@Rchannel -name@@d, ie: channel -ooc to stop hearing OOC chat. To turn a channel on (un-mute it) use @@Rchannel +name @@dinstead. Setting the @@Rhermit channel @@doff or on will mute or un-mute all channels at once. To proceed to the next lesson, head @@Rdown@@d.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WChannels@@N~
-Sect  11
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1054
-End
-#DOOR
-Dir     5
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1056
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1052
 End
 
 #ROOM
-Vnum  1056
-Desc  @@dDoors are very important parts of the game. Some conceal hidden treasures and others are just meant to keep you (or monsters!) out. This door, to the east, happens to be locked and requires a key. To open it you'll need to @@Rget @@dthe @@Rkey @@din the room, @@Runlock east@@d, @@Ropen east@@d, @@dand then proceed on your way.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WDoors@@N~
-Sect  11
+Vnum       1055
+Desc       @@dThe @@Rchannel @@dcommand will toggle listening to different channels on the MUD. To turn a channel off (mute it) use @@Rchannel -name@@d, ie: channel -ooc to stop hearing OOC chat. To turn a channel on (un-mute it) use @@Rchannel +name @@dinstead. Setting the @@Rhermit channel @@doff or on will mute or un-mute all channels at once. To proceed to the next lesson, head @@Rdown@@d.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WChannels@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   1 6 7 8 EOL
-Key     1052
-Keyword ~
-Vnum    1057
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1054
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1055
-End
-
-#ROOM
-Vnum  1057
-Desc  @@dThe @@Rpray @@dcommand can be used to send a message to all immortals online, visible or not. It should only be used in dire situations and may or may not always get a response. Abusing the @@Rpray @@dcommand, will, however, lead to the gods quickly ignoring your pleas.  Go a head and try it now; type: @@Rpray Hi, I'm new and learning to use pray! @@dWhen ready to proceed, head @@Rnorth @@dto continue on.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WPray@@N~
-Sect  11
-End
-#DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1058
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   1 6 7 8 EOL
-Key     1052
-Keyword ~
-Vnum    1056
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1056
 End
 
 #ROOM
-Vnum  1058
-Desc  @@dMany questions can be answered through the in-game @@Rhelp @@dsystem. To view a topic simply type @@Rhelp <keyword> @@d. So to get help about setting up a custom prompt, you can @@Rhelp prompt @@dand read more about it there. There is a separate help system for all skills and spells called @@Rshelp @@dand it works exactly like @@Rhelp@@d. So to see the @@Rshelp @@dfor the @@Rmagic missile @@dspell, use @@Rshelp magic missile@@d. When ready to proceed, head @@Rnorth@@d.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WHelp System@@N~
-Sect  11
+Vnum       1056
+Desc       @@dDoors are very important parts of the game. Some conceal hidden treasures and others are just meant to keep you (or monsters!) out. This door, to the east, happens to be locked and requires a key. To open it you'll need to @@Rget @@dthe @@Rkey @@din the room, @@Runlock east@@d, @@Ropen east@@d, @@dand then proceed on your way.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WDoors@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1059
+Dir        1
+Desc       ~
+Flags      door pickproof smashproof passproof EOL
+Key        1052
+Keyword    ~
+Vnum       1057
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1057
-End
-
-#ROOM
-Vnum  1059
-Desc  @@dIf you ever find yourself lost you may simply @@Rrecall @@dback to your home. New adventurers start with their @@Rrecall @@dset in @@yC@@balor@@d, @@dbut there are other places throughout the realm you may call your home. Recalling from combat is a trickier situation, however, and may not always work. Some classes, however, have access to a @@RWord of Recall @@dspell that has a better success rate. To proceed, continue @@Rwest@@d.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WRecall@@N~
-Sect  11
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1058
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1060
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1055
 End
 
 #ROOM
-Vnum  1060
-Desc  @@dExperience is gained through defeating enemies in combat. With enough experience, you can gain levels and advance your classes. You gain experience more quickly when grouped with others as you are able to learn from each other in the process, and it is also rumored that there are some magical items capable of increasing experience gained too! To continue, go @@Rup@@d.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WExperience@@N~
-Sect  11
+Vnum       1057
+Desc       @@dThe @@Rpray @@dcommand can be used to send a message to all immortals online, visible or not. It should only be used in dire situations and may or may not always get a response. Abusing the @@Rpray @@dcommand, will, however, lead to the gods quickly ignoring your pleas.  Go a head and try it now; type: @@Rpray Hi, I'm new and learning to use pray! @@dWhen ready to proceed, head @@Rnorth @@dto continue on.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WPray@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1059
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1058
 End
 #DOOR
-Dir     4
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1061
-End
-
-#ROOM
-Vnum  1061
-Desc  @@dOnce you have enough experience saved you can @@Rgain @@da level in any of the classes selected during creation. To see the cost to level each class, type @@Rworth@@d. If the difference for a class is 0, you have enough experience to @@Rgain @@da level! You'll need to visit a trainer and then use the @@Rgain @@dcommand to advance that class. Hint: there's a trainer right here in @@RT@@dhe @@RT@@draining @@RG@@drounds! The next lesson lies to the @@Rnorth@@d.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WLevels and Classes@@N~
-Sect  11
-End
-#DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1062
-End
-#DOOR
-Dir     5
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1060
+Dir        3
+Desc       ~
+Flags      door pickproof smashproof passproof EOL
+Key        1052
+Keyword    ~
+Vnum       1056
 End
 
 #ROOM
-Vnum  1062
-Desc  @@dDeath is a part of life. Whenever you die your spirit will separate from your body. As a ghost, you will only be able to communicate with other ghosts. All worldly possessions (items, money, etc) will remain on your physical body where you died, and you will lose a portion of any experience you have gained. A @@RCleric @@dknowledgeable of the @@Rredemption @@dspell can restore life to your ghostly form. There are also @@Rcertain NPCs @@din the game who will @@Rresurrect @@dany ghost they see, too. If you wander the world as a ghostly spirit long enough, the gods will take pity upon your plight; restoring you to life and giving you back your corpse in the event it was un-retrievable. The next lesson lies to the @@Rnorth@@d.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WDeath@@N~
-Sect  11
+Vnum       1058
+Desc       @@dMany questions can be answered through the in-game @@Rhelp @@dsystem. To view a topic simply type @@Rhelp <keyword> @@d. So to get help about setting up a custom prompt, you can @@Rhelp prompt @@dand read more about it there. There is a separate help system for all skills and spells called @@Rshelp @@dand it works exactly like @@Rhelp@@d. So to see the @@Rshelp @@dfor the @@Rmagic missile @@dspell, use @@Rshelp magic missile@@d. When ready to proceed, head @@Rnorth@@d.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WHelp System@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1063
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1059
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1061
-End
-
-#ROOM
-Vnum  1063
-Desc  @@dGrouping can be a vital part of adventuring. When in a @@Rgroup@@d, not only are experience gains increased, but gold is automatically split among @@Rgroup @@dmembers and you can use the @@Rgroup @@dcommand to keep better track of one another's status. To make a @@Rgroup, one player must first @@Rfollow @@dthe other. Then the other player will @@Rgroup <target> @@dwho is following them. Once your @@Rgroup @@dis formed, simply typing @@Rgroup @@dwill display vital stats on all members. All members can use the special @@Rgtalk @@dcommand to message the entire @@Rgroup @@dat once. To leave a @@Rgroup @@dsimply @@Rfollow self @@dinstead of the leader. Head @@Rnorth @@dto the next lesson.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WGrouping@@N~
-Sect  11
-End
-#DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1064
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1062
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1057
 End
 
 #ROOM
-Vnum  1064
-Desc  @@dQuests provide an alternative way to gain experience rather than fighting monsters. Auto-run quests will feature a NPC seeking assistance to find an item via the @@Rcrusade @@dchannel. You can also find a @@RQuest Master @@din the world and gain a @@Rmquest @@dfrom them. @@RMquests @@dare varied; some may require you to retrieve items, kill monsters, or even a combination of both. Questing can be a fast, fun way to earn gold, experience, and even special @@Rquest points @@dthat can be spent on enhancing items or other bonuses! The final lesson is to the @@Reast@@d.@@N~
-Flags EOL
-Name  @@dLesson@@R: @@WQuests@@N~
-Sect  11
+Vnum       1059
+Desc       @@dIf you ever find yourself lost you may simply @@Rrecall @@dback to your home. New adventurers start with their @@Rrecall @@dset in @@yC@@balor@@d, @@dbut there are other places throughout the realm you may call your home. Recalling from combat is a trickier situation, however, and may not always work. Some classes, however, have access to a @@RWord of Recall @@dspell that has a better success rate. To proceed, continue @@Rwest@@d.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WRecall@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1065
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1058
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1063
-End
-
-#ROOM
-Vnum  1065
-Desc  @@dYou stand within the armory. There is a @@Rweapon rack @@dwith a few assorted weapons left in it, and an @@Rarmor rack @@dholding some badly dented shields. Torches from past adventurers are scattered about the floor. Below you is @@RT@@dhe @@RP@@dit, where new adventurers fight in a free-for-all gladiator style battle honing their skills. Once you have equipped yourself, proceed @@Rdown @@dto test your mettle.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RA@@drmory@@N~
-Sect  11
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1064
-End
-#DOOR
-Dir     5
-Desc    ~
-Flags   10 EOL
-Key     0
-Keyword ~
-Vnum    1066
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1060
 End
 
 #ROOM
-Vnum  1066
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you, while above is the safety of the school.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1060
+Desc       @@dExperience is gained through defeating enemies in combat. With enough experience, you can gain levels and advance your classes. You gain experience more quickly when grouped with others as you are able to learn from each other in the process, and it is also rumored that there are some magical items capable of increasing experience gained too! To continue, go @@Rup@@d.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WExperience@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1070
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1059
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1067
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1069
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1068
-End
-#DOOR
-Dir     4
-Desc    ~
-Flags   10 EOL
-Key     0
-Keyword ~
-Vnum    1065
+Dir        4
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1061
 End
 
 #ROOM
-Vnum  1067
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1061
+Desc       @@dOnce you have enough experience saved you can @@Rgain @@da level in any of the classes selected during creation. To see the cost to level each class, type @@Rworth@@d. If the difference for a class is 0, you have enough experience to @@Rgain @@da level! You'll need to visit a trainer and then use the @@Rgain @@dcommand to advance that class. Hint: there's a trainer right here in @@RT@@dhe @@RT@@draining @@RG@@drounds! The next lesson lies to the @@Rnorth@@d.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WLevels and Classes@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1072
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1062
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1079
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1074
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1066
+Dir        5
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1060
 End
 
 #ROOM
-Vnum  1068
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1062
+Desc       @@dDeath is a part of life. Whenever you die your spirit will separate from your body. As a ghost, you will only be able to communicate with other ghosts. All worldly possessions (items, money, etc) will remain on your physical body where you died, and you will lose a portion of any experience you have gained. A @@RCleric @@dknowledgeable of the @@Rredemption @@dspell can restore life to your ghostly form. There are also @@Rcertain NPCs @@din the game who will @@Rresurrect @@dany ghost they see, too. If you wander the world as a ghostly spirit long enough, the gods will take pity upon your plight; restoring you to life and giving you back your corpse in the event it was un-retrievable. The next lesson lies to the @@Rnorth@@d.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WDeath@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1071
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1063
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1066
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1073
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1076
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1061
 End
 
 #ROOM
-Vnum  1069
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1063
+Desc       @@dGrouping can be a vital part of adventuring. When in a @@Rgroup@@d, not only are experience gains increased, but gold is automatically split among @@Rgroup @@dmembers and you can use the @@Rgroup @@dcommand to keep better track of one another's status. To make a @@Rgroup, one player must first @@Rfollow @@dthe other. Then the other player will @@Rgroup <target> @@dwho is following them. Once your @@Rgroup @@dis formed, simply typing @@Rgroup @@dwill display vital stats on all members. All members can use the special @@Rgtalk @@dcommand to message the entire @@Rgroup @@dat once. To leave a @@Rgroup @@dsimply @@Rfollow self @@dinstead of the leader. Head @@Rnorth @@dto the next lesson.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WGrouping@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1066
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1064
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1074
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1073
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1062
 End
 
 #ROOM
-Vnum  1070
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1064
+Desc       @@dQuests provide an alternative way to gain experience rather than fighting monsters. Auto-run quests will feature a NPC seeking assistance to find an item via the @@Rcrusade @@dchannel. You can also find a @@RQuest Master @@din the world and gain a @@Rmquest @@dfrom them. @@RMquests @@dare varied; some may require you to retrieve items, kill monsters, or even a combination of both. Questing can be a fast, fun way to earn gold, experience, and even special @@Rquest points @@dthat can be spent on enhancing items or other bonuses! The final lesson is to the @@Reast@@d.@@N~
+Flags      EOL
+Name       @@dLesson@@R: @@WQuests@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1083
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1065
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1072
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1066
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1071
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1063
 End
 
 #ROOM
-Vnum  1071
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1065
+Desc       @@dYou stand within the armory. There is a @@Rweapon rack @@dwith a few assorted weapons left in it, and an @@Rarmor rack @@dholding some badly dented shields. Torches from past adventurers are scattered about the floor. Below you is @@RT@@dhe @@RP@@dit, where new adventurers fight in a free-for-all gladiator style battle honing their skills. Once you have equipped yourself, proceed @@Rdown @@dto test your mettle.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RA@@drmory@@N~
+ScriptName ~
+Sect       11
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1084
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1064
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1070
-End
-#DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1068
-End
-#DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1077
+Dir        5
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1066
 End
 
 #ROOM
-Vnum  1072
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1066
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you, while above is the safety of the school.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1082
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1070
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1078
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1067
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1067
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1069
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1070
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1068
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1065
 End
 
 #ROOM
-Vnum  1073
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1067
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1068
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1072
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1069
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1079
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1075
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1074
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1066
 End
 
 #ROOM
-Vnum  1074
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1068
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1067
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1071
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1080
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1066
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1069
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1073
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1076
 End
 
 #ROOM
-Vnum  1075
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north and east, while the south and west walls prevent any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1069
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1076
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1066
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1073
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1074
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1073
 End
 
 #ROOM
-Vnum  1076
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and south, while the west wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1070
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1077
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1083
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1068
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1072
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1075
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1066
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1071
 End
 
 #ROOM
-Vnum  1077
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and south, while the west wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1071
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1085
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1084
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1071
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1070
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1076
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1068
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1077
 End
 
 #ROOM
-Vnum  1078
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, south, and west, while the east wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1072
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends all around you.~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1081
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1082
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1079
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1078
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1072
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1067
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1070
 End
 
 #ROOM
-Vnum  1079
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, south, and west, while the east wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1073
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1078
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1068
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1080
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1069
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1067
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1075
 End
 
 #ROOM
-Vnum  1080
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north and west, while the south and east walls prevent any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1074
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and west, while the south wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     0
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1079
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1067
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1074
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1080
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1069
 End
 
 #ROOM
-Vnum  1081
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the south and west, while the north and east walls prevent any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1075
+Desc       @@dThe  @@bsand  @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north and east, while the south and west @@N@@dwalls prevent any from escaping. A series of @@ggar@@dden@@Ws@@N @@cf@@aloa@@Wt @@dabove.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1078
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1076
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1082
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1073
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1149
 End
 
 #ROOM
-Vnum  1082
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1076
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and south, while the west wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1081
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1077
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1072
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1068
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1083
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1075
 End
 
 #ROOM
-Vnum  1083
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1077
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, east, and south, while the west wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1082
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1085
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1070
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1071
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1084
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1076
 End
 
 #ROOM
-Vnum  1084
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1078
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, south, and west, while the east wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1083
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1081
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1071
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1079
 End
 #DOOR
-Dir     3
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1085
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1072
 End
 
 #ROOM
-Vnum  1085
-Desc  @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the south and east, while the north and west walls prevent any from escaping.@@N~
-Flags EOL
-Name  @@RT@@dhe @@RP@@dit@@N~
-Sect  10
+Vnum       1079
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north, south, and west, while the east wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
 End
 #DOOR
-Dir     1
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1084
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1078
 End
 #DOOR
-Dir     2
-Desc    ~
-Flags   EOL
-Key     0
-Keyword ~
-Vnum    1077
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1080
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1067
+End
+
+#ROOM
+Vnum       1080
+Desc       @@dThe  @@bsand  @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the north and west, while the south and east @@N@@dwalls prevent any from escaping. A series of @@ggar@@dden@@Ws@@N @@cf@@aloa@@Wt @@dabove.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
+End
+#DOOR
+Dir        0
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1079
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1074
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1189
+End
+
+#ROOM
+Vnum       1081
+Desc       @@dThe  @@bsand  @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the south and west, while the north and east @@N@@dwalls prevent any from escaping. A series of @@ggar@@dden@@Ws@@N @@cf@@aloa@@Wt @@dabove.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1078
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1082
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1184
+End
+
+#ROOM
+Vnum       1082
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1081
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1072
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1083
+End
+
+#ROOM
+Vnum       1083
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1082
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1070
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1084
+End
+
+#ROOM
+Vnum       1084
+Desc       @@dThe @@bsand @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the east, south, and west, while the north wall prevents any from escaping.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1083
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1071
+End
+#DOOR
+Dir        3
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1085
+End
+
+#ROOM
+Vnum       1085
+Desc       @@dThe  @@bsand  @@dis stained with the @@Rblood @@dof adventurers and monsters alike. @@RT@@dhe @@RP@@dit is a place of constant turmoil and bloodshed. @@RT@@dhe @@RP@@dit extends to the south and east, while the north and west @@N@@dwalls prevent any from escaping. A series of @@ggar@@dden@@Ws@@N @@cf@@aloa@@Wt @@dabove.@@N~
+Flags      EOL
+Name       @@RT@@dhe @@RP@@dit@@N~
+ScriptName ~
+Sect       10
+End
+#DOOR
+Dir        1
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1084
+End
+#DOOR
+Dir        2
+Desc       ~
+Flags      EOL
+Key        0
+Keyword    ~
+Vnum       1077
+End
+#DOOR
+Dir        4
+Desc       ~
+Flags      nomob EOL
+Key        0
+Keyword    ~
+Vnum       1144
 End
 
 #MOBILE
 Vnum      1051
 AcMod     0
-Act       2 10 11 17 19 26 29 30 31 EOL
+Act       sentinel train practice no_body no_mind solo no_blood no_quest questmaster EOL
 Affected   188
 Alignment  1000
 Cast       0
@@ -1400,8 +1467,9 @@ End
 
 #OBJECT
 Vnum       1051
+ArmorType  0
 Durability 41
-ExtraFlags 28 EOL
+ExtraFlags noquest EOL
 ItemApply  1
 Level      1
 LongDesc   ~
@@ -1418,8 +1486,9 @@ End
 
 #OBJECT
 Vnum       1052
+ArmorType  0
 Durability 34
-ExtraFlags 28 EOL
+ExtraFlags noquest EOL
 ItemApply  1
 Level      1
 LongDesc   @@dA training key is here, perhaps you should take it?@@N~
@@ -1430,14 +1499,15 @@ ShortDesc  @@d a training key@@N~
 Speed      4.00
 Type       18
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  take EOL
 Weight     1
 End
 
 #OBJECT
 Vnum       1053
+ArmorType  0
 Durability 75
-ExtraFlags 28 29 EOL
+ExtraFlags noquest notake EOL
 ItemApply  1
 Level      1
 LongDesc   @@dA weapon rack holds a few @@Rblood caked @@dswords, spears, and axes.@@N~
@@ -1448,14 +1518,15 @@ ShortDesc  @@da weapon rack@@N~
 Speed      3.20
 Type       15
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  take EOL
 Weight     1
 End
 
 #OBJECT
 Vnum       1054
+ArmorType  0
 Durability 65
-ExtraFlags 28 29 EOL
+ExtraFlags noquest notake EOL
 ItemApply  1
 Level      1
 LongDesc   @@dAn armor rack has some battered shields left on it.@@N~
@@ -1472,6 +1543,7 @@ End
 
 #OBJECT
 Vnum       1055
+ArmorType  0
 Durability 15
 ExtraFlags EOL
 ItemApply  1
@@ -1484,7 +1556,7 @@ ShortDesc  @@dA @@bBattered @@yShield@@N~
 Speed      3.12
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  16 24 EOL
+WearFlags  hold take EOL
 Weight     1
 End
 #OAFFECT
@@ -1502,6 +1574,7 @@ End
 
 #OBJECT
 Vnum       1056
+ArmorType  0
 Durability 60
 ExtraFlags EOL
 ItemApply  1
@@ -1514,7 +1587,7 @@ ShortDesc  @@RBlood @@dCaked Sword@@N~
 Speed      2.00
 Type       5
 Values     0 0 0 1 0 0 0 0 0 0 
-WearFlags  16 24 EOL
+WearFlags  hold take EOL
 Weight     1
 End
 #OAFFECT
@@ -1528,6 +1601,7 @@ End
 
 #OBJECT
 Vnum       1057
+ArmorType  0
 Durability 93
 ExtraFlags EOL
 ItemApply  1
@@ -1540,7 +1614,7 @@ ShortDesc  @@RBlood @@dCaked Axe@@N~
 Speed      3.00
 Type       5
 Values     0 0 0 3 0 0 0 0 0 0 
-WearFlags  16 24 EOL
+WearFlags  hold take EOL
 Weight     1
 End
 #OAFFECT
@@ -1554,6 +1628,7 @@ End
 
 #OBJECT
 Vnum       1058
+ArmorType  0
 Durability 3
 ExtraFlags EOL
 ItemApply  1
@@ -1566,7 +1641,7 @@ ShortDesc  @@RBlood @@dCaked Spear@@N~
 Speed      4.00
 Type       5
 Values     0 0 0 2 0 0 0 0 0 0 
-WearFlags  16 24 EOL
+WearFlags  hold take EOL
 Weight     1
 End
 #OAFFECT
@@ -1580,6 +1655,7 @@ End
 
 #OBJECT
 Vnum       1059
+ArmorType  0
 Durability 22
 ExtraFlags EOL
 ItemApply  1
@@ -1592,7 +1668,7 @@ ShortDesc  @@bDimly @@yGlowing @@eTo@@yrc@@Rh@@N~
 Speed      2.33
 Type       1
 Values     0 0 -1 0 0 0 0 0 0 0 
-WearFlags  16 24 EOL
+WearFlags  hold take EOL
 Weight     1
 End
 #OAFFECT
@@ -1626,6 +1702,7 @@ End
 
 #OBJECT
 Vnum       1060
+ArmorType  0
 Durability 86
 ExtraFlags EOL
 ItemApply  1
@@ -1638,7 +1715,7 @@ ShortDesc  @@da @@yminor @@Rblood@@dstone@@N~
 Speed      1.02
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  1 24 EOL
+WearFlags  halo take EOL
 Weight     1
 End
 #OAFFECT
@@ -1664,6 +1741,7 @@ End
 
 #OBJECT
 Vnum       1061
+ArmorType  0
 Durability 82
 ExtraFlags EOL
 ItemApply  1
@@ -1676,7 +1754,7 @@ ShortDesc  @@cSa@@ycr@@aed @@bAura@@N~
 Speed      4.00
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  2 24 EOL
+WearFlags  aura take EOL
 Weight     1
 End
 #OAFFECT
@@ -1690,6 +1768,7 @@ End
 
 #OBJECT
 Vnum       1062
+ArmorType  0
 Durability 20
 ExtraFlags EOL
 ItemApply  1
@@ -1702,7 +1781,7 @@ ShortDesc  a @@WS@@dk@@Wu@@dl@@Wl @@dCap@@N~
 Speed      4.00
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  3 4 24 EOL
+WearFlags  horns head take EOL
 Weight     1
 End
 #OAFFECT
@@ -1716,6 +1795,7 @@ End
 
 #OBJECT
 Vnum       1063
+ArmorType  0
 Durability 92
 ExtraFlags EOL
 ItemApply  1
@@ -1728,7 +1808,7 @@ ShortDesc  @@zFace @@zPaint@@N~
 Speed      2.24
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  5 6 24 EOL
+WearFlags  face beak take EOL
 Weight     1
 End
 #OAFFECT
@@ -1742,6 +1822,7 @@ End
 
 #OBJECT
 Vnum       1064
+ArmorType  0
 Durability 28
 ExtraFlags EOL
 ItemApply  1
@@ -1754,7 +1835,7 @@ ShortDesc  @@WSi@@glv@@Wer @@dStud@@N~
 Speed      2.22
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  7 24 EOL
+WearFlags  ear take EOL
 Weight     1
 End
 #OAFFECT
@@ -1772,6 +1853,7 @@ End
 
 #OBJECT
 Vnum       1065
+ArmorType  0
 Durability 85
 ExtraFlags EOL
 ItemApply  1
@@ -1784,7 +1866,7 @@ ShortDesc  a @@brat @@Wb@@do@@gn@@We @@Nnecklace~
 Speed      3.12
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  8 24 EOL
+WearFlags  neck take EOL
 Weight     1
 End
 #OAFFECT
@@ -1806,6 +1888,7 @@ End
 
 #OBJECT
 Vnum       1066
+ArmorType  0
 Durability 37
 ExtraFlags EOL
 ItemApply  1
@@ -1818,7 +1901,7 @@ ShortDesc  @@bB@@yoa@@br @@RT@@eu@@Rsk @@dSpaulders@@N~
 Speed      4.00
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  10 24 EOL
+WearFlags  shoulders take EOL
 Weight     1
 End
 #OAFFECT
@@ -1836,6 +1919,7 @@ End
 
 #OBJECT
 Vnum       1067
+ArmorType  0
 Durability 34
 ExtraFlags EOL
 ItemApply  1
@@ -1848,7 +1932,7 @@ ShortDesc  @@bLeather Arm Splints@@N~
 Speed      3.42
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  11 24 EOL
+WearFlags  arms take EOL
 Weight     1
 End
 #OAFFECT
@@ -1866,6 +1950,7 @@ End
 
 #OBJECT
 Vnum       1068
+ArmorType  0
 Durability 45
 ExtraFlags EOL
 ItemApply  1
@@ -1878,7 +1963,7 @@ ShortDesc  @@zM@@zu@@zl@@zt@@zi@@W-@@zC@@zo@@zl@@zo@@zr@@ze@@zd @@rBracelet of B
 Speed      2.14
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  12 24 EOL
+WearFlags  wrist take EOL
 Weight     1
 End
 #OAFFECT
@@ -1900,6 +1985,7 @@ End
 
 #OBJECT
 Vnum       1069
+ArmorType  0
 Durability 79
 ExtraFlags EOL
 ItemApply  1
@@ -1912,7 +1998,7 @@ ShortDesc  @@RB@@el@@Ro@@eo@@Rd@@ey @@dKnuckles@@N~
 Speed      3.02
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  13 15 24 EOL
+WearFlags  hands claws take EOL
 Weight     1
 End
 #OAFFECT
@@ -1930,6 +2016,7 @@ End
 
 #OBJECT
 Vnum       1070
+ArmorType  0
 Durability 22
 ExtraFlags EOL
 ItemApply  1
@@ -1942,7 +2029,7 @@ ShortDesc  @@ya simple golden band@@N~
 Speed      4.00
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  14 24 EOL
+WearFlags  finger take EOL
 Weight     1
 End
 #OAFFECT
@@ -1960,6 +2047,7 @@ End
 
 #OBJECT
 Vnum       1071
+ArmorType  0
 Durability 6
 ExtraFlags EOL
 ItemApply  1
@@ -1972,7 +2060,7 @@ ShortDesc  a tattered piece of cloth~
 Speed      3.12
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  17 24 EOL
+WearFlags  about take EOL
 Weight     1
 End
 #OAFFECT
@@ -1986,6 +2074,7 @@ End
 
 #OBJECT
 Vnum       1072
+ArmorType  0
 Durability 57
 ExtraFlags EOL
 ItemApply  1
@@ -1998,7 +2087,7 @@ ShortDesc  @@ba hemp cord@@N~
 Speed      1.00
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  18 24 EOL
+WearFlags  waist take EOL
 Weight     1
 End
 #OAFFECT
@@ -2008,6 +2097,7 @@ End
 
 #OBJECT
 Vnum       1073
+ArmorType  0
 Durability 54
 ExtraFlags EOL
 ItemApply  1
@@ -2020,7 +2110,7 @@ ShortDesc  @@ba @@ybrass @@bbreastplate@@N~
 Speed      4.00
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  19 24 EOL
+WearFlags  body take EOL
 Weight     1
 End
 #OAFFECT
@@ -2042,6 +2132,7 @@ End
 
 #OBJECT
 Vnum       1074
+ArmorType  0
 Durability 10
 ExtraFlags EOL
 ItemApply  1
@@ -2054,7 +2145,7 @@ ShortDesc  @@bLeather Leggings@@N~
 Speed      1.32
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  21 24 EOL
+WearFlags  legs take EOL
 Weight     1
 End
 #OAFFECT
@@ -2076,6 +2167,7 @@ End
 
 #OBJECT
 Vnum       1075
+ArmorType  0
 Durability 49
 ExtraFlags EOL
 ItemApply  1
@@ -2088,7 +2180,7 @@ ShortDesc  a pair of @@bwell-worn @@ysandals@@N~
 Speed      2.33
 Type       9
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  22 23 24 EOL
+WearFlags  feet hooves take EOL
 Weight     1
 End
 #OAFFECT

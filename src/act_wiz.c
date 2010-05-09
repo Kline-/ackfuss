@@ -1268,7 +1268,8 @@ DO_FUN(do_ofindlev)
         send_to_char( "Nothing like that in hell, earth, or heaven.\r\n", ch );
         return;
     }
-    snprintf( buf, MSL, "Ofindlev report for level range %d to %d", level, level_top );
+
+    ch->send(buf1);
     //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
@@ -1401,7 +1402,7 @@ DO_FUN(do_mfindlev)
         return;
     }
 
-    snprintf( buf, MSL, "Mfindlev report for level range %d to %d", level, level_top );
+    ch->send(buf1);
     //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
@@ -1462,7 +1463,7 @@ DO_FUN(do_ofind)
         return;
     }
 
-    snprintf( buf, MSL, "Ofind report for %s", arg );
+    ch->send(buf1);
     //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
@@ -4080,12 +4081,11 @@ DO_FUN(do_owhere)
     if ( !found )
     {
         send_to_char( "Nothing like that in hell, earth, or heaven.\r\n", ch );
+        return;
     }
-    else
-    {
-        ch->send(buf);
-        //TODO: email send_rep_out( ch, buf, mailme, catbuf );
-    }
+
+    ch->send(buf);
+    //TODO: email send_rep_out( ch, buf, mailme, catbuf );
     return;
 }
 
@@ -5348,7 +5348,7 @@ DO_FUN(do_alink)
     area_top = this_area->max_vnum;
     area_bottom = this_area->min_vnum;
     snprintf( buf, MSL, "External room links for %s.\r\n  THIS DOES NOT INCLUDE ONE WAY DOORS INTO THIS AREA.\r\n",
-              this_area->name + 21 );
+              this_area->name );
     send_to_char( buf, ch );
 
     for ( pointer = this_area->first_area_room; pointer != NULL; pointer = pointer->next )
@@ -5760,7 +5760,7 @@ DO_FUN(do_otype)
         return;
     }
 
-    snprintf( buf, MSL, "Otype report for %s", arg );
+    ch->send(buf1);
     //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
@@ -5822,7 +5822,7 @@ DO_FUN(do_owear)
         return;
     }
 
-    snprintf( buf, MSL, "Owear report for %s", arg );
+    ch->send(buf1);
     //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
@@ -5850,7 +5850,7 @@ DO_FUN(do_findreset)
     bool mailme = FALSE;
     bool fmob = FALSE, fobj = FALSE;
     int vnum = 0;
-    char mailsub[MSL];
+//    char mailsub[MSL];
     RESET_DATA *reset;
     MOB_INDEX_DATA *pMob;
     OBJ_INDEX_DATA *pObj;
@@ -5969,7 +5969,7 @@ DO_FUN(do_findreset)
                 }  /* if ( fmob ) */
             }  /* for reset */
         }  /* for pArea */
-        snprintf( mailsub, MSL, "Findresets for %s %d:\r\n", arg1, vnum );
+        ch->send(outbuf);
         //TODO: email send_rep_out( ch, outbuf, mailme, mailsub );
         return;
     }  /* if ( mworld ) */

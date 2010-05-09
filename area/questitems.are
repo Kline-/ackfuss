@@ -2,7 +2,7 @@
 Revision  24
 CanRead   Kline~
 CanWrite  Kline~
-Flags     2 4 EOL
+Flags     nada no_show EOL
 Keyword   ~
 LevLabel  @@R[@@e SYS@@R ]@@N~
 LevRange  1 120
@@ -17,7 +17,7 @@ End
 #ROOM
 Vnum       101
 Desc       This zone is just to hold crusade items. As you add more items, update the defines in config.h to use the whole range.~
-Flags      3 EOL
+Flags      nada no_mob EOL
 Name       New Room~
 ScriptName ~
 Sect       11
@@ -38,7 +38,7 @@ ShortDesc  @@yDel@@bici@@dous @@WChoc@@dola@@bte C@@yake@@N~
 Speed      3.14
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -57,7 +57,7 @@ ShortDesc  @@WThe @@p"@@mTwo@@p" @@WRing@@N~
 Speed      3.41
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -76,7 +76,7 @@ ShortDesc  @@gBr@@dok@@Wen @@dSk@@gull@@N~
 Speed      2.41
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -95,7 +95,7 @@ ShortDesc  @@RKline@@e'@@Rs @@dSanity@@N~
 Speed      2.44
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -114,7 +114,7 @@ ShortDesc  @@e(@@RTop Secret@@e) @@am@@cquest @@ac@@code@@N~
 Speed      4.00
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -133,7 +133,7 @@ ShortDesc  @@zP@@zs@@zy@@zc@@zh@@za@@zd@@ze@@zl@@zi@@zc @@zM@@zu@@zs@@zh@@zr@@zo
 Speed      3.31
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -152,7 +152,7 @@ ShortDesc  a @@dBlack @@RR@@eo@@Rs@@ee@@N~
 Speed      2.40
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -171,7 +171,7 @@ ShortDesc  @@RL@@eo@@Rst @@bP@@yu@@bppy@@N~
 Speed      4.00
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -190,7 +190,7 @@ ShortDesc  @@RT@@er@@mu@@pe @@RL@@eo@@mv@@pe@@N~
 Speed      1.11
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 
@@ -209,7 +209,7 @@ ShortDesc  @@WExcali@@dpoor@@N~
 Speed      2.13
 Type       16
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 #$

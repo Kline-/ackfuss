@@ -2,7 +2,7 @@
 Revision  24
 CanRead   Kline~
 CanWrite  Kline~
-Flags     2 4 EOL
+Flags     nada no_show EOL
 Keyword   ~
 LevLabel  @@R[@@e IMM@@R ]@@N~
 LevRange  1 120
@@ -17,7 +17,7 @@ End
 #ROOM
 Vnum       301
 Desc       Colors and shapes rapidly swirl around this room as the ether tries to take form, yet can't. Everything imaginable seems to exist here, yet is always out of phase with reality. Is there anything truly here? Or is there nothing...?~
-Flags      3 4 17 18 EOL
+Flags      nada no_mob EOL
 Name       The Void~
 ScriptName ~
 Sect       11
@@ -26,7 +26,7 @@ End
 #ROOM
 Vnum       302
 Desc       You stand in the hub of the Halls of Immortals. From here the rest of the structure branches outward. There are various monitoring stations around the room displaying vital statistics about the world and its populace~
-Flags      3 EOL
+Flags      nada EOL
 Name       The Hub~
 ScriptName ~
 Sect       11
@@ -83,7 +83,7 @@ End
 #ROOM
 Vnum       303
 Desc       The Bank of Eternity transcends all time. There is but a single teller to serve your needs, yet the vault stretches on as far as the eye can see. This is the central bank of the world, though which all other banking transactions pass.~
-Flags      4 EOL
+Flags      nada EOL
 Name       Bank of Eternity~
 ScriptName ~
 Sect       11
@@ -100,7 +100,7 @@ End
 #ROOM
 Vnum       304
 Desc       The Apex serves as an office for Kline. It is sparsely decorated save from three small dolls and a handful of windows looking out into key areas of the world.~
-Flags      4 EOL
+Flags      nada EOL
 Name       The Apex~
 ScriptName ~
 Sect       11
@@ -246,7 +246,7 @@ ShortDesc  a @@ytoy @@b"@@WHunter@@b" @@Ndoll~
 Speed      2.43
 Type       8
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  16 24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 #OEXTRA
@@ -277,7 +277,7 @@ ShortDesc  a @@ytoy @@b"@@WHannah@@b" @@Ndoll~
 Speed      2.00
 Type       8
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  16 24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 #OEXTRA
@@ -384,7 +384,7 @@ ShortDesc  a @@ytoy @@b"@@WZayne@@b" @@Ndoll~
 Speed      2.43
 Type       8
 Values     0 0 0 0 0 0 0 0 0 0 
-WearFlags  16 24 EOL
+WearFlags  nada EOL
 Weight     1
 End
 #OEXTRA
