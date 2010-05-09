@@ -2930,7 +2930,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     monitor_chan( msg, MONITOR_CONNECT );
                     if ( ( ch->level > 80 ) )
                     {
-                        snprintf( msg, MSL, "WARNING!!! %s logged in with level %d.\r\n", ch->name.c_str(), ch->level );
+                        snprintf( msg, MSL, "WARNING!!! %s logged in with level %d.", ch->name.c_str(), ch->level );
                         log_string( msg );
                     }
 
