@@ -3489,8 +3489,8 @@ void send_to_char( string txt, CHAR_DATA *ch )
 
 void show_string( struct descriptor_data *d, char *input )
 {
-    char buffer[MAX_STRING_LENGTH * 2];
-    char buf[MAX_INPUT_LENGTH];
+    char buffer[MSL * 2];
+    char buf[MSL * 2];
     register char *scan, *chk;
     int lines = 0, toggle = 1;
     int space;

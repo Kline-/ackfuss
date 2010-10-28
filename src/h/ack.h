@@ -558,6 +558,7 @@ class char_data
         const char *get_whoname( void );
         void rsend( string txt, ... ); __attribute__ ((format (printf, 2, 3)));
         void send( string txt, ... ); __attribute__ ((format (printf, 2, 3)));
+        void send( bool raw, string txt );
         void set_cooldown( const char *skill );
         void set_cooldown( int pos, float duration );
         void set_title( const char *title );

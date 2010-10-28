@@ -332,6 +332,44 @@ void char_data::send( string txt, ... )
     return;
 }
 
+/* Use for passing any strings to escape vsprintf formatting, such as lists of objects with %s, %d, etc in them.
+   Value of the bool doesn't matter, just something to differentiate the func for overloading. --Kline */
+void char_data::send( bool raw, string txt )
+{
+    if ( this == NULL || desc == NULL )
+        return;
+
+    if ( txt.empty() )
+        return;
+
+    if ( desc->showstr_head != NULL )
+    {
+        char *ssh;
+
+        ssh = (char *)qgetmem( strlen( desc->showstr_head ) + txt.length() + 1 );
+        strcpy( ssh, desc->showstr_head );
+        strcat( ssh, txt.c_str() );
+
+        if ( desc->showstr_point )
+            desc->showstr_point += ( ssh - desc->showstr_head );
+        else
+            desc->showstr_point = ssh;
+
+        free(desc->showstr_head);
+        desc->showstr_head = ssh;
+    }
+    else
+    {
+        desc->showstr_head = (char *)malloc( txt.length() + 1);
+        strcpy( desc->showstr_head, txt.c_str() );
+        desc->showstr_point = desc->showstr_head;
+    }
+    if ( desc->showstr_point == desc->showstr_head )
+        show_string( desc, "" );
+
+    return;
+}
+
 void char_data::set_cooldown( const char *skill )
 {
     int sn = skill_lookup(skill);

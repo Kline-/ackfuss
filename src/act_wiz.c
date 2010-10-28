@@ -1250,26 +1250,27 @@ DO_FUN(do_ofindlev)
                 if ( IS_OBJ_STAT(pObjIndex, ITEM_EXTRA_REMORT) )
                 {
                     snprintf( buf, MSL, "\r\n(@@mREMORT@@N) [%3d] [%5d] %s", pObjIndex->level,
-                              pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
+                              pObjIndex->vnum, pObjIndex->short_descr );
                     strncat( buf1, buf, MSL - 1 );
                 }
                 else
                 {
                     snprintf( buf, MSL, "\r\n(@@aMORTAL@@N) [%3d] [%5d] %s", pObjIndex->level,
-                              pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
+                              pObjIndex->vnum, pObjIndex->short_descr );
                     strncat( buf1, buf, MSL - 1 );
                 }
             }
         }
     }
-    strncat( buf1, "\r\n", MSL );
+
+    strncat( buf1, "\r\n", MSL -1 );
     if ( !found )
     {
         send_to_char( "Nothing like that in hell, earth, or heaven.\r\n", ch );
         return;
     }
 
-    ch->send(buf1);
+    ch->send(true,buf1);
     //TODO: email send_rep_out( ch, buf1, mailme, buf );
     return;
 }
