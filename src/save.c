@@ -1822,6 +1822,8 @@ void fread_corpse( FILE * fp )
     int this_room_vnum;
 
     obj = new OBJ_DATA;
+    obj_list.remove(obj); /* Don't want this tracked on two lists; ctor adds automatically --Kline */
+    corpse_list.push_back(obj);
 
     fNest = FALSE;
     fVnum = TRUE;
@@ -1904,6 +1906,7 @@ void fread_corpse( FILE * fp )
                             obj->first_exdesc = ed->next;
                             delete ed;
                         }
+                        corpse_list.remove(obj);
                         delete obj;
                         return;
                     }

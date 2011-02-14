@@ -2346,6 +2346,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
         OBJ_DATA *this_corpse = new OBJ_DATA;
         this_corpse = corpse;
         corpse_list.push_back(this_corpse);
+        obj_list.remove(this_corpse); /* Don't want this tracked on two lists; ctor adds automatically --Kline */
         save_corpses(  );
         return;
     }
