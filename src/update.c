@@ -1422,7 +1422,7 @@ void char_update( void )
                 {
                     ch->was_in_room = ch->in_room;
                     if ( ch->fighting != NULL )
-                        stop_fighting( ch, TRUE );
+                        stop_fighting( ch );
                     act( "$n disappears into the void.", ch, NULL, NULL, TO_ROOM );
                     send_to_char( "You disappear into the void.\r\n", ch );
                     save_char_obj( ch );

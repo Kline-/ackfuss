@@ -892,7 +892,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
                     && IS_AFFECTED( victim, AFF_CHARM )
                     && victim->master != NULL && victim->master->in_room == ch->in_room && number_bits( 3 ) == 0 )
             {
-                stop_fighting( ch, FALSE );
+                stop_fighting( ch );
                 one_hit( ch, victim->master, TYPE_UNDEFINED );
             }
         }
@@ -1000,7 +1000,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
      * Sleep spells and extremely wounded folks.
      */
     if ( !IS_AWAKE( victim ) )
-        stop_fighting( victim, FALSE );
+        stop_fighting( victim );
 
     /*
      * Payoff for killing things.

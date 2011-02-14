@@ -172,7 +172,7 @@ DO_FUN(do_transdm)
             snprintf( buf, MSL, "%d", room );
             location = find_location( wch, buf );
             if ( wch->fighting != NULL )
-                stop_fighting( wch, TRUE );
+                stop_fighting( wch );
             char_from_room( wch );
             char_to_room( wch, location );
             send_to_char( "You have been transferred somewhere inside the DEATHMATCH arena!\r\n", wch );
@@ -534,7 +534,7 @@ DO_FUN(do_transfer)
     }
 
     if ( victim->fighting != NULL )
-        stop_fighting( victim, TRUE );
+        stop_fighting( victim );
     act( "$n is snatched by the Gods!", victim, NULL, NULL, TO_ROOM );
     char_from_room( victim );
     char_to_room( victim, location );
@@ -628,7 +628,7 @@ DO_FUN(do_goto)
     }
 
     if ( ch->fighting != NULL )
-        stop_fighting( ch, TRUE );
+        stop_fighting( ch );
     /*
      * if ( !is_set(ch->act, ACT_WIZINVIS) )
      */
@@ -2326,7 +2326,7 @@ DO_FUN(do_peace)
     for ( rch = ch->in_room->first_person; rch != NULL; rch = rch->next_in_room )
     {
         if ( rch->fighting != NULL )
-            stop_fighting( rch, TRUE );
+            stop_fighting( rch );
     }
 
     send_to_char( "Ok.\r\n", ch );

@@ -636,7 +636,7 @@ void cast( CHAR_DATA * ch, char *argument )
 
     if ( !IS_NPC(ch) && ch->pcdata->order[0] == CLS_MAG && number_percent() <= 10 )
     {
-        ch->send("@@aYou concentrate deeply as your mind gains a focused clarity!@@N");
+        ch->send("@@aYou concentrate deeply as your mind gains a focused clarity!@@N\r\n");
         mana = 0;
     }
 
@@ -3095,7 +3095,7 @@ bool spell_sleep( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
          * -Damane-
          */
         if ( victim->position == POS_FIGHTING )
-            stop_fighting( victim, TRUE );
+            stop_fighting( victim );
         do_sleep( victim, "" );
     }
 
@@ -3281,7 +3281,7 @@ bool spell_word_of_recall( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
     }
 
     if ( victim->fighting != NULL )
-        stop_fighting( victim, TRUE );
+        stop_fighting( victim );
 
     act( "$n is engulfed by a stream of blue light!", victim, NULL, NULL, TO_ROOM );
     char_from_room( victim );
@@ -4359,7 +4359,7 @@ bool spell_calm( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
         {
             chance = ( ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[sn] / 2 ) + ( 5 * ( level - ppl->level ) ) );
             if ( number_percent(  ) < chance )
-                stop_fighting( ppl, TRUE );
+                stop_fighting( ppl );
         }
     if ( obj == NULL )
     {

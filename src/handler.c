@@ -1637,7 +1637,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
     if ( fPull )
         die_follower( ch );
 
-    stop_fighting( ch, TRUE );
+    stop_fighting( ch );
     ch->is_quitting = true;
     while ( ( this_object = ch->last_carry ) != NULL )
         extract_obj( this_object );

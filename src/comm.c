@@ -810,7 +810,7 @@ void close_socket( DESCRIPTOR_DATA * dclose )
             if ( dclose->connected > CON_RESET_PASSWORD )
                 delete dclose->character;
         }
-        /*      stop_fighting( ch, TRUE );
+        /*      stop_fighting( ch );
               save_char_obj( ch );
               extract_char( ch, TRUE );  */
     }

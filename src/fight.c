@@ -361,7 +361,7 @@ void violence_update( void )
             if ( ch->fighting == NULL )
                 if ( ch->in_room != NULL )
                     act( "Suddenly, $n is enveloped in a @@mBeam of light@@N, and is gone!", ch, NULL, NULL, TO_ROOM );
-            stop_fighting( ch, TRUE );
+            stop_fighting( ch );
             extract_char( ch, TRUE );
             continue;
         }
@@ -496,7 +496,7 @@ void violence_update( void )
             one_hit( ch, victim, TYPE_UNDEFINED );
         }
         else
-            stop_fighting( ch, FALSE );
+            stop_fighting( ch );
 
         if ( ( victim = ch->fighting ) == NULL )
             continue;
@@ -890,7 +890,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                     && IS_AFFECTED( victim, AFF_CHARM )
                     && victim->master != NULL && victim->master->in_room == ch->in_room && number_bits( 3 ) == 0 )
             {
-                stop_fighting( ch, FALSE );
+                stop_fighting( ch );
                 one_hit( ch, victim->master, TYPE_UNDEFINED );
                 return;
             }
@@ -1140,7 +1140,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                         }
                         if ( ( elemental->fighting != NULL ) && ( IS_NPC( elemental->fighting ) ) )
                         {
-                            stop_fighting( elemental, TRUE );
+                            stop_fighting( elemental );
                             if ( ( number_range( 0, 99 ) < 50 ) && ( !IS_NPC( ch ) ) )
                             {
                                 one_hit( elemental, ch, TYPE_UNDEFINED );
@@ -1279,7 +1279,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
      * Sleep spells and extremely wounded folks.
      */
     if ( !IS_AWAKE( victim ) )
-        stop_fighting( victim, FALSE );
+        stop_fighting( victim );
 
     /*
      * Payoff for killing things.
@@ -1287,7 +1287,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
     if ( victim->position == POS_DEAD && ( IS_NPC( victim ) || !IS_VAMP( victim ) || ( deathmatch ) ) )
     {
-        stop_fighting(ch, false);
+        stop_fighting(ch);
         stop_casting(victim);
         group_gain( ch, victim );
 
@@ -2014,7 +2014,7 @@ void update_pos( CHAR_DATA * victim )
 
         SET_BIT( victim->affected_by, AFF_VAMP_HEALING );
 
-        stop_fighting( victim, TRUE );
+        stop_fighting( victim );
         victim->hit = -20;
         for ( li = char_list.begin(); li != char_list.end(); li++ )
         {
@@ -2104,6 +2104,7 @@ void update_pos( CHAR_DATA * victim )
 void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
 {
     list<CHAR_DATA *>::iterator li;
+    CHAR_DATA *lc = NULL;
 
     if ( ch->fighting != NULL )
     {
@@ -2150,10 +2151,13 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
 
     /* Keep out duplicates */
     for ( li = fight_list.begin(); li != fight_list.end(); li++ )
-        if ( *li == ch )
+    {
+        lc = *li;
+        if ( lc == ch || lc->fighting == ch )
             return;
+    }
     /*
-    snprintf_2(log_buf,"Adding %s vs %s to the fight queue.",ch->name,victim->name);
+    snprintf(log_buf,MSL,"Adding %s vs %s to the fight queue.",ch->name.c_str(),victim->name.c_str());
     monitor_chan(log_buf,MONITOR_DEBUG);
     */
     fight_list.push_back(ch);
@@ -2166,35 +2170,10 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
 /*
  * Stop fights.
  */
-void stop_fighting( CHAR_DATA * ch, bool fBoth )
+void stop_fighting( CHAR_DATA * ch )
 {
-    list<CHAR_DATA *>::iterator li;
-    CHAR_DATA *victim = ch->fighting;
-
-    ch->position = POS_STANDING;
-    update_pos( ch );
-    fight_list.remove(ch);
-
-    if ( !fBoth )
-    {
-        ch->fighting = NULL;
-        return;
-    }
-
-    li = fight_list.begin();
-    while ( li != fight_list.end() )
-    {
-        if ( *li == victim )
-        {
-            victim->position = POS_STANDING;
-            update_pos( victim );
-            victim->fighting = NULL;
-            li = fight_list.erase(li);
-        }
-        else
-            ++li;
-    }
-    ch->fighting = NULL;
+ /* K.I.S.S. ... Really. --Kline */
+    ch->stop_fighting = true;
     return;
 }
 
@@ -2439,7 +2418,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
 
     one_argument( argument, arg );
 
-    stop_fighting( victim, TRUE );
+    stop_fighting( victim );
     if ( victim == quest_target )
         quest_target = NULL;
     if ( victim == quest_mob )
@@ -3207,7 +3186,7 @@ DO_FUN(do_target)
     if ( ch->position == POS_FIGHTING )
     {
         send_to_char( "@@rTracking, tracking, tracking...@@eGOT HIM!!!@@N\r\n", ch );
-        stop_fighting( ch, FALSE );
+        stop_fighting( ch );
     }
 
     ch->set_cooldown("target");
@@ -3566,7 +3545,7 @@ DO_FUN(do_flee)
             ch->fighting->npcdata->ngroup->state = GRP_STATE_HUNTING;
             ch->fighting->npcdata->ngroup->leader->hunting = ch;
         }
-        stop_fighting( ch, TRUE );
+        stop_fighting( ch );
         /*
          * 75% chance that mobs will hunt fleeing people. -- Alty
          */
@@ -3664,8 +3643,8 @@ DO_FUN(do_rescue)
     act( "$n rescues you!", ch, NULL, victim, TO_VICT );
     act( "$n rescues $N!", ch, NULL, victim, TO_NOTVICT );
 
-    stop_fighting( fch, FALSE );
-    stop_fighting( victim, FALSE );
+    stop_fighting( fch );
+    stop_fighting( victim );
 
     set_fighting( ch, fch, TRUE );
     set_fighting( fch, ch, FALSE );
@@ -4193,7 +4172,7 @@ DO_FUN(do_bash)
             act( "$N stays on the floor.", ch, NULL, victim, TO_CHAR );
             act( "You are unable to get up.", ch, NULL, victim, TO_VICT );
             act( "$N stays on the floor.", ch, NULL, victim, TO_NOTVICT );
-            stop_fighting( victim, TRUE );   /* MAG: might del this? -S- */
+            stop_fighting( victim );   /* MAG: might del this? -S- */
             victim->position = POS_RESTING;
             update_pos( victim );
         }
@@ -5902,12 +5881,18 @@ void combat_update( void )
     while ( li != fight_list.end() )
     {
         ch = *li;
-        if ( ch == NULL || (ch != NULL && ch->fighting == NULL) )
-        {
-            monitor_chan("Removing a null ch or ch->fighting from queue.", MONITOR_DEBUG);
-            li = fight_list.erase(li);
-        }
         victim = ch->fighting;
+
+        if( ch->stop_fighting )
+        {
+          ch->position = POS_STANDING;
+          victim->position = POS_STANDING;
+          ch->fighting = NULL;
+          victim->fighting = NULL;
+          ch->stop_fighting = false;
+          victim->stop_fighting = false;
+          li = fight_list.erase(li);
+        }
 
         /*
          * Speed based combat. Arms attack independantly of each other,

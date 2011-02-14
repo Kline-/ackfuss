@@ -1620,7 +1620,7 @@ DO_FUN(do_recall)
         ch->gain_exp(lose);
         snprintf( buf, MSL, "You recall from combat!  You lose %d exps.\r\n", lose );
         send_to_char( buf, ch );
-        stop_fighting( ch, TRUE );
+        stop_fighting( ch );
     }
 
     ch->move = ( ch->move > 10 ) ? ( ch->move - 10 ) : 0;
@@ -1897,7 +1897,7 @@ DO_FUN(do_halls)
 
     if ( ( victim = ch->fighting ) != NULL )
     {
-        stop_fighting( ch, TRUE );
+        stop_fighting( ch );
     }
 
     act( "$n vanishes into a beam of energy!", ch, NULL, NULL, TO_ROOM );

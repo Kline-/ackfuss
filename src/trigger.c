@@ -127,7 +127,7 @@ TRIG_FUN(trig_transfer)
         act( "$p glows brightly!", ch, obj, NULL, TO_ROOM );
     }
     if ( ch->position == POS_FIGHTING )
-        stop_fighting( ch, TRUE );
+        stop_fighting( ch );
 
     act( "$n vanishes suddenly!", ch, NULL, NULL, TO_ROOM );
     send_to_char( "You vanish suddenly!\r\n", ch );

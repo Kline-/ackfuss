@@ -151,7 +151,7 @@ void clutch_portal( int v1, int v2, int v3, CHAR_DATA * ch, OBJ_DATA * obj )
 
     act( "A glowing portal forms before $n, swallowing $m whole!", ch, NULL, NULL, TO_ROOM );
     send_to_char( "A glowing portal forms before you, swallowing you whole!\r\n", ch );
-    stop_fighting( ch, TRUE );
+    stop_fighting( ch );
     char_from_room( ch );
     char_to_room( ch, room );
     act( "A swirling portal forms long enough for $n to step out!", ch, NULL, NULL, TO_ROOM );

@@ -1487,7 +1487,7 @@ SPEC_FUN(spec_sylai_priest)
 
     act( "$n rushes towards $N and shoves $M off the outcrop!", ch, NULL, victim, TO_NOTVICT );
     act( "$N rushes at you, and shoves you off the cliff!", victim, NULL, ch, TO_CHAR );
-    stop_fighting( ch, TRUE );
+    stop_fighting( ch );
     char_from_room( victim );
 
 

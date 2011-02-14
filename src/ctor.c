@@ -219,6 +219,7 @@ char_data::char_data()
     stance_ac_mod = 0;
     stance_dr_mod = 0;
     stance_hr_mod = 0;
+    stop_fighting = false;
     stun_timer = 0;
     switched = false;
     timer = 0;

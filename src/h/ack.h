@@ -637,6 +637,7 @@ class char_data
         short stance_ac_mod;
         short stance_dr_mod;
         short stance_hr_mod;
+        bool stop_fighting;
         short stun_timer;
         bool switched; /* = not isnull(descriptor->original) */
         string target;  /* For Hunting and ACT_REMEMBER */

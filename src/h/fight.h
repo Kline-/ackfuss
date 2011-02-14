@@ -25,7 +25,7 @@ bool check_dodge P_((CHAR_DATA *ch, CHAR_DATA *victim));
 bool check_skills P_((CHAR_DATA *ch, CHAR_DATA *victim));
 void update_pos P_((CHAR_DATA *victim));
 void set_fighting P_((CHAR_DATA *ch, CHAR_DATA *victim, bool check));
-void stop_fighting P_((CHAR_DATA *ch, bool fBoth));
+void stop_fighting P_((CHAR_DATA *ch));
 void make_corpse P_((CHAR_DATA *ch, char *argument));
 void death_cry P_((CHAR_DATA *ch));
 void raw_kill P_((CHAR_DATA *victim, char *argument));
