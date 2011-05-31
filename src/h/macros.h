@@ -26,5 +26,6 @@ int exp_mob_base P_((int level));
 int exp_for_mobile P_((int level, CHAR_DATA *mob));
 int skill_table_lookup P_((CHAR_DATA *ch, int sn, int return_type));
 int get_item_value P_((OBJ_DATA *obj));
+char *comma_print P_((unsigned long n));
 
 #undef P_

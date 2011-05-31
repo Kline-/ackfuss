@@ -1387,6 +1387,10 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                 snprintf( buf2, MSL, "%d", ch->exp );
                 i = buf2;
                 break;
+            case 'X':
+                snprintf( buf2, MSL, "%s", comma_print(ch->exp) );
+                i = buf2;
+                break;
             case 'g':
                 snprintf( buf2, MSL, "%d", money_value(ch->money) );
                 i = buf2;

@@ -13,6 +13,7 @@ only certain features or by color (type help color). They are as follows:
         %v :  Current Move
         %V :  Max Move
         %x :  Experience
+        %X :  Experience, comma separated by thousands
         %g :  Money
         %a :  Alignment
         %r :  Room name
