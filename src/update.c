@@ -87,10 +87,6 @@ void imc_request_keepalive(void);
 #include "h/interp.h"
 #endif
 
-#ifndef DEC_LUASCRIPT_H
-#include "h/luascript.h"
-#endif
-
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
 #endif
@@ -2002,7 +1998,6 @@ void update_handler( void )
         combat_update( );
         cast_update( );
         cooldown_update( );
-        lua_update( );
     }
 
     if ( --pulse_mobile <= 0 )
@@ -2499,25 +2494,4 @@ void quest_update(  )
         if ( auto_quest )
             generate_auto_quest(  );
     }
-}
-
-void lua_update( )
-{
-    LUA_DATA *lua;
-    list<LUA_DATA *>::iterator li;
-    string str;
-    string arg;
-
-    for ( li = lua_list.begin(); li != lua_list.end(); li++ )
-    {
-        lua = *li;
-        str = "";
-        arg = "";
-
-        str += "wait.update";
-        arg += "";
-        //call_lua(lua,str,arg);
-    }
-
-    return;
 }

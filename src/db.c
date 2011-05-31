@@ -74,10 +74,6 @@
 #include "h/interp.h"
 #endif
 
-#ifndef DEC_LUASCRIPT_H
-#include "h/luascript.h"
-#endif
-
 #ifndef DEC_MACROS_H
 #include "h/macros.h"
 #endif
@@ -1092,7 +1088,6 @@ void load_mobile( FILE * fp )
                 break;
 
             case 'S':
-                SKEY("ScriptName", pMobIndex->script_name, fread_string(fp));
                 KEY("Sex", pMobIndex->sex, fread_number(fp));
                 SKEY("ShortDesc", pMobIndex->short_descr, fread_string(fp));
                 KEY("Skills", pMobIndex->skills, fread_number(fp));
@@ -1325,7 +1320,6 @@ void load_object( FILE * fp )
                 break;
 
             case 'S':
-                SKEY("ScriptName", pObjIndex->script_name, fread_string(fp));
                 SKEY("ShortDesc", pObjIndex->short_descr, fread_string(fp));
                 KEY("Speed", pObjIndex->speed, fread_float(fp));
                 break;
@@ -1729,18 +1723,6 @@ void load_room( FILE * fp )
                 break;
 
             case 'S':
-                if ( !str_cmp( word, "ScriptName" ) )
-                {
-                    free_string(pRoomIndex->script_name);
-                    pRoomIndex->script_name = fread_string(fp);
-                    if ( pRoomIndex->script_name != &str_empty[0] ) /* Room has a script attached */
-                    {
-                        pRoomIndex->lua = new LUA_DATA;
-                        init_lua(pRoomIndex);
-                    }
-                    fMatch = true;
-                    break;
-                }
                 KEY("Sect", pRoomIndex->sector_type, fread_number( fp ) );
                 break;
 
@@ -2707,12 +2689,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     else
         mob->name = str_dup( pMobIndex->player_name );
 
-    if ( pMobIndex->script_name != &str_empty[0] ) /* Mob has a script attached */
-    {
-        mob->lua = new LUA_DATA;
-        init_lua(mob);
-    }
-
     mob->npcdata->short_descr = str_dup( pMobIndex->short_descr );
     mob->long_descr = str_dup( pMobIndex->long_descr );
     mob->description = pMobIndex->description;
@@ -2832,13 +2808,6 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
     obj = new OBJ_DATA;
     obj->pIndexData = pObjIndex;
     obj->in_room = NULL;
-
-    if ( pObjIndex->script_name != &str_empty[0] ) /* Obj has a script attached */
-    {
-        obj->script_name = str_dup(pObjIndex->script_name);
-        obj->lua = new LUA_DATA;
-        init_lua(obj);
-    }
 
     if ( pObjIndex->level < 3 )
     {
@@ -3491,9 +3460,7 @@ DO_FUN(do_memory)
     send_to_char( buf, ch );
     snprintf( buf, MSL, "Exits   %5d\r\n", static_cast<int>(exit_list.size()) );
     send_to_char( buf, ch );
-    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
-    send_to_char( buf, ch );
-    snprintf( buf, MSL, "Lua     %5d\r\n", static_cast<int>(lua_list.size()) );
+    snprintf( buf, MSL, "Helps   %5d\r\n", mudinfo.total_helpfiles );
     send_to_char( buf, ch );
     snprintf( buf, MSL, "Mobs    %5d\r\n", static_cast<int>(mob_index_list.size()) );
     send_to_char( buf, ch );
@@ -3544,7 +3511,7 @@ DO_FUN(do_status)
     send_to_char( "of how many are actually in the game at this time.\r\n", ch );
     snprintf( buf, MSL, "Areas   %5d\r\n", static_cast<int>(area_list.size()) );
     send_to_char( buf, ch );
-    snprintf( buf, MSL, "Helps   %5d\r\n", count_helps() );
+    snprintf( buf, MSL, "Helps   %5d\r\n", mudinfo.total_helpfiles );
     send_to_char( buf, ch );
     snprintf( buf, MSL, "Mobs    %5d\r\n", static_cast<int>(mob_index_list.size()) );
     send_to_char( buf, ch );

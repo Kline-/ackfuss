@@ -264,6 +264,9 @@ void violence_update( void )
     {
         ch = *li;
 
+        if ( ch == NULL )
+           li = char_list.erase(li);
+
         /*
          * For stunning during combat
          * -Damane-    4/26/96
@@ -2173,6 +2176,7 @@ void set_fighting( CHAR_DATA * ch, CHAR_DATA * victim, bool check )
 void stop_fighting( CHAR_DATA * ch )
 {
  /* K.I.S.S. ... Really. --Kline */
+    ch->position = POS_STANDING;
     ch->stop_fighting = true;
     return;
 }
@@ -5840,7 +5844,7 @@ float get_speed( CHAR_DATA *ch, int slot )
         {
             case SPEED_LH:   wield = get_eq_char(ch, WEAR_HOLD_HAND_L);  break;
             case SPEED_RH:   wield = get_eq_char(ch, WEAR_HOLD_HAND_R);  break;
-            case SPEED_TAIL: wield = NULL;                              break;
+            case SPEED_TAIL: wield = NULL;                               break;
             default: wield = NULL; break;
         }
         if ( wield != NULL && wield->item_type == ITEM_WEAPON )
@@ -5884,15 +5888,20 @@ void combat_update( void )
         ch = *li;
         victim = ch->fighting;
 
-        if( ch->stop_fighting )
+        if ( ch->stop_fighting )
         {
-          ch->position = POS_STANDING;
-          victim->position = POS_STANDING;
-          ch->fighting = NULL;
-          victim->fighting = NULL;
-          ch->stop_fighting = false;
-          victim->stop_fighting = false;
-          li = fight_list.erase(li);
+            ch->position = POS_STANDING;
+            ch->fighting = NULL;
+            ch->stop_fighting = false;
+
+            if ( victim )
+            {
+                victim->position = POS_STANDING;
+                victim->fighting = NULL;
+                victim->stop_fighting = false;
+            }
+
+            li = fight_list.erase(li);
         }
 
         /*

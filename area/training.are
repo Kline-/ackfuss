@@ -366,7 +366,7 @@ End
 
 #ROOM
 Vnum       1065
-Desc       @@dYou stand within the armory. There is a @@Rweapon rack @@dwith a few assorted weapons left in it, and an @@Rarmor rack @@dholding some badly dented shields. Torches from past adventurers are scattered about the floor. Below you is @@RT@@dhe @@RP@@dit, where new adventurers fight in a free-for-all gladiator style battle honing their skills. Once you have equipped yourself, proceed @@Rdown @@dto test your mettle.@@N~
+Desc       @@dYou stand within the armory. There is a @@Rweapon rack @@dwith a few assorted weapons left in it and an @@Rarmor rack @@dholding some badly dented shields. Torches from past adventurers are scattered about the floor. Below you is @@RT@@dhe @@RP@@dit, where new adventurers fight in a free-for-all gladiator style battle honing their skills. Once you have equipped yourself, proceed @@Rdown @@dto test your mettle.@@N~
 Flags      EOL
 Name       @@RT@@dhe @@RA@@drmory@@N~
 ScriptName ~
@@ -1495,7 +1495,7 @@ LongDesc   @@dA training key is here, perhaps you should take it?@@N~
 Name       training key~
 ObjFun     (null)
 ScriptName ~
-ShortDesc  @@d a training key@@N~
+ShortDesc  @@da training key@@N~
 Speed      4.00
 Type       18
 Values     0 0 0 0 0 0 0 0 0 0 

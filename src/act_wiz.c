@@ -694,12 +694,6 @@ DO_FUN(do_rstat)
               bs_show_values( tab_room_flags, location->room_flags ), location->description );
     strncat( buf1, buf, MSL - 1 );
 
-    if ( location->script_name != &str_empty[0] )
-    {
-        snprintf( buf, MSL, "\r\nRoom has Lua script: %s\r\n", location->script_name );
-        strncat( buf1, buf, MSL - 1 );
-    }
-
     if ( location->first_exdesc != NULL )
     {
         EXTRA_DESCR_DATA *ed;
@@ -820,12 +814,6 @@ DO_FUN(do_ostat)
     if ( obj->obj_fun != NULL )
     {
         snprintf( buf, MSL, "@@WObject has objfun: @@y%s.@@N\r\n", rev_obj_fun_lookup( obj->obj_fun ) );
-        strncat( buf1, buf, MSL - 1 );
-    }
-
-    if ( obj->pIndexData->script_name != &str_empty[0] )
-    {
-        snprintf( buf, MSL, "@@WObject has Lua script: @@y%s@@N\r\n", obj->pIndexData->script_name );
         strncat( buf1, buf, MSL - 1 );
     }
 
@@ -1081,11 +1069,6 @@ DO_FUN(do_mstat)
     {
         if ( victim->npcdata->spec_fun != 0 )
             strncat( buf1, "Mobile has spec fun.\r\n", MSL );
-        if ( victim->npcdata->pIndexData->script_name != &str_empty[0] )
-        {
-            snprintf( buf, MSL, "Mobile has Lua script: %s\r\n", victim->npcdata->pIndexData->script_name );
-            strncat( buf1, buf, MSL - 1 );
-        }
     }
 
     /*    if ( IS_NPC( victim )
@@ -3357,7 +3340,7 @@ DO_FUN(do_oset)
         send_to_char( "  extra wear level weight cost timer durability armortype\r\n", ch );
         send_to_char( "\r\n", ch );
         send_to_char( "String being one of:\r\n", ch );
-        send_to_char( "  name short long ed script\r\n", ch );
+        send_to_char( "  name short long ed\r\n", ch );
         return;
     }
 
@@ -3542,16 +3525,6 @@ DO_FUN(do_oset)
     {
         free_string( obj->long_descr );
         obj->long_descr = str_dup( arg3 );
-        return;
-    }
-
-    if ( !str_cmp( arg2, "script" ) )
-    {
-        free_string( obj->script_name );
-        if ( !str_cmp( arg3, "-" ) )
-            obj->script_name = &str_empty[0];
-        else
-            obj->script_name = str_dup( arg3 );
         return;
     }
 
@@ -6391,81 +6364,6 @@ DO_FUN(do_disable)
 
     save_disabled();
     send_to_char("Command disabled.\r\n", ch);
-
-    return;
-}
-
-DO_FUN(do_lua)
-{
-    string str = SCRIPT_DIR;
-    str += argument;
-    if ( ch->lua->L )
-    {
-        luaL_dofile(ch->lua->L, str.c_str());
-        const char * sError = lua_tostring(ch->lua->L, -1);
-        if ( str_cmp(sError, "(null)") && sError != NULL )
-            monitor_chan(sError, MONITOR_DEBUG);
-    }
-    return;
-}
-
-DO_FUN(do_olua)
-{
-    char arg[MSL];
-
-    argument = one_argument(argument, arg);
-    string str = SCRIPT_DIR;
-    str += argument;
-    OBJ_DATA *obj;
-
-    if ( (obj = get_obj_world(ch, arg)) == NULL )
-        return;
-
-    if ( obj->lua )
-    {
-        luaL_dofile(obj->lua->L, str.c_str());
-        const char * sError = lua_tostring(obj->lua->L, -1);
-        if ( str_cmp(sError, "(null)") && sError != NULL )
-            monitor_chan(sError, MONITOR_DEBUG);
-    }
-
-    return;
-}
-
-DO_FUN(do_rlua)
-{
-    string str = SCRIPT_DIR;
-    str += argument;
-    ROOM_INDEX_DATA *room = ch->in_room;
-
-    if ( room == NULL )
-        return;
-
-    if ( room->lua )
-    {
-        luaL_dofile(room->lua->L, str.c_str());
-        const char * sError = lua_tostring(room->lua->L, -1);
-        if ( str_cmp(sError, "(null)") && sError != NULL )
-            monitor_chan(sError, MONITOR_DEBUG);
-    }
-
-    return;
-}
-
-/* Just debug stuff past here, will remove it later. --Kline */
-
-struct ShowObject
-{
-    template <typename T> void operator() (const T* ptr) const
-    {
-        snprintf(log_buf, (2 * MIL), "ptr: %p ptr->loaded: %d ptr->L: %p ptr->owner: %p ptr->type: %d", ptr, ptr->loaded, ptr->L, ptr->owner, ptr->type);
-        monitor_chan(log_buf, MONITOR_DEBUG);
-    };
-};
-
-DO_FUN(do_ldebug)
-{
-    for_each( lua_list.begin(), lua_list.end(), ShowObject() );
 
     return;
 }

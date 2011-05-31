@@ -36,8 +36,6 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-#include "lua.hpp"
-
 #if defined(__CYGWIN__)
 #include <crypt.h>
 #endif

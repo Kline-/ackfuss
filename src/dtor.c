@@ -111,8 +111,6 @@ char_data::~char_data()
     free_i3chardata(this);
 #endif
 
-    if ( lua )
-        delete lua;
     if ( npcdata )
         delete npcdata;
     if ( pcdata )
@@ -161,15 +159,6 @@ lookup_data::~lookup_data()
     free_string(buf);
 }
 
-lua_data::~lua_data()
-{
-    if ( L )
-        lua_close(L);
-    owner = NULL;
-
-    lua_list.remove(this);
-}
-
 magic_shield::~magic_shield()
 {
     is_free = true;
@@ -200,7 +189,6 @@ mob_index_data::~mob_index_data()
     is_free = true;
     free_string(long_descr);
     free_string(player_name);
-    free_string(script_name);
     free_string(short_descr);
 }
 
@@ -244,19 +232,15 @@ obj_data::~obj_data()
 
     free_string(name);
     free_string(owner);
-    free_string(script_name);
     free_string(short_descr);
     free_string(long_descr);
     delete money;
-    if ( lua )
-        delete lua;
 }
 
 obj_index_data::~obj_index_data()
 {
     is_free = true;
     free_string(name);
-    free_string(script_name);
     free_string(short_descr);
     free_string(long_descr);
 }
@@ -331,10 +315,7 @@ room_index_data::~room_index_data()
     for_each( mark_list.begin(), mark_list.end(), DeleteObject() );
     free_string(name);
     free_string(description);
-    free_string(script_name);
     delete treasure;
-    if ( lua )
-        delete lua;
 }
 
 ruler_data::~ruler_data()

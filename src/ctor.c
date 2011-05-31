@@ -16,10 +16,6 @@
 #include "h/hash.h"
 #endif
 
-#ifndef DEC_LUASCRIPT_H
-#include "h/luascript.h"
-#endif
-
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif
@@ -169,7 +165,6 @@ char_data::char_data()
     in_room = NULL;
     is_free = false;
     is_quitting = false;
-    lua = NULL;
     last_affect = NULL;
     last_carry = NULL;
     last_saved_aff = NULL;
@@ -293,16 +288,6 @@ lookup_data::lookup_data()
     d = NULL;
 }
 
-lua_data::lua_data()
-{
-    L = luaL_newstate();
-    loaded = false;
-    owner = NULL;
-    type = LUA_TYPE_NONE;
-
-    lua_list.push_back(this);
-}
-
 magic_shield::magic_shield()
 {
     is_free = false;
@@ -371,7 +356,6 @@ mob_index_data::mob_index_data()
     race = 0;
     race_mods = 0;
     resist = 0;
-    script_name = &str_empty[0];
     sex = 0;
     short_descr = &str_empty[0];
     skills = 0;
@@ -471,7 +455,6 @@ obj_data::obj_data()
     in_room = NULL;
     owner = &str_empty[0];
     name = &str_empty[0];
-    script_name = &str_empty[0];
     short_descr = &str_empty[0];
     long_descr = &str_empty[0];
     item_type = 0;
@@ -488,7 +471,6 @@ obj_data::obj_data()
     max_durability = 0;
     money = new MONEY_TYPE;
     speed = 1.00;
-    lua = NULL;
 
     obj_list.push_back(this);
 }
@@ -515,7 +497,6 @@ obj_index_data::obj_index_data()
     next = NULL;
     obj_fun = NULL;
     owner = &str_empty[0];
-    script_name = &str_empty[0];
     short_descr = &str_empty[0];
     speed = number_speed();
     for ( short i = 0; i < MAX_OBJ_VALUE; i++ )
@@ -700,12 +681,10 @@ room_index_data::room_index_data()
     last_room_affect = NULL;
     last_room_reset = NULL;
     light = 0;
-    lua = NULL;
     mark_list.clear();
     name = str_dup("New Room");
     next = NULL;
     room_flags.reset();
-    script_name = &str_empty[0];
     sector_type = SECT_INSIDE;
     treasure = new MONEY_TYPE;
     vnum = 0;

@@ -16,10 +16,9 @@ End
 
 #ROOM
 Vnum       1136
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the east and south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -41,10 +40,9 @@ End
 
 #ROOM
 Vnum       1137
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and south while air steams rush past to the east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -74,10 +72,9 @@ End
 
 #ROOM
 Vnum       1138
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and east while a small @@ater@@crac@@de@@N @@Glies to the southwest. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -107,10 +104,9 @@ End
 
 #ROOM
 Vnum       1139
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the west. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -148,10 +144,9 @@ End
 
 #ROOM
 Vnum       1140
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the west. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -189,10 +184,9 @@ End
 
 #ROOM
 Vnum       1141
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and east while a small @@ater@@crac@@de@@N @@Glies to the northwest. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -222,10 +216,9 @@ End
 
 #ROOM
 Vnum       1142
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and south while air steams rush past to the east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -255,10 +248,9 @@ End
 
 #ROOM
 Vnum       1143
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and east while air steams rush past to the south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -288,10 +280,9 @@ End
 
 #ROOM
 Vnum       1144
-Desc       @@N~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -337,10 +328,9 @@ End
 
 #ROOM
 Vnum       1145
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and south while air steams rush past to the north and east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -378,10 +368,9 @@ End
 
 #ROOM
 Vnum       1146
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -419,10 +408,9 @@ End
 
 #ROOM
 Vnum       1147
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -460,10 +448,9 @@ End
 
 #ROOM
 Vnum       1148
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and north while air steams rush past to the south and east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -501,10 +488,9 @@ End
 
 #ROOM
 Vnum       1149
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -550,10 +536,9 @@ End
 
 #ROOM
 Vnum       1150
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and east while air steams rush past to the north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -583,10 +568,9 @@ End
 
 #ROOM
 Vnum       1151
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and south while a small @@ater@@crac@@de@@N @@Glies to the northeast. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -616,10 +600,9 @@ End
 
 #ROOM
 Vnum       1152
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and east while air steams rush past to the west and south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -657,10 +640,9 @@ End
 
 #ROOM
 Vnum       1153
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -706,10 +688,9 @@ End
 
 #ROOM
 Vnum       1154
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G to the west, south, and east while air steams rush past to the north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -747,10 +728,9 @@ End
 
 #ROOM
 Vnum       1155
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G to the west, north, and east while air steams rush past to the south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -788,10 +768,9 @@ End
 
 #ROOM
 Vnum       1156
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -837,10 +816,9 @@ End
 
 #ROOM
 Vnum       1157
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the south and east while air steams rush past to the west and north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -878,10 +856,9 @@ End
 
 #ROOM
 Vnum       1158
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and north while a small @@ater@@crac@@de@@N @@Glies to the southeast. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -911,10 +888,9 @@ End
 
 #ROOM
 Vnum       1159
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -952,10 +928,9 @@ End
 
 #ROOM
 Vnum       1160
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -993,10 +968,9 @@ End
 
 #ROOM
 Vnum       1161
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G to the north, east, and south while air steams rush past to the west. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1034,10 +1008,9 @@ End
 
 #ROOM
 Vnum       1162
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1075,10 +1048,9 @@ End
 
 #ROOM
 Vnum       1163
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1116,10 +1088,9 @@ End
 
 #ROOM
 Vnum       1164
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G to the north, east, and south while air steams rush past to the west. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1157,10 +1128,9 @@ End
 
 #ROOM
 Vnum       1165
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1198,10 +1168,9 @@ End
 
 #ROOM
 Vnum       1166
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1239,10 +1208,9 @@ End
 
 #ROOM
 Vnum       1167
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1280,10 +1248,9 @@ End
 
 #ROOM
 Vnum       1168
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1321,10 +1288,9 @@ End
 
 #ROOM
 Vnum       1169
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G to the north, west, and south while air steams rush past to the east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1362,10 +1328,9 @@ End
 
 #ROOM
 Vnum       1170
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1403,10 +1368,9 @@ End
 
 #ROOM
 Vnum       1171
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1444,10 +1408,9 @@ End
 
 #ROOM
 Vnum       1172
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G to the north, west, and south while air steams rush past to the east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1485,10 +1448,9 @@ End
 
 #ROOM
 Vnum       1173
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1526,10 +1488,9 @@ End
 
 #ROOM
 Vnum       1174
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1567,10 +1528,9 @@ End
 
 #ROOM
 Vnum       1175
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the south and east while a small @@ater@@crac@@de@@N @@Glies to the northwest. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1600,10 +1560,9 @@ End
 
 #ROOM
 Vnum       1176
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and north while air steams rush past to the south and east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1641,10 +1600,9 @@ End
 
 #ROOM
 Vnum       1177
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -1690,10 +1648,9 @@ End
 
 #ROOM
 Vnum       1178
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G to the west, south, and east while air steams rush past to the north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1731,10 +1688,9 @@ End
 
 #ROOM
 Vnum       1179
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G to the west, north, and east while air steams rush past to the south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1772,10 +1728,9 @@ End
 
 #ROOM
 Vnum       1180
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -1821,10 +1776,9 @@ End
 
 #ROOM
 Vnum       1181
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and south while air steams rush past to the north and east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1862,10 +1816,9 @@ End
 
 #ROOM
 Vnum       1182
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and east while a small @@ater@@crac@@de@@N @@Glies to the southwest. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1895,10 +1848,9 @@ End
 
 #ROOM
 Vnum       1183
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and east while air steams rush past to the south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -1928,10 +1880,9 @@ End
 
 #ROOM
 Vnum       1184
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -1977,10 +1928,9 @@ End
 
 #ROOM
 Vnum       1185
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the east and south while air steams rush past to the west and north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2018,10 +1968,9 @@ End
 
 #ROOM
 Vnum       1186
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2059,10 +2008,9 @@ End
 
 #ROOM
 Vnum       1187
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue in all directions. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2100,10 +2048,9 @@ End
 
 #ROOM
 Vnum       1188
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and east while air steams rush past to the west and south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2141,10 +2088,9 @@ End
 
 #ROOM
 Vnum       1189
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -2190,10 +2136,9 @@ End
 
 #ROOM
 Vnum       1190
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and east while air steams rush past to the north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2223,10 +2168,9 @@ End
 
 #ROOM
 Vnum       1191
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and south. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2248,10 +2192,9 @@ End
 
 #ROOM
 Vnum       1192
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and south while air steams rush past to the west. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2281,10 +2224,9 @@ End
 
 #ROOM
 Vnum       1193
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and west while a small @@ater@@crac@@de@@N @@Glies to the southeast. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2314,10 +2256,9 @@ End
 
 #ROOM
 Vnum       1194
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2355,10 +2296,9 @@ End
 
 #ROOM
 Vnum       1195
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the east. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2396,10 +2336,9 @@ End
 
 #ROOM
 Vnum       1196
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the south and west while a small @@ater@@crac@@de@@N @@Glies to the northeast. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2429,10 +2368,9 @@ End
 
 #ROOM
 Vnum       1197
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the north and south while air steams rush past to the west. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2462,10 +2400,9 @@ End
 
 #ROOM
 Vnum       1198
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the west and north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2487,10 +2424,9 @@ End
 
 #ROOM
 Vnum       1199
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the lower tier of the @@Ngar@@dden@@Ws@@G. The @@Ngar@@dden@@Ws@@G continue to the east and north. [#weather @@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2512,10 +2448,9 @@ End
 
 #ROOM
 Vnum       1200
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -2545,10 +2480,9 @@ End
 
 #ROOM
 Vnum       1201
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -2578,10 +2512,9 @@ End
 
 #ROOM
 Vnum       1202
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -2611,10 +2544,9 @@ End
 
 #ROOM
 Vnum       1203
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -2644,10 +2576,9 @@ End
 
 #ROOM
 Vnum       1204
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the northwest while air streams rush past to the south and east. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2677,10 +2608,9 @@ End
 
 #ROOM
 Vnum       1205
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the west. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2718,10 +2648,9 @@ End
 
 #ROOM
 Vnum       1206
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the west. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2759,10 +2688,9 @@ End
 
 #ROOM
 Vnum       1207
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the southwest while air streams rush past to the north and east. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2792,10 +2720,9 @@ End
 
 #ROOM
 Vnum       1208
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the northeast while air streams rush past to the south and west. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2825,10 +2752,9 @@ End
 
 #ROOM
 Vnum       1209
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the north. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2866,10 +2792,9 @@ End
 
 #ROOM
 Vnum       1210
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the north. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2907,10 +2832,9 @@ End
 
 #ROOM
 Vnum       1211
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the northeast while air streams rush past to the south and east. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2940,10 +2864,9 @@ End
 
 #ROOM
 Vnum       1212
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the southeast while air streams rush past to the north and west. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -2973,10 +2896,9 @@ End
 
 #ROOM
 Vnum       1213
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the east. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3014,10 +2936,9 @@ End
 
 #ROOM
 Vnum       1214
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the east. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3055,10 +2976,9 @@ End
 
 #ROOM
 Vnum       1215
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the northeast while air streams rush past to the south and west. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3088,10 +3008,9 @@ End
 
 #ROOM
 Vnum       1216
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the southwest while air streams rush past to the north and east. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3121,10 +3040,9 @@ End
 
 #ROOM
 Vnum       1217
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the south. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3162,10 +3080,9 @@ End
 
 #ROOM
 Vnum       1218
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the south. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3203,10 +3120,9 @@ End
 
 #ROOM
 Vnum       1219
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the southeast while air streams rush past to the north and west. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3236,10 +3152,9 @@ End
 
 #ROOM
 Vnum       1220
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -3285,10 +3200,9 @@ End
 
 #ROOM
 Vnum       1221
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. An air streams rushes past to the south. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3326,10 +3240,9 @@ End
 
 #ROOM
 Vnum       1222
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. An air streams rushes past to the north. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3367,10 +3280,9 @@ End
 
 #ROOM
 Vnum       1223
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -3416,10 +3328,9 @@ End
 
 #ROOM
 Vnum       1224
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. An air streams rushes past to the east. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3457,10 +3368,9 @@ End
 
 #ROOM
 Vnum       1225
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3498,10 +3408,9 @@ End
 
 #ROOM
 Vnum       1226
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3539,10 +3448,9 @@ End
 
 #ROOM
 Vnum       1227
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. An air streams rushes past to the east. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3580,10 +3488,9 @@ End
 
 #ROOM
 Vnum       1228
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. An air streams rushes past to the west. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3621,10 +3528,9 @@ End
 
 #ROOM
 Vnum       1229
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3662,10 +3568,9 @@ End
 
 #ROOM
 Vnum       1230
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3703,10 +3608,9 @@ End
 
 #ROOM
 Vnum       1231
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. An air streams rushes past to the west. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3744,10 +3648,9 @@ End
 
 #ROOM
 Vnum       1232
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -3793,10 +3696,9 @@ End
 
 #ROOM
 Vnum       1233
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. An air streams rushes past to the south. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3834,10 +3736,9 @@ End
 
 #ROOM
 Vnum       1234
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life in the middle tier of the @@Ngar@@dden@@Ws@@G. An air streams rushes past to the north. [#weather @@N@@Gcloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -3875,10 +3776,9 @@ End
 
 #ROOM
 Vnum       1235
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -3924,10 +3824,9 @@ End
 
 #ROOM
 Vnum       1236
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -3957,10 +3856,9 @@ End
 
 #ROOM
 Vnum       1237
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -3990,10 +3888,9 @@ End
 
 #ROOM
 Vnum       1238
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -4023,10 +3920,9 @@ End
 
 #ROOM
 Vnum       1239
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -4056,10 +3952,9 @@ End
 
 #ROOM
 Vnum       1240
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life at the top tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the east while air streams rush past to the west and south. [#weather cloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -4097,10 +3992,9 @@ End
 
 #ROOM
 Vnum       1241
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life at the top tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the east while air streams rush past to the west and north. [#weather cloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -4138,10 +4032,9 @@ End
 
 #ROOM
 Vnum       1242
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life at the top tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the north while air streams rush past to the east and south. [#weather cloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -4179,10 +4072,9 @@ End
 
 #ROOM
 Vnum       1243
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life at the top tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the north while air streams rush past to the west and south. [#weather cloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -4220,10 +4112,9 @@ End
 
 #ROOM
 Vnum       1244
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life at the top tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the west while air streams rush past to the east and south. [#weather cloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -4261,10 +4152,9 @@ End
 
 #ROOM
 Vnum       1245
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life at the top tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the west while air streams rush past to the east and south. [#weather cloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -4302,10 +4192,9 @@ End
 
 #ROOM
 Vnum       1246
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life at the top tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the south while air streams rush past to the north and west. [#weather cloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -4343,10 +4232,9 @@ End
 
 #ROOM
 Vnum       1247
-Desc       ~
+Desc       @@GThere is scarce room to stand amongst the @@rlush @@Gplant life at the top tier of the @@Ngar@@dden@@Ws@@G. A small @@ater@@crac@@de @@Glies to the south while air streams rush past to the north and east. [#weather cloudy: Large @@Wfl@@guf@@Wf@@gy c@@Wlo@@gud@@Ws @@Groll gently by, casting shadows across the area.]@@N~
 Flags      EOL
 Name       @@cWi@@athi@@Wn  @@dthe  @@gGar@@dden@@Ws@@N~
-ScriptName ~
 Sect       2
 End
 #DOOR
@@ -4384,10 +4272,9 @@ End
 
 #ROOM
 Vnum       1248
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -4433,10 +4320,9 @@ End
 
 #ROOM
 Vnum       1249
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -4482,10 +4368,9 @@ End
 
 #ROOM
 Vnum       1250
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -4531,10 +4416,9 @@ End
 
 #ROOM
 Vnum       1251
-Desc       ~
+Desc       @@GA gentle @@cb@@are@@Wez@@ce @@Gsurrounds the room like a vortex creating a steam of @@Nair @@Gthat allows passage from one level of the @@Ngar@@dden@@Ws @@Gto the next. [#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be @@N@@Gheard and small @@ysp@@aar@@bks @@Gflicker about.]@@N~
 Flags      EOL
 Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
 Sect       9
 End
 #DOOR
@@ -4580,10 +4464,9 @@ End
 
 #ROOM
 Vnum       1252
-Desc       ~
+Desc       @@GA strong wind blows across the top of the @@ggar@@dden@@Ws@@G. The many levels of terraces can be seen below, lush with plant life.[#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be heard and small @@N@@ysp@@aar@@bks @@Gflicker about.][#weather cloudy: @@GThe air is thick with mist as clouds pass across the @@ggar@@dden@@Ws@@G.]@@N~
 Flags      EOL
-Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
+Name       @@cF@@aloa@@Wtin@@cg @@dabove the @@gGar@@dden@@Ws@@N~
 Sect       9
 End
 #DOOR
@@ -4613,10 +4496,9 @@ End
 
 #ROOM
 Vnum       1253
-Desc       ~
+Desc       @@GA strong wind blows across the top of the @@ggar@@dden@@Ws@@G. The many levels of terraces can be seen below, lush with plant life.[#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be heard and small @@N@@ysp@@aar@@bks @@Gflicker about.][#weather cloudy: @@GThe air is thick with mist as clouds pass across the @@ggar@@dden@@Ws@@G.]@@N~
 Flags      EOL
-Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
+Name       @@cF@@aloa@@Wtin@@cg @@dabove the @@gGar@@dden@@Ws@@N~
 Sect       9
 End
 #DOOR
@@ -4646,10 +4528,9 @@ End
 
 #ROOM
 Vnum       1254
-Desc       ~
+Desc       @@GA strong wind blows across the top of the @@ggar@@dden@@Ws@@G. The many levels of terraces can be seen below, lush with plant life.[#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be heard and small @@N@@ysp@@aar@@bks @@Gflicker about.][#weather cloudy: @@GThe air is thick with mist as clouds pass across the @@ggar@@dden@@Ws@@G.]@@N~
 Flags      EOL
-Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
+Name       @@cF@@aloa@@Wtin@@cg @@dabove the @@gGar@@dden@@Ws@@N~
 Sect       9
 End
 #DOOR
@@ -4679,10 +4560,9 @@ End
 
 #ROOM
 Vnum       1255
-Desc       ~
+Desc       @@GA strong wind blows across the top of the @@ggar@@dden@@Ws@@G. The many levels of terraces can be seen below, lush with plant life.[#weather lightning: @@GA faint @@ye@@bl@@ye@@bctr@@yi@@bc @@Whum @@Gcan be heard and small @@N@@ysp@@aar@@bks @@Gflicker about.][#weather cloudy: @@GThe air is thick with mist as clouds pass across the @@ggar@@dden@@Ws@@G.]@@N~
 Flags      EOL
-Name       @@cF@@aloa@@Wtin@@cg  @@din the @@gAir@@dstr@@Weam@@N~
-ScriptName ~
+Name       @@cF@@aloa@@Wtin@@cg @@dabove the @@gGar@@dden@@Ws@@N~
 Sect       9
 End
 #DOOR
@@ -4712,10 +4592,9 @@ End
 
 #ROOM
 Vnum       1256
-Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4737,10 +4616,9 @@ End
 
 #ROOM
 Vnum       1257
-Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4762,10 +4640,9 @@ End
 
 #ROOM
 Vnum       1258
-Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4787,10 +4664,9 @@ End
 
 #ROOM
 Vnum       1259
-Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4812,10 +4688,9 @@ End
 
 #ROOM
 Vnum       1260
-Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4837,10 +4712,9 @@ End
 
 #ROOM
 Vnum       1261
-Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4862,10 +4736,9 @@ End
 
 #ROOM
 Vnum       1262
-Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4887,10 +4760,9 @@ End
 
 #ROOM
 Vnum       1263
-Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4912,10 +4784,9 @@ End
 
 #ROOM
 Vnum       1264
-Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4937,10 +4808,9 @@ End
 
 #ROOM
 Vnum       1265
-Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4962,10 +4832,9 @@ End
 
 #ROOM
 Vnum       1266
-Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -4987,10 +4856,9 @@ End
 
 #ROOM
 Vnum       1267
-Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5012,10 +4880,9 @@ End
 
 #ROOM
 Vnum       1268
-Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5037,10 +4904,9 @@ End
 
 #ROOM
 Vnum       1269
-Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5062,10 +4928,9 @@ End
 
 #ROOM
 Vnum       1270
-Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5087,10 +4952,9 @@ End
 
 #ROOM
 Vnum       1271
-Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe lower levels of the @@ggar@@dden@@Ws @@Gare visible below, lush and green.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5112,10 +4976,9 @@ End
 
 #ROOM
 Vnum       1272
-Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5137,10 +5000,9 @@ End
 
 #ROOM
 Vnum       1273
-Desc       @@GThe western @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe western @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5162,10 +5024,9 @@ End
 
 #ROOM
 Vnum       1274
-Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5187,10 +5048,9 @@ End
 
 #ROOM
 Vnum       1275
-Desc       @@GThe northern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe northern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5212,10 +5072,9 @@ End
 
 #ROOM
 Vnum       1276
-Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5237,10 +5096,9 @@ End
 
 #ROOM
 Vnum       1277
-Desc       @@GThe eastern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe eastern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5262,10 +5120,9 @@ End
 
 #ROOM
 Vnum       1278
-Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR
@@ -5287,10 +5144,9 @@ End
 
 #ROOM
 Vnum       1279
-Desc       @@GThe southern @@ater@@crac@@de @@Gof the gardens, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
+Desc       @@GThe southern @@ater@@crac@@de @@Gof the @@ggar@@dden@@Ws@@G, @@Wov@@aer@@Ggr@@rown @@Gin plant life, is serene and quiet. V@@ri@@Gn@@re@@Gs slowly grow and creep about the @@Wpearl white @@Gbanisters that surround the edge of the terrace. [#sun sunrise: @@GThe @@bs@@yu@@bn @@Gbegins to slowly crest on the horizon, showering the first light of day onto the @@ater@@crac@@de@@G.@@N] [#sun day: @@GThe countryside is visible below; @@banimals @@Gcan be faintly seen scurrying @@N@@Gabout.@@N] [#sun sunset: @@GThe @@bs@@yu@@bn @@Gbegins to slowly set on the horizon, removing the last traces of daylight from the @@ater@@crac@@de@@G.@@N] [#sun night: @@GA faint @@g@@ft@@Ww@@di@@g@@fn@@Wk@@dl@@g@@fi@@Wn@@dg @@Gof @@bl@@yi@@bghts @@Gis visible below, and @@cst@@aa@@crs @@Gdot the sky without the @@bl@@yi@@bght @@Gpollution of the city.@@N]~
 Flags      EOL
 Name       @@gAn  @@WOv@@aer@@Ggr@@rown  @@aTer@@crac@@de@@N~
-ScriptName ~
 Sect       3
 End
 #DOOR

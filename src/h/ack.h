@@ -70,17 +70,6 @@ struct DeleteObject
     template <typename T> void operator() (const T* ptr) const { delete ptr; };
 };
 
-class lua_data
-{
-    public:
-        lua_data();
-        ~lua_data();
-        lua_State *L;
-        bool loaded;
-        void *owner;
-        int type;
-};
-
 class board_data
 {
     public:
@@ -529,7 +518,6 @@ class mob_index_data
         short race;
         int race_mods;
         int resist;
-        char *script_name;
         short sex;
         char *short_descr;
         int skills;
@@ -590,7 +578,6 @@ class char_data
         ROOM_INDEX_DATA *in_room;
         bool is_free; /* kept for room lists link/unlink */
         bool is_quitting;
-        LUA_DATA *lua; /* Lua scripting */
         AFFECT_DATA *last_affect;
         OBJ_DATA *last_carry;
         AFFECT_DATA *last_saved_aff;
@@ -826,7 +813,6 @@ class obj_index_data
         OBJ_INDEX_DATA *next;
         OBJ_FUN *obj_fun;
         char *owner;
-        char *script_name;
         char *short_descr;
         float speed;
         int value[MAX_OBJ_VALUE];
@@ -867,7 +853,6 @@ class obj_data
         ROOM_INDEX_DATA *in_room;
         char *owner;
         char *name;
-        char *script_name;
         char *short_descr;
         char *long_descr;
         int item_type;
@@ -886,7 +871,6 @@ class obj_data
         MONEY_TYPE *money;
         float speed;
         RESET_DATA *reset;
-        LUA_DATA *lua;
 };
 
 /*
@@ -1023,12 +1007,10 @@ class room_index_data
         ROOM_AFFECT_DATA        *last_room_affect;
         BUILD_DATA_LIST         *last_room_reset;
         short                   light;
-        LUA_DATA                *lua;
         list<MARK_DATA *>  mark_list;
         char                    *name;
         ROOM_INDEX_DATA         *next;
         bitset<MAX_BITSET> room_flags;
-        char                    *script_name;
         short                   sector_type;
         MONEY_TYPE              *treasure;
         int                     vnum;
@@ -1225,6 +1207,7 @@ struct mudinfo
     unsigned long int mk_by_pc;
     unsigned long int pk_by_npc;
     unsigned long int pk_by_pc;
+    unsigned int      total_helpfiles;
     unsigned int      total_pfiles;
 };
 

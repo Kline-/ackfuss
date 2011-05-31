@@ -57,7 +57,6 @@ list<EXTRA_DESCR_DATA *> exdesc_list;
 list<EXIT_DATA *> exit_list;
 list<CHAR_DATA *> fight_list;
 list<FILE *> file_list;
-list<LUA_DATA *> lua_list;
 list<MOB_INDEX_DATA *> mob_index_list;
 list<NOTE_DATA *> note_list;
 list<OBJ_DATA *> obj_list;

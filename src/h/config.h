@@ -150,14 +150,6 @@
 #define TYPE_HIT                     1000
 
 /*
- * Lua owner types. --Kline
- */
-#define LUA_TYPE_NONE 0
-#define LUA_TYPE_CH   1
-#define LUA_TYPE_OB   2
-#define LUA_TYPE_RM   3
-
-/*
  * For speed combat, hands. --Kline
  */
 #define MAX_SPEED  4
@@ -1315,7 +1307,6 @@
 #define BUG_DIR         "../report/"
 #define HELP_DIR        "../help/"
 #define BOARD_DIR       "../board/"
-#define SCRIPT_DIR      "../script/"
 
 #define HELP_MORT      "mrt"              /* Mortal helpfiles                      */
 #define HELP_IMM       "imm"              /* Immortal helpfiles                    */

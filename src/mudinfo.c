@@ -193,6 +193,7 @@ void init_mudinfo( void )
     mudinfo.pk_by_npc = 0;
     mudinfo.pk_by_pc = 0;
     mudinfo.total_pfiles = 0;
+    mudinfo.total_helpfiles = count_helps();
 
     return;
 }

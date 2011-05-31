@@ -152,7 +152,6 @@ typedef struct social_type SOCIAL_TYPE;
 typedef struct clutch_type CLUTCH_TYPE;
 typedef struct disabled_data DISABLED_DATA;
 typedef struct mudinfo MUDINFO;
-typedef struct lua_data LUA_DATA;
 typedef struct monitor_type MONITOR_TYPE;
 typedef struct email_data EMAIL_DATA;
 

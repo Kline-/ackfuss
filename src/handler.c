@@ -78,10 +78,6 @@
 #include "h/hunt.h"
 #endif
 
-#ifndef DEC_LUASCRIPT_H
-#include "h/luascript.h"
-#endif
-
 #ifndef DEC_MACROS_H
 #include "h/macros.h"
 #endif
@@ -803,22 +799,6 @@ void char_to_room( CHAR_DATA * ch, ROOM_INDEX_DATA * pRoomIndex )
     }
 
     ch->in_room = pRoomIndex;
-
-    if ( ch->lua && !ch->lua->loaded )    // Fire scripts on first movement to a room.
-    {                                     // Scripts should set their own recurring functions after this. --Kline
-        string script = IS_NPC(ch) ? SCRIPT_DIR : PLAYER_DIR;
-        if ( !IS_NPC(ch) ) { script += LOWER(ch->name[0]); script += "/"; }
-        script += IS_NPC(ch) ? ch->npcdata->pIndexData->script_name : ch->name;
-        if ( !IS_NPC(ch) ) { script += ".lua"; }
-        luaL_dofile(ch->lua->L, script.c_str());
-        ch->lua->loaded = true;
-    }
-    if ( pRoomIndex->lua )
-    {
-        string str = "room_enter";
-        string arg;
-        call_lua(pRoomIndex, str, arg);
-    }
 
     if ( IS_NPC( ch ) )
         TOPLINK( ch, ch->in_room->first_person, ch->in_room->last_person, next_in_room, prev_in_room );

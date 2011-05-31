@@ -78,10 +78,6 @@
 #include "h/handler.h"
 #endif
 
-#ifndef DEC_LUASCRIPT_H
-#include "h/luascript.h"
-#endif
-
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif
@@ -467,12 +463,6 @@ DO_FUN(build_showmob)
         strncat( buf1, buf, MSL - 1 );
     }
 
-    if ( pMob->script_name != &str_empty[0] )
-    {
-        snprintf( buf, MSL, "@@WMobile has Lua script: @@y%s\r\n", pMob->script_name );
-        strncat( buf1, buf, MSL - 1 );
-    }
-
     if ( ( pShop = pMob->pShop ) != 0 )
     {
         is_shopkeeper = 1;
@@ -620,12 +610,6 @@ DO_FUN(build_showobj)
         strncat( buf1, buf, MSL - 1 );
     }
 
-    if ( obj->script_name != &str_empty[0] )
-    {
-        snprintf( buf, MSL, "@@WObject has Lua script: @@y%s\r\n", obj->script_name );
-        strncat( buf1, buf, MSL - 1 );
-    }
-
     if ( obj->first_exdesc != NULL )
     {
         EXTRA_DESCR_DATA *ed;
@@ -712,12 +696,6 @@ DO_FUN(build_showroom)
 
     snprintf( buf, MSL, "@@WFlags:\r\n@@y%s", bs_show_values( tab_room_flags, location->room_flags ) );
     strncat( buf1, buf, MSL - 1 );
-
-    if ( location->script_name != &str_empty[0] )
-    {
-        snprintf( buf, MSL, "@@WRoom has Lua script: @@y%s\r\n", location->script_name );
-        strncat( buf1, buf, MSL - 1 );
-    }
 
     if ( ( display & DISPLAY_DESC ) )
     {
@@ -1277,9 +1255,8 @@ DO_FUN(build_setmob)
         send_to_char( "  skill cast def rmod\r\n", ch );
         send_to_char( "  hr_mod dr_mod ac_mod\r\n", ch );
         send_to_char( "String being one of:\r\n", ch );
-        send_to_char( "  name short long desc spec script\r\n", ch );
+        send_to_char( "  name short long desc spec\r\n", ch );
         send_to_char( "Use [set] spec - to clear spec_fun\r\n", ch );
-        send_to_char( "Use [set] script - to clear script\r\n", ch );
         send_to_char( "Shopspec being one of:\r\n", ch );
         send_to_char( "  trade0 - trade4 profbuy profsell openhour\r\n", ch );
         send_to_char( "  closehour clear\r\n", ch );
@@ -1736,29 +1713,6 @@ DO_FUN(build_setmob)
         return;
     }
 
-    if ( !str_cmp( arg2, "script" ) )
-    {
-        if ( arg3[0] == '-' )
-        {
-            free_string(pMob->script_name);
-            pMob->script_name = &str_empty[0];
-            area_modified( pArea );
-            return;
-        }
-
-        if ( strlen(arg3) >= 3 )
-        {
-            pMob->script_name = str_dup(arg3);
-            area_modified( pArea );
-            return;
-        }
-        else
-        {
-            send_to_char("Script must be at least 3 characters.\r\n", ch);
-            return;
-        }
-    }
-
     if ( !str_cmp( arg2, "shop" ) )
     {
         SHOP_DATA *pShop;
@@ -1985,9 +1939,8 @@ DO_FUN(build_setroom)
         send_to_char( "                         clear [onesided]\r\n", ch );
         send_to_char( "      ed <keyword> <string>\r\n", ch );
         send_to_char( "String being one of:\r\n", ch );
-        send_to_char( "      name desc script\r\n", ch );
+        send_to_char( "      name desc\r\n", ch );
         send_to_char( "Use [set] ed - to clear extra keyword\r\n", ch );
-        send_to_char( "Use [set] script - to clear script\r\n", ch );
         return;
     }
 
@@ -2120,30 +2073,6 @@ DO_FUN(build_setroom)
         build_strdup( &ed->description, arg3, TRUE, FALSE, ch );
         return;
 
-    }
-
-    if ( !str_cmp( arg1, "script" ) )
-    {
-        if ( arg2[0] == '-' )
-        {
-            delete location->lua;
-            free_string(location->script_name);
-            location->script_name = &str_empty[0];
-            return;
-        }
-
-        if ( strlen(arg2) >= 3 )
-        {
-            location->lua = new LUA_DATA;
-            init_lua(location);
-            location->script_name = str_dup(arg2);
-            return;
-        }
-        else
-        {
-            send_to_char("Script must be at least 3 characters.\r\n", ch);
-            return;
-        }
     }
 
     /*
@@ -2480,9 +2409,8 @@ DO_FUN(build_setobject)
         send_to_char( "  armortype\r\n", ch );
         send_to_char( "\r\n", ch );
         send_to_char( "String being one of:\r\n", ch );
-        send_to_char( "  name short long ed objfun script\r\n", ch );
+        send_to_char( "  name short long ed objfun\r\n", ch );
         send_to_char( "Use [set] objfun - to clear objfun.\r\n", ch );
-        send_to_char( "Use [set] script - to clear script\r\n", ch );
         return;
     }
 
@@ -2717,29 +2645,6 @@ DO_FUN(build_setobject)
 
         area_modified( pArea );
         return;
-    }
-
-    if ( !str_cmp( arg2, "script" ) )
-    {
-        if ( arg3[0] == '-' )
-        {
-            free_string(pObj->script_name);
-            pObj->script_name = &str_empty[0];
-            area_modified( pArea );
-            return;
-        }
-
-        if ( strlen(arg3) >= 3 )
-        {
-            pObj->script_name = str_dup(arg3);
-            area_modified( pArea );
-            return;
-        }
-        else
-        {
-            send_to_char("Script must be at least 3 characters.\r\n", ch);
-            return;
-        }
     }
 
     if ( !str_cmp( arg2, "extra" ) )

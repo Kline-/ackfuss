@@ -310,7 +310,6 @@ void build_save_mobs(  )
     fprintf( SaveFile, "Race       %d\n", pMobIndex->race );
     fprintf( SaveFile, "RaceMods   %d\n", pMobIndex->race_mods );
     fprintf( SaveFile, "Resist     %d\n", pMobIndex->resist );
-    fprintf( SaveFile, "ScriptName %s~\n", pMobIndex->script_name );
     fprintf( SaveFile, "Sex        %d\n", pMobIndex->sex );
     fprintf( SaveFile, "ShortDesc  %s~\n", pMobIndex->short_descr );
     fprintf( SaveFile, "Skills     %d\n", pMobIndex->skills );
@@ -370,7 +369,6 @@ void build_save_objects(  )
     fprintf( SaveFile, "LongDesc   %s~\n", pObjIndex->long_descr );
     fprintf( SaveFile, "Name       %s~\n", pObjIndex->name );
     fprintf( SaveFile, "ObjFun     %s\n", rev_obj_fun_lookup( pObjIndex->obj_fun ) );
-    fprintf( SaveFile, "ScriptName %s~\n", pObjIndex->script_name );
     fprintf( SaveFile, "ShortDesc  %s~\n", pObjIndex->short_descr );
     fprintf( SaveFile, "Speed      %0.2f\n", pObjIndex->speed );
     fprintf( SaveFile, "Type       %d\n", pObjIndex->item_type );
@@ -461,7 +459,6 @@ void build_save_rooms(  )
     fprintf( SaveFile, "%sEOL\n", outstr.c_str() );
 
     fprintf( SaveFile, "Name       %s~\n", pRoomIndex->name );
-    fprintf( SaveFile, "ScriptName %s~\n", pRoomIndex->script_name );
     fprintf( SaveFile, "Sect       %d\n", pRoomIndex->sector_type );
     fprintf( SaveFile, "End\n" );
 

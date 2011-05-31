@@ -55,7 +55,6 @@ extern list<EXTRA_DESCR_DATA *> exdesc_list;
 extern list<EXIT_DATA *> exit_list;
 extern list<CHAR_DATA *> fight_list;
 extern list<FILE *> file_list;
-extern list<LUA_DATA *> lua_list;
 extern list<MOB_INDEX_DATA *> mob_index_list;
 extern list<NOTE_DATA *> note_list;
 extern list<OBJ_DATA *> obj_list;

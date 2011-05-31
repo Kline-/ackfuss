@@ -70,10 +70,6 @@
 #include "h/hash.h"
 #endif
 
-#ifndef DEC_LUASCRIPT_H
-#include "h/luascript.h"
-#endif
-
 #ifndef DEC_MAGIC_H
 #include "h/magic.h"
 #endif
@@ -562,7 +558,6 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
     fprintf( fp, "#OBJECT\n" );
     fprintf( fp, "Nest         %d\n", iNest );
     fprintf( fp, "Name         %s~\n", obj->name );
-    fprintf( fp, "ScriptName   %s~\n", obj->script_name );
     fprintf( fp, "ShortDescr   %s~\n", obj->short_descr );
     fprintf( fp, "LongDescr    %s~\n", obj->long_descr );
     fprintf( fp, "Durability   %d %d\n", obj->durability, obj->max_durability );
@@ -720,9 +715,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
         ch->pcdata = new PC_DATA;
 
         d->character = ch;
-
-        ch->lua = new LUA_DATA;
-        init_lua(ch);
 
 #ifdef IMC
         imc_initchar( ch );
@@ -1706,15 +1698,6 @@ void fread_obj( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'S':
-                if ( !str_cmp( word, "ScriptName" ) )
-                {
-                    obj->lua = new LUA_DATA;
-                    init_lua(obj);
-                    free_string(obj->script_name);
-                    obj->script_name = fread_string(fp);
-                    fMatch = true;
-                    break;
-                }
                 SKEY( "ShortDescr", obj->short_descr, fread_string( fp ) );
                 KEY( "Speed", obj->speed, fread_float( fp ) );
 
