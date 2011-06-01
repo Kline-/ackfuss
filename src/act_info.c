@@ -3770,7 +3770,8 @@ DO_FUN(do_prompt)
 
     if ( farg[0] == '\0' )
     {
-        ch->act.test(ACT_PROMPT) ? do_config(ch, "-prompt") : do_config(ch, "+prompt");
+        snprintf( farg, MSL, "Your current prompt is: %s\r\n", ch->prompt.c_str() );
+        write_to_descriptor(ch->desc->descriptor,farg);
         return;
     }
     if ( !str_cmp(farg, "all") )

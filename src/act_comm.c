@@ -1659,6 +1659,12 @@ DO_FUN(do_pose)
 
 DO_FUN(do_bug)
 {
+    if( argument[0] == '\0' )
+    {
+        ch->send("What bug are you reporting? It is also more useful if you stand in the room with the issue!\r\nSyntax: bug <item>\r\n");
+        return;
+    }
+
     append_file( ch, BUG_FILE, argument );
     send_to_char( "Ok.  Thanks.\r\n", ch );
     return;
@@ -1666,6 +1672,12 @@ DO_FUN(do_bug)
 
 DO_FUN(do_idea)
 {
+    if( argument[0] == '\0' )
+    {
+        ch->send("What idea are you suggesting?\r\nSyntax: idea <item>\r\n");
+        return;
+    }
+
     append_file( ch, IDEA_FILE, argument );
     send_to_char( "Ok.  Thanks.\r\n", ch );
     return;
@@ -1673,6 +1685,12 @@ DO_FUN(do_idea)
 
 DO_FUN(do_typo)
 {
+    if( argument[0] == '\0' )
+    {
+        ch->send("What typo are you reporting? It is also more useful if you stand in the room with the issue!\r\nSyntax: typo <item>\r\n");
+        return;
+    }
+
     append_file( ch, TYPO_FILE, argument );
     send_to_char( "Ok.  Thanks.\r\n", ch );
     return;
