@@ -827,7 +827,7 @@ DO_FUN(do_enchant)
             new_aff->modifier = mod_armor + cur_armor;
             LINK( new_aff, unique->first_apply, unique->last_apply, next, prev );
             if ( mod_armor != 0 )
-                min_level = UMAX( ( mod_armor + cur_armor ) / -4, min_level );
+                min_level = UMAX( ( mod_armor + cur_armor ) / 4, min_level );
 
         }
         if ( !IS_OBJ_STAT(unique, ITEM_EXTRA_UNIQUE) )

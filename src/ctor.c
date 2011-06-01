@@ -140,7 +140,7 @@ char_data::char_data()
     act.reset();
     affected_by = 0;
     alignment = 0;
-    armor = 100;
+    armor = 0;
     carry_number = 0;
     carry_weight = 0;
     casting = new CAST_DATA;

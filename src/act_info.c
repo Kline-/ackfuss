@@ -1522,27 +1522,25 @@ DO_FUN(do_score)
     send_to_char( buf2, ch );
 
     snprintf( buf, MSL, "@@WYou are " );
-    if ( GET_AC( ch ) >= 101 )
-        strncat( buf, "@@yall skin and bones.", MSL );
-    else if ( GET_AC( ch ) >= 80 )
+    if ( GET_AC( ch ) <= 100 )
         strncat( buf, "@@ynaked.", MSL );
-    else if ( GET_AC( ch ) >= 0 )
+    else if ( GET_AC( ch ) <= 300 )
         strncat( buf, "@@ybadly armored.", MSL );
-    else if ( GET_AC( ch ) >= -100 )
+    else if ( GET_AC( ch ) <= 700 )
         strncat( buf, "@@yslightly armored.", MSL );
-    else if ( GET_AC( ch ) >= -300 )
+    else if ( GET_AC( ch ) <= 1300 )
         strncat( buf, "@@ysomewhat armored.", MSL );
-    else if ( GET_AC( ch ) >= -500 )
+    else if ( GET_AC( ch ) <= 2100 )
         strncat( buf, "@@yarmored.", MSL );
-    else if ( GET_AC( ch ) >= -800 )
+    else if ( GET_AC( ch ) <= 3100 )
         strncat( buf, "@@ywell armored.", MSL );
-    else if ( GET_AC( ch ) >= -1400 )
+    else if ( GET_AC( ch ) <= 4300 )
         strncat( buf, "@@ystrongly armored.", MSL );
-    else if ( GET_AC( ch ) >= -2000 )
+    else if ( GET_AC( ch ) <= 5700 )
         strncat( buf, "@@yheavily armored.", MSL );
-    else if ( GET_AC( ch ) >= -3000 )
+    else if ( GET_AC( ch ) <= 7300 )
         strncat( buf, "@@ysuperbly armored.", MSL );
-    else if ( GET_AC( ch ) >= -4500 )
+    else if ( GET_AC( ch ) <= 9100 )
         strncat( buf, "@@ydivinely armored.", MSL );
     else
         strncat( buf, "@@yalmost invincible!", MSL );
@@ -2242,7 +2240,7 @@ DO_FUN(do_consider)
     {
         diff += victim->npcdata->hr_mod / 4;
         diff += victim->npcdata->dr_mod / 4;
-        diff -= victim->npcdata->ac_mod / 30;
+        diff += victim->npcdata->ac_mod / 30;
     }
 
     if ( diff >= 10 )

@@ -1394,7 +1394,7 @@ End
 
 #MOBILE
 Vnum      1001
-AcMod     -2500
+AcMod     2500
 Act       sentinel remember no_flee no_body no_mind reequip solo no_blood no_quest EOL
 Affected   1600252
 Alignment  0
@@ -1454,7 +1454,7 @@ End
 
 #MOBILE
 Vnum      1003
-AcMod     -2500
+AcMod     2500
 Act       sentinel train practice heal EOL
 Affected   533160
 Alignment  1000
@@ -1736,7 +1736,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -18
+Modifier   18
 End
 #OAFFECT
 Location   19
@@ -1794,7 +1794,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -41
+Modifier   41
 End
 #OAFFECT
 Location   13
@@ -1825,7 +1825,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -14
+Modifier   14
 End
 #OAFFECT
 Location   19
@@ -1860,7 +1860,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -16
+Modifier   16
 End
 #OAFFECT
 Location   19
@@ -2173,7 +2173,7 @@ Modifier   288
 End
 #OAFFECT
 Location   17
-Modifier   -575
+Modifier   575
 End
 #OAFFECT
 Location   19
@@ -2289,7 +2289,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -6
+Modifier   6
 End
 #OAFFECT
 Location   13
@@ -2316,7 +2316,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -18
+Modifier   18
 End
 #OAFFECT
 Location   13
@@ -2351,7 +2351,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -15
+Modifier   15
 End
 #OAFFECT
 Location   13

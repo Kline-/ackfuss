@@ -524,7 +524,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -175
+Modifier   175
 End
 #OAFFECT
 Location   13
@@ -555,7 +555,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -117
+Modifier   117
 End
 #OAFFECT
 Location   13

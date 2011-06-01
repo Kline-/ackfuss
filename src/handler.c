@@ -1149,7 +1149,7 @@ void equip_char( CHAR_DATA * ch, OBJ_DATA * obj, int iWear )
         return;
     }
 
-    ch->armor -= apply_ac( obj, iWear );
+    ch->armor += apply_ac( obj, iWear );
     obj->wear_loc = iWear;
 
 
@@ -1241,7 +1241,7 @@ void unequip_char( CHAR_DATA * ch, OBJ_DATA * obj )
         return;
     }
 
-    ch->armor += apply_ac( obj, obj->wear_loc );
+    ch->armor -= apply_ac( obj, obj->wear_loc );
     obj->wear_loc = -1;
 
     /*

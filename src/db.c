@@ -2703,7 +2703,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     mob->npcdata->hr_mod = pMobIndex->hr_mod;
     mob->npcdata->dr_mod = pMobIndex->dr_mod;
 
-    mob->armor = interpolate( mob->level / 2, 100, -100 );
+    mob->armor = interpolate( mob->level / 2, 100, 100 );
     hold = mob->armor;
     hold *= sysdata.mob_ac;
     mob->armor = (int)hold;

@@ -1615,9 +1615,9 @@ DO_FUN(build_setmob)
 
     if ( !str_cmp( arg2, "ac_mod" ) )
     {
-        if ( value < -2500 || value > 500 )
+        if ( value < -500 || value > 2500 )
         {
-            send_to_char( "ac_mod range is -2500 to 500.\r\n", ch );
+            send_to_char( "ac_mod range is -500 to 2500.\r\n", ch );
             return;
         }
         pMob->ac_mod = value;

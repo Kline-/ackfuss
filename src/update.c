@@ -1267,14 +1267,14 @@ void gain_update( void )
         if ( ch->position >= POS_STUNNED && !IS_SET( ch->affected_by, AFF_VAMP_HEALING ) && !IS_GHOST(ch) )
         {
             if ( ( ch->hit < ch->max_hit ) && ( !IS_SET( ch->in_room->affected_by, ROOM_BV_NONE ) ) )
-                ch->hit += ch->position == POS_FIGHTING ? (hit_gain( ch ) / 2) : hit_gain( ch );
+                ch->hit += ch->position == POS_FIGHTING ? (hit_gain( ch ) / 10) : hit_gain( ch );
             ch->hit = UMAX( 25, ch->hit );
 
             if ( ( ch->mana < ch->max_mana ) && ( !IS_SET( ch->in_room->affected_by, ROOM_BV_NONE ) ) )
-                ch->mana += ch->position == POS_FIGHTING ? (mana_gain( ch ) / 2) : mana_gain( ch );
+                ch->mana += ch->position == POS_FIGHTING ? (mana_gain( ch ) / 10) : mana_gain( ch );
 
             if ( ( ch->move < ch->max_move ) && ( ch->carry_weight < can_carry_w( ch ) ) )
-                ch->move += ch->position == POS_FIGHTING ? (move_gain( ch ) / 2) : move_gain( ch );
+                ch->move += ch->position == POS_FIGHTING ? (move_gain( ch ) / 10) : move_gain( ch );
             else if ( ch->carry_weight >= can_carry_w( ch ) )
             {
                 send_to_char( "You are carrying so much weight that you are @@eEXHAUSTED@@N!!\r\n", ch );

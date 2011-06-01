@@ -1330,7 +1330,7 @@ End
 
 #MOBILE
 Vnum      1086
-AcMod     10
+AcMod     -10
 Act       EOL
 Affected   0
 Alignment  0
@@ -1390,7 +1390,7 @@ End
 
 #MOBILE
 Vnum      1088
-AcMod     5
+AcMod     -5
 Act       EOL
 Affected   0
 Alignment  0
@@ -1617,7 +1617,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -31
+Modifier   31
 End
 #OAFFECT
 Location   13
@@ -1647,7 +1647,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -3
+Modifier   3
 End
 #OAFFECT
 Location   19
@@ -1681,7 +1681,7 @@ Weight     1
 End
 #OAFFECT
 Location   17
-Modifier   -5
+Modifier   5
 End
 #OAFFECT
 Location   13
@@ -1719,7 +1719,7 @@ Modifier   -2
 End
 #OAFFECT
 Location   17
-Modifier   -6
+Modifier   6
 End
 #OAFFECT
 Location   18

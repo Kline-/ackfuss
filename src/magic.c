@@ -1097,7 +1097,7 @@ bool spell_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
         return FALSE;
     af.type = sn;
     af.duration = 24;
-    af.modifier = -20 - ch->get_level("psuedo") / 10;
+    af.modifier = 20 + ch->get_level("psuedo") / 10;
     af.location = APPLY_AC;
     af.bitvector = 0;
     affect_to_char( victim, &af );
@@ -1143,7 +1143,7 @@ bool spell_bark_skin( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
     af.type = sn;
     af.duration = 3 + ( level / 12 );
     af.location = APPLY_AC;
-    af.modifier = -10;
+    af.modifier = 10;
     af.bitvector = 0;
     affect_to_char( victim, &af );
     act( "$n's skin turns to bark.", victim, NULL, NULL, TO_ROOM );
@@ -2222,7 +2222,7 @@ bool spell_encumber( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
     }
     af.type = sn;
     af.duration = 5 + ( level / 16 );
-    af.modifier = +40 + ch->get_level("psuedo") / 5;
+    af.modifier = (40 + ch->get_level("psuedo") / 5) * -1;
     af.location = APPLY_AC;
     af.bitvector = 0;
     affect_to_char( victim, &af );
@@ -2323,7 +2323,7 @@ bool spell_faerie_fire( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
     af.type = sn;
     af.duration = 5 + ( level / 5 );
     af.location = APPLY_AC;
-    af.modifier = 2 * level;
+    af.modifier = -2 * level;
     af.bitvector = AFF_FAERIE_FIRE;
     affect_to_char( victim, &af );
     send_to_char( "You are surrounded by a pink outline.\r\n", victim );
@@ -3036,7 +3036,7 @@ bool spell_shield( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
     af.type = sn;
     af.duration = 4 + ( level / 5 );
     af.location = APPLY_AC;
-    af.modifier = -20 - ch->get_level("psuedo") / 5;
+    af.modifier = 20 + ch->get_level("psuedo") / 5;
     af.bitvector = 0;
     affect_to_char( victim, &af );
     act( "$n is surrounded by a force shield.", victim, NULL, NULL, TO_ROOM );
@@ -3114,7 +3114,7 @@ bool spell_stone_skin( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
     af.type = sn;
     af.duration = 5 + ( level / 12 );
     af.location = APPLY_AC;
-    af.modifier = -40 - ch->get_level("psuedo") / 10;
+    af.modifier = 40 + ch->get_level("psuedo") / 10;
     af.bitvector = 0;
     affect_to_char( victim, &af );
     act( "$n's skin turns to stone.", victim, NULL, NULL, TO_ROOM );
@@ -3711,7 +3711,7 @@ bool spell_barrier( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
     af.type = sn;
     af.duration = 4 + ( level / 20 );
     af.location = APPLY_AC;
-    af.modifier = -20 - ch->get_level("psuedo") / 10;
+    af.modifier = 20 + ch->get_level("psuedo") / 10;
     af.bitvector = 0;
     affect_to_char( victim, &af );
 
@@ -4066,7 +4066,7 @@ bool spell_fighting_trance( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
     affect_to_char( victim, &af );
 
     af.location = APPLY_AC;
-    af.modifier = -10 - ch->get_level("psuedo") / 10;
+    af.modifier = 10 + ch->get_level("psuedo") / 10;
     affect_to_char( victim, &af );
     send_to_char( "You feel much stronger.\r\n", victim );
     act( "$n looks much stronger.", victim, NULL, NULL, TO_ROOM );
@@ -4086,7 +4086,7 @@ bool spell_phase( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
     af.type = sn;
     af.duration = 3 + ( level / 20 );
     af.location = APPLY_AC;
-    af.modifier = -10 - ch->get_level("psuedo") / 10;
+    af.modifier = 10 + ch->get_level("psuedo") / 10;
     af.bitvector = AFF_PASS_DOOR;
     affect_to_char( victim, &af );
     send_to_char( "Your body switches phase.\r\n", victim );
@@ -4688,7 +4688,7 @@ bool spell_mystic_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
     af.type = sn;
     af.duration = 4 + ( level / 3 );
     af.location = APPLY_AC;
-    af.modifier = -10 - ch->get_level("psuedo") / 8;
+    af.modifier = 10 + ch->get_level("psuedo") / 8;
     af.bitvector = 0;
     affect_to_char( victim, &af );
 
@@ -4954,7 +4954,7 @@ bool spell_deflect_weapon( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
         return FALSE;
     af.type = sn;
     af.duration = (level + 2);
-    af.modifier = -40 - ch->get_level("psuedo") / 5;
+    af.modifier = 40 + ch->get_level("psuedo") / 5;
     af.location = APPLY_AC;
     af.bitvector = 0;
     affect_to_char( victim, &af );
@@ -6158,7 +6158,7 @@ bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
     paf = new AFFECT_DATA;
     paf->type = sn;
     paf->location = APPLY_AC;
-    paf->modifier = -( obj_soul->level / 2 );
+    paf->modifier = ( obj_soul->level / 2 );
     LINK( paf, ob->first_apply, ob->last_apply, next, prev );
 
     paf = new AFFECT_DATA;
@@ -6221,7 +6221,7 @@ bool spell_holy_armor( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
         return FALSE;
     af.type = sn;
     af.duration = 2 + ( level / 7 );
-    af.modifier = -80 - ch->get_level("psuedo") / 5;
+    af.modifier = 80 + ch->get_level("psuedo") / 5;
     af.location = APPLY_AC;
     af.bitvector = 0;
     affect_to_char( victim, &af );
@@ -7038,7 +7038,7 @@ bool spell_black_curse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
     affect_to_char( victim, &af );
 
     af.location = APPLY_AC;
-    af.modifier = 7 * ch->get_level("psuedo") / 12 * victim->get_level("psuedo") / 10;
+    af.modifier = -7 * ch->get_level("psuedo") / 12 * victim->get_level("psuedo") / 10;
     affect_to_char( victim, &af );
 
     send_to_char( "@@RA Cloud of @@dDespair@@R washes over you.@@N\r\n", victim );
@@ -7091,7 +7091,7 @@ bool spell_poison_quinine( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
     affect_to_char( victim, &af );
 
     af.location = APPLY_AC;
-    af.modifier = 7 * ch->get_level("psuedo") / 20 * victim->get_level("psuedo") / 20;
+    af.modifier = -7 * ch->get_level("psuedo") / 20 * victim->get_level("psuedo") / 20;
     affect_to_char( victim, &af );
 
     send_to_char( "@@You feel a dart pierce your neck.@@N\r\n", victim );
@@ -7121,7 +7121,7 @@ bool spell_poison_arsenic( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
     affect_to_char( victim, &af );
 
     af.location = APPLY_AC;
-    af.modifier = 5 * ch->get_level("psuedo") / 20 * victim->get_level("psuedo") / 20;
+    af.modifier = -5 * ch->get_level("psuedo") / 20 * victim->get_level("psuedo") / 20;
     affect_to_char( victim, &af );
 
     send_to_char( "@@You feel a dart pierce your neck.@@N\r\n", victim );

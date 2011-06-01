@@ -642,7 +642,7 @@ int get_item_value( OBJ_DATA * obj )
         }
     }
 
-    cost = obj->level * 1 + ac_mod * -8 + dr_mod * 5 + hr_mod * 5 + save_mod * 2 + hp_mod * 4 + mana_mod * 3 + move_mod;
+    cost = obj->level * 1 + ac_mod * 8 + dr_mod * 5 + hr_mod * 5 + save_mod * 2 + hp_mod * 4 + mana_mod * 3 + move_mod;
 
     if ( IS_SET( obj->item_apply, ITEM_APPLY_ENHANCED ) )
         cost = cost * 1.3;

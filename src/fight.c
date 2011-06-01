@@ -647,7 +647,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
         victim_ac -= 200;
 
     if ( dt == gsn_backstab || dt == gsn_circle )
-        victim_ac += 300;
+        victim_ac -= 300;
 
     /*
      * The moment of excitement!
@@ -676,7 +676,9 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
     if ( IS_NPC( ch ) && victim_ac < -3000 && ch->get_level("psuedo") > 110 && ( number_range( 0, 100 ) < 10 ) )
         diceroll += 3000;
 
-    if ( victim_ac > -100 )
+    diceroll *= -1;
+
+    if ( victim_ac < 100 )
     {
         if ( diceroll + victim_ac < 0 )
             ix = -1;
@@ -5780,7 +5782,7 @@ DO_FUN(do_rage)
 
             af3.duration = duration;
             af3.location = APPLY_AC;
-            af3.modifier = ( 5 + ch->pcdata->super->generation ) * 10;
+            af3.modifier = ( 5 + ch->pcdata->super->generation ) * -10;
             af3.bitvector = 0;
             affect_join( ch, &af3 );
 
@@ -5811,7 +5813,7 @@ DO_FUN(do_rage)
 
             af3.duration = duration;
             af3.location = APPLY_AC;
-            af3.modifier = ( 5 + ch->pcdata->super->generation ) * 15;
+            af3.modifier = ( 5 + ch->pcdata->super->generation ) * -15;
             af3.bitvector = 0;
             affect_join( ch, &af3 );
 
