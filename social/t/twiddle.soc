@@ -1,0 +1,8 @@
+CharAuto   You twiddle your ears like Dumbo.~
+CharFound  You twiddle $S ears.~
+CharNoArg  You patiently twiddle your thumbs.~
+OtherAuto  $n twiddles $s own ears like Dumbo.~
+OtherFound $n twiddles $N's ears.~
+OtherNoArg $n patiently twiddles $s thumbs.~
+VictFound  $n twiddles your ears.~
+End

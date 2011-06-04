@@ -1,0 +1,8 @@
+CharAuto   You crush yourself.  YEEEEOOOUUUUCH!~
+CharFound  You hold two fingers up at $M and say, 'I'm crushing your head!'~
+CharNoArg  You squint and hold two fingers up, saying 'I'm crushing your heads!'~
+OtherAuto  $n crushes $mself into the ground.  OUCH!~
+OtherFound $n holds two fingers up at $N and says, 'I'm crushing your head!'~
+OtherNoArg $n squints and holds two fingers up, saying 'I'm crushing your heads!'~
+VictFound  $n holds two fingers up at you and says, 'I'm crushing your head!'~
+End

@@ -1,0 +1,8 @@
+CharAuto   You boogie with yourself.  What a great dancer you are!~
+CharFound  You grab $M and boogie down!~
+CharNoArg  You boogie down!~
+OtherAuto  $n boogies with $mself.  Guess no one will dance with $m.~
+OtherFound $n grabs $N and they boogie down!~
+OtherNoArg $n gets down and boogies!!~
+VictFound  $n grabs you and boogies with you!~
+End

@@ -1,0 +1,8 @@
+CharAuto   You stand and admit to all in the room, 'Hi, I'm $n, and I'm a mud addict.'~
+CharFound  You tell $M that you are addicted to $S love.~
+CharNoArg  You stand and admit to all in the room, 'Hi, I'm $n, and I'm a mud addict.'~
+OtherAuto  $n stands and says, 'Hi, I'm $n, and I'm a mud addict.'~
+OtherFound $n tells $N that $e is addicted to $S love.~
+OtherNoArg $n stands and says, 'Hi, I'm $n, and I'm a mud addict.'~
+VictFound  $n tells you that $e is addicted to your love.~
+End

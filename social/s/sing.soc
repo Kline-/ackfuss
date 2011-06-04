@@ -1,0 +1,8 @@
+CharAuto   You sing a little ditty to yourself.~
+CharFound  You sing a ballad to $M.~
+CharNoArg  You raise your clear voice towards the sky.~
+OtherAuto  $n sings a little ditty to $mself.~
+OtherFound $n sings a ballad to $N.~
+OtherNoArg $n has begun to sing.~
+VictFound  $n sings a ballad to you!  How sweet!~
+End

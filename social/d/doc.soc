@@ -1,0 +1,8 @@
+CharAuto   You nibble on a carrot and say to yourself, 'Eh, what's up $n?'~
+CharFound  You nibble on a carrot and say to $M, 'Eh, what's up Doc?'~
+CharNoArg  You nibble on a carrot and say 'Eh, what's up Doc?'~
+OtherAuto  $n nibbles on a carrot and says 'Eh, what's up Doc?'~
+OtherFound $n nibbles on a carrot and says to $N, 'Eh, what's up Doc?'~
+OtherNoArg $n nibbles on a carrot and says 'Eh, what's up Doc?'~
+VictFound  $n nibbles on a carrot and says to you, 'Eh, what's up Doc?'~
+End

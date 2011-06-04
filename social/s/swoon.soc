@@ -1,0 +1,8 @@
+CharAuto   You swoon in ecstacy.~
+CharFound  You swoon in ecstacy at the thought of $M.~
+CharNoArg  You swoon in ecstacy.~
+OtherAuto  $n swoons in ecstacy.~
+OtherFound $n swoons in ecstacy at the thought of $N.~
+OtherNoArg $n swoons in ecstacy.~
+VictFound  $n swoons in ecstacy as $e thinks of you.~
+End

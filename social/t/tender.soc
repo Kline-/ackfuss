@@ -1,0 +1,8 @@
+CharAuto   You'd better not, people may start to talk!~
+CharFound  You give $M a soft, tender kiss.~
+CharNoArg  You will enjoy it more if you choose someone to kiss.~
+OtherAuto  ~
+OtherFound $n gives $N a soft, tender kiss.~
+OtherNoArg ~
+VictFound  $n gives you a soft, tender kiss.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You show some of your shoulder as you begin your performance.~
+CharFound  You show some of your shoulder as you begin your performance.~
+CharNoArg  You show some of your shoulder as you begin your performance.~
+OtherAuto  $n shows $s bare shoulder and glances seductively around the room.~
+OtherFound $n shows $s bare shoulder and glances seductively at $N.~
+OtherNoArg $n shows $s bare shoulder and glances seductively around the room.~
+VictFound  $n shows $s bare shoulder and glances seductively at you.~
+End

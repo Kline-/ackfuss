@@ -1,0 +1,8 @@
+CharAuto   Ah, don't take it so hard.~
+CharFound  Ah, don't take it so hard.~
+CharNoArg  Ah, don't take it so hard.~
+OtherAuto  $n pouts.~
+OtherFound $n pouts at $N.  What did $N do?~
+OtherNoArg $n pouts.~
+VictFound  $n pouts at you.  What did you do to $m?~
+End

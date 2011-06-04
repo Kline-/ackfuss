@@ -1,0 +1,8 @@
+CharAuto   You say 'Ah dahling, I look MAHVELLOUS!'~
+CharFound  You say to $M, 'Ah dahling, you look MAHVELLOUS!'~
+CharNoArg  You say 'Ah dahling, you look MAHVELLOUS!'~
+OtherAuto  $n says 'Ah dahling, I look MAHVELLOUS!'~
+OtherFound $n says to $N, 'Ah dahling, you look MAHVELLOUS!'~
+OtherNoArg $n says 'Ah dahling, you look MAHVELLOUS!'~
+VictFound  $n says to you, 'Ah dahling, you look MAHVELLOUS!'~
+End

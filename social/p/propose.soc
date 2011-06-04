@@ -1,0 +1,8 @@
+CharAuto   Even you wouldn't marry yourself.~
+CharFound  You propose marriage to $M.~
+CharNoArg  You propose a contract game of bridge.~
+OtherAuto  $n refuses the proposal made by $mself.~
+OtherFound $n gets down on one knee and proposes to $N.~
+OtherNoArg $n proposes a contract game of bridge.~
+VictFound  $n says quietly 'Will you marry me?'~
+End

@@ -1,0 +1,8 @@
+CharAuto   An aura of heavenly light appears above your head.~
+CharFound  You project an aura of heavenly light above $S head.~
+CharNoArg  An aura of heavenly light appears above your head.~
+OtherAuto  An aura of heavenly light appears above $n's head.~
+OtherFound $n projects an aura of heavenly light above $N's head.~
+OtherNoArg An aura of heavenly light appears above $n's head.~
+VictFound  $n projects an aura of heavenly light above your head.~
+End

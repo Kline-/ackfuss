@@ -1,0 +1,8 @@
+CharAuto   You beg for money, weapons, coins.~
+CharFound  You beg $N for money, weapons, coins.~
+CharNoArg  You beg for money, weapons, coins.~
+OtherAuto  $n says 'Spare change?'~
+OtherFound $n begs you for favors of the insidious type...~
+OtherNoArg $n says 'Spare change?'~
+VictFound  $n begs you for favors of the insidious type...~
+End

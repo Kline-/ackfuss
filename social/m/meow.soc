@@ -1,0 +1,8 @@
+CharAuto   You meow like a kitty cat.~
+CharFound  You meow at $M, hoping $E will give you some milk.~
+CharNoArg  MEOW.~
+OtherAuto  $n meows like a kitty cat.~
+OtherFound $n meows at $N, hoping $E will give $m some milk. ~
+OtherNoArg $n meows.  What's $e going to do next, wash $mself with $s tongue?~
+VictFound  $n meows at you.  Maybe $e wants some milk.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You throw a snowball at yourself.~
+CharFound  You throw a snowball in $N's face.~
+CharNoArg  Whom do you want to throw a snowball at?~
+OtherAuto  $n throws a snowball at $mself.~
+OtherFound $n throws a snowball at $N.~
+OtherNoArg ~
+VictFound  $n throws a snowball at you.~
+End

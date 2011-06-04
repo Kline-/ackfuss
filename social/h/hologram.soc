@@ -1,0 +1,8 @@
+CharAuto   You snap your fingers and create an illusion of yourself.~
+CharFound  You snap your fingers and create an illusion.~
+CharNoArg  You snap your fingers and create an illusion.~
+OtherAuto  Suddenly, there are 2 $n's standing here!~
+OtherFound $n leaves south.~
+OtherNoArg $n leaves south.~
+VictFound  $n waves at you and leaves south.~
+End

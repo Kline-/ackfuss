@@ -1,0 +1,8 @@
+CharAuto   You ponder the difficulties involved in rubbing noses with yourself.~
+CharFound  You rub noses with $M.~
+CharNoArg  Who do you want to eskimo kiss with?~
+OtherAuto  $n ponders the difficulties involved in rubbing noses with $mself.~
+OtherFound $n rubs noses with $N.  You didn't know they were eskimos!~
+OtherNoArg $n is looking for someone to rub noses with.  Any volunteers?~
+VictFound  $n rubs noses with you.~
+End

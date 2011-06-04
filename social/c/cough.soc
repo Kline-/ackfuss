@@ -1,0 +1,8 @@
+CharAuto   You cough loudly.  Why don't you take better care of yourself?~
+CharFound  You cough loudly.  It must be $S fault, $E gave you this cold.~
+CharNoArg  You cough to clear your throat and eyes and nose and....~
+OtherAuto  $n coughs loudly.  $n should take better care of $mself.~
+OtherFound $n coughs loudly, and glares at $N, like it is $S fault.~
+OtherNoArg $n coughs loudly.~
+VictFound  $n coughs loudly, and glares at you.  Did you give $M that cold?~
+End

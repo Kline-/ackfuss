@@ -1,0 +1,8 @@
+CharAuto   Huh?~
+CharFound  You salute $M.~
+CharNoArg  You salute smartly.~
+OtherAuto  ~
+OtherFound $n salutes $N.~
+OtherNoArg $n salutes smartly.~
+VictFound  $n salutes you.~
+End

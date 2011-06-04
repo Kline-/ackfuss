@@ -1,0 +1,8 @@
+CharAuto   You bounce cannonballs off your head to show your strength.~
+CharFound  You cannonball into the pool and splash water over $N.~
+CharNoArg  You cannonball into the pool.   *SPLOOSH*~
+OtherAuto  $n bounces cannonballs off $s head.  Can you say 'nutcase'?~
+OtherFound $n cannonballs into the pool and splashes $N.~
+OtherNoArg $n cannonballs into the pool.   *SPLOOSH*~
+VictFound  $n cannonballs into the pool and sends water over you.  You are WET!~
+End

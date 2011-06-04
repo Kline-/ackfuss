@@ -1,0 +1,8 @@
+CharAuto   You nibble on your OWN ear.~
+CharFound  You nibble on $N's ear.~
+CharNoArg  Nibble on whom?~
+OtherAuto  $n nibbles on $s OWN ear.~
+OtherFound $n nibbles on $N's ear.~
+OtherNoArg ~
+VictFound  $n nibbles on your ear.~
+End

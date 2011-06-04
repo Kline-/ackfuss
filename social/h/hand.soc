@@ -1,0 +1,8 @@
+CharAuto   You kiss your own hand.~
+CharFound  You kiss $S hand.~
+CharNoArg  Kiss whose hand?~
+OtherAuto  $n kisses $s own hand.~
+OtherFound $n kisses $N's hand.  How continental!~
+OtherNoArg ~
+VictFound  $n kisses your hand.  How continental!~
+End

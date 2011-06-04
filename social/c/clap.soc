@@ -1,0 +1,8 @@
+CharAuto   You clap at your own performance.~
+CharFound  You clap at $S performance.~
+CharNoArg  You clap your hands together.~
+OtherAuto  $n claps at $s own performance.~
+OtherFound $n claps at $N's performance.~
+OtherNoArg $n shows $s approval by clapping $s hands together.~
+VictFound  $n claps at your performance.~
+End

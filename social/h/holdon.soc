@@ -1,0 +1,8 @@
+CharAuto   You have to hold yourself up you're so weary. Go to Sleep!~
+CharFound  You hold $M closely, hugging $M.~
+CharNoArg  You pause for a moment, hesitant.~
+OtherAuto  $n has to hold $mself up $e's so tired. $e should go to bed and get some sleep.~
+OtherFound $n holds $N closely, hugging $M.~
+OtherNoArg $n pauses for a moment, somewhat hesitant.~
+VictFound  $n holds you closely, hugging you.~
+End

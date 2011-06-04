@@ -1,0 +1,8 @@
+CharAuto   You giggle at yourself.  You must be nervous or something.~
+CharFound  You giggle in $S presence.~
+CharNoArg  You giggle.~
+OtherAuto  $n giggles at $mself.  $e must be nervous or something.~
+OtherFound $n giggles at $N's actions.~
+OtherNoArg $n giggles.~
+VictFound  $n giggles at you.  Hope it's not contagious!~
+End

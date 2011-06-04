@@ -1,0 +1,8 @@
+CharAuto   You gather yourself in your arms and try to kiss yourself.~
+CharFound  You give $N a long and passionate kiss.~
+CharNoArg  Kiss whom?~
+OtherAuto  $n makes an attempt at kissing $mself.~
+OtherFound $n kisses $N passionately.~
+OtherNoArg ~
+VictFound  $n gives you a long and passionate kiss.~
+End

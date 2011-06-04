@@ -1,0 +1,8 @@
+CharAuto   You tumble all over the room.~
+CharFound  You flip $M over your shoulder.~
+CharNoArg  You flip head over heels.~
+OtherAuto  $n does some nice tumbling and gymnastics.~
+OtherFound $n flips $N over $s shoulder.~
+OtherNoArg $n flips head over heels.~
+VictFound  $n flips you over $s shoulder.  Hmmmm.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You look down at your condition and faint.~
+CharFound  You faint into $S arms.~
+CharNoArg  You feel dizzy and hit the ground like a board.~
+OtherAuto  $n looks down at $s condition and faints dead away.~
+OtherFound $n faints into $N's arms.~
+OtherNoArg $n's eyes roll back in $s head and $e crumples to the ground.~
+VictFound  $n faints into your arms.  How romantic.~
+End

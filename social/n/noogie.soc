@@ -1,0 +1,8 @@
+CharAuto   You give yourself a noogie. What a goof!~
+CharFound  You put $M in a headlock and give $M a severe noogie.~
+CharNoArg  You look around, wondering who would like to get a noogie.~
+OtherAuto  $n gives $mself a noogie. What a goof!~
+OtherFound $n puts $N in a headlock and gives $M a noogie.~
+OtherNoArg $n looks around, wondering who would like to get a noogie.~
+VictFound  $n puts you in a headlock and gives you a severe noogie.~
+End

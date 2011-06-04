@@ -1,0 +1,8 @@
+CharAuto   You scream at yourself.  Yes, that's ONE way of relieving tension!~
+CharFound  ARRRRRRRRRRGH!!!!!  Yes, it MUST have been $S fault!!!~
+CharNoArg  ARRRRRRRRRRGH!!!!!~
+OtherAuto  $n screams loudly at $mself!  Is there a full moon up?~
+OtherFound $n screams loudly at $N.  Better leave before $e blames you, too!!!~
+OtherNoArg $n screams loudly!~
+VictFound  $n screams at you!  That's not nice!  *sniff*~
+End

@@ -1,0 +1,8 @@
+CharAuto   You complain about the lag, your hitpoints, your mana...~
+CharFound  You complain to $N about the lag, your hitpoints, your mana...~
+CharNoArg  You complain about the lag, your hitpoints, your mana...~
+OtherAuto  $n has lost $s link because of the lag.~
+OtherFound $n has lost $s link because of the lag.~
+OtherNoArg $n has lost $s link because of the lag.~
+VictFound  $n has lost $s link because of the lag.~
+End

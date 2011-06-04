@@ -1,0 +1,8 @@
+CharAuto   Hakuna.. what was that word?~
+CharFound  You show $N the truth of Hakuna Matata!~
+CharNoArg  Hakuna Matata!~
+OtherAuto  $n reminds $sself 'Hakuna Matata!' and smiles.~
+OtherFound $n sings out 'Hakuna Matata!' with $N.~
+OtherNoArg $n sings out 'Hakuna Matata!'~
+VictFound  $n sidles up to you and cheerily sings 'Hakuna Matata!'~
+End

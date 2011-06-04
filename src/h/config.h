@@ -1307,6 +1307,9 @@
 #define BUG_DIR         "../report/"
 #define HELP_DIR        "../help/"
 #define BOARD_DIR       "../board/"
+#define SOCIAL_DIR      "../social/"
+
+#define SOCIAL_EXT     "soc"              /* File extension to denote socials      */
 
 #define HELP_MORT      "mrt"              /* Mortal helpfiles                      */
 #define HELP_IMM       "imm"              /* Immortal helpfiles                    */

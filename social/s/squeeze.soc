@@ -1,0 +1,8 @@
+CharAuto   You squeeze yourself - try to relax a little!~
+CharFound  You squeeze $M fondly.~
+CharNoArg  Where, what, how, whom?~
+OtherAuto  $n squeezes $mself.~
+OtherFound $n squeezes $N fondly.~
+OtherNoArg ~
+VictFound  $n squeezes you fondly.~
+End

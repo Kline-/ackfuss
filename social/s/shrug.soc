@@ -1,0 +1,8 @@
+CharAuto   You shrug to yourself.~
+CharFound  You shrug in response to $S question.~
+CharNoArg  You shrug.~
+OtherAuto  $n shrugs to $mself.  What a strange person.~
+OtherFound $n shrugs in response to $N's question.~
+OtherNoArg $n shrugs helplessly.~
+VictFound  $n shrugs in response to your question.~
+End

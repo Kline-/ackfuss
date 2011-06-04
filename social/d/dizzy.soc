@@ -1,0 +1,8 @@
+CharAuto   You are dizzy from lack of air.  Don't talk so much!~
+CharFound  You are dizzy from all of $N's chatter.~
+CharNoArg  You are so dizzy from all this chatter.~
+OtherAuto  $n spins twice and falls to the ground from lack of air.~
+OtherFound $n spins twice and hits the ground, dizzy from all $N's chatter.~
+OtherNoArg $n spins twice and hits the ground, dizzy from all this chatter.~
+VictFound  $n spins twice and hits the ground, dizzy from all your chatter.~
+End

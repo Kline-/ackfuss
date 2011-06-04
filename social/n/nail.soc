@@ -1,0 +1,8 @@
+CharAuto   You nibble nervously on your nails.~
+CharFound  You nibble nervously on your nails.~
+CharNoArg  You nibble nervously on your nails.~
+OtherAuto  $n nibbles nervously on $s fingernails.~
+OtherFound $n nibbles nervously on $s fingernails.~
+OtherNoArg $n nibbles nervously on $s fingernails.~
+VictFound  $n nibbles nervously on your fingernails.  Yuck!~
+End

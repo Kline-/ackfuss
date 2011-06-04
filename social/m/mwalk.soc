@@ -1,0 +1,8 @@
+CharAuto   You grab your hat and moonwalk across the room.~
+CharFound  You grab your hat and moonwalk across the room.~
+CharNoArg  You grab your hat and moonwalk across the room.~
+OtherAuto  $n grabs $s black hat and sparkly glove and moonwalks across the room.~
+OtherFound $n grabs $s black hat and sparkly glove and moonwalks across the room.~
+OtherNoArg $n grabs $s black hat and sparkly glove and moonwalks across the room.~
+VictFound  $n grabs $s black hat and sparkly glove and moonwalks across the room.~
+End

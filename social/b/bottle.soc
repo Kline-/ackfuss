@@ -1,0 +1,8 @@
+CharAuto   You open a cold bottle of brew for yourself.~
+CharFound  You open up a cold bottle of brew for $M.~
+CharNoArg  You open up a cold bottle of brew.~
+OtherAuto  $n opens a cold bottle of brew for $mself.~
+OtherFound $n opens a cold bottle of brew for $N.~
+OtherNoArg $n opens a cold bottle of brew.~
+VictFound  $n opens a cold bottle of brew for you.~
+End

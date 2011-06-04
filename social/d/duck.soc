@@ -1,0 +1,8 @@
+CharAuto   You duck behind yourself.  Oww that hurts!~
+CharFound  You duck behind $M.  Whew!  That was close!~
+CharNoArg  Whew!  That was close!~
+OtherAuto  $n tries to duck behind $mself.  $n needs help getting untied now.~
+OtherFound $n ducks behind $N to avoid the fray.~
+OtherNoArg $n is narrowly missed by a low-flying dragon.~
+VictFound  $n ducks behind you to avoid the fray.~
+End

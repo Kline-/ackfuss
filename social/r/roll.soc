@@ -1,0 +1,8 @@
+CharAuto   You roll your eyes at yourself.~
+CharFound  You roll your eyes at $M.~
+CharNoArg  You roll your eyes.~
+OtherAuto  $n rolls $s eyes at $mself.~
+OtherFound $n rolls $s eyes at $N.~
+OtherNoArg $n rolls $s eyes.~
+VictFound  $n rolls $s eyes at you.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You are sooooooooooooo confused~
+CharFound  You blink at $M in confusion.~
+CharNoArg  You blink in utter disbelief.~
+OtherAuto  $n blinks at $mself in complete confusion.~
+OtherFound $n blinks at $N in confusion.~
+OtherNoArg $n blinks in utter disbelief.~
+VictFound  $n blinks at you in confusion.~
+End

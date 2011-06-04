@@ -1,0 +1,8 @@
+CharAuto   You lightly caress yourself- wouldn't you rather do that in private?~
+CharFound  You run your hands across $S body, caressing $M.~
+CharNoArg  Who would you like to caress?~
+OtherAuto  $n caresses $mself all over- and in public, no less!~
+OtherFound $n runs $s hands across $N's body, caressing $M.~
+OtherNoArg $n is looking for someone to caress with $s gentle touch.~
+VictFound  $n runs $s hands across your body, caressing you.~
+End

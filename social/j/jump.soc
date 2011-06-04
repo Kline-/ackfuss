@@ -1,0 +1,8 @@
+CharAuto   You jump up and down with joy!~
+CharFound  You make a jumping dance around $N!~
+CharNoArg  You jump up and down with joy!~
+OtherAuto  $n jumps up and down with joy!~
+OtherFound $n makes a jumping dance around $N. $e must be happy.~
+OtherNoArg $n jumps up and down with joy!~
+VictFound  $n makes a jumping dance around you. $e must be happy.~
+End

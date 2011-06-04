@@ -1,0 +1,8 @@
+CharAuto   You try to look heroic.~
+CharFound  You say to $M, '$N, YOU'RE MY HERO!'~
+CharNoArg  You heroically risk life and limb to save the day.~
+OtherAuto  $n does $s best impression of a hero.~
+OtherFound $n says to $N, '$N, YOU'RE MY HERO!'~
+OtherNoArg $n heroically risks life and limb to save the day.~
+VictFound  $n says to you, '$N, YOU'RE MY HERO!'~
+End

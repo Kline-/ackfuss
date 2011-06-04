@@ -1,0 +1,8 @@
+CharAuto   You wiggle about like a fish.~
+CharFound  You wiggle your bottom toward $M.~
+CharNoArg  You wiggle your bottom.~
+OtherAuto  $n wiggles about like a fish.~
+OtherFound $n wiggles $s bottom toward $N.~
+OtherNoArg $n wiggles $s bottom.~
+VictFound  $n wiggles $s bottom toward you.~
+End

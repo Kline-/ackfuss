@@ -140,6 +140,7 @@ typedef struct hash_entry_tp HASH_ENTRY;
 typedef struct npc_group_data NPC_GROUP_DATA;
 
 /* Kline */
+typedef struct social_data SOCIAL_DATA;
 typedef struct cast_data CAST_DATA;
 typedef struct lookup_data LOOKUP_DATA;
 typedef struct chanhistory CHAN_HISTORY;
@@ -148,7 +149,6 @@ typedef struct record_data RECORD_DATA;
 typedef struct quest_info QUEST_INFO;
 typedef struct eq_type EQ_TYPE;
 typedef struct h_queue H_QUEUE;
-typedef struct social_type SOCIAL_TYPE;
 typedef struct clutch_type CLUTCH_TYPE;
 typedef struct disabled_data DISABLED_DATA;
 typedef struct mudinfo MUDINFO;

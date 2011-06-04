@@ -1,0 +1,8 @@
+CharAuto   You bleed all over yourself!~
+CharFound  You bleed all over $M!~
+CharNoArg  You bleed all over the room!~
+OtherAuto  $n bleeds all over $mself.~
+OtherFound $n bleeds all over $N.  Better leave, you may be next!~
+OtherNoArg $n bleeds all over the room!  Get out of $s way!~
+VictFound  $n bleeds all over you!  YUCK!~
+End

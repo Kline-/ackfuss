@@ -1,0 +1,8 @@
+CharAuto   You strut to yourself, lost in your own world.~
+CharFound  You strut to get $S attention.~
+CharNoArg  Strut your stuff.~
+OtherAuto  $n struts to $mself, lost in $s own world.~
+OtherFound $n struts, hoping to get $N's attention.~
+OtherNoArg $n struts proudly.~
+VictFound  $n struts, hoping to get your attention.~
+End

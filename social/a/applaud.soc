@@ -1,0 +1,8 @@
+CharAuto   You applaud at yourself.  Boy, are we conceited!~
+CharFound  You clap at $S actions.~
+CharNoArg  Clap, clap, clap.~
+OtherAuto  $n applauds at $mself.  Boy, are we conceited!~
+OtherFound $n claps at $N's actions.~
+OtherNoArg $n gives a round of applause.~
+VictFound  $n gives you a round of applause.  You MUST'VE done something good!~
+End

@@ -1,0 +1,8 @@
+CharAuto   You swear at your own mistakes.~
+CharFound  You swear at $M.~
+CharNoArg  You swear loudly for a long time.~
+OtherAuto  $n starts swearing at $mself.  Why don't you help?~
+OtherFound $n swears at $N.~
+OtherNoArg $n swears: @*&^%@*&!~
+VictFound  $n swears at you!  Where are $s manners?~
+End

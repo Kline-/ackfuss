@@ -1,0 +1,8 @@
+CharAuto   You skip and dance around by yourself.~
+CharFound  You sweep $M into a romantic waltz.~
+CharNoArg  Feels silly, doesn't it?~
+OtherAuto  $n dances a pas-de-une.~
+OtherFound $n sweeps $N into a romantic waltz.~
+OtherNoArg $n tries to break dance, but nearly breaks $s neck!~
+VictFound  $n sweeps you into a romantic waltz.~
+End

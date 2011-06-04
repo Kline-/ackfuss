@@ -1,0 +1,8 @@
+CharAuto   You @@eblush@@N at your own folly.~
+CharFound  You get all flustered upon seeing $M.~
+CharNoArg  Your cheeks are @@eburning@@N.~
+OtherAuto  $n @@eblushes@@N as $e notices $s boo-boo.~
+OtherFound $n @@eblushes@@N as $e sees $N here.~
+OtherNoArg $n @@eblushes@@N.~
+VictFound  $n @@eblushes@@N as $e sees you here.  Such an effect on people!~
+End

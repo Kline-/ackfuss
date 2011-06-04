@@ -1,0 +1,8 @@
+CharAuto   You brush out your hair.  There - much better.~
+CharFound  You brush out $S hair for $M.  Very thoughtful.~
+CharNoArg  Brush what? Who? Where?~
+OtherAuto  $n brushes out $s hair.  Looks much better now.~
+OtherFound $n brushes $N's hair for $M.  Looks better now.~
+OtherNoArg ~
+VictFound  @@W$n delicately brushes the hair out of@@y $N@@W'@@ys @@Weyes. Feels kinda nice..~
+End

@@ -1,0 +1,8 @@
+CharAuto   You speak Spanish or at least you think you do.~
+CharFound  You speak Spanish or at least you think you do.~
+CharNoArg  You speak Spanish or at least you think you do.~
+OtherAuto  $n says to $mself 'Naces pendejo, mueres pendejo.'  Uh oh.~
+OtherFound $n says 'Naces pendejo, mueres pendejo.'  Uh oh.~
+OtherNoArg $n says 'Naces pendejo, mueres pendejo.'  Uh oh.~
+VictFound  $n says 'Naces pendejo, mueres pendejo.'  Uh oh.~
+End

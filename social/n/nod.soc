@@ -1,0 +1,8 @@
+CharAuto   You nod at yourself.  Are you getting senile?~
+CharFound  You nod in recognition to $M.~
+CharNoArg  You nod affirmative.~
+OtherAuto  $n nods at $mself.  $e must be getting senile.~
+OtherFound $n nods in recognition to $N.~
+OtherNoArg $n nods affirmative.~
+VictFound  $n nods in recognition to you.  You DO know $m, right?~
+End

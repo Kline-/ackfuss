@@ -1,0 +1,8 @@
+CharAuto   No xp again?  You suffer at the hands of fate.~
+CharFound  You tell $M how you suffer whenever you're away from $M.~
+CharNoArg  No xp again?  You suffer at the hands of fate.~
+OtherAuto  $n is suffering.  Looks like $e can't seem to level.~
+OtherFound $n tells $N that $e suffers whenever they're apart.~
+OtherNoArg $n is suffering.  Looks like $e can't seem to level.~
+VictFound  $n tells you that $e suffers whenever you're apart.~
+End

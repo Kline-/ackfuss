@@ -1,0 +1,8 @@
+CharAuto   @@dYou tear your heart out of your chest and hold it aloft screaming, @@R'FATALITY! I WIN!'@@N And crumple in a heap to the ground.@@N~
+CharFound  @@dYou tear $N's heart out, hold it aloft and a voice intones: @@R'Fatality, $n wins.'@@N~
+CharNoArg  @@dA strange voice intones:@@R'Fatality, $n wins'@@N~
+OtherAuto  @@dtears $s own heart out his chest, holds it aloft and screams, @@R'FATALITY! I WIN!'@@d $e collapses in a heap.@@N~
+OtherFound $n holds $N's heart aloft as a voice intones: @@R'Fatality, $n wins.'@@N~
+OtherNoArg @@dA strange voice intones:@@R'Fatality, $n wins.'@@N~
+VictFound  @@d$n tears your chest-rended heart aloft as a voice intones: @@R'Fatality, $n wins.'@@N~
+End

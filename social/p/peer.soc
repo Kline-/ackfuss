@@ -1,0 +1,8 @@
+CharAuto   You peer intently about your surroundings.~
+CharFound  You peer at $M quizzically.~
+CharNoArg  You peer intently about your surroundings.~
+OtherAuto  $n peers intently about the area, looking for thieves no doubt.~
+OtherFound $n peers at $N quizzically.~
+OtherNoArg $n peers intently about the area, looking for thieves no doubt.~
+VictFound  $n peers at you quizzically.~
+End

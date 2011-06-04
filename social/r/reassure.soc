@@ -1,0 +1,8 @@
+CharAuto   You try to reassure yourself that everything will be ok.~
+CharFound  You hug $M reassuringly.~
+CharNoArg  You reassure everyone that everything will be ok.~
+OtherAuto  $n tries to reassure $mself that everything will be ok.~
+OtherFound $n hugs $N reassuringly.~
+OtherNoArg $n reassures everyone that everything will be ok.~
+VictFound  $n hugs you reassuringly.~
+End

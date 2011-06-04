@@ -1,0 +1,8 @@
+CharAuto   That might hurt!  Better not do it!~
+CharFound  You throttle $M till $E is blue in the face.~
+CharNoArg  Whom do you want to throttle?~
+OtherAuto  $n is getting a crazy look in $s eye again.~
+OtherFound $n throttles $N about the neck, until $E passes out.  THUNK!~
+OtherNoArg ~
+VictFound  $n throttles you about the neck until you pass out.  THUNK!~
+End

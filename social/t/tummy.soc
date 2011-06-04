@@ -1,0 +1,8 @@
+CharAuto   You rub your tummy and wish you'd bought a pie at the bakery.~
+CharFound  You rub your tummy and ask $M for some food.~
+CharNoArg  You rub your tummy and wish you'd bought a pie at the bakery.~
+OtherAuto  $n rubs $s tummy and wishes $e'd bought a pie at the bakery.~
+OtherFound $n rubs $s tummy and asks $N for some food.~
+OtherNoArg $n rubs $s tummy and wishes $e'd bought a pie at the bakery.~
+VictFound  $n rubs $s tummy and asks you for some food.  Please?~
+End

@@ -1,0 +1,8 @@
+CharAuto   You whistle innocently.~
+CharFound  You whistle innocently, avoiding $S question.~
+CharNoArg  You whistle innocently, trying to hide your guilt.~
+OtherAuto  $n whistles innocently, trying to hide $s guilt.~
+OtherFound $n whistles innocently, a sure sign of guilt.~
+OtherNoArg $n whistles innocently.~
+VictFound  $n whistles innocently at your question...hmmmmm.~
+End

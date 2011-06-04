@@ -1,0 +1,8 @@
+CharAuto   ~
+CharFound  You raise your leg and pee on $N. Rude!~
+CharNoArg  You raise your leg and pee in the corner. Rude!~
+OtherAuto  ~
+OtherFound $n raises $s leg like a dog and pees on $N! How rude.~
+OtherNoArg $n raises $s leg and pees in the corner. How Rude!~
+VictFound  $N raises $s leg like a dog and pees on you! How rude.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You gag yourself with a sock before you say something you might regret.~
+CharFound  You stuff a sock in $s mouth, gagging $M. Ahhhhhhh...sweet silence!~
+CharNoArg  You gag in disgust.~
+OtherAuto  $n gags $mself with a sock before $e says something $e might regret.~
+OtherFound $n stuffs a sock in $N's mouth, gagging $M. Ahhhhhhh...sweet silence!~
+OtherNoArg $n gags in disgust.~
+VictFound  $n gags your mouth with a sock. Everyone enjoys a moment of silence.~
+End

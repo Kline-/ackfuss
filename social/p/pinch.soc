@@ -1,0 +1,8 @@
+CharAuto   You need a pinch of salt.~
+CharFound  You pinch $S rosy cheeks.~
+CharNoArg  You toss a pinch of salt over your shoulder.~
+OtherAuto  $n needs a pinch of salt.~
+OtherFound $n pinches $N's rosy cheeks.~
+OtherNoArg $n tosses a pinch of salt over $s shoulder.~
+VictFound  $n pinches your chubby cheeks.~
+End

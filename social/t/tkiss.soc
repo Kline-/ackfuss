@@ -1,0 +1,8 @@
+CharAuto   @@WWouldn't it feel much better to kiss another person?@@N~
+CharFound  @@WYou pull @@a$N @@Wclose to you and @@ekiss @@W$M tenderly.@@N~
+CharNoArg  @@WYou look around for someone @@yspecial@@N~
+OtherAuto  @@a$n@@W struggles to @@ekiss @@W$mself.~
+OtherFound @@a$n @@Wpulls @@y$N @@Wclose to $M and @@ekisses @@W$m sweetly on the lips.@@N~
+OtherNoArg @@l$n @@Wlooks like $e needs a tender kiss@@N.~
+VictFound  @@a$n @@Wpulls you close to $m and @@ekisses @@Wyou tenderly@@N.~
+End

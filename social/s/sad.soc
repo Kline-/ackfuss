@@ -1,0 +1,8 @@
+CharAuto   You bow your head and twist your toe in the dirt glumly.~
+CharFound  You give $M your best glum expression.~
+CharNoArg  You put on a glum expression.~
+OtherAuto  $n bows $s head and twists $s toe in the dirt glumly.~
+OtherFound $n looks at $N glumly.  *sniff*  Poor $n.~
+OtherNoArg $n looks particularly glum today.  *sniff*~
+VictFound  $n looks at you glumly.  *sniff*   Poor $n.~
+End

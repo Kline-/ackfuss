@@ -1,0 +1,8 @@
+CharAuto   You bearhug yourself.~
+CharFound  You bearhug $M.~
+CharNoArg  You hug a grizzly bear.~
+OtherAuto  $n bearhugs $mself.~
+OtherFound $n bearhugs $N.  Some ribs break.~
+OtherNoArg $n hugs a flea-infested grizzly bear.~
+VictFound  $n bearhugs you.  Wonder what's coming next?~
+End

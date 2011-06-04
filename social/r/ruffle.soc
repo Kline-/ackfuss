@@ -1,0 +1,8 @@
+CharAuto   You ruffle your hair.~
+CharFound  You ruffle $N's hair playfully.~
+CharNoArg  You've got to ruffle SOMEONE.~
+OtherAuto  $n ruffles $s hair.~
+OtherFound $n ruffles $N's hair playfully.~
+OtherNoArg ~
+VictFound  $n ruffles your hair playfully.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You chastise yourself for being clueless.  What a dweeb you are!~
+CharFound  You chastise $M for being clueless.~
+CharNoArg  You chastise everyone in the room for being clueless.~
+OtherAuto  $n chastises $mself for being clueless.  What a dweeb!~
+OtherFound $n chastises $N for being clueless.~
+OtherNoArg $n chastises everyone for being clueless.~
+VictFound  $n chastises you for being clueless.~
+End

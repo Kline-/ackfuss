@@ -1,0 +1,8 @@
+CharAuto   You stick an ice cube down your shirt. Brrr!~
+CharFound  You stuff an ice cube down $S shirt. You laugh as $E hops around.~
+CharNoArg  You wonder who would like an ice cube down their shirt.~
+OtherAuto  $n sticks an icecube down $s shirt, trying to cool off.~
+OtherFound $n stuffs an ice cube down $N's shirt, better hope that was $s last ice cube.~
+OtherNoArg With a devious look on $s face, $n hides something behind $s back.~
+VictFound  $n stuffs an ice cube down your shirt. Brrr! $n laughs as you struggle to get it out.~
+End

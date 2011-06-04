@@ -1,0 +1,8 @@
+CharAuto   You raise an eyebrow at yourself.  That hurt!~
+CharFound  You raise an eyebrow at $M.~
+CharNoArg  You raise an eyebrow.~
+OtherAuto  $n raises an eyebrow at $mself.  That must have hurt!~
+OtherFound $n raises an eyebrow at $N.~
+OtherNoArg $n raises an eyebrow.~
+VictFound  $n raises an eyebrow at you.~
+End

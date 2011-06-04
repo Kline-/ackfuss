@@ -1,0 +1,8 @@
+CharAuto   You shiver to yourself?~
+CharFound  You shiver at the thought of fighting $M.~
+CharNoArg  Brrrrrrrrr.~
+OtherAuto  $n scares $mself to shivers.~
+OtherFound $n shivers at the thought of fighting $N.~
+OtherNoArg $n shivers uncomfortably.~
+VictFound  $n shivers at the suicidal thought of fighting you.~
+End

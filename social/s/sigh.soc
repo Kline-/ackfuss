@@ -1,0 +1,8 @@
+CharAuto   You sigh at yourself.  You MUST be lonely.~
+CharFound  You sigh as you think of $M.~
+CharNoArg  You sigh.~
+OtherAuto  $n sighs at $mself.  What a sorry sight.~
+OtherFound $n sighs at the sight of $N.~
+OtherNoArg $n sighs loudly.~
+VictFound  $n sighs as $e thinks of you.  Touching, huh?~
+End

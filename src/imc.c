@@ -1,9 +1,9 @@
 /* IMC2 Freedom Client - Developed by Mud Domain.
  *
- * Copyright ©2004 by Roger Libiez ( Samson )
- * Contributions by Johnathan Walker ( Xorith ), Copyright ©2004
- * Additional contributions by Jesse Defer ( Garil ), Copyright ©2004
- * Additional contributions by Rogel, Copyright ©2004
+ * Copyright ï¿½2004 by Roger Libiez ( Samson )
+ * Contributions by Johnathan Walker ( Xorith ), Copyright ï¿½2004
+ * Additional contributions by Jesse Defer ( Garil ), Copyright ï¿½2004
+ * Additional contributions by Rogel, Copyright ï¿½2004
  * Comments and suggestions welcome: http://www.mudbytes.net/index.php?a=forum&f=31
  * License terms are available in the imc2freedom.license file.
  */
@@ -41,6 +41,10 @@
 
 #ifndef DEC_SHA256_H
 #include "h/sha256.h"
+#endif
+
+#ifndef DEC_SOCIAL_H
+#include "h/social.h"
 #endif
 
 #define IMCKEY( literal, field, value ) \
@@ -4121,7 +4125,7 @@ void imc_savehelps( void )
         fprintf( fp, "%s", "#HELP\n" );
         fprintf( fp, "Name %s\n", help->name );
         fprintf( fp, "Perm %s\n", imcperm_names[help->level] );
-        fprintf( fp, "Text %s¢\n", help->text );
+        fprintf( fp, "Text %sï¿½\n", help->text );
         fprintf( fp, "%s", "End\n\n" );
     }
     fprintf( fp, "%s", "#END\n" );
@@ -4180,7 +4184,7 @@ void imc_readhelp( IMC_HELP_DATA * help, FILE * fp )
                 {
                     int num = 0;
 
-                    while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+                    while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                         num++;
                     hbuf[num] = '\0';
                     help->text = IMCSTRALLOC( hbuf );
@@ -4810,49 +4814,49 @@ void imc_load_who_template( void )
 
         if ( !strcasecmp( word, "Head:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->head = IMCSTRALLOC( parse_who_header( hbuf ) );
         }
         else if ( !strcasecmp( word, "Tail:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->tail = IMCSTRALLOC( parse_who_tail( hbuf ) );
         }
         else if ( !strcasecmp( word, "Plrline:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->plrline = IMCSTRALLOC( hbuf );
         }
         else if ( !strcasecmp( word, "Immline:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->immline = IMCSTRALLOC( hbuf );
         }
         else if ( !strcasecmp( word, "Immheader:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->immheader = IMCSTRALLOC( hbuf );
         }
         else if ( !strcasecmp( word, "Plrheader:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->plrheader = IMCSTRALLOC( hbuf );
         }
         else if ( !strcasecmp( word, "Master:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '¢' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != 'ï¿½' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->master = IMCSTRALLOC( hbuf );
@@ -7562,19 +7566,16 @@ IMC_CMD( imc_other )
 char *imc_find_social( CHAR_DATA * ch, char *sname, char *person, char *mud, int victim )
 {
     static char socname[LGST];
-    int cmd;
     bool found;
+    SOCIAL_DATA *soc;
 
     socname[0] = '\0';
     found = FALSE;
 
-    for ( cmd = 0; social_table[cmd].name[0] != '\0'; cmd++ )
+    if( exists_social(sname) )
     {
-        if ( sname[0] == social_table[cmd].name[0] && !imcstr_prefix( sname, social_table[cmd].name ) )
-        {
-            found = TRUE;
-            break;
-        }
+        soc = load_social(sname);
+        found = TRUE;
     }
 
     if ( !found )
@@ -7588,41 +7589,41 @@ char *imc_find_social( CHAR_DATA * ch, char *sname, char *person, char *mud, int
         if ( person && person[0] != '\0' && !strcasecmp( person, CH_IMCNAME( ch ) )
                 && mud && mud[0] != '\0' && !strcasecmp( mud, this_imcmud->localname ) )
         {
-            if ( !social_table[cmd].others_auto )
+            if ( soc->other_auto.empty() )
             {
                 imc_printf( ch, "~YSocial ~W%s~Y: Missing others_auto.\r\n", sname );
                 return socname;
             }
-            imcstrlcpy( socname, social_table[cmd].others_auto, LGST );
+            imcstrlcpy( socname, soc->other_auto.c_str(), LGST );
         }
         else
         {
             if ( victim == 0 )
             {
-                if ( !social_table[cmd].others_found )
+                if ( soc->other_found.empty() )
                 {
                     imc_printf( ch, "~YSocial ~W%s~Y: Missing others_found.\r\n", sname );
                     return socname;
                 }
-                imcstrlcpy( socname, social_table[cmd].others_found, LGST );
+                imcstrlcpy( socname, soc->other_found.c_str(), LGST );
             }
             else if ( victim == 1 )
             {
-                if ( !social_table[cmd].vict_found )
+                if ( soc->vict_found.empty() )
                 {
                     imc_printf( ch, "~YSocial ~W%s~Y: Missing vict_found.\r\n", sname );
                     return socname;
                 }
-                imcstrlcpy( socname, social_table[cmd].vict_found, LGST );
+                imcstrlcpy( socname, soc->vict_found.c_str(), LGST );
             }
             else
             {
-                if ( !social_table[cmd].char_found )
+                if ( soc->char_found.empty() )
                 {
                     imc_printf( ch, "~YSocial ~W%s~Y: Missing char_found.\r\n", sname );
                     return socname;
                 }
-                imcstrlcpy( socname, social_table[cmd].char_found, LGST );
+                imcstrlcpy( socname, soc->char_found.c_str(), LGST );
             }
         }
     }
@@ -7630,28 +7631,28 @@ char *imc_find_social( CHAR_DATA * ch, char *sname, char *person, char *mud, int
     {
         if ( victim == 0 || victim == 1 )
         {
-            if ( !social_table[cmd].others_no_arg )
+            if ( soc->other_no_arg.empty() )
             {
                 imc_printf( ch, "~YSocial ~W%s~Y: Missing others_no_arg.\r\n", sname );
                 return socname;
             }
-            imcstrlcpy( socname, social_table[cmd].others_no_arg, LGST );
+            imcstrlcpy( socname, soc->other_no_arg.c_str(), LGST );
         }
         else
         {
-            if ( !social_table[cmd].char_no_arg )
+            if ( soc->char_no_arg.empty() )
             {
                 imc_printf( ch, "~YSocial ~W%s~Y: Missing char_no_arg.\r\n", sname );
                 return socname;
             }
-            imcstrlcpy( socname, social_table[cmd].char_no_arg, LGST );
+            imcstrlcpy( socname, soc->char_no_arg.c_str(), LGST );
         }
     }
 
     return socname;
 }
 
-/* Revised 10/10/03 by Xorith: Recognize the need to capitalize for a new sentence. */
+/* Revised 10/10/03 by Xorith: Recognize the need to capitalize for a newï¿½sentence. */
 char *imc_act_string( const char *format, CHAR_DATA * ch, CHAR_DATA * vic )
 {
     static char *const he_she[] = { "it", "he", "she" };

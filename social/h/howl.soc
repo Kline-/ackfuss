@@ -1,0 +1,8 @@
+CharAuto   You howl at yourself.~
+CharFound  You howl at $M.~
+CharNoArg  AHOOOOOOOOOOOOooooooooooooo.~
+OtherAuto  $n howls at $mself.~
+OtherFound $n howls at $N.  Someone's gonna die!~
+OtherNoArg $n howls at the moon!~
+VictFound  $n howls at you.  You must be good looking.~
+End

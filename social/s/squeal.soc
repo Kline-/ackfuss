@@ -1,0 +1,8 @@
+CharAuto   You squeal at yourself.~
+CharFound  You squeal at $M.~
+CharNoArg  You squeal with delight.~
+OtherAuto  $n squeals at $mself.~
+OtherFound $n squeals at $N.  Wonder why?~
+OtherNoArg $n squeals with delight.~
+VictFound  $n squeals at you.  You must be doing something good.~
+End

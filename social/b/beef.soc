@@ -1,0 +1,8 @@
+CharAuto   You poke your fat rolls and exclaim, 'Oh, THERE'S THE BEEF!'~
+CharFound  You poke $N and exclaim, 'WHERE'S THE BEEF?????'~
+CharNoArg  You loudly exclaim 'WHERE'S THE BEEF??????'~
+OtherAuto  $n pokes his fat rolls, and exclaims, 'Oh, THERE'S THE BEEF!'~
+OtherFound $n pokes $N, and exclaims, 'WHERE'S THE BEEF????'~
+OtherNoArg $n loudly exclaims 'WHERE'S THE BEEF??????'~
+VictFound  $n pokes you and exclaims, 'WHERE'S THE BEEF????'~
+End

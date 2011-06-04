@@ -1,0 +1,8 @@
+CharAuto   You moan at yourself.~
+CharFound  You moan for the loss of $M.~
+CharNoArg  You start to moan.~
+OtherAuto  $n makes $mself moan.~
+OtherFound $n moans for the loss of $N.~
+OtherNoArg $n starts moaning.~
+VictFound  $n moans at the sight of you.  Hmmmm.~
+End

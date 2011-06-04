@@ -1,0 +1,8 @@
+CharAuto   You tie a bungy cord to yourself and jump off the mud.~
+CharFound  You tie a bungy cord to $N and throw $M off the mud.~
+CharNoArg  You tie a bungy cord to the mud and jump into internet.~
+OtherAuto  $n ties a bungy cord to $mself and jumps off the mud.~
+OtherFound $n ties a bungy cord to $N and throws $M off the mud.~
+OtherNoArg $n ties a bungy cord to the mud and jumps into internet.~
+VictFound  $n ties a bungy cord to you and throws you off the mud.~
+End

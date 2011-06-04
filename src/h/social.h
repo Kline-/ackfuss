@@ -6,7 +6,7 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 
-#define DEC_SOCIAL_EDIT_H
+#define DEC_SOCIAL_H
 
 #if __STDC__ || defined(__cplusplus)
 #define P_(s) s
@@ -14,12 +14,7 @@
 #define P_(s) ()
 #endif
 
-/* social_edit.c */
-void load_social P_((FILE *fp, SOCIAL_TYPE *social));
-void load_social_table P_((void));
-void save_social P_((const SOCIAL_TYPE *s, FILE *fp));
-void save_social_table P_((void));
-int social_lookup P_((const char *name));
-DECLARE_DO_FUN(do_sedit);
+bool exists_social P_((const char *social));
+SOCIAL_DATA *load_social P_((const char *social));
 
 #undef P_

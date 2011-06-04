@@ -1,0 +1,8 @@
+CharAuto   BOGGLE.~
+CharFound  You boggle at $S ludicrous idea.~
+CharNoArg  You boggle at all the loonies around you.~
+OtherAuto  $n wonders what BOGGLE means.~
+OtherFound $n boggles at $N's ludicrous idea.~
+OtherNoArg $n boggles at all the loonies around $m.~
+VictFound  $n boggles at your ludicrous idea.~
+End

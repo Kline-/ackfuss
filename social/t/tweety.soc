@@ -1,0 +1,8 @@
+CharAuto   You exclaim to yourself, 'I TAWT I TAW A PUTTY TAT!!'~
+CharFound  You exclaim to $M, 'I TAWT I TAW A PUTTY TAT!!'~
+CharNoArg  You exclaim 'I TAWT I TAW A PUTTY TAT!!'~
+OtherAuto  $n exclaims to $mself, 'I TAWT I TAW A PUTTY TAT!!'~
+OtherFound $n exclaims to $N, 'I TAWT I TAW A PUTTY TAT!!'~
+OtherNoArg $n exclaims 'I TAWT I TAW A PUTTY TAT!!'~
+VictFound  $n exclaims to you, 'I TAWT I TAW A PUTTY TAT!!'~
+End

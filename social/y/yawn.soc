@@ -1,0 +1,8 @@
+CharAuto   You must be tired.~
+CharFound  You must be tired.~
+CharNoArg  You must be tired.~
+OtherAuto  $n yawns.~
+OtherFound $n yawns at $N.  Maybe you should let them go to bed?~
+OtherNoArg $n yawns.~
+VictFound  $n yawns at you.  Maybe $e wants you to go to bed with $m?~
+End

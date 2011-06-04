@@ -1,0 +1,8 @@
+CharAuto   You identify yourself as an FBI agent.~
+CharFound  You flash your badge at $N and state, "You're coming with me...'~
+CharNoArg  You drive up in a black sedan and step out in a badge and trench-coat flourish.@@N~
+OtherAuto  $n flashes his badge and states, "@@yThe name is $n, i work for the FBI and I'd like to ask you some questions.@@N"@@N~
+OtherFound $n flashes $s badge at $N and states, "@@yFBI... you're coming with me!@@N"@@N~
+OtherNoArg $n drives up in a black sedan and steps out, badge and trenchcoat aflourish.@@N~
+VictFound  $n flashes his badge at you and states, "@@yFBI.. you're coming with me!@@N"@@N~
+End

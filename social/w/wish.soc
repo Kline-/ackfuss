@@ -1,0 +1,8 @@
+CharAuto   You wish for more attention.~
+CharFound  You wish to be loved by $M.~
+CharNoArg  You make a wish upon a star for a dream you have.~
+OtherAuto  $n wishes for more attention.~
+OtherFound $n wishes to be loved by $N.~
+OtherNoArg $n sighs... and makes a wish upon a shooting star.~
+VictFound  $n wishes to be loved by you.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You start shooting everything in sight, but are gunned down by the cops before your rage is satiated.~
+CharFound  In your postal rage, you find $N and kill $m.~
+CharNoArg  You go postal, killing everything in sight.~
+OtherAuto  $n goes postal and is quickly gunned down by the cops.~
+OtherFound $n, in a postal rage, hunts $N down and slaughters $M.~
+OtherNoArg $n goes postal, killing everyone iin sight! RUN!~
+VictFound  $N hunts you down, postal rage in $s eye, and slaughters you in cold blood.~
+End

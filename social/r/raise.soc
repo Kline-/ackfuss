@@ -1,0 +1,8 @@
+CharAuto   You raise your hand in response.~
+CharFound  You raise your hand in response.~
+CharNoArg  You raise your hand in response.~
+OtherAuto  $n raises $s hand in response.~
+OtherFound $n raises $s hand in response.~
+OtherNoArg $n raises $s hand in response.~
+VictFound  $n raises $s hand in response to you.~
+End

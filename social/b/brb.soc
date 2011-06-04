@@ -1,0 +1,8 @@
+CharAuto   You mumble to yourself, 'I'll be right back'~
+CharFound  You announce to $M that you will be right back.~
+CharNoArg  You announce that you will be right back.~
+OtherAuto  $n mumbles to $mself, 'I'll be right back, won't I?'~
+OtherFound $n says to $N in a stern voice, 'I'll be back!'~
+OtherNoArg $n says in a stern voice, 'I'll be back!'~
+VictFound  $n says to you in a stern voice, 'I'll be right back!'~
+End

@@ -1,0 +1,8 @@
+CharAuto   You whine like the great whiners of the century.~
+CharFound  You whine to $M like the great whiners of the century.~
+CharNoArg  You whine like the great whiners of the century.~
+OtherAuto  $n whines 'I want to be a god already.  I need more hitpoints..I...'~
+OtherFound $n whines to $N 'I want to be an immortal already.  I need more hp...I..'~
+OtherNoArg $n whines 'I want to be a god already.  I need more hitpoints..I...'~
+VictFound  $n whines to you 'I want to be an immortal already.  I need more hp...I...'~
+End

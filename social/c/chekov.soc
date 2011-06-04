@@ -1,0 +1,8 @@
+CharAuto   You look around, muttering, 'Ver are the nuclear wessels?'~
+CharFound  You ask $M about the nuclear wessels.~
+CharNoArg  You speak your best Russian in hopes of finding a nuclear wessel.~
+OtherAuto  $n looks around, muttering, 'Ver are the nuclear wessels?'~
+OtherFound $n asks $N sheepishly, 'Ver are the nuclear wessels?'~
+OtherNoArg $n asks sheepishly, 'Ver are the nuclear wessels?'~
+VictFound  $n asks you sheepishly, 'Ver are the nuclear wessels?'~
+End

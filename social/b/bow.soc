@@ -1,0 +1,8 @@
+CharAuto   You kiss your toes.~
+CharFound  You bow before $M.~
+CharNoArg  You bow deeply.~
+OtherAuto  $n folds up like a jack knife and kisses $s own toes.~
+OtherFound $n bows before $N.~
+OtherNoArg $n bows deeply.~
+VictFound  $n bows before you.~
+End

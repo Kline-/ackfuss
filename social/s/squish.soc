@@ -1,0 +1,8 @@
+CharAuto   You squish yourself.~
+CharFound  You squish $M between your legs.~
+CharNoArg  You squish your toes into the sand.~
+OtherAuto  $n squishes $mself.  OUCH.~
+OtherFound $n squishes $N between $s legs.~
+OtherNoArg $n squishes $s toes into the sand.~
+VictFound  $n squishes you between $s legs.~
+End

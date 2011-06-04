@@ -1,0 +1,8 @@
+CharAuto   You call down lightning and SMOKE yourself.~
+CharFound  You blow smoke into $S eyes.~
+CharNoArg  You calmly light a cigarette and take a puff.~
+OtherAuto  $n calls down lightning and SMOKES $mself.~
+OtherFound $n blows smoke into $N's eyes.~
+OtherNoArg $n calmly lights a cigarette and take a puff.~
+VictFound  $n blows smoke rings into your eyes.~
+End

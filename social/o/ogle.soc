@@ -1,0 +1,8 @@
+CharAuto   You ogle yourself.  You may just be too wierd for this mud.~
+CharFound  You ogle $M like $E was a piece of meat.~
+CharNoArg  Whom do you want to ogle?~
+OtherAuto  $n ogles $mself.  Better hope that $e stops there.~
+OtherFound $n ogles $N.  Maybe you should leave them alone for awhile?~
+OtherNoArg ~
+VictFound  $n ogles you.  Guess what $e is thinking about?~
+End

@@ -1,0 +1,8 @@
+CharAuto   You extort money from yourself.~
+CharFound  You don a mask and ask for $S gold.~
+CharNoArg  You don a mask and ask for everyone's gold.~
+OtherAuto  $n holds $s weapon to $s throat and says 'Ok, me, give me all my money!'~
+OtherFound $n says to $N, 'This is a stickup.  Gimme yer gold, NOW!'~
+OtherNoArg $n says 'This is a stickup.  Gimme yer gold, NOW!'~
+VictFound  $n says to you, 'This is a stickup.  Gimme yer gold, NOW!'~
+End

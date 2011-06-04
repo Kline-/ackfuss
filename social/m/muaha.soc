@@ -1,0 +1,8 @@
+CharAuto   You laugh diabolically at yourself.~
+CharFound  You get right in $N's face and laugh diabolically, '@@pMUAHAHAHAHAHAHA!@@N'.@@N~
+CharNoArg  You burst forth in a diabolical tirade of chilling laughter, '@@pMUAHAHAHAHAHAHA!@@N'.@@N~
+OtherAuto  $n laughs diabolically at himself. You call the asylum post-haste.@@N~
+OtherFound $n gets right in $N's face and laughs diabolically, scaring $M silly.~
+OtherNoArg $n bursts out in chilling diabolical laughter, '@@pMUAHAHAHAHAHAHA!@@N'.@@N~
+VictFound  $n gets right in your face and laughs diabolically, '@@pMUAHAHAHAHAHAHA!@@N', scaring you silly.@@N~
+End

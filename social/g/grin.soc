@@ -1,0 +1,8 @@
+CharAuto   You grin at yourself.  You must be getting very bad thoughts.~
+CharFound  You grin evilly at $M.~
+CharNoArg  You grin evilly.~
+OtherAuto  $n grins at $mself.  You must wonder what's in $s mind.~
+OtherFound $n grins evilly at $N.~
+OtherNoArg $n grins evilly.~
+VictFound  $n grins evilly at you.  Hmmm.  Better keep your distance.~
+End

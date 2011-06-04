@@ -1,0 +1,8 @@
+CharAuto   You nuke yourself.~
+CharFound  You envelop $M in a mushroom cloud.~
+CharNoArg  Who do you want to nuke?~
+OtherAuto  $n puts $mself in the microwave.~
+OtherFound $n detonates a nuclear warhead at $N.  Uh oh!~
+OtherNoArg $n tries to put something in the microwave.~
+VictFound  $n envelops you in a mushroom cloud.~
+End

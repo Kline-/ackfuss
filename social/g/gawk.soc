@@ -1,0 +1,8 @@
+CharAuto   You gawk as you think what you must look like to others.~
+CharFound  You gawk at $M.~
+CharNoArg  You gawk at evryone around you.~
+OtherAuto  $n is gawking again.  What is on $s mind?~
+OtherFound $n gawks at $N.~
+OtherNoArg $n gawks at everyone in the room.~
+VictFound  $n gawks at you.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You alert the nearest waitress, '@@rMartini, shaken not stirred.@@N'~
+CharFound  You swoop down through the ceiling, pick $m up and swing out. All the ninjas fall to peices.~
+CharNoArg  You fix your hair and state, '@@rThe name is Bond... James Bond@@N', and shoot the nearest ninja.@@N~
+OtherAuto  $n alerts alerts the nearest waitress, '@@rMartini, shaken not stirred.@@N'@@N~
+OtherFound $n swings in through the ceiling, picks $N up and glides out the nearest window. All the ninjas fall to peices.@@N~
+OtherNoArg $n fixes $s hair and says, '@@rThe name is Bond... James Bond@@N'. $e then shoots a ninja.@@N~
+VictFound  $n swoops in through the ceiling, picks you up and glides away. Your Hero! All the ninjas die.@@~
+End

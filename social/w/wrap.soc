@@ -1,0 +1,8 @@
+CharAuto   You wrap yourself with some paper.~
+CharFound  You wrap your legs around $M.~
+CharNoArg  You wrap a present for your love.~
+OtherAuto  $n wraps $mself with some wrapping paper.  Is it Christmas?~
+OtherFound $n wraps $s legs around $N.~
+OtherNoArg $n wraps a present for someone special.~
+VictFound  $n wraps $s legs around you.  Wonder what's coming next?~
+End

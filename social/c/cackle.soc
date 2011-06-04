@@ -1,0 +1,8 @@
+CharAuto   You cackle at yourself.  Now, THAT'S strange!~
+CharFound  You cackle gleefully at $N~
+CharNoArg  You throw back your head and cackle with insane glee!~
+OtherAuto  $n is really crazy now!  $e cackles at $mself.~
+OtherFound $n cackles gleefully at $N.~
+OtherNoArg $n throws back $s head and cackles with insane glee!~
+VictFound  $n cackles gleefully at you.  Better keep your distance from $m.~
+End

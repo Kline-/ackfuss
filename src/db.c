@@ -98,10 +98,6 @@
 #include "h/save.h"
 #endif
 
-#ifndef DEC_SOCIAL_EDIT_H
-#include "h/social_edit.h"
-#endif
-
 #ifndef DEC_SPEC_FUN_H
 #include "h/spec_fun.h"
 #endif
@@ -439,7 +435,6 @@ void boot_db( void )
      */
 
     load_areas();
-    load_social_table();
     load_notes();
     load_marks();
     load_bans();
@@ -4243,7 +4238,11 @@ FILE *file_open( const char *file, const char *opt )
         fclose(fpReserve);
         fpReserve = NULL;
     }
-    fp = fopen(file, opt);
+    if( (fp = fopen(file, opt)) == NULL )
+    {
+        log_f("ERROR: file_open returned NULL when attempting to read (%s) with opt (%s).", file, opt);
+        return NULL;
+    }
 
     return fp;
 }
@@ -4297,7 +4296,6 @@ void clear_lists( void )
     fclose(fpReserve);
     delete_hash_table(hash_changed_vnums);
     free(string_space);
-    free(social_table);
 #ifdef IMC
     free_imcdata(true);
 #endif

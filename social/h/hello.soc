@@ -1,0 +1,8 @@
+CharAuto   You greet yourself enthusiastically.~
+CharFound  You tell $M how truly glad you are to see $M.~
+CharNoArg  You say hello to everyone in the room.~
+OtherAuto  $n greets $mself enthusiastically.  How odd.~
+OtherFound $n tells $N 'Hi!'~
+OtherNoArg $n says hello to everyone in the room.~
+VictFound  $n tells you how truly glad $e is that you are here.~
+End

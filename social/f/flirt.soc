@@ -1,0 +1,8 @@
+CharAuto   You flirt with yourself.~
+CharFound  You flirt with $M.~
+CharNoArg  Wink wink!~
+OtherAuto  $n flirts with $mself.  Hoo boy.~
+OtherFound $n flirts with $N.~
+OtherNoArg $n flirts -- probably needs a date, huh?~
+VictFound  $n wants you to show some interest and is flirting with you.~
+End

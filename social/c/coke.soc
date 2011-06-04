@@ -1,0 +1,8 @@
+CharAuto   @@WYou down the @@gIce @@lcold @@eC@@go@@ek@@ge@@W, Yummmmmmmm!@@N~
+CharFound  @@WYou generously give away your last @@gIce @@lcold @@Wcan of @@eC@@go@@ek@@ge@@W.~
+CharNoArg  @@WYou wander around offering a can of @@eC@@go@@ek@@ge@@N.~
+OtherAuto  @@W$n @@aguzzles @@Wdown the last can of @@eC@@go@@ek@@ge@@W, Rude!@@N~
+OtherFound @@W$n gave the last can of @@eC@@go@@ek@@ge@@W away, and not to you, Hmph.@@N~
+OtherNoArg @@W$n flaunts a can of @@eC@@go@@ek@@ge@@W in front of your face.~
+VictFound  @@WWow!! $n just gave you $s last can of @@eC@@go@@ek@@ge@@W, it MUST be @@eLove@@N~
+End

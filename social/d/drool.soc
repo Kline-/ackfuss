@@ -1,0 +1,8 @@
+CharAuto   You drool on yourself.~
+CharFound  You drool all over $N.~
+CharNoArg  You drool on yourself.~
+OtherAuto  $n drools on $mself.~
+OtherFound $n drools all over $N.~
+OtherNoArg $n drools on $mself.~
+VictFound  $n drools all over you.~
+End

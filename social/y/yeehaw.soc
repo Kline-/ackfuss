@@ -1,0 +1,8 @@
+CharAuto   You mount your white pony (?) and shout 'YEEEEEEEEEEHAW!'~
+CharFound  You mount your white pony (?) and shout 'YEEEEEEEEEEHAW!'~
+CharNoArg  You mount your white pony (?) and shout 'YEEEEEEEEEEHAW!'~
+OtherAuto  $n mounts $s white pony (?) and shouts 'YEEEEHHHAAAAAAWWWW!'~
+OtherFound $n mounts $s white pony (?) and shouts 'YEEEEHHHAAAAAAWWWW!'~
+OtherNoArg $n mounts $s white pony (?) and shouts 'YEEEEHHHAAAAAAWWWW!'~
+VictFound  $n mounts $s white pony (?) and shouts 'YEEEEHHHAAAAAAWWWW!'~
+End

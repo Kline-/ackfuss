@@ -1,0 +1,8 @@
+CharAuto   $n sits down and thinks deeply.~
+CharFound  $n sits down and thinks deeply.~
+CharNoArg  You ponder the question.~
+OtherAuto  $n sits down and thinks deeply.~
+OtherFound $n sits down and thinks deeply.~
+OtherNoArg $n sits down and thinks deeply.~
+VictFound  $n sits down and thinks deeply.~
+End

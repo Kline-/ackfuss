@@ -1,0 +1,8 @@
+CharAuto   You delight in pinning your underwear to the sky.~
+CharFound  You wedgie $M.  Must be fun! ~
+CharNoArg  You look around for someone to wedgie.~
+OtherAuto  $n wedgies $mself and revels with glee.~
+OtherFound $n wedgies $N to the heavens.~
+OtherNoArg $n is looking around for someone to wedgie!  Run!~
+VictFound  $n wedgies you!  Ouch!~
+End

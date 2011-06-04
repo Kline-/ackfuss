@@ -1,0 +1,8 @@
+CharAuto   You juggle a hot potato in your hands.~
+CharFound  You juggle a hot potato and pass it onto $M.~
+CharNoArg  You juggle a hot potato in your hands.~
+OtherAuto  $n juggles a hot potato in $s hands.~
+OtherFound $n juggles a hot potato and gives it to $N!~
+OtherNoArg $n juggles a hot potato in $s hands.~
+VictFound  $n juggles a hot potato and gives it to YOU!~
+End

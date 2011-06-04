@@ -1,0 +1,8 @@
+CharAuto   You smile at yourself.~
+CharFound  @@WYou smile @@ybrightly @@Wat $N@@N.~
+CharNoArg  @@WYou @@gsmile @@ahappily@@N.~
+OtherAuto  $n smiles at $mself.~
+OtherFound @@W$n @@ybeams @@Wa smile at @@g$N@@N.~
+OtherNoArg @@W$n @@gsmiles @@ahappily@@N.~
+VictFound  @@W$n smiles @@ybrightly @@Wat you@@N.~
+End

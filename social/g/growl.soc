@@ -1,0 +1,8 @@
+CharAuto   You growl at yourself.  Boy, do you feel bitter!~
+CharFound  Grrrrrrrrrr ... take that, $N!~
+CharNoArg  Grrrrrrrrrr ...~
+OtherAuto  $n growls at $mself.  This could get interesting...~
+OtherFound $n growls at $N.  Better leave the room before the fighting starts.~
+OtherNoArg $n growls.~
+VictFound  $n growls at you.  Hey, two can play it that way!~
+End

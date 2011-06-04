@@ -1,0 +1,8 @@
+CharAuto   You poke yourself in the ribs, feeling very silly.~
+CharFound  You poke $M in the ribs.~
+CharNoArg  Poke whom?~
+OtherAuto  $n pokes $mself in the ribs, looking very sheepish.~
+OtherFound $n pokes $N in the ribs.~
+OtherNoArg ~
+VictFound  $n pokes you in the ribs.~
+End

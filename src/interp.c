@@ -138,12 +138,12 @@
 #include "h/rulers.h"
 #endif
 
-#ifndef DEC_SCHECK_H
-#include "h/scheck.h"
+#ifndef DEC_SOCIAL_H
+#include "h/social.h"
 #endif
 
-#ifndef DEC_SOCIAL_EDIT_H
-#include "h/social_edit.h"
+#ifndef DEC_SCHECK_H
+#include "h/scheck.h"
 #endif
 
 #ifndef DEC_SPENDQP_H
@@ -562,8 +562,6 @@ const struct cmd_type cmd_table[] =
      C_TYPE_OBJECT, C_SHOW_ALWAYS, false},
     {"recite", do_recite, POS_RESTING, 0, LOG_NORMAL,
      C_TYPE_OBJECT, C_SHOW_ALWAYS, false},
-    {"sedit", do_sedit, POS_DEAD, L_DEI, LOG_ALWAYS,
-     C_TYPE_CONFIG, C_SHOW_NEVER, false},
     {"sell", do_sell, POS_RESTING, 0, LOG_NORMAL,
      C_TYPE_OBJECT, C_SHOW_ALWAYS, false},
     {"take", do_get, POS_RESTING, 0, LOG_NORMAL,
@@ -684,7 +682,7 @@ const struct cmd_type cmd_table[] =
      C_TYPE_COMM, C_SHOW_ALWAYS, true},
     {"togemail", do_tog_email, POS_RESTING, 0, LOG_NORMAL,
      C_TYPE_CONFIG, C_SHOW_ALWAYS, true},
-
+     
     /*
      *    Vampire and REMORT SKILLS Zen
      */
@@ -1255,17 +1253,14 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
-    int cmd;
     bool found;
+    SOCIAL_DATA *soc;
 
     found = FALSE;
-    for ( cmd = 0; social_table[cmd].name[0] != '\0'; cmd++ )
+    if( exists_social(command) )
     {
-        if ( command[0] == social_table[cmd].name[0] && !str_prefix( command, social_table[cmd].name ) )
-        {
-            found = TRUE;
-            break;
-        }
+        soc = load_social(command);
+        found = TRUE;
     }
 
     if ( !found )
@@ -1279,7 +1274,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
 
     if ( IS_GHOST(ch) )
     {
-        send_to_char("Your ghostly form can't seem to convery emotions...\r\n", ch);
+        send_to_char("Your ghostly form can't seem to convey emotions...\r\n", ch);
         return true;
     }
 
@@ -1303,7 +1298,7 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
              * I just know this is the path to a 12" 'if' statement.  :(
              * But two players asked for it already!  -- Furey
              */
-            if ( !str_cmp( social_table[cmd].name, "snore" ) )
+            if ( !str_cmp( soc->name, "snore" ) )
                 break;
             send_to_char( "In your @@Wdreams@@N, or what?\r\n", ch );
             return TRUE;
@@ -1314,8 +1309,8 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
     victim = NULL;
     if ( arg[0] == '\0' )
     {
-        act( social_table[cmd].others_no_arg, ch, NULL, victim, TO_ROOM );
-        act( social_table[cmd].char_no_arg, ch, NULL, victim, TO_CHAR );
+        act( soc->other_no_arg.c_str(), ch, NULL, victim, TO_ROOM );
+        act( soc->char_no_arg.c_str(), ch, NULL, victim, TO_CHAR );
     }
     else if ( ( victim = get_char_room( ch, arg ) ) == NULL )
     {
@@ -1323,14 +1318,14 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
     }
     else if ( victim == ch )
     {
-        act( social_table[cmd].others_auto, ch, NULL, victim, TO_ROOM );
-        act( social_table[cmd].char_auto, ch, NULL, victim, TO_CHAR );
+        act( soc->other_auto.c_str(), ch, NULL, victim, TO_ROOM );
+        act( soc->char_auto.c_str(), ch, NULL, victim, TO_CHAR );
     }
     else
     {
-        act( social_table[cmd].others_found, ch, NULL, victim, TO_NOTVICT );
-        act( social_table[cmd].char_found, ch, NULL, victim, TO_CHAR );
-        act( social_table[cmd].vict_found, ch, NULL, victim, TO_VICT );
+        act( soc->other_found.c_str(), ch, NULL, victim, TO_NOTVICT );
+        act( soc->char_found.c_str(), ch, NULL, victim, TO_CHAR );
+        act( soc->vict_found.c_str(), ch, NULL, victim, TO_VICT );
 
         if ( !IS_NPC( ch ) && IS_NPC( victim ) && !IS_AFFECTED( victim, AFF_CHARM ) && IS_AWAKE( victim ) )
         {
@@ -1341,9 +1336,9 @@ bool check_social( CHAR_DATA * ch, char *command, char *argument )
                 case 2:
                 case 3:
                 case 4:
-                    act( social_table[cmd].others_found, victim, NULL, ch, TO_NOTVICT );
-                    act( social_table[cmd].char_found, victim, NULL, ch, TO_CHAR );
-                    act( social_table[cmd].vict_found, victim, NULL, ch, TO_VICT );
+                    act( soc->other_found.c_str(), victim, NULL, ch, TO_NOTVICT );
+                    act( soc->char_found.c_str(), victim, NULL, ch, TO_CHAR );
+                    act( soc->vict_found.c_str(), victim, NULL, ch, TO_VICT );
                     break;
 
                 case 5:

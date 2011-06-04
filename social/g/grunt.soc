@@ -1,0 +1,8 @@
+CharAuto   GRNNNHTTTT.~
+CharFound  GRNNNHTTTT.~
+CharNoArg  GRNNNHTTTT.~
+OtherAuto  $n grunts to $mself.  What a pig!~
+OtherFound $n grunts to $N.  What a pig!~
+OtherNoArg $n grunts like a pig.~
+VictFound  $n grunts to you.  What a pig!~
+End

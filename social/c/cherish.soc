@@ -1,0 +1,8 @@
+CharAuto   You cherish yourself. Getting a bit narcissistic, are you?~
+CharFound  You cherish $M with all your heart.~
+CharNoArg  You cherish the moment.~
+OtherAuto  $n cherishes $mself narcissistically.~
+OtherFound $n cherishes $N with all $s heart.~
+OtherNoArg $n cherishes the moment.~
+VictFound  $n cherishes you with all $s heart.~
+End

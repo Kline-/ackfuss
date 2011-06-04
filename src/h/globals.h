@@ -143,7 +143,6 @@ extern const struct clan_type clan_table[MAX_CLAN];
 extern const struct cmd_type cmd_table[];
 extern const struct liq_type liq_table[LIQ_MAX];
 extern const struct skill_type skill_table[MAX_SKILL];
-extern SOCIAL_TYPE *social_table;
 extern char *const title_table[MAX_CLASS][36][2];
 
 /* spec: log all calls to getmem/dispose when set */

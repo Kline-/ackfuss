@@ -1,0 +1,8 @@
+CharAuto   You @@r@@fMOSH@@N yourself. @@r@@fMOSH MOSH MOSH MOSH MOSH MOSH MOSH MOSH... (ad infinitum)@@N~
+CharFound  You @@r@@fMOSH@@N insanely into $N, almost knocking $M over.@@N ~
+CharNoArg  You @@r@@fMOSH@@N around the room insanely.@@N~
+OtherAuto  $n @@r@@fMOSHES@@N and @@r@@fMOSHES@@N and @@r@@fMOSHES@@N and @@r@@fMOSHES@@N and @@r@@fMOSHES@@N...~
+OtherFound $n @@r@@fMOSHES@@N insanely about the room knocking into $N. You could be next!@@N~
+OtherNoArg $n @@r@@fMOSHES@@N insanely about the room knocking into things.@@N~
+VictFound  $n @@r@@fMOSHES@@N you into the ground!@@N~
+End

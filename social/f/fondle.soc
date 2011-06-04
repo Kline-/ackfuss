@@ -1,0 +1,8 @@
+CharAuto   You fondly fondle yourself, feels funny doesn't it ?~
+CharFound  You fondly fondle $M.~
+CharNoArg  Who needs to be fondled?~
+OtherAuto  $n fondly fondles $mself - this is going too far !!~
+OtherFound $n fondly fondles $N.~
+OtherNoArg ~
+VictFound  $n fondly fondles you.~
+End

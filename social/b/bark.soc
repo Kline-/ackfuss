@@ -1,0 +1,8 @@
+CharAuto   You bark at yourself.  Woof!  Woof!~
+CharFound  You bark at $M.~
+CharNoArg  Woof!  Woof!~
+OtherAuto  $n barks at $mself.  Woof!  Woof!~
+OtherFound $n barks at $N.~
+OtherNoArg $n barks like a dog.~
+VictFound  $n barks at you.~
+End

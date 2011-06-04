@@ -1,0 +1,8 @@
+CharAuto   You groan as you realize what you have done.~
+CharFound  You groan at the sight of $M.~
+CharNoArg  You groan loudly.~
+OtherAuto  $n groans as $e realizes what $e has done.~
+OtherFound $n groans at the sight of $N.~
+OtherNoArg $n groans loudly.~
+VictFound  $n groans at the sight of you.~
+End

@@ -1,0 +1,8 @@
+CharAuto   $n sneezes.~
+CharFound  $n sneezes.~
+CharNoArg  Gesundheit!~
+OtherAuto  $n sneezes.~
+OtherFound $n sneezes.~
+OtherNoArg $n sneezes.~
+VictFound  $n sneezes.~
+End

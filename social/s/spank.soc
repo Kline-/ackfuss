@@ -1,0 +1,8 @@
+CharAuto   You spank yourself.  Kinky!~
+CharFound  You spank $M playfully.~
+CharNoArg  Spank whom?~
+OtherAuto  $n spanks $mself.  Kinky!~
+OtherFound $n spanks $N playfully.~
+OtherNoArg ~
+VictFound  $n spanks you playfully.  OUCH!~
+End

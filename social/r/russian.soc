@@ -1,0 +1,8 @@
+CharAuto   You speak Russian.  Yeah, right.  Dream on.~
+CharFound  You speak Russian to $M.  Yeah, right.  Dream on.~
+CharNoArg  You speak Russian.  Yeah, right.  Dream on.~
+OtherAuto  $n says 'Ya horosho stari malenky koshka.'  Huh?~
+OtherFound $n says to $N 'Ya horosho stari malenky koshka.'  Huh?~
+OtherNoArg $n says 'Ya horosho stari malenky koshka.'  Huh?~
+VictFound  $n says to you 'Ya horosho stari malenky koshka.'  Huh?~
+End

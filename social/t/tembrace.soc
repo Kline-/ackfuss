@@ -1,0 +1,8 @@
+CharAuto   @@WYou @@gembrace @@Wyourself, keeping warm@@N.~
+CharFound  @@WYou hold @@y$N @@Win your arms @@gsurrounding @@W$M in your @@lwarmth@@N.~
+CharNoArg  @@WYou long to be held closely@@N.~
+OtherAuto  ~
+OtherFound @@a$n @@Wholds @@a$N@@W so close to $m@@N.~
+OtherNoArg @@WPsssst... @@d$n @@yreally @@Wneeds a tender embrace@@N.~
+VictFound  @@y$n @@Wholds you close to $s body, tenderly @@gembracing you in $s @@lwarmth@@N.~
+End

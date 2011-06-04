@@ -1,0 +1,8 @@
+CharAuto   You blindfold yourself, not wanting to see what happens next.~
+CharFound  You a tie a blindfold securely about $S head.~
+CharNoArg  You pull out a blindfold and grin evilly.~
+OtherAuto  $n blindfolds $mself, not wanting to see what happens next.~
+OtherFound $n ties a blindfold securely about $N's head. Must be dark in there.~
+OtherNoArg $n pulls out a blindfold and grins evilly.~
+VictFound  $n ties a blindfold securely about your head. You can't see a thing.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You shoosh yourself.  Be quiet!  You have a hangover!~
+CharFound  Won't $N be quiet?  Your head is gonna split in two if $E keeps talking!~
+CharNoArg  You pop a few aspirin and put on your sunglasses.  Ow, your head hurts!~
+OtherAuto  $n shooshes $mself.  Wow, what a hangover that must be!~
+OtherFound $n complains to $N 'Be quiet!  I have a hangover!~
+OtherNoArg $n holds $s head and says 'Quit breathing so loud!'~
+VictFound  $n complains to you 'Be quiet!  I have a hangover!~
+End

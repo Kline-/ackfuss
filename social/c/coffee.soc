@@ -1,0 +1,8 @@
+CharAuto   You quaff a hot cup of strong coffee. You are WIRED.~
+CharFound  You offer $M a hot cup of strong coffee.~
+CharNoArg  You sip from a hot cup of coffee.~
+OtherAuto  $n quaffs a hot cup of strong coffee, getting WIRED.~
+OtherFound $n offers $N a hot cup of strong coffee.~
+OtherNoArg $n sips from a hot cup of coffee.~
+VictFound  $n offers you a hot cup of strong coffee.~
+End

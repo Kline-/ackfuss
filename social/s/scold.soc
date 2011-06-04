@@ -1,0 +1,8 @@
+CharAuto   You scold yourself for being so naughty!~
+CharFound  You scold $M for being so naughty!~
+CharNoArg  You scold everyone for being so naughty!~
+OtherAuto  $n scolds $mself for being so naughty!~
+OtherFound $n scolds $N for being so naughty!~
+OtherNoArg $n scolds everyone for being so naughty!~
+VictFound  $n scolds you for being so naughty!~
+End

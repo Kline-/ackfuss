@@ -1,0 +1,8 @@
+CharAuto   You handcuff yourself. Too bad you can't seem to find the key.~
+CharFound  You handcuff $M, putting $M completely at your mercy.~
+CharNoArg  You pull out a pair of handcuffs.~
+OtherAuto  $n handcuffs $mself. Too bad $e can't seem to find the key.~
+OtherFound $n handcuffs $N, pretty kinky, huh?~
+OtherNoArg $n pulls out a pair of handcuffs.~
+VictFound  $n handcuffs you. This could get interesting.~
+End

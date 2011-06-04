@@ -1,0 +1,8 @@
+CharAuto   You slobber all down your front.~
+CharFound  You slobber all over $M.~
+CharNoArg  You slobber all over the floor.~
+OtherAuto  $n slobbers all over $mself.~
+OtherFound $n slobbers all over $N.~
+OtherNoArg $n slobbers all over the floor.~
+VictFound  $n slobbers all over you.~
+End

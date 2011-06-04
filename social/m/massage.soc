@@ -1,0 +1,8 @@
+CharAuto   You practice yoga as you try to massage yourself.~
+CharFound  You gently massage $N's shoulders.~
+CharNoArg  Massage what?  Thin air?~
+OtherAuto  $n gives a show on yoga positions, trying to massage $mself.~
+OtherFound $n massages $N's shoulders.~
+OtherNoArg ~
+VictFound  $n gently massages your shoulders.  Ahhhhhhhhhh ...~
+End

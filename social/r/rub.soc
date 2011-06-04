@@ -1,0 +1,8 @@
+CharAuto   You rub your eyes.  How long have you been at this?~
+CharFound  You rub your eyes.  Has $N been playing as long as you have?~
+CharNoArg  You rub your eyes.  How long have you been at this?~
+OtherAuto  $n rubs $s eyes.  $n must have been playing all day.~
+OtherFound $n rubs $s eyes.  $n must have been playing all day.~
+OtherNoArg $n rubs $s eyes.  $n must have been playing all day.~
+VictFound  $n rubs $s eyes.  Have you been playing as long as $m?~
+End

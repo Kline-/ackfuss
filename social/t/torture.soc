@@ -1,0 +1,8 @@
+CharAuto   You torture yourself with rusty weapons.  Was it good for you?~
+CharFound  You torture $M with rusty weapons, Mwaahhhhh!!~
+CharNoArg  You have to torture someone!~
+OtherAuto  $n tortures $mself with rusty weapons.  Looks like $e enjoys it!?~
+OtherFound $n tortures $N with rusty weapons, $E must have been REAL bad!~
+OtherNoArg ~
+VictFound  $n tortures you with rusty weapons!  What did you DO!?!~
+End

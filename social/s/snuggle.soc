@@ -1,0 +1,8 @@
+CharAuto   You snuggle up, getting ready to sleep.~
+CharFound  you snuggle $M.~
+CharNoArg  Who?~
+OtherAuto  $n snuggles up, getting ready to sleep.~
+OtherFound $n snuggles up to $N.~
+OtherNoArg ~
+VictFound  $n snuggles up to you.~
+End

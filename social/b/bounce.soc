@@ -1,0 +1,8 @@
+CharAuto   You bounce your head like a basketball.~
+CharFound  You bounce onto $S lap.~
+CharNoArg  BOIINNNNNNGG!~
+OtherAuto  $n plays basketball with $s head.~
+OtherFound $n bounces onto $N's lap.~
+OtherNoArg $n bounces around.~
+VictFound  $n bounces onto your lap.~
+End

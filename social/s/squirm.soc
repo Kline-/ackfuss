@@ -1,0 +1,8 @@
+CharAuto   You squirm and squirm and squirm....~
+CharFound  You squirm in front of $M.~
+CharNoArg  You squirm guiltily.~
+OtherAuto  $n squirms and squirms and squirm.....~
+OtherFound $n squirms in front of $N.~
+OtherNoArg $n squirms guiltily.  Looks like $e did it.~
+VictFound  $n squirms in front of you.  You make $m nervous.~
+End

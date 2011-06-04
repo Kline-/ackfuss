@@ -1,0 +1,8 @@
+CharAuto   ~
+CharFound  You mosh into $N screaming, '@@B|\|@@line @@BI@@lnch @@B|\|@@lails@@B!!!@@N'.~
+CharNoArg  You scream '@@R|\|@@eine @@RI@@ench @@R|\|@@eails@@R!!!@@N' and start to mosh.~
+OtherAuto  ~
+OtherFound $n moshes into $N screaming, '@@B|\|@@line @@BI@@lnch @@B|\|@@lails@@B!!!@@N'~
+OtherNoArg $n screams @@R|\|@@eine @@RI@@ench @@R|\|@@eails@@R!!!' @@Nand starts to mosh.@@N~
+VictFound  $n moshes into you screaming, '@@B|\|@@line @@BI@@lnch @@B|\|@@lails@@B!!!@@N'~
+End

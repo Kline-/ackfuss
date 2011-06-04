@@ -1,0 +1,8 @@
+CharAuto   You grimace at yourself in disgust.~
+CharFound  You grimace in disgust at $M.~
+CharNoArg  You contort your face in disgust.~
+OtherAuto  $n grimaces at $mself in disgust.~
+OtherFound $n grimaces in disgust at $N.~
+OtherNoArg $n grimaces in disgust.~
+VictFound  $n grimaces in disgust at you.~
+End

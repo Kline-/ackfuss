@@ -1,0 +1,8 @@
+CharAuto   You exclaim, 'Oh Happy Happy, Joy Joy!' at the thought of yourself.~
+CharFound  You exclaim, 'Oh Happy Happy, Joy Joy!' at the mere thought of $M.~
+CharNoArg  You say, 'Oh Happy Happy, Joy Joy!'~
+OtherAuto  $n exclaims, 'Oh Happy Happy, Joy Joy!' at the thought of $mself.~
+OtherFound $n exclaims, 'Oh Happy Happy, Joy Joy!' as $e sees $N enter the room.~
+OtherNoArg $n exclaims, 'Oh Happy Happy, Joy Joy!'~
+VictFound  $n exclaims, 'Oh Happy Happy, Joy Joy!' when $e sees you approach.~
+End

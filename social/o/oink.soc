@@ -1,0 +1,8 @@
+CharAuto   You make pig noises.  OINK!~
+CharFound  You make pig noises at $M.  OINK!~
+CharNoArg  You make pig noises.  OINK!~
+OtherAuto  $n oinks 'OINK OINK OINK!'~
+OtherFound $n oinks at $N: 'OINK OINK OINK!'~
+OtherNoArg $n oinks 'OINK OINK OINK!'~
+VictFound  $n oinks at you: 'OINK OINK OINK!'~
+End

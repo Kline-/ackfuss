@@ -1,0 +1,8 @@
+CharAuto   You snicker at your own evil thoughts.~
+CharFound  You snicker with $M about your shared secret.~
+CharNoArg  You snicker softly.~
+OtherAuto  $n snickers at $s own evil thoughts.~
+OtherFound $n snickers with $N about their shared secret.~
+OtherNoArg $n snickers softly.~
+VictFound  $n snickers with you about your shared secret.~
+End

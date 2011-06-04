@@ -1,0 +1,8 @@
+CharAuto   You glare icily at your feet, they are suddenly very cold.~
+CharFound  You glare icily at $M.~
+CharNoArg  You glare at nothing in particular.~
+OtherAuto  $n glares at $s feet, what is bothering $m?~
+OtherFound $n glares at $N.~
+OtherNoArg $n glares around $m.~
+VictFound  $n glares icily at you, you feel cold to your bones.~
+End

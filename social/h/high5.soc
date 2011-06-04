@@ -1,0 +1,8 @@
+CharAuto   You leap into the air and high-five yourself. lonely?~
+CharFound  You leap into the air and high-five @@p$N@@N! YES!@@N~
+CharNoArg  You have to high-five SOMEONE you know!~
+OtherAuto  $n leaps into the air and high-fives himself... $e must be very lonely.@@N~
+OtherFound $n leaps into the air and high-fives @@p$N@@N. happy? about what?@@N~
+OtherNoArg $n can't decide who he want's to high-five, so he doesn't.~
+VictFound  $n leaps into the air and high-fives you!@@N~
+End

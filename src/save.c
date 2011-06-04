@@ -94,18 +94,6 @@
 extern int _filbuf args( ( FILE * ) );
 #endif
 
-char *cap_nocol( const char *str )
-{
-    static char strcap[MAX_STRING_LENGTH];
-    int i;
-
-    for ( i = 0; str[i] != '\0'; i++ )
-        strcap[i] = LOWER( str[i] );
-    strcap[i] = '\0';
-    strcap[0] = UPPER( strcap[0] );
-    return strcap;
-}
-
 /*
  * Array of containers read for proper re-nesting of objects.
  */
@@ -114,17 +102,6 @@ static OBJ_DATA *rgObjNest[MAX_NEST];
 
 
 extern bool deathmatch;  /* Deathmatch happening?        */
-
-
-/* Courtesy of Yaz of 4th Realm */
-char *initial( const char *str )
-{
-    static char strint[MAX_STRING_LENGTH];
-
-    strint[0] = LOWER( str[0] );
-    return strint;
-
-}
 
 /*
  * Save a character and inventory.

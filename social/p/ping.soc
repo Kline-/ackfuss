@@ -1,0 +1,8 @@
+CharAuto   You ping yourself. Ooof!~
+CharFound  You ping $N.  $N is unreachable.~
+CharNoArg  Ping who?~
+OtherAuto  $n pings $mself. Ooof!~
+OtherFound $n pings $N.  $N is unreachable.~
+OtherNoArg ~
+VictFound  $n pings you.  Is your server dead or alive?~
+End

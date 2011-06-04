@@ -1,0 +1,8 @@
+CharAuto   You smooch yourself.~
+CharFound  You give $M a nice, wet smooch.~
+CharNoArg  You are searching for someone to smooch.~
+OtherAuto  $n smooches $mself.  Yuck.~
+OtherFound $n and $N are smooching in the corner.~
+OtherNoArg $n is looking for someone to smooch.~
+VictFound  $n smooches you passionately on the lips.~
+End

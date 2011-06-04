@@ -1,0 +1,8 @@
+CharAuto   You pretend you are an implementor, and you demote yourself to level 1.~
+CharFound  You pretend you are a GOD, and demote $M to level 1.~
+CharNoArg  You pretend you are a GOD, and slay everyone in sight!~
+OtherAuto  $n pretends $e is a GOD, and demotes $mself to level 1.~
+OtherFound $n pretends $e is a GOD, and says, '$N, you're demoted to level 1!'~
+OtherNoArg $n is pretending $e is an implementor again.  *sigh*~
+VictFound  $n pretends $e is a GOD, and says, 'You are demoted to level 1!'~
+End

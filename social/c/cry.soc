@@ -1,0 +1,8 @@
+CharAuto   You cry to yourself.~
+CharFound  You cry on $S shoulder.~
+CharNoArg  Waaaaah ...~
+OtherAuto  $n sobs quietly to $mself.~
+OtherFound $n cries on $N's shoulder.~
+OtherNoArg $n bursts into tears.~
+VictFound  $n cries on your shoulder.~
+End

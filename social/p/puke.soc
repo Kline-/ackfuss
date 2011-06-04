@@ -1,0 +1,8 @@
+CharAuto   You puke on yourself.~
+CharFound  You puke on $M.~
+CharNoArg  You puke ... chunks everywhere!~
+OtherAuto  $n pukes on $s clothes.~
+OtherFound $n pukes on $N.~
+OtherNoArg $n pukes.~
+VictFound  $n spews vomit and pukes all over your clothing!~
+End

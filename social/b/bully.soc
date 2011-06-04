@@ -1,0 +1,8 @@
+CharAuto   You bully yourself, and take your own lunch money.~
+CharFound  You growl and demand $S lunch money NOW!~
+CharNoArg  You growl and demand everyone's lunch money NOW!~
+OtherAuto  $n bullies $mself, and takes $s lunch money away from $mself???~
+OtherFound $n growls and demands $N's lunch money.~
+OtherNoArg $n growls and demands everyone's lunch money.~
+VictFound  $n growls and demands your lunch money.~
+End

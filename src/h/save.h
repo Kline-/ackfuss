@@ -15,8 +15,6 @@
 #endif
 
 /* save.c */
-char *cap_nocol P_((const char *str));
-char *initial P_((const char *str));
 void save_char_obj P_((CHAR_DATA *ch));
 void fwrite_char P_((CHAR_DATA *ch, FILE *fp));
 void fwrite_obj P_((CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest));

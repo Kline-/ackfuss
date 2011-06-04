@@ -1,0 +1,8 @@
+CharAuto   Begging yourself for money doesn't help.~
+CharFound  You desperately try to squeeze a few coins from $M.~
+CharNoArg  You beg the gods for mercy.~
+OtherAuto  $n begs $mself for money.~
+OtherFound $n begs $N for a gold piece!~
+OtherNoArg The gods fall down laughing at $n's request for mercy.~
+VictFound  $n begs you for money.~
+End

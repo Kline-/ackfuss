@@ -1,0 +1,8 @@
+CharAuto   You smirk at yourself.  Okay ...~
+CharFound  You smirk at $S saying.~
+CharNoArg  You smirk.~
+OtherAuto  $n smirks at $s own 'wisdom'.~
+OtherFound $n smirks at $N's saying.~
+OtherNoArg $n smirks.~
+VictFound  $n smirks at your saying.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You spin yourself around and around and around....~
+CharFound  You spin $M on one finger.~
+CharNoArg  You twirl in a graceful pirouette.~
+OtherAuto  $n spins $mself around and around and around...~
+OtherFound $n spins $N on $s finger.~
+OtherNoArg $n twirls in a graceful pirouette.~
+VictFound  $n spins you around on $s finger.~
+End

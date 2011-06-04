@@ -1,0 +1,8 @@
+CharAuto   You flex your muscles at yourself.  Wow, you are HUGE!~
+CharFound  You flex your bulging muscles at $M.~
+CharNoArg  You flex your bulging muscles at the beach crowd.~
+OtherAuto  $n flexes $s muscles at $mself.  How narcissistic!~
+OtherFound $n flexes $s muscles at $N.~
+OtherNoArg $n flexes $s muscles and puts yours to shame!~
+VictFound  $n flexes $s muscles at you.  $n must be trying to impress you.~
+End

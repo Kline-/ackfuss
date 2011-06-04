@@ -1,0 +1,8 @@
+CharAuto   You maim yourself with your dull fingernails.~
+CharFound  You maim $M with your dull fingernails.~
+CharNoArg  Who do you want to maim?~
+OtherAuto  $n raises $s hand and maims $mself to pieces.~
+OtherFound $n raises $s hand and tries to maim $N to pieces.~
+OtherNoArg $n is looking for someone to maim.~
+VictFound  $n raises $s hand and paws at you.  You've been maimed!~
+End

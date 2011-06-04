@@ -1,0 +1,8 @@
+CharAuto   Are you going on adventures as well?~
+CharFound  You wave goodbye to $N.~
+CharNoArg  You wave.~
+OtherAuto  $n waves goodbye to $mself.~
+OtherFound $n waves goodbye to $N.~
+OtherNoArg $n waves happily.~
+VictFound  $n waves goodbye to you.  Have a good journey.~
+End

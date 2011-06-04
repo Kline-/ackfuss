@@ -1,0 +1,8 @@
+CharAuto   You jump in the air and congratulate yourself!~
+CharFound  You jump in the air and give $M a big highfive!~
+CharNoArg  You jump in the air...oops, better get someone else to join you.~
+OtherAuto  $n jumps in the air and gives $mself a big highfive!  Wonder what $e did?~
+OtherFound $n jumps in the air and gives $N a big highfive!~
+OtherNoArg $n jumps in the air by $mself.  Is $e a cheerleader, or just daft?~
+VictFound  $n jumps in the air and gives you a big highfive!~
+End

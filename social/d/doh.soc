@@ -1,0 +1,8 @@
+CharAuto   You hit yourself in the forehead and say, 'Doh!!!'~
+CharFound  You say, 'Doh!!' and hit your forehead.  What an idiot you are!~
+CharNoArg  You say, 'Doh!!' and hit your forehead.  What an idiot you are!~
+OtherAuto  $n hits $mself in the forehead and says, 'Doh!!!'~
+OtherFound $n hits $mself in the forehead and says, 'Doh!!!'~
+OtherNoArg $n hits $mself in the forehead and says, 'Doh!!!'~
+VictFound  $n hits $mself in the forehead and says, 'Doh!!!'~
+End

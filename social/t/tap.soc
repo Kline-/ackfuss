@@ -1,0 +1,8 @@
+CharAuto   You tap yourself on the head.  Ouch!~
+CharFound  You tap your foot impatiently.  Will $E ever be ready?~
+CharNoArg  You tap your foot impatiently.~
+OtherAuto  $n taps $mself on the head.~
+OtherFound $n taps $s foot impatiently as $e waits for $N.~
+OtherNoArg $n taps $s foot impatiently.~
+VictFound  $n taps $s foot impatiently as $e waits for you.~
+End

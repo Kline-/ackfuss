@@ -1,0 +1,8 @@
+CharAuto   You think of yourself, and go mmMMmmMMmmMMmm.~
+CharFound  You go mmMMmmMMmmMMmm.~
+CharNoArg  You go mmMMmmMMmmMMmm.~
+OtherAuto  $n thinks of $mself and says, 'mmMMmmMMmmMMmm.'~
+OtherFound $n says, 'mmMMmmMMmmMMmm.'~
+OtherNoArg $n says, 'mmMMmmMMmmMMmm.'~
+VictFound  $n thinks of you and says, 'mmMMmmMMmmMMmm.'~
+End

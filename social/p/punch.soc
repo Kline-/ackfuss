@@ -1,0 +1,8 @@
+CharAuto   You punch yourself.  You deserve it.~
+CharFound  You punch $M playfully.~
+CharNoArg  Punch whom?~
+OtherAuto  $n punches $mself.  Why don't you join in?~
+OtherFound $n punches $N playfully.~
+OtherNoArg ~
+VictFound  $n punches you playfully.  OUCH!~
+End

@@ -1,0 +1,8 @@
+CharAuto   You flash your naked body at yourself.  How strange.~
+CharFound  You flash your naked body at $M.~
+CharNoArg  You flash your naked body at the gawking crowd.~
+OtherAuto  $n is looking down $s shirt and grinning.  Very wierd!~
+OtherFound $n flashes $s naked body at $N.  Aren't you jealous?~
+OtherNoArg $n flashes $s naked body at everyone.  Gasp!~
+VictFound  $n flashes $s naked body at you.  Everyone else is jealous.~
+End

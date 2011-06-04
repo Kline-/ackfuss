@@ -1,0 +1,8 @@
+CharAuto   You scream 'BANZAI!!!!' at yourself, and brandish your weapon for battle.~
+CharFound  You scream 'BANZAI!!!!' and drag $M into the fray with you.~
+CharNoArg  You scream 'BANZAI!!!!' and brandish your sword for battle.~
+OtherAuto  $n screams 'BANZAI!!!!' at $mself, and charges into the fray.~
+OtherFound $n screams 'BANZAI!!!!' and drags $N into the fray with $m!~
+OtherNoArg $n screams 'BANZAI!!!!' and charges into the fray.~
+VictFound  $n screams 'BANZAI!!!!, and drags you into the fray with $m!~
+End

@@ -329,6 +329,10 @@ shop_data::~shop_data()
 {
 }
 
+social_data::~social_data()
+{
+}
+
 super_data::~super_data()
 {
 }

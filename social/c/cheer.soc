@@ -1,0 +1,8 @@
+CharAuto   You cheer yourself up.~
+CharFound  You cheer loudly: 'Go $N Go!'~
+CharNoArg  ZIS BOOM BAH!  BUGS BUNNY BUGS BUNNY RAH RAH RAH!~
+OtherAuto  $n cheers $mself on.~
+OtherFound $n cheers loudly: 'Go $N Go!'~
+OtherNoArg $n says 'BUGS BUNNY BUGS BUNNY RAH RAH RAH!'~
+VictFound  $n cheers you on!~
+End

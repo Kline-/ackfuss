@@ -1,0 +1,8 @@
+CharAuto   You burp at yourself.~
+CharFound  You burp loudly to $M in response.~
+CharNoArg  You burp loudly.~
+OtherAuto  $n burps at $mself.  What a sick sight.~
+OtherFound $n burps loudly in response to $N's remark.~
+OtherNoArg $n burps loudly.~
+VictFound  $n burps loudly in response to your remark.~
+End

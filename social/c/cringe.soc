@@ -1,0 +1,8 @@
+CharAuto   I beg your pardon?~
+CharFound  You cringe away from $M.~
+CharNoArg  You cringe in terror.~
+OtherAuto  ~
+OtherFound $n cringes away from $N in mortal terror.~
+OtherNoArg $n cringes in terror!~
+VictFound  $n cringes away from you.~
+End

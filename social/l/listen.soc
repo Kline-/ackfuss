@@ -1,0 +1,8 @@
+CharAuto   You pay close attention to what you are saying, trying to avoid saying something you shouldn't.~
+CharFound  You listen intently to what $E is saying.~
+CharNoArg  You listen intently.~
+OtherAuto  $n listens intently to $mself. $e must enjoy the sound of $s own voice.~
+OtherFound $n listens intently to what $N is saying.~
+OtherNoArg $n listens intently.~
+VictFound  $n listens intently to what you are saying.~
+End

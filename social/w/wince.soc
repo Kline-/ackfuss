@@ -1,0 +1,8 @@
+CharAuto   You wince at yourself.  Ouch!~
+CharFound  You wince at $M.~
+CharNoArg  You wince.  Ouch!~
+OtherAuto  $n winces at $mself.  Ouch!~
+OtherFound $n winces at $N.~
+OtherNoArg $n winces.  Ouch!~
+VictFound  $n winces at you.~
+End

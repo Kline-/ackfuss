@@ -1,0 +1,8 @@
+CharAuto   You stick out your tongue and touch your nose.~
+CharFound  You stick your tongue out at $M.~
+CharNoArg  You stick out your tongue.~
+OtherAuto  $n sticks out $s tongue and touches $s nose.~
+OtherFound $n sticks $s tongue out at $N.~
+OtherNoArg $n sticks out $s tongue.~
+VictFound  $n sticks $s tongue out at you.~
+End

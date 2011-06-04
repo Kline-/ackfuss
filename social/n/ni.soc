@@ -1,0 +1,8 @@
+CharAuto   You exclaim proudly, 'I am a knight that goes NI!'~
+CharFound  You exclaim proudly to $M, 'I am a knight that goes NI!'~
+CharNoArg  You exclaim proudly, 'I am a knight that goes NI!'~
+OtherAuto  $n exclaims proudly, 'I am a knight that goes NI!'~
+OtherFound $n exclaims proudly to $N, 'I am a knight that goes NI!'~
+OtherNoArg $n exclaims proudly, 'I am a knight that goes NI!'~
+VictFound  $n proudly exclaims to you, 'I am a knight that goes NI!'~
+End

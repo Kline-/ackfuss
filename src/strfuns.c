@@ -2209,3 +2209,25 @@ char *comma_print( unsigned long n )
 
     return p;
 }
+
+/* Courtesy of Yaz of 4th Realm */
+char *initial( const char *str )
+{
+    static char strint[MAX_STRING_LENGTH];
+
+    strint[0] = LOWER( str[0] );
+    return strint;
+
+}
+
+char *cap_nocol( const char *str )
+{
+    static char strcap[MAX_STRING_LENGTH];
+    int i;
+
+    for ( i = 0; str[i] != '\0'; i++ )
+        strcap[i] = LOWER( str[i] );
+    strcap[i] = '\0';
+    strcap[0] = UPPER( strcap[0] );
+    return strcap;
+}

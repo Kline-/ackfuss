@@ -1,0 +1,8 @@
+CharAuto   You chuckle at your own joke, since no one else would.~
+CharFound  You chuckle at $S joke.~
+CharNoArg  You chuckle politely.~
+OtherAuto  $n chuckles at $s own joke, since none of you would.~
+OtherFound $n chuckles at $N's joke.~
+OtherNoArg $n chuckles politely.~
+VictFound  $n chuckles at your joke.~
+End

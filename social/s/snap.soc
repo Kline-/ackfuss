@@ -1,0 +1,8 @@
+CharAuto   You snap yourself to attention.~
+CharFound  You snap back at $M.~
+CharNoArg  PRONTO ! You snap your fingers.~
+OtherAuto  $n snaps $mself to attention.~
+OtherFound $n snaps back at $N.~
+OtherNoArg $n snaps $s fingers.~
+VictFound  $n snaps back at you!~
+End

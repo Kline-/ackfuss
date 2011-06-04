@@ -1,0 +1,8 @@
+CharAuto   You aim your phasers at yourself.  Duck!~
+CharFound  You set your phaser on OWCH and point it at $M.~
+CharNoArg  You aim your phasers at everyone in the room.~
+OtherAuto  $n aims $s phasers at $mself.  Maybe $e's depressed?~
+OtherFound $n sets $s phaser on OWCH and points it at $N.  Uh oh...~
+OtherNoArg $n aims a phaser at everyone in the room.  LOOK OUT!~
+VictFound  $n sets $s phaser on OWCH and points it at you.  Uh oh...~
+End

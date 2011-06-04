@@ -1,0 +1,8 @@
+CharAuto   That's right - hate yourself!~
+CharFound  You stare at $M, fuming.~
+CharNoArg  You grit your teeth and fume with rage.~
+OtherAuto  $n clenches $s fists and stomps $s feet, fuming with anger.~
+OtherFound $n stares at $N, fuming with rage.~
+OtherNoArg $n grits $s teeth and fumes with rage.~
+VictFound  $n stares at you, fuming with rage!~
+End

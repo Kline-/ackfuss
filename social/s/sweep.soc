@@ -1,0 +1,8 @@
+CharAuto   You swirl around in happiness.~
+CharFound  You sweep $M up off $S feet and swirl $M around in happiness.~
+CharNoArg  You grab a broom and sweep up the mess you made.~
+OtherAuto  $n swirls $mself around.  Pretty silly, huh?~
+OtherFound $n sweeps $N up off $S feet and swirls $M around in happiness.~
+OtherNoArg $n grabs a broom and sweeps up the mess $e made.~
+VictFound  $n sweeps you off your feet and swirls you around in happiness.~
+End

@@ -1,0 +1,8 @@
+CharAuto   @@WYou @@dcan't @@Wpounce on yourself, silly.@@N~
+CharFound  @@WYou quickly @@gpounce @@Won @@y$N @@Wbringing $M to the ground@@N.~
+CharNoArg  @@WYou pounce on your @@yimaginary @@Wfriend@@N.~
+OtherAuto  ~
+OtherFound @@yEeeek@@W, $n pounces on $N... join in the fun! @@y:)@@N~
+OtherNoArg @@y$n @@Wprepares to @@gpounce @@Won someone@@N.~
+VictFound  @@y$n @@Wplayfully @@gpounces @@Won you!@@N~
+End

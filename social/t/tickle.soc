@@ -1,0 +1,8 @@
+CharAuto   You tickle yourself, how funny!~
+CharFound  You tickle $N - $E starts giggling.~
+CharNoArg  Whom do you want to tickle?~
+OtherAuto  $n tickles $mself.~
+OtherFound $n tickles $N - $E starts giggling.~
+OtherNoArg ~
+VictFound  $n tickles you - hee hee hee.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You Hmmmm out loud.~
+CharFound  You gaze thoughtfully at $M and say 'Hmmm.'~
+CharNoArg  You Hmmmm out loud.~
+OtherAuto  $n thinks, 'Hmmmm.'~
+OtherFound $n gazes thoughtfully at $N and says 'Hmmm.'~
+OtherNoArg $n thinks, 'Hmmmm.'~
+VictFound  $n gazes thoughtfully at you and says 'Hmmm.'~
+End

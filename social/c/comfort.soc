@@ -1,0 +1,8 @@
+CharAuto   You make a vain attempt to comfort yourself.~
+CharFound  You comfort $M.~
+CharNoArg  Do you feel uncomfortable?~
+OtherAuto  $n has no one to comfort $m but $mself.~
+OtherFound $n comforts $N.~
+OtherNoArg ~
+VictFound  $n comforts you.~
+End

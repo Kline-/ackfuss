@@ -1,0 +1,8 @@
+CharAuto   You mutter 'SPAM' in the corner quietly.~
+CharFound  You hurl a can of SPAM at $M.~
+CharNoArg  You mutter 'SPAM' quietly to yourself.~
+OtherAuto  $n mutters 'SPAM SPAM SPAM SPAM'.  Join in!~
+OtherFound $n hurls a can of SPAM at $N.~
+OtherNoArg $n sings 'SPAM SPAM SPAM SPAM SPAM SPAM....'~
+VictFound  $n SPAMS you viciously.~
+End

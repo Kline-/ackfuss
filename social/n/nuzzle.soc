@@ -1,0 +1,8 @@
+CharAuto   I'm sorry, friend, but that's impossible.~
+CharFound  You nuzzle $S neck softly.~
+CharNoArg  Nuzzle whom?~
+OtherAuto  ~
+OtherFound $n softly nuzzles $N's neck.~
+OtherNoArg ~
+VictFound  $n softly nuzzles your neck.~
+End

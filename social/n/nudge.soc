@@ -1,0 +1,8 @@
+CharAuto   You nudge yourself, for some strange reason.~
+CharFound  You nudge $M.~
+CharNoArg  Nudge whom?~
+OtherAuto  $n nudges $mself, to keep $mself awake.~
+OtherFound $n nudges $N.~
+OtherNoArg ~
+VictFound  $n nudges you.~
+End

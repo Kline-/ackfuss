@@ -1,0 +1,8 @@
+CharAuto   You speak your best German in hopes of getting a beer.~
+CharFound  You speak your best German to $M in hopes of getting a beer.~
+CharNoArg  You speak your best German in hopes of getting a beer.~
+OtherAuto  $n says 'Du bist das hundchen!'  What the hell?~
+OtherFound $n says to $N, 'Du bist das hundchen!'  What the hell?~
+OtherNoArg $n says 'Du bist das hundchen!'  What the hell?~
+VictFound  $n says to you, 'Du bist das hundchen!'  What the hell?~
+End

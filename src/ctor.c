@@ -715,6 +715,18 @@ shop_data::shop_data()
     shop_list.push_back(this);
 }
 
+social_data::social_data()
+{
+    char_auto.clear();
+    char_found.clear();
+    char_no_arg.clear();
+    name.clear();
+    other_auto.clear();
+    other_found.clear();
+    other_no_arg.clear();
+    vict_found.clear();
+}
+
 super_data::super_data()
 {
     bloodline = 0;

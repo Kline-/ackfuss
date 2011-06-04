@@ -1,0 +1,8 @@
+CharAuto   You roll on the floor and laugh at yourself.~
+CharFound  You laugh your head off at $S remark.~
+CharNoArg  You roll on the floor laughing hysterically.~
+OtherAuto  $n laughs at $mself.  Join in the fun.~
+OtherFound $n rolls on the floor laughing at $N's remark.~
+OtherNoArg $n rolls on the floor laughing hysterically.~
+VictFound  $n can't stop laughing at your remark.~
+End

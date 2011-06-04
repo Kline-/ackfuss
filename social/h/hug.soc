@@ -1,0 +1,8 @@
+CharAuto   You hug yourself.~
+CharFound  You @@Rhug@@N $M.~
+CharNoArg  Hug whom?~
+OtherAuto  $n hugs $mself in a vain attempt to get friendship.~
+OtherFound $n @@Rhugs@@N $N.~
+OtherNoArg ~
+VictFound  $n @@Rhugs@@N you.~
+End

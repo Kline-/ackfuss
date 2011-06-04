@@ -1,0 +1,8 @@
+CharAuto   That seems a little silly to me.~
+CharFound  You grovel before $M.~
+CharNoArg  You grovel in the dirt.~
+OtherAuto  ~
+OtherFound $n grovels in the dirt before $N.~
+OtherNoArg $n grovels in the dirt.~
+VictFound  $n grovels in the dirt before you.~
+End

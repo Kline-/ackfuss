@@ -1,0 +1,8 @@
+CharAuto   You cower in the corner at the thought of yourself.  You scaredy cat!~
+CharFound  You cower in the corner at the sight of $M.~
+CharNoArg  What are you afraid of?~
+OtherAuto  $n cowers in the corner.  What is wrong with $m now?~
+OtherFound $n cowers in the corner at the sight of $N.~
+OtherNoArg $n cowers in the corner from claustrophobia.~
+VictFound  $n cowers in the corner at the sight of you.~
+End

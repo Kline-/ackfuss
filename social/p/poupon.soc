@@ -1,0 +1,8 @@
+CharAuto   You say 'Pardon me, do you have any Grey Poupon?'.~
+CharFound  You say to $M, 'Pardon me, do you have any Grey Poupon?'.~
+CharNoArg  You say 'Pardon me, do you have any Grey Poupon?'.~
+OtherAuto  $n says 'Pardon me, do you have any Grey Poupon?'~
+OtherFound $n says to $N, 'Pardon me, do you have any Grey Poupon?'~
+OtherNoArg $n says 'Pardon me, do you have any Grey Poupon?'~
+VictFound  $n says to you, 'Pardon me, do you have any Grey Poupon?'~
+End

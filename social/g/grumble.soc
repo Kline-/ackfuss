@@ -1,0 +1,8 @@
+CharAuto   You grumble under your breath.~
+CharFound  You grumble to $M.~
+CharNoArg  You grumble.~
+OtherAuto  $n grumbles under $s breath.~
+OtherFound $n grumbles to $N.~
+OtherNoArg $n grumbles.~
+VictFound  $n grumbles to you.~
+End

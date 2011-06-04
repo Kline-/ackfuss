@@ -71,8 +71,8 @@ o/db.o: db.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_info.h h/act_mob.h h/act_obj.h h/act_wiz.h h/buildtab.h h/comm.h \
  h/db.h h/handler.h h/hash.h h/interp.h h/macros.h h/money.h h/mudinfo.h \
- h/obj_fun.h h/rulers.h h/save.h h/social_edit.h h/spec_fun.h h/spendqp.h \
- h/ssm.h h/sysdata.h
+ h/obj_fun.h h/rulers.h h/save.h h/spec_fun.h h/spendqp.h h/ssm.h \
+ h/sysdata.h
 o/dtor.o: dtor.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_wiz.h h/comm.h h/db.h h/handler.h h/hash.h h/money.h h/ssm.h
@@ -104,14 +104,14 @@ o/hunt.o: hunt.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/handler.h h/ssm.h
 o/imc.o: imc.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
- h/act_wiz.h h/comm.h h/db.h h/handler.h h/sha256.h
+ h/act_wiz.h h/comm.h h/db.h h/handler.h h/sha256.h h/social.h
 o/interp.o: interp.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_clan.h h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h \
  h/act_wiz.h h/board.h h/build.h h/buildare.h h/clutch.h h/comm.h h/db.h \
  h/email.h h/enchant.h h/fight.h h/handler.h h/hunt.h h/interp.h \
  h/magic.h h/mapper.h h/money.h h/mount.h h/mudinfo.h h/pdelete.h \
- h/quest.h h/rulers.h h/scheck.h h/social_edit.h h/spendqp.h h/sysdata.h \
+ h/quest.h h/rulers.h h/social.h h/scheck.h h/spendqp.h h/sysdata.h \
  h/vampire.h h/werewolf.h h/wizutil.h h/write.h
 o/lists.o: lists.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/ssm.h
@@ -166,9 +166,9 @@ o/scheck.o: scheck.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
 o/sha256.o: sha256.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/sha256.h
-o/social_edit.o: social_edit.c h/globals.h h/includes.h h/typedefs.h \
- h/ack.h h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h \
- h/utils.h h/act_info.h h/comm.h h/db.h h/ssm.h
+o/social.o: social.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
+ h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
+ h/act_wiz.h h/db.h h/ssm.h
 o/spec_fun.o: spec_fun.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h h/comm.h \

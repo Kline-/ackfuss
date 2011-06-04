@@ -62,8 +62,6 @@
  * o mob_index hash table
  * o obj_index hash table
  * o room_index hash table
- * o socials table
- * o helps
  * o areas
  * o notes/ideas/etc
  *
@@ -118,10 +116,9 @@ static long dump( void )
             /*
              * things to ignore:
              * * the common DEFAULT_PROMPT prompt string
-             * * a '$' (from socials)
              */
 
-            if ( !str_cmp( p->buf, DEFAULT_PROMPT ) || !str_cmp( p->buf, "$" ) )
+            if ( !str_cmp( p->buf, DEFAULT_PROMPT ) )
                 continue;
 
             fprintf( dumpf, "usage %2d/%2d, caller %s, string %s\n", p->ref, p->usage, p->caller, p->buf );
@@ -396,22 +393,6 @@ static void walk_room_index_data( ROOM_INDEX_DATA * r )
 }
 
 
-static void walk_social_type( SOCIAL_TYPE *s )
-{
-
-
-    if ( !s )
-        return;
-    touch( s->name );
-    touch( s->char_no_arg );
-    touch( s->others_no_arg );
-    touch( s->char_found );
-    touch( s->others_found );
-    touch( s->vict_found );
-    touch( s->char_auto );
-    touch( s->others_auto );
-}
-
 static void walk_descriptor_data( DESCRIPTOR_DATA * d )
 {
     if ( !d )
@@ -428,16 +409,6 @@ static void walk_ban_data( BAN_DATA * b )
     touch( b->banned_by );
 }
 
-
-
-static void walk_socials( void )
-{
-    extern int maxSocial;
-    int i;
-
-    for ( i = 0; i < maxSocial; i++ )
-        walk_social_type( &social_table[i] );
-}
 
 static void walk_chars( void )
 {
@@ -600,7 +571,6 @@ DO_FUN(do_scheck)
     disable_timer_abort = TRUE;
     clear(  );
 
-    walk_socials(  );
     walk_chars(  );
     walk_descriptors(  );
     walk_objects(  );

@@ -1,0 +1,8 @@
+CharAuto   You profess 'Jesus saves!  But Gretsky recovers...he scores!'~
+CharFound  You profess 'Jesus saves!  But Gretsky recovers...he scores!'~
+CharNoArg  You profess 'Jesus saves!  But Gretsky recovers...he scores!'~
+OtherAuto  $n announces 'Jesus saves!  But Gretsky recovers...he scores!'~
+OtherFound $n announces 'Jesus saves!  But Gretsky recovers...he scores!'~
+OtherNoArg $n announces 'Jesus saves!  But Gretsky recovers...he scores!'~
+VictFound  $n announces to you 'Jesus saves!  But Gretsky recovers...he scores!'~
+End

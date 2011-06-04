@@ -1,0 +1,8 @@
+CharAuto   $n snores loudly.~
+CharFound  $n snores loudly.~
+CharNoArg  Zzzzzzzzzzzzzzzzz.~
+OtherAuto  $n snores loudly.~
+OtherFound $n snores loudly.~
+OtherNoArg $n snores loudly.~
+VictFound  $n snores loudly.~
+End

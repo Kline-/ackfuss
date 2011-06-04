@@ -1,0 +1,8 @@
+CharAuto   You thank yourself since nobody else wants to !~
+CharFound  You thank $N heartily.~
+CharNoArg  Thank you too.~
+OtherAuto  $n thanks $mself since you won't.~
+OtherFound $n thanks $N heartily.~
+OtherNoArg ~
+VictFound  $n thanks you heartily.~
+End

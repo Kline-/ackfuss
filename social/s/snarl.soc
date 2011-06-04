@@ -1,0 +1,8 @@
+CharAuto   You snarl at yourself.~
+CharFound  You snarl at $M.~
+CharNoArg  You grizzle your teeth and look mean.~
+OtherAuto  $n snarls at $mself.~
+OtherFound $n snarls at $N.~
+OtherNoArg $n snarls angrily.~
+VictFound  $n snarls at you, for some reason.~
+End

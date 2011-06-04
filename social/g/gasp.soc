@@ -1,0 +1,8 @@
+CharAuto   You look at yourself and gasp!~
+CharFound  You gasp as you realize what $E did.~
+CharNoArg  You gasp in astonishment.~
+OtherAuto  $n takes one look at $mself and gasps in astonishment!~
+OtherFound $n gasps as $e realizes what $N did.~
+OtherNoArg $n gasps in astonishment.~
+VictFound  $n gasps as $e realizes what you did.~
+End

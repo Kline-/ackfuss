@@ -1,0 +1,8 @@
+CharAuto   You flutter your eyelashes at the thought of yourself.~
+CharFound  You flutter your eyelashes at $M.~
+CharNoArg  You flutter your eyelashes.~
+OtherAuto  $n flutters $s eyelashes at no one in particular.~
+OtherFound $n flutters $s eyelashes in $N's direction.~
+OtherNoArg $n flutters $s eyelashes.~
+VictFound  $n looks at you and flutters $s eyelashes.~
+End

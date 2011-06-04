@@ -1,0 +1,8 @@
+CharAuto   You curl into a tiny ball and go to sleep.~
+CharFound  You curl up in $S lap and go to sleep.~
+CharNoArg  You curl into a tiny ball and go to sleep.~
+OtherAuto  $n curls $mself into a tiny ball and goes to sleep.~
+OtherFound $n curls up in $N's lap and goes to sleep.~
+OtherNoArg $n curls $mself into a tiny ball and goes to sleep.~
+VictFound  $n curls up in your lap and goes to sleep.~
+End

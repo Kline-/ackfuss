@@ -1,0 +1,8 @@
+CharAuto   You laugh at yourself.  I would, too.~
+CharFound  You laugh at $N mercilessly.~
+CharNoArg  You laugh.~
+OtherAuto  $n laughs at $mself.  Let's all join in!!!~
+OtherFound $n laughs at $N mercilessly.~
+OtherNoArg $n laughs.~
+VictFound  $n laughs at you mercilessly.  Hmmmmph.~
+End

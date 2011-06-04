@@ -1117,22 +1117,22 @@ struct cmd_type
 };
 
 
-/*
- * Structure for a social in the socials table.
- */
-struct social_type
+/* Kline */
+class social_data
 {
-    char *name;
-    char *char_no_arg;
-    char *others_no_arg;
-    char *char_found;
-    char *others_found;
-    char *vict_found;
-    char *char_auto;
-    char *others_auto;
+    public:
+        social_data();
+        ~social_data();
+        string char_auto;
+        string char_found;
+        string char_no_arg;
+        string name;
+        string other_auto;
+        string other_found;
+        string other_no_arg;
+        string vict_found;
 };
 
-/* Kline */
 class cast_data
 {
     public:

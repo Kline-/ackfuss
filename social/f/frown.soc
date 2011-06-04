@@ -1,0 +1,8 @@
+CharAuto   You frown at yourself.  Poor baby.~
+CharFound  You frown at what $E did.~
+CharNoArg  What's bothering you ?~
+OtherAuto  $n frowns at $mself.  Poor baby.~
+OtherFound $n frowns at what $N did.~
+OtherNoArg $n frowns.~
+VictFound  $n frowns at what you did.~
+End

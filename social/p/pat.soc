@@ -1,0 +1,8 @@
+CharAuto   You pat yourself on your head.  Aren't you proud?~
+CharFound  You pat $N on $S head.~
+CharNoArg  Pat whom?~
+OtherAuto  $n pats $mself on the head.  $e is proud of $mself!~
+OtherFound $n pats $N on $S head.~
+OtherNoArg ~
+VictFound  $n pats you on your head.~
+End

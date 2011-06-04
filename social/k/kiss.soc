@@ -1,0 +1,8 @@
+CharAuto   All the lonely people :(~
+CharFound  You @@Rkiss@@N $M.~
+CharNoArg  Isn't there someone you want to kiss?~
+OtherAuto  ~
+OtherFound $n @@Rkisses@@N $N.~
+OtherNoArg ~
+VictFound  $n @@Rkisses@@N you.~
+End

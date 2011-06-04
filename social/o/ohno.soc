@@ -1,0 +1,8 @@
+CharAuto   You exclaim to yourself, 'Oh no!  I did it again!'~
+CharFound  You exclaim to $M, 'Oh no!  I did it again!'~
+CharNoArg  Oh no!  You did it again!~
+OtherAuto  $n exclaims to $mself, 'Oh no!  I did it again!'~
+OtherFound $n exclaims to $N, 'Oh no!  I did it again!'~
+OtherNoArg Oh no!  $n did it again!~
+VictFound  $n exclaims to you, 'Oh no!  I did it again!'~
+End

@@ -1,0 +1,8 @@
+CharAuto   Now why would you want to do that?~
+CharFound  You roll onto your back and wimper your submission to $N.~
+CharNoArg  You roll onto your back and wimper your submission.~
+OtherAuto  ~
+OtherFound $n rolls onto $s back and wimpers $s submission to $n.~
+OtherNoArg $n rolls onto $s back and waves $s legs in submission.~
+VictFound  $n rolls onto $s back, and wimpers $s submission to you.~
+End

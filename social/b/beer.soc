@@ -1,0 +1,8 @@
+CharAuto   You draw yourself a beer.~
+CharFound  You draw a cold, frosty beer for $N.~
+CharNoArg  You down a cold, frosty beer.~
+OtherAuto  $n draws $mself a beer.~
+OtherFound $n draws a cold, frosty beer for $N.~
+OtherNoArg $n downs a cold, frosty beer.~
+VictFound  $n draws a cold, frosty beer for you.~
+End

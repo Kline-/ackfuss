@@ -1,0 +1,8 @@
+CharAuto   ~
+CharFound  ~
+CharNoArg  @@WYou search around for @@ysomeone @@Wto tag.@@N~
+OtherAuto  ~
+OtherFound ~
+OtherNoArg @@y$n @@Wis wandering around looking to tag someone@@N.~
+VictFound  ~
+End

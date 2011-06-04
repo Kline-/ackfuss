@@ -1,0 +1,8 @@
+CharAuto   @@WYou @@dpurr @@Wquietly to yourself@@N.~
+CharFound  @@WYou rub along @@a$N@@W'@@as @@Wleg @@dpurring @@Wcontently@@N.~
+CharNoArg  @@WYou @@dpurrrrr @@Wsoftly...@@N~
+OtherAuto  @@WYou notice $n @@dpurring @@Wquietly to $mself@@N.~
+OtherFound @@a$n @@Wrubs against $N's leg, @@dpurring @@Wcontently@@N.~
+OtherNoArg @@W$n @@dpurrrrrrrrs @@Wsoftly to $mself@@N.~
+VictFound  @@W$n rubs along your leg, @@dpurring @@Wcontently.@@N~
+End

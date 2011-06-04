@@ -1,0 +1,8 @@
+CharAuto   You apologize to yourself.~
+CharFound  You apologize to $M.~
+CharNoArg  You apologize for your behavior.~
+OtherAuto  $n apologizes to $mself.  Hmmmm.~
+OtherFound $n apologizes to $N.~
+OtherNoArg $n apologizes for $s rude behavior.~
+VictFound  $n apologizes to you.~
+End

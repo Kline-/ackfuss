@@ -1,0 +1,8 @@
+CharAuto   You accuse yourself.~
+CharFound  You look accusingly at $M.~
+CharNoArg  Accuse whom?~
+OtherAuto  $n seems to have a bad conscience.~
+OtherFound $n looks accusingly at $N.~
+OtherNoArg $n is in an accusing mood.~
+VictFound  $n looks accusingly at you.~
+End

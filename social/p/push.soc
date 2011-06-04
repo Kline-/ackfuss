@@ -1,0 +1,8 @@
+CharAuto   You push yourself to the limit of your abilities.~
+CharFound  You push $M away in disgust.~
+CharNoArg  You push the history-eraser button! BUT, nothing seems to happen.~
+OtherAuto  $n pushes $mself to the limits of $s abilites.~
+OtherFound $n pushes $N away in disgust.~
+OtherNoArg $n pushes the history-eraser button! BUT, nothing seems to happen.~
+VictFound  $n pushes you away in disgust.~
+End

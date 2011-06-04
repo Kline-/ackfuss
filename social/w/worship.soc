@@ -1,0 +1,8 @@
+CharAuto   You worship yourself.~
+CharFound  You drop to your knees in homage of $M.~
+CharNoArg  You worship the powers that be.~
+OtherAuto  $n worships $mself - ah, the conceitedness of it all.~
+OtherFound $n prostrates $mself before $N.~
+OtherNoArg $n worships the powers that be.~
+VictFound  $n believes you are all powerful.~
+End

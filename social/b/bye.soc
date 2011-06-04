@@ -1,0 +1,8 @@
+CharAuto   You say goodbye to yourself.  Contemplating suicide?~
+CharFound  You say goodbye to $N.~
+CharNoArg  You say goodbye to all in the room.~
+OtherAuto  $n says goodbye to $mself.  Is $e contemplating suicide?~
+OtherFound $n says goodbye to $N.~
+OtherNoArg $n says goodbye to everyone in the room.~
+VictFound  $n says goodbye to you.~
+End

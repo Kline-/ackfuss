@@ -1,0 +1,8 @@
+CharAuto   You point proudly at yourself.~
+CharFound  You point at $M accusingly.~
+CharNoArg  Point at whom?~
+OtherAuto  $n points proudly at $mself.~
+OtherFound $n points at $N accusingly.~
+OtherNoArg ~
+VictFound  $n points at you accusingly.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You must feel very cuddly indeed ... :)~
+CharFound  You cuddle $M.~
+CharNoArg  Whom do you feel like cuddling today?~
+OtherAuto  $n cuddles up to $s shadow.  What a sorry sight.~
+OtherFound $n cuddles $N.~
+OtherNoArg ~
+VictFound  $n cuddles you.~
+End

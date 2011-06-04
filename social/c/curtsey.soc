@@ -1,0 +1,8 @@
+CharAuto   You curtsey to your audience (yourself).~
+CharFound  You curtsey to $M.~
+CharNoArg  You curtsey to your audience.~
+OtherAuto  $n curtseys to $mself, since no one is paying attention to $m.~
+OtherFound $n curtseys gracefully to $N.~
+OtherNoArg $n curtseys gracefully.~
+VictFound  $n curtseys gracefully for you.~
+End

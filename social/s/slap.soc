@@ -1,0 +1,8 @@
+CharAuto   @@WYou @@Rslap@@W yourself @@epainfully@@W, trying to stay awake.@@N~
+CharFound  @@WYou slap @@d$N @@epainfully@@W, showing your @@Ranger@@W.~
+CharNoArg  Anyone in particular?~
+OtherAuto  @@d$n@@e slaps@@W $mself@@e painfully@@W. You wonder if $e enjoyed that.@@N~
+OtherFound @@d$n @@Rslaps@@d $N @@epainfully@@W across the cheek. Don't make the same mistake @@e$E@@W did.@@N~
+OtherNoArg ~
+VictFound  @@d$n @@Rslaps@@W you @@epainfully@@W for your @@eoutrageous@@W comment.@@N~
+End

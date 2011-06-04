@@ -1,0 +1,8 @@
+CharAuto   You blow a kiss to yourself.~
+CharFound  You blow a kiss to $M.~
+CharNoArg  Blow a kiss to whom?~
+OtherAuto  $n blows a kiss to $mself.  Weird.~
+OtherFound $n blows a kiss to $N.  Touching, ain't it?~
+OtherNoArg $n blows at $s hand.~
+VictFound  $n blows a kiss to you.  Not as good as a real one, huh?~
+End

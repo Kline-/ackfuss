@@ -1,0 +1,8 @@
+CharAuto   You bonk yourself.~
+CharFound  You bonk $M for being a numbskull.~
+CharNoArg  BONK.~
+OtherAuto  $n bonks $mself.~
+OtherFound $n bonks $N.  What a numbskull.~
+OtherNoArg $n spells 'potato' like Dan Quayle: 'B-O-N-K'.~
+VictFound  $n bonks you.  BONK BONK BONK!~
+End

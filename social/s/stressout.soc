@@ -1,0 +1,8 @@
+CharAuto   You slam your head into a post to relieve your stress. @@R Are you Alright?@@N~
+CharFound  You grab @@R$N@@N by the back of the head and slam $S head into a post, relieving $S stress.@@N~
+CharNoArg  @@NYou pull your hair out in @@Rbloody tufts@@N, displaying obvious stress.@@N~
+OtherAuto  $n slams $s head into a post for stress relief. @@RAre you annoying $m?@@N~
+OtherFound $n grabs $N by the back of the head and @@Rslams@@N $M into a post, relieving $S stress.@@N~
+OtherNoArg $n pulls @@Rbloody tufts@@N of $s hair out, displaying obvious stress.@@N~
+VictFound  $n grabs you by the back of the head and slams your head into a post. @@RWhat a relief!@@N~
+End

@@ -1,0 +1,8 @@
+CharAuto   $n sulks in the corner.~
+CharFound  $n sulks in the corner.~
+CharNoArg  You sulk.~
+OtherAuto  $n sulks in the corner.~
+OtherFound $n sulks in the corner.~
+OtherNoArg $n sulks in the corner.~
+VictFound  $n sulks in the corner.~
+End

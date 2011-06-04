@@ -1,0 +1,8 @@
+CharAuto   You whistle a little tune to yourself.~
+CharFound  You whistle at the sight of $M.~
+CharNoArg  You whistle appreciatively.~
+OtherAuto  $n whistles a little tune to $mself.~
+OtherFound $n whistles at the sight of $N.~
+OtherNoArg $n whistles appreciatively.~
+VictFound  $n whistles at the sight of you.~
+End

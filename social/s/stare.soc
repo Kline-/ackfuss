@@ -1,0 +1,8 @@
+CharAuto   You stare dreamily at yourself - enough narcissism for now.~
+CharFound  You stare dreamily at $N, completely lost in $S eyes..~
+CharNoArg  You stare at the sky.~
+OtherAuto  $n stares dreamily at $mself - NARCISSIST!~
+OtherFound $n stares dreamily at $N.~
+OtherNoArg $n stares at the sky.~
+VictFound  $n stares dreamily at you, completely lost in your eyes.~
+End

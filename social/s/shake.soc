@@ -1,0 +1,8 @@
+CharAuto   You are shaken by yourself.~
+CharFound  You shake $S hand.~
+CharNoArg  You shake your head.~
+OtherAuto  $n shakes and quivers like a bowl full of jelly.~
+OtherFound $n shakes $N's hand.~
+OtherNoArg $n shakes $s head.~
+VictFound  $n shakes your hand.~
+End

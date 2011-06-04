@@ -1,0 +1,8 @@
+CharAuto   You still smell like you.~
+CharFound  You sniff $M.  EEWW!!~
+CharNoArg  You sniff the air.~
+OtherAuto  $n sniffs $melf.  Now, THAT'S sick :P~
+OtherFound $n sniffs in $N's general direction.~
+OtherNoArg $n sniffs the air suspiciously.~
+VictFound  $n sniffs in your general direction. I wonder why?~
+End

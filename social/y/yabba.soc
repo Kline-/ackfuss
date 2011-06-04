@@ -1,0 +1,8 @@
+CharAuto   YABBA-DABBA-DOO!~
+CharFound  You holler 'Hey $N -- YABBA DABBA DOO!'~
+CharNoArg  YABBA-DABBA-DOO!~
+OtherAuto  $n hollers 'Hey Wilma -- YABBA DABBA DOO!'~
+OtherFound $n hollers 'Hey $N -- YABBA DABBA DOO!'~
+OtherNoArg $n hollers 'Hey Wilma -- YABBA DABBA DOO!'~
+VictFound  $n hollers 'Hey $N -- YABBA DABBA DOO!'~
+End

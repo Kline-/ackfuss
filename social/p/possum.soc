@@ -1,0 +1,8 @@
+CharAuto   You do your best imitation of a corpse.~
+CharFound  You do your best imitation of a corpse.~
+CharNoArg  You do your best imitation of a corpse.~
+OtherAuto  $n hits the ground... DEAD.~
+OtherFound $n hits the ground... DEAD.~
+OtherNoArg $n hits the ground... DEAD.~
+VictFound  $n hits the ground... DEAD.~
+End

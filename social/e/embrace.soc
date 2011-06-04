@@ -1,0 +1,8 @@
+CharAuto   You hold yourself in a warm and loving embrace.  Feels silly doesn't it?~
+CharFound  You hold $M in a warm and loving embrace.~
+CharNoArg  Who do you want to hold?~
+OtherAuto  $n holds $mself in a warm and loving embrace.  $e looks pretty silly.~
+OtherFound $n holds $N in a warm and loving embrace.~
+OtherNoArg $n looks around for someone to hold close to $m.~
+VictFound  $n holds you in a warm and loving embrace.~
+End

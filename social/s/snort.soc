@@ -1,0 +1,8 @@
+CharAuto   You snort.~
+CharFound  You snort.  Maybe $N would like some?~
+CharNoArg  You snort.~
+OtherAuto  $n takes a sniff of some white powder and looks VERY relieved.~
+OtherFound $n takes a sniff of some white powder and looks VERY relieved.~
+OtherNoArg $n takes a sniff of some white powder and looks VERY relieved.~
+VictFound  $n takes a sniff of some white powder and looks VERY relieved.  Like some?~
+End

@@ -1,0 +1,8 @@
+CharAuto   You speak your best French in hopes of getting lucky, with yourself???~
+CharFound  You speak your best French to $M in hopes of getting lucky.~
+CharNoArg  You speak your best French in hopes of getting lucky.~
+OtherAuto  $n says to $mself, 'Voulez-vous couche avec moi ce soir?'~
+OtherFound $n tells $N, 'Voulez-vous couche avec moi ce soir?'~
+OtherNoArg $n tells you, 'Voulez-vous couche avec moi ce soir?'~
+VictFound  $n tells you, 'Voulez-vous couche avec moi ce soir?'~
+End

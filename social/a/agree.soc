@@ -1,0 +1,8 @@
+CharAuto   Well I hope you would agree with yourself!~
+CharFound  You agree with $M.~
+CharNoArg  You seem to be in an agreeable mood.~
+OtherAuto  $n agrees with $mself, of course.~
+OtherFound $n agrees with $N.~
+OtherNoArg $n seems to agree.~
+VictFound  $n agrees with you.~
+End

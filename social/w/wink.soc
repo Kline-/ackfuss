@@ -1,0 +1,8 @@
+CharAuto   You wink at yourself ?? - what are you up to ?~
+CharFound  You wink suggestively at $N.~
+CharNoArg  You wink suggestively.~
+OtherAuto  $n winks at $mself - something strange is going on...~
+OtherFound $n winks at $N.~
+OtherNoArg $n winks suggestively.~
+VictFound  $n winks suggestively at you.~
+End

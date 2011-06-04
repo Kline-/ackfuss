@@ -1,0 +1,8 @@
+CharAuto   You kiss your own pectoral muscles.~
+CharFound  You give $M a little peck on the cheek.~
+CharNoArg  You peck for seeds on the ground.~
+OtherAuto  $n pecks $mself on $s pectoral muscles.~
+OtherFound $n gives $N a small peck on the cheek.~
+OtherNoArg $n pecks for seeds on the ground.~
+VictFound  $n gives you a sweet peck on the cheek.~
+End

@@ -1,0 +1,8 @@
+CharAuto   You mumble to yourself, 'DUM-DUM-DUM-DUM ... ah, a clue!'~
+CharFound  You mumble 'DUM-DUM-DUM-DUM ... ah, a clue!'~
+CharNoArg  You mumble 'DUM-DUM-DUM-DUM ... ah, a clue!'~
+OtherAuto  $n mumbles to $mself, 'DUM-DUM-DUM-DUM ... ah, a clue!'~
+OtherFound $n mumbles 'DUM-DUM-DUM-DUM ... ah, a clue!'~
+OtherNoArg $n mumbles 'DUM-DUM-DUM-DUM ... ah, a clue!'~
+VictFound  $n mumbles 'DUM-DUM-DUM-DUM ... $N, aha, a clue!'~
+End

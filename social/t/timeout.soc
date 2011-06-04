@@ -1,0 +1,8 @@
+CharAuto   You take a 'T' and drink some Gatorade (tm).~
+CharFound  You take a 'T' and offer $M some Gatorade (tm).~
+CharNoArg  You take a 'T' and drink some Gatorade (tm).~
+OtherAuto  $n takes a 'T' and drinks some Gatorade (tm).~
+OtherFound $n takes a 'T' and offers $N some Gatorade (tm).~
+OtherNoArg $n takes a 'T' and drinks some Gatorade (tm).~
+VictFound  $n takes a 'T' and offers you some Gatorade (tm).~
+End

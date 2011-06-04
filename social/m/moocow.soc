@@ -1,0 +1,8 @@
+CharAuto   You make cow noises.  Mooooooooooooooooooo!~
+CharFound  You make cow noises at $M.  Mooooooooooooooooooo!~
+CharNoArg  You make cow noises.  Mooooooooooooooooooo!~
+OtherAuto  $n Mooooooooooooooooooooooooos like a cow.~
+OtherFound $n Mooooooooooooooooooooooooos like a cow at $N.~
+OtherNoArg $n Mooooooooooooooooooooooooos like a cow.~
+VictFound  $n looks at you and Mooooooooooooooooooooooooos like a cow.~
+End

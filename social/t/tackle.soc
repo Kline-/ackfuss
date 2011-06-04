@@ -1,0 +1,8 @@
+CharAuto   You wrap your arms around yourself, and throw yourself to the ground.~
+CharFound  You run over to $M and bring $M down!~
+CharNoArg  You can't tackle the AIR!~
+OtherAuto  $n wraps $s arms around $mself and brings $mself down!?~
+OtherFound $n runs over to $N and tackles $M to the ground!~
+OtherNoArg ~
+VictFound  $n runs over to you and tackles you to the ground!~
+End

@@ -1,0 +1,8 @@
+CharAuto   You wiggle your nose.~
+CharFound  You tweak $S nose.~
+CharNoArg  Gee your nose is big.~
+OtherAuto  $n wiggles $s nose.~
+OtherFound $n tweaks $N's nose.  Ow!~
+OtherNoArg $n noses around in your business.~
+VictFound  $n tweaks your nose.  Ow!~
+End

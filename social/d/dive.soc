@@ -1,0 +1,8 @@
+CharAuto   You take a dive.~
+CharFound  You dive behind $M and hide.~
+CharNoArg  You dive into the ocean.~
+OtherAuto  $n takes a dive.~
+OtherFound $n dives behind $N and hides.~
+OtherNoArg $n dives into the ocean.~
+VictFound  $n dives behind you and hides.~
+End

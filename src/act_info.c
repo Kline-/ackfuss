@@ -2820,7 +2820,7 @@ DO_FUN(do_password)
 }
 
 DO_FUN(do_socials)
-{
+{/*
     char buf[MSL];
     char out[MSL * 2];
     int iSocial;
@@ -2840,7 +2840,7 @@ DO_FUN(do_socials)
 
     if ( col % 6 != 0 )
         strncat( out, "\r\n", MSL );
-    send_to_char( out, ch );
+    send_to_char( out, ch );*/
     return;
 }
 

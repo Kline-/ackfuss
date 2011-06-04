@@ -1,0 +1,8 @@
+CharAuto   You lick yourself.~
+CharFound  You lick $M.~
+CharNoArg  You lick your lips and smile.~
+OtherAuto  $n licks $mself - YUCK.~
+OtherFound $n licks $N.~
+OtherNoArg $n licks $s lips and smiles.~
+VictFound  $n licks you.~
+End

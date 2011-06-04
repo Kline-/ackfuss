@@ -1,0 +1,8 @@
+CharAuto   You do your best Han Solo impression.~
+CharFound  You do your best Han Solo impression.~
+CharNoArg  You do your best Han Solo impression.~
+OtherAuto  $n exclaims, 'YAHOO!  Great shot, $n, that was one in a million!'~
+OtherFound $n exclaims, 'YAHOO!  Great shot, $N, that was one in a million!'~
+OtherNoArg $n exclaims, 'YAHOO!  Great shot, kid, that was one in a million!'~
+VictFound  $n exclaims, 'YAHOO!  Great shot, $N, that was one in a million!'~
+End

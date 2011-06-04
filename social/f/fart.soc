@@ -1,0 +1,8 @@
+CharAuto   You fart at yourself.  You deserve it.~
+CharFound  You fart at $M.  Boy, you are sick.~
+CharNoArg  Where are your manners?~
+OtherAuto  $n farts at $mself.  Better $m than you.~
+OtherFound $n farts in $N's direction.  Better flee before $e turns to you!~
+OtherNoArg $n lets off a real rip-roarer ... a greenish cloud envelops $n!~
+VictFound  $n farts in your direction.  You gasp for air.~
+End
