@@ -1134,6 +1134,17 @@ class social_data
         string vict_found;
 };
 
+class help_data
+{
+    public:
+        help_data();
+        ~help_data();
+        int cache_time;
+        bool imm;
+        string name;
+        string description;
+};
+
 class cast_data
 {
     public:

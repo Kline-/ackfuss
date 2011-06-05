@@ -50,6 +50,10 @@
 #include "h/db.h"
 #endif
 
+#ifndef DEC_HELP_H
+#include "h/help.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif

@@ -65,6 +65,7 @@ extern list<ROOM_INDEX_DATA *> room_index_list;
 extern list<RULER_DATA *> ruler_list;
 extern list<SHOP_DATA *> shop_list;
 extern list<SOCIAL_DATA *> social_list;
+extern list<HELP_DATA *> help_list;
 
 extern DESCRIPTOR_DATA *first_desc;
 extern DESCRIPTOR_DATA *last_desc;

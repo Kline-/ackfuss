@@ -154,6 +154,10 @@ hash_entry_tp::~hash_entry_tp()
     is_free = true;
 }
 
+help_data::~help_data()
+{
+}
+
 lookup_data::~lookup_data()
 {
     free_string(buf);

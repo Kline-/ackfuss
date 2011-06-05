@@ -28,6 +28,11 @@ Playtesters          These characters are allowed to login while the game
 Pulse Per Sec        The number of game 'pulses' each second. This will directly
                      affect combat update speed. 100 allows for 1/100th second
                      precision, and so on. Adjust this very carefully.
+Pulse Cache          The duration to retain cache items before clearing them from
+                     memory, directly tied to Pulse Per Sec. Shorter values will
+                     give more disk hits, but the ability to have more frequent
+                     help/social updates while longer ones will keep things resident
+                     in memory, but possibly not as fresh.
 Show Damage          Toggles displaying numeric damage in combat.
 Wizlocked            Shows if the game is currently wizlocked. Info only.
                      To change this setting, use the wizlock command.

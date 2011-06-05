@@ -3227,7 +3227,6 @@ void fread_to_eol( FILE * fp )
     return;
 }
 
-
 /* Same as above, but returns the rest of the line */
 
 /* Spec: fixed to handle EOF more gracefully */
@@ -3270,12 +3269,6 @@ char *fsave_to_eol( FILE * fp )
 
     return str_dup( string );
 }
-
-
-
-
-
-
 
 /*
  * Read one word (into static buffer).
@@ -3336,7 +3329,25 @@ char *fread_word( FILE * fp )
     return NULL;
 }
 
+/* Read an entire file at once --Kline */
+char *fread_to_eof( FILE * fp )
+{
+    static char ret[MSL];
+    char tmp[MSL];
 
+    ret[0] = '\0';
+    tmp[0] = '\0';
+
+    while ( fgets(tmp, MSL, fp) )
+    {
+        if ( ret[0] == '\0' )
+            snprintf(ret, MSL, "%s", tmp);
+        else
+            strncat(ret, tmp, MSL);
+    }
+        
+    return ret;
+}
 
 void *_getmem( int size, const char *caller, int log )
 {
@@ -3474,6 +3485,8 @@ DO_FUN(do_memory)
     snprintf( buf, MSL, "Overflow Strings  %5ld strings of %7ld bytes.\r\n", nOverFlowString, sOverFlowString );
     send_to_char( buf, ch );
     snprintf( buf, MSL, "Cache Info:\r\n" );
+    send_to_char( buf, ch );
+    snprintf( buf, MSL, "Helps   %5d\r\n", static_cast<int>(help_list.size()) );
     send_to_char( buf, ch );
     snprintf( buf, MSL, "Socials %5d\r\n", static_cast<int>(social_list.size()) );
     send_to_char( buf, ch );
@@ -4093,17 +4106,6 @@ void update_chistory( CHAR_DATA *ch, char *argument, int channel )
     return;
 }
 
-int count_helps( void )
-{
-    char buf[MSL];
-    char tmp[MSL];
-
-    snprintf(tmp, MSL, "expr `ls -1 -R %s | wc -l` - 26", HELP_DIR);
-    snprintf(buf, MSL, "%s", _popen(tmp));
-
-    return atoi(buf);
-}
-
 int count_skills( void )
 {
     int cnt = 0;
@@ -4112,86 +4114,6 @@ int count_skills( void )
         cnt++;
 
     return cnt;
-}
-
-char *find_helps( const char *search, bool imm )
-{
-    static char ret[MSL];
-    char tmp[MSL] = {'\0'};
-    char split[MSL] = {'\0'};
-    string str;
-    size_t pos;
-
-    if ( !isalpha(*search) )
-        return "You can only search for letters.\r\n";
-
-    if ( strlen(search) < 2 )
-        return "Searches must be at least two letters.\r\n";
-
-    if ( imm )
-        snprintf(split, MSL, "find %s -maxdepth 2 -iname \\*%s\\* -printf '%%f '", HELP_DIR, search);
-    else
-        snprintf(split, MSL, "find %s -maxdepth 2 -iname \\*%s\\*.%s -printf '%%f '", HELP_DIR, search, HELP_MORT);
-    snprintf(tmp, MSL, "%s", _popen(split));
-
-    str = tmp;
-
-    if ( str.empty() )
-        return "Nothing found.\r\n";
-
-    snprintf(tmp, MSL, ".%s", HELP_MORT);
-    while ( (pos = str.find(tmp)) < str.size() )
-        str.replace(pos, strlen(tmp), "");
-
-    if ( imm )
-    {
-        snprintf(tmp, MSL, ".%s", HELP_IMM);
-        while ( (pos = str.find(tmp)) < str.size() )
-            str.replace(pos, strlen(tmp), "");
-    }
-
-    snprintf(ret, MSL, "Found the following possible matches:\r\n%s\r\n", str.c_str());
-    return ret;
-}
-
-char *grep_helps( const char *search, bool imm )
-{
-    static char ret[MSL];
-    char tmp[MSL] = {'\0'};
-    char split[MSL] = {'\0'};
-    string str;
-    size_t pos;
-
-    if ( !isalpha(*search) )
-        return "You can only search for letters.\r\n";
-
-    if ( strlen(search) < 2 )
-        return "Searches must be at least two letters.\r\n";
-
-    if ( imm )
-        snprintf(split, MSL, "grep -i -l -R '%s' %s*/* | cut -c %d-", search, HELP_DIR, static_cast<int>(strlen(HELP_DIR) + 3));
-    else
-        snprintf(split, MSL, "grep -i -l -R '%s' %s*/*.%s | cut -c %d-", search, HELP_DIR, HELP_MORT, static_cast<int>(strlen(HELP_DIR) + 3));
-    snprintf(tmp, MSL, "%s", _popen(split));
-
-    str = tmp;
-
-    if ( str.empty() )
-        return "Nothing found.\r\n";
-
-    snprintf(tmp, MSL, ".%s", HELP_MORT);
-    while ( (pos = str.find(tmp)) < str.size() )
-        str.replace(pos, strlen(tmp), "");
-
-    if ( imm )
-    {
-        snprintf(tmp, MSL, ".%s", HELP_IMM);
-        while ( (pos = str.find(tmp)) < str.size() )
-            str.replace(pos, strlen(tmp), "");
-    }
-
-    snprintf(ret, MSL, "Found the following possible matches:\r\n%s", str.c_str());
-    return ret;
 }
 
 char *_popen( const char *search )
@@ -4296,6 +4218,7 @@ void clear_lists( void )
     for_each( ruler_list.begin(),      ruler_list.end(),      DeleteObject() );
     for_each( shop_list.begin(),       shop_list.end(),       DeleteObject() );
     for_each( social_list.begin(),     social_list.end(),     DeleteObject() );
+    for_each( help_list.begin(),       help_list.end(),       DeleteObject() );
 
     comlog(NULL, true, 0, NULL);
     fclose(fpReserve);

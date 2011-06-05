@@ -74,6 +74,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HELP_H
+#include "h/help.h"
+#endif
+
 #ifndef DEC_HUNT_H
 #include "h/hunt.h"
 #endif
@@ -2508,5 +2512,7 @@ void quest_update(  )
 void cache_update( )
 {
     cache_check_social( );
+    cache_check_help( );
+
     return;
 }

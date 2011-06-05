@@ -78,6 +78,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HELP_H
+#include "h/help.h"
+#endif
+
 #ifndef DEC_MONEY_H
 #include "h/money.h"
 #endif

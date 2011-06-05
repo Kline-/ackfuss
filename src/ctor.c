@@ -282,6 +282,16 @@ hash_entry_tp::hash_entry_tp()
     key = 0;
 }
 
+help_data::help_data()
+{
+    cache_time = sysdata.pulse_cache;
+    imm = false;
+    name.clear();
+    description.clear();
+    
+    help_list.push_back(this);
+}
+
 lookup_data::lookup_data()
 {
     buf = &str_empty[0];

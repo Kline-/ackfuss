@@ -74,6 +74,10 @@
 #include "h/handler.h"
 #endif
 
+#ifndef DEC_HELP_H
+#include "h/help.h"
+#endif
+
 #ifndef DEC_HUNT_H
 #include "h/hunt.h"
 #endif
@@ -1807,127 +1811,6 @@ DO_FUN(do_weather)
     send_to_char( buf, ch );
     return;
 }
-
-DO_FUN(do_help)
-{
-    FILE *fp;
-    char buf[MSL];
-    char *farg = argument;
-    bool found = FALSE;
-    bool shelp = FALSE;
-
-    farg = one_argument(farg, buf);
-
-    if ( argument[0] != '\0' )
-    {
-        if ( !str_prefix(buf, "-find") )
-        {
-            send_to_char(find_helps(farg, IS_IMMORTAL(ch) ? true : false), ch);
-            return;
-        }
-        if ( !str_prefix(buf, "-search") )
-        {
-            send_to_char(grep_helps(farg, IS_IMMORTAL(ch) ? true : false), ch);
-            return;
-        }
-    }
-
-    buf[0] = '\0';
-    argument = strlower(argument);
-    smash_replace(argument, " ", "_");
-    smash_replace(argument, ":", "_");
-
-    if ( !str_prefix("shelp_", argument) )
-        shelp = TRUE;
-
-    if ( argument[0] == '\0' )
-        snprintf(buf, MSL, "%s%s/%s", HELP_DIR, initial(HELP_INDEX), HELP_INDEX);
-    else if ( !str_cmp(argument, BHELP_INDEX) ) /* special case for the builder */
-        snprintf(buf, MSL, "%s%s/%s", HELP_DIR, initial(BHELP_INDEX), BHELP_INDEX);
-    else if ( !str_cmp(argument, SHELP_INDEX) ) /* special case for shelp */
-        snprintf(buf, MSL, "%s%s/%s", HELP_DIR, initial(SHELP_INDEX), SHELP_INDEX);
-    else
-        snprintf(buf, MSL, "%s%s/%s.%s", HELP_DIR, initial(argument), argument, IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
-
-    if ( (fp = file_open(buf, "r")) != NULL )
-    {
-        found = TRUE;
-        while ( fgets(buf, MSL, fp) )
-            send_to_char(buf, ch);
-    }
-    file_close(fp);
-    /* Search for a plural */
-    snprintf(buf, MSL, "%s%s/%ss.%s", HELP_DIR, initial(argument), argument, IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT);
-    if ( (fp = file_open(buf, "r")) != NULL )
-    {
-        found = TRUE;
-        while ( fgets(buf, MSL, fp) )
-            send_to_char(buf, ch);
-        file_close(fp);
-    }
-    else if ( !IS_IMMORTAL(ch) && !found )
-    {
-        if ( !shelp )
-        {
-            send_to_char("No help on that word.\r\n", ch);
-            snprintf(buf, MSL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
-            monitor_chan(buf, MONITOR_HELPS);
-        }
-        else
-        {
-            send_to_char("No sHelp for that skill/spell.\r\n", ch);
-            snprintf(buf, MSL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
-            monitor_chan(buf, MONITOR_HELPS);
-        }
-        file_close(fp);
-        return;
-    }
-
-    if ( IS_IMMORTAL(ch) )
-    {
-        snprintf(buf, MSL, "%s%s/%s.%s", HELP_DIR, initial(argument), argument, HELP_MORT);
-        if ( (fp = file_open(buf, "r")) != NULL )
-        {
-            if ( found )
-                send_to_char("\r\n", ch);
-            found = TRUE;
-            while ( fgets(buf, MSL, fp) )
-                send_to_char(buf, ch);
-        }
-        file_close(fp);
-        /* Search for a plural */
-        snprintf(buf, MSL, "%s%s/%ss.%s", HELP_DIR, initial(argument), argument, HELP_MORT);
-        if ( (fp = file_open(buf, "r")) != NULL )
-        {
-            if ( found )
-                send_to_char("\r\n", ch);
-            found = TRUE;
-            while ( fgets(buf, MSL, fp) )
-                send_to_char(buf, ch);
-        }
-        file_close(fp);
-        if ( !found )
-        {
-            if ( !shelp )
-            {
-                send_to_char("No help on that word.\r\n", ch);
-                snprintf(buf, MSL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
-                monitor_chan(buf, MONITOR_HELPS);
-            }
-            else
-            {
-                send_to_char("No sHelp for that skill/spell.\r\n", ch);
-                snprintf(buf, MSL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
-                monitor_chan(buf, MONITOR_HELPS);
-            }
-            file_close(fp);
-            return;
-        }
-    }
-
-    return;
-}
-
 
 DO_FUN(do_who)
 {
@@ -4973,33 +4856,6 @@ DO_FUN(do_whois)
 
     snprintf( buf + strlen( buf ), MSL, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n" );
     send_to_char( buf, ch );
-    return;
-}
-
-DO_FUN(do_shelp)
-{
-    /*
-     * Like help, except for spells and skills.
-     */
-    int sn;
-    char buf[MSL];
-    buf[0] = '\0';
-
-    if ( argument[0] == '\0' )
-    {
-        do_help( ch, SHELP_INDEX );
-        return;
-    }
-
-    if ( ( sn = skill_lookup( argument ) ) < 0 )
-    {
-        snprintf( buf, MSL, "No sHelp found for argument:%s\r\n", argument );
-        send_to_char( buf, ch );
-        return;
-    }
-    snprintf( buf, MSL, "shelp_%s", skill_table[sn].name );
-    do_help(ch, buf);
-
     return;
 }
 

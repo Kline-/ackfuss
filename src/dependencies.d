@@ -9,8 +9,9 @@ o/act_comm.o: act_comm.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
 o/act_info.o: act_info.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_comm.h h/act_info.h h/act_obj.h h/act_wiz.h h/board.h h/buildtab.h \
- h/comm.h h/cursor.h h/db.h h/handler.h h/hunt.h h/macros.h h/magic.h \
- h/mapper.h h/money.h h/rulers.h h/save.h h/ssm.h h/trigger.h h/update.h
+ h/comm.h h/cursor.h h/db.h h/handler.h h/help.h h/hunt.h h/macros.h \
+ h/magic.h h/mapper.h h/money.h h/rulers.h h/save.h h/ssm.h h/trigger.h \
+ h/update.h
 o/act_mob.o: act_mob.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_comm.h h/act_mob.h h/act_move.h h/act_obj.h h/act_wiz.h h/db.h \
@@ -29,8 +30,9 @@ o/act_wiz.o: act_wiz.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_comm.h h/act_info.h h/act_mob.h h/act_obj.h h/act_wiz.h \
  h/areasave.h h/build.h h/buildtab.h h/comm.h h/db.h h/email.h h/fight.h \
- h/handler.h h/hunt.h h/interp.h h/macros.h h/magic.h h/mudinfo.h \
- h/obj_fun.h h/save.h h/spec_fun.h h/ssm.h h/sysdata.h h/update.h
+ h/handler.h h/help.h h/hunt.h h/interp.h h/macros.h h/magic.h \
+ h/mudinfo.h h/obj_fun.h h/save.h h/spec_fun.h h/ssm.h h/sysdata.h \
+ h/update.h
 o/areachk.o: areachk.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/areasave.h h/comm.h h/db.h h/hash.h
@@ -48,7 +50,7 @@ o/buildare.o: buildare.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
 o/build.o: build.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_info.h h/act_move.h h/act_wiz.h h/areachk.h h/areasave.h h/build.h \
- h/buildare.h h/buildtab.h h/comm.h h/db.h h/handler.h h/money.h \
+ h/buildare.h h/buildtab.h h/comm.h h/db.h h/handler.h h/help.h h/money.h \
  h/obj_fun.h h/save.h h/spec_fun.h h/ssm.h h/sysdata.h h/write.h
 o/buildtab.o: buildtab.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h
@@ -59,8 +61,8 @@ o/clutch.o: clutch.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
 o/comm.o: comm.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_comm.h h/act_info.h h/act_obj.h h/act_wiz.h h/comm.h h/cursor.h \
- h/db.h h/email.h h/handler.h h/hunt.h h/interp.h h/macros.h h/magic.h \
- h/money.h h/mudinfo.h h/save.h h/ssm.h h/telopt.h h/update.h
+ h/db.h h/email.h h/handler.h h/help.h h/hunt.h h/interp.h h/macros.h \
+ h/magic.h h/money.h h/mudinfo.h h/save.h h/ssm.h h/telopt.h h/update.h
 o/const.o: const.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/magic.h \
  h/vampire.h h/werewolf.h
@@ -98,6 +100,9 @@ o/handler.o: handler.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
 o/hash.o: hash.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h h/db.h \
  h/hash.h
+o/help.o: help.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
+ h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
+ h/act_wiz.h h/comm.h h/db.h h/handler.h h/help.h h/magic.h h/ssm.h
 o/hunt.o: hunt.c h/globals.h h/includes.h h/typedefs.h h/ack.h h/config.h \
  h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_comm.h h/act_move.h h/act_wiz.h h/comm.h h/db.h h/fight.h \
@@ -109,7 +114,7 @@ o/interp.o: interp.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_clan.h h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h \
  h/act_wiz.h h/board.h h/build.h h/buildare.h h/clutch.h h/comm.h h/db.h \
- h/email.h h/enchant.h h/fight.h h/handler.h h/hunt.h h/interp.h \
+ h/email.h h/enchant.h h/fight.h h/handler.h h/help.h h/hunt.h h/interp.h \
  h/magic.h h/mapper.h h/money.h h/mount.h h/mudinfo.h h/pdelete.h \
  h/quest.h h/rulers.h h/social.h h/scheck.h h/spendqp.h h/sysdata.h \
  h/vampire.h h/werewolf.h h/wizutil.h h/write.h
@@ -141,7 +146,7 @@ o/mquest.o: mquest.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/spec_fun.h
 o/mudinfo.o: mudinfo.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
- h/act_wiz.h h/db.h h/comm.h h/mudinfo.h
+ h/act_wiz.h h/db.h h/comm.h h/help.h h/mudinfo.h
 o/obj_fun.o: obj_fun.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/comm.h h/db.h h/fight.h h/handler.h h/magic.h h/obj_fun.h
@@ -189,7 +194,7 @@ o/strfuns.o: strfuns.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/act_wiz.h h/db.h h/comm.h h/handler.h h/ssm.h
 o/sysdata.o: sysdata.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
- h/act_info.h h/act_wiz.h h/comm.h h/db.h h/ssm.h h/sysdata.h
+ h/act_info.h h/act_wiz.h h/comm.h h/db.h h/help.h h/ssm.h h/sysdata.h
 o/telopt.o: telopt.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/comm.h h/db.h h/telnet.h h/telopt.h
@@ -199,9 +204,9 @@ o/trigger.o: trigger.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
 o/update.o: update.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h \
- h/areasave.h h/comm.h h/db.h h/fight.h h/handler.h h/hunt.h h/interp.h \
- h/magic.h h/money.h h/mudinfo.h h/quest.h h/save.h h/social.h h/ssm.h \
- h/update.h
+ h/areasave.h h/comm.h h/db.h h/fight.h h/handler.h h/help.h h/hunt.h \
+ h/interp.h h/magic.h h/money.h h/mudinfo.h h/quest.h h/save.h h/social.h \
+ h/ssm.h h/update.h
 o/vampire.o: vampire.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_info.h h/act_move.h h/comm.h h/db.h h/fight.h h/handler.h \

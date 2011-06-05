@@ -84,7 +84,7 @@ SOCIAL_DATA *load_social( const char *social )
     snprintf( tmp, MSL, "%s", _popen(search) );
     fp = file_open( tmp, "r" );
     
-    snprintf( tmp, MSL, "ls -1 %s%s/%s*.%s | cut -d/ -f 4 | cut -d. -f 1", SOCIAL_DIR, initial(social), social, SOCIAL_EXT );
+    snprintf( tmp, MSL, "ls -1 %s%s/%s*.%s | cut -d/ -f4 | cut -d. -f1", SOCIAL_DIR, initial(social), social, SOCIAL_EXT );
     ret->name = _popen(tmp);
     ret->name.resize(ret->name.length()-1); /* Strip off the appended \n --Kline */
 
