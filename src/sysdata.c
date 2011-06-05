@@ -130,6 +130,7 @@ void load_sysdata( void )
             case 'P':
                 KEY("Playtesters",   sysdata.playtesters,   fread_string(fp));
                 KEY("Pulse",         sysdata.pulse,         fread_number(fp));
+                KEY("PulseCache",    sysdata.pulse_cache,   fread_number(fp));
                 break;
             case 'S':
                 KEY("Shownumbers",   sysdata.shownumbers,   fread_number(fp));
@@ -182,6 +183,7 @@ void save_sysdata( void )
     fprintf(fp, "Num_Greeting  %d\n",    sysdata.num_greeting);
     fprintf(fp, "Playtesters   %s~\n",   sysdata.playtesters);
     fprintf(fp, "Pulse         %d\n",    sysdata.pulse);
+    fprintf(fp, "PulseCache    %d\n",    sysdata.pulse_cache);
     fprintf(fp, "Shownumbers   %d\n",    sysdata.shownumbers);
     fprintf(fp, "Wizlock       %d\n",    wizlock);
     fprintf(fp, "End\n\n");
@@ -207,8 +209,9 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
         send_to_char("Syntax for sysdata:\r\n", ch);
         send_to_char("  sysdata help | show | <option> <value> | <string> <+/-> <new_word>\r\n", ch);
         send_to_char("  strings: playtesters\r\n", ch);
-        send_to_char("  options: damcap expmult killsperlev maxmovedisp maxpushback \r\n", ch);
-        send_to_char("           mob[ac | dr | hp | hr | mp | mv | svs] numgreeting pulse shownumbers\r\n", ch);
+        send_to_char("  options: damcap expmult killsperlev maxmovedisp maxpushback\r\n", ch);
+        send_to_char("           mob[ac | dr | hp | hr | mp | mv | svs] numgreeting\r\n", ch);
+        send_to_char("           pulse pulsecache shownumbers\r\n", ch);
         return;
     }
 
@@ -257,6 +260,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
         strncat(outbuf, catbuf, MSL - 1);
         snprintf(catbuf, MSL, "[Pulse Per Sec  ]       [%15d]\r\n", sysdata.pulse);
         strncat(outbuf, catbuf, MSL - 1);
+        snprintf(catbuf, MSL, "[Pulse Cache    ]       [%15d]\r\n", sysdata.pulse_cache);
+        strncat(outbuf, catbuf, MSL -1);
         snprintf(catbuf, MSL, "[Show Damage    ]       [%15s]\r\n", (sysdata.shownumbers ? "Yes" : "No"));
         strncat(outbuf, catbuf, MSL - 1);
         snprintf(catbuf, MSL, "[Wizlocked      ]       [%15s]\r\n", (wizlock ? "Yes" : "No"));
@@ -297,6 +302,8 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
         sysdata.playtesters = str_mod(sysdata.playtesters, arg2);
     else if ( !str_prefix(arg1, "pulse") )
         sysdata.pulse = atoi(arg2) > 0 ? atoi(arg2) : 1;
+    else if ( !str_prefix(arg1, "pulsecache") )
+        sysdata.pulse_cache = atoi(arg2) > 0 ? atoi(arg2) : 1;
     else if ( !str_prefix(arg1, "shownumbers") )
         sysdata.shownumbers = (sysdata.shownumbers ? FALSE : TRUE);
     else
@@ -334,7 +341,8 @@ void init_sysdata( void )
     sysdata.mob_svs = 1;
     sysdata.num_greeting = 5;
     sysdata.playtesters = "";
-    sysdata.pulse = 8;
+    sysdata.pulse = 100;
+    sysdata.pulse_cache = 1000;
     sysdata.shownumbers = TRUE;
     sysdata.w_lock = FALSE;
 

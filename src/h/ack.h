@@ -1123,6 +1123,7 @@ class social_data
     public:
         social_data();
         ~social_data();
+        int cache_time;
         string char_auto;
         string char_found;
         string char_no_arg;
@@ -1234,7 +1235,8 @@ struct sysdata_type
     float mob_svs;
     short num_greeting;
     char *playtesters;
-    short pulse;
+    unsigned int pulse;
+    unsigned int pulse_cache;
     bool shownumbers;
     bool w_lock;
 };

@@ -58,3 +58,5 @@ AckFUSS Feature List
     -Threaded hostname lookups: no game lag when new players connect
     -Commands available prior to login; including who display and password reset via email
     -Email system; email other characters, both on/offline, from within the game and recover lost passwords
+    -Flat socials; every social is a single file -- reduced memory footprint and easily updated
+    -Smart caching of helpfiles and socials -- caches expire and the item is reloaded next time it is called from disk

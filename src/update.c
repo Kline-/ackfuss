@@ -107,6 +107,10 @@ void imc_request_keepalive(void);
 #include "h/save.h"
 #endif
 
+#ifndef DEC_SOCIAL_H
+#include "h/social.h"
+#endif
+
 #ifndef DEC_SSM_H
 #include "h/ssm.h"
 #endif
@@ -1942,11 +1946,17 @@ void update_handler( void )
     static int pulse_combat;
     static int pulse_point;
     static int pulse_auction;
+    static int pulse_cache;
 
     if ( saving_area )
         build_save(  );   /* For incremental area saving */
 
-
+    if ( --pulse_cache <= 0 )
+    {
+        pulse_cache = sysdata.pulse_cache;
+        cache_update( );
+    }
+    
     if ( --pulse_area <= 0 )
     {
         pulse_area = number_range( PULSE_AREA / 2, 3 * PULSE_AREA / 2 );
@@ -1983,7 +1993,6 @@ void update_handler( void )
         objfun_check = PULSE_OBJFUN;
         objfun_update(  );
     }
-
 
     if ( --pulse_violence <= 0 )
     {
@@ -2494,4 +2503,10 @@ void quest_update(  )
         if ( auto_quest )
             generate_auto_quest(  );
     }
+}
+
+void cache_update( )
+{
+    cache_check_social( );
+    return;
 }

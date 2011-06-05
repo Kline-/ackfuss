@@ -3473,6 +3473,10 @@ DO_FUN(do_memory)
     send_to_char( buf, ch );
     snprintf( buf, MSL, "Overflow Strings  %5ld strings of %7ld bytes.\r\n", nOverFlowString, sOverFlowString );
     send_to_char( buf, ch );
+    snprintf( buf, MSL, "Cache Info:\r\n" );
+    send_to_char( buf, ch );
+    snprintf( buf, MSL, "Socials %5d\r\n", static_cast<int>(social_list.size()) );
+    send_to_char( buf, ch );
     if ( Full )
     {
         send_to_char( "Shared String Heap is full, increase MAX_STRING.\r\n", ch );
@@ -4291,6 +4295,7 @@ void clear_lists( void )
     for_each( room_index_list.begin(), room_index_list.end(), DeleteObject() );
     for_each( ruler_list.begin(),      ruler_list.end(),      DeleteObject() );
     for_each( shop_list.begin(),       shop_list.end(),       DeleteObject() );
+    for_each( social_list.begin(),     social_list.end(),     DeleteObject() );
 
     comlog(NULL, true, 0, NULL);
     fclose(fpReserve);

@@ -717,6 +717,7 @@ shop_data::shop_data()
 
 social_data::social_data()
 {
+    cache_time = sysdata.pulse_cache;
     char_auto.clear();
     char_found.clear();
     char_no_arg.clear();
@@ -725,6 +726,8 @@ social_data::social_data()
     other_found.clear();
     other_no_arg.clear();
     vict_found.clear();
+    
+    social_list.push_back(this);
 }
 
 super_data::super_data()

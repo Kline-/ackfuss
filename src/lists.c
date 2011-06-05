@@ -66,6 +66,7 @@ list<RESET_DATA *> reset_list;
 list<ROOM_INDEX_DATA *> room_index_list;
 list<RULER_DATA *> ruler_list;
 list<SHOP_DATA *> shop_list;
+list<SOCIAL_DATA *> social_list;
 
 DESCRIPTOR_DATA *first_desc = NULL;
 DESCRIPTOR_DATA *last_desc = NULL;

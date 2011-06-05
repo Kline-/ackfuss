@@ -28,6 +28,8 @@
 
 bool exists_social( const char *social )
 {
+    SOCIAL_DATA *soc;
+    list<SOCIAL_DATA *>::iterator li;
     char search[MSL] = {'\0'};
     char tmp[MSL] = {'\0'};
     string str;
@@ -35,6 +37,14 @@ bool exists_social( const char *social )
     if( !isalpha(*social) )
         return false;
 
+    /* Check the cache list before trying to load from file --Kline */
+    for( li = social_list.begin(); li != social_list.end(); li++ )
+    {
+        soc = *li;
+        if( soc->name.find(social) != string::npos )
+            return true;
+    }
+    
     snprintf( search, MSL, "find %s%s/ -iname %s\\*.%s -printf '%%f '", SOCIAL_DIR, initial(social), social, SOCIAL_EXT );
     snprintf( tmp, MSL, "%s", _popen(search) );
     str = tmp;
@@ -48,23 +58,35 @@ bool exists_social( const char *social )
 SOCIAL_DATA *load_social( const char *social )
 {
     SOCIAL_DATA *ret;
+    list<SOCIAL_DATA *>::iterator li;
     FILE *fp;
     char tmp[MSL] = {'\0'};
     char search[MSL] = {'0'};
     const char *word;
     bool fMatch = false;
-    int spos, epos = 0;
+    
+    /* Check the cache list before trying to load from file --Kline */
+    for( li = social_list.begin(); li != social_list.end(); li++ )
+    {
+        ret = *li;
+        if( ret->name.find(social) != string::npos )
+        {
+            snprintf( log_buf, MSL, "load_social: using cached copy of (%s) which expires in (%d)", ret->name.c_str(), ret->cache_time );
+            monitor_chan( log_buf, MONITOR_DEBUG );
+            ret->cache_time = sysdata.pulse_cache;
+            return ret;
+        }
+    }
     
     ret = new SOCIAL_DATA;
-    spos = strlen(SOCIAL_DIR)+3;
-    epos = spos + strlen(SOCIAL_EXT)+2;
     
     snprintf( search, MSL, "find %s%s/ -iname %s\\*.%s -printf '%%p'", SOCIAL_DIR, initial(social), social, SOCIAL_EXT );
     snprintf( tmp, MSL, "%s", _popen(search) );
     fp = file_open( tmp, "r" );
     
-    snprintf( tmp, MSL, "ls -1 %s%s/%s*.%s | cut -c %d-%d", SOCIAL_DIR, initial(social), social, SOCIAL_EXT, spos, epos );
+    snprintf( tmp, MSL, "ls -1 %s%s/%s*.%s | cut -d/ -f 4 | cut -d. -f 1", SOCIAL_DIR, initial(social), social, SOCIAL_EXT );
     ret->name = _popen(tmp);
+    ret->name.resize(ret->name.length()-1); /* Strip off the appended \n --Kline */
 
     for ( ;; )
     {
@@ -114,4 +136,22 @@ SOCIAL_DATA *load_social( const char *social )
     file_close(fp);
     
     return ret;
+}
+
+void cache_check_social( )
+{
+    SOCIAL_DATA *soc;
+    list<SOCIAL_DATA *>::iterator li;
+    
+    for( li = social_list.begin(); li != social_list.end(); li++ )
+    {
+        soc = *li;
+        if( --soc->cache_time <= 0 )
+        {
+            delete soc;
+            li = social_list.erase(li);
+        }
+    }
+
+    return;
 }

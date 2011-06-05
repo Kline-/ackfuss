@@ -16,5 +16,6 @@
 
 bool exists_social P_((const char *social));
 SOCIAL_DATA *load_social P_((const char *social));
+void cache_check_social P_((void));
 
 #undef P_

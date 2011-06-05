@@ -200,7 +200,8 @@ o/update.o: update.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_comm.h h/act_info.h h/act_move.h h/act_obj.h h/act_wiz.h \
  h/areasave.h h/comm.h h/db.h h/fight.h h/handler.h h/hunt.h h/interp.h \
- h/magic.h h/money.h h/mudinfo.h h/quest.h h/save.h h/ssm.h h/update.h
+ h/magic.h h/money.h h/mudinfo.h h/quest.h h/save.h h/social.h h/ssm.h \
+ h/update.h
 o/vampire.o: vampire.c h/globals.h h/includes.h h/typedefs.h h/ack.h \
  h/config.h h/imc.h h/imccfg.h h/lists.h h/mquest.h h/strfuns.h h/utils.h \
  h/act_info.h h/act_move.h h/comm.h h/db.h h/fight.h h/handler.h \

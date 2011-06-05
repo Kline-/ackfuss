@@ -42,6 +42,6 @@ bool check_rewield P_((CHAR_DATA *ch));
 bool check_reequip P_((CHAR_DATA *ch));
 void auction_update P_((void));
 void quest_update P_((void));
-void lua_update P_((void));
+void cache_update P_((void));
 
 #undef P_
