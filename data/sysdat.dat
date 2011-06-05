@@ -20,6 +20,7 @@ Mob_SVS       1.0000
 Num_Greeting  5
 Playtesters   ~
 Pulse         100
+PulseCache    250
 Shownumbers   1
 Wizlock       0
 End

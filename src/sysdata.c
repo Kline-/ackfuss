@@ -346,7 +346,7 @@ void init_sysdata( void )
     sysdata.num_greeting = 5;
     sysdata.playtesters = "";
     sysdata.pulse = 100;
-    sysdata.pulse_cache = 1000;
+    sysdata.pulse_cache = 250;
     sysdata.shownumbers = TRUE;
     sysdata.w_lock = FALSE;
 

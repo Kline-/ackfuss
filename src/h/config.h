@@ -242,7 +242,7 @@
 #define DM_ARENA_END      300
 
 #define PULSE_PER_SECOND          sysdata.pulse /* Configurable in-game, essential to speed based combat. --Kline */
-#define PULSE_COMBAT              (  1                     )
+#define PULSE_COMBAT              ( 100 / PULSE_PER_SECOND )
 #define PULSE_VIOLENCE            (  2  * PULSE_PER_SECOND )
 #define PULSE_MOBILE              (  4  * PULSE_PER_SECOND )
 #define PULSE_OBJFUN              (  4  * PULSE_PER_SECOND )

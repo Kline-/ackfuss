@@ -553,15 +553,13 @@ void game_loop( int game_control )
 
         /*
          * Synchronize to a clock.
-         * Sleep( last_time + 1/PULSE_PER_SECOND - now ).
+         * Sleep( 1/PULSE_PER_SECOND )
          * Careful here of signed versus unsigned arithmetic.
          */
         {
             struct timeval now_time;
             struct tm *now_bd_time;
             FILE *out_file;
-            long secDelta;
-            long usecDelta;
 
             long temp_time;
 
@@ -578,32 +576,7 @@ void game_loop( int game_control )
                 update_player_cnt( );
             }
 
-            usecDelta = ( ( int )last_time.tv_usec ) - ( ( int )now_time.tv_usec ) + 1000000 / PULSE_PER_SECOND;
-            secDelta = ( ( int )last_time.tv_sec ) - ( ( int )now_time.tv_sec );
-            while ( usecDelta < 0 )
-            {
-                usecDelta += 1000000;
-                secDelta -= 1;
-            }
-
-            while ( usecDelta >= 1000000 )
-            {
-                usecDelta -= 1000000;
-                secDelta += 1;
-            }
-
-            if ( secDelta > 0 || ( secDelta == 0 && usecDelta > 0 ) )
-            {
-                struct timeval stall_time;
-
-                stall_time.tv_usec = usecDelta;
-                stall_time.tv_sec = secDelta;
-                if ( select( 0, NULL, NULL, NULL, &stall_time ) < 0 && errno != EINTR )
-                {
-                    perror( "Game_loop: select: stall" );
-                    exit( 1 );
-                }
-            }
+            usleep(1000000/PULSE_PER_SECOND);
         }
 
         gettimeofday( &last_time, NULL );

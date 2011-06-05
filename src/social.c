@@ -148,6 +148,8 @@ void cache_check_social( )
         soc = *li;
         if( --soc->cache_time <= 0 )
         {
+            snprintf( log_buf, MSL, "cache_check_social: removing file (%s) from cache, time expired", soc->name.c_str() );
+            monitor_chan( log_buf, MONITOR_DEBUG );
             delete soc;
             li = social_list.erase(li);
         }

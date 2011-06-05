@@ -199,7 +199,7 @@ bool exists_help( const char *help )
     char search[MSL] = {'\0'};
     char tmp[MSL] = {'\0'};
     string str1, str2;
-    log_f("eh: in exists help for (%s)", help);
+
     if( !isalpha(*help) )
         return false;
 
@@ -210,26 +210,23 @@ bool exists_help( const char *help )
         if( hlp->name.find(help) != string::npos )
             return true;
     }
-    log_f("eh: past cache check");
+
     snprintf( search, MSL, "find %s%s/ -iname %s -printf '%%f '", HELP_DIR, initial(help), help );
     snprintf( tmp, MSL, "%s", _popen(search) );
     str1 = tmp;
-    log_f("eh: past first find");
+
     if( str1.empty() )
-        return false;/*
+        return false;
     if( str1.empty() )
     {
-        log_f("eh: find was empty, look for plural");
-        Search for plural
+        /* Search for plural */
         snprintf( search, MSL, "find %s%s/ -iname %ss -printf '%%f '", HELP_DIR, initial(help), help );
         snprintf( tmp, MSL, "%s", _popen(search) );
         str2 = tmp;
-        log_f("eh: past second find");
         if( str2.empty() )
             return false;
-        log_f("eh: str2 wasnt empty");
-    }*/
-    log_f("eh: about to return true");
+    }
+
     return true;
 }
 
@@ -240,27 +237,26 @@ HELP_DATA *load_help( const char *help )
     FILE *fp;
     char tmp[MSL] = {'\0'};
     char search[MSL] = {'0'};
-    log_f("lh: checking to load from cache");
+
     /* Check the cache list before trying to load from file --Kline */
     for( li = help_list.begin(); li != help_list.end(); li++ )
     {
         ret = *li;
         if( ret->name.find(help) != string::npos )
         {
-            log_f("lh: cache hit, good");
             snprintf( log_buf, MSL, "load_help: using cached copy of (%s) which expires in (%d)", ret->name.c_str(), ret->cache_time );
             monitor_chan( log_buf, MONITOR_DEBUG );
             ret->cache_time = sysdata.pulse_cache;
             return ret;
         }
     }
-    log_f("lh: alloc for new load");
+
     ret = new HELP_DATA;
-    log_f("lh: first search");
+
     snprintf( search, MSL, "find %s%s/ -iname %s -printf '%%p'", HELP_DIR, initial(help), help );
     snprintf( tmp, MSL, "%s", _popen(search) );
     fp = file_open( tmp, "r" );
-    log_f("lh: file is opened");
+
     snprintf( tmp, MSL, "ls -1 %s%s/%s | cut -d/ -f4", HELP_DIR, initial(help), help );
     ret->name = _popen(tmp);
     ret->name.resize(ret->name.length()-1);  /* Strip off the appended \n --Kline */
@@ -268,19 +264,17 @@ HELP_DATA *load_help( const char *help )
         ret->imm = false;
     else
         ret->imm = true;
-    log_f("lh: imm value is %s", ret->imm ? "true" : "false" );
-    log_f("lh: data has been set");
+
     ret->description = "\r\n";
     ret->description += fread_to_eof(fp);
-    log_f("lh: description has been set");
+
     file_close(fp);
-    log_f("lh: file closed, returning");
+
     return ret;
 }
 
 void cache_check_help( )
 {
-    return;
     HELP_DATA *hlp;
     list<HELP_DATA *>::iterator li;
     
@@ -289,6 +283,8 @@ void cache_check_help( )
         hlp = *li;
         if( --hlp->cache_time <= 0 )
         {
+            snprintf( log_buf, MSL, "cache_check_help: removing file (%s) from cache, time expired", hlp->name.c_str() );
+            monitor_chan( log_buf, MONITOR_DEBUG );
             delete hlp;
             li = help_list.erase(li);
         }
