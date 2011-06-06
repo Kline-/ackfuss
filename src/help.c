@@ -65,7 +65,6 @@ DO_FUN(do_help)
         }
     }
 
-    buf[0] = '\0';
     argument = strlower(argument);
     smash_replace(argument, " ", "_");
     smash_replace(argument, ":", "_");
@@ -73,12 +72,13 @@ DO_FUN(do_help)
     if ( !str_prefix("shelp_", argument) )
         shelp = true;
 
-    if ( argument[0] == '\0' )
+    if ( argument[0] == '\0' ) /* special case for the main help index */
     {
         if( exists_help(HELP_INDEX) )
         {
             hlp = load_help(HELP_INDEX);
-            found = true;
+            ch->send(hlp->description);
+            return;
         }
     }
     else if ( !str_cmp(argument, BHELP_INDEX) ) /* special case for the builder */
@@ -86,7 +86,8 @@ DO_FUN(do_help)
         if( exists_help(BHELP_INDEX) )
         {
             hlp = load_help(BHELP_INDEX);
-            found = true;
+            ch->send(hlp->description);
+            return;
         }
     }
     else if ( !str_cmp(argument, SHELP_INDEX) ) /* special case for shelp */
@@ -94,10 +95,46 @@ DO_FUN(do_help)
         if( exists_help(SHELP_INDEX) )
         {
             hlp = load_help(SHELP_INDEX);
-            found = true;
+            ch->send(hlp->description);
+            return;
         }
     }
     else
+    {
+        str = argument;
+        str += ".";
+        str += IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT;
+        
+        if( exists_help(str.c_str()) )
+        {
+            hlp = load_help(str.c_str());
+            if ( !IS_IMMORTAL(ch) && hlp->imm )
+                found = false;
+            else
+                found = true;
+            if( found )
+                ch->send(hlp->description);
+        }
+    }
+
+    if ( !IS_IMMORTAL(ch) && !found )
+    {
+        if ( !shelp )
+        {
+            ch->send("No help on that word.\r\n");
+            snprintf(log_buf, MSL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
+            monitor_chan(log_buf, MONITOR_HELPS);
+        }
+        else
+        {
+            ch->send("No sHelp for that skill/spell.\r\n");
+            snprintf(log_buf, MSL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
+            monitor_chan(log_buf, MONITOR_HELPS);
+        }
+        return;
+    }
+    
+    if ( IS_IMMORTAL(ch) )
     {
         str = argument;
         str += ".";
@@ -105,63 +142,31 @@ DO_FUN(do_help)
         
         if( exists_help(str.c_str()) )
         {
+            if( found )
+                ch->send("\r\n");
             hlp = load_help(str.c_str());
             found = true;
+            ch->send(hlp->description);
         }
-    }
-/*
-    if ( !IS_IMMORTAL(ch) && !found )
-    {
-        if ( !shelp )
-        {
-            send_to_char("No help on that word.\r\n", ch);
-            snprintf(buf, MSL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
-            monitor_chan(buf, MONITOR_HELPS);
-        }
-        else
-        {
-            send_to_char("No sHelp for that skill/spell.\r\n", ch);
-            snprintf(buf, MSL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
-            monitor_chan(buf, MONITOR_HELPS);
-        }
-        return;
-    }
-
-    if ( IS_IMMORTAL(ch) && !found )
-    {
-        str = argument;
-        str += ".";
-        str += HELP_IMM;
         
-        if( exists_help(str.c_str()) )
-        {
-            hlp = load_help(str.c_str());
-            found = true;
-        }
-
         if ( !found )
         {
             if ( !shelp )
             {
-                send_to_char("No help on that word.\r\n", ch);
-                snprintf(buf, MSL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
-                monitor_chan(buf, MONITOR_HELPS);
+                ch->send("No help on that word.\r\n");
+                snprintf(log_buf, MSL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
+                monitor_chan(log_buf, MONITOR_HELPS);
             }
             else
             {
-                send_to_char("No sHelp for that skill/spell.\r\n", ch);
-                snprintf(buf, MSL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
-                monitor_chan(buf, MONITOR_HELPS);
+                ch->send("No sHelp for that skill/spell.\r\n");
+                snprintf(log_buf, MSL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
+                monitor_chan(log_buf, MONITOR_HELPS);
             }
             return;
         }
-    }*/
-    if ( found )
-    {
-    log_f("help: going to output (%s)",argument);
-    snprintf( buf, MSL, "%s", hlp->description.c_str() );
-    send_to_char(hlp->description,ch);
     }
+
     return;
 }
 
