@@ -1,0 +1,14 @@
+## Create possibly empty folders due to Git
+mkdir -p o
+
+for i in {a..z}; do
+ mkdir -p ../help/$i
+ mkdir -p ../npc/$i
+ mkdir -p ../player/$i
+ mkdir -p ../social/$i
+done
+
+singles="area board data doc imc log mail report"
+for i in $singles; do
+ mkdir -p ../$i
+done

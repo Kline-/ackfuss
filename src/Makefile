@@ -38,6 +38,10 @@ O_FILES = $(patsubst %.c,o/%.o,$(C_FILES))
 
 H_FILES = $(wildcard h/*.h)
 
+# Trickery to run a script on the -first ever- compile and re-create a directory
+# structure that may be missing due to Git not tracking empty directories.
+INITRUN := $if($wildcard onerun),$(shell ./.dirbuild))
+
 all:
 	@$(MAKE) -j4 ack
 
@@ -47,6 +51,7 @@ all:
 ifdef CYGWIN
 ack: $(O_FILES)
 	@rm -f ack.exe
+	@rm -f .dirbuild
 	@$(CC) -o ack.exe $(O_FILES) $(L_FLAGS)
 	@echo "Generating dependency file ...";
 	@$(CC) -MM $(C_FLAGS) $(C_FILES) > dependencies.d
@@ -61,6 +66,7 @@ clean:
 else
 ack: $(O_FILES)
 	@rm -f ack
+	@rm -f .dirbuild
 	@$(CC) -o ack $(O_FILES) $(L_FLAGS)
 	@echo "Generating dependency file ...";
 	@$(CC) -MM $(C_FLAGS) $(C_FILES) > dependencies.d
