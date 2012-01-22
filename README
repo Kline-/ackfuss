@@ -1,0 +1,28 @@
+AckFUSS
+
+AckFUSS is a more modern MUD server derived from ACK!MUD 4.3.1. AckFUSS is primarily
+written in C, with C++ being added as needed or replacing old code as time permits.
+
+There is a special file 'src/.dirbuild' that will re-create the required directory
+structure and then be removed upon first make. This is to work around the limitations
+of Git not tracking empty directories.
+
+Support for this code is provided both via GitHub and the project website.
+
+GitHub 		- https://github.com/Kline-/ackfuss
+Project Website	- http://www.ackmud.net
+
+Directory Layout
+	area/		-- All area files/zones used in the game
+	board/		-- Notes written to 'board' objects within the game
+	data/		-- Miscellaneous data such as game configuration, bans, clan data, etc
+	doc/		-- Miscellaneous docs on changes/install, Valgrind suppressions, etc
+	help/		-- All helpfiles used in the game, nested alphabetically
+	imc/		-- Settings, cache, and config files for built-in intermud communication
+	log/		-- All generated log files
+	mail/		-- All mail written between players within the game
+	npc/		-- Save files for 'smart' NPCs who gain exp and are persistent, nested alphabetically
+	player/		-- Save files for players, nested alphabetically
+	report/		-- Miscellaneous reports such as ideas, bugs, possible string leaks, etc
+	social/		-- All socials used in the game, nested alphabetically
+	src/		-- Source code, header files within h/ and object files within o/
