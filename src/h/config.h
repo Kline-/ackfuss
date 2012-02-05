@@ -1276,12 +1276,6 @@
  *   so players can go ahead and telnet to all the other descriptors.
  * Then we close it whenever we need to open a file (e.g. a save file).
  */
-#if defined(macintosh)
-#define PLAYER_DIR      "" /* Player files                 */
-#define NPC_DIR     ""
-#define NULL_FILE       "proto.are" /* To reserve one stream        */
-#define MOB_DIR         "" /* MOBProg files                */
-#endif
 
 #if defined(MSDOS)
 #define PLAYER_DIR      "" /* Player files                 */

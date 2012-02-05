@@ -114,16 +114,13 @@
 #include "h/sysdata.h"
 #endif
 
-#if !defined(macintosh)
-extern int _filbuf args( ( FILE * ) );
-#endif
-
 /*
  * Globals.
  */
 char bug_buf[2 * MAX_INPUT_LENGTH];
 char log_buf[2 * MAX_INPUT_LENGTH];
 char testerbuf[MSL];
+extern int _filbuf args( ( FILE * ) );
 KILL_DATA kill_table[MAX_LEVEL];
 TIME_INFO_DATA time_info;
 WEATHER_DATA weather_info;
@@ -2662,7 +2659,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
         /*
          * Only load one with the same name
          */
-#if !defined(machintosh) && !defined(MSDOS)
+#if !defined(MSDOS)
         snprintf( buf, 255, "%s n%i", pMobIndex->player_name, 1 );
 #else
         snprintf( buf, 255, "n%i %s", 1, pMobIndex->player_name );
@@ -4146,7 +4143,7 @@ char *_popen( const char *search )
     fp_open++;
     fp_close++;
 
-    fclose(fp);
+    pclose(fp);
     if ( fpReserve == NULL )
     {
         fpReserve = fopen(NULL_FILE, "r");

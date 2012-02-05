@@ -5167,7 +5167,7 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
     {
         char buf[MAX_STRING_LENGTH];
         OBJ_DATA *obj;
-        char *name = NULL;
+        char name[MSL];
 
         snprintf(name, MSL, "%s", ch->get_name());
         obj = create_object( get_obj_index( vnum ), 0 );

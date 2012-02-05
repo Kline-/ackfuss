@@ -122,24 +122,24 @@ DO_FUN(do_help)
         if ( !shelp )
         {
             ch->send("No help on that word.\r\n");
-            snprintf(log_buf, MSL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
+            snprintf(log_buf, MIL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
             monitor_chan(log_buf, MONITOR_HELPS);
         }
         else
         {
             ch->send("No sHelp for that skill/spell.\r\n");
-            snprintf(log_buf, MSL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
+            snprintf(log_buf, MIL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
             monitor_chan(log_buf, MONITOR_HELPS);
         }
         return;
     }
-    
+
     if ( IS_IMMORTAL(ch) )
     {
         str = argument;
         str += ".";
         str += HELP_MORT;
-        
+
         if( exists_help(str.c_str()) )
         {
             if( found )
@@ -148,19 +148,19 @@ DO_FUN(do_help)
             found = true;
             ch->send(hlp->description);
         }
-        
+
         if ( !found )
         {
             if ( !shelp )
             {
                 ch->send("No help on that word.\r\n");
-                snprintf(log_buf, MSL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
+                snprintf(log_buf, MIL, "Missing help: %s attempted by %s.", argument, ch->name.c_str());
                 monitor_chan(log_buf, MONITOR_HELPS);
             }
             else
             {
                 ch->send("No sHelp for that skill/spell.\r\n");
-                snprintf(log_buf, MSL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
+                snprintf(log_buf, MIL, "Missing sHelp: %s attempted by %s.", argument, ch->name.c_str());
                 monitor_chan(log_buf, MONITOR_HELPS);
             }
             return;
@@ -249,7 +249,7 @@ HELP_DATA *load_help( const char *help )
         ret = *li;
         if( ret->name.find(help) != string::npos )
         {
-            snprintf( log_buf, MSL, "load_help: using cached copy of (%s) which expires in (%d)", ret->name.c_str(), ret->cache_time );
+            snprintf( log_buf, MIL, "load_help: using cached copy of (%s) which expires in (%d)", ret->name.c_str(), ret->cache_time );
             monitor_chan( log_buf, MONITOR_DEBUG );
             ret->cache_time = sysdata.pulse_cache;
             return ret;
@@ -282,13 +282,13 @@ void cache_check_help( )
 {
     HELP_DATA *hlp;
     list<HELP_DATA *>::iterator li;
-    
+
     for( li = help_list.begin(); li != help_list.end(); li++ )
     {
         hlp = *li;
         if( --hlp->cache_time <= 0 )
         {
-            snprintf( log_buf, MSL, "cache_check_help: removing file (%s) from cache, time expired", hlp->name.c_str() );
+            snprintf( log_buf, MIL, "cache_check_help: removing file (%s) from cache, time expired", hlp->name.c_str() );
             monitor_chan( log_buf, MONITOR_DEBUG );
             delete hlp;
             li = help_list.erase(li);

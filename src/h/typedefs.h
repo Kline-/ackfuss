@@ -67,12 +67,6 @@ char *crypt args( ( const char *key, const char *salt ) );
  * These are all very standard library functions,
  *   but some systems have incomplete or non-ansi header files.
  */
-#if     defined(macintosh)
-#define NOCRYPT
-#if     defined(unix)
-#undef  unix
-#endif
-#endif
 
 #if     defined(MSDOS)
 #define NOCRYPT

@@ -71,7 +71,7 @@ SOCIAL_DATA *load_social( const char *social )
         ret = *li;
         if( ret->name.find(social) != string::npos )
         {
-            snprintf( log_buf, MSL, "load_social: using cached copy of (%s) which expires in (%d)", ret->name.c_str(), ret->cache_time );
+            snprintf( log_buf, MIL, "load_social: using cached copy of (%s) which expires in (%d)", ret->name.c_str(), ret->cache_time );
             monitor_chan( log_buf, MONITOR_DEBUG );
             ret->cache_time = sysdata.pulse_cache;
             return ret;
@@ -92,20 +92,20 @@ SOCIAL_DATA *load_social( const char *social )
     {
         word = feof(fp) ? "End" : fread_word(fp);
         fMatch = false;
-        
+
         switch ( UPPER(word[0]) )
         {
             case '*':
                 fMatch = true;
                 fread_to_eol(fp);
                 break;
-                
+
             case 'C':
                 KEY("CharAuto", ret->char_auto, fread_string( fp ) );
                 KEY("CharFound", ret->char_found, fread_string( fp ) );
                 KEY("CharNoArg", ret->char_no_arg, fread_string( fp ) );
                 break;
-                            
+
             case 'E':
                 if ( !str_cmp(word, "End") )
                 {
@@ -113,20 +113,20 @@ SOCIAL_DATA *load_social( const char *social )
                     return ret;
                 }
                 break;
-                
+
             case 'O':
                 KEY("OtherAuto", ret->other_auto, fread_string( fp ) );
                 KEY("OtherFound", ret->other_found, fread_string( fp ) );
                 KEY("OtherNoArg", ret->other_no_arg, fread_string( fp ) );
                 break;
-                
+
             case 'V':
                 KEY("VictFound", ret->vict_found, fread_string( fp ) );
                 break;
         }
 
     }
-    
+
     if ( !fMatch )
     {
         snprintf( log_buf, (2 * MIL), "Loading in social :%s, no match for ( %s ).", social, word );
@@ -134,7 +134,7 @@ SOCIAL_DATA *load_social( const char *social )
         fread_to_eol( fp );
     }
     file_close(fp);
-    
+
     return ret;
 }
 
@@ -142,13 +142,13 @@ void cache_check_social( )
 {
     SOCIAL_DATA *soc;
     list<SOCIAL_DATA *>::iterator li;
-    
+
     for( li = social_list.begin(); li != social_list.end(); li++ )
     {
         soc = *li;
         if( --soc->cache_time <= 0 )
         {
-            snprintf( log_buf, MSL, "cache_check_social: removing file (%s) from cache, time expired", soc->name.c_str() );
+            snprintf( log_buf, MIL, "cache_check_social: removing file (%s) from cache, time expired", soc->name.c_str() );
             monitor_chan( log_buf, MONITOR_DEBUG );
             delete soc;
             li = social_list.erase(li);

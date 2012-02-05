@@ -90,17 +90,13 @@
 #include "h/ssm.h"
 #endif
 
-#if !defined(macintosh)
-extern int _filbuf args( ( FILE * ) );
-#endif
-
 /*
  * Array of containers read for proper re-nesting of objects.
  */
 #define MAX_NEST        100
 static OBJ_DATA *rgObjNest[MAX_NEST];
 
-
+extern int _filbuf args( ( FILE * ) );
 extern bool deathmatch;  /* Deathmatch happening?        */
 
 /*
@@ -145,7 +141,7 @@ void save_char_obj( CHAR_DATA * ch )
     /*
      * player files parsed directories by Yaz 4th Realm
      */
-#if !defined(machintosh) && !defined(MSDOS)
+#if !defined(MSDOS)
     if ( IS_NPC( ch ) )  /* convert spaces to . */
     {
         for ( nmptr = const_cast<char *>(ch->name.c_str()), bufptr = buf; *nmptr != 0; nmptr++ )
@@ -718,7 +714,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
      * decompress if .gz file exists - Thx Alander
      */
 
-#if !defined(machintosh) && !defined(MSDOS)
+#if !defined(MSDOS)
     if ( is_npc )  /* convert spaces to . */
     {
         for ( nmptr = name, bufptr = buf; *nmptr != 0; nmptr++ )
@@ -756,7 +752,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
 
 
 
-#if !defined(macintosh) && !defined(MSDOS)
+#if !defined(MSDOS)
     snprintf( tempstrsave, MIL, "%s%s", strsave, ".gz" );
     if ( ( fp = file_open( tempstrsave, "r" ) ) != NULL )
     {

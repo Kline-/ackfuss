@@ -237,7 +237,7 @@ DO_FUN(build_makearea)
         return;
     }
 
-    strncat(arg1, ".are", MSL); /* Add file extension */
+    strncat(arg1, ".are", MIL); /* Add file extension */
 
     snprintf( buf, MSL, "%s%s", AREA_DIR, arg1 );
 

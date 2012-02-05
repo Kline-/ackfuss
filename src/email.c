@@ -240,7 +240,7 @@ DO_FUN(do_verify_email)
        ch->send( "Thank you for verifying your email address.\r\n");
        ch->pcdata->email->confirmation_code.clear();
        ch->pcdata->email->verified = true;
-       snprintf( log_buf, MSL, "%s (%s) has verified their email address.", ch->get_name(), ch->pcdata->email->address.c_str() );
+       snprintf( log_buf, MIL, "%s (%s) has verified their email address.", ch->get_name(), ch->pcdata->email->address.c_str() );
        monitor_chan( log_buf, MONITOR_EMAIL );
        return;
     }
@@ -289,7 +289,7 @@ bool send_email( const char *address, const char *subject, const char *body, boo
 
     if ( validate && ch != NULL && !ch->pcdata->email->verified )
     {
-        snprintf( log_buf, MSL, "Unable to send email to %s (%s); email not verified.", ch->get_name(), ch->pcdata->email->address.c_str() );
+        snprintf( log_buf, MIL, "Unable to send email to %s (%s); email not verified.", ch->get_name(), ch->pcdata->email->address.c_str() );
         monitor_chan( log_buf, MONITOR_EMAIL );
         return false;
     }
@@ -303,9 +303,9 @@ bool send_email( const char *address, const char *subject, const char *body, boo
     if ( system( mailbuf ) ) {}
 
     if( ch == NULL )
-        snprintf( log_buf, MSL, "An email was sent to (%s) with subject (%s).", address, subject );
+        snprintf( log_buf, MIL, "An email was sent to (%s) with subject (%s).", address, subject );
     else
-        snprintf( log_buf, MSL, "An email was sent to %s (%s) with subject (%s).", ch->get_name(), ch->pcdata->email->address.c_str(), subject );
+        snprintf( log_buf, MIL, "An email was sent to %s (%s) with subject (%s).", ch->get_name(), ch->pcdata->email->address.c_str(), subject );
     monitor_chan( log_buf, MONITOR_EMAIL );
 
     if ( ( fp = file_open( EMAIL_FILE, "a" ) ) != NULL )

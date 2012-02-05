@@ -330,7 +330,7 @@ DO_FUN(do_rename)
     /*
      * First, check if there is a player named that off-line
      */
-#if !defined(machintosh) && !defined(MSDOS)
+#if !defined(MSDOS)
     snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
 #else
     snprintf( strsave, MIL, "%s%s", PLAYER_DIR, capitalize( new_name ) );
@@ -348,7 +348,7 @@ DO_FUN(do_rename)
     /*
      * Check .gz file !
      */
-#if !defined(machintosh) && !defined(MSDOS)
+#if !defined(MSDOS)
     snprintf( strsave, MIL, "%s%s%s%s.gz", PLAYER_DIR, initial( new_name ), "/", capitalize( new_name ) );
 #else
     snprintf( strsave, MIL, "%s%s.gz", PLAYER_DIR, capitalize( new_name ) );
@@ -373,7 +373,7 @@ DO_FUN(do_rename)
      * Save the filename of the old name
      */
 
-#if !defined(machintosh) && !defined(MSDOS)
+#if !defined(MSDOS)
     snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( victim->name.c_str() ), "/", capitalize( victim->name.c_str() ) );
 #else
     snprintf( strsave, MIL, "%s%s", PLAYER_DIR, capitalize( victim->name.c_str() ) );

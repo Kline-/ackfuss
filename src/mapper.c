@@ -515,7 +515,7 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
                 snprintf( buf + strlen( buf ), 128, " %s", compass_name[e] );
             }
         }
-    strncat( buf, " ]", MSL );
+    strncat( buf, " ]", 128 );
     return buf;
 }
 
