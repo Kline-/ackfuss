@@ -141,7 +141,6 @@ void save_char_obj( CHAR_DATA * ch )
     /*
      * player files parsed directories by Yaz 4th Realm
      */
-#if !defined(MSDOS)
     if ( IS_NPC( ch ) )  /* convert spaces to . */
     {
         for ( nmptr = const_cast<char *>(ch->name.c_str()), bufptr = buf; *nmptr != 0; nmptr++ )
@@ -156,26 +155,7 @@ void save_char_obj( CHAR_DATA * ch )
     else
         strcpy( buf, ch->name.c_str() );
     snprintf( strsave, MIL, "%s%s%s%s", PLAYER_DIR, initial( buf ), "/", cap_nocol( buf ) );
-#else
-    /*
-     * Convert npc names to dos compat name.... yuk
-     */
-    if ( IS_NPC( ch ) )
-    {
-        for ( nmptr = ch->name, bufptr = buf; *nmptr != 0; nmptr++ )
-        {
-            if ( *nmptr != ' ' && *nmptr != '.' )
-                *( bufptr++ ) = *nmptr;
-            if ( bufptr - buf == 8 )
-                break;
-        }
-        *( bufptr ) = 0;
-    }
-    else
-        strcpy( buf, ch->name );
 
-    snprintf( strsave, MIL, "%s%s", IS_NPC( ch ) ? NPC_DIR : PLAYER_DIR, cap_nocol( buf ) );
-#endif
     /*
      * Tack on a .temp to strsave, use as tempstrsave
      */
@@ -714,7 +694,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
      * decompress if .gz file exists - Thx Alander
      */
 
-#if !defined(MSDOS)
     if ( is_npc )  /* convert spaces to . */
     {
         for ( nmptr = name, bufptr = buf; *nmptr != 0; nmptr++ )
@@ -729,30 +708,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
     else
         strcpy( buf, name );
     snprintf( strsave, MIL, "%s%s%s%s", is_npc ? NPC_DIR : PLAYER_DIR, initial( buf ), "/", cap_nocol( buf ) );
-#else
-    /*
-     * Convert npc names to dos compat name.... yuk
-     */
-    if ( is_npc )
-    {
-        for ( nmptr = ch->name, bufptr = buf; *nmptr != 0; nmptr++ )
-        {
-            if ( *nmptr != ' ' && *nmptr != '.' )
-                *( bufptr++ ) = *nmptr;
-            if ( bufptr - buf == 8 )
-                break;
-        }
-        *( bufptr ) = 0;
-    }
-    else
-        strcpy( buf, name );
 
-    snprintf( strsave, MIL, "%s%s", is_npc ? NPC_DIR : PLAYER_DIR, cap_nocol( buf ) );
-#endif
-
-
-
-#if !defined(MSDOS)
     snprintf( tempstrsave, MIL, "%s%s", strsave, ".gz" );
     if ( ( fp = file_open( tempstrsave, "r" ) ) != NULL )
     {
@@ -760,7 +716,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
         snprintf( buf, MSL, "gzip -dfq %s", tempstrsave );
         if ( system( buf ) ) {} /* See around line 314 in email.c to explain this --Kline */
     }
-#endif
 
     if ( ( fp = file_open( strsave, "r" ) ) != NULL )
     {

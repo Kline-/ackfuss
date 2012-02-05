@@ -258,7 +258,7 @@ const char *char_data::get_whoname( )
     {
         s1 = get_level("sor"); s2 = get_level("mon"); s3 = get_level("ass"); s4 = get_level("kni"); s5 = get_level("nec");
         snprintf( buf, MSL, "@@m%2d %2d %2d %2d %2d@@N", s1 <= 0 ? 0 : s1, s2 <= 0 ? 0 : s2, s3 <= 0 ? 0 : s3, s4 <= 0 ? 0 : s4, s5 <= 0 ? 0 : s5 );
-        output = buf;
+        output = str_dup( buf );
 
         return output;
     }
@@ -266,7 +266,7 @@ const char *char_data::get_whoname( )
     {
         s1 = get_level("mag"); s2 = get_level("cle"); s3 = get_level("thi"); s4 = get_level("war"); s5 = get_level("psi");
         snprintf( buf, MSL, "@@b%2d %2d %2d %2d %2d@@N", s1 <= 0 ? 0 : s1, s2 <= 0 ? 0 : s2, s3 <= 0 ? 0 : s3, s4 <= 0 ? 0 : s4, s5 <= 0 ? 0 : s5 );
-        output = buf;
+        output = str_dup( buf );
 
         return output;
     }

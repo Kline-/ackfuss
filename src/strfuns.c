@@ -55,7 +55,7 @@
 #endif
 
 #ifndef DEC_STRFUNS_H
-#include "strfuns.h"
+#include "h/strfuns.h"
 #endif
 
 void pre_parse( char *list, char *victimname, char *containername, char *things )
@@ -1219,7 +1219,7 @@ char *affect_loc_name( int location )
 
 const char *raffect_bit_name( int vector )
 {
-    static char rbuf[512];
+    static char rbuf[MSL];
 
     rbuf[0] = '\0';
 
@@ -1264,7 +1264,7 @@ const char *raffect_bit_name( int vector )
  */
 const char *affect_bit_name( int vector )
 {
-    static char buf[512];
+    static char buf[MSL];
 
     buf[0] = '\0';
     if ( vector & AFF_BLIND )
@@ -1741,7 +1741,7 @@ char *tagline_format( const char *txt, CHAR_DATA *ch )
 
     }
 
-    retc = output;
+    retc = str_dup( output );
     return retc;
 }
 
@@ -2136,7 +2136,7 @@ const char *who_pers( CHAR_DATA *pers )
  /* Make the magic happen */
  snprintf( buf1, MSL, "%s  %3s%5s  %s @@R|@@N %s @@e%-7s@@N", pers->get_whoname(), race_table[pers->race].race_name, clan_table[pers->clan].clan_name,
                                                               flags1, ntbuf, flags2 );
- output = buf1;
+ output = str_dup( buf1 );
 
  return output;
 }
@@ -2156,7 +2156,8 @@ const char *color_format( const char *input, int length, bool left_just )
   format = "%";
  format += buf; format += "."; format += buf; format += "s";
  snprintf( buf, MSL, format.c_str(), input );
- output = buf;
+
+ output = str_dup( buf );
 
  return output;
 }

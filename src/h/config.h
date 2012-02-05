@@ -1277,25 +1277,9 @@
  * Then we close it whenever we need to open a file (e.g. a save file).
  */
 
-#if defined(MSDOS)
-#define PLAYER_DIR      "" /* Player files                 */
-#define NPC_DIR     ""
-#define NULL_FILE       "nul" /* To reserve one stream        */
-#define MOB_DIR         "" /* MOBProg files                */
-#endif
-
-#if defined(unix)
-#define PLAYER_DIR      "../player/"   /* Player files                 */
-#define NPC_DIR     "../npc/"
 #define NULL_FILE       "/dev/null" /* To reserve one stream        */
-#endif
-
-#if defined(linux)
 #define PLAYER_DIR      "../player/"   /* Player files                 */
-#define NPC_DIR     "../npc/"
-#define NULL_FILE       "/dev/null" /* To reserve one stream        */
-#endif
-
+#define NPC_DIR         "../npc/"
 #define AREA_DIR        "../area/"
 #define MAIL_DIR        "../mail/"
 #define DATA_DIR        "../data/"
@@ -1305,7 +1289,6 @@
 #define SOCIAL_DIR      "../social/"
 
 #define SOCIAL_EXT     "soc"              /* File extension to denote socials      */
-
 #define HELP_MORT      "mrt"              /* Mortal helpfiles                      */
 #define HELP_IMM       "imm"              /* Immortal helpfiles                    */
 #define HELP_INDEX     "help.index"       /* For 'help' with no arg                */

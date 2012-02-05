@@ -2659,11 +2659,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
         /*
          * Only load one with the same name
          */
-#if !defined(MSDOS)
         snprintf( buf, 255, "%s n%i", pMobIndex->player_name, 1 );
-#else
-        snprintf( buf, 255, "n%i %s", 1, pMobIndex->player_name );
-#endif
 
     }
 

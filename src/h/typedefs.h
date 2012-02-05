@@ -63,19 +63,6 @@ char *crypt args( ( const char *key, const char *salt ) );
 #endif
 
 /*
- * OS-dependent declarations.
- * These are all very standard library functions,
- *   but some systems have incomplete or non-ansi header files.
- */
-
-#if     defined(MSDOS)
-#define NOCRYPT
-#if     defined(unix)
-#undef  unix
-#endif
-#endif
-
-/*
  * The crypt(3) function is not available on some operating systems.
  * In particular, the U.S. Government prohibits its export from the
  *   United States to foreign countries.
