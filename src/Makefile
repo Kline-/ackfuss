@@ -17,7 +17,7 @@ MODE = DEBUG
 ifeq '$(MODE)' 'RELEASE'
 	C_FLAGS = -w -O3
 else
-	C_FLAGS = -O0 -ggdb3 -pg $(W_FLAGS)
+	C_FLAGS = -O0 -ggdb3 -pg
 endif
 
 #-Werror -Wwrite-strings -Wconversion
