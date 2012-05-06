@@ -2687,9 +2687,9 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     mob->affected_by = pMobIndex->affected_by;
     mob->alignment = pMobIndex->alignment;
     mob->sex = pMobIndex->sex;
-    mob->npcdata->ac_mod = pMobIndex->ac_mod;
-    mob->npcdata->hr_mod = pMobIndex->hr_mod;
-    mob->npcdata->dr_mod = pMobIndex->dr_mod;
+    mob->ac_mod = pMobIndex->ac_mod;
+    mob->hr_mod = pMobIndex->hr_mod;
+    mob->dr_mod = pMobIndex->dr_mod;
 
     mob->armor = interpolate( mob->level / 2, 100, 100 );
     hold = mob->armor;

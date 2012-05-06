@@ -549,6 +549,7 @@ class char_data
         void set_cooldown( int pos, float duration );
         void set_title( const char *title );
 
+        short ac_mod;
         bitset<MAX_BITSET> act;
         int affected_by;
         short alignment;
@@ -562,6 +563,7 @@ class char_data
         bitset<MAX_BITSET> deaf;
         DESCRIPTOR_DATA *desc;
         string description;
+        short dr_mod;
         int exp;
         CHAR_DATA *fighting;
         AFFECT_DATA *first_affect;
@@ -570,6 +572,7 @@ class char_data
         MAGIC_SHIELD *first_shield;
         int hit;
         short hitroll;
+        short hr_mod;
         CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
         int hunt_flags;   /* Action flags         */
         OBJ_DATA *hunt_obj;  /* Looking for objects     */
@@ -643,12 +646,9 @@ class npc_data
     public:
         npc_data();
         ~npc_data();
-        short ac_mod;
         int cast;
         int def;
-        short dr_mod;
         short extract_timer; /* charmie timer */
-        short hr_mod;
         CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
         ROOM_INDEX_DATA *hunt_home; /* return to loc */
         NPC_GROUP_DATA *ngroup;

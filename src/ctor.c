@@ -137,6 +137,7 @@ cast_data::cast_data()
 
 char_data::char_data()
 {
+    ac_mod = 0;
     act.reset();
     affected_by = 0;
     alignment = 0;
@@ -151,6 +152,7 @@ char_data::char_data()
     deaf.reset();
     desc = NULL;
     description.clear();
+    dr_mod = 0;
     exp = 0;
     fighting = NULL;
     first_affect = NULL;
@@ -159,6 +161,7 @@ char_data::char_data()
     first_shield = NULL;
     hit = 50;
     hitroll = 5;
+    hr_mod = 0;
     hunting = NULL;
     hunt_flags = 0;
     hunt_obj = NULL;
@@ -400,12 +403,9 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
-    ac_mod = 0;
     cast = 0;
     def = 0;
-    dr_mod = 0;
     extract_timer = -1;
-    hr_mod = 0;
     hunt_for = NULL;
     hunt_home = NULL;
     ngroup = NULL;

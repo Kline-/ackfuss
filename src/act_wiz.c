@@ -1007,7 +1007,7 @@ DO_FUN(do_mstat)
 
     if ( IS_NPC( victim ) )
     {
-        snprintf( buf, MSL, "MODIFIERS: AC: %d.  Hitroll: %d.  Damroll: %d.\r\n", victim->npcdata->ac_mod, victim->npcdata->hr_mod, victim->npcdata->dr_mod );
+        snprintf( buf, MSL, "MODIFIERS: AC: %d.  Hitroll: %d.  Damroll: %d.\r\n", victim->ac_mod, victim->hr_mod, victim->dr_mod );
         strncat( buf1, buf, MSL - 1 );
         snprintf( buf, MSL, "TARGET: %s\r\n", victim->target.c_str() );
         strncat( buf1, buf, MSL - 1 );

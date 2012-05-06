@@ -2071,7 +2071,6 @@ const char *who_pers( CHAR_DATA *pers )
  char buf1[MSL] = {'\0'}, buf2[MSL] = {'\0'}, ntbuf[MSL] = {'\0'};
  char cjob[2] = {'\0'};
  char flags1[10] = {'\0'}, flags2[10] = {'\0'};
- int nlen = 0, tlen = 0;
  static const char *output;
  string format;
 
@@ -2128,8 +2127,6 @@ const char *who_pers( CHAR_DATA *pers )
      snprintf( flags2, 10, "IDLE:%2d", pers->timer );
 
  /* Sort out name + title length */
- nlen = nocol_strlen( pers->name.c_str() );
- tlen = 3 + strlen( pers->get_title() ) + nlen; /* Add 3 for space padded on either end of the total string, and terminating NUL */
  snprintf( buf2, MSL, "%s%s", pers->get_name(), pers->get_title() );
  snprintf( ntbuf, MSL, "%s", color_format(buf2,33,true) );
 

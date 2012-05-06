@@ -2121,9 +2121,9 @@ DO_FUN(do_consider)
      */
     if ( IS_NPC( victim ) )
     {
-        diff += victim->npcdata->hr_mod / 4;
-        diff += victim->npcdata->dr_mod / 4;
-        diff += victim->npcdata->ac_mod / 30;
+        diff += victim->hr_mod / 4;
+        diff += victim->dr_mod / 4;
+        diff += victim->ac_mod / 30;
     }
 
     if ( diff >= 10 )
