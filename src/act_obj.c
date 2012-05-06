@@ -2475,7 +2475,7 @@ DO_FUN(do_steal)
         do_yell( victim, buf );
         if ( !IS_NPC( ch ) )
         {
-            if ( IS_NPC( victim ) && ( victim->npcdata->pIndexData->pShop == NULL ) )
+            if ( IS_NPC( victim ) && ( victim->pIndexData->pShop == NULL ) )
             {
                 act( "$n says 'I'll get you for that, $N!'", victim, NULL, ch, TO_ROOM );
                 one_hit( victim, ch, TYPE_UNDEFINED );
@@ -2538,7 +2538,7 @@ CHAR_DATA *find_keeper( CHAR_DATA * ch )
     pShop = NULL;
     for ( keeper = ch->in_room->first_person; keeper; keeper = keeper->next_in_room )
     {
-        if ( IS_NPC( keeper ) && ( pShop = keeper->npcdata->pIndexData->pShop ) != NULL )
+        if ( IS_NPC( keeper ) && ( pShop = keeper->pIndexData->pShop ) != NULL )
             break;
     }
 
@@ -2673,7 +2673,7 @@ int get_cost( CHAR_DATA * keeper, OBJ_DATA * obj, bool fBuy )
 {
     SHOP_DATA *pShop;
     int cost;
-    if ( obj == NULL || ( pShop = keeper->npcdata->pIndexData->pShop ) == NULL )
+    if ( obj == NULL || ( pShop = keeper->pIndexData->pShop ) == NULL )
         return 0;
     if ( fBuy )
     {
@@ -2805,7 +2805,7 @@ DO_FUN(do_buy)
             do_say( keeper, "Thank you very much for your business!" );
         }
 
-        pet = create_mobile( pet->npcdata->pIndexData );
+        pet = create_mobile( pet->pIndexData );
         ch->act.set(ACT_BOUGHT_PET);
         pet->act.set(ACT_PET);
         SET_BIT( pet->affected_by, AFF_CHARM );
@@ -4099,7 +4099,7 @@ DO_FUN(do_repair)
     }
 
     for ( mob = ch->in_room->first_person; mob != NULL; mob = mob->next_in_room )
-        if ( IS_NPC(mob) && mob->npcdata->pIndexData->pShop != NULL )
+        if ( IS_NPC(mob) && mob->pIndexData->pShop != NULL )
             break;
 
     if ( mob == NULL || !can_see(ch, mob) )

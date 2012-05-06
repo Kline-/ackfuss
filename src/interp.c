@@ -957,7 +957,7 @@ void comlog( CHAR_DATA * ch, bool cleanup, int cmd, char *args )
     }
 
     fprintf( fplog, "%.24s :: %12.12s (%5d): %s %s\n", ctime( &current_time ),
-             ch->name.c_str(), ( IS_NPC( ch ) ? ch->npcdata->pIndexData->vnum : -1 ), cmd_table[cmd].name,
+             ch->name.c_str(), ( IS_NPC( ch ) ? ch->pIndexData->vnum : -1 ), cmd_table[cmd].name,
              ( cmd_table[cmd].log == LOG_NEVER ? "XXX" : args ) );
     fflush( fplog );
 }

@@ -195,12 +195,14 @@ char_data::char_data()
     move = 50;
     name = &str_empty[0];
     next_in_room = NULL;
+    ngroup = NULL;
     npc = false;
     npcdata = NULL;
     num_followers = 0;
     old_body = NULL;
     old_prompt = &str_empty[0];
     pcdata = NULL;
+    pIndexData = NULL;
     played = 0;
     poly_level = 0;
     position = POS_STANDING;
@@ -413,8 +415,6 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
-    ngroup = NULL;
-    pIndexData = NULL;
     reset = NULL;
     short_descr = &str_empty[0];
     spec_fun = NULL;

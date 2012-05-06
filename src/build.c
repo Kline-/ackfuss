@@ -4478,7 +4478,7 @@ DO_FUN(build_delmob)
         for ( li = char_list.begin(); li != char_list.end(); li++ )
         {
             wch = *li;
-            if ( wch->npcdata->pIndexData == pMobIndex )
+            if ( wch->pIndexData == pMobIndex )
                 extract_char( wch, TRUE );
         }
     }

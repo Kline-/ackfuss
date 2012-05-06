@@ -1751,7 +1751,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
                 }
             }
     }
-    if ( IS_NPC(ch) && ch->npcdata->ngroup != NULL )
+    if ( IS_NPC(ch) && ch->ngroup != NULL )
     {
         NPC_GROUP_DATA *kill_group = NULL;
         DL_LIST *kill_member = NULL;

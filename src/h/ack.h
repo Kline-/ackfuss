@@ -604,12 +604,14 @@ class char_data
         int move;
         string name;
         CHAR_DATA *next_in_room;
+        NPC_GROUP_DATA *ngroup;
         bool npc; /* For NPC's, no more flag */
         NPC_DATA *npcdata;
         short num_followers;
         CHAR_DATA *old_body; /* = descriptor->original */
         string old_prompt; /* used to hold prompt when writing */
         PC_DATA *pcdata;
+        MOB_INDEX_DATA *pIndexData;
         int played;
         int poly_level;
         short position;
@@ -656,8 +658,6 @@ class npc_data
     public:
         npc_data();
         ~npc_data();
-        NPC_GROUP_DATA *ngroup;
-        MOB_INDEX_DATA *pIndexData;
         RESET_DATA *reset;
         char *short_descr;
         SPEC_FUN *spec_fun;

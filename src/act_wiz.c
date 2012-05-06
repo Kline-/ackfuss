@@ -932,7 +932,7 @@ DO_FUN(do_mstat)
     strncat( buf1, buf, MSL - 1 );
 
     snprintf( buf, MSL, "Vnum: %d.  Sex: %s.  Room: %d.\r\n",
-              IS_NPC( victim ) ? victim->npcdata->pIndexData->vnum : 0,
+              IS_NPC( victim ) ? victim->pIndexData->vnum : 0,
               victim->sex == SEX_MALE ? "male" :
               victim->sex == SEX_FEMALE ? "female" : "neutral", victim->in_room == NULL ? 0 : victim->in_room->vnum );
     strncat( buf1, buf, MSL - 1 );
@@ -1479,7 +1479,7 @@ DO_FUN(do_mwhere)
             if ( AI_MOB(victim) && victim->in_room != NULL )
             {
                 snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\r\n",
-                          victim->npcdata->pIndexData->vnum, victim->get_name(), victim->in_room->vnum, victim->in_room->name );
+                          victim->pIndexData->vnum, victim->get_name(), victim->in_room->vnum, victim->in_room->name );
                 send_to_char( buf, ch );
             }
 
@@ -1495,7 +1495,7 @@ DO_FUN(do_mwhere)
         {
             found = TRUE;
             snprintf( buf, MSL, "[%5d] %-20s [%5d] %-30s\r\n",
-                      victim->npcdata->pIndexData->vnum, victim->get_name(), victim->in_room->vnum, victim->in_room->name );
+                      victim->pIndexData->vnum, victim->get_name(), victim->in_room->vnum, victim->in_room->name );
             send_to_char( buf, ch );
         }
     }
@@ -2946,7 +2946,7 @@ DO_FUN(do_mset)
                 victim->hunt_for = NULL;
             if ( !victim->searching.empty() )
                 victim->searching.clear();
-            victim->hunt_flags = victim->npcdata->pIndexData->hunt_flags;
+            victim->hunt_flags = victim->pIndexData->hunt_flags;
         }
 
         return;

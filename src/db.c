@@ -2461,7 +2461,7 @@ void reset_area( AREA_DATA * pArea )
                     break;
                 }
 
-                if ( mob->npcdata->pIndexData->pShop != NULL )
+                if ( mob->pIndexData->pShop != NULL )
                 {
                     int olevel;
 
@@ -2667,7 +2667,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     mob->npcdata = new NPC_DATA;
 
     mob->npc = true;
-    mob->npcdata->pIndexData = pMobIndex;
+    mob->pIndexData = pMobIndex;
 
     if ( pMobIndex->act.test(ACT_AGGRESSIVE) )
         aggro_list.push_back(mob);
@@ -2765,7 +2765,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
         ngroup->last_fighting = str_dup( "none" );
         ngroup->wants = str_dup( "none" );
         ngroup->needs = str_dup( "none" );
-        mob->npcdata->ngroup = ngroup;
+        mob->ngroup = ngroup;
         LINK( ngroup, first_npc_group, last_npc_group, next, prev );
     }
     return mob;

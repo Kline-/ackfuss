@@ -522,7 +522,7 @@ void violence_update( void )
                      */
                     if ( !IS_AFFECTED( rch, AFF_CHARM ) )
                     {
-                        if ( ( rch->npcdata->pIndexData == victim->npcdata->pIndexData )  /* is it the same as a target here?  */
+                        if ( ( rch->pIndexData == victim->pIndexData )  /* is it the same as a target here?  */
                                 || ( ( number_percent(  ) < 20 )
                                      && ( abs( rch->get_level("psuedo") - victim->get_level("psuedo") ) < 35 ) ) )
                         {
@@ -786,7 +786,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
         }
         else
         {
-            skin_mods = ( victim->race == 0 ? victim->npcdata->pIndexData->race_mods : race_table[victim->race].race_flags );
+            skin_mods = ( victim->race == 0 ? victim->pIndexData->race_mods : race_table[victim->race].race_flags );
         }
         if ( IS_SET( skin_mods, RACE_MOD_TOUGH_SKIN ) )
             dam_mod -= .1;
@@ -2452,7 +2452,7 @@ void raw_kill( CHAR_DATA * victim, char *argument )
 
     if ( IS_NPC( victim ) && !victim->act.test(ACT_INTELLIGENT ) )
     {
-        victim->npcdata->pIndexData->killed++;
+        victim->pIndexData->killed++;
         kill_table[URANGE( 0, victim->level, MAX_LEVEL - 1 )].killed++;
         extract_char( victim, TRUE );
         return;
@@ -3549,8 +3549,8 @@ DO_FUN(do_flee)
         }
         if ( ( ch->fighting != NULL ) && ( AI_MOB( ch->fighting ) ) )
         {
-            ch->fighting->npcdata->ngroup->state = GRP_STATE_HUNTING;
-            ch->fighting->npcdata->ngroup->leader->hunting = ch;
+            ch->fighting->ngroup->state = GRP_STATE_HUNTING;
+            ch->fighting->ngroup->leader->hunting = ch;
         }
         stop_fighting( ch );
         /*
@@ -5982,7 +5982,7 @@ void check_brawl( CHAR_DATA *ch )
 
         if ( rch->fighting == NULL && IS_AWAKE(rch) && rch->master != ch && !IS_IMMORTAL(rch) && number_percent() <= 2 )
         {
-            if ( IS_NPC(rch) && (rch->act.test(ACT_TRAIN) || rch->act.test(ACT_PRACTICE) || rch->npcdata->pIndexData->pShop != NULL) )
+            if ( IS_NPC(rch) && (rch->act.test(ACT_TRAIN) || rch->act.test(ACT_PRACTICE) || rch->pIndexData->pShop != NULL) )
                 continue;
 
             for ( vch = ch->in_room->first_person; vch != NULL; vch = vch_next )

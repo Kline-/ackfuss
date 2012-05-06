@@ -322,7 +322,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
     if ( IS_NPC( ch ) )
     {
-        fprintf( fp, "Vnum           %d\n", ch->npcdata->pIndexData->vnum );
+        fprintf( fp, "Vnum           %d\n", ch->pIndexData->vnum );
     }
     else
     {
@@ -1329,7 +1329,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             case 'V':
                 if ( !str_cmp( word, "Vnum" ) && IS_NPC( ch ) )
                 {
-                    ch->npcdata->pIndexData = get_mob_index( fread_number( fp ) );
+                    ch->pIndexData = get_mob_index( fread_number( fp ) );
                     fMatch = TRUE;
                     break;
                 }
