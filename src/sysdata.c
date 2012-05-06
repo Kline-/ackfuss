@@ -185,7 +185,7 @@ void save_sysdata( void )
     fprintf(fp, "Mob_MV        %0.4f\n", sysdata.mob_mv);
     fprintf(fp, "Mob_SVS       %0.4f\n", sysdata.mob_svs);
     fprintf(fp, "Num_Greeting  %d\n",    sysdata.num_greeting);
-    fprintf(fp, "Playtesters   %s~\n",   sysdata.playtesters);
+    fprintf(fp, "Playtesters   %s~\n",   CSTR( sysdata.playtesters ));
     fprintf(fp, "Pulse         %d\n",    sysdata.pulse);
     fprintf(fp, "PulseCache    %d\n",    sysdata.pulse_cache);
     fprintf(fp, "Shownumbers   %d\n",    sysdata.shownumbers);
@@ -260,7 +260,7 @@ void do_sysdata( CHAR_DATA * ch, char *argument )
         strncat(outbuf, catbuf, MSL - 1);
         snprintf(catbuf, MSL, "[Num Greeting   ]       [%15d]\r\n", sysdata.num_greeting);
         strncat(outbuf, catbuf, MSL - 1);
-        snprintf(catbuf, MSL, "[Playtesters    ]       [%15s]\r\n", sysdata.playtesters);
+        snprintf(catbuf, MSL, "[Playtesters    ]       [%15s]\r\n", CSTR(sysdata.playtesters));
         strncat(outbuf, catbuf, MSL - 1);
         snprintf(catbuf, MSL, "[Pulse Per Sec  ]       [%15d]\r\n", sysdata.pulse);
         strncat(outbuf, catbuf, MSL - 1);

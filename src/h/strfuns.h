@@ -17,7 +17,7 @@
 /* strfuns.c */
 void pre_parse P_((char *list, char *victimname, char *containername, char *things));
 bool is_number P_((char *arg));
-bool is_name P_((const char *str, char *namelist));
+bool is_name P_((const char *str, const char *namelist));
 bool is_name_pfx P_((const char *str, char *namelist));
 char *space_pad P_((const char *str, short final_size));
 void smash_tilde P_((char *str));
@@ -33,7 +33,7 @@ char *learnt_name P_((int learnt));
 int nocol_strlen P_((const char *text));
 int ccode_len P_((const char *text, short desired));
 char *center_text P_((char *text, int width));
-char *str_mod P_((char *mod_string, char *argument));
+string str_mod P_((string& mod_string, char* argument));
 void rand_arg P_((char *argument, char *output));
 int number_argument P_((char *argument, char *arg));
 char *one_argument P_((char *argument, char *arg_first));

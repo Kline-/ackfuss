@@ -1230,7 +1230,7 @@ struct sysdata_type
     float mob_mv;
     float mob_svs;
     short num_greeting;
-    char *playtesters;
+    string playtesters;
     unsigned int pulse;
     unsigned int pulse_cache;
     bool shownumbers;

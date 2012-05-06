@@ -548,11 +548,6 @@ void walk_councils( void )
     for ( index = 0; index < MAX_SUPER; index++ )
         touch( super_councils[index].council_name );
 }
-void walk_sysdata( void )
-{
-    touch( sysdata.playtesters );
-}
-
 
 DO_FUN(do_scheck)
 {
@@ -574,7 +569,6 @@ DO_FUN(do_scheck)
     walk_boards(  );
     walk_rulers(  );
     walk_brands(  );
-    walk_sysdata(  );
     walk_ngroups(  );
 
     snprintf( buf, MSL, "%ld leaks dumped to leaks.dmp\r\n", dump(  ) );

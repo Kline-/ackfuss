@@ -2135,7 +2135,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         }
         else
         {
-            if ( wizlock && !IS_HERO( ch ) && !ch->wizbit && !is_name( argument, sysdata.playtesters ) )
+            if ( wizlock && !IS_HERO( ch ) && !ch->wizbit && !is_name( argument, CSTR( sysdata.playtesters ) ) )
             {
                 write_to_buffer( d, "\r\n             " mudnamenocolor " IS CURRENTLY WIZLOCKED.\r\n" );
                 write_to_buffer( d, "Please Try Connecting Again In A Little While, When Any Problems\r\n" );

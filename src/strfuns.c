@@ -128,13 +128,14 @@ bool is_number( char *arg )
 
 
 
-bool is_name( const char *str, char *namelist )
+bool is_name( const char *str, const char *namelist )
 {
     char name[MAX_INPUT_LENGTH];
+    char* _namelist = const_cast<char*>(namelist);
 
     for ( ;; )
     {
-        namelist = one_argument( namelist, name );
+        _namelist = one_argument( _namelist, name );
         if ( name[0] == '\0' )
             return FALSE;
         if ( !str_cmp( str, name ) )
@@ -690,9 +691,7 @@ char *center_text( char *text, int width )
     return foo;
 }
 
-
-
-char *str_mod( char *mod_string, char *argument )
+string str_mod( string& mod_string, char* argument )
 {
 
 
@@ -722,11 +721,11 @@ char *str_mod( char *mod_string, char *argument )
         {
             argument++;
 
-            if ( mod_string )
-                strncat( buf, mod_string, MSL );
+            if ( !mod_string.empty() )
+                strncat( buf, CSTR(mod_string), MSL );
             while ( isspace( *argument ) )
                 argument++;
-            if ( !str_infix( argument, mod_string ) )
+            if ( !str_infix( argument, CSTR(mod_string) ) )
             {
                 return mod_string;
             }
@@ -748,7 +747,7 @@ char *str_mod( char *mod_string, char *argument )
 
             if ( arg1[0] != '\0' )
             {
-                buf2 = str_dup( mod_string );
+                buf2 = str_dup( CSTR(mod_string) );
                 buf3 = buf2;
                 if ( ( word = strstr( buf2, arg1 ) ) == NULL )
                 {
@@ -769,8 +768,7 @@ char *str_mod( char *mod_string, char *argument )
 
         free_string( buf3 );
         word = buf2 = buf3 = NULL;
-        free_string( mod_string );
-        mod_string = str_dup( buf );
+        mod_string = buf;
     }
     return mod_string;
 }
