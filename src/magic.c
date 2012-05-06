@@ -1371,7 +1371,7 @@ bool spell_charm_person( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
     act( "Isn't $n just so nice?", ch, NULL, victim, TO_VICT );
     if ( ch != victim )
         send_to_char( "Ok.\r\n", ch );
-    victim->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    victim->extract_timer = ch->get_level("psuedo") / 3;
     return TRUE;
 }
 
@@ -4216,7 +4216,7 @@ bool spell_animate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
     do_wear( corpse, "all" );  /* FIXME: better to check items, then wear... */
     corpse->act.set(ACT_PET);
     SET_BIT( corpse->affected_by, AFF_CHARM );
-    corpse->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    corpse->extract_timer = ch->get_level("psuedo") / 3;
 
     add_follower( corpse, ch );
     return TRUE;
@@ -4413,7 +4413,7 @@ bool spell_hypnosis( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
     act( "Isn't $n just so nice?", ch, NULL, victim, TO_VICT );
     if ( ch != victim )
         send_to_char( "Ok.\r\n", ch );
-    victim->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    victim->extract_timer = ch->get_level("psuedo") / 3;
     return TRUE;
 }
 
@@ -5117,7 +5117,7 @@ bool spell_waterelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -5148,7 +5148,7 @@ bool spell_skeleton( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
 
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -5552,7 +5552,7 @@ bool spell_fireelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6270,7 +6270,7 @@ bool spell_earthelem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6300,7 +6300,7 @@ bool spell_iron_golem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6332,7 +6332,7 @@ bool spell_soul_thief( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6362,7 +6362,7 @@ bool spell_holy_avenger( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6392,7 +6392,7 @@ bool spell_diamond_golem( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6422,7 +6422,7 @@ bool spell_summon_pegasus( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6452,7 +6452,7 @@ bool spell_summon_nightmare( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DA
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6482,7 +6482,7 @@ bool spell_summon_beast( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA *
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6512,7 +6512,7 @@ bool spell_summon_devourer( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DAT
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6542,7 +6542,7 @@ bool spell_summon_shadow( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
      */
     summoned->act.set(ACT_PET );
     SET_BIT( summoned->affected_by, AFF_CHARM );
-    summoned->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+    summoned->extract_timer = ch->get_level("psuedo") / 3;
     add_follower( summoned, ch );
     return TRUE;
 }
@@ -6781,7 +6781,7 @@ bool spell_creature_bond( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
         stop_follower( victim );
         victim->act.set(ACT_PET );
         SET_BIT( victim->affected_by, AFF_CHARM );
-        victim->npcdata->extract_timer = ch->get_level("psuedo") / 3;
+        victim->extract_timer = ch->get_level("psuedo") / 3;
         add_follower( victim, ch );
     }
     else

@@ -2731,7 +2731,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     mob->max_move = (int)hold;
     mob->move = mob->max_move;
 
-    mob->npcdata->skills = pMobIndex->skills;
+    mob->skills = pMobIndex->skills;
     mob->cast = pMobIndex->cast;
     mob->def = pMobIndex->def;
     mob->p_class = pMobIndex->p_class;

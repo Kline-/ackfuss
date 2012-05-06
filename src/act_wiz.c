@@ -1011,7 +1011,7 @@ DO_FUN(do_mstat)
         strncat( buf1, buf, MSL - 1 );
         snprintf( buf, MSL, "TARGET: %s\r\n", victim->target.c_str() );
         strncat( buf1, buf, MSL - 1 );
-        snprintf( buf, MSL, "TIMER: %d\r\n", victim->npcdata->extract_timer );
+        snprintf( buf, MSL, "TIMER: %d\r\n", victim->extract_timer );
         strncat( buf1, buf, MSL - 1 );
     }
 
@@ -2977,7 +2977,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->npcdata->extract_timer = value;
+        victim->extract_timer = value;
         return;
     }
 

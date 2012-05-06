@@ -1526,9 +1526,9 @@ void char_update( void )
             if ( !ch->target.empty() && number_bits( 4 ) == 0 ) /* And all was forgiven ... --Kline */
                 ch->target.clear();
 
-            if ( ch->npcdata->extract_timer > 0 )
-                ch->npcdata->extract_timer--;
-            if ( ch->npcdata->extract_timer == 0 )
+            if ( ch->extract_timer > 0 )
+                ch->extract_timer--;
+            if ( ch->extract_timer == 0 )
             {
                 /*            if ( IS_SET( ch->affected_by, AFF_CHARM ) )
                             {  */

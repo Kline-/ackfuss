@@ -156,6 +156,7 @@ char_data::char_data()
     description.clear();
     dr_mod = 0;
     exp = 0;
+    extract_timer = -1;
     fighting = NULL;
     first_affect = NULL;
     first_carry = NULL;
@@ -214,6 +215,7 @@ char_data::char_data()
     searching = &str_empty[0];
     sex = SEX_NEUTRAL;
     sitting = NULL;
+    skills = 0;
     for ( short i = 0; i < MAX_SPEED; i++ )
         speed[i] = 0;
     stance = STANCE_WARRIOR;
@@ -409,14 +411,12 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
-    extract_timer = -1;
     hunt_for = NULL;
     hunt_home = NULL;
     ngroup = NULL;
     pIndexData = NULL;
     reset = NULL;
     short_descr = &str_empty[0];
-    skills = 0;
     spec_fun = NULL;
 }
 

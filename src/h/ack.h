@@ -567,6 +567,7 @@ class char_data
         string description;
         short dr_mod;
         int exp;
+        short extract_timer;
         CHAR_DATA *fighting;
         AFFECT_DATA *first_affect;
         OBJ_DATA *first_carry;
@@ -623,6 +624,7 @@ class char_data
         string searching; /* For NPCs hunting continuously */
         short sex;
         OBJ_DATA *sitting;   /* What they're resting or sleeping on */
+        int skills;
         float speed[MAX_SPEED];
         int stance;
         short stance_ac_mod;
@@ -652,14 +654,12 @@ class npc_data
     public:
         npc_data();
         ~npc_data();
-        short extract_timer; /* charmie timer */
         CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
         ROOM_INDEX_DATA *hunt_home; /* return to loc */
         NPC_GROUP_DATA *ngroup;
         MOB_INDEX_DATA *pIndexData;
         RESET_DATA *reset;
         char *short_descr;
-        int skills;
         SPEC_FUN *spec_fun;
 };
 

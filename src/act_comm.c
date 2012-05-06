@@ -1859,7 +1859,7 @@ void add_follower( CHAR_DATA * ch, CHAR_DATA * master )
         if ( max_orders <= master->num_followers )
         {
             send_to_char( "You cannot control anymore followers.\r\n", master );
-            ch->npcdata->extract_timer = 1;
+            ch->extract_timer = 1;
             return;
         }
         else
