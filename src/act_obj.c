@@ -2620,8 +2620,8 @@ void check_guards( CHAR_DATA * ch )
         guard = *li;
         if ( IS_NPC( guard )
                 && ( guard->in_room->area == ch->in_room->area )
-                && guard->npcdata->spec_fun != 0
-                && !str_cmp( "spec_policeman", rev_spec_lookup( guard->npcdata->spec_fun ) ) && guard->hunting == NULL )
+                && guard->spec_fun != 0
+                && !str_cmp( "spec_policeman", rev_spec_lookup( guard->spec_fun ) ) && guard->hunting == NULL )
         {
             if ( set_hunt( guard, NULL, ch, NULL, 0, HUNT_INFORM | HUNT_MERC | HUNT_CR ) )
             {

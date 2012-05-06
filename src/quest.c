@@ -461,7 +461,7 @@ CHAR_DATA *get_quest_target( int min_level, int max_level )
                 || ( target->in_room->area->flags.test(AFLAG_NO_SHOW) )
                 || ( target->act.test(ACT_SENTINEL) )
                 || ( target->act.test(ACT_PET) )
-                || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_stephen" ) ) )
+                || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_stephen" ) ) )
             continue;
 
         /*
@@ -535,8 +535,8 @@ CHAR_DATA *get_quest_giver( int min_level, int max_level )
                 || ( target->in_room->area->flags.test(AFLAG_NO_SHOW) )
                 || ( target->act.test(ACT_SENTINEL) )
                 || ( target->act.test(ACT_PET) )
-                || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_stephen" ) )
-                || ( !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_tax_man" ) ) )
+                || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_stephen" ) )
+                || ( !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_tax_man" ) ) )
 
             continue;
         {

@@ -2680,7 +2680,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     mob->npcdata->short_descr = str_dup( pMobIndex->short_descr );
     mob->long_descr = str_dup( pMobIndex->long_descr );
     mob->description = pMobIndex->description;
-    mob->npcdata->spec_fun = pMobIndex->spec_fun;
+    mob->spec_fun = pMobIndex->spec_fun;
     mob->prompt = str_dup(DEFAULT_PROMPT);
     mob->level = pMobIndex->level;
     mob->act = pMobIndex->act;

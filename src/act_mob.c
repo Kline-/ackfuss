@@ -900,7 +900,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
     /*
      * Don't attack players.... except for have spec_vamp_hunter
      */
-    if ( ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
+    if ( ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
         return FALSE;
 
     /*
@@ -915,7 +915,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
      * if IS vamp_hunter, make sure target is a player vamp
      */
 
-    if ( ( IS_VAMP( victim ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->npcdata->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
+    if ( ( IS_VAMP( victim ) ) && ( !IS_NPC( victim ) ) && ( !IS_NPC(ch) && ( ch->spec_fun != spec_lookup( "spec_vamp_hunter" ) ) ) )
         return FALSE;
 
     /*
@@ -936,7 +936,7 @@ bool valid_target( CHAR_DATA * ch, CHAR_DATA * victim, int l )
 //   || (   IS_NEUTRAL( ch ) && IS_NEUTRAL( victim ) ) )
 //      return FALSE;
 
-    if ( ( !IS_NPC(ch) && ( ch->npcdata->spec_fun == spec_lookup( "spec_vamp_hunter" ) ) ) && ( IS_NPC( victim ) ) && ( number_percent(  ) < 20 ) )
+    if ( ( !IS_NPC(ch) && ( ch->spec_fun == spec_lookup( "spec_vamp_hunter" ) ) ) && ( IS_NPC( victim ) ) && ( number_percent(  ) < 20 ) )
         return FALSE;
 
     if ( victim->in_room->room_flags.test(RFLAG_SAFE) || victim->act.test(ACT_SOLO) )

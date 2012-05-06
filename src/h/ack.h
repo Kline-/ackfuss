@@ -630,6 +630,7 @@ class char_data
         short sex;
         OBJ_DATA *sitting;   /* What they're resting or sleeping on */
         int skills;
+        SPEC_FUN *spec_fun;
         float speed[MAX_SPEED];
         int stance;
         short stance_ac_mod;
@@ -660,7 +661,6 @@ class npc_data
         npc_data();
         ~npc_data();
         char *short_descr;
-        SPEC_FUN *spec_fun;
 };
 
 /*

@@ -1071,7 +1071,7 @@ DO_FUN(do_mstat)
 
     if ( IS_NPC( victim ) )
     {
-        if ( victim->npcdata->spec_fun != 0 )
+        if ( victim->spec_fun != 0 )
             strncat( buf1, "Mobile has spec fun.\r\n", MSL );
     }
 
@@ -3275,7 +3275,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        if ( ( victim->npcdata->spec_fun = spec_lookup( arg3 ) ) == 0 )
+        if ( ( victim->spec_fun = spec_lookup( arg3 ) ) == 0 )
         {
             send_to_char( "No such spec fun.\r\n", ch );
             return;

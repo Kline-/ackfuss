@@ -1951,7 +1951,7 @@ void update_pos( CHAR_DATA * victim )
         if ( ( victim->act.test(ACT_KILLER ) || victim->act.test(ACT_THIEF ) )
                 && ( ( victim->fighting != NULL )
                      && ( ( !IS_NPC( victim->fighting ) )
-                          || ( IS_NPC(victim->fighting) && !str_cmp( rev_spec_lookup( victim->fighting->npcdata->spec_fun ), "spec_executioner" ) ) ) ) )
+                          || ( IS_NPC(victim->fighting) && !str_cmp( rev_spec_lookup( victim->fighting->spec_fun ), "spec_executioner" ) ) ) ) )
         {
             counter = number_range( 2, 3 );
 
@@ -2316,7 +2316,7 @@ void make_corpse( CHAR_DATA * ch, char *argument )
 
     if ( ( ch->act.test(ACT_KILLER ) || ch->act.test(ACT_THIEF ) )
             && ( ( target != NULL )
-                 && ( ( !IS_NPC( target ) ) || ( IS_NPC(target) && !str_cmp( rev_spec_lookup( target->npcdata->spec_fun ), "spec_executioner" ) ) ) ) )
+                 && ( ( !IS_NPC( target ) ) || ( IS_NPC(target) && !str_cmp( rev_spec_lookup( target->spec_fun ), "spec_executioner" ) ) ) ) )
 
     {
         corpse->value[0] = 1;

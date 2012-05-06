@@ -221,6 +221,7 @@ char_data::char_data()
     sex = SEX_NEUTRAL;
     sitting = NULL;
     skills = 0;
+    spec_fun = NULL;
     for ( short i = 0; i < MAX_SPEED; i++ )
         speed[i] = 0;
     stance = STANCE_WARRIOR;
@@ -417,7 +418,6 @@ note_data::note_data()
 npc_data::npc_data()
 {
     short_descr = &str_empty[0];
-    spec_fun = NULL;
 }
 
 npc_group_data::npc_group_data()

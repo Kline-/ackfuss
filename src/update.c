@@ -752,9 +752,9 @@ void mobile_update( void )
         /*
          * Examine call for special procedure
          */
-        if ( IS_NPC(ch) && ch->npcdata->spec_fun != 0 )
+        if ( IS_NPC(ch) && ch->spec_fun != 0 )
         {
-            if ( ( *ch->npcdata->spec_fun ) ( ch ) )
+            if ( ( *ch->spec_fun ) ( ch ) )
                 continue;
         }
 
