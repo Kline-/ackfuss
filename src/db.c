@@ -2736,8 +2736,8 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     mob->def = pMobIndex->def;
     mob->p_class = pMobIndex->p_class;
     mob->clan = pMobIndex->clan;
-    mob->npcdata->strong_magic = pMobIndex->strong_magic;
-    mob->npcdata->weak_magic = pMobIndex->weak_magic;
+    mob->strong_magic = pMobIndex->strong_magic;
+    mob->weak_magic = pMobIndex->weak_magic;
     mob->resist = pMobIndex->resist;
     mob->suscept = pMobIndex->suscept;
     mob->race_mods = pMobIndex->race_mods;

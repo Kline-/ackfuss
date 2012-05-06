@@ -629,6 +629,7 @@ class char_data
         short stance_dr_mod;
         short stance_hr_mod;
         bool stop_fighting;
+        int strong_magic;
         short stun_timer;
         int suscept;
         bool switched; /* = not isnull(descriptor->original) */
@@ -638,6 +639,7 @@ class char_data
         bool using_named_door;
         short wait;
         ROOM_INDEX_DATA *was_in_room;
+        int weak_magic;
         short wimpy;
         bool wizbit;
 };
@@ -659,8 +661,6 @@ class npc_data
         char *short_descr;
         int skills;
         SPEC_FUN *spec_fun;
-        int strong_magic;
-        int weak_magic;
 };
 
 /*

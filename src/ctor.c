@@ -221,6 +221,7 @@ char_data::char_data()
     stance_dr_mod = 0;
     stance_hr_mod = 0;
     stop_fighting = false;
+    strong_magic = 0;
     stun_timer = 0;
     suscept = 0;
     switched = false;
@@ -229,6 +230,7 @@ char_data::char_data()
     using_named_door = false;
     wait = 0;
     was_in_room = NULL;
+    weak_magic = 0;
     wimpy = 0;
     wizbit = false;
 
@@ -416,8 +418,6 @@ npc_data::npc_data()
     short_descr = &str_empty[0];
     skills = 0;
     spec_fun = NULL;
-    strong_magic = 0;
-    weak_magic = 0;
 }
 
 npc_group_data::npc_group_data()
