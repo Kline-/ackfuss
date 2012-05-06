@@ -212,6 +212,7 @@ char_data::char_data()
     race = 0;
     race_mods = 0;
     reply = NULL;
+    reset = NULL;
     resist = 0;
     rider = NULL;
     riding = NULL;
@@ -415,7 +416,6 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
-    reset = NULL;
     short_descr = &str_empty[0];
     spec_fun = NULL;
 }

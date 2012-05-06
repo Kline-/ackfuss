@@ -621,6 +621,7 @@ class char_data
         short race;
         int race_mods;
         CHAR_DATA *reply;
+        RESET_DATA *reset;
         int resist;
         CHAR_DATA *rider;
         CHAR_DATA *riding;
@@ -658,7 +659,6 @@ class npc_data
     public:
         npc_data();
         ~npc_data();
-        RESET_DATA *reset;
         char *short_descr;
         SPEC_FUN *spec_fun;
 };

@@ -1776,8 +1776,8 @@ void extract_char( CHAR_DATA * ch, bool fPull )
         }
     }
 
-    if ( IS_NPC(ch) && ch->npcdata->reset )
-        ch->npcdata->reset->count--;
+    if ( IS_NPC(ch) && ch->reset )
+        ch->reset->count--;
 
     if ( ch->desc )
         ch->desc->character = NULL;

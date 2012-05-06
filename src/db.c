@@ -2339,7 +2339,7 @@ void reset_area( AREA_DATA * pArea )
                 }
 
                 mob = create_mobile( pMobIndex );
-                mob->npcdata->reset = pReset;
+                mob->reset = pReset;
                 pReset->count++;
                 just_loaded = TRUE;
 
