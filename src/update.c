@@ -653,12 +653,8 @@ void bloodlust_gain( CHAR_DATA * ch, int value )
      * Kinda like condition_gain, but handles vampires -S-
      */
 
-    int condition;
-
     if ( value == 0 )
         return;
-
-    condition = ch->pcdata->super->energy;
 
     /*
      * in case vamp bites off more than he can chew ;)
@@ -2137,19 +2133,11 @@ bool check_reequip( CHAR_DATA * ch )
     OBJ_DATA *obj2;
     OBJ_DATA *armor = NULL;
     OBJ_DATA *light = NULL;
-    int ac;
     int chance;
-    bool pickup;
+    bool pickup = true;
     bool ident;
-    int best;
     char buf[MAX_STRING_LENGTH];
     int objnum;
-
-
-
-    best = -1;
-    pickup = TRUE;
-    ac = 0;
 
     chance = ( ch->fighting == NULL ? 35 : 60 );
     if ( number_percent(  ) < chance )
