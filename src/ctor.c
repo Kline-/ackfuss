@@ -550,9 +550,7 @@ pc_data::pc_data()
     hp_from_gain = -1;
     for ( short i = 0; i < MAX_IGNORES; i++ )
         ignore_list[i] = &str_empty[0];
-#ifdef IMC
     imcchardata = NULL;
-#endif
     invis = 0;
     lastlogin = str_dup("Unknown!");
     last_note = 0;

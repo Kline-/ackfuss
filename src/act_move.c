@@ -100,7 +100,6 @@ void move_char( CHAR_DATA * ch, int door, bool look )
     char buf[MSL];
     char move_buf[MSL];
     char tmp[MSL];
-    int need_movement;
     char door_name_leave[MSL];
     char door_name_enter[MSL];
 
@@ -236,7 +235,6 @@ void move_char( CHAR_DATA * ch, int door, bool look )
      */
     if ( ch->position == POS_RIDING )
     {
-        need_movement = 1;
         if ( IS_RIDING( ch ) )
         {
             if ( !IS_AWAKE( ch->riding ) )

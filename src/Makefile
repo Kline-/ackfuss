@@ -23,7 +23,7 @@ endif
 #-Werror -Wwrite-strings -Wconversion
 MAKEFLAGS = -j2
 W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings
-L_FLAGS = -lcrypt -lm -lpthread -ldl -L`pwd`
+L_FLAGS = -lcrypt -lm -lpthread -ldl
 
 C_FILES = $(wildcard *.c *.cpp)
 O_FILES = $(patsubst %.cpp,o/%.o,$(patsubst %.c,o/%.o,$(C_FILES)))

@@ -82,10 +82,8 @@
 #include "h/hunt.h"
 #endif
 
-#ifdef IMC
 void imc_delete_reminfo(REMOTEINFO * p);
 void imc_request_keepalive(void);
-#endif
 
 #ifndef DEC_INTERP_H
 #include "h/interp.h"

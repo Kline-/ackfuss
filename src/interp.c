@@ -1154,14 +1154,7 @@ void interpret( CHAR_DATA * ch, char *argument )
         /*
          * Look for command in socials table.
          */
-        if ( !check_social( ch, command, argument )
-#ifdef IMC
-                && !imc_command_hook( ch, command, argument )
-#endif
-#ifdef I3
-                && !I3_command_hook( ch, command, argument )
-#endif
-           )
+        if ( !check_social( ch, command, argument ) && !imc_command_hook( ch, command, argument ) )
             send_to_char( "Huh?\r\n", ch );
         return;
     }

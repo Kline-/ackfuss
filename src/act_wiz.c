@@ -6246,9 +6246,7 @@ DO_FUN(do_hotreboot)
 
     fclose( fpReserve );
 
-#ifdef IMC
     imc_hotboot(  );
-#endif
 
     /*
      * exec - descriptors are inherited
@@ -6256,14 +6254,10 @@ DO_FUN(do_hotreboot)
 
     snprintf( buf, 256, "%d", port );
     snprintf( buf2, 256, "%d", control );
-#ifdef IMC
     if ( this_imcmud )
         snprintf( buf3, 256, "%d", this_imcmud->desc );
     else
         strncpy( buf3, "-1", 256 );
-#else
-    strncpy( buf3, "-1", 256 );
-#endif
 
     /*
      * spec: handle profiling cleanly here

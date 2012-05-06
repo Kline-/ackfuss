@@ -459,12 +459,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
                 fprintf( fp, "Skill          %d '%s'\n", ch->pcdata->learned[sn], skill_table[sn].name );
             }
         }
-#ifdef IMC
         imc_savechar( ch, fp );
-#endif
-#ifdef I3
-        i3save_char( ch, fp );
-#endif
     }
 
     for ( paf = ch->first_affect; paf != NULL; paf = paf->next )

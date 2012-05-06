@@ -104,12 +104,7 @@ char_data::~char_data()
     while ( first_affect != NULL )
         affect_remove(this, first_affect);
 
-#ifdef IMC
     imc_freechardata(this);
-#endif
-#ifdef I3
-    free_i3chardata(this);
-#endif
 
     if ( npcdata )
         delete npcdata;

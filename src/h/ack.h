@@ -39,10 +39,8 @@ using namespace std;
 #include "config.h"
 #endif
 
-#ifdef IMC
 #ifndef DEC_IMC_H
 #include "imc.h"
-#endif
 #endif
 
 #ifndef DEC_LISTS_H
@@ -694,9 +692,7 @@ class pc_data
         char *host[MAX_HOSTS]; /* Used to tell PC last login sites */
         int hp_from_gain; /* same for hitpoints */
         char *ignore_list[MAX_IGNORES];  /* Ignore this person */
-#ifdef IMC
         IMC_CHARDATA *imcchardata;
-#endif
         short invis; /* wizinvis imm, level invis to */
         char *lastlogin;
         time_t last_note;

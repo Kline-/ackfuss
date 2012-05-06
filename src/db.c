@@ -4217,7 +4217,5 @@ void clear_lists( void )
     fclose(fpReserve);
     delete_hash_table(hash_changed_vnums);
     free(string_space);
-#ifdef IMC
     free_imcdata(true);
-#endif
 }

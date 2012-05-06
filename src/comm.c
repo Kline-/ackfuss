@@ -191,9 +191,7 @@ int main( int argc, char **argv )
     struct timeval now_time;
     bool fCopyOver = FALSE; /* HOTreboot??? Well is it...is it???? - Flar */
     extern int abort_threshold;
-#ifdef IMC
     int imcsocket = -1;
-#endif
 
     /*
      * Init time.
@@ -233,9 +231,7 @@ int main( int argc, char **argv )
         {
             fCopyOver = TRUE;
             control = atoi( argv[3] );
-#ifdef IMC
             imcsocket = atoi( argv[4] );
-#endif
         }
         else
             fCopyOver = FALSE;
@@ -261,9 +257,7 @@ int main( int argc, char **argv )
     snprintf( log_buf, (2 * MIL), "%s is ready on port %d.", VERS_STRING, port );
     log_string( log_buf );
     log_string("Last compiled on " __DATE__ " at " __TIME__ ".");
-#ifdef IMC
     imc_startup( FALSE, imcsocket, fCopyOver );
-#endif
     if ( fCopyOver )
     {
         disable_timer_abort = TRUE;
@@ -272,9 +266,7 @@ int main( int argc, char **argv )
     }
     game_loop( control );
     close( control );
-#ifdef IMC
     imc_shutdown( FALSE );
-#endif
 
     /*
      * That's all, folks.
@@ -512,9 +504,7 @@ void game_loop( int game_control )
             }
         }
 
-#ifdef IMC
         imc_loop(  );
-#endif
 
         /*
          * Autonomous game motion.
