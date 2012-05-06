@@ -556,10 +556,12 @@ class char_data
         short armor;
         short carry_number;
         float carry_weight;
+        int cast;
         CAST_DATA *casting;
         short clan;
         float cooldown[MAX_COOLDOWN];
         short damroll;
+        int def;
         bitset<MAX_BITSET> deaf;
         DESCRIPTOR_DATA *desc;
         string description;
@@ -646,8 +648,6 @@ class npc_data
     public:
         npc_data();
         ~npc_data();
-        int cast;
-        int def;
         short extract_timer; /* charmie timer */
         CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
         ROOM_INDEX_DATA *hunt_home; /* return to loc */

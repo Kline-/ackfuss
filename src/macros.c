@@ -454,19 +454,19 @@ int exp_for_mobile( int level, CHAR_DATA * mob )
         value += .200 * base_value;
 
 
-    if ( IS_SET( mob->npcdata->def, DEF_CURE_LIGHT ) )
+    if ( IS_SET( mob->def, DEF_CURE_LIGHT ) )
         value += .100 * base_value;
-    if ( IS_SET( mob->npcdata->def, DEF_CURE_SERIOUS ) )
+    if ( IS_SET( mob->def, DEF_CURE_SERIOUS ) )
         value += .200 * base_value;
-    if ( IS_SET( mob->npcdata->def, DEF_CURE_CRITIC ) )
+    if ( IS_SET( mob->def, DEF_CURE_CRITIC ) )
         value += .350 * base_value;
-    if ( IS_SET( mob->npcdata->def, DEF_CURE_HEAL ) )
+    if ( IS_SET( mob->def, DEF_CURE_HEAL ) )
         value += .400 * base_value;
-    if ( IS_SET( mob->npcdata->def, DEF_SHIELD_FIRE ) )
+    if ( IS_SET( mob->def, DEF_SHIELD_FIRE ) )
         value += .300 * base_value;
-    if ( IS_SET( mob->npcdata->def, DEF_SHIELD_SHOCK ) )
+    if ( IS_SET( mob->def, DEF_SHIELD_SHOCK ) )
         value += .200 * base_value;
-    if ( IS_SET( mob->npcdata->def, DEF_SHIELD_ICE ) )
+    if ( IS_SET( mob->def, DEF_SHIELD_ICE ) )
         value += .100 * base_value;
 
     if ( mob->act.test(ACT_SOLO) )

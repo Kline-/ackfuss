@@ -144,12 +144,14 @@ char_data::char_data()
     armor = 0;
     carry_number = 0;
     carry_weight = 0;
+    cast = 0;
     casting = new CAST_DATA;
     clan = -1;
     for ( short i = 0; i < MAX_COOLDOWN; i++ )
         cooldown[i] = 0;
     damroll = 5;
     deaf.reset();
+    def = 0;
     desc = NULL;
     description.clear();
     dr_mod = 0;
@@ -403,8 +405,6 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
-    cast = 0;
-    def = 0;
     extract_timer = -1;
     hunt_for = NULL;
     hunt_home = NULL;
