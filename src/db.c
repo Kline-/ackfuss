@@ -1081,7 +1081,7 @@ void load_mobile( FILE * fp )
 
             case 'S':
                 KEY("Sex", pMobIndex->sex, fread_number(fp));
-                SKEY("ShortDesc", pMobIndex->short_descr, fread_string(fp));
+                KEY("ShortDesc", pMobIndex->short_descr, fread_string(fp));
                 KEY("Skills", pMobIndex->skills, fread_number(fp));
                 KEY("SMagic", pMobIndex->strong_magic, fread_number(fp));
                 if ( !str_cmp(word, "SpecFun") )
@@ -1134,7 +1134,7 @@ void load_mobile( FILE * fp )
 
     if ( !fMatch )
     {
-        snprintf( log_buf, (2 * MIL), "Loading in mob :%s (%s), no match for ( %s ).", area_load->name, pMobIndex->short_descr, word );
+        snprintf( log_buf, (2 * MIL), "Loading in mob :%s (%s), no match for ( %s ).", area_load->name, CSTR( pMobIndex->short_descr ), word );
         monitor_chan( log_buf, MONITOR_BAD );
         fread_to_eol( fp );
     }
@@ -1845,7 +1845,7 @@ void load_shop( FILE * fp )
 
     if ( !fMatch )
     {
-        snprintf( log_buf, (2 * MIL), "Loading in shop :%s (%s), no match for ( %s ).", area_load->name, get_mob_index(pShop->keeper)->short_descr, word );
+        snprintf( log_buf, (2 * MIL), "Loading in shop :%s (%s), no match for ( %s ).", area_load->name, CSTR( get_mob_index(pShop->keeper)->short_descr ), word );
         monitor_chan( log_buf, MONITOR_BAD );
         fread_to_eol( fp );
     }
@@ -2664,7 +2664,6 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     }
 
     mob = new CHAR_DATA;
-    mob->npcdata = new NPC_DATA;
 
     mob->npc = true;
     mob->pIndexData = pMobIndex;
@@ -2677,7 +2676,7 @@ CHAR_DATA *create_mobile( MOB_INDEX_DATA * pMobIndex )
     else
         mob->name = str_dup( pMobIndex->player_name );
 
-    mob->npcdata->short_descr = str_dup( pMobIndex->short_descr );
+    mob->short_descr = pMobIndex->short_descr;
     mob->long_descr = str_dup( pMobIndex->long_descr );
     mob->description = pMobIndex->description;
     mob->spec_fun = pMobIndex->spec_fun;

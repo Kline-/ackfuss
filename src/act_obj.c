@@ -2957,8 +2957,8 @@ DO_FUN(do_list)
                 stopcounter++;
                 rounded_cost = round_money_off( 10 * pet->level * pet->level, 1 );
                 snprintf( costbuf, MSL, "%s", money_string( rounded_cost ) );
-                snprintf( buf, MSL, "[ @@W%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \r\n", pet->level, ccode_len( pet->npcdata->short_descr, 30 ),
-                          capitalize( pet->npcdata->short_descr ), ccode_len( costbuf, 35 ), costbuf );
+                snprintf( buf, MSL, "[ @@W%3d@@g]  @@c%-*s@@g  @@W%-*s@@N \r\n", pet->level, ccode_len( pet->short_descr.c_str(), 30 ),
+                          capitalize( pet->short_descr.c_str() ), ccode_len( costbuf, 35 ), costbuf );
                 delete rounded_cost;
                 strncat( buf1, buf, MSL - 1 );
                 if ( stopcounter > 45 )

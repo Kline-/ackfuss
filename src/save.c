@@ -236,7 +236,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     fprintf( fp, "%sEOL\n", outstr.c_str() );
 
     if ( IS_NPC(ch) )
-        fprintf( fp, "ShortDescr     %s~\n", ch->npcdata->short_descr );
+        fprintf( fp, "ShortDescr     %s~\n", CSTR( ch->short_descr ) );
     fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig.c_str() );
     fprintf( fp, "Description    %s~\n", ch->description.c_str() );
     fprintf( fp, "Prompt         %s~\n", ch->prompt.c_str() );
@@ -1282,7 +1282,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     KEY( "Sentence", ch->pcdata->sentence, fread_number( fp ) );
                 KEY( "Sex", ch->sex, fread_number( fp ) );
                 if ( IS_NPC( ch ) )
-                    SKEY( "ShortDescr", ch->npcdata->short_descr, fread_string( fp ) );
+                    KEY( "ShortDescr", ch->short_descr, fread_string( fp ) );
 
                 if ( !str_cmp( word, "Skill" ) && !IS_NPC( ch ) )
                 {

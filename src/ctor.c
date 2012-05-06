@@ -197,7 +197,6 @@ char_data::char_data()
     next_in_room = NULL;
     ngroup = NULL;
     npc = false;
-    npcdata = NULL;
     num_followers = 0;
     old_body = NULL;
     old_prompt = &str_empty[0];
@@ -219,6 +218,7 @@ char_data::char_data()
     saving_throw = 0;
     searching = &str_empty[0];
     sex = SEX_NEUTRAL;
+    short_descr = &str_empty[0];
     sitting = NULL;
     skills = 0;
     spec_fun = NULL;
@@ -413,11 +413,6 @@ note_data::note_data()
     to_list = &str_empty[0];
 
     note_list.push_back(this);
-}
-
-npc_data::npc_data()
-{
-    short_descr = &str_empty[0];
 }
 
 npc_group_data::npc_group_data()

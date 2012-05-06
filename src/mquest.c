@@ -224,7 +224,7 @@ DO_FUN(do_mquest)
         if ( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL || ch->pcdata->quest_info->quest_type == QUEST_KILLING )
         {
             MOB_INDEX_DATA *imob = get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[hint-1]);
-            snprintf(buf, MSL, "%s can be found somewhere in %s.\r\n", imob->short_descr, imob->area->name);
+            snprintf(buf, MSL, "%s can be found somewhere in %s.\r\n", CSTR( imob->short_descr ), imob->area->name);
             send_to_char(buf, ch);
         }
         else if ( ch->pcdata->quest_info->quest_type == QUEST_MULTI_KILL_R || ch->pcdata->quest_info->quest_type == QUEST_KILLING_R )
@@ -408,7 +408,7 @@ DO_FUN(do_qstat)
         case QUEST_KILLING:
             if ( victim->pcdata->quest_info->quest_mob_vnum[0] > -1 )
             {
-                snprintf(buf, MSL, "%s is seeking mob %d-%s...\r\n", victim->get_name(ch), victim->pcdata->quest_info->quest_mob_vnum[0], get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
+                snprintf(buf, MSL, "%s is seeking mob %d-%s...\r\n", victim->get_name(ch), victim->pcdata->quest_info->quest_mob_vnum[0], CSTR(get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[0])->short_descr));
                 send_to_char(buf, ch);
 
                 if ( victim->pcdata->quest_info->amount[0] > 0 )
@@ -426,7 +426,7 @@ DO_FUN(do_qstat)
             {
                 if ( victim->pcdata->quest_info->quest_mob_vnum[i] > -1 )
                 {
-                    snprintf(buf, MSL, "Target #%d: %5d-%s (%d)\r\n", i + 1, victim->pcdata->quest_info->quest_mob_vnum[i], get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[i])->short_descr, victim->pcdata->quest_info->amount[i]);
+                    snprintf(buf, MSL, "Target #%d: %5d-%s (%d)\r\n", i + 1, victim->pcdata->quest_info->quest_mob_vnum[i], CSTR(get_mob_index(victim->pcdata->quest_info->quest_mob_vnum[i])->short_descr), victim->pcdata->quest_info->amount[i]);
                     send_to_char(buf, ch);
                 }
             }
@@ -506,7 +506,7 @@ void mquest_info( CHAR_DATA *ch )
         case QUEST_KILLING:
             if ( ch->pcdata->quest_info->quest_mob_vnum[0] > -1 )
             {
-                snprintf(buf, MSL, "You are seeking out the creature known as %s@@N.\r\n", get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[0])->short_descr);
+                snprintf(buf, MSL, "You are seeking out the creature known as %s@@N.\r\n", CSTR(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[0])->short_descr));
                 send_to_char(buf, ch);
 
                 if ( ch->pcdata->quest_info->amount[0] > 0 )
@@ -529,7 +529,7 @@ void mquest_info( CHAR_DATA *ch )
             {
                 if ( ch->pcdata->quest_info->quest_mob_vnum[i] > -1 )
                 {
-                    snprintf(buf, MSL, "Target #%d: %s (%d)", i + 1, get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr, ch->pcdata->quest_info->amount[i]);
+                    snprintf(buf, MSL, "Target #%d: %s (%d)", i + 1, CSTR(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr), ch->pcdata->quest_info->amount[i]);
                     send_to_char(buf, ch);
                     if ( ch->pcdata->quest_info->quest_hint[i] )
                         snprintf(buf, MSL, " [%s]\r\n", get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area->name);
@@ -1132,7 +1132,7 @@ char *display_mob_target( CHAR_DATA *ch, CHAR_DATA *victim )
             if ( ch->pcdata->quest_info->quest_mob_vnum[i] > -1
                     && ch->pcdata->quest_info->amount[i] > 0
                     && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->pIndexData->vnum
-                        || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr, victim->npcdata->short_descr)
+                        || (!str_cmp(CSTR(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr), CSTR(victim->short_descr))
                             && get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area == victim->in_room->area)) )
                 return "@@e[@@yTARGET@@e] @@N";
     }
@@ -1194,7 +1194,7 @@ void update_mquest_kill( CHAR_DATA *ch, CHAR_DATA *victim )
                 continue;
             if ( ch->pcdata->quest_info->amount[i] > 0
                     && (ch->pcdata->quest_info->quest_mob_vnum[i] == victim->pIndexData->vnum
-                        || (!str_cmp(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr, victim->npcdata->short_descr)
+                        || (!str_cmp(CSTR(get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->short_descr), CSTR(victim->short_descr))
                             && get_mob_index(ch->pcdata->quest_info->quest_mob_vnum[i])->area == victim->in_room->area)) )
             {
                 ch->pcdata->quest_info->amount[i]--;

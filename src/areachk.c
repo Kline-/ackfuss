@@ -299,7 +299,7 @@ DO_FUN(do_check_areas)
                 }
                 else
                 {
-                    fprintf( out_file, "Mob: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pMobIndex->short_descr );
+                    fprintf( out_file, "Mob: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pMobIndex->short_descr.c_str() );
                     /*
                      * Delete from mob hashing table, and put new vnum in.
                      */

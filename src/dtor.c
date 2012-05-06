@@ -106,8 +106,6 @@ char_data::~char_data()
 
     imc_freechardata(this);
 
-    if ( npcdata )
-        delete npcdata;
     if ( pcdata )
         delete pcdata;
     delete money;
@@ -188,7 +186,6 @@ mob_index_data::~mob_index_data()
     is_free = true;
     free_string(long_descr);
     free_string(player_name);
-    free_string(short_descr);
 }
 
 money_type::~money_type()
@@ -202,11 +199,6 @@ note_data::~note_data()
     free_string(subject);
     free_string(text);
     free_string(to_list);
-}
-
-npc_data::~npc_data()
-{
-    free_string(short_descr);
 }
 
 npc_group_data::~npc_group_data()

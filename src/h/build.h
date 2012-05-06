@@ -48,6 +48,7 @@ DECLARE_DO_FUN(build_help);
 DECLARE_DO_FUN(build_forcereset);
 char *build_simpstrdup P_((char *buf));
 void build_strdup P_((char **dest, char *src, bool freesrc, bool newline, CHAR_DATA *ch));
+void build_strdup P_((string dest, char *src, bool newline, CHAR_DATA *ch));
 void build_editstr P_((char **dest, char *src, CHAR_DATA *ch));
 void build_finishedstr P_((char *orig, char **dest, CHAR_DATA *ch, bool saved));
 DECLARE_DO_FUN(build_set_oedit);

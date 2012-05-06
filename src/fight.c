@@ -1119,8 +1119,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
                     elemental->level = 140;
                     elemental->name = ".hidden";
-                    free_string( elemental->npcdata->short_descr );
-                    elemental->npcdata->short_descr = str_dup( "@@NThe @@rConflict@@N of @@eFire @@Nand @@aIce@@N" );
+                    elemental->short_descr = "@@NThe @@rConflict@@N of @@eFire @@Nand @@aIce@@N";
                     elemental->long_descr = "@@NA @@rPillar@@N of @@eFire @@Nand @@aIce@@N immolates itself!";
 
                     char_to_room( elemental, ch->in_room );
@@ -1341,8 +1340,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
             else
             {
                 snprintf( buf, MSL, "%s turns %s into a corpse.  Whooops.",
-                          ( IS_NPC(ch) ? ch->npcdata->short_descr : ch->name.c_str() ),
-                          ( IS_NPC(victim) ? victim->npcdata->short_descr : victim->name.c_str()) );
+                          ( IS_NPC(ch) ? CSTR( ch->short_descr ) : ch->name.c_str() ),
+                          ( IS_NPC(victim) ? CSTR( victim->short_descr ) : victim->name.c_str()) );
                 info( buf, 1 );
             }
 

@@ -1102,7 +1102,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             {
                 mob = get_mob_index( ch->pcdata->build_vnum );
                 if ( mob != NULL )
-                    snprintf( msg2, MSL, "[%5d]: %s", ch->pcdata->build_vnum, mob->short_descr );
+                    snprintf( msg2, MSL, "[%5d]: %s", ch->pcdata->build_vnum, CSTR( mob->short_descr ) );
             }
         }
         snprintf( msg3, MSL, "< %s %s >", msg, msg2 );

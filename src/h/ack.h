@@ -517,7 +517,7 @@ class mob_index_data
         int race_mods;
         int resist;
         short sex;
-        char *short_descr;
+        string short_descr;
         int skills;
         SPEC_FUN *spec_fun;
         float speed[MAX_SPEED];
@@ -606,7 +606,6 @@ class char_data
         CHAR_DATA *next_in_room;
         NPC_GROUP_DATA *ngroup;
         bool npc; /* For NPC's, no more flag */
-        NPC_DATA *npcdata;
         short num_followers;
         CHAR_DATA *old_body; /* = descriptor->original */
         string old_prompt; /* used to hold prompt when writing */
@@ -628,6 +627,7 @@ class char_data
         short saving_throw;
         string searching; /* For NPCs hunting continuously */
         short sex;
+        string short_descr;
         OBJ_DATA *sitting;   /* What they're resting or sleeping on */
         int skills;
         SPEC_FUN *spec_fun;
@@ -650,17 +650,6 @@ class char_data
         int weak_magic;
         short wimpy;
         bool wizbit;
-};
-
-/*
- * Data which only NPC's have.
- */
-class npc_data
-{
-    public:
-        npc_data();
-        ~npc_data();
-        char *short_descr;
 };
 
 /*

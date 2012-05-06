@@ -1066,7 +1066,7 @@ DO_FUN(do_mstat)
     strncat( buf1, buf, MSL - 1 );
 
     snprintf( buf, MSL, "Short description: %s.\r\nLong  description: %s\r\n",
-              IS_NPC(victim) ? victim->npcdata->short_descr : "(none)", !victim->long_descr.empty() ? victim->long_descr.c_str() : "(none)." );
+              IS_NPC(victim) ? victim->short_descr.c_str() : "(none)", !victim->long_descr.empty() ? victim->long_descr.c_str() : "(none)." );
     strncat( buf1, buf, MSL - 1 );
 
     if ( IS_NPC( victim ) )
@@ -1301,7 +1301,7 @@ DO_FUN(do_mfind)
             if ( fAll || is_name( arg, pMobIndex->player_name ) )
             {
                 found = TRUE;
-                snprintf( buf, MSL, "[%5d] [%3d] %s\r\n", pMobIndex->vnum, pMobIndex->level, capitalize( pMobIndex->short_descr ) );
+                snprintf( buf, MSL, "[%5d] [%3d] %s\r\n", pMobIndex->vnum, pMobIndex->level, capitalize( pMobIndex->short_descr.c_str() ) );
                 strncat( buf1, buf, MSL - 1 );
             }
         }
@@ -1378,7 +1378,7 @@ DO_FUN(do_mfindlev)
                     perkills = ( pMobIndex->killed * 100 ) / ( kill_table[moblev].killed );
 
                 snprintf( buf, MSL, "(%3d) [%3d] [%5d] %s\r\n",
-                          perkills, pMobIndex->level, pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
+                          perkills, pMobIndex->level, pMobIndex->vnum, capitalize( pMobIndex->short_descr.c_str() ) );
                 strncat( buf1, buf, MSL - 1 );
             }
         }
@@ -3181,9 +3181,8 @@ DO_FUN(do_mset)
             send_to_char("Not on PC's.\r\n", ch);
             return;
         }
-        free_string( victim->npcdata->short_descr );
-        snprintf( buf, MSL, "%s", arg3 );
-        victim->npcdata->short_descr = str_dup( buf );
+
+        victim->short_descr = arg3;
         return;
     }
 

@@ -458,7 +458,7 @@ DO_FUN(build_showmob)
     strncat( buf1, buf, MSL - 1 );
 
     snprintf( buf, MSL, "@@WShort description: @@y%s.\r\n@@WLong description: @@y%s\r\n",
-              pMob->short_descr, pMob->long_descr[0] != '\0' ? pMob->long_descr : "(none)." );
+              CSTR( pMob->short_descr ), pMob->long_descr[0] != '\0' ? pMob->long_descr : "(none)." );
     strncat( buf1, buf, MSL - 1 );
 
     if ( pMob->spec_fun != 0 )
@@ -1018,7 +1018,7 @@ DO_FUN(build_findmob)
         if ( fAll || is_name( arg, pMobIndex->player_name ) )
         {
             found = TRUE;
-            snprintf( buf, MSL, "[%5d] %s\r\n", pMobIndex->vnum, capitalize( pMobIndex->short_descr ) );
+            snprintf( buf, MSL, "[%5d] %s\r\n", pMobIndex->vnum, capitalize( CSTR( pMobIndex->short_descr ) ) );
             strncat( buf1, buf, MSL - 1 );
         }
     }
@@ -1673,7 +1673,7 @@ DO_FUN(build_setmob)
 
     if ( !str_cmp( arg2, "short" ) )
     {
-        build_strdup( &pMob->short_descr, arg3, TRUE, FALSE, ch );
+        build_strdup( pMob->short_descr, arg3, FALSE, ch );
         area_modified( pArea );
         return;
     }
@@ -4948,7 +4948,7 @@ DO_FUN(build_setvnum)
                 found = FALSE;
             }
             else
-                snprintf( buf2, MSL, "Mobile exists: %s\r\n", mob->short_descr );
+                snprintf( buf2, MSL, "Mobile exists: %s\r\n", CSTR( mob->short_descr ) );
 
             break;
 
@@ -6077,9 +6077,7 @@ DO_FUN(build_clone)
         if ( this_mob->player_name != NULL )
             free_string( this_mob->player_name );
         this_mob->player_name = str_dup( mob->player_name );
-        if ( this_mob->short_descr != NULL )
-            free_string( this_mob->short_descr );
-        this_mob->short_descr = str_dup( mob->short_descr );
+        this_mob->short_descr = mob->short_descr;
         if ( this_mob->long_descr != NULL )
             free_string( this_mob->long_descr );
         this_mob->long_descr = str_dup( mob->long_descr );
