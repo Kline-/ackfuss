@@ -616,6 +616,7 @@ class char_data
         short race;
         int race_mods;
         CHAR_DATA *reply;
+        int resist;
         CHAR_DATA *rider;
         CHAR_DATA *riding;
         short saving_throw;
@@ -629,6 +630,7 @@ class char_data
         short stance_hr_mod;
         bool stop_fighting;
         short stun_timer;
+        int suscept;
         bool switched; /* = not isnull(descriptor->original) */
         string target;  /* For Hunting and ACT_REMEMBER */
         short timer;
@@ -654,12 +656,10 @@ class npc_data
         NPC_GROUP_DATA *ngroup;
         MOB_INDEX_DATA *pIndexData;
         RESET_DATA *reset;
-        int resist;
         char *short_descr;
         int skills;
         SPEC_FUN *spec_fun;
         int strong_magic;
-        int suscept;
         int weak_magic;
 };
 

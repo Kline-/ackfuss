@@ -207,6 +207,7 @@ char_data::char_data()
     race = 0;
     race_mods = 0;
     reply = NULL;
+    resist = 0;
     rider = NULL;
     riding = NULL;
     saving_throw = 0;
@@ -221,6 +222,7 @@ char_data::char_data()
     stance_hr_mod = 0;
     stop_fighting = false;
     stun_timer = 0;
+    suscept = 0;
     switched = false;
     timer = 0;
     trust = 0;
@@ -411,12 +413,10 @@ npc_data::npc_data()
     ngroup = NULL;
     pIndexData = NULL;
     reset = NULL;
-    resist = 0;
     short_descr = &str_empty[0];
     skills = 0;
     spec_fun = NULL;
     strong_magic = 0;
-    suscept = 0;
     weak_magic = 0;
 }
 
