@@ -578,6 +578,8 @@ class char_data
         short hr_mod;
         CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
         int hunt_flags;   /* Action flags         */
+        CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
+        ROOM_INDEX_DATA *hunt_home; /* return to loc */
         OBJ_DATA *hunt_obj;  /* Looking for objects     */
         ROOM_INDEX_DATA *in_room;
         bool is_free; /* kept for room lists link/unlink */
@@ -654,8 +656,6 @@ class npc_data
     public:
         npc_data();
         ~npc_data();
-        CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
-        ROOM_INDEX_DATA *hunt_home; /* return to loc */
         NPC_GROUP_DATA *ngroup;
         MOB_INDEX_DATA *pIndexData;
         RESET_DATA *reset;

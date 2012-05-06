@@ -1132,8 +1132,8 @@ DO_FUN(do_mstat)
             else
                 snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", victim->hunt_obj->short_descr );
         }
-        if ( IS_NPC( victim ) && IS_SET( victim->hunt_flags, HUNT_MERC | HUNT_CR ) && victim->npcdata->hunt_for )
-            snprintf( buf + strlen( buf ), MSL, ", employed by %s", victim->npcdata->hunt_for->get_name() );
+        if ( IS_NPC( victim ) && IS_SET( victim->hunt_flags, HUNT_MERC | HUNT_CR ) && victim->hunt_for )
+            snprintf( buf + strlen( buf ), MSL, ", employed by %s", victim->hunt_for->get_name() );
         strncat( buf, ".\r\n", MSL );
         buf[1] = UPPER( buf[1] );
         strncat( buf1, buf + 1, MSL - 1 );
@@ -2943,7 +2943,7 @@ DO_FUN(do_mset)
             victim->hunting = NULL;
             victim->hunt_obj = NULL;
             if ( IS_NPC(victim) )
-                victim->npcdata->hunt_for = NULL;
+                victim->hunt_for = NULL;
             if ( !victim->searching.empty() )
                 victim->searching.clear();
             victim->hunt_flags = victim->npcdata->pIndexData->hunt_flags;
@@ -4870,8 +4870,8 @@ DO_FUN(do_lhunt)
             else
                 snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", lch->hunt_obj->short_descr );
         }
-        if ( IS_NPC( lch ) && IS_SET( lch->hunt_flags, HUNT_MERC | HUNT_CR ) && lch->npcdata->hunt_for )
-            snprintf( buf + strlen( buf ), MSL, ", employed by %s", lch->npcdata->hunt_for->get_name() );
+        if ( IS_NPC( lch ) && IS_SET( lch->hunt_flags, HUNT_MERC | HUNT_CR ) && lch->hunt_for )
+            snprintf( buf + strlen( buf ), MSL, ", employed by %s", lch->hunt_for->get_name() );
         strncat( buf, ".\r\n", MSL );
         send_to_char( buf, ch );
     }

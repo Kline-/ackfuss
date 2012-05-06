@@ -167,6 +167,8 @@ char_data::char_data()
     hr_mod = 0;
     hunting = NULL;
     hunt_flags = 0;
+    hunt_for = NULL;
+    hunt_home = NULL;
     hunt_obj = NULL;
     in_room = NULL;
     is_free = false;
@@ -411,8 +413,6 @@ note_data::note_data()
 
 npc_data::npc_data()
 {
-    hunt_for = NULL;
-    hunt_home = NULL;
     ngroup = NULL;
     pIndexData = NULL;
     reset = NULL;

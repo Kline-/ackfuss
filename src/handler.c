@@ -1667,7 +1667,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
             wch->fighting = NULL;
         if ( wch->reply == ch )
             wch->reply = NULL;
-        if ( wch->hunting == ch || (IS_NPC(wch) && wch->npcdata->hunt_for == ch) )
+        if ( wch->hunting == ch || (IS_NPC(wch) && wch->hunt_for == ch) )
         {
             end_hunt( wch );
             /*
