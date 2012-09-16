@@ -143,6 +143,7 @@ char_data::char_data()
     affected_by = 0;
     alignment = 0;
     armor = 0;
+    build_mode = 0;
     carry_number = 0;
     carry_weight = 0;
     cast = 0;
@@ -525,7 +526,6 @@ pc_data::pc_data()
     bamfin = &str_empty[0];
     bamfout = &str_empty[0];
     bank_money = new MONEY_TYPE;
-    build_mode = 0;
     build_vnum = 0;
     for ( short i = 0; i < MAX_COND; i++ )
         condition[i] = 0;

@@ -344,7 +344,7 @@ DO_FUN(build_interpret)
     /*
      * make sure that if in Redit, vnum is at new room.
      */
-    if ( ch->pcdata->build_mode == BUILD_MODE_REDIT && ch->pcdata->build_vnum != ch->in_room->vnum )
+    if ( ch->build_mode == BUILD_MODE_REDIT && ch->pcdata->build_vnum != ch->in_room->vnum )
     {
         ch->pcdata->build_vnum = ch->in_room->vnum;
         send_to_char( "Redit: Vnum changed to new room.\r\n", ch );
@@ -3140,7 +3140,7 @@ DO_FUN(build_addmob)
     }
 
     ch->pcdata->build_vnum = vnum;
-    ch->pcdata->build_mode = BUILD_MODE_MEDIT;
+    ch->build_mode = BUILD_MODE_MEDIT;
 
 
     pMobIndex = new MOB_INDEX_DATA;
@@ -3207,7 +3207,7 @@ DO_FUN(build_addobject)
     }
 
     ch->pcdata->build_vnum = vnum;
-    ch->pcdata->build_mode = BUILD_MODE_OEDIT;
+    ch->build_mode = BUILD_MODE_OEDIT;
 
     pObjIndex = new OBJ_INDEX_DATA;
     pObjIndex->vnum = vnum;
@@ -3275,7 +3275,7 @@ DO_FUN(build_addroom)
     pRoomIndex->sector_type = ch->in_room->sector_type;
 
     ch->pcdata->build_vnum = vnum;
-    ch->pcdata->build_mode = BUILD_MODE_REDIT;
+    ch->build_mode = BUILD_MODE_REDIT;
 
     /*
      * Add room to hash table
@@ -4825,7 +4825,7 @@ DO_FUN(build_set_oedit)
 {
     OBJ_INDEX_DATA *obj;
 
-    ch->pcdata->build_mode = BUILD_MODE_OEDIT;
+    ch->build_mode = BUILD_MODE_OEDIT;
     if ( is_number( argument ) )
     {
         ch->pcdata->build_vnum = atoi( argument );
@@ -4843,7 +4843,7 @@ DO_FUN(build_set_redit)
 {
     ch->pcdata->build_vnum = ch->in_room->vnum;
 
-    ch->pcdata->build_mode = BUILD_MODE_REDIT;
+    ch->build_mode = BUILD_MODE_REDIT;
 
     send_to_char( "Now in Redit mode.  Vnum set to current room.\r\n", ch );
     return;
@@ -4853,7 +4853,7 @@ DO_FUN(build_set_medit)
 {
     MOB_INDEX_DATA *mob;
 
-    ch->pcdata->build_mode = BUILD_MODE_MEDIT;
+    ch->build_mode = BUILD_MODE_MEDIT;
     if ( is_number( argument ) )
     {
         ch->pcdata->build_vnum = atoi( argument );
@@ -4869,7 +4869,7 @@ DO_FUN(build_set_medit)
 
 DO_FUN(build_set_nedit)
 {
-    ch->pcdata->build_mode = BUILD_MODE_NONE;
+    ch->build_mode = BUILD_MODE_NONE;
     ch->pcdata->build_vnum = 0;
 
     send_to_char( "You are no longer in ANY editing mode.\r\n", ch );
@@ -4920,7 +4920,7 @@ DO_FUN(build_setvnum)
     snprintf( buf, MSL, "Current vnum now set to: %d.\r\n", vnum );
     found = TRUE;
 
-    switch ( ch->pcdata->build_mode )
+    switch ( ch->build_mode )
     {
         case BUILD_MODE_OEDIT:
             if ( ( obj = get_obj_index( vnum ) ) == NULL )
@@ -4977,7 +4977,7 @@ DO_FUN(build_setvnum)
 DO_FUN(build_list)
 {
     /*
-     * do show obj|mob|room according to ch->pcdata->build_mode -S-
+     * do show obj|mob|room according to ch->build_mode -S-
      */
 
     char buf[MSL];
@@ -4985,9 +4985,9 @@ DO_FUN(build_list)
 
     found = FALSE;
 
-    if ( argument[0] == '\0' || ( ch->pcdata->build_mode == BUILD_MODE_REDIT && is_name( argument, "brief doors resets desc all" ) ) )
+    if ( argument[0] == '\0' || ( ch->build_mode == BUILD_MODE_REDIT && is_name( argument, "brief doors resets desc all" ) ) )
     {
-        switch ( ch->pcdata->build_mode )
+        switch ( ch->build_mode )
         {
             case BUILD_MODE_NONE:
                 send_to_char( "Not in any editing mode.  Nothing to show!\r\n", ch );
@@ -5023,7 +5023,7 @@ DO_FUN(build_list)
     }
 
 
-    if ( ch->pcdata->build_mode == BUILD_MODE_NONE )
+    if ( ch->build_mode == BUILD_MODE_NONE )
     {
         send_to_char( "You must be in an editing mode first!\r\n", ch );
         return;
@@ -5036,7 +5036,7 @@ DO_FUN(build_list)
     if ( !strcmp( argument, "flags" ) )
     {
         found = TRUE;
-        switch ( ch->pcdata->build_mode )
+        switch ( ch->build_mode )
         {
             case BUILD_MODE_REDIT:
                 snprintf( buf, MSL, "Valid room flags are :\r\n" );
@@ -5058,7 +5058,7 @@ DO_FUN(build_list)
 
     if ( !strcmp( argument, "aff" ) )
     {
-        switch ( ch->pcdata->build_mode )
+        switch ( ch->build_mode )
         {
             case BUILD_MODE_OEDIT:
                 snprintf( buf, MSL, "Valid object affects are :\r\n" );
@@ -5079,7 +5079,7 @@ DO_FUN(build_list)
 
     if ( !strcmp( argument, "types" ) )
     {
-        if ( ch->pcdata->build_mode != BUILD_MODE_OEDIT )
+        if ( ch->build_mode != BUILD_MODE_OEDIT )
         {
             send_to_char( "Only valid when in Oedit mode.\r\n", ch );
             return;
@@ -5092,7 +5092,7 @@ DO_FUN(build_list)
 
     if ( !strcmp( argument, "wear" ) )
     {
-        if ( ch->pcdata->build_mode != BUILD_MODE_OEDIT )
+        if ( ch->build_mode != BUILD_MODE_OEDIT )
         {
             send_to_char( "Only valid when in Oedit mode.\r\n", ch );
             return;
@@ -5105,7 +5105,7 @@ DO_FUN(build_list)
 
     if ( !strcmp( argument, "loc" ) )
     {
-        if ( ch->pcdata->build_mode != BUILD_MODE_OEDIT )
+        if ( ch->build_mode != BUILD_MODE_OEDIT )
         {
             send_to_char( "Only valid when in Oedit mode.\r\n", ch );
             return;
@@ -5118,7 +5118,7 @@ DO_FUN(build_list)
 
     if ( !strcmp( argument, "sec" ) )
     {
-        if ( ch->pcdata->build_mode != BUILD_MODE_REDIT )
+        if ( ch->build_mode != BUILD_MODE_REDIT )
         {
             send_to_char( "Only valid when in Redit mode.\r\n", ch );
             return;
@@ -5131,7 +5131,7 @@ DO_FUN(build_list)
 
     if ( !strcmp( argument, "exit" ) )
     {
-        if ( ch->pcdata->build_mode != BUILD_MODE_REDIT )
+        if ( ch->build_mode != BUILD_MODE_REDIT )
         {
             send_to_char( "Only valid when in Redit mode.", ch );
             return;
@@ -5172,7 +5172,7 @@ DO_FUN(build_set)
      */
     char buf[MSL];
 
-    switch ( ch->pcdata->build_mode )
+    switch ( ch->build_mode )
     {
         case BUILD_MODE_OEDIT:
             if ( ch->pcdata->build_vnum < 1 )
@@ -5904,7 +5904,7 @@ DO_FUN(build_clone)
         ROOM_INDEX_DATA *in_room = ch->in_room;
         EXTRA_DESCR_DATA *pEd, *pEd_new;
 
-        if ( ch->pcdata->build_mode != BUILD_MODE_REDIT )
+        if ( ch->build_mode != BUILD_MODE_REDIT )
         {
             send_to_char( "You must be in REDIT mode to clone a room.\r\n", ch );
             return;
@@ -5967,7 +5967,7 @@ DO_FUN(build_clone)
         EXTRA_DESCR_DATA *pEd, *pEd_new;
         int looper;
 
-        if ( ch->pcdata->build_mode != BUILD_MODE_OEDIT )
+        if ( ch->build_mode != BUILD_MODE_OEDIT )
         {
             send_to_char( "You must be in OEDIT mode to clone an object.\r\n", ch );
             return;
@@ -6042,7 +6042,7 @@ DO_FUN(build_clone)
         SHOP_DATA *pShop, *pShop_new;
         BUILD_DATA_LIST *pList, *pList_new;
 
-        if ( ch->pcdata->build_mode != BUILD_MODE_MEDIT )
+        if ( ch->build_mode != BUILD_MODE_MEDIT )
         {
             send_to_char( "You must be in MEDIT mode to clone mobiles.\r\n", ch );
             return;
@@ -6136,7 +6136,7 @@ DO_FUN(build_clone)
 
 void check_autodig( CHAR_DATA *ch, int dir )
 {
-    if ( ch->position == POS_BUILDING && ch->pcdata->build_mode == BUILD_MODE_REDIT && ch->act.test(ACT_AUTODIG) )
+    if ( ch->position == POS_BUILDING && ch->build_mode == BUILD_MODE_REDIT && ch->act.test(ACT_AUTODIG) )
     {
         AREA_DATA *pArea;
         EXIT_DATA *pExit;

@@ -555,6 +555,7 @@ class char_data
         int affected_by;
         short alignment;
         short armor;
+        short build_mode;
         short carry_number;
         float carry_weight;
         int cast;
@@ -667,7 +668,6 @@ class pc_data
         char *bamfin;
         char *bamfout;
         MONEY_TYPE *bank_money;
-        short build_mode;
         int build_vnum;
         short condition[MAX_COND];
         int color[MAX_COLOR];

@@ -1060,13 +1060,13 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
         char msg2[MSL]; /* what */
         char msg3[MSL]; /* all */
 
-        if ( ch->pcdata->build_mode == BUILD_MODE_NONE )
+        if ( ch->build_mode == BUILD_MODE_NONE )
         {
             snprintf( msg, MSL, "Mode:  None" );
             snprintf( msg2, MSL, "Use Redit, Medit or Oedit to select mode." );
         }
 
-        if ( ch->pcdata->build_mode == BUILD_MODE_REDIT )
+        if ( ch->build_mode == BUILD_MODE_REDIT )
         {
             snprintf( msg, MSL, "Mode: Redit" );
             if ( ch->pcdata->build_vnum < 1 )
@@ -1079,7 +1079,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             }
         }
 
-        if ( ch->pcdata->build_mode == BUILD_MODE_OEDIT )
+        if ( ch->build_mode == BUILD_MODE_OEDIT )
         {
             snprintf( msg, MSL, "Mode: Oedit" );
             if ( ch->pcdata->build_vnum < 1 )
@@ -1093,7 +1093,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
         }
 
 
-        if ( ch->pcdata->build_mode == BUILD_MODE_MEDIT )
+        if ( ch->build_mode == BUILD_MODE_MEDIT )
         {
             snprintf( msg, MSL, "Mode: Medit" );
             if ( ch->pcdata->build_vnum < 1 )
