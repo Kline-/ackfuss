@@ -449,7 +449,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
         fprintf( fp, "GainMove       %d\n", ch->pcdata->move_from_gain );
         fprintf( fp, "RulerRank      %d\n", ch->pcdata->ruler_rank );
-        fprintf( fp, "Condition      %d %d %d\n", ch->pcdata->condition[0], ch->pcdata->condition[1], ch->pcdata->condition[2] );
+        fprintf( fp, "Condition      %d %d %d\n", ch->condition[0], ch->condition[1], ch->condition[2] );
         fprintf( fp, "Pagelen        %d\n", ch->pcdata->pagelen );
 
         for ( sn = 0; sn < MAX_SKILL; sn++ )
@@ -922,9 +922,9 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
                 if ( !str_cmp( word, "Condition" ) && !IS_NPC( ch ) )
                 {
-                    ch->pcdata->condition[0] = fread_number( fp );
-                    ch->pcdata->condition[1] = fread_number( fp );
-                    ch->pcdata->condition[2] = fread_number( fp );
+                    ch->condition[0] = fread_number( fp );
+                    ch->condition[1] = fread_number( fp );
+                    ch->condition[2] = fread_number( fp );
                     fMatch = TRUE;
                     break;
                 }

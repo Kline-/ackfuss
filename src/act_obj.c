@@ -981,7 +981,7 @@ DO_FUN(do_drink)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_THIRST] > 40 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_THIRST] > 40 )
     {
         send_to_char( "You do not feel thirsty.\r\n", ch );
         return;
@@ -989,7 +989,7 @@ DO_FUN(do_drink)
 
 
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
     {
         send_to_char( "You fail to reach your mouth.  *Hic*\r\n", ch );
         return;
@@ -1024,11 +1024,11 @@ DO_FUN(do_drink)
             condition_gain( ch, COND_FULL, amount * liq_table[liquid].liq_affect[COND_FULL] );
             condition_gain( ch, COND_THIRST, amount * liq_table[liquid].liq_affect[COND_THIRST] );
 
-            if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+            if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
                 send_to_char( "You feel drunk.\r\n", ch );
-            if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_FULL] > 40 )
+            if ( !IS_NPC( ch ) && ch->condition[COND_FULL] > 40 )
                 send_to_char( "You are full.\r\n", ch );
-            if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_THIRST] > 40 )
+            if ( !IS_NPC( ch ) && ch->condition[COND_THIRST] > 40 )
                 send_to_char( "You do not feel thirsty.\r\n", ch );
 
             if ( obj->value[1] != 0 )
@@ -1079,11 +1079,11 @@ DO_FUN(do_drink)
             condition_gain( ch, COND_FULL, amount * liq_table[liquid].liq_affect[COND_FULL] );
             condition_gain( ch, COND_THIRST, amount * liq_table[liquid].liq_affect[COND_THIRST] );
 
-            if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+            if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
                 send_to_char( "You feel drunk.\r\n", ch );
-            if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_FULL] > 40 )
+            if ( !IS_NPC( ch ) && ch->condition[COND_FULL] > 40 )
                 send_to_char( "You are full.\r\n", ch );
-            if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_THIRST] > 40 )
+            if ( !IS_NPC( ch ) && ch->condition[COND_THIRST] > 40 )
                 send_to_char( "You do not feel thirsty.\r\n", ch );
 
             if ( obj->value[3] != 0 )
@@ -1151,7 +1151,7 @@ DO_FUN(do_eat)
             return;
         }
 
-        if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_FULL] > 40 )
+        if ( !IS_NPC( ch ) && ch->condition[COND_FULL] > 40 )
         {
             send_to_char( "You are too full to eat more.\r\n", ch );
             return;
@@ -1169,11 +1169,11 @@ DO_FUN(do_eat)
             {
                 int condition;
 
-                condition = ch->pcdata->condition[COND_FULL];
+                condition = ch->condition[COND_FULL];
                 condition_gain( ch, COND_FULL, obj->value[0] );
-                if ( condition == 0 && ch->pcdata->condition[COND_FULL] > 0 )
+                if ( condition == 0 && ch->condition[COND_FULL] > 0 )
                     send_to_char( "You are no longer hungry.\r\n", ch );
-                else if ( ch->pcdata->condition[COND_FULL] > 40 )
+                else if ( ch->condition[COND_FULL] > 40 )
                     send_to_char( "You are full.\r\n", ch );
             }
 

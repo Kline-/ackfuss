@@ -96,9 +96,9 @@
 #define IS_ADEPT(ch)            ( !IS_NPC(ch) && ch->get_level("adept") > 0 )
 #define IS_REMORT(ch)           ( !IS_NPC(ch) && ch->get_level("remort") > 0 )
 #define IS_AFFECTED(ch, sn)     ( IS_SET((ch)->affected_by, (sn)))
-#define IS_HUNGRY(ch)           ( !IS_NPC(ch) && ch->pcdata->condition[COND_FULL] <= 0 )
-#define IS_THIRSTY(ch)          ( !IS_NPC(ch) && ch->pcdata->condition[COND_THIRST] <= 0 )
-#define IS_DRUNK(ch)            ( !IS_NPC(ch) && ch->pcdata->condition[COND_DRUNK] > 10 )
+#define IS_HUNGRY(ch)           ( !IS_NPC(ch) && ch->condition[COND_FULL] <= 0 )
+#define IS_THIRSTY(ch)          ( !IS_NPC(ch) && ch->condition[COND_THIRST] <= 0 )
+#define IS_DRUNK(ch)            ( !IS_NPC(ch) && ch->condition[COND_DRUNK] > 10 )
 
 #define HAS_COOLDOWN(ch)        ( ch->cooldown[COOLDOWN_OFF] > 0 || ch->cooldown[COOLDOWN_DEF] > 0 )
 #define IS_CASTING(ch)          ( ch->casting->time > 0 )

@@ -534,7 +534,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
         argument = slur_text( argument );
 
     switch ( channel )
@@ -1039,7 +1039,7 @@ DO_FUN(do_say)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
         argument = slur_text( argument );
 
     snprintf( buf, MSL, "You say '%s$T%s'.", color_string( ch, "say" ), color_string( ch, "normal" ) );
@@ -1302,7 +1302,7 @@ DO_FUN(do_tell)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
         argument = slur_text( argument );
 
     snprintf( buf, MSL, "You tell $N '%s$t%s'.", color_string( ch, "tell" ), color_string( ch, "normal" ) );
@@ -1361,7 +1361,7 @@ DO_FUN(do_reply)
     }
 
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
         argument = slur_text( argument );
 
     act( "You tell $N '$t'.", ch, argument, victim, TO_CHAR );
@@ -2291,7 +2291,7 @@ DO_FUN(do_gtell)
      * Note use of send_to_char, so gtell works on sleepers.
      */
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
         argument = slur_text( argument );
 
     snprintf( buf, MSL, "%s tells the group '%s'.\r\n", ch->name.c_str(), argument );
@@ -2478,7 +2478,7 @@ DO_FUN(do_tongue)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
         argument = slur_text( argument );
 
     for ( pName = argument; *pName != '\0'; pName += length )
@@ -2656,7 +2656,7 @@ DO_FUN(do_whisper)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
         argument = slur_text( argument );
 
     act( "You whisper to $N '$t'.", ch, argument, victim, TO_CHAR );
@@ -2721,7 +2721,7 @@ DO_FUN(do_ask)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->condition[COND_DRUNK] > 10 )
+    if ( !IS_NPC( ch ) && ch->condition[COND_DRUNK] > 10 )
         argument = slur_text( argument );
 
     act( "You ask $N '$t'.", ch, argument, victim, TO_CHAR );

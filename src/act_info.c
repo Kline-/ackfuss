@@ -1452,9 +1452,9 @@ DO_FUN(do_score)
         send_to_char( buf2, ch );
 
         snprintf( buf, MSL, " @@WDrunk: @@y%3s   @@WThirsty: @@y%3s   @@WHungry: @@y%3s",
-                  ( ch->pcdata->condition[COND_DRUNK] > 10 ) ? "Yes" : "No",
-                  ( ch->pcdata->condition[COND_THIRST] == 0 ) ? "Yes" : "No",
-                  ( ch->pcdata->condition[COND_FULL] == 0 ) ? "Yes" : "No" );
+                  ( ch->condition[COND_DRUNK] > 10 ) ? "Yes" : "No",
+                  ( ch->condition[COND_THIRST] == 0 ) ? "Yes" : "No",
+                  ( ch->condition[COND_FULL] == 0 ) ? "Yes" : "No" );
         snprintf( buf2, MSL, "@@c|%s @@c|\r\n", center_text( buf, 62 ) );
         send_to_char( buf2, ch );
 

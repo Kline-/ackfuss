@@ -1044,8 +1044,8 @@ DO_FUN(do_mstat)
 
         snprintf( buf, MSL,
                   "Thirst: %d.  Full: %d.  Drunk: %d.  Saving throw: %d.\r\n",
-                  victim->pcdata->condition[COND_THIRST],
-                  victim->pcdata->condition[COND_FULL], victim->pcdata->condition[COND_DRUNK], victim->saving_throw );
+                  victim->condition[COND_THIRST],
+                  victim->condition[COND_FULL], victim->condition[COND_DRUNK], victim->saving_throw );
         strncat( buf1, buf, MSL - 1 );
     }
 
@@ -3074,7 +3074,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->pcdata->condition[COND_THIRST] = value;
+        victim->condition[COND_THIRST] = value;
         return;
     }
 
@@ -3092,7 +3092,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->pcdata->condition[COND_DRUNK] = value;
+        victim->condition[COND_DRUNK] = value;
         return;
     }
 
@@ -3110,7 +3110,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->pcdata->condition[COND_FULL] = value;
+        victim->condition[COND_FULL] = value;
         return;
     }
 

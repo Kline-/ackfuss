@@ -390,10 +390,10 @@ int hit_gain( CHAR_DATA * ch )
     }
     if ( !IS_NPC( ch ) )
     {
-        if ( ch->pcdata->condition[COND_FULL] == 0 )
+        if ( ch->condition[COND_FULL] == 0 )
             gain /= 2;
 
-        if ( ch->pcdata->condition[COND_THIRST] == 0 )
+        if ( ch->condition[COND_THIRST] == 0 )
             gain /= 2;
 
         if ( IS_VAMP( ch ) && ch->pcdata->super->energy < 3 )
@@ -496,10 +496,10 @@ int mana_gain( CHAR_DATA * ch )
         }
         if ( !IS_NPC( ch ) )
         {
-            if ( ch->pcdata->condition[COND_FULL] == 0 )
+            if ( ch->condition[COND_FULL] == 0 )
                 gain /= 2;
 
-            if ( ch->pcdata->condition[COND_THIRST] == 0 )
+            if ( ch->condition[COND_THIRST] == 0 )
                 gain /= 2;
             if ( IS_VAMP( ch ) && ch->pcdata->super->energy < 3 )
                 gain = 0;
@@ -596,10 +596,10 @@ int move_gain( CHAR_DATA * ch )
                 break;
         }
 
-        if ( ch->pcdata->condition[COND_FULL] == 0 )
+        if ( ch->condition[COND_FULL] == 0 )
             gain /= 2;
 
-        if ( ch->pcdata->condition[COND_THIRST] == 0 )
+        if ( ch->condition[COND_THIRST] == 0 )
             gain /= 2;
 
         if ( IS_VAMP( ch ) && ch->pcdata->super->energy < 3 )
@@ -689,15 +689,15 @@ void condition_gain( CHAR_DATA * ch, int iCond, int value )
     if ( value == 0 || IS_NPC( ch ) || ch->level >= LEVEL_HERO )
         return;
 
-    condition = ch->pcdata->condition[iCond];
-    ch->pcdata->condition[iCond] = URANGE( 0, condition + value, 48 );
+    condition = ch->condition[iCond];
+    ch->condition[iCond] = URANGE( 0, condition + value, 48 );
 
 
     if ( ch->position == POS_BUILDING || ch->position == POS_WRITING )
         return;
 
 
-    if ( ch->pcdata->condition[iCond] == 0 )
+    if ( ch->condition[iCond] == 0 )
     {
         switch ( iCond )
         {
@@ -1443,8 +1443,8 @@ void char_update( void )
 
             if ( !check_charm_aff(ch, CHARM_AFF_HUNGERLESS) )
                 condition_gain( ch, COND_THIRST, 0 - number_range( 1, 2 ) );
-            if ( ch->pcdata->condition[COND_THIRST] <= 10 )
-                ch->pcdata->condition[COND_THIRST] = 10;
+            if ( ch->condition[COND_THIRST] <= 10 )
+                ch->condition[COND_THIRST] = 10;
             condition_gain( ch, COND_DRUNK, 0 - number_range( 1, 2 ) );
             if ( !IS_VAMP( ch ) )
             {

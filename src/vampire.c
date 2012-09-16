@@ -241,8 +241,8 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
         victim->pcdata->super->energy = -10;
         victim->pcdata->super->energy_max = 20;
         victim->act.set(ACT_VAMPIRE);
-        victim->pcdata->condition[COND_FULL] = 20;
-        victim->pcdata->condition[COND_THIRST] = 20;
+        victim->condition[COND_FULL] = 20;
+        victim->condition[COND_THIRST] = 20;
         victim->pcdata->super->pracs = 2;
         ch->pcdata->super->energy_max -= 5;
         victim->pcdata->recall_vnum = 9001;

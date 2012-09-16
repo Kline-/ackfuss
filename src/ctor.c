@@ -150,7 +150,11 @@ char_data::char_data()
     cast = 0;
     casting = new CAST_DATA;
     clan = -1;
-    for ( short i = 0; i < MAX_COOLDOWN; i++ )
+    for ( int i = 0; i < MAX_COND; i++ )
+        condition[i] = 0;
+    condition[COND_THIRST] = 48;
+    condition[COND_FULL] = 48;
+    for ( int i = 0; i < MAX_COOLDOWN; i++ )
         cooldown[i] = 0;
     damroll = 5;
     deaf.reset();
@@ -185,9 +189,9 @@ char_data::char_data()
     logon = current_time;
     long_descr.clear();
     long_descr_orig.clear();
-    for ( short i = 0; i < MAX_CLASS; i++ )
+    for ( int i = 0; i < MAX_CLASS; i++ )
         lvl[i] = -1;
-    for ( short i = 0; i < MAX_CLASS; i++ )
+    for ( int i = 0; i < MAX_CLASS; i++ )
         lvl2[i] = -1;
     mana = 50;
     master = NULL;
@@ -225,7 +229,7 @@ char_data::char_data()
     sitting = NULL;
     skills = 0;
     spec_fun = NULL;
-    for ( short i = 0; i < MAX_SPEED; i++ )
+    for ( int i = 0; i < MAX_SPEED; i++ )
         speed[i] = 0;
     stance = STANCE_WARRIOR;
     stance_ac_mod = 0;
@@ -527,10 +531,6 @@ pc_data::pc_data()
     bamfin = &str_empty[0];
     bamfout = &str_empty[0];
     bank_money = new MONEY_TYPE;
-    for ( short i = 0; i < MAX_COND; i++ )
-        condition[i] = 0;
-    condition[COND_THIRST] = 48;
-    condition[COND_FULL] = 48;
     for ( short i = 0; i < MAX_COLOR; i++ )
         color[i] = 0;
     current_brand = NULL;
