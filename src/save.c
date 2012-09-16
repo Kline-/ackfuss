@@ -826,7 +826,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 KEY( "Armor", ch->armor, fread_number( fp ) );
                 if ( !IS_NPC(ch) )
                 {
-                    KEY( "Adeptlevel", ch->pcdata->adept_level, fread_number( fp ) );
+                    KEY( "Adeptlevel", ch->adept_level, fread_number( fp ) );
                     SKEY( "AssistMsg", ch->pcdata->assist_msg, fread_string( fp ) );
                     SKEY( "Alias_Name0", ch->pcdata->alias_name[0], fread_string( fp ) );
                     SKEY( "Alias_Name1", ch->pcdata->alias_name[1], fread_string( fp ) );

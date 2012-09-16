@@ -139,6 +139,7 @@ char_data::char_data()
 {
     ac_mod = 0;
     act.reset();
+    adept_level = -1;
     affected_by = 0;
     alignment = 0;
     armor = 0;
@@ -515,7 +516,6 @@ obj_index_data::obj_index_data()
 
 pc_data::pc_data()
 {
-    adept_level = -1;
     for ( short i = 0; i < MAX_ALIASES; i++ )
     {
         alias[i] = &str_empty[0];

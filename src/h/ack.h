@@ -551,6 +551,7 @@ class char_data
 
         short ac_mod;
         bitset<MAX_BITSET> act;
+        short adept_level;
         int affected_by;
         short alignment;
         short armor;
@@ -660,7 +661,6 @@ class pc_data
     public:
         pc_data();
         ~pc_data();
-        short adept_level;
         char *alias[MAX_ALIASES];
         char *alias_name[MAX_ALIASES];
         char *assist_msg;

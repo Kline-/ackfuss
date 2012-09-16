@@ -130,7 +130,7 @@ short char_data::get_level( const char *what )
     }
 
     if ( !str_prefix(what, "adept") )
-        return IS_NPC(this) ? get_level() / 7 : pcdata->adept_level;
+        return IS_NPC(this) ? get_level() / 7 : adept_level;
     if ( !str_prefix(what, "mage") )
         return lvl[CLS_MAG];
     if ( !str_prefix(what, "cleric") )

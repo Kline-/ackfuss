@@ -4230,7 +4230,7 @@ DO_FUN(do_gain)
         send_to_char( "@@WYou have reached another step on the stairway to Wisdom!!!@@N\r\n", ch );
         ch->exp -= cost;
         advance_level( ch, c, TRUE, FALSE );
-        ch->pcdata->adept_level = UMAX( 1, ch->pcdata->adept_level + 1 );
+        ch->adept_level = UMAX( 1, ch->adept_level + 1 );
         snprintf( buf, MSL, "%s @@W advances in the way of the Adept!!\r\n", ch->name.c_str() );
         info( buf, 1 );
         free_string( ch->pcdata->who_name );
