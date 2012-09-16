@@ -150,6 +150,8 @@ char_data::char_data()
     cast = 0;
     casting = new CAST_DATA;
     clan = -1;
+    for ( int i = 0; i < MAX_COLOR; i++ )
+        color[i] = 0;
     for ( int i = 0; i < MAX_COND; i++ )
         condition[i] = 0;
     condition[COND_THIRST] = 48;
@@ -531,8 +533,6 @@ pc_data::pc_data()
     bamfin = &str_empty[0];
     bamfout = &str_empty[0];
     bank_money = new MONEY_TYPE;
-    for ( short i = 0; i < MAX_COLOR; i++ )
-        color[i] = 0;
     current_brand = NULL;
     death_cnt = -1;
     dimcol = 'b';

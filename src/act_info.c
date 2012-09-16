@@ -4550,7 +4550,7 @@ DO_FUN(do_color)
         for ( cnt = 0; cnt < MAX_COLOR; cnt++ )
         {
             snprintf( buf, MSL, "@@W%8s: %s%-12s@@N   ",
-                      color_table[cnt].name, ansi_table[ch->pcdata->color[cnt]].value, ansi_table[ch->pcdata->color[cnt]].name );
+                      color_table[cnt].name, ansi_table[ch->color[cnt]].value, ansi_table[ch->color[cnt]].name );
             send_to_char( buf, ch );
             if ( ++col % 3 == 0 )
                 send_to_char( "\r\n", ch );
@@ -4635,7 +4635,7 @@ DO_FUN(do_color)
     }
 
     /*
-     * Ok now, we have color_number, which is the index to pcdata->color[]
+     * Ok now, we have color_number, which is the index to color[]
      * * so we need to set the value of it to the color.
      * * -S-
      */
@@ -4652,7 +4652,7 @@ DO_FUN(do_color)
         return;
     }
 
-    ch->pcdata->color[color_number] = ansi_number;
+    ch->color[color_number] = ansi_number;
     send_to_char( "OK.\r\n", ch );
     return;
 }
@@ -4691,7 +4691,7 @@ char *color_string( CHAR_DATA * ch, char *argument )
     if ( num == -1 )  /* bug report? */
         return ( "" );
 
-    return ( ansi_table[ch->pcdata->color[num]].value );
+    return ( ansi_table[ch->color[num]].value );
 }
 
 DO_FUN(do_worth)

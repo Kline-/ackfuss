@@ -562,6 +562,7 @@ class char_data
         int cast;
         CAST_DATA *casting;
         int clan;
+        int color[MAX_COLOR];
         int condition[MAX_COND];
         float cooldown[MAX_COOLDOWN];
         int damroll;
@@ -670,7 +671,6 @@ class pc_data
         char *bamfin;
         char *bamfout;
         MONEY_TYPE *bank_money;
-        int color[MAX_COLOR];
         BRAND_DATA *current_brand;
         short death_cnt;
         char dimcol;

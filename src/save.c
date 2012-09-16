@@ -382,7 +382,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
         fprintf( fp, "Colors         " );
         for ( foo = 0; foo < MAX_COLOR; foo++ )
-            fprintf( fp, "%d ", ch->pcdata->color[foo] );
+            fprintf( fp, "%d ", ch->color[foo] );
         fprintf( fp, "\n" );
 
         fprintf( fp, "AttrPerm       %d %d %d %d %d\n",
@@ -915,7 +915,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 {
                     int foo;
                     for ( foo = 0; foo < MAX_COLOR; foo++ )
-                        ch->pcdata->color[foo] = fread_number( fp );
+                        ch->color[foo] = fread_number( fp );
                     fMatch = TRUE;
                     break;
                 }
