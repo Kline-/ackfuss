@@ -167,6 +167,7 @@ char_data::char_data()
     dr_mod = 0;
     exp = 0;
     extract_timer = -1;
+    failures = 0;
     fighting = NULL;
     first_affect = NULL;
     first_carry = NULL;
@@ -537,7 +538,6 @@ pc_data::pc_data()
     current_brand = NULL;
     dimcol = 'b';
     email = new EMAIL_DATA;
-    failures = 0;
     header = &str_empty[0];
     hicol = 'y';
     for ( short i = 0; i < MAX_HOSTS; i++ )

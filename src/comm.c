@@ -2227,7 +2227,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             write_to_buffer( d, "Wrong password.\r\n" );
             snprintf( buf, MSL, "FAILED LOGIN for %s from site %s.", ch->name.c_str(), d->host );
             monitor_chan( buf, MONITOR_CONNECT );
-            ch->pcdata->failures++;
+            ch->failures++;
             save_char_obj( ch );
             close_socket( d );
             return;
@@ -2881,11 +2881,11 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         /*
          * check for login failures, then clear count.
          */
-        if ( ch->pcdata->failures != 0 && ch->level != 1 )
+        if ( ch->failures != 0 && ch->level != 1 )
         {
-            snprintf( msg, MSL, "WARNING:  There have been %d failed login attempts.\r\n", ch->pcdata->failures );
+            snprintf( msg, MSL, "WARNING:  There have been %d failed login attempts.\r\n", ch->failures );
             send_to_char( msg, ch );
-            ch->pcdata->failures = 0;
+            ch->failures = 0;
         }
 
         if ( ch->level > 1 )

@@ -574,6 +574,7 @@ class char_data
         int dr_mod;
         int exp;
         int extract_timer;
+        int failures;  /* Failed logins */
         CHAR_DATA *fighting;
         AFFECT_DATA *first_affect;
         OBJ_DATA *first_carry;
@@ -675,7 +676,6 @@ class pc_data
         BRAND_DATA *current_brand;
         char dimcol;
         EMAIL_DATA *email;
-        short failures;  /* Failed logins */
         char *header;  /* filename for helpedit */
         char hicol;
         char *host[MAX_HOSTS]; /* Used to tell PC last login sites */

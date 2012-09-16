@@ -350,7 +350,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         for ( cnt = 0; cnt < MAX_HOSTS; cnt++ )
             fprintf(fp, "%s~", ch->pcdata->whitelist[cnt]);
         fprintf( fp, "\n");
-        fprintf( fp, "Failures       %d\n", ch->pcdata->failures );
+        fprintf( fp, "Failures       %d\n", ch->failures );
         fprintf( fp, "LastLogin      %s~\n", time_buf );
         fprintf( fp, "HiCol          %c~\n", ch->pcdata->hicol );
         fprintf( fp, "DimCol         %c~\n", ch->pcdata->dimcol );
@@ -1006,7 +1006,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             case 'F':
                 if ( !IS_NPC( ch ) )
                 {
-                    KEY( "Failures", ch->pcdata->failures, fread_number( fp ) );
+                    KEY( "Failures", ch->failures, fread_number( fp ) );
                 }
                 break;
 
