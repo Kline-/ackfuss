@@ -344,9 +344,9 @@ DO_FUN(build_interpret)
     /*
      * make sure that if in Redit, vnum is at new room.
      */
-    if ( ch->build_mode == BUILD_MODE_REDIT && ch->pcdata->build_vnum != ch->in_room->vnum )
+    if ( ch->build_mode == BUILD_MODE_REDIT && ch->build_vnum != ch->in_room->vnum )
     {
-        ch->pcdata->build_vnum = ch->in_room->vnum;
+        ch->build_vnum = ch->in_room->vnum;
         send_to_char( "Redit: Vnum changed to new room.\r\n", ch );
     }
     return;
@@ -1948,7 +1948,7 @@ DO_FUN(build_setroom)
         return;
     }
 
-    location = get_room_index( ch->pcdata->build_vnum );
+    location = get_room_index( ch->build_vnum );
 
     if ( location == NULL )
     {
@@ -3139,7 +3139,7 @@ DO_FUN(build_addmob)
         return;
     }
 
-    ch->pcdata->build_vnum = vnum;
+    ch->build_vnum = vnum;
     ch->build_mode = BUILD_MODE_MEDIT;
 
 
@@ -3206,7 +3206,7 @@ DO_FUN(build_addobject)
         return;
     }
 
-    ch->pcdata->build_vnum = vnum;
+    ch->build_vnum = vnum;
     ch->build_mode = BUILD_MODE_OEDIT;
 
     pObjIndex = new OBJ_INDEX_DATA;
@@ -3274,7 +3274,7 @@ DO_FUN(build_addroom)
     pRoomIndex->vnum = vnum;
     pRoomIndex->sector_type = ch->in_room->sector_type;
 
-    ch->pcdata->build_vnum = vnum;
+    ch->build_vnum = vnum;
     ch->build_mode = BUILD_MODE_REDIT;
 
     /*
@@ -4242,13 +4242,13 @@ DO_FUN(build_delobject)
     }
 
     /*
-     * make sure that NO one else has pcdata->build_vnum set to this room!!
+     * make sure that NO one else has build_vnum set to this room!!
      */
     for ( li = char_list.begin(); li != char_list.end(); li++ )
     {
         vch = *li;
-        if ( vch->pcdata->build_vnum == old_ovnum )
-            vch->pcdata->build_vnum = 0;
+        if ( vch->build_vnum == old_ovnum )
+            vch->build_vnum = 0;
     }
 
 
@@ -4431,13 +4431,13 @@ DO_FUN(build_delmob)
     }
 
     /*
-     * make sure that NO one else has pcdata->build_vnum set to this mob!!
+     * make sure that NO one else has build_vnum set to this mob!!
      */
     for ( li = char_list.begin(); li != char_list.end(); li++ )
     {
         vch = *li;
-        if ( vch->pcdata->build_vnum == old_ovnum )
-            vch->pcdata->build_vnum = 0;
+        if ( vch->build_vnum == old_ovnum )
+            vch->build_vnum = 0;
     }
 
 
@@ -4828,20 +4828,20 @@ DO_FUN(build_set_oedit)
     ch->build_mode = BUILD_MODE_OEDIT;
     if ( is_number( argument ) )
     {
-        ch->pcdata->build_vnum = atoi( argument );
-        if ( ( obj = get_obj_index( ch->pcdata->build_vnum ) ) == NULL )
-            ch->pcdata->build_vnum = 0;
+        ch->build_vnum = atoi( argument );
+        if ( ( obj = get_obj_index( ch->build_vnum ) ) == NULL )
+            ch->build_vnum = 0;
     }
     else
-        ch->pcdata->build_vnum = 0;
+        ch->build_vnum = 0;
 
-    send_to_char( ch->pcdata->build_vnum < 1 ? "No vnum set.  Use setvnum.\r\n" : "Vnum now set. ", ch );
+    send_to_char( ch->build_vnum < 1 ? "No vnum set.  Use setvnum.\r\n" : "Vnum now set. ", ch );
     return;
 }
 
 DO_FUN(build_set_redit)
 {
-    ch->pcdata->build_vnum = ch->in_room->vnum;
+    ch->build_vnum = ch->in_room->vnum;
 
     ch->build_mode = BUILD_MODE_REDIT;
 
@@ -4856,21 +4856,21 @@ DO_FUN(build_set_medit)
     ch->build_mode = BUILD_MODE_MEDIT;
     if ( is_number( argument ) )
     {
-        ch->pcdata->build_vnum = atoi( argument );
-        if ( ( mob = get_mob_index( ch->pcdata->build_vnum ) ) == NULL )
-            ch->pcdata->build_vnum = 0;
+        ch->build_vnum = atoi( argument );
+        if ( ( mob = get_mob_index( ch->build_vnum ) ) == NULL )
+            ch->build_vnum = 0;
     }
     else
-        ch->pcdata->build_vnum = 0;
+        ch->build_vnum = 0;
 
-    send_to_char( ch->pcdata->build_vnum < 1 ? "No vnum set.  Use setvnum.\r\n" : "Vnum now set. ", ch );
+    send_to_char( ch->build_vnum < 1 ? "No vnum set.  Use setvnum.\r\n" : "Vnum now set. ", ch );
     return;
 }
 
 DO_FUN(build_set_nedit)
 {
     ch->build_mode = BUILD_MODE_NONE;
-    ch->pcdata->build_vnum = 0;
+    ch->build_vnum = 0;
 
     send_to_char( "You are no longer in ANY editing mode.\r\n", ch );
     return;
@@ -4914,7 +4914,7 @@ DO_FUN(build_setvnum)
     else
     {
 
-        vnum = ch->pcdata->build_vnum + inc;
+        vnum = ch->build_vnum + inc;
     }
 
     snprintf( buf, MSL, "Current vnum now set to: %d.\r\n", vnum );
@@ -4937,7 +4937,7 @@ DO_FUN(build_setvnum)
             /*
              * do_goto( ch, itoa( vnum ) );
              */
-            ch->pcdata->build_vnum = ch->in_room->vnum;
+            ch->build_vnum = ch->in_room->vnum;
             send_to_char( "Vnum set to current room vnum.\r\n", ch );
             break;
 
@@ -4962,7 +4962,7 @@ DO_FUN(build_setvnum)
 
     if ( found )
     {
-        ch->pcdata->build_vnum = vnum;
+        ch->build_vnum = vnum;
         send_to_char( "New vnum IS set.\r\n", ch );
         build_list( ch, "" );
     }
@@ -4993,16 +4993,16 @@ DO_FUN(build_list)
                 send_to_char( "Not in any editing mode.  Nothing to show!\r\n", ch );
                 break;
             case BUILD_MODE_OEDIT:
-                if ( ch->pcdata->build_vnum < 1 )
+                if ( ch->build_vnum < 1 )
                     send_to_char( "No vnum has been selected!\r\n", ch );
                 else
                 {
-                    snprintf( buf, MSL, "%d", ch->pcdata->build_vnum );
+                    snprintf( buf, MSL, "%d", ch->build_vnum );
                     build_showobj( ch, buf );
                 }
                 break;
             case BUILD_MODE_REDIT:
-                if ( ch->pcdata->build_vnum < 1 )
+                if ( ch->build_vnum < 1 )
                     send_to_char( "No vnum has been selected!\r\n", ch );
                 else
                 {
@@ -5010,11 +5010,11 @@ DO_FUN(build_list)
                 }
                 break;
             case BUILD_MODE_MEDIT:
-                if ( ch->pcdata->build_vnum < 1 )
+                if ( ch->build_vnum < 1 )
                     send_to_char( "No vnum has been selected!\r\n", ch );
                 else
                 {
-                    snprintf( buf, MSL, "%d", ch->pcdata->build_vnum );
+                    snprintf( buf, MSL, "%d", ch->build_vnum );
                     build_showmob( ch, buf );
                 }
                 break;
@@ -5175,16 +5175,16 @@ DO_FUN(build_set)
     switch ( ch->build_mode )
     {
         case BUILD_MODE_OEDIT:
-            if ( ch->pcdata->build_vnum < 1 )
+            if ( ch->build_vnum < 1 )
             {
                 send_to_char( "No vnum is set!!\r\n", ch );
                 return;
             }
-            snprintf( buf, MSL, "%d %s", ch->pcdata->build_vnum, argument );
+            snprintf( buf, MSL, "%d %s", ch->build_vnum, argument );
             build_setobject( ch, buf );
             break;
         case BUILD_MODE_REDIT:
-            if ( ch->pcdata->build_vnum < 1 )
+            if ( ch->build_vnum < 1 )
             {
                 send_to_char( "No vnum is set!!\r\n", ch );
                 return;
@@ -5192,12 +5192,12 @@ DO_FUN(build_set)
             build_setroom( ch, argument );
             break;
         case BUILD_MODE_MEDIT:
-            if ( ch->pcdata->build_vnum < 1 )
+            if ( ch->build_vnum < 1 )
             {
                 send_to_char( "No vnum is set!!\r\n", ch );
                 return;
             }
-            snprintf( buf, MSL, "%d %s", ch->pcdata->build_vnum, argument );
+            snprintf( buf, MSL, "%d %s", ch->build_vnum, argument );
             build_setmob( ch, buf );
             break;
         default:
@@ -5973,7 +5973,7 @@ DO_FUN(build_clone)
             return;
         }
 
-        if ( ( this_obj = get_obj_index( ch->pcdata->build_vnum ) ) == NULL )
+        if ( ( this_obj = get_obj_index( ch->build_vnum ) ) == NULL )
         {
             send_to_char( "You must select a valid object in OEDIT before you clone.\r\n", ch );
             return;
@@ -6048,7 +6048,7 @@ DO_FUN(build_clone)
             return;
         }
 
-        if ( ( this_mob = get_mob_index( ch->pcdata->build_vnum ) ) == NULL )
+        if ( ( this_mob = get_mob_index( ch->build_vnum ) ) == NULL )
         {
             send_to_char( "You must select a valid mobile in MEDIT before you clone mobiles.\r\n", ch );
             return;

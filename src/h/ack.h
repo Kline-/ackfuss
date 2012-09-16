@@ -538,7 +538,7 @@ class char_data
         bool check_cooldown( const char *skill );
         bool check_cooldown( int pos );
         void gain_exp( int gain );
-        short get_level( const char *what = '\0' );
+        int get_level( const char *what = '\0' );
         const char *get_name( CHAR_DATA *looker = NULL );
         const char *get_title( void );
         const char *get_whoname( void );
@@ -549,35 +549,36 @@ class char_data
         void set_cooldown( int pos, float duration );
         void set_title( const char *title );
 
-        short ac_mod;
+        int ac_mod;
         bitset<MAX_BITSET> act;
-        short adept_level;
+        int adept_level;
         int affected_by;
-        short alignment;
-        short armor;
-        short build_mode;
-        short carry_number;
+        int alignment;
+        int armor;
+        int build_mode;
+        int build_vnum;
+        int carry_number;
         float carry_weight;
         int cast;
         CAST_DATA *casting;
-        short clan;
+        int clan;
         float cooldown[MAX_COOLDOWN];
-        short damroll;
+        int damroll;
         int def;
         bitset<MAX_BITSET> deaf;
         DESCRIPTOR_DATA *desc;
         string description;
-        short dr_mod;
+        int dr_mod;
         int exp;
-        short extract_timer;
+        int extract_timer;
         CHAR_DATA *fighting;
         AFFECT_DATA *first_affect;
         OBJ_DATA *first_carry;
         AFFECT_DATA *first_saved_aff;
         MAGIC_SHIELD *first_shield;
         int hit;
-        short hitroll;
-        short hr_mod;
+        int hitroll;
+        int hr_mod;
         CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
         int hunt_flags;   /* Action flags         */
         CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
@@ -591,7 +592,7 @@ class char_data
         AFFECT_DATA *last_saved_aff;
         MAGIC_SHIELD *last_shield;
         CHAR_DATA *leader;
-        short level;  /* For m/c this = max of levels */
+        int level;  /* For m/c this = max of levels */
         time_t logon;
         string long_descr;
         string long_descr_orig;
@@ -608,49 +609,49 @@ class char_data
         CHAR_DATA *next_in_room;
         NPC_GROUP_DATA *ngroup;
         bool npc; /* For NPC's, no more flag */
-        short num_followers;
+        int num_followers;
         CHAR_DATA *old_body; /* = descriptor->original */
         string old_prompt; /* used to hold prompt when writing */
         PC_DATA *pcdata;
         MOB_INDEX_DATA *pIndexData;
         int played;
         int poly_level;
-        short position;
+        int position;
         CHAR_DATA *prev_in_room;
         string prompt;
-        short p_class;
-        short race;
+        int p_class;
+        int race;
         int race_mods;
         CHAR_DATA *reply;
         RESET_DATA *reset;
         int resist;
         CHAR_DATA *rider;
         CHAR_DATA *riding;
-        short saving_throw;
+        int saving_throw;
         string searching; /* For NPCs hunting continuously */
-        short sex;
+        int sex;
         string short_descr;
         OBJ_DATA *sitting;   /* What they're resting or sleeping on */
         int skills;
         SPEC_FUN *spec_fun;
         float speed[MAX_SPEED];
         int stance;
-        short stance_ac_mod;
-        short stance_dr_mod;
-        short stance_hr_mod;
+        int stance_ac_mod;
+        int stance_dr_mod;
+        int stance_hr_mod;
         bool stop_fighting;
         int strong_magic;
-        short stun_timer;
+        int stun_timer;
         int suscept;
         bool switched; /* = not isnull(descriptor->original) */
         string target;  /* For Hunting and ACT_REMEMBER */
-        short timer;
-        short trust;
+        int timer;
+        int trust;
         bool using_named_door;
-        short wait;
+        int wait;
         ROOM_INDEX_DATA *was_in_room;
         int weak_magic;
-        short wimpy;
+        int wimpy;
         bool wizbit;
 };
 
@@ -668,7 +669,6 @@ class pc_data
         char *bamfin;
         char *bamfout;
         MONEY_TYPE *bank_money;
-        int build_vnum;
         short condition[MAX_COND];
         int color[MAX_COLOR];
         BRAND_DATA *current_brand;

@@ -91,9 +91,9 @@ void char_data::gain_exp( int gain )
     return;
 }
 
-short char_data::get_level( const char *what )
+int char_data::get_level( const char *what )
 {
-    short i = 0, max = 0;;
+    int i = 0, max = 0;;
 
     if ( what == '\0' )
         return level;

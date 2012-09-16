@@ -1069,26 +1069,26 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
         if ( ch->build_mode == BUILD_MODE_REDIT )
         {
             snprintf( msg, MSL, "Mode: Redit" );
-            if ( ch->pcdata->build_vnum < 1 )
+            if ( ch->build_vnum < 1 )
                 snprintf( msg2, MSL, "No vnum is set." );
             else
             {
-                room = get_room_index( ch->pcdata->build_vnum );
+                room = get_room_index( ch->build_vnum );
                 if ( room != NULL )
-                    snprintf( msg2, MSL, "[%5d]: %s", ch->pcdata->build_vnum, room->name );
+                    snprintf( msg2, MSL, "[%5d]: %s", ch->build_vnum, room->name );
             }
         }
 
         if ( ch->build_mode == BUILD_MODE_OEDIT )
         {
             snprintf( msg, MSL, "Mode: Oedit" );
-            if ( ch->pcdata->build_vnum < 1 )
+            if ( ch->build_vnum < 1 )
                 snprintf( msg2, MSL, "No vnum set." );
             else
             {
-                obj = get_obj_index( ch->pcdata->build_vnum );
+                obj = get_obj_index( ch->build_vnum );
                 if ( obj != NULL )
-                    snprintf( msg2, MSL, "[%5d]: %s", ch->pcdata->build_vnum, obj->short_descr );
+                    snprintf( msg2, MSL, "[%5d]: %s", ch->build_vnum, obj->short_descr );
             }
         }
 
@@ -1096,13 +1096,13 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
         if ( ch->build_mode == BUILD_MODE_MEDIT )
         {
             snprintf( msg, MSL, "Mode: Medit" );
-            if ( ch->pcdata->build_vnum < 1 )
+            if ( ch->build_vnum < 1 )
                 snprintf( msg2, MSL, "No vnum set." );
             else
             {
-                mob = get_mob_index( ch->pcdata->build_vnum );
+                mob = get_mob_index( ch->build_vnum );
                 if ( mob != NULL )
-                    snprintf( msg2, MSL, "[%5d]: %s", ch->pcdata->build_vnum, CSTR( mob->short_descr ) );
+                    snprintf( msg2, MSL, "[%5d]: %s", ch->build_vnum, CSTR( mob->short_descr ) );
             }
         }
         snprintf( msg3, MSL, "< %s %s >", msg, msg2 );
