@@ -1636,7 +1636,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
         {
             char_to_room(ch, ch->was_in_room);
             ch->act.set(ACT_GHOST);
-            ch->pcdata->death_cnt = number_range(3, 5);
+            ch->death_cnt = number_range(3, 5);
             send_to_char("Your spirit rises up from your fallen body!\r\n", ch);
             act("$n's spirit rises up from $s fallen body!", ch, NULL, NULL, TO_ROOM);
         }

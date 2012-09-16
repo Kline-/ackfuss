@@ -568,6 +568,7 @@ class char_data
         int damroll;
         int def;
         bitset<MAX_BITSET> deaf;
+        int death_cnt;
         DESCRIPTOR_DATA *desc;
         string description;
         int dr_mod;
@@ -672,7 +673,6 @@ class pc_data
         char *bamfout;
         MONEY_TYPE *bank_money;
         BRAND_DATA *current_brand;
-        short death_cnt;
         char dimcol;
         EMAIL_DATA *email;
         short failures;  /* Failed logins */

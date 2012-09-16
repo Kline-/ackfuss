@@ -1320,9 +1320,9 @@ void char_update( void )
 
         if ( !IS_NPC(ch) && IS_GHOST(ch) )
         {
-            if ( ch->pcdata->death_cnt > 0 )
-                ch->pcdata->death_cnt--;
-            if ( ch->pcdata->death_cnt == 0 )
+            if ( ch->death_cnt > 0 )
+                ch->death_cnt--;
+            if ( ch->death_cnt == 0 )
             {
                 char_from_room(ch);
                 char_to_room(ch, get_room_index(ROOM_VNUM_ALTAR));

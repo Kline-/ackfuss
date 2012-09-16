@@ -327,7 +327,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     else
     {
         fprintf( fp, "Practice       %d\n", ch->pcdata->practice );
-        fprintf( fp, "DeathCnt       %d\n", ch->pcdata->death_cnt );
+        fprintf( fp, "DeathCnt       %d\n", ch->death_cnt );
         fprintf( fp, "Order          %d %d %d %d %d\n",
                  ch->pcdata->order[0], ch->pcdata->order[1], ch->pcdata->order[2],
                  ch->pcdata->order[3], ch->pcdata->order[4] );
@@ -957,7 +957,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 }
 
                 if ( !IS_NPC(ch) )
-                    KEY("DeathCnt", ch->pcdata->death_cnt, fread_number(fp) );
+                    KEY("DeathCnt", ch->death_cnt, fread_number(fp) );
                 KEY( "Description", ch->description, fread_string( fp ) );
 
                 if ( !str_cmp( word, "DimCol" ) && !IS_NPC( ch ) )

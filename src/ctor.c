@@ -160,6 +160,7 @@ char_data::char_data()
         cooldown[i] = 0;
     damroll = 5;
     deaf.reset();
+    death_cnt = -1;
     def = 0;
     desc = NULL;
     description.clear();
@@ -534,7 +535,6 @@ pc_data::pc_data()
     bamfout = &str_empty[0];
     bank_money = new MONEY_TYPE;
     current_brand = NULL;
-    death_cnt = -1;
     dimcol = 'b';
     email = new EMAIL_DATA;
     failures = 0;
