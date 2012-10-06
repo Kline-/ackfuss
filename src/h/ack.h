@@ -617,6 +617,11 @@ class char_data
         CHAR_DATA *old_body; /* = descriptor->original */
         string old_prompt; /* used to hold prompt when writing */
         PC_DATA *pcdata;
+        int perm_con;
+        int perm_dex;
+        int perm_int;
+        int perm_str;
+        int perm_wis;
         MOB_INDEX_DATA *pIndexData;
         int played;
         int poly_level;
@@ -707,11 +712,6 @@ class pc_data
         short pagelen;
         char *pedit_state;
         char *pedit_string[MAX_PEDIT];
-        short perm_con;
-        short perm_dex;
-        short perm_int;
-        short perm_str;
-        short perm_wis;
         NOTE_DATA *pnote;
         short practice;
         char *pwd;

@@ -1647,7 +1647,7 @@ DO_FUN(do_train)
     int hp_gain = 0;
     int mana_gain = 0;
     int *pAbilityI = NULL;
-    short *pAbilityS = NULL; /* This is going to be ugly...But better on memory at least. --Kline */
+    int *pAbilityS = NULL; /* This is going to be ugly...But better on memory at least. --Kline */
     int pMax = 0;
     char *pOutput;
     int cost, cost1, cost2, cost3, cost4, cost5; /* Urrgghh */
@@ -1690,7 +1690,7 @@ DO_FUN(do_train)
     {
         if ( class_table[ch->p_class].attr_prime == APPLY_STR )
             cost = 3;
-        pAbilityS = &ch->pcdata->perm_str;
+        pAbilityS = &ch->perm_str;
         pMax = ch->pcdata->max_str;
         pOutput = "strength";
     }
@@ -1699,7 +1699,7 @@ DO_FUN(do_train)
     {
         if ( class_table[ch->p_class].attr_prime == APPLY_INT )
             cost = 3;
-        pAbilityS = &ch->pcdata->perm_int;
+        pAbilityS = &ch->perm_int;
         pMax = ch->pcdata->max_int;
         pOutput = "intelligence";
     }
@@ -1708,7 +1708,7 @@ DO_FUN(do_train)
     {
         if ( class_table[ch->p_class].attr_prime == APPLY_WIS )
             cost = 3;
-        pAbilityS = &ch->pcdata->perm_wis;
+        pAbilityS = &ch->perm_wis;
         pMax = ch->pcdata->max_wis;
         pOutput = "wisdom";
     }
@@ -1717,7 +1717,7 @@ DO_FUN(do_train)
     {
         if ( class_table[ch->p_class].attr_prime == APPLY_DEX )
             cost = 3;
-        pAbilityS = &ch->pcdata->perm_dex;
+        pAbilityS = &ch->perm_dex;
         pMax = ch->pcdata->max_dex;
         pOutput = "dexterity";
     }
@@ -1726,7 +1726,7 @@ DO_FUN(do_train)
     {
         if ( class_table[ch->p_class].attr_prime == APPLY_CON )
             cost = 3;
-        pAbilityS = &ch->pcdata->perm_con;
+        pAbilityS = &ch->perm_con;
         pMax = ch->pcdata->max_con;
         pOutput = "constitution";
     }
@@ -1772,31 +1772,31 @@ DO_FUN(do_train)
 
         strcpy( buf, "You can train: hp (4)  mana (5)" );
 
-        if ( ch->pcdata->perm_str < ch->pcdata->max_str )
+        if ( ch->perm_str < ch->pcdata->max_str )
         {
             strncat( buf, "  str", MSL );
             snprintf( buf2, MSL, " (%d)", cost1 );
             strncat( buf, buf2, MSL - 1 );
         }
-        if ( ch->pcdata->perm_int < ch->pcdata->max_int )
+        if ( ch->perm_int < ch->pcdata->max_int )
         {
             strncat( buf, "  int", MSL );
             snprintf( buf2, MSL, " (%d)", cost2 );
             strncat( buf, buf2, MSL - 1 );
         }
-        if ( ch->pcdata->perm_wis < ch->pcdata->max_wis )
+        if ( ch->perm_wis < ch->pcdata->max_wis )
         {
             strncat( buf, "  wis", MSL );
             snprintf( buf2, MSL, " (%d)", cost3 );
             strncat( buf, buf2, MSL - 1 );
         }
-        if ( ch->pcdata->perm_dex < ch->pcdata->max_dex )
+        if ( ch->perm_dex < ch->pcdata->max_dex )
         {
             strncat( buf, "  dex", MSL );
             snprintf( buf2, MSL, " (%d)", cost4 );
             strncat( buf, buf2, MSL - 1 );
         }
-        if ( ch->pcdata->perm_con < ch->pcdata->max_con )
+        if ( ch->perm_con < ch->pcdata->max_con )
         {
             strncat( buf, "  con", MSL );
             snprintf( buf2, MSL, " (%d)", cost5 );

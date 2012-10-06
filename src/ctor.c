@@ -212,6 +212,11 @@ char_data::char_data()
     old_body = NULL;
     old_prompt = &str_empty[0];
     pcdata = NULL;
+    perm_con = 13;
+    perm_dex = 13;
+    perm_int = 13;
+    perm_str = 13;
+    perm_wis = 13;
     pIndexData = NULL;
     played = 0;
     poly_level = 0;
@@ -574,11 +579,6 @@ pc_data::pc_data()
     pedit_state = &str_empty[0];
     for ( short i = 0; i < MAX_PEDIT; i++ )
         pedit_string[i] = &str_empty[0];
-    perm_con = 13;
-    perm_dex = 13;
-    perm_int = 13;
-    perm_str = 13;
-    perm_wis = 13;
     pnote = NULL;
     practice = 21;
     pwd = &str_empty[0];

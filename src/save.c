@@ -386,8 +386,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "\n" );
 
         fprintf( fp, "AttrPerm       %d %d %d %d %d\n",
-                 ch->pcdata->perm_str,
-                 ch->pcdata->perm_int, ch->pcdata->perm_wis, ch->pcdata->perm_dex, ch->pcdata->perm_con );
+                 ch->perm_str, ch->perm_int, ch->perm_wis, ch->perm_dex, ch->perm_con );
 
         fprintf( fp, "AttrMax        %d %d %d %d %d\n",
                  ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
@@ -877,11 +876,11 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
                     if ( !str_cmp( word, "AttrPerm" ) )
                     {
-                        ch->pcdata->perm_str = fread_number( fp );
-                        ch->pcdata->perm_int = fread_number( fp );
-                        ch->pcdata->perm_wis = fread_number( fp );
-                        ch->pcdata->perm_dex = fread_number( fp );
-                        ch->pcdata->perm_con = fread_number( fp );
+                        ch->perm_str = fread_number( fp );
+                        ch->perm_int = fread_number( fp );
+                        ch->perm_wis = fread_number( fp );
+                        ch->perm_dex = fread_number( fp );
+                        ch->perm_con = fread_number( fp );
                         fMatch = TRUE;
                         break;
                     }

@@ -848,7 +848,7 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         ch->pcdata->max_str++; /* Raise the actual cap */
-        ch->pcdata->perm_str++; /* Give them a free stat train */
+        ch->perm_str++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
         snprintf(buf, MSL, "You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_str, ch->pcdata->quest_points);
         send_to_char(buf, ch);
@@ -870,7 +870,7 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         ch->pcdata->max_int++; /* Raise the actual cap */
-        ch->pcdata->perm_int++; /* Give them a free stat train */
+        ch->perm_int++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
         snprintf(buf, MSL, "You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_int, ch->pcdata->quest_points);
         send_to_char(buf, ch);
@@ -892,7 +892,7 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         ch->pcdata->max_wis++; /* Raise the actual cap */
-        ch->pcdata->perm_wis++; /* Give them a free stat train */
+        ch->perm_wis++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
         snprintf(buf, MSL, "You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_wis, ch->pcdata->quest_points);
         send_to_char(buf, ch);
@@ -914,7 +914,7 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         ch->pcdata->max_dex++; /* Raise the actual cap */
-        ch->pcdata->perm_dex++; /* Give them a free stat train */
+        ch->perm_dex++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
         snprintf(buf, MSL, "You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_dex, ch->pcdata->quest_points);
         send_to_char(buf, ch);
@@ -936,7 +936,7 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         ch->pcdata->max_con++; /* Raise the actual cap */
-        ch->pcdata->perm_con++; /* Give them a free stat train */
+        ch->perm_con++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
         snprintf(buf, MSL, "You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_con, ch->pcdata->quest_points);
         send_to_char(buf, ch);

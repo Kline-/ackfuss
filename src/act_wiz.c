@@ -2763,7 +2763,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->pcdata->perm_str = value;
+        victim->perm_str = value;
         return;
     }
 
@@ -2784,7 +2784,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->pcdata->perm_int = value;
+        victim->perm_int = value;
         return;
     }
 
@@ -2805,7 +2805,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->pcdata->perm_wis = value;
+        victim->perm_wis = value;
         return;
     }
 
@@ -2826,7 +2826,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->pcdata->perm_dex = value;
+        victim->perm_dex = value;
         return;
     }
 
@@ -2847,7 +2847,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        victim->pcdata->perm_con = value;
+        victim->perm_con = value;
         return;
     }
 
