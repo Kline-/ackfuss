@@ -607,6 +607,11 @@ class char_data
         int max_hit;
         int max_mana;
         int max_move;
+        int mod_con;
+        int mod_dex;
+        int mod_int;
+        int mod_str;
+        int mod_wis;
         MONEY_TYPE *money;
         int move;
         string name;
@@ -700,11 +705,6 @@ class pc_data
         short max_str;
         short max_wis;
         char *message; /* helpedit file contents */
-        short mod_con;
-        short mod_dex;
-        short mod_int;
-        short mod_str;
-        short mod_wis;
         bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
         int move_from_gain;
         short movement; /* Quick movement */

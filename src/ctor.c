@@ -202,6 +202,11 @@ char_data::char_data()
     max_hit = 50;
     max_mana = 50;
     max_move = 50;
+    mod_con = 0;
+    mod_dex = 0;
+    mod_int = 0;
+    mod_str = 0;
+    mod_wis = 0;
     money = new MONEY_TYPE;
     move = 50;
     name = &str_empty[0];
@@ -565,11 +570,6 @@ pc_data::pc_data()
     max_str = 0;
     max_wis = 0;
     message = &str_empty[0];
-    mod_con = 0;
-    mod_dex = 0;
-    mod_int = 0;
-    mod_str = 0;
-    mod_wis = 0;
     monitor.reset();
     move_from_gain = -1;
     movement = 0;

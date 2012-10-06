@@ -204,7 +204,7 @@ int get_curr_str( CHAR_DATA * ch )
 
     max = ch->pcdata->max_str;
 
-    return URANGE( 3, ch->perm_str + ch->pcdata->mod_str, max );
+    return URANGE( 3, ch->perm_str + ch->mod_str, max );
 }
 
 
@@ -223,7 +223,7 @@ int get_curr_int( CHAR_DATA * ch )
 
     max = ch->pcdata->max_int;
 
-    return URANGE( 3, ch->perm_int + ch->pcdata->mod_int, max );
+    return URANGE( 3, ch->perm_int + ch->mod_int, max );
 }
 
 
@@ -242,7 +242,7 @@ int get_curr_wis( CHAR_DATA * ch )
 
     max = ch->pcdata->max_wis;
 
-    return URANGE( 3, ch->perm_wis + ch->pcdata->mod_wis, max );
+    return URANGE( 3, ch->perm_wis + ch->mod_wis, max );
 }
 
 
@@ -261,7 +261,7 @@ int get_curr_dex( CHAR_DATA * ch )
 
     max = ch->pcdata->max_dex;
 
-    return URANGE( 3, ch->perm_dex + ch->pcdata->mod_dex, max );
+    return URANGE( 3, ch->perm_dex + ch->mod_dex, max );
 }
 
 
@@ -280,7 +280,7 @@ int get_curr_con( CHAR_DATA * ch )
 
     max = ch->pcdata->max_con;
 
-    return URANGE( 3, ch->perm_con + ch->pcdata->mod_con, max );
+    return URANGE( 3, ch->perm_con + ch->mod_con, max );
 }
 
 
@@ -396,19 +396,19 @@ void affect_modify( CHAR_DATA * ch, AFFECT_DATA * paf, bool fAdd )
         case APPLY_NONE:
             break;
         case APPLY_STR:
-            ch->pcdata->mod_str += mod;
+            ch->mod_str += mod;
             break;
         case APPLY_DEX:
-            ch->pcdata->mod_dex += mod;
+            ch->mod_dex += mod;
             break;
         case APPLY_INT:
-            ch->pcdata->mod_int += mod;
+            ch->mod_int += mod;
             break;
         case APPLY_WIS:
-            ch->pcdata->mod_wis += mod;
+            ch->mod_wis += mod;
             break;
         case APPLY_CON:
-            ch->pcdata->mod_con += mod;
+            ch->mod_con += mod;
             break;
         case APPLY_SEX:
             ch->sex += mod;
