@@ -834,111 +834,111 @@ void do_statraise(CHAR_DATA *ch, char *argument)
     }
     if ( !str_prefix(argument, "str") ) /* Matches on 's', 'st', 'str' */
     {
-        if ( ch->pcdata->max_str >= statcap )
+        if ( ch->max_str >= statcap )
         {
             snprintf(buf, MSL, "You can not raise your Str any further. The limit is %d.\r\n", statcap);
             send_to_char(buf, ch);
             return;
         }
-        cost *= ch->pcdata->max_str; /* Take base cost (5) mult by current value */
+        cost *= ch->max_str; /* Take base cost (5) mult by current value */
         if ( ch->pcdata->quest_points < cost )
         {
             snprintf(buf, MSL, "It costs %d QP to raise your Str, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
             send_to_char(buf, ch);
             return;
         }
-        ch->pcdata->max_str++; /* Raise the actual cap */
+        ch->max_str++; /* Raise the actual cap */
         ch->perm_str++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_str, ch->pcdata->quest_points);
+        snprintf(buf, MSL, "You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_str, ch->pcdata->quest_points);
         send_to_char(buf, ch);
         return;
     }
     else if ( !str_prefix(argument, "int") ) /* Matches on 'i', 'in', 'int' */
     {
-        if ( ch->pcdata->max_int >= statcap )
+        if ( ch->max_int >= statcap )
         {
             snprintf(buf, MSL, "You can not raise your Int any further. The limit is %d.\r\n", statcap);
             send_to_char(buf, ch);
             return;
         }
-        cost *= ch->pcdata->max_int; /* Take base cost (5) mult by current value */
+        cost *= ch->max_int; /* Take base cost (5) mult by current value */
         if ( ch->pcdata->quest_points < cost )
         {
             snprintf(buf, MSL, "It costs %d QP to raise your Int, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
             send_to_char(buf, ch);
             return;
         }
-        ch->pcdata->max_int++; /* Raise the actual cap */
+        ch->max_int++; /* Raise the actual cap */
         ch->perm_int++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_int, ch->pcdata->quest_points);
+        snprintf(buf, MSL, "You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_int, ch->pcdata->quest_points);
         send_to_char(buf, ch);
         return;
     }
     else if ( !str_prefix(argument, "wis") ) /* Matches on 'w', 'wi', 'wis' */
     {
-        if ( ch->pcdata->max_wis >= statcap )
+        if ( ch->max_wis >= statcap )
         {
             snprintf(buf, MSL, "You can not raise your Wis any further. The limit is %d.\r\n", statcap);
             send_to_char(buf, ch);
             return;
         }
-        cost *= ch->pcdata->max_wis; /* Take base cost (5) mult by current value */
+        cost *= ch->max_wis; /* Take base cost (5) mult by current value */
         if ( ch->pcdata->quest_points < cost )
         {
             snprintf(buf, MSL, "It costs %d QP to raise your Wis, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
             send_to_char(buf, ch);
             return;
         }
-        ch->pcdata->max_wis++; /* Raise the actual cap */
+        ch->max_wis++; /* Raise the actual cap */
         ch->perm_wis++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_wis, ch->pcdata->quest_points);
+        snprintf(buf, MSL, "You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_wis, ch->pcdata->quest_points);
         send_to_char(buf, ch);
         return;
     }
     else if ( !str_prefix(argument, "dex") ) /* Matches on 'd', 'de', 'dex' */
     {
-        if ( ch->pcdata->max_dex >= statcap )
+        if ( ch->max_dex >= statcap )
         {
             snprintf(buf, MSL, "You can not raise your Dex any further. The limit is %d.\r\n", statcap);
             send_to_char(buf, ch);
             return;
         }
-        cost *= ch->pcdata->max_dex; /* Take base cost (5) mult by current value */
+        cost *= ch->max_dex; /* Take base cost (5) mult by current value */
         if ( ch->pcdata->quest_points < cost )
         {
             snprintf(buf, MSL, "It costs %d QP to raise your Dex, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
             send_to_char(buf, ch);
             return;
         }
-        ch->pcdata->max_dex++; /* Raise the actual cap */
+        ch->max_dex++; /* Raise the actual cap */
         ch->perm_dex++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_dex, ch->pcdata->quest_points);
+        snprintf(buf, MSL, "You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_dex, ch->pcdata->quest_points);
         send_to_char(buf, ch);
         return;
     }
     else if ( !str_prefix(argument, "con") ) /* Matches on 'c', 'co', 'con' */
     {
-        if ( ch->pcdata->max_con >= statcap )
+        if ( ch->max_con >= statcap )
         {
             snprintf(buf, MSL, "You can not raise your Con any further. The limit is %d.\r\n", statcap);
             send_to_char(buf, ch);
             return;
         }
-        cost *= ch->pcdata->max_con; /* Take base cost (5) mult by current value */
+        cost *= ch->max_con; /* Take base cost (5) mult by current value */
         if ( ch->pcdata->quest_points < cost )
         {
             snprintf(buf, MSL, "It costs %d QP to raise your Con, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
             send_to_char(buf, ch);
             return;
         }
-        ch->pcdata->max_con++; /* Raise the actual cap */
+        ch->max_con++; /* Raise the actual cap */
         ch->perm_con++; /* Give them a free stat train */
         ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\r\n", cost, ch->pcdata->max_con, ch->pcdata->quest_points);
+        snprintf(buf, MSL, "You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_con, ch->pcdata->quest_points);
         send_to_char(buf, ch);
         return;
     }

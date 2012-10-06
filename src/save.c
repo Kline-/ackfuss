@@ -389,7 +389,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
                  ch->perm_str, ch->perm_int, ch->perm_wis, ch->perm_dex, ch->perm_con );
 
         fprintf( fp, "AttrMax        %d %d %d %d %d\n",
-                 ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
+                 ch->max_str, ch->max_int, ch->max_wis, ch->max_dex, ch->max_con );
 
         fprintf( fp, "QuestAmount    " );
         for ( foo = 0; foo < QUEST_MAX_DATA; foo++ )
@@ -865,11 +865,11 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 {
                     if ( !str_cmp( word, "AttrMax" ) )
                     {
-                        ch->pcdata->max_str = fread_number( fp );
-                        ch->pcdata->max_int = fread_number( fp );
-                        ch->pcdata->max_wis = fread_number( fp );
-                        ch->pcdata->max_dex = fread_number( fp );
-                        ch->pcdata->max_con = fread_number( fp );
+                        ch->max_str = fread_number( fp );
+                        ch->max_int = fread_number( fp );
+                        ch->max_wis = fread_number( fp );
+                        ch->max_dex = fread_number( fp );
+                        ch->max_con = fread_number( fp );
                         fMatch = TRUE;
                         break;
                     }

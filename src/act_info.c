@@ -1338,10 +1338,11 @@ DO_FUN(do_score)
     {
         snprintf( buf, MSL,
                   "|   @@R[ @@WStr:@@y%2d/%2d  @@WInt:@@y%2d/%2d  @@WWis:@@y%2d/%2d  @@WDex:@@y%2d/%2d  @@WCon:@@y%2d/%2d @@R]   @@c|\r\n",
-                  get_curr_str( ch ), ch->pcdata->max_str,
-                  get_curr_int( ch ), ch->pcdata->max_int,
-                  get_curr_wis( ch ), ch->pcdata->max_wis,
-                  get_curr_dex( ch ), ch->pcdata->max_dex, get_curr_con( ch ), ch->pcdata->max_con );
+                  get_curr_str( ch ), ch->max_str,
+                  get_curr_int( ch ), ch->max_int,
+                  get_curr_wis( ch ), ch->max_wis,
+                  get_curr_dex( ch ), ch->max_dex,
+                  get_curr_con( ch ), ch->max_con );
         send_to_char( buf, ch );
     }
 

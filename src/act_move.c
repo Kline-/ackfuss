@@ -1691,7 +1691,7 @@ DO_FUN(do_train)
         if ( class_table[ch->p_class].attr_prime == APPLY_STR )
             cost = 3;
         pAbilityS = &ch->perm_str;
-        pMax = ch->pcdata->max_str;
+        pMax = ch->max_str;
         pOutput = "strength";
     }
 
@@ -1700,7 +1700,7 @@ DO_FUN(do_train)
         if ( class_table[ch->p_class].attr_prime == APPLY_INT )
             cost = 3;
         pAbilityS = &ch->perm_int;
-        pMax = ch->pcdata->max_int;
+        pMax = ch->max_int;
         pOutput = "intelligence";
     }
 
@@ -1709,7 +1709,7 @@ DO_FUN(do_train)
         if ( class_table[ch->p_class].attr_prime == APPLY_WIS )
             cost = 3;
         pAbilityS = &ch->perm_wis;
-        pMax = ch->pcdata->max_wis;
+        pMax = ch->max_wis;
         pOutput = "wisdom";
     }
 
@@ -1718,7 +1718,7 @@ DO_FUN(do_train)
         if ( class_table[ch->p_class].attr_prime == APPLY_DEX )
             cost = 3;
         pAbilityS = &ch->perm_dex;
-        pMax = ch->pcdata->max_dex;
+        pMax = ch->max_dex;
         pOutput = "dexterity";
     }
 
@@ -1727,7 +1727,7 @@ DO_FUN(do_train)
         if ( class_table[ch->p_class].attr_prime == APPLY_CON )
             cost = 3;
         pAbilityS = &ch->perm_con;
-        pMax = ch->pcdata->max_con;
+        pMax = ch->max_con;
         pOutput = "constitution";
     }
 
@@ -1772,31 +1772,31 @@ DO_FUN(do_train)
 
         strcpy( buf, "You can train: hp (4)  mana (5)" );
 
-        if ( ch->perm_str < ch->pcdata->max_str )
+        if ( ch->perm_str < ch->max_str )
         {
             strncat( buf, "  str", MSL );
             snprintf( buf2, MSL, " (%d)", cost1 );
             strncat( buf, buf2, MSL - 1 );
         }
-        if ( ch->perm_int < ch->pcdata->max_int )
+        if ( ch->perm_int < ch->max_int )
         {
             strncat( buf, "  int", MSL );
             snprintf( buf2, MSL, " (%d)", cost2 );
             strncat( buf, buf2, MSL - 1 );
         }
-        if ( ch->perm_wis < ch->pcdata->max_wis )
+        if ( ch->perm_wis < ch->max_wis )
         {
             strncat( buf, "  wis", MSL );
             snprintf( buf2, MSL, " (%d)", cost3 );
             strncat( buf, buf2, MSL - 1 );
         }
-        if ( ch->perm_dex < ch->pcdata->max_dex )
+        if ( ch->perm_dex < ch->max_dex )
         {
             strncat( buf, "  dex", MSL );
             snprintf( buf2, MSL, " (%d)", cost4 );
             strncat( buf, buf2, MSL - 1 );
         }
-        if ( ch->perm_con < ch->pcdata->max_con )
+        if ( ch->perm_con < ch->max_con )
         {
             strncat( buf, "  con", MSL );
             snprintf( buf2, MSL, " (%d)", cost5 );

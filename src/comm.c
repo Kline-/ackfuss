@@ -1846,9 +1846,9 @@ void show_stotal_to( DESCRIPTOR_DATA * d )
     char buf[MSL];
 
     snprintf( buf, MSL, "Str: [%d/%d]  Int: [%d/%d]  Wis: [%d/%d]  Dex: [%d/%d]  Con: [%d/%d]  Total: [%d/%d]",
-              ch->pcdata->max_str, race_table[ch->race].race_str, ch->pcdata->max_int, race_table[ch->race].race_int, ch->pcdata->max_wis,
-              race_table[ch->race].race_wis, ch->pcdata->max_dex, race_table[ch->race].race_dex, ch->pcdata->max_con, race_table[ch->race].race_con,
-              (ch->pcdata->max_str + ch->pcdata->max_int + ch->pcdata->max_wis + ch->pcdata->max_dex + ch->pcdata->max_con), MAX_TOT_STATS );
+              ch->max_str, race_table[ch->race].race_str, ch->max_int, race_table[ch->race].race_int, ch->max_wis,
+              race_table[ch->race].race_wis, ch->max_dex, race_table[ch->race].race_dex, ch->max_con, race_table[ch->race].race_con,
+              (ch->max_str + ch->max_int + ch->max_wis + ch->max_dex + ch->max_con), MAX_TOT_STATS );
 
     write_to_buffer(d, buf);
 
@@ -1876,7 +1876,7 @@ void show_menu_to( DESCRIPTOR_DATA * d )
     strncat( menu, "        3. Roll Attributes  Currently:", MSL );
     if ( IS_SET( d->check, CHECK_STATS ) )
         snprintf( buf, MSL, "\r\n        Str: [%d]  Int: [%d]  Wis: [%d]\r\n        Dex: [%d]  Con: [%d]\r\n",
-                  ch->pcdata->max_str, ch->pcdata->max_int, ch->pcdata->max_wis, ch->pcdata->max_dex, ch->pcdata->max_con );
+                  ch->max_str, ch->max_int, ch->max_wis, ch->max_dex, ch->max_con );
     else
         snprintf( buf, MSL, "Not Set\r\n" );
 
@@ -1981,11 +1981,11 @@ void show_amenu_to( DESCRIPTOR_DATA * d )
         return;
     }
 
-    ch->pcdata->max_str = number_range(3, (race_table[ch->race].race_str - 5));
-    ch->pcdata->max_int = number_range(3, (race_table[ch->race].race_int - 5));
-    ch->pcdata->max_wis = number_range(3, (race_table[ch->race].race_wis - 5));
-    ch->pcdata->max_dex = number_range(3, (race_table[ch->race].race_dex - 5));
-    ch->pcdata->max_con = number_range(3, (race_table[ch->race].race_con - 5));
+    ch->max_str = number_range(3, (race_table[ch->race].race_str - 5));
+    ch->max_int = number_range(3, (race_table[ch->race].race_int - 5));
+    ch->max_wis = number_range(3, (race_table[ch->race].race_wis - 5));
+    ch->max_dex = number_range(3, (race_table[ch->race].race_dex - 5));
+    ch->max_con = number_range(3, (race_table[ch->race].race_con - 5));
 
     snprintf( menu, MSL, "\r\nCharacter Creation: Attributes.\r\n\r\n" );
     strncat( menu, "There is no way to increase your MAX attributes, so choose wisely!\r\n", MSL );
@@ -2467,7 +2467,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
     if ( d->connected == CON_GET_STATS )
     {
-        int total = (ch->pcdata->max_str + ch->pcdata->max_int + ch->pcdata->max_wis + ch->pcdata->max_dex + ch->pcdata->max_con);
+        int total = (ch->max_str + ch->max_int + ch->max_wis + ch->max_dex + ch->max_con);
 
         switch ( argument[0] )
         {
@@ -2475,51 +2475,51 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                 argument++;
                 if ( !str_prefix(argument, "str") )
                 {
-                    if ( ch->pcdata->max_str <= 3 )
+                    if ( ch->max_str <= 3 )
                         write_to_buffer(d, "You must have at least 3 Str.");
                     else
                     {
-                        ch->pcdata->max_str--;
+                        ch->max_str--;
                         show_stotal_to(d);
                     }
                 }
                 if ( !str_prefix(argument, "int") )
                 {
-                    if ( ch->pcdata->max_int <= 3 )
+                    if ( ch->max_int <= 3 )
                         write_to_buffer(d, "You must have at least 3 Int.");
                     else
                     {
-                        ch->pcdata->max_int--;
+                        ch->max_int--;
                         show_stotal_to(d);
                     }
                 }
                 if ( !str_prefix(argument, "wis") )
                 {
-                    if ( ch->pcdata->max_wis <= 3 )
+                    if ( ch->max_wis <= 3 )
                         write_to_buffer(d, "You must have at least 3 Wis.");
                     else
                     {
-                        ch->pcdata->max_wis--;
+                        ch->max_wis--;
                         show_stotal_to(d);
                     }
                 }
                 if ( !str_prefix(argument, "dex") )
                 {
-                    if ( ch->pcdata->max_dex <= 3 )
+                    if ( ch->max_dex <= 3 )
                         write_to_buffer(d, "You must have at least 3 Dex.");
                     else
                     {
-                        ch->pcdata->max_dex--;
+                        ch->max_dex--;
                         show_stotal_to(d);
                     }
                 }
                 if ( !str_prefix(argument, "con") )
                 {
-                    if ( ch->pcdata->max_con <= 3 )
+                    if ( ch->max_con <= 3 )
                         write_to_buffer(d, "You must have at least 3 Con.");
                     else
                     {
-                        ch->pcdata->max_con--;
+                        ch->max_con--;
                         show_stotal_to(d);
                     }
                 }
@@ -2528,7 +2528,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                 argument++;
                 if ( !str_prefix(argument, "str") )
                 {
-                    if ( ch->pcdata->max_str >= race_table[ch->race].race_str )
+                    if ( ch->max_str >= race_table[ch->race].race_str )
                         write_to_buffer(d, "Your Str is already at max.");
                     else if ( total >= MAX_TOT_STATS )
                     {
@@ -2537,13 +2537,13 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     }
                     else
                     {
-                        ch->pcdata->max_str++;
+                        ch->max_str++;
                         show_stotal_to(d);
                     }
                 }
                 if ( !str_prefix(argument, "int") )
                 {
-                    if ( ch->pcdata->max_int >= race_table[ch->race].race_int )
+                    if ( ch->max_int >= race_table[ch->race].race_int )
                         write_to_buffer(d, "Your Int is already at max.");
                     else if ( total >= MAX_TOT_STATS )
                     {
@@ -2552,13 +2552,13 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     }
                     else
                     {
-                        ch->pcdata->max_int++;
+                        ch->max_int++;
                         show_stotal_to(d);
                     }
                 }
                 if ( !str_prefix(argument, "wis") )
                 {
-                    if ( ch->pcdata->max_wis >= race_table[ch->race].race_wis )
+                    if ( ch->max_wis >= race_table[ch->race].race_wis )
                         write_to_buffer(d, "Your Wis is already at max.");
                     else if ( total >= MAX_TOT_STATS )
                     {
@@ -2567,13 +2567,13 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     }
                     else
                     {
-                        ch->pcdata->max_wis++;
+                        ch->max_wis++;
                         show_stotal_to(d);
                     }
                 }
                 if ( !str_prefix(argument, "dex") )
                 {
-                    if ( ch->pcdata->max_dex >= race_table[ch->race].race_dex )
+                    if ( ch->max_dex >= race_table[ch->race].race_dex )
                         write_to_buffer(d, "Your Dex is already at max.");
                     else if ( total >= MAX_TOT_STATS )
                     {
@@ -2582,13 +2582,13 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     }
                     else
                     {
-                        ch->pcdata->max_dex++;
+                        ch->max_dex++;
                         show_stotal_to(d);
                     }
                 }
                 if ( !str_prefix(argument, "con") )
                 {
-                    if ( ch->pcdata->max_con >= race_table[ch->race].race_con )
+                    if ( ch->max_con >= race_table[ch->race].race_con )
                         write_to_buffer(d, "Your Con is already at max.");
                     else if ( total >= MAX_TOT_STATS )
                     {
@@ -2597,7 +2597,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     }
                     else
                     {
-                        ch->pcdata->max_con++;
+                        ch->max_con++;
                         show_stotal_to(d);
                     }
                 }
@@ -2790,19 +2790,19 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             switch ( class_table[ch->p_class].attr_prime )
             {
                 case APPLY_STR:
-                    ch->pcdata->max_str++;
+                    ch->max_str++;
                     break;
                 case APPLY_INT:
-                    ch->pcdata->max_int++;
+                    ch->max_int++;
                     break;
                 case APPLY_WIS:
-                    ch->pcdata->max_wis++;
+                    ch->max_wis++;
                     break;
                 case APPLY_DEX:
-                    ch->pcdata->max_dex++;
+                    ch->max_dex++;
                     break;
                 case APPLY_CON:
-                    ch->pcdata->max_con++;
+                    ch->max_con++;
                     break;
             }
 

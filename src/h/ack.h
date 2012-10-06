@@ -607,6 +607,11 @@ class char_data
         int max_hit;
         int max_mana;
         int max_move;
+        int max_con;
+        int max_dex;
+        int max_int;
+        int max_str;
+        int max_wis;
         int mod_con;
         int mod_dex;
         int mod_int;
@@ -699,11 +704,6 @@ class pc_data
         char *load_msg;
         short login_sex;
         int mana_from_gain;  /* saves non-item oriented mana total */
-        short max_con;
-        short max_dex;
-        short max_int;
-        short max_str;
-        short max_wis;
         char *message; /* helpedit file contents */
         bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
         int move_from_gain;

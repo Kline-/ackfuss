@@ -72,12 +72,12 @@ void reset_gain_stats( CHAR_DATA * ch )
         if ( ch->lvl[index] > 0 )
             for ( index2 = 1; index2 <= ch->lvl[index]; index2++ )
             {
-                add_hp = con_app[ch->pcdata->max_con].hitp + number_range( class_table[index].hp_min,
+                add_hp = con_app[ch->max_con].hitp + number_range( class_table[index].hp_min,
                          class_table[index].hp_max );
 
                 add_mana = class_table[index2].fMana
-                           ? number_range( 2, ( 2 * ch->pcdata->max_int + ch->pcdata->max_wis ) / 16 ) : 0;
-                add_move = number_range( 2, ( ch->pcdata->max_con + ch->pcdata->max_dex ) / 5 );
+                           ? number_range( 2, ( 2 * ch->max_int + ch->max_wis ) / 16 ) : 0;
+                add_move = number_range( 2, ( ch->max_con + ch->max_dex ) / 5 );
                 add_hp = UMAX( 1, add_hp );
                 add_mana = UMAX( 0, add_mana );
                 add_move = UMAX( 7, add_move );
@@ -90,11 +90,11 @@ void reset_gain_stats( CHAR_DATA * ch )
         if ( ch->lvl2[index] > 0 )
             for ( index2 = 1; index2 <= ch->lvl2[index]; index2++ )
             {
-                add_hp = con_app[ch->pcdata->max_con].hitp + number_range( remort_table[index].hp_min,
+                add_hp = con_app[ch->max_con].hitp + number_range( remort_table[index].hp_min,
                          remort_table[index].hp_max );
                 add_mana = remort_table[index].fMana
-                           ? number_range( 2, ( 2 * ch->pcdata->max_int + ch->pcdata->max_wis ) / 16 ) : 0;
-                add_move = number_range( 2, ( ch->pcdata->max_con + ch->pcdata->max_dex ) / 5 );
+                           ? number_range( 2, ( 2 * ch->max_int + ch->max_wis ) / 16 ) : 0;
+                add_move = number_range( 2, ( ch->max_con + ch->max_dex ) / 5 );
                 add_hp = UMAX( 1, add_hp );
                 add_mana = UMAX( 0, add_mana );
                 add_move = UMAX( 7, add_move );
@@ -112,8 +112,8 @@ void reset_gain_stats( CHAR_DATA * ch )
         for ( index2 = 1; index2 <= ch->get_level("adept"); index2++ )
         {
 
-            add_hp = con_app[ch->pcdata->max_con].hitp + number_range( 10, 50 );
-            add_mana = number_range( 10, ( 3 * ch->pcdata->max_int + ch->pcdata->max_wis ) / 4 );
+            add_hp = con_app[ch->max_con].hitp + number_range( 10, 50 );
+            add_mana = number_range( 10, ( 3 * ch->max_int + ch->max_wis ) / 4 );
             add_hp = UMAX( 1, add_hp );
             add_mana = UMAX( 0, add_mana );
 

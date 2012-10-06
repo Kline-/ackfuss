@@ -202,7 +202,7 @@ int get_curr_str( CHAR_DATA * ch )
         return ( 13 + ( ch->level / 16 ) );
     }
 
-    max = ch->pcdata->max_str;
+    max = ch->max_str;
 
     return URANGE( 3, ch->perm_str + ch->mod_str, max );
 }
@@ -221,7 +221,7 @@ int get_curr_int( CHAR_DATA * ch )
         return ( 15 + number_fuzzy( ( ch->level / 20 ) ) );
     }
 
-    max = ch->pcdata->max_int;
+    max = ch->max_int;
 
     return URANGE( 3, ch->perm_int + ch->mod_int, max );
 }
@@ -240,7 +240,7 @@ int get_curr_wis( CHAR_DATA * ch )
         return ( 15 + number_fuzzy( ( ch->level / 20 ) ) );
     }
 
-    max = ch->pcdata->max_wis;
+    max = ch->max_wis;
 
     return URANGE( 3, ch->perm_wis + ch->mod_wis, max );
 }
@@ -259,7 +259,7 @@ int get_curr_dex( CHAR_DATA * ch )
         return ( 16 + number_fuzzy( ( ch->level / 25 ) ) );
     }
 
-    max = ch->pcdata->max_dex;
+    max = ch->max_dex;
 
     return URANGE( 3, ch->perm_dex + ch->mod_dex, max );
 }
@@ -278,7 +278,7 @@ int get_curr_con( CHAR_DATA * ch )
         return ( 15 + number_fuzzy( ( ch->level / 12 ) ) );
     }
 
-    max = ch->pcdata->max_con;
+    max = ch->max_con;
 
     return URANGE( 3, ch->perm_con + ch->mod_con, max );
 }

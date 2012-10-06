@@ -947,10 +947,11 @@ DO_FUN(do_mstat)
     else
     {
         snprintf( buf, MSL, "Str:%d/%d  Int:%d/%d  Wis:%d/%d  Dex:%d/%d Con:%d/%d.\r\n",
-                  get_curr_str( victim ), victim->pcdata->max_str,
-                  get_curr_int( victim ), victim->pcdata->max_int,
-                  get_curr_wis( victim ), victim->pcdata->max_wis,
-                  get_curr_dex( victim ), victim->pcdata->max_dex, get_curr_con( victim ), victim->pcdata->max_con );
+                  get_curr_str( victim ), victim->max_str,
+                  get_curr_int( victim ), victim->max_int,
+                  get_curr_wis( victim ), victim->max_wis,
+                  get_curr_dex( victim ), victim->max_dex,
+                  get_curr_con( victim ), victim->max_con );
         strncat( buf1, buf, MSL - 1 );
     }
 
@@ -2754,7 +2755,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        max = victim->pcdata->max_str;
+        max = victim->max_str;
 
         if ( value < 3 || value > max )
         {
@@ -2775,7 +2776,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        max = victim->pcdata->max_int;
+        max = victim->max_int;
 
         if ( value < 3 || value > max )
         {
@@ -2796,7 +2797,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        max = victim->pcdata->max_wis;
+        max = victim->max_wis;
 
         if ( value < 3 || value > max )
         {
@@ -2817,7 +2818,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        max = victim->pcdata->max_dex;
+        max = victim->max_dex;
 
         if ( value < 3 || value > max )
         {
@@ -2838,7 +2839,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        max = victim->pcdata->max_con;
+        max = victim->max_con;
 
         if ( value < 3 || value > max )
         {
