@@ -4234,8 +4234,7 @@ DO_FUN(do_gain)
         ch->adept_level = UMAX( 1, ch->adept_level + 1 );
         snprintf( buf, MSL, "%s @@W advances in the way of the Adept!!\r\n", ch->name.c_str() );
         info( buf, 1 );
-        free_string( ch->pcdata->who_name );
-        ch->pcdata->who_name = str_dup( ch->get_whoname() );
+        ch->who_name = ch->get_whoname();
         do_save( ch, "auto" );
         if ( ch->get_level("adept") == 1 )
             ch->exp /= 1000;
@@ -4805,7 +4804,7 @@ DO_FUN(do_whois)
     snprintf( buf, MSL, "-=-=-=-=-=-=-=-=-=-=- %9s -=-=-=-=-=-=-=-=-=-=-\r\n", victim->name.c_str() );
     if ( IS_IMMORTAL( victim ) )
     {
-        snprintf( buf + strlen( buf ), MSL, " [ %3s ]\r\n", victim->pcdata->who_name );
+        snprintf( buf + strlen( buf ), MSL, " [ %3s ]\r\n", CSTR( victim->who_name ) );
     }
     else if ( IS_ADEPT(victim) )
     {

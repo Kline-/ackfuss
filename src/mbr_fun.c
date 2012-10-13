@@ -211,8 +211,8 @@ const char *char_data::get_whoname( )
 
     if ( IS_IMMORTAL(this) )
     {
-        if ( strcmp(pcdata->who_name,"off") )
-            return pcdata->who_name;
+        if ( !who_name.empty() )
+            return CSTR( who_name );
 
         switch ( get_level() )
         {
@@ -226,8 +226,8 @@ const char *char_data::get_whoname( )
 
     if ( IS_ADEPT(this) )
     {
-        if ( strcmp(pcdata->who_name,"off") )
-            return pcdata->who_name;
+        if ( !who_name.empty() )
+            return CSTR( who_name );
 
         switch ( get_level("adept") )
         {

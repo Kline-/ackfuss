@@ -272,7 +272,6 @@ pc_data::~pc_data()
     free_string(title);
     for ( short i = 0; i < MAX_HOSTS; i++ )
         free_string(whitelist[i]);
-    free_string(who_name);
 }
 
 quest_info::~quest_info()

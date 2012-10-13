@@ -4785,8 +4785,7 @@ DO_FUN(do_whoname)
 
     if ( !str_cmp( argument, "off" ) )
     {
-        free_string( victim->pcdata->who_name );
-        victim->pcdata->who_name = str_dup( "off" );
+        victim->who_name = &str_empty[0];
         send_to_char( "Who name set to default value.\r\n", ch );
         return;
     }
@@ -4825,8 +4824,7 @@ DO_FUN(do_whoname)
         snprintf( argument, MSL, "%s", foo );
     }
 
-    free_string( victim->pcdata->who_name );
-    victim->pcdata->who_name = str_dup( argument );
+    victim->who_name = argument;
     send_to_char( "Ok, done.\r\n", ch );
     return;
 }

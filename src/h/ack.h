@@ -670,6 +670,7 @@ class char_data
         int wait;
         ROOM_INDEX_DATA *was_in_room;
         int weak_magic;
+        string who_name;   /* To show on who name */
         int wimpy;
         bool wizbit;
 };
@@ -730,7 +731,6 @@ class pc_data
         short term_rows;
         char *title;
         char *whitelist[MAX_HOSTS]; /* Used to restrict login domains */
-        char *who_name;   /* To show on who name */
 };
 
 struct liq_type

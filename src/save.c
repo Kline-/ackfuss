@@ -341,7 +341,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         /*
          * We add a '*' to preserve leading spaces... strip * on load
          */
-        fprintf( fp, "Whoname        *%s~\n", ch->pcdata->who_name );
+        fprintf( fp, "Whoname        *%s~\n", CSTR( ch->who_name ) );
         fprintf( fp, "Host           ");
         for ( cnt = 0; cnt < MAX_HOSTS; cnt++ )
             fprintf(fp, "%s~", ch->pcdata->host[cnt]);
@@ -1352,15 +1352,9 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 KEY( "Wizbit", ch->wizbit, fread_number( fp ) );
                 if ( !str_cmp( word, "Whoname" ) && !IS_NPC( ch ) )
                 {
-                    char buf[MSL];
 
-                    if ( ch->pcdata->who_name != NULL )
-                        free_string( ch->pcdata->who_name );
-                    ch->pcdata->who_name = fread_string( fp );
-                    snprintf( buf, MSL, "%s", ch->pcdata->who_name + 1 );
-
-                    free_string( ch->pcdata->who_name );
-                    ch->pcdata->who_name = str_dup( buf );
+                    ch->who_name = fread_string( fp );
+                    ch->who_name.erase( 0, 1 ); // Strip leading *
                     fMatch = TRUE;
                     break;
                 }

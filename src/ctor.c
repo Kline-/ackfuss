@@ -265,6 +265,7 @@ char_data::char_data()
     wait = 0;
     was_in_room = NULL;
     weak_magic = 0;
+    who_name = &str_empty[0];
     wimpy = 0;
     wizbit = false;
 
@@ -598,7 +599,6 @@ pc_data::pc_data()
     title = &str_empty[0];
     for ( short i = 0; i < MAX_HOSTS; i++ )
         whitelist[i] = &str_empty[0];
-    who_name = str_dup("off");
 }
 
 quest_info::quest_info()
