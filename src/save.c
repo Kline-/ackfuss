@@ -337,7 +337,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "Bamfout        %s~\n", ch->pcdata->bamfout );
         fprintf( fp, "Roomenter      %s~\n", ch->pcdata->room_enter );
         fprintf( fp, "Roomexit       %s~\n", ch->pcdata->room_exit );
-        fprintf( fp, "Title          %s~\n", ch->pcdata->title );
+        fprintf( fp, "Title          %s~\n", CSTR( ch->title ) );
         /*
          * We add a '*' to preserve leading spaces... strip * on load
          */
@@ -1321,7 +1321,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 {
                     KEY( "TermRows", ch->pcdata->term_rows, fread_number( fp ) );
                     KEY( "TermColumns", ch->pcdata->term_columns, fread_number( fp ) );
-                    SKEY( "Title", ch->pcdata->title, fread_string( fp ) );
+                    KEY( "Title", ch->title, fread_string( fp ) );
                 }
                 break;
 

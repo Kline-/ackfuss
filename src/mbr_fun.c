@@ -194,10 +194,7 @@ const char *char_data::get_name( CHAR_DATA *looker )
 
 const char *char_data::get_title( )
 {
-    if ( IS_NPC(this) )
-        return "";
-    else
-        return pcdata->title;
+        return CSTR( title );
 }
 
 const char *char_data::get_whoname( )
@@ -397,11 +394,7 @@ void char_data::set_cooldown( int pos, float duration )
 
 void char_data::set_title( const char *title )
 {
-    if ( IS_NPC(this) )
-        return;
-
-    free_string(pcdata->title);
-    pcdata->title = str_dup(title);
+    title = title;
 
     return;
 }

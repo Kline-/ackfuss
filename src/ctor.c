@@ -260,6 +260,7 @@ char_data::char_data()
     suscept = 0;
     switched = false;
     timer = 0;
+    title = &str_empty[0];
     trust = 0;
     using_named_door = false;
     wait = 0;
@@ -596,7 +597,6 @@ pc_data::pc_data()
     super = new SUPER_DATA;
     term_columns = 80;
     term_rows = 25;
-    title = &str_empty[0];
     for ( short i = 0; i < MAX_HOSTS; i++ )
         whitelist[i] = &str_empty[0];
 }

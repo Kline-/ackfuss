@@ -665,6 +665,7 @@ class char_data
         bool switched; /* = not isnull(descriptor->original) */
         string target;  /* For Hunting and ACT_REMEMBER */
         int timer;
+        string title;
         int trust;
         bool using_named_door;
         int wait;
@@ -729,7 +730,6 @@ class pc_data
         SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
         short term_columns;
         short term_rows;
-        char *title;
         char *whitelist[MAX_HOSTS]; /* Used to restrict login domains */
 };
 
