@@ -828,7 +828,7 @@ DO_FUN(do_look)
             if ( arg1[0] == '\0' || ( is_switched(ch) || ( !IS_NPC( ch ) && !ch->act.test(ACT_BRIEF) ) ) )
             {
                 char *string_format( char *str, int *numlines, int width, int height, bool unjust );
-                int wid = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );
+                int wid = ( IS_NPC( ch ) ? 80 : ch->term_col );
 
                 snprintf( out, MSL, "%s%s%s\r\n", color_string( ch, "rooms" ),
                           string_format( tagline_format(ch->in_room->description, ch), NULL, wid, 10000,
@@ -3108,7 +3108,7 @@ DO_FUN(do_config)
         send_to_char( !ch->act.test(ACT_NO_EMOTE) ? "" : "@@d[@@c-emote    @@d]@@c You can't emote.@@N\r\n", ch );
 
         send_to_char( !ch->act.test(ACT_NO_TELL) ? "" : "@@d[@@c-tell     @@d]@@c You can't use 'tell'.@@N\r\n", ch );
-        snprintf( buf, MSL, "Terminal set to:  %i Rows, %i Columns.\r\n", ch->pcdata->term_rows, ch->pcdata->term_columns );
+        snprintf( buf, MSL, "Terminal set to:  %i Rows, %i Columns.\r\n", ch->term_row, ch->term_col );
         send_to_char( buf, ch );
     }
     else
@@ -3137,7 +3137,7 @@ DO_FUN(do_config)
                 send_to_char( "That is not a number.\r\n", ch );
                 return;
             }
-            ch->pcdata->term_rows = URANGE( 10, atoi( arg1 ), 80 );
+            ch->term_row = URANGE( 10, atoi( arg1 ), 80 );
             return;
         }
         if ( bit == 0 )
@@ -3154,7 +3154,7 @@ DO_FUN(do_config)
             {
                 char scrollbuf[MSL];
                 snprintf( scrollbuf, MSL, "%s%s%s%i;%ir%s%i;%iH",
-                          CRS_RESET, CRS_CLS, CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13, 0 );
+                          CRS_RESET, CRS_CLS, CRS_CMD, 0, ch->term_row - 12, CRS_CMD, ch->term_row - 13, 0 );
                 send_to_char( scrollbuf, ch );
             }
         }

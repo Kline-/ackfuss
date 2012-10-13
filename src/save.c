@@ -354,8 +354,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "LastLogin      %s~\n", time_buf );
         fprintf( fp, "HiCol          %c~\n", ch->pcdata->hicol );
         fprintf( fp, "DimCol         %c~\n", ch->pcdata->dimcol );
-        fprintf( fp, "TermRows       %i\n", ch->pcdata->term_rows );
-        fprintf( fp, "TermColumns    %i\n", ch->pcdata->term_columns );
+        fprintf( fp, "TermRows       %d\n", ch->term_row );
+        fprintf( fp, "TermColumns    %d\n", ch->term_col );
         fprintf( fp, "Email          %s~\n", ch->pcdata->email->address.c_str() );
         fprintf( fp, "EmailCode      %s~\n", ch->pcdata->email->confirmation_code.c_str() );
 
@@ -1319,8 +1319,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 KEY( "Trust", ch->trust, fread_number( fp ) );
                 if ( !IS_NPC( ch ) )
                 {
-                    KEY( "TermRows", ch->pcdata->term_rows, fread_number( fp ) );
-                    KEY( "TermColumns", ch->pcdata->term_columns, fread_number( fp ) );
+                    KEY( "TermRows", ch->term_row, fread_number( fp ) );
+                    KEY( "TermColumns", ch->term_col, fread_number( fp ) );
                     KEY( "Title", ch->title, fread_string( fp ) );
                 }
                 break;

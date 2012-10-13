@@ -259,6 +259,8 @@ char_data::char_data()
     stun_timer = 0;
     suscept = 0;
     switched = false;
+    term_col = 80;
+    term_row = 25;
     timer = 0;
     title = &str_empty[0];
     trust = 0;
@@ -595,8 +597,6 @@ pc_data::pc_data()
     save_time = 0;
     sentence = 0;
     super = new SUPER_DATA;
-    term_columns = 80;
-    term_rows = 25;
     for ( short i = 0; i < MAX_HOSTS; i++ )
         whitelist[i] = &str_empty[0];
 }

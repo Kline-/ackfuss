@@ -664,6 +664,8 @@ class char_data
         int suscept;
         bool switched; /* = not isnull(descriptor->original) */
         string target;  /* For Hunting and ACT_REMEMBER */
+        int term_col;
+        int term_row;
         int timer;
         string title;
         int trust;
@@ -728,8 +730,6 @@ class pc_data
         time_t save_time;
         short sentence;
         SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
-        short term_columns;
-        short term_rows;
         char *whitelist[MAX_HOSTS]; /* Used to restrict login domains */
 };
 

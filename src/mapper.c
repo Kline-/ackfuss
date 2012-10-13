@@ -521,7 +521,7 @@ char *exit_string( CHAR_DATA * ch, ROOM_INDEX_DATA * r )
 
 void disp_map( char *border, char *pmap, CHAR_DATA * ch )
 {
-    int cols = ( IS_NPC( ch ) ? 80 : ch->pcdata->term_columns );
+    int cols = ( IS_NPC( ch ) ? 80 : ch->term_col );
     int rows = ( IS_NPC( ch ) || !ch->act.test(ACT_FULL_ANSI ) ? 9999 : 10 );
     char bufs[MAP_Y][MSL];
     char disp[MSL];
@@ -545,7 +545,7 @@ void disp_map( char *border, char *pmap, CHAR_DATA * ch )
         snprintf( disp, MSL, "%s%s%i;%ir%s%i;%iH%s%s",
                   CRS_SAVE_ALL,
                   CRS_CMD,
-                  ch->pcdata->term_rows - 11, ch->pcdata->term_rows - 1, CRS_CMD, ch->pcdata->term_rows - 11, 0, CRS_CMD, "J" );
+                  ch->term_row - 11, ch->term_row - 1, CRS_CMD, ch->term_row - 11, 0, CRS_CMD, "J" );
         send_to_char( disp, ch );
     }
     strcpy( disp, map_format( ch->in_room->name, 0, bufs, &y, cols, rows, TRUE ) );
@@ -560,7 +560,7 @@ void disp_map( char *border, char *pmap, CHAR_DATA * ch )
     send_to_char( disp, ch );
     if ( !IS_NPC( ch ) && ch->act.test(ACT_FULL_ANSI ) )
     {
-        snprintf( disp, MSL, "%s%i;%ir%s%i;%iH", CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13, 0 );
+        snprintf( disp, MSL, "%s%i;%ir%s%i;%iH", CRS_CMD, 0, ch->term_row - 12, CRS_CMD, ch->term_row - 13, 0 );
         send_to_char( disp, ch );
     }
     return;

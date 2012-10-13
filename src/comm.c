@@ -2780,7 +2780,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         {
             char scrollbuf[MSL];
             snprintf( scrollbuf, MSL, "%s%s%s%i;%ir%s%%i;%iH",
-                      CRS_RESET, CRS_CLS, CRS_CMD, 0, ch->pcdata->term_rows - 12, CRS_CMD, ch->pcdata->term_rows - 13 );
+                      CRS_RESET, CRS_CLS, CRS_CMD, 0, ch->term_row - 12, CRS_CMD, ch->term_row - 13 );
             send_to_char( scrollbuf, ch );
         }
         send_to_char( "\r\nWelcome to " mudnamecolor ".  May your visit here be ... mutated.\r\n", ch );
