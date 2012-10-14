@@ -447,7 +447,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "GainMana       %d\n", ch->pcdata->mana_from_gain );
         fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
         fprintf( fp, "GainMove       %d\n", ch->pcdata->move_from_gain );
-        fprintf( fp, "RulerRank      %d\n", ch->pcdata->ruler_rank );
+        fprintf( fp, "RulerRank      %d\n", ch->ruler_rank );
         fprintf( fp, "Condition      %d %d %d\n", ch->condition[0], ch->condition[1], ch->condition[2] );
         fprintf( fp, "Pagelen        %d\n", ch->pcdata->pagelen );
 
@@ -1249,8 +1249,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 {
                     SKEY( "Roomenter", ch->pcdata->room_enter, fread_string( fp ) );
                     SKEY( "Roomexit", ch->pcdata->room_exit, fread_string( fp ) );
-                    KEY( "RulerRank", ch->pcdata->ruler_rank, fread_number( fp ) );
                 }
+                KEY( "RulerRank", ch->ruler_rank, fread_number( fp ) );
 
                 if ( !str_cmp( word, "Remort" ) )
                 {

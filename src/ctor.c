@@ -241,6 +241,7 @@ char_data::char_data()
     resist = 0;
     rider = NULL;
     riding = NULL;
+    ruler_rank = 0;
     save_time = 0;
     saving_throw = 0;
     searching = &str_empty[0];
@@ -598,7 +599,6 @@ pc_data::pc_data()
     recovery_code.clear();
     room_enter = &str_empty[0];
     room_exit = &str_empty[0];
-    ruler_rank = 0;
 }
 
 quest_info::quest_info()

@@ -2906,7 +2906,7 @@ DO_FUN(do_mset)
             send_to_char( buf, ch );
             return;
         }
-        victim->pcdata->ruler_rank = value;
+        victim->ruler_rank = value;
         return;
     }
 

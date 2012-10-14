@@ -474,12 +474,12 @@ void move_char( CHAR_DATA * ch, int door, bool look )
             else if ( ch->riding == NULL )
             {
                 snprintf( move_buf, MSL, "$L%s$n %s $T.",
-                          get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), ch->pcdata->room_exit );
+                          get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), ch->pcdata->room_exit );
             }
             else if ( ch->riding != NULL )
             {
                 snprintf( move_buf, MSL, "$L%s$n rides $T on %s.",
-                          get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), ch->riding->get_name() );
+                          get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), ch->riding->get_name() );
             }
             act( move_buf, ch, NULL, door_name_leave, TO_ROOM );
         }
@@ -508,12 +508,12 @@ void move_char( CHAR_DATA * ch, int door, bool look )
         else if ( ch->riding == NULL )
         {
             snprintf( move_buf, MSL, "$L%s$n %s $T.",
-                      get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), ch->pcdata->room_enter );
+                      get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), ch->pcdata->room_enter );
         }
         else if ( ch->riding != NULL )
         {
             snprintf( move_buf, MSL, "$L%s$n rides in from $T on %s.",
-                      get_ruler_title( ch->pcdata->ruler_rank, ch->pcdata->login_sex ), ch->riding->get_name() );
+                      get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), ch->riding->get_name() );
         }
         act( move_buf, ch, NULL, door_name_enter, TO_ROOM );
 
