@@ -646,6 +646,7 @@ class char_data
         int resist;
         CHAR_DATA *rider;
         CHAR_DATA *riding;
+        time_t save_time;
         int saving_throw;
         string searching; /* For NPCs hunting continuously */
         int sentence;
@@ -730,7 +731,6 @@ class pc_data
         char *room_enter;
         char *room_exit;
         short ruler_rank;
-        time_t save_time;
 };
 
 struct liq_type

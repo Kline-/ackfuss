@@ -1340,10 +1340,10 @@ void char_update( void )
          * Find dude with oldest save time.
          */
         if ( !IS_NPC( ch )
-                && ( ch->desc == NULL || ch->desc->connected == CON_PLAYING ) && ch->level >= 2 && ch->pcdata->save_time < save_time )
+                && ( ch->desc == NULL || ch->desc->connected == CON_PLAYING ) && ch->level >= 2 && ch->save_time < save_time )
         {
             ch_save = ch;
-            save_time = ch->pcdata->save_time;
+            save_time = ch->save_time;
         }
 
         if ( ( IS_NPC( ch ) ) && ( ch->hit < -15 ) )

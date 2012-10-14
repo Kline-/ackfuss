@@ -135,7 +135,7 @@ void save_char_obj( CHAR_DATA * ch )
    if ( ch->desc && ch->desc->connected < CON_PLAYING && ch->desc->connected != CON_READ_MOTD )
         return;
 
-    ch->pcdata->save_time = current_time;
+    ch->save_time = current_time;
 
 
     /*
