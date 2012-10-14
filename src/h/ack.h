@@ -547,7 +547,7 @@ class char_data
         void send( bool raw, string txt );
         void set_cooldown( const char *skill );
         void set_cooldown( int pos, float duration );
-        void set_title( const char *title );
+        void set_title( const char *new_title );
 
         int ac_mod;
         bitset<MAX_BITSET> act;
@@ -673,6 +673,7 @@ class char_data
         int wait;
         ROOM_INDEX_DATA *was_in_room;
         int weak_magic;
+        string whitelist[MAX_HOSTS]; /* Used to restrict login domains */
         string who_name;   /* To show on who name */
         int wimpy;
         bool wizbit;
@@ -730,7 +731,6 @@ class pc_data
         time_t save_time;
         short sentence;
         SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
-        char *whitelist[MAX_HOSTS]; /* Used to restrict login domains */
 };
 
 struct liq_type

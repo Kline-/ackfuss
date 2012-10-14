@@ -269,8 +269,6 @@ pc_data::~pc_data()
     free_string(room_enter);
     free_string(room_exit);
     delete super;
-    for ( short i = 0; i < MAX_HOSTS; i++ )
-        free_string(whitelist[i]);
 }
 
 quest_info::~quest_info()

@@ -268,6 +268,8 @@ char_data::char_data()
     wait = 0;
     was_in_room = NULL;
     weak_magic = 0;
+    for ( int i = 0; i < MAX_HOSTS; i++ )
+        whitelist[i] = &str_empty[0];
     who_name = &str_empty[0];
     wimpy = 0;
     wizbit = false;
@@ -597,8 +599,6 @@ pc_data::pc_data()
     save_time = 0;
     sentence = 0;
     super = new SUPER_DATA;
-    for ( short i = 0; i < MAX_HOSTS; i++ )
-        whitelist[i] = &str_empty[0];
 }
 
 quest_info::quest_info()

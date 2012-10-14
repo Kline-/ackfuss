@@ -348,7 +348,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "\n");
         fprintf( fp, "Whitelist      ");
         for ( cnt = 0; cnt < MAX_HOSTS; cnt++ )
-            fprintf(fp, "%s~", ch->pcdata->whitelist[cnt]);
+            fprintf(fp, "%s~", CSTR( ch->whitelist[cnt] ) );
         fprintf( fp, "\n");
         fprintf( fp, "Failures       %d\n", ch->failures );
         fprintf( fp, "LastLogin      %s~\n", time_buf );
@@ -1340,10 +1340,10 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     if ( cur_revision >= SAVE_REVISION )
                     {
                         for ( short i = 0; i < MAX_HOSTS; i++ )
-                            ch->pcdata->whitelist[i] = fread_string( fp );
+                            ch->whitelist[i] = fread_string( fp );
                     }
                     else
-                        ch->pcdata->whitelist[0] = fread_string(fp);
+                        ch->whitelist[0] = fread_string(fp);
 
                    fMatch = TRUE;
                    break;

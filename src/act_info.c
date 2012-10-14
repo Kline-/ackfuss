@@ -5107,21 +5107,21 @@ DO_FUN(do_whitelist)
         ch_printf(ch, "You are limited to [%2d] whitelist sites. Whitelist status: [%14s]\r\n", MAX_HOSTS, ch->act.test(ACT_WHITELIST) ? "@@rACTIVE@@N" : "@@eINACTIVE@@N" );
         send_to_char("---------------------------------------------------------------------\r\n", ch);
         for ( i = 0; i < MAX_HOSTS; i++ )
-            ch_printf(ch, "  [%2d] %s\r\n", i, ch->pcdata->whitelist[i]);
+            ch_printf(ch, "  [%2d] %s\r\n", i, CSTR( ch->whitelist[i] ) );
         return;
     }
     if ( !str_prefix(arg1, "add") )
     {
         for ( i = 0; i < MAX_HOSTS; i++ )
         {
-            if ( ch->pcdata->whitelist[i] == &str_empty[0] )
+            if ( ch->whitelist[i].empty() )
             {
                 if ( arg2[0] == '\0' || strlen(arg2) < 8 )
                 {
                     send_to_char("Host must be at least 8 characters long.\r\n", ch);
                     return;
                 }
-                ch->pcdata->whitelist[i] = str_dup(arg2);
+                ch->whitelist[i] = arg2;
                 send_to_char("Whitelist updated.\r\n", ch);
                 return;
             }
@@ -5138,11 +5138,10 @@ DO_FUN(do_whitelist)
         }
         for ( i = 0; i < MAX_HOSTS; i++ )
         {
-            if ( !str_cmp(arg2, ch->pcdata->whitelist[i]) )
+            if ( !str_cmp(arg2, CSTR( ch->whitelist[i] ) ) )
             {
-                ch_printf(ch, "Host %s has been removed from your whitelist.\r\n", ch->pcdata->whitelist[i]);
-                free_string(ch->pcdata->whitelist[i]);
-                ch->pcdata->whitelist[i] = &str_empty[0];
+                ch_printf(ch, "Host %s has been removed from your whitelist.\r\n", CSTR( ch->whitelist[i] ));
+                ch->whitelist[i].clear();
                 return;
             }
         }

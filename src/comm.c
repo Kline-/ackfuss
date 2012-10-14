@@ -2112,7 +2112,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             bool found = false;
 
             for ( short i = 0; i < MAX_HOSTS; i++ )
-                if ( ch->pcdata->whitelist[i] != str_empty && !str_prefix(ch->pcdata->whitelist[i], d->host) )
+                if ( !ch->whitelist[i].empty() && !str_prefix(CSTR(ch->whitelist[i]), d->host) )
                     found = true;
 
             if ( !found )

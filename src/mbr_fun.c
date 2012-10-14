@@ -392,9 +392,9 @@ void char_data::set_cooldown( int pos, float duration )
     return;
 }
 
-void char_data::set_title( const char *title )
+void char_data::set_title( const char *new_title )
 {
-    title = title;
+    title = new_title;
 
     return;
 }
