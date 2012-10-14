@@ -243,6 +243,7 @@ char_data::char_data()
     riding = NULL;
     saving_throw = 0;
     searching = &str_empty[0];
+    sentence = 0;
     sex = SEX_NEUTRAL;
     short_descr = &str_empty[0];
     sitting = NULL;
@@ -597,7 +598,6 @@ pc_data::pc_data()
     room_exit = &str_empty[0];
     ruler_rank = 0;
     save_time = 0;
-    sentence = 0;
     super = new SUPER_DATA;
 }
 

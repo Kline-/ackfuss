@@ -1998,7 +1998,7 @@ DO_FUN(do_sacrifice)
         }
         short plevel = ch->get_level("psuedo");
 
-        if ( ch->pcdata->sentence <= 0 )
+        if ( ch->sentence <= 0 )
         {
 
             send_to_char( "You have no fines outstanding.\r\n", ch );
@@ -2025,19 +2025,19 @@ DO_FUN(do_sacrifice)
             obj_value *= .6;
         if ( ( obj->item_type == ITEM_FOOD ) || ( obj->item_type == ITEM_BEACON ) || ( obj->item_type == ITEM_SOUL ) )
             obj_value = 0;
-        ch->pcdata->sentence -= (int)obj_value;
-        if ( ch->pcdata->sentence > 0 )
+        ch->sentence -= (int)obj_value;
+        if ( ch->sentence > 0 )
         {
 
             snprintf( buf, MSL, "%s: Sentence reduced to %d ( - %.0f ) by sacrificing %s.", ch->name.c_str(),
-                      ch->pcdata->sentence, obj_value, obj->short_descr );
+                      ch->sentence, obj_value, obj->short_descr );
             monitor_chan( buf, MONITOR_OBJ );
             act( "The judge accepts $p as partial payment of your fine.", ch, obj, 0, TO_CHAR );
         }
         else
         {
 
-            ch->pcdata->sentence = 0;
+            ch->sentence = 0;
             ch->act.reset(ACT_KILLER | ACT_THIEF);
             send_to_char( "Your debt to society has been paid!  Please more careful in the future.\r\n", ch );
             snprintf( monbuf, MSL, "%s has had a WANTED flag removed by the judge.\r\n", ch->name.c_str() );
@@ -2486,7 +2486,7 @@ DO_FUN(do_steal)
                 diff = ( abs( ch->get_level("psuedo") - victim->get_level("psuedo") ) + 10 ) * 20;
                 ch->act.set(ACT_THIEF);
                 send_to_char( "*** You are now a THIEF!! ***\r\n", ch );
-                ch->pcdata->sentence += diff;
+                ch->sentence += diff;
                 save_char_obj( ch );
                 log_string( buf );
             }

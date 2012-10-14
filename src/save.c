@@ -249,7 +249,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     fprintf( fp, "Level          %d\n", ch->level );
     if ( !IS_NPC(ch) )
     {
-        fprintf( fp, "Sentence       %d\n", ch->pcdata->sentence );
+        fprintf( fp, "Sentence       %d\n", ch->sentence );
         fprintf( fp, "Invis          %d\n", ch->pcdata->invis );
     }
 
@@ -1277,8 +1277,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
             case 'S':
                 KEY( "SavingThrow", ch->saving_throw, fread_number( fp ) );
-                if ( !IS_NPC(ch ) )
-                    KEY( "Sentence", ch->pcdata->sentence, fread_number( fp ) );
+                KEY( "Sentence", ch->sentence, fread_number( fp ) );
                 KEY( "Sex", ch->sex, fread_number( fp ) );
                 if ( IS_NPC( ch ) )
                     KEY( "ShortDescr", ch->short_descr, fread_string( fp ) );

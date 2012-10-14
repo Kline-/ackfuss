@@ -1549,7 +1549,7 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
      */
     if ( deathmatch )
         return;
-    if ( !IS_NPC(ch) && ch->pcdata->sentence > 5000 )
+    if ( ch->sentence > 5000 )
         return;
 
     /*
@@ -1640,9 +1640,9 @@ void check_killer( CHAR_DATA * ch, CHAR_DATA * victim )
         if ( diff > 5 )
             diff = 5;
     }
-    ch->pcdata->sentence += diff * ch->get_level("psuedo") * 3; /* Magic # - Ramias */
+    ch->sentence += diff * ch->get_level("psuedo") * 3; /* Magic # - Ramias */
     if ( IS_ADEPT(ch) )
-        ch->pcdata->sentence += diff * ch->get_level("psuedo") * 2;
+        ch->sentence += diff * ch->get_level("psuedo") * 2;
 
     ch->act.set(ACT_KILLER);
     save_char_obj( ch );

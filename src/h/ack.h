@@ -648,6 +648,7 @@ class char_data
         CHAR_DATA *riding;
         int saving_throw;
         string searching; /* For NPCs hunting continuously */
+        int sentence;
         int sex;
         string short_descr;
         OBJ_DATA *sitting;   /* What they're resting or sleeping on */
@@ -729,7 +730,6 @@ class pc_data
         char *room_exit;
         short ruler_rank;
         time_t save_time;
-        short sentence;
         SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
 };
 
