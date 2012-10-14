@@ -700,7 +700,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                     continue;
                 if ( ( channel == CHANNEL_FAMILY )
                         && ( ( !IS_VAMP( och ) || !IS_VAMP( ch ) )
-                             || ( och->pcdata->super->bloodline != ch->pcdata->super->bloodline ) ) )
+                             || ( och->super->bloodline != ch->super->bloodline ) ) )
                     continue;
                 if ( channel == CHANNEL_ADEPT && !IS_ADEPT(vch) )
                     continue;

@@ -1083,7 +1083,7 @@ DO_FUN(do_council)
                               "You have been @@ROUTCAST@@N from the @@eKindred@@N by the %s, and are now a @@dRenegade@@N!!!!!\r\n",
                               super_councils[this_council].council_name );
                     send_to_char( buf, victim );
-                    victim->pcdata->super->bloodline = 0;
+                    victim->super->bloodline = 0;
                     do_save( victim, "auto" );
                 }
             }

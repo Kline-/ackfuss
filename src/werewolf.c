@@ -113,7 +113,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
     argument = one_argument( argument, arg2 );
     argument = one_argument( argument, arg3 );
 
-    if ( ( arg1[0] == '\0' ) || ( ch->pcdata->super->generation > 1 ) )
+    if ( ( arg1[0] == '\0' ) || ( ch->super->generation > 1 ) )
     {
 
         if ( get_trust( ch ) == 85 )
@@ -147,7 +147,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
                     if ( d->connected == CON_PLAYING
                             && ( victim = d->character ) != NULL && !IS_NPC( victim ) && victim->in_room != NULL )
                     {
-                        if ( IS_WOLF( victim ) && ( victim->pcdata->super->bloodline == index ) )
+                        if ( IS_WOLF( victim ) && ( victim->super->bloodline == index ) )
                         {
                             found = TRUE;
                         }
@@ -157,8 +157,8 @@ void do_tribe( CHAR_DATA * ch, char *argument )
 
 
                         snprintf( buf, MSL, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N  @@NRage: @@e%d@@N/@@e%d@@N   %-15s\r\n",
-                                  victim->name.c_str(), get_tribe_standing_name( victim->pcdata->super->generation ), victim->pcdata->super->level,
-                                  victim->pcdata->super->energy, victim->pcdata->super->energy_max, victim->in_room->name );
+                                  victim->name.c_str(), get_tribe_standing_name( victim->super->generation ), victim->super->level,
+                                  victim->super->energy, victim->super->energy_max, victim->in_room->name );
                         send_to_char( buf, ch );
                     }
                 }
@@ -180,12 +180,12 @@ void do_tribe( CHAR_DATA * ch, char *argument )
                         && ( victim = d->character ) != NULL
                         && !IS_NPC( victim ) && victim->in_room != NULL && IS_WOLF( victim ) && !IS_IMMORTAL( victim ) )
                 {
-                    if ( victim->pcdata->super->bloodline != ch->pcdata->super->bloodline )
+                    if ( victim->super->bloodline != ch->super->bloodline )
                         continue;
 
                     found = TRUE;
                     snprintf( buf, MSL, "%-15s @@NStanding: @@r%s   @@NRank: @@d%d@@N\r\n",
-                              victim->name.c_str(), get_tribe_standing_name( victim->pcdata->super->generation ), victim->pcdata->super->level );
+                              victim->name.c_str(), get_tribe_standing_name( victim->super->generation ), victim->super->level );
                     send_to_char( buf, ch );
                 }
             }
@@ -199,7 +199,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
     }
     else  /* multiplexed use of tribe  */
     {
-        if ( ch->pcdata->super->generation > 1 )
+        if ( ch->super->generation > 1 )
         {
             send_to_char( "Huh?\r\n", ch );
             return;
@@ -214,7 +214,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
         }
 
         if ( ( IS_NPC( victim ) )
-                || ( !IS_WOLF( victim ) ) || ( victim->pcdata->super->bloodline != ch->pcdata->super->bloodline ) )
+                || ( !IS_WOLF( victim ) ) || ( victim->super->bloodline != ch->super->bloodline ) )
         {
             send_to_char( "They are not in your @@bTribe@@N!\r\n", ch );
             return;
@@ -228,21 +228,21 @@ void do_tribe( CHAR_DATA * ch, char *argument )
                 return;
             }
             if ( !str_cmp( arg3, "mate" ) )
-                victim->pcdata->super->generation = 2;
+                victim->super->generation = 2;
             else if ( !str_cmp( arg3, "warder" ) )
-                victim->pcdata->super->generation = 3;
+                victim->super->generation = 3;
             else if ( !str_cmp( arg3, "guardian" ) )
-                victim->pcdata->super->generation = 4;
+                victim->super->generation = 4;
             else if ( !str_cmp( arg3, "sentry" ) )
-                victim->pcdata->super->generation = 5;
+                victim->super->generation = 5;
             else if ( !str_cmp( arg3, "elder" ) )
-                victim->pcdata->super->generation = 6;
+                victim->super->generation = 6;
             else if ( !str_cmp( arg3, "adult" ) )
-                victim->pcdata->super->generation = 7;
+                victim->super->generation = 7;
             else if ( !str_cmp( arg3, "younger" ) )
-                victim->pcdata->super->generation = 8;
+                victim->super->generation = 8;
             else if ( !str_cmp( arg3, "cub" ) )
-                victim->pcdata->super->generation = 9;
+                victim->super->generation = 9;
 
             else
             {
@@ -251,7 +251,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
             }
 
             snprintf( buf, MSL, "@@N%s's @@yStanding@@N is now %s in @@bTribe@@N %s.\r\n",
-                      victim->name.c_str(), get_tribe_standing_name( victim->pcdata->super->generation ), get_tribe_name( ch ) );
+                      victim->name.c_str(), get_tribe_standing_name( victim->super->generation ), get_tribe_name( ch ) );
             do_howl( ch, buf );
             return;
 
@@ -261,10 +261,10 @@ void do_tribe( CHAR_DATA * ch, char *argument )
             int sn;
             snprintf( buf, MSL, "@@N%s has been @@eBANISHED@@N from @@bTribe@@N %s.\r\n", victim->name.c_str(), get_tribe_name( ch ) );
             do_howl( ch, buf );
-            victim->pcdata->super->bloodline = 0;
-            victim->pcdata->super->generation = 9;
+            victim->super->bloodline = 0;
+            victim->super->generation = 9;
             victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
-            victim->pcdata->super->level = 1;
+            victim->super->level = 1;
             for ( sn = 0; sn <= MAX_SKILL; sn++ )
                 if ( ( skill_table[sn].flag2 == WOLF ) && ( victim->pcdata->learned[sn] > 0 ) )
                     victim->pcdata->learned[sn] = 0;
@@ -303,7 +303,7 @@ void do_imprint( CHAR_DATA * ch, char *argument )
         return;
     }
 
-    if ( ch->pcdata->super->generation > 3 )
+    if ( ch->super->generation > 3 )
     {
         send_to_char( "Your @@bTribal @@yStanding@@N is not high enough to imprint!\r\n", ch );
         return;
@@ -352,14 +352,14 @@ void do_imprint( CHAR_DATA * ch, char *argument )
         return;
     }
 
-    if ( victim->pcdata->super->level < skill_table[sn].skill_level[victim->pcdata->super->bloodline] )
+    if ( victim->super->level < skill_table[sn].skill_level[victim->super->bloodline] )
     {
         send_to_char( "@@NThey are too inexperienced in the ways of the @@bGarou@@N to learn this skill.\r\n", ch );
         send_to_char( "@@NYou are to inexperienced in the ways of the @@bGarou@@N to learn this skill.\r\n", victim );
         return;
     }
 
-    if ( victim->pcdata->super->skills_learned >= victim->pcdata->super->skills_max )
+    if ( victim->super->skills_learned >= victim->super->skills_max )
     {
         send_to_char( "They seem unable to grasp the instinct.\r\n", ch );
         send_to_char( "@@NYou are unable to learn any more @@bGarou@@N knowledge at this time.\r\n", victim );
@@ -369,8 +369,8 @@ void do_imprint( CHAR_DATA * ch, char *argument )
     /* Okay, the skill is good, the instructor knows it, and the victim doesn't  */
 
     victim->pcdata->learned[sn] = 90;
-    victim->pcdata->super->pracs -= 1;
-    victim->pcdata->super->skills_learned += 1;
+    victim->super->pracs -= 1;
+    victim->super->skills_learned += 1;
 
     send_to_char( "You have increased their @@bGarou@@N instincts@@N!!!\r\n", ch );
     snprintf( buf, MSL, "You are now instinctively aware of @@e%s@@N!!!\r\n", skill_table[sn].name );
@@ -394,7 +394,7 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
         send_to_char( "Huh?\r\n", ch );
         return FALSE;
     }
-    if ( ch->pcdata->super->bloodline == 0 )
+    if ( ch->super->bloodline == 0 )
     {
         send_to_char( "@@dOutcasts@@n can't tribal claw!!!\r\n", ch );
         return FALSE;
@@ -480,16 +480,16 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
 
     {
         check_social( victim, "rollover", const_cast<char *>(ch->name.c_str()) );
-        victim->pcdata->super->level = 1;
-        victim->pcdata->super->exp = 0;
-        victim->pcdata->super->skills_learned = 0;
-        victim->pcdata->super->skills_max = 2;
-        victim->pcdata->super->generation = 9;
-        victim->pcdata->super->bloodline = ch->pcdata->super->bloodline;
-        victim->pcdata->super->energy = -10;
-        victim->pcdata->super->energy_max = 7;
+        victim->super->level = 1;
+        victim->super->exp = 0;
+        victim->super->skills_learned = 0;
+        victim->super->skills_max = 2;
+        victim->super->generation = 9;
+        victim->super->bloodline = ch->super->bloodline;
+        victim->super->energy = -10;
+        victim->super->energy_max = 7;
         victim->act.set(ACT_WEREWOLF);
-        victim->pcdata->super->pracs = 2;
+        victim->super->pracs = 2;
         victim->pcdata->recall_vnum = ch->pcdata->recall_vnum;
 
 
@@ -540,7 +540,7 @@ bool spell_wolf_mark( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
 
     mark->room_vnum = ch->in_room->vnum;
     mark->message = str_dup( target_name );
-    switch ( ch->pcdata->super->bloodline )
+    switch ( ch->super->bloodline )
     {
         case 0:
             costring = "@@d";
@@ -561,9 +561,9 @@ bool spell_wolf_mark( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
             costring = "@@m";
             break;
     }
-    snprintf( buf, MSL, "%s%s @@W: %s", costring, ch->name.c_str(), get_tribe_standing_name( ch->pcdata->super->generation ) );
+    snprintf( buf, MSL, "%s%s @@W: %s", costring, ch->name.c_str(), get_tribe_standing_name( ch->super->generation ) );
     mark->author = str_dup( buf );
-    mark->duration = ( ( MAX_WOLF_LEVEL ) - ch->pcdata->super->generation ) * ( ch->pcdata->super->level );
+    mark->duration = ( ( MAX_WOLF_LEVEL ) - ch->super->generation ) * ( ch->super->level );
     mark->type = WOLF;
     ch->in_room->mark_list.push_back(mark);
     save_marks();

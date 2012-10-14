@@ -187,7 +187,7 @@ int mana_cost( CHAR_DATA * ch, int sn )
         {
             cost = UMAX( skill_table[sn].min_mana,
                          ( ( skill_table[sn].min_mana * skill_lev ) /
-                           ( ( ch->pcdata->super->level == 0 ) ? 1 : ch->pcdata->super->level ) ) );
+                           ( ( ch->super->level == 0 ) ? 1 : ch->super->level ) ) );
         }
     }
     if ( IS_NPC( ch ) )
@@ -593,14 +593,14 @@ void cast( CHAR_DATA * ch, char *argument )
         }
     if ( !IS_NPC( ch ) )
         if ( ( IS_VAMP( ch ) ) && ( skill_table[sn].flag2 == VAMP ) )
-            best = ch->pcdata->super->level * 4;
+            best = ch->super->level * 4;
     if ( IS_ADEPT(ch) && ( skill_table[sn].flag1 == ADEPT ) )
         best = ch->get_level("adept") * 4;
     if ( IS_NPC( ch ) && ( skill_table[sn].flag1 == ADEPT ) )
         best = -1;
     if ( !IS_NPC( ch ) )
         if ( skill_table[sn].flag2 == WOLF && IS_WOLF( ch ) )
-            best = ch->pcdata->super->level * 4;
+            best = ch->super->level * 4;
 
 
     if ( best == 80 )
@@ -756,7 +756,7 @@ void cast( CHAR_DATA * ch, char *argument )
     }
     if ( IS_VAMP( ch ) && ( skill_table[sn].flag2 == VAMP ) )
     {
-        if ( !IS_NPC( ch ) && ch->pcdata->super->energy < mana )
+        if ( !IS_NPC( ch ) && ch->super->energy < mana )
         {
             send_to_char( "@@NYou don't have enough @@eblood@@N to cast that spell!!!\r\n", ch );
             return;
@@ -768,7 +768,7 @@ void cast( CHAR_DATA * ch, char *argument )
         send_to_char( "Huh?\r\n", ch );
         return;
     }
-    if ( skill_table[sn].flag2 == WOLF && ( !IS_NPC( ch ) && IS_WOLF( ch ) ) && ch->pcdata->super->energy < mana )
+    if ( skill_table[sn].flag2 == WOLF && ( !IS_NPC( ch ) && IS_WOLF( ch ) ) && ch->super->energy < mana )
     {
         send_to_char( "@@bYou aren't able to summon enough @@rRAGE@@N!!\r\n", ch );
         return;
@@ -826,9 +826,9 @@ void cast( CHAR_DATA * ch, char *argument )
             send_to_char( "You lost your concentration.\r\n", ch );
 
             if ( IS_VAMP( ch ) && ( skill_table[sn].flag2 == VAMP ) )
-                ch->pcdata->super->energy -= mana / 2;
+                ch->super->energy -= mana / 2;
             else if ( skill_table[sn].flag2 == WOLF && ( !IS_NPC( ch ) && IS_WOLF( ch ) ) )
-                ch->pcdata->super->energy -= mana / 3;
+                ch->super->energy -= mana / 3;
             else
                 ch->mana -= mana / 2;
             return;
@@ -855,7 +855,7 @@ void cast( CHAR_DATA * ch, char *argument )
     {
         if ( ( skill_table[sn].flag2 == VAMP ) || ( skill_table[sn].flag2 == WOLF ) )
         {
-            ch->pcdata->super->energy -= mana;
+            ch->super->energy -= mana;
         }
         else
         {
@@ -899,7 +899,7 @@ void cast( CHAR_DATA * ch, char *argument )
             {
                 if ( ( skill_table[sn].flag2 == VAMP ) || ( skill_table[sn].flag2 == WOLF ) )
                 {
-                    ch->pcdata->super->energy -= mana;
+                    ch->super->energy -= mana;
                 }
                 else
                 {
@@ -946,7 +946,7 @@ void cast( CHAR_DATA * ch, char *argument )
             {
                 if ( ( skill_table[sn].flag2 == VAMP ) || ( skill_table[sn].flag2 == WOLF ) )
                 {
-                    ch->pcdata->super->energy -= mana;
+                    ch->super->energy -= mana;
                 }
                 else
                 {
@@ -6091,7 +6091,7 @@ bool spell_restoration( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * 
     ch->mana = ch->max_mana;
     ch->move = ch->max_move;
     if ( !IS_NPC( ch ) )
-        ch->pcdata->super->energy = ch->pcdata->super->energy_max;
+        ch->super->energy = ch->super->energy_max;
 
     send_to_char( "@@eTHe life force of tha captured soul restores you!\r\n", ch );
     snprintf( buf, MSL, " %s has used a restoration spell.\r\n", ch->name.c_str() );

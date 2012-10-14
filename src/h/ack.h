@@ -662,6 +662,7 @@ class char_data
         bool stop_fighting;
         int strong_magic;
         int stun_timer;
+        SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
         int suscept;
         bool switched; /* = not isnull(descriptor->original) */
         string target;  /* For Hunting and ACT_REMEMBER */
@@ -730,7 +731,6 @@ class pc_data
         char *room_exit;
         short ruler_rank;
         time_t save_time;
-        SUPER_DATA *super; /* struct for supers: vamp, wolves, hunters */
 };
 
 struct liq_type

@@ -431,15 +431,15 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "RecQP          %d\n", ch->pcdata->records->qp );
         fprintf( fp, "RecQpTot       %d\n", ch->pcdata->records->qp_tot );
 
-        fprintf( fp, "SupBloodline   %d\n", ch->pcdata->super->bloodline );
-        fprintf( fp, "SupEnergy      %d\n", ch->pcdata->super->energy );
-        fprintf( fp, "SupEnergyMax   %d\n", ch->pcdata->super->energy_max );
-        fprintf( fp, "SupExp         %d\n", ch->pcdata->super->exp );
-        fprintf( fp, "SupGeneration  %d\n", ch->pcdata->super->generation );
-        fprintf( fp, "SupLevel       %d\n", ch->pcdata->super->level );
-        fprintf( fp, "SupPracs       %d\n", ch->pcdata->super->pracs );
-        fprintf( fp, "SupSkillLearn  %d\n", ch->pcdata->super->skills_learned );
-        fprintf( fp, "SupSkillMax    %d\n", ch->pcdata->super->skills_max );
+        fprintf( fp, "SupBloodline   %d\n", ch->super->bloodline );
+        fprintf( fp, "SupEnergy      %d\n", ch->super->energy );
+        fprintf( fp, "SupEnergyMax   %d\n", ch->super->energy_max );
+        fprintf( fp, "SupExp         %d\n", ch->super->exp );
+        fprintf( fp, "SupGeneration  %d\n", ch->super->generation );
+        fprintf( fp, "SupLevel       %d\n", ch->super->level );
+        fprintf( fp, "SupPracs       %d\n", ch->super->pracs );
+        fprintf( fp, "SupSkillLearn  %d\n", ch->super->skills_learned );
+        fprintf( fp, "SupSkillMax    %d\n", ch->super->skills_max );
 
         fprintf( fp, "RecoveryCode   %s~\n", ch->pcdata->recovery_code.c_str() );
         fprintf( fp, "QuestPoints    %d\n", ch->pcdata->quest_points );
@@ -1302,15 +1302,15 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
                 if ( !IS_NPC( ch ) )
                 {
-                    KEY( "SupBloodline", ch->pcdata->super->bloodline, fread_number( fp ) );
-                    KEY( "SupEnergy", ch->pcdata->super->energy, fread_number( fp ) );
-                    KEY( "SupEnergyMax", ch->pcdata->super->energy_max, fread_number( fp ) );
-                    KEY( "SupExp", ch->pcdata->super->exp, fread_number( fp ) );
-                    KEY( "SupGeneration", ch->pcdata->super->generation, fread_number( fp ) );
-                    KEY( "SupLevel", ch->pcdata->super->level, fread_number( fp ) );
-                    KEY( "SupPracs", ch->pcdata->super->pracs, fread_number( fp ) );
-                    KEY( "SupSkillLearn", ch->pcdata->super->skills_learned, fread_number( fp ) );
-                    KEY( "SupSkillMax", ch->pcdata->super->skills_max, fread_number( fp ) );
+                    KEY( "SupBloodline", ch->super->bloodline, fread_number( fp ) );
+                    KEY( "SupEnergy", ch->super->energy, fread_number( fp ) );
+                    KEY( "SupEnergyMax", ch->super->energy_max, fread_number( fp ) );
+                    KEY( "SupExp", ch->super->exp, fread_number( fp ) );
+                    KEY( "SupGeneration", ch->super->generation, fread_number( fp ) );
+                    KEY( "SupLevel", ch->super->level, fread_number( fp ) );
+                    KEY( "SupPracs", ch->super->pracs, fread_number( fp ) );
+                    KEY( "SupSkillLearn", ch->super->skills_learned, fread_number( fp ) );
+                    KEY( "SupSkillMax", ch->super->skills_max, fread_number( fp ) );
                 }
                 break;
 

@@ -1040,7 +1040,7 @@ DO_FUN(do_mstat)
 
     if ( !IS_NPC( victim ) )
     {
-        snprintf( buf, MSL, "@@RBLOODLUST@@g: %d\r\n", victim->pcdata->super->energy );
+        snprintf( buf, MSL, "@@RBLOODLUST@@g: %d\r\n", victim->super->energy );
         strncat( buf1, buf, MSL - 1 );
 
         snprintf( buf, MSL,
@@ -3053,7 +3053,7 @@ DO_FUN(do_mset)
         if ( IS_VAMP( victim ) || IS_WOLF( victim ) )
         {
             send_to_char( "@@eDone!!!@@N\r\n", ch );
-            victim->pcdata->super->energy_max = value;
+            victim->super->energy_max = value;
         }
         else
             send_to_char( "They are not a supernatural!!\r\n", ch );
@@ -4414,7 +4414,7 @@ DO_FUN(do_setclass)
         return;
     }
     if ( ( value < ( remort ? victim->lvl2[p_class] : victim->lvl[p_class] ) )
-            || ( ( vamp ) && ( value <= victim->pcdata->super->level ) ) )
+            || ( ( vamp ) && ( value <= victim->super->level ) ) )
 
     {
         int sn;
@@ -4427,10 +4427,10 @@ DO_FUN(do_setclass)
         if ( vamp )
         {
             if ( value != -1 )
-                victim->pcdata->super->level = 1;
+                victim->super->level = 1;
             else
-                victim->pcdata->super->level = -1;
-            victim->pcdata->super->exp = 0;
+                victim->super->level = -1;
+            victim->super->exp = 0;
         }
 
         else if ( remort )
@@ -4445,11 +4445,11 @@ DO_FUN(do_setclass)
         victim->exp = 0;
         if ( vamp )
         {
-            victim->pcdata->super->energy_max = 10;
-            victim->pcdata->super->pracs = 2;
-            victim->pcdata->super->skills_max = 2;
-            victim->pcdata->super->skills_learned = 1;
-            victim->pcdata->super->energy = 10;
+            victim->super->energy_max = 10;
+            victim->super->pracs = 2;
+            victim->super->skills_max = 2;
+            victim->super->skills_learned = 1;
+            victim->super->energy = 10;
             for ( sn = 0; sn < MAX_SKILL; sn++ )
             {
                 victim->pcdata->learned[sn] = 0;
@@ -4507,10 +4507,10 @@ DO_FUN(do_setclass)
     if ( vamp )
     {
         send_to_char( "@@NYou are now a level %d @@eKindred@@N!!!\r\n", victim );
-        for ( iClass = victim->pcdata->super->level; iClass < value; iClass++ )
+        for ( iClass = victim->super->level; iClass < value; iClass++ )
         {
             p_class = ADVANCE_VAMP;
-            victim->pcdata->super->level += 1;
+            victim->super->level += 1;
             advance_level( victim, p_class, FALSE, remort );
         }
     }

@@ -1403,14 +1403,14 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                 break;
             case 'b':
                 if ( !IS_NPC( ch ) && IS_VAMP( ch ) )
-                    snprintf( buf2, MSL, "@@e%d@@N", ch->pcdata->super->energy );
+                    snprintf( buf2, MSL, "@@e%d@@N", ch->super->energy );
                 else
                     snprintf( buf2, MSL, " " );
                 i = buf2;
                 break;
             case 'B':
                 if ( !IS_NPC( ch ) && IS_VAMP( ch ) )
-                    snprintf( buf2, MSL, "@@e%d@@N", ch->pcdata->super->energy_max );
+                    snprintf( buf2, MSL, "@@e%d@@N", ch->super->energy_max );
                 else
                     snprintf( buf2, MSL, " " );
                 i = buf2;

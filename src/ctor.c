@@ -258,6 +258,7 @@ char_data::char_data()
     stop_fighting = false;
     strong_magic = 0;
     stun_timer = 0;
+    super = new SUPER_DATA;
     suscept = 0;
     switched = false;
     term_col = 80;
@@ -598,7 +599,6 @@ pc_data::pc_data()
     room_exit = &str_empty[0];
     ruler_rank = 0;
     save_time = 0;
-    super = new SUPER_DATA;
 }
 
 quest_info::quest_info()

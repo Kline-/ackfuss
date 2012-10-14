@@ -1240,8 +1240,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                     chance = IS_NPC( ch ) ? ch->level * 2 : ch->pcdata->learned[gsn_decapitate];
                     chance += 25;
 
-                    if ( ( victim->pcdata->super->level * 5 ) > ch->level )
-                        chance -= ( victim->pcdata->super->level * 5 ) - ch->level;
+                    if ( ( victim->super->level * 5 ) > ch->level )
+                        chance -= ( victim->super->level * 5 ) - ch->level;
 
                     if ( number_percent(  ) < chance )
                     {
@@ -1254,12 +1254,12 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                     }
 
                     victim->act.reset(ACT_WEREWOLF);
-                    victim->pcdata->super->level = 0;
-                    victim->pcdata->super->exp = 0;
-                    victim->pcdata->super->energy = 0;
-                    victim->pcdata->super->energy_max = 0;
-                    victim->pcdata->super->generation = -1;
-                    victim->pcdata->super->bloodline = 0;
+                    victim->super->level = 0;
+                    victim->super->exp = 0;
+                    victim->super->energy = 0;
+                    victim->super->energy_max = 0;
+                    victim->super->generation = -1;
+                    victim->super->bloodline = 0;
                     victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
 
                     for ( sn = 0; sn <= MAX_SKILL; sn++ )
@@ -2599,7 +2599,7 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
 
         if ( !IS_NPC(gch) && (IS_VAMP( gch ) || IS_WOLF( gch )) )
 
-            gch->pcdata->super->exp++;
+            gch->super->exp++;
 
         if ( !IS_NPC( gch ) && ( gch->pcdata->learned[gsn_emotion_control] < 73 ) )
         {
@@ -5338,8 +5338,8 @@ DO_FUN(do_stake)
     /*
      * Make it harder to stake higher level targets
      */
-    if ( ( victim->pcdata->super->level * 5 ) > ch->level )
-        chance -= ( victim->pcdata->super->level * 5 ) - ch->level;
+    if ( ( victim->super->level * 5 ) > ch->level )
+        chance -= ( victim->super->level * 5 ) - ch->level;
 
     if ( victim->hit > 0 && IS_AWAKE( victim ) ) /* i.e. not vulnerable! */
         chance = 0;
@@ -5368,12 +5368,12 @@ DO_FUN(do_stake)
 
 
         victim->act.reset(ACT_VAMPIRE);
-        victim->pcdata->super->level = 0;
-        victim->pcdata->super->exp = 0;
-        victim->pcdata->super->energy = 0;
-        victim->pcdata->super->energy_max = 0;
-        victim->pcdata->super->generation = -1;
-        victim->pcdata->super->bloodline = 0;
+        victim->super->level = 0;
+        victim->super->exp = 0;
+        victim->super->energy = 0;
+        victim->super->energy_max = 0;
+        victim->super->generation = -1;
+        victim->super->bloodline = 0;
         victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
 
         /* remove vamp skills from dead vamp  */
@@ -5532,23 +5532,23 @@ DO_FUN(do_feed)
         act( "You plunge your fangs into $N's neck, and taste sweet blood!", ch, NULL, victim, TO_CHAR );
         act( "$n plunges $s fangs into your neck, and sucks your blood!", ch, NULL, victim, TO_VICT );
         act( "$n plunges $s fangs into $N's neck and sucks $S blood!", ch, NULL, victim, TO_NOTVICT );
-        if ( ch->pcdata->super->energy <= -5 )
+        if ( ch->super->energy <= -5 )
         {
-            ch->pcdata->super->energy = ch->pcdata->super->energy_max;
+            ch->super->energy = ch->super->energy_max;
             send_to_char( " You have now entered the ranks of the @@dKINDRED@@N!!!!\r\n", ch );
         }
         else
         {
 
-            bloodgain = ( ( 20 - ch->pcdata->super->generation ) + ch->pcdata->super->level );
+            bloodgain = ( ( 20 - ch->super->generation ) + ch->super->level );
             if ( bloodgain > victim->level )
                 bloodgain = victim->level;
         }
 
-        if ( ( ch->pcdata->super->energy + bloodgain ) > ch->pcdata->super->energy_max )
-            ch->pcdata->super->energy = ch->pcdata->super->energy_max;
+        if ( ( ch->super->energy + bloodgain ) > ch->super->energy_max )
+            ch->super->energy = ch->super->energy_max;
         else
-            ch->pcdata->super->energy += bloodgain;
+            ch->super->energy += bloodgain;
 
         if ( victim->hit > 0 )
         {
@@ -5567,13 +5567,13 @@ DO_FUN(do_feed)
             return;  /* for now :P SRZ
                    * if ( !IS_NPC(ch) && !IS_NPC(victim) )
                    * {
-                   * ch->pcdata->super->energy = victim->pcdata->super->energy;
-                   * victim->pcdata->super->energy = 0;
+                   * ch->super->energy = victim->super->energy;
+                   * victim->super->energy = 0;
                    * }
                    * if ( !IS_NPC(ch) && IS_NPC(victim) )
                    * gain_bloodlust( ch, victim->level*2 );
                    * if ( IS_NPC(ch) && !IS_NPC(victim) )
-                   * victim->pcdata->super->energy = 0;     */
+                   * victim->super->energy = 0;     */
         }
 
 
@@ -5728,16 +5728,16 @@ DO_FUN(do_rage)
 
     if ( str_cmp( arg, "FORCE" ) )
     {
-        chance += ( ( 5 - ch->pcdata->super->generation ) * 10 );
-        chance += ch->pcdata->super->level;
-        if ( ( ch->pcdata->super->generation < 4 ) || ( ch->pcdata->super->level > 14 ) )
+        chance += ( ( 5 - ch->super->generation ) * 10 );
+        chance += ch->super->level;
+        if ( ( ch->super->generation < 4 ) || ( ch->super->level > 14 ) )
             chance += 50;
     }
     else
     {
-        chance -= ( ( 5 - ch->pcdata->super->generation ) * 10 );
-        chance -= ch->pcdata->super->level;
-        if ( ( ch->pcdata->super->generation < 4 ) || ( ch->pcdata->super->level > 14 ) )
+        chance -= ( ( 5 - ch->super->generation ) * 10 );
+        chance -= ch->super->level;
+        if ( ( ch->super->generation < 4 ) || ( ch->super->level > 14 ) )
             chance -= 50;
     }
 
@@ -5758,7 +5758,7 @@ DO_FUN(do_rage)
 
         if ( !str_cmp( arg, "FORCE" ) )
         {
-            duration = number_range( ch->pcdata->super->generation / 4, 4 );
+            duration = number_range( ch->super->generation / 4, 4 );
 
             af4.duration = duration;
             af4.location = APPLY_NONE;
@@ -5769,19 +5769,19 @@ DO_FUN(do_rage)
 
             af1.duration = duration;
             af1.location = APPLY_DAMROLL;
-            af1.modifier = ( 10 - ch->pcdata->super->generation ) * 4;
+            af1.modifier = ( 10 - ch->super->generation ) * 4;
             af1.bitvector = 0;
             affect_join( ch, &af1 );
 
             af2.duration = duration;
             af2.location = APPLY_HITROLL;
-            af2.modifier = ( 10 - ch->pcdata->super->generation ) * 4;
+            af2.modifier = ( 10 - ch->super->generation ) * 4;
             af2.bitvector = 0;
             affect_join( ch, &af2 );
 
             af3.duration = duration;
             af3.location = APPLY_AC;
-            af3.modifier = ( 5 + ch->pcdata->super->generation ) * -10;
+            af3.modifier = ( 5 + ch->super->generation ) * -10;
             af3.bitvector = 0;
             affect_join( ch, &af3 );
 
@@ -5790,7 +5790,7 @@ DO_FUN(do_rage)
         }
         else
         {
-            duration = number_range( ch->pcdata->super->generation / 3, 5 );
+            duration = number_range( ch->super->generation / 3, 5 );
             af4.duration = duration;
             af4.location = 0;
             af4.modifier = 0;
@@ -5800,19 +5800,19 @@ DO_FUN(do_rage)
 
             af1.duration = duration;
             af1.location = APPLY_DAMROLL;
-            af1.modifier = ( 10 - ch->pcdata->super->generation ) * 4;
+            af1.modifier = ( 10 - ch->super->generation ) * 4;
             af1.bitvector = 0;
             affect_join( ch, &af1 );
 
             af2.duration = duration;
             af2.location = APPLY_HITROLL;
-            af2.modifier = ( 10 - ch->pcdata->super->generation ) * 4;
+            af2.modifier = ( 10 - ch->super->generation ) * 4;
             af2.bitvector = 0;
             affect_join( ch, &af2 );
 
             af3.duration = duration;
             af3.location = APPLY_AC;
-            af3.modifier = ( 5 + ch->pcdata->super->generation ) * -15;
+            af3.modifier = ( 5 + ch->super->generation ) * -15;
             af3.bitvector = 0;
             affect_join( ch, &af3 );
 
@@ -5820,7 +5820,7 @@ DO_FUN(do_rage)
         }
         send_to_char( "You are @@eENRAGED!!!!!!\r\n", ch );
         ch->act.set(ACT_RAGED);
-        ch->pcdata->super->energy = ( ch->pcdata->super->energy_max - number_range( 0, ch->pcdata->super->generation * 3 ) );
+        ch->super->energy = ( ch->super->energy_max - number_range( 0, ch->super->generation * 3 ) );
         ch->stance = STANCE_WARRIOR;
         ch->stance_ac_mod = 0;
         ch->stance_dr_mod = 0;
