@@ -474,7 +474,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
             else if ( ch->riding == NULL )
             {
                 snprintf( move_buf, MSL, "$L%s$n %s $T.",
-                          get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), ch->pcdata->room_exit );
+                          get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), CSTR( ch->room_exit ) );
             }
             else if ( ch->riding != NULL )
             {
@@ -508,7 +508,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
         else if ( ch->riding == NULL )
         {
             snprintf( move_buf, MSL, "$L%s$n %s $T.",
-                      get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), ch->pcdata->room_enter );
+                      get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), CSTR( ch->room_enter ) );
         }
         else if ( ch->riding != NULL )
         {

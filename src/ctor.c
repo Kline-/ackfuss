@@ -241,6 +241,8 @@ char_data::char_data()
     resist = 0;
     rider = NULL;
     riding = NULL;
+    room_enter = &str_empty[0];
+    room_exit = &str_empty[0];
     ruler_rank = 0;
     save_time = 0;
     saving_throw = 0;
@@ -597,8 +599,6 @@ pc_data::pc_data()
     recall_vnum = ROOM_VNUM_TEMPLE;
     records = new RECORD_DATA;
     recovery_code.clear();
-    room_enter = &str_empty[0];
-    room_exit = &str_empty[0];
 }
 
 quest_info::quest_info()

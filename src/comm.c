@@ -2955,79 +2955,71 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
         if ( !IS_NPC( ch ) )
         {
-            if ( !str_cmp( ch->pcdata->room_enter, "" ) )
+            if ( ch->room_enter.empty() )
             {
                 switch ( ch->race )
                 {
 
                     case 0:
-                        ch->pcdata->room_enter = str_dup( "saunters arrogantly in from" );
-                        ch->pcdata->room_exit = str_dup( "walks" );
+                        ch->room_enter = "saunters arrogantly in from";
+                        ch->room_exit = "walks";
                         break;
-
                     case 1:
-                        ch->pcdata->room_enter = str_dup( "sneaks in from" );
-                        ch->pcdata->room_exit = str_dup( "disappears" );
+                        ch->room_enter = "sneaks in from";
+                        ch->room_exit = "disappears";
                         break;
-
                     case 2:
-                        ch->pcdata->room_enter = str_dup( "barges into you from" );
-                        ch->pcdata->room_exit = str_dup( "charges" );
+                        ch->room_enter = "barges into you from";
+                        ch->room_exit = "charges";
                         break;
-
-
                     case 3:
-                        ch->pcdata->room_enter = str_dup( "quietly glides in from" );
-                        ch->pcdata->room_exit = str_dup( "glides quietly" );
+                        ch->room_enter = "quietly glides in from";
+                        ch->room_exit = "glides quietly";
                         break;
-
                     case 4:
-                        ch->pcdata->room_enter = str_dup( "appears in from" );
-                        ch->pcdata->room_exit = str_dup( "fades away" );
+                        ch->room_enter = "appears in from";
+                        ch->room_exit = "fades away";
                         break;
-
                     case 5:
-                        ch->pcdata->room_enter = str_dup( "stomps angrily in from" );
-                        ch->pcdata->room_exit = str_dup( "angrily stomps" );
+                        ch->room_enter = "stomps angrily in from";
+                        ch->room_exit = "angrily stomps";
                         break;
                     case 6:
-                        ch->pcdata->room_enter = str_dup( "skitters in from" );
-                        ch->pcdata->room_exit = str_dup( "skitters" );
+                        ch->room_enter = "skitters in from";
+                        ch->room_exit = "skitters";
                         break;
                     case 7:
-                        ch->pcdata->room_enter = str_dup( "slithers in from" );
-                        ch->pcdata->room_exit = str_dup( "slithers" );
+                        ch->room_enter = "slithers in from";
+                        ch->room_exit = "slithers";
                         break;
                     case 8:
-                        ch->pcdata->room_enter = str_dup( "flys at you from" );
-                        ch->pcdata->room_exit = str_dup( "flys away" );
+                        ch->room_enter = "flys at you from";
+                        ch->room_exit = "flys away";
                         break;
                     case 9:
-                        ch->pcdata->room_enter = str_dup( "gallops in from" );
-                        ch->pcdata->room_exit = str_dup( "gallops" );
+                        ch->room_enter = "gallops in from";
+                        ch->room_exit = "gallops";
                         break;
                     case 10:
-                        ch->pcdata->room_enter = str_dup( "marches in from" );
-                        ch->pcdata->room_exit = str_dup( "marches" );
+                        ch->room_enter = "marches in from";
+                        ch->room_exit = "marches";
                         break;
                     case 11:
-                        ch->pcdata->room_enter = str_dup( "flitters in from" );
-                        ch->pcdata->room_exit = str_dup( "flitters" );
+                        ch->room_enter = "flitters in from";
+                        ch->room_exit = "flitters";
                         break;
                     case 12:
-                        ch->pcdata->room_enter = str_dup( "boars you down from" );
-                        ch->pcdata->room_exit = str_dup( "rushes" );
+                        ch->room_enter = "boars you down from";
+                        ch->room_exit = "rushes";
                         break;
                     case 13:
-                        ch->pcdata->room_enter = str_dup( "flys at you from" );
-                        ch->pcdata->room_exit = str_dup( "flys away" );
+                        ch->room_enter = "flys at you from";
+                        ch->room_exit = "flys away";
                         break;
                     default:
-                        ch->pcdata->room_enter = str_dup( "moves in from" );
-                        ch->pcdata->room_exit = str_dup( "moves" );
+                        ch->room_enter = "moves in from";
+                        ch->room_exit = "moves";
                         break;
-
-
                 }
             }
         }

@@ -335,8 +335,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "LoadMsg        %s~\n", ch->pcdata->load_msg );
         fprintf( fp, "Bamfin         %s~\n", ch->pcdata->bamfin );
         fprintf( fp, "Bamfout        %s~\n", ch->pcdata->bamfout );
-        fprintf( fp, "Roomenter      %s~\n", ch->pcdata->room_enter );
-        fprintf( fp, "Roomexit       %s~\n", ch->pcdata->room_exit );
+        fprintf( fp, "Roomenter      %s~\n", CSTR( ch->room_enter ) );
+        fprintf( fp, "Roomexit       %s~\n", CSTR( ch->room_exit ) );
         fprintf( fp, "Title          %s~\n", CSTR( ch->title ) );
         /*
          * We add a '*' to preserve leading spaces... strip * on load
@@ -1245,11 +1245,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     KEY( "RecQpTot", ch->pcdata->records->qp_tot, fread_number( fp ) );
                 }
                 KEY( "Revision", cur_revision, fread_number( fp ) );
-                if ( !IS_NPC( ch ) )
-                {
-                    SKEY( "Roomenter", ch->pcdata->room_enter, fread_string( fp ) );
-                    SKEY( "Roomexit", ch->pcdata->room_exit, fread_string( fp ) );
-                }
+                KEY( "Roomenter", ch->room_enter, fread_string( fp ) );
+                KEY( "Roomexit", ch->room_exit, fread_string( fp ) );
                 KEY( "RulerRank", ch->ruler_rank, fread_number( fp ) );
 
                 if ( !str_cmp( word, "Remort" ) )

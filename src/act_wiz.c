@@ -3221,10 +3221,9 @@ DO_FUN(do_mset)
               return;
             }
         */
-        free_string( victim->pcdata->room_enter );
 
         snprintf( buf, MSL, "%s", arg3 );
-        victim->pcdata->room_enter = str_dup( buf );
+        victim->room_enter = buf;
 
         return;
     }
@@ -3243,10 +3242,9 @@ DO_FUN(do_mset)
               return;
             }
         */
-        free_string( victim->pcdata->room_exit );
 
         snprintf( buf, MSL, "%s", arg3 );
-        victim->pcdata->room_exit = str_dup( buf );
+        victim->room_exit = buf;
 
         return;
     }

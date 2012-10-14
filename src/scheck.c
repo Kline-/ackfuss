@@ -187,8 +187,6 @@ static void walk_pcdata( PC_DATA * p )
     touch( p->pwd );
     touch( p->bamfin );
     touch( p->bamfout );
-    touch( p->room_enter );
-    touch( p->room_exit );
     touch( p->header );
     touch( p->message );
     touch( p->lastlogin );

@@ -267,8 +267,6 @@ pc_data::~pc_data()
     free_string(pwd);
     delete quest_info;
     delete records;
-    free_string(room_enter);
-    free_string(room_exit);
 }
 
 quest_info::~quest_info()

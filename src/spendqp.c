@@ -272,7 +272,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
             if ( !str_cmp( ch->pcdata->pedit_string[0], "none" ) )
             {
-                snprintf( test_string, MSL, "%s", ch->pcdata->room_enter );
+                snprintf( test_string, MSL, "%s", CSTR( ch->room_enter ) );
             }
             else
             {
@@ -283,7 +283,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             act( move_buf, ch, NULL, rev_name[1], TO_CHAR );
             if ( !str_cmp( ch->pcdata->pedit_string[1], "none" ) )
             {
-                snprintf( test_string, MSL, "%s", ch->pcdata->room_exit );
+                snprintf( test_string, MSL, "%s", CSTR( ch->room_exit ) );
             }
             else
             {
@@ -342,20 +342,18 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             {
                 if ( str_cmp( ch->pcdata->pedit_string[0], "none" ) )
                 {
-                    free_string( ch->pcdata->room_enter );
-                    ch->pcdata->room_enter = str_dup( ch->pcdata->pedit_string[0] );
+                    ch->room_enter = ch->pcdata->pedit_string[0];
                     free_string( ch->pcdata->pedit_string[0] );
                     ch->pcdata->pedit_string[0] = str_dup( "none" );
-                    snprintf( catbuf, MSL, "Enter message changed to %s\r\n", ch->pcdata->room_enter );
+                    snprintf( catbuf, MSL, "Enter message changed to %s\r\n", CSTR( ch->room_enter ) );
                     strncat( brandbuf, catbuf, MSL - 1 );
                 }
                 if ( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
                 {
-                    free_string( ch->pcdata->room_exit );
-                    ch->pcdata->room_exit = str_dup( ch->pcdata->pedit_string[1] );
+                    ch->room_exit = ch->pcdata->pedit_string[1];
                     free_string( ch->pcdata->pedit_string[1] );
                     ch->pcdata->pedit_string[1] = str_dup( "none" );
-                    snprintf( catbuf, MSL, "Exit message changed to %s\r\n", ch->pcdata->room_exit );
+                    snprintf( catbuf, MSL, "Exit message changed to %s\r\n", CSTR( ch->room_exit ) );
                     strncat( brandbuf, catbuf, MSL - 1 );
                 }
                 free_string( ch->pcdata->pedit_string[0] );

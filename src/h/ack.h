@@ -646,6 +646,8 @@ class char_data
         int resist;
         CHAR_DATA *rider;
         CHAR_DATA *riding;
+        string room_enter;
+        string room_exit;
         int ruler_rank;
         time_t save_time;
         int saving_throw;
@@ -729,8 +731,6 @@ class pc_data
         int recall_vnum;
         RECORD_DATA *records; /* kill/damage/etc records */
         string recovery_code;
-        char *room_enter;
-        char *room_exit;
 };
 
 struct liq_type
