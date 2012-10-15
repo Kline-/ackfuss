@@ -236,6 +236,9 @@ char_data::char_data()
     p_class = 0;
     race = 0;
     race_mods = 0;
+    recall_vnum = ROOM_VNUM_TEMPLE;
+    records = new RECORD_DATA;
+    recovery_code.clear();
     reply = NULL;
     reset = NULL;
     resist = 0;
@@ -596,9 +599,6 @@ pc_data::pc_data()
     pwd = &str_empty[0];
     quest_info = new QUEST_INFO;
     quest_points = 0;
-    recall_vnum = ROOM_VNUM_TEMPLE;
-    records = new RECORD_DATA;
-    recovery_code.clear();
 }
 
 quest_info::quest_info()

@@ -1439,12 +1439,12 @@ DO_FUN(do_score)
     if ( !IS_NPC( ch ) )
     {
         snprintf( buf, MSL, " @@WYou have killed a total of: @@y%d @@WNPCs, and @@y%d @@WPlayers.",
-                  ch->pcdata->records->mk, ch->pcdata->records->pk );
+                  ch->records->mk, ch->records->pk );
         snprintf( buf2, MSL, "@@c|%s @@c|\r\n", center_text( buf, 62 ) );
         send_to_char( buf2, ch );
 
         snprintf( buf, MSL, " @@WA total of @@y%d @@WNPCs and @@y%d @@WPlayers have killed you.",
-                  ch->pcdata->records->md, ch->pcdata->records->pd );
+                  ch->records->md, ch->records->pd );
         snprintf( buf2, MSL, "@@c|%s @@c|\r\n", center_text( buf, 62 ) );
         send_to_char( buf2, ch );
 
@@ -1598,19 +1598,19 @@ DO_FUN(do_score)
         if ( sysdata.shownumbers )
         {
             snprintf( buf2, MSL, "@@WMDam: @@y%-4d @@W(@@y%-14s@@W)  PDam: @@y%-4d @@W(@@y%-14s@@W)",
-                      ch->pcdata->records->mdam_amt, ch->pcdata->records->mdam_gsn > 0 ? skill_table[ch->pcdata->records->mdam_gsn].name : "none",
-          ch->pcdata->records->pdam_amt, ch->pcdata->records->pdam_gsn > 0 ? ch->pcdata->records->pdam_gsn >= TYPE_HIT ? "auto attack" : skill_table[ch->pcdata->records->pdam_gsn].name : "none" );
+                      ch->records->mdam_amt, ch->records->mdam_gsn > 0 ? skill_table[ch->records->mdam_gsn].name : "none",
+          ch->records->pdam_amt, ch->records->pdam_gsn > 0 ? ch->records->pdam_gsn >= TYPE_HIT ? "auto attack" : skill_table[ch->records->pdam_gsn].name : "none" );
             snprintf( buf, MSL, "@@c|%s @@c|\r\n", center_text( buf2, 62 ) );
             send_to_char( buf, ch );
         }
 
         snprintf( buf2, MSL, "@@WCrusades: @@y%-4d  @@WQP: @@y%-4d  @@WTotal QP: @@y%-5d",
-                  ch->pcdata->records->crusade, ch->pcdata->records->qp, ch->pcdata->records->qp_tot );
+                  ch->records->crusade, ch->records->qp, ch->records->qp_tot );
         snprintf( buf, MSL, "@@c|%s @@c|\r\n", center_text( buf2, 62 ) );
         send_to_char( buf, ch );
 
         snprintf( buf2, MSL, "@@WYou have completed @@y%d @@Wmquests and failed @@y%d@@W.",
-                  ch->pcdata->records->mquest_c, ch->pcdata->records->mquest_f );
+                  ch->records->mquest_c, ch->records->mquest_f );
         snprintf( buf, MSL, "@@c|%s @@c|\r\n", center_text( buf2, 62 ) );
         send_to_char( buf, ch );
 
@@ -4841,10 +4841,10 @@ DO_FUN(do_whois)
     if ( victim->act.test(ACT_PKOK) )
         snprintf( buf + strlen( buf ), MSL, "Player is @@ePKOK@@N\r\n" );
     snprintf( buf + strlen( buf ), MSL, "Players Killed: %d.  Times killed by players: %d.\r\n",
-              victim->pcdata->records->pk, victim->pcdata->records->pd );
+              victim->records->pk, victim->records->pd );
 
     snprintf( buf + strlen( buf ), MSL, "Mobs killed: %d.  Times killed by mobs: %d.\r\n",
-              victim->pcdata->records->mk, victim->pcdata->records->md );
+              victim->records->mk, victim->records->md );
 
     if ( IS_IMMORTAL( victim ) )
     {

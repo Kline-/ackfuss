@@ -1037,11 +1037,11 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
 
     if ( !IS_NPC(ch) )
     {
-        if ( dam > ch->pcdata->records->pdam_amt )
+        if ( dam > ch->records->pdam_amt )
         {
             send_to_char("@@yYou've broken your physical damage record!@@N\r\n", ch);
-            ch->pcdata->records->pdam_amt = (int)dam;
-            ch->pcdata->records->pdam_gsn = tmp_dt;
+            ch->records->pdam_amt = (int)dam;
+            ch->records->pdam_gsn = tmp_dt;
         }
     }
 
@@ -1260,7 +1260,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                     victim->super->energy_max = 0;
                     victim->super->generation = -1;
                     victim->super->bloodline = 0;
-                    victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
+                    victim->recall_vnum = ROOM_VNUM_TEMPLE;
 
                     for ( sn = 0; sn <= MAX_SKILL; sn++ )
                         if ( ( skill_table[sn].flag2 == WOLF ) && ( victim->pcdata->learned[sn] > 0 ) )
@@ -1313,16 +1313,16 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
         if ( !IS_NPC( ch ) )
         {
             if ( !IS_NPC( victim ) )
-                ch->pcdata->records->pk++;
+                ch->records->pk++;
             else
-                ch->pcdata->records->mk++;
+                ch->records->mk++;
         }
         if ( !IS_NPC( victim ) )
         {
             if ( !IS_NPC( ch ) )
-                victim->pcdata->records->pd++;
+                victim->records->pd++;
             else
-                victim->pcdata->records->md++;
+                victim->records->md++;
         }
 
         if ( !IS_NPC( victim ) || victim->act.test(ACT_INTELLIGENT ) )
@@ -2013,7 +2013,7 @@ void update_pos( CHAR_DATA * victim )
             }
         }
         char_from_room( victim );
-        char_to_room( victim, get_room_index( victim->pcdata->recall_vnum ) );
+        char_to_room( victim, get_room_index( victim->recall_vnum ) );
         act( "A mist floats in, and forms into $n's corpse!", victim, NULL, NULL, TO_ROOM );
 
         SET_BIT( victim->affected_by, AFF_VAMP_HEALING );
@@ -5374,7 +5374,7 @@ DO_FUN(do_stake)
         victim->super->energy_max = 0;
         victim->super->generation = -1;
         victim->super->bloodline = 0;
-        victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
+        victim->recall_vnum = ROOM_VNUM_TEMPLE;
 
         /* remove vamp skills from dead vamp  */
 

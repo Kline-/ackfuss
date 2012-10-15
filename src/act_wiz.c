@@ -3258,7 +3258,7 @@ DO_FUN(do_mset)
         }
         else
         {
-            victim->pcdata->recall_vnum = victim->in_room->vnum;
+            victim->recall_vnum = victim->in_room->vnum;
             send_to_char( "Done!\r\n", ch );
             send_to_char( "You will now recall to....HERE!\r\n", victim );
         }

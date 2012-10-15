@@ -417,19 +417,19 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "QuestType      %d\n", ch->pcdata->quest_info->quest_type );
         fprintf( fp, "QuestWaitTime  %d\n", ch->pcdata->quest_info->wait_time );
 
-        fprintf( fp, "RecCrusade     %d\n", ch->pcdata->records->crusade );
-        fprintf( fp, "RecMdamAmt     %d\n", ch->pcdata->records->mdam_amt );
-        fprintf( fp, "RecMdamGsn     %d\n", ch->pcdata->records->mdam_gsn );
-        fprintf( fp, "RecPdamAmt     %d\n", ch->pcdata->records->pdam_amt );
-        fprintf( fp, "RecPdamGsn     %d\n", ch->pcdata->records->pdam_gsn );
-        fprintf( fp, "RecPD          %d\n", ch->pcdata->records->pd );
-        fprintf( fp, "RecPK          %d\n", ch->pcdata->records->pk );
-        fprintf( fp, "RecMD          %d\n", ch->pcdata->records->md );
-        fprintf( fp, "RecMK          %d\n", ch->pcdata->records->mk );
-        fprintf( fp, "RecMquestC     %d\n", ch->pcdata->records->mquest_c );
-        fprintf( fp, "RecMquestF     %d\n", ch->pcdata->records->mquest_f );
-        fprintf( fp, "RecQP          %d\n", ch->pcdata->records->qp );
-        fprintf( fp, "RecQpTot       %d\n", ch->pcdata->records->qp_tot );
+        fprintf( fp, "RecCrusade     %d\n", ch->records->crusade );
+        fprintf( fp, "RecMdamAmt     %d\n", ch->records->mdam_amt );
+        fprintf( fp, "RecMdamGsn     %d\n", ch->records->mdam_gsn );
+        fprintf( fp, "RecPdamAmt     %d\n", ch->records->pdam_amt );
+        fprintf( fp, "RecPdamGsn     %d\n", ch->records->pdam_gsn );
+        fprintf( fp, "RecPD          %d\n", ch->records->pd );
+        fprintf( fp, "RecPK          %d\n", ch->records->pk );
+        fprintf( fp, "RecMD          %d\n", ch->records->md );
+        fprintf( fp, "RecMK          %d\n", ch->records->mk );
+        fprintf( fp, "RecMquestC     %d\n", ch->records->mquest_c );
+        fprintf( fp, "RecMquestF     %d\n", ch->records->mquest_f );
+        fprintf( fp, "RecQP          %d\n", ch->records->qp );
+        fprintf( fp, "RecQpTot       %d\n", ch->records->qp_tot );
 
         fprintf( fp, "SupBloodline   %d\n", ch->super->bloodline );
         fprintf( fp, "SupEnergy      %d\n", ch->super->energy );
@@ -441,9 +441,9 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "SupSkillLearn  %d\n", ch->super->skills_learned );
         fprintf( fp, "SupSkillMax    %d\n", ch->super->skills_max );
 
-        fprintf( fp, "RecoveryCode   %s~\n", ch->pcdata->recovery_code.c_str() );
+        fprintf( fp, "RecoveryCode   %s~\n", ch->recovery_code.c_str() );
         fprintf( fp, "QuestPoints    %d\n", ch->pcdata->quest_points );
-        fprintf( fp, "RecallVnum     %d\n", ch->pcdata->recall_vnum );
+        fprintf( fp, "RecallVnum     %d\n", ch->recall_vnum );
         fprintf( fp, "GainMana       %d\n", ch->pcdata->mana_from_gain );
         fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
         fprintf( fp, "GainMove       %d\n", ch->pcdata->move_from_gain );
@@ -1227,23 +1227,21 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
             case 'R':
                 KEY( "Race", ch->race, fread_number( fp ) );
-                if ( !IS_NPC( ch ) )
-                {
-                    KEY( "RecCrusade", ch->pcdata->records->crusade, fread_number( fp ) );
-                    KEY( "RecMdamAmt", ch->pcdata->records->mdam_amt, fread_number( fp ) );
-                    KEY( "RecMdamGsn", ch->pcdata->records->mdam_gsn, fread_number( fp ) );
-                    KEY( "RecPdamAmt", ch->pcdata->records->pdam_amt, fread_number( fp ) );
-                    KEY( "RecPdamGsn", ch->pcdata->records->pdam_gsn, fread_number( fp ) );
-                    KEY( "RecPD", ch->pcdata->records->pd, fread_number( fp ) );
-                    KEY( "RecPK", ch->pcdata->records->pk, fread_number( fp ) );
-                    KEY( "RecMD", ch->pcdata->records->md, fread_number( fp ) );
-                    KEY( "RecMK", ch->pcdata->records->mk, fread_number( fp ) );
-                    KEY( "RecMquestC", ch->pcdata->records->mquest_c, fread_number( fp ) );
-                    KEY( "RecMquestF", ch->pcdata->records->mquest_f, fread_number( fp ) );
-                    KEY( "RecoveryCode", ch->pcdata->recovery_code, fread_string( fp ) );
-                    KEY( "RecQP", ch->pcdata->records->qp, fread_number( fp ) );
-                    KEY( "RecQpTot", ch->pcdata->records->qp_tot, fread_number( fp ) );
-                }
+                KEY( "RecallVnum", ch->recall_vnum, fread_number( fp ) );
+                KEY( "RecCrusade", ch->records->crusade, fread_number( fp ) );
+                KEY( "RecMdamAmt", ch->records->mdam_amt, fread_number( fp ) );
+                KEY( "RecMdamGsn", ch->records->mdam_gsn, fread_number( fp ) );
+                KEY( "RecPdamAmt", ch->records->pdam_amt, fread_number( fp ) );
+                KEY( "RecPdamGsn", ch->records->pdam_gsn, fread_number( fp ) );
+                KEY( "RecPD", ch->records->pd, fread_number( fp ) );
+                KEY( "RecPK", ch->records->pk, fread_number( fp ) );
+                KEY( "RecMD", ch->records->md, fread_number( fp ) );
+                KEY( "RecMK", ch->records->mk, fread_number( fp ) );
+                KEY( "RecMquestC", ch->records->mquest_c, fread_number( fp ) );
+                KEY( "RecMquestF", ch->records->mquest_f, fread_number( fp ) );
+                KEY( "RecoveryCode", ch->recovery_code, fread_string( fp ) );
+                KEY( "RecQP", ch->records->qp, fread_number( fp ) );
+                KEY( "RecQpTot", ch->records->qp_tot, fread_number( fp ) );
                 KEY( "Revision", cur_revision, fread_number( fp ) );
                 KEY( "Roomenter", ch->room_enter, fread_string( fp ) );
                 KEY( "Roomexit", ch->room_exit, fread_string( fp ) );
@@ -1265,11 +1263,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     fMatch = TRUE;
                     break;
                 }
-                if ( !IS_NPC( ch ) )
-                {
-                    KEY( "RecallVnum", ch->pcdata->recall_vnum, fread_number( fp ) );
-                }
-
                 break;
 
             case 'S':

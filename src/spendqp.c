@@ -475,7 +475,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
         else
         {
             ROOM_INDEX_DATA *location;
-            if ( ( location = get_room_index( ch->pcdata->recall_vnum ) ) == NULL )
+            if ( ( location = get_room_index( ch->recall_vnum ) ) == NULL )
                 location = get_room_index( ROOM_VNUM_TEMPLE );
             act( "@@mKline @@Wappears before you, and takes you to your Happy Place!", ch, NULL, NULL, TO_CHAR );
             act( "@@mKline @@Wappears before you, and takes $n to $s Happy Place!", ch, NULL, NULL, TO_ROOM );
@@ -510,7 +510,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             else
             {
 
-                ch->pcdata->recall_vnum = ch->in_room->vnum;
+                ch->recall_vnum = ch->in_room->vnum;
                 ch->pcdata->quest_points -= 50;
                 do_save( ch, "auto" );
                 send_to_char( "You know call this room your home, and will recall here!\r\n", ch );

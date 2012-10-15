@@ -176,7 +176,7 @@ DO_FUN(do_mquest)
 
         snprintf(buf, MSL, "Giving up on this quest has cost you %d qp, %d exp, %s.\r\n", pqp, pexp, cost_to_money(money_to_value(ch, mbuf)));
         send_to_char(buf, ch);
-        ch->pcdata->records->mquest_f++;
+        ch->records->mquest_f++;
         ch->pcdata->quest_info->wait_time = number_range(10, 15); /* higher wait time on giveup */
         snprintf(buf, MSL, "You must wait %d minutes before your next quest.\r\n", ch->pcdata->quest_info->wait_time);
         send_to_char(buf, ch);
@@ -665,21 +665,21 @@ void mquest_complete_message( CHAR_DATA *ch )
         join_money(round_money(ch->pcdata->quest_info->quest_reward[QUEST_REWARD_GOLD], TRUE), ch->money);
         ch->exp += ch->pcdata->quest_info->quest_reward[QUEST_REWARD_EXP];
 
-        ch->pcdata->records->mquest_c++;
-        ch->pcdata->records->qp_tot += ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
+        ch->records->mquest_c++;
+        ch->records->qp_tot += ch->pcdata->quest_info->quest_reward[QUEST_REWARD_QP];
 
-        if ( ch->pcdata->records->mquest_c % 50 == 0 )  /* every time a person completes 50 quests */
+        if ( ch->records->mquest_c % 50 == 0 )  /* every time a person completes 50 quests */
         {
             send_to_char("@@eCongratulations! You've succesfully completed 50 questmaster quests!\r\n", ch);
             send_to_char("@@eYou have been rewarded a bonus 25 practices and 40 quest points!\r\n", ch);
             ch->pcdata->practice += 25;
             ch->pcdata->quest_points += 40;
-            ch->pcdata->records->qp_tot += 40;
+            ch->records->qp_tot += 40;
         }
-        if ( ch->pcdata->quest_points > ch->pcdata->records->qp )
+        if ( ch->pcdata->quest_points > ch->records->qp )
         {
             send_to_char("@@yYou've broken your quest point record!@@N\r\n", ch);
-            ch->pcdata->records->qp = ch->pcdata->quest_points;
+            ch->records->qp = ch->pcdata->quest_points;
         }
         mquest_clear(ch, FALSE);
     }

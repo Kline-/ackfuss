@@ -245,7 +245,7 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
         victim->condition[COND_THIRST] = 20;
         victim->super->pracs = 2;
         ch->super->energy_max -= 5;
-        victim->pcdata->recall_vnum = 9001;
+        victim->recall_vnum = 9001;
 
 
         send_to_char( "@@NYou sink your fangs into your helpless victim.\r\n", ch );

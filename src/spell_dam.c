@@ -948,11 +948,11 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
 
     if ( !IS_NPC(ch) )
     {
-        if ( dam > ch->pcdata->records->mdam_amt )
+        if ( dam > ch->records->mdam_amt )
         {
             send_to_char("@@yYou've broken your magical damage record!@@N\r\n", ch);
-            ch->pcdata->records->mdam_amt = dam;
-            ch->pcdata->records->mdam_gsn = sn;
+            ch->records->mdam_amt = dam;
+            ch->records->mdam_gsn = sn;
         }
     }
 
@@ -1018,17 +1018,17 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
         if ( !IS_NPC( ch ) )
         {
             if ( !IS_NPC( victim ) )
-                ch->pcdata->records->pk++;
+                ch->records->pk++;
             else
-                ch->pcdata->records->mk++;
+                ch->records->mk++;
         }
 
         if ( !IS_NPC( victim ) )
         {
             if ( !IS_NPC( ch ) )
-                victim->pcdata->records->pd++;
+                victim->records->pd++;
             else
-                victim->pcdata->records->md++;
+                victim->records->md++;
         }
 
         if ( !IS_NPC( victim ) || victim->act.test(ACT_INTELLIGENT) )

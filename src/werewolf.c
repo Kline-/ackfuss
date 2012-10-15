@@ -263,13 +263,13 @@ void do_tribe( CHAR_DATA * ch, char *argument )
             do_howl( ch, buf );
             victim->super->bloodline = 0;
             victim->super->generation = 9;
-            victim->pcdata->recall_vnum = ROOM_VNUM_TEMPLE;
+            victim->recall_vnum = ROOM_VNUM_TEMPLE;
             victim->super->level = 1;
             for ( sn = 0; sn <= MAX_SKILL; sn++ )
                 if ( ( skill_table[sn].flag2 == WOLF ) && ( victim->pcdata->learned[sn] > 0 ) )
                     victim->pcdata->learned[sn] = 0;
             char_from_room( victim );
-            char_to_room( victim, get_room_index( victim->pcdata->recall_vnum ) );
+            char_to_room( victim, get_room_index( victim->recall_vnum ) );
             victim->sentence += 15000;
             if ( !victim->act.test(ACT_KILLER) )
                 victim->act.set(ACT_KILLER);
@@ -490,7 +490,7 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
         victim->super->energy_max = 7;
         victim->act.set(ACT_WEREWOLF);
         victim->super->pracs = 2;
-        victim->pcdata->recall_vnum = ch->pcdata->recall_vnum;
+        victim->recall_vnum = ch->recall_vnum;
 
 
         send_to_char( "@@NYou thrash the cowering form beneath you, raking your @@eclaws@@N along it's soul.\r\n", ch );

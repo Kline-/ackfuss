@@ -641,6 +641,9 @@ class char_data
         int p_class;
         int race;
         int race_mods;
+        int recall_vnum;
+        RECORD_DATA *records; /* kill/damage/etc records */
+        string recovery_code;
         CHAR_DATA *reply;
         RESET_DATA *reset;
         int resist;
@@ -728,9 +731,6 @@ class pc_data
         char *pwd;
         QUEST_INFO *quest_info;
         short quest_points;
-        int recall_vnum;
-        RECORD_DATA *records; /* kill/damage/etc records */
-        string recovery_code;
 };
 
 struct liq_type

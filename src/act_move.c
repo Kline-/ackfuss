@@ -1561,8 +1561,7 @@ DO_FUN(do_recall)
     else
         location = get_room_index( ROOM_VNUM_TEMPLE );
 
-    if ( !IS_NPC( ch ) )
-        location = get_room_index( ch->pcdata->recall_vnum );
+    location = get_room_index( ch->recall_vnum );
 
     if ( deathmatch )
     {

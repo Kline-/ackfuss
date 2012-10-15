@@ -2387,7 +2387,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             return;
         }
 
-        d->character->pcdata->recovery_code.clear();
+        d->character->recovery_code.clear();
         for ( li = pload_list.begin(); li != pload_list.end(); li++ )
         {
             dp = *li;
@@ -3024,8 +3024,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             }
         }
 
-        if ( IS_VAMP( ch ) && !IS_NPC( ch ) && ( ch->pcdata->recall_vnum == ROOM_VNUM_TEMPLE ) )
-            ch->pcdata->recall_vnum = 9001;
+        if ( IS_VAMP( ch ) && ( ch->recall_vnum == ROOM_VNUM_TEMPLE ) )
+            ch->recall_vnum = 9001;
 
         if ( ch->pcdata->hp_from_gain < 0 )
             reset_gain_stats( ch );
@@ -3156,12 +3156,12 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
             return true;
         }
 
-        who->character->pcdata->recovery_code = gen_rand_string(8);
+        who->character->recovery_code = gen_rand_string(8);
         snprintf( subj, MSL, "%s Password Reset Code", mudnamenocolor );
-        snprintf( body, MSL, "<html>This email was used by a player of %s. If this was not you, please disregard it.<br><br>Reset code: <b>%s</b></html>", mudnamenocolor, who->character->pcdata->recovery_code.c_str() );
+        snprintf( body, MSL, "<html>This email was used by a player of %s. If this was not you, please disregard it.<br><br>Reset code: <b>%s</b></html>", mudnamenocolor, who->character->recovery_code.c_str() );
         if ( !send_email( who->character->pcdata->email->address.c_str(), subj, body, true, who->character ) )
         {
-            who->character->pcdata->recovery_code.clear();
+            who->character->recovery_code.clear();
             offline_unload(who);
             write_to_buffer( d, "\r\nThat player's email address has not been validated. Unable to initiate password recovery.\r\n" );
             write_to_buffer( d, LOGIN_STRING );
@@ -3206,7 +3206,7 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
             return true;
         }
 
-        if ( who->character->pcdata->recovery_code.empty() )
+        if ( who->character->recovery_code.empty() )
         {
             offline_unload(who);
             write_to_buffer( d, "\r\nNo recovery code has been requested for that player. Unable to initiate password reset.\r\n" );
@@ -3214,7 +3214,7 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
             return true;
         }
 
-        if ( str_cmp( who->character->pcdata->recovery_code.c_str(), arg3 ) )
+        if ( str_cmp( who->character->recovery_code.c_str(), arg3 ) )
         {
             offline_unload(who);
             write_to_buffer( d, "\r\nInvalid recovery code. Unable to initiate password reset.\r\n" );

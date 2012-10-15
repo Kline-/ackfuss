@@ -110,6 +110,7 @@ char_data::~char_data()
         delete pcdata;
     delete money;
     delete casting;
+    delete records;
     delete super;
 
     aggro_list.remove(this);
@@ -266,7 +267,6 @@ pc_data::~pc_data()
         delete pnote;
     free_string(pwd);
     delete quest_info;
-    delete records;
 }
 
 quest_info::~quest_info()
