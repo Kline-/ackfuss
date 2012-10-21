@@ -804,12 +804,12 @@ void crusade_reward( CHAR_DATA *ch )
     reward = quest_object->value[0];
     snprintf( buf, MSL, "You receive %d quest points!\r\n", reward );
     send_to_char( buf, ch );
-    ch->pcdata->quest_points += reward;
+    ch->quest_points += reward;
     ch->records->qp_tot += reward;
-    if ( ch->pcdata->quest_points > ch->records->qp )
+    if ( ch->quest_points > ch->records->qp )
     {
         send_to_char("@@yYou've broken your quest point record!@@N\r\n", ch);
-        ch->records->qp = ch->pcdata->quest_points;
+        ch->records->qp = ch->quest_points;
     }
 
     reward = quest_object->value[1];

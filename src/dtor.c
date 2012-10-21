@@ -110,6 +110,7 @@ char_data::~char_data()
         delete pcdata;
     delete money;
     delete casting;
+    delete quest_info;
     delete records;
     delete super;
 
@@ -266,7 +267,6 @@ pc_data::~pc_data()
     if ( pnote )
         delete pnote;
     free_string(pwd);
-    delete quest_info;
 }
 
 quest_info::~quest_info()

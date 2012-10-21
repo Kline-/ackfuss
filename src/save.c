@@ -393,29 +393,29 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
         fprintf( fp, "QuestAmount    " );
         for ( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-            fprintf( fp, "%d ", ch->pcdata->quest_info->amount[foo] );
+            fprintf( fp, "%d ", ch->quest_info->amount[foo] );
         fprintf( fp, "\n" );
-        fprintf( fp, "QuestComplete  %d\n", ch->pcdata->quest_info->quest_complete );
+        fprintf( fp, "QuestComplete  %d\n", ch->quest_info->quest_complete );
         fprintf( fp, "QuestHint      " );
         for ( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-            fprintf( fp, "%d ", ch->pcdata->quest_info->quest_hint[foo] );
+            fprintf( fp, "%d ", ch->quest_info->quest_hint[foo] );
         fprintf( fp, "\n" );
-        fprintf( fp, "QuestIsQuest   %d\n", ch->pcdata->quest_info->is_questing );
+        fprintf( fp, "QuestIsQuest   %d\n", ch->quest_info->is_questing );
         fprintf( fp, "QuestItem      " );
         for ( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-            fprintf( fp, "%d ", ch->pcdata->quest_info->quest_item_vnum[foo] );
+            fprintf( fp, "%d ", ch->quest_info->quest_item_vnum[foo] );
         fprintf( fp, "\n" );
         fprintf( fp, "QuestMob       " );
         for ( foo = 0; foo < QUEST_MAX_DATA; foo++ )
-            fprintf( fp, "%d ", ch->pcdata->quest_info->quest_mob_vnum[foo] );
+            fprintf( fp, "%d ", ch->quest_info->quest_mob_vnum[foo] );
         fprintf( fp, "\n" );
         fprintf( fp, "QuestReward    " );
         for ( foo = 0; foo < QUEST_MAX_REWARD; foo++ )
-            fprintf( fp, "%d ", ch->pcdata->quest_info->quest_reward[foo] );
+            fprintf( fp, "%d ", ch->quest_info->quest_reward[foo] );
         fprintf( fp, "\n" );
-        fprintf( fp, "QuestTimeLeft  %d\n", ch->pcdata->quest_info->time_left );
-        fprintf( fp, "QuestType      %d\n", ch->pcdata->quest_info->quest_type );
-        fprintf( fp, "QuestWaitTime  %d\n", ch->pcdata->quest_info->wait_time );
+        fprintf( fp, "QuestTimeLeft  %d\n", ch->quest_info->time_left );
+        fprintf( fp, "QuestType      %d\n", ch->quest_info->quest_type );
+        fprintf( fp, "QuestWaitTime  %d\n", ch->quest_info->wait_time );
 
         fprintf( fp, "RecCrusade     %d\n", ch->records->crusade );
         fprintf( fp, "RecMdamAmt     %d\n", ch->records->mdam_amt );
@@ -442,7 +442,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "SupSkillMax    %d\n", ch->super->skills_max );
 
         fprintf( fp, "RecoveryCode   %s~\n", ch->recovery_code.c_str() );
-        fprintf( fp, "QuestPoints    %d\n", ch->pcdata->quest_points );
+        fprintf( fp, "QuestPoints    %d\n", ch->quest_points );
         fprintf( fp, "RecallVnum     %d\n", ch->recall_vnum );
         fprintf( fp, "GainMana       %d\n", ch->pcdata->mana_from_gain );
         fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
@@ -1179,50 +1179,47 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'Q':
-                if ( !IS_NPC( ch ) )
+                if ( !str_cmp( word, "QuestAmount" ) )
                 {
-                    if ( !str_cmp( word, "QuestAmount" ) )
-                    {
-                        for ( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
-                            ch->pcdata->quest_info->amount[cnt] = fread_number( fp );
-                        fMatch = TRUE;
-                        break;
-                    }
-                    KEY( "QuestComplete", ch->pcdata->quest_info->quest_complete, fread_number( fp ) );
-                    if ( !str_cmp( word, "QuestHint" ) )
-                    {
-                        for ( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
-                            ch->pcdata->quest_info->quest_hint[cnt] = fread_number( fp );
-                        fMatch = TRUE;
-                        break;
-                    }
-                    KEY( "QuestIsQuest", ch->pcdata->quest_info->is_questing, fread_number( fp ) );
-                    if ( !str_cmp( word, "QuestItem" ) )
-                    {
-                        for ( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
-                            ch->pcdata->quest_info->quest_item_vnum[cnt] = fread_number( fp );
-                        fMatch = TRUE;
-                        break;
-                    }
-                    if ( !str_cmp( word, "QuestMob" ) )
-                    {
-                        for ( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
-                            ch->pcdata->quest_info->quest_mob_vnum[cnt] = fread_number( fp );
-                        fMatch = TRUE;
-                        break;
-                    }
-                    KEY( "QuestPoints", ch->pcdata->quest_points, fread_number( fp ) );
-                    if ( !str_cmp( word, "QuestReward" ) )
-                    {
-                        for ( cnt = 0; cnt < QUEST_MAX_REWARD; cnt++ )
-                            ch->pcdata->quest_info->quest_reward[cnt] = fread_number( fp );
-                        fMatch = TRUE;
-                        break;
-                    }
-                    KEY( "QuestTimeLeft", ch->pcdata->quest_info->time_left, fread_number( fp ) );
-                    KEY( "QuestType", ch->pcdata->quest_info->quest_type, fread_number( fp ) );
-                    KEY( "QuestWaitTime", ch->pcdata->quest_info->wait_time, fread_number( fp ) );
+                    for ( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
+                        ch->quest_info->amount[cnt] = fread_number( fp );
+                    fMatch = TRUE;
+                    break;
                 }
+                KEY( "QuestComplete", ch->quest_info->quest_complete, fread_number( fp ) );
+                if ( !str_cmp( word, "QuestHint" ) )
+                {
+                    for ( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
+                        ch->quest_info->quest_hint[cnt] = fread_number( fp );
+                    fMatch = TRUE;
+                    break;
+                }
+                KEY( "QuestIsQuest", ch->quest_info->is_questing, fread_number( fp ) );
+                if ( !str_cmp( word, "QuestItem" ) )
+                {
+                    for ( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
+                        ch->quest_info->quest_item_vnum[cnt] = fread_number( fp );
+                    fMatch = TRUE;
+                    break;
+                }
+                if ( !str_cmp( word, "QuestMob" ) )
+                {
+                    for ( cnt = 0; cnt < QUEST_MAX_DATA; cnt++ )
+                        ch->quest_info->quest_mob_vnum[cnt] = fread_number( fp );
+                    fMatch = TRUE;
+                    break;
+                }
+                KEY( "QuestPoints", ch->quest_points, fread_number( fp ) );
+                if ( !str_cmp( word, "QuestReward" ) )
+                {
+                    for ( cnt = 0; cnt < QUEST_MAX_REWARD; cnt++ )
+                        ch->quest_info->quest_reward[cnt] = fread_number( fp );
+                    fMatch = TRUE;
+                    break;
+                }
+                KEY( "QuestTimeLeft", ch->quest_info->time_left, fread_number( fp ) );
+                KEY( "QuestType", ch->quest_info->quest_type, fread_number( fp ) );
+                KEY( "QuestWaitTime", ch->quest_info->wait_time, fread_number( fp ) );
                 break;
 
             case 'R':

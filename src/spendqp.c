@@ -320,7 +320,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                 qp_cost++;
             if ( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
                 qp_cost++;
-            if ( ch->pcdata->quest_points < qp_cost )
+            if ( ch->quest_points < qp_cost )
             {
                 send_to_char( "You don't have enough quest points!\r\n", ch );
                 for ( i = 0; i < 5; i++ )
@@ -362,7 +362,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                 ch->pcdata->pedit_string[1] = str_dup( "none" );
                 free_string( ch->pcdata->pedit_state );
                 ch->pcdata->pedit_state = str_dup( "none" );
-                ch->pcdata->quest_points -= qp_cost;
+                ch->quest_points -= qp_cost;
                 do_save( ch, "auto" );
                 {
                     BRAND_DATA *brand;
@@ -391,7 +391,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             char *parse = ch->pcdata->pedit_string[0];
             char word1[MSL];
             assistbuf[0] = '\0';
-            if ( ch->pcdata->quest_points < 3 )
+            if ( ch->quest_points < 3 )
             {
                 send_to_char( "You do not have enough quest points!\r\n", ch );
                 for ( i = 0; i < 5; i++ )
@@ -435,7 +435,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             free_string( ch->pcdata->pedit_state );
             ch->pcdata->pedit_state = str_dup( "none" );
             send_to_char( "Done!\r\n", ch );
-            ch->pcdata->quest_points -= 3;
+            ch->quest_points -= 3;
             do_save( ch, "auto" );
             {
                 BRAND_DATA *brand;
@@ -467,7 +467,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             return;
         }
 
-        if ( ch->pcdata->quest_points < 10 )
+        if ( ch->quest_points < 10 )
         {
             send_to_char( "You don't have enough quest points. Cost is 10 qp.\r\n", ch );
             return;
@@ -483,14 +483,14 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             char_to_room( ch, location );
             do_look( ch, "" );
             act( "$n steps into the room from a @@apulsating @@mvortex@@N.", ch, NULL, NULL, TO_ROOM );
-            ch->pcdata->quest_points -= 10;
+            ch->quest_points -= 10;
             do_save( ch, "auto" );
             return;
         }
     }
     if ( !str_cmp( arg1, "home" ) )
     {
-        if ( ch->pcdata->quest_points < 50 )
+        if ( ch->quest_points < 50 )
         {
             send_to_char( "You don't have enough quest points. Cost is 50 qp.\r\n", ch );
             return;
@@ -511,7 +511,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             {
 
                 ch->recall_vnum = ch->in_room->vnum;
-                ch->pcdata->quest_points -= 50;
+                ch->quest_points -= 50;
                 do_save( ch, "auto" );
                 send_to_char( "You know call this room your home, and will recall here!\r\n", ch );
                 return;
@@ -521,7 +521,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
     if ( !str_cmp( arg1, "corpse" ) )
     {
-        if ( ch->pcdata->quest_points < 10 )
+        if ( ch->quest_points < 10 )
         {
             send_to_char( "You don't have enough quest points. Cost is 10 qp.\r\n", ch );
             return;
@@ -556,7 +556,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             {
                 act( "Couldn't find it.", ch, NULL, NULL, TO_CHAR );
             }
-            ch->pcdata->quest_points -= 10;
+            ch->quest_points -= 10;
             do_save( ch, "auto" );
             return;
         }
@@ -839,16 +839,16 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         cost *= ch->max_str; /* Take base cost (5) mult by current value */
-        if ( ch->pcdata->quest_points < cost )
+        if ( ch->quest_points < cost )
         {
-            snprintf(buf, MSL, "It costs %d QP to raise your Str, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
+            snprintf(buf, MSL, "It costs %d QP to raise your Str, but you only have %d.\r\n", cost, ch->quest_points);
             send_to_char(buf, ch);
             return;
         }
         ch->max_str++; /* Raise the actual cap */
         ch->perm_str++; /* Give them a free stat train */
-        ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_str, ch->pcdata->quest_points);
+        ch->quest_points -= cost;
+        snprintf(buf, MSL, "You have spent %d QP to raise your Str! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_str, ch->quest_points);
         send_to_char(buf, ch);
         return;
     }
@@ -861,16 +861,16 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         cost *= ch->max_int; /* Take base cost (5) mult by current value */
-        if ( ch->pcdata->quest_points < cost )
+        if ( ch->quest_points < cost )
         {
-            snprintf(buf, MSL, "It costs %d QP to raise your Int, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
+            snprintf(buf, MSL, "It costs %d QP to raise your Int, but you only have %d.\r\n", cost, ch->quest_points);
             send_to_char(buf, ch);
             return;
         }
         ch->max_int++; /* Raise the actual cap */
         ch->perm_int++; /* Give them a free stat train */
-        ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_int, ch->pcdata->quest_points);
+        ch->quest_points -= cost;
+        snprintf(buf, MSL, "You have spent %d QP to raise your Int! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_int, ch->quest_points);
         send_to_char(buf, ch);
         return;
     }
@@ -883,16 +883,16 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         cost *= ch->max_wis; /* Take base cost (5) mult by current value */
-        if ( ch->pcdata->quest_points < cost )
+        if ( ch->quest_points < cost )
         {
-            snprintf(buf, MSL, "It costs %d QP to raise your Wis, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
+            snprintf(buf, MSL, "It costs %d QP to raise your Wis, but you only have %d.\r\n", cost, ch->quest_points);
             send_to_char(buf, ch);
             return;
         }
         ch->max_wis++; /* Raise the actual cap */
         ch->perm_wis++; /* Give them a free stat train */
-        ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_wis, ch->pcdata->quest_points);
+        ch->quest_points -= cost;
+        snprintf(buf, MSL, "You have spent %d QP to raise your Wis! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_wis, ch->quest_points);
         send_to_char(buf, ch);
         return;
     }
@@ -905,16 +905,16 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         cost *= ch->max_dex; /* Take base cost (5) mult by current value */
-        if ( ch->pcdata->quest_points < cost )
+        if ( ch->quest_points < cost )
         {
-            snprintf(buf, MSL, "It costs %d QP to raise your Dex, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
+            snprintf(buf, MSL, "It costs %d QP to raise your Dex, but you only have %d.\r\n", cost, ch->quest_points);
             send_to_char(buf, ch);
             return;
         }
         ch->max_dex++; /* Raise the actual cap */
         ch->perm_dex++; /* Give them a free stat train */
-        ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_dex, ch->pcdata->quest_points);
+        ch->quest_points -= cost;
+        snprintf(buf, MSL, "You have spent %d QP to raise your Dex! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_dex, ch->quest_points);
         send_to_char(buf, ch);
         return;
     }
@@ -927,16 +927,16 @@ void do_statraise(CHAR_DATA *ch, char *argument)
             return;
         }
         cost *= ch->max_con; /* Take base cost (5) mult by current value */
-        if ( ch->pcdata->quest_points < cost )
+        if ( ch->quest_points < cost )
         {
-            snprintf(buf, MSL, "It costs %d QP to raise your Con, but you only have %d.\r\n", cost, ch->pcdata->quest_points);
+            snprintf(buf, MSL, "It costs %d QP to raise your Con, but you only have %d.\r\n", cost, ch->quest_points);
             send_to_char(buf, ch);
             return;
         }
         ch->max_con++; /* Raise the actual cap */
         ch->perm_con++; /* Give them a free stat train */
-        ch->pcdata->quest_points -= cost;
-        snprintf(buf, MSL, "You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_con, ch->pcdata->quest_points);
+        ch->quest_points -= cost;
+        snprintf(buf, MSL, "You have spent %d QP to raise your Con! It is now %d and you have %d QP remaining.\r\n", cost, ch->max_con, ch->quest_points);
         send_to_char(buf, ch);
         return;
     }

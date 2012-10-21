@@ -1409,7 +1409,7 @@ DO_FUN(do_score)
     send_to_char( buf, ch );
 
     snprintf( buf, MSL,
-              "X========= @@WExps: @@y%9d @@c========= @@aQuest Points: @@y%4d @@c========X\r\n", ch->exp, IS_NPC(ch) ? 0 : ch->pcdata->quest_points );
+              "X========= @@WExps: @@y%9d @@c========= @@aQuest Points: @@y%4d @@c========X\r\n", ch->exp, IS_NPC(ch) ? 0 : ch->quest_points );
     send_to_char( buf, ch );
 
     if ( get_trust( ch ) != ch->level )

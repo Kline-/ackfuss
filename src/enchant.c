@@ -602,7 +602,7 @@ DO_FUN(do_enchant)
         strncat( msg_buf, cat_buf, MSL - 1 );
         if ( legal_enchant )
         {
-            if ( ch->pcdata->quest_points >= qp_cost )
+            if ( ch->quest_points >= qp_cost )
 
             {
                 snprintf( cat_buf, MSL, "%s", "You may type enchant buy to purchase this upgrade.\r\n" );
@@ -631,7 +631,7 @@ DO_FUN(do_enchant)
         AFFECT_DATA *new_aff;
         OBJ_DATA *this_obj_next;
 
-        if ( ch->pcdata->quest_points < qp_cost )
+        if ( ch->quest_points < qp_cost )
         {
             send_to_char( "You don't have enough quest points for this enchantment.\r\n", ch );
             return;
@@ -850,7 +850,7 @@ DO_FUN(do_enchant)
             unique->item_apply = new_apply;
 
 
-        ch->pcdata->quest_points = ch->pcdata->quest_points - qp_cost;
+        ch->quest_points = ch->quest_points - qp_cost;
         snprintf( enchant_buf, MSL, "%s", "Enchantments Used: " );
         for ( this_obj = matrix->first_in_carry_list; this_obj != NULL; this_obj = this_obj_next )
         {

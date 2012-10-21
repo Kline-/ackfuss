@@ -639,6 +639,8 @@ class char_data
         CHAR_DATA *prev_in_room;
         string prompt;
         int p_class;
+        QUEST_INFO *quest_info;
+        int quest_points;
         int race;
         int race_mods;
         int recall_vnum;
@@ -729,8 +731,6 @@ class pc_data
         NOTE_DATA *pnote;
         short practice;
         char *pwd;
-        QUEST_INFO *quest_info;
-        short quest_points;
 };
 
 struct liq_type

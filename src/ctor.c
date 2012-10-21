@@ -234,6 +234,8 @@ char_data::char_data()
     prev_in_room = NULL;
     prompt = &str_empty[0];
     p_class = 0;
+    quest_info = new QUEST_INFO;
+    quest_points = 0;
     race = 0;
     race_mods = 0;
     recall_vnum = ROOM_VNUM_TEMPLE;
@@ -346,7 +348,7 @@ help_data::help_data()
     imm = false;
     name.clear();
     description.clear();
-    
+
     help_list.push_back(this);
 }
 
@@ -597,8 +599,6 @@ pc_data::pc_data()
     pnote = NULL;
     practice = 21;
     pwd = &str_empty[0];
-    quest_info = new QUEST_INFO;
-    quest_points = 0;
 }
 
 quest_info::quest_info()
@@ -729,7 +729,7 @@ social_data::social_data()
     other_found.clear();
     other_no_arg.clear();
     vict_found.clear();
-    
+
     social_list.push_back(this);
 }
 

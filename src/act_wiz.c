@@ -89,7 +89,7 @@
 #ifndef DEC_HELP_H
 #include "h/help.h"
 #endif
-          
+
 #ifndef DEC_HUNT_H
 #include "h/hunt.h"
 #endif
@@ -1051,7 +1051,7 @@ DO_FUN(do_mstat)
     }
 
     snprintf( buf, MSL, "Carry number: %d.  Carry weight: %4.2f.   @@aQuest Points@@W: @@y%3d@@N\r\n",
-              victim->carry_number, victim->carry_weight, IS_NPC(victim) ? 0 : victim->pcdata->quest_points );
+              victim->carry_number, victim->carry_weight, IS_NPC(victim) ? 0 : victim->quest_points );
     strncat( buf1, buf, MSL - 1 );
 
     snprintf( buf, MSL, "Age: %d.  Played: %d.  Timer: %d.\r\n",
@@ -3294,7 +3294,7 @@ DO_FUN(do_mset)
             send_to_char("Valid values are above -1.\r\n", ch);
             return;
         }
-        victim->pcdata->quest_info->wait_time = value;
+        victim->quest_info->wait_time = value;
         send_to_char("New wait time has been set.\r\n", ch);
         return;
     }
@@ -5203,7 +5203,7 @@ DO_FUN(do_reward)
     snprintf( buf, MSL, "@@NYou have rewarded @@r%s  @@y%3d @@aQuest Points@@N!!!\r\n", victim->name.c_str(), value );
     send_to_char( buf, ch );
 
-    victim->pcdata->quest_points += value;
+    victim->quest_points += value;
     return;
 }
 

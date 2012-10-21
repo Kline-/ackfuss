@@ -1482,8 +1482,8 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
             case 'Q':
                 if ( !IS_NPC(ch) )
                 {
-                    if ( ch->pcdata->quest_info->wait_time > 0 )
-                        snprintf( buf2, MSL, "%2d", ch->pcdata->quest_info->wait_time );
+                    if ( ch->quest_info->wait_time > 0 )
+                        snprintf( buf2, MSL, "%2d", ch->quest_info->wait_time );
                     else
                         snprintf( buf2, MSL, "OK" );
                 }
