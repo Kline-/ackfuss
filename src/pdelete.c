@@ -79,12 +79,12 @@ DO_FUN(do_sdelete)
     }
     *pArg = '\0';
 
-    if ( ( ch->pcdata->pwd != '\0' ) && ( arg1[0] == '\0' ) )
+    if ( !ch->pwd.empty() && ( arg1[0] == '\0' ) )
     {
         send_to_char( "Syntax: pdelete <password>.\r\n", ch );
         return;
     }
-    if ( ( ch->pcdata->pwd != '\0' ) && ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) ) )
+    if ( !ch->pwd.empty() && ( strcmp( crypt( arg1, CSTR( ch->pwd ) ), CSTR( ch->pwd ) ) ) )
     {
         WAIT_STATE( ch, 1000 );
         send_to_char( "Wrong password.  Wait 10 seconds.\r\n", ch );

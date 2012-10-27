@@ -231,8 +231,10 @@ char_data::char_data()
     played = 0;
     poly_level = 0;
     position = POS_STANDING;
+    practice = 21;
     prev_in_room = NULL;
     prompt = &str_empty[0];
+    pwd = &str_empty[0];
     p_class = 0;
     quest_info = new QUEST_INFO;
     quest_points = 0;
@@ -597,8 +599,6 @@ pc_data::pc_data()
     for ( short i = 0; i < MAX_PEDIT; i++ )
         pedit_string[i] = &str_empty[0];
     pnote = NULL;
-    practice = 21;
-    pwd = &str_empty[0];
 }
 
 quest_info::quest_info()

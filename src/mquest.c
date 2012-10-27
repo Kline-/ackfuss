@@ -672,7 +672,7 @@ void mquest_complete_message( CHAR_DATA *ch )
         {
             send_to_char("@@eCongratulations! You've succesfully completed 50 questmaster quests!\r\n", ch);
             send_to_char("@@eYou have been rewarded a bonus 25 practices and 40 quest points!\r\n", ch);
-            ch->pcdata->practice += 25;
+            ch->practice += 25;
             ch->quest_points += 40;
             ch->records->qp_tot += 40;
         }

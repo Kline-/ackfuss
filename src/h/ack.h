@@ -636,8 +636,10 @@ class char_data
         int played;
         int poly_level;
         int position;
+        int practice;
         CHAR_DATA *prev_in_room;
         string prompt;
+        string pwd;
         int p_class;
         QUEST_INFO *quest_info;
         int quest_points;
@@ -729,8 +731,6 @@ class pc_data
         char *pedit_state;
         char *pedit_string[MAX_PEDIT];
         NOTE_DATA *pnote;
-        short practice;
-        char *pwd;
 };
 
 struct liq_type

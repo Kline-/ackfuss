@@ -183,8 +183,7 @@ static void walk_pcdata( PC_DATA * p )
 
     if ( !p )
         return;
-
-    touch( p->pwd );
+    
     touch( p->bamfin );
     touch( p->bamfout );
     touch( p->header );

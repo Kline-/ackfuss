@@ -348,7 +348,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
     ch->max_hit += add_hp;
     ch->max_mana += add_mana;
     ch->max_move += add_move;
-    ch->pcdata->practice += add_prac;
+    ch->practice += add_prac;
 
     if ( !IS_NPC( ch ) )
         ch->act.reset(ACT_BOUGHT_PET);
@@ -1954,7 +1954,7 @@ void update_handler( void )
         pulse_cache = sysdata.pulse_cache;
         cache_update( );
     }
-    
+
     if ( --pulse_area <= 0 )
     {
         pulse_area = number_range( PULSE_AREA / 2, 3 * PULSE_AREA / 2 );

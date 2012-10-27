@@ -1678,7 +1678,7 @@ DO_FUN(do_train)
 
     if ( argument[0] == '\0' )
     {
-        snprintf( buf, MSL, "You have %d practice sessions.\r\n", ch->pcdata->practice );
+        snprintf( buf, MSL, "You have %d practice sessions.\r\n", ch->practice );
         send_to_char( buf, ch );
         argument = "foo";
     }
@@ -1814,13 +1814,13 @@ DO_FUN(do_train)
     if ( !str_cmp( argument, "hp" ) )
     {
 
-        if ( cost > ch->pcdata->practice )
+        if ( cost > ch->practice )
         {
             send_to_char( "You don't have enough practices.\r\n", ch );
             return;
         }
 
-        ch->pcdata->practice -= cost;
+        ch->practice -= cost;
         *pAbilityI += hp_gain;
         ch->pcdata->hp_from_gain += 1;
         act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
@@ -1831,13 +1831,13 @@ DO_FUN(do_train)
     if ( !str_cmp( argument, "mana" ) )
     {
 
-        if ( cost > ch->pcdata->practice )
+        if ( cost > ch->practice )
         {
             send_to_char( "You don't have enough practices.\r\n", ch );
             return;
         }
 
-        ch->pcdata->practice -= cost;
+        ch->practice -= cost;
         *pAbilityI += mana_gain;
         ch->pcdata->mana_from_gain += 1;
 
@@ -1851,13 +1851,13 @@ DO_FUN(do_train)
         return;
     }
 
-    if ( cost > ch->pcdata->practice )
+    if ( cost > ch->practice )
     {
         send_to_char( "You don't have enough practices.\r\n", ch );
         return;
     }
 
-    ch->pcdata->practice -= cost;
+    ch->practice -= cost;
     *pAbilityS += 1;
     act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
     act( "$n's $T increases!", ch, NULL, pOutput, TO_ROOM );

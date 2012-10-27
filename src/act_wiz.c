@@ -983,7 +983,7 @@ DO_FUN(do_mstat)
     }
 
     snprintf( buf, MSL, "Hp: %d/%d.  Mana: %d/%d.  Move: %d/%d.  Practices: %d.\r\n",
-              victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, IS_NPC(victim) ? 0 : victim->pcdata->practice );
+              victim->hit, victim->max_hit, victim->mana, victim->max_mana, victim->move, victim->max_move, IS_NPC(victim) ? 0 : victim->practice );
     strncat( buf1, buf, MSL - 1 );
 
     snprintf( buf, MSL,
@@ -3028,7 +3028,7 @@ DO_FUN(do_mset)
             send_to_char( "Practice range is 0 to 100 sessions.\r\n", ch );
             return;
         }
-        victim->pcdata->practice = value;
+        victim->practice = value;
         return;
     }
 
@@ -4150,7 +4150,7 @@ DO_FUN(do_resetpassword)
     }
 
 
-    if ( ( ch->pcdata->pwd != '\0' ) && ( arg1[0] == '\0' || arg2[0] == '\0' ) )
+    if ( !ch->pwd.empty() && ( arg1[0] == '\0' || arg2[0] == '\0' ) )
     {
         send_to_char( "Syntax: password <char> <new>.\r\n", ch );
         return;
@@ -4165,9 +4165,7 @@ DO_FUN(do_resetpassword)
 
     pwdnew = crypt( arg2, victim->name.c_str() );
 
-
-    free_string( victim->pcdata->pwd );
-    victim->pcdata->pwd = str_dup( pwdnew );
+    victim->pwd = pwdnew;
     save_char_obj( victim );
     send_to_char( "Ok.\r\n", ch );
     return;
@@ -4464,7 +4462,7 @@ DO_FUN(do_setclass)
         victim->max_move = 100;
         for ( sn = 0; sn < MAX_SKILL; sn++ )
             victim->pcdata->learned[sn] = 0;
-        victim->pcdata->practice = 0;
+        victim->practice = 0;
         victim->hit = victim->max_hit;
         victim->mana = victim->max_mana;
         victim->move = victim->max_move;

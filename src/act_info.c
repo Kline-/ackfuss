@@ -1322,7 +1322,7 @@ DO_FUN(do_score)
 
     snprintf( buf, MSL,
               "| @@y%4d/%4d @@WHit @@y%4d/%4d @@WMana @@y%4d/%4d @@WMovement @@y%3d @@WPractices@@c |\r\n",
-              ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move, IS_NPC(ch) ? 0 : ch->pcdata->practice );
+              ch->hit, ch->max_hit, ch->mana, ch->max_mana, ch->move, ch->max_move, IS_NPC(ch) ? 0 : ch->practice );
     send_to_char( buf, ch );
 
     if ( IS_NPC( ch ) )
@@ -2438,7 +2438,7 @@ DO_FUN(do_practice)
 
         send_to_char( buf, ch );
 
-        snprintf( buf, MSL, "\r\nYou have %d practice sessions left.\r\n", ch->pcdata->practice );
+        snprintf( buf, MSL, "\r\nYou have %d practice sessions left.\r\n", ch->practice );
         send_to_char( buf, ch );
     }
     else
@@ -2463,7 +2463,7 @@ DO_FUN(do_practice)
             return;
         }
 
-        if ( ch->pcdata->practice <= 0 )
+        if ( ch->practice <= 0 )
         {
             send_to_char( "You have no practice sessions left.\r\n", ch );
             return;
@@ -2550,7 +2550,7 @@ DO_FUN(do_practice)
         }
         else
         {
-            ch->pcdata->practice--;
+            ch->practice--;
             ch->pcdata->learned[sn] += int_app[get_curr_int( ch )].learn;
             if ( ch->pcdata->learned[sn] < adept )
             {
@@ -2664,13 +2664,13 @@ DO_FUN(do_password)
     }
     *pArg = '\0';
 
-    if ( ( ch->pcdata->pwd != '\0' ) && ( arg1[0] == '\0' || arg2[0] == '\0' ) )
+    if ( !ch->pwd.empty() && ( arg1[0] == '\0' || arg2[0] == '\0' ) )
     {
         send_to_char( "Syntax: password <old> <new>.\r\n", ch );
         return;
     }
 
-    if ( ( ch->pcdata->pwd != '\0' ) && ( strcmp( crypt( arg1, ch->pcdata->pwd ), ch->pcdata->pwd ) ) )
+    if ( !ch->pwd.empty() && ( strcmp( crypt( arg1, CSTR( ch->pwd ) ), CSTR( ch->pwd ) ) ) )
     {
         WAIT_STATE( ch, 1000 );
         send_to_char( "Wrong password.  Wait 10 seconds.\r\n", ch );
@@ -2696,8 +2696,7 @@ DO_FUN(do_password)
         }
     }
 
-    free_string( ch->pcdata->pwd );
-    ch->pcdata->pwd = str_dup( pwdnew );
+    ch->pwd = pwdnew;
     save_char_obj( ch );
     send_to_char( "Ok.\r\n", ch );
     return;

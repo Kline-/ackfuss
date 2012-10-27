@@ -326,12 +326,12 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     }
     else
     {
-        fprintf( fp, "Practice       %d\n", ch->pcdata->practice );
+        fprintf( fp, "Practice       %d\n", ch->practice );
         fprintf( fp, "DeathCnt       %d\n", ch->death_cnt );
         fprintf( fp, "Order          %d %d %d %d %d\n",
                  ch->pcdata->order[0], ch->pcdata->order[1], ch->pcdata->order[2],
                  ch->pcdata->order[3], ch->pcdata->order[4] );
-        fprintf( fp, "Password       %s~\n", ch->pcdata->pwd );
+        fprintf( fp, "Password       %s~\n", CSTR( ch->pwd ) );
         fprintf( fp, "LoadMsg        %s~\n", ch->pcdata->load_msg );
         fprintf( fp, "Bamfin         %s~\n", ch->pcdata->bamfin );
         fprintf( fp, "Bamfout        %s~\n", ch->pcdata->bamfout );
@@ -1166,15 +1166,11 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'P':
-                if ( !IS_NPC( ch ) )
-                {
-                    KEY( "Pagelen", ch->pcdata->pagelen, fread_number( fp ) );
-                    SKEY( "Password", ch->pcdata->pwd, fread_string( fp ) );
-                }
+                KEY( "Pagelen", ch->pcdata->pagelen, fread_number( fp ) );
+                KEY( "Password", ch->pwd, fread_string( fp ) );
                 KEY( "Played", ch->played, fread_number( fp ) );
                 KEY( "Position", ch->position, fread_number( fp ) );
-                if ( !IS_NPC(ch) )
-                    KEY( "Practice", ch->pcdata->practice, fread_number( fp ) );
+                KEY( "Practice", ch->practice, fread_number( fp ) );
                 KEY( "Prompt", ch->prompt, fread_string( fp ) );
                 break;
 

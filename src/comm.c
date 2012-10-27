@@ -2222,7 +2222,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
     if ( d->connected == CON_GET_OLD_PASSWORD )
     {
         write_to_buffer( d, "\r\n", 2 );
-        if ( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
+        if ( strcmp( crypt( argument, CSTR( ch->pwd ) ), CSTR( ch->pwd ) ) )
         {
             write_to_buffer( d, "Wrong password.\r\n" );
             snprintf( buf, MSL, "FAILED LOGIN for %s from site %s.", ch->name.c_str(), d->host );
@@ -2323,8 +2323,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             }
         }
 
-        free_string( ch->pcdata->pwd );
-        ch->pcdata->pwd = str_dup( pwdnew );
+        ch->pwd = pwdnew;
         write_to_buffer( d, "Please retype password: " );
         d->connected = CON_CONFIRM_NEW_PASSWORD;
         return;
@@ -2334,7 +2333,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
     {
         write_to_buffer( d, "\r\n", 2 );
 
-        if ( strcmp( crypt( argument, ch->pcdata->pwd ), ch->pcdata->pwd ) )
+        if ( strcmp( crypt( argument, CSTR( ch->pwd ) ), CSTR( ch->pwd ) ) )
         {
             write_to_buffer( d, "Passwords don't match.\r\nRetype password: " );
             d->connected = CON_GET_NEW_PASSWORD;
@@ -2366,8 +2365,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             }
         }
 
-        free_string( d->character->pcdata->pwd );
-        d->character->pcdata->pwd = str_dup( pwdnew );
+        d->character->pwd = pwdnew;
         write_to_buffer( d, "Please retype password: " );
         d->connected = CON_CONFIRM_RESET_PASSWORD;
         return;
@@ -2380,7 +2378,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
         write_to_buffer( d, "\r\n", 2 );
 
-        if ( strcmp( crypt( argument, d->character->pcdata->pwd ), d->character->pcdata->pwd ) )
+        if ( strcmp( crypt( argument, CSTR( d->character->pwd ) ), CSTR( d->character->pwd ) ) )
         {
             write_to_buffer( d, "Passwords don't match.\r\nRetype password: " );
             d->connected = CON_RESET_PASSWORD;
@@ -3317,10 +3315,7 @@ bool check_reconnect( DESCRIPTOR_DATA * d, bool fConn )
         if ( !IS_NPC( ch ) && ( !fConn || ch->desc == NULL ) && d->character->name == ch->name )
         {
             if ( fConn == FALSE )
-            {
-                free_string( d->character->pcdata->pwd );
-                d->character->pcdata->pwd = str_dup( ch->pcdata->pwd );
-            }
+                d->character->pwd = ch->pwd;
             else
             {
                 delete d->character;

@@ -266,7 +266,6 @@ pc_data::~pc_data()
         free_string(pedit_string[i]);
     if ( pnote )
         delete pnote;
-    free_string(pwd);
 }
 
 quest_info::~quest_info()
