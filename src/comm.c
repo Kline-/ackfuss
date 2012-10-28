@@ -978,11 +978,11 @@ bool process_output( DESCRIPTOR_DATA * d, bool fPrompt )
             CHAR_DATA *ch;
 
             ch = d->original ? d->original : d->character;
-            if ( !IS_NPC(ch) && ch->act.test(ACT_BLANK) && (ch->pcdata->movement <= sysdata.max_move_disp || !ch->act.test(ACT_AUTOBRIEF)) )
+            if ( ch->act.test(ACT_BLANK) && (ch->movement <= sysdata.max_move_disp || !ch->act.test(ACT_AUTOBRIEF)) )
                 write_to_buffer( d, "\r\n", 2 );
             if ( ch->hunting || ch->hunt_obj )
                 char_hunt( ch );
-            if ( !IS_NPC(ch) && (ch->pcdata->movement <= sysdata.max_move_disp || !ch->act.test(ACT_AUTOBRIEF)) )
+            if ( (ch->movement <= sysdata.max_move_disp || !ch->act.test(ACT_AUTOBRIEF)) )
                 bust_a_prompt( d );
             if ( ch->act.test(ACT_TELNET_GA) )
                 write_to_buffer( d, go_ahead_str );

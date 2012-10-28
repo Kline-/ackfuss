@@ -686,7 +686,7 @@ const struct cmd_type cmd_table[] =
      C_TYPE_COMM, C_SHOW_ALWAYS, true},
     {"togemail", do_tog_email, POS_RESTING, 0, LOG_NORMAL,
      C_TYPE_CONFIG, C_SHOW_ALWAYS, true},
-     
+
     /*
      *    Vampire and REMORT SKILLS Zen
      */
@@ -1230,13 +1230,10 @@ void interpret( CHAR_DATA * ch, char *argument )
     }
 
     /* Check for movement */
-    if ( !IS_NPC(ch) )
-    {
-        if ( !str_cmp(cmd_table[cmd].name, "north") || !str_cmp(cmd_table[cmd].name, "east") || !str_cmp(cmd_table[cmd].name, "south") || !str_cmp(cmd_table[cmd].name, "west") || !str_cmp(cmd_table[cmd].name, "up") || !str_cmp(cmd_table[cmd].name, "down") )
-            ch->pcdata->movement++;
-        else
-            ch->pcdata->movement = 0;
-    }
+    if ( !str_cmp(cmd_table[cmd].name, "north") || !str_cmp(cmd_table[cmd].name, "east") || !str_cmp(cmd_table[cmd].name, "south") || !str_cmp(cmd_table[cmd].name, "west") || !str_cmp(cmd_table[cmd].name, "up") || !str_cmp(cmd_table[cmd].name, "down") )
+        ch->movement++;
+    else
+        ch->movement = 0;
 
     comlog( ch, false, cmd, argument );
     ( *cmd_table[cmd].do_fun ) ( ch, argument );

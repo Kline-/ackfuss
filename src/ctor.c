@@ -214,6 +214,7 @@ char_data::char_data()
     mod_wis = 0;
     money = new MONEY_TYPE;
     move = 50;
+    movement = 0;
     name = &str_empty[0];
     next_in_room = NULL;
     ngroup = NULL;
@@ -598,7 +599,6 @@ pc_data::pc_data()
     message = &str_empty[0];
     monitor.reset();
     move_from_gain = -1;
-    movement = 0;
 }
 
 quest_info::quest_info()

@@ -619,6 +619,7 @@ class char_data
         int mod_wis;
         MONEY_TYPE *money;
         int move;
+        int movement; /* Quick movement */
         string name;
         CHAR_DATA *next_in_room;
         NPC_GROUP_DATA *ngroup;
@@ -730,7 +731,6 @@ class pc_data
         char *message; /* helpedit file contents */
         bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
         int move_from_gain;
-        short movement; /* Quick movement */
 };
 
 struct liq_type
