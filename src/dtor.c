@@ -109,6 +109,8 @@ char_data::~char_data()
     if ( pcdata )
         delete pcdata;
     delete money;
+    if ( pnote )
+        delete pnote;
     delete casting;
     delete quest_info;
     delete records;
@@ -264,8 +266,6 @@ pc_data::~pc_data()
     free_string(pedit_state);
     for ( short i = 0; i < MAX_PEDIT; i++ )
         free_string(pedit_string[i]);
-    if ( pnote )
-        delete pnote;
 }
 
 quest_info::~quest_info()

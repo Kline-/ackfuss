@@ -634,6 +634,7 @@ class char_data
         int perm_wis;
         MOB_INDEX_DATA *pIndexData;
         int played;
+        NOTE_DATA *pnote;
         int poly_level;
         int position;
         int practice;
@@ -730,7 +731,6 @@ class pc_data
         short pagelen;
         char *pedit_state;
         char *pedit_string[MAX_PEDIT];
-        NOTE_DATA *pnote;
 };
 
 struct liq_type

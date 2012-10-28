@@ -91,13 +91,13 @@ void note_attach( CHAR_DATA * ch )
 {
     NOTE_DATA *pnote;
 
-    if ( ch->pcdata->pnote )
+    if ( ch->pnote )
         return;
 
     pnote = new NOTE_DATA;
 
     pnote->sender = str_dup(ch->name.c_str());
-    ch->pcdata->pnote = pnote;
+    ch->pnote = pnote;
     return;
 }
 
@@ -330,7 +330,7 @@ DO_FUN(do_note)
     if ( !str_cmp( arg, "write" ) || !str_cmp( arg, "edit" ) )
     {
         note_attach( ch );
-        build_strdup( &ch->pcdata->pnote->text, "$edit", TRUE, FALSE, ch );
+        build_strdup( &ch->pnote->text, "$edit", TRUE, FALSE, ch );
         return;
     }
 
@@ -338,7 +338,7 @@ DO_FUN(do_note)
     if ( !str_cmp( arg, "+" ) )
     {
         note_attach( ch );
-        strcpy( buf, ch->pcdata->pnote->text );
+        strcpy( buf, ch->pnote->text );
         if ( strlen( buf ) + strlen( argument ) >= MAX_STRING_LENGTH - 200 )
         {
             send_to_char( "Letter too long.\r\n", ch );
@@ -352,8 +352,8 @@ DO_FUN(do_note)
 
         strncat( buf, argument, MSL - 1 );
         strncat( buf, "\r\n", MSL );
-        free_string( ch->pcdata->pnote->text );
-        ch->pcdata->pnote->text = str_dup( buf );
+        free_string( ch->pnote->text );
+        ch->pnote->text = str_dup( buf );
         send_to_char( "Ok.\r\n", ch );
         return;
     }
@@ -361,8 +361,8 @@ DO_FUN(do_note)
     if ( !str_cmp( arg, "subject" ) )
     {
         note_attach( ch );
-        free_string( ch->pcdata->pnote->subject );
-        ch->pcdata->pnote->subject = str_dup( argument );
+        free_string( ch->pnote->subject );
+        ch->pnote->subject = str_dup( argument );
         send_to_char( "Ok.\r\n", ch );
         return;
     }
@@ -370,18 +370,18 @@ DO_FUN(do_note)
     if ( !str_cmp( arg, "to" ) )
     {
         note_attach( ch );
-        free_string( ch->pcdata->pnote->to_list );
-        ch->pcdata->pnote->to_list = str_dup( argument );
+        free_string( ch->pnote->to_list );
+        ch->pnote->to_list = str_dup( argument );
         send_to_char( "Ok.\r\n", ch );
         return;
     }
 
     if ( !str_cmp( arg, "clear" ) )
     {
-        if ( ch->pcdata->pnote )
+        if ( ch->pnote )
         {
-            delete ch->pcdata->pnote;
-            ch->pcdata->pnote = NULL;
+            delete ch->pnote;
+            ch->pnote = NULL;
         }
 
         send_to_char( "Ok.\r\n", ch );
@@ -390,15 +390,15 @@ DO_FUN(do_note)
 
     if ( !str_cmp( arg, "show" ) )
     {
-        if ( !ch->pcdata->pnote )
+        if ( !ch->pnote )
         {
             send_to_char( "You have no letter in progress.\r\n", ch );
             return;
         }
 
-        snprintf( buf, MSL, "%s: %s\r\nTo: %s\r\n", ch->pcdata->pnote->sender, ch->pcdata->pnote->subject, ch->pcdata->pnote->to_list );
+        snprintf( buf, MSL, "%s: %s\r\nTo: %s\r\n", ch->pnote->sender, ch->pnote->subject, ch->pnote->to_list );
         send_to_char( buf, ch );
-        send_to_char( ch->pcdata->pnote->text, ch );
+        send_to_char( ch->pnote->text, ch );
         return;
     }
 
@@ -406,30 +406,30 @@ DO_FUN(do_note)
     {
         FILE *fp;
 
-        if ( !ch->pcdata->pnote )
+        if ( !ch->pnote )
         {
             send_to_char( "You have no letter in progress.\r\n", ch );
             return;
         }
 
-        if ( !str_cmp( ch->pcdata->pnote->to_list, "" ) )
+        if ( !str_cmp( ch->pnote->to_list, "" ) )
         {
             send_to_char( "You need to provide recipient name(s).\r\n", ch );
             return;
         }
 
-        if ( !str_cmp( ch->pcdata->pnote->subject, "" ) )
+        if ( !str_cmp( ch->pnote->subject, "" ) )
         {
             send_to_char( "You need to provide a subject.\r\n", ch );
             return;
         }
 
-        free_string( ch->pcdata->pnote->date );
-        ch->pcdata->pnote->date = str_dup( current_time_str() );
-        ch->pcdata->pnote->date_stamp = current_time;
+        free_string( ch->pnote->date );
+        ch->pnote->date = str_dup( current_time_str() );
+        ch->pnote->date_stamp = current_time;
 
-        pnote = ch->pcdata->pnote;
-        ch->pcdata->pnote = NULL;
+        pnote = ch->pnote;
+        ch->pnote = NULL;
 
         if ( !( fp = file_open( NOTE_FILE, "a" ) ) )
         {

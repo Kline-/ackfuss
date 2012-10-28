@@ -229,6 +229,7 @@ char_data::char_data()
     perm_wis = 13;
     pIndexData = NULL;
     played = 0;
+    pnote = NULL;
     poly_level = 0;
     position = POS_STANDING;
     practice = 21;
@@ -598,7 +599,6 @@ pc_data::pc_data()
     pedit_state = &str_empty[0];
     for ( short i = 0; i < MAX_PEDIT; i++ )
         pedit_string[i] = &str_empty[0];
-    pnote = NULL;
 }
 
 quest_info::quest_info()
