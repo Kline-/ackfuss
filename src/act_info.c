@@ -1354,7 +1354,7 @@ DO_FUN(do_score)
         snprintf( buf2, MSL, "@@WClass Order:@@y " );
         for ( cnt = 0; cnt < MAX_CLASS; cnt++ )
         {
-            snprintf( buf, MSL, "%s ", class_table[ch->pcdata->order[cnt]].who_name );
+            snprintf( buf, MSL, "%s ", class_table[ch->order[cnt]].who_name );
             strncat( buf2, buf, MSL - 1 );
         }
         snprintf( buf, MSL, "@@c|%s @@c|\r\n", center_text( buf2, 62 ) );
@@ -1448,7 +1448,7 @@ DO_FUN(do_score)
         snprintf( buf2, MSL, "@@c|%s @@c|\r\n", center_text( buf, 62 ) );
         send_to_char( buf2, ch );
 
-        snprintf( buf, MSL, " @@WWimpy Set to @@y%d @@WHitPoints.  Page Length is @@y%d @@Wlines.", ch->wimpy, ch->pcdata->pagelen );
+        snprintf( buf, MSL, " @@WWimpy Set to @@y%d @@WHitPoints.  Page Length is @@y%d @@Wlines.", ch->wimpy, ch->pagelen );
         snprintf( buf2, MSL, "@@c|%s @@c|\r\n", center_text( buf, 62 ) );
         send_to_char( buf2, ch );
 
@@ -2524,12 +2524,12 @@ DO_FUN(do_practice)
             return;
         }
         for ( cnt = 0; cnt < MAX_CLASS; cnt++ )
-            if ( ch->pcdata->order[cnt] == p_class )
+            if ( ch->order[cnt] == p_class )
                 break;
 
         adept = IS_NPC( ch ) ? 100 : ( 90 - ( cnt * 4 ) );
 
-        cnt = race_table[ch->race].class_order[p_class] - ch->pcdata->order[p_class];
+        cnt = race_table[ch->race].class_order[p_class] - ch->order[p_class];
         if ( cnt < 0 )
             cnt *= -1;
         if ( cnt == 0 )
@@ -3639,7 +3639,7 @@ DO_FUN(do_pagelen)
         return;
     }
 
-    ch->pcdata->pagelen = lines;
+    ch->pagelen = lines;
     snprintf( buf, MSL, "Page pause set to %d lines.\r\n", lines );
     send_to_char( buf, ch );
     return;
@@ -4041,14 +4041,14 @@ DO_FUN(do_gain)
             if ( numclasses >= race_table[ch->race].classes && ch->lvl[cnt] >= 1 && ch->lvl[cnt] < ( LEVEL_HERO -1 ) )
             {
                 any = TRUE;
-                cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
+                cost = exp_to_level( ch, cnt, ch->order[cnt] );
 
                 ch->send( "%s : %d Exp.\r\n", class_table[cnt].who_name, cost );
             }
             else if ( numclasses < race_table[ch->race].classes && ch->lvl[cnt] != -1 && ch->lvl[cnt] < ( LEVEL_HERO - 1 ) )
             {
                 any = TRUE;
-                cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
+                cost = exp_to_level( ch, cnt, ch->order[cnt] );
 
                 snprintf( buf, MSL, "%s : %d Exp.\r\n", class_table[cnt].who_name, cost );
                 send_to_char( buf, ch );
@@ -4166,7 +4166,7 @@ DO_FUN(do_gain)
             cost = exp_to_level_adept( ch );
     }
     else
-        cost = exp_to_level( ch, c, ( ch->pcdata->order[c] ) );
+        cost = exp_to_level( ch, c, ( ch->order[c] ) );
 
     if ( vamp )
     {
@@ -4734,7 +4734,7 @@ DO_FUN(do_worth)
         if ( numclasses >= race_table[ch->race].classes && ch->lvl[cnt] >= 1 && ch->lvl[cnt] < LEVEL_HERO - 1 )
         {
             any = TRUE;
-            cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
+            cost = exp_to_level( ch, cnt, ch->order[cnt] );
 
             snprintf( buf, MSL, "%-14s  %9d %9d.\r\n", class_table[cnt].who_name, cost, UMAX( 0, cost - ch->exp ) );
             send_to_char( buf, ch );
@@ -4742,7 +4742,7 @@ DO_FUN(do_worth)
         else if ( numclasses < race_table[ch->race].classes && ch->lvl[cnt] != -1 && ch->lvl[cnt] < ( LEVEL_HERO - 1 ) )
         {
             any = TRUE;
-            cost = exp_to_level( ch, cnt, ch->pcdata->order[cnt] );
+            cost = exp_to_level( ch, cnt, ch->order[cnt] );
 
             snprintf( buf, MSL, "%-14s  %9d %9d.\r\n", class_table[cnt].who_name, cost, UMAX( 0, cost - ch->exp ) );
             send_to_char( buf, ch );

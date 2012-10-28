@@ -973,10 +973,10 @@ DO_FUN(do_mstat)
         strncat( buf1, buf, MSL - 1 );
 
         snprintf( buf, MSL, "Class Order: %s %s %s %s %s\r\n",
-                  class_table[victim->pcdata->order[0]].who_name,
-                  class_table[victim->pcdata->order[1]].who_name,
-                  class_table[victim->pcdata->order[2]].who_name,
-                  class_table[victim->pcdata->order[3]].who_name, class_table[victim->pcdata->order[4]].who_name );
+                  class_table[victim->order[0]].who_name,
+                  class_table[victim->order[1]].who_name,
+                  class_table[victim->order[2]].who_name,
+                  class_table[victim->order[3]].who_name, class_table[victim->order[4]].who_name );
         strncat( buf1, buf, MSL - 1 );
 
 
@@ -1018,7 +1018,7 @@ DO_FUN(do_mstat)
 
     if ( !IS_NPC( victim ) )
     {
-        snprintf( buf, MSL, "Page Lines: %d.\r\n", victim->pcdata->pagelen );
+        snprintf( buf, MSL, "Page Lines: %d.\r\n", victim->pagelen );
         strncat( buf1, buf, MSL - 1 );
     }
 
@@ -2722,7 +2722,7 @@ DO_FUN(do_mset)
          * Copy classes to pcdata
          */
         for ( cnt = 0; cnt < MAX_CLASS; cnt++ )
-            victim->pcdata->order[cnt] = p_class[cnt];
+            victim->order[cnt] = p_class[cnt];
 
         send_to_char( "Your classes have been re-ordered.\r\n", victim );
         send_to_char( "Done.\r\n", ch );

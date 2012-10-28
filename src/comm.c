@@ -1297,7 +1297,7 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                     else if ( remort == TRUE )
                         cost = exp_to_level( ch, cl_index, 5 );
                     else
-                        cost = exp_to_level( ch, cl_index, ch->pcdata->order[cl_index] );
+                        cost = exp_to_level( ch, cl_index, ch->order[cl_index] );
                     snprintf( buf2, MSL, "%d", UMAX( 0, cost - ch->exp ) );
                     i = buf2;
                     break;
@@ -1890,7 +1890,7 @@ void show_menu_to( DESCRIPTOR_DATA * d )
         snprintf( buf, MSL, "\r\n        " );
         for ( i = 0; i < MAX_CLASS; i++ )
         {
-            snprintf( buf, MSL, "%s ", class_table[ch->pcdata->order[i]].who_name );
+            snprintf( buf, MSL, "%s ", class_table[ch->order[i]].who_name );
             strncat( menu, buf, MSL - 1 );
         }
         strncat( menu, "\r\n", MSL );
@@ -2248,8 +2248,8 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         monitor_chan( log_buf, MONITOR_CONNECT );
 
         log_string( log_buf );
-        lines = ch->pcdata->pagelen;
-        ch->pcdata->pagelen = 20;
+        lines = ch->pagelen;
+        ch->pagelen = 20;
 
         if ( ch->lvl[ch->p_class] == -1 )
             ch->lvl[ch->p_class] = ch->level;
@@ -2273,7 +2273,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         {
             do_help( ch, "motd" );
         }
-        ch->pcdata->pagelen = lines;
+        ch->pagelen = lines;
         d->connected = CON_READ_MOTD;
     }
 
@@ -2449,7 +2449,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                 log_string( log_buf );
                 monitor_chan( log_buf, MONITOR_CONNECT );
                 write_to_buffer( d, "\r\n", 2 );
-                ch->pcdata->pagelen = 20;
+                ch->pagelen = 20;
 
                 do_save(ch, "auto");
                 do_help( ch, "newun" );
@@ -2710,7 +2710,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          * Copy classes across to pcdata
          */
         for ( cnt = 0; cnt < MAX_CLASS; cnt++ )
-            ch->pcdata->order[cnt] = classes[cnt];
+            ch->order[cnt] = classes[cnt];
 
         d->connected = CON_MENU;
         if ( !IS_SET( d->check, CHECK_CLASS ) )
@@ -2767,7 +2767,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
          */
         if ( ch->level == 0 )
         {
-            ch->p_class = ch->pcdata->order[0];
+            ch->p_class = ch->order[0];
             ch->lvl[ch->p_class] = 1;
         }
 
@@ -2852,7 +2852,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     ch->pcdata->learned[skill_lookup( skill )] = 101;
                 }
                 /* Re-using this for armor too. --Kline */
-                skill_list = class_table[ch->pcdata->order[0]].skill;
+                skill_list = class_table[ch->order[0]].skill;
                 for ( ;; )
                 {
                     skill_list = one_argument( skill_list, skill );
@@ -3463,17 +3463,17 @@ void show_string( struct descriptor_data *d, char *input )
             break;
 
         case 'R':  /* refresh current page of text */
-            lines = -1 - ( d->character->pcdata->pagelen );
+            lines = -1 - ( d->character->pagelen );
             break;
 
         case 'B':  /* scroll back a page of text */
-            lines = -( 2 * d->character->pcdata->pagelen );
+            lines = -( 2 * d->character->pagelen );
             break;
 
         case 'H':  /* Show some help */
             write_to_buffer( d, "C, or Return = continue, R = redraw this page,\r\n" );
             write_to_buffer( d, "B = back one page, H = this help, Q or other keys = exit.\r\n\r\n" );
-            lines = -1 - ( d->character->pcdata->pagelen );
+            lines = -1 - ( d->character->pagelen );
             break;
 
         default:   /*otherwise, stop the text viewing */
@@ -3515,7 +3515,7 @@ void show_string( struct descriptor_data *d, char *input )
         space--;
         if ( ( ( *scan = *d->showstr_point ) == '\n' || *scan == '\r' ) && ( toggle = -toggle ) < 0 && space > 0 )
             lines++;
-        else if ( !*scan || ( d->character && !IS_NPC( d->character ) && lines >= d->character->pcdata->pagelen ) || space <= 0 )
+        else if ( !*scan || ( d->character && !IS_NPC( d->character ) && lines >= d->character->pagelen ) || space <= 0 )
         {
 
             *scan = '\0';

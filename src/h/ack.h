@@ -626,6 +626,8 @@ class char_data
         int num_followers;
         CHAR_DATA *old_body; /* = descriptor->original */
         string old_prompt; /* used to hold prompt when writing */
+        int order[MAX_CLASS];   /* Class Order */
+        int pagelen;
         PC_DATA *pcdata;
         string pedit_state;
         string pedit_string[MAX_PEDIT];
@@ -729,8 +731,6 @@ class pc_data
         bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
         int move_from_gain;
         short movement; /* Quick movement */
-        short order[MAX_CLASS];   /* Class Order */
-        short pagelen;
 };
 
 struct liq_type

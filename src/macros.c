@@ -261,7 +261,7 @@ int exp_to_level( CHAR_DATA * ch, int p_class, int index )
      */
     cost *= mult;
     /* Figure out racial order --Kline */
-    diff = race_table[ch->race].class_order[p_class] - ch->pcdata->order[p_class];
+    diff = race_table[ch->race].class_order[p_class] - ch->order[p_class];
     if ( diff < 0 )
         diff *= -1;
     if ( diff == 0 )

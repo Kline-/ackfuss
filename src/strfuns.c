@@ -1764,7 +1764,7 @@ bool check_tag( char *arg1, char *arg2, int value, CHAR_DATA *ch )
 
         case 'C':
             if ( !str_cmp(arg1, "clan") && !str_cmp(arg2, strip_color(clan_table[ch->clan].clan_name, "@@")) )           { retval = true; break; }
-            if ( !str_cmp(arg1, "class") && !IS_NPC(ch) && !str_cmp(arg2, class_table[ch->pcdata->order[0]].who_name) ) { retval = true; break; }
+            if ( !str_cmp(arg1, "class") && !str_cmp(arg2, class_table[ch->order[0]].who_name) ) { retval = true; break; }
             if ( !str_cmp(arg1, "con") && evaluate_tag(arg2, get_curr_con(ch), value) ) { retval = true; break; }
             break;
 

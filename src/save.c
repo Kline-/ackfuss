@@ -329,8 +329,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "Practice       %d\n", ch->practice );
         fprintf( fp, "DeathCnt       %d\n", ch->death_cnt );
         fprintf( fp, "Order          %d %d %d %d %d\n",
-                 ch->pcdata->order[0], ch->pcdata->order[1], ch->pcdata->order[2],
-                 ch->pcdata->order[3], ch->pcdata->order[4] );
+                 ch->order[0], ch->order[1], ch->order[2],
+                 ch->order[3], ch->order[4] );
         fprintf( fp, "Password       %s~\n", CSTR( ch->pwd ) );
         fprintf( fp, "LoadMsg        %s~\n", ch->pcdata->load_msg );
         fprintf( fp, "Bamfin         %s~\n", ch->pcdata->bamfin );
@@ -449,7 +449,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "GainMove       %d\n", ch->pcdata->move_from_gain );
         fprintf( fp, "RulerRank      %d\n", ch->ruler_rank );
         fprintf( fp, "Condition      %d %d %d\n", ch->condition[0], ch->condition[1], ch->condition[2] );
-        fprintf( fp, "Pagelen        %d\n", ch->pcdata->pagelen );
+        fprintf( fp, "Pagelen        %d\n", ch->pagelen );
 
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
@@ -1156,17 +1156,17 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'O':
-                if ( !str_cmp( word, "Order" ) && !IS_NPC( ch ) )
+                if ( !str_cmp( word, "Order" ) )
                 {
                     for ( cnt = 0; cnt < MAX_CLASS; cnt++ )
-                        ch->pcdata->order[cnt] = fread_number( fp );
+                        ch->order[cnt] = fread_number( fp );
                     fMatch = TRUE;
                     break;
                 }
                 break;
 
             case 'P':
-                KEY( "Pagelen", ch->pcdata->pagelen, fread_number( fp ) );
+                KEY( "Pagelen", ch->pagelen, fread_number( fp ) );
                 KEY( "Password", ch->pwd, fread_string( fp ) );
                 KEY( "Played", ch->played, fread_number( fp ) );
                 KEY( "Position", ch->position, fread_number( fp ) );
@@ -1342,17 +1342,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 }
 
                 break;
-        }
-
-        /*
-         * Make sure old chars have this field - Kahn
-         */
-        if ( !IS_NPC( ch ) )
-        {
-            if ( !ch->pcdata->pagelen )
-                ch->pcdata->pagelen = 20;
-            if ( ch->prompt.empty() )
-                ch->prompt = DEFAULT_PROMPT;
         }
 
         ch->long_descr_orig = ch->long_descr;

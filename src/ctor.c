@@ -221,6 +221,9 @@ char_data::char_data()
     num_followers = 0;
     old_body = NULL;
     old_prompt = &str_empty[0];
+    for ( int i = 0; i < MAX_CLASS; i++ )
+        order[i] = 0;
+    pagelen = 20;
     pcdata = NULL;
     pedit_state = &str_empty[0];
     for ( int i = 0; i < MAX_PEDIT; i++ )
@@ -596,9 +599,6 @@ pc_data::pc_data()
     monitor.reset();
     move_from_gain = -1;
     movement = 0;
-    for ( short i = 0; i < MAX_CLASS; i++ )
-        order[i] = 0;
-    pagelen = 20;
 }
 
 quest_info::quest_info()

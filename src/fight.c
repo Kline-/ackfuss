@@ -956,7 +956,7 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                 act("@@WYou @@e*@@RCRUSH@@e* @@W$N's body with the force of your blow!@@N", ch, NULL, victim, TO_CHAR);
                 act("@@W$n @@e*@@RCRUSHES@@e* @@Wyour body with the force of $s blow!@@N", ch, NULL, victim, TO_VICT);
                 act("@@W$n @@e*@@RCRUSHES@@e* @@W$N's body with the force of $s blow!@@N", ch, NULL, victim, TO_NOTVICT);
-                if ( !IS_NPC(ch) && ch->pcdata->order[0] == CLS_WAR )
+                if ( !IS_NPC(ch) && ch->order[0] == CLS_WAR )
                     dam *= 3.0;
                 else
                     dam *= 2.5;
@@ -3428,7 +3428,7 @@ DO_FUN(do_backstab)
          * HIT!
          */
         ch->send("chance: %d", chance);
-        if ( !IS_NPC( ch ) && ch->pcdata->order[0] == CLS_THI && number_percent( ) <= (chance / 2) )
+        if ( !IS_NPC( ch ) && ch->order[0] == CLS_THI && number_percent( ) <= (chance / 2) )
         {
             crack = TRUE;
             dam *= 2;
@@ -3885,7 +3885,7 @@ DO_FUN(do_circle)
          * HIT!
          */
 
-        if ( !IS_NPC( ch ) && ch->pcdata->order[0] == CLS_THI && number_percent(  ) <= (chance / 2) )
+        if ( !IS_NPC( ch ) && ch->order[0] == CLS_THI && number_percent(  ) <= (chance / 2) )
         {
             crack = TRUE;
             dam *= 2;
@@ -4214,7 +4214,7 @@ DO_FUN(do_berserk)
     if ( IS_NPC( ch ) )
         return;
 
-    if ( ch->pcdata->order[0] == 2 )
+    if ( ch->order[0] == 2 )
         prime = TRUE;
 
     level = ch->get_level("war");
@@ -4316,7 +4316,7 @@ DO_FUN(do_punch)
     if ( victim == NULL )
         victim = ch->fighting;
 
-    if ( !IS_NPC( ch ) && ch->pcdata->order[0] == 3 )
+    if ( !IS_NPC( ch ) && ch->order[0] == 3 )
         prime = TRUE;
 
     if ( IS_NPC( ch ) )
@@ -4407,7 +4407,7 @@ DO_FUN(do_headbutt)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->order[0] == 3 )
+    if ( !IS_NPC( ch ) && ch->order[0] == 3 )
         prime = TRUE;
 
     if ( IS_NPC( ch ) )
@@ -4504,7 +4504,7 @@ DO_FUN(do_charge)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->order[0] == 3 )
+    if ( !IS_NPC( ch ) && ch->order[0] == 3 )
         prime = TRUE;
 
 
@@ -4606,7 +4606,7 @@ DO_FUN(do_knee)
 
 
 
-    if ( !IS_NPC( ch ) && ch->pcdata->order[0] == 3 )
+    if ( !IS_NPC( ch ) && ch->order[0] == 3 )
         prime = TRUE;
 
     if ( IS_NPC( ch ) )
@@ -4699,7 +4699,7 @@ DO_FUN(do_kick)
     if ( victim == NULL )
         victim = ch->fighting;
 
-    if ( !IS_NPC( ch ) && ch->pcdata->order[0] == 3 )
+    if ( !IS_NPC( ch ) && ch->order[0] == 3 )
         prime = TRUE;
 
     if ( IS_NPC( ch ) )
