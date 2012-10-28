@@ -4467,17 +4467,13 @@ DO_FUN(do_headbutt)
 
 DO_FUN(do_charge)
 {
-
     CHAR_DATA *victim;
     float dam;
-    bool prime;
+    bool prime = FALSE;
     int chance;
 
     if ( ch->check_cooldown("charge") )
         return;
-
-    prime = FALSE;
-
 
     if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_charge] == 0 )
     {
@@ -4494,7 +4490,6 @@ DO_FUN(do_charge)
         return;
     }
 
-
     if ( victim == NULL )
         victim = ch->fighting;
 
@@ -4504,11 +4499,13 @@ DO_FUN(do_charge)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->order[0] == 3 )
+    if ( ch->order[0] == 3 )
         prime = TRUE;
 
-
     dam = number_range( ch->get_level("psuedo"), ch->get_level("psuedo") * 3 );
+
+    if ( prime )
+        dam *= 1.5;
 
     if ( !IS_NPC( ch ) )
         chance = ch->pcdata->learned[gsn_charge] / 2;
@@ -4516,6 +4513,9 @@ DO_FUN(do_charge)
         chance = 50;
 
     chance += ( ( ch->get_level("psuedo") - ( victim->get_level("psuedo") - 30 ) ) / 2 );
+
+    if ( prime )
+        chance += 10;
 
     ch->set_cooldown("charge");
 

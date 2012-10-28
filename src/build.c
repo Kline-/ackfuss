@@ -387,7 +387,6 @@ DO_FUN(build_showmob)
     MOB_INDEX_DATA *pMob;
     /*    RESET_DATA     *pReset; Unused var */
     SHOP_DATA *pShop;
-    bool is_shopkeeper = 0;
     int iTrade;
 
     argument = one_argument( argument, arg1 );
@@ -469,7 +468,6 @@ DO_FUN(build_showmob)
 
     if ( ( pShop = pMob->pShop ) != 0 )
     {
-        is_shopkeeper = 1;
         strncat( buf1, "@@WMobile is a shopkeeper, will buy @@y", MSL );
         for ( iTrade = 0; iTrade < MAX_TRADE; iTrade++ )
         {

@@ -213,8 +213,10 @@ char_data::char_data()
     mod_str = 0;
     mod_wis = 0;
     money = new MONEY_TYPE;
+    monitor.reset();
     move = 50;
     movement = 0;
+    move_from_gain = -1;
     name = &str_empty[0];
     next_in_room = NULL;
     ngroup = NULL;
@@ -597,8 +599,6 @@ pc_data::pc_data()
     login_sex = SEX_NEUTRAL;
     mana_from_gain = -1;
     message = &str_empty[0];
-    monitor.reset();
-    move_from_gain = -1;
 }
 
 quest_info::quest_info()

@@ -64,7 +64,7 @@ void reset_gain_stats( CHAR_DATA * ch )
 
     ch->pcdata->mana_from_gain = 100;
     ch->pcdata->hp_from_gain = 25;
-    ch->pcdata->move_from_gain = 0;
+    ch->move_from_gain = 0;
 
 
     for ( index = 0; index < MAX_CLASS; index++ )
@@ -84,7 +84,7 @@ void reset_gain_stats( CHAR_DATA * ch )
 
                 ch->pcdata->mana_from_gain += add_mana;
                 ch->pcdata->hp_from_gain += add_hp;
-                ch->pcdata->move_from_gain += add_move;
+                ch->move_from_gain += add_move;
 
             }
         if ( ch->lvl2[index] > 0 )
@@ -101,17 +101,13 @@ void reset_gain_stats( CHAR_DATA * ch )
 
                 ch->pcdata->mana_from_gain += add_mana;
                 ch->pcdata->hp_from_gain += add_hp;
-                ch->pcdata->move_from_gain += add_move;
-
+                ch->move_from_gain += add_move;
             }
-
     }
-
 
     if ( IS_ADEPT(ch) )
         for ( index2 = 1; index2 <= ch->get_level("adept"); index2++ )
         {
-
             add_hp = con_app[ch->max_con].hitp + number_range( 10, 50 );
             add_mana = number_range( 10, ( 3 * ch->max_int + ch->max_wis ) / 4 );
             add_hp = UMAX( 1, add_hp );

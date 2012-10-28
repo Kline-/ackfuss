@@ -618,8 +618,10 @@ class char_data
         int mod_str;
         int mod_wis;
         MONEY_TYPE *money;
+        bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
         int move;
         int movement; /* Quick movement */
+        int move_from_gain;
         string name;
         CHAR_DATA *next_in_room;
         NPC_GROUP_DATA *ngroup;
@@ -729,8 +731,6 @@ class pc_data
         short login_sex;
         int mana_from_gain;  /* saves non-item oriented mana total */
         char *message; /* helpedit file contents */
-        bitset<MAX_BITSET> monitor;   /* Imm channel monitoring */
-        int move_from_gain;
 };
 
 struct liq_type

@@ -2835,7 +2835,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             ch->move = ch->max_move;
             ch->pcdata->mana_from_gain = ch->max_mana;
             ch->pcdata->hp_from_gain = ch->max_hit;
-            ch->pcdata->move_from_gain = ch->max_move;
+            ch->move_from_gain = ch->max_move;
 
             ch->clan = 0;   /* no clan */
             ch->set_title("@@N needs a new title!");
@@ -3039,7 +3039,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
             ch->max_mana = ch->pcdata->mana_from_gain;
             ch->max_hit = ch->pcdata->hp_from_gain;
-            ch->max_move = ch->pcdata->move_from_gain;
+            ch->max_move = ch->move_from_gain;
             ch->saving_throw = ch->get_level("psuedo") / 10;
             ch->hitroll = 0;
             ch->damroll = 0;
@@ -3902,7 +3902,7 @@ void copyover_recover(  )
 
                 this_char->max_mana = this_char->pcdata->mana_from_gain;
                 this_char->max_hit = this_char->pcdata->hp_from_gain;
-                this_char->max_move = this_char->pcdata->move_from_gain;
+                this_char->max_move = this_char->move_from_gain;
                 this_char->saving_throw = this_char->get_level("psuedo") / 10;
                 this_char->hitroll = 0;
                 this_char->damroll = 0;

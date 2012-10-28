@@ -281,20 +281,17 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "%d ", ch->money->cash_unit[foo] );
     fprintf( fp, "\n" );
 
-    if ( !IS_NPC( ch ) )
+    outstr.clear();
+    fprintf( fp, "Monitor        " );
+    for ( foo = 0; foo < MAX_BITSET; foo++ )
     {
-        outstr.clear();
-        fprintf( fp, "Monitor        " );
-        for ( foo = 0; foo < MAX_BITSET; foo++ )
+        if ( ch->monitor.test(foo) )
         {
-            if ( ch->pcdata->monitor.test(foo) )
-            {
-                outstr += rev_mon_table_lookup( tab_monitor, foo );
-                outstr += " ";
-            }
+            outstr += rev_mon_table_lookup( tab_monitor, foo );
+            outstr += " ";
         }
-        fprintf( fp, "%sEOL\n", outstr.c_str() );
     }
+    fprintf( fp, "%sEOL\n", outstr.c_str() );
 
     if ( !IS_NPC(ch) )
     {
@@ -446,7 +443,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "RecallVnum     %d\n", ch->recall_vnum );
         fprintf( fp, "GainMana       %d\n", ch->pcdata->mana_from_gain );
         fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
-        fprintf( fp, "GainMove       %d\n", ch->pcdata->move_from_gain );
+        fprintf( fp, "GainMove       %d\n", ch->move_from_gain );
         fprintf( fp, "RulerRank      %d\n", ch->ruler_rank );
         fprintf( fp, "Condition      %d %d %d\n", ch->condition[0], ch->condition[1], ch->condition[2] );
         fprintf( fp, "Pagelen        %d\n", ch->pagelen );
@@ -1014,8 +1011,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 {
                     KEY( "GainMana", ch->pcdata->mana_from_gain, fread_number( fp ) );
                     KEY( "GainHp", ch->pcdata->hp_from_gain, fread_number( fp ) );
-                    KEY( "GainMove", ch->pcdata->move_from_gain, fread_number( fp ) );
                 }
+                KEY( "GainMove", ch->move_from_gain, fread_number( fp ) );
                 break;
 
             case 'H':
@@ -1088,31 +1085,28 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'M':
-                if ( !IS_NPC( ch ) )
+                if ( !str_cmp( word, "Monitor" ) )
                 {
-                    if ( !str_cmp( word, "Monitor" ) )
-                    {
-                        const char *tmp = fread_word(fp);
+                    const char *tmp = fread_word(fp);
 
-                        if( cur_revision >= SAVE_REVISION )
+                    if( cur_revision >= SAVE_REVISION )
+                    {
+                        while ( str_cmp(tmp, "EOL") )
                         {
-                            while ( str_cmp(tmp, "EOL") )
-                            {
-                                ch->pcdata->monitor.set(mon_table_lookup(tab_monitor,const_cast<char *>(tmp)));
-                                tmp = fread_word(fp);
-                            }
+                            ch->monitor.set(mon_table_lookup(tab_monitor,const_cast<char *>(tmp)));
+                            tmp = fread_word(fp);
                         }
-                        else
-                        {
-                            while ( str_cmp(tmp, "EOL") )
-                            {
-                                ch->pcdata->monitor.set(atoi(tmp));
-                                tmp = fread_word(fp);
-                            }
-                        }
-                        fMatch = TRUE;
-                        break;
                     }
+                    else
+                    {
+                        while ( str_cmp(tmp, "EOL") )
+                        {
+                            ch->monitor.set(atoi(tmp));
+                            tmp = fread_word(fp);
+                        }
+                    }
+                    fMatch = TRUE;
+                    break;
                 }
                 if ( !str_cmp( word, "Money" ) )
                 {

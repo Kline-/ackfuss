@@ -5064,7 +5064,7 @@ DO_FUN(do_monitor)
             if ( tab_monitor[a].min_level > get_trust( ch ) )
                 continue;
 
-            if ( ch->pcdata->monitor.test(tab_monitor[a].channel) )
+            if ( ch->monitor.test(tab_monitor[a].channel) )
             {
                 if ( !IS_NPC( ch ) )
                 {
@@ -5100,7 +5100,7 @@ DO_FUN(do_monitor)
         if ( !strcmp( argument, tab_monitor[a].name ) )
         {
             found = TRUE;
-            ch->pcdata->monitor.flip(tab_monitor[a].channel);
+            ch->monitor.flip(tab_monitor[a].channel);
             break;
         }
     }
@@ -5137,7 +5137,7 @@ void monitor_chan( const char *message, int channel )
     {
         if ( d->connected == CON_PLAYING
                 && !IS_NPC( d->character )
-                && d->character->pcdata->monitor.test(channel) && level <= get_trust( d->character ) )
+                && d->character->monitor.test(channel) && level <= get_trust( d->character ) )
         {
             send_to_char( buf, d->character );
         }
@@ -5419,7 +5419,7 @@ DO_FUN(do_gain_stat_reset)
 
     victim->max_mana = victim->pcdata->mana_from_gain;
     victim->max_hit = victim->pcdata->hp_from_gain;
-    victim->max_move = victim->pcdata->move_from_gain;
+    victim->max_move = victim->move_from_gain;
 
     for ( wear_object = victim->first_carry; wear_object != NULL; wear_object = wear_object->next_in_carry_list )
     {
