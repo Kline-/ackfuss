@@ -263,9 +263,6 @@ pc_data::~pc_data()
     free_string(lastlogin);
     free_string(load_msg);
     free_string(message);
-    free_string(pedit_state);
-    for ( short i = 0; i < MAX_PEDIT; i++ )
-        free_string(pedit_string[i]);
 }
 
 quest_info::~quest_info()

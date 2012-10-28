@@ -222,6 +222,9 @@ char_data::char_data()
     old_body = NULL;
     old_prompt = &str_empty[0];
     pcdata = NULL;
+    pedit_state = &str_empty[0];
+    for ( int i = 0; i < MAX_PEDIT; i++ )
+        pedit_string[i] = &str_empty[0];
     perm_con = 13;
     perm_dex = 13;
     perm_int = 13;
@@ -596,9 +599,6 @@ pc_data::pc_data()
     for ( short i = 0; i < MAX_CLASS; i++ )
         order[i] = 0;
     pagelen = 20;
-    pedit_state = &str_empty[0];
-    for ( short i = 0; i < MAX_PEDIT; i++ )
-        pedit_string[i] = &str_empty[0];
 }
 
 quest_info::quest_info()

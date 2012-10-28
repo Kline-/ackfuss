@@ -627,6 +627,8 @@ class char_data
         CHAR_DATA *old_body; /* = descriptor->original */
         string old_prompt; /* used to hold prompt when writing */
         PC_DATA *pcdata;
+        string pedit_state;
+        string pedit_string[MAX_PEDIT];
         int perm_con;
         int perm_dex;
         int perm_int;
@@ -729,8 +731,6 @@ class pc_data
         short movement; /* Quick movement */
         short order[MAX_CLASS];   /* Class Order */
         short pagelen;
-        char *pedit_state;
-        char *pedit_string[MAX_PEDIT];
 };
 
 struct liq_type

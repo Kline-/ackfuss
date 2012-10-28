@@ -210,84 +210,72 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
 
     if ( !str_cmp( arg1, "enter" ) )
     {
-        if ( str_cmp( ch->pcdata->pedit_state, "walk" ) )
+        if ( str_cmp( CSTR( ch->pedit_state ), "walk" ) )
         {
-            free_string( ch->pcdata->pedit_string[0] );
-            ch->pcdata->pedit_string[0] = str_dup( "none" );
-            free_string( ch->pcdata->pedit_state );
-            ch->pcdata->pedit_state = str_dup( "walk" );
+            ch->pedit_string[0] = "none";
+            ch->pedit_state = "walk";
         }
-        free_string( ch->pcdata->pedit_string[0] );
-        ch->pcdata->pedit_string[0] = str_dup( argument );
+        ch->pedit_string[0] = argument;
         return;
     }
     if ( !str_cmp( arg1, "exit" ) )
     {
-        if ( str_cmp( ch->pcdata->pedit_state, "walk" ) )
+        if ( str_cmp( CSTR( ch->pedit_state ), "walk" ) )
         {
-            free_string( ch->pcdata->pedit_string[0] );
-            ch->pcdata->pedit_string[0] = str_dup( "none" );
-            free_string( ch->pcdata->pedit_state );
-            ch->pcdata->pedit_state = str_dup( "walk" );
+            ch->pedit_string[0] = "none";
+            ch->pedit_state = "walk";
         }
-
-        free_string( ch->pcdata->pedit_string[1] );
-        ch->pcdata->pedit_string[1] = str_dup( argument );
+        ch->pedit_string[1] = argument;
         return;
     }
     if ( !str_cmp( arg1, "assist" ) )
     {
-        if ( str_cmp( ch->pcdata->pedit_state, "assist" ) )
+        if ( str_cmp( CSTR( ch->pedit_state ), "assist" ) )
         {
-            free_string( ch->pcdata->pedit_string[0] );
-            ch->pcdata->pedit_string[0] = str_dup( "none" );
-            free_string( ch->pcdata->pedit_string[1] );
-            ch->pcdata->pedit_string[1] = str_dup( "none" );
-            free_string( ch->pcdata->pedit_state );
-            ch->pcdata->pedit_state = str_dup( "assist" );
+            ch->pedit_string[0] = "none";
+            ch->pedit_string[1] = "none";
+            ch->pedit_state = "assist";
         }
-        free_string( ch->pcdata->pedit_string[0] );
         if ( !is_name( "*name*", argument ) )
         {
             send_to_char( "You must include *name* by itself somewhere in your assist message!\r\n", ch );
-            ch->pcdata->pedit_string[0] = str_dup( "none" );
+            ch->pedit_string[0] = "none";
             return;
         }
-        if ( str_cmp( "assist", ch->pcdata->pedit_state ) )
+        if ( str_cmp( "assist", CSTR( ch->pedit_state ) ) )
         {
-            free_string( ch->pcdata->pedit_state );
-            ch->pcdata->pedit_state = str_dup( "assist" );
+            ch->pedit_state = "assist";
         }
-        ch->pcdata->pedit_string[0] = str_dup( argument );
+        ch->pedit_string[0] = argument;
         return;
     }
 
     if ( !str_cmp( arg1, "show" ) )
     {
-        if ( !str_cmp( ch->pcdata->pedit_state, "walk" ) )
+        if ( !str_cmp( CSTR( ch->pedit_state ), "walk" ) )
         {
             char move_buf[MSL];
             char test_string[MSL];
             short qp_cost = 0;
 
-            if ( !str_cmp( ch->pcdata->pedit_string[0], "none" ) )
+            if ( !str_cmp( CSTR( ch->pedit_string[0] ), "none" ) )
             {
                 snprintf( test_string, MSL, "%s", CSTR( ch->room_enter ) );
             }
             else
             {
-                snprintf( test_string, MSL, "%s", ch->pcdata->pedit_string[0] );
+                snprintf( test_string, MSL, "%s", CSTR( ch->pedit_string[0] ) );
                 qp_cost++;
             }
             snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), test_string );
             act( move_buf, ch, NULL, rev_name[1], TO_CHAR );
-            if ( !str_cmp( ch->pcdata->pedit_string[1], "none" ) )
+            if ( !str_cmp( CSTR( ch->pedit_string[1] ), "none" ) )
             {
                 snprintf( test_string, MSL, "%s", CSTR( ch->room_exit ) );
             }
             else
             {
-                snprintf( test_string, MSL, "%s", ch->pcdata->pedit_string[1] );
+                snprintf( test_string, MSL, "%s", CSTR( ch->pedit_string[1] ) );
                 qp_cost++;
             }
 
@@ -299,11 +287,11 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             send_to_char( buf, ch );
             return;
         }
-        else if ( !str_cmp( ch->pcdata->pedit_state, "assist" ) )
+        else if ( !str_cmp( CSTR( ch->pedit_state ), "assist" ) )
         {
             snprintf( buf, MSL, "Current message:\r\n  %s\r\n",
-                      ( !str_cmp( ch->pcdata->pedit_string[0], "none" ) ?
-                        ch->pcdata->assist_msg : ch->pcdata->pedit_string[0] ) );
+                      ( !str_cmp( CSTR( ch->pedit_string[0] ), "none" ) ?
+                        ch->pcdata->assist_msg : CSTR( ch->pedit_string[0] ) ) );
             send_to_char( buf, ch );
         }
         return;
@@ -314,21 +302,20 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
         short qp_cost = 0;
         short i;
 
-        if ( !str_cmp( ch->pcdata->pedit_state, "walk" ) )
+        if ( !str_cmp( CSTR( ch->pedit_state ), "walk" ) )
         {
-            if ( str_cmp( ch->pcdata->pedit_string[0], "none" ) )
+            if ( str_cmp( CSTR( ch->pedit_string[0] ), "none" ) )
                 qp_cost++;
-            if ( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
+            if ( str_cmp( CSTR( ch->pedit_string[1] ), "none" ) )
                 qp_cost++;
             if ( ch->quest_points < qp_cost )
             {
                 send_to_char( "You don't have enough quest points!\r\n", ch );
                 for ( i = 0; i < 5; i++ )
                 {
-                    if ( str_cmp( ch->pcdata->pedit_string[i], "none" ) )
+                    if ( str_cmp( CSTR( ch->pedit_string[i] ), "none" ) )
                     {
-                        free_string( ch->pcdata->pedit_string[i] );
-                        ch->pcdata->pedit_string[i] = str_dup( "none" );
+                        ch->pedit_string[i] = "none";
                     }
                 }
                 return;
@@ -340,28 +327,23 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             }
             else
             {
-                if ( str_cmp( ch->pcdata->pedit_string[0], "none" ) )
+                if ( str_cmp( CSTR( ch->pedit_string[0] ), "none" ) )
                 {
-                    ch->room_enter = ch->pcdata->pedit_string[0];
-                    free_string( ch->pcdata->pedit_string[0] );
-                    ch->pcdata->pedit_string[0] = str_dup( "none" );
+                    ch->room_enter = ch->pedit_string[0];
+                    ch->pedit_string[0] = "none";
                     snprintf( catbuf, MSL, "Enter message changed to %s\r\n", CSTR( ch->room_enter ) );
                     strncat( brandbuf, catbuf, MSL - 1 );
                 }
-                if ( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
+                if ( str_cmp( CSTR( ch->pedit_string[1] ), "none" ) )
                 {
-                    ch->room_exit = ch->pcdata->pedit_string[1];
-                    free_string( ch->pcdata->pedit_string[1] );
-                    ch->pcdata->pedit_string[1] = str_dup( "none" );
+                    ch->room_exit = ch->pedit_string[1];
+                    ch->pedit_string[1] = "none";
                     snprintf( catbuf, MSL, "Exit message changed to %s\r\n", CSTR( ch->room_exit ) );
                     strncat( brandbuf, catbuf, MSL - 1 );
                 }
-                free_string( ch->pcdata->pedit_string[0] );
-                ch->pcdata->pedit_string[0] = str_dup( "none" );
-                free_string( ch->pcdata->pedit_string[1] );
-                ch->pcdata->pedit_string[1] = str_dup( "none" );
-                free_string( ch->pcdata->pedit_state );
-                ch->pcdata->pedit_state = str_dup( "none" );
+                ch->pedit_string[0] = "none";
+                ch->pedit_string[1] = "none";
+                ch->pedit_state = "none";
                 ch->quest_points -= qp_cost;
                 do_save( ch, "auto" );
                 {
@@ -385,10 +367,10 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                 return;
             }
         }
-        else if ( !str_cmp( ch->pcdata->pedit_state, "assist" ) )
+        else if ( !str_cmp( CSTR( ch->pedit_state ), "assist" ) )
         {
             char assistbuf[MSL];
-            char *parse = ch->pcdata->pedit_string[0];
+            char *parse = const_cast<char*>( CSTR( ch->pedit_string[0] ) );
             char word1[MSL];
             assistbuf[0] = '\0';
             if ( ch->quest_points < 3 )
@@ -396,13 +378,11 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                 send_to_char( "You do not have enough quest points!\r\n", ch );
                 for ( i = 0; i < 5; i++ )
                 {
-                    if ( str_cmp( ch->pcdata->pedit_string[i], "none" ) )
+                    if ( str_cmp( CSTR( ch->pedit_string[i] ), "none" ) )
                     {
-                        free_string( ch->pcdata->pedit_string[i] );
-                        ch->pcdata->pedit_string[i] = str_dup( "none" );
+                        ch->pedit_string[i] = "none";
                     }
-                    free_string( ch->pcdata->pedit_state );
-                    ch->pcdata->pedit_state = str_dup( "none" );
+                    ch->pedit_state = "none";
                 }
                 return;
             }
@@ -426,14 +406,12 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             ch->pcdata->assist_msg = str_dup( assistbuf );
             for ( i = 0; i < 5; i++ )
             {
-                if ( str_cmp( ch->pcdata->pedit_string[i], "none" ) )
+                if ( str_cmp( CSTR( ch->pedit_string[i] ), "none" ) )
                 {
-                    free_string( ch->pcdata->pedit_string[i] );
-                    ch->pcdata->pedit_string[i] = str_dup( "none" );
+                    ch->pedit_string[i] = "none";
                 }
             }
-            free_string( ch->pcdata->pedit_state );
-            ch->pcdata->pedit_state = str_dup( "none" );
+            ch->pedit_state = "none";
             send_to_char( "Done!\r\n", ch );
             ch->quest_points -= 3;
             do_save( ch, "auto" );
@@ -570,8 +548,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             send_to_char( "That is not a currently implemented editing state.\r\n", ch );
             return;
         }
-        free_string( ch->pcdata->pedit_state );
-        ch->pcdata->pedit_state = str_dup( arg2 );
+        ch->pedit_state = arg2;
         return;
     }
     if ( !str_cmp( arg1, "clear" ) )
@@ -579,8 +556,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
         short i;
         for ( i = 0; i < 5; i++ )
         {
-            free_string( ch->pcdata->pedit_string[i] );
-            ch->pcdata->pedit_string[i] = str_dup( "none" );
+            ch->pedit_string[i] = "none";
         }
         return;
     }
