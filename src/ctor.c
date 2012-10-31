@@ -207,6 +207,7 @@ char_data::char_data()
     max_int = 0;
     max_str = 0;
     max_wis = 0;
+    message = &str_empty[0];
     mod_con = 0;
     mod_dex = 0;
     mod_int = 0;
@@ -598,7 +599,6 @@ pc_data::pc_data()
     load_msg = &str_empty[0];
     login_sex = SEX_NEUTRAL;
     mana_from_gain = -1;
-    message = &str_empty[0];
 }
 
 quest_info::quest_info()

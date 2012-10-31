@@ -5802,9 +5802,9 @@ DO_FUN(build_helpedit)
             else
                 strncat(buf2, buf1, MSL - 1);
         }
-        ch->pcdata->message = str_dup(buf2);
+        ch->message = buf2;
 
-        build_strdup(&ch->pcdata->message, "$edit", TRUE, FALSE, ch);
+        build_strdup(ch->message, "$edit", TRUE, ch);
         file_close(fp);
     }
     else

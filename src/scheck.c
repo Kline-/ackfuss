@@ -187,7 +187,6 @@ static void walk_pcdata( PC_DATA * p )
     touch( p->bamfin );
     touch( p->bamfout );
     touch( p->header );
-    touch( p->message );
     touch( p->lastlogin );
     touch( p->load_msg );
 

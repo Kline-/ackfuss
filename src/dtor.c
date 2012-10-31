@@ -262,7 +262,6 @@ pc_data::~pc_data()
         free_string(ignore_list[i]);
     free_string(lastlogin);
     free_string(load_msg);
-    free_string(message);
 }
 
 quest_info::~quest_info()

@@ -612,6 +612,7 @@ class char_data
         int max_int;
         int max_str;
         int max_wis;
+        string message; /* helpedit file contents */
         int mod_con;
         int mod_dex;
         int mod_int;
@@ -730,7 +731,6 @@ class pc_data
         char *load_msg;
         short login_sex;
         int mana_from_gain;  /* saves non-item oriented mana total */
-        char *message; /* helpedit file contents */
 };
 
 struct liq_type
