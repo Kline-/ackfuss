@@ -190,6 +190,8 @@ char_data::char_data()
     last_shield = NULL;
     leader = NULL;
     level = 0;
+    load_msg = &str_empty[0];
+    login_sex = SEX_NEUTRAL;
     logon = current_time;
     long_descr.clear();
     long_descr_orig.clear();
@@ -198,6 +200,7 @@ char_data::char_data()
     for ( int i = 0; i < MAX_CLASS; i++ )
         lvl2[i] = -1;
     mana = 50;
+    mana_from_gain = -1;
     master = NULL;
     max_hit = 50;
     max_mana = 50;
@@ -596,9 +599,6 @@ pc_data::pc_data()
     last_note = 0;
     for ( short i = 0; i < MAX_SKILL; i++ )
         learned[i] = 0;
-    load_msg = &str_empty[0];
-    login_sex = SEX_NEUTRAL;
-    mana_from_gain = -1;
 }
 
 quest_info::quest_info()

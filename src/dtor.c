@@ -261,7 +261,6 @@ pc_data::~pc_data()
     for ( short i = 0; i < MAX_IGNORES; i++ )
         free_string(ignore_list[i]);
     free_string(lastlogin);
-    free_string(load_msg);
 }
 
 quest_info::~quest_info()

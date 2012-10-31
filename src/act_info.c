@@ -471,7 +471,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
             strncat( buf, "(LINKDEAD)", MSL - 1 );
 
     if ( !IS_NPC(victim) && victim->act.test(ACT_RULER) )
-        strncat( buf, get_ruler_title( victim->ruler_rank, victim->pcdata->login_sex ), MSL - 1 );
+        strncat( buf, get_ruler_title( victim->ruler_rank, victim->login_sex ), MSL - 1 );
     if ( victim->position == POS_STANDING && victim->long_descr[0] != '\0' )
     {
         strncat( buf, victim->long_descr.c_str(), MSL - 1 );

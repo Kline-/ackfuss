@@ -2631,17 +2631,17 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             case 'm':
             case 'M':
                 ch->sex = SEX_MALE;
-                ch->pcdata->login_sex = SEX_MALE;
+                ch->login_sex = SEX_MALE;
                 break;
             case 'f':
             case 'F':
                 ch->sex = SEX_FEMALE;
-                ch->pcdata->login_sex = SEX_FEMALE;
+                ch->login_sex = SEX_FEMALE;
                 break;
             case 'n':
             case 'N':
                 ch->sex = SEX_NEUTRAL;
-                ch->pcdata->login_sex = SEX_NEUTRAL;
+                ch->login_sex = SEX_NEUTRAL;
                 break;
             default:
                 write_to_buffer( d, "That's not a sex.\r\nWhat IS your sex? " );
@@ -2833,7 +2833,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             ch->hit = ch->max_hit;
             ch->mana = ch->max_mana;
             ch->move = ch->max_move;
-            ch->pcdata->mana_from_gain = ch->max_mana;
+            ch->mana_from_gain = ch->max_mana;
             ch->pcdata->hp_from_gain = ch->max_hit;
             ch->move_from_gain = ch->max_move;
 
@@ -3037,15 +3037,15 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             AFFECT_DATA *this_aff;
             AFFECT_DATA *this_aff_next;
 
-            ch->max_mana = ch->pcdata->mana_from_gain;
+            ch->max_mana = ch->mana_from_gain;
             ch->max_hit = ch->pcdata->hp_from_gain;
             ch->max_move = ch->move_from_gain;
             ch->saving_throw = ch->get_level("psuedo") / 10;
             ch->hitroll = 0;
             ch->damroll = 0;
             ch->armor = 100;
-            if ( ch->pcdata->login_sex != -1 )
-                ch->sex = ch->pcdata->login_sex;
+            if ( ch->login_sex != -1 )
+                ch->sex = ch->login_sex;
             ch->affected_by = 0;
 
 
@@ -3900,15 +3900,15 @@ void copyover_recover(  )
                 AFFECT_DATA *this_aff;
                 AFFECT_DATA *this_aff_next;
 
-                this_char->max_mana = this_char->pcdata->mana_from_gain;
+                this_char->max_mana = this_char->mana_from_gain;
                 this_char->max_hit = this_char->pcdata->hp_from_gain;
                 this_char->max_move = this_char->move_from_gain;
                 this_char->saving_throw = this_char->get_level("psuedo") / 10;
                 this_char->hitroll = 0;
                 this_char->damroll = 0;
                 this_char->armor = 100;
-                if ( this_char->pcdata->login_sex != -1 )
-                    this_char->sex = this_char->pcdata->login_sex;
+                if ( this_char->login_sex != -1 )
+                    this_char->sex = this_char->login_sex;
                 this_char->affected_by = 0;
 
 

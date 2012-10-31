@@ -267,7 +267,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                 snprintf( test_string, MSL, "%s", CSTR( ch->pedit_string[0] ) );
                 qp_cost++;
             }
-            snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), test_string );
+            snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->ruler_rank, ch->login_sex ), test_string );
             act( move_buf, ch, NULL, rev_name[1], TO_CHAR );
             if ( !str_cmp( CSTR( ch->pedit_string[1] ), "none" ) )
             {
@@ -280,7 +280,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             }
 
 
-            snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->ruler_rank, ch->pcdata->login_sex ), test_string );
+            snprintf( move_buf, MSL, "$L%s$n %s $T.", get_ruler_title( ch->ruler_rank, ch->login_sex ), test_string );
             act( move_buf, ch, NULL, dir_name[1], TO_CHAR );
 
             snprintf( buf, MSL, "Purchase cost is %d qps.\r\n", qp_cost );

@@ -62,7 +62,7 @@ void reset_gain_stats( CHAR_DATA * ch )
     short add_mana = 0;
     short add_hp = 0;
 
-    ch->pcdata->mana_from_gain = 100;
+    ch->mana_from_gain = 100;
     ch->pcdata->hp_from_gain = 25;
     ch->move_from_gain = 0;
 
@@ -82,7 +82,7 @@ void reset_gain_stats( CHAR_DATA * ch )
                 add_mana = UMAX( 0, add_mana );
                 add_move = UMAX( 7, add_move );
 
-                ch->pcdata->mana_from_gain += add_mana;
+                ch->mana_from_gain += add_mana;
                 ch->pcdata->hp_from_gain += add_hp;
                 ch->move_from_gain += add_move;
 
@@ -99,7 +99,7 @@ void reset_gain_stats( CHAR_DATA * ch )
                 add_mana = UMAX( 0, add_mana );
                 add_move = UMAX( 7, add_move );
 
-                ch->pcdata->mana_from_gain += add_mana;
+                ch->mana_from_gain += add_mana;
                 ch->pcdata->hp_from_gain += add_hp;
                 ch->move_from_gain += add_move;
             }
@@ -113,7 +113,7 @@ void reset_gain_stats( CHAR_DATA * ch )
             add_hp = UMAX( 1, add_hp );
             add_mana = UMAX( 0, add_mana );
 
-            ch->pcdata->mana_from_gain += add_mana;
+            ch->mana_from_gain += add_mana;
             ch->pcdata->hp_from_gain += add_hp;
 
         }

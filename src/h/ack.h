@@ -597,12 +597,15 @@ class char_data
         MAGIC_SHIELD *last_shield;
         CHAR_DATA *leader;
         int level;  /* For m/c this = max of levels */
+        string load_msg;
+        int login_sex;
         time_t logon;
         string long_descr;
         string long_descr_orig;
         int lvl[MAX_CLASS];  /* Holds details for m/c levels */
         int lvl2[MAX_CLASS]; /* for remort (if any) */
         int mana;
+        int mana_from_gain;  /* saves non-item oriented mana total */
         CHAR_DATA *master;
         int max_hit;
         int max_mana;
@@ -728,9 +731,6 @@ class pc_data
         char *lastlogin;
         time_t last_note;
         short learned[MAX_SKILL];
-        char *load_msg;
-        short login_sex;
-        int mana_from_gain;  /* saves non-item oriented mana total */
 };
 
 struct liq_type

@@ -241,9 +241,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     fprintf( fp, "Description    %s~\n", ch->description.c_str() );
     fprintf( fp, "Prompt         %s~\n", ch->prompt.c_str() );
     fprintf( fp, "Sex            %d\n", ch->sex );
-
-    if ( !IS_NPC(ch) )
-        fprintf( fp, "LoginSex       %d\n", ch->pcdata->login_sex );
+    fprintf( fp, "LoginSex       %d\n", ch->login_sex );
     fprintf( fp, "Class          %d\n", ch->p_class );
     fprintf( fp, "Race           %d\n", ch->race );
     fprintf( fp, "Level          %d\n", ch->level );
@@ -329,7 +327,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
                  ch->order[0], ch->order[1], ch->order[2],
                  ch->order[3], ch->order[4] );
         fprintf( fp, "Password       %s~\n", CSTR( ch->pwd ) );
-        fprintf( fp, "LoadMsg        %s~\n", ch->pcdata->load_msg );
+        fprintf( fp, "LoadMsg        %s~\n", CSTR( ch->load_msg ) );
         fprintf( fp, "Bamfin         %s~\n", ch->pcdata->bamfin );
         fprintf( fp, "Bamfout        %s~\n", ch->pcdata->bamfout );
         fprintf( fp, "Roomenter      %s~\n", CSTR( ch->room_enter ) );
@@ -441,7 +439,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "RecoveryCode   %s~\n", ch->recovery_code.c_str() );
         fprintf( fp, "QuestPoints    %d\n", ch->quest_points );
         fprintf( fp, "RecallVnum     %d\n", ch->recall_vnum );
-        fprintf( fp, "GainMana       %d\n", ch->pcdata->mana_from_gain );
+        fprintf( fp, "GainMana       %d\n", ch->mana_from_gain );
         fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
         fprintf( fp, "GainMove       %d\n", ch->move_from_gain );
         fprintf( fp, "RulerRank      %d\n", ch->ruler_rank );
@@ -973,8 +971,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             case 'E':
                 if ( !str_cmp( word, "End" ) )
                 {
-                    if ( !IS_NPC(ch) && ch->pcdata->login_sex < 0 )
-                        ch->pcdata->login_sex = ch->sex;
+                    if ( ch->login_sex < 0 )
+                        ch->login_sex = ch->sex;
                     return;
                 }
                 KEY( "Exp", ch->exp, fread_number( fp ) );
@@ -1009,9 +1007,9 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             case 'G':
                 if ( !IS_NPC( ch ) )
                 {
-                    KEY( "GainMana", ch->pcdata->mana_from_gain, fread_number( fp ) );
                     KEY( "GainHp", ch->pcdata->hp_from_gain, fread_number( fp ) );
                 }
+                KEY( "GainMana", ch->mana_from_gain, fread_number( fp ) );
                 KEY( "GainMove", ch->move_from_gain, fread_number( fp ) );
                 break;
 
@@ -1074,13 +1072,13 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
             case 'L':
                 KEY( "Level", ch->level, fread_number( fp ) );
+                KEY( "LoadMsg", ch->load_msg, fread_string( fp ) );
+                KEY( "LoginSex", ch->login_sex, fread_number( fp ) );
                 KEY( "LongDescr", ch->long_descr, fread_string( fp ) );
 
                 if ( !IS_NPC( ch ) )
                 {
-                    KEY( "LoginSex", ch->pcdata->login_sex, fread_number( fp ) );
                     SKEY( "LastLogin", ch->pcdata->lastlogin, fread_string( fp ) );
-                    SKEY( "LoadMsg", ch->pcdata->load_msg, fread_string( fp ) );
                 }
                 break;
 

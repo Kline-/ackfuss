@@ -341,7 +341,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
     add_mana = UMAX( 0, add_mana );
     add_move = UMAX( 7, add_move );
 
-    ch->pcdata->mana_from_gain += add_mana;
+    ch->mana_from_gain += add_mana;
     ch->pcdata->hp_from_gain += add_hp;
     ch->move_from_gain += add_move;
 

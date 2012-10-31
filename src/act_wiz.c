@@ -1168,11 +1168,10 @@ DO_FUN(do_olmsg)
     if ( !IS_NPC( ch ) )
     {
         smash_tilde( argument );
-        free_string(ch->pcdata->load_msg);
         if ( !str_cmp(argument, "none") )
-            ch->pcdata->load_msg = str_dup("");
+            ch->load_msg.clear();
         else
-            ch->pcdata->load_msg = str_dup(argument);
+            ch->load_msg = argument;
         send_to_char("Ok.\r\n", ch);
     }
     return;
@@ -1805,16 +1804,16 @@ DO_FUN(do_oload)
     obj = create_object( pObjIndex, level );
     if ( CAN_WEAR( obj, ITEM_TAKE ) )
     {
-        if ( strlen(ch->pcdata->load_msg) > 0 )
-            act(ch->pcdata->load_msg, ch, obj, NULL, TO_ROOM);
+        if ( !ch->load_msg.empty() )
+            act(CSTR(ch->load_msg), ch, obj, NULL, TO_ROOM);
         else
             act( "$n @@mgestures majestically, and@@N $p @@mappears with a crash of @@WTHUNDER!!@@N", ch, obj, NULL, TO_ROOM );
         obj_to_char( obj, ch );
     }
     else
     {
-        if ( strlen(ch->pcdata->load_msg) > 0 )
-            act(ch->pcdata->load_msg, ch, obj, NULL, TO_ROOM);
+        if ( !ch->load_msg.empty() )
+            act(CSTR(ch->load_msg), ch, obj, NULL, TO_ROOM);
         else
             act( "$n @@mgestures, and a @@N$p@@M appears with a thunderous crash@@N!!!", ch, obj, NULL, TO_ROOM );
         obj_to_room( obj, ch->in_room );
@@ -2860,8 +2859,7 @@ DO_FUN(do_mset)
             return;
         }
         victim->sex = value;
-        if ( !IS_NPC(victim) )
-            victim->pcdata->login_sex = value;
+        victim->login_sex = value;
         return;
     }
 
@@ -5417,7 +5415,7 @@ DO_FUN(do_gain_stat_reset)
     victim->damroll = 0;
     victim->armor = 100;
 
-    victim->max_mana = victim->pcdata->mana_from_gain;
+    victim->max_mana = victim->mana_from_gain;
     victim->max_hit = victim->pcdata->hp_from_gain;
     victim->max_move = victim->move_from_gain;
 
