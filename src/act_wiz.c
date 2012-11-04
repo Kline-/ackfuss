@@ -213,31 +213,19 @@ DO_FUN(do_wizhelp)
 
 DO_FUN(do_bamfin)
 {
-    if ( !IS_NPC( ch ) )
-    {
-        smash_tilde( argument );
-        free_string( ch->pcdata->bamfin );
-        ch->pcdata->bamfin = str_dup( argument );
-        send_to_char( "Ok.\r\n", ch );
-    }
+    smash_tilde( argument );
+    ch->bamfin = argument;
+    send_to_char( "Ok.\r\n", ch );
     return;
 }
-
-
 
 DO_FUN(do_bamfout)
 {
-    if ( !IS_NPC( ch ) )
-    {
-        smash_tilde( argument );
-        free_string( ch->pcdata->bamfout );
-        ch->pcdata->bamfout = str_dup( argument );
-        send_to_char( "Ok.\r\n", ch );
-    }
+    smash_tilde( argument );
+    ch->bamfout = argument;
+    send_to_char( "Ok.\r\n", ch );
     return;
 }
-
-
 
 DO_FUN(do_deny)
 {
@@ -633,30 +621,15 @@ DO_FUN(do_goto)
 
     if ( ch->fighting != NULL )
         stop_fighting( ch );
-    /*
-     * if ( !is_set(ch->act, ACT_WIZINVIS) )
-     */
-    {
-        act( "$L$n $T.", ch, NULL,
-             ( ch->pcdata != NULL && ch->pcdata->bamfout[0] != '\0' )
-             ? ch->pcdata->bamfout : "leaves in a swirling mist", TO_ROOM );
-    }
 
+    act( "$L$n $T.", ch, NULL, !ch->bamfout.empty() ? CSTR( ch->bamfout ) : "leaves in a swirling mist", TO_ROOM );
     char_from_room( ch );
     char_to_room( ch, location );
-
-    /*    if ( !is_set(ch->act, ACT_WIZINVIS) )   */
-    {
-        act( "$L$n $T.", ch, NULL,
-             ( ch->pcdata != NULL && ch->pcdata->bamfin[0] != '\0' )
-             ? ch->pcdata->bamfin : "appears in a swirling mist", TO_ROOM );
-    }
-
+    act( "$L$n $T.", ch, NULL, !ch->bamfin.empty() ? CSTR( ch->bamfin ) : "appears in a swirling mist", TO_ROOM );
     do_look( ch, "auto" );
+
     return;
 }
-
-
 
 DO_FUN(do_rstat)
 {
@@ -4189,12 +4162,10 @@ DO_FUN(do_iscore)
         send_to_char( buf, ch );
     }
 
-    snprintf( buf, MSL, "Bamfin:  %s\r\n",
-              ( ch->pcdata != NULL && ch->pcdata->bamfin[0] != '\0' ) ? ch->pcdata->bamfin : "Not changed/Switched." );
+    snprintf( buf, MSL, "Bamfin:  %s\r\n", !ch->bamfin.empty() ? CSTR( ch->bamfin ) : "Not changed/Switched." );
     send_to_char( buf, ch );
 
-    snprintf( buf, MSL, "Bamfout: %s\r\n",
-              ( ch->pcdata != NULL && ch->pcdata->bamfout[0] != '\0' ) ? ch->pcdata->bamfout : "Not changed/Switched." );
+    snprintf( buf, MSL, "Bamfout: %s\r\n", !ch->bamfout.empty() ? CSTR( ch->bamfout ) : "Not changed/Switched." );
     send_to_char( buf, ch );
 
     snprintf( buf, MSL, "Mud Info:\r\nDeathmatch: %s   Wizlock: %s\r\n", deathmatch ? "YES" : "NO ", wizlock ? "YES" : "NO " );

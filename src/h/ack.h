@@ -556,6 +556,9 @@ class char_data
         int affected_by;
         int alignment;
         int armor;
+        string assist_msg;
+        string bamfin;
+        string bamfout;
         MONEY_TYPE *bank_money;
         int build_mode;
         int build_vnum;
@@ -728,9 +731,6 @@ class pc_data
         ~pc_data();
         char *alias[MAX_ALIASES];
         char *alias_name[MAX_ALIASES];
-        char *assist_msg;
-        char *bamfin;
-        char *bamfout;
 };
 
 struct liq_type

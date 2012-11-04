@@ -321,8 +321,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
                  ch->order[3], ch->order[4] );
         fprintf( fp, "Password       %s~\n", CSTR( ch->pwd ) );
         fprintf( fp, "LoadMsg        %s~\n", CSTR( ch->load_msg ) );
-        fprintf( fp, "Bamfin         %s~\n", ch->pcdata->bamfin );
-        fprintf( fp, "Bamfout        %s~\n", ch->pcdata->bamfout );
+        fprintf( fp, "Bamfin         %s~\n", CSTR( ch->bamfin ) );
+        fprintf( fp, "Bamfout        %s~\n", CSTR( ch->bamfout ) );
         fprintf( fp, "Roomenter      %s~\n", CSTR( ch->room_enter ) );
         fprintf( fp, "Roomexit       %s~\n", CSTR( ch->room_exit ) );
         fprintf( fp, "Title          %s~\n", CSTR( ch->title ) );
@@ -360,7 +360,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "%sEOL\n", outstr.c_str() );
 
         fprintf( fp, "EmailValid     %i\n", ch->email->verified );
-        fprintf( fp, "AssistMsg      %s~\n", ch->pcdata->assist_msg );
+        fprintf( fp, "AssistMsg      %s~\n", CSTR( ch->assist_msg ) );
 
         for ( cnt = 0; cnt < MAX_ALIASES; cnt++ )
         {
@@ -811,10 +811,9 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 KEY( "AffectedBy", ch->affected_by, fread_number( fp ) );
                 KEY( "Alignment", ch->alignment, fread_number( fp ) );
                 KEY( "Armor", ch->armor, fread_number( fp ) );
+                KEY( "AssistMsg", ch->assist_msg, fread_string( fp ) );
                 if ( !IS_NPC(ch) )
                 {
-                    KEY( "Adeptlevel", ch->adept_level, fread_number( fp ) );
-                    SKEY( "AssistMsg", ch->pcdata->assist_msg, fread_string( fp ) );
                     SKEY( "Alias_Name0", ch->pcdata->alias_name[0], fread_string( fp ) );
                     SKEY( "Alias_Name1", ch->pcdata->alias_name[1], fread_string( fp ) );
                     SKEY( "Alias_Name2", ch->pcdata->alias_name[2], fread_string( fp ) );
@@ -876,6 +875,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'B':
+                KEY( "Bamfin", ch->bamfin, fread_string( fp ) );
+                KEY( "Bamfout", ch->bamfout, fread_string( fp ) );
                 if ( !str_cmp( word, "BankMoney" ) )
                 {
                     MONEY_TYPE *transfer = new MONEY_TYPE;
@@ -887,11 +888,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     join_money( transfer, ch->bank_money );
                     fMatch = TRUE;
                     break;
-                }
-                if ( !IS_NPC( ch ) )
-                {
-                    SKEY( "Bamfin", ch->pcdata->bamfin, fread_string( fp ) );
-                    SKEY( "Bamfout", ch->pcdata->bamfout, fread_string( fp ) );
                 }
                 break;
 

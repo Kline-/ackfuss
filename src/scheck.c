@@ -184,15 +184,11 @@ static void walk_pcdata( PC_DATA * p )
     if ( !p )
         return;
 
-    touch( p->bamfin );
-    touch( p->bamfout );
-
     for ( i = 0; i < MAX_ALIASES; i++ )
     {
         touch( p->alias[i] );
         touch( p->alias_name[i] );
     }
-    touch( p->assist_msg );
 }
 static void walk_shield_data( MAGIC_SHIELD * shield )
 {

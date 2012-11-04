@@ -5219,9 +5219,9 @@ DO_FUN(do_assist)
         }
         if ( ( assist->fighting != NULL ) && ( ch->fighting == NULL ) )
         {
-            snprintf( actbuf, MSL, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+            snprintf( actbuf, MSL, "$n screams, '%s'", CSTR( ch->assist_msg ) );
             act( actbuf, ch, NULL, assist, TO_ROOM );
-            snprintf( actbuf, MSL, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+            snprintf( actbuf, MSL, "You scream, '%s'", CSTR( ch->assist_msg ) );
             act( actbuf, ch, NULL, assist, TO_CHAR );
             set_fighting( ch, assist->fighting, TRUE );
             return;
@@ -5251,9 +5251,9 @@ DO_FUN(do_assist)
             && ( ch->leader->in_room == ch->in_room )
             && ( ch->leader->fighting != NULL ) && ( ch->fighting == NULL ) && ( ch->leader != ch ) )
     {
-        snprintf( actbuf, MSL, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+        snprintf( actbuf, MSL, "$n screams, '%s'", CSTR( ch->assist_msg ) );
         act( actbuf, ch, NULL, ch->leader, TO_ROOM );
-        snprintf( actbuf, MSL, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+        snprintf( actbuf, MSL, "You scream, '%s'", CSTR( ch->assist_msg ) );
         act( actbuf, ch, NULL, ch->leader, TO_CHAR );
         set_fighting( ch, ch->leader->fighting, TRUE );
         return;
@@ -5265,9 +5265,9 @@ DO_FUN(do_assist)
     for ( ppl = ch->in_room->first_person; ppl != NULL; ppl = ppl->next_in_room )
         if ( ( is_same_group( ch, ppl ) ) && ( ppl != ch ) && ( ppl->fighting != NULL ) && ( ch->fighting == NULL ) )
         {
-            snprintf( actbuf, MSL, "$n screams, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+            snprintf( actbuf, MSL, "$n screams, '%s'", CSTR( ch->assist_msg ) );
             act( actbuf, ch, NULL, ppl, TO_ROOM );
-            snprintf( actbuf, MSL, "You scream, '%s'", IS_NPC( ch ) ? "BANZAI!! $N must be assisted!!" : ch->pcdata->assist_msg );
+            snprintf( actbuf, MSL, "You scream, '%s'", CSTR( ch->assist_msg ) );
             act( actbuf, ch, NULL, ppl, TO_CHAR );
             set_fighting( ch, ppl->fighting, TRUE );
             return;

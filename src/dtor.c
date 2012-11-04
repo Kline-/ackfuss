@@ -251,9 +251,6 @@ pc_data::~pc_data()
         free_string(alias[i]);
         free_string(alias_name[i]);
     }
-    free_string(assist_msg);
-    free_string(bamfin);
-    free_string(bamfout);
 }
 
 quest_info::~quest_info()

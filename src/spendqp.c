@@ -291,7 +291,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
         {
             snprintf( buf, MSL, "Current message:\r\n  %s\r\n",
                       ( !str_cmp( CSTR( ch->pedit_string[0] ), "none" ) ?
-                        ch->pcdata->assist_msg : CSTR( ch->pedit_string[0] ) ) );
+                        CSTR( ch->assist_msg ) : CSTR( ch->pedit_string[0] ) ) );
             send_to_char( buf, ch );
         }
         return;
@@ -402,8 +402,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                     strncat( assistbuf, catbuf, MSL - 1 );
                 }
             }
-            free_string( ch->pcdata->assist_msg );
-            ch->pcdata->assist_msg = str_dup( assistbuf );
+            ch->assist_msg = assistbuf;
             for ( i = 0; i < 5; i++ )
             {
                 if ( str_cmp( CSTR( ch->pedit_string[i] ), "none" ) )
@@ -423,7 +422,7 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                 brand->branded = str_dup( ch->name.c_str() );
                 brand->branded_by = str_dup( "@@rSystem@@N" );
                 brand->priority = str_dup( "normal" );
-                snprintf( brandbuf, MSL, "Assist message changed to %s\r\n", ch->pcdata->assist_msg );
+                snprintf( brandbuf, MSL, "Assist message changed to %s\r\n", CSTR( ch->assist_msg ) );
                 brand->message = str_dup( brandbuf );
                 brand->dt_stamp = str_dup( current_time_str() );
                 brand_member->next = NULL;

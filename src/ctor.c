@@ -145,6 +145,9 @@ char_data::char_data()
     affected_by = 0;
     alignment = 0;
     armor = 0;
+    assist_msg = "@@eBANZAI!!@@N $N must be assisted!!";
+    bamfin = &str_empty[0];
+    bamfout = &str_empty[0];
     bank_money = new MONEY_TYPE;
     build_mode = 0;
     build_vnum = 0;
@@ -600,9 +603,6 @@ pc_data::pc_data()
         alias[i] = &str_empty[0];
         alias_name[i] = &str_empty[0];
     }
-    assist_msg = str_dup("'@@eBANZAI!!@@N $N must be assisted!!'");;
-    bamfin = &str_empty[0];
-    bamfout = &str_empty[0];
 }
 
 quest_info::quest_info()
