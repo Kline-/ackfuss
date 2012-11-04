@@ -145,6 +145,7 @@ char_data::char_data()
     affected_by = 0;
     alignment = 0;
     armor = 0;
+    bank_money = new MONEY_TYPE;
     build_mode = 0;
     build_vnum = 0;
     carry_number = 0;
@@ -162,6 +163,7 @@ char_data::char_data()
     condition[COND_FULL] = 48;
     for ( i = 0; i < MAX_COOLDOWN; i++ )
         cooldown[i] = 0;
+    current_brand = NULL;
     damroll = 5;
     deaf.reset();
     death_cnt = -1;
@@ -169,6 +171,7 @@ char_data::char_data()
     desc = NULL;
     description.clear();
     dr_mod = 0;
+    email = new EMAIL_DATA;
     exp = 0;
     extract_timer = -1;
     failures = 0;
@@ -600,9 +603,6 @@ pc_data::pc_data()
     assist_msg = str_dup("'@@eBANZAI!!@@N $N must be assisted!!'");;
     bamfin = &str_empty[0];
     bamfout = &str_empty[0];
-    bank_money = new MONEY_TYPE;
-    current_brand = NULL;
-    email = new EMAIL_DATA;
 }
 
 quest_info::quest_info()

@@ -105,7 +105,10 @@ char_data::~char_data()
         affect_remove(this, first_affect);
 
     imc_freechardata(this);
-
+    delete bank_money;
+    if ( current_brand )
+        delete current_brand;
+    delete email;
     if ( pcdata )
         delete pcdata;
     delete money;
@@ -251,10 +254,6 @@ pc_data::~pc_data()
     free_string(assist_msg);
     free_string(bamfin);
     free_string(bamfout);
-    delete bank_money;
-    if ( current_brand )
-        delete current_brand;
-    delete email;
 }
 
 quest_info::~quest_info()

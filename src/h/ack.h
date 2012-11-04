@@ -556,6 +556,7 @@ class char_data
         int affected_by;
         int alignment;
         int armor;
+        MONEY_TYPE *bank_money;
         int build_mode;
         int build_vnum;
         int carry_number;
@@ -568,6 +569,7 @@ class char_data
         int color[MAX_COLOR];
         int condition[MAX_COND];
         float cooldown[MAX_COOLDOWN];
+        BRAND_DATA *current_brand;
         int damroll;
         int def;
         bitset<MAX_BITSET> deaf;
@@ -575,6 +577,7 @@ class char_data
         DESCRIPTOR_DATA *desc;
         string description;
         int dr_mod;
+        EMAIL_DATA *email;
         int exp;
         int extract_timer;
         int failures;  /* Failed logins */
@@ -728,9 +731,6 @@ class pc_data
         char *assist_msg;
         char *bamfin;
         char *bamfout;
-        MONEY_TYPE *bank_money;
-        BRAND_DATA *current_brand;
-        EMAIL_DATA *email;
 };
 
 struct liq_type

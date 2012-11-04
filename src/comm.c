@@ -3140,7 +3140,7 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
             return true;
         }
 
-        if ( who->character->pcdata->email->address.empty() )
+        if ( who->character->email->address.empty() )
         {
             offline_unload(who);
             write_to_buffer( d, "\r\nNo email has been set for that player. Unable to initiate password recovery.\r\n" );
@@ -3151,7 +3151,7 @@ bool check_login_cmd( DESCRIPTOR_DATA *d, char *cmd )
         who->character->recovery_code = gen_rand_string(8);
         snprintf( subj, MSL, "%s Password Reset Code", mudnamenocolor );
         snprintf( body, MSL, "<html>This email was used by a player of %s. If this was not you, please disregard it.<br><br>Reset code: <b>%s</b></html>", mudnamenocolor, who->character->recovery_code.c_str() );
-        if ( !send_email( who->character->pcdata->email->address.c_str(), subj, body, true, who->character ) )
+        if ( !send_email( who->character->email->address.c_str(), subj, body, true, who->character ) )
         {
             who->character->recovery_code.clear();
             offline_unload(who);

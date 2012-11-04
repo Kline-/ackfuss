@@ -287,14 +287,10 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         }
     }
     fprintf( fp, "%sEOL\n", outstr.c_str() );
-
-    if ( !IS_NPC(ch) )
-    {
-        fprintf( fp, "BankMoney      %d ", MAX_CURRENCY );
+    fprintf( fp, "BankMoney      %d ", MAX_CURRENCY );
         for ( foo = 0; foo < MAX_CURRENCY; foo++ )
-            fprintf( fp, "%d ", ch->pcdata->bank_money->cash_unit[foo] );
+            fprintf( fp, "%d ", ch->bank_money->cash_unit[foo] );
         fprintf( fp, "\n" );
-    }
 
     fprintf( fp, "Exp            %d\n", ch->exp );
 
@@ -348,14 +344,14 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "DimCol         %s~\n", CSTR( ch->col_dim ) );
         fprintf( fp, "TermRows       %d\n", ch->term_row );
         fprintf( fp, "TermColumns    %d\n", ch->term_col );
-        fprintf( fp, "Email          %s~\n", ch->pcdata->email->address.c_str() );
-        fprintf( fp, "EmailCode      %s~\n", ch->pcdata->email->confirmation_code.c_str() );
+        fprintf( fp, "Email          %s~\n", ch->email->address.c_str() );
+        fprintf( fp, "EmailCode      %s~\n", ch->email->confirmation_code.c_str() );
 
         outstr.clear();
         fprintf( fp, "EmailFlags     " );
         for ( foo = 0; foo < MAX_BITSET; foo++ )
         {
-            if ( ch->pcdata->email->flags.test(foo) )
+            if ( ch->email->flags.test(foo) )
             {
                 outstr += rev_table_lookup( tab_email, foo );
                 outstr += " ";
@@ -363,7 +359,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         }
         fprintf( fp, "%sEOL\n", outstr.c_str() );
 
-        fprintf( fp, "EmailValid     %i\n", ch->pcdata->email->verified );
+        fprintf( fp, "EmailValid     %i\n", ch->email->verified );
         fprintf( fp, "AssistMsg      %s~\n", ch->pcdata->assist_msg );
 
         for ( cnt = 0; cnt < MAX_ALIASES; cnt++ )
@@ -880,22 +876,22 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'B':
+                if ( !str_cmp( word, "BankMoney" ) )
+                {
+                    MONEY_TYPE *transfer = new MONEY_TYPE;
+                    int num_coins;
+
+                    num_coins = fread_number( fp );
+                    for ( cnt = 0; cnt < num_coins; cnt++ )
+                        transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
+                    join_money( transfer, ch->bank_money );
+                    fMatch = TRUE;
+                    break;
+                }
                 if ( !IS_NPC( ch ) )
                 {
                     SKEY( "Bamfin", ch->pcdata->bamfin, fread_string( fp ) );
                     SKEY( "Bamfout", ch->pcdata->bamfout, fread_string( fp ) );
-                    if ( !str_cmp( word, "BankMoney" ) )
-                    {
-                        MONEY_TYPE *transfer = new MONEY_TYPE;
-                        int num_coins;
-
-                        num_coins = fread_number( fp );
-                        for ( cnt = 0; cnt < num_coins; cnt++ )
-                            transfer->cash_unit[( cnt < MAX_CURRENCY ? cnt : MAX_CURRENCY - 1 )] = fread_number( fp );
-                        join_money( transfer, ch->pcdata->bank_money );
-                        fMatch = TRUE;
-                        break;
-                    }
                 }
                 break;
 
@@ -954,6 +950,21 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'E':
+                KEY( "Email", ch->email->address, fread_string( fp ) );
+                KEY( "EmailCode", ch->email->confirmation_code, fread_string( fp ) );
+                if ( !str_cmp( word, "EmailFlags" ) )
+                {
+                    const char *tmp = fread_word(fp);
+
+                    while ( str_cmp(tmp, "EOL") )
+                    {
+                        ch->email->flags.set(table_lookup(tab_email,const_cast<char *>(tmp)));
+                        tmp = fread_word(fp);
+                    }
+                    fMatch = TRUE;
+                    break;
+                }
+                KEY( "EmailValid", ch->email->verified, fread_number( fp ) );
                 if ( !str_cmp( word, "End" ) )
                 {
                     if ( ch->login_sex < 0 )
@@ -961,25 +972,6 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     return;
                 }
                 KEY( "Exp", ch->exp, fread_number( fp ) );
-                if ( !IS_NPC( ch ) )
-                {
-                    KEY( "Email", ch->pcdata->email->address, fread_string( fp ) );
-                    KEY( "EmailCode", ch->pcdata->email->confirmation_code, fread_string( fp ) );
-                    if ( !str_cmp( word, "EmailFlags" ) )
-                    {
-                        const char *tmp = fread_word(fp);
-
-                        while ( str_cmp(tmp, "EOL") )
-                        {
-                            ch->pcdata->email->flags.set(table_lookup(tab_email,const_cast<char *>(tmp)));
-                            tmp = fread_word(fp);
-                        }
-                        fMatch = TRUE;
-                        break;
-                    }
-
-                    KEY( "EmailValid", ch->pcdata->email->verified, fread_number( fp ) );
-                }
                 break;
 
             case 'F':

@@ -82,26 +82,26 @@ DO_FUN(do_email)
 
     if ( ( pers = get_char_world( ch, who ) ) != NULL ) /* They are online, snag email from live character and execute */
     {
-        if ( pers->pcdata->email->address.empty() )
+        if ( pers->email->address.empty() )
         {
             ch->send("Unable to send email. That person has not set an email address.\r\n");
             return;
         }
 
-        if ( validate && !pers->pcdata->email->flags.test(table_lookup(tab_email,"mort")) )
+        if ( validate && !pers->email->flags.test(table_lookup(tab_email,"mort")) )
         {
             ch->send("Unable to send email. That person does not accept emails from players.\r\n");
             return;
         }
 
-        if ( !validate && !pers->pcdata->email->flags.test(table_lookup(tab_email,"imm")) )
+        if ( !validate && !pers->email->flags.test(table_lookup(tab_email,"imm")) )
         {
             ch->send("Unable to send email. That person does not accept emails from immortals.\r\n");
             return;
         }
 
 
-        if( send_email( pers->pcdata->email->address.c_str(), subj2, body, validate, pers ) )
+        if( send_email( pers->email->address.c_str(), subj2, body, validate, pers ) )
             ch->send("Email sent succesfully.\r\n");
         else
             ch->send("Unable to send email. That person has not validated their email address.\r\n");
@@ -117,26 +117,26 @@ DO_FUN(do_email)
 
         pers = d->character;
 
-        if ( pers->pcdata->email->address.empty() )
+        if ( pers->email->address.empty() )
         {
             offline_unload( d );
             ch->send("Unable to send email. That person has not set an email address.\r\n");
             return;
         }
 
-        if ( validate && !pers->pcdata->email->flags.test(table_lookup(tab_email,"mort")) )
+        if ( validate && !pers->email->flags.test(table_lookup(tab_email,"mort")) )
         {
             ch->send("Unable to send email. That person does not accept emails from players.\r\n");
             return;
         }
 
-        if ( !validate && !pers->pcdata->email->flags.test(table_lookup(tab_email,"imm")) )
+        if ( !validate && !pers->email->flags.test(table_lookup(tab_email,"imm")) )
         {
             ch->send("Unable to send email. That person does not accept emails from immortals.\r\n");
             return;
         }
 
-        if( send_email( pers->pcdata->email->address.c_str(), subj2, body, validate, pers ) )
+        if( send_email( pers->email->address.c_str(), subj2, body, validate, pers ) )
             ch->send("Email sent succesfully.\r\n");
         else
             ch->send("Unable to send email. That person has not validated their email address.\r\n");
@@ -162,9 +162,9 @@ DO_FUN(do_tog_email)
 
     if ( argument[0] == '\0' )
     {
-        if ( ch->pcdata->email->flags.test(table_lookup(tab_email,"mort")) )
+        if ( ch->email->flags.test(table_lookup(tab_email,"mort")) )
             mort = true;
-        if ( ch->pcdata->email->flags.test(table_lookup(tab_email,"imm")) )
+        if ( ch->email->flags.test(table_lookup(tab_email,"imm")) )
             imm = true;
 
         ch->send("You are currently accepting emails from ");
@@ -186,12 +186,12 @@ DO_FUN(do_tog_email)
     {
         value = table_lookup(tab_email,"mort");
 
-        if ( ch->pcdata->email->flags.test(value) )
+        if ( ch->email->flags.test(value) )
             ch->send("You will no longer receive emails from other players.\r\n");
         else
             ch->send("You will now be able to receive emails from other players.\r\n");
 
-        ch->pcdata->email->flags.flip(value);
+        ch->email->flags.flip(value);
 
         return;
     }
@@ -200,12 +200,12 @@ DO_FUN(do_tog_email)
     {
         value = table_lookup(tab_email,"imm");
 
-        if ( ch->pcdata->email->flags.test(value) )
+        if ( ch->email->flags.test(value) )
             ch->send("You will no longer receive emails from immortals.\r\n");
         else
             ch->send("You will now be able to receive emails from immortals.\r\n");
 
-        ch->pcdata->email->flags.flip(value);
+        ch->email->flags.flip(value);
 
         return;
     }
@@ -220,12 +220,12 @@ DO_FUN(do_verify_email)
 {
     if ( IS_NPC( ch ) )
         return;
-    if ( ch->pcdata->email->address.empty() )
+    if ( ch->email->address.empty() )
     {
         ch->send( "You need to provide an email address first with setemail <address>.\r\n" );
         return;
     }
-    if ( ch->pcdata->email->verified )
+    if ( ch->email->verified )
     {
         ch->send( "You have already verified your email. If you wish to update your email, please use setemail <address>.\r\n" );
         return;
@@ -235,12 +235,12 @@ DO_FUN(do_verify_email)
         ch->send( "To verify your email address you must everify <code> using the code you received.\r\n" );
         return;
     }
-    if ( !str_cmp( argument, ch->pcdata->email->confirmation_code ) )
+    if ( !str_cmp( argument, ch->email->confirmation_code ) )
     {
        ch->send( "Thank you for verifying your email address.\r\n");
-       ch->pcdata->email->confirmation_code.clear();
-       ch->pcdata->email->verified = true;
-       snprintf( log_buf, MIL, "%s (%s) has verified their email address.", ch->get_name(), ch->pcdata->email->address.c_str() );
+       ch->email->confirmation_code.clear();
+       ch->email->verified = true;
+       snprintf( log_buf, MIL, "%s (%s) has verified their email address.", ch->get_name(), ch->email->address.c_str() );
        monitor_chan( log_buf, MONITOR_EMAIL );
        return;
     }
@@ -266,14 +266,14 @@ DO_FUN(do_set_email)
         return;
     }
 
-    ch->pcdata->email->address = argument;
-    ch->pcdata->email->confirmation_code.clear();
-    ch->pcdata->email->confirmation_code = gen_rand_string(8);
-    ch->pcdata->email->verified = false;
+    ch->email->address = argument;
+    ch->email->confirmation_code.clear();
+    ch->email->confirmation_code = gen_rand_string(8);
+    ch->email->verified = false;
     ch->send( "An email has been sent to %s with a confirmation code. Please verify your address by typing everify <code> once your have received the email. If you do not receive an email, set your email again and a new code will be sent.\r\n", argument );
 
     snprintf( subject, MSL, "%s Email Confirmation Code", mudnamenocolor );
-    snprintf( body, MSL, "<html>This email was used by a player of %s. If this was not you, please disregard it.<br><br>Confirmation code: <b>%s</b></html>", mudnamenocolor, ch->pcdata->email->confirmation_code.c_str() );
+    snprintf( body, MSL, "<html>This email was used by a player of %s. If this was not you, please disregard it.<br><br>Confirmation code: <b>%s</b></html>", mudnamenocolor, ch->email->confirmation_code.c_str() );
     send_email( argument, subject, body, false, ch);
 
     return;
@@ -287,14 +287,14 @@ bool send_email( const char *address, const char *subject, const char *body, boo
     if( IS_NPC(ch) ) /* Safety check for later --Kline */
         ch = NULL;
 
-    if ( validate && ch != NULL && !ch->pcdata->email->verified )
+    if ( validate && ch != NULL && !ch->email->verified )
     {
-        snprintf( log_buf, MIL, "Unable to send email to %s (%s); email not verified.", ch->get_name(), ch->pcdata->email->address.c_str() );
+        snprintf( log_buf, MIL, "Unable to send email to %s (%s); email not verified.", ch->get_name(), ch->email->address.c_str() );
         monitor_chan( log_buf, MONITOR_EMAIL );
         return false;
     }
 
-    snprintf( mailbuf, MSL, "echo \"%s\" | mail -a \"From: '%s' <%s>\" -a \"Content-type: text/html;\" -s \"%s\" \"%s\"", body, mudnamenocolor, mudemailaddr, subject, ch == NULL ? address : ch->pcdata->email->address.c_str() );
+    snprintf( mailbuf, MSL, "echo \"%s\" | mail -a \"From: '%s' <%s>\" -a \"Content-type: text/html;\" -s \"%s\" \"%s\"", body, mudnamenocolor, mudemailaddr, subject, ch == NULL ? address : ch->email->address.c_str() );
 
     /*
      * system() is if() encapsulated to suppress a warning. system() returns different results on different distros,
@@ -305,7 +305,7 @@ bool send_email( const char *address, const char *subject, const char *body, boo
     if( ch == NULL )
         snprintf( log_buf, MIL, "An email was sent to (%s) with subject (%s).", address, subject );
     else
-        snprintf( log_buf, MIL, "An email was sent to %s (%s) with subject (%s).", ch->get_name(), ch->pcdata->email->address.c_str(), subject );
+        snprintf( log_buf, MIL, "An email was sent to %s (%s) with subject (%s).", ch->get_name(), ch->email->address.c_str(), subject );
     monitor_chan( log_buf, MONITOR_EMAIL );
 
     if ( ( fp = file_open( EMAIL_FILE, "a" ) ) != NULL )
