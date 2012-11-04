@@ -5160,7 +5160,7 @@ DO_FUN(do_logins)
 
     ch_printf(ch, "Last [%2d] successful logins:\r\n", MAX_HOSTS);
     for ( short i = 0; i < MAX_HOSTS; i++ )
-        ch_printf(ch, "  [%2d] %s\r\n", i, ch->pcdata->host[i]);
+        ch_printf(ch, "  [%2d] %s\r\n", i, CSTR( ch->host[i] ) );
 
     return;
 }

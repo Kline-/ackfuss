@@ -2314,7 +2314,6 @@ void reset_area( AREA_DATA * pArea )
             case 'A':
                 break;
 
-
             case 'M':
                 just_loaded = FALSE;
                 if ( ( pMobIndex = get_mob_index( pReset->arg1 ) ) == NULL )
@@ -3337,7 +3336,7 @@ char *fread_to_eof( FILE * fp )
         else
             strncat(ret, tmp, MSL);
     }
-        
+
     return ret;
 }
 

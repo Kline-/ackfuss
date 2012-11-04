@@ -188,9 +188,6 @@ static void walk_pcdata( PC_DATA * p )
     touch( p->bamfout );
     touch( p->header );
 
-    for ( i = 0; i < MAX_HOSTS; i++ )
-        touch( p->host[i] );
-
     for ( i = 0; i < MAX_ALIASES; i++ )
     {
         touch( p->alias[i] );

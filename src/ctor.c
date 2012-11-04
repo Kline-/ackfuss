@@ -177,6 +177,8 @@ char_data::char_data()
     first_shield = NULL;
     hit = 50;
     hitroll = 5;
+    for ( i = 0; i < MAX_HOSTS; i++ )
+        host[i] = "Unknown!";
     hp_from_gain = -1;
     hr_mod = 0;
     hunting = NULL;
@@ -601,8 +603,6 @@ pc_data::pc_data()
     email = new EMAIL_DATA;
     header = &str_empty[0];
     hicol = 'y';
-    for ( short i = 0; i < MAX_HOSTS; i++ )
-        host[i] = str_dup("Unknown!");
 }
 
 quest_info::quest_info()

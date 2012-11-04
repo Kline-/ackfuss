@@ -336,7 +336,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "Whoname        *%s~\n", CSTR( ch->who_name ) );
         fprintf( fp, "Host           ");
         for ( cnt = 0; cnt < MAX_HOSTS; cnt++ )
-            fprintf(fp, "%s~", ch->pcdata->host[cnt]);
+            fprintf(fp, "%s~", CSTR( ch->host[cnt] ) );
         fprintf( fp, "\n");
         fprintf( fp, "Whitelist      ");
         for ( cnt = 0; cnt < MAX_HOSTS; cnt++ )
@@ -1009,22 +1009,21 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
             case 'H':
                 KEY( "Hitroll", ch->hitroll, fread_number( fp ) );
+                if ( !str_cmp( word, "Host" ) )
+                {
+                    if ( cur_revision >= SAVE_REVISION )
+                    {
+                        for ( short i = 0; i < MAX_HOSTS; i++ )
+                            ch->host[i] = fread_string( fp );
+                    }
+                    else
+                        ch->host[0] = fread_string(fp);
+
+                    fMatch = TRUE;
+                    break;
+                }
                 if ( !IS_NPC( ch ) )
                 {
-                    if ( !str_cmp( word, "Host" ) )
-                    {
-                        if ( cur_revision >= SAVE_REVISION )
-                        {
-                            for ( short i = 0; i < MAX_HOSTS; i++ )
-                                ch->pcdata->host[i] = fread_string( fp );
-                        }
-                        else
-                            ch->pcdata->host[0] = fread_string(fp);
-
-                        fMatch = TRUE;
-                        break;
-                    }
-
                     if ( !str_cmp( word, "HiCol" ) )
                     {
                         char *temp;

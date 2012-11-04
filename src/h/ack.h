@@ -583,6 +583,7 @@ class char_data
         MAGIC_SHIELD *first_shield;
         int hit;
         int hitroll;
+        string host[MAX_HOSTS]; /* Used to tell PC last login sites */
         int hp_from_gain; /* same for hitpoints */
         int hr_mod;
         CHAR_DATA *hunting;  /* For hunting PC's/mobs   */
@@ -730,7 +731,6 @@ class pc_data
         EMAIL_DATA *email;
         char *header;  /* filename for helpedit */
         char hicol;
-        char *host[MAX_HOSTS]; /* Used to tell PC last login sites */
 };
 
 struct liq_type

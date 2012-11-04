@@ -2890,9 +2890,9 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
             for ( short i = 0; i < MAX_HOSTS; i++ )
             {
-                if ( strcmp( d->host, ch->pcdata->host[i] ) )
+                if ( strcmp( d->host, CSTR( ch->host[i] ) ) )
                 {
-                    snprintf( msg, MSL, "%s connected from %s ( last login was from %s ) !", ch->name.c_str(), d->host, ch->pcdata->host[0] );
+                    snprintf( msg, MSL, "%s connected from %s ( last login was from %s ) !", ch->name.c_str(), d->host, CSTR( ch->host[0] ) );
                     log_string( msg );
                     monitor_chan( msg, MONITOR_CONNECT );
                     if ( ( ch->level > 80 ) )
@@ -2906,17 +2906,13 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
 
             for ( short i = 0; i < MAX_HOSTS; i++ )
             {
-                if ( !str_cmp(ch->pcdata->host[i], "Unknown!") )
+                if ( !str_cmp(CSTR(ch->host[i]), "Unknown!") )
                 {
-                    free_string(ch->pcdata->host[i]);
-                    ch->pcdata->host[i] = str_dup(d->host);
+                    ch->host[i] = d->host;
                     break;
                 }
                 if ( i == (MAX_HOSTS - 1 ) )
-                {
-                    free_string(ch->pcdata->host[(i-1)]);
-                    ch->pcdata->host[(i-1)] = str_dup(ch->pcdata->host[i]);
-                }
+                    ch->host[(i-1)] = ch->host[i];
             }
         }
 
@@ -3784,7 +3780,7 @@ DO_FUN(do_finger)
     snprintf( buf, MSL, "Name: %s.\r\n", capitalize( victim->name.c_str() ) );
     send_to_char( buf, ch );
 
-    snprintf( buf, MSL, "Last Login was from: %s.\r\n", victim->pcdata->host[0] );
+    snprintf( buf, MSL, "Last Login was from: %s.\r\n", CSTR( victim->host[0] ) );
     send_to_char( buf, ch );
 
     snprintf( buf, MSL, "pFile was last saved at: %s.", CSTR( victim->last_login ) );

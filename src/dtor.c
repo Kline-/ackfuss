@@ -256,8 +256,6 @@ pc_data::~pc_data()
         delete current_brand;
     delete email;
     free_string(header);
-    for ( short i = 0; i < MAX_HOSTS; i++ )
-        free_string(host[i]);
 }
 
 quest_info::~quest_info()
