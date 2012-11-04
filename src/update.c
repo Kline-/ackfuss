@@ -342,7 +342,7 @@ void advance_level( CHAR_DATA * ch, int p_class, bool show, bool remort )
     add_move = UMAX( 7, add_move );
 
     ch->mana_from_gain += add_mana;
-    ch->pcdata->hp_from_gain += add_hp;
+    ch->hp_from_gain += add_hp;
     ch->move_from_gain += add_move;
 
     ch->max_hit += add_hp;

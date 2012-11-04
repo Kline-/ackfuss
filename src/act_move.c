@@ -1822,7 +1822,7 @@ DO_FUN(do_train)
 
         ch->practice -= cost;
         *pAbilityI += hp_gain;
-        ch->pcdata->hp_from_gain += 1;
+        ch->hp_from_gain += 1;
         act( "Your $T increases!", ch, NULL, pOutput, TO_CHAR );
         act( "$n's $T increases!", ch, NULL, pOutput, TO_ROOM );
         return;

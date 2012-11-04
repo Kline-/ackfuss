@@ -177,6 +177,7 @@ char_data::char_data()
     first_shield = NULL;
     hit = 50;
     hitroll = 5;
+    hp_from_gain = -1;
     hr_mod = 0;
     hunting = NULL;
     hunt_flags = 0;
@@ -602,7 +603,6 @@ pc_data::pc_data()
     hicol = 'y';
     for ( short i = 0; i < MAX_HOSTS; i++ )
         host[i] = str_dup("Unknown!");
-    hp_from_gain = -1;
 }
 
 quest_info::quest_info()

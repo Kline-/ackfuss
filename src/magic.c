@@ -6075,7 +6075,7 @@ bool spell_condense_soul( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
     act( "@@N$n gestures diabolically, and his captured soul condenses into a@@dSoul Potion@@N.", ch, NULL, NULL, TO_ROOM );
     send_to_char( "@@NYou condense the soul and some of your life force into a @@dSoul potion@@N.\r\n", ch );
     ch->max_hit -= 75;
-    ch->pcdata->hp_from_gain -= 75;
+    ch->hp_from_gain -= 75;
 
     return TRUE;
 }
@@ -6143,7 +6143,7 @@ bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
             return FALSE;
         }
     }
-    if ( ch->pcdata->hp_from_gain < 100 )
+    if ( ch->hp_from_gain < 100 )
     {
         send_to_char( "You have exhausted your life force, and are unable to"
                       " control the necromantic forces necessary for this act.\r\n", ch );
@@ -6188,7 +6188,7 @@ bool spell_infuse( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
     act( "@@N$n gestures diabolically, and his captured @@esoul@@N is infused into his $P.", ch, NULL, ob, TO_ROOM );
     send_to_char( "@@NYou condense the soul and some of your life force into your weapon.\r\n", ch );
     ch->max_hit -= 100;
-    ch->pcdata->hp_from_gain -= 100;
+    ch->hp_from_gain -= 100;
     do_save( ch, "auto" );
     return TRUE;
 }

@@ -437,7 +437,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "QuestPoints    %d\n", ch->quest_points );
         fprintf( fp, "RecallVnum     %d\n", ch->recall_vnum );
         fprintf( fp, "GainMana       %d\n", ch->mana_from_gain );
-        fprintf( fp, "GainHp         %d\n", ch->pcdata->hp_from_gain );
+        fprintf( fp, "GainHp         %d\n", ch->hp_from_gain );
         fprintf( fp, "GainMove       %d\n", ch->move_from_gain );
         fprintf( fp, "RulerRank      %d\n", ch->ruler_rank );
         fprintf( fp, "Condition      %d %d %d\n", ch->condition[0], ch->condition[1], ch->condition[2] );
@@ -1002,10 +1002,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'G':
-                if ( !IS_NPC( ch ) )
-                {
-                    KEY( "GainHp", ch->pcdata->hp_from_gain, fread_number( fp ) );
-                }
+                KEY( "GainHp", ch->hp_from_gain, fread_number( fp ) );
                 KEY( "GainMana", ch->mana_from_gain, fread_number( fp ) );
                 KEY( "GainMove", ch->move_from_gain, fread_number( fp ) );
                 break;

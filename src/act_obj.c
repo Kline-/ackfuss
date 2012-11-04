@@ -4084,13 +4084,12 @@ DO_FUN(do_repair)
     OBJ_DATA *obj;
     CHAR_DATA *mob;
     char *cbuf = '\0';
-    char changebuf[MSL], mbuf[MSL];
+    char changebuf[MSL];
     int cost = 0, change = 0;
     double mod = 1.05;
     bool found = FALSE;
 
     changebuf[0] = '\0';
-    mbuf[0] = '\0';
 
     if ( argument[0] == '\0' )
     {

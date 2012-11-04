@@ -5416,7 +5416,7 @@ DO_FUN(do_gain_stat_reset)
     victim->armor = 100;
 
     victim->max_mana = victim->mana_from_gain;
-    victim->max_hit = victim->pcdata->hp_from_gain;
+    victim->max_hit = victim->hp_from_gain;
     victim->max_move = victim->move_from_gain;
 
     for ( wear_object = victim->first_carry; wear_object != NULL; wear_object = wear_object->next_in_carry_list )
