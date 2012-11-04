@@ -267,7 +267,7 @@ bool spell_embrace( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
         send_to_char( "A choice awaits you....shall you accept this destiny and feed upon mortals, or shall you\r\n", victim );
         send_to_char( "seek @@Wcleansing@@N from this @@dEternal Damnation@@N???\r\n", victim );
 
-        victim->pcdata->learned[skill_lookup( "feed" )] = 90;
+        victim->learned[skill_lookup( "feed" )] = 90;
     }
 
 
@@ -380,7 +380,7 @@ void do_instruct( CHAR_DATA * ch, char *argument )
     char buf[MAX_STRING_LENGTH];
 
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_instruct] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_instruct] == 0 )
     {
         send_to_char( "You are not trained in this skill!\r\n", ch );
         return;
@@ -425,13 +425,13 @@ void do_instruct( CHAR_DATA * ch, char *argument )
     }
 
 
-    if ( ch->pcdata->learned[sn] == 0 || skill_table[sn].flag2 != VAMP )
+    if ( ch->learned[sn] == 0 || skill_table[sn].flag2 != VAMP )
 
     {
         send_to_char( "@@NYou don't know that @@dKindred@@N skill!.\r\n", ch );
         return;
     }
-    if ( victim->pcdata->learned[sn] != 0 )
+    if ( victim->learned[sn] != 0 )
     {
         send_to_char( "They already know that skill.\r\n", ch );
         return;
@@ -453,7 +453,7 @@ void do_instruct( CHAR_DATA * ch, char *argument )
 
     /* Okay, the skill is good, the instructor knows it, and the victim doesn't  */
 
-    victim->pcdata->learned[sn] = 90;
+    victim->learned[sn] = 90;
     victim->super->pracs -= 1;
     victim->super->skills_learned += 1;
 

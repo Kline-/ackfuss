@@ -137,6 +137,8 @@ cast_data::cast_data()
 
 char_data::char_data()
 {
+    int i = 0;
+
     ac_mod = 0;
     act.reset();
     adept_level = -1;
@@ -150,13 +152,13 @@ char_data::char_data()
     cast = 0;
     casting = new CAST_DATA;
     clan = -1;
-    for ( int i = 0; i < MAX_COLOR; i++ )
+    for ( i = 0; i < MAX_COLOR; i++ )
         color[i] = 0;
-    for ( int i = 0; i < MAX_COND; i++ )
+    for ( i = 0; i < MAX_COND; i++ )
         condition[i] = 0;
     condition[COND_THIRST] = 48;
     condition[COND_FULL] = 48;
-    for ( int i = 0; i < MAX_COOLDOWN; i++ )
+    for ( i = 0; i < MAX_COOLDOWN; i++ )
         cooldown[i] = 0;
     damroll = 5;
     deaf.reset();
@@ -186,18 +188,21 @@ char_data::char_data()
     is_quitting = false;
     last_affect = NULL;
     last_carry = NULL;
+    last_note = 0;
     last_saved_aff = NULL;
     last_shield = NULL;
     leader = NULL;
+    for ( i = 0; i < MAX_SKILL; i++ )
+        learned[i] = 0;
     level = 0;
     load_msg = &str_empty[0];
     login_sex = SEX_NEUTRAL;
     logon = current_time;
     long_descr.clear();
     long_descr_orig.clear();
-    for ( int i = 0; i < MAX_CLASS; i++ )
+    for ( i = 0; i < MAX_CLASS; i++ )
         lvl[i] = -1;
-    for ( int i = 0; i < MAX_CLASS; i++ )
+    for ( i = 0; i < MAX_CLASS; i++ )
         lvl2[i] = -1;
     mana = 50;
     mana_from_gain = -1;
@@ -228,12 +233,12 @@ char_data::char_data()
     num_followers = 0;
     old_body = NULL;
     old_prompt = &str_empty[0];
-    for ( int i = 0; i < MAX_CLASS; i++ )
+    for ( i = 0; i < MAX_CLASS; i++ )
         order[i] = 0;
     pagelen = 20;
     pcdata = NULL;
     pedit_state = &str_empty[0];
-    for ( int i = 0; i < MAX_PEDIT; i++ )
+    for ( i = 0; i < MAX_PEDIT; i++ )
         pedit_string[i] = &str_empty[0];
     perm_con = 13;
     perm_dex = 13;
@@ -274,7 +279,7 @@ char_data::char_data()
     sitting = NULL;
     skills = 0;
     spec_fun = NULL;
-    for ( int i = 0; i < MAX_SPEED; i++ )
+    for ( i = 0; i < MAX_SPEED; i++ )
         speed[i] = 0;
     stance = STANCE_WARRIOR;
     stance_ac_mod = 0;
@@ -295,7 +300,7 @@ char_data::char_data()
     wait = 0;
     was_in_room = NULL;
     weak_magic = 0;
-    for ( int i = 0; i < MAX_HOSTS; i++ )
+    for ( i = 0; i < MAX_HOSTS; i++ )
         whitelist[i] = &str_empty[0];
     who_name = &str_empty[0];
     wimpy = 0;
@@ -541,6 +546,8 @@ obj_data::obj_data()
 
 obj_index_data::obj_index_data()
 {
+    int i = 0;
+
     area = NULL;
     armor_type = 0;
     durability = max_durability;
@@ -563,7 +570,7 @@ obj_index_data::obj_index_data()
     owner = &str_empty[0];
     short_descr = &str_empty[0];
     speed = number_speed();
-    for ( short i = 0; i < MAX_OBJ_VALUE; i++ )
+    for ( i = 0; i < MAX_OBJ_VALUE; i++ )
         value[i] = 0;
     vnum = 0;
     wear_flags.reset();
@@ -596,9 +603,6 @@ pc_data::pc_data()
     imcchardata = NULL;
     invis = 0;
     lastlogin = str_dup("Unknown!");
-    last_note = 0;
-    for ( short i = 0; i < MAX_SKILL; i++ )
-        learned[i] = 0;
 }
 
 quest_info::quest_info()

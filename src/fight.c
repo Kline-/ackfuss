@@ -633,7 +633,7 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
      * check for martial arts  Taken out for wierd act crash bug with type_martial ZEN
      * if ( dt == TYPE_HIT && wield == NULL )
      * if ( number_percent() < ( IS_NPC(ch) ?
-     * ( IS_SET(ch->skills, MOB_MARTIAL ) ? 75 : 0 ) : ( ch->pcdata->learned[gsn_martial_arts]/4) ) )
+     * ( IS_SET(ch->skills, MOB_MARTIAL ) ? 75 : 0 ) : ( ch->learned[gsn_martial_arts]/4) ) )
      * dt = TYPE_MARTIAL;
      *
      */
@@ -736,19 +736,19 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
      * Bonuses.
      */
     dam += number_range( GET_DAMROLL( ch ) * 13 / 20, GET_DAMROLL( ch ) * 15 / 20 );
-    if ( ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_enhanced_damage] > 0 )
+    if ( ( !IS_NPC( ch ) && ch->learned[gsn_enhanced_damage] > 0 )
             || item_has_apply( ch, ITEM_APPLY_ENHANCED ) || ( IS_NPC( ch ) && IS_SET( ch->skills, MOB_ENHANCED ) ) )
     {
         if ( IS_NPC( ch ) )
             dam += dam * 1 / 20;
         else
-            dam += ( ch->pcdata->learned[gsn_enhanced_damage] > 0 ) ?
-                   dam * ch->pcdata->learned[gsn_enhanced_damage] / 150 : dam * .4;
+            dam += ( ch->learned[gsn_enhanced_damage] > 0 ) ?
+                   dam * ch->learned[gsn_enhanced_damage] / 150 : dam * .4;
     }
     if ( IS_NPC(ch) && IS_SET(ch->skills, MOB_PROWESS) )
         dam += number_range((int)(ch->level * 1.5), (int)(ch->level * 3));
-    if ( !IS_NPC(ch) && ch->pcdata->learned[gsn_combat_prowess] > 0 )
-        dam += number_range((int)(ch->pcdata->learned[gsn_combat_prowess] * 1.5), (int)(ch->pcdata->learned[gsn_combat_prowess] * 3));
+    if ( !IS_NPC(ch) && ch->learned[gsn_combat_prowess] > 0 )
+        dam += number_range((int)(ch->learned[gsn_combat_prowess] * 1.5), (int)(ch->learned[gsn_combat_prowess] * 3));
     if ( !IS_AWAKE( victim ) )
         dam *= 1.5;
     /*
@@ -796,13 +796,13 @@ void one_hit( CHAR_DATA * ch, CHAR_DATA * victim, int dt )
             dam_mod -= .3;
     }
     if ( ( ( IS_NPC( victim ) )
-            || ( victim->pcdata->learned[gsn_shield_block] > 0 ) )
+            || ( victim->learned[gsn_shield_block] > 0 ) )
             && ( shield )
             && ( number_range( 1, 4 ) != 3 )
             && ( number_percent(  ) <
                  ( IS_NPC( victim ) ?
                    victim->get_level("psuedo") / 7 :
-                   victim->pcdata->learned[gsn_shield_block] / 5 )
+                   victim->learned[gsn_shield_block] / 5 )
                  + ( IS_NPC( victim ) ? 10 : ( 1 * ( victim->get_level("war") - ch->level ) + victim->get_level("kni") / 8 ) ) ) )
         /*
          * Shield Block!
@@ -949,9 +949,9 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                 return;
         }
 
-        if ( ((IS_NPC(ch) && IS_SET(ch->skills, MOB_CRUSHING) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_crushing_blow])) && dt != -1 )
+        if ( ((IS_NPC(ch) && IS_SET(ch->skills, MOB_CRUSHING) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->learned[gsn_crushing_blow])) && dt != -1 )
         {
-            if ( (IS_NPC(ch) && number_percent() < 9) || (!IS_NPC(ch) && (number_range(85, 300) - ch->pcdata->learned[gsn_crushing_blow]) < 10) )
+            if ( (IS_NPC(ch) && number_percent() < 9) || (!IS_NPC(ch) && (number_range(85, 300) - ch->learned[gsn_crushing_blow]) < 10) )
             {
                 act("@@WYou @@e*@@RCRUSH@@e* @@W$N's body with the force of your blow!@@N", ch, NULL, victim, TO_CHAR);
                 act("@@W$n @@e*@@RCRUSHES@@e* @@Wyour body with the force of $s blow!@@N", ch, NULL, victim, TO_VICT);
@@ -1232,12 +1232,12 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
             case POS_DEAD:
                 if ( ( sil_weapon = get_eq_char( ch, WEAR_HOLD_HAND_L ) ) == NULL )
                     sil_weapon = get_eq_char( ch, WEAR_HOLD_HAND_R );
-                if ( IS_WOLF( victim ) && ( !IS_NPC( ch ) ) && ( ch->pcdata->learned[gsn_decapitate] != 0 )
+                if ( IS_WOLF( victim ) && ( !IS_NPC( ch ) ) && ( ch->learned[gsn_decapitate] != 0 )
                         && ( sil_weapon != NULL ) && ( IS_OBJ_STAT(sil_weapon, ITEM_EXTRA_SILVER) ) )
                 {
                     int chance;
 
-                    chance = IS_NPC( ch ) ? ch->level * 2 : ch->pcdata->learned[gsn_decapitate];
+                    chance = IS_NPC( ch ) ? ch->level * 2 : ch->learned[gsn_decapitate];
                     chance += 25;
 
                     if ( ( victim->super->level * 5 ) > ch->level )
@@ -1263,8 +1263,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                     victim->recall_vnum = ROOM_VNUM_TEMPLE;
 
                     for ( sn = 0; sn <= MAX_SKILL; sn++ )
-                        if ( ( skill_table[sn].flag2 == WOLF ) && ( victim->pcdata->learned[sn] > 0 ) )
-                            victim->pcdata->learned[sn] = 0;
+                        if ( ( skill_table[sn].flag2 == WOLF ) && ( victim->learned[sn] > 0 ) )
+                            victim->learned[sn] = 0;
                 }
 
                 act( "$n is DEAD!!", victim, 0, 0, TO_ROOM );
@@ -1739,7 +1739,7 @@ bool check_parry( CHAR_DATA * ch, CHAR_DATA * victim )
         if ( !IS_NPC( victim ) && IS_WOLF( victim ) && ( IS_SHIFTED( victim ) || IS_RAGED( victim ) ) )
             return FALSE;
 
-        chance = ( victim->pcdata->learned[gsn_parry] / 3.5 ) + get_curr_str( victim ) * 3 / 5;
+        chance = ( victim->learned[gsn_parry] / 3.5 ) + get_curr_str( victim ) * 3 / 5;
     }
     if ( IS_AFFECTED( victim, AFF_CLOAK_ADEPT ) )
         chance += 5;
@@ -1782,7 +1782,7 @@ bool check_dodge( CHAR_DATA * ch, CHAR_DATA * victim )
     }
     else
     {
-        chance = ( victim->pcdata->learned[gsn_dodge] / 3.5 ) + get_curr_dex( victim ) * 3 / 5;
+        chance = ( victim->learned[gsn_dodge] / 3.5 ) + get_curr_dex( victim ) * 3 / 5;
         if ( ch->get_level("mon") > 0 )  /* Monk  */
             chance += ch->get_level("mon") / 8;
     }
@@ -2601,9 +2601,9 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
 
             gch->super->exp++;
 
-        if ( !IS_NPC( gch ) && ( gch->pcdata->learned[gsn_emotion_control] < 73 ) )
+        if ( !IS_NPC( gch ) && ( gch->learned[gsn_emotion_control] < 73 ) )
         {
-            align = gch->alignment - ( victim->alignment * ( 80 - gch->pcdata->learned[gsn_emotion_control] ) / 100 );
+            align = gch->alignment - ( victim->alignment * ( 80 - gch->learned[gsn_emotion_control] ) / 100 );
 
             if ( align > 500 )
                 gch->alignment = UMIN( gch->alignment + ( align - 500 ) / 4, 1000 );
@@ -2997,7 +2997,7 @@ void disarm( CHAR_DATA * ch, CHAR_DATA * victim, OBJ_DATA * obj )
      * Stephen
      */
 
-chance = IS_NPC( victim ) ? IS_SET( victim->skills, MOB_NODISARM ) ? 90 : 0 : victim->pcdata->learned[gsn_nodisarm];
+chance = IS_NPC( victim ) ? IS_SET( victim->skills, MOB_NODISARM ) ? 90 : 0 : victim->learned[gsn_nodisarm];
 
     if ( number_percent(  ) < chance )
     {
@@ -3035,7 +3035,7 @@ void trip( CHAR_DATA * ch, CHAR_DATA * victim )
 
     if ( ch->check_cooldown("trip") )
         return;
-chance = IS_NPC( victim ) ? IS_SET( victim->skills, MOB_NOTRIP ) ? 75 : 0 : victim->pcdata->learned[gsn_notrip];
+chance = IS_NPC( victim ) ? IS_SET( victim->skills, MOB_NOTRIP ) ? 75 : 0 : victim->learned[gsn_notrip];
 
     /*
      * Check for no-trip
@@ -3133,7 +3133,7 @@ DO_FUN(do_target)
 {
     char arg[MAX_INPUT_LENGTH];
     CHAR_DATA *victim;
-    if ( ( !IS_NPC( ch ) ) && ( ch->pcdata->learned[gsn_target] < 65 ) )
+    if ( ( !IS_NPC( ch ) ) && ( ch->learned[gsn_target] < 65 ) )
     {
         send_to_char( "You are not trained enough in this skill!!\r\n", ch );
         return;
@@ -3374,7 +3374,7 @@ DO_FUN(do_backstab)
         return;
     }
 
-    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_backstab] / 2 );
+    chance = ( IS_NPC( ch ) ? 50 : ch->learned[gsn_backstab] / 2 );
 
     /*
      * Handle Modifiers -- chance will affect thac, etc
@@ -3639,7 +3639,7 @@ DO_FUN(do_rescue)
     }
 
     ch->set_cooldown("rescue");
-    if ( !IS_NPC( ch ) && number_percent(  ) > ch->pcdata->learned[gsn_rescue] )
+    if ( !IS_NPC( ch ) && number_percent(  ) > ch->learned[gsn_rescue] )
     {
         send_to_char( "You fail the rescue.\r\n", ch );
         return;
@@ -3722,7 +3722,7 @@ DO_FUN(do_disarm)
 
     ch->set_cooldown("disarm");
     percent = number_percent(  ) + victim->level - ch->level;
-    if ( IS_NPC( ch ) || percent < ch->pcdata->learned[gsn_disarm] * 2 / 3 )
+    if ( IS_NPC( ch ) || percent < ch->learned[gsn_disarm] * 2 / 3 )
         disarm( ch, victim, obj );
     else
         send_to_char( "You failed.\r\n", ch );
@@ -3830,7 +3830,7 @@ DO_FUN(do_circle)
         return;
     }
 
-    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_circle] / 4.5 );
+    chance = ( IS_NPC( ch ) ? 50 : ch->learned[gsn_circle] / 4.5 );
 
     /*
      * Handle Modifiers -- chance will affect thac, etc
@@ -3942,7 +3942,7 @@ DO_FUN(do_trip)
          * && ch->lvl[cnt] >= best )
          * best = cnt;
          */
-        if ( ch->pcdata->learned[gsn_trip] > 75 )
+        if ( ch->learned[gsn_trip] > 75 )
             best = UMAX( 79, ch->get_level("psuedo") );
     }
     else
@@ -3985,7 +3985,7 @@ DO_FUN(do_trip)
 
     check_killer( ch, victim );
 
-    if ( number_percent(  ) < ( IS_NPC( ch ) ? 50 : 2 * ch->pcdata->learned[gsn_trip] ) )
+    if ( number_percent(  ) < ( IS_NPC( ch ) ? 50 : 2 * ch->learned[gsn_trip] ) )
     {
         check_killer( ch, victim );
         trip( ch, victim );
@@ -4020,7 +4020,7 @@ DO_FUN(do_dirt)
          * && ch->lvl[cnt] >= best )
          * best = cnt;
          */
-        if ( ch->pcdata->learned[gsn_dirt] > 75 )
+        if ( ch->learned[gsn_dirt] > 75 )
             best = UMAX( 79, ch->get_level("psuedo") );
     }
     else
@@ -4069,7 +4069,7 @@ DO_FUN(do_dirt)
 
     ch->set_cooldown("dirt");
 
-    if ( number_percent(  ) > ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_dirt] ) )
+    if ( number_percent(  ) > ( IS_NPC( ch ) ? 50 : ch->learned[gsn_dirt] ) )
     {
         act( "You kick dirt at $M but miss!", ch, NULL, victim, TO_CHAR );
         act( "$n kicks dirt at you but misses!", ch, NULL, victim, TO_VICT );
@@ -4113,7 +4113,7 @@ DO_FUN(do_bash)
          * && ch->lvl[cnt] >= best )
          * best = cnt;
          */
-        if ( ch->pcdata->learned[gsn_bash] > 75 )
+        if ( ch->learned[gsn_bash] > 75 )
             best = UMAX( 79, ch->get_level("psuedo") );
     }
     else
@@ -4157,7 +4157,7 @@ DO_FUN(do_bash)
     ch->set_cooldown("bash");
 
     if ( ( IS_NPC( ch ) && ( number_percent(  ) > 75 + ( ch->level ) / 2 ) )
-            || ( !IS_NPC( ch ) && ( 2 * number_percent(  ) > ch->pcdata->learned[gsn_bash] ) ) )
+            || ( !IS_NPC( ch ) && ( 2 * number_percent(  ) > ch->learned[gsn_bash] ) ) )
     {
         act( "Your bash misses $M, and you fall!", ch, NULL, victim, TO_CHAR );
         act( "$n trys to bash you, misses, and falls!", ch, NULL, victim, TO_VICT );
@@ -4232,7 +4232,7 @@ DO_FUN(do_berserk)
         return;
     }
 
-    if ( ch->pcdata->learned[gsn_berserk] == 0 )
+    if ( ch->learned[gsn_berserk] == 0 )
     {
         send_to_char( "You don't know how to use this skill!\r\n", ch );
         return;
@@ -4241,7 +4241,7 @@ DO_FUN(do_berserk)
     ch->set_cooldown("berserk");
 
 
-    if ( number_percent(  ) < ( ch->pcdata->learned[gsn_berserk] / 2 ) )
+    if ( number_percent(  ) < ( ch->learned[gsn_berserk] / 2 ) )
     {
         /*
          * Failure
@@ -4298,7 +4298,7 @@ DO_FUN(do_punch)
     prime = FALSE;
 
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_punch] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_punch] == 0 )
     {
         send_to_char( "You are not trained in this skill!\r\n", ch );
         return;
@@ -4324,7 +4324,7 @@ DO_FUN(do_punch)
     else
         dam = number_range( ch->get_level("war") / 2, ch->get_level("war") * ( prime ? 2 : 1 ) );
 
-    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_punch] / 2 );
+    chance = ( IS_NPC( ch ) ? 50 : ch->learned[gsn_punch] / 2 );
 
     chance += ( ch->get_level("war") - victim->level );
 
@@ -4383,7 +4383,7 @@ DO_FUN(do_headbutt)
     prime = FALSE;
 
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_headbutt] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_headbutt] == 0 )
     {
         send_to_char( "You are not trained in this skill!\r\n", ch );
         return;
@@ -4415,7 +4415,7 @@ DO_FUN(do_headbutt)
     else
         dam = number_range( ch->get_level("war") / 2, ch->get_level("war") * ( prime ? 2 : 1 ) );
 
-    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_headbutt] / 2 );
+    chance = ( IS_NPC( ch ) ? 50 : ch->learned[gsn_headbutt] / 2 );
 
     chance += ( ch->get_level("war") - victim->level );
 
@@ -4475,7 +4475,7 @@ DO_FUN(do_charge)
     if ( ch->check_cooldown("charge") )
         return;
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_charge] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_charge] == 0 )
     {
         send_to_char( "You are not trained in this skill!\r\n", ch );
         return;
@@ -4508,7 +4508,7 @@ DO_FUN(do_charge)
         dam *= 1.5;
 
     if ( !IS_NPC( ch ) )
-        chance = ch->pcdata->learned[gsn_charge] / 2;
+        chance = ch->learned[gsn_charge] / 2;
     else
         chance = 50;
 
@@ -4580,7 +4580,7 @@ DO_FUN(do_knee)
     prime = FALSE;
 
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_knee] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_knee] == 0 )
     {
         send_to_char( "You are not trained in this skill!\r\n", ch );
         return;
@@ -4614,7 +4614,7 @@ DO_FUN(do_knee)
     else
         dam = number_range( ch->get_level("war") / 2, ch->get_level("war") * ( prime ? 2 : 1 ) );
 
-    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_knee] / 2 );
+    chance = ( IS_NPC( ch ) ? 50 : ch->learned[gsn_knee] / 2 );
 
     chance += ( ch->get_level("war") - victim->level );
 
@@ -4677,7 +4677,7 @@ DO_FUN(do_kick)
     prime = FALSE;
 
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_kick] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_kick] == 0 )
     {
         send_to_char( "You are not trained in this skill!\r\n", ch );
         return;
@@ -4707,7 +4707,7 @@ DO_FUN(do_kick)
     else
         dam = number_range( ch->get_level("war") / 2, ch->get_level("war") * ( prime ? 2 : 1 ) );
 
-    chance = ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[gsn_kick] / 2 );
+    chance = ( IS_NPC( ch ) ? 50 : ch->learned[gsn_kick] / 2 );
 
     chance += ( ch->get_level("war") - ( victim->level + 5 ) );
 
@@ -5331,7 +5331,7 @@ DO_FUN(do_stake)
         return;
     }
 
-    chance = IS_NPC( ch ) ? ch->level * 2 : ch->pcdata->learned[gsn_stake];
+    chance = IS_NPC( ch ) ? ch->level * 2 : ch->learned[gsn_stake];
     if ( !IS_AWAKE( victim ) )
         chance += 25;
 
@@ -5379,8 +5379,8 @@ DO_FUN(do_stake)
         /* remove vamp skills from dead vamp  */
 
         for ( sn = 0; sn <= MAX_SKILL; sn++ )
-            if ( ( skill_table[sn].flag2 == VAMP ) && ( victim->pcdata->learned[sn] > 0 ) )
-                victim->pcdata->learned[sn] = 0;
+            if ( ( skill_table[sn].flag2 == VAMP ) && ( victim->learned[sn] > 0 ) )
+                victim->learned[sn] = 0;
 
         if ( !IS_NPC( victim ) )
         {
@@ -5420,7 +5420,7 @@ DO_FUN(do_stun)
         send_to_char( "You must be fighting someone first!\r\n", ch );
         return;
     }
-    if ( !IS_NPC( ch ) && ( ch->pcdata->learned[gsn_stun] == 0 ) )
+    if ( !IS_NPC( ch ) && ( ch->learned[gsn_stun] == 0 ) )
     {
         send_to_char( "Huh?", ch );
         return;
@@ -5431,7 +5431,7 @@ DO_FUN(do_stun)
      * The lower the victim's hp, the greater the chance
      */
 
-    chance2 = IS_NPC( ch ) ? ch->level * 2 : ch->pcdata->learned[gsn_stun];
+    chance2 = IS_NPC( ch ) ? ch->level * 2 : ch->learned[gsn_stun];
 
     ch->set_cooldown("stun");
 
@@ -5521,7 +5521,7 @@ DO_FUN(do_feed)
         return;
     }
 
-    chance = IS_NPC( ch ) ? ch->level : ch->pcdata->learned[gsn_feed];
+    chance = IS_NPC( ch ) ? ch->level : ch->learned[gsn_feed];
     ch->set_cooldown("feed");
     check_killer( ch, victim );
     if ( number_percent(  ) < chance )
@@ -5604,7 +5604,7 @@ void check_adrenaline( CHAR_DATA * ch, float damage )
 
 
 
-    if ( damage > 200 && ch->pcdata->learned[gsn_adrenaline] > 70 )
+    if ( damage > 200 && ch->learned[gsn_adrenaline] > 70 )
     {
 
         af.type = skill_lookup( "adrenaline bonus" );
@@ -5632,7 +5632,7 @@ DO_FUN(do_frenzy)
     if ( IS_NPC( ch ) )
         return;
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_frenzy] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_frenzy] == 0 )
     {
         send_to_char( "You are not trained in this skill!\r\n", ch );
         return;
@@ -5645,7 +5645,7 @@ DO_FUN(do_frenzy)
         return;
     }
 
-    if ( !IS_NPC( ch ) && number_percent(  ) > ch->pcdata->learned[gsn_frenzy] )
+    if ( !IS_NPC( ch ) && number_percent(  ) > ch->learned[gsn_frenzy] )
     {
         send_to_char( "You try to go into a frenzy, but nearly cut your leg off!\r\n", ch );
         return;
@@ -5864,11 +5864,11 @@ float get_speed( CHAR_DATA *ch, int slot )
             value -= 0.14;
     }
     value += stance_app[ch->stance].speed_mod;
-    if ( (IS_NPC(ch) && IS_SET(ch->skills, MOB_REFLEXES) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_enhanced_reflexes]) )
+    if ( (IS_NPC(ch) && IS_SET(ch->skills, MOB_REFLEXES) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->learned[gsn_enhanced_reflexes]) )
         value -= 0.02;
-    if ( (IS_NPC(ch) && IS_SET(ch->skills, MOB_SLEIGHT) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_sleight_of_hand]) )
+    if ( (IS_NPC(ch) && IS_SET(ch->skills, MOB_SLEIGHT) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->learned[gsn_sleight_of_hand]) )
         value -= 0.04;
-    if ( (IS_NPC(ch) && IS_SET(ch->skills, MOB_QUICKSTRIKE) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_quickstrike]) )
+    if ( (IS_NPC(ch) && IS_SET(ch->skills, MOB_QUICKSTRIKE) && number_percent() < 80) || (!IS_NPC(ch) && number_percent() < ch->learned[gsn_quickstrike]) )
         value -= 0.06;
 
     if ( value < 1 )
@@ -5921,7 +5921,7 @@ void combat_update( void )
             }
 
             /* Right hand attack (if we dualwield) */
-            if ( (IS_NPC(ch) && IS_SET(ch->skills, MOB_DUALWIELD)) || (!IS_NPC(ch) && ch->pcdata->learned[gsn_dualwield] > 10) )
+            if ( (IS_NPC(ch) && IS_SET(ch->skills, MOB_DUALWIELD)) || (!IS_NPC(ch) && ch->learned[gsn_dualwield] > 10) )
             {
                 ch->speed[SPEED_RH] -= 0.01;
 
@@ -6035,7 +6035,7 @@ DO_FUN(do_disguise)
 {
     char *farg = argument;
 
-    if ( !IS_NPC(ch) && ch->pcdata->learned[gsn_disguise] == 0 )
+    if ( !IS_NPC(ch) && ch->learned[gsn_disguise] == 0 )
     {
         send_to_char("You are not trained in this skill!\r\n", ch);
         return;

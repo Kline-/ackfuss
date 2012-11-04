@@ -1425,10 +1425,10 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
     {
         switch ( obj->armor_type )
         {
-            case ITEM_ARMOR_CLOTH:   if ( ch->pcdata->learned[skill_lookup( "cloth armor" )] < 1 )   ch->send("You lack the skill to wear cloth armor.\r\n");   return;
-            case ITEM_ARMOR_LEATHER: if ( ch->pcdata->learned[skill_lookup( "leather armor" )] < 1 ) ch->send("You lack the skill to wear leather armor.\r\n"); return;
-            case ITEM_ARMOR_MAIL:    if ( ch->pcdata->learned[skill_lookup( "mail armor" )] < 1 )    ch->send("You lack the skill to wear mail armor.\r\n");    return;
-            case ITEM_ARMOR_PLATE:   if ( ch->pcdata->learned[skill_lookup( "plate armor" )] < 1 )   ch->send("You lack the skill to wear plate armor.\r\n");   return;
+            case ITEM_ARMOR_CLOTH:   if ( ch->learned[skill_lookup( "cloth armor" )] < 1 )   ch->send("You lack the skill to wear cloth armor.\r\n");   return;
+            case ITEM_ARMOR_LEATHER: if ( ch->learned[skill_lookup( "leather armor" )] < 1 ) ch->send("You lack the skill to wear leather armor.\r\n"); return;
+            case ITEM_ARMOR_MAIL:    if ( ch->learned[skill_lookup( "mail armor" )] < 1 )    ch->send("You lack the skill to wear mail armor.\r\n");    return;
+            case ITEM_ARMOR_PLATE:   if ( ch->learned[skill_lookup( "plate armor" )] < 1 )   ch->send("You lack the skill to wear plate armor.\r\n");   return;
         }
     }
 
@@ -1767,7 +1767,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
         {
             if ( ( IS_WEAPON( obj ) )
                     && ( IS_WEAPON( get_eq_char( ch, WEAR_HOLD_HAND_R ) ) )
-                    && ( ( IS_NPC( ch ) ) || ( ch->pcdata->learned[gsn_dualwield] < 10 ) ) )
+                    && ( ( IS_NPC( ch ) ) || ( ch->learned[gsn_dualwield] < 10 ) ) )
             {
                 act( "You are not capable of wielding two weapons!", ch, obj, NULL, TO_CHAR );
                 return;
@@ -1782,7 +1782,7 @@ void wear_obj( CHAR_DATA * ch, OBJ_DATA * obj, bool fReplace )
         {
             if ( ( IS_WEAPON( obj ) )
                     && ( IS_WEAPON( get_eq_char( ch, WEAR_HOLD_HAND_L ) ) )
-                    && ( ( IS_NPC( ch ) ) || ( ch->pcdata->learned[gsn_dualwield] < 10 ) ) )
+                    && ( ( IS_NPC( ch ) ) || ( ch->learned[gsn_dualwield] < 10 ) ) )
             {
                 act( "You are not capable of wielding two weapons!", ch, obj, NULL, TO_CHAR );
                 return;
@@ -2449,7 +2449,7 @@ DO_FUN(do_steal)
 
     ch->set_cooldown("steal");
     chance = IS_NPC( ch ) ? ( ch->get_level("psuedo") / 4 )
-             : ( ch->pcdata->learned[gsn_steal] / 3 + ( get_curr_dex( ch ) / 2 ) );
+             : ( ch->learned[gsn_steal] / 3 + ( get_curr_dex( ch ) / 2 ) );
     chance = chance - ( ( victim->get_level("psuedo") - ch->get_level("psuedo") ) / 2 );
     if ( IS_ADEPT(victim) && !IS_ADEPT(ch) )
         chance = chance - 25;
@@ -3603,7 +3603,7 @@ DO_FUN(do_appraise)
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_appraise] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_appraise] == 0 )
     {
         send_to_char( "You don't know how to appraise items!\r\n", ch );
         return;

@@ -2849,7 +2849,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     skill_list = one_argument( skill_list, skill );
                     if ( skill_lookup( skill ) < 0 )
                         break;
-                    ch->pcdata->learned[skill_lookup( skill )] = 101;
+                    ch->learned[skill_lookup( skill )] = 101;
                 }
                 /* Re-using this for armor too. --Kline */
                 skill_list = class_table[ch->order[0]].skill;
@@ -2858,7 +2858,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
                     skill_list = one_argument( skill_list, skill );
                     if ( skill_lookup( skill ) < 0 )
                        break;
-                    ch->pcdata->learned[skill_lookup( skill )] = 101;
+                    ch->learned[skill_lookup( skill )] = 101;
                 }
             }
             char_to_room( ch, get_room_index( ROOM_VNUM_SCHOOL ) );
@@ -2930,7 +2930,7 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
         for ( li = note_list.begin(); li != note_list.end(); li++ )
         {
             pnote = *li;
-            if ( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && pnote->date_stamp > ch->pcdata->last_note )
+            if ( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && pnote->date_stamp > ch->last_note )
                 notes++;
         }
 

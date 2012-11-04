@@ -593,9 +593,11 @@ class char_data
         bool is_quitting;
         AFFECT_DATA *last_affect;
         OBJ_DATA *last_carry;
+        time_t last_note;
         AFFECT_DATA *last_saved_aff;
         MAGIC_SHIELD *last_shield;
         CHAR_DATA *leader;
+        int learned[MAX_SKILL];
         int level;  /* For m/c this = max of levels */
         string load_msg;
         int login_sex;
@@ -729,8 +731,6 @@ class pc_data
         IMC_CHARDATA *imcchardata;
         short invis; /* wizinvis imm, level invis to */
         char *lastlogin;
-        time_t last_note;
-        short learned[MAX_SKILL];
 };
 
 struct liq_type

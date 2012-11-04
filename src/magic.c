@@ -782,7 +782,7 @@ void cast( CHAR_DATA * ch, char *argument )
     if ( str_cmp( skill_table[sn].name, "ventriloquate" ) )
         say_spell( ch, sn );
 
-    cast_chance = ( ( IS_NPC( ch ) ? ch->level : ch->pcdata->learned[sn] ) + ( int_app[get_curr_int( ch )].spell_mod ) );
+    cast_chance = ( ( IS_NPC( ch ) ? ch->level : ch->learned[sn] ) + ( int_app[get_curr_int( ch )].spell_mod ) );
 
     if ( !IS_NPC( ch ) && ( skill_table[sn].flag2 == NORM ) )
     {
@@ -4170,7 +4170,7 @@ bool spell_animate( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj 
         send_to_char( " @@eDUE TO A ROLEPLAYING CHANGE, THIS SPELL IS NO LONGER AVAILABLE TO ANY CLASS\r\n", ch );
         send_to_char( " BUT a high level @@dNECRMOANCER@@N.  THE SKILL HAS BEEN REMOVED FROM YOU CHARACTER, \r\n", ch );
         send_to_char( " SORRY FOR THE INCONVIENENCE.  @@mTHANK YOU@@N :)\r\n", ch );
-        ch->pcdata->learned[sn] = 0;
+        ch->learned[sn] = 0;
         return FALSE;
     }
 
@@ -4357,7 +4357,7 @@ bool spell_calm( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj )
     for ( ppl = ch->in_room->first_person; ppl != NULL; ppl = ppl->next_in_room )
         if ( IS_NPC( ppl ) && ppl != ch )
         {
-            chance = ( ( IS_NPC( ch ) ? 50 : ch->pcdata->learned[sn] / 2 ) + ( 5 * ( level - ppl->level ) ) );
+            chance = ( ( IS_NPC( ch ) ? 50 : ch->learned[sn] / 2 ) + ( 5 * ( level - ppl->level ) ) );
             if ( number_percent(  ) < chance )
                 stop_fighting( ppl );
         }

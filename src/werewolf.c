@@ -266,8 +266,8 @@ void do_tribe( CHAR_DATA * ch, char *argument )
             victim->recall_vnum = ROOM_VNUM_TEMPLE;
             victim->super->level = 1;
             for ( sn = 0; sn <= MAX_SKILL; sn++ )
-                if ( ( skill_table[sn].flag2 == WOLF ) && ( victim->pcdata->learned[sn] > 0 ) )
-                    victim->pcdata->learned[sn] = 0;
+                if ( ( skill_table[sn].flag2 == WOLF ) && ( victim->learned[sn] > 0 ) )
+                    victim->learned[sn] = 0;
             char_from_room( victim );
             char_to_room( victim, get_room_index( victim->recall_vnum ) );
             victim->sentence += 15000;
@@ -297,7 +297,7 @@ void do_imprint( CHAR_DATA * ch, char *argument )
         return;
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_imprint] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_imprint] == 0 )
     {
         send_to_char( "You have not been imprinted with this skill!\r\n", ch );
         return;
@@ -341,12 +341,12 @@ void do_imprint( CHAR_DATA * ch, char *argument )
     sn = skill_lookup( arg );
 
 
-    if ( ch->pcdata->learned[sn] == 0 || skill_table[sn].flag2 != WOLF )
+    if ( ch->learned[sn] == 0 || skill_table[sn].flag2 != WOLF )
     {
         send_to_char( "@@NYou don't know that @@bGarou@@N skill!.\r\n", ch );
         return;
     }
-    if ( victim->pcdata->learned[sn] != 0 )
+    if ( victim->learned[sn] != 0 )
     {
         send_to_char( "They already know that skill.\r\n", ch );
         return;
@@ -368,7 +368,7 @@ void do_imprint( CHAR_DATA * ch, char *argument )
 
     /* Okay, the skill is good, the instructor knows it, and the victim doesn't  */
 
-    victim->pcdata->learned[sn] = 90;
+    victim->learned[sn] = 90;
     victim->super->pracs -= 1;
     victim->super->skills_learned += 1;
 
@@ -512,7 +512,7 @@ bool spell_tribe_claw( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * o
         act( "$n then takes $N's throat in $s mouth, and tears it out!", ch, NULL, victim, TO_NOTVICT );
         act( "$N goes into convulsions, then slowly steadies, then peers up at $n with adoration.", ch, NULL, victim,
              TO_NOTVICT );
-        victim->pcdata->learned[skill_lookup( "scent" )] = 90;
+        victim->learned[skill_lookup( "scent" )] = 90;
     }
 
 

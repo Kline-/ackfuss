@@ -287,7 +287,7 @@ void move_char( CHAR_DATA * ch, int door, bool look )
         }
     }
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_climb] == 0
+    if ( !IS_NPC( ch ) && ch->learned[gsn_climb] == 0
             && pexit->exit_info.test(EX_CLIMB) && !IS_AFFECTED( ch, AFF_FLYING ) && !item_has_apply( ch, ITEM_APPLY_FLY ) && !IS_GHOST(ch) )
     {
         send_to_char( "You'd need to be able to fly or climb to go that way!\r\n", ch );
@@ -1074,7 +1074,7 @@ DO_FUN(do_pick)
         }
     }
 
-    if ( !IS_NPC( ch ) && number_percent(  ) > ch->pcdata->learned[gsn_pick_lock] )
+    if ( !IS_NPC( ch ) && number_percent(  ) > ch->learned[gsn_pick_lock] )
     {
         send_to_char( "You failed.\r\n", ch );
         return;
@@ -1359,7 +1359,7 @@ DO_FUN(do_shadowform)
     act( "$n tries to take on shadow form.", ch, NULL, NULL, TO_ROOM );
     affect_strip( ch, gsn_sneak );
 
-    if ( IS_NPC( ch ) || number_percent(  ) < ch->pcdata->learned[gsn_shadow] )
+    if ( IS_NPC( ch ) || number_percent(  ) < ch->learned[gsn_shadow] )
     {
         af.type = gsn_sneak;
         af.duration = ch->level;
@@ -1379,7 +1379,7 @@ DO_FUN(do_sneak)
     send_to_char( "You attempt to move silently.\r\n", ch );
     affect_strip( ch, gsn_sneak );
 
-    if ( IS_NPC( ch ) || number_percent(  ) < ch->pcdata->learned[gsn_sneak] )
+    if ( IS_NPC( ch ) || number_percent(  ) < ch->learned[gsn_sneak] )
     {
         af.type = gsn_sneak;
         af.duration = ch->level;
@@ -1409,7 +1409,7 @@ DO_FUN(do_warcry) /* Thanks Koron, saved me re-inventing the wheel :) --Kline */
     if ( IS_NPC(ch) )
         chance = 80;
     else
-        chance = ch->pcdata->learned[skill_lookup("warcry")];
+        chance = ch->learned[skill_lookup("warcry")];
 
     if ( chance < 10 )
     {
@@ -1449,7 +1449,7 @@ DO_FUN(do_hide)
     if ( IS_AFFECTED( ch, AFF_HIDE ) )
         REMOVE_BIT( ch->affected_by, AFF_HIDE );
 
-    if ( IS_NPC( ch ) || number_percent(  ) < ch->pcdata->learned[gsn_hide] )
+    if ( IS_NPC( ch ) || number_percent(  ) < ch->learned[gsn_hide] )
         SET_BIT( ch->affected_by, AFF_HIDE );
 
     return;
@@ -1955,7 +1955,7 @@ DO_FUN(do_smash)
             return;
         }
 
-        if ( ( 2 * number_percent(  ) > ch->pcdata->learned[gsn_smash] ) || ( pexit->exit_info.test(EX_SMASHPROOF) ) )
+        if ( ( 2 * number_percent(  ) > ch->learned[gsn_smash] ) || ( pexit->exit_info.test(EX_SMASHPROOF) ) )
         {
             act( "$n tries to smash the $d, but fails.", ch, NULL, pexit->keyword, TO_ROOM );
             send_to_char( "You failed!\r\n", ch );
@@ -2196,7 +2196,7 @@ DO_FUN(do_scout)
     buf[0] = '\0';
     pre[0] = '\0';
 
-    if ( !IS_NPC( ch ) && ch->pcdata->learned[gsn_scout] == 0 )
+    if ( !IS_NPC( ch ) && ch->learned[gsn_scout] == 0 )
     {
         send_to_char( "You are not trained in this skill!\r\n", ch );
         return;
@@ -2207,11 +2207,11 @@ DO_FUN(do_scout)
         /*
          * depth is the number of rooms AWAY from your present location
          */
-        if ( ch->pcdata->learned[gsn_scout] > 78 )
+        if ( ch->learned[gsn_scout] > 78 )
             depth = 4;
-        else if ( ch->pcdata->learned[gsn_scout] > 64 )
+        else if ( ch->learned[gsn_scout] > 64 )
             depth = 3;
-        else if ( ch->pcdata->learned[gsn_scout] > 40 )
+        else if ( ch->learned[gsn_scout] > 40 )
             depth = 2;
         else
             depth = 1;

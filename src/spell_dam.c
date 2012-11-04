@@ -768,14 +768,14 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
 
         if ( ( !IS_NPC( ch ) ) && ( !IS_SET( type, REALM_MIND ) ) )
         {
-            if ( ch->pcdata->learned[gsn_potency] > 0 )
+            if ( ch->learned[gsn_potency] > 0 )
             {
-                dam_modifier += ( get_curr_int( ch ) * ch->pcdata->learned[gsn_potency] / 5000 );
+                dam_modifier += ( get_curr_int( ch ) * ch->learned[gsn_potency] / 5000 );
             }
 
-            if ( ch->pcdata->learned[gsn_thaumatergy] > 0 )
+            if ( ch->learned[gsn_thaumatergy] > 0 )
             {
-                dam_modifier += ( get_curr_int( ch ) * ch->pcdata->learned[gsn_thaumatergy] / 2500 );
+                dam_modifier += ( get_curr_int( ch ) * ch->learned[gsn_thaumatergy] / 2500 );
             }
         }
         if ( is_affected( ch, skill_lookup( "mystical focus" ) ) )

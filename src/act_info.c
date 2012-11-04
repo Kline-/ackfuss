@@ -707,7 +707,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
             }
         }
 
-        if ( victim != ch && !IS_NPC( ch ) && number_percent(  ) < ch->pcdata->learned[gsn_peek] )
+        if ( victim != ch && !IS_NPC( ch ) && number_percent(  ) < ch->learned[gsn_peek] )
         {
             send_to_char( "\r\nYou peek at the inventory:\r\n", ch );
             show_list_to_char( victim->first_carry, ch, true, true, false );
@@ -1248,7 +1248,7 @@ DO_FUN(do_exits)
                     && pexit->to_room != NULL
                     && pexit->exit_info.test(EX_CLOSED)
                     && !pexit->exit_info.test(EX_NODETECT)
-                    && ( (ch->pcdata->learned[gsn_find_doors] > number_percent(  )) || IS_IMMORTAL(ch) ) && ( !str_cmp( pexit->keyword, "" ) ) )
+                    && ( (ch->learned[gsn_find_doors] > number_percent(  )) || IS_IMMORTAL(ch) ) && ( !str_cmp( pexit->keyword, "" ) ) )
             {
                 found = TRUE;
                 if ( fAuto || fAutonr )
@@ -2410,18 +2410,18 @@ DO_FUN(do_practice)
                         && ( skill_table[sn].flag2 != VAMP ) && ( skill_table[sn].flag2 != WOLF ) )
                     ok = TRUE;
 
-            if ( ok || ch->pcdata->learned[sn] != 0 )
+            if ( ok || ch->learned[sn] != 0 )
             {
-                if ( ch->pcdata->learned[sn] == 0 && mob == NULL )
+                if ( ch->learned[sn] == 0 && mob == NULL )
                 {
                     /*
                      * Not in prac room.  Only show what has been learnt
                      */
                     continue;
                 }
-                if ( ch->pcdata->learned[sn] > 0 )
+                if ( ch->learned[sn] > 0 )
                 {
-                    snprintf( buf + strlen(buf), MSL, "@@W%25s-@@y%-7s@@g  ", skill_table[sn].name, learnt_name( ch->pcdata->learned[sn] ) );
+                    snprintf( buf + strlen(buf), MSL, "@@W%25s-@@y%-7s@@g  ", skill_table[sn].name, learnt_name( ch->learned[sn] ) );
 
                     if ( ++col % 3 == 0 )
                     {
@@ -2543,7 +2543,7 @@ DO_FUN(do_practice)
         if ( adept > 95 )
             adept = 95;
 
-        if ( ch->pcdata->learned[sn] >= adept )
+        if ( ch->learned[sn] >= adept )
         {
             snprintf( buf, MSL, "You are already know %s as well as is currently possible.\r\n", skill_table[sn].name );
             send_to_char( buf, ch );
@@ -2551,15 +2551,15 @@ DO_FUN(do_practice)
         else
         {
             ch->practice--;
-            ch->pcdata->learned[sn] += int_app[get_curr_int( ch )].learn;
-            if ( ch->pcdata->learned[sn] < adept )
+            ch->learned[sn] += int_app[get_curr_int( ch )].learn;
+            if ( ch->learned[sn] < adept )
             {
                 act( "You practice $T.", ch, NULL, skill_table[sn].name, TO_CHAR );
                 act( "$n practices $T.", ch, NULL, skill_table[sn].name, TO_ROOM );
             }
             else
             {
-                ch->pcdata->learned[sn] = adept;
+                ch->learned[sn] = adept;
                 act( "You are now a master of $T.", ch, NULL, skill_table[sn].name, TO_CHAR );
                 act( "$n is now a master of $T.", ch, NULL, skill_table[sn].name, TO_ROOM );
             }
@@ -2795,7 +2795,7 @@ DO_FUN(do_commands)
                     continue;
                 if ( cmd_table[cmd].show == C_SHOW_NEVER )
                     continue;
-                if ( cmd_table[cmd].show == C_SHOW_SKILL && ch->pcdata->learned[skill_lookup(cmd_table[cmd].name)] < 10 )
+                if ( cmd_table[cmd].show == C_SHOW_SKILL && ch->learned[skill_lookup(cmd_table[cmd].name)] < 10 )
                     continue;
 
                 snprintf(tmp, MSL, "%-12s", cmd_table[cmd].name);
@@ -3331,7 +3331,7 @@ DO_FUN(do_spells)
             if ( ( ch->lvl[cnt] >= skill_table[sn].skill_level[cnt] ) && ( skill_table[sn].skill_level[cnt] < LEVEL_HERO ) )
                 ok = TRUE;
 
-        if ( ch->pcdata->learned[sn] == 0 )
+        if ( ch->learned[sn] == 0 )
             continue;
 
         if ( skill_table[sn].slot == 0 )
@@ -3466,7 +3466,7 @@ DO_FUN(do_slist)
 
                 if ( ++col % 5 == 0 )
                     strncat( buf1, "   ", MSL );
-                if ( ch->pcdata->learned[sn] > 0 )
+                if ( ch->learned[sn] > 0 )
                 {
                     snprintf( buf, MSL, "@@m%18s@@N", skill_table[sn].name );
                     strncat( buf1, buf, MSL - 1 );
@@ -3498,7 +3498,7 @@ DO_FUN(do_slist)
 
                 if ( ++col % 5 == 0 )
                     strncat( buf1, "   ", MSL );
-                if ( ch->pcdata->learned[sn] > 0 )
+                if ( ch->learned[sn] > 0 )
                 {
                     snprintf( buf, MSL, "@@x@@m%18s@@N", skill_table[sn].name );
                     strncat( buf1, buf, MSL - 1 );
@@ -3530,7 +3530,7 @@ DO_FUN(do_slist)
                     strncat( buf1, "   ", MSL );
 
 
-                if ( ch->pcdata->learned[sn] > 0 )
+                if ( ch->learned[sn] > 0 )
                 {
                     snprintf( buf, MSL, "@@x@@m%18s@@N", skill_table[sn].name );
                     strncat( buf1, buf, MSL - 1 );

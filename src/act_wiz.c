@@ -2599,12 +2599,12 @@ DO_FUN(do_sset)
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
             if ( skill_table[sn].name != NULL )
-                victim->pcdata->learned[sn] = value;
+                victim->learned[sn] = value;
         }
     }
     else
     {
-        victim->pcdata->learned[sn] = value;
+        victim->learned[sn] = value;
     }
 
     return;
@@ -4446,9 +4446,9 @@ DO_FUN(do_setclass)
             victim->super->energy = 10;
             for ( sn = 0; sn < MAX_SKILL; sn++ )
             {
-                victim->pcdata->learned[sn] = 0;
+                victim->learned[sn] = 0;
             }
-            victim->pcdata->learned[skill_lookup( "feed" )] = 90;
+            victim->learned[skill_lookup( "feed" )] = 90;
         }
 
         if ( remort )
@@ -4459,7 +4459,7 @@ DO_FUN(do_setclass)
         victim->max_mana = 100;
         victim->max_move = 100;
         for ( sn = 0; sn < MAX_SKILL; sn++ )
-            victim->pcdata->learned[sn] = 0;
+            victim->learned[sn] = 0;
         victim->practice = 0;
         victim->hit = victim->max_hit;
         victim->mana = victim->max_mana;
@@ -4917,7 +4917,7 @@ DO_FUN(do_sstat)
             send_to_char( "No such skill/spell!\r\n", ch );
             return;
         }
-        snprintf( buf, MSL, "%17s - %3d%%\r\n", skill_table[skill].name, victim->pcdata->learned[skill] );
+        snprintf( buf, MSL, "%17s - %3d%%\r\n", skill_table[skill].name, victim->learned[skill] );
         send_to_char( buf, ch );
         return;
     }
@@ -4930,7 +4930,7 @@ DO_FUN(do_sstat)
         if ( skill_table[sn].name == NULL )
             break;
 
-        snprintf( buf, MSL, "%16s - %3d%%  ", skill_table[sn].name, victim->pcdata->learned[sn] );
+        snprintf( buf, MSL, "%16s - %3d%%  ", skill_table[sn].name, victim->learned[sn] );
         strncat( buf1, buf, MSL - 1 );
 
         if ( ++col % 3 == 0 )

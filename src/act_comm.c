@@ -219,7 +219,7 @@ DO_FUN(do_note)
             {
                 snprintf( buf, MSL, "[%3d%s] %s: %s\r\n",
                           vnum,
-                          ( pnote->date_stamp > ch->pcdata->last_note
+                          ( pnote->date_stamp > ch->last_note
                             && str_cmp( pnote->sender, ch->name ) ) ? "N" : " ", pnote->sender, pnote->subject );
                 strncat( buf1, buf, MSL );
                 vnum++;
@@ -256,7 +256,7 @@ DO_FUN(do_note)
             for ( li = note_list.begin(); li != note_list.end(); li++ )
             {
                 pnote = *li;
-                if ( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && ch->pcdata->last_note < pnote->date_stamp )
+                if ( is_note_to( ch, pnote ) && str_cmp( ch->name, pnote->sender ) && ch->last_note < pnote->date_stamp )
                 {
                     snprintf( buf, MSL, "The letter is postmarked %d:%s\r\n", vnum, pnote->date );
                     strncat( buf1, buf, MSL );
@@ -270,7 +270,7 @@ DO_FUN(do_note)
                     strncat( buf1, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n", MSL );
 
                     strncat( buf1, pnote->text, MSL );
-                    ch->pcdata->last_note = UMAX( ch->pcdata->last_note, pnote->date_stamp );
+                    ch->last_note = UMAX( ch->last_note, pnote->date_stamp );
                     send_to_char( buf1, ch );
                     return;
                 }
@@ -314,7 +314,7 @@ DO_FUN(do_note)
                     send_to_char( buf1, ch );
                 else
                     strncat( buf1, "\r\n", MSL );
-                ch->pcdata->last_note = UMAX( ch->pcdata->last_note, pnote->date_stamp );
+                ch->last_note = UMAX( ch->last_note, pnote->date_stamp );
                 if ( !fAll )
                     return;
             }
@@ -1854,8 +1854,8 @@ void add_follower( CHAR_DATA * ch, CHAR_DATA * master )
         short max_orders;
 
         max_orders = ( get_curr_int( master ) / 5 );
-        if ( ( !IS_NPC( master ) ) && ( master->pcdata->learned[gsn_unit_tactics] > 10 ) )
-            max_orders += master->pcdata->learned[gsn_unit_tactics] / 28;
+        if ( ( !IS_NPC( master ) ) && ( master->learned[gsn_unit_tactics] > 10 ) )
+            max_orders += master->learned[gsn_unit_tactics] / 28;
         if ( max_orders <= master->num_followers )
         {
             send_to_char( "You cannot control anymore followers.\r\n", master );
@@ -2049,8 +2049,8 @@ DO_FUN(do_order)
 
     found = FALSE;
     max_orders = ( get_curr_int( ch ) / 5 );
-    if ( !IS_NPC( ch ) && ( ch->pcdata->learned[gsn_unit_tactics] > 10 ) )
-        max_orders += ch->pcdata->learned[gsn_unit_tactics] / 28;
+    if ( !IS_NPC( ch ) && ( ch->learned[gsn_unit_tactics] > 10 ) )
+        max_orders += ch->learned[gsn_unit_tactics] / 28;
 
     for ( och = ch->in_room->first_person; och != NULL; och = och_next )
     {

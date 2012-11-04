@@ -266,8 +266,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     fprintf( fp, "Trust          %d\n", ch->trust );
     fprintf( fp, "Wizbit         %d\n", ch->wizbit );
     fprintf( fp, "Played         %d\n", ch->played + ( int )( current_time - ch->logon ) );
-    if ( !IS_NPC(ch) )
-        fprintf( fp, "Note           %ld\n", ch->pcdata->last_note );
+    fprintf( fp, "Note           %ld\n", ch->last_note );
     fprintf( fp, "Room           %d\n",
              ( ch->in_room == get_room_index( ROOM_VNUM_LIMBO )
                && ch->was_in_room != NULL ) ? ch->was_in_room->vnum : ch->in_room == NULL ? get_room_index(ROOM_VNUM_LIMBO)->vnum : ch->in_room->vnum );
@@ -448,9 +447,9 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
         for ( sn = 0; sn < MAX_SKILL; sn++ )
         {
-            if ( skill_table[sn].name != NULL && ch->pcdata->learned[sn] > 0 )
+            if ( skill_table[sn].name != NULL && ch->learned[sn] > 0 )
             {
-                fprintf( fp, "Skill          %d '%s'\n", ch->pcdata->learned[sn], skill_table[sn].name );
+                fprintf( fp, "Skill          %d '%s'\n", ch->learned[sn], skill_table[sn].name );
             }
         }
         imc_savechar( ch, fp );
@@ -1143,8 +1142,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     fMatch = TRUE;
                     break;
                 }
-                if ( !IS_NPC(ch) )
-                    KEY( "Note", ch->pcdata->last_note, fread_number( fp ) );
+                KEY( "Note", ch->last_note, fread_number( fp ) );
                 break;
 
             case 'O':
@@ -1271,7 +1269,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                         monitor_chan( log_buf, MONITOR_BAD );
                     }
                     else
-                        ch->pcdata->learned[sn] = value;
+                        ch->learned[sn] = value;
                     fMatch = TRUE;
                 }
 
