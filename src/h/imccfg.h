@@ -12,7 +12,7 @@
 #ifndef __IMC2CFG_H__
 #define __IMC2CFG_H__
 
-#define CH_IMCDATA(ch)           ((ch)->pcdata->imcchardata)
+#define CH_IMCDATA(ch)           ((ch)->desc->imcchardata)
 #define CH_IMCLEVEL(ch)          ((ch)->level)
 #define CH_IMCNAME(ch)           (const_cast<char *>(ch->get_name()))
 #define CH_IMCSEX(ch)            ((ch)->sex)

@@ -243,6 +243,7 @@ class descriptor_data
         short descriptor;
         short connected;
         bool fcommand;
+        IMC_CHARDATA *imcchardata;
         char inbuf[4 * MAX_INPUT_LENGTH];
         char incomm[MAX_INPUT_LENGTH];
         char inlast[MAX_INPUT_LENGTH];
@@ -730,7 +731,6 @@ class pc_data
         char *host[MAX_HOSTS]; /* Used to tell PC last login sites */
         int hp_from_gain; /* same for hitpoints */
         char *ignore_list[MAX_IGNORES];  /* Ignore this person */
-        IMC_CHARDATA *imcchardata;
 };
 
 struct liq_type

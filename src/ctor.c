@@ -313,6 +313,7 @@ char_data::char_data()
 
 descriptor_data::descriptor_data()
 {
+    imcchardata = NULL;
 }
 
 disabled_data::disabled_data()
@@ -602,7 +603,6 @@ pc_data::pc_data()
     hp_from_gain = -1;
     for ( short i = 0; i < MAX_IGNORES; i++ )
         ignore_list[i] = &str_empty[0];
-    imcchardata = NULL;
 }
 
 quest_info::quest_info()
