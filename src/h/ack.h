@@ -583,6 +583,7 @@ class char_data
         OBJ_DATA *first_carry;
         AFFECT_DATA *first_saved_aff;
         MAGIC_SHIELD *first_shield;
+        string header;  /* filename for helpedit */
         int hit;
         int hitroll;
         string host[MAX_HOSTS]; /* Used to tell PC last login sites */
@@ -730,7 +731,6 @@ class pc_data
         MONEY_TYPE *bank_money;
         BRAND_DATA *current_brand;
         EMAIL_DATA *email;
-        char *header;  /* filename for helpedit */
 };
 
 struct liq_type

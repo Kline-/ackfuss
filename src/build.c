@@ -5793,7 +5793,7 @@ DO_FUN(build_helpedit)
 
         buf1[0] = '\0';
         buf2[0] = '\0';
-        ch->pcdata->header = str_dup(arg);
+        ch->header = arg;
 
         while ( fgets(buf1, MSL, fp) )
         {

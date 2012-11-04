@@ -186,7 +186,6 @@ static void walk_pcdata( PC_DATA * p )
 
     touch( p->bamfin );
     touch( p->bamfout );
-    touch( p->header );
 
     for ( i = 0; i < MAX_ALIASES; i++ )
     {

@@ -177,6 +177,7 @@ char_data::char_data()
     first_carry = NULL;
     first_saved_aff = NULL;
     first_shield = NULL;
+    header = &str_empty[0];
     hit = 50;
     hitroll = 5;
     for ( i = 0; i < MAX_HOSTS; i++ )
@@ -602,7 +603,6 @@ pc_data::pc_data()
     bank_money = new MONEY_TYPE;
     current_brand = NULL;
     email = new EMAIL_DATA;
-    header = &str_empty[0];
 }
 
 quest_info::quest_info()

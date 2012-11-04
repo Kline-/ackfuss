@@ -255,7 +255,6 @@ pc_data::~pc_data()
     if ( current_brand )
         delete current_brand;
     delete email;
-    free_string(header);
 }
 
 quest_info::~quest_info()

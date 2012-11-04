@@ -176,9 +176,9 @@ void write_interpret( CHAR_DATA * ch, char *argument )
             else
             {
                 FILE *fp = NULL;
-                if ( ch->pcdata->header != &str_empty[0] ) /* File passed from helpedit */
+                if ( !ch->header.empty() ) /* File passed from helpedit */
                 {
-                    if ( (fp = file_open(ch->pcdata->header, "w")) == NULL )
+                    if ( (fp = file_open(CSTR(ch->header), "w")) == NULL )
                     {
                         send_to_char("Something is broken in write_interpret saving to file.\r\n", ch);
                         file_close(fp);
@@ -188,7 +188,7 @@ void write_interpret( CHAR_DATA * ch, char *argument )
                 *dest = str_dup( buf );
                 if ( ( buf_data->returnfunc ) != NULL )
                     ( *buf_data->returnfunc ) ( buf_data->returnparm, dest, ch, TRUE );
-                if ( ch->pcdata->header != &str_empty[0] ) /* File passed from helpedit */
+                if ( !ch->header.empty() ) /* File passed from helpedit */
                 {
                     fprintf(fp, "%s", buf);
                     file_close(fp);
