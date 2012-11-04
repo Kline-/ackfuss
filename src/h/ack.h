@@ -588,11 +588,13 @@ class char_data
         CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
         ROOM_INDEX_DATA *hunt_home; /* return to loc */
         OBJ_DATA *hunt_obj;  /* Looking for objects     */
+        int invis; /* wizinvis imm, level invis to */
         ROOM_INDEX_DATA *in_room;
         bool is_free; /* kept for room lists link/unlink */
         bool is_quitting;
         AFFECT_DATA *last_affect;
         OBJ_DATA *last_carry;
+        string last_login;
         time_t last_note;
         AFFECT_DATA *last_saved_aff;
         MAGIC_SHIELD *last_shield;
@@ -729,8 +731,6 @@ class pc_data
         int hp_from_gain; /* same for hitpoints */
         char *ignore_list[MAX_IGNORES];  /* Ignore this person */
         IMC_CHARDATA *imcchardata;
-        short invis; /* wizinvis imm, level invis to */
-        char *lastlogin;
 };
 
 struct liq_type

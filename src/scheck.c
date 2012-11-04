@@ -187,7 +187,6 @@ static void walk_pcdata( PC_DATA * p )
     touch( p->bamfin );
     touch( p->bamfout );
     touch( p->header );
-    touch( p->lastlogin );
 
     for ( i = 0; i < MAX_HOSTS; i++ )
         touch( p->host[i] );

@@ -726,7 +726,7 @@ void show_char_to_char( CHAR_DATA * list, CHAR_DATA * ch )
         if ( rch == ch )
             continue;
 
-        if ( !IS_NPC( rch ) && rch->act.test(ACT_WIZINVIS) && get_trust( ch ) < rch->pcdata->invis )
+        if ( rch->act.test(ACT_WIZINVIS) && get_trust( ch ) < rch->invis )
             continue;
 
         if ( ( rch->rider != NULL ) && ( rch->rider != ch ) )

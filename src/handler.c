@@ -2273,7 +2273,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
         return TRUE;
 
 
-    if ( !IS_NPC( victim ) && victim->act.test(ACT_WIZINVIS) && get_trust( ch ) < victim->pcdata->invis )
+    if ( victim->act.test(ACT_WIZINVIS) && get_trust( ch ) < victim->invis )
         return FALSE;
 
     if ( ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) ) && ch->in_room == victim->in_room )

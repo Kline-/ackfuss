@@ -234,9 +234,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         }
     }
     fprintf( fp, "%sEOL\n", outstr.c_str() );
-
-    if ( IS_NPC(ch) )
-        fprintf( fp, "ShortDescr     %s~\n", CSTR( ch->short_descr ) );
+    fprintf( fp, "ShortDescr     %s~\n", CSTR( ch->short_descr ) );
     fprintf( fp, "LongDescr      %s~\n", ch->long_descr_orig.c_str() );
     fprintf( fp, "Description    %s~\n", ch->description.c_str() );
     fprintf( fp, "Prompt         %s~\n", ch->prompt.c_str() );
@@ -245,10 +243,10 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     fprintf( fp, "Class          %d\n", ch->p_class );
     fprintf( fp, "Race           %d\n", ch->race );
     fprintf( fp, "Level          %d\n", ch->level );
+    fprintf( fp, "Invis          %d\n", ch->invis );
     if ( !IS_NPC(ch) )
     {
         fprintf( fp, "Sentence       %d\n", ch->sentence );
-        fprintf( fp, "Invis          %d\n", ch->pcdata->invis );
     }
 
     fprintf( fp, "m/c            " );
@@ -1055,8 +1053,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 break;
 
             case 'I':
-                if ( !IS_NPC(ch) )
-                    KEY( "Invis", ch->pcdata->invis, fread_number( fp ) );
+                KEY( "Invis", ch->invis, fread_number( fp ) );
 #ifdef IMC
                 if ( ( fMatch = imc_loadchar( ch, fp, word ) ) )
                     break;
@@ -1070,15 +1067,11 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
 
 
             case 'L':
+                KEY( "LastLogin", ch->last_login, fread_string( fp ) );
                 KEY( "Level", ch->level, fread_number( fp ) );
                 KEY( "LoadMsg", ch->load_msg, fread_string( fp ) );
                 KEY( "LoginSex", ch->login_sex, fread_number( fp ) );
                 KEY( "LongDescr", ch->long_descr, fread_string( fp ) );
-
-                if ( !IS_NPC( ch ) )
-                {
-                    SKEY( "LastLogin", ch->pcdata->lastlogin, fread_string( fp ) );
-                }
                 break;
 
             case 'M':

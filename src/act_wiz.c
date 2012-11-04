@@ -3873,7 +3873,7 @@ DO_FUN(do_invis)
 
         if ( ch->act.test(ACT_WIZINVIS) )
         {
-            ch->pcdata->invis = level;
+            ch->invis = level;
             snprintf( buf, MSL, "Wizinvis changed to level: %d\r\n", level );
             send_to_char( buf, ch );
             return;
@@ -3885,7 +3885,7 @@ DO_FUN(do_invis)
     if ( level == -1 )
         level = get_trust( ch );
 
-    ch->pcdata->invis = level;
+    ch->invis = level;
 
     ch->act.flip(ACT_WIZINVIS);
 
@@ -4183,9 +4183,9 @@ DO_FUN(do_iscore)
               ch->act.test(ACT_WIZINVIS) ? "YES" : "NO ", ch->act.test(ACT_HOLYLIGHT) ? "YES" : "NO " );
     send_to_char( buf, ch );
 
-    if ( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) )
+    if ( ch->act.test(ACT_WIZINVIS) )
     {
-        snprintf( buf, MSL, "You are wizinvis at level %d.\r\n", ch->pcdata->invis );
+        snprintf( buf, MSL, "You are wizinvis at level %d.\r\n", ch->invis );
         send_to_char( buf, ch );
     }
 

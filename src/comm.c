@@ -1423,10 +1423,8 @@ void bust_a_prompt( DESCRIPTOR_DATA * d )
                 i = buf2;
                 break;
             case 'i':
-                if ( IS_NPC( ch ) )
-                    break;
                 if ( IS_IMMORTAL( ch ) )
-                    snprintf( buf2, MSL, "INVIS: %d", ch->act.test(ACT_WIZINVIS) ? ch->pcdata->invis : 0 );
+                    snprintf( buf2, MSL, "INVIS: %d", ch->act.test(ACT_WIZINVIS) ? ch->invis : 0 );
                 else
                 {
                     if ( ( IS_AFFECTED( ch, AFF_INVISIBLE ) )
@@ -3644,12 +3642,12 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
                         can_see_message = TRUE;
                         if ( IS_IMMORTAL( to ) )
                         {
-                            if ( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && ch->pcdata->invis > get_trust( to ) )
+                            if ( ch->act.test(ACT_WIZINVIS) && ch->invis > get_trust( to ) )
                                 can_see_message = FALSE;
                         }
                         else
                         {
-                            if ( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && get_trust( to ) < ch->pcdata->invis )
+                            if ( ch->act.test(ACT_WIZINVIS) && get_trust( to ) < ch->invis )
                                 can_see_message = FALSE;
                             if ( ( IS_AFFECTED( ch, AFF_SNEAK ) || item_has_apply( ch, ITEM_APPLY_SNEAK ) )
                                     && ( ( ch->get_level("psuedo") - 20 + number_range( 1, 30 ) ) > to->get_level("psuedo") ) )
@@ -3789,7 +3787,7 @@ DO_FUN(do_finger)
     snprintf( buf, MSL, "Last Login was from: %s.\r\n", victim->pcdata->host[0] );
     send_to_char( buf, ch );
 
-    snprintf( buf, MSL, "pFile was last saved at: %s.", victim->pcdata->lastlogin );
+    snprintf( buf, MSL, "pFile was last saved at: %s.", CSTR( victim->last_login ) );
     send_to_char( buf, ch );
 
     delete victim;

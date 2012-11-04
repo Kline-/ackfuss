@@ -183,11 +183,13 @@ char_data::char_data()
     hunt_for = NULL;
     hunt_home = NULL;
     hunt_obj = NULL;
+    invis = 0;
     in_room = NULL;
     is_free = false;
     is_quitting = false;
     last_affect = NULL;
     last_carry = NULL;
+    last_login = "Unknown!";
     last_note = 0;
     last_saved_aff = NULL;
     last_shield = NULL;
@@ -601,8 +603,6 @@ pc_data::pc_data()
     for ( short i = 0; i < MAX_IGNORES; i++ )
         ignore_list[i] = &str_empty[0];
     imcchardata = NULL;
-    invis = 0;
-    lastlogin = str_dup("Unknown!");
 }
 
 quest_info::quest_info()
