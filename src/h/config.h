@@ -83,8 +83,8 @@
      AckFUSS started here!
 
    15 -> 16:
-     Expanded pcdata->host to an array of MAX_HOSTS
-     Added pcdata->whitelist also based on MAX_HOSTS
+     Expanded host to an array of MAX_HOSTS
+     Added whitelist also based on MAX_HOSTS
 
    16 -> 17:
      Moved bitset fields to read/write as strings instead of values.

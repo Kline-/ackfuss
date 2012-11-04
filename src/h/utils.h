@@ -135,7 +135,7 @@
                                   ( (ch)->stance == STANCE_CASTER ) \
                                   || ( (ch)->stance == STANCE_WIZARD ) \
                                   || ( (ch)->stance == STANCE_MAGI ) )
-#define PLAYTESTER(ch)          ( !IS_NPC(ch) && IS_SET((ch)->pcdata->pflags, PFLAG_TESTER )  )
+#define PLAYTESTER(ch)          ( !IS_NPC(ch) && IS_SET((ch)->pflags, PFLAG_TESTER )  )
 #define HAS_BODY(ch)            ( !IS_NPC(ch) || (ch)->act.test(ACT_NO_BODY) )
 #define HAS_MIND(ch)            ( !IS_NPC(ch) || (ch)->act.test(ACT_NO_MIND) )
 #define IS_WEAPON(eq)           ( (eq) != NULL ? (eq)->item_type == ITEM_WEAPON : FALSE )

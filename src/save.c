@@ -364,8 +364,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
         for ( cnt = 0; cnt < MAX_ALIASES; cnt++ )
         {
-            fprintf( fp, "Alias_Name%d    %s~\n", cnt, ch->pcdata->alias_name[cnt] );
-            fprintf( fp, "Alias%d         %s~\n", cnt, ch->pcdata->alias[cnt] );
+            fprintf( fp, "Alias_Name%d    %s~\n", cnt, CSTR( ch->alias_name[cnt] ) );
+            fprintf( fp, "Alias%d         %s~\n", cnt, CSTR( ch->alias[cnt] ) );
         }
 
         fprintf( fp, "Colors         " );
@@ -647,8 +647,6 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
 
     if ( !is_npc )
     {
-        ch->pcdata = new PC_DATA;
-
         d->character = ch;
 
 #ifdef IMC
@@ -812,23 +810,11 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 KEY( "Alignment", ch->alignment, fread_number( fp ) );
                 KEY( "Armor", ch->armor, fread_number( fp ) );
                 KEY( "AssistMsg", ch->assist_msg, fread_string( fp ) );
-                if ( !IS_NPC(ch) )
+                for ( cnt = 0; cnt < MAX_ALIASES; cnt++ )
                 {
-                    SKEY( "Alias_Name0", ch->pcdata->alias_name[0], fread_string( fp ) );
-                    SKEY( "Alias_Name1", ch->pcdata->alias_name[1], fread_string( fp ) );
-                    SKEY( "Alias_Name2", ch->pcdata->alias_name[2], fread_string( fp ) );
-                    SKEY( "Alias_Name3", ch->pcdata->alias_name[3], fread_string( fp ) );
-                    SKEY( "Alias_Name4", ch->pcdata->alias_name[4], fread_string( fp ) );
-                    SKEY( "Alias_Name5", ch->pcdata->alias_name[5], fread_string( fp ) );
-
-                    SKEY( "Alias0", ch->pcdata->alias[0], fread_string( fp ) );
-                    SKEY( "Alias1", ch->pcdata->alias[1], fread_string( fp ) );
-                    SKEY( "Alias2", ch->pcdata->alias[2], fread_string( fp ) );
-                    SKEY( "Alias3", ch->pcdata->alias[3], fread_string( fp ) );
-                    SKEY( "Alias4", ch->pcdata->alias[4], fread_string( fp ) );
-                    SKEY( "Alias5", ch->pcdata->alias[5], fread_string( fp ) );
+                    KEY( "Alias_Name%d", ch->alias_name[cnt], fread_string( fp ) );
+                    KEY( "Alias%d", ch->alias[cnt], fread_string( fp ) );
                 }
-
 
                 if ( !str_cmp( word, "Affect" ) )
                 {

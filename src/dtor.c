@@ -109,8 +109,6 @@ char_data::~char_data()
     if ( current_brand )
         delete current_brand;
     delete email;
-    if ( pcdata )
-        delete pcdata;
     delete money;
     if ( pnote )
         delete pnote;
@@ -242,15 +240,6 @@ obj_index_data::~obj_index_data()
     free_string(name);
     free_string(short_descr);
     free_string(long_descr);
-}
-
-pc_data::~pc_data()
-{
-    for ( short i = 0; i < MAX_ALIASES; i++ )
-    {
-        free_string(alias[i]);
-        free_string(alias_name[i]);
-    }
 }
 
 quest_info::~quest_info()

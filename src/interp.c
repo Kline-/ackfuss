@@ -1138,16 +1138,15 @@ void interpret( CHAR_DATA * ch, char *argument )
 
         for ( cnt = 0; cnt < MAX_ALIASES; cnt++ )
         {
-            if ( !str_cmp( ch->pcdata->alias_name[cnt], command ) && str_cmp( ch->pcdata->alias_name[cnt], "<none>@@N" ) )
+            if ( !str_cmp( CSTR( ch->alias_name[cnt] ), command ) && str_cmp( CSTR( ch->alias_name[cnt] ), "<none>@@N" ) )
             {
                 found = TRUE;
-                snprintf( foo, MSL, "~%s %s", ch->pcdata->alias[cnt], argument );
+                snprintf( foo, MSL, "~%s %s", CSTR( ch->alias[cnt] ), argument );
                 interpret( ch, foo );
                 return;
             }
         }
     }
-
 
     if ( !found )
     {

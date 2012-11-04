@@ -554,6 +554,8 @@ class char_data
         bitset<MAX_BITSET> act;
         int adept_level;
         int affected_by;
+        string alias[MAX_ALIASES];
+        string alias_name[MAX_ALIASES];
         int alignment;
         int armor;
         string assist_msg;
@@ -652,7 +654,6 @@ class char_data
         string old_prompt; /* used to hold prompt when writing */
         int order[MAX_CLASS];   /* Class Order */
         int pagelen;
-        PC_DATA *pcdata;
         string pedit_state;
         string pedit_string[MAX_PEDIT];
         int perm_con;
@@ -719,18 +720,6 @@ class char_data
         string who_name;   /* To show on who name */
         int wimpy;
         bool wizbit;
-};
-
-/*
- * Data which only PC's have.
- */
-class pc_data
-{
-    public:
-        pc_data();
-        ~pc_data();
-        char *alias[MAX_ALIASES];
-        char *alias_name[MAX_ALIASES];
 };
 
 struct liq_type

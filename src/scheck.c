@@ -177,19 +177,6 @@ static void walk_note_data( NOTE_DATA * note )
     touch( note->text );
 }
 
-static void walk_pcdata( PC_DATA * p )
-{
-    int i;
-
-    if ( !p )
-        return;
-
-    for ( i = 0; i < MAX_ALIASES; i++ )
-    {
-        touch( p->alias[i] );
-        touch( p->alias_name[i] );
-    }
-}
 static void walk_shield_data( MAGIC_SHIELD * shield )
 {
     if ( !shield )
@@ -237,7 +224,6 @@ static void walk_char_data( CHAR_DATA * ch )
     if ( !ch )
         return;
 
-    walk_pcdata( ch->pcdata );
     walk_shieldlist( ch->first_shield );
 }
 

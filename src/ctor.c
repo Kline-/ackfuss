@@ -252,7 +252,6 @@ char_data::char_data()
     for ( i = 0; i < MAX_CLASS; i++ )
         order[i] = 0;
     pagelen = 20;
-    pcdata = NULL;
     pedit_state = &str_empty[0];
     for ( i = 0; i < MAX_PEDIT; i++ )
         pedit_string[i] = &str_empty[0];
@@ -594,15 +593,6 @@ obj_index_data::obj_index_data()
     weight = 1;
 
     obj_index_list.push_back(this);
-}
-
-pc_data::pc_data()
-{
-    for ( short i = 0; i < MAX_ALIASES; i++ )
-    {
-        alias[i] = &str_empty[0];
-        alias_name[i] = &str_empty[0];
-    }
 }
 
 quest_info::quest_info()

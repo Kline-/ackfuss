@@ -4442,7 +4442,7 @@ DO_FUN(do_alias)
 
         for ( cnt = 0; cnt < MAX_ALIASES; cnt++ )
         {
-            snprintf( buf, MSL, "(%d) [Name:] %12s  [Aliases:] %s\r\n", cnt, ch->pcdata->alias_name[cnt], ch->pcdata->alias[cnt] );
+            snprintf( buf, MSL, "(%d) [Name:] %12s  [Aliases:] %s\r\n", cnt, CSTR( ch->alias_name[cnt] ), CSTR( ch->alias[cnt] ) );
             send_to_char( buf, ch );
         }
         send_to_char( "\r\nTo Set an Alias:\r\n", ch );
@@ -4480,11 +4480,8 @@ DO_FUN(do_alias)
 
     if ( !str_cmp( "clear", arg2 ) )
     {
-        free_string( ch->pcdata->alias_name[alias_no] );
-        free_string( ch->pcdata->alias[alias_no] );
-
-        ch->pcdata->alias_name[alias_no] = str_dup( "<none>" );
-        ch->pcdata->alias[alias_no] = str_dup( "<none>" );
+        ch->alias_name[alias_no] = "<none>";
+        ch->alias[alias_no] = "<none>";
 
         /*
          * Clear the alias (enter <none> for name and alias
@@ -4495,12 +4492,8 @@ DO_FUN(do_alias)
     /*
      * Hopefully, now just set the (new) alias...
      */
-
-    free_string( ch->pcdata->alias_name[alias_no] );
-    free_string( ch->pcdata->alias[alias_no] );
-
-    ch->pcdata->alias_name[alias_no] = str_dup( arg2 );
-    ch->pcdata->alias[alias_no] = str_dup( arg3 );
+    ch->alias_name[alias_no] = arg2;
+    ch->alias[alias_no] = arg3;
     return;
 }
 

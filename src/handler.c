@@ -1933,7 +1933,7 @@ CHAR_DATA *get_char_area( CHAR_DATA * ch, char *argument )
 /* Used mainly for Imtlset ---Flar */
 CHAR_DATA *get_char( CHAR_DATA * ch )
 {
-    if ( !ch->pcdata )
+    if ( !IS_NPC( ch ) )
         return ch->desc->original;
     else
         return ch;
@@ -2530,7 +2530,6 @@ CHAR_DATA *switch_char( CHAR_DATA * victim, int mvnum, int poly_level )
             }
 
         case 1: /* Level 1 */
-            mob->pcdata = victim->pcdata;
             mob->npc = FALSE;
 
         case 0: /* Level 0 */
@@ -2603,9 +2602,6 @@ CHAR_DATA *unswitch_char( CHAR_DATA * victim )
                 obj_from_char( eq );
                 obj_to_char( eq, original );
             }
-
-        case 1:
-            original->pcdata = victim->pcdata;
 
         case 0:
             victim->npc = TRUE;
