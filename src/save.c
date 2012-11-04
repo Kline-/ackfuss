@@ -344,8 +344,8 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
         fprintf( fp, "\n");
         fprintf( fp, "Failures       %d\n", ch->failures );
         fprintf( fp, "LastLogin      %s~\n", time_buf );
-        fprintf( fp, "HiCol          %c~\n", ch->pcdata->hicol );
-        fprintf( fp, "DimCol         %c~\n", ch->pcdata->dimcol );
+        fprintf( fp, "HiCol          %s~\n", CSTR( ch->col_hi ) );
+        fprintf( fp, "DimCol         %s~\n", CSTR( ch->col_dim ) );
         fprintf( fp, "TermRows       %d\n", ch->term_row );
         fprintf( fp, "TermColumns    %d\n", ch->term_col );
         fprintf( fp, "Email          %s~\n", ch->pcdata->email->address.c_str() );
@@ -950,19 +950,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                 if ( !IS_NPC(ch) )
                     KEY("DeathCnt", ch->death_cnt, fread_number(fp) );
                 KEY( "Description", ch->description, fread_string( fp ) );
-
-                if ( !str_cmp( word, "DimCol" ) && !IS_NPC( ch ) )
-                {
-                    char *temp;
-                    temp = fread_string( fp );
-                    ch->pcdata->dimcol = temp[0];
-                    /*              fread_to_eol( fp );   */
-                    free_string( temp );
-                    fMatch = TRUE;
-                    break;
-                }
-
-
+                KEY( "DimCol", ch->col_dim, fread_string( fp ) );
                 break;
 
             case 'E':
@@ -1022,19 +1010,7 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
                     fMatch = TRUE;
                     break;
                 }
-                if ( !IS_NPC( ch ) )
-                {
-                    if ( !str_cmp( word, "HiCol" ) )
-                    {
-                        char *temp;
-                        temp = fread_string( fp );
-                        ch->pcdata->hicol = temp[0];
-                        /*               fread_to_eol( fp );   */
-                        free_string( temp );
-                        fMatch = TRUE;
-                        break;
-                    }
-                }
+                KEY( "HiCol", ch->col_hi, fread_string( fp ) );
                 if ( !str_cmp( word, "HpManaMove" ) )
                 {
                     ch->hit = fread_number( fp );

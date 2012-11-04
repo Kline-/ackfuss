@@ -563,6 +563,8 @@ class char_data
         int cast;
         CAST_DATA *casting;
         int clan;
+        string col_dim;
+        string col_hi;
         int color[MAX_COLOR];
         int condition[MAX_COND];
         float cooldown[MAX_COOLDOWN];
@@ -727,10 +729,8 @@ class pc_data
         char *bamfout;
         MONEY_TYPE *bank_money;
         BRAND_DATA *current_brand;
-        char dimcol;
         EMAIL_DATA *email;
         char *header;  /* filename for helpedit */
-        char hicol;
 };
 
 struct liq_type

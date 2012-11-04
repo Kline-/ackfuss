@@ -152,6 +152,8 @@ char_data::char_data()
     cast = 0;
     casting = new CAST_DATA;
     clan = -1;
+    col_dim = 'b';
+    col_hi = 'y';
     for ( i = 0; i < MAX_COLOR; i++ )
         color[i] = 0;
     for ( i = 0; i < MAX_COND; i++ )
@@ -599,10 +601,8 @@ pc_data::pc_data()
     bamfout = &str_empty[0];
     bank_money = new MONEY_TYPE;
     current_brand = NULL;
-    dimcol = 'b';
     email = new EMAIL_DATA;
     header = &str_empty[0];
-    hicol = 'y';
 }
 
 quest_info::quest_info()

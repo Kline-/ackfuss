@@ -5064,29 +5064,20 @@ DO_FUN(do_monitor)
 
             if ( ch->monitor.test(tab_monitor[a].channel) )
             {
-                if ( !IS_NPC( ch ) )
-                {
-                    snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
-                    strncat( buf, colbuf, MSL - 1 );
-                }
+                snprintf( colbuf, 10, "@@%s", CSTR( ch->col_hi ) );
+                strncat( buf, colbuf, MSL - 1 );
                 strncat( buf, tab_monitor[a].on_name, MSL - 1 );
             }
 
             else
             {
-                if ( !IS_NPC( ch ) )
-                {
-                    snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
-                    strncat( buf, colbuf, MSL - 1 );
-                }
+                snprintf( colbuf, 10, "@@%s", CSTR( ch->col_dim ) );
+                strncat( buf, colbuf, MSL - 1 );
                 strncat( buf, tab_monitor[a].off_name, MSL - 1 );
             }
-
         }
 
-
         send_to_char( buf, ch );
-
         send_to_char( "\r\n@@yMONITOR <name> toggles the monitor channels.@@g\r\n", ch );
         return;
     }

@@ -2941,20 +2941,14 @@ DO_FUN(do_channels)
 
                 if ( ch->deaf.test(tab_channels[a].bit) )
                 {
-                    if ( !IS_NPC( ch ) )
-                    {
-                        snprintf( colbuf, 10, "@@%c", ch->pcdata->dimcol );
-                        strncat( buffer, colbuf, MSL - 1 );
-                    }
+                    snprintf( colbuf, 10, "@@%s", CSTR( ch->col_dim ) );
+                    strncat( buffer, colbuf, MSL - 1 );
                     strncat( buffer, tab_channels[a].off_string, MSL - 1 );
                 }
                 else
                 {
-                    if ( !IS_NPC( ch ) )
-                    {
-                        snprintf( colbuf, 10, "@@%c", ch->pcdata->hicol );
-                        strncat( buffer, colbuf, MSL - 1 );
-                    }
+                    snprintf( colbuf, 10, "@@%s", CSTR( ch->col_hi ) );
+                    strncat( buffer, colbuf, MSL - 1 );
                     strncat( buffer, tab_channels[a].on_string, MSL - 1 );
                 }
             }
@@ -4642,12 +4636,12 @@ DO_FUN(do_color)
 
     if ( color_number == -2 )
     {
-        ch->pcdata->hicol = ansi_table[ansi_number].letter;
+        ch->col_hi = ansi_table[ansi_number].letter;
         return;
     }
     else if ( color_number == -3 )
     {
-        ch->pcdata->dimcol = ansi_table[ansi_number].letter;
+        ch->col_dim = ansi_table[ansi_number].letter;
         return;
     }
 

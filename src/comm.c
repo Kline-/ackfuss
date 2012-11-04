@@ -1717,12 +1717,12 @@ void write_to_buffer( DESCRIPTOR_DATA * d, const char *txt, int length )
                     continue;
                 /* set to default highlight or dim set by player */
                 lookup = c;
-                if ( ch != NULL && !IS_NPC( ch ) )  /* shouldn't happen, but... */
+                if ( ch != NULL )  /* shouldn't happen, but... */
                 {
                     if ( lookup == '!' )
-                        lookup = ch->pcdata->hicol;
+                        lookup = ch->col_hi[0];
                     else if ( lookup == '.' )
-                        lookup = ch->pcdata->dimcol;
+                        lookup = ch->col_dim[0];
                 }
 
                 if ( ch != NULL && IS_GHOST(ch) )
