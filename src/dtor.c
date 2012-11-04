@@ -258,8 +258,6 @@ pc_data::~pc_data()
     free_string(header);
     for ( short i = 0; i < MAX_HOSTS; i++ )
         free_string(host[i]);
-    for ( short i = 0; i < MAX_IGNORES; i++ )
-        free_string(ignore_list[i]);
 }
 
 quest_info::~quest_info()

@@ -1076,9 +1076,9 @@ DO_FUN(do_ignore)
         send_to_char( "Current people to be ignored:\r\n ", ch );
         for ( i = 0; i < 3; i++ )
         {
-            if ( ch->pcdata->ignore_list[i] != NULL )
+            if ( !ch->ignore_list[i].empty() )
             {
-                snprintf( buf, MSL, "  %d) @@R%s@@g\r\n", i + 1, ch->pcdata->ignore_list[i] );
+                snprintf( buf, MSL, "  %d) @@R%s@@g\r\n", i + 1, CSTR( ch->ignore_list[i] ) );
                 send_to_char( buf, ch );
             }
             else
@@ -1143,28 +1143,22 @@ DO_FUN(do_ignore)
     /*    {    */
     for ( i = 0; i < 3; i++ )
     {
-        if ( ch->pcdata->ignore_list[i] == NULL )
-        {
-            ch->pcdata->ignore_list[i] = str_dup( "nobody" );
-        }
-        arg[i] = str_dup( ch->pcdata->ignore_list[i] );
+        if ( ch->ignore_list[i].empty() )
+            ch->ignore_list[i] = "nobody";
+        arg[i] = str_dup( CSTR( ch->ignore_list[i] ) );
     }
 
     if ( !str_cmp( victim->name, arg[0] ) || !str_cmp( victim->name, arg[1] ) || !str_cmp( victim->name, arg[2] ) )
     {  /* if already on the list, remove them */
         i = 0;
         while ( str_cmp( victim->name, arg[i] ) )
-        {
             i++;
-        }
         while ( i < 2 )
         {
-            free_string( ch->pcdata->ignore_list[i] );
-            ch->pcdata->ignore_list[i] = str_dup( arg[i + 1] );
+            ch->ignore_list[i] = arg[i + 1];
             i++;
         }
-        free_string( ch->pcdata->ignore_list[2] );
-        ch->pcdata->ignore_list[2] = str_dup( "nobody" );
+        ch->ignore_list[2] = "nobody";
     }
     else  /* if not on list already */
     {
@@ -1179,8 +1173,7 @@ DO_FUN(do_ignore)
         {
             if ( !str_cmp( arg[i], "nobody" ) )
             {
-                free_string( ch->pcdata->ignore_list[i] );
-                ch->pcdata->ignore_list[i] = str_dup( argument );
+                ch->ignore_list[i] = argument;
                 break;
             }
         }
@@ -1188,7 +1181,7 @@ DO_FUN(do_ignore)
     send_to_char( "\nCurrent person to be ignored:\r\n", ch );
     for ( i = 0; i < 3; i++ )
     {
-        snprintf( buf, MSL, "  %d) @@R%s@@g\r\n", i + 1, ch->pcdata->ignore_list[i] );
+        snprintf( buf, MSL, "  %d) @@R%s@@g\r\n", i + 1, CSTR( ch->ignore_list[i] ) );
         send_to_char( buf, ch );
     }
     for ( i = 0; i < 3; i++ )
@@ -1273,9 +1266,8 @@ DO_FUN(do_tell)
     }
 
 
-    if ( ( !IS_NPC( victim ) )
-            && ( !str_cmp( victim->pcdata->ignore_list[0], ch->name ) ||
-                 !str_cmp( victim->pcdata->ignore_list[1], ch->name ) || !str_cmp( victim->pcdata->ignore_list[2], ch->name ) ) && !IS_IMMORTAL(ch) )
+    if ( ( !str_cmp( CSTR( victim->ignore_list[0] ), ch->name ) ||
+                 !str_cmp( CSTR( victim->ignore_list[1] ), ch->name ) || !str_cmp( CSTR( victim->ignore_list[2] ), ch->name ) ) && !IS_IMMORTAL(ch) )
     {
         snprintf( buf, MSL, "%s @@Ris ignoring you!!@@g\r\n", victim->name.c_str() );
         send_to_char( buf, ch );

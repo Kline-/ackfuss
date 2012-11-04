@@ -183,6 +183,8 @@ char_data::char_data()
     hunt_for = NULL;
     hunt_home = NULL;
     hunt_obj = NULL;
+    for ( i = 0; i < MAX_IGNORES; i++ )
+        ignore_list[i] = &str_empty[0];
     invis = 0;
     in_room = NULL;
     is_free = false;
@@ -601,8 +603,6 @@ pc_data::pc_data()
     for ( short i = 0; i < MAX_HOSTS; i++ )
         host[i] = str_dup("Unknown!");
     hp_from_gain = -1;
-    for ( short i = 0; i < MAX_IGNORES; i++ )
-        ignore_list[i] = &str_empty[0];
 }
 
 quest_info::quest_info()

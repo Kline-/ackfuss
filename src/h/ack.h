@@ -589,6 +589,7 @@ class char_data
         CHAR_DATA *hunt_for; /* who hired the merc / corpse return */
         ROOM_INDEX_DATA *hunt_home; /* return to loc */
         OBJ_DATA *hunt_obj;  /* Looking for objects     */
+        string ignore_list[MAX_IGNORES];  /* Ignore this person */
         int invis; /* wizinvis imm, level invis to */
         ROOM_INDEX_DATA *in_room;
         bool is_free; /* kept for room lists link/unlink */
@@ -730,7 +731,6 @@ class pc_data
         char hicol;
         char *host[MAX_HOSTS]; /* Used to tell PC last login sites */
         int hp_from_gain; /* same for hitpoints */
-        char *ignore_list[MAX_IGNORES];  /* Ignore this person */
 };
 
 struct liq_type
