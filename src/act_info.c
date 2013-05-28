@@ -2300,7 +2300,10 @@ DO_FUN(do_description)
 
         if ( farg[0] == '+' )
         {
-            *farg++; *farg++; /* Skip '+' and ' '. */
+            farg++; /* Skip '+' */
+            if ( farg[0] == ' ' )
+                farg++; /* and ' '. */
+
             if ( strlen(ch->description.c_str()) + strlen(farg) >= MSL )
             {
                 send_to_char("Description too long.\r\n", ch);
