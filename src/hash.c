@@ -25,13 +25,13 @@ void *get_hash_entry( hash_table * hash_head, int key )
 {
     int a;
     HASH_ENTRY *rvalue;
-    HASH_ENTRY **hash_table;
+    HASH_ENTRY **this_hash_table;
 
     a = key % hash_head->max_hash;
-    hash_table = hash_head->table;
+    this_hash_table = hash_head->table;
 
 
-    for ( rvalue = hash_table[a]; rvalue != NULL; rvalue = rvalue->next )
+    for ( rvalue = this_hash_table[a]; rvalue != NULL; rvalue = rvalue->next )
         if ( rvalue->key == key )
             break;
 
@@ -45,17 +45,17 @@ void add_hash_entry( hash_table * hash_head, int key, void *entry )
 {
     int a;
     HASH_ENTRY *temp;
-    HASH_ENTRY **hash_table;
+    HASH_ENTRY **this_hash_table;
 
     a = key % hash_head->max_hash;
-    hash_table = hash_head->table;
+    this_hash_table = hash_head->table;
 
     temp = new HASH_ENTRY;
     temp->key = key;
     temp->reference = entry;
-    temp->next = hash_table[a];
+    temp->next = this_hash_table[a];
 
-    hash_table[a] = temp;
+    this_hash_table[a] = temp;
 }
 
 void del_hash_entry( hash_table * hash_head, int key )
@@ -63,13 +63,13 @@ void del_hash_entry( hash_table * hash_head, int key )
     int a;
     HASH_ENTRY *prev_entry;
     HASH_ENTRY *search_entry;
-    HASH_ENTRY **hash_table;
+    HASH_ENTRY **this_hash_table;
 
     a = key % hash_head->max_hash;
-    hash_table = hash_head->table;
+    this_hash_table = hash_head->table;
 
     prev_entry = NULL;
-    for ( search_entry = hash_table[a]; search_entry != NULL; search_entry = search_entry->next )
+    for ( search_entry = this_hash_table[a]; search_entry != NULL; search_entry = search_entry->next )
     {
         if ( search_entry->key == key )
             break;
@@ -79,7 +79,7 @@ void del_hash_entry( hash_table * hash_head, int key )
     if ( search_entry != NULL )
     {
         if ( prev_entry == NULL )
-            hash_table[a] = NULL;
+            this_hash_table[a] = NULL;
         else
             prev_entry->next = search_entry->next;
         delete search_entry;
@@ -90,16 +90,16 @@ hash_table *create_hash_table( int max_hash )
 {
     int a;
     hash_table *hash_head;
-    HASH_ENTRY **hash_table;
+    HASH_ENTRY **this_hash_table;
 
-    hash_table = (HASH_ENTRY **)getmem( sizeof( HASH_ENTRY * ) * max_hash );
+    this_hash_table = (HASH_ENTRY **)getmem( sizeof( HASH_ENTRY * ) * max_hash );
     hash_head = (struct hash_table_tp *)getmem( sizeof( struct hash_table_tp ) );
 
     hash_head->max_hash = max_hash;
-    hash_head->table = hash_table;
+    hash_head->table = this_hash_table;
 
     for ( a = 0; a < max_hash; a++ )
-        hash_table[a] = NULL;
+        this_hash_table[a] = NULL;
 
     return hash_head;
 
@@ -109,20 +109,20 @@ void clear_hash_table( hash_table * hash_head )
 {
     int a;
     HASH_ENTRY *entry, *next_entry;
-    HASH_ENTRY **hash_table;
+    HASH_ENTRY **this_hash_table;
 
-    hash_table = hash_head->table;
+    this_hash_table = hash_head->table;
 
     for ( a = 0; a < hash_head->max_hash; a++ )
     {
-        if ( hash_table[a] != NULL )
+        if ( this_hash_table[a] != NULL )
         {
-            for ( entry = hash_table[a]; entry != NULL; entry = next_entry )
+            for ( entry = this_hash_table[a]; entry != NULL; entry = next_entry )
             {
                 next_entry = entry->next;
                 delete entry;
             }
-            hash_table[a] = NULL;
+            this_hash_table[a] = NULL;
         }
     }
 }
@@ -132,21 +132,21 @@ void delete_hash_table( hash_table * hash_head )
 
     int a;
     HASH_ENTRY *entry, *next_entry;
-    HASH_ENTRY **hash_table;
-    hash_table = hash_head->table;
+    HASH_ENTRY **this_hash_table;
+    this_hash_table = hash_head->table;
 
     for ( a = 0; a < hash_head->max_hash; a++ )
     {
-        if ( hash_table[a] != NULL )
+        if ( this_hash_table[a] != NULL )
         {
-            for ( entry = hash_table[a]; entry != NULL; entry = next_entry )
+            for ( entry = this_hash_table[a]; entry != NULL; entry = next_entry )
             {
                 next_entry = entry->next;
                 delete entry;
             }
-            hash_table[a] = NULL;
+            this_hash_table[a] = NULL;
         }
     }
-    dispose( hash_table, sizeof( HASH_ENTRY * ) * hash_head->max_hash );
+    dispose( this_hash_table, sizeof( HASH_ENTRY * ) * hash_head->max_hash );
     dispose( hash_head, sizeof( *hash_head ) );
 }

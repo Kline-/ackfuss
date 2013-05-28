@@ -106,7 +106,8 @@ void gain_level( CHAR_DATA * ch )
         return;
 
     ch->exp -= cost;
-    ch->level = UMIN( 140, ch->level++ );
+    ch->level++;
+    ch->level = UMIN( 140, ch->level );
 
     snprintf( buf, MSL, "%s gains a level!", ch->get_name() );
     info( buf, 1 );

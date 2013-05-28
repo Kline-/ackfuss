@@ -231,7 +231,7 @@ DO_FUN(do_check_areas)
                     /*
                      * Delete from room hashing table, and put new vnum in.
                      */
-                    add_hash_entry( room_hash, old_vnum, ( void * )new_vnum );
+                    add_hash_entry( room_hash, old_vnum, ( void * )&new_vnum );
                     swap_global_hash( 'R', pRoomIndex, old_vnum, new_vnum );
                     pRoomIndex->vnum = new_vnum;
                     area_modified( CurArea );
@@ -267,7 +267,7 @@ DO_FUN(do_check_areas)
                     /*
                      * Delete from obj hashing table, and put new vnum in.
                      */
-                    add_hash_entry( obj_hash, old_vnum, ( void * )new_vnum );
+                    add_hash_entry( obj_hash, old_vnum, ( void * )&new_vnum );
                     swap_global_hash( 'O', pObjIndex, old_vnum, new_vnum );
                     pObjIndex->vnum = new_vnum;
                     area_modified( CurArea );
@@ -303,7 +303,7 @@ DO_FUN(do_check_areas)
                     /*
                      * Delete from mob hashing table, and put new vnum in.
                      */
-                    add_hash_entry( mob_hash, old_vnum, ( void * )new_vnum );
+                    add_hash_entry( mob_hash, old_vnum, ( void * )&new_vnum );
                     swap_global_hash( 'M', pMobIndex, old_vnum, new_vnum );
                     pMobIndex->vnum = new_vnum;
                     area_modified( CurArea );

@@ -630,7 +630,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
                 else
                 {
                     fread_to_eol( fp );
-                    add_hash_entry( hash_changed_vnums, oldvnum, ( void * )newvnum );
+                    add_hash_entry( hash_changed_vnums, oldvnum, ( void * )&newvnum );
                 }
             }
             file_close( fp );

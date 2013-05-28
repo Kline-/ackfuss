@@ -2113,7 +2113,8 @@ DO_FUN(do_sacrifice)
         if ( obj->item_type == ITEM_BEACON || obj->item_type == ITEM_LIGHT
                 || obj->item_type == ITEM_PORTAL || obj->item_type == ITEM_FOOD )
             align_change /= 10;
-        ch->alignment = URANGE( -1000, ( ch->alignment += align_direction * (short)align_change ), 1000 );
+        ch->alignment += align_direction * (short)align_change;
+        ch->alignment = URANGE( -1000, ch->alignment, 1000 );
     }
 
     if ( !change_align )
