@@ -7,7 +7,7 @@ IMCIGNORE, IMCCOLOR, and IMCCHANWHO
 
 See these administrative commands: IMCCOMMAND, IMCDENY, IMCUCACHE
 IMCBAN, IMCPING, IMCSETUP, IMCSTATS, IMCCONFIG, IMCPERMS, and IMCPERMSET
-¢
+~
 End
 
 #HELP
@@ -18,7 +18,7 @@ Text Syntax: imcucache
 Displays the contents of the ucache tables which are used for proper targetting of
 genders in socials. This output can be very spammy depending on the number of
 supporting clients.
-¢
+~
 End
 
 #HELP
@@ -33,7 +33,7 @@ which accompanied the source code for IMC2. Besides, the list is a bit large to 
 A password provided by the owner of the server is required to use these commands. If your mud
 uses MD5 authentication, that password will be encrypted. If not, it isn't wise to use
 these functions as anyone sniffing could potentially do damage in the right conditions.
-¢
+~
 End
 
 #HELP
@@ -44,7 +44,7 @@ Text Syntax: imcdebug
 This toggles the mud's packet debugging. Your logs will begin displaying incoming and outgoing
 packets. For this reason, it is not recommended to be used unless absolutely necessary since
 using it could create potential privacy issues. It's called debug for a reason, use it responsibly.
-¢
+~
 End
 
 #HELP
@@ -56,7 +56,7 @@ Allows minor editing of helps.
 Option can be either "name" or "perm".
 
 Editing the text of the topic itself is not possible - yet.
-¢
+~
 End
 
 #HELP
@@ -69,7 +69,7 @@ and delete commands.
 
 When creating, you can optionally specify the name of the function the command will use.
 If the function named does not exist, the command will not work.
-¢
+~
 End
 
 #HELP
@@ -78,7 +78,7 @@ Perm Mort
 Text Syntax: imchelp <topic>
 
 The command used to get help about other commands. Assuming the command has help information.
-¢
+~
 End
 
 #HELP
@@ -91,7 +91,7 @@ on the specified mud. You can also ask for a listing from multiple muds by putti
 of their names in the command. Or, you can also specify "all" and the command will query
 all muds on the network for who is listening. Be advised this command can generate alot
 of output.
-¢
+~
 End
 
 #HELP
@@ -103,7 +103,7 @@ This command will display the permission level of the target player, and will te
 that permission value was given.
 
 If a permission was set with imcpermset, this permission will not update itself at user login.
-¢
+~
 End
 
 #HELP
@@ -120,7 +120,7 @@ This action sets the override flag for that user.
 
 You can also specify 'override' to remove the override flag and allow the code to reset their
 permission level at next login.
-¢
+~
 End
 
 #HELP
@@ -131,7 +131,7 @@ Text Syntax: imccolor
 This command simply toggles receiving of imc color codes. If on, you will see everything
 in as much color as your mud is capable of displaying. If off, all IMC2 traffic will be
 in whatever your terminal default color is.
-¢
+~
 End
 
 #HELP
@@ -141,7 +141,7 @@ Text Syntax: imcinfo <mud>
 
 This command will display information about one mud on the network. The information
 presented by the command is chosen by the mud's administrators.
-¢
+~
 End
 
 
@@ -155,7 +155,7 @@ program supports it, it will make an audible beep to get their
 attention. If you don't get a response, don't keep beeping. The person may 
 be busy or away and spamming them will only tick them off as well as 
 possibly leading to your IMC priviliges being revoked.
-¢
+~
 End
 
 #HELP
@@ -232,7 +232,7 @@ also displays:
   via the IMCSETUP command.
 
 - The invited and excluded people on the channel.
-¢
+~
 End
 
 #HELP
@@ -272,7 +272,7 @@ IMCCOMMAND invite/uninvite/exclude/unexcluded modify the invite and exclude
 lists for a channel. You must be the owner or an operator on the 
 channel. Either a full user@mud or a simple 'mud' name (no @) can be 
 specified.
-¢
+~
 End
 
 #HELP
@@ -303,7 +303,7 @@ ClientPwd     : Client password for your mud.
 ServerPwd     : Server password for your mud.
 
 This display will also indicate whether your mud is using MD5 or plain text to authenticate.
-¢
+~
 End
 
 #HELP
@@ -315,7 +315,7 @@ Syntax: imcdeny <person> [tell/beep/finger]
 This command allows you to deny players the use of a local channel, the tell
 functions, beep functions, and finger functions. It is a simple toggle that
 can be changed as needed.
-¢
+~
 End
 
 #HELP
@@ -329,7 +329,7 @@ a message saying finger is not supported.
 
 When used with the bridge, typing imcfinger (mud@i3) will produce a who
 listing of the target mud.
-¢
+~
 End
 
 #HELP
@@ -353,7 +353,7 @@ problems or is becoming a nuisance to the mud in general, advise your mud
 administration to seek the use of an IMCBAN command against them.
 Be prepared to justify this with a good reason and provide any documentation
 of any incidents your administrators ask for.
-¢
+~
 End
 
 #HELP
@@ -375,7 +375,7 @@ problems you are having, document the incidents and proceed to the next
 level and seek assistance from the server administrator of the server you
 are connected to. They will be able to direct you further, and can issue
 bans at the server or network level if need be.
-¢
+~
 End
 
 #HELP
@@ -387,7 +387,7 @@ Text Syntax: imclist                  - get a list of active muds on IMC2
 knows about on the IMC2 network, what client version they run ( or server version
 in the case of servers ), what network they claim to be registered with, and what
 server they are routed from.
-¢
+~
 End
 
 #HELP
@@ -402,7 +402,7 @@ an argument, it will turn that channel on or off.
 
 Any channels you listen to must be locally configured first - see
 IMCSETUP. IMCCHANLIST can be used to see available channels.
-¢
+~
 End
 
 #HELP
@@ -413,7 +413,7 @@ Text Syntax: imclocate (person)          - find a player on IMC
 Sends a request out to all muds on the IMC network looking for the
 specified player. If they are online and visible, a response will
 be sent back indicating this.
-¢
+~
 End
 
 #HELP
@@ -425,7 +425,7 @@ IMCPING allows you to trace connectivity of another connection from your
 own. You will be given a path to and from the target mud. This command is
 basically just for simple diagnostics and should not be considered a reliable
 network tool.
-¢
+~
 End
 
 #HELP
@@ -468,7 +468,7 @@ normal speech, emoteformat is for emotes and socformat is for socials.
 
 IMCSETUP level sets the minimum level necessary on your mud to hear or use
 the channel.
-¢
+~
 End
 
 #HELP
@@ -479,7 +479,7 @@ Text Syntax: imcstats                     - displays useful statistics
 IMCSTATS shows some useful statistics about how much traffic your mud is 
 generating due to IMC. It will also report which descriptor number your mud
 is using to connect to the network.
-¢
+~
 End
 
 #HELP
@@ -501,7 +501,7 @@ IMCREPLY command with your message.
 Due to certain conditions within the network, your conversations COULD be
 monitored, so don't send anything critical, like passwords or credit card
 numbers ( or anything else you don't want to risk being snooped ), over an IMCTELL.
-¢
+~
 End
 
 #HELP
@@ -514,7 +514,7 @@ imcwho i3       - Shows I3 network mudlist.
 Requests a list of the current players on the target mud. Invisble players 
 will not be displayed. You should use the mud abbreviation listed in 
 'IMCLIST' when issuing a IMCWHO.
-¢
+~
 End
 
 #HELP
@@ -527,7 +527,7 @@ you on the network in who listing, nor will they be able to send you tells.
 You will also be unable to send your own tells.
 
 The only thing invisibility does not stop is your ability to use network channels.
-¢
+~
 End
 
 #HELP
@@ -538,7 +538,7 @@ Text Syntax: imctemplates           - reloads the template file set from disk.
 Issuing this command will refresh any editing you've done to your template files.
 This saves you from needing to disconnect from the network and reconnect just to
 test changes.
-¢
+~
 End
 
 #END

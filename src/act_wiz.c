@@ -1190,27 +1190,23 @@ DO_FUN(do_ofindlev)
     bool found;
     int level;
     int level_top;
-    int objlev;
-    bool mailme = FALSE;
-    if ( is_name( "mailme", argument ) )
-        mailme = TRUE;
+
     argument = one_argument( argument, arg );
+
     if ( arg[0] == '\0' )
     {
         send_to_char( "Ofindlev what lev.?\r\n", ch );
         return;
     }
-    level = is_number( arg ) ? atoi( arg ) : 0;
 
+    level = is_number( arg ) ? atoi( arg ) : 0;
     argument = one_argument( argument, arg2 );
+
     if ( ( arg2[0] == '\0' ) || ( !is_number( arg2 ) ) )
-    {
         level_top = level;
-    }
     else
-    {
         level_top = atoi( arg2 );
-    }
+
     buf1[0] = '\0';
     fAll = !str_cmp( arg, "all" );
     found = FALSE;
@@ -1232,7 +1228,6 @@ DO_FUN(do_ofindlev)
 
             {
                 found = TRUE;
-                objlev = pObjIndex->level;
 
                 if ( IS_OBJ_STAT(pObjIndex, ITEM_EXTRA_REMORT) )
                 {
@@ -1272,10 +1267,9 @@ DO_FUN(do_mfind)
     int nMatch;
     bool fAll;
     bool found;
-    bool mailme = FALSE;
-    if ( is_name( "mailme", argument ) )
-        mailme = TRUE;
+
     one_argument( argument, arg );
+
     if ( arg[0] == '\0' )
     {
         send_to_char( "Mfind whom?\r\n", ch );
@@ -1331,11 +1325,9 @@ DO_FUN(do_mfindlev)
     bool found;
     int level, level_top;
     int perkills, moblev;
-    bool mailme = FALSE;
-    if ( is_name( "mailme", argument ) )
-        mailme = TRUE;
 
     argument = one_argument( argument, arg );
+
     if ( arg[0] == '\0' )
     {
         send_to_char( "Mfindlev what lev.?\r\n", ch );
@@ -1347,14 +1339,11 @@ DO_FUN(do_mfindlev)
     found = FALSE;
     nMatch = 0;
     level = is_number( arg ) ? atoi( arg ) : 0;
+
     if ( ( arg2[0] == '\0' ) || ( !is_number( arg2 ) ) )
-    {
         level_top = level;
-    }
     else
-    {
         level_top = atoi( arg2 );
-    }
 
     /*
      * Yeah, so iterating over all vnum's takes 10,000 loops.
@@ -1406,11 +1395,9 @@ DO_FUN(do_ofind)
     int nMatch;
     bool fAll;
     bool found;
-    bool mailme = FALSE;
-    if ( is_name( "mailme", argument ) )
-        mailme = TRUE;
 
     one_argument( argument, arg );
+
     if ( arg[0] == '\0' )
     {
         send_to_char( "Ofind what?\r\n", ch );
@@ -3973,13 +3960,11 @@ DO_FUN(do_owhere)
     OBJ_DATA *obj;
     OBJ_DATA *in_obj;
     int obj_counter = 1;
-    bool mailme = FALSE;
     list<OBJ_DATA *>::iterator li;
 
-    if ( is_name( "mailme", argument ) )
-        mailme = TRUE;
     one_argument( argument, arg );
     snprintf( buf, MSL, "Output for Owhere %s\r\n", arg );
+
     if ( arg[0] == '\0' )
     {
         send_to_char( "Syntax:  owhere <object/rare>.\r\n", ch );
@@ -5311,8 +5296,6 @@ DO_FUN(do_alink)
 {
 
     AREA_DATA *this_area;
-    ROOM_INDEX_DATA *this_room;
-
     BUILD_DATA_LIST *pointer;
     ROOM_INDEX_DATA *current_room;
     int area_top, area_bottom;
@@ -5320,7 +5303,6 @@ DO_FUN(do_alink)
     char buf[MSL];
 
 
-    this_room = ch->in_room;
     this_area = ch->in_room->area;
     area_top = this_area->max_vnum;
     area_bottom = this_area->min_vnum;
@@ -5392,10 +5374,6 @@ DO_FUN(do_gain_stat_reset)
 {
     CHAR_DATA *victim;
     OBJ_DATA *wear_object;
-    CHAR_DATA *rch;
-
-
-    rch = get_char( ch );
 
     if ( argument[0] == '\0' )
     {
@@ -5691,9 +5669,7 @@ DO_FUN(do_otype)
     int nMatch;
     bool fAll;
     bool found;
-    bool mailme = FALSE;
-    if ( is_name( "mailme", argument ) )
-        mailme = TRUE;
+
     one_argument( argument, arg );
     if ( arg[0] == '\0' )
         if ( arg[0] == '\0' )
@@ -5752,9 +5728,7 @@ DO_FUN(do_owear)
     int nMatch;
     bool fAll;
     bool found;
-    bool mailme = FALSE;
-    if ( is_name( "mailme", argument ) )
-        mailme = TRUE;
+
     one_argument( argument, arg );
     if ( arg[0] == '\0' )
     {
@@ -5824,10 +5798,8 @@ DO_FUN(do_findreset)
     char arg1[MSL], arg2[MSL];
     char outbuf[MSL], catbuf[MSL];
     bool mworld = FALSE;
-    bool mailme = FALSE;
-    bool fmob = FALSE, fobj = FALSE;
+    bool fmob = FALSE;
     int vnum = 0;
-//    char mailsub[MSL];
     RESET_DATA *reset;
     MOB_INDEX_DATA *pMob;
     OBJ_INDEX_DATA *pObj;
@@ -5839,8 +5811,6 @@ DO_FUN(do_findreset)
     }
     if ( is_name( "+w", argument ) )
         mworld = TRUE;
-    if ( is_name( argument, "mailme" ) )
-        mailme = TRUE;
 
     argument = one_argument( argument, arg1 );
     if ( arg1[0] == '\0' )
@@ -5859,8 +5829,7 @@ DO_FUN(do_findreset)
     }
     if ( !str_cmp( arg1, "mob" ) )
         fmob = TRUE;
-    else
-        fobj = TRUE;
+
     argument = one_argument( argument, arg2 );
     if ( ( arg2[0] == '\0' ) || ( !is_number( arg2 ) ) )
     {

@@ -22,7 +22,7 @@ endif
 
 #-Werror -Wwrite-strings -Wconversion
 MAKEFLAGS = -j2
-W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings
+W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings -Werror
 L_FLAGS = -lcrypt -lm -lpthread -ldl
 
 C_FILES = $(wildcard *.c *.cpp)
@@ -38,14 +38,15 @@ $(shell if [ -x ./.dirbuild ]; then ./.dirbuild; rm -f ./.dirbuild; fi )
 .SILENT: help $(PROG) clean depend cbuild $(O_FILES)
 
 help:
-	echo -e "\n### $(VERS) Makefile Options ###"
-	echo -e "    help     Displays this help menu."
-	echo -e "    $(PROG)      Compiles the game into binary file $(PROG)."
-	echo -e "    cbuild   Equivalent to: make clean && make depend && make $(PROG)"
-	echo -e "    clean    Removes files: $(PROG) o/* d/* ../report/core"
-	echo -e "    depend   Generate dependencies for all source code.\n"
+	echo "\n### $(VERS) Makefile Options ###"
+	echo "    help     Displays this help menu."
+	echo "    $(PROG)      Compiles the game into binary file $(PROG)."
+	echo "    cbuild   Equivalent to: make clean && make depend && make $(PROG)"
+	echo "    clean    Removes files: $(PROG) o/* d/* ../report/core"
+	echo "    depend   Generate dependencies for all source code.\n"
 
 $(PROG): $(O_FILES)
+	$(MAKE) depend
 	$(RM) $(PROG)
 	$(CC) -o $(PROG) $(O_FILES) $(L_FLAGS)
 	echo "Finished building $(VERS) ($(MODE))."

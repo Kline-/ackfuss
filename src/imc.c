@@ -4184,7 +4184,7 @@ void imc_readhelp( IMC_HELP_DATA * help, FILE * fp )
                 {
                     int num = 0;
 
-                    while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '�' && num < ( LGST - 2 ) )
+                    while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '~' && num < ( LGST - 2 ) )
                         num++;
                     hbuf[num] = '\0';
                     help->text = IMCSTRALLOC( hbuf );
@@ -4814,49 +4814,49 @@ void imc_load_who_template( void )
 
         if ( !strcasecmp( word, "Head:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '�' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '~' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->head = IMCSTRALLOC( parse_who_header( hbuf ) );
         }
         else if ( !strcasecmp( word, "Tail:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '�' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '~' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->tail = IMCSTRALLOC( parse_who_tail( hbuf ) );
         }
         else if ( !strcasecmp( word, "Plrline:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '�' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '~' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->plrline = IMCSTRALLOC( hbuf );
         }
         else if ( !strcasecmp( word, "Immline:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '�' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '~' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->immline = IMCSTRALLOC( hbuf );
         }
         else if ( !strcasecmp( word, "Immheader:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '�' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '~' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->immheader = IMCSTRALLOC( hbuf );
         }
         else if ( !strcasecmp( word, "Plrheader:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '�' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '~' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->plrheader = IMCSTRALLOC( hbuf );
         }
         else if ( !strcasecmp( word, "Master:" ) )
         {
-            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '�' && num < ( LGST - 2 ) )
+            while ( ( fread( &hbuf[num], 1, 1, fp ) > 0 ) && hbuf[num] != '~' && num < ( LGST - 2 ) )
                 ++num;
             hbuf[num] = '\0';
             whot->master = IMCSTRALLOC( hbuf );

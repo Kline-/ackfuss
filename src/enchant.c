@@ -84,7 +84,7 @@ DO_FUN(do_enchant)
     int cur_mana = 0, cur_hitroll = 0, cur_move = 0, cur_armor = 0, cur_save = 0, cur_hit = 0, cur_damroll = 0;
     int mod_mana = 0, mod_hitroll = 0, mod_move = 0, mod_armor = 0, mod_save = 0, mod_hit = 0, mod_damroll = 0;
     short mod_item_weight = 0;
-    bool good_item = FALSE, legal_enchant = TRUE, bad_enchant_mix = FALSE;
+    bool legal_enchant = TRUE;
     short qp_cost = 20;
     int mod = 0;
     short min_level = 10;
@@ -140,13 +140,11 @@ DO_FUN(do_enchant)
         if ( ( this_obj->item_type == ITEM_WEAPON )
                 || ( this_obj->item_type == ITEM_ARMOR ) || ( this_obj->item_type == ITEM_LIGHT ) )
         {
-            good_item = TRUE;
             unique = this_obj;
             continue;
         }
         if ( this_obj->item_type != ITEM_ENCHANTMENT )
         {
-            bad_enchant_mix = TRUE;
             if ( !str_cmp( arg2, "debug" ) )
             {
                 snprintf( debug, MSL, "Non-enchantment item in matrix..%s\r\n", this_obj->name );
@@ -154,11 +152,7 @@ DO_FUN(do_enchant)
             }
             break;
         }
-        if ( this_obj->value[0] == ENCHANT_OBJFUNS )
-        {
-            bad_enchant_mix = TRUE;
-        }
-        else if ( this_obj->value[0] == ENCHANT_APPLY_FLAGS )
+        if ( this_obj->value[0] == ENCHANT_APPLY_FLAGS )
         {
             if ( ( this_obj->value[3] > 0 ) && ( !IS_SET( new_apply, ( 1 << ( this_obj->value[3] - 1 ) ) ) ) )
                 SET_BIT( new_apply, ( 1 << ( this_obj->value[3] - 1 ) ) );

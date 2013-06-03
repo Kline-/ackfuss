@@ -3306,15 +3306,8 @@ DO_FUN(do_spells)
     char buf1[MSL];
     int sn;
     int col;
-    int cnt;
-    bool ok;
     buf[0] = '\0';
 
-    /*
-     * if ( ( !IS_NPC( ch ) &&
-     * !class_table[ch->p_class].fMana )
-     * ||  IS_NPC ( ch ) )
-     */
     if ( IS_NPC( ch ) )
     {
         send_to_char( "You do not know how to cast spells!\r\n", ch );
@@ -3326,24 +3319,14 @@ DO_FUN(do_spells)
     col = 0;
     for ( sn = 0; sn < MAX_SKILL; sn++ )
     {
-        ok = FALSE;
-
         if ( skill_table[sn].name == NULL )
             break;
-        for ( cnt = 0; cnt < MAX_CLASS; cnt++ )
-            if ( ( ch->lvl[cnt] >= skill_table[sn].skill_level[cnt] ) && ( skill_table[sn].skill_level[cnt] < LEVEL_HERO ) )
-                ok = TRUE;
 
         if ( ch->pcdata->learned[sn] == 0 )
             continue;
 
         if ( skill_table[sn].slot == 0 )
             continue;
-
-        /*
-         * if ( skill_table[sn].skill_level[ch->p_class] > LEVEL_HERO )
-         * continue;
-         */
 
         snprintf( buf, MSL, "%20s (%0.2fs) %4dmp ", skill_table[sn].name, cast_speed( ch, sn ), mana_cost( ch, sn ) );
         strncat( buf1, buf, MSL - 1 );

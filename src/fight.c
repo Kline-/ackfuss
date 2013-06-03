@@ -2514,7 +2514,6 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
 {
     char buf[MAX_STRING_LENGTH];
     CHAR_DATA *gch;
-    CHAR_DATA *lch;
     int members = 0, tot_level = 0, xp = 0;
     float old_gain = 0, gain = 0, percent = 0;
 
@@ -2559,7 +2558,6 @@ void group_gain( CHAR_DATA * ch, CHAR_DATA * victim )
      *
      */
 
-    lch = ( ch->leader != NULL ) ? ch->leader : ch;
     old_gain = gain;
 
     for ( gch = ch->in_room->first_person; gch != NULL; gch = gch->next_in_room )
@@ -4507,8 +4505,10 @@ DO_FUN(do_charge)
     if ( !IS_NPC( ch ) && ch->pcdata->order[0] == 3 )
         prime = TRUE;
 
-
     dam = number_range( ch->get_level("psuedo"), ch->get_level("psuedo") * 3 );
+
+    if ( prime )
+        dam *= 1.10;
 
     if ( !IS_NPC( ch ) )
         chance = ch->pcdata->learned[gsn_charge] / 2;
@@ -4517,8 +4517,10 @@ DO_FUN(do_charge)
 
     chance += ( ( ch->get_level("psuedo") - ( victim->get_level("psuedo") - 30 ) ) / 2 );
 
-    ch->set_cooldown("charge");
+    if ( prime )
+        chance += 10;
 
+    ch->set_cooldown("charge");
     check_killer( ch, victim );
 
     if ( number_percent(  ) < chance )

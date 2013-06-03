@@ -169,8 +169,6 @@ DO_FUN(build_makearea)
     list<AREA_DATA *>::iterator li;
     BUILD_DATA_LIST *pList;
     AREA_DATA *pArea = NULL;
-    AREA_DATA *fpadd = NULL;
-    AREA_DATA *lpadd = NULL;
     FILE *fpArea;
 
     smash_tilde( argument );
@@ -201,7 +199,6 @@ DO_FUN(build_makearea)
     for ( li = area_list.begin(); li != area_list.end(); li++ )
     {
         pArea = *li;
-        fpadd = pArea;
         svnum = pArea->min_vnum;
 
         a = svnum - envnum - 1;
@@ -216,12 +213,10 @@ DO_FUN(build_makearea)
             mvnum = vnum + rooms - 1;
             snprintf( buf, MSL, "\r\n Your start vnum :%d and ending vnum: %d :\r\n", vnum, mvnum );
             send_to_char( buf, ch );
-            fpadd = pArea;
             break;
         }
 
         envnum = pArea->max_vnum;
-        lpadd = pArea;
     }
 
 

@@ -2283,7 +2283,6 @@ void reset_area( AREA_DATA * pArea )
     RESET_DATA *pReset;
     CHAR_DATA *mob;
     char buf[MAX_STRING_LENGTH];
-    bool last;
     bool just_loaded = FALSE;
     int level;
     int previous_bug = 0;
@@ -2293,7 +2292,6 @@ void reset_area( AREA_DATA * pArea )
     monitor_chan( buf, MONITOR_AREA_UPDATE );
     area_resetting_global = TRUE;
     mob = NULL;
-    last = TRUE;
     level = 0;
     for ( pReset = pArea->first_reset; pReset != NULL; pReset = pReset->next )
     {
@@ -2333,10 +2331,7 @@ void reset_area( AREA_DATA * pArea )
 
                 level = pMobIndex->level;
                 if ( pReset->count >= pReset->arg2 )
-                {
-                    last = FALSE;
                     break;
-                }
 
                 mob = create_mobile( pMobIndex );
                 mob->reset = pReset;
@@ -2362,7 +2357,6 @@ void reset_area( AREA_DATA * pArea )
                     char_to_room( mob, pRoomIndex );
 
                 level = URANGE( 0, mob->level - 2, LEVEL_HERO );
-                last = TRUE;
                 break;
 
             case 'O':
@@ -2386,10 +2380,7 @@ void reset_area( AREA_DATA * pArea )
                                   || ( pObjIndex->item_type == ITEM_FURNITURE )
                                   || ( pObjIndex->item_type == ITEM_PORTAL )
                                   || ( pObjIndex->item_type == ITEM_PIECE ) || ( IS_OBJ_STAT(pObjIndex, ITEM_EXTRA_RARE) ) ) ) )
-                {
-                    last = FALSE;
                     break;
-                }
 
                 level = pObjIndex->level;
                 obj = create_object( pObjIndex, level > 1 ? number_fuzzy( level ) : level );
@@ -2399,14 +2390,9 @@ void reset_area( AREA_DATA * pArea )
                 obj_to_room( obj, pRoomIndex );
 
                 if ( ( IS_OBJ_STAT(obj, ITEM_EXTRA_RARE) ) && !( ( number_percent(  ) < 2 ) && ( number_percent(  ) < 8 ) ) )
-                {
                     extract_obj( obj );
-                }
                 else if ( ( pRoomIndex->room_flags.test(RFLAG_NO_REPOP) ) && ( pRoomIndex->first_person != NULL ) )
-                {
                     extract_obj( obj );
-                }
-                last = TRUE;
                 break;
 
             case 'P':
@@ -2426,10 +2412,7 @@ void reset_area( AREA_DATA * pArea )
 
                 if ( ( obj_to = get_obj_type( pObjToIndex ) ) == NULL
                         || count_obj_list( pObjIndex, obj_to->first_in_carry_list ) >= pReset->arg2 )
-                {
-                    last = FALSE;
                     break;
-                }
 
                 level = pObjIndex->level;
                 obj = create_object( pObjIndex, obj_to->level > 1 ? number_fuzzy( obj_to->level ) : obj_to->level );
@@ -2438,7 +2421,6 @@ void reset_area( AREA_DATA * pArea )
 
                 obj_to_obj( obj, obj_to );
 
-                last = TRUE;
                 break;
 
             case 'G':
@@ -2457,7 +2439,6 @@ void reset_area( AREA_DATA * pArea )
                 {
                     SHOW_AREA;
                     bug( "Reset_area: 'E' or 'G': null mob for vnum %d.", pReset->arg1 );
-                    last = FALSE;
                     break;
                 }
 
@@ -2520,11 +2501,8 @@ void reset_area( AREA_DATA * pArea )
                 }
                 obj_to_char( obj, mob );
                 if ( ( IS_OBJ_STAT(obj, ITEM_EXTRA_RARE) ) && !( ( number_percent(  ) < 2 ) && ( number_percent(  ) < 8 ) ) )
-                {
                     extract_obj( obj );
-                    last = true;
                     break;
-                }
                 if ( pReset->command == 'E' )
                 {
                     char objname[MSL];
@@ -2533,7 +2511,6 @@ void reset_area( AREA_DATA * pArea )
                         obj->level = mob->get_level();
                     do_wear( mob, objname );
                 }
-                last = TRUE;
                 break;
 
             case 'D':
@@ -2564,7 +2541,6 @@ void reset_area( AREA_DATA * pArea )
                         break;
                 }
 
-                last = TRUE;
                 break;
 
             case 'R':

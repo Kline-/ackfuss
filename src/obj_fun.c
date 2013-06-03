@@ -173,7 +173,6 @@ OBJ_FUN(objfun_infused_soul)
 
     int sn;
     CHAR_DATA *victim;
-    int min_lev;
     char *spell = "";
 
     if ( keeper == NULL || keeper->in_room == NULL )
@@ -197,19 +196,15 @@ OBJ_FUN(objfun_infused_soul)
         switch ( number_range( 0, 3 ) )
         {
             case 0:
-                min_lev = 43;
                 spell = "throwing star";
                 break;
             case 1:
-                min_lev = 55;
                 spell = "acid blast";
                 break;
             case 2:
-                min_lev = 68;
                 spell = "dispel magic";
                 break;
             case 3:
-                min_lev = 55;
                 spell = "flamestrike";
                 break;
 
@@ -248,8 +243,8 @@ OBJ_FUN(objfun_cast_fight)
 {
     int sn;
     CHAR_DATA *victim;
-    int min_lev;
     char *spell = "";
+
     if ( keeper == NULL || ( keeper->fighting == NULL ) || ( obj->item_type != ITEM_WEAPON ) )
         return;
     if ( ( get_eq_char( keeper, WEAR_HOLD_HAND_L ) != obj ) && ( get_eq_char( keeper, WEAR_HOLD_HAND_R ) != obj ) )
@@ -264,27 +259,21 @@ OBJ_FUN(objfun_cast_fight)
     switch ( number_range( 0, 5 ) )
     {
         case 0:
-            min_lev = 5;
             spell = "magic missile";
             break;
         case 1:
-            min_lev = 7;
             spell = "color spray";
             break;
         case 2:
-            min_lev = 8;
             spell = "chill touch";
             break;
         case 3:
-            min_lev = 30;
             spell = "fireball";
             break;
         case 4:
-            min_lev = 55;
             spell = "flamestrike";
             break;
         case 5:
-            min_lev = 30;
             spell = "lightning bolt";
             break;
     }
@@ -336,8 +325,8 @@ OBJ_FUN(objfun_flaming)
 {
     int sn;
     CHAR_DATA *victim;
-    int min_lev;
     char *spell = "";
+
     if ( keeper == NULL || keeper->in_room == NULL )
         return;
     if ( ( keeper == NULL ) || ( obj->item_type != ITEM_WEAPON ) )
@@ -376,24 +365,20 @@ OBJ_FUN(objfun_flaming)
         case 1:
         case 2:
         case 3:
-            min_lev = 5;
             spell = "fireball";
             break;
         case 4:
         case 5:
         case 6:
         case 7:
-            min_lev = 7;
             spell = "flamestrike";
             break;
         case 8:
         case 9:
         case 10:
-            min_lev = 8;
             spell = "lava burst";
             break;
         case 11:
-            min_lev = 30;
             spell = "heat armor";
             break;
 
@@ -410,8 +395,8 @@ OBJ_FUN(objfun_healing)
 {
     int sn;
     CHAR_DATA *victim;
-    int min_lev;
     char *spell = "";
+
     if ( keeper == NULL || keeper->in_room == NULL )
         return;
     if ( ( keeper == NULL ) || ( obj->item_type != ITEM_WEAPON ) )
@@ -444,26 +429,22 @@ OBJ_FUN(objfun_healing)
     {
         case 0:
         case 1:
-            min_lev = 5;
             spell = "cure light";
             break;
         case 2:
         case 3:
         case 4:
-            min_lev = 7;
             spell = "cure serious";
             break;
         case 5:
         case 6:
         case 7:
-            min_lev = 8;
             spell = "cure critical";
             break;
         case 8:
         case 9:
         case 10:
         case 11:
-            min_lev = 30;
             spell = "heal";
             break;
 
@@ -480,8 +461,8 @@ OBJ_FUN(objfun_dispeller)
 {
     int sn;
     CHAR_DATA *victim;
-    int min_lev;
     char *spell = "";
+
     if ( keeper == NULL || keeper->in_room == NULL )
         return;
     if ( ( keeper == NULL ) || ( obj->item_type != ITEM_WEAPON ) )
@@ -520,13 +501,11 @@ OBJ_FUN(objfun_dispeller)
         case 1:
         case 2:
         case 3:
-            min_lev = 5;
             spell = "ego whip";
             break;
         case 4:
         case 5:
         case 6:
-            min_lev = 7;
             spell = "bloody tears";
             break;
         case 7:
@@ -534,7 +513,6 @@ OBJ_FUN(objfun_dispeller)
         case 9:
         case 10:
         case 11:
-            min_lev = 30;
             spell = "dispel magic";
             break;
 

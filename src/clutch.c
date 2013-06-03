@@ -83,18 +83,11 @@ bool valid_clutch_number( int number )
 
 DO_FUN(do_clutch)
 {
-    /*
-     * Big top-level clutch funciton.
-     */
-
     OBJ_DATA *obj;
-    bool found;
-
 
     /*
      * See if any object is clutched...
      */
-    found = FALSE;
     for ( obj = ch->first_carry; obj != NULL; obj = obj->next_in_carry_list )
         if ( ( obj->wear_loc == WEAR_HOLD_HAND_L ) && ( obj->item_type == ITEM_CLUTCH ) )
             break;

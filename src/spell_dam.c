@@ -654,7 +654,7 @@ void sp_dam_message( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam
 
 bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int type, int sn, bool show_msg )
 {
-    int ch_strong, ch_weak, ch_race, ch_suscept, ch_resist, vi_strong, vi_weak, vi_race, vi_suscept, vi_resist;
+    int ch_strong, ch_weak, ch_race, vi_race, vi_suscept, vi_resist;
     float dam_modifier = 1.0;
     float tmp = 0;
     bool can_reflect = TRUE;
@@ -698,7 +698,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
         }
 
 
-        else if ( ( can_reflect )
+        else if ( ( can_absorb )
                   && ( skill_table[sn].target == TAR_CHAR_OFFENSIVE )
                   && ( IS_AFFECTED( victim, AFF_CLOAK_ABSORPTION ) )
                   && ( ch != victim ) && ( number_percent(  ) < ( victim->get_level("psuedo") - 55 ) ) )
@@ -713,25 +713,14 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
             return FALSE;
         }
 
-
-
-
         ch_strong = ( IS_NPC( ch ) ?
                       ( ( ( ch->race > 0 )
                           && ( ch->race < MAX_RACE ) ) ?
                         race_table[ch->race].strong_realms : ch->strong_magic ) : race_table[ch->race].strong_realms );
-        ch_resist = ( IS_NPC( ch ) ?
-                      ( ( ( ch->race > 0 )
-                          && ( ch->race < MAX_RACE ) ) ?
-                        race_table[ch->race].resist_realms : ch->resist ) : race_table[ch->race].resist_realms );
         ch_weak = ( IS_NPC( ch ) ?
                     ( ( ( ch->race > 0 )
                         && ( ch->race < MAX_RACE ) ) ?
                       race_table[ch->race].weak_realms : ch->weak_magic ) : race_table[ch->race].weak_realms );
-        ch_suscept = ( IS_NPC( ch ) ?
-                       ( ( ( ch->race > 0 )
-                           && ( ch->race < MAX_RACE ) ) ?
-                         race_table[ch->race].suscept_realms : ch->suscept ) : race_table[ch->race].suscept_realms );
         ch_race = ( IS_NPC( ch ) ?
                     ( ( ( ch->race > 0 )
                         && ( ch->race < MAX_RACE ) ) ?
@@ -798,19 +787,10 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
      *  Next, the victim
      *
      */
-    vi_strong = ( IS_NPC( victim ) ?
-                  ( ( ( victim->race > 0 )
-                      && ( victim->race < MAX_RACE ) ) ?
-                    race_table[victim->race].strong_realms :
-                    victim->strong_magic ) : race_table[victim->race].strong_realms );
     vi_resist = ( IS_NPC( victim ) ?
                   ( ( ( victim->race > 0 )
                       && ( victim->race < MAX_RACE ) ) ?
                     race_table[victim->race].resist_realms : victim->resist ) : race_table[victim->race].resist_realms );
-    vi_weak = ( IS_NPC( victim ) ?
-                ( ( ( victim->race > 0 )
-                    && ( victim->race < MAX_RACE ) ) ?
-                  race_table[victim->race].weak_realms : victim->weak_magic ) : race_table[victim->race].weak_realms );
     vi_suscept = ( IS_NPC( victim ) ?
                    ( ( ( victim->race > 0 )
                        && ( victim->race < MAX_RACE ) ) ?
