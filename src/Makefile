@@ -20,8 +20,7 @@ else
 	C_FLAGS = -O0 -ggdb3 -pg
 endif
 
-#-Werror -Wwrite-strings -Wconversion
-MAKEFLAGS = -j2
+#-Wwrite-strings -Wconversion
 W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings -Werror
 L_FLAGS = -lcrypt -lm -lpthread -ldl
 
