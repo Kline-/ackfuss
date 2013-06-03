@@ -1,6 +1,6 @@
 ## Compiler to use. Either g++ or your own flavor of colorgcc, ccache, etc.
 # Default: g++
-CC   = g++
+CXX   = g++
 
 ### Name of binary file to generate.
 # Default: ack
@@ -15,12 +15,13 @@ MODE = DEBUG
 
 
 ifeq '$(MODE)' 'RELEASE'
-	C_FLAGS = -w -O3
+	CXX_FLAGS = -w -O3 -std=c++0x
 else
-	C_FLAGS = -O0 -ggdb3 -pg
+	CXX_FLAGS = -O0 -ggdb3 -pg -std=c++0x
 endif
 
 #-Wwrite-strings -Wconversion
+MAKEFLAGS = -s
 W_FLAGS = -Wall -Wformat-security -Wpointer-arith -Wredundant-decls -Wcast-align -Wshadow -Wno-write-strings -Werror
 L_FLAGS = -lcrypt -lm -lpthread -ldl
 
@@ -33,8 +34,7 @@ VERS =  $(shell grep VERS_STRING h/config.h | cut -d\" -f2)
 # structure that may be missing due to Git not tracking empty directories.
 $(shell if [ -x ./.dirbuild ]; then ./.dirbuild; rm -f ./.dirbuild; fi )
 
-.PHONY: help $(PROG) clean depend cbuild
-.SILENT: help $(PROG) clean depend cbuild $(O_FILES)
+.PHONY: help $(PROG) cbuild clean depend
 
 help:
 	echo "\n### $(VERS) Makefile Options ###"
@@ -47,9 +47,13 @@ help:
 $(PROG): $(O_FILES)
 	$(MAKE) depend
 	$(RM) $(PROG)
-	$(CC) -o $(PROG) $(O_FILES) $(L_FLAGS)
+	$(CXX) -o $(PROG) $(O_FILES) $(L_FLAGS)
 	echo "Finished building $(VERS) ($(MODE))."
 	chmod +x $(PROG)
+
+cbuild:
+	$(MAKE) clean
+	$(MAKE) $(PROG)
 
 clean:
 	$(RM) $(O_FILES) $(DEPS) $(PROG) ../report/core
@@ -57,22 +61,17 @@ clean:
 depend:
 	$(RM) $(DEPS)
 	echo "Generating dependencies for $(VERS) ... "
-	$(CC) -MM $(C_FLAGS) $(C_FILES) > $(DEPS)
+	$(CXX) -MM $(CXX_FLAGS) $(C_FILES) > $(DEPS)
 	perl -pi -e 's.^([a-z]).o/$$1.g' $(DEPS)
 	echo "Finished writing dependencies to $(DEPS)"
-
-cbuild:
-	$(MAKE) clean
-	$(MAKE) depend
-	$(MAKE) $(PROG)
 
 # pull in dependency info for *existing* .o files
 -include $(DEPS)
 
 o/%.o: %.c
 	echo "Compiling `echo $@ | cut -c 3-` ... ";
-	$(CC) -c $(C_FLAGS) $(W_FLAGS) $< -o $@
+	$(CXX) -c $(CXX_FLAGS) $(W_FLAGS) $< -o $@
 
 o/%.o: %.cpp
 	echo "Compiling `echo $@ | cut -c 3-` ...";
-	$(CC) -c $(C_FLAGS) $(W_FLAGS) $< -o $@
+	$(CXX) -c $(CXX_FLAGS) $(W_FLAGS) $< -o $@

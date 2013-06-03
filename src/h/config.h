@@ -30,8 +30,28 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
+/**
+ * @file config.h
+ * @brief AckFUSS configuration options.
+ *
+ * All AckFUSS configuration options are kept within this file. This includes
+ * defines for specific folders, memory tuning, frequently used string
+ * messages, etc.
+ */
+#ifndef DEC_CONFIG_H
 #define DEC_CONFIG_H
+
+/***************************************************************************
+ *                              MEMORY OPTIONS                             *
+ ***************************************************************************/
+/** @name Memory Options */ /**@{*/
+/**
+ * @def CFG_MEM_MAX_BITSET
+ * @brief Maximum size of all bitset elements within the server.
+ * @par Default: 128
+ */
+#define CFG_MEM_MAX_BITSET 128
+/**@}*/
 
 /*
  *  Your mud info here :) Zen
@@ -61,7 +81,6 @@
 #define MAX_AREAS                1000
 #define MAX_SYS_VNUM             1000
 #define MAX_VNUM                 16777216
-#define MAX_BITSET               256    /* Total bits per bitset */
 #define MAX_PERM_BLOCK           131072
 #define COMPRESS_BUF_SIZE        MAX_STRING_LENGTH
 
@@ -1349,3 +1368,5 @@
 #define MSSP_LEVELS       120                                  //Adept is psuedo-level 120
 #define MSSP_HIRE_BUILDER 1                                    //Hiring builders? 1 for yes 0 for no
 #define MSSP_HIRE_CODER   1                                    //Hiring coders? 1 for yes 0 for no
+
+#endif
