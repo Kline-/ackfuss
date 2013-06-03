@@ -31,23 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-/*
- * This file contains all of the OS-dependent stuff:
- *   startup, signals, BSD sockets for tcp/ip, i/o, timing.
- *
- * The data flow for input is:
- *    Game_loop ---> Read_from_descriptor ---> Read
- *    Game_loop ---> Read_from_buffer
- *
- * The data flow for output is:
- *    Game_loop ---> Process_Output ---> Write_to_descriptor -> Write
- *
- * The OS-dependent functions are Read_from_descriptor and Write_to_descriptor.
- * -- Furey  26 Jan 1993
- */
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -2255,24 +2240,10 @@ void nanny( DESCRIPTOR_DATA * d, char *argument )
             ch->lvl[ch->p_class] = ch->level;
 
         if ( IS_HERO( ch ) )
-        {
-            DL_LIST *brands;
-            short numbrands;
-            char msgbuf[MSL];
-            for ( brands = first_brand, numbrands = 0; brands; brands = brands->next, numbrands++ );
             do_help( ch, "imotd" );
-            snprintf( msgbuf, MSL, "There are currently %d outstanding brands.\r\n%s",
-                      numbrands,
-                      ( ( numbrands < 50 ) ?
-                        "" :
-                        "@@eWarning: Process these brands immediately using immbrand list, immbrand read, and immbrand remove to avoid disk overflow!!@@N\r\n" ) );
-            send_to_char( msgbuf, ch );
-
-        }
         else
-        {
             do_help( ch, "motd" );
-        }
+
         ch->pcdata->pagelen = lines;
         d->connected = CON_READ_MOTD;
     }

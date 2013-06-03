@@ -31,12 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-/* Mob/player hunting.. */
-/* Copied this from one of my old MUDs..  Much cleaner than the sillymud
-   hunt routines  -- Alty */
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"

@@ -15,10 +15,7 @@
 #endif
 
 /* spendqp.c */
-void save_brands P_((void));
-void load_brands P_((void));
 void do_qpspend P_((CHAR_DATA *ch, char *argument));
-void do_immbrand P_((CHAR_DATA *ch, char *argument));
 void do_statraise P_((CHAR_DATA *ch, char *argument));
 
 #undef P_

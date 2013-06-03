@@ -32,7 +32,7 @@
  * SUCH DAMAGE.
  */
 
-#include "h/globals.h"
+#include "h/includes.h"
 
 #ifndef DEC_SHA256_H
 #include "h/sha256.h"

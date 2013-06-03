@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"
@@ -213,7 +213,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
     outstr.clear();
     fprintf( fp, "Act            " );
-    for ( foo = 0; foo < MAX_BITSET; foo++ )
+    for ( foo = 0; foo < CFG_MEM_MAX_BITSET; foo++ )
     {
         if ( ch->act.test(foo) )
         {
@@ -225,7 +225,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
     outstr.clear();
     fprintf( fp, "Deaf           " );
-    for ( foo = 0; foo < MAX_BITSET; foo++ )
+    for ( foo = 0; foo < CFG_MEM_MAX_BITSET; foo++ )
     {
         if ( ch->deaf.test(foo) )
         {
@@ -285,7 +285,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
     {
         outstr.clear();
         fprintf( fp, "Monitor        " );
-        for ( foo = 0; foo < MAX_BITSET; foo++ )
+        for ( foo = 0; foo < CFG_MEM_MAX_BITSET; foo++ )
         {
             if ( ch->pcdata->monitor.test(foo) )
             {
@@ -361,7 +361,7 @@ void fwrite_char( CHAR_DATA * ch, FILE * fp )
 
         outstr.clear();
         fprintf( fp, "EmailFlags     " );
-        for ( foo = 0; foo < MAX_BITSET; foo++ )
+        for ( foo = 0; foo < CFG_MEM_MAX_BITSET; foo++ )
         {
             if ( ch->pcdata->email->flags.test(foo) )
             {
@@ -512,13 +512,13 @@ void fwrite_obj( CHAR_DATA * ch, OBJ_DATA * obj, FILE * fp, int iNest )
     fprintf( fp, "Vnum         %d\n", obj->pIndexData->vnum );
 
     fprintf( fp, "ExtraFlags   " );
-    for ( short i = 0; i < MAX_BITSET; i++ )
+    for ( short i = 0; i < CFG_MEM_MAX_BITSET; i++ )
         if ( obj->extra_flags.test(i) )
             fprintf( fp, "%d ", i );
     fprintf( fp, "EOL\n" );
 
     fprintf( fp, "WearFlags    " );
-    for ( short i = 0; i < MAX_BITSET; i++ )
+    for ( short i = 0; i < CFG_MEM_MAX_BITSET; i++ )
         if ( obj->wear_flags.test(i) )
             fprintf( fp, "%d ", i );
     fprintf( fp, "EOL\n" );
@@ -664,9 +664,7 @@ bool load_char_obj( DESCRIPTOR_DATA * d, const char *name, bool system_call )
 
         d->character = ch;
 
-#ifdef IMC
         imc_initchar( ch );
-#endif
 #ifdef I3
         i3init_char( ch );
 #endif
@@ -1064,10 +1062,8 @@ void fread_char( CHAR_DATA * ch, FILE * fp )
             case 'I':
                 if ( !IS_NPC(ch) )
                     KEY( "Invis", ch->pcdata->invis, fread_number( fp ) );
-#ifdef IMC
                 if ( ( fMatch = imc_loadchar( ch, fp, word ) ) )
                     break;
-#endif
 #ifdef I3
                 if ( ( fMatch = i3load_char( ch, fp, word ) ) )
                     break;
@@ -2061,13 +2057,13 @@ void fwrite_corpse( OBJ_DATA * obj, FILE * fp, int iNest )
     fprintf( fp, "Vnum         %d\n", obj->pIndexData->vnum );
 
     fprintf( fp, "ExtraFlags   " );
-    for ( short i = 0; i < MAX_BITSET; i++ )
+    for ( short i = 0; i < CFG_MEM_MAX_BITSET; i++ )
         if ( obj->extra_flags.test(i) )
             fprintf( fp, "%d ", i );
     fprintf( fp, "EOL\n" );
 
     fprintf( fp, "WearFlags    " );
-    for ( short i = 0; i < MAX_BITSET; i++ )
+    for ( short i = 0; i < CFG_MEM_MAX_BITSET; i++ )
         if ( obj->wear_flags.test(i) )
             fprintf( fp, "%d ", i );
     fprintf( fp, "EOL\n" );

@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_BOARD_H
 #include "h/board.h"

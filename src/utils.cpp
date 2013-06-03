@@ -18,6 +18,54 @@
 #include "h/utils.h"
 
 /*** @name Core */ /**@{*/
+/**
+ * @brief Returns the number of a specific character in a given string.
+ * @param[in] input A string value to search.
+ * @param[in] item The character to search for within input.
+ * @retval uint_t The total count of item within input.
+ */
+const uint_t Utils::NumChar( const string& input, const string& item )
+{
+    //UFLAGS_DE( flags );
+    uint_t amount = 0, i = 0;
+
+    if ( input.empty() )
+    {
+        //LOGSTR( flags, "Utils::NumChar()-> called with empty input" );
+        return amount;
+    }
+
+    for ( i = 0; i < input.length(); i++ )
+        if ( input[i] == item[0] )
+            amount++;
+
+    return amount;
+}
+
+/**
+ * @brief Returns a vector of strings split at spaces based on input.
+ * @param[in] input A string to split on space characters.
+ * @param[in] quiet If true, don't output error messages on fail.
+ * @retval vector<string> A vector of strings that were split on the spaces detected from input.
+ */
+const vector<string> Utils::StrTokens( const string& input, const bool& quiet )
+{
+    //UFLAGS_DE( flags );
+
+    if ( input.empty() )
+    {
+        //if ( !quiet )
+            //LOGSTR( flags, "Utils::StrTokens()-> called with empty input" );
+        return vector<string>();
+    }
+
+    stringstream ss( input );
+    istream_iterator<string> si( ss );
+    istream_iterator<string> end;
+    vector<string> output( si, end );
+
+    return output;
+}
 /**@}*/
 
 /*** @name Query */ /**@{*/
@@ -38,13 +86,13 @@
  */
 const string Utils::_FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... )
 {
-    UFLAGS_DE( uflags );
+    //UFLAGS_DE( uflags );
     va_list args;
     string output;
 
     if ( fmt.empty() )
     {
-        LOGSTR( uflags, "Utils::_FormatString()-> called with empty fmt" );
+        //LOGSTR( uflags, "Utils::_FormatString()-> called with empty fmt" );
         return output;
     }
 
@@ -66,7 +114,7 @@ const string Utils::_FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_
  */
 const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, va_list& val ) // Thanks go to Darien @ MudBytes.net for the start of this
 {
-    UFLAGS_DE( uflags );
+    //UFLAGS_DE( uflags );
     va_list args;
     vector<string> arguments;
     ITER( vector, string, si );
@@ -76,7 +124,7 @@ const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX
 
     if ( fmt.empty() )
     {
-        LOGSTR( uflags, "Utils::__FormatString()-> called with empty fmt" );
+        //LOGSTR( uflags, "Utils::__FormatString()-> called with empty fmt" );
         return output;
     }
 
@@ -90,10 +138,10 @@ const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX
 
     if ( narg != 1 && narg != static_cast<uint_t>( size ) && narg != NumChar( fmt, "%" ) ) // if narg == 1 invocation was func( flags, string )
     {
-        bitset<CFG_MEM_MAX_BITSET> eflags;
+        //bitset<CFG_MEM_MAX_BITSET> eflags;
 
-        eflags.set( UTILS_TYPE_ERROR );
-        Logger( eflags, "Number of arguments (%lu) did not match number of format specifiers (%lu) at: %s", narg, size, CSTR( caller ) );
+        //eflags.set( UTILS_TYPE_ERROR );
+        //Logger( eflags, "Number of arguments (%lu) did not match number of format specifiers (%lu) at: %s", narg, size, CSTR( caller ) );
         return output = "";
     }
 

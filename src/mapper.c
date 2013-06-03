@@ -42,7 +42,7 @@
 /* PLEASE mail me if you use this or like it, that way I will keep it up*/
 /************************************************************************/
 
-#include "h/globals.h"
+#include "h/includes.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"

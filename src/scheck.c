@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_COMM_H
 #include "h/comm.h"
@@ -226,28 +226,6 @@ static void walk_shield_data( MAGIC_SHIELD * shield )
     touch( shield->wearoff_room );
     touch( shield->wearoff_self );
 
-}
-
-static void walk_brand_data( BRAND_DATA * brand )
-{
-    if ( !brand )
-        return;
-
-    touch( brand->branded );
-    touch( brand->branded_by );
-    touch( brand->dt_stamp );
-    touch( brand->message );
-    touch( brand->priority );
-}
-static void walk_brands( void )
-{
-    BRAND_DATA *this_brand;
-    DL_LIST *brands;
-    for ( brands = first_brand; brands; brands = brands->next )
-    {
-        this_brand = (BRAND_DATA *)brands->this_one;
-        walk_brand_data( this_brand );
-    }
 }
 
 static void walk_shieldlist( MAGIC_SHIELD * shield )
@@ -568,7 +546,6 @@ DO_FUN(do_scheck)
     walk_councils(  );
     walk_boards(  );
     walk_rulers(  );
-    walk_brands(  );
     walk_ngroups(  );
 
     snprintf( buf, MSL, "%ld leaks dumped to leaks.dmp\r\n", dump(  ) );

@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -70,121 +70,14 @@
 #include "h/ssm.h"
 #endif
 
-void save_brands(  )
-{
-
-    FILE *fp;
-    char brand_file_name[MAX_STRING_LENGTH];
-    DL_LIST *brand;
-    BRAND_DATA *this_brand;
-
-    snprintf( brand_file_name, MSL, "%s", BRANDS_FILE );
-
-    if ( ( fp = file_open( brand_file_name, "w" ) ) == NULL )
-    {
-        bug( "Save brands list: file_open", 0 );
-        perror( "failed open of brands.lst in save_brands" );
-    }
-    else
-    {
-        for ( brand = first_brand; brand != NULL; brand = brand->next )
-        {
-            this_brand = (BRAND_DATA *)brand->this_one;
-            fprintf( fp, "#BRAND~\n" );
-            fprintf( fp, "%s~\n", this_brand->branded );
-            fprintf( fp, "%s~\n", this_brand->branded_by );
-            fprintf( fp, "%s~\n", this_brand->dt_stamp );
-            fprintf( fp, "%s~\n", this_brand->message );
-            fprintf( fp, "%s~\n", this_brand->priority );
-
-        }
-        fprintf( fp, "#END~\n\n" );
-    }
-
-    file_close(fp);
-
-    return;
-
-}
-
-void load_brands( void )
-{
-
-    FILE *brandsfp;
-    char brands_file_name[MAX_STRING_LENGTH];
-    char buf[MAX_STRING_LENGTH];
-    BRAND_DATA *this_brand;
-    DL_LIST *brand_member;
-
-
-    snprintf( brands_file_name, MSL, "%s", BRANDS_FILE );
-
-
-    snprintf( buf, MSL, "Loading %s", BRANDS_FILE);
-    log_f("%s", buf);
-
-    if ( ( brandsfp = file_open( brands_file_name, "r" ) ) == NULL )
-    {
-        bug( "Load brands Table: file_open", 0 );
-        perror( "failed open of brands_table.dat in load_brands_table" );
-    }
-    else
-    {
-        for ( ;; )
-        {
-
-            char *word;
-
-
-            word = fread_string( brandsfp );
-            if ( !str_cmp( word, "#BRAND" ) )
-            {
-                this_brand = new BRAND_DATA;
-                GET_FREE( brand_member, dl_list_free );
-                this_brand->branded = fread_string( brandsfp );
-                this_brand->branded_by = fread_string( brandsfp );
-                this_brand->dt_stamp = fread_string( brandsfp );
-                this_brand->message = fread_string( brandsfp );
-                this_brand->priority = fread_string( brandsfp );
-
-                free_string( word );
-
-                brand_member->this_one = this_brand;
-                brand_member->next = NULL;
-                brand_member->prev = NULL;
-                LINK( brand_member, first_brand, last_brand, next, prev );
-
-            }
-            else if ( !str_cmp( word, "#END" ) )
-            {
-                free_string( word );
-                break;
-            }
-            else
-            {
-                free_string( word );
-                monitor_chan( "Load_brands: bad section.", MONITOR_BAD );
-                break;
-            }
-        }
-
-        file_close( brandsfp );
-
-        log_f("Done.");
-
-    }
-}
-
 void do_qpspend( CHAR_DATA * ch, char *argument )
 {
     char arg1[MAX_INPUT_LENGTH];
     char arg2[MAX_INPUT_LENGTH];
     /*    char arg3 [MAX_INPUT_LENGTH];  */
     char buf[MAX_STRING_LENGTH];
-    char brandbuf[MSL];
     char catbuf[MSL];
 
-    snprintf( brandbuf, MSL, "%s", "" );
     snprintf( catbuf, MSL, "%s", "" );
 
     smash_tilde( argument );
@@ -347,7 +240,6 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                     free_string( ch->pcdata->pedit_string[0] );
                     ch->pcdata->pedit_string[0] = str_dup( "none" );
                     snprintf( catbuf, MSL, "Enter message changed to %s\r\n", ch->pcdata->room_enter );
-                    strncat( brandbuf, catbuf, MSL - 1 );
                 }
                 if ( str_cmp( ch->pcdata->pedit_string[1], "none" ) )
                 {
@@ -356,7 +248,6 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                     free_string( ch->pcdata->pedit_string[1] );
                     ch->pcdata->pedit_string[1] = str_dup( "none" );
                     snprintf( catbuf, MSL, "Exit message changed to %s\r\n", ch->pcdata->room_exit );
-                    strncat( brandbuf, catbuf, MSL - 1 );
                 }
                 free_string( ch->pcdata->pedit_string[0] );
                 ch->pcdata->pedit_string[0] = str_dup( "none" );
@@ -366,24 +257,6 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
                 ch->pcdata->pedit_state = str_dup( "none" );
                 ch->pcdata->quest_points -= qp_cost;
                 do_save( ch, "auto" );
-                {
-                    BRAND_DATA *brand;
-                    DL_LIST *brand_member;
-
-                    brand = new BRAND_DATA;
-                    GET_FREE( brand_member, dl_list_free );
-                    brand->branded = str_dup( ch->name.c_str() );
-                    brand->branded_by = str_dup( "@@rSystem@@N" );
-                    brand->priority = str_dup( "normal" );
-                    brand->message = str_dup( brandbuf );
-                    brand->dt_stamp = str_dup( current_time_str() );
-                    brand_member->next = NULL;
-                    brand_member->prev = NULL;
-                    brand_member->this_one = brand;
-                    LINK( brand_member, first_brand, last_brand, next, prev );
-                    save_brands(  );
-                    send_to_char( "Your messages have been updated, and logged for inspection by an Immortal.\r\n", ch );
-                }
                 return;
             }
         }
@@ -439,24 +312,6 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
             send_to_char( "Done!\r\n", ch );
             ch->pcdata->quest_points -= 3;
             do_save( ch, "auto" );
-            {
-                BRAND_DATA *brand;
-                DL_LIST *brand_member;
-                brand = new BRAND_DATA;
-                GET_FREE( brand_member, dl_list_free );
-                brand->branded = str_dup( ch->name.c_str() );
-                brand->branded_by = str_dup( "@@rSystem@@N" );
-                brand->priority = str_dup( "normal" );
-                snprintf( brandbuf, MSL, "Assist message changed to %s\r\n", ch->pcdata->assist_msg );
-                brand->message = str_dup( brandbuf );
-                brand->dt_stamp = str_dup( current_time_str() );
-                brand_member->next = NULL;
-                brand_member->prev = NULL;
-                brand_member->this_one = brand;
-                LINK( brand_member, first_brand, last_brand, next, prev );
-                save_brands(  );
-                send_to_char( "Your messages have been updated, and logged for inspection by an Immortal.\r\n", ch );
-            }
             return;
         }
         return;
@@ -587,230 +442,6 @@ void do_qpspend( CHAR_DATA * ch, char *argument )
         return;
     }
 
-}
-
-
-void do_immbrand( CHAR_DATA * ch, char *argument )
-{
-    DL_LIST *brand_list;
-    DL_LIST *this_brand;
-    BRAND_DATA *brand;
-    char buf[MAX_STRING_LENGTH];
-    char buf1[MAX_STRING_LENGTH * 7];
-    char arg[MAX_INPUT_LENGTH];
-    int vnum = 0;
-    int anum = 0;
-
-    if ( IS_NPC( ch ) )
-        return;
-
-
-    argument = one_argument( argument, arg );
-    smash_tilde( argument );
-
-    if ( arg[0] == '\0' )
-    {
-        do_immbrand( ch, "read" );
-        return;
-    }
-
-    if ( !str_cmp( arg, "list" ) )
-    {
-        vnum = 0;
-        buf1[0] = '\0';
-        for ( brand_list = first_brand; brand_list; brand_list = brand_list->next )
-        {
-            brand = (BRAND_DATA *)brand_list->this_one;
-            snprintf( buf, MSL, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\r\n",
-                      vnum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
-            strncat( buf1, buf, MSL );
-            vnum++;
-            if ( vnum > 100 )
-            {
-                strncat( buf1, "---More Follow---\r\n", MSL );
-                break;
-            }
-        }
-
-        if ( vnum == 0 )
-            send_to_char( "There are no outstanding brands.\r\n", ch );
-        else
-        {
-            /*
-             * act message
-             */
-            send_to_char( buf1, ch );
-        }
-        return;
-    }
-
-    if ( !str_cmp( arg, "read" ) )
-    {
-        if ( is_number( argument ) )
-        {
-            anum = atoi( argument );
-        }
-        else
-        {
-            send_to_char( "Read which brand?\r\n", ch );
-            return;
-        }
-
-        vnum = 0;
-        buf1[0] = '\0';
-        for ( brand_list = first_brand; brand_list; brand_list = brand_list->next )
-        {
-            if ( vnum++ == anum )
-            {
-                brand = (BRAND_DATA *)brand_list->this_one;
-                snprintf( buf, MSL, "[%3d] @@r%s@@W: @@GBrander@@W: %s  @@a%s @@ePriority: %s@@N\r\n",
-                          anum, brand->branded, brand->branded_by, brand->dt_stamp, brand->priority );
-                strncat( buf1, buf, MSL );
-                strncat( buf1, brand->message, MSL );
-                send_to_char( buf1, ch );
-                return;
-            }
-            else
-                continue;
-            send_to_char( "No such brand.\r\n", ch );
-            return;
-        }
-    }
-
-    if ( !str_cmp( arg, "write" ) || !str_cmp( arg, "edit" ) )
-    {
-        if ( ch->pcdata->current_brand == NULL )
-            ch->pcdata->current_brand = new BRAND_DATA;
-
-        build_strdup( &ch->pcdata->current_brand->message, "$edit", TRUE, FALSE, ch );
-        return;
-    }
-
-
-
-    if ( !str_cmp( arg, "player" ) )
-    {
-        if ( ch->pcdata->current_brand == NULL )
-            ch->pcdata->current_brand = new BRAND_DATA;
-
-        free_string( ch->pcdata->current_brand->branded );
-        ch->pcdata->current_brand->branded = str_dup( argument );
-        send_to_char( "Ok.\r\n", ch );
-        return;
-    }
-
-    if ( !str_cmp( arg, "priority" ) )
-    {
-        if ( ch->pcdata->current_brand == NULL )
-            ch->pcdata->current_brand = new BRAND_DATA;
-
-        free_string( ch->pcdata->current_brand->priority );
-        ch->pcdata->current_brand->priority = str_dup( argument );
-        send_to_char( "Ok.\r\n", ch );
-        return;
-    }
-
-    if ( !str_cmp( arg, "clear" ) )
-    {
-        if ( ch->pcdata->current_brand )
-        {
-            delete ch->pcdata->current_brand;
-            ch->pcdata->current_brand = NULL;
-        }
-        save_brands(  );
-        send_to_char( "Ok.\r\n", ch );
-        return;
-    }
-
-    if ( !str_cmp( arg, "show" ) )
-    {
-        if ( !ch->pcdata->current_brand )
-        {
-            send_to_char( "You have no brand in progress.\r\n", ch );
-            return;
-        }
-        buf1[0] = '\0';
-        snprintf( buf, MSL, "[%3d] %s: Brander: %s  Date: %s Priority: %s\r\n",
-                  vnum,
-                  ch->pcdata->current_brand->branded,
-                  ch->pcdata->current_brand->branded_by, ch->pcdata->current_brand->dt_stamp, ch->pcdata->current_brand->priority );
-        strncat( buf1, buf, MSL );
-        strncat( buf1, ch->pcdata->current_brand->message, MSL );
-        send_to_char( buf1, ch );
-        return;
-    }
-
-    if ( !str_cmp( arg, "post" ) )
-    {
-
-
-        if ( !ch->pcdata->current_brand )
-        {
-            send_to_char( "You have no brand in progress.\r\n", ch );
-            return;
-        }
-
-        if ( !str_cmp( ch->pcdata->current_brand->branded, "" ) )
-        {
-            send_to_char( "You need to provide a player name .\r\n", ch );
-            return;
-        }
-
-        if ( !str_cmp( ch->pcdata->current_brand->message, "" ) )
-        {
-            send_to_char( "You need to provide a message.\r\n", ch );
-            return;
-        }
-
-        free_string( ch->pcdata->current_brand->dt_stamp );
-        ch->pcdata->current_brand->dt_stamp = str_dup( current_time_str() );
-        free_string( ch->pcdata->current_brand->branded_by );
-        ch->pcdata->current_brand->branded_by = str_dup( ch->name.c_str() );
-        GET_FREE( this_brand, dl_list_free );
-        this_brand->next = NULL;
-        this_brand->prev = NULL;
-        this_brand->this_one = ch->pcdata->current_brand;
-        LINK( this_brand, first_brand, last_brand, next, prev );
-        ch->pcdata->current_brand = NULL;
-        save_brands(  );
-        send_to_char( "Ok.\r\n", ch );
-        return;
-    }
-
-    if ( !str_cmp( arg, "remove" ) )
-    {
-        if ( !is_number( argument ) )
-        {
-            send_to_char( "Remove which letter number?\r\n", ch );
-            return;
-        }
-
-        anum = atoi( argument );
-        vnum = 0;
-        for ( brand_list = first_brand; brand_list; brand_list = brand_list->next )
-        {
-            if ( vnum++ == anum )
-            {
-                break;
-            }
-        }
-        if ( brand_list != NULL )
-        {
-            UNLINK( brand_list, first_brand, last_brand, next, prev );
-            brand = (BRAND_DATA *)brand_list->this_one;
-            delete brand;
-            brand_list->this_one = NULL;
-            PUT_FREE( brand_list, dl_list_free );
-            save_brands(  );
-            return;
-        }
-
-        send_to_char( "No such brand.\r\n", ch );
-        return;
-    }
-
-    send_to_char( "Huh?  Type 'help letter' for usage.\r\n", ch );
-    return;
 }
 
 void do_statraise(CHAR_DATA *ch, char *argument)

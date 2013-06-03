@@ -31,11 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-/* This file deals with adding/deleting and manipulating areas
-   as a whole, also checking on permissions and deals with area bank. */
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_AREASAVE_H
 #include "h/areasave.h"

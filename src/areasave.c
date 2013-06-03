@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -235,7 +235,7 @@ void build_save_area(  )
 
     outstr.clear();
     fprintf( SaveFile, "Flags     " );
-    for ( i = 0; i < MAX_BITSET; i++ )
+    for ( i = 0; i < CFG_MEM_MAX_BITSET; i++ )
     {
         if ( CurSaveArea->flags.test(i) )
         {
@@ -284,7 +284,7 @@ void build_save_mobs(  )
 
     outstr.clear();
     fprintf( SaveFile, "Act       " );
-    for ( i = 0; i < MAX_BITSET; i++ )
+    for ( i = 0; i < CFG_MEM_MAX_BITSET; i++ )
     {
         if ( pMobIndex->act.test(i) )
         {
@@ -354,7 +354,7 @@ void build_save_objects(  )
 
     outstr.clear();
     fprintf( SaveFile, "ExtraFlags " );
-    for ( i = 0; i < MAX_BITSET; i++ )
+    for ( i = 0; i < CFG_MEM_MAX_BITSET; i++ )
     {
         if ( pObjIndex->extra_flags.test(i) )
         {
@@ -380,7 +380,7 @@ void build_save_objects(  )
 
     outstr.clear();
     fprintf( SaveFile, "WearFlags  " );
-    for ( i = 0; i < MAX_BITSET; i++ )
+    for ( i = 0; i < CFG_MEM_MAX_BITSET; i++ )
     {
         if ( pObjIndex->wear_flags.test(i) )
         {
@@ -448,7 +448,7 @@ void build_save_rooms(  )
 
     outstr.clear();
     fprintf( SaveFile, "Flags      " );
-    for ( i = 0; i < MAX_BITSET; i++ )
+    for ( i = 0; i < CFG_MEM_MAX_BITSET; i++ )
     {
         if ( pRoomIndex->room_flags.test(i) )
         {
@@ -476,7 +476,7 @@ void build_save_rooms(  )
 
             outstr.clear();
             fprintf( SaveFile, "Flags      " );
-            for ( i = 0; i < MAX_BITSET; i++ )
+            for ( i = 0; i < CFG_MEM_MAX_BITSET; i++ )
             {
                 if ( pexit->exit_info.test(i) && i != EX_LOCKED && i != EX_CLOSED )
                 {

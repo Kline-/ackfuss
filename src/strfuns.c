@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -1322,7 +1322,7 @@ const char *affect_bit_name( int vector )
 /*
  * Return ascii name of exit flags bitset.
  */
-const char *exit_bit_name( bitset<MAX_BITSET> &exit_flags )
+const char *exit_bit_name( bitset<CFG_MEM_MAX_BITSET> &exit_flags )
 {
     static char buf[MSL];
 
@@ -1352,7 +1352,7 @@ const char *exit_bit_name( bitset<MAX_BITSET> &exit_flags )
 /*
  * Return ascii name of extra flags bitset.
  */
-const char *extra_bit_name( bitset<MAX_BITSET> &extra_flags )
+const char *extra_bit_name( bitset<CFG_MEM_MAX_BITSET> &extra_flags )
 {
     static char buf[MSL];
 
@@ -1420,7 +1420,7 @@ const char *extra_bit_name( bitset<MAX_BITSET> &extra_flags )
 /*
  * Return ascii name of wear flags bitset.
  */
-const char *wear_bit_name( bitset<MAX_BITSET> &wear_flags )
+const char *wear_bit_name( bitset<CFG_MEM_MAX_BITSET> &wear_flags )
 {
     static char buf[MSL];
 

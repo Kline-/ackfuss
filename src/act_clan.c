@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_CLAN_H
 #include "h/act_clan.h"
@@ -940,8 +940,8 @@ DO_FUN(do_council)
 
     if ( IS_VAMP( ch ) ) /* add other super checks here later */
         this_council = SUPER_VAMP;
-    GET_FREE( member, member_free );
 
+    member = new MEMBER_DATA;
     member->this_member = ch;
     member->next = NULL;
     member->prev = NULL;
@@ -1004,7 +1004,7 @@ DO_FUN(do_council)
             imember->this_member = NULL;
             imember->next = NULL;
             imember->prev = NULL;
-            PUT_FREE( imember, member_free );
+            delete imember;
             send_to_char( "You have removed yourself from the current Council in Session!\r\n", ch );
 
         }

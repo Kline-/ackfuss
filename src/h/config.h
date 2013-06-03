@@ -1327,7 +1327,6 @@
 #define MARKS_FILE     DATA_DIR "marks.dat"
 #define BANS_FILE      DATA_DIR "bans.dat"
 #define RULERS_FILE    DATA_DIR "rulers.dat"
-#define BRANDS_FILE    DATA_DIR "brands.dat"
 #define SYSDAT_FILE    DATA_DIR "sysdat.dat"
 #define SOCIAL_FILE    DATA_DIR "socials.dat"   /* or whatever fits you */
 #define DISABLED_FILE  DATA_DIR "disabled.dat"

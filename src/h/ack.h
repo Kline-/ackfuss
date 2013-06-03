@@ -30,6 +30,7 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
+#include <list>
 
 using namespace std;
 
@@ -37,10 +38,6 @@ using namespace std;
 
 #ifndef DEC_IMC_H
 #include "imc.h"
-#endif
-
-#ifndef DEC_LISTS_H
-#include "lists.h"
 #endif
 
 #ifndef DEC_MQUEST_H
@@ -142,18 +139,6 @@ class ban_data
         char *name;
         char *banned_by;
         bool newbie;
-};
-
-class brand_data
-{
-    public:
-        brand_data();
-        ~brand_data();
-        char *branded;
-        char *branded_by;
-        char *dt_stamp;
-        char *message;
-        char *priority;
 };
 
 class buf_data_struct
@@ -667,7 +652,6 @@ class pc_data
         int build_vnum;
         short condition[MAX_COND];
         int color[MAX_COLOR];
-        BRAND_DATA *current_brand;
         short death_cnt;
         char dimcol;
         EMAIL_DATA *email;
@@ -1412,7 +1396,6 @@ struct eq_type
 /* Added stuff - Flar */
 #define CH(descriptor)  ((descriptor)->original ? \
                          (descriptor)->original : (descriptor)->character)
-
 /*
  * Linked list macros, -- Altrag
  */
@@ -1684,3 +1667,21 @@ struct eq_type
  * @brief Stringify the calling function's file and line number for debugging.
  */
 #define _caller_ __FILE__ ":" SX(__LINE__)
+
+/**
+ * @def CITER
+ * @brief Define a const iterator variable (name) of (type) using (container).
+ * @param[in] container Type of STL container to create: list, vector, etc.
+ * @param[in] type The type of object to hold within container, bool, SocketClient, etc.
+ * @param[in] name The name to use for declaring a local variable of container<type>::iterator.
+ */
+#define CITER( container, type, name ) container<type>::const_iterator name
+
+/**
+ * @def ITER
+ * @brief Define an iterator variable (name) of (type) using (container).
+ * @param[in] container Type of STL container to create: list, vector, etc.
+ * @param[in] type The type of object to hold within container, bool, SocketClient, etc.
+ * @param[in] name The name to use for declaring a local variable of container<type>::iterator.
+ */
+#define ITER( container, type, name ) container<type>::iterator name

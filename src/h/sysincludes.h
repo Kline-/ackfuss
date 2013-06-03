@@ -25,6 +25,8 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include <iterator>
+#include <sstream>
 #include <vector>
 
 #include <arpa/inet.h>

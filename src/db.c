@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_INFO_H
 #include "h/act_info.h"
@@ -436,7 +436,6 @@ void boot_db( void )
     load_marks();
     load_bans();
     load_rulers();
-    load_brands();
     load_corpses();
     load_disabled();
     load_mudinfo();
@@ -3313,7 +3312,7 @@ char *fread_to_eof( FILE * fp )
         else
             strncat(ret, tmp, MSL);
     }
-        
+
     return ret;
 }
 
@@ -3466,9 +3465,6 @@ DO_FUN(do_memory)
     }
 
     snprintf( buf, MSL, "Perms             %5d blocks  of %7d bytes.\r\n", nAllocPerm, sAllocPerm );
-    send_to_char( buf, ch );
-
-    snprintf( buf, MSL, "Freelist Info: Gets: %5d Puts:   %5d\r\n", free_get, free_put);
     send_to_char( buf, ch );
 
     snprintf( buf, MSL, "File Streams: Opens: %5d Closes: %5d\r\n", fp_open, fp_close);

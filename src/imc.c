@@ -21,7 +21,8 @@
 #include <fnmatch.h>
 #endif
 
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"

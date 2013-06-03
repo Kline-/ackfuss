@@ -31,8 +31,7 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -89,7 +88,7 @@ DO_FUN(do_enchant)
     int mod = 0;
     short min_level = 10;
     int new_apply = ITEM_APPLY_NONE;
-    bitset<MAX_BITSET> new_extras;
+    bitset<CFG_MEM_MAX_BITSET> new_extras;
 
     new_extras.reset();
 
@@ -833,7 +832,7 @@ DO_FUN(do_enchant)
         }
         if ( mod_item_weight + unique->weight > 0 )
             unique->weight = mod_item_weight + unique->weight;
-        for ( short i = 0; i < MAX_BITSET; i++ )
+        for ( short i = 0; i < CFG_MEM_MAX_BITSET; i++ )
             if ( unique->extra_flags.test(i) && !new_extras.test(i) )
                 new_extras.set(i);
         new_apply = new_apply | unique->item_apply;
@@ -863,49 +862,9 @@ DO_FUN(do_enchant)
         act( "$n dances about wildly, chanting wierd mantras, and gestures crazily over $p.", ch, matrix, NULL, TO_ROOM );
         act( "You enchant $p with additional powers!", ch, unique, NULL, TO_CHAR );
         do_save( ch, "auto" );
-        {
-            BRAND_DATA *brand;
-            DL_LIST *brand_member;
-            char brandbuf[MSL];
-            char cat2_buf[MSL];
-            AFFECT_DATA *one_aff;
-
-            snprintf( brandbuf, MSL, "UNIQUE ITEM: keyword: %s, Name: %s, flags: %s \r\n level: %d, affects:\r\n",
-                      unique->name, unique->short_descr, extra_bit_name( unique->extra_flags ), unique->level );
-            for ( one_aff = unique->first_apply; one_aff != NULL; one_aff = one_aff->next )
-            {
-                if ( one_aff->location != APPLY_NONE && one_aff->modifier != 0 )
-                {
-                    snprintf( cat2_buf, MSL, "Affects %s by %d.\r\n", affect_loc_name( one_aff->location ), one_aff->modifier );
-                    strncat( brandbuf, cat2_buf, MSL - 1 );
-
-                }
-            }
-            snprintf( cat2_buf, MSL, "Total cost: %d qp\r\n", qp_cost );
-            strncat( brandbuf, cat2_buf, MSL - 1 );
-            strncat( brandbuf, enchant_buf, MSL - 1 );
-            brand = new BRAND_DATA;
-            GET_FREE( brand_member, dl_list_free );
-            brand->branded = str_dup( ch->name.c_str() );
-            brand->branded_by = str_dup( "@@rSystem@@N" );
-            brand->priority = str_dup( "unique" );
-            brand->message = str_dup( brandbuf );
-            brand->dt_stamp = str_dup( current_time_str() );
-            brand_member->next = NULL;
-            brand_member->prev = NULL;
-            brand_member->this_one = brand;
-            LINK( brand_member, first_brand, last_brand, next, prev );
-            save_brands(  );
-            send_to_char( "Your messages have been updated, and logged for inspection by an Immortal.\r\n", ch );
-        }
         return;
     }
 
     do_enchant( ch, "" );
     return;
 }
-
-/* now, we make sure this is a legal enchantment  */
-
-/* if everything is good, and they want to buy, we add effects to item, remove enchantments
-   from bag  */

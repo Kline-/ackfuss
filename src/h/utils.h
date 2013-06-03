@@ -23,6 +23,8 @@ namespace Utils
 {
     /*** @name Core */ /**@{*/
     #define FormatString( flags, fmt, ... ) _FormatString( PP_NARG( __VA_ARGS__ ), flags, _caller_, fmt, ##__VA_ARGS__ )
+    const uint_t NumChar( const string& input, const string& item );
+    const vector<string> StrTokens( const string& input, const bool& quiet = false );
     /**@}*/
 
     /*** @name Query */ /**@{*/

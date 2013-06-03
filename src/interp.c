@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_CLAN_H
 #include "h/act_clan.h"
@@ -686,7 +686,7 @@ const struct cmd_type cmd_table[] =
      C_TYPE_COMM, C_SHOW_ALWAYS, true},
     {"togemail", do_tog_email, POS_RESTING, 0, LOG_NORMAL,
      C_TYPE_CONFIG, C_SHOW_ALWAYS, true},
-     
+
     /*
      *    Vampire and REMORT SKILLS Zen
      */
@@ -903,8 +903,6 @@ const struct cmd_type cmd_table[] =
     {"pdelete", do_sdelete, POS_DEAD, 2, LOG_ALWAYS,
      C_TYPE_IMM, C_SHOW_ALWAYS, true},
     {"scheck", do_scheck, POS_DEAD, L_GOD, LOG_NORMAL,
-     C_TYPE_IMM, C_SHOW_ALWAYS, true},
-    {"immbrand", do_immbrand, POS_DEAD, L_HER, LOG_NORMAL,
      C_TYPE_IMM, C_SHOW_ALWAYS, true},
     {"otype", do_otype, POS_DEAD, L_HER, LOG_NORMAL,
      C_TYPE_IMM, C_SHOW_ALWAYS, true},

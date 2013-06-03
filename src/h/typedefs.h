@@ -112,7 +112,6 @@ typedef struct ruler_data RULER_DATA;
 typedef struct influence_data INFLUENCE_DATA;
 typedef struct influence_list INFLUENCE_LIST;
 typedef struct dl_list DL_LIST;
-typedef struct brand_data BRAND_DATA;
 typedef struct sysdata_type SYS_DATA_TYPE;
 typedef struct money_type MONEY_TYPE;
 typedef struct buf_data_struct BUF_DATA_STRUCT;

@@ -6,8 +6,8 @@
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
 /* Telopt handling by Igor van den Hoven (Scandum)                         */
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_COMM_H
 #include "h/comm.h"

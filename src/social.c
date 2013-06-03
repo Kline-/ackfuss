@@ -5,8 +5,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -33,7 +33,7 @@ bool exists_social( const char *social )
     char search[MSL] = {'\0'};
     char tmp[MSL] = {'\0'};
     string str;
-    
+
     if( !isalpha(*social) )
         return false;
 
@@ -44,14 +44,14 @@ bool exists_social( const char *social )
         if( soc->name.find(social) != string::npos )
             return true;
     }
-    
+
     snprintf( search, MSL, "find %s%s/ -iname %s\\*.%s -printf '%%f '", SOCIAL_DIR, initial(social), social, SOCIAL_EXT );
     snprintf( tmp, MSL, "%s", _popen(search) );
     str = tmp;
 
     if( str.empty() )
         return false;
-    
+
     return true;
 }
 
@@ -64,7 +64,7 @@ SOCIAL_DATA *load_social( const char *social )
     char search[MSL] = {'0'};
     const char *word;
     bool fMatch = false;
-    
+
     /* Check the cache list before trying to load from file --Kline */
     for( li = social_list.begin(); li != social_list.end(); li++ )
     {
@@ -77,13 +77,13 @@ SOCIAL_DATA *load_social( const char *social )
             return ret;
         }
     }
-    
+
     ret = new SOCIAL_DATA;
-    
+
     snprintf( search, MSL, "find %s%s/ -iname %s\\*.%s -printf '%%p'", SOCIAL_DIR, initial(social), social, SOCIAL_EXT );
     snprintf( tmp, MSL, "%s", _popen(search) );
     fp = file_open( tmp, "r" );
-    
+
     snprintf( tmp, MSL, "ls -1 %s%s/%s*.%s | cut -d/ -f4 | cut -d. -f1", SOCIAL_DIR, initial(social), social, SOCIAL_EXT );
     ret->name = _popen(tmp);
     ret->name.resize(ret->name.length()-1); /* Strip off the appended \n --Kline */

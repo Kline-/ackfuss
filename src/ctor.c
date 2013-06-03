@@ -5,8 +5,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_DB_H
 #include "h/db.h"
@@ -93,15 +93,6 @@ board_data::board_data()
     clan = -1;
 
     board_list.push_back(this);
-}
-
-brand_data::brand_data()
-{
-    branded = &str_empty[0];
-    branded_by = &str_empty[0];
-    dt_stamp = &str_empty[0];
-    message = &str_empty[0];
-    priority = &str_empty[0];
 }
 
 buf_data_struct::buf_data_struct()
@@ -305,7 +296,7 @@ help_data::help_data()
     imm = false;
     name.clear();
     description.clear();
-    
+
     help_list.push_back(this);
 }
 
@@ -533,7 +524,6 @@ pc_data::pc_data()
     condition[COND_FULL] = 48;
     for ( short i = 0; i < MAX_COLOR; i++ )
         color[i] = 0;
-    current_brand = NULL;
     death_cnt = -1;
     dimcol = 'b';
     email = new EMAIL_DATA;
@@ -729,7 +719,7 @@ social_data::social_data()
     other_found.clear();
     other_no_arg.clear();
     vict_found.clear();
-    
+
     social_list.push_back(this);
 }
 

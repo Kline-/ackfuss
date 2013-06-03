@@ -5,8 +5,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -104,7 +104,7 @@ DO_FUN(do_help)
         str = argument;
         str += ".";
         str += IS_IMMORTAL(ch) ? HELP_IMM : HELP_MORT;
-        
+
         if( exists_help(str.c_str()) )
         {
             hlp = load_help(str.c_str());

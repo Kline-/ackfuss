@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -1744,7 +1744,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
                     imember->this_member = NULL;
                     imember->next = NULL;
                     imember->prev = NULL;
-                    PUT_FREE( imember, member_free );
+                    delete imember;
                     continue;
                 }
             }
@@ -1767,7 +1767,7 @@ void extract_char( CHAR_DATA * ch, bool fPull )
                     if ( ( CHAR_DATA * ) kill_member->this_one == ch )
                     {
                         UNLINK( kill_member, kill_group->first_follower, kill_group->last_follower, next, prev );
-                        PUT_FREE( kill_member, dl_list_free );
+                        delete kill_member;
                     }
                 }
             }

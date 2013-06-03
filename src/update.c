@@ -31,8 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
@@ -992,9 +992,7 @@ void weather_update( void )
     DESCRIPTOR_DATA *d;
     int diff;
     short x, y;
-#ifdef IMC
     REMOTEINFO *r, *rnext;
-#endif
     buf[0] = '\0';
     buf2[0] = '\0';
 
@@ -1041,7 +1039,6 @@ void weather_update( void )
                     politics_data.daily_negotiate_table[x][y] = FALSE;
             clean_donate_rooms(  );
             save_mudinfo();
-#ifdef IMC
             if ( this_imcmud->autoconnect ) /* Don't attempt a re-connect if we don't want to. --Kline */
             {
                 monitor_chan("Mud list is being refreshed.", MONITOR_IMC);
@@ -1052,7 +1049,6 @@ void weather_update( void )
                 }
                 imc_request_keepalive(  );
             }
-#endif
             break;
     }
     switch ( time_info.moon++ )
@@ -1237,7 +1233,7 @@ void gain_update( void )
                         imember->this_member = NULL;
                         imember->next = NULL;
                         imember->prev = NULL;
-                        PUT_FREE( imember, member_free );
+                        delete imember;
                     }
                     super_councils[council_index].council_time = 0;
                     super_councils[council_index].quorum = FALSE;
@@ -1954,7 +1950,7 @@ void update_handler( void )
         pulse_cache = sysdata.pulse_cache;
         cache_update( );
     }
-    
+
     if ( --pulse_area <= 0 )
     {
         pulse_area = number_range( PULSE_AREA / 2, 3 * PULSE_AREA / 2 );

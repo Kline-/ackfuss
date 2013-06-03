@@ -31,14 +31,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-/*
- *  This program goes through each area. It checks all vnums to see if
- *  they are in the allowed range. If not it moves them, and updates all
- *  references.
- */
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_AREASAVE_H
 #include "h/areasave.h"

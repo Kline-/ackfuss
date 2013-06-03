@@ -5,8 +5,8 @@
  * _/        _/    _/        _/       _/ Support for this code is provided *
  * _/        _/_/_/_/  _/_/_/_/ _/_/_/_/ at www.ackmud.net -- check it out!*
  ***************************************************************************/
-
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_WIZ_H
 #include "h/act_wiz.h"
@@ -68,15 +68,6 @@ board_data::~board_data()
         p_next = p->next;
         delete p;
     }
-}
-
-brand_data::~brand_data()
-{
-    free_string(branded);
-    free_string(branded_by);
-    free_string(dt_stamp);
-    free_string(message);
-    free_string(priority);
 }
 
 buf_data_struct::~buf_data_struct()
@@ -247,8 +238,6 @@ pc_data::~pc_data()
     free_string(bamfin);
     free_string(bamfout);
     delete bank_money;
-    if ( current_brand )
-        delete current_brand;
     delete email;
     free_string(header);
     for ( short i = 0; i < MAX_HOSTS; i++ )

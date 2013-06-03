@@ -10,7 +10,8 @@
  * Original mquest code kindly donated by Abel@StormHunters. Thanks!
  */
 
-#include "h/globals.h"
+#include "h/includes.h"
+#include "h/list.h"
 
 #ifndef DEC_ACT_COMM_H
 #include "h/act_comm.h"
