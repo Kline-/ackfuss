@@ -118,56 +118,6 @@
 #include "h/update.h"
 #endif
 
-char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort, bool iName )
-{
-    static char buf[MSL];
-    static char buf2[MSL];
-
-    snprintf( buf, MSL, "%s", color_string( ch, "objects" ) );
-
-    if ( IS_IMMORTAL(ch) && ch->position == POS_BUILDING ) /* Imms should see vnums, <3 builders :) --Kline */
-    {
-        snprintf(buf2, MSL, "(%d) ", obj->pIndexData->vnum);
-        strncat(buf, buf2, MSL - 1);
-    }
-
-    /* Check for mquest target */
-    strncat(buf, display_obj_target(ch, obj), MSL - 1);
-
-    if ( IS_OBJ_STAT( obj, ITEM_EXTRA_INVIS ) )
-        strncat( buf, "(Invis) ", MSL - 1 );
-    if ( ( IS_AFFECTED( ch, AFF_DETECT_EVIL ) || item_has_apply( ch, ITEM_APPLY_DET_EVIL ) ) && IS_OBJ_STAT( obj, ITEM_EXTRA_EVIL ) )
-        strncat( buf, "(Red Aura) ", MSL - 1 );
-    if ( ( IS_AFFECTED( ch, AFF_DETECT_MAGIC ) || item_has_apply( ch, ITEM_APPLY_DET_MAG ) ) && IS_OBJ_STAT( obj, ITEM_EXTRA_MAGIC ) )
-        strncat( buf, "(Magical) ", MSL - 1 );
-    if ( IS_OBJ_STAT( obj, ITEM_EXTRA_GLOW ) )
-        strncat( buf, "(Glowing) ", MSL - 1 );
-    if ( IS_OBJ_STAT( obj, ITEM_EXTRA_HUM ) )
-        strncat( buf, "(Humming) ", MSL - 1 );
-
-    if ( fShort )
-    {
-        if ( !obj->short_descr.empty() )
-            strncat( buf, CSTR( obj->short_descr ), MSL - 1 );
-    }
-    else
-    {
-        if ( !obj->long_descr.empty() )
-            strncat( buf, CSTR (obj->long_descr ), MSL - 1 );
-    }
-    strncat( buf, color_string( ch, "normal" ), MSL - 1 );
-
-    if ( iName ) /* Display the name of items, in case you don't know or forgot them. --Kline */
-    {
-        snprintf(buf2, MSL, " [%s]", obj->name);
-        strncat(buf, buf2, MSL - 1);
-    }
-
-    return buf;
-}
-
-
-
 /*
  * Show a list to a character.
  * Can coalesce duplicated items.
@@ -206,7 +156,7 @@ void show_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool fShow
     {
         if ( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) )
         {
-            pstrShow = format_obj_to_char( obj, ch, fShort, iName );
+            pstrShow = const_cast<char*>( CSTR( Information::FormatObjectToCharacter( obj, ch, fShort, iName ) ) );
             fCombine = FALSE;
 
             if ( IS_NPC( ch ) || ch->act.test(ACT_COMBINE) )
@@ -310,7 +260,7 @@ void show_room_list_to_char( OBJ_DATA * list, CHAR_DATA * ch, bool fShort, bool 
     {
         if ( obj->wear_loc == WEAR_NONE && can_see_obj( ch, obj ) && str_cmp( obj->long_descr, "" ) )
         {
-            pstrShow = format_obj_to_char( obj, ch, fShort, false );
+            pstrShow = const_cast<char*>( CSTR( Information::FormatObjectToCharacter( obj, ch, fShort, false ) ) );
             fCombine = FALSE;
 
             if ( IS_NPC( ch ) || ch->act.test(ACT_COMBINE) )
@@ -702,7 +652,7 @@ void show_char_to_char_1( CHAR_DATA * victim, CHAR_DATA * ch )
                     found = TRUE;
                 }
                 send_to_char( where_name[iWear], ch );
-                send_to_char( format_obj_to_char( obj, ch, true, false ), ch );
+                send_to_char( Information::FormatObjectToCharacter( obj, ch, true, false ), ch );
                 send_to_char( "\r\n", ch );
             }
         }
@@ -1850,9 +1800,9 @@ DO_FUN(do_equipment)
             {
                 color = "@@!";
                 if ( !str_cmp(argument, "name") )
-                    gear = format_obj_to_char(worn, ch, true, true);
+                    gear = Information::FormatObjectToCharacter( worn, ch, true, true );
                 else
-                    gear = format_obj_to_char(worn, ch, true, false);
+                    gear = Information::FormatObjectToCharacter( worn, ch, true, false );
             }
             else
             {
