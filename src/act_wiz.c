@@ -793,7 +793,7 @@ DO_FUN(do_ostat)
     snprintf( buf, MSL, "Vnum: %d.  Type: %s.\r\n", obj->pIndexData->vnum, item_type_name( obj ) );
     strncat( buf1, buf, MSL - 1 );
 
-    snprintf( buf, MSL, "Short description: %s.\r\nLong description: %s\r\n", obj->short_descr, obj->long_descr );
+    snprintf( buf, MSL, "Short description: %s.\r\nLong description: %s\r\n", CSTR( obj->short_descr ), CSTR( obj->long_descr ) );
     strncat( buf1, buf, MSL - 1 );
 
     snprintf( buf, MSL, "Wear bits: %s.\r\nExtra bits: %s\r\n",
@@ -824,7 +824,7 @@ DO_FUN(do_ostat)
     snprintf( buf, MSL,
               "In room: %d.  In object: %s.  Carried by: %s.  Wear_loc: %d.\r\n",
               obj->in_room == NULL ? 0 : obj->in_room->vnum,
-              obj->in_obj == NULL ? "(none)" : obj->in_obj->short_descr,
+              obj->in_obj == NULL ? "(none)" : CSTR( obj->in_obj->short_descr ),
               obj->carried_by == NULL ? "(none)" : obj->carried_by->name.c_str(), obj->wear_loc );
     strncat( buf1, buf, MSL - 1 );
 
@@ -1130,7 +1130,7 @@ DO_FUN(do_mstat)
             if ( victim->hunting && IS_SET( victim->hunt_flags, HUNT_CR ) && victim->hunt_obj->item_type == ITEM_CORPSE_PC )
                 strncat( buf, " to return a corpse", MSL );
             else
-                snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", victim->hunt_obj->short_descr );
+                snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", CSTR( victim->hunt_obj->short_descr ) );
         }
         if ( IS_NPC( victim ) && IS_SET( victim->hunt_flags, HUNT_MERC | HUNT_CR ) && victim->hunt_for )
             snprintf( buf + strlen( buf ), MSL, ", employed by %s", victim->hunt_for->get_name() );
@@ -1232,13 +1232,13 @@ DO_FUN(do_ofindlev)
                 if ( IS_OBJ_STAT(pObjIndex, ITEM_EXTRA_REMORT) )
                 {
                     snprintf( buf, MSL, "\r\n(@@mREMORT@@N) [%3d] [%5d] %s", pObjIndex->level,
-                              pObjIndex->vnum, pObjIndex->short_descr );
+                              pObjIndex->vnum, CSTR( pObjIndex->short_descr ) );
                     strncat( buf1, buf, MSL - 1 );
                 }
                 else
                 {
                     snprintf( buf, MSL, "\r\n(@@aMORTAL@@N) [%3d] [%5d] %s", pObjIndex->level,
-                              pObjIndex->vnum, pObjIndex->short_descr );
+                              pObjIndex->vnum, CSTR( pObjIndex->short_descr ) );
                     strncat( buf1, buf, MSL - 1 );
                 }
             }
@@ -1426,7 +1426,7 @@ DO_FUN(do_ofind)
                 snprintf( buf, MSL, "[%5d] [%3d] %s %s\r\n",
                           pObjIndex->vnum, pObjIndex->level,
                           ( IS_OBJ_STAT(pObjIndex, ITEM_EXTRA_REMORT) ?
-                            "@@mRemort@@N" : "@@aMortal@@N" ), capitalize( pObjIndex->short_descr ) );
+                            "@@mRemort@@N" : "@@aMortal@@N" ), capitalize( CSTR( pObjIndex->short_descr ) ) );
                 strncat( buf1, buf, MSL - 1 );
             }
         }
@@ -3506,15 +3506,13 @@ DO_FUN(do_oset)
 
     if ( !str_cmp( arg2, "short" ) )
     {
-        free_string( obj->short_descr );
-        obj->short_descr = str_dup( arg3 );
+        obj->short_descr = arg3;
         return;
     }
 
     if ( !str_cmp( arg2, "long" ) )
     {
-        free_string( obj->long_descr );
-        obj->long_descr = str_dup( arg3 );
+        obj->long_descr = arg3;
         return;
     }
 
@@ -3992,13 +3990,13 @@ DO_FUN(do_owhere)
                 }
                 else
                     snprintf( catbuf, MSL, "[%2d] %s carried by %s [Room:%d].\r\n",
-                              obj_counter, obj->short_descr, in_obj->carried_by->get_name(ch), in_obj->carried_by->in_room->vnum );
+                              obj_counter, CSTR( obj->short_descr ), in_obj->carried_by->get_name(ch), in_obj->carried_by->in_room->vnum );
             }
             else
             {
                 snprintf( catbuf, MSL, "[%2d] %s in %s [Room:%d].\r\n",
                           obj_counter,
-                          obj->short_descr, ( in_obj->in_room == NULL ) ?
+                          CSTR( obj->short_descr ), ( in_obj->in_room == NULL ) ?
                           "somewhere" : in_obj->in_room->name, in_obj->in_room->vnum );
             }
 
@@ -4023,13 +4021,13 @@ DO_FUN(do_owhere)
             if ( in_obj->carried_by != NULL )
             {
                 snprintf( catbuf, MSL, "[%2d] %s carried by %s [Room:%d].\r\n",
-                          obj_counter, obj->short_descr, in_obj->carried_by->get_name(ch), in_obj->carried_by->in_room->vnum );
+                          obj_counter, CSTR( obj->short_descr ), in_obj->carried_by->get_name(ch), in_obj->carried_by->in_room->vnum );
             }
             else
             {
                 snprintf( catbuf, MSL, "[%2d] %s in %s [Room:%d].\r\n",
                           obj_counter,
-                          obj->short_descr, ( in_obj->in_room == NULL ) ?
+                          CSTR( obj->short_descr ), ( in_obj->in_room == NULL ) ?
                           "somewhere" : in_obj->in_room->name, in_obj->in_room->vnum );
             }
 
@@ -4852,7 +4850,7 @@ DO_FUN(do_lhunt)
             if ( lch->hunting && IS_SET( lch->hunt_flags, HUNT_CR ) && lch->hunt_obj->item_type == ITEM_CORPSE_PC )
                 strncat( buf, " to return a corpse", MSL );
             else
-                snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", lch->hunt_obj->short_descr );
+                snprintf( buf + strlen( buf ), MSL, " looking for (object) %s", CSTR( lch->hunt_obj->short_descr ) );
         }
         if ( IS_NPC( lch ) && IS_SET( lch->hunt_flags, HUNT_MERC | HUNT_CR ) && lch->hunt_for )
             snprintf( buf + strlen( buf ), MSL, ", employed by %s", lch->hunt_for->get_name() );
@@ -5701,7 +5699,7 @@ DO_FUN(do_otype)
                 found = TRUE;
                 snprintf( buf, MSL, "<%d> %s [%5d] %s\r\n", pObjIndex->level,
                           ( IS_OBJ_STAT(pObjIndex, ITEM_EXTRA_REMORT) ?
-                            "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->vnum, pObjIndex->short_descr );
+                            "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->vnum, CSTR( pObjIndex->short_descr ) );
                 strncat( buf1, buf, MSL - 1 );
             }
         }
@@ -5761,7 +5759,7 @@ DO_FUN(do_owear)
                           pObjIndex->vnum,
                           pObjIndex->level,
                           ( IS_OBJ_STAT(pObjIndex, ITEM_EXTRA_REMORT) ?
-                            "@@mRemort@@N" : "@@aMortal@@N" ), pObjIndex->short_descr );
+                            "@@mRemort@@N" : "@@aMortal@@N" ), CSTR( pObjIndex->short_descr ) );
                 strncat( buf1, buf, MSL - 1 );
             }
         }

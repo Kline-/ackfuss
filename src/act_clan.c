@@ -838,7 +838,7 @@ DO_FUN(do_make)
             if ( clan_table[ch->clan].eq[cnt] != -1
                     && ( ( pObj = get_obj_index( clan_table[ch->clan].eq[cnt] ) ) != NULL ) )
             {
-                snprintf( buf, MSL, "[%2d] : %s.\r\n", cnt, pObj->short_descr );
+                snprintf( buf, MSL, "[%2d] : %s.\r\n", cnt, CSTR( pObj->short_descr ) );
                 send_to_char( buf, ch );
             }
             else
@@ -904,7 +904,7 @@ DO_FUN(do_make)
         act( "You create $p, and hand it to $N.", ch, obj, target, TO_CHAR );
         act( "$N creates $p, and hands it to you.", target, obj, ch, TO_CHAR );
         obj_to_char( obj, target );
-        snprintf( buf, MSL, "%s has made %s for %s.", ch->name.c_str(), obj->short_descr, target->name.c_str() );
+        snprintf( buf, MSL, "%s has made %s for %s.", ch->name.c_str(), CSTR( obj->short_descr ), target->name.c_str() );
     }
     else
     {
@@ -912,7 +912,7 @@ DO_FUN(do_make)
         act( "You create $p, and put it away.", ch, obj, NULL, TO_CHAR );
         act( "$n creates $p, and puts it away.", ch, obj, NULL, TO_ROOM );
         obj_to_char( obj, ch );
-        snprintf( buf, MSL, "%s has made themself %s.", ch->name.c_str(), obj->short_descr );
+        snprintf( buf, MSL, "%s has made themself %s.", ch->name.c_str(), CSTR( obj->short_descr ) );
     }
     monitor_chan( buf, MONITOR_CLAN );
 

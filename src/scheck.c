@@ -263,8 +263,6 @@ static void walk_obj_index_data( OBJ_INDEX_DATA * o )
         walk_extra_descr_data( ed );
 
     touch( o->name );
-    touch( o->short_descr );
-    touch( o->long_descr );
     touch( o->owner );
 }
 
@@ -281,8 +279,6 @@ static void walk_obj_data( OBJ_DATA * o )
 
     touch( o->owner );
     touch( o->name );
-    touch( o->short_descr );
-    touch( o->long_descr );
 }
 
 static void walk_exit_data( EXIT_DATA * e )

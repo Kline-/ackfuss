@@ -15,6 +15,8 @@
 #include "h/includes.h"
 #include "h/information.h"
 
+#include "h/handler.h"
+
 /*** @name Core */ /**@{*/
 const string Information::FormatObjectToCharacter( Object* object, Character* character, const bool& shortd, const bool& name )
 {
@@ -23,7 +25,11 @@ const string Information::FormatObjectToCharacter( Object* object, Character* ch
     output = character->gChannelColor( "objects" );
 
     if ( IS_IMMORTAL( character ) && character->position == POS_BUILDING ) /* Imms should see vnums, <3 builders :) --Kline */
-        output += "(" + object->pIndexData->vnum + ") ";
+    {
+        output += "(";
+        output += object->pIndexData->vnum;
+        output += ") ";
+    }
 
     /* Check for mquest target */
     output += display_obj_target( character, object );
@@ -47,7 +53,11 @@ const string Information::FormatObjectToCharacter( Object* object, Character* ch
     output += character->gChannelColor( "normal" );
 
     if ( name ) /* Display the name of items, in case you don't know or forgot them. --Kline */
-        output += " [" + object->name + "]";
+    {
+        output += " [";
+        output += object->name;
+        output += "]";
+    }
 
     return output;
 }

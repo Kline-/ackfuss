@@ -2574,7 +2574,7 @@ bool spell_identify( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * obj
 
     snprintf( buf, MSL,
               "@@NObject '%s' is @@etype@@N %s, @@aextra flags@@N %s.\r\n@@mWorn@@N: %s, @@cWeight@@N: %d, @@lDurability@@N: %d/%d (%1.0f%%), @@yvalue@@N: %s @@N, @@rlevel@@N: %d.\r\n",
-              ob->short_descr,
+              CSTR( ob->short_descr ),
               item_type_name( ob ),
               extra_bit_name( ob->extra_flags ),
               wear_bit_name( ob->wear_flags ),
@@ -2811,12 +2811,12 @@ bool spell_locate_object( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA 
         {
             found = TRUE;
             snprintf( buf, MSL, "%s carried by %s.\r\n",
-                      ob->short_descr, in_obj->carried_by->get_name(ch) );
+                      CSTR( ob->short_descr ), in_obj->carried_by->get_name(ch) );
         }
         else
         {
             found = TRUE;
-            snprintf( buf, MSL, "%s in %s.\r\n", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+            snprintf( buf, MSL, "%s in %s.\r\n", CSTR( ob->short_descr ), in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
         }
 
         buf[0] = UPPER( buf[0] );
@@ -4276,12 +4276,12 @@ bool spell_detection( int sn, int level, CHAR_DATA * ch, void *vo, OBJ_DATA * ob
         {
             found = TRUE;
             snprintf( buf, MSL, "%s carried by %s.\r\n",
-                      ob->short_descr, in_obj->carried_by->get_name(ch) );
+                      CSTR( ob->short_descr ), in_obj->carried_by->get_name(ch) );
         }
         else
         {
             found = TRUE;
-            snprintf( buf, MSL, "%s in %s.\r\n", ob->short_descr, in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
+            snprintf( buf, MSL, "%s in %s.\r\n", CSTR( ob->short_descr ), in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name );
         }
 
         buf[0] = UPPER( buf[0] );

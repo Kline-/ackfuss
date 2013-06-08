@@ -446,13 +446,11 @@ void sp_death_message( CHAR_DATA * ch, CHAR_DATA * victim, int realm )
         obj = create_object( get_obj_index( vnum ), 0 );
         obj->timer = number_range( 4, 7 );
 
-        snprintf( buf, MSL, obj->short_descr, name );
-        free_string( obj->short_descr );
-        obj->short_descr = str_dup( buf );
+        snprintf( buf, MSL, CSTR( obj->short_descr ), name );
+        obj->short_descr = buf;
 
-        snprintf( buf, MSL, obj->long_descr, name );
-        free_string( obj->long_descr );
-        obj->long_descr = str_dup( buf );
+        snprintf( buf, MSL, CSTR( obj->long_descr ), name );
+        obj->long_descr = buf;
 
         obj_to_room( obj, ch->in_room );
     }
@@ -777,7 +775,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
     }
     else
     {
-        snprintf( log_buf, (2 * MIL), "Error, object %s casting spell, but not carried by anyone.", obj->short_descr );
+        snprintf( log_buf, (2 * MIL), "Error, object %s casting spell, but not carried by anyone.", CSTR( obj->short_descr ) );
         monitor_chan( log_buf, MONITOR_DEBUG );
         return FALSE;
     }
@@ -906,7 +904,7 @@ bool sp_damage( OBJ_DATA * obj, CHAR_DATA * ch, CHAR_DATA * victim, int dam, int
         if ( dam > sysdata.damcap )
         {
             char buf[MAX_STRING_LENGTH];
-            snprintf( buf, MSL, "Spell: %d damage by %s, spell %s", dam, ( obj == NULL ) ? ch->get_name() : obj->short_descr, skill_table[sn].name );
+            snprintf( buf, MSL, "Spell: %d damage by %s, spell %s", dam, ( obj == NULL ) ? ch->get_name() : CSTR( obj->short_descr ), skill_table[sn].name );
             if ( ch->level < 82 )
                 monitor_chan( buf, MONITOR_MAGIC );
             log_f( "%s", buf );

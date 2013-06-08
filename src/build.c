@@ -530,7 +530,7 @@ DO_FUN(build_showobj)
     snprintf( buf, MSL, "@@WVnum: @@y%d.  @@WType: @@y%s.\r\n", obj->vnum, tab_item_types[( obj->item_type ) - 1].text );
     strncat( buf1, buf, MSL - 1 );
 
-    snprintf( buf, MSL, "@@WShort description: @@y%s.\r\n@@WLong description: @@y%s\r\n", obj->short_descr, obj->long_descr );
+    snprintf( buf, MSL, "@@WShort description: @@y%s.\r\n@@WLong description: @@y%s\r\n", CSTR( obj->short_descr ), CSTR( obj->long_descr ) );
     strncat( buf1, buf, MSL - 1 );
 
     /*
@@ -1138,7 +1138,7 @@ DO_FUN(build_findobject)
         if ( fAll || is_name( arg, pObjIndex->name ) )
         {
             found = TRUE;
-            snprintf( buf, MSL, "[%5d] %s\r\n", pObjIndex->vnum, capitalize( pObjIndex->short_descr ) );
+            snprintf( buf, MSL, "[%5d] %s\r\n", pObjIndex->vnum, capitalize( CSTR( pObjIndex->short_descr ) ) );
             strncat( buf1, buf, MSL - 1 );
         }
     }
@@ -2778,13 +2778,13 @@ DO_FUN(build_setobject)
 
     if ( !str_cmp( arg2, "short" ) )
     {
-        build_strdup( &pObj->short_descr, arg3, TRUE, FALSE, ch );
+        build_strdup( pObj->short_descr, arg3, FALSE, ch );
         return;
     }
 
     if ( !str_cmp( arg2, "long" ) )
     {
-        build_strdup( &pObj->long_descr, arg3, TRUE, FALSE, ch );
+        build_strdup( pObj->long_descr, arg3, FALSE, ch );
         return;
     }
 
@@ -4927,7 +4927,7 @@ DO_FUN(build_setvnum)
                 found = FALSE;
             }
             else
-                snprintf( buf2, MSL, "Object exists: %s\r\n", obj->short_descr );
+                snprintf( buf2, MSL, "Object exists: %s\r\n", CSTR( obj->short_descr ) );
 
             break;
 
@@ -6001,12 +6001,8 @@ DO_FUN(build_clone)
             free_string( this_obj->name );
         this_obj->name = str_dup( obj->name );
         this_obj->level = obj->level;
-        if ( this_obj->short_descr != NULL )
-            free_string( this_obj->short_descr );
-        this_obj->short_descr = str_dup( obj->short_descr );
-        if ( this_obj->long_descr != NULL )
-            free_string( this_obj->long_descr );
-        this_obj->long_descr = str_dup( obj->long_descr );
+        this_obj->short_descr = obj->short_descr;
+        this_obj->long_descr = obj->long_descr;
         this_obj->item_type = obj->item_type;
         this_obj->extra_flags = obj->extra_flags;
         this_obj->wear_flags = obj->wear_flags;

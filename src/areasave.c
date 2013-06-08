@@ -366,10 +366,10 @@ void build_save_objects(  )
 
     fprintf( SaveFile, "ItemApply  %d\n", pObjIndex->item_apply );
     fprintf( SaveFile, "Level      %d\n", pObjIndex->level );
-    fprintf( SaveFile, "LongDesc   %s~\n", pObjIndex->long_descr );
+    fprintf( SaveFile, "LongDesc   %s~\n", CSTR( pObjIndex->long_descr ) );
     fprintf( SaveFile, "Name       %s~\n", pObjIndex->name );
     fprintf( SaveFile, "ObjFun     %s\n", rev_obj_fun_lookup( pObjIndex->obj_fun ) );
-    fprintf( SaveFile, "ShortDesc  %s~\n", pObjIndex->short_descr );
+    fprintf( SaveFile, "ShortDesc  %s~\n", CSTR( pObjIndex->short_descr ) );
     fprintf( SaveFile, "Speed      %0.2f\n", pObjIndex->speed );
     fprintf( SaveFile, "Type       %d\n", pObjIndex->item_type );
 

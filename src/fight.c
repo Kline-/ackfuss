@@ -1112,10 +1112,8 @@ void damage( CHAR_DATA * ch, CHAR_DATA * victim, float dam, int dt )
                     char bufz[MSL];
 
                     explosion->level = 120;
-                    free_string( explosion->short_descr );
-                    explosion->short_descr = str_dup( "@@mConflagration@@N" );
-                    free_string( explosion->long_descr );
-                    explosion->long_descr = str_dup( "@@N A @@eFlaming @@NStaff of @@aIce@@N is supsended in mid air!" );
+                    explosion->short_descr = "@@mConflagration@@N";
+                    explosion->long_descr = "@@N A @@eFlaming @@NStaff of @@aIce@@N is suspended in mid air!";
 
                     elemental->level = 140;
                     elemental->name = ".hidden";
@@ -2321,13 +2319,11 @@ void make_corpse( CHAR_DATA * ch, char *argument )
         corpse->value[0] = 1;
         corpse->value[3] = number_range( 3, 6 );
     }
-    snprintf( buf, MSL, corpse->short_descr, name );
-    free_string( corpse->short_descr );
-    corpse->short_descr = str_dup( buf );
+    snprintf( buf, MSL, CSTR( corpse->short_descr ), name );
+    corpse->short_descr = buf;
 
-    snprintf( buf, MSL, corpse->long_descr, name );
-    free_string( corpse->long_descr );
-    corpse->long_descr = str_dup( buf );
+    snprintf( buf, MSL, CSTR( corpse->long_descr ), name );
+    corpse->long_descr = buf;
 
     for ( obj = ch->first_carry; obj != NULL; obj = obj_next )
     {
@@ -4826,7 +4822,7 @@ void obj_damage( OBJ_DATA * obj, CHAR_DATA * victim, float dam )
         if ( !IS_NPC( victim ) )
         {
 
-            snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", victim->name.c_str(), obj->short_descr, victim->in_room->vnum );
+            snprintf( log_buf, (2 * MIL), "%s killed by %s at %d", victim->name.c_str(), CSTR( obj->short_descr ), victim->in_room->vnum );
             log_string( log_buf );
 
             notify( log_buf, 82 );
@@ -5174,13 +5170,11 @@ void death_message( CHAR_DATA * ch, CHAR_DATA * victim, int dt, int max_dt )
         obj = create_object( get_obj_index( vnum ), 0 );
         obj->timer = number_range( 4, 7 );
 
-        snprintf( buf, MSL, obj->short_descr, name );
-        free_string( obj->short_descr );
-        obj->short_descr = str_dup( buf );
+        snprintf( buf, MSL, CSTR( obj->short_descr ), name );
+        obj->short_descr = buf;
 
-        snprintf( buf, MSL, obj->long_descr, name );
-        free_string( obj->long_descr );
-        obj->long_descr = str_dup( buf );
+        snprintf( buf, MSL, CSTR( obj->long_descr ), name );
+        obj->long_descr = buf;
 
         obj_to_room( obj, ch->in_room );
     }

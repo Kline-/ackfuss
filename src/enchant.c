@@ -351,7 +351,7 @@ DO_FUN(do_enchant)
 
     if ( !str_cmp( arg1, "show" ) )
     {
-        snprintf( msg_buf, MSL, "Your enchantment will add the following to %s\r\n", unique->short_descr );
+        snprintf( msg_buf, MSL, "Your enchantment will add the following to %s\r\n", CSTR( unique->short_descr ) );
 
         if ( new_extras.count() != 0 )
         {
@@ -579,7 +579,7 @@ DO_FUN(do_enchant)
         }
         if ( IS_OBJ_STAT(unique, ITEM_EXTRA_CLAN_EQ) )
         {
-            snprintf( cat_buf, MSL, "%s is clan equipment, and may not be enchanted.\r\n", unique->short_descr );
+            snprintf( cat_buf, MSL, "%s is clan equipment, and may not be enchanted.\r\n", CSTR( unique->short_descr ) );
             strncat( msg_buf, cat_buf, MSL - 1 );
             legal_enchant = FALSE;
         }
@@ -609,7 +609,7 @@ DO_FUN(do_enchant)
             {
                 snprintf( cat_buf, MSL,
                           "@@eWARNING: @@WEnchanting %s with these affects will make the item level %d, which is higher than your current ability to use.\r\n",
-                          unique->short_descr, min_level );
+                          CSTR( unique->short_descr ), min_level );
                 strncat( msg_buf, cat_buf, MSL - 1 );
             }
         }

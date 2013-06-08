@@ -774,13 +774,13 @@ class obj_index_data
         EXTRA_DESCR_DATA *last_exdesc;
         TRIGGER_DATA *last_trigger;
         short level;
-        char *long_descr;
+        string long_descr;
         short max_durability;
         char *name;
         OBJ_INDEX_DATA *next;
         OBJ_FUN *obj_fun;
         char *owner;
-        char *short_descr;
+        string short_descr;
         float speed;
         int value[MAX_OBJ_VALUE];
         int vnum;
@@ -820,8 +820,8 @@ class obj_data
         ROOM_INDEX_DATA *in_room;
         char *owner;
         char *name;
-        char *short_descr;
-        char *long_descr;
+        string short_descr;
+        string long_descr;
         int item_type;
         bitset<CFG_MEM_MAX_BITSET> extra_flags;
         bitset<CFG_MEM_MAX_BITSET> wear_flags;
@@ -1687,3 +1687,19 @@ struct eq_type
  * @param[in] name The name to use for declaring a local variable of container<type>::iterator.
  */
 #define ITER( container, type, name ) container<type>::iterator name
+/**
+ * @def LOGSTR
+ * @brief Wrap Utils::Logger() for brevity and ease of future maintenance.
+ * @param[in] flags A local variable name of type bitset<#CFG_MEM_MAX_BITSET> with #UTILS_OPTS enabled as appropriate. 0 may be used if no options are needed.
+ * @param[in] message Any string, char, const char, numeric value, etc. This message will be written to log.
+ */
+#define LOGSTR( flags, message ) Utils::Logger( flags, message )
+
+/**
+ * @def LOGFMT
+ * @brief Wrap Utils::FormatString() within Utils::Logger() for brevity and ease of future maintenance.
+ * @param[in] flags A local variable name of type bitset<#CFG_MEM_MAX_BITSET> with #UTILS_OPTS enabled as appropriate. 0 may be used if no options are needed.
+ * @param[in] message Any string that contains printf style format variables.
+ * @param[in] ... The list of arguments to format into message.
+ */
+#define LOGFMT( flags, message, ... ) LOGSTR( flags, Utils::FormatString( flags, message, __VA_ARGS__ ) )

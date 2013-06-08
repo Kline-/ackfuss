@@ -1400,7 +1400,7 @@ SPEC_FUN(spec_rewield)
 
         if ( pickup )
         {
-            snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", weapon->short_descr );
+            snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", CSTR( weapon->short_descr ) );
             do_say( ch, buf );
         }
 

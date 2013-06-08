@@ -2090,7 +2090,7 @@ bool check_rewield( CHAR_DATA * ch )
 
         if ( pickup )
         {
-            snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", weapon->short_descr );
+            snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", CSTR( weapon->short_descr ) );
             do_say( ch, buf );
         }
 
@@ -2243,7 +2243,7 @@ bool check_reequip( CHAR_DATA * ch )
              */
             if ( pickup )
             {
-                snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", armor->short_descr );
+                snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", CSTR( armor->short_descr ) );
                 do_say( ch, buf );
             }
 
@@ -2277,7 +2277,7 @@ bool check_reequip( CHAR_DATA * ch )
              */
             if ( pickup )
             {
-                snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", light->short_descr );
+                snprintf( buf, MSL, "Great!  %s!  Just what i've always wanted!", CSTR( light->short_descr ) );
                 do_say( ch, buf );
             }
 
@@ -2330,20 +2330,20 @@ void auction_update( void )
             {
                 snprintf( buf, MSL,
                           "@@N%s (level:%d, valued at %s) has been offered for auction.  A @@e10%% fee@@N will be charged, the higher of the reserve price or highest bid.",
-                          auction_item->short_descr, auction_item->level, cost_to_money( auction_item->cost ) );
+                          CSTR( auction_item->short_descr ), auction_item->level, cost_to_money( auction_item->cost ) );
             }
             else
             {
                 snprintf( buf, MSL, "%s has bid %s for %s.", auction_bidder->name.c_str(),
-                          cost_to_money( auction_bid ), auction_item->short_descr );
+                          cost_to_money( auction_bid ), CSTR( auction_item->short_descr ) );
             }
             break;
         case 1:
             if ( auction_bidder == NULL )
-                snprintf( buf, MSL, "Last chance to bid for %s.", auction_item->short_descr );
+                snprintf( buf, MSL, "Last chance to bid for %s.", CSTR( auction_item->short_descr ) );
             else
                 snprintf( buf, MSL, "Last bid for %s was %s.  Any more offers?",
-                          auction_item->short_descr, cost_to_money( auction_bid ) );
+                          CSTR( auction_item->short_descr ), cost_to_money( auction_bid ) );
             break;
         case 2:
             if ( auction_bidder == NULL )
@@ -2379,10 +2379,10 @@ void auction_update( void )
                 auction_item = NULL;
                 return;
             }
-            snprintf( buf, MSL, "%s - Going Once!", auction_item->short_descr );
+            snprintf( buf, MSL, "%s - Going Once!", CSTR( auction_item->short_descr ) );
             break;
         case 3:
-            snprintf( buf, MSL, "%s - Going TWICE!", auction_item->short_descr );
+            snprintf( buf, MSL, "%s - Going TWICE!", CSTR( auction_item->short_descr ) );
             break;
         case 4:
             if ( auction_bid < auction_reserve )
@@ -2396,7 +2396,7 @@ void auction_update( void )
                         good_buyer = TRUE;
                 }
 
-                snprintf( buf, MSL, "%s - CANCELLED.  Reserve price not matched.", auction_item->short_descr );
+                snprintf( buf, MSL, "%s - CANCELLED.  Reserve price not matched.", CSTR( auction_item->short_descr ) );
                 if ( good_seller )
                 {
                     int bid;
@@ -2429,13 +2429,13 @@ void auction_update( void )
 
                 if ( good_buyer )
                 {
-                    snprintf( buf, MSL, "%s - SOLD! to %s.", auction_item->short_descr, auction_bidder->name.c_str() );
+                    snprintf( buf, MSL, "%s - SOLD! to %s.", CSTR( auction_item->short_descr ), auction_bidder->name.c_str() );
 
                     obj_to_char( auction_item, auction_bidder );
                 }
                 else
                 {
-                    snprintf( buf, MSL, "%s - SOLD!, but the buyer has left us.  Oh Well!!!", auction_item->short_descr );
+                    snprintf( buf, MSL, "%s - SOLD!, but the buyer has left us.  Oh Well!!!", CSTR( auction_item->short_descr ) );
                     extract_obj( auction_item );
                 }
                 if ( good_seller )

@@ -257,7 +257,7 @@ DO_FUN(do_check_areas)
                 }
                 else
                 {
-                    fprintf( out_file, "Obj: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, pObjIndex->short_descr );
+                    fprintf( out_file, "Obj: [%5i] -> [%5i] %s\n", old_vnum, new_vnum, CSTR( pObjIndex->short_descr ) );
                     /*
                      * Delete from obj hashing table, and put new vnum in.
                      */

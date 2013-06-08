@@ -777,7 +777,7 @@ bool get_money_obj( CHAR_DATA * ch, char *argument, OBJ_DATA * obj )
     if ( check_charm_aff(ch, CHARM_AFF_GOLD) )
         for ( looper = 0; looper < MAX_CURRENCY; looper++ )
             transfer->cash_unit[looper] *= ((100 + get_charm_bonus(ch, CHARM_AFF_GOLD)) / 100);
-    snprintf( outbuf, MSL, "You take %s from %s.\r\n", money_string( transfer ), obj->short_descr );
+    snprintf( outbuf, MSL, "You take %s from %s.\r\n", money_string( transfer ), CSTR( obj->short_descr ) );
     send_to_char( outbuf, ch );
     join_money( transfer, ch->money );
     return TRUE;

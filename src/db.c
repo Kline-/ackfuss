@@ -1280,7 +1280,7 @@ void load_object( FILE * fp )
 
             case 'L':
                 KEY("Level", pObjIndex->level, fread_number(fp));
-                SKEY("LongDesc", pObjIndex->long_descr, fread_string(fp));
+                KEY("LongDesc", pObjIndex->long_descr, fread_string(fp));
                 break;
 
             case 'N':
@@ -1311,7 +1311,7 @@ void load_object( FILE * fp )
                 break;
 
             case 'S':
-                SKEY("ShortDesc", pObjIndex->short_descr, fread_string(fp));
+                KEY("ShortDesc", pObjIndex->short_descr, fread_string(fp));
                 KEY("Speed", pObjIndex->speed, fread_float(fp));
                 break;
 
@@ -1375,7 +1375,7 @@ void load_object( FILE * fp )
 
     if ( !fMatch )
     {
-        snprintf( log_buf, (2 * MIL), "Loading in obj :%s (%s), no match for ( %s ).", area_load->name, pObjIndex->short_descr, word );
+        snprintf( log_buf, (2 * MIL), "Loading in obj :%s (%s), no match for ( %s ).", area_load->name, CSTR( pObjIndex->short_descr ), word );
         monitor_chan( log_buf, MONITOR_BAD );
         fread_to_eol( fp );
     }
@@ -2790,8 +2790,8 @@ OBJ_DATA *create_object( OBJ_INDEX_DATA * pObjIndex, int level )
     obj->wear_loc = -1;
 
     obj->name = str_dup( pObjIndex->name );
-    obj->short_descr = str_dup( pObjIndex->short_descr );
-    obj->long_descr = str_dup( pObjIndex->long_descr );
+    obj->short_descr = pObjIndex->short_descr;
+    obj->long_descr = pObjIndex->long_descr;
     obj->item_type = pObjIndex->item_type;
     obj->extra_flags = pObjIndex->extra_flags;
     obj->wear_flags = pObjIndex->wear_flags;

@@ -247,7 +247,7 @@ DO_FUN(do_mquest)
         else if ( ch->pcdata->quest_info->quest_type == QUEST_MULTI_RETRIEVE || ch->pcdata->quest_info->quest_type == QUEST_RETRIEVAL )
         {
             OBJ_INDEX_DATA *ob = get_obj_index(ch->pcdata->quest_info->quest_item_vnum[hint-1]);
-            snprintf(buf, MSL, "%s can be found somewhere in %s.\r\n", ob->short_descr, ob->area->name);
+            snprintf(buf, MSL, "%s can be found somewhere in %s.\r\n", CSTR(ob->short_descr), ob->area->name);
             send_to_char(buf, ch);
         }
         ch->pcdata->quest_info->quest_hint[hint-1] = TRUE;
@@ -313,14 +313,14 @@ DO_FUN(do_mquest)
                                 ch->pcdata->quest_info->amount[i]--;
                                 if ( ch->pcdata->quest_info->amount[i] == 0 )
                                 {
-                                    snprintf(buf, MSL, "You have now handed in all the %s you needed for your quest.\r\n", get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr);
+                                    snprintf(buf, MSL, "You have now handed in all the %s you needed for your quest.\r\n", CSTR(get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr));
                                     send_to_char(buf, ch);
                                 }
                             }
                         }
                         if ( x > 0 && ch->pcdata->quest_info->amount[i] != 0 )
                         {
-                            snprintf(buf, MSL, "%s (%d) was handed into the questmaster.\r\n", get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr, x);
+                            snprintf(buf, MSL, "%s (%d) was handed into the questmaster.\r\n", CSTR(get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr), x);
                             send_to_char(buf, ch);
                         }
                     }
@@ -394,7 +394,7 @@ DO_FUN(do_qstat)
         case QUEST_RETRIEVAL:
             if ( victim->pcdata->quest_info->quest_item_vnum[0] > -1 )
             {
-                snprintf(buf, MSL, "%s is seeking item %d-%s...\r\n", victim->get_name(ch), victim->pcdata->quest_info->quest_item_vnum[0], get_obj_index(victim->pcdata->quest_info->quest_item_vnum[0])->short_descr);
+                snprintf(buf, MSL, "%s is seeking item %d-%s...\r\n", victim->get_name(ch), victim->pcdata->quest_info->quest_item_vnum[0], CSTR(get_obj_index(victim->pcdata->quest_info->quest_item_vnum[0])->short_descr));
                 send_to_char(buf, ch);
 
                 if ( victim->pcdata->quest_info->amount[0] > 0 )
@@ -438,7 +438,7 @@ DO_FUN(do_qstat)
             {
                 if ( victim->pcdata->quest_info->quest_item_vnum[i] > -1 )
                 {
-                    snprintf(buf, MSL, "Item #%d: %5d-%s (%d)\r\n", i + 1, victim->pcdata->quest_info->quest_item_vnum[i], get_obj_index(victim->pcdata->quest_info->quest_item_vnum[i])->short_descr, victim->pcdata->quest_info->amount[i]);
+                    snprintf(buf, MSL, "Item #%d: %5d-%s (%d)\r\n", i + 1, victim->pcdata->quest_info->quest_item_vnum[i], CSTR(get_obj_index(victim->pcdata->quest_info->quest_item_vnum[i])->short_descr), victim->pcdata->quest_info->amount[i]);
                     send_to_char(buf, ch);
                 }
             }
@@ -489,7 +489,7 @@ void mquest_info( CHAR_DATA *ch )
         case QUEST_RETRIEVAL:
             if ( ch->pcdata->quest_info->quest_item_vnum[0] > -1 )
             {
-                snprintf(buf, MSL, "You are seeking the item known as %s@@N.\r\n", get_obj_index(ch->pcdata->quest_info->quest_item_vnum[0])->short_descr);
+                snprintf(buf, MSL, "You are seeking the item known as %s@@N.\r\n", CSTR(get_obj_index(ch->pcdata->quest_info->quest_item_vnum[0])->short_descr));
                 send_to_char(buf, ch);
 
                 if ( ch->pcdata->quest_info->amount[0] > 0 )
@@ -546,7 +546,7 @@ void mquest_info( CHAR_DATA *ch )
             {
                 if ( ch->pcdata->quest_info->quest_item_vnum[i] > -1 )
                 {
-                    snprintf(buf, MSL, "Item #%d: %s (%d)", i + 1, get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr, ch->pcdata->quest_info->amount[i]);
+                    snprintf(buf, MSL, "Item #%d: %s (%d)", i + 1, CSTR(get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->short_descr), ch->pcdata->quest_info->amount[i]);
                     send_to_char(buf, ch);
                     if ( ch->pcdata->quest_info->quest_hint[i] )
                         snprintf(buf, MSL, " [%s]\r\n", get_obj_index(ch->pcdata->quest_info->quest_item_vnum[i])->area->name);

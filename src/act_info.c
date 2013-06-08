@@ -147,13 +147,13 @@ char *format_obj_to_char( OBJ_DATA * obj, CHAR_DATA * ch, bool fShort, bool iNam
 
     if ( fShort )
     {
-        if ( obj->short_descr != NULL )
-            strncat( buf, obj->short_descr, MSL - 1 );
+        if ( !obj->short_descr.empty() )
+            strncat( buf, CSTR( obj->short_descr ), MSL - 1 );
     }
     else
     {
-        if ( obj->long_descr != NULL )
-            strncat( buf, obj->long_descr, MSL - 1 );
+        if ( !obj->long_descr.empty() )
+            strncat( buf, CSTR (obj->long_descr ), MSL - 1 );
     }
     strncat( buf, color_string( ch, "normal" ), MSL - 1 );
 
@@ -532,7 +532,7 @@ void show_char_to_char_0( CHAR_DATA * victim, CHAR_DATA * ch )
             if ( victim->sitting != NULL && victim->sitting->in_room == victim->in_room )
             {
                 char sit[MSL];
-                snprintf( sit, MSL, " is here, resting on %s.", victim->sitting->short_descr );
+                snprintf( sit, MSL, " is here, resting on %s.", CSTR( victim->sitting->short_descr ) );
                 strncat( buf, sit, MSL - 1 );
             }
             else
@@ -1055,7 +1055,7 @@ DO_FUN(do_look)
 
         if ( is_name( arg1, obj->name ) )
         {
-            send_to_char( tagline_format(obj->long_descr, ch), ch );
+            send_to_char( tagline_format(CSTR(obj->long_descr), ch), ch );
             return;
         }
     }
@@ -1084,7 +1084,7 @@ DO_FUN(do_look)
 
         if ( is_name( arg1, obj->name ) )
         {
-            snprintf( pdesc, MSL, "%s\r\n", obj->long_descr );
+            snprintf( pdesc, MSL, "%s\r\n", CSTR( obj->long_descr ) );
             send_to_char( pdesc, ch );
             act( "$L$n closely examines $p.", ch, obj, NULL, TO_ROOM );
             return;

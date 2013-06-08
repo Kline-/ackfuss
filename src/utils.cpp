@@ -24,15 +24,15 @@
  * @brief Returns the number of a specific character in a given string.
  * @param[in] input A string value to search.
  * @param[in] item The character to search for within input.
- * @retval uint_t The total count of item within input.
+ * @retval int The total count of item within input.
  */
-const uint_t Utils::NumChar( const string& input, const string& item )
+const int Utils::NumChar( const string& input, const string& item )
 {
-    uint_t amount = 0, i = 0;
+    unsigned int amount = 0, i = 0;
 
     if ( input.empty() )
     {
-        LOGSTR( "Utils::NumChar()-> called with empty input" );
+        LOGSTR( 0, "Utils::NumChar()-> called with empty input" );
         return amount;
     }
 
@@ -54,7 +54,7 @@ const vector<string> Utils::StrTokens( const string& input, const bool& quiet )
     if ( input.empty() )
     {
         if ( !quiet )
-            LOGSTR( "Utils::StrTokens()-> called with empty input" );
+            LOGSTR( 0, "Utils::StrTokens()-> called with empty input" );
         return vector<string>();
     }
 
@@ -76,21 +76,21 @@ const vector<string> Utils::StrTokens( const string& input, const bool& quiet )
 /*** @name Internal */ /**@{*/
 /**
  * @brief This is a nested wrapper for Utils::__FormatString and should not be called directly.
- * @param[in] narg A #uint_t variable of the total number of arguments passed. Handled automatically.
+ * @param[in] narg A #int variable of the total number of arguments passed. Handled automatically.
  * @param[in] flags Any number of flags from #UTILS_OPTS to control output formatting and options.
  * @param[in] caller A string value containing the calling function. Handled automatically.
  * @param[in] fmt A string value containing a printf-style format string.
  * @param[in] ... A variable arguments list to populate fmt with.
  * @retval string A printf-style formatted string.
  */
-const string Utils::_FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... )
+const string Utils::_FormatString( const int& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... )
 {
     va_list args;
     string output;
 
     if ( fmt.empty() )
     {
-        LOGSTR( "Utils::_FormatString()-> called with empty fmt" );
+        LOGSTR( 0, "Utils::_FormatString()-> called with empty fmt" );
         return output;
     }
 
@@ -103,25 +103,25 @@ const string Utils::_FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_
 
 /**
  * @brief This is the printf-style string formatter. It should not be invoked directly, but rather by using Utils::FormatString() to ensure proper argument count and caller passing.
- * @param[in] narg A #uint_t variable of the total number of arguments passed. Handled automatically.
+ * @param[in] narg A #int variable of the total number of arguments passed. Handled automatically.
  * @param[in] flags Any number of flags from #UTILS_OPTS to control output formatting and options.
  * @param[in] caller A string value containing the calling function. Handled automatically.
  * @param[in] fmt A string value containing a printf-style format string.
  * @param[in] val A variable arguments list to populate fmt with.
  * @retval string A printf-style formatted string.
  */
-const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, va_list& val ) // Thanks go to Darien @ MudBytes.net for the start of this
+const string Utils::__FormatString( const int& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, va_list& val ) // Thanks go to Darien @ MudBytes.net for the start of this
 {
     va_list args;
     vector<string> arguments;
     ITER( vector, string, si );
     vector<char> buf;
     string output, token;
-    sint_t size = 0;
+    int size = 0;
 
     if ( fmt.empty() )
     {
-        LOGSTR( "Utils::__FormatString()-> called with empty fmt" );
+        LOGSTR( 0, "Utils::__FormatString()-> called with empty fmt" );
         return output;
     }
 
@@ -133,7 +133,7 @@ const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX
             size++;                              // to ensure a matching narg : format specifier count
     }
 
-    if ( narg != 1 && narg != static_cast<uint_t>( size ) && narg != NumChar( fmt, "%" ) ) // if narg == 1 invocation was func( flags, string )
+    if ( narg != 1 && narg != static_cast<int>( size ) && narg != NumChar( fmt, "%" ) ) // if narg == 1 invocation was func( flags, string )
     {
         Logger( 0, "Number of arguments (%lu) did not match number of format specifiers (%lu) at: %s", narg, size, CSTR( caller ) );
         return output = "";
@@ -153,21 +153,21 @@ const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX
 
 /**
  * @brief This is the logging output engine. It should not be invoked directly, but rather by calling Utils::Logger() to ensure proper argument count and caller passing.
- * @param[in] narg A #uint_t variable of the total number of arguments passed. Handled automatically.
+ * @param[in] narg A #int variable of the total number of arguments passed. Handled automatically.
  * @param[in] flags Any number of flags from #UTILS_OPTS to control output formatting and options.
  * @param[in] caller A string value containing the calling function. Handled automatically.
  * @param[in] fmt A string value containing a printf-style format string.
  * @param[in] ... A variable arguments list to populate fmt with.
  * @retval string A printf-style formatted string.
  */
-const void Utils::_Logger( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... )
+const void Utils::_Logger( const int& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... )
 {
     va_list args;
     string output;
 
     if ( fmt.empty() )
     {
-        LOGSTR( "Utils::_Logger()-> called with empty fmt" );
+        LOGSTR( 0, "Utils::_Logger()-> called with empty fmt" );
         return;
     }
 
