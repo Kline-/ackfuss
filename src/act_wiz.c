@@ -196,7 +196,7 @@ DO_FUN(do_wizhelp)
     col = 0;
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
-        if ( cmd_table[cmd].level >= LEVEL_HERO && cmd_table[cmd].level <= get_trust( ch ) )
+        if ( cmd_table[cmd].level >= LEVEL_HERO && cmd_table[cmd].level <= ch->gTrust() )
         {
             snprintf( buf, MSL, "%-12s", cmd_table[cmd].name );
             strncat( buf1, buf, MSL - 1 );
@@ -277,7 +277,7 @@ DO_FUN(do_deny)
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( victim->gTrust() >= ch->gTrust() )
     {
         send_to_char( "You failed.\r\n", ch );
 //        if ( victim->desc == NULL )
@@ -1603,7 +1603,7 @@ DO_FUN(do_snoop)
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( victim->gTrust() >= ch->gTrust() )
     {
         send_to_char( "You failed.\r\n", ch );
         return;
@@ -1756,7 +1756,7 @@ DO_FUN(do_oload)
 
     if ( arg2[0] == '\0' )
     {
-        level = get_trust( ch );
+        level = ch->gTrust();
     }
     else
     {
@@ -1769,7 +1769,7 @@ DO_FUN(do_oload)
             return;
         }
         level = atoi( arg2 );
-        if ( level < 0 || level > get_trust( ch ) )
+        if ( level < 0 || level > ch->gTrust() )
         {
             send_to_char( "Limited to your trust level.\r\n", ch );
             return;
@@ -1893,7 +1893,7 @@ DO_FUN(do_trust)
         return;
     }
 
-    if ( level > get_trust( ch ) )
+    if ( level > ch->gTrust() )
     {
         send_to_char( "Limited to your trust.\r\n", ch );
         return;
@@ -1993,7 +1993,7 @@ DO_FUN(do_freeze)
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( victim->gTrust() >= ch->gTrust() )
     {
         send_to_char( "You failed.\r\n", ch );
         return;
@@ -2122,7 +2122,7 @@ DO_FUN(do_noemote)
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( victim->gTrust() >= ch->gTrust() )
     {
         send_to_char( "You failed.\r\n", ch );
         return;
@@ -2171,7 +2171,7 @@ DO_FUN(do_notell)
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( victim->gTrust() >= ch->gTrust() )
     {
         send_to_char( "You failed.\r\n", ch );
         return;
@@ -2220,7 +2220,7 @@ DO_FUN(do_silence)
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( victim->gTrust() >= ch->gTrust() )
     {
         send_to_char( "You failed.\r\n", ch );
         return;
@@ -2271,7 +2271,7 @@ DO_FUN(do_nopray)
         return;
     }
 
-    if ( get_trust( victim ) >= get_trust( ch ) )
+    if ( victim->gTrust() >= ch->gTrust() )
     {
         send_to_char( "You failed.\r\n", ch );
         return;
@@ -2467,7 +2467,7 @@ DO_FUN(do_wizlock)
         send_to_char( "Game un-wizlocked.\r\n", ch );
         snprintf( buf, MSL, "%s un-wizlocks ACK! Mud.\r\n", ch->name.c_str() );
     }
-    notify( buf, get_trust( ch ) );
+    notify( buf, ch->gTrust() );
     return;
 }
 
@@ -2663,7 +2663,7 @@ DO_FUN(do_mset)
             return;
         }
 
-        if ( get_trust( ch ) < 84 )
+        if ( ch->gTrust() < 84 )
         {
             send_to_char( "Only a Supreme or above may use this option.\r\n", ch );
             return;
@@ -3106,7 +3106,7 @@ DO_FUN(do_mset)
         int neg = 0;
         char *lookupstr = arg3;
 
-        if ( get_trust( ch ) < MAX_LEVEL - 1 )
+        if ( ch->gTrust() < MAX_LEVEL - 1 )
         {
             send_to_char( "Only supreme or creator level immortals may use this.\r\n", ch );
             return;
@@ -3622,7 +3622,7 @@ DO_FUN(do_users)
     buf2[0] = '\0';
 
     send_to_char( "\r\n Desc.  Connection State.    Player Name.     Login Site.", ch );
-    if ( get_trust( ch ) == 85 )
+    if ( ch->gTrust() == 85 )
         send_to_char( "                 Port.\r\n", ch );
     else
         send_to_char( "\r\n", ch );
@@ -3690,7 +3690,7 @@ DO_FUN(do_users)
                   d->descriptor,
                   d->connected,
                   buf3, d->original ? d->original->name.c_str() : d->character ? d->character->name.c_str() : "(none)", d->host );
-        if ( get_trust( ch ) == 85 )
+        if ( ch->gTrust() == 85 )
             snprintf( buf + strlen( buf ), MSL, "  %5d\r\n", d->remote_port );
         else
             snprintf( buf + strlen( buf ), MSL, "\r\n" );
@@ -3727,7 +3727,7 @@ DO_FUN(do_force)
     /*
      * Look for command in command table.
      */
-    trust = get_trust( ch );
+    trust = ch->gTrust();
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
         if ( argument[0] == cmd_table[cmd].name[0]
@@ -3819,7 +3819,7 @@ DO_FUN(do_force)
             return;
         }
 
-        if ( get_trust( victim ) >= get_trust( ch ) )
+        if ( victim->gTrust() >= ch->gTrust() )
         {
             send_to_char( "Do it yourself!\r\n", ch );
             return;
@@ -3856,7 +3856,7 @@ DO_FUN(do_invis)
     {
         if ( !is_number( argument ) )
         {
-            level = get_trust( ch );
+            level = ch->gTrust();
         }
         level = UMAX( 1, atoi( argument ) );
         level = UMIN( ch->level, level );
@@ -3873,7 +3873,7 @@ DO_FUN(do_invis)
     }
 
     if ( level == -1 )
-        level = get_trust( ch );
+        level = ch->gTrust();
 
     ch->pcdata->invis = level;
 
@@ -4378,7 +4378,7 @@ DO_FUN(do_setclass)
         return;
     }
 
-    if ( value > get_trust( ch ) )
+    if ( value > ch->gTrust() )
     {
         send_to_char( "Limited to your trust level.\r\n", ch );
         return;
@@ -4761,7 +4761,7 @@ DO_FUN(do_whoname)
         return;
     }
 
-    if ( ( get_trust( ch ) < ( MAX_LEVEL - 1 ) ) && ch != victim )
+    if ( ( ch->gTrust() < ( MAX_LEVEL - 1 ) ) && ch != victim )
     {
         send_to_char( "Only Supremes and Creators can set the whoname of others.\r\n", ch );
         return;
@@ -5051,7 +5051,7 @@ DO_FUN(do_monitor)
             char colbuf[10];
             colbuf[0] = '\0';
 
-            if ( tab_monitor[a].min_level > get_trust( ch ) )
+            if ( tab_monitor[a].min_level > ch->gTrust() )
                 continue;
 
             if ( ch->pcdata->monitor.test(tab_monitor[a].channel) )
@@ -5127,7 +5127,7 @@ void monitor_chan( const char *message, int channel )
     {
         if ( d->connected == CON_PLAYING
                 && !IS_NPC( d->character )
-                && d->character->pcdata->monitor.test(channel) && level <= get_trust( d->character ) )
+                && d->character->pcdata->monitor.test(channel) && level <= d->character->gTrust() )
         {
             send_to_char( buf, d->character );
         }
@@ -6287,7 +6287,7 @@ DO_FUN(do_disable)
         if ( !str_cmp(argument, p->command->name) )
         {
 
-            if ( get_trust(ch) < p->level )
+            if ( ch->gTrust() < p->level )
             {
                 send_to_char("This command was disabled by a higher power.\r\n", ch);
                 return;
@@ -6317,7 +6317,7 @@ DO_FUN(do_disable)
         return;
     }
 
-    if ( cmd_table[i].level > get_trust(ch) )
+    if ( cmd_table[i].level > ch->gTrust() )
     {
         send_to_char("You can't disable a command that you cannot use.\r\n", ch);
         return;
@@ -6325,7 +6325,7 @@ DO_FUN(do_disable)
 
     p = new DISABLED_DATA;
     p->disabled_by = str_dup(ch->name.c_str());
-    p->level = get_trust(ch);
+    p->level = ch->gTrust();
     p->command = &cmd_table[i];
 
     save_disabled();

@@ -15,4 +15,9 @@
 #ifndef DEC_CLASS_H
 #define DEC_CLASS_H
 
+class char_data;
+class obj_data;
+#define Character char_data
+#define Object obj_data
+
 #endif

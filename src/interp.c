@@ -1068,7 +1068,7 @@ void interpret( CHAR_DATA * ch, char *argument )
      * Look for command in command table.
      */
     found = FALSE;
-    trust = get_trust( ch );
+    trust = ch->gTrust();
     for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
     {
 

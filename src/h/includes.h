@@ -17,7 +17,6 @@
 #define DEC_INCLUDES_H
 
 #include "sysincludes.h"
-#include "limits.h"
 #include "config.h"
 #include "class.h"
 #include "namespace.h"

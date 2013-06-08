@@ -3401,7 +3401,7 @@ DO_FUN(do_memory)
 
     if ( !str_cmp( argument, "log" ) )
     {
-        if ( get_trust( ch ) < MAX_LEVEL )
+        if ( ch->gTrust() < MAX_LEVEL )
         {
             send_to_char( "Not at your level.\r\n", ch );
             return;

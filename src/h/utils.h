@@ -23,7 +23,8 @@ namespace Utils
 {
     /*** @name Core */ /**@{*/
     #define FormatString( flags, fmt, ... ) _FormatString( PP_NARG( __VA_ARGS__ ), flags, _caller_, fmt, ##__VA_ARGS__ )
-    const uint_t NumChar( const string& input, const string& item );
+    #define Logger( flags, fmt, ... ) _Logger( PP_NARG( __VA_ARGS__ ), flags, _caller_, fmt, ##__VA_ARGS__ )
+    const int NumChar( const string& input, const string& item );
     const vector<string> StrTokens( const string& input, const bool& quiet = false );
     /**@}*/
 
@@ -34,8 +35,9 @@ namespace Utils
     /**@}*/
 
     /*** @name Internal */ /**@{*/
-    const string _FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... );
-    const string __FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, va_list& val );
+    const string _FormatString( const int& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... );
+    const string __FormatString( const int& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, va_list& val );
+    const void _Logger( const int& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... );
     /**@}*/
 };
 

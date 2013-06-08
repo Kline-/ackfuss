@@ -292,7 +292,7 @@ void do_family( CHAR_DATA * ch, char *argument )
             send_to_char( "Huh?\r\n", ch );
             return;
         }
-    if ( get_trust( ch ) == 85 )
+    if ( ch->gTrust() == MAX_LEVEL )
     {
         for ( index = 0; index <= 4; index++ )
         {

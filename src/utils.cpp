@@ -17,6 +17,8 @@
 #include "h/includes.h"
 #include "h/utils.h"
 
+#include "h/act_wiz.h"
+
 /*** @name Core */ /**@{*/
 /**
  * @brief Returns the number of a specific character in a given string.
@@ -26,12 +28,11 @@
  */
 const uint_t Utils::NumChar( const string& input, const string& item )
 {
-    //UFLAGS_DE( flags );
     uint_t amount = 0, i = 0;
 
     if ( input.empty() )
     {
-        //LOGSTR( flags, "Utils::NumChar()-> called with empty input" );
+        LOGSTR( "Utils::NumChar()-> called with empty input" );
         return amount;
     }
 
@@ -50,12 +51,10 @@ const uint_t Utils::NumChar( const string& input, const string& item )
  */
 const vector<string> Utils::StrTokens( const string& input, const bool& quiet )
 {
-    //UFLAGS_DE( flags );
-
     if ( input.empty() )
     {
-        //if ( !quiet )
-            //LOGSTR( flags, "Utils::StrTokens()-> called with empty input" );
+        if ( !quiet )
+            LOGSTR( "Utils::StrTokens()-> called with empty input" );
         return vector<string>();
     }
 
@@ -86,13 +85,12 @@ const vector<string> Utils::StrTokens( const string& input, const bool& quiet )
  */
 const string Utils::_FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... )
 {
-    //UFLAGS_DE( uflags );
     va_list args;
     string output;
 
     if ( fmt.empty() )
     {
-        //LOGSTR( uflags, "Utils::_FormatString()-> called with empty fmt" );
+        LOGSTR( "Utils::_FormatString()-> called with empty fmt" );
         return output;
     }
 
@@ -114,7 +112,6 @@ const string Utils::_FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_
  */
 const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, va_list& val ) // Thanks go to Darien @ MudBytes.net for the start of this
 {
-    //UFLAGS_DE( uflags );
     va_list args;
     vector<string> arguments;
     ITER( vector, string, si );
@@ -124,7 +121,7 @@ const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX
 
     if ( fmt.empty() )
     {
-        //LOGSTR( uflags, "Utils::__FormatString()-> called with empty fmt" );
+        LOGSTR( "Utils::__FormatString()-> called with empty fmt" );
         return output;
     }
 
@@ -138,10 +135,7 @@ const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX
 
     if ( narg != 1 && narg != static_cast<uint_t>( size ) && narg != NumChar( fmt, "%" ) ) // if narg == 1 invocation was func( flags, string )
     {
-        //bitset<CFG_MEM_MAX_BITSET> eflags;
-
-        //eflags.set( UTILS_TYPE_ERROR );
-        //Logger( eflags, "Number of arguments (%lu) did not match number of format specifiers (%lu) at: %s", narg, size, CSTR( caller ) );
+        Logger( 0, "Number of arguments (%lu) did not match number of format specifiers (%lu) at: %s", narg, size, CSTR( caller ) );
         return output = "";
     }
 
@@ -155,5 +149,38 @@ const string Utils::__FormatString( const uint_t& narg, const bitset<CFG_MEM_MAX
     va_end( args );
 
     return output = &buf[0];
+}
+
+/**
+ * @brief This is the logging output engine. It should not be invoked directly, but rather by calling Utils::Logger() to ensure proper argument count and caller passing.
+ * @param[in] narg A #uint_t variable of the total number of arguments passed. Handled automatically.
+ * @param[in] flags Any number of flags from #UTILS_OPTS to control output formatting and options.
+ * @param[in] caller A string value containing the calling function. Handled automatically.
+ * @param[in] fmt A string value containing a printf-style format string.
+ * @param[in] ... A variable arguments list to populate fmt with.
+ * @retval string A printf-style formatted string.
+ */
+const void Utils::_Logger( const uint_t& narg, const bitset<CFG_MEM_MAX_BITSET>& flags, const string& caller, const string& fmt, ... )
+{
+    va_list args;
+    string output;
+
+    if ( fmt.empty() )
+    {
+        LOGSTR( "Utils::_Logger()-> called with empty fmt" );
+        return;
+    }
+
+    va_start( args, fmt );
+    output = __FormatString( narg, flags, caller, fmt, args );
+    va_end( args );
+
+    if ( output.empty() )
+        return;
+
+    cerr << current_time_str() << output << endl;
+    monitor_chan( CSTR( output ), MONITOR_LOG );
+
+    return;
 }
 /**@}*/

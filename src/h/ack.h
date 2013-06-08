@@ -529,6 +529,8 @@ class char_data
         void set_cooldown( const char *skill );
         void set_cooldown( int pos, float duration );
         void set_title( const char *title );
+        const string gChannelColor( const string& input );
+        const int gTrust() const;
 
         short ac_mod;
         bitset<CFG_MEM_MAX_BITSET> act;
@@ -1336,8 +1338,8 @@ struct eq_type
  * Character macros.
  */
 #define IS_NPC(ch)              ( (ch)->npc )
-#define IS_IMMORTAL(ch)         (get_trust(ch) >= LEVEL_IMMORTAL)
-#define IS_HERO(ch)             (get_trust(ch) >= LEVEL_HERO)
+#define IS_IMMORTAL(ch)         ((ch)->gTrust() >= LEVEL_IMMORTAL)
+#define IS_HERO(ch)             ((ch)->gTrust() >= LEVEL_HERO)
 #define IS_ADEPT(ch)            ( !IS_NPC(ch) && ch->get_level("adept") > 0 )
 #define IS_REMORT(ch)           ( !IS_NPC(ch) && ch->get_level("remort") > 0 )
 #define IS_AFFECTED(ch, sn)     ( IS_SET((ch)->affected_by, (sn)))

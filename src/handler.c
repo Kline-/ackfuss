@@ -113,26 +113,6 @@ extern CHAR_DATA *quest_target;
 extern COUNCIL_DATA super_councils[MAX_SUPER];
 
 /*
- * Retrieve a character's trusted level for permission checking.
- */
-int get_trust( CHAR_DATA * ch )
-{
-    if ( ch->desc != NULL && ch->desc->original != NULL )
-        ch = ch->desc->original;
-
-    if ( !IS_NPC( ch ) && ch->act.test(ACT_AMBASSADOR) )
-        return ( LEVEL_HERO + 1 );
-
-    if ( ch->trust != 0 )
-        return ch->trust;
-
-    if ( IS_NPC( ch ) && ch->level >= LEVEL_HERO )
-        return LEVEL_HERO - 1;
-    else
-        return ch->level;
-}
-
-/*
  * Replacement for retrieving a character's age
  * Each tick = 1 mud hr.  (spaced at 1 minute rl)
  * 24 mud hrs = 1 mud day
@@ -2271,7 +2251,7 @@ bool can_see( CHAR_DATA * ch, CHAR_DATA * victim )
         return TRUE;
 
 
-    if ( !IS_NPC( victim ) && victim->act.test(ACT_WIZINVIS) && get_trust( ch ) < victim->pcdata->invis )
+    if ( !IS_NPC( victim ) && victim->act.test(ACT_WIZINVIS) && ch->gTrust() < victim->pcdata->invis )
         return FALSE;
 
     if ( ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) ) && ch->in_room == victim->in_room )
@@ -2446,7 +2426,7 @@ void log_chan( const char *message, int lv )
     snprintf( buf, MSL, "[LOG]: %s\r\n", message );
     for ( d = first_desc; d; d = d->next )
         if ( ( d->connected == CON_PLAYING )
-                && ( get_trust( d->character ) == MAX_LEVEL )
+                && ( d->character->gTrust() == MAX_LEVEL )
                 && ( !IS_NPC( d->character ) ) && ( d->character->level >= lv ) && ( !d->character->deaf.test(CHANNEL_LOG) ) )
             send_to_char( buf, d->character );
     return;

@@ -80,7 +80,7 @@ extern int fBootDb;
 
 bool build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 {
-    if ( get_trust( ch ) >= MAX_LEVEL - 1 )
+    if ( ch->gTrust() >= MAX_LEVEL - 1 )
         return true;
 
     if ( Area->can_read != NULL )
@@ -96,7 +96,7 @@ bool build_canread( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 
 bool build_canwrite( AREA_DATA * Area, CHAR_DATA * ch, int showerror )
 {
-    if ( get_trust( ch ) >= MAX_LEVEL - 1 )
+    if ( ch->gTrust() >= MAX_LEVEL - 1 )
         return true;
 
     if ( Area->can_write != NULL )
@@ -618,7 +618,7 @@ DO_FUN(build_showarea)
     snprintf( buffer, MSL, "Reset Message: %s\r\n", pArea->reset_msg );
     strncat( buf, buffer, MSL - 1 );
 
-    if ( get_trust( ch ) >= MAX_LEVEL - 1 )
+    if ( ch->gTrust() >= MAX_LEVEL - 1 )
     {
         snprintf( buffer, MSL, "Filename: %s\r\n", pArea->filename );
         strncat( buf, buffer, MSL - 1 );

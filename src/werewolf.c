@@ -116,7 +116,7 @@ void do_tribe( CHAR_DATA * ch, char *argument )
     if ( ( arg1[0] == '\0' ) || ( ch->pcdata->super->generation > 1 ) )
     {
 
-        if ( get_trust( ch ) == 85 )
+        if ( ch->gTrust() == MAX_LEVEL )
         {
             for ( index = 0; index <= 4; index++ )
             {

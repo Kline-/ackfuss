@@ -726,7 +726,7 @@ void show_char_to_char( CHAR_DATA * list, CHAR_DATA * ch )
         if ( rch == ch )
             continue;
 
-        if ( !IS_NPC( rch ) && rch->act.test(ACT_WIZINVIS) && get_trust( ch ) < rch->pcdata->invis )
+        if ( !IS_NPC( rch ) && rch->act.test(ACT_WIZINVIS) && ch->gTrust() < rch->pcdata->invis )
             continue;
 
         if ( ( rch->rider != NULL ) && ( rch->rider != ch ) )
@@ -1411,9 +1411,9 @@ DO_FUN(do_score)
               "X========= @@WExps: @@y%9d @@c========= @@aQuest Points: @@y%4d @@c========X\r\n", ch->exp, IS_NPC(ch) ? 0 : ch->pcdata->quest_points );
     send_to_char( buf, ch );
 
-    if ( get_trust( ch ) != ch->level )
+    if ( ch->gTrust() != ch->level )
     {
-        snprintf( buf, MSL, "X================= @@WYou are trusted at level @@y%2d @@c=================X\r\n", get_trust( ch ) );
+        snprintf( buf, MSL, "X================= @@WYou are trusted at level @@y%2d @@c=================X\r\n",  ch->gTrust() );
         send_to_char( buf, ch );
     }
 
@@ -2782,7 +2782,7 @@ DO_FUN(do_commands)
 
         for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
         {
-            if ( cmd_table[cmd].level <= L_GOD && cmd_table[cmd].level <= get_trust(ch) )
+            if ( cmd_table[cmd].level <= L_GOD && cmd_table[cmd].level <= ch->gTrust() )
             {
                 if ( show > -1 && cmd_table[cmd].type != show )
                     continue;
@@ -2931,7 +2931,7 @@ DO_FUN(do_channels)
             return;
         }
 
-        trust = get_trust( ch );
+        trust = ch->gTrust();
         buffer[0] = '\0';
         strncat( buffer, "Channels:\r\n", MSL - 1 );
 
@@ -2987,7 +2987,7 @@ DO_FUN(do_channels)
         bit = 0;
         for ( a = 0; tab_channels[a].bit != 0; a++ )
         {
-            if ( tab_channels[a].min_level > get_trust( ch ) )
+            if ( tab_channels[a].min_level > ch->gTrust() )
                 continue;
             if ( !str_prefix( arg + 1, tab_channels[a].name ) )
             {

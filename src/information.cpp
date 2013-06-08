@@ -15,54 +15,42 @@
 #include "h/includes.h"
 #include "h/information.h"
 
-/*** @name Core */ /**@{*/ /*
-const string Information::FormatObjectToCharacter( OBJ_DATA* obj, CHAR_DATA* ch, const bool& short, const bool& name )
+/*** @name Core */ /**@{*/
+const string Information::FormatObjectToCharacter( Object* object, Character* character, const bool& shortd, const bool& name )
 {
-    static char buf[MSL];
-    static char buf2[MSL];
+    string output;
 
-    snprintf( buf, MSL, "%s", color_string( ch, "objects" ) );
+    output = character->gChannelColor( "objects" );
 
-    if ( IS_IMMORTAL(ch) && ch->position == POS_BUILDING ) * Imms should see vnums, <3 builders :) --Kline *
-    {
-        snprintf(buf2, MSL, "(%d) ", obj->pIndexData->vnum);
-        strncat(buf, buf2, MSL - 1);
-    }
+    if ( IS_IMMORTAL( character ) && character->position == POS_BUILDING ) /* Imms should see vnums, <3 builders :) --Kline */
+        output += "(" + object->pIndexData->vnum + ") ";
 
-    * Check for mquest target *
-    strncat(buf, display_obj_target(ch, obj), MSL - 1);
+    /* Check for mquest target */
+    output += display_obj_target( character, object );
 
-    if ( IS_OBJ_STAT( obj, ITEM_EXTRA_INVIS ) )
-        strncat( buf, "(Invis) ", MSL - 1 );
-    if ( ( IS_AFFECTED( ch, AFF_DETECT_EVIL ) || item_has_apply( ch, ITEM_APPLY_DET_EVIL ) ) && IS_OBJ_STAT( obj, ITEM_EXTRA_EVIL ) )
-        strncat( buf, "(Red Aura) ", MSL - 1 );
-    if ( ( IS_AFFECTED( ch, AFF_DETECT_MAGIC ) || item_has_apply( ch, ITEM_APPLY_DET_MAG ) ) && IS_OBJ_STAT( obj, ITEM_EXTRA_MAGIC ) )
-        strncat( buf, "(Magical) ", MSL - 1 );
-    if ( IS_OBJ_STAT( obj, ITEM_EXTRA_GLOW ) )
-        strncat( buf, "(Glowing) ", MSL - 1 );
-    if ( IS_OBJ_STAT( obj, ITEM_EXTRA_HUM ) )
-        strncat( buf, "(Humming) ", MSL - 1 );
+    if ( IS_OBJ_STAT( object, ITEM_EXTRA_INVIS ) )
+        output += "(Invis) ";
+    if ( ( IS_AFFECTED( character, AFF_DETECT_EVIL ) || item_has_apply( character, ITEM_APPLY_DET_EVIL ) ) && IS_OBJ_STAT( object, ITEM_EXTRA_EVIL ) )
+        output += "(Red Aura) ";
+    if ( ( IS_AFFECTED( character, AFF_DETECT_MAGIC ) || item_has_apply( character, ITEM_APPLY_DET_MAG ) ) && IS_OBJ_STAT( object, ITEM_EXTRA_MAGIC ) )
+        output += "(Magical) ";
+    if ( IS_OBJ_STAT( object, ITEM_EXTRA_GLOW ) )
+        output += "(Glowing) ";
+    if ( IS_OBJ_STAT( object, ITEM_EXTRA_HUM ) )
+        output += "(Humming) ";
 
-    if ( fShort )
-    {
-        if ( obj->short_descr != NULL )
-            strncat( buf, obj->short_descr, MSL - 1 );
-    }
-    else
-    {
-        if ( obj->long_descr != NULL )
-            strncat( buf, obj->long_descr, MSL - 1 );
-    }
-    strncat( buf, color_string( ch, "normal" ), MSL - 1 );
+    if ( shortd && !object->short_descr.empty() )
+        output += object->short_descr;
+    else if ( !object->long_descr.empty() )
+        output += object->long_descr;
 
-    if ( iName ) * Display the name of items, in case you don't know or forgot them. --Kline *
-    {
-        snprintf(buf2, MSL, " [%s]", obj->name);
-        strncat(buf, buf2, MSL - 1);
-    }
+    output += character->gChannelColor( "normal" );
 
-    return buf;
-}*/
+    if ( name ) /* Display the name of items, in case you don't know or forgot them. --Kline */
+        output += " [" + object->name + "]";
+
+    return output;
+}
 /**@}*/
 
 /*** @name Query */ /**@{*/

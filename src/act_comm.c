@@ -680,7 +680,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
             {
                 if ( vch->in_room->room_flags.test(RFLAG_QUIET) && !IS_IMMORTAL( ch ) )
                     continue;
-                if ( channel == CHANNEL_CREATOR && get_trust( och ) < MAX_LEVEL )
+                if ( channel == CHANNEL_CREATOR && och->gTrust() < MAX_LEVEL )
                     continue;
                 if ( channel == CHANNEL_IMMTALK && !IS_HERO( och ) )
                     continue;
@@ -696,7 +696,7 @@ void talk_channel( CHAR_DATA * ch, char *argument, int channel, const char *verb
                         && ( och->level != 85 || och->deaf.test(CHANNEL_ALLRACE) ) )
                     continue;
                 if ( channel == CHANNEL_CLAN && och->clan != ch->clan
-                        && ( och->deaf.test(CHANNEL_ALLCLAN) || get_trust( och ) != MAX_LEVEL ) )
+                        && ( och->deaf.test(CHANNEL_ALLCLAN) || och->gTrust() != MAX_LEVEL ) )
                     continue;
                 if ( ( channel == CHANNEL_FAMILY )
                         && ( ( !IS_VAMP( och ) || !IS_VAMP( ch ) )

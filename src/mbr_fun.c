@@ -32,6 +32,46 @@
 #include "h/ssm.h"
 #endif
 
+const string char_data::gChannelColor( const string& input )
+{
+    int i = 0;
+
+    if ( IS_NPC( this ) || input.empty() )
+        return string();
+
+    if ( !act.test( ACT_COLOR ) )
+        return string();
+
+    if ( input == "normal" )
+        return "\x1b[0m";
+
+    for ( i = 0; i < MAX_COLOR; i++ )
+        if ( input == color_table[i].name )
+            break;
+
+    return ansi_table[pcdata->color[i]].value;
+}
+
+const int char_data::gTrust() const
+{
+    CHAR_DATA *ch = NULL;
+
+    if ( desc != NULL && desc->original != NULL )
+        ch = desc->original;
+
+    if ( !IS_NPC( ch ) && ch->act.test(ACT_AMBASSADOR) )
+        return ( LEVEL_HERO + 1 );
+
+    if ( ch->trust != 0 )
+        return ch->trust;
+
+    if ( IS_NPC( ch ) && ch->level >= LEVEL_HERO )
+        return LEVEL_HERO - 1;
+    else
+        return ch->level;
+
+}
+
 bool char_data::check_cooldown( const char *skill )
 {
     int sn = skill_lookup(skill);

@@ -22,7 +22,7 @@ using namespace std;
 namespace Information
 {
     /*** @name Core */ /**@{*/
-    //const string FormatObjectToCharacter( OBJ_DATA* obj, CHAR_DATA* ch, const bool& short, const bool& name );
+    const string FormatObjectToCharacter( Object* object, Character* ch, const bool& shortd, const bool& name );
     /**@}*/
 
     /*** @name Query */ /**@{*/

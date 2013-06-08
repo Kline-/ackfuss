@@ -290,7 +290,7 @@ DO_FUN(do_rename)
     /*
      * allow rename self new_name,but otherwise only lower level
      */
-    if ( ( victim != ch ) && ( get_trust( victim ) >= get_trust( ch ) ) )
+    if ( ( victim != ch ) && ( victim->gTrust() >= ch->gTrust() ) )
     {
         send_to_char( "You failed.\r\n", ch );
         return;

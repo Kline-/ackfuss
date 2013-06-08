@@ -3628,12 +3628,12 @@ void act( const char *format, CHAR_DATA * ch, const void *arg1, const void *arg2
                         can_see_message = TRUE;
                         if ( IS_IMMORTAL( to ) )
                         {
-                            if ( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && ch->pcdata->invis > get_trust( to ) )
+                            if ( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && ch->pcdata->invis > to->gTrust() )
                                 can_see_message = FALSE;
                         }
                         else
                         {
-                            if ( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && get_trust( to ) < ch->pcdata->invis )
+                            if ( !IS_NPC(ch) && ch->act.test(ACT_WIZINVIS) && to->gTrust() < ch->pcdata->invis )
                                 can_see_message = FALSE;
                             if ( ( IS_AFFECTED( ch, AFF_SNEAK ) || item_has_apply( ch, ITEM_APPLY_SNEAK ) )
                                     && ( ( ch->get_level("psuedo") - 20 + number_range( 1, 30 ) ) > to->get_level("psuedo") ) )
